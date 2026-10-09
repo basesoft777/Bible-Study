@@ -4,9 +4,9 @@
 
 **Eredmény.** A `TAHOT_kivonat.tsv`-be 332 sor került (Károli Jób 41:1–34, Károli-kulccsal), a Jób 40:24 után, a Jób 42:1 elé; a meglévő 468 968 sor bájtazonos, a tábla 469 300 adatsor. A `TAHOT_kivonat_nyitott_esetek.tsv`-ből ugyanez a 332 sor törlődött, a fejléc maradt. A 34 vers Strong-halmaza egyezik a Macula MT-versével (Jaccard min. 0,83; az eltérés a H4480 előtag TAHOT-kezelése). A `lekerdez.py scan H3882 --szakasz "Jób 41:1-41:34"` → Jób 41:1.
 
-**Döntés** (felhasználó, chat, 2026.10.09): DT-F84a (a) 1 — törlés a nyitott fájlból; (b) 1 — a Jób 41:25 jelölés nélkül bekerül (az „összeolvadt vers” jelölés elavult).
+**Döntés** (felhasználó, chat, 2026.10.09): DT86 (a) 1 — törlés a nyitott fájlból; (b) 1 — a Jób 41:25 jelölés nélkül bekerül (az „összeolvadt vers” jelölés elavult).
 
-**Dokumentáció.** CLAUDE.md TAHOT-mondata a mért állapotra (maradó korlát: a Jób 40 MT-kulcsú számozása); README mérettábla; generátor-megjegyzés ([javaslat]: `ELSODLEGES` a 41-re); N-F83a és N-F34b lezárva (helyőrzővel).
+**Dokumentáció.** CLAUDE.md TAHOT-mondata a mért állapotra (maradó korlát: a Jób 40 MT-kulcsú számozása); README mérettábla; generátor-megjegyzés ([javaslat]: `ELSODLEGES` a 41-re); N55 és N-F34b lezárva (helyőrzővel).
 
 **Ellenőrzés.** 4 eltérés; a README, a pótló szkript hatástalan őre és a brief-fejléc az F84.4-ben javítva.
 

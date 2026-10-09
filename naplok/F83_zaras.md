@@ -11,5 +11,5 @@
 **Folyamati esemény.** Egy párhuzamos F23-session a közös munkakönyvtárban két commitot (4d6b469, fe9a870) tett erre az ágra. A force-push-t az automatikus mód letiltotta, ezért az F83.4 reverttel semlegesítette őket. A nettó diff csak az F83 fájljait tartalmazza (ELLENOR_F83 igazolja).
 
 **Nyitott (a felhasználóé, `/befogad`).**
-- **N-F83a [javaslat]:** a TAHOT-kulcsgenerátor (`eszkozok/tahot_karoli_kulcs_generalas.py`) Jób 40–41 javítása, a CLAUDE.md TAHOT-korlát mondatának pontosításával. Amíg ez nincs meg, a Jób 41 nem futtatható, és az `ad` csak részben teljesül.
+- **N55 [javaslat]:** a TAHOT-kulcsgenerátor (`eszkozok/tahot_karoli_kulcs_generalas.py`) Jób 40–41 javítása, a CLAUDE.md TAHOT-korlát mondatának pontosításával. Amíg ez nincs meg, a Jób 41 nem futtatható, és az `ad` csak részben teljesül.
 - A #22 Jób-menetének első lépése a Jób felvétele a `VERSBEOSZTAS_JOVAHAGYOTT`-ba. Ugyanez a menet nézi át a detektor Jób 17 és 37 sorait (a jelentés 6. szakasza).

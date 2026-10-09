@@ -1,13 +1,13 @@
 ---
 feladat: 84
-cim: "TAHOT_kivonat: a Jób 41 pótlása Károli-kulccsal a nyitott esetekből (N-F83a)"
+cim: "TAHOT_kivonat: a Jób 41 pótlása Károli-kulccsal a nyitott esetekből (N55)"
 kod: TAHOT_JOB41
 tipus: feladat
 fazis: 1
 modell: sonnet
 allapot: lezarva
 pr: 262
-lezarva_osszegzes: "Jób 41:1–34 pótolva a TAHOT_kivonatba (+332 sor Károli-kulccsal, a nyitott esetekből −332), DT-F84a (a) 1, (b) 1; CLAUDE.md TAHOT-mondat a mért állapotra; N-F83a, N-F34b lezárva; nyitott a #22-nek: f22/versmegfeleltetes.tsv újragenerálása a Jób-menet előtt; PR #262 (10.09)"
+lezarva_osszegzes: "Jób 41:1–34 pótolva a TAHOT_kivonatba (+332 sor Károli-kulccsal, a nyitott esetekből −332), DT86 (a) 1, (b) 1; CLAUDE.md TAHOT-mondat a mért állapotra; N55, N-F34b lezárva; nyitott a #22-nek: f22/versmegfeleltetes.tsv újragenerálása a Jób-menet előtt; PR #262 (10.09)"
 ag: claude/f84-tahot-job41
 ad: "A TAHOT_kivonat.tsv-ben a Károli Jób 41:1–34 héber sorai Károli-kulccsal; a #22 a Jóbot egy menetben futtathatja; a CLAUDE.md TAHOT-korlát mondata a mért állapotot írja"
 kovetkezo: "merge a felhasználótól; a #22 Jób-menete előtt a versbeosztas.py újragenerálása (naplok/F84_zaras.md)"
@@ -16,7 +16,7 @@ olvas: [konkordancia/TAHOT_kivonat_nyitott_esetek.tsv, konkordancia/Macula_heber
 ir: [konkordancia/TAHOT_kivonat.tsv, konkordancia/TAHOT_kivonat_nyitott_esetek.tsv, eszkozok/tahot_karoli_kulcs_generalas.py, eszkozok/tahot_job41_potlas.py, CLAUDE.md, NYITOTT_FELADATOK.md, konkordancia/TAHOT_TAGNT_README.md]
 ---
 
-# F84_TAHOT_JOB41_BRIEF.md — TAHOT_kivonat: a Jób 41 pótlása Károli-kulccsal (N-F83a)
+# F84_TAHOT_JOB41_BRIEF.md — TAHOT_kivonat: a Jób 41 pótlása Károli-kulccsal (N55)
 
 *FELADATOK #84 · v1 · 2026.10.09 · alap: a #83 lelete (`naplok/F83_Job_versbeosztas_jelentes.md`, `naplok/F83_zaras.md`) · a #22 Jób-menetének előfeltétele*
 
@@ -34,7 +34,7 @@ A `konkordancia/TAHOT_kivonat.tsv`-ben a Károli Jób 41:1–34 mind a 34 versé
 
 ## Hatókör
 
-**Benne van:** a Jób 41 34 versének sorai a nyitott esetekből a fő kivonatba kerülnek, Károli-kulccsal. A nyitott esetek fájljából ezek a sorok kikerülnek (vagy státuszt váltanak, l. ⛔ 1). A generátor felülbírálási bejegyzése a dokumentáció kedvéért javul. A CLAUDE.md TAHOT-mondata pontosodik, az N-F34b és az N-F83a rendeződik a `NYITOTT_FELADATOK.md`-ben.
+**Benne van:** a Jób 41 34 versének sorai a nyitott esetekből a fő kivonatba kerülnek, Károli-kulccsal. A nyitott esetek fájljából ezek a sorok kikerülnek (vagy státuszt váltanak, l. ⛔ 1). A generátor felülbírálási bejegyzése a dokumentáció kedvéért javul. A CLAUDE.md TAHOT-mondata pontosodik, az N-F34b és az N55 rendeződik a `NYITOTT_FELADATOK.md`-ben.
 
 **Nincs benne:**
 - A Jób 40 TAHOT-kulcsainak átszámozása. A Jób 40 kulcsai ma MT-számozásúak (TAHOT 40:(n+5) = Károli 40:n), és a #83 kézi táblája (`f22/versmegfeleltetes_kezi.tsv`, 19 sor) erre épül. Ha a Jób 40 kulcsa megváltozna, az a kézi táblát érvénytelenítené. Ez külön döntés, és az N-F41g-hez tartozik.
@@ -62,7 +62,7 @@ A `konkordancia/TAHOT_kivonat.tsv`-ben a Károli Jób 41:1–34 mind a 34 versé
 - `tahot_karoli_kulcs_generalas.py`: a `("Job", (40, 41))` felülbírálás indoklásához a mért Károli-szám (40 = 19, 41 = 34) és az F84 hivatkozása kerül. Hogy a döntés-érték változzon-e, az a végrehajtó [javaslat]-a, mert a generátor a repóból nem futtatható.
 - `CLAUDE.md`: a „`TAHOT_kivonat.tsv` nem teljes … (hiányzik legalább Jób 40:1–5 és a Jób 41 …)” mondat a mért állapotra javul. A Jób 40:1–5 a #83 szerint nem hiányzik (TAHOT 39:34–38 = MT 40:1–5), a Jób 41 az F84 után megvan. A Jób 40 MT-kulcsú számozása maradó korlátként szerepeljen.
 - `konkordancia/TAHOT_TAGNT_README.md`: ha teljességet állít, a mondat a mért állapothoz igazodik.
-- `NYITOTT_FELADATOK.md`: N-F83a felvéve és lezárva, helyőrzővel; az N-F34b a CLAUDE.md-javítással lezárul vagy szűkül.
+- `NYITOTT_FELADATOK.md`: N55 felvéve és lezárva, helyőrzővel; az N-F34b a CLAUDE.md-javítással lezárul vagy szűkül.
 
 **F84.4 — Zárás.** `naplok/F84_zaras.md`, független ellenőrzés: `naplok/ELLENOR_F84.md`.
 

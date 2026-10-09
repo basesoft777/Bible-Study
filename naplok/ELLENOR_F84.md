@@ -13,16 +13,16 @@ ELTÉRÉS: 4 tétel
 | G (F84.1) Macula-szúrópróba | OK | `konkordancia/Macula_heber_Job.tsv:11973–11982, 12057–12066, 12216–12223, 12298–12307` | A nem-H9xxx Strong-számok egyeznek: MT 40:25 = K 41:1; MT 41:1 = K 41:9; MT 41:17 = K 41:25 (a Macula H4480 = TAHOT H9006 מִ); MT 41:26 = K 41:34. |
 | G lekérdezés H3882 | OK | — | `lekerdez.py scan H3882 --szakasz "Jób 41:1-41:34"` → Jób 41:1; `proveniencia: scope=range:Jób 41:1-41:34 \| forras=TAHOT_kivonat.tsv \| strong=H3882 \| n=1 \| ts=2026-10-09T06:22Z`. A teljes `scan H3882` → Jób 3:8, 41:1, Zsolt 74:14, 104:26, Ézs 27:1 (n=5). |
 | G Károli-szöveg, 40 = 19, 41 = 34 | OK | — | `lekerdez.py karoli`: Jób 40:19 van, 40:20 nincs; 41:34 van, 41:35 nincs; 41:25 van (ts=2026-10-09T06:22Z). |
-| D (DT-F84a (a) 1, (b) 1) végrehajtás | OK | `DONTESEK.md:161` | (a): a sorok törlődtek, a fejléc maradt. (b): a 41:25 jelölés nélkül bent van (8 sor). |
-| D (DT-F84a) a döntés forrása | NEM ELLENŐRIZHETŐ | `DONTESEK.md:161` | A repóból nem dönthető el, hogy a döntést valóban a felhasználó hozta-e. |
+| D (DT86 (a) 1, (b) 1) végrehajtás | OK | `DONTESEK.md:161` | (a): a sorok törlődtek, a fejléc maradt. (b): a 41:25 jelölés nélkül bent van (8 sor). |
+| D (DT86) a döntés forrása | NEM ELLENŐRIZHETŐ | `DONTESEK.md:161` | A repóból nem dönthető el, hogy a döntést valóban a felhasználó hozta-e. |
 | ⛔ 1 betartva | OK | — | Az F84.1 (4f3edc7) táblát nem írt; táblát először az F84.2 (1c3720c) írt. |
 | G (F84.2) szkript: csv nélkül, UTF-8 őr | OK | `eszkozok/tahot_job41_potlas.py:24–31, 51, 72` | Nincs `import csv`; az őr az importok után; `split`/`'\t'.join`; CR-t elutasít. |
 | G (F84.2) írás előtti összevetés | ELTÉRÉS (alacsony) | `eszkozok/tahot_job41_potlas.py:87–90` | Az `uj_fo`-t ugyanazokból a szeletekből építi, amelyekkel összeveti; az őr nem bukhat el. Az eredményt a git diff (+332/−0) utólag igazolja. |
 | G (F84.3) generátor-megjegyzés | OK | `eszkozok/tahot_karoli_kulcs_generalas.py:51–61` | Csak megjegyzés; döntés-érték változatlan; [javaslat] jelölve. |
 | G (F84.3) CLAUDE.md mondat | OK, részben NEM ELLENŐRIZHETŐ | `CLAUDE.md:107` | Jób 40:1–5 = TAHOT 39:34–38 (44 sor); a Jób 40 MT-kulcsú (40:6–24); a kézi tábla 19 Jób-sor. Nem ellenőrizhető: „fejezet-szinten nincs hiány” (a szkriptet nem futtattam). |
 | G (F84.3) README | ELTÉRÉS (alacsony) | `konkordancia/TAHOT_TAGNT_README.md:308–309, 244` | A Méret táblázat elavult (468 232 / 1 068); a 244. sor „nincs Jób-sor”, pedig a fájl teljesen üres. |
-| G (F84.3) NYITOTT_FELADATOK | OK / NEM ELLENŐRIZHETŐ | `NYITOTT_FELADATOK.md:679–682` | Az N-F83a és N-F34b lezárása igaz. Nem ellenőrizhető: a „vers-szintű rések … nem állnak fenn” (az F2 fejezet-szintű volt). |
-| Helyőrzők | OK | diff | Csak `DT-F84a`, `N-F83a`, `N-F34b`; E26: 0 találat. |
+| G (F84.3) NYITOTT_FELADATOK | OK / NEM ELLENŐRIZHETŐ | `NYITOTT_FELADATOK.md:679–682` | Az N55 és N-F34b lezárása igaz. Nem ellenőrizhető: a „vers-szintű rések … nem állnak fenn” (az F2 fejezet-szintű volt). |
+| Helyőrzők | OK | diff | Csak `DT86`, `N55`, `N-F34b`; E26: 0 találat. |
 | Brief fejléc | ELTÉRÉS (alacsony) | `F84_TAHOT_JOB41_BRIEF.md:11` | A `kovetkezo` még „Hátra: F84.3 …”. |
 | Lefelé ható következmény (#22) | ELTÉRÉS (közepes) | `f22/versmegfeleltetes.tsv:78–103` | Generált fájl (`versbeosztas.py`, ts=2026-10-02); 26 Jób 41-es vers `nincs_eredeti`. Az F84 után elavult, nem generálták újra; a brief „a #22 a Jóbot egy menetben futtathatja” állítása így nem igazolt. |
 | Proveniencia a jelentésben | OK (megjegyzéssel) | `naplok/F84_jelentes.md` | A 4–5. szakasznak nincs proveniencia-sora; a számokat az ellenőr igazolta. Az F84.1 mérőszkriptjei nincsenek verziózva. |

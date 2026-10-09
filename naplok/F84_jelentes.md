@@ -73,14 +73,14 @@ A `TAHOT_kivonat.tsv` Jób 40 sorai folytonosak: fájlsor **288 901–289 098** 
 
 *A végrehajtó javaslata: 1.* Indok: a mérés szerint a Strong-halmaz egyezik az MT 41:17-tel (Jaccard 0,83, az egyetlen különbség a H4480 elöljáró), a Károli-szöveg tartalmilag egyezik a 8 TAHOT-sorral, és az „összeolvadt vers” anomália a `Karoli_adatminosegi_anomaliak.tsv` szerint már javítva van (10 versre bontva), a `Karoli_1908.tsv` a javított állapotot tartalmazza. A kihagyás (2.) lyukat hagyna a 34 versnyi fejezetben és gyengítené a #22 Jób-futását; a `javaslat` jelölés (3.) olyan eltérést jelezne, amelyet a mérés nem talált.
 
-Döntéstétel: `DONTESEK.md` DT-F84a.
+Döntéstétel: `DONTESEK.md` DT86.
 
 
 ---
 
 ## ⛔ 1 — a felhasználó döntése (2026-10-09) és F84.2 végrehajtása
 
-DT-F84a: **(a) 1** — a 332 sor törlődik a nyitott fájlból (a fejléc marad); **(b) 1** — a Jób 41:25 jelölés nélkül bekerül. A 2. szakasz megjegyzése: a K 41:19–21 és 41:25 egyetlen H4480-különbsége a TAHOT előtag-kezelése (a מִן H9xxx-előtagként áll), nem megfeleltetési hiba.
+DT86: **(a) 1** — a 332 sor törlődik a nyitott fájlból (a fejléc marad); **(b) 1** — a Jób 41:25 jelölés nélkül bekerül. A 2. szakasz megjegyzése: a K 41:19–21 és 41:25 egyetlen H4480-különbsége a TAHOT előtag-kezelése (a מִן H9xxx-előtagként áll), nem megfeleltetési hiba.
 
 ### F84.2 — pótlás
 
@@ -96,7 +96,7 @@ DT-F84a: **(a) 1** — a 332 sor törlődik a nyitott fájlból (a fejléc marad
 - `eszkozok/tahot_karoli_kulcs_generalas.py`: a `("Job", (40, 41))` bejegyzés fölé megjegyzés került (mért Károli-szám 40 = 19, 41 = 34; az angol 41. fejezet hossza egyezik; a 41:25 „összeolvadt” állítás elavult, a vers javított; hivatkozás az F84-re). A döntés-érték és az indoklás-szöveg **változatlan** (a generátor a repóból nem futtatható). **[javaslat]** újrafuttatás esetén: `ELSODLEGES` a 41-re.
 - `CLAUDE.md`: a TAHOT-mondat a mért állapotra javítva (nincs fejezet-hiány; a Jób 40:1–5 nem hiányzik; a Jób 41 az F84 után megvan; maradó korlát: a Jób 40 MT-kulcsú számozása).
 - `konkordancia/TAHOT_TAGNT_README.md`: az eset-táblázat Jób 40/41 sora, a nyitott esetek mondata és a „Jób 40:1-5 és Jób 41 hiányzik” bekezdés a mért állapotra javítva.
-- `NYITOTT_FELADATOK.md`: N-F83a felvéve és lezárva, N-F34b lezárva (helyőrzők; a végleges számot az Action osztja), mindkettő a „Lezárva” szakaszban.
+- `NYITOTT_FELADATOK.md`: N55 felvéve és lezárva, N-F34b lezárva (helyőrzők; a végleges számot az Action osztja), mindkettő a „Lezárva” szakaszban.
 - **N-F41g / #41 megjegyzés:** a BSB `Számozás` oszlopa a Jób 41-et `kjv`-nek jelöli, mert a TAHOT-ban nem volt; az F84 ezt nem írta át, a következmény (a jelölés viszonya a mostani Jób 41 TAHOT-sorokhoz) az N-F41g-hez tartozik (megjegyzésként a `NYITOTT_FELADATOK.md` lezárási blokkjában).
 
 ### Következmény a #22-re
