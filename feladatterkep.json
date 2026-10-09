@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-10-09",
-   "commit": "095a6e9"
+   "commit": "10ffd31"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -257,7 +257,7 @@
    "fazis": "2",
    "allapot": "idle",
    "brief_allapot": "brief_kell",
-   "most": "1. lépcső ISTENTISZT-001 (a #78 vázával rekonstruált aranymintán), utána a többi 6 (D38); a #12a (#64) lezárult; az 1. lépcső merge-e oldja a befagyasztást (DT74 (3)); része az arany-készlet (ISTENTISZT-001, HAMART-001 nulla-diff referencia; a CI-rész külön ágon, D6; DT78 (22))",
+   "most": "1. lépcső ISTENTISZT-001 (a #78 vázával rekonstruált aranymintán), utána a többi 6 (D38); a #12a (#64) lezárult; az 1. lépcső merge-e oldja a befagyasztást (DT74 (3)); része az arany-készlet (ISTENTISZT-001, HAMART-001 nulla-diff referencia; a CI-rész külön ágon, D6; DT78 (22)); az ISTENTISZT-001 forrásában a beemelt nevesített tanítói sor hivatkozássá alakul a 7. lépés saját fájljára (DT66 (2), DT88)",
    "fugg": "#9, #23, #52*",
    "tervezett": false,
    "reszletes": "Minden motívum egyetlen kézi forrásból renderelődik (D34); a törzscikk, a 8. sablon és egy régi CI-szabály kivezetésre kerül. Első lépcső az ISTENTISZT-001, utána a többi hat.",
@@ -1419,6 +1419,6 @@
     "fejlec_oszlopszam": 8
    }
   ],
-  "kesz_db": 91
+  "kesz_db": 94
  }
 }
