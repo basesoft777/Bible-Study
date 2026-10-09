@@ -15,11 +15,11 @@
 |---|---|---|---|---|---|
 | 1. próba | 17 | 14 | 3 köteg (3 vers) | 1,3002 | 212 034 / 217 638 |
 | 2. próba (javító) | 3 | 3 | 0 | 0,0612 | 45 686 / 3 112 |
-| **összesen** | 20 | | | **1,3614** | |
+| **összesen** | 20 | | | **1,3615** | |
 
 A javító körbe került kötegek: 3, 8, 12 (Eszt 2:8, 5:3, 8:2); mindhárom versszintű kapuhiba (gazdátlan eredeti sorszám), formátumhiba nincs.
 
-A könyvplafonból (167 × 0,0074 × 1,5 = 1,85 USD) 1,36 fogyott; a futásnapló futó összege 48,4324 USD (Ézs–Jób 47,0709 + Eszt 1,3614), a globális 110 USD-ből. Versenként 0,0082 USD, a plafon alapja (0,0074) fölött: az Eszter hosszú elbeszélő versei (versenként 29,1 héber szó) miatt a kimenet nagy (217 638 token).
+A könyvplafonból (167 × 0,0074 × 1,5 = 1,85 USD) 1,36 fogyott; a futásnapló futó összege 48,4324 USD (Ézs–Jób 47,0709 + Eszt 1,3615), a globális 110 USD-ből. Versenként 0,0082 USD, a plafon alapja (0,0074) fölött: az Eszter hosszú elbeszélő versei (versenként 29,1 héber szó) miatt a kimenet nagy (217 638 token).
 
 ## 1a. Szkriptkimenet
 
@@ -94,3 +94,12 @@ Eltérő Károli-token (két modell partnerhalmaza különbözik) összesen: 0; 
 - A régi arany `Job.17.13` hármasa (`naplok/F22_Job_jelentes.md` 2.4): javasolt felvétel az `f21p/regi_arany_hibas.tsv`-be.
 - PR és merge a felhasználóé (az ág a Péld-, a Bír-, a Jób- és az Eszt-menetet hordozza).
 - A következő könyv a felhasználó döntése; a mérés szerinti tiszta jelöltek: 2Sám (577 / 86), 1Sám (524 / 86), 1Kir (509 / 99), Neh (479 / 96), 2Kir (413 / 87); a Dán (1644 / 312) előtt versbeosztás-döntés kell (37 detektorsor).
+
+## 6. Ellenőri kör (`naplok/ELLENOR_F22_Eszt.md`)
+
+Az ellenőr egy alacsony súlyú eltérést talált, adatot nem érint. A számokat pontos könyvegyezéssel (`\tapi_termeles/high/Eszt\t`, `cimke=eszt`, `^Eszt `, `Eszt_k*.json`) és `lekerdez.py`-jal igazolta; a merge-feloldás (`aee98c0`) helyes, az F77 a main-en valóban lezárt. A PR valódi alapjával (`1f420a7`) futtatott CI-ben HIBA nincs.
+
+- **Versbeosztás:** a detektorban és a kézi táblákban nincs Eszt-sor; 167/167 kulcs; 1:1, 5:14, 10:3 tartalmilag egyezik.
+- **Strong a TAHOT-ból:** 129 er-token mintavétele (1:1, 8:9, 10:3) egyezik; mind a 4 857 er-sor egyetlen H-Strongot visel.
+- **Eltérés (1c, alacsony) — javítva:** az összköltség a futásnapló szerint 1,361470 USD, négy tizedesre 1,3615 (a jelentés a két kerekített részösszeget adta össze: 1,3614). Az 1. szakasz táblája és összegsora ebben a commitban 1,3615-re javítva; a futó összeg (48,4324) és a D27 „1,36” értéke nem érintett.
+- **Nem ellenőrizhető az ellenőrnek:** a BDB-mérés számai (a mérést az orkesztrátor futtatta, 2026.10.09) és az `egyesit.py --ellenoriz` (az 1a szakasz saját futása igazolja).
