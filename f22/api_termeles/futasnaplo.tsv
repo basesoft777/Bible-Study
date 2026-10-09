@@ -1015,3 +1015,6 @@ ts	futas	koteg	probalkozas	modell	gondolkodas_mod	igehely_db	kjv	bemenet_token	k
 2026-10-09T07:42:48+00:00	api_termeles/high/Eszt	7	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	11644	10095		0.062119	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	48.191135	igen
 2026-10-09T07:42:48+00:00	api_termeles/high/Eszt	11	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	12840	15214		0.088910	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	48.280045	igen
 2026-10-09T07:42:48+00:00	api_termeles/high/Eszt	16	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	13249	15568		0.091089	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	48.371134	igen
+2026-10-09T07:51:27+00:00	api_termeles/high/Eszt	12	2	claude-sonnet-5-5	adaptive,effort=high	10	nem	16159	931		0.020814	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	48.391948	igen
+2026-10-09T07:51:27+00:00	api_termeles/high/Eszt	8	2	claude-sonnet-5-5	adaptive,effort=high	10	nem	14938	898		0.019428	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	48.411376	igen
+2026-10-09T07:51:27+00:00	api_termeles/high/Eszt	3	2	claude-sonnet-5-5	adaptive,effort=high	10	nem	14589	1283		0.021004	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	48.432380	igen
