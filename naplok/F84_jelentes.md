@@ -90,3 +90,11 @@ DT-F84a: **(a) 1** — a 332 sor törlődik a nyitott fájlból (a fejléc marad
 - Írás előtti őrök (a szkript leáll, ha bármelyik sérül): a fő kivonat meglévő sorai bájtazonosak (`git diff --numstat`: fő kivonat +332 / −0, nyitott fájl +0 / −332); a sorvég mindkét fájlban LF (a szkript CR-t elutasít, megőrzi); a nyitott fájl 332 sora mind `Job.41.n` (n = 1–34, növekvő, teljes) és `ADATMINOSEGI_GYANU`; a fő kivonatban előtte 0 Jób 41-sor volt.
 - `python eszkozok/tahot_lefedettseg_ellenoriz.py`: „Fejezet-szinten nincs hiány”, hiányzó fejezet 0 (ts=2026-10-09T06:18:00Z).
 - `python eszkozok/lekerdez.py scan H3882 --szakasz "Jób 41:1-41:34"`: **1 igehely, 1 szó-előfordulás (Jób 41:1)**; `proveniencia: scope=range:Jób 41:1-41:34 | forras=TAHOT_kivonat.tsv | strong=H3882 | n=1 | ts=2026-10-09T06:18Z`.
+
+### F84.3 — generátor és dokumentáció
+
+- `eszkozok/tahot_karoli_kulcs_generalas.py`: a `("Job", (40, 41))` bejegyzés fölé megjegyzés került (mért Károli-szám 40 = 19, 41 = 34; az angol 41. fejezet hossza egyezik; a 41:25 „összeolvadt” állítás elavult, a vers javított; hivatkozás az F84-re). A döntés-érték és az indoklás-szöveg **változatlan** (a generátor a repóból nem futtatható). **[javaslat]** újrafuttatás esetén: `ELSODLEGES` a 41-re.
+- `CLAUDE.md`: a TAHOT-mondat a mért állapotra javítva (nincs fejezet-hiány; a Jób 40:1–5 nem hiányzik; a Jób 41 az F84 után megvan; maradó korlát: a Jób 40 MT-kulcsú számozása).
+- `konkordancia/TAHOT_TAGNT_README.md`: az eset-táblázat Jób 40/41 sora, a nyitott esetek mondata és a „Jób 40:1-5 és Jób 41 hiányzik” bekezdés a mért állapotra javítva.
+- `NYITOTT_FELADATOK.md`: N-F83a felvéve és lezárva, N-F34b lezárva (helyőrzők; a végleges számot az Action osztja), mindkettő a „Lezárva” szakaszban.
+- **N-F41g / #41 megjegyzés:** a BSB `Számozás` oszlopa a Jób 41-et `kjv`-nek jelöli, mert a TAHOT-ban nem volt; az F84 ezt nem írta át, a következmény (a jelölés viszonya a mostani Jób 41 TAHOT-sorokhoz) az N-F41g-hez tartozik (megjegyzésként a `NYITOTT_FELADATOK.md` lezárási blokkjában).

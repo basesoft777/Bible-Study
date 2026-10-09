@@ -48,6 +48,17 @@ DONTES_FELULBIRALAS = {
         "korabbi audit (Karoli_adatminosegi_anomaliak.tsv, Ez 20:44) altal "
         "mar dokumentalt jelenseg."),
     ("Job", (40, 41)): ("ADATMINOSEGI_GYANU",
+        # F84 (FELADATOK #84, N-F83a) megjegyzes: az indoklas szamai HIBASAK. A mert
+        # Karoli-versszam: 40 = 19 vers, 41 = 34 vers (konkordancia/Karoli_1908.tsv; F83),
+        # az elsodleges (angol) 41. fejezet hossza (34) EGYEZIK a Karolival. A Job 41:25
+        # "osszeolvadt vers" anomalia a Karoli_adatminosegi_anomaliak.tsv szerint mar
+        # JAVITVA (10 versre bontva), az indoklas e resze elavult. A 332 Job 41-es sort
+        # az eszkozok/tahot_job41_potlas.py (F84.2) vette at a TAHOT_kivonat.tsv-be
+        # "Jób 41:n" kulccsal. A generator ujrafuttatasa a repobol nem reprodukalhato
+        # (phaseA_all.tsv, step1_decisions.tsv nincs a repoban); ujrafuttatas eseten a
+        # (40, 41) dontes-erteke [javaslat]: ELSODLEGES a 41-re (naplok/F84_jelentes.md).
+        # Az ertek itt tudatosan valtozatlan: az eredeti (hibas) indoklas lent tovabb
+        # dokumentalja a nyitott esetek fajl keletkezeset.
         "Sem az elsodleges (angol/NRSV), sem a masodlagos (heber) fejezethossz "
         "nem egyezik a Karoli tenyleges 40. (28v) es 41. (25v) fejezet-hosszaval "
         "(elsodleges: 24/34; masodlagos: 32/26) - korabbi audit szerint Jób 41:25 "

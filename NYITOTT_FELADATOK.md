@@ -549,17 +549,6 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
   (5) Egyeztetett eltérés (F30): a brief `ir` listája az `eszkozok/ellenorzes/futtat.py`-val, a `eszkozok/ellenorzes/tesztek/test_szamkiosztas.py`-val, az `eszkozok/szamkiosztas_oroklott.txt`-vel és a `naplok/F30_*` fájlokkal bővül (az E26 bekötése, tesztje, az örökölt lista). Az `ir` listán kívül csak a DT18→DT29 csere történt (F18 brief, `adat/SEMA.md`, `adat/datasetek.tsv`, `naplok/F18_*`); a base..head diff ezt igazolja.
   (4) A `szamkiosztas.yml` és az E26 az `eszkozok/ellenorzes/`-t és a `.github/`-ot érinti: a PR címének `[ELLENŐRZŐ]` előtaggal kell kezdődnie (E16).
 
-- **N-F34b — a TAHOT-kivonat „nem teljes” állítás elavult (CLAUDE.md,
-  `konkordancia/README.md`); a valódi hiány kicsi.** *(ÚJ, F34 (#34), DT-F34b 3. pont)*
-  A `konkordancia/TAHOT_TAGNT_README.md` (195., 316., 320. sor) szerint az 1Móz 32,
-  Zsolt 88/89/90/140/142 hiánya már pótolt; az F34 mérése ezt megerősíti
-  (Zsolt: 150/150 fejezet, 2527/2527 MT-vers, a Macula-táblához mérve nincs hiányzó
-  vers; az egyetlen fejezet-szintű rés: Jób 41; mérés + proveniencia-sor: `python eszkozok/bdb_psi_javit.py --meres-tahot`, `naplok/F34_M2_naplo.md` F34.6/3.). Javítandó: a `CLAUDE.md` „Adat-tár”
-  szakasza („TAHOT_kivonat.tsv nem teljes … hiányzik legalább 1Móz 32, Zsolt
-  88/89/140/142, Jóel 3”) és a `konkordancia/README.md` ide vonatkozó sora — a
-  Jób 41 és az esetleges vers-szintű rések (Jóel 3 külön mérendő) pontos
-  hiánylistájával. *Helyőrző: a végleges N-számot az Action osztja ki.*
-
 - **N-F21 — Károli ↔ KJV versmegfeleltetés: zsoltárfeliratok, 1039 ÓSZ-vers, F19-tábla.** *(ÚJ, F21 regressziós mérés, KJV-szabály mérése, 2026.10.01, `naplok/F21P_elopar_kjv.md` 5. pont, `naplok/F21P_kjv_meres.md`; a számot (N-F21) a F30 helyőrző-szabálya szerint a main-Action osztja ki)*
   A `konkordancia/Karoli_versmegfeleltetes.tsv` `igehely_kjv` oszlopa (főleg az `osztaly=MT` soroknál) az MT-versszámot adja a KJV-szám helyett, ezért a `konkordancia/KJV_Strongs_teljes.tsv` (F19) KJV-támpontja ezeknél a verseknél a rossz KJV-versről jön. A teljes ÓSZ-ben 22 730 KJV-soros versből 1162 gyanús (a vers jól címkézett Strongjainak kevesebb mint fele van a KJV-sorban); ebből 1039-nél a szomszéd KJV-vers illik: Zsolt 915 (a zsoltárfeliratok: pl. Zsolt 18:1 a KJV 18:0-hoz illik), Ézs 42, Préd 24, 1Sám 20, Hós 13, Jón 9, 4Móz 8, 1Kir 6, Dán 2. A Zsolt 6:5, 13:2, 18:1, 18:3, 59:8 az F21 arany 60 versében is szerepel.
   **Érintett:** a versmegfeleltetési tábla, a `tokenek.kjv_tamapont_teljes` (és minden fogyasztója), az F21 F8V3 mérés R2-je (a zsoltárversek KJV-támpontja). **Állapot:** nem javítva (a felhasználó döntése: most ne javítsd). Az F8V3 megismétlése a javítás után jön, külön döntéssel (kb. 0,26 USD). A javítás hatóköre (F19 tábla vs. a megfeleltetési tábla) nyitott.
@@ -687,6 +676,10 @@ A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá
 <!-- GENERÁLT-VÉGE: nyitott -->
 
 ## Lezárva
+### 2026.10.09 (F84_TAHOT_JOB41_BRIEF.md — N-F83a felvéve és lezárva, N-F34b lezárva):
+* N-F83a — a `tahot_karoli_kulcs_generalas.py` `DONTES_FELULBIRALAS[("Job", (40, 41))]` hibás Károli-versszámokon (40 = 28, 41 = 25) alapult, ezért a Jób 41 332 sora a `TAHOT_kivonat_nyitott_esetek.tsv`-be került, és a `TAHOT_kivonat.tsv`-ben a Jób 41 kulcsán 0 sor volt. **LEZÁRVA (2026.10.09, F84; DT-F84a (a) 1., (b) 1.):** a mért versszám 40 = 19, 41 = 34; az `eszkozok/tahot_job41_potlas.py` a 332 sort `Jób 41:1–34` kulccsal a fő kivonatba vette (469 300 adatsor), a nyitott fájlból törölte (a fejléc marad). A generátor felülbírálás-indoklása megjegyzést kapott (a döntés-érték nem változott; újrafuttatáskor [javaslat]: `ELSODLEGES` a 41-re). A Jób 40 MT-kulcsos számozása nem változott (maradó korlát, N-F41g). *Helyőrző: a végleges N-számot az Action osztja ki.* Jelentés: `naplok/F84_jelentes.md`.
+* N-F34b — a TAHOT-kivonat „nem teljes” állítása (CLAUDE.md). **LEZÁRVA (2026.10.09, F84):** a `CLAUDE.md` TAHOT-mondata a mért állapotra javítva (fejezet-szinten nincs hiány, a Jób 40:1–5 nem hiányzik, a Jób 41 megvan, maradó korlát: a Jób 40 MT-kulcsú számozása); a `konkordancia/README.md`-ben ide vonatkozó „nem teljes” sor nincs. A vers-szintű rések (a Jóel 3 külön mérése) az F2 mérése szerint nem állnak fenn.
+* Megjegyzés (N-F41g): a #41 (BSB) `Számozás` oszlopa a Jób 41-et `kjv`-nek jelölte, mert a TAHOT-ban nem volt; az F84 ezt nem írta át. Az N-F41g feladata, hogy a Jób 41 mostani TAHOT-sorai (Károli-kulcs, Jób 41:n) és a BSB-jelölés viszonyát rendezze.
 ### 2026.10.06 (F66_BDB_ARAM_POTLAS_BRIEF.md — N52 felvéve és lezárva):
 * N52 — a szúrópróba-kivonat két hibája (csak a `naplok/BDB_ARAM_POTLAS_szurop.md` igehely-kivonatát érintette, a TSV-t nem). **LEZÁRVA (2026.10.06, F66):** (a) a H3542 listáján a Jer 48:47 és a Jer 51:64 héber „compare” hely volt, nem arámi előfordulás; (b) a H3969 listáján az Ezsd 6:17 háromszor állt (nem szűrte az ismétlést). Javítva az `eszkozok/bdb_aram_potlas.py --szurop`-ban (`aram_hely`: csak a bibliai arámi szakaszok; ismétlés nélkül), a napló újragenerálva, teszttel.
 
