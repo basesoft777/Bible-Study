@@ -1225,7 +1225,7 @@ azzal a megjegyzéssel, hogy új oszlopot kérhet. A mai sémával:
   **megszűntek / elavultak**: az F2 tételes felmérése (`eszkozok/tahot_lefedettseg_ellenoriz.py`) a hat fejezetet teljesnek találta; a Jób 40:1–5 nem hiányzott
   (TAHOT-kulcsa 39:34–38), a Jób 41-et az F84 (332 sor) pótolta. Az F85.6 óta az `Igehely` kulcs versszinten a **Károli-vers**, amelynek a héber szövegét a sor hordozza
   (337 vers, 6 330 sor átkulcsolva; a fejezethatár- és fejezeten belüli eltolások megszűntek): minden TAHOT-kulcs létező Károli-vers, és minden ÓSZ-Károli-versnek van
-  TAHOT-sora (`naplok/F85_jelentes.md`, `naplok/F85_igazolas.md`). Fennmarad: ahol a Károli két TAHOT-verset egy versbe vont (9 hely), mindkét vers a közös
+  TAHOT-sora (teljes ÓSZ-os versszintű kulcs-összevetés: `naplok/F85_kulcsosszevetes.md`; továbbá `naplok/F85_jelentes.md`, `naplok/F85_igazolas.md`). Fennmarad: ahol a Károli két TAHOT-verset egy versbe vont (9 hely), mindkét vers a közös
   Károli-kulcson áll (a vershatár az `f22/versosszevonas.tsv`-ben), és a fájlsorrend nem Károli-sorrend. **A `scope` proveniencia-értéke ettől függetlenül `TAHOT-teljes` marad,
   nem `OT-full`** — ez a kivonat egészére vonatkozó, nem a kánon teljességét állító címke, és az `eszkozok/lekerdez.py` minden parancsa ezt írja ki;
   az `OT-full` címke kiadása a DT90 döntése (az F85 mérése ezt érdemben eldönthetővé teszi, de nem dönti el).

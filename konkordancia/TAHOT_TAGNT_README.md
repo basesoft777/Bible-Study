@@ -248,7 +248,7 @@ nem e feladat része.
 
 **Kereszt-ellenőrzés.** A fő kivonatba bekerülő minden Károli-kulcsot (a régről megmaradt 435 723 sort is) leellenőriztük a `Karoli_1908.tsv` tényleges igehely-készlete ellen.
 Az F2 idején a régről megmaradt sorok közül 102 szó-sor (6 egyedi igehely: 4Móz 12:16; Jób 38:39–41; Préd 11:9–10) nem volt meg a `Karoli_1908.tsv`-ben. **Mért állapot (F85, 2026.10.09):**
-minden TAHOT-kulcs létező Károli-vers (0 kulcs Károli-vers nélkül), és minden ÓSZ-Károli-versnek van TAHOT-sora (0 hiány); a sorok tartalma az átkulcsolás előtt és után azonos
+minden TAHOT-kulcs létező Károli-vers (0 kulcs Károli-vers nélkül), és minden ÓSZ-Károli-versnek van TAHOT-sora (0 hiány; 23 204 kulcs ↔ 23 204 ÓSZ-Károli-vers, naplózva: `naplok/F85_kulcsosszevetes.md`); a sorok tartalma az átkulcsolás előtt és után azonos
 (csak az `Igehely` mező változott, 6 330 sor; l. a következő szakaszt).
 
 ## Versszintű Károli-kulcs (F85, 2026.10.09)
