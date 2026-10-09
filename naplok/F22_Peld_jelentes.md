@@ -122,3 +122,13 @@ A menet a Jóbbal indult; a felhasználó a javaslat láttán a Példabeszédekr
 - Kézi átnézés: Péld 11:31; a korábbiak (1Krón 19:2, Ézs 9:20, 64:1, Zsolt 119:94, 144:15, 145:1) továbbra is a felhasználóé.
 - PR és merge a felhasználóé.
 - A következő könyv: a DT57 (1) mért listájából csak a Jób maradt (5. szakasz); az indítás a felhasználó döntése.
+
+## 7. Ellenőri kör (`naplok/ELLENOR_F22_Peld.md`)
+
+Az ellenőr eltérést nem talált (TISZTA). A számokat pontos könyvegyezéssel (`\tapi_termeles/high/Peld\t`, `cimke=peld`, `^Péld `, `Peld_k*.json`) és `lekerdez.py`-jal igazolta. A szkripteket (`egyesit.py --ellenoriz`) nem futtathatta; ezt az 1a szakasz saját futása igazolja. A saját CI-futásában HIBA szintű találat nincs (az E27 92 találata repószintű, a main-en is ugyanannyi).
+
+- **Versbeosztás:** a Károli 11:31 15–30. szava = TAHOT 12:1, a Károli 12:1, 12:14, 12:27 = TAHOT 12:2, 12:15, 12:28 (tartalmi összevetés a tükörfordítással); a TAHOT 12:1 8 tokenje `kezi`-ként a 11:31 er-soraiban, a Strong egyezik.
+- **Strong a TAHOT-ból:** 67 er-token mintavétele (1:1, 11:31, 12:1, 12:14, 12:27, 31:31) 67/67 egyezik.
+- **Régi arany:** a 16 `Pro.` hármas mind a várt Károli-szónál és Strongnál áll (16/16).
+- **Javítva az ellenőr tájékoztatója nyomán:** a brief `ir` mezőjében az `f22/versosszevonas.tsv` kétszer szerepelt; a duplikátum kikerült.
+- **Tájékoztató, nem javítva:** a `datasetek.tsv` szavak-sorai a kézi beolvasztásból csak a 4Móz 29:39-et nevezik meg (az Ézs és a Péld nincs benne); a SEMA 2.20 a teljes listát tartalmazza. A korábbi menetek óta így áll, külön tétel lehet.
