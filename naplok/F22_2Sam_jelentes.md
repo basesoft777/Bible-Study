@@ -1,6 +1,6 @@
 # F22_2Sam_jelentes.md — Károli–Strong párosítás: 2Sámuel (csak Sonnet, Message Batches API)
 
-*A számok szkriptkimenetből jönnek (`f22_statisztika.py --konyv 2Sám`, `egyesit.py --konyv 2Sám` és `--ellenoriz`, `f22_elemzes.py --konyv 2Sám`, a `f22/api_termeles/futasnaplo.tsv` és `batchek.tsv` 2Sám-sorainak összesítése (`futas = api_termeles/high/2Sam`, `cimke = 2sam`), a `f22/api_termeles/high/_munka/2Sam_k*.json` hibaüzenetei). Ág: `claude/peaceful-meitner-1vzy4m`, az Eszt-menet után; a main (`4435a17`, #265) az `aa7ff55` merge-dzsel bevonva (ütközés nélkül). Módszer: `prompt_v3` változatlanul, **Sonnet a Message Batches API-n, `effort=high`** (DT73 (a)), **a C (Gemini) kimarad** (DT-F22c), 10 verses kötegek.*
+*A számok szkriptkimenetből jönnek (`f22_statisztika.py --konyv 2Sám`, `egyesit.py --konyv 2Sám` és `--ellenoriz`, `f22_elemzes.py --konyv 2Sám`, a `f22/api_termeles/futasnaplo.tsv` és `batchek.tsv` 2Sám-sorainak összesítése (`futas = api_termeles/high/2Sam`, `cimke = 2sam`), a `f22/api_termeles/high/_munka/2Sam_k*.json` hibaüzenetei). Ág: `claude/peaceful-meitner-1vzy4m`, az Eszt-menet után; a main (`4435a17`, #265) az `53f57b9` merge-dzsel bevonva (ütközés nélkül). Módszer: `prompt_v3` változatlanul, **Sonnet a Message Batches API-n, `effort=high`** (DT73 (a)), **a C (Gemini) kimarad** (DT-F22c), 10 verses kötegek.*
 
 *Sorrend: a BDB-haszon mérése (`naplok/F22_konyvsorrend_meres.py`, 2026.10.09, a Jób után) szerint a tiszta versbeosztású könyvek közül a 2Sám adja a legtöbbet a hátralévő sornak (577 előfordulás, 86 NINCS-szócikk). Indítás: felhasználó, chat, 2026.10.09: „mehet” (a 2Sámuel javaslatára).*
 
@@ -97,7 +97,7 @@ Eltérő Károli-token (két modell partnerhalmaza különbözik) összesen: 0; 
 
 ## 4. Kiegészítések ebben a menetben
 
-- A main bevonása (`aa7ff55`, #265), ütközés nélkül.
+- A main bevonása (`53f57b9`, #265), ütközés nélkül.
 - K9: a 2Sám bejegyezve az `adat/datasetek.tsv`-be (8 sor) és az `adat/SEMA.md` 2.20-ba (a 2Sám 23:16 a `kezi` példák között).
 - A brief fejléce: `kovetkezo`, `ir`, D28, v2.22.
 
@@ -109,3 +109,13 @@ Eltérő Károli-token (két modell partnerhalmaza különbözik) összesen: 0; 
 - A régi arany `Job.17.13` hármasa (`naplok/F22_Job_jelentes.md` 2.4): javasolt felvétel az `f21p/regi_arany_hibas.tsv`-be.
 - PR és merge a felhasználóé (az ág a Péld-, a Bír-, a Jób-, az Eszt- és a 2Sám-menetet hordozza).
 - A következő könyv a felhasználó döntése; a mérés (2026.10.09) szerinti tiszta jelöltek: 1Sám (524 / 86), 1Kir (509 / 99), Neh (479 / 96), 2Kir (413 / 87); a Dán (1644 / 312) előtt versbeosztás-döntés kell (37 detektorsor).
+
+## 6. Ellenőri kör (`naplok/ELLENOR_F22_2Sam.md`)
+
+Az ellenőr egy alacsony súlyú eltérést talált, adatot nem érint. A számokat pontos könyvegyezéssel (`\tapi_termeles/high/2Sam\t`, `cimke=2sam`, `^2Sám `, `2Sam_k*.json`) és `lekerdez.py`-jal igazolta; a merge pontosan a main változásait hozta. A PR valódi alapjával (`4435a17`) futtatott CI-ben HIBA nincs.
+
+- **Végleges kapuhiba:** a 2Sám 23:16 átnézési sora, 34 + 36 `fuggoben`/`kezi` tokenje és a k065 2. próbájának hibája igazolva; link nincs.
+- **Versbeosztás:** a detektorban és a kézi táblákban nincs 2Sám-sor; 695/695 kulcs; 1:1, 12:7, 24:25 tartalmilag egyezik.
+- **Strong a TAHOT-ból:** 71 er-token mintavétele egyezik; minden nem-`fuggoben` er-sor egyetlen H-Strongot visel. Régi arany 8/8 igazolva.
+- **Eltérés (M2, alacsony) — javítva:** a jelentés a main bevonását az `aa7ff55` commitnak tulajdonította; ez a merge üzenetének módosítása (`--amend`) előtti azonosító, a head-ben a merge `53f57b9` (azonos fa és szülők). A két hivatkozás ebben a commitban `53f57b9`-re javítva.
+- **Nem ellenőrizhető az ellenőrnek:** a BDB-mérés számai (a mérést az orkesztrátor futtatta, 2026.10.09) és az `egyesit.py --ellenoriz` (az 1a szakasz saját futása igazolja).
