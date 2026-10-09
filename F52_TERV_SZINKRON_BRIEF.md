@@ -6,7 +6,8 @@ tipus: feladat
 fazis: folyamat
 modell: sonnet
 munka: folyamat
-allapot: nem_indult
+allapot: fut
+ag: claude/f52-terv-szinkron-3
 ad: a tervdokumentumok (ATALAKITASI_TERV, ADATVAGYON_TERV, MUNKATERV, VIBE_GUIDE) hatályos állapotának átvezetése a repó döntéseire és státuszaira, és fordítva: a terv minden feladat-, lépcső- és döntés-eleme feladatban, briefben vagy DONTESEK-tételben (naplóban nem maradhat); ismétlődő
 kovetkezo: "ismétlődő; a brief 2. pontja szerinti eseményeknél indul (viszonyítási pont: a 2. futás, PR #219 mergelve 2026-10-06, DT49 alkalmazva; napló: naplok/F52_TERV_SZINKRON_naplo.md)"
 olvas: [ATALAKITASI_TERV.md.md, ADATVAGYON_TERV.md, MUNKATERV.md, VIBE_GUIDE.md, FELADATOK.md, DONTESEK.md, NYITOTT_FELADATOK.md, adat/SEMA.md, CLAUDE.md, MUNKAMENET.md]
