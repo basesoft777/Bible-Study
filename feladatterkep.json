@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-10-09",
-   "commit": "10ffd31"
+   "commit": "06d253b"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -62,7 +62,7 @@
   {
    "kulcs": "stop",
    "cimke": "Megállt, rád vár",
-   "db": 3
+   "db": 4
   },
   {
    "kulcs": "run",
@@ -72,7 +72,7 @@
   {
    "kulcs": "ready",
    "cimke": "Indítható most",
-   "db": 6
+   "db": 5
   },
   {
    "kulcs": "wait",
@@ -87,7 +87,7 @@
   {
    "kulcs": "dt",
    "cimke": "Nyitott döntés",
-   "db": 1
+   "db": 3
   }
  ],
  "sor": [
@@ -131,10 +131,6 @@
     {
      "szoveg": "#56 BDB_ADATBLOKK (kész)",
      "allapot": "kesz"
-    },
-    {
-     "szoveg": "SZPA_AUDIT",
-     "allapot": "plan"
     }
    ],
    "kapu": "DT-M1–M3 eldöntve (🟢); a #43 és a #44 kész; a #38 6. adagja a #56 adatblokkjával indul (DT-F38i 🟢)"
@@ -147,7 +143,7 @@
      "allapot": "wait"
     },
     {
-     "szoveg": "SQLITE_EPIT",
+     "szoveg": "#79 SQLITE_EPIT",
      "allapot": "idle"
     }
    ],
@@ -171,7 +167,7 @@
    "nev": "4. hullám",
    "elemek": [
     {
-     "szoveg": "OLVASOI_KONKORDANCIA (a #25a)",
+     "szoveg": "#76 OLVASOI_KONKORDANCIA (= #25a)",
      "allapot": "idle"
     }
    ],
@@ -181,15 +177,23 @@
    "nev": "Után",
    "elemek": [
     {
+     "szoveg": "#78 ✅",
+     "allapot": "kesz"
+    },
+    {
      "szoveg": "#23",
      "allapot": "stop"
     },
     {
-     "szoveg": "#9/#10",
+     "szoveg": "#9",
      "allapot": "wait"
     },
     {
      "szoveg": "#11",
+     "allapot": "idle"
+    },
+    {
+     "szoveg": "#10",
      "allapot": "idle"
     },
     {
@@ -447,9 +451,9 @@
    "kod": "TERV_SZINKRON",
    "cim": "TERV_SZINKRON — a tervdokumentumok átvezetése a repó állapotára",
    "fazis": "folyamat",
-   "allapot": "ready",
-   "brief_allapot": "nem_indult",
-   "most": "ismétlődő; a brief 2. pontja szerinti eseményeknél indul (viszonyítási pont: a 2. futás, PR #219 mergelve 2026-10-06, DT49 alkalmazva; napló: naplok/F52_TERV_SZINKRON_naplo.md)",
+   "allapot": "stop",
+   "brief_allapot": "dontesre_var",
+   "most": "Te: a 3. futás kész (2026-10-09, alap `1f420a7c`; zárás: naplok/F52_TERV_SZINKRON_3_zaras.md, ellenőr: naplok/ELLENOR_TERV_SZINKRON_3.md); DT90 (D23, OT-full) és DT91 (VIBE feltételes jelzés); ⛔ a SEMA 4 ↔ CLAUDE.md TAHOT-ellentmondás (a SEMA a #52 hatókörén kívül). Utána ismétlődő; a brief 2. pontja szerinti eseményeknél indul (viszonyítási pont: a 3. futás; napló: naplok/F52_TERV_SZINKRON_naplo.md)",
    "fugg": "—",
    "tervezett": false,
    "reszletes": "A három tervdokumentumot (ADATVAGYON_TERV, MUNKATERV, VIBE_GUIDE) a repó friss döntéseihez és státuszaihoz igazítja, csak az érintett szakaszokban. Az első futás kész; minden új döntés vagy lezárt hullám után újra fut.",
@@ -754,7 +758,7 @@
    "allapot": "plan",
    "brief_allapot": "tervezett",
    "most": "még nincs felvéve; a sorszámot a /befogad adja (MUNKATERV 4. szakasz)",
-   "fugg": "SQLITE_EPIT, #61, DT-M5",
+   "fugg": "#79 SQLITE_EPIT, #61, DT-M5",
    "tervezett": true,
    "reszletes": "Legfeljebb 8 csak olvasó eszköz, amellyel Claude közvetlenül lekérdezheti a projekt adatait, minden hívás naplózva és forrásjelölve.",
    "roviden": "Claude közvetlen, biztonságos hozzáférése a kutatási adatokhoz.",
@@ -805,7 +809,7 @@
    "TERV_BEFOGAD"
   ]
  },
- "terkep": "flowchart LR\n  classDef stop fill:#d93025,stroke:#8c1d18,color:#ffffff,stroke-width:2px\n  classDef run fill:#1e8e3e,stroke:#0d5226,color:#ffffff,stroke-width:2px\n  classDef ready fill:#1a73e8,stroke:#0b3d91,color:#ffffff,stroke-width:2px\n  classDef wait fill:#f9ab00,stroke:#a86f00,color:#2b1d00,stroke-width:2px\n  classDef plan fill:#8e44ad,stroke:#5b2470,color:#ffffff,stroke-width:2px,stroke-dasharray:6 3\n  classDef idle fill:#80868b,stroke:#4a4f54,color:#ffffff\n  classDef dt fill:#ff6d00,stroke:#a34500,color:#ffffff,stroke-width:2px\n\n  P_MCP_BUROK[\"MCP_BUROK\"]:::plan\n  P_SZPA_AUDIT[\"SZPA_AUDIT\"]:::plan\n  P_TERV_BEFOGAD[\"TERV_BEFOGAD\"]:::plan\n  T10[\"#10 LEXIKON_LEZARAS\"]:::idle\n  T11[\"#11 MIGRACIO\"]:::idle\n  T12[\"#12 TEREMT-002 3. lépés…\"]:::idle\n  T13[\"#13 1Móz 17-től a…\"]:::idle\n  T22[\"#22 Károli–Strong párosítás…\"]:::stop\n  T23[\"#23 MOTIVUM_FORRAS\"]:::stop\n  T25[\"#25 OLVASOI_HTML\"]:::idle\n  T27[\"#27 FP3\"]:::idle\n  T36[\"#36 LEXIKON_UJRAGEN\"]:::wait\n  T38[\"#38 BDB_FORDITAS\"]:::ready\n  T45[\"#45 MODELL_ELLENORZES\"]:::ready\n  T48[\"#48 KJV_REGI_KIVEZETES\"]:::wait\n  T50[\"#50 CI_JAVITO_KOR\"]:::ready\n  T52[\"#52 TERV_SZINKRON\"]:::ready\n  T54[\"#54 LXX_OS_LEFEDETTSEG\"]:::wait\n  T55[\"#55 ZSOLTAR_UJRAELLENORZES\"]:::stop\n  T59[\"#59 SZOSZEDET\"]:::ready\n  T60[\"#60 OLVASOI_PILOT\"]:::wait\n  T61[\"#61 LEKERDEZ_NAPLO\"]:::wait\n  T62[\"#62 STRONG_NORMALIZAL\"]:::ready\n  T63[\"#63 JELOLTEK_RETRO\"]:::wait\n  T65[\"#65 KAROLI_ELLENORZES\"]:::wait\n  T67[\"#67 BDB_JAVITAS_KAPU\"]:::idle\n  T69[\"#69 SEMA_DATASET_SZAM\"]:::idle\n  T7[\"#7 Thayer teljes magyar…\"]:::idle\n  T70[\"#70 SZOTAR_S26\"]:::wait\n  T74[\"#74 TANULMANY_JAVITAS_GEPI\"]:::idle\n  T75[\"#75 TANULMANY_JAVITAS\"]:::idle\n  T76[\"#76 OLVASOI_KONKORDANCIA\"]:::idle\n  T79[\"#79 SQLITE_EPIT\"]:::idle\n  T80[\"#80 BDB_KAROLI_POTLAS\"]:::idle\n  T81[\"#81 KAROLI_UJJLENYOMAT\"]:::idle\n  T9[\"#9 SZOTAR S2\"]:::wait\n  D_DT_F38i{{\"DT-F38i\"}}:::dt\n  D_DT_M1{{\"DT-M1\"}}:::dt\n  D_DT_M2{{\"DT-M2\"}}:::dt\n  D_DT_M3{{\"DT-M3\"}}:::dt\n  D_DT_M4{{\"DT-M4\"}}:::dt\n  D_DT_M5{{\"DT-M5\"}}:::dt\n  D_DT_M6{{\"DT-M6\"}}:::dt\n  D_DT_M7{{\"DT-M7\"}}:::dt\n  D_DT_M8{{\"DT-M8\"}}:::dt\n  D_DT2{{\"DT2\"}}:::dt\n  D_DT28{{\"DT28\"}}:::dt\n  D_DT52{{\"DT52\"}}:::dt\n  D_DT56{{\"DT56\"}}:::dt\n  D_DT57{{\"DT57\"}}:::dt\n  D_DT66{{\"DT66\"}}:::dt\n  D_DT71{{\"DT71\"}}:::dt\n  D_DT74{{\"DT74\"}}:::dt\n  D_DT75{{\"DT75\"}}:::dt\n  D_DT77{{\"DT77\"}}:::dt\n  D_DT78{{\"DT78\"}}:::dt\n  D_DT84{{\"DT84\"}}:::dt\n\n  P_MCP_BUROK --> D_DT_M3\n  P_MCP_BUROK --> D_DT_M5\n  P_MCP_BUROK --> D_DT_M7\n  P_MCP_BUROK --> T61\n  P_MCP_BUROK --> T79\n  P_SZPA_AUDIT --> D_DT77\n  P_TERV_BEFOGAD --> D_DT_M8\n  T10 --> D_DT2\n  T10 --> D_DT74\n  T10 --> T11\n  T10 --> T52\n  T10 --> T9\n  T11 --> D_DT74\n  T11 --> T23\n  T11 --> T52\n  T11 --> T9\n  T12 --> D_DT74\n  T12 --> T11\n  T13 --> T10\n  T22 --> D_DT56\n  T22 --> D_DT57\n  T22 --> D_DT71\n  T23 --> D_DT28\n  T23 --> D_DT66\n  T23 --> D_DT74\n  T23 --> D_DT84\n  T25 --> T11\n  T25 --> T12\n  T25 --> T23\n  T36 --> D_DT28\n  T36 --> D_DT74\n  T36 --> T38\n  T36 --> T52\n  T36 --> T80\n  T36 --> T9\n  T38 --> D_DT52\n  T38 --> D_DT56\n  T38 --> D_DT_F38i\n  T48 --> T22\n  T52 --> D_DT78\n  T54 --> T62\n  T55 --> D_DT74\n  T55 --> T54\n  T55 --> T63\n  T55 --> T65\n  T60 --> T80\n  T61 --> D_DT75\n  T61 --> T54\n  T61 --> T62\n  T62 --> D_DT75\n  T63 --> T62\n  T65 --> D_DT_M2\n  T65 --> T62\n  T65 --> T63\n  T67 --> T7\n  T67 --> T80\n  T67 --> T9\n  T70 --> D_DT74\n  T70 --> T55\n  T70 --> T9\n  T75 --> T74\n  T76 --> D_DT75\n  T76 --> D_DT_M1\n  T76 --> D_DT_M4\n  T76 --> D_DT_M6\n  T76 --> T79\n  T79 --> D_DT77\n  T79 --> T62\n  T80 --> T22\n  T80 --> T38\n  T81 --> T61\n  T81 --> T62\n  T81 --> T65\n  T9 --> D_DT28\n  T9 --> D_DT74\n  T9 --> T23\n  T9 --> T52\n  T9 --> T80",
+ "terkep": "flowchart LR\n  classDef stop fill:#d93025,stroke:#8c1d18,color:#ffffff,stroke-width:2px\n  classDef run fill:#1e8e3e,stroke:#0d5226,color:#ffffff,stroke-width:2px\n  classDef ready fill:#1a73e8,stroke:#0b3d91,color:#ffffff,stroke-width:2px\n  classDef wait fill:#f9ab00,stroke:#a86f00,color:#2b1d00,stroke-width:2px\n  classDef plan fill:#8e44ad,stroke:#5b2470,color:#ffffff,stroke-width:2px,stroke-dasharray:6 3\n  classDef idle fill:#80868b,stroke:#4a4f54,color:#ffffff\n  classDef dt fill:#ff6d00,stroke:#a34500,color:#ffffff,stroke-width:2px\n\n  P_MCP_BUROK[\"MCP_BUROK\"]:::plan\n  P_SZPA_AUDIT[\"SZPA_AUDIT\"]:::plan\n  P_TERV_BEFOGAD[\"TERV_BEFOGAD\"]:::plan\n  T10[\"#10 LEXIKON_LEZARAS\"]:::idle\n  T11[\"#11 MIGRACIO\"]:::idle\n  T12[\"#12 TEREMT-002 3. lépés…\"]:::idle\n  T13[\"#13 1Móz 17-től a…\"]:::idle\n  T22[\"#22 Károli–Strong párosítás…\"]:::stop\n  T23[\"#23 MOTIVUM_FORRAS\"]:::stop\n  T25[\"#25 OLVASOI_HTML\"]:::idle\n  T27[\"#27 FP3\"]:::idle\n  T36[\"#36 LEXIKON_UJRAGEN\"]:::wait\n  T38[\"#38 BDB_FORDITAS\"]:::ready\n  T45[\"#45 MODELL_ELLENORZES\"]:::ready\n  T48[\"#48 KJV_REGI_KIVEZETES\"]:::wait\n  T50[\"#50 CI_JAVITO_KOR\"]:::ready\n  T52[\"#52 TERV_SZINKRON\"]:::stop\n  T54[\"#54 LXX_OS_LEFEDETTSEG\"]:::wait\n  T55[\"#55 ZSOLTAR_UJRAELLENORZES\"]:::stop\n  T59[\"#59 SZOSZEDET\"]:::ready\n  T60[\"#60 OLVASOI_PILOT\"]:::wait\n  T61[\"#61 LEKERDEZ_NAPLO\"]:::wait\n  T62[\"#62 STRONG_NORMALIZAL\"]:::ready\n  T63[\"#63 JELOLTEK_RETRO\"]:::wait\n  T65[\"#65 KAROLI_ELLENORZES\"]:::wait\n  T67[\"#67 BDB_JAVITAS_KAPU\"]:::idle\n  T69[\"#69 SEMA_DATASET_SZAM\"]:::idle\n  T7[\"#7 Thayer teljes magyar…\"]:::idle\n  T70[\"#70 SZOTAR_S26\"]:::wait\n  T74[\"#74 TANULMANY_JAVITAS_GEPI\"]:::idle\n  T75[\"#75 TANULMANY_JAVITAS\"]:::idle\n  T76[\"#76 OLVASOI_KONKORDANCIA\"]:::idle\n  T79[\"#79 SQLITE_EPIT\"]:::idle\n  T80[\"#80 BDB_KAROLI_POTLAS\"]:::idle\n  T81[\"#81 KAROLI_UJJLENYOMAT\"]:::idle\n  T9[\"#9 SZOTAR S2\"]:::wait\n  D_DT_F38i{{\"DT-F38i\"}}:::dt\n  D_DT_M1{{\"DT-M1\"}}:::dt\n  D_DT_M2{{\"DT-M2\"}}:::dt\n  D_DT_M3{{\"DT-M3\"}}:::dt\n  D_DT_M4{{\"DT-M4\"}}:::dt\n  D_DT_M5{{\"DT-M5\"}}:::dt\n  D_DT_M6{{\"DT-M6\"}}:::dt\n  D_DT_M7{{\"DT-M7\"}}:::dt\n  D_DT_M8{{\"DT-M8\"}}:::dt\n  D_DT2{{\"DT2\"}}:::dt\n  D_DT28{{\"DT28\"}}:::dt\n  D_DT52{{\"DT52\"}}:::dt\n  D_DT56{{\"DT56\"}}:::dt\n  D_DT57{{\"DT57\"}}:::dt\n  D_DT66{{\"DT66\"}}:::dt\n  D_DT71{{\"DT71\"}}:::dt\n  D_DT74{{\"DT74\"}}:::dt\n  D_DT75{{\"DT75\"}}:::dt\n  D_DT77{{\"DT77\"}}:::dt\n  D_DT78{{\"DT78\"}}:::dt\n  D_DT84{{\"DT84\"}}:::dt\n  D_DT90{{\"DT90\"}}:::dt\n  D_DT91{{\"DT91\"}}:::dt\n\n  P_MCP_BUROK --> D_DT_M3\n  P_MCP_BUROK --> D_DT_M5\n  P_MCP_BUROK --> D_DT_M7\n  P_MCP_BUROK --> T61\n  P_MCP_BUROK --> T79\n  P_SZPA_AUDIT --> D_DT77\n  P_TERV_BEFOGAD --> D_DT_M8\n  T10 --> D_DT2\n  T10 --> D_DT74\n  T10 --> T11\n  T10 --> T52\n  T10 --> T9\n  T11 --> D_DT74\n  T11 --> T23\n  T11 --> T52\n  T11 --> T9\n  T12 --> D_DT74\n  T12 --> T11\n  T13 --> T10\n  T22 --> D_DT56\n  T22 --> D_DT57\n  T22 --> D_DT71\n  T23 --> D_DT28\n  T23 --> D_DT66\n  T23 --> D_DT74\n  T23 --> D_DT84\n  T25 --> T11\n  T25 --> T12\n  T25 --> T23\n  T36 --> D_DT28\n  T36 --> D_DT74\n  T36 --> T38\n  T36 --> T52\n  T36 --> T80\n  T36 --> T9\n  T38 --> D_DT52\n  T38 --> D_DT56\n  T38 --> D_DT_F38i\n  T48 --> T22\n  T52 --> D_DT78\n  T52 --> D_DT90\n  T52 --> D_DT91\n  T54 --> T62\n  T55 --> D_DT74\n  T55 --> T54\n  T55 --> T63\n  T55 --> T65\n  T60 --> T80\n  T61 --> D_DT75\n  T61 --> T54\n  T61 --> T62\n  T62 --> D_DT75\n  T63 --> T62\n  T65 --> D_DT_M2\n  T65 --> T62\n  T65 --> T63\n  T67 --> T7\n  T67 --> T80\n  T67 --> T9\n  T70 --> D_DT74\n  T70 --> T55\n  T70 --> T9\n  T75 --> T74\n  T76 --> D_DT75\n  T76 --> D_DT_M1\n  T76 --> D_DT_M4\n  T76 --> D_DT_M6\n  T76 --> T79\n  T79 --> D_DT77\n  T79 --> T62\n  T80 --> T22\n  T80 --> T38\n  T81 --> T61\n  T81 --> T62\n  T81 --> T65\n  T9 --> D_DT28\n  T9 --> D_DT74\n  T9 --> T23\n  T9 --> T52\n  T9 --> T80",
  "dontesek": {
   "nyitott": [
    {
@@ -817,6 +821,26 @@
      "🟡"
     ],
     "sor": 159
+   },
+   {
+    "id": "DT90",
+    "feladat": "#52 TERV_SZINKRON (3. futás, terv → feladat: ATALAKITASI D23 és N13)",
+    "kerdes": "A `TAHOT_kivonat.tsv` Jób 41-e pótolva (F84, DT86, N55); a `CLAUDE.md` „Adat-tár” szerint fejezet-szinten nincs hiány, a Jób 40:1–5 nem hiányzik, maradó korlát a Jób 40 MT-számozású kulcsa (a Károli-kulcs szerinti lekérdezés ott 5 verssel eltolt tartalmat ad). Az `ATALAKITASI_TERV.md.md` D23 („a `scope=OT-full` címke a lefedettség felmérése után sem adható ki”) indoka — a Jób 40:1-5 / Jób 41 hiánya — megszűnt; az N13 szerint a tiltás ilyenkor „újratárgyalható”. Kiadható-e az `OT-full` scope-címke? *(forrás: `naplok/F52_TERV_SZINKRON_naplo.md` 3. futás, 3.3/1.; a `lekerdez.py` ma `TAHOT-teljes`-t ír)*",
+    "allapot": "nyitott",
+    "jelek": [
+     "🟡"
+    ],
+    "sor": 165
+   },
+   {
+    "id": "DT91",
+    "feladat": "#52 TERV_SZINKRON (3. futás, VIBE_GUIDE 5. szakasz)",
+    "kerdes": "A `VIBE_GUIDE.md` 5. szakasza az MCP_BUROK és a SZPA_AUDIT sort feltétel nélkül, a „kilenc tervezett feladat” részeként vezeti; a DT-M7 (MCP_BUROK) és a DT77 (13) (SZPA_AUDIT) szerint mindkettő feltételes. A brief 6. pontja a VIBE 5. szakaszát csak a sorszámok és nevek cseréjéig engedi (a DT49 egy konkrét sor átírását engedélyezte). Kerüljön-e a két sorba „feltételes” jelzés? *(forrás: `naplok/F52_TERV_SZINKRON_naplo.md` 3. futás, 3.3/2.)*",
+    "allapot": "nyitott",
+    "jelek": [
+     "🟡"
+    ],
+    "sor": 166
    }
   ],
   "alkalmazasra_var": [

@@ -1,6 +1,7 @@
 # PaRDeS rendszer — átalakítási terv
 
-**Verzió:** v10 — 2026.10.08
+**Verzió:** v11 — 2026.10.09
+**v11 (v10-hez képest):** #52 TERV_SZINKRON 3. futás (viszonyítási pont: a 2. futás, `7dd0183`; napló: `naplok/F52_TERV_SZINKRON_naplo.md` 3. futás): a 13.3 és a 13.4 a #78 lezárására (PR #254, #256; DT80–DT83) és a #23 M1-re (PR #258; DT84 🟡) igazítva, a 13.3 üres-blokk állapotai a DT80/DT82 szerint; a 4.7 jelölés #22-listája a mai állapotra (DT57); az N13 lezárva (N55, F84, DT86), a D23 újratárgyalása DT-F52h-ra vár
 **v10 (v9-hez képest):** TERV-INTEGRÁCIÓ (DT74–g): új 13. szakasz „Állapot és kiegészítések” — az F0–F7 lezárva, a D34 (B út) és a DT28, a szerepmátrix-migráció (a lexikonoldal szótári szakasza a `szotar_szerepek.tsv` szerint), mutató a kiegészítő tervekre (`ADATVAGYON_TERV.md`, `MUNKATERV.md`) és a feladatokra; elavultnak jelölve: 2. hookok, 4.3 KJV/ASV-sor, 10. D16, D19, N3, N4, N10, N11; a terv a #52 TERV_SZINKRON hatókörébe kerül
 **v9 (v8-hoz képest):** D25 — az igazolás ténye önálló `igazolas` mezőbe kerül a proveniencia-string helyett; `adat/SEMA.md` 1.8 és az `eszkozok/igazolas_migracio.py` ezt végrehajtja
 **v8 (v7-hez képest):** N12 lezárva → D24 (a `karoli_szo` minden jelöltnél megnézendő, de csak a beépített sorokon őrzendő meg); ez rögzíti az F3.4 hatókörét is
@@ -12,7 +13,7 @@
 **v3 (v2-höz képest):** a motívum-darabszám mérés alapján javítva — a korábbi „27 hátralévő" ID-említések számlálásából eredt; valós érték 14 ID, ebből 7 lezárt és ~6 küszöbön túli, feldolgozásra váró. A 8.5, 8.6 és a kiváltó ok ennek megfelelően átszámolva.
 **Tárgy:** `basesoft777/Bible-Study` — a kereszthivatkozás-rendszer köré szervezett teljes munkafolyamat újratervezése
 **Kiváltó ok:** a jelenlegi munkamenet-költség mellett a motívum-állomány nem dolgozható fel ésszerű idő alatt
-**Státusz:** az F0–F7 lefutott (2026.09); a terv a projekt alapja, a kiegészítései az `ADATVAGYON_TERV.md` és a `MUNKATERV.md` — az érvényes állapot a 13. szakaszban (v10, 2026.10.08)
+**Státusz:** az F0–F7 lefutott (2026.09); a terv a projekt alapja, a kiegészítései az `ADATVAGYON_TERV.md` és a `MUNKATERV.md` — az érvényes állapot a 13. szakaszban (v11, 2026.10.09)
 
 ---
 
@@ -300,7 +301,7 @@ Hookként minden íráskor lefut. Ma ezt ember veszi észre, hetekkel később �
 
 ### 4.7 Károli-Strong join — melléktermék, de nem felejthető
 
-> **Elavult (DT-M8 (b), #52 TERV\_SZINKRON, 2026-10-06):** a „teljes strongozás nem cél” és a tartalom-alapú, kumulatív join elve a #22 (F22) óta nem érvényes: a #22 könyvenként szó-szintű, gépi Károli–Strong párosítást ad (`szó-szintű-gépi`, DT-M2; 1–5Móz és Józs kész). A `karoli_szo` a `jeloltek.tsv` minősítési sorában marad; az alábbi szöveg történeti. Forrás: `ADATVAGYON_TERV.md` 18.1.
+> **Elavult (DT-M8 (b), #52 TERV\_SZINKRON, 2026-10-06):** a „teljes strongozás nem cél” és a tartalom-alapú, kumulatív join elve a #22 (F22) óta nem érvényes: a #22 könyvenként szó-szintű, gépi Károli–Strong párosítást ad (`szó-szintű-gépi`, DT-M2; kész: 1–5Móz, Józs, Zsolt, Ézs, Jer, 1–2Krón, Ezsd, Ez; hátra a Jób és a Péld, DT57 — #52 3. futás). A `karoli_szo` a `jeloltek.tsv` minősítési sorában marad; az alábbi szöveg történeti. Forrás: `ADATVAGYON_TERV.md` 18.1.
 
 **Az elv változatlan: kumulatív, tanulmányvezérelt.** A join-tábla nem külön projekt, hanem a tanulmány-készítés mellékterméke; minden tanulmány annyit ad hozzá, amennyire ténylegesen szüksége van, és a következő tanulmány számára ez grepelhető, nem újragenerálandó. A Károli 31 ezer versének teljes strongozása **nem cél**.
 
@@ -841,7 +842,7 @@ A bővített szakasz azért olcsóbb a tematikusnál, mert ott nincs teljes ÓSZ
 | A generálás elnyeli egy meglévő fájl kézi finomságait | F4 elfogadási teszt: a diff csak formázási lehet. Tartalmi eltérés vizsgálandó, nem elfedendő. |
 | A migráció alatt a repó inkonzisztens | F0 előbb; a generátorok csak akkor kapcsolnak be, ha a betöltés validált. Addig a próza a forrás. |
 | A séma merevsége eltünteti az árnyalatot | A `motivumok/[ID].md` kézi fájl marad; a séma az igehely-halmazt kényszeríti ki, a megfogalmazást nem. |
-| **A `TAHOT_kivonat.tsv` lefedettségi rése** — a döntési fájl 8. szakasza nyitott tételként rögzíti, hogy a README „39 könyv, teljes ÓSZ"-t állít, de ez nem igazolt | **Felmérve: F2.0, 2026.09.13** (`eszkozok/tahot_lefedettseg_ellenoriz.py`). A felmérés nem a teljességet igazolta, hanem áthelyezte a hiányt: a korábban feltételezett hiányok (1Móz 32, Zsolt 88/89/140/142, Jóel 3) **valójában megvannak**, viszont van egy addig dokumentálatlan rés — **Jób 40:1-5 és a teljes Jób 41. fejezet**. A `scope=OT-full` proveniencia-címke ezért **továbbra sem adható ki** — marad a `scope=TAHOT-teljes` (azaz: a kivonat egészére, nem az Ószövetség egészére). Ez visszamenőleg a lezárt tanulmányok „teljes ÓSZ-scan" állításait is érinti, és az **F3.0** előfeltétel-ellenőrzés tárgya. A hiány forrásbeli oka nyitva (N13). |
+| **A `TAHOT_kivonat.tsv` lefedettségi rése** — a döntési fájl 8. szakasza nyitott tételként rögzíti, hogy a README „39 könyv, teljes ÓSZ"-t állít, de ez nem igazolt | **Felmérve: F2.0, 2026.09.13** (`eszkozok/tahot_lefedettseg_ellenoriz.py`). A felmérés nem a teljességet igazolta, hanem áthelyezte a hiányt: a korábban feltételezett hiányok (1Móz 32, Zsolt 88/89/140/142, Jóel 3) **valójában megvannak**, viszont van egy addig dokumentálatlan rés — **Jób 40:1-5 és a teljes Jób 41. fejezet** *(elavult, F84, DT86, N55, 2026-10-09: a Jób 41 332 sora pótolva, a Jób 40:1–5 nem hiányzik; maradó korlát: a Jób 40 kulcsai MT-számozásúak, TAHOT 40:(n+5) = Károli 40:n)*. A `scope=OT-full` proveniencia-címke ezért **továbbra sem adható ki** — marad a `scope=TAHOT-teljes` (azaz: a kivonat egészére, nem az Ószövetség egészére). Ez visszamenőleg a lezárt tanulmányok „teljes ÓSZ-scan" állításait is érinti, és az **F3.0** előfeltétel-ellenőrzés tárgya. A hiány forrásbeli oka nyitva (N13). |
 | A `tanito-kereso` subagent gyenge anyaggal tölti ki a hiányt, mert „hoznia kell valamit" | A rendszerpromptja kimondja, hogy az üres eredmény elfogadható kimenet (4.4/1) |
 | A fő menet kontextus-tömörítése elnyeli, hogy melyik jelöltet miért utasítottuk el | A döntés a `jeloltek.tsv`-be íródik — amit leír, azt nem tömörítheti el semmi. (Megjegyzés: az opus-ág 272 soros naplója azt mutatja, hogy ez a kockázat a gyakorlatban kezelhető.) |
 | Egy fázis nem azon a modellen fut, amin szántuk | `/status` ellenőrzés, illetve `availableModels` korlátozás a `.claude/settings.json`-ban |
@@ -879,7 +880,7 @@ A bővített szakasz azért olcsóbb a tematikusnál, mert ott nincs teljes ÓSZ
 | D22 | Az F3 öt nevesített lépésre bomlik (F3.0-F3.4); F3.0-F3.3 Sonneten, F3.4 saját menetben Opuson | a D11 fázis-szintű modellszabálya és a 4.7 join gépesíthetetlensége csak így egyeztethető össze — váltás helyett menethatár |
 | D24 | A `karoli_szo` **minden** jelöltnél megnézendő (az ítélethez kell), de csak a beépített sorokon őrzendő meg: kötelező az `elofordulasok.tsv`-ben, opcionális a `jeloltek.tsv` elutasított/nyitva sorain | a `Join_tabla_folyamat_magyarazat.md` 2. szakasza két külön lépésről szól — a 3. („MINDEN egyes találatnál") az ítélethozatal, az 5. („a megerősített találatok") a rögzítés; a 4.7 ezt megerősíti (*„a Károli-szöveget is megnézi, mert a tartalmi ítélethez kell"*). N12 ezzel lezárva |
 | D25 | Az igazolás ténye önálló `igazolas` mezőbe kerül, nem a proveniencia-stringbe; a `proveniencia` kulcsai kizárólag `scope`, `forras`, `ts` | egy mező két tényt hordozott (honnan származik az állítás / megerősítette-e lekérdezés). A `manual` gyengítése a rendszer legélesebb szabályát puhította volna; új `scope`-érték pedig az igazolás tényét írta volna a hatókör mezőjébe. A szétválasztás mindkettőt elkerüli, és a 3.3 kényszer érintetlen marad |
-| D23 | A `scope=OT-full` címke a lefedettség felmérése **után sem** adható ki | az F2.0 felmérés hiányt talált (Jób 40:1-5, Jób 41), nem teljességet igazolt; a korlát oka megváltozott, a korlát maga nem |
+| D23 | A `scope=OT-full` címke a lefedettség felmérése **után sem** adható ki | az F2.0 felmérés hiányt talált (Jób 40:1-5, Jób 41), nem teljességet igazolt; a korlát oka megváltozott, a korlát maga nem **— a korlát oka megszűnt (F84, DT86, N55): újratárgyalás DT90** |
 
 ### Nyitva hagyott kérdések — felhasználói döntést igényelnek
 
@@ -897,7 +898,7 @@ A bővített szakasz azért olcsóbb a tematikusnál, mert ott nincs teljes ÓSZ
 | N10 | Épüljön-e MCP-szerver a `lekerdez.py` köré? (11.7) | csak akkor, ha a chat-felületről is használni akarod **— elavult (v10): DT-M7 — az MCP-szerver feltételes, előbb a #61** |
 | N11 | A CC BY-SA 4.0 (SDBH) hatása a lexikon publikálására (11.5) | a származékos adat is ugyanilyen licenc alá esik — érinti a 3.10-es szerzői jogi tételt **— elavult (v10): DT7, DT-F33j, N-F33b — a ShareAlike a kiadás licenc-szűrőjében** |
 | ~~N12~~ | **LEZÁRVA 2026.09.14 → D24.** A kérdés rosszul volt feltéve: a két dokumentum nem mond ellent egymásnak, mert a „minden" az ítélethozatalra vonatkozik, a „csak a megerősített" a rögzítésre. | — |
-| N13 | Mi a `TAHOT_kivonat.tsv` Jób 40:1-5 / Jób 41 hiányának forrásbeli oka? **Erős nyom a döntési changelogban (v36, 2026.08.31):** ott szerepel a „Jób 38:39-41+39+40:1-5 összevonva Károli 39. fejezetté" fejezethatár-javítás, és a szétbontott összeolvadt versek közt a „Jób 41:25" — tehát Jób 41 létezik a Károli-kulcson. Ez a héber↔angol számozási eltérés képe (héber 40:25-32 = angol 41:1-8). **Ellenőrizendő, nem kimondandó.** | ha számozási eltolódás, a hiány látszólagos: a `scope=OT-full` tiltás (D23) újratárgyalható, és az F3.0 olcsóbb. Ha viszont tényleges kivonatolási hiba, más könyvekben is lehet — akkor a felmérést verselemi szinten, a `Konyv_normalizalo_tabla.tsv` mindkét irányában meg kell ismételni |
+| N13 | Mi a `TAHOT_kivonat.tsv` Jób 40:1-5 / Jób 41 hiányának forrásbeli oka? **Erős nyom a döntési changelogban (v36, 2026.08.31):** ott szerepel a „Jób 38:39-41+39+40:1-5 összevonva Károli 39. fejezetté" fejezethatár-javítás, és a szétbontott összeolvadt versek közt a „Jób 41:25" — tehát Jób 41 létezik a Károli-kulcson. Ez a héber↔angol számozási eltérés képe (héber 40:25-32 = angol 41:1-8). **Ellenőrizendő, nem kimondandó.** **— lezárva (N55, F84, DT86): a hiány oka a kulcsgenerátor hibás Károli-versszám-felülbírálása volt, a Jób 41 332 sora pótolva; a `scope=OT-full` tiltás újratárgyalása: DT90** | ha számozási eltolódás, a hiány látszólagos: a `scope=OT-full` tiltás (D23) újratárgyalható, és az F3.0 olcsóbb. Ha viszont tényleges kivonatolási hiba, más könyvekben is lehet — akkor a felmérést verselemi szinten, a `Konyv_normalizalo_tabla.tsv` mindkét irányában meg kell ismételni |
 
 ---
 
@@ -984,7 +985,7 @@ A második előny a projekt hibatörténete miatt súlyos: **a proveniencia prot
 
 ---
 
-## 13. Állapot és kiegészítések (v10, 2026.10.08)
+## 13. Állapot és kiegészítések (v11, 2026.10.09)
 
 *A TERV-INTEGRÁCIÓ menet (DT74–g; `naplok/TERV_INTEGRACIO_leltar.md`, `naplok/TERV_INTEGRACIO_dontesi_lista.md`) szakasza. A terv ettől kezdve a #52 TERV_SZINKRON hatókörébe tartozik (DT78 (20)), és a terv → feladat irányt kemény zár őrzi (DT78 (19)).*
 
@@ -992,7 +993,7 @@ A második előny a projekt hibatörténete miatt súlyos: **a proveniencia prot
 
 **13.2 Kiegészítő tervek (nem fork).** Az `ADATVAGYON_TERV.md` (adatvagyon, olvasói konkordancia, lépcsők: 21.; SEMA-illesztés: 22.) és a `MUNKATERV.md` (feladatlista, hullámok) erre a tervre épül; ahol az alaptervet kiegészítik, az itt áll, ahol felülírják, a tételnél „Elavult (v10)” jelölés.
 
-**13.3 Szerepmátrix-migráció.** Az 1.C lexikonoldal 2. szakasza (szótári háttér) nem Strong → forrás sorrendben, hanem a szótári szerepmátrix (`adat/szotar_szerepek.tsv`, SEMA 2.13; ADATVAGYON_TERV 18.5) szerint renderel: szerepenként, a mátrix sorrendjében; az `allapot` vezérli a blokkot (`adatosítva` → blokk; `nincs adatosítva` / `javaslat` → üres, jelölt blokk; `nincs forrás` → nincs blokk). Ugyanez a mátrix az olvasói szó-lap sémája (#76). A 13. (Károli-megfelelők + SZPA) és a 14. szerep (rejtett/hamis párhuzam) `javaslat` állapotú (DT-M4, DT76 (9)). Az ok: a #64 mérése szerint az ISTENTISZT-001 aranyminta szótári része nem a mátrix szerint épül (`naplok/TEREMT002_PROZA_PROBA_meres.md` 7.). Sorrend: #78 (váz, adat nélkül) → #23 M1 → #9 (adatosítás a 8 motívum Strongjaira) → #11 → #10 (mérce: L1–L7 + DT2 + a váz; DT68 (2)).
+**13.3 Szerepmátrix-migráció.** Az 1.C lexikonoldal 2. szakasza (szótári háttér) nem Strong → forrás sorrendben, hanem a szótári szerepmátrix (`adat/szotar_szerepek.tsv`, SEMA 2.13; ADATVAGYON_TERV 18.5) szerint renderel: szerepenként, a mátrix sorrendjében; az `allapot` vezérli a blokkot (`adatosítva` → blokk; `nincs forrás` → nincs blokk; az üres blokk gépi jelölője `<!-- ÜRES-BLOKK: szerep | állapot -->` + látható zárójeles sor (DT80, B változat), és csak a `nincs adatosítva` / `javaslat` állapotú szerepnél jelenik meg; az `adatosítva` szerepnél hivatkozás kell (S4), nem üres blokk (DT80); az 5., 6. és 7. szerep hivatkozás a 2/b-re és a 3. szakaszra (DT81 (1)), a 7. szerep (SECE) „l. 2/b” (DT82 (c)); az `adatosítva` szerep, amelyhez a `lexikon_hivatkozasok.tsv`-ben nincs bekötött sor, harmadik állapota „adatosítva, nincs bekötve”, mutatóval a #9-re (DT82 (a)); a héber 1. szerepnél (TBESH marad a forrás, `adatosítva`) a H7121 jelölt üres blokk, mutatója a BDB 2.c (DT-F42a), a H8034 „adatosítva, nincs bekötve”, mutatója a #9 (DT83); token nélküli nyelvnél egy mondat marad és a gépi jelölő `<!-- ÜRES-NYELV: <nyelv> | nincs Strong-token -->` (DT82 (b)); a TWOT-, domén- és kiejtés-sor a saját szerepe alá költözik (3., 4., 10.; DT81)). Ugyanez a mátrix az olvasói szó-lap sémája (#76). A 13. (Károli-megfelelők + SZPA) és a 14. szerep (rejtett/hamis párhuzam) `javaslat` állapotú (DT-M4, DT76 (9)). Az ok: a #64 mérése szerint az ISTENTISZT-001 aranyminta szótári része nem a mátrix szerint épül (`naplok/TEREMT002_PROZA_PROBA_meres.md` 7.). Sorrend: #78 (váz, adat nélkül; ✅, PR #254, #256) → #23 M1 (kész, PR #258; DT84 🟡 a felhasználóra vár) → #9 (adatosítás a 8 motívum Strongjaira) → #11 → #10 (mérce: L1–L7 + DT2 + a váz; DT68 (2)).
 
 **13.4 Feladat-mutató** (a terv és a kiegészítései feladatként megnevezett elemei). Gépi őr (#82): a tábla jelölőpár közé esik (`<!-- TERVELEM-MUTATO oszlop=feladat -->` … `<!-- /TERVELEM-MUTATO -->`, a jelölő külön sorban); az `oszlop=` attribútum nevezi meg a vizsgált fejléc-cellá(ka)t (vesszővel több, alapérték `feladat`). A `python eszkozok/feladatok.py ellenoriz` (CI E18) HIBÁT ad, ha egy sor vizsgált cellája nem tartalmaz létező feladatszámot (`#nn`), brief-`kod`-ot, létező DT-/D-tételt, vagy `elavult` / `feltételes` / `lezárva` jelölést; a jelölőpáron kívüli szöveget az őr nem olvassa. Új tervelem tehát csak sorral együtt vehető fel, a sor pedig feladatra vagy jelölésre mutat:
 
@@ -1000,9 +1001,9 @@ A második előny a projekt hibatörténete miatt súlyos: **a proveniencia prot
 
 | terv-elem | feladat | állapot |
 | --- | --- | --- |
-| szerepmátrix-váz (13.3) | #78 SZEREPMATRIX_VAZ | csonk |
-| forrássablon, mélységi szintek (D34) | #23 MOTIVUM_FORRAS | M1 a #78 után |
-| szótári adatréteg a lexikonoldalon | #9 SZOTAR S2 | a #78 után |
+| szerepmátrix-váz (13.3) | #78 SZEREPMATRIX_VAZ | lezárva (PR #254, #256; DT80–DT83) |
+| forrássablon, mélységi szintek (D34) | #23 MOTIVUM_FORRAS | M0 és M1 kész (PR #243, #258); döntésre vár: DT84 🟡 |
+| szótári adatréteg a lexikonoldalon | #9 SZOTAR S2 | a #23 után (a #78 kész) |
 | egy forrásból renderelés; arany-készlet (11.4) | #11 MIGRACIO | csonk |
 | lexikonoldalak lezárása | #10 LEXIKON_LEZARAS | csonk |
 | publikálási forma (11.5) | #76 (#25a) OLVASOI_KONKORDANCIA, #25 (#25b) | csonk |
