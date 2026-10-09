@@ -5,10 +5,10 @@ kod: TAHOT_JOB41
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: megallt
+allapot: fut
 ag: claude/f84-tahot-job41
 ad: "A TAHOT_kivonat.tsv-ben a Károli Jób 41:1–34 héber sorai Károli-kulccsal; a #22 a Jóbot egy menetben futtathatja; a CLAUDE.md TAHOT-korlát mondata a mért állapotot írja"
-kovetkezo: "Te: ⛔ 1 — (a) a 332 nyitott sor törlése vagy ATVEVE_F84 státusz, (b) a Jób 41:25 kezelése (a szúrópróba nem mutat eltérést; javaslat: törlés, és a vers jelölés nélkül bekerül). Részletek és javaslat: naplok/F84_jelentes.md; döntéstétel: DT-F84a (DONTESEK.md). Utána F84.2. A #22 következő menete előtt fusson (FUGGES 22→84: TAHOT_kivonat.tsv)."
+kovetkezo: "F84.2 kész (332 sor beszúrva, 332 törölve; DT-F84a (a) 1, (b) 1). Hátra: F84.3 (generátor-indoklás, CLAUDE.md, README, NYITOTT_FELADATOK), majd a zárás (F84.4, ellenőr, PR) az orkesztrátorral. A #22 következő menete előtt fusson (FUGGES 22→84: TAHOT_kivonat.tsv)."
 fugg: [83]
 olvas: [konkordancia/TAHOT_kivonat_nyitott_esetek.tsv, konkordancia/Macula_heber_Job.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, naplok/F83_Job_versbeosztas_jelentes.md, eszkozok/tahot_lefedettseg_ellenoriz.py]
 ir: [konkordancia/TAHOT_kivonat.tsv, konkordancia/TAHOT_kivonat_nyitott_esetek.tsv, eszkozok/tahot_karoli_kulcs_generalas.py, eszkozok/tahot_job41_potlas.py, CLAUDE.md, NYITOTT_FELADATOK.md, konkordancia/TAHOT_TAGNT_README.md]

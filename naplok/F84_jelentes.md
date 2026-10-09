@@ -74,3 +74,19 @@ A `TAHOT_kivonat.tsv` Jób 40 sorai folytonosak: fájlsor **288 901–289 098** 
 *A végrehajtó javaslata: 1.* Indok: a mérés szerint a Strong-halmaz egyezik az MT 41:17-tel (Jaccard 0,83, az egyetlen különbség a H4480 elöljáró), a Károli-szöveg tartalmilag egyezik a 8 TAHOT-sorral, és az „összeolvadt vers” anomália a `Karoli_adatminosegi_anomaliak.tsv` szerint már javítva van (10 versre bontva), a `Karoli_1908.tsv` a javított állapotot tartalmazza. A kihagyás (2.) lyukat hagyna a 34 versnyi fejezetben és gyengítené a #22 Jób-futását; a `javaslat` jelölés (3.) olyan eltérést jelezne, amelyet a mérés nem talált.
 
 Döntéstétel: `DONTESEK.md` DT-F84a.
+
+
+---
+
+## ⛔ 1 — a felhasználó döntése (2026-10-09) és F84.2 végrehajtása
+
+DT-F84a: **(a) 1** — a 332 sor törlődik a nyitott fájlból (a fejléc marad); **(b) 1** — a Jób 41:25 jelölés nélkül bekerül. A 2. szakasz megjegyzése: a K 41:19–21 és 41:25 egyetlen H4480-különbsége a TAHOT előtag-kezelése (a מִן H9xxx-előtagként áll), nem megfeleltetési hiba.
+
+### F84.2 — pótlás
+
+`scope=Jób 41:1-34 átvétele a nyitott esetekből a fő kivonatba; előtte/utána sorszám, bájtazonosság, lefedettség, H3882-scan | forras=eszkozok/tahot_job41_potlas.py --ir, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAHOT_kivonat_nyitott_esetek.tsv | ts=2026-10-09T06:18:00Z`
+
+- **Beszúrt sorok: 332** a `TAHOT_kivonat.tsv`-be, a 289 098. fájlsor (`Jób 40:24`) után, a `Jób 42:1` elé; a fő kivonat 468 968 → 469 300 adatsor. **Törölt sorok: 332** a nyitott fájlból (csak a fejléc marad).
+- Írás előtti őrök (a szkript leáll, ha bármelyik sérül): a fő kivonat meglévő sorai bájtazonosak (`git diff --numstat`: fő kivonat +332 / −0, nyitott fájl +0 / −332); a sorvég mindkét fájlban LF (a szkript CR-t elutasít, megőrzi); a nyitott fájl 332 sora mind `Job.41.n` (n = 1–34, növekvő, teljes) és `ADATMINOSEGI_GYANU`; a fő kivonatban előtte 0 Jób 41-sor volt.
+- `python eszkozok/tahot_lefedettseg_ellenoriz.py`: „Fejezet-szinten nincs hiány”, hiányzó fejezet 0 (ts=2026-10-09T06:18:00Z).
+- `python eszkozok/lekerdez.py scan H3882 --szakasz "Jób 41:1-41:34"`: **1 igehely, 1 szó-előfordulás (Jób 41:1)**; `proveniencia: scope=range:Jób 41:1-41:34 | forras=TAHOT_kivonat.tsv | strong=H3882 | n=1 | ts=2026-10-09T06:18Z`.
