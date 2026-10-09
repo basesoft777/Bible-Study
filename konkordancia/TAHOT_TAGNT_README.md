@@ -238,10 +238,10 @@ ellenőriztük, mindegyik pontosan egyezik a várttal):
 | 1Sám 20/21 | ELSŐDLEGES + 1 egyedi kivétel | Károli 1Sám 20:43 önálló versként tartalmazza a héber 21:1 szövegét. |
 | 1Sám 23/24 | MÁSODLAGOS | Károli 1Sám 23 = 28 vers, 24 = 23 vers (a héber szerint). |
 | Ezékiel 20/21 | **ADATMINŐSÉGI_GYANÚ** | Károli Ez 20:44 összeolvadt/túlhosszú vers (a héber 21:1–5 "erdőtűz"-oráció szövege belefolyt a vers végébe), a numerikus fejezethossz-egyezés (MÁSODLAGOS: 44/37) félrevezető lenne — korábbi audit (Ez 20:44) által is dokumentált anomália. |
-| Jób 40/41 | **ADATMINŐSÉGI_GYANÚ** | Sem az elsődleges (24/34), sem a másodlagos (32/26) fejezethossz nem egyezik a Károli tényleges 28/25 hosszal — korábbi audit szerint Jób 41:25 is összeolvadt vers. |
+| Jób 40/41 | ~~ADATMINŐSÉGI_GYANÚ~~ → **átvéve (F84, 2026.10.09)** | A gyanú-jelölés hibás Károli-versszámokon (40 = 28, 41 = 25) alapult; a mért szám 40 = 19, 41 = 34, az elsődleges (angol) 41. fejezet (34 vers) egyezik a Károlival, a Jób 41:25 összeolvadása pedig már javított (`Karoli_adatminosegi_anomaliak.tsv`). A 332 sor a `TAHOT_kivonat.tsv`-ben van, `Jób 41:1–34` kulccsal (`eszkozok/tahot_job41_potlas.py`, `naplok/F84_jelentes.md`). |
 
 Az `ADATMINŐSÉGI_GYANÚ` alá eső sorok (Ez 20:45–49(21.1–5) és Jób 40:25–41.34(41.1–26)
-zárójeles tartománya, összesen 1068 szó-sor) a `TAHOT_kivonat_nyitott_esetek.tsv`-be
+zárójeles tartománya, összesen 1068 szó-sor; **a Jób 40:25–41:26 332 sorát az F84 átvette a fő kivonatba, a nyitott fájl ma üres, csak a fejléc áll benne**) a `TAHOT_kivonat_nyitott_esetek.tsv`-be
 kerültek, `Státusz`/`Indoklás` oszloppal, tényleges javítás nélkül — ez összhangban van
 azzal, hogy a Károli-adatminőségi audit (`Karoli_adatminosegi_anomaliak.tsv`) külön,
 nem e feladat része.
@@ -305,8 +305,8 @@ eredeti kivétel + 21 újonnan konvertált). Ez helyes és várt eredmény, nem 
 
 | Fájl | Nyers sorok (STEPBible) | Generált sorok | Fájlméret |
 |---|---|---|---|
-| TAHOT_kivonat.tsv | 283 734 (+ 21 918 korábban eldobott zárójeles sor) | 468 232 | ~26 MB |
-| TAHOT_kivonat_nyitott_esetek.tsv | — | 1 068 | ~0,1 MB |
+| TAHOT_kivonat.tsv | 283 734 (+ 21 918 korábban eldobott zárójeles sor) | 469 300 (F84, 2026.10.09: + Jób 41, 332 sor; `scope=teljes fájl, wc -l − fejléc`) | ~26 MB |
+| TAHOT_kivonat_nyitott_esetek.tsv | — | 0 (csak fejléc; F84, 2026.10.09: a Jób 40:25–41:26 332 sora átkerült a fő kivonatba, az Ez 20:45–49 sorai korábban kikerültek; `scope=teljes fájl`) | <0,01 MB |
 | TAGNT_kivonat.tsv | 141 746 | 141 746 | ~13 MB |
 
 Mindkét fő fájl jóval a GitHub 100 MB-os fájlméret-korlátja alatt van, könyvenkénti
@@ -320,12 +320,7 @@ Jóel 3); TAGNT — 27 újszövetségi könyv, 7 948 egyedi igehely.
 a korábban (`NYITOTT_FELADATOK.md`) nyitva hagyott hiány — Gen 32, Zsolt 88/89/140/142,
 Jóel 3 — **nem áll fenn**: mind a hat fejezet teljes egészében jelen van a kivonatban,
 ezt a fenti bekezdés már dokumentálta. Az újbóli, mind a 39 könyvre kiterjedő ellenőrzés
-viszont egy eddig **nem dokumentált** hiányt talált: **Jób 40:1-5 és a teljes Jób 41.
-fejezet hiányzik.** Ez feltehetően a Jób könyvének Héber/magyar (MT/Károli) és angol
-versszámozása közti, a 40-41. fejezetnél jól ismert eltolódásból ered (az angol
-40:1-24 egy része a héber count szerint már a 39. fejezet vége, illetve az angol 41.
-fejezet a héber count szerint a 40. fejezet folytatása) — ezt a hipotézist a forrás
-STEPBible-fájlban (`TAHOT Job-Sng...txt`) kell tételesen ellenőrizni, ez **nyitva marad**.
+viszont egy eddig **nem dokumentált** hiányt talált: a teljes Jób 41. fejezet hiányzott (a Jób 40:1–5-ről kiderült, hogy nem hiányzik: TAHOT-kulcsa 39:34–38, F83). Az ok a Héber/magyar (MT/Károli) és az angol versszámozás eltolódása volt, a kulcsgenerátor hibás Károli-versszámokkal a Jób 40/41-et a nyitott esetekbe tette. **Lezárva (F84, 2026.10.09):** a Jób 41:1–34 332 sora a fő kivonatban van (`naplok/F84_jelentes.md`). **Maradó korlát:** a fő kivonat Jób 40. fejezete MT-kulcsos (TAHOT 40:(n+5) = Károli 40:n), l. `naplok/F83_Job_versbeosztas_jelentes.md`.
 A `scope=TAHOT-teljes` proveniencia-címke ettől függetlenül helytálló (a kivonat
 egészére vonatkozik, nem a kánon teljességére) — l. `adat/SEMA.md` 1.5 és 4.
 

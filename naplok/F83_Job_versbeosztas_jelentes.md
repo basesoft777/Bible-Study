@@ -158,10 +158,10 @@ A futtató az `eredeti` oszlopban a **nyers `TAHOT_kivonat`-kulcsot** várja, ne
 
 **Kötöttség:** a 19 kézi sor a mostani `TAHOT_kivonat` Jób 40-kulcsaihoz kötött. Ha a kulcsgenerátor javítása a Jób 40-et is átkulcsolja Károli-számozásra, ezeket a sorokat törölni kell.
 
-### 6.2 Nyitott tétel — javaslat (N-F83a helyőrző, nem felvéve)
+### 6.2 Nyitott tétel — javaslat (N55 helyőrző, nem felvéve)
 
-A `NYITOTT_FELADATOK.md` nincs a brief `ir` mezőjében, ezért nem írtam bele. **Javasolt tétel (N-F83a):** a `eszkozok/tahot_karoli_kulcs_generalas.py` `DONTES_FELULBIRALAS[("Job", (40, 41))]` javítása — a hibás „40 = 28, 41 = 25” indoklás helyett `ELSODLEGES` a 41. fejezetre —, és a `TAHOT_kivonat_nyitott_esetek.tsv` 332 Jób-sorának visszavétele a `TAHOT_kivonat.tsv`-be Jób 41:1–34 kulccsal, majd a detektor újrafuttatása. **A Jób 41 futtatása addig nem lehetséges** (34 vers eredeti nélkül).
+A `NYITOTT_FELADATOK.md` nincs a brief `ir` mezőjében, ezért nem írtam bele. **Javasolt tétel (N55):** a `eszkozok/tahot_karoli_kulcs_generalas.py` `DONTES_FELULBIRALAS[("Job", (40, 41))]` javítása — a hibás „40 = 28, 41 = 25” indoklás helyett `ELSODLEGES` a 41. fejezetre —, és a `TAHOT_kivonat_nyitott_esetek.tsv` 332 Jób-sorának visszavétele a `TAHOT_kivonat.tsv`-be Jób 41:1–34 kulccsal, majd a detektor újrafuttatása. **A Jób 41 futtatása addig nem lehetséges** (34 vers eredeti nélkül).
 
 ### 6.3 A futtató jóváhagyott listája
 
-A `tokenek.VERSBEOSZTAS_JOVAHAGYOTT`-hoz ez a menet nem nyúlt (nincs az `ir`-ben). A Jób felvétele a #22 Jób-menetének első lépése, a Jób 41 hiányára tekintettel: vagy a N-F83a után, vagy a Jób 41 kizárásával / `kezi` kezelésével.
+A `tokenek.VERSBEOSZTAS_JOVAHAGYOTT`-hoz ez a menet nem nyúlt (nincs az `ir`-ben). A Jób felvétele a #22 Jób-menetének első lépése, a Jób 41 hiányára tekintettel: vagy a N55 után, vagy a Jób 41 kizárásával / `kezi` kezelésével.
