@@ -2,7 +2,7 @@
 
 *Generálta: `eszkozok/tahot_verskulcs_igazolas.py` (csak olvas). Alap: `8ce6e95c~1` (az átkulcsolás előtti állapot). Összesen 81 vizsgálat, 0 HIBA.*
 
-*proveniencia: scope=manual (csak-olvasó összevetés: git show 8ce6e95c~1 vs. a mostani fa; egyesit.epit/ellenoriz memóriában) | forras=konkordancia/TAHOT_kivonat.tsv, naplok/F85_kulcsvaltas.tsv, f22/*.tsv, adat/karoli_strong/*.tsv, f22/valaszok/ | ts=2026-10-09T11:47:08Z*
+*proveniencia: scope=manual (csak-olvasó összevetés: git show 8ce6e95c~1 vs. a mostani fa; egyesit.epit/ellenoriz memóriában) | forras=konkordancia/TAHOT_kivonat.tsv, naplok/F85_kulcsvaltas.tsv, f22/*.tsv, adat/karoli_strong/*.tsv, f22/valaszok/ | ts=2026-10-09T12:38:48Z*
 
 | pont | tárgy | eredmény | részlet |
 |---|---|---|---|
@@ -10,7 +10,7 @@
 | a | eltérő sorok = a napló sorai (sorszám szerint) | OK | 6330 eltérő sor, 6330 naplósor |
 | a | az eltérés csak az Igehely mezőben | OK |  |
 | a | a napló régi/új kulcsa a két fájl kulcsaival egyezik minden sorban | OK |  |
-| a | nem érintett sorok bájtazonosak | OK | 462972 sor |
+| a | nem érintett sorok bájtazonosak | OK | 462971 sor |
 | b | a mai pipeline betölt (KeyError nélkül) | OK | versmegfeleltetes sorok: 0, osszevonas sorok: 9 |
 | b | jóváhagyott könyvek vers -> héber szavak (régi vs. új pipeline) | OK | 17747 vers, 0 eltérő |
 | b | könyv 1Krón | OK | 942 vers, 0 eltérő |

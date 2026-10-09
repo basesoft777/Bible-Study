@@ -60,7 +60,10 @@ def git_show(ut):
 def a_pont():
     regi = git_show('konkordancia/TAHOT_kivonat.tsv').split(b'\n')
     uj = open(TAHOT, 'rb').read().split(b'\n')
-    jelent('a', 'sorszám (régi/új, fejléccel)', 'OK' if len(regi) == len(uj) else 'HIBA', '%d / %d sor' % (len(regi) - (1 if regi[-1] == b'' else 0), len(uj) - (1 if uj[-1] == b'' else 0)))
+    # a záró újsor utáni üres elem nem sor: elhagyjuk (a sorok száma és a nem érintett sorok száma így pontos)
+    regi = regi[:-1] if regi and regi[-1] == b'' else regi
+    uj = uj[:-1] if uj and uj[-1] == b'' else uj
+    jelent('a', 'sorszám (régi/új, fejléccel)', 'OK' if len(regi) == len(uj) else 'HIBA', '%d / %d sor' % (len(regi), len(uj)))
     naplo = {}
     with open(VALT, encoding='utf-8') as fh:
         for s in fh:
