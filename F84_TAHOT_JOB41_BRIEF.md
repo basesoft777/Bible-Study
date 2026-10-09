@@ -5,7 +5,8 @@ kod: TAHOT_JOB41
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: nem_indult
+allapot: fut
+ag: claude/f84-tahot-job41
 ad: "A TAHOT_kivonat.tsv-ben a Károli Jób 41:1–34 héber sorai Károli-kulccsal; a #22 a Jóbot egy menetben futtathatja; a CLAUDE.md TAHOT-korlát mondata a mért állapotot írja"
 kovetkezo: "⛔ a táblaírás előtt: a nyitott sorok sorsa (törlés vagy ATVEVE_F84) és a Jób 41:25 kezelése. A #22 következő menete előtt fusson (FUGGES 22→84: TAHOT_kivonat.tsv)."
 fugg: [83]
