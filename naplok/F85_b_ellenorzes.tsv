@@ -1,5 +1,5 @@
 # GENERÁLT: eszkozok/tahot_verskulcs_finomit.py | a szint=B (csak #22-detektor) eltolás-sorok független ellenőrzése (kjv, tvtms, hossz jelek; l. a szkript docstringje)
-konyv	tahot_kulcs	karoli_vers	b_ellenorzes	jelek
+konyv	tahot_kulcs	karoli_vers	b_ellenorzes	szoveg_olvasas	jelek
 2Móz	2Móz 36:1	2Móz 35:36	nem_igazolt	olvasva_egyezik	kjv=+0(J=-) tvtms=+0 hossz=+0(err#22=0.09, err_azonos=0.03; a -1 rövid versekben zajos, nem blokkol)
 2Móz	2Móz 36:2	2Móz 36:1	nem_igazolt	olvasva_egyezik	kjv=+0(J=-) tvtms=+0 hossz=+1(err#22=0.11, err_azonos=0.28; a -1 rövid versekben zajos, nem blokkol)
 2Móz	2Móz 36:3	2Móz 36:2	nem_igazolt	olvasva_egyezik	kjv=+0(J=-) tvtms=+0 hossz=+1(err#22=0.15, err_azonos=0.45; a -1 rövid versekben zajos, nem blokkol)
@@ -28,7 +28,7 @@ konyv	tahot_kulcs	karoli_vers	b_ellenorzes	jelek
 Én	Én 6:11	Én 6:8	nem_igazolt	olvasva_egyezik	kjv=+0(J=-) tvtms=+0 hossz=+1(err#22=0.10, err_azonos=-; a -1 rövid versekben zajos, nem blokkol)
 Én	Én 6:12	Én 6:9	nem_igazolt	olvasva_egyezik	kjv=+0(J=-) tvtms=+0 hossz=+1(err#22=0.03, err_azonos=-; a -1 rövid versekben zajos, nem blokkol)
 Én	Én 6:13	Én 6:10	nem_igazolt	olvasva_egyezik	kjv=+0(J=-) tvtms=+0 hossz=+1(err#22=0.16, err_azonos=-; a -1 rövid versekben zajos, nem blokkol)
-Ézs	Ézs 8:23	Ézs 9:1	ellentmond	olvasva_egyezik	kjv=+1(J=0.84) tvtms=-1 hossz=+1(err#22=0.03, err_azonos=-; a -1 rövid versekben zajos, nem blokkol) | a Karoli_versmegfeleltetes TVTMS-sora (MT-szám) a KJV-tanúval és a szövegolvasással ellentétes: a TVTMS-tábla sora gyanús
+Ézs	Ézs 8:23	Ézs 9:1	ellentmond	olvasva_egyezik	kjv=+1(J=0.84) tvtms=-1 hossz=+1(err#22=0.03, err_azonos=-; a -1 rövid versekben zajos, nem blokkol) | a Karoli_versmegfeleltetes TVTMS-sora (MT-szám) a KJV-tanúval és a szövegolvasással ellentétes: a Karoli_versmegfeleltetes.tsv származtatott tábla Ézs 9-es MT-oszlopa valószínűleg hibás (az egész Ézs 9-ben eggyel eltolt; N-F85a), a sor ezért eltolásként szerepel
 Ézs	Ézs 64:12	Ézs 64:11	nem_igazolt	olvasva_egyezik	kjv=+0(J=-) tvtms=+0 hossz=+1(err#22=0.22, err_azonos=-; a -1 rövid versekben zajos, nem blokkol)
 Hós	Hós 2:23	Hós 2:22	nem_igazolt	olvasva_egyezik	kjv=+0(J=-) tvtms=+0 hossz=+1(err#22=0.12, err_azonos=-; a -1 rövid versekben zajos, nem blokkol)
 Hós	Hós 13:16	Hós 14:1	nem_igazolt	olvasva_egyezik	kjv=+0(J=-) tvtms=+0 hossz=+1(err#22=0.09, err_azonos=-; a -1 rövid versekben zajos, nem blokkol)

@@ -4,7 +4,7 @@
 Hós 12:3 és a Hós 12 környezete), (2) a csak-detektoros (szint=B) eltolás-sorok független ellenőrzése.
 
 Bemenet: naplok/F85_esetlista.tsv (az `eszkozok/tahot_verskulcs_esetlista.py` kimenete). Kimenet: ugyanaz a fájl két új
-oszloppal (`b_ellenorzes`, `megjegyzes`) és a javított sorokkal; naplok/F85_b_ellenorzes.tsv (a B sorok jelei).
+oszloppal (`b_ellenorzes`, `szoveg_olvasas`, `megjegyzes`) és a javított sorokkal; naplok/F85_b_ellenorzes.tsv (a B sorok jelei).
 Csak olvas minden más táblát. Az esetlista-szkript újrafuttatása után ezt is újra kell futtatni (idempotens).
 
 A B-ellenőrzés jelei soronként (+1 támogat / 0 nincs adat / -1 ellentmond):
@@ -165,7 +165,7 @@ def main():
             r[6] = b
             r[8] = 'kjv=%+d(J=%s) tvtms=%+d hossz=%+d(err#22=%s, err_azonos=%s; a -1 rövid versekben zajos, nem blokkol)' % (kj_s, f2(kj_j), tv_s, h_s, f2(e22), f2(eid))
             if b == 'ellentmond' and tv_s == -1 and kj_s == 1:
-                r[8] += ' | a Karoli_versmegfeleltetes TVTMS-sora (MT-szám) a KJV-tanúval és a szövegolvasással ellentétes: a TVTMS-tábla sora gyanús'
+                r[8] += ' | a Karoli_versmegfeleltetes TVTMS-sora (MT-szám) a KJV-tanúval és a szövegolvasással ellentétes: a Karoli_versmegfeleltetes.tsv származtatott tábla Ézs 9-es MT-oszlopa valószínűleg hibás (az egész Ézs 9-ben eggyel eltolt; N-F85a), a sor ezért eltolásként szerepel'
             bsorok.append((r[0], r[2], r[3], b, r[7], r[8]))
         kimenet.append(r)
     kimenet.sort(key=lambda s: (E_idx(s[0]), int(s[1]), E.bont(s[2])[2], s[2]))
@@ -173,12 +173,12 @@ def main():
     with open(LISTA, 'w', encoding='utf-8', newline='\n') as fh:
         for s in fejlec_hash:
             fh.write(s + '\n')
-        fh.write('\t'.join(fej[:6] + ['b_ellenorzes', 'megjegyzes']) + '\n')
+        fh.write('\t'.join(fej[:6] + ['b_ellenorzes', 'szoveg_olvasas', 'megjegyzes']) + '\n')
         for r in kimenet:
-            fh.write('\t'.join(r[:8]) + '\n')
+            fh.write('\t'.join(r[:9]) + '\n')
     with open(BEL, 'w', encoding='utf-8', newline='\n') as fh:
         fh.write('# GENERÁLT: eszkozok/tahot_verskulcs_finomit.py | a szint=B (csak #22-detektor) eltolás-sorok független ellenőrzése (kjv, tvtms, hossz jelek; l. a szkript docstringje)\n')
-        fh.write('konyv\ttahot_kulcs\tkaroli_vers\tb_ellenorzes\tjelek\n')
+        fh.write('konyv\ttahot_kulcs\tkaroli_vers\tb_ellenorzes\tszoveg_olvasas\tjelek\n')
         for b in bsorok:
             fh.write('\t'.join(b) + '\n')
     import collections
