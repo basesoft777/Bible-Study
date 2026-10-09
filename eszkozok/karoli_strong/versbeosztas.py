@@ -285,6 +285,33 @@ def tsv(eredmeny):
     return '\n'.join(s) + '\n'
 
 
+def eltolt_osszevonas_hibak(tk):
+    """Önteszt-eset (F85.17): egy `eltolt` sor nem duplikálhat versmegfeleltetéssel olyan Károli-kulcsot, amelyen beolvasztás
+    (új alakú `versosszevonas` sor, `er_tol`) áll. A `tk` a tokenek modul (paraméter, hogy a régi kódon is futtatható legyen).
+    Visszaad: hibaüzenetek listája (üres = rendben)."""
+    fej = 'karoli' + chr(9) + 'hu_tol' + chr(9) + 'hu_ig' + chr(9) + 'eredeti' + chr(9) + 'megjegyzes' + chr(9) + 'er_tol' + chr(9) + 'er_ig'
+    sor = chr(9).join(['X 1:2', '1', '1', 'X 1:3', 'teszt', '2', '2'])
+    tmp = os.path.join(tempfile.mkdtemp(prefix='versosszev_'), 'versosszevonas.tsv')
+    with open(tmp, 'wb') as fh:
+        fh.write((fej + chr(10) + sor + chr(10)).encode('utf-8'))
+    regi = tk.VERSOSSZEVONAS
+    tk.VERSOSSZEVONAS = tmp
+    try:
+        a, b, z = ['a'], ['b', 'c'], ['z']
+        ered = {'X 1:1': a, 'X 1:2': b, 'X 5:1': z}      # az 'X 1:2' közös (beolvasztott) kulcs
+        uj = tk._versmegfeleltet(dict(ered), [('X 5:1', 'X 1:2', 'eltolt')])
+    finally:
+        tk.VERSOSSZEVONAS = regi
+    hibak = []
+    elofordulas = lambda lista: sum(1 for v in uj.values() if v is lista)   # noqa: E731
+    for nev, lista in (('a', a), ('b+c', b), ('z', z)):
+        if elofordulas(lista) != 1:
+            hibak.append('a(z) %s eredeti vers %d példányban szerepel (1 kell): eltolt sor + beolvasztott kulcs' % (nev, elofordulas(lista)))
+    if 'X 1:2' in uj:
+        hibak.append('a beolvasztott kulcs az eltolt sor után is megmaradt (megkettőzés)')
+    return hibak
+
+
 def onteszt():
     hibak = []
     rnd = random.Random(7)
@@ -348,6 +375,8 @@ def onteszt():
         hibak.append('a nincs_eredeti Károli-vers kulcsán álló eredeti vers elveszett')
     if tokenek.versmegfeleltetes(jovahagyott=('Ismeretlen',)) != []:
         hibak.append('a jóváhagyott-könyv szűrő')
+    # 5c. (F85.17) eltolt sor nem duplikálhat beolvasztott (közös) Károli-kulcsot
+    hibak += ['5c: ' + h for h in eltolt_osszevonas_hibak(tokenek)]
     # 6. a valódi adat (az F85.6 óta átkulcsolt TAHOT): az 1Móz tiszta, a 2Móz 35:36–36:37 eltolódása már NINCS meg
     #    (a 2Móz 36 kulcsai Károli-kulcsok, a régi 2Móz 36:38 kulcsnak 0 sora van, a 2Móz 35:36 sorai megvannak)
     try:

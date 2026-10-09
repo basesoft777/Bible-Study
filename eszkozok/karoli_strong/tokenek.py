@@ -207,7 +207,9 @@ def _versmegfeleltet(ered, sorok):
     beolvasztott_uj = {o['karoli'] for o in osszev if o['er_tol'] is not None}
     beolvasztott = beolvasztott_regi | beolvasztott_uj
     erintett_k = {k for k, e, t in sorok if k}
-    erintett_e = {e for k, e, t in sorok if e and e not in beolvasztott_uj}
+    # a védelem csak a `nincs_karoli` sorokra szól: egy `eltolt` sor, amelynek `eredeti`-je a beolvasztott új kulcs,
+    # továbbra is elmozdítja onnan a verset (különben a vers a saját kulcsán is megmaradna, és megkettőződne)
+    erintett_e = {e for k, e, t in sorok if e and not (t == 'nincs_karoli' and e in beolvasztott_uj)}
     uj = {ig: v for ig, v in ered.items() if ig not in erintett_k and ig not in erintett_e}
     for k, e, t in sorok:
         if t == 'eltolt':

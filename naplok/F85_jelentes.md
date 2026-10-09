@@ -296,3 +296,13 @@ Minden más Hós/Préd kulcs változatlan; a többi könyvben csak a 6 futott ö
 - **(4) Számok:** „nem érintett sorok” 462 972 → **462 971** (a jelentésben, a `naplok/F85_igazolas.md/.tsv`-ben; az `igazolas.py` a) pontja a záró újsor utáni üres elemet kihagyja); az igazolás-naplók újrafuttatással frissültek (0 HIBA).
 - **(6) 12. szakasz:** a „Nincs kódváltozás” a valóságra javítva (az `igazolas.py` változott az F85.13-ban); a „9.5 pont” → 10.3.
 - **(7) 13. szakasz előtti szöveg (183. sor):** a kiesett szó pótolva („kézi tábla 97 adatsor + összevonás-fájl 7 adatsor”).
+
+## 15. F85.17 — az `erintett_e` védelem szűkítése és önteszt-eset (ELLENOR_F85_12 (5))
+
+*A felhasználó üzenete a „…önteszt-esetet, amely egy eltolt” mondatnál megszakadt; a teljes alak utólag megérkezett: az önteszt-eset „egy eltolt sornál a megkettőzés hiányát ellenőrzi”. Az én értelmezésem (eltolt sorral nem duplikálható vers) ezzel egyezik.*
+
+- **Kód (`eszkozok/karoli_strong/tokenek.py`):** az `erintett_e` védelem (F85.14) csak a `nincs_karoli` sorokra szól: `erintett_e = {e … if e and not (t == 'nincs_karoli' and e in beolvasztott_uj)}`. Egy `eltolt` sor, amelynek `eredeti`-je beolvasztott (közös) Károli-kulcs, továbbra is elmozdítja onnan a verset. Korábban (F85.14) az ilyen sor a verset a saját kulcsán is meghagyta, és az `eltolt` kulcsra is bemásolta (megkettőzés).
+- **Önteszt-eset (`eszkozok/karoli_strong/versbeosztas.py`, `eltolt_osszevonas_hibak()`, az `--onteszt` 5c pontja):** ideiglenes `versosszevonas.tsv`-ben az `X 1:2` kulcs új alakú (`er_tol`) beolvasztás; a lista egyetlen sora `('X 5:1', 'X 1:2', 'eltolt')`. Elvárás: mindhárom eredeti vers (`a`, `b+c`, `z`) pontosan egyszer szerepel az eredményben, és az `X 1:2` kulcs nem marad meg. A függvény a tokenek modult paraméterként kapja, hogy a régi kódon is futtatható legyen.
+- **Bukás a régi kódon:** az F85.14 `tokenek.py`-ján (`9fb8dafd`) és a `HEAD`-en (F85.16) az eset **BUKIK** („a(z) b+c eredeti vers 2 példányban szerepel (1 kell)”, „a beolvasztott kulcs az eltolt sor után is megmaradt (megkettőzés)”); az új kódon rendben. A `versbeosztas.py --onteszt`: `önteszt: rendben`.
+- **Feltétel:** a mai kód ugyanúgy viselkedik (a kézi tábla és a detektor-lista ÓSZ-sora üres, a módosított ág nem fut). Az igazolás újrafuttatva (`naplok/F85_igazolas.*`): 0 HIBA; a 19 táblapár sorai és átnézési naplója bájtazonos (5 könyvnél csak a proveniencia-sor tér el, elfogadva), `egyesit.ellenoriz` 19/19; a Hós/Préd összevetés (13.2) számai változatlanok (Hós 1:11 34 → 23+11, Hós 11:11 39 → 19+20, Préd 2:26 47 → 38+9).
+- Az `eszkozok/karoli_strong/versbeosztas.py` az `ir` mezőben van (F85.16).

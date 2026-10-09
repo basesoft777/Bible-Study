@@ -2,7 +2,7 @@
 
 *Generálta: `eszkozok/tahot_verskulcs_igazolas.py` (csak olvas). Alap: `8ce6e95c~1` (az átkulcsolás előtti állapot). Összesen 81 vizsgálat, 0 HIBA.*
 
-*proveniencia: scope=manual (csak-olvasó összevetés: git show 8ce6e95c~1 vs. a mostani fa; egyesit.epit/ellenoriz memóriában) | forras=konkordancia/TAHOT_kivonat.tsv, naplok/F85_kulcsvaltas.tsv, f22/*.tsv, adat/karoli_strong/*.tsv, f22/valaszok/ | ts=2026-10-09T12:38:48Z*
+*proveniencia: scope=manual (csak-olvasó összevetés: git show 8ce6e95c~1 vs. a mostani fa; egyesit.epit/ellenoriz memóriában) | forras=konkordancia/TAHOT_kivonat.tsv, naplok/F85_kulcsvaltas.tsv, f22/*.tsv, adat/karoli_strong/*.tsv, f22/valaszok/ | ts=2026-10-09T12:49:33Z*
 
 | pont | tárgy | eredmény | részlet |
 |---|---|---|---|

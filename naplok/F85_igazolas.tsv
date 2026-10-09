@@ -1,5 +1,5 @@
 # GENERÁLT: eszkozok/tahot_verskulcs_igazolas.py | a(z) 8ce6e95c~1 (átkulcsolás előtti) állapot és a mostani fa összevetése | ts=2026-10-09
-# proveniencia: scope=manual (a repó saját fájljainak csak-olvasó összevetése: git show 8ce6e95c~1 vs. a mostani fa; egyesit.epit/ellenoriz memóriában) | forras=konkordancia/TAHOT_kivonat.tsv, naplok/F85_kulcsvaltas.tsv, f22/*.tsv, adat/karoli_strong/parok_*.tsv, szavak_*.tsv, f22/valaszok/ | ts=2026-10-09T12:38:48Z
+# proveniencia: scope=manual (a repó saját fájljainak csak-olvasó összevetése: git show 8ce6e95c~1 vs. a mostani fa; egyesit.epit/ellenoriz memóriában) | forras=konkordancia/TAHOT_kivonat.tsv, naplok/F85_kulcsvaltas.tsv, f22/*.tsv, adat/karoli_strong/parok_*.tsv, szavak_*.tsv, f22/valaszok/ | ts=2026-10-09T12:49:33Z
 pont	targy	eredmeny	reszlet
 a	sorszám (régi/új, fejléccel)	OK	469301 / 469301 sor
 a	eltérő sorok = a napló sorai (sorszám szerint)	OK	6330 eltérő sor, 6330 naplósor
