@@ -17,7 +17,7 @@
 | 2. próba (javító) | 12 | 12 | 0 | 0,3363 | 175 020 / 32 263 |
 | **összesen** | 84 | | | **5,6313** | |
 
-A javító körbe került kötegek: 4, 5, 6, 7, 18, 21, 27, 28, 29, 38, 44, 47.
+A javító körbe került kötegek: 4, 5, 6, 7, 18, 21, 27, 28, 29, 38, 44, 47. Ebből **a k047 egészében bukott** (10 vers, a válasz nem érvényes JSON: `Extra data: line 3 column 1`), a többi 11 köteg 1-1 versszintű kapuhiba (összesen 21 vers).
 
 A könyvplafonból (719 × 0,0074 × 1,5 = 7,98 USD) 5,63 fogyott. A kumulatív összeg a futásnapló `api_termeles/` soraiból: 73,9602 USD (Ézs–Neh 68,3289 + 2Kir 5,6313), a globális 110 USD-ből; a `futo_osszeg_usd` oszlop utolsó sora is ennyi. Versenként 0,0078 USD (a plafon alapja 0,0074 fölött).
 
@@ -103,5 +103,12 @@ Eltérő Károli-token (két modell partnerhalmaza különbözik) összesen: 0; 
 
 - Független szúrópróba (22.6): elmarad (DT70).
 - PR és merge a felhasználóé.
-- A következő könyv a felhasználó döntése; a Dán (1644 / 312) előtt versbeosztás-döntés kell (37 detektorsor); további tiszta jelölt a mérés szerint nincs a listán.
+- A következő könyv a felhasználó döntése; a Dán (1644 / 312): a korábban említett 37 detektorsor az F85.6/F85.8 óta nincs meg (`f22/versmegfeleltetes.tsv`: 0 Dán-sor, `naplok/F85_jelentes.md`), a versbeosztás-jóváhagyás előtt a detektort újra kell mérni; további tiszta jelölt a mérés szerint nincs a listán.
+
+## 6. Ellenőri kör (`naplok/ELLENOR_F22_2Kir.md`)
+
+Az ellenőr a számszerű állításokat (719/719, 18 184 / 36 736, 21/719 → 0, 5,6313 USD, 73,9602 USD, a futó összeg folytonossága) saját lekérdezéssel igazolta; 1 eltérés (alacsony):
+
+- **A Dán indoka elavult:** a „37 detektorsor” az F85.6/F85.8 óta nincs meg; a szöveg a brief `kovetkezo` mezőjében és a 5. szakaszban javítva.
+- Megjegyzés (nem eltérés): a k047 egész kötege formátumhibás volt; a D32 és az 1a szakasz most kiírja. A futásnapló az 1297/1298. és az 1348/1349. sorhatáron soronként nem folytonos (az 1Kir/Neh ágak öröksége, DT72); a 2Kir-lánc értéke a helyes kumulatív összeg.
 
