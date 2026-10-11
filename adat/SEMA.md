@@ -21,7 +21,7 @@ A kilenc tábla (és a modell-kimenetű `karoli_strong/` táblapár, 2.20) és a
 | `lexikon_hivatkozasok.tsv` | `strong` + `entry_id` + `jelentes_szam` | `betolt.py` |
 | `datasetek.tsv` | `study_tipus` + `dataset` | kézzel (policy-tábla) |
 | `grammatikai_strongok.tsv` | `strong` | **generált** — `eszkozok/grammatikai_strongok_general.py` |
-| `auditok.tsv` | nincs (l. 2.9) | a `lekerdez.py` proveniencia-sora, kézzel rögzítve |
+| `auditok.tsv` | nincs (l. 2.9) | a `lekerdez.py` proveniencia-sora; `--naplo ID --lepes KÓD` esetén maga a lekérdező fűzi hozzá (l. 2.9) |
 | `licencek.tsv` | `dataset` | kézzel (leltár, F24) |
 | `dontes_hatas.tsv` | `dontes_forras` + `erintett_fajl` + `tilos_minta` | kézzel (F51, 2.21) |
 | `karoli_strong/parok_<könyv>.tsv`, `karoli_strong/szavak_<könyv>.tsv` | `vers` + `hu_sorszam` + `er_sorszam` / `vers` + `oldal` + `sorszam` | **generált** (modell-kimenet, javaslat) — `eszkozok/karoli_strong/egyesit.py` (2.20, F22) |
@@ -571,7 +571,7 @@ hozzá `elofordulasok` sor, amelyben a proveniencia elférne.
 | Mező | Típus | Kötelező | Leírás |
 |---|---|---|---|
 | `id` | motívum-id | ✔ | Idegen kulcs a `motivumok.tsv`-re. |
-| `lepes` | zárt: `A5` \| `B2` \| `B3` \| `B4` | ✔ | A `MUNKAMENET.md` lépés-kódja, amely a lekérdezést futtatta. A `B3` a mező-hipotézis támasztó lekérdezése (`lekerdez.py domen`) — maga a hipotézis kézi, sort nem kap (TEREMT002_KUTATAS_BRIEF.md, D2, 2026.09.25). |
+| `lepes` | zárt: `A5` \| `B2` \| `B3` \| `B4` \| `adhoc` | ✔ | A `MUNKAMENET.md` lépés-kódja, amely a lekérdezést futtatta; az `adhoc` a kutatási lépésen kívüli lekérdezés (felmérés, pilot; DT-M3). A `B3` a mező-hipotézis támasztó lekérdezése (`lekerdez.py domen`) — maga a hipotézis kézi, sort nem kap (TEREMT002_KUTATAS_BRIEF.md, D2, 2026.09.25). |
 | `proveniencia` | `PROVENIENCIA` | ✔ | A `lekerdez.py` utolsó sora **szó szerint**, a `proveniencia: ` előtag nélkül — l. 1.5. |
 | `datum` | `DATUM` | ✔ | |
 
@@ -582,6 +582,31 @@ lekérdezéshez tartozik, nem a találathoz. A lefedett dataset a `proveniencia`
 részsztring — l. 3.8 indoklása). A `lexikai-scan` subagent a proveniencia-sort
 amúgy is szó szerint adja vissza; a rögzítés a fő szál feladata, nem a
 subagenté.
+
+**Önnaplózás (F61, DT102).** A `lekerdez.py --naplo ID --lepes KÓD <alparancs> …`
+(a két kapcsoló az alparancs előtt és után is állhat) az alparancs kimenete után
+maga hozzáfűzi a sort; a `--lepes` ilyenkor kötelező, zárt értékkészlete
+`A5 | B2 | B3 | B4 | adhoc`. A `--naplo` ID három ágon dönt:
+
+| `--naplo` ID | Célfájl |
+|---|---|
+| létező motívum a `motivumok.tsv`-ben | `adat/auditok.tsv` (ez a tábla) |
+| feladatkód (`^F\d+$`) | `naplok/<KÓD>_lekerdezesek.tsv`, azonos oszlopokkal (`id lepes proveniencia datum`) — a motívumszintű 1. és 8. szabály így nem érinti |
+| minden más | hiba, `exit 1`, semmi nem íródik |
+
+Csak hozzáfűzés; az azonos (`id` + `lepes` + `proveniencia`) sort nem veszi fel
+kétszer; írás előtt az utolsó sor sorvégét és oszlopszámát ellenőrzi; hibás
+lekérdezésnél (nincs proveniencia-sor) nem ír. `--naplo` esetén a kiírt
+proveniencia-sor végére a `csatorna=cli` kulcs kerül (a futtatás csatornája),
+és a naplósor ezt szó szerint tartalmazza; kapcsoló nélkül a kimenet változatlan.
+A `csatorna` az `ellenoriz.py` megengedett további proveniencia-kulcsai között van
+(`strong`, `n`, `csatorna`). A `# napló: …` állapotsor a stderr-re megy, így a stdout utolsó
+sora `--naplo` esetén is a proveniencia-sor. A `naplok/*_lekerdezesek.tsv` formai ellenőrzése külön tétel.
+
+**Commitolási szabály (DT103).** Az `ellenoriz.py` 8. szabálya nem nézi a `lepes` mezőt: egy
+motívum-ID első `auditok.tsv`-sora — bármely lépésé, nem csak az `adhoc`-é — SÉRTÉST ad, amíg a
+motívum „mindig”-datasetjeinek teljes lefedése nincs meg. Egy motívum auditsorai ezért csak a
+teljes lefedés után commitolandók; a motívum lekérdezései nem vándorolnak feladatnaplóba.
 
 ### 2.10 `forditas_ubs.tsv` — **megszűnt (SZOTAR S1.1, 2026.09.28)**
 
