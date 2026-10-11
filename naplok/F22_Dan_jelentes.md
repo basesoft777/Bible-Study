@@ -2,7 +2,7 @@
 
 *A számok szkriptkimenetből jönnek (`f22_statisztika.py --konyv Dán`, `egyesit.py --konyv Dán` és `--ellenoriz`, `f22_elemzes.py --konyv Dán`, a `f22/api_termeles/futasnaplo.tsv` és `batchek.tsv` Dan-soraiból: `futas = api_termeles/high/Dan`, `cimke = dan`, a `f22/api_termeles/high/_munka/Dan_k*.json` hibaüzenetei). Ág: `claude/f22-dan` (a main `fb31802e` commitjáról; az 1Kir PR #274, a Neh PR #275 és a 2Kir PR #277 már a main-en). Módszer: `prompt_v3` változatlanul, **Sonnet a Message Batches API-n, `effort=high`** (DT73 (a)), **a C (Gemini) kimarad** (DT-F22c), 10 verses kötegek.*
 
-*Sorrend: a BDB-haszon mérése (`naplok/F22_konyvsorrend_meres.py`, 2026.10.09) szerint a Dán (1644 előfordulás, 312 NINCS-szócikk) a leghasznosabb hiányzó könyv; a 2Kir után a tiszta jelöltek elfogytak. A korábban említett 37 detektorsor az F85.6/F85.8 óta nincs meg (`f22/versmegfeleltetes.tsv`: 0 Dán-sor); a detektort 2026.10.11-én újrafuttattam ideiglenes könyvtárba, a gépi lista a repóbelivel egyezik. Indítás: felhasználó, chat, 2026.10.11 („mehet a Dániel”).*
+*Sorrend: a BDB-haszon mérése (`naplok/F22_konyvsorrend_meres.py`, 2026.10.09) szerint a Dán (1644 előfordulás, 312 NINCS-szócikk) a leghasznosabb hiányzó könyv; a 2Kir után a BDB-mérés szerinti, beolvasztás nélküli tiszta jelöltek elfogytak. A korábban említett 37 detektorsor az F85.6/F85.8 óta nincs meg (`f22/versmegfeleltetes.tsv`: 0 Dán-sor); a detektort 2026.10.11-én újrafuttattam ideiglenes könyvtárba, a gépi lista a repóbelivel egyezik. Indítás: felhasználó, chat, 2026.10.11 („mehet a Dániel”).*
 
 ## 1. Menet
 
@@ -91,5 +91,12 @@ Eltérő Károli-token (két modell partnerhalmaza különbözik) összesen: 0; 
 
 - Független szúrópróba (22.6): elmarad (DT70).
 - PR és merge a felhasználóé.
-- A következő könyv a felhasználó döntése: az ÓSZ-ből még 16 könyv hiányzik (Ruth, Préd, Én, Sir, Hós, Jóel, Ámós, Abd, Jón, Mik, Náh, Hab, Sof, Hag, Zak, Mal; együtt 1 625 vers).
+- A következő könyv a felhasználó döntése: az ÓSZ-ből még 16 könyv hiányzik (Ruth, Préd, Én, Sir, Hós, Jóel, Ámós, Abd, Jón, Mik, Náh, Hab, Sof, Hag, Zak, Mal; együtt 1 625 vers); a detektor szerint a Hós (1:11, 11:11) és a Préd (2:26) jóváhagyott 2:1 beolvasztást tartalmaz (`f22/versosszevonas.tsv`, DT92), ezeknél kézi átnézési pont várható; a többi 14 kis könyv tiszta.
+
+## 6. Ellenőri kör (`naplok/ELLENOR_F22_Dan.md`)
+
+Az ellenőr a számszerű állításokat (357/357, 9 499 / 18 377, 7/357 → 0, 2,6806 USD, 76,6408 USD, a futó összeg folytonossága) saját lekérdezéssel igazolta; 1 eltérés:
+
+- **A 16 kis könyv „mind tiszta” állítása pontatlan volt:** az `f22/versosszevonas.tsv` három jóváhagyott 2:1 beolvasztást rögzít a Hóseásban (1:11, 11:11) és a Prédikátorban (2:26); ezek a korábbi könyvekben kézi átnézési pontot adtak. A brief `kovetkezo` mezőjében és az 5. szakaszban javítva.
+- Megfigyelés (nem eltérés): a Dán 3:1 „arany” (hu 5) szava a H1768 (er 6) tokenhez is kapcsolódik, nem csak a H1722-höz; modell-kimenet, `alacsony`, kézi átnézésre nem jelölt.
 
