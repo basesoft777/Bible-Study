@@ -20,7 +20,7 @@ ELTÉRÉS: 2 tétel
 
 ## ELTÉRÉS
 
-1. **(alacsony), nyitott:** a Zec.13.9 „...” kezelésére javasolt „külön tétel” nincs nyilvántartva (sem N-F helyőrző, sem `NYITOTT_FELADATOK` sor). Új tétel felvétele a felhasználó jóváhagyásával és a `/befogad` paranccsal történik, ezért nem vettem fel.
+1. **(alacsony), LEZÁRVA (a felhasználó döntése, 2026.10.11):** a Zec.13.9 „...” kezelésére javasolt „külön tétel” nincs nyilvántartva (sem N-F helyőrző, sem `NYITOTT_FELADATOK` sor). A felhasználó döntött: a „...” kezelése nem lesz külön tétel, mert a teljes datasetben 1 hármast érint.
 2. **(kozmetikai), javítva:** a `SEMA.md` 2.20 felsorolásából hiányzott egy vessző a „)” után.
 
 ## Nem ellenőrizhető a szerepkörből
