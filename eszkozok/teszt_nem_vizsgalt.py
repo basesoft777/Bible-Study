@@ -96,7 +96,7 @@ def teszt_hozzafuz():
 
 
 def teszt_lelet():
-    kor, prov = N.lexikai_kor('ANTROP-001')
+    kor, prov, horgony = N.lexikai_kor('ANTROP-001')
     assert 'Fil 1:27' in kor and prov
     tsk, _ = N.tsk_kor('ANTROP-001')
     assert '1Thessz 5:23' in kor and '1Thessz 5:23' in tsk  # TSK-val is jelzett: nem csillag
@@ -104,6 +104,11 @@ def teszt_lelet():
     assert 'Fil 1:27' in csillag and '1Thessz 5:23' not in csillag
     jel = N.jeloltek_versenkent('ANTROP-001')
     assert jel['Fil 1:27'][0][0] == 'nyitva'
+    # DT-F63b: a H5315+H2416 tematikus horgony, nem lexikai kor
+    assert 'H5315+H2416' in horgony and not any('H5315' in n for ns in kor.values() for n in ns)
+    a = N.lelet_adat('ANTROP-001')
+    assert [s[0] for s in a['sorok']] == ['1Pét 1:22', 'Fil 1:27', 'Mt 12:18'], a['sorok']
+    assert N.osszesit(a)[:5] == (3, 1, 0, 0, 2)
 
 
 def main():

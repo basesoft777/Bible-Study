@@ -325,16 +325,23 @@ def jeloltek_versenkent(mid):
 
 def lexikai_kor(mid):
     """A motivum lexikai kore: az elofordulasok.strong osszetett ertekeinek kollokacioja
-    (egy versben), az egyes ertekek scanje; lekerdez.py kimenet + proveniencia."""
-    _, elo = tabla(os.path.join(ADAT, 'elofordulasok.tsv'))
-    fej = tabla(os.path.join(ADAT, 'elofordulasok.tsv'))[0]
-    i_id, i_s = fej.index('id'), fej.index('strong')
+    (egy versben), az egyes ertekek scanje; lekerdez.py kimenet + proveniencia.
+
+    Tematikus horgony (DT-F63b): az az osszetett ertek, amelynek MINDEN elofordulasok-sora
+    a sajat `kapcsolodas` mezojeben "NEM lexikai"-nak minositi magat. Ennek a kornek a
+    versei nevesitett kategoriaba kerulnek (nem lexikai kor, nem csillag), a sor
+    sajat minositesere hivatkozva. Visszaad: (kor, prov, horgony), ahol
+    horgony = {nev: (versek, [(igehely, kapcsolodas-idezet)])}."""
+    fej, elo = tabla(os.path.join(ADAT, 'elofordulasok.tsv'))
+    i_id, i_s, i_k = fej.index('id'), fej.index('strong'), fej.index('kapcsolodas')
     gramm = L.load_grammatikai_strongok()
-    ertekek = []
+    ertekek, sorok_ertekenkent = [], {}
     for r in elo:
-        if r[i_id] == mid and r[i_s].strip() and r[i_s] not in ertekek:
-            ertekek.append(r[i_s])
-    kor, prov = {}, []
+        if r[i_id] == mid and r[i_s].strip():
+            if r[i_s] not in ertekek:
+                ertekek.append(r[i_s])
+            sorok_ertekenkent.setdefault(r[i_s], []).append(r)
+    kor, prov, horgony = {}, [], {}
     for e in ertekek:
         resz = [x for x in e.split('+') if x and x not in gramm]
         if len(resz) == 2:
@@ -346,9 +353,13 @@ def lexikai_kor(mid):
         else:
             continue
         prov.append((nev, pr))
+        sorok = sorok_ertekenkent[e]
+        if all('NEM lexikai' in r[i_k] for r in sorok):
+            horgony[nev] = (versek, [(r[1], r[i_k]) for r in sorok])
+            continue
         for v in versek:
             kor.setdefault(v, []).append(nev)
-    return kor, prov
+    return kor, prov, horgony
 
 
 def tsk_kor(mid):
@@ -367,22 +378,21 @@ def tsk_kor(mid):
     return cel, prov
 
 
-def cmd_lelet(args):
-    mid = args.id
-    kor, lex_prov = lexikai_kor(mid)
+def lelet_adat(mid):
+    """A lelet-lap adata egy motivumra (ADATVAGYON_TERV 5., 12-es lap).
+    csillag = lexikai kor - TSK-kor; a csoportos kizarasu Strongok versei kulon kategoria."""
+    kor, lex_prov, horgony = lexikai_kor(mid)
     tsk, tsk_prov = tsk_kor(mid)
     jel = jeloltek_versenkent(mid)
-    csillag = sorted(v for v in kor if v not in tsk)
-    sor = ['# Lelet-lap adata -- %s' % mid, '',
-           '*Származtatott (eszkozok/nem_vizsgalt.py lelet); a ★ = a lexikai kör (%d vers) mínusz a TSK-kör (%d vers); '
-           'ezek a projekt saját lexikai leletei, amelyeket a TSK nem jelez.*' % (len(kor), len(tsk)), '',
-           '## Lekérdezések', '']
-    for nev, pr in lex_prov:
-        sor.append('- lexikai kör `%s`: `%s`' % (nev, pr))
-    sor += ['- TSK-kör: `%s`' % tsk_prov, '',
-            '## ★ sorok (%d)' % len(csillag), '',
-            '| ★ vers | gerinc-elem | dontes | indoklas (jeloltek.tsv) |', '|---|---|---|---|']
-    nincs = 0
+    csop_set = CSOPORTOS_KIZARAS.get(mid, (set(), ''))[0]
+    csillag, csoportos = [], []
+    for v in sorted(v for v in kor if v not in tsk):
+        nevek = set(kor[v])
+        if nevek and nevek <= csop_set:
+            csoportos.append(v)
+        else:
+            csillag.append(v)
+    sorok = []
     for v in csillag:
         gerinc = ', '.join(sorted(set(kor[v])))
         if v in jel:
@@ -390,20 +400,91 @@ def cmd_lelet(args):
             i = ' / '.join(x[1] for x in jel[v])
         else:
             d, i = 'még nem vizsgált', '(nincs jeloltek-sor)'
-            nincs += 1
-        sor.append('| %s | %s | %s | %s |' % (v, gerinc, d, i.replace('|', '/')))
-    kozos = sorted(v for v in kor if v in tsk)
-    sor += ['', '## A lexikai kör TSK-val is jelzett része (%d vers; nem ★)' % len(kozos), '']
-    for v in kozos:
-        sor.append('- %s (TSK Votes max %d)' % (v, max(tsk[v])))
+        sorok.append((v, gerinc, d, i))
+    hv = set()
+    for versek, _ in horgony.values():
+        hv |= set(versek)
+    return {'kor': kor, 'tsk': tsk, 'lex_prov': lex_prov, 'tsk_prov': tsk_prov,
+            'sorok': sorok, 'csoportos': csoportos, 'horgony': horgony,
+            'horgony_versek': sorted(hv), 'kozos': sorted(v for v in kor if v in tsk)}
+
+
+def osszesit(a):
+    """(csillag, nyitva, elutasitva, beepitve, meg nem vizsgalt, csoportos, horgony-vers, TSK-val jelzett)"""
+    sorok = a['sorok']
+    nyitva = sum(1 for s in sorok if s[2] == 'nyitva')
+    elut = sum(1 for s in sorok if s[2] == 'elutasítva')
+    beep = sum(1 for s in sorok if s[2] == 'beépítve')
+    nincs = sum(1 for s in sorok if s[2] == 'még nem vizsgált')
+    return (len(sorok), nyitva, elut, beep, nincs, len(a['csoportos']),
+            len(a['horgony_versek']), len(a['kozos']))
+
+
+def lelet_md(mid, a):
+    sor = ['# Lelet-lap adata -- %s' % mid, '',
+           '*Származtatott (eszkozok/nem_vizsgalt.py lelet); a ★ = a lexikai kör (%d vers) mínusz a TSK-kör (%d vers); '
+           'ezek a projekt saját lexikai leletei, amelyeket a TSK nem jelez.*' % (len(a['kor']), len(a['tsk'])), '',
+           '## Lekérdezések', '']
+    for nev, pr in a['lex_prov']:
+        sor.append('- kör `%s`: `%s`' % (nev, pr))
+    sor += ['- TSK-kör: `%s`' % a['tsk_prov'], '',
+            '## ★ sorok (%d)' % len(a['sorok']), '',
+            '| ★ vers | gerinc-elem | dontes | indoklas (jeloltek.tsv) |', '|---|---|---|---|']
+    for v, g, d, i in a['sorok']:
+        sor.append('| %s | %s | %s | %s |' % (v, g, d, i.replace('|', '/')))
+    sor += ['', '## A lexikai kör TSK-val is jelzett része (%d vers; nem ★)' % len(a['kozos']), '']
+    for v in a['kozos']:
+        sor.append('- %s (TSK Votes max %d)' % (v, max(a['tsk'][v])))
+    if a['csoportos']:
+        sor += ['', '## Strong-szintű csoportos kizárás (nem ★, nem „még nem vizsgált”): %d vers' % len(a['csoportos']), '']
+    for nev, (versek, forrasok) in a['horgony'].items():
+        sor += ['', '## Tematikus horgony, nem lexikai kör: `%s` (%d vers; se ★, se „még nem vizsgált”)' % (nev, len(versek)), '']
+        for ig, kap in forrasok:
+            sor.append('- a `%s` sor saját minősítése (`elofordulasok.kapcsolodas`): „%s”' % (ig, kap))
+    o = osszesit(a)
     sor += ['', '## Összesítés', '',
-            '- ★ sor: %d, ebből jeloltek-sorral (dontes + indoklas): %d; „még nem vizsgált”: %d; jelöletlen: 0' %
-            (len(csillag), len(csillag) - nincs, nincs), '']
-    szoveg = '\n'.join(sor)
+            '- ★ sor: %d; ebből `nyitva` %d, `elutasítva` %d, `beépítve` %d, „még nem vizsgált” %d; jelöletlen: 0' %
+            (o[0], o[1], o[2], o[3], o[4]),
+            '- csoportos kizárás: %d vers; tematikus horgony: %d vers; TSK-val is jelzett: %d vers' % (o[5], o[6], o[7]), '']
+    return '\n'.join(sor)
+
+
+def cmd_lelet(args):
+    a = lelet_adat(args.id)
+    szoveg = lelet_md(args.id, a)
     print(szoveg.split('## Összesítés')[-1].strip())
     if args.md:
         with open(args.md, 'w', encoding='utf-8', newline='') as f:
             f.write(szoveg)
+    return 0
+
+
+def cmd_meres(args):
+    """Csak meres: minden motivumra az osszesito tabla; adatot nem ir."""
+    sor = ['| motívum | ★ | ebből nyitva | elutasítva | beépítve | még nem vizsgált | csoportos kizárás (vers) | tematikus horgony (vers) | TSK-val jelzett (vers) |',
+           '|---|---|---|---|---|---|---|---|---|']
+    reszek = []
+    for mid in (args.id or MOTIVUMOK):
+        a = lelet_adat(mid)
+        o = osszesit(a)
+        sor.append('| %s | %d | %d | %d | %d | %d | %d | %d | %d |' % ((mid,) + o))
+        reszek.append((mid, a))
+    print('\n'.join(sor))
+    if args.md:
+        ki = ['# Lelet-mérés (csak mérés, adatírás nélkül; eszkozok/nem_vizsgalt.py meres)', '',
+              'Kör = az `elofordulasok.strong` értékeinek kollokációja/scanje (lekerdez.py); ★ = lexikai kör − TSK-kör (a motívum ismert verseinek TSK-szomszédsága).', '',
+              '\n'.join(sor), '', '## Körök mérete és proveniencia', '']
+        for mid, a in reszek:
+            ki.append('### %s' % mid)
+            ki.append('')
+            for nev, pr in a['lex_prov']:
+                ki.append('- `%s`: `%s`' % (nev, pr))
+            ki.append('- TSK: `%s`' % a['tsk_prov'])
+            for nev, (versek, forrasok) in a['horgony'].items():
+                ki.append('- tematikus horgony `%s`: %d vers (a sor saját minősítése: NEM lexikai)' % (nev, len(versek)))
+            ki.append('')
+        with open(args.md, 'w', encoding='utf-8', newline='') as f:
+            f.write('\n'.join(ki))
     return 0
 
 
@@ -424,6 +505,10 @@ def main(argv=None):
     sp.add_argument('--id', default='ANTROP-001')
     sp.add_argument('--md')
     sp.set_defaults(func=cmd_lelet)
+    sp = sub.add_parser('meres')
+    sp.add_argument('--id', nargs='+')
+    sp.add_argument('--md')
+    sp.set_defaults(func=cmd_meres)
     args = ap.parse_args(argv)
     return args.func(args)
 
