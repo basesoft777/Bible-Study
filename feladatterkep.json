@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-10-11",
-   "commit": "82d724be"
+   "commit": "a5ab902e"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -77,7 +77,7 @@
   {
    "kulcs": "wait",
    "cimke": "Függésre vár",
-   "db": 6
+   "db": 5
   },
   {
    "kulcs": "plan",
@@ -100,10 +100,10 @@
    "parhuzamos": true
   },
   {
-   "szam": 54,
-   "kod": "LXX_OS_LEFEDETTSEG",
-   "cim": "Az LXX_OS lefedetlen versei — valódi görög hiány vagy versszámozási rés",
-   "most": "/kovetkezo; ⛔ az M0 felmérés után",
+   "szam": 61,
+   "kod": "LEKERDEZ_NAPLO",
+   "cim": "A lekérdező maga naplózzon — automatikus auditok-sor a lekerdez.py-ból, és az adhoc lépésérték",
+   "most": "/kovetkezo; ⛔ az M0 után (a motívumon kívüli lekérdezések naplózásának helye)",
    "felbemaradt": false,
    "parhuzamos": true
   },
@@ -470,22 +470,6 @@
    "leiras_hiany": false
   },
   {
-   "kulcs": "LXX_OS_LEFEDETTSEG",
-   "szam": 54,
-   "kod": "LXX_OS_LEFEDETTSEG",
-   "cim": "Az LXX_OS lefedetlen versei — valódi görög hiány vagy versszámozási rés",
-   "fazis": "1",
-   "allapot": "ready",
-   "brief_allapot": "nem_indult",
-   "most": "/kovetkezo; ⛔ az M0 felmérés után",
-   "fugg": "#42 (kész)",
-   "tervezett": false,
-   "reszletes": "",
-   "roviden": "",
-   "leiras_forras": null,
-   "leiras_hiany": true
-  },
-  {
    "kulcs": "ZSOLTAR_UJRAELLENORZES",
    "szam": 55,
    "kod": "ZSOLTAR_UJRAELLENORZES",
@@ -494,7 +478,7 @@
    "allapot": "stop",
    "brief_allapot": "nem_indult",
    "most": "Te: befagyasztva a #11 1. lépcsőjéig (DT74 (3): a régi forrásréteg és az éles lexikon nem bővül a régi szerkezet szerint); a feloldás után /kovetkezo; ⛔ az M0 felmérés után",
-   "fugg": "#42 (kész), #54*, #65*",
+   "fugg": "#42 (kész), #54 (kész), #65*",
    "tervezett": false,
    "reszletes": "",
    "roviden": "",
@@ -539,10 +523,10 @@
    "kod": "LEKERDEZ_NAPLO",
    "cim": "A lekérdező maga naplózzon — automatikus auditok-sor a lekerdez.py-ból, és az adhoc lépésérték",
    "fazis": "1",
-   "allapot": "wait",
+   "allapot": "ready",
    "brief_allapot": "nem_indult",
    "most": "/kovetkezo; ⛔ az M0 után (a motívumon kívüli lekérdezések naplózásának helye)",
-   "fugg": "#54*",
+   "fugg": "—",
    "tervezett": false,
    "reszletes": "",
    "roviden": "",
@@ -788,7 +772,6 @@
    "TANULMANY_ELLENORZES"
   ],
   "leiras_nelkul": [
-   "LXX_OS_LEFEDETTSEG",
    "ZSOLTAR_UJRAELLENORZES",
    "SZOSZEDET",
    "OLVASOI_PILOT",
@@ -804,7 +787,7 @@
    "TERV_BEFOGAD"
   ]
  },
- "terkep": "flowchart LR\n  classDef stop fill:#d93025,stroke:#8c1d18,color:#ffffff,stroke-width:2px\n  classDef run fill:#1e8e3e,stroke:#0d5226,color:#ffffff,stroke-width:2px\n  classDef ready fill:#1a73e8,stroke:#0b3d91,color:#ffffff,stroke-width:2px\n  classDef wait fill:#f9ab00,stroke:#a86f00,color:#2b1d00,stroke-width:2px\n  classDef plan fill:#8e44ad,stroke:#5b2470,color:#ffffff,stroke-width:2px,stroke-dasharray:6 3\n  classDef idle fill:#80868b,stroke:#4a4f54,color:#ffffff\n  classDef dt fill:#ff6d00,stroke:#a34500,color:#ffffff,stroke-width:2px\n\n  P_MCP_BUROK[\"MCP_BUROK\"]:::plan\n  P_SZPA_AUDIT[\"SZPA_AUDIT\"]:::plan\n  P_TERV_BEFOGAD[\"TERV_BEFOGAD\"]:::plan\n  T10[\"#10 LEXIKON_LEZARAS\"]:::idle\n  T11[\"#11 MIGRACIO\"]:::idle\n  T12[\"#12 TEREMT-002 3. lépés…\"]:::idle\n  T13[\"#13 1Móz 17-től a…\"]:::idle\n  T22[\"#22 Károli–Strong párosítás…\"]:::stop\n  T23[\"#23 MOTIVUM_FORRAS\"]:::stop\n  T25[\"#25 OLVASOI_HTML\"]:::idle\n  T27[\"#27 FP3\"]:::idle\n  T36[\"#36 LEXIKON_UJRAGEN\"]:::wait\n  T38[\"#38 BDB_FORDITAS\"]:::ready\n  T45[\"#45 MODELL_ELLENORZES\"]:::ready\n  T48[\"#48 KJV_REGI_KIVEZETES\"]:::wait\n  T50[\"#50 CI_JAVITO_KOR\"]:::ready\n  T52[\"#52 TERV_SZINKRON\"]:::stop\n  T54[\"#54 LXX_OS_LEFEDETTSEG\"]:::ready\n  T55[\"#55 ZSOLTAR_UJRAELLENORZES\"]:::stop\n  T59[\"#59 SZOSZEDET\"]:::ready\n  T60[\"#60 OLVASOI_PILOT\"]:::wait\n  T61[\"#61 LEKERDEZ_NAPLO\"]:::wait\n  T65[\"#65 KAROLI_ELLENORZES\"]:::ready\n  T67[\"#67 BDB_JAVITAS_KAPU\"]:::idle\n  T69[\"#69 SEMA_DATASET_SZAM\"]:::idle\n  T7[\"#7 Thayer teljes magyar…\"]:::idle\n  T70[\"#70 SZOTAR_S26\"]:::wait\n  T74[\"#74 TANULMANY_JAVITAS_GEPI\"]:::idle\n  T75[\"#75 TANULMANY_JAVITAS\"]:::idle\n  T76[\"#76 OLVASOI_KONKORDANCIA\"]:::idle\n  T79[\"#79 SQLITE_EPIT\"]:::idle\n  T80[\"#80 BDB_KAROLI_POTLAS\"]:::idle\n  T81[\"#81 KAROLI_UJJLENYOMAT\"]:::idle\n  T86[\"#86 ELOFIZETES_FEED\"]:::stop\n  T9[\"#9 SZOTAR S2\"]:::wait\n  D_DT_F38i{{\"DT-F38i\"}}:::dt\n  D_DT_M1{{\"DT-M1\"}}:::dt\n  D_DT_M2{{\"DT-M2\"}}:::dt\n  D_DT_M3{{\"DT-M3\"}}:::dt\n  D_DT_M4{{\"DT-M4\"}}:::dt\n  D_DT_M5{{\"DT-M5\"}}:::dt\n  D_DT_M6{{\"DT-M6\"}}:::dt\n  D_DT_M7{{\"DT-M7\"}}:::dt\n  D_DT_M8{{\"DT-M8\"}}:::dt\n  D_DT2{{\"DT2\"}}:::dt\n  D_DT28{{\"DT28\"}}:::dt\n  D_DT52{{\"DT52\"}}:::dt\n  D_DT56{{\"DT56\"}}:::dt\n  D_DT57{{\"DT57\"}}:::dt\n  D_DT66{{\"DT66\"}}:::dt\n  D_DT71{{\"DT71\"}}:::dt\n  D_DT74{{\"DT74\"}}:::dt\n  D_DT75{{\"DT75\"}}:::dt\n  D_DT77{{\"DT77\"}}:::dt\n  D_DT78{{\"DT78\"}}:::dt\n  D_DT84{{\"DT84\"}}:::dt\n  D_DT90{{\"DT90\"}}:::dt\n\n  P_MCP_BUROK --> D_DT_M3\n  P_MCP_BUROK --> D_DT_M5\n  P_MCP_BUROK --> D_DT_M7\n  P_MCP_BUROK --> T61\n  P_MCP_BUROK --> T79\n  P_SZPA_AUDIT --> D_DT77\n  P_TERV_BEFOGAD --> D_DT_M8\n  T10 --> D_DT2\n  T10 --> D_DT74\n  T10 --> T11\n  T10 --> T52\n  T10 --> T9\n  T11 --> D_DT74\n  T11 --> T23\n  T11 --> T52\n  T11 --> T9\n  T12 --> D_DT74\n  T12 --> T11\n  T13 --> T10\n  T22 --> D_DT56\n  T22 --> D_DT57\n  T22 --> D_DT71\n  T23 --> D_DT28\n  T23 --> D_DT66\n  T23 --> D_DT74\n  T23 --> D_DT84\n  T25 --> T11\n  T25 --> T12\n  T25 --> T23\n  T36 --> D_DT28\n  T36 --> D_DT74\n  T36 --> T38\n  T36 --> T52\n  T36 --> T80\n  T36 --> T9\n  T38 --> D_DT52\n  T38 --> D_DT56\n  T38 --> D_DT_F38i\n  T48 --> T22\n  T52 --> D_DT78\n  T52 --> D_DT90\n  T55 --> D_DT74\n  T55 --> T54\n  T55 --> T65\n  T60 --> T80\n  T61 --> D_DT75\n  T61 --> T54\n  T65 --> D_DT_M2\n  T67 --> T7\n  T67 --> T80\n  T67 --> T9\n  T70 --> D_DT74\n  T70 --> T55\n  T70 --> T9\n  T75 --> T74\n  T76 --> D_DT75\n  T76 --> D_DT_M1\n  T76 --> D_DT_M4\n  T76 --> D_DT_M6\n  T76 --> T79\n  T79 --> D_DT77\n  T80 --> T22\n  T80 --> T38\n  T81 --> T61\n  T81 --> T65\n  T86 --> T38\n  T86 --> T52\n  T86 --> T65\n  T86 --> T7\n  T86 --> T76\n  T86 --> T79\n  T86 --> T80\n  T86 --> T9\n  T9 --> D_DT28\n  T9 --> D_DT74\n  T9 --> T23\n  T9 --> T52\n  T9 --> T80",
+ "terkep": "flowchart LR\n  classDef stop fill:#d93025,stroke:#8c1d18,color:#ffffff,stroke-width:2px\n  classDef run fill:#1e8e3e,stroke:#0d5226,color:#ffffff,stroke-width:2px\n  classDef ready fill:#1a73e8,stroke:#0b3d91,color:#ffffff,stroke-width:2px\n  classDef wait fill:#f9ab00,stroke:#a86f00,color:#2b1d00,stroke-width:2px\n  classDef plan fill:#8e44ad,stroke:#5b2470,color:#ffffff,stroke-width:2px,stroke-dasharray:6 3\n  classDef idle fill:#80868b,stroke:#4a4f54,color:#ffffff\n  classDef dt fill:#ff6d00,stroke:#a34500,color:#ffffff,stroke-width:2px\n\n  P_MCP_BUROK[\"MCP_BUROK\"]:::plan\n  P_SZPA_AUDIT[\"SZPA_AUDIT\"]:::plan\n  P_TERV_BEFOGAD[\"TERV_BEFOGAD\"]:::plan\n  T10[\"#10 LEXIKON_LEZARAS\"]:::idle\n  T11[\"#11 MIGRACIO\"]:::idle\n  T12[\"#12 TEREMT-002 3. lépés…\"]:::idle\n  T13[\"#13 1Móz 17-től a…\"]:::idle\n  T22[\"#22 Károli–Strong párosítás…\"]:::stop\n  T23[\"#23 MOTIVUM_FORRAS\"]:::stop\n  T25[\"#25 OLVASOI_HTML\"]:::idle\n  T27[\"#27 FP3\"]:::idle\n  T36[\"#36 LEXIKON_UJRAGEN\"]:::wait\n  T38[\"#38 BDB_FORDITAS\"]:::ready\n  T45[\"#45 MODELL_ELLENORZES\"]:::ready\n  T48[\"#48 KJV_REGI_KIVEZETES\"]:::wait\n  T50[\"#50 CI_JAVITO_KOR\"]:::ready\n  T52[\"#52 TERV_SZINKRON\"]:::stop\n  T55[\"#55 ZSOLTAR_UJRAELLENORZES\"]:::stop\n  T59[\"#59 SZOSZEDET\"]:::ready\n  T60[\"#60 OLVASOI_PILOT\"]:::wait\n  T61[\"#61 LEKERDEZ_NAPLO\"]:::ready\n  T65[\"#65 KAROLI_ELLENORZES\"]:::ready\n  T67[\"#67 BDB_JAVITAS_KAPU\"]:::idle\n  T69[\"#69 SEMA_DATASET_SZAM\"]:::idle\n  T7[\"#7 Thayer teljes magyar…\"]:::idle\n  T70[\"#70 SZOTAR_S26\"]:::wait\n  T74[\"#74 TANULMANY_JAVITAS_GEPI\"]:::idle\n  T75[\"#75 TANULMANY_JAVITAS\"]:::idle\n  T76[\"#76 OLVASOI_KONKORDANCIA\"]:::idle\n  T79[\"#79 SQLITE_EPIT\"]:::idle\n  T80[\"#80 BDB_KAROLI_POTLAS\"]:::idle\n  T81[\"#81 KAROLI_UJJLENYOMAT\"]:::idle\n  T86[\"#86 ELOFIZETES_FEED\"]:::stop\n  T9[\"#9 SZOTAR S2\"]:::wait\n  D_DT_F38i{{\"DT-F38i\"}}:::dt\n  D_DT_M1{{\"DT-M1\"}}:::dt\n  D_DT_M2{{\"DT-M2\"}}:::dt\n  D_DT_M3{{\"DT-M3\"}}:::dt\n  D_DT_M4{{\"DT-M4\"}}:::dt\n  D_DT_M5{{\"DT-M5\"}}:::dt\n  D_DT_M6{{\"DT-M6\"}}:::dt\n  D_DT_M7{{\"DT-M7\"}}:::dt\n  D_DT_M8{{\"DT-M8\"}}:::dt\n  D_DT2{{\"DT2\"}}:::dt\n  D_DT28{{\"DT28\"}}:::dt\n  D_DT52{{\"DT52\"}}:::dt\n  D_DT56{{\"DT56\"}}:::dt\n  D_DT57{{\"DT57\"}}:::dt\n  D_DT66{{\"DT66\"}}:::dt\n  D_DT71{{\"DT71\"}}:::dt\n  D_DT74{{\"DT74\"}}:::dt\n  D_DT75{{\"DT75\"}}:::dt\n  D_DT77{{\"DT77\"}}:::dt\n  D_DT78{{\"DT78\"}}:::dt\n  D_DT84{{\"DT84\"}}:::dt\n  D_DT90{{\"DT90\"}}:::dt\n\n  P_MCP_BUROK --> D_DT_M3\n  P_MCP_BUROK --> D_DT_M5\n  P_MCP_BUROK --> D_DT_M7\n  P_MCP_BUROK --> T61\n  P_MCP_BUROK --> T79\n  P_SZPA_AUDIT --> D_DT77\n  P_TERV_BEFOGAD --> D_DT_M8\n  T10 --> D_DT2\n  T10 --> D_DT74\n  T10 --> T11\n  T10 --> T52\n  T10 --> T9\n  T11 --> D_DT74\n  T11 --> T23\n  T11 --> T52\n  T11 --> T9\n  T12 --> D_DT74\n  T12 --> T11\n  T13 --> T10\n  T22 --> D_DT56\n  T22 --> D_DT57\n  T22 --> D_DT71\n  T23 --> D_DT28\n  T23 --> D_DT66\n  T23 --> D_DT74\n  T23 --> D_DT84\n  T25 --> T11\n  T25 --> T12\n  T25 --> T23\n  T36 --> D_DT28\n  T36 --> D_DT74\n  T36 --> T38\n  T36 --> T52\n  T36 --> T80\n  T36 --> T9\n  T38 --> D_DT52\n  T38 --> D_DT56\n  T38 --> D_DT_F38i\n  T48 --> T22\n  T52 --> D_DT78\n  T52 --> D_DT90\n  T55 --> D_DT74\n  T55 --> T65\n  T60 --> T80\n  T61 --> D_DT75\n  T65 --> D_DT_M2\n  T67 --> T7\n  T67 --> T80\n  T67 --> T9\n  T70 --> D_DT74\n  T70 --> T55\n  T70 --> T9\n  T75 --> T74\n  T76 --> D_DT75\n  T76 --> D_DT_M1\n  T76 --> D_DT_M4\n  T76 --> D_DT_M6\n  T76 --> T79\n  T79 --> D_DT77\n  T80 --> T22\n  T80 --> T38\n  T81 --> T61\n  T81 --> T65\n  T86 --> T38\n  T86 --> T52\n  T86 --> T65\n  T86 --> T7\n  T86 --> T76\n  T86 --> T79\n  T86 --> T80\n  T86 --> T9\n  T9 --> D_DT28\n  T9 --> D_DT74\n  T9 --> T23\n  T9 --> T52\n  T9 --> T80",
  "dontesek": {
   "nyitott": [
    {
@@ -1460,6 +1443,36 @@
      "🟢"
     ],
     "sor": 172
+   },
+   {
+    "id": "DT-F54a",
+    "feladat": "#54 LXX_OS_LEFEDETTSEG (M0 ⛔)",
+    "kerdes": "Az M0 felmérés kész (`naplok/LXX_OS_LEFEDETTSEG_M0.md`, `naplok/LXX_OS_LEFEDETTSEG_osztalyozas.tsv`): az 503 vers közül A 438 (kulcsolási rés), B 3, C 5, bizonytalan 57. (a) Az A osztály javításának módja: az A2 (130 vers: 2Móz 35, Dán 3, Hós 2/13/14, Jób 37) mellé nincs tábla-sor. (b) A zsoltár-feliratok kulcsolása (65 vers; Zsolt 54:2 az 503-on kívül). (c) A bizonytalan (57), B (3) és C (5) sorok sorsa. (d) A meglévő 9 kettős Károli-kulcs (Zsolt 13:1 stb.) javítása az M1-ben. *(forrás: M0 jelentés 4. szakasz)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 173
+   },
+   {
+    "id": "DT-F54b",
+    "feladat": "#54 LXX_OS_LEFEDETTSEG (M1 (d) ⛔: a Zsolt 13 kulcsainak javítása)",
+    "kerdes": "A 9 kettős kulcsból 8 jogos összevonás (az LXX egy Károli-verset két versre bont; változatlan), 1 hibás: a Zsolt 13-ban LXX 12:1 és 12:2 is `Zsolt 13:1`, és az LXX 12:2–12:5 egy verssel eltolt kulcsot visel (12:2→13:1, 12:3→13:2, 12:4→13:3, 12:5→13:4); a Károli szövege szerint a helyes LXX 12:n → Zsolt 13:n (n = 1..6; a 13:6-ot az M1 már kulcsolta). A javítás négy meglévő kulcsot (12:2–12:5) érint. A változó kulcsokra hivatkozó sorok (a DT-F54a (d) feltétele szerint kilistázva): `konkordancia/LXX_versszintu_parok.tsv` 15 sora (Zsolt 13:3 → Psalms (LXX) 12:4: 8 sor; Zsolt 13:4 → 12:5: 7 sor; generált, `eszkozok/lxx_versszintu_import.py`); egyéb adat- vagy naplósor nincs (a `generalt_proba/lexikon/HAMART-001_TUDOMANYOS.md` 856. sora Károli-KH hivatkozás a Hab 1:2-höz, nem LXX-kulcs). A fájl az M1 többi 438 kulcsa miatt amúgy is elavult. *(forrás: `naplok/LXX_OS_LEFEDETTSEG_M2.md` 3. és 6. szakasz)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 174
+   },
+   {
+    "id": "DT-F54c",
+    "feladat": "#54 LXX_OS_LEFEDETTSEG (M1 (d) ⛔: a `LXX_versszintu_parok.tsv` újragenerálása)",
+    "kerdes": "A DT-F54b 2. feltétele szerint megálltam: az újragenerálás a Zsolt 13-on kívül is töröl sorokat. Különbség (`naplok/F54_parok_kulonbseg.md`): +5 529 / −367 sor (34 pár teljesen eltűnik, 2 változik); a −367-ből 15 a Zsolt 13 (a hibás LXX 12:4 / 12:5 sorok, ahogy várt), 352 sor a Zsolt 13-on kívül (Préd 23, Ézs 5, Hós 3, 4Móz 3 pár): a fájl 2026-09-28-i, az F85.6 TAHOT-átkulcsolás előtti kulcsokból készült, a mai `TAHOT_kivonat.tsv` Károli-kulcsain ezek a párok már nem állnak elő. Az F54 hatása önmagában csak +932 / −15 (Zsolt 13). A fájl nincs újragenerálva commitolt állapotban.",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 175
    }
   ],
   "javasolt": [],
@@ -1489,6 +1502,6 @@
     "fejlec_oszlopszam": 8
    }
   ],
-  "kesz_db": 95
+  "kesz_db": 96
  }
 }
