@@ -615,21 +615,32 @@ def lefedettseg_javit_konyv(slug, sorok):
     for p in sorok:
         if p[0] in uj and not p[2]:
             p[2], p[3] = uj[p[0]]
-    # versszintű felülbírálat (karoli_vers_felulbiralas.tsv): csak üres kulcsra, és csak ha a
-    # Károli-vers még nem kulcsolt (kettős kulcs nem keletkezhet)
-    foglalt = set(kulcs_lxx) | {v[0] for v in uj.values()}
+    # versszintű felülbírálat (karoli_vers_felulbiralas.tsv): az üres kulcsot kitölti, a meglévő,
+    # eltérő kulcsot felülírja (DT-F54b: Zsolt 13), de kettős kulcs nem keletkezhet
     felul = load_vers_felulbiralas()
+    cel = {}
     for p in sorok:
-        if p[2]:
+        if p[0] in cel:
             continue
         m = re.search(r"(\d+):(\d+)$", p[0])
-        if not m:
-            continue
-        ig = felul.get((book_key, int(m.group(1)), int(m.group(2))))
-        if ig and ig not in foglalt:
-            p[2], p[3] = ig, "kezi_eltolas_tabla"
-            uj[p[0]] = (ig, "kezi_eltolas_tabla")
-            foglalt.add(ig)
+        ig = felul.get((book_key, int(m.group(1)), int(m.group(2)))) if m else None
+        if ig and (not p[2] or p[2] != ig):
+            cel[p[0]] = ig
+    if cel:
+        marad = {}
+        for p in sorok:
+            if p[2] and p[0] not in cel:
+                marad.setdefault(p[2], p[0])
+        for p in sorok:
+            if p[0] in cel:
+                ig = cel[p[0]]
+                if ig in marad and not p[2]:
+                    continue
+                if ig in marad and marad[ig] != p[0]:
+                    continue
+                if p[2] != ig:
+                    p[2], p[3] = ig, "kezi_eltolas_tabla"
+                    uj[p[0]] = (ig, "kezi_eltolas_tabla")
     return uj
 
 

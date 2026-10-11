@@ -135,3 +135,9 @@ hosea	14	6	Hós 14:6	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K-1, feje
 hosea	14	7	Hós 14:7	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K-1, fejezet-szoszamkorrelacio r=0.95; tartalmi mintavetel (M2): Hós 14:1, 14:6; manual, ts=2026-10-11
 hosea	14	8	Hós 14:8	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K-1, fejezet-szoszamkorrelacio r=0.95; tartalmi mintavetel (M2): Hós 14:1, 14:6; manual, ts=2026-10-11
 hosea	14	9	Hós 14:9	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K-1, fejezet-szoszamkorrelacio r=0.95; tartalmi mintavetel (M2): Hós 14:1, 14:6; manual, ts=2026-10-11
+psalms	12	1	Zsolt 13:1	F54 DT-F54b: a Karoli a cimet szamozott versnek veszi, igy LXX Ps 12:1 -> Zsolt 13:1; tartalmi egyezes (manual, ts=2026-10-11): cim: "Az eneklőmesternek; Dávid zsoltára" = "eis to telos psalmos to Dauid"
+psalms	12	2	Zsolt 13:2	F54 DT-F54b: a Karoli a cimet szamozott versnek veszi, igy LXX Ps 12:2 -> Zsolt 13:2; tartalmi egyezes (manual, ts=2026-10-11): "Uram, meddig felejtkezel" = "heos pote kyrie epilethe mou"
+psalms	12	3	Zsolt 13:3	F54 DT-F54b: a Karoli a cimet szamozott versnek veszi, igy LXX Ps 12:3 -> Zsolt 13:3; tartalmi egyezes (manual, ts=2026-10-11): "Meddig tanakodjam lelkemben" = "heos tinos thesomai boulas en psyche mou"
+psalms	12	4	Zsolt 13:4	F54 DT-F54b: a Karoli a cimet szamozott versnek veszi, igy LXX Ps 12:4 -> Zsolt 13:4; tartalmi egyezes (manual, ts=2026-10-11): "Nézz ide, felelj nékem" = "epiblepson eisakouson mou kyrie"
+psalms	12	5	Zsolt 13:5	F54 DT-F54b: a Karoli a cimet szamozott versnek veszi, igy LXX Ps 12:5 -> Zsolt 13:5; tartalmi egyezes (manual, ts=2026-10-11): "Hogy ne mondja ellenségem" = "mepote eipe ho echthros mou"
+psalms	12	6	Zsolt 13:6	F54 DT-F54b: a Karoli a cimet szamozott versnek veszi, igy LXX Ps 12:6 -> Zsolt 13:6; tartalmi egyezes (manual, ts=2026-10-11): "kegyelmedben bíztam" = "ego de epi to eleei sou elpisa"
