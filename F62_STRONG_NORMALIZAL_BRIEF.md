@@ -6,10 +6,10 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: folyamat
-allapot: fut
+allapot: lezarva
 ag: claude/strong-normalizal
 ad: egyetlen, tesztelt strong_normalizal() függvény (eszkozok/strong_util.py) a SEMA 1.2 alakra (H/G + négy számjegy, balról nullázva, + láncok), amelyet a lekerdez.py és a betolt.py használ; a többi saját normalizáló leltárba kerül, és az adattáblákon gépi ellenőrzés igazolja, hogy nincs SEMA 1.2-nek nem megfelelő Strong-érték
-kovetkezo: ellenőrzés és zárás (PR a felhasználóé)
+kovetkezo: merge a felhasználóé
 olvas: [adat/SEMA.md, eszkozok/lekerdez.py, eszkozok/betolt.py, eszkozok/ellenoriz.py, eszkozok/lxx_osszevetes.py, eszkozok/merge_karoli_szofaj.py, eszkozok/tw_import.py, eszkozok/tbesh_konszolidalt_import.py, eszkozok/teszt_lekerdez_sir.py, adat/elofordulasok.tsv, adat/jeloltek.tsv, adat/lexikon_hivatkozasok.tsv, adat/grammatikai_strongok.tsv, konkordancia/Karoli_Strong_kivonat.tsv, NYITOTT_FELADATOK.md]
 ir: [eszkozok/strong_util.py, eszkozok/teszt_strong_util.py, eszkozok/strong_meres.py, eszkozok/lekerdez.py, eszkozok/betolt.py, adat/SEMA.md, DONTESEK.md, NYITOTT_FELADATOK.md, naplok/STRONG_NORMALIZAL_M0.md, naplok/STRONG_NORMALIZAL_zaras.md]
 fugg: []
