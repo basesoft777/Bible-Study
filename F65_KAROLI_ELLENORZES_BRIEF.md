@@ -9,7 +9,7 @@ munka: adat
 allapot: megallt
 ag: claude/f65-karoli-ellenorzes
 ad: a tematikus táblák és a jelölt-/előfordulás-sorok Károli-szó + Strong párjai a #22 párosítása (adat/karoli_strong/parok_<könyv>.tsv) ellen ellenőrizve, eltéréslistával; a variancia-térkép (Strong → Károli-szóalakok, szóalak → Strongok) adattáblaként; a SEMA 1.7 a DT-M2 szerint bővítve, és a megerősített sorok azonosítási módja szó-szintű-gépi
-kovetkezo: Te: az M3 ⛔ (DT-F65b) — az ISTENTISZT-001 minta átnézése (naplok/KAROLI_ELLENORZES_M3_minta.md), a részleges egyezés és a névelők kezelése; jóváhagyás után M4 (--frissit --ir), M5
+kovetkezo: Te: az M4 kész (23+23 sor átállítva); hátra az M5: fuggetlen-ellenor (szúrópróba 10 frissített és 10 eltérő soron), a lezárás (allapot lezarva) és a draft PR — a lezárás előtt megállás
 olvas: [adat/karoli_strong/, adat/jeloltek.tsv, adat/elofordulasok.tsv, adat/SEMA.md, tematikus_lezart/, konkordancia/Karoli_Strong_kivonat.tsv, konkordancia/Karoli_1908.tsv, F22_KAROLI_STRONG_BRIEF.md, naplok/F22_Jozs_jelentes.md]
 ir: [adat/SEMA.md, adat/jeloltek.tsv, adat/elofordulasok.tsv, adat/karoli_variancia.tsv, eszkozok/karoli_ellenorzes.py, eszkozok/teszt_karoli_ellenorzes.py]
 fugg: [62, 63]

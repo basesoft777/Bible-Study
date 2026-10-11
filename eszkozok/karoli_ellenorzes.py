@@ -43,6 +43,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PAROK_MINTA = os.path.join('adat', 'karoli_strong', 'parok_*.tsv')
 ELOFORDULASOK = os.path.join('adat', 'elofordulasok.tsv')
 JELOLTEK = os.path.join('adat', 'jeloltek.tsv')
+SZURT = {'a', 'az', 'és'}  # névelő és kötőszó: nem kerül a nem illesztett listába (DT-F65b (2))
 UJ_MOD = 'szó-szintű-gépi'
 REGI_MOD = 'tartalom-alapú'
 
@@ -112,7 +113,7 @@ def versek(igehely):
 def ellenoriz_sor(igehely, karoli_szo, strongok, vers):
     """-> dict: itelet, gepi, biz, illesztett, nem_illesztett, megjegyzes"""
     r = {'itelet': 'nincs_par', 'gepi': [], 'biz': [], 'illesztett': [],
-         'nem_illesztett': [], 'megjegyzes': ''}
+         'nem_illesztett': [], 'nincs_gepi_par': [], 'mas_strong': [], 'megjegyzes': ''}
     vl = versek(igehely)
     if vl is None:
         r['megjegyzes'] = 'igehely-tartomány nem bontható (%s)' % igehely
@@ -142,13 +143,22 @@ def ellenoriz_sor(igehely, karoli_szo, strongok, vers):
     r['itelet'] = 'egyezik'
     r['biz'] = sorted({p[2] for p in egyezo})
     r['illesztett'] = [t for t in toks if t in ill]
-    r['nem_illesztett'] = [t for t in toks if t not in ill]
+    # Névelő és "és" kiszűrve a listából (DT-F65b (2)); csak lista-szűrés, az ítélet nem változik.
+    for t in toks:
+        if t in ill or t in SZURT:
+            continue
+        masok = sorted({strong_norm(p[1]) for p in par if p[0].casefold() == t})
+        if masok:
+            r['mas_strong'].append('%s:%s' % (t, '+'.join(masok)))
+        else:
+            r['nincs_gepi_par'].append(t)
+        r['nem_illesztett'].append(t)
     return r
 
 
 def reszleges(r):
-    """Több szavas karoli_szo, ahol nem minden szó illeszkedett a sor Strongjaihoz."""
-    return len(r['illesztett']) + len(r['nem_illesztett']) > 1 and bool(r['nem_illesztett'])
+    """Több szavas karoli_szo, ahol (a névelő és az "és" nélkül) nem minden szó illeszkedett a sor Strongjaihoz."""
+    return bool(r['nem_illesztett'])
 
 
 def frissitheto(r):
@@ -188,7 +198,7 @@ def meres():
 
 ELT_FEJ = ['sor', 'id', 'igehely', 'karoli_szo', 'regi_strong', 'jelenlegi_mod', 'itelet',
            'gepi_strongok', 'bizonyossag', 'reszleges', 'illesztett_szavak',
-           'nem_illesztett_szavak', 'megjegyzes']
+           'nincs_gepi_par', 'mas_strong', 'megjegyzes']
 
 
 def ir_eltereslista(ut, vers=None):
@@ -203,13 +213,13 @@ def ir_eltereslista(ut, vers=None):
             f.write('\t'.join([str(e['n']), e['id'], e['igehely'], e['karoli_szo'], e['strong'], e['mod'],
                                r['itelet'], ','.join(r['gepi']), ','.join(r['biz']),
                                'igen' if reszleges(r) else 'nem', ','.join(r['illesztett']),
-                               ','.join(r['nem_illesztett']), r['megjegyzes']]) + '\n')
+                               ','.join(r['nincs_gepi_par']), ','.join(r['mas_strong']), r['megjegyzes']]) + '\n')
     print('írva:', ut, len(er), 'sor')
     return er
 
 
 VAR_FEJ = ['tipus', 'konyv', 'kulcs', 'ertek', 'darab', 'bizonyossag', 'id', 'igehely',
-           'karoli_szo', 'reszleges', 'nem_illesztett', 'proveniencia']
+           'karoli_szo', 'reszleges', 'nincs_gepi_par', 'mas_strong', 'proveniencia']
 
 
 def variancia(ut, ts, konyvek=None):
@@ -236,14 +246,14 @@ def variancia(ut, ts, konyvek=None):
         for tip, d in (('strong_szoalak', a), ('szoalak_strong', b)):
             for (bz, kulcs) in sorted(d):
                 for ertek, n in sorted(d[(bz, kulcs)].items(), key=lambda x: (-x[1], x[0])):
-                    sor_ki.append([tip, k, kulcs, ertek, str(n), bz, '', '', '', '', '', prov])
+                    sor_ki.append([tip, k, kulcs, ertek, str(n), bz, '', '', '', '', '', '', prov])
     for e in ellenorzes_futtat(vers):
         r = e['r']
         if not frissitheto(r):
             continue
         sor_ki.append(['megerosites', e['igehely'].split(' ')[0], e['strong'], ','.join(r['gepi']), '', 'magas',
                        e['id'], e['igehely'], e['karoli_szo'], 'igen' if reszleges(r) else 'nem',
-                       ','.join(r['nem_illesztett']),
+                       ','.join(r['nincs_gepi_par']), ','.join(r['mas_strong']),
                        'scope=manual | forras=adat/karoli_strong/parok_*.tsv (vers: %s) | ts=%s' % (e['igehely'], ts)])
     with open(ut, 'w', encoding='utf-8', newline='') as f:
         f.write('# F65 M1: Károli-variancia (Strong -> szóalakok, szóalak -> Strongok) a magas párt tartalmazó könyvekre, '

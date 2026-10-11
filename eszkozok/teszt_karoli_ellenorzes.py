@@ -95,8 +95,18 @@ class Teszt(unittest.TestCase):
     def test_reszleges(self):
         e = self.itelet()
         r = e[('1Móz 1:2', 'a mélység')]['r']
-        self.assertTrue(ke.reszleges(r))
-        self.assertEqual(r['nem_illesztett'], ['a'])
+        # "a mélység": a névelő kiszűrve -> teljes egyezés
+        self.assertFalse(ke.reszleges(r))
+        self.assertEqual(r['nem_illesztett'], [])
+        # "kietlen és puszta" H8414 sor: az "és" kiszűrve, a "puszta" más Stronghoz (H0922) illeszkedik
+        r2 = ke.ellenoriz_sor('1Móz 1:2', 'kietlen és puszta', ['H8414'], ke.betolt_parok()[0])
+        self.assertTrue(ke.reszleges(r2))
+        self.assertEqual(r2['mas_strong'], ['puszta:H0922'])
+        self.assertEqual(r2['nincs_gepi_par'], [])
+        # nincs gépi párja: "lélekké" mellett idegen szó
+        r3 = ke.ellenoriz_sor('1Móz 2:7', 'élő lélekké nagyon', ['H2416'], ke.betolt_parok()[0])
+        self.assertEqual(r3['nincs_gepi_par'], ['nagyon'])
+        self.assertEqual(r3['mas_strong'], ['lélekké:H5315'])
         self.assertFalse(ke.reszleges(e[('1Móz 2:7', 'élő lélekké')]['r']))
 
     def test_szarazon_nem_ir(self):
@@ -145,7 +155,7 @@ class Teszt(unittest.TestCase):
             self.assertTrue(prov.startswith('scope=manual | forras=adat/karoli_strong/parok_'))
             self.assertIn('ts=2026-10-11', prov)
         resz = {r[fej.index('karoli_szo')]: r[fej.index('reszleges')] for r in m}
-        self.assertEqual(resz['a mélység'], 'igen')
+        self.assertEqual(resz['a mélység'], 'nem')
         self.assertEqual(resz['élő lélekké'], 'nem')
         # az alacsony 1Móz 3:1 sor nem megerősítés; az aggregátumok bizonyossaga jelölt
         self.assertFalse(any(r[fej.index('karoli_szo')] == 'kígyó' for r in m))

@@ -1097,8 +1097,9 @@ Forrás a `parok_<könyv>.tsv`, tehát **modell-kimenet, javaslat** (a `bizonyos
 | `darab` | előfordulások száma (csak aggregátum) |
 | `bizonyossag` | `magas` \| `alacsony` (a pár; a `megerosites` sor csak `magas` lehet) |
 | `id`, `igehely`, `karoli_szo` | csak `megerosites`: az `elofordulasok.tsv` sor kulcsa és a régi `karoli_szo` |
-| `reszleges` | csak `megerosites`: `igen`, ha a `karoli_szo` több szavas és nem minden szava illeszkedett a sor Strongjaihoz (laza illesztés, DT-F65a (1)); egyébként `nem` |
-| `nem_illesztett` | csak `megerosites`: a nem illesztett szavak, vesszővel |
+| `reszleges` | csak `megerosites`: `igen`, ha a `karoli_szo` több szavas és a névelőn (`a`, `az`) és az `és`-en kívül nem minden szava illeszkedett a sor Strongjaihoz (laza illesztés, DT-F65a (1); a szűrés csak lista-szűrés, az ítéletet nem érinti, DT-F65b (2)); egyébként `nem` |
+| `nincs_gepi_par` | csak `megerosites`: a `karoli_szo` azon szavai, amelyeknek a versben nincs gépi párja (valódi hézag), vesszővel; a névelő (`a`, `az`) és az `és` ki van szűrve |
+| `mas_strong` | csak `megerosites`: a `karoli_szo` azon szavai, amelyek a versben más Stronghoz illeszkednek, `szó:Strong` alakban (több Strong `+`-szal), vesszővel; a névelő és az `és` ki van szűrve |
 | `proveniencia` | `scope=… \| forras=… \| ts=…` (kötelező, nem üres) |
 
 A `megerosites` sor a `szó-szintű-gépi` állítás (1.7) saját bizonyítéka: megléte a feltétele annak, hogy az `elofordulasok.tsv`/`jeloltek.tsv` sor `azonositas_modja`-ja `szó-szintű-gépi` lehet. A sor akkor is újraáll, ha a mód már átállt (a generálás idempotens).
