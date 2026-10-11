@@ -82,7 +82,7 @@ Eltérő Károli-token (két modell partnerhalmaza különbözik) összesen: 0; 
 ## 3. Kézi átnézésre jelölt pontok
 
 - Nincs: a Zakariásban nem volt kézi beolvasztás, és végleges kapuhiba sincs.
-- **Régi arany (2.2): 2/3, a kifejezés-egyeztetés műterméke.** A három hármas: `Zec.6.13 H3548 „pap”`, `Zec.6.13 H3678 „székében”`, `Zec.13.9 H7121+H8034 „segítségül hívja ... nevemet”`. A harmadik kifejezés-alakú, és a „...” elválasztó miatt az `f22_elemzes.py` `kifejezes_helyek` függvénye (szó szerinti, egybefüggő tokensorozat-egyeztetés) nem találja a vers tokenjei közt. A párosítás viszont mindkét linket tartalmazza: `Zak 13:9` „segítségül” és „hívja” → H7121, „nevemet” → H9003+H8034+H9020 (`parok_Zak.tsv`, `szavak_Zak.tsv`). A 66,7% (2/3) tehát nem párosítási hiba; a „tájékoztató” sor 100,0% (2/2) a nem található hármast a nevezőből kihagyja. Javaslat (külön tétel, nem végeztem el): az `f22_elemzes.py` kezelje a „...” elválasztós kifejezéseket (két rész külön egyeztetve), vagy a hármas kerüljön ki a mérésből.
+- **Régi arany (2.2): 2/3, a kifejezés-egyeztetés műterméke.** A három hármas: `Zec.6.13 H3548 „pap”`, `Zec.6.13 H3678 „székében”`, `Zec.13.9 H7121+H8034 „segítségül hívja ... nevemet”`. A harmadik kifejezés-alakú, és a „...” a kihagyott szavakat jelöli (a Károli-szövegben „segítségül hívja **az én** nevemet” áll), ezért az `f22_elemzes.py` `kifejezes_helyek` függvénye (szó szerinti, egybefüggő tokensorozat-egyeztetés) nem találja a vers tokenjei közt. A párosítás viszont mindkét linket tartalmazza: `Zak 13:9` „segítségül” és „hívja” → H7121, „nevemet” → H9003+H8034+H9020 (`parok_Zak.tsv`, `szavak_Zak.tsv`). A 66,7% (2/3) tehát nem párosítási hiba; a „tájékoztató” sor 100,0% (2/2) a nem található hármast a nevezőből kihagyja. Javaslat (külön tétel, nem végeztem el): az `f22_elemzes.py` kezelje a „...” elválasztós kifejezéseket (két rész külön egyeztetve), vagy a hármas kerüljön ki a mérésből.
 - A „gyanús fejezetek” listája a 2.1-ben formális: egy modell fut, `magas` nincs.
 
 ## 4. Kiegészítések ebben a menetben
@@ -95,4 +95,11 @@ Eltérő Károli-token (két modell partnerhalmaza különbözik) összesen: 0; 
 - Független szúrópróba (22.6): elmarad (DT70).
 - PR és merge a felhasználóé.
 - A következő könyv(ek) a felhasználó döntése: az ÓSZ-ből még 10 kis könyv hiányzik (Én, Sir, Hós, Jóel, Ámós, Mik, Hab, Sof, Hag, Mal; együtt 992 vers); a Hós (1:11, 11:11) jóváhagyott 2:1 beolvasztást tartalmaz (`f22/versosszevonas.tsv`, DT92), ott kézi átnézési pont várható; a többi 9 beolvasztás nélküli.
+
+## 6. Ellenőri kör (`naplok/ELLENOR_F22_Zak.md`)
+
+Az ellenőr a számszerű állításokat (211/211, 4 701 / 9 510, 2/211 → 0, 1,3345 USD, 80,5636 USD, a futó összeg folytonossága, a 992 vers a 10 megmaradt könyvben) és a régi arany „műtermék” indoklását saját lekérdezéssel és a kód olvasásával igazolta; 2 eltérés:
+
+- **A „külön tétel” nincs nyilvántartva (alacsony), nyitott:** az `f22_elemzes.py` „...” (kihagyásos kifejezés) kezelésére javasolt külön tétel sem a `NYITOTT_FELADATOK.md`-ben, sem a `DONTESEK.md`-ben nem szerepel, helyőrzőt (N-F) sem kapott; új tétel felvételét a felhasználó jóváhagyása és a `/befogad` parancs szabályozza, ezért itt nem vettem fel.
+- **Kozmetikai, javítva:** a `SEMA.md` 2.20 felsorolásából hiányzott egy vessző; pótolva. A jelentés 3. szakasza is pontosítva (nem a „...” token, hanem a vele jelölt kihagyás, „az én”, rontja az egyeztetést).
 
