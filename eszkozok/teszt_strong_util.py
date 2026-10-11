@@ -215,6 +215,31 @@ class LekerdezCli(unittest.TestCase):
     def test_nullazatlan_hibat_ad_a_helyes_alakkal(self):
         self.assertIn('H0779 alakú legyen', self._hiba('H779'))
 
+    def test_hibauzenet_nem_javasol_felrevezeto_szamot(self):
+        for s in ('H20447', 'H12345', 'G1234567'):
+            u = self._hiba(s)
+            self.assertNotIn('H0779', u)
+            self.assertNotIn('G0086', u)
+            self.assertNotIn('alakú legyen', u)  # nincs ugyanannak a számnak érvényes alakja
+            self.assertIn('legfeljebb négy jegy', u)
+        u = self._hiba('G020447')  # ugyanaz a szám nullamentesítve érvényes
+        self.assertIn('G20447 alakú legyen', u)
+        self.assertNotIn('H0779', u)
+        self.assertNotIn('G0086', u)
+
+    def test_domen_kisbetu_mint_a_scan(self):
+        import subprocess
+        env = dict(os.environ, PYTHONIOENCODING='utf-8')
+        lek = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'lekerdez.py')
+        p = subprocess.run([sys.executable, lek, 'domen', 'h779'], capture_output=True,
+                           text=True, encoding='utf-8', env=env)
+        self.assertEqual(p.returncode, 1)
+        self.assertIn('H0779 alakú legyen', p.stderr)
+        p = subprocess.run([sys.executable, lek, 'domen', 'h0779'], capture_output=True,
+                           text=True, encoding='utf-8', env=env)
+        self.assertEqual(p.returncode, 0)
+        self.assertIn('2 jelentés-egység', p.stdout)
+
     def test_ervenytelen_alakok(self):
         for s in ('1078', 'A0002', 'H2967a', 'H0779+H0780', 'X1', '', 'H'):
             self._hiba(s)

@@ -48,8 +48,17 @@ def cli_strong(nyers):
     try:
         jo = strong_normalizal(s)
     except ValueError as exc:
-        pelda = "G0086" if s.startswith("G") else "H0779"
-        print(f"Érvénytelen Strong-szám ({nyers!r}): {exc}. A Strong-szám {pelda} alakú legyen.",
+        # Javítást csak akkor javasolunk, ha ugyanannak a számnak a nullázott/nullamentesített
+        # alakja érvényes (G020447 -> G20447); egyébként általános szabály, konkrét szám nélkül.
+        javaslat = ""
+        m = re.match(r"^([HG])(\d+)$", s)
+        if m and m.group(2).lstrip("0"):
+            try:
+                javaslat = f" A Strong-szám {strong_normalizal(m.group(1) + m.group(2).lstrip('0'))} alakú legyen."
+            except ValueError:
+                pass
+        print(f"Érvénytelen Strong-szám ({nyers!r}): H-kód legfeljebb négy jegy; G-kód négy jegy, "
+              f"vagy öt jegy nem nulla kezdéssel; betűutótag és más karakter nem megengedett.{javaslat}",
               file=sys.stderr)
         sys.exit(1)
     if "+" in jo:
@@ -633,7 +642,7 @@ def cmd_domen(args):
     # (H779 -> hiba a helyes alakkal). KIVÉTEL: a `domen` saját kódtere — A#### és betűutótagos
     # (H0032a) `strong_kod` — nem SEMA 1.2 (nincs ilyen STRONG-típus), ezt a függvény nem
     # normalizálja; a `_anomaly_part_matches` A->H leképezése is e kódtér szabálya.
-    strongok = [cli_strong(s) if re.match(r"^[HG]\d+$", s.strip()) else s.strip()
+    strongok = [cli_strong(s) if re.match(r"^[HG]\d+$", s.strip().upper()) else s.strip()
                 for s in args.strong]
     if len(strongok) > 2:
         print("A `domen` legfeljebb két Strong-kódot fogad el.", file=sys.stderr)
