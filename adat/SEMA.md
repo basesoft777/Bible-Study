@@ -583,7 +583,7 @@ részsztring — l. 3.8 indoklása). A `lexikai-scan` subagent a proveniencia-so
 amúgy is szó szerint adja vissza; a rögzítés a fő szál feladata, nem a
 subagenté.
 
-**Önnaplózás (F61, DT-F61a).** A `lekerdez.py --naplo ID --lepes KÓD <alparancs> …`
+**Önnaplózás (F61, DT102).** A `lekerdez.py --naplo ID --lepes KÓD <alparancs> …`
 (a két kapcsoló az alparancs előtt és után is állhat) az alparancs kimenete után
 maga hozzáfűzi a sort; a `--lepes` ilyenkor kötelező, zárt értékkészlete
 `A5 | B2 | B3 | B4 | adhoc`. A `--naplo` ID három ágon dönt:
@@ -603,7 +603,7 @@ A `csatorna` az `ellenoriz.py` megengedett további proveniencia-kulcsai közöt
 (`strong`, `n`, `csatorna`). A `# napló: …` állapotsor a stderr-re megy, így a stdout utolsó
 sora `--naplo` esetén is a proveniencia-sor. A `naplok/*_lekerdezesek.tsv` formai ellenőrzése külön tétel.
 
-**Commitolási szabály (DT-F61b).** Az `ellenoriz.py` 8. szabálya nem nézi a `lepes` mezőt: egy
+**Commitolási szabály (DT103).** Az `ellenoriz.py` 8. szabálya nem nézi a `lepes` mezőt: egy
 motívum-ID első `auditok.tsv`-sora — bármely lépésé, nem csak az `adhoc`-é — SÉRTÉST ad, amíg a
 motívum „mindig”-datasetjeinek teljes lefedése nincs meg. Egy motívum auditsorai ezért csak a
 teljes lefedés után commitolandók; a motívum lekérdezései nem vándorolnak feladatnaplóba.

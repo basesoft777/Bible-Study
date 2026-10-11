@@ -36,4 +36,4 @@ Az 1. és 8. szabály együtt kizárja, hogy az `auditok.tsv`-be feladatkód-`id
 
 ## 4. Nyitott pont a kimenetről (K1/K2 összhangja)
 
-K1 szerint kapcsoló nélkül a kimenet bájtra azonos; K2 szerint a naplósor a *kiírt* proveniencia-sorral egyezik, `csatorna=cli`-vel. Következmény: a `csatorna=cli` csak `--naplo` esetén kerül a kiírt sorba is (kapcsoló nélkül a sor változatlan, `csatorna` nélkül). Ez a javaslat, a döntés a DT-F61a (2) pontja.
+K1 szerint kapcsoló nélkül a kimenet bájtra azonos; K2 szerint a naplósor a *kiírt* proveniencia-sorral egyezik, `csatorna=cli`-vel. Következmény: a `csatorna=cli` csak `--naplo` esetén kerül a kiírt sorba is (kapcsoló nélkül a sor változatlan, `csatorna` nélkül). Ez a javaslat, a döntés a DT102 (2) pontja.
