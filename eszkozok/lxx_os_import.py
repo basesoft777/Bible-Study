@@ -615,6 +615,21 @@ def lefedettseg_javit_konyv(slug, sorok):
     for p in sorok:
         if p[0] in uj and not p[2]:
             p[2], p[3] = uj[p[0]]
+    # versszintű felülbírálat (karoli_vers_felulbiralas.tsv): csak üres kulcsra, és csak ha a
+    # Károli-vers még nem kulcsolt (kettős kulcs nem keletkezhet)
+    foglalt = set(kulcs_lxx) | {v[0] for v in uj.values()}
+    felul = load_vers_felulbiralas()
+    for p in sorok:
+        if p[2]:
+            continue
+        m = re.search(r"(\d+):(\d+)$", p[0])
+        if not m:
+            continue
+        ig = felul.get((book_key, int(m.group(1)), int(m.group(2))))
+        if ig and ig not in foglalt:
+            p[2], p[3] = ig, "kezi_eltolas_tabla"
+            uj[p[0]] = (ig, "kezi_eltolas_tabla")
+            foglalt.add(ig)
     return uj
 
 
