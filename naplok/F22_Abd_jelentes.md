@@ -80,3 +80,10 @@ Eltérő Károli-token (két modell partnerhalmaza különbözik) összesen: 0; 
 - PR és merge a felhasználóé.
 - A következő könyv(ek) a felhasználó döntése: az ÓSZ-ből még 11 kis könyv hiányzik (Én, Sir, Hós, Jóel, Ámós, Mik, Hab, Sof, Hag, Zak, Mal; együtt 1 203 vers); a Hós (1:11, 11:11) jóváhagyott 2:1 beolvasztást tartalmaz (`f22/versosszevonas.tsv`, DT92), ott kézi átnézési pont várható; a többi 10 beolvasztás nélküli.
 
+## 6. Ellenőri kör (`naplok/ELLENOR_F22_Abd.md`)
+
+Az ellenőr a számszerű állításokat (21/21, 446 / 867, 0/21, 0,1251 USD, 79,2291 USD, az 1 203 vers a 11 megmaradt könyvben) saját lekérdezéssel igazolta; 2 eltérés:
+
+- **DT72 / D19 (közepes), nyitott, a felhasználó döntése:** a main beolvasztásakor az Abd saját, még ki nem adott 3 futásnapló-sorának `futo_osszeg_usd` értékét a Préd utolsó sorához igazítottam (77,83… → 79,17…); a D19 szerint a futásnapló csak kifejezett jóváhagyással írható át, a saját ágon lévő új sorokra nincs kivétel. Az értékek számszerűen helyesek, a régi sorok érintetlenek. Döntés kell: utólagos jóváhagyás, vagy kivétel a D19-be.
+- **D39 sor (alacsony), javítva:** a hiányzó könyvek felsorolása hibás volt (Náh és Jón már kész); helyesen: Hag 38, Sof 53, Mal 55, Hab 56.
+
