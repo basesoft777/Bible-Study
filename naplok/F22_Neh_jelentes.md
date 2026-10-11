@@ -92,3 +92,12 @@ Eltérő Károli-token (két modell partnerhalmaza különbözik) összesen: 0; 
 - Független szúrópróba (22.6): elmarad (DT70).
 - PR és merge a felhasználóé.
 - A következő könyv a felhasználó döntése; a mérés (2026.10.09) szerinti tiszta jelölt: 2Kir (413 / 87); a Dán (1644 / 312) előtt versbeosztás-döntés kell (37 detektorsor).
+
+## 6. Ellenőri kör (`naplok/ELLENOR_F22_Neh.md`)
+
+Az ellenőr a számszerű állításokat (406/406, 8 027 / 16 169, 36/406 → 0, 2,4477 USD, 68,3289 USD) saját lekérdezéssel igazolta; 3 eltérés:
+
+- **`futo_osszeg_usd` (a naplóban):** a Neh-sorok értéke az 1Kir nélkül számolt (utolsó sor 62,0769, valós 68,3289); a kanonikus napló átírása a felhasználó döntése (DT72), **nyitott**.
+- **K9 (`adat/datasetek.tsv`):** a parok-sorok jelentéslistájából hiányzott e jelentés; pótolva.
+- **Brief `kovetkezo`:** az ellenőri jelentésre hivatkozott, mielőtt az létezett; a jelentés most megvan.
+
