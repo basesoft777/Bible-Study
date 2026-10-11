@@ -84,7 +84,7 @@ Eltérő Károli-token (két modell partnerhalmaza különbözik) összesen: 0; 
 - **Hós 1:11 és Hós 11:11** (`naplok/F22_Hos_atnezes.tsv`): a két jóváhagyott 2:1 beolvasztás; a Károli-vers beolvasztott szakasza (1:11: 23–30. szó, 8 szó; 11:11: 22–40. szó, 19 szó) és a TAHOT-vers tokenjei (11, illetve 20) `kezi` / `fuggoben` állapotúak, link nélkül (a felhasználóé).
 - **Régi arany (2.2): 1/1, a `Hos.13.14 H7585` hármas.** A „Seol” a Károli-szövegben és a TAHOT 13:14-ben is kétszer szerepel; a párosítás az elsőt a 3. eredeti tokenre köti (`Hós 13:14`: hu 4 „Seol” → er 3 שְׁאוֹל H7585), a másodikat (hu 22 „oh”, 23 „Seol”) a 17. tokenre (H7585), tehát a hármas a várt (3.) tokenre párosult.
 - A „gyanús fejezetek” listája a 2.1-ben formális: egy modell fut, `magas` nincs.
-- Jelölési pontatlanság (adatot nem érint): a `versosszevonas.tsv` fejléce az `eredeti` címkét „MT-számozásúnak” mondja, de a „Hós 2:1” címke alatti szöveg az MT 2:3-a (KJV-számozás).
+- Jelölési pontatlanság (adatot nem érint): a `versosszevonas.tsv` fejléce az `eredeti` címkét „MT-számozásúnak” mondja, de a „Hós 2:1” címke alatti szöveg az MT 2:3-a (KJV-számozás); forrás: `konkordancia/Macula_heber_Hoseas.tsv:255` (`HOS 2:3!1` … `Hós 2:1`) és `naplok/F85_jelentes.md:66` („Hós 2:1 = MT 2:3”).
 
 ## 4. Kiegészítések ebben a menetben
 
@@ -97,4 +97,11 @@ Eltérő Károli-token (két modell partnerhalmaza különbözik) összesen: 0; 
 - Kézi átnézés: Hós 1:11 és Hós 11:11 (3. szakasz).
 - PR és merge a felhasználóé.
 - A következő könyv(ek) a felhasználó döntése: az ÓSZ-ből még 9 kis könyv hiányzik (Én, Sir, Jóel, Ámós, Mik, Hab, Sof, Hag, Mal; együtt 797 vers), a detektor szerint mind beolvasztás nélküli; az egylépéses (egy ág, egy PR) futtatásról a felhasználó dönt (D15, DT60).
+
+## 6. Ellenőri kör (`naplok/ELLENOR_F22_Hos.md`)
+
+Az ellenőr a számszerű állításokat (195/195, 3 711 / 7 291, a 58 `kezi` token a két beolvasztásból, 2/195 → 0, 0,9310 USD, 81,4946 USD, a futó összeg folytonossága, a 797 vers a 9 megmaradt könyvben) és a `Hos.13.14` Seol-hármas tokenpárosítását (hu 4 → er 3; hu 22–23 → er 17) saját lekérdezéssel igazolta; 1 eltérés (alacsony), javítva:
+
+- **A1:** a jelentés „Hós 2:1 címke = MT 2:3” megfigyelése forrás nélkül állt; a hivatkozások (`Macula_heber_Hoseas.tsv:255`, `F85_jelentes.md:66`) a 3. szakaszban pótolva.
+- Megjegyzés (nem eltérés): a `SEMA.md` 2.20 „Kézi 1:2 beolvasztás” felsorolásából és a `kezi` példalistájából a Hós és a Préd is hiányzik (csak példa).
 
