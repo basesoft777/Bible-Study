@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-10-11",
-   "commit": "7b1bedab"
+   "commit": "c37994c3"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -317,7 +317,7 @@
    "fazis": "1",
    "allapot": "stop",
    "brief_allapot": "megallt",
-   "most": "Te: a Ruth kész (API, DT73 (a), D34; jelentés: `naplok/F22_Ruth_jelentes.md`; tiszta versbeosztás; végleges kapuhiba 0); a független ellenőr (`naplok/ELLENOR_F22_Ruth.md`) a jelentésben; az 1Királyok (PR #274), a Nehémiás (PR #275), a 2Királyok (PR #277), a Dániel (PR #279), a Péld, a Bír, a Jób, az Eszt, a 2Sám és az 1Sám a main-en; a szúrópróba elmarad (DT70); kézi átnézés: 2Sám 23:16, Jób 16:22, 36:33, Péld 11:31, korábbról 1Krón 19:2, Ézs 9:20, 64:1, Zsolt 119:94, 144:15, 145:1 (a felhasználóé); a régi arany `Job.17.13` hármasa kulcshibás (javaslat: `f21p/regi_arany_hibas.tsv`, külön tétel); PR, ready és merge (a felhasználóé). A következő könyv(ek) a felhasználó döntése: az ÓSZ-ből még 15 kis könyv hiányzik (Préd, Én, Sir, Hós, Jóel, Ámós, Abd, Jón, Mik, Náh, Hab, Sof, Hag, Zak, Mal), a detektor szerint a Hós (1:11, 11:11) és a Préd (2:26) jóváhagyott 2:1 beolvasztást tartalmaz (`f22/versosszevonas.tsv`, DT92), ezeknél kézi átnézési pont várható; a többi 13 kis könyv tiszta; párhuzamos futás csak kifejezett jóváhagyással indulhat (D15, DT60).",
+   "most": "Te: a Jónás kész (API, DT73 (a), D35; jelentés: `naplok/F22_Jon_jelentes.md`; tiszta versbeosztás; végleges kapuhiba 0); a független ellenőr (`naplok/ELLENOR_F22_Jon.md`) a jelentésben; az 1Királyok (PR #274), a Nehémiás (PR #275), a 2Királyok (PR #277), a Dániel (PR #279), a Ruth (PR #280), a Péld, a Bír, a Jób, az Eszt, a 2Sám és az 1Sám a main-en; a szúrópróba elmarad (DT70); kézi átnézés: 2Sám 23:16, Jób 16:22, 36:33, Péld 11:31, korábbról 1Krón 19:2, Ézs 9:20, 64:1, Zsolt 119:94, 144:15, 145:1 (a felhasználóé); a régi arany `Job.17.13` hármasa kulcshibás (javaslat: `f21p/regi_arany_hibas.tsv`, külön tétel); PR, ready és merge (a felhasználóé). A következő könyv(ek) a felhasználó döntése: az ÓSZ-ből még 14 kis könyv hiányzik (Préd, Én, Sir, Hós, Jóel, Ámós, Abd, Mik, Náh, Hab, Sof, Hag, Zak, Mal), a detektor szerint a Hós (1:11, 11:11) és a Préd (2:26) jóváhagyott 2:1 beolvasztást tartalmaz (`f22/versosszevonas.tsv`, DT92), ezeknél kézi átnézési pont várható; a többi 12 kis könyv tiszta; párhuzamos futás csak kifejezett jóváhagyással indulhat (D15, DT60).",
    "fugg": "#21 (kész)",
    "tervezett": false,
    "reszletes": "Két modell (Sonnet, az első könyvnél Gemini is) a Károli-fordítás minden szavához megkeresi az eredeti héber szót és a Strong-számát; ahol a két modell egyezik, a kapcsolat „magas” bizonyosságú. Az 1–5Mózes és Józsué kész.",
@@ -1445,7 +1445,7 @@
     "sor": 172
    },
    {
-    "id": "DT-F54a",
+    "id": "DT98",
     "feladat": "#54 LXX_OS_LEFEDETTSEG (M0 ⛔)",
     "kerdes": "Az M0 felmérés kész (`naplok/LXX_OS_LEFEDETTSEG_M0.md`, `naplok/LXX_OS_LEFEDETTSEG_osztalyozas.tsv`): az 503 vers közül A 438 (kulcsolási rés), B 3, C 5, bizonytalan 57. (a) Az A osztály javításának módja: az A2 (130 vers: 2Móz 35, Dán 3, Hós 2/13/14, Jób 37) mellé nincs tábla-sor. (b) A zsoltár-feliratok kulcsolása (65 vers; Zsolt 54:2 az 503-on kívül). (c) A bizonytalan (57), B (3) és C (5) sorok sorsa. (d) A meglévő 9 kettős Károli-kulcs (Zsolt 13:1 stb.) javítása az M1-ben. *(forrás: M0 jelentés 4. szakasz)*",
     "allapot": "alkalmazasra_var",
@@ -1455,9 +1455,9 @@
     "sor": 173
    },
    {
-    "id": "DT-F54b",
+    "id": "DT99",
     "feladat": "#54 LXX_OS_LEFEDETTSEG (M1 (d) ⛔: a Zsolt 13 kulcsainak javítása)",
-    "kerdes": "A 9 kettős kulcsból 8 jogos összevonás (az LXX egy Károli-verset két versre bont; változatlan), 1 hibás: a Zsolt 13-ban LXX 12:1 és 12:2 is `Zsolt 13:1`, és az LXX 12:2–12:5 egy verssel eltolt kulcsot visel (12:2→13:1, 12:3→13:2, 12:4→13:3, 12:5→13:4); a Károli szövege szerint a helyes LXX 12:n → Zsolt 13:n (n = 1..6; a 13:6-ot az M1 már kulcsolta). A javítás négy meglévő kulcsot (12:2–12:5) érint. A változó kulcsokra hivatkozó sorok (a DT-F54a (d) feltétele szerint kilistázva): `konkordancia/LXX_versszintu_parok.tsv` 15 sora (Zsolt 13:3 → Psalms (LXX) 12:4: 8 sor; Zsolt 13:4 → 12:5: 7 sor; generált, `eszkozok/lxx_versszintu_import.py`); egyéb adat- vagy naplósor nincs (a `generalt_proba/lexikon/HAMART-001_TUDOMANYOS.md` 856. sora Károli-KH hivatkozás a Hab 1:2-höz, nem LXX-kulcs). A fájl az M1 többi 438 kulcsa miatt amúgy is elavult. *(forrás: `naplok/LXX_OS_LEFEDETTSEG_M2.md` 3. és 6. szakasz)*",
+    "kerdes": "A 9 kettős kulcsból 8 jogos összevonás (az LXX egy Károli-verset két versre bont; változatlan), 1 hibás: a Zsolt 13-ban LXX 12:1 és 12:2 is `Zsolt 13:1`, és az LXX 12:2–12:5 egy verssel eltolt kulcsot visel (12:2→13:1, 12:3→13:2, 12:4→13:3, 12:5→13:4); a Károli szövege szerint a helyes LXX 12:n → Zsolt 13:n (n = 1..6; a 13:6-ot az M1 már kulcsolta). A javítás négy meglévő kulcsot (12:2–12:5) érint. A változó kulcsokra hivatkozó sorok (a DT98 (d) feltétele szerint kilistázva): `konkordancia/LXX_versszintu_parok.tsv` 15 sora (Zsolt 13:3 → Psalms (LXX) 12:4: 8 sor; Zsolt 13:4 → 12:5: 7 sor; generált, `eszkozok/lxx_versszintu_import.py`); egyéb adat- vagy naplósor nincs (a `generalt_proba/lexikon/HAMART-001_TUDOMANYOS.md` 856. sora Károli-KH hivatkozás a Hab 1:2-höz, nem LXX-kulcs). A fájl az M1 többi 438 kulcsa miatt amúgy is elavult. *(forrás: `naplok/LXX_OS_LEFEDETTSEG_M2.md` 3. és 6. szakasz)*",
     "allapot": "alkalmazasra_var",
     "jelek": [
      "🟢"
@@ -1465,9 +1465,9 @@
     "sor": 174
    },
    {
-    "id": "DT-F54c",
+    "id": "DT100",
     "feladat": "#54 LXX_OS_LEFEDETTSEG (M1 (d) ⛔: a `LXX_versszintu_parok.tsv` újragenerálása)",
-    "kerdes": "A DT-F54b 2. feltétele szerint megálltam: az újragenerálás a Zsolt 13-on kívül is töröl sorokat. Különbség (`naplok/F54_parok_kulonbseg.md`): +5 529 / −367 sor (34 pár teljesen eltűnik, 2 változik); a −367-ből 15 a Zsolt 13 (a hibás LXX 12:4 / 12:5 sorok, ahogy várt), 352 sor a Zsolt 13-on kívül (Préd 23, Ézs 5, Hós 3, 4Móz 3 pár): a fájl 2026-09-28-i, az F85.6 TAHOT-átkulcsolás előtti kulcsokból készült, a mai `TAHOT_kivonat.tsv` Károli-kulcsain ezek a párok már nem állnak elő. Az F54 hatása önmagában csak +932 / −15 (Zsolt 13). A fájl nincs újragenerálva commitolt állapotban.",
+    "kerdes": "A DT99 2. feltétele szerint megálltam: az újragenerálás a Zsolt 13-on kívül is töröl sorokat. Különbség (`naplok/F54_parok_kulonbseg.md`): +5 529 / −367 sor (34 pár teljesen eltűnik, 2 változik); a −367-ből 15 a Zsolt 13 (a hibás LXX 12:4 / 12:5 sorok, ahogy várt), 352 sor a Zsolt 13-on kívül (Préd 23, Ézs 5, Hós 3, 4Móz 3 pár): a fájl 2026-09-28-i, az F85.6 TAHOT-átkulcsolás előtti kulcsokból készült, a mai `TAHOT_kivonat.tsv` Károli-kulcsain ezek a párok már nem állnak elő. Az F54 hatása önmagában csak +932 / −15 (Zsolt 13). A fájl nincs újragenerálva commitolt állapotban.",
     "allapot": "alkalmazasra_var",
     "jelek": [
      "🟢"
