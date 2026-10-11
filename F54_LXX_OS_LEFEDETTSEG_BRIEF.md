@@ -6,10 +6,10 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: fut
+allapot: megallt
 ag: claude/lxx-os-lefedettseg
 ad: az 503 Károli-vers mindegyikéről (az lxx-hid az LXX_OS-ből n=0-t ad, a régi LXX_kivonat adott) dokumentált ítélet: kulcsolási rés (pótolva az lxx_os_import.py besorolásában) vagy valódi görög hiány (explicit üres eredmény); idegen vagy kettős Károli-kulcs nem keletkezik
-kovetkezo: /kovetkezo; ⛔ az M0 felmérés után
+kovetkezo: "Te: dönts a DT-F54a (a)–(d) kérdéseiről (DONTESEK.md; M0 jelentés: naplok/LXX_OS_LEFEDETTSEG_M0.md), utána az M1 indul"
 olvas: ["konkordancia/LXX_OS/*.tsv", konkordancia/LXX_OS/README.md, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Verzifikacios_elteres_tabla.tsv, naplok/FORRASKIVEZETES_M5_M7.md, naplok/FORRASKIVEZETES_M5_eltereslista.tsv, eszkozok/lekerdez.py]
 ir: [eszkozok/lxx_os_import.py, "konkordancia/LXX_OS/*.tsv", konkordancia/LXX_OS/README.md, eszkozok/teszt_lekerdez_sir.py]
 fugg: [42]
