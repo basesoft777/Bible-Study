@@ -6,11 +6,14 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: folyamat
-allapot: nem_indult
+allapot: lezarva
+ag: claude/strong-normalizal
+pr: 273
+lezarva_osszegzes: "strong_normalizal()/strong_ervenyes() (SEMA 1.2, nyelv=/utotag= paraméter, ötjegyű G-kód változatlan); lekerdez.py CLI szigorú (domen is); betolt.py kimenete bájtra azonos, de csak 1 study-n igazolt a 9-ből (N-F62b), stderr-figyelmeztetés; mérés 0 eltérés csak a STRONG-típusú oszlopokra; DT-F62a,b; nyitott: N-F62a, N-F62b, N-F62c; K4 formálisan nem teljesül (3 ellenőri kör, mind eltéréssel)"
 ad: egyetlen, tesztelt strong_normalizal() függvény (eszkozok/strong_util.py) a SEMA 1.2 alakra (H/G + négy számjegy, balról nullázva, + láncok), amelyet a lekerdez.py és a betolt.py használ; a többi saját normalizáló leltárba kerül, és az adattáblákon gépi ellenőrzés igazolja, hogy nincs SEMA 1.2-nek nem megfelelő Strong-érték
-kovetkezo: /kovetkezo; ⛔ az M0 után (a leltár és a bemeneti alakok elfogadása)
+kovetkezo: merge a felhasználóé
 olvas: [adat/SEMA.md, eszkozok/lekerdez.py, eszkozok/betolt.py, eszkozok/ellenoriz.py, eszkozok/lxx_osszevetes.py, eszkozok/merge_karoli_szofaj.py, eszkozok/tw_import.py, eszkozok/tbesh_konszolidalt_import.py, eszkozok/teszt_lekerdez_sir.py, adat/elofordulasok.tsv, adat/jeloltek.tsv, adat/lexikon_hivatkozasok.tsv, adat/grammatikai_strongok.tsv, konkordancia/Karoli_Strong_kivonat.tsv, NYITOTT_FELADATOK.md]
-ir: [eszkozok/strong_util.py, eszkozok/teszt_strong_util.py, eszkozok/lekerdez.py, eszkozok/betolt.py]
+ir: [eszkozok/strong_util.py, eszkozok/teszt_strong_util.py, eszkozok/strong_meres.py, eszkozok/lekerdez.py, eszkozok/betolt.py, adat/SEMA.md, DONTESEK.md, NYITOTT_FELADATOK.md, naplok/STRONG_NORMALIZAL_M0.md, naplok/STRONG_NORMALIZAL_zaras.md, naplok/ELLENOR_STRONG_NORMALIZAL.md, naplok/ELLENOR_STRONG_NORMALIZAL_2.md, naplok/ELLENOR_STRONG_NORMALIZAL_3.md]
 fugg: []
 nem_fugg: [54, 61, 63, 65]
 ---
@@ -71,7 +74,7 @@ Jelentés: `naplok/STRONG_NORMALIZAL_M0.md`.
 ## 4. Elfogadási feltételek
 
 - **K1.** Egy függvény, minden M0-beli bemeneti alakra teszttel; az idempotencia-teszt zöld.
-- **K2.** A `lekerdez.py` és a `betolt.py` csak ezt a függvényt használja Strong-normalizálásra; kimenetük változatlan.
+- **K2.** A `lekerdez.py` és a `betolt.py` csak ezt a függvényt használja Strong-normalizálásra; kimenetük változatlan, kivéve az érvénytelen vagy nullázatlan CLI-bemenetet (`lekerdez.py`: `scan`, `igealak`, `kollokacio`, az egyszerű `H####`/`G####` argumentumú `domen`), amely hibát ad a helyes alakkal (DT-F62a); a `domen` saját `A####`/betűutótagos kódtere kivétel. A `betolt.py kulcsszo` stdout- és fájlkimenete bájtra azonos; a nem SEMA 1.2 alakú study-értékre stderr-figyelmeztetést ad (DT-F62a). A G-kiegészítő kód (`G20447`, `G20833`) érvényes és változatlan (DT-F62b).
 - **K3.** Az adattáblák mérése dokumentált (0 találat is); adattábla nem változott.
 - **K4.** Az `ellenoriz.py` és a CI zöld; a független ellenőr eltérés nélkül zár.
 
@@ -81,3 +84,5 @@ Jelentés: `naplok/STRONG_NORMALIZAL_M0.md`.
 |---|---|---|---|
 | v1 | 2026-10-05 | A munkaterv „N21 nullázatlan értékek javítása” része a KB3 (`4ecb612`) óta várhatóan tárgytalan; a feladat adattáblát nem ír, az M0 mér. | befogadás, mérés 2026-10-05 |
 | v1 | 2026-10-05 | A többi normalizáló cseréje nem e feladat része; leltár és javaslat. | befogadás |
+| v2 | 2026-10-11 | Az M0 elfogadva (nyelv=, utotag=tilt, ötjegyű: csak a vezető nulla, A#### kivétel, ValueError). A `lekerdez.py` CLI-bemenete szigorú (hiba a helyes alakkal), a függvény normalizál; a `betolt.py` kimenete bájtra azonos. K2 kiegészítve. | DT-F62a |
+| v3 | 2026-10-11 | Ellenőri jelentés alapján: G-kiegészítő kód (G + öt számjegy, nem nullával kezdődik) érvényes, H-nál ötjegyű nem (DT-F62b, SEMA 1.2 egysoros bővítése); a `domen` egyszerű argumentuma szigorú; a `betolt.py` stderr-figyelmeztetése a K2-ben; az M0 mérőszkript a repóban (`eszkozok/strong_meres.py`). | DT-F62b, DT-F62a |

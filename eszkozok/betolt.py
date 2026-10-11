@@ -40,6 +40,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import general as G
 import lekerdez as L
 import ellenoriz as E
+from strong_util import strong_normalizal
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ALAPERTELMEZETT_ADAT = os.path.join(ROOT, 'adat')
@@ -99,6 +100,21 @@ def _elso_tablazat(szoveg):
     return kimenet
 
 
+def _strong_figyelmeztet(strong, study_path):
+    """F62: a study Strong-értékét a közös strong_normalizal() vizsgálja. A betöltő kimenete
+    VÁLTOZATLAN (a study értéke megy tovább); a nem SEMA 1.2 alakú értékről csak stderr-figyelmeztetés
+    szól, a javítás a study dolga (nincs közvetlen út, nincs néma átírás)."""
+    try:
+        jo = strong_normalizal(strong)
+    except ValueError as exc:
+        print('FIGYELEM: %s: a Strong-érték nem normalizálható (%s)' % (study_path, exc),
+              file=sys.stderr)
+        return
+    if jo != strong:
+        print('FIGYELEM: %s: a Strong-érték nem SEMA 1.2 alakú: %s (helyes: %s); a kimenet változatlan'
+              % (study_path, strong, jo), file=sys.stderr)
+
+
 def kulcsszo_sorok_kiolvas(study_path, konyv):
     """[{tanulmany, igehely, szo, strong}] -- a study '## 2.' pontja alatti
     elso 'Kulcsszavak tablazata' tabla sorai, osszetett Strong Strongonkent
@@ -148,6 +164,7 @@ def kulcsszo_sorok_kiolvas(study_path, konyv):
             strong = strong.strip()
             if not strong:
                 continue
+            _strong_figyelmeztet(strong, rel)
             ki.append({
                 'tanulmany': rel,
                 'igehely': igehely,

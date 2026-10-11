@@ -66,6 +66,7 @@ Fejezeten átnyúló tartomány mindkét tagot kiírja: `1Móz 4:25-5:32`.
 `H` vagy `G` + **négy számjegy, balról nullázva**: `H0779`, `H8415`, `G0086`.
 A nullázás kötelező — `H779` nem érvényes érték, mert a datasetek rendezése így rendezi.
 Több Strong-szám egy cellában: `+` jellel, sorrendben (`G0934+G2406`).
+G-kiegészítő kód: `G` + öt számjegy, nem nullával kezdődik (TAGNT, pl. `G20447`).
 
 ### 1.3 `DATUM`
 
