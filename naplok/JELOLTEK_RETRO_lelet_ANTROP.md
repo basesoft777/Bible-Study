@@ -4,9 +4,9 @@
 
 ## Lekérdezések
 
-- kör `G4151+G5590`: `scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=G4151+G5590 | n=6 | ts=2026-10-11T12:31Z`
-- kör `H5315+H2416`: `scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H5315+H2416 | n=61 | ts=2026-10-11T12:31Z`
-- TSK-kör: `scope=TSK-teljes | forras=TSK_kereszthivatkozasok.tsv | kiindulo_vers=9 | n=300 | ts=2026-10-11T12:31Z`
+- kör `G4151+G5590`: `scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=G4151+G5590 | n=6 | ts=2026-10-11T13:37Z`
+- kör `H5315+H2416`: `scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H5315+H2416 | n=61 | ts=2026-10-11T13:37Z`
+- TSK-kör: `scope=TSK-teljes | forras=TSK_kereszthivatkozasok.tsv | kiindulo_vers=9 | n=300 | ts=2026-10-11T13:37Z`
 
 ## ★ sorok (3)
 
