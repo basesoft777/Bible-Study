@@ -10,7 +10,7 @@ markdown-fájlban ellentmond, **ez a tábla az irányadó**. Az adat egy irányb
 DT28): a kézi forrásból ide kinyerés van (`jeloltek.tsv`), innen a kimenetbe generálás;
 forrásba visszaírás nincs.
 
-A kilenc tábla (és a modell-kimenetű `karoli_strong/` táblapár, 2.20) és a hozzájuk tartozó kulcs:
+A kilenc tábla (és a modell-kimenetű `karoli_strong/` táblapár, 2.20, valamint a belőle származtatott `karoli_variancia.tsv`, 2.24) és a hozzájuk tartozó kulcs:
 
 | Fájl | Kulcs | Ki írja |
 |---|---|---|
@@ -25,6 +25,7 @@ A kilenc tábla (és a modell-kimenetű `karoli_strong/` táblapár, 2.20) és a
 | `licencek.tsv` | `dataset` | kézzel (leltár, F24) |
 | `dontes_hatas.tsv` | `dontes_forras` + `erintett_fajl` + `tilos_minta` | kézzel (F51, 2.21) |
 | `karoli_strong/parok_<könyv>.tsv`, `karoli_strong/szavak_<könyv>.tsv` | `vers` + `hu_sorszam` + `er_sorszam` / `vers` + `oldal` + `sorszam` | **generált** (modell-kimenet, javaslat) — `eszkozok/karoli_strong/egyesit.py` (2.20, F22) |
+| `karoli_variancia.tsv` | `tipus` + `konyv` + `kulcs` + `ertek` + `bizonyossag` (+ `id` + `igehely` a `megerosites` sornál) | **generált** — `eszkozok/karoli_ellenorzes.py --variancia` (2.24, F65) |
 
 ---
 
@@ -106,9 +107,13 @@ Zárt: `magas` | `közepes` | `alacsony`.
 
 ### 1.7 `AZONOSITAS_MODJA`
 
-Zárt: `tartalom-alapú` | `szó-szintű-tagged` | `interlineáris-gloss` | `kikövetkeztetett`.
-*Mért kiindulás:* ma mind a 227 join-sor `tartalom-alapú` — a projektnek nincs szó-szintű
-Strong-taggelt Károlija, és a döntési fájl 8. szakasza szerint nem is lesz (zárt licenc).
+Zárt: `tartalom-alapú` | `szó-szintű-gépi` | `szó-szintű-tagged` | `interlineáris-gloss` | `kikövetkeztetett`.
+
+- `tartalom-alapú` — a tanulmány írója a Károli-szöveget olvasva rendelte a szót a Strong-számhoz.
+- `szó-szintű-gépi` (DT-M2, F65) — a #22 gépi Károli–Strong párosításából (`adat/karoli_strong/parok_<könyv>.tsv`) megerősített sor. **Csak `magas` bizonyosságú pár igazolhatja**, és csak ha a sor minden Strongja szerepel a `karoli_szo` szavainak gépi párjai között ugyanazon a versen; a sor saját proveniencia-sora az `adat/karoli_variancia.tsv` `megerosites` sorában áll (2.24). A gépi párosítás modell-kimenet: a mód a *azonosítás módját* mondja, nem „ellenőrizve” minősítést.
+- `szó-szintű-tagged` — esetleges kiadói, kézzel taggelt Károli-szövegnek fenntartva; ma nincs ilyen forrás.
+
+*Mért kiindulás:* a 2026.09.13-i 227 join-sor mind `tartalom-alapú` volt. A #22 szó-szintű, gépi párosítást ad könyvenként, ezért az a korábbi mondat, hogy a projektnek nincs és nem is lesz szó-szintű Strong-taggelt Károlija, **elavult** (zárt licenc: kiadói tagged szöveg tényleg nincs; gépi párosítás van). Az átállítás szabálya (F65, DT-F65a): csak az `azonositas_modja` vált; a `karoli_szo`, a `megbizhatosag` és a `proveniencia` marad.
 
 ---
 
@@ -1076,6 +1081,29 @@ A forrásfájl **nem módosul**; a javítás ebben a táblában él, és az adat
 **Könyvnév-hiba gyanú (DT46, felhasználói döntés 2026-10-06):** ha a hibás `fejezet:vers` *más könyvben is létezik, és ott a Strong-szám szerepel*, a sor `jelolt_marad` akkor is, ha egyetlen jelölt van (a hiba könyvfeloldási hiba is lehet; a javítás fordítási szöveget érintene), az `indok` `FIGYELEM:` jelzést kap. Ezért `javitva` sor soha nem FIGYELEM-es. **Nyelvtani és gyakori Strong (DT48):** az egyetlen jelölt sem `javitva`, ha a Strong-szám az `adat/grammatikai_strongok.tsv`-ben szerepel (pl. H4480, H9009; felhasználói döntés 2026-10-06), vagy (a végrehajtó kiegészítése, a felhasználó 2026-10-06-án jóváhagyta, DT48: biztonsági háló, nem kalibrált határ; ha valaha egy sort érint, a sor kézi átnézésre kerül; ma egy sort sem érint) 1000-nél több különböző versben fordul elő (a nyelvtani előtag-párral együtt számolva; a talált egy jelölt ekkor nem bizonyít; a megmaradt `javitva` sorok legnagyobbika 358 vers). Ilyenkor az `indok` ezt nevezi. Állapot: 93 sor, 7 `javitva`, 86 `jelolt_marad` (ebből 61 FIGYELEM-es; a H4480 `1Ki 32:47` sora az előtag-pár révén lett az, mert az 5Móz 32:47 a H9006-tal szerepel). Csak a könyvnévvel jelölt hivatkozások vizsgáltak (a lánc második tagja, `Isa 40:1; 41:2`, könyvnév nélkül nem).
 Kulcs: `strong` + `forras_hivatkozas`. Teszteset: `H7223`, `Eccl 17:10` → `Préd 7:10`.
 **Átvezetés a fordításba (M5, `eszkozok/bdb_atvezet_m5.py`):** a `javitva` hivatkozás a `forditasok.tsv` BDB-sorainak `forditas_hu` mezőjében `Y [BDB: X]` alakot kap (Y a helyes, X a forrásbeli hivatkozás, Károli-rövidítéssel); más mező nem változik (a `forras_hash` a forrásé, ezért érintetlen). A kapuk ezt kezelik: a 13. (fejezetszám) az `[BDB: …]` tartalmát nem jelzi, a többi a `Y [BDB: X]` → `X` visszaállított szöveget látja (`forditas_kapuk.bdb_jeloles_vissza`). Az 1–5. adag fordításaiban 4 a 7 `javitva` sorból fordul elő (H5002, H5046, H4427, H7223); H0479, H2597 és H5377 a 9–11. adagba esik, ott az adatblokk 6. szakasza viszi át a #38 menetében. A H4480 és a H9009 sora a DT48 miatt `jelolt_marad`, a két fordításmező a `bdb_atvezet_m5.py --visszaallit` móddal `Y [BDB: X]` → `X` alakra állt vissza.
+
+### 2.24 `karoli_variancia.tsv` — Károli-variancia és soronkénti megerősítés (F65, FELADATOK #65, DT-M2, DT-F65a)
+
+**Generált** (`python eszkozok/karoli_ellenorzes.py --variancia adat/karoli_variancia.tsv`), kézzel nem szerkeszthető; olvasás `split('\t')`, a `csv` modul tilos. A fájl első sora `# proveniencia: …` (fájlszintű); a `megerosites` sorok és az aggregátum-sorok saját `proveniencia` oszlopot is hordoznak.
+
+Forrás a `parok_<könyv>.tsv`, tehát **modell-kimenet, javaslat** (a `bizonyossag` nem „ellenőrizve”). Hatókör: azok a könyvek, amelyekben van `magas` pár (ma 1Móz, 2Móz; az `alacsony` pár is szerepel, a `bizonyossag` oszlopban jelölve — a csak-`alacsony` könyvek varianciája ~190 ezer sor lenne, ezért nem kerül be, a `variancia()` függvény `konyvek=` paraméterével előállítható).
+
+| Oszlop | Jelentés |
+|---|---|
+| `tipus` | `strong_szoalak` (Strong → Károli-szóalakok) \| `szoalak_strong` (szóalak → Strongok) \| `megerosites` (egy régi sor megerősítése) |
+| `konyv` | a `parok_<könyv>` könyve (az igehely rövidítése) |
+| `kulcs` | az aggregátumnál a Strong (vagy a szóalak); a `megerosites` sornál a régi sor Strongja(i) |
+| `ertek` | az aggregátumnál a szóalak (vagy a Strong); a `megerosites` sornál a `karoli_szo` szavaihoz tartozó gépi Strongok |
+| `darab` | előfordulások száma (csak aggregátum) |
+| `bizonyossag` | `magas` \| `alacsony` (a pár; a `megerosites` sor csak `magas` lehet) |
+| `id`, `igehely`, `karoli_szo` | csak `megerosites`: az `elofordulasok.tsv` sor kulcsa és a régi `karoli_szo` |
+| `reszleges` | csak `megerosites`: `igen`, ha a `karoli_szo` több szavas és nem minden szava illeszkedett a sor Strongjaihoz (laza illesztés, DT-F65a (1)); egyébként `nem` |
+| `nem_illesztett` | csak `megerosites`: a nem illesztett szavak, vesszővel |
+| `proveniencia` | `scope=… \| forras=… \| ts=…` (kötelező, nem üres) |
+
+A `megerosites` sor a `szó-szintű-gépi` állítás (1.7) saját bizonyítéka: megléte a feltétele annak, hogy az `elofordulasok.tsv`/`jeloltek.tsv` sor `azonositas_modja`-ja `szó-szintű-gépi` lehet. A sor akkor is újraáll, ha a mód már átállt (a generálás idempotens).
+
+---
 
 ## 3. Integritási szabályok
 

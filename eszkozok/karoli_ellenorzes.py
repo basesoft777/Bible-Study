@@ -6,19 +6,25 @@ a #22 gépi párosítása (adat/karoli_strong/parok_<könyv>.tsv) ellen. F65.
 
 Ítélet soronként (elofordulasok.tsv sor: karoli_szo + strong + igehely):
   egyezik   — a sor minden Strongja előfordul a karoli_szo szavainak gépi párjai között
-              ugyanazon a versen (igehely-tartományon);
+              ugyanazon a versen (igehely-tartományon); a szó-egyezés laza (DT-F65a (1)):
+              bármelyik szó elég. Részleges egyezés: több szavas karoli_szo, ahol nem
+              minden szó illeszkedett — a nem illesztett szavak fel vannak sorolva;
   elter     — a karoli_szo szavai megvannak a versben, de a sor valamelyik Strongja nincs
-              köztük (a gépi Strongok az eltéréslistába kerülnek);
+              köztük (a gépi Strongok az eltéréslistába kerülnek; a sor NEM változik);
   nincs_par — a karoli_szo egyetlen szava sincs a vers gépi párosításában
               (könyv hiányzik / szóalak eltér / vers hiányzik).
-Az `egyezik` csak akkor `magas`, ha az egyező párok mind `magas` bizonyosságúak.
+Átállítási feltétel (DT-F65a (2)-(3), SEMA 1.7): `egyezik` ÉS a Strongot igazoló gépi
+párok mind `magas` bizonyosságúak. Csak az `azonositas_modja` mező változik
+(`tartalom-alapú` -> `szó-szintű-gépi`); `karoli_szo`, `megbizhatosag`, `proveniencia`
+marad. A --frissit alapból szárazon fut (--ir nélkül nem ír), és idempotens: csak
+`tartalom-alapú` sort állít át, a már átállított sort nem bántja.
 
 I/O: split('\\t') / '\\t'.join(), a csv modul tilos (CLAUDE.md).
 
 Futtatás a repó gyökeréből:
     python eszkozok/karoli_ellenorzes.py --meres
     python eszkozok/karoli_ellenorzes.py --ellenorzes naplok/KAROLI_ELLENORZES_elteresek.tsv
-    python eszkozok/karoli_ellenorzes.py --variancia adat/karoli_variancia.tsv
+    python eszkozok/karoli_ellenorzes.py --variancia adat/karoli_variancia.tsv [--ts 2026-10-11]
     python eszkozok/karoli_ellenorzes.py --frissit [--ir] [--motivum ID]
 """
 
@@ -42,7 +48,6 @@ REGI_MOD = 'tartalom-alapú'
 
 
 def olvas(rel):
-    """Tábla beolvasása: (megjegyzés-sorok, fejléc, sorok). A '#'-sorok megmaradnak."""
     with open(os.path.join(ROOT, rel), encoding='utf-8', newline='') as f:
         sorok = f.read().split('\n')
     if sorok and sorok[-1] == '':
@@ -51,18 +56,16 @@ def olvas(rel):
 
 
 def tabla(rel):
+    """(sorok, a fejléc sorindexe, fejléc-mezők). A '#'-sorok megmaradnak."""
     sorok = olvas(rel)
     i = 0
     while sorok[i].startswith('#'):
         i += 1
-    # a fejléc az első nem-# sor (az elofordulasok.tsv-ben az első adatsor előtt)
-    fej = sorok[i].split('\t')
-    return sorok, i, fej
+    return sorok, i, sorok[i].split('\t')
 
 
 def token(s):
-    s = s.casefold()
-    return [t for t in re.findall(r"[^\W\d_]+", s)]
+    return re.findall(r"[^\W\d_]+", s.casefold())
 
 
 def strong_norm(s):
@@ -70,27 +73,31 @@ def strong_norm(s):
     return (m.group(1) + m.group(2).zfill(4)) if m else s.strip()
 
 
+def parok_sorok(f):
+    with open(f, encoding='utf-8', newline='') as fh:
+        for l in fh:
+            l = l.rstrip('\n')
+            if l.startswith('#') or l.startswith('vers\t') or not l:
+                continue
+            yield l.split('\t')
+
+
 def betolt_parok():
-    """vers -> [(hu_szo_token, strong, bizonyossag)]; könyv -> bizonyossag-szamlalo."""
+    """vers -> [(hu_szo, strong, bizonyossag)]; könyv -> bizonyossag-számláló."""
     vers = collections.defaultdict(list)
     konyv_biz = {}
     for f in sorted(glob.glob(os.path.join(ROOT, PAROK_MINTA))):
         nev = os.path.basename(f)[len('parok_'):-4]
         c = collections.Counter()
-        with open(f, encoding='utf-8', newline='') as fh:
-            for l in fh:
-                l = l.rstrip('\n')
-                if l.startswith('#') or l.startswith('vers\t') or not l:
-                    continue
-                p = l.split('\t')
-                vers[p[0]].append((p[2], p[5], p[6]))
-                c[p[6]] += 1
+        for p in parok_sorok(f):
+            vers[p[0]].append((p[2], p[5], p[6]))
+            c[p[6]] += 1
         konyv_biz[nev] = c
     return vers, konyv_biz
 
 
 def versek(igehely):
-    """'1Móz 14:18-20' -> ['1Móz 14:18', ...]; '2Móz 19:6' -> ['2Móz 19:6']; fejezet-tartomány is."""
+    """'1Móz 14:18-20' -> versek listája; fejezethatárt átlépő tartomány: None."""
     m = re.match(r'^(\S+) (\d+):(\d+)(?:-(?:(\d+):)?(\d+))?$', igehely.strip())
     if not m:
         return None
@@ -99,49 +106,69 @@ def versek(igehely):
         return ['%s %s:%s' % (k, f1, v1)]
     if f2 is None or f2 == f1:
         return ['%s %s:%d' % (k, f1, v) for v in range(int(v1), int(v2) + 1)]
-    return None  # fejezethatárt átlépő tartomány: nincs kibontva
+    return None
 
 
 def ellenoriz_sor(igehely, karoli_szo, strongok, vers):
-    """-> (itelet, gepi_strongok_a_szavakra, bizonyossagok, megjegyzes)"""
+    """-> dict: itelet, gepi, biz, illesztett, nem_illesztett, megjegyzes"""
+    r = {'itelet': 'nincs_par', 'gepi': [], 'biz': [], 'illesztett': [],
+         'nem_illesztett': [], 'megjegyzes': ''}
     vl = versek(igehely)
     if vl is None:
-        return 'nincs_par', [], [], 'igehely-tartomány nem bontható (%s)' % igehely
+        r['megjegyzes'] = 'igehely-tartomány nem bontható (%s)' % igehely
+        return r
     par = [p for v in vl for p in vers.get(v, [])]
     if not par:
-        return 'nincs_par', [], [], 'a vers/könyv nincs a gépi párosításban'
-    toks = set(token(karoli_szo))
+        r['megjegyzes'] = 'a vers/könyv nincs a gépi párosításban'
+        return r
+    toks = []
+    for t in token(karoli_szo):
+        if t not in toks:
+            toks.append(t)
     talalt = [p for p in par if p[0].casefold() in toks]
     if not talalt:
-        return 'nincs_par', [], [], 'a karoli_szo egyetlen szava sincs a versben'
-    gepi = sorted({strong_norm(p[1]) for p in talalt})
+        r['megjegyzes'] = 'a karoli_szo egyetlen szava sincs a versben'
+        return r
+    r['gepi'] = sorted({strong_norm(p[1]) for p in talalt})
     keresett = [strong_norm(s) for s in strongok]
-    hianyzo = [s for s in keresett if s not in gepi]
+    hianyzo = [s for s in keresett if s not in r['gepi']]
     if hianyzo:
-        return 'elter', gepi, sorted({p[2] for p in talalt}), 'hiányzó a gépi párokból: ' + ','.join(hianyzo)
+        r['itelet'] = 'elter'
+        r['biz'] = sorted({p[2] for p in talalt})
+        r['megjegyzes'] = 'hiányzó a gépi párokból: ' + ','.join(hianyzo)
+        return r
     egyezo = [p for p in talalt if strong_norm(p[1]) in keresett]
-    return 'egyezik', gepi, sorted({p[2] for p in egyezo}), ''
+    ill = {p[0].casefold() for p in egyezo}
+    r['itelet'] = 'egyezik'
+    r['biz'] = sorted({p[2] for p in egyezo})
+    r['illesztett'] = [t for t in toks if t in ill]
+    r['nem_illesztett'] = [t for t in toks if t not in ill]
+    return r
 
 
-def regi_sorok():
+def reszleges(r):
+    """Több szavas karoli_szo, ahol nem minden szó illeszkedett a sor Strongjaihoz."""
+    return len(r['illesztett']) + len(r['nem_illesztett']) > 1 and bool(r['nem_illesztett'])
+
+
+def frissitheto(r):
+    return r['itelet'] == 'egyezik' and r['biz'] == ['magas']
+
+
+def ellenorzes_futtat(vers=None, modok=(REGI_MOD, UJ_MOD)):
+    if vers is None:
+        vers, _ = betolt_parok()
     sorok, i, fej = tabla(ELOFORDULASOK)
     ix = {n: k for k, n in enumerate(fej)}
-    ki = []
+    eredm = []
     for n in range(i + 1, len(sorok)):
         p = sorok[n].split('\t')
-        if len(p) > ix['azonositas_modja'] and p[ix['azonositas_modja']] == REGI_MOD:
-            ki.append((n, p, ix))
-    return ki
-
-
-def ellenorzes_futtat():
-    vers, _ = betolt_parok()
-    eredm = []
-    for n, p, ix in regi_sorok():
-        ig, szo = p[ix['igehely']], p[ix['karoli_szo']]
+        if len(p) <= ix['azonositas_modja'] or p[ix['azonositas_modja']] not in modok:
+            continue
         st = [s for s in p[ix['strong']].split('+') if s]
-        it, gepi, biz, mj = ellenoriz_sor(ig, szo, st, vers)
-        eredm.append((n, p[0], ig, szo, p[ix['strong']], it, ','.join(gepi), ','.join(biz), mj))
+        r = ellenoriz_sor(p[ix['igehely']], p[ix['karoli_szo']], st, vers)
+        eredm.append({'n': n + 1, 'id': p[0], 'igehely': p[ix['igehely']], 'karoli_szo': p[ix['karoli_szo']],
+                      'strong': p[ix['strong']], 'mod': p[ix['azonositas_modja']], 'r': r})
     return eredm
 
 
@@ -150,38 +177,122 @@ def meres():
     print('## bizonyossag-megoszlás könyvenként')
     for k, c in sorted(kb.items()):
         print('%s\t%s' % (k, dict(c)))
-    er = ellenorzes_futtat()
-    print('## elofordulasok.tsv tartalom-alapú sorok: %d' % len(er))
-    print(collections.Counter(e[5] for e in er))
-    kon = collections.Counter((e[2].split(' ')[0], e[5]) for e in er)
+    er = ellenorzes_futtat(vers)
+    print('## elofordulasok.tsv tartalom-alapú / szó-szintű-gépi sorok: %d' % len(er))
+    print(collections.Counter(e['r']['itelet'] for e in er))
+    print('frissíthető (egyezik+magas):', sum(1 for e in er if frissitheto(e['r'])))
+    kon = collections.Counter((e['igehely'].split(' ')[0], e['r']['itelet']) for e in er)
     for k in sorted(kon):
         print(k, kon[k])
 
 
-def ir_eltereslista(ut):
-    er = ellenorzes_futtat()
-    fej = ['sor', 'id', 'igehely', 'karoli_szo', 'regi_strong', 'itelet', 'gepi_strongok', 'bizonyossag', 'megjegyzes']
+ELT_FEJ = ['sor', 'id', 'igehely', 'karoli_szo', 'regi_strong', 'jelenlegi_mod', 'itelet',
+           'gepi_strongok', 'bizonyossag', 'reszleges', 'illesztett_szavak',
+           'nem_illesztett_szavak', 'megjegyzes']
+
+
+def ir_eltereslista(ut, vers=None):
+    er = ellenorzes_futtat(vers)
     with open(ut, 'w', encoding='utf-8', newline='') as f:
-        f.write('# F65 M2: a tartalom-alapú sorok ellenőrzése a #22 gépi párosítása ellen | scope=manual | forras=adat/elofordulasok.tsv, adat/karoli_strong/parok_*.tsv | ts=manual (nem lekérdezés) | előállítás: eszkozok/karoli_ellenorzes.py\n')
-        f.write('\t'.join(fej) + '\n')
+        f.write('# F65 M2: a tartalom-alapú (és már átállított) sorok ellenőrzése a #22 gépi párosítása ellen | '
+                'scope=manual | forras=adat/elofordulasok.tsv, adat/karoli_strong/parok_*.tsv | ts=manual (nem lekérdezés) | '
+                'előállítás: eszkozok/karoli_ellenorzes.py; az elter/nincs_par sor NEM változott, kézi ítéletre vár\n')
+        f.write('\t'.join(ELT_FEJ) + '\n')
         for e in er:
-            f.write('\t'.join(str(x) for x in e) + '\n')
+            r = e['r']
+            f.write('\t'.join([str(e['n']), e['id'], e['igehely'], e['karoli_szo'], e['strong'], e['mod'],
+                               r['itelet'], ','.join(r['gepi']), ','.join(r['biz']),
+                               'igen' if reszleges(r) else 'nem', ','.join(r['illesztett']),
+                               ','.join(r['nem_illesztett']), r['megjegyzes']]) + '\n')
     print('írva:', ut, len(er), 'sor')
+    return er
 
 
-def variancia(ut):
-    sz = collections.defaultdict(collections.Counter)  # (konyv,strong)->szoalak
+VAR_FEJ = ['tipus', 'konyv', 'kulcs', 'ertek', 'darab', 'bizonyossag', 'id', 'igehely',
+           'karoli_szo', 'reszleges', 'nem_illesztett', 'proveniencia']
+
+
+def variancia(ut, ts, konyvek=None):
+    """Variancia-térkép + soronkénti megerősítések. konyvek: parok-fájlnevek (None = amelyikben van magas pár)."""
+    sor_ki = []
+    vers = collections.defaultdict(list)
     for f in sorted(glob.glob(os.path.join(ROOT, PAROK_MINTA))):
         k = os.path.basename(f)[len('parok_'):-4]
-        with open(f, encoding='utf-8', newline='') as fh:
-            for l in fh:
-                l = l.rstrip('\n')
-                if l.startswith('#') or l.startswith('vers\t') or not l:
-                    continue
-                p = l.split('\t')
-                sz[(k, p[6], 'strong', strong_norm(p[5]))][p[2].casefold()] += 1
-                sz[(k, p[6], 'szoalak', p[2].casefold())][strong_norm(p[5])] += 1
-    return sz
+        rows = list(parok_sorok(f))
+        for p in rows:
+            vers[p[0]].append((p[2], p[5], p[6]))
+        if konyvek is None:
+            if not any(p[6] == 'magas' for p in rows):
+                continue
+        elif k not in konyvek:
+            continue
+        a = collections.defaultdict(collections.Counter)
+        b = collections.defaultdict(collections.Counter)
+        for p in rows:
+            st, sz, bz = strong_norm(p[5]), p[2].casefold(), p[6]
+            a[(bz, st)][sz] += 1
+            b[(bz, sz)][st] += 1
+        prov = 'scope=manual | forras=adat/karoli_strong/parok_%s.tsv | ts=%s' % (k, ts)
+        for tip, d in (('strong_szoalak', a), ('szoalak_strong', b)):
+            for (bz, kulcs) in sorted(d):
+                for ertek, n in sorted(d[(bz, kulcs)].items(), key=lambda x: (-x[1], x[0])):
+                    sor_ki.append([tip, k, kulcs, ertek, str(n), bz, '', '', '', '', '', prov])
+    for e in ellenorzes_futtat(vers):
+        r = e['r']
+        if not frissitheto(r):
+            continue
+        sor_ki.append(['megerosites', e['igehely'].split(' ')[0], e['strong'], ','.join(r['gepi']), '', 'magas',
+                       e['id'], e['igehely'], e['karoli_szo'], 'igen' if reszleges(r) else 'nem',
+                       ','.join(r['nem_illesztett']),
+                       'scope=manual | forras=adat/karoli_strong/parok_*.tsv (vers: %s) | ts=%s' % (e['igehely'], ts)])
+    with open(ut, 'w', encoding='utf-8', newline='') as f:
+        f.write('# F65 M1: Károli-variancia (Strong -> szóalakok, szóalak -> Strongok) a magas párt tartalmazó könyvekre, '
+                'és soronkénti megerősítések | scope=manual | forras=adat/karoli_strong/parok_*.tsv | ts=%s | '
+                'modell-kimenet származéka, javaslat: nem lekérdezés-eredmény | '
+                'előállítás: eszkozok/karoli_ellenorzes.py --variancia\n' % ts)
+        f.write('\t'.join(VAR_FEJ) + '\n')
+        for s in sor_ki:
+            f.write('\t'.join(s) + '\n')
+    print('írva:', ut, len(sor_ki), 'sor')
+    return sor_ki
+
+
+def frissit(ir=False, motivum=None, vers=None):
+    """Az egyezik+magas sorok azonositas_modja-ját átállítja. -> (elofordulasok, jeloltek) darabszám."""
+    er = ellenorzes_futtat(vers, modok=(REGI_MOD,))
+    cel = {(e['id'], e['igehely']) for e in er
+           if frissitheto(e['r']) and (motivum is None or e['id'] == motivum)}
+    szamok = []
+    for rel in (ELOFORDULASOK, JELOLTEK):
+        sorok, i, fej = tabla(rel)
+        ix = {n: k for k, n in enumerate(fej)}
+        uj = list(sorok)
+        db = 0
+        for n in range(i + 1, len(sorok)):
+            p = sorok[n].split('\t')
+            if len(p) <= ix['azonositas_modja'] or p[ix['azonositas_modja']] != REGI_MOD:
+                continue
+            if (p[ix['id']], p[ix['igehely']]) in cel:
+                p[ix['azonositas_modja']] = UJ_MOD
+                uj[n] = '\t'.join(p)
+                db += 1
+        for n, (a, b) in enumerate(zip(sorok, uj)):
+            if a != b:
+                pa, pb = a.split('\t'), b.split('\t')
+                kul = [k for k in range(len(pa)) if pa[k] != pb[k]]
+                if len(pa) != len(pb) or kul != [ix['azonositas_modja']]:
+                    raise SystemExit('ELTÉRÉS a %s %d. során: nem csak az azonositas_modja változott' % (rel, n + 1))
+        if ir and db:
+            with open(os.path.join(ROOT, rel), 'w', encoding='utf-8', newline='') as f:
+                f.write('\n'.join(uj) + '\n')
+        szamok.append(db)
+    print('%s: elofordulasok %d, jeloltek %d sor%s' % ('ÍRVA' if ir else 'szárazon', szamok[0], szamok[1],
+                                                       '' if ir else ' (--ir nélkül nem ír)'))
+    return tuple(szamok)
+
+
+def _arg(a, nev, alap=None):
+    return a[a.index(nev) + 1] if nev in a else alap
 
 
 if __name__ == '__main__':
@@ -190,5 +301,9 @@ if __name__ == '__main__':
         meres()
     elif a and a[0] == '--ellenorzes':
         ir_eltereslista(a[1])
+    elif a and a[0] == '--variancia':
+        variancia(a[1], _arg(a, '--ts', '2026-10-11'))
+    elif a and a[0] == '--frissit':
+        frissit('--ir' in a, _arg(a, '--motivum'))
     else:
         print(__doc__)
