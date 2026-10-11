@@ -85,3 +85,7 @@ Eltérő Károli-token (két modell partnerhalmaza különbözik) összesen: 0; 
 - PR és merge a felhasználóé.
 - A következő könyv(ek) a felhasználó döntése: az ÓSZ-ből még 13 kis könyv hiányzik (Préd, Én, Sir, Hós, Jóel, Ámós, Abd, Mik, Hab, Sof, Hag, Zak, Mal; együtt 1 445 vers); a Hós (1:11, 11:11) és a Préd (2:26) jóváhagyott 2:1 beolvasztást tartalmaz (`f22/versosszevonas.tsv`, DT92), ezeknél kézi átnézési pont várható; a többi 11 tiszta.
 
+## 6. Ellenőri kör (`naplok/ELLENOR_F22_Nah.md`)
+
+Az ellenőr TISZTA jelentést adott, eltérés nélkül: a számszerű állításokat (47/47, 850 / 1 641, 1/47 → 0, 0,2503 USD, 77,7576 USD, a futó összeg folytonossága, az 1 445 vers a 13 megmaradt könyvben) saját lekérdezéssel igazolta. Nem ellenőrizhető a szerepkörből: a K3 hash viszonya a `prompt_v3.sha256`-hoz (a korábbi könyvekkel azonos), a chat-jóváhagyás, a K2/K7 teljes köre, a detektor ítélete, a régi arany hiánya és a CI-jelentés összevetése.
+
