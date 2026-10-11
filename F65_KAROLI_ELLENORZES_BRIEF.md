@@ -6,9 +6,12 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: nem_indult
+allapot: lezarva
+pr: 287
+ag: claude/f65-karoli-ellenorzes
+lezarva_osszegzes: a régi Károli-szó + Strong párok ellenőrzése a #22 gépi párosítása ellen (205 sor: 153 egyezik, 3 elter, 49 nincs_par), 23+23 sor `szó-szintű-gépi`-re (elofordulasok, jeloltek; csak az azonositas_modja), karoli_variancia.tsv és SEMA 1.7/2.24, eltéréslista, eszköz és teszt
 ad: a tematikus táblák és a jelölt-/előfordulás-sorok Károli-szó + Strong párjai a #22 párosítása (adat/karoli_strong/parok_<könyv>.tsv) ellen ellenőrizve, eltéréslistával; a variancia-térkép (Strong → Károli-szóalakok, szóalak → Strongok) adattáblaként; a SEMA 1.7 a DT-M2 szerint bővítve, és a megerősített sorok azonosítási módja szó-szintű-gépi
-kovetkezo: /kovetkezo; ⛔ az M0 után (a „magas” lefedettség és a frissítés szabálya) és az M3 ANTROP-001 mintája után; a #11 előtti befagyasztás nem érinti (adatréteg, DT74 (3))
+kovetkezo: lezárva; az újrafuttatás a #22 következő `magas` könyvei után (könyvenként); PR: az orkesztrátor nyitja
 olvas: [adat/karoli_strong/, adat/jeloltek.tsv, adat/elofordulasok.tsv, adat/SEMA.md, tematikus_lezart/, konkordancia/Karoli_Strong_kivonat.tsv, konkordancia/Karoli_1908.tsv, F22_KAROLI_STRONG_BRIEF.md, naplok/F22_Jozs_jelentes.md]
 ir: [adat/SEMA.md, adat/jeloltek.tsv, adat/elofordulasok.tsv, adat/karoli_variancia.tsv, eszkozok/karoli_ellenorzes.py, eszkozok/teszt_karoli_ellenorzes.py]
 fugg: [62, 63]
