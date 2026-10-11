@@ -59,6 +59,8 @@ DONTES_ERTEKEK = {'beépítve', 'elutasítva', 'nyitva'}
 
 # --- kezi tobblet: csak ami az elofordulasok.strong-bol nem olvashato ki ---
 NAPLO_DIR = 'tematikus_lezart/naplok/'
+# FORRAS (kezi tobblet, a kodba irva): DONTESEK.md DT-F63a (2): a ket kollokacio es a H2403,
+# a naplo hivatkozasaval (tablabol nem kiolvashato); kategoriajuk: DT-F63c (A).
 KOLLOKACIO = {  # (A, B, megjegyzes)
     'ISTENTISZT-001': [('H7121', 'H8034',
                         'formulaikus azonossag: H7121+H8034 egy versben; ' + NAPLO_DIR +
@@ -88,6 +90,11 @@ CSOPORTOS_KIZARAS = {
 # Az `elofordulasok.gerinc_elem` a zajos Strongokat is gerinc-elemkent tartja nyilvan,
 # ezert a szukites tartalmi dontes; itt kategoria, nem torles. A kategoria-bejegyzes
 # kezi, a DT-F63c (A)/(B)/(C) szerint.
+# FORRAS: DONTESEK.md DT-F63c (felhasznaloi dontes, 2026-10-11); DT-F63a (2) szerint a kodba
+# irt kezi kiegeszites. (A) pontatlan: az N-F63d-re var; (B)/(C) szukitendo: az N-F63e-re var
+# (a gerinc tartalmi felulvizsgalata). A kategoria NEM torles es NEM "megvizsgalt": a
+# szukitendo/pontatlan versek vizsgalata nyitott, ezert egy motivum 0 "meg nem vizsgalt"
+# erteke nem teljesseget jelent.
 KOR_KATEGORIA = {
     # (A) formula a gerinc, de a versszintu lekerdezes pontatlan
     'ISTENTISZT-001': {'H7121+H8034': 'pontatlan'},
@@ -541,6 +548,15 @@ def cmd_meres(args):
               'Kör = az `elofordulasok.strong` értékeinek kollokációja/scanje (lekerdez.py); ★ = normál lexikai kör − TSK-kör '
               '(a motívum ismert verseinek TSK-szomszédsága). Kategóriák: DT-F63c (A) pontatlan kollokáció, (B)/(C) szűkítendő, '
               'csoportos kizárás (napló 4/c), DT-F63b tematikus horgony. A kategorizálás kézi (`KOR_KATEGORIA`), a szűkítés tartalmi döntés.', '',
+              '**FIGYELEM: a tábla nem teljességi jelentés.** A „még nem vizsgált” oszlop 0 értéke NEM jelenti, '
+              'hogy a motívum végig van vizsgálva: HAMART-001-nél azért 0, mert 501 vers ideiglenesen „szűkítendő” '
+              'lett, amíg az N-F63e el nem dől (és 526 vers csoportos kizárás); MENNY-001-nél 0 mellett 269 '
+              '„pontatlan” vers áll (az N-F63d-re vár); ISTENTISZT-001 és KIRALY-001 is hasonló.', '',
+              'Oszlopok: ★ = normál lexikai kör − TSK-kör; „csoportos kizárás” = napló 4/c Strong-szintű kizárása; '
+              '„versszintű kollokáció, pontatlan” = a formula a gerinc, de az egy-versű lekérdezés pontatlan (DT-F63c (A)); '
+              '„szűkítendő” = gyakori Strong, tartalmi felülvizsgálatra vár (DT-F63c (B)/(C)); „tematikus horgony” = a sor '
+              'saját minősítése szerint NEM lexikai (DT-F63b). A kategóriák versei se ★, se „még nem vizsgált”, se '
+              '`elutasítva`: a vizsgálatuk nyitott.', '',
               '\n'.join(sor), '', '## Körök mérete és proveniencia', '']
         for mid, a in reszek:
             ki.append('### %s' % mid)
