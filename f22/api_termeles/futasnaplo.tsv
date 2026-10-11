@@ -1587,3 +1587,11 @@ ts	futas	koteg	probalkozas	modell	gondolkodas_mod	igehely_db	kjv	bemenet_token	k
 2026-10-11T19:23:37+00:00	api_termeles/high/Sof	6	1	claude-sonnet-5-5	adaptive,effort=high	3	nem	6951	3254		0.023221	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	82.409005	igen
 2026-10-11T19:23:37+00:00	api_termeles/high/Sof	4	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	10675	7770		0.049525	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	82.458530	igen
 2026-10-11T19:23:37+00:00	api_termeles/high/Sof	3	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	10824	7788		0.049764	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	82.508294	igen
+2026-10-11T19:28:47+00:00	api_termeles/high/Hab	5	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	9291	6805		0.043316	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	82.551610	igen
+2026-10-11T19:28:47+00:00	api_termeles/high/Hab	1	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	10008	7976		0.049888	batch_ar_szamolt	1	1		end_turn	84f12ca7aafb	82.601498	nem
+2026-10-11T19:28:48+00:00	api_termeles/high/Hab	4	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	10220	8699		0.053715	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	82.655213	igen
+2026-10-11T19:28:48+00:00	api_termeles/high/Hab	6	1	claude-sonnet-5-5	adaptive,effort=high	6	nem	8121	5327		0.034756	batch_ar_szamolt	1	1		end_turn	84f12ca7aafb	82.689969	nem
+2026-10-11T19:28:48+00:00	api_termeles/high/Hab	3	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	10310	10190		0.061260	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	82.751229	igen
+2026-10-11T19:28:48+00:00	api_termeles/high/Hab	2	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	10159	8600		0.053159	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	82.804388	igen
+2026-10-11T19:31:01+00:00	api_termeles/high/Hab	1	2	claude-sonnet-5-5	adaptive,effort=high	10	nem	11720	1004		0.016740	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	82.821128	igen
+2026-10-11T19:31:02+00:00	api_termeles/high/Hab	6	2	claude-sonnet-5-5	adaptive,effort=high	6	nem	9277	1278		0.015667	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	82.836795	igen
