@@ -84,6 +84,6 @@ Eltérő Károli-token (két modell partnerhalmaza különbözik) összesen: 0; 
 
 Az ellenőr a számszerű állításokat (21/21, 446 / 867, 0/21, 0,1251 USD, 79,2291 USD, az 1 203 vers a 11 megmaradt könyvben) saját lekérdezéssel igazolta; 2 eltérés:
 
-- **DT72 / D19 (közepes), nyitott, a felhasználó döntése:** a main beolvasztásakor az Abd saját, még ki nem adott 3 futásnapló-sorának `futo_osszeg_usd` értékét a Préd utolsó sorához igazítottam (77,83… → 79,17…); a D19 szerint a futásnapló csak kifejezett jóváhagyással írható át, a saját ágon lévő új sorokra nincs kivétel. Az értékek számszerűen helyesek, a régi sorok érintetlenek. Döntés kell: utólagos jóváhagyás, vagy kivétel a D19-be.
+- **DT72 / D19 (közepes), lezárva a D40-nel (a felhasználó döntése, 2026.10.11):** a main beolvasztásakor az Abd saját, még ki nem adott 3 futásnapló-sorának `futo_osszeg_usd` értékét a Préd utolsó sorához igazítottam (77,83… → 79,17…); a D19 szerint a futásnapló csak kifejezett jóváhagyással írható át, a saját ágon lévő új sorokra nincs kivétel. Az értékek számszerűen helyesek, a régi sorok érintetlenek. A felhasználó kivételt hagyott jóvá a D19 alól (brief D40, v2.34); az Abd-sorok igazítása ezzel a szabályon belül van.
 - **D39 sor (alacsony), javítva:** a hiányzó könyvek felsorolása hibás volt (Náh és Jón már kész); helyesen: Hag 38, Sof 53, Mal 55, Hab 56.
 

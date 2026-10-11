@@ -21,7 +21,7 @@ ELTÉRÉS: 2 tétel
 
 ## ELTÉRÉS
 
-1. **DT72 / D19 (közepes), nyitott, a felhasználó döntése:** az `a9b6b9ba` merge a futásnapló 3 Abd-sorának `futo_osszeg_usd` értékét átírta (77,83… → 79,17…). Az új értékek számszerűen helyesek, a régi sorok érintetlenek, de a D19 (DT72) szerint a futásnapló csak kifejezett jóváhagyással írható át, és a saját ágon lévő, még ki nem adott sorokra nincs kivétel. Lehetőségek: a felhasználó utólagos jóváhagyása (briefbe vagy a DONTESEK-be), vagy a D19-be kivétel a még ki nem adott sorokra.
+1. **DT72 / D19 (közepes), LEZÁRVA a D40-nel (a felhasználó döntése, 2026.10.11):** az `a9b6b9ba` merge a futásnapló 3 Abd-sorának `futo_osszeg_usd` értékét átírta (77,83… → 79,17…). Az új értékek számszerűen helyesek, a régi sorok érintetlenek, de a D19 (DT72) szerint a futásnapló csak kifejezett jóváhagyással írható át, és a saját ágon lévő, még ki nem adott sorokra nincs kivétel. Lezárás: a felhasználó kivételt hagyott jóvá a D19 alól (brief D40, v2.34): a main-re még be nem került, saját ágon lévő sorok futó összege a main beolvasztásakor a main utolsó sorához igazítható; a main-en lévő sorok csak kifejezett jóváhagyással írhatók át, és a beolvasztás után a diff a main-hez képest csak hozzáfűzés lehet.
 2. **D39 sor (alacsony), javítva:** a „többi hiányzó könyv nagyobb: Hag 38, Náh 47, Jón 48, Hab 56 …” felsorolás két kész könyvet (Náh, Jón) mutatott hiányzóként, és kihagyta a Sof (53) és a Mal (55) könyvet. Helyesen: „Hag 38, Sof 53, Mal 55, Hab 56 …”. Az „Abd a legkisebb hiányzó” állítás igaz.
 
 ## Nem ellenőrizhető a szerepkörből
