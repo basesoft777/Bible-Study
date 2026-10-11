@@ -17,7 +17,7 @@
 | 2. próba (javító) | 2 | 2 | 0 köteg (0 vers) | 0.0931 | 28 621 / 12 890 |
 | **összesen** | 8 | | | **0.4531** | |
 
-A javító körbe került kötegek: 1, 2; formátumhibás egész köteg nincs.
+A javító körbe került kötegek: 1, 2; egész köteg formátumhibás (nem érvényes JSON): k001, 10 vers; a javító kör 0-ra hozta.
 
 Költségplafon: a megbízás szerinti könyvplafon vers × 0,0074 × 1,5 = 0.61 USD (az `api_koteg.py` beépített alsó határa 1,00 USD); a könyv költsége 0.4531 USD (versenként 0.0082 USD). A kumulatív összeg a futásnapló `api_termeles/` soraiból: 81.9476 USD (az előző állapot 81.4946 + 0.4531), a globális 110 USD-ből; a `futo_osszeg_usd` oszlop utolsó sora is 81.947640.
 
