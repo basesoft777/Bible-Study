@@ -30,7 +30,7 @@ A `jeloltek.tsv`-nek **nincs `strong` oszlopa**: a 221 sorból 205 az `elofordul
 ## 4. Mérés (`naplok/KAROLI_ELLENORZES_elteresek.tsv` előzetes, M2-ben végleges)
 
 `elofordulasok.tsv` 205 sor: **153 egyezik · 3 elter · 49 nincs_par**.
-- `nincs_par` 49: mind újszövetségi (G-Strong, a #22 csak az ÓSZ-t párosítja: 1Kor, Jel, ApCsel, Luk, Zsid, Róm, …) vagy még nem párosított ószövetségi könyv (Hab, Hós, Jóel, Ámós, Zak, Sof, Én); Jób 17:16 (a vers nincs a `parok_Job`-ban, vö. DT85 versbeosztás); Préd 9:10 (`a Seolban`: a szóalak a gépi versben nincs, a Károli-szöveg más szót használ).
+- `nincs_par` 49: mind újszövetségi (G-Strong, a #22 csak az ÓSZ-t párosítja: 1Kor, Jel, ApCsel, Luk, Zsid, Róm, …) vagy még nem párosított ószövetségi könyv (Hab, Hós, Jóel, Ámós, Zak, Sof, Én); Jób 17:16 és Préd 9:10 (**javítva az ellenőri jelentés után**: a régi igehely nem Károli-kulcs, KJV/MT-számozás; a Károli-kulcs Jób 17:15, ill. Préd 9:12 — a Károli-Jób 17 a 17:15-nél véget ér, a Préd 9:10 a Károli-szövegben más vers; tehát nem szóalak-eltérés, hanem verseltolás; az ítélet változatlan). A harmadik, `elter` ítéletű sor (ALVIL-001 Jób 17:13) is verseltolásból ered (Károli-kulcs Jób 17:12, ott a H7585 megvan).
 - **1Móz/2Móz (25 sor): 23 egyezik + `magas`, 2 elter.** Ez a ma frissíthető halmaz (a többi 130 `egyezik` sor `alacsony` párokon áll: nem frissíthető).
 - A két 1Móz/2Móz eltérés valódi:
   - KIRALY-001, 2Móz 19:6, `papok` (H3548+H4467): a gépi pár `papok` → H3548, a H4467 (`birodalma`) külön szóhoz tartozik; a régi sor a kifejezés két szavát egy `karoli_szo`-ba vonta.

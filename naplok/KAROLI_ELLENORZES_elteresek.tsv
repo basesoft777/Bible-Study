@@ -94,8 +94,8 @@ sor	id	igehely	karoli_szo	regi_strong	jelenlegi_mod	itelet	gepi_strongok	bizonyo
 94	ALVIL-001	Jób 7:9	a sírba	H7585	tartalom-alapú	egyezik	H7585	alacsony	nem	sírba			
 95	ALVIL-001	Jób 11:8	az alvilágnál	H7585	tartalom-alapú	egyezik	H7585,H9006	alacsony	nem	alvilágnál			
 96	ALVIL-001	Jób 14:13	a holtak országában	H7585	tartalom-alapú	egyezik	H7585,H9003	alacsony	nem	holtak,országában			
-97	ALVIL-001	Jób 17:13	A sírnak	H7585	tartalom-alapú	elter	H7845,H9005	alacsony	nem				hiányzó a gépi párokból: H7585
-98	ALVIL-001	Jób 17:16	a sír üregébe	H7585	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+97	ALVIL-001	Jób 17:13	A sírnak	H7585	tartalom-alapú	elter	H7845,H9005	alacsony	nem				hiányzó a gépi párokból: H7585; a régi igehely nem Károli-kulcs (verseltolás), a Károli-kulcs: Jób 17:12; az ítélet nem valódi szóeltérésből ered, kézi ítéletre vár
+98	ALVIL-001	Jób 17:16	a sír üregébe	H7585	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban; a régi igehely nem Károli-kulcs (verseltolás), a Károli-kulcs: Jób 17:15; az ítélet nem valódi szóeltérésből ered, kézi ítéletre vár
 99	ALVIL-001	Jób 21:13	a sírba	H7585	tartalom-alapú	egyezik	H7585	alacsony	nem	sírba			
 100	ALVIL-001	Jób 24:19	a pokol	H7585	tartalom-alapú	egyezik	H7585	alacsony	nem	pokol			
 101	ALVIL-001	Jób 26:6	Az alvilág	H7585	tartalom-alapú	egyezik	H7585	alacsony	nem	alvilág			
@@ -122,7 +122,7 @@ sor	id	igehely	karoli_szo	regi_strong	jelenlegi_mod	itelet	gepi_strongok	bizonyo
 122	ALVIL-001	Péld 23:14	a pokolból	H7585	tartalom-alapú	egyezik	H7585,H9006	alacsony	nem	pokolból			
 123	ALVIL-001	Péld 27:20	a sír	H7585	tartalom-alapú	egyezik	H7585	alacsony	nem	sír			
 124	ALVIL-001	Péld 30:16	A sír	H7585	tartalom-alapú	egyezik	H7585	alacsony	nem	sír			
-125	ALVIL-001	Préd 9:10	a Seolban	H7585	tartalom-alapú	nincs_par			nem				a karoli_szo egyetlen szava sincs a versben
+125	ALVIL-001	Préd 9:10	a Seolban	H7585	tartalom-alapú	nincs_par			nem				a karoli_szo egyetlen szava sincs a versben; a régi igehely nem Károli-kulcs (verseltolás), a Károli-kulcs: Préd 9:12; az ítélet nem valódi szóeltérésből ered, kézi ítéletre vár
 126	ALVIL-001	Én 8:6	a sír	H7585	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
 127	ALVIL-001	Ézs 5:14	a sír	H7585	tartalom-alapú	egyezik	H7585	alacsony	nem	sír			
 128	ALVIL-001	Ézs 7:11	a mélységben	H7585	tartalom-alapú	egyezik	H7585	alacsony	nem	mélységben			
@@ -205,3 +205,19 @@ sor	id	igehely	karoli_szo	regi_strong	jelenlegi_mod	itelet	gepi_strongok	bizonyo
 259	TEREMT-002	1Móz 1:2	kietlen és puszta	H8414+H0922	szó-szintű-gépi	egyezik	H0922,H8414,H9002	magas	nem	kietlen,puszta			
 260	TEREMT-002	Jer 4:23	kietlen és puszta	H8414+H0922	tartalom-alapú	egyezik	H0922,H8414,H9002	alacsony	nem	kietlen,puszta			
 261	TEREMT-002	Ézs 34:11	pusztaság … semmiségnek	H8414+H0922	tartalom-alapú	egyezik	H0922,H8414	alacsony	nem	pusztaság,semmiségnek			
+280	TEREMT-002	1Sám 12:21	hiábavalóságok		tartalom-alapú	nincs_strong			nem				jeloltek.tsv-sor: nincs elofordulasok-párja (id + igehely), Strong híján nem ellenőrizhető
+281	TEREMT-002	5Móz 32:10	zordon, sivatag vadonban		tartalom-alapú	nincs_strong			nem				jeloltek.tsv-sor: nincs elofordulasok-párja (id + igehely), Strong híján nem ellenőrizhető
+283	TEREMT-002	Jób 6:18	sivatagba		tartalom-alapú	nincs_strong			nem				jeloltek.tsv-sor: nincs elofordulasok-párja (id + igehely), Strong híján nem ellenőrizhető
+284	TEREMT-002	Jób 12:24	pusztában		tartalom-alapú	nincs_strong			nem				jeloltek.tsv-sor: nincs elofordulasok-párja (id + igehely), Strong híján nem ellenőrizhető
+285	TEREMT-002	Jób 26:7	üresség		tartalom-alapú	nincs_strong			nem				jeloltek.tsv-sor: nincs elofordulasok-párja (id + igehely), Strong híján nem ellenőrizhető
+286	TEREMT-002	Zsolt 107:40	kietlenben		tartalom-alapú	nincs_strong			nem				jeloltek.tsv-sor: nincs elofordulasok-párja (id + igehely), Strong híján nem ellenőrizhető
+287	TEREMT-002	Ézs 24:10	álnokság		tartalom-alapú	nincs_strong			nem				jeloltek.tsv-sor: nincs elofordulasok-párja (id + igehely), Strong híján nem ellenőrizhető
+288	TEREMT-002	Ézs 29:21	csalárdul		tartalom-alapú	nincs_strong			nem				jeloltek.tsv-sor: nincs elofordulasok-párja (id + igehely), Strong híján nem ellenőrizhető
+290	TEREMT-002	Ézs 40:17	ürességnél		tartalom-alapú	nincs_strong			nem				jeloltek.tsv-sor: nincs elofordulasok-párja (id + igehely), Strong híján nem ellenőrizhető
+291	TEREMT-002	Ézs 40:23	hiábavalókká		tartalom-alapú	nincs_strong			nem				jeloltek.tsv-sor: nincs elofordulasok-párja (id + igehely), Strong híján nem ellenőrizhető
+292	TEREMT-002	Ézs 41:29	hiábavalóság		tartalom-alapú	nincs_strong			nem				jeloltek.tsv-sor: nincs elofordulasok-párja (id + igehely), Strong híján nem ellenőrizhető
+293	TEREMT-002	Ézs 44:9	hiábavalók		tartalom-alapú	nincs_strong			nem				jeloltek.tsv-sor: nincs elofordulasok-párja (id + igehely), Strong híján nem ellenőrizhető
+294	TEREMT-002	Ézs 45:18	hiába		tartalom-alapú	nincs_strong			nem				jeloltek.tsv-sor: nincs elofordulasok-párja (id + igehely), Strong híján nem ellenőrizhető
+295	TEREMT-002	Ézs 45:19	hiába		tartalom-alapú	nincs_strong			nem				jeloltek.tsv-sor: nincs elofordulasok-párja (id + igehely), Strong híján nem ellenőrizhető
+296	TEREMT-002	Ézs 49:4	semmire		tartalom-alapú	nincs_strong			nem				jeloltek.tsv-sor: nincs elofordulasok-párja (id + igehely), Strong híján nem ellenőrizhető
+297	TEREMT-002	Ézs 59:4	haszontalanban		tartalom-alapú	nincs_strong			nem				jeloltek.tsv-sor: nincs elofordulasok-párja (id + igehely), Strong híján nem ellenőrizhető

@@ -6,6 +6,7 @@
 """
 
 import os
+import re
 import sys
 import tempfile
 import unittest
@@ -63,6 +64,8 @@ def kesz_repo(gyoker):
         f.write('# teszt\n' + J_FEJ + '\n')
         for i, g, st, sz, m in E_SOROK:
             f.write('\t'.join([i, g, 'k', 'beépítve', 'ind', sz, m, 'magas', '2026.10.11']) + '\n')
+        # jeloltek-sor elofordulasok-pár (Strong) nélkül
+        f.write('\t'.join(['M-2', '1Móz 1:2', 'k', 'beépítve', 'ind', 'föld', 'tartalom-alapú', 'magas', '2026.10.11']) + '\n')
 
 
 class Teszt(unittest.TestCase):
@@ -159,7 +162,7 @@ class Teszt(unittest.TestCase):
         self.assertEqual(resz['élő lélekké'], 'nem')
         # az alacsony 1Móz 3:1 sor nem megerősítés; az aggregátumok bizonyossaga jelölt
         self.assertFalse(any(r[fej.index('karoli_szo')] == 'kígyó' for r in m))
-        self.assertTrue(any(s.startswith('strong_szoalak\t1Moz\tH5175\tkígyó\t1\talacsony') for s in sorok))
+        self.assertTrue(any(s.startswith('strong_szoalak\t1Móz\tH5175\tkígyó\t1\talacsony') for s in sorok))
 
     def test_variancia_ujrafuttatas_ugyanaz(self):
         ut = os.path.join(self.tmp.name, 'var.tsv')
@@ -168,6 +171,30 @@ class Teszt(unittest.TestCase):
         ke.frissit(ir=True)
         ke.variancia(ut, '2026-10-11')
         self.assertEqual(self.olvas('var.tsv'), elso)  # az átállítás nem változtatja a megerősítéseket
+
+    def test_konyv_oszlop_egysegesen_az_igehely_rovidites(self):
+        ut = os.path.join(self.tmp.name, 'var.tsv')
+        ke.variancia(ut, '2026-10-11')
+        sorok = [s.split('\t') for s in self.olvas('var.tsv').split('\n')[2:] if s]
+        self.assertEqual({r[1] for r in sorok}, {'1Móz', '2Móz'})  # nincs '1Moz' / '2Moz' fájlnév-alak
+
+    def test_ts_alapertek_mai_utc(self):
+        minta = r'^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\dZ$'
+        self.assertRegex(ke.ma_ts(), minta)
+        ut = os.path.join(self.tmp.name, 'var.tsv')
+        ke.variancia(ut)  # ts nélkül: a futás időbélyege kerül a proveniencia-sorokba
+        sorok = self.olvas('var.tsv').split('\n')
+        m = re.search(r'ts=(\S+) \|', sorok[0])
+        self.assertRegex(m.group(1), minta)
+        self.assertRegex(sorok[2].split('\t')[-1], r'ts=\d{4}-\d\d-\d\dT\d\d:\d\d:\d\dZ$')
+
+    def test_nincs_strong_sor_az_eltereslistan(self):
+        ut = os.path.join(self.tmp.name, 'elt.tsv')
+        ke.ir_eltereslista(ut)
+        sorok = [s.split('\t') for s in self.olvas('elt.tsv').split('\n')[2:] if s]
+        ns = [r for r in sorok if r[6] == 'nincs_strong']
+        self.assertEqual(len(ns), 1)
+        self.assertEqual((ns[0][1], ns[0][2]), ('M-2', '1Móz 1:2'))
 
 
 if __name__ == '__main__':

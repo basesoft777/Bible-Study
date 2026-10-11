@@ -29,6 +29,7 @@ Futtatás a repó gyökeréből:
 """
 
 import collections
+import datetime
 import glob
 import os
 import re
@@ -46,6 +47,11 @@ JELOLTEK = os.path.join('adat', 'jeloltek.tsv')
 SZURT = {'a', 'az', 'és'}  # névelő és kötőszó: nem kerül a nem illesztett listába (DT-F65b (2))
 UJ_MOD = 'szó-szintű-gépi'
 REGI_MOD = 'tartalom-alapú'
+
+
+def ma_ts():
+    """A futás UTC időbélyege (nincs beégetett alapérték)."""
+    return datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
 
 
 def olvas(rel):
@@ -201,8 +207,48 @@ ELT_FEJ = ['sor', 'id', 'igehely', 'karoli_szo', 'regi_strong', 'jelenlegi_mod',
            'nincs_gepi_par', 'mas_strong', 'megjegyzes']
 
 
+def nincs_strong_sorok():
+    """A jeloltek.tsv azon tartalom-alapú sorai, amelyeknek nincs elofordulasok-párjuk (id + igehely):
+    Strong híján az ellenőrzés nem futtatható (`nincs_strong`)."""
+    ekulcs = set()
+    sorok, i, fej = tabla(ELOFORDULASOK)
+    ix = {n: k for k, n in enumerate(fej)}
+    for n in range(i + 1, len(sorok)):
+        p = sorok[n].split('\t')
+        if len(p) > ix['igehely']:
+            ekulcs.add((p[ix['id']], p[ix['igehely']]))
+    sorok, i, fej = tabla(JELOLTEK)
+    ix = {n: k for k, n in enumerate(fej)}
+    ki = []
+    for n in range(i + 1, len(sorok)):
+        p = sorok[n].split('\t')
+        if len(p) > ix['azonositas_modja'] and p[ix['azonositas_modja']] == REGI_MOD                 and (p[ix['id']], p[ix['igehely']]) not in ekulcs:
+            ki.append((n + 1, p[ix['id']], p[ix['igehely']], p[ix['karoli_szo']], p[ix['azonositas_modja']]))
+    return ki
+
+
+# A régi igehely nem Károli-kulcs (KJV/MT-számozás); a Károli-kulcs a jobb oldalon.
+# Az ítélet nem változik, csak jelölés a megjegyzésben.
+KULCS_ELTOLAS = {
+    'Préd 9:10': 'Préd 9:12',
+    'Jób 17:13': 'Jób 17:12',
+    'Jób 17:16': 'Jób 17:15',
+}
+
+
+def megjegyzes(e):
+    r = e['r']
+    m = r['megjegyzes']
+    k = KULCS_ELTOLAS.get(e['igehely'])
+    if k and r['itelet'] != 'egyezik':
+        m += ('; a régi igehely nem Károli-kulcs (verseltolás), a Károli-kulcs: %s; '
+              'az ítélet nem valódi szóeltérésből ered, kézi ítéletre vár' % k)
+    return m
+
+
 def ir_eltereslista(ut, vers=None):
     er = ellenorzes_futtat(vers)
+    ns = nincs_strong_sorok()
     with open(ut, 'w', encoding='utf-8', newline='') as f:
         f.write('# F65 M2: a tartalom-alapú (és már átállított) sorok ellenőrzése a #22 gépi párosítása ellen | '
                 'scope=manual | forras=adat/elofordulasok.tsv, adat/karoli_strong/parok_*.tsv | ts=manual (nem lekérdezés) | '
@@ -213,8 +259,11 @@ def ir_eltereslista(ut, vers=None):
             f.write('\t'.join([str(e['n']), e['id'], e['igehely'], e['karoli_szo'], e['strong'], e['mod'],
                                r['itelet'], ','.join(r['gepi']), ','.join(r['biz']),
                                'igen' if reszleges(r) else 'nem', ','.join(r['illesztett']),
-                               ','.join(r['nincs_gepi_par']), ','.join(r['mas_strong']), r['megjegyzes']]) + '\n')
-    print('írva:', ut, len(er), 'sor')
+                               ','.join(r['nincs_gepi_par']), ','.join(r['mas_strong']), megjegyzes(e)]) + '\n')
+        for n, i_d, ig, szo, mod in ns:
+            f.write('\t'.join([str(n), i_d, ig, szo, '', mod, 'nincs_strong', '', '', 'nem', '', '', '',
+                               'jeloltek.tsv-sor: nincs elofordulasok-párja (id + igehely), Strong híján nem ellenőrizhető']) + '\n')
+    print('írva:', ut, len(er), '+', len(ns), 'nincs_strong sor')
     return er
 
 
@@ -222,13 +271,15 @@ VAR_FEJ = ['tipus', 'konyv', 'kulcs', 'ertek', 'darab', 'bizonyossag', 'id', 'ig
            'karoli_szo', 'reszleges', 'nincs_gepi_par', 'mas_strong', 'proveniencia']
 
 
-def variancia(ut, ts, konyvek=None):
+def variancia(ut, ts=None, konyvek=None):
     """Variancia-térkép + soronkénti megerősítések. konyvek: parok-fájlnevek (None = amelyikben van magas pár)."""
+    ts = ts or ma_ts()
     sor_ki = []
     vers = collections.defaultdict(list)
     for f in sorted(glob.glob(os.path.join(ROOT, PAROK_MINTA))):
         k = os.path.basename(f)[len('parok_'):-4]
         rows = list(parok_sorok(f))
+        kh = rows[0][0].split(' ')[0] if rows else k  # a konyv oszlop alakja: az igehely rövidítése (SEMA 2.24)
         for p in rows:
             vers[p[0]].append((p[2], p[5], p[6]))
         if konyvek is None:
@@ -246,7 +297,7 @@ def variancia(ut, ts, konyvek=None):
         for tip, d in (('strong_szoalak', a), ('szoalak_strong', b)):
             for (bz, kulcs) in sorted(d):
                 for ertek, n in sorted(d[(bz, kulcs)].items(), key=lambda x: (-x[1], x[0])):
-                    sor_ki.append([tip, k, kulcs, ertek, str(n), bz, '', '', '', '', '', '', prov])
+                    sor_ki.append([tip, kh, kulcs, ertek, str(n), bz, '', '', '', '', '', '', prov])
     for e in ellenorzes_futtat(vers):
         r = e['r']
         if not frissitheto(r):
@@ -312,7 +363,7 @@ if __name__ == '__main__':
     elif a and a[0] == '--ellenorzes':
         ir_eltereslista(a[1])
     elif a and a[0] == '--variancia':
-        variancia(a[1], _arg(a, '--ts', '2026-10-11'))
+        variancia(a[1], _arg(a, '--ts'))
     elif a and a[0] == '--frissit':
         frissit('--ir' in a, _arg(a, '--motivum'))
     else:
