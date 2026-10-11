@@ -73,8 +73,9 @@ KOLLOKACIO = {  # (A, B, megjegyzes)
 }
 EXTRA = {}  # (Strong, megjegyzes): jelenleg nincs olyan Strong, amely az elofordulasok-bol ne lenne kiolvashato
 # Strong-szintu csoportos kizaras: a HAMART-001 naplo 4/c tablajanak csoport-sorai (igehelyek
-# nelkul). KEZI, a naploból: a G2672, G2671, G5351, G5356, G1311, G0093 NINCS az
-# `elofordulasok.strong`-ban, a H2555, H7843, H0127, H2403 igen. Maradek talalataik kulon kategoria.
+# nelkul). KEZI, a naploból: CSAK a G2672 es a G0093 NINCS az `elofordulasok.strong`-ban;
+# a H2555, H7843, H0127, H2403, G2671, G5351, G5356, G1311 benne van (a lista a 4/c tabla
+# csoport-sorait koveti). Maradek talalataik kulon kategoria.
 CSOPORTOS_KIZARAS = {
     'HAMART-001': ({'H2555', 'H7843', 'H0127', 'H2403', 'G2672', 'G2671', 'G5351',
                     'G5356', 'G1311', 'G0093'},
