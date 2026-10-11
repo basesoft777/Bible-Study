@@ -8,7 +8,7 @@ modell: sonnet
 munka: folyamat
 allapot: lezarva
 ag: claude/f61-lekerdez-naplo
-pr: PR_HELYE
+pr: https://github.com/basesoft777/Bible-Study/pull/282
 lezarva_osszegzes: "a lekerdez.py --naplo ID --lepes KÓD önnaplózása (három ágú ID-döntés, csatorna=cli, stderr állapotsor), SEMA 2.9, ellenoriz.py csatorna-kulcs; DT-F61a/b alkalmazva; N-F61a helyőrző"
 ad: a lekerdez.py minden alparancsa egy kapcsolóval (--naplo ID --lepes KÓD) maga fűzi a saját proveniencia-sorát az adat/auditok.tsv-hez, hozzáfűzéssel, duplikáció nélkül; a SEMA 2.9 lepes-értékkészlete bővül az adhoc értékkel, a proveniencia-sor a futtatás csatornáját is rögzíti (DT-M3)
 kovetkezo: "—"
