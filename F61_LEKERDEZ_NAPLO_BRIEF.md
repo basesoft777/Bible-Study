@@ -6,9 +6,12 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: folyamat
-allapot: nem_indult
+allapot: lezarva
+ag: claude/f61-lekerdez-naplo
+pr: https://github.com/basesoft777/Bible-Study/pull/282
+lezarva_osszegzes: "a lekerdez.py --naplo ID --lepes KÓD önnaplózása (három ágú ID-döntés, csatorna=cli, stderr állapotsor), SEMA 2.9, ellenoriz.py csatorna-kulcs; DT-F61a/b alkalmazva; N-F61a helyőrző"
 ad: a lekerdez.py minden alparancsa egy kapcsolóval (--naplo ID --lepes KÓD) maga fűzi a saját proveniencia-sorát az adat/auditok.tsv-hez, hozzáfűzéssel, duplikáció nélkül; a SEMA 2.9 lepes-értékkészlete bővül az adhoc értékkel, a proveniencia-sor a futtatás csatornáját is rögzíti (DT-M3)
-kovetkezo: /kovetkezo; ⛔ az M0 után (a motívumon kívüli lekérdezések naplózásának helye)
+kovetkezo: "—"
 olvas: [eszkozok/lekerdez.py, adat/auditok.tsv, adat/SEMA.md, eszkozok/ellenoriz.py, MUNKAMENET.md, eszkozok/teszt_lekerdez_sir.py]
 ir: [eszkozok/lekerdez.py, eszkozok/teszt_lekerdez_naplo.py, adat/SEMA.md, eszkozok/ellenoriz.py]
 fugg: []
@@ -61,7 +64,7 @@ Jelentés: `naplok/LEKERDEZ_NAPLO_M0.md`.
 
 ### M2 — Zárás
 
-`eszkozok/teszt_lekerdez_naplo.py` (ideiglenes `auditok.tsv`-másolaton: hozzáfűzés, duplikáció-szűrés, érvénytelen `--lepes`, kapcsoló nélküli azonos kimenet), `naplok/LEKERDEZ_NAPLO_zaras.md` (≤20 sor), `fuggetlen-ellenor` (`naplok/ELLENOR_LEKERDEZ_NAPLO.md`), a brief fejléce `lezarva`, push, draft PR.
+`eszkozok/teszt_lekerdez_naplo.py` (ideiglenes `auditok.tsv`-másolaton: hozzáfűzés, duplikáció-szűrés, érvénytelen `--lepes`, kapcsoló nélküli azonos kimenet), `naplok/LEKERDEZ_NAPLO_zaras.md` (≤20 sor), `fuggetlen-ellenor` (`naplok/ELLENOR_F61.md`), a brief fejléce `lezarva`, push, draft PR.
 
 ## 4. Elfogadási feltételek
 

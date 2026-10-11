@@ -759,53 +759,202 @@ def cmd_domen(args):
 # ---------------------------------------------------------------------------
 
 def build_parser():
+    szulo = argparse.ArgumentParser(add_help=False)
     p = argparse.ArgumentParser(
         prog="lekerdez.py",
         description="Determinisztikus lekérdező CLI — ATALAKITASI_TERV.md.md F2.",
     )
+    # A kapcsoló az alparancs előtt és után is megadható (az alparancs-szintű
+    # alapérték SUPPRESS, hogy ne írja felül a főparancs értékét).
+    for cel in (p, szulo):
+        cel.add_argument("--naplo", metavar="ID",
+                         **({} if cel is p else {"default": argparse.SUPPRESS}),
+                         help="a proveniencia-sor naplózása: létező motívum-ID → adat/auditok.tsv, "
+                              "F<szám> feladatkód → naplok/<KÓD>_lekerdezesek.tsv")
+        cel.add_argument("--lepes", choices=NAPLO_LEPESEK,
+                         **({} if cel is p else {"default": argparse.SUPPRESS}),
+                         help="a --naplo mellett kötelező kutatási lépés-kód")
     sub = p.add_subparsers(dest="parancs", required=True)
 
-    sp = sub.add_parser("gerinc", help="1. lépés — gerinc-metszet N szakasz között")
+    sp = sub.add_parser("gerinc", parents=[szulo], help="1. lépés — gerinc-metszet N szakasz között")
     sp.add_argument("szakasz", nargs="+", help="pl. '1Móz 3' '1Móz 6:1-8'")
     sp.set_defaults(func=cmd_gerinc)
 
-    sp = sub.add_parser("scan", help="3. lépés — teljes scan egy Strong-számra")
+    sp = sub.add_parser("scan", parents=[szulo], help="3. lépés — teljes scan egy Strong-számra")
     sp.add_argument("strong")
     sp.add_argument("--szakasz", help="opcionális szűkítés egy tartományra")
     sp.set_defaults(func=cmd_scan)
 
-    sp = sub.add_parser("kollokacio", help="4. lépés — két Strong együttes előfordulása egy versben")
+    sp = sub.add_parser("kollokacio", parents=[szulo], help="4. lépés — két Strong együttes előfordulása egy versben")
     sp.add_argument("strong_a")
     sp.add_argument("strong_b")
     sp.set_defaults(func=cmd_kollokacio)
 
-    sp = sub.add_parser("igealak", help="5. lépés — egy Strong minden ragozott alakja")
+    sp = sub.add_parser("igealak", parents=[szulo], help="5. lépés — egy Strong minden ragozott alakja")
     sp.add_argument("strong")
     sp.set_defaults(func=cmd_igealak)
 
-    sp = sub.add_parser("lxx-hid", help="6. lépés — egy ÓSZ-igehely LXX-megfelelője + ÚSZ-hidak")
+    sp = sub.add_parser("lxx-hid", parents=[szulo], help="6. lépés — egy ÓSZ-igehely LXX-megfelelője + ÚSZ-hidak")
     sp.add_argument("igehely")
     sp.set_defaults(func=cmd_lxx_hid)
 
-    sp = sub.add_parser("tsk", help="TSK-kereszthivatkozások egy igehelyre")
+    sp = sub.add_parser("tsk", parents=[szulo], help="TSK-kereszthivatkozások egy igehelyre")
     sp.add_argument("igehely")
     sp.set_defaults(func=cmd_tsk)
 
-    sp = sub.add_parser("karoli", help="Károli-szöveg + Károli-KH egy igehelyre")
+    sp = sub.add_parser("karoli", parents=[szulo], help="Károli-szöveg + Károli-KH egy igehelyre")
     sp.add_argument("igehely")
     sp.set_defaults(func=cmd_karoli)
 
-    sp = sub.add_parser("domen", help="szemantikai domén (SDBH/SDGNT) — mező-tágítás 1 Stronggal, elhatárolás 2-vel")
+    sp = sub.add_parser("domen", parents=[szulo], help="szemantikai domén (SDBH/SDGNT) — mező-tágítás 1 Stronggal, elhatárolás 2-vel")
     sp.add_argument("strong", nargs="+")
     sp.set_defaults(func=cmd_domen)
 
     return p
 
 
+# ---------------------------------------------------------------------------
+# Önnaplózás (F61, DT-F61a): --naplo ID --lepes KÓD
+# ---------------------------------------------------------------------------
+
+NAPLO_LEPESEK = ("A5", "B2", "B3", "B4", "adhoc")
+FELADATKOD_MINTA = re.compile(r"^F\d+$")
+AUDITOK = ADAT / "auditok.tsv"
+NAPLOK_MAPPA = ROOT / "naplok"
+CSATORNA_JEL = " | csatorna=cli"
+PROV_ELOTAG = "proveniencia: "
+
+
+def _motivum_idk(motivumok_tsv):
+    """A motivumok.tsv `id` oszlopa (split('\t'), csv nélkül)."""
+    idk = set()
+    fej = None
+    with open(motivumok_tsv, encoding="utf-8", newline="") as f:
+        for sor in f:
+            sor = sor.rstrip("\r\n")
+            if not sor or sor.startswith("#"):
+                continue
+            mezok = sor.split("\t")
+            if fej is None:
+                fej = mezok
+                continue
+            idk.add(mezok[0])
+    return idk
+
+
+def naplo_celfajl(naplo_id, auditok=None, naplok_mappa=None, motivumok_tsv=None):
+    """A --naplo ID három ága: létező motívum -> auditok.tsv; F<szám> -> a feladat
+    saját naplófájlja; minden más -> None (hiba)."""
+    auditok = AUDITOK if auditok is None else auditok
+    naplok_mappa = NAPLOK_MAPPA if naplok_mappa is None else naplok_mappa
+    motivumok_tsv = ADAT / "motivumok.tsv" if motivumok_tsv is None else motivumok_tsv
+    if naplo_id in _motivum_idk(motivumok_tsv):
+        return Path(auditok)
+    if FELADATKOD_MINTA.match(naplo_id):
+        return Path(naplok_mappa) / f"{naplo_id}_lekerdezesek.tsv"
+    return None
+
+
+def naplosor_hozzafuz(celfajl, naplo_id, lepes, prov, datum):
+    """Hozzáfűzés duplikáció nélkül. True, ha írt; False, ha a sor már megvolt.
+    Az utolsó sort írás előtt ellenőrzi (sorvég, oszlopszám); eltérésnél ValueError."""
+    sor_uj = "\t".join([naplo_id, lepes, prov, datum])
+    celfajl = Path(celfajl)
+    if not celfajl.exists():
+        celfajl.parent.mkdir(parents=True, exist_ok=True)
+        with open(celfajl, "w", encoding="utf-8", newline="\n") as f:
+            f.write("# Lekerdezes-naplo (lekerdez.py --naplo). Kulcs nincs. Sema: adat/SEMA.md 2.9\n")
+            f.write("id\tlepes\tproveniencia\tdatum\n")
+    with open(celfajl, encoding="utf-8", newline="") as f:
+        tartalom = f.read()
+    if tartalom and not tartalom.endswith("\n"):
+        raise ValueError(f"{celfajl}: az utolsó sor nem \n-re végződik")
+    sorok = tartalom.split("\n")[:-1]
+    for sor in reversed(sorok):
+        if sor and not sor.startswith("#"):
+            if len(sor.split("\t")) != 4:
+                raise ValueError(f"{celfajl}: az utolsó sor nem 4 oszlopú")
+            break
+    if sor_uj in sorok:
+        return False
+    with open(celfajl, "a", encoding="utf-8", newline="\n") as f:
+        f.write(sor_uj + "\n")
+    return True
+
+
+class _ProvFogo:
+    """A stdout köré: a `proveniencia: ` sorokhoz hozzáfűzi a csatornát, és gyűjti őket."""
+
+    def __init__(self, mogotte):
+        self._m = mogotte
+        self._puffer = ""
+        self.provok = []
+
+    def write(self, szoveg):
+        self._puffer += szoveg
+        while "\n" in self._puffer:
+            sor, self._puffer = self._puffer.split("\n", 1)
+            if sor.startswith(PROV_ELOTAG):
+                sor += CSATORNA_JEL
+                self.provok.append(sor[len(PROV_ELOTAG):])
+            self._m.write(sor + "\n")
+        return len(szoveg)
+
+    def flush(self):
+        self._m.flush()
+
+    def __getattr__(self, nev):
+        return getattr(self._m, nev)
+
+
+def futtat_naplozva(args, auditok=None, naplok_mappa=None, motivumok_tsv=None):
+    """Az alparancs futtatása; --naplo esetén a kiírt proveniencia-sor(ok) naplózása.
+    Hiba (érvénytelen ID/lépés, sikertelen alparancs) esetén semmit nem ír."""
+    naplo_id = getattr(args, "naplo", None)
+    lepes = getattr(args, "lepes", None)
+    if naplo_id is None:
+        if lepes is not None:
+            print("hiba: a --lepes csak a --naplo mellett használható", file=sys.stderr)
+            sys.exit(1)
+        args.func(args)
+        return
+    if lepes not in NAPLO_LEPESEK:
+        print(f"hiba: a --naplo mellett kötelező a --lepes ({' | '.join(NAPLO_LEPESEK)})",
+              file=sys.stderr)
+        sys.exit(1)
+    cel = naplo_celfajl(naplo_id, auditok, naplok_mappa, motivumok_tsv)
+    if cel is None:
+        print(f"hiba: a --naplo ID ('{naplo_id}') nem létező motívum és nem feladatkód (F<szám>); "
+              "semmi nem íródott", file=sys.stderr)
+        sys.exit(1)
+    fogo = _ProvFogo(sys.stdout)
+    eredeti = sys.stdout
+    sys.stdout = fogo
+    kilepes = None
+    try:
+        args.func(args)
+    except SystemExit as e:
+        kilepes = e
+    finally:
+        sys.stdout = eredeti
+    if kilepes is not None and kilepes.code not in (0, None):
+        raise kilepes
+    datum = datetime.datetime.now(datetime.timezone.utc).strftime("%Y.%m.%d")
+    for prov in fogo.provok:
+        try:
+            ir = naplosor_hozzafuz(cel, naplo_id, lepes, prov, datum)
+        except ValueError as e:
+            print(f"hiba: {e}", file=sys.stderr)
+            sys.exit(1)
+        print(f"# napló: {'hozzáfűzve' if ir else 'már megvolt'} -> {cel.name}", file=sys.stderr)
+    if kilepes is not None:
+        raise kilepes
+
+
 def main():
     parser = build_parser()
     args = parser.parse_args()
-    args.func(args)
+    futtat_naplozva(args)
 
 
 if __name__ == "__main__":
