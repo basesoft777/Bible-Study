@@ -1,0 +1,223 @@
+# F65 M2: a tartalom-alapú (és már átállított) sorok ellenőrzése a #22 gépi párosítása ellen | scope=manual | forras=adat/elofordulasok.tsv, adat/karoli_strong/parok_*.tsv | ts=manual (nem lekérdezés) | előállítás: eszkozok/karoli_ellenorzes.py; az elter/nincs_par sor NEM változott, kézi ítéletre vár
+sor	id	igehely	karoli_szo	regi_strong	jelenlegi_mod	itelet	gepi_strongok	bizonyossag	reszleges	illesztett_szavak	nincs_gepi_par	mas_strong	megjegyzes
+3	KIRALY-001	1Móz 14:18-20	papja	H3548	szó-szintű-gépi	egyezik	H3548	magas	nem	papja			
+4	KIRALY-001	Zsolt 76:3	Sálemben	H8004	tartalom-alapú	egyezik	H8004,H9003	alacsony	nem	sálemben			
+5	KIRALY-001	2Móz 19:6	papok	H3548+H4467	tartalom-alapú	elter	H3548	magas	nem				hiányzó a gépi párokból: H4467
+6	KIRALY-001	Zsolt 110:4	Pap	H3548	tartalom-alapú	egyezik	H3548	alacsony	nem	pap			
+7	KIRALY-001	Zak 6:13	pap	H3548+H3678	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+8	KIRALY-001	Zsid 5:6	rendje szerint	G5010	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+9	KIRALY-001	Zsid 5:10	rendje szerint	G5010	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+10	KIRALY-001	Zsid 6:20	rendje szerint	G5010	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+11	KIRALY-001	Zsid 7:1-28	rendje szerint (G5010, 7:17); Apa nélkül (G0540, 7:3); anya nélkül (G0282, 7:3); nemzetség nélkül való (G0035, 7:3)	G5010+G0813+G0282	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+12	ISTENTISZT-001	1Móz 4:26	segítségül hívni az Úrnak nevét	H7121+H8034	szó-szintű-gépi	egyezik	H3068,H7121,H8034,H9003,H9005,H9023	magas	igen	hívni,nevét		segítségül:H9003,úrnak:H3068	
+13	ISTENTISZT-001	1Móz 12:8	segítségűl hívá az Úr nevét	H7121+H8034	szó-szintű-gépi	egyezik	H3068,H7121,H8034,H9003	magas	igen	hívá,nevét		segítségűl:H9003,úr:H3068	
+14	ISTENTISZT-001	1Móz 13:4	segítségűl hívá ott Ábrám az Úrnak nevét	H7121+H8034	szó-szintű-gépi	egyezik	H0087,H3068,H7121,H8033,H8034,H9003	magas	igen	hívá,nevét		segítségűl:H9003,ott:H8033,ábrám:H0087,úrnak:H3068	
+15	ISTENTISZT-001	1Móz 21:33	segítségűl hívá ott az örökkévaló Úr Istennek nevét	H7121+H8034	szó-szintű-gépi	egyezik	H0410,H3068,H5769,H7121,H8033,H8034,H9003	magas	igen	hívá,nevét		segítségűl:H9003,ott:H8033,örökkévaló:H5769,úr:H3068,istennek:H0410	
+16	ISTENTISZT-001	1Móz 26:25	segítségűl hívá az Úrnak nevét	H7121+H8034	szó-szintű-gépi	egyezik	H3068,H7121,H8034,H9003	magas	igen	hívá,nevét		segítségűl:H9003,úrnak:H3068	
+17	ISTENTISZT-001	1Kir 18:24	segítségül hívom az Úrnak nevét	H7121+H8034	tartalom-alapú	egyezik	H1931,H3068,H7121,H8034,H9003	alacsony	igen	hívom,nevét		segítségül:H9003,úrnak:H3068	
+18	ISTENTISZT-001	1Kir 18:25	hívjátok segítségül a ti istenteknek nevét	H7121+H8034	tartalom-alapú	egyezik	H0430,H0859,H7121,H8034,H9003,H9026	alacsony	igen	hívjátok,nevét		segítségül:H9003,ti:H0859+H9026,istenteknek:H0430+H9026	
+19	ISTENTISZT-001	1Kir 18:26	segítségül hívák a Baálnak nevét	H7121+H8034	tartalom-alapú	egyezik	H0834,H1168,H7121,H8034,H9003	alacsony	igen	hívák,nevét		segítségül:H9003,baálnak:H1168	
+20	ISTENTISZT-001	2Kir 5:11	segítségül hívja az Úrnak, az ő Istenének nevét	H7121+H8034	tartalom-alapú	egyezik	H0430,H3068,H7121,H8034,H9003,H9023	alacsony	igen	hívja,nevét		segítségül:H9003,úrnak:H3068,ő:H9023,istenének:H0430+H9023	
+21	ISTENTISZT-001	Sof 3:9	segítségül hívják az Úr nevét	H7121+H8034	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+22	ISTENTISZT-001	Zak 13:9	segítségül hívja ... nevemet	H7121+H8034	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+23	ISTENTISZT-001	Zsolt 116:4	az Úrnak nevét segítségül hívám	H7121+H8034	tartalom-alapú	egyezik	H3068,H7121,H8034,H9003	alacsony	igen	nevét,segítségül,hívám		úrnak:H3068	
+24	ISTENTISZT-001	Zsolt 116:13	az Úrnak nevét hívom segítségül	H7121+H8034	tartalom-alapú	egyezik	H3068,H7121,H8034,H9003	alacsony	igen	nevét,hívom		úrnak:H3068,segítségül:H9003	
+25	ISTENTISZT-001	Zsolt 116:17	az Úr nevét hívom segítségül	H7121+H8034	tartalom-alapú	egyezik	H3068,H7121,H8034,H9003	alacsony	igen	nevét,hívom		úr:H3068,segítségül:H9003	
+26	ISTENTISZT-001	Jóel 2:32	az Úrnak nevét hívja segítségül	H7121+H8034	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+27	ISTENTISZT-001	Róm 10:14	hívják segítségül	G1941	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+28	ISTENTISZT-001	1Kor 1:2	segítségül hívják	G1941	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+29	ISTENTISZT-001	2Tim 2:22	segítségül hívják	G1941	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+30	ISTENTISZT-001	1Pét 1:17	hívjátok	G1941	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+31	ISTENTISZT-001	ApCsel 9:14	segítségül hívják	G1941	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+32	ISTENTISZT-001	ApCsel 9:21	hívják segítségül	G1941	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+33	ISTENTISZT-001	ApCsel 22:16	segítségül híván	G1941	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+34	ISTENTISZT-001	Zsolt 105:1	hívjátok segítségül az ő nevét	H7121+H8034	tartalom-alapú	egyezik	H7121,H8034,H9003,H9023	alacsony	igen	hívjátok,nevét		segítségül:H9003,ő:H9023	
+35	ISTENTISZT-001	1Krón 16:8	hívjátok segítségül az ő nevét	H7121+H8034	tartalom-alapú	egyezik	H7121,H8034,H9003,H9023	alacsony	igen	hívjátok,nevét		segítségül:H9003,ő:H9023	
+36	ISTENTISZT-001	Ézs 12:4	magasztaljátok az Ő nevét	H7121+H8034	tartalom-alapú	egyezik	H7121,H8034,H9003,H9023	alacsony	igen	magasztaljátok,nevét		ő:H9023	
+37	ISTENTISZT-001	Jer 10:25	nem hívják segítségül a te nevedet	H7121+H8034	tartalom-alapú	egyezik	H0834,H3808,H7121,H8034,H9003,H9021	alacsony	igen	hívják,nevedet		nem:H3808,segítségül:H9003,te:H9021	
+38	ISTENTISZT-001	Zsolt 79:6	nem hívják segítségül a te nevedet	H7121+H8034	tartalom-alapú	egyezik	H0834,H3808,H7121,H8034,H9003,H9021	alacsony	igen	hívják,nevedet		nem:H3808,segítségül:H9003,te:H9021	
+39	ISTENTISZT-001	2Móz 33:19	kiáltom előtted az Úr nevét	H7121+H8034	szó-szintű-gépi	egyezik	H3068,H6440,H7121,H8034,H9003,H9005,H9021	magas	igen	kiáltom,nevét		előtted:H6440+H9005+H9021,úr:H3068	
+40	ISTENTISZT-001	2Móz 34:5	nevén kiáltá az Urat	H7121+H8034	szó-szintű-gépi	egyezik	H3068,H7121,H8034,H9003	magas	igen	nevén,kiáltá		urat:H3068	
+41	TEREMT-001	1Móz 1:2	mélység	H8415	szó-szintű-gépi	egyezik	H8415	magas	nem	mélység			
+42	TEREMT-001	1Móz 7:11	a nagy mélység	H8415	szó-szintű-gépi	egyezik	H7227,H8415	magas	igen	mélység		nagy:H7227	
+43	TEREMT-001	1Móz 8:2	a mélység	H8415	szó-szintű-gépi	egyezik	H8415	magas	nem	mélység			
+44	TEREMT-001	1Móz 49:25	a mélység	H8415	szó-szintű-gépi	egyezik	H8415,H9002	magas	nem	mélység			
+45	TEREMT-001	2Móz 15:5	a mélységbe	H8415	tartalom-alapú	elter	H4688,H9003	magas	nem				hiányzó a gépi párokból: H8415
+46	TEREMT-001	2Móz 15:8	a mélységes vizek	H8415	szó-szintű-gépi	egyezik	H4325,H8415	magas	nem	mélységes,vizek			
+47	TEREMT-001	5Móz 8:7	mély vizeknek	H8415	tartalom-alapú	egyezik	H8415	alacsony	nem	mély,vizeknek			
+48	TEREMT-001	5Móz 33:13	mélységes vizekkel	H8415	tartalom-alapú	egyezik	H8415,H9006	alacsony	igen	mélységes		vizekkel:H9006	
+49	TEREMT-001	Jób 28:14	A mélység	H8415	tartalom-alapú	egyezik	H8415	alacsony	nem	mélység			
+50	TEREMT-001	Jób 38:16	a mélységnek	H8415	tartalom-alapú	egyezik	H8415	alacsony	nem	mélységnek			
+51	TEREMT-001	Jób 38:30	a mély vizek	H8415	tartalom-alapú	egyezik	H4325,H8415	alacsony	nem	mély,vizek			
+52	TEREMT-001	Zsolt 33:7	a hullámokat	H8415	tartalom-alapú	egyezik	H8415	alacsony	nem	hullámokat			
+53	TEREMT-001	Zsolt 36:7	a nagy mélységek	H8415	tartalom-alapú	egyezik	H7227,H8415	alacsony	igen	mélységek		nagy:H7227	
+54	TEREMT-001	Zsolt 42:8	Örvény örvényt	H8415	tartalom-alapú	egyezik	H0413,H8415	alacsony	nem	örvény,örvényt			
+55	TEREMT-001	Zsolt 71:20	a föld mélységéből	H8415	tartalom-alapú	egyezik	H0776,H0834,H8415,H9006	alacsony	igen	mélységéből		föld:H0776	
+56	TEREMT-001	Zsolt 77:17	a mélységek	H8415	tartalom-alapú	egyezik	H8415	alacsony	nem	mélységek			
+57	TEREMT-001	Zsolt 78:15	a mélységes vizekből	H8415	tartalom-alapú	egyezik	H8415	alacsony	nem	mélységes,vizekből			
+58	TEREMT-001	Zsolt 104:6	Vízáradattal	H8415	tartalom-alapú	egyezik	H8415	alacsony	nem	vízáradattal			
+59	TEREMT-001	Zsolt 106:9	a mélységeken	H8415	tartalom-alapú	egyezik	H8415,H9003	alacsony	nem	mélységeken			
+60	TEREMT-001	Zsolt 107:26	a fenékig	H8415	tartalom-alapú	egyezik	H8415	alacsony	nem	fenékig			
+61	TEREMT-001	Zsolt 135:6	minden mélységben	H8415	tartalom-alapú	egyezik	H3605,H8415	alacsony	igen	mélységben		minden:H3605	
+62	TEREMT-001	Zsolt 148:7	mély vizek	H8415	tartalom-alapú	egyezik	H8415	alacsony	nem	mély,vizek			
+63	TEREMT-001	Péld 3:20	a mélységből	H8415	tartalom-alapú	egyezik	H8415	alacsony	nem	mélységből			
+64	TEREMT-001	Péld 8:24	mélységek	H8415	tartalom-alapú	egyezik	H8415	alacsony	nem	mélységek			
+65	TEREMT-001	Péld 8:27	a mélységek	H8415	tartalom-alapú	egyezik	H8415	alacsony	nem	mélységek			
+66	TEREMT-001	Péld 8:28	a mélységeknek	H8415	tartalom-alapú	egyezik	H8415	alacsony	nem	mélységeknek			
+67	TEREMT-001	Ézs 51:10	a nagy mélység	H8415	tartalom-alapú	egyezik	H7227,H8415,H9009	alacsony	igen	mélység		nagy:H7227	
+68	TEREMT-001	Ézs 63:13	mélységekben	H8415	tartalom-alapú	egyezik	H8415,H9003	alacsony	nem	mélységekben			
+69	TEREMT-001	Ez 26:19	a mélység	H8415	tartalom-alapú	egyezik	H8415	alacsony	nem	mélység			
+70	TEREMT-001	Ez 31:4	a mélység	H8415	tartalom-alapú	egyezik	H8415	alacsony	nem	mélység			
+71	TEREMT-001	Ez 31:15	a mélység vizeit	H8415	tartalom-alapú	egyezik	H8415	alacsony	nem	mélység,vizeit			
+72	TEREMT-001	Ámós 7:4	a nagy mélységet	H8415	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+73	TEREMT-001	Hab 3:10	a víz-ár	H8415	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+74	TEREMT-001	Jón 2:6	mély ár	H8415	tartalom-alapú	egyezik	H8415	alacsony	nem	mély,ár			
+75	TEREMT-001	Luk 8:31	a mélységbe	G0012	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+76	TEREMT-001	Róm 10:7	a mélységbe	G0012	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+77	TEREMT-001	Jel 9:1-2	a mélység kútjának	G0012	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+78	TEREMT-001	Jel 9:11	a mélység angyala	G0012	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+79	TEREMT-001	Jel 11:7	a mélységből	G0012	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+80	TEREMT-001	Jel 17:8	a mélységből	G0012	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+81	TEREMT-001	Jel 20:1-3	a mélységnek kulcsa	G0012	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+82	ALVIL-001	Zsolt 16:10	a Seolban	H7585	tartalom-alapú	egyezik	H7585,H9005	alacsony	nem	seolban			
+83	ALVIL-001	1Móz 37:35	a sírba	H7585	szó-szintű-gépi	egyezik	H7585,H9011	magas	nem	sírba			
+84	ALVIL-001	1Móz 42:38	a koporsóba	H7585	szó-szintű-gépi	egyezik	H0834,H7585,H9003,H9011,H9034	magas	nem	koporsóba			
+85	ALVIL-001	1Móz 44:29	a koporsóba	H7585	szó-szintű-gépi	egyezik	H7585,H9011	magas	nem	koporsóba			
+86	ALVIL-001	1Móz 44:31	a koporsóba	H7585	szó-szintű-gépi	egyezik	H7585,H9011	magas	nem	koporsóba			
+87	ALVIL-001	4Móz 16:30	pokolba	H7585	tartalom-alapú	egyezik	H7585,H9011	alacsony	nem	pokolba			
+88	ALVIL-001	4Móz 16:33	a pokolra	H7585	tartalom-alapú	egyezik	H0834,H7585,H9011	alacsony	nem	pokolra			
+89	ALVIL-001	5Móz 32:22	a Seol fenekéig	H7585	tartalom-alapú	egyezik	H5704,H7585,H8482	alacsony	igen	seol		fenekéig:H5704+H8482	
+90	ALVIL-001	1Sám 2:6	Sírba	H7585	tartalom-alapú	egyezik	H7585	alacsony	nem	sírba			
+91	ALVIL-001	2Sám 22:6	A pokol kötelei	H7585	tartalom-alapú	egyezik	H2256,H7585	alacsony	igen	pokol		kötelei:H2256	
+92	ALVIL-001	1Kir 2:6	a koporsóba	H7585	tartalom-alapú	egyezik	H7585	alacsony	nem	koporsóba			
+93	ALVIL-001	1Kir 2:9	a koporsóba	H7585	tartalom-alapú	egyezik	H7585	alacsony	nem	koporsóba			
+94	ALVIL-001	Jób 7:9	a sírba	H7585	tartalom-alapú	egyezik	H7585	alacsony	nem	sírba			
+95	ALVIL-001	Jób 11:8	az alvilágnál	H7585	tartalom-alapú	egyezik	H7585,H9006	alacsony	nem	alvilágnál			
+96	ALVIL-001	Jób 14:13	a holtak országában	H7585	tartalom-alapú	egyezik	H7585,H9003	alacsony	nem	holtak,országában			
+97	ALVIL-001	Jób 17:13	A sírnak	H7585	tartalom-alapú	elter	H7845,H9005	alacsony	nem				hiányzó a gépi párokból: H7585; a régi igehely nem Károli-kulcs (verseltolás), a Károli-kulcs: Jób 17:12; az ítélet nem valódi szóeltérésből ered, kézi ítéletre vár
+98	ALVIL-001	Jób 17:16	a sír üregébe	H7585	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban; a régi igehely nem Károli-kulcs (verseltolás), a Károli-kulcs: Jób 17:15; az ítélet nem valódi szóeltérésből ered, kézi ítéletre vár
+99	ALVIL-001	Jób 21:13	a sírba	H7585	tartalom-alapú	egyezik	H7585	alacsony	nem	sírba			
+100	ALVIL-001	Jób 24:19	a pokol	H7585	tartalom-alapú	egyezik	H7585	alacsony	nem	pokol			
+101	ALVIL-001	Jób 26:6	Az alvilág	H7585	tartalom-alapú	egyezik	H7585	alacsony	nem	alvilág			
+102	ALVIL-001	Zsolt 6:6	a seolban	H7585	tartalom-alapú	egyezik	H7585,H9003	alacsony	nem	seolban			
+103	ALVIL-001	Zsolt 9:18	Seolba	H7585	tartalom-alapú	egyezik	H7585,H9005,H9011	alacsony	nem	seolba			
+104	ALVIL-001	Zsolt 18:6	A Seol kötelei	H7585	tartalom-alapú	egyezik	H2256,H7585	alacsony	igen	seol		kötelei:H2256	
+105	ALVIL-001	Zsolt 30:4	a Seolból	H7585	tartalom-alapú	egyezik	H4480,H7585	alacsony	nem	seolból			
+106	ALVIL-001	Zsolt 31:18	a Seolba	H7585	tartalom-alapú	egyezik	H7585,H9005	alacsony	nem	seolba			
+107	ALVIL-001	Zsolt 49:15	a Seolra	H7585	tartalom-alapú	egyezik	H7585,H9005	alacsony	nem	seolra			
+108	ALVIL-001	Zsolt 49:16	a Seol kezéből	H7585	tartalom-alapú	egyezik	H3027,H7585,H9006	alacsony	igen	seol		kezéből:H3027+H9006	
+109	ALVIL-001	Zsolt 55:16	a Seolba	H7585	tartalom-alapú	egyezik	H7585	alacsony	nem	seolba			
+110	ALVIL-001	Zsolt 86:13	a mélységes pokolból	H7585	tartalom-alapú	egyezik	H7585,H8482,H9006	alacsony	igen	pokolból		mélységes:H8482	
+111	ALVIL-001	Zsolt 88:4	a Seolig	H7585	tartalom-alapú	egyezik	H7585,H9005	alacsony	nem	seolig			
+112	ALVIL-001	Zsolt 89:49	a Seolnak kezéből	H7585	tartalom-alapú	egyezik	H3027,H7585,H9006	alacsony	igen	seolnak		kezéből:H3027+H9006	
+113	ALVIL-001	Zsolt 116:3	a pokol szorongattatásai	H7585	tartalom-alapú	egyezik	H4712,H7585	alacsony	igen	pokol		szorongattatásai:H4712	
+114	ALVIL-001	Zsolt 139:8	a Seolba	H7585	tartalom-alapú	egyezik	H7585	alacsony	nem	seolba			
+115	ALVIL-001	Zsolt 141:7	a Seol torkában	H7585	tartalom-alapú	egyezik	H6310,H7585,H9005	alacsony	igen	seol		torkában:H6310+H9005	
+116	ALVIL-001	Péld 1:12	a sír	H7585	tartalom-alapú	egyezik	H7585	alacsony	nem	sír			
+117	ALVIL-001	Péld 5:5	a sírba	H7585	tartalom-alapú	egyezik	H7585	alacsony	nem	sírba			
+118	ALVIL-001	Péld 7:27	Sírba vívő út	H7585	tartalom-alapú	egyezik	H1870,H3381,H7585	alacsony	igen	sírba		vívő:H3381,út:H1870	
+119	ALVIL-001	Péld 9:18	a pokol mélyébe	H7585	tartalom-alapú	egyezik	H6012,H7585,H9003	alacsony	igen	pokol		mélyébe:H6012+H9003	
+120	ALVIL-001	Péld 15:11	A sír	H7585	tartalom-alapú	egyezik	H7585	alacsony	nem	sír			
+121	ALVIL-001	Péld 15:24	a pokoltól	H7585	tartalom-alapú	egyezik	H7585,H9006	alacsony	nem	pokoltól			
+122	ALVIL-001	Péld 23:14	a pokolból	H7585	tartalom-alapú	egyezik	H7585,H9006	alacsony	nem	pokolból			
+123	ALVIL-001	Péld 27:20	a sír	H7585	tartalom-alapú	egyezik	H7585	alacsony	nem	sír			
+124	ALVIL-001	Péld 30:16	A sír	H7585	tartalom-alapú	egyezik	H7585	alacsony	nem	sír			
+125	ALVIL-001	Préd 9:10	a Seolban	H7585	tartalom-alapú	nincs_par			nem				a karoli_szo egyetlen szava sincs a versben; a régi igehely nem Károli-kulcs (verseltolás), a Károli-kulcs: Préd 9:12; az ítélet nem valódi szóeltérésből ered, kézi ítéletre vár
+126	ALVIL-001	Én 8:6	a sír	H7585	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+127	ALVIL-001	Ézs 5:14	a sír	H7585	tartalom-alapú	egyezik	H7585	alacsony	nem	sír			
+128	ALVIL-001	Ézs 7:11	a mélységben	H7585	tartalom-alapú	egyezik	H7585	alacsony	nem	mélységben			
+129	ALVIL-001	Ézs 14:9	a sír	H7585	tartalom-alapú	egyezik	H7585	alacsony	nem	sír			
+130	ALVIL-001	Ézs 14:11	a sírba	H7585	tartalom-alapú	egyezik	H7585	alacsony	nem	sírba			
+131	ALVIL-001	Ézs 14:15	a sírba	H7585	tartalom-alapú	egyezik	H0413,H7585	alacsony	nem	sírba			
+132	ALVIL-001	Ézs 28:15	a sírral	H7585	tartalom-alapú	egyezik	H5973,H7585	alacsony	nem	sírral			
+133	ALVIL-001	Ézs 28:18	a sírral	H7585	tartalom-alapú	egyezik	H0854,H7585	alacsony	nem	sírral			
+134	ALVIL-001	Ézs 38:10	a sír kapuihoz	H7585	tartalom-alapú	egyezik	H7585,H8179,H9003	alacsony	igen	sír		kapuihoz:H8179+H9003	
+135	ALVIL-001	Ézs 38:18	a sír	H7585	tartalom-alapú	egyezik	H7585	alacsony	nem	sír			
+136	ALVIL-001	Ézs 57:9	a sírig	H7585	tartalom-alapú	egyezik	H5704,H7585	alacsony	nem	sírig			
+137	ALVIL-001	Ez 31:15	sírba	H7585	tartalom-alapú	egyezik	H7585,H9011	alacsony	nem	sírba			
+138	ALVIL-001	Ez 31:16	a sírba	H7585	tartalom-alapú	egyezik	H7585,H9011	alacsony	nem	sírba			
+139	ALVIL-001	Ez 31:17	a sírba	H7585	tartalom-alapú	egyezik	H7585,H9011	alacsony	nem	sírba			
+140	ALVIL-001	Ez 32:21	a sír közepéből	H7585	tartalom-alapú	egyezik	H7585,H8432,H9006	alacsony	igen	sír		közepéből:H8432+H9006	
+141	ALVIL-001	Ez 32:27	a sírba	H7585	tartalom-alapú	egyezik	H7585	alacsony	nem	sírba			
+142	ALVIL-001	Hós 13:14	a Seol hatalmából	H7585	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+143	ALVIL-001	Ámós 9:2	a Seolba	H7585	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+144	ALVIL-001	Hab 2:5	a Seol	H7585	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+145	ALVIL-001	Jón 2:3	a Seol torkából	H7585	tartalom-alapú	egyezik	H0990,H7585,H9006	alacsony	igen	seol		torkából:H0990+H9006	
+146	ALVIL-001	ApCsel 2:27	a sírban	G0086	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+147	ALVIL-001	ApCsel 2:31	a sírban	G0086	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+148	ALVIL-001	Luk 16:23	a pokolban	G0086	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+149	ALVIL-001	Jel 1:18	a pokolnak	G0086	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+150	ALVIL-001	Jel 6:8	a pokol	G0086	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+151	ALVIL-001	Jel 20:13-14	a pokol	G0086	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+152	ALVIL-001	Luk 10:15	a pokolig	G0086	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+153	ALVIL-001	Mt 11:23	a pokolig	G0086	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+154	MENNY-001	1Móz 6:2	az Istennek fiai	H1121+H0430	szó-szintű-gépi	egyezik	H0430,H1121	magas	nem	istennek,fiai			
+155	MENNY-001	1Móz 6:4	Az óriások	H5303	szó-szintű-gépi	egyezik	H5303	magas	nem	óriások			
+156	MENNY-001	Jób 1:6	az Istennek fiai	H1121+H0430	tartalom-alapú	egyezik	H0430,H1121,H9009	alacsony	nem	istennek,fiai			
+157	MENNY-001	Jób 2:1	az Istennek fiai	H1121+H0430	tartalom-alapú	egyezik	H0430,H1121,H9009	alacsony	nem	istennek,fiai			
+158	MENNY-001	Jób 38:7	Istennek minden fiai	H1121+H0430	tartalom-alapú	egyezik	H0430,H1121,H3605	alacsony	igen	istennek,fiai		minden:H3605	
+159	MENNY-001	4Móz 13:34	óriásokat	H5303	tartalom-alapú	egyezik	H5303	alacsony	nem	óriásokat			
+162	MENNY-001	2Pét 2:4-5	nem kedvezett		tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+163	ANTROP-001	1Móz 2:7	élő lélekké	H5315+H2416	szó-szintű-gépi	egyezik	H2416,H5315,H9005	magas	nem	élő,lélekké			
+164	ANTROP-001	1Thessz 5:23	valótok (pneuma); lelketek (pszükhé)	G4151+G5590	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+165	ANTROP-001	Zsid 4:12	szívnek (pszükhé); léleknek (pneuma)	G4151+G5590	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+166	ANTROP-001	1Kor 15:45	élő lélekké (pszükhé); megelevenítő szellemmé (pneuma)	G4151+G5590	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+167	ANTROP-001	Luk 1:46	az én lelkem	G4151+G5590	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+168	ANTROP-001	Luk 1:47	az én lelkem	G4151+G5590	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+169	ANTROP-001	1Kor 2:14	Érzéki (pszükhikosz); Isten Lelkének (pneuma)	G4151+G5590	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+170	ANTROP-001	1Kor 2:15	A lelki ember	G4151+G5590	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+171	HODIT-001	1Móz 14:5	a Refeusokat	H7497	szó-szintű-gépi	egyezik	H0834,H7497	magas	nem	refeusokat			
+172	HODIT-001	1Móz 15:20	a Refeusokat	H7497	szó-szintű-gépi	egyezik	H7497	magas	nem	refeusokat			
+173	HODIT-001	4Móz 13:34	óriásokat	H5303	tartalom-alapú	egyezik	H5303	alacsony	nem	óriásokat			
+174	HODIT-001	5Móz 2:11	Óriásoknak	H7497	tartalom-alapú	egyezik	H7497	alacsony	nem	óriásoknak			
+175	HODIT-001	5Móz 2:20	Óriások földének	H7497	tartalom-alapú	egyezik	H0776,H7497	alacsony	igen	óriások		földének:H0776	
+176	HODIT-001	5Móz 3:11	az óriások maradéka	H7497	tartalom-alapú	egyezik	H3499,H7497	alacsony	igen	óriások		maradéka:H3499	
+177	HODIT-001	5Móz 3:13	óriások földének	H7497	tartalom-alapú	egyezik	H0776,H7497	alacsony	igen	óriások		földének:H0776	
+178	HODIT-001	Józs 12:4	Refaim maradékai	H7497	tartalom-alapú	egyezik	H3499,H7497	alacsony	igen	refaim		maradékai:H3499	
+179	HODIT-001	Józs 13:12	a Refaim maradékai	H7497	tartalom-alapú	egyezik	H0834,H3499,H7497	alacsony	igen	refaim		maradékai:H3499	
+180	HODIT-001	2Sám 21:16	az óriások maradékából	H7497	tartalom-alapú	egyezik	H3211,H7497,H9003,H9009	alacsony	igen	óriások		maradékából:H3211+H9003	
+181	HODIT-001	2Sám 21:18	az óriások maradékai	H7497	tartalom-alapú	egyezik	H3211,H7497,H9009	alacsony	igen	óriások		maradékai:H3211	
+182	HODIT-001	2Sám 21:20	óriástól	H7497	tartalom-alapú	egyezik	H7497,H9005	alacsony	nem	óriástól			
+183	HODIT-001	2Sám 21:22	az óriástól	H7497	tartalom-alapú	egyezik	H7497,H9005	alacsony	nem	óriástól			
+184	HODIT-001	1Krón 20:4	az óriások nemzetségéből	H7497	tartalom-alapú	egyezik	H3211,H7497,H9006	alacsony	igen	óriások		nemzetségéből:H3211+H9006	
+185	HODIT-001	1Krón 20:6	óriás fia	H7497	tartalom-alapú	egyezik	H3205,H7497,H9005,H9009	alacsony	igen	óriás		fia:H3205	
+186	HODIT-001	1Krón 20:8	óriásnak	H7497	tartalom-alapú	egyezik	H7497,H9005,H9009	alacsony	nem	óriásnak			
+187	HODIT-001	Jób 26:5	A halottak	H7496	tartalom-alapú	egyezik	H7496	alacsony	nem	halottak			
+188	HODIT-001	Zsolt 88:11	az árnyak	H7496	tartalom-alapú	egyezik	H7496	alacsony	nem	árnyak			
+189	HODIT-001	Péld 2:18	az élet nélkül valókhoz	H7496	tartalom-alapú	egyezik	H0413,H7496	alacsony	nem	élet,nélkül,valókhoz			
+190	HODIT-001	Péld 9:18	élet nélkül valók	H7496	tartalom-alapú	egyezik	H7496	alacsony	nem	élet,nélkül,valók			
+191	HODIT-001	Péld 21:16	az élet nélkül valók	H7496	tartalom-alapú	egyezik	H7496	alacsony	igen	élet	nélkül,valók		
+192	HODIT-001	Ézs 14:9	árnyait	H7496	tartalom-alapú	egyezik	H7496	alacsony	nem	árnyait			
+193	HODIT-001	Ézs 26:14	az árnyak	H7496	tartalom-alapú	egyezik	H7496	alacsony	nem	árnyak			
+194	HODIT-001	Ézs 26:19	az árnyakat	H7496	tartalom-alapú	egyezik	H7496	alacsony	nem	árnyakat			
+195	HODIT-001	2Sám 5:18	a Réfaim völgyében	H7497	tartalom-alapú	egyezik	H6010,H7497,H9003	alacsony	igen	réfaim		völgyében:H6010+H9003	
+196	HODIT-001	2Sám 5:22	a Réfaim völgyében	H7497	tartalom-alapú	egyezik	H6010,H7497,H9003	alacsony	igen	réfaim		völgyében:H6010+H9003	
+197	HODIT-001	2Sám 23:13	a Réfaim völgyében	H7497	tartalom-alapú	egyezik	H6010,H7497,H9003	alacsony	igen	réfaim		völgyében:H6010+H9003	
+198	HODIT-001	1Krón 11:15	a Réfaim völgyben	H7497	tartalom-alapú	egyezik	H6010,H7497,H9003	alacsony	igen	réfaim		völgyben:H6010+H9003	
+199	HODIT-001	1Krón 14:9	a Réfaim völgyében	H7497	tartalom-alapú	egyezik	H6010,H7497,H9003	alacsony	igen	réfaim		völgyében:H6010+H9003	
+200	HODIT-001	Ézs 17:5	a Refáim völgyében	H7497	tartalom-alapú	egyezik	H6010,H7497,H9003	alacsony	igen	refáim		völgyében:H6010+H9003	
+201	HODIT-001	Józs 15:8	a Refaim völgyének	H7497	tartalom-alapú	egyezik	H0834,H6010,H7497	alacsony	igen	refaim		völgyének:H6010	
+202	HODIT-001	Józs 18:16	a Refaim völgyében	H7497	tartalom-alapú	egyezik	H0834,H6010,H7497,H9003	alacsony	igen	refaim		völgyében:H6010+H9003	
+203	HODIT-001	Józs 17:15	Refaimnak földén	H7497	tartalom-alapú	egyezik	H0776,H7497,H9003	alacsony	igen	refaimnak		földén:H0776+H9003	
+256	ISTENTISZT-001	ApCsel 2:21	az Úrnak nevét segítségül hívja	G1941	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+257	ISTENTISZT-001	Róm 10:13	segítségül hívja az Úr nevét	G1941	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+258	ISTENTISZT-001	Róm 10:12	segítségül hívják	G1941	tartalom-alapú	nincs_par			nem				a vers/könyv nincs a gépi párosításban
+259	TEREMT-002	1Móz 1:2	kietlen és puszta	H8414+H0922	szó-szintű-gépi	egyezik	H0922,H8414,H9002	magas	nem	kietlen,puszta			
+260	TEREMT-002	Jer 4:23	kietlen és puszta	H8414+H0922	tartalom-alapú	egyezik	H0922,H8414,H9002	alacsony	nem	kietlen,puszta			
+261	TEREMT-002	Ézs 34:11	pusztaság … semmiségnek	H8414+H0922	tartalom-alapú	egyezik	H0922,H8414	alacsony	nem	pusztaság,semmiségnek			
+280	TEREMT-002	1Sám 12:21	hiábavalóságok		tartalom-alapú	nincs_strong			nem				jeloltek.tsv-sor: nincs elofordulasok-párja (id + igehely), Strong híján nem ellenőrizhető
+281	TEREMT-002	5Móz 32:10	zordon, sivatag vadonban		tartalom-alapú	nincs_strong			nem				jeloltek.tsv-sor: nincs elofordulasok-párja (id + igehely), Strong híján nem ellenőrizhető
+283	TEREMT-002	Jób 6:18	sivatagba		tartalom-alapú	nincs_strong			nem				jeloltek.tsv-sor: nincs elofordulasok-párja (id + igehely), Strong híján nem ellenőrizhető
+284	TEREMT-002	Jób 12:24	pusztában		tartalom-alapú	nincs_strong			nem				jeloltek.tsv-sor: nincs elofordulasok-párja (id + igehely), Strong híján nem ellenőrizhető
+285	TEREMT-002	Jób 26:7	üresség		tartalom-alapú	nincs_strong			nem				jeloltek.tsv-sor: nincs elofordulasok-párja (id + igehely), Strong híján nem ellenőrizhető
+286	TEREMT-002	Zsolt 107:40	kietlenben		tartalom-alapú	nincs_strong			nem				jeloltek.tsv-sor: nincs elofordulasok-párja (id + igehely), Strong híján nem ellenőrizhető
+287	TEREMT-002	Ézs 24:10	álnokság		tartalom-alapú	nincs_strong			nem				jeloltek.tsv-sor: nincs elofordulasok-párja (id + igehely), Strong híján nem ellenőrizhető
+288	TEREMT-002	Ézs 29:21	csalárdul		tartalom-alapú	nincs_strong			nem				jeloltek.tsv-sor: nincs elofordulasok-párja (id + igehely), Strong híján nem ellenőrizhető
+290	TEREMT-002	Ézs 40:17	ürességnél		tartalom-alapú	nincs_strong			nem				jeloltek.tsv-sor: nincs elofordulasok-párja (id + igehely), Strong híján nem ellenőrizhető
+291	TEREMT-002	Ézs 40:23	hiábavalókká		tartalom-alapú	nincs_strong			nem				jeloltek.tsv-sor: nincs elofordulasok-párja (id + igehely), Strong híján nem ellenőrizhető
+292	TEREMT-002	Ézs 41:29	hiábavalóság		tartalom-alapú	nincs_strong			nem				jeloltek.tsv-sor: nincs elofordulasok-párja (id + igehely), Strong híján nem ellenőrizhető
+293	TEREMT-002	Ézs 44:9	hiábavalók		tartalom-alapú	nincs_strong			nem				jeloltek.tsv-sor: nincs elofordulasok-párja (id + igehely), Strong híján nem ellenőrizhető
+294	TEREMT-002	Ézs 45:18	hiába		tartalom-alapú	nincs_strong			nem				jeloltek.tsv-sor: nincs elofordulasok-párja (id + igehely), Strong híján nem ellenőrizhető
+295	TEREMT-002	Ézs 45:19	hiába		tartalom-alapú	nincs_strong			nem				jeloltek.tsv-sor: nincs elofordulasok-párja (id + igehely), Strong híján nem ellenőrizhető
+296	TEREMT-002	Ézs 49:4	semmire		tartalom-alapú	nincs_strong			nem				jeloltek.tsv-sor: nincs elofordulasok-párja (id + igehely), Strong híján nem ellenőrizhető
+297	TEREMT-002	Ézs 59:4	haszontalanban		tartalom-alapú	nincs_strong			nem				jeloltek.tsv-sor: nincs elofordulasok-párja (id + igehely), Strong híján nem ellenőrizhető
