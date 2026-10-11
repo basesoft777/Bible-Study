@@ -59,7 +59,7 @@ Javaslat: ezt a 3 sort `nyitva`-ként vennénk fel, `indoklas` = „a napló sze
 
 A `jelolt.py` itt nem használható: csak a `lekerdez`-metszetből (szakaszra) ír, kizárólag `nyitva` értékkel, a `beépítve`/`elutasítva` értéket **soha** nem. Javaslat: **egyszeri, összevetéssel ellenőrzött hozzáfűzés** (minta: `igazolas_migracio.py`): `split('\t')` / `'\t'.join()`, a `csv` modul nélkül; írás előtt a meglévő sorok bájtazonossága ellenőrizve, eltérésnél megállás; `--ir` nélkül szárazon fut. A tételes sorok a naplókból kiolvasott, motívumonként egy `naplok/JELOLTEK_RETRO_<ID>_sorok.tsv` munkalapra kerülnek (felülvizsgálható), onnan fűzi hozzá a szkript. A `forras_kereses`: `napló: <fájl> §<szakasz> | scope=manual | forras=<napló> | ts=2026-10-11`; a `datum` a pótlás napja; `azonositas_modja`/`megbizhatosag`/`karoli_szo` üres (nincs forrásadat).
 
-## 6. Kérdések a ⛔-nál (DT-F63a)
+## 6. Kérdések a ⛔-nál (DT95)
 
 1. Elfogadod-e a forrás-leképezést és a hiányszámokat (2. pont)?
 2. **A csoportos kizárások** (kb. 660 igehely): (a) kimaradnak a pótlásból, és a `nem_vizsgalt.py` Strong-szintű, dokumentált kizárásként kezeli · (b) a scan újrafuttatásával sorokká bomlanak · javaslat: (a).

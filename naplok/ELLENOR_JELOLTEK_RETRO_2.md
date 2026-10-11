@@ -22,13 +22,13 @@
 ## Egyéb pontok
 
 - `jeloltek.tsv` a merge-base-hez: `numstat 250 0`, törölt vagy módosított sor 0 (594 fizikai sor); az ágon belüli módosítások csak az F63.5-ben hozzáadott sorokat érintik.
-- A „a DT-F63b és DT-F63c döntését megerősítem” mondat szó szerint szerepel a `DONTESEK.md` két sorában és a `F63_zaras.md`-ben; a zárás 20 sor. A mondat elhangzása a repóból nem igazolható.
+- A „a DT96 és DT97 döntését megerősítem” mondat szó szerint szerepel a `DONTESEK.md` két sorában és a `F63_zaras.md`-ben; a zárás 20 sor. A mondat elhangzása a repóból nem igazolható.
 - Motívumfájl, kimenet, `auditok.tsv`: érintetlen; végleges DT/N szám nincs (csak helyőrző).
 - A táblasor-Δ: `jeloltek.tsv` +250, minden más 0; a bontás motívumonként: 2 + 0 + 170 + 1 + 60 + 14 + 1 + 2 = 250.
 - K1, K2, K4 OK; a K3 részben nem ellenőrizhető (gate.py, ellenoriz.py, teszt nem futtatható az ellenőr körében).
 
 ## Eltérés (alacsony)
 
-A `nem_vizsgalt.py:76-77` megjegyzése hamis ténnyel dokumentálja a `CSOPORTOS_KIZARAS` indoklását. A viselkedést nem rontja (a `kor_kategoria` a halmaz alapján dönt), de a DT-F63a (2) szerinti indoklás ténybelileg hibás.
+A `nem_vizsgalt.py:76-77` megjegyzése hamis ténnyel dokumentálja a `CSOPORTOS_KIZARAS` indoklását. A viselkedést nem rontja (a `kor_kategoria` a halmaz alapján dönt), de a DT95 (2) szerinti indoklás ténybelileg hibás.
 
 *Nem ellenőrizhető maradt: az 537-es szám újraszámolása, a `gate.py`, az `ellenoriz.py`, a `teszt_nem_vizsgalt.py` eredménye, a megerősítő chat-mondat elhangzása.*

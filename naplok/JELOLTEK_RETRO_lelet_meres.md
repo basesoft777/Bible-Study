@@ -1,10 +1,10 @@
 # Lelet-mérés (csak mérés, adatírás nélkül; eszkozok/nem_vizsgalt.py meres)
 
-Kör = az `elofordulasok.strong` értékeinek kollokációja/scanje (lekerdez.py); ★ = normál lexikai kör − TSK-kör (a motívum ismert verseinek TSK-szomszédsága). Kategóriák: DT-F63c (A) pontatlan kollokáció, (B)/(C) szűkítendő, csoportos kizárás (napló 4/c), DT-F63b tematikus horgony. A kategorizálás kézi (`KOR_KATEGORIA`), a szűkítés tartalmi döntés.
+Kör = az `elofordulasok.strong` értékeinek kollokációja/scanje (lekerdez.py); ★ = normál lexikai kör − TSK-kör (a motívum ismert verseinek TSK-szomszédsága). Kategóriák: DT97 (A) pontatlan kollokáció, (B)/(C) szűkítendő, csoportos kizárás (napló 4/c), DT96 tematikus horgony. A kategorizálás kézi (`KOR_KATEGORIA`), a szűkítés tartalmi döntés.
 
 **FIGYELEM: a tábla nem teljességi jelentés.** A „még nem vizsgált” oszlop 0 értéke NEM jelenti, hogy a motívum végig van vizsgálva: HAMART-001-nél azért 0, mert 501 vers ideiglenesen „szűkítendő” lett, amíg az N-F63e el nem dől (és 537 vers csoportos kizárás); MENNY-001-nél 0 mellett 269 „pontatlan” vers áll (az N-F63d-re vár); ISTENTISZT-001 és KIRALY-001 is hasonló.
 
-Oszlopok: ★ = normál lexikai kör − TSK-kör; „csoportos kizárás” = napló 4/c Strong-szintű kizárása; „versszintű kollokáció, pontatlan” = a formula a gerinc, de az egy-versű lekérdezés pontatlan (DT-F63c (A)); „szűkítendő” = gyakori Strong, tartalmi felülvizsgálatra vár (DT-F63c (B)/(C)); „tematikus horgony” = a sor saját minősítése szerint NEM lexikai (DT-F63b). A kategóriák versei se ★, se „még nem vizsgált”, se `elutasítva`: a vizsgálatuk nyitott.
+Oszlopok: ★ = normál lexikai kör − TSK-kör; „csoportos kizárás” = napló 4/c Strong-szintű kizárása; „versszintű kollokáció, pontatlan” = a formula a gerinc, de az egy-versű lekérdezés pontatlan (DT97 (A)); „szűkítendő” = gyakori Strong, tartalmi felülvizsgálatra vár (DT97 (B)/(C)); „tematikus horgony” = a sor saját minősítése szerint NEM lexikai (DT96). A kategóriák versei se ★, se „még nem vizsgált”, se `elutasítva`: a vizsgálatuk nyitott.
 
 | motívum | ★ | ebből nyitva | elutasítva | beépítve | még nem vizsgált | csoportos kizárás | versszintű kollokáció, pontatlan | szűkítendő | tematikus horgony | TSK-val jelzett | lelet-lap |
 |---|---|---|---|---|---|---|---|---|---|---|---|
