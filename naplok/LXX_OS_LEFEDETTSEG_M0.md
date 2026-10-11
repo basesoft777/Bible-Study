@@ -78,7 +78,7 @@ Jób 17:16, Jób 37:24, Péld 12:28, Én 6:11, Én 6:12: a Károli-fejezetnek ni
 - **Korlát:** a szószám-korreláció ténye (Károli vs. LXX szószám) nem tartalmi egyezés. Az A2 és A3 sorok a javaslat, nem az igazolt kulcs; a tartalmi egyezést az M2 ≥ 10 verses mintavétele ellenőrzi (legalább 3 Jób-, 2 Hóseás-, 2 zsoltárvers). A besorolás nem „ellenőrzött” — független ellenőr az M3-ban.
 - Az osztályokat gép állapítja meg; a tartalmi (nyelvi) olvasatom nem szerepel a tábla indoklásában.
 
-## 4. ⛔ Megállás — döntések (DT-F54a)
+## 4. ⛔ Megállás — döntések (DT98)
 
 **(a) Az A osztály javításának módja.** A 438 A-vers négy alosztályra oszlik; az egy lépéssel nem fedhető le:
 - *Opció 1 (javaslat):* **kétszintű javítás.** (i) az `lxx_os_import.py` besorolása kap két általános szabályt — a *dup-KJV-cél címvers-szabály* (Zsolt N:1, és a kétcímű zsoltárok sorrendi párosítása; A1_zsolt_cim, 65) és a *sorrend-beágyazás* (A3, 39) —, valamint a tábla `igehely_kjv`-kereséséhez a pontosvesszős listák kezelése (A1_tabla, 204); (ii) az A2 (130 vers: 2Móz 35, Dán 3, Hós 2/13/14, Jób 37) fejezetenként a `karoli_vers_felulbiralas.tsv`-be kerül, **bizonyítékoszloppal** (r, a párosítás módja), mert tábla-sor nincs. Előny: az A2 kulcsa nyomon követhető, és a későbbi tábla-bővítés (KK2b) felülírhatja.
