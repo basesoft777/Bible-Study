@@ -92,6 +92,6 @@ A 3. pont (mérés) 0, ezért a javítás nem szükséges; a feladat az M1 szeri
 proveniencia: scope=adat/**/*.tsv+konkordancia/Karoli_Strong_kivonat.tsv | forras=eszkozok/strong_meres.py | a=0 | b=113 | ts=2026-10-11T08:05Z
 ```
 
-**Az 5 jegyű alak (DT-F62b, a 2. pont c) döntés módosítása):** a `G20447` (2 előfordulás) és `G20833` (1) a TAGNT érvényes G-kiegészítő kódja, nem csonkolandó és nem hiba: a SEMA 1.2 egysoros bővítést kap, a függvény G-nél változatlanul hagyja; H-nál az ötjegyű (nem nullával kezdődő) ValueError. A vezető nullás ötjegyű (`G00120`) továbbra is `G0120`.
+**Az 5 jegyű alak (DT94, a 2. pont c) döntés módosítása):** a `G20447` (2 előfordulás) és `G20833` (1) a TAGNT érvényes G-kiegészítő kódja, nem csonkolandó és nem hiba: a SEMA 1.2 egysoros bővítést kap, a függvény G-nél változatlanul hagyja; H-nál az ötjegyű (nem nullával kezdődő) ValueError. A vezető nullás ötjegyű (`G00120`) továbbra is `G0120`.
 
 **`domen`:** az egyszerű `H####`/`G####` argumentum szigorú (`domen H779` -> hiba a `H0779` alakkal); az `A####` és betűutótagos (`H0032a`) `strong_kod` a `domen` saját kódtere, kivétel.

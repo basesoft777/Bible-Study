@@ -12,7 +12,7 @@
 6. **(5c)** Az M0 7. pontjának fájlszáma: „10 fájl" ↔ 9 (10+38+1 ≠ 48).
 
 ## OK
-G20447 (2) / G20833 (1) találat scan, igealak, kollokacio szerint; a TAGNT-ben nincs több ötjegyű G-kulcs; H-ötjegyű hiba (rc=1); nullázatlan/túlnullázott bemenet hiba a helyes alakkal; `domen H779` hiba; `domen H0032a` és `A0002` változatlan (kimondott kivétel); SEMA.md csak az egysoros G-kiegészítés; DT-F62b helyőrző-alakú; a `betolt.py` stderr-figyelmeztetés a K2-ben; `strong_meres.py` a repóban, proveniencia-sorral, hatókör kimondva (113 = 108 + 5); zárás 14 sor; adattábla Δ=0; nincs végleges DT/N szám; ⛔ sorrend betartva (a chatbeli jóváhagyás repóból nem igazolható).
+G20447 (2) / G20833 (1) találat scan, igealak, kollokacio szerint; a TAGNT-ben nincs több ötjegyű G-kulcs; H-ötjegyű hiba (rc=1); nullázatlan/túlnullázott bemenet hiba a helyes alakkal; `domen H779` hiba; `domen H0032a` és `A0002` változatlan (kimondott kivétel); SEMA.md csak az egysoros G-kiegészítés; DT94 helyőrző-alakú; a `betolt.py` stderr-figyelmeztetés a K2-ben; `strong_meres.py` a repóban, proveniencia-sorral, hatókör kimondva (113 = 108 + 5); zárás 14 sor; adattábla Δ=0; nincs végleges DT/N szám; ⛔ sorrend betartva (a chatbeli jóváhagyás repóból nem igazolható).
 
 ## NEM ELLENŐRIZHETŐ az ellenőr által
-`strong_meres.py` futtatása (a „1 068 624 / 0" állítás); DT-F62b chatbeli jóváhagyása.
+`strong_meres.py` futtatása (a „1 068 624 / 0" állítás); DT94 chatbeli jóváhagyása.
