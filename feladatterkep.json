@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-10-11",
-   "commit": "7671e622"
+   "commit": "90b04cf9"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -317,7 +317,7 @@
    "fazis": "1",
    "allapot": "stop",
    "brief_allapot": "megallt",
-   "most": "Te: az 1Sámuel kész (API, DT73 (a); jelentés: `naplok/F22_1Sam_jelentes.md`; tiszta versbeosztás; végleges kapuhiba 0); a Péld, a Bír, a Jób, az Eszt és a 2Sám a main-en (PR #266, #267); ⛔ 2.: a független ellenőr (`naplok/ELLENOR_F22_1Sam.md`), a szúrópróba elmarad (DT70); kézi átnézés: 2Sám 23:16, Jób 16:22, 36:33, Péld 11:31, korábbról 1Krón 19:2, Ézs 9:20, 64:1, Zsolt 119:94, 144:15, 145:1 (a felhasználóé); a régi arany `Job.17.13` hármasa kulcshibás (javaslat: `f21p/regi_arany_hibas.tsv`, külön tétel); PR, ready és merge (a felhasználóé). A következő könyv a felhasználó döntése: a BDB-mérés (2026.10.09) szerinti tiszta jelöltek 1Kir, Neh, 2Kir; a Dán (37 detektorsor) előtt versbeosztás-döntés kell; párhuzamos futás csak kifejezett jóváhagyással indulhat (D15, DT60).",
+   "most": "Te: az 1Királyok kész (API, DT73 (a), D30; jelentés: `naplok/F22_1Kir_jelentes.md`; tiszta versbeosztás; végleges kapuhiba 0); a független ellenőr lefutott (`naplok/ELLENOR_F22_1Kir.md`, 4 eltérés: a J-pont jóváhagyása a D30-ban rögzítve, a brief, a K9 és a jelentés pótolva); a Péld, a Bír, a Jób, az Eszt, a 2Sám és az 1Sám a main-en; a szúrópróba elmarad (DT70); kézi átnézés: 2Sám 23:16, Jób 16:22, 36:33, Péld 11:31, korábbról 1Krón 19:2, Ézs 9:20, 64:1, Zsolt 119:94, 144:15, 145:1 (a felhasználóé); a régi arany `Job.17.13` hármasa kulcshibás (javaslat: `f21p/regi_arany_hibas.tsv`, külön tétel); PR, ready és merge (a felhasználóé). A következő könyv a felhasználó döntése: a BDB-mérés (2026.10.09) szerinti tiszta jelöltek Neh, 2Kir; a Dán (37 detektorsor) előtt versbeosztás-döntés kell; párhuzamos futás csak kifejezett jóváhagyással indulhat (D15, DT60).",
    "fugg": "#21 (kész)",
    "tervezett": false,
    "reszletes": "Két modell (Sonnet, az első könyvnél Gemini is) a Károli-fordítás minden szavához megkeresi az eredeti héber szót és a Strong-számát; ahol a két modell egyezik, a kapcsolat „magas” bizonyosságú. Az 1–5Mózes és Józsué kész.",
