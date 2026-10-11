@@ -9,7 +9,7 @@ munka: adat
 allapot: megallt
 ag: claude/jeloltek-retro
 ad: a 8 retroaktív (F3/N14) motívum vizsgált, de a jeloltek.tsv-ből hiányzó jelöltjei a naplókból pótolva, mindegyik dontes és indoklas mezővel (ahol a napló nem mond döntést: nyitva, explicit jelöléssel); egy generátor (eszkozok/nem_vizsgalt.py) adja a „még nem vizsgált” listát (auditok-scan − jeloltek); az ANTROP-001 lelet-lapjának (12-es) első teljes adatfutása
-kovetkezo: "Te: a naplok/JELOLTEK_RETRO_<ID>_sorok.tsv munkalapok (244 sor) átnézése és jóváhagyása; utána hozzáfűzés (nem_vizsgalt.py hozzafuz --ir), gate.py, M2"
+kovetkezo: "Te: az M2 ⛔ elbírálása (DT-F63b, naplok/JELOLTEK_RETRO_lelet_ANTROP.md): az ANTROP-001 lexikai kör mértéke, a többi 7 motívum lelet-futása; utána M3 (zárás)"
 olvas: [adat/jeloltek.tsv, adat/elofordulasok.tsv, adat/auditok.tsv, adat/motivumok.tsv, adat/SEMA.md, tematikus_lezart/, motivumlog/, melyelemzesek/, genezis/, eszkozok/jelolt.py, eszkozok/lekerdez.py]
 ir: [adat/jeloltek.tsv, eszkozok/nem_vizsgalt.py, eszkozok/teszt_nem_vizsgalt.py]
 fugg: []

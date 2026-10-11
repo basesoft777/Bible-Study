@@ -308,6 +308,104 @@ def cmd_hozzafuz(args):
     print('Megírva.')
     return 0
 
+# ---------------------------------------------------------------------------
+# lelet-lap adata (ADATVAGYON_TERV 5., 12-es lap): lexikai kor - TSK-kor
+# ---------------------------------------------------------------------------
+
+def jeloltek_versenkent(mid):
+    """vers -> [(dontes, indoklas, igehely-sor)] a jeloltek.tsv-bol."""
+    _, jel = tabla(os.path.join(ADAT, 'jeloltek.tsv'))
+    ki = {}
+    for r in jel:
+        if r[0] == mid:
+            for v in kibont(r[1]):
+                ki.setdefault(v, []).append((r[3], r[4], r[1]))
+    return ki
+
+
+def lexikai_kor(mid):
+    """A motivum lexikai kore: az elofordulasok.strong osszetett ertekeinek kollokacioja
+    (egy versben), az egyes ertekek scanje; lekerdez.py kimenet + proveniencia."""
+    _, elo = tabla(os.path.join(ADAT, 'elofordulasok.tsv'))
+    fej = tabla(os.path.join(ADAT, 'elofordulasok.tsv'))[0]
+    i_id, i_s = fej.index('id'), fej.index('strong')
+    gramm = L.load_grammatikai_strongok()
+    ertekek = []
+    for r in elo:
+        if r[i_id] == mid and r[i_s].strip() and r[i_s] not in ertekek:
+            ertekek.append(r[i_s])
+    kor, prov = {}, []
+    for e in ertekek:
+        resz = [x for x in e.split('+') if x and x not in gramm]
+        if len(resz) == 2:
+            versek, pr = futtat(L.cmd_kollokacio, strong_a=resz[0], strong_b=resz[1])
+            nev = '+'.join(resz)
+        elif len(resz) == 1:
+            versek, pr = futtat(L.cmd_scan, strong=resz[0], szakasz=None)
+            nev = resz[0]
+        else:
+            continue
+        prov.append((nev, pr))
+        for v in versek:
+            kor.setdefault(v, []).append(nev)
+    return kor, prov
+
+
+def tsk_kor(mid):
+    """A motivum ismert versein kiindulo TSK-szomszedsag (minden Votes-ertek)."""
+    ismert = vizsgalt_versek(mid)
+    kiindulo = set()
+    for v in ismert:
+        kiindulo.add(v)
+    cel = {}
+    for r in L.load_tsk():
+        if r['Igehely'] in kiindulo:
+            for v in kibont(r['Kapcsolódó igehely']):
+                cel.setdefault(v, []).append(int(r['Votes']))
+    prov = ('scope=TSK-teljes | forras=TSK_kereszthivatkozasok.tsv | kiindulo_vers=%d | n=%d | ts=%s' %
+            (len(kiindulo), len(cel), L.ts()))
+    return cel, prov
+
+
+def cmd_lelet(args):
+    mid = args.id
+    kor, lex_prov = lexikai_kor(mid)
+    tsk, tsk_prov = tsk_kor(mid)
+    jel = jeloltek_versenkent(mid)
+    csillag = sorted(v for v in kor if v not in tsk)
+    sor = ['# Lelet-lap adata -- %s' % mid, '',
+           '*Származtatott (eszkozok/nem_vizsgalt.py lelet); a ★ = a lexikai kör (%d vers) mínusz a TSK-kör (%d vers); '
+           'ezek a projekt saját lexikai leletei, amelyeket a TSK nem jelez.*' % (len(kor), len(tsk)), '',
+           '## Lekérdezések', '']
+    for nev, pr in lex_prov:
+        sor.append('- lexikai kör `%s`: `%s`' % (nev, pr))
+    sor += ['- TSK-kör: `%s`' % tsk_prov, '',
+            '## ★ sorok (%d)' % len(csillag), '',
+            '| ★ vers | gerinc-elem | dontes | indoklas (jeloltek.tsv) |', '|---|---|---|---|']
+    nincs = 0
+    for v in csillag:
+        gerinc = ', '.join(sorted(set(kor[v])))
+        if v in jel:
+            d = ' / '.join(sorted({x[0] for x in jel[v]}))
+            i = ' / '.join(x[1] for x in jel[v])
+        else:
+            d, i = 'még nem vizsgált', '(nincs jeloltek-sor)'
+            nincs += 1
+        sor.append('| %s | %s | %s | %s |' % (v, gerinc, d, i.replace('|', '/')))
+    kozos = sorted(v for v in kor if v in tsk)
+    sor += ['', '## A lexikai kör TSK-val is jelzett része (%d vers; nem ★)' % len(kozos), '']
+    for v in kozos:
+        sor.append('- %s (TSK Votes max %d)' % (v, max(tsk[v])))
+    sor += ['', '## Összesítés', '',
+            '- ★ sor: %d, ebből jeloltek-sorral (dontes + indoklas): %d; „még nem vizsgált”: %d; jelöletlen: 0' %
+            (len(csillag), len(csillag) - nincs, nincs), '']
+    szoveg = '\n'.join(sor)
+    print(szoveg.split('## Összesítés')[-1].strip())
+    if args.md:
+        with open(args.md, 'w', encoding='utf-8', newline='') as f:
+            f.write(szoveg)
+    return 0
+
 
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split('\n')[1])
@@ -322,6 +420,10 @@ def main(argv=None):
     sp.add_argument('--id', nargs='+')
     sp.add_argument('--ir', action='store_true')
     sp.set_defaults(func=cmd_hozzafuz)
+    sp = sub.add_parser('lelet')
+    sp.add_argument('--id', default='ANTROP-001')
+    sp.add_argument('--md')
+    sp.set_defaults(func=cmd_lelet)
     args = ap.parse_args(argv)
     return args.func(args)
 

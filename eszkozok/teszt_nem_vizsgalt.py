@@ -51,6 +51,14 @@ def teszt_hozzafuz():
         os.makedirs(adat)
         os.makedirs(nap)
         shutil.copy(os.path.join(N.ADAT, 'jeloltek.tsv'), adat)
+        # a pótlás előtti állapot: a munkalap kulcsa nem lehet már a táblában
+        pj = os.path.join(adat, 'jeloltek.tsv')
+        with open(pj, 'rb') as f:
+            sorok = f.read().split(b'\n')
+        kulcs = 'HODIT-001\t1Móz 6:4\t'.encode('utf-8')
+        sorok = [l for l in sorok if not l.startswith(kulcs)]
+        with open(pj, 'wb') as f:
+            f.write(b'\n'.join(sorok))
         shutil.copy(os.path.join(N.NAPLOK, 'JELOLTEK_RETRO_HODIT-001_sorok.tsv'), nap)
         regi_adat, regi_nap = N.ADAT, N.NAPLOK
         N.ADAT, N.NAPLOK = adat, nap
@@ -87,8 +95,19 @@ def teszt_hozzafuz():
         shutil.rmtree(tmp, ignore_errors=True)
 
 
+def teszt_lelet():
+    kor, prov = N.lexikai_kor('ANTROP-001')
+    assert 'Fil 1:27' in kor and prov
+    tsk, _ = N.tsk_kor('ANTROP-001')
+    assert '1Thessz 5:23' in kor and '1Thessz 5:23' in tsk  # TSK-val is jelzett: nem csillag
+    csillag = [v for v in kor if v not in tsk]
+    assert 'Fil 1:27' in csillag and '1Thessz 5:23' not in csillag
+    jel = N.jeloltek_versenkent('ANTROP-001')
+    assert jel['Fil 1:27'][0][0] == 'nyitva'
+
+
 def main():
-    for f in (teszt_kibont, teszt_lista_munkalappal, teszt_hozzafuz):
+    for f in (teszt_kibont, teszt_lista_munkalappal, teszt_hozzafuz, teszt_lelet):
         f()
         print('OK', f.__name__)
     print('Minden teszt rendben.')
