@@ -9,7 +9,7 @@ munka: folyamat
 allapot: fut
 ag: claude/f61-lekerdez-naplo
 ad: a lekerdez.py minden alparancsa egy kapcsolóval (--naplo ID --lepes KÓD) maga fűzi a saját proveniencia-sorát az adat/auditok.tsv-hez, hozzáfűzéssel, duplikáció nélkül; a SEMA 2.9 lepes-értékkészlete bővül az adhoc értékkel, a proveniencia-sor a futtatás csatornáját is rögzíti (DT-M3)
-kovetkezo: "Folytatás: M1 — a DT-F61a eldöntve (🟢: a három ágú --naplo, csatorna=cli); az M1 új /kovetkezo menetben indul"
+kovetkezo: "Folytatás: M2 — zárás (teszt_lekerdez_naplo.py kész, fuggetlen-ellenor, zárójelentés, PR, lezarva); az M1 megvalósítás az F61.3 commitban"
 olvas: [eszkozok/lekerdez.py, adat/auditok.tsv, adat/SEMA.md, eszkozok/ellenoriz.py, MUNKAMENET.md, eszkozok/teszt_lekerdez_sir.py]
 ir: [eszkozok/lekerdez.py, eszkozok/teszt_lekerdez_naplo.py, adat/SEMA.md, eszkozok/ellenoriz.py]
 fugg: []

@@ -45,7 +45,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ALAPERTELMEZETT_ADAT = os.path.join(ROOT, 'adat')
 
 PROVENIENCIA_KOTELEZO_KULCSOK = {'scope', 'forras', 'ts'}
-PROVENIENCIA_MEGENGEDETT_TOVABBI_KULCSOK = {'strong', 'n'}
+PROVENIENCIA_MEGENGEDETT_TOVABBI_KULCSOK = {'strong', 'n', 'csatorna'}
 PROVENIENCIA_TILTOTT_KULCSOK = {'talalat', 'strong_vart'}
 
 # N12/G4: azok a `mindig` tematikus datasetek, amelyekhez nincs `lekerdez.py`
@@ -108,7 +108,7 @@ def proveniencia_parse(ertek):
 
 def proveniencia_ervenyes(ertek):
     """True, ha a proveniencia-sor megfelel G9-nek (kotelezo scope/forras/ts,
-    megengedett tovabbi strong/n, tiltott talalat/strong_vart)."""
+    megengedett tovabbi strong/n/csatorna, tiltott talalat/strong_vart)."""
     kulcsok = proveniencia_parse(ertek)
     if not kulcsok or not PROVENIENCIA_KOTELEZO_KULCSOK.issubset(kulcsok):
         return False
@@ -168,7 +168,7 @@ def szabaly2_nincs_kozvetlen_ut(elofordulasok, jeloltek):
 
 def szabaly3_proveniencia(elofordulasok, auditok):
     """G9: a scope/forras/ts kotelezo; a lekerdez.py tovabbi kulcsai (strong,
-    n) megengedettek; az igazolas-jellegu kulcsok (talalat, strong_vart)
+    n, csatorna) megengedettek; az igazolas-jellegu kulcsok (talalat, strong_vart)
     tiltottak (F8_BRIEF.md G9). Az `auditok.proveniencia` ugyanezen szabaly
     ala esik (SEMA.md §3/3, N12) -- a proveniencia_ervenyes hivasa import,
     nem masolat (F8 D21)."""
