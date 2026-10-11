@@ -122,6 +122,10 @@ def teszt_lelet():
     assert not any('H3548' == g for _, gs, _, _ in k['sorok'] for g in gs.split(', '))
     e = N.elemez('ANTROP-001')
     assert 'H5315' not in e['nem_vizsgalt'] and 'H2416' not in e['nem_vizsgalt']
+    assert e['horgony'].get('H5315+H2416', 0) > 0  # a lista is nevesiti
+    assert 'Tematikus horgony' in N.jelentes('ANTROP-001', e)[0]
+    assert 'H1121+H0430' not in N.horgony_ertekek('MENNY-001') and not N.horgony_kor('ALVIL-001')
+    assert 'G0093' in N.CSOPORTOS_KIZARAS['HAMART-001'][0] and not N.EXTRA
     e = N.elemez('MENNY-001')
     assert e['kategoriak']['pontatlan'] and 'H1121+H0430' not in e['nem_vizsgalt']
 

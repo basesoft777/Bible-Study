@@ -12,7 +12,7 @@ futtatja ujra (cmd_scan / cmd_kollokacio, a sajat proveniencia-soraval).
 A scan-halmaz FUTASKOR vezetodik le az `adat/elofordulasok.tsv` `strong`
 oszlopabol (osszetett ertek elemeire bontva, a nyelvtani Strongok --
 `adat/grammatikai_strongok.tsv` -- nelkul). Kezzel csak a tablabol nem
-kiolvashato tobblet van megadva (KOLLOKACIO, EXTRA), megjegyzessel es
+kiolvashato tobblet van megadva (CSOPORTOS_KIZARAS; a KOLLOKACIO csak megjegyzes), megjegyzessel es
 napló-hivatkozassal (DT-F63a (2)). Az `auditok.tsv`-ba nem iras tortenik.
 
 Strong-szintu csoportos kizaras (DT-F63a (3)): a HAMART-001 naploja (4/c)
@@ -57,10 +57,12 @@ JELOLTEK_FEJLEC = ['id', 'igehely', 'forras_kereses', 'dontes', 'indoklas',
                    'karoli_szo', 'azonositas_modja', 'megbizhatosag', 'datum']
 DONTES_ERTEKEK = {'beépítve', 'elutasítva', 'nyitva'}
 
-# --- kezi tobblet: csak ami az elofordulasok.strong-bol nem olvashato ki ---
+# --- kezi kiegeszitesek (DT-F63a (2) szerint a kodba irva, megjegyzessel es naplo-hivatkozassal) ---
 NAPLO_DIR = 'tematikus_lezart/naplok/'
-# FORRAS (kezi tobblet, a kodba irva): DONTESEK.md DT-F63a (2): a ket kollokacio es a H2403,
-# a naplo hivatkozasaval (tablabol nem kiolvashato); kategoriajuk: DT-F63c (A).
+# Napló-hivatkozas a kollokaciokhoz. FIGYELEM: a ket kollokacio (H7121+H8034, H1121+H0430) az
+# `elofordulasok.strong` osszetett ertekekent KIOLVASHATO, a scan_halmaz maga is levezeti; ez a
+# bejegyzes csak a megjegyzest (naplo-hivatkozas) adja a levezetett helyett. (A korabbi H2403
+# EXTRA-bejegyzes torolve: az `elofordulasok.tsv` HAMART-001 1Moz 4:7 sora hordozza.)
 KOLLOKACIO = {  # (A, B, megjegyzes)
     'ISTENTISZT-001': [('H7121', 'H8034',
                         'formulaikus azonossag: H7121+H8034 egy versben; ' + NAPLO_DIR +
@@ -69,16 +71,13 @@ KOLLOKACIO = {  # (A, B, megjegyzes)
                    'בְּנֵי (הָ)אֱלֹהִים szorendi minta: H1121+H0430 egy versben; ' + NAPLO_DIR +
                    'Isten_fiai_Nefilim_Gibborim_kereszthivatkozas_naplo.md')],
 }
-EXTRA = {  # (Strong, megjegyzes)
-    'HAMART-001': [('H2403', 'gerinc-elem (chattat); ' + NAPLO_DIR +
-                    'Bun_kovetkezmenyeinek_gyuruzese_kereszthivatkozas_naplo.md, 2. Vizsgalt kulcsszavak')],
-}
-# a kollokacio tagjait nem szkenneljuk kulon (zajos); a kollokacio fedi
-KOLLOKACIO_TAGOK = {'ISTENTISZT-001': {'H7121', 'H8034'}, 'MENNY-001': {'H1121', 'H0430'}}
-# Strong-szintu csoportos kizaras (napló 4/c): ezek maradek talalatai kulon kategoria
+EXTRA = {}  # (Strong, megjegyzes): jelenleg nincs olyan Strong, amely az elofordulasok-bol ne lenne kiolvashato
+# Strong-szintu csoportos kizaras: a HAMART-001 naplo 4/c tablajanak csoport-sorai (igehelyek
+# nelkul). KEZI, a naploból: a G2672, G2671, G5351, G5356, G1311, G0093 NINCS az
+# `elofordulasok.strong`-ban, a H2555, H7843, H0127, H2403 igen. Maradek talalataik kulon kategoria.
 CSOPORTOS_KIZARAS = {
     'HAMART-001': ({'H2555', 'H7843', 'H0127', 'H2403', 'G2672', 'G2671', 'G5351',
-                    'G5356', 'G1311'},
+                    'G5356', 'G1311', 'G0093'},
                    'Strong-szintű csoportos kizárás, napló 4/c (' + NAPLO_DIR +
                    'Bun_kovetkezmenyeinek_gyuruzese_kereszthivatkozas_naplo.md)'),
 }
@@ -253,7 +252,11 @@ def elemez(mid, munkalapokkal=False):
     for v in nv.values():
         mas |= set(v)
     kat = {k: {n: [v for v in vs if v not in mas] for n, vs in d.items()} for k, d in kat.items()}
+    horg = horgony_kor(mid)
+    for nev, (versek, pr, _) in horg.items():
+        lek.append((nev, 'tematikus horgony (a sor saját minősítése: NEM lexikai)', len(versek), pr))
     return {'nem_vizsgalt': nv, 'kategoriak': kat, 'csoportos': kat['csoportos'],
+            'horgony': {n: len(v[0]) for n, v in horg.items()},
             'lekerdezesek': lek, 'kezelt': len(kezelt)}
 
 
@@ -275,6 +278,10 @@ def jelentes(mid, e):
             sor += ['', '### %s' % KATEGORIA_FELIRAT[k], '']
             for s, vs in e['kategoriak'][k].items():
                 sor.append('- %s: %d vers (se „még nem vizsgált”, se `elutasítva`)' % (s, len(vs)))
+    if e['horgony']:
+        sor += ['', '### Tematikus horgony, nem lexikai kör (DT-F63b)', '']
+        for n, db in e['horgony'].items():
+            sor.append('- %s: %d vers (se „még nem vizsgált”, se `elutasítva`; a sor saját minősítése: NEM lexikai)' % (n, db))
     sor.append('')
     return '\n'.join(sor), len(ossz)
 
@@ -287,6 +294,8 @@ def cmd_lista(args):
         szoveg, n = jelentes(mid, e)
         kat = ', '.join('%s: %d' % (k, sum(len(v) for v in e['kategoriak'][k].values()))
                         for k in KATEGORIA_SORREND if e['kategoriak'][k])
+        if e['horgony']:
+            kat = (kat + '; ' if kat else '') + 'tematikus horgony: %d' % sum(e['horgony'].values())
         print('%s: még nem vizsgált egyedi vers: %d%s' % (mid, n, ('; ' + kat) if kat else ''))
         reszek.append(szoveg)
     if args.md:
@@ -384,6 +393,25 @@ def jeloltek_versenkent(mid):
     return ki
 
 
+def horgony_kor(mid):
+    """Tematikus horgony (DT-F63b) korei: {nev: (versek, proveniencia, [(igehely, kapcsolodas)])};
+    a lekerdez.py kimenete, nevesitett kategoria (se csillag, se "meg nem vizsgalt")."""
+    fej, elo = tabla(os.path.join(ADAT, 'elofordulasok.tsv'))
+    i_id, i_s, i_k = fej.index('id'), fej.index('strong'), fej.index('kapcsolodas')
+    gramm = L.load_grammatikai_strongok()
+    ki = {}
+    for e in sorted(horgony_ertekek(mid)):
+        resz = [x for x in e.split('+') if x and x not in gramm]
+        if len(resz) == 2:
+            versek, pr = futtat(L.cmd_kollokacio, strong_a=resz[0], strong_b=resz[1])
+        elif len(resz) == 1:
+            versek, pr = futtat(L.cmd_scan, strong=resz[0], szakasz=None)
+        else:
+            continue
+        ki['+'.join(resz)] = (versek, pr, [(r[1], r[i_k]) for r in elo if r[i_id] == mid and r[i_s] == e])
+    return ki
+
+
 def lexikai_kor(mid):
     """A motivum lexikai kore: a scan_halmaz egy logikaja (a `lista` is ezt hasznalja),
     lekerdez.py kimenet + proveniencia. Tematikus horgony (DT-F63b): az az osszetett
@@ -406,17 +434,9 @@ def lexikai_kor(mid):
         prov.append((nev, pr))
         for v in versek:
             kor.setdefault(v, []).append(nev)
-    for e in horgony_ertekek(mid):
-        resz = [x for x in e.split('+') if x and x not in gramm]
-        if len(resz) == 2:
-            versek, pr = futtat(L.cmd_kollokacio, strong_a=resz[0], strong_b=resz[1])
-        elif len(resz) == 1:
-            versek, pr = futtat(L.cmd_scan, strong=resz[0], szakasz=None)
-        else:
-            continue
-        nev = '+'.join(resz)
+    for nev, (versek, pr, forrasok) in horgony_kor(mid).items():
         prov.append((nev, pr))
-        horgony[nev] = (versek, [(r[1], r[i_k]) for r in elo if r[i_id] == mid and r[i_s] == e])
+        horgony[nev] = (versek, forrasok)
     return kor, prov, horgony
 
 
@@ -550,7 +570,7 @@ def cmd_meres(args):
               'csoportos kizárás (napló 4/c), DT-F63b tematikus horgony. A kategorizálás kézi (`KOR_KATEGORIA`), a szűkítés tartalmi döntés.', '',
               '**FIGYELEM: a tábla nem teljességi jelentés.** A „még nem vizsgált” oszlop 0 értéke NEM jelenti, '
               'hogy a motívum végig van vizsgálva: HAMART-001-nél azért 0, mert 501 vers ideiglenesen „szűkítendő” '
-              'lett, amíg az N-F63e el nem dől (és 526 vers csoportos kizárás); MENNY-001-nél 0 mellett 269 '
+              'lett, amíg az N-F63e el nem dől (és 537 vers csoportos kizárás); MENNY-001-nél 0 mellett 269 '
               '„pontatlan” vers áll (az N-F63d-re vár); ISTENTISZT-001 és KIRALY-001 is hasonló.', '',
               'Oszlopok: ★ = normál lexikai kör − TSK-kör; „csoportos kizárás” = napló 4/c Strong-szintű kizárása; '
               '„versszintű kollokáció, pontatlan” = a formula a gerinc, de az egy-versű lekérdezés pontatlan (DT-F63c (A)); '
@@ -563,7 +583,8 @@ def cmd_meres(args):
             ki.append('')
             for nev, pr in a['lex_prov']:
                 k = kor_kategoria(mid, nev)
-                ki.append('- `%s` [%s]: `%s`' % (nev, KATEGORIA_FELIRAT.get(k, 'normál'), pr))
+                cimke = 'tematikus horgony, nem lexikai kör' if nev in a['horgony'] else KATEGORIA_FELIRAT.get(k, 'normál')
+                ki.append('- `%s` [%s]: `%s`' % (nev, cimke, pr))
             ki.append('- TSK: `%s`' % a['tsk_prov'])
             for nev, (versek, forrasok) in a['horgony'].items():
                 ki.append('- tematikus horgony `%s`: %d vers (a sor saját minősítése: NEM lexikai)' % (nev, len(versek)))
