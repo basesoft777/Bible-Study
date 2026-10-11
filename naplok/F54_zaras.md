@@ -3,7 +3,7 @@
 *2026.10.11 · tervezet (az orkesztrátor zár) · részletek: `naplok/LXX_OS_LEFEDETTSEG_M0.md`, `…_M2.md`, `…_osztalyozas.tsv`, `naplok/F54_parok_kulonbseg.md`*
 
 - **Hatókör:** az 503 `csak_regi_vers` Károli-vers mindegyikéről ítélet (K1): A 438 (kulcsolási rés), B 3 (Ézs 3:1, Jer 7:27, Jer 27:17), C 5 (nem létező Károli-vers), bizonytalan 57 az M0-ban, **56** a végállapotban (a Zsolt 13:5 a DT-F54b javítása óta kulcsolt).
-- **K2: 434/438 kulcsolva, 4 explicit üres, okkal** (A osztály; 2Móz 37:4, 37:13, 38:1, 1Kir 4:27 — nincs általános szabályos alátámasztás, M2 7. szakasz); elfogadva (2026-10-11, felhasználó). Az összes kulcsolt: 435, mert a Zsolt 13:5 a bizonytalanok közül lett kulcsolt (DT-F54b).
+- **K2: 435 A osztályú vers kulcsolva, 4 explicit üres (2Móz 37:4, 37:13, 38:1, 1Kir 4:27), okkal; a felhasználó elfogadta üresnek, 2026-10-11.** Tárgyilag: az osztályozó táblában (M0 pillanatkép) a Zsolt 13:5 „bizonytalan”, a DT-F54b javítása óta kulcsolt, és ebben a 435-ben benne van (438 − 4 + 1).
 - **Pótolt kulcs:** 304 vers az általános importszabállyal (tábla-kjv, zsoltár-felirat, sorrend-beágyazás; `lxx_os_import.py --ujrabesorol-lefedettseg`), 130 vers felülbírálati sorral (2Móz 35, Dán 3, Hós 2/13/14, Jób 37; fejezetenként tartalmi mintavétellel) — összesen 434 az 503-ból, K2.
 - **Extra kulcs (503-on kívül, 6):** Zsolt 13:6, Zsolt 54:2, Én 5:17–19, Ézs 64:1 — tételesen: M2 7. szakasz.
 - **Kimaradt (4):** 2Móz 37:4, 37:13, 38:1, 1Kir 4:27 — üresek (nincs általános szabályos alátámasztás); M2 7. szakasz.
