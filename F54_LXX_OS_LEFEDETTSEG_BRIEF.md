@@ -6,10 +6,12 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: fut
-ag: claude/lxx-os-lefedettseg
+allapot: lezarva
+ag: claude/lxx-os-lefedettseg
+pr: https://github.com/basesoft777/Bible-Study/pull/276
+lezarva_osszegzes: "503 Károli-vers osztályozva (A 438, B 3, C 5, bizonytalan 57); 435 vers kulcsolva (K2: 4 explicit üres, elfogadva); 130 A2 felülbírálat; Zsolt 13 javítva; LXX_versszintu_parok.tsv újragenerálva (DT92); független ellenőr: 6 eltérés javítva; nyitott: N-F54a"
 ad: az 503 Károli-vers mindegyikéről (az lxx-hid az LXX_OS-ből n=0-t ad, a régi LXX_kivonat adott) dokumentált ítélet: kulcsolási rés (pótolva az lxx_os_import.py besorolásában) vagy valódi görög hiány (explicit üres eredmény); idegen vagy kettős Károli-kulcs nem keletkezik
-kovetkezo: "Zárás: ellenőr + PR az orkesztrátorra vár"
+kovetkezo: "—"
 olvas: ["konkordancia/LXX_OS/*.tsv", konkordancia/LXX_OS/README.md, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Verzifikacios_elteres_tabla.tsv, naplok/FORRASKIVEZETES_M5_M7.md, naplok/FORRASKIVEZETES_M5_eltereslista.tsv, eszkozok/lekerdez.py]
 ir: [eszkozok/lxx_os_import.py, "konkordancia/LXX_OS/*.tsv", konkordancia/LXX_OS/README.md, eszkozok/teszt_lekerdez_sir.py, eszkozok/lxx_versszintu_import.py, konkordancia/LXX_versszintu_parok.tsv]
 fugg: [42]
