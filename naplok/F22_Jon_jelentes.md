@@ -86,3 +86,9 @@ Eltérő Károli-token (két modell partnerhalmaza különbözik) összesen: 0; 
 - PR és merge a felhasználóé.
 - A következő könyv(ek) a felhasználó döntése: az ÓSZ-ből még 14 kis könyv hiányzik (Préd, Én, Sir, Hós, Jóel, Ámós, Abd, Mik, Náh, Hab, Sof, Hag, Zak, Mal; együtt 1 492 vers); a Hós (1:11, 11:11) és a Préd (2:26) jóváhagyott 2:1 beolvasztást tartalmaz (`f22/versosszevonas.tsv`, DT92), ezeknél kézi átnézési pont várható; a többi 12 tiszta.
 
+## 6. Ellenőri kör (`naplok/ELLENOR_F22_Jon.md`)
+
+Az ellenőr a számszerű állításokat (48/48, 1 052 / 2 071, 2/48 → 0, 0,2842 USD, 77,5074 USD, a futó összeg folytonossága, a régi arany 2/2, az 1 492 vers a 14 megmaradt könyvben) saját lekérdezéssel igazolta; 1 eltérés (alacsony):
+
+- **A brief „A session egyedül fut, más Code-session közben nem dolgozik” szabálya** (`F22_KAROLI_STRONG_BRIEF.md:43`) nem teljesült: a menet külön worktree-ben, párhuzamos session mellett készült (a Ruth-menetben ugyanez történt, jelzés nélkül). Az adatot a mért pontokon nem érinti (a költség batch-áras, a `/usage` n.a.). **Nyitott, a felhasználó döntése:** a szabály kapjon-e API-módú felmentést (új D-sor), vagy maradjon és a menetek külön is egyedül fussanak. Nem módosítottam a szabályt és nem írtam felmentő D-sort.
+
