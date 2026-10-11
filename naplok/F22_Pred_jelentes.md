@@ -95,3 +95,7 @@ Eltérő Károli-token (két modell partnerhalmaza különbözik) összesen: 0; 
 - PR és merge a felhasználóé.
 - A következő könyv(ek) a felhasználó döntése: az ÓSZ-ből még 12 kis könyv hiányzik (Én, Sir, Hós, Jóel, Ámós, Abd, Mik, Hab, Sof, Hag, Zak, Mal; együtt 1 224 vers); a Hós (1:11, 11:11) jóváhagyott 2:1 beolvasztást tartalmaz (`f22/versosszevonas.tsv`, DT92), ott kézi átnézési pont várható; a többi 11 beolvasztás nélküli.
 
+## 6. Ellenőri kör (`naplok/ELLENOR_F22_Pred.md`)
+
+Az ellenőr TISZTA jelentést adott, eltérés nélkül: a számszerű állításokat (221/221, 4 440 / 9 114, a 17 `kezi` token a Préd 2:26-ból, 4/221 → 0, 1,3463 USD, 79,1039 USD, az 1 224 vers a 12 megmaradt könyvben) és a régi arany kulcs-műtermék indoklását saját lekérdezéssel igazolta. Két megjegyzés (nem eltérés): a Préd 2:26 er-sorszámai (39–47) a dokumentált konvenciót követik, és a `SEMA.md` `kezi` példalistájából hiányzik a Préd 2:26 (csak példa).
+
