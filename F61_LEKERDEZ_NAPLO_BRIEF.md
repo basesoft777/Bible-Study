@@ -6,10 +6,12 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: folyamat
-allapot: fut
+allapot: lezarva
 ag: claude/f61-lekerdez-naplo
+pr: PR_HELYE
+lezarva_osszegzes: "a lekerdez.py --naplo ID --lepes KÓD önnaplózása (három ágú ID-döntés, csatorna=cli, stderr állapotsor), SEMA 2.9, ellenoriz.py csatorna-kulcs; DT-F61a/b alkalmazva; N-F61a helyőrző"
 ad: a lekerdez.py minden alparancsa egy kapcsolóval (--naplo ID --lepes KÓD) maga fűzi a saját proveniencia-sorát az adat/auditok.tsv-hez, hozzáfűzéssel, duplikáció nélkül; a SEMA 2.9 lepes-értékkészlete bővül az adhoc értékkel, a proveniencia-sor a futtatás csatornáját is rögzíti (DT-M3)
-kovetkezo: "Folytatás: DT-F61b alkalmazva; main beolvasztása, zárójelentés, draft PR [ELLENŐRZŐ] címmel"
+kovetkezo: "—"
 olvas: [eszkozok/lekerdez.py, adat/auditok.tsv, adat/SEMA.md, eszkozok/ellenoriz.py, MUNKAMENET.md, eszkozok/teszt_lekerdez_sir.py]
 ir: [eszkozok/lekerdez.py, eszkozok/teszt_lekerdez_naplo.py, adat/SEMA.md, eszkozok/ellenoriz.py]
 fugg: []
