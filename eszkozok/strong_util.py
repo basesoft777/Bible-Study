@@ -14,9 +14,10 @@ Szabályok (F62 M0, a felhasználó által elfogadva):
   - 1-4 jegy balról nullázódik (`H779` -> `H0779`);
   - előtag nélküli szám (`1078`) csak `nyelv='H'|'G'` megadásával fogadható,
     egyébként ValueError;
-  - ötjegyű kódnál csak a vezető nulla hagyható el (`G00120` -> `G0120`);
-    más ötjegyű (`G20447`) és hosszabb ValueError (a csonkolás nem
-    normalizálás);
+  - ötjegyű kód: vezető nullával a nulla elhagyható (`G00120` -> `G0120`);
+    nem nullával kezdődő ötjegyű csak G-előtaggal érvényes és változatlan
+    marad (G-kiegészítő kód: `G20447`, `G20833`, TAGNT; DT-F62b), H-nál
+    ValueError; hosszabb is ValueError (a csonkolás nem normalizálás);
   - betűutótag (`H2967a`): `utotag='tilt'` (alapérték) esetén ValueError,
     `utotag='megtart'` esetén kisbetűs utótagként megmarad;
   - `+` láncot elemenként normalizál, a sorrendet megőrzi;
@@ -53,8 +54,11 @@ def _resz(resz, nyelv, utotag):
                          % (elotag, nyelv, resz))
     if len(szamjegyek) == 5 and szamjegyek[0] == '0':
         szamjegyek = szamjegyek[1:]
-    if len(szamjegyek) > 4:
-        raise ValueError('a Strong-szám négynél több érvényes számjegyet tartalmaz: %r' % resz)
+    elif len(szamjegyek) == 5 and elotag == 'G':
+        pass  # G-kiegészítő kód (G + öt számjegy, nem nullával kezdődik): változatlan
+    elif len(szamjegyek) > 4:
+        raise ValueError('a Strong-szám négynél több számjegyet tartalmaz, és nem G-kiegészítő kód: %r'
+                         % resz)
     if int(szamjegyek) == 0:
         raise ValueError('a Strong-szám nulla: %r' % resz)
     if betu and utotag != 'megtart':

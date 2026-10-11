@@ -48,7 +48,8 @@ def cli_strong(nyers):
     try:
         jo = strong_normalizal(s)
     except ValueError as exc:
-        print(f"Érvénytelen Strong-szám ({nyers!r}): {exc}. A Strong-szám H0779 alakú legyen.",
+        pelda = "G0086" if s.startswith("G") else "H0779"
+        print(f"Érvénytelen Strong-szám ({nyers!r}): {exc}. A Strong-szám {pelda} alakú legyen.",
               file=sys.stderr)
         sys.exit(1)
     if "+" in jo:
@@ -628,7 +629,12 @@ def _print_anomaly_warnings(dataset_name, matches):
 
 def cmd_domen(args):
     """3. használat (4.3) — szemantikai domén lekérdezés (SDBH/SDGNT): mező-tágítás 1 Stronggal, elhatárolás 2-vel."""
-    strongok = [s.strip() for s in args.strong]
+    # F62 / DT-F62a: az egyszerű H####/G#### argumentum a CLI szigorú ellenőrzésén megy át
+    # (H779 -> hiba a helyes alakkal). KIVÉTEL: a `domen` saját kódtere — A#### és betűutótagos
+    # (H0032a) `strong_kod` — nem SEMA 1.2 (nincs ilyen STRONG-típus), ezt a függvény nem
+    # normalizálja; a `_anomaly_part_matches` A->H leképezése is e kódtér szabálya.
+    strongok = [cli_strong(s) if re.match(r"^[HG]\d+$", s.strip()) else s.strip()
+                for s in args.strong]
     if len(strongok) > 2:
         print("A `domen` legfeljebb két Strong-kódot fogad el.", file=sys.stderr)
         sys.exit(1)

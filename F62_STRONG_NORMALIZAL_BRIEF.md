@@ -72,7 +72,7 @@ Jelentés: `naplok/STRONG_NORMALIZAL_M0.md`.
 ## 4. Elfogadási feltételek
 
 - **K1.** Egy függvény, minden M0-beli bemeneti alakra teszttel; az idempotencia-teszt zöld.
-- **K2.** A `lekerdez.py` és a `betolt.py` csak ezt a függvényt használja Strong-normalizálásra; kimenetük változatlan, kivéve az érvénytelen vagy nullázatlan CLI-bemenetet (`lekerdez.py`), amely hibát ad a helyes alakkal (DT-F62a).
+- **K2.** A `lekerdez.py` és a `betolt.py` csak ezt a függvényt használja Strong-normalizálásra; kimenetük változatlan, kivéve az érvénytelen vagy nullázatlan CLI-bemenetet (`lekerdez.py`: `scan`, `igealak`, `kollokacio`, az egyszerű `H####`/`G####` argumentumú `domen`), amely hibát ad a helyes alakkal (DT-F62a); a `domen` saját `A####`/betűutótagos kódtere kivétel. A `betolt.py kulcsszo` stdout- és fájlkimenete bájtra azonos; a nem SEMA 1.2 alakú study-értékre stderr-figyelmeztetést ad (DT-F62a). A G-kiegészítő kód (`G20447`, `G20833`) érvényes és változatlan (DT-F62b).
 - **K3.** Az adattáblák mérése dokumentált (0 találat is); adattábla nem változott.
 - **K4.** Az `ellenoriz.py` és a CI zöld; a független ellenőr eltérés nélkül zár.
 
@@ -83,3 +83,4 @@ Jelentés: `naplok/STRONG_NORMALIZAL_M0.md`.
 | v1 | 2026-10-05 | A munkaterv „N21 nullázatlan értékek javítása” része a KB3 (`4ecb612`) óta várhatóan tárgytalan; a feladat adattáblát nem ír, az M0 mér. | befogadás, mérés 2026-10-05 |
 | v1 | 2026-10-05 | A többi normalizáló cseréje nem e feladat része; leltár és javaslat. | befogadás |
 | v2 | 2026-10-11 | Az M0 elfogadva (nyelv=, utotag=tilt, ötjegyű: csak a vezető nulla, A#### kivétel, ValueError). A `lekerdez.py` CLI-bemenete szigorú (hiba a helyes alakkal), a függvény normalizál; a `betolt.py` kimenete bájtra azonos. K2 kiegészítve. | DT-F62a |
+| v3 | 2026-10-11 | Ellenőri jelentés alapján: G-kiegészítő kód (G + öt számjegy, nem nullával kezdődik) érvényes, H-nál ötjegyű nem (DT-F62b, SEMA 1.2 egysoros bővítése); a `domen` egyszerű argumentuma szigorú; a `betolt.py` stderr-figyelmeztetése a K2-ben; az M0 mérőszkript a repóban (`eszkozok/strong_meres.py`). | DT-F62b, DT-F62a |

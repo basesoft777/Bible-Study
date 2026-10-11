@@ -79,3 +79,19 @@ f) **Viselkedésváltozás az M2-ben:** a `lekerdez.py scan H779` eddig 0 talál
 ## 6. Következmény a briefre
 
 A 3. pont (mérés) 0, ezért a javítás nem szükséges; a feladat az M1 szerint folytatható, ha a felhasználó elfogadja a 2. pont táblázatát és az 5. pont döntéseit.
+
+## 7. Pontosítás (F62.5, az ellenőri jelentés alapján)
+
+**Hatókör.** A 4. pont „0 eltérés” a **STRONG-típusú oszlopokra** áll (fejléc `strong`-ot tartalmaz): 11 oszlop az `adat/` nem-`karoli_strong` tábláiban (10 fájl) + 38 `adat/karoli_strong/` fájl + a `Karoli_Strong_kivonat.tsv` 1 oszlopa = 50 oszlop, 48 fájl. **Nem** a STRONG-típusú oszlopban álló, Strong-kódnak látszó, nem SEMA-alakú **forrásalakú érték 113** van: `adat/forditasok.tsv` `entry_id` 108, `adat/lexikon_hivatkozasok.tsv` `entry_id` 5 (a szótári forrás eredeti kulcsa, pl. nullázatlan `H430`). Ezek nem normalizálandók (a brief hatókörén kívül: forrásalakot hordozó mező), de a „0” állítás rájuk nem vonatkozik.
+
+**Reprodukálható mérés:** `python eszkozok/strong_meres.py [--reszlet]` (csak olvas, tabra vágva (`split` tab-karakterrel), kódolási őr). Futás (2026-10-11):
+
+```
+(A) STRONG-típusú oszlop: 50 oszlop, 48 fájl; nem üres cella: 1068624; nem SEMA 1.2: 0
+(B) forrásalakú, nem STRONG-típusú oszlopban álló, nem SEMA 1.2 alakú érték: 113
+proveniencia: scope=adat/**/*.tsv+konkordancia/Karoli_Strong_kivonat.tsv | forras=eszkozok/strong_meres.py | a=0 | b=113 | ts=2026-10-11T08:05Z
+```
+
+**Az 5 jegyű alak (DT-F62b, a 2. pont c) döntés módosítása):** a `G20447` (2 előfordulás) és `G20833` (1) a TAGNT érvényes G-kiegészítő kódja, nem csonkolandó és nem hiba: a SEMA 1.2 egysoros bővítést kap, a függvény G-nél változatlanul hagyja; H-nál az ötjegyű (nem nullával kezdődő) ValueError. A vezető nullás ötjegyű (`G00120`) továbbra is `G0120`.
+
+**`domen`:** az egyszerű `H####`/`G####` argumentum szigorú (`domen H779` -> hiba a `H0779` alakkal); az `A####` és betűutótagos (`H0032a`) `strong_kod` a `domen` saját kódtere, kivétel.

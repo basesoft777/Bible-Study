@@ -52,9 +52,30 @@ class Alakok(unittest.TestCase):
     def test_05_otjegyu(self):
         self.assertEqual(N('G00120'), 'G0120')
         self.assertEqual(N('H07121'), 'H7121')
-        for s in ('G20447', 'H12345', 'G001200', 'G000000'):
+        for s in ('H12345', 'H20447', 'G001200', 'G000000', 'G123456', 'h20447'):
             with self.assertRaises(ValueError):
                 N(s)
+
+    def test_05b_g_kiegeszito_kod(self):
+        """DT-F62b: G + öt számjegy, nem nullával kezdődik (TAGNT: G20447 x2, G20833 x1)."""
+        for s in ('G20447', 'G20833'):
+            self.assertEqual(N(s), s)
+            self.assertTrue(V(s))
+        self.assertEqual(N('g20447'), 'G20447')
+        self.assertEqual(N('20447', nyelv='G'), 'G20447')
+        self.assertEqual(N('G20447+G0086'), 'G20447+G0086')
+        with self.assertRaises(ValueError):
+            N('20447', nyelv='H')
+        with self.assertRaises(ValueError):
+            N('G20447a')
+        self.assertNotIn('H0779', str(self._hiba('H20447')))
+
+    def _hiba(self, s):
+        try:
+            N(s)
+        except ValueError as exc:
+            return exc
+        self.fail('nem dobott ValueError: %r' % s)
 
     def test_06_aramai(self):
         with self.assertRaises(ValueError):
@@ -112,7 +133,7 @@ class Alakok(unittest.TestCase):
 
 class Tulajdonsagok(unittest.TestCase):
     MINTAK = ['H0779', 'H779', 'h1', 'G00120', ' G976 ', 'H8414+H922', 'G5228+G1537+G4053',
-              'H2967a', 'G3924a', '1078', 'H07121']
+              'H2967a', 'G3924a', '1078', 'H07121', 'G20447', 'G20833+G1', '20447']
     KAPCSOLOK = ({}, {'nyelv': 'H'}, {'nyelv': 'G'}, {'utotag': 'megtart'},
                  {'nyelv': 'G', 'utotag': 'megtart'})
 
