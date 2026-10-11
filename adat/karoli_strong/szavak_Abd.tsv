@@ -1,0 +1,869 @@
+# proveniencia: scope=manual | forras=f22/valaszok/sonnet/Abd.jsonl, konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; az API (Batch)-futásnak nincs lekérdezés-időbélyege) | modell-kimenet, javaslat: nem lekérdezés-eredmény; minden link `alacsony` (egy modell, nincs egyezés); a strong a TAHOT-ból, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py
+vers	oldal	sorszam	szo	allapot	partner_sorszam	strong	bizonyossag	forras
+Abd 1:1	hu	1	Abdiás	parositva	2	H5662	alacsony	S
+Abd 1:1	hu	2	látása	parositva	1	H2377	alacsony	S
+Abd 1:1	hu	3	Így	parositva	3	H3541	alacsony	S
+Abd 1:1	hu	4	szól	parositva	4	H0559	alacsony	S
+Abd 1:1	hu	5	az	betoldas			alacsony	S
+Abd 1:1	hu	6	Úr	parositva	5	H0136	alacsony	S
+Abd 1:1	hu	7	Isten	parositva	6	H3069	alacsony	S
+Abd 1:1	hu	8	Edomról	parositva	7,8	H9005+H0123	alacsony	S
+Abd 1:1	hu	9	Hírt	parositva	9	H8052	alacsony	S
+Abd 1:1	hu	10	hallottunk	parositva	10	H8085	alacsony	S
+Abd 1:1	hu	11	az	betoldas			alacsony	S
+Abd 1:1	hu	12	Úrtól	parositva	11,12,13	H9006+H0854+H3068	alacsony	S
+Abd 1:1	hu	13	És	parositva	14	H9002	alacsony	S
+Abd 1:1	hu	14	hírnök	parositva	15	H6735	alacsony	S
+Abd 1:1	hu	15	küldetett	parositva	18	H7971	alacsony	S
+Abd 1:1	hu	16	a	betoldas			alacsony	S
+Abd 1:1	hu	17	népekhez	parositva	16,17	H9003+H1471	alacsony	S
+Abd 1:1	hu	18	keljetek	parositva	19	H6965	alacsony	S
+Abd 1:1	hu	19	fel	parositva	19	H6965	alacsony	S
+Abd 1:1	hu	20	és	parositva	20	H9002	alacsony	S
+Abd 1:1	hu	21	támadjunk	parositva	21	H6965	alacsony	S
+Abd 1:1	hu	22	reá	parositva	22,23	H5921+H9034	alacsony	S
+Abd 1:1	hu	23	haddal	parositva	24,25	H9005+H4421	alacsony	S
+Abd 1:1	er	1	חֲז֖וֹן	parositva	2	H2377	alacsony	S
+Abd 1:1	er	2	עֹֽבַדְיָ֑ה	parositva	1	H5662	alacsony	S
+Abd 1:1	er	3	כֹּֽה	parositva	3	H3541	alacsony	S
+Abd 1:1	er	4	אָמַר֩	parositva	4	H0559	alacsony	S
+Abd 1:1	er	5	אֲדֹנָ֨י	parositva	6	H0136	alacsony	S
+Abd 1:1	er	6	יְהוִ֜ה	parositva	7	H3069	alacsony	S
+Abd 1:1	er	7	לֶ	parositva	8	H9005	alacsony	S
+Abd 1:1	er	8	אֱד֗וֹם	parositva	8	H0123	alacsony	S
+Abd 1:1	er	9	שְׁמוּעָ֨ה	parositva	9	H8052	alacsony	S
+Abd 1:1	er	10	שָׁמַ֜עְנוּ	parositva	10	H8085	alacsony	S
+Abd 1:1	er	11	מֵ	parositva	12	H9006	alacsony	S
+Abd 1:1	er	12	אֵ֤ת	parositva	12	H0854	alacsony	S
+Abd 1:1	er	13	יְהוָה֙	parositva	12	H3068	alacsony	S
+Abd 1:1	er	14	וְ	parositva	13	H9002	alacsony	S
+Abd 1:1	er	15	צִיר֙	parositva	14	H6735	alacsony	S
+Abd 1:1	er	16	בַּ	parositva	17	H9003	alacsony	S
+Abd 1:1	er	17	גּוֹיִ֣ם	parositva	17	H1471	alacsony	S
+Abd 1:1	er	18	שֻׁלָּ֔ח	parositva	15	H7971	alacsony	S
+Abd 1:1	er	19	ק֛וּמוּ	parositva	18,19	H6965	alacsony	S
+Abd 1:1	er	20	וְ	parositva	20	H9002	alacsony	S
+Abd 1:1	er	21	נָק֥וּמָה	parositva	21	H6965	alacsony	S
+Abd 1:1	er	22	עָלֶי	parositva	22	H5921	alacsony	S
+Abd 1:1	er	23	הָ	parositva	22	H9034	alacsony	S
+Abd 1:1	er	24	לַ	parositva	23	H9005	alacsony	S
+Abd 1:1	er	25	מִּלְחָמָֽה	parositva	23	H4421	alacsony	S
+Abd 1:2	hu	1	Ímé	parositva	1	H2009	alacsony	S
+Abd 1:2	hu	2	kicsinynyé	parositva	2	H6996	alacsony	S
+Abd 1:2	hu	3	tettelek	parositva	3,4	H5414+H9031	alacsony	S
+Abd 1:2	hu	4	a	betoldas			alacsony	S
+Abd 1:2	hu	5	népek	parositva	6	H1471	alacsony	S
+Abd 1:2	hu	6	között	parositva	5	H9003	alacsony	S
+Abd 1:2	hu	7	felettébb	parositva	9	H3966	alacsony	S
+Abd 1:2	hu	8	útálatos	parositva	7	H0959	alacsony	S
+Abd 1:2	hu	9	vagy	parositva	8	H0859	alacsony	S
+Abd 1:2	er	1	הִנֵּ֥ה	parositva	1	H2009	alacsony	S
+Abd 1:2	er	2	קָטֹ֛ן	parositva	2	H6996	alacsony	S
+Abd 1:2	er	3	נְתַתִּ֖י	parositva	3	H5414	alacsony	S
+Abd 1:2	er	4	ךָ	parositva	3	H9031	alacsony	S
+Abd 1:2	er	5	בַּ	parositva	6	H9003	alacsony	S
+Abd 1:2	er	6	גּוֹיִ֑ם	parositva	5	H1471	alacsony	S
+Abd 1:2	er	7	בָּז֥וּי	parositva	8	H0959	alacsony	S
+Abd 1:2	er	8	אַתָּ֖ה	parositva	9	H0859	alacsony	S
+Abd 1:2	er	9	מְאֹֽד	parositva	7	H3966	alacsony	S
+Abd 1:3	hu	1	Szíved	parositva	2,3	H3820+H9021	alacsony	S
+Abd 1:3	hu	2	kevélysége	parositva	1	H2087	alacsony	S
+Abd 1:3	hu	3	csalt	parositva	4	H5377	alacsony	S
+Abd 1:3	hu	4	meg	parositva	4	H5377	alacsony	S
+Abd 1:3	hu	5	téged	parositva	5	H9031	alacsony	S
+Abd 1:3	hu	6	ki	parositva	6	H7931	alacsony	S
+Abd 1:3	hu	7	szikla	parositva	9	H5553	alacsony	S
+Abd 1:3	hu	8	hasadékokban	parositva	7,8	H9003+H2288	alacsony	S
+Abd 1:3	hu	9	lakozol	parositva	6	H7931	alacsony	S
+Abd 1:3	hu	10	kinek	parositva	12	H9023	alacsony	S
+Abd 1:3	hu	11	lakóhelye	parositva	11,12	H7675+H9023	alacsony	S
+Abd 1:3	hu	12	magasan	parositva	10	H4791	alacsony	S
+Abd 1:3	hu	13	van	betoldas			alacsony	S
+Abd 1:3	hu	14	a	betoldas			alacsony	S
+Abd 1:3	hu	15	ki	betoldas			alacsony	S
+Abd 1:3	hu	16	mondja	parositva	13	H0559	alacsony	S
+Abd 1:3	hu	17	az	betoldas			alacsony	S
+Abd 1:3	hu	18	ő	parositva	16	H9023	alacsony	S
+Abd 1:3	hu	19	szívében	parositva	14,15,16	H9003+H3820+H9023	alacsony	S
+Abd 1:3	hu	20	Ki	parositva	17	H4310	alacsony	S
+Abd 1:3	hu	21	vonhatna	parositva	18	H3381	alacsony	S
+Abd 1:3	hu	22	le	parositva	18	H3381	alacsony	S
+Abd 1:3	hu	23	engem	parositva	19	H9030	alacsony	S
+Abd 1:3	hu	24	a	betoldas			alacsony	S
+Abd 1:3	hu	25	síkra	parositva	20	H0776	alacsony	S
+Abd 1:3	er	1	זְד֤וֹן	parositva	2	H2087	alacsony	S
+Abd 1:3	er	2	לִבְּ	parositva	1	H3820	alacsony	S
+Abd 1:3	er	3	ךָ֙	parositva	1	H9021	alacsony	S
+Abd 1:3	er	4	הִשִּׁיאֶ֔	parositva	3,4	H5377	alacsony	S
+Abd 1:3	er	5	ךָ	parositva	5	H9031	alacsony	S
+Abd 1:3	er	6	שֹׁכְנִ֥י	parositva	6,9	H7931	alacsony	S
+Abd 1:3	er	7	בְ	parositva	8	H9003	alacsony	S
+Abd 1:3	er	8	חַגְוֵי	parositva	8	H2288	alacsony	S
+Abd 1:3	er	9	סֶּ֖לַע	parositva	7	H5553	alacsony	S
+Abd 1:3	er	10	מְר֣וֹם	parositva	12	H4791	alacsony	S
+Abd 1:3	er	11	שִׁבְתּ֑	parositva	11	H7675	alacsony	S
+Abd 1:3	er	12	וֹ	parositva	10,11	H9023	alacsony	S
+Abd 1:3	er	13	אֹמֵ֣ר	parositva	16	H0559	alacsony	S
+Abd 1:3	er	14	בְּ	parositva	19	H9003	alacsony	S
+Abd 1:3	er	15	לִבּ֔	parositva	19	H3820	alacsony	S
+Abd 1:3	er	16	וֹ	parositva	18,19	H9023	alacsony	S
+Abd 1:3	er	17	מִ֥י	parositva	20	H4310	alacsony	S
+Abd 1:3	er	18	יוֹרִדֵ֖	parositva	21,22	H3381	alacsony	S
+Abd 1:3	er	19	נִי	parositva	23	H9030	alacsony	S
+Abd 1:3	er	20	אָֽרֶץ	parositva	25	H0776	alacsony	S
+Abd 1:4	hu	1	Ha	parositva	1	H0518	alacsony	S
+Abd 1:4	hu	2	oly	betoldas			alacsony	S
+Abd 1:4	hu	3	magasra	parositva	2	H1361	alacsony	S
+Abd 1:4	hu	4	szállnál	parositva	2	H1361	alacsony	S
+Abd 1:4	hu	5	is	betoldas			alacsony	S
+Abd 1:4	hu	6	mint	parositva	3	H9004	alacsony	S
+Abd 1:4	hu	7	a	betoldas			alacsony	S
+Abd 1:4	hu	8	sas	parositva	4	H5404	alacsony	S
+Abd 1:4	hu	9	és	parositva	5	H9002	alacsony	S
+Abd 1:4	hu	10	ha	parositva	6	H0518	alacsony	S
+Abd 1:4	hu	11	a	betoldas			alacsony	S
+Abd 1:4	hu	12	csillagok	parositva	8	H3556	alacsony	S
+Abd 1:4	hu	13	közé	parositva	7	H0996	alacsony	S
+Abd 1:4	hu	14	raknád	parositva	9	H7760	alacsony	S
+Abd 1:4	hu	15	is	betoldas			alacsony	S
+Abd 1:4	hu	16	fészkedet	parositva	10,11	H7064+H9021	alacsony	S
+Abd 1:4	hu	17	onnan	parositva	12,13	H9006+H8033	alacsony	S
+Abd 1:4	hu	18	is	betoldas			alacsony	S
+Abd 1:4	hu	19	levonnálak	parositva	14,15	H3381+H9031	alacsony	S
+Abd 1:4	hu	20	ezt	betoldas			alacsony	S
+Abd 1:4	hu	21	mondja	parositva	16	H5002	alacsony	S
+Abd 1:4	hu	22	az	betoldas			alacsony	S
+Abd 1:4	hu	23	Úr	parositva	17	H3068	alacsony	S
+Abd 1:4	er	1	אִם	parositva	1	H0518	alacsony	S
+Abd 1:4	er	2	תַּגְבִּ֣יהַּ	parositva	3,4	H1361	alacsony	S
+Abd 1:4	er	3	כַּ	parositva	6	H9004	alacsony	S
+Abd 1:4	er	4	נֶּ֔שֶׁר	parositva	8	H5404	alacsony	S
+Abd 1:4	er	5	וְ	parositva	9	H9002	alacsony	S
+Abd 1:4	er	6	אִם	parositva	10	H0518	alacsony	S
+Abd 1:4	er	7	בֵּ֥ין	parositva	13	H0996	alacsony	S
+Abd 1:4	er	8	כּֽוֹכָבִ֖ים	parositva	12	H3556	alacsony	S
+Abd 1:4	er	9	שִׂ֣ים	parositva	14	H7760	alacsony	S
+Abd 1:4	er	10	קִנֶּ֑	parositva	16	H7064	alacsony	S
+Abd 1:4	er	11	ךָ	parositva	16	H9021	alacsony	S
+Abd 1:4	er	12	מִ	parositva	17	H9006	alacsony	S
+Abd 1:4	er	13	שָּׁ֥ם	parositva	17	H8033	alacsony	S
+Abd 1:4	er	14	אוֹרִֽידְ	parositva	19	H3381	alacsony	S
+Abd 1:4	er	15	ךָ֖	parositva	19	H9031	alacsony	S
+Abd 1:4	er	16	נְאֻם	parositva	21	H5002	alacsony	S
+Abd 1:4	er	17	יְהוָֽה	parositva	23	H3068	alacsony	S
+Abd 1:5	hu	1	Ha	parositva	1	H0518	alacsony	S
+Abd 1:5	hu	2	tolvajok	parositva	2	H1590	alacsony	S
+Abd 1:5	hu	3	törnének	parositva	3	H0935	alacsony	S
+Abd 1:5	hu	4	reád	parositva	4,5	H9005+H9031	alacsony	S
+Abd 1:5	hu	5	avagy	parositva	6	H0518	alacsony	S
+Abd 1:5	hu	6	éjjeli	parositva	8	H3915	alacsony	S
+Abd 1:5	hu	7	rablók	parositva	7	H7703	alacsony	S
+Abd 1:5	hu	8	hogy	parositva	9	H0349	alacsony	S
+Abd 1:5	hu	9	elpusztíttattál	parositva	10	H1820	alacsony	S
+Abd 1:5	hu	10	nem	parositva	12	H3808	alacsony	S
+Abd 1:5	hu	11	annyit	betoldas			alacsony	S
+Abd 1:5	hu	12	lopnának	parositva	13,15	H1589+H9028	alacsony	S
+Abd 1:5	hu	13	é	parositva	11	H9008	alacsony	S
+Abd 1:5	hu	14	a	betoldas			alacsony	S
+Abd 1:5	hu	15	mennyi	betoldas			alacsony	S
+Abd 1:5	hu	16	elegendő	parositva	14	H1767	alacsony	S
+Abd 1:5	hu	17	Ha	parositva	16	H0518	alacsony	S
+Abd 1:5	hu	18	szőlőszedők	parositva	17	H1219	alacsony	S
+Abd 1:5	hu	19	jönnének	parositva	18	H0935	alacsony	S
+Abd 1:5	hu	20	reád	parositva	19,20	H9005+H9032	alacsony	S
+Abd 1:5	hu	21	nem	parositva	22	H3808	alacsony	S
+Abd 1:5	hu	22	hagynának	parositva	23	H7604	alacsony	S
+Abd 1:5	hu	23	é	parositva	21	H9008	alacsony	S
+Abd 1:5	hu	24	gerezdeket	parositva	24	H5955	alacsony	S
+Abd 1:5	er	1	אִם	parositva	1	H0518	alacsony	S
+Abd 1:5	er	2	גַּנָּבִ֤ים	parositva	2	H1590	alacsony	S
+Abd 1:5	er	3	בָּאֽוּ	parositva	3	H0935	alacsony	S
+Abd 1:5	er	4	לְ	parositva	4	H9005	alacsony	S
+Abd 1:5	er	5	ךָ֙	parositva	4	H9031	alacsony	S
+Abd 1:5	er	6	אִם	parositva	5	H0518	alacsony	S
+Abd 1:5	er	7	שׁ֣וֹדְדֵי	parositva	7	H7703	alacsony	S
+Abd 1:5	er	8	לַ֔יְלָה	parositva	6	H3915	alacsony	S
+Abd 1:5	er	9	אֵ֣יךְ	parositva	8	H0349	alacsony	S
+Abd 1:5	er	10	נִדְמֵ֔יתָה	parositva	9	H1820	alacsony	S
+Abd 1:5	er	11	הֲ	parositva	13	H9008	alacsony	S
+Abd 1:5	er	12	ל֥וֹא	parositva	10	H3808	alacsony	S
+Abd 1:5	er	13	יִגְנְב֖וּ	parositva	12	H1589	alacsony	S
+Abd 1:5	er	14	דַּיָּ֑	parositva	16	H1767	alacsony	S
+Abd 1:5	er	15	ם	parositva	12	H9028	alacsony	S
+Abd 1:5	er	16	אִם	parositva	17	H0518	alacsony	S
+Abd 1:5	er	17	בֹּֽצְרִים֙	parositva	18	H1219	alacsony	S
+Abd 1:5	er	18	בָּ֣אוּ	parositva	19	H0935	alacsony	S
+Abd 1:5	er	19	לָ֔	parositva	20	H9005	alacsony	S
+Abd 1:5	er	20	ךְ	parositva	20	H9032	alacsony	S
+Abd 1:5	er	21	הֲ	parositva	23	H9008	alacsony	S
+Abd 1:5	er	22	ל֖וֹא	parositva	21	H3808	alacsony	S
+Abd 1:5	er	23	יַשְׁאִ֥ירוּ	parositva	22	H7604	alacsony	S
+Abd 1:5	er	24	עֹלֵלֽוֹת	parositva	24	H5955	alacsony	S
+Abd 1:6	hu	1	Mennyire	parositva	1	H0349	alacsony	S
+Abd 1:6	hu	2	kifosztogatták	parositva	2	H2664	alacsony	S
+Abd 1:6	hu	3	Ézsaut	parositva	3	H6215	alacsony	S
+Abd 1:6	hu	4	felkutatták	parositva	4	H1158	alacsony	S
+Abd 1:6	hu	5	rejtett	parositva	5	H4710	alacsony	S
+Abd 1:6	hu	6	kincseit	parositva	5,6	H4710+H9023	alacsony	S
+Abd 1:6	er	1	אֵ֚יךְ	parositva	1	H0349	alacsony	S
+Abd 1:6	er	2	נֶחְפְּשׂ֣וּ	parositva	2	H2664	alacsony	S
+Abd 1:6	er	3	עֵשָׂ֔ו	parositva	3	H6215	alacsony	S
+Abd 1:6	er	4	נִבְע֖וּ	parositva	4	H1158	alacsony	S
+Abd 1:6	er	5	מַצְפֻּנָֽי	parositva	5,6	H4710	alacsony	S
+Abd 1:6	er	6	ו	parositva	6	H9023	alacsony	S
+Abd 1:7	hu	1	A	betoldas			alacsony	S
+Abd 1:7	hu	2	határig	parositva	1,3	H5704+H1366	alacsony	S
+Abd 1:7	hu	3	űznek	parositva	4,5	H7971+H9031	alacsony	S
+Abd 1:7	hu	4	ki	parositva	4	H7971	alacsony	S
+Abd 1:7	hu	5	összes	parositva	6	H3605	alacsony	S
+Abd 1:7	hu	6	frigytársaid	parositva	7,8,9	H0582+H1285+H9021	alacsony	S
+Abd 1:7	hu	7	megcsalnak	parositva	10,11	H5377+H9031	alacsony	S
+Abd 1:7	hu	8	levernek	parositva	12,13,14	H3201+H9005+H9031	alacsony	S
+Abd 1:7	hu	9	szövetségeseid	parositva	15,16,17	H0582+H7965+H9021	alacsony	S
+Abd 1:7	hu	10	kenyeredet	parositva	18,19	H3899+H9021	alacsony	S
+Abd 1:7	hu	11	tőrül	parositva	21	H4204	alacsony	S
+Abd 1:7	hu	12	vetik	parositva	20	H7760	alacsony	S
+Abd 1:7	hu	13	alád	parositva	22,23	H8478+H9031	alacsony	S
+Abd 1:7	hu	14	Nincsen	parositva	24	H0369	alacsony	S
+Abd 1:7	hu	15	benne	parositva	26,27	H9003+H9033	alacsony	S
+Abd 1:7	hu	16	okosság	parositva	25	H8394	alacsony	S
+Abd 1:7	er	1	עַֽד	parositva	2	H5704	alacsony	S
+Abd 1:7	er	2	הַ	forditatlan		H9009	alacsony	S
+Abd 1:7	er	3	גְּב֣וּל	parositva	2	H1366	alacsony	S
+Abd 1:7	er	4	שִׁלְּח֗וּ	parositva	3,4	H7971	alacsony	S
+Abd 1:7	er	5	ךָ	parositva	3	H9031	alacsony	S
+Abd 1:7	er	6	כֹּ֚ל	parositva	5	H3605	alacsony	S
+Abd 1:7	er	7	אַנְשֵׁ֣י	parositva	6	H0582	alacsony	S
+Abd 1:7	er	8	בְרִיתֶ֔	parositva	6	H1285	alacsony	S
+Abd 1:7	er	9	ךָ	parositva	6	H9021	alacsony	S
+Abd 1:7	er	10	הִשִּׁיא֛וּ	parositva	7	H5377	alacsony	S
+Abd 1:7	er	11	ךָ	parositva	7	H9031	alacsony	S
+Abd 1:7	er	12	יָכְל֥וּ	parositva	8	H3201	alacsony	S
+Abd 1:7	er	13	לְ	parositva	8	H9005	alacsony	S
+Abd 1:7	er	14	ךָ֖	parositva	8	H9031	alacsony	S
+Abd 1:7	er	15	אַנְשֵׁ֣י	parositva	9	H0582	alacsony	S
+Abd 1:7	er	16	שְׁלֹמֶ֑	parositva	9	H7965	alacsony	S
+Abd 1:7	er	17	ךָ	parositva	9	H9021	alacsony	S
+Abd 1:7	er	18	לַחְמְ	parositva	10	H3899	alacsony	S
+Abd 1:7	er	19	ךָ֗	parositva	10	H9021	alacsony	S
+Abd 1:7	er	20	יָשִׂ֤ימוּ	parositva	12	H7760	alacsony	S
+Abd 1:7	er	21	מָזוֹר֙	parositva	11	H4204	alacsony	S
+Abd 1:7	er	22	תַּחְתֶּ֔י	parositva	13	H8478	alacsony	S
+Abd 1:7	er	23	ךָ	parositva	13	H9031	alacsony	S
+Abd 1:7	er	24	אֵ֥ין	parositva	14	H0369	alacsony	S
+Abd 1:7	er	25	תְּבוּנָ֖ה	parositva	16	H8394	alacsony	S
+Abd 1:7	er	26	בּֽ	parositva	15	H9003	alacsony	S
+Abd 1:7	er	27	וֹ	parositva	15	H9033	alacsony	S
+Abd 1:8	hu	1	Azon	parositva	6	H1931	alacsony	S
+Abd 1:8	hu	2	a	betoldas			alacsony	S
+Abd 1:8	hu	3	napon	parositva	3,4	H9003+H3117	alacsony	S
+Abd 1:8	hu	4	ezt	betoldas			alacsony	S
+Abd 1:8	hu	5	mondja	parositva	7	H5002	alacsony	S
+Abd 1:8	hu	6	az	betoldas			alacsony	S
+Abd 1:8	hu	7	Úr	parositva	8	H3068	alacsony	S
+Abd 1:8	hu	8	nem	parositva	2	H3808	alacsony	S
+Abd 1:8	hu	9	vesztem	parositva	10	H0006	alacsony	S
+Abd 1:8	hu	10	é	parositva	1	H9008	alacsony	S
+Abd 1:8	hu	11	ki	parositva	10	H0006	alacsony	S
+Abd 1:8	hu	12	a	betoldas			alacsony	S
+Abd 1:8	hu	13	bölcseket	parositva	11	H2450	alacsony	S
+Abd 1:8	hu	14	Edomból	parositva	12,13	H9006+H0123	alacsony	S
+Abd 1:8	hu	15	és	parositva	14	H9002	alacsony	S
+Abd 1:8	hu	16	az	betoldas			alacsony	S
+Abd 1:8	hu	17	értelmet	parositva	15	H8394	alacsony	S
+Abd 1:8	hu	18	az	betoldas			alacsony	S
+Abd 1:8	hu	19	Ézsau	parositva	18	H6215	alacsony	S
+Abd 1:8	hu	20	hegyéről	parositva	16,17	H9006+H2022	alacsony	S
+Abd 1:8	er	1	הֲ	parositva	10	H9008	alacsony	S
+Abd 1:8	er	2	ל֛וֹא	parositva	8	H3808	alacsony	S
+Abd 1:8	er	3	בַּ	parositva	3	H9003	alacsony	S
+Abd 1:8	er	4	יּ֥וֹם	parositva	3	H3117	alacsony	S
+Abd 1:8	er	5	הַ	forditatlan		H9009	alacsony	S
+Abd 1:8	er	6	ה֖וּא	parositva	1	H1931	alacsony	S
+Abd 1:8	er	7	נְאֻם	parositva	5	H5002	alacsony	S
+Abd 1:8	er	8	יְהוָ֑ה	parositva	7	H3068	alacsony	S
+Abd 1:8	er	9	וְ	forditatlan		H9001	alacsony	S
+Abd 1:8	er	10	הַאֲבַדְתִּ֤י	parositva	9,11	H0006	alacsony	S
+Abd 1:8	er	11	חֲכָמִים֙	parositva	13	H2450	alacsony	S
+Abd 1:8	er	12	מֵֽ	parositva	14	H9006	alacsony	S
+Abd 1:8	er	13	אֱד֔וֹם	parositva	14	H0123	alacsony	S
+Abd 1:8	er	14	וּ	parositva	15	H9002	alacsony	S
+Abd 1:8	er	15	תְבוּנָ֖ה	parositva	17	H8394	alacsony	S
+Abd 1:8	er	16	מֵ	parositva	20	H9006	alacsony	S
+Abd 1:8	er	17	הַ֥ר	parositva	20	H2022	alacsony	S
+Abd 1:8	er	18	עֵשָֽׂו	parositva	19	H6215	alacsony	S
+Abd 1:9	hu	1	És	parositva	1	H9001	alacsony	S
+Abd 1:9	hu	2	megrémülnek	parositva	2	H2865	alacsony	S
+Abd 1:9	hu	3	a	betoldas			alacsony	S
+Abd 1:9	hu	4	te	parositva	4	H9021	alacsony	S
+Abd 1:9	hu	5	vitézeid	parositva	3,4	H1368+H9021	alacsony	S
+Abd 1:9	hu	6	oh	betoldas			alacsony	S
+Abd 1:9	hu	7	Témán	parositva	5	H8487	alacsony	S
+Abd 1:9	hu	8	hogy	parositva	6	H4616	alacsony	S
+Abd 1:9	hu	9	kiirtassék	parositva	7	H3772	alacsony	S
+Abd 1:9	hu	10	mindenki	parositva	8	H0376	alacsony	S
+Abd 1:9	hu	11	az	betoldas			alacsony	S
+Abd 1:9	hu	12	Ézsau	parositva	11	H6215	alacsony	S
+Abd 1:9	hu	13	hegyéről	parositva	9,10	H9006+H2022	alacsony	S
+Abd 1:9	hu	14	az	betoldas			alacsony	S
+Abd 1:9	hu	15	öldöklés	parositva	13	H6993	alacsony	S
+Abd 1:9	hu	16	által	parositva	12	H9006	alacsony	S
+Abd 1:9	er	1	וְ	parositva	1	H9001	alacsony	S
+Abd 1:9	er	2	חַתּ֥וּ	parositva	2	H2865	alacsony	S
+Abd 1:9	er	3	גִבּוֹרֶ֖י	parositva	5	H1368	alacsony	S
+Abd 1:9	er	4	ךָ	parositva	4,5	H9021	alacsony	S
+Abd 1:9	er	5	תֵּימָ֑ן	parositva	7	H8487	alacsony	S
+Abd 1:9	er	6	לְמַ֧עַן	parositva	8	H4616	alacsony	S
+Abd 1:9	er	7	יִכָּֽרֶת	parositva	9	H3772	alacsony	S
+Abd 1:9	er	8	אִ֛ישׁ	parositva	10	H0376	alacsony	S
+Abd 1:9	er	9	מֵ	parositva	13	H9006	alacsony	S
+Abd 1:9	er	10	הַ֥ר	parositva	13	H2022	alacsony	S
+Abd 1:9	er	11	עֵשָׂ֖ו	parositva	12	H6215	alacsony	S
+Abd 1:9	er	12	מִ	parositva	16	H9006	alacsony	S
+Abd 1:9	er	13	קָּֽטֶל	parositva	15	H6993	alacsony	S
+Abd 1:10	hu	1	A	betoldas			alacsony	S
+Abd 1:10	hu	2	Jákób	parositva	5	H3290	alacsony	S
+Abd 1:10	hu	3	öcséd	parositva	3,4	H0251+H9021	alacsony	S
+Abd 1:10	hu	4	ellen	betoldas			alacsony	S
+Abd 1:10	hu	5	elkövetett	betoldas			alacsony	S
+Abd 1:10	hu	6	erőszakért	parositva	1,2	H9006+H2555	alacsony	S
+Abd 1:10	hu	7	szégyen	parositva	8	H0955	alacsony	S
+Abd 1:10	hu	8	borul	parositva	6	H3680	alacsony	S
+Abd 1:10	hu	9	reád	parositva	7	H9031	alacsony	S
+Abd 1:10	hu	10	és	parositva	9	H9001	alacsony	S
+Abd 1:10	hu	11	kivágatol	parositva	10	H3772	alacsony	S
+Abd 1:10	hu	12	mindörökre	parositva	11,12	H9005+H5769	alacsony	S
+Abd 1:10	er	1	מֵ	parositva	6	H9006	alacsony	S
+Abd 1:10	er	2	חֲמַ֛ס	parositva	6	H2555	alacsony	S
+Abd 1:10	er	3	אָחִ֥י	parositva	3	H0251	alacsony	S
+Abd 1:10	er	4	ךָ	parositva	3	H9021	alacsony	S
+Abd 1:10	er	5	יַעֲקֹ֖ב	parositva	2	H3290	alacsony	S
+Abd 1:10	er	6	תְּכַסְּ	parositva	8	H3680	alacsony	S
+Abd 1:10	er	7	ךָ֣	parositva	9	H9031	alacsony	S
+Abd 1:10	er	8	בוּשָׁ֑ה	parositva	7	H0955	alacsony	S
+Abd 1:10	er	9	וְ	parositva	10	H9001	alacsony	S
+Abd 1:10	er	10	נִכְרַ֖תָּ	parositva	11	H3772	alacsony	S
+Abd 1:10	er	11	לְ	parositva	12	H9005	alacsony	S
+Abd 1:10	er	12	עוֹלָֽם	parositva	12	H5769	alacsony	S
+Abd 1:11	hu	1	A	parositva	1,2	H9003+H3117	alacsony	S
+Abd 1:11	hu	2	mikor	parositva	1,2	H9003+H3117	alacsony	S
+Abd 1:11	hu	3	vele	parositva	5,6	H9006+H5048	alacsony	S
+Abd 1:11	hu	4	szembeálltál	parositva	3,4	H5975+H9041	alacsony	S
+Abd 1:11	hu	5	a	parositva	7,8	H9003+H3117	alacsony	S
+Abd 1:11	hu	6	mikor	parositva	7,8	H9003+H3117	alacsony	S
+Abd 1:11	hu	7	serege	parositva	11,12	H2428+H9023	alacsony	S
+Abd 1:11	hu	8	idegenek	parositva	10	H2114	alacsony	S
+Abd 1:11	hu	9	rabjává	parositva	9	H7617	alacsony	S
+Abd 1:11	hu	10	lett	betoldas			alacsony	S
+Abd 1:11	hu	11	és	parositva	13	H9002	alacsony	S
+Abd 1:11	hu	12	idegenek	parositva	14	H5237	alacsony	S
+Abd 1:11	hu	13	törtek	parositva	15	H0935	alacsony	S
+Abd 1:11	hu	14	be	parositva	15	H0935	alacsony	S
+Abd 1:11	hu	15	kapuján	parositva	16,17	H8179+H9023	alacsony	S
+Abd 1:11	hu	16	és	parositva	18	H9002	alacsony	S
+Abd 1:11	hu	17	Jeruzsálemre	parositva	19,20	H5921+H3389	alacsony	S
+Abd 1:11	hu	18	sorsot	parositva	22	H1486	alacsony	S
+Abd 1:11	hu	19	vetettek	parositva	21	H3032	alacsony	S
+Abd 1:11	hu	20	olyan	betoldas			alacsony	S
+Abd 1:11	hu	21	voltál	betoldas			alacsony	S
+Abd 1:11	hu	22	te	parositva	24	H0859	alacsony	S
+Abd 1:11	hu	23	is	parositva	23	H1571	alacsony	S
+Abd 1:11	hu	24	mint	parositva	25	H9004	alacsony	S
+Abd 1:11	hu	25	bármelyik	parositva	26	H0259	alacsony	S
+Abd 1:11	hu	26	közülök	parositva	27,28	H9006+H9038	alacsony	S
+Abd 1:11	er	1	בְּ	parositva	1,2	H9003	alacsony	S
+Abd 1:11	er	2	יוֹם֙	parositva	1,2	H3117	alacsony	S
+Abd 1:11	er	3	עֲמָֽדְ	parositva	4	H5975	alacsony	S
+Abd 1:11	er	4	ךָ֣	parositva	4	H9041	alacsony	S
+Abd 1:11	er	5	מִ	parositva	3	H9006	alacsony	S
+Abd 1:11	er	6	נֶּ֔גֶד	parositva	3	H5048	alacsony	S
+Abd 1:11	er	7	בְּ	parositva	5,6	H9003	alacsony	S
+Abd 1:11	er	8	י֛וֹם	parositva	5,6	H3117	alacsony	S
+Abd 1:11	er	9	שְׁב֥וֹת	parositva	9	H7617	alacsony	S
+Abd 1:11	er	10	זָרִ֖ים	parositva	8	H2114	alacsony	S
+Abd 1:11	er	11	חֵיל֑	parositva	7	H2428	alacsony	S
+Abd 1:11	er	12	וֹ	parositva	7	H9023	alacsony	S
+Abd 1:11	er	13	וְ	parositva	11	H9002	alacsony	S
+Abd 1:11	er	14	נָכְרִ֞ים	parositva	12	H5237	alacsony	S
+Abd 1:11	er	15	בָּ֣אוּ	parositva	13,14	H0935	alacsony	S
+Abd 1:11	er	16	שְׁעָרָ֗י	parositva	15	H8179	alacsony	S
+Abd 1:11	er	17	ו	parositva	15	H9023	alacsony	S
+Abd 1:11	er	18	וְ	parositva	16	H9002	alacsony	S
+Abd 1:11	er	19	עַל	parositva	17	H5921	alacsony	S
+Abd 1:11	er	20	יְרוּשָׁלִַ֙ם֙	parositva	17	H3389	alacsony	S
+Abd 1:11	er	21	יַדּ֣וּ	parositva	19	H3032	alacsony	S
+Abd 1:11	er	22	גוֹרָ֔ל	parositva	18	H1486	alacsony	S
+Abd 1:11	er	23	גַּם	parositva	23	H1571	alacsony	S
+Abd 1:11	er	24	אַתָּ֖ה	parositva	22	H0859	alacsony	S
+Abd 1:11	er	25	כְּ	parositva	24	H9004	alacsony	S
+Abd 1:11	er	26	אַחַ֥ד	parositva	25	H0259	alacsony	S
+Abd 1:11	er	27	מֵ	parositva	26	H9006	alacsony	S
+Abd 1:11	er	28	הֶֽם	parositva	26	H9038	alacsony	S
+Abd 1:12	hu	1	De	parositva	1	H9002	alacsony	S
+Abd 1:12	hu	2	ne	parositva	2	H0408	alacsony	S
+Abd 1:12	hu	3	gyönyörködjél	parositva	3	H7200	alacsony	S
+Abd 1:12	hu	4	öcsédnek	parositva	6,7	H0251+H9021	alacsony	S
+Abd 1:12	hu	5	napján	parositva	4,5	H9003+H3117	alacsony	S
+Abd 1:12	hu	6	az	betoldas			alacsony	S
+Abd 1:12	hu	7	ő	parositva	11	H9023	alacsony	S
+Abd 1:12	hu	8	szerencsétlenségének	parositva	10,11	H5235+H9023	alacsony	S
+Abd 1:12	hu	9	napján	parositva	8,9	H9003+H3117	alacsony	S
+Abd 1:12	hu	10	és	parositva	12	H9002	alacsony	S
+Abd 1:12	hu	11	ne	parositva	13	H0408	alacsony	S
+Abd 1:12	hu	12	örvendj	parositva	14	H8055	alacsony	S
+Abd 1:12	hu	13	a	betoldas			alacsony	S
+Abd 1:12	hu	14	Júda	parositva	17	H3063	alacsony	S
+Abd 1:12	hu	15	fiain	parositva	15,16	H9005+H1121	alacsony	S
+Abd 1:12	hu	16	az	betoldas			alacsony	S
+Abd 1:12	hu	17	ő	parositva	21	H9048	alacsony	S
+Abd 1:12	hu	18	veszedelmök	parositva	20,21	H0006+H9048	alacsony	S
+Abd 1:12	hu	19	napján	parositva	18,19	H9003+H3117	alacsony	S
+Abd 1:12	hu	20	és	parositva	22	H9002	alacsony	S
+Abd 1:12	hu	21	ne	parositva	23	H0408	alacsony	S
+Abd 1:12	hu	22	kérkedjél	parositva	24,25,26	H1431+H6310+H9021	alacsony	S
+Abd 1:12	hu	23	a	betoldas			alacsony	S
+Abd 1:12	hu	24	szorongattatás	parositva	29	H6869	alacsony	S
+Abd 1:12	hu	25	napján	parositva	27,28	H9003+H3117	alacsony	S
+Abd 1:12	er	1	וְ	parositva	1	H9002	alacsony	S
+Abd 1:12	er	2	אַל	parositva	2	H0408	alacsony	S
+Abd 1:12	er	3	תֵּ֤רֶא	parositva	3	H7200	alacsony	S
+Abd 1:12	er	4	בְ	parositva	5	H9003	alacsony	S
+Abd 1:12	er	5	יוֹם	parositva	5	H3117	alacsony	S
+Abd 1:12	er	6	אָחִ֙י	parositva	4	H0251	alacsony	S
+Abd 1:12	er	7	ךָ֙	parositva	4	H9021	alacsony	S
+Abd 1:12	er	8	בְּ	parositva	9	H9003	alacsony	S
+Abd 1:12	er	9	י֣וֹם	parositva	9	H3117	alacsony	S
+Abd 1:12	er	10	נָכְר֔	parositva	8	H5235	alacsony	S
+Abd 1:12	er	11	וֹ	parositva	7,8	H9023	alacsony	S
+Abd 1:12	er	12	וְ	parositva	10	H9002	alacsony	S
+Abd 1:12	er	13	אַל	parositva	11	H0408	alacsony	S
+Abd 1:12	er	14	תִּשְׂמַ֥ח	parositva	12	H8055	alacsony	S
+Abd 1:12	er	15	לִ	parositva	15	H9005	alacsony	S
+Abd 1:12	er	16	בְנֵֽי	parositva	15	H1121	alacsony	S
+Abd 1:12	er	17	יְהוּדָ֖ה	parositva	14	H3063	alacsony	S
+Abd 1:12	er	18	בְּ	parositva	19	H9003	alacsony	S
+Abd 1:12	er	19	י֣וֹם	parositva	19	H3117	alacsony	S
+Abd 1:12	er	20	אָבְדָ֑	parositva	18	H0006	alacsony	S
+Abd 1:12	er	21	ם	parositva	17,18	H9048	alacsony	S
+Abd 1:12	er	22	וְ	parositva	20	H9002	alacsony	S
+Abd 1:12	er	23	אַל	parositva	21	H0408	alacsony	S
+Abd 1:12	er	24	תַּגְדֵּ֥ל	parositva	22	H1431	alacsony	S
+Abd 1:12	er	25	פִּ֖י	parositva	22	H6310	alacsony	S
+Abd 1:12	er	26	ךָ	parositva	22	H9021	alacsony	S
+Abd 1:12	er	27	בְּ	parositva	25	H9003	alacsony	S
+Abd 1:12	er	28	י֥וֹם	parositva	25	H3117	alacsony	S
+Abd 1:12	er	29	צָרָֽה	parositva	24	H6869	alacsony	S
+Abd 1:13	hu	1	Ne	parositva	1	H0408	alacsony	S
+Abd 1:13	hu	2	törj	parositva	2	H0935	alacsony	S
+Abd 1:13	hu	3	be	parositva	2	H0935	alacsony	S
+Abd 1:13	hu	4	népem	parositva	5,6	H5971+H9020	alacsony	S
+Abd 1:13	hu	5	kapuján	parositva	3,4	H9003+H8179	alacsony	S
+Abd 1:13	hu	6	nyomorúságuk	parositva	9,10	H0343+H9028	alacsony	S
+Abd 1:13	hu	7	napján	parositva	7,8	H9003+H3117	alacsony	S
+Abd 1:13	hu	8	ne	parositva	11	H0408	alacsony	S
+Abd 1:13	hu	9	gyönyörködjél	parositva	12	H7200	alacsony	S
+Abd 1:13	hu	10	te	parositva	14	H0859	alacsony	S
+Abd 1:13	hu	11	is	parositva	13	H1571	alacsony	S
+Abd 1:13	hu	12	a	betoldas			alacsony	S
+Abd 1:13	hu	13	baján	parositva	15,16,17	H9003+H7451+H9023	alacsony	S
+Abd 1:13	hu	14	nyomorúsága	parositva	20,21	H0343+H9023	alacsony	S
+Abd 1:13	hu	15	napján	parositva	18,19	H9003+H3117	alacsony	S
+Abd 1:13	hu	16	és	parositva	22	H9002	alacsony	S
+Abd 1:13	hu	17	ne	parositva	23	H0408	alacsony	S
+Abd 1:13	hu	18	nyúlj	parositva	24	H7971	alacsony	S
+Abd 1:13	hu	19	az	betoldas			alacsony	S
+Abd 1:13	hu	20	ő	parositva	27	H9023	alacsony	S
+Abd 1:13	hu	21	jószágához	parositva	25,26,27	H9003+H2428+H9023	alacsony	S
+Abd 1:13	hu	22	nyomorúsága	parositva	30,31	H0343+H9023	alacsony	S
+Abd 1:13	hu	23	napján	parositva	28,29	H9003+H3117	alacsony	S
+Abd 1:13	er	1	אַל	parositva	1	H0408	alacsony	S
+Abd 1:13	er	2	תָּב֤וֹא	parositva	2,3	H0935	alacsony	S
+Abd 1:13	er	3	בְ	parositva	5	H9003	alacsony	S
+Abd 1:13	er	4	שַֽׁעַר	parositva	5	H8179	alacsony	S
+Abd 1:13	er	5	עַמִּ	parositva	4	H5971	alacsony	S
+Abd 1:13	er	6	י֙	parositva	4	H9020	alacsony	S
+Abd 1:13	er	7	בְּ	parositva	7	H9003	alacsony	S
+Abd 1:13	er	8	י֣וֹם	parositva	7	H3117	alacsony	S
+Abd 1:13	er	9	אֵידָ֔	parositva	6	H0343	alacsony	S
+Abd 1:13	er	10	ם	parositva	6	H9028	alacsony	S
+Abd 1:13	er	11	אַל	parositva	8	H0408	alacsony	S
+Abd 1:13	er	12	תֵּ֧רֶא	parositva	9	H7200	alacsony	S
+Abd 1:13	er	13	גַם	parositva	11	H1571	alacsony	S
+Abd 1:13	er	14	אַתָּ֛ה	parositva	10	H0859	alacsony	S
+Abd 1:13	er	15	בְּ	parositva	13	H9003	alacsony	S
+Abd 1:13	er	16	רָעָת֖	parositva	13	H7451	alacsony	S
+Abd 1:13	er	17	וֹ	parositva	13	H9023	alacsony	S
+Abd 1:13	er	18	בְּ	parositva	15	H9003	alacsony	S
+Abd 1:13	er	19	י֣וֹם	parositva	15	H3117	alacsony	S
+Abd 1:13	er	20	אֵיד֑	parositva	14	H0343	alacsony	S
+Abd 1:13	er	21	וֹ	parositva	14	H9023	alacsony	S
+Abd 1:13	er	22	וְ	parositva	16	H9002	alacsony	S
+Abd 1:13	er	23	אַל	parositva	17	H0408	alacsony	S
+Abd 1:13	er	24	תִּשְׁלַ֥חְנָה	parositva	18	H7971	alacsony	S
+Abd 1:13	er	25	בְ	parositva	21	H9003	alacsony	S
+Abd 1:13	er	26	חֵיל֖	parositva	21	H2428	alacsony	S
+Abd 1:13	er	27	וֹ	parositva	20,21	H9023	alacsony	S
+Abd 1:13	er	28	בְּ	parositva	23	H9003	alacsony	S
+Abd 1:13	er	29	י֥וֹם	parositva	23	H3117	alacsony	S
+Abd 1:13	er	30	אֵידֽ	parositva	22	H0343	alacsony	S
+Abd 1:13	er	31	וֹ	parositva	22	H9023	alacsony	S
+Abd 1:14	hu	1	A	betoldas			alacsony	S
+Abd 1:14	hu	2	résre	parositva	4,5,6	H5921+H9009+H6563	alacsony	S
+Abd 1:14	hu	3	se	parositva	2	H0408	alacsony	S
+Abd 1:14	hu	4	állj	parositva	3	H5975	alacsony	S
+Abd 1:14	hu	5	fel	parositva	3	H5975	alacsony	S
+Abd 1:14	hu	6	menekülőit	parositva	10,11	H6412+H9023	alacsony	S
+Abd 1:14	hu	7	elveszíteni	parositva	7,8	H9005+H3772	alacsony	S
+Abd 1:14	hu	8	és	parositva	12	H9002	alacsony	S
+Abd 1:14	hu	9	ne	parositva	13	H0408	alacsony	S
+Abd 1:14	hu	10	áruld	parositva	14	H5462	alacsony	S
+Abd 1:14	hu	11	el	parositva	14	H5462	alacsony	S
+Abd 1:14	hu	12	az	betoldas			alacsony	S
+Abd 1:14	hu	13	ő	parositva	16	H9023	alacsony	S
+Abd 1:14	hu	14	megmaradottait	parositva	15,16	H8300+H9023	alacsony	S
+Abd 1:14	hu	15	a	betoldas			alacsony	S
+Abd 1:14	hu	16	szorongattatás	parositva	19	H6869	alacsony	S
+Abd 1:14	hu	17	napján	parositva	17,18	H9003+H3117	alacsony	S
+Abd 1:14	er	1	וְ	forditatlan		H9002	alacsony	S
+Abd 1:14	er	2	אַֽל	parositva	3	H0408	alacsony	S
+Abd 1:14	er	3	תַּעֲמֹד֙	parositva	4,5	H5975	alacsony	S
+Abd 1:14	er	4	עַל	parositva	2	H5921	alacsony	S
+Abd 1:14	er	5	הַ	parositva	2	H9009	alacsony	S
+Abd 1:14	er	6	פֶּ֔רֶק	parositva	2	H6563	alacsony	S
+Abd 1:14	er	7	לְ	parositva	7	H9005	alacsony	S
+Abd 1:14	er	8	הַכְרִ֖ית	parositva	7	H3772	alacsony	S
+Abd 1:14	er	9	אֶת	forditatlan		H0853	alacsony	S
+Abd 1:14	er	10	פְּלִיטָ֑י	parositva	6	H6412	alacsony	S
+Abd 1:14	er	11	ו	parositva	6	H9023	alacsony	S
+Abd 1:14	er	12	וְ	parositva	8	H9002	alacsony	S
+Abd 1:14	er	13	אַל	parositva	9	H0408	alacsony	S
+Abd 1:14	er	14	תַּסְגֵּ֥ר	parositva	10,11	H5462	alacsony	S
+Abd 1:14	er	15	שְׂרִידָ֖י	parositva	14	H8300	alacsony	S
+Abd 1:14	er	16	ו	parositva	13,14	H9023	alacsony	S
+Abd 1:14	er	17	בְּ	parositva	17	H9003	alacsony	S
+Abd 1:14	er	18	י֥וֹם	parositva	17	H3117	alacsony	S
+Abd 1:14	er	19	צָרָֽה	parositva	16	H6869	alacsony	S
+Abd 1:15	hu	1	Mert	parositva	1	H3588	alacsony	S
+Abd 1:15	hu	2	közel	parositva	2	H7138	alacsony	S
+Abd 1:15	hu	3	van	betoldas			alacsony	S
+Abd 1:15	hu	4	az	betoldas			alacsony	S
+Abd 1:15	hu	5	Úrnak	parositva	4	H3068	alacsony	S
+Abd 1:15	hu	6	napja	parositva	3	H3117	alacsony	S
+Abd 1:15	hu	7	minden	parositva	6	H3605	alacsony	S
+Abd 1:15	hu	8	népek	parositva	8	H1471	alacsony	S
+Abd 1:15	hu	9	ellen	parositva	5	H5921	alacsony	S
+Abd 1:15	hu	10	A	parositva	9,10	H9004+H0834	alacsony	S
+Abd 1:15	hu	11	mint	parositva	9,10	H9004+H0834	alacsony	S
+Abd 1:15	hu	12	cselekedtél	parositva	11	H6213	alacsony	S
+Abd 1:15	hu	13	úgy	betoldas			alacsony	S
+Abd 1:15	hu	14	cselekesznek	parositva	12	H6213	alacsony	S
+Abd 1:15	hu	15	veled	parositva	13,14	H9005+H9032	alacsony	S
+Abd 1:15	hu	16	a	betoldas			alacsony	S
+Abd 1:15	hu	17	mit	betoldas			alacsony	S
+Abd 1:15	hu	18	te	parositva	16	H9021	alacsony	S
+Abd 1:15	hu	19	fizettél	parositva	15	H1576	alacsony	S
+Abd 1:15	hu	20	visszaszáll	parositva	17	H7725	alacsony	S
+Abd 1:15	hu	21	fejedre	parositva	18,19,20	H9003+H7218+H9021	alacsony	S
+Abd 1:15	er	1	כִּֽי	parositva	1	H3588	alacsony	S
+Abd 1:15	er	2	קָר֥וֹב	parositva	2	H7138	alacsony	S
+Abd 1:15	er	3	יוֹם	parositva	6	H3117	alacsony	S
+Abd 1:15	er	4	יְהוָ֖ה	parositva	5	H3068	alacsony	S
+Abd 1:15	er	5	עַל	parositva	9	H5921	alacsony	S
+Abd 1:15	er	6	כָּל	parositva	7	H3605	alacsony	S
+Abd 1:15	er	7	הַ	forditatlan		H9009	alacsony	S
+Abd 1:15	er	8	גּוֹיִ֑ם	parositva	8	H1471	alacsony	S
+Abd 1:15	er	9	כַּ	parositva	10,11	H9004	alacsony	S
+Abd 1:15	er	10	אֲשֶׁ֤ר	parositva	10,11	H0834	alacsony	S
+Abd 1:15	er	11	עָשִׂ֙יתָ֙	parositva	12	H6213	alacsony	S
+Abd 1:15	er	12	יֵעָ֣שֶׂה	parositva	14	H6213	alacsony	S
+Abd 1:15	er	13	לָּ֔	parositva	15	H9005	alacsony	S
+Abd 1:15	er	14	ךְ	parositva	15	H9032	alacsony	S
+Abd 1:15	er	15	גְּמֻלְ	parositva	19	H1576	alacsony	S
+Abd 1:15	er	16	ךָ֖	parositva	18	H9021	alacsony	S
+Abd 1:15	er	17	יָשׁ֥וּב	parositva	20	H7725	alacsony	S
+Abd 1:15	er	18	בְּ	parositva	21	H9003	alacsony	S
+Abd 1:15	er	19	רֹאשֶֽׁ	parositva	21	H7218	alacsony	S
+Abd 1:15	er	20	ךָ	parositva	21	H9021	alacsony	S
+Abd 1:16	hu	1	Mert	parositva	1	H3588	alacsony	S
+Abd 1:16	hu	2	a	parositva	2,3	H9004+H0834	alacsony	S
+Abd 1:16	hu	3	mint	parositva	2,3	H9004+H0834	alacsony	S
+Abd 1:16	hu	4	ti	betoldas			alacsony	S
+Abd 1:16	hu	5	ittatok	parositva	4	H8354	alacsony	S
+Abd 1:16	hu	6	szent	parositva	7	H6944	alacsony	S
+Abd 1:16	hu	7	hegyemen	parositva	5,6,8	H5921+H2022+H9020	alacsony	S
+Abd 1:16	hu	8	úgy	betoldas			alacsony	S
+Abd 1:16	hu	9	isznak	parositva	9	H8354	alacsony	S
+Abd 1:16	hu	10	szüntelen	parositva	13	H8548	alacsony	S
+Abd 1:16	hu	11	az	betoldas			alacsony	S
+Abd 1:16	hu	12	összes	parositva	10	H3605	alacsony	S
+Abd 1:16	hu	13	népek	parositva	12	H1471	alacsony	S
+Abd 1:16	hu	14	bizony	betoldas			alacsony	S
+Abd 1:16	hu	15	isznak	parositva	15	H8354	alacsony	S
+Abd 1:16	hu	16	és	parositva	16	H9001	alacsony	S
+Abd 1:16	hu	17	hörpengetnek	parositva	17	H3886	alacsony	S
+Abd 1:16	hu	18	és	parositva	18	H9001	alacsony	S
+Abd 1:16	hu	19	olyanok	betoldas			alacsony	S
+Abd 1:16	hu	20	lesznek	parositva	19	H1961	alacsony	S
+Abd 1:16	hu	21	mintha	parositva	20	H9004	alacsony	S
+Abd 1:16	hu	22	nem	parositva	21	H3808	alacsony	S
+Abd 1:16	hu	23	lettek	parositva	22	H1961	alacsony	S
+Abd 1:16	hu	24	volna	parositva	22	H1961	alacsony	S
+Abd 1:16	er	1	כִּ֗י	parositva	1	H3588	alacsony	S
+Abd 1:16	er	2	כַּֽ	parositva	2,3	H9004	alacsony	S
+Abd 1:16	er	3	אֲשֶׁ֤ר	parositva	2,3	H0834	alacsony	S
+Abd 1:16	er	4	שְׁתִיתֶם֙	parositva	5	H8354	alacsony	S
+Abd 1:16	er	5	עַל	parositva	7	H5921	alacsony	S
+Abd 1:16	er	6	הַ֣ר	parositva	7	H2022	alacsony	S
+Abd 1:16	er	7	קָדְשִׁ֔	parositva	6	H6944	alacsony	S
+Abd 1:16	er	8	י	parositva	7	H9020	alacsony	S
+Abd 1:16	er	9	יִשְׁתּ֥וּ	parositva	9	H8354	alacsony	S
+Abd 1:16	er	10	כָֽל	parositva	12	H3605	alacsony	S
+Abd 1:16	er	11	הַ	forditatlan		H9009	alacsony	S
+Abd 1:16	er	12	גּוֹיִ֖ם	parositva	13	H1471	alacsony	S
+Abd 1:16	er	13	תָּמִ֑יד	parositva	10	H8548	alacsony	S
+Abd 1:16	er	14	וְ	forditatlan		H9001	alacsony	S
+Abd 1:16	er	15	שָׁת֣וּ	parositva	15	H8354	alacsony	S
+Abd 1:16	er	16	וְ	parositva	16	H9001	alacsony	S
+Abd 1:16	er	17	לָע֔וּ	parositva	17	H3886	alacsony	S
+Abd 1:16	er	18	וְ	parositva	18	H9001	alacsony	S
+Abd 1:16	er	19	הָי֖וּ	parositva	20	H1961	alacsony	S
+Abd 1:16	er	20	כְּ	parositva	21	H9004	alacsony	S
+Abd 1:16	er	21	ל֥וֹא	parositva	22	H3808	alacsony	S
+Abd 1:16	er	22	הָיֽוּ	parositva	23,24	H1961	alacsony	S
+Abd 1:17	hu	1	De	parositva	1	H9002	alacsony	S
+Abd 1:17	hu	2	a	betoldas			alacsony	S
+Abd 1:17	hu	3	Sion	parositva	4	H6726	alacsony	S
+Abd 1:17	hu	4	hegyén	parositva	2,3	H9003+H2022	alacsony	S
+Abd 1:17	hu	5	szabadulás	parositva	6	H6413	alacsony	S
+Abd 1:17	hu	6	lészen	parositva	5	H1961	alacsony	S
+Abd 1:17	hu	7	és	parositva	7	H9001	alacsony	S
+Abd 1:17	hu	8	szentté	parositva	9	H6944	alacsony	S
+Abd 1:17	hu	9	lészen	parositva	8	H1961	alacsony	S
+Abd 1:17	hu	10	az	betoldas			alacsony	S
+Abd 1:17	hu	11	és	parositva	10	H9001	alacsony	S
+Abd 1:17	hu	12	a	betoldas			alacsony	S
+Abd 1:17	hu	13	Jákób	parositva	13	H3290	alacsony	S
+Abd 1:17	hu	14	háza	parositva	12	H1004	alacsony	S
+Abd 1:17	hu	15	birtokba	parositva	11	H3423	alacsony	S
+Abd 1:17	hu	16	veszi	parositva	11	H3423	alacsony	S
+Abd 1:17	hu	17	az	betoldas			alacsony	S
+Abd 1:17	hu	18	ő	parositva	16	H9028	alacsony	S
+Abd 1:17	hu	19	örökségét	parositva	15,16	H4180+H9028	alacsony	S
+Abd 1:17	er	1	וּ	parositva	1	H9002	alacsony	S
+Abd 1:17	er	2	בְ	parositva	4	H9003	alacsony	S
+Abd 1:17	er	3	הַ֥ר	parositva	4	H2022	alacsony	S
+Abd 1:17	er	4	צִיּ֛וֹן	parositva	3	H6726	alacsony	S
+Abd 1:17	er	5	תִּהְיֶ֥ה	parositva	6	H1961	alacsony	S
+Abd 1:17	er	6	פְלֵיטָ֖ה	parositva	5	H6413	alacsony	S
+Abd 1:17	er	7	וְ	parositva	7	H9001	alacsony	S
+Abd 1:17	er	8	הָ֣יָה	parositva	9	H1961	alacsony	S
+Abd 1:17	er	9	קֹ֑דֶשׁ	parositva	8	H6944	alacsony	S
+Abd 1:17	er	10	וְ	parositva	11	H9001	alacsony	S
+Abd 1:17	er	11	יָֽרְשׁוּ֙	parositva	15,16	H3423	alacsony	S
+Abd 1:17	er	12	בֵּ֣ית	parositva	14	H1004	alacsony	S
+Abd 1:17	er	13	יַֽעֲקֹ֔ב	parositva	13	H3290	alacsony	S
+Abd 1:17	er	14	אֵ֖ת	forditatlan		H0853	alacsony	S
+Abd 1:17	er	15	מוֹרָֽשֵׁי	parositva	19	H4180	alacsony	S
+Abd 1:17	er	16	הֶם	parositva	18,19	H9028	alacsony	S
+Abd 1:18	hu	1	És	parositva	1	H9001	alacsony	S
+Abd 1:18	hu	2	a	betoldas			alacsony	S
+Abd 1:18	hu	3	Jákób	parositva	4	H3290	alacsony	S
+Abd 1:18	hu	4	háza	parositva	3	H1004	alacsony	S
+Abd 1:18	hu	5	tűz	parositva	5	H0784	alacsony	S
+Abd 1:18	hu	6	lészen	parositva	2	H1961	alacsony	S
+Abd 1:18	hu	7	és	parositva	6	H9002	alacsony	S
+Abd 1:18	hu	8	a	betoldas			alacsony	S
+Abd 1:18	hu	9	József	parositva	8	H3130	alacsony	S
+Abd 1:18	hu	10	háza	parositva	7	H1004	alacsony	S
+Abd 1:18	hu	11	láng	parositva	9	H3852	alacsony	S
+Abd 1:18	hu	12	az	betoldas			alacsony	S
+Abd 1:18	hu	13	Ézsau	parositva	12	H6215	alacsony	S
+Abd 1:18	hu	14	háza	parositva	11	H1004	alacsony	S
+Abd 1:18	hu	15	pedig	parositva	10	H9002	alacsony	S
+Abd 1:18	hu	16	pozdorja	parositva	13,14	H9005+H7179	alacsony	S
+Abd 1:18	hu	17	és	parositva	15	H9001	alacsony	S
+Abd 1:18	hu	18	meggyújtják	parositva	16,17,18	H1814+H9003+H9038	alacsony	S
+Abd 1:18	hu	19	és	parositva	19	H9001	alacsony	S
+Abd 1:18	hu	20	megemésztik	parositva	20	H0398	alacsony	S
+Abd 1:18	hu	21	őket	parositva	21	H9038	alacsony	S
+Abd 1:18	hu	22	és	parositva	22	H9002	alacsony	S
+Abd 1:18	hu	23	nem	parositva	23	H3808	alacsony	S
+Abd 1:18	hu	24	marad	parositva	24	H1961	alacsony	S
+Abd 1:18	hu	25	meg	parositva	24	H1961	alacsony	S
+Abd 1:18	hu	26	senki	parositva	25	H8300	alacsony	S
+Abd 1:18	hu	27	Ézsau	parositva	28	H6215	alacsony	S
+Abd 1:18	hu	28	házából	parositva	26,27	H9005+H1004	alacsony	S
+Abd 1:18	hu	29	mert	parositva	29	H3588	alacsony	S
+Abd 1:18	hu	30	az	betoldas			alacsony	S
+Abd 1:18	hu	31	Úr	parositva	30	H3068	alacsony	S
+Abd 1:18	hu	32	szólott	parositva	31	H1696	alacsony	S
+Abd 1:18	er	1	וְ	parositva	1	H9001	alacsony	S
+Abd 1:18	er	2	הָיָה֩	parositva	6	H1961	alacsony	S
+Abd 1:18	er	3	בֵית	parositva	4	H1004	alacsony	S
+Abd 1:18	er	4	יַעֲקֹ֨ב	parositva	3	H3290	alacsony	S
+Abd 1:18	er	5	אֵ֜שׁ	parositva	5	H0784	alacsony	S
+Abd 1:18	er	6	וּ	parositva	7	H9002	alacsony	S
+Abd 1:18	er	7	בֵ֧ית	parositva	10	H1004	alacsony	S
+Abd 1:18	er	8	יוֹסֵ֣ף	parositva	9	H3130	alacsony	S
+Abd 1:18	er	9	לֶהָבָ֗ה	parositva	11	H3852	alacsony	S
+Abd 1:18	er	10	וּ	parositva	15	H9002	alacsony	S
+Abd 1:18	er	11	בֵ֤ית	parositva	14	H1004	alacsony	S
+Abd 1:18	er	12	עֵשָׂו֙	parositva	13	H6215	alacsony	S
+Abd 1:18	er	13	לְ	parositva	16	H9005	alacsony	S
+Abd 1:18	er	14	קַ֔שׁ	parositva	16	H7179	alacsony	S
+Abd 1:18	er	15	וְ	parositva	17	H9001	alacsony	S
+Abd 1:18	er	16	דָלְק֥וּ	parositva	18	H1814	alacsony	S
+Abd 1:18	er	17	בָ	parositva	18	H9003	alacsony	S
+Abd 1:18	er	18	הֶ֖ם	parositva	18	H9038	alacsony	S
+Abd 1:18	er	19	וַ	parositva	19	H9001	alacsony	S
+Abd 1:18	er	20	אֲכָל֑וּ	parositva	20	H0398	alacsony	S
+Abd 1:18	er	21	ם	parositva	21	H9038	alacsony	S
+Abd 1:18	er	22	וְ	parositva	22	H9002	alacsony	S
+Abd 1:18	er	23	לֹֽא	parositva	23	H3808	alacsony	S
+Abd 1:18	er	24	יִֽהְיֶ֤ה	parositva	24,25	H1961	alacsony	S
+Abd 1:18	er	25	שָׂרִיד֙	parositva	26	H8300	alacsony	S
+Abd 1:18	er	26	לְ	parositva	28	H9005	alacsony	S
+Abd 1:18	er	27	בֵ֣ית	parositva	28	H1004	alacsony	S
+Abd 1:18	er	28	עֵשָׂ֔ו	parositva	27	H6215	alacsony	S
+Abd 1:18	er	29	כִּ֥י	parositva	29	H3588	alacsony	S
+Abd 1:18	er	30	יְהוָ֖ה	parositva	31	H3068	alacsony	S
+Abd 1:18	er	31	דִּבֵּֽר	parositva	32	H1696	alacsony	S
+Abd 1:19	hu	1	A	betoldas			alacsony	S
+Abd 1:19	hu	2	déliek	parositva	4	H5045	alacsony	S
+Abd 1:19	hu	3	örökség	parositva	2	H3423	alacsony	S
+Abd 1:19	hu	4	szerint	betoldas			alacsony	S
+Abd 1:19	hu	5	bírják	parositva	2	H3423	alacsony	S
+Abd 1:19	hu	6	az	betoldas			alacsony	S
+Abd 1:19	hu	7	Ézsau	parositva	7	H6215	alacsony	S
+Abd 1:19	hu	8	hegyét	parositva	6	H2022	alacsony	S
+Abd 1:19	hu	9	a	betoldas			alacsony	S
+Abd 1:19	hu	10	síkon	parositva	10	H8219	alacsony	S
+Abd 1:19	hu	11	lakók	betoldas			alacsony	S
+Abd 1:19	hu	12	pedig	parositva	8	H9002	alacsony	S
+Abd 1:19	hu	13	a	betoldas			alacsony	S
+Abd 1:19	hu	14	Filiszteusokat	parositva	12	H6430	alacsony	S
+Abd 1:19	hu	15	És	parositva	13	H9001	alacsony	S
+Abd 1:19	hu	16	örökség	parositva	14	H3423	alacsony	S
+Abd 1:19	hu	17	szerint	betoldas			alacsony	S
+Abd 1:19	hu	18	bírják	parositva	14	H3423	alacsony	S
+Abd 1:19	hu	19	az	betoldas			alacsony	S
+Abd 1:19	hu	20	Efraim	parositva	17	H0669	alacsony	S
+Abd 1:19	hu	21	mezőit	parositva	16	H7704	alacsony	S
+Abd 1:19	hu	22	és	parositva	18	H9002	alacsony	S
+Abd 1:19	hu	23	Samaria	parositva	21	H8111	alacsony	S
+Abd 1:19	hu	24	mezőit	parositva	20	H7704	alacsony	S
+Abd 1:19	hu	25	Benjámin	parositva	23	H1144	alacsony	S
+Abd 1:19	hu	26	pedig	parositva	22	H9002	alacsony	S
+Abd 1:19	hu	27	a	betoldas			alacsony	S
+Abd 1:19	hu	28	Gileádot	parositva	26	H1568	alacsony	S
+Abd 1:19	er	1	וְ	forditatlan		H9001	alacsony	S
+Abd 1:19	er	2	יָרְשׁ֨וּ	parositva	3,5	H3423	alacsony	S
+Abd 1:19	er	3	הַ	forditatlan		H9009	alacsony	S
+Abd 1:19	er	4	נֶּ֜גֶב	parositva	2	H5045	alacsony	S
+Abd 1:19	er	5	אֶת	forditatlan		H0853	alacsony	S
+Abd 1:19	er	6	הַ֣ר	parositva	8	H2022	alacsony	S
+Abd 1:19	er	7	עֵשָׂ֗ו	parositva	7	H6215	alacsony	S
+Abd 1:19	er	8	וְ	parositva	12	H9002	alacsony	S
+Abd 1:19	er	9	הַ	forditatlan		H9009	alacsony	S
+Abd 1:19	er	10	שְּׁפֵלָה֙	parositva	10	H8219	alacsony	S
+Abd 1:19	er	11	אֶת	forditatlan		H0853	alacsony	S
+Abd 1:19	er	12	פְּלִשְׁתִּ֔ים	parositva	14	H6430	alacsony	S
+Abd 1:19	er	13	וְ	parositva	15	H9001	alacsony	S
+Abd 1:19	er	14	יָרְשׁוּ֙	parositva	16,18	H3423	alacsony	S
+Abd 1:19	er	15	אֶת	forditatlan		H0853	alacsony	S
+Abd 1:19	er	16	שְׂדֵ֣ה	parositva	21	H7704	alacsony	S
+Abd 1:19	er	17	אֶפְרַ֔יִם	parositva	20	H0669	alacsony	S
+Abd 1:19	er	18	וְ	parositva	22	H9002	alacsony	S
+Abd 1:19	er	19	אֵ֖ת	forditatlan		H0853	alacsony	S
+Abd 1:19	er	20	שְׂדֵ֣ה	parositva	24	H7704	alacsony	S
+Abd 1:19	er	21	שֹׁמְר֑וֹן	parositva	23	H8111	alacsony	S
+Abd 1:19	er	22	וּ	parositva	26	H9002	alacsony	S
+Abd 1:19	er	23	בִנְיָמִ֖ן	parositva	25	H1144	alacsony	S
+Abd 1:19	er	24	אֶת	forditatlan		H0853	alacsony	S
+Abd 1:19	er	25	הַ	forditatlan		H9009	alacsony	S
+Abd 1:19	er	26	גִּלְעָֽד	parositva	28	H1568	alacsony	S
+Abd 1:20	hu	1	Izráel	parositva	9	H3478	alacsony	S
+Abd 1:20	hu	2	fiainak	parositva	7,8	H9005+H1121	alacsony	S
+Abd 1:20	hu	3	ez	parositva	5,6	H9009+H2088	alacsony	S
+Abd 1:20	hu	4	a	betoldas			alacsony	S
+Abd 1:20	hu	5	száműzött	parositva	2	H1546	alacsony	S
+Abd 1:20	hu	6	serege	parositva	4	H2426	alacsony	S
+Abd 1:20	hu	7	azokat	betoldas			alacsony	S
+Abd 1:20	hu	8	a	parositva	10	H0834	alacsony	S
+Abd 1:20	hu	9	melyek	parositva	10	H0834	alacsony	S
+Abd 1:20	hu	10	a	betoldas			alacsony	S
+Abd 1:20	hu	11	Kananeusoké	parositva	11	H3669	alacsony	S
+Abd 1:20	hu	12	mind	betoldas			alacsony	S
+Abd 1:20	hu	13	Sarfátig	parositva	12,13	H5704+H6886	alacsony	S
+Abd 1:20	hu	14	a	betoldas			alacsony	S
+Abd 1:20	hu	15	jeruzsálemi	parositva	16	H3389	alacsony	S
+Abd 1:20	hu	16	száműzöttek	parositva	15	H1546	alacsony	S
+Abd 1:20	hu	17	pedig	parositva	14	H9002	alacsony	S
+Abd 1:20	hu	18	a	parositva	17	H0834	alacsony	S
+Abd 1:20	hu	19	kik	parositva	17	H0834	alacsony	S
+Abd 1:20	hu	20	Szefarádban	parositva	18,19	H9003+H5614	alacsony	S
+Abd 1:20	hu	21	vannak	betoldas			alacsony	S
+Abd 1:20	hu	22	elfoglalják	parositva	20	H3423	alacsony	S
+Abd 1:20	hu	23	majd	betoldas			alacsony	S
+Abd 1:20	hu	24	a	betoldas			alacsony	S
+Abd 1:20	hu	25	déli	parositva	24	H5045	alacsony	S
+Abd 1:20	hu	26	városokat	parositva	22	H5892	alacsony	S
+Abd 1:20	er	1	וְ	forditatlan		H9002	alacsony	S
+Abd 1:20	er	2	גָלֻ֣ת	parositva	5	H1546	alacsony	S
+Abd 1:20	er	3	הַֽ	forditatlan		H9009	alacsony	S
+Abd 1:20	er	4	חֵל	parositva	6	H2426	alacsony	S
+Abd 1:20	er	5	הַ֠	parositva	3	H9009	alacsony	S
+Abd 1:20	er	6	זֶּה	parositva	3	H2088	alacsony	S
+Abd 1:20	er	7	לִ	parositva	2	H9005	alacsony	S
+Abd 1:20	er	8	בְנֵ֨י	parositva	2	H1121	alacsony	S
+Abd 1:20	er	9	יִשְׂרָאֵ֤ל	parositva	1	H3478	alacsony	S
+Abd 1:20	er	10	אֲשֶֽׁר	parositva	8,9	H0834	alacsony	S
+Abd 1:20	er	11	כְּנַעֲנִים֙	parositva	11	H3669	alacsony	S
+Abd 1:20	er	12	עַד	parositva	13	H5704	alacsony	S
+Abd 1:20	er	13	צָ֣רְפַ֔ת	parositva	13	H6886	alacsony	S
+Abd 1:20	er	14	וְ	parositva	17	H9002	alacsony	S
+Abd 1:20	er	15	גָלֻ֥ת	parositva	16	H1546	alacsony	S
+Abd 1:20	er	16	יְרוּשָׁלִַ֖ם	parositva	15	H3389	alacsony	S
+Abd 1:20	er	17	אֲשֶׁ֣ר	parositva	18,19	H0834	alacsony	S
+Abd 1:20	er	18	בִּ	parositva	20	H9003	alacsony	S
+Abd 1:20	er	19	סְפָרַ֑ד	parositva	20	H5614	alacsony	S
+Abd 1:20	er	20	יִֽרְשׁ֕וּ	parositva	22	H3423	alacsony	S
+Abd 1:20	er	21	אֵ֖ת	forditatlan		H0853	alacsony	S
+Abd 1:20	er	22	עָרֵ֥י	parositva	26	H5892	alacsony	S
+Abd 1:20	er	23	הַ	forditatlan		H9009	alacsony	S
+Abd 1:20	er	24	נֶּֽגֶב	parositva	25	H5045	alacsony	S
+Abd 1:21	hu	1	És	parositva	1	H9001	alacsony	S
+Abd 1:21	hu	2	a	betoldas			alacsony	S
+Abd 1:21	hu	3	Sion	parositva	6	H6726	alacsony	S
+Abd 1:21	hu	4	hegyére	parositva	4,5	H9003+H2022	alacsony	S
+Abd 1:21	hu	5	szabadítók	parositva	3	H3467	alacsony	S
+Abd 1:21	hu	6	mennek	parositva	2	H5927	alacsony	S
+Abd 1:21	hu	7	fel	parositva	2	H5927	alacsony	S
+Abd 1:21	hu	8	hogy	parositva	7	H9005	alacsony	S
+Abd 1:21	hu	9	megítéljék	parositva	8	H8199	alacsony	S
+Abd 1:21	hu	10	az	betoldas			alacsony	S
+Abd 1:21	hu	11	Ézsau	parositva	11	H6215	alacsony	S
+Abd 1:21	hu	12	hegyét	parositva	10	H2022	alacsony	S
+Abd 1:21	hu	13	és	parositva	12	H9001	alacsony	S
+Abd 1:21	hu	14	az	betoldas			alacsony	S
+Abd 1:21	hu	15	Úré	parositva	14,15	H9005+H3068	alacsony	S
+Abd 1:21	hu	16	lesz	parositva	13	H1961	alacsony	S
+Abd 1:21	hu	17	a	betoldas			alacsony	S
+Abd 1:21	hu	18	királyság	parositva	17	H4410	alacsony	S
+Abd 1:21	er	1	וְ	parositva	1	H9001	alacsony	S
+Abd 1:21	er	2	עָל֤וּ	parositva	6,7	H5927	alacsony	S
+Abd 1:21	er	3	מֽוֹשִׁעִים֙	parositva	5	H3467	alacsony	S
+Abd 1:21	er	4	בְּ	parositva	4	H9003	alacsony	S
+Abd 1:21	er	5	הַ֣ר	parositva	4	H2022	alacsony	S
+Abd 1:21	er	6	צִיּ֔וֹן	parositva	3	H6726	alacsony	S
+Abd 1:21	er	7	לִ	parositva	8	H9005	alacsony	S
+Abd 1:21	er	8	שְׁפֹּ֖ט	parositva	9	H8199	alacsony	S
+Abd 1:21	er	9	אֶת	forditatlan		H0853	alacsony	S
+Abd 1:21	er	10	הַ֣ר	parositva	12	H2022	alacsony	S
+Abd 1:21	er	11	עֵשָׂ֑ו	parositva	11	H6215	alacsony	S
+Abd 1:21	er	12	וְ	parositva	13	H9001	alacsony	S
+Abd 1:21	er	13	הָיְתָ֥ה	parositva	16	H1961	alacsony	S
+Abd 1:21	er	14	לַֽ	parositva	15	H9005	alacsony	S
+Abd 1:21	er	15	יהוָ֖ה	parositva	15	H3068	alacsony	S
+Abd 1:21	er	16	הַ	forditatlan		H9009	alacsony	S
+Abd 1:21	er	17	מְּלוּכָֽה	parositva	18	H4410	alacsony	S
