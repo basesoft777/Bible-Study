@@ -40,7 +40,7 @@ Ahol a két modell ugyanazt a linket adja, az `magas` (a pilotban 98,7% pontos).
 - **A modell nem ír Strong-számot**, csak sorszámpárokat (a pilot 5. kapupontja érvényes).
 - **A két modell nem látja egymás válaszát.** A Sonnet-subagent nem olvassa az `f22/valaszok/c/` könyvtárat, és fordítva.
 - **A prompt nem változik.** A futás előtt a `prompt_v3.sha256` ellenőrzése; eltérésnél megállás.
-- **A session egyedül fut**, más Code-session közben nem dolgozik (a keretmérés így tiszta).
+- **A session egyedül fut**, más Code-session közben nem dolgozik (a keretmérés így tiszta). *(API Batch módú futásnál l. D36.)*
 - **Számadat** csak szkriptkimenetből kerülhet a jelentésbe.
 - **Kulcs:** csak az Actions job `env`-jében; commit előtt kulcs-grep.
 - **A zárt licencű Károli–Strong forrás** adata nem kerülhet a repóba, és nem lehet a szótár vagy a párosítás forrása. Csak helyi összevetésre szolgál, és a repóba csak összesített szám mehet.
@@ -184,6 +184,7 @@ A jelentés 2. szakasza, csak szkriptkimenetből:
 | D33 | a Dán csak Sonnettel, a Message Batches API-n (`effort=high`, DT73 (a)), 10 verses kötegekkel; a BDB-haszon mérése (2026.10.09) szerint a hiányzó könyvek közül a legtöbbet adja (1644 / 312); a detektor szerint tiszta (357/357 vers, 12 fejezet; a korábbi „37 detektorsor” az F85.6/F85.8 óta nincs meg, a detektor 2026.10.11-i újrafuttatása a repóbeli listával egyezik), nincs kézi javítás és beolvasztás; könyvplafon 3,96 USD, költség 2,68 USD (versenként 0,0075); kapuhiba első próbára 7/357, végleg 0; régi arany a könyvben nincs; jelentés: `naplok/F22_Dan_jelentes.md` | a felhasználó döntése (chat, 2026.10.11: „mehet a Dániel”) | a hiányzó kis könyvek (a felhasználó döntése) |
 | D34 | a Ruth csak Sonnettel, a Message Batches API-n (`effort=high`, DT73 (a)), 10 verses kötegekkel; a hiányzó kis könyvek egyike (85 vers; az Abd 21, a Hag 38, a Náh 47 és a Jón 48 verssel kisebb, a választás a felhasználóé), a detektor szerint tiszta (85/85 vers, 4 fejezet), nincs kézi javítás és beolvasztás; könyvplafon 1,00 USD (minimum), költség 0,58 USD (versenként 0,0069); kapuhiba első próbára 1/85, végleg 0; régi arany a könyvben nincs; jelentés: `naplok/F22_Ruth_jelentes.md` | a felhasználó döntése (chat, 2026.10.11: „mehet a Ruth”) | a hiányzó kis könyvek (a felhasználó döntése) |
 | D35 | a Jón csak Sonnettel, a Message Batches API-n (`effort=high`, DT73 (a)), 10 verses kötegekkel; a hiányzó kis könyvek egyike (48 vers), a detektor szerint tiszta (48/48 vers, 4 fejezet), nincs kézi javítás és beolvasztás; könyvplafon 1,00 USD (minimum), költség 0,28 USD (versenként 0,0059); kapuhiba első próbára 2/48, végleg 0; régi arany 2/2; jelentés: `naplok/F22_Jon_jelentes.md` | a felhasználó döntése (chat, 2026.10.11: „mehet a Jónás”) | a hiányzó kis könyvek (a felhasználó döntése) |
+| D36 | az „A session egyedül fut” keretszabály alól felmentés az **API Batch módú** futásokra (a Message Batches API-n, DT73 (a)), azzal a feltétellel, hogy a session **saját git worktree-ben** dolgozik; előfizetéses (subagentes vagy `/usage`-alapú) futásnál a szabály érvényben marad; a szabály szövege nem változik; az indok: a szabály a `/usage` keretmérést védi, API Batch módban a költség a futásnaplóban batch-áron számolódik (`batch_ar_szamolt`), a párhuzamos sessionök nem torzítják; a tényleges kockázat a közös könyvtárban történt ágváltás volt (Ruth, Jón), nem a mérés | a felhasználó döntése (chat, 2026.10.11: „D36 mehet, push és draft PR is”) | a szabály teljes eltörlése; a felmentés előfizetéses futásra is |
 
 ## Döntésnapló (a brief verziói)
 
@@ -191,6 +192,7 @@ A jelentés 2. szakasza, csak szkriptkimenetből:
 |---|---|---|---|
 | v1 | 2026.09.30 | első változat: teljes Biblia, három külső modell (A, B, döntőbíró C), Opus-arany, KJV-import, pilot ⛔ | a felhasználó kérése (teljes feldolgozás) |
 | v2 | 2026.10.01 | v1 (három külső modell, a teljes Biblia) felváltva v2-vel, a #21 pilot eredménye alapján | a pilot mért pontossága: Sonnet 97,3%, Gemini 95,3%, a pár `magas` linkjei 98,7% |
+| v2.30 | 2026.10.11 | D36: az „egyedül fut” keretszabály alól API Batch módú futásra felmentés, saját worktree feltétellel | a felhasználó döntése |
 | v2.29 | 2026.10.11 | a Jón menete csak Sonnettel, a Message Batches API-n (D35); `tokenek.VERSBEOSZTAS_JOVAHAGYOTT` bővítve a Jónással | a felhasználó döntése |
 | v2.28 | 2026.10.11 | a Ruth menete csak Sonnettel, a Message Batches API-n (D34); `tokenek.VERSBEOSZTAS_JOVAHAGYOTT` bővítve a Ruthtal | a felhasználó döntése |
 | v2.27 | 2026.10.11 | a Dán menete csak Sonnettel, a Message Batches API-n (D33); `tokenek.VERSBEOSZTAS_JOVAHAGYOTT` bővítve a Dániellel | a felhasználó döntése |

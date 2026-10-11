@@ -22,7 +22,7 @@ ELTÉRÉS: 1 tétel
 
 ## ELTÉRÉS
 
-1. **(alacsony)** A brief Keretek-szabálya („A session egyedül fut, más Code-session közben nem dolgozik”, `F22_KAROLI_STRONG_BRIEF.md:43`) a jelentés saját beismerése szerint nem teljesült: a menet külön worktree-ben, párhuzamos session mellett készült. Az adatot ez a mért pontokon nem érintette. A szabály vagy API-módú felmentést kap a briefben (D-sor), vagy a felhasználó dönt róla; a Ruth-menetben is így volt, jelzés nélkül. **Nyitott, a felhasználó döntése** (a jelentés 6. szakasza).
+1. **(alacsony)** A brief Keretek-szabálya („A session egyedül fut, más Code-session közben nem dolgozik”, `F22_KAROLI_STRONG_BRIEF.md:43`) a jelentés saját beismerése szerint nem teljesült: a menet külön worktree-ben, párhuzamos session mellett készült. Az adatot ez a mért pontokon nem érintette. A szabály vagy API-módú felmentést kap a briefben (D-sor), vagy a felhasználó dönt róla; a Ruth-menetben is így volt, jelzés nélkül. **Lezárva: a felhasználó döntése D36** (2026.10.11, API Batch módú futásra felmentés, saját worktree feltétellel); a brief D36 sora és v2.30.
 
 ## Nem ellenőrizhető a szerepkörből
 
