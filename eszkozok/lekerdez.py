@@ -946,7 +946,7 @@ def futtat_naplozva(args, auditok=None, naplok_mappa=None, motivumok_tsv=None):
         except ValueError as e:
             print(f"hiba: {e}", file=sys.stderr)
             sys.exit(1)
-        print(f"# napló: {'hozzáfűzve' if ir else 'már megvolt'} -> {cel.name}")
+        print(f"# napló: {'hozzáfűzve' if ir else 'már megvolt'} -> {cel.name}", file=sys.stderr)
     if kilepes is not None:
         raise kilepes
 

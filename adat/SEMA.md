@@ -600,7 +600,13 @@ lekérdezésnél (nincs proveniencia-sor) nem ír. `--naplo` esetén a kiírt
 proveniencia-sor végére a `csatorna=cli` kulcs kerül (a futtatás csatornája),
 és a naplósor ezt szó szerint tartalmazza; kapcsoló nélkül a kimenet változatlan.
 A `csatorna` az `ellenoriz.py` megengedett további proveniencia-kulcsai között van
-(`strong`, `n`, `csatorna`). A `naplok/*_lekerdezesek.tsv` formai ellenőrzése külön tétel.
+(`strong`, `n`, `csatorna`). A `# napló: …` állapotsor a stderr-re megy, így a stdout utolsó
+sora `--naplo` esetén is a proveniencia-sor. A `naplok/*_lekerdezesek.tsv` formai ellenőrzése külön tétel.
+
+**Commitolási szabály (DT-F61b).** Az `ellenoriz.py` 8. szabálya nem nézi a `lepes` mezőt: egy
+motívum-ID első `auditok.tsv`-sora — bármely lépésé, nem csak az `adhoc`-é — SÉRTÉST ad, amíg a
+motívum „mindig”-datasetjeinek teljes lefedése nincs meg. Egy motívum auditsorai ezért csak a
+teljes lefedés után commitolandók; a motívum lekérdezései nem vándorolnak feladatnaplóba.
 
 ### 2.10 `forditas_ubs.tsv` — **megszűnt (SZOTAR S1.1, 2026.09.28)**
 

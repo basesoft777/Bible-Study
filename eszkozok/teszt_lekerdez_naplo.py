@@ -10,7 +10,7 @@ eszkozok/teszt_lekerdez_naplo.py -- F61 (DT-F61a): a lekerdez.py --naplo /
   - ervenytelen / hianyzo --lepes: hiba, nem ir;
   - a naplosor proveniencia-mezeje szo szerint a kiirt proveniencia-sor, csatorna=cli kulccsal;
   - kapcsolo nelkul a kimenet azonos a --naplo-s kimenet naplo-nelkuli reszevel
-    (a proveniencia-sor csatorna-vege es a "# napló:" sor kivetelevel);
+    (a proveniencia-sor csatorna-vegenek kivetelevel; a "# napló:" sor stderr-re megy);
   - az ellenoriz.py a csatorna kulcsot megengedi.
 
     python eszkozok/teszt_lekerdez_naplo.py
@@ -47,16 +47,22 @@ def kimenet(*args):
     return subprocess.run([sys.executable, LEKERDEZ, *args], capture_output=True, env=env)
 
 
+UTOLSO_STDERR = ''
+
+
 def futtat_beleirva(extra, auditok, naplok, parancs=ARGS):
     """In-process futtatas ideiglenes celfajlokkal; (stdout, kilepesi kod)."""
     args = L.build_parser().parse_args(list(extra) + list(parancs))
+    global UTOLSO_STDERR
     puf = io.StringIO()
+    hibapuf = io.StringIO()
     kod = 0
-    with contextlib.redirect_stdout(puf):
+    with contextlib.redirect_stdout(puf), contextlib.redirect_stderr(hibapuf):
         try:
             L.futtat_naplozva(args, auditok=auditok, naplok_mappa=naplok)
         except SystemExit as e:
             kod = e.code or 0
+    UTOLSO_STDERR = hibapuf.getvalue()
     return puf.getvalue(), kod
 
 
@@ -99,7 +105,8 @@ class Naplozas(unittest.TestCase):
                                  self.auditok, self.naplok)
         with open(self.auditok, 'rb') as f:
             self.assertEqual(f.read(), uj)
-        self.assertIn('már megvolt', ki2)
+        self.assertIn('már megvolt', UTOLSO_STDERR)
+        self.assertTrue(ki2.splitlines()[-1].startswith('proveniencia:'), ki2)
 
     def test_feladatkod_sajat_fajlba(self):
         ki, kod = futtat_beleirva(['--naplo', 'F61', '--lepes', 'adhoc'],
@@ -148,7 +155,8 @@ class Naplozas(unittest.TestCase):
         alap = re.sub(r'ts=[^ \n]*', 'ts=X', alap)
         ki, kod = futtat_beleirva(['--naplo', 'F61', '--lepes', 'adhoc'], self.auditok, self.naplok)
         ki = re.sub(r'ts=[^ \n]*', 'ts=X', ki).replace(' | csatorna=cli', '')
-        ki = '\n'.join(s for s in ki.split('\n') if not s.startswith('# napló:'))
+        self.assertNotIn('# napló:', ki)
+        self.assertIn('# napló:', UTOLSO_STDERR)
         self.assertEqual(ki.replace('\r\n', '\n'), alap)
         self.assertNotIn('csatorna', alap)
 
