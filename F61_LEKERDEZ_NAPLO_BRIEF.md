@@ -6,10 +6,10 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: folyamat
-allapot: fut
+allapot: megallt
 ag: claude/f61-lekerdez-naplo
 ad: a lekerdez.py minden alparancsa egy kapcsolóval (--naplo ID --lepes KÓD) maga fűzi a saját proveniencia-sorát az adat/auditok.tsv-hez, hozzáfűzéssel, duplikáció nélkül; a SEMA 2.9 lepes-értékkészlete bővül az adhoc értékkel, a proveniencia-sor a futtatás csatornáját is rögzíti (DT-M3)
-kovetkezo: /kovetkezo; ⛔ az M0 után (a motívumon kívüli lekérdezések naplózásának helye)
+kovetkezo: Te: dönts a DT-F61a-ról (DONTESEK.md; javaslat: (1) a, (2) igen), utána M1
 olvas: [eszkozok/lekerdez.py, adat/auditok.tsv, adat/SEMA.md, eszkozok/ellenoriz.py, MUNKAMENET.md, eszkozok/teszt_lekerdez_sir.py]
 ir: [eszkozok/lekerdez.py, eszkozok/teszt_lekerdez_naplo.py, adat/SEMA.md, eszkozok/ellenoriz.py]
 fugg: []
