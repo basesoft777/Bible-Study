@@ -6,10 +6,10 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: folyamat
-allapot: fut
+allapot: dontesre_var
 ag: claude/f61-lekerdez-naplo
 ad: a lekerdez.py minden alparancsa egy kapcsolóval (--naplo ID --lepes KÓD) maga fűzi a saját proveniencia-sorát az adat/auditok.tsv-hez, hozzáfűzéssel, duplikáció nélkül; a SEMA 2.9 lepes-értékkészlete bővül az adhoc értékkel, a proveniencia-sor a futtatás csatornáját is rögzíti (DT-M3)
-kovetkezo: "Folytatás: M2 — zárás (teszt_lekerdez_naplo.py kész, fuggetlen-ellenor, zárójelentés, PR, lezarva); az M1 megvalósítás az F61.3 commitban"
+kovetkezo: "Te: dönts a DT-F61b-ről (DONTESEK.md: a 8. szabály és az önnaplózott adhoc sor; a napló-jelző sor helye); utána a javítás, a main beolvasztása (E5), zárójelentés, draft PR [ELLENŐRZŐ] címmel (E16)"
 olvas: [eszkozok/lekerdez.py, adat/auditok.tsv, adat/SEMA.md, eszkozok/ellenoriz.py, MUNKAMENET.md, eszkozok/teszt_lekerdez_sir.py]
 ir: [eszkozok/lekerdez.py, eszkozok/teszt_lekerdez_naplo.py, adat/SEMA.md, eszkozok/ellenoriz.py]
 fugg: []
@@ -62,7 +62,7 @@ Jelentés: `naplok/LEKERDEZ_NAPLO_M0.md`.
 
 ### M2 — Zárás
 
-`eszkozok/teszt_lekerdez_naplo.py` (ideiglenes `auditok.tsv`-másolaton: hozzáfűzés, duplikáció-szűrés, érvénytelen `--lepes`, kapcsoló nélküli azonos kimenet), `naplok/LEKERDEZ_NAPLO_zaras.md` (≤20 sor), `fuggetlen-ellenor` (`naplok/ELLENOR_LEKERDEZ_NAPLO.md`), a brief fejléce `lezarva`, push, draft PR.
+`eszkozok/teszt_lekerdez_naplo.py` (ideiglenes `auditok.tsv`-másolaton: hozzáfűzés, duplikáció-szűrés, érvénytelen `--lepes`, kapcsoló nélküli azonos kimenet), `naplok/LEKERDEZ_NAPLO_zaras.md` (≤20 sor), `fuggetlen-ellenor` (`naplok/ELLENOR_F61.md`), a brief fejléce `lezarva`, push, draft PR.
 
 ## 4. Elfogadási feltételek
 
