@@ -18,4 +18,4 @@ Nem ellenőrizhető az ellenőr eszközkörével: az `ellenoriz.py`, a teszt és
 6. A 16 Strong nélküli TEREMT-002 `jeloltek`-sor hiányzik az eltéréslistáról (csak az M0 szövegében szerepel).
 7. Az F65.0 commit-üzenete ékezetlen (`1b470a84`); az ág pusholva, nem írom át.
 
-Kiegészítés (nem eltérés): a DT-F65a beleegyezésének időpontja a repóból nem igazolható (a válasz „chat”-ként szerepel a `DONTESEK.md`-ben).
+Kiegészítés (nem eltérés): a DT104 beleegyezésének időpontja a repóból nem igazolható (a válasz „chat”-ként szerepel a `DONTESEK.md`-ben).

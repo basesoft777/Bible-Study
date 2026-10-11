@@ -113,7 +113,7 @@ Zárt: `tartalom-alapú` | `szó-szintű-gépi` | `szó-szintű-tagged` | `inter
 - `szó-szintű-gépi` (DT-M2, F65) — a #22 gépi Károli–Strong párosításából (`adat/karoli_strong/parok_<könyv>.tsv`) megerősített sor. **Csak `magas` bizonyosságú pár igazolhatja**, és csak ha a sor minden Strongja szerepel a `karoli_szo` szavainak gépi párjai között ugyanazon a versen; a sor saját proveniencia-sora az `adat/karoli_variancia.tsv` `megerosites` sorában áll (2.24). A gépi párosítás modell-kimenet: a mód a *azonosítás módját* mondja, nem „ellenőrizve” minősítést.
 - `szó-szintű-tagged` — esetleges kiadói, kézzel taggelt Károli-szövegnek fenntartva; ma nincs ilyen forrás.
 
-*Mért kiindulás:* a 2026.09.13-i 227 join-sor mind `tartalom-alapú` volt. A #22 szó-szintű, gépi párosítást ad könyvenként, ezért az a korábbi mondat, hogy a projektnek nincs és nem is lesz szó-szintű Strong-taggelt Károlija, **elavult** (zárt licenc: kiadói tagged szöveg tényleg nincs; gépi párosítás van). Az átállítás szabálya (F65, DT-F65a): csak az `azonositas_modja` vált; a `karoli_szo`, a `megbizhatosag` és a `proveniencia` marad.
+*Mért kiindulás:* a 2026.09.13-i 227 join-sor mind `tartalom-alapú` volt. A #22 szó-szintű, gépi párosítást ad könyvenként, ezért az a korábbi mondat, hogy a projektnek nincs és nem is lesz szó-szintű Strong-taggelt Károlija, **elavult** (zárt licenc: kiadói tagged szöveg tényleg nincs; gépi párosítás van). Az átállítás szabálya (F65, DT104): csak az `azonositas_modja` vált; a `karoli_szo`, a `megbizhatosag` és a `proveniencia` marad.
 
 ---
 
@@ -1082,7 +1082,7 @@ A forrásfájl **nem módosul**; a javítás ebben a táblában él, és az adat
 Kulcs: `strong` + `forras_hivatkozas`. Teszteset: `H7223`, `Eccl 17:10` → `Préd 7:10`.
 **Átvezetés a fordításba (M5, `eszkozok/bdb_atvezet_m5.py`):** a `javitva` hivatkozás a `forditasok.tsv` BDB-sorainak `forditas_hu` mezőjében `Y [BDB: X]` alakot kap (Y a helyes, X a forrásbeli hivatkozás, Károli-rövidítéssel); más mező nem változik (a `forras_hash` a forrásé, ezért érintetlen). A kapuk ezt kezelik: a 13. (fejezetszám) az `[BDB: …]` tartalmát nem jelzi, a többi a `Y [BDB: X]` → `X` visszaállított szöveget látja (`forditas_kapuk.bdb_jeloles_vissza`). Az 1–5. adag fordításaiban 4 a 7 `javitva` sorból fordul elő (H5002, H5046, H4427, H7223); H0479, H2597 és H5377 a 9–11. adagba esik, ott az adatblokk 6. szakasza viszi át a #38 menetében. A H4480 és a H9009 sora a DT48 miatt `jelolt_marad`, a két fordításmező a `bdb_atvezet_m5.py --visszaallit` móddal `Y [BDB: X]` → `X` alakra állt vissza.
 
-### 2.24 `karoli_variancia.tsv` — Károli-variancia és soronkénti megerősítés (F65, FELADATOK #65, DT-M2, DT-F65a)
+### 2.24 `karoli_variancia.tsv` — Károli-variancia és soronkénti megerősítés (F65, FELADATOK #65, DT-M2, DT104)
 
 **Generált** (`python eszkozok/karoli_ellenorzes.py --variancia adat/karoli_variancia.tsv`), kézzel nem szerkeszthető; olvasás `split('\t')`, a `csv` modul tilos. A fájl első sora `# proveniencia: …` (fájlszintű); a `megerosites` sorok és az aggregátum-sorok saját `proveniencia` oszlopot is hordoznak.
 
@@ -1097,7 +1097,7 @@ Forrás a `parok_<könyv>.tsv`, tehát **modell-kimenet, javaslat** (a `bizonyos
 | `darab` | előfordulások száma (csak aggregátum) |
 | `bizonyossag` | `magas` \| `alacsony` (a pár; a `megerosites` sor csak `magas` lehet) |
 | `id`, `igehely`, `karoli_szo` | csak `megerosites`: az `elofordulasok.tsv` sor kulcsa és a régi `karoli_szo` |
-| `reszleges` | csak `megerosites`: `igen`, ha a `karoli_szo` több szavas és a névelőn (`a`, `az`) és az `és`-en kívül nem minden szava illeszkedett a sor Strongjaihoz (laza illesztés, DT-F65a (1); a szűrés csak lista-szűrés, az ítéletet nem érinti, DT-F65b (2)); egyébként `nem` |
+| `reszleges` | csak `megerosites`: `igen`, ha a `karoli_szo` több szavas és a névelőn (`a`, `az`) és az `és`-en kívül nem minden szava illeszkedett a sor Strongjaihoz (laza illesztés, DT104 (1); a szűrés csak lista-szűrés, az ítéletet nem érinti, DT105 (2)); egyébként `nem` |
 | `nincs_gepi_par` | csak `megerosites`: a `karoli_szo` azon szavai, amelyeknek a versben nincs gépi párja (valódi hézag), vesszővel; a névelő (`a`, `az`) és az `és` ki van szűrve |
 | `mas_strong` | csak `megerosites`: a `karoli_szo` azon szavai, amelyek a versben más Stronghoz illeszkednek, `szó:Strong` alakban (több Strong `+`-szal), vesszővel; a névelő és az `és` ki van szűrve |
 | `proveniencia` | `scope=… \| forras=… \| ts=…` (kötelező, nem üres) |

@@ -2,7 +2,7 @@
 
 *2026-10-11 · szárazon: az adatsorok még NEM változtak · proveniencia: scope=manual | forras=adat/karoli_strong/parok_1Moz.tsv, parok_2Moz.tsv, adat/elofordulasok.tsv | ts=manual (nem lekérdezés) · eszköz: `eszkozok/karoli_ellenorzes.py`*
 
-A mintát a DT-F65a (4) szerint az ISTENTISZT-001 adja (az ANTROP-001-nek az 1Móz/2Móz-ben egyetlen sora van). Teljes eltéréslista: `naplok/KAROLI_ELLENORZES_elteresek.tsv`.
+A mintát a DT104 (4) szerint az ISTENTISZT-001 adja (az ANTROP-001-nek az 1Móz/2Móz-ben egyetlen sora van). Teljes eltéréslista: `naplok/KAROLI_ELLENORZES_elteresek.tsv`.
 
 ## 1. Az ISTENTISZT-001 mind a 32 sorának ítélete
 
@@ -26,7 +26,7 @@ Eltérő (`elter`) sor az ISTENTISZT-001-ben: **0**.
 | 2Móz 33:19 | kiáltom előtted az Úr nevét | H7121+H8034 | kiáltom,nevét | előtted,az,úr | igen |
 | 2Móz 34:5 | nevén kiáltá az Urat | H7121+H8034 | nevén,kiáltá | az,urat | igen |
 
-Minden sorban **csak az `azonositas_modja`** változik; a `karoli_szo`, `megbizhatosag` és `proveniencia` marad (DT-F65a (2)). A soronkénti proveniencia-sor az `adat/karoli_variancia.tsv` `megerosites` sorában áll (`tipus=megerosites`, `id=ISTENTISZT-001`).
+Minden sorban **csak az `azonositas_modja`** változik; a `karoli_szo`, `megbizhatosag` és `proveniencia` marad (DT104 (2)). A soronkénti proveniencia-sor az `adat/karoli_variancia.tsv` `megerosites` sorában áll (`tipus=megerosites`, `id=ISTENTISZT-001`).
 
 ## 3. Amit a mintán látni kell
 

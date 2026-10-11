@@ -56,7 +56,7 @@ Az `ATALAKITASI_TERV.md.md` 83. sora szerint generált nézet (`elofordulasok`-b
 
 ANTROP-001-nek **egyetlen** 1Móz/2Móz sora van (1Móz 2:7 `élő lélekké`, H5315+H2416; gépi: H2416, H5315, H9005, `magas` → egyezik): a brief szerinti ≥3 triplet-sor nincs. Javaslat: az M3 mintája **ANTROP-001 (1 sor) + ISTENTISZT-001 (7 sor 1Móz/2Móz, mind egyezik+magas)**; ha a felhasználó a mintát egy motívumra akarja, az ISTENTISZT-001 (aranyminta, lásd az „Aranyminta előbb” elvet) a megfelelőbb. Az ANTROP-001 NT-sorai (7) `nincs_par`.
 
-## 9. Döntési kérdések (⛔, `DONTESEK.md`: DT-F65a)
+## 9. Döntési kérdések (⛔, `DONTESEK.md`: DT104)
 
 1. Az illesztés szabálya (3. szakasz) elfogadható-e?
 2. A frissítés szabálya (7. szakasz): csak `azonositas_modja` vált, `karoli_szo` és `megbizhatosag` marad?
