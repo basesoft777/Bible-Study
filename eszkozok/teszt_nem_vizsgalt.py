@@ -108,7 +108,22 @@ def teszt_lelet():
     assert 'H5315+H2416' in horgony and not any('H5315' in n for ns in kor.values() for n in ns)
     a = N.lelet_adat('ANTROP-001')
     assert [s[0] for s in a['sorok']] == ['1Pét 1:22', 'Fil 1:27', 'Mt 12:18'], a['sorok']
-    assert N.osszesit(a)[:5] == (3, 1, 0, 0, 2)
+    assert N.osszesit(a)[:5] == (3, 1, 0, 0, 2) and not N.zajos(a)
+    # DT-F63c: egy kategorizalas
+    assert N.kor_kategoria('MENNY-001', 'H1121+H0430') == 'pontatlan'
+    assert N.kor_kategoria('ISTENTISZT-001', 'H7121+H8034') == 'pontatlan'
+    assert N.kor_kategoria('KIRALY-001', 'H3548') == 'szukitendo'
+    assert N.kor_kategoria('KIRALY-001', 'H3548+H4467') == 'normal'
+    assert N.kor_kategoria('HAMART-001', 'H7451') == 'szukitendo'
+    assert N.kor_kategoria('HAMART-001', 'H2403') == 'csoportos'
+    assert N.kor_kategoria('ALVIL-001', 'H7585') == 'normal'
+    k = N.lelet_adat('KIRALY-001')
+    assert N.zajos(k) and k['kategoriak']['szukitendo']
+    assert not any('H3548' == g for _, gs, _, _ in k['sorok'] for g in gs.split(', '))
+    e = N.elemez('ANTROP-001')
+    assert 'H5315' not in e['nem_vizsgalt'] and 'H2416' not in e['nem_vizsgalt']
+    e = N.elemez('MENNY-001')
+    assert e['kategoriak']['pontatlan'] and 'H1121+H0430' not in e['nem_vizsgalt']
 
 
 def main():

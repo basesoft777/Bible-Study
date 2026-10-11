@@ -6,10 +6,10 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: megallt
+allapot: fut
 ag: claude/jeloltek-retro
 ad: a 8 retroaktív (F3/N14) motívum vizsgált, de a jeloltek.tsv-ből hiányzó jelöltjei a naplókból pótolva, mindegyik dontes és indoklas mezővel (ahol a napló nem mond döntést: nyitva, explicit jelöléssel); egy generátor (eszkozok/nem_vizsgalt.py) adja a „még nem vizsgált” listát (auditok-scan − jeloltek); az ANTROP-001 lelet-lapjának (12-es) első teljes adatfutása
-kovetkezo: "Te: az M2 összesítő ⛔ elbírálása (DT-F63c, naplok/JELOLTEK_RETRO_lelet_meres.md): mely körök a lexikai kör részei, mi legyen a zajos körökkel; utána M3 (zárás)"
+kovetkezo: "Zárás: ellenőr + PR az orkesztrátorra vár"
 olvas: [adat/jeloltek.tsv, adat/elofordulasok.tsv, adat/auditok.tsv, adat/motivumok.tsv, adat/SEMA.md, tematikus_lezart/, motivumlog/, melyelemzesek/, genezis/, eszkozok/jelolt.py, eszkozok/lekerdez.py]
 ir: [adat/jeloltek.tsv, eszkozok/nem_vizsgalt.py, eszkozok/teszt_nem_vizsgalt.py]
 fugg: []
