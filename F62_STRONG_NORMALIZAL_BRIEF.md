@@ -6,10 +6,10 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: folyamat
-allapot: megallt
+allapot: fut
 ag: claude/strong-normalizal
 ad: egyetlen, tesztelt strong_normalizal() függvény (eszkozok/strong_util.py) a SEMA 1.2 alakra (H/G + négy számjegy, balról nullázva, + láncok), amelyet a lekerdez.py és a betolt.py használ; a többi saját normalizáló leltárba kerül, és az adattáblákon gépi ellenőrzés igazolja, hogy nincs SEMA 1.2-nek nem megfelelő Strong-érték
-kovetkezo: "Te: az M0 elfogadása (naplok/STRONG_NORMALIZAL_M0.md): a bemeneti alakok és az elvárt kimenet alakonként (2. pont), a mérés eredménye (4. pont: 0 eltérés) és az 5. pont a–f döntései; utána /kovetkezo az M1-re"
+kovetkezo: M1–M3 (az M0 elfogadva, DT-F62a); a fuggetlen-ellenor a fő sessionből indul; merge csak a felhasználótól
 olvas: [adat/SEMA.md, eszkozok/lekerdez.py, eszkozok/betolt.py, eszkozok/ellenoriz.py, eszkozok/lxx_osszevetes.py, eszkozok/merge_karoli_szofaj.py, eszkozok/tw_import.py, eszkozok/tbesh_konszolidalt_import.py, eszkozok/teszt_lekerdez_sir.py, adat/elofordulasok.tsv, adat/jeloltek.tsv, adat/lexikon_hivatkozasok.tsv, adat/grammatikai_strongok.tsv, konkordancia/Karoli_Strong_kivonat.tsv, NYITOTT_FELADATOK.md]
 ir: [eszkozok/strong_util.py, eszkozok/teszt_strong_util.py, eszkozok/lekerdez.py, eszkozok/betolt.py]
 fugg: []
@@ -72,7 +72,7 @@ Jelentés: `naplok/STRONG_NORMALIZAL_M0.md`.
 ## 4. Elfogadási feltételek
 
 - **K1.** Egy függvény, minden M0-beli bemeneti alakra teszttel; az idempotencia-teszt zöld.
-- **K2.** A `lekerdez.py` és a `betolt.py` csak ezt a függvényt használja Strong-normalizálásra; kimenetük változatlan.
+- **K2.** A `lekerdez.py` és a `betolt.py` csak ezt a függvényt használja Strong-normalizálásra; kimenetük változatlan, kivéve az érvénytelen vagy nullázatlan CLI-bemenetet (`lekerdez.py`), amely hibát ad a helyes alakkal (DT-F62a).
 - **K3.** Az adattáblák mérése dokumentált (0 találat is); adattábla nem változott.
 - **K4.** Az `ellenoriz.py` és a CI zöld; a független ellenőr eltérés nélkül zár.
 
@@ -82,3 +82,4 @@ Jelentés: `naplok/STRONG_NORMALIZAL_M0.md`.
 |---|---|---|---|
 | v1 | 2026-10-05 | A munkaterv „N21 nullázatlan értékek javítása” része a KB3 (`4ecb612`) óta várhatóan tárgytalan; a feladat adattáblát nem ír, az M0 mér. | befogadás, mérés 2026-10-05 |
 | v1 | 2026-10-05 | A többi normalizáló cseréje nem e feladat része; leltár és javaslat. | befogadás |
+| v2 | 2026-10-11 | Az M0 elfogadva (nyelv=, utotag=tilt, ötjegyű: csak a vezető nulla, A#### kivétel, ValueError). A `lekerdez.py` CLI-bemenete szigorú (hiba a helyes alakkal), a függvény normalizál; a `betolt.py` kimenete bájtra azonos. K2 kiegészítve. | DT-F62a |
