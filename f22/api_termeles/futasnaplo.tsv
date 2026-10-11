@@ -1569,3 +1569,11 @@ ts	futas	koteg	probalkozas	modell	gondolkodas_mod	igehely_db	kjv	bemenet_token	k
 2026-10-11T17:57:38+00:00	api_termeles/high/Hos	8	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	9563	5408		0.036603	batch_ar_szamolt	1	1		end_turn	84f12ca7aafb	81.456769	nem
 2026-10-11T17:59:47+00:00	api_termeles/high/Hos	19	2	claude-sonnet-5-5	adaptive,effort=high	10	nem	11655	1497		0.019140	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	81.475909	igen
 2026-10-11T17:59:47+00:00	api_termeles/high/Hos	8	2	claude-sonnet-5-5	adaptive,effort=high	10	nem	11210	1494		0.018680	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	81.494589	igen
+2026-10-11T19:10:51+00:00	api_termeles/high/Mal	6	1	claude-sonnet-5-5	adaptive,effort=high	5	nem	7618	4237		0.028803	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	81.523392	igen
+2026-10-11T19:10:51+00:00	api_termeles/high/Mal	1	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	11755	9823		0.060870	batch_ar_szamolt	10	1		end_turn	84f12ca7aafb	81.584262	nem
+2026-10-11T19:10:51+00:00	api_termeles/high/Mal	4	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	11810	10842		0.066020	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	81.650282	igen
+2026-10-11T19:10:51+00:00	api_termeles/high/Mal	3	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	11654	10500		0.064154	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	81.714436	igen
+2026-10-11T19:10:51+00:00	api_termeles/high/Mal	5	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	11713	11215		0.067788	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	81.782224	igen
+2026-10-11T19:10:51+00:00	api_termeles/high/Mal	2	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	11995	12070		0.072345	batch_ar_szamolt	1	1		end_turn	84f12ca7aafb	81.854569	nem
+2026-10-11T19:13:42+00:00	api_termeles/high/Mal	2	2	claude-sonnet-5-5	adaptive,effort=high	10	nem	14183	1551		0.021938	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	81.876507	igen
+2026-10-11T19:13:42+00:00	api_termeles/high/Mal	1	2	claude-sonnet-5-5	adaptive,effort=high	10	nem	14438	11339		0.071133	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	81.947640	igen
