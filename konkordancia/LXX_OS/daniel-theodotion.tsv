@@ -1,6 +1,7 @@
 # GENERÁLT: eszkozok/lxx_os_import.py — kézzel nem szerkesztendő.
 # forras: lxx-morph@c91f6b1e8fb3ba37df701e6ae31f675ace71a2b2 (CC BY 4.0) + GreekWordList@dd5a2fd530ab3c6b748c174cec38966c356d8111 (CC BY 4.0)
 # sha256(verse_pairs.jsonl)=3a91c571f1f32545f78397a256fdfa5124bcbcbc42902411a8a93209dcb2e985 | sha256(GreekWordList.js)=84703d5de9fae423c141ff374ffab73fcda288d0a400fcd500445302a5dbe483
+# F54 (DT-F54a): a Károli-kulcs nélküli versek pótlása `python eszkozok/lxx_os_import.py --ujrabesorol-lefedettseg` szerint (tábla, felirat-szabály, sorrend-beágyazás), ts=2026-10-11
 igehely_lxx	igehely_kjv	igehely_karoli	karoli_ok	pozicio	szoalak	normalizalt	lemma	morf	strong	strong_ok	proveniencia
 Daniel (Theodotion) 1:1	1:1	Dán 1:1		1	ἐν	εν	ἐν	preposition	1722		forras=lxx-morph@c91f6b1e8fb3ba37df701e6ae31f675ace71a2b2 | forras=GreekWordList@dd5a2fd530ab3c6b748c174cec38966c356d8111 | ts=2026-09-26
 Daniel (Theodotion) 1:1	1:1	Dán 1:1		2	ἔτει	ετει	ἔτος	noun neut dat sg	2094		forras=lxx-morph@c91f6b1e8fb3ba37df701e6ae31f675ace71a2b2 | forras=GreekWordList@dd5a2fd530ab3c6b748c174cec38966c356d8111 | ts=2026-09-26

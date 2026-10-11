@@ -426,6 +426,235 @@ def ujrabesorol_esdras_eszter():
                 f.write("\t".join(p) + "\n")
         jelentes[slug] = (len(osszes), sorted(kulcsolt))
     return jelentes
+
+# --- F54 (DT-F54a): a Károli-kulcs nélküli LXX-versek pótlása --------------------------------
+# Általános szabályok, kizárólag tábla- és szomszédkulcs-alapon (kézi kitöltés és a régi,
+# kivezetett LXX_kivonat nélkül):
+#   (1) A1 tábla: a Karoli_versmegfeleltetes.tsv sora -> igehely_kjv -> az egyetlen nem kulcsolt
+#       LXX-vers, amelynek igehely_kjv listája (pontosvesszős) tartalmazza;
+#   (2) zsolt_felirat: a dup-KJV-cél szabály miatt kulcs nélkül maradt felirat-vers (Zsolt N:1);
+#       két feliratvers esetén sorrendi párosítás (N:1 és N:2);
+#   (3) A3 sorrend-beágyazás: a nem kulcsolt Károli-szakasz és a nem kulcsolt LXX-szakasz a
+#       kulcsolt szomszédok között azonos hosszú -> sorrendi párosítás.
+# Minden szabály: a szószám-arány (LXX/Károli) [0,4; 2,5]-ben van, és nem kulcsolt Károli-versre
+# nem ad második kulcsot. Az eredmény a naplok/LXX_OS_LEFEDETTSEG_osztalyozas.tsv-vel vethető össze.
+LEFEDETTSEG_KONYVEK = ("2Móz", "4Móz", "Józs", "1Sám", "1Kir", "Jób", "Zsolt", "Péld", "Én", "Ézs",
+                       "Jer", "Dán", "Hós", "Jón")
+_KAROLI_SZO_CACHE = None
+_TABLA_CACHE = None
+
+
+def _karoli_szavak():
+    """{Károli-könyv: [(fejezet, vers, igehely, szószám)] rendezve}"""
+    global _KAROLI_SZO_CACHE
+    if _KAROLI_SZO_CACHE is None:
+        d = {}
+        with open(os.path.join(KONKORDANCIA_DIR, "Karoli_1908.tsv"), encoding="utf-8") as f:
+            for sor in f:
+                p = sor.rstrip("\r\n").split("\t")
+                m = re.match(r"^(.+) (\d+):(\d+)$", p[0])
+                if m and len(p) > 1:
+                    d.setdefault(m.group(1), []).append((int(m.group(2)), int(m.group(3)), p[0], len(p[1].split())))
+        for v in d.values():
+            v.sort()
+        _KAROLI_SZO_CACHE = d
+    return _KAROLI_SZO_CACHE
+
+
+def _tabla_kjv():
+    """{igehely_karoli: igehely_kjv} a Karoli_versmegfeleltetes.tsv-ből"""
+    global _TABLA_CACHE
+    if _TABLA_CACHE is None:
+        d = {}
+        with open(VERSMEGFELELTETES_TSV, encoding="utf-8") as f:
+            for sor in f:
+                sor = sor.rstrip("\r\n")
+                if not sor or sor.startswith("#") or sor.startswith("igehely_karoli\t"):
+                    continue
+                p = sor.split("\t")
+                d[p[0]] = p[1]
+        _TABLA_CACHE = d
+    return _TABLA_CACHE
+
+
+def _pearson(x, y):
+    n = len(x)
+    if n < 3:
+        return None
+    mx, my = sum(x) / n, sum(y) / n
+    sx = sum((a - mx) ** 2 for a in x)
+    sy = sum((b - my) ** 2 for b in y)
+    if sx == 0 or sy == 0:
+        return None
+    return sum((a - mx) * (b - my) for a, b in zip(x, y)) / (sx * sy) ** 0.5
+
+
+def lefedettseg_javit_konyv(slug, sorok):
+    """Helyben írja át a `sorok` (LXX_OS_HEADER-oszlopú listák) igehely_karoli / karoli_ok
+    oszlopát a fenti szabályok szerint. -> {LXX-igehely: (Károli-igehely, karoli_ok)}."""
+    _cim, book_key, _t = BOOKS[slug]
+    konyv = BOOK_KEY_TO_KAROLI.get(book_key)
+    if konyv not in LEFEDETTSEG_KONYVEK or elsodleges_slug(konyv) != slug:
+        return {}
+    kar = _karoli_szavak().get(konyv, [])
+    tabla = _tabla_kjv()
+    # LXX-versek fájlsorrendben
+    ver, sorrend = {}, []
+    for p in sorok:
+        r = ver.get(p[0])
+        if r is None:
+            r = ver[p[0]] = {"kjv": p[1], "kar": p[2], "n": 0}
+            sorrend.append(p[0])
+        r["n"] += 1
+    idx = {k: i for i, k in enumerate(sorrend)}
+    kulcs_lxx = {}
+    for k in sorrend:
+        if ver[k]["kar"]:
+            kulcs_lxx.setdefault(ver[k]["kar"], []).append(k)
+    kar_szo = {ig: n for (_c, _v, ig, n) in kar}
+    kar_lista = [ig for (_c, _v, ig, _n) in kar]
+    kar_pos = {ig: i for i, ig in enumerate(kar_lista)}
+
+    def beagyaz(ig):
+        i = kar_pos[ig]
+        pre = next((j for j in range(i - 1, -1, -1) if kar_lista[j] in kulcs_lxx), None)
+        suc = next((j for j in range(i + 1, len(kar_lista)) if kar_lista[j] in kulcs_lxx), None)
+        if pre is None or suc is None:
+            return "n/a", ""
+        if len(kulcs_lxx[kar_lista[pre]]) != 1 or len(kulcs_lxx[kar_lista[suc]]) != 1:
+            return "n/a", ""
+        P, N = kulcs_lxx[kar_lista[pre]][0], kulcs_lxx[kar_lista[suc]][0]
+        if idx[P] >= idx[N]:
+            return "n/a", ""
+        s_lxx = sorrend[idx[P] + 1:idx[N]]
+        if any(ver[k]["kar"] for k in s_lxx):
+            return "n/a", ""
+        s_k = kar_lista[pre + 1:suc]
+        if len(s_lxx) == 0:
+            return "ures", ""
+        if len(s_lxx) != len(s_k):
+            return "eltero", ""
+        return "pair", s_lxx[s_k.index(ig)]
+
+    def kjv_lista(s):
+        return [x for x in s.split(";") if x]
+
+    def arany_ok(lxx_ig, kar_ig):
+        a = ver[lxx_ig]["n"] / kar_szo[kar_ig]
+        return 0.4 <= a <= 2.5
+
+    def fej_r(kar_ig, lxx_ig):
+        m = re.match(r"^(.*) (\d+):(\d+)$", lxx_ig)
+        lc, lv = int(m.group(2)), int(m.group(3))
+        kc = int(kar_ig.rsplit(" ", 1)[1].split(":")[0])
+        kv = int(kar_ig.rsplit(":", 1)[1])
+        s = lv - kv
+        xs, ys = [], []
+        for (c, v, ig, n) in kar:
+            if c != kc:
+                continue
+            lig = None
+            for k in sorrend:
+                mm = re.match(r"^(.*) (\d+):(\d+)$", k)
+                if mm and int(mm.group(2)) == lc and int(mm.group(3)) == v + s:
+                    lig = k
+                    break
+            if lig:
+                xs.append(n)
+                ys.append(ver[lig]["n"])
+        return _pearson(xs, ys)
+
+    # tábla-jelöltek a nem kulcsolt Károli-versekre
+    javaslat = {}  # Károli-igehely -> (lxx, ok)
+    cand_van = {}
+    for ig in kar_lista:
+        if ig in kulcs_lxx:
+            continue
+        tk = tabla.get(ig)
+        cand = [k for k in sorrend if tk and tk in kjv_lista(ver[k]["kjv"]) and not ver[k]["kar"]]
+        cand_van[ig] = cand
+    for ig in kar_lista:
+        if ig in kulcs_lxx:
+            continue
+        cand = cand_van[ig]
+        emb, emb_cel = beagyaz(ig)
+        c_, v_ = int(ig.rsplit(" ", 1)[1].split(":")[0]), int(ig.rsplit(":", 1)[1])
+        cel = None
+        ok = "versmegfeleltetes_tabla"
+        if konyv == "Zsolt" and v_ in (1, 2):
+            if v_ == 1 and cand and re.search(r":[12]$", cand[0]):
+                cel, ok = cand[0], "zsolt_felirat_eltolas"
+            elif v_ == 2 and not cand:
+                elozo = "Zsolt %d:1" % c_
+                ec = cand_van.get(elozo, [])
+                if len(ec) == 2 and re.search(r":2$", ec[1]):
+                    cel, ok = ec[1], "zsolt_felirat_eltolas"
+            elif v_ == 2 and len(cand) == 1 and re.search(r":2$", cand[0]):
+                cel, ok = cand[0], "zsolt_felirat_eltolas"
+            if cel and emb == "pair" and emb_cel != cel:
+                cel = None
+        if cel is None and len(cand) == 1 and not (konyv == "Zsolt" and v_ in (1, 2)):
+            t = cand[0]
+            if arany_ok(t, ig) and (emb == "pair" and emb_cel == t or emb != "pair"):
+                rr = fej_r(ig, t)
+                bij = sum(1 for x in cand_van.values() if t in x) == 1
+                if emb == "pair" or (rr is not None and rr >= 0.6) or bij:
+                    cel = t
+        if cel is None and emb == "pair" and not cand and arany_ok(emb_cel, ig):
+            cel, ok = emb_cel, "sorrend_beagyazas"
+        if cel:
+            javaslat[ig] = (cel, ok)
+    # ket Károli-vers ugyanarra az LXX-versre: egyiket sem fogadjuk el
+    db = {}
+    for ig, (cel, _ok) in javaslat.items():
+        db[cel] = db.get(cel, 0) + 1
+    uj = {}
+    for ig, (cel, ok) in javaslat.items():
+        if db[cel] == 1:
+            uj[cel] = (ig, ok)
+    for p in sorok:
+        if p[0] in uj and not p[2]:
+            p[2], p[3] = uj[p[0]]
+    return uj
+
+
+def ujrabesorol_lefedettseg():
+    """Offline (nincs letöltés): a LEFEDETTSEG_KONYVEK elsődleges LXX_OS-fájljaiban a Károli-kulcs
+    nélküli versek pótlása a lefedettseg_javit_konyv() szerint. Csak az igehely_karoli és a
+    karoli_ok oszlop változhat (K5); a többi oszlopot és a sorrendet megőrzi, és ellenőrzi."""
+    jelentes = {}
+    for konyv in LEFEDETTSEG_KONYVEK:
+        slug = elsodleges_slug(konyv)
+        ut = os.path.join(LXX_OS_DIR, f"{slug}.tsv")
+        komment, fejlec, sorok = [], None, []
+        with open(ut, encoding="utf-8") as f:
+            for sor in f:
+                sor = sor.rstrip("\r\n")
+                if sor.startswith("#"):
+                    komment.append(sor)
+                elif fejlec is None:
+                    fejlec = sor
+                else:
+                    sorok.append(sor.split("\t"))
+        assert fejlec.split("\t") == LXX_OS_HEADER, fejlec
+        eredeti = [list(p) for p in sorok]
+        uj = lefedettseg_javit_konyv(slug, sorok)
+        for a, b in zip(eredeti, sorok):
+            assert len(a) == len(b) and [x for i, x in enumerate(a) if i not in (2, 3)] == [x for i, x in enumerate(b) if i not in (2, 3)], "K5: nem csak a karoli oszlopok változtak"
+        jegyzet = ("# F54 (DT-F54a): a Károli-kulcs nélküli versek pótlása `python eszkozok/lxx_os_import.py "
+                   "--ujrabesorol-lefedettseg` szerint (tábla, felirat-szabály, sorrend-beágyazás), ts="
+                   + __import__("datetime").date.today().isoformat())
+        komment = [k for k in komment if not k.startswith("# F54 (DT-F54a)")] + [jegyzet]
+        with open(ut, "w", encoding="utf-8", newline="\n") as f:
+            for k in komment:
+                f.write(k + "\n")
+            f.write(fejlec + "\n")
+            for p in sorok:
+                f.write("\t".join(p) + "\n")
+        jelentes[slug] = uj
+    return jelentes
+
+
 EM_DASH = "—"
 
 LXX_OS_HEADER = [
@@ -979,10 +1208,17 @@ def main():
     parser.add_argument("--forras", metavar="KONYVTAR", help="mar letoltott forrasok konyvtara")
     parser.add_argument("--sqlite-ellenoriz", action="store_true", help="bulk SQLite letoltese es ellenorzes")
     parser.add_argument("--konyvek", help="csak ezekre a slugokra fusson (vesszovel elvalasztva)")
+    parser.add_argument("--ujrabesorol-lefedettseg", action="store_true",
+                        help="offline: a Károli-kulcs nélküli versek pótlása (F54 / DT-F54a), letöltés nélkül")
     parser.add_argument("--ujrabesorol", action="store_true",
                         help="offline: a 2-esdras.tsv és az esther-greek.tsv Károli-besorolásának újraírása "
                              "(F42 / DT-F42f f1), letöltés nélkül")
     args = parser.parse_args()
+
+    if args.ujrabesorol_lefedettseg:
+        for slug, uj in ujrabesorol_lefedettseg().items():
+            print(f"  {slug}: {len(uj)} új Károli-kulcs", file=sys.stderr)
+        return
 
     if args.ujrabesorol:
         for slug, (db, kulcsolt) in ujrabesorol_esdras_eszter().items():
@@ -1046,6 +1282,8 @@ def main():
                 slug, morph_dir, verse_pairs_idx, greek_word_list, proveniencia_line,
                 os.path.join(cache_dir, "verse_pairs.jsonl"),
             )
+            rows = [list(r) for r in rows]
+            lefedettseg_javit_konyv(slug, rows)
             comment = [
                 "# GENERÁLT: eszkozok/lxx_os_import.py — kézzel nem szerkesztendő.",
                 f"# forras: lxx-morph@{LXX_MORPH_COMMIT} (CC BY 4.0) + GreekWordList@{GREEKWORDLIST_COMMIT} (CC BY 4.0)",
