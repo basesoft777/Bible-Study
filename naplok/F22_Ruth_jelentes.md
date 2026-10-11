@@ -2,7 +2,7 @@
 
 *A számok szkriptkimenetből jönnek (`f22_statisztika.py --konyv Ruth`, `egyesit.py --konyv Ruth` és `--ellenoriz`, `f22_elemzes.py --konyv Ruth`, a `f22/api_termeles/futasnaplo.tsv` és `batchek.tsv` Ruth-soraiból: `futas = api_termeles/high/Ruth`, `cimke = ruth`, a `f22/api_termeles/high/_munka/Ruth_k*.json` hibaüzenetei). Ág: `claude/f22-ruth` (a main `3ceddf0a` commitjáról; az 1Kir PR #274, a Neh PR #275, a 2Kir PR #277 és a Dán PR #279 már a main-en). Módszer: `prompt_v3` változatlanul, **Sonnet a Message Batches API-n, `effort=high`** (DT73 (a)), **a C (Gemini) kimarad** (DT-F22c), 10 verses kötegek.*
 
-*Sorrend: a Dán után a hiányzó kis könyvek közül a Ruth a legkisebb (85 vers), a detektor szerint beolvasztás nélküli. Indítás: felhasználó, chat, 2026.10.11 („mehet a Ruth”).*
+*Sorrend: a Dán után a hiányzó kis könyvek egyike (85 vers; az Abd 21, a Hag 38, a Náh 47 és a Jón 48 verssel kisebb), a detektor szerint beolvasztás nélküli; a választás a felhasználóé. Indítás: felhasználó, chat, 2026.10.11 („mehet a Ruth”).*
 
 ## 1. Menet
 
@@ -85,4 +85,10 @@ Eltérő Károli-token (két modell partnerhalmaza különbözik) összesen: 0; 
 - Független szúrópróba (22.6): elmarad (DT70).
 - PR és merge a felhasználóé.
 - A következő könyv(ek) a felhasználó döntése: az ÓSZ-ből még 15 kis könyv hiányzik (Préd, Én, Sir, Hós, Jóel, Ámós, Abd, Jón, Mik, Náh, Hab, Sof, Hag, Zak, Mal; együtt 1 540 vers); a Hós (1:11, 11:11) és a Préd (2:26) jóváhagyott 2:1 beolvasztást tartalmaz (`f22/versosszevonas.tsv`, DT92), ezeknél kézi átnézési pont várható; a többi 13 tiszta.
+
+## 6. Ellenőri kör (`naplok/ELLENOR_F22_Ruth.md`)
+
+Az ellenőr a számszerű állításokat (85/85, 2 078 / 4 071, 1/85 → 0, 0,5824 USD, 77,2232 USD, a futó összeg folytonossága, az 1 540 vers a 15 megmaradt könyvben) saját lekérdezéssel igazolta; 1 eltérés:
+
+- **A „legkisebb” állítás téves volt:** az Abd (21), a Hag (38), a Náh (47) és a Jón (48) kisebb a Ruthnál; az indok memóriából íródott. A D34-ben és az induló megjegyzésben javítva; a futtatás és az adatok helyességét nem érinti.
 
