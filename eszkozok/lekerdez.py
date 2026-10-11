@@ -33,6 +33,32 @@ ROOT = Path(__file__).resolve().parent.parent
 KONK = ROOT / "konkordancia"
 ADAT = ROOT / "adat"
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from strong_util import strong_normalizal  # noqa: E402  (F62: az egyetlen Strong-normalizáló)
+
+
+def cli_strong(nyers):
+    """A CLI egyetlen Strong-számának ellenőrzése (F62, DT-F62a): a bemenet kisbetűsíthető
+    és szóközölhető, de a SEMA 1.2 alakot (H0779) pontosan el kell érnie; nullázatlan vagy
+    érvénytelen alakra hiba áll a helyes alakkal — nem néma nem-találat."""
+    s = nyers.strip().upper()
+    if not s.startswith(("H", "G")):
+        print("A Strong-szám H vagy G előtaggal kezdődjön.", file=sys.stderr)
+        sys.exit(1)
+    try:
+        jo = strong_normalizal(s)
+    except ValueError as exc:
+        print(f"Érvénytelen Strong-szám ({nyers!r}): {exc}. A Strong-szám H0779 alakú legyen.",
+              file=sys.stderr)
+        sys.exit(1)
+    if "+" in jo:
+        print(f"Egyetlen Strong-számot adj meg, nem láncot ({nyers!r}).", file=sys.stderr)
+        sys.exit(1)
+    if jo != s:
+        print(f"A Strong-szám {jo} alakú legyen (kapott: {nyers!r}).", file=sys.stderr)
+        sys.exit(1)
+    return jo
+
 # ---------------------------------------------------------------------------
 # Segéd: időbélyeg, TSV-olvasás
 # ---------------------------------------------------------------------------
@@ -370,14 +396,11 @@ def cmd_gerinc(args):
 
 def cmd_scan(args):
     """3. lépés — teljes ÓSZ/ÚSZ scan egy Strong-számra."""
-    strong = args.strong.strip().upper()
+    strong = cli_strong(args.strong)
     if strong.startswith("H"):
         rows, src, scope = load_tahot(), "TAHOT_kivonat.tsv", "TAHOT-teljes"
-    elif strong.startswith("G"):
-        rows, src, scope = load_tagnt(), "TAGNT_kivonat.tsv", "TAGNT-teljes"
     else:
-        print("A Strong-szám H vagy G előtaggal kezdődjön.", file=sys.stderr)
-        sys.exit(1)
+        rows, src, scope = load_tagnt(), "TAGNT_kivonat.tsv", "TAGNT-teljes"
 
     if args.szakasz:
         rng = scope_range(args.szakasz)
@@ -397,7 +420,7 @@ def cmd_scan(args):
 
 def cmd_kollokacio(args):
     """4. lépés — kollokáció: két Strong-szám együttes előfordulása egy versben."""
-    a, b = args.strong_a.strip().upper(), args.strong_b.strip().upper()
+    a, b = cli_strong(args.strong_a), cli_strong(args.strong_b)
     rows = combined_rows()
     byverse = defaultdict(set)
     sources = set()
@@ -419,14 +442,11 @@ def cmd_kollokacio(args):
 
 def cmd_igealak(args):
     """5. lépés — igealak-szintű ellenőrzés: egy Strong minden ragozott alakja, emberi döntéshez."""
-    strong = args.strong.strip().upper()
+    strong = cli_strong(args.strong)
     if strong.startswith("H"):
         rows, src, scope = load_tahot(), "TAHOT_kivonat.tsv", "TAHOT-teljes"
-    elif strong.startswith("G"):
-        rows, src, scope = load_tagnt(), "TAGNT_kivonat.tsv", "TAGNT-teljes"
     else:
-        print("A Strong-szám H vagy G előtaggal kezdődjön.", file=sys.stderr)
-        sys.exit(1)
+        rows, src, scope = load_tagnt(), "TAGNT_kivonat.tsv", "TAGNT-teljes"
 
     hits = [r for r in rows if r["Strong-szám"] == strong]
     hits.sort(key=lambda r: r["_parsed"])
@@ -470,9 +490,11 @@ def cmd_lxx_hid(args):
 
     def strong_alak(s):
         # A GreekWordList néhány Strongja betűutótagos (pl. 3924a): a kimenet megtartja, a
-        # TAGNT-keresés a betű nélküli G####-alakot használja.
-        m = re.match(r"^(\d+)([a-z]*)$", s or "")
-        return f"G{int(m.group(1)):04d}{m.group(2)}" if m else ""
+        # TAGNT-keresés a betű nélküli G####-alakot használja. Üres/érvénytelen: "".
+        try:
+            return strong_normalizal(s or "", nyelv="G", utotag="megtart")
+        except ValueError:
+            return ""
 
     def strong_tagnt(s):
         return re.sub(r"[a-z]+$", "", strong_alak(s))

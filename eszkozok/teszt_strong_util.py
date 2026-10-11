@@ -168,5 +168,36 @@ class Tulajdonsagok(unittest.TestCase):
             self.assertGreater(n, 0, rel)
 
 
+class LekerdezCli(unittest.TestCase):
+    """DT-F62a: a lekerdez.py CLI-bemenete szigorú — hiba a helyes alakkal, nem néma nem-találat."""
+
+    def setUp(self):
+        import io
+        import contextlib
+        import lekerdez
+        self.L = lekerdez
+        self.io, self.cl = io, contextlib
+
+    def _hiba(self, s):
+        puf = self.io.StringIO()
+        with self.cl.redirect_stderr(puf):
+            with self.assertRaises(SystemExit) as cm:
+                self.L.cli_strong(s)
+        self.assertEqual(cm.exception.code, 1)
+        return puf.getvalue()
+
+    def test_ervenyes_alak(self):
+        self.assertEqual(self.L.cli_strong('H0779'), 'H0779')
+        self.assertEqual(self.L.cli_strong(' h0779 '), 'H0779')
+        self.assertEqual(self.L.cli_strong('G0086'), 'G0086')
+
+    def test_nullazatlan_hibat_ad_a_helyes_alakkal(self):
+        self.assertIn('H0779 alakú legyen', self._hiba('H779'))
+
+    def test_ervenytelen_alakok(self):
+        for s in ('1078', 'A0002', 'H2967a', 'H0779+H0780', 'X1', '', 'H'):
+            self._hiba(s)
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
