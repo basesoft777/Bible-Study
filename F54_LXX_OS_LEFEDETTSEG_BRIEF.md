@@ -6,7 +6,8 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: nem_indult
+allapot: fut
+ag: claude/lxx-os-lefedettseg
 ad: az 503 Károli-vers mindegyikéről (az lxx-hid az LXX_OS-ből n=0-t ad, a régi LXX_kivonat adott) dokumentált ítélet: kulcsolási rés (pótolva az lxx_os_import.py besorolásában) vagy valódi görög hiány (explicit üres eredmény); idegen vagy kettős Károli-kulcs nem keletkezik
 kovetkezo: /kovetkezo; ⛔ az M0 felmérés után
 olvas: ["konkordancia/LXX_OS/*.tsv", konkordancia/LXX_OS/README.md, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Verzifikacios_elteres_tabla.tsv, naplok/FORRASKIVEZETES_M5_M7.md, naplok/FORRASKIVEZETES_M5_eltereslista.tsv, eszkozok/lekerdez.py]
