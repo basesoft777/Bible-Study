@@ -79,7 +79,7 @@ Legalább 3 Jób-, 2 Hóseás- és 2 zsoltárvers: teljesül (3 / 2 / 4). Hiba n
 - **⛔ DT-F54b:** a Zsolt 13 hibás kulcsai (3. szakasz); a változó kulcsokra hivatkozik a `konkordancia/LXX_versszintu_parok.tsv` 15 sora (Zsolt 13:3 → Psalms (LXX) 12:4 8 sor; Zsolt 13:4 → 12:5 7 sor).
 - **Elavult generált tábla:** a `konkordancia/LXX_versszintu_parok.tsv` (generált, `eszkozok/lxx_versszintu_import.py`) az M1 előtti kulcsokból készült; a 438 új kulcs miatt újragenerálandó — a hatókörön kívül, a Zsolt 13 döntése után egyszerre.
 - **N-F54a:** Péld 12, Jób 17, 2Móz 36 (NYITOTT_FELADATOK.md).
-- **Megmaradt üres:** 3 B, 5 C, a bizonytalan (Péld 12 27, Jób 17 15, 2Móz 36 11, Jer 48:40–41 2, 2Móz 39:38, Zsolt 13:5 — ez utóbbi most a Zsolt 13:6 extra-kulcs mellett: a Károli 13:5 a hibás kulcsú LXX 12:5-nek felel meg) és a 4 kimaradt A1 (2Móz 37:4, 37:13, 38:1, 1Kir 4:27).
+- **Megmaradt üres (javítva az F54.11-ben, ellenőri eltérés K3):** 3 B, 5 C, **56** bizonytalan (Péld 12 27, Jób 17 15, 2Móz 36 11, Jer 48:40–41 2, 2Móz 39:38) és a 4 kimaradt A1 (2Móz 37:4, 37:13, 38:1, 1Kir 4:27). A Zsolt 13:5 a DT-F54b javítása óta **kulcsolt** (LXX Ps 12:5 → Zsolt 13:5); az M0 „57 bizonytalan” szám ezzel 56-ra csökken, a kulcsolt A osztály 438 − 4 + 1 = **435**.
 
 ## 7. Utólagos javítások és tételes melléklet (F54.4)
 
