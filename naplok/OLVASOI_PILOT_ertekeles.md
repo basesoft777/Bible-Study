@@ -231,4 +231,26 @@ Az M3 eddigi döntései (a felhasználó a chatben, 2026-10-12):
 
 ### 8.5 Korlátok
 
-A D3 a régi ág szó-lapjainak részhalmazát méri (az újabb blokkok lekérdezési ideje nincs benne); a tömörített részhalmaz-méret becslés; az 1Móz 1–25 és a Zsolt 22 két szakasz, a költői könyvek és az ÚSZ általánosítása nincs mérve. A független ellenőr első jelentése (`naplok/ELLENOR_OLVASOI_PILOT.md`, 14 eltérés) javítva (F60.44 és köv.); az ellenőr újrafuttatása és a felhasználói M3 további észrevételei még hátra vannak.
+A D3 a régi ág szó-lapjainak részhalmazát méri (az újabb blokkok lekérdezési ideje nincs benne); a tömörített részhalmaz-méret becslés; az 1Móz 1–25 és a Zsolt 22 két szakasz, a költői könyvek és az ÚSZ általánosítása nincs mérve. A független ellenőr két köre lefutott (`naplok/ELLENOR_OLVASOI_PILOT.md`: 14 eltérés, `_2.md`: 5 eltérés), mindkettő javítva (F60.44–F60.53); a K1 eltérését a felhasználó elfogadta (v3.5).
+
+### 8.6 Összevetés: a KJV Strong-címkézése (a nem kattintható szavak aránya)
+
+*A felhasználó kérdésére (2026-10-12): a 8.1 szerinti „a Károli-szavak kb. 41%-a nem kattintható” arány a KJV-ben. A teljes KJV-szöveg nincs a repóban (a `KJV_Strongs_teljes.tsv` csak a címkézett szavakat tartja), ezért a mérés az eBible USFM-csomagján fut, a repón kívül; a szkript: `eszkozok/olvaso_pilot/kjv_osszevetes.py`. A Károli-oszlopok a 2. pont (meres.md 1. pont) számai.*
+
+- `scope=1Móz 1–25 + Zsolt 22, KJV-szavak (betűtoken; lábjegyzet és kereszthivatkozás nélkül) | forras=eBible eng-kjv_usfm.zip sha256=80bb0add46d3a648e6f68239d2721c259df23e3f247065bb12f2819c8c23728d (letöltve 2026-10-12) + adat/grammatikai_strongok.tsv (92 elem) | ts=2026-10-12T18:26Z`
+
+| | Károli 1Móz 1–25 | KJV 1Móz 1–25 | Károli Zsolt 22 | KJV Zsolt 22 |
+|---|---|---|---|---|
+| szó összesen | 12 961 | 17 401 | 407 | 604 |
+| tartalmas héber szóhoz kötött (kattintható) | 58,8% | 37,6% | 59,7% | 30,6% |
+| nyelvtani elemhez kötött | 24,8% | 0,6% | 22,6% | 0,0% |
+| címke / pár nélkül | 16,4% | 61,8% | 17,7% | 69,4% |
+| **nem kattintható összesen** | **41,2%** | **62,4%** | **40,3%** | **69,4%** |
+
+A KJV címke nélküli szavai közül 456 (1Móz 1–25), illetve 32 (Zsolt 22, a felirattal) dőlt, fordítói betoldás (`\add`). A Zsolt 22 KJV-oszlopa a felirat nélküli 31 vers; a felirattal együtt 615 szó, 30,9% / 0,0% / 69,1%.
+
+**Értelmezés (nem lekérdezés-eredmény):**
+- A két arány nem ugyanazt a címkézési módot méri. A KJV-címkézés jellemzően egy angol (fő)szót jelöl egy héber szóhoz; a névelők, elöljárók és segédigék címke nélkül maradnak (1Móz 1:1: a „beginning” címkézett, az „In the” nem). A Károli–Strong párosítás a nyelvtani elemeket is bekötötte (pl. a tárgyragot a tárgyjelölő szóhoz), ezért a Károli „nyelvtani” 24,8%-a a KJV-ben „címke nélküli”.
+- A magyar tömörebb (ragok, jelek a szóban): ugyanaz a szakasz 12 961 magyar és 17 401 angol szó.
+- Következmény a #25a-ra: a Károli kattintható aránya (58,8%) a KJV-címkézésből adódó 37,6% fölött van; a 8.4/5 („minden szó kattintható legyen?”) elsősorban a nyelvtani elemhez kötött 24,8%-on múlik, amely adatként megvan (a pár a nyelvtani Strong-számra mutat), csak szó-lapja nincs. Ez felületi döntés, nem adathiány. *javaslat*
+- A letöltött csomag újabb, mint a #19 importjáé (`licencek.tsv` KJV_Strongs_teljes: sha256 1bab5d4d…); a címkézés módja a két változatban azonos jellegű, a különbséget nem mértük.
