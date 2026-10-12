@@ -42775,6 +42775,7 @@ szoalak_strong	2Móz	űzöm	H1644	2	magas							scope=manual | forras=adat/karol
 szoalak_strong	2Móz	űzöm	H7291	1	magas							scope=manual | forras=adat/karoli_strong/parok_2Moz.tsv | ts=2026-10-11T17:27:52Z
 szoalak_strong	2Móz	űzőbe	H0310	2	magas							scope=manual | forras=adat/karoli_strong/parok_2Moz.tsv | ts=2026-10-11T17:27:52Z
 megerosites	1Móz	H3548	H3548		magas	KIRALY-001	1Móz 14:18-20	papja	nem			scope=manual | forras=adat/karoli_strong/parok_*.tsv (vers: 1Móz 14:18-20) | ts=2026-10-11T17:27:52Z
+megerosites	2Móz	H3548+H4467	H3548,H4467		magas	KIRALY-001	2Móz 19:6	papok birodalma	nem			scope=manual | forras=adat/karoli_strong/parok_*.tsv (vers: 2Móz 19:6) | ts=2026-10-12T06:48:59Z
 megerosites	1Móz	H7121+H8034	H3068,H7121,H8034,H9003,H9005,H9023		magas	ISTENTISZT-001	1Móz 4:26	segítségül hívni az Úrnak nevét	igen		segítségül:H9003,úrnak:H3068	scope=manual | forras=adat/karoli_strong/parok_*.tsv (vers: 1Móz 4:26) | ts=2026-10-11T17:27:52Z
 megerosites	1Móz	H7121+H8034	H3068,H7121,H8034,H9003		magas	ISTENTISZT-001	1Móz 12:8	segítségűl hívá az Úr nevét	igen		segítségűl:H9003,úr:H3068	scope=manual | forras=adat/karoli_strong/parok_*.tsv (vers: 1Móz 12:8) | ts=2026-10-11T17:27:52Z
 megerosites	1Móz	H7121+H8034	H0087,H3068,H7121,H8033,H8034,H9003		magas	ISTENTISZT-001	1Móz 13:4	segítségűl hívá ott Ábrám az Úrnak nevét	igen		segítségűl:H9003,ott:H8033,ábrám:H0087,úrnak:H3068	scope=manual | forras=adat/karoli_strong/parok_*.tsv (vers: 1Móz 13:4) | ts=2026-10-11T17:27:52Z
@@ -42786,6 +42787,7 @@ megerosites	1Móz	H8415	H8415		magas	TEREMT-001	1Móz 1:2	mélység	nem			scope=
 megerosites	1Móz	H8415	H7227,H8415		magas	TEREMT-001	1Móz 7:11	a nagy mélység	igen		nagy:H7227	scope=manual | forras=adat/karoli_strong/parok_*.tsv (vers: 1Móz 7:11) | ts=2026-10-11T17:27:52Z
 megerosites	1Móz	H8415	H8415		magas	TEREMT-001	1Móz 8:2	a mélység	nem			scope=manual | forras=adat/karoli_strong/parok_*.tsv (vers: 1Móz 8:2) | ts=2026-10-11T17:27:52Z
 megerosites	1Móz	H8415	H8415,H9002		magas	TEREMT-001	1Móz 49:25	a mélység	nem			scope=manual | forras=adat/karoli_strong/parok_*.tsv (vers: 1Móz 49:25) | ts=2026-10-11T17:27:52Z
+megerosites	2Móz	H8415	H8415		magas	TEREMT-001	2Móz 15:5	a hullámok	nem			scope=manual | forras=adat/karoli_strong/parok_*.tsv (vers: 2Móz 15:5) | ts=2026-10-12T06:48:59Z
 megerosites	2Móz	H8415	H4325,H8415		magas	TEREMT-001	2Móz 15:8	a mélységes vizek	nem			scope=manual | forras=adat/karoli_strong/parok_*.tsv (vers: 2Móz 15:8) | ts=2026-10-11T17:27:52Z
 megerosites	1Móz	H7585	H7585,H9011		magas	ALVIL-001	1Móz 37:35	a sírba	nem			scope=manual | forras=adat/karoli_strong/parok_*.tsv (vers: 1Móz 37:35) | ts=2026-10-11T17:27:52Z
 megerosites	1Móz	H7585	H0834,H7585,H9003,H9011,H9034		magas	ALVIL-001	1Móz 42:38	a koporsóba	nem			scope=manual | forras=adat/karoli_strong/parok_*.tsv (vers: 1Móz 42:38) | ts=2026-10-11T17:27:52Z
