@@ -1,0 +1,461 @@
+# proveniencia: scope=manual | forras=f22/valaszok/sonnet/3Jan.jsonl, f22/versmegfeleltetes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; az API (Batch)-futásnak nincs lekérdezés-időbélyege) | modell-kimenet, javaslat: nem lekérdezés-eredmény; minden link `alacsony` (egy modell, nincs egyezés); a strong a TAGNT-ből, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py
+vers	oldal	sorszam	szo	allapot	partner_sorszam	strong	bizonyossag	forras
+3Ján 1:1	hu	1	A	betoldas			alacsony	S
+3Ján 1:1	hu	2	presbiter	parositva	2	G4245	alacsony	S
+3Ján 1:1	hu	3	a	betoldas			alacsony	S
+3Ján 1:1	hu	4	szeretett	parositva	5	G0027	alacsony	S
+3Ján 1:1	hu	5	Gájusnak	parositva	3	G1050	alacsony	S
+3Ján 1:1	hu	6	a	parositva	6	G3739	alacsony	S
+3Ján 1:1	hu	7	kit	parositva	6	G3739	alacsony	S
+3Ján 1:1	hu	8	én	parositva	7	G1473	alacsony	S
+3Ján 1:1	hu	9	igazán	parositva	9,10	G1722+G0225	alacsony	S
+3Ján 1:1	hu	10	szeretek	parositva	8	G0025	alacsony	S
+3Ján 1:1	er	1	Ὁ	forditatlan		G3588	alacsony	S
+3Ján 1:1	er	2	πρεσβύτερος	parositva	2	G4245	alacsony	S
+3Ján 1:1	er	3	Γαΐῳ	parositva	5	G1050	alacsony	S
+3Ján 1:1	er	4	τῷ	forditatlan		G3588	alacsony	S
+3Ján 1:1	er	5	ἀγαπητῷ	parositva	4	G0027	alacsony	S
+3Ján 1:1	er	6	ὃν	parositva	6,7	G3739	alacsony	S
+3Ján 1:1	er	7	ἐγὼ	parositva	8	G1473	alacsony	S
+3Ján 1:1	er	8	ἀγαπῶ	parositva	10	G0025	alacsony	S
+3Ján 1:1	er	9	ἐν	parositva	9	G1722	alacsony	S
+3Ján 1:1	er	10	ἀληθείᾳ.	parositva	9	G0225	alacsony	S
+3Ján 1:2	hu	1	Szeretett	parositva	1	G0027	alacsony	S
+3Ján 1:2	hu	2	barátom	parositva	1	G0027	alacsony	S
+3Ján 1:2	hu	3	kívánom	parositva	4	G2172	alacsony	S
+3Ján 1:2	hu	4	hogy	betoldas			alacsony	S
+3Ján 1:2	hu	5	mindenben	parositva	2,3	G4012+G3956	alacsony	S
+3Ján 1:2	hu	6	jól	parositva	6	G2137	alacsony	S
+3Ján 1:2	hu	7	legyen	parositva	6	G2137	alacsony	S
+3Ján 1:2	hu	8	dolgod	parositva	5,6	G4771+G2137	alacsony	S
+3Ján 1:2	hu	9	és	parositva	7	G2532	alacsony	S
+3Ján 1:2	hu	10	légy	parositva	8	G5198	alacsony	S
+3Ján 1:2	hu	11	egészséges	parositva	8	G5198	alacsony	S
+3Ján 1:2	hu	12	a	parositva	9	G2531	alacsony	S
+3Ján 1:2	hu	13	mint	parositva	9	G2531	alacsony	S
+3Ján 1:2	hu	14	jó	parositva	10	G2137	alacsony	S
+3Ján 1:2	hu	15	dolga	parositva	10	G2137	alacsony	S
+3Ján 1:2	hu	16	van	parositva	10	G2137	alacsony	S
+3Ján 1:2	hu	17	a	betoldas			alacsony	S
+3Ján 1:2	hu	18	lelkednek	parositva	11,13	G4771+G5590	alacsony	S
+3Ján 1:2	er	1	ἀγαπητέ,	parositva	1,2	G0027	alacsony	S
+3Ján 1:2	er	2	περὶ	parositva	5	G4012	alacsony	S
+3Ján 1:2	er	3	πάντων	parositva	5	G3956	alacsony	S
+3Ján 1:2	er	4	εὔχομαί	parositva	3	G2172	alacsony	S
+3Ján 1:2	er	5	σε	parositva	8	G4771	alacsony	S
+3Ján 1:2	er	6	εὐοδοῦσθαι	parositva	6,7,8	G2137	alacsony	S
+3Ján 1:2	er	7	καὶ	parositva	9	G2532	alacsony	S
+3Ján 1:2	er	8	ὑγιαίνειν	parositva	10,11	G5198	alacsony	S
+3Ján 1:2	er	9	καθὼς	parositva	12,13	G2531	alacsony	S
+3Ján 1:2	er	10	εὐοδοῦταί	parositva	14,15,16	G2137	alacsony	S
+3Ján 1:2	er	11	σου	parositva	18	G4771	alacsony	S
+3Ján 1:2	er	12	ἡ	forditatlan		G3588	alacsony	S
+3Ján 1:2	er	13	ψυχή.	parositva	18	G5590	alacsony	S
+3Ján 1:3	hu	1	Mert	parositva	2	G1063	alacsony	S
+3Ján 1:3	hu	2	felettébb	parositva	3	G3029	alacsony	S
+3Ján 1:3	hu	3	örültem	parositva	1	G5463	alacsony	S
+3Ján 1:3	hu	4	a	betoldas			alacsony	S
+3Ján 1:3	hu	5	mikor	betoldas			alacsony	S
+3Ján 1:3	hu	6	atyafiak	parositva	5	G0080	alacsony	S
+3Ján 1:3	hu	7	jöttek	parositva	4	G2064	alacsony	S
+3Ján 1:3	hu	8	és	parositva	6	G2532	alacsony	S
+3Ján 1:3	hu	9	bizonyságot	parositva	7	G3140	alacsony	S
+3Ján 1:3	hu	10	tettek	parositva	7	G3140	alacsony	S
+3Ján 1:3	hu	11	a	betoldas			alacsony	S
+3Ján 1:3	hu	12	te	parositva	8	G4771	alacsony	S
+3Ján 1:3	hu	13	igazságodról	parositva	8,9,10	G4771+G3588+G0225	alacsony	S
+3Ján 1:3	hu	14	úgy	parositva	11	G2531	alacsony	S
+3Ján 1:3	hu	15	a	parositva	11	G2531	alacsony	S
+3Ján 1:3	hu	16	mint	parositva	11	G2531	alacsony	S
+3Ján 1:3	hu	17	te	parositva	12	G4771	alacsony	S
+3Ján 1:3	hu	18	az	betoldas			alacsony	S
+3Ján 1:3	hu	19	igazságban	parositva	13,14	G1722+G0225	alacsony	S
+3Ján 1:3	hu	20	jársz	parositva	15	G4043	alacsony	S
+3Ján 1:3	er	1	ἐχάρην	parositva	3	G5463	alacsony	S
+3Ján 1:3	er	2	γὰρ	parositva	1	G1063	alacsony	S
+3Ján 1:3	er	3	λίαν	parositva	2	G3029	alacsony	S
+3Ján 1:3	er	4	ἐρχομένων	parositva	7	G2064	alacsony	S
+3Ján 1:3	er	5	ἀδελφῶν	parositva	6	G0080	alacsony	S
+3Ján 1:3	er	6	καὶ	parositva	8	G2532	alacsony	S
+3Ján 1:3	er	7	μαρτυρούντων	parositva	9,10	G3140	alacsony	S
+3Ján 1:3	er	8	σου	parositva	12,13	G4771	alacsony	S
+3Ján 1:3	er	9	τῇ	parositva	13	G3588	alacsony	S
+3Ján 1:3	er	10	ἀληθείᾳ,	parositva	13	G0225	alacsony	S
+3Ján 1:3	er	11	καθὼς	parositva	14,15,16	G2531	alacsony	S
+3Ján 1:3	er	12	σὺ	parositva	17	G4771	alacsony	S
+3Ján 1:3	er	13	ἐν	parositva	19	G1722	alacsony	S
+3Ján 1:3	er	14	ἀληθείᾳ	parositva	19	G0225	alacsony	S
+3Ján 1:3	er	15	περιπατεῖς.	parositva	20	G4043	alacsony	S
+3Ján 1:4	hu	1	Nincs	parositva	3,4	G3756+G2192	alacsony	S
+3Ján 1:4	hu	2	annál	parositva	2	G3778	alacsony	S
+3Ján 1:4	hu	3	nagyobb	parositva	1	G3173	alacsony	S
+3Ján 1:4	hu	4	örömem	parositva	5	G5479	alacsony	S
+3Ján 1:4	hu	5	mintha	betoldas			alacsony	S
+3Ján 1:4	hu	6	hallom	parositva	7	G0191	alacsony	S
+3Ján 1:4	hu	7	hogy	parositva	6	G2443	alacsony	S
+3Ján 1:4	hu	8	az	betoldas			alacsony	S
+3Ján 1:4	hu	9	én	parositva	9	G1473	alacsony	S
+3Ján 1:4	hu	10	gyermekeim	parositva	10	G5043	alacsony	S
+3Ján 1:4	hu	11	az	betoldas			alacsony	S
+3Ján 1:4	hu	12	igazságban	parositva	11,13	G1722+G0225	alacsony	S
+3Ján 1:4	hu	13	járnak	parositva	14	G4043	alacsony	S
+3Ján 1:4	er	1	μειζοτέραν	parositva	3	G3173	alacsony	S
+3Ján 1:4	er	2	τούτων	parositva	2	G3778	alacsony	S
+3Ján 1:4	er	3	οὐκ	parositva	1	G3756	alacsony	S
+3Ján 1:4	er	4	ἔχω	parositva	1	G2192	alacsony	S
+3Ján 1:4	er	5	χαρὰν	parositva	4	G5479	alacsony	S
+3Ján 1:4	er	6	ἵνα	parositva	7	G2443	alacsony	S
+3Ján 1:4	er	7	ἀκούω	parositva	6	G0191	alacsony	S
+3Ján 1:4	er	8	τὰ	forditatlan		G3588	alacsony	S
+3Ján 1:4	er	9	ἐμὰ	parositva	9	G1473	alacsony	S
+3Ján 1:4	er	10	τέκνα	parositva	10	G5043	alacsony	S
+3Ján 1:4	er	11	ἐν	parositva	12	G1722	alacsony	S
+3Ján 1:4	er	12	τῇ	forditatlan		G3588	alacsony	S
+3Ján 1:4	er	13	ἀληθείᾳ	parositva	12	G0225	alacsony	S
+3Ján 1:4	er	14	περιπατοῦντα.	parositva	13	G4043	alacsony	S
+3Ján 1:5	hu	1	Szeretett	parositva	1	G0027	alacsony	S
+3Ján 1:5	hu	2	barátom	parositva	1	G0027	alacsony	S
+3Ján 1:5	hu	3	híven	parositva	2	G4103	alacsony	S
+3Ján 1:5	hu	4	cselekszel	parositva	3	G4160	alacsony	S
+3Ján 1:5	hu	5	mindenben	parositva	5	G1437	alacsony	S
+3Ján 1:5	hu	6	a	parositva	4	G3739	alacsony	S
+3Ján 1:5	hu	7	mit	parositva	4	G3739	alacsony	S
+3Ján 1:5	hu	8	az	betoldas			alacsony	S
+3Ján 1:5	hu	9	atyafiakért	parositva	7,9	G1519+G0080	alacsony	S
+3Ján 1:5	hu	10	és	parositva	10	G2532	alacsony	S
+3Ján 1:5	hu	11	pedig	betoldas			alacsony	S
+3Ján 1:5	hu	12	az	betoldas			alacsony	S
+3Ján 1:5	hu	13	idegenekért	parositva	11,13	G1519+G3581	alacsony	S
+3Ján 1:5	hu	14	teszel	parositva	6	G2038	alacsony	S
+3Ján 1:5	er	1	ἀγαπητέ,	parositva	1,2	G0027	alacsony	S
+3Ján 1:5	er	2	πιστὸν	parositva	3	G4103	alacsony	S
+3Ján 1:5	er	3	ποιεῖς	parositva	4	G4160	alacsony	S
+3Ján 1:5	er	4	ὃ	parositva	6,7	G3739	alacsony	S
+3Ján 1:5	er	5	ἐὰν	parositva	5	G1437	alacsony	S
+3Ján 1:5	er	6	ἐργάσῃ	parositva	14	G2038	alacsony	S
+3Ján 1:5	er	7	εἰς	parositva	9	G1519	alacsony	S
+3Ján 1:5	er	8	τοὺς	forditatlan		G3588	alacsony	S
+3Ján 1:5	er	9	ἀδελφοὺς	parositva	9	G0080	alacsony	S
+3Ján 1:5	er	10	καὶ	parositva	10	G2532	alacsony	S
+3Ján 1:5	er	11	εἰς	parositva	13	G1519	alacsony	S
+3Ján 1:5	er	12	τοῦτο	forditatlan		G3778	alacsony	S
+3Ján 1:5	er	13	ξένους,	parositva	13	G3581	alacsony	S
+3Ján 1:6	hu	1	A	parositva	1	G3739	alacsony	S
+3Ján 1:6	hu	2	kik	parositva	1	G3739	alacsony	S
+3Ján 1:6	hu	3	bizonyságot	parositva	2	G3140	alacsony	S
+3Ján 1:6	hu	4	tettek	parositva	2	G3140	alacsony	S
+3Ján 1:6	hu	5	a	betoldas			alacsony	S
+3Ján 1:6	hu	6	te	parositva	3	G4771	alacsony	S
+3Ján 1:6	hu	7	szeretetedről	parositva	3,5	G4771+G0026	alacsony	S
+3Ján 1:6	hu	8	a	betoldas			alacsony	S
+3Ján 1:6	hu	9	gyülekezet	parositva	7	G1577	alacsony	S
+3Ján 1:6	hu	10	előtt	parositva	6	G1799	alacsony	S
+3Ján 1:6	hu	11	a	parositva	8	G3739	alacsony	S
+3Ján 1:6	hu	12	kiket	parositva	8	G3739	alacsony	S
+3Ján 1:6	hu	13	jól	parositva	9	G2573	alacsony	S
+3Ján 1:6	hu	14	teszed	parositva	10	G4160	alacsony	S
+3Ján 1:6	hu	15	ha	betoldas			alacsony	S
+3Ján 1:6	hu	16	Istenhez	parositva	14	G2316	alacsony	S
+3Ján 1:6	hu	17	méltóan	parositva	12	G0516	alacsony	S
+3Ján 1:6	hu	18	bocsátasz	parositva	11	G4311	alacsony	S
+3Ján 1:6	hu	19	útjokra	betoldas			alacsony	S
+3Ján 1:6	er	1	οἳ	parositva	1,2	G3739	alacsony	S
+3Ján 1:6	er	2	ἐμαρτύρησάν	parositva	3,4	G3140	alacsony	S
+3Ján 1:6	er	3	σου	parositva	6,7	G4771	alacsony	S
+3Ján 1:6	er	4	τῇ	forditatlan		G3588	alacsony	S
+3Ján 1:6	er	5	ἀγάπῃ	parositva	7	G0026	alacsony	S
+3Ján 1:6	er	6	ἐνώπιον	parositva	10	G1799	alacsony	S
+3Ján 1:6	er	7	ἐκκλησίας,	parositva	9	G1577	alacsony	S
+3Ján 1:6	er	8	οὓς	parositva	11,12	G3739	alacsony	S
+3Ján 1:6	er	9	καλῶς	parositva	13	G2573	alacsony	S
+3Ján 1:6	er	10	ποιήσεις	parositva	14	G4160	alacsony	S
+3Ján 1:6	er	11	προπέμψας	parositva	18	G4311	alacsony	S
+3Ján 1:6	er	12	ἀξίως	parositva	17	G0516	alacsony	S
+3Ján 1:6	er	13	τοῦ	forditatlan		G3588	alacsony	S
+3Ján 1:6	er	14	θεοῦ.	parositva	16	G2316	alacsony	S
+3Ján 1:7	hu	1	Mert	parositva	2	G1063	alacsony	S
+3Ján 1:7	hu	2	az	betoldas			alacsony	S
+3Ján 1:7	hu	3	ő	betoldas			alacsony	S
+3Ján 1:7	hu	4	nevéért	parositva	1,4	G5228+G3686	alacsony	S
+3Ján 1:7	hu	5	mentek	parositva	5	G1831	alacsony	S
+3Ján 1:7	hu	6	ki	parositva	5	G1831	alacsony	S
+3Ján 1:7	hu	7	semmit	parositva	6	G3367	alacsony	S
+3Ján 1:7	hu	8	sem	parositva	6	G3367	alacsony	S
+3Ján 1:7	hu	9	fogadván	parositva	7	G2983	alacsony	S
+3Ján 1:7	hu	10	el	parositva	7	G2983	alacsony	S
+3Ján 1:7	hu	11	a	betoldas			alacsony	S
+3Ján 1:7	hu	12	pogányoktól	parositva	8	G0575	alacsony	S
+3Ján 1:7	er	1	ὑπὲρ	parositva	4	G5228	alacsony	S
+3Ján 1:7	er	2	γὰρ	parositva	1	G1063	alacsony	S
+3Ján 1:7	er	3	τοῦ	forditatlan		G3588	alacsony	S
+3Ján 1:7	er	4	ὀνόματος	parositva	4	G3686	alacsony	S
+3Ján 1:7	er	5	ἐξῆλθον	parositva	5,6	G1831	alacsony	S
+3Ján 1:7	er	6	μηδὲν	parositva	7,8	G3367	alacsony	S
+3Ján 1:7	er	7	λαμβάνοντες	parositva	9,10	G2983	alacsony	S
+3Ján 1:7	er	8	ἀπὸ	parositva	12	G0575	alacsony	S
+3Ján 1:7	er	9	τῶν	forditatlan		G3588	alacsony	S
+3Ján 1:7	er	10	ἐθνικῶν.	forditatlan		G1482	alacsony	S
+3Ján 1:8	hu	1	Nékünk	parositva	1	G3165	alacsony	S
+3Ján 1:8	hu	2	azért	parositva	2	G3767	alacsony	S
+3Ján 1:8	hu	3	be	betoldas			alacsony	S
+3Ján 1:8	hu	4	kell	parositva	3	G3784	alacsony	S
+3Ján 1:8	hu	5	fogadnunk	betoldas			alacsony	S
+3Ján 1:8	hu	6	az	betoldas			alacsony	S
+3Ján 1:8	hu	7	ilyeneket	parositva	6	G5108	alacsony	S
+3Ján 1:8	hu	8	hogy	parositva	7	G2443	alacsony	S
+3Ján 1:8	hu	9	munkatársaikká	parositva	8	G4904	alacsony	S
+3Ján 1:8	hu	10	lehessünk	parositva	9	G1096	alacsony	S
+3Ján 1:8	hu	11	az	betoldas			alacsony	S
+3Ján 1:8	hu	12	igazságban	parositva	10,11	G3588+G0225	alacsony	S
+3Ján 1:8	er	1	ἡμεῖς	parositva	1	G3165	alacsony	S
+3Ján 1:8	er	2	οὖν	parositva	2	G3767	alacsony	S
+3Ján 1:8	er	3	ὀφείλομεν	parositva	4	G3784	alacsony	S
+3Ján 1:8	er	4	ὑπολαμβάνειν	forditatlan		G5274	alacsony	S
+3Ján 1:8	er	5	τοὺς	forditatlan		G3588	alacsony	S
+3Ján 1:8	er	6	τοιούτους	parositva	7	G5108	alacsony	S
+3Ján 1:8	er	7	ἵνα	parositva	8	G2443	alacsony	S
+3Ján 1:8	er	8	συνεργοὶ	parositva	9	G4904	alacsony	S
+3Ján 1:8	er	9	γινώμεθα	parositva	10	G1096	alacsony	S
+3Ján 1:8	er	10	τῇ	parositva	12	G3588	alacsony	S
+3Ján 1:8	er	11	ἀληθείᾳ.¶	parositva	12	G0225	alacsony	S
+3Ján 1:9	hu	1	Írtam	parositva	1	G1125	alacsony	S
+3Ján 1:9	hu	2	a	betoldas			alacsony	S
+3Ján 1:9	hu	3	gyülekezetnek	parositva	3,4	G3588+G1577	alacsony	S
+3Ján 1:9	hu	4	de	parositva	5	G0235	alacsony	S
+3Ján 1:9	hu	5	Diotrefesz	parositva	9	G1361	alacsony	S
+3Ján 1:9	hu	6	a	betoldas			alacsony	S
+3Ján 1:9	hu	7	ki	betoldas			alacsony	S
+3Ján 1:9	hu	8	elsőséget	parositva	7	G5383	alacsony	S
+3Ján 1:9	hu	9	kíván	parositva	7	G5383	alacsony	S
+3Ján 1:9	hu	10	közöttük	parositva	8	G0846	alacsony	S
+3Ján 1:9	hu	11	nem	parositva	10	G3756	alacsony	S
+3Ján 1:9	hu	12	fogad	parositva	11	G1926	alacsony	S
+3Ján 1:9	hu	13	el	parositva	11	G1926	alacsony	S
+3Ján 1:9	hu	14	minket	parositva	12	G3165	alacsony	S
+3Ján 1:9	er	1	Ἔγραψά	parositva	1	G1125	alacsony	S
+3Ján 1:9	er	2	τι	forditatlan		G5100	alacsony	S
+3Ján 1:9	er	3	τῇ	parositva	3	G3588	alacsony	S
+3Ján 1:9	er	4	ἐκκλησίᾳ·	parositva	3	G1577	alacsony	S
+3Ján 1:9	er	5	ἀλλ᾽	parositva	4	G0235	alacsony	S
+3Ján 1:9	er	6	ὁ	forditatlan		G3588	alacsony	S
+3Ján 1:9	er	7	φιλοπρωτεύων	parositva	8,9	G5383	alacsony	S
+3Ján 1:9	er	8	αὐτῶν	parositva	10	G0846	alacsony	S
+3Ján 1:9	er	9	Διοτρέφης	parositva	5	G1361	alacsony	S
+3Ján 1:9	er	10	οὐκ	parositva	11	G3756	alacsony	S
+3Ján 1:9	er	11	ἐπιδέχεται	parositva	12,13	G1926	alacsony	S
+3Ján 1:9	er	12	ἡμᾶς.	parositva	14	G3165	alacsony	S
+3Ján 1:10	hu	1	Ezért	parositva	1,2	G1223+G3778	alacsony	S
+3Ján 1:10	hu	2	ha	parositva	3	G1437	alacsony	S
+3Ján 1:10	hu	3	odamegyek	parositva	4	G2064	alacsony	S
+3Ján 1:10	hu	4	felemlítem	parositva	5	G5279	alacsony	S
+3Ján 1:10	hu	5	az	betoldas			alacsony	S
+3Ján 1:10	hu	6	ő	parositva	6	G0846	alacsony	S
+3Ján 1:10	hu	7	dolgait	parositva	6,8	G0846+G2041	alacsony	S
+3Ján 1:10	hu	8	a	parositva	9	G3739	alacsony	S
+3Ján 1:10	hu	9	melyeket	parositva	9	G3739	alacsony	S
+3Ján 1:10	hu	10	cselekszik	parositva	10	G4160	alacsony	S
+3Ján 1:10	hu	11	gonosz	parositva	12	G4190	alacsony	S
+3Ján 1:10	hu	12	szavakkal	parositva	11	G3056	alacsony	S
+3Ján 1:10	hu	13	csácsogván	parositva	13	G5396	alacsony	S
+3Ján 1:10	hu	14	ellenünk	parositva	14	G3165	alacsony	S
+3Ján 1:10	hu	15	sőt	parositva	15	G2532	alacsony	S
+3Ján 1:10	hu	16	nem	parositva	16	G3361	alacsony	S
+3Ján 1:10	hu	17	elégedvén	parositva	17	G0714	alacsony	S
+3Ján 1:10	hu	18	meg	parositva	17	G0714	alacsony	S
+3Ján 1:10	hu	19	ezzel	parositva	18,19	G1909+G3778	alacsony	S
+3Ján 1:10	hu	20	maga	parositva	21	G0846	alacsony	S
+3Ján 1:10	hu	21	sem	parositva	20	G3777	alacsony	S
+3Ján 1:10	hu	22	fogadja	parositva	22	G1926	alacsony	S
+3Ján 1:10	hu	23	be	parositva	22	G1926	alacsony	S
+3Ján 1:10	hu	24	az	betoldas			alacsony	S
+3Ján 1:10	hu	25	atyafiakat	parositva	24	G0080	alacsony	S
+3Ján 1:10	hu	26	és	parositva	25	G2532	alacsony	S
+3Ján 1:10	hu	27	a	betoldas			alacsony	S
+3Ján 1:10	hu	28	kik	betoldas			alacsony	S
+3Ján 1:10	hu	29	ezt	betoldas			alacsony	S
+3Ján 1:10	hu	30	akarnák	parositva	27	G1014	alacsony	S
+3Ján 1:10	hu	31	azokat	betoldas			alacsony	S
+3Ján 1:10	hu	32	is	betoldas			alacsony	S
+3Ján 1:10	hu	33	akadályozza	parositva	28	G2967	alacsony	S
+3Ján 1:10	hu	34	és	parositva	29	G2532	alacsony	S
+3Ján 1:10	hu	35	az	betoldas			alacsony	S
+3Ján 1:10	hu	36	egyházból	parositva	30,32	G1537+G1577	alacsony	S
+3Ján 1:10	hu	37	kiveti	parositva	33	G1544	alacsony	S
+3Ján 1:10	er	1	διὰ	parositva	1	G1223	alacsony	S
+3Ján 1:10	er	2	τοῦτο,	parositva	1	G3778	alacsony	S
+3Ján 1:10	er	3	ἐὰν	parositva	2	G1437	alacsony	S
+3Ján 1:10	er	4	ἔλθω,	parositva	3	G2064	alacsony	S
+3Ján 1:10	er	5	ὑπομνήσω	parositva	4	G5279	alacsony	S
+3Ján 1:10	er	6	αὐτοῦ	parositva	6,7	G0846	alacsony	S
+3Ján 1:10	er	7	τὰ	forditatlan		G3588	alacsony	S
+3Ján 1:10	er	8	ἔργα	parositva	7	G2041	alacsony	S
+3Ján 1:10	er	9	ἃ	parositva	8,9	G3739	alacsony	S
+3Ján 1:10	er	10	ποιεῖ,	parositva	10	G4160	alacsony	S
+3Ján 1:10	er	11	λόγοις	parositva	12	G3056	alacsony	S
+3Ján 1:10	er	12	πονηροῖς	parositva	11	G4190	alacsony	S
+3Ján 1:10	er	13	φλυαρῶν	parositva	13	G5396	alacsony	S
+3Ján 1:10	er	14	ἡμᾶς·	parositva	14	G3165	alacsony	S
+3Ján 1:10	er	15	καὶ	parositva	15	G2532	alacsony	S
+3Ján 1:10	er	16	μὴ	parositva	16	G3361	alacsony	S
+3Ján 1:10	er	17	ἀρκούμενος	parositva	17,18	G0714	alacsony	S
+3Ján 1:10	er	18	ἐπὶ	parositva	19	G1909	alacsony	S
+3Ján 1:10	er	19	τούτοις,	parositva	19	G3778	alacsony	S
+3Ján 1:10	er	20	οὔτε	parositva	21	G3777	alacsony	S
+3Ján 1:10	er	21	αὐτὸς	parositva	20	G0846	alacsony	S
+3Ján 1:10	er	22	ἐπιδέχεται	parositva	22,23	G1926	alacsony	S
+3Ján 1:10	er	23	τοὺς	forditatlan		G3588	alacsony	S
+3Ján 1:10	er	24	ἀδελφούς,	parositva	25	G0080	alacsony	S
+3Ján 1:10	er	25	καὶ	parositva	26	G2532	alacsony	S
+3Ján 1:10	er	26	τοὺς	forditatlan		G3588	alacsony	S
+3Ján 1:10	er	27	βουλομένους	parositva	30	G1014	alacsony	S
+3Ján 1:10	er	28	κωλύει	parositva	33	G2967	alacsony	S
+3Ján 1:10	er	29	καὶ	parositva	34	G2532	alacsony	S
+3Ján 1:10	er	30	ἐκ	parositva	36	G1537	alacsony	S
+3Ján 1:10	er	31	τῆς	forditatlan		G3588	alacsony	S
+3Ján 1:10	er	32	ἐκκλησίας	parositva	36	G1577	alacsony	S
+3Ján 1:10	er	33	ἐκβάλλει.¶	parositva	37	G1544	alacsony	S
+3Ján 1:11	hu	1	Szeretett	parositva	1	G0027	alacsony	S
+3Ján 1:11	hu	2	barátom	parositva	1	G0027	alacsony	S
+3Ján 1:11	hu	3	ne	parositva	2	G3361	alacsony	S
+3Ján 1:11	hu	4	a	betoldas			alacsony	S
+3Ján 1:11	hu	5	rosszat	parositva	5	G2556	alacsony	S
+3Ján 1:11	hu	6	kövesd	parositva	3	G3401	alacsony	S
+3Ján 1:11	hu	7	hanem	parositva	6	G0235	alacsony	S
+3Ján 1:11	hu	8	a	betoldas			alacsony	S
+3Ján 1:11	hu	9	jót	parositva	8	G0018	alacsony	S
+3Ján 1:11	hu	10	A	parositva	9	G3588	alacsony	S
+3Ján 1:11	hu	11	ki	parositva	9	G3588	alacsony	S
+3Ján 1:11	hu	12	jót	parositva	10	G0015	alacsony	S
+3Ján 1:11	hu	13	cselekszik	parositva	10	G0015	alacsony	S
+3Ján 1:11	hu	14	az	betoldas			alacsony	S
+3Ján 1:11	hu	15	Istentől	parositva	11,13	G1537+G2316	alacsony	S
+3Ján 1:11	hu	16	van	parositva	14	G1510	alacsony	S
+3Ján 1:11	hu	17	a	parositva	15	G3588	alacsony	S
+3Ján 1:11	hu	18	ki	parositva	15	G3588	alacsony	S
+3Ján 1:11	hu	19	pedig	parositva	16	G1161	alacsony	S
+3Ján 1:11	hu	20	rosszat	parositva	17	G2554	alacsony	S
+3Ján 1:11	hu	21	cselekszik	parositva	17	G2554	alacsony	S
+3Ján 1:11	hu	22	nem	parositva	18	G3756	alacsony	S
+3Ján 1:11	hu	23	látta	parositva	19	G3708	alacsony	S
+3Ján 1:11	hu	24	az	betoldas			alacsony	S
+3Ján 1:11	hu	25	Istent	parositva	21	G2316	alacsony	S
+3Ján 1:11	er	1	Ἀγαπητέ,	parositva	1,2	G0027	alacsony	S
+3Ján 1:11	er	2	μὴ	parositva	3	G3361	alacsony	S
+3Ján 1:11	er	3	μιμοῦ	parositva	6	G3401	alacsony	S
+3Ján 1:11	er	4	τὸ	forditatlan		G3588	alacsony	S
+3Ján 1:11	er	5	κακὸν	parositva	5	G2556	alacsony	S
+3Ján 1:11	er	6	ἀλλὰ	parositva	7	G0235	alacsony	S
+3Ján 1:11	er	7	τὸ	forditatlan		G3588	alacsony	S
+3Ján 1:11	er	8	ἀγαθόν.	parositva	9	G0018	alacsony	S
+3Ján 1:11	er	9	ὁ	parositva	10,11	G3588	alacsony	S
+3Ján 1:11	er	10	ἀγαθοποιῶν	parositva	12,13	G0015	alacsony	S
+3Ján 1:11	er	11	ἐκ	parositva	15	G1537	alacsony	S
+3Ján 1:11	er	12	τοῦ	forditatlan		G3588	alacsony	S
+3Ján 1:11	er	13	θεοῦ	parositva	15	G2316	alacsony	S
+3Ján 1:11	er	14	ἐστιν·	parositva	16	G1510	alacsony	S
+3Ján 1:11	er	15	ὁ	parositva	17,18	G3588	alacsony	S
+3Ján 1:11	er	16	δὲ	parositva	19	G1161	alacsony	S
+3Ján 1:11	er	17	κακοποιῶν	parositva	20,21	G2554	alacsony	S
+3Ján 1:11	er	18	οὐχ	parositva	22	G3756	alacsony	S
+3Ján 1:11	er	19	ἑώρακεν	parositva	23	G3708	alacsony	S
+3Ján 1:11	er	20	τὸν	forditatlan		G3588	alacsony	S
+3Ján 1:11	er	21	θεόν.	parositva	25	G2316	alacsony	S
+3Ján 1:12	hu	1	Demeter	parositva	1	G1216	alacsony	S
+3Ján 1:12	hu	2	mellett	parositva	1	G1216	alacsony	S
+3Ján 1:12	hu	3	mindenki	parositva	3,4	G5259+G3956	alacsony	S
+3Ján 1:12	hu	4	bizonyságot	parositva	2	G3140	alacsony	S
+3Ján 1:12	hu	5	tett	parositva	2	G3140	alacsony	S
+3Ján 1:12	hu	6	maga	parositva	7	G0846	alacsony	S
+3Ján 1:12	hu	7	az	betoldas			alacsony	S
+3Ján 1:12	hu	8	igazság	parositva	6,9	G5259+G0225	alacsony	S
+3Ján 1:12	hu	9	is	parositva	5	G2532	alacsony	S
+3Ján 1:12	hu	10	de	parositva	12	G1161	alacsony	S
+3Ján 1:12	hu	11	mi	parositva	11	G3165	alacsony	S
+3Ján 1:12	hu	12	is	parositva	10	G2532	alacsony	S
+3Ján 1:12	hu	13	bizonyságot	parositva	13	G3140	alacsony	S
+3Ján 1:12	hu	14	teszünk	parositva	13	G3140	alacsony	S
+3Ján 1:12	hu	15	és	parositva	14	G2532	alacsony	S
+3Ján 1:12	hu	16	tudjátok	betoldas			alacsony	S
+3Ján 1:12	hu	17	hogy	parositva	16	G3754	alacsony	S
+3Ján 1:12	hu	18	a	betoldas			alacsony	S
+3Ján 1:12	hu	19	mi	parositva	19	G3165	alacsony	S
+3Ján 1:12	hu	20	bizonyságtételünk	parositva	18,19	G3141+G3165	alacsony	S
+3Ján 1:12	hu	21	igaz	parositva	20,21	G0227+G1510	alacsony	S
+3Ján 1:12	er	1	Δημητρίῳ	parositva	1,2	G1216	alacsony	S
+3Ján 1:12	er	2	μεμαρτύρηται	parositva	4,5	G3140	alacsony	S
+3Ján 1:12	er	3	ὑπὸ	parositva	3	G5259	alacsony	S
+3Ján 1:12	er	4	πάντων	parositva	3	G3956	alacsony	S
+3Ján 1:12	er	5	καὶ	parositva	9	G2532	alacsony	S
+3Ján 1:12	er	6	ὑπὸ	parositva	8	G5259	alacsony	S
+3Ján 1:12	er	7	αὐτῆς	parositva	6	G0846	alacsony	S
+3Ján 1:12	er	8	τῆς	forditatlan		G3588	alacsony	S
+3Ján 1:12	er	9	ἀληθείας·	parositva	8	G0225	alacsony	S
+3Ján 1:12	er	10	καὶ	parositva	12	G2532	alacsony	S
+3Ján 1:12	er	11	ἡμεῖς	parositva	11	G3165	alacsony	S
+3Ján 1:12	er	12	δὲ	parositva	10	G1161	alacsony	S
+3Ján 1:12	er	13	μαρτυροῦμεν,	parositva	13,14	G3140	alacsony	S
+3Ján 1:12	er	14	καὶ	parositva	15	G2532	alacsony	S
+3Ján 1:12	er	15	οἶδας	forditatlan		G6063	alacsony	S
+3Ján 1:12	er	16	ὅτι	parositva	17	G3754	alacsony	S
+3Ján 1:12	er	17	ἡ	forditatlan		G3588	alacsony	S
+3Ján 1:12	er	18	μαρτυρία	parositva	20	G3141	alacsony	S
+3Ján 1:12	er	19	ἡμῶν	parositva	19,20	G3165	alacsony	S
+3Ján 1:12	er	20	ἀληθής	parositva	21	G0227	alacsony	S
+3Ján 1:12	er	21	ἐστιν.¶	parositva	21	G1510	alacsony	S
+3Ján 1:13	hu	1	Sok	parositva	1	G4183	alacsony	S
+3Ján 1:13	hu	2	írni	betoldas			alacsony	S
+3Ján 1:13	hu	3	valóm	parositva	2	G2192	alacsony	S
+3Ján 1:13	hu	4	volna	betoldas			alacsony	S
+3Ján 1:13	hu	5	de	parositva	5	G0235	alacsony	S
+3Ján 1:13	hu	6	nem	parositva	6	G3756	alacsony	S
+3Ján 1:13	hu	7	akarok	parositva	7	G2309	alacsony	S
+3Ján 1:13	hu	8	tintával	parositva	8,9	G1223+G3188	alacsony	S
+3Ján 1:13	hu	9	és	parositva	10	G2532	alacsony	S
+3Ján 1:13	hu	10	tollal	parositva	11	G2563	alacsony	S
+3Ján 1:13	hu	11	írni	betoldas			alacsony	S
+3Ján 1:13	hu	12	néked	parositva	12	G4771	alacsony	S
+3Ján 1:13	er	1	Πολλὰ	parositva	1	G4183	alacsony	S
+3Ján 1:13	er	2	εἶχον	parositva	3	G2192	alacsony	S
+3Ján 1:13	er	3	γράψαι	forditatlan		G1125	alacsony	S
+3Ján 1:13	er	4	σοι,	forditatlan		G4771	alacsony	S
+3Ján 1:13	er	5	ἀλλ᾽	parositva	5	G0235	alacsony	S
+3Ján 1:13	er	6	οὐ	parositva	6	G3756	alacsony	S
+3Ján 1:13	er	7	θέλω	parositva	7	G2309	alacsony	S
+3Ján 1:13	er	8	διὰ	parositva	8	G1223	alacsony	S
+3Ján 1:13	er	9	μέλανος	parositva	8	G3188	alacsony	S
+3Ján 1:13	er	10	καὶ	parositva	9	G2532	alacsony	S
+3Ján 1:13	er	11	καλάμου	parositva	10	G2563	alacsony	S
+3Ján 1:13	er	12	σοι	parositva	12	G4771	alacsony	S
+3Ján 1:13	er	13	γράφειν·	forditatlan		G1125	alacsony	S
+3Ján 1:14	hu	1	Hanem	parositva	2	G1161	alacsony	S
+3Ján 1:14	hu	2	reménylem	parositva	1	G1679	alacsony	S
+3Ján 1:14	hu	3	hogy	betoldas			alacsony	S
+3Ján 1:14	hu	4	csakhamar	parositva	3	G2112	alacsony	S
+3Ján 1:14	hu	5	meglátlak	parositva	4,5	G4771+G1492	alacsony	S
+3Ján 1:14	hu	6	téged	parositva	4	G4771	alacsony	S
+3Ján 1:14	hu	7	és	parositva	6	G2532	alacsony	S
+3Ján 1:14	hu	8	szemtől	parositva	7,8	G4750+G4314	alacsony	S
+3Ján 1:14	hu	9	szembe	parositva	9	G4750	alacsony	S
+3Ján 1:14	hu	10	beszélhetünk	parositva	10	G2980	alacsony	S
+3Ján 1:14	er	1	ἐλπίζω	parositva	2	G1679	alacsony	S
+3Ján 1:14	er	2	δὲ	parositva	1	G1161	alacsony	S
+3Ján 1:14	er	3	εὐθέως	parositva	4	G2112	alacsony	S
+3Ján 1:14	er	4	σε	parositva	5,6	G4771	alacsony	S
+3Ján 1:14	er	5	ἰδεῖν,	parositva	5	G1492	alacsony	S
+3Ján 1:14	er	6	καὶ	parositva	7	G2532	alacsony	S
+3Ján 1:14	er	7	στόμα	parositva	8	G4750	alacsony	S
+3Ján 1:14	er	8	πρὸς	parositva	8	G4314	alacsony	S
+3Ján 1:14	er	9	στόμα	parositva	9	G4750	alacsony	S
+3Ján 1:14	er	10	λαλήσομεν.	parositva	10	G2980	alacsony	S
+3Ján 1:15	hu	1	Békesség	fuggoben			kezi	
+3Ján 1:15	hu	2	néked	fuggoben			kezi	
+3Ján 1:15	hu	3	Köszöntenek	fuggoben			kezi	
+3Ján 1:15	hu	4	téged	fuggoben			kezi	
+3Ján 1:15	hu	5	a	fuggoben			kezi	
+3Ján 1:15	hu	6	te	fuggoben			kezi	
+3Ján 1:15	hu	7	barátaid	fuggoben			kezi	
+3Ján 1:15	hu	8	Köszöntsd	fuggoben			kezi	
+3Ján 1:15	hu	9	a	fuggoben			kezi	
+3Ján 1:15	hu	10	barátainkat	fuggoben			kezi	
+3Ján 1:15	hu	11	név	fuggoben			kezi	
+3Ján 1:15	hu	12	szerint	fuggoben			kezi	
