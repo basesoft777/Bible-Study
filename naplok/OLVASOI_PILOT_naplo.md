@@ -81,3 +81,20 @@ Mért (az egész BDB-táblán, régi vs. új szeletelő): 8099 sor, hiba 0; **el
 ## 9. F60.25 — a H7121 szeletelő-javítás commitolva (2026-10-12)
 
 A régi ág tesztjei a módosítással: 73 teszt, OK (1 kihagyva). Commitolva `F60.25`-ként. **A megváltozott jelentés-szerkezetű sorok átnézése még hátravan.** Újramérés (régi vs. új szeletelő, a `adat/forditasok.tsv` magyar BDB-soraira, azonos törzsnevek mellett eltérő törzsenkénti jelentés-jel lista, alpontokkal együtt): 19 Strong-szám; az 5. pont „6 sor” mérése szűkebb mérték volt, a 6 sor azonosítója nem maradt meg. Átnézendő: H9003, H0834, H3588, H0935, H3027, H5973, H2896, H3205, H3772, H3559, H5800, H0157, H3201, H7812, H7931, H3498, H3885, H0560, H1869. Leginkább gyanús (a jelentés-pontok száma változik): H0157 (Qal 1–5 -> 1), H1869 (Qal 1–4 -> 1–2), H3559 (Niph`al 1–2 -> 1–4), H7931 (Qal üres -> 1–2), H0560 (névtelen törzs -> szám nélküli fej). Mérés: `scratchpad/old/kulonbseg.py` (a repón kívül).
+
+## 10. Egyesítés a mai ággal (2026-10-12, v3.2; F60.26–F60.31)
+
+A felhasználó döntése (chat, 2026-10-12): a régi ág (`claude/olvasoi-pilot`) az alap; a mai ág (`claude/f60-olvasoi-pilot`) részeit erre kell átvinni; a mai ág nem folytatódik.
+
+| Tétel | Mi |
+|---|---|
+| F60.25 | a H7121 szeletelő-javítás commitolva (73 teszt zöld); a jelentés-szerkezet-változások átnézése hátravan (9. pont) |
+| F60.26 | `main` egyesítve (brief v3.1 + v3.2); ütközés: `DONTESEK.md` (a main sorai + a régi ág DT-F60a/b sora; a régi ág DT-F37a/b sorai a main DT61/62-ében vannak), `F60_OLVASOI_PILOT_BRIEF.md` (fejléc és döntésnapló) |
+| F60.27 | hatókör 1Móz 1–25 (`szakasz.py`: fejezet-tartomány), gzip+base64 beágyazás (`epit.py`, sablon `adatBetolt`, `--nyers`): nyers HTML 33,8 MB, tömörített 10,2 MB |
+| F60.28 | a `main` F54-es adatváltozásához igazítás: a `zsolt_felirat_eltolas` sorok KJV-oszlopa Károli-szám (kihagyva a KJV-kulcsból); a Zsolt 22:1 felirathoz ma van LXX-szó |
+| F60.29 | v3.1 angol-pótlás a görög lapon és a BDB-hiány kimondása; a „csak adat” szabályt sértő szövegek kivétele (TAHOT nem teljes, Macula kb. 78%, SDBH 90%, jelkulcs); kivétel: „Gépi szeletelés (próba)” |
+| F60.30 | `db_meres.py` (M2b, D1–D5) a régi ág 39 blokkjához igazítva + K5 tesztek (79 teszt, 1 kihagyva) |
+| F60.31 | mérés és adatfelmérés újragenerálva (1Móz 1–25 + Zsolt 22), README |
+| F60.32 | `naplok/OLVASOI_PILOT_ertekeles.md` (M2, M2b), a brief megállása az M3-nál |
+
+Nyitott: az M3 (felhasználói átnézés), az M4; a H7121-szeletelő 19 jelentés-szerkezet-változásának átnézése; a DT-F60a/b; a TBESH-sorok címkéje (4. pont, utolsó sor); a `konkordancia/tW_szocikkek.tsv` egy U+FFFD-je (ertekeles 6.).
