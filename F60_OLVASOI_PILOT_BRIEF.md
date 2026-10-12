@@ -8,7 +8,7 @@ modell: sonnet
 munka: adat
 allapot: megallt
 ag: claude/olvasoi-pilot
-ad: a repóban futó olvasói pilot (eszkozok/olvaso_pilot/) két szakaszon (1Móz 1–25 és Zsolt 22), minden blokk jellegjelöléssel (forrásadat / gépi feldolgozás / modell-kimenet), és egy értékelő jelentés számokkal, amely a DT-M1 döntés (olvasói konkordancia előre) alapja
+ad: a repóban futó olvasói pilot (eszkozok/olvaso_pilot/) két szakaszon (1Móz 1–25 és Zsolt 22), minden blokk jellegjelöléssel (forrásadat / gépi feldolgozás / modell-kimenet), és egy értékelő jelentés számokkal, amely megmutatja, mit tud a repó adata az olvasói konkordanciához, és mi kell a #25a-hoz (FELADATOK #76, OLVASOI_KONKORDANCIA; a DT-M1 2026-10-06-án eldőlt: 1. opció)
 kovetkezo: "Te: M3 felhasználói átnézés — nyisd meg a két oldalt: C:\Users\bases\AppData\Local\Temp\claude\C--Users-bases-Desktop-Bible-Study\203cb7c8-e0ff-4860-a8e8-943bca62f11f\scratchpad\f60_egyesitett\1moz\karoli_konkordancia_proba.html (1Móz 1–25, 10,2 MB, gzip+base64) és C:\Users\bases\AppData\Local\Temp\claude\C--Users-bases-Desktop-Bible-Study\203cb7c8-e0ff-4860-a8e8-943bca62f11f\scratchpad\f60_egyesitett\zsolt22\karoli_konkordancia_proba.html (Zsolt 22, 2,5 MB); észrevételeid a naplok/OLVASOI_PILOT_ertekeles.md 7. pontjába; döntendő: a „Gépi szeletelés (próba)” szöveg, a DT-F60a/b; utána M4"
 olvas: [eszkozok/olvaso_pilot/README.md, konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, "konkordancia/Macula_heber_*.tsv", "konkordancia/LXX_OS/*.tsv", konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Strong_szotar.tsv, konkordancia/TBESG.txt, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, "adat/karoli_strong/*.tsv", adat/forditasok.tsv, adat/kulso/lxx_bridge.tsv, adat/licencek.tsv, MUNKATERV.md, ADATVAGYON_TERV.md, eszkozok/sqlite_epit.py, naplok/SQLITE_EPIT_meres.md, adat/morf_kulcs_heber.tsv, adat/morf_nyelv_aramai.tsv, adat/kapcsolatok.tsv, adat/elofordulasok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, konkordancia/BSB_Strongs.tsv, konkordancia/KJV_Strongs_teljes.tsv, konkordancia/Nave_basokant.tsv, konkordancia/TIPNR_kivonat.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/LSJ_teljes.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/tW_szocikkek.tsv, konkordancia/TBESH.txt, konkordancia/LXX_versszintu_parok.tsv, konkordancia/LXX_tobblet_szakaszok.tsv, konkordancia/Verzifikacios_elteres_tabla.tsv]
 ir: [eszkozok/olvaso_pilot/adat.py, eszkozok/olvaso_pilot/bdb_szelet.py, eszkozok/olvaso_pilot/epit.py, eszkozok/olvaso_pilot/sablon.html, eszkozok/olvaso_pilot/README.md, eszkozok/olvaso_pilot/teszt_olvaso_pilot.py, eszkozok/olvaso_pilot/db_meres.py, eszkozok/olvaso_pilot/bovites.py, eszkozok/olvaso_pilot/felmeres.py, naplok/OLVASOI_PILOT_adatfelmeres.md, eszkozok/olvaso_pilot/meres.py, naplok/OLVASOI_PILOT_naplo.md, naplok/OLVASOI_PILOT_ertekeles.md]
@@ -18,11 +18,11 @@ nem_fugg: [7, 9, 22, 27, 38, 52, 54, 56, 57, 80, 88, 89]
 
 # F60_OLVASOI_PILOT_BRIEF.md — Olvasói pilot
 
-*FELADATOK #60 · Modell: sonnet · v3.1 · 2026.10.12 · kiinduló állapot: `eszkozok/olvaso_pilot/` (a 2026-10-05-i prototípus, README-vel) · döntés-előkészítés: DT-M1*
+*FELADATOK #60 · Modell: sonnet · v3.3 · 2026.10.12 · kiinduló állapot: `eszkozok/olvaso_pilot/` (a 2026-10-05-i prototípus, README-vel) · döntés-előkészítés: DT-M1 (eldőlt, 1.), a #25a feltételei*
 
 ## 1. Cél
 
-A munkaterv DT-M1 döntése azt kérdezi, kiadható-e az olvasói konkordancia (vers- és szó-lap, motívum nélkül) a migráció (#11, #23) előtt. A döntéshez mérés kell arról, mit tud a repó adata egy valós olvasási helyzetben. A 2026-10-05-i prototípus (1Móz 1:1–2:3) ezt megmutatta egy szakaszon. A feladat ezt **reprodukálható, mérhető pilottá** teszi.
+A munkaterv DT-M1 döntése azt kérdezte, kiadható-e az olvasói konkordancia (vers- és szó-lap, motívum nélkül) a migráció (#11, #23) előtt; a felhasználó 2026-10-06-án eldöntötte (1.: a #25 kettéválik, #25a = FELADATOK #76). A #25a briefjéhez mérés kell arról, mit tud a repó adata egy valós olvasási helyzetben. A 2026-10-05-i prototípus (1Móz 1:1–2:3) ezt megmutatta egy szakaszon. A feladat ezt **reprodukálható, mérhető pilottá** teszi.
 
 **Alapszabály (felhasználói döntés, 2026-10-05):** a pilot csak adatból dolgozik. Ami nem változatlan forrásadat, az jelölve van: **gépi feldolgozás** (determinisztikus szabály) vagy **modell-kimenet** (nyelvi modell fordítása vagy párosítása). Magyarázó szöveg nem kerülhet a lapra; az a #59 jóváhagyott szószedetén át jöhet később.
 
@@ -83,14 +83,14 @@ A felhasználó megnézi mindkét szakasz oldalát. A közzétételt privát art
 
 ### M4 — Értékelő jelentés és zárás
 
-- `naplok/OLVASOI_PILOT_ertekeles.md`: a mérőszámok, az M3 észrevételei, és a DT-M1 opcióinak (1 / 1b küszöbbel / 2) **adatalapú** összevetése. Az M2b alapján külön pont: az olvasói felület a `pardes.db`-ből vagy a TSV-kből épüljön, és ha az adatbázisból, mi hiányzik belőle (D1). Javaslat lehet, döntés nem: a döntés a felhasználóé.
+- `naplok/OLVASOI_PILOT_ertekeles.md`: a mérőszámok, az M3 észrevételei, és annak az adatalapú bemutatása, **mi kell a #25a-hoz** (licenc, tárhely, hiányzó fordítások, versszámozás) a mért adatállapot mellett (v3.3: a DT-M1 opcióinak összevetése már nem feladat, a döntés megszületett). Az M2b alapján külön pont: az olvasói felület a `pardes.db`-ből vagy a TSV-kből épüljön, és ha az adatbázisból, mi hiányzik belőle (D1). Javaslat lehet, döntés nem: a döntés a felhasználóé.
 - `naplok/OLVASOI_PILOT_zaras.md` (≤20 sor), `fuggetlen-ellenor` (`naplok/ELLENOR_OLVASOI_PILOT.md`), a brief fejléce `lezarva`, push, draft PR.
 
 ## 4. Elfogadási feltételek
 
 - **K1.** Az 1Móz 1–25 lefut, és az 1Móz 1:1–2:3 része azonos a prototípuséval; a Zsolt 22 is lefut, hiba nélkül.
 - **K2.** Minden blokk jelleg-címkét és adatforrás-jelzést kap; a lapon nincs adatforrás nélküli tartalmi szöveg; magyar fordítás hiányában az angol BDB-/Thayer-szócikk áll.
-- **K3.** A mérőszámok mindkét szakaszra proveniencia-sorral állnak a jelentésben.
+- **K3.** A mérőszámok mindkét szakaszra proveniencia-sorral állnak a jelentésben, és a jelentés külön pontban adja a #25a feltételeit a mért adat szerint (v3.3).
 - **K4.** A tesztek zöldek; a kimenet nem kerül a repóba (CLAUDE.md: `--kimenet` a repón kívül); a CI zöld; a független ellenőr eltérés nélkül zár.
 - **K5.** A D1–D5 mindkét szakaszra proveniencia-sorral áll a jelentésben (`forras=` a `pardes.db` építési időpontjával és `meta` hash-ével), vagy „nem mérhető” jelöléssel, ha nincs adatbázis; a teszt legalább egy vers-lap és egy szó-lap D2-egyezését ellenőrzi.
 
@@ -109,3 +109,4 @@ A felhasználó megnézi mindkét szakasz oldalát. A közzétételt privát art
 | v3 | 2026-10-12 | Új M2b lépés: a `pardes.db` mérése (D1 blokk-lefedettség, D2 egyezés a TSV-úttal, D3 lekérdezési idő, D4 szükséges részhalmaz mérete, D5 frissesség) és K5; `ir` + `db_meres.py`, `olvas` + `sqlite_epit.py`, `SQLITE_EPIT_meres.md`. A pilot fő kimenete TSV-ből marad; az adatbázist nem építi újra. Ok: az ADATVAGYON_TERV szerint a `pardes.db` elsődleges felhasználója az olvasói felület, a pilot eddig nem próbálta ki. | a felhasználó jóváhagyása a chatben (2026-10-12) |
 | v3.1 | 2026-10-12 | `nem_fugg` + 27, 88, 89: mindhárom levezetett függés olvasás–írás átfedés (#27: `adat/forditasok.tsv`; #88, #89: `eszkozok/sqlite_epit.py`), nem tartalmi; a pilot az aktuális adatállapotot méri (az M2b a `meta.epites_ts`-t rögzíti), a lezárásuk után újrafuttatható. Hiányzó magyar BDB-/Thayer-fordítás helyén az angol eredeti áll (M1, K2). | a felhasználó jóváhagyása a chatben (2026-10-12) |
 | v3.2 | 2026-10-12 | A #60 két párhuzamos futása egyesítve: a régi ág (`claude/olvasoi-pilot`, 2026-10-07) az alap; a mai ágból (`claude/f60-olvasoi-pilot`) átvéve: az 1Móz 1–25 hatókör, a `db_meres.py` (M2b), a v3.1 angol-pótlás szabálya; a mai ág nem folytatódik | a felhasználó döntése a chatben (2026-10-12) |
+| v3.3 | 2026-10-12 | Az M4 pontosítása: a DT-M1 2026-10-06-án eldőlt (1. opció: a #25 kettéválik #25a-ra és #25b-re), ezért az értékelő jelentés nem a DT-M1 három opcióját veti össze, hanem a mért adatállapot mellett megmutatja, **mi kell a #25a-hoz** (licenc, tárhely, hiányzó fordítások, TSV vagy `pardes.db`). `ad`, Cél, M4, K3 igazítva. | a felhasználó jóváhagyása a chatben (2026-10-12) |
