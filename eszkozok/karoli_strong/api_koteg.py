@@ -51,7 +51,7 @@ import tokenek  # noqa: E402
 BASE = 'https://api.anthropic.com'
 MODELL = 'claude-sonnet-5-5'
 MAX_TOKENS = 32000
-PLAFON_USD = 110.00
+PLAFON_USD = 104.36    # F22 D45 (2026.10.12): az ÚSZ-re 18 USD a felhasználó kerete; 86,3698 + 18 = 104,3698, lefelé kerekítve (a korábbi globális plafon 110,00)
 KULCS_VALTOZO = 'PARDES_API_KEY'
 USD_VERS = 0.0074       # `high` szint, Józsué-próba (0,00736 USD/vers, Batch-ár); a könyvplafon alapja
 KONYV_SZORZO = 1.5      # a könyvplafon tartaléka
