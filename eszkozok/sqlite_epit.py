@@ -76,7 +76,8 @@ SZARMAZTATOTT_LICENC = {
     'vers_szamozas': ['Karoli_versmegfeleltetes', 'BSB_Strongs'],
     'konyv': ['Konyv_nevtablak'],
     'tsk': ['TSK'], 'kh': ['Karoli_KH'], 'tipnr': ['TIPNR'], 'bsb': ['BSB_Strongs'],
-    'kjv': ['KJV_Strongs_teljes'],
+    'kjv': ['KJV_Strongs_teljes'], 'karoli_strong_kivonat': ['Karoli_Strong_kivonat'],
+    'tbesg': ['TBESG'], 'tbesh': ['TBESH'],
     'lxx_bridge': ['lxx_bridge'], 'lxx_versszintu_parok': ['LXX_versszintu_parok'],
     'igehely_tartomany': ['projekt_adat'], 'normalizalas_jelentes': ['projekt_adat'],
     'meta': ['projekt_adat'], 'fts_motivum': ['projekt_adat'],
@@ -107,6 +108,9 @@ KONKORDANCIA_ALTALANOS = [
     ('oshl_lexikalis_index', 'konkordancia/OSHL_lexikalis_index.tsv', 'strong', None, ['OSHL'], True),
     ('lxx_bridge', 'adat/kulso/lxx_bridge.tsv', 'hebrew_strong', None, ['lxx_bridge'], False),
 ]
+
+# adat/ tabla, amelynek SAJAT licencek.tsv-sora van (nem projekt_adat); a tobbi adat/ tabla projekt_adat
+ADAT_LICENC = {'morf_kulcs_heber': ['morf_kulcs_heber'], 'morf_nyelv_aramai': ['morf_nyelv_aramai']}
 
 ADAT_KIHAGYOTT = {'karoli_variancia'}  # külön kezelve (szarmaztatott licenc)
 
@@ -381,6 +385,9 @@ class Epito(object):
         self._karoli_strong()
         self._kereszthivatkozasok()
         self._bsb_szamozas()
+        self._kjv()
+        self._karoli_strong_kivonat()
+        self._tbes()
         self._altalanos()
         self._adat_tablak()
         self._tartomanyok()
@@ -441,12 +448,17 @@ class Epito(object):
         grammatikai = {r['strong'] for r in G.tsv_beolvas(
             os.path.join(self.adat, 'grammatikai_strongok.tsv'))[1]}
         tokenek, strongok = [], []
+        latott = set()
         vers_strongok = {}   # igehely -> set (strong_parok-hoz, a TELJES TAHOT/TAGNT-bol)
         for nyelv, fajl in (('H', 'TAHOT_kivonat.tsv'), ('G', 'TAGNT_kivonat.tsv')):
             fej, sorok = G.tsv_beolvas(os.path.join(self.konk, fajl))
             szamlalo = {}
             for r in sorok:
                 ig = r['Igehely']
+                if (fajl, ig) not in latott:
+                    latott.add((fajl, ig))
+                    if ig not in self.vi.halmaz:
+                        self.jelent_norm(fajl, ig, 'nincs ilyen Károli-vers (token_eredeti.van_vers=0)')
                 szamlalo[ig] = szamlalo.get(ig, 0) + 1
                 try:
                     lanc = strong_normalizal(r['Strong-szám'])
@@ -463,14 +475,15 @@ class Epito(object):
                 n = szamlalo[ig]
                 tokenek.append((ig, n, nyelv, lanc, r['Strong-szám'], r['Ragozott alak'],
                                 r['Kiejtés'], r['Szótő'], r['Rövid jelentés'],
-                                r['Angol tükörfordítás'], r.get('Kritikai kiadás', ''), fajl))
+                                r['Angol tükörfordítás'], r.get('Kritikai kiadás', ''), fajl, 1 if ig in self.vi.halmaz else 0))
                 for s in elemek:
                     strongok.append((ig, n, s))
         self.tabla('token_eredeti',
                    [('igehely', 'TEXT'), ('sorszam', 'INTEGER'), ('nyelv', 'TEXT'),
                     ('strong_lanc', 'TEXT'), ('strong_nyers', 'TEXT'), ('alak', 'TEXT'),
                     ('kiejtes', 'TEXT'), ('szoto', 'TEXT'), ('rovid_jelentes', 'TEXT'),
-                    ('angol_tukorford', 'TEXT'), ('kritikai_kiadas', 'TEXT'), ('forras_fajl', 'TEXT')],
+                    ('angol_tukorford', 'TEXT'), ('kritikai_kiadas', 'TEXT'), ('forras_fajl', 'TEXT'),
+                    ('van_vers', 'INTEGER')],
                    tokenek, SZARMAZTATOTT_LICENC['token_eredeti'],
                    ['igehely, sorszam', 'strong_lanc'])
         self.tabla('token_strong', [('igehely', 'TEXT'), ('sorszam', 'INTEGER'), ('strong', 'TEXT')],
@@ -616,10 +629,11 @@ class Epito(object):
                 s = None
                 self.jelent_norm('bsb', r['Strong-szám'], 'Strong-szám nem normalizálható')
             bsb.append((kk, szamlalo[kk], s, r['Angol szó'], r['Morfológiai kód'],
-                        r['Angol szó állapota'], sz, r['Igehely'], mod))
+                        r['Angol szó állapota'], sz, r['Igehely'], mod, r['Szósorszám']))
         self.tabla('bsb', [('igehely', 'TEXT'), ('sorszam', 'INTEGER'), ('strong', 'TEXT'),
                            ('angol_szo', 'TEXT'), ('morf', 'TEXT'), ('angol_szo_allapot', 'TEXT'),
-                           ('szamozas', 'TEXT'), ('step_nyers', 'TEXT'), ('kk_leképezés', 'TEXT')],
+                           ('szamozas', 'TEXT'), ('step_nyers', 'TEXT'), ('kk_leképezés', 'TEXT'),
+                           ('szosorszam_nyers', 'TEXT')],
                    bsb, SZARMAZTATOTT_LICENC['bsb'], ['igehely, sorszam', 'strong'])
         n46 = set()
         for (k, f, v1, v2) in N46_TARTOMANYOK:
@@ -642,6 +656,99 @@ class Epito(object):
                                      ('mt_igehely', 'TEXT'), ('szamozas', 'TEXT'),
                                      ('szamozas_forras', 'TEXT'), ('megfeleltetes_forras', 'TEXT')],
                    sorok, SZARMAZTATOTT_LICENC['vers_szamozas'], ['igehely'])
+
+    # -- KJV, Karoli_Strong_kivonat, TBESG/TBESH (DT-F79a M0 sema-terv) ---------------------
+    def _kjv(self):
+        if not self.licenc_ellenorzes('kjv', SZARMAZTATOTT_LICENC['kjv']):
+            return
+        vm = G.tsv_beolvas(os.path.join(self.konk, 'Karoli_versmegfeleltetes.tsv'))[1]
+        kjv_kk = {}
+        for r in vm:
+            if r['igehely_kjv']:
+                p = hu_igehely_parse(r['igehely_karoli'])
+                if p:
+                    kjv_kk[(p[0], r['igehely_kjv'])] = r['igehely_karoli']
+        ki, szamlalo = [], {}
+        for r in G.tsv_beolvas(os.path.join(self.konk, 'KJV_Strongs_teljes.tsv'))[1]:
+            m = STEP_IGEHELY_RE.match(r['Igehely'])
+            konyv = self.konyvek.step_hu.get(m.group(1)) if m else None
+            if konyv is None:
+                self.jelent_norm('kjv', r['Igehely'], 'nem leképezhető')
+                continue
+            kulcs = '%d:%d' % (int(m.group(2)), int(m.group(3)))
+            if (konyv, kulcs) in kjv_kk:
+                kk, mod = kjv_kk[(konyv, kulcs)], 'kjv_tabla'
+            else:
+                kk, mod = '%s %s' % (konyv, kulcs), 'azonos_feltetelezett'
+            if kk not in self.vi.halmaz:
+                self.jelent_norm('kjv', kk, 'nincs ilyen Károli-vers')
+                continue
+            if not self._benne(kk):
+                continue
+            szamlalo[kk] = szamlalo.get(kk, 0) + 1
+            try:
+                s = strong_normalizal(r['Strong-szám'])
+            except ValueError:
+                s = None
+                self.jelent_norm('kjv', r['Strong-szám'], 'Strong-szám nem normalizálható')
+            ki.append((kk, szamlalo[kk], s, r['Strong-szám'], r['Angol szó'], r['Morfológiai kód'],
+                       r['Igehely'], mod, r['Szósorszám']))
+        self.tabla('kjv', [('igehely', 'TEXT'), ('sorszam', 'INTEGER'), ('strong', 'TEXT'),
+                           ('strong_nyers', 'TEXT'), ('angol_szo', 'TEXT'), ('morf', 'TEXT'),
+                           ('step_nyers', 'TEXT'), ('kk_leképezés', 'TEXT'), ('szosorszam_nyers', 'TEXT')],
+                   ki, SZARMAZTATOTT_LICENC['kjv'], ['igehely, sorszam', 'strong'])
+
+    def _karoli_strong_kivonat(self):
+        if not self.licenc_ellenorzes('karoli_strong_kivonat', SZARMAZTATOTT_LICENC['karoli_strong_kivonat']):
+            return
+        ki = []
+        for r in G.tsv_beolvas(os.path.join(self.konk, 'Karoli_Strong_kivonat.tsv'))[1]:
+            ig = self.konyvek.step_igehely(r['Igehely'])
+            if ig is None:
+                self.jelent_norm('karoli_strong_kivonat', r['Igehely'], 'nem leképezhető')
+            elif ig not in self.vi.halmaz:
+                self.jelent_norm('karoli_strong_kivonat', ig, 'nincs ilyen Károli-vers')
+            if self.minta is not None and (ig is None or ig not in self.minta):
+                continue
+            try:
+                st = strong_normalizal(r['Strong-szám'])
+            except ValueError:
+                st = None
+                self.jelent_norm('karoli_strong_kivonat', r['Strong-szám'], 'Strong-szám nem normalizálható')
+            ki.append((ig, r['Igehely'], st, r['Strong-szám'], r['Károli-szó'], r['Azonosítás módja'],
+                       r['Forrás-tanulmány'], r['Megbízhatóság'], r['Szófaj'], r['Gyök/Származtatás']))
+        self.tabla('karoli_strong_kivonat',
+                   [('igehely', 'TEXT'), ('step_nyers', 'TEXT'), ('strong', 'TEXT'), ('strong_nyers', 'TEXT'),
+                    ('karoli_szo', 'TEXT'), ('azonositas_modja', 'TEXT'), ('forras_tanulmany', 'TEXT'),
+                    ('megbizhatosag', 'TEXT'), ('szofaj', 'TEXT'), ('gyok_szarmaztatas', 'TEXT')],
+                   ki, SZARMAZTATOTT_LICENC['karoli_strong_kivonat'], ['igehely', 'strong'])
+
+    def _tbes(self):
+        for nev, fajl in (('tbesg', 'TBESG.txt'), ('tbesh', 'TBESH.txt')):
+            if not self.licenc_ellenorzes(nev, SZARMAZTATOTT_LICENC[nev]):
+                continue
+            with open(os.path.join(self.konk, fajl), encoding='utf-8-sig', newline='') as f:
+                sorok = f.read().split('\n')
+            sorok = [x.rstrip('\r') for x in sorok]
+            fej = next(i for i, x in enumerate(sorok) if len(x.split('\t')) == 8 and x.startswith('eStrong'))
+            ki = []
+            for x in sorok[fej + 1:]:
+                if not x.strip() or x.startswith('==='):
+                    continue
+                mezok = x.split('\t')
+                if len(mezok) != 8:
+                    self.jelent_norm(nev, x[:40], 'nem 8 mezős sor (az adat-szakaszban)')
+                    continue
+                try:
+                    st = strong_normalizal(mezok[0], utotag='megtart')
+                except ValueError:
+                    st = None
+                    self.jelent_norm(nev, mezok[0], 'Strong-szám nem normalizálható')
+                ki.append((st, mezok[0], mezok[1], mezok[2], mezok[3], mezok[4], mezok[5], mezok[6], mezok[7]))
+            self.tabla(nev, [('strong', 'TEXT'), ('estrong_nyers', 'TEXT'), ('dstrong', 'TEXT'),
+                             ('ustrong', 'TEXT'), ('szo', 'TEXT'), ('atiras', 'TEXT'), ('morf', 'TEXT'),
+                             ('gloss', 'TEXT'), ('jelentes', 'TEXT')],
+                       ki, SZARMAZTATOTT_LICENC[nev], ['strong'])
 
     # -- altalanos konkordancia-tablak, adat-tablak ------------------------------------
     def _altalanos_betolt(self, nev, relfajl, strong_o, igehely_o, lic):
@@ -688,7 +795,7 @@ class Epito(object):
             nev = os.path.splitext(os.path.basename(f))[0]
             if nev in ADAT_KIHAGYOTT:
                 continue
-            self._altalanos_betolt(nev, 'adat/%s.tsv' % nev, None, None, ['projekt_adat'])
+            self._altalanos_betolt(nev, 'adat/%s.tsv' % nev, None, None, ADAT_LICENC.get(nev, ['projekt_adat']))
         # karoli_variancia: szarmaztatott licenc, csak teljes modban (42 ezer sor)
         if self.mod == 'teljes':
             self._altalanos_betolt('karoli_variancia', 'adat/karoli_variancia.tsv', None, None,
@@ -778,10 +885,10 @@ class Epito(object):
     def _jelentes_tabla(self):
         if self.mod == 'teljes':
             self.megjegyzesek.append(
-                'Nem betöltött konkordancia-táblák (a DT-F79a és a brief hatóköre nem nevezi őket): '
-                'Macula_heber_*/Macula_gorog, LXX_OS/*, KJV_Strongs_teljes és KJV_/ASV_Strongs_* (a #48 vezeti ki), '
-                'TBESG/TBESH, Karoli_Strong_kivonat, a BDB_*/aram/alias segédtáblák, SDBH_SDGNT_domenfa; '
-                'a licenc-sor hiánya miatt kimaradt táblák száma: %d' % len(self.kihagyott))
+                'Szándékosan nem betöltött konkordancia-táblák: Macula_heber_*/Macula_gorog, LXX_OS/*, '
+                'KJV_/ASV_Strongs_{Genesis,Exodus,Proverbs} (a #48 vezeti ki; a KJV_Strongs_teljes betöltve), '
+                'a BDB_*/aram/alias segédtáblák, SDBH_SDGNT_domenfa, a versmegfeleltetési segédtáblák; '
+                'a licencsor hiánya miatt kimaradt táblák száma: %d' % len(self.kihagyott))
         sorok = [(t, nyers, ok, d) for (t, nyers, ok), d in sorted(self.norm_jelentes.items())]
         self.tabla('normalizalas_jelentes', [('tabla', 'TEXT'), ('nyers', 'TEXT'), ('ok', 'TEXT'),
                                              ('darab', 'INTEGER')],
