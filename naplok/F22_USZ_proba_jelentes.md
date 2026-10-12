@@ -33,7 +33,7 @@ A hátralevő 23 könyv vetített költsége (43,5–45,6 USD) **kb. a kétszere
 | Júd | 5/25 | 0 | 1 köteg (k003) |
 | **össz** | **8/77 (10,4%)** | **0** | 2 köteg |
 
-**Mind a 8 első próbás hiba formátumhiba:** a két javító körös köteg egésze érvénytelen JSON volt az 1. próbán (2Ján k002, 3 vers, és Júd k003, 5 vers; a hiba mindkettőnél „Extra data: line 3 column 1”, vagyis a JSON-tömb után további szöveg; `f22/api_termeles/high/_munka/2Jan_k002.json`, `Jud_k003.json`). Versenkénti tartalmi kapuhiba (érvényes JSON, hibás párosítás) **0** volt. Ugyanez a minta a kilenc kis ÓSZ-könyvben is előfordult (négy egész formátumhibás köteg, 33 vers; első próbás kapuhiba ott 47/797, 5,9%, D43).
+**Mind a 8 első próbás hiba formátumhiba:** a két javító körös köteg egésze érvénytelen JSON volt az 1. próbán (2Ján k002, 3 vers, és Júd k003, 5 vers; a kapu üzenete mindkettőnél „Extra data: line 3 column 1”; `f22/api_termeles/high/_munka/2Jan_k002.json`, `Jud_k003.json`). A nyers válasz egyik esetben sem JSON-tömb, hanem tömb nélküli, egymás után írt versobjektumok prózai közbeszúrással (2Ján: „Megjegyzés a 2Ján 1:11-hez: …”; Júd: „Ellenőrzés után javított változat:”). A Júd k003 válasza ráadásul csak a Júd 1:21-et tartalmazza (kétszer), a Júd 1:22–25 hiányzik belőle: ott a hiba a formátumon túl tartalmi hiány is. Versenkénti tartalmi kapuhiba (érvényes JSON, hibás párosítás) a javító kör után 0; az első próbára ez a két kötegre nem mérhető. Ugyanez a minta a kilenc kis ÓSZ-könyvben is előfordult (négy egész formátumhibás köteg, 33 vers; első próbás kapuhiba ott 47/797, 5,9%, D43).
 
 ## 3. A `[nem TR]` tokenek (c, P4)
 
@@ -52,7 +52,7 @@ Mind az 51 a várt módon `forditatlan` (a `prompt_v3` K szabálya); a száraz p
 - **Minta:** a `sonnet_koteg.py minta` az eredeti vers nélküli versek közé sorolja, a modellhez nem kerül (`f22/minta_3Jan.tsv`: 14 vers + 1 kimaradt).
 - **Kapu:** nem érinti (nincs kérés).
 - **Egyesítés:** az `egyesit.py` a 12 Károli-szavát `fuggoben` állapotban, link nélkül írja a `szavak_3Jan.tsv`-be; a `parok_3Jan.tsv`-ben nincs sora.
-- **Átnézés:** `naplok/F22_3Jan_atnezes.tsv` 1 sor („nincs eredeti vers a TAGNT-ben (versszámozás-eltérés)”). A szöveg általános; a valódi ok a kivonat hiánya (a görög szöveg, εἰρήνη σοι …, a `TAGNT_kivonat.tsv`-ben sehol nincs), l. N-F22b és a 3Ján-jelentés 3. szakasza.
+- **Átnézés:** `naplok/F22_3Jan_atnezes.tsv` 1 sor („nincs eredeti vers a TAGNT-ben (versszámozás-eltérés)”). A szöveg általános; a valódi ok a kivonat hiánya (a görög szöveg, εἰρήνη σοι …, a `TAGNT_kivonat.tsv`-ben sehol nincs), l. N-F22c és a 3Ján-jelentés 3. szakasza.
 
 ## 5. Régi arany (e)
 
@@ -65,8 +65,10 @@ A négy könyvben a `Karoli_Strong_kivonat.tsv`-nek 0 hármasa van: az egyezés 
 - **Batch-várakozás:** a Filem batch-e (05:47 UTC) kb. 2 óráig `in_progress` volt, kérés nélküli hibával nem; egy közben indított szinkron próbahívás 1,6 mp alatt válaszolt (a modell és a kulcs rendben). A többi hat batch 2–3 perc alatt végzett. A próbahívás költsége (5 kimeneti token) nem került a futásnaplóba.
 - **Mellékes lelet (nem e tétel dolga):** a main-en a `parok_2Moz.tsv`, `szavak_2Moz.tsv`, `parok_Job.tsv`, `szavak_Job.tsv` proveniencia-fejléce eltér attól, amit az `egyesit.py` ma írna (a `forras` listában a már üres versmegfeleltetési táblák); az adatsorok azonosak. A módosítás nélkül is így van (ellenőrizve).
 
+- **A független ellenőr (`naplok/ELLENOR_F22_USZ_proba.md`) nyomán, javítás nélkül dokumentálva:** (a) a 22.8 2. lépése „külön commit”-ot írt elő a kódigazításra; az `egyesit.py` javítása a mintákkal és a száraz próbával egy commitban ment (`c5dc0b21`); a pusholt ág története nem íródik át. (b) Az átnézési sor (`naplok/F22_3Jan_atnezes.tsv`) szövege az `egyesit.py` általános „versszámozás-eltérés” címkéje; a valódi ok a kivonat hiánya (N-F22c), ezt a 4. szakasz és a 3Ján-jelentés mondja ki; a címke megkülönböztetése kódváltozás volna, nem e tétel dolga. (c) A szinkron próbahívás költsége (15 bemeneti, 5 kimeneti token, normál ár: kb. 0,00008 USD) nincs a futásnaplóban; a futó összeg ennyivel kisebb a valódinál.
+
 ## 7. ⛔ Megállás — a felhasználó döntése
 
 1. Indul-e a többi 23 ÚSZ-könyv (7 876 vers), milyen sorrendben és csomagokban.
 2. A keret: a vetítés (43,5–45,6 USD) a maradék 23,63 USD kb. kétszerese. Lehetőség: keretemelés, vagy egy részcsomag a maradékból. Példa: a levelek és a Jel (a pilot `naplok/F21P_jelentes.md` „levél+Jel” csoportja, 3 169 vers) a négy próbakönyv nélkül 3 091 vers, versarányosan kb. 17,1 USD; ez belefér a maradékba, az evangéliumok és az ApCsel (4 785 vers, kb. 26,4 USD) nem.
-3. N-F22b (az ÚSZ-verskulcs eltérései) rendezése a teljes ÚSZ előtt, vagy menet közben `kezi`-be téve.
+3. N-F22c (az ÚSZ-verskulcs eltérései) rendezése a teljes ÚSZ előtt, vagy menet közben `kezi`-be téve.

@@ -70,7 +70,7 @@ Eltérő Károli-token (két modell partnerhalmaza különbözik) összesen: 0; 
 ## 3. Kézi átnézésre jelölt pontok
 
 - `3Ján 1:15`: nincs eredeti vers a TAGNT-ben (versszámozás-eltérés)
-  - Pontosítás: az `egyesit.py` átnézési szövege általános („versszámozás-eltérés”); itt a valódi ok, hogy a vers görög szövege (εἰρήνη σοι …) a `TAGNT_kivonat.tsv`-ben sehol nem szerepel (az 1:14 a λαλήσομεν szóval zárul): a kivonat hiánya (N-F22b). A vers 12 Károli-szava `fuggoben`, link nélkül; a párosítás nem pótolja, a 22.8 4. pontja szerint.
+  - Pontosítás: az `egyesit.py` átnézési szövege általános („versszámozás-eltérés”); itt a valódi ok, hogy a vers görög szövege (εἰρήνη σοι …) a `TAGNT_kivonat.tsv`-ben sehol nem szerepel (az 1:14 a λαλήσομεν szóval zárul): a kivonat hiánya (N-F22c). A vers 12 Károli-szava `fuggoben`, link nélkül; a párosítás nem pótolja, a 22.8 4. pontja szerint.
 - Régi arany: a könyvben 0 hármas, az egyezés **nem mérhető** (a 22.8 szerint kimondva, nem pótolva).
 - A „gyanús fejezetek” listája a 2.1-ben formális: egy modell fut, `magas` nincs.
 
