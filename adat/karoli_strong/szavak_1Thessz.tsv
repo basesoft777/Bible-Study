@@ -1,0 +1,3065 @@
+# proveniencia: scope=manual | forras=f22/valaszok/sonnet/1Thessz.jsonl, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; az API (Batch)-futásnak nincs lekérdezés-időbélyege) | modell-kimenet, javaslat: nem lekérdezés-eredmény; minden link `alacsony` (egy modell, nincs egyezés); a strong a TAGNT-ből, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py
+vers	oldal	sorszam	szo	allapot	partner_sorszam	strong	bizonyossag	forras
+1Thessz 1:1	hu	1	Pál	parositva	1	G3972	alacsony	S
+1Thessz 1:1	hu	2	Silvánus	parositva	3	G4610	alacsony	S
+1Thessz 1:1	hu	3	és	parositva	2	G2532	alacsony	S
+1Thessz 1:1	hu	4	Timótheus	parositva	5	G5095	alacsony	S
+1Thessz 1:1	hu	5	a	betoldas			alacsony	S
+1Thessz 1:1	hu	6	Thessalonikabeliek	parositva	8	G2331	alacsony	S
+1Thessz 1:1	hu	7	gyülekezetének	parositva	7	G1577	alacsony	S
+1Thessz 1:1	hu	8	a	betoldas			alacsony	S
+1Thessz 1:1	hu	9	mely	betoldas			alacsony	S
+1Thessz 1:1	hu	10	van	betoldas			alacsony	S
+1Thessz 1:1	hu	11	az	betoldas			alacsony	S
+1Thessz 1:1	hu	12	Atya	parositva	11	G3962	alacsony	S
+1Thessz 1:1	hu	13	Istenben	parositva	9,10	G1722+G2316	alacsony	S
+1Thessz 1:1	hu	14	és	parositva	12	G2532	alacsony	S
+1Thessz 1:1	hu	15	az	betoldas			alacsony	S
+1Thessz 1:1	hu	16	Úr	parositva	13	G2962	alacsony	S
+1Thessz 1:1	hu	17	Jézus	parositva	14	G2424	alacsony	S
+1Thessz 1:1	hu	18	Krisztusban	parositva	15	G5547	alacsony	S
+1Thessz 1:1	hu	19	kegyelem	parositva	16	G5485	alacsony	S
+1Thessz 1:1	hu	20	néktek	parositva	17	G4771	alacsony	S
+1Thessz 1:1	hu	21	és	parositva	18	G2532	alacsony	S
+1Thessz 1:1	hu	22	békesség	parositva	19	G1515	alacsony	S
+1Thessz 1:1	hu	23	Istentől	parositva	20,21	G0575+G2316	alacsony	S
+1Thessz 1:1	hu	24	a	betoldas			alacsony	S
+1Thessz 1:1	hu	25	mi	parositva	23	G3165	alacsony	S
+1Thessz 1:1	hu	26	Atyánktól	parositva	22,23	G3962+G3165	alacsony	S
+1Thessz 1:1	hu	27	és	parositva	24	G2532	alacsony	S
+1Thessz 1:1	hu	28	az	betoldas			alacsony	S
+1Thessz 1:1	hu	29	Úr	parositva	25	G2962	alacsony	S
+1Thessz 1:1	hu	30	Jézus	parositva	26	G2424	alacsony	S
+1Thessz 1:1	hu	31	Krisztustól	parositva	27	G5547	alacsony	S
+1Thessz 1:1	er	1	Παῦλος	parositva	1	G3972	alacsony	S
+1Thessz 1:1	er	2	καὶ	parositva	3	G2532	alacsony	S
+1Thessz 1:1	er	3	Σιλουανὸς	parositva	2	G4610	alacsony	S
+1Thessz 1:1	er	4	καὶ	forditatlan		G2532	alacsony	S
+1Thessz 1:1	er	5	Τιμόθεος	parositva	4	G5095	alacsony	S
+1Thessz 1:1	er	6	τῇ	forditatlan		G3588	alacsony	S
+1Thessz 1:1	er	7	ἐκκλησίᾳ	parositva	7	G1577	alacsony	S
+1Thessz 1:1	er	8	Θεσσαλονικέων	parositva	6	G2331	alacsony	S
+1Thessz 1:1	er	9	ἐν	parositva	13	G1722	alacsony	S
+1Thessz 1:1	er	10	θεῷ	parositva	13	G2316	alacsony	S
+1Thessz 1:1	er	11	πατρὶ	parositva	12	G3962	alacsony	S
+1Thessz 1:1	er	12	καὶ	parositva	14	G2532	alacsony	S
+1Thessz 1:1	er	13	κυρίῳ	parositva	16	G2962	alacsony	S
+1Thessz 1:1	er	14	Ἰησοῦ	parositva	17	G2424	alacsony	S
+1Thessz 1:1	er	15	Χριστῷ·	parositva	18	G5547	alacsony	S
+1Thessz 1:1	er	16	χάρις	parositva	19	G5485	alacsony	S
+1Thessz 1:1	er	17	ὑμῖν	parositva	20	G4771	alacsony	S
+1Thessz 1:1	er	18	καὶ	parositva	21	G2532	alacsony	S
+1Thessz 1:1	er	19	εἰρήνη	parositva	22	G1515	alacsony	S
+1Thessz 1:1	er	20	ἀπὸ	parositva	23	G0575	alacsony	S
+1Thessz 1:1	er	21	θεοῦ	parositva	23	G2316	alacsony	S
+1Thessz 1:1	er	22	πατρὸς	parositva	26	G3962	alacsony	S
+1Thessz 1:1	er	23	ἡμῶν	parositva	25,26	G3165	alacsony	S
+1Thessz 1:1	er	24	καὶ	parositva	27	G2532	alacsony	S
+1Thessz 1:1	er	25	κυρίου	parositva	29	G2962	alacsony	S
+1Thessz 1:1	er	26	Ἰησοῦ	parositva	30	G2424	alacsony	S
+1Thessz 1:1	er	27	Χριστοῦ.¶	parositva	31	G5547	alacsony	S
+1Thessz 1:2	hu	1	Hálát	parositva	1	G2168	alacsony	S
+1Thessz 1:2	hu	2	adunk	parositva	1	G2168	alacsony	S
+1Thessz 1:2	hu	3	az	betoldas			alacsony	S
+1Thessz 1:2	hu	4	Istennek	parositva	3	G2316	alacsony	S
+1Thessz 1:2	hu	5	mindenkor	parositva	4	G3842	alacsony	S
+1Thessz 1:2	hu	6	mindnyájatokért	parositva	5,6,7	G4012+G3956+G4771	alacsony	S
+1Thessz 1:2	hu	7	emlékezvén	parositva	8,10	G3417+G4160	alacsony	S
+1Thessz 1:2	hu	8	rólatok	parositva	9	G4771	alacsony	S
+1Thessz 1:2	hu	9	a	betoldas			alacsony	S
+1Thessz 1:2	hu	10	mi	parositva	14	G3165	alacsony	S
+1Thessz 1:2	hu	11	imádságainkban	parositva	11,13,14	G1909+G4335+G3165	alacsony	S
+1Thessz 1:2	er	1	Εὐχαριστοῦμεν	parositva	1,2	G2168	alacsony	S
+1Thessz 1:2	er	2	τῷ	forditatlan		G3588	alacsony	S
+1Thessz 1:2	er	3	θεῷ	parositva	4	G2316	alacsony	S
+1Thessz 1:2	er	4	πάντοτε	parositva	5	G3842	alacsony	S
+1Thessz 1:2	er	5	περὶ	parositva	6	G4012	alacsony	S
+1Thessz 1:2	er	6	πάντων	parositva	6	G3956	alacsony	S
+1Thessz 1:2	er	7	ὑμῶν	parositva	6	G4771	alacsony	S
+1Thessz 1:2	er	8	μνείαν	parositva	7	G3417	alacsony	S
+1Thessz 1:2	er	9	ὑμῶν	parositva	8	G4771	alacsony	S
+1Thessz 1:2	er	10	ποιούμενοι	parositva	7	G4160	alacsony	S
+1Thessz 1:2	er	11	ἐπὶ	parositva	11	G1909	alacsony	S
+1Thessz 1:2	er	12	τῶν	forditatlan		G3588	alacsony	S
+1Thessz 1:2	er	13	προσευχῶν	parositva	11	G4335	alacsony	S
+1Thessz 1:2	er	14	ἡμῶν,	parositva	10,11	G3165	alacsony	S
+1Thessz 1:3	hu	1	Szüntelenül	betoldas			alacsony	S
+1Thessz 1:3	hu	2	emlegetve	parositva	1	G3421	alacsony	S
+1Thessz 1:3	hu	3	a	betoldas			alacsony	S
+1Thessz 1:3	hu	4	ti	parositva	2	G4771	alacsony	S
+1Thessz 1:3	hu	5	hitetek	parositva	2,6	G4771+G4102	alacsony	S
+1Thessz 1:3	hu	6	munkáját	parositva	4	G2041	alacsony	S
+1Thessz 1:3	hu	7	és	parositva	7	G2532	alacsony	S
+1Thessz 1:3	hu	8	a	betoldas			alacsony	S
+1Thessz 1:3	hu	9	ti	parositva	2	G4771	alacsony	S
+1Thessz 1:3	hu	10	szeretetetek	parositva	2,11	G4771+G0026	alacsony	S
+1Thessz 1:3	hu	11	fáradozását	parositva	9	G2873	alacsony	S
+1Thessz 1:3	hu	12	és	parositva	12	G2532	alacsony	S
+1Thessz 1:3	hu	13	a	betoldas			alacsony	S
+1Thessz 1:3	hu	14	mi	parositva	19	G3165	alacsony	S
+1Thessz 1:3	hu	15	Urunk	parositva	18,19	G2962+G3165	alacsony	S
+1Thessz 1:3	hu	16	Jézus	parositva	20	G2424	alacsony	S
+1Thessz 1:3	hu	17	Krisztus	parositva	21	G5547	alacsony	S
+1Thessz 1:3	hu	18	felől	betoldas			alacsony	S
+1Thessz 1:3	hu	19	való	betoldas			alacsony	S
+1Thessz 1:3	hu	20	reménységeteknek	parositva	2,16	G4771+G1680	alacsony	S
+1Thessz 1:3	hu	21	állhatatosságát	parositva	14	G5281	alacsony	S
+1Thessz 1:3	hu	22	az	betoldas			alacsony	S
+1Thessz 1:3	hu	23	Isten	parositva	24	G2316	alacsony	S
+1Thessz 1:3	hu	24	előtt	parositva	22	G1715	alacsony	S
+1Thessz 1:3	hu	25	a	betoldas			alacsony	S
+1Thessz 1:3	hu	26	mi	parositva	27	G3165	alacsony	S
+1Thessz 1:3	hu	27	Atyánk	parositva	26,27	G3962+G3165	alacsony	S
+1Thessz 1:3	hu	28	előtt	parositva	22	G1715	alacsony	S
+1Thessz 1:3	er	1	μνημονεύοντες	parositva	2	G3421	alacsony	S
+1Thessz 1:3	er	2	ὑμῶν	parositva	4,5,9,10,20	G4771	alacsony	S
+1Thessz 1:3	er	3	τοῦ	forditatlan		G3588	alacsony	S
+1Thessz 1:3	er	4	ἔργου	parositva	6	G2041	alacsony	S
+1Thessz 1:3	er	5	τῆς	forditatlan		G3588	alacsony	S
+1Thessz 1:3	er	6	πίστεως	parositva	5	G4102	alacsony	S
+1Thessz 1:3	er	7	καὶ	parositva	7	G2532	alacsony	S
+1Thessz 1:3	er	8	τοῦ	forditatlan		G3588	alacsony	S
+1Thessz 1:3	er	9	κόπου	parositva	11	G2873	alacsony	S
+1Thessz 1:3	er	10	τῆς	forditatlan		G3588	alacsony	S
+1Thessz 1:3	er	11	ἀγάπης	parositva	10	G0026	alacsony	S
+1Thessz 1:3	er	12	καὶ	parositva	12	G2532	alacsony	S
+1Thessz 1:3	er	13	τῆς	forditatlan		G3588	alacsony	S
+1Thessz 1:3	er	14	ὑπομονῆς	parositva	21	G5281	alacsony	S
+1Thessz 1:3	er	15	τῆς	forditatlan		G3588	alacsony	S
+1Thessz 1:3	er	16	ἐλπίδος	parositva	20	G1680	alacsony	S
+1Thessz 1:3	er	17	τοῦ	forditatlan		G3588	alacsony	S
+1Thessz 1:3	er	18	κυρίου	parositva	15	G2962	alacsony	S
+1Thessz 1:3	er	19	ἡμῶν	parositva	14,15	G3165	alacsony	S
+1Thessz 1:3	er	20	Ἰησοῦ	parositva	16	G2424	alacsony	S
+1Thessz 1:3	er	21	Χριστοῦ	parositva	17	G5547	alacsony	S
+1Thessz 1:3	er	22	ἔμπροσθεν	parositva	24,28	G1715	alacsony	S
+1Thessz 1:3	er	23	τοῦ	forditatlan		G3588	alacsony	S
+1Thessz 1:3	er	24	θεοῦ	parositva	23	G2316	alacsony	S
+1Thessz 1:3	er	25	καὶ	forditatlan		G2532	alacsony	S
+1Thessz 1:3	er	26	πατρὸς	parositva	27	G3962	alacsony	S
+1Thessz 1:3	er	27	ἡμῶν·	parositva	26,27	G3165	alacsony	S
+1Thessz 1:4	hu	1	Tudván	parositva	1	G6063	alacsony	S
+1Thessz 1:4	hu	2	Istentől	parositva	4,6	G5259+G2316	alacsony	S
+1Thessz 1:4	hu	3	szeretett	parositva	3	G0025	alacsony	S
+1Thessz 1:4	hu	4	atyámfiai	parositva	2	G0080	alacsony	S
+1Thessz 1:4	hu	5	hogy	betoldas			alacsony	S
+1Thessz 1:4	hu	6	ti	parositva	9	G4771	alacsony	S
+1Thessz 1:4	hu	7	ki	parositva	8	G1589	alacsony	S
+1Thessz 1:4	hu	8	vagytok	betoldas			alacsony	S
+1Thessz 1:4	hu	9	választva	parositva	8	G1589	alacsony	S
+1Thessz 1:4	er	1	εἰδότες,	parositva	1	G6063	alacsony	S
+1Thessz 1:4	er	2	ἀδελφοὶ	parositva	4	G0080	alacsony	S
+1Thessz 1:4	er	3	ἠγαπημένοι	parositva	3	G0025	alacsony	S
+1Thessz 1:4	er	4	ὑπὸ	parositva	2	G5259	alacsony	S
+1Thessz 1:4	er	5	τοῦ	forditatlan		G3588	alacsony	S
+1Thessz 1:4	er	6	θεοῦ,	parositva	2	G2316	alacsony	S
+1Thessz 1:4	er	7	τὴν	forditatlan		G3588	alacsony	S
+1Thessz 1:4	er	8	ἐκλογὴν	parositva	7,9	G1589	alacsony	S
+1Thessz 1:4	er	9	ὑμῶν·	parositva	6	G4771	alacsony	S
+1Thessz 1:5	hu	1	Hogy	parositva	1	G3754	alacsony	S
+1Thessz 1:5	hu	2	a	betoldas			alacsony	S
+1Thessz 1:5	hu	3	mi	parositva	4	G3165	alacsony	S
+1Thessz 1:5	hu	4	evangyéliomunk	parositva	3,4	G2098+G3165	alacsony	S
+1Thessz 1:5	hu	5	ti	parositva	8	G4771	alacsony	S
+1Thessz 1:5	hu	6	nálatok	parositva	7,8	G1519+G4771	alacsony	S
+1Thessz 1:5	hu	7	nem	parositva	5	G3756	alacsony	S
+1Thessz 1:5	hu	8	áll	parositva	6	G1096	alacsony	S
+1Thessz 1:5	hu	9	csak	parositva	11	G3441	alacsony	S
+1Thessz 1:5	hu	10	szóban	parositva	9,10	G1722+G3056	alacsony	S
+1Thessz 1:5	hu	11	hanem	parositva	12	G0235	alacsony	S
+1Thessz 1:5	hu	12	isteni	betoldas			alacsony	S
+1Thessz 1:5	hu	13	erőkben	parositva	14,15	G1722+G1411	alacsony	S
+1Thessz 1:5	hu	14	is	parositva	13	G2532	alacsony	S
+1Thessz 1:5	hu	15	Szent	parositva	19	G0040	alacsony	S
+1Thessz 1:5	hu	16	Lélekben	parositva	17,18	G1722+G4151	alacsony	S
+1Thessz 1:5	hu	17	is	parositva	16	G2532	alacsony	S
+1Thessz 1:5	hu	18	sok	parositva	23	G4183	alacsony	S
+1Thessz 1:5	hu	19	bizodalomban	parositva	21,22	G1722+G4136	alacsony	S
+1Thessz 1:5	hu	20	is	parositva	20	G2532	alacsony	S
+1Thessz 1:5	hu	21	a	parositva	24	G2531	alacsony	S
+1Thessz 1:5	hu	22	miképen	parositva	24	G2531	alacsony	S
+1Thessz 1:5	hu	23	tudjátok	parositva	25	G6063	alacsony	S
+1Thessz 1:5	hu	24	hogy	betoldas			alacsony	S
+1Thessz 1:5	hu	25	milyenek	parositva	26	G3634	alacsony	S
+1Thessz 1:5	hu	26	voltunk	parositva	27	G1096	alacsony	S
+1Thessz 1:5	hu	27	közöttetek	parositva	28,29	G1722+G4771	alacsony	S
+1Thessz 1:5	hu	28	ti	parositva	29	G4771	alacsony	S
+1Thessz 1:5	hu	29	érettetek	parositva	30,31	G1223+G4771	alacsony	S
+1Thessz 1:5	er	1	ὅτι	parositva	1	G3754	alacsony	S
+1Thessz 1:5	er	2	τὸ	forditatlan		G3588	alacsony	S
+1Thessz 1:5	er	3	εὐαγγέλιον	parositva	4	G2098	alacsony	S
+1Thessz 1:5	er	4	ἡμῶν	parositva	3,4	G3165	alacsony	S
+1Thessz 1:5	er	5	οὐκ	parositva	7	G3756	alacsony	S
+1Thessz 1:5	er	6	ἐγενήθη	parositva	8	G1096	alacsony	S
+1Thessz 1:5	er	7	εἰς	parositva	6	G1519	alacsony	S
+1Thessz 1:5	er	8	ὑμᾶς	parositva	5,6	G4771	alacsony	S
+1Thessz 1:5	er	9	ἐν	parositva	10	G1722	alacsony	S
+1Thessz 1:5	er	10	λόγῳ	parositva	10	G3056	alacsony	S
+1Thessz 1:5	er	11	μόνον	parositva	9	G3441	alacsony	S
+1Thessz 1:5	er	12	ἀλλὰ	parositva	11	G0235	alacsony	S
+1Thessz 1:5	er	13	καὶ	parositva	14	G2532	alacsony	S
+1Thessz 1:5	er	14	ἐν	parositva	13	G1722	alacsony	S
+1Thessz 1:5	er	15	δυνάμει	parositva	13	G1411	alacsony	S
+1Thessz 1:5	er	16	καὶ	parositva	17	G2532	alacsony	S
+1Thessz 1:5	er	17	ἐν	parositva	16	G1722	alacsony	S
+1Thessz 1:5	er	18	πνεύματι	parositva	16	G4151	alacsony	S
+1Thessz 1:5	er	19	ἁγίῳ	parositva	15	G0040	alacsony	S
+1Thessz 1:5	er	20	καὶ	parositva	20	G2532	alacsony	S
+1Thessz 1:5	er	21	ἐν	parositva	19	G1722	alacsony	S
+1Thessz 1:5	er	22	πληροφορίᾳ	parositva	19	G4136	alacsony	S
+1Thessz 1:5	er	23	πολλῇ	parositva	18	G4183	alacsony	S
+1Thessz 1:5	er	24	καθὼς	parositva	21,22	G2531	alacsony	S
+1Thessz 1:5	er	25	οἴδατε	parositva	23	G6063	alacsony	S
+1Thessz 1:5	er	26	οἷοι	parositva	25	G3634	alacsony	S
+1Thessz 1:5	er	27	ἐγενήθημεν	parositva	26	G1096	alacsony	S
+1Thessz 1:5	er	28	ἐν	parositva	27	G1722	alacsony	S
+1Thessz 1:5	er	29	ὑμῖν	parositva	27,28	G4771	alacsony	S
+1Thessz 1:5	er	30	δι᾽	parositva	29	G1223	alacsony	S
+1Thessz 1:5	er	31	ὑμᾶς·	parositva	29	G4771	alacsony	S
+1Thessz 1:6	hu	1	És	parositva	1	G2532	alacsony	S
+1Thessz 1:6	hu	2	ti	parositva	2	G4771	alacsony	S
+1Thessz 1:6	hu	3	a	betoldas			alacsony	S
+1Thessz 1:6	hu	4	mi	parositva	4	G3165	alacsony	S
+1Thessz 1:6	hu	5	követőinkké	parositva	3,4	G3402+G3165	alacsony	S
+1Thessz 1:6	hu	6	lettetek	parositva	5	G1096	alacsony	S
+1Thessz 1:6	hu	7	és	parositva	6	G2532	alacsony	S
+1Thessz 1:6	hu	8	az	betoldas			alacsony	S
+1Thessz 1:6	hu	9	Úréi	parositva	8	G2962	alacsony	S
+1Thessz 1:6	hu	10	befogadván	parositva	9	G1209	alacsony	S
+1Thessz 1:6	hu	11	az	betoldas			alacsony	S
+1Thessz 1:6	hu	12	ígét	parositva	11	G3056	alacsony	S
+1Thessz 1:6	hu	13	sokféle	parositva	14	G4183	alacsony	S
+1Thessz 1:6	hu	14	szorongattatás	parositva	13	G2347	alacsony	S
+1Thessz 1:6	hu	15	között	parositva	12	G1722	alacsony	S
+1Thessz 1:6	hu	16	Szent	parositva	18	G0040	alacsony	S
+1Thessz 1:6	hu	17	Lélek	parositva	17	G4151	alacsony	S
+1Thessz 1:6	hu	18	örömével	parositva	15,16	G3326+G5479	alacsony	S
+1Thessz 1:6	er	1	καὶ	parositva	1	G2532	alacsony	S
+1Thessz 1:6	er	2	ὑμεῖς	parositva	2	G4771	alacsony	S
+1Thessz 1:6	er	3	μιμηταὶ	parositva	5	G3402	alacsony	S
+1Thessz 1:6	er	4	ἡμῶν	parositva	4,5	G3165	alacsony	S
+1Thessz 1:6	er	5	ἐγενήθητε	parositva	6	G1096	alacsony	S
+1Thessz 1:6	er	6	καὶ	parositva	7	G2532	alacsony	S
+1Thessz 1:6	er	7	τοῦ	forditatlan		G3588	alacsony	S
+1Thessz 1:6	er	8	κυρίου	parositva	9	G2962	alacsony	S
+1Thessz 1:6	er	9	δεξάμενοι	parositva	10	G1209	alacsony	S
+1Thessz 1:6	er	10	τὸν	forditatlan		G3588	alacsony	S
+1Thessz 1:6	er	11	λόγον	parositva	12	G3056	alacsony	S
+1Thessz 1:6	er	12	ἐν	parositva	15	G1722	alacsony	S
+1Thessz 1:6	er	13	θλίψει	parositva	14	G2347	alacsony	S
+1Thessz 1:6	er	14	πολλῇ	parositva	13	G4183	alacsony	S
+1Thessz 1:6	er	15	μετὰ	parositva	18	G3326	alacsony	S
+1Thessz 1:6	er	16	χαρᾶς	parositva	18	G5479	alacsony	S
+1Thessz 1:6	er	17	πνεύματος	parositva	17	G4151	alacsony	S
+1Thessz 1:6	er	18	ἁγίου,	parositva	16	G0040	alacsony	S
+1Thessz 1:7	hu	1	Úgy	parositva	1	G5620	alacsony	S
+1Thessz 1:7	hu	2	hogy	parositva	1	G5620	alacsony	S
+1Thessz 1:7	hu	3	példaképekké	parositva	4	G5179	alacsony	S
+1Thessz 1:7	hu	4	lettetek	parositva	2,3	G1096+G4771	alacsony	S
+1Thessz 1:7	hu	5	Maczedóniában	parositva	8,10	G1722+G3109	alacsony	S
+1Thessz 1:7	hu	6	és	parositva	11	G2532	alacsony	S
+1Thessz 1:7	hu	7	Akhájában	parositva	14	G0882	alacsony	S
+1Thessz 1:7	hu	8	minden	parositva	5	G3956	alacsony	S
+1Thessz 1:7	hu	9	hívőre	parositva	7	G4100	alacsony	S
+1Thessz 1:7	hu	10	nézve	betoldas			alacsony	S
+1Thessz 1:7	er	1	ὥστε	parositva	1,2	G5620	alacsony	S
+1Thessz 1:7	er	2	γενέσθαι	parositva	4	G1096	alacsony	S
+1Thessz 1:7	er	3	ὑμᾶς	parositva	4	G4771	alacsony	S
+1Thessz 1:7	er	4	τύπον	parositva	3	G5179	alacsony	S
+1Thessz 1:7	er	5	πᾶσιν	parositva	8	G3956	alacsony	S
+1Thessz 1:7	er	6	τοῖς	forditatlan		G3588	alacsony	S
+1Thessz 1:7	er	7	πιστεύουσιν	parositva	9	G4100	alacsony	S
+1Thessz 1:7	er	8	ἐν	parositva	5	G1722	alacsony	S
+1Thessz 1:7	er	9	τῇ	forditatlan		G3588	alacsony	S
+1Thessz 1:7	er	10	Μακεδονίᾳ	parositva	5	G3109	alacsony	S
+1Thessz 1:7	er	11	καὶ	parositva	6	G2532	alacsony	S
+1Thessz 1:7	er	12	ἐν	forditatlan		G1722	alacsony	S
+1Thessz 1:7	er	13	τῇ	forditatlan		G3588	alacsony	S
+1Thessz 1:7	er	14	Ἀχαΐᾳ.	parositva	7	G0882	alacsony	S
+1Thessz 1:8	hu	1	Mert	parositva	3	G1063	alacsony	S
+1Thessz 1:8	hu	2	nemcsak	parositva	9,10	G3756+G3441	alacsony	S
+1Thessz 1:8	hu	3	Maczedóniában	parositva	11,13	G1722+G3109	alacsony	S
+1Thessz 1:8	hu	4	és	parositva	14	G2532	alacsony	S
+1Thessz 1:8	hu	5	Akhájában	parositva	17	G0882	alacsony	S
+1Thessz 1:8	hu	6	zendült	parositva	4	G1837	alacsony	S
+1Thessz 1:8	hu	7	ki	parositva	4	G1837	alacsony	S
+1Thessz 1:8	hu	8	tőletek	parositva	1,2	G0575+G4771	alacsony	S
+1Thessz 1:8	hu	9	az	betoldas			alacsony	S
+1Thessz 1:8	hu	10	Úr	parositva	8	G2962	alacsony	S
+1Thessz 1:8	hu	11	beszéde	parositva	6	G3056	alacsony	S
+1Thessz 1:8	hu	12	hanem	parositva	18	G0235	alacsony	S
+1Thessz 1:8	hu	13	minden	parositva	21	G3956	alacsony	S
+1Thessz 1:8	hu	14	helyen	parositva	20,22	G1722+G5117	alacsony	S
+1Thessz 1:8	hu	15	is	parositva	19	G2532	alacsony	S
+1Thessz 1:8	hu	16	híre	betoldas			alacsony	S
+1Thessz 1:8	hu	17	terjedt	parositva	30	G1831	alacsony	S
+1Thessz 1:8	hu	18	a	betoldas			alacsony	S
+1Thessz 1:8	hu	19	ti	parositva	25	G4771	alacsony	S
+1Thessz 1:8	hu	20	Istenben	parositva	29	G2316	alacsony	S
+1Thessz 1:8	hu	21	vetett	parositva	27	G4314	alacsony	S
+1Thessz 1:8	hu	22	hiteteknek	parositva	24,25	G4102+G4771	alacsony	S
+1Thessz 1:8	hu	23	annyira	parositva	31	G5620	alacsony	S
+1Thessz 1:8	hu	24	hogy	parositva	31	G5620	alacsony	S
+1Thessz 1:8	hu	25	szükségtelen	parositva	32,33,34	G3361+G5532+G2192	alacsony	S
+1Thessz 1:8	hu	26	arról	betoldas			alacsony	S
+1Thessz 1:8	hu	27	valamit	parositva	37	G5100	alacsony	S
+1Thessz 1:8	hu	28	szólnunk	parositva	35,36	G3165+G2980	alacsony	S
+1Thessz 1:8	er	1	ἀφ᾽	parositva	8	G0575	alacsony	S
+1Thessz 1:8	er	2	ὑμῶν	parositva	8	G4771	alacsony	S
+1Thessz 1:8	er	3	γὰρ	parositva	1	G1063	alacsony	S
+1Thessz 1:8	er	4	ἐξήχηται	parositva	6,7	G1837	alacsony	S
+1Thessz 1:8	er	5	ὁ	forditatlan		G3588	alacsony	S
+1Thessz 1:8	er	6	λόγος	parositva	11	G3056	alacsony	S
+1Thessz 1:8	er	7	τοῦ	forditatlan		G3588	alacsony	S
+1Thessz 1:8	er	8	κυρίου	parositva	10	G2962	alacsony	S
+1Thessz 1:8	er	9	οὐ	parositva	2	G3756	alacsony	S
+1Thessz 1:8	er	10	μόνον	parositva	2	G3441	alacsony	S
+1Thessz 1:8	er	11	ἐν	parositva	3	G1722	alacsony	S
+1Thessz 1:8	er	12	τῇ	forditatlan		G3588	alacsony	S
+1Thessz 1:8	er	13	Μακεδονίᾳ	parositva	3	G3109	alacsony	S
+1Thessz 1:8	er	14	καὶ	parositva	4	G2532	alacsony	S
+1Thessz 1:8	er	15	ἐν	forditatlan		G1722	alacsony	S
+1Thessz 1:8	er	16	τῇ	forditatlan		G3588	alacsony	S
+1Thessz 1:8	er	17	Ἀχαΐᾳ,	parositva	5	G0882	alacsony	S
+1Thessz 1:8	er	18	ἀλλ᾽	parositva	12	G0235	alacsony	S
+1Thessz 1:8	er	19	καὶ	parositva	15	G2532	alacsony	S
+1Thessz 1:8	er	20	ἐν	parositva	14	G1722	alacsony	S
+1Thessz 1:8	er	21	παντὶ	parositva	13	G3956	alacsony	S
+1Thessz 1:8	er	22	τόπῳ	parositva	14	G5117	alacsony	S
+1Thessz 1:8	er	23	ἡ	forditatlan		G3588	alacsony	S
+1Thessz 1:8	er	24	πίστις	parositva	22	G4102	alacsony	S
+1Thessz 1:8	er	25	ὑμῶν	parositva	19,22	G4771	alacsony	S
+1Thessz 1:8	er	26	ἡ	forditatlan		G3588	alacsony	S
+1Thessz 1:8	er	27	πρὸς	parositva	21	G4314	alacsony	S
+1Thessz 1:8	er	28	τὸν	forditatlan		G3588	alacsony	S
+1Thessz 1:8	er	29	θεὸν	parositva	20	G2316	alacsony	S
+1Thessz 1:8	er	30	ἐξελήλυθεν,	parositva	17	G1831	alacsony	S
+1Thessz 1:8	er	31	ὥστε	parositva	23,24	G5620	alacsony	S
+1Thessz 1:8	er	32	μὴ	parositva	25	G3361	alacsony	S
+1Thessz 1:8	er	33	χρείαν	parositva	25	G5532	alacsony	S
+1Thessz 1:8	er	34	ἔχειν	parositva	25	G2192	alacsony	S
+1Thessz 1:8	er	35	ἡμᾶς	parositva	28	G3165	alacsony	S
+1Thessz 1:8	er	36	λαλεῖν	parositva	28	G2980	alacsony	S
+1Thessz 1:8	er	37	τι.	parositva	27	G5100	alacsony	S
+1Thessz 1:9	hu	1	Mert	parositva	2	G1063	alacsony	S
+1Thessz 1:9	hu	2	azok	parositva	1	G0846	alacsony	S
+1Thessz 1:9	hu	3	magok	parositva	1	G0846	alacsony	S
+1Thessz 1:9	hu	4	hirdetik	parositva	5	G0518	alacsony	S
+1Thessz 1:9	hu	5	felőlünk	parositva	3,4	G4012+G3165	alacsony	S
+1Thessz 1:9	hu	6	milyen	parositva	6	G3697	alacsony	S
+1Thessz 1:9	hu	7	volt	betoldas			alacsony	S
+1Thessz 1:9	hu	8	a	betoldas			alacsony	S
+1Thessz 1:9	hu	9	mi	parositva	4	G3165	alacsony	S
+1Thessz 1:9	hu	10	hozzátok	parositva	9,10	G4314+G4771	alacsony	S
+1Thessz 1:9	hu	11	való	betoldas			alacsony	S
+1Thessz 1:9	hu	12	menetelünk	parositva	4,7	G3165+G1529	alacsony	S
+1Thessz 1:9	hu	13	és	parositva	11	G2532	alacsony	S
+1Thessz 1:9	hu	14	miként	parositva	12	G4459	alacsony	S
+1Thessz 1:9	hu	15	tértetek	parositva	13	G1994	alacsony	S
+1Thessz 1:9	hu	16	meg	parositva	13	G1994	alacsony	S
+1Thessz 1:9	hu	17	az	betoldas			alacsony	S
+1Thessz 1:9	hu	18	Istenhez	parositva	14,16	G4314+G2316	alacsony	S
+1Thessz 1:9	hu	19	a	betoldas			alacsony	S
+1Thessz 1:9	hu	20	bálványoktól	parositva	17,19	G0575+G1497	alacsony	S
+1Thessz 1:9	hu	21	hogy	parositva	20	G1398	alacsony	S
+1Thessz 1:9	hu	22	az	betoldas			alacsony	S
+1Thessz 1:9	hu	23	élő	parositva	22	G2198	alacsony	S
+1Thessz 1:9	hu	24	és	parositva	23	G2532	alacsony	S
+1Thessz 1:9	hu	25	igaz	parositva	24	G0228	alacsony	S
+1Thessz 1:9	hu	26	Istennek	parositva	21	G2316	alacsony	S
+1Thessz 1:9	hu	27	szolgáljatok	parositva	20	G1398	alacsony	S
+1Thessz 1:9	er	1	αὐτοὶ	parositva	2,3	G0846	alacsony	S
+1Thessz 1:9	er	2	γὰρ	parositva	1	G1063	alacsony	S
+1Thessz 1:9	er	3	περὶ	parositva	5	G4012	alacsony	S
+1Thessz 1:9	er	4	ἡμῶν	parositva	5,9,12	G3165	alacsony	S
+1Thessz 1:9	er	5	ἀπαγγέλλουσιν	parositva	4	G0518	alacsony	S
+1Thessz 1:9	er	6	ὁποίαν	parositva	6	G3697	alacsony	S
+1Thessz 1:9	er	7	εἴσοδον	parositva	12	G1529	alacsony	S
+1Thessz 1:9	er	8	ἔσχομεν	forditatlan		G2192	alacsony	S
+1Thessz 1:9	er	9	πρὸς	parositva	10	G4314	alacsony	S
+1Thessz 1:9	er	10	ὑμᾶς,	parositva	10	G4771	alacsony	S
+1Thessz 1:9	er	11	καὶ	parositva	13	G2532	alacsony	S
+1Thessz 1:9	er	12	πῶς	parositva	14	G4459	alacsony	S
+1Thessz 1:9	er	13	ἐπεστρέψατε	parositva	15,16	G1994	alacsony	S
+1Thessz 1:9	er	14	πρὸς	parositva	18	G4314	alacsony	S
+1Thessz 1:9	er	15	τὸν	forditatlan		G3588	alacsony	S
+1Thessz 1:9	er	16	θεὸν	parositva	18	G2316	alacsony	S
+1Thessz 1:9	er	17	ἀπὸ	parositva	20	G0575	alacsony	S
+1Thessz 1:9	er	18	τῶν	forditatlan		G3588	alacsony	S
+1Thessz 1:9	er	19	εἰδώλων	parositva	20	G1497	alacsony	S
+1Thessz 1:9	er	20	δουλεύειν	parositva	21,27	G1398	alacsony	S
+1Thessz 1:9	er	21	θεῷ	parositva	26	G2316	alacsony	S
+1Thessz 1:9	er	22	ζῶντι	parositva	23	G2198	alacsony	S
+1Thessz 1:9	er	23	καὶ	parositva	24	G2532	alacsony	S
+1Thessz 1:9	er	24	ἀληθινῷ	parositva	25	G0228	alacsony	S
+1Thessz 1:10	hu	1	És	parositva	1	G2532	alacsony	S
+1Thessz 1:10	hu	2	várjátok	parositva	2	G0362	alacsony	S
+1Thessz 1:10	hu	3	az	betoldas			alacsony	S
+1Thessz 1:10	hu	4	Ő	parositva	5	G0846	alacsony	S
+1Thessz 1:10	hu	5	Fiát	parositva	4,5	G5207+G0846	alacsony	S
+1Thessz 1:10	hu	6	az	betoldas			alacsony	S
+1Thessz 1:10	hu	7	égből	parositva	6,8	G1537+G3772	alacsony	S
+1Thessz 1:10	hu	8	a	parositva	9	G3739	alacsony	S
+1Thessz 1:10	hu	9	kit	parositva	9	G3739	alacsony	S
+1Thessz 1:10	hu	10	feltámasztott	parositva	10	G1453	alacsony	S
+1Thessz 1:10	hu	11	a	betoldas			alacsony	S
+1Thessz 1:10	hu	12	halálból	parositva	11,13	G1537+G3498	alacsony	S
+1Thessz 1:10	hu	13	a	betoldas			alacsony	S
+1Thessz 1:10	hu	14	Jézust	parositva	14	G2424	alacsony	S
+1Thessz 1:10	hu	15	a	parositva	15	G3588	alacsony	S
+1Thessz 1:10	hu	16	ki	parositva	15	G3588	alacsony	S
+1Thessz 1:10	hu	17	megszabadít	parositva	16	G4506	alacsony	S
+1Thessz 1:10	hu	18	minket	parositva	17	G3165	alacsony	S
+1Thessz 1:10	hu	19	amaz	parositva	19	G3588	alacsony	S
+1Thessz 1:10	hu	20	eljövendő	parositva	22	G2064	alacsony	S
+1Thessz 1:10	hu	21	haragtól	parositva	20	G3709	alacsony	S
+1Thessz 1:10	er	1	καὶ	parositva	1	G2532	alacsony	S
+1Thessz 1:10	er	2	ἀναμένειν	parositva	2	G0362	alacsony	S
+1Thessz 1:10	er	3	τὸν	forditatlan		G3588	alacsony	S
+1Thessz 1:10	er	4	υἱὸν	parositva	5	G5207	alacsony	S
+1Thessz 1:10	er	5	αὐτοῦ	parositva	4,5	G0846	alacsony	S
+1Thessz 1:10	er	6	ἐκ	parositva	7	G1537	alacsony	S
+1Thessz 1:10	er	7	τῶν	forditatlan		G3588	alacsony	S
+1Thessz 1:10	er	8	οὐρανῶν,	parositva	7	G3772	alacsony	S
+1Thessz 1:10	er	9	ὃν	parositva	8,9	G3739	alacsony	S
+1Thessz 1:10	er	10	ἤγειρεν	parositva	10	G1453	alacsony	S
+1Thessz 1:10	er	11	ἐκ	parositva	12	G1537	alacsony	S
+1Thessz 1:10	er	12	τῶν	forditatlan		G3588	alacsony	S
+1Thessz 1:10	er	13	νεκρῶν,	parositva	12	G3498	alacsony	S
+1Thessz 1:10	er	14	Ἰησοῦν	parositva	14	G2424	alacsony	S
+1Thessz 1:10	er	15	τὸν	parositva	15,16	G3588	alacsony	S
+1Thessz 1:10	er	16	ῥυόμενον	parositva	17	G4506	alacsony	S
+1Thessz 1:10	er	17	ἡμᾶς	parositva	18	G3165	alacsony	S
+1Thessz 1:10	er	18	ἐκ	forditatlan		G1537	alacsony	S
+1Thessz 1:10	er	19	τῆς	parositva	19	G3588	alacsony	S
+1Thessz 1:10	er	20	ὀργῆς	parositva	21	G3709	alacsony	S
+1Thessz 1:10	er	21	τῆς	forditatlan		G3588	alacsony	S
+1Thessz 1:10	er	22	ἐρχομένης.¶	parositva	20	G2064	alacsony	S
+1Thessz 2:1	hu	1	Mert	parositva	2	G1063	alacsony	S
+1Thessz 2:1	hu	2	magatok	parositva	1	G0846	alacsony	S
+1Thessz 2:1	hu	3	tudjátok	parositva	3	G6063	alacsony	S
+1Thessz 2:1	hu	4	atyámfiai	parositva	4	G0080	alacsony	S
+1Thessz 2:1	hu	5	hogy	parositva	11	G3754	alacsony	S
+1Thessz 2:1	hu	6	a	betoldas			alacsony	S
+1Thessz 2:1	hu	7	mi	parositva	7	G3165	alacsony	S
+1Thessz 2:1	hu	8	ti	parositva	10	G4771	alacsony	S
+1Thessz 2:1	hu	9	hozzátok	parositva	9,10	G4314+G4771	alacsony	S
+1Thessz 2:1	hu	10	való	parositva	8	G3588	alacsony	S
+1Thessz 2:1	hu	11	menetelünk	parositva	6,7	G1529+G3165	alacsony	S
+1Thessz 2:1	hu	12	nem	parositva	12	G3756	alacsony	S
+1Thessz 2:1	hu	13	volt	parositva	14	G1096	alacsony	S
+1Thessz 2:1	hu	14	hiábavaló	parositva	13	G2756	alacsony	S
+1Thessz 2:1	er	1	Αὐτοὶ	parositva	2	G0846	alacsony	S
+1Thessz 2:1	er	2	γὰρ	parositva	1	G1063	alacsony	S
+1Thessz 2:1	er	3	οἴδατε,	parositva	3	G6063	alacsony	S
+1Thessz 2:1	er	4	ἀδελφοί,	parositva	4	G0080	alacsony	S
+1Thessz 2:1	er	5	τὴν	forditatlan		G3588	alacsony	S
+1Thessz 2:1	er	6	εἴσοδον	parositva	11	G1529	alacsony	S
+1Thessz 2:1	er	7	ἡμῶν	parositva	7,11	G3165	alacsony	S
+1Thessz 2:1	er	8	τὴν	parositva	10	G3588	alacsony	S
+1Thessz 2:1	er	9	πρὸς	parositva	9	G4314	alacsony	S
+1Thessz 2:1	er	10	ὑμᾶς	parositva	8,9	G4771	alacsony	S
+1Thessz 2:1	er	11	ὅτι	parositva	5	G3754	alacsony	S
+1Thessz 2:1	er	12	οὐ	parositva	12	G3756	alacsony	S
+1Thessz 2:1	er	13	κενὴ	parositva	14	G2756	alacsony	S
+1Thessz 2:1	er	14	γέγονεν·	parositva	13	G1096	alacsony	S
+1Thessz 2:2	hu	1	Sőt	parositva	1	G0235	alacsony	S
+1Thessz 2:2	hu	2	inkább	parositva	2	G2532	alacsony	S
+1Thessz 2:2	hu	3	noha	betoldas			alacsony	S
+1Thessz 2:2	hu	4	elébb	parositva	3	G4310	alacsony	S
+1Thessz 2:2	hu	5	már	betoldas			alacsony	S
+1Thessz 2:2	hu	6	háborúságot	parositva	3	G4310	alacsony	S
+1Thessz 2:2	hu	7	és	parositva	4	G2532	alacsony	S
+1Thessz 2:2	hu	8	bosszúságot	parositva	5	G5195	alacsony	S
+1Thessz 2:2	hu	9	szenvedtünk	parositva	3	G4310	alacsony	S
+1Thessz 2:2	hu	10	volt	betoldas			alacsony	S
+1Thessz 2:2	hu	11	Filippiben	parositva	8,9	G1722+G5375	alacsony	S
+1Thessz 2:2	hu	12	a	parositva	6	G2531	alacsony	S
+1Thessz 2:2	hu	13	mint	parositva	6	G2531	alacsony	S
+1Thessz 2:2	hu	14	tudjátok	parositva	7	G6063	alacsony	S
+1Thessz 2:2	hu	15	volt	betoldas			alacsony	S
+1Thessz 2:2	hu	16	bátorságunk	parositva	10	G3955	alacsony	S
+1Thessz 2:2	hu	17	a	betoldas			alacsony	S
+1Thessz 2:2	hu	18	mi	parositva	14	G3165	alacsony	S
+1Thessz 2:2	hu	19	Istenünkben	parositva	11,13,14	G1722+G2316+G3165	alacsony	S
+1Thessz 2:2	hu	20	hogy	betoldas			alacsony	S
+1Thessz 2:2	hu	21	közöttetek	parositva	16,17	G4314+G4771	alacsony	S
+1Thessz 2:2	hu	22	is	betoldas			alacsony	S
+1Thessz 2:2	hu	23	hirdessük	parositva	15	G2980	alacsony	S
+1Thessz 2:2	hu	24	az	betoldas			alacsony	S
+1Thessz 2:2	hu	25	Isten	parositva	21	G2316	alacsony	S
+1Thessz 2:2	hu	26	evangyéliomát	parositva	19	G2098	alacsony	S
+1Thessz 2:2	hu	27	sok	parositva	23	G4183	alacsony	S
+1Thessz 2:2	hu	28	tusakodással	parositva	22,24	G1722+G0073	alacsony	S
+1Thessz 2:2	er	1	ἀλλὰ	parositva	1	G0235	alacsony	S
+1Thessz 2:2	er	2	καὶ	parositva	2	G2532	alacsony	S
+1Thessz 2:2	er	3	προπαθόντες	parositva	4,6,9	G4310	alacsony	S
+1Thessz 2:2	er	4	καὶ	parositva	7	G2532	alacsony	S
+1Thessz 2:2	er	5	ὑβρισθέντες,	parositva	8	G5195	alacsony	S
+1Thessz 2:2	er	6	καθὼς	parositva	12,13	G2531	alacsony	S
+1Thessz 2:2	er	7	οἴδατε,	parositva	14	G6063	alacsony	S
+1Thessz 2:2	er	8	ἐν	parositva	11	G1722	alacsony	S
+1Thessz 2:2	er	9	Φιλίπποις,	parositva	11	G5375	alacsony	S
+1Thessz 2:2	er	10	ἐπαρρησιασάμεθα	parositva	16	G3955	alacsony	S
+1Thessz 2:2	er	11	ἐν	parositva	19	G1722	alacsony	S
+1Thessz 2:2	er	12	τῷ	forditatlan		G3588	alacsony	S
+1Thessz 2:2	er	13	θεῷ	parositva	19	G2316	alacsony	S
+1Thessz 2:2	er	14	ἡμῶν	parositva	18,19	G3165	alacsony	S
+1Thessz 2:2	er	15	λαλῆσαι	parositva	23	G2980	alacsony	S
+1Thessz 2:2	er	16	πρὸς	parositva	21	G4314	alacsony	S
+1Thessz 2:2	er	17	ὑμᾶς	parositva	21	G4771	alacsony	S
+1Thessz 2:2	er	18	τὸ	forditatlan		G3588	alacsony	S
+1Thessz 2:2	er	19	εὐαγγέλιον	parositva	26	G2098	alacsony	S
+1Thessz 2:2	er	20	τοῦ	forditatlan		G3588	alacsony	S
+1Thessz 2:2	er	21	θεοῦ	parositva	25	G2316	alacsony	S
+1Thessz 2:2	er	22	ἐν	parositva	28	G1722	alacsony	S
+1Thessz 2:2	er	23	πολλῷ	parositva	27	G4183	alacsony	S
+1Thessz 2:2	er	24	ἀγῶνι.	parositva	28	G0073	alacsony	S
+1Thessz 2:3	hu	1	Mert	parositva	2	G1063	alacsony	S
+1Thessz 2:3	hu	2	a	betoldas			alacsony	S
+1Thessz 2:3	hu	3	mi	parositva	4	G3165	alacsony	S
+1Thessz 2:3	hu	4	buzdításunk	parositva	3,4	G3874+G3165	alacsony	S
+1Thessz 2:3	hu	5	nem	parositva	5	G3756	alacsony	S
+1Thessz 2:3	hu	6	hitetésből	parositva	6,7	G1537+G4106	alacsony	S
+1Thessz 2:3	hu	7	van	betoldas			alacsony	S
+1Thessz 2:3	hu	8	sem	parositva	8	G3761	alacsony	S
+1Thessz 2:3	hu	9	nem	parositva	8	G3761	alacsony	S
+1Thessz 2:3	hu	10	tisztátalanságból	parositva	9,10	G1537+G0167	alacsony	S
+1Thessz 2:3	hu	11	sem	parositva	11	G3761	alacsony	S
+1Thessz 2:3	hu	12	nem	parositva	11	G3761	alacsony	S
+1Thessz 2:3	hu	13	álnokságból	parositva	12,13	G1722+G1388	alacsony	S
+1Thessz 2:3	er	1	ἡ	forditatlan		G3588	alacsony	S
+1Thessz 2:3	er	2	γὰρ	parositva	1	G1063	alacsony	S
+1Thessz 2:3	er	3	παράκλησις	parositva	4	G3874	alacsony	S
+1Thessz 2:3	er	4	ἡμῶν	parositva	3,4	G3165	alacsony	S
+1Thessz 2:3	er	5	οὐκ	parositva	5	G3756	alacsony	S
+1Thessz 2:3	er	6	ἐκ	parositva	6	G1537	alacsony	S
+1Thessz 2:3	er	7	πλάνης	parositva	6	G4106	alacsony	S
+1Thessz 2:3	er	8	οὐδὲ	parositva	8,9	G3761	alacsony	S
+1Thessz 2:3	er	9	ἐξ	parositva	10	G1537	alacsony	S
+1Thessz 2:3	er	10	ἀκαθαρσίας	parositva	10	G0167	alacsony	S
+1Thessz 2:3	er	11	οὐδὲ	parositva	11,12	G3761	alacsony	S
+1Thessz 2:3	er	12	ἐν	parositva	13	G1722	alacsony	S
+1Thessz 2:3	er	13	δόλῳ·	parositva	13	G1388	alacsony	S
+1Thessz 2:4	hu	1	Hanem	parositva	1	G0235	alacsony	S
+1Thessz 2:4	hu	2	a	parositva	2	G2531	alacsony	S
+1Thessz 2:4	hu	3	miképen	parositva	2	G2531	alacsony	S
+1Thessz 2:4	hu	4	az	betoldas			alacsony	S
+1Thessz 2:4	hu	5	Isten	parositva	4,6	G5259+G2316	alacsony	S
+1Thessz 2:4	hu	6	méltatott	parositva	3	G1381	alacsony	S
+1Thessz 2:4	hu	7	minket	betoldas			alacsony	S
+1Thessz 2:4	hu	8	arra	betoldas			alacsony	S
+1Thessz 2:4	hu	9	hogy	betoldas			alacsony	S
+1Thessz 2:4	hu	10	reánk	betoldas			alacsony	S
+1Thessz 2:4	hu	11	bízza	parositva	7	G4100	alacsony	S
+1Thessz 2:4	hu	12	az	betoldas			alacsony	S
+1Thessz 2:4	hu	13	evangyéliomot	parositva	9	G2098	alacsony	S
+1Thessz 2:4	hu	14	akképen	parositva	10	G3779	alacsony	S
+1Thessz 2:4	hu	15	szólunk	parositva	11	G2980	alacsony	S
+1Thessz 2:4	hu	16	nem	parositva	12	G3756	alacsony	S
+1Thessz 2:4	hu	17	úgy	parositva	13	G5613	alacsony	S
+1Thessz 2:4	hu	18	hogy	parositva	13	G5613	alacsony	S
+1Thessz 2:4	hu	19	embereknek	parositva	14	G0444	alacsony	S
+1Thessz 2:4	hu	20	tessünk	parositva	15	G0700	alacsony	S
+1Thessz 2:4	hu	21	hanem	parositva	16	G0235	alacsony	S
+1Thessz 2:4	hu	22	az	betoldas			alacsony	S
+1Thessz 2:4	hu	23	Istennek	parositva	18	G2316	alacsony	S
+1Thessz 2:4	hu	24	a	parositva	19	G3588	alacsony	S
+1Thessz 2:4	hu	25	ki	parositva	19	G3588	alacsony	S
+1Thessz 2:4	hu	26	megvizsgálja	parositva	20	G1381	alacsony	S
+1Thessz 2:4	hu	27	a	betoldas			alacsony	S
+1Thessz 2:4	hu	28	mi	parositva	23	G3165	alacsony	S
+1Thessz 2:4	hu	29	szívünket	parositva	22,23	G2588+G3165	alacsony	S
+1Thessz 2:4	er	1	ἀλλὰ	parositva	1	G0235	alacsony	S
+1Thessz 2:4	er	2	καθὼς	parositva	2,3	G2531	alacsony	S
+1Thessz 2:4	er	3	δεδοκιμάσμεθα	parositva	6	G1381	alacsony	S
+1Thessz 2:4	er	4	ὑπὸ	parositva	5	G5259	alacsony	S
+1Thessz 2:4	er	5	τοῦ	forditatlan		G3588	alacsony	S
+1Thessz 2:4	er	6	θεοῦ	parositva	5	G2316	alacsony	S
+1Thessz 2:4	er	7	πιστευθῆναι	parositva	11	G4100	alacsony	S
+1Thessz 2:4	er	8	τὸ	forditatlan		G3588	alacsony	S
+1Thessz 2:4	er	9	εὐαγγέλιον,	parositva	13	G2098	alacsony	S
+1Thessz 2:4	er	10	οὕτως	parositva	14	G3779	alacsony	S
+1Thessz 2:4	er	11	λαλοῦμεν,	parositva	15	G2980	alacsony	S
+1Thessz 2:4	er	12	οὐχ	parositva	16	G3756	alacsony	S
+1Thessz 2:4	er	13	ὡς	parositva	17,18	G5613	alacsony	S
+1Thessz 2:4	er	14	ἀνθρώποις	parositva	19	G0444	alacsony	S
+1Thessz 2:4	er	15	ἀρέσκοντες	parositva	20	G0700	alacsony	S
+1Thessz 2:4	er	16	ἀλλὰ	parositva	21	G0235	alacsony	S
+1Thessz 2:4	er	17	τῷ	forditatlan		G3588	alacsony	S
+1Thessz 2:4	er	18	θεῷ	parositva	23	G2316	alacsony	S
+1Thessz 2:4	er	19	τῷ	parositva	24,25	G3588	alacsony	S
+1Thessz 2:4	er	20	δοκιμάζοντι	parositva	26	G1381	alacsony	S
+1Thessz 2:4	er	21	τὰς	forditatlan		G3588	alacsony	S
+1Thessz 2:4	er	22	καρδίας	parositva	29	G2588	alacsony	S
+1Thessz 2:4	er	23	ἡμῶν.	parositva	28,29	G3165	alacsony	S
+1Thessz 2:5	hu	1	Mert	parositva	2	G1063	alacsony	S
+1Thessz 2:5	hu	2	sem	parositva	1	G3777	alacsony	S
+1Thessz 2:5	hu	3	hízelkedő	parositva	6	G2850	alacsony	S
+1Thessz 2:5	hu	4	beszéddel	parositva	4,5	G1722+G3056	alacsony	S
+1Thessz 2:5	hu	5	a	parositva	8	G2531	alacsony	S
+1Thessz 2:5	hu	6	mint	parositva	8	G2531	alacsony	S
+1Thessz 2:5	hu	7	tudjátok	parositva	9	G6063	alacsony	S
+1Thessz 2:5	hu	8	sem	parositva	10	G3777	alacsony	S
+1Thessz 2:5	hu	9	telhetetlenség	parositva	13	G4124	alacsony	S
+1Thessz 2:5	hu	10	színében	parositva	11,12	G1722+G4392	alacsony	S
+1Thessz 2:5	hu	11	nem	parositva	10	G3777	alacsony	S
+1Thessz 2:5	hu	12	léptünk	parositva	7	G1096	alacsony	S
+1Thessz 2:5	hu	13	fel	parositva	7	G1096	alacsony	S
+1Thessz 2:5	hu	14	soha	parositva	3	G4218	alacsony	S
+1Thessz 2:5	hu	15	Isten	parositva	14	G2316	alacsony	S
+1Thessz 2:5	hu	16	a	betoldas			alacsony	S
+1Thessz 2:5	hu	17	bizonyság	parositva	15	G3144	alacsony	S
+1Thessz 2:5	er	1	οὔτε	parositva	2	G3777	alacsony	S
+1Thessz 2:5	er	2	γάρ	parositva	1	G1063	alacsony	S
+1Thessz 2:5	er	3	ποτε	parositva	14	G4218	alacsony	S
+1Thessz 2:5	er	4	ἐν	parositva	4	G1722	alacsony	S
+1Thessz 2:5	er	5	λόγῳ	parositva	4	G3056	alacsony	S
+1Thessz 2:5	er	6	κολακείας	parositva	3	G2850	alacsony	S
+1Thessz 2:5	er	7	ἐγενήθημεν,	parositva	12,13	G1096	alacsony	S
+1Thessz 2:5	er	8	καθὼς	parositva	5,6	G2531	alacsony	S
+1Thessz 2:5	er	9	οἴδατε,	parositva	7	G6063	alacsony	S
+1Thessz 2:5	er	10	οὔτε	parositva	8,11	G3777	alacsony	S
+1Thessz 2:5	er	11	ἐν	parositva	10	G1722	alacsony	S
+1Thessz 2:5	er	12	προφάσει	parositva	10	G4392	alacsony	S
+1Thessz 2:5	er	13	πλεονεξίας,	parositva	9	G4124	alacsony	S
+1Thessz 2:5	er	14	θεὸς	parositva	15	G2316	alacsony	S
+1Thessz 2:5	er	15	μάρτυς,	parositva	17	G3144	alacsony	S
+1Thessz 2:6	hu	1	Sem	parositva	1	G3777	alacsony	S
+1Thessz 2:6	hu	2	emberektől	parositva	3,4	G1537+G0444	alacsony	S
+1Thessz 2:6	hu	3	való	betoldas			alacsony	S
+1Thessz 2:6	hu	4	dicsőítést	parositva	5	G1391	alacsony	S
+1Thessz 2:6	hu	5	nem	parositva	1	G3777	alacsony	S
+1Thessz 2:6	hu	6	kerestünk	parositva	2	G2212	alacsony	S
+1Thessz 2:6	hu	7	sem	parositva	6	G3777	alacsony	S
+1Thessz 2:6	hu	8	tőletek	parositva	7,8	G0575+G4771	alacsony	S
+1Thessz 2:6	hu	9	sem	parositva	9	G3777	alacsony	S
+1Thessz 2:6	hu	10	másoktól	parositva	10,11	G0575+G0243	alacsony	S
+1Thessz 2:6	hu	11	holott	betoldas			alacsony	S
+1Thessz 2:6	hu	12	terhetekre	betoldas			alacsony	S
+1Thessz 2:6	hu	13	lehettünk	betoldas			alacsony	S
+1Thessz 2:6	hu	14	volna	betoldas			alacsony	S
+1Thessz 2:6	hu	15	mint	betoldas			alacsony	S
+1Thessz 2:6	hu	16	Krisztus	betoldas			alacsony	S
+1Thessz 2:6	hu	17	apostolai	betoldas			alacsony	S
+1Thessz 2:6	er	1	οὔτε	parositva	1,5	G3777	alacsony	S
+1Thessz 2:6	er	2	ζητοῦντες	parositva	6	G2212	alacsony	S
+1Thessz 2:6	er	3	ἐξ	parositva	2	G1537	alacsony	S
+1Thessz 2:6	er	4	ἀνθρώπων	parositva	2	G0444	alacsony	S
+1Thessz 2:6	er	5	δόξαν	parositva	4	G1391	alacsony	S
+1Thessz 2:6	er	6	οὔτε	parositva	7	G3777	alacsony	S
+1Thessz 2:6	er	7	ἀφ᾽	parositva	8	G0575	alacsony	S
+1Thessz 2:6	er	8	ὑμῶν	parositva	8	G4771	alacsony	S
+1Thessz 2:6	er	9	οὔτε	parositva	9	G3777	alacsony	S
+1Thessz 2:6	er	10	ἀπ᾽	parositva	10	G0575	alacsony	S
+1Thessz 2:6	er	11	ἄλλων,	parositva	10	G0243	alacsony	S
+1Thessz 2:7	hu	1	De	parositva	1	G0235	alacsony	S
+1Thessz 2:7	hu	2	szívélyesek	betoldas			alacsony	S
+1Thessz 2:7	hu	3	valánk	parositva	2	G1096	alacsony	S
+1Thessz 2:7	hu	4	ti	parositva	6	G4771	alacsony	S
+1Thessz 2:7	hu	5	közöttetek	parositva	4,5,6	G1722+G3319+G4771	alacsony	S
+1Thessz 2:7	hu	6	a	parositva	7	G5613	alacsony	S
+1Thessz 2:7	hu	7	miként	parositva	7	G5613	alacsony	S
+1Thessz 2:7	hu	8	a	betoldas			alacsony	S
+1Thessz 2:7	hu	9	dajka	parositva	9	G5162	alacsony	S
+1Thessz 2:7	hu	10	dajkálgatja	parositva	10	G2282	alacsony	S
+1Thessz 2:7	hu	11	az	betoldas			alacsony	S
+1Thessz 2:7	hu	12	ő	parositva	12	G1438	alacsony	S
+1Thessz 2:7	hu	13	gyermekeit	parositva	12,13	G1438+G5043	alacsony	S
+1Thessz 2:7	er	1	ἀλλ᾽	parositva	1	G0235	alacsony	S
+1Thessz 2:7	er	2	ἐγενήθημεν	parositva	3	G1096	alacsony	S
+1Thessz 2:7	er	3	νήπιοι	forditatlan		G3516	alacsony	S
+1Thessz 2:7	er	4	ἐν	parositva	5	G1722	alacsony	S
+1Thessz 2:7	er	5	μέσῳ	parositva	5	G3319	alacsony	S
+1Thessz 2:7	er	6	ὑμῶν,	parositva	4,5	G4771	alacsony	S
+1Thessz 2:7	er	7	ὡς	parositva	6,7	G5613	alacsony	S
+1Thessz 2:7	er	8	ἐὰν	forditatlan		G1437	alacsony	S
+1Thessz 2:7	er	9	τροφὸς	parositva	9	G5162	alacsony	S
+1Thessz 2:7	er	10	θάλπῃ	parositva	10	G2282	alacsony	S
+1Thessz 2:7	er	11	τὰ	forditatlan		G3588	alacsony	S
+1Thessz 2:7	er	12	ἑαυτῆς	parositva	12,13	G1438	alacsony	S
+1Thessz 2:7	er	13	τέκνα,	parositva	13	G5043	alacsony	S
+1Thessz 2:8	hu	1	Így	parositva	1	G3779	alacsony	S
+1Thessz 2:8	hu	2	felbuzdulva	betoldas			alacsony	S
+1Thessz 2:8	hu	3	irántatok	parositva	3	G4771	alacsony	S
+1Thessz 2:8	hu	4	készek	parositva	4	G2106	alacsony	S
+1Thessz 2:8	hu	5	valánk	parositva	4	G2106	alacsony	S
+1Thessz 2:8	hu	6	közleni	parositva	5	G3330	alacsony	S
+1Thessz 2:8	hu	7	veletek	parositva	6	G4771	alacsony	S
+1Thessz 2:8	hu	8	nemcsak	parositva	7,8	G3756+G3441	alacsony	S
+1Thessz 2:8	hu	9	az	betoldas			alacsony	S
+1Thessz 2:8	hu	10	Isten	parositva	12	G2316	alacsony	S
+1Thessz 2:8	hu	11	evangyéliomát	parositva	10	G2098	alacsony	S
+1Thessz 2:8	hu	12	hanem	parositva	13	G0235	alacsony	S
+1Thessz 2:8	hu	13	a	betoldas			alacsony	S
+1Thessz 2:8	hu	14	mi	parositva	16	G1438	alacsony	S
+1Thessz 2:8	hu	15	magunk	parositva	16	G1438	alacsony	S
+1Thessz 2:8	hu	16	lelkét	parositva	17	G5590	alacsony	S
+1Thessz 2:8	hu	17	is	parositva	14	G2532	alacsony	S
+1Thessz 2:8	hu	18	mivelhogy	parositva	18	G1360	alacsony	S
+1Thessz 2:8	hu	19	szeretteinkké	parositva	19,20	G0027+G3165	alacsony	S
+1Thessz 2:8	hu	20	lettetek	betoldas			alacsony	S
+1Thessz 2:8	hu	21	nékünk	parositva	20	G3165	alacsony	S
+1Thessz 2:8	er	1	οὕτως	parositva	1	G3779	alacsony	S
+1Thessz 2:8	er	2	ὁμειρόμενοι	forditatlan		G20833	alacsony	S
+1Thessz 2:8	er	3	ὑμῶν	parositva	3	G4771	alacsony	S
+1Thessz 2:8	er	4	εὐδοκοῦμεν	parositva	4,5	G2106	alacsony	S
+1Thessz 2:8	er	5	μεταδοῦναι	parositva	6	G3330	alacsony	S
+1Thessz 2:8	er	6	ὑμῖν	parositva	7	G4771	alacsony	S
+1Thessz 2:8	er	7	οὐ	parositva	8	G3756	alacsony	S
+1Thessz 2:8	er	8	μόνον	parositva	8	G3441	alacsony	S
+1Thessz 2:8	er	9	τὸ	forditatlan		G3588	alacsony	S
+1Thessz 2:8	er	10	εὐαγγέλιον	parositva	11	G2098	alacsony	S
+1Thessz 2:8	er	11	τοῦ	forditatlan		G3588	alacsony	S
+1Thessz 2:8	er	12	θεοῦ	parositva	10	G2316	alacsony	S
+1Thessz 2:8	er	13	ἀλλὰ	parositva	12	G0235	alacsony	S
+1Thessz 2:8	er	14	καὶ	parositva	17	G2532	alacsony	S
+1Thessz 2:8	er	15	τὰς	forditatlan		G3588	alacsony	S
+1Thessz 2:8	er	16	ἑαυτῶν	parositva	14,15	G1438	alacsony	S
+1Thessz 2:8	er	17	ψυχάς,	parositva	16	G5590	alacsony	S
+1Thessz 2:8	er	18	διότι	parositva	18	G1360	alacsony	S
+1Thessz 2:8	er	19	ἀγαπητοὶ	parositva	19	G0027	alacsony	S
+1Thessz 2:8	er	20	ἡμῖν	parositva	19,21	G3165	alacsony	S
+1Thessz 2:8	er	21	ἐγενήθητε.	forditatlan		G1096	alacsony	S
+1Thessz 2:9	hu	1	Emlékezhettek	parositva	1	G3421	alacsony	S
+1Thessz 2:9	hu	2	ugyanis	parositva	2	G1063	alacsony	S
+1Thessz 2:9	hu	3	atyámfiai	parositva	3	G0080	alacsony	S
+1Thessz 2:9	hu	4	a	betoldas			alacsony	S
+1Thessz 2:9	hu	5	mi	parositva	6	G3165	alacsony	S
+1Thessz 2:9	hu	6	fáradozásunkra	parositva	5,6	G2873+G3165	alacsony	S
+1Thessz 2:9	hu	7	és	parositva	7	G2532	alacsony	S
+1Thessz 2:9	hu	8	bajlakodásunkra	parositva	9	G3449	alacsony	S
+1Thessz 2:9	hu	9	mert	parositva	11	G1063	alacsony	S
+1Thessz 2:9	hu	10	éjjel	parositva	10	G3571	alacsony	S
+1Thessz 2:9	hu	11	nappal	parositva	13	G2250	alacsony	S
+1Thessz 2:9	hu	12	munkálkodva	parositva	14	G2038	alacsony	S
+1Thessz 2:9	hu	13	hirdettük	parositva	21	G2784	alacsony	S
+1Thessz 2:9	hu	14	néktek	parositva	22,23	G1519+G4771	alacsony	S
+1Thessz 2:9	hu	15	az	betoldas			alacsony	S
+1Thessz 2:9	hu	16	Isten	parositva	27	G2316	alacsony	S
+1Thessz 2:9	hu	17	evangyéliomát	parositva	25	G2098	alacsony	S
+1Thessz 2:9	hu	18	csakhogy	parositva	15,16	G4314+G3588	alacsony	S
+1Thessz 2:9	hu	19	senkit	parositva	19	G5100	alacsony	S
+1Thessz 2:9	hu	20	meg	parositva	18	G1912	alacsony	S
+1Thessz 2:9	hu	21	ne	parositva	17	G3361	alacsony	S
+1Thessz 2:9	hu	22	terheljünk	parositva	18	G1912	alacsony	S
+1Thessz 2:9	hu	23	közületek	parositva	20	G4771	alacsony	S
+1Thessz 2:9	er	1	Μνημονεύετε	parositva	1	G3421	alacsony	S
+1Thessz 2:9	er	2	γάρ,	parositva	2	G1063	alacsony	S
+1Thessz 2:9	er	3	ἀδελφοί,	parositva	3	G0080	alacsony	S
+1Thessz 2:9	er	4	τὸν	forditatlan		G3588	alacsony	S
+1Thessz 2:9	er	5	κόπον	parositva	6	G2873	alacsony	S
+1Thessz 2:9	er	6	ἡμῶν	parositva	5,6	G3165	alacsony	S
+1Thessz 2:9	er	7	καὶ	parositva	7	G2532	alacsony	S
+1Thessz 2:9	er	8	τὸν	forditatlan		G3588	alacsony	S
+1Thessz 2:9	er	9	μόχθον·	parositva	8	G3449	alacsony	S
+1Thessz 2:9	er	10	νυκτὸς	parositva	10	G3571	alacsony	S
+1Thessz 2:9	er	11	γάρ	parositva	9	G1063	alacsony	S
+1Thessz 2:9	er	12	καὶ	forditatlan		G2532	alacsony	S
+1Thessz 2:9	er	13	ἡμέρας	parositva	11	G2250	alacsony	S
+1Thessz 2:9	er	14	ἐργαζόμενοι	parositva	12	G2038	alacsony	S
+1Thessz 2:9	er	15	πρὸς	parositva	18	G4314	alacsony	S
+1Thessz 2:9	er	16	τὸ	parositva	18	G3588	alacsony	S
+1Thessz 2:9	er	17	μὴ	parositva	21	G3361	alacsony	S
+1Thessz 2:9	er	18	ἐπιβαρῆσαί	parositva	20,22	G1912	alacsony	S
+1Thessz 2:9	er	19	τινα	parositva	19	G5100	alacsony	S
+1Thessz 2:9	er	20	ὑμῶν	parositva	23	G4771	alacsony	S
+1Thessz 2:9	er	21	ἐκηρύξαμεν	parositva	13	G2784	alacsony	S
+1Thessz 2:9	er	22	εἰς	parositva	14	G1519	alacsony	S
+1Thessz 2:9	er	23	ὑμᾶς	parositva	14	G4771	alacsony	S
+1Thessz 2:9	er	24	τὸ	forditatlan		G3588	alacsony	S
+1Thessz 2:9	er	25	εὐαγγέλιον	parositva	17	G2098	alacsony	S
+1Thessz 2:9	er	26	τοῦ	forditatlan		G3588	alacsony	S
+1Thessz 2:9	er	27	θεοῦ.	parositva	16	G2316	alacsony	S
+1Thessz 2:10	hu	1	Ti	parositva	1	G4771	alacsony	S
+1Thessz 2:10	hu	2	vagytok	betoldas			alacsony	S
+1Thessz 2:10	hu	3	bizonyságok	parositva	2	G3144	alacsony	S
+1Thessz 2:10	hu	4	és	parositva	3	G2532	alacsony	S
+1Thessz 2:10	hu	5	az	betoldas			alacsony	S
+1Thessz 2:10	hu	6	Isten	parositva	5	G2316	alacsony	S
+1Thessz 2:10	hu	7	milyen	parositva	6	G5613	alacsony	S
+1Thessz 2:10	hu	8	szentül	parositva	7	G3743	alacsony	S
+1Thessz 2:10	hu	9	igazán	parositva	9	G1346	alacsony	S
+1Thessz 2:10	hu	10	és	parositva	10	G2532	alacsony	S
+1Thessz 2:10	hu	11	feddhetetlenül	parositva	11	G0274	alacsony	S
+1Thessz 2:10	hu	12	éltünk	parositva	15	G1096	alacsony	S
+1Thessz 2:10	hu	13	előttetek	parositva	12	G4771	alacsony	S
+1Thessz 2:10	hu	14	a	parositva	13	G3588	alacsony	S
+1Thessz 2:10	hu	15	kik	parositva	13	G3588	alacsony	S
+1Thessz 2:10	hu	16	hisztek	parositva	14	G4100	alacsony	S
+1Thessz 2:10	er	1	ὑμεῖς	parositva	1	G4771	alacsony	S
+1Thessz 2:10	er	2	μάρτυρες	parositva	3	G3144	alacsony	S
+1Thessz 2:10	er	3	καὶ	parositva	4	G2532	alacsony	S
+1Thessz 2:10	er	4	ὁ	forditatlan		G3588	alacsony	S
+1Thessz 2:10	er	5	θεός,	parositva	6	G2316	alacsony	S
+1Thessz 2:10	er	6	ὡς	parositva	7	G5613	alacsony	S
+1Thessz 2:10	er	7	ὁσίως	parositva	8	G3743	alacsony	S
+1Thessz 2:10	er	8	καὶ	forditatlan		G2532	alacsony	S
+1Thessz 2:10	er	9	δικαίως	parositva	9	G1346	alacsony	S
+1Thessz 2:10	er	10	καὶ	parositva	10	G2532	alacsony	S
+1Thessz 2:10	er	11	ἀμέμπτως	parositva	11	G0274	alacsony	S
+1Thessz 2:10	er	12	ὑμῖν	parositva	13	G4771	alacsony	S
+1Thessz 2:10	er	13	τοῖς	parositva	14,15	G3588	alacsony	S
+1Thessz 2:10	er	14	πιστεύουσιν	parositva	16	G4100	alacsony	S
+1Thessz 2:10	er	15	ἐγενήθημεν,	parositva	12	G1096	alacsony	S
+1Thessz 2:11	hu	1	Valamint	parositva	1	G2509	alacsony	S
+1Thessz 2:11	hu	2	tudjátok	parositva	2	G6063	alacsony	S
+1Thessz 2:11	hu	3	hogy	parositva	3	G5613	alacsony	S
+1Thessz 2:11	hu	4	miként	parositva	7	G5613	alacsony	S
+1Thessz 2:11	hu	5	atya	parositva	8	G3962	alacsony	S
+1Thessz 2:11	hu	6	az	betoldas			alacsony	S
+1Thessz 2:11	hu	7	ő	parositva	10	G1438	alacsony	S
+1Thessz 2:11	hu	8	gyermekeit	parositva	9,10	G5043+G1438	alacsony	S
+1Thessz 2:11	hu	9	úgy	betoldas			alacsony	S
+1Thessz 2:11	hu	10	intettünk	betoldas			alacsony	S
+1Thessz 2:11	hu	11	és	betoldas			alacsony	S
+1Thessz 2:11	hu	12	buzdítgattunk	betoldas			alacsony	S
+1Thessz 2:11	hu	13	egyenként	parositva	4,5	G1520+G1538	alacsony	S
+1Thessz 2:11	hu	14	mindnyájatokat	parositva	6	G4771	alacsony	S
+1Thessz 2:11	er	1	καθάπερ	parositva	1	G2509	alacsony	S
+1Thessz 2:11	er	2	οἴδατε,	parositva	2	G6063	alacsony	S
+1Thessz 2:11	er	3	ὡς	parositva	3	G5613	alacsony	S
+1Thessz 2:11	er	4	ἕνα	parositva	13	G1520	alacsony	S
+1Thessz 2:11	er	5	ἕκαστον	parositva	13	G1538	alacsony	S
+1Thessz 2:11	er	6	ὑμῶν	parositva	14	G4771	alacsony	S
+1Thessz 2:11	er	7	ὡς	parositva	4	G5613	alacsony	S
+1Thessz 2:11	er	8	πατὴρ	parositva	5	G3962	alacsony	S
+1Thessz 2:11	er	9	τέκνα	parositva	8	G5043	alacsony	S
+1Thessz 2:11	er	10	ἑαυτοῦ	parositva	7,8	G1438	alacsony	S
+1Thessz 2:12	hu	1	És	betoldas			alacsony	S
+1Thessz 2:12	hu	2	kérve	betoldas			alacsony	S
+1Thessz 2:12	hu	3	kértünk	betoldas			alacsony	S
+1Thessz 2:12	hu	4	hogy	parositva	1	G1519	alacsony	S
+1Thessz 2:12	hu	5	Istenhez	parositva	7	G2316	alacsony	S
+1Thessz 2:12	hu	6	méltóan	parositva	5	G0516	alacsony	S
+1Thessz 2:12	hu	7	viseljétek	betoldas			alacsony	S
+1Thessz 2:12	hu	8	magatokat	parositva	4	G4771	alacsony	S
+1Thessz 2:12	hu	9	a	parositva	8	G3588	alacsony	S
+1Thessz 2:12	hu	10	ki	parositva	8	G3588	alacsony	S
+1Thessz 2:12	hu	11	az	betoldas			alacsony	S
+1Thessz 2:12	hu	12	ő	parositva	13	G1438	alacsony	S
+1Thessz 2:12	hu	13	országába	parositva	11,13,14	G1519+G1438+G0932	alacsony	S
+1Thessz 2:12	hu	14	és	parositva	15	G2532	alacsony	S
+1Thessz 2:12	hu	15	dicsőségébe	parositva	16	G1391	alacsony	S
+1Thessz 2:12	hu	16	hív	parositva	9	G2564	alacsony	S
+1Thessz 2:12	hu	17	titeket	parositva	10	G4771	alacsony	S
+1Thessz 2:12	er	1	εἰς	parositva	4	G1519	alacsony	S
+1Thessz 2:12	er	2	τὸ	forditatlan		G3588	alacsony	S
+1Thessz 2:12	er	3	περιπατεῖν	forditatlan		G4043	alacsony	S
+1Thessz 2:12	er	4	ὑμᾶς	parositva	8	G4771	alacsony	S
+1Thessz 2:12	er	5	ἀξίως	parositva	6	G0516	alacsony	S
+1Thessz 2:12	er	6	τοῦ	forditatlan		G3588	alacsony	S
+1Thessz 2:12	er	7	θεοῦ	parositva	5	G2316	alacsony	S
+1Thessz 2:12	er	8	τοῦ	parositva	9,10	G3588	alacsony	S
+1Thessz 2:12	er	9	καλοῦντος	parositva	16	G2564	alacsony	S
+1Thessz 2:12	er	10	ὑμᾶς	parositva	17	G4771	alacsony	S
+1Thessz 2:12	er	11	εἰς	parositva	13	G1519	alacsony	S
+1Thessz 2:12	er	12	τὴν	forditatlan		G3588	alacsony	S
+1Thessz 2:12	er	13	ἑαυτοῦ	parositva	12,13	G1438	alacsony	S
+1Thessz 2:12	er	14	βασιλείαν	parositva	13	G0932	alacsony	S
+1Thessz 2:12	er	15	καὶ	parositva	14	G2532	alacsony	S
+1Thessz 2:12	er	16	δόξαν.¶	parositva	15	G1391	alacsony	S
+1Thessz 2:13	hu	1	Ugyanazért	parositva	2,3	G1223+G3778	alacsony	S
+1Thessz 2:13	hu	2	mi	parositva	5	G3165	alacsony	S
+1Thessz 2:13	hu	3	is	parositva	4	G2532	alacsony	S
+1Thessz 2:13	hu	4	hálát	parositva	6	G2168	alacsony	S
+1Thessz 2:13	hu	5	adunk	parositva	6	G2168	alacsony	S
+1Thessz 2:13	hu	6	az	betoldas			alacsony	S
+1Thessz 2:13	hu	7	Istennek	parositva	8	G2316	alacsony	S
+1Thessz 2:13	hu	8	szüntelenül	parositva	9	G0089	alacsony	S
+1Thessz 2:13	hu	9	hogy	parositva	10	G3754	alacsony	S
+1Thessz 2:13	hu	10	ti	betoldas			alacsony	S
+1Thessz 2:13	hu	11	befogadván	parositva	11	G3880	alacsony	S
+1Thessz 2:13	hu	12	az	betoldas			alacsony	S
+1Thessz 2:13	hu	13	Istennek	parositva	17	G2316	alacsony	S
+1Thessz 2:13	hu	14	általunk	parositva	14,15	G3844+G3165	alacsony	S
+1Thessz 2:13	hu	15	hirdetett	parositva	13	G0189	alacsony	S
+1Thessz 2:13	hu	16	beszédét	parositva	12	G3056	alacsony	S
+1Thessz 2:13	hu	17	nem	parositva	19	G3756	alacsony	S
+1Thessz 2:13	hu	18	úgy	betoldas			alacsony	S
+1Thessz 2:13	hu	19	fogadtátok	parositva	18	G1209	alacsony	S
+1Thessz 2:13	hu	20	mint	betoldas			alacsony	S
+1Thessz 2:13	hu	21	emberek	parositva	21	G0444	alacsony	S
+1Thessz 2:13	hu	22	beszédét	parositva	20	G3056	alacsony	S
+1Thessz 2:13	hu	23	hanem	parositva	22	G0235	alacsony	S
+1Thessz 2:13	hu	24	mint	parositva	23	G2531	alacsony	S
+1Thessz 2:13	hu	25	Isten	parositva	27	G2316	alacsony	S
+1Thessz 2:13	hu	26	beszédét	parositva	26	G3056	alacsony	S
+1Thessz 2:13	hu	27	a	betoldas			alacsony	S
+1Thessz 2:13	hu	28	minthogy	betoldas			alacsony	S
+1Thessz 2:13	hu	29	valósággal	parositva	25	G0230	alacsony	S
+1Thessz 2:13	hu	30	az	parositva	24	G1510	alacsony	S
+1Thessz 2:13	hu	31	is	parositva	29	G2532	alacsony	S
+1Thessz 2:13	hu	32	a	parositva	33	G3588	alacsony	S
+1Thessz 2:13	hu	33	mely	parositva	28	G3739	alacsony	S
+1Thessz 2:13	hu	34	munkálkodik	parositva	30	G1754	alacsony	S
+1Thessz 2:13	hu	35	is	parositva	29	G2532	alacsony	S
+1Thessz 2:13	hu	36	ti	parositva	32	G4771	alacsony	S
+1Thessz 2:13	hu	37	bennetek	parositva	31,32	G1722+G4771	alacsony	S
+1Thessz 2:13	hu	38	a	parositva	33	G3588	alacsony	S
+1Thessz 2:13	hu	39	kik	parositva	33	G3588	alacsony	S
+1Thessz 2:13	hu	40	hisztek	parositva	34	G4100	alacsony	S
+1Thessz 2:13	er	1	Καὶ	forditatlan		G2532	alacsony	S
+1Thessz 2:13	er	2	διὰ	parositva	1	G1223	alacsony	S
+1Thessz 2:13	er	3	τοῦτο	parositva	1	G3778	alacsony	S
+1Thessz 2:13	er	4	καὶ	parositva	3	G2532	alacsony	S
+1Thessz 2:13	er	5	ἡμεῖς	parositva	2	G3165	alacsony	S
+1Thessz 2:13	er	6	εὐχαριστοῦμεν	parositva	4,5	G2168	alacsony	S
+1Thessz 2:13	er	7	τῷ	forditatlan		G3588	alacsony	S
+1Thessz 2:13	er	8	θεῷ	parositva	7	G2316	alacsony	S
+1Thessz 2:13	er	9	ἀδιαλείπτως	parositva	8	G0089	alacsony	S
+1Thessz 2:13	er	10	ὅτι	parositva	9	G3754	alacsony	S
+1Thessz 2:13	er	11	παραλαβόντες	parositva	11	G3880	alacsony	S
+1Thessz 2:13	er	12	λόγον	parositva	16	G3056	alacsony	S
+1Thessz 2:13	er	13	ἀκοῆς	parositva	15	G0189	alacsony	S
+1Thessz 2:13	er	14	παρ᾽	parositva	14	G3844	alacsony	S
+1Thessz 2:13	er	15	ἡμῶν	parositva	14	G3165	alacsony	S
+1Thessz 2:13	er	16	τοῦ	forditatlan		G3588	alacsony	S
+1Thessz 2:13	er	17	θεοῦ	parositva	13	G2316	alacsony	S
+1Thessz 2:13	er	18	ἐδέξασθε	parositva	19	G1209	alacsony	S
+1Thessz 2:13	er	19	οὐ	parositva	17	G3756	alacsony	S
+1Thessz 2:13	er	20	λόγον	parositva	22	G3056	alacsony	S
+1Thessz 2:13	er	21	ἀνθρώπων	parositva	21	G0444	alacsony	S
+1Thessz 2:13	er	22	ἀλλὰ	parositva	23	G0235	alacsony	S
+1Thessz 2:13	er	23	καθώς	parositva	24	G2531	alacsony	S
+1Thessz 2:13	er	24	ἐστιν	parositva	30	G1510	alacsony	S
+1Thessz 2:13	er	25	ἀληθῶς	parositva	29	G0230	alacsony	S
+1Thessz 2:13	er	26	λόγον	parositva	26	G3056	alacsony	S
+1Thessz 2:13	er	27	θεοῦ,	parositva	25	G2316	alacsony	S
+1Thessz 2:13	er	28	ὃς	parositva	33	G3739	alacsony	S
+1Thessz 2:13	er	29	καὶ	parositva	31,35	G2532	alacsony	S
+1Thessz 2:13	er	30	ἐνεργεῖται	parositva	34	G1754	alacsony	S
+1Thessz 2:13	er	31	ἐν	parositva	37	G1722	alacsony	S
+1Thessz 2:13	er	32	ὑμῖν	parositva	36,37	G4771	alacsony	S
+1Thessz 2:13	er	33	τοῖς	parositva	32,38,39	G3588	alacsony	S
+1Thessz 2:13	er	34	πιστεύουσιν.	parositva	40	G4100	alacsony	S
+1Thessz 2:14	hu	1	Mert	parositva	2	G1063	alacsony	S
+1Thessz 2:14	hu	2	ti	parositva	1	G4771	alacsony	S
+1Thessz 2:14	hu	3	atyámfiai	parositva	5	G0080	alacsony	S
+1Thessz 2:14	hu	4	követői	parositva	3	G3402	alacsony	S
+1Thessz 2:14	hu	5	lettetek	parositva	4	G1096	alacsony	S
+1Thessz 2:14	hu	6	az	betoldas			alacsony	S
+1Thessz 2:14	hu	7	Isten	parositva	9	G2316	alacsony	S
+1Thessz 2:14	hu	8	gyülekezeteinek	parositva	7	G1577	alacsony	S
+1Thessz 2:14	hu	9	a	parositva	10	G3588	alacsony	S
+1Thessz 2:14	hu	10	melyek	parositva	10	G3588	alacsony	S
+1Thessz 2:14	hu	11	Júdeában	parositva	12,14	G1722+G2449	alacsony	S
+1Thessz 2:14	hu	12	vannak	parositva	11	G1510	alacsony	S
+1Thessz 2:14	hu	13	a	betoldas			alacsony	S
+1Thessz 2:14	hu	14	Krisztus	parositva	16	G5547	alacsony	S
+1Thessz 2:14	hu	15	Jézusban	parositva	15,17	G1722+G2424	alacsony	S
+1Thessz 2:14	hu	16	mivelhogy	parositva	18	G3754	alacsony	S
+1Thessz 2:14	hu	17	ugyanúgy	betoldas			alacsony	S
+1Thessz 2:14	hu	18	szenvedtetek	parositva	21	G3958	alacsony	S
+1Thessz 2:14	hu	19	ti	parositva	23	G4771	alacsony	S
+1Thessz 2:14	hu	20	is	parositva	22	G2532	alacsony	S
+1Thessz 2:14	hu	21	a	betoldas			alacsony	S
+1Thessz 2:14	hu	22	saját	parositva	26	G2398	alacsony	S
+1Thessz 2:14	hu	23	honfitársaitoktól	parositva	24,27	G5259+G4853	alacsony	S
+1Thessz 2:14	hu	24	miként	parositva	28	G2531	alacsony	S
+1Thessz 2:14	hu	25	azok	parositva	30	G0846	alacsony	S
+1Thessz 2:14	hu	26	is	parositva	29	G2532	alacsony	S
+1Thessz 2:14	hu	27	a	betoldas			alacsony	S
+1Thessz 2:14	hu	28	zsidóktól	parositva	31,33	G5259+G2453	alacsony	S
+1Thessz 2:14	er	1	ὑμεῖς	parositva	2	G4771	alacsony	S
+1Thessz 2:14	er	2	γὰρ	parositva	1	G1063	alacsony	S
+1Thessz 2:14	er	3	μιμηταὶ	parositva	4	G3402	alacsony	S
+1Thessz 2:14	er	4	ἐγενήθητε,	parositva	5	G1096	alacsony	S
+1Thessz 2:14	er	5	ἀδελφοί,	parositva	3	G0080	alacsony	S
+1Thessz 2:14	er	6	τῶν	forditatlan		G3588	alacsony	S
+1Thessz 2:14	er	7	ἐκκλησιῶν	parositva	8	G1577	alacsony	S
+1Thessz 2:14	er	8	τοῦ	forditatlan		G3588	alacsony	S
+1Thessz 2:14	er	9	θεοῦ	parositva	7	G2316	alacsony	S
+1Thessz 2:14	er	10	τῶν	parositva	9,10	G3588	alacsony	S
+1Thessz 2:14	er	11	οὐσῶν	parositva	12	G1510	alacsony	S
+1Thessz 2:14	er	12	ἐν	parositva	11	G1722	alacsony	S
+1Thessz 2:14	er	13	τῇ	forditatlan		G3588	alacsony	S
+1Thessz 2:14	er	14	Ἰουδαίᾳ	parositva	11	G2449	alacsony	S
+1Thessz 2:14	er	15	ἐν	parositva	15	G1722	alacsony	S
+1Thessz 2:14	er	16	Χριστῷ	parositva	14	G5547	alacsony	S
+1Thessz 2:14	er	17	Ἰησοῦ,	parositva	15	G2424	alacsony	S
+1Thessz 2:14	er	18	ὅτι	parositva	16	G3754	alacsony	S
+1Thessz 2:14	er	19	τὰ	forditatlan		G3588	alacsony	S
+1Thessz 2:14	er	20	αὐτὰ	forditatlan		G0846	alacsony	S
+1Thessz 2:14	er	21	ἐπάθετε	parositva	18	G3958	alacsony	S
+1Thessz 2:14	er	22	καὶ	parositva	20	G2532	alacsony	S
+1Thessz 2:14	er	23	ὑμεῖς	parositva	19	G4771	alacsony	S
+1Thessz 2:14	er	24	ὑπὸ	parositva	23	G5259	alacsony	S
+1Thessz 2:14	er	25	τῶν	forditatlan		G3588	alacsony	S
+1Thessz 2:14	er	26	ἰδίων	parositva	22	G2398	alacsony	S
+1Thessz 2:14	er	27	συμφυλετῶν,	parositva	23	G4853	alacsony	S
+1Thessz 2:14	er	28	καθὼς	parositva	24	G2531	alacsony	S
+1Thessz 2:14	er	29	καὶ	parositva	26	G2532	alacsony	S
+1Thessz 2:14	er	30	αὐτοὶ	parositva	25	G0846	alacsony	S
+1Thessz 2:14	er	31	ὑπὸ	parositva	28	G5259	alacsony	S
+1Thessz 2:14	er	32	τῶν	forditatlan		G3588	alacsony	S
+1Thessz 2:14	er	33	Ἰουδαίων,	parositva	28	G2453	alacsony	S
+1Thessz 2:15	hu	1	A	parositva	1	G3588	alacsony	S
+1Thessz 2:15	hu	2	kik	parositva	1	G3588	alacsony	S
+1Thessz 2:15	hu	3	megölték	parositva	5	G0615	alacsony	S
+1Thessz 2:15	hu	4	az	betoldas			alacsony	S
+1Thessz 2:15	hu	5	Úr	parositva	4	G2962	alacsony	S
+1Thessz 2:15	hu	6	Jézust	parositva	6	G2424	alacsony	S
+1Thessz 2:15	hu	7	is	parositva	2	G2532	alacsony	S
+1Thessz 2:15	hu	8	és	parositva	7	G2532	alacsony	S
+1Thessz 2:15	hu	9	a	betoldas			alacsony	S
+1Thessz 2:15	hu	10	saját	parositva	9	G2398	alacsony	S
+1Thessz 2:15	hu	11	prófétáikat	parositva	10	G4396	alacsony	S
+1Thessz 2:15	hu	12	és	parositva	11	G2532	alacsony	S
+1Thessz 2:15	hu	13	minket	betoldas			alacsony	S
+1Thessz 2:15	hu	14	is	betoldas			alacsony	S
+1Thessz 2:15	hu	15	üldöznek	parositva	13	G1559	alacsony	S
+1Thessz 2:15	hu	16	és	parositva	14	G2532	alacsony	S
+1Thessz 2:15	hu	17	az	betoldas			alacsony	S
+1Thessz 2:15	hu	18	Istennek	parositva	15	G2316	alacsony	S
+1Thessz 2:15	hu	19	nem	parositva	16	G3361	alacsony	S
+1Thessz 2:15	hu	20	tetszenek	parositva	17	G0700	alacsony	S
+1Thessz 2:15	hu	21	és	parositva	18	G2532	alacsony	S
+1Thessz 2:15	hu	22	minden	parositva	19	G3956	alacsony	S
+1Thessz 2:15	hu	23	embernek	parositva	20	G0444	alacsony	S
+1Thessz 2:15	hu	24	ellenségei	parositva	21	G1727	alacsony	S
+1Thessz 2:15	er	1	τῶν	parositva	1,2	G3588	alacsony	S
+1Thessz 2:15	er	2	καὶ	parositva	7	G2532	alacsony	S
+1Thessz 2:15	er	3	τὸν	forditatlan		G3588	alacsony	S
+1Thessz 2:15	er	4	κύριον	parositva	5	G2962	alacsony	S
+1Thessz 2:15	er	5	ἀποκτεινάντων	parositva	3	G0615	alacsony	S
+1Thessz 2:15	er	6	Ἰησοῦν	parositva	6	G2424	alacsony	S
+1Thessz 2:15	er	7	καὶ	parositva	8	G2532	alacsony	S
+1Thessz 2:15	er	8	τοὺς	forditatlan		G3588	alacsony	S
+1Thessz 2:15	er	9	ἰδίους	parositva	10	G2398	alacsony	S
+1Thessz 2:15	er	10	προφήτας	parositva	11	G4396	alacsony	S
+1Thessz 2:15	er	11	καὶ	parositva	12	G2532	alacsony	S
+1Thessz 2:15	er	12	ἡμᾶς	forditatlan		G3165	alacsony	S
+1Thessz 2:15	er	13	ἐκδιωξάντων	parositva	15	G1559	alacsony	S
+1Thessz 2:15	er	14	καὶ	parositva	16	G2532	alacsony	S
+1Thessz 2:15	er	15	θεῷ	parositva	18	G2316	alacsony	S
+1Thessz 2:15	er	16	μὴ	parositva	19	G3361	alacsony	S
+1Thessz 2:15	er	17	ἀρεσκόντων	parositva	20	G0700	alacsony	S
+1Thessz 2:15	er	18	καὶ	parositva	21	G2532	alacsony	S
+1Thessz 2:15	er	19	πᾶσιν	parositva	22	G3956	alacsony	S
+1Thessz 2:15	er	20	ἀνθρώποις	parositva	23	G0444	alacsony	S
+1Thessz 2:15	er	21	ἐναντίων,	parositva	24	G1727	alacsony	S
+1Thessz 2:16	hu	1	A	betoldas			alacsony	S
+1Thessz 2:16	hu	2	kik	betoldas			alacsony	S
+1Thessz 2:16	hu	3	megtiltják	parositva	1	G2967	alacsony	S
+1Thessz 2:16	hu	4	nékünk	parositva	2	G3165	alacsony	S
+1Thessz 2:16	hu	5	hogy	betoldas			alacsony	S
+1Thessz 2:16	hu	6	a	betoldas			alacsony	S
+1Thessz 2:16	hu	7	pogányoknak	parositva	3,4	G3588+G1484	alacsony	S
+1Thessz 2:16	hu	8	ne	betoldas			alacsony	S
+1Thessz 2:16	hu	9	prédikáljunk	parositva	5	G2980	alacsony	S
+1Thessz 2:16	hu	10	hogy	parositva	6	G2443	alacsony	S
+1Thessz 2:16	hu	11	üdvözüljenek	parositva	7	G4982	alacsony	S
+1Thessz 2:16	hu	12	hogy	parositva	8	G1519	alacsony	S
+1Thessz 2:16	hu	13	mindenkor	parositva	14	G3842	alacsony	S
+1Thessz 2:16	hu	14	betöltsék	parositva	10	G0378	alacsony	S
+1Thessz 2:16	hu	15	bűneiket	parositva	11,13	G0846+G0266	alacsony	S
+1Thessz 2:16	hu	16	de	parositva	16	G1161	alacsony	S
+1Thessz 2:16	hu	17	végre	parositva	23,24	G1519+G5056	alacsony	S
+1Thessz 2:16	hu	18	utólérte	parositva	15	G5348	alacsony	S
+1Thessz 2:16	hu	19	őket	parositva	17,18	G1909+G0846	alacsony	S
+1Thessz 2:16	hu	20	az	betoldas			alacsony	S
+1Thessz 2:16	hu	21	Isten	betoldas			alacsony	S
+1Thessz 2:16	hu	22	haragja	parositva	20	G3709	alacsony	S
+1Thessz 2:16	er	1	κωλυόντων	parositva	3	G2967	alacsony	S
+1Thessz 2:16	er	2	ἡμᾶς	parositva	4	G3165	alacsony	S
+1Thessz 2:16	er	3	τοῖς	parositva	7	G3588	alacsony	S
+1Thessz 2:16	er	4	ἔθνεσιν	parositva	7	G1484	alacsony	S
+1Thessz 2:16	er	5	λαλῆσαι	parositva	9	G2980	alacsony	S
+1Thessz 2:16	er	6	ἵνα	parositva	10	G2443	alacsony	S
+1Thessz 2:16	er	7	σωθῶσιν,	parositva	11	G4982	alacsony	S
+1Thessz 2:16	er	8	εἰς	parositva	12	G1519	alacsony	S
+1Thessz 2:16	er	9	τὸ	forditatlan		G3588	alacsony	S
+1Thessz 2:16	er	10	ἀναπληρῶσαι	parositva	14	G0378	alacsony	S
+1Thessz 2:16	er	11	αὐτῶν	parositva	15	G0846	alacsony	S
+1Thessz 2:16	er	12	τὰς	forditatlan		G3588	alacsony	S
+1Thessz 2:16	er	13	ἁμαρτίας	parositva	15	G0266	alacsony	S
+1Thessz 2:16	er	14	πάντοτε·	parositva	13	G3842	alacsony	S
+1Thessz 2:16	er	15	ἔφθασεν	parositva	18	G5348	alacsony	S
+1Thessz 2:16	er	16	δὲ	parositva	16	G1161	alacsony	S
+1Thessz 2:16	er	17	ἐπ᾽	parositva	19	G1909	alacsony	S
+1Thessz 2:16	er	18	αὐτοὺς	parositva	19	G0846	alacsony	S
+1Thessz 2:16	er	19	ἡ	forditatlan		G3588	alacsony	S
+1Thessz 2:16	er	20	ὀργὴ	parositva	22	G3709	alacsony	S
+1Thessz 2:16	er	21	τοῦ	forditatlan		G3588	alacsony	S
+1Thessz 2:16	er	22	θεοῦ	forditatlan		G2316	alacsony	S
+1Thessz 2:16	er	23	εἰς	parositva	17	G1519	alacsony	S
+1Thessz 2:16	er	24	τέλος.¶	parositva	17	G5056	alacsony	S
+1Thessz 2:17	hu	1	Mi	parositva	1	G3165	alacsony	S
+1Thessz 2:17	hu	2	pedig	parositva	2	G1161	alacsony	S
+1Thessz 2:17	hu	3	atyámfiai	parositva	3	G0080	alacsony	S
+1Thessz 2:17	hu	4	a	betoldas			alacsony	S
+1Thessz 2:17	hu	5	mint	betoldas			alacsony	S
+1Thessz 2:17	hu	6	elszakasztatánk	parositva	4	G0642	alacsony	S
+1Thessz 2:17	hu	7	tőletek	parositva	5,6	G0575+G4771	alacsony	S
+1Thessz 2:17	hu	8	egy	parositva	9	G5610	alacsony	S
+1Thessz 2:17	hu	9	kevés	parositva	9	G5610	alacsony	S
+1Thessz 2:17	hu	10	ideig	parositva	7,8	G4314+G2540	alacsony	S
+1Thessz 2:17	hu	11	arczra	parositva	10	G4383	alacsony	S
+1Thessz 2:17	hu	12	nem	parositva	11	G3756	alacsony	S
+1Thessz 2:17	hu	13	szívre	parositva	12	G2588	alacsony	S
+1Thessz 2:17	hu	14	nézve	betoldas			alacsony	S
+1Thessz 2:17	hu	15	annál	betoldas			alacsony	S
+1Thessz 2:17	hu	16	buzgóságosabban	parositva	13	G4056	alacsony	S
+1Thessz 2:17	hu	17	nagy	parositva	20	G4183	alacsony	S
+1Thessz 2:17	hu	18	kívánsággal	parositva	19,21	G1722+G1939	alacsony	S
+1Thessz 2:17	hu	19	igyekeztünk	parositva	14	G4704	alacsony	S
+1Thessz 2:17	hu	20	hogy	betoldas			alacsony	S
+1Thessz 2:17	hu	21	szemtől	parositva	16	G4383	alacsony	S
+1Thessz 2:17	hu	22	szemben	parositva	16	G4383	alacsony	S
+1Thessz 2:17	hu	23	láthassunk	parositva	18	G1492	alacsony	S
+1Thessz 2:17	hu	24	titeket	parositva	17	G4771	alacsony	S
+1Thessz 2:17	er	1	Ἡμεῖς	parositva	1	G3165	alacsony	S
+1Thessz 2:17	er	2	δέ,	parositva	2	G1161	alacsony	S
+1Thessz 2:17	er	3	ἀδελφοί,	parositva	3	G0080	alacsony	S
+1Thessz 2:17	er	4	ἀπορφανισθέντες	parositva	6	G0642	alacsony	S
+1Thessz 2:17	er	5	ἀφ᾽	parositva	7	G0575	alacsony	S
+1Thessz 2:17	er	6	ὑμῶν	parositva	7	G4771	alacsony	S
+1Thessz 2:17	er	7	πρὸς	parositva	10	G4314	alacsony	S
+1Thessz 2:17	er	8	καιρὸν	parositva	10	G2540	alacsony	S
+1Thessz 2:17	er	9	ὥρας	parositva	8,9	G5610	alacsony	S
+1Thessz 2:17	er	10	προσώπῳ	parositva	11	G4383	alacsony	S
+1Thessz 2:17	er	11	οὐ	parositva	12	G3756	alacsony	S
+1Thessz 2:17	er	12	καρδίᾳ,	parositva	13	G2588	alacsony	S
+1Thessz 2:17	er	13	περισσοτέρως	parositva	16	G4056	alacsony	S
+1Thessz 2:17	er	14	ἐσπουδάσαμεν	parositva	19	G4704	alacsony	S
+1Thessz 2:17	er	15	τὸ	forditatlan		G3588	alacsony	S
+1Thessz 2:17	er	16	πρόσωπον	parositva	21,22	G4383	alacsony	S
+1Thessz 2:17	er	17	ὑμῶν	parositva	24	G4771	alacsony	S
+1Thessz 2:17	er	18	ἰδεῖν	parositva	23	G1492	alacsony	S
+1Thessz 2:17	er	19	ἐν	parositva	18	G1722	alacsony	S
+1Thessz 2:17	er	20	πολλῇ	parositva	17	G4183	alacsony	S
+1Thessz 2:17	er	21	ἐπιθυμίᾳ.	parositva	18	G1939	alacsony	S
+1Thessz 2:18	hu	1	Azért	betoldas			alacsony	S
+1Thessz 2:18	hu	2	menni	parositva	3	G2064	alacsony	S
+1Thessz 2:18	hu	3	is	betoldas			alacsony	S
+1Thessz 2:18	hu	4	akartunk	parositva	2	G2309	alacsony	S
+1Thessz 2:18	hu	5	hozzátok	parositva	4,5	G4314+G4771	alacsony	S
+1Thessz 2:18	hu	6	kiváltképen	parositva	7	G3303	alacsony	S
+1Thessz 2:18	hu	7	én	parositva	6	G1473	alacsony	S
+1Thessz 2:18	hu	8	Pál	parositva	8	G3972	alacsony	S
+1Thessz 2:18	hu	9	egyszer	parositva	10	G0530	alacsony	S
+1Thessz 2:18	hu	10	is	parositva	9	G2532	alacsony	S
+1Thessz 2:18	hu	11	kétszer	parositva	12	G1364	alacsony	S
+1Thessz 2:18	hu	12	is	parositva	11	G2532	alacsony	S
+1Thessz 2:18	hu	13	de	parositva	13	G2532	alacsony	S
+1Thessz 2:18	hu	14	megakadályozott	parositva	14	G1465	alacsony	S
+1Thessz 2:18	hu	15	minket	parositva	15	G3165	alacsony	S
+1Thessz 2:18	hu	16	a	betoldas			alacsony	S
+1Thessz 2:18	hu	17	Sátán	parositva	17	G4567	alacsony	S
+1Thessz 2:18	er	1	διότι	forditatlan		G1360	alacsony	S
+1Thessz 2:18	er	2	ἠθελήσαμεν	parositva	4	G2309	alacsony	S
+1Thessz 2:18	er	3	ἐλθεῖν	parositva	2	G2064	alacsony	S
+1Thessz 2:18	er	4	πρὸς	parositva	5	G4314	alacsony	S
+1Thessz 2:18	er	5	ὑμᾶς,	parositva	5	G4771	alacsony	S
+1Thessz 2:18	er	6	ἐγὼ	parositva	7	G1473	alacsony	S
+1Thessz 2:18	er	7	μὲν	parositva	6	G3303	alacsony	S
+1Thessz 2:18	er	8	Παῦλος	parositva	8	G3972	alacsony	S
+1Thessz 2:18	er	9	καὶ	parositva	10	G2532	alacsony	S
+1Thessz 2:18	er	10	ἅπαξ	parositva	9	G0530	alacsony	S
+1Thessz 2:18	er	11	καὶ	parositva	12	G2532	alacsony	S
+1Thessz 2:18	er	12	δίς,	parositva	11	G1364	alacsony	S
+1Thessz 2:18	er	13	καὶ	parositva	13	G2532	alacsony	S
+1Thessz 2:18	er	14	ἐνέκοψεν	parositva	14	G1465	alacsony	S
+1Thessz 2:18	er	15	ἡμᾶς	parositva	15	G3165	alacsony	S
+1Thessz 2:18	er	16	ὁ	forditatlan		G3588	alacsony	S
+1Thessz 2:18	er	17	σατανᾶς.	parositva	17	G4567	alacsony	S
+1Thessz 2:19	hu	1	Mert	parositva	2	G1063	alacsony	S
+1Thessz 2:19	hu	2	kicsoda	parositva	1	G5101	alacsony	S
+1Thessz 2:19	hu	3	a	betoldas			alacsony	S
+1Thessz 2:19	hu	4	mi	parositva	3	G3165	alacsony	S
+1Thessz 2:19	hu	5	reménységünk	parositva	3,4	G3165+G1680	alacsony	S
+1Thessz 2:19	hu	6	örömünk	parositva	5,6	G2228+G5479	alacsony	S
+1Thessz 2:19	hu	7	és	parositva	7	G2228	alacsony	S
+1Thessz 2:19	hu	8	dicsekedésünk	parositva	9	G2746	alacsony	S
+1Thessz 2:19	hu	9	koronája	parositva	8	G4735	alacsony	S
+1Thessz 2:19	hu	10	Avagy	parositva	10	G2228	alacsony	S
+1Thessz 2:19	hu	11	nem	parositva	11	G3780	alacsony	S
+1Thessz 2:19	hu	12	azok	betoldas			alacsony	S
+1Thessz 2:19	hu	13	lesztek	betoldas			alacsony	S
+1Thessz 2:19	hu	14	é	betoldas			alacsony	S
+1Thessz 2:19	hu	15	ti	parositva	13	G4771	alacsony	S
+1Thessz 2:19	hu	16	is	parositva	12	G2532	alacsony	S
+1Thessz 2:19	hu	17	a	betoldas			alacsony	S
+1Thessz 2:19	hu	18	mi	parositva	17	G3165	alacsony	S
+1Thessz 2:19	hu	19	Urunk	parositva	16,17	G2962+G3165	alacsony	S
+1Thessz 2:19	hu	20	Jézus	parositva	18	G2424	alacsony	S
+1Thessz 2:19	hu	21	Krisztus	parositva	19	G5547	alacsony	S
+1Thessz 2:19	hu	22	előtt	parositva	14	G1715	alacsony	S
+1Thessz 2:19	hu	23	az	betoldas			alacsony	S
+1Thessz 2:19	hu	24	ő	parositva	22	G0846	alacsony	S
+1Thessz 2:19	hu	25	eljövetelekor	parositva	20,22,23	G1722+G0846+G3952	alacsony	S
+1Thessz 2:19	er	1	τίς	parositva	2	G5101	alacsony	S
+1Thessz 2:19	er	2	γὰρ	parositva	1	G1063	alacsony	S
+1Thessz 2:19	er	3	ἡμῶν	parositva	4,5	G3165	alacsony	S
+1Thessz 2:19	er	4	ἐλπὶς	parositva	5	G1680	alacsony	S
+1Thessz 2:19	er	5	ἢ	parositva	6	G2228	alacsony	S
+1Thessz 2:19	er	6	χαρὰ	parositva	6	G5479	alacsony	S
+1Thessz 2:19	er	7	ἢ	parositva	7	G2228	alacsony	S
+1Thessz 2:19	er	8	στέφανος	parositva	9	G4735	alacsony	S
+1Thessz 2:19	er	9	καυχήσεως;	parositva	8	G2746	alacsony	S
+1Thessz 2:19	er	10	ἢ	parositva	10	G2228	alacsony	S
+1Thessz 2:19	er	11	οὐχὶ	parositva	11	G3780	alacsony	S
+1Thessz 2:19	er	12	καὶ	parositva	16	G2532	alacsony	S
+1Thessz 2:19	er	13	ὑμεῖς	parositva	15	G4771	alacsony	S
+1Thessz 2:19	er	14	ἔμπροσθεν	parositva	22	G1715	alacsony	S
+1Thessz 2:19	er	15	τοῦ	forditatlan		G3588	alacsony	S
+1Thessz 2:19	er	16	κυρίου	parositva	19	G2962	alacsony	S
+1Thessz 2:19	er	17	ἡμῶν	parositva	18,19	G3165	alacsony	S
+1Thessz 2:19	er	18	Ἰησοῦ	parositva	20	G2424	alacsony	S
+1Thessz 2:19	er	19	Χριστοῦ	parositva	21	G5547	alacsony	S
+1Thessz 2:19	er	20	ἐν	parositva	25	G1722	alacsony	S
+1Thessz 2:19	er	21	τῇ	forditatlan		G3588	alacsony	S
+1Thessz 2:19	er	22	αὐτοῦ	parositva	24,25	G0846	alacsony	S
+1Thessz 2:19	er	23	παρουσίᾳ;	parositva	25	G3952	alacsony	S
+1Thessz 2:20	hu	1	Bizony	parositva	2	G1063	alacsony	S
+1Thessz 2:20	hu	2	ti	parositva	1	G4771	alacsony	S
+1Thessz 2:20	hu	3	vagytok	parositva	3	G1510	alacsony	S
+1Thessz 2:20	hu	4	a	betoldas			alacsony	S
+1Thessz 2:20	hu	5	mi	parositva	6	G3165	alacsony	S
+1Thessz 2:20	hu	6	dicsőségünk	parositva	5,6	G1391+G3165	alacsony	S
+1Thessz 2:20	hu	7	és	parositva	7	G2532	alacsony	S
+1Thessz 2:20	hu	8	örömünk	parositva	6,9	G3165+G5479	alacsony	S
+1Thessz 2:20	er	1	ὑμεῖς	parositva	2	G4771	alacsony	S
+1Thessz 2:20	er	2	γάρ	parositva	1	G1063	alacsony	S
+1Thessz 2:20	er	3	ἐστε	parositva	3	G1510	alacsony	S
+1Thessz 2:20	er	4	ἡ	forditatlan		G3588	alacsony	S
+1Thessz 2:20	er	5	δόξα	parositva	6	G1391	alacsony	S
+1Thessz 2:20	er	6	ἡμῶν	parositva	5,6,8	G3165	alacsony	S
+1Thessz 2:20	er	7	καὶ	parositva	7	G2532	alacsony	S
+1Thessz 2:20	er	8	ἡ	forditatlan		G3588	alacsony	S
+1Thessz 2:20	er	9	χαρά.¶	parositva	8	G5479	alacsony	S
+1Thessz 3:1	hu	1	Annakokáért	parositva	1	G1352	alacsony	S
+1Thessz 3:1	hu	2	mivelhogy	betoldas			alacsony	S
+1Thessz 3:1	hu	3	tovább	parositva	2	G3371	alacsony	S
+1Thessz 3:1	hu	4	már	parositva	2	G3371	alacsony	S
+1Thessz 3:1	hu	5	el	parositva	3	G4722	alacsony	S
+1Thessz 3:1	hu	6	nem	parositva	2	G3371	alacsony	S
+1Thessz 3:1	hu	7	tűrhetők	parositva	3	G4722	alacsony	S
+1Thessz 3:1	hu	8	jónak	parositva	4	G2106	alacsony	S
+1Thessz 3:1	hu	9	ítélénk	parositva	4	G2106	alacsony	S
+1Thessz 3:1	hu	10	hogy	betoldas			alacsony	S
+1Thessz 3:1	hu	11	magunk	parositva	8	G3441	alacsony	S
+1Thessz 3:1	hu	12	maradjunk	parositva	5	G2641	alacsony	S
+1Thessz 3:1	hu	13	Athénében	parositva	6,7	G1722+G0116	alacsony	S
+1Thessz 3:1	er	1	Διὸ	parositva	1	G1352	alacsony	S
+1Thessz 3:1	er	2	μηκέτι	parositva	3,4,6	G3371	alacsony	S
+1Thessz 3:1	er	3	στέγοντες	parositva	5,7	G4722	alacsony	S
+1Thessz 3:1	er	4	εὐδοκήσαμεν	parositva	8,9	G2106	alacsony	S
+1Thessz 3:1	er	5	καταλειφθῆναι	parositva	12	G2641	alacsony	S
+1Thessz 3:1	er	6	ἐν	parositva	13	G1722	alacsony	S
+1Thessz 3:1	er	7	Ἀθήναις	parositva	13	G0116	alacsony	S
+1Thessz 3:1	er	8	μόνοι	parositva	11	G3441	alacsony	S
+1Thessz 3:2	hu	1	És	parositva	1	G2532	alacsony	S
+1Thessz 3:2	hu	2	elküldöttük	parositva	2	G3992	alacsony	S
+1Thessz 3:2	hu	3	Timótheust	parositva	3	G5095	alacsony	S
+1Thessz 3:2	hu	4	a	betoldas			alacsony	S
+1Thessz 3:2	hu	5	mi	parositva	6	G3165	alacsony	S
+1Thessz 3:2	hu	6	atyánkfiát	parositva	5,6	G0080+G3165	alacsony	S
+1Thessz 3:2	hu	7	és	parositva	7	G2532	alacsony	S
+1Thessz 3:2	hu	8	Istennek	parositva	13	G2316	alacsony	S
+1Thessz 3:2	hu	9	szolgáját	parositva	8	G1249	alacsony	S
+1Thessz 3:2	hu	10	és	parositva	9	G2532	alacsony	S
+1Thessz 3:2	hu	11	munkatársunkat	parositva	10,11	G4904+G3165	alacsony	S
+1Thessz 3:2	hu	12	a	betoldas			alacsony	S
+1Thessz 3:2	hu	13	Krisztus	parositva	18	G5547	alacsony	S
+1Thessz 3:2	hu	14	evangyéliomának	parositva	16	G2098	alacsony	S
+1Thessz 3:2	hu	15	hirdetésében	parositva	14	G1722	alacsony	S
+1Thessz 3:2	hu	16	hogy	parositva	19	G1519	alacsony	S
+1Thessz 3:2	hu	17	erősítsen	parositva	21	G4741	alacsony	S
+1Thessz 3:2	hu	18	titeket	parositva	22	G4771	alacsony	S
+1Thessz 3:2	hu	19	és	parositva	23	G2532	alacsony	S
+1Thessz 3:2	hu	20	intsen	parositva	24	G3870	alacsony	S
+1Thessz 3:2	hu	21	titeket	parositva	25	G4771	alacsony	S
+1Thessz 3:2	hu	22	a	betoldas			alacsony	S
+1Thessz 3:2	hu	23	ti	parositva	29	G4771	alacsony	S
+1Thessz 3:2	hu	24	hitetek	parositva	28,29	G4102+G4771	alacsony	S
+1Thessz 3:2	hu	25	felől	betoldas			alacsony	S
+1Thessz 3:2	er	1	καὶ	parositva	1	G2532	alacsony	S
+1Thessz 3:2	er	2	ἐπέμψαμεν	parositva	2	G3992	alacsony	S
+1Thessz 3:2	er	3	Τιμόθεον	parositva	3	G5095	alacsony	S
+1Thessz 3:2	er	4	τὸν	forditatlan		G3588	alacsony	S
+1Thessz 3:2	er	5	ἀδελφὸν	parositva	6	G0080	alacsony	S
+1Thessz 3:2	er	6	ἡμῶν	parositva	5,6	G3165	alacsony	S
+1Thessz 3:2	er	7	καὶ	parositva	7	G2532	alacsony	S
+1Thessz 3:2	er	8	διάκονον	parositva	9	G1249	alacsony	S
+1Thessz 3:2	er	9	καὶ	parositva	10	G2532	alacsony	S
+1Thessz 3:2	er	10	συνεργὸν	parositva	11	G4904	alacsony	S
+1Thessz 3:2	er	11	ἡμῶν	parositva	11	G3165	alacsony	S
+1Thessz 3:2	er	12	τοῦ	forditatlan		G3588	alacsony	S
+1Thessz 3:2	er	13	θεοῦ	parositva	8	G2316	alacsony	S
+1Thessz 3:2	er	14	ἐν	parositva	15	G1722	alacsony	S
+1Thessz 3:2	er	15	τῷ	forditatlan		G3588	alacsony	S
+1Thessz 3:2	er	16	εὐαγγελίῳ	parositva	14	G2098	alacsony	S
+1Thessz 3:2	er	17	τοῦ	forditatlan		G3588	alacsony	S
+1Thessz 3:2	er	18	Χριστοῦ	parositva	13	G5547	alacsony	S
+1Thessz 3:2	er	19	εἰς	parositva	16	G1519	alacsony	S
+1Thessz 3:2	er	20	τὸ	forditatlan		G3588	alacsony	S
+1Thessz 3:2	er	21	στηρίξαι	parositva	17	G4741	alacsony	S
+1Thessz 3:2	er	22	ὑμᾶς	parositva	18	G4771	alacsony	S
+1Thessz 3:2	er	23	καὶ	parositva	19	G2532	alacsony	S
+1Thessz 3:2	er	24	παρακαλέσαι	parositva	20	G3870	alacsony	S
+1Thessz 3:2	er	25	ὑμᾶς	parositva	21	G4771	alacsony	S
+1Thessz 3:2	er	26	ὑπὲρ	forditatlan		G5228	alacsony	S
+1Thessz 3:2	er	27	τῆς	forditatlan		G3588	alacsony	S
+1Thessz 3:2	er	28	πίστεως	parositva	24	G4102	alacsony	S
+1Thessz 3:2	er	29	ὑμῶν,	parositva	23,24	G4771	alacsony	S
+1Thessz 3:3	hu	1	Hogy	betoldas			alacsony	S
+1Thessz 3:3	hu	2	senki	parositva	2	G3367	alacsony	S
+1Thessz 3:3	hu	3	meg	parositva	3	G4525	alacsony	S
+1Thessz 3:3	hu	4	ne	parositva	2	G3367	alacsony	S
+1Thessz 3:3	hu	5	tántorodjék	parositva	3	G4525	alacsony	S
+1Thessz 3:3	hu	6	ama	parositva	7	G3778	alacsony	S
+1Thessz 3:3	hu	7	szorongattatások	parositva	6	G2347	alacsony	S
+1Thessz 3:3	hu	8	között	parositva	4	G1722	alacsony	S
+1Thessz 3:3	hu	9	mert	parositva	9	G1063	alacsony	S
+1Thessz 3:3	hu	10	ti	parositva	8	G0846	alacsony	S
+1Thessz 3:3	hu	11	magatok	parositva	8	G0846	alacsony	S
+1Thessz 3:3	hu	12	tudjátok	parositva	10	G6063	alacsony	S
+1Thessz 3:3	hu	13	hogy	parositva	11	G3754	alacsony	S
+1Thessz 3:3	hu	14	mi	betoldas			alacsony	S
+1Thessz 3:3	hu	15	arra	parositva	12,13	G1519+G3778	alacsony	S
+1Thessz 3:3	hu	16	rendeltettünk	parositva	14	G2749	alacsony	S
+1Thessz 3:3	er	1	τὸ	forditatlan		G3588	alacsony	S
+1Thessz 3:3	er	2	μηδένα	parositva	2,4	G3367	alacsony	S
+1Thessz 3:3	er	3	σαίνεσθαι	parositva	3,5	G4525	alacsony	S
+1Thessz 3:3	er	4	ἐν	parositva	8	G1722	alacsony	S
+1Thessz 3:3	er	5	ταῖς	forditatlan		G3588	alacsony	S
+1Thessz 3:3	er	6	θλίψεσιν	parositva	7	G2347	alacsony	S
+1Thessz 3:3	er	7	ταύταις·	parositva	6	G3778	alacsony	S
+1Thessz 3:3	er	8	αὐτοὶ	parositva	10,11	G0846	alacsony	S
+1Thessz 3:3	er	9	γὰρ	parositva	9	G1063	alacsony	S
+1Thessz 3:3	er	10	οἴδατε	parositva	12	G6063	alacsony	S
+1Thessz 3:3	er	11	ὅτι	parositva	13	G3754	alacsony	S
+1Thessz 3:3	er	12	εἰς	parositva	15	G1519	alacsony	S
+1Thessz 3:3	er	13	τοῦτο	parositva	15	G3778	alacsony	S
+1Thessz 3:3	er	14	κείμεθα·	parositva	16	G2749	alacsony	S
+1Thessz 3:4	hu	1	Mert	parositva	2	G1063	alacsony	S
+1Thessz 3:4	hu	2	mikor	parositva	3	G3753	alacsony	S
+1Thessz 3:4	hu	3	közöttetek	parositva	4,5	G4314+G4771	alacsony	S
+1Thessz 3:4	hu	4	valánk	parositva	6	G1510	alacsony	S
+1Thessz 3:4	hu	5	is	parositva	1	G2532	alacsony	S
+1Thessz 3:4	hu	6	előre	parositva	7	G4302	alacsony	S
+1Thessz 3:4	hu	7	megmondtuk	parositva	7	G4302	alacsony	S
+1Thessz 3:4	hu	8	néktek	parositva	8	G4771	alacsony	S
+1Thessz 3:4	hu	9	hogy	parositva	9	G3754	alacsony	S
+1Thessz 3:4	hu	10	szorongattatásnak	parositva	11	G2346	alacsony	S
+1Thessz 3:4	hu	11	leszünk	parositva	10	G3195	alacsony	S
+1Thessz 3:4	hu	12	kitéve	parositva	11	G2346	alacsony	S
+1Thessz 3:4	hu	13	a	betoldas			alacsony	S
+1Thessz 3:4	hu	14	mint	parositva	12	G2531	alacsony	S
+1Thessz 3:4	hu	15	meg	parositva	14	G1096	alacsony	S
+1Thessz 3:4	hu	16	is	parositva	13	G2532	alacsony	S
+1Thessz 3:4	hu	17	történt	parositva	14	G1096	alacsony	S
+1Thessz 3:4	hu	18	és	parositva	15	G2532	alacsony	S
+1Thessz 3:4	hu	19	tudjátok	parositva	16	G6063	alacsony	S
+1Thessz 3:4	er	1	καὶ	parositva	5	G2532	alacsony	S
+1Thessz 3:4	er	2	γὰρ	parositva	1	G1063	alacsony	S
+1Thessz 3:4	er	3	ὅτε	parositva	2	G3753	alacsony	S
+1Thessz 3:4	er	4	πρὸς	parositva	3	G4314	alacsony	S
+1Thessz 3:4	er	5	ὑμᾶς	parositva	3	G4771	alacsony	S
+1Thessz 3:4	er	6	ἦμεν,	parositva	4	G1510	alacsony	S
+1Thessz 3:4	er	7	προελέγομεν	parositva	6,7	G4302	alacsony	S
+1Thessz 3:4	er	8	ὑμῖν	parositva	8	G4771	alacsony	S
+1Thessz 3:4	er	9	ὅτι	parositva	9	G3754	alacsony	S
+1Thessz 3:4	er	10	μέλλομεν	parositva	11	G3195	alacsony	S
+1Thessz 3:4	er	11	θλίβεσθαι	parositva	10,12	G2346	alacsony	S
+1Thessz 3:4	er	12	καθὼς	parositva	14	G2531	alacsony	S
+1Thessz 3:4	er	13	καὶ	parositva	16	G2532	alacsony	S
+1Thessz 3:4	er	14	ἐγένετο	parositva	15,17	G1096	alacsony	S
+1Thessz 3:4	er	15	καὶ	parositva	18	G2532	alacsony	S
+1Thessz 3:4	er	16	οἴδατε·	parositva	19	G6063	alacsony	S
+1Thessz 3:5	hu	1	Annakokáért	parositva	1,2	G1223+G3778	alacsony	S
+1Thessz 3:5	hu	2	én	parositva	3	G2532+G1473	alacsony	S
+1Thessz 3:5	hu	3	is	parositva	3	G2532+G1473	alacsony	S
+1Thessz 3:5	hu	4	mivelhogy	betoldas			alacsony	S
+1Thessz 3:5	hu	5	tovább	parositva	4	G3371	alacsony	S
+1Thessz 3:5	hu	6	már	parositva	4	G3371	alacsony	S
+1Thessz 3:5	hu	7	nem	parositva	4	G3371	alacsony	S
+1Thessz 3:5	hu	8	tűrhetém	parositva	5	G4722	alacsony	S
+1Thessz 3:5	hu	9	elküldék	parositva	6	G3992	alacsony	S
+1Thessz 3:5	hu	10	hogy	parositva	7	G1519	alacsony	S
+1Thessz 3:5	hu	11	megismerjem	parositva	9	G1097	alacsony	S
+1Thessz 3:5	hu	12	a	betoldas			alacsony	S
+1Thessz 3:5	hu	13	ti	parositva	12	G4771	alacsony	S
+1Thessz 3:5	hu	14	hiteteket	parositva	11,12	G4102+G4771	alacsony	S
+1Thessz 3:5	hu	15	ha	parositva	13	G3361	alacsony	S
+1Thessz 3:5	hu	16	nem	parositva	13	G3361	alacsony	S
+1Thessz 3:5	hu	17	kísértett	parositva	15	G3985	alacsony	S
+1Thessz 3:5	hu	18	é	parositva	13	G3361	alacsony	S
+1Thessz 3:5	hu	19	meg	parositva	15	G3985	alacsony	S
+1Thessz 3:5	hu	20	valami	parositva	14	G4458	alacsony	S
+1Thessz 3:5	hu	21	módon	parositva	14	G4458	alacsony	S
+1Thessz 3:5	hu	22	titeket	parositva	16	G4771	alacsony	S
+1Thessz 3:5	hu	23	a	betoldas			alacsony	S
+1Thessz 3:5	hu	24	kísértő	parositva	18	G3985	alacsony	S
+1Thessz 3:5	hu	25	és	parositva	19	G2532	alacsony	S
+1Thessz 3:5	hu	26	nem	parositva	13	G3361	alacsony	S
+1Thessz 3:5	hu	27	lett	parositva	22	G1096	alacsony	S
+1Thessz 3:5	hu	28	é	parositva	13	G3361	alacsony	S
+1Thessz 3:5	hu	29	hiábavaló	parositva	20,21	G1519+G2756	alacsony	S
+1Thessz 3:5	hu	30	a	betoldas			alacsony	S
+1Thessz 3:5	hu	31	mi	parositva	25	G3165	alacsony	S
+1Thessz 3:5	hu	32	fáradságunk	parositva	24,25	G2873+G3165	alacsony	S
+1Thessz 3:5	er	1	διὰ	parositva	1	G1223	alacsony	S
+1Thessz 3:5	er	2	τοῦτο	parositva	1	G3778	alacsony	S
+1Thessz 3:5	er	3	κἀγὼ	parositva	2,3	G2532+G1473	alacsony	S
+1Thessz 3:5	er	4	μηκέτι	parositva	5,6,7	G3371	alacsony	S
+1Thessz 3:5	er	5	στέγων	parositva	8	G4722	alacsony	S
+1Thessz 3:5	er	6	ἔπεμψα	parositva	9	G3992	alacsony	S
+1Thessz 3:5	er	7	εἰς	parositva	10	G1519	alacsony	S
+1Thessz 3:5	er	8	τὸ	forditatlan		G3588	alacsony	S
+1Thessz 3:5	er	9	γνῶναι	parositva	11	G1097	alacsony	S
+1Thessz 3:5	er	10	τὴν	forditatlan		G3588	alacsony	S
+1Thessz 3:5	er	11	πίστιν	parositva	14	G4102	alacsony	S
+1Thessz 3:5	er	12	ὑμῶν,	parositva	13,14	G4771	alacsony	S
+1Thessz 3:5	er	13	μή	parositva	15,16,18,26,28	G3361	alacsony	S
+1Thessz 3:5	er	14	πως	parositva	20,21	G4458	alacsony	S
+1Thessz 3:5	er	15	ἐπείρασεν	parositva	17,19	G3985	alacsony	S
+1Thessz 3:5	er	16	ὑμᾶς	parositva	22	G4771	alacsony	S
+1Thessz 3:5	er	17	ὁ	forditatlan		G3588	alacsony	S
+1Thessz 3:5	er	18	πειράζων	parositva	24	G3985	alacsony	S
+1Thessz 3:5	er	19	καὶ	parositva	25	G2532	alacsony	S
+1Thessz 3:5	er	20	εἰς	parositva	29	G1519	alacsony	S
+1Thessz 3:5	er	21	κενὸν	parositva	29	G2756	alacsony	S
+1Thessz 3:5	er	22	γένηται	parositva	27	G1096	alacsony	S
+1Thessz 3:5	er	23	ὁ	forditatlan		G3588	alacsony	S
+1Thessz 3:5	er	24	κόπος	parositva	32	G2873	alacsony	S
+1Thessz 3:5	er	25	ἡμῶν.	parositva	31,32	G3165	alacsony	S
+1Thessz 3:6	hu	1	Most	parositva	1	G0737	alacsony	S
+1Thessz 3:6	hu	2	pedig	parositva	2	G1161	alacsony	S
+1Thessz 3:6	hu	3	a	betoldas			alacsony	S
+1Thessz 3:6	hu	4	mikor	betoldas			alacsony	S
+1Thessz 3:6	hu	5	megérkezett	parositva	3	G2064	alacsony	S
+1Thessz 3:6	hu	6	hozzánk	parositva	5,6	G4314+G3165	alacsony	S
+1Thessz 3:6	hu	7	Timótheus	parositva	4	G5095	alacsony	S
+1Thessz 3:6	hu	8	ti	parositva	8	G4771	alacsony	S
+1Thessz 3:6	hu	9	tőletek	parositva	7,8	G0575+G4771	alacsony	S
+1Thessz 3:6	hu	10	és	parositva	9	G2532	alacsony	S
+1Thessz 3:6	hu	11	örömhírt	parositva	10	G2097	alacsony	S
+1Thessz 3:6	hu	12	hozott	parositva	10	G2097	alacsony	S
+1Thessz 3:6	hu	13	nékünk	parositva	11	G3165	alacsony	S
+1Thessz 3:6	hu	14	a	betoldas			alacsony	S
+1Thessz 3:6	hu	15	ti	parositva	17	G4771	alacsony	S
+1Thessz 3:6	hu	16	hitetek	parositva	13,17	G4102+G4771	alacsony	S
+1Thessz 3:6	hu	17	és	parositva	14	G2532	alacsony	S
+1Thessz 3:6	hu	18	szeretetetek	parositva	16,17	G0026+G4771	alacsony	S
+1Thessz 3:6	hu	19	felől	betoldas			alacsony	S
+1Thessz 3:6	hu	20	és	parositva	18	G2532	alacsony	S
+1Thessz 3:6	hu	21	arról	betoldas			alacsony	S
+1Thessz 3:6	hu	22	hogy	parositva	19	G3754	alacsony	S
+1Thessz 3:6	hu	23	jó	parositva	23	G0018	alacsony	S
+1Thessz 3:6	hu	24	emlékezéssel	parositva	21	G3417	alacsony	S
+1Thessz 3:6	hu	25	vagytok	parositva	20	G2192	alacsony	S
+1Thessz 3:6	hu	26	irántunk	parositva	22	G3165	alacsony	S
+1Thessz 3:6	hu	27	mindenkor	parositva	24	G3842	alacsony	S
+1Thessz 3:6	hu	28	kívánván	parositva	25	G1971	alacsony	S
+1Thessz 3:6	hu	29	látni	parositva	27	G1492	alacsony	S
+1Thessz 3:6	hu	30	minket	parositva	26	G3165	alacsony	S
+1Thessz 3:6	hu	31	miképen	parositva	28	G2509	alacsony	S
+1Thessz 3:6	hu	32	mi	parositva	30	G3165	alacsony	S
+1Thessz 3:6	hu	33	is	parositva	29	G2532	alacsony	S
+1Thessz 3:6	hu	34	titeket	parositva	31	G4771	alacsony	S
+1Thessz 3:6	er	1	ἄρτι	parositva	1	G0737	alacsony	S
+1Thessz 3:6	er	2	δὲ	parositva	2	G1161	alacsony	S
+1Thessz 3:6	er	3	ἐλθόντος	parositva	5	G2064	alacsony	S
+1Thessz 3:6	er	4	Τιμοθέου	parositva	7	G5095	alacsony	S
+1Thessz 3:6	er	5	πρὸς	parositva	6	G4314	alacsony	S
+1Thessz 3:6	er	6	ἡμᾶς	parositva	6	G3165	alacsony	S
+1Thessz 3:6	er	7	ἀφ᾽	parositva	9	G0575	alacsony	S
+1Thessz 3:6	er	8	ὑμῶν	parositva	8,9	G4771	alacsony	S
+1Thessz 3:6	er	9	καὶ	parositva	10	G2532	alacsony	S
+1Thessz 3:6	er	10	εὐαγγελισαμένου	parositva	11,12	G2097	alacsony	S
+1Thessz 3:6	er	11	ἡμῖν	parositva	13	G3165	alacsony	S
+1Thessz 3:6	er	12	τὴν	forditatlan		G3588	alacsony	S
+1Thessz 3:6	er	13	πίστιν	parositva	16	G4102	alacsony	S
+1Thessz 3:6	er	14	καὶ	parositva	17	G2532	alacsony	S
+1Thessz 3:6	er	15	τὴν	forditatlan		G3588	alacsony	S
+1Thessz 3:6	er	16	ἀγάπην	parositva	18	G0026	alacsony	S
+1Thessz 3:6	er	17	ὑμῶν	parositva	15,16,18	G4771	alacsony	S
+1Thessz 3:6	er	18	καὶ	parositva	20	G2532	alacsony	S
+1Thessz 3:6	er	19	ὅτι	parositva	22	G3754	alacsony	S
+1Thessz 3:6	er	20	ἔχετε	parositva	25	G2192	alacsony	S
+1Thessz 3:6	er	21	μνείαν	parositva	24	G3417	alacsony	S
+1Thessz 3:6	er	22	ἡμῶν	parositva	26	G3165	alacsony	S
+1Thessz 3:6	er	23	ἀγαθὴν	parositva	23	G0018	alacsony	S
+1Thessz 3:6	er	24	πάντοτε	parositva	27	G3842	alacsony	S
+1Thessz 3:6	er	25	ἐπιποθοῦντες	parositva	28	G1971	alacsony	S
+1Thessz 3:6	er	26	ἡμᾶς	parositva	30	G3165	alacsony	S
+1Thessz 3:6	er	27	ἰδεῖν	parositva	29	G1492	alacsony	S
+1Thessz 3:6	er	28	καθάπερ	parositva	31	G2509	alacsony	S
+1Thessz 3:6	er	29	καὶ	parositva	33	G2532	alacsony	S
+1Thessz 3:6	er	30	ἡμεῖς	parositva	32	G3165	alacsony	S
+1Thessz 3:6	er	31	ὑμᾶς,	parositva	34	G4771	alacsony	S
+1Thessz 3:7	hu	1	Ezáltal	parositva	1,2	G1223+G3778	alacsony	S
+1Thessz 3:7	hu	2	megvígasztalódtunk	parositva	3	G3870	alacsony	S
+1Thessz 3:7	hu	3	reátok	parositva	5,6	G1909+G4771	alacsony	S
+1Thessz 3:7	hu	4	nézve	parositva	5	G1909	alacsony	S
+1Thessz 3:7	hu	5	atyámfiai	parositva	4	G0080	alacsony	S
+1Thessz 3:7	hu	6	minden	parositva	8	G3956	alacsony	S
+1Thessz 3:7	hu	7	mi	parositva	13	G3165	alacsony	S
+1Thessz 3:7	hu	8	szorongattatásunk	parositva	12,13	G2347+G3165	alacsony	S
+1Thessz 3:7	hu	9	és	parositva	11	G2532	alacsony	S
+1Thessz 3:7	hu	10	szükségünk	parositva	10,13	G0318+G3165	alacsony	S
+1Thessz 3:7	hu	11	mellett	parositva	7	G1909	alacsony	S
+1Thessz 3:7	hu	12	is	betoldas			alacsony	S
+1Thessz 3:7	hu	13	a	betoldas			alacsony	S
+1Thessz 3:7	hu	14	ti	parositva	16	G4771	alacsony	S
+1Thessz 3:7	hu	15	hitetek	parositva	16,17	G4771+G4102	alacsony	S
+1Thessz 3:7	hu	16	által	parositva	14	G1223	alacsony	S
+1Thessz 3:7	er	1	διὰ	parositva	1	G1223	alacsony	S
+1Thessz 3:7	er	2	τοῦτο	parositva	1	G3778	alacsony	S
+1Thessz 3:7	er	3	παρεκλήθημεν,	parositva	2	G3870	alacsony	S
+1Thessz 3:7	er	4	ἀδελφοί,	parositva	5	G0080	alacsony	S
+1Thessz 3:7	er	5	ἐφ᾽	parositva	3,4	G1909	alacsony	S
+1Thessz 3:7	er	6	ὑμῖν	parositva	3	G4771	alacsony	S
+1Thessz 3:7	er	7	ἐπὶ	parositva	11	G1909	alacsony	S
+1Thessz 3:7	er	8	πάσῃ	parositva	6	G3956	alacsony	S
+1Thessz 3:7	er	9	τῇ	forditatlan		G3588	alacsony	S
+1Thessz 3:7	er	10	ἀνάγκῃ	parositva	10	G0318	alacsony	S
+1Thessz 3:7	er	11	καὶ	parositva	9	G2532	alacsony	S
+1Thessz 3:7	er	12	θλίψει	parositva	8	G2347	alacsony	S
+1Thessz 3:7	er	13	ἡμῶν	parositva	7,8,10	G3165	alacsony	S
+1Thessz 3:7	er	14	διὰ	parositva	16	G1223	alacsony	S
+1Thessz 3:7	er	15	τῆς	forditatlan		G3588	alacsony	S
+1Thessz 3:7	er	16	ὑμῶν	parositva	14,15	G4771	alacsony	S
+1Thessz 3:7	er	17	πίστεως·	parositva	15	G4102	alacsony	S
+1Thessz 3:8	hu	1	Mert	parositva	1	G3754	alacsony	S
+1Thessz 3:8	hu	2	szinte	parositva	2	G3568	alacsony	S
+1Thessz 3:8	hu	3	megelevenedünk	parositva	3	G2198	alacsony	S
+1Thessz 3:8	hu	4	ha	parositva	4	G1437	alacsony	S
+1Thessz 3:8	hu	5	ti	parositva	5	G4771	alacsony	S
+1Thessz 3:8	hu	6	erősek	betoldas			alacsony	S
+1Thessz 3:8	hu	7	vagytok	betoldas			alacsony	S
+1Thessz 3:8	hu	8	az	betoldas			alacsony	S
+1Thessz 3:8	hu	9	Úrban	parositva	7,8	G1722+G2962	alacsony	S
+1Thessz 3:8	er	1	ὅτι	parositva	1	G3754	alacsony	S
+1Thessz 3:8	er	2	νῦν	parositva	2	G3568	alacsony	S
+1Thessz 3:8	er	3	ζῶμεν,	parositva	3	G2198	alacsony	S
+1Thessz 3:8	er	4	ἐὰν	parositva	4	G1437	alacsony	S
+1Thessz 3:8	er	5	ὑμεῖς	parositva	5	G4771	alacsony	S
+1Thessz 3:8	er	6	στήκετε	forditatlan		G4739	alacsony	S
+1Thessz 3:8	er	7	ἐν	parositva	9	G1722	alacsony	S
+1Thessz 3:8	er	8	κυρίῳ.	parositva	9	G2962	alacsony	S
+1Thessz 3:9	hu	1	Mert	parositva	2	G1063	alacsony	S
+1Thessz 3:9	hu	2	milyen	parositva	1	G5101	alacsony	S
+1Thessz 3:9	hu	3	hálával	parositva	3	G2169	alacsony	S
+1Thessz 3:9	hu	4	is	betoldas			alacsony	S
+1Thessz 3:9	hu	5	fizethetünk	parositva	4,7	G1410+G0467	alacsony	S
+1Thessz 3:9	hu	6	az	betoldas			alacsony	S
+1Thessz 3:9	hu	7	Istennek	parositva	6	G2316	alacsony	S
+1Thessz 3:9	hu	8	ti	parositva	9	G4771	alacsony	S
+1Thessz 3:9	hu	9	érettetek	parositva	8,9	G4012+G4771	alacsony	S
+1Thessz 3:9	hu	10	mindazért	parositva	10,11	G1909+G3956	alacsony	S
+1Thessz 3:9	hu	11	az	betoldas			alacsony	S
+1Thessz 3:9	hu	12	örömért	parositva	13	G5479	alacsony	S
+1Thessz 3:9	hu	13	a	parositva	14	G3739	alacsony	S
+1Thessz 3:9	hu	14	melylyel	parositva	14	G3739	alacsony	S
+1Thessz 3:9	hu	15	örvendezünk	parositva	15	G5463	alacsony	S
+1Thessz 3:9	hu	16	miattatok	parositva	16,17	G1223+G4771	alacsony	S
+1Thessz 3:9	hu	17	a	betoldas			alacsony	S
+1Thessz 3:9	hu	18	mi	parositva	21	G3165	alacsony	S
+1Thessz 3:9	hu	19	Istenünk	parositva	20,21	G2316+G3165	alacsony	S
+1Thessz 3:9	hu	20	előtt	parositva	18	G1715	alacsony	S
+1Thessz 3:9	er	1	τίνα	parositva	2	G5101	alacsony	S
+1Thessz 3:9	er	2	γὰρ	parositva	1	G1063	alacsony	S
+1Thessz 3:9	er	3	εὐχαριστίαν	parositva	3	G2169	alacsony	S
+1Thessz 3:9	er	4	δυνάμεθα	parositva	5	G1410	alacsony	S
+1Thessz 3:9	er	5	τῷ	forditatlan		G3588	alacsony	S
+1Thessz 3:9	er	6	θεῷ	parositva	7	G2316	alacsony	S
+1Thessz 3:9	er	7	ἀνταποδοῦναι	parositva	5	G0467	alacsony	S
+1Thessz 3:9	er	8	περὶ	parositva	9	G4012	alacsony	S
+1Thessz 3:9	er	9	ὑμῶν	parositva	8,9	G4771	alacsony	S
+1Thessz 3:9	er	10	ἐπὶ	parositva	10	G1909	alacsony	S
+1Thessz 3:9	er	11	πάσῃ	parositva	10	G3956	alacsony	S
+1Thessz 3:9	er	12	τῇ	forditatlan		G3588	alacsony	S
+1Thessz 3:9	er	13	χαρᾷ	parositva	12	G5479	alacsony	S
+1Thessz 3:9	er	14	ᾗ	parositva	13,14	G3739	alacsony	S
+1Thessz 3:9	er	15	χαίρομεν	parositva	15	G5463	alacsony	S
+1Thessz 3:9	er	16	δι᾽	parositva	16	G1223	alacsony	S
+1Thessz 3:9	er	17	ὑμᾶς	parositva	16	G4771	alacsony	S
+1Thessz 3:9	er	18	ἔμπροσθεν	parositva	20	G1715	alacsony	S
+1Thessz 3:9	er	19	τοῦ	forditatlan		G3588	alacsony	S
+1Thessz 3:9	er	20	θεοῦ	parositva	19	G2316	alacsony	S
+1Thessz 3:9	er	21	ἡμῶν,	parositva	18,19	G3165	alacsony	S
+1Thessz 3:10	hu	1	Mikor	betoldas			alacsony	S
+1Thessz 3:10	hu	2	éjjel	parositva	1	G3571	alacsony	S
+1Thessz 3:10	hu	3	nappal	parositva	3	G2250	alacsony	S
+1Thessz 3:10	hu	4	nagy	parositva	4	G1537+G4057+G5228	alacsony	S
+1Thessz 3:10	hu	5	buzgón	parositva	4	G1537+G4057+G5228	alacsony	S
+1Thessz 3:10	hu	6	esedezünk	parositva	5	G1189	alacsony	S
+1Thessz 3:10	hu	7	hogy	parositva	6,7	G1519+G3588	alacsony	S
+1Thessz 3:10	hu	8	megláthassuk	parositva	8	G1492	alacsony	S
+1Thessz 3:10	hu	9	a	betoldas			alacsony	S
+1Thessz 3:10	hu	10	ti	parositva	9	G4771	alacsony	S
+1Thessz 3:10	hu	11	orczátokat	parositva	9,11	G4771+G4383	alacsony	S
+1Thessz 3:10	hu	12	és	parositva	12	G2532	alacsony	S
+1Thessz 3:10	hu	13	kipótolhassuk	parositva	13	G2675	alacsony	S
+1Thessz 3:10	hu	14	a	betoldas			alacsony	S
+1Thessz 3:10	hu	15	ti	parositva	18	G4771	alacsony	S
+1Thessz 3:10	hu	16	hitetek	parositva	17,18	G4102+G4771	alacsony	S
+1Thessz 3:10	hu	17	hiányait	parositva	15	G5303	alacsony	S
+1Thessz 3:10	er	1	νυκτὸς	parositva	2	G3571	alacsony	S
+1Thessz 3:10	er	2	καὶ	forditatlan		G2532	alacsony	S
+1Thessz 3:10	er	3	ἡμέρας	parositva	3	G2250	alacsony	S
+1Thessz 3:10	er	4	ὑπερεκπερισσοῦ	parositva	4,5	G1537+G4057+G5228	alacsony	S
+1Thessz 3:10	er	5	δεόμενοι	parositva	6	G1189	alacsony	S
+1Thessz 3:10	er	6	εἰς	parositva	7	G1519	alacsony	S
+1Thessz 3:10	er	7	τὸ	parositva	7	G3588	alacsony	S
+1Thessz 3:10	er	8	ἰδεῖν	parositva	8	G1492	alacsony	S
+1Thessz 3:10	er	9	ὑμῶν	parositva	10,11	G4771	alacsony	S
+1Thessz 3:10	er	10	τὸ	forditatlan		G3588	alacsony	S
+1Thessz 3:10	er	11	πρόσωπον	parositva	11	G4383	alacsony	S
+1Thessz 3:10	er	12	καὶ	parositva	12	G2532	alacsony	S
+1Thessz 3:10	er	13	καταρτίσαι	parositva	13	G2675	alacsony	S
+1Thessz 3:10	er	14	τὰ	forditatlan		G3588	alacsony	S
+1Thessz 3:10	er	15	ὑστερήματα	parositva	17	G5303	alacsony	S
+1Thessz 3:10	er	16	τῆς	forditatlan		G3588	alacsony	S
+1Thessz 3:10	er	17	πίστεως	parositva	16	G4102	alacsony	S
+1Thessz 3:10	er	18	ὑμῶν;¶	parositva	15,16	G4771	alacsony	S
+1Thessz 3:11	hu	1	Maga	parositva	1	G0846	alacsony	S
+1Thessz 3:11	hu	2	pedig	parositva	2	G1161	alacsony	S
+1Thessz 3:11	hu	3	az	betoldas			alacsony	S
+1Thessz 3:11	hu	4	Isten	parositva	4	G2316	alacsony	S
+1Thessz 3:11	hu	5	és	parositva	5	G2532	alacsony	S
+1Thessz 3:11	hu	6	a	betoldas			alacsony	S
+1Thessz 3:11	hu	7	mi	parositva	7	G3165	alacsony	S
+1Thessz 3:11	hu	8	Atyánk	parositva	6,7	G3962+G3165	alacsony	S
+1Thessz 3:11	hu	9	és	parositva	8	G2532	alacsony	S
+1Thessz 3:11	hu	10	a	betoldas			alacsony	S
+1Thessz 3:11	hu	11	mi	parositva	11	G3165	alacsony	S
+1Thessz 3:11	hu	12	Urunk	parositva	10,11	G2962+G3165	alacsony	S
+1Thessz 3:11	hu	13	a	betoldas			alacsony	S
+1Thessz 3:11	hu	14	Jézus	parositva	12	G2424	alacsony	S
+1Thessz 3:11	hu	15	Krisztus	parositva	13	G5547	alacsony	S
+1Thessz 3:11	hu	16	egyengesse	parositva	14	G2720	alacsony	S
+1Thessz 3:11	hu	17	meg	parositva	14	G2720	alacsony	S
+1Thessz 3:11	hu	18	a	betoldas			alacsony	S
+1Thessz 3:11	hu	19	mi	parositva	17	G3165	alacsony	S
+1Thessz 3:11	hu	20	útunkat	parositva	16,17	G3598+G3165	alacsony	S
+1Thessz 3:11	hu	21	ti	parositva	19	G4771	alacsony	S
+1Thessz 3:11	hu	22	hozzátok	parositva	18,19	G4314+G4771	alacsony	S
+1Thessz 3:11	er	1	Αὐτὸς	parositva	1	G0846	alacsony	S
+1Thessz 3:11	er	2	δὲ	parositva	2	G1161	alacsony	S
+1Thessz 3:11	er	3	ὁ	forditatlan		G3588	alacsony	S
+1Thessz 3:11	er	4	θεὸς	parositva	4	G2316	alacsony	S
+1Thessz 3:11	er	5	καὶ	parositva	5	G2532	alacsony	S
+1Thessz 3:11	er	6	πατὴρ	parositva	8	G3962	alacsony	S
+1Thessz 3:11	er	7	ἡμῶν	parositva	7,8	G3165	alacsony	S
+1Thessz 3:11	er	8	καὶ	parositva	9	G2532	alacsony	S
+1Thessz 3:11	er	9	ὁ	forditatlan		G3588	alacsony	S
+1Thessz 3:11	er	10	κύριος	parositva	12	G2962	alacsony	S
+1Thessz 3:11	er	11	ἡμῶν	parositva	11,12	G3165	alacsony	S
+1Thessz 3:11	er	12	Ἰησοῦς	parositva	14	G2424	alacsony	S
+1Thessz 3:11	er	13	Χριστός	parositva	15	G5547	alacsony	S
+1Thessz 3:11	er	14	κατευθύναι	parositva	16,17	G2720	alacsony	S
+1Thessz 3:11	er	15	τὴν	forditatlan		G3588	alacsony	S
+1Thessz 3:11	er	16	ὁδὸν	parositva	20	G3598	alacsony	S
+1Thessz 3:11	er	17	ἡμῶν	parositva	19,20	G3165	alacsony	S
+1Thessz 3:11	er	18	πρὸς	parositva	22	G4314	alacsony	S
+1Thessz 3:11	er	19	ὑμᾶς·	parositva	21,22	G4771	alacsony	S
+1Thessz 3:12	hu	1	Titeket	parositva	1	G4771	alacsony	S
+1Thessz 3:12	hu	2	pedig	parositva	2	G1161	alacsony	S
+1Thessz 3:12	hu	3	gyarapítson	parositva	5	G4121	alacsony	S
+1Thessz 3:12	hu	4	az	betoldas			alacsony	S
+1Thessz 3:12	hu	5	Úr	parositva	4	G2962	alacsony	S
+1Thessz 3:12	hu	6	és	parositva	6	G2532	alacsony	S
+1Thessz 3:12	hu	7	tegyen	parositva	7	G4052	alacsony	S
+1Thessz 3:12	hu	8	bőségesekké	parositva	7	G4052	alacsony	S
+1Thessz 3:12	hu	9	az	betoldas			alacsony	S
+1Thessz 3:12	hu	10	egymás	parositva	11	G0240	alacsony	S
+1Thessz 3:12	hu	11	iránt	parositva	10	G1519	alacsony	S
+1Thessz 3:12	hu	12	és	parositva	12	G2532	alacsony	S
+1Thessz 3:12	hu	13	mindenki	parositva	14	G3956	alacsony	S
+1Thessz 3:12	hu	14	iránt	parositva	13	G1519	alacsony	S
+1Thessz 3:12	hu	15	való	betoldas			alacsony	S
+1Thessz 3:12	hu	16	szeretetben	parositva	9	G0026	alacsony	S
+1Thessz 3:12	hu	17	a	parositva	15	G2509	alacsony	S
+1Thessz 3:12	hu	18	milyenek	parositva	15	G2509	alacsony	S
+1Thessz 3:12	hu	19	vagyunk	betoldas			alacsony	S
+1Thessz 3:12	hu	20	mi	parositva	17	G3165	alacsony	S
+1Thessz 3:12	hu	21	is	parositva	16	G2532	alacsony	S
+1Thessz 3:12	hu	22	ti	parositva	19	G4771	alacsony	S
+1Thessz 3:12	hu	23	irántatok	parositva	18,19	G1519+G4771	alacsony	S
+1Thessz 3:12	er	1	ὑμᾶς	parositva	1	G4771	alacsony	S
+1Thessz 3:12	er	2	δὲ	parositva	2	G1161	alacsony	S
+1Thessz 3:12	er	3	ὁ	forditatlan		G3588	alacsony	S
+1Thessz 3:12	er	4	κύριος	parositva	5	G2962	alacsony	S
+1Thessz 3:12	er	5	πλεονάσαι	parositva	3	G4121	alacsony	S
+1Thessz 3:12	er	6	καὶ	parositva	6	G2532	alacsony	S
+1Thessz 3:12	er	7	περισσεύσαι	parositva	7,8	G4052	alacsony	S
+1Thessz 3:12	er	8	τῇ	forditatlan		G3588	alacsony	S
+1Thessz 3:12	er	9	ἀγάπῃ	parositva	16	G0026	alacsony	S
+1Thessz 3:12	er	10	εἰς	parositva	11	G1519	alacsony	S
+1Thessz 3:12	er	11	ἀλλήλους	parositva	10	G0240	alacsony	S
+1Thessz 3:12	er	12	καὶ	parositva	12	G2532	alacsony	S
+1Thessz 3:12	er	13	εἰς	parositva	14	G1519	alacsony	S
+1Thessz 3:12	er	14	πάντας	parositva	13	G3956	alacsony	S
+1Thessz 3:12	er	15	καθάπερ	parositva	17,18	G2509	alacsony	S
+1Thessz 3:12	er	16	καὶ	parositva	21	G2532	alacsony	S
+1Thessz 3:12	er	17	ἡμεῖς	parositva	20	G3165	alacsony	S
+1Thessz 3:12	er	18	εἰς	parositva	23	G1519	alacsony	S
+1Thessz 3:12	er	19	ὑμᾶς	parositva	22,23	G4771	alacsony	S
+1Thessz 3:13	hu	1	Hogy	parositva	1,2	G1519+G3588	alacsony	S
+1Thessz 3:13	hu	2	erősekké	parositva	3	G4741	alacsony	S
+1Thessz 3:13	hu	3	tegye	parositva	3	G4741	alacsony	S
+1Thessz 3:13	hu	4	a	betoldas			alacsony	S
+1Thessz 3:13	hu	5	ti	parositva	4	G4771	alacsony	S
+1Thessz 3:13	hu	6	szíveteket	parositva	4,6	G4771+G2588	alacsony	S
+1Thessz 3:13	hu	7	feddhetetlenekké	parositva	7	G0273	alacsony	S
+1Thessz 3:13	hu	8	a	betoldas			alacsony	S
+1Thessz 3:13	hu	9	szentségben	parositva	8,9	G1722+G0042	alacsony	S
+1Thessz 3:13	hu	10	a	betoldas			alacsony	S
+1Thessz 3:13	hu	11	mi	parositva	15	G3165	alacsony	S
+1Thessz 3:13	hu	12	Istenünk	parositva	12,15	G2316+G3165	alacsony	S
+1Thessz 3:13	hu	13	és	parositva	13	G2532	alacsony	S
+1Thessz 3:13	hu	14	Atyánk	parositva	14,15	G3962+G3165	alacsony	S
+1Thessz 3:13	hu	15	előtt	parositva	10	G1715	alacsony	S
+1Thessz 3:13	hu	16	a	parositva	16,17	G1722+G3588	alacsony	S
+1Thessz 3:13	hu	17	mikor	parositva	16,17	G1722+G3588	alacsony	S
+1Thessz 3:13	hu	18	eljő	parositva	18	G3952	alacsony	S
+1Thessz 3:13	hu	19	a	betoldas			alacsony	S
+1Thessz 3:13	hu	20	mi	parositva	21	G3165	alacsony	S
+1Thessz 3:13	hu	21	Urunk	parositva	20,21	G2962+G3165	alacsony	S
+1Thessz 3:13	hu	22	Jézus	parositva	22	G2424	alacsony	S
+1Thessz 3:13	hu	23	Krisztus	parositva	23	G5547	alacsony	S
+1Thessz 3:13	hu	24	minden	parositva	25	G3956	alacsony	S
+1Thessz 3:13	hu	25	ő	parositva	28	G0846	alacsony	S
+1Thessz 3:13	hu	26	szenteivel	parositva	27,28	G0040+G0846	alacsony	S
+1Thessz 3:13	hu	27	egyetemben	parositva	24	G3326	alacsony	S
+1Thessz 3:13	er	1	εἰς	parositva	1	G1519	alacsony	S
+1Thessz 3:13	er	2	τὸ	parositva	1	G3588	alacsony	S
+1Thessz 3:13	er	3	στηρίξαι	parositva	2,3	G4741	alacsony	S
+1Thessz 3:13	er	4	ὑμῶν	parositva	5,6	G4771	alacsony	S
+1Thessz 3:13	er	5	τὰς	forditatlan		G3588	alacsony	S
+1Thessz 3:13	er	6	καρδίας	parositva	6	G2588	alacsony	S
+1Thessz 3:13	er	7	ἀμέμπτους	parositva	7	G0273	alacsony	S
+1Thessz 3:13	er	8	ἐν	parositva	9	G1722	alacsony	S
+1Thessz 3:13	er	9	ἁγιωσύνῃ	parositva	9	G0042	alacsony	S
+1Thessz 3:13	er	10	ἔμπροσθεν	parositva	15	G1715	alacsony	S
+1Thessz 3:13	er	11	τοῦ	forditatlan		G3588	alacsony	S
+1Thessz 3:13	er	12	θεοῦ	parositva	12	G2316	alacsony	S
+1Thessz 3:13	er	13	καὶ	parositva	13	G2532	alacsony	S
+1Thessz 3:13	er	14	πατρὸς	parositva	14	G3962	alacsony	S
+1Thessz 3:13	er	15	ἡμῶν	parositva	11,12,14	G3165	alacsony	S
+1Thessz 3:13	er	16	ἐν	parositva	16,17	G1722	alacsony	S
+1Thessz 3:13	er	17	τῇ	parositva	16,17	G3588	alacsony	S
+1Thessz 3:13	er	18	παρουσίᾳ	parositva	18	G3952	alacsony	S
+1Thessz 3:13	er	19	τοῦ	forditatlan		G3588	alacsony	S
+1Thessz 3:13	er	20	κυρίου	parositva	21	G2962	alacsony	S
+1Thessz 3:13	er	21	ἡμῶν	parositva	20,21	G3165	alacsony	S
+1Thessz 3:13	er	22	Ἰησοῦ	parositva	22	G2424	alacsony	S
+1Thessz 3:13	er	23	Χριστοῦ	parositva	23	G5547	alacsony	S
+1Thessz 3:13	er	24	μετὰ	parositva	27	G3326	alacsony	S
+1Thessz 3:13	er	25	πάντων	parositva	24	G3956	alacsony	S
+1Thessz 3:13	er	26	τῶν	forditatlan		G3588	alacsony	S
+1Thessz 3:13	er	27	ἁγίων	parositva	26	G0040	alacsony	S
+1Thessz 3:13	er	28	αὐτοῦ	parositva	25,26	G0846	alacsony	S
+1Thessz 3:13	er	29	ἀμήν.¶	forditatlan		G0281	alacsony	S
+1Thessz 4:1	hu	1	Továbbá	parositva	1	G3063	alacsony	S
+1Thessz 4:1	hu	2	pedig	parositva	2	G3767	alacsony	S
+1Thessz 4:1	hu	3	kérünk	parositva	4	G2065	alacsony	S
+1Thessz 4:1	hu	4	titeket	parositva	5	G4771	alacsony	S
+1Thessz 4:1	hu	5	atyámfiai	parositva	3	G0080	alacsony	S
+1Thessz 4:1	hu	6	és	parositva	6	G2532	alacsony	S
+1Thessz 4:1	hu	7	intünk	parositva	7	G3870	alacsony	S
+1Thessz 4:1	hu	8	az	betoldas			alacsony	S
+1Thessz 4:1	hu	9	Úr	parositva	9	G2962	alacsony	S
+1Thessz 4:1	hu	10	Jézusban	parositva	8,10	G1722+G2424	alacsony	S
+1Thessz 4:1	hu	11	hogy	parositva	27	G2443	alacsony	S
+1Thessz 4:1	hu	12	a	betoldas			alacsony	S
+1Thessz 4:1	hu	13	szerint	parositva	12	G2531	alacsony	S
+1Thessz 4:1	hu	14	a	parositva	12	G2531	alacsony	S
+1Thessz 4:1	hu	15	mint	parositva	12	G2531	alacsony	S
+1Thessz 4:1	hu	16	tőlünk	parositva	14,15	G3844+G3165	alacsony	S
+1Thessz 4:1	hu	17	tanultátok	parositva	13	G3880	alacsony	S
+1Thessz 4:1	hu	18	mimódon	parositva	17	G4459	alacsony	S
+1Thessz 4:1	hu	19	kell	parositva	18	G1163	alacsony	S
+1Thessz 4:1	hu	20	forgolódnotok	parositva	19,20	G4771+G4043	alacsony	S
+1Thessz 4:1	hu	21	és	parositva	21	G2532	alacsony	S
+1Thessz 4:1	hu	22	Istennek	parositva	23	G2316	alacsony	S
+1Thessz 4:1	hu	23	tetszenetek	parositva	19,22	G4771+G0700	alacsony	S
+1Thessz 4:1	hu	24	mindinkább	parositva	29	G3123	alacsony	S
+1Thessz 4:1	hu	25	gyarapodjatok	parositva	28	G4052	alacsony	S
+1Thessz 4:1	er	1	Λοιπὸν	parositva	1	G3063	alacsony	S
+1Thessz 4:1	er	2	οὖν,	parositva	2	G3767	alacsony	S
+1Thessz 4:1	er	3	ἀδελφοί,	parositva	5	G0080	alacsony	S
+1Thessz 4:1	er	4	ἐρωτῶμεν	parositva	3	G2065	alacsony	S
+1Thessz 4:1	er	5	ὑμᾶς	parositva	4	G4771	alacsony	S
+1Thessz 4:1	er	6	καὶ	parositva	6	G2532	alacsony	S
+1Thessz 4:1	er	7	παρακαλοῦμεν	parositva	7	G3870	alacsony	S
+1Thessz 4:1	er	8	ἐν	parositva	10	G1722	alacsony	S
+1Thessz 4:1	er	9	κυρίῳ	parositva	9	G2962	alacsony	S
+1Thessz 4:1	er	10	Ἰησοῦ	parositva	10	G2424	alacsony	S
+1Thessz 4:1	er	11	ἵνα	forditatlan		G2443	alacsony	S
+1Thessz 4:1	er	12	καθὼς	parositva	13,14,15	G2531	alacsony	S
+1Thessz 4:1	er	13	παρελάβετε	parositva	17	G3880	alacsony	S
+1Thessz 4:1	er	14	παρ᾽	parositva	16	G3844	alacsony	S
+1Thessz 4:1	er	15	ἡμῶν	parositva	16	G3165	alacsony	S
+1Thessz 4:1	er	16	τὸ	forditatlan		G3588	alacsony	S
+1Thessz 4:1	er	17	πῶς	parositva	18	G4459	alacsony	S
+1Thessz 4:1	er	18	δεῖ	parositva	19	G1163	alacsony	S
+1Thessz 4:1	er	19	ὑμᾶς	parositva	20,23	G4771	alacsony	S
+1Thessz 4:1	er	20	περιπατεῖν	parositva	20	G4043	alacsony	S
+1Thessz 4:1	er	21	καὶ	parositva	21	G2532	alacsony	S
+1Thessz 4:1	er	22	ἀρέσκειν	parositva	23	G0700	alacsony	S
+1Thessz 4:1	er	23	θεῷ	parositva	22	G2316	alacsony	S
+1Thessz 4:1	er	24	καθὼς	forditatlan		G2531	alacsony	S
+1Thessz 4:1	er	25	καὶ	forditatlan		G2532	alacsony	S
+1Thessz 4:1	er	26	περιπατεῖτε,	forditatlan		G4043	alacsony	S
+1Thessz 4:1	er	27	ἵνα	parositva	11	G2443	alacsony	S
+1Thessz 4:1	er	28	περισσεύητε	parositva	25	G4052	alacsony	S
+1Thessz 4:1	er	29	μᾶλλον·	parositva	24	G3123	alacsony	S
+1Thessz 4:2	hu	1	Mert	parositva	2	G1063	alacsony	S
+1Thessz 4:2	hu	2	tudjátok	parositva	1	G6063	alacsony	S
+1Thessz 4:2	hu	3	milyen	parositva	3	G5101	alacsony	S
+1Thessz 4:2	hu	4	parancsolatokat	parositva	4	G3852	alacsony	S
+1Thessz 4:2	hu	5	adtunk	parositva	5	G1325	alacsony	S
+1Thessz 4:2	hu	6	néktek	parositva	6	G4771	alacsony	S
+1Thessz 4:2	hu	7	az	betoldas			alacsony	S
+1Thessz 4:2	hu	8	Úr	parositva	9	G2962	alacsony	S
+1Thessz 4:2	hu	9	Jézus	parositva	10	G2424	alacsony	S
+1Thessz 4:2	hu	10	által	parositva	7	G1223	alacsony	S
+1Thessz 4:2	er	1	οἴδατε	parositva	2	G6063	alacsony	S
+1Thessz 4:2	er	2	γὰρ	parositva	1	G1063	alacsony	S
+1Thessz 4:2	er	3	τίνας	parositva	3	G5101	alacsony	S
+1Thessz 4:2	er	4	παραγγελίας	parositva	4	G3852	alacsony	S
+1Thessz 4:2	er	5	ἐδώκαμεν	parositva	5	G1325	alacsony	S
+1Thessz 4:2	er	6	ὑμῖν	parositva	6	G4771	alacsony	S
+1Thessz 4:2	er	7	διὰ	parositva	10	G1223	alacsony	S
+1Thessz 4:2	er	8	τοῦ	forditatlan		G3588	alacsony	S
+1Thessz 4:2	er	9	κυρίου	parositva	8	G2962	alacsony	S
+1Thessz 4:2	er	10	Ἰησοῦ.	parositva	9	G2424	alacsony	S
+1Thessz 4:3	hu	1	Mert	parositva	2	G1063	alacsony	S
+1Thessz 4:3	hu	2	ez	parositva	1	G3778	alacsony	S
+1Thessz 4:3	hu	3	az	betoldas			alacsony	S
+1Thessz 4:3	hu	4	Isten	parositva	6	G2316	alacsony	S
+1Thessz 4:3	hu	5	akaratja	parositva	3,4	G1510+G2307	alacsony	S
+1Thessz 4:3	hu	6	a	betoldas			alacsony	S
+1Thessz 4:3	hu	7	ti	parositva	9	G4771	alacsony	S
+1Thessz 4:3	hu	8	szentté	parositva	8	G0038	alacsony	S
+1Thessz 4:3	hu	9	lételetek	parositva	9	G4771	alacsony	S
+1Thessz 4:3	hu	10	hogy	betoldas			alacsony	S
+1Thessz 4:3	hu	11	magatokat	parositva	11	G4771	alacsony	S
+1Thessz 4:3	hu	12	a	betoldas			alacsony	S
+1Thessz 4:3	hu	13	paráznaságtól	parositva	12,14	G0575+G4202	alacsony	S
+1Thessz 4:3	hu	14	megtartóztassátok	parositva	10	G0568	alacsony	S
+1Thessz 4:3	er	1	τοῦτο	parositva	2	G3778	alacsony	S
+1Thessz 4:3	er	2	γάρ	parositva	1	G1063	alacsony	S
+1Thessz 4:3	er	3	ἐστιν	parositva	5	G1510	alacsony	S
+1Thessz 4:3	er	4	θέλημα	parositva	5	G2307	alacsony	S
+1Thessz 4:3	er	5	τοῦ	forditatlan		G3588	alacsony	S
+1Thessz 4:3	er	6	θεοῦ,	parositva	4	G2316	alacsony	S
+1Thessz 4:3	er	7	ὁ	forditatlan		G3588	alacsony	S
+1Thessz 4:3	er	8	ἁγιασμὸς	parositva	8	G0038	alacsony	S
+1Thessz 4:3	er	9	ὑμῶν,	parositva	7,9	G4771	alacsony	S
+1Thessz 4:3	er	10	ἀπέχεσθαι	parositva	14	G0568	alacsony	S
+1Thessz 4:3	er	11	ὑμᾶς	parositva	11	G4771	alacsony	S
+1Thessz 4:3	er	12	ἀπὸ	parositva	13	G0575	alacsony	S
+1Thessz 4:3	er	13	τῆς	forditatlan		G3588	alacsony	S
+1Thessz 4:3	er	14	πορνείας·	parositva	13	G4202	alacsony	S
+1Thessz 4:4	hu	1	Hogy	betoldas			alacsony	S
+1Thessz 4:4	hu	2	mindenitek	parositva	2,3	G1538+G4771	alacsony	S
+1Thessz 4:4	hu	3	szentségben	parositva	8,9	G1722+G0038	alacsony	S
+1Thessz 4:4	hu	4	és	parositva	10	G2532	alacsony	S
+1Thessz 4:4	hu	5	tisztességben	parositva	11	G5092	alacsony	S
+1Thessz 4:4	hu	6	tudja	parositva	1	G6063	alacsony	S
+1Thessz 4:4	hu	7	bírni	parositva	7	G2932	alacsony	S
+1Thessz 4:4	hu	8	a	betoldas			alacsony	S
+1Thessz 4:4	hu	9	maga	parositva	5	G1438	alacsony	S
+1Thessz 4:4	hu	10	edényét	parositva	6	G4632	alacsony	S
+1Thessz 4:4	er	1	εἰδέναι	parositva	6	G6063	alacsony	S
+1Thessz 4:4	er	2	ἕκαστον	parositva	2	G1538	alacsony	S
+1Thessz 4:4	er	3	ὑμῶν	parositva	2	G4771	alacsony	S
+1Thessz 4:4	er	4	τὸ	forditatlan		G3588	alacsony	S
+1Thessz 4:4	er	5	ἑαυτοῦ	parositva	9	G1438	alacsony	S
+1Thessz 4:4	er	6	σκεῦος	parositva	10	G4632	alacsony	S
+1Thessz 4:4	er	7	κτᾶσθαι	parositva	7	G2932	alacsony	S
+1Thessz 4:4	er	8	ἐν	parositva	3	G1722	alacsony	S
+1Thessz 4:4	er	9	ἁγιασμῷ	parositva	3	G0038	alacsony	S
+1Thessz 4:4	er	10	καὶ	parositva	4	G2532	alacsony	S
+1Thessz 4:4	er	11	τιμῇ,	parositva	5	G5092	alacsony	S
+1Thessz 4:5	hu	1	Nem	parositva	1	G3361	alacsony	S
+1Thessz 4:5	hu	2	kívánság	parositva	4	G1939	alacsony	S
+1Thessz 4:5	hu	3	gerjedelmével	parositva	2,3	G1722+G3806	alacsony	S
+1Thessz 4:5	hu	4	mint	parositva	5	G2509	alacsony	S
+1Thessz 4:5	hu	5	a	betoldas			alacsony	S
+1Thessz 4:5	hu	6	pogányok	parositva	8	G1484	alacsony	S
+1Thessz 4:5	hu	7	a	betoldas			alacsony	S
+1Thessz 4:5	hu	8	kik	betoldas			alacsony	S
+1Thessz 4:5	hu	9	nem	parositva	10	G3361	alacsony	S
+1Thessz 4:5	hu	10	ismerik	parositva	11	G6063	alacsony	S
+1Thessz 4:5	hu	11	az	betoldas			alacsony	S
+1Thessz 4:5	hu	12	Istent	parositva	13	G2316	alacsony	S
+1Thessz 4:5	er	1	μὴ	parositva	1	G3361	alacsony	S
+1Thessz 4:5	er	2	ἐν	parositva	3	G1722	alacsony	S
+1Thessz 4:5	er	3	πάθει	parositva	3	G3806	alacsony	S
+1Thessz 4:5	er	4	ἐπιθυμίας	parositva	2	G1939	alacsony	S
+1Thessz 4:5	er	5	καθάπερ	parositva	4	G2509	alacsony	S
+1Thessz 4:5	er	6	καὶ	forditatlan		G2532	alacsony	S
+1Thessz 4:5	er	7	τὰ	forditatlan		G3588	alacsony	S
+1Thessz 4:5	er	8	ἔθνη	parositva	6	G1484	alacsony	S
+1Thessz 4:5	er	9	τὰ	forditatlan		G3588	alacsony	S
+1Thessz 4:5	er	10	μὴ	parositva	9	G3361	alacsony	S
+1Thessz 4:5	er	11	εἰδότα	parositva	10	G6063	alacsony	S
+1Thessz 4:5	er	12	τὸν	forditatlan		G3588	alacsony	S
+1Thessz 4:5	er	13	θεόν·	parositva	12	G2316	alacsony	S
+1Thessz 4:6	hu	1	Hogy	parositva	1	G3588	alacsony	S
+1Thessz 4:6	hu	2	senki	betoldas			alacsony	S
+1Thessz 4:6	hu	3	túl	parositva	3	G5233	alacsony	S
+1Thessz 4:6	hu	4	ne	parositva	2	G3361	alacsony	S
+1Thessz 4:6	hu	5	lépjen	parositva	3	G5233	alacsony	S
+1Thessz 4:6	hu	6	és	parositva	4	G2532	alacsony	S
+1Thessz 4:6	hu	7	meg	parositva	5	G4122	alacsony	S
+1Thessz 4:6	hu	8	ne	parositva	2	G3361	alacsony	S
+1Thessz 4:6	hu	9	károsítsa	parositva	5	G4122	alacsony	S
+1Thessz 4:6	hu	10	valamely	betoldas			alacsony	S
+1Thessz 4:6	hu	11	dologban	parositva	6,8	G1722+G4229	alacsony	S
+1Thessz 4:6	hu	12	az	betoldas			alacsony	S
+1Thessz 4:6	hu	13	ő	parositva	11	G0846	alacsony	S
+1Thessz 4:6	hu	14	atyjafiát	parositva	10,11	G0080+G0846	alacsony	S
+1Thessz 4:6	hu	15	mert	parositva	12	G1360	alacsony	S
+1Thessz 4:6	hu	16	bosszút	parositva	13	G1558	alacsony	S
+1Thessz 4:6	hu	17	áll	parositva	13	G1558	alacsony	S
+1Thessz 4:6	hu	18	az	betoldas			alacsony	S
+1Thessz 4:6	hu	19	Úr	parositva	15	G2962	alacsony	S
+1Thessz 4:6	hu	20	mindezekért	parositva	16,17,18	G4012+G3956+G3778	alacsony	S
+1Thessz 4:6	hu	21	a	parositva	19	G2531	alacsony	S
+1Thessz 4:6	hu	22	mint	parositva	19	G2531	alacsony	S
+1Thessz 4:6	hu	23	elébb	parositva	21	G4277	alacsony	S
+1Thessz 4:6	hu	24	is	parositva	20	G2532	alacsony	S
+1Thessz 4:6	hu	25	mondottuk	parositva	21	G4277	alacsony	S
+1Thessz 4:6	hu	26	néktek	parositva	22	G4771	alacsony	S
+1Thessz 4:6	hu	27	és	parositva	23	G2532	alacsony	S
+1Thessz 4:6	hu	28	bizonyságot	parositva	24	G1263	alacsony	S
+1Thessz 4:6	hu	29	tettünk	parositva	24	G1263	alacsony	S
+1Thessz 4:6	er	1	τὸ	parositva	1	G3588	alacsony	S
+1Thessz 4:6	er	2	μὴ	parositva	4,8	G3361	alacsony	S
+1Thessz 4:6	er	3	ὑπερβαίνειν	parositva	3,5	G5233	alacsony	S
+1Thessz 4:6	er	4	καὶ	parositva	6	G2532	alacsony	S
+1Thessz 4:6	er	5	πλεονεκτεῖν	parositva	7,9	G4122	alacsony	S
+1Thessz 4:6	er	6	ἐν	parositva	11	G1722	alacsony	S
+1Thessz 4:6	er	7	τῷ	forditatlan		G3588	alacsony	S
+1Thessz 4:6	er	8	πράγματι	parositva	11	G4229	alacsony	S
+1Thessz 4:6	er	9	τὸν	forditatlan		G3588	alacsony	S
+1Thessz 4:6	er	10	ἀδελφὸν	parositva	14	G0080	alacsony	S
+1Thessz 4:6	er	11	αὐτοῦ·	parositva	13,14	G0846	alacsony	S
+1Thessz 4:6	er	12	διότι	parositva	15	G1360	alacsony	S
+1Thessz 4:6	er	13	ἔκδικος	parositva	16,17	G1558	alacsony	S
+1Thessz 4:6	er	14	ὁ	forditatlan		G3588	alacsony	S
+1Thessz 4:6	er	15	κύριος	parositva	19	G2962	alacsony	S
+1Thessz 4:6	er	16	περὶ	parositva	20	G4012	alacsony	S
+1Thessz 4:6	er	17	πάντων	parositva	20	G3956	alacsony	S
+1Thessz 4:6	er	18	τούτων	parositva	20	G3778	alacsony	S
+1Thessz 4:6	er	19	καθὼς	parositva	21,22	G2531	alacsony	S
+1Thessz 4:6	er	20	καὶ	parositva	24	G2532	alacsony	S
+1Thessz 4:6	er	21	προείπαμεν	parositva	23,25	G4277	alacsony	S
+1Thessz 4:6	er	22	ὑμῖν	parositva	26	G4771	alacsony	S
+1Thessz 4:6	er	23	καὶ	parositva	27	G2532	alacsony	S
+1Thessz 4:6	er	24	διεμαρτυράμεθα.	parositva	28,29	G1263	alacsony	S
+1Thessz 4:7	hu	1	Mert	parositva	2	G1063	alacsony	S
+1Thessz 4:7	hu	2	nem	parositva	1	G3756	alacsony	S
+1Thessz 4:7	hu	3	tisztátalanságra	parositva	7,8	G1909+G0167	alacsony	S
+1Thessz 4:7	hu	4	hanem	parositva	9	G0235	alacsony	S
+1Thessz 4:7	hu	5	szentségre	parositva	10,11	G1722+G0038	alacsony	S
+1Thessz 4:7	hu	6	hívott	parositva	3	G2564	alacsony	S
+1Thessz 4:7	hu	7	el	parositva	3	G2564	alacsony	S
+1Thessz 4:7	hu	8	minket	parositva	4	G3165	alacsony	S
+1Thessz 4:7	hu	9	az	betoldas			alacsony	S
+1Thessz 4:7	hu	10	Isten	parositva	6	G2316	alacsony	S
+1Thessz 4:7	er	1	οὐ	parositva	2	G3756	alacsony	S
+1Thessz 4:7	er	2	γὰρ	parositva	1	G1063	alacsony	S
+1Thessz 4:7	er	3	ἐκάλεσεν	parositva	6,7	G2564	alacsony	S
+1Thessz 4:7	er	4	ἡμᾶς	parositva	8	G3165	alacsony	S
+1Thessz 4:7	er	5	ὁ	forditatlan		G3588	alacsony	S
+1Thessz 4:7	er	6	θεὸς	parositva	10	G2316	alacsony	S
+1Thessz 4:7	er	7	ἐπὶ	parositva	3	G1909	alacsony	S
+1Thessz 4:7	er	8	ἀκαθαρσίᾳ	parositva	3	G0167	alacsony	S
+1Thessz 4:7	er	9	ἀλλ᾽	parositva	4	G0235	alacsony	S
+1Thessz 4:7	er	10	ἐν	parositva	5	G1722	alacsony	S
+1Thessz 4:7	er	11	ἁγιασμῷ.	parositva	5	G0038	alacsony	S
+1Thessz 4:8	hu	1	A	betoldas			alacsony	S
+1Thessz 4:8	hu	2	ki	betoldas			alacsony	S
+1Thessz 4:8	hu	3	azért	parositva	1	G5105	alacsony	S
+1Thessz 4:8	hu	4	megveti	parositva	3	G0114	alacsony	S
+1Thessz 4:8	hu	5	ezeket	betoldas			alacsony	S
+1Thessz 4:8	hu	6	nem	parositva	4	G3756	alacsony	S
+1Thessz 4:8	hu	7	embert	parositva	5	G0444	alacsony	S
+1Thessz 4:8	hu	8	vet	parositva	6	G0114	alacsony	S
+1Thessz 4:8	hu	9	meg	parositva	6	G0114	alacsony	S
+1Thessz 4:8	hu	10	hanem	parositva	7	G0235	alacsony	S
+1Thessz 4:8	hu	11	az	betoldas			alacsony	S
+1Thessz 4:8	hu	12	Istent	parositva	9	G2316	alacsony	S
+1Thessz 4:8	hu	13	a	parositva	10	G3588	alacsony	S
+1Thessz 4:8	hu	14	ki	parositva	10	G3588	alacsony	S
+1Thessz 4:8	hu	15	Szent	parositva	17	G0040	alacsony	S
+1Thessz 4:8	hu	16	Lelkét	parositva	14,15	G4151+G0846	alacsony	S
+1Thessz 4:8	hu	17	is	parositva	11	G2532	alacsony	S
+1Thessz 4:8	hu	18	közlé	betoldas			alacsony	S
+1Thessz 4:8	hu	19	velünk	parositva	18	G1519	alacsony	S
+1Thessz 4:8	er	1	τοιγαροῦν	parositva	3	G5105	alacsony	S
+1Thessz 4:8	er	2	ὁ	forditatlan		G3588	alacsony	S
+1Thessz 4:8	er	3	ἀθετῶν	parositva	4	G0114	alacsony	S
+1Thessz 4:8	er	4	οὐκ	parositva	6	G3756	alacsony	S
+1Thessz 4:8	er	5	ἄνθρωπον	parositva	7	G0444	alacsony	S
+1Thessz 4:8	er	6	ἀθετεῖ	parositva	8,9	G0114	alacsony	S
+1Thessz 4:8	er	7	ἀλλὰ	parositva	10	G0235	alacsony	S
+1Thessz 4:8	er	8	τὸν	forditatlan		G3588	alacsony	S
+1Thessz 4:8	er	9	θεὸν	parositva	12	G2316	alacsony	S
+1Thessz 4:8	er	10	τὸν	parositva	13,14	G3588	alacsony	S
+1Thessz 4:8	er	11	καὶ	parositva	17	G2532	alacsony	S
+1Thessz 4:8	er	12	διδόντα	forditatlan		G1325	alacsony	S
+1Thessz 4:8	er	13	τὸ	forditatlan		G3588	alacsony	S
+1Thessz 4:8	er	14	πνεῦμα	parositva	16	G4151	alacsony	S
+1Thessz 4:8	er	15	αὐτοῦ	parositva	16	G0846	alacsony	S
+1Thessz 4:8	er	16	τὸ	forditatlan		G3588	alacsony	S
+1Thessz 4:8	er	17	ἅγιον	parositva	15	G0040	alacsony	S
+1Thessz 4:8	er	18	εἰς	parositva	19	G1519	alacsony	S
+1Thessz 4:8	er	19	ὑμᾶς.¶	forditatlan		G4771	alacsony	S
+1Thessz 4:9	hu	1	Az	betoldas			alacsony	S
+1Thessz 4:9	hu	2	atyafiúi	parositva	4	G5360	alacsony	S
+1Thessz 4:9	hu	3	szeretetről	parositva	1,4	G4012+G5360	alacsony	S
+1Thessz 4:9	hu	4	pedig	parositva	2	G1161	alacsony	S
+1Thessz 4:9	hu	5	nem	parositva	5	G3756	alacsony	S
+1Thessz 4:9	hu	6	is	betoldas			alacsony	S
+1Thessz 4:9	hu	7	szükség	parositva	6,7	G5532+G2192	alacsony	S
+1Thessz 4:9	hu	8	írnom	parositva	8	G1125	alacsony	S
+1Thessz 4:9	hu	9	néktek	parositva	9	G4771	alacsony	S
+1Thessz 4:9	hu	10	mert	parositva	11	G1063	alacsony	S
+1Thessz 4:9	hu	11	titeket	parositva	12	G4771	alacsony	S
+1Thessz 4:9	hu	12	Isten	parositva	13	G2312	alacsony	S
+1Thessz 4:9	hu	13	maga	parositva	10	G0846	alacsony	S
+1Thessz 4:9	hu	14	tanított	parositva	13,14	G2312+G1510	alacsony	S
+1Thessz 4:9	hu	15	meg	parositva	13	G2312	alacsony	S
+1Thessz 4:9	hu	16	arra	betoldas			alacsony	S
+1Thessz 4:9	hu	17	hogy	parositva	15	G1519	alacsony	S
+1Thessz 4:9	hu	18	egymást	parositva	18	G0240	alacsony	S
+1Thessz 4:9	hu	19	szeressétek	parositva	17	G0025	alacsony	S
+1Thessz 4:9	er	1	Περὶ	parositva	3	G4012	alacsony	S
+1Thessz 4:9	er	2	δὲ	parositva	4	G1161	alacsony	S
+1Thessz 4:9	er	3	τῆς	forditatlan		G3588	alacsony	S
+1Thessz 4:9	er	4	φιλαδελφίας	parositva	2,3	G5360	alacsony	S
+1Thessz 4:9	er	5	οὐ	parositva	5	G3756	alacsony	S
+1Thessz 4:9	er	6	χρείαν	parositva	7	G5532	alacsony	S
+1Thessz 4:9	er	7	ἔχετε	parositva	7	G2192	alacsony	S
+1Thessz 4:9	er	8	γράφειν	parositva	8	G1125	alacsony	S
+1Thessz 4:9	er	9	ὑμῖν·	parositva	9	G4771	alacsony	S
+1Thessz 4:9	er	10	αὐτοὶ	parositva	13	G0846	alacsony	S
+1Thessz 4:9	er	11	γὰρ	parositva	10	G1063	alacsony	S
+1Thessz 4:9	er	12	ὑμεῖς	parositva	11	G4771	alacsony	S
+1Thessz 4:9	er	13	θεοδίδακτοί	parositva	12,14,15	G2312	alacsony	S
+1Thessz 4:9	er	14	ἐστε	parositva	14	G1510	alacsony	S
+1Thessz 4:9	er	15	εἰς	parositva	17	G1519	alacsony	S
+1Thessz 4:9	er	16	τὸ	forditatlan		G3588	alacsony	S
+1Thessz 4:9	er	17	ἀγαπᾶν	parositva	19	G0025	alacsony	S
+1Thessz 4:9	er	18	ἀλλήλους·	parositva	18	G0240	alacsony	S
+1Thessz 4:10	hu	1	Sőt	parositva	2	G1063	alacsony	S
+1Thessz 4:10	hu	2	gyakoroljátok	parositva	3	G4160	alacsony	S
+1Thessz 4:10	hu	3	is	parositva	1	G2532	alacsony	S
+1Thessz 4:10	hu	4	azt	parositva	4	G0846	alacsony	S
+1Thessz 4:10	hu	5	mindamaz	parositva	6	G3956	alacsony	S
+1Thessz 4:10	hu	6	atyafiak	parositva	8	G0080	alacsony	S
+1Thessz 4:10	hu	7	iránt	parositva	5	G1519	alacsony	S
+1Thessz 4:10	hu	8	a	parositva	9	G3588	alacsony	S
+1Thessz 4:10	hu	9	kik	parositva	9	G3588	alacsony	S
+1Thessz 4:10	hu	10	egész	parositva	11	G3650	alacsony	S
+1Thessz 4:10	hu	11	Maczedóniában	parositva	10,13	G1722+G3109	alacsony	S
+1Thessz 4:10	hu	12	vannak	betoldas			alacsony	S
+1Thessz 4:10	hu	13	Kérünk	parositva	14	G3870	alacsony	S
+1Thessz 4:10	hu	14	azonban	parositva	15	G1161	alacsony	S
+1Thessz 4:10	hu	15	titeket	parositva	16	G4771	alacsony	S
+1Thessz 4:10	hu	16	atyámfiai	parositva	17	G0080	alacsony	S
+1Thessz 4:10	hu	17	hogy	betoldas			alacsony	S
+1Thessz 4:10	hu	18	mindinkább	parositva	19	G3123	alacsony	S
+1Thessz 4:10	hu	19	gyarapodjatok	parositva	18	G4052	alacsony	S
+1Thessz 4:10	er	1	καὶ	parositva	3	G2532	alacsony	S
+1Thessz 4:10	er	2	γὰρ	parositva	1	G1063	alacsony	S
+1Thessz 4:10	er	3	ποιεῖτε	parositva	2	G4160	alacsony	S
+1Thessz 4:10	er	4	αὐτὸ	parositva	4	G0846	alacsony	S
+1Thessz 4:10	er	5	εἰς	parositva	7	G1519	alacsony	S
+1Thessz 4:10	er	6	πάντας	parositva	5	G3956	alacsony	S
+1Thessz 4:10	er	7	τοὺς	forditatlan		G3588	alacsony	S
+1Thessz 4:10	er	8	ἀδελφοὺς	parositva	6	G0080	alacsony	S
+1Thessz 4:10	er	9	τοὺς	parositva	8,9	G3588	alacsony	S
+1Thessz 4:10	er	10	ἐν	parositva	11	G1722	alacsony	S
+1Thessz 4:10	er	11	ὅλῃ	parositva	10	G3650	alacsony	S
+1Thessz 4:10	er	12	τῇ	forditatlan		G3588	alacsony	S
+1Thessz 4:10	er	13	Μακεδονίᾳ.¶	parositva	11	G3109	alacsony	S
+1Thessz 4:10	er	14	Παρακαλοῦμεν	parositva	13	G3870	alacsony	S
+1Thessz 4:10	er	15	δὲ	parositva	14	G1161	alacsony	S
+1Thessz 4:10	er	16	ὑμᾶς,	parositva	15	G4771	alacsony	S
+1Thessz 4:10	er	17	ἀδελφοί,	parositva	16	G0080	alacsony	S
+1Thessz 4:10	er	18	περισσεύειν	parositva	19	G4052	alacsony	S
+1Thessz 4:10	er	19	μᾶλλον	parositva	18	G3123	alacsony	S
+1Thessz 4:11	hu	1	És	parositva	1	G2532	alacsony	S
+1Thessz 4:11	hu	2	becsületbeli	parositva	2	G5389	alacsony	S
+1Thessz 4:11	hu	3	dolognak	parositva	2	G5389	alacsony	S
+1Thessz 4:11	hu	4	tartsátok	parositva	2	G5389	alacsony	S
+1Thessz 4:11	hu	5	hogy	betoldas			alacsony	S
+1Thessz 4:11	hu	6	csendes	parositva	3	G2270	alacsony	S
+1Thessz 4:11	hu	7	életet	parositva	3	G2270	alacsony	S
+1Thessz 4:11	hu	8	folytassatok	parositva	3	G2270	alacsony	S
+1Thessz 4:11	hu	9	saját	parositva	7	G2398	alacsony	S
+1Thessz 4:11	hu	10	dolgaitoknak	parositva	6	G3588	alacsony	S
+1Thessz 4:11	hu	11	utána	parositva	5	G4238	alacsony	S
+1Thessz 4:11	hu	12	lássatok	parositva	5	G4238	alacsony	S
+1Thessz 4:11	hu	13	és	parositva	8	G2532	alacsony	S
+1Thessz 4:11	hu	14	tulajdon	parositva	11	G2398	alacsony	S
+1Thessz 4:11	hu	15	kezeitekkel	parositva	10,12,13	G3588+G5495+G4771	alacsony	S
+1Thessz 4:11	hu	16	munkálkodjatok	parositva	9	G2038	alacsony	S
+1Thessz 4:11	hu	17	a	parositva	14	G2531	alacsony	S
+1Thessz 4:11	hu	18	miként	parositva	14	G2531	alacsony	S
+1Thessz 4:11	hu	19	rendeltük	parositva	16	G3853	alacsony	S
+1Thessz 4:11	hu	20	néktek	parositva	15	G4771	alacsony	S
+1Thessz 4:11	er	1	καὶ	parositva	1	G2532	alacsony	S
+1Thessz 4:11	er	2	φιλοτιμεῖσθαι	parositva	2,3,4	G5389	alacsony	S
+1Thessz 4:11	er	3	ἡσυχάζειν	parositva	6,7,8	G2270	alacsony	S
+1Thessz 4:11	er	4	καὶ	forditatlan		G2532	alacsony	S
+1Thessz 4:11	er	5	πράσσειν	parositva	11,12	G4238	alacsony	S
+1Thessz 4:11	er	6	τὰ	parositva	10	G3588	alacsony	S
+1Thessz 4:11	er	7	ἴδια	parositva	9	G2398	alacsony	S
+1Thessz 4:11	er	8	καὶ	parositva	13	G2532	alacsony	S
+1Thessz 4:11	er	9	ἐργάζεσθαι	parositva	16	G2038	alacsony	S
+1Thessz 4:11	er	10	ταῖς	parositva	15	G3588	alacsony	S
+1Thessz 4:11	er	11	ἰδίαις	parositva	14	G2398	alacsony	S
+1Thessz 4:11	er	12	χερσὶν	parositva	15	G5495	alacsony	S
+1Thessz 4:11	er	13	ὑμῶν	parositva	15	G4771	alacsony	S
+1Thessz 4:11	er	14	καθὼς	parositva	17,18	G2531	alacsony	S
+1Thessz 4:11	er	15	ὑμῖν	parositva	20	G4771	alacsony	S
+1Thessz 4:11	er	16	παρηγγείλαμεν·	parositva	19	G3853	alacsony	S
+1Thessz 4:12	hu	1	Hogy	parositva	1	G2443	alacsony	S
+1Thessz 4:12	hu	2	a	betoldas			alacsony	S
+1Thessz 4:12	hu	3	kívülvalók	parositva	5,6	G3588+G1854	alacsony	S
+1Thessz 4:12	hu	4	iránt	parositva	4	G4314	alacsony	S
+1Thessz 4:12	hu	5	tisztességesen	parositva	3	G2156	alacsony	S
+1Thessz 4:12	hu	6	viselkedjetek	parositva	2	G4043	alacsony	S
+1Thessz 4:12	hu	7	és	parositva	7	G2532	alacsony	S
+1Thessz 4:12	hu	8	semmi	parositva	8	G3367	alacsony	S
+1Thessz 4:12	hu	9	szükséget	parositva	9	G5532	alacsony	S
+1Thessz 4:12	hu	10	ne	parositva	8	G3367	alacsony	S
+1Thessz 4:12	hu	11	érezzetek	parositva	10	G2192	alacsony	S
+1Thessz 4:12	er	1	ἵνα	parositva	1	G2443	alacsony	S
+1Thessz 4:12	er	2	περιπατῆτε	parositva	6	G4043	alacsony	S
+1Thessz 4:12	er	3	εὐσχημόνως	parositva	5	G2156	alacsony	S
+1Thessz 4:12	er	4	πρὸς	parositva	4	G4314	alacsony	S
+1Thessz 4:12	er	5	τοὺς	parositva	3	G3588	alacsony	S
+1Thessz 4:12	er	6	ἔξω	parositva	3	G1854	alacsony	S
+1Thessz 4:12	er	7	καὶ	parositva	7	G2532	alacsony	S
+1Thessz 4:12	er	8	μηδενὸς	parositva	8,10	G3367	alacsony	S
+1Thessz 4:12	er	9	χρείαν	parositva	9	G5532	alacsony	S
+1Thessz 4:12	er	10	ἔχητε.¶	parositva	11	G2192	alacsony	S
+1Thessz 4:13	hu	1	Nem	parositva	1	G3756	alacsony	S
+1Thessz 4:13	hu	2	akarom	betoldas			alacsony	S
+1Thessz 4:13	hu	3	továbbá	parositva	3	G1161	alacsony	S
+1Thessz 4:13	hu	4	atyámfiai	parositva	6	G0080	alacsony	S
+1Thessz 4:13	hu	5	hogy	betoldas			alacsony	S
+1Thessz 4:13	hu	6	tudatlanságban	parositva	5	G0050	alacsony	S
+1Thessz 4:13	hu	7	legyetek	parositva	5	G0050	alacsony	S
+1Thessz 4:13	hu	8	azok	parositva	8	G3588	alacsony	S
+1Thessz 4:13	hu	9	felől	parositva	7	G4012	alacsony	S
+1Thessz 4:13	hu	10	a	betoldas			alacsony	S
+1Thessz 4:13	hu	11	kik	betoldas			alacsony	S
+1Thessz 4:13	hu	12	elaludtak	betoldas			alacsony	S
+1Thessz 4:13	hu	13	hogy	parositva	10	G2443	alacsony	S
+1Thessz 4:13	hu	14	ne	parositva	11	G3361	alacsony	S
+1Thessz 4:13	hu	15	bánkódjatok	parositva	12	G3076	alacsony	S
+1Thessz 4:13	hu	16	mint	parositva	13	G2531	alacsony	S
+1Thessz 4:13	hu	17	a	betoldas			alacsony	S
+1Thessz 4:13	hu	18	többiek	parositva	16	G3062	alacsony	S
+1Thessz 4:13	hu	19	a	betoldas			alacsony	S
+1Thessz 4:13	hu	20	kiknek	betoldas			alacsony	S
+1Thessz 4:13	hu	21	nincsen	parositva	18,19	G3361+G2192	alacsony	S
+1Thessz 4:13	hu	22	reménységök	parositva	20	G1680	alacsony	S
+1Thessz 4:13	er	1	Οὐ	parositva	1	G3756	alacsony	S
+1Thessz 4:13	er	2	θέλομεν	forditatlan		G2309	alacsony	S
+1Thessz 4:13	er	3	δὲ	parositva	3	G1161	alacsony	S
+1Thessz 4:13	er	4	ὑμᾶς	forditatlan		G4771	alacsony	S
+1Thessz 4:13	er	5	ἀγνοεῖν,	parositva	6,7	G0050	alacsony	S
+1Thessz 4:13	er	6	ἀδελφοί,	parositva	4	G0080	alacsony	S
+1Thessz 4:13	er	7	περὶ	parositva	9	G4012	alacsony	S
+1Thessz 4:13	er	8	τῶν	parositva	8	G3588	alacsony	S
+1Thessz 4:13	er	9	κοιμωμένων,	forditatlan		G2837	alacsony	S
+1Thessz 4:13	er	10	ἵνα	parositva	13	G2443	alacsony	S
+1Thessz 4:13	er	11	μὴ	parositva	14	G3361	alacsony	S
+1Thessz 4:13	er	12	λυπῆσθε	parositva	15	G3076	alacsony	S
+1Thessz 4:13	er	13	καθὼς	parositva	16	G2531	alacsony	S
+1Thessz 4:13	er	14	καὶ	forditatlan		G2532	alacsony	S
+1Thessz 4:13	er	15	οἱ	forditatlan		G3588	alacsony	S
+1Thessz 4:13	er	16	λοιποὶ	parositva	18	G3062	alacsony	S
+1Thessz 4:13	er	17	οἱ	forditatlan		G3588	alacsony	S
+1Thessz 4:13	er	18	μὴ	parositva	21	G3361	alacsony	S
+1Thessz 4:13	er	19	ἔχοντες	parositva	21	G2192	alacsony	S
+1Thessz 4:13	er	20	ἐλπίδα.	parositva	22	G1680	alacsony	S
+1Thessz 4:14	hu	1	Mert	parositva	2	G1063	alacsony	S
+1Thessz 4:14	hu	2	ha	parositva	1	G1487	alacsony	S
+1Thessz 4:14	hu	3	hisszük	parositva	3	G4100	alacsony	S
+1Thessz 4:14	hu	4	hogy	parositva	4	G3754	alacsony	S
+1Thessz 4:14	hu	5	Jézus	parositva	5	G2424	alacsony	S
+1Thessz 4:14	hu	6	meghalt	parositva	6	G0599	alacsony	S
+1Thessz 4:14	hu	7	és	parositva	7	G2532	alacsony	S
+1Thessz 4:14	hu	8	feltámadott	parositva	8	G0450	alacsony	S
+1Thessz 4:14	hu	9	azonképen	parositva	9	G3779	alacsony	S
+1Thessz 4:14	hu	10	az	betoldas			alacsony	S
+1Thessz 4:14	hu	11	Isten	parositva	12	G2316	alacsony	S
+1Thessz 4:14	hu	12	is	parositva	10	G2532	alacsony	S
+1Thessz 4:14	hu	13	előhozza	parositva	18	G0071	alacsony	S
+1Thessz 4:14	hu	14	azokat	parositva	13	G3588	alacsony	S
+1Thessz 4:14	hu	15	a	betoldas			alacsony	S
+1Thessz 4:14	hu	16	kik	betoldas			alacsony	S
+1Thessz 4:14	hu	17	elaludtak	parositva	14	G2837	alacsony	S
+1Thessz 4:14	hu	18	a	betoldas			alacsony	S
+1Thessz 4:14	hu	19	Jézus	parositva	17	G2424	alacsony	S
+1Thessz 4:14	hu	20	által	parositva	15	G1223	alacsony	S
+1Thessz 4:14	hu	21	ő	parositva	20	G0846	alacsony	S
+1Thessz 4:14	hu	22	vele	parositva	19,20	G4862+G0846	alacsony	S
+1Thessz 4:14	hu	23	együtt	parositva	19	G4862	alacsony	S
+1Thessz 4:14	er	1	εἰ	parositva	2	G1487	alacsony	S
+1Thessz 4:14	er	2	γὰρ	parositva	1	G1063	alacsony	S
+1Thessz 4:14	er	3	πιστεύομεν	parositva	3	G4100	alacsony	S
+1Thessz 4:14	er	4	ὅτι	parositva	4	G3754	alacsony	S
+1Thessz 4:14	er	5	Ἰησοῦς	parositva	5	G2424	alacsony	S
+1Thessz 4:14	er	6	ἀπέθανεν	parositva	6	G0599	alacsony	S
+1Thessz 4:14	er	7	καὶ	parositva	7	G2532	alacsony	S
+1Thessz 4:14	er	8	ἀνέστη,	parositva	8	G0450	alacsony	S
+1Thessz 4:14	er	9	οὕτως	parositva	9	G3779	alacsony	S
+1Thessz 4:14	er	10	καὶ	parositva	12	G2532	alacsony	S
+1Thessz 4:14	er	11	ὁ	forditatlan		G3588	alacsony	S
+1Thessz 4:14	er	12	θεὸς	parositva	11	G2316	alacsony	S
+1Thessz 4:14	er	13	τοὺς	parositva	14	G3588	alacsony	S
+1Thessz 4:14	er	14	κοιμηθέντας	parositva	17	G2837	alacsony	S
+1Thessz 4:14	er	15	διὰ	parositva	20	G1223	alacsony	S
+1Thessz 4:14	er	16	τοῦ	forditatlan		G3588	alacsony	S
+1Thessz 4:14	er	17	Ἰησοῦ	parositva	19	G2424	alacsony	S
+1Thessz 4:14	er	18	ἄξει	parositva	13	G0071	alacsony	S
+1Thessz 4:14	er	19	σὺν	parositva	22,23	G4862	alacsony	S
+1Thessz 4:14	er	20	αὐτῷ.¶	parositva	21,22	G0846	alacsony	S
+1Thessz 4:15	hu	1	Mert	parositva	2	G1063	alacsony	S
+1Thessz 4:15	hu	2	ezt	parositva	1	G3778	alacsony	S
+1Thessz 4:15	hu	3	mondjuk	parositva	4	G3004	alacsony	S
+1Thessz 4:15	hu	4	néktek	parositva	3	G4771	alacsony	S
+1Thessz 4:15	hu	5	az	betoldas			alacsony	S
+1Thessz 4:15	hu	6	Úr	parositva	7	G2962	alacsony	S
+1Thessz 4:15	hu	7	szavával	parositva	5,6	G1722+G3056	alacsony	S
+1Thessz 4:15	hu	8	hogy	parositva	8	G3754	alacsony	S
+1Thessz 4:15	hu	9	mi	parositva	9	G3165	alacsony	S
+1Thessz 4:15	hu	10	a	betoldas			alacsony	S
+1Thessz 4:15	hu	11	kik	betoldas			alacsony	S
+1Thessz 4:15	hu	12	élünk	parositva	11	G2198	alacsony	S
+1Thessz 4:15	hu	13	a	betoldas			alacsony	S
+1Thessz 4:15	hu	14	kik	betoldas			alacsony	S
+1Thessz 4:15	hu	15	megmaradunk	parositva	13	G4035	alacsony	S
+1Thessz 4:15	hu	16	az	betoldas			alacsony	S
+1Thessz 4:15	hu	17	Úr	parositva	18	G2962	alacsony	S
+1Thessz 4:15	hu	18	eljöveteléig	parositva	14,16	G1519+G3952	alacsony	S
+1Thessz 4:15	hu	19	épen	parositva	19	G3756	alacsony	S
+1Thessz 4:15	hu	20	nem	parositva	20	G3361	alacsony	S
+1Thessz 4:15	hu	21	előzzük	parositva	21	G5348	alacsony	S
+1Thessz 4:15	hu	22	meg	parositva	21	G5348	alacsony	S
+1Thessz 4:15	hu	23	azokat	parositva	22	G3588	alacsony	S
+1Thessz 4:15	hu	24	a	betoldas			alacsony	S
+1Thessz 4:15	hu	25	kik	betoldas			alacsony	S
+1Thessz 4:15	hu	26	elaludtak	parositva	23	G2837	alacsony	S
+1Thessz 4:15	er	1	Τοῦτο	parositva	2	G3778	alacsony	S
+1Thessz 4:15	er	2	γὰρ	parositva	1	G1063	alacsony	S
+1Thessz 4:15	er	3	ὑμῖν	parositva	4	G4771	alacsony	S
+1Thessz 4:15	er	4	λέγομεν	parositva	3	G3004	alacsony	S
+1Thessz 4:15	er	5	ἐν	parositva	7	G1722	alacsony	S
+1Thessz 4:15	er	6	λόγῳ	parositva	7	G3056	alacsony	S
+1Thessz 4:15	er	7	κυρίου	parositva	6	G2962	alacsony	S
+1Thessz 4:15	er	8	ὅτι	parositva	8	G3754	alacsony	S
+1Thessz 4:15	er	9	ἡμεῖς	parositva	9	G3165	alacsony	S
+1Thessz 4:15	er	10	οἱ	forditatlan		G3588	alacsony	S
+1Thessz 4:15	er	11	ζῶντες	parositva	12	G2198	alacsony	S
+1Thessz 4:15	er	12	οἱ	forditatlan		G3588	alacsony	S
+1Thessz 4:15	er	13	περιλειπόμενοι	parositva	15	G4035	alacsony	S
+1Thessz 4:15	er	14	εἰς	parositva	18	G1519	alacsony	S
+1Thessz 4:15	er	15	τὴν	forditatlan		G3588	alacsony	S
+1Thessz 4:15	er	16	παρουσίαν	parositva	18	G3952	alacsony	S
+1Thessz 4:15	er	17	τοῦ	forditatlan		G3588	alacsony	S
+1Thessz 4:15	er	18	κυρίου	parositva	17	G2962	alacsony	S
+1Thessz 4:15	er	19	οὐ	parositva	19	G3756	alacsony	S
+1Thessz 4:15	er	20	μὴ	parositva	20	G3361	alacsony	S
+1Thessz 4:15	er	21	φθάσωμεν	parositva	21,22	G5348	alacsony	S
+1Thessz 4:15	er	22	τοὺς	parositva	23	G3588	alacsony	S
+1Thessz 4:15	er	23	κοιμηθέντας·	parositva	26	G2837	alacsony	S
+1Thessz 4:16	hu	1	Mert	parositva	1	G3754	alacsony	S
+1Thessz 4:16	hu	2	maga	parositva	2	G0846	alacsony	S
+1Thessz 4:16	hu	3	az	betoldas			alacsony	S
+1Thessz 4:16	hu	4	Úr	parositva	4	G2962	alacsony	S
+1Thessz 4:16	hu	5	riadóval	parositva	5,6	G1722+G2752	alacsony	S
+1Thessz 4:16	hu	6	arkangyal	parositva	9	G0743	alacsony	S
+1Thessz 4:16	hu	7	szózatával	parositva	7,8	G1722+G5456	alacsony	S
+1Thessz 4:16	hu	8	és	parositva	10	G2532	alacsony	S
+1Thessz 4:16	hu	9	isteni	parositva	13	G2316	alacsony	S
+1Thessz 4:16	hu	10	harsonával	parositva	11,12	G1722+G4536	alacsony	S
+1Thessz 4:16	hu	11	leszáll	parositva	14	G2597	alacsony	S
+1Thessz 4:16	hu	12	az	betoldas			alacsony	S
+1Thessz 4:16	hu	13	égből	parositva	15,16	G0575+G3772	alacsony	S
+1Thessz 4:16	hu	14	és	parositva	17	G2532	alacsony	S
+1Thessz 4:16	hu	15	feltámadnak	parositva	22	G0450	alacsony	S
+1Thessz 4:16	hu	16	először	parositva	23	G4413	alacsony	S
+1Thessz 4:16	hu	17	a	betoldas			alacsony	S
+1Thessz 4:16	hu	18	kik	betoldas			alacsony	S
+1Thessz 4:16	hu	19	meghaltak	parositva	19	G3498	alacsony	S
+1Thessz 4:16	hu	20	volt	parositva	19	G3498	alacsony	S
+1Thessz 4:16	hu	21	a	betoldas			alacsony	S
+1Thessz 4:16	hu	22	Krisztusban	parositva	20,21	G1722+G5547	alacsony	S
+1Thessz 4:16	er	1	ὅτι	parositva	1	G3754	alacsony	S
+1Thessz 4:16	er	2	αὐτὸς	parositva	2	G0846	alacsony	S
+1Thessz 4:16	er	3	ὁ	forditatlan		G3588	alacsony	S
+1Thessz 4:16	er	4	κύριος	parositva	4	G2962	alacsony	S
+1Thessz 4:16	er	5	ἐν	parositva	5	G1722	alacsony	S
+1Thessz 4:16	er	6	κελεύσματι,	parositva	5	G2752	alacsony	S
+1Thessz 4:16	er	7	ἐν	parositva	7	G1722	alacsony	S
+1Thessz 4:16	er	8	φωνῇ	parositva	7	G5456	alacsony	S
+1Thessz 4:16	er	9	ἀρχαγγέλου	parositva	6	G0743	alacsony	S
+1Thessz 4:16	er	10	καὶ	parositva	8	G2532	alacsony	S
+1Thessz 4:16	er	11	ἐν	parositva	10	G1722	alacsony	S
+1Thessz 4:16	er	12	σάλπιγγι	parositva	10	G4536	alacsony	S
+1Thessz 4:16	er	13	θεοῦ	parositva	9	G2316	alacsony	S
+1Thessz 4:16	er	14	καταβήσεται	parositva	11	G2597	alacsony	S
+1Thessz 4:16	er	15	ἀπ᾽	parositva	13	G0575	alacsony	S
+1Thessz 4:16	er	16	οὐρανοῦ,	parositva	13	G3772	alacsony	S
+1Thessz 4:16	er	17	καὶ	parositva	14	G2532	alacsony	S
+1Thessz 4:16	er	18	οἱ	forditatlan		G3588	alacsony	S
+1Thessz 4:16	er	19	νεκροὶ	parositva	19,20	G3498	alacsony	S
+1Thessz 4:16	er	20	ἐν	parositva	22	G1722	alacsony	S
+1Thessz 4:16	er	21	Χριστῷ	parositva	22	G5547	alacsony	S
+1Thessz 4:16	er	22	ἀναστήσονται	parositva	15	G0450	alacsony	S
+1Thessz 4:16	er	23	πρῶτον,	parositva	16	G4413	alacsony	S
+1Thessz 4:17	hu	1	Azután	parositva	1	G1899	alacsony	S
+1Thessz 4:17	hu	2	mi	parositva	2	G3165	alacsony	S
+1Thessz 4:17	hu	3	a	betoldas			alacsony	S
+1Thessz 4:17	hu	4	kik	betoldas			alacsony	S
+1Thessz 4:17	hu	5	élünk	parositva	4	G2198	alacsony	S
+1Thessz 4:17	hu	6	a	betoldas			alacsony	S
+1Thessz 4:17	hu	7	kik	betoldas			alacsony	S
+1Thessz 4:17	hu	8	megmaradunk	parositva	6	G4035	alacsony	S
+1Thessz 4:17	hu	9	elragadtatunk	parositva	10	G0726	alacsony	S
+1Thessz 4:17	hu	10	azokkal	parositva	8,9	G4862+G0846	alacsony	S
+1Thessz 4:17	hu	11	együtt	parositva	7	G0260	alacsony	S
+1Thessz 4:17	hu	12	a	betoldas			alacsony	S
+1Thessz 4:17	hu	13	felhőkön	parositva	11,12	G1722+G3507	alacsony	S
+1Thessz 4:17	hu	14	az	betoldas			alacsony	S
+1Thessz 4:17	hu	15	Úr	parositva	16	G2962	alacsony	S
+1Thessz 4:17	hu	16	elébe	parositva	13,14	G1519+G0529	alacsony	S
+1Thessz 4:17	hu	17	a	betoldas			alacsony	S
+1Thessz 4:17	hu	18	levegőbe	parositva	17,18	G1519+G0109	alacsony	S
+1Thessz 4:17	hu	19	és	parositva	19	G2532	alacsony	S
+1Thessz 4:17	hu	20	ekképen	parositva	20	G3779	alacsony	S
+1Thessz 4:17	hu	21	mindenkor	parositva	21	G3842	alacsony	S
+1Thessz 4:17	hu	22	az	betoldas			alacsony	S
+1Thessz 4:17	hu	23	Úrral	parositva	22,23	G4862+G2962	alacsony	S
+1Thessz 4:17	hu	24	leszünk	parositva	24	G1510	alacsony	S
+1Thessz 4:17	er	1	ἔπειτα	parositva	1	G1899	alacsony	S
+1Thessz 4:17	er	2	ἡμεῖς	parositva	2	G3165	alacsony	S
+1Thessz 4:17	er	3	οἱ	forditatlan		G3588	alacsony	S
+1Thessz 4:17	er	4	ζῶντες	parositva	5	G2198	alacsony	S
+1Thessz 4:17	er	5	οἱ	forditatlan		G3588	alacsony	S
+1Thessz 4:17	er	6	περιλειπόμενοι	parositva	8	G4035	alacsony	S
+1Thessz 4:17	er	7	ἅμα	parositva	11	G0260	alacsony	S
+1Thessz 4:17	er	8	σὺν	parositva	10	G4862	alacsony	S
+1Thessz 4:17	er	9	αὐτοῖς	parositva	10	G0846	alacsony	S
+1Thessz 4:17	er	10	ἁρπαγησόμεθα	parositva	9	G0726	alacsony	S
+1Thessz 4:17	er	11	ἐν	parositva	13	G1722	alacsony	S
+1Thessz 4:17	er	12	νεφέλαις	parositva	13	G3507	alacsony	S
+1Thessz 4:17	er	13	εἰς	parositva	16	G1519	alacsony	S
+1Thessz 4:17	er	14	ἀπάντησιν	parositva	16	G0529	alacsony	S
+1Thessz 4:17	er	15	τοῦ	forditatlan		G3588	alacsony	S
+1Thessz 4:17	er	16	κυρίου	parositva	15	G2962	alacsony	S
+1Thessz 4:17	er	17	εἰς	parositva	18	G1519	alacsony	S
+1Thessz 4:17	er	18	ἀέρα·	parositva	18	G0109	alacsony	S
+1Thessz 4:17	er	19	καὶ	parositva	19	G2532	alacsony	S
+1Thessz 4:17	er	20	οὕτως	parositva	20	G3779	alacsony	S
+1Thessz 4:17	er	21	πάντοτε	parositva	21	G3842	alacsony	S
+1Thessz 4:17	er	22	σὺν	parositva	23	G4862	alacsony	S
+1Thessz 4:17	er	23	κυρίῳ	parositva	23	G2962	alacsony	S
+1Thessz 4:17	er	24	ἐσόμεθα.¶	parositva	24	G1510	alacsony	S
+1Thessz 4:18	hu	1	Annakokáért	parositva	1	G5620	alacsony	S
+1Thessz 4:18	hu	2	vígasztaljátok	parositva	2	G3870	alacsony	S
+1Thessz 4:18	hu	3	egymást	parositva	3	G0240	alacsony	S
+1Thessz 4:18	hu	4	e	parositva	7	G3778	alacsony	S
+1Thessz 4:18	hu	5	beszédekkel	parositva	4,6	G1722+G3056	alacsony	S
+1Thessz 4:18	er	1	Ὥστε	parositva	1	G5620	alacsony	S
+1Thessz 4:18	er	2	παρακαλεῖτε	parositva	2	G3870	alacsony	S
+1Thessz 4:18	er	3	ἀλλήλους	parositva	3	G0240	alacsony	S
+1Thessz 4:18	er	4	ἐν	parositva	5	G1722	alacsony	S
+1Thessz 4:18	er	5	τοῖς	forditatlan		G3588	alacsony	S
+1Thessz 4:18	er	6	λόγοις	parositva	5	G3056	alacsony	S
+1Thessz 4:18	er	7	τούτοις.¶	parositva	4	G3778	alacsony	S
+1Thessz 5:1	hu	1	Az	betoldas			alacsony	S
+1Thessz 5:1	hu	2	időkről	parositva	1,4	G4012+G5550	alacsony	S
+1Thessz 5:1	hu	3	és	parositva	5	G2532	alacsony	S
+1Thessz 5:1	hu	4	időszakokról	parositva	7	G2540	alacsony	S
+1Thessz 5:1	hu	5	pedig	parositva	2	G1161	alacsony	S
+1Thessz 5:1	hu	6	atyámfiai	parositva	8	G0080	alacsony	S
+1Thessz 5:1	hu	7	nem	parositva	9	G3756	alacsony	S
+1Thessz 5:1	hu	8	szükség	parositva	10	G5532	alacsony	S
+1Thessz 5:1	hu	9	hogy	parositva	11	G2192	alacsony	S
+1Thessz 5:1	hu	10	írjak	parositva	13	G1125	alacsony	S
+1Thessz 5:1	hu	11	néktek	parositva	12	G4771	alacsony	S
+1Thessz 5:1	er	1	Περὶ	parositva	2	G4012	alacsony	S
+1Thessz 5:1	er	2	δὲ	parositva	5	G1161	alacsony	S
+1Thessz 5:1	er	3	τῶν	forditatlan		G3588	alacsony	S
+1Thessz 5:1	er	4	χρόνων	parositva	2	G5550	alacsony	S
+1Thessz 5:1	er	5	καὶ	parositva	3	G2532	alacsony	S
+1Thessz 5:1	er	6	τῶν	forditatlan		G3588	alacsony	S
+1Thessz 5:1	er	7	καιρῶν,	parositva	4	G2540	alacsony	S
+1Thessz 5:1	er	8	ἀδελφοί,	parositva	6	G0080	alacsony	S
+1Thessz 5:1	er	9	οὐ	parositva	7	G3756	alacsony	S
+1Thessz 5:1	er	10	χρείαν	parositva	8	G5532	alacsony	S
+1Thessz 5:1	er	11	ἔχετε	parositva	9	G2192	alacsony	S
+1Thessz 5:1	er	12	ὑμῖν	parositva	11	G4771	alacsony	S
+1Thessz 5:1	er	13	γράφεσθαι·	parositva	10	G1125	alacsony	S
+1Thessz 5:2	hu	1	Mert	parositva	2	G1063	alacsony	S
+1Thessz 5:2	hu	2	igen	parositva	3	G0199	alacsony	S
+1Thessz 5:2	hu	3	jól	parositva	3	G0199	alacsony	S
+1Thessz 5:2	hu	4	tudjátok	parositva	4	G6063	alacsony	S
+1Thessz 5:2	hu	5	ti	parositva	1	G0846	alacsony	S
+1Thessz 5:2	hu	6	magatok	parositva	1	G0846	alacsony	S
+1Thessz 5:2	hu	7	hogy	parositva	5	G3754	alacsony	S
+1Thessz 5:2	hu	8	az	betoldas			alacsony	S
+1Thessz 5:2	hu	9	Úrnak	parositva	8	G2962	alacsony	S
+1Thessz 5:2	hu	10	napja	parositva	7	G2250	alacsony	S
+1Thessz 5:2	hu	11	úgy	parositva	13	G3779	alacsony	S
+1Thessz 5:2	hu	12	jő	parositva	14	G2064	alacsony	S
+1Thessz 5:2	hu	13	el	betoldas			alacsony	S
+1Thessz 5:2	hu	14	mint	parositva	9	G5613	alacsony	S
+1Thessz 5:2	hu	15	a	betoldas			alacsony	S
+1Thessz 5:2	hu	16	tolvaj	parositva	10	G2812	alacsony	S
+1Thessz 5:2	hu	17	éjjel	parositva	11,12	G1722+G3571	alacsony	S
+1Thessz 5:2	er	1	αὐτοὶ	parositva	5,6	G0846	alacsony	S
+1Thessz 5:2	er	2	γὰρ	parositva	1	G1063	alacsony	S
+1Thessz 5:2	er	3	ἀκριβῶς	parositva	2,3	G0199	alacsony	S
+1Thessz 5:2	er	4	οἴδατε	parositva	4	G6063	alacsony	S
+1Thessz 5:2	er	5	ὅτι	parositva	7	G3754	alacsony	S
+1Thessz 5:2	er	6	ἡ	forditatlan		G3588	alacsony	S
+1Thessz 5:2	er	7	ἡμέρα	parositva	10	G2250	alacsony	S
+1Thessz 5:2	er	8	κυρίου	parositva	9	G2962	alacsony	S
+1Thessz 5:2	er	9	ὡς	parositva	14	G5613	alacsony	S
+1Thessz 5:2	er	10	κλέπτης	parositva	16	G2812	alacsony	S
+1Thessz 5:2	er	11	ἐν	parositva	17	G1722	alacsony	S
+1Thessz 5:2	er	12	νυκτὶ	parositva	17	G3571	alacsony	S
+1Thessz 5:2	er	13	οὕτως	parositva	11	G3779	alacsony	S
+1Thessz 5:2	er	14	ἔρχεται·	parositva	12	G2064	alacsony	S
+1Thessz 5:3	hu	1	Mert	parositva	2	G1063	alacsony	S
+1Thessz 5:3	hu	2	a	parositva	1	G3752	alacsony	S
+1Thessz 5:3	hu	3	mikor	parositva	1	G3752	alacsony	S
+1Thessz 5:3	hu	4	ezt	betoldas			alacsony	S
+1Thessz 5:3	hu	5	mondják	parositva	3	G3004	alacsony	S
+1Thessz 5:3	hu	6	Békesség	parositva	4	G1515	alacsony	S
+1Thessz 5:3	hu	7	és	parositva	5	G2532	alacsony	S
+1Thessz 5:3	hu	8	biztonság	parositva	6	G0803	alacsony	S
+1Thessz 5:3	hu	9	akkor	parositva	7	G5119	alacsony	S
+1Thessz 5:3	hu	10	hirtelen	parositva	8	G0160	alacsony	S
+1Thessz 5:3	hu	11	veszedelem	parositva	11	G3639	alacsony	S
+1Thessz 5:3	hu	12	jön	parositva	10	G2186	alacsony	S
+1Thessz 5:3	hu	13	rájok	parositva	9	G0846	alacsony	S
+1Thessz 5:3	hu	14	mint	parositva	12	G5618	alacsony	S
+1Thessz 5:3	hu	15	a	betoldas			alacsony	S
+1Thessz 5:3	hu	16	szülési	parositva	14	G5604	alacsony	S
+1Thessz 5:3	hu	17	fájdalom	parositva	14	G5604	alacsony	S
+1Thessz 5:3	hu	18	a	betoldas			alacsony	S
+1Thessz 5:3	hu	19	terhes	parositva	16,17,18	G1722+G1064+G2192	alacsony	S
+1Thessz 5:3	hu	20	asszonyra	parositva	15	G3588	alacsony	S
+1Thessz 5:3	hu	21	és	parositva	19	G2532	alacsony	S
+1Thessz 5:3	hu	22	semmiképen	parositva	20	G3756	alacsony	S
+1Thessz 5:3	hu	23	meg	parositva	22	G1628	alacsony	S
+1Thessz 5:3	hu	24	nem	parositva	21	G3361	alacsony	S
+1Thessz 5:3	hu	25	menekednek	parositva	22	G1628	alacsony	S
+1Thessz 5:3	er	1	ὅταν	parositva	2,3	G3752	alacsony	S
+1Thessz 5:3	er	2	γὰρ	parositva	1	G1063	alacsony	S
+1Thessz 5:3	er	3	λέγωσιν·	parositva	5	G3004	alacsony	S
+1Thessz 5:3	er	4	εἰρήνη	parositva	6	G1515	alacsony	S
+1Thessz 5:3	er	5	καὶ	parositva	7	G2532	alacsony	S
+1Thessz 5:3	er	6	ἀσφάλεια,	parositva	8	G0803	alacsony	S
+1Thessz 5:3	er	7	τότε	parositva	9	G5119	alacsony	S
+1Thessz 5:3	er	8	αἰφνίδιος	parositva	10	G0160	alacsony	S
+1Thessz 5:3	er	9	αὐτοῖς	parositva	13	G0846	alacsony	S
+1Thessz 5:3	er	10	ἐφίσταται	parositva	12	G2186	alacsony	S
+1Thessz 5:3	er	11	ὄλεθρος	parositva	11	G3639	alacsony	S
+1Thessz 5:3	er	12	ὥσπερ	parositva	14	G5618	alacsony	S
+1Thessz 5:3	er	13	ἡ	forditatlan		G3588	alacsony	S
+1Thessz 5:3	er	14	ὠδὶν	parositva	16,17	G5604	alacsony	S
+1Thessz 5:3	er	15	τῇ	parositva	20	G3588	alacsony	S
+1Thessz 5:3	er	16	ἐν	parositva	19	G1722	alacsony	S
+1Thessz 5:3	er	17	γαστρὶ	parositva	19	G1064	alacsony	S
+1Thessz 5:3	er	18	ἐχούσῃ,	parositva	19	G2192	alacsony	S
+1Thessz 5:3	er	19	καὶ	parositva	21	G2532	alacsony	S
+1Thessz 5:3	er	20	οὐ	parositva	22	G3756	alacsony	S
+1Thessz 5:3	er	21	μὴ	parositva	24	G3361	alacsony	S
+1Thessz 5:3	er	22	ἐκφύγωσιν.¶	parositva	23,25	G1628	alacsony	S
+1Thessz 5:4	hu	1	De	parositva	2	G1161	alacsony	S
+1Thessz 5:4	hu	2	ti	parositva	1	G4771	alacsony	S
+1Thessz 5:4	hu	3	atyámfiai	parositva	3	G0080	alacsony	S
+1Thessz 5:4	hu	4	nem	parositva	4	G3756	alacsony	S
+1Thessz 5:4	hu	5	vagytok	parositva	5	G1510	alacsony	S
+1Thessz 5:4	hu	6	sötétségben	parositva	6,7	G1722+G4655	alacsony	S
+1Thessz 5:4	hu	7	hogy	parositva	8	G2443	alacsony	S
+1Thessz 5:4	hu	8	az	betoldas			alacsony	S
+1Thessz 5:4	hu	9	a	betoldas			alacsony	S
+1Thessz 5:4	hu	10	nap	parositva	10	G2250	alacsony	S
+1Thessz 5:4	hu	11	tolvaj	parositva	13	G2812	alacsony	S
+1Thessz 5:4	hu	12	módra	parositva	12	G5613	alacsony	S
+1Thessz 5:4	hu	13	lephetne	parositva	14	G2638	alacsony	S
+1Thessz 5:4	hu	14	meg	parositva	14	G2638	alacsony	S
+1Thessz 5:4	hu	15	titeket	parositva	11	G4771	alacsony	S
+1Thessz 5:4	er	1	ὑμεῖς	parositva	2	G4771	alacsony	S
+1Thessz 5:4	er	2	δέ,	parositva	1	G1161	alacsony	S
+1Thessz 5:4	er	3	ἀδελφοί,	parositva	3	G0080	alacsony	S
+1Thessz 5:4	er	4	οὐκ	parositva	4	G3756	alacsony	S
+1Thessz 5:4	er	5	ἐστὲ	parositva	5	G1510	alacsony	S
+1Thessz 5:4	er	6	ἐν	parositva	6	G1722	alacsony	S
+1Thessz 5:4	er	7	σκότει,	parositva	6	G4655	alacsony	S
+1Thessz 5:4	er	8	ἵνα	parositva	7	G2443	alacsony	S
+1Thessz 5:4	er	9	ἡ	forditatlan		G3588	alacsony	S
+1Thessz 5:4	er	10	ἡμέρα	parositva	10	G2250	alacsony	S
+1Thessz 5:4	er	11	ὑμᾶς	parositva	15	G4771	alacsony	S
+1Thessz 5:4	er	12	ὡς	parositva	12	G5613	alacsony	S
+1Thessz 5:4	er	13	κλέπτης	parositva	11	G2812	alacsony	S
+1Thessz 5:4	er	14	καταλάβῃ·	parositva	13,14	G2638	alacsony	S
+1Thessz 5:5	hu	1	Ti	parositva	3	G4771	alacsony	S
+1Thessz 5:5	hu	2	mindnyájan	parositva	1	G3956	alacsony	S
+1Thessz 5:5	hu	3	világosság	parositva	5	G5457	alacsony	S
+1Thessz 5:5	hu	4	fiai	parositva	4	G5207	alacsony	S
+1Thessz 5:5	hu	5	vagytok	parositva	6	G1510	alacsony	S
+1Thessz 5:5	hu	6	és	parositva	7	G2532	alacsony	S
+1Thessz 5:5	hu	7	nappal	parositva	9	G2250	alacsony	S
+1Thessz 5:5	hu	8	fiai	parositva	8	G5207	alacsony	S
+1Thessz 5:5	hu	9	nem	parositva	10	G3756	alacsony	S
+1Thessz 5:5	hu	10	vagyunk	parositva	11	G1510	alacsony	S
+1Thessz 5:5	hu	11	az	betoldas			alacsony	S
+1Thessz 5:5	hu	12	éjszakáé	parositva	12	G3571	alacsony	S
+1Thessz 5:5	hu	13	sem	parositva	13	G3761	alacsony	S
+1Thessz 5:5	hu	14	a	betoldas			alacsony	S
+1Thessz 5:5	hu	15	sötétségé	parositva	14	G4655	alacsony	S
+1Thessz 5:5	er	1	πάντες	parositva	2	G3956	alacsony	S
+1Thessz 5:5	er	2	γὰρ	forditatlan		G1063	alacsony	S
+1Thessz 5:5	er	3	ὑμεῖς	parositva	1	G4771	alacsony	S
+1Thessz 5:5	er	4	υἱοὶ	parositva	4	G5207	alacsony	S
+1Thessz 5:5	er	5	φωτός	parositva	3	G5457	alacsony	S
+1Thessz 5:5	er	6	ἐστε	parositva	5	G1510	alacsony	S
+1Thessz 5:5	er	7	καὶ	parositva	6	G2532	alacsony	S
+1Thessz 5:5	er	8	υἱοὶ	parositva	8	G5207	alacsony	S
+1Thessz 5:5	er	9	ἡμέρας·	parositva	7	G2250	alacsony	S
+1Thessz 5:5	er	10	οὐκ	parositva	9	G3756	alacsony	S
+1Thessz 5:5	er	11	ἐσμὲν	parositva	10	G1510	alacsony	S
+1Thessz 5:5	er	12	νυκτὸς	parositva	12	G3571	alacsony	S
+1Thessz 5:5	er	13	οὐδὲ	parositva	13	G3761	alacsony	S
+1Thessz 5:5	er	14	σκότους.¶	parositva	15	G4655	alacsony	S
+1Thessz 5:6	hu	1	Ne	parositva	3	G3361	alacsony	S
+1Thessz 5:6	hu	2	is	parositva	6	G2532	alacsony	S
+1Thessz 5:6	hu	3	aludjunk	parositva	4	G2518	alacsony	S
+1Thessz 5:6	hu	4	azért	parositva	2	G3767	alacsony	S
+1Thessz 5:6	hu	5	mint	parositva	5	G5613	alacsony	S
+1Thessz 5:6	hu	6	egyebek	parositva	8	G3062	alacsony	S
+1Thessz 5:6	hu	7	hanem	parositva	9	G0235	alacsony	S
+1Thessz 5:6	hu	8	legyünk	parositva	10	G1127	alacsony	S
+1Thessz 5:6	hu	9	éberek	parositva	10	G1127	alacsony	S
+1Thessz 5:6	hu	10	és	parositva	11	G2532	alacsony	S
+1Thessz 5:6	hu	11	józanok	parositva	12	G3525	alacsony	S
+1Thessz 5:6	er	1	Ἄρα	forditatlan		G0686	alacsony	S
+1Thessz 5:6	er	2	οὖν	parositva	4	G3767	alacsony	S
+1Thessz 5:6	er	3	μὴ	parositva	1	G3361	alacsony	S
+1Thessz 5:6	er	4	καθεύδωμεν	parositva	3	G2518	alacsony	S
+1Thessz 5:6	er	5	ὡς	parositva	5	G5613	alacsony	S
+1Thessz 5:6	er	6	καὶ	parositva	2	G2532	alacsony	S
+1Thessz 5:6	er	7	οἱ	forditatlan		G3588	alacsony	S
+1Thessz 5:6	er	8	λοιποὶ	parositva	6	G3062	alacsony	S
+1Thessz 5:6	er	9	ἀλλὰ	parositva	7	G0235	alacsony	S
+1Thessz 5:6	er	10	γρηγορῶμεν	parositva	8,9	G1127	alacsony	S
+1Thessz 5:6	er	11	καὶ	parositva	10	G2532	alacsony	S
+1Thessz 5:6	er	12	νήφωμεν.	parositva	11	G3525	alacsony	S
+1Thessz 5:7	hu	1	Mert	parositva	2	G1063	alacsony	S
+1Thessz 5:7	hu	2	a	betoldas			alacsony	S
+1Thessz 5:7	hu	3	kik	parositva	1	G3588	alacsony	S
+1Thessz 5:7	hu	4	alusznak	parositva	3	G2518	alacsony	S
+1Thessz 5:7	hu	5	éjjel	parositva	4	G3571	alacsony	S
+1Thessz 5:7	hu	6	alusznak	parositva	5	G2518	alacsony	S
+1Thessz 5:7	hu	7	és	parositva	6	G2532	alacsony	S
+1Thessz 5:7	hu	8	a	betoldas			alacsony	S
+1Thessz 5:7	hu	9	kik	parositva	7	G3588	alacsony	S
+1Thessz 5:7	hu	10	részegek	parositva	8	G3182	alacsony	S
+1Thessz 5:7	hu	11	éjjel	parositva	9	G3571	alacsony	S
+1Thessz 5:7	hu	12	részegednek	parositva	10	G3184	alacsony	S
+1Thessz 5:7	hu	13	meg	parositva	10	G3184	alacsony	S
+1Thessz 5:7	er	1	οἱ	parositva	3	G3588	alacsony	S
+1Thessz 5:7	er	2	γὰρ	parositva	1	G1063	alacsony	S
+1Thessz 5:7	er	3	καθεύδοντες	parositva	4	G2518	alacsony	S
+1Thessz 5:7	er	4	νυκτὸς	parositva	5	G3571	alacsony	S
+1Thessz 5:7	er	5	καθεύδουσιν	parositva	6	G2518	alacsony	S
+1Thessz 5:7	er	6	καὶ	parositva	7	G2532	alacsony	S
+1Thessz 5:7	er	7	οἱ	parositva	9	G3588	alacsony	S
+1Thessz 5:7	er	8	μεθυσκόμενοι	parositva	10	G3182	alacsony	S
+1Thessz 5:7	er	9	νυκτὸς	parositva	11	G3571	alacsony	S
+1Thessz 5:7	er	10	μεθύουσιν·	parositva	12,13	G3184	alacsony	S
+1Thessz 5:8	hu	1	Mi	parositva	1	G3165	alacsony	S
+1Thessz 5:8	hu	2	azonban	parositva	2	G1161	alacsony	S
+1Thessz 5:8	hu	3	a	betoldas			alacsony	S
+1Thessz 5:8	hu	4	kik	betoldas			alacsony	S
+1Thessz 5:8	hu	5	nappaliak	parositva	3	G2250	alacsony	S
+1Thessz 5:8	hu	6	vagyunk	parositva	4	G1510	alacsony	S
+1Thessz 5:8	hu	7	legyünk	parositva	5	G3525	alacsony	S
+1Thessz 5:8	hu	8	éberek	parositva	5	G3525	alacsony	S
+1Thessz 5:8	hu	9	felöltözvén	parositva	6	G1746	alacsony	S
+1Thessz 5:8	hu	10	a	betoldas			alacsony	S
+1Thessz 5:8	hu	11	hitnek	parositva	8	G4102	alacsony	S
+1Thessz 5:8	hu	12	és	parositva	9	G2532	alacsony	S
+1Thessz 5:8	hu	13	szeretetnek	parositva	10	G0026	alacsony	S
+1Thessz 5:8	hu	14	mellvasába	parositva	7	G2382	alacsony	S
+1Thessz 5:8	hu	15	és	parositva	11	G2532	alacsony	S
+1Thessz 5:8	hu	16	sisak	parositva	12	G4030	alacsony	S
+1Thessz 5:8	hu	17	gyanánt	betoldas			alacsony	S
+1Thessz 5:8	hu	18	az	betoldas			alacsony	S
+1Thessz 5:8	hu	19	üdvösségnek	parositva	14	G4991	alacsony	S
+1Thessz 5:8	hu	20	reménységébe	parositva	13	G1680	alacsony	S
+1Thessz 5:8	er	1	ἡμεῖς	parositva	1	G3165	alacsony	S
+1Thessz 5:8	er	2	δὲ	parositva	2	G1161	alacsony	S
+1Thessz 5:8	er	3	ἡμέρας	parositva	5	G2250	alacsony	S
+1Thessz 5:8	er	4	ὄντες	parositva	6	G1510	alacsony	S
+1Thessz 5:8	er	5	νήφωμεν	parositva	7,8	G3525	alacsony	S
+1Thessz 5:8	er	6	ἐνδυσάμενοι	parositva	9	G1746	alacsony	S
+1Thessz 5:8	er	7	θώρακα	parositva	14	G2382	alacsony	S
+1Thessz 5:8	er	8	πίστεως	parositva	11	G4102	alacsony	S
+1Thessz 5:8	er	9	καὶ	parositva	12	G2532	alacsony	S
+1Thessz 5:8	er	10	ἀγάπης	parositva	13	G0026	alacsony	S
+1Thessz 5:8	er	11	καὶ	parositva	15	G2532	alacsony	S
+1Thessz 5:8	er	12	περικεφαλαίαν	parositva	16	G4030	alacsony	S
+1Thessz 5:8	er	13	ἐλπίδα	parositva	20	G1680	alacsony	S
+1Thessz 5:8	er	14	σωτηρίας·	parositva	19	G4991	alacsony	S
+1Thessz 5:9	hu	1	Mert	parositva	1	G3754	alacsony	S
+1Thessz 5:9	hu	2	nem	parositva	2	G3756	alacsony	S
+1Thessz 5:9	hu	3	haragra	parositva	8	G3709	alacsony	S
+1Thessz 5:9	hu	4	rendelt	parositva	3	G5087	alacsony	S
+1Thessz 5:9	hu	5	minket	parositva	4	G3165	alacsony	S
+1Thessz 5:9	hu	6	az	betoldas			alacsony	S
+1Thessz 5:9	hu	7	Isten	parositva	6	G2316	alacsony	S
+1Thessz 5:9	hu	8	hanem	parositva	9	G0235	alacsony	S
+1Thessz 5:9	hu	9	arra	parositva	10	G1519	alacsony	S
+1Thessz 5:9	hu	10	hogy	parositva	10	G1519	alacsony	S
+1Thessz 5:9	hu	11	üdvösséget	parositva	11,12	G4047+G4991	alacsony	S
+1Thessz 5:9	hu	12	szerezzünk	parositva	11	G4047	alacsony	S
+1Thessz 5:9	hu	13	a	betoldas			alacsony	S
+1Thessz 5:9	hu	14	mi	parositva	16	G3165	alacsony	S
+1Thessz 5:9	hu	15	Urunk	parositva	15	G2962	alacsony	S
+1Thessz 5:9	hu	16	Jézus	parositva	17	G2424	alacsony	S
+1Thessz 5:9	hu	17	Krisztus	parositva	18	G5547	alacsony	S
+1Thessz 5:9	hu	18	által	parositva	13	G1223	alacsony	S
+1Thessz 5:9	er	1	ὅτι	parositva	1	G3754	alacsony	S
+1Thessz 5:9	er	2	οὐκ	parositva	2	G3756	alacsony	S
+1Thessz 5:9	er	3	ἔθετο	parositva	4	G5087	alacsony	S
+1Thessz 5:9	er	4	ἡμᾶς	parositva	5	G3165	alacsony	S
+1Thessz 5:9	er	5	ὁ	forditatlan		G3588	alacsony	S
+1Thessz 5:9	er	6	θεὸς	parositva	7	G2316	alacsony	S
+1Thessz 5:9	er	7	εἰς	forditatlan		G1519	alacsony	S
+1Thessz 5:9	er	8	ὀργὴν	parositva	3	G3709	alacsony	S
+1Thessz 5:9	er	9	ἀλλ᾽	parositva	8	G0235	alacsony	S
+1Thessz 5:9	er	10	εἰς	parositva	9,10	G1519	alacsony	S
+1Thessz 5:9	er	11	περιποίησιν	parositva	11,12	G4047	alacsony	S
+1Thessz 5:9	er	12	σωτηρίας	parositva	11	G4991	alacsony	S
+1Thessz 5:9	er	13	διὰ	parositva	18	G1223	alacsony	S
+1Thessz 5:9	er	14	τοῦ	forditatlan		G3588	alacsony	S
+1Thessz 5:9	er	15	κυρίου	parositva	15	G2962	alacsony	S
+1Thessz 5:9	er	16	ἡμῶν	parositva	14	G3165	alacsony	S
+1Thessz 5:9	er	17	Ἰησοῦ	parositva	16	G2424	alacsony	S
+1Thessz 5:9	er	18	Χριστοῦ	parositva	17	G5547	alacsony	S
+1Thessz 5:10	hu	1	A	parositva	1	G3588	alacsony	S
+1Thessz 5:10	hu	2	ki	parositva	1	G3588	alacsony	S
+1Thessz 5:10	hu	3	meghalt	parositva	2	G0599	alacsony	S
+1Thessz 5:10	hu	4	érettünk	parositva	3,4	G5228+G3165	alacsony	S
+1Thessz 5:10	hu	5	hogy	parositva	5	G2443	alacsony	S
+1Thessz 5:10	hu	6	akár	parositva	6	G1535	alacsony	S
+1Thessz 5:10	hu	7	ébren	parositva	7	G1127	alacsony	S
+1Thessz 5:10	hu	8	vagyunk	parositva	7	G1127	alacsony	S
+1Thessz 5:10	hu	9	akár	parositva	8	G1535	alacsony	S
+1Thessz 5:10	hu	10	aluszunk	parositva	9	G2518	alacsony	S
+1Thessz 5:10	hu	11	együtt	parositva	10	G0260	alacsony	S
+1Thessz 5:10	hu	12	éljünk	parositva	13	G2198	alacsony	S
+1Thessz 5:10	hu	13	ő	betoldas			alacsony	S
+1Thessz 5:10	hu	14	vele	parositva	11,12	G4862+G0846	alacsony	S
+1Thessz 5:10	er	1	τοῦ	parositva	1,2	G3588	alacsony	S
+1Thessz 5:10	er	2	ἀποθανόντος	parositva	3	G0599	alacsony	S
+1Thessz 5:10	er	3	ὑπὲρ	parositva	4	G5228	alacsony	S
+1Thessz 5:10	er	4	ἡμῶν,	parositva	4	G3165	alacsony	S
+1Thessz 5:10	er	5	ἵνα	parositva	5	G2443	alacsony	S
+1Thessz 5:10	er	6	εἴτε	parositva	6	G1535	alacsony	S
+1Thessz 5:10	er	7	γρηγορῶμεν	parositva	7,8	G1127	alacsony	S
+1Thessz 5:10	er	8	εἴτε	parositva	9	G1535	alacsony	S
+1Thessz 5:10	er	9	καθεύδωμεν	parositva	10	G2518	alacsony	S
+1Thessz 5:10	er	10	ἅμα	parositva	11	G0260	alacsony	S
+1Thessz 5:10	er	11	σὺν	parositva	14	G4862	alacsony	S
+1Thessz 5:10	er	12	αὐτῷ	parositva	14	G0846	alacsony	S
+1Thessz 5:10	er	13	ζήσωμεν.¶	parositva	12	G2198	alacsony	S
+1Thessz 5:11	hu	1	Vígasztaljátok	parositva	2	G3870	alacsony	S
+1Thessz 5:11	hu	2	azért	parositva	1	G1352	alacsony	S
+1Thessz 5:11	hu	3	egymást	parositva	3	G0240	alacsony	S
+1Thessz 5:11	hu	4	és	parositva	4	G2532	alacsony	S
+1Thessz 5:11	hu	5	építse	parositva	5	G3618	alacsony	S
+1Thessz 5:11	hu	6	egyik	parositva	6	G1520	alacsony	S
+1Thessz 5:11	hu	7	a	betoldas			alacsony	S
+1Thessz 5:11	hu	8	másikat	parositva	8	G1520	alacsony	S
+1Thessz 5:11	hu	9	a	betoldas			alacsony	S
+1Thessz 5:11	hu	10	miképen	parositva	9	G2531	alacsony	S
+1Thessz 5:11	hu	11	cselekeszitek	parositva	11	G4160	alacsony	S
+1Thessz 5:11	hu	12	is	parositva	10	G2532	alacsony	S
+1Thessz 5:11	er	1	Διὸ	parositva	2	G1352	alacsony	S
+1Thessz 5:11	er	2	παρακαλεῖτε	parositva	1	G3870	alacsony	S
+1Thessz 5:11	er	3	ἀλλήλους	parositva	3	G0240	alacsony	S
+1Thessz 5:11	er	4	καὶ	parositva	4	G2532	alacsony	S
+1Thessz 5:11	er	5	οἰκοδομεῖτε	parositva	5	G3618	alacsony	S
+1Thessz 5:11	er	6	εἷς	parositva	6	G1520	alacsony	S
+1Thessz 5:11	er	7	τὸν	forditatlan		G3588	alacsony	S
+1Thessz 5:11	er	8	ἕνα	parositva	8	G1520	alacsony	S
+1Thessz 5:11	er	9	καθὼς	parositva	10	G2531	alacsony	S
+1Thessz 5:11	er	10	καὶ	parositva	12	G2532	alacsony	S
+1Thessz 5:11	er	11	ποιεῖτε.¶	parositva	11	G4160	alacsony	S
+1Thessz 5:12	hu	1	Kérünk	parositva	1	G2065	alacsony	S
+1Thessz 5:12	hu	2	továbbá	parositva	2	G1161	alacsony	S
+1Thessz 5:12	hu	3	titeket	parositva	3	G4771	alacsony	S
+1Thessz 5:12	hu	4	atyámfiai	parositva	4	G0080	alacsony	S
+1Thessz 5:12	hu	5	hogy	parositva	5	G6063	alacsony	S
+1Thessz 5:12	hu	6	becsüljétek	parositva	5	G6063	alacsony	S
+1Thessz 5:12	hu	7	azokat	parositva	6	G3588	alacsony	S
+1Thessz 5:12	hu	8	a	betoldas			alacsony	S
+1Thessz 5:12	hu	9	kik	parositva	6	G3588	alacsony	S
+1Thessz 5:12	hu	10	fáradoznak	parositva	7	G2872	alacsony	S
+1Thessz 5:12	hu	11	közöttetek	parositva	8,9	G1722+G4771	alacsony	S
+1Thessz 5:12	hu	12	és	parositva	10	G2532	alacsony	S
+1Thessz 5:12	hu	13	előljáróitok	parositva	11,12	G4291+G4771	alacsony	S
+1Thessz 5:12	hu	14	az	betoldas			alacsony	S
+1Thessz 5:12	hu	15	Úrban	parositva	13,14	G1722+G2962	alacsony	S
+1Thessz 5:12	hu	16	és	parositva	15	G2532	alacsony	S
+1Thessz 5:12	hu	17	intenek	parositva	16	G3560	alacsony	S
+1Thessz 5:12	hu	18	titeket	parositva	17	G4771	alacsony	S
+1Thessz 5:12	er	1	Ἐρωτῶμεν	parositva	1	G2065	alacsony	S
+1Thessz 5:12	er	2	δὲ	parositva	2	G1161	alacsony	S
+1Thessz 5:12	er	3	ὑμᾶς,	parositva	3	G4771	alacsony	S
+1Thessz 5:12	er	4	ἀδελφοί,	parositva	4	G0080	alacsony	S
+1Thessz 5:12	er	5	εἰδέναι	parositva	5,6	G6063	alacsony	S
+1Thessz 5:12	er	6	τοὺς	parositva	7,9	G3588	alacsony	S
+1Thessz 5:12	er	7	κοπιῶντας	parositva	10	G2872	alacsony	S
+1Thessz 5:12	er	8	ἐν	parositva	11	G1722	alacsony	S
+1Thessz 5:12	er	9	ὑμῖν	parositva	11	G4771	alacsony	S
+1Thessz 5:12	er	10	καὶ	parositva	12	G2532	alacsony	S
+1Thessz 5:12	er	11	προϊσταμένους	parositva	13	G4291	alacsony	S
+1Thessz 5:12	er	12	ὑμῶν	parositva	13	G4771	alacsony	S
+1Thessz 5:12	er	13	ἐν	parositva	15	G1722	alacsony	S
+1Thessz 5:12	er	14	κυρίῳ	parositva	15	G2962	alacsony	S
+1Thessz 5:12	er	15	καὶ	parositva	16	G2532	alacsony	S
+1Thessz 5:12	er	16	νουθετοῦντας	parositva	17	G3560	alacsony	S
+1Thessz 5:12	er	17	ὑμᾶς	parositva	18	G4771	alacsony	S
+1Thessz 5:13	hu	1	És	parositva	1	G2532	alacsony	S
+1Thessz 5:13	hu	2	az	betoldas			alacsony	S
+1Thessz 5:13	hu	3	ő	parositva	10	G0846	alacsony	S
+1Thessz 5:13	hu	4	munkájokért	parositva	7,9	G1223+G2041	alacsony	S
+1Thessz 5:13	hu	5	viseltessetek	parositva	2	G2233	alacsony	S
+1Thessz 5:13	hu	6	irántok	parositva	3	G0846	alacsony	S
+1Thessz 5:13	hu	7	megkülönböztetett	parositva	4	G1537+G4057+G5228	alacsony	S
+1Thessz 5:13	hu	8	szeretettel	parositva	5,6	G1722+G0026	alacsony	S
+1Thessz 5:13	hu	9	Egymással	parositva	12,13	G1722+G1438	alacsony	S
+1Thessz 5:13	hu	10	békességben	parositva	12	G1722	alacsony	S
+1Thessz 5:13	hu	11	éljetek	parositva	11	G1514	alacsony	S
+1Thessz 5:13	er	1	καὶ	parositva	1	G2532	alacsony	S
+1Thessz 5:13	er	2	ἡγεῖσθαι	parositva	5	G2233	alacsony	S
+1Thessz 5:13	er	3	αὐτοὺς	parositva	6	G0846	alacsony	S
+1Thessz 5:13	er	4	ὑπερεκπερισσοῦ	parositva	7	G1537+G4057+G5228	alacsony	S
+1Thessz 5:13	er	5	ἐν	parositva	8	G1722	alacsony	S
+1Thessz 5:13	er	6	ἀγάπῃ	parositva	8	G0026	alacsony	S
+1Thessz 5:13	er	7	διὰ	parositva	4	G1223	alacsony	S
+1Thessz 5:13	er	8	τὸ	forditatlan		G3588	alacsony	S
+1Thessz 5:13	er	9	ἔργον	parositva	4	G2041	alacsony	S
+1Thessz 5:13	er	10	αὐτῶν.	parositva	3	G0846	alacsony	S
+1Thessz 5:13	er	11	εἰρηνεύετε	parositva	11	G1514	alacsony	S
+1Thessz 5:13	er	12	ἐν	parositva	9,10	G1722	alacsony	S
+1Thessz 5:13	er	13	ἑαυτοῖς.¶	parositva	9	G1438	alacsony	S
+1Thessz 5:14	hu	1	Kérünk	parositva	1	G3870	alacsony	S
+1Thessz 5:14	hu	2	továbbá	parositva	2	G1161	alacsony	S
+1Thessz 5:14	hu	3	titeket	parositva	3	G4771	alacsony	S
+1Thessz 5:14	hu	4	atyámfiai	parositva	4	G0080	alacsony	S
+1Thessz 5:14	hu	5	intsétek	parositva	5	G3560	alacsony	S
+1Thessz 5:14	hu	6	a	betoldas			alacsony	S
+1Thessz 5:14	hu	7	rendetleneket	parositva	6,7	G3588+G0813	alacsony	S
+1Thessz 5:14	hu	8	bátorítsátok	parositva	8	G3888	alacsony	S
+1Thessz 5:14	hu	9	a	betoldas			alacsony	S
+1Thessz 5:14	hu	10	félelmes	parositva	9,10	G3588+G3642	alacsony	S
+1Thessz 5:14	hu	11	szívűeket	parositva	10	G3642	alacsony	S
+1Thessz 5:14	hu	12	gyámolítsátok	parositva	11	G0472	alacsony	S
+1Thessz 5:14	hu	13	az	betoldas			alacsony	S
+1Thessz 5:14	hu	14	erőteleneket	parositva	12,13	G3588+G0772	alacsony	S
+1Thessz 5:14	hu	15	türelmesek	parositva	14	G3114	alacsony	S
+1Thessz 5:14	hu	16	legyetek	betoldas			alacsony	S
+1Thessz 5:14	hu	17	mindenki	parositva	16	G3956	alacsony	S
+1Thessz 5:14	hu	18	iránt	parositva	15	G4314	alacsony	S
+1Thessz 5:14	er	1	Παρακαλοῦμεν	parositva	1	G3870	alacsony	S
+1Thessz 5:14	er	2	δὲ	parositva	2	G1161	alacsony	S
+1Thessz 5:14	er	3	ὑμᾶς,	parositva	3	G4771	alacsony	S
+1Thessz 5:14	er	4	ἀδελφοί,	parositva	4	G0080	alacsony	S
+1Thessz 5:14	er	5	νουθετεῖτε	parositva	5	G3560	alacsony	S
+1Thessz 5:14	er	6	τοὺς	parositva	7	G3588	alacsony	S
+1Thessz 5:14	er	7	ἀτάκτους,	parositva	7	G0813	alacsony	S
+1Thessz 5:14	er	8	παραμυθεῖσθε	parositva	8	G3888	alacsony	S
+1Thessz 5:14	er	9	τοὺς	parositva	10	G3588	alacsony	S
+1Thessz 5:14	er	10	ὀλιγοψύχους,	parositva	10,11	G3642	alacsony	S
+1Thessz 5:14	er	11	ἀντέχεσθε	parositva	12	G0472	alacsony	S
+1Thessz 5:14	er	12	τῶν	parositva	14	G3588	alacsony	S
+1Thessz 5:14	er	13	ἀσθενῶν,	parositva	14	G0772	alacsony	S
+1Thessz 5:14	er	14	μακροθυμεῖτε	parositva	15	G3114	alacsony	S
+1Thessz 5:14	er	15	πρὸς	parositva	18	G4314	alacsony	S
+1Thessz 5:14	er	16	πάντας.	parositva	17	G3956	alacsony	S
+1Thessz 5:15	hu	1	Vigyázzatok	parositva	1	G3708	alacsony	S
+1Thessz 5:15	hu	2	hogy	parositva	1	G3708	alacsony	S
+1Thessz 5:15	hu	3	senki	parositva	3	G5100	alacsony	S
+1Thessz 5:15	hu	4	senkinek	parositva	7	G5100	alacsony	S
+1Thessz 5:15	hu	5	rosszért	parositva	5,6	G0473+G2556	alacsony	S
+1Thessz 5:15	hu	6	rosszal	parositva	4	G2556	alacsony	S
+1Thessz 5:15	hu	7	ne	parositva	2	G3361	alacsony	S
+1Thessz 5:15	hu	8	fizessen	parositva	8	G0591	alacsony	S
+1Thessz 5:15	hu	9	hanem	parositva	9	G0235	alacsony	S
+1Thessz 5:15	hu	10	mindenkor	parositva	10	G3842	alacsony	S
+1Thessz 5:15	hu	11	jóra	parositva	11,12	G3588+G0018	alacsony	S
+1Thessz 5:15	hu	12	törekedjetek	parositva	13	G1377	alacsony	S
+1Thessz 5:15	hu	13	úgy	parositva	14	G2532	alacsony	S
+1Thessz 5:15	hu	14	egymás	parositva	16	G0240	alacsony	S
+1Thessz 5:15	hu	15	iránt	parositva	15	G1519	alacsony	S
+1Thessz 5:15	hu	16	mint	parositva	17	G2532	alacsony	S
+1Thessz 5:15	hu	17	mindenki	parositva	19	G3956	alacsony	S
+1Thessz 5:15	hu	18	iránt	parositva	18	G1519	alacsony	S
+1Thessz 5:15	er	1	ὁρᾶτε	parositva	1,2	G3708	alacsony	S
+1Thessz 5:15	er	2	μή	parositva	7	G3361	alacsony	S
+1Thessz 5:15	er	3	τις	parositva	3	G5100	alacsony	S
+1Thessz 5:15	er	4	κακὸν	parositva	6	G2556	alacsony	S
+1Thessz 5:15	er	5	ἀντὶ	parositva	5	G0473	alacsony	S
+1Thessz 5:15	er	6	κακοῦ	parositva	5	G2556	alacsony	S
+1Thessz 5:15	er	7	τινι	parositva	4	G5100	alacsony	S
+1Thessz 5:15	er	8	ἀποδῷ,	parositva	8	G0591	alacsony	S
+1Thessz 5:15	er	9	ἀλλὰ	parositva	9	G0235	alacsony	S
+1Thessz 5:15	er	10	πάντοτε	parositva	10	G3842	alacsony	S
+1Thessz 5:15	er	11	τὸ	parositva	11	G3588	alacsony	S
+1Thessz 5:15	er	12	ἀγαθὸν	parositva	11	G0018	alacsony	S
+1Thessz 5:15	er	13	διώκετε	parositva	12	G1377	alacsony	S
+1Thessz 5:15	er	14	καὶ	parositva	13	G2532	alacsony	S
+1Thessz 5:15	er	15	εἰς	parositva	15	G1519	alacsony	S
+1Thessz 5:15	er	16	ἀλλήλους	parositva	14	G0240	alacsony	S
+1Thessz 5:15	er	17	καὶ	parositva	16	G2532	alacsony	S
+1Thessz 5:15	er	18	εἰς	parositva	18	G1519	alacsony	S
+1Thessz 5:15	er	19	πάντας.	parositva	17	G3956	alacsony	S
+1Thessz 5:16	hu	1	Mindenkor	parositva	1	G3842	alacsony	S
+1Thessz 5:16	hu	2	örüljetek	parositva	2	G5463	alacsony	S
+1Thessz 5:16	er	1	πάντοτε	parositva	1	G3842	alacsony	S
+1Thessz 5:16	er	2	χαίρετε·	parositva	2	G5463	alacsony	S
+1Thessz 5:17	hu	1	Szüntelen	parositva	1	G0089	alacsony	S
+1Thessz 5:17	hu	2	imádkozzatok	parositva	2	G4336	alacsony	S
+1Thessz 5:17	er	1	ἀδιαλείπτως	parositva	1	G0089	alacsony	S
+1Thessz 5:17	er	2	προσεύχεσθε·	parositva	2	G4336	alacsony	S
+1Thessz 5:18	hu	1	Mindenben	parositva	1,2	G1722+G3956	alacsony	S
+1Thessz 5:18	hu	2	hálákat	parositva	3	G2168	alacsony	S
+1Thessz 5:18	hu	3	adjatok	parositva	3	G2168	alacsony	S
+1Thessz 5:18	hu	4	mert	parositva	5	G1063	alacsony	S
+1Thessz 5:18	hu	5	ez	parositva	4	G3778	alacsony	S
+1Thessz 5:18	hu	6	az	betoldas			alacsony	S
+1Thessz 5:18	hu	7	Isten	parositva	7	G2316	alacsony	S
+1Thessz 5:18	hu	8	akarata	parositva	6	G2307	alacsony	S
+1Thessz 5:18	hu	9	a	betoldas			alacsony	S
+1Thessz 5:18	hu	10	Krisztus	parositva	9	G5547	alacsony	S
+1Thessz 5:18	hu	11	Jézus	parositva	10	G2424	alacsony	S
+1Thessz 5:18	hu	12	által	parositva	8	G1722	alacsony	S
+1Thessz 5:18	hu	13	ti	parositva	12	G4771	alacsony	S
+1Thessz 5:18	hu	14	hozzátok	parositva	11,12	G1519+G4771	alacsony	S
+1Thessz 5:18	er	1	ἐν	parositva	1	G1722	alacsony	S
+1Thessz 5:18	er	2	παντὶ	parositva	1	G3956	alacsony	S
+1Thessz 5:18	er	3	εὐχαριστεῖτε·	parositva	2,3	G2168	alacsony	S
+1Thessz 5:18	er	4	τοῦτο	parositva	5	G3778	alacsony	S
+1Thessz 5:18	er	5	γὰρ	parositva	4	G1063	alacsony	S
+1Thessz 5:18	er	6	θέλημα	parositva	8	G2307	alacsony	S
+1Thessz 5:18	er	7	θεοῦ	parositva	7	G2316	alacsony	S
+1Thessz 5:18	er	8	ἐν	parositva	12	G1722	alacsony	S
+1Thessz 5:18	er	9	Χριστῷ	parositva	10	G5547	alacsony	S
+1Thessz 5:18	er	10	Ἰησοῦ	parositva	11	G2424	alacsony	S
+1Thessz 5:18	er	11	εἰς	parositva	14	G1519	alacsony	S
+1Thessz 5:18	er	12	ὑμᾶς.	parositva	13,14	G4771	alacsony	S
+1Thessz 5:19	hu	1	A	betoldas			alacsony	S
+1Thessz 5:19	hu	2	Lelket	parositva	2	G4151	alacsony	S
+1Thessz 5:19	hu	3	meg	parositva	4	G4570	alacsony	S
+1Thessz 5:19	hu	4	ne	parositva	3	G3361	alacsony	S
+1Thessz 5:19	hu	5	oltsátok	parositva	4	G4570	alacsony	S
+1Thessz 5:19	er	1	τὸ	forditatlan		G3588	alacsony	S
+1Thessz 5:19	er	2	πνεῦμα	parositva	2	G4151	alacsony	S
+1Thessz 5:19	er	3	μὴ	parositva	4	G3361	alacsony	S
+1Thessz 5:19	er	4	σβέννυτε·	parositva	3,5	G4570	alacsony	S
+1Thessz 5:20	hu	1	A	betoldas			alacsony	S
+1Thessz 5:20	hu	2	prófétálást	parositva	1	G4394	alacsony	S
+1Thessz 5:20	hu	3	meg	parositva	3	G1848	alacsony	S
+1Thessz 5:20	hu	4	ne	parositva	2	G3361	alacsony	S
+1Thessz 5:20	hu	5	vessétek	parositva	3	G1848	alacsony	S
+1Thessz 5:20	er	1	προφητείας	parositva	2	G4394	alacsony	S
+1Thessz 5:20	er	2	μὴ	parositva	4	G3361	alacsony	S
+1Thessz 5:20	er	3	ἐξουθενεῖτε·	parositva	3,5	G1848	alacsony	S
+1Thessz 5:21	hu	1	Mindent	parositva	1	G3956	alacsony	S
+1Thessz 5:21	hu	2	megpróbáljatok	parositva	3	G1381	alacsony	S
+1Thessz 5:21	hu	3	a	betoldas			alacsony	S
+1Thessz 5:21	hu	4	mi	betoldas			alacsony	S
+1Thessz 5:21	hu	5	jó	parositva	5	G2570	alacsony	S
+1Thessz 5:21	hu	6	azt	betoldas			alacsony	S
+1Thessz 5:21	hu	7	megtartsátok	parositva	6	G2722	alacsony	S
+1Thessz 5:21	er	1	πάντα	parositva	1	G3956	alacsony	S
+1Thessz 5:21	er	2	δὲ	forditatlan		G1161	alacsony	S
+1Thessz 5:21	er	3	δοκιμάζετε·	parositva	2	G1381	alacsony	S
+1Thessz 5:21	er	4	τὸ	forditatlan		G3588	alacsony	S
+1Thessz 5:21	er	5	καλὸν	parositva	5	G2570	alacsony	S
+1Thessz 5:21	er	6	κατέχετε·	parositva	7	G2722	alacsony	S
+1Thessz 5:22	hu	1	Mindentől	parositva	1,2	G0575+G3956	alacsony	S
+1Thessz 5:22	hu	2	a	betoldas			alacsony	S
+1Thessz 5:22	hu	3	mi	betoldas			alacsony	S
+1Thessz 5:22	hu	4	gonosznak	parositva	4	G4190	alacsony	S
+1Thessz 5:22	hu	5	látszik	parositva	3	G1491	alacsony	S
+1Thessz 5:22	hu	6	őrizkedjetek	parositva	5	G0568	alacsony	S
+1Thessz 5:22	er	1	ἀπὸ	parositva	1	G0575	alacsony	S
+1Thessz 5:22	er	2	παντὸς	parositva	1	G3956	alacsony	S
+1Thessz 5:22	er	3	εἴδους	parositva	5	G1491	alacsony	S
+1Thessz 5:22	er	4	πονηροῦ	parositva	4	G4190	alacsony	S
+1Thessz 5:22	er	5	ἀπέχεσθε.	parositva	6	G0568	alacsony	S
+1Thessz 5:23	hu	1	Maga	parositva	1	G0846	alacsony	S
+1Thessz 5:23	hu	2	pedig	parositva	2	G1161	alacsony	S
+1Thessz 5:23	hu	3	a	betoldas			alacsony	S
+1Thessz 5:23	hu	4	békességnek	parositva	6	G1515	alacsony	S
+1Thessz 5:23	hu	5	Istene	parositva	4	G2316	alacsony	S
+1Thessz 5:23	hu	6	szenteljen	parositva	7	G0037	alacsony	S
+1Thessz 5:23	hu	7	meg	parositva	7	G0037	alacsony	S
+1Thessz 5:23	hu	8	titeket	parositva	8	G4771	alacsony	S
+1Thessz 5:23	hu	9	mindenestől	parositva	9	G3651	alacsony	S
+1Thessz 5:23	hu	10	és	parositva	10	G2532	alacsony	S
+1Thessz 5:23	hu	11	a	betoldas			alacsony	S
+1Thessz 5:23	hu	12	ti	parositva	12	G4771	alacsony	S
+1Thessz 5:23	hu	13	egész	parositva	11	G3648	alacsony	S
+1Thessz 5:23	hu	14	valótok	parositva	12,14	G4771+G4151	alacsony	S
+1Thessz 5:23	hu	15	mind	parositva	15	G2532	alacsony	S
+1Thessz 5:23	hu	16	lelketek	parositva	17	G5590	alacsony	S
+1Thessz 5:23	hu	17	mind	parositva	18	G2532	alacsony	S
+1Thessz 5:23	hu	18	testetek	parositva	20	G4983	alacsony	S
+1Thessz 5:23	hu	19	feddhetetlenül	parositva	21	G0274	alacsony	S
+1Thessz 5:23	hu	20	őriztessék	parositva	30	G5083	alacsony	S
+1Thessz 5:23	hu	21	meg	parositva	30	G5083	alacsony	S
+1Thessz 5:23	hu	22	a	betoldas			alacsony	S
+1Thessz 5:23	hu	23	mi	parositva	27	G3165	alacsony	S
+1Thessz 5:23	hu	24	Urunk	parositva	26,27	G2962+G3165	alacsony	S
+1Thessz 5:23	hu	25	Jézus	parositva	28	G2424	alacsony	S
+1Thessz 5:23	hu	26	Krisztus	parositva	29	G5547	alacsony	S
+1Thessz 5:23	hu	27	eljövetelére	parositva	22,24	G1722+G3952	alacsony	S
+1Thessz 5:23	er	1	αὐτὸς	parositva	1	G0846	alacsony	S
+1Thessz 5:23	er	2	δὲ	parositva	2	G1161	alacsony	S
+1Thessz 5:23	er	3	ὁ	forditatlan		G3588	alacsony	S
+1Thessz 5:23	er	4	θεὸς	parositva	5	G2316	alacsony	S
+1Thessz 5:23	er	5	τῆς	forditatlan		G3588	alacsony	S
+1Thessz 5:23	er	6	εἰρήνης	parositva	4	G1515	alacsony	S
+1Thessz 5:23	er	7	ἁγιάσαι	parositva	6,7	G0037	alacsony	S
+1Thessz 5:23	er	8	ὑμᾶς	parositva	8	G4771	alacsony	S
+1Thessz 5:23	er	9	ὁλοτελεῖς,	parositva	9	G3651	alacsony	S
+1Thessz 5:23	er	10	καὶ	parositva	10	G2532	alacsony	S
+1Thessz 5:23	er	11	ὁλόκληρον	parositva	13	G3648	alacsony	S
+1Thessz 5:23	er	12	ὑμῶν	parositva	12,14	G4771	alacsony	S
+1Thessz 5:23	er	13	τὸ	forditatlan		G3588	alacsony	S
+1Thessz 5:23	er	14	πνεῦμα	parositva	14	G4151	alacsony	S
+1Thessz 5:23	er	15	καὶ	parositva	15	G2532	alacsony	S
+1Thessz 5:23	er	16	ἡ	forditatlan		G3588	alacsony	S
+1Thessz 5:23	er	17	ψυχὴ	parositva	16	G5590	alacsony	S
+1Thessz 5:23	er	18	καὶ	parositva	17	G2532	alacsony	S
+1Thessz 5:23	er	19	τὸ	forditatlan		G3588	alacsony	S
+1Thessz 5:23	er	20	σῶμα	parositva	18	G4983	alacsony	S
+1Thessz 5:23	er	21	ἀμέμπτως	parositva	19	G0274	alacsony	S
+1Thessz 5:23	er	22	ἐν	parositva	27	G1722	alacsony	S
+1Thessz 5:23	er	23	τῇ	forditatlan		G3588	alacsony	S
+1Thessz 5:23	er	24	παρουσίᾳ	parositva	27	G3952	alacsony	S
+1Thessz 5:23	er	25	τοῦ	forditatlan		G3588	alacsony	S
+1Thessz 5:23	er	26	κυρίου	parositva	24	G2962	alacsony	S
+1Thessz 5:23	er	27	ἡμῶν	parositva	23,24	G3165	alacsony	S
+1Thessz 5:23	er	28	Ἰησοῦ	parositva	25	G2424	alacsony	S
+1Thessz 5:23	er	29	Χριστοῦ	parositva	26	G5547	alacsony	S
+1Thessz 5:23	er	30	τηρηθείη.	parositva	20,21	G5083	alacsony	S
+1Thessz 5:24	hu	1	Hű	parositva	1	G4103	alacsony	S
+1Thessz 5:24	hu	2	az	parositva	2	G3588	alacsony	S
+1Thessz 5:24	hu	3	a	betoldas			alacsony	S
+1Thessz 5:24	hu	4	ki	betoldas			alacsony	S
+1Thessz 5:24	hu	5	elhivott	parositva	3	G2564	alacsony	S
+1Thessz 5:24	hu	6	titeket	parositva	4	G4771	alacsony	S
+1Thessz 5:24	hu	7	és	betoldas			alacsony	S
+1Thessz 5:24	hu	8	ő	parositva	5	G3739	alacsony	S
+1Thessz 5:24	hu	9	meg	parositva	7	G4160	alacsony	S
+1Thessz 5:24	hu	10	is	parositva	6	G2532	alacsony	S
+1Thessz 5:24	hu	11	cselekszi	parositva	7	G4160	alacsony	S
+1Thessz 5:24	hu	12	azt	betoldas			alacsony	S
+1Thessz 5:24	er	1	πιστὸς	parositva	1	G4103	alacsony	S
+1Thessz 5:24	er	2	ὁ	parositva	2	G3588	alacsony	S
+1Thessz 5:24	er	3	καλῶν	parositva	5	G2564	alacsony	S
+1Thessz 5:24	er	4	ὑμᾶς,	parositva	6	G4771	alacsony	S
+1Thessz 5:24	er	5	ὃς	parositva	8	G3739	alacsony	S
+1Thessz 5:24	er	6	καὶ	parositva	10	G2532	alacsony	S
+1Thessz 5:24	er	7	ποιήσει.¶	parositva	9,11	G4160	alacsony	S
+1Thessz 5:25	hu	1	Atyámfiai	parositva	1	G0080	alacsony	S
+1Thessz 5:25	hu	2	imádkozzatok	parositva	2	G4336	alacsony	S
+1Thessz 5:25	hu	3	érettünk	parositva	4,5	G4012+G3165	alacsony	S
+1Thessz 5:25	er	1	Ἀδελφοί,	parositva	1	G0080	alacsony	S
+1Thessz 5:25	er	2	προσεύχεσθε	parositva	2	G4336	alacsony	S
+1Thessz 5:25	er	3	καὶ	forditatlan		G2532	alacsony	S
+1Thessz 5:25	er	4	περὶ	parositva	3	G4012	alacsony	S
+1Thessz 5:25	er	5	ἡμῶν.¶	parositva	3	G3165	alacsony	S
+1Thessz 5:26	hu	1	Köszöntsétek	parositva	1	G0782	alacsony	S
+1Thessz 5:26	hu	2	az	betoldas			alacsony	S
+1Thessz 5:26	hu	3	összes	parositva	4	G3956	alacsony	S
+1Thessz 5:26	hu	4	atyafiakat	parositva	3	G0080	alacsony	S
+1Thessz 5:26	hu	5	szent	parositva	7	G0040	alacsony	S
+1Thessz 5:26	hu	6	csókolással	parositva	5,6	G1722+G5370	alacsony	S
+1Thessz 5:26	er	1	Ἀσπάσασθε	parositva	1	G0782	alacsony	S
+1Thessz 5:26	er	2	τοὺς	forditatlan		G3588	alacsony	S
+1Thessz 5:26	er	3	ἀδελφοὺς	parositva	4	G0080	alacsony	S
+1Thessz 5:26	er	4	πάντας	parositva	3	G3956	alacsony	S
+1Thessz 5:26	er	5	ἐν	parositva	6	G1722	alacsony	S
+1Thessz 5:26	er	6	φιλήματι	parositva	6	G5370	alacsony	S
+1Thessz 5:26	er	7	ἁγίῳ.	parositva	5	G0040	alacsony	S
+1Thessz 5:27	hu	1	Kényszerítlek	betoldas			alacsony	S
+1Thessz 5:27	hu	2	titeket	parositva	2	G4771	alacsony	S
+1Thessz 5:27	hu	3	az	betoldas			alacsony	S
+1Thessz 5:27	hu	4	Úrra	parositva	4	G2962	alacsony	S
+1Thessz 5:27	hu	5	hogy	betoldas			alacsony	S
+1Thessz 5:27	hu	6	olvastassék	parositva	5	G0314	alacsony	S
+1Thessz 5:27	hu	7	fel	parositva	5	G0314	alacsony	S
+1Thessz 5:27	hu	8	e	parositva	6	G3588	alacsony	S
+1Thessz 5:27	hu	9	levél	parositva	7	G1992	alacsony	S
+1Thessz 5:27	hu	10	minden	parositva	8	G3956	alacsony	S
+1Thessz 5:27	hu	11	szent	parositva	10	G0040	alacsony	S
+1Thessz 5:27	hu	12	atyafi	parositva	11	G0080	alacsony	S
+1Thessz 5:27	hu	13	előtt	parositva	8	G3956	alacsony	S
+1Thessz 5:27	er	1	ἐνορκίζω	forditatlan		G6034	alacsony	S
+1Thessz 5:27	er	2	ὑμᾶς	parositva	2	G4771	alacsony	S
+1Thessz 5:27	er	3	τὸν	forditatlan		G3588	alacsony	S
+1Thessz 5:27	er	4	κύριον	parositva	4	G2962	alacsony	S
+1Thessz 5:27	er	5	ἀναγνωσθῆναι	parositva	6,7	G0314	alacsony	S
+1Thessz 5:27	er	6	τὴν	parositva	8	G3588	alacsony	S
+1Thessz 5:27	er	7	ἐπιστολὴν	parositva	9	G1992	alacsony	S
+1Thessz 5:27	er	8	πᾶσιν	parositva	10,13	G3956	alacsony	S
+1Thessz 5:27	er	9	τοῖς	forditatlan		G3588	alacsony	S
+1Thessz 5:27	er	10	ἁγίοις	parositva	11	G0040	alacsony	S
+1Thessz 5:27	er	11	ἀδελφοῖς.¶	parositva	12	G0080	alacsony	S
+1Thessz 5:28	hu	1	A	betoldas			alacsony	S
+1Thessz 5:28	hu	2	mi	parositva	5	G3165	alacsony	S
+1Thessz 5:28	hu	3	Urunk	parositva	4,5	G2962+G3165	alacsony	S
+1Thessz 5:28	hu	4	Jézus	parositva	6	G2424	alacsony	S
+1Thessz 5:28	hu	5	Krisztusnak	parositva	7	G5547	alacsony	S
+1Thessz 5:28	hu	6	kegyelme	parositva	2	G5485	alacsony	S
+1Thessz 5:28	hu	7	veletek	parositva	8,9	G3326+G4771	alacsony	S
+1Thessz 5:28	hu	8	Ámen	parositva	10	G0281	alacsony	S
+1Thessz 5:28	er	1	Ἡ	forditatlan		G3588	alacsony	S
+1Thessz 5:28	er	2	χάρις	parositva	6	G5485	alacsony	S
+1Thessz 5:28	er	3	τοῦ	forditatlan		G3588	alacsony	S
+1Thessz 5:28	er	4	κυρίου	parositva	3	G2962	alacsony	S
+1Thessz 5:28	er	5	ἡμῶν	parositva	2,3	G3165	alacsony	S
+1Thessz 5:28	er	6	Ἰησοῦ	parositva	4	G2424	alacsony	S
+1Thessz 5:28	er	7	Χριστοῦ	parositva	5	G5547	alacsony	S
+1Thessz 5:28	er	8	μεθ᾽	parositva	7	G3326	alacsony	S
+1Thessz 5:28	er	9	ὑμῶν.	parositva	7	G4771	alacsony	S
+1Thessz 5:28	er	10	ἀμήν.	parositva	8	G0281	alacsony	S
+1Thessz 5:28	er	11	πρός	forditatlan		G4314	alacsony	S
+1Thessz 5:28	er	12	Θεσσαλονικείς	forditatlan		G2331	alacsony	S
+1Thessz 5:28	er	13	πρώτη	forditatlan		G4413	alacsony	S
+1Thessz 5:28	er	14	ἐγράφη	forditatlan		G1125	alacsony	S
+1Thessz 5:28	er	15	ἀπό	forditatlan		G0575	alacsony	S
+1Thessz 5:28	er	16	Ἀθηνῶν.¶	forditatlan		G0116	alacsony	S
