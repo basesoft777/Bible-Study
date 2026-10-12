@@ -6,7 +6,8 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: nem_indult
+allapot: fut
+ag: claude/f80-karoli-potlas
 ad: a kész (teljes) BDB-fordítású szócikkek Károli-alakjai és példaversei a teljes ÓSZ Károli–Strong párosításból pótolva adatként; a fordítás szövege nem változik
 kovetkezo: "M0 felmérés (csak olvas); ⛔ a tárolás helye (a forditasok.tsv mezője vagy külön tábla, SEMA-bővítéssel)"
 olvas: [adat/karoli_strong/, adat/forditasok.tsv, adat/SEMA.md, eszkozok/bdb_adatblokk.py, naplok/BDB_FORDITAS_sorrend.tsv, naplok/BDB_FORDITAS_naplo.md, F38_BDB_FORDITAS_BRIEF.md, F56_BDB_ADATBLOKK_BRIEF.md]
