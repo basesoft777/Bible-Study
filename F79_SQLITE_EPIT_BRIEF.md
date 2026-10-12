@@ -6,7 +6,8 @@ tipus: feladat
 fazis: 1
 munka: adat
 modell: sonnet
-allapot: nem_indult
+allapot: fut
+ag: claude/f79-sqlite-epit
 ad: eszkozok/sqlite_epit.py — az adat/ és a konkordancia/ kanonikus tábláiból determinisztikusan épített, nem commitolt pardes.db (SEMA-típusok, KK-alapú vers-kulcs, normalizált igehely és Strong, licenc_allapot és kereskedelmi minden táblán, strong_parok és frázis-pozíció előszámolva, FTS a motivumok/ fölött); a SEMA 3. integritási szabályai az ellenoriz.py függvényein át futnak, sértésnél megáll; mért méret és lekérdezés-próba a 26 pontból az 1–6., 13–15. pontra
 kovetkezo: /kovetkezo; ⛔ az M0 felmérés után (séma-terv és a nyitott pontok), ⛔ a kis minta lekérdezés-próbája után, a teljes építés előtt
 olvas: [adat/SEMA.md, adat/, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/BSB_Strongs.tsv, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, motivumok/, tematikus_lezart/, genezis/, ujszovetseg/, eszkozok/strong_util.py, eszkozok/ellenoriz.py, eszkozok/gate.py, MUNKATERV.md, ADATVAGYON_TERV.md]
