@@ -5,9 +5,9 @@ Az adat.py-t ideiglenes könyvtárba futtatja mindkét szakaszra (a kimenet nem 
 ellenőrzi: a szakasz-feloldást, a fő szó választását, a görög szóalak párosítását, a BDB-bontást,
 a proveniencia-sorokat, a „csak adat” ellenőrzőlistát (minden blokk-cím kap jelleg-címkét és
 adatforrást; nincs feladatszám az oldalon).
-Regressziós alap: ha az OLVASO_PROTOTIP_JSON környezeti változó egy korábbi (F60.4, a bővítés előtti)
-olvaso_pilot.json útvonala, az 1Móz 1:1–2:3 kimenete ahhoz képest csak új mezőkkel térhet el (a macula.morf_hu
-maszkolva: a feloldás üres volt). Előállítás: git worktree add <könyvtár> 98b5098, ott adat.py --szakasz ... --kimenet ...
+Regresszió (K1): a TestRegresszioProto a prototípus (ce4ef98f) adat.py-ját a gitből ideiglenes fájlba írja, lefuttatja, és az
+1Móz 1:1–2:3 kimenet minden kulcsának értékét összeveti (kivétel: ts= és az indokolt, darabszámmal megadott ENGEDELYEZETT lista).
+A TestTeljes1Moz1_25 az 1Móz 1–25-öt (693 vers, ~30 s) futtatja. A TestKiadas az adat.py --kiadas kapcsolót ellenőrzi (DT-F60a).
 A bővítés (F60.5) és a Szó / Vers részletei fülváltás (hidden szabály) tesztjei is itt vannak."""
 import json
 import os
@@ -753,31 +753,216 @@ class BdbSzeletelesAtnezes(unittest.TestCase):
         self.assertEqual([t['nev'] for t in ige['torzsek']], ['Qal'])
 
 
-class Regresszio(unittest.TestCase):
-    @unittest.skipUnless(os.environ.get('OLVASO_PROTOTIP_JSON'), 'OLVASO_PROTOTIP_JSON nincs megadva')
-    def test_prototipussal_azonos(self):
-        """Az 1Móz 1:1–2:3 JSON a korábbi (F60.4) kimenethez képest csak az új mezőkkel térhet el.
-        Maszkolt (szándékosan megváltozott) érték: macula.morf_hu (a feloldás üres volt)."""
-        MASZK = {'morf_hu'}
-        a = json.load(open(os.environ['OLVASO_PROTOTIP_JSON'], encoding='utf-8'))
-        b = json.load(open(os.path.join(TMP, 'gen', 'olvaso_pilot.json'), encoding='utf-8'))
+class TestRegresszioProto(unittest.TestCase):
+    """K1 (M4: F60.45): az 1Móz 1:1–2:3 kimenet a prototípus (ce4ef98f, F60.0) kimenetével értékazonos: a prototípus
+    minden kulcsának értéke megegyezik, a `ts=` időbélyeg kivételével és az alábbi, indokolt ENGEDELYEZETT listán kívül.
+    A teszt maga állítja elő a prototípus-kimenetet (git show → ideiglenes fájl → ideiglenes kimenet-könyvtár), nem kihagyható.
+    Az engedélyezett eltérés: (darabszám, indok). A darabszám pontos; adat- vagy szabályváltozásnál a lista
+    szándékosan elromlik, és az új eltérést indokolni kell."""
+    PROTO = 'ce4ef98f'
+    ENGEDELYEZETT = {
+        'morf_hu': (746, 'macula.morf_hu: a prototípusban üres volt, a v2 az adat/morf_kulcs_heber.tsv-ből feloldja (F60.5, gépi feldolgozás)'),
+        'tbesg_teljes': (38, 'gor_lapok.*.tbesg: a prototípus 900 karakterre vágta „…”-tal; a v3.1 szabály szerint a teljes angol szöveg áll a lapon (F60.46)'),
+        'thayer_teljes': (64, 'gor_lapok.*.thayer: a prototípus 700 karakterre vágta „…”-tal; a teljes angol szöveg áll a lapon (F60.46)'),
+        'bdb_szeletelo': (8, 'lapok.{H1254,H2416,H3651,H4723,H6960,H7235,H7287,H7363}.appar: a BDB-szeletelő változása (F60.31–F60.38: a homonima-szerep azonos_lemma/masik_lemma/elo, a H4723 szócikk fejléce és szakaszai)'),
+        'prov_elofordulas': (1, 'prov.elofordulas: a „(nem teljes)” megjegyzés kivéve (F60.29: a TAHOT fejezet-szinten teljes, F85)'),
+    }
+    BDB_LAPOK = {'H1254', 'H2416', 'H3651', 'H4723', 'H6960', 'H7235', 'H7287', 'H7363'}
 
-        def reszhalmaz(x, y, ut):
+    @staticmethod
+    def _ts(x):
+        return re.sub(r'ts=[0-9T:\-Z]+', 'ts=X', x) if isinstance(x, str) else x
+
+    def _proto_json(self):
+        r = subprocess.run(['git', '-C', GY, 'show', '%s:eszkozok/olvaso_pilot/adat.py' % self.PROTO], capture_output=True)
+        self.assertEqual(r.returncode, 0, 'a prototípus (%s) nem érhető el a git-történetben (a teszt nem hagyható ki)' % self.PROTO)
+        proto_ut = os.path.join(D, '_proto_adat_teszt.py')
+        ki = os.path.join(TMP, 'proto')
+        try:
+            with open(proto_ut, 'wb') as fh:
+                fh.write(r.stdout)
+            p = subprocess.run([sys.executable, proto_ut, '--kimenet', ki], capture_output=True, text=True, encoding='utf-8')
+            self.assertEqual(p.returncode, 0, p.stderr[-800:])
+        finally:
+            if os.path.exists(proto_ut):
+                os.remove(proto_ut)
+        with open(os.path.join(ki, 'olvaso_pilot.json'), encoding='utf-8') as fh:
+            return json.load(fh)
+
+    def test_ertekazonos_a_prototipussal(self):
+        p = self._proto_json()
+        g = ADAT['gen']
+        szamlalo = {k: 0 for k in self.ENGEDELYEZETT}
+        elteres = []
+
+        def hasonlit(x, y, ut):
+            m = re.match(r'^/lapok/(H\d{4})/appar$', ut)
+            if m and m.group(1) in self.BDB_LAPOK:
+                if x != y:
+                    szamlalo['bdb_szeletelo'] += 1
+                return
             if isinstance(x, dict):
-                self.assertIsInstance(y, dict, ut)
+                if not isinstance(y, dict):
+                    elteres.append(ut + ' típus')
+                    return
                 for k, v in x.items():
-                    self.assertIn(k, y, ut + '/' + k)
-                    if k not in MASZK:
-                        reszhalmaz(v, y[k], ut + '/' + k)
+                    if k not in y:
+                        elteres.append('%s/%s hiányzik' % (ut, k))
+                    else:
+                        hasonlit(v, y[k], '%s/%s' % (ut, k))
             elif isinstance(x, list):
-                self.assertEqual(len(x), len(y), ut)
-                for i, (p, q) in enumerate(zip(x, y)):
-                    reszhalmaz(p, q, '%s[%d]' % (ut, i))
+                if not isinstance(y, list) or len(x) != len(y):
+                    elteres.append(ut + ' hossz')
+                    return
+                for i, (a, b) in enumerate(zip(x, y)):
+                    hasonlit(a, b, '%s[%d]' % (ut, i))
             else:
-                if isinstance(x, str):     # a ts= mező a futás ideje: maszkolva
-                    x, y = re.sub(r'ts=[0-9T:\-Z]+', 'ts=X', x), re.sub(r'ts=[0-9T:\-Z]+', 'ts=X', y)
-                self.assertEqual(x, y, ut)
-        reszhalmaz(a, b, '')
+                a, b = self._ts(x), self._ts(y)
+                if a == b:
+                    return
+                if re.match(r'^/versek\[\d+\]/heber\[\d+\]/macula/morf_hu$', ut) and a == '':
+                    szamlalo['morf_hu'] += 1
+                elif re.match(r'^/gor_lapok/G\d{4}/tbesg$', ut) and a.endswith('…') and b.startswith(a[:-1]) and len(b) > len(a) - 1:
+                    szamlalo['tbesg_teljes'] += 1
+                elif re.match(r'^/gor_lapok/G\d{4}/thayer$', ut) and a.endswith('…') and b.startswith(a[:-1]) and len(b) > len(a) - 1:
+                    szamlalo['thayer_teljes'] += 1
+                elif ut == '/prov/elofordulas' and a.replace(' (nem teljes)', '') == b:
+                    szamlalo['prov_elofordulas'] += 1
+                else:
+                    elteres.append('%s: %r != %r' % (ut, str(a)[:60], str(b)[:60]))
+
+        hasonlit(p, g, '')
+        self.assertEqual(elteres[:10], [])
+        self.assertEqual(szamlalo, {k: v[0] for k, v in self.ENGEDELYEZETT.items()})
+
+    def test_bdb_lapok_a_felsoroltakon_kivul_azonosak(self):
+        """A BDB-szeletelő változása csak a felsorolt 8 szó-lapot érinti: a többi 90 lap appar-ja azonos."""
+        p = self._proto_json()
+        for s, l in p['lapok'].items():
+            if s not in self.BDB_LAPOK:
+                self.assertEqual(l['appar'], ADAT['gen']['lapok'][s]['appar'], s)
+        self.assertEqual(len(p['lapok']), 98)
+
+
+class TestTeljes1Moz1_25(unittest.TestCase):
+    """K1: az 1Móz 1–25 szakasz 693 verset ad, az adat.py hibátlanul lefut (~30 s), a kimenet első versei és a közös
+    szó-lapok azonosak az 1Móz 1:1–2:3 futáséval."""
+    @classmethod
+    def setUpClass(cls):
+        cls.d = futtat('1Móz 1-25', os.path.join(TMP, 'gen25'))
+
+    def test_693_vers(self):
+        self.assertEqual(len(self.d['versek']), 693)
+        self.assertEqual((self.d['versek'][0]['igehely'], self.d['versek'][-1]['igehely']), ('1Móz 1:1', '1Móz 25:34'))
+
+    def test_elso_versek_egyeznek_az_1_1_2_3_futassal(self):
+        a = ADAT['gen']
+        self.assertEqual(self.d['versek'][:len(a['versek'])], a['versek'])
+        for s, l in a['lapok'].items():
+            self.assertEqual(self.d['lapok'][s], l, s)
+
+    def test_nincs_ures_vers(self):
+        self.assertTrue(all(v['karoli'] and v['heber'] for v in self.d['versek']))
+
+
+class TestTeljesAngolSzoveg(unittest.TestCase):
+    """F60.46 (v3.1): a TBESG- és a Thayer-szöveg vágás nélkül áll a lapon, gördíthető blokkban."""
+    def test_nincs_vagas(self):
+        g = ADAT['gen']['gor_lapok']
+        self.assertGreater(max(len(x['tbesg']) for x in g.values()), 900)
+        self.assertGreater(max(len(x['thayer']) for x in g.values()), 700)
+        self.assertFalse([k for k, x in g.items() if x['tbesg'].endswith('…') or x['thayer'].endswith('…')])
+
+    def test_gordulo_blokk_a_sablonban(self):
+        h = open(os.path.join(D, 'sablon.html'), encoding='utf-8').read()
+        self.assertIn('.bdb.hosszu { max-height', h)
+        self.assertIn("class: 'bdb en hosszu', lang: 'en', text: l.tbesg", h)
+        self.assertIn("class: 'bdb en hosszu', lang: 'en', text: l.thayer", h)
+
+    def test_tbesh_licenc_adatbol(self):
+        """A TBESH licencsora nem rögzített szöveg: a licenc a `D.licenc` / `licenc_jelzes` adatból jön."""
+        h = open(os.path.join(D, 'sablon.html'), encoding='utf-8').read()
+        self.assertNotIn('licenc-kérdés nyitott', h)
+        self.assertIn('TBESH', ADAT['gen']['licenc'])
+        self.assertEqual(ADAT['gen']['licenc_jelzes']['TBESH']['allapot'], 'tisztazott')
+
+
+class TestKiadas(unittest.TestCase):
+    """DT-F60a (a 2. előkészítése): az adat.py --kiadas {belso,nyilvanos,kereskedelmi}; alapérték: belso."""
+    @classmethod
+    def setUpClass(cls):
+        cls.k = {}
+        for kiadas in ('belso', 'nyilvanos', 'kereskedelmi'):
+            ki = os.path.join(TMP, 'kiadas_' + kiadas)
+            p = subprocess.run([sys.executable, os.path.join(D, 'adat.py'), '--szakasz', 'Zsolt 22', '--kimenet', ki, '--kiadas', kiadas],
+                               capture_output=True, text=True, encoding='utf-8')
+            if p.returncode:
+                raise RuntimeError('adat.py --kiadas %s: %s' % (kiadas, p.stderr[-800:]))
+            with open(os.path.join(ki, 'olvaso_pilot.json'), encoding='utf-8') as fh:
+                cls.k[kiadas] = json.load(fh)
+
+    @staticmethod
+    def _kjv_van(d):
+        return all(v['angol']['kjv'] and v['angol']['kjv']['szavak'] for v in d['versek'][2:])
+
+    @staticmethod
+    def _mcged_db(d):
+        return sum(1 for g in d['gor_lapok'].values() if g.get('mcged'))
+
+    def test_belso_minden_blokk(self):
+        d = self.k['belso']
+        self.assertEqual(d['kiadas'], 'belso')
+        self.assertTrue(self._kjv_van(d))
+        self.assertGreater(self._mcged_db(d), 0)
+        self.assertIn('kjv', d['prov'])
+        self.assertIn('mcged', d['prov'])
+
+    def test_alap_a_belso(self):
+        """Paraméter nélkül futtatva (ADAT['zsolt']) a kimenet azonos a --kiadas belso kimenettel (a ts kivételével)."""
+        def maszk(d):
+            return re.sub(r'ts=[0-9T:\-Z]+', 'ts=X', json.dumps(d, ensure_ascii=False, sort_keys=True))
+        self.assertEqual(maszk(ADAT['zsolt']), maszk(self.k['belso']))
+
+    def test_nyilvanos_nincs_kjv_strong(self):
+        d = self.k['nyilvanos']
+        self.assertEqual(d['kiadas'], 'nyilvanos')
+        self.assertTrue(all(v['angol']['kjv'] is None for v in d['versek']))
+        self.assertTrue(all(v['angol']['bsb'] for v in d['versek']))
+        self.assertNotIn('kjv', d['prov'])
+        self.assertEqual(d['stat']['kjv_vers'], 0)
+        self.assertEqual(self._mcged_db(d), self._mcged_db(self.k['belso']))
+        self.assertIn('mcged', d['prov'])
+
+    def test_kereskedelmi_nincs_kjv_es_mcged(self):
+        d = self.k['kereskedelmi']
+        self.assertEqual(d['kiadas'], 'kereskedelmi')
+        self.assertTrue(all(v['angol']['kjv'] is None for v in d['versek']))
+        self.assertEqual(self._mcged_db(d), 0)
+        self.assertNotIn('kjv', d['prov'])
+        self.assertNotIn('mcged', d['prov'])
+        self.assertEqual(d['stat']['mcged'], 0)
+
+    def test_a_tobbi_adat_valtozatlan(self):
+        """A kiadás-szűrő csak a két blokkot veszi ki: a héber, görög, vers-adat többi része azonos a belső kiadáséval."""
+        b = self.k['belso']
+        for kiadas in ('nyilvanos', 'kereskedelmi'):
+            d = self.k[kiadas]
+            for vb, vd in zip(b['versek'], d['versek']):
+                self.assertEqual({k: v for k, v in vb.items() if k != 'angol'}, {k: v for k, v in vd.items() if k != 'angol'})
+                self.assertEqual(vb['angol']['bsb'], vd['angol']['bsb'])
+            self.assertEqual(b['lapok'], d['lapok'])
+            for s, g in b['gor_lapok'].items():
+                self.assertEqual({k: v for k, v in g.items() if k != 'mcged'}, {k: v for k, v in d['gor_lapok'][s].items() if k != 'mcged'})
+
+    def test_ervenytelen_ertek_hiba(self):
+        p = subprocess.run([sys.executable, os.path.join(D, 'adat.py'), '--szakasz', 'Zsolt 22', '--kiadas', 'xx',
+                            '--kimenet', os.path.join(TMP, 'kiadas_xx')], capture_output=True, text=True, encoding='utf-8')
+        self.assertNotEqual(p.returncode, 0)
+
+    def test_sablon_kezeli_a_hianyzo_blokkot(self):
+        h = open(os.path.join(D, 'sablon.html'), encoding='utf-8').read()
+        self.assertIn("a.kjv ? angolBlokk('Angol szó szavanként (KJV)'", h)
+        self.assertIn("D.kiadas === 'kereskedelmi' ? null : mcgedBlokk(l)", h)
 
 
 class TestDbMeres(unittest.TestCase):
