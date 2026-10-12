@@ -7,7 +7,7 @@
 - Döntések: DT-F60a (belső pilotban minden blokk; KJV-Strong kimarad minden nyilvános kiadásból; MCGED csak nem kereskedelmiben), DT-F60b (új feladat a feliratos zsoltárok számozására), a „Gépi szeletelés (próba)” felirat marad.
 - BDB-szeletelő: 19 szócikk átnézve (11 javult, 5 romlott és visszaállítva, 3 mindkettő hibás); 147 szócikk szerkezete változott; a személyszám-jelölő tévesen jelentés-sorszám: 177 → 3.
 - M4-javítás (az ellenőr 14 eltérése): CI E5, K1 (értékazonos prototípus-regresszió engedélyezett-eltérés listával, 1Móz 1–25 teszt), újramérés, teljes angol szöveg, TBESH licencsor adatból, `adat.py --kiadas {belso,nyilvanos,kereskedelmi}` (DT-F60a 2. előkészítése), A1-ellenőrzés (a 12 BDB nélküli lap nincs alias alatt).
-- Tesztek: `teszt_olvaso_pilot.py` 99 teszt OK (0 kihagyva); `feladatok.py ellenoriz` 110 brief, 0 hiba, 0 figyelmeztetés.
+- Tesztek: `teszt_olvaso_pilot.py` 100 teszt OK (0 kihagyva); `feladatok.py ellenoriz` 110 brief, 0 hiba, 0 figyelmeztetés.
 - Nyitott: DT-F60c (a `KJV_Strongs_teljes.tsv` GPL-forrás a nyilvános repóban; 🟡).
 - Nyitott: a szeletelő ismert hibái (H0834, H3318, H1157, H2009, homonima-törzsek) és az 510 számozott jelentés nélküli BDB-lap (47,4%) oka.
 - Nyitott: a `tW_szocikkek.tsv` egy cikkében U+FFFD (forrásadat-hiba, nem javítva).

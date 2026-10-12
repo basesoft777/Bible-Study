@@ -40,7 +40,7 @@
 | Jelentés | görög szó-lap | forrásadat | TBESG |
 | Héber háttér | görög szó-lap | forrásadat | lxx_bridge |
 | Az Újszövetségben | görög szó-lap | forrásadat | TAGNT; Karoli_1908; UBS_DNTG (az előfordulás jelentése) |
-| Szótári szöveg (angol) | görög szó-lap | forrásadat | TBESG; Thayer (F60.46 óta vágás nélkül, gördíthető blokkban) |
+| Szótári szöveg (angol) | görög szó-lap | forrásadat | TBESG; Thayer (F60.45 óta vágás nélkül, gördíthető blokkban) |
 | **Szemantikai domén (SDGNT)** | görög szó-lap | forrásadat | SDGNT_domenek + domenfa (CC BY-SA 4.0) |
 | **UBS DNTG jelentések (angol)** | görög szó-lap | forrásadat | UBS_DNTG_jelentesek (CC BY-SA 4.0) |
 | **LSJ-szócikk (angol)** | görög szó-lap | forrásadat | LSJ_teljes (CC BY-SA 4.0, Perseus) |

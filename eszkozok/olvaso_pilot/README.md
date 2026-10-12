@@ -12,7 +12,7 @@ python eszkozok/olvaso_pilot/epit.py --szakasz "Zsolt 22"
 python eszkozok/olvaso_pilot/adat.py --szakasz "1Móz 1-25"        # a #60 v2 hatókör (~30 s)
 python eszkozok/olvaso_pilot/epit.py --szakasz "1Móz 1-25"
 python eszkozok/olvaso_pilot/adat.py --szakasz "Zsolt 22" --kiadas nyilvanos   # a KJV-Strong blokk (GPL) nélkül
-python eszkozok/olvaso_pilot/teszt_olvaso_pilot.py               # 99 teszt, ~90 s (az 1Móz 1–25 futás és a prototípus-regresszió is benne)
+python eszkozok/olvaso_pilot/teszt_olvaso_pilot.py               # 100 teszt, ~100 s (az 1Móz 1–25 futás és a prototípus-regresszió is benne)
 python eszkozok/olvaso_pilot/db_meres.py                         # a pardes.db mérése (csak olvas; D1–D5)
 python eszkozok/olvaso_pilot/meres.py        # naplok/OLVASOI_PILOT_meres.md (újrafuttatja az adat.py-t és az epit.py-t)
 python eszkozok/olvaso_pilot/felmeres.py     # naplok/OLVASOI_PILOT_adatfelmeres.md (az adat.py-t újrafuttatja)
@@ -78,7 +78,7 @@ A számok forrása: `naplok/OLVASOI_PILOT_meres.md` (újramérve 2026-10-12, a H
 - A BSB-tábla a Zsolt 22:1–2-re nem ad sort (a pilot nem pótolja). A TAHOT-kivonat fejezet-szinten teljes (`eszkozok/tahot_lefedettseg_ellenoriz.py`: nincs hiányzó fejezet).
 - A `Karoli_versmegfeleltetes.tsv`, a `LXX_versificacios_terkep.tsv` és a Nave `karoli_allapot` oszlopa a Zsolt 22-re Károli = KJV számozást feltételez (lásd az adatfelmérés 5. pontját; a kerülőút: DT-F60b, `beerkezo/ZSOLT_FELIRAT_SZAMOZAS_brief.md`).
 - Licenc (`adat/licencek.tsv` szerint): a **TBESH** `tisztazott`, CC BY 4.0 (DT-F33f; az Online Bible-eredetű „Meaning” oszlop fejléc-kérése nem licencfeltétel, a „© Larry Pierce” jelölés megtartandó); az **MCGED** nem kereskedelmi (© Mounce); a **KJV-Strong-címkék** GPL-eredetűek, a `licencek.tsv` sora `tisztazatlan` (DT-F60a, DT-F60c); az `LXX_versszintu_parok` és a `Karoli_versmegfeleltetes` licence tisztázatlan; a tW és az UBS/SDBH CC BY-SA (share-alike). Nyilvános közzététel előtt a `--kiadas` kapcsoló és a DT-M6 szerinti jogi átnézés kell.
-- Regressziós alap: a `TestRegresszioProto` a prototípus (`ce4ef98f`) `adat.py`-ját a gitből ideiglenes fájlba írja, lefuttatja, és az 1Móz 1:1–2:3 kimenet minden kulcsának értékét összeveti (a `ts=` és a tesztben indokolt, darabszámmal rögzített engedélyezett-eltérés lista kivételével: `morf_hu`, teljes TBESG/Thayer, BDB-szeletelő 8 lap, a TAHOT-megjegyzés). Külön környezeti változó nem kell.
+- Regressziós alap: a `TestRegresszioProto` a prototípus (`ce4ef98f`) `adat.py`-ját és `bdb_szelet.py`-ját együtt, repón kívüli ideiglenes könyvtárba írja a gitből, onnan lefuttatja (a prototípus saját szeletelőjével), és az 1Móz 1:1–2:3 kimenet minden kulcsának értékét összeveti (a `ts=` és a tesztben indokolt, darabszámmal rögzített engedélyezett-eltérés lista kivételével: `morf_hu` 746, teljes TBESG 38 / Thayer 64, a BDB-szeletelő változása 40 szó-lapon, ebből 8-nál a `szeletel(…, lemma)` argumentum is, a TAHOT-megjegyzés 1). Külön környezeti változó nem kell.
 
 ## Kiadás-kapcsoló (DT-F60a, F60.45)
 

@@ -220,7 +220,7 @@ def hasonlit_gorog(con, g, db=None):
     s = g['strong']
     d = db or db_gorog(con, s)
     ki = {}
-    # a pilot JSON-ja a teljes TBESG/Thayer-szöveget tartalmazza (F60.46); a régi, 900/700 karakterre vágott JSON-t az előtag-egyezés még kezeli
+    # a pilot JSON-ja a teljes TBESG/Thayer-szöveget tartalmazza (F60.45); a régi, 900/700 karakterre vágott JSON-t az előtag-egyezés még kezeli
     ki['tbesg'] = (egyezik_vagva(g['tbesg'], d['tbesg']), len(g['tbesg']), len(d['tbesg']), 'a JSON vágott szöveg (előtag-egyezés)' if (g['tbesg'] or '').endswith('…') else '')
     ki['thayer'] = (egyezik_vagva(g['thayer'], d['thayer']), len(g['thayer']), len(d['thayer']), 'a JSON vágott szöveg (előtag-egyezés)' if (g['thayer'] or '').endswith('…') else '')
     ki['magyar_szocikk'] = (len(g['hu']) == min(d['hu_db'], 6), len(g['hu']), d['hu_db'], '')
@@ -310,7 +310,7 @@ LAPHOZ_TABLAK = ['vers', 'token_par', 'token_eredeti', 'token_strong', 'tsk', 'k
 def tabla_meretek():
     """{tábla: (MB indexszel, MB licenc_* nélkül)} a naplok/SQLITE_EPIT_meres.md táblázatából.
     A táblázat „MB”-ja valójában MiB (lapszám × lapméret / 2^20: a fájl 886 415 360 bájt = 845,4 MiB = 886,4 MB); az itt visszaadott
-    érték MB = 10^6 bájt (F60.52: egy egységet használunk)."""
+    érték MB = 10^6 bájt (F60.47: egy egységet használunk)."""
     MIB_MB = 1048576 / 1e6
     ki = {}
     ut = GY + 'naplok/SQLITE_EPIT_meres.md'

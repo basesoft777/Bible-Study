@@ -6,15 +6,15 @@ Minden mérőszám mellett a mérés proveniencia-sora áll. A szakaszok: **1Mó
 
 ## 1. Az olvasott adatállapot
 
-- Az adat a `claude/olvasoi-pilot` ág `main`-nel egyesített állapotán áll (F60.26, `0828e4a7`); az első mérés commitja `94f68d91` (15:11Z); az M4-javításban újramértem (`1bceee07`; a szakasz-adatok `ts` ideje 2026-10-12T17:40Z, a `pardes.db`-mérésé 17:44Z). Az újramérés a BDB-bontás számait (az F60.35–F60.38 szeletelő-változás után) és a méreteket (a teljes angol TBESG/Thayer-szöveg, F60.46) változtatta; a többi mérőszám azonos. A mérés után a #27, #80, #88, #89 írhatja a `adat/forditasok.tsv`-t és az `eszkozok/sqlite_epit.py`-t, ezért a mérés újrafuttatható (a brief szerint a pilot az aktuális adatállapotot méri).
+- Az adat a `claude/olvasoi-pilot` ág `main`-nel egyesített állapotán áll (F60.26, `0828e4a7`); az első mérés commitja `94f68d91` (15:11Z); az M4-javításban újramértem (`1bceee07`; a szakasz-adatok `ts` ideje 2026-10-12T17:42Z, a `pardes.db`-mérésé 17:44Z). Az újramérés a BDB-bontás számait (az F60.35–F60.38 szeletelő-változás után) és a méreteket (a teljes angol TBESG/Thayer-szöveg, F60.45) változtatta; a többi mérőszám azonos. A mérés után a #27, #80, #88, #89 írhatja a `adat/forditasok.tsv`-t és az `eszkozok/sqlite_epit.py`-t, ezért a mérés újrafuttatható (a brief szerint a pilot az aktuális adatállapotot méri).
 - A `main` egyesítése megváltoztatta a Zsolt 22 adatát (F54: `zsolt_felirat_eltolas` sorok a `konkordancia/LXX_OS/psalms-lxx.tsv`-ben). Következmény: a Zsolt 22:1 (felirat) ma kap LXX-szót (11), a korábbi „nincs LXX-szó a versre: 1” mérőszám 0; a sorok KJV-oszlopa Károli-számot hordoz, ezért az `adat.py` ezeket a KJV-kulcs levezetéséből kihagyja (F60.28).
 - A `pardes.db` építése: `meta.epites_ts=2026-10-12T08:27:32Z`, `meta.mod=teljes`; a fájl 886 415 360 bájt = 886,4 MB (a jelentés végig MB = 10^6 bájtot használ; a `naplok/SQLITE_EPIT_meres.md` „MB”-ja valójában MiB: 845,4 MiB ugyanez a fájl), a fő munkamásolatban áll (`.gitignore`-ban). A mérés a meglévő adatbázison futott (`mode=ro`), nem építettem újra.
 
 ## 2. M2 — a TSV-út mérőszámai: a régi ág mérése 1:1–2:3 és 1–25 hatókörön
 
-`scope=1Móz 1–25 | forras=naplok/OLVASOI_PILOT_meres.md (eszkozok/olvaso_pilot/meres.py, adat.py; adat/karoli_strong/parok_*.tsv, adat/forditasok.tsv, konkordancia/BDB_teljes_unabridged.tsv, TBESG.txt, Thayer_teljes.tsv, TAGNT_kivonat.tsv) | ts=2026-10-12T17:40Z`
+`scope=1Móz 1–25 | forras=naplok/OLVASOI_PILOT_meres.md (eszkozok/olvaso_pilot/meres.py, adat.py; adat/karoli_strong/parok_*.tsv, adat/forditasok.tsv, konkordancia/BDB_teljes_unabridged.tsv, TBESG.txt, Thayer_teljes.tsv, TAGNT_kivonat.tsv) | ts=2026-10-12T17:42Z`
 `scope=1Móz 1:1–2:3 | forras=eszkozok/olvaso_pilot/meres.py --szakasz "1Móz 1:1-2:3" (a HEAD állapotán újramérve; a számok a TSV-útra) | ts=2026-10-12T17:43Z`
-`scope=Zsolt 22 | forras=naplok/OLVASOI_PILOT_meres.md (ugyanaz) | ts=2026-10-12T17:40Z`
+`scope=Zsolt 22 | forras=naplok/OLVASOI_PILOT_meres.md (ugyanaz) | ts=2026-10-12T17:42Z`
 
 | Mérőszám | 1Móz 1:1–2:3 | 1Móz 1–25 | Zsolt 22 |
 |---|---:|---:|---:|
@@ -35,7 +35,7 @@ Minden mérőszám mellett a mérés proveniencia-sora áll. A szakaszok: **1Mó
 | HTML mérete, gzip+base64 (bájt) | 2 245 312 | 11 248 603 | 3 097 455 |
 | HTML mérete nyersen (bájt) | 5 608 053 | 35 795 837 | (nem épült) |
 
-A BDB-bontás sorai az F60.35–F60.38 szeletelő-változás után mért értékek (az első mérés a változás előtt: 531 / 123 bomló, 34 / 2 egyben maradó szócikk); a méretek a teljes angol TBESG/Thayer-szöveggel (F60.46) mért értékek (az első mérés a vágott szöveggel: 10 204 234 / 2 538 866 bájt). MB = 10^6 bájt.
+A BDB-bontás sorai az F60.35–F60.38 szeletelő-változás után mért értékek (az első mérés a változás előtt: 531 / 123 bomló, 34 / 2 egyben maradó szócikk); a méretek a teljes angol TBESG/Thayer-szöveggel (F60.45) mért értékek (az első mérés a vágott szöveggel: 10 204 234 / 2 538 866 bájt). MB = 10^6 bájt.
 
 Megfigyelések, amelyeket a mérés ad (értelmezés nélkül):
 
@@ -63,7 +63,7 @@ A régi ág blokkjai bővebbek, mint a mai ágé, ezért a D1 a régi ág 39 blo
 
 ### D2 — egyezés a TSV-úttal
 
-Minden vers (693 / 32), minden héber szó-lap (1 075 / 159) és görög szó-lap (1 230 / 305) összevetve blokkonként (Károli-szöveg, Károli–Strong párosítás szavanként, TAHOT-szavak, UBS-azonosítók, TSK darab és top-6, Károli-kereszthivatkozás darab, versszámozás; Strong-szótár, BDB angol és magyar szöveg, előfordulás, Károli-alakok, lxx_bridge, TBESG, Thayer, magyar szócikk, héber háttér). **A „0 eltérés” csak ezekre a blokkokra igaz:** a Károli-szövegben, a párosításban, a héber szavakban, a versszámozásban, a TSK- és UBS-adatban, a Strong-szótárban, az előfordulásban (héber), a Károli-alakokban, az lxx_bridge-ben, a TBESG- és Thayer-szövegben (F60.46 óta a JSON a teljes szöveget hordozza, a mérés a teljes szövegeket veti össze; a korábbi, vágott JSON-t a hasonlító előtag-egyezéssel kezelte), a magyar szócikk-számban és a héber háttérben. **Négy blokkban van eltérés, ezekre a „0 eltérés” nem igaz:**
+Minden vers (693 / 32), minden héber szó-lap (1 075 / 159) és görög szó-lap (1 230 / 305) összevetve blokkonként (Károli-szöveg, Károli–Strong párosítás szavanként, TAHOT-szavak, UBS-azonosítók, TSK darab és top-6, Károli-kereszthivatkozás darab, versszámozás; Strong-szótár, BDB angol és magyar szöveg, előfordulás, Károli-alakok, lxx_bridge, TBESG, Thayer, magyar szócikk, héber háttér). **A „0 eltérés” csak ezekre a blokkokra igaz:** a Károli-szövegben, a párosításban, a héber szavakban, a versszámozásban, a TSK- és UBS-adatban, a Strong-szótárban, az előfordulásban (héber), a Károli-alakokban, az lxx_bridge-ben, a TBESG- és Thayer-szövegben (F60.45 óta a JSON a teljes szöveget hordozza, a mérés a teljes szövegeket veti össze; a korábbi, vágott JSON-t a hasonlító előtag-egyezéssel kezelte), a magyar szócikk-számban és a héber háttérben. **Négy blokkban van eltérés, ezekre a „0 eltérés” nem igaz:**
 
 | blokk | 1Móz 1–25 / Zsolt 22 | ok |
 |---|---:|---|
@@ -102,7 +102,7 @@ A `meta` táblánkénti sorszáma és hash-e mind a 39 vizsgált táblára **egy
 
 ## 4. M1 — a v3.1 angol-pótlás szabályának ellenőrzése (K2) és a „csak adat” szabály
 
-Az angol-pótlás a régi sablonban megvolt a héber szó-lapon (a BDB-blokk „Magyar fordítás nincs · az angol eredeti áll” állapotjelzéssel, forrássorral és a teljes angol szócikkel; az apparátusokra bontás is az angol szövegből). Két hiányt pótoltam (F60.29): (a) a görög lapon a magyar jelentés hiányában a „Jelentés” blokk állapotjelzése kimondja, hogy az angol eredeti áll (TBESG / Thayer), és a Thayer-szócikk megnyitva jelenik meg; (b) ha sem magyar, sem angol BDB-szócikk nincs (12 lap), az állapotjelzés ezt mondja ki (korábban „az angol eredeti áll” állt, üres szöveggel). A független ellenőr 6. eltérése nyomán (F60.45–F60.46) a görög lapon a TBESG- és a Thayer-szöveg **vágás nélkül**, gördíthető blokkban áll (a prototípus 900, illetve 700 karakterre vágta „…”-tal: 38, illetve 64 lap érintett az 1Móz 1:1–2:3 szakaszon). A TBESH forrás-sorából a rögzített licenc-mondat („a licenc-kérdés nyitott”) kikerült: a licenc-jelzés az `adat/licencek.tsv`-ből jön, mint a többi forrásnál (TBESH: `tisztazott`, CC BY 4.0, DT-F33f).
+Az angol-pótlás a régi sablonban megvolt a héber szó-lapon (a BDB-blokk „Magyar fordítás nincs · az angol eredeti áll” állapotjelzéssel, forrássorral és a teljes angol szócikkel; az apparátusokra bontás is az angol szövegből). Két hiányt pótoltam (F60.29): (a) a görög lapon a magyar jelentés hiányában a „Jelentés” blokk állapotjelzése kimondja, hogy az angol eredeti áll (TBESG / Thayer), és a Thayer-szócikk megnyitva jelenik meg; (b) ha sem magyar, sem angol BDB-szócikk nincs (12 lap), az állapotjelzés ezt mondja ki (korábban „az angol eredeti áll” állt, üres szöveggel). A független ellenőr 6. eltérése nyomán (F60.45–F60.45) a görög lapon a TBESG- és a Thayer-szöveg **vágás nélkül**, gördíthető blokkban áll (a prototípus 900, illetve 700 karakterre vágta „…”-tal: 38, illetve 64 lap érintett az 1Móz 1:1–2:3 szakaszon). A TBESH forrás-sorából a rögzített licenc-mondat („a licenc-kérdés nyitott”) kikerült: a licenc-jelzés az `adat/licencek.tsv`-ből jön, mint a többi forrásnál (TBESH: `tisztazott`, CC BY 4.0, DT-F33f).
 
 A mai ág „kivett szövegek” listájának (9 tétel) összevetése a régi sablonnal:
 
@@ -119,16 +119,17 @@ A mai ág „kivett szövegek” listájának (9 tétel) összevetése a régi s
 
 ## 5. Eltérések a brieftől
 
-1. A `db_meres.py` D2-je a régi ág JSON-szerkezetéhez igazodik: a versszámozás `forras` mezője a JSON-ban nincs (osztály, KJV, MT hasonlítandó); a TBESG/Thayer a JSON-ban F60.46 óta teljes (a hasonlító a vágott JSON-t is kezeli).
-2. A mai ág tesztjeiből a K5 (vers-lap és szó-lap D2-egyezés, „nem mérhető” ág) átvéve; a régi ág tesztjei (73) változatlanok, egy elavult elvárás módosult (Zsolt 22:1 ma kap LXX-szót). A tesztek összesen 99 (az M4-javítás után: a prototípus-regresszió, az 1Móz 1–25, a teljes angol szöveg és a `--kiadas` tesztjei), kihagyás nélkül (a D2-tesztek a meglévő `pardes.db`-n futnak; adatbázis nélkül kihagyódnának).
-3. **Egyeztetendő eltérés (K1).** A brief K1-e az 1Móz 1:1–2:3 kimenetet a prototípussal „bájtra azonosnak, a `ts` kivételével” írja elő. Ez a bővítés (v2) és a v3.1 szabály mellett nem tartható (a prototípus a TBESG/Thayer-szöveget vágta, a morfológiai feloldás üres volt, a BDB-szeletelő az F60.35–F60.38-ban változott), ezért a regresszió (`teszt_olvaso_pilot.py`, `TestRegresszioProto`) **értékazonosságot** ellenőriz: a prototípus (`ce4ef98f`) minden kulcsának értéke megegyezik az 1Móz 1:1–2:3 szakaszon, a `ts=` időbélyeg és az alábbi, darabszámmal rögzített **engedélyezett-eltérés lista** kivételével. A teszt maga állítja elő a prototípus-kimenetet (nem kihagyható); a brief szövegét nem írtam át. Az engedélyezett eltérések:
+1. A `db_meres.py` D2-je a régi ág JSON-szerkezetéhez igazodik: a versszámozás `forras` mezője a JSON-ban nincs (osztály, KJV, MT hasonlítandó); a TBESG/Thayer a JSON-ban F60.45 óta teljes (a hasonlító a vágott JSON-t is kezeli).
+2. A mai ág tesztjeiből a K5 (vers-lap és szó-lap D2-egyezés, „nem mérhető” ág) átvéve; a régi ág tesztjei (73) változatlanok, egy elavult elvárás módosult (Zsolt 22:1 ma kap LXX-szót). A tesztek összesen 100 (az M4-javítás után: a prototípus-regresszió, az 1Móz 1–25, a teljes angol szöveg és a `--kiadas` tesztjei), kihagyás nélkül (a D2-tesztek a meglévő `pardes.db`-n futnak; adatbázis nélkül kihagyódnának).
+3. **Egyeztetendő eltérés (K1).** A brief K1-e az 1Móz 1:1–2:3 kimenetet a prototípussal „bájtra azonosnak, a `ts` kivételével” írja elő. Ez a bővítés (v2) és a v3.1 szabály mellett nem tartható (a prototípus a TBESG/Thayer-szöveget vágta, a morfológiai feloldás üres volt, a BDB-szeletelő a prototípus óta többször változott), ezért a regresszió (`teszt_olvaso_pilot.py`, `TestRegresszioProto`) **értékazonosságot** ellenőriz: a prototípus (`ce4ef98f`) minden kulcsának értéke megegyezik az 1Móz 1:1–2:3 szakaszon, a `ts=` időbélyeg és az alábbi, darabszámmal rögzített **engedélyezett-eltérés lista** kivételével. A teszt maga állítja elő a prototípus-kimenetet: a `ce4ef98f` `adat.py`-ját és `bdb_szelet.py`-ját (az egyetlen modul, amelyet a prototípus importál) együtt írja repón kívüli ideiglenes könyvtárba, és onnan futtatja, tehát a prototípus saját szeletelőjével (nem a HEAD-ével); a repóba semmi nem kerül; nem kihagyható. A brief szövegét nem írtam át. (Az első változat a prototípus `adat.py`-ját a HEAD `bdb_szelet.py`-jával futtatta, ezért a szeletelő változásai láthatatlanok voltak; a független ellenőr 2. köre jelezte, a lista újramérve.) Az engedélyezett eltérések:
 
 | minta | darab | indok |
 |---|---:|---|
 | `versek[].heber[].macula.morf_hu` | 746 | a prototípusban üres volt; a v2 az `adat/morf_kulcs_heber.tsv`-ből magyarul feloldja (F60.5, gépi feldolgozás) |
-| `gor_lapok.*.tbesg` | 38 | a prototípus 900 karakterre vágta „…”-tal; a teljes angol szöveg áll a lapon (v3.1, F60.46); a prototípus-érték a teljes szöveg előtagja |
+| `gor_lapok.*.tbesg` | 38 | a prototípus 900 karakterre vágta „…”-tal; a teljes angol szöveg áll a lapon (v3.1, F60.45); a prototípus-érték a teljes szöveg előtagja |
 | `gor_lapok.*.thayer` | 64 | ugyanez, 700 karakterre vágva |
-| `lapok.{H1254, H2416, H3651, H4723, H6960, H7235, H7287, H7363}.appar` | 8 szó-lap | a BDB-szeletelő változása (F60.31–F60.38): a homonima-szerep (`azonos_lemma` / `masik_lemma` / `elo`), a H4723 szócikk fejléce és szakaszai; a többi 90 szó-lap `appar`-ja azonos (külön teszt) |
+| `lapok.*.appar` (40 szó-lap) | 40 | a BDB-szeletelő változásai a prototípus óta (F60.17, F60.18, F60.21, F60.23, F60.25, F60.35): jelentés-határok, jelentés-sorszámok és személyszám-jelölők kezelése, fejléc, irodalom-/kritika-sorok; a prototípus-kulcsok értéke ezeken a lapokon eltér. A 40 lap: H0215, H0559, H0914, H1254, H1288, H1876, H1961, H2009, H2232, H2416, H2822, H2895, H3117, H3318, H3533, H3605, H3615, H3651, H3915, H4390, H4723, H4725, H4910, H5414, H5774, H6213, H6440, H6509, H6635, H6942, H6960, H7121, H7200, H7235, H7287, H7363, H7430, H7637, H8147, H8317; a többi 58 szó-lap `appar`-ja a prototípus-kulcsokon azonos |
+| `lapok.{H1254, H2416, H3651, H4723, H6960, H7235, H7287, H7363}.appar` | 8 szó-lap (a fenti 40-nel átfedve) | a `szeletel(szoveg, lemma)` második argumentuma (F60.17, `8b642341`): a homonima-szerepet jelöli (`azonos_lemma` / `masik_lemma` / `elo`); külön teszt igazolja, hogy a lemma-argumentum pontosan ennél a 8 lapnál módosítja a kimenetet |
 | `prov.elofordulas` | 1 | a „(nem teljes)” megjegyzés kivéve (F60.29: a TAHOT fejezet-szinten teljes, F85) |
 
    A `prov` többi mezője csak a `ts=` időben tér el. Az 1Móz 1–25-re külön teszt (`TestTeljes1Moz1_25`, ~30 s): 693 vers, az `adat.py` hibátlanul lefut, a kimenet első 34 verse és a közös szó-lapok egyeznek az 1Móz 1:1–2:3 futásával.
@@ -166,7 +167,7 @@ Az M3 eddigi döntései (a felhasználó a chatben, 2026-10-12):
 `scope=1Móz 1–25 és Zsolt 22 | forras=a 2. és 3. pont (meres.py, db_meres.py; hivatkozott táblák ott) | ts=2026-10-12T17:44Z`
 
 **Erősségek (mért):**
-- A Károli-szöveg, a TAHOT-szavak, az UBS-azonosítók, a TSK-adat, a versszámozás és az lxx_bridge a TSV-úton és a `pardes.db`-ben **0 eltéréssel** egyezik (D2, 693 + 32 vers, 1 075 + 159 héber és 1 230 + 305 görög szó-lap); a négy eltérő blokk (BDB-alias, ÚSZ-előfordulás, LXX-versszám) a 3. pont D2 táblájában áll.
+- A Károli-szöveg, a TAHOT-szavak, az UBS-azonosítók, a TSK-adat, a versszámozás és az lxx_bridge a TSV-úton és a `pardes.db`-ben **0 eltéréssel** egyezik (D2, 693 + 32 vers, 1 075 + 159 héber és 1 230 + 305 görög szó-lap); a négy eltérő blokk (BDB angol szócikk, BDB magyar szócikk, ÚSZ-előfordulás, LXX-versszám) a 3. pont D2 táblájában áll.
 - Az 1Móz 1–25-ben a Károli-szavak 58,8%-a kötött tartalmas héber szóhoz, ebből 98,5% „magas” bizonyosságú; az előfordulások 90,2%-ához van UBS-jelentés; a Macula-párral rendelkező héber szavak 80,2%-ához van görög megfelelő.
 - A lapok blokkjainak 35/39-e (1Móz 1–25), illetve 34/39-e (Zsolt 22) csak a `pardes.db`-ből előállítható (D1); a lekérdezés vers-lapra 93 ms (meleg medián, p95 161 ms), szó-lapra 3,4–5,4 ms (D3).
 
@@ -210,7 +211,7 @@ Az M3 eddigi döntései (a felhasználó a chatben, 2026-10-12):
 
 ### 8.3 TSV vagy `pardes.db` (M2b, D1–D5)
 
-`scope=1Móz 1–25 és Zsolt 22 | forras=pardes.db meta.epites_ts=2026-10-12T08:27:32Z meta.mod=teljes (hash: 3. pont) | ts=2026-10-12T15:11Z`
+`scope=1Móz 1–25 és Zsolt 22 | forras=pardes.db meta.epites_ts=2026-10-12T08:27:32Z meta.mod=teljes (hash: 3. pont) | ts=2026-10-12T17:44Z`
 
 - **Mi mondja az adatbázis mellett:** a blokkok 35/39 (34/39) csak belőle állítható elő (D1), a D2 szerint a felsorolt blokkokban a két út azonos (0 eltérés), négy blokkban eltér (BDB angol és magyar alias-szócikk 9 + 6 / 1 + 1 héber lap, ÚSZ-előfordulás 117 / 52 görög lap, LXX-versszám 356 / 28 vers; az okok a 3. pont D2 táblájában), és a lekérdezési idő ms-tartományú (D3).
 - **Mi hiányzik az adatbázisból (D1/D2):** (a) az igealak-kód és szófaj (Macula), (b) a héber–görög párosítás szavanként (Macula), (c) a görög szóalak és az LXX-vers szavai (LXX_OS): az építő ezeket szándékosan nem tölti be (+207,6 MB TSV-méret, ha betöltené); (d) a BDB-alias tábla (`BDB_strong_alias.tsv`; 9 + 6 szó-lapot érint az 1Móz 1–25-ben); (e) a Nave-témák versekre bontása (a bontás az `adat.py` gépi feldolgozása; az `igehely_tartomany` 124 sora kell); (f) az LXX-versszám a vers-laphoz (356 / 28 eltérés), mert az `lxx_versszintu_parok` csak a héber–görög Strong-párral rendelkező versekre ad sort.

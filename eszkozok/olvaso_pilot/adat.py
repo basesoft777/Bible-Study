@@ -489,7 +489,7 @@ for g in sorted(gor_szavak):
         'gloss': tb.get('gloss') or sz.get('jelentes', ''),
         'szofaj': sz.get('szofaj', ''),
         'hu': [x for x in hu][:6],
-        # F60.46 (v3.1): a teljes angol szöveg áll a lapon (a lap gördíthető blokkban mutatja), vágás nélkül
+        # F60.45 (v3.1): a teljes angol szöveg áll a lapon (a lap gördíthető blokkban mutatja), vágás nélkül
         'tbesg': tb.get('szoveg', ''),
         'thayer': th,
         'usz_db': usz_db.get(g, 0),
