@@ -109,9 +109,10 @@ class Zsolt22(unittest.TestCase):
         self.assertTrue(d['lapok'])
         self.assertTrue(all(v['karoli'] for v in d['versek']))
 
-    def test_felirat_nincs_lxx(self):
-        # a 22:1 a felirat (Károli = MT-számozás); az LXX_OS ehhez a versszámhoz nem ad szót
-        self.assertEqual(len(vers(ADAT['zsolt'], 'Zsolt 22:1')['lxx']), 0)
+    def test_felirat_van_lxx(self):
+        # a 22:1 a felirat (Károli = MT-számozás); az F54 óta (zsolt_felirat_eltolas) az LXX_OS ehhez a versszámhoz
+        # a LXX 21:1 feliratát köti (a korábbi „nincs LXX-szó” állapot megszűnt)
+        self.assertGreater(len(vers(ADAT['zsolt'], 'Zsolt 22:1')['lxx']), 0)
         self.assertGreater(len(vers(ADAT['zsolt'], 'Zsolt 22:2')['lxx']), 0)
 
     def test_versszam_eltereskor_jelzes(self):

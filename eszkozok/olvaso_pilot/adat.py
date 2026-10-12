@@ -356,7 +356,10 @@ lxx_kjv = {}
 for r in sorok(LXX_F):
     if len(r) > 2 and r[2] in VERSEK:
         lxx_igehely.setdefault(r[2], r[0])
-        lxx_kjv.setdefault(r[2], r[1])
+        # a zsolt_felirat_eltolas sorokban (F54) a KJV-oszlop a Károli-számot hordozza, nem a KJV-t: kihagyjuk,
+        # a vers KJV-kulcsa ilyenkor a fejezet eltolásából jön (bovites.py)
+        if len(r) > 3 and r[3] != 'zsolt_felirat_eltolas':
+            lxx_kjv.setdefault(r[2], r[1])
 
 MK = MorfKulcs(GY)
 MK.betolt_nyelv(GY, {m['_xml'] for ms in macula_vers.values() for m in ms})
