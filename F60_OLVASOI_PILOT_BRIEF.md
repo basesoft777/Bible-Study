@@ -7,7 +7,7 @@ fazis: folyamat
 modell: sonnet
 munka: adat
 allapot: nem_indult
-ad: a repóban futó olvasói pilot (eszkozok/olvaso_pilot/) két szakaszon (1Móz 1:1–2:3 és Zsolt 22), minden blokk jellegjelöléssel (forrásadat / gépi feldolgozás / modell-kimenet), és egy értékelő jelentés számokkal, amely a DT-M1 döntés (olvasói konkordancia előre) alapja
+ad: a repóban futó olvasói pilot (eszkozok/olvaso_pilot/) két szakaszon (1Móz 1–25 és Zsolt 22), minden blokk jellegjelöléssel (forrásadat / gépi feldolgozás / modell-kimenet), és egy értékelő jelentés számokkal, amely a DT-M1 döntés (olvasói konkordancia előre) alapja
 kovetkezo: /kovetkezo; ⛔ az M3 felhasználói átnézésnél
 olvas: [eszkozok/olvaso_pilot/README.md, konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, "konkordancia/Macula_heber_*.tsv", "konkordancia/LXX_OS/*.tsv", konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Strong_szotar.tsv, konkordancia/TBESG.txt, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, "adat/karoli_strong/*.tsv", adat/forditasok.tsv, adat/kulso/lxx_bridge.tsv, adat/licencek.tsv, MUNKATERV.md, ADATVAGYON_TERV.md]
 ir: [eszkozok/olvaso_pilot/adat.py, eszkozok/olvaso_pilot/bdb_szelet.py, eszkozok/olvaso_pilot/epit.py, eszkozok/olvaso_pilot/sablon.html, eszkozok/olvaso_pilot/README.md, eszkozok/olvaso_pilot/teszt_olvaso_pilot.py]
@@ -17,7 +17,7 @@ nem_fugg: [7, 9, 22, 38, 52, 54, 56, 57, 80]
 
 # F60_OLVASOI_PILOT_BRIEF.md — Olvasói pilot
 
-*FELADATOK #60 · Modell: sonnet · v1 · 2026.10.05 · kiinduló állapot: `eszkozok/olvaso_pilot/` (a 2026-10-05-i prototípus, README-vel) · döntés-előkészítés: DT-M1*
+*FELADATOK #60 · Modell: sonnet · v2 · 2026.10.12 · kiinduló állapot: `eszkozok/olvaso_pilot/` (a 2026-10-05-i prototípus, README-vel) · döntés-előkészítés: DT-M1*
 
 ## 1. Cél
 
@@ -42,8 +42,8 @@ A munkaterv DT-M1 döntése azt kérdezi, kiadható-e az olvasói konkordancia (
 
 ### M0 — Átvétel és paraméterezés
 
-- Az `adat.py` kapjon `--szakasz` paramétert (pl. `"1Móz 1:1-2:3"`, `"Zsolt 22"`). A versek listája a `Karoli_1908.tsv`-ből jön, a könyvfájlok (Macula, LXX_OS) a `Konyv_normalizalo_tabla.tsv` és a meglévő névkonvenciók szerint.
-- Az 1Móz 1:1–2:3 kimenete legyen azonos a prototípuséval (bájtra azonos JSON, a `ts` mező kivételével). Ez a regressziós alap.
+- Az `adat.py` kapjon `--szakasz` paramétert (pl. `"1Móz 1-25"`, `"Zsolt 22"`). A versek listája a `Karoli_1908.tsv`-ből jön, a könyvfájlok (Macula, LXX_OS) a `Konyv_normalizalo_tabla.tsv` és a meglévő névkonvenciók szerint.
+- Az 1Móz 1:1–2:3 kimenete (az 1Móz 1–25 szakasz elejeként) legyen azonos a prototípuséval (bájtra azonos JSON, a `ts` mező kivételével). Ez a regressziós alap.
 
 ### M1 — Jellegjelölés és „csak adat” ellenőrzés
 
@@ -72,7 +72,7 @@ A felhasználó megnézi mindkét szakasz oldalát. A közzétételt privát art
 
 ## 4. Elfogadási feltételek
 
-- **K1.** Az 1Móz 1:1–2:3 adata azonos a prototípuséval; a Zsolt 22 is lefut, hiba nélkül.
+- **K1.** Az 1Móz 1–25 lefut, és az 1Móz 1:1–2:3 része azonos a prototípuséval; a Zsolt 22 is lefut, hiba nélkül.
 - **K2.** Minden blokk jelleg-címkét és adatforrás-jelzést kap; a lapon nincs adatforrás nélküli tartalmi szöveg.
 - **K3.** A mérőszámok mindkét szakaszra proveniencia-sorral állnak a jelentésben.
 - **K4.** A tesztek zöldek; a kimenet nem kerül a repóba (CLAUDE.md: `--kimenet` a repón kívül); a CI zöld; a független ellenőr eltérés nélkül zár.
@@ -87,3 +87,4 @@ A felhasználó megnézi mindkét szakasz oldalát. A közzétételt privát art
 | v1 | 2026-10-05 | `nem_fugg: [52]`: a tervdokumentum olvasása kontextus. | kontextus-olvasás |
 | v1 | 2026-10-05 | `nem_fugg: [7, 9, 22, 38, 54, 56, 57]`: a pilot az aktuális adatállapotot méri, nem vár a táblákat író feladatokra; ezek lezárása után újrafuttatható (a jelentés rögzíti, melyik állapoton mért). | befogadás |
 | v1.1 | 2026-10-12 | `nem_fugg` + 80: a #80 (BDB_KAROLI_POTLAS) az `adat/forditasok.tsv`-t írja, ezért a #60 levezetett függést kapott (`FUGGES 60 80 adat/forditasok.tsv*`); ugyanaz az indok, mint a #38-nál: a pilot az aktuális adatállapotot méri, a hiányt jelzi, nem pótolja | a felhasználó jóváhagyása a chatben (2026-10-12) |
+| v2 | 2026-10-12 | Az első szakasz hatóköre 1Móz 1:1–2:3 helyett **1Móz 1–25**; a Zsolt 22 marad. Az 1Móz 1:1–2:3 a regressziós alap marad (a prototípussal bájtra azonos rész). | a felhasználó jóváhagyása a chatben (2026-10-12) |
