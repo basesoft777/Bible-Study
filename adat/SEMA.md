@@ -1107,7 +1107,7 @@ Forrás a `parok_<könyv>.tsv`, tehát **modell-kimenet, javaslat** (a `bizonyos
 
 A `megerosites` sor a `szó-szintű-gépi` állítás (1.7) saját bizonyítéka: megléte a feltétele annak, hogy az `elofordulasok.tsv`/`jeloltek.tsv` sor `azonositas_modja`-ja `szó-szintű-gépi` lehet. A sor akkor is újraáll, ha a mód már átállt (a generálás idempotens).
 
-### 2.25 `bdb_karoli.tsv` — a kész BDB-szócikkek Károli-adata (F80, FELADATOK #80, DT-F80a)
+### 2.25 `bdb_karoli.tsv` — a kész BDB-szócikkek Károli-adata (F80, FELADATOK #80, DT117)
 
 A #38 BDB-fordítása a Károli–Strong párosítás hiányos állapotában készült (a fordítót tápláló adatblokk Károli-szakasza csak az 1–5Móz és a Józs párjaiból élt, a többinél `[NINCS KÁROLI-ALAK]` állt vagy adatblokk még nem volt). A fordítás szövege nem változik (DT56); ez a tábla az **adatot** pótolja: minden kész (`forditasok.tsv`: `szotar=BDB`, `jelentes_szam=teljes`, `mezo=forditas_hu`) szócikkhez a **teljes ÓSZ** párosításból (`adat/karoli_strong/parok_*.tsv`, 2.20) a Károli-szóalakokat előfordulás-számmal és bizonyossággal, valamint példaverseket. A `forditasok.tsv` bájtra változatlan marad (a pótlás külön tábla; a #38 és az `emeles.py` írását nem érinti).
 

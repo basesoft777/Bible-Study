@@ -16,7 +16,7 @@
 | M1, M2 | `split('\t')`/`'\t'.join`, `csv` nincs; a tabot/újsort `assert` védi |
 | `test_nincs_karoli_alak` | a módosítás jogos (a H0426-nak ma 95 `parok`-sora van); a mock ugyanazt az ágat teszteli |
 | Blokkgenerálás | `bdb_adatblokk.py`: 94 hozzáadott, 0 törölt sor |
-| D, ⛔ | DT-F80a rögzítve, az M1 a döntés után készült; A1–A6 rendben |
+| D, ⛔ | DT117 rögzítve, az M1 a döntés után készült; A1–A6 rendben |
 
 ## Eltérések (súlyossági sorrendben)
 

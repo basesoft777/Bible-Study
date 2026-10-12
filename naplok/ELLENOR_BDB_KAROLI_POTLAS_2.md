@@ -15,7 +15,7 @@
 
 ## Eltérések és kezelésük
 1. **Magas: a `teszt_bdb_adatblokk.py` beégetett `43`-at vár a `parok_*.tsv` fájlokra**, a main-en már 54 van (+11 ÚSZ). *Javítva (F80.10): a teszt a könyvtár tényleges fájlszámát veti össze; az ág a main-re rebase-elve.*
-2. **Közepes: a jóváhagyott változások nem voltak rögzítve.** *Javítva: DT-F80b (🟢) a `DONTESEK.md`-ben, v3 sor a brief döntésnaplójában.*
+2. **Közepes: a jóváhagyott változások nem voltak rögzítve.** *Javítva: DT118 (🟢) a `DONTESEK.md`-ben, v3 sor a brief döntésnaplójában.*
 3. **Alacsony: a bontási napló számai proveniencia-sor nélkül álltak, a `modell`/`allapot` kategóriák keveredtek.** *Javítva: „opus 26; ebből `allapot=kezi` 6”, proveniencia-sor hozzáadva.*
 4. **Alacsony: hivatkozás nem létező F80.10–F80.12 commitokra.** *Javítva: F80.7–F80.9.*
 5. **Alacsony: a brief törzsében „v1” állt.** *Javítva: v3.*

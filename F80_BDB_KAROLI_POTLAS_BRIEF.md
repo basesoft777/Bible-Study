@@ -9,7 +9,7 @@ munka: adat
 allapot: lezarva
 ag: claude/f80-karoli-potlas
 pr: https://github.com/basesoft777/Bible-Study/pull/310
-lezarva_osszegzes: "adat/bdb_karoli.tsv (62 526 sor, 674 szócikk), DT-F80a, DT-F80b; forditasok.tsv bájtra változatlan"
+lezarva_osszegzes: "adat/bdb_karoli.tsv (62 526 sor, 674 szócikk), DT117, DT118; forditasok.tsv bájtra változatlan"
 ad: a kész (teljes) BDB-fordítású szócikkek Károli-alakjai és példaversei a teljes ÓSZ Károli–Strong párosításból pótolva adatként; a fordítás szövege nem változik
 kovetkezo: "—"
 olvas: [adat/karoli_strong/, adat/forditasok.tsv, adat/SEMA.md, eszkozok/bdb_adatblokk.py, naplok/BDB_FORDITAS_sorrend.tsv, naplok/BDB_FORDITAS_naplo.md, F38_BDB_FORDITAS_BRIEF.md, F56_BDB_ADATBLOKK_BRIEF.md]
@@ -88,6 +88,6 @@ Jelentés: `naplok/BDB_KAROLI_POTLAS_M0.md`.
 
 | Verzió | Dátum | Döntés | Forrás |
 |---|---|---|---|
-| v3 | 2026-10-12 | DT-F80b: (1) a példaversek sorrendje kanonikus (a `parok_konyvek()` a `Konyv_normalizalo_tabla.tsv` sorrendjét követi, ismeretlen könyvre hibával áll meg); ez a #38 adatblokkjának 2. szakaszát is érinti (N-F80a); (2) minden `alak` sor megkapja a szócikk-sor proveniencia-sorát szó szerint (a tábla 12,3 MB); az 1. szakasz `par_db`-szövege a SEMA 2.25-höz igazítva. | a felhasználó döntése a chatben (2026-10-12) |
-| v2 | 2026-10-12 | DT-F80a: (b) külön tábla `adat/bdb_karoli.tsv` új SEMA-szakasszal; a példák hivatkozásként, kulcs: vers + Strong + Károli-alak (nem fájlbeli sorszám: a párosítás még változhat, #22-javítások, N46; a tárolt alak ellenőrző), teljes versszöveg nincs; mind a 674 kész szócikk; az `ir`-ből a `forditasok.tsv` kikerül, a K3 átfogalmazva. | a felhasználó döntése a chatben (2026-10-12) |
+| v3 | 2026-10-12 | DT118: (1) a példaversek sorrendje kanonikus (a `parok_konyvek()` a `Konyv_normalizalo_tabla.tsv` sorrendjét követi, ismeretlen könyvre hibával áll meg); ez a #38 adatblokkjának 2. szakaszát is érinti (N-F80a); (2) minden `alak` sor megkapja a szócikk-sor proveniencia-sorát szó szerint (a tábla 12,3 MB); az 1. szakasz `par_db`-szövege a SEMA 2.25-höz igazítva. | a felhasználó döntése a chatben (2026-10-12) |
+| v2 | 2026-10-12 | DT117: (b) külön tábla `adat/bdb_karoli.tsv` új SEMA-szakasszal; a példák hivatkozásként, kulcs: vers + Strong + Károli-alak (nem fájlbeli sorszám: a párosítás még változhat, #22-javítások, N46; a tárolt alak ellenőrző), teljes versszöveg nincs; mind a 674 kész szócikk; az `ir`-ből a `forditasok.tsv` kikerül, a K3 átfogalmazva. | a felhasználó döntése a chatben (2026-10-12) |
 | v1 | 2026-10-12 | Csonk kitöltése; `fugg` üres: a BDB ószövetségi szótár, az ÓSZ-párosítás teljes, a #22 ÚSZ-csomagjai nem érintik. | a felhasználó jóváhagyása a chatben (2026-10-12) |
