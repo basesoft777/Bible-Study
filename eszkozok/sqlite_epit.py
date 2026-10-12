@@ -959,7 +959,24 @@ def proba_md(eredmenyek):
     return '\n'.join(ki)
 
 
-def meres_md(epito, hashek, ido, meret, mod, proba=None):
+def licenc_helyfoglalas(db_path):
+    """{tabla: (sorszam, licenc_oszlopok_bajtja)} -- a 3 licenc_* oszlop tartalmanak bajtjai
+    (a rekord-fejlec nelkul; alsó becslés), a #86 N-F86b bemenete."""
+    con = sqlite3.connect(db_path)
+    try:
+        ki = {}
+        for (n,) in con.execute("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%' "
+                                "AND name NOT LIKE 'fts_motivum_%' ORDER BY name").fetchall():
+            db, b = con.execute('SELECT COUNT(*), IFNULL(SUM(LENGTH(CAST(licenc_allapot AS BLOB))+'
+                                'LENGTH(CAST(kereskedelmi AS BLOB))+LENGTH(CAST(licenc_dataset AS BLOB))),0) '
+                                'FROM "%s"' % n).fetchone()
+            ki[n] = (db, b)
+        return ki
+    finally:
+        con.close()
+
+
+def meres_md(epito, hashek, ido, meret, mod, proba=None, licenc_hely=None):
     ki = ['# SQLITE_EPIT -- mérés (%s) (F79)' % ('kis minta' if mod == 'minta' else 'teljes építés'), '',
           '*Proveniencia: `scope=manual | forras=eszkozok/sqlite_epit.py (--mod %s) | ts=%s`*' % (mod, ts_most()),
           '', '- fájl: `%s`, **%.1f MB**; építési idő (integritás nélkül): **%.1f s**'
@@ -971,6 +988,17 @@ def meres_md(epito, hashek, ido, meret, mod, proba=None):
     for n, (db, h) in sorted(hashek.items()):
         ki.append('| `%s` | %d | `%s` |' % (n, db, h[:16]))
     ki.append('')
+    if licenc_hely:
+        osszes_b = sum(b for _, b in licenc_hely.values())
+        ki += ['## A `licenc_*` oszlopok helyfoglalása (a #86 N-F86b bemenete)', '',
+               'A három oszlop (`licenc_allapot`, `kereskedelmi`, `licenc_dataset`) minden sorban ismétlődik. '
+               'Az alábbi bájtszám az oszlopok tartalma (rekord-fejléc és index nélkül, alsó becslés).', '',
+               '- összesen: **%.1f MB** a **%.1f MB**-os fájlból (%.1f%%)' % (
+                   osszes_b / 1048576.0, meret / 1048576.0, 100.0 * osszes_b / meret),
+               '', '| tábla | sor | licenc_* bájt | MB |', '|---|---:|---:|---:|']
+        for n, (db, b) in sorted(licenc_hely.items(), key=lambda x: -x[1][1])[:12]:
+            ki.append('| `%s` | %d | %d | %.2f |' % (n, db, b, b / 1048576.0))
+        ki.append('')
     if epito.kihagyott:
         ki += ['## Kimaradt táblák (licencsor hiánya, G6)', '']
         ki += ['- `%s`: %s' % k for k in epito.kihagyott]
@@ -1040,7 +1068,7 @@ def main(argv=None):
     meret = os.path.getsize(kimenet)
     if args.naplo:
         nev = 'SQLITE_EPIT_meres_minta.md' if args.mod == 'minta' else 'SQLITE_EPIT_meres.md'
-        irj(os.path.join(args.gyoker, 'naplok', nev), meres_md(ep, hashek, ido, meret, args.mod, proba))
+        irj(os.path.join(args.gyoker, 'naplok', nev), meres_md(ep, hashek, ido, meret, args.mod, proba, licenc_helyfoglalas(kimenet)))
     print('kész: %s (%.1f MB, %.1f s, %d tábla)' % (kimenet, meret / 1048576.0, ido, len(hashek)))
     if proba is not None:
         for p in proba:
