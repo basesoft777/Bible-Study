@@ -9,9 +9,9 @@ munka: adat
 allapot: fut
 ag: claude/f80-karoli-potlas
 ad: a kész (teljes) BDB-fordítású szócikkek Károli-alakjai és példaversei a teljes ÓSZ Károli–Strong párosításból pótolva adatként; a fordítás szövege nem változik
-kovetkezo: "M1 pótlás: adat/bdb_karoli.tsv (DT-F80a, 2026-10-12)"
+kovetkezo: "M3 zárás: naplok/BDB_KAROLI_POTLAS_zaras.md (≤20 sor), a független ellenőr újrafuttatása, a brief fejléce lezarva, push, draft PR (az M1 és M2 kész; az ellenőri eltérések F80.7–F80.12 javítva)"
 olvas: [adat/karoli_strong/, adat/forditasok.tsv, adat/SEMA.md, eszkozok/bdb_adatblokk.py, naplok/BDB_FORDITAS_sorrend.tsv, naplok/BDB_FORDITAS_naplo.md, F38_BDB_FORDITAS_BRIEF.md, F56_BDB_ADATBLOKK_BRIEF.md]
-ir: [adat/bdb_karoli.tsv, adat/SEMA.md, eszkozok/bdb_adatblokk.py, eszkozok/teszt_bdb_adatblokk.py]
+ir: [adat/bdb_karoli.tsv, adat/SEMA.md, eszkozok/bdb_adatblokk.py, eszkozok/teszt_bdb_adatblokk.py, naplok/BDB_KAROLI_POTLAS_bontas.md, NYITOTT_FELADATOK.md]
 fugg: []
 ---
 
