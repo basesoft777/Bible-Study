@@ -110,7 +110,7 @@ A mai ág „kivett szövegek” listájának (9 tétel) összevetése a régi s
 | „Macula-illesztés kb. 78%” | megvolt | **kivettem** (átvett szám hivatkozás nélkül) |
 | „SDBH/DBH a szókincs kb. 90%-át fedi; az üres eredmény nem negatív lelet” | megvolt kétszer (UBS-jelentés, domén) | **kivettem** (a CLAUDE.md tudása, nem adat) |
 | „a jelkulcs nincs a repóban” | megvolt (a BDB-jel `title`-jában) | **kivettem** |
-| „Gépi szeletelés (próba) … hibás határ előfordulhat” | megvan a BDB-blokkban | **kivétel: nem vettem ki** — ez a régi ág M3-határesete (napló 6. pont), a felhasználó dönt; a jellegcímke már mondja, hogy gépi feldolgozás |
+| „Gépi szeletelés (próba) … hibás határ előfordulhat” | megvan a BDB-blokkban | **marad** — a felhasználó döntése az M3-ban (2026-10-12, 7. pont); a jellegcímke is gépi feldolgozást mond |
 | „Thayer teljes fordítása halasztva (#7)”, „#38 sorrend”, „folyamatban” | nincs a régi sablonban | — |
 | „a Károli–Strong párosítás az ÚSZ-re még nem készült el”; „(1–5Móz, Józs)” | nincs | — |
 | a sosem hívott szókártya-kód | a régi ágon a szókártya hívott és működik | **marad** (nem hibás) |
@@ -136,6 +136,10 @@ A mai ág „kivett szövegek” listájának (9 tétel) összevetése a régi s
 - `C:\Users\bases\AppData\Local\Temp\claude\C--Users-bases-Desktop-Bible-Study\203cb7c8-e0ff-4860-a8e8-943bca62f11f\scratchpad\f60_egyesitett\zsolt22\karoli_konkordancia_proba.html` (2 538 866 bájt)
 
 *A felhasználó észrevételei (mi hiányzik, mi felesleges, melyik mérőszám a döntő; a „Gépi szeletelés (próba)” szöveg sorsa; a H7121-szeletelő 19 jelentés-szerkezet-változása): ide kerülnek.*
+
+Az M3 eddigi döntései (a felhasználó a chatben, 2026-10-12):
+- **„Gépi szeletelés (próba)” felirat: marad** a BDB-blokkban. A 4. pont kivétele ezzel lezárva.
+- Nyitva: a DT-F60a és a DT-F60b, a H7121-szeletelő 19 jelentés-szerkezet-változásának átnézése, a további észrevételek.
 
 ## 8. M4 — a DT-M1 opcióinak adatalapú összevetése és zárás
 
