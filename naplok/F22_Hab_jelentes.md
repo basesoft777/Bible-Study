@@ -76,6 +76,7 @@ Eltérő Károli-token (két modell partnerhalmaza különbözik) összesen: 0; 
 - **Régi arany (2.2): 1/2** (a `Hab.2.5 H7585` hármas egyezik, a `Hab.3.10 H8415` nem; a kizárás nélkül mért érték 50,0%, mindkettő a `regi_arany_hibas.tsv`-n kívül áll).
   - `Hab.2.5 H7585` („a Seol”): a `Hab 2:5` hu 20 „Seol” az er 15 שְׁאוֹל-ra (H7585) párosult: egyezik.
   - `Hab.3.10 H8415` („víz-ár”): a `Hab 3:10`-ben a „víz” (hu 10) → er 6 מַיִם (H4325), az „ár” (hu 11) → er 5 זֶרֶם (H2230); a H8415 (תְּהוֹם, er 9) a „hullám” (hu 14) szóhoz kötött. A régi arany tehát más Károli-szóhoz (a „víz-ár”-hoz) rendelte a H8415-öt, mint a párosítás; a TAHOT-glosszák (H4325 „water”, H2230 „storm”, H8415 „abyss”) a párosítás tokenkiosztását támogatják, de hogy a régi arany hármasa hibás-e, az **tartalmi ítélet, nem e menet dolga**: az `f21p/regi_arany_hibas.tsv`-be felvétel a felhasználó/orkesztrátor döntése (javaslat: vizsgálandó, mint a `Job.17.13` és az `Ecc.9.10` esete).
+  - *Utólag (2026.10.12):* a felhasználó döntése szerint a hármas a régi arany hibája, felvéve az `f21p/regi_arany_hibas.tsv`-be. A mért érték (kizárás nélkül) változatlanul 50,0% (1/2); a tájékoztató érték újramérve 100,0% (1/1). A fenti 2.2 a futáskori állapotot rögzíti.
 - A „gyanús fejezetek” listája a 2.1-ben formális: egy modell fut, `magas` nincs.
 
 ## 4. Kiegészítések ebben a menetben
