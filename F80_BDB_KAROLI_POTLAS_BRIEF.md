@@ -6,17 +6,20 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: nem_indult
+allapot: lezarva
+ag: claude/f80-karoli-potlas
+pr: https://github.com/basesoft777/Bible-Study/pull/310
+lezarva_osszegzes: "adat/bdb_karoli.tsv (62 526 sor, 674 szócikk), DT-F80a, DT-F80b; forditasok.tsv bájtra változatlan"
 ad: a kész (teljes) BDB-fordítású szócikkek Károli-alakjai és példaversei a teljes ÓSZ Károli–Strong párosításból pótolva adatként; a fordítás szövege nem változik
-kovetkezo: "M0 felmérés (csak olvas); ⛔ a tárolás helye (a forditasok.tsv mezője vagy külön tábla, SEMA-bővítéssel)"
+kovetkezo: "—"
 olvas: [adat/karoli_strong/, adat/forditasok.tsv, adat/SEMA.md, eszkozok/bdb_adatblokk.py, naplok/BDB_FORDITAS_sorrend.tsv, naplok/BDB_FORDITAS_naplo.md, F38_BDB_FORDITAS_BRIEF.md, F56_BDB_ADATBLOKK_BRIEF.md]
-ir: [adat/forditasok.tsv, adat/SEMA.md, eszkozok/bdb_adatblokk.py, eszkozok/teszt_bdb_adatblokk.py]
+ir: [adat/bdb_karoli.tsv, adat/SEMA.md, eszkozok/bdb_adatblokk.py, eszkozok/teszt_bdb_adatblokk.py, naplok/BDB_KAROLI_POTLAS_bontas.md, NYITOTT_FELADATOK.md]
 fugg: []
 ---
 
 # F80_BDB_KAROLI_POTLAS_BRIEF.md — a BDB-szócikkek Károli-adatának pótlása
 
-*FELADATOK #80 · Modell: sonnet · v1 · 2026.10.12 · a csonk-briefet váltja fel · döntés: DT77 (15), DT54, DT56 · forrás: `ADATVAGYON_TERV.md` 19. és 21. (1. lépcső), `F56_BDB_ADATBLOKK_BRIEF.md`, `F38_BDB_FORDITAS_BRIEF.md`*
+*FELADATOK #80 · Modell: sonnet · v3 · 2026.10.12 · a csonk-briefet váltja fel · döntés: DT77 (15), DT54, DT56 · forrás: `ADATVAGYON_TERV.md` 19. és 21. (1. lépcső), `F56_BDB_ADATBLOKK_BRIEF.md`, `F38_BDB_FORDITAS_BRIEF.md`*
 
 ## 1. Cél
 
@@ -77,7 +80,7 @@ Jelentés: `naplok/BDB_KAROLI_POTLAS_M0.md`.
 
 - **K1.** A 39 ÓSZ-könyv párosítása az M0-ban igazolt; a Strong-normalizálás egységes.
 - **K2.** Minden kész szócikknek megvan a Károli-szakasza vagy a kifejezett üres jelzés, proveniencia-sorral.
-- **K3.** Az `adat/forditasok.tsv` `forditas_hu` mezője és minden meglévő sor változatlan (bájtra egyező), kivéve az újonnan hozzáadott mezőt.
+- **K3.** Az `adat/forditasok.tsv` bájtra változatlan, kivétel nélkül (a pótolt adat az `adat/bdb_karoli.tsv`-ben áll).
 - **K4.** A SEMA a tárolás helyét leírja; a tesztek zöldek; a CI zöld.
 - **K5.** A független ellenőr eltérés nélkül zár, vagy az eltérései javítva vannak.
 
@@ -85,4 +88,6 @@ Jelentés: `naplok/BDB_KAROLI_POTLAS_M0.md`.
 
 | Verzió | Dátum | Döntés | Forrás |
 |---|---|---|---|
+| v3 | 2026-10-12 | DT-F80b: (1) a példaversek sorrendje kanonikus (a `parok_konyvek()` a `Konyv_normalizalo_tabla.tsv` sorrendjét követi, ismeretlen könyvre hibával áll meg); ez a #38 adatblokkjának 2. szakaszát is érinti (N-F80a); (2) minden `alak` sor megkapja a szócikk-sor proveniencia-sorát szó szerint (a tábla 12,3 MB); az 1. szakasz `par_db`-szövege a SEMA 2.25-höz igazítva. | a felhasználó döntése a chatben (2026-10-12) |
+| v2 | 2026-10-12 | DT-F80a: (b) külön tábla `adat/bdb_karoli.tsv` új SEMA-szakasszal; a példák hivatkozásként, kulcs: vers + Strong + Károli-alak (nem fájlbeli sorszám: a párosítás még változhat, #22-javítások, N46; a tárolt alak ellenőrző), teljes versszöveg nincs; mind a 674 kész szócikk; az `ir`-ből a `forditasok.tsv` kikerül, a K3 átfogalmazva. | a felhasználó döntése a chatben (2026-10-12) |
 | v1 | 2026-10-12 | Csonk kitöltése; `fugg` üres: a BDB ószövetségi szótár, az ÓSZ-párosítás teljes, a #22 ÚSZ-csomagjai nem érintik. | a felhasználó jóváhagyása a chatben (2026-10-12) |

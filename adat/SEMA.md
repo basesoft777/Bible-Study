@@ -1107,6 +1107,26 @@ Forrás a `parok_<könyv>.tsv`, tehát **modell-kimenet, javaslat** (a `bizonyos
 
 A `megerosites` sor a `szó-szintű-gépi` állítás (1.7) saját bizonyítéka: megléte a feltétele annak, hogy az `elofordulasok.tsv`/`jeloltek.tsv` sor `azonositas_modja`-ja `szó-szintű-gépi` lehet. A sor akkor is újraáll, ha a mód már átállt (a generálás idempotens).
 
+### 2.25 `bdb_karoli.tsv` — a kész BDB-szócikkek Károli-adata (F80, FELADATOK #80, DT-F80a)
+
+A #38 BDB-fordítása a Károli–Strong párosítás hiányos állapotában készült (a fordítót tápláló adatblokk Károli-szakasza csak az 1–5Móz és a Józs párjaiból élt, a többinél `[NINCS KÁROLI-ALAK]` állt vagy adatblokk még nem volt). A fordítás szövege nem változik (DT56); ez a tábla az **adatot** pótolja: minden kész (`forditasok.tsv`: `szotar=BDB`, `jelentes_szam=teljes`, `mezo=forditas_hu`) szócikkhez a **teljes ÓSZ** párosításból (`adat/karoli_strong/parok_*.tsv`, 2.20) a Károli-szóalakokat előfordulás-számmal és bizonyossággal, valamint példaverseket. A `forditasok.tsv` bájtra változatlan marad (a pótlás külön tábla; a #38 és az `emeles.py` írását nem érinti).
+
+**Generált** (`python eszkozok/bdb_adatblokk.py --karoli-epit [--ts …]`), kézzel nem szerkeszthető; a kész szócikkek halmaza a `forditasok.tsv`-ből, az adat a `parok_*.tsv` és a `TAHOT_kivonat.tsv`-ből jön, ugyanaz a logika, mint az adatblokk 1. és 2. szakaszáé (`karoli_alakok`). A fájl első sora `# GENERÁLT: …` fájlszintű proveniencia (az olvasók átugorják), második a fejléc. Olvasás `split('\t')`, írás `'\t'.join()` (a `csv` modul tilos, CLAUDE.md). Újrafuttatható (a #38 új szócikkeire, a #22-javítások után); azonos `--ts`-sel bájtra azonos. A tábla **javaslat-szintű** (a `parok` modell-kimenet, 2.20; a `bizonyossag` nem „ellenőrizve”).
+
+| Oszlop | Jelentés |
+|---|---|
+| `strong` | a BDB-szócikk kulcsa, a `forditasok.tsv` `strong` mezőjével azonos alak: `H` + 4 jegyű kitöltött szám (`H0001`, `H2617`); az adatot a szám alapján (`strong_szam`, homográf-betű nélkül) keresi a `parok`/`TAHOT` táblákban. Ma egyik kulcsnak sincs homográf-betűje. |
+| `tipus` | `szocikk` (szócikkenként egy sor: összesítés + proveniencia) \| `alak` (Károli-szóalakonként egy sor) |
+| `karoli_alak` | `alak` sorban a kisbetűsített Károli-szóalak (`parok.hu_szo`); `szocikk` sorban üres, **vagy** a `[NINCS KÁROLI-ALAK]` jelzés, ha a szócikk Strongjának a `parok`-ban nincs párja (üres forrás: kifejezett jelzés, nem kitöltés; CLAUDE.md 3. szabály; a mostani 674-ből egyiknél sem fordul elő) |
+| `magas` | az alak (`szocikk` sorban az összes alak) `magas` bizonyosságú párjainak száma |
+| `alacsony` | ugyanez az `alacsony` bizonyosságú pároké (a `parok` `magas` kivételével minden értéke; ma csak `alacsony` van) |
+| `pelda_versek` | csak `alak` sor: legfeljebb 3 különböző vers `;`-vel, a `parok` kanonikus könyvsorrendjében (a `konkordancia/Konyv_normalizalo_tabla.tsv` sorrendje: 1Móz … Mal; a `bdb_adatblokk.parok_konyvek()` ebből rendez, és hibával áll meg, ha egy `parok_*.tsv` könyve a táblában nincs; egyetlen alias: a `parok_Sir.tsv` Siralmai a táblában `JSir`), könyvön belül a fájl sorrendjében (`IGEHELY`, 1.1). **Hivatkozás, nem szöveg:** a versszöveg nem másolódik. A példa kulcsa a **vers + a szócikk Strongja + a Károli-alak** (nem fájlbeli sorszám, mert a párosítás még változhat: #22-javítások, N46); a tárolt alak ellenőrző: a hármas a `parok_*.tsv`-ben egy sorra visszakereshető (`bdb_adatblokk.karoli_pelda_forras`), különben a hivatkozás elavult. |
+| `tahot_elofordulas` | csak `szocikk` sor: a Strong előfordulásai a `TAHOT_kivonat.tsv`-ben a párosítás kész könyveiben |
+| `par_db` | csak `szocikk` sor: a Strong `parok`-sorainak (Károli–Strong linkjeinek) száma az **egész ÓSZ-párosításban**; **link-darab, nem a `tahot_elofordulas` részhalmaza** (egy előfordulásra több link is eshet, és a `tahot_elofordulas` csak a kész könyvek előfordulásait számolja: pl. H3722: 178 pár 102 előfordulásra, H4191: 1087 / 840); a kettő viszonya lefedettség-jelzés (nem néma nem-találat), de nem hányados |
+| `proveniencia` | **minden sorban kötelező, nem üres:** `scope=<Strong> \| forras=… \| ts=…` (1.5). Az `alak` sor proveniencia-ja a szócikk `szocikk` sorának proveniencia-jával **szó szerint azonos** (ugyanaz a lekérdezés adta; a sorszintű ismétlés ~+5 MB, elfogadott: így minden sor önállóan szűrhető/idézhető, csoportszintű hivatkozás nélkül) |
+
+Kulcs: `strong` + `tipus` + `karoli_alak` (az `alak` sor egyedi a szócikkön belül). Rendezés: `strong` növekvően; szócikkenként a `szocikk` sor, majd az alakok az előfordulás-szám csökkenő, azonos számnál a kisbetűs szóalak kódpont-sorrendjében (Unicode, nem magyar ábécé: a magyar ékezetes betűk a latin alapbetűk után, az `a`–`z` blokk végén állnak). A szócikk-adat és a `forditasok.tsv` sora a `strong` mezőn kapcsolható (join). Ellenőrzés: `python eszkozok/teszt_bdb_adatblokk.py` (`KaroliTabla`: minden kész szócikk megvan, és minden sorban (`szocikk` és `alak`) nem üres a proveniencia, az `alak` soré a szócikk soréval azonos; a példaversek a `Konyv_normalizalo_tabla.tsv` könyvsorrendjében állnak; ismert Strongokon — H2617, H5785, H8057 — a példák forrássorra visszakereshetők; a `forditasok.tsv` hash-e a tábla-építés előtt és után azonos).
+
 ---
 
 ## 3. Integritási szabályok
