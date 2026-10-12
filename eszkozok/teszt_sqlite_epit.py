@@ -313,6 +313,28 @@ class Integracio(unittest.TestCase):
         talalat = self.con.execute("SELECT COUNT(*) FROM fts_motivum WHERE fts_motivum MATCH 'tehom OR mélység'").fetchone()[0]
         self.assertGreater(talalat, 0)
 
+    def test_karoli_strong_kivonat_betoltve_es_jelentes(self):
+        self.assertGreater(self.con.execute('SELECT COUNT(*) FROM karoli_strong_kivonat').fetchone()[0], 300)
+        r = self.con.execute("SELECT darab FROM normalizalas_jelentes WHERE tabla='karoli_strong_kivonat' "
+                             "AND nyers='Jób 17:16'").fetchone()
+        self.assertIsNotNone(r)
+
+    def test_adat_tabla_sajat_licence(self):
+        for t in ('morf_kulcs_heber', 'morf_nyelv_aramai'):
+            r = self.con.execute('SELECT DISTINCT licenc_dataset, licenc_allapot, kereskedelmi FROM "%s"' % t).fetchall()
+            self.assertEqual(r, [(t, 'tisztazott', 'igen')])
+        r = self.con.execute('SELECT DISTINCT licenc_dataset FROM motivumok').fetchall()
+        self.assertEqual(r, [('projekt_adat',)])
+
+    def test_tagnt_karoli_vers_nelkuli_kulcsok(self):
+        nevek = {r[0] for r in self.con.execute(
+            "SELECT nyers FROM normalizalas_jelentes WHERE tabla='TAGNT_kivonat.tsv'")}
+        self.assertTrue({'Róm 3:31', '1Kor 3:23', 'Róm 8:39'} <= nevek)
+
+    def test_kjv_es_tbes_betoltve(self):
+        for t in ('kjv', 'tbesg', 'tbesh'):
+            self.assertGreater(self.con.execute('SELECT COUNT(*) FROM "%s"' % t).fetchone()[0], 1000, t)
+
     def test_probak_megegyeznek(self):
         for p in S.probak(self.a, ROOT):
             self.assertTrue(p['ok'], '%s: %s' % (p['pont'], p['megj']))
