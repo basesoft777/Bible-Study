@@ -19,7 +19,7 @@
 
 A javító körbe került köteg: k005 (6 vers); egész köteg formátumhibás (az 1. próba nyers válasza nem érvényes JSON: „1. a válasz nem érvényes JSON: Extra data: line 3 column 1 (”). A javító kör eredménye a fenti táblában.
 
-Költségplafon: a könyvplafon 46 vers × 0,0074 × 1,5 = 0.5106 USD (az `api_koteg.py` beépített alsó határa 1,00 USD, tehát a tényleges plafon 1.00 USD); a könyv költsége 0.2162 USD (versenként 0.0047 USD, a modellhez ment 46 versre). A futásnapló `futo_osszeg_usd` oszlopának utolsó Tit-sora: 86.585969 USD, a globális 110 USD-ből.
+Költségplafon: a könyvplafon 46 vers × 0,0074 × 1,5 = 0.5106 USD (az `api_koteg.py` beépített alsó határa 1,00 USD, tehát a tényleges plafon 1.00 USD); a könyv költsége 0.2162 USD (versenként 0.0047 USD, a modellhez ment 46 versre). A futásnapló `futo_osszeg_usd` oszlopának utolsó Tit-sora: 86.585969 USD, a 18 USD-s ÚSZ-keretből (D45: 86,3698 + 18; a kódbeli plafon `PLAFON_USD` = 104,36 USD).
 
 ## 1a. Szkriptkimenet
 

@@ -19,7 +19,7 @@
 
 A javító körbe került köteg: k005 (10 vers); versenkénti kapuhiba: 4. ezek az eredeti szavak sem a "parok" jobb oldalán, sem a "forditatlan"-ban ne. A javító kör eredménye a fenti táblában.
 
-Költségplafon: a könyvplafon 61 vers × 0,0074 × 1,5 = 0.6771 USD (az `api_koteg.py` beépített alsó határa 1,00 USD, tehát a tényleges plafon 1.00 USD); a könyv költsége 0.3593 USD (versenként 0.0059 USD, a modellhez ment 61 versre). A futásnapló `futo_osszeg_usd` oszlopának utolsó 2Pét-sora: 87.226101 USD, a globális 110 USD-ből.
+Költségplafon: a könyvplafon 61 vers × 0,0074 × 1,5 = 0.6771 USD (az `api_koteg.py` beépített alsó határa 1,00 USD, tehát a tényleges plafon 1.00 USD); a könyv költsége 0.3593 USD (versenként 0.0059 USD, a modellhez ment 61 versre). A futásnapló `futo_osszeg_usd` oszlopának utolsó 2Pét-sora: 87.226101 USD, a 18 USD-s ÚSZ-keretből (D45: 86,3698 + 18; a kódbeli plafon `PLAFON_USD` = 104,36 USD).
 
 ## 1a. Szkriptkimenet
 
