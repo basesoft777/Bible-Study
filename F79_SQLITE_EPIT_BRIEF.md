@@ -6,13 +6,16 @@ tipus: feladat
 fazis: 1
 munka: adat
 modell: sonnet
-allapot: nem_indult
+allapot: lezarva
+ag: claude/f79-sqlite-epit
 ad: eszkozok/sqlite_epit.py — az adat/ és a konkordancia/ kanonikus tábláiból determinisztikusan épített, nem commitolt pardes.db (SEMA-típusok, KK-alapú vers-kulcs, normalizált igehely és Strong, licenc_allapot és kereskedelmi minden táblán, strong_parok és frázis-pozíció előszámolva, FTS a motivumok/ fölött); a SEMA 3. integritási szabályai az ellenoriz.py függvényein át futnak, sértésnél megáll; mért méret és lekérdezés-próba a 26 pontból az 1–6., 13–15. pontra
-kovetkezo: /kovetkezo; ⛔ az M0 felmérés után (séma-terv és a nyitott pontok), ⛔ a kis minta lekérdezés-próbája után, a teljes építés előtt
+kovetkezo: "merge a felhasználótól; nyitott: N-F79a, N-F79b, N-F79c (NYITOTT_FELADATOK.md)"
 olvas: [adat/SEMA.md, adat/, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/BSB_Strongs.tsv, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, motivumok/, tematikus_lezart/, genezis/, ujszovetseg/, eszkozok/strong_util.py, eszkozok/ellenoriz.py, eszkozok/gate.py, MUNKATERV.md, ADATVAGYON_TERV.md]
 ir: [eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, .gitignore]
 fugg: [62]
 nem_fugg: [38, 52]
+pr: 300
+lezarva_osszegzes: pardes.db építő kész (eszkozok/sqlite_epit.py, 37 teszt zöld; teljes építés 63 tábla, 845 MB, a licenc_* oszlopok 250 MB; kis minta próbája 9/9; javító kör: Karoli_Strong_kivonat, KJV_Strongs_teljes, TBESG/H, morf_* licenc, TAGNT-jelentés, táblánkénti méret); zárás: naplok/F79_zaras.md, mérés: naplok/SQLITE_EPIT_meres.md; draft PR #300
 ---
 
 # F79_SQLITE_EPIT_BRIEF.md — SQLite-építő (pardes.db)
@@ -131,4 +134,4 @@ nézet**, nem adat: nem commitolt, kézzel nem írható, és nem ír vissza semm
 | D1 | Az integritás egy implementációban | az `ellenoriz.py` függvényei, nem új kód | javaslat (M0 ⛔-nél megerősítve) |
 | D2 | A `pardes.db` helye | helyben, `.gitignore`; a #76 dönti el a terjesztését | rögzítve (MUNKATERV 4.) |
 | D3 | Az FTS a régi tanulmányokra is, átmenetileg | igen, `regi_forras` jelöléssel, a #11 migrációjáig; a fájlkör és a kiesés szabálya: DT-F79a (5) | a felhasználó iránya (2026.10.12) |
-| DT-F79a | Az M0 öt nyitott pontja (vers-kulcs, `kereskedelmi` forrása, az integritás ideje, a kis minta táblái, az átmeneti FTS fájlköre és kiesési szabálya) | M0 ⛔; az (5) iránya eldöntve: a régi tanulmányok a #11-ig `regi_forras` jelöléssel kereshetők (felhasználó, 2026.10.12), hogy a #76 indulástól kereshető legyen | nyitott (az (5) iránya rögzítve) |
+| DT-F79a | Az M0 öt nyitott pontja (vers-kulcs, `kereskedelmi` forrása, az integritás ideje, a kis minta táblái, az átmeneti FTS fájlköre és kiesési szabálya) | M0 ⛔; az (5) iránya eldöntve: a régi tanulmányok a #11-ig `regi_forras` jelöléssel kereshetők (felhasználó, 2026.10.12), hogy a #76 indulástól kereshető legyen | eldöntve (mind a nyolc pont a javaslat szerint, a felhasználó, 2026.10.12; az (5)-nél a `melyelemzesek/` és a kézi naplók is bekerültek) |
