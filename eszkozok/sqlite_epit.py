@@ -776,6 +776,12 @@ class Epito(object):
 
     # -- jelentes, meta -----------------------------------------------------------------------
     def _jelentes_tabla(self):
+        if self.mod == 'teljes':
+            self.megjegyzesek.append(
+                'Nem betöltött konkordancia-táblák (a DT-F79a és a brief hatóköre nem nevezi őket): '
+                'Macula_heber_*/Macula_gorog, LXX_OS/*, KJV_Strongs_teljes és KJV_/ASV_Strongs_* (a #48 vezeti ki), '
+                'TBESG/TBESH, Karoli_Strong_kivonat, a BDB_*/aram/alias segédtáblák, SDBH_SDGNT_domenfa; '
+                'a licenc-sor hiánya miatt kimaradt táblák száma: %d' % len(self.kihagyott))
         sorok = [(t, nyers, ok, d) for (t, nyers, ok), d in sorted(self.norm_jelentes.items())]
         self.tabla('normalizalas_jelentes', [('tabla', 'TEXT'), ('nyers', 'TEXT'), ('ok', 'TEXT'),
                                              ('darab', 'INTEGER')],
