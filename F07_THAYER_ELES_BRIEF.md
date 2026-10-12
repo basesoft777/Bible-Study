@@ -3,7 +3,7 @@ feladat: 7
 cim: Thayer teljes magyar fordítása (éles)
 tipus: feladat
 fazis: 1
-modell: külső:gemini-3.1-flash-lite
+modell: sonnet
 allapot: brief_kell
 ad: a görög mélységi szócikk magyarul, adatként
 kovetkezo: halasztva (D46): a teljes Thayer gépi fordítása akkor, ha lesz böngésző felhasználó; a lexikon szócikkeit a #28 fordítja
