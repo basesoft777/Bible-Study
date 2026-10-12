@@ -346,7 +346,8 @@ class KaroliTabla(unittest.TestCase):
 
     def test_parok_konyvek_tabla_szerinti_sorrend_es_hiba(self):
         kv = [k for k, _ut in B.parok_konyvek()]
-        self.assertEqual(len(kv), 43)
+        db = len([f for f in os.listdir(B.PAROK_MAPPA) if re.match(r'^parok_.+[.]tsv$', f)])
+        self.assertEqual(len(kv), db)
         self.assertEqual(kv[:3], ['1Moz', '2Moz', '3Moz'])
         self.assertLess(kv.index('Jozs'), kv.index('Bir'))
         self.assertLess(kv.index('Bir'), kv.index('1Sam'))
