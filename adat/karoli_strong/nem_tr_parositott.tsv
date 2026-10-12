@@ -1,4 +1,4 @@
-# GENERÁLT: eszkozok/karoli_strong/nem_tr_lista.py | scope=az ÚSZ-könyvek szavak-táblái (1Jan, 1Pet, 1Thessz, 1Tim, 2Jan, 2Pet, 2Thessz, 2Tim, 3Jan, Fil, Filem, Jak, Jud, Kol, Tit) | forras=adat/karoli_strong/szavak_<könyv>.tsv + konkordancia/TAGNT_kivonat.tsv | ts=2026-10-12T10:29:32+00:00 | a párosított [nem TR] eredeti tokenek (a TR más alakot olvas, annak nincs sora a kivonatban); a link `alacsony`, a strong a kritikai szöveg alakjáé; D45 (a) | kézzel szerkeszteni tilos
+# GENERÁLT: eszkozok/karoli_strong/nem_tr_lista.py | scope=az ÚSZ-könyvek szavak-táblái (1Jan, 1Pet, 1Thessz, 1Tim, 2Jan, 2Pet, 2Thessz, 2Tim, 3Jan, Ef, Fil, Filem, Gal, Jak, Jud, Kol, Tit, Zsid) | forras=adat/karoli_strong/szavak_<könyv>.tsv + konkordancia/TAGNT_kivonat.tsv | ts=2026-10-12T10:56:12+00:00 | a párosított [nem TR] eredeti tokenek (a TR más alakot olvas, annak nincs sora a kivonatban); a link `alacsony`, a strong a kritikai szöveg alakjáé; D45 (a) | kézzel szerkeszteni tilos
 vers	er_sorszam	er_szo	strong	kritikai_kiadas	allapot	hu_sorszam	hu_szo
 1Ján 1:5	5	ἀγγελία	G0031	NA28+NA27+Tyn+SBL+WH+Treg+Byz+KJV	parositva	5	üzenet
 1Pét 3:1	22	κερδηθήσονται,	G2770	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	22	megnyeressenek
@@ -8,8 +8,11 @@ vers	er_sorszam	er_szo	strong	kritikai_kiadas	allapot	hu_sorszam	hu_szo
 1Tim 6:11	16	πραϋπαθίαν·	G6073	NA28+NA27+Tyn+SBL+WH+Treg	parositva	22	szelídséget
 2Pét 2:21	13	ὑποστρέψαι	G5290	NA28+NA27+Tyn+SBL+WH+Treg	parositva	17	elpártoljanak
 2Pét 2:22	18	κυλισμὸν	G2946	NA28+NA27+Tyn+SBL+WH+Treg	parositva	20	fertőjébe
+Ef 3:6	15	Ἰησοῦ	G2424	NA28+NA27+Tyn+SBL+WH+Treg	parositva	18	Jézusban
+Ef 6:19	6	δοθῇ	G1325	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	5	adassék
 Fil 1:11	2	καρπὸν	G2590	NA28+NA27+Tyn+SBL+WH+Treg	parositva	5	gyümölcsével
 Fil 3:21	26	αὐτῷ	G0846	NA28+NA27+Tyn+Treg	parositva	21	maga
+Gal 4:30	16	κληρονομήσει	G2816	NA28+NA27+Tyn+SBL+WH+Treg	parositva	19	örököl
 Jak 2:20	13	ἀργή	G0692	NA28+NA27+Tyn+SBL+WH+Treg	parositva	13	megholt
 Jak 3:4	22	βούλεται.¶	G1014	NA28+NA27+Tyn+SBL+WH+Treg	parositva	23	akarja
 Jak 3:8	8	ἀκατάστατον	G0182	NA28+NA27+Tyn+SBL+WH+Treg	parositva	11	fékezhetetlen
@@ -27,3 +30,12 @@ Kol 4:12	18	σταθῆτε	G2476	NA28+NA27+Tyn+SBL+WH+Treg	parositva	16	megáll
 Kol 4:12	21	πεπληροφορημένοι	G4135	NA28+NA27+Tyn+SBL+WH+Treg	parositva	19,20	teljes meggyőződéssel
 Kol 4:15	7	Νύμφαν	G3564	NA28+NA27+Tyn+SBL+WH	parositva	8	Nimfást
 Kol 4:15	12	αὐτῆς	G0846	NA28+NA27+SBL+WH	parositva	14,15	ő házánál
+Zsid 2:1	10	παραρυῶμεν.¶	G3901	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	12,14	el sodortassunk
+Zsid 4:2	16	συγκεκερασμένους	G4786	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	18	párosították
+Zsid 4:7	13	προείρηται,	G4280	NA28+NA27+Tyn+SBL+WH+Treg	parositva	14,15,16	előbb mondva volt
+Zsid 9:14	19	ἡμῶν	G3165	NA28+NA27+SBL+WH	parositva	19,20	ti lelkiismereteteket
+Zsid 10:2	16	κεκαθαρισμένους.	G2511	NA28+NA27+Tyn+SBL+WH+Treg	parositva	9	megtisztult
+Zsid 11:12	18	ἡ	G3588	NA28+NA27+Tyn+SBL+WH+Treg+Byz+KJV	parositva	23	fövény
+Zsid 13:15	8	παντὸς	G3956	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	7	mindenkor
+Zsid 13:18	4	πειθόμεθα	G3982	NA28+NA27+Tyn+SBL+WH+Treg	parositva	5,6	vagyunk meggyőződve
+Zsid 13:21	15	ἡμῖν	G3165	NA28+NA27+Tyn+SBL+WH	parositva	14	bennetek
