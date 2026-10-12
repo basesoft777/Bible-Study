@@ -95,3 +95,12 @@ Eltérő Károli-token (két modell partnerhalmaza különbözik) összesen: 0; 
 - Független ellenőrzés: a 11 könyv után, közösen (`naplok/ELLENOR_F22_USZ_A.md`); ez a jelentés nem „ellenőrzött”.
 - Független szúrópróba (22.6): elmarad (DT70).
 - PR és merge a felhasználóé.
+
+## 6. Utólagos javítás (N-F22c, 2026.10.12)
+
+A felhasználó döntése szerint (chat, 2026.10.12) a 48 zárójeles csoport (`naplok/F22_TAGNT_zarojeles_sorok.md`: a nyers TAGNT `[..]`/`{..}` sorai a `TAGNT_kivonat.tsv`-ből kimaradtak) érintett versei `kezi` bizonyosságúak, `fuggoben` állapotúak, link nélkül, mert a részleges görög szöveg hamis `betoldas` jelölést adhatott. A Károli-kulcs (NRSV vagy KJV/egyéb) a kivonat javítása előtt nem dönthető el, ezért **mindkét kulcs** verse jelölt, ha a Károliban létezik. Eszköz: `f22/kezi_versek_1Thessz.tsv` (az `egyesit.py` `kezi_felulir`-je; API nélkül újraépítve).
+
+- Érintett versek: 1Thessz 1:2, 1Thessz 1:3, 1Thessz 2:7, 1Thessz 2:6, 1Thessz 2:12, 1Thessz 2:11.
+- `parok_1Thessz.tsv`: 1478 → 1389 link; `szavak_1Thessz.tsv` (változott állapotok): er `forditatlan` 209 → 191; er `fuggoben` 0 → 91; er `parositva` 1293 → 1220; hu `betoldas` 286 → 255; hu `fuggoben` 0 → 100; hu `parositva` 1275 → 1206.
+- Átnézési sor (`naplok/F22_1Thessz_atnezes.tsv`): 6.
+- `egyesit.py --konyv 1Thessz --ellenoriz`: „rendben”. A fenti 1–5. szakasz számai a javítás előtti állapotot írják le.

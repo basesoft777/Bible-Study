@@ -50,7 +50,7 @@ def tabla_sorok(szavak, kiad):
     hu = {(r[0], r[2]): r[3] for r in szavak if r[1] == 'hu'}
     ki = []
     for r in szavak:
-        if r[1] != 'er' or r[4] == 'forditatlan':
+        if r[1] != 'er' or r[4] != 'parositva':   # csak a link: a forditatlan a K szabály szerinti, a fuggoben/kezi nem link
             continue
         w = bemenet.vers_adat(r[0])['eredeti'][int(r[2]) - 1]
         if not w['nem_tr']:

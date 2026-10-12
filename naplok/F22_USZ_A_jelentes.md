@@ -92,3 +92,19 @@ Hármas csak négy könyvben van (2Pét 2, 2Tim 1, 1Thessz 1, 1Pét 1); a mért 
 - **Kötegméret (mérés, a 22.8 + A 111 első próbás kötege):** a 12 egész köteg formátumhibás köteg nem nagyobb a többinél (átlag 7,9 vers/köteg, bemenet 7 972 token; a rendben lévő 99 kötegé 9,5 vers, 9 313 token); csonkolás nem volt (mind a 111 `finish_reason = end_turn`, a legnagyobb kimenet 15 627 token a 32 000-es `max_tokens` alatt). A hibás válaszok **rövidek** (átlag 925 kimeneti token a 7 889-cel szemben): a modell ezekben „rövidít”, nem a méret az ok. A 10 verses köteg marad.
 - **`[nem TR]`:** (a) változat, adatszintű jelöléssel: a link marad, a 27 token a generált `adat/karoli_strong/nem_tr_parositott.tsv`-ben (`eszkozok/karoli_strong/nem_tr_lista.py`; séma: `adat/SEMA.md` 2.20).
 - **Fil 1:16–17:** külön N-F tétel: **N-F22d** (`NYITOTT_FELADATOK.md`).
+
+## 9. Utólagos javítás: a 48 zárójeles csoport (N-F22c, 2026.10.12)
+
+A nyers TAGNT-vizsgálat (`naplok/F22_TAGNT_zarojeles_sorok.md`) szerint a kivonatból kimaradt `[..]`/`{..}` sorok 10 csoportja az A csomag könyveit érinti (1Ján 2:14, 1Pét 3:16, 1Thessz 1:2, 2:7, 2:12, 1Tim 6:21, 2Thessz 1:8, Kol 1:11, 1:22, Fil 2:7; a Fil 1:16–17 teljes verse már eredeti nélküli). Ezekben a versekben a modell részleges görög szöveget kapott; a felhasználó döntése szerint (chat, 2026.10.12) a versek `kezi`/`fuggoben` állapotba kerültek. Mivel a Károli-kulcs (NRSV vagy KJV/egyéb) a kivonat javítása előtt nem dönthető el, mindkét kulcs verse jelölt, ha a Károliban létezik (`f22/kezi_versek_<könyv>.tsv`). A Tit, 2Pét, 2Tim és Jak nem érintett.
+
+| könyv | jelölt versek | parok előtte → utána | átnézési sor |
+|---|---|---|---|
+| 2Thessz | 2Thessz 1:8, 2Thessz 1:7 | 823 → 787 | 2 |
+| 1Thessz | 1Thessz 1:2, 1Thessz 1:3, 1Thessz 2:7, 1Thessz 2:6, 1Thessz 2:12, 1Thessz 2:11 | 1478 → 1389 | 6 |
+| Kol | Kol 1:11, Kol 1:12, Kol 1:22, Kol 1:21 | 1579 → 1526 | 4 |
+| Fil | Fil 2:7, Fil 2:8 | 1638 → 1617 | 4 |
+| 1Pét | 1Pét 3:16, 1Pét 3:15 | 1677 → 1638 | 2 |
+| 1Ján | 1Ján 2:14, 1Ján 2:13 | 2072 → 2027 | 2 |
+| 1Tim | 1Tim 6:21 | 1643 → 1636 | 1 |
+
+Összesen 19 vers, 290 link elvéve; a `nem_tr_parositott.tsv` változatlanul 27 sor (az érintett versekben nem volt párosított `[nem TR]` token; a `nem_tr_lista.py` mostantól csak a `parositva` állapotot listázza, a `fuggoben` tokent nem). A versek újrapárosítása a kivonat javítása (N-F22c, külön feladat) után. Költség: 0 USD (API nélkül).

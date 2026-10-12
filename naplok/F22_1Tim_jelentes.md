@@ -92,3 +92,12 @@ Eltérő Károli-token (két modell partnerhalmaza különbözik) összesen: 0; 
 - Független ellenőrzés: a 11 könyv után, közösen (`naplok/ELLENOR_F22_USZ_A.md`); ez a jelentés nem „ellenőrzött”.
 - Független szúrópróba (22.6): elmarad (DT70).
 - PR és merge a felhasználóé.
+
+## 6. Utólagos javítás (N-F22c, 2026.10.12)
+
+A felhasználó döntése szerint (chat, 2026.10.12) a 48 zárójeles csoport (`naplok/F22_TAGNT_zarojeles_sorok.md`: a nyers TAGNT `[..]`/`{..}` sorai a `TAGNT_kivonat.tsv`-ből kimaradtak) érintett versei `kezi` bizonyosságúak, `fuggoben` állapotúak, link nélkül, mert a részleges görög szöveg hamis `betoldas` jelölést adhatott. A Károli-kulcs (NRSV vagy KJV/egyéb) a kivonat javítása előtt nem dönthető el, ezért **mindkét kulcs** verse jelölt, ha a Károliban létezik. Eszköz: `f22/kezi_versek_1Tim.tsv` (az `egyesit.py` `kezi_felulir`-je; API nélkül újraépítve).
+
+- Érintett versek: 1Tim 6:21.
+- `parok_1Tim.tsv`: 1643 → 1636 link; `szavak_1Tim.tsv` (változott állapotok): er `forditatlan` 157 → 156; er `fuggoben` 0 → 7; er `parositva` 1466 → 1460; hu `betoldas` 293 → 289; hu `fuggoben` 0 → 11; hu `parositva` 1493 → 1486.
+- Átnézési sor (`naplok/F22_1Tim_atnezes.tsv`): 1.
+- `egyesit.py --konyv 1Tim --ellenoriz`: „rendben”. A fenti 1–5. szakasz számai a javítás előtti állapotot írják le.
