@@ -63,9 +63,9 @@ Jelentés: `naplok/KAROLI_ELTERES_ITELET_M0.md`, a proveniencia-sorral.
 1. Soronként saját lekérdezéssel: a Károli-vers (`Karoli_1908.tsv`), a gépi párok (`parok_<könyv>.tsv`, `bizonyossag`-gal) és a TAHOT-sor (`TAHOT_kivonat.tsv`) a régi és az új kulcson. A fenti táblázat diagnózisát megerősíti vagy cáfolja; ha cáfolja, az eltérés a jelentésbe kerül, javaslat nélkül.
 2. Az új kulcson nincs-e már ugyanolyan `id` + `igehely` sor (ütközés), és melyik `adat/*.tsv` hivatkozik a régi kulcsra (sor + fájl).
 3. Soronként a javasolt változás mezőnként (`igehely`, `karoli_szo`, `igazolas`), a többi mező változatlan.
-4. A javítás rögzítésének módja (`DT-F87a`). Javaslat: a `proveniencia` és a `megbizhatosag` nem változik; a javítás ténye, oka és a forráslekérdezés a feladat naplójába (`naplok/KAROLI_ELTERES_ITELET_zaras.md`) kerül soronként, a `jeloltek.tsv` sorában pedig a `dontes`/`indoklas` mező [javaslat] egy rövid hivatkozást kap a naplóra. Alternatíva: a hivatkozás csak a naplóban áll.
+4. A javítás rögzítésének módja (`DT108`). Javaslat: a `proveniencia` és a `megbizhatosag` nem változik; a javítás ténye, oka és a forráslekérdezés a feladat naplójába (`naplok/KAROLI_ELTERES_ITELET_zaras.md`) kerül soronként, a `jeloltek.tsv` sorában pedig a `dontes`/`indoklas` mező [javaslat] egy rövid hivatkozást kap a naplóra. Alternatíva: a hivatkozás csak a naplóban áll.
 
-**⛔ Megállás:** a felhasználó soronként elfogadja, módosítja vagy elveti a javítást, és dönt a `DT-F87a`-ról.
+**⛔ Megállás:** a felhasználó soronként elfogadja, módosítja vagy elveti a javítást, és dönt a `DT108`-ról.
 
 ### M1 — Javítás
 
@@ -96,8 +96,8 @@ Jelentés: `naplok/KAROLI_ELTERES_ITELET_M0.md`, a proveniencia-sorral.
 |---|---|---|---|
 | v1 | 2026-10-11 | A feladat a #65 három `elter` sora mellett a két verskulcs-hibás `nincs_par` sort is tartalmazza (azonos hibaosztály). | befogadás, `naplok/KAROLI_ELLENORZES_zaras.md` |
 | v1 | 2026-10-11 | A befogadáskori előzetes vizsgálat szerint egyik eltérés sem Strong-hiba; a javaslat csak `karoli_szo` és `igehely` változást tartalmaz. | befogadás, előzetes lekérdezés (Károli 1908, `parok_*`, TAHOT) |
-| v1 | 2026-10-12 | DT-F87b: mind az öt sor javítása elfogadva az M0 szerint; a 4. sor `karoli_szo`-ja marad (`a sír üregébe`); az 1. sor `igazolas`-a marad (N-F87b). | felhasználó (chat), `naplok/KAROLI_ELTERES_ITELET_M0.md` |
-| v1 | 2026-10-12 | DT-F87a: a javítás ténye a `naplok/KAROLI_ELTERES_ITELET_zaras.md`-ben, a `jeloltek.tsv` `indoklas` végén rövid hivatkozással; `proveniencia`, `megbizhatosag`, `datum` változatlan (a `dontes` zárt mező, SEMA 2.4). | felhasználó (chat), `naplok/KAROLI_ELTERES_ITELET_M0.md` 4. pont |
+| v1 | 2026-10-12 | DT107: mind az öt sor javítása elfogadva az M0 szerint; a 4. sor `karoli_szo`-ja marad (`a sír üregébe`); az 1. sor `igazolas`-a marad (N-F87b). | felhasználó (chat), `naplok/KAROLI_ELTERES_ITELET_M0.md` |
+| v1 | 2026-10-12 | DT108: a javítás ténye a `naplok/KAROLI_ELTERES_ITELET_zaras.md`-ben, a `jeloltek.tsv` `indoklas` végén rövid hivatkozással; `proveniencia`, `megbizhatosag`, `datum` változatlan (a `dontes` zárt mező, SEMA 2.4). | felhasználó (chat), `naplok/KAROLI_ELTERES_ITELET_M0.md` 4. pont |
 | v1 | 2026-10-12 | Az `adat/karoli_variancia.tsv` teljes újragenerálással, egyetlen ts-sel (az ellenőr 1. eltérése: a két beszúrt sor vegyes ts-t adott); a ts-en kívül a tábla az előző változattal azonos. | `naplok/ELLENOR_KAROLI_ELTERES_ITELET.md` |
 
 Nyitott tétel: **N-F87a** — a régi KJV/MT-kulcsú igehelyek más adattáblákban (`lxx_dontesek.tsv` Préd 9:10, `forditasok.tsv`); a feladat csak listázza őket.

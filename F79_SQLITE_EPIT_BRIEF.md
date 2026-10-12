@@ -54,7 +54,7 @@ nézet**, nem adat: nem commitolt, kézzel nem írható, és nem ír vissza semm
 - **Előszámolt táblák:** token-tábla pozícióval (`vers, sorszam, strong, karoli_szo`) az
   `adat/karoli_strong/parok_*.tsv`-ből (az 5. pont frázis-keresése); `strong_parok(a, b, n)`
   a `grammatikai_strongok.tsv` szűrővel (a 23. pont); FTS5 a `motivumok/*.md` fölött (16. pont).
-- **Átmeneti FTS a régi tanulmányokra (DT-F79a (5), a felhasználó iránya, 2026.10.12):** amíg a
+- **Átmeneti FTS a régi tanulmányokra (DT109 (5), a felhasználó iránya, 2026.10.12):** amíg a
   #11 nem migrálta őket, a régi tanulmányok prózája (`tematikus_lezart/`, `genezis/`,
   `ujszovetseg/`) is az FTS-indexbe kerül, soronként `regi_forras` jelöléssel (a találat
   megmondja, hogy nem egyforrású, migrált szöveg). Egy motívum régi tanulmánya kiesik az
@@ -85,7 +85,7 @@ nézet**, nem adat: nem commitolt, kézzel nem írható, és nem ír vissza semm
   normalizálhatóság próbája a három STEPBible-datasetre (hány sor nem képezhető le). A
   `ellenoriz.py` szabályfüggvényeinek bemenete: TSV-sorlisták — ellenőrizni, hogy az építő
   ugyanazt a bemenetet adja-e. Séma-terv táblánként (oszlop, típus, index). ⛔ **A séma-terv és a
-  nyitott pontok a felhasználónak (DT-F79a):** (1) a vers-kulcs a KK (Károli-vers) — megerősítés;
+  nyitott pontok a felhasználónak (DT109):** (1) a vers-kulcs a KK (Károli-vers) — megerősítés;
   (2) a `kereskedelmi` oszlop forrása és értékkészlete (a `licencek.tsv` meglévő mezője vagy
   levezetett érték); (3) az integritás-ellenőrzés a betöltés előtt (TSV-n) vagy után (az
   adatbázisból visszaolvasva) fut — javaslat: előtte, a meglévő függvényekkel; (4) mely
@@ -133,5 +133,5 @@ nézet**, nem adat: nem commitolt, kézzel nem írható, és nem ír vissza semm
 |---|---|---|---|
 | D1 | Az integritás egy implementációban | az `ellenoriz.py` függvényei, nem új kód | javaslat (M0 ⛔-nél megerősítve) |
 | D2 | A `pardes.db` helye | helyben, `.gitignore`; a #76 dönti el a terjesztését | rögzítve (MUNKATERV 4.) |
-| D3 | Az FTS a régi tanulmányokra is, átmenetileg | igen, `regi_forras` jelöléssel, a #11 migrációjáig; a fájlkör és a kiesés szabálya: DT-F79a (5) | a felhasználó iránya (2026.10.12) |
-| DT-F79a | Az M0 öt nyitott pontja (vers-kulcs, `kereskedelmi` forrása, az integritás ideje, a kis minta táblái, az átmeneti FTS fájlköre és kiesési szabálya) | M0 ⛔; az (5) iránya eldöntve: a régi tanulmányok a #11-ig `regi_forras` jelöléssel kereshetők (felhasználó, 2026.10.12), hogy a #76 indulástól kereshető legyen | eldöntve (mind a nyolc pont a javaslat szerint, a felhasználó, 2026.10.12; az (5)-nél a `melyelemzesek/` és a kézi naplók is bekerültek) |
+| D3 | Az FTS a régi tanulmányokra is, átmenetileg | igen, `regi_forras` jelöléssel, a #11 migrációjáig; a fájlkör és a kiesés szabálya: DT109 (5) | a felhasználó iránya (2026.10.12) |
+| DT109 | Az M0 öt nyitott pontja (vers-kulcs, `kereskedelmi` forrása, az integritás ideje, a kis minta táblái, az átmeneti FTS fájlköre és kiesési szabálya) | M0 ⛔; az (5) iránya eldöntve: a régi tanulmányok a #11-ig `regi_forras` jelöléssel kereshetők (felhasználó, 2026.10.12), hogy a #76 indulástól kereshető legyen | eldöntve (mind a nyolc pont a javaslat szerint, a felhasználó, 2026.10.12; az (5)-nél a `melyelemzesek/` és a kézi naplók is bekerültek) |

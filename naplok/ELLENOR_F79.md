@@ -9,7 +9,7 @@
 - G3: nincs `csv` modul, beolvasás `general.tsv_beolvas` (`split('\t')`).
 - G4: a szabályok az `ellenoriz.py`-ból jönnek (`sqlite_epit.py:164-177`); negatív teszt az 1–6., 8., 9., 13. szabályra; a 10. és 11. szabályra nincs.
 - G8: méret és idő proveniencia-sorral a `SQLITE_EPIT_meres.md`-ben.
-- D1–D3, DT-F79a (1), (5), (6): rendben; az FTS fájlköre 50 fájl.
+- D1–D3, DT109 (1), (5), (6): rendben; az FTS fájlköre 50 fájl.
 - Sorszám-egyezés adat- és konkordancia-táblákon rendben; Δ = 0 minden `adat/` és `konkordancia/` táblán.
 - ⛔ M0: rendben. CI-futtatás (`futtat.py`) exit 0.
 
@@ -21,7 +21,7 @@
 5. **Nem betöltött táblák:** a `KJV_Strongs_teljes` és a `TBESG`/`TBESH` az M0 séma-tervében szerepelt, mégsem épült; a `KJV_Strongs_teljes` „#48 vezeti ki” indoka téves (a #48 csak a régi `KJV_/ASV_Strongs_*`-t vezeti ki). Macula, `LXX_OS`, BDB-segéd, SDBH-domének nem hiányok.
 6. **TIPNR:** 16 928 sor (47,7%) `strong`-ja NULL, mert `utotag='tilt'` fut; a `strong_util.py` `utotag='megtart'` támogatott.
 7. **TAGNT:** a Károli-vers nélküli kulcsok (Róm 3:31, 1Kor 3:23, Róm 8:39) jelentés nélkül kerülnek a `token_eredeti`/`token_strong` táblákba.
-8. **Brief:** a döntésnaplóban a DT-F79a „nyitott”, a DONTESEK.md-ben 🟢.
+8. **Brief:** a döntésnaplóban a DT109 „nyitott”, a DONTESEK.md-ben 🟢.
 9. **M0 napló:** a sorszámok (11/261/41/594/225/25/105/58, licencek 52) fejléccel és megjegyzéssorokkal együtt számoltak; a valós érték 9/259/39/592/222/23/92/56, licencek 46.
 
 ## NEM ELLENŐRIZHETŐ
