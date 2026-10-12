@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-10-12",
-   "commit": "387b3e55"
+   "commit": "7f344968"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -309,7 +309,7 @@
    "fazis": "1",
    "allapot": "stop",
    "brief_allapot": "megallt",
-   "most": "Te: a kilenc hiányzó kis könyv kész (Mal, Hag, Sof, Hab, Mik, Ámós, Jóel, Én, Sir; 797 vers; API, DT73 (a), D43; jelentések: `naplok/F22_<könyv>_jelentes.md`; végleges kapuhiba 0 mind a kilencben; kézi átnézési sor nincs; régi arany 6/7 hármas: Sof 1/1, Hab 1/2, Ámós 2/2, Jóel 1/1, Én 1/1, a `Hab.3.10 H8415` hármas a párosítástól eltér, l. `naplok/F22_Hab_jelentes.md` 3. szakasz; a felhasználó döntése szerint (2026.10.12) a régi arany hibája, felvéve az `f21p/regi_arany_hibas.tsv`-be); az ÓSZ minden könyve párosítva (a Hós PR #291 a main-en); a független ellenőr (`naplok/ELLENOR_F22_<könyv>.md`) az orkesztrátor dolga, még nem futott; a szúrópróba elmarad (DT70); PR, ready és merge (a felhasználóé); a `Hab.3.10` régi arany hármas kezelése (az `f21p/regi_arany_hibas.tsv`-be felvétel) a felhasználó döntése; párhuzamos futás csak kifejezett jóváhagyással indulhat (D15, DT60).",
+   "most": "Te: a 22.8 ÚSZ-próbacsomag (Filem, 2Ján, 3Ján, Júd; 78 vers; D44, v2.38) indításának jóváhagyása; a szakasz kész, futás még nem volt. Az ÓSZ minden könyve párosítva, a kilenc kis könyv a main-en (PR #292; a `Hab.3.10 H8415` felvéve az `f21p/regi_arany_hibas.tsv`-be, a felhasználó döntése, 2026.10.12). A próba után ⛔ megállás: a teljes ÚSZ és a keret külön döntés. Párhuzamos futás csak kifejezett jóváhagyással indulhat (D15, DT60).",
    "fugg": "#21 (kész)",
    "tervezett": false,
    "reszletes": "Két modell (Sonnet, az első könyvnél Gemini is) a Károli-fordítás minden szavához megkeresi az eredeti héber szót és a Strong-számát; ahol a két modell egyezik, a kapcsolat „magas” bizonyosságú. Az 1–5Mózes és Józsué kész.",
