@@ -6,13 +6,14 @@ tipus: feladat
 fazis: 1
 modell: opus
 munka: adat
-allapot: fut
+allapot: lezarva
 ag: claude/f87-karoli-elteres-itelet
 ad: a #65 eltéréslistáján kézi ítéletre váró öt sor soronként eldöntve és javítva az elofordulasok.tsv-ben és a jeloltek.tsv-ben (Károli-szó, illetve Károli-verskulcs), a két 2Móz-sor szó-szintű-gépi azonosítással, az eltéréslista újragenerálva
-kovetkezo: "Folytatás: M1–M3 kész (F87.3–F87.5, zárás: naplok/KAROLI_ELTERES_ITELET_zaras.md); az ellenőri eltérések javítva (F87.6), hátra: az ellenőr újrafuttatása, lezarva, draft PR"
+kovetkezo: "merge a felhasználótól; nyitott: N-F87a (LD008 feloldható), N-F87b, N-F87c (NYITOTT_FELADATOK.md)"
 olvas: [naplok/KAROLI_ELLENORZES_elteresek.tsv, naplok/KAROLI_ELLENORZES_zaras.md, adat/karoli_strong/, adat/karoli_variancia.tsv, adat/SEMA.md, konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, eszkozok/karoli_ellenorzes.py, F65_KAROLI_ELLENORZES_BRIEF.md]
 ir: [adat/elofordulasok.tsv, adat/jeloltek.tsv, adat/karoli_variancia.tsv, naplok/KAROLI_ELLENORZES_elteresek.tsv]
 fugg: [65]
+lezarva_osszegzes: öt sor javítva (3 karoli_szo, 3 Károli-verskulcs; KIRALY-001 2Móz 19:6 és TEREMT-001 2Móz 15:5 szó-szintű-gépi), eltéréslista és variancia újragenerálva; zárás: naplok/KAROLI_ELTERES_ITELET_zaras.md, ellenőr: naplok/ELLENOR_KAROLI_ELTERES_ITELET.md (2. kör TISZTA)
 ---
 
 # F87_KAROLI_ELTERES_ITELET_BRIEF.md — A #65 eltéréslistájának kézi ítélete

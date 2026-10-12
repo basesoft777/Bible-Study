@@ -41,3 +41,11 @@ Megjegyzés, ELTÉRÉS nélkül: az eltéréslistán a Préd 9:12 sor `gepi_stro
 
 1. `adat/karoli_variancia.tsv`: `python eszkozok/karoli_ellenorzes.py --variancia adat/karoli_variancia.tsv` egyetlen futással, ts=2026-10-12T06:56:15Z; a ts-mezőn kívül a tábla az F87.5 változattal azonos (ts-maszkolt `diff`: azonos).
 2. A brief `kovetkezo` mezője frissítve; a döntésnapló kiegészítve (DT-F87a, DT-F87b, a variancia-eljárás).
+
+## 2. kör — b46a272e..89cd5d3d (F87.6): TISZTA
+
+*(az ellenőr eredménytáblája, a koordinátor közvetítésével, változtatás nélkül)*
+
+2. kör — b46a272e..89cd5d3d (F87.6): TISZTA. R2-1a variancia egységes ts (42 800 sor + fejléc, ts=2026-10-12T06:56:15Z) OK; R2-1b ts-maszkolva azonos a b46a272e-vel (csak a ts változott) OK; R2-1c eszköz-reprodukció NEM ELLENŐRIZHETŐ (az eszköz fájlt ír); R2-2 brief kovetkezo és döntésnapló OK; R2-3 zárás OK; R2-4 hatókör OK (4 fájl); R2-5 E17/DT3 OK; R2-6 CI E2–E20, E26: 0 találat, E25/E27 a korábbi JELENTES-készlet; R2-7 ⛔ OK.
+
+Az `ellenoriz.py` (E1) az ellenőr szerepkörében nem futtatható; a végrehajtó futtatta: 0 sértés.
