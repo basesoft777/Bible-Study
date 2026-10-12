@@ -1,8 +1,8 @@
 # SQLITE_EPIT -- mérés (teljes építés) (F79)
 
-*Proveniencia: `scope=manual | forras=eszkozok/sqlite_epit.py (--mod teljes) | ts=2026-10-12T08:12:33Z`*
+*Proveniencia: `scope=manual | forras=eszkozok/sqlite_epit.py (--mod teljes) | ts=2026-10-12T08:29:56Z`*
 
-- fájl: `pardes.db`, **845.4 MB**; építési idő (integritás nélkül): **52.6 s**
+- fájl: `pardes.db`, **845.4 MB**; építési idő (integritás nélkül): **54.5 s**
 
 ## Táblánkénti sorszám és tartalom-hash (G2: két egymás utáni építés)
 
@@ -45,7 +45,7 @@
 | `morf_nyelv_aramai` | 7549 | `ee2c5a1081f3a7e7` | `ee2c5a1081f3a7e7` |
 | `motivumok` | 9 | `6b7ec84b16cc78eb` | `6b7ec84b16cc78eb` |
 | `nave_basokant` | 85246 | `62e5001364e4a121` | `62e5001364e4a121` |
-| `normalizalas_jelentes` | 3019 | `7b2abba78c94ea6e` | `7b2abba78c94ea6e` |
+| `normalizalas_jelentes` | 3019 | `c8d321da922ea1a5` | `c8d321da922ea1a5` |
 | `oshl_bdb_igehelyek` | 4053 | `7183aa23ee59878f` | `7183aa23ee59878f` |
 | `oshl_lexikalis_index` | 10221 | `88c18fcc8187d1a4` | `88c18fcc8187d1a4` |
 | `res_forras` | 56 | `dc612fa972ded461` | `dc612fa972ded461` |
@@ -78,7 +78,7 @@
 
 Mérés: minden tábla (indexeivel) külön adatbázisba másolva, lapszám × lapméret (a Python sqlite3-ból hiányzik a `dbstat`); a „licenc nélkül” oszlop ugyanez a három `licenc_*` oszlop nélkül.
 
-- a táblák összege: **845.6 MB** (a fájl: 845.4 MB; a különbség az SQLite szabad lapjai és a közös fejléc)
+- a táblák összege: **845.6 MB** (a fájl: 845.4 MB; a többlet a táblánkénti külön adatbázisok saját fejléc- és séma-lapjaiból adódik)
 - a `licenc_*` oszlopok összes részesedése: **250.4 MB (29.6%)**
 
 | tábla | sor | MB (indexszel) | MB licenc_* nélkül | licenc_* részesedés |
@@ -152,7 +152,7 @@ Mérés: minden tábla (indexeivel) külön adatbázisba másolva, lapszám × l
 
 | tábla | ok | darab (különböző érték / előfordulás) | példák |
 |---|---|---|---|
-| TAGNT_kivonat.tsv | nincs ilyen Károli-vers (token_eredeti.van_vers=0) | 3 / 3 | `1Kor 3:23`, `Róm 3:31`, `Róm 8:39` |
+| TAGNT_kivonat.tsv | nincs ilyen Károli-vers (token_eredeti.van_vers=0) | 3 / 40 | `1Kor 3:23`, `Róm 3:31`, `Róm 8:39` |
 | bsb | nincs ilyen Károli-vers | 31 / 349 | `2Móz 36:38`, `4Móz 12:16`, `4Móz 30:17`, `Hós 12:15`, `Hós 13:16`, `Hós 2:23`, `Jób 17:16`, `Jób 37:24` |
 | karoli_strong_kivonat | nincs ilyen Károli-vers | 1 / 1 | `Jób 17:16` |
 | kh | nincs ilyen Károli-vers (cél-oldal) | 41 / 72 | `1Kir 4:39`, `1Kor 3:23`, `1Móz 2:28`, `1Sám 23:39`, `2Kir 22:23`, `2Kir 7:21`, `2Móz 15:29`, `2Sám 21:23` |
