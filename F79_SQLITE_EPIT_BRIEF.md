@@ -9,7 +9,7 @@ modell: sonnet
 allapot: nem_indult
 ad: eszkozok/sqlite_epit.py — az adat/ és a konkordancia/ kanonikus tábláiból determinisztikusan épített, nem commitolt pardes.db (SEMA-típusok, KK-alapú vers-kulcs, normalizált igehely és Strong, licenc_allapot és kereskedelmi minden táblán, strong_parok és frázis-pozíció előszámolva, FTS a motivumok/ fölött); a SEMA 3. integritási szabályai az ellenoriz.py függvényein át futnak, sértésnél megáll; mért méret és lekérdezés-próba a 26 pontból az 1–6., 13–15. pontra
 kovetkezo: /kovetkezo; ⛔ az M0 felmérés után (séma-terv és a nyitott pontok), ⛔ a kis minta lekérdezés-próbája után, a teljes építés előtt
-olvas: [adat/SEMA.md, adat/, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/BSB_Strongs.tsv, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, motivumok/, eszkozok/strong_util.py, eszkozok/ellenoriz.py, eszkozok/gate.py, MUNKATERV.md, ADATVAGYON_TERV.md]
+olvas: [adat/SEMA.md, adat/, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/BSB_Strongs.tsv, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, motivumok/, tematikus_lezart/, genezis/, ujszovetseg/, eszkozok/strong_util.py, eszkozok/ellenoriz.py, eszkozok/gate.py, MUNKATERV.md, ADATVAGYON_TERV.md]
 ir: [eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, .gitignore]
 fugg: [62]
 nem_fugg: [38, 52]
@@ -51,6 +51,13 @@ nézet**, nem adat: nem commitolt, kézzel nem írható, és nem ír vissza semm
 - **Előszámolt táblák:** token-tábla pozícióval (`vers, sorszam, strong, karoli_szo`) az
   `adat/karoli_strong/parok_*.tsv`-ből (az 5. pont frázis-keresése); `strong_parok(a, b, n)`
   a `grammatikai_strongok.tsv` szűrővel (a 23. pont); FTS5 a `motivumok/*.md` fölött (16. pont).
+- **Átmeneti FTS a régi tanulmányokra (DT-F79a (5), a felhasználó iránya, 2026.10.12):** amíg a
+  #11 nem migrálta őket, a régi tanulmányok prózája (`tematikus_lezart/`, `genezis/`,
+  `ujszovetseg/`) is az FTS-indexbe kerül, soronként `regi_forras` jelöléssel (a találat
+  megmondja, hogy nem egyforrású, migrált szöveg). Egy motívum régi tanulmánya kiesik az
+  indexből, amint a `motivumok/[ID].md` migrált forrása megvan (a két szöveg nem kereshető
+  egyszerre). Csak olvasás: az index nem ír vissza, és nem kinyerés — adat a régi prózából
+  továbbra is csak a `jeloltek.tsv`-n át, döntéssel kerül az adatrétegbe (DT28).
 - **Integritás:** a SEMA 3. szakasz szabályai **az `eszkozok/ellenoriz.py` meglévő
   `szabaly1…8` függvényein át** futnak a betöltött adaton (egy szabály, egy implementáció);
   sértésnél az építés nem ír kész fájlt, és nem nulla kóddal lép ki.
@@ -79,7 +86,10 @@ nézet**, nem adat: nem commitolt, kézzel nem írható, és nem ír vissza semm
   (2) a `kereskedelmi` oszlop forrása és értékkészlete (a `licencek.tsv` meglévő mezője vagy
   levezetett érték); (3) az integritás-ellenőrzés a betöltés előtt (TSV-n) vagy után (az
   adatbázisból visszaolvasva) fut — javaslat: előtte, a meglévő függvényekkel; (4) mely
-  konkordancia-táblák kerülnek a kis mintába.
+  konkordancia-táblák kerülnek a kis mintába; (5) az átmeneti FTS a régi tanulmányokra
+  (irány eldöntve: igen, `regi_forras` jelöléssel): a fájlkör pontos listája (a generált
+  `lexikon/` és a `naplok/` nem), és a kiesés szabálya (motívumonként, a migrált forrás
+  megjelenésekor).
 - **M1 — építő, kis mintán.** A 8 lexikonoldalas motívum és az 1Mózes (ADATVAGYON 21., 3. szabály).
   Determinisztikus: kétszeri építés azonos tartalmat ad (táblánkénti rendezett tartalom-hash; a
   fájl bájtazonossága nem követelmény). Commit tételenként (`F79.1:` …).
@@ -120,4 +130,5 @@ nézet**, nem adat: nem commitolt, kézzel nem írható, és nem ír vissza semm
 |---|---|---|---|
 | D1 | Az integritás egy implementációban | az `ellenoriz.py` függvényei, nem új kód | javaslat (M0 ⛔-nél megerősítve) |
 | D2 | A `pardes.db` helye | helyben, `.gitignore`; a #76 dönti el a terjesztését | rögzítve (MUNKATERV 4.) |
-| DT-F79a | Az M0 négy nyitott pontja (vers-kulcs, `kereskedelmi` forrása, az integritás ideje, a kis minta táblái) | M0 ⛔ | nyitott |
+| D3 | Az FTS a régi tanulmányokra is, átmenetileg | igen, `regi_forras` jelöléssel, a #11 migrációjáig; a fájlkör és a kiesés szabálya: DT-F79a (5) | a felhasználó iránya (2026.10.12) |
+| DT-F79a | Az M0 öt nyitott pontja (vers-kulcs, `kereskedelmi` forrása, az integritás ideje, a kis minta táblái, az átmeneti FTS fájlköre és kiesési szabálya) | M0 ⛔; az (5) iránya eldöntve: a régi tanulmányok a #11-ig `regi_forras` jelöléssel kereshetők (felhasználó, 2026.10.12), hogy a #76 indulástól kereshető legyen | nyitott (az (5) iránya rögzítve) |
