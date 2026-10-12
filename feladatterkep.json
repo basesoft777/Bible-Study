@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-10-12",
-   "commit": "b898e68c"
+   "commit": "e3ff2289"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -333,7 +333,7 @@
    "fazis": "1",
    "allapot": "stop",
    "brief_allapot": "megallt",
-   "most": "Te: a 22.9 A csomag (Tit, 2Thessz, 2Pét, 2Tim, 1Thessz, Kol, Fil, 1Pét, 1Ján, Jak, 1Tim; 956 vers, kb. 5,3 USD) indításának jóváhagyása; utána a csomag versbeosztás-jóváhagyása (⛔). A keret 18 USD (D45, `api_koteg.PLAFON_USD` 104,36). Kész: a 22.8 próbacsomag (`naplok/F22_USZ_proba_jelentes.md`, ellenőrizve: `naplok/ELLENOR_F22_USZ_proba.md`). Nyitott: N-F22c (a három Károli-összevonás jóváhagyása a C előtt). Párhuzamos futás csak kifejezett jóváhagyással indulhat (D15, DT60).",
+   "most": "Te: a 22.9 A csomag kész (11 könyv, 956 vers, 954 a modellhez; összesítő: `naplok/F22_USZ_A_jelentes.md`): 5,0680 USD (0,0053 USD/vers), a futó összeg 91,4379 USD, a 18 USD-s keretből 12,93 USD maradt; kapuhiba első próbára 92/954 (ebből 87 egész formátumhibás kötegben), végleg 0; `[nem TR]` 348/375 `forditatlan`, 27 párosított (a TR más alakot olvas, annak nincs sora); Fil 1:16–17 `fuggoben` (N-F22c). ⛔ Döntés: a B csomag (Gal, Ef, 2Kor, Zsid; 863 vers, vetítve 4,60 USD) indítása; a 27 párosított `[nem TR]` token kezelése; független ellenőr (`naplok/ELLENOR_F22_USZ_A.md`) és PR. Párhuzamos futás csak kifejezett jóváhagyással indulhat (D15, DT60).",
    "fugg": "#21 (kész)",
    "tervezett": false,
    "reszletes": "Két modell (Sonnet, az első könyvnél Gemini is) a Károli-fordítás minden szavához megkeresi az eredeti héber szót és a Strong-számát; ahol a két modell egyezik, a kapcsolat „magas” bizonyosságú. Az 1–5Mózes és Józsué kész.",
