@@ -1691,3 +1691,11 @@ ts	futas	koteg	probalkozas	modell	gondolkodas_mod	igehely_db	kjv	bemenet_token	k
 2026-10-12T09:01:43+00:00	api_termeles/high/2Thessz	4	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	9358	8608		0.052398	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	86.763722	igen
 2026-10-12T09:01:43+00:00	api_termeles/high/2Thessz	5	1	claude-sonnet-5-5	adaptive,effort=high	7	nem	7706	5956		0.037486	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	86.801208	igen
 2026-10-12T09:01:43+00:00	api_termeles/high/2Thessz	1	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	10034	11120		0.065634	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	86.866842	igen
+2026-10-12T09:06:05+00:00	api_termeles/high/2Pet	1	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	10042	9827		0.059177	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	86.926019	igen
+2026-10-12T09:06:05+00:00	api_termeles/high/2Pet	5	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	10113	9005		0.055138	batch_ar_szamolt	1	1		end_turn	84f12ca7aafb	86.981157	nem
+2026-10-12T09:06:05+00:00	api_termeles/high/2Pet	6	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	10400	9166		0.056230	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	87.037387	igen
+2026-10-12T09:06:05+00:00	api_termeles/high/2Pet	2	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	9933	8924		0.054553	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	87.091940	igen
+2026-10-12T09:06:05+00:00	api_termeles/high/2Pet	4	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	9934	9720		0.058534	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	87.150474	igen
+2026-10-12T09:06:05+00:00	api_termeles/high/2Pet	3	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	9740	8393		0.051705	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	87.202179	igen
+2026-10-12T09:06:05+00:00	api_termeles/high/2Pet	7	1	claude-sonnet-5-5	adaptive,effort=high	1	nem	5318	187		0.006253	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	87.208432	igen
+2026-10-12T09:08:15+00:00	api_termeles/high/2Pet	5	2	claude-sonnet-5-5	adaptive,effort=high	10	nem	11899	1154		0.017669	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	87.226101	igen
