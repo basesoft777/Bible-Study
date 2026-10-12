@@ -387,8 +387,7 @@ ol.jel { gap: 12px; }
   <footer class="lab">
     <span>Aláhúzott szó: a Károli-szó szó szintű párosítása a héber szóval (a Károli–Strong párosítás, modell-kimenet). Szaggatott aláhúzás: nem „magas” bizonyosságú pár.</span>
     <span>Arany jelölés: a BDB-szócikk magyar fordítása nincs meg; az angol eredeti áll.</span>
-    <span>Az előfordulásszám a TAHOT-kivonatból jön, amely nem teljes (pl. a Zsolt 88/89/140/142 hiányzik).</span>
-    <span>Igealak: a Macula nyers morfológiai kódja mellett a magyar feloldás az adat/morf_kulcs_heber.tsv-ből jön (gépi feldolgozás; a kód változatlanul látszik). A szó alatti görög szó: a párosítás a Maculából, a szóalak az LXX_OS-ből; a Macula-illesztés pontossága az F17 napló szerint kb. 78% (átvett szám, naplok/F17_import_naplo.md).</span>
+    <span>Igealak: a Macula nyers morfológiai kódja mellett a magyar feloldás az adat/morf_kulcs_heber.tsv-ből jön (gépi feldolgozás; a kód változatlanul látszik). A szó alatti görög szó: a párosítás a Maculából, a szóalak az LXX_OS-ből</span>
     <span>Angol szó szavanként: a BSB „Számozás” oszlopa jelzi a versszámozást; a KJV-kulcs a LXX_OS KJV-oszlopából jön (gépi illesztés). A Nave-témák KJV-számozású hivatkozások, a tartományok versekre bontva (gépi feldolgozás).</span>
     <span>„Ebben a versben”: a UBS héber szótárának (DBH) saját jelentés-besorolása az adott előfordulásra; CC BY-SA 4.0.</span>
   </footer>
@@ -763,7 +762,7 @@ ol.jel { gap: 12px; }
             el('span', { class: 'dom', text: u.domen }),
             el('span', { class: 'def', lang: 'en', text: u.definicio }),
             el('span', { class: 'gl', lang: 'en', text: 'Glosszák: ' + u.glosszak })))
-        : el('p', { class: 'meg', text: 'A UBS-szótár ehhez az előforduláshoz nem ad jelentés-besorolást (az SDBH/DBH a szókincs kb. 90%-át fedi; az üres eredmény nem negatív lelet).' }),
+        : el('p', { class: 'meg', text: 'A UBS-szótár ehhez az előforduláshoz nem ad jelentés-besorolást.' }),
       forras('ubs', 'macula'));
   }
 
@@ -782,7 +781,7 @@ ol.jel { gap: 12px; }
       d.length ? el('div', { class: 'sorok' }, tobbRessz(d, 8, x => el('div', { class: 'ubs' },
         el('span', { class: 'dom', text: [...(x.ut || []), x.domen].join(' › ') }), el('span', { class: 'def', lang: 'en', text: x.glossza }),
         el('span', { class: 'gl', text: `${x.db} hivatkozás · ${x.lexid} · ${x.domen_kod}` })), 'További jelentés'))
-        : el('p', { class: 'meg', text: 'Az SDBH/SDGNT nem ad domént ehhez a szóhoz (a szókincs kb. 90%-át fedi; az üres eredmény nem negatív lelet).' }),
+        : el('p', { class: 'meg', text: 'Az SDBH/SDGNT nem ad domént ehhez a szóhoz.' }),
       forras(kulcs));
   }
   function seceBlokk(l, cim, kulcs) {
@@ -944,7 +943,7 @@ ol.jel { gap: 12px; }
           l.hu.map(x => el('p', { class: 'bdb', text: (x.szam ? x.szam + '. ' : '') + x.szoveg })))
       : el('div', { class: 'blokk' },
           el('h3', { text: 'Jelentés' }),
-          el('span', { class: 'allapot folyamat', text: 'Magyar fordítás nincs' }),
+          el('span', { class: 'allapot folyamat', text: (l.thayer || l.tbesg) ? 'Magyar fordítás nincs · az angol eredeti áll (alább: TBESG / Thayer)' : 'Magyar fordítás nincs · angol szócikk sincs' }),
           el('p', { class: 'meg', text: `Rövid jelentés: ${l.gloss}` }));
     szolap.append(
       el('div', null, el('p', { class: 'lapcim', text: 'Szó-lap · görög' }),
@@ -983,7 +982,7 @@ ol.jel { gap: 12px; }
       el('div', { class: 'blokk' },
         el('h3', { text: 'Szótári szöveg (angol): TBESG / Abbott-Smith' }),
         el('p', { class: 'bdb en', lang: 'en', text: l.tbesg || '—' }),
-        l.thayer ? el('details', null, el('summary', { class: 'meg', text: 'Thayer (angol)' }), el('p', { class: 'bdb en', lang: 'en', text: l.thayer })) : null,
+        l.thayer ? el('details', l.hu.length ? null : { open: '' }, el('summary', { class: 'meg', text: 'Thayer (angol)' }), el('p', { class: 'bdb en', lang: 'en', text: l.thayer })) : null,
         forras('gor')),
       domenBlokk(l, 'Szemantikai domén (SDGNT)', 'sdgnt'),
       ubsEnBlokk(l), lsjBlokk(l), mcgedBlokk(l),
@@ -1137,7 +1136,7 @@ ol.jel { gap: 12px; }
         a.irodalom.length || a.krit.length ? resz('Irodalmi és szövegkritikai jelek',
           el('div', { class: 'cimkek' },
             a.irodalom.map(x => el('span', { class: 'jel-cimke', title: 'BDB irodalmi hivatkozás (szerző^mű)', text: x })),
-            a.krit.map(x => el('span', { class: 'jel-cimke krit', title: 'a BDB jele; a jelkulcs nincs a repóban', text: x })))) : null),
+            a.krit.map(x => el('span', { class: 'jel-cimke krit', title: 'a BDB jele', text: x })))) : null),
       el('button', { type: 'button', class: 'lenyit', text: teljesBdb ? 'A teljes szócikk elrejtése' : `A teljes szócikk egyben (${teljes.length.toLocaleString('hu-HU')} karakter)`, onclick: () => { teljesBdb = !teljesBdb; rajzolSzo(); } }),
       teljesBdb ? el('p', { class: 'bdb' + (hu ? '' : ' en'), lang: hu ? 'hu' : 'en', text: teljes }) : null,
       forras('bdb', 'bdb_alias'));
@@ -1171,7 +1170,7 @@ ol.jel { gap: 12px; }
     } else {
       bdb = el('div', { class: 'blokk' },
         el('h3', { text: 'Jelentés (BDB)' }),
-        el('span', { class: 'allapot folyamat', text: 'Magyar fordítás nincs · az angol eredeti áll' }),
+        el('span', { class: 'allapot folyamat', text: l.bdb_en ? 'Magyar fordítás nincs · az angol eredeti áll' : 'Magyar fordítás nincs · angol BDB-szócikk sincs' }),
         l.bdb_alias ? el('p', { class: 'meg', text: `A szócikk a(z) ${l.bdb_alias.tabla_strong} Strong-szám alatt áll (${l.bdb_alias.bdb_id}; BDB_strong_alias.tsv).` }) : null,
         el('p', { class: 'meg', text: `Rövid jelentés (Strong): ${l.rovid}` }),
         el('p', { class: 'bdb en', lang: 'en', text: l.bdb_en }),

@@ -527,7 +527,7 @@ prov = {
     'bdb': 'scope=strong | forras=adat/forditasok.tsv (BDB) + konkordancia/BDB_teljes_unabridged.tsv | ts=%s' % TS,
     'bdb_alias': 'scope=strong | forras=konkordancia/BDB_strong_alias.tsv (alias-párosítás, csak ha a Strong-számnak nincs saját BDB-szócikke) | ts=%s' % TS,
     'karoli_alak': 'scope=strong | forras=adat/karoli_strong/parok_{%s}.tsv | ts=%s' % (','.join(pkonyvek), TS),
-    'elofordulas': 'scope=OT | forras=konkordancia/TAHOT_kivonat.tsv (nem teljes) | ts=%s' % TS,
+    'elofordulas': 'scope=OT | forras=konkordancia/TAHOT_kivonat.tsv | ts=%s' % TS,
     'bridge': 'scope=strong | forras=adat/kulso/lxx_bridge.tsv | ts=%s' % TS,
 }
 prov.update(BOV_PROV)
