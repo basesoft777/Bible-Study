@@ -1072,45 +1072,103 @@ def proba_md(eredmenyek):
     return '\n'.join(ki)
 
 
-def licenc_helyfoglalas(db_path):
-    """{tabla: (sorszam, licenc_oszlopok_bajtja)} -- a 3 licenc_* oszlop tartalmanak bajtjai
-    (a rekord-fejlec nelkul; alsó becslés), a #86 N-F86b bemenete."""
+def tablameret(db_path):
+    """{tabla: (sorszam, bajt_indexszel, bajt_licenc_oszlopok_nelkul|None)} -- a Python sqlite3
+    nem tartalmazza a dbstat modult, ezert minden tablat (indexeivel) kulon ideiglenes adatbazisba
+    masolunk, es a lapszam * lapmeret adja a bajtot; a masodik ertek ugyanez a 3 licenc_* oszlop
+    nelkul (a #86 N-F86b bemenete: a licenc_* oszlopok valodi reszesedese)."""
+    import tempfile
     con = sqlite3.connect(db_path)
+    ki = {}
+    tmpdir = tempfile.mkdtemp()
     try:
-        ki = {}
-        for (n,) in con.execute("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%' "
-                                "AND name NOT LIKE 'fts_motivum_%' ORDER BY name").fetchall():
-            db, b = con.execute('SELECT COUNT(*), IFNULL(SUM(LENGTH(CAST(licenc_allapot AS BLOB))+'
-                                'LENGTH(CAST(kereskedelmi AS BLOB))+LENGTH(CAST(licenc_dataset AS BLOB))),0) '
-                                'FROM "%s"' % n).fetchone()
-            ki[n] = (db, b)
+        tablak = con.execute("SELECT name, sql FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%' "
+                             "AND name NOT LIKE 'fts_motivum_%' ORDER BY name").fetchall()
+        for nev, sql in tablak:
+            sorszam = con.execute('SELECT COUNT(*) FROM "%s"' % nev).fetchone()[0]
+            indexek = [r[0] for r in con.execute(
+                "SELECT sql FROM sqlite_master WHERE type='index' AND tbl_name=? AND sql IS NOT NULL", (nev,))]
+            meretek = []
+            valtozatok = (True, False) if not sql.upper().startswith('CREATE VIRTUAL') else (True,)
+            for licenccel in valtozatok:
+                f = os.path.join(tmpdir, 'x.db')
+                con.execute("ATTACH DATABASE ? AS x", (f,))
+                try:
+                    if sql.upper().startswith('CREATE VIRTUAL'):
+                        con.execute(sql.replace('CREATE VIRTUAL TABLE ' + nev, 'CREATE VIRTUAL TABLE x.' + nev, 1))
+                        con.execute('INSERT INTO x."%s" SELECT * FROM main."%s"' % (nev, nev))
+                    else:
+                        cols = [r[1] for r in con.execute('PRAGMA main.table_info("%s")' % nev)]
+                        if not licenccel:
+                            cols = [c for c in cols if c not in RESERVALT_OSZLOP]
+                        deklar = []
+                        for r in con.execute('PRAGMA main.table_info("%s")' % nev):
+                            if r[1] in cols:
+                                deklar.append('"%s" %s' % (r[1], r[2]))
+                        con.execute('CREATE TABLE x."%s" (%s)' % (nev, ', '.join(deklar)))
+                        con.execute('INSERT INTO x."%s" SELECT %s FROM main."%s"' % (
+                            nev, ', '.join('"%s"' % c for c in cols), nev))
+                        for isql in indexek:
+                            con.execute(isql.replace('CREATE INDEX "', 'CREATE INDEX x."', 1))
+                    con.commit()
+                    lap = con.execute('PRAGMA x.page_count').fetchone()[0]
+                    meret = con.execute('PRAGMA x.page_size').fetchone()[0]
+                    meretek.append(lap * meret)
+                finally:
+                    con.execute('DETACH DATABASE x')
+                    if os.path.exists(f):
+                        os.remove(f)
+            ki[nev] = (sorszam, meretek[0], meretek[1] if len(meretek) > 1 else None)
         return ki
     finally:
         con.close()
+        shutil_rm(tmpdir)
 
 
-def meres_md(epito, hashek, ido, meret, mod, proba=None, licenc_hely=None):
+def shutil_rm(d):
+    import shutil
+    shutil.rmtree(d, ignore_errors=True)
+
+
+def meres_md(epito, hashek, ido, meret, mod, tmeret=None, masodik=None):
     ki = ['# SQLITE_EPIT -- mérés (%s) (F79)' % ('kis minta' if mod == 'minta' else 'teljes építés'), '',
           '*Proveniencia: `scope=manual | forras=eszkozok/sqlite_epit.py (--mod %s) | ts=%s`*' % (mod, ts_most()),
           '', '- fájl: `%s`, **%.1f MB**; építési idő (integritás nélkül): **%.1f s**'
           % (os.path.basename(epito.kimenet), meret / 1048576.0, ido), '']
     if mod == 'minta':
         ki.append('- minta: %d Károli-vers (1Móz + a motívumok hivatkozott versei)' % len(epito.minta))
+        ki.append('- a lekérdezés-próba külön naplóban áll: `naplok/SQLITE_EPIT_proba_minta.md` (nem íródik felül)')
         ki.append('')
-    ki += ['## Táblánkénti sorszám és tartalom-hash', '', '| tábla | sor | sha256 (rendezett tartalom) |', '|---|---:|---|']
-    for n, (db, h) in sorted(hashek.items()):
-        ki.append('| `%s` | %d | `%s` |' % (n, db, h[:16]))
+    if masodik is not None:
+        h2, azonos = masodik
+        ki += ['## Táblánkénti sorszám és tartalom-hash (G2: két egymás utáni építés)', '',
+               '**%s** -- a második, ideiglenes építés táblánkénti rendezett tartalom-hash-e %s.'
+               % ('AZONOS' if azonos else 'ELTÉRŐ', 'mind azonos' if azonos else 'nem azonos'), '',
+               '| tábla | sor | sha256 (1. építés) | sha256 (2. építés) |', '|---|---:|---|---|']
+        for n, (db, h) in sorted(hashek.items()):
+            ki.append('| `%s` | %d | `%s` | `%s` |' % (n, db, h[:16], (h2.get(n) or (0, ''))[1][:16]))
+    else:
+        ki += ['## Táblánkénti sorszám és tartalom-hash', '', '| tábla | sor | sha256 (rendezett tartalom) |', '|---|---:|---|']
+        for n, (db, h) in sorted(hashek.items()):
+            ki.append('| `%s` | %d | `%s` |' % (n, db, h[:16]))
     ki.append('')
-    if licenc_hely:
-        osszes_b = sum(b for _, b in licenc_hely.values())
-        ki += ['## A `licenc_*` oszlopok helyfoglalása (a #86 N-F86b bemenete)', '',
-               'A három oszlop (`licenc_allapot`, `kereskedelmi`, `licenc_dataset`) minden sorban ismétlődik. '
-               'Az alábbi bájtszám az oszlopok tartalma (rekord-fejléc és index nélkül, alsó becslés).', '',
-               '- összesen: **%.1f MB** a **%.1f MB**-os fájlból (%.1f%%)' % (
-                   osszes_b / 1048576.0, meret / 1048576.0, 100.0 * osszes_b / meret),
-               '', '| tábla | sor | licenc_* bájt | MB |', '|---|---:|---:|---:|']
-        for n, (db, b) in sorted(licenc_hely.items(), key=lambda x: -x[1][1])[:12]:
-            ki.append('| `%s` | %d | %d | %.2f |' % (n, db, b, b / 1048576.0))
+    if tmeret:
+        ossz = sum(v[1] for v in tmeret.values())
+        oszl = sum(v[1] - v[2] for v in tmeret.values() if v[2] is not None)
+        ki += ['## Táblánkénti bájtméret és a `licenc_*` oszlopok részesedése (a #86 N-F86b bemenete)', '',
+               'Mérés: minden tábla (indexeivel) külön adatbázisba másolva, lapszám × lapméret (a Python sqlite3-ból '
+               'hiányzik a `dbstat`); a „licenc nélkül” oszlop ugyanez a három `licenc_*` oszlop nélkül.', '',
+               '- a táblák összege: **%.1f MB** (a fájl: %.1f MB; a különbség az SQLite szabad lapjai és a közös fejléc)'
+               % (ossz / 1048576.0, meret / 1048576.0),
+               '- a `licenc_*` oszlopok összes részesedése: **%.1f MB (%.1f%%)**' % (oszl / 1048576.0, 100.0 * oszl / ossz),
+               '', '| tábla | sor | MB (indexszel) | MB licenc_* nélkül | licenc_* részesedés |',
+               '|---|---:|---:|---:|---:|']
+        for n, (db, b, b2) in sorted(tmeret.items(), key=lambda x: -x[1][1]):
+            if b2 is None:
+                ki.append('| `%s` | %d | %.2f | (FTS: nincs külön mérés) | |' % (n, db, b / 1048576.0))
+            else:
+                ki.append('| `%s` | %d | %.2f | %.2f | %.1f%% |' % (
+                    n, db, b / 1048576.0, b2 / 1048576.0, 100.0 * (b - b2) / b if b else 0.0))
         ki.append('')
     if epito.kihagyott:
         ki += ['## Kimaradt táblák (licencsor hiánya, G6)', '']
@@ -1124,12 +1182,20 @@ def meres_md(epito, hashek, ido, meret, mod, proba=None, licenc_hely=None):
                '| tábla | ok | darab (különböző érték / előfordulás) | példák |', '|---|---|---|---|']
         for (t, ok), lista in sorted(osszes.items()):
             ki.append('| %s | %s | %d / %d | %s |' % (t, ok, len(lista), sum(d for _, d in lista),
-                      ', '.join('`%s`' % n for n, _ in sorted(lista)[:6])))
+                      ', '.join('`%s`' % n for n, _ in sorted(lista)[:8])))
         ki.append('')
     if epito.megjegyzesek:
         ki += ['## Megjegyzések', ''] + ['- %s' % m for m in epito.megjegyzesek] + ['']
-    if proba is not None:
-        ki += ['## Lekérdezés-próba (M3: ADATVAGYON 4. pont, 1–6., 13–15.)', '', proba_md(proba)]
+    return '\n'.join(ki) + '\n'
+
+
+def proba_naplo_md(eredmenyek, mod):
+    ki = ['# SQLITE_EPIT -- lekérdezés-próba (%s) (F79 M3)' % ('kis minta' if mod == 'minta' else 'teljes'), '',
+          '*Proveniencia: `scope=manual | forras=eszkozok/sqlite_epit.py --proba (--mod %s) | ts=%s`; az ADATVAGYON_TERV 4. '
+          'pontjának 1–6., 13–15. pontja; a várt eredmény mindig a megnevezett forrásból, nem az adatbázisból. '
+          'Ez a fájl külön napló: a `SQLITE_EPIT_meres*.md` újragenerálása nem írja felül.*' % (mod, ts_most()),
+          '', 'Összesítés: %d/%d egyezik.' % (sum(1 for p in eredmenyek if p['ok']), len(eredmenyek)), '',
+          proba_md(eredmenyek)]
     return '\n'.join(ki) + '\n'
 
 
@@ -1145,6 +1211,8 @@ def main(argv=None):
     ap.add_argument('--kimenet', default=None)
     ap.add_argument('--proba', action='store_true', help='lekérdezés-próba a kész adatbázison')
     ap.add_argument('--naplo', action='store_true', help='naplok/SQLITE_EPIT_*.md megírása')
+    ap.add_argument('--ketszer', action='store_true', help='G2: második, ideiglenes építés és hash-összevetés')
+    ap.add_argument('--meret', action='store_true', help='táblánkénti bájtméret mérése (lassú)')
     args = ap.parse_args(argv)
     kimenet = args.kimenet or os.path.join(args.gyoker, 'pardes_minta.db' if args.mod == 'minta' else 'pardes.db')
     adat = os.path.join(args.gyoker, 'adat')
@@ -1177,12 +1245,26 @@ def main(argv=None):
                     'projekt_adat', 'tisztazatlan', 'projekt_adat'))
     con.commit()
     con.close()
+    masodik = None
+    if args.ketszer:
+        import tempfile
+        k2 = os.path.join(tempfile.gettempdir(), 'pardes_masodik_ellenorzes.db')
+        ep2 = Epito(args.gyoker, k2, args.mod)
+        ep2.epit()
+        h2 = tablak_hash(k2)
+        os.remove(k2)
+        masodik = (h2, h2 == hashek)
     proba = probak(kimenet, args.gyoker) if args.proba else None
+    tmeret = tablameret(kimenet) if args.meret else None
     meret = os.path.getsize(kimenet)
     if args.naplo:
         nev = 'SQLITE_EPIT_meres_minta.md' if args.mod == 'minta' else 'SQLITE_EPIT_meres.md'
-        irj(os.path.join(args.gyoker, 'naplok', nev), meres_md(ep, hashek, ido, meret, args.mod, proba, licenc_helyfoglalas(kimenet)))
+        irj(os.path.join(args.gyoker, 'naplok', nev), meres_md(ep, hashek, ido, meret, args.mod, tmeret, masodik))
+        if proba is not None:
+            irj(os.path.join(args.gyoker, 'naplok', 'SQLITE_EPIT_proba_%s.md' % args.mod), proba_naplo_md(proba, args.mod))
     print('kész: %s (%.1f MB, %.1f s, %d tábla)' % (kimenet, meret / 1048576.0, ido, len(hashek)))
+    if masodik is not None:
+        print('G2: a második építés hash-táblája %s' % ('azonos' if masodik[1] else 'ELTÉRŐ'))
     if proba is not None:
         for p in proba:
             print('%2d. pont: %s' % (p['pont'], 'MEGEGYEZIK' if p['ok'] else 'ELTÉRÉS'))

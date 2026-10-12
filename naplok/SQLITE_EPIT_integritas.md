@@ -1,6 +1,6 @@
 # SQLITE_EPIT -- integritás-ellenőrzés (F79)
 
-*Proveniencia: `scope=manual | forras=adat/*.tsv | ts=2026-10-12T07:41:39Z`; az ellenőrzés a betöltés ELŐTT, a TSV-sorlistákon fut, az `eszkozok/ellenoriz.py` függvényeivel (DT-F79a (3), (7)); építési mód: teljes.*
+*Proveniencia: `scope=manual | forras=adat/*.tsv | ts=2026-10-12T08:07:08Z`; az ellenőrzés a betöltés ELŐTT, a TSV-sorlistákon fut, az `eszkozok/ellenoriz.py` függvényeivel (DT-F79a (3), (7)); építési mód: minta.*
 
 **1. Hivatkozási épség**: RENDBEN
 
