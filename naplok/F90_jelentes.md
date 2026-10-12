@@ -47,7 +47,7 @@ A teljesen hiányzó 9 vers mind Károli-kulcsot kap, a kivonatban ma nem létez
 ### A DT-F90b döntése (felhasználó, 2026.10.12, az orkesztrátoron át)
 
 A tábla jóváhagyva, egy módosítással. A tábla állapot oszlopa `jóváhagyva (DT-F90b, 2026.10.12)`.
-1. **b)** A `1Th.2.12[2.11]` szétvágva: #01–#05 → 1Thessz 2:11, #06 (μαρτυρόμενοι) → 1Thessz 2:12. Ez az egyetlen szétvágott csoport; a táblában két sort kap, így a tábla 49 sor / 48 csoport. A végleges összesítés: 22 csoportrész NRSV-kulcsra, 27 alternatív kulcsra (156 sor).
+1. **b)** A `1Th.2.12[2.11]` szétvágva. **Pontosítás (felhasználó, 2026.10.12, F90.7):** #01–#04 → 1Thessz 2:11, #05–#06 (καὶ μαρτυρόμενοι) → 1Thessz 2:12, mert a #05 καί a Károli 2:12 „És” szava. Az első változat (#01–#05 / #06) az F90.3–F90.6-ban élt. Ez az egyetlen szétvágott csoport; a táblában két sort kap, így a tábla 49 sor / 48 csoport. A végleges összesítés: 22 csoportrész NRSV-kulcsra, 27 alternatív kulcsra (155 sor).
 2. a) Zsid 12:23.
 3. a) A TR-utóirat-sorok a vers kulcsán maradnak (l. a soronkénti listát lent).
 4. a) Kulcs-sorrend.
@@ -59,7 +59,7 @@ A tábla jóváhagyva, egy módosítással. A tábla állapot oszlopa `jóváhag
 - 141 746 → **142 096 sor** (+350). A `git diff` szerint 350 beszúrás és 0 törölt vagy módosított sor (**K2**). A szkript írás előtt és után is ellenőrzi, hogy a régi sorok bájtazonosak.
 - **Újrafuttatás:** „A kivonat már a teljes vetülettel egyezik (142096 sor); nincs teendő.” A szkript ilyenkor nem ír (**K1**).
 - **Érintett kulcsok:** 49, ebből 9 új: Ján 7:53, Róm 16:25–27, 2Kor 13:13, Fil 1:16, Fil 1:17, 3Ján 1:15, Jel 12:18.
-- **Beszúrt sorok kulcsonként:** Mt 15:5 +11, Mt 17:15 +2, Mt 20:5 +3, Mk 3:20 +4, Luk 1:73 +3, Luk 6:17 +10, Luk 7:18 +9, Ján 7:53 +7, ApCsel 2:10 +4, ApCsel 3:19 +9, ApCsel 4:5 +2, ApCsel 5:40 +3, ApCsel 9:29 +8, ApCsel 24:18 +6, Róm 1:10 +5, Róm 7:10 +3, Róm 9:11 +7, Róm 16:25 +20, Róm 16:26 +20, Róm 16:27 +26, 2Kor 1:6 +7, 2Kor 8:13 +3, 2Kor 10:5 +2, 2Kor 13:12 +5, 2Kor 13:13 +33, Gal 2:20 +2, Ef 1:11 +2, Ef 2:15 +6, Ef 5:13 +6, Fil 1:16 +15, Fil 1:17 +11, Fil 2:8 +5, Kol 1:11 +2, Kol 1:21 +3, 1Thessz 1:3 +1, 1Thessz 2:6 +7, 1Thessz 2:11 +5, 1Thessz 2:12 +1, 2Thessz 1:8 +3, 1Tim 6:21 +17, Zsid 3:9 +2, Zsid 7:20 +8, Zsid 12:23 +1, 1Pét 3:15 +5, 1Ján 2:13 +7, 3Ján 1:15 +11, Jel 2:27 +7, Jel 12:18 +7, Jel 17:10 +4.
+- **Beszúrt sorok kulcsonként:** Mt 15:5 +11, Mt 17:15 +2, Mt 20:5 +3, Mk 3:20 +4, Luk 1:73 +3, Luk 6:17 +10, Luk 7:18 +9, Ján 7:53 +7, ApCsel 2:10 +4, ApCsel 3:19 +9, ApCsel 4:5 +2, ApCsel 5:40 +3, ApCsel 9:29 +8, ApCsel 24:18 +6, Róm 1:10 +5, Róm 7:10 +3, Róm 9:11 +7, Róm 16:25 +20, Róm 16:26 +20, Róm 16:27 +26, 2Kor 1:6 +7, 2Kor 8:13 +3, 2Kor 10:5 +2, 2Kor 13:12 +5, 2Kor 13:13 +33, Gal 2:20 +2, Ef 1:11 +2, Ef 2:15 +6, Ef 5:13 +6, Fil 1:16 +15, Fil 1:17 +11, Fil 2:8 +5, Kol 1:11 +2, Kol 1:21 +3, 1Thessz 1:3 +1, 1Thessz 2:6 +7, 1Thessz 2:11 +4, 1Thessz 2:12 +2, 2Thessz 1:8 +3, 1Tim 6:21 +17, Zsid 3:9 +2, Zsid 7:20 +8, Zsid 12:23 +1, 1Pét 3:15 +5, 1Ján 2:13 +7, 3Ján 1:15 +11, Jel 2:27 +7, Jel 12:18 +7, Jel 17:10 +4.
 - **Sorrend:** a stabil kulcs-rendezés a meglévő sorok sorrendjét nem változtatta meg; a szkript ezt írás előtt ellenőrzi. A Fil 1:16 (`Php.1.17[1.16]`, 15 sor) a Fil 1:17 (`Php.1.16[1.17]`, 11 sor) előtt áll.
 
 ### A TR-utóirat sorai (DT-F90b 3. a): a vers kulcsán
@@ -106,7 +106,17 @@ Csak a TR kiadású sorok tartoznak ide. Az utóiratok előtti ἀμήν (2Kor 1
 | 1Tim 6:21 | `1Ti.6.21{6.22}` #23 | τῆς | G3588 | <the> | TR |
 | 1Tim 6:21 | `1Ti.6.21{6.22}` #24 | Πακατιανῆς.¶ | G3818 | of Pacatiana. | TR |
 
-## 4. lépés — igazolás (F90.5)
+## 4. lépés — igazolás (F90.5; a pontosítás után újrafuttatva: F90.7)
+
+**F90.7 (a 1Thessz 2:11/12 határ pontosítása után):** a kivonatot a pótlás előtti változatból (`9fae6569`) újraírtam.
+- A pótlás előtti változathoz képest: 350 beszúrás, 0 törölt vagy módosított sor.
+- Az F90.6-hoz képest egyetlen sor kulcsa változott: a #05 καί `1Thessz 2:11` → `1Thessz 2:12`. A 1Thessz 2:11 utolsó sora a #04 παραμυθούμενοι.
+- Újrafuttatva a szkript nem ír.
+- `tokenek.py`: sorszám-hiba 0; 1Thessz 2:11: 14 szó, 1Thessz 2:12: 18 szó.
+- `sorrend_ellenoriz.py`, TAGNT-ág: minden hibaszám 0 (8000 csoport, 142 096 morféma, 7957 vers).
+- `eredeti_nelkuli_lista.py`: változatlan, csak az időbélyeg új (0 eredeti nélküli Károli-vers, 3 Károli nélküli eredeti).
+
+Az F90.5-ös futás eredményei:
 
 - **Kulcs-összevetés** (`eszkozok/karoli_strong/eredeti_nelkuli_lista.py` → `naplok/F22_nincs_parja_versek.tsv`, újragenerálva):
   - „Károli-vers eredeti nélkül”: **0**. A 9 ÚSZ-kulcs megszűnt.
@@ -116,12 +126,12 @@ Csak a TR kiadású sorok tartoznak ide. Az utóiratok előtti ἀμήν (2Kor 1
 - **`tokenek.py`:**
   - `betolt_eredeti(versmegf=False)`: 31 161 vers, sorszám-hiba 0. A sorszám versenként 1..n folytonos.
   - `betolt_eredeti(versmegf=True)`: lefut, 31 161 vers.
-  - `[nem TR]`, példák: Mt 15:5: 28 szó, 1 nem-TR; 1Thessz 2:12: 17 szó, 2 nem-TR (köztük a μαρτυρόμενοι, `NA28+…+Treg+Byz`); 1Tim 6:21: 24 szó, 1 nem-TR; Jel 12:18: 7 szó, 1 nem-TR.
+  - `[nem TR]`, példák: Mt 15:5: 28 szó, 1 nem-TR; 1Thessz 2:12: 18 szó, 2 nem-TR (köztük a μαρτυρόμενοι, `NA28+…+Treg+Byz`); 1Tim 6:21: 24 szó, 1 nem-TR; Jel 12:18: 7 szó, 1 nem-TR.
   - A logika nem változott; a `«14.26` toldalékú kiadásmező TR-esnek számít, mert a `+` mentén vágott `TR` elem önálló.
 - **`eszkozok/karoli_strong/sorrend_ellenoriz.py`:** új `SOR_GOROG` minta a `[..]`, `(..)` és `{..}` jelölésre, csak a TAGNT-ágon (**K4**). A TAHOT-ág a régi mintán maradt: az ÓSZ nem tárgya az F90-nek, és a TAHOT nyers fájlja nem lett letöltve.
   - A TAGNT-ág futott: 8000 nyers csoport, 142 096 morféma = a kivonat sorszáma, 7957 kivonat-vers.
   - #NN-hiba 0, nyers megfelelő nélküli vers 0, részsorozat-hiba 0.
-  - A teljes szkript (TAHOT + TAGNT) nem futott, mert a TAHOT nyers fájlja nincs meg.
+  - A TAHOT-ágat az F90 nem érintette (a `SOR` minta változatlan), ezért nem kell futtatni (felhasználó, 2026.10.12).
 
 | proveniencia: scope=TAGNT_kivonat.tsv (142 096 sor) ↔ Karoli_1908.tsv kulcsok; tokenek.py; sorrend_ellenoriz.py TAGNT-ág | forras=eszkozok/karoli_strong/eredeti_nelkuli_lista.py, tokenek.betolt_eredeti, sorrend_ellenoriz.ellenoriz(gorog=True) + STEPBible-Data/aca7d691414e | ts=2026-10-12
 

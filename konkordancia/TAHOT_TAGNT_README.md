@@ -195,8 +195,8 @@ Károli-szövegében a csoport tartalma áll. A döntések: `naplok/F90_karoli_d
 jóváhagyva a DT-F90b-ben.
 - 22 csoportrész az NRSV-kulcsra (a zárójel előtti szám), 27 az alternatívra (a zárójelben
   lévő szám) került.
-- Egy csoport szétvágva: a `1Th.2.12[2.11]` #01–#05 a 1Thessz 2:11-re, a #06
-  (μαρτυρόμενοι) a 1Thessz 2:12-re (Károli: „És kérve kértünk”).
+- Egy csoport szétvágva: a `1Th.2.12[2.11]` #01–#04 a 1Thessz 2:11-re, a #05–#06
+  (καὶ μαρτυρόμενοι) a 1Thessz 2:12-re (Károli: „És kérve kértünk”).
 - A Károliban nem létező alternatív kulcs (2Kor 13:14, 1Tim 6:22, Róm 14:24–26) nem
   szerepel.
 - A TR-utóiratok (Róm 16:27, 2Kor 13:13, 1Tim 6:21) a vers kulcsán maradnak, a Gal 6:18

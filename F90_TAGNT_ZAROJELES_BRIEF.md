@@ -5,10 +5,10 @@ cim: "A TAGNT-kivonat KJV- ([..]) és egyéb ({..}) versszámozású sorainak p�
 tipus: feladat
 fazis: 1
 modell: opus
-allapot: megallt
+allapot: fut
 ag: claude/f90-tagnt-zarojeles
 ad: "Teljes `konkordancia/TAGNT_kivonat.tsv`: a nyers TAGNT minden szó-sora benne van, a [..]/{..} jelölésűek is, Károli-kulccsal; a 48 csoport Károli-döntése naplózva"
-kovetkezo: "Te: a pótlás eredményének átnézése (`konkordancia/TAGNT_kivonat.tsv` +350 sor, `naplok/F90_jelentes.md` 3–4. lépés); utána K5: független ellenőr és CI. Az 1–5. lépés kész."
+kovetkezo: "Folytatás: független ellenőr (K5) és draft PR"
 fugg: []
 nem_fugg: [22, 38, 48]
 olvas: [konkordancia/TAHOT_TAGNT_README.md, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, naplok/F22_TAGNT_zarojeles_sorok.md, NYITOTT_FELADATOK.md, eszkozok/karoli_strong/tokenek.py, eszkozok/karoli_strong/sorrend_ellenoriz.py, F22_KAROLI_STRONG_BRIEF.md]
