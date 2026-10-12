@@ -62,25 +62,57 @@ def _zarojelben(szoveg, max_hossz=400):
     return ki
 
 
-def _szamozott(szoveg, minta_fn, elso):
+def _szamozott(szoveg, minta_fn, elso, laza_fn=None, laza_elso=False):
     """Sorszámozott jelölők keresése szigorú sorrenddel (1, 2, 3 … vagy a, b, c …).
-    Visszaad: [(jel, kezdo_index, tartalom_kezdete)]."""
-    talalat, varas = [], elso
+    Visszaad: [(jel, kezdo_index, tartalom_kezdete)]. A `laza_fn` (csak számokhoz) egy lazább mintát ad: ha a várt sorszám a szigorú
+    mintával nem található a már megtalált jelölők után, de a laza minta (kisbetűs szó után, kisbetűs szó előtt álló szám) megtalálja,
+    az számít jelölőnek (a magyar fordítás néha elhagyja a jelölő előtti írásjelet: „… a participiumot 2 ritkábban …”). Az első jelölőre
+    (az „1”-re) a laza minta csak `laza_elso` esetén él (igetörzs szövege: „— megölni, halálra adni 1 abszolút használatban”)."""
+    talalat, varas, poz = [], elso, 0
     bent = _zarojelben(szoveg)
-    for m in minta_fn().finditer(szoveg):
-        csop = 1 if m.group(1) is not None else 2
-        if bent[m.start(csop)]:
-            continue
-        if m.group(csop) == varas:
-            talalat.append((m.group(csop), m.start(csop), m.end()))
-            varas = str(int(varas) + 1) if varas.isdigit() else chr(ord(varas) + 1)
-    return talalat
+    while True:
+        van = None
+        for fn in ((minta_fn, laza_fn) if (laza_fn and (talalat or laza_elso)) else (minta_fn,)):
+            for m in fn().finditer(szoveg, poz):
+                csop = 1 if m.group(1) is not None else 2
+                if fn is laza_fn and not _laza_ok(szoveg, m.start(1)):
+                    continue
+                if m.group(csop) == varas and not bent[m.start(csop)]:
+                    van = (m.group(csop), m.start(csop), m.end())
+                    break
+            if van:
+                break
+        if not van:
+            return talalat
+        talalat.append(van)
+        poz = van[2]
+        varas = str(int(varas) + 1) if varas.isdigit() else chr(ord(varas) + 1)
+
+
+# Alakok személy-szám jelölése („1. egyes szám אֵהָ֑ב”, „3. nőnemű egyes szám …”, „2. hímnemű többes szám suffixummal …”): a szám PONTTAL áll,
+# utána héber alak vagy alaktani szó (a táblán 1615 pontos és 5 pont nélküli előfordulás). A pont nélküli „3 többes szám מִשְׁכָּנוֺת, lakóhelyek”
+# (H4908), valamint az „egyes számú főnévvel”, „többes számban”, „egyes szám: úr” jelentés-sorszám.
+PERSON = (r'(?:(?:hímnemű|nőnemű|közös)\s+)?(?:egyes|többes)\s+szám\s+(?:suffixummal|consecutivummal|cohortativus|jussivus|'
+          r'[֐-׿יִ-ﭏ])')
 
 
 def _szam_minta():
     # szám, előtte szóköz/kezdet/gondolatjel, utána szóköz és nem szám/hivatkozás
     # változatok: „— 1 …”, „1. …”, „1.a …” (a betű az alpont), és hivatkozás utáni „… 48:14 2 first”
-    return re.compile(r'(?:(?<=—\s)|(?<=[.;:)]\s)|(?<=\d\s)|^)(\d{1,2})(?:\.(?=[a-l]\s)|\.?\s)(?=[^\d\s:,;.)(&])')
+    # a „1. egyes szám”, „3. nőnemű”, „2. hímnemű többes szám” alak-személyek nem jelentés-sorszámok (H0157, H1869, H7121)
+    return re.compile(r'(?:(?<=—\s)|(?<=[.;:)]\s)|(?<=\d\s)|^)(?!\d{1,2}\.\s+' + PERSON + r')(\d{1,2})(?:\.(?=[a-l]\s)|\.?\s)(?=[^\d\s:,;.)(&])'
+                      r'(?!\S*\^)')
+
+
+def _laza_ok(szoveg, poz):
+    """A laza jelölő előtti szó kisbetűs, csupa betű (nem „Qal 3”, „Ézs 2”, sigla vagy héber szó)."""
+    m = re.search(r'(\S+)\s$', szoveg[max(0, poz - 40):poz])
+    return bool(m) and m.group(1).isalpha() and m.group(1)[0].islower()
+
+
+def _szam_laza():
+    # laza sorszám-jelölő: kisbetűs magyar szó + szóköz + szám + szóköz + kisbetűs szó („… értelemben 3 présben tapos …”)
+    return re.compile(r'(?<=[a-záéíóöőúüű]\s)(\d{1,2})\s(?=[a-záéíóöőúüű]{2})')
 
 
 def _betu_minta():
@@ -95,24 +127,10 @@ def _darabol(szoveg, jelolok):
     return ki
 
 
-FORMA_RE = re.compile(r'perfectum|imperfectum|participium|imperativus|infinitivus|Perfect|Imperfect|Participle|Imperative|Infinitive')
-
-
-def _jelentesek(regio):
-    """Jelentés-szerkezet egy törzs (vagy a teljes szócikk) szövegéből. Ha a szöveg „alakok; — 1 jelentés …” szerkezetű, a számozás az első
-    gondolatjel utáni „1”-nél indul; az előtte álló alak-lista előtagként külön elem marad (a benne álló személyszámok nem jelölők)."""
-    d = re.search(r"—\s(1)(?:\.\s*|\s+)(?=[^\d\s:,;.)(&])", regio)
-    if d and d.start() > 0 and FORMA_RE.search(regio[:d.start()]):
-        elo = regio[:d.start()].strip(' —;,')
-        ki = _jelentesek_belso(regio[d.start(1):])
-        if elo:
-            ki.insert(0, {'jel': '', 'szoveg': elo, 'ref': len(REF.findall(elo)), 'al': []})
-        return ki
-    return _jelentesek_belso(regio)
-
-
-def _jelentesek_belso(regio):
-    szamok = _szamozott(regio, _szam_minta, '1')
+def _jelentesek(regio, laza_elso=False):
+    """Jelentés-szerkezet egy törzs (vagy a teljes szócikk) szövegéből. Az „alakok; — 1 jelentés …” szerkezetben az alak-lista (benne a
+    „1. egyes szám”, „3. nőnemű” személyszámokkal, amelyek nem jelölők) előtagként külön elem marad, a számozás az első valódi „1”-nél indul."""
+    szamok = _szamozott(regio, _szam_minta, '1', _szam_laza, laza_elso)
     if not szamok:
         al = _darabol(regio, _szamozott(regio, _betu_minta, 'a'))
         if al:
@@ -135,6 +153,14 @@ def _jelentesek_belso(regio):
     return ki
 
 
+_ROVIDITES_UTAN = re.compile(r'(?<![\wáéíóöőúüű])(?:olv|vö|l|stb|pl|ti|kb|ill|v)\.\s$')
+
+
+def _rovidites_utan(szoveg, poz):
+    """Igaz, ha a `poz` előtt rövidítés + pont áll („olv. Qal, vö. …”, „l. Niph`al”): a törzsnév ilyenkor hivatkozás, nem fejléc."""
+    return bool(_ROVIDITES_UTAN.search(szoveg[max(0, poz - 8):poz]))
+
+
 def _egy(szoveg):
     if not szoveg:
         return None
@@ -154,18 +180,25 @@ def _egy(szoveg):
     else:
         torzs = s
     # a jelentésrégió kezdete: az első törzs-fejléc (igék), különben az első sorrendhelyes „1”
-    tf = list(TORZS_FEJ.finditer(torzs))
-    if re.search(r'\b(ige|verb)\b', torzs[:120]):
+    # a „Név alakcsoport” fejléc (_N nélkül) csak gondolatjel, mondatvég, pontosvessző vagy zárójel-vég után törzs-fejléc; mondat közben
+    # („l. fent Niph`al perfectum …”, „(vagy Qal imperfectum …)”) hivatkozás az alakra, nem új törzs
+    # Főnév-szócikkben (nem ige) a „Név alakcsoport” sor az etimológiában álló hivatkozás (H4908: „… Pe`al imperfectum … lakik”), nem fejléc.
+    ige = bool(re.search(r'\b(ige|verb)\b', torzs[:120]))
+    tf = [t for t in TORZS_FEJ.finditer(torzs)
+          if t.group(2) is not None
+          or (ige and (t.start() == 0
+                       or (torzs[max(0, t.start() - 2):t.start()] in ('— ', '. ', '; ', ') ') and not _rovidites_utan(torzs, t.start()))))]
+    if ige:
         # igék _N nélküli törzs-fejlécei: gondolatjel vagy mondatvég után álló törzsnév. A már megtalált törzsek mellé csak az
         # még hiányzó nevű törzsek kerülnek (a „Name_N” és a „Name <alakcsoport>” fejlécek elsőbbséget élveznek).
         kezd = re.compile(r'(?:(?<=—\s)|(?<=\.\s))(' + TORZS + r')(?=[\s,.:])')
         van = {t.group(1) for t in tf}
         for t in kezd.finditer(torzs):
-            if t.group(1) not in van:
+            if t.group(1) not in van and not _rovidites_utan(torzs, t.start()):
                 van.add(t.group(1))
                 tf.append(t)
         tf.sort(key=lambda t: t.start())
-    szamok = _szamozott(torzs, _szam_minta, '1')
+    szamok = _szamozott(torzs, _szam_minta, '1', _szam_laza)
     if tf:
         rk = tf[0].start()
     elif szamok:
@@ -196,7 +229,7 @@ def _egy(szoveg):
             v = tf[i + 1].start() - rk if i + 1 < len(tf) else len(regio)
             resz = regio[t.start() - rk + len(t.group(0)):v]
             db = t.group(2) if t.re.groups >= 2 else ''
-            torzsek.append({'nev': t.group(1).replace('`', "'"), 'db': db, 'jelentesek': _jelentesek(resz)})
+            torzsek.append({'nev': t.group(1).replace('`', "'"), 'db': db, 'jelentesek': _jelentesek(resz, True)})
     else:
         torzsek.append({'nev': '', 'db': '', 'jelentesek': _jelentesek(regio)})
     return {
