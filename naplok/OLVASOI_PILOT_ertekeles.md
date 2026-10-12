@@ -137,7 +137,7 @@ A mai ág „kivett szövegek” listájának (9 tétel) összevetése a régi s
 ## 6. Mért hiányok és nyitott kérdések
 
 - A `konkordancia/tW_szocikkek.tsv` egy cikkében (az `OBS` „Examples from the Bible stories” rész, „God said, “I promise I will never again curse the ground …”) egy U+FFFD karakter áll (forrásadat-hiba; az oldal a szöveget változtatás nélkül mutatja). Nem javítottam (adatjavítás, nem a pilot dolga).
-- A Zsolt 22 KJV-számozása: az LXX_OS `zsolt_felirat_eltolas` sorainak KJV-oszlopa Károli-számot hordoz (671 sor a `psalms-lxx.tsv`-ben); a `Karoli_versmegfeleltetes.tsv` és az LXX_OS KJV-oszlopa a Zsolt 22 31 versében ellentmond (a pilot jelzi, nem javítja). A DT-F60b ezzel összefügg.
+- A Zsolt 22 KJV-számozása: az LXX_OS `zsolt_felirat_eltolas` sorainak KJV-oszlopa Károli-számot hordoz (671 sor a `psalms-lxx.tsv`-ben); a `Karoli_versmegfeleltetes.tsv` és az LXX_OS KJV-oszlopa a Zsolt 22 31 versében ellentmond (a pilot jelzi, nem javítja). A DT125 ezzel összefügg.
 - A `pardes.db` a TAGNT és a Károli–Strong párosítás későbbi módosításaitól elmaradt (D5); az adatbázis újraépítése nem része a feladatnak.
 - A `pardes.db` nem hordozza a BDB-alias táblát és a Nave-témák versekre bontását (D1/D2); az LXX-versszám a vers-laphoz az LXX_OS-ből kell.
 - A 12 BDB-szócikk nélküli szó-lap (2. pont) és a 47–624 csak angol szócikkes lap a #38 / #80 dolga.
@@ -153,8 +153,8 @@ A mai ág „kivett szövegek” listájának (9 tétel) összevetése a régi s
 Az M3 eddigi döntései (a felhasználó a chatben, 2026-10-12):
 - **„Gépi szeletelés (próba)” felirat: marad** a BDB-blokkban. A 4. pont kivétele ezzel lezárva.
 - A H7121-szeletelő 19 jelentés-szerkezet-változásának átnézése elkészült (2026-10-12): a 19-ből 11 javult, 5 romlott (a végleges bontás a régi), 3 mindkettő hibás (ebből 2 javítva, a H0834 ismert hiba); 85 teszt zöld, a két HTML újragenerálva (1Móz 1–25: 10 209 602 bájt; Zsolt 22: 2 544 178 bájt). Részletek: `naplok/OLVASOI_PILOT_szeletelo_atnezes.md`.
-- **DT-F60a eldöntve (pontosítva, F60.39–F60.40):** a belső pilotban minden blokk marad, a „?” súgó jelzi a licenc-állapotot. A KJV Strong-címkeréteg GPL (CrossWire kjv.conf: „DistributionLicense=GPL”), ezért a KJV-Strong blokk minden nyilvános kiadásból kimarad; a BSB (CC0) szavankénti angol blokkja marad. Az MCGED ingyenes, nem bevételt hozó nyilvános kiadásban marad (kötelező megjelöléssel), kereskedelmi kiadásból kimarad, vagy írásos engedély kell (a kapcsoló a DT-M6-hoz kötött). A következmény a repó egészére: **DT-F60c** (a `konkordancia/KJV_Strongs_teljes.tsv` GPL-forrás a nyilvános repóban; 🟡 nyitva).
-- **DT-F60b eldöntve (1., F60.34):** új feladat a feliratos zsoltárok Károli–KJV számozására; brief-tervezet: `beerkezo/ZSOLT_FELIRAT_SZAMOZAS_brief.md` (befogadás: `/befogad`). A pilot kerülőútja (az LXX_OS KJV-oszlopa, a 31 ellentmondó vers jelzése) addig marad.
+- **DT124 eldöntve (pontosítva, F60.39–F60.40):** a belső pilotban minden blokk marad, a „?” súgó jelzi a licenc-állapotot. A KJV Strong-címkeréteg GPL (CrossWire kjv.conf: „DistributionLicense=GPL”), ezért a KJV-Strong blokk minden nyilvános kiadásból kimarad; a BSB (CC0) szavankénti angol blokkja marad. Az MCGED ingyenes, nem bevételt hozó nyilvános kiadásban marad (kötelező megjelöléssel), kereskedelmi kiadásból kimarad, vagy írásos engedély kell (a kapcsoló a DT-M6-hoz kötött). A következmény a repó egészére: **DT126** (a `konkordancia/KJV_Strongs_teljes.tsv` GPL-forrás a nyilvános repóban; 🟡 nyitva).
+- **DT125 eldöntve (1., F60.34):** új feladat a feliratos zsoltárok Károli–KJV számozására; brief-tervezet: `beerkezo/ZSOLT_FELIRAT_SZAMOZAS_brief.md` (befogadás: `/befogad`). A pilot kerülőútja (az LXX_OS KJV-oszlopa, a 31 ellentmondó vers jelzése) addig marad.
 - **A BDB-szeletelő átnézése (F60.35–F60.38):** 19 szócikk: 11 javult, 5 romlott (a végleges bontás a régi), 3 mindkettő hibás (a H0834 ismert hiba marad); a teljes magyar BDB-táblán a régi → végleges összevetés 147 szócikknél változtat jelentés-szerkezetet (jelek + szövegkezdet), a személyszám-jelölők száma a jelentés-sorszámok között 177 → 3. Ismert hibák: H0834, H3318, H1157, H2009, és a homonima-törzsek (H2490, H2790, H3384, H6299, H6743, H6965). Részletek, proveniencia: `naplok/OLVASOI_PILOT_szeletelo_atnezes.md` 2–5. pont (`scope=adat/forditasok.tsv BDB (678 magyar sor) | forras=bdb_szelet.py 18a927f6^, 18a927f6, 31e51419 | ts=2026-10-12T18:09`).
 - Nyitva: további felhasználói észrevételek (mi hiányzik, mi felesleges, melyik mérőszám a döntő); ezek ide, a 7. pontba kerülnek.
 
@@ -182,12 +182,12 @@ Az M3 eddigi döntései (a felhasználó a chatben, 2026-10-12):
 ### 8.2 A #25a feltételei, egyenként, a mért adat szerint
 
 **Licenc.**
-`scope=a pilot adatforrásai | forras=adat/licencek.tsv; DONTESEK.md DT-F60a, DT-F60c, DT-M6, DT116; FELADATOK #89 | ts=2026-10-12`
-- Eldöntött: **DT-F60a**: a KJV-Strong blokk minden nyilvános kiadásból kimarad (GPL), a BSB (CC0) blokk marad; az MCGED csak ingyenes, nem kereskedelmi kiadásban marad, megjelöléssel (a kapcsoló a DT-M6-hoz kötött); **DT-M6**: az első kiadás nem kereskedelmi, blokkonként dataset-kulccsal, forrás- és licencjelöléssel; **DT116**: a projekt saját adata (a Károli–Strong párosítás és származékai) minden jog fenntartva.
-- Nyitva: **DT-F60c**: a `KJV_Strongs_teljes.tsv` (GPL-forrás) a nyilvános repóban áll és a `pardes.db` betöltheti; a `licencek.tsv` sora ma „tisztázatlan”. A kiadáshoz a fájl sorsa (kivezetés / marad) és a kiadási kapcsoló kell. A **#89** (LICENC_RENDEZES) a `licencek.tsv` `projekt_adat` sorát és a táblaszintű licencet rendezi; a pilot méri, nem oldja meg.
+`scope=a pilot adatforrásai | forras=adat/licencek.tsv; DONTESEK.md DT124, DT126, DT-M6, DT116; FELADATOK #89 | ts=2026-10-12`
+- Eldöntött: **DT124**: a KJV-Strong blokk minden nyilvános kiadásból kimarad (GPL), a BSB (CC0) blokk marad; az MCGED csak ingyenes, nem kereskedelmi kiadásban marad, megjelöléssel (a kapcsoló a DT-M6-hoz kötött); **DT-M6**: az első kiadás nem kereskedelmi, blokkonként dataset-kulccsal, forrás- és licencjelöléssel; **DT116**: a projekt saját adata (a Károli–Strong párosítás és származékai) minden jog fenntartva.
+- Nyitva: **DT126**: a `KJV_Strongs_teljes.tsv` (GPL-forrás) a nyilvános repóban áll és a `pardes.db` betöltheti; a `licencek.tsv` sora ma „tisztázatlan”. A kiadáshoz a fájl sorsa (kivezetés / marad) és a kiadási kapcsoló kell. A **#89** (LICENC_RENDEZES) a `licencek.tsv` `projekt_adat` sorát és a táblaszintű licencet rendezi; a pilot méri, nem oldja meg.
 - Mért következmény a blokkokra: a CC BY-SA források (SDBH/SDGNT, UBS, LSJ, tW) share-alike jelölést kérnek; a `pardes.db` szükséges részhalmaza tartalmaz licenc-oszlopot (D4: 548,4 MB, a `licenc_*` oszlopok nélkül 424,5 MB).
 - A kiadási kapcsoló **elkészült** (F60.45): az `adat.py --kiadas {belso,nyilvanos,kereskedelmi}` (alap: `belso`, az eddigi kiadások változatlanok): a `nyilvanos` a KJV-Strong blokkot (GPL), a `kereskedelmi` a KJV-Strong és az MCGED blokkot is kiveszi (adat, statisztika, proveniencia-sor, a lapról a blokk); teszt mindhárom értékre (`TestKiadas`).
-- Javaslat: a #25a briefje a generátor szintjén a kapcsolót vegye át, és a DT-F60c lezárását feltételként vegye fel.
+- Javaslat: a #25a briefje a generátor szintjén a kapcsolót vegye át, és a DT126 lezárását feltételként vegye fel.
 
 **Tárhely.**
 `scope=pardes.db a lapokhoz szükséges táblákra | forras=pardes.db meta.epites_ts=2026-10-12T08:27:32Z (hash: 3. pont); naplok/SQLITE_EPIT_meres.md (MiB-ből MB-ra átszámolva); ADATVAGYON_TERV 3. és 7. szakasz | ts=2026-10-12T17:44Z`
@@ -203,10 +203,10 @@ Az M3 eddigi döntései (a felhasználó a chatben, 2026-10-12):
 - **#27 / #7** (Thayer fordítás; halasztott, D46: az OLVASOI_KONKORDANCIA oldja fel a #7-et): a görög szó-lapok magyar jelentése 0,7% / 1,0%; ma az angol TBESG/Thayer áll, az állapotjelzéssel. A #7 indítása a #25a (#76) menetében eldöntendő.
 - Javaslat: a #25a első kiadása az angol eredetit állapotjelzéssel vállalja (a pilot ezt kipróbálta, K2), a magyar lefedettséget pedig kiadási küszöbként ne írja elő; a küszöb a #38 ütemétől függene, és ezt a felhasználó dönti.
 
-**Versszámozás (DT-F60b).**
-`scope=Zsolt 22 (31 vers) | forras=konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_OS/psalms-lxx.tsv (zsolt_felirat_eltolas), 3. és 6. pont; DONTESEK.md DT-F60b | ts=2026-10-12`
+**Versszámozás (DT125).**
+`scope=Zsolt 22 (31 vers) | forras=konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_OS/psalms-lxx.tsv (zsolt_felirat_eltolas), 3. és 6. pont; DONTESEK.md DT125 | ts=2026-10-12`
 - A `Karoli_versmegfeleltetes.tsv` és az LXX_OS KJV-oszlopa a Zsolt 22 31 versében ellentmond; a pilot az LXX_OS Károli-kulcsával kerüli meg és jelzi.
-- DT-F60b eldöntve (1.): új feladat a feliratos zsoltárok (kb. 60+) Károli–KJV számozására (`beerkezo/ZSOLT_FELIRAT_SZAMOZAS_brief.md`, befogadásra vár).
+- DT125 eldöntve (1.): új feladat a feliratos zsoltárok (kb. 60+) Károli–KJV számozására (`beerkezo/ZSOLT_FELIRAT_SZAMOZAS_brief.md`, befogadásra vár).
 - Javaslat: a #25a a Zsoltárokat a feladat lezárásáig (vagy a pilot kerülőútjával, jelzéssel) vegye fel; az 1Móz 1–25-ben a versszámozás D2-egyezése 0 eltérés (más könyvet a pilot nem mért).
 
 ### 8.3 TSV vagy `pardes.db` (M2b, D1–D5)
@@ -221,10 +221,10 @@ Az M3 eddigi döntései (a felhasználó a chatben, 2026-10-12):
 
 ### 8.4 Javaslatok (döntés nélkül)
 
-1. A #25a briefjébe: a kiadási kapcsolók (KJV-Strong ki; MCGED a kereskedelmi módban ki) — **a kapcsoló elkészült** (F60.45, `adat.py --kiadas {belso,nyilvanos,kereskedelmi}`, tesztelve; a briefbe a generátor-szintű átvétel kerül) —, a DT-F60c lezárása feltételként, a #89 licenc-rendezés után indulás.
+1. A #25a briefjébe: a kiadási kapcsolók (KJV-Strong ki; MCGED a kereskedelmi módban ki) — **a kapcsoló elkészült** (F60.45, `adat.py --kiadas {belso,nyilvanos,kereskedelmi}`, tesztelve; a briefbe a generátor-szintű átvétel kerül) —, a DT126 lezárása feltételként, a #89 licenc-rendezés után indulás.
 2. A tárhely a brief első pontja: ≈118 MB tömörítve az ~50 MB-os function-keret fölött, tehát a statikus kiadás vagy a külön tárolt SQLite/D1 dönt a hostingról.
 3. Az első kiadás az angol eredetit vállalja (állapotjelzés), magyar lefedettségi küszöb nélkül; a #38 és a #27/#7 külön ütem.
-4. A feliratos zsoltárok számozása a külön feladatban (DT-F60b); addig a pilot kerülőútja.
+4. A feliratos zsoltárok számozása a külön feladatban (DT125); addig a pilot kerülőútja.
 5. A felület: minden Károli-szó kattinthatóságának kérdése (a szavak kb. 41%-a ma nem kattintható); a mockup (réteges szó-lap, igazítási sáv, Ctrl+K, mobil lap) kipróbálva, a #25a briefjébe vihető.
 6. A BDB-szeletelés „próba” felirata addig marad, amíg az 510 számozott jelentés nélküli szócikk (47,4%) okát nem vizsgálták (külön feladat vagy a #38 folytatásában).
 7. A pilot újrafuttatható (a #27, #80, #88, #89 után a mérés frissíthető: `eszkozok/olvaso_pilot/README.md`).

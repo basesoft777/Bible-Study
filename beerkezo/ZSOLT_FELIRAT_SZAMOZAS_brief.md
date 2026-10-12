@@ -1,6 +1,6 @@
 # Feliratos zsoltárok Károli–KJV számozása — felmérés és a táblák javítása (ZSOLT_FELIRAT_SZAMOZAS)
 
-*Befogadásra váró brief-tervezet. Forrás: DT-F60b, 1. opció (a felhasználó döntése a chatben, 2026-10-12), a #60 olvasói pilot leletéből. A fejlécet a `/befogad` adja.*
+*Befogadásra váró brief-tervezet. Forrás: DT125, 1. opció (a felhasználó döntése a chatben, 2026-10-12), a #60 olvasói pilot leletéből. A fejlécet a `/befogad` adja.*
 
 **Javasolt fejléc-adatok:** `tipus: feladat` · `fazis: 1` · `modell: sonnet` · `munka: adat` · `kovetkezo: "/kovetkezo; ⛔ M1 után (a javítási szabály jóváhagyása)"`.
 
@@ -33,4 +33,4 @@ A feladat: felmérni az összes feliratos zsoltárt (kb. 60 vagy több), és jav
 
 ## 4. Kapcsolódás
 
-DT-F60b (#60), #54 (LXX_OS-lefedettség, F54 `zsolt_felirat_eltolas`), `naplok/OLVASOI_PILOT_adatfelmeres.md` 5. pont, `naplok/KAROLI_KK1b_hianyzo_es_zsoltar.md`.
+DT125 (#60), #54 (LXX_OS-lefedettség, F54 `zsolt_felirat_eltolas`), `naplok/OLVASOI_PILOT_adatfelmeres.md` 5. pont, `naplok/KAROLI_KK1b_hianyzo_es_zsoltar.md`.

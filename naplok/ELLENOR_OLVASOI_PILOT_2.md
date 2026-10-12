@@ -21,7 +21,7 @@ Tartomány: teljes `86ad59263154b10dcda6fac19ffa40110aa99ef3..3631e504ef8e6f137f
 | M2 frissesség / 1. kör #3 | OK, megszűnt | A mérés (F60.47) a szeletelő- és adat-változások után; 537+28+510 = 1075, 124+1+34 = 159. |
 | Nulla-diff / 1. kör #4 | OK, megszűnt | A „0 eltérés” a felsorolt blokkokra szűkítve; a négy eltérő csoport a zárásban és a 8.3-ban. |
 | A1 / 1. kör #7 | OK, megszűnt | A 12 Strong-számból 4 csak a `BDB_strong_alias_elvetett.tsv`-ben (`nem_ebbol_a_szocikkbol`); az értékelés egyezik. |
-| DT-F60a végrehajtás | OK, megszűnt | `--kiadas {belso,nyilvanos,kereskedelmi}`; `TestKiadas` 7 teszt. Megjegyzés: a súgó statikus listája és a JSON `licenc` szótára a nyilvános kiadásban is megnevezi a `KJV_Strongs_teljes`-t (metaadat, nem GPL-tartalom). |
+| DT124 végrehajtás | OK, megszűnt | `--kiadas {belso,nyilvanos,kereskedelmi}`; `TestKiadas` 7 teszt. Megjegyzés: a súgó statikus listája és a JSON `licenc` szótára a nyilvános kiadásban is megnevezi a `KJV_Strongs_teljes`-t (metaadat, nem GPL-tartalom). |
 | Brief döntésnapló, `kovetkezo`, `ir` | OK, megszűnt | v3.4 sor; `kovetkezo` frissítve; az `ir` a diff 22 fájlját tartalmazza. |
 | README, adatfelmérés, értékelés belső ellentmondásai | OK, megszűnt | Hatókör, méretek, TAHOT, TBESH; tesztszám 99; D4 MB (886 415 360 bájt = 845,35 MiB). |
 | **Tétel-azonosítók** | ELTÉRÉS | A teljes angol szöveget a 86f83768 (F60.45) hozta, a hivatkozások „F60.46”-ot írnak (`adat.py:492`, `db_meres.py:223`, `teszt:765-766`, `:869`, `ellenorzolista.md:43`, `ertekeles.md:38`, `:122`, `:129`); a `TestRegresszioProto` docstringje „F60.45”, holott F60.46; a `db_meres.py:313` nem létező „F60.52”-re hivatkozik. |

@@ -7,7 +7,7 @@ fazis: 1
 modell: sonnet
 allapot: nem_indult
 ad: "a Thayer Sonnet-fordításának mért alapja a #7-hez: az eszközlánc Thayer-hiányai, gyakorisági sorrend és adagterv, egy kb. 150 ezer karakteres mérő adag az adat/forditasok.tsv-ben (allapot=sonnet), aranyminta-összevetés, keretmérés és kivetítés a teljes Thayerre"
-kovetkezo: "halasztva (D46): a #7-tel együtt veszi elő a felhasználó; a v2 (DT-F27a) szerint csak Sonnet, a BDB-menet (#38) mintájára"
+kovetkezo: "halasztva (D46): a #7-tel együtt veszi elő a felhasználó; a v2 (DT121) szerint csak Sonnet, a BDB-menet (#38) mintájára"
 olvas: [F38_BDB_FORDITAS_BRIEF.md, naplok/BDB_FORDITAS_naplo.md, naplok/EMELES_naplo.md, konkordancia/Thayer_teljes.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, adat/forditasok.tsv, adat/terminologia.tsv, adat/SEMA.md, adat/karoli_strong/, forditas/prompt_v4.md, eszkozok/emeles.py, eszkozok/normalizal.py, eszkozok/forditas_kapuk.py, DONTESEK.md]
 ir: [adat/forditasok.tsv, naplok/FP3_naplo.md, naplok/FP3_sorrend.tsv, naplok/FP3_hibas.tsv, naplok/FP3_M0.py, naplok/FP3_arany.md, DONTESEK.md]
 fugg: []
@@ -17,7 +17,7 @@ fugg: []
 
 *FELADATOK #27 · Modell: sonnet · v2 · 2026.10.12 · a #7 (Thayer éles) briefjét készíti elő*
 
-**Módosítva (2026.10.12, DT-F27a): csak Sonnet.** Az Opus–Gemini összevetés és a Max-keret mérése (v1) elmarad. A Thayer ugyanazzal a modellel és menettel fordul, mint a BDB (#38, DT-F38e): Sonnet, egy végrehajtó, a #28 eszközlánca, kapuk és normalizáló, adagonként megállás. Ez a feladat a BDB-menet M0-ját és M1-ét végzi el a Thayeren. A teljes futás (M2 … Mn, Mz) a #7 dolga; annak briefje ennek az eredményéből készül.
+**Módosítva (2026.10.12, DT121): csak Sonnet.** Az Opus–Gemini összevetés és a Max-keret mérése (v1) elmarad. A Thayer ugyanazzal a modellel és menettel fordul, mint a BDB (#38, DT-F38e): Sonnet, egy végrehajtó, a #28 eszközlánca, kapuk és normalizáló, adagonként megállás. Ez a feladat a BDB-menet M0-ját és M1-ét végzi el a Thayeren. A teljes futás (M2 … Mn, Mz) a #7 dolga; annak briefje ennek az eredményéből készül.
 
 ## 1. Cél
 
@@ -112,4 +112,4 @@ A szokásos adagjelentésen felül (`naplok/FP3_naplo.md`):
 | Verzió | Dátum | Változás | Döntés |
 |---|---|---|---|
 | v1 | 2026.09.30 | Opus–Gemini összevetés, Max-keret méréssel, 40 szócikkes mintán, vak pontozással és vak olvasással | C út kihagyva; helyi gép |
-| v2 | 2026.10.12 | **Csak Sonnet**; a BDB-menet (#38) M0–M1-e a Thayeren: eszközlánc-próba, sorrend, mérő adag, aranyminta, keretmérés. Az `fp3/` kimenet, a prompt v4-kiegészítés, az OpenRouter és a vak összevetés elmarad. | DT-F27a (felhasználó, 2026.10.12); a v1 szövege a git-történetben |
+| v2 | 2026.10.12 | **Csak Sonnet**; a BDB-menet (#38) M0–M1-e a Thayeren: eszközlánc-próba, sorrend, mérő adag, aranyminta, keretmérés. Az `fp3/` kimenet, a prompt v4-kiegészítés, az OpenRouter és a vak összevetés elmarad. | DT121 (felhasználó, 2026.10.12); a v1 szövege a git-történetben |

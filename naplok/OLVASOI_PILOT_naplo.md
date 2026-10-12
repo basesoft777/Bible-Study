@@ -12,7 +12,7 @@ Az olvasói pilot (1Móz 1:1–2:3 és Zsolt 22) a repó minden használható ad
 |---|---|
 | F60.0–F60.3 | M0–M2: `--szakasz` paraméter, jellegjelölés és ellenőrzőlista, 22 teszt, mérés; megállás az M3-nál |
 | F60.4 | fülváltás-hiba (a `section.lap{display:grid}` felülírta a `hidden`-t) |
-| F60.5–F60.9 | v2 bővítés: SDBH/SDGNT, SECE, OSHL, TBESH, tW, LSJ, MCGED, UBS DNTG, BSB/KJV angol szavak, Nave, TIPNR, igealak-feloldás, adatréteg-sorok; adatfelmérés (81 sor, 201 fájl); DT-F60a/b |
+| F60.5–F60.9 | v2 bővítés: SDBH/SDGNT, SECE, OSHL, TBESH, tW, LSJ, MCGED, UBS DNTG, BSB/KJV angol szavak, Nave, TIPNR, igealak-feloldás, adatréteg-sorok; adatfelmérés (81 sor, 201 fájl); DT124/b |
 | F60.10–F60.12 | tipográfia; tanulmányozó rész, látható forrássor; szélesebb panel (5:7), világos színséma és váltó |
 | F60.13–F60.15 | minden blokk nyitva (a „Forrás” és „?” kivételével); LXX-kiemelés és átkattintható LXX; minden híd-beli görög szónak lap (110→202, 153→304) |
 | F60.16 | a #60 felfüggesztve (`allapot: megallt`, folytatási pont a brief `kovetkezo` mezőjében) |
@@ -59,7 +59,7 @@ Mért (az egész BDB-táblán, régi vs. új szeletelő): 8099 sor, hiba 0; **el
 
 ## 6. Döntésre és teendőre váró
 
-- **DT-F60a** (licenc közzététel előtt: TBESH, MCGED, KJV+Strong, LXX-páros, share-alike források) és **DT-F60b** (feliratos zsoltárok számozása; a Károli–KJV azonosság hibás a Zsolt 22-re) — `DONTESEK.md`, helyőrzővel.
+- **DT124** (licenc közzététel előtt: TBESH, MCGED, KJV+Strong, LXX-páros, share-alike források) és **DT125** (feliratos zsoltárok számozása; a Károli–KJV azonosság hibás a Zsolt 22-re) — `DONTESEK.md`, helyőrzővel.
 - **M3 határesetek:** a „Gépi szeletelés (próba)” szöveg a lapon; „TAHOT nem teljes” lábjegyzet; a „Macula-illesztés kb. 78%” átvett szám.
 - **A brief frissítése:** a DT-M1 már eldőlt (2026-10-06: igen, a #25 kettéválik #25a/#25b); a brief v1 még a három opciót írja. Az M4 értékelő jelentés ennek megfelelően a #25a feltételeit (DT-M4, DT-M6, hosting) értékelje.
 - **Felületi irány:** a mockup (réteges szó-lap, igazítási sáv, Ctrl+K, mobil lap) kipróbálva; a #25a briefjébe vihető. Nyitott kérdés: minden Károli-szó legyen kattintható (a szavak ~40%-a ma nem az: nyelvtani elemhez kötött vagy nincs héber párosítás).
@@ -75,7 +75,7 @@ Mért (az egész BDB-táblán, régi vs. új szeletelő): 8099 sor, hiba 0; **el
 
 1. A H7121-javítás befejezése: a 6 jelentés-szerkezet-változás átnézése, tesztek (H7121-minta, zárójeles törzsfejléc, szám nélküli törzs), a pilot újragenerálása, commit `F60.24`.
 2. A TBESH-sorok címkéje („jelentés-ág” a „másik homonima” helyett) és az azonos jelentés-lista egyszeri megjelenítése.
-3. Az M3 lezárása: a határesetek és a DT-F60a/b eldöntése.
+3. Az M3 lezárása: a határesetek és a DT124/b eldöntése.
 4. A brief frissítése (DT-M1 alkalmazása), majd az M4: `naplok/OLVASOI_PILOT_ertekeles.md`, `…_zaras.md`, `fuggetlen-ellenor`, draft PR.
 
 ## 9. F60.25 — a H7121 szeletelő-javítás commitolva (2026-10-12)
@@ -89,7 +89,7 @@ A felhasználó döntése (chat, 2026-10-12): a régi ág (`claude/olvasoi-pilot
 | Tétel | Mi |
 |---|---|
 | F60.25 | a H7121 szeletelő-javítás commitolva (73 teszt zöld); a jelentés-szerkezet-változások átnézése hátravan (9. pont) |
-| F60.26 | `main` egyesítve (brief v3.1 + v3.2); ütközés: `DONTESEK.md` (a main sorai + a régi ág DT-F60a/b sora; a régi ág DT-F37a/b sorai a main DT61/62-ében vannak), `F60_OLVASOI_PILOT_BRIEF.md` (fejléc és döntésnapló) |
+| F60.26 | `main` egyesítve (brief v3.1 + v3.2); ütközés: `DONTESEK.md` (a main sorai + a régi ág DT124/b sora; a régi ág DT-F37a/b sorai a main DT61/62-ében vannak), `F60_OLVASOI_PILOT_BRIEF.md` (fejléc és döntésnapló) |
 | F60.27 | hatókör 1Móz 1–25 (`szakasz.py`: fejezet-tartomány), gzip+base64 beágyazás (`epit.py`, sablon `adatBetolt`, `--nyers`): nyers HTML 33,8 MB, tömörített 10,2 MB |
 | F60.28 | a `main` F54-es adatváltozásához igazítás: a `zsolt_felirat_eltolas` sorok KJV-oszlopa Károli-szám (kihagyva a KJV-kulcsból); a Zsolt 22:1 felirathoz ma van LXX-szó |
 | F60.29 | v3.1 angol-pótlás a görög lapon és a BDB-hiány kimondása; a „csak adat” szabályt sértő szövegek kivétele (TAHOT nem teljes, Macula kb. 78%, SDBH 90%, jelkulcs); kivétel: „Gépi szeletelés (próba)” |
@@ -97,7 +97,7 @@ A felhasználó döntése (chat, 2026-10-12): a régi ág (`claude/olvasoi-pilot
 | F60.31 | mérés és adatfelmérés újragenerálva (1Móz 1–25 + Zsolt 22), README |
 | F60.32 | `naplok/OLVASOI_PILOT_ertekeles.md` (M2, M2b), a brief megállása az M3-nál |
 
-Nyitott: az M3 (felhasználói átnézés), az M4; a H7121-szeletelő 19 jelentés-szerkezet-változásának átnézése; a DT-F60a/b; a TBESH-sorok címkéje (4. pont, utolsó sor); a `konkordancia/tW_szocikkek.tsv` egy U+FFFD-je (ertekeles 6.).
+Nyitott: az M3 (felhasználói átnézés), az M4; a H7121-szeletelő 19 jelentés-szerkezet-változásának átnézése; a DT124/b; a TBESH-sorok címkéje (4. pont, utolsó sor); a `konkordancia/tW_szocikkek.tsv` egy U+FFFD-je (ertekeles 6.).
 
 ## 11. A BDB-szeletelő átnézése (2026-10-12; F60.35–F60.38)
 

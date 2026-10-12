@@ -4,7 +4,7 @@
 
 ## 1. lépés — a nyers fájl rögzítése és az eltérés mérése
 
-**Engedély:** DT-F90a, 1. változat (felhasználó, 2026.10.12, az orkesztrátoron át): blob nélküli klón a session scratchpadjében, a repón kívül; csak letöltés és eltérés-mérés.
+**Engedély:** DT119, 1. változat (felhasználó, 2026.10.12, az orkesztrátoron át): blob nélküli klón a session scratchpadjében, a repón kívül; csak letöltés és eltérés-mérés.
 
 **Letöltés:** `git clone --filter=blob:none --no-checkout https://github.com/STEPBible/STEPBible-Data` (2026.10.12), majd `git cat-file -p <commit>:<út>` a két TAGNT-fájlra két commitnál. A nyers fájlok a repóba nem kerülnek (DT-F33a/f).
 
@@ -27,26 +27,26 @@ A kijelölés pontatlansága itt nem számít: a két TAGNT-fájl utolsó módos
 
 A nyers szó-sorok jelölés szerint: jelöletlen 141 720, `(..)` (NA) 26, `[..]` (KJV) 235, `{..}` (egyéb) 115. A `[..]` + `{..}` = **350 sor, 48 csoport**: egyezik a F22.9 leletével. Mind a 48 csoport a nyersben folytonos sorblokk.
 
-## 2. lépés — a 48 csoport Károli-kulcsa (jóváhagyva: DT-F90b)
+## 2. lépés — a 48 csoport Károli-kulcsa (jóváhagyva: DT120)
 
 A tábla: `naplok/F90_karoli_dontesek.tsv` (oszlopok: nyers hivatkozás, jelölés, szószám, nyers sorszám-tartomány, NRSV-kulcs, alternatív kulcs, Károli-kulcs, választott, indok, állapot). Módszer: a csoport görög szavai és angol tükörfordítása összevetve a `Karoli_1908.tsv` két jelölt versével; a Károli-kulcs az a vers, amelynek szövegében a csoport tartalma áll (a README `KAROLI_DONTES` és a `Verzifikacios_elteres_tabla.tsv` mintájára). | proveniencia: scope=48 csoport Károli-kulcsa | forras=manual (értelmező szövegösszevetés: TAGNT nyers aca7d691414e + konkordancia/Karoli_1908.tsv) | ts=2026-10-12
 
-Összesítés a javaslatban (a DT-F90b módosítása előtt): **21 csoport NRSV-kulcsra, 27 az alternatív (KJV / egyéb) kulcsra** (157 szó-sor). Jelölés × választás: KJV→alt 24, KJV→NRSV 14, egyéb→NRSV 7, egyéb→alt 3.
+Összesítés a javaslatban (a DT120 módosítása előtt): **21 csoport NRSV-kulcsra, 27 az alternatív (KJV / egyéb) kulcsra** (157 szó-sor). Jelölés × választás: KJV→alt 24, KJV→NRSV 14, egyéb→NRSV 7, egyéb→alt 3.
 
 A teljesen hiányzó 9 vers mind Károli-kulcsot kap, a kivonatban ma nem létező kulccsal: 2Kor 13:13, 3Ján 1:15, Fil 1:16, Fil 1:17, Jel 12:18, Ján 7:53, Róm 16:25–27. Az ott nem létező alternatív kulcsok (2Kor 13:14, 1Tim 6:22, Róm 14:24–26) nem jelennek meg.
 
 **Beszúrási hely és sorrend.** A kivonat a nyers sorrendet követi, és ez egyben kulcs-sorrend. A 48 csoportból 47-nél a nyers hely a Károli-kulcs szerint is helyes: a vers végén álló, a következő versbe sorolt csoport és a vers elején álló, az előző versbe sorolt csoport egyaránt a két vers határán áll. **Kivétel a Fil 1:16–17:** a nyersben a `Php.1.16[1.17]` (= Károli Fil 1:17) áll elöl, a `Php.1.17[1.16]` (= Károli Fil 1:16) utána. Kulcs-sorrendben a Fil 1:16 sorai kerülnek előre; a versen belüli szórend változatlan.
 
-### A javaslat nyitott kérdései (DT-F90b)
+### A javaslat nyitott kérdései (DT120)
 
 1. **1Thessz 2:11/12 (`1Th.2.12[2.11]`, 6 szó).** Az első öt szó (παρακαλοῦντες ὑμᾶς καὶ παραμυθούμενοι καὶ) a Károli 2:11-ben áll („úgy intettünk és buzdítgattunk”). A hatodik (μαρτυρόμενοι) megfelelője valószínűleg a Károli 2:12 eleje („És kérve kértünk”). Javaslat: a csoport egészben a 1Thessz 2:11-re kerül, mert a brief csoportonként dönt. Másik lehetőség: a #06 a 2:12-re kerül, szó szintű bontással.
 2. **Zsid 12:22/23 (`Heb.12.22[12.23]`, 1 szó: πανηγύρει).** A „seregéhez” szót (Károli 12:23 eleje) a πανήγυρις megfelelőjének olvasom, mert a μυριάσιν ἀγγέλων = „az angyalok ezreihez” a 12:22 vége. Javaslat: Zsid 12:23. Ez közepes bizonyosságú döntés.
 3. **A TR-utóiratok** (Róm 16:27 #14–#26, 2Kor 13:13 #22–#33, 1Tim 6:21 #13–#24). A Károliban nincs meg a szövegük. Javaslat: maradjanak a csoport kulcsán, a kivonat meglévő precedense szerint (a Gal 6:18 TR-utóirata a vers kulcsán áll).
 4. **A Fil 1:16–17 sorrendje:** javaslat a kulcs-sorrend (l. fent). A másik lehetőség a nyers sorrend.
 
-### A DT-F90b döntése (felhasználó, 2026.10.12, az orkesztrátoron át)
+### A DT120 döntése (felhasználó, 2026.10.12, az orkesztrátoron át)
 
-A tábla jóváhagyva, egy módosítással. A tábla állapot oszlopa `jóváhagyva (DT-F90b, 2026.10.12)`.
+A tábla jóváhagyva, egy módosítással. A tábla állapot oszlopa `jóváhagyva (DT120, 2026.10.12)`.
 1. **b)** A `1Th.2.12[2.11]` szétvágva. **Pontosítás (felhasználó, 2026.10.12, F90.7):** #01–#04 → 1Thessz 2:11, #05–#06 (καὶ μαρτυρόμενοι) → 1Thessz 2:12, mert a #05 καί a Károli 2:12 „És” szava. Az első változat (#01–#05 / #06) az F90.3–F90.6-ban élt. Ez az egyetlen szétvágott csoport; a táblában két sort kap, így a tábla 49 sor / 48 csoport. A végleges összesítés: 22 csoportrész NRSV-kulcsra, 27 alternatív kulcsra (155 sor).
 2. a) Zsid 12:23.
 3. a) A TR-utóirat-sorok a vers kulcsán maradnak (l. a soronkénti listát lent).
@@ -62,7 +62,7 @@ A tábla jóváhagyva, egy módosítással. A tábla állapot oszlopa `jóváhag
 - **Beszúrt sorok kulcsonként:** Mt 15:5 +11, Mt 17:15 +2, Mt 20:5 +3, Mk 3:20 +4, Luk 1:73 +3, Luk 6:17 +10, Luk 7:18 +9, Ján 7:53 +7, ApCsel 2:10 +4, ApCsel 3:19 +9, ApCsel 4:5 +2, ApCsel 5:40 +3, ApCsel 9:29 +8, ApCsel 24:18 +6, Róm 1:10 +5, Róm 7:10 +3, Róm 9:11 +7, Róm 16:25 +20, Róm 16:26 +20, Róm 16:27 +26, 2Kor 1:6 +7, 2Kor 8:13 +3, 2Kor 10:5 +2, 2Kor 13:12 +5, 2Kor 13:13 +33, Gal 2:20 +2, Ef 1:11 +2, Ef 2:15 +6, Ef 5:13 +6, Fil 1:16 +15, Fil 1:17 +11, Fil 2:8 +5, Kol 1:11 +2, Kol 1:21 +3, 1Thessz 1:3 +1, 1Thessz 2:6 +7, 1Thessz 2:11 +4, 1Thessz 2:12 +2, 2Thessz 1:8 +3, 1Tim 6:21 +17, Zsid 3:9 +2, Zsid 7:20 +8, Zsid 12:23 +1, 1Pét 3:15 +5, 1Ján 2:13 +7, 3Ján 1:15 +11, Jel 2:27 +7, Jel 12:18 +7, Jel 17:10 +4.
 - **Sorrend:** a stabil kulcs-rendezés a meglévő sorok sorrendjét nem változtatta meg; a szkript ezt írás előtt ellenőrzi. A Fil 1:16 (`Php.1.17[1.16]`, 15 sor) a Fil 1:17 (`Php.1.16[1.17]`, 11 sor) előtt áll.
 
-### A TR-utóirat sorai (DT-F90b 3. a): a vers kulcsán
+### A TR-utóirat sorai (DT120 3. a): a vers kulcsán
 
 Csak a TR kiadású sorok tartoznak ide. Az utóiratok előtti ἀμήν (2Kor 13:13 #21, 1Tim 6:21 #12) `TR+Byz` kiadású, ezért nem utóirat. Összesen 37 sor.
 
