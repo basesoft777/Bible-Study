@@ -1,6 +1,6 @@
 # OLVASOI_PILOT — értékelő jelentés (F60, v3.2: a régi ág az alap)
 
-*Állapot: **M2 és M2b kész, M3 (felhasználói átnézés) nyitva, M4 (DT-M1 összevetés és zárás) nyitva.** Végrehajtó: `claude-sonnet-5-5`. Ág: `claude/olvasoi-pilot` (a `main` v3.1 brief + a mai ág, `claude/f60-olvasoi-pilot` átvett részei; a mai ág nem folytatódik, v3.2). Kimenet (nem a repóban): `<scratchpad>\f60_egyesitett\{1moz,zsolt22}\karoli_konkordancia_proba.html`.*
+*Állapot: **M2, M2b és M4 1–2. pont kész (a brief v3.3 szerint: a #25a feltételei, nem a DT-M1 opcióinak összevetése); a független ellenőr, a push és a draft PR hátra van.** M3: a felhasználó döntései rögzítve (7. pont); a további észrevételek ide kerülnek. Végrehajtó: `claude-sonnet-5-5`. Ág: `claude/olvasoi-pilot` (a `main` v3.1 brief + a mai ág, `claude/f60-olvasoi-pilot` átvett részei; a mai ág nem folytatódik, v3.2). Kimenet (nem a repóban): `<scratchpad>\f60_egyesitett\{1moz,zsolt22}\karoli_konkordancia_proba.html`.*
 
 Minden mérőszám mellett a mérés proveniencia-sora áll. A szakaszok: **1Móz 1–25** (693 vers; a régi ág eddig az 1Móz 1:1–2:3-at, 34 verset mérte) és **Zsolt 22** (32 vers). A mérést `eszkozok/olvaso_pilot/meres.py` (TSV-út; teljes táblák: `naplok/OLVASOI_PILOT_meres.md`, `naplok/OLVASOI_PILOT_adatfelmeres.md`) és `eszkozok/olvaso_pilot/db_meres.py` (`pardes.db`) végezte; a `db_meres.py` nyers kimenete (`olvaso_pilot_db_meres.json`) a repón kívül maradt, a számok újra előállíthatók (`eszkozok/olvaso_pilot/README.md`).
 
@@ -140,8 +140,81 @@ A mai ág „kivett szövegek” listájának (9 tétel) összevetése a régi s
 Az M3 eddigi döntései (a felhasználó a chatben, 2026-10-12):
 - **„Gépi szeletelés (próba)” felirat: marad** a BDB-blokkban. A 4. pont kivétele ezzel lezárva.
 - A H7121-szeletelő 19 jelentés-szerkezet-változásának átnézése elkészült (2026-10-12): a 19-ből 11 javult, 5 romlott (a végleges bontás a régi), 3 mindkettő hibás (ebből 2 javítva, a H0834 ismert hiba); 85 teszt zöld, a két HTML újragenerálva (1Móz 1–25: 10 209 602 bájt; Zsolt 22: 2 544 178 bájt). Részletek: `naplok/OLVASOI_PILOT_szeletelo_atnezes.md`.
-- Nyitva: a DT-F60a és a DT-F60b, a további észrevételek.
+- **DT-F60a eldöntve (pontosítva, F60.39–F60.40):** a belső pilotban minden blokk marad, a „?” súgó jelzi a licenc-állapotot. A KJV Strong-címkeréteg GPL (CrossWire kjv.conf: „DistributionLicense=GPL”), ezért a KJV-Strong blokk minden nyilvános kiadásból kimarad; a BSB (CC0) szavankénti angol blokkja marad. Az MCGED ingyenes, nem bevételt hozó nyilvános kiadásban marad (kötelező megjelöléssel), kereskedelmi kiadásból kimarad, vagy írásos engedély kell (a kapcsoló a DT-M6-hoz kötött). A következmény a repó egészére: **DT-F60c** (a `konkordancia/KJV_Strongs_teljes.tsv` GPL-forrás a nyilvános repóban; 🟡 nyitva).
+- **DT-F60b eldöntve (1., F60.34):** új feladat a feliratos zsoltárok Károli–KJV számozására; brief-tervezet: `beerkezo/ZSOLT_FELIRAT_SZAMOZAS_brief.md` (befogadás: `/befogad`). A pilot kerülőútja (az LXX_OS KJV-oszlopa, a 31 ellentmondó vers jelzése) addig marad.
+- **A BDB-szeletelő átnézése (F60.35–F60.38):** 19 szócikk: 11 javult, 5 romlott (a végleges bontás a régi), 3 mindkettő hibás (a H0834 ismert hiba marad); a teljes magyar BDB-táblán a régi → végleges összevetés 147 szócikknél változtat jelentés-szerkezetet (jelek + szövegkezdet), a személyszám-jelölők száma a jelentés-sorszámok között 177 → 3. Ismert hibák: H0834, H3318, H1157, H2009, és a homonima-törzsek (H2490, H2790, H3384, H6299, H6743, H6965). Részletek, proveniencia: `naplok/OLVASOI_PILOT_szeletelo_atnezes.md` 2–5. pont (`scope=adat/forditasok.tsv BDB (678 magyar sor) | forras=bdb_szelet.py 18a927f6^, 18a927f6, 31e51419 | ts=2026-10-12T18:09`).
+- Nyitva: további felhasználói észrevételek (mi hiányzik, mi felesleges, melyik mérőszám a döntő); ezek ide, a 7. pontba kerülnek.
 
-## 8. M4 — a DT-M1 opcióinak adatalapú összevetése és zárás
+## 8. M4 — mit tud a repó adata, és mi kell a #25a-hoz
 
-*Nyitva (az M3 után).*
+*A brief v3.3 szerint: a DT-M1 2026-10-06-án eldőlt (1. opció: a #25 kettéválik, #25a = FELADATOK #76 OLVASOI_KONKORDANCIA, #25b = motívumos nézet), ezért ez a pont nem opciókat vet össze, hanem a mért adatállapot mellett azt mutatja meg, mi kell a #25a briefjéhez. A „javaslat” jelölésű tételek javaslatok, nem döntések. A számok a 2–3. pont méréséből jönnek (a proveniencia-sorok ott állnak); ahol más forrás kell, a tétel saját sora jelzi.*
+
+### 8.1 Mit tud a repó adata az olvasói konkordanciához (motívumréteg nélkül)
+
+`scope=1Móz 1–25 és Zsolt 22 | forras=a 2. és 3. pont (meres.py, db_meres.py; hivatkozott táblák ott) | ts=2026-10-12T15:11Z`
+
+**Erősségek (mért):**
+- A Károli-szöveg, a TAHOT-szavak, az UBS-azonosítók, a TSK-adat, a versszámozás és az lxx_bridge a TSV-úton és a `pardes.db`-ben **0 eltéréssel** egyezik (D2, 693 + 32 vers, 1 075 + 159 héber és 1 230 + 305 görög szó-lap).
+- Az 1Móz 1–25-ben a Károli-szavak 58,8%-a kötött tartalmas héber szóhoz, ebből 98,5% „magas” bizonyosságú; az előfordulások 90,2%-ához van UBS-jelentés; a Macula-párral rendelkező héber szavak 80,2%-ához van görög megfelelő.
+- A lapok blokkjainak 35/39-e (1Móz 1–25), illetve 34/39-e (Zsolt 22) csak a `pardes.db`-ből előállítható (D1); a lekérdezés vers-lapra 105 ms (meleg medián, p95 192 ms), szó-lapra 3,5–5,9 ms (D3).
+
+**Hiányok (mért):**
+- Magyar BDB-szócikke a héber szó-lapok 40,8%-ának (439/1 075) van az 1Móz 1–25-ben, 70,4%-ának (112/159) a Zsolt 22-ben; a többinél az angol eredeti áll (624, illetve 47 lap), 12 lapnak (1Móz 1–25) egyik sincs.
+- A görög szó-lapok magyar jelentéssel: 0,7% (8/1 230), illetve 1,0% (3/305); a többinél az angol TBESG/Thayer áll.
+- A Zsolt 22 Károli–Strong párosítása 100%-ban „alacsony” bizonyosságú (nincs egyezés-ellenőrzés).
+- A Károli-szavak 24,8% (Zsolt 22: 22,6%) csak nyelvtani elemhez kötött, 16,4% (17,7%) párosítás nélkül: a szavak kb. 41%-a nem kattintható szó-lapra.
+- A BDB-szeletelés (gépi feldolgozás): a héber szó-lapok 47,4%-ánál (510/1 075) nincs számozott jelentés a szeletelésben (1Móz 1–25; a H0085 típusú tulajdonnevek is; az ok külön vizsgálatot igényel). A szeletelő ismert hibái: H0834 (az 1. jelentés eleje), H3318, H1157, H2009 és a homonima-törzsek (H2490, H2790, H3384, H6299, H6743, H6965); a felirat („Gépi szeletelés (próba)”) ezért marad (3. pont, M3).
+- A Macula χ/ξ-hibája az 1–25 hatókörön 26 szóalakot érint; a `tW_szocikkek.tsv` egy cikkében U+FFFD áll (forrásadat-hiba, nem javítottam).
+
+### 8.2 A #25a feltételei, egyenként, a mért adat szerint
+
+**Licenc.**
+`scope=a pilot adatforrásai | forras=adat/licencek.tsv; DONTESEK.md DT-F60a, DT-F60c, DT-M6, DT116; FELADATOK #89 | ts=2026-10-12`
+- Eldöntött: **DT-F60a**: a KJV-Strong blokk minden nyilvános kiadásból kimarad (GPL), a BSB (CC0) blokk marad; az MCGED csak ingyenes, nem kereskedelmi kiadásban marad, megjelöléssel (a kapcsoló a DT-M6-hoz kötött); **DT-M6**: az első kiadás nem kereskedelmi, blokkonként dataset-kulccsal, forrás- és licencjelöléssel; **DT116**: a projekt saját adata (a Károli–Strong párosítás és származékai) minden jog fenntartva.
+- Nyitva: **DT-F60c**: a `KJV_Strongs_teljes.tsv` (GPL-forrás) a nyilvános repóban áll és a `pardes.db` betöltheti; a `licencek.tsv` sora ma „tisztázatlan”. A kiadáshoz a fájl sorsa (kivezetés / marad) és a kiadási kapcsoló kell. A **#89** (LICENC_RENDEZES) a `licencek.tsv` `projekt_adat` sorát és a táblaszintű licencet rendezi; a pilot méri, nem oldja meg.
+- Mért következmény a blokkokra: a CC BY-SA források (SDBH/SDGNT, UBS, LSJ, tW) share-alike jelölést kérnek; a `pardes.db` szükséges részhalmaza tartalmaz licenc-oszlopot (D4: 523,0 MB, a `licenc_*` oszlopok nélkül 404,9 MB).
+- Javaslat: a #25a briefje a kiadási kapcsolókat (KJV-Strong ki, MCGED a kereskedelmi módban ki) az `adat.py`/generátor szintjén tartalmazza, és a DT-F60c lezárását feltételként vegye fel.
+
+**Tárhely.**
+`scope=pardes.db a lapokhoz szükséges táblákra | forras=pardes.db meta.epites_ts=2026-10-12T08:27:32Z (hash: 3. pont); naplok/SQLITE_EPIT_meres.md; ADATVAGYON_TERV 3. és 7. szakasz | ts=2026-10-12T15:11Z`
+- A szükséges részhalmaz 523,0 MB kicsomagolva (a teljes adatbázis 843,8 MB-ja 62,0%-a), becsült tömörített mérete ≈ 112,4 MB (arányos becslés a mért 0,215-ös gzip-arányból, nem külön mérés).
+- Az ADATVAGYON_TERV 3. szakasza a Netlify-function határát ~50 MB tömörítve / ~250 MB kicsomagolva adja: a szükséges rész **a határ fölött** van (≈112 MB a ~50 MB ellen). A terv 3. szakasza erre a Cloudflare Workers + D1-et vagy a külön fájlként (Netlify Blobs) tárolt SQLite-ot nevezi kiútnak; a 7. szakasz „50–150 MB indexekkel” becslése alatt a szükséges rész 523 MB kicsomagolva nem marad.
+- A statikus oldal mérete: az 1Móz 1–25 oldala 10,2 MB (gzip+base64; nyersen 33,8 MB), a Zsolt 22 2,5 MB. A tömörítés a böngészőben `DecompressionStream`-et igényel (Safari < 16.4 nem).
+- Javaslat: a #25a briefje a hosting-⛔ előtt dönti el a kiszolgálás módját (statikus oldalak vagy lekérdező function); a két mért adat: ≈112 MB tömörítve a függvény-keret fölött, és 10,2 MB 25 fejezetenként a statikus oldalaknál (a teljes ÓSZ+ÚSZ statikus kiadásának mérete nincs mérve).
+
+**Fordítások (#38, #80, #27/#7).**
+`scope=1Móz 1–25 és Zsolt 22 | forras=a 2. pont táblája; FELADATOK #38, #80, #27, #7 sorai | ts=2026-10-12`
+- **#38** (BDB magyar fordítás, ▶ fut, gyakorisági sorrendben): a magyar BDB-lefedettség 40,8% / 70,4% a két szakaszon; a 12 szó-lapnak, amelynek sem magyar, sem angol szócikke van, nincs a #38-ban pótlása (a szócikk a `BDB_teljes_unabridged.tsv`-ben vagy a `BDB_strong_alias.tsv`-ben más Strong-szám alatt áll; 15 lap ilyen alias-szal jelenik meg).
+- **#80** (BDB_KAROLI_POTLAS, kész): az `adat/bdb_karoli.tsv` a Károli-támasz nélkül fordított szócikkek adatblokkja, a `forditasok.tsv` változatlan; a pilot a magyar szócikk-szöveget a `forditasok.tsv`-ből veszi.
+- **#27 / #7** (Thayer fordítás; halasztott, D46: az OLVASOI_KONKORDANCIA oldja fel a #7-et): a görög szó-lapok magyar jelentése 0,7% / 1,0%; ma az angol TBESG/Thayer áll, az állapotjelzéssel. A #7 indítása a #25a (#76) menetében eldöntendő.
+- Javaslat: a #25a első kiadása az angol eredetit állapotjelzéssel vállalja (a pilot ezt kipróbálta, K2), a magyar lefedettséget pedig kiadási küszöbként ne írja elő; a küszöb a #38 ütemétől függene, és ezt a felhasználó dönti.
+
+**Versszámozás (DT-F60b).**
+`scope=Zsolt 22 (31 vers) | forras=konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_OS/psalms-lxx.tsv (zsolt_felirat_eltolas), 3. és 6. pont; DONTESEK.md DT-F60b | ts=2026-10-12`
+- A `Karoli_versmegfeleltetes.tsv` és az LXX_OS KJV-oszlopa a Zsolt 22 31 versében ellentmond; a pilot az LXX_OS Károli-kulcsával kerüli meg és jelzi.
+- DT-F60b eldöntve (1.): új feladat a feliratos zsoltárok (kb. 60+) Károli–KJV számozására (`beerkezo/ZSOLT_FELIRAT_SZAMOZAS_brief.md`, befogadásra vár).
+- Javaslat: a #25a a Zsoltárokat a feladat lezárásáig (vagy a pilot kerülőútjával, jelzéssel) vegye fel; az 1Móz 1–25-ben a versszámozás D2-egyezése 0 eltérés (más könyvet a pilot nem mért).
+
+### 8.3 TSV vagy `pardes.db` (M2b, D1–D5)
+
+`scope=1Móz 1–25 és Zsolt 22 | forras=pardes.db meta.epites_ts=2026-10-12T08:27:32Z meta.mod=teljes (hash: 3. pont) | ts=2026-10-12T15:11Z`
+
+- **Mi mondja az adatbázis mellett:** a blokkok 35/39 (34/39) csak belőle állítható elő (D1), a 0 eltérés (D2) azt mutatja, hogy a kettő ugyanazt adja, és a lekérdezési idő ms-tartományú (D3).
+- **Mi hiányzik az adatbázisból (D1/D2):** (a) az igealak-kód és szófaj (Macula), (b) a héber–görög párosítás szavanként (Macula), (c) a görög szóalak és az LXX-vers szavai (LXX_OS): az építő ezeket szándékosan nem tölti be (+207,6 MB TSV-méret, ha betöltené); (d) a BDB-alias tábla (`BDB_strong_alias.tsv`; 9 + 6 szó-lapot érint az 1Móz 1–25-ben); (e) a Nave-témák versekre bontása (a bontás az `adat.py` gépi feldolgozása; az `igehely_tartomany` 124 sora kell); (f) az LXX-versszám a vers-laphoz (356 / 28 eltérés), mert az `lxx_versszintu_parok` csak a héber–görög Strong-párral rendelkező versekre ad sort.
+- **Frissesség (D5):** a 39 tábla `meta` hash-e egyezik a tábla mai tartalmával; a forrás-TSV-k az építés után módosultak (`token_eredeti`, `token_strong`: TAGNT +350 sor; `token_par`); ennek a következménye az ÚSZ-előfordulás-eltérés (117 / 52 görög lap). Az adatbázis tehát az építés pillanatának képe, nem élő nézet.
+- **Méret:** 886,4 MB a fájl, a lapokhoz kell 523,0 MB (D4; l. 8.2 Tárhely).
+- Javaslat: az olvasói felület ma **TSV-ből épüljön** (statikus lap, a három Macula/LXX_OS-blokkal együtt, mindkét szakaszon 0 eltéréssel), a `pardes.db` az **interaktív lekérdezésre** (keresés, szó-lap, vers-lap) kerüljön, a hiányok (a)–(f) pótlásával az építőben (ezek a #79 vagy egy utódfeladat dolga), és a két út D2-egyezését a #25a tesztje őrizze. A döntés a felhasználóé.
+
+### 8.4 Javaslatok (döntés nélkül)
+
+1. A #25a briefjébe: a kiadási kapcsolók (KJV-Strong ki; MCGED a kereskedelmi módban ki), a DT-F60c lezárása feltételként, a #89 licenc-rendezés után indulás.
+2. A tárhely a brief első pontja: ≈112 MB tömörítve az ~50 MB-os function-keret fölött, tehát a statikus kiadás vagy a külön tárolt SQLite/D1 dönt a hostingról.
+3. Az első kiadás az angol eredetit vállalja (állapotjelzés), magyar lefedettségi küszöb nélkül; a #38 és a #27/#7 külön ütem.
+4. A feliratos zsoltárok számozása a külön feladatban (DT-F60b); addig a pilot kerülőútja.
+5. A felület: minden Károli-szó kattinthatóságának kérdése (a szavak kb. 41%-a ma nem kattintható); a mockup (réteges szó-lap, igazítási sáv, Ctrl+K, mobil lap) kipróbálva, a #25a briefjébe vihető.
+6. A BDB-szeletelés „próba” felirata addig marad, amíg az 510 számozott jelentés nélküli szócikk (47,4%) okát nem vizsgálták (külön feladat vagy a #38 folytatásában).
+7. A pilot újrafuttatható (a #27, #80, #88, #89 után a mérés frissíthető: `eszkozok/olvaso_pilot/README.md`).
+
+### 8.5 Korlátok
+
+A D3 a régi ág szó-lapjainak részhalmazát méri (az újabb blokkok lekérdezési ideje nincs benne); a tömörített részhalmaz-méret becslés; az 1Móz 1–25 és a Zsolt 22 két szakasz, a költői könyvek és az ÚSZ általánosítása nincs mérve. A független ellenőr (`naplok/ELLENOR_OLVASOI_PILOT.md`) és a felhasználói M3 további észrevételei még hátra vannak.
