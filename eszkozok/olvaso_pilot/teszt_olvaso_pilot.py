@@ -679,5 +679,86 @@ class Regresszio(unittest.TestCase):
         reszhalmaz(a, b, '')
 
 
+class TestDbMeres(unittest.TestCase):
+    """M2b / K5: a db_meres.py egy vers-lap és szó-lapok D2-egyezése a pardes.db-vel (ha van); nincs adatbázis -> „nem mérhető”."""
+    @classmethod
+    def setUpClass(cls):
+        import db_meres
+        cls.dm = db_meres
+        cls.db = db_meres.alap_db()
+
+    def test_nincs_adatbazis_nem_merheto(self):
+        ki = os.path.join(TMP, 'nincs_db')
+        p = subprocess.run([sys.executable, os.path.join(D, 'db_meres.py'), '--db', os.path.join(TMP, 'nincs.db'), '--kimenet', ki],
+                           capture_output=True, text=True, encoding='utf-8')
+        self.assertEqual(p.returncode, 0, p.stderr[-500:])
+        self.assertIn('NEM MÉRHETŐ', p.stdout)
+        with open(os.path.join(ki, 'olvaso_pilot_db_meres.json'), encoding='utf-8') as fh:
+            self.assertEqual(json.load(fh)['allapot'], 'nem mérhető')
+
+    def test_d2_vers_lap_egyezes(self):
+        if not os.path.exists(self.db):
+            self.skipTest('nincs pardes.db')
+        con = self.dm.kapcsolat(self.db)
+        try:
+            v = ADAT['gen']['versek'][0]
+            ki = self.dm.hasonlit_vers(con, v)
+            for blokk in ('karoli_szoveg', 'karoli_strong_parositas', 'heber_szavak', 'versszamozas', 'tsk_darab'):
+                self.assertTrue(ki[blokk][0], '%s: tsv=%r db=%r' % (blokk, ki[blokk][1], ki[blokk][2]))
+        finally:
+            con.close()
+
+    def test_d2_szo_lap_egyezes(self):
+        if not os.path.exists(self.db):
+            self.skipTest('nincs pardes.db')
+        con = self.dm.kapcsolat(self.db)
+        try:
+            for s in ('H7225', 'H0430'):
+                ki = self.dm.hasonlit_szo(con, ADAT['gen']['lapok'][s])
+                for blokk in ('strong_szotar', 'bdb_angol', 'bdb_magyar', 'lxx_bridge'):
+                    self.assertTrue(ki[blokk][0], '%s %s: tsv=%r db=%r' % (s, blokk, ki[blokk][1], ki[blokk][2]))
+        finally:
+            con.close()
+
+    def test_d2_elteres_kimutatasa(self):
+        """A hasonlító valóban eltérést jelez, ha az adat eltér (nem mindig „egyezik”)."""
+        if not os.path.exists(self.db):
+            self.skipTest('nincs pardes.db')
+        con = self.dm.kapcsolat(self.db)
+        try:
+            v = json.loads(json.dumps(ADAT['gen']['versek'][0]))
+            v['karoli'] += ' x'
+            self.assertFalse(self.dm.hasonlit_vers(con, v)['karoli_szoveg'][0])
+        finally:
+            con.close()
+
+
+class TestEpitHatokor(unittest.TestCase):
+    def test_fejezet_tartomany(self):
+        self.assertEqual(sz.szakasz_cim('1Móz 1-25'), '1Móz 1–25')
+        self.assertEqual(sz.szakasz_azonosito('1Móz 1-25'), '1Moz_1-25')
+        v = sz.szakasz_versei('1Móz 1-25')
+        self.assertEqual((v[0], v[-1], len(v)), ('1Móz 1:1', '1Móz 25:34', 693))
+        self.assertEqual(sz.szakasz_versei('1Móz 1:1-25:34'), v)
+
+    def test_gzip_beagyazas_visszafejtheto(self):
+        import base64
+        import gzip
+        ki = os.path.join(TMP, 'epit_gen')
+        os.makedirs(ki, exist_ok=True)
+        with open(os.path.join(ki, 'olvaso_pilot.json'), 'w', encoding='utf-8') as fh:
+            json.dump(ADAT['gen'], fh, ensure_ascii=False)
+        p = subprocess.run([sys.executable, os.path.join(D, 'epit.py'), '--szakasz', '1Móz 1:1-2:3', '--kimenet', ki],
+                           capture_output=True, text=True, encoding='utf-8')
+        self.assertEqual(p.returncode, 0, p.stderr[-500:])
+        with open(os.path.join(ki, 'karoli_konkordancia_proba.html'), encoding='utf-8') as fh:
+            h = fh.read()
+        m = re.search(r'<script type="application/json" id="adat" data-kodolas="gzip-base64">([^<]+)</script>', h)
+        self.assertIsNotNone(m)
+        self.assertEqual(json.loads(gzip.decompress(base64.b64decode(m.group(1))).decode('utf-8')), ADAT['gen'])
+        self.assertNotIn('__ADAT', h)
+        self.assertNotIn(chr(0xFFFD), h)
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
