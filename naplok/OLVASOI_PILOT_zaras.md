@@ -12,6 +12,6 @@
 - Nyitott: a szeletelő ismert hibái (H0834, H3318, H1157, H2009, homonima-törzsek) és az 510 számozott jelentés nélküli BDB-lap (47,4%) oka.
 - Nyitott: a `tW_szocikkek.tsv` egy cikkében U+FFFD (forrásadat-hiba, nem javítva).
 - Nyitott: `beerkezo/ZSOLT_FELIRAT_SZAMOZAS_brief.md` (befogadásra vár, `/befogad`).
-- Nyitott: Egyeztetendő eltérés a brief K1-ével (`ertekeles.md` 5. pont 3.: értékazonosság bájtazonosság helyett); további M3-észrevételek; az ellenőr újrafuttatása (`naplok/ELLENOR_OLVASOI_PILOT.md` az első kör), push, draft PR, a brief `lezarva` (az orkesztrátor).
+- Lezárás: a K1 eltérése (értékazonosság, `ertekeles.md` 5.3) a felhasználó elfogadásával (v3.5); független ellenőr két köre (`ELLENOR_OLVASOI_PILOT.md`, `_2.md`), mind javítva; draft PR: basesoft777/Bible-Study#318.
 - Javaslatok (döntés nélkül): `naplok/OLVASOI_PILOT_ertekeles.md` 8.4.
 - Tanulság a két párhuzamos futásról: ugyanazt a feladatot két ágon, két munkamásolatban futtatni kétszeres munka és ütköző döntéssorok lett (egyesítés: F60.26); a brief frissüljön a döntés után, és egy feladathoz egy ág tartozzon.
