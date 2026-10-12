@@ -8,6 +8,7 @@ modell: sonnet
 munka: adat
 allapot: lezarva
 ag: claude/f80-karoli-potlas
+pr: https://github.com/basesoft777/Bible-Study/pull/310
 lezarva_osszegzes: "adat/bdb_karoli.tsv (62 526 sor, 674 szócikk), DT-F80a, DT-F80b; forditasok.tsv bájtra változatlan"
 ad: a kész (teljes) BDB-fordítású szócikkek Károli-alakjai és példaversei a teljes ÓSZ Károli–Strong párosításból pótolva adatként; a fordítás szövege nem változik
 kovetkezo: "—"
