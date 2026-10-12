@@ -7,7 +7,7 @@ fazis: 1
 modell: opus
 allapot: lezarva
 ag: claude/f90-tagnt-zarojeles
-pr: PENDING
+pr: https://github.com/basesoft777/Bible-Study/pull/314
 lezarva_osszegzes: "A TAGNT-kivonat +350 szó-sora (48 zárójeles csoport, 9 új vers) a jóváhagyott Károli-kulcsokkal, bájtazonos régi sorokkal; ellenőr TISZTA."
 ad: "Teljes `konkordancia/TAGNT_kivonat.tsv`: a nyers TAGNT minden szó-sora benne van, a [..]/{..} jelölésűek is, Károli-kulccsal; a 48 csoport Károli-döntése naplózva"
 kovetkezo: "—"
