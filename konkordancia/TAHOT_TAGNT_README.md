@@ -127,7 +127,12 @@ editions | ... | sStrong+Instance | Alt Strongs`):
 - **Kritikai kiadás**: az `editions` oszlop változatlanul (pl. `NA28+NA27+Tyn+SBL+WH+Treg+TR+Byz`).
 
 **Zárójeles kettős hivatkozás — kritikai kiadások közötti versheletér-eltérés.**
-Négy helyen a nyers `Word & Type` mező `Könyv.Fejezet.Vers(Fejezet.Vers)` alakú
+A nyers fájl fejléce szerint: *„Versification as used by NRSV. Differences are marked in
+square brackets for KJV, bround brackets for NA and curley brackets for others.”* Háromféle
+jelölés van tehát: kerek `(..)` (NA), szögletes `[..]` (KJV) és kapcsos `{..}` (egyéb). Az
+eredeti generátor csak a kereket ismerte; a szögletes és a kapcsos jelölésű sorokat az F90
+pótolta (l. lent, „A KJV- és egyéb jelölésű sorok (F90)”). Az NA-eset leírása:
+négy helyen a nyers `Word & Type` mező `Könyv.Fejezet.Vers(Fejezet.Vers)` alakú
 (pl. `Rom.3.25(3.26)#24=NKO`): a zárójel előtti szám a fájl alap-versifikációja (NRSV
 szerinti), a zárójeles rész pedig azt jelzi, hogy a NA-kiadás (a legtöbb modern fordítás
 alapja) ezt a szórészt a másik vershez sorolja. **Ez a jelenség a kritikai kiadások közötti
@@ -169,6 +174,38 @@ ez az állapot lezárult — a 4 eset ma már nem kivétel a formátumot illető
 különbözik a többi sortól, hogy a Károli-döntés (elsődleges/másodlagos zárójeles hivatkozás)
 egyedi, korábbi tartalmi vizsgálattal lett igazolva, nem a szabványos könyv-rövidítés-cserével
 állt elő.
+
+**A KJV- (`[..]`) és egyéb (`{..}`) jelölésű sorok (F90, 2026.10.12).** A fenti regex ezeket
+nem ismerte, ezért **48 csoport, 350 szó-sor** maradt ki a kivonatból (235 `[..]`, 115
+`{..}`; `naplok/F22_TAGNT_zarojeles_sorok.md`). Kilenc vers teljesen hiányzott (Ján 7:53,
+Róm 16:25–27, 2Kor 13:13, Fil 1:16–17, 3Ján 1:15, Jel 12:18), 39 versből szavak hiányoztak.
+A pótlás az `eszkozok/tagnt_zarojeles_potlas.py` szkripttel történt, és újrafuttatható; a nyers
+fájlok a repón kívül maradnak, a szkript az sha256-ukat ellenőrzi.
+
+A szkript a nyers fájl minden szó-sorát a fenti mezőképzéssel vetíti, a regexe
+`^([1-3]?[A-Za-z]+)\.(\d+)\.(\d+)(?:([\[({])(\d+)\.(\d+)[\])}])?#(\d+)=`. Írás előtt
+ellenőrzi, hogy a `[..]`/`{..}` sorok nélküli vetület soronként azonos a meglévő kivonattal
+(2026.10.12-én: 141 746/141 746 sor, 0 eltérés). A meglévő sorokat bájtazonosan megtartja,
+és csak sort szúr be.
+
+**A Károli-döntés szabálya.** A Károli hol a KJV-, hol az NRSV-számozást követi. Ezért a
+kulcsot csoportonként, a csoport görög szövegének és a Károli két jelölt versének
+összevetésével kell eldönteni, ahogy a 4 NA-esetnél. A Károli-kulcs az a vers, amelynek
+Károli-szövegében a csoport tartalma áll. A döntések: `naplok/F90_karoli_dontesek.tsv`,
+jóváhagyva a DT-F90b-ben.
+- 22 csoportrész az NRSV-kulcsra (a zárójel előtti szám), 27 az alternatívra (a zárójelben
+  lévő szám) került.
+- Egy csoport szétvágva: a `1Th.2.12[2.11]` #01–#04 a 1Thessz 2:11-re, a #05–#06
+  (καὶ μαρτυρόμενοι) a 1Thessz 2:12-re (Károli: „És kérve kértünk”).
+- A Károliban nem létező alternatív kulcs (2Kor 13:14, 1Tim 6:22, Róm 14:24–26) nem
+  szerepel.
+- A TR-utóiratok (Róm 16:27, 2Kor 13:13, 1Tim 6:21) a vers kulcsán maradnak, a Gal 6:18
+  mintájára.
+
+**Sorrend.** A kivonat sorrendje a nyers sorrend, kulcs szerint stabilan rendezve (könyv,
+fejezet, vers); a versen belül a nyers szórend marad. Ez egyetlen helyen tér el a nyers
+sorrendtől: a nyersben a `Php.1.16[1.17]` (Károli Fil 1:17) áll a `Php.1.17[1.16]` (Károli
+Fil 1:16) előtt, a kivonatban a Fil 1:16 került előre.
 
 **Ismert, dokumentált ritka eset (~0,2% a TAGNT-sorokban) — egybeolvadt (krázis) szavak.**
 Néhány görög szó két morfémát olvaszt egybe egyetlen írott alakba (pl. `κἂν` = `καί`
@@ -313,14 +350,14 @@ eredeti kivétel + 21 újonnan konvertált). Ez helyes és várt eredmény, nem 
 |---|---|---|---|
 | TAHOT_kivonat.tsv | 283 734 (+ 21 918 korábban eldobott zárójeles sor) | 469 300 (F84, 2026.10.09: + Jób 41, 332 sor; `scope=teljes fájl, wc -l − fejléc`) | ~26 MB |
 | TAHOT_kivonat_nyitott_esetek.tsv | — | 0 (csak fejléc; F84, 2026.10.09: a Jób 40:25–41:26 332 sora átkerült a fő kivonatba, az Ez 20:45–49 sorai korábban kikerültek; `scope=teljes fájl`) | <0,01 MB |
-| TAGNT_kivonat.tsv | 141 746 | 141 746 | ~13 MB |
+| TAGNT_kivonat.tsv | 142 096 (ebből 350 `[..]`/`{..}`) | 142 096 (F90, 2026.10.12: +350 sor; `scope=teljes fájl, wc -l − fejléc`) | ~13 MB |
 
 Mindkét fő fájl jóval a GitHub 100 MB-os fájlméret-korlátja alatt van, könyvenkénti
 bontás nem volt szükséges.
 
 Lefedettség: TAHOT — 39 ószövetségi könyv, ~23 000 egyedi igehely (a korábbi 21 178 +
 az újonnan bekerült, korábban hiányzó igehelyek, pl. Gen 32, Zsolt 88/89/90/140/142,
-Jóel 3); TAGNT — 27 újszövetségi könyv, 7 948 egyedi igehely.
+Jóel 3); TAGNT — 27 újszövetségi könyv, 7 957 egyedi igehely (F90: +9).
 
 **Tételes fejezet-szintű felmérés (F2, 2026.09.14, `eszkozok/tahot_lefedettseg_ellenoriz.py`):**
 a korábban (`NYITOTT_FELADATOK.md`) nyitva hagyott hiány — Gen 32, Zsolt 88/89/140/142,

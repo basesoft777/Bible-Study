@@ -5,14 +5,16 @@ cim: "A TAGNT-kivonat KJV- ([..]) és egyéb ({..}) versszámozású sorainak p�
 tipus: feladat
 fazis: 1
 modell: opus
-allapot: nem_indult
+allapot: lezarva
 ag: claude/f90-tagnt-zarojeles
+pr: https://github.com/basesoft777/Bible-Study/pull/314
+lezarva_osszegzes: "A TAGNT-kivonat +350 szó-sora (48 zárójeles csoport, 9 új vers) a jóváhagyott Károli-kulcsokkal, bájtazonos régi sorokkal; ellenőr TISZTA."
 ad: "Teljes `konkordancia/TAGNT_kivonat.tsv`: a nyers TAGNT minden szó-sora benne van, a [..]/{..} jelölésűek is, Károli-kulccsal; a 48 csoport Károli-döntése naplózva"
-kovetkezo: "Te: az indítás jóváhagyása"
+kovetkezo: "—"
 fugg: []
 nem_fugg: [22, 38, 48]
 olvas: [konkordancia/TAHOT_TAGNT_README.md, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, naplok/F22_TAGNT_zarojeles_sorok.md, NYITOTT_FELADATOK.md, eszkozok/karoli_strong/tokenek.py, eszkozok/karoli_strong/sorrend_ellenoriz.py, F22_KAROLI_STRONG_BRIEF.md]
-ir: [konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_TAGNT_README.md, eszkozok/tagnt_zarojeles_potlas.py, naplok/F90_jelentes.md, naplok/F90_karoli_dontesek.tsv, eszkozok/karoli_strong/sorrend_ellenoriz.py, NYITOTT_FELADATOK.md]
+ir: [konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_TAGNT_README.md, eszkozok/tagnt_zarojeles_potlas.py, naplok/F90_jelentes.md, naplok/F90_karoli_dontesek.tsv, eszkozok/karoli_strong/sorrend_ellenoriz.py, NYITOTT_FELADATOK.md, naplok/F22_nincs_parja_versek.tsv]
 ---
 
 # A TAGNT-kivonat zárójeles sorainak pótlása
