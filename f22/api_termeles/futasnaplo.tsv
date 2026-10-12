@@ -1760,3 +1760,14 @@ ts	futas	koteg	probalkozas	modell	gondolkodas_mod	igehely_db	kjv	bemenet_token	k
 2026-10-12T09:44:38+00:00	api_termeles/high/1Pet	4	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	9829	9380		0.056729	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	89.606111	igen
 2026-10-12T09:44:38+00:00	api_termeles/high/1Pet	2	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	9520	12024		0.069640	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	89.675751	igen
 2026-10-12T09:44:38+00:00	api_termeles/high/1Pet	3	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	9389	8203		0.050404	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	89.726155	igen
+2026-10-12T09:47:55+00:00	api_termeles/high/1Jan	11	1	claude-sonnet-5-5	adaptive,effort=high	5	nem	7147	2653		0.020412	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	89.746567	igen
+2026-10-12T09:47:55+00:00	api_termeles/high/1Jan	1	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	10298	8902		0.054808	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	89.801375	igen
+2026-10-12T09:47:55+00:00	api_termeles/high/1Jan	9	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	10493	14345		0.082218	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	89.883593	igen
+2026-10-12T09:47:55+00:00	api_termeles/high/1Jan	10	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	10945	15627		0.089080	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	89.972673	igen
+2026-10-12T09:47:55+00:00	api_termeles/high/1Jan	6	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	9946	8870		0.054296	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	90.026969	igen
+2026-10-12T09:47:55+00:00	api_termeles/high/1Jan	8	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	10132	8237		0.051317	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	90.078286	igen
+2026-10-12T09:47:55+00:00	api_termeles/high/1Jan	3	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	10386	9086		0.055816	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	90.134102	igen
+2026-10-12T09:47:55+00:00	api_termeles/high/1Jan	5	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	10064	8665		0.053389	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	90.187491	igen
+2026-10-12T09:47:55+00:00	api_termeles/high/1Jan	2	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	9753	8834		0.053923	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	90.241414	igen
+2026-10-12T09:47:55+00:00	api_termeles/high/1Jan	4	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	10464	12961		0.075269	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	90.316683	igen
+2026-10-12T09:47:55+00:00	api_termeles/high/1Jan	7	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	10799	10252		0.062059	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	90.378742	igen
