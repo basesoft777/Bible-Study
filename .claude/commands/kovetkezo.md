@@ -8,7 +8,7 @@ Az 1–5. lépés csak olvas: az egyeztetés előtt nem nyitsz ágat, nem írsz 
 
 Általános szabály (minden lépésre, a 9. `fuggetlen-ellenor`-hívásra is): subagent hívásakor NE adj meg model paramétert; a modellt a subagent-fájl frontmatterje határozza meg.
 
-Csatolt brief szabálya: a sessionhöz csatolt brief nem befogadandó és nem futtatandó. Ha a `beerkezo/` nem üres, vagy van csatolt brief, csak jelzed: „N brief vár befogadásra, futtasd a `/befogad`-ot külön sessionben”. Csak a `main`-ben lévő briefekből futtatsz.
+Csatolt brief szabálya: a sessionhöz csatolt brief nem befogadandó és nem futtatandó. Ha a `beerkezo/` nem üres, vagy van csatolt brief, csak jelzed: „N brief vár befogadásra, futtasd a `/befogad`-ot külön sessionben”. Csak a `main`-ben lévő briefekből futtatsz. Minden brief futtatása modell-ellenőrzéssel kezdődik (`CLAUDE.md` „Modell-ellenőrzés”).
 
 Állapot-szabály: a `FELADATOK.md` generált blokkját (a `<!-- GENERÁLT-KEZDET … -->` jelölők közötti részt) soha nem szerkeszted; az állapotot csak a feladat saját briefjének fejlécében vezeted (l. 6., 6b., 7., 8., 10. lépés).
 
@@ -59,11 +59,11 @@ Csatolt brief szabálya: a sessionhöz csatolt brief nem befogadandó és nem fu
    `allapot: fut`, és kitölti az `ag` mezőt. A munkát a brief modelljének
    megfelelő végrehajtó subagent végzi (`vegrehajto-sonnet` / `vegrehajto-opus` / `vegrehajto-haiku`).
    `külső:<név>` esetén a `vegrehajto-sonnet` a briefben megadott szkripttel futtatja a
-   külső modellt; Claude-dal nem helyettesíti. Gyakran commitolj.
+   külső modellt; Claude-dal nem helyettesíti. A végrehajtó subagent első teendője a modell-ellenőrzés (`CLAUDE.md`): kiírja a saját tényleges modellnevét, és összeveti a brief `modell` mezőjével; eltérésnél nem dolgozik. Ha a brief subagent nélküli futást ír elő (pl. a #38 D7-es döntése), a session modelljét kell a brief `modell` mezőjével összevetni, és eltérésnél az 5. lépésbeli egyeztetésen jelezni, hogy új session kell. Gyakran commitolj.
 6b. CSOMAG VÉGREHAJTÁSA:
    - Feladatonként külön munkakönyvtár a main-ből:
      `git worktree add ../wt-<feladat-slug> -b claude/<feladat-slug> origin/main`.
-   - A végrehajtó subagenteket egyetlen üzenetben, párhuzamosan indítsd, a brief modellje szerint.
+   - A végrehajtó subagenteket egyetlen üzenetben, párhuzamosan indítsd, a brief modellje szerint; mindegyik első teendője a modell-ellenőrzés (`CLAUDE.md`), eltérésnél nem dolgozik, és ezt jelzi.
    - Minden subagent kapja meg a saját worktree-je abszolút útvonalát, azzal a szabállyal, hogy
      minden parancsot `cd <worktree> && …` formában futtat, fájlt csak ott ír, és csak a saját
      ágára commitol és pushol. Az ág első commitja a saját brief fejlécében `allapot: fut`, `ag` kitöltve.

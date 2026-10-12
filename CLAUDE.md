@@ -72,6 +72,10 @@ a `--kimenet` próbák ideiglenes könyvtárba, a repón kívülre menjenek.
 
 *Mindhárom megsértésének dokumentált esete van; l. `adat/SEMA.md` 1.5 és 2.4.1.*
 
+## Modell-ellenőrzés — minden brief futtatásakor
+
+Minden brief futtatásának első lépése a modell-ellenőrzés (közvetlen futtatás, `/kovetkezo`, végrehajtó subagent és független ellenőr egyaránt): kiírod a saját tényleges modellnevedet (pl. `claude-opus-5-5`), és összeveted a brief fejlécének `modell` mezőjével. Ha eltér, semmilyen munkát nem végzel, nem írsz és nem commitolsz; jelzed: „A brief `opus`-t kér, a session `<tényleges név>`; új session kell a kért modellel.”, és megállsz. Az adattáblák `modell` mezőjébe mindig a tényleges modellnév kerül, amelyet a saját környezetedből veszel; briefből vagy korábbi sorból másolni tilos.
+
 ## Kutatási menet — a hét lépés
 
 A sorrend maga a védelem a hígulás ellen: **a gerincet mindig le kell vezetni, és a
