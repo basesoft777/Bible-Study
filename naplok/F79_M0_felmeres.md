@@ -86,7 +86,7 @@ Típusok: `IGEHELY` = a KK-kulcs (TEXT, `1Móz 1:1`; `konyv`, `fejezet`, `vers` 
 
 Az építés rendje: betöltés `split('\t')`-vel → `ellenoriz` függvények a sorlistákon → csak ha nulla SÉRTÉS, `pardes.db.epit` ideiglenes fájlba építés → átnevezés `pardes.db`-re → `naplok/SQLITE_EPIT_integritas.md` és `_meres.md`. A tartalom-hash táblánként: a sorok rendezett `'\t'.join()` hash-e (G2).
 
-## 5. Nyitott pontok a felhasználónak (DT-F79a)
+## 5. Nyitott pontok a felhasználónak (DT109)
 
 **(1) A vers-kulcs a KK (Károli-vers).** Megerősítés. Kiegészítés: a BSB/KJV STEP-sorok KK-ra képezése a `Karoli_versmegfeleltetes.tsv`-en át történik, és a `vers.szamozas` a BSB 7. oszlopából (aggregálva KK-versre) + az N46 44 verséből áll; ha egy KK-vers több BSB-értéket kap, a szigorúbb (`ellenorizetlen`) nyer. Javaslat: igen.
 
@@ -106,4 +106,4 @@ Az építés rendje: betöltés `split('\t')`-vel → `ellenoriz` függvények a
 
 ## 6. Javasolt következő lépés
 
-A felhasználó dönt a (1)–(8) pontokról (DT-F79a). Ezután M1: az építő kis mintán, a tartalom-hash-sel, tételenként commitolva.
+A felhasználó dönt a (1)–(8) pontokról (DT109). Ezután M1: az építő kis mintán, a tartalom-hash-sel, tételenként commitolva.

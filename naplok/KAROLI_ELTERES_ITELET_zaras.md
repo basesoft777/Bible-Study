@@ -1,6 +1,6 @@
 # F87 zárás — a #65 eltéréslistájának öt sora (KAROLI_ELTERES_ITELET)
 
-proveniencia: scope=F87 M0–M2 | forras=konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, adat/karoli_strong/parok_{2Moz,Job,Pred}.tsv, eszkozok/karoli_ellenorzes.py | ts=2026-10-12T06:42:35Z (M0), 2026-10-12T06:56:15Z (variancia) | levezetés: `naplok/KAROLI_ELTERES_ITELET_M0.md`; döntés: DT-F87b (soronként elfogadva), DT-F87a (1.: napló + `indoklas`-hivatkozás), felhasználó, 2026-10-12
+proveniencia: scope=F87 M0–M2 | forras=konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, adat/karoli_strong/parok_{2Moz,Job,Pred}.tsv, eszkozok/karoli_ellenorzes.py | ts=2026-10-12T06:42:35Z (M0), 2026-10-12T06:56:15Z (variancia) | levezetés: `naplok/KAROLI_ELTERES_ITELET_M0.md`; döntés: DT107 (soronként elfogadva), DT108 (1.: napló + `indoklas`-hivatkozás), felhasználó, 2026-10-12
 
 | # | Sor | Régi → új (`elofordulasok` + `jeloltek`) | Forráslekérdezés (Károli 1908 / TAHOT / gépi pár) | Új ítélet, mód |
 |---|---|---|---|---|

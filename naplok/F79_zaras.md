@@ -1,6 +1,6 @@
 # F79 zárás -- SQLITE_EPIT (pardes.db)
 
-*2026.10.12 · ág: `claude/f79-sqlite-epit` · draft PR #300 · döntés: DT-F79a, DT-F79b · javító kör: `naplok/ELLENOR_F79.md` 9 eltérése (F79.9–F79.13), 2. kör: `naplok/ELLENOR_F79_2.md` (F79.15–F79.18)*
+*2026.10.12 · ág: `claude/f79-sqlite-epit` · draft PR #300 · döntés: DT109, DT110 · javító kör: `naplok/ELLENOR_F79.md` 9 eltérése (F79.9–F79.13), 2. kör: `naplok/ELLENOR_F79_2.md` (F79.15–F79.18)*
 
 - **Eszköz:** `eszkozok/sqlite_epit.py` (`--mod minta|teljes`, `--proba`, `--naplo`, `--ketszer`, `--meret`); tesztek: `eszkozok/teszt_sqlite_epit.py` (37, zöld).
 - **Teljes építés:** `pardes.db` 63 tábla, **845,4 MB**, 52,6 s; a második, ideiglenes építés táblánkénti hash-táblája azonos, a táblázat a mérésben (G2). Nem commitolt (`.gitignore`, G1). A diff nem érint `adat/`, `konkordancia/`, `motivumok/`, `lexikon/` fájlt.

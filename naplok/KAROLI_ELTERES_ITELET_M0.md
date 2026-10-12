@@ -24,7 +24,7 @@ Cáfolt diagnózis nincs. Eltérés a brief táblázatától csak kiegészítés
 - **A régi kulcsra hivatkozó adatsorok** (pontos mező-egyezés): a két tábla öt-öt sora (fent); `kapcsolatok.tsv` 3. és 7. sor (KIRALY-001, 2Móz 19:6 — a kulcs nem változik); `lxx_dontesek.tsv` 82. sor LD080 (2Móz 19:6) és 89. sor LD087 (2Móz 15:5) — a kulcs nem változik; **`lxx_dontesek.tsv` 10. sor LD008 (Préd 9:10)**, `bizonyossag` = `nyitott`, megjegyzése szerint „az előfordulás-sor igehelyének javításáig nyitott (DT23)” — ez a javítás után feloldható, de a brief szerint nincs benne (N-F87a). Jób 17:13/17:16 pontos mezőként máshol nem áll.
 - **Részsztringként** (nem kulcs, a BDB-szócikk szövegében, MT-számozással): `forditasok.tsv` 80. (H7585), 112. (H1004), 316. (H905), 193. (H4672) sor. Szabad szöveg, nem változik (N-F87a: csak lista).
 
-## 3. Javasolt változás mezőnként (M0.3, soronkénti elfogadás: DT-F87b)
+## 3. Javasolt változás mezőnként (M0.3, soronkénti elfogadás: DT107)
 
 Minden más mező változatlan (`kapcsolodas`/`indoklas` szövege, `strong`, `gerinc_elem`, `azonositas_modja`, `megbizhatosag`, `proveniencia`, `datum`). Az `azonositas_modja`-t nem az M1, hanem az M2 `--frissit --ir` állítja (csak az 1–2. sor).
 
@@ -41,7 +41,7 @@ Megjegyzések, döntésre bocsátva (nem javaslat):
 - **4. sor `karoli_szo`:** a `a sír üregébe` részleges egyezést ad (üregébe = H0905). Alternatíva: `a sír` (teljes egyezés). A brief javaslata szerint marad; a részlegesség az eltéréslistán `reszleges = igen`-ként jelenik meg.
 - A 3–5. sor a javítás után is `tartalom-alapú` marad (`alacsony` pár, DT-M2); a lexikon- és a tanulmányfájlok a régi kulcsot mutatják (hatókörön kívül, M3-lista).
 
-## 4. A javítás rögzítésének módja (M0.4, DT-F87a)
+## 4. A javítás rögzítésének módja (M0.4, DT108)
 
 A `jeloltek.tsv` `dontes` mezője zárt értékkészletű (`beépítve` | `elutasítva` | `nyitva`, SEMA 2.4), ezért a brief „`dontes`/`indoklas`” javaslatából csak az `indoklas` jöhet szóba. Az `indoklas` megjelenik a generált nézetekben (`eszkozok/lexikon_general.py`, `eszkozok/general.py`).
 

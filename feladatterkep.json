@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-10-12",
-   "commit": "0ac26f1c"
+   "commit": "36be1898"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -746,7 +746,7 @@
     "sor": 165
    },
    {
-    "id": "DT-F05a",
+    "id": "DT106",
     "feladat": "#5 SZOTAR (S2.5, tW mint 3. szerep: a *tohu*/*bohu* pár)",
     "kerdes": "A tW-nek nincs önálló szócikke a *tohu–bohu* párhoz (1Móz 1:2): a H0922 (*bohu*) egyik szócikk Strong-listájában sem szerepel (`naplok/SZOTAR_S0b_tw.tsv:15`: `nincs`), a H8414 (*tohu*) négy gyűjtőszócikk listájában áll (`other/desert`, `other/ruin`, `other/vain`, `other/waste`), de egyikük hivatkozásai között sincs az 1Móz 1. A küszöbmérés a H8414-et ezért `igen`-nel számolta (`SZOTAR_S0b_tw.tsv:47`). Mit mutasson a szerepmátrix 3. szerepe a H8414-nél, hogy a pár ne legyen aszimmetrikus és félrevezető? *(forrás: chat 2026-10-12; `konkordancia/tW_szocikkek.tsv`, `naplok/SZOTAR_S0b_jelentes.md` 4. szakasz)*",
     "allapot": "nyitott",
@@ -1438,6 +1438,56 @@
      "🟢"
     ],
     "sor": 178
+   },
+   {
+    "id": "DT111",
+    "feladat": "#79 SQLITE_EPIT utóélete (N-F79c: TIPNR Strong-utótag)",
+    "kerdes": "A TIPNR 16 928 sorának (47,7%) `strong` mezője NULL, mert a Strong-szám utótagot visel (16 906 nagybetűs, 22 kisbetűs). A nagybetű a STEPBible-ben személyt/entitást különböztet meg egy lexémán belül (`G2424G` Jézus, `G2424H` Barabbás, `H3063G` Júda, `H3063N` Júdea). Utótag nélkül 904 különböző alapszám, ebből 903 szerepel a `token_strong`-ban (kivétel: `G6202`). *(forrás: `NYITOTT_FELADATOK.md` N-F79c; lekérdezés a `pardes.db`-n, 2026-10-12)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 186
+   },
+   {
+    "id": "DT112",
+    "feladat": "#79 SQLITE_EPIT utóélete (N-F79a: a projekt saját adatának licence)",
+    "kerdes": "A `karoli_strong/*` és a `karoli_variancia` licencsora hiányzik; a szűk keresztmetszet a `licencek.tsv` `projekt_adat` sora (`tisztazatlan`: „a repó saját licence nincs rögzítve”). A repó nyilvános, LICENSE-fájl nélkül. Ugyanez a sor tartja `tisztazatlan`-ban a `Karoli_Strong_kivonat`, `LXX_versszintu_parok`, `Karoli_versmegfeleltetes` sorokat is (a többi összetevőjük közkincs vagy CC BY 4.0). Előzmény: DT-F24 (halasztás), DT-M6 (javaslat: CC BY 4.0 az adatra), DT-F86a (a lexikon prémium). *(forrás: `NYITOTT_FELADATOK.md` N-F79a; `adat/licencek.tsv`)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 187
+   },
+   {
+    "id": "DT113",
+    "feladat": "#79 SQLITE_EPIT utóélete (méret: licenc soronként vagy táblánként)",
+    "kerdes": "A `pardes.db` 845 MB; a `licenc_*` oszlopok minden sorban ismétlődnek, táblaszintű tárolással kb. 250 MB megtakarítás. A `sdbh_domenek` CC BY-SA 4.0, így az adatbázis vegyes licencű gyűjtemény. *(forrás: `naplok/SQLITE_EPIT_meres.md`)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 188
+   },
+   {
+    "id": "DT114",
+    "feladat": "#79 SQLITE_EPIT utóélete (N-F79b: nem létező Károli-versre mutató sorok)",
+    "kerdes": "A `kh`, a TIPNR, a BSB, a KJV, a `Karoli_Strong_kivonat` (`Jób 17:16`) és a TAGNT egyes sorai nem létező Károli-versre mutatnak; mind jelölve (`van_vers=0`) és a `normalizalas_jelentes` táblában névvel. *(forrás: `NYITOTT_FELADATOK.md` N-F79b)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 189
+   },
+   {
+    "id": "DT115",
+    "feladat": "#79 SQLITE_EPIT utóélete (ki nem épített konkordancia-táblák)",
+    "kerdes": "Nem kerültek a `pardes.db`-be: Macula héber/görög, `LXX_OS` nyers, `SDBH_SDGNT_domenfa`, BDB alias/arám segédtáblák. (Pontosítás a zárójelentéshez: az SDBH-domének bent vannak, `sdbh_domenek`, 22 280 sor; csak a doménfa maradt ki.) A #76 pontjait (ADATVAGYON 1–6., 13–16., 18–20.) a betöltött táblák fedik (a 14. pont: `lxx_bridge`, `lxx_versszintu_parok`). *(forrás: `naplok/SQLITE_EPIT_meres.md`, `F76_OLVASOI_KONKORDANCIA_BRIEF.md`, `ADATVAGYON_TERV.md`)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 190
    }
   ],
   "javasolt": [],
