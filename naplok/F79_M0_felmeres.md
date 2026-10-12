@@ -1,6 +1,6 @@
 # F79 M0 — felmérés (séma-terv és nyitott pontok)
 
-*FELADATOK #79 · `F79_SQLITE_EPIT_BRIEF.md` M0 · 2026.10.12 · csak olvasás történt; a #79 eddig sem `adat/`-t, sem `konkordancia/`-t nem módosított.*
+*FELADATOK #79 · `F79_SQLITE_EPIT_BRIEF.md` M0 · 2026.10.12 · a táblák sorszámai csak adatsorokat számolnak (fejléc- és megjegyzéssorok nélkül; javítva az F79.12-ben, ELLENOR_F79 9. pont) · csak olvasás történt; a #79 eddig sem `adat/`-t, sem `konkordancia/`-t nem módosított.*
 
 Proveniencia: `scope=manual | forras=adat/*.tsv, konkordancia/*.tsv, eszkozok/ellenoriz.py, eszkozok/general.py, adat/SEMA.md | ts=2026-10-12` (a számok a repó mai tartalmából, saját olvasással mérve: `split('\t')`, a `#` sorok kihagyásával).
 
@@ -10,9 +10,9 @@ Kulcs-alak: **HU** = magyar kanonikus (`1Móz 1:1`), **STEP** = STEPBible-pontoz
 
 | Forrás | Sor | Kulcs-alak | Licenc-sor (`licencek.tsv`) | `kereskedelmi` |
 |---|---|---|---|---|
-| `adat/motivumok, elofordulasok, kapcsolatok, jeloltek, auditok, lexikon_hivatkozasok, grammatikai_strongok, res_forras, …` | 11 / 261 / 41 / 594 / 225 / 25 / 105 / 58 | HU (az `elofordulasok.igehely` tartomány is lehet: `1Móz 14:18-20`, `Zsid 7:1-28`) | `projekt_adat` | `tisztazatlan` |
+| `adat/motivumok, elofordulasok, kapcsolatok, jeloltek, auditok, lexikon_hivatkozasok, grammatikai_strongok, res_forras, …` | 9 / 259 / 39 / 592 / 222 / 23 / 92 / 56 | HU (az `elofordulasok.igehely` tartomány is lehet: `1Móz 14:18-20`, `Zsid 7:1-28`) | `projekt_adat` | `tisztazatlan` |
 | `adat/karoli_strong/parok_*` (39 könyv) / `szavak_*` | 466 785 / 926 179 | HU (a `vers` oszlop) | **nincs sor** (a `Karoli_Strong_kivonat` sor `tisztazatlan`, de az más tábla) | — |
-| `adat/karoli_variancia.tsv` | 42 801 | HU (`igehely` a `megerosites` sornál) | **nincs sor** | — |
+| `adat/karoli_variancia.tsv` | 42 799 | HU (`igehely` a `megerosites` sornál) | **nincs sor** | — |
 | `adat/kulso/lxx_bridge.tsv` | 3 301 | Strong-pár, nincs igehely | `lxx_bridge` | igen |
 | `Karoli_1908.tsv` | 31 158 | HU | `Karoli_1908` | igen (közkincs) |
 | `Karoli_versmegfeleltetes.tsv` | 22 931 | HU (+ KJV/MT számozás) | `Karoli_versmegfeleltetes` | `tisztazatlan` |
@@ -33,7 +33,7 @@ Kulcs-alak: **HU** = magyar kanonikus (`1Móz 1:1`), **STEP** = STEPBible-pontoz
 | `Nave_basokant.tsv` | 85 246 | HU (`igehely_karoli`) | `Nave_basokant` | igen |
 | `motivumok/*.md` (9 fájl, 88 KB), `tematikus_lezart/` (8 tanulmány + 7 napló + 1 összesítő), `genezis/` (20 + 2 napló + 2 összesítő), `ujszovetseg/` (3), `melyelemzesek/` (1) | — | próza | `projekt_adat` | `tisztazatlan` |
 
-A `datasetek.tsv` öt datasetjéhez nincs licencsor: `Karoli_Strong_parok`, `Karoli_Strong_szavak`, `OSHL_BDB_igehelyek`, `OSHL_lexikalis_index`, `openbible_crossrefs` (az utóbbi `hianyzik`). A `licencek.tsv` 52 sorában `kereskedelmi`: igen 33, tisztazatlan 10, nem 2 (`MCGED`, `Heber_ETCBC_modulok`), feltetelesen 1 (`tW_szocikkek`).
+A `datasetek.tsv` öt datasetjéhez nincs licencsor: `Karoli_Strong_parok`, `Karoli_Strong_szavak`, `OSHL_BDB_igehelyek`, `OSHL_lexikalis_index`, `openbible_crossrefs` (az utóbbi `hianyzik`). A `licencek.tsv` 46 adatsorában `kereskedelmi`: igen 33, tisztazatlan 10, nem 2 (`MCGED`, `Heber_ETCBC_modulok`), feltetelesen 1 (`tW_szocikkek`).
 
 ## 2. A normalizálhatóság próbája (a három STEPBible-dataset, `Konyv_normalizalo_tabla.tsv`-vel)
 
