@@ -1,10 +1,12 @@
-"""Olvasói pilot (prototípus, nem éles): az 1Móz 1:1–2:3 vers- és szó-lapjainak adata a repó tábláiból.
+"""Olvasói pilot (nem éles): egy szakasz (alapból 1Móz 1:1–2:3) vers- és szó-lapjainak adata a repó tábláiból.
 
 Csak olvas. Kimenet: olvaso_pilot.json a --kimenet könyvtárba (alapból a repón kívüli ideiglenes
 könyvtárba, CLAUDE.md: a próbák kimenete nem kerül a repóba). Minden érték forrássorból jön;
 a gépi feldolgozás (BDB-bontás, fő szó választása, görög szóalak párosítása) szabálya itt olvasható.
-Futtatás: python eszkozok/olvaso_pilot/adat.py [--kimenet KÖNYVTÁR], utána epit.py."""
+Futtatás: python eszkozok/olvaso_pilot/adat.py [--szakasz "Zsolt 22"] [--kimenet KÖNYVTÁR], utána epit.py
+(ugyanazzal a --szakasz és --kimenet értékkel)."""
 import argparse
+import datetime
 import json
 import os
 import re
@@ -13,7 +15,8 @@ import tempfile
 from collections import Counter, defaultdict
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from bdb_szelet import szeletel  # noqa: E402
+from bdb_szelet import szeletel, alap_jelentes  # noqa: E402
+from bovites import MorfKulcs, bovit  # noqa: E402
 
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
@@ -22,12 +25,24 @@ if hasattr(sys.stderr, 'reconfigure'):
 
 GY = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))).replace('\\', '/') + '/'
 _ap = argparse.ArgumentParser(description='Olvasói pilot: adatkinyerés')
-_ap.add_argument('--kimenet', default=os.path.join(tempfile.gettempdir(), 'olvaso_pilot'))
+_ap.add_argument('--szakasz', default='1Móz 1:1-2:3',
+                 help='pl. "1Móz 1:1-2:3" (vers-tartomány) vagy "Zsolt 22" (egész fejezet), "1Móz 1-25" (fejezet-tartomány)')
+_ap.add_argument('--kimenet', default=None,
+                 help='kimeneti könyvtár; alapból <temp>/olvaso_pilot/<szakasz-azonosító>, a repón kívül')
+_ap.add_argument('--kiadas', choices=('belso', 'nyilvanos', 'kereskedelmi'), default='belso',
+                 help='a kiadás típusa (DT-F60a): belso (alap, minden blokk); nyilvanos: a KJV-Strong blokk (GPL) kimarad; '
+                      'kereskedelmi: a KJV-Strong és az MCGED blokk is kimarad')
 _args = _ap.parse_args()
-os.makedirs(_args.kimenet, exist_ok=True)
-KI = os.path.join(_args.kimenet, 'olvaso_pilot.json')
-VERSEK = ['1Móz 1:%d' % v for v in range(1, 32)] + ['1Móz 2:%d' % v for v in range(1, 4)]
-TS = '2026-10-05'
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from szakasz import KONYVFAJLOK, szakasz_cim, szakasz_versei, alap_kimenet, step_tabla  # noqa: E402
+KI_DIR = _args.kimenet or alap_kimenet(_args.szakasz)
+os.makedirs(KI_DIR, exist_ok=True)
+KI = os.path.join(KI_DIR, 'olvaso_pilot.json')
+VERSEK = szakasz_versei(_args.szakasz)
+SZAKASZ = szakasz_cim(_args.szakasz)
+KONYV = VERSEK[0].split(' ')[0]
+MACULA_F, LXX_F = KONYVFAJLOK[KONYV]
+TS = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%MZ')
 
 
 def sorok(ut, fejlec=True):
@@ -91,6 +106,7 @@ karoli_alak = defaultdict(Counter)
 karoli_alak_magas = defaultdict(Counter)
 karoli_konyv = defaultdict(set)
 pkonyvek = []
+parok_hasznalt = []
 for f in sorted(os.listdir(GY + 'adat/karoli_strong')):
     if not f.startswith('parok_'):
         continue
@@ -100,6 +116,8 @@ for f in sorted(os.listdir(GY + 'adat/karoli_strong')):
             continue
         n = hnorm(r[5])
         if r[0] in VERSEK:
+            if f not in parok_hasznalt:
+                parok_hasznalt.append(f)
             parok_vers[r[0]].append({'hu_sorszam': r[1], 'hu_szo': r[2], 'er_sorszam': r[3],
                                      'strong': n, 'bizonyossag': r[6]})
         if n and n not in nyelvtani:
@@ -123,9 +141,17 @@ for r in sorok('konkordancia/BDB_teljes_unabridged.tsv'):
     if n and len(r) > 2:
         bdb_en[n] = r[2]
 
+# --- BDB-alias: a BDB-szócikk másik Strong-szám alatt áll (konkordancia/BDB_strong_alias.tsv, #57); csak akkor
+# használjuk, ha a Strong-számnak sem magyar, sem angol BDB-szócikke nincs (a lap jelzi az aliast)
+bdb_alias = {}
+for r in sorok('konkordancia/BDB_strong_alias.tsv'):
+    n = hnorm(r[0]) if r else None
+    if n and len(r) > 5:
+        bdb_alias[n] = {'tabla_strong': hnorm(r[1]), 'bdb_id': r[2], 'hasonlosag': r[5]}
+
 # --- LXX_OS a pilot verseire
 lxx_vers = defaultdict(list)
-for r in sorok('konkordancia/LXX_OS/genesis.tsv'):
+for r in sorok(LXX_F):
     if len(r) > 10 and r[2] in VERSEK:
         g = ('G%04d' % int(r[9])) if r[9].isdigit() else ''
         lxx_vers[r[2]].append((int(r[4]) if r[4].isdigit() else 0,
@@ -144,10 +170,13 @@ for r in sorok('konkordancia/TSK_kereszthivatkozasok.tsv'):
     if len(r) > 3 and r[0] in VERSEK:
         tsk[r[0]].append((int(r[3]) if r[3].lstrip('-').isdigit() else 0, r[2]))
 kh = defaultdict(list)
+STEP_HU = step_tabla()
 for r in sorok('konkordancia/Karoli_kereszthivatkozasok.tsv'):
-    m = re.match(r'^Gen\.(\d+)\.(\d+)$', r[0]) if r else None
-    if m and len(r) > 2 and ('1Móz %s:%s' % (m.group(1), m.group(2))) in VERSEK:
-        kh['1Móz %s:%s' % (m.group(1), m.group(2))].append(r[2])
+    m = re.match(r'^(\w+)\.(\d+)\.(\d+)$', r[0]) if r else None
+    if m and len(r) > 2:
+        kulcs = '%s %s:%s' % (STEP_HU.get(m.group(1), m.group(1)), m.group(2), m.group(3))
+        if kulcs in VERSEK:
+            kh[kulcs].append(r[2])
 
 
 FUNKCIO = ('elöljárószó', 'kötőszó', 'partikula', 'névmás', 'indulatszó')
@@ -203,6 +232,13 @@ for s in sorted(szavak):
     lem = tahot_lemma.get(s, ('', '', ''))
     hu = bdb_hu.get(s)
     en = bdb_en.get(s, '')
+    alias = None
+    if not hu and not en and s in bdb_alias:
+        a = bdb_alias[s]
+        hu = bdb_hu.get(a['tabla_strong'])
+        en = bdb_en.get(a['tabla_strong'], '')
+        if hu or en:
+            alias = a
     lapok[s] = {
         'strong': s,
         'lemma': sz.get('szoto') or lem[0],
@@ -212,7 +248,8 @@ for s in sorted(szavak):
         'bdb_hu': hu['szoveg'] if hu else None,
         'bdb_hu_meta': ('%s, %s' % (hu['modell'], hu['datum'])) if hu else None,
         'bdb_en': en if not hu else None,
-        'appar': szeletel(hu['szoveg'] if hu else en),
+        'appar': szeletel(hu['szoveg'] if hu else en, sz.get('szoto') or lem[0]),
+        'bdb_alias': alias,
         'karoli': karoli_alak[s].most_common(8),
         'karoli_magas': sum(karoli_alak_magas[s].values()),
         'karoli_osszes': sum(karoli_alak[s].values()),
@@ -296,9 +333,9 @@ def morf_hu(kod):
 
 
 macula_vers = defaultdict(list)
-for r in sorok('konkordancia/Macula_heber_Genezis.tsv'):
+for r in sorok(MACULA_F):
     if len(r) > 14 and r[2] in VERSEK:
-        macula_vers[r[2]].append({'szo': r[5], 'lemma': r[6], 'strong': hnorm(r[7]) if r[7] else None,
+        macula_vers[r[2]].append({'_xml': r[0], 'szo': r[5], 'lemma': r[6], 'strong': hnorm(r[7]) if r[7] else None,
                                   'morf': r[10], 'szofaj': r[11], 'gloss': r[12],
                                   'lxx': r[13], 'lxx_strong': hnorm(r[14]) if r[14] else None})
 
@@ -318,10 +355,17 @@ for r in sorok('konkordancia/UBS_DBH_jelentesek.tsv'):
 versszam = {r[0]: {'kjv': r[1], 'mt': r[2], 'osztaly': r[3]} for r in sorok('konkordancia/Karoli_versmegfeleltetes.tsv')
             if r and r[0] in VERSEK}
 lxx_igehely = {}
-for r in sorok('konkordancia/LXX_OS/genesis.tsv'):
+lxx_kjv = {}
+for r in sorok(LXX_F):
     if len(r) > 2 and r[2] in VERSEK:
         lxx_igehely.setdefault(r[2], r[0])
+        # a zsolt_felirat_eltolas sorokban (F54) a KJV-oszlop a Károli-számot hordozza, nem a KJV-t: kihagyjuk,
+        # a vers KJV-kulcsa ilyenkor a fejezet eltolásából jön (bovites.py)
+        if len(r) > 3 and r[3] != 'zsolt_felirat_eltolas':
+            lxx_kjv.setdefault(r[2], r[1])
 
+MK = MorfKulcs(GY)
+MK.betolt_nyelv(GY, {m['_xml'] for ms in macula_vers.values() for m in ms})
 for v in versek:
     ig = v['igehely']
     mac = macula_vers[ig]
@@ -364,26 +408,38 @@ for v in versek:
     for w in th:
         m = w.get('macula')
         if m:
-            # a kód magyar feloldásához nincs jelkulcs a repóban (az ETCBC-modul NC-licencű, kizárt):
-            # a Macula nyers kódja és szófaja áll, feloldás nélkül
-            m['morf_hu'] = ''
+            # a Macula nyers kódja marad (morf); a magyar feloldás az adat/morf_kulcs_heber.tsv-ből jön
+            # (gépi feldolgozás, bovites.MorfKulcs); az arámi/héber nyelv: adat/morf_nyelv_aramai.tsv
+            m['nyelv'] = MK.nyelv(m.get('_xml'))
+            m['morf_hu'] = MK.dekodol(m['morf'], m['nyelv'])
             m['szofaj_hu'] = m['szofaj']
         lexidk = sorted(ubs_ref.get((ig, w['strong']), ()))
         w['ubs'] = [dict(ubs_jel[x], lexid=x) for x in lexidk if x in ubs_jel]
     vs = versszam.get(ig, {})
     v['versszam'] = {'karoli': ig, 'kjv': vs.get('kjv', ''), 'mt': vs.get('mt', '') or vs.get('kjv', ''),
-                     'osztaly': vs.get('osztaly', ''), 'lxx': lxx_igehely.get(ig, '')}
+                     'osztaly': vs.get('osztaly', ''), 'lxx': lxx_igehely.get(ig, ''),
+                     'kjv_lxx': lxx_kjv.get(ig, '')}
+
+# F60.21: a szó-lap fejlécének alapjelentése (a magyar BDB-sor első jelentés-sora, gépi tisztítással; None = a Strong-szótár rövid jelentése áll)
+for _l in lapok.values():
+    _l['alapjelentes'] = alap_jelentes((_l['appar'] or {}).get('alap')) if _l['bdb_hu'] else None
 
 # Görög szó-lapok az LXX-szavakhoz
+# F60.15: minden görög szó kap lapot, amelyre a lap valahol hivatkozik: az LXX-sor szavai, a Macula-párok és a héber
+# szó-lapok „Görög megfelelő” (lxx_bridge) sorai — a nyelvtani szavak is (a lapon jelölve: `nyelvtani`).
 gor_szavak = set()
 for v in versek:
     for x in v['lxx']:
-        if x['strong'] and x['strong'] not in nyelvtani:
+        if x['strong']:
             gor_szavak.add(x['strong'])
     for w in v['heber']:
         m = w.get('macula')
-        if m and m['lxx_strong'] and m['lxx_strong'] not in nyelvtani:
+        if m and m['lxx_strong']:
             gor_szavak.add(m['lxx_strong'])
+for _l in lapok.values():
+    for x in _l['lxx']:
+        if x['strong']:
+            gor_szavak.add(x['strong'])
 
 tbesg = {}
 for s in open(GY + 'konkordancia/TBESG.txt', encoding='utf-8'):
@@ -427,13 +483,15 @@ for g in sorted(gor_szavak):
     th = thayer.get(g, '')
     gor_lapok[g] = {
         'strong': g,
+        'nyelvtani': g in nyelvtani,
         'lemma': tb.get('lemma') or sz.get('szoto', ''),
         'atiras': tb.get('atiras') or sz.get('kiejtes', ''),
         'gloss': tb.get('gloss') or sz.get('jelentes', ''),
         'szofaj': sz.get('szofaj', ''),
         'hu': [x for x in hu][:6],
-        'tbesg': (tb.get('szoveg', '')[:900] + ('…' if len(tb.get('szoveg', '')) > 900 else '')) if tb else '',
-        'thayer': th[:700] + ('…' if len(th) > 700 else ''),
+        # F60.45 (v3.1): a teljes angol szöveg áll a lapon (a lap gördíthető blokkban mutatja), vágás nélkül
+        'tbesg': tb.get('szoveg', ''),
+        'thayer': th,
         'usz_db': usz_db.get(g, 0),
         'usz_versek': [{'ig': ig, 'karoli': karoli.get(ig, '')} for ig in usz_versek.get(g, [])[:5]],
         'usz_versek_db': len(usz_versek.get(g, [])),
@@ -442,31 +500,70 @@ for g in sorted(gor_szavak):
                   for db, h in sorted(vissza.get(g, []), reverse=True)[:5]],
     }
 
+for v in versek:
+    for w in v['heber']:
+        if w.get('macula'):
+            w['macula'].pop('_xml', None)
+
+# ===================== 3. kör (F60.5, v2): a bővítés — bovites.py =====================
+import types  # noqa: E402
+_C = types.SimpleNamespace(GY=GY, TS=TS, SZAKASZ=SZAKASZ, KONYV=KONYV, VERSEK=VERSEK, versek=versek, lapok=lapok,
+                           gor_lapok=gor_lapok, hnorm=hnorm, STEP_HU=STEP_HU, nyelvtani=nyelvtani)
+BOV_PROV, BOV_TOP, BOV_STAT = bovit(_C)
+BOV_STAT['morf_ismeretlen'] = sum(MK.ismeretlen.values())
+BOV_STAT['morf_aramai_szo'] = sum(1 for n in MK.aramai.values() if n == 'A')
+
+
+
+def kiadas_szuro(kiadas, versek, gor_lapok, stat, prov):
+    """DT-F60a (a 2. előkészítése): a kiadás típusa szerint kiveszi a licenc miatt kimaradó blokkokat.
+    belso: semmit; nyilvanos: a KJV-Strong vers-blokkot (GPL); kereskedelmi: a KJV-Strong és az MCGED blokkot.
+    A kiveendő blokk adata, statisztikája és proveniencia-sora is kikerül."""
+    if kiadas in ('nyilvanos', 'kereskedelmi'):
+        for v in versek:
+            v['angol']['kjv'] = None
+        stat['kjv_vers'] = 0
+        prov.pop('kjv', None)
+    if kiadas == 'kereskedelmi':
+        for g in gor_lapok.values():
+            g.pop('mcged', None)
+        stat['mcged'] = 0
+        prov.pop('mcged', None)
+
+
+LXX_REL = LXX_F[len('konkordancia/'):]
+PAROK_F = parok_hasznalt[0] if len(parok_hasznalt) == 1 else '{%s}' % ','.join(parok_hasznalt)
 prov = {
-    'macula': 'scope=1Móz 1:1–2:3 | forras=konkordancia/Macula_heber_Genezis.tsv (morf: gépi magyar feloldás; héber–görög párosítás) + LXX_OS/genesis.tsv (a görög szóalak) | ts=%s' % TS,
-    'ubs': 'scope=1Móz 1:1–2:3 | forras=konkordancia/UBS_DBH_referenciak.tsv + UBS_DBH_jelentesek.tsv (CC BY-SA 4.0) | ts=%s' % TS,
-    'versszam': 'scope=1Móz 1:1–2:3 | forras=konkordancia/Karoli_versmegfeleltetes.tsv + LXX_OS/genesis.tsv | ts=%s' % TS,
+    'macula': 'scope=%s | forras=%s (morf: gépi magyar feloldás; héber–görög párosítás) + %s (a görög szóalak) | ts=%s' % (SZAKASZ, MACULA_F, LXX_REL, TS),
+    'ubs': 'scope=%s | forras=konkordancia/UBS_DBH_referenciak.tsv + UBS_DBH_jelentesek.tsv (CC BY-SA 4.0) | ts=%s' % (SZAKASZ, TS),
+    'versszam': 'scope=%s | forras=konkordancia/Karoli_versmegfeleltetes.tsv + %s | ts=%s' % (SZAKASZ, LXX_REL, TS),
     'gor': 'scope=strong | forras=konkordancia/TBESG.txt + Thayer_teljes.tsv + adat/forditasok.tsv (Thayer, UBS_DNTG) | ts=%s' % TS,
     'usz': 'scope=NT | forras=konkordancia/TAGNT_kivonat.tsv + Karoli_1908.tsv | ts=%s' % TS,
     'vissza': 'scope=strong | forras=adat/kulso/lxx_bridge.tsv (görög → héber) | ts=%s' % TS,
-    'karoli': 'scope=1Móz 1:1–2:3 | forras=konkordancia/Karoli_1908.tsv | ts=%s' % TS,
-    'heber': 'scope=1Móz 1:1–2:3 | forras=konkordancia/TAHOT_kivonat.tsv | ts=%s' % TS,
-    'parok': 'scope=1Móz 1:1–2:3 | forras=adat/karoli_strong/parok_1Moz.tsv | ts=%s' % TS,
-    'lxx': 'scope=1Móz 1:1–2:3 | forras=konkordancia/LXX_OS/genesis.tsv | ts=%s' % TS,
-    'tsk': 'scope=1Móz 1:1–2:3 | forras=konkordancia/TSK_kereszthivatkozasok.tsv | ts=%s' % TS,
-    'kh': 'scope=1Móz 1:1–2:3 | forras=konkordancia/Karoli_kereszthivatkozasok.tsv | ts=%s' % TS,
+    'karoli': 'scope=%s | forras=konkordancia/Karoli_1908.tsv | ts=%s' % (SZAKASZ, TS),
+    'heber': 'scope=%s | forras=konkordancia/TAHOT_kivonat.tsv | ts=%s' % (SZAKASZ, TS),
+    'parok': 'scope=%s | forras=adat/karoli_strong/%s | ts=%s' % (SZAKASZ, PAROK_F, TS),
+    'lxx': 'scope=%s | forras=%s | ts=%s' % (SZAKASZ, LXX_F, TS),
+    'tsk': 'scope=%s | forras=konkordancia/TSK_kereszthivatkozasok.tsv | ts=%s' % (SZAKASZ, TS),
+    'kh': 'scope=%s | forras=konkordancia/Karoli_kereszthivatkozasok.tsv | ts=%s' % (SZAKASZ, TS),
     'bdb': 'scope=strong | forras=adat/forditasok.tsv (BDB) + konkordancia/BDB_teljes_unabridged.tsv | ts=%s' % TS,
+    'bdb_alias': 'scope=strong | forras=konkordancia/BDB_strong_alias.tsv (alias-párosítás, csak ha a Strong-számnak nincs saját BDB-szócikke) | ts=%s' % TS,
     'karoli_alak': 'scope=strong | forras=adat/karoli_strong/parok_{%s}.tsv | ts=%s' % (','.join(pkonyvek), TS),
-    'elofordulas': 'scope=OT | forras=konkordancia/TAHOT_kivonat.tsv (nem teljes) | ts=%s' % TS,
+    'elofordulas': 'scope=OT | forras=konkordancia/TAHOT_kivonat.tsv | ts=%s' % TS,
     'bridge': 'scope=strong | forras=adat/kulso/lxx_bridge.tsv | ts=%s' % TS,
 }
+prov.update(BOV_PROV)
+kiadas_szuro(_args.kiadas, versek, gor_lapok, BOV_STAT, prov)
 with open(KI, 'w', encoding='utf-8') as fh:
     licenc = {}
+    licenc_jelzes = {}
     for r in sorok('adat/licencek.tsv'):
         if len(r) > 9:
             licenc[r[0]] = r[9]
-    json.dump({'licenc': licenc, 'versek': versek, 'lapok': lapok, 'gor_lapok': gor_lapok, 'prov': prov, 'karoli_konyvek': pkonyvek,
-               'bdb_kesz': len(bdb_hu)}, fh, ensure_ascii=False)
+            licenc_jelzes[r[0]] = {'allapot': r[7], 'kereskedelmi': r[4], 'share_alike': r[5], 'megjeloles': r[6]}
+    json.dump({'kiadas': _args.kiadas, 'licenc': licenc, 'licenc_jelzes': licenc_jelzes, 'versek': versek, 'lapok': lapok, 'gor_lapok': gor_lapok,
+               'prov': prov, 'karoli_konyvek': pkonyvek, 'bdb_kesz': len(bdb_hu), 'stat': BOV_STAT, **BOV_TOP}, fh,
+              ensure_ascii=False)
 print('versek:', len(versek), '| szó-lapok:', len(lapok), '| ebből magyar BDB:',
       sum(1 for x in lapok.values() if x['bdb_hu']), '| Károli-könyvek:', pkonyvek)
 for v in versek:
