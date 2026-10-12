@@ -6,14 +6,16 @@ tipus: feladat
 fazis: 1
 munka: adat
 modell: sonnet
-allapot: fut
+allapot: lezarva
 ag: claude/f79-sqlite-epit
 ad: eszkozok/sqlite_epit.py — az adat/ és a konkordancia/ kanonikus tábláiból determinisztikusan épített, nem commitolt pardes.db (SEMA-típusok, KK-alapú vers-kulcs, normalizált igehely és Strong, licenc_allapot és kereskedelmi minden táblán, strong_parok és frázis-pozíció előszámolva, FTS a motivumok/ fölött); a SEMA 3. integritási szabályai az ellenoriz.py függvényein át futnak, sértésnél megáll; mért méret és lekérdezés-próba a 26 pontból az 1–6., 13–15. pontra
-kovetkezo: 'Te: a kis minta lekérdezés-próbáját (naplok/SQLITE_EPIT_meres_minta.md, 9 pont) hagyd jóvá a teljes építés (M4) előtt; utána /kovetkezo az M4-re'
+kovetkezo: "fuggetlen-ellenor (naplok/ELLENOR_F79.md), majd merge a felhasználótól; nyitott: N-F79a, N-F79b (NYITOTT_FELADATOK.md)"
 olvas: [adat/SEMA.md, adat/, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/BSB_Strongs.tsv, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, motivumok/, tematikus_lezart/, genezis/, ujszovetseg/, eszkozok/strong_util.py, eszkozok/ellenoriz.py, eszkozok/gate.py, MUNKATERV.md, ADATVAGYON_TERV.md]
 ir: [eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, .gitignore]
 fugg: [62]
 nem_fugg: [38, 52]
+pr: 300
+lezarva_osszegzes: pardes.db építő kész (eszkozok/sqlite_epit.py, 30 teszt zöld; teljes építés 59 tábla, 786 MB, a licenc_* oszlopok 212 MB; kis minta próbája 9/9); zárás: naplok/F79_zaras.md, mérés: naplok/SQLITE_EPIT_meres.md; draft PR #300
 ---
 
 # F79_SQLITE_EPIT_BRIEF.md — SQLite-építő (pardes.db)
