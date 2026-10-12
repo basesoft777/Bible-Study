@@ -4,7 +4,7 @@
 determinisztikus (ugyanazokból a bemenetekből bájtra azonos kimenet).
 
 Bemenet: f22/minta_<könyv>.tsv, f22/valaszok/sonnet/<könyv>.jsonl, f22/valaszok/c/<könyv>.jsonl,
-konkordancia/Karoli_1908.tsv (tokenizálás: tokenek.py), konkordancia/TAHOT_kivonat.tsv.
+konkordancia/Karoli_1908.tsv (tokenizálás: tokenek.py), konkordancia/TAHOT_kivonat.tsv (ÚSZ: TAGNT_kivonat.tsv).
 A Strong-számot a modell nem írja: a `strong` oszlopot a szkript veszi a TAHOT-ból, a linkelt
 eredeti szó sorszáma alapján.
 
@@ -48,6 +48,19 @@ if hasattr(sys.stderr, 'reconfigure'):
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import sonnet_koteg  # noqa: E402
 import tokenek  # noqa: E402
+
+_USZ_KONYVEK = None
+
+
+def eredeti_kivonat(konyv):
+    """A könyv eredeti szövegének kivonata: (fájlnév, név, ragozott név „-ból/-ből”, „-ban/-ben”).
+    ÚSZ-könyv (a TAGNT_kivonat.tsv-ben van sora): TAGNT; minden más: TAHOT (az ÓSZ-kimenet így bájtra változatlan)."""
+    global _USZ_KONYVEK
+    if _USZ_KONYVEK is None:
+        _USZ_KONYVEK = {r[0].rsplit(' ', 1)[0] for r in tokenek._sorok(tokenek.TAGNT)}
+    if konyv in _USZ_KONYVEK:
+        return ('TAGNT_kivonat.tsv', 'TAGNT', 'a TAGNT-ből', 'a TAGNT-ben')
+    return ('TAHOT_kivonat.tsv', 'TAHOT', 'a TAHOT-ból', 'a TAHOT-ban')
 
 ROOT = tokenek.ROOT
 PAROK_FEJ = ['vers', 'hu_sorszam', 'hu_szo', 'er_sorszam', 'er_szo', 'strong', 'bizonyossag', 'forras']
@@ -245,7 +258,8 @@ def epit(konyv, gyoker=None, karoli=None, ered=None):
         if ig in kimaradt:
             p, sz, kezi = egyesit_vers(ig, None, None, tokenek.tokenizal(karoli[ig]), [])
             szavak += sz
-            atnezes.append([ig, 'nincs eredeti vers a TAHOT-ban (versszámozás-eltérés)', 'nincs eredeti vers a TAHOT-ban (versszámozás-eltérés)'])
+            atnezes.append([ig, 'nincs eredeti vers %s (versszámozás-eltérés)' % eredeti_kivonat(konyv)[3],
+                            'nincs eredeti vers %s (versszámozás-eltérés)' % eredeti_kivonat(konyv)[3]])
             continue
         s = sv.get(ig, {}).get('obj') if sv.get(ig, {}).get('allapot') == 'ok' else None
         c = cv.get(ig, {}).get('obj') if cv.get(ig, {}).get('allapot') == 'ok' else None
@@ -256,7 +270,7 @@ def epit(konyv, gyoker=None, karoli=None, ered=None):
         parok += p
         szavak += sz
         if o:
-            atnezes.append([ig, 'hu %d–%d és a TAHOT %s: %s' % (o['hu_tol'], o['hu_ig'], o['eredeti'], o['megj']),
+            atnezes.append([ig, 'hu %d–%d és a %s %s: %s' % (o['hu_tol'], o['hu_ig'], eredeti_kivonat(konyv)[1], o['eredeti'], o['megj']),
                             'kezi (kézi 1:2 beolvasztás)'])
         if kezi:
             atnezes.append([ig, '; '.join(sv.get(ig, {}).get('hibak', ['nincs válasz'])) or 'nincs válasz',
@@ -320,17 +334,19 @@ def proveniencia_sor(konyv, gyoker=None):
         forras.append('f22/versmegfeleltetes_kezi.tsv')
     if any(tokenek.igehely_bont(o['karoli'])[0] == konyv for o in tokenek.versosszevonasok()):
         forras.append('f22/versosszevonas.tsv')
-    forras += ['konkordancia/TAHOT_kivonat.tsv', 'konkordancia/Karoli_1908.tsv']
+    kiv = eredeti_kivonat(konyv)
+    forras += ['konkordancia/' + kiv[0], 'konkordancia/Karoli_1908.tsv']
     if csak_sonnet:
         return ('# proveniencia: scope=manual | forras=%s | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; '
                 '%s-futásnak nincs lekérdezés-időbélyege) | modell-kimenet, javaslat: nem lekérdezés-eredmény; minden link '
-                '`alacsony` (egy modell, nincs egyezés); a strong a TAHOT-ból, modell nem írja | előállítás: '
-                'eszkozok/karoli_strong/egyesit.py' % (', '.join(forras), 'az API (Batch)' if api_futas(konyv, gyoker) else 'a subagent'))
+                '`alacsony` (egy modell, nincs egyezés); a strong %s, modell nem írja | előállítás: '
+                'eszkozok/karoli_strong/egyesit.py' % (', '.join(forras), 'az API (Batch)' if api_futas(konyv, gyoker) else 'a subagent',
+                                                       kiv[2]))
     return ('# proveniencia: scope=manual | forras=%s | ts=%s (a C futásnapló utolsó hívása%s; az újraépítés '
             'így bájtra azonos) | modell-kimenet, javaslat: nem lekérdezés-eredmény; a bizonyossag '
-            'nem "ellenőrizve"; a strong a TAHOT-ból, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py'
+            'nem "ellenőrizve"; a strong %s, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py'
             % (', '.join(forras), bemeneti_ts(konyv, gyoker),
-               ', a javító menetét is beleértve' if len(forras) > 4 else ''))
+               ', a javító menetét is beleértve' if len(forras) > 4 else '', kiv[2]))
 
 
 def tsv_szoveg(fej, sorok, elso_sor=None):
@@ -388,7 +404,7 @@ def ellenoriz(konyv, gyoker=None, karoli=None, ered=None):
             continue
         var[k] += 1
         if r['oldal'] == 'er' and r['strong'] != teljes(r['vers'])[int(r['sorszam']) - 1]['strong']:
-            hibak.append('szavak: a strong nem a TAHOT-é: %s' % (k,))
+            hibak.append('szavak: a strong nem az eredeti kivonaté (TAHOT/TAGNT): %s' % (k,))
         if r['oldal'] == 'hu':
             tl = tokenek.tokenizal(karoli[r['vers']])
             if r['szo'] != tl[int(r['sorszam']) - 1]:
@@ -411,7 +427,7 @@ def ellenoriz(konyv, gyoker=None, karoli=None, ered=None):
             continue
         w = ered[ig][e - 1]
         if r['strong'] != w['strong'] or r['er_szo'] != w['alak']:
-            hibak.append('parok: a strong/er_szo nem a TAHOT-é: %s %d' % (ig, e))
+            hibak.append('parok: a strong/er_szo nem az eredeti kivonaté (TAHOT/TAGNT): %s %d' % (ig, e))
         if r['hu_szo'] != tokenek.tokenizal(karoli[ig])[h - 1]:
             hibak.append('parok: a hu_szo eltér a tokenizálástól: %s %d' % (ig, h))
         if r['bizonyossag'] not in ('magas', 'alacsony') or r['forras'] not in ('S+C', 'S', 'C'):
