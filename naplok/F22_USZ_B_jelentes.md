@@ -24,6 +24,7 @@ A felhasználó döntése szerint (chat, 2026.10.12) az egyesítés **előtt** a
 ## 3. Költség, keret, újravetítés
 
 - A B (Gal, Ef, Zsid) költsége **3.0671 USD** (0.0051 USD/vers). A futó összeg 94.504948 USD; a 18 USD-s ÚSZ-keretből (86,3698 + 18) **9.86 USD maradt** (a kódbeli plafon 104,36 USD).
+- A vetítés módszere: **egyszerű arány** (a mért összköltség osztva a modellhez ment versek számával, szorozva a hátralevő versszámmal), nem illesztés; a könyvenkénti egységár 0,0046 és 0,0053 USD/vers között szór (a 22.8 és az A: 0,0040–0,0066).
 - Mért egységár a 22.8, az A és a B együtt: 0.005226 USD/vers (1638 vers).
 
 | hátralevő | vers | vetítés | ×1,2 tartalékkal |
@@ -44,19 +45,19 @@ Első próbára 28/607 vers (4.6%). Ebből **23 vers egész köteg formátumhib�
 
 A párosítottak a jelölőtáblában (`adat/karoli_strong/nem_tr_parositott.tsv`, D45 (a); a tábla újraépítve). A `fuggoben` állapotú (a 2. pont szerint jelölt versekbe eső) `[nem TR]` token nem számít párosítottnak.
 
-| vers | er | alak | Strong | angol tükör | Károli-szó (partner) |
+| vers | er | alak | Strong | angol tükör | Károli-szó (partner; a többszavas partner szóközzel) |
 |---|---|---|---|---|---|
 | Gal 4:30 | 16 | κληρονομήσει | G2816 | will inherit | örököl |
 | Ef 3:6 | 15 | Ἰησοῦ | G2424 | Jesus | Jézusban |
 | Ef 6:19 | 6 | δοθῇ | G1325 | may be given | adassék |
-| Zsid 2:1 | 10 | παραρυῶμεν. | G3901 | we may drift away. | ? |
+| Zsid 2:1 | 10 | παραρυῶμεν. | G3901 | we may drift away. | el sodortassunk |
 | Zsid 4:2 | 16 | συγκεκερασμένους | G4786 | united with | párosították |
-| Zsid 4:7 | 13 | προείρηται, | G4280 | it has been predicted, | ? |
-| Zsid 9:14 | 19 | ἡμῶν | G3165 | of us | ? |
+| Zsid 4:7 | 13 | προείρηται, | G4280 | it has been predicted, | előbb mondva volt |
+| Zsid 9:14 | 19 | ἡμῶν | G3165 | of us | ti lelkiismereteteket |
 | Zsid 10:2 | 16 | κεκαθαρισμένους. | G2511 | cleansed! | megtisztult |
 | Zsid 11:12 | 18 | ἡ | G3588 | the | fövény |
 | Zsid 13:15 | 8 | παντὸς | G3956 | all [times] | mindenkor |
-| Zsid 13:18 | 4 | πειθόμεθα | G3982 | we are assured | ? |
+| Zsid 13:18 | 4 | πειθόμεθα | G3982 | we are assured | vagyunk meggyőződve |
 | Zsid 13:21 | 15 | ἡμῖν | G3165 | us | bennetek |
 
 ## 6. Régi arany

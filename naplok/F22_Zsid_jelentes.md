@@ -1,6 +1,6 @@
 # F22_Zsid_jelentes.md — Károli–Strong párosítás: Zsid (csak Sonnet, Message Batches API)
 
-*A számok szkriptkimenetből jönnek (`f22_statisztika.py --konyv Zsid`, `egyesit.py --konyv Zsid` és `--ellenoriz`, `f22_elemzes.py --konyv Zsid`, a `f22/api_termeles/futasnaplo.tsv` és `batchek.tsv` Zsid-soraiból: `futas = api_termeles/high/Zsid`, `cimke = zsid`). Ág: `claude/amazing-mayer-t276r0`. Módszer: `prompt_v3` változatlanul, **Sonnet a Message Batches API-n, `effort=high`** (DT73 (a)), **a C (Gemini) kimarad** (DT-F22c), 10 verses kötegek. Eredeti szöveg: `konkordancia/TAGNT_kivonat.tsv` (TR-szűrés: a `[nem TR]` szó a `prompt_v3` K szabálya szerint `forditatlan`).*
+*A számok szkriptkimenetből jönnek (`f22_statisztika.py --konyv Zsid`, `egyesit.py --konyv Zsid` és `--ellenoriz`, `f22_elemzes.py --konyv Zsid`, a `f22/api_termeles/futasnaplo.tsv` és `batchek.tsv` Zsid-soraiból: `futas = api_termeles/high/Zsid`, `cimke = zsid`). Ág: `claude/f22-usz-b`. Módszer: `prompt_v3` változatlanul, **Sonnet a Message Batches API-n, `effort=high`** (DT73 (a)), **a C (Gemini) kimarad** (DT-F22c), 10 verses kötegek. Eredeti szöveg: `konkordancia/TAGNT_kivonat.tsv` (TR-szűrés: a `[nem TR]` szó a `prompt_v3` K szabálya szerint `forditatlan`).*
 
 *Sorrend: a 22.9 B csomag (Gal, Ef, Zsid; a 2Kor visszatartva; D45) egyike; a futtatás soros, ebben a sorrendben. Keret: 18 USD az ÚSZ-re (`api_koteg.PLAFON_USD` 104,36). Indítás: felhasználói utasítás (chat, 2026.10.12: „Gal, Ef, Zsid mehet. A 2Kor-t tartsd vissza …”).*
 
@@ -25,7 +25,7 @@ A javító körbe került köteg: k030 (10 vers); versenkénti kapuhiba: 3. ezek
 
 A javító körbe került köteg: k031 (3 vers); egész köteg formátumhibás (az 1. próba nyers válasza nem érvényes JSON: „1. a válasz nem érvényes JSON: Extra data: line 3 column 1 (”). A javító kör eredménye a fenti táblában.
 
-Költségplafon: a könyvplafon 303 vers × 0,0074 × 1,5 = 3.3633 USD (az `api_koteg.py` beépített alsó határa 1,00 USD, tehát a tényleges plafon 3.36 USD); a könyv költsége 1.6045 USD (versenként 0.0053 USD, a modellhez ment 303 versre). A futásnapló `futo_osszeg_usd` oszlopának utolsó Zsid-sora: 94.504948 USD, a globális 110 USD-ből.
+Költségplafon: a könyvplafon 303 vers × 0,0074 × 1,5 = 3.3633 USD (az `api_koteg.py` beépített alsó határa 1,00 USD, tehát a tényleges plafon 3.36 USD); a könyv költsége 1.6045 USD (versenként 0.0053 USD, a modellhez ment 303 versre). A futásnapló `futo_osszeg_usd` oszlopának utolsó Zsid-sora: 94.504948 USD, a 18 USD-s ÚSZ-keretből (D45: 86,3698 + 18; a kódbeli plafon `PLAFON_USD` = 104,36 USD).
 
 ## 1a. Szkriptkimenet
 
