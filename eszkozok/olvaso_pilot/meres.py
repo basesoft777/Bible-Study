@@ -3,7 +3,7 @@
 A szakaszonkénti olvaso_pilot.json-ból (adat.py kimenete) mérőszámokat számol, és
 naplok/OLVASOI_PILOT_meres.md-be írja, minden mérési szakaszhoz proveniencia-sorral
 (scope=… | forras=… | ts=…). Csak olvas; a szakasz JSON-ját előbb elő kell állítani.
-Futtatás: python eszkozok/olvaso_pilot/meres.py [--szakasz "1Móz 1:1-2:3" --szakasz "Zsolt 22"]
+Futtatás: python eszkozok/olvaso_pilot/meres.py [--szakasz "1Móz 1-25" --szakasz "Zsolt 22"]
           [--ki naplok/OLVASOI_PILOT_meres.md]
 Alapból az adat.py-t és az epit.py-t is újrafuttatja a szakasz alap-kimeneti könyvtárába (--nincs-ujra: a meglévő JSON-t használja)."""
 import argparse
@@ -29,7 +29,7 @@ ap.add_argument('--szakasz', action='append', default=None)
 ap.add_argument('--ki', default=GY + 'naplok/OLVASOI_PILOT_meres.md')
 ap.add_argument('--nincs-ujra', action='store_true', help='a meglévő JSON-t használja (alapból az adat.py-t és az epit.py-t újrafuttatja)')
 args = ap.parse_args()
-SZAKASZOK = args.szakasz or ['1Móz 1:1-2:3', 'Zsolt 22']
+SZAKASZOK = args.szakasz or ['1Móz 1-25', 'Zsolt 22']
 TS = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%MZ')
 
 

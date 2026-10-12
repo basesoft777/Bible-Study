@@ -14,7 +14,7 @@ python eszkozok/olvaso_pilot/meres.py        # naplok/OLVASOI_PILOT_meres.md (ú
 python eszkozok/olvaso_pilot/felmeres.py     # naplok/OLVASOI_PILOT_adatfelmeres.md (az adat.py-t újrafuttatja)
 ```
 
-A `--szakasz` vers-tartomány (`"1Móz 1:1-2:3"`) vagy egész fejezet (`"Zsolt 22"`); a versek a `Karoli_1908.tsv`-ből jönnek, a könyvfájlok a `szakasz.py` `KONYVFAJLOK` táblájából (ma: 1Móz, Zsolt; más könyvre a pilot hibával áll meg). Az `adat.py` és az `epit.py` a `--kimenet KÖNYVTÁR` könyvtárba ír, alapból a repón kívüli `<temp>/olvaso_pilot/<szakasz-azonosító>/` könyvtárba. A kimenet (`olvaso_pilot.json`, `karoli_konkordancia_proba.html`) nem kerül a repóba. A `ts=` mező a futás UTC ideje. Böngészős próba: `python -m http.server <szabad port>` a kimeneti könyvtárból, a végén a folyamat leállítandó.
+A `--szakasz` vers-tartomány (`"1Móz 1:1-2:3"`), fejezet-tartomány (`"1Móz 1-25"`, a #60 v2 hatóköre) vagy egész fejezet (`"Zsolt 22"`); a versek a `Karoli_1908.tsv`-ből jönnek, a könyvfájlok a `szakasz.py` `KONYVFAJLOK` táblájából (ma: 1Móz, Zsolt; más könyvre a pilot hibával áll meg). Az `adat.py` és az `epit.py` a `--kimenet KÖNYVTÁR` könyvtárba ír, alapból a repón kívüli `<temp>/olvaso_pilot/<szakasz-azonosító>/` könyvtárba. A kimenet (`olvaso_pilot.json`, `karoli_konkordancia_proba.html`) nem kerül a repóba. A `ts=` mező a futás UTC ideje. Böngészős próba: `python -m http.server <szabad port>` a kimeneti könyvtárból, a végén a folyamat leállítandó.
 
 Az oldal egyetlen önálló HTML (minden adat beágyazva; ma 3,7 és 4,8 MB, a 8 MB-os határ alatt, ezért nincs lusta betöltés; a határ átlépésekor a nagy szövegeket — SECE, LSJ, tW, TBESH, BDB teljes szöveg — külön JSON-ba kellene tenni).
 
@@ -72,3 +72,8 @@ A „?” jel a blokk adatkészletét, fájlját és licencét mutatja (`adat/li
 - A `Karoli_versmegfeleltetes.tsv`, a `LXX_versificacios_terkep.tsv` és a Nave `karoli_allapot` oszlopa a Zsolt 22-re Károli = KJV számozást feltételez (lásd az adatfelmérés 5. pontját).
 - A TBESH jelentés-listája Online Bible-eredetű (a fejléc szerint külön engedély kell); az MCGED nem kereskedelmi; a KJV-Strong-címkék, az LXX_versszintu_parok és a Karoli_versmegfeleltetes licence tisztázatlan; a tW és az UBS/SDBH CC BY-SA (share-alike). Nyilvános közzététel előtt jogi átnézés kell (DT-M6).
 - Regressziós alap a bővítés előtti állapothoz: `git worktree add <könyvtár> 98b5098`, ott `adat.py --szakasz "1Móz 1:1-2:3" --kimenet <ideiglenes>`, majd `OLVASO_PROTOTIP_JSON=<az olvaso_pilot.json útvonala>` a tesztfuttatáskor; a bővítés csak új mezőket adhat, a `morf_hu` kivételével (a feloldás korábban üres volt).
+
+## Beágyazás, db_meres (F60.27–F60.30, #60 v3.2)
+
+- Az `epit.py` alapból **gzip + base64** alakban ágyazza be a JSON-t (`data-kodolas="gzip-base64"`, a sablon `adatBetolt` függvénye bontja ki `DecompressionStream`-mel): az 1Móz 1–25 JSON-ja ~34 MB, a nyers HTML ugyanennyi (16 MB fölött), a tömörített ~10 MB. `--nyers`: a tömörítetlen változat (hibakereséshez; ugyanabba a fájlnévbe ír, ezért külön `--kimenet` kell).
+- `db_meres.py` (M2b, D1–D5): a `pardes.db`-t méri, csak olvas (`mode=ro`), nem épít újra. A `pardes.db` a `.gitignore`-ban van; külön `git worktree`-ben az alapértelmezett hely a fő munkamásolat `pardes.db`-je. Nincs adatbázis: „nem mérhető”. A D2 a régi ág JSON-jának vágott TBESG/Thayer-szövegét előtag-egyezéssel veti össze, az alias-mögötti BDB-szócikkeket külön okkal jelzi.

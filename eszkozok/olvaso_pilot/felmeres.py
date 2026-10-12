@@ -7,7 +7,7 @@ A végén összefoglaló: hány Strong-kulcsú szó-lapnak hány adatforrása va
 hiányok tölthetők ki meglévő adattal, melyek nem (és melyik feladat dolga).
 A számokat méri (táblák olvasása + a szakasz-JSON), nem becsli. Csak olvas; a kimenet: naplok/OLVASOI_PILOT_adatfelmeres.md.
 A TSV-t split('\\t')-bel olvassa (csv modul tilos).
-Futtatás: python eszkozok/olvaso_pilot/felmeres.py [--szakasz "1Móz 1:1-2:3" --szakasz "Zsolt 22"] [--ki FÁJL] [--nincs-ujra]
+Futtatás: python eszkozok/olvaso_pilot/felmeres.py [--szakasz "1Móz 1-25" --szakasz "Zsolt 22"] [--ki FÁJL] [--nincs-ujra]
 (alapból az adat.py-t újrafuttatja a szakaszok alap-kimeneti könyvtárába, hogy a mérés a friss JSON-ból menjen)."""
 import argparse
 import datetime
@@ -33,7 +33,7 @@ ap.add_argument('--szakasz', action='append', default=None)
 ap.add_argument('--ki', default=GY + 'naplok/OLVASOI_PILOT_adatfelmeres.md')
 ap.add_argument('--nincs-ujra', action='store_true', help='ne futtassa újra az adat.py-t (a meglévő JSON-t használja)')
 args = ap.parse_args()
-SZAKASZOK = args.szakasz or ['1Móz 1:1-2:3', 'Zsolt 22']
+SZAKASZOK = args.szakasz or ['1Móz 1-25', 'Zsolt 22']
 TS = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%MZ')
 KONYV_STEP = {'1Móz': 'Gen', 'Zsolt': 'Psa'}
 
