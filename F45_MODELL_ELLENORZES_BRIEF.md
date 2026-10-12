@@ -8,9 +8,9 @@ modell: sonnet
 allapot: lezarva
 ag: claude/f45-modell-ellenorzes
 pr: https://github.com/basesoft777/Bible-Study/pull/315
-lezarva_osszegzes: "szabály az öt helyen; ellenőr: 6 eltérés (1 súlyos: CLAUDE.md:77 ellentmond a fuggetlen-ellenor.md-nek); draft PR, javítás döntésre vár; zárójelentés: naplok/F45_zaras.md"
+lezarva_osszegzes: "szabály az öt helyen; 1. ellenőri kör 6 eltérés (javítva), 2. kör 3 új (mind eldöntve és alkalmazva: F45.6, DT-F45a F45.7, DT-F45b F45.8); draft PR; zárójelentés: naplok/F45_zaras.md"
 ad: minden brief-futtatás (közvetlen és /kovetkezo útján, subagenttel vagy anélkül) az elején ellenőrzi, hogy a ténylegesen futó modell egyezik-e a brief fejlécének `modell` mezőjével, eltérésnél nem dolgozik; az adattáblák `modell` mezőjébe mindig a tényleges modellnév kerül
-kovetkezo: "lezárva; az ellenőr 1. eltérésének (CLAUDE.md:77 ↔ fuggetlen-ellenor.md) feloldása a felhasználó döntése"
+kovetkezo: "lezárva; a 2. ellenőri kör két látens eltérése eldöntve és alkalmazva (DT-F45a, DT-F45b); merge a felhasználótól"
 olvas: [CLAUDE.md, BRIEF_SABLON.md, .claude/commands/kovetkezo.md, .claude/commands/befogad.md, .claude/agents/, adat/SEMA.md]
 ir: [CLAUDE.md, BRIEF_SABLON.md, .claude/commands/kovetkezo.md, .claude/agents/vegrehajto-opus.md, .claude/agents/vegrehajto-sonnet.md, .claude/agents/vegrehajto-haiku.md, .claude/agents/fuggetlen-ellenor.md]
 fugg: []
