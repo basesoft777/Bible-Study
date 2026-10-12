@@ -6,10 +6,10 @@ tipus: feladat
 fazis: 1
 modell: opus
 munka: adat
-allapot: dontesre_var
+allapot: fut
 ag: claude/f87-karoli-elteres-itelet
 ad: a #65 eltéréslistáján kézi ítéletre váró öt sor soronként eldöntve és javítva az elofordulasok.tsv-ben és a jeloltek.tsv-ben (Károli-szó, illetve Károli-verskulcs), a két 2Móz-sor szó-szintű-gépi azonosítással, az eltéréslista újragenerálva
-kovetkezo: "Te: az M0 kész (naplok/KAROLI_ELTERES_ITELET_M0.md; mind az öt diagnózis megerősítve); ⛔ döntés a DT-F87b-ről (soronkénti elfogadás, a 4. sor karoli_szo-ja és az 1. sor igazolas-a mellékkérdés) és a DT-F87a-ról (a javítás rögzítésének módja), utána az M1"
+kovetkezo: "Folytatás: az M1 (javítás, DT-F87a/b elfogadva 2026-10-12), utána M2, M3"
 olvas: [naplok/KAROLI_ELLENORZES_elteresek.tsv, naplok/KAROLI_ELLENORZES_zaras.md, adat/karoli_strong/, adat/karoli_variancia.tsv, adat/SEMA.md, konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, eszkozok/karoli_ellenorzes.py, F65_KAROLI_ELLENORZES_BRIEF.md]
 ir: [adat/elofordulasok.tsv, adat/jeloltek.tsv, adat/karoli_variancia.tsv, naplok/KAROLI_ELLENORZES_elteresek.tsv]
 fugg: [65]
