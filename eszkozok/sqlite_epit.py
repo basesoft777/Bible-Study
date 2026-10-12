@@ -448,17 +448,14 @@ class Epito(object):
         grammatikai = {r['strong'] for r in G.tsv_beolvas(
             os.path.join(self.adat, 'grammatikai_strongok.tsv'))[1]}
         tokenek, strongok = [], []
-        latott = set()
         vers_strongok = {}   # igehely -> set (strong_parok-hoz, a TELJES TAHOT/TAGNT-bol)
         for nyelv, fajl in (('H', 'TAHOT_kivonat.tsv'), ('G', 'TAGNT_kivonat.tsv')):
             fej, sorok = G.tsv_beolvas(os.path.join(self.konk, fajl))
             szamlalo = {}
             for r in sorok:
                 ig = r['Igehely']
-                if (fajl, ig) not in latott:
-                    latott.add((fajl, ig))
-                    if ig not in self.vi.halmaz:
-                        self.jelent_norm(fajl, ig, 'nincs ilyen Károli-vers (token_eredeti.van_vers=0)')
+                if ig not in self.vi.halmaz:   # tokenenként: az előfordulás-szám a valós tokenszám
+                    self.jelent_norm(fajl, ig, 'nincs ilyen Károli-vers (token_eredeti.van_vers=0)')
                 szamlalo[ig] = szamlalo.get(ig, 0) + 1
                 try:
                     lanc = strong_normalizal(r['Strong-szám'])
@@ -1158,7 +1155,7 @@ def meres_md(epito, hashek, ido, meret, mod, tmeret=None, masodik=None):
         ki += ['## Táblánkénti bájtméret és a `licenc_*` oszlopok részesedése (a #86 N-F86b bemenete)', '',
                'Mérés: minden tábla (indexeivel) külön adatbázisba másolva, lapszám × lapméret (a Python sqlite3-ból '
                'hiányzik a `dbstat`); a „licenc nélkül” oszlop ugyanez a három `licenc_*` oszlop nélkül.', '',
-               '- a táblák összege: **%.1f MB** (a fájl: %.1f MB; a különbség az SQLite szabad lapjai és a közös fejléc)'
+               '- a táblák összege: **%.1f MB** (a fájl: %.1f MB; a többlet a táblánkénti külön adatbázisok saját fejléc- és séma-lapjaiból adódik)'
                % (ossz / 1048576.0, meret / 1048576.0),
                '- a `licenc_*` oszlopok összes részesedése: **%.1f MB (%.1f%%)**' % (oszl / 1048576.0, 100.0 * oszl / ossz),
                '', '| tábla | sor | MB (indexszel) | MB licenc_* nélkül | licenc_* részesedés |',

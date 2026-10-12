@@ -179,6 +179,27 @@ class Negativ(unittest.TestCase):
             modosit(t, 'elofordulasok.tsv', lambda f, r: r[0].__setitem__(f.index('jelentes_szam'), 'teljes'))
         self.futtat(m, '9')
 
+    def test_10_lxx_dontesek(self):
+        def m(t):
+            modosit(t, 'lxx_dontesek.tsv', lambda f, r: r[0].__setitem__(f.index('tipus'), 'ervenytelen_tipus'))
+        self.futtat(m, '10')
+
+    def test_11_res_forras_egyezes(self):
+        def m(t):
+            modosit(t, 'res_forras.tsv', lambda f, r: r[0].__setitem__(f.index('tanulmany'), 'tematikus_lezart/NINCS_ILYEN.md'))
+        self.futtat(m, '11')
+
+    def test_az_epites_a_10_szabaly_serteskor_is_megall(self):
+        tmp = tempfile.mkdtemp()
+        try:
+            masolat(tmp)
+            modosit(tmp, 'lxx_dontesek.tsv', lambda f, r: r[0].__setitem__(f.index('tipus'), 'ervenytelen_tipus'))
+            ki = os.path.join(tmp, 'x.db')
+            self.assertEqual(S.main(['--gyoker', tmp, '--kimenet', ki]), 1)
+            self.assertFalse(os.path.exists(ki))
+        finally:
+            shutil.rmtree(tmp, ignore_errors=True)
+
     def test_13_forditasi_gyorsitotar(self):
         def m(t):
             def fn(fej, sorok):
@@ -330,6 +351,11 @@ class Integracio(unittest.TestCase):
         nevek = {r[0] for r in self.con.execute(
             "SELECT nyers FROM normalizalas_jelentes WHERE tabla='TAGNT_kivonat.tsv'")}
         self.assertTrue({'Róm 3:31', '1Kor 3:23', 'Róm 8:39'} <= nevek)
+        darab = self.con.execute("SELECT SUM(darab) FROM normalizalas_jelentes WHERE tabla='TAGNT_kivonat.tsv' "
+                                 "AND ok LIKE 'nincs ilyen Károli-vers%'").fetchone()[0]
+        tokenek = self.con.execute("SELECT COUNT(*) FROM token_eredeti WHERE nyelv='G' AND van_vers=0").fetchone()[0]
+        self.assertEqual(darab, 40)       # a valós tokenszám, nem a kulcsok száma
+        self.assertEqual(tokenek, 40)
 
     def test_kjv_es_tbes_betoltve(self):
         for t in ('kjv', 'tbesg', 'tbesh'):
