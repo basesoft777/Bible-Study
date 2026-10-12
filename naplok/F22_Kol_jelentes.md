@@ -17,7 +17,7 @@
 | 2. próba (javító) | 1 | 1 | 0 köteg | 0.0571 | 10 588 / 9 297 |
 | **összesen** | 11 | | | **0.5107** | |
 
-A javító körbe került köteg: k007 (10 vers); egész köteg formátumhibás (az 1. próba nyers válasza nem érvényes JSON: „1. a válasz nem érvényes JSON: Extra data: line 3 column 1 (”). A javító kör eredménye a fenti táblában.
+A javító körbe került köteg: k007 (10 vers); egész köteg formátumhibás (az 1. próba nyers válasza nem érvényes JSON: „1. a válasz nem érvényes JSON: Extra data: line 3 column 1 (”); a válasz csak a Kol 3:9-et hozza (kétszer), a Kol 3:10–18 (9 vers) hiányzik (a független ellenőr jelzése nyomán pontosítva). A javító kör mind a 10 verset hozta.
 
 Költségplafon: a könyvplafon 95 vers × 0,0074 × 1,5 = 1.0545 USD (az `api_koteg.py` beépített alsó határa 1,00 USD, tehát a tényleges plafon 1.05 USD); a könyv költsége 0.5107 USD (versenként 0.0054 USD, a modellhez ment 95 versre). A futásnapló `futo_osszeg_usd` oszlopának utolsó Kol-sora: 88.655903 USD, a globális 110 USD-ből.
 

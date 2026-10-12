@@ -17,7 +17,7 @@
 | 2. próba (javító) | 2 | 2 | 0 köteg | 0.0620 | 16 790 / 9 046 |
 | **összesen** | 13 | | | **0.4975** | |
 
-A javító körbe került köteg: k006 (10 vers); egész köteg formátumhibás (az 1. próba nyers válasza nem érvényes JSON: „1. a válasz nem érvényes JSON: Extra data: line 5 column 1 (”). A javító kör eredménye a fenti táblában.
+A javító körbe került köteg: k006 (10 vers); egész köteg formátumhibás (az 1. próba nyers válasza nem érvényes JSON: „1. a válasz nem érvényes JSON: Extra data: line 5 column 1 (”); a válasz csak a Fil 2:23–25-öt hozza (kétszer), a Fil 2:26–3:2 (7 vers) hiányzik (a független ellenőr jelzése nyomán pontosítva). A javító kör mind a 10 verset hozta.
 
 A javító körbe került köteg: k011 (2 vers); egész köteg formátumhibás (az 1. próba nyers válasza nem érvényes JSON: „1. a válasz nem érvényes JSON: Extra data: line 3 column 1 (”). A javító kör eredménye a fenti táblában.
 

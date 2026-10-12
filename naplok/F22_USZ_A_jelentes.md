@@ -36,28 +36,28 @@ A B a maradék 12.93 USD-be biztosan belefér. A B + C ×1,2 tartalékkal (13.65
 
 ## 3. Kapuhiba
 
-Első próbára 92/954 vers (9.6%), végleg 0. Ebből **87 vers egész köteg formátumhibából** jött (a köteg nyers válasza nem érvényes JSON; a 22.8-ban leírt minta: tömb nélküli versobjektumok, prózai közbeszúrás), **5 vers versenkénti kapuhibából** (érvényes JSON, a kapu szabályán bukott: pl. „ezek az eredeti szavak sem a parok jobb oldalán…”, „hibás pár”). A 2Tim első próbás aránya (31/83) három egész formátumhibás kötegből jön (k003, k007, k008), nem tartalmi hibából. A javító kör mind a 11 könyvben 0-ra hozta.
+Első próbára 92/954 vers (9.6%), végleg 0. Ebből **87 vers egész köteg formátumhibából** jött (a köteg nyers válasza nem érvényes JSON; a 22.8-ban leírt minta: tömb nélküli versobjektumok, prózai közbeszúrás), **5 vers versenkénti kapuhibából** (érvényes JSON, a kapu szabályán bukott: pl. „ezek az eredeti szavak sem a parok jobb oldalán…”, „hibás pár”). A 2Tim első próbás aránya (31/83) három egész formátumhibás kötegből (k003, k007, k008: 30 vers) és egy versenkénti kapuhibából (k009: 1 vers) jön. **Két formátumhibás kötegben a válaszból versek is hiányoztak** (a `nyers1` alapján, a független ellenőr jelzése nyomán): a Kol k007 válasza csak a Kol 3:9-et hozza (kétszer), a Kol 3:10–18 (9 vers) hiányzik; a Fil k006 válasza csak a Fil 2:23–25-öt hozza (kétszer), a Fil 2:26–3:2 (7 vers) hiányzik. Ugyanez a jelenség a 22.8-ban a Júd k003-nál fordult elő. A többi 8 formátumhibás kötegben minden vers megvan. A javító kör mindkét kötegben mind a 10 verset hozta (`f22/api_termeles/high/Kol.jsonl`, `Fil.jsonl`). A javító kör mind a 11 könyvben 0-ra hozta.
 
 ## 4. A `[nem TR]` tokenek: 375, ebből 27 párosított (eltérés a 22.8 P4 elvárásától)
 
 A 22.8-ban mind az 51 `[nem TR]` token `forditatlan` lett; az A csomagban 27/375 (7.2%) **párosított**. Ok (a `tokenek.betolt_eredeti` docstringje szerint): ahol a TR **más alakot** olvas, mint a kritikai szöveg, a TR-es alaknak nincs sora a `TAGNT_kivonat.tsv`-ben; a Károli szavának így a nem TR-es sor az egyetlen görög megfelelője, és a modell ahhoz köti (a `prompt_v3` K szabálya ellenére). A link jelentés szerint többnyire helyes, de a `strong` a kritikai szöveg alakjáé, nem a TR-é (pl. ha a TR más igét olvas, a Strong-szám is más). Az egyes esetek TR-olvasatát ez a menet nem ellenőrizte (külön lekérdezés kell, a TAGNT-kivonatban nincs meg).
 
-| vers | er | alak | Strong | angol tükör | Károli-szó (partner) |
+| vers | er | alak | Strong | angol tükör | Károli-szó (partner; a többszavas partner szóközzel) |
 |---|---|---|---|---|---|
 | 2Pét 2:21 | 13 | ὑποστρέψαι | G5290 | to have turned | elpártoljanak |
 | 2Pét 2:22 | 18 | κυλισμὸν | G2946 | rolling place | fertőjébe |
 | 1Thessz 1:7 | 4 | τύπον | G5179 | an example | példaképekké |
-| 1Thessz 2:3 | 11 | οὐδὲ | G3761 | nor | ? |
+| 1Thessz 2:3 | 11 | οὐδὲ | G3761 | nor | sem nem |
 | Kol 2:2 | 6 | συμβιβασθέντες | G4822 | being knit together | egybeköttetvén |
 | Kol 2:2 | 13 | πλοῦτος | G4149 | richness | gazdagságára |
 | Kol 2:12 | 5 | βαπτισμῷ | G0909 | baptism | keresztségben |
-| Kol 3:22 | 12 | ὀφθαλμοδουλίᾳ | G3787 | eye-service | ? |
+| Kol 3:22 | 12 | ὀφθαλμοδουλίᾳ | G3787 | eye-service | szemnek szolgálván |
 | Kol 3:22 | 21 | κύριον. | G2962 | Lord. | Istent |
 | Kol 4:1 | 18 | οὐρανῷ. | G3772 | heaven. | mennyekben |
 | Kol 4:12 | 18 | σταθῆτε | G2476 | you may be stood | megállhassatok |
-| Kol 4:12 | 21 | πεπληροφορημένοι | G4135 | fully complete | ? |
+| Kol 4:12 | 21 | πεπληροφορημένοι | G4135 | fully complete | teljes meggyőződéssel |
 | Kol 4:15 | 7 | Νύμφαν | G3564 | Nympha | Nimfást |
-| Kol 4:15 | 12 | αὐτῆς | G0846 | of her | ? |
+| Kol 4:15 | 12 | αὐτῆς | G0846 | of her | ő házánál |
 | Fil 1:11 | 2 | καρπὸν | G2590 | with [the] fruit | gyümölcsével |
 | Fil 3:21 | 26 | αὐτῷ | G0846 | to Him | maga |
 | 1Pét 3:1 | 22 | κερδηθήσονται, | G2770 | they will be gained, | megnyeressenek |
