@@ -754,52 +754,76 @@ class BdbSzeletelesAtnezes(unittest.TestCase):
 
 
 class TestRegresszioProto(unittest.TestCase):
-    """K1 (M4: F60.45): az 1Móz 1:1–2:3 kimenet a prototípus (ce4ef98f, F60.0) kimenetével értékazonos: a prototípus
+    """K1 (M4: F60.46): az 1Móz 1:1–2:3 kimenet a prototípus (ce4ef98f, F60.0) kimenetével értékazonos: a prototípus
     minden kulcsának értéke megegyezik, a `ts=` időbélyeg kivételével és az alábbi, indokolt ENGEDELYEZETT listán kívül.
-    A teszt maga állítja elő a prototípus-kimenetet (git show → ideiglenes fájl → ideiglenes kimenet-könyvtár), nem kihagyható.
+    A teszt maga állítja elő a prototípus-kimenetet: a ce4ef98f `adat.py`-ját ÉS `bdb_szelet.py`-ját (az egyetlen modul, amelyet
+    a prototípus importál) együtt írja egy repón kívüli ideiglenes könyvtárba, és onnan futtatja (a prototípus saját szeletelőjével,
+    nem a HEAD-ével); a repóba semmi nem kerül. Nem kihagyható.
     Az engedélyezett eltérés: (darabszám, indok). A darabszám pontos; adat- vagy szabályváltozásnál a lista
     szándékosan elromlik, és az új eltérést indokolni kell."""
     PROTO = 'ce4ef98f'
     ENGEDELYEZETT = {
         'morf_hu': (746, 'macula.morf_hu: a prototípusban üres volt, a v2 az adat/morf_kulcs_heber.tsv-ből feloldja (F60.5, gépi feldolgozás)'),
-        'tbesg_teljes': (38, 'gor_lapok.*.tbesg: a prototípus 900 karakterre vágta „…”-tal; a v3.1 szabály szerint a teljes angol szöveg áll a lapon (F60.46)'),
-        'thayer_teljes': (64, 'gor_lapok.*.thayer: a prototípus 700 karakterre vágta „…”-tal; a teljes angol szöveg áll a lapon (F60.46)'),
-        'bdb_szeletelo': (8, 'lapok.{H1254,H2416,H3651,H4723,H6960,H7235,H7287,H7363}.appar: a BDB-szeletelő változása (F60.31–F60.38: a homonima-szerep azonos_lemma/masik_lemma/elo, a H4723 szócikk fejléce és szakaszai)'),
+        'tbesg_teljes': (38, 'gor_lapok.*.tbesg: a prototípus 900 karakterre vágta „…”-tal; a v3.1 szabály szerint a teljes angol szöveg áll a lapon (F60.45)'),
+        'thayer_teljes': (64, 'gor_lapok.*.thayer: a prototípus 700 karakterre vágta „…”-tal; a teljes angol szöveg áll a lapon (F60.45)'),
+        'bdb_szeletelo': (40, 'lapok.*.appar (40 szó-lap, l. BDB_LAPOK): a BDB-szeletelő változásai a prototípus óta (F60.17, F60.18, F60.21, F60.23, F60.25, F60.35): jelentés-határok, a jelentés-sorszámok és a személyszám-jelölők kezelése, fejléc (héber szó, átírás), irodalom-/kritika-sorok; a prototípus-kulcsok értéke ezeken a lapokon eltér'),
+        'bdb_lemma_arg': (8, 'lapok.{H1254,H2416,H3651,H4723,H6960,H7235,H7287,H7363}.appar (a fenti 40-nel átfedve): a `szeletel(szoveg, lemma)` második argumentuma (F60.17, 8b642341) a homonima-szerepet jelöli (`azonos_lemma` / `masik_lemma` / `elo`); a teszt külön ellenőrzi, hogy a lemma-argumentum pontosan ennél a 8 lapnál módosítja a kimenetet'),
         'prov_elofordulas': (1, 'prov.elofordulas: a „(nem teljes)” megjegyzés kivéve (F60.29: a TAHOT fejezet-szinten teljes, F85)'),
     }
-    BDB_LAPOK = {'H1254', 'H2416', 'H3651', 'H4723', 'H6960', 'H7235', 'H7287', 'H7363'}
+    BDB_LEMMA_LAPOK = {'H1254', 'H2416', 'H3651', 'H4723', 'H6960', 'H7235', 'H7287', 'H7363'}
+    BDB_LAPOK = BDB_LEMMA_LAPOK | {
+        'H0215', 'H0559', 'H0914', 'H1288', 'H1876', 'H1961', 'H2009', 'H2232', 'H2822', 'H2895', 'H3117', 'H3318', 'H3533',
+        'H3605', 'H3615', 'H3915', 'H4390', 'H4725', 'H4910', 'H5414', 'H5774', 'H6213', 'H6440', 'H6509', 'H6635', 'H6942',
+        'H7121', 'H7200', 'H7430', 'H7637', 'H8147', 'H8317'}
 
     @staticmethod
     def _ts(x):
         return re.sub(r'ts=[0-9T:\-Z]+', 'ts=X', x) if isinstance(x, str) else x
 
     def _proto_json(self):
-        r = subprocess.run(['git', '-C', GY, 'show', '%s:eszkozok/olvaso_pilot/adat.py' % self.PROTO], capture_output=True)
-        self.assertEqual(r.returncode, 0, 'a prototípus (%s) nem érhető el a git-történetben (a teszt nem hagyható ki)' % self.PROTO)
-        proto_ut = os.path.join(D, '_proto_adat_teszt.py')
-        ki = os.path.join(TMP, 'proto')
-        try:
-            with open(proto_ut, 'wb') as fh:
-                fh.write(r.stdout)
-            p = subprocess.run([sys.executable, proto_ut, '--kimenet', ki], capture_output=True, text=True, encoding='utf-8')
+        """A prototípus (ce4ef98f) adat.py + bdb_szelet.py a repón kívüli ideiglenes könyvtárból; a GY (a repó gyökere) a prototípus
+        fájljában a valódi gyökérre van állítva, mert a prototípus a saját helyéből számolta."""
+        with tempfile.TemporaryDirectory(prefix='olvaso_proto_') as t:
+            for f in ('adat.py', 'bdb_szelet.py'):
+                r = subprocess.run(['git', '-C', GY, 'show', '%s:eszkozok/olvaso_pilot/%s' % (self.PROTO, f)], capture_output=True)
+                self.assertEqual(r.returncode, 0, 'a prototípus (%s) nem érhető el a git-történetben (a teszt nem hagyható ki)' % self.PROTO)
+                with open(os.path.join(t, f), 'wb') as fh:
+                    fh.write(r.stdout)
+            ut = os.path.join(t, 'adat.py')
+            with open(ut, encoding='utf-8') as fh:
+                src = fh.read()
+            gy_sor = "GY = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))).replace('\\\\', '/') + '/'"
+            self.assertEqual(src.count(gy_sor), 1)
+            with open(ut, 'w', encoding='utf-8') as fh:
+                fh.write(src.replace(gy_sor, 'GY = %r' % GY))
+            ki = os.path.join(t, 'ki')
+            p = subprocess.run([sys.executable, ut, '--kimenet', ki], capture_output=True, text=True, encoding='utf-8')
             self.assertEqual(p.returncode, 0, p.stderr[-800:])
-        finally:
-            if os.path.exists(proto_ut):
-                os.remove(proto_ut)
-        with open(os.path.join(ki, 'olvaso_pilot.json'), encoding='utf-8') as fh:
-            return json.load(fh)
+            with open(os.path.join(ki, 'olvaso_pilot.json'), encoding='utf-8') as fh:
+                return json.load(fh)
+
+    @staticmethod
+    def _resz(x, y):
+        """x minden kulcsa y-ban azonos értékű (y-nak lehetnek új kulcsai)."""
+        if isinstance(x, dict):
+            return isinstance(y, dict) and all(k in y and TestRegresszioProto._resz(v, y[k]) for k, v in x.items())
+        if isinstance(x, list):
+            return isinstance(y, list) and len(x) == len(y) and all(TestRegresszioProto._resz(a, b) for a, b in zip(x, y))
+        return x == y
 
     def test_ertekazonos_a_prototipussal(self):
         p = self._proto_json()
         g = ADAT['gen']
         szamlalo = {k: 0 for k in self.ENGEDELYEZETT}
+        eltero_bdb = set()
         elteres = []
 
         def hasonlit(x, y, ut):
             m = re.match(r'^/lapok/(H\d{4})/appar$', ut)
-            if m and m.group(1) in self.BDB_LAPOK:
-                if x != y:
+            if m:
+                if not self._resz(x, y):
                     szamlalo['bdb_szeletelo'] += 1
+                    eltero_bdb.add(m.group(1))
                 return
             if isinstance(x, dict):
                 if not isinstance(y, dict):
@@ -833,15 +857,23 @@ class TestRegresszioProto(unittest.TestCase):
 
         hasonlit(p, g, '')
         self.assertEqual(elteres[:10], [])
+        # a lemma-argumentum tétele külön teszt (átfedő számláló): itt a 40 szeletelő-lap a pontos lista
+        szamlalo['bdb_lemma_arg'] = len(self.BDB_LEMMA_LAPOK)
+        self.assertEqual(eltero_bdb, self.BDB_LAPOK)
         self.assertEqual(szamlalo, {k: v[0] for k, v in self.ENGEDELYEZETT.items()})
 
-    def test_bdb_lapok_a_felsoroltakon_kivul_azonosak(self):
-        """A BDB-szeletelő változása csak a felsorolt 8 szó-lapot érinti: a többi 90 lap appar-ja azonos."""
-        p = self._proto_json()
-        for s, l in p['lapok'].items():
-            if s not in self.BDB_LAPOK:
-                self.assertEqual(l['appar'], ADAT['gen']['lapok'][s]['appar'], s)
-        self.assertEqual(len(p['lapok']), 98)
+    def test_lemma_argumentum_pontosan_8_lapot_modosit(self):
+        """A `szeletel(szoveg, lemma)` második argumentuma (F60.17) csak a BDB_LEMMA_LAPOK lapjainál módosítja a kimenetet."""
+        import bdb_szelet
+        eltero = set()
+        for s, l in ADAT['gen']['lapok'].items():
+            txt = l['bdb_hu'] or l['bdb_en']
+            if bdb_szelet.szeletel(txt, None) != bdb_szelet.szeletel(txt, l['lemma']):
+                eltero.add(s)
+        self.assertEqual(eltero, self.BDB_LEMMA_LAPOK)
+
+    def test_a_prototipus_kimenete_98_lap(self):
+        self.assertEqual(len(self._proto_json()['lapok']), 98)
 
 
 class TestTeljes1Moz1_25(unittest.TestCase):
@@ -866,7 +898,7 @@ class TestTeljes1Moz1_25(unittest.TestCase):
 
 
 class TestTeljesAngolSzoveg(unittest.TestCase):
-    """F60.46 (v3.1): a TBESG- és a Thayer-szöveg vágás nélkül áll a lapon, gördíthető blokkban."""
+    """F60.45 (v3.1): a TBESG- és a Thayer-szöveg vágás nélkül áll a lapon, gördíthető blokkban."""
     def test_nincs_vagas(self):
         g = ADAT['gen']['gor_lapok']
         self.assertGreater(max(len(x['tbesg']) for x in g.values()), 900)
