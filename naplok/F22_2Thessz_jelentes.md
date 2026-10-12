@@ -16,7 +16,7 @@
 | 1. próba | 5 | 5 | 0 köteg | 0.2809 | 47 413 / 46 692 |
 | **összesen** | 5 | | | **0.2809** | |
 
-Költségplafon: a könyvplafon 47 vers × 0,0074 × 1,5 = 0.5217 USD (az `api_koteg.py` beépített alsó határa 1,00 USD, tehát a tényleges plafon 1.00 USD); a könyv költsége 0.2809 USD (versenként 0.0060 USD, a modellhez ment 47 versre). A futásnapló `futo_osszeg_usd` oszlopának utolsó 2Thessz-sora: 86.866842 USD, a globális 110 USD-ből.
+Költségplafon: a könyvplafon 47 vers × 0,0074 × 1,5 = 0.5217 USD (az `api_koteg.py` beépített alsó határa 1,00 USD, tehát a tényleges plafon 1.00 USD); a könyv költsége 0.2809 USD (versenként 0.0060 USD, a modellhez ment 47 versre). A futásnapló `futo_osszeg_usd` oszlopának utolsó 2Thessz-sora: 86.866842 USD, a 18 USD-s ÚSZ-keretből (D45: 86,3698 + 18; a kódbeli plafon `PLAFON_USD` = 104,36 USD).
 
 ## 1a. Szkriptkimenet
 
