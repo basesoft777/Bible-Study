@@ -5,11 +5,11 @@ kod: MOTIVUM_FORRAS
 tipus: feladat
 fazis: 1
 modell: opus
-allapot: dontesre_var
+allapot: fut
 ag: claude/f23-m1-forrassablon
 pr: https://github.com/basesoft777/Bible-Study/pull/258
 ad: a B szerkezet terve mérésekkel: szakasz-leképezés, forrássablon-tervezet, szintjelölés a SEMA-ban, CI-szabályok leírása; renderelés és fájlmozgatás nélkül
-kovetkezo: "Te: DT84 (az M1 13 javaslat-pontja: forrássablon, SEMA 3.10, pilot-terv); utána átvezetés, és a #11 briefje a pilot-terv alapján (a két elkeveredett F23-commitot az F83.4 visszavonta, `cea8c4f`, PR #260)"
+kovetkezo: "Folytatás: a DT84 átvezetése (eldöntve 2026-10-12, 🟢: (1)–(13) a, a (7) és a (10) kiegészítve; N-F23a–c) a sablon v0-ba, a SEMA 3.10-be, a ci-tervbe és a pilot-tervbe (a `javaslat`-jelölések feloldása), új ágon; utána a #11 briefje a pilot-terv alapján"
 olvas: [sablonok/, tematikus_lezart/, motivumok/, lexikon/, genezis/, adat/SEMA.md, adat/res_forras.tsv, adat/szotar_szerepek.tsv, eszkozok/general.py, CLAUDE.md, ATALAKITASI_TERV.md.md, ADATVAGYON_TERV.md, MUNKATERV.md, naplok/TEREMT002_PROZA_PROBA_meres.md]
 ir: [sablonok/9_PaRDeS_motivum_forras_sablon.md, adat/SEMA.md, naplok/MOTIVUM_FORRAS_lekepezes.tsv, naplok/MOTIVUM_FORRAS_torzscikk_egyedi.tsv, naplok/MOTIVUM_FORRAS_parositas.tsv, naplok/MOTIVUM_FORRAS_naplo_keveredes.tsv, naplok/MOTIVUM_FORRAS_atfedes.tsv, naplok/MOTIVUM_FORRAS_M0.py, naplok/F23_zaras.md, naplok/ELLENOR_F23.md, naplok/ELLENOR_F23_2.md, naplok/MOTIVUM_FORRAS_ci_terv.md, naplok/MOTIVUM_FORRAS_pilot_terv.md]
 fugg: [32, 78]
@@ -116,3 +116,4 @@ Minden számot a menetben ténylegesen futtatott parancs kimenetéből vegyél. 
 | v1.6 | 2026.10.08 | TERV-INTEGRÁCIÓ: M1-előfeltétel a #78 szerepmátrix-váz (rekonstruált aranyminta) és a #64 mérése (7. szakasz: a mérce korlátja); mérce L1–L7 + DT2; a forrássablon szótári szakasza a szerepmátrix szerint; `fugg` + 78, `olvas` + `adat/szotar_szerepek.tsv`, a #64 mérése | DT74 (1), (5); DT68 (2); a TI-menet egyszeri fejléc-frissítése (DT75 (8)) |
 | v1.7 | 2026.10.08 | M1 indul: fejléc `allapot: fut`, új `ag`; `ir` + `naplok/MOTIVUM_FORRAS_ci_terv.md`, `naplok/MOTIVUM_FORRAS_pilot_terv.md` (az M1/3–4 kimenetei, eddig hiányoztak) | a #78 lezárult (PR #256), az M1 előfeltétele teljesült; a felhasználó jóváhagyása (2026.10.08) |
 | v1.8 | 2026.10.08 | M1 javítókör az ELLENOR_F23_M1 2–4. tétele szerint: a SEMA 3.10.5 és a sablon 6. pontja a 3/9-hez igazodik (kinyerés csak a `jeloltek.tsv`-n át, a proveniencia-lábjegyzet hivatkozás; a közvetlen `auditok.tsv`-út `javaslat`, DT84 (2) bővítve); a pilot-terv HAMART-001 RÉS-számai (jelölő-előfordulás / rés / `res_forras`-sor) és a 4.1 proveniencia-hatóköre pontosítva; a fejléc verziósora (v1.5) a verziónaplóhoz igazítva | ELLENOR_F23_M1; az orkesztrátor javítóköre (a felhasználó által jóváhagyott menet része); tartalmi döntés nincs, a hatókör nem bővül |
+| v1.9 | 2026.10.12 | DT84 eldöntve (🟢): fejléc `allapot: fut`, `kovetkezo` `Folytatás:` (az átvezetés); N-F23a–c a `NYITOTT_FELADATOK.md`-ben | a felhasználó döntése a chatben (2026.10.12) |

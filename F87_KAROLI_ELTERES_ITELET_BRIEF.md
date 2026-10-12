@@ -6,12 +6,15 @@ tipus: feladat
 fazis: 1
 modell: opus
 munka: adat
-allapot: nem_indult
+allapot: lezarva
+ag: claude/f87-karoli-elteres-itelet
 ad: a #65 eltéréslistáján kézi ítéletre váró öt sor soronként eldöntve és javítva az elofordulasok.tsv-ben és a jeloltek.tsv-ben (Károli-szó, illetve Károli-verskulcs), a két 2Móz-sor szó-szintű-gépi azonosítással, az eltéréslista újragenerálva
-kovetkezo: /kovetkezo; ⛔ az M0 után (a soronkénti javítási javaslat és a javítás rögzítésének módja)
+kovetkezo: "merge a felhasználótól; nyitott: N-F87a (LD008 feloldható), N-F87b, N-F87c (NYITOTT_FELADATOK.md)"
 olvas: [naplok/KAROLI_ELLENORZES_elteresek.tsv, naplok/KAROLI_ELLENORZES_zaras.md, adat/karoli_strong/, adat/karoli_variancia.tsv, adat/SEMA.md, konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, eszkozok/karoli_ellenorzes.py, F65_KAROLI_ELLENORZES_BRIEF.md]
 ir: [adat/elofordulasok.tsv, adat/jeloltek.tsv, adat/karoli_variancia.tsv, naplok/KAROLI_ELLENORZES_elteresek.tsv]
 fugg: [65]
+pr: 299
+lezarva_osszegzes: öt sor javítva (3 karoli_szo, 3 Károli-verskulcs; KIRALY-001 2Móz 19:6 és TEREMT-001 2Móz 15:5 szó-szintű-gépi), eltéréslista és variancia újragenerálva; zárás: naplok/KAROLI_ELTERES_ITELET_zaras.md, ellenőr: naplok/ELLENOR_KAROLI_ELTERES_ITELET.md (2. kör TISZTA); draft PR #299
 ---
 
 # F87_KAROLI_ELTERES_ITELET_BRIEF.md — A #65 eltéréslistájának kézi ítélete
@@ -93,5 +96,8 @@ Jelentés: `naplok/KAROLI_ELTERES_ITELET_M0.md`, a proveniencia-sorral.
 |---|---|---|---|
 | v1 | 2026-10-11 | A feladat a #65 három `elter` sora mellett a két verskulcs-hibás `nincs_par` sort is tartalmazza (azonos hibaosztály). | befogadás, `naplok/KAROLI_ELLENORZES_zaras.md` |
 | v1 | 2026-10-11 | A befogadáskori előzetes vizsgálat szerint egyik eltérés sem Strong-hiba; a javaslat csak `karoli_szo` és `igehely` változást tartalmaz. | befogadás, előzetes lekérdezés (Károli 1908, `parok_*`, TAHOT) |
+| v1 | 2026-10-12 | DT-F87b: mind az öt sor javítása elfogadva az M0 szerint; a 4. sor `karoli_szo`-ja marad (`a sír üregébe`); az 1. sor `igazolas`-a marad (N-F87b). | felhasználó (chat), `naplok/KAROLI_ELTERES_ITELET_M0.md` |
+| v1 | 2026-10-12 | DT-F87a: a javítás ténye a `naplok/KAROLI_ELTERES_ITELET_zaras.md`-ben, a `jeloltek.tsv` `indoklas` végén rövid hivatkozással; `proveniencia`, `megbizhatosag`, `datum` változatlan (a `dontes` zárt mező, SEMA 2.4). | felhasználó (chat), `naplok/KAROLI_ELTERES_ITELET_M0.md` 4. pont |
+| v1 | 2026-10-12 | Az `adat/karoli_variancia.tsv` teljes újragenerálással, egyetlen ts-sel (az ellenőr 1. eltérése: a két beszúrt sor vegyes ts-t adott); a ts-en kívül a tábla az előző változattal azonos. | `naplok/ELLENOR_KAROLI_ELTERES_ITELET.md` |
 
 Nyitott tétel: **N-F87a** — a régi KJV/MT-kulcsú igehelyek más adattáblákban (`lxx_dontesek.tsv` Préd 9:10, `forditasok.tsv`); a feladat csak listázza őket.

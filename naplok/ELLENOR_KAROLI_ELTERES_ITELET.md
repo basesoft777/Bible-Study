@@ -1,0 +1,51 @@
+*Mentési megjegyzés (végrehajtó): a `fuggetlen-ellenor` írási eszköz híján a jelentést szövegként adta vissza; az alábbi 1. kör változtatás nélkül mentve. Az ellenőr jelezte: egyszer a `futtat.py --teljes` kimenetét `grep`-pel szűrte (megengedett parancskörön kívül, az eredményt nem érintette).*
+
+ELTÉRÉS: 2 tétel
+# ELLENŐR — F87_KAROLI_ELTERES_ITELET_BRIEF.md · 85364fda..b46a272e (1. kör)
+
+| pont | eredmény | fájl:sor | parancs / indok |
+|---|---|---|---|
+| 1. sor (KIRALY-001 2Móz 19:6) | OK | `adat/elofordulasok.tsv:5`, `adat/jeloltek.tsv:21` | `lekerdez.py karoli "2Móz 19:6"` → „…papok birodalma és szent nép…” (proveniencia: `scope=range:2Móz 19:6 \| forras=Karoli_1908.tsv+… \| ts=2026-10-12T06:51Z`). `scan H3548` és `scan H4467 --szakasz "2Móz 19:6"` → mindkettő n=1. `parok_2Moz.tsv:11019-11020`: papok=H3548, birodalma=H4467, `magas` S+C. A `karoli_szo` értéke `papok birodalma` lett, az `azonositas_modja` `szó-szintű-gépi`. Az `igazolas` értéke `nincs` maradt, ahogy a DT-F87b előírja. |
+| 2. sor (TEREMT-001 2Móz 15:5) | OK | `elofordulasok.tsv:45`, `jeloltek.tsv:61` | `karoli "2Móz 15:5"` → „Elborították őket a hullámok… merültek a mélységbe.” `scan H8415` és `scan H4688 --szakasz "2Móz 15:5"` → n=1 / n=1. `parok_2Moz.tsv:8754`: hullámok=H8415, `magas`; a 8758–8759. sorban mélységbe=H9003+H4688. Új érték: `a hullámok`, `szó-szintű-gépi`. |
+| 3. sor (ALVIL-001 Jób 17:13→17:12) | OK | `elofordulasok.tsv:97`, `jeloltek.tsv:113` | `karoli "Jób 17:12"` → „…a sír már az én házam…”. `karoli "Jób 17:13"` → „A sírnak mondom…”. `scan H7585 --szakasz "Jób 17:1-16"` → Jób 17:12 és 17:15 (n=2). `scan H7845` → Jób 17:13. `parok_Job.tsv:5381`: sír=H7585, `alacsony`. A `karoli_szo` `a sír` lett, a mód `tartalom-alapú` maradt. |
+| 4. sor (Jób 17:16→17:15) | OK | `elofordulasok.tsv:98`, `jeloltek.tsv:114` | `karoli "Jób 17:16"` → „Nincs Károli-szöveg”. `karoli "Jób 17:15"` → „Leszáll az majd a sír üregébe…”. `scan H0905` → Jób 17:15. `parok_Job.tsv:5419-5420`: sír=H7585, üregébe=H0905, `alacsony`. A `karoli_szo` marad (DT-F87b), az eltéréslistán `reszleges=igen`. |
+| 5. sor (Préd 9:10→9:12) | OK | `elofordulasok.tsv:125`, `jeloltek.tsv:141` | `karoli "Préd 9:10"` → „A te ruháid…”. `karoli "Préd 9:12"` → „…nincs a Seolban…”. `scan H7585 --szakasz "Préd 9:1-18"` → csak Préd 9:12. `parok_Pred.tsv:3486-3487`: Seolban=H9003+H7585, `alacsony`. |
+| K1 | OK | `naplok/KAROLI_ELTERES_ITELET_M0.md`, `naplok/KAROLI_ELTERES_ITELET_zaras.md` | Mind az öt sor levezetve, mindkét naplóban van proveniencia-sor. Elvetett javaslat nincs. |
+| K2 / DT-F87a / DT-F87b | OK | `DONTESEK.md:181-182` | `git diff --word-diff 85364fda..b46a272e -- adat/elofordulasok.tsv adat/jeloltek.tsv`: csak az `igehely`, a `karoli_szo` és az `azonositas_modja` mező változott (ez utóbbi csak az 1–2. sorban), valamint a `jeloltek.indoklas` végére került egy `[F87: … l. naplok/KAROLI_ELTERES_ITELET_zaras.md]` hivatkozás. A `proveniencia`, a `megbizhatosag`, a `datum` és az `igazolas` változatlan. A két tábla mind az öt soron egyezik. |
+| K3 | OK | `naplok/KAROLI_ELLENORZES_elteresek.tsv` | Grep `\tszó-szintű-gépi\t` → 25 sor, mind `egyezik` és `magas` (a #65-ből 23, ebből a diffből 2). Grep `tartalom-alapú\tegyezik\t[^\t]*\tmagas` → 0 találat, tehát egy második `--frissit` futás 0 sort írna. A Jób- és Préd-sorok `tartalom-alapú`-k maradtak. |
+| K4 (változatlan fájlok) | OK | — | `git diff --stat`: 9 fájl változott, köztük nincs tanulmány-, motívum- vagy lexikonfájl. A zárójelentés régi hivatkozás-listáját Grep-pel ellenőriztem (`Jób 17:1[36]\|Préd 9:10`): Hadesz_Seol_tematikus 3, PaRDeS_motivumok 2, ALVIL-001_TORZSCIKK 11, ALVIL-001_TUDOMANYOS 16 sor. Ez egyezik a zárójelentéssel. |
+| K4 (`ellenoriz.py` 0 sértés) | NEM ELLENŐRIZHETŐ | — | Az `ellenoriz.py` a szerepkörömben nem futtatható. A `futtat.py` docstringje szerint az E1-et nem a `futtat.py` adja. |
+| CI (saját futtatás) | OK, részben NEM ELLENŐRIZHETŐ | — | `python eszkozok/ellenorzes/futtat.py --valtozott <9 fájl> --diff-alap 85364fda --diff-fej b46a272e` → E2–E20 és E26: 0 találat. E25: 3 JELENTES (CLAUDE.md, MUNKAMENET.md), ezek nem F87-sorok. E27: 31 JELENTES, ebből 3 látszik, és mind korábbi állapotra vonatkozik. A kimenet a többi 28-at elhagyja („es tovabbi 28”), így ezek nem ellenőrizhetők. CI-jelentést nem kaptam, ezért összevetni nincs mivel. |
+| `karoli_variancia.tsv` (eljárás) | **ELTÉRÉS** | `adat/karoli_variancia.tsv:1`, `:42778`, `:42790` | A `git diff --numstat` +2/−0-t mutat, tehát a többi sor valóban bájtra azonos. A két új `megerosites`-sor tartalma helyes. Grep `^megerosites\t` → 25, ez egyezik a 25 frissíthető sorral. Az előállítás módja viszont nem reprodukálható. A `karoli_ellenorzes.py` 274–317. sorában a `variancia()` minden sort és a fejlécet ugyanazzal az egy `ts`-sel írja. A commitolt fájl fejléce `ts=2026-10-11T17:27:52Z` és `előállítás: eszkozok/karoli_ellenorzes.py --variancia`, két sora viszont `ts=2026-10-12T06:48:59Z`. Ilyen fájlt az eszköz egyetlen futása sem állít elő, vagyis ez kézzel összeillesztett generált tábla, és a fejléc proveniencia-állítása nem igaz rá. Két helyes megoldás van: teljes újragenerálás egyetlen új ts-sel (ilyenkor a Δ minden sor ts-mezője), vagy az eszköz soronkénti ts-megőrzéssel. |
+| Brief fejléc / döntésnapló | **ELTÉRÉS** | `F87_KAROLI_ELTERES_ITELET_BRIEF.md:9,12,91-96` | `git log --stat`: a brief utoljára az F87.2-ben változott. A `kovetkezo` mező ma is „Folytatás: az M1 …, utána M2, M3”, pedig az M1–M3 kész (F87.3–F87.5). A `allapot: fut` értéket az M3 a `lezarva`-ra írná át, ez az ellenőr után még rendben lehet. A brief 5. döntésnaplója a DT-F87a/b-t nem tartalmazza. Mindez a CLAUDE.md szabályát sérti („minden menet a saját briefje fejlécét frissíti”). |
+| N-F87c (10 átminősített sor) | OK | `naplok/KAROLI_ELLENORZES_elteresek.tsv` 7, 21, 22, 26, 72, 73, 126, 142, 143, 144 | A 15 megváltozott sorból 5 az F87-é, 10 pedig a Sof, Zak, Jóel, Ámós, Hab, Én és Hós könyvé. `git log -1 b791a114 -- adat/karoli_strong/parok_<könyv>.tsv`: a hét könyv parok-fájlja az F65.6 commitban (b791a114, az eltéréslista utolsó generálása) még nem létezett. A base-ben megvannak (2845c176, 5107bf86, 0a619db5, 8c8ab901, ef3f2533, f08ff586, ea3e80b7). A Jób-, Préd- és 2Móz-parok a tartományban nem változott (`git diff --stat 85364fda..b46a272e -- adat/karoli_strong/` üres). A két új `elter` sort szúrópróbával néztem meg. `parok_Zak.tsv:1754-1763`: a „pap” H3548, a H3678 csak a „székében” szóhoz tartozik. `parok_Hab.tsv:864-868`: víz=H4325, ár=H2230, a H8415 a „hullám” szón áll. Az átminősítés tehát valóban a parok-bővülésből ered. |
+| D (v1, két sor) | OK | brief 95–96. sor | Az 5 sor hatókörét és azt, hogy egyik eltérés sem Strong-hiba, az 1–5. sor lekérdezései igazolják. |
+| A1 | OK | M0 5. sor, zárójelentés 3. sor | Proveniencia-sor mindkét naplóban van. A gépi pár „modell-kimenet, javaslat” jelöléssel szerepel. |
+| A2 | OK | `NYITOTT_FELADATOK.md` | N-F87a: Grep `^LD008\t` → `lxx_dontesek.tsv:10`, Préd 9:10, `nyitott`, tehát valóban nyitott. N-F87b: az `igazolas` értéke `nincs` (diff). N-F87c: lásd fent. Az N-F85c lezárt állapota helytálló. |
+| A3 / A4 / A5 | NEM ALKALMAZHATÓ | — | A diffben nincs párhuzam, tanulmány vagy nevesített tanító. |
+| A6 | OK | — | Az E12–E15 a változott fájlokon 0 találatot ad. |
+| Ellenőrzőlista 1 (törölt sorok) | OK | — | `git diff --numstat`: törölt sor nincs. Módosult az elofordulasok 5 sora, a jeloltek 5 sora és az elteresek 15 sora (5 F87 + 10 N-F87c), a variancia +2 sorral bővült. |
+| Ellenőrzőlista 2 (kulcstartomány) | OK | — | Az új kulcsokon (Jób 17:12, Jób 17:15, Préd 9:12) a TAHOT-ban van H7585 (scan). Ütközés nincs, és ALVIL-001 sor sem veszett el (5/5 módosítás, Δ0). |
+| Ellenőrzőlista 3 (nulla-diff) | OK | — | A „bájtra azonos” állítás csak a `karoli_variancia.tsv` nem új soraira vonatkozik, és ott igaz (+2/−0). Az eltéréslistára és az adattáblák öt sorára nem vonatkozik. A `parok_*` a tartományban nem változott. |
+| Ellenőrzőlista 4 (E17/DT3) | OK | — | `git diff --numstat`: `adat/elofordulasok.tsv` Δ0, `adat/jeloltek.tsv` Δ0, `adat/karoli_variancia.tsv` Δ+2. A többi `adat/*.tsv` és a teljes `konkordancia/*.tsv` Δ0, nem változott. Egyik tábla sem éri el a 10-es küszöböt, ezért bontási napló nem kell. |
+| Ellenőrzőlista 5 (⛔) | OK | — | `git log`: az M0 (e8478241) adatot nem módosított. A döntés (ce84f0b6) megelőzi az M1-et (59173254). A két tábla egy commitban változott. Végleges DT/N-szám nincs, csak a DT-F87a/b és az N-F87a/b/c helyőrzők. |
+| K5 | — | — | A jelen jelentés két ELTÉRÉS-t tartalmaz. |
+
+ELTÉRÉS-ek súlyossági sorrendben:
+1. `adat/karoli_variancia.tsv`: kézzel összeillesztett generált tábla vegyes ts-sel. A fejléc egyetlen ts-t és egyetlen eszközfutást állít, a commitolt fájlt viszont az eszköz nem tudja reprodukálni. A tartalom helyes, a proveniencia nem.
+2. `F87_KAROLI_ELTERES_ITELET_BRIEF.md`: a `kovetkezo` fejlécmező elavult (az M1-et jelzi következőnek), és a brief döntésnaplójából hiányzik a DT-F87a/b.
+
+Megjegyzés, ELTÉRÉS nélkül: az eltéréslistán a Préd 9:12 sor `gepi_strongok` mezője H0834-et is tartalmaz. Ennek oka, hogy a „hová” előtti „a” névelőt a párosítás az אֲשֶׁר-hoz kötötte. Ez a #65 eszközének viselkedése, nem F87-hiba.
+
+## Végrehajtói javítás (F87.6)
+
+1. `adat/karoli_variancia.tsv`: `python eszkozok/karoli_ellenorzes.py --variancia adat/karoli_variancia.tsv` egyetlen futással, ts=2026-10-12T06:56:15Z; a ts-mezőn kívül a tábla az F87.5 változattal azonos (ts-maszkolt `diff`: azonos).
+2. A brief `kovetkezo` mezője frissítve; a döntésnapló kiegészítve (DT-F87a, DT-F87b, a variancia-eljárás).
+
+## 2. kör — b46a272e..89cd5d3d (F87.6): TISZTA
+
+*(az ellenőr eredménytáblája, a koordinátor közvetítésével, változtatás nélkül)*
+
+2. kör — b46a272e..89cd5d3d (F87.6): TISZTA. R2-1a variancia egységes ts (42 800 sor + fejléc, ts=2026-10-12T06:56:15Z) OK; R2-1b ts-maszkolva azonos a b46a272e-vel (csak a ts változott) OK; R2-1c eszköz-reprodukció NEM ELLENŐRIZHETŐ (az eszköz fájlt ír); R2-2 brief kovetkezo és döntésnapló OK; R2-3 zárás OK; R2-4 hatókör OK (4 fájl); R2-5 E17/DT3 OK; R2-6 CI E2–E20, E26: 0 találat, E25/E27 a korábbi JELENTES-készlet; R2-7 ⛔ OK.
+
+Az `ellenoriz.py` (E1) az ellenőr szerepkörében nem futtatható; a végrehajtó futtatta: 0 sértés.
