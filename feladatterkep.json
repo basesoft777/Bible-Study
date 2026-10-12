@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-10-12",
-   "commit": "93a62b80"
+   "commit": "a5406e8d"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -87,7 +87,7 @@
   {
    "kulcs": "dt",
    "cimke": "Nyitott döntés",
-   "db": 1
+   "db": 2
   }
  ],
  "sor": [
@@ -792,6 +792,16 @@
      "🟡"
     ],
     "sor": 165
+   },
+   {
+    "id": "DT-F05a",
+    "feladat": "#5 SZOTAR (S2.5, tW mint 3. szerep: a *tohu*/*bohu* pár)",
+    "kerdes": "A tW-nek nincs önálló szócikke a *tohu–bohu* párhoz (1Móz 1:2): a H0922 (*bohu*) egyik szócikk Strong-listájában sem szerepel (`naplok/SZOTAR_S0b_tw.tsv:15`: `nincs`), a H8414 (*tohu*) négy gyűjtőszócikk listájában áll (`other/desert`, `other/ruin`, `other/vain`, `other/waste`), de egyikük hivatkozásai között sincs az 1Móz 1. A küszöbmérés a H8414-et ezért `igen`-nel számolta (`SZOTAR_S0b_tw.tsv:47`). Mit mutasson a szerepmátrix 3. szerepe a H8414-nél, hogy a pár ne legyen aszimmetrikus és félrevezető? *(forrás: chat 2026-10-12; `konkordancia/tW_szocikkek.tsv`, `naplok/SZOTAR_S0b_jelentes.md` 4. szakasz)*",
+    "allapot": "nyitott",
+    "jelek": [
+     "🟡"
+    ],
+    "sor": 181
    }
   ],
   "alkalmazasra_var": [
