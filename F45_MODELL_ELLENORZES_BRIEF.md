@@ -7,7 +7,7 @@ fazis: folyamat
 modell: sonnet
 allapot: lezarva
 ag: claude/f45-modell-ellenorzes
-pr: PR_HELY
+pr: https://github.com/basesoft777/Bible-Study/pull/315
 lezarva_osszegzes: "szabály az öt helyen; ellenőr: 6 eltérés (1 súlyos: CLAUDE.md:77 ellentmond a fuggetlen-ellenor.md-nek); draft PR, javítás döntésre vár; zárójelentés: naplok/F45_zaras.md"
 ad: minden brief-futtatás (közvetlen és /kovetkezo útján, subagenttel vagy anélkül) az elején ellenőrzi, hogy a ténylegesen futó modell egyezik-e a brief fejlécének `modell` mezőjével, eltérésnél nem dolgozik; az adattáblák `modell` mezőjébe mindig a tényleges modellnév kerül
 kovetkezo: "lezárva; az ellenőr 1. eltérésének (CLAUDE.md:77 ↔ fuggetlen-ellenor.md) feloldása a felhasználó döntése"
