@@ -6,10 +6,10 @@ tipus: feladat
 fazis: 1
 munka: adat
 modell: sonnet
-allapot: fut
+allapot: megallt
 ag: claude/f79-sqlite-epit
 ad: eszkozok/sqlite_epit.py — az adat/ és a konkordancia/ kanonikus tábláiból determinisztikusan épített, nem commitolt pardes.db (SEMA-típusok, KK-alapú vers-kulcs, normalizált igehely és Strong, licenc_allapot és kereskedelmi minden táblán, strong_parok és frázis-pozíció előszámolva, FTS a motivumok/ fölött); a SEMA 3. integritási szabályai az ellenoriz.py függvényein át futnak, sértésnél megáll; mért méret és lekérdezés-próba a 26 pontból az 1–6., 13–15. pontra
-kovetkezo: 'Folytatás: M1 (kis mintás építő, DT-F79a alkalmazva); ⛔ az M3 lekérdezés-próba után, a teljes építés előtt'
+kovetkezo: 'Te: a kis minta lekérdezés-próbáját (naplok/SQLITE_EPIT_meres_minta.md, 9 pont) hagyd jóvá a teljes építés (M4) előtt; utána /kovetkezo az M4-re'
 olvas: [adat/SEMA.md, adat/, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/BSB_Strongs.tsv, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, motivumok/, tematikus_lezart/, genezis/, ujszovetseg/, eszkozok/strong_util.py, eszkozok/ellenoriz.py, eszkozok/gate.py, MUNKATERV.md, ADATVAGYON_TERV.md]
 ir: [eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, .gitignore]
 fugg: [62]

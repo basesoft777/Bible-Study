@@ -567,9 +567,9 @@ class Epito(object):
             except ValueError:
                 self.jelent_norm('tipnr', r['Strong-szám'], 'Strong-szám nem normalizálható')
                 s = None
-            tip.append((r['Név (normalizált)'], r['Névváltozat'], s, r['Nyelv'], ig, r['Igehely']))
+            tip.append((r['Név (normalizált)'], r['Névváltozat'], s, r['Strong-szám'], r['Nyelv'], ig, r['Igehely']))
         self.tabla('tipnr', [('nev', 'TEXT'), ('nevvaltozat', 'TEXT'), ('strong', 'TEXT'),
-                             ('nyelv', 'TEXT'), ('igehely', 'TEXT'), ('step_nyers', 'TEXT')],
+                             ('strong_nyers', 'TEXT'), ('nyelv', 'TEXT'), ('igehely', 'TEXT'), ('step_nyers', 'TEXT')],
                    tip, SZARMAZTATOTT_LICENC['tipnr'], ['igehely', 'strong'])
 
     # -- BSB + szamozas ------------------------------------------------------------
