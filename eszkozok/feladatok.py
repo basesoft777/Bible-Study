@@ -851,8 +851,9 @@ def var_rad(b):
             and _kov_szoveg(b).startswith(VAR_RAD_ELOTAG))
 
 
-def jeloltek(briefek, main_all=None):
-    """{szam: None | ok}: az 1. fazis feladatai; None = jelolt, kulonben a kihagyas oka.
+def jeloltek(briefek, main_all=None, fazis='1'):
+    """{szam: None | ok}: a `fazis` feladatai (alapertelmezes: 1. fazis); None = jelolt,
+    kulonben a kihagyas oka.
 
     Jelolt: nem_indult / dontesre_var, vagy felbemaradt (`fut` + `Folytatás:`, F49); a
     `kovetkezo` nem `Te:` es nem `halasztva`, nincs helyi gep, minden fuggese kesz, es
@@ -862,7 +863,7 @@ def jeloltek(briefek, main_all=None):
     by_szam = {b.szam: b for b in briefek if b.szam is not None}
     eredmeny = {}
     for b in sorted(by_szam.values(), key=lambda x: x.szam):
-        if b.fej.get('tipus') != 'feladat' or b.fej.get('fazis') != '1':
+        if b.fej.get('tipus') != 'feladat' or b.fej.get('fazis') != fazis:
             continue
         if statusz(b, main_all) == 'kesz':
             continue
@@ -895,6 +896,13 @@ def jeloltek(briefek, main_all=None):
                     ok = 'kizár (futó): ' + ', '.join('#%d' % n for n in futo)
         eredmeny[b.szam] = ok
     return eredmeny
+
+
+def alternativak(briefek, main_all=None):
+    """A `fazis: folyamat` feladatok ugyanazzal a szaballyal, mint a `jeloltek`: a
+    /kovetkezo ezeket csak alternativakent ajanlja (kovetkezo.md), de a kihagyas okat
+    is gep adja, nem a futtato modell kezi atnezese. Csomagba nem kerulnek."""
+    return jeloltek(briefek, main_all, fazis='folyamat')
 
 
 def csomag(briefek, main_all=None, legfeljebb=5):
@@ -1303,7 +1311,7 @@ def main(argv=None):
                         'úgy veszi figyelembe, mintha a repóban lenne; szám nélkül a következő szabad számot kapja')
     c = alp.add_parser('csomag', help='F32: a felsorolt feladatok csomagolhatók-e (munka mező)')
     c.add_argument('feladatok', nargs='+', type=int, metavar='SZAM')
-    alp.add_parser('jeloltek', help='az 1. fázis jelöltjei és a kihagyás okai (nem indít semmit)')
+    alp.add_parser('jeloltek', help='az 1. fázis jelöltjei, a folyamat-alternatívák és a kihagyás okai (nem indít semmit)')
     a = alp.add_parser('atvetel', help='a FELADATOK.md táblájából a fejlécekbe')
     a.add_argument('--szaraz', action='store_true', help='csak kiírja a változásokat')
     alp.add_parser('kovetkezo_szam', help='a következő szabad feladatszám')
@@ -1359,6 +1367,12 @@ def main(argv=None):
                     print('%s\t#%d\t%s' % ('JELOLT' if ok is None else 'KIHAGYVA', n,
                                            cim if ok is None else ok))
             print('CSOMAG\t%s' % ' '.join('#%d' % n for n in csomag(briefek, ma_all)))
+            for n, ok in alternativak(briefek, ma_all).items():
+                cim = by[n].fej.get('cim', '')
+                if ok is None:
+                    print('ALTERNATIVA\t#%d\t%s' % (n, cim))
+                else:
+                    print('ALT_KIHAGYVA\t#%d\t%s' % (n, ok))
             return 0
         if arg.parancs == 'atvetel':
             for fajl, kulcs, regi, uj in atvetel(arg.gyoker, szaraz=arg.szaraz):
