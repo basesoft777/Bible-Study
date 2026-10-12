@@ -1,3 +1,20 @@
+---
+feladat: 92
+cim: A pardes.db kiegészítése az olvasói lapokhoz — a hat hiány pótlása, újraépítés, egyezési teszt
+kod: PARDES_DB_OLVASOI
+tipus: feladat
+fazis: 1
+modell: sonnet
+munka: adat
+allapot: nem_indult
+ad: a pardes.db új táblái (token_macula, lxx_token, bdb_alias, nave_vers, lxx_versszam) táblaszintű licenccel és meta-sorral, az adatbázis újraépítve; a #60 pilot D1–D5 mérése mindkét szakaszon újrafuttatva (D1 39/39, D2 0 eltérés, D5 friss); mérethatár nélkül (DT-F92a)
+kovetkezo: /kovetkezo; ⛔ M0 után (a táblaterv és a mért méret jóváhagyása)
+olvas: [eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, naplok/SQLITE_EPIT_meres.md, adat/SEMA.md, adat/licencek.tsv, "konkordancia/Macula_heber_*.tsv", "konkordancia/LXX_OS/*.tsv", konkordancia/BDB_strong_alias.tsv, konkordancia/Nave_basokant.tsv, konkordancia/LXX_versszintu_parok.tsv, ADATVAGYON_TERV.md, DONTESEK.md]
+ir: [eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, naplok/SQLITE_EPIT_meres.md, adat/SEMA.md, naplok/PARDES_DB_OLVASOI_M0.md, naplok/PARDES_DB_OLVASOI_zaras.md]
+fugg: []
+nem_fugg: [52]
+---
+
 # A `pardes.db` kiegészítése az olvasói lapokhoz — a hat hiány pótlása, újraépítés, egyezési teszt (PARDES_DB_OLVASOI)
 
 *Befogadásra váró brief-tervezet. Forrás: a #60 olvasói pilot értékelő jelentése (`naplok/OLVASOI_PILOT_ertekeles.md` 8.3, M2b D1–D5) és a felhasználó döntése a chatben (2026-10-12): a hat hiány pótlása, saját szerveres kiszolgálással (DT-F92a). A fejlécet a `/befogad` adja.*
