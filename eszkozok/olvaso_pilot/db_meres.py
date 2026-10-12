@@ -220,7 +220,7 @@ def hasonlit_gorog(con, g, db=None):
     s = g['strong']
     d = db or db_gorog(con, s)
     ki = {}
-    # a régi ág JSON-ja a szócikket 900 (TBESG) / 700 (Thayer) karakterre vágja és „…”-tal zárja: a vágott előtagot vetjük össze
+    # a pilot JSON-ja a teljes TBESG/Thayer-szöveget tartalmazza (F60.46); a régi, 900/700 karakterre vágott JSON-t az előtag-egyezés még kezeli
     ki['tbesg'] = (egyezik_vagva(g['tbesg'], d['tbesg']), len(g['tbesg']), len(d['tbesg']), 'a JSON vágott szöveg (előtag-egyezés)' if (g['tbesg'] or '').endswith('…') else '')
     ki['thayer'] = (egyezik_vagva(g['thayer'], d['thayer']), len(g['thayer']), len(d['thayer']), 'a JSON vágott szöveg (előtag-egyezés)' if (g['thayer'] or '').endswith('…') else '')
     ki['magyar_szocikk'] = (len(g['hu']) == min(d['hu_db'], 6), len(g['hu']), d['hu_db'], '')
@@ -308,7 +308,10 @@ LAPHOZ_TABLAK = ['vers', 'token_par', 'token_eredeti', 'token_strong', 'tsk', 'k
 
 
 def tabla_meretek():
-    """{tábla: (MB indexszel, MB licenc_* nélkül)} a naplok/SQLITE_EPIT_meres.md táblázatából."""
+    """{tábla: (MB indexszel, MB licenc_* nélkül)} a naplok/SQLITE_EPIT_meres.md táblázatából.
+    A táblázat „MB”-ja valójában MiB (lapszám × lapméret / 2^20: a fájl 886 415 360 bájt = 845,4 MiB = 886,4 MB); az itt visszaadott
+    érték MB = 10^6 bájt (F60.52: egy egységet használunk)."""
+    MIB_MB = 1048576 / 1e6
     ki = {}
     ut = GY + 'naplok/SQLITE_EPIT_meres.md'
     if not os.path.exists(ut):
@@ -316,7 +319,7 @@ def tabla_meretek():
     for s in open(ut, encoding='utf-8'):
         m = re.match(r'^\| `(\w+)` \| (\d+) \| ([\d.]+) \| ([\d.]+) \|', s)
         if m:
-            ki[m.group(1)] = (float(m.group(3)), float(m.group(4)))
+            ki[m.group(1)] = (float(m.group(3)) * MIB_MB, float(m.group(4)) * MIB_MB)
     return ki
 
 
@@ -328,7 +331,7 @@ def reszhalmaz_meret(db_ut, tomorites):
     licenc_nelkul = sum(tm[t][1] for t in van)
     osszes = sum(v[0] for v in tm.values())
     fajl_mb = os.path.getsize(db_ut) / 1e6
-    ki = {'forras': 'naplok/SQLITE_EPIT_meres.md (táblánkénti méret indexszel)', 'fajl_mb': round(fajl_mb, 1),
+    ki = {'forras': 'naplok/SQLITE_EPIT_meres.md (táblánkénti méret indexszel; MiB-ből átszámolva MB = 10^6 bájtra)', 'fajl_mb': round(fajl_mb, 1),
           'tablak_osszege_mb': round(osszes, 1), 'szukseges_tablak': van, 'nincs_a_meres_tablazataban': hianyzik,
           'szukseges_mb': round(szukseges, 1), 'szukseges_licenc_oszlop_nelkul_mb': round(licenc_nelkul, 1),
           'resz_a_teljesbol_szazalek': round(100 * szukseges / osszes, 1) if osszes else None,

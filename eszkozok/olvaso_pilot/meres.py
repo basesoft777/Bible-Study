@@ -349,10 +349,11 @@ def main():
     ]))
     w('')
     legnagyobb = max(v[1] for v in HTML_BAJT.values())
-    if legnagyobb < 8 * 1024 * 1024:
-        w('A legnagyobb HTML %s bájt, vagyis 8 MB alatt van: lusta betöltésre vagy külön JSON-ra nem kellett áttérni (a határ átlépése esetén a nagy szövegek: SECE, LSJ, tW, TBESH, BDB teljes szöveg külön JSON-ba kerülnének).' % format(legnagyobb, ',').replace(',', ' '))
+    # a határ a 16 MB (MB = 10^6 bájt): az oldal egyetlen önálló fájl, a JSON gzip+base64 beágyazású (F60.27)
+    if legnagyobb < 16 * 10 ** 6:
+        w('A legnagyobb HTML %s bájt (%.1f MB; MB = 10^6 bájt), vagyis a 16 MB-os határ alatt van (gzip+base64 beágyazással; a nyers JSON-beágyazás ennél nagyobb).' % (format(legnagyobb, ',').replace(',', ' '), legnagyobb / 10 ** 6))
     else:
-        w('A legnagyobb HTML %s bájt, vagyis átlépte a 8 MB-ot: lusta betöltésre vagy külön JSON-ra kell áttérni.' % format(legnagyobb, ',').replace(',', ' '))
+        w('A legnagyobb HTML %s bájt (%.1f MB; MB = 10^6 bájt), vagyis átlépte a 16 MB-ot: a nagy szövegeket (SECE, LSJ, tW, TBESH, BDB teljes szöveg) külön JSON-ba kell tenni.' % (format(legnagyobb, ',').replace(',', ' '), legnagyobb / 10 ** 6))
     w('')
     os.makedirs(os.path.dirname(args.ki), exist_ok=True)
     with open(args.ki, 'w', encoding='utf-8', newline='\n') as fh:

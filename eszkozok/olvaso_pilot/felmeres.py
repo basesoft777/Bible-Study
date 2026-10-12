@@ -322,7 +322,7 @@ K = 'konkordancia/'
 A = 'adat/'
 # --- a pilot eddig is használta
 R('Karoli_1908', K + 'Karoli_1908.tsv', IGEN, 'vers (szó: a szöveg tokenizálva)', ['Karoli_1908'], V(K + 'Karoli_1908.tsv'))
-R('TAHOT_kivonat', K + 'TAHOT_kivonat.tsv', IGEN, 'vers, szó, Strong', ['TAHOT'], m_tahot, 'nem teljes (CLAUDE.md): a hiányzó fejezetek a két szakaszt nem érintik')
+R('TAHOT_kivonat', K + 'TAHOT_kivonat.tsv', IGEN, 'vers, szó, Strong', ['TAHOT'], m_tahot, 'fejezet-szinten teljes (eszkozok/tahot_lefedettseg_ellenoriz.py: „Fejezet-szinten nincs hiány”, 0 hiányzó fejezet; CLAUDE.md, F85)')
 R('TAGNT_kivonat', K + 'TAGNT_kivonat.tsv', IGEN, 'Strong (görög), vers', ['TAGNT'], m_tagnt)
 R('Macula_heber_Genezis / Macula_heber_Zsoltarok', K + 'Macula_heber_{Genezis,Zsoltarok}.tsv', IGEN, 'vers, szó (morfema), Strong', ['Macula_heber'], m_macula, 'a morfológiai kód magyar feloldása: most bővítve (morf_kulcs_heber)')
 R('Macula_heber_* (a másik 37 könyv)', K + 'Macula_heber_*.tsv', NEM, 'vers, szó', ['Macula_heber'], NA('más könyvek'), 'a két szakasz könyvét (1Móz, Zsolt) a fenti sor már használja')
