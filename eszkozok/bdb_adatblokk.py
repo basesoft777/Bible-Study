@@ -14,6 +14,7 @@ szakasz vegen proveniencia-sor all, ures forrasnal kifejezett jelzes.
     python eszkozok/bdb_adatblokk.py --minta H2617 H3548   # tobb blokk
     python eszkozok/bdb_adatblokk.py --javitas-epit        # adat/bdb_igehely_javitas.tsv
     python eszkozok/bdb_adatblokk.py --javitas-atvezet     # M5: az 1-5. adag forditasai
+    python eszkozok/bdb_adatblokk.py --karoli-epit         # adat/bdb_karoli.tsv (F80, SEMA 2.25)
 
 A Strong-szam alakja H2617 / H02617 / 2617 / h2617 mind elfogadott; belsoleg
 `H` + 4 jegyu kitoltott szam (+ homograf-betu). Az adat- es kutatasi oldali
@@ -49,7 +50,12 @@ LEXHIV_UT = os.path.join(ADAT, 'lexikon_hivatkozasok.tsv')
 GRAMM_UT = os.path.join(ADAT, 'grammatikai_strongok.tsv')
 FORDITASOK_UT = os.path.join(ADAT, 'forditasok.tsv')
 JAVITAS_UT = os.path.join(ADAT, 'bdb_igehely_javitas.tsv')
+KAROLI_TABLA_UT = os.path.join(ADAT, 'bdb_karoli.tsv')
 SORREND_UT = os.path.join(REPO, 'naplok', 'BDB_FORDITAS_sorrend.tsv')
+
+KAROLI_FEJLEC = ['strong', 'tipus', 'karoli_alak', 'magas', 'alacsony', 'pelda_versek',
+                 'tahot_elofordulas', 'par_db', 'proveniencia']
+NINCS_KAROLI_ALAK = '[NINCS KÁROLI-ALAK]'
 
 JAVITAS_FEJLEC = ['strong', 'forras_hivatkozas', 'javitott_hivatkozas', 'allapot', 'indok', 'proveniencia']
 
@@ -798,6 +804,87 @@ def atvezet_vissza(forditas, javitva_sorok):
 
 
 # ---------------------------------------------------------------------------
+# F80: adat/bdb_karoli.tsv -- a kesz BDB-szocikkek Karoli-adata (SEMA 2.25)
+# ---------------------------------------------------------------------------
+
+def kesz_bdb_strongok():
+    """A `forditasok.tsv` kesz (`jelentes_szam=teljes`, `mezo=forditas_hu`) BDB-szocikkeinek
+    kulcsa (`strong`, 4 jegyre kitoltve), rendezve. Csak olvas."""
+    ki = set()
+    elso = True
+    for m in tsv_sorok(FORDITASOK_UT):
+        if elso:
+            elso = False
+            continue
+        if m[0] == 'BDB' and m[3] == 'teljes' and m[4] == 'forditas_hu':
+            ki.add(strong_padded(m[1]))
+    return sorted(ki)
+
+
+def karoli_tabla_sorok(strongok, ts):
+    """[[mezo, ...]] a KAROLI_FEJLEC szerint. Szocikkenkent egy `szocikk` sor (osszesitett
+    szamok + proveniencia; ures forrasnal a karoli_alak a NINCS_KAROLI_ALAK jelzes), utana
+    alakonkent egy `alak` sor (kisbetusitett szoalak, magas/alacsony darab, az elso PELDA_MAX
+    kulonbozo vers kanonikus sorrendben -- hivatkozas, nem szoveg). A kulcs: strong + karoli_alak
+    (a vers + Strong + alak harmas a pelda_versek elemeivel egyutt); nincs fajlbeli sorszam."""
+    sorok = []
+    lef = lefedett_konyvek()
+    for kulcs in strongok:
+        sz = strong_szam(kulcs)
+        alakok = karoli_alakok(sz)
+        tah = tahot_versek().get(sz, {})
+        lef_tah = sum(db for v, db in tah.items() if v.rsplit(' ', 1)[0] in lef)
+        par_db = len(parok().get(sz, []))
+        pv = ('scope=%s | forras=adat/karoli_strong/parok_*.tsv + konkordancia/TAHOT_kivonat.tsv;'
+              ' eszkozok/bdb_adatblokk.py --karoli-epit | ts=%s' % (kulcs, ts))
+        mg = sum(v['magas'] for v in alakok.values())
+        al = sum(v['egyeb'] for v in alakok.values())
+        sorok.append([kulcs, 'szocikk', '' if alakok else NINCS_KAROLI_ALAK, str(mg), str(al), '',
+                      str(lef_tah), str(par_db), pv])
+        for alak, v in sorted(alakok.items(), key=lambda kv: (-(kv[1]['magas'] + kv[1]['egyeb']), kv[0])):
+            lattam, versek = set(), []
+            for vers, _sorsz, _szo, _biz in v['peldak']:
+                if vers in lattam:
+                    continue
+                lattam.add(vers)
+                versek.append(vers)
+                if len(versek) >= PELDA_MAX:
+                    break
+            sorok.append([kulcs, 'alak', alak, str(v['magas']), str(v['egyeb']), ';'.join(versek),
+                          '', '', ''])   # az alak-sorra a szocikk-sor proveniencia-ja vonatkozik
+    return sorok
+
+
+def karoli_tabla_ir(sorok, ts, ut=None):
+    ut = ut or KAROLI_TABLA_UT
+    elso = ('# GENERÁLT: eszkozok/bdb_adatblokk.py --karoli-epit; kézzel szerkeszteni tilos. Séma: adat/SEMA.md 2.25. '
+            'proveniencia: scope=BDB (kész szócikkek, adat/forditasok.tsv) | forras=adat/karoli_strong/parok_*.tsv'
+            ' + konkordancia/TAHOT_kivonat.tsv | ts=%s' % ts)
+    with open(ut, 'w', encoding='utf-8', newline='\n') as fh:
+        fh.write(elso + '\n')
+        fh.write('\t'.join(KAROLI_FEJLEC) + '\n')
+        for s in sorok:
+            assert len(s) == len(KAROLI_FEJLEC) and not any('\t' in x or '\n' in x for x in s), s
+            fh.write('\t'.join(s) + '\n')
+
+
+def karoli_tabla_olvas(ut=None):
+    ut = ut or KAROLI_TABLA_UT
+    """[dict] -- split('\\t'); a `#`-sorokat atugrik."""
+    sorok = list(tsv_sorok(ut))
+    fej = sorok[0]
+    return [dict(zip(fej, m)) for m in sorok[1:]]
+
+
+def karoli_pelda_forras(strong, alak, vers):
+    """A tabla pelda-hivatkozasanak (strong, kisbetus alak, vers) forrassorai a
+    parok_*.tsv-ben: [(vers, hu_sorszam, hu_szo, bizonyossag)]; ures, ha a hivatkozas
+    nem ellenorizheto (az alak ellenorzo, nem sorszam)."""
+    return [p for p in parok().get(strong_szam(strong), [])
+            if p[0] == vers and _kisbetu(p[2]) == alak]
+
+
+# ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
 
@@ -808,6 +895,7 @@ def main(argv=None):
     ap.add_argument('--ts', help='a proveniencia-sor ts-e (alapertelmezes: most, UTC)')
     ap.add_argument('--minta', nargs='+', metavar='STRONG', help='tobb blokk egymas utan')
     ap.add_argument('--javitas-epit', action='store_true', help='adat/bdb_igehely_javitas.tsv ujraepitese')
+    ap.add_argument('--karoli-epit', action='store_true', help='adat/bdb_karoli.tsv ujraepitese (F80)')
     args = ap.parse_args(argv)
     ts = args.ts or ts_most()
     if args.javitas_epit:
@@ -815,6 +903,12 @@ def main(argv=None):
         javitotabla_ir(sorok)
         jav = sum(1 for s in sorok if s['allapot'] == 'javitva')
         print('irva: %s (%d sor; javitva %d, jelolt_marad %d)' % (JAVITAS_UT, len(sorok), jav, len(sorok) - jav))
+        return 0
+    if args.karoli_epit:
+        strongok = kesz_bdb_strongok()
+        sorok = karoli_tabla_sorok(strongok, ts)
+        karoli_tabla_ir(sorok, ts)
+        print('irva: %s (%d szocikk, %d sor)' % (KAROLI_TABLA_UT, len(strongok), len(sorok)))
         return 0
     strongok = args.minta or ([args.strong] if args.strong else [])
     if not strongok:
