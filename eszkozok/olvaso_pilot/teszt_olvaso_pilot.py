@@ -652,6 +652,107 @@ class BdbFejlec(unittest.TestCase):
         self.assertEqual((r2['fej']['heber'], r2['fej']['ossz']), ('דָּוִד', '1066'))
 
 
+class BdbSzeletelesAtnezes(unittest.TestCase):
+    """F60.35: az F60.25 által megváltoztatott 19 szócikk (és három, az átnézés közben talált eset) várt törzs- és jelentés-szerkezete a magyar
+    BDB-tábla (adat/forditasok.tsv, „teljes” sor) alapján. Jelölés: törzsenként a jelentés-jelek; „-” a sorszám nélküli fej (alakok), a
+    zárójelben az alpontok. A H0834-nél az „1” kezdete pontatlan (l. naplok/OLVASOI_PILOT_szeletelo_atnezes.md, ismert hibák); a szám-sorrend helyes."""
+
+    VART = {
+        'H7121': [("Qal", "- 1(ab) 2(abcd) 3(abcd) 4(abc) 5(abcdef) 6(abcdefghi)"), ("Niph'al", "- 1 2(abcd)"), ("Pu'al", "-")],
+        'H9003': [("", "1 2(abc) 3 4 5 6 7(abcde) 8(abcde)")],
+        'H0834': [("", "1 2 3 4(abcd) 5 6 7(abc) 8(abcdef)")],
+        'H3588': [("", "1(abcdefg) 2(abc) 3(abcde)")],
+        'H0935': [("Qal", "- 1(ab) 2(abcdefg) 3 4"), ("Hiph'il", "- 1(abcdefg) 2(abcde)"), ("Hoph'al", "-(abc)")],
+        'H3027': [("", "1(ab) 2 3(abcdefghi)")],
+        'H5973': [("", "1(abcdefg) 2 3(abcde) 4(ab) 5(abcd)")],
+        'H2896': [("", "1(abcd) 2(abcde) 3(abcde) 4(ab) 5 6 7 8 9(ab) 10(ab)")],
+        'H3205': [("Qal", "- 1(abc) 2(ab) 3"), ("Niph'al", "-"), ("Pi'el", "-"), ("Pu'al", "-"), ("Hiph'il", "- 1 2"), ("Hoph'al", "-"),
+                  ("Hithpa'el", "-")],
+        'H3772': [("Qal", "- 1(ab) 2 3 4"), ("Niph'al", "- 1(abc) 2 3 4"), ("Pual", "- 1 2"), ("Hiph'il", "- 1 2(abc) 3 4 5"), ("Hoph'al", "-")],
+        'H3559': [("Niph'al", "- 1(abcd) 2 3 4"), ("Hiph'il", "- 1(abcd) 2(ab) 3 4"), ("Hoph'al", "- 1 2(ab) 3 4")],
+        'H5800': [("Qal", "- 1(abcdefghijk) 2(abcdefg) 3"), ("Niph'al", "- 1 2"), ("Pu'al", "-")],
+        'H0157': [("Qal", "- 1 2 3 4 5"), ("Niph'al", "-"), ("Pi'el", "- 1 2")],
+        'H3201': [("Qal", "- 1(abcdefghi) 2(abc) 3")],
+        'H7812': [("Qal", "-"), ("Hiph'il", "- 1(abc) 2(abcd) 3")],
+        'H7931': [("Qal", "- 1(abc) 2(abcde)"), ("Pi'el", "- 1 2"), ("Hiph'il", "- 1(ab) 2")],
+        'H3498': [("Qal", "-"), ("Niph'al", "-"), ("Hiph'il", "- 1(abc) 2 3")],
+        'H3885': [("Qal", "- 1(abcd) 2"), ("Hiph'il", "-"), ("Hithpalpel", "-")],
+        'H0560': [("", "1 2 3")],
+        'H1869': [("Qal", "- 1 2 3 4"), ("Hiph'il", "- 1 2 3")],
+        # az átnézés közben talált esetek
+        'H4908': [("", "1 2(abc) 3(ab)")],      # főnév: az etimológiában álló „Pe`al imperfectum” nem törzsfejléc
+        'H4191': [("Qal", "- 1(abcd) 2(abcd)"), ("Hiph'il", "- 1(ab) 2 3 4"), ("Hoph'al", "- 1 2 3 4")],   # „— megölni, halálra adni 1 abszolút”
+        'H0622': [("Qal", "- 1 2 3 4"), ("Niph'al", "- 1 2 3"), ("Pi'el", "- 1 2 3"), ("Pu'al", "-"), ("Hithpa'el", "-")],   # „a Qal 2 passzívja”
+    }
+    SOROK = {}
+
+    @classmethod
+    def setUpClass(cls):
+        with open(os.path.join(GY, 'adat', 'forditasok.tsv'), encoding='utf-8') as fh:
+            for s in fh:
+                r = s.rstrip('\r\n').split('\t')
+                if len(r) > 7 and r[0] == 'BDB' and r[3] == 'teljes' and r[6].strip():
+                    cls.SOROK[r[1]] = r[6].replace('\\n', '\n')
+
+    @staticmethod
+    def alak(r):
+        ki = []
+        for t in r['torzsek']:
+            ki.append((t['nev'], ' '.join((j['jel'] or '-') + ('(' + ''.join(a['jel'] for a in j['al']) + ')' if j['al'] else '')
+                                          for j in t['jelentesek'])))
+        return ki
+
+    def test_varhato_szerkezet(self):
+        import bdb_szelet
+        for st, vart in self.VART.items():
+            with self.subTest(strong=st):
+                self.assertIn(st, self.SOROK)
+                self.assertEqual(self.alak(bdb_szelet.szeletel(self.SOROK[st])), vart)
+
+    def test_h7121_jelentesei_a_helyen(self):
+        import bdb_szelet
+        r = bdb_szelet.szeletel(self.SOROK['H7121'])
+        qal = r['torzsek'][0]['jelentesek']
+        self.assertTrue(qal[0]['szoveg'].startswith('perfectum'))       # az alaklista a fej, nem jelentés
+        self.assertEqual([j['jel'] for j in r['torzsek'][1]['jelentesek']][1:], ['1', '2'])
+        self.assertTrue(r['torzsek'][1]['jelentesek'][1]['szoveg'].startswith('visszaható'))
+
+    def test_h0157_a_valodi_jelentesek(self):
+        import bdb_szelet
+        qal = bdb_szelet.szeletel(self.SOROK['H0157'])['torzsek'][0]['jelentesek']
+        szovegek = {j['jel']: j['szoveg'] for j in qal}
+        self.assertTrue(szovegek['1'].startswith('emberi szeretet'))
+        self.assertTrue(szovegek['2'].startswith('ritkábban az étvágyról'))      # a jelölő előtt nincs írásjel („a participiumot 2 ritkábban”)
+        self.assertTrue(szovegek['3'].startswith('szeretet Isten iránt'))
+
+    def test_szemelyszam_nem_jelolo_de_a_pont_nelkuli_igen(self):
+        import bdb_szelet
+        m = bdb_szelet._szam_minta()
+        self.assertIsNone(m.search("1. egyes szám אֵהָב 8:17"))
+        self.assertIsNone(m.search("— 3. nőnemű egyes szám דָּֽרְכָה Józs 14:9"))
+        self.assertIsNone(m.search("; 2. hímnemű többes szám suffixummal תְּאֵהֲבוּ"))
+        self.assertIsNotNone(m.search("— 3 többes szám מִשְׁכָּנוֺת, lakóhelyek"))        # H4908: jelentés
+        self.assertIsNotNone(m.search("— 1 egyes számú főnévvel, gyűjtőértelemben"))      # H3605: jelentés
+        self.assertIsNone(m.search("; 1 Tsepreghi^Diss. Lugd. 171. o."))                  # H0834: bibliográfiai sorszám
+
+    def test_laza_jelolo_csak_kisbetus_szo_utan(self):
+        import bdb_szelet
+        r = bdb_szelet._jelentesek("— 1 első jelentés Ézs 1:2. l. a participiumot 2 ritkábban az étvágyról, Qal 3 nem jelölő 3 harmadik", True)
+        self.assertEqual([j['jel'] for j in r], ['1', '2', '3'])
+        self.assertTrue(r[2]['szoveg'].startswith('harmadik'))
+        r2 = bdb_szelet._jelentesek("— megölni, halálra adni 1 abszolút használatban 2 alanya Isten", True)
+        self.assertEqual([j['jel'] for j in r2], ['', '1', '2'])
+        r3 = bdb_szelet._jelentesek("alakok és még 1 szó után", False)      # nem igetörzs: az „1” laza jelölője kikapcsolva
+        self.assertEqual([j['jel'] for j in r3], [''])
+
+    def test_alakcsoport_fejlec_csak_igeben_es_nem_hivatkozasban(self):
+        import bdb_szelet
+        fo = bdb_szelet.szeletel("H1111. xx אב főnév: apa (arámi אב; — Pe`al imperfectum יִשְׁכְּנָן Dán 4:18 lakik) — 1 apa 2 ős")
+        self.assertEqual([t['nev'] for t in fo['torzsek']], [''])
+        ige = bdb_szelet.szeletel("H2222. yy אבד ige: elveszni — Qal perfectum אָבַד 1Móz 1:1; (olv. Qal imperfectum יֹאבַד Ézs 1:1); — 1 elvész 2 elpusztul")
+        self.assertEqual([t['nev'] for t in ige['torzsek']], ['Qal'])
+
+
 class Regresszio(unittest.TestCase):
     @unittest.skipUnless(os.environ.get('OLVASO_PROTOTIP_JSON'), 'OLVASO_PROTOTIP_JSON nincs megadva')
     def test_prototipussal_azonos(self):
