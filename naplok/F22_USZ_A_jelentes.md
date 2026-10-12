@@ -85,3 +85,10 @@ Hármas csak négy könyvben van (2Pét 2, 2Tim 1, 1Thessz 1, 1Pét 1); a mért 
 1. A B csomag (Gal, Ef, 2Kor, Zsid; 863 vers, vetítve 4.60 USD) indítása.
 2. A párosított `[nem TR]` tokenek (27) kezelése: (a) maradnak (`alacsony`, `S`), a lista itt áll; (b) `kezi`-be tétel egy kézi listával (az `egyesit.py` felülírási tábláján át); (c) a TR-olvasat lekérdezése és esetenkénti ítélet. A döntés a B és a C futását nem érinti, ugyanaz a jelenség ott is várható.
 3. (Tájékoztató, döntés nem kell.) Az `f22_elemzes.py` a pontosvesszővel összefűzött régi-arany Károli-szót nem bontja; ez a C csomagban és a korábbi könyvekben is torzíthat. Javítása külön, kis kódfeladat.
+
+## 8. A felhasználó döntései (chat, 2026.10.12)
+
+- **B csomag:** indulhat, ha a független ellenőr végzett és a kötegméret rendben van. A C-re a jóváhagyás nem vonatkozik.
+- **Kötegméret (mérés, a 22.8 + A 111 első próbás kötege):** a 12 egész köteg formátumhibás köteg nem nagyobb a többinél (átlag 7,9 vers/köteg, bemenet 7 972 token; a rendben lévő 99 kötegé 9,5 vers, 9 313 token); csonkolás nem volt (mind a 111 `finish_reason = end_turn`, a legnagyobb kimenet 15 627 token a 32 000-es `max_tokens` alatt). A hibás válaszok **rövidek** (átlag 925 kimeneti token a 7 889-cel szemben): a modell ezekben „rövidít”, nem a méret az ok. A 10 verses köteg marad.
+- **`[nem TR]`:** (a) változat, adatszintű jelöléssel: a link marad, a 27 token a generált `adat/karoli_strong/nem_tr_parositott.tsv`-ben (`eszkozok/karoli_strong/nem_tr_lista.py`; séma: `adat/SEMA.md` 2.20).
+- **Fil 1:16–17:** külön N-F tétel: **N-F22d** (`NYITOTT_FELADATOK.md`).

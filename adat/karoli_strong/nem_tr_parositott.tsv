@@ -1,0 +1,29 @@
+# GENERÁLT: eszkozok/karoli_strong/nem_tr_lista.py | scope=az ÚSZ-könyvek szavak-táblái (1Jan, 1Pet, 1Thessz, 1Tim, 2Jan, 2Pet, 2Thessz, 2Tim, 3Jan, Fil, Filem, Jak, Jud, Kol, Tit) | forras=adat/karoli_strong/szavak_<könyv>.tsv + konkordancia/TAGNT_kivonat.tsv | ts=2026-10-12T10:10:01+00:00 | a párosított [nem TR] eredeti tokenek (a TR más alakot olvas, annak nincs sora a kivonatban); a link `alacsony`, a strong a kritikai szöveg alakjáé; D45 (a) | kézzel szerkeszteni tilos
+vers	er_sorszam	er_szo	strong	kritikai_kiadas	allapot	hu_sorszam	hu_szo
+1Ján 1:5	5	ἀγγελία	G0031	NA28+NA27+Tyn+SBL+WH+Treg+Byz+KJV	parositva	5	üzenet
+1Pét 3:1	22	κερδηθήσονται,	G2770	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	22	megnyeressenek
+1Thessz 1:7	4	τύπον	G5179	NA28+NA27+Tyn+SBL+WH+Treg	parositva	3	példaképekké
+1Thessz 2:3	11	οὐδὲ	G3761	NA28+NA27+Tyn+SBL+WH+Treg	parositva	11,12	sem nem
+1Tim 2:14	8	ἐξαπατηθεῖσα	G1818	NA28+NA27+Tyn+SBL+WH+Treg	parositva	9	megcsalattatván
+1Tim 6:11	16	πραϋπαθίαν·	G6073	NA28+NA27+Tyn+SBL+WH+Treg	parositva	22	szelídséget
+2Pét 2:21	13	ὑποστρέψαι	G5290	NA28+NA27+Tyn+SBL+WH+Treg	parositva	17	elpártoljanak
+2Pét 2:22	18	κυλισμὸν	G2946	NA28+NA27+Tyn+SBL+WH+Treg	parositva	20	fertőjébe
+Fil 1:11	2	καρπὸν	G2590	NA28+NA27+Tyn+SBL+WH+Treg	parositva	5	gyümölcsével
+Fil 3:21	26	αὐτῷ	G0846	NA28+NA27+Tyn+Treg	parositva	21	maga
+Jak 2:20	13	ἀργή	G0692	NA28+NA27+Tyn+SBL+WH+Treg	parositva	13	megholt
+Jak 3:4	22	βούλεται.¶	G1014	NA28+NA27+Tyn+SBL+WH+Treg	parositva	23	akarja
+Jak 3:8	8	ἀκατάστατον	G0182	NA28+NA27+Tyn+SBL+WH+Treg	parositva	11	fékezhetetlen
+Jak 4:5	14	κατῴκισεν	G6052	NA28+NA27+Tyn+SBL+WH+Treg	parositva	16	lakozik
+Jak 4:9	11	μετατραπήτω	G6060	NA28+NA27+SBL+WH	parositva	10	forduljon
+Jak 4:12	17	κρίνων	G2919	NA28+NA27+Tyn+SBL+WH+Treg	parositva	14	kárhoztatod
+Jak 4:12	19	πλησίον;¶	G4139	NA28+NA27+Tyn+SBL+WH+Treg	parositva	16	másikat
+Kol 2:2	6	συμβιβασθέντες	G4822	NA28+NA27+Tyn+SBL+WH+Treg	parositva	7	egybeköttetvén
+Kol 2:2	13	πλοῦτος	G4149	NA28+NA27+Tyn+SBL+WH+Treg	parositva	17	gazdagságára
+Kol 2:12	5	βαπτισμῷ	G0909	NA28+NA27+SBL+Treg	parositva	6	keresztségben
+Kol 3:22	12	ὀφθαλμοδουλίᾳ	G3787	NA28+NA27	parositva	14,15	szemnek szolgálván
+Kol 3:22	21	κύριον.	G2962	NA28+NA27+Tyn+SBL+WH+Treg	parositva	27	Istent
+Kol 4:1	18	οὐρανῷ.¶	G3772	NA28+NA27+Tyn+SBL+WH+Treg	parositva	18	mennyekben
+Kol 4:12	18	σταθῆτε	G2476	NA28+NA27+Tyn+SBL+WH+Treg	parositva	16	megállhassatok
+Kol 4:12	21	πεπληροφορημένοι	G4135	NA28+NA27+Tyn+SBL+WH+Treg	parositva	19,20	teljes meggyőződéssel
+Kol 4:15	7	Νύμφαν	G3564	NA28+NA27+Tyn+SBL+WH	parositva	8	Nimfást
+Kol 4:15	12	αὐτῆς	G0846	NA28+NA27+SBL+WH	parositva	14,15	ő házánál
