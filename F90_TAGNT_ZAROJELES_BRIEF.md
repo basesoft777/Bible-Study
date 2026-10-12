@@ -5,10 +5,10 @@ cim: "A TAGNT-kivonat KJV- ([..]) és egyéb ({..}) versszámozású sorainak p�
 tipus: feladat
 fazis: 1
 modell: opus
-allapot: fut
+allapot: megallt
 ag: claude/f90-tagnt-zarojeles
 ad: "Teljes `konkordancia/TAGNT_kivonat.tsv`: a nyers TAGNT minden szó-sora benne van, a [..]/{..} jelölésűek is, Károli-kulccsal; a 48 csoport Károli-döntése naplózva"
-kovetkezo: "M1 nyers fájl rögzítése és a 48 csoport mérése; ⛔ a Károli-döntési tábla jóváhagyása a felhasználónak"
+kovetkezo: "Te: a nyers TAGNT letöltésének engedélye és módja (DT-F90a). A nyers fájl a repóban és a gépen sincs meg (a F22.9 klónja a session scratchpadjével elveszett), az 1. lépés (rögzítés, eltérés-mérés) enélkül nem futhat; utána: 1. lépés mérése, majd ⛔ a Károli-döntési tábla jóváhagyása"
 fugg: []
 nem_fugg: [22, 38, 48]
 olvas: [konkordancia/TAHOT_TAGNT_README.md, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, naplok/F22_TAGNT_zarojeles_sorok.md, NYITOTT_FELADATOK.md, eszkozok/karoli_strong/tokenek.py, eszkozok/karoli_strong/sorrend_ellenoriz.py, F22_KAROLI_STRONG_BRIEF.md]
