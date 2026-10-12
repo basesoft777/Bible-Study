@@ -6,7 +6,8 @@ tipus: feladat
 fazis: 1
 modell: opus
 munka: adat
-allapot: nem_indult
+allapot: fut
+ag: claude/f87-karoli-elteres-itelet
 ad: a #65 eltéréslistáján kézi ítéletre váró öt sor soronként eldöntve és javítva az elofordulasok.tsv-ben és a jeloltek.tsv-ben (Károli-szó, illetve Károli-verskulcs), a két 2Móz-sor szó-szintű-gépi azonosítással, az eltéréslista újragenerálva
 kovetkezo: /kovetkezo; ⛔ az M0 után (a soronkénti javítási javaslat és a javítás rögzítésének módja)
 olvas: [naplok/KAROLI_ELLENORZES_elteresek.tsv, naplok/KAROLI_ELLENORZES_zaras.md, adat/karoli_strong/, adat/karoli_variancia.tsv, adat/SEMA.md, konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, eszkozok/karoli_ellenorzes.py, F65_KAROLI_ELLENORZES_BRIEF.md]
