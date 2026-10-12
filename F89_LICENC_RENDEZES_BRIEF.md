@@ -1,6 +1,6 @@
 ---
 feladat: 89
-cim: Licenc-rendezés — a projekt saját adata minden jog fenntartva, táblaszintű licenc a pardes.db-ben (DT-F89a, DT113)
+cim: Licenc-rendezés — a projekt saját adata minden jog fenntartva, táblaszintű licenc a pardes.db-ben (DT116, DT113)
 kod: LICENC_RENDEZES
 tipus: feladat
 fazis: 1
@@ -16,11 +16,11 @@ fugg: [79]
 
 # F89_LICENC_RENDEZES_BRIEF.md — a projekt saját adatának jogai és a táblaszintű licenc
 
-*FELADATOK #89 · Modell: sonnet · v2 · 2026.10.12 · a v1-et (DT112, CC BY 4.0) a DT-F89a váltja fel · döntés: DT-F89a, DT113 · forrás: `NYITOTT_FELADATOK.md` N-F79a, `adat/licencek.tsv` (`projekt_adat`), `adat/SEMA.md` 2.19, `naplok/SQLITE_EPIT_meres.md`*
+*FELADATOK #89 · Modell: sonnet · v2 · 2026.10.12 · a v1-et (DT112, CC BY 4.0) a DT116 váltja fel · döntés: DT116, DT113 · forrás: `NYITOTT_FELADATOK.md` N-F79a, `adat/licencek.tsv` (`projekt_adat`), `adat/SEMA.md` 2.19, `naplok/SQLITE_EPIT_meres.md`*
 
 ## 1. Cél
 
-A felhasználó döntése (DT-F89a, a DT112 helyett): a projekt **saját adatrétege**
+A felhasználó döntése (DT116, a DT112 helyett): a projekt **saját adatrétege**
 (`adat/*.tsv`, `adat/karoli_strong/*`, `adat/karoli_variancia.tsv`, a `pardes.db` saját táblái)
 **minden jog fenntartva**, akárcsak a **próza** (tanulmányok, lexikon, motívumcikkek). Az
 adatbázis a felhasználó saját strongozására épül. Ma a `licencek.tsv` `projekt_adat` sora
@@ -31,7 +31,7 @@ A második döntés (DT113): a `pardes.db` a licencet **táblaszinten** tárolja
 `licenc_*` oszlopok a mérés szerint kb. 250 MB-ot tesznek ki a 845 MB-ból).
 
 A javaslattevő nem jogász; a kereskedelmi kiadás előtt a DT-M6 szerint jogász néz rá. A
-jogászi kérdéslistán (DT-F89a): a modell által előállított, a felhasználó által irányított és
+jogászi kérdéslistán (DT116): a modell által előállított, a felhasználó által irányított és
 ellenőrzött párosítás szerzői jogi védelme.
 
 ## 2. Hatókör
@@ -43,7 +43,7 @@ ellenőrzött párosítás szerzői jogi védelme.
   harmadik fél adatára utalás a `adat/licencek.tsv`-re (az ott álló licencek és kötelező
   megjelölések érvényesek, a jogfenntartás azokra nem terjed ki). Jogi értelmezést nem tartalmaz.
 - **`adat/licencek.tsv`:**
-  - a `projekt_adat` sor: `licenc` = minden jog fenntartva, `forras_hely` = `LICENSE` + DT-F89a,
+  - a `projekt_adat` sor: `licenc` = minden jog fenntartva, `forras_hely` = `LICENSE` + DT116,
     `allapot` = `tisztazott`, `share_alike` = `nem`, `kereskedelmi` és `cimke` az M0 ⛔ szerint
     (D2, D3), a `megjegyzes`-ben a DT-F24 halasztás lezárása és a DT112 felülírása;
   - új sorok: `Karoli_Strong_parok`, `Karoli_Strong_szavak` (a `datasetek.tsv` azonosítói) és
@@ -52,7 +52,7 @@ ellenőrzött párosítás szerzői jogi védelme.
   - újraértékelés: a `projekt_adat`-on múló `tisztazatlan` sorok (`Karoli_Strong_kivonat`,
     `LXX_versszintu_parok`, `Karoli_versmegfeleltetes`); ahol a többi összetevő igazolt, a sor
     `tisztazott` lesz, ahol nem, a sor marad, és a megjegyzés megnevezi, min múlik.
-- **`adat/SEMA.md` 2.19:** a 3. szabály (a `projekt_adat` nyitott) helyére a DT-F89a: a saját adat
+- **`adat/SEMA.md` 2.19:** a 3. szabály (a `projekt_adat` nyitott) helyére a DT116: a saját adat
   jogainak forrása a jogtulajdonos döntése, a `LICENSE`-ban rögzítve (ez a `forras_hely`); a
   `cimke` zárt készlete és a `projekt-adat` kivétel a D2 szerint módosul.
 - **`eszkozok/sqlite_epit.py`:**
@@ -66,7 +66,7 @@ ellenőrzött párosítás szerzői jogi védelme.
     licencsor nélkül a tábla továbbra sem épül be;
   - a CC BY-SA (`sdbh_domenek`, SDGNT, UBS, LSJ, tW) és az MCGED tábla `tabla_licenc`-sora
     megkülönböztethető a saját, zárt tábláktól (a `licenc_dataset` és a `cimke` alapján), hogy
-    egy későbbi zárt csomag (#86) szűrni tudja őket (DT-F89a).
+    egy későbbi zárt csomag (#86) szűrni tudja őket (DT116).
 - **`eszkozok/teszt_sqlite_epit.py`:** a licenc-tesztek a `tabla_licenc`-re.
 - **A generált lexikon** (`lexikon/`): ha a `projekt_adat` címkéje változik (D2), a
   `lexikon_general.py` a prózai és a saját adatblokkokra az új címkét teszi; a lexikon a
@@ -89,7 +89,7 @@ ellenőrzött párosítás szerzői jogi védelme.
 ## 3. Lépések
 
 - **M0 — felmérés (csak olvas).** (1) Minden `licencek.tsv`-sor, amely a `projekt_adat`-on
-  múlik (a `licenc` vagy a `megjegyzes` mezőben), és mi lenne az állapota a DT-F89a után;
+  múlik (a `licenc` vagy a `megjegyzes` mezőben), és mi lenne az állapota a DT116 után;
   (2) minden kódhely, amely a `projekt_adat` kulcsot, a `cimke` értékét vagy a `licenc_*`
   oszlopokat olvassa (`grep`: generátorok, `lekerdez.py`, `ellenoriz.py`, CI), és hogy a
   címkeváltás mely generált fájlokat érinti; (3) a `LICENSE` tervezete. ⛔ **A felhasználónak:**
@@ -128,7 +128,7 @@ ellenőrzött párosítás szerzői jogi védelme.
 | Tétel | Kérdés | Javaslat | Állapot |
 |---|---|---|---|
 | DT112 | A projekt saját adatának licence (CC BY 4.0) | — | felülírva a DT-F89a-val (felhasználó, 2026.10.12) |
-| DT-F89a | A projekt saját adatának jogai | minden jog fenntartva (adat és próza); a harmadik fél adata a saját sora szerint; a CC BY-SA és az MCGED nem kerülhet zárt csomagba | eldöntve (felhasználó, 2026.10.12) |
+| DT116 | A projekt saját adatának jogai | minden jog fenntartva (adat és próza); a harmadik fél adata a saját sora szerint; a CC BY-SA és az MCGED nem kerülhet zárt csomagba | eldöntve (felhasználó, 2026.10.12) |
 | DT113 | Licenc soronként vagy táblánként | táblaszintű (`tabla_licenc`), a DT-F89a-val egy menetben | eldöntve (felhasználó, 2026.10.12) |
 | D1 | A `LICENSE` szövege és a jogtulajdonos neve | rövid jogfenntartó nyilatkozat fájlkörönként, a harmadik fél adatára a `licencek.tsv`-re utalva; a név a felhasználótól | javaslat (M0 ⛔) |
 | D2 | A címke | új zárt `cimke`-érték: `minden jog fenntartva` (SEMA 2.19); a `projekt-adat` kivétel megszűnik | javaslat (M0 ⛔) |
