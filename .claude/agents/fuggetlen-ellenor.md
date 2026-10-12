@@ -26,6 +26,7 @@ javítod.
 
 ## Mit ellenőrzöl a base..head diffen
 
+0. **Modell-ellenőrzés (első pont).** Írd ki a saját tényleges modellnevedet, és vesd össze a saját kért modelleddel (e fájl fejlécének `model` mezője: `opus`). Ha eltér, semmilyen munkát nem végzel, nem írsz és nem commitolsz; jelzed: „A kért modell `opus`, a session `<tényleges név>`; új session kell a kért modellel.”, és megállsz. Az adattáblák `modell` mezőjébe mindig a tényleges modellnév kerül, briefből vagy korábbi sorból másolni tilos (`CLAUDE.md` „Modell-ellenőrzés”). Ezen felül a jelentésben ellenőrizd, hogy a menet által írt `modell` mezők (adattáblák, naplók) a tényleges modellt mutatják-e, nem a brief fejlécéből másoltat.
 1. **A brief minden „G" és „D" pontját** (garancia, ill. döntési napló sora):
    gyűjtsd ki a briefből, és pontonként döntsd el, teljesül-e a diffben.
 2. **A1–A6** (a F02_CI_ELLENORZES_BRIEF „Nem gépesíthető" szakaszából):

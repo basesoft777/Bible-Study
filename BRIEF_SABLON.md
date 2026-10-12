@@ -32,7 +32,7 @@ Soronként `kulcs: érték`; lista `[a, b]`; idézőjel csak glob mintánál. A 
 | `tipus` | igen | `feladat` · `naplozas` · `dontes` · `archiv` |
 | `fazis` | `feladat` típusnál | `1` · `2` · `folyamat` |
 | `munka` | `feladat` típusnál | `adat` · `ertelmezo` · `folyamat` |
-| `modell` | igen | `sonnet` · `opus` · `haiku` · `külső:<név>`; a régi `Modell:` sor megmarad, a kettő egyezik |
+| `modell` | igen | `sonnet` · `opus` · `haiku` · `külső:<név>`; a régi `Modell:` sor megmarad, a kettő egyezik; a session modelljét nem állítja, a futtató ellenőrzi |
 | `allapot` | igen | `nem_indult` · `brief_kell` · `fut` · `dontesre_var` · `megallt` · `lezarva` |
 | `ad` | igen* | „Mit ad, ha kész” |
 | `kovetkezo` | igen* | „Következő lépés”; „Te:” = a felhasználóra vár; „Folytatás:” (`fut` állapotban) = félbemaradt, a `/kovetkezo` folytatási jelöltként ajánlja |
@@ -79,6 +79,6 @@ A nyitó promptot jelölők közé kell tenni; a `/befogad` és a `/kovetkezo` a
 <!-- KOZVETLEN_FUTTATAS -->
 ## 0. Nyitó prompt
 
-> Olvasd be a csatolt briefet, és hajtsd végre a lépéseket …
+> Első lépésként írd ki a saját tényleges modellnevedet, és vesd össze a fejléc `modell` mezőjével; eltérésnél ne dolgozz, jelezd, és állj meg. Olvasd be a csatolt briefet, és hajtsd végre a lépéseket …
 <!-- /KOZVETLEN_FUTTATAS -->
 ```

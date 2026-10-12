@@ -46,7 +46,7 @@ Csatolt brief szabálya: a sessionhöz csatolt brief nem befogadandó és nem fu
 5. EGYEZTETÉS (kötelező, soha nem hagyod ki):
    a) Javaslat, legfeljebb 10 sorban (csomagnál legfeljebb 15 sorban, feladatonként egy sor):
       a javasolt feladat vagy csomag és miért ez; a `FOLYTATAS` (félbemaradt, folytatható) és a `VAR_RAD` (a felhasználóra vár) feladat külön sorban, mindkettő akkor is, ha nem ez a javaslat; brief; modell; ág; a brief ⛔ pontjai;
-      hiányzó előfeltétel; legfeljebb 2 alternatív jelölt; a kihagyott feladatok és az okuk egy sorban.
+      hiányzó előfeltétel; ha a brief subagent nélküli futást ír elő, a session modellje és a brief `modell` mezője egyezik-e (eltérésnél új session kell); legfeljebb 2 alternatív jelölt; a kihagyott feladatok és az okuk egy sorban.
       Csomagnál a felhasználó tagot vehet ki, vagy kérheti az egyfeladatos futást.
    b) Várj. A felhasználó kérdezhet, más feladatot választhat, szűkítheti vagy módosíthatja
       a hatókört, vagy leállíthatja a menetet. Kérdésre válaszolj, módosításnál írd ki az
@@ -56,14 +56,14 @@ Csatolt brief szabálya: a sessionhöz csatolt brief nem befogadandó és nem fu
    d) Ha a felhasználó a briefben rögzítettől eltérő hatókört kér, azt a zárójelentésben
       „Egyeztetett eltérés” címen rögzítsd.
 6. VÉGREHAJTÁS: új ág a main-ből (`claude/<feladat-slug>`). Az ág első commitja a saját brief fejlécében
-   `allapot: fut`, és kitölti az `ag` mezőt. A munkát a brief modelljének
+   `allapot: fut`, és kitölti az `ag` mezőt; ez a végrehajtó modell-ellenőrzése után történik, így modell-eltérésnél nem marad `fut` állapotú ág. A munkát a brief modelljének
    megfelelő végrehajtó subagent végzi (`vegrehajto-sonnet` / `vegrehajto-opus` / `vegrehajto-haiku`).
    `külső:<név>` esetén a `vegrehajto-sonnet` a briefben megadott szkripttel futtatja a
-   külső modellt; Claude-dal nem helyettesíti. Gyakran commitolj.
+   külső modellt; Claude-dal nem helyettesíti. A végrehajtó subagent első teendője a modell-ellenőrzés (`CLAUDE.md`): kiírja a saját tényleges modellnevét, és összeveti a brief `modell` mezőjével; eltérésnél nem dolgozik és nem commitol. Ha a brief subagent nélküli futást ír elő (pl. a #38 D7-es döntése), a session modelljét kell a brief `modell` mezőjével összevetni; ezt már az 5. lépés javaslata jelzi, eltérésnél új session kell. Gyakran commitolj.
 6b. CSOMAG VÉGREHAJTÁSA:
    - Feladatonként külön munkakönyvtár a main-ből:
      `git worktree add ../wt-<feladat-slug> -b claude/<feladat-slug> origin/main`.
-   - A végrehajtó subagenteket egyetlen üzenetben, párhuzamosan indítsd, a brief modellje szerint.
+   - A végrehajtó subagenteket egyetlen üzenetben, párhuzamosan indítsd, a brief modellje szerint; mindegyik első teendője a modell-ellenőrzés (`CLAUDE.md`), eltérésnél nem dolgozik, és ezt jelzi.
    - Minden subagent kapja meg a saját worktree-je abszolút útvonalát, azzal a szabállyal, hogy
      minden parancsot `cd <worktree> && …` formában futtat, fájlt csak ott ír, és csak a saját
      ágára commitol és pushol. Az ág első commitja a saját brief fejlécében `allapot: fut`, `ag` kitöltve.
