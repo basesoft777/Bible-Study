@@ -98,3 +98,16 @@ A felhasználó döntése (chat, 2026-10-12): a régi ág (`claude/olvasoi-pilot
 | F60.32 | `naplok/OLVASOI_PILOT_ertekeles.md` (M2, M2b), a brief megállása az M3-nál |
 
 Nyitott: az M3 (felhasználói átnézés), az M4; a H7121-szeletelő 19 jelentés-szerkezet-változásának átnézése; a DT-F60a/b; a TBESH-sorok címkéje (4. pont, utolsó sor); a `konkordancia/tW_szocikkek.tsv` egy U+FFFD-je (ertekeles 6.).
+
+## 11. A BDB-szeletelő átnézése (2026-10-12; F60.35–F60.38)
+
+A felhasználó kérésére (chat, 2026-10-12) a 9. pont 19 szócikke átnézve; részletek: `naplok/OLVASOI_PILOT_szeletelo_atnezes.md`.
+
+| Tétel | Mi |
+|---|---|
+| F60.35 | szabályok: a „— 1” külön ág megszűnt, a személyszám-jelölő („N. egyes szám <héber>”) és a sigla előtti szám nem jelölő, laza jelölő (írásjel nélküli sorszám kisbetűs szó után), a „Név alakcsoport” törzsfejléc csak igében és nem rövidítés után |
+| F60.36 | tesztek: `BdbSzeletelesAtnezes` (23 szócikk szerkezete + 5 egységteszt); 85 teszt, OK (1 kihagyva) |
+| F60.37 | az átnézés jegyzőkönyve, a teljes táblás újramérés, az ismert hibák |
+| F60.38 | a két HTML újragenerálva (1Móz 1–25: 10 209 602 bájt; Zsolt 22: 2 544 178 bájt), U+FFFD a HTML-ben 0 |
+
+Eredmény: a 19-ből 11 javult, 5 romlott (H9003, H3588, H3027, H5973, H2896: a „— 1” ág mellékhatása, a végleges bontás a régi), 3 mindkettő hibás (H0834: ismert hiba; H0157, H1869: javítva). Személyszám-jelölők a jelentés-sorszámok között: 177 → 56 → 3. A 9. pont „19” száma alulszámlált: az (azonos törzsnevű sorokra szűkített) mérték 115 szócikkből 19-et fogott; a teljes régi → végleges különbség 147 szócikk (jelek + szövegkezdet), ezeket is besoroltam (a személyszám-jelölőt érintő 85-öt automatikusan és szúrópróbával). Ismert hibák: H0834, H3318, H1157, H2009, és hat szócikk ismétlődő törzsnévvel (valószínűleg homonima: H2490, H2790, H3384, H6299, H6743, H6965).

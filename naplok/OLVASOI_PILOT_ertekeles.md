@@ -132,14 +132,15 @@ A mai ág „kivett szövegek” listájának (9 tétel) összevetése a régi s
 ## 7. M3 — felhasználói átnézés
 
 *Nyitva. A két oldal (a felhasználó nyitja meg; a HTML gzip+base64 beágyazású, `DecompressionStream`-et támogató böngésző kell; a böngészőben az 1Móz 1–25 oldal betöltése hibátlan, 0 konzolhiba):*
-- `C:\Users\bases\AppData\Local\Temp\claude\C--Users-bases-Desktop-Bible-Study\203cb7c8-e0ff-4860-a8e8-943bca62f11f\scratchpad\f60_egyesitett\1moz\karoli_konkordancia_proba.html` (10 204 234 bájt)
-- `C:\Users\bases\AppData\Local\Temp\claude\C--Users-bases-Desktop-Bible-Study\203cb7c8-e0ff-4860-a8e8-943bca62f11f\scratchpad\f60_egyesitett\zsolt22\karoli_konkordancia_proba.html` (2 538 866 bájt)
+- `C:\Users\bases\AppData\Local\Temp\claude\C--Users-bases-Desktop-Bible-Study\203cb7c8-e0ff-4860-a8e8-943bca62f11f\scratchpad\f60_egyesitett\1moz\karoli_konkordancia_proba.html` (10 209 602 bájt; F60.38-ban újragenerálva)
+- `C:\Users\bases\AppData\Local\Temp\claude\C--Users-bases-Desktop-Bible-Study\203cb7c8-e0ff-4860-a8e8-943bca62f11f\scratchpad\f60_egyesitett\zsolt22\karoli_konkordancia_proba.html` (2 544 178 bájt; F60.38-ban újragenerálva)
 
 *A felhasználó észrevételei (mi hiányzik, mi felesleges, melyik mérőszám a döntő; a „Gépi szeletelés (próba)” szöveg sorsa; a H7121-szeletelő 19 jelentés-szerkezet-változása): ide kerülnek.*
 
 Az M3 eddigi döntései (a felhasználó a chatben, 2026-10-12):
 - **„Gépi szeletelés (próba)” felirat: marad** a BDB-blokkban. A 4. pont kivétele ezzel lezárva.
-- Nyitva: a DT-F60a és a DT-F60b, a H7121-szeletelő 19 jelentés-szerkezet-változásának átnézése, a további észrevételek.
+- A H7121-szeletelő 19 jelentés-szerkezet-változásának átnézése elkészült (2026-10-12): a 19-ből 11 javult, 5 romlott (a végleges bontás a régi), 3 mindkettő hibás (ebből 2 javítva, a H0834 ismert hiba); 85 teszt zöld, a két HTML újragenerálva (1Móz 1–25: 10 209 602 bájt; Zsolt 22: 2 544 178 bájt). Részletek: `naplok/OLVASOI_PILOT_szeletelo_atnezes.md`.
+- Nyitva: a DT-F60a és a DT-F60b, a további észrevételek.
 
 ## 8. M4 — a DT-M1 opcióinak adatalapú összevetése és zárás
 
