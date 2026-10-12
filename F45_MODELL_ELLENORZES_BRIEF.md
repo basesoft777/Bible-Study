@@ -5,9 +5,10 @@ kod: MODELL_ELLENORZES
 tipus: feladat
 fazis: folyamat
 modell: sonnet
-allapot: nem_indult
+allapot: fut
+ag: claude/f45-modell-ellenorzes
 ad: minden brief-futtatás (közvetlen és /kovetkezo útján, subagenttel vagy anélkül) az elején ellenőrzi, hogy a ténylegesen futó modell egyezik-e a brief fejlécének `modell` mezőjével, eltérésnél nem dolgozik; az adattáblák `modell` mezőjébe mindig a tényleges modellnév kerül
-kovetkezo: végrehajtás a /befogad után
+kovetkezo: "1. lépés: modell-ellenőrzés, majd a 3. szakasz 2–6. lépése"
 olvas: [CLAUDE.md, BRIEF_SABLON.md, .claude/commands/kovetkezo.md, .claude/commands/befogad.md, .claude/agents/, adat/SEMA.md]
 ir: [CLAUDE.md, BRIEF_SABLON.md, .claude/commands/kovetkezo.md, .claude/agents/vegrehajto-opus.md, .claude/agents/vegrehajto-sonnet.md, .claude/agents/vegrehajto-haiku.md, .claude/agents/fuggetlen-ellenor.md]
 fugg: []
