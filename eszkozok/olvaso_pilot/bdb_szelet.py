@@ -7,7 +7,8 @@ TORZS = (r"Qal|Niph`al|Pi`el|Pu`al|Hiph`il|Hoph`al|Hithpa`el|Hithpe`el|Hithpo`el
          r"Pilpel|Polpal|Polel|Polal|Po`el|Po`al|Pil`el|Pul`al|Pual|Piel|Hiphil|Niphal|Hophal|Ishtaphel|Tiph`el|"
          r"Pe`al|Pa`el|Aph`el|Haph`el|Shaph`el|Ithpe`el|Ithpa`al|Ithpa`el|Ithpo`el|Hithpe`el|Hithpa`al|Pe`il|Ishtaph`al")
 ARAMI_TORZS = re.compile(r"Pe`al|Pa`el|Aph`el|Haph`el|Shaph`el|Ithpe`el|Ithpa`al|Ithpa`el|Ithpo`el|Hithpe`el|Hithpa`al|Pe`il|Ishtaph`al")
-TORZS_FEJ = re.compile(r'(?<![\w`])(' + TORZS + r')_(\d+)')
+TORZS_FEJ = re.compile(r'(?<![\w`])(' + TORZS + r')(?:_(\d+)|(?=\s+(?:\([^)]{0,40}\)\s+)?(?:perfectum|imperfectum|participium|imperativus|infinitivus|'
+                       r'Perfect|Imperfect|Participle|Imperative|Infinitive)))')
 REF = re.compile(r'\d+:\d+')
 NYELV = re.compile(r'(asszír|arab|arámi|szír|szíriai|föníciai|etióp|sabeus|ugariti|akkád|újhéber|nabateus|palmirai|'
                    r'Assyrian|Arabic|Aramaic|Syriac|Phoenician|Ethiopic|Sabean|Nabatean|Palmyrene|Biblical Hebrew|'
@@ -94,7 +95,23 @@ def _darabol(szoveg, jelolok):
     return ki
 
 
+FORMA_RE = re.compile(r'perfectum|imperfectum|participium|imperativus|infinitivus|Perfect|Imperfect|Participle|Imperative|Infinitive')
+
+
 def _jelentesek(regio):
+    """Jelentés-szerkezet egy törzs (vagy a teljes szócikk) szövegéből. Ha a szöveg „alakok; — 1 jelentés …” szerkezetű, a számozás az első
+    gondolatjel utáni „1”-nél indul; az előtte álló alak-lista előtagként külön elem marad (a benne álló személyszámok nem jelölők)."""
+    d = re.search(r"—\s(1)(?:\.\s*|\s+)(?=[^\d\s:,;.)(&])", regio)
+    if d and d.start() > 0 and FORMA_RE.search(regio[:d.start()]):
+        elo = regio[:d.start()].strip(' —;,')
+        ki = _jelentesek_belso(regio[d.start(1):])
+        if elo:
+            ki.insert(0, {'jel': '', 'szoveg': elo, 'ref': len(REF.findall(elo)), 'al': []})
+        return ki
+    return _jelentesek_belso(regio)
+
+
+def _jelentesek_belso(regio):
     szamok = _szamozott(regio, _szam_minta, '1')
     if not szamok:
         al = _darabol(regio, _szamozott(regio, _betu_minta, 'a'))
@@ -138,16 +155,16 @@ def _egy(szoveg):
         torzs = s
     # a jelentésrégió kezdete: az első törzs-fejléc (igék), különben az első sorrendhelyes „1”
     tf = list(TORZS_FEJ.finditer(torzs))
-    if not tf and re.search(r'\b(ige|verb)\b', torzs[:120]):
-        # igék _N nélküli törzs-fejlécei: gondolatjel vagy mondatvég után álló törzsnév
+    if re.search(r'\b(ige|verb)\b', torzs[:120]):
+        # igék _N nélküli törzs-fejlécei: gondolatjel vagy mondatvég után álló törzsnév. A már megtalált törzsek mellé csak az
+        # még hiányzó nevű törzsek kerülnek (a „Name_N” és a „Name <alakcsoport>” fejlécek elsőbbséget élveznek).
         kezd = re.compile(r'(?:(?<=—\s)|(?<=\.\s))(' + TORZS + r')(?=[\s,.:])')
-        jel, lat = [], set()
+        van = {t.group(1) for t in tf}
         for t in kezd.finditer(torzs):
-            if t.group(1) not in lat:
-                lat.add(t.group(1))
-                jel.append(t)
-        if len(jel) >= 1:
-            tf = jel
+            if t.group(1) not in van:
+                van.add(t.group(1))
+                tf.append(t)
+        tf.sort(key=lambda t: t.start())
     szamok = _szamozott(torzs, _szam_minta, '1')
     if tf:
         rk = tf[0].start()

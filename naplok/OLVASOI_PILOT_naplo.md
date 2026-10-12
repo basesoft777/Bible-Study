@@ -77,3 +77,7 @@ Mért (az egész BDB-táblán, régi vs. új szeletelő): 8099 sor, hiba 0; **el
 2. A TBESH-sorok címkéje („jelentés-ág” a „másik homonima” helyett) és az azonos jelentés-lista egyszeri megjelenítése.
 3. Az M3 lezárása: a határesetek és a DT-F60a/b eldöntése.
 4. A brief frissítése (DT-M1 alkalmazása), majd az M4: `naplok/OLVASOI_PILOT_ertekeles.md`, `…_zaras.md`, `fuggetlen-ellenor`, draft PR.
+
+## 9. F60.25 — a H7121 szeletelő-javítás commitolva (2026-10-12)
+
+A régi ág tesztjei a módosítással: 73 teszt, OK (1 kihagyva). Commitolva `F60.25`-ként. **A megváltozott jelentés-szerkezetű sorok átnézése még hátravan.** Újramérés (régi vs. új szeletelő, a `adat/forditasok.tsv` magyar BDB-soraira, azonos törzsnevek mellett eltérő törzsenkénti jelentés-jel lista, alpontokkal együtt): 19 Strong-szám; az 5. pont „6 sor” mérése szűkebb mérték volt, a 6 sor azonosítója nem maradt meg. Átnézendő: H9003, H0834, H3588, H0935, H3027, H5973, H2896, H3205, H3772, H3559, H5800, H0157, H3201, H7812, H7931, H3498, H3885, H0560, H1869. Leginkább gyanús (a jelentés-pontok száma változik): H0157 (Qal 1–5 -> 1), H1869 (Qal 1–4 -> 1–2), H3559 (Niph`al 1–2 -> 1–4), H7931 (Qal üres -> 1–2), H0560 (névtelen törzs -> szám nélküli fej). Mérés: `scratchpad/old/kulonbseg.py` (a repón kívül).
