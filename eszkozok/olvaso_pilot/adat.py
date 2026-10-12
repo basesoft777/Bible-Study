@@ -26,7 +26,7 @@ if hasattr(sys.stderr, 'reconfigure'):
 GY = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))).replace('\\', '/') + '/'
 _ap = argparse.ArgumentParser(description='Olvasói pilot: adatkinyerés')
 _ap.add_argument('--szakasz', default='1Móz 1:1-2:3',
-                 help='pl. "1Móz 1:1-2:3" (vers-tartomány) vagy "Zsolt 22" (egész fejezet)')
+                 help='pl. "1Móz 1:1-2:3" (vers-tartomány) vagy "Zsolt 22" (egész fejezet), "1Móz 1-25" (fejezet-tartomány)')
 _ap.add_argument('--kimenet', default=None,
                  help='kimeneti könyvtár; alapból <temp>/olvaso_pilot/<szakasz-azonosító>, a repón kívül')
 _args = _ap.parse_args()

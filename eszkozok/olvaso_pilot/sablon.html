@@ -394,10 +394,23 @@ ol.jel { gap: 12px; }
   </footer>
 </div>
 
-<script type="application/json" id="adat">__ADAT__</script>
+<p id="betoltes" role="status" style="padding:16px">Az adatok betöltése …</p>
+<script type="application/json" id="adat"__ADATATTR__>__ADAT__</script>
 <script>
-(function () {
-  const D = JSON.parse(document.getElementById('adat').textContent);
+(async function () {
+  async function adatBetolt() {
+    const n = document.getElementById('adat');
+    if (n.dataset.kodolas !== 'gzip-base64') return JSON.parse(n.textContent);
+    if (typeof DecompressionStream === 'undefined') throw new Error('A böngésző nem támogatja a DecompressionStream-et (gzip); használj újabb böngészőt.');
+    const bin = atob(n.textContent.trim());
+    const bajt = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) bajt[i] = bin.charCodeAt(i);
+    const folyam = new Blob([bajt]).stream().pipeThrough(new DecompressionStream('gzip'));
+    return JSON.parse(await new Response(folyam).text());
+  }
+  let D;
+  try { D = await adatBetolt(); } catch (e) { document.getElementById('betoltes').textContent = 'Az adatok betöltése nem sikerült: ' + e.message; throw e; }
+  document.getElementById('betoltes').remove();
   const szovegEl = document.getElementById('szoveg');
   const verslap = document.getElementById('verslap');
   const szolap = document.getElementById('szolap');

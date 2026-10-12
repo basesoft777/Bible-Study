@@ -1,7 +1,7 @@
 """Olvasói pilot: a szakasz-paraméter (--szakasz) feloldása.
 
-Egy szakasz megadása: "1Móz 1:1-2:3" (vers-tartomány, akár fejezethatáron át) vagy "Zsolt 22"
-(egész fejezet). A versek listája és sorrendje a konkordancia/Karoli_1908.tsv-ből jön.
+Egy szakasz megadása: "1Móz 1:1-2:3" (vers-tartomány, akár fejezethatáron át), "1Móz 1-25"
+(fejezet-tartomány) vagy "Zsolt 22" (egész fejezet). A versek listája és sorrendje a konkordancia/Karoli_1908.tsv-ből jön.
 A könyvfájlok (Macula, LXX_OS) a megnevezett könyvekhez itt vannak felsorolva; ismeretlen
 könyvre a pilot hibával áll meg (nem találgat). A STEPBible-rövidítést (Gen, Psa) a
 konkordancia/Konyv_normalizalo_tabla.tsv adja."""
@@ -22,6 +22,7 @@ KONYVFAJLOK = {
     '1Móz': ('konkordancia/Macula_heber_Genezis.tsv', 'konkordancia/LXX_OS/genesis.tsv'),
     'Zsolt': ('konkordancia/Macula_heber_Zsoltarok.tsv', 'konkordancia/LXX_OS/psalms-lxx.tsv'),
 }
+VEGE = 9999  # a fejezet-tartomány záró versszáma (a tartomány a fejezet végéig tart)
 ASCII = {'á': 'a', 'é': 'e', 'í': 'i', 'ó': 'o', 'ö': 'o', 'ő': 'o', 'ú': 'u', 'ü': 'u', 'ű': 'u'}
 
 
@@ -36,6 +37,8 @@ def parse(szakasz):
         raise SystemExit('Érthetetlen --szakasz: %r (példa: "1Móz 1:1-2:3" vagy "Zsolt 22")' % szakasz)
     konyv, f1, v1, f2, v2 = m.groups()
     if v1 is None:
+        if v2 is not None and not f2:  # fejezet-tartomány: "1Móz 1-25"
+            return konyv, (int(f1), 1), (int(v2), VEGE), None
         return konyv, None, None, int(f1)
     f1 = int(f1)
     if v2 is None:
@@ -53,6 +56,8 @@ def szakasz_cim(szakasz):
     konyv, a, b, fej = parse(szakasz)
     if fej is not None:
         return '%s %d' % (konyv, fej)
+    if a[1] == 1 and b[1] == VEGE:
+        return '%s %d–%d' % (konyv, a[0], b[0])
     if a == b:
         return '%s %d:%d' % (konyv, a[0], a[1])
     if a[0] == b[0]:
