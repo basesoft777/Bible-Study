@@ -9,15 +9,15 @@ munka: adat
 allapot: nem_indult
 ad: a repóban futó olvasói pilot (eszkozok/olvaso_pilot/) két szakaszon (1Móz 1–25 és Zsolt 22), minden blokk jellegjelöléssel (forrásadat / gépi feldolgozás / modell-kimenet), és egy értékelő jelentés számokkal, amely a DT-M1 döntés (olvasói konkordancia előre) alapja
 kovetkezo: /kovetkezo; ⛔ az M3 felhasználói átnézésnél
-olvas: [eszkozok/olvaso_pilot/README.md, konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, "konkordancia/Macula_heber_*.tsv", "konkordancia/LXX_OS/*.tsv", konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Strong_szotar.tsv, konkordancia/TBESG.txt, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, "adat/karoli_strong/*.tsv", adat/forditasok.tsv, adat/kulso/lxx_bridge.tsv, adat/licencek.tsv, MUNKATERV.md, ADATVAGYON_TERV.md]
-ir: [eszkozok/olvaso_pilot/adat.py, eszkozok/olvaso_pilot/bdb_szelet.py, eszkozok/olvaso_pilot/epit.py, eszkozok/olvaso_pilot/sablon.html, eszkozok/olvaso_pilot/README.md, eszkozok/olvaso_pilot/teszt_olvaso_pilot.py]
+olvas: [eszkozok/olvaso_pilot/README.md, konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, "konkordancia/Macula_heber_*.tsv", "konkordancia/LXX_OS/*.tsv", konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Strong_szotar.tsv, konkordancia/TBESG.txt, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, "adat/karoli_strong/*.tsv", adat/forditasok.tsv, adat/kulso/lxx_bridge.tsv, adat/licencek.tsv, MUNKATERV.md, ADATVAGYON_TERV.md, eszkozok/sqlite_epit.py, naplok/SQLITE_EPIT_meres.md]
+ir: [eszkozok/olvaso_pilot/adat.py, eszkozok/olvaso_pilot/bdb_szelet.py, eszkozok/olvaso_pilot/epit.py, eszkozok/olvaso_pilot/sablon.html, eszkozok/olvaso_pilot/README.md, eszkozok/olvaso_pilot/teszt_olvaso_pilot.py, eszkozok/olvaso_pilot/db_meres.py]
 fugg: []
 nem_fugg: [7, 9, 22, 38, 52, 54, 56, 57, 80]
 ---
 
 # F60_OLVASOI_PILOT_BRIEF.md — Olvasói pilot
 
-*FELADATOK #60 · Modell: sonnet · v2 · 2026.10.12 · kiinduló állapot: `eszkozok/olvaso_pilot/` (a 2026-10-05-i prototípus, README-vel) · döntés-előkészítés: DT-M1*
+*FELADATOK #60 · Modell: sonnet · v3 · 2026.10.12 · kiinduló állapot: `eszkozok/olvaso_pilot/` (a 2026-10-05-i prototípus, README-vel) · döntés-előkészítés: DT-M1*
 
 ## 1. Cél
 
@@ -31,6 +31,7 @@ A munkaterv DT-M1 döntése azt kérdezi, kiadható-e az olvasói konkordancia (
 - a prototípus paraméterezése szakaszra (`--szakasz`), és egy második szakasz, a **Zsoltárok 22** (költői szöveg, feliratos zsoltár versszámozással, a Károli–Strong párosításon kívüli könyv);
 - a jellegjelölés teljessége és ellenőrzése (M1);
 - mérőszámok és értékelő jelentés (M2, M4);
+- a `pardes.db` mérése ugyanazon a két szakaszon (M2b): előállítható-e belőle a lap, ugyanazt adja-e, mint a TSV-út, és milyen gyorsan, mekkora részhalmazból;
 - tesztek.
 
 **Nincs benne:**
@@ -61,13 +62,26 @@ Mindkét szakaszra, proveniencia-sorral (`scope=… | forras=… | ts=…`):
 - a görög szóalak forrása (LXX_OS / Macula) és a χ/ξ-eltérések száma;
 - a UBS-jelentés lefedettsége, a versszámozási eltérések (Zsolt 22 felirat).
 
+### M2b — A `pardes.db` mérése
+
+Az `eszkozok/olvaso_pilot/db_meres.py` mindkét szakaszon méri, mit ad a `pardes.db` (#79) az olvasói lapnak. Csak olvas (`mode=ro`), külön szkript; a pilot fő kimenete (`adat.py` → JSON → HTML) továbbra is a TSV-kből készül. A meglévő adatbázist méri, nem építi újra; a jelentés megadja, melyik építésen mért (`meta.epites_ts`, `meta.mod`). Ha nincs `pardes.db`, az M2b „nem mérhető” eredményt ír, nem hibát.
+
+Mindkét szakaszra, proveniencia-sorral; a `forras=` mezőben a `pardes.db` építési időpontja és a felhasznált táblák `meta` hash-e:
+- **D1 — blokk-lefedettség:** a lap blokkjai közül melyik állítható elő csak a `pardes.db`-ből, és melyikhez kell TSV, forrástáblánként listázva. Ismert kiindulás: az építő a Macula- és az LXX_OS-táblákat szándékosan nem tölti be (`eszkozok/sqlite_epit.py`, „Szándékosan nem betöltött konkordancia-táblák”), ezért az igealak, a héber–görög párosítás és a görög szóalak várhatóan TSV-n marad; ezt a mérés igazolja vagy cáfolja.
+- **D2 — egyezés:** a TSV-ből és a `pardes.db`-ből előállított blokkok összevetése versenként (a D1 szerint előállítható blokkokon); az eltérések száma és listája, okkal (normalizálás, versszámozás, építés óta változott TSV).
+- **D3 — lekérdezési idő:** vers-lap és szó-lap adatának előállítása, medián és p95, hideg és meleg gyorsítótárral; a gép és a fájl mérete a jelentésben.
+- **D4 — szükséges részhalmaz mérete:** a lapokhoz ténylegesen használt táblák (és indexeik) bájtmérete a teljes adatbázishoz képest (`naplok/SQLITE_EPIT_meres.md` táblánkénti mérete alapján); viszonyítás az ADATVAGYON_TERV 3. és 7. szakaszának korlátaihoz.
+- **D5 — frissesség:** a `meta` táblánkénti sorszám és hash összevetése a forrás-TSV-k mérés kori állapotával; az eltérő táblák listája.
+
+A kereskedelmi licencszűrés (DT-F33j) nem része a mérésnek (DT-M6).
+
 ### M3 — ⛔ Felhasználói átnézés
 
 A felhasználó megnézi mindkét szakasz oldalát. A közzétételt privát artifactként az orkesztrátor végzi; a végrehajtó a HTML-t a `--kimenet` könyvtárba írja, és a jelentésben megadja az útvonalát. A felhasználó jelzi, mi hiányzik, mi felesleges, és melyik mérőszám a döntő. Az észrevételek a jelentésbe kerülnek.
 
 ### M4 — Értékelő jelentés és zárás
 
-- `naplok/OLVASOI_PILOT_ertekeles.md`: a mérőszámok, az M3 észrevételei, és a DT-M1 opcióinak (1 / 1b küszöbbel / 2) **adatalapú** összevetése. Javaslat lehet, döntés nem: a döntés a felhasználóé.
+- `naplok/OLVASOI_PILOT_ertekeles.md`: a mérőszámok, az M3 észrevételei, és a DT-M1 opcióinak (1 / 1b küszöbbel / 2) **adatalapú** összevetése. Az M2b alapján külön pont: az olvasói felület a `pardes.db`-ből vagy a TSV-kből épüljön, és ha az adatbázisból, mi hiányzik belőle (D1). Javaslat lehet, döntés nem: a döntés a felhasználóé.
 - `naplok/OLVASOI_PILOT_zaras.md` (≤20 sor), `fuggetlen-ellenor` (`naplok/ELLENOR_OLVASOI_PILOT.md`), a brief fejléce `lezarva`, push, draft PR.
 
 ## 4. Elfogadási feltételek
@@ -76,6 +90,7 @@ A felhasználó megnézi mindkét szakasz oldalát. A közzétételt privát art
 - **K2.** Minden blokk jelleg-címkét és adatforrás-jelzést kap; a lapon nincs adatforrás nélküli tartalmi szöveg.
 - **K3.** A mérőszámok mindkét szakaszra proveniencia-sorral állnak a jelentésben.
 - **K4.** A tesztek zöldek; a kimenet nem kerül a repóba (CLAUDE.md: `--kimenet` a repón kívül); a CI zöld; a független ellenőr eltérés nélkül zár.
+- **K5.** A D1–D5 mindkét szakaszra proveniencia-sorral áll a jelentésben (`forras=` a `pardes.db` építési időpontjával és `meta` hash-ével), vagy „nem mérhető” jelöléssel, ha nincs adatbázis; a teszt legalább egy vers-lap és egy szó-lap D2-egyezését ellenőrzi.
 
 ## 5. Döntésnapló
 
@@ -88,3 +103,4 @@ A felhasználó megnézi mindkét szakasz oldalát. A közzétételt privát art
 | v1 | 2026-10-05 | `nem_fugg: [7, 9, 22, 38, 54, 56, 57]`: a pilot az aktuális adatállapotot méri, nem vár a táblákat író feladatokra; ezek lezárása után újrafuttatható (a jelentés rögzíti, melyik állapoton mért). | befogadás |
 | v1.1 | 2026-10-12 | `nem_fugg` + 80: a #80 (BDB_KAROLI_POTLAS) az `adat/forditasok.tsv`-t írja, ezért a #60 levezetett függést kapott (`FUGGES 60 80 adat/forditasok.tsv*`); ugyanaz az indok, mint a #38-nál: a pilot az aktuális adatállapotot méri, a hiányt jelzi, nem pótolja | a felhasználó jóváhagyása a chatben (2026-10-12) |
 | v2 | 2026-10-12 | Az első szakasz hatóköre 1Móz 1:1–2:3 helyett **1Móz 1–25**; a Zsolt 22 marad. Az 1Móz 1:1–2:3 a regressziós alap marad (a prototípussal bájtra azonos rész). | a felhasználó jóváhagyása a chatben (2026-10-12) |
+| v3 | 2026-10-12 | Új M2b lépés: a `pardes.db` mérése (D1 blokk-lefedettség, D2 egyezés a TSV-úttal, D3 lekérdezési idő, D4 szükséges részhalmaz mérete, D5 frissesség) és K5; `ir` + `db_meres.py`, `olvas` + `sqlite_epit.py`, `SQLITE_EPIT_meres.md`. A pilot fő kimenete TSV-ből marad; az adatbázist nem építi újra. Ok: az ADATVAGYON_TERV szerint a `pardes.db` elsődleges felhasználója az olvasói felület, a pilot eddig nem próbálta ki. | a felhasználó jóváhagyása a chatben (2026-10-12) |
