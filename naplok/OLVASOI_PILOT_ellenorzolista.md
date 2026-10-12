@@ -33,14 +33,14 @@
 | **Szemantikai domén (SDBH)** | szó-lap (héber) | forrásadat | SDBH_domenek + SDBH_SDGNT_domenfa (CC BY-SA 4.0) |
 | **SECE-szócikk (héber)** | szó-lap (héber) | forrásadat | SECE_H_teljes |
 | **TWOT- és BDB-azonosító (OSHL)** | szó-lap (héber) | forrásadat | OSHL_lexikalis_index |
-| **Bővített Strong-szócikk (TBESH)** | szó-lap (héber) | forrásadat | TBESH.txt (licenc-aggály: Online Bible-eredetű jelentés-lista) |
+| **Bővített Strong-szócikk (TBESH)** | szó-lap (héber) | forrásadat | TBESH.txt (licenc: `licencek.tsv`, tisztazott) |
 | **translationWords (tW)** | szó-lap (héber, görög) | forrásadat | tW_szocikkek (CC BY-SA 4.0) |
 | Szó adatai (görög) | görög szó-lap | forrásadat + gépi feldolgozás (számolás) | TBESG; TAGNT; lxx_bridge |
 | Jelentés magyarul | görög szó-lap | modell-kimenet | Thayer; UBS_DNTG (forditasok.tsv) |
 | Jelentés | görög szó-lap | forrásadat | TBESG |
 | Héber háttér | görög szó-lap | forrásadat | lxx_bridge |
 | Az Újszövetségben | görög szó-lap | forrásadat | TAGNT; Karoli_1908; UBS_DNTG (az előfordulás jelentése) |
-| Szótári szöveg (angol) | görög szó-lap | forrásadat | TBESG; Thayer |
+| Szótári szöveg (angol) | görög szó-lap | forrásadat | TBESG; Thayer (F60.46 óta vágás nélkül, gördíthető blokkban) |
 | **Szemantikai domén (SDGNT)** | görög szó-lap | forrásadat | SDGNT_domenek + domenfa (CC BY-SA 4.0) |
 | **UBS DNTG jelentések (angol)** | görög szó-lap | forrásadat | UBS_DNTG_jelentesek (CC BY-SA 4.0) |
 | **LSJ-szócikk (angol)** | görög szó-lap | forrásadat | LSJ_teljes (CC BY-SA 4.0, Perseus) |
@@ -57,11 +57,11 @@ Javított hiba (F60.1): a héber lap „Jelentés (BDB…)” címe korábban a 
 
 **(c) határesetek (felhasználói átnézésre):**
 1. *„Gépi szeletelés (próba): a határokat a szócikk saját jelölői adják …; hibás határ előfordulhat.”* — a gépi feldolgozás jellegének közlése a lapon; a „?” súgóba is átkerülhetne.
-2. *Lábléc: „Az előfordulásszám a TAHOT-kivonatból jön, amely nem teljes (pl. a Zsolt 88/89/140/142 hiányzik).”* — adatminőségi jelzés a `CLAUDE.md`-ből (kézi állítás, nem a pilot méri).
-3. *Lábléc: „… a Macula-illesztés pontossága az F17 napló szerint kb. 78% (átvett szám, naplok/F17_import_naplo.md)”* — átvett szám (a napló 78,3%-ot ad); nem a pilot méri.
+2. *Kikerült (F60.29):* a lábléc „Az előfordulásszám a TAHOT-kivonatból jön, amely nem teljes (pl. a Zsolt 88/89/140/142 hiányzik)” mondata. Ok: a TAHOT-kivonat fejezet-szinten teljes (`CLAUDE.md`, F85; `eszkozok/tahot_lefedettseg_ellenoriz.py`), és a mondat kézi állítás volt, nem a pilot mérte. A sablonban 0 találat; az `elofordulas` proveniencia-sorából a „(nem teljes)” is kikerült.
+3. *Kikerült (F60.29):* a lábléc „… a Macula-illesztés pontossága az F17 napló szerint kb. 78%” mondata (átvett szám, hivatkozás nélkül; a pilot nem méri). A sablonban 0 találat; a Macula-illesztés mért számait a `naplok/OLVASOI_PILOT_meres.md` adja.
 4. *Lábléc: „Igealak: a Macula nyers morfológiai kódja mellett a magyar feloldás az adat/morf_kulcs_heber.tsv-ből jön (gépi feldolgozás; …)”* és *„Angol szó szavanként: a BSB „Számozás” oszlopa jelzi a versszámozást; a KJV-kulcs a LXX_OS KJV-oszlopából jön (gépi illesztés). A Nave-témák KJV-számozású hivatkozások …”* — módszer-közlés a lábléc-ben (a jelleg-címke már jelzi a gépi feldolgozást).
 5. *A „UBS … CC BY-SA 4.0” lábléc-sor* — licenc-közlés. Az MCGED blokk alatti kötelező forrásmegjelölés („© Mounce 1993 …”) a `licencek.tsv` `kotelezo_megjeloles` mezőjéből jön.
-6. v2: a **TBESH** súgója a licenc-aggályt is közli („az Online Bible-eredetű: a licenc-kérdés nyitott”) — ez a `licencek.tsv` F33f-megjegyzésén és a TBESH-fejlécen alapul; közzététel előtt jogi átnézés kell.
+6. v2, F60.45 óta: a **TBESH** súgója és forrás-sora nem tartalmaz rögzített licenc-mondatot („a licenc-kérdés nyitott”) — a licenc-jelzés az `adat/licencek.tsv`-ből jön (TBESH: `tisztazott`, CC BY 4.0, DT-F33f), ahogy a többi forrásnál. A kötelező megjelölés („© Larry Pierce …”) a `licencek.tsv` `kotelezo_megjeloles` mezőjében áll; közzététel előtt jogi átnézés kell (DT-M6).
 
 **Kikerült szöveg (F60.0–F60.1):** a feladatszámok (#22, #38, #7), „folyamatban”, „halasztva”, a „teremtéstörténet” és az „1Mózes 1:1–2:3” rögzített felirat, a „1–5Móz, Józs” rögzített felsorolás. A teszt (`test_nincs_feladatszam_es_szakaszra_rogzitett_szoveg`) őrzi. v2: „a kód jelkulcsa nincs a repóban” (a jelkulcs azóta van: `adat/morf_kulcs_heber.tsv`).
 
