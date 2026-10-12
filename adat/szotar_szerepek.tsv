@@ -12,7 +12,7 @@ gorog	9	Versenkénti jelentés	UBS DNTG (szópozícióig); KJV angol szószintű
 gorog	10	Kiejtés (magyaros)	kiejtes.py szabálytábla	nincs adatosítva
 heber	1	Alapjelentés	TBESH	adatosítva
 heber	2	Mélységi szócikk	BDB	adatosítva
-heber	3	Teológiai szócikk	Girdlestone (1897); TWOT-szám hivatkozásként	nincs adatosítva
+heber	3	Teológiai szócikk	unfoldingWord Translation Words (tW, CC BY-SA 4.0; konkordancia/tW_szocikkek.tsv, S14, D20; a Girdlestone kivezetve, D18); TWOT-szám hivatkozásként (D19)	nincs adatosítva
 heber	4	Jelentésszerkezet, szemantikai mező	UBS DBH (SDBH)	adatosítva
 heber	5	Tömör jelentés, előfordulás	UBS DBH glossza + referencia-szám	nincs adatosítva
 heber	6	LXX-híd	LXX-fordítói döntés versenként: mely görög szó adja vissza (LXX_OS + adat/lxx_dontesek.tsv; a lexikonoldal 3. szakasza)	adatosítva
