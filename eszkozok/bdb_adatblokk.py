@@ -162,17 +162,55 @@ def tahot_versek():
     return _cache('tahot', be)
 
 
+# A parok_<kulcs>.tsv fajlnev-kulcsa es a Konyv_normalizalo_tabla.tsv kozti megfeleltetes: a
+# kulcs a fajl elso adatsoranak `vers` oszlopabol jon (a "Konyv fej:vers" konyvresze = a tabla
+# "Magyar roviditese"). Egyetlen ismert elteres: a Siralmak a parok-fajlban `Sir` (a TAHOT
+# is `Sir`-nek irja; bdb_konyv_javit.TAHOT_KONYV), a tablaban `JSir`.
+PAROK_KONYV_ALIAS = {'Sir': 'JSir'}
+NORMALIZALO_UT = os.path.join(KONK, 'Konyv_normalizalo_tabla.tsv')
+
+
+def kanonikus_konyvsorrend():
+    """{magyar_rovidites: sorszam} a konkordancia/Konyv_normalizalo_tabla.tsv sorrendjebol
+    (az ujszovetsegi konyvek is benne vannak; a tabla sorrendje a kanonikus)."""
+    def be():
+        d = {}
+        elso = True
+        for m in tsv_sorok(NORMALIZALO_UT):
+            if elso:
+                elso = False
+                continue
+            d[m[1]] = len(d)
+        return d
+    return _cache('konyvsorrend', be)
+
+
 def parok_konyvek():
-    """[(konyv, ut)] a parok_<konyv>.tsv fajlokbol, a fajlnev szerint rendezve
-    a kanonikus sorrendben (1Moz..Jozs)."""
-    sorrend = ['1Moz', '2Moz', '3Moz', '4Moz', '5Moz', 'Jozs']
+    """[(konyv, ut)] a parok_<konyv>.tsv fajlokbol, a Konyv_normalizalo_tabla.tsv kanonikus
+    sorrendjeben (nem fajlnev szerint). Hiba (ValueError), ha egy fajl konyve a tablaban nincs."""
+    sorrend = kanonikus_konyvsorrend()
     ki = []
-    for fn in sorted(os.listdir(PAROK_MAPPA)):
+    for fn in os.listdir(PAROK_MAPPA):
         m = re.match(r'^parok_(.+)\.tsv$', fn)
-        if m:
-            ki.append((m.group(1), os.path.join(PAROK_MAPPA, fn)))
-    ki.sort(key=lambda x: (sorrend.index(x[0]) if x[0] in sorrend else 99, x[0]))
-    return ki
+        if not m:
+            continue
+        ut = os.path.join(PAROK_MAPPA, fn)
+        elso = True
+        konyv = None
+        for sor in tsv_sorok(ut):
+            if elso:
+                elso = False
+                continue
+            konyv = sor[0].rsplit(' ', 1)[0]
+            break
+        if konyv is None:
+            raise ValueError('ures parok-fajl: %s' % fn)
+        tabla_kulcs = PAROK_KONYV_ALIAS.get(konyv, konyv)
+        if tabla_kulcs not in sorrend:
+            raise ValueError('a %s konyve (%r) nincs a Konyv_normalizalo_tabla.tsv-ben' % (fn, konyv))
+        ki.append((sorrend[tabla_kulcs], m.group(1), ut))
+    ki.sort()
+    return [(kv, ut) for _s, kv, ut in ki]
 
 
 def parok():
@@ -559,7 +597,7 @@ def szakasz_karoli(strong, ts, pelda_per_alak=PELDA_MAX, alak_max=8, pelda_alak_
     lef_tah = sum(db for v, db in tah.items() if v.rsplit(' ', 1)[0] in lef)
     par_db = len(parok().get(sz, []))
     if not alakok:
-        f1.append('[NINCS KÁROLI-ALAK] (a lefedett könyvekben a TAHOT-ban %d előfordulás, Károli-pár %d)'
+        f1.append('[NINCS KÁROLI-ALAK] (a lefedett könyvekben a TAHOT-ban %d előfordulás, Károli–Strong link %d)'
                   % (lef_tah, par_db))
     else:
         rendez = sorted(alakok.items(), key=lambda kv: (-(kv[1]['magas'] + kv[1]['egyeb']), kv[0]))
@@ -577,7 +615,7 @@ def szakasz_karoli(strong, ts, pelda_per_alak=PELDA_MAX, alak_max=8, pelda_alak_
             return r
         f1.append('- magas bizonyosságú pár: %s' % lista(magas))
         f1.append('- alacsonyabb bizonyosságú pár (`alacsony`): %s' % lista(egyeb))
-        f1.append('- a lefedett könyvekben a TAHOT-ban %d előfordulás, ebből %d kapott Károli-párt' % (lef_tah, par_db))
+        f1.append('- a lefedett könyvekben a TAHOT-ban %d előfordulás; a Károli–Strong párosításban %d link (egy előfordulásra több link is eshet)' % (lef_tah, par_db))
     f1.append(prov(strong_norm(strong), 'adat/karoli_strong/parok_*.tsv + konkordancia/TAHOT_kivonat.tsv', ts))
     # peldak
     f2 = ['**2. Példaversek** (szabály: a leggyakoribb szóalakok, alakonként a kanonikus sorrend első %d verse, a szó **kiemelve**)' % pelda_per_alak]
@@ -851,7 +889,7 @@ def karoli_tabla_sorok(strongok, ts):
                 if len(versek) >= PELDA_MAX:
                     break
             sorok.append([kulcs, 'alak', alak, str(v['magas']), str(v['egyeb']), ';'.join(versek),
-                          '', '', ''])   # az alak-sorra a szocikk-sor proveniencia-ja vonatkozik
+                          '', '', pv])   # az alak-sor proveniencia-ja a szocikk-soreval szo szerint azonos
     return sorok
 
 

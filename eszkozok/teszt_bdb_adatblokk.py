@@ -12,6 +12,7 @@ atvezetes szovegcsereje (K5).
 import os
 import re
 import sys
+import tempfile
 import unittest
 from unittest import mock
 
@@ -296,6 +297,10 @@ class Atvezetes(unittest.TestCase):
         self.assertEqual(cs, [])
 
 
+TAB = chr(9)
+NL = chr(10)
+
+
 class KaroliTabla(unittest.TestCase):
     """F80 (BDB_KAROLI_POTLAS): adat/bdb_karoli.tsv -- minden kesz BDB-szocikk Karoli-adata,
     visszakereshetoen a parok_*.tsv forrassorra; az adat/forditasok.tsv nem valtozik."""
@@ -313,6 +318,47 @@ class KaroliTabla(unittest.TestCase):
             self.assertRegex(s['proveniencia'], r'^scope=H\d{4} \| forras=.+ \| ts=\S+$')
             if s['karoli_alak'] == B.NINCS_KAROLI_ALAK:      # kifejezett ures jelzes, nem kitoltes
                 self.assertEqual((s['magas'], s['alacsony']), ('0', '0'))
+
+    def test_minden_sor_proveniencia_nem_ures_es_alak_egyezik_a_szocikkevel(self):
+        # SEMA 2.25: minden sorban kotelezo; az alak-sor proveniencia-ja a szocikk-soreval szo szerint azonos
+        szoc = {s['strong']: s['proveniencia'] for s in self.szocikkek}
+        for s in self.sorok:
+            self.assertTrue(s['proveniencia'].strip(), (s['strong'], s['tipus'], s['karoli_alak']))
+            self.assertEqual(s['proveniencia'], szoc[s['strong']], (s['strong'], s['tipus'], s['karoli_alak']))
+
+    def test_pelda_versek_kanonikus_konyvsorrendben(self):
+        # a pelda_versek a Konyv_normalizalo_tabla.tsv sorrendjeben (nem fajlnev/ASCII szerint)
+        sorrend = B.kanonikus_konyvsorrend()
+        ellenorzott = 0
+        for s in self.sorok:
+            if s['tipus'] != 'alak':
+                continue
+            kv = [v.rsplit(' ', 1)[0] for v in s['pelda_versek'].split(';') if v]
+            idx = [sorrend[B.PAROK_KONYV_ALIAS.get(k, k)] for k in kv]
+            self.assertEqual(idx, sorted(idx), (s['strong'], s['karoli_alak'], s['pelda_versek']))
+            ellenorzott += len(kv)
+        self.assertGreater(ellenorzott, 90000)
+        # a H2617 'irgalmassága' elso peldaja nem lehet 1Kron (ASCII-sorrend hibaja volt)
+        irg = [s for s in self.sorok if s['strong'] == 'H2617' and s['tipus'] == 'alak'
+               and s['karoli_alak'] == 'irgalmassága']
+        self.assertTrue(irg)
+        self.assertFalse(irg[0]['pelda_versek'].startswith('1Krón'), irg[0]['pelda_versek'])
+
+    def test_parok_konyvek_tabla_szerinti_sorrend_es_hiba(self):
+        kv = [k for k, _ut in B.parok_konyvek()]
+        self.assertEqual(len(kv), 43)
+        self.assertEqual(kv[:3], ['1Moz', '2Moz', '3Moz'])
+        self.assertLess(kv.index('Jozs'), kv.index('Bir'))
+        self.assertLess(kv.index('Bir'), kv.index('1Sam'))
+        self.assertLess(kv.index('Sir'), kv.index('Ez'))          # JSir a tablaban az Ez elott
+        # ismeretlen konyv a parok-fajlban: nincs 99-es tartalek, hibaval all meg
+        with tempfile.TemporaryDirectory() as td:
+            with open(os.path.join(td, 'parok_Xx.tsv'), 'w', encoding='utf-8', newline=NL) as fh:
+                fh.write(TAB.join(['vers', 'hu_sorszam', 'hu_szo', 'er_sorszam', 'er_szo', 'strong', 'bizonyossag', 'forras']) + NL)
+                fh.write(TAB.join(['Xx 1:1', '1', 'szo', '1', 'x', 'H0001', 'alacsony', 'S']) + NL)
+            with mock.patch.object(B, 'PAROK_MAPPA', td):
+                with self.assertRaises(ValueError):
+                    B.parok_konyvek()
 
     def test_osszegek_egyeznek_a_forrassal(self):
         for strong in ('H2617', 'H5785', 'H8057'):
