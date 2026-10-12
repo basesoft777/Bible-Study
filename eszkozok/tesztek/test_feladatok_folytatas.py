@@ -99,6 +99,25 @@ class FolytatasTest(Fixture):
                     'allapot: fut\nad: x\nkovetkezo: %s\n---\n' % FOLYT)
         self.assertEqual(F.csomag(self.briefek(), {}), [1, 2])
 
+    def test_g_folyamat_alternativa(self):
+        self.brief(1, allapot='nem_indult', ir=['a.md'])
+        self.brief(2, fazis='folyamat', allapot='nem_indult', ir=['b.md'])
+        self.brief(3, fazis='folyamat', allapot='nem_indult', kovetkezo='Te: döntés',
+                   ir=['c.md'])
+        self.assertNotIn(2, self.jeloltek())
+        alt = F.alternativak(self.briefek(), {})
+        self.assertIsNone(alt[2])
+        self.assertEqual(alt[3], 'a következő lépés a felhasználóé (Te:)')
+        ki = self.cli()
+        self.assertIn('ALTERNATIVA\t#2\tTeszt 2', ki)
+        self.assertTrue(any(s.startswith('ALT_KIHAGYVA\t#3\t') for s in ki))
+        self.assertEqual(F.csomag(self.briefek(), {}), [1])   # csomagba nem kerul
+
+    def test_g2_folyamat_fuggesre_var(self):
+        self.brief(1, allapot='nem_indult', ir=['a.md'])
+        self.brief(2, fazis='folyamat', allapot='nem_indult', olvas=['a.md'], ir=['b.md'])
+        self.assertEqual(F.alternativak(self.briefek(), {})[2], 'vár: #1')
+
 
 if __name__ == '__main__':
     unittest.main()

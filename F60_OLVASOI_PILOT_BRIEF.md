@@ -12,7 +12,7 @@ kovetkezo: /kovetkezo; ⛔ az M3 felhasználói átnézésnél
 olvas: [eszkozok/olvaso_pilot/README.md, konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, "konkordancia/Macula_heber_*.tsv", "konkordancia/LXX_OS/*.tsv", konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Strong_szotar.tsv, konkordancia/TBESG.txt, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, "adat/karoli_strong/*.tsv", adat/forditasok.tsv, adat/kulso/lxx_bridge.tsv, adat/licencek.tsv, MUNKATERV.md, ADATVAGYON_TERV.md]
 ir: [eszkozok/olvaso_pilot/adat.py, eszkozok/olvaso_pilot/bdb_szelet.py, eszkozok/olvaso_pilot/epit.py, eszkozok/olvaso_pilot/sablon.html, eszkozok/olvaso_pilot/README.md, eszkozok/olvaso_pilot/teszt_olvaso_pilot.py]
 fugg: []
-nem_fugg: [7, 9, 22, 38, 52, 54, 56, 57]
+nem_fugg: [7, 9, 22, 38, 52, 54, 56, 57, 80]
 ---
 
 # F60_OLVASOI_PILOT_BRIEF.md — Olvasói pilot
@@ -86,3 +86,4 @@ A felhasználó megnézi mindkét szakasz oldalát. A közzétételt privát art
 | v1 | 2026-10-05 | `fazis: folyamat`: döntés-előkészítő eszköz, nem az adat- vagy a render-fázis része; a #57, #58 lezárása után újrafuttatható. | befogadás |
 | v1 | 2026-10-05 | `nem_fugg: [52]`: a tervdokumentum olvasása kontextus. | kontextus-olvasás |
 | v1 | 2026-10-05 | `nem_fugg: [7, 9, 22, 38, 54, 56, 57]`: a pilot az aktuális adatállapotot méri, nem vár a táblákat író feladatokra; ezek lezárása után újrafuttatható (a jelentés rögzíti, melyik állapoton mért). | befogadás |
+| v1.1 | 2026-10-12 | `nem_fugg` + 80: a #80 (BDB_KAROLI_POTLAS) az `adat/forditasok.tsv`-t írja, ezért a #60 levezetett függést kapott (`FUGGES 60 80 adat/forditasok.tsv*`); ugyanaz az indok, mint a #38-nál: a pilot az aktuális adatállapotot méri, a hiányt jelzi, nem pótolja | a felhasználó jóváhagyása a chatben (2026-10-12) |
