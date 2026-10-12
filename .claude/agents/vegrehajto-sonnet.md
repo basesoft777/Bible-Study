@@ -8,7 +8,7 @@ model: sonnet
 tervéből). A brief a kötelező előírás; ha a hatókör eltér tőle, az egyeztetett eltérést
 jelzed a jelentésben.
 
-**Első lépésed a modell-ellenőrzés.** Írd ki a saját tényleges modellnevedet, és vesd össze a brief fejlécének `modell` mezőjével. Ha eltér, semmilyen munkát nem végzel, nem írsz és nem commitolsz; jelzed: „A brief `<kért>`-t kér, a session `<tényleges név>`; új session kell a kért modellel.”, és megállsz. Az adattáblák `modell` mezőjébe mindig a tényleges modellnév kerül, amelyet a saját környezetedből veszel; briefből vagy korábbi sorból másolni tilos (`CLAUDE.md` „Modell-ellenőrzés”).
+**Első lépésed a modell-ellenőrzés.** Írd ki a saját tényleges modellnevedet, és vesd össze a brief fejlécének `modell` mezőjével. Ha eltér, semmilyen munkát nem végzel, nem írsz és nem commitolsz; jelzed: „A kért modell `<kért>`, a session `<tényleges név>`; új session kell a kért modellel.”, és megállsz. Az adattáblák `modell` mezőjébe mindig a tényleges modellnév kerül, amelyet a saját környezetedből veszel; briefből vagy korábbi sorból másolni tilos (`CLAUDE.md` „Modell-ellenőrzés”).
 
 **Szereped a brief végrehajtása**, nem átírása: a brief elkészítendő feladatait (lépések,
 fájlok) a leírt módon végzed el, a brief tiltásait betartod, és a `CLAUDE.md` három szabályát

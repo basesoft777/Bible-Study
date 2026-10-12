@@ -5,6 +5,6 @@
 - **Kész:** a modell-ellenőrzés szabálya az öt helyen (`CLAUDE.md` új szakasz, `BRIEF_SABLON.md`, `.claude/commands/kovetkezo.md` 6/6b, `vegrehajto-{opus,sonnet,haiku}.md`, `fuggetlen-ellenor.md`). `feladatok.py ellenoriz`: 0 hiba.
 - **Egyeztetett eltérés:** a `kovetkezo.md` „Csatolt brief” sora is egy mondattal bővült (az orkesztrátor kérésére); az ellenőr szerint ez túlmegy a brief 4. lépésén és félreolvasható (ELTÉRÉS 4).
 - **Ellenőr: ELTÉRÉS, 6 tétel.** Az 1. súlyos: a `CLAUDE.md:77` szövege ellentmond a `fuggetlen-ellenor.md`-nek és a `kovetkezo.md`-nek (az ellenőr és az orkesztrátor a brief `modell` mezőjéhez mérné magát, a gyakorlatban a saját frontmatterjéhez). A 3–6. enyhe (jelzésminta, „Csatolt brief” sor, 4./5. lépés be nem kötve, `fut`-commit a ellenőrzés előtt).
-- **Nem javítva:** a javítás a szabály szövegét módosítja (tartalmi döntés), ezért a PR draft marad, javítás a felhasználó döntése után új commitban.
+- **Javítva (F45.4, felhasználói jóváhagyással):** az 1. és a 3. eltérés: a `CLAUDE.md` szakasza szerepenként adja meg a kért modellt (végrehajtó: a brief `modell` mezője; független ellenőr: a saját subagent-fájlja `model` mezője; orkesztrátor: a végrehajtóra hárul), és az öt helyen egységes a jelzésminta („A kért modell `<kért>`, a session `<tényleges név>`…”). A 4–6. eltérés nyitva (nem tartalmi, külön kérésre).
 - **PR:** a címe `[ELLENŐRZŐ]` előtagú (E16: a PR az ellenőr fájlját érinti).
-- **Nyitott:** az 1. eltérés feloldása (melyik szöveg az irányadó); merge a felhasználótól.
+- **Nyitott:** a 4–6. enyhe eltérés; ellenőrző kör a javítás után; merge a felhasználótól.
