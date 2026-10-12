@@ -213,6 +213,7 @@ ul.hiv li b { font-weight: 500; color: var(--muted); font-size: 13px; margin-lef
 .alak .sav i { display: block; height: 100%; background: var(--accent); }
 .alak .db { text-align: right; font-variant-numeric: tabular-nums; color: var(--muted); font-size: 13px; }
 .bdb { font-family: var(--font-hu); font-size: 15px; line-height: 1.65; white-space: pre-line; overflow-wrap: anywhere; margin: 0; }
+.bdb.hosszu { max-height: 26rem; overflow-y: auto; padding-right: 6px; }
 .bdb.en { font-family: var(--font-gr); color: var(--muted); font-size: 14px; }
 .allapot { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; padding: 2px 8px; border-radius: 4px; background: var(--accent-soft); color: var(--accent); width: fit-content; }
 .allapot.folyamat { background: var(--gold-soft); color: var(--gold); }
@@ -919,7 +920,7 @@ ol.jel { gap: 12px; }
     const a = v.angol;
     return [
       angolBlokk('Angol szó szavanként (BSB)', a.bsb, 'bsb', `Kulcs: ${a.bsb.kulcs} · a tábla számozás-jelölése: ${a.bsb.szamozas.join(', ') || '—'}. Kattintható: a héber szó lapja.`),
-      angolBlokk('Angol szó szavanként (KJV)', a.kjv, 'kjv', `Kulcs: ${a.kjv.kulcs} · a KJV-kulcs forrása: ${a.kjv.mod}.`),
+      a.kjv ? angolBlokk('Angol szó szavanként (KJV)', a.kjv, 'kjv', `Kulcs: ${a.kjv.kulcs} · a KJV-kulcs forrása: ${a.kjv.mod}.`) : null, // kiadás: nyilvános/kereskedelmi → a KJV-Strong blokk (GPL) kimarad
       naveBlokk(v), tipnrBlokk(v),
       adatrBlokk('Motívumadat (adatréteg)', v.motivum || [], 'motivum', x => el('div', { class: 'sor' },
         el('span', { class: 'fo', text: `${x.id} · ${mot(x)} · ${x.igehely}` }), el('span', { text: x.kapcsolodas }),
@@ -981,11 +982,11 @@ ol.jel { gap: 12px; }
         forras('usz', 'ubs_usz')),
       el('div', { class: 'blokk' },
         el('h3', { text: 'Szótári szöveg (angol): TBESG / Abbott-Smith' }),
-        el('p', { class: 'bdb en', lang: 'en', text: l.tbesg || '—' }),
-        l.thayer ? el('details', l.hu.length ? null : { open: '' }, el('summary', { class: 'meg', text: 'Thayer (angol)' }), el('p', { class: 'bdb en', lang: 'en', text: l.thayer })) : null,
+        el('p', { class: 'bdb en hosszu', lang: 'en', text: l.tbesg || '—' }),
+        l.thayer ? el('details', l.hu.length ? null : { open: '' }, el('summary', { class: 'meg', text: 'Thayer (angol)' }), el('p', { class: 'bdb en hosszu', lang: 'en', text: l.thayer })) : null,
         forras('gor')),
       domenBlokk(l, 'Szemantikai domén (SDGNT)', 'sdgnt'),
-      ubsEnBlokk(l), lsjBlokk(l), mcgedBlokk(l),
+      ubsEnBlokk(l), lsjBlokk(l), D.kiadas === 'kereskedelmi' ? null : mcgedBlokk(l), // kereskedelmi kiadás: az MCGED blokk kimarad
       seceBlokk(l, 'SECE-szócikk (görög)', 'sece_g'),
       twBlokk(l)
     );
@@ -1017,7 +1018,7 @@ ol.jel { gap: 12px; }
     ['SECE-szócikk (héber)', [['SECE_H', 'konkordancia/SECE_H_teljes.tsv']], ['forras']],
     ['SECE-szócikk (görög)', [['SECE_G', 'konkordancia/SECE_G_teljes.tsv']], ['forras']],
     ['TWOT- és BDB-azonosító', [['OSHL', 'konkordancia/OSHL_lexikalis_index.tsv']], ['forras']],
-    ['Bővített Strong-szócikk', [['TBESH', 'konkordancia/TBESH.txt (a jelentés-lista az Online Bible-eredetű: a licenc-kérdés nyitott)']], ['forras', 'gepi']],
+    ['Bővített Strong-szócikk', [['TBESH', 'konkordancia/TBESH.txt']], ['forras', 'gepi']],
     ['translationWords', [['tW_szocikkek', 'konkordancia/tW_szocikkek.tsv']], ['forras']],
     ['UBS DNTG jelentések', [['UBS_DNTG', 'konkordancia/UBS_DNTG_jelentesek.tsv']], ['forras']],
     ['LSJ-szócikk', [['LSJ', 'konkordancia/LSJ_teljes.tsv']], ['forras']],

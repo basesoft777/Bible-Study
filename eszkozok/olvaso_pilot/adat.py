@@ -29,6 +29,9 @@ _ap.add_argument('--szakasz', default='1Móz 1:1-2:3',
                  help='pl. "1Móz 1:1-2:3" (vers-tartomány) vagy "Zsolt 22" (egész fejezet), "1Móz 1-25" (fejezet-tartomány)')
 _ap.add_argument('--kimenet', default=None,
                  help='kimeneti könyvtár; alapból <temp>/olvaso_pilot/<szakasz-azonosító>, a repón kívül')
+_ap.add_argument('--kiadas', choices=('belso', 'nyilvanos', 'kereskedelmi'), default='belso',
+                 help='a kiadás típusa (DT-F60a): belso (alap, minden blokk); nyilvanos: a KJV-Strong blokk (GPL) kimarad; '
+                      'kereskedelmi: a KJV-Strong és az MCGED blokk is kimarad')
 _args = _ap.parse_args()
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from szakasz import KONYVFAJLOK, szakasz_cim, szakasz_versei, alap_kimenet, step_tabla  # noqa: E402
@@ -486,8 +489,9 @@ for g in sorted(gor_szavak):
         'gloss': tb.get('gloss') or sz.get('jelentes', ''),
         'szofaj': sz.get('szofaj', ''),
         'hu': [x for x in hu][:6],
-        'tbesg': (tb.get('szoveg', '')[:900] + ('…' if len(tb.get('szoveg', '')) > 900 else '')) if tb else '',
-        'thayer': th[:700] + ('…' if len(th) > 700 else ''),
+        # F60.46 (v3.1): a teljes angol szöveg áll a lapon (a lap gördíthető blokkban mutatja), vágás nélkül
+        'tbesg': tb.get('szoveg', ''),
+        'thayer': th,
         'usz_db': usz_db.get(g, 0),
         'usz_versek': [{'ig': ig, 'karoli': karoli.get(ig, '')} for ig in usz_versek.get(g, [])[:5]],
         'usz_versek_db': len(usz_versek.get(g, [])),
@@ -508,6 +512,24 @@ _C = types.SimpleNamespace(GY=GY, TS=TS, SZAKASZ=SZAKASZ, KONYV=KONYV, VERSEK=VE
 BOV_PROV, BOV_TOP, BOV_STAT = bovit(_C)
 BOV_STAT['morf_ismeretlen'] = sum(MK.ismeretlen.values())
 BOV_STAT['morf_aramai_szo'] = sum(1 for n in MK.aramai.values() if n == 'A')
+
+
+
+def kiadas_szuro(kiadas, versek, gor_lapok, stat, prov):
+    """DT-F60a (a 2. előkészítése): a kiadás típusa szerint kiveszi a licenc miatt kimaradó blokkokat.
+    belso: semmit; nyilvanos: a KJV-Strong vers-blokkot (GPL); kereskedelmi: a KJV-Strong és az MCGED blokkot.
+    A kiveendő blokk adata, statisztikája és proveniencia-sora is kikerül."""
+    if kiadas in ('nyilvanos', 'kereskedelmi'):
+        for v in versek:
+            v['angol']['kjv'] = None
+        stat['kjv_vers'] = 0
+        prov.pop('kjv', None)
+    if kiadas == 'kereskedelmi':
+        for g in gor_lapok.values():
+            g.pop('mcged', None)
+        stat['mcged'] = 0
+        prov.pop('mcged', None)
+
 
 LXX_REL = LXX_F[len('konkordancia/'):]
 PAROK_F = parok_hasznalt[0] if len(parok_hasznalt) == 1 else '{%s}' % ','.join(parok_hasznalt)
@@ -531,6 +553,7 @@ prov = {
     'bridge': 'scope=strong | forras=adat/kulso/lxx_bridge.tsv | ts=%s' % TS,
 }
 prov.update(BOV_PROV)
+kiadas_szuro(_args.kiadas, versek, gor_lapok, BOV_STAT, prov)
 with open(KI, 'w', encoding='utf-8') as fh:
     licenc = {}
     licenc_jelzes = {}
@@ -538,7 +561,7 @@ with open(KI, 'w', encoding='utf-8') as fh:
         if len(r) > 9:
             licenc[r[0]] = r[9]
             licenc_jelzes[r[0]] = {'allapot': r[7], 'kereskedelmi': r[4], 'share_alike': r[5], 'megjeloles': r[6]}
-    json.dump({'licenc': licenc, 'licenc_jelzes': licenc_jelzes, 'versek': versek, 'lapok': lapok, 'gor_lapok': gor_lapok,
+    json.dump({'kiadas': _args.kiadas, 'licenc': licenc, 'licenc_jelzes': licenc_jelzes, 'versek': versek, 'lapok': lapok, 'gor_lapok': gor_lapok,
                'prov': prov, 'karoli_konyvek': pkonyvek, 'bdb_kesz': len(bdb_hu), 'stat': BOV_STAT, **BOV_TOP}, fh,
               ensure_ascii=False)
 print('versek:', len(versek), '| szó-lapok:', len(lapok), '| ebből magyar BDB:',
