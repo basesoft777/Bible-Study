@@ -69,8 +69,10 @@ class Blokk(unittest.TestCase):
             self.assertLessEqual(len(B.blokk_epit(s, TS)), B.BLOKK_MAX, s)
 
     def test_nincs_karoli_alak(self):
-        # H0426 (arami 'Isten'): a lefedett konyvekben nincs Karoli-par
-        b = B.blokk_epit('H0426', TS)
+        # a teljes OSZ-parosítás után nincs ismert üres Strong: a parok üres voltát szimuláljuk
+        # (F80: a korábbi H0426-fixture a 6 könyves állapotra épült)
+        with mock.patch.object(B, 'parok', return_value={}):
+            b = B.blokk_epit('H0426', TS)
         self.assertIn('[NINCS KÁROLI-ALAK]', b)
         self.assertEqual(len(re.findall(r'^\*proveniencia:', b, re.M)), 6)
 
@@ -81,10 +83,11 @@ class Blokk(unittest.TestCase):
     def test_pelda_idezet_szo_szerinti(self):
         # a kiemelt szo a hu_sorszam-adik token, az idezet a Karoli-versbol
         b = B.blokk_epit('H2617', TS)
-        m = re.search(r'1Móz 24:14 „(.+?)”', b)
+        # F80: a példaversek a teljes ÓSZ-párosításból jönnek; az első idézett vers bármi lehet
+        m = re.search(r'- \*\*[^*]+\*\*: (\S+ \d+:\d+) „(.+?)”', b)
         self.assertIsNotNone(m)
-        szoveg = m.group(1).replace('**', '').strip('.').replace('...', '')
-        self.assertIn(szoveg.strip(), B.karoli_vers()['1Móz 24:14'])
+        szoveg = m.group(2).replace('**', '').strip('.').replace('...', '')
+        self.assertIn(szoveg.strip(), B.karoli_vers()[m.group(1)])
 
     def test_hibas_strong(self):
         with self.assertRaises(ValueError):
@@ -291,6 +294,97 @@ class Atvezetes(unittest.TestCase):
         ketszer, cs = B.atvezet_szoveg(egyszer, self.SOR)
         self.assertEqual(egyszer, ketszer)
         self.assertEqual(cs, [])
+
+
+class KaroliTabla(unittest.TestCase):
+    """F80 (BDB_KAROLI_POTLAS): adat/bdb_karoli.tsv -- minden kesz BDB-szocikk Karoli-adata,
+    visszakereshetoen a parok_*.tsv forrassorra; az adat/forditasok.tsv nem valtozik."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.sorok = B.karoli_tabla_olvas()
+        cls.szocikkek = [s for s in cls.sorok if s['tipus'] == 'szocikk']
+
+    def test_minden_kesz_szocikk_szerepel_proveniencival(self):
+        kesz = B.kesz_bdb_strongok()
+        self.assertGreaterEqual(len(kesz), 674)
+        self.assertEqual([s['strong'] for s in self.szocikkek], kesz)
+        for s in self.szocikkek:
+            self.assertRegex(s['proveniencia'], r'^scope=H\d{4} \| forras=.+ \| ts=\S+$')
+            if s['karoli_alak'] == B.NINCS_KAROLI_ALAK:      # kifejezett ures jelzes, nem kitoltes
+                self.assertEqual((s['magas'], s['alacsony']), ('0', '0'))
+
+    def test_osszegek_egyeznek_a_forrassal(self):
+        for strong in ('H2617', 'H5785', 'H8057'):
+            sz = B.strong_szam(strong)
+            alakok = [s for s in self.sorok if s['strong'] == strong and s['tipus'] == 'alak']
+            par = B.parok()[sz]
+            self.assertEqual(sum(int(a['magas']) + int(a['alacsony']) for a in alakok), len(par), strong)
+            szoc = [s for s in self.szocikkek if s['strong'] == strong][0]
+            self.assertEqual(int(szoc['par_db']), len(par), strong)
+
+    def test_visszakereshetoseg_forrassorra(self):
+        # legalabb 3 ismert Strong-szam (van Karoli-parja): minden pelda-hivatkozas (vers + Strong +
+        # alak) a parok_*.tsv egy sorara visszakeresheto, fajlbeli sorszam nelkul
+        for strong in ('H2617', 'H5785', 'H8057'):
+            alakok = [s for s in self.sorok if s['strong'] == strong and s['tipus'] == 'alak']
+            self.assertTrue(alakok, strong)
+            ellenorzott = 0
+            for a in alakok:
+                for vers in [v for v in a['pelda_versek'].split(';') if v]:
+                    forras = B.karoli_pelda_forras(strong, a['karoli_alak'], vers)
+                    self.assertTrue(forras, '%s %s %s' % (strong, a['karoli_alak'], vers))
+                    ellenorzott += 1
+            self.assertGreater(ellenorzott, 3, strong)
+
+    def test_nyers_parok_fajl_is_megerosit(self):
+        # fuggetlen olvasas: a nyers parok_1Moz.tsv-ben a H2617 alak-sora tenyleg ott van
+        ut = os.path.join(B.PAROK_MAPPA, 'parok_1Moz.tsv')
+        talalt = set()
+        for m in B.tsv_sorok(ut):
+            if m[5] == 'H2617':
+                talalt.add((m[0], m[2].lower()))
+        peldak = [(v, a['karoli_alak']) for a in self.sorok
+                  if a['strong'] == 'H2617' and a['tipus'] == 'alak'
+                  for v in a['pelda_versek'].split(';') if v.startswith('1Móz ')]
+        self.assertTrue(peldak)
+        for v, alak in peldak:
+            self.assertIn((v, alak), talalt)
+
+    def test_forditasok_valtozatlan(self):
+        # K3: a potlas nem ir az adat/forditasok.tsv-be -- a tabla-epites elott es utan
+        # ugyanaz a fajl (bajtra), a 'teljes' BDB-sorok szama es a forditas_hu mezok is
+        import hashlib
+        import tempfile
+
+        def hash_():
+            return hashlib.sha256(open(B.FORDITASOK_UT, 'rb').read()).hexdigest()
+        elotte = hash_()
+        with tempfile.TemporaryDirectory() as td:
+            ki = os.path.join(td, 'bdb_karoli.tsv')
+            with mock.patch.object(B, 'KAROLI_TABLA_UT', ki):
+                sorok = B.karoli_tabla_sorok(['H2617', 'H5785', 'H8057'], TS)
+                B.karoli_tabla_ir(sorok, TS, ut=ki)
+            self.assertTrue(os.path.exists(ki))
+            # a tabla-epites CLI-je is csak a megadott celba ir
+            ki2 = os.path.join(td, 'teljes.tsv')
+            with mock.patch.object(B, 'KAROLI_TABLA_UT', ki2):
+                self.assertEqual(B.main(['--karoli-epit', '--ts', TS]), 0)
+            self.assertTrue(os.path.exists(ki2))
+        self.assertEqual(hash_(), elotte)
+
+    def test_ujraepites_idempotens(self):
+        a = B.karoli_tabla_sorok(['H2617', 'H8057'], TS)
+        b = B.karoli_tabla_sorok(['H2617', 'H8057'], TS)
+        self.assertEqual(a, b)
+        self.assertTrue(all('\t' not in x and '\n' not in x for s in a for x in s))
+
+    def test_ures_forras_kifejezett_jelzes(self):
+        with mock.patch.object(B, 'parok', return_value={}):
+            sorok = B.karoli_tabla_sorok(['H0426'], TS)
+        self.assertEqual(len(sorok), 1)
+        self.assertEqual(sorok[0][1:5], ['szocikk', B.NINCS_KAROLI_ALAK, '0', '0'])
+        self.assertIn('ts=' + TS, sorok[0][-1])
 
 
 if __name__ == '__main__':
