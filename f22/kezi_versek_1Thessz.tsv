@@ -1,0 +1,9 @@
+# F22 (N-F22c, 2026.10.12): a modell-válaszoktól függetlenül kezi állapotú Károli-versek (egyesit.py kezi_felulir);
+# ok: a nyers TAGNT [..]/{..} jelölésű sorai a TAGNT_kivonat.tsv-ből kimaradtak (naplok/F22_TAGNT_zarojeles_sorok.md).
+igehely	ok
+1Thessz 1:2	N-F22c: a nyers TAGNT `1Th.1.2[1.3]` sorai (1 szó) a kivonatból kimaradtak; a vers a NRSV-kulcs szerint érintett, a görög szöveg részleges lehet; a Károli-kulcs a kivonat javítása után dől el (a felhasználó döntése, 2026.10.12)
+1Thessz 1:3	N-F22c: a nyers TAGNT `1Th.1.2[1.3]` sorai (1 szó) a kivonatból kimaradtak; a vers a KJV-kulcs szerint érintett, a görög szöveg részleges lehet; a Károli-kulcs a kivonat javítása után dől el (a felhasználó döntése, 2026.10.12)
+1Thessz 2:7	N-F22c: a nyers TAGNT `1Th.2.7[2.6]` sorai (7 szó) a kivonatból kimaradtak; a vers a NRSV-kulcs szerint érintett, a görög szöveg részleges lehet; a Károli-kulcs a kivonat javítása után dől el (a felhasználó döntése, 2026.10.12)
+1Thessz 2:6	N-F22c: a nyers TAGNT `1Th.2.7[2.6]` sorai (7 szó) a kivonatból kimaradtak; a vers a KJV-kulcs szerint érintett, a görög szöveg részleges lehet; a Károli-kulcs a kivonat javítása után dől el (a felhasználó döntése, 2026.10.12)
+1Thessz 2:12	N-F22c: a nyers TAGNT `1Th.2.12[2.11]` sorai (6 szó) a kivonatból kimaradtak; a vers a NRSV-kulcs szerint érintett, a görög szöveg részleges lehet; a Károli-kulcs a kivonat javítása után dől el (a felhasználó döntése, 2026.10.12)
+1Thessz 2:11	N-F22c: a nyers TAGNT `1Th.2.12[2.11]` sorai (6 szó) a kivonatból kimaradtak; a vers a KJV-kulcs szerint érintett, a görög szöveg részleges lehet; a Károli-kulcs a kivonat javítása után dől el (a felhasználó döntése, 2026.10.12)

@@ -51,16 +51,21 @@ import tokenek  # noqa: E402
 
 BS = chr(92)
 SOR = re.compile(r'^([A-Za-z0-9]+)\.(\d+)\.(\d+)(?:\((\d+)\.(\d+)\))?#(\d+)=(\S*)\t')
+# F90: a TAGNT a KJV- ([..]) és az egyéb ({..}) versszámozás-eltérést is a hivatkozásban
+# jelöli; ezek a sorok 2026.10-ig kimaradtak a kivonatból és innen is. A TAHOT-ra a
+# régi (csak kerek zárójeles) minta marad: az ÓSZ-oldal nem tárgya az F90-nek.
+SOR_GOROG = re.compile(r'^([A-Za-z0-9]+)\.(\d+)\.(\d+)(?:[\[({](\d+)\.(\d+)[\])}])?#(\d+)=(\S*)\t')
 HIANYZO_NORM = {}
 
 
 def nyers_csoportok(fajlok, gorog):
     """[(kulcs, (konyv, ch, v, ch2, v2), [(nn, morfema), ...]), ...] fájlsorrendben."""
     csoportok = OrderedDict()
+    minta = SOR_GOROG if gorog else SOR
     for fn in fajlok:
         with open(fn, encoding='utf-8') as f:
             for ln in f:
-                m = SOR.match(ln)
+                m = minta.match(ln)
                 if not m:
                     continue
                 c = ln.rstrip('\n').split('\t')

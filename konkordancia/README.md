@@ -57,6 +57,13 @@ szöveg-illesztéssel összeköthető. **A már korábban elkészült két Péld
 konvertálva lett** (`Proverbs N:V` → `Pro.N.V`, csak az Igehely-oszlop, minden más adat
 változatlan).
 
+## `TAHOT_kivonat.tsv` — Károli-kulcs (F85, 2026.10.09)
+
+A `TAHOT_kivonat.tsv` `Igehely` kulcsa az F85.6 óta versszinten a **Károli-vers**, amelynek a héber szövegét a sor hordozza (nincs Károli-vers nélküli TAHOT-kulcs, és minden ÓSZ-Károli-versnek van TAHOT-sora;
+a Jób 40 korábbi +5-ös eltolása és a többi fejezethatár-/fejezeten belüli eltolás megszűnt). Ahol a Károli két TAHOT-verset egy versbe vont (9 hely), mindkét vers a közös Károli-kulcson áll
+(`f22/versosszevonas.tsv`); a fájlsorrend nem Károli-sorrend (áthelyezett blokkok), kulcs szerint olvass. Részletek, módszer és igazolás: `TAHOT_TAGNT_README.md` („Versszintű Károli-kulcs”),
+`naplok/F85_jelentes.md`, `naplok/F85_igazolas.md`.
+
 ## Forrás
 
 - **KJV_Strongs minta-URL:** `https://studybible.info/KJV_Strongs/{Könyv}%20{N}` (pl. `Proverbs%20{N}`, `Genesis%20{N}`)

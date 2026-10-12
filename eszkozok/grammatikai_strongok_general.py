@@ -79,7 +79,19 @@ HATARESET = {
     "H3605": ("kol, 'minden' — gyakori (5 412) és kvantor-szerű, DE tartalmi jegyet is "
               "hordozhat: a teljesség / kivétel nélküliség motívumszinten releváns lehet. "
               "Ha valaha felvesszük, külön kategóriával és külön indoklással."),
+    "H3651": ("ken, 'így, ezért' (כֵּן) — DT-F68a, 2026.10.08. Határozószó (nem a kritérium három "
+              "szófaja), egy számon fut az ezért-jelentés (לָכֵן, עַל־כֵּן: ~46%), a deiktikus "
+              "'így/úgy', az 'azután' és a melléknévi 'helyes'. A וַיְהִי כֵן ('és úgy lett') "
+              "teremtési formula (1Móz 1, hat hely) motívumhordozó, ezért a felvétele leletet "
+              "törölhetne. Ha valaha felvesszük, a szerkezet (lākēn / ʿal-kēn), nem a szám a "
+              "döntési egység."),
 }
+
+# Elutasított (DT-F68a, 2026.10.08; nem HATARESET, nem tiltólista): H6118 (עֵקֶב) — a
+# Strong-szótár szerint főnév, 15 előfordulásból 4 tartalmi ('jutalom', 'mindvégig'); a
+# Strong-szám nem választja szét a használatokat, és a szófaja miatt a kötőszó-kritérium
+# alapján nem tér vissza. Halasztott (külön döntés): H0638, H3861, H6903 (arámi precedens),
+# H2958 (a TAHOT-ban 0 előfordulás).
 
 # ---------------------------------------------------------------------------
 # 2. HÉBER KÉZI KIEGÉSZÍTÉS — nincs a H9xxx-ben, de ugyanaz a zaj.
@@ -91,9 +103,11 @@ HATARESET = {
 #   nem szemantikai. Egy elöljáró nem attól lesz tartalmas, hogy külön szóként
 #   írják. Ezért tartozik ide az alábbi hét tétel is.
 #
-# Ellenőrizhető jel: mind a hét szófaja a Strong_szotar.tsv-ben elöljárószó,
+# Ellenőrizhető jel: mind a tétel szófaja a Strong_szotar.tsv-ben elöljárószó,
 # kötőszó vagy névmás — szemben a szándékosan kihagyottakkal (H3605 főnév,
-# H1961 és H6213 ige), amelyek a TILTOLISTA-ra, illetve a HATARESET-be kerültek.
+# H1961 és H6213 ige, H3651 határozószó), amelyek a TILTOLISTA-ra, illetve a
+# HATARESET-be kerültek. A DT-F68a (2026.10.08) hét további kötőszót vett fel;
+# mindegyiknél a Strong_szotar szófaja `kötőszó`, tehát egyik sem kivétel a jel alól.
 # ---------------------------------------------------------------------------
 HEBER_KEZI = [
     ("H0853", "[tárgy jelölője]", "targyrag",
@@ -122,6 +136,29 @@ HEBER_KEZI = [
      "Személyes/mutató névmás (הוּא). Görög párja a G0846 (αὐτός), amely már a listán van."),
     ("H2088", "ez", "nevmas",
      "Mutató névmás (זֶה). Görög párja a G3778 (οὗτος), amely már a listán van."),
+    # --- DT-F68a (2026.10.08): hét kötőszó; mind `kötőszó` a Strong_szotar.tsv-ben ---
+    ("H3282", "mert, mivelhogy", "kotoszo",
+     "Okhatározói kötőszó (יַעַן). Mind a 99 TAHOT-előfordulás 'because'; tartalmi használata nincs. "
+     "Görög párja részben a listán (G3754 ὅτι, G1223 διά); a G0473 és a G1894 nincs rajta."),
+    ("H0176", "vagy", "kotoszo",
+     "Választó kötőszó (אוֹ). Tartalmi jegy nélkül kapcsol. Görög párjai a G2228 (ἤ) és a G2532 (καί), "
+     "amelyek már a listán vannak."),
+    ("H3863", "ha, bárcsak", "kotoszo",
+     "Feltételes/óhajtó kötőszó (לוּ). A feltételt jelöli, a tartalmát nem. Görög párja a G1487 (εἰ), "
+     "amely már a listán van."),
+    ("H3884", "ha nem, hacsak", "kotoszo",
+     "Feltételes kötőszó (לוּלֵא). Tagadó feltételt vezet be, tartalmi jegy nélkül. Görög párja a G1487 (εἰ), "
+     "amely már a listán van."),
+    ("H6435", "nehogy", "kotoszo",
+     "Célhatározói tiltó kötőszó (פֶּן־). Tisztán szerkezeti: a tagmondat tartalmát nem érinti. Görög párja "
+     "a G3361 (μή), amely már a listán van; a G3379 (μήποτε) nincs rajta. Tudomásul vett mellékhatás: az "
+     "olvaso_pilot nem ad szó-lapot nyelvtani Strongnak; a genezis/1Moz_3v1-6_bovitett.md elemzésével nem ütközik "
+     "(a tábla a gerinc stopword-listája, a kollokáció-keresést nem érinti)."),
+    ("H0432", "hacsak, ha nem", "kotoszo",
+     "Kivételt jelölő kötőszó (אִלּוּ). Ritka (2 előfordulás), tartalmi jegy nélkül; LXX-párja nincs."),
+    ("H3860", "ezért", "kotoszo",
+     "Következtető kötőszó (לָהֵן, H3860). Ritka (2 előfordulás, 1 vers), tartalmi jegy nélkül; LXX-párja nincs. "
+     "Nem keverendő a H3651 לָכֵן alakjával, amely HATARESET."),
 ]
 
 # ---------------------------------------------------------------------------

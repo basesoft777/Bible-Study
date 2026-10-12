@@ -13,7 +13,7 @@ Csatolt brief szabálya: a sessionhöz csatolt brief nem befogadandó és nem fu
 Állapot-szabály: a `FELADATOK.md` generált blokkját (a `<!-- GENERÁLT-KEZDET … -->` jelölők közötti részt) soha nem szerkeszted; az állapotot csak a feladat saját briefjének fejlécében vezeted (l. 6., 6b., 7., 8., 10. lépés).
 
 1. BEOLVASÁS: `git fetch`; olvasd be a main `FELADATOK.md`, `DONTESEK.md` és `CLAUDE.md` fájlját.
-   Futtasd: `python eszkozok/feladatok.py ellenoriz` (ha nem 0, állj meg és jelezd; a `FIGYELEM` sorok nem hibák, de a javaslatban jelezd őket; kivétel az E18 `munka`-figyelmeztetés: az ilyen feladatot a mező kitöltéséig ne ajánld futtathatónak, DT-F32c), `python eszkozok/feladatok.py fuggesek` és `python eszkozok/feladatok.py jeloltek` (az 1. fázis jelöltjei, a kihagyás okával és a csomag-javaslattal; nem indít semmit).
+   Futtasd: `python eszkozok/feladatok.py ellenoriz` (ha nem 0, állj meg és jelezd — a terv → feladat őr hibája is megállít (az őrt a #82 vezeti be): a három terv feladatként megnevezett eleme feladat nélkül, DT78 (19); ilyenkor javasold a #52-t vagy a `/befogad`-ot, más feladatot nem indítasz; a `FIGYELEM` sorok nem hibák, de a javaslatban jelezd őket; kivétel az E18 `munka`-figyelmeztetés: az ilyen feladatot a mező kitöltéséig ne ajánld futtathatónak, DT-F32c), `python eszkozok/feladatok.py fuggesek` és `python eszkozok/feladatok.py jeloltek` (az 1. fázis jelöltjei, a kihagyás okával és a csomag-javaslattal, utánuk a `fazis: folyamat` alternatívák; nem indít semmit).
    Az egyeztetési javaslat (5. lépés) előtt vesd össze a `DONTESEK.md` minden nyitott (🟡) tételét a main
    állapotával (`FELADATOK.md` sorai és döntésnaplója, `git log origin/main`): ha a tétel kérdése már
    eldőlt vagy a forrássora megváltozott, jelezd elavultként a javaslatban. Nem zárod le magad, a lezárás
@@ -21,7 +21,7 @@ Csatolt brief szabálya: a sessionhöz csatolt brief nem befogadandó és nem fu
 2. ELDÖNTÖTT TÉTELEK: ha a `DONTESEK.md`-ben van „eldöntve”, de „alkalmazásra vár” állapotú tétel, az a feladat az első jelölt.
 3. JELÖLT KIVÁLASZTÁSA, ebben a sorrendben (az adatot a brief-fejlécek és a `feladatok.py fuggesek` kimenete adja):
    - FOLYTATAS (F49, D1): a `fut` állapotú, `kovetkezo`-ja `Folytatás:` kezdetű (a `feladatok.py` `FOLYTATAS_ELOTAG` konstansa) félbemaradt feladat (`jeloltek` `FOLYTATAS` sora) megelőzi az új (`nem_indult`) jelölteket; több FOLYTATAS között a kritikus út, majd a feladatszám dönt; a függés- és helyigép-szűrés ugyanaz; a `VAR_RAD` sor (`fut`/`megallt`, `Te:`) tájékoztató, nem jelölt;
-   - csak az 1. fázis (`fazis: 1`) feladatai, amíg az 1. fázis minden feladata nincs `lezarva` a main-ben; a `fazis: folyamat` feladat csak alternatívaként jelenik meg, vagy ha a felhasználó választja;
+   - csak az 1. fázis (`fazis: 1`) feladatai, amíg az 1. fázis minden feladata nincs `lezarva` a main-ben; a `fazis: folyamat` feladat csak alternatívaként jelenik meg, vagy ha a felhasználó választja; az alternatívák a `jeloltek` `ALTERNATIVA` sorai (ugyanaz a függés-, állapot- és kizár-szűrés), a kihagyottak okkal az `ALT_KIHAGYVA` sorok; „Alternatíva: nincs” csak akkor írható, ha nincs `ALTERNATIVA` sor;
    - `allapot` `nem_indult` vagy `dontesre_var` (kivétel a `fut` + „Folytatás:” FOLYTATAS jelölt), és a `kovetkezo` mező NEM „Te:” kezdetű; a `brief_kell` állapotú csonk nem futtatható;
    - minden függés (`fugg`, levezetett) `lezarva` a main-ben; a levezetett függés (`*`) csak írás–olvasás (A `olvas` konkrét fájlja vagy glob-ja egyezik B `ir`-jével); a tág kontextus-olvasás (`/`-re végződő olvas-bejegyzés, `CLAUDE.md`, `BRIEF_SABLON.md`, `MUNKAMENET.md`) nem ad sorrendet; a halasztott, brief nélküli és 2. fázisú feladat nem tart vissza 1. fázisút (DT-F39d);
    - nincs `kizar`-párja (`×`) FUTÓ (`allapot: fut`, nem `Folytatás:` kezdetű `kovetkezo`) állapotban; a `kizar` kölcsönös kizárás, nem sorrend: a két feladat nem futhat egyszerre, de bármelyik mehet előbb; ha mindkettő jelölt, a kisebb sorszámú kerül előre, a másik a következő körben;
@@ -34,8 +34,8 @@ Csatolt brief szabálya: a sessionhöz csatolt brief nem befogadandó és nem fu
    egy csomagba és nem enged párhuzamosan futni; a `REGI` sora (régi fejléc, `ir` hiányzik) csomagot kizár:
    az ilyen feladat csak egyedül fut. A `FIGYELEM ... kölcsönös függés` sor nem hiba, a `KOR` sor igen (döntés a felhasználóé).
    Kivételek az ütközésvizsgálatból (`feladatok.py`: `UTKOZES_KIVETEL`, `HELYETTESITO_IR`, `KONTEXTUS_OLVAS`): `naplok/ELLENOR_*`,
-   `naplok/*_zaras.md`, a feladat saját `naplok/<F nn>_*`, `naplok/<KÓD>_*` fájljai, és a `naplok/` helyettesítő minta az `ir`-ben. A `naplozas` típusú feladat bármely csomaghoz társulhat
-   (`vegrehajto-haiku`), ha nincs ütközése.
+   `naplok/*_zaras.md`, a feladat saját `naplok/<F nn>_*`, `naplok/<KÓD>_*` fájljai, és a `naplok/` helyettesítő minta az `ir`-ben. A `naplozas` típusú feladat bármely csomaghoz társulhat,
+   ha nincs ütközése; a végrehajtót kizárólag a brief `modell` mezője választja (6. lépés).
    Ha csak egy jelölt van, nincs csomag, és a menet a szokásos egyfeladatos módban fut.
    Csomagjavaslat előtt kötelezően futtasd a csomag tagjaira: `python eszkozok/feladatok.py csomag <szám> <szám> …` (F32 KONTEXTUS, `MUNKAMENET.md` „Kontextus-őrzés”). Ha hibát ad (`NEM_CSOMAGOLHATO`: `munka: ertelmezo`, motívumfájlt író `folyamat`, vagy `munka` nélküli, motívumfájlt író brief), az érintett feladatot egyedül ajánlod, nem csomagban; az `OLVAS_HIANY` és a `MUNKA_HIANY` sor (`fuggesek`) fejléchiba (E18), jelezd a javaslatban, és a feladatot ne ajánld futtathatónak.
 4. ELŐFELTÉTELEK: a feladat briefje a `main`-ben van; a brief fájlját a fejléc `feladat` mezője alapján keresd
@@ -46,7 +46,7 @@ Csatolt brief szabálya: a sessionhöz csatolt brief nem befogadandó és nem fu
 5. EGYEZTETÉS (kötelező, soha nem hagyod ki):
    a) Javaslat, legfeljebb 10 sorban (csomagnál legfeljebb 15 sorban, feladatonként egy sor):
       a javasolt feladat vagy csomag és miért ez; a `FOLYTATAS` (félbemaradt, folytatható) és a `VAR_RAD` (a felhasználóra vár) feladat külön sorban, mindkettő akkor is, ha nem ez a javaslat; brief; modell; ág; a brief ⛔ pontjai;
-      hiányzó előfeltétel; legfeljebb 2 alternatív jelölt; a kihagyott feladatok és az okuk egy sorban.
+      hiányzó előfeltétel; ha a brief subagent nélküli futást ír elő, a session modellje és a brief `modell` mezője egyezik-e (eltérésnél új session kell); legfeljebb 2 alternatív jelölt; a kihagyott feladatok és az okuk egy sorban.
       Csomagnál a felhasználó tagot vehet ki, vagy kérheti az egyfeladatos futást.
    b) Várj. A felhasználó kérdezhet, más feladatot választhat, szűkítheti vagy módosíthatja
       a hatókört, vagy leállíthatja a menetet. Kérdésre válaszolj, módosításnál írd ki az
@@ -56,14 +56,14 @@ Csatolt brief szabálya: a sessionhöz csatolt brief nem befogadandó és nem fu
    d) Ha a felhasználó a briefben rögzítettől eltérő hatókört kér, azt a zárójelentésben
       „Egyeztetett eltérés” címen rögzítsd.
 6. VÉGREHAJTÁS: új ág a main-ből (`claude/<feladat-slug>`). Az ág első commitja a saját brief fejlécében
-   `allapot: fut`, és kitölti az `ag` mezőt. A munkát a brief modelljének
+   `allapot: fut`, és kitölti az `ag` mezőt; ez a végrehajtó modell-ellenőrzése után történik, így modell-eltérésnél nem marad `fut` állapotú ág. A munkát a brief modelljének
    megfelelő végrehajtó subagent végzi (`vegrehajto-sonnet` / `vegrehajto-opus` / `vegrehajto-haiku`).
    `külső:<név>` esetén a `vegrehajto-sonnet` a briefben megadott szkripttel futtatja a
-   külső modellt; Claude-dal nem helyettesíti. Gyakran commitolj.
+   külső modellt; Claude-dal nem helyettesíti; ilyenkor a burkoló `vegrehajto-sonnet` modell-ellenőrzése a `sonnet`-hez mér, a külső modell nevét a szkript naplózza. A végrehajtó subagent első teendője a modell-ellenőrzés (`CLAUDE.md`): kiírja a saját tényleges modellnevét, és összeveti a brief `modell` mezőjével; eltérésnél nem dolgozik és nem commitol. Ha a brief subagent nélküli futást ír elő (pl. a #38 D7-es döntése), a session modelljét kell a brief `modell` mezőjével összevetni; ezt már az 5. lépés javaslata jelzi, eltérésnél új session kell. Gyakran commitolj.
 6b. CSOMAG VÉGREHAJTÁSA:
    - Feladatonként külön munkakönyvtár a main-ből:
      `git worktree add ../wt-<feladat-slug> -b claude/<feladat-slug> origin/main`.
-   - A végrehajtó subagenteket egyetlen üzenetben, párhuzamosan indítsd, a brief modellje szerint.
+   - A végrehajtó subagenteket egyetlen üzenetben, párhuzamosan indítsd, a brief modellje szerint; mindegyik első teendője a modell-ellenőrzés (`CLAUDE.md`), eltérésnél nem dolgozik, és ezt jelzi.
    - Minden subagent kapja meg a saját worktree-je abszolút útvonalát, azzal a szabállyal, hogy
      minden parancsot `cd <worktree> && …` formában futtat, fájlt csak ott ír, és csak a saját
      ágára commitol és pushol. Az ág első commitja a saját brief fejlécében `allapot: fut`, `ag` kitöltve.

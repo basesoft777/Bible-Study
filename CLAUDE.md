@@ -72,6 +72,10 @@ a `--kimenet` próbák ideiglenes könyvtárba, a repón kívülre menjenek.
 
 *Mindhárom megsértésének dokumentált esete van; l. `adat/SEMA.md` 1.5 és 2.4.1.*
 
+## Modell-ellenőrzés — minden brief futtatásakor
+
+Minden brief futtatásának első lépése a modell-ellenőrzés: kiírod a saját tényleges modellnevedet (pl. `claude-opus-5-5`), és összeveted a *szerepedhez kért* modellel. A kért modell: a közvetlenül futtató session és a végrehajtó subagent esetén a brief fejlécének `modell` mezője; a független ellenőrnél a saját subagent-fájlja `model` mezője (nem a briefé); a `/kovetkezo` orkesztrátor nem végrehajt, hanem a brief `modell` mezője szerint választ végrehajtót, így az ő ellenőrzése a végrehajtóra hárul (kivétel: ha a brief subagent nélküli futást ír elő, ott a session a brief `modell` mezőjéhez mér). `külső:<név>` brief esetén a végrehajtó subagent (`vegrehajto-sonnet`) a burkoló végrehajtó, ezért számára a kért modell a `sonnet`; a külső modell nevét a briefben megadott szkript naplózza, és az adattábla `modell` mezőjébe a szkript kimenetéből a ténylegesen futott külső modell neve kerül. Ha eltér, semmilyen munkát nem végzel, nem írsz és nem commitolsz; jelzed: „A kért modell `<kért>`, a session `<tényleges név>`; új session kell a kért modellel.”, és megállsz. Az adattáblák `modell` mezőjébe mindig a tényleges modellnév kerül, amelyet a saját környezetedből veszel; briefből vagy korábbi sorból másolni tilos.
+
 ## Kutatási menet — a hét lépés
 
 A sorrend maga a védelem a hígulás ellen: **a gerincet mindig le kell vezetni, és a
@@ -104,8 +108,7 @@ hígulni fog. Minden új sornál: *csak ezen keresztül tartozik ide?* Ha igen, 
 `konkordancia/` — 389 MB, 17 dataset; kötelezőségük study-típusonként: `adat/datasetek.tsv`.
 Három korlát, amit tudnod kell:
 
-- **`TAHOT_kivonat.tsv` nem teljes**, bár a README annak mondja (hiányzik legalább
-  Jób 40:1–5 és a Jób 41; a Zsolt 88/89/140/142-t és az 1Móz 32-t és a Jóel 3-at az F2 pótolta, 2026.09.14, `NYITOTT_FELADATOK.md`) — minden „teljes körű scan" ennyivel gyengébb. A Jób-futás (#22) előtt figyelmeztetés.
+- **`TAHOT_kivonat.tsv`: a mért állapot (F85, 2026.10.09).** Fejezet-szinten nincs hiány (`eszkozok/tahot_lefedettseg_ellenoriz.py`): a Zsolt 88/89/140/142-t, az 1Móz 32-t és a Jóel 3-at az F2 pótolta (2026.09.14), a Jób 41-et az F84 (332 sor, `naplok/F84_jelentes.md`); a Jób 40:1–5 nem hiányzik. Az `Igehely` kulcs az F85.6 óta (versszintű átkulcsolás, 337 vers, 6 330 sor) maga a **Károli-vers**, amelynek a héber szövegét a sor hordozza: a korábbi eltolások (Jób 40 +5, fejezethatáron és fejezeten belül Préd 2, Hós 2/12, Ézs 9, Dán 4, Én 6, 2Móz 36, 4Móz 30, Péld 12, …) megszűntek (`naplok/F85_jelentes.md`, `naplok/F85_igazolas.md`). A versszintű kulcs-összevetés (Károli-vers ↔ TAHOT-kulcs, teljes ÓSZ: 23 204 kulcs, 0 Károli-vers nélküli TAHOT-kulcs, 0 TAHOT-sor nélküli ÓSZ-Károli-vers) naplózva: `naplok/F85_kulcsosszevetes.md`. Két tudnivaló: ahol a Károli két TAHOT-verset egy versbe vont (9 hely), mindkét vers a közös Károli-kulcson áll (a vershatár: `f22/versosszevonas.tsv`); a fájlsorrend nem Károli-sorrend (áthelyezett blokkok), ezért kulcs szerint olvass.
 - **KJV:** a `KJV_Strongs_teljes.tsv` (eBible, #19) teljes; az ASV nem használható (a teljes fájl forráshibás, N29/D7). A régi `KJV_/ASV_Strongs_*.tsv` csak Genezis, Exodus, Példabeszédek — a #48 vezeti ki.
 - **SDBH / SDGNT** (szemantikai domének, **CC BY-SA 4.0**) az ÓSZ szókincsének kb. 90%-át fedik — **üres `domen`-eredmény nem negatív lelet**, és a domén támasz, nem a mező-hipotézis helyettesítője.
 
@@ -185,6 +188,8 @@ Táblát író szkript írás előtt vesse össze a sorokat az eredetivel, és e
 
 **Git:** munkaág `main`; commit-üzenet magyarul, tétel-azonosítóval kezdve (`F1.4: …`);
 push csak kérésre.
+
+Ha egy commit fájlt áthelyez, átnevez vagy töröl, ugyanabban a commitban frissíti a rá mutató hivatkozásokat a `FELADATOK.md`-ben, a `NYITOTT_FELADATOK.md`-ben és a briefek `olvas` mezőjében. *(CI: E27, hivatkozás-ellenőrzés.)*
 
 Új döntés vagy nyitott tétel az ágon csak helyőrzővel kerül be (`DT-F<nn>`, `N-F<nn>`, több esetén `a`, `b` betűvel). Végleges számot a main-en a `szamkiosztas` Action ad merge után. Végleges `DT<n>`/`N<n>` számot ágon ne írj, a CI elutasítja.
 

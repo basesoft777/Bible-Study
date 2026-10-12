@@ -45,7 +45,7 @@ RIPORT = os.path.join(ROOT, 'naplok', 'F4_0c_korut_ellenoriz.tsv')
 # A többi célfájl (args.kimenet, eszkozok/f3_4_munkalap.tsv, phaseA_all.tsv,
 # step1_decisions.tsv) nincs verziókövetve, tehát nincs mihez mérni.
 IRO_CELTABLAK = {
-    'adat/grammatikai_strongok.tsv': 'grammatikai_strongok_general.py:231',
+    'adat/grammatikai_strongok.tsv': 'grammatikai_strongok_general.py:272',
     'konkordancia/Karoli_Strong_kivonat.tsv': 'merge_karoli_szofaj.py:48 (helyben!)',
     'konkordancia/TAHOT_kivonat.tsv': 'tahot_karoli_kulcs_generalas.py:220',
     'konkordancia/TAHOT_kivonat_nyitott_esetek.tsv': 'tahot_karoli_kulcs_generalas.py:227',

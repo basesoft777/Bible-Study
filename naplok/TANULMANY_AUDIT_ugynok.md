@@ -95,7 +95,7 @@ Szövegkritikai és adatminőségi ⚠️ (vershez rendelés „TÖBBSZÖRÖS EL
 
 **⭐-küszöb:** nincs ⛔. Minden ⭐-átlépés, amelyet a tanulmányok állítanak (segítségül hívás, oltárépítés, bűn következményeinek gyűrűzése, uralom-megbízás, Isten képmása, brít, por/formáltatás, tohu va-vohu), szerepel a motívumnapló ⭐ szakaszában (a generált blokkban vagy a kézi küszöb-bekezdések között).
 
-**Valódi ⚠️-vita** (a T4 meghatározása szerint: a megnevezett képviselők állításai a tanulmány következtetését is eldönthetik, vagy a tanulmány forrás nélkül zárja le a vitát). Az alábbiakban a tanulmány a vita egyik oldalára építi a saját következtetését. Mindegyik lezárt, régi tanulmány; hogy most ⛔-nek számítanak-e, vagy a javító utófeladatba kerülnek, az a felhasználó döntése (`DONTESEK.md` DT-F37a):
+**Valódi ⚠️-vita** (a T4 meghatározása szerint: a megnevezett képviselők állításai a tanulmány következtetését is eldönthetik, vagy a tanulmány forrás nélkül zárja le a vitát). Az alábbiakban a tanulmány a vita egyik oldalára építi a saját következtetését. Mindegyik lezárt, régi tanulmány; hogy most ⛔-nek számítanak-e, vagy a javító utófeladatba kerülnek, az a felhasználó döntése (`DONTESEK.md` DT61):
 
 | Tanulmány:sor | Vita | Mire épít a tanulmány |
 |---|---|---|

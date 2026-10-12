@@ -1,6 +1,143 @@
 # GENERÁLT: naplok/KAROLI_KK75_hatarkereses2_general.py (KK7.5.1) — kézzel nem szerkesztendő.
 # forras: verse_pairs.jsonl fejezethatart atlepo tobbszoros KJV-hivatkozas kereses + gorog/Karoli tartalmi egyeztetes
 # proveniencia: forras=KAROLI_KULCS_KK75_BRIEF.md KK7.5.2 | ts=2026-09-25
+# F54 (DT-F54a (a)): az A2 sorok a naplok/LXX_OS_LEFEDETTSEG_A2_general.py hozzafuzese (nincs tabla-sor; bizonyitek az indok oszlopban)
 book_key	fejezet	vers	igehely_karoli	indok
 1-samuel	20	42	1Sám 20:42	fejezethatart atlepo tobbszoros KJV-hivatkozas (verse_pairs.jsonl: 1-samuel 20:42 es 1-samuel 21:1 mindketto KJV 20:42-re mutat); tartalmilag egyeztetve: "Monda azert Jonathan Davidnak: Eredj el bekesseggel" = "καὶ εἶπεν Ιωναθαν πορεύου εἰς εἰρήνην"
 1-samuel	21	1	1Sám 20:43	ugyanaz a fejezethatar-atlepes; a Karoli fejezet-zaromondata (43. vers): "Felkele ezutan es elmene" = "καὶ ἀνέστη Δαυιδ καὶ ἀπῆλθεν"
+exodus	35	1	2Móz 35:1	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.81; tartalmi mintavetel (M2): 2Móz 35:1, 35:10, 35:30; manual, ts=2026-10-11
+exodus	35	2	2Móz 35:2	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.81; tartalmi mintavetel (M2): 2Móz 35:1, 35:10, 35:30; manual, ts=2026-10-11
+exodus	35	3	2Móz 35:3	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.81; tartalmi mintavetel (M2): 2Móz 35:1, 35:10, 35:30; manual, ts=2026-10-11
+exodus	35	4	2Móz 35:4	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.81; tartalmi mintavetel (M2): 2Móz 35:1, 35:10, 35:30; manual, ts=2026-10-11
+exodus	35	5	2Móz 35:5	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.81; tartalmi mintavetel (M2): 2Móz 35:1, 35:10, 35:30; manual, ts=2026-10-11
+exodus	35	6	2Móz 35:6	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.81; tartalmi mintavetel (M2): 2Móz 35:1, 35:10, 35:30; manual, ts=2026-10-11
+exodus	35	7	2Móz 35:7	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.81; tartalmi mintavetel (M2): 2Móz 35:1, 35:10, 35:30; manual, ts=2026-10-11
+exodus	35	9	2Móz 35:9	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.81; tartalmi mintavetel (M2): 2Móz 35:1, 35:10, 35:30; manual, ts=2026-10-11
+exodus	35	10	2Móz 35:10	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.81; tartalmi mintavetel (M2): 2Móz 35:1, 35:10, 35:30; manual, ts=2026-10-11
+exodus	35	11	2Móz 35:11	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.81; tartalmi mintavetel (M2): 2Móz 35:1, 35:10, 35:30; manual, ts=2026-10-11
+exodus	35	12	2Móz 35:12	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.81; tartalmi mintavetel (M2): 2Móz 35:1, 35:10, 35:30; manual, ts=2026-10-11
+exodus	35	13	2Móz 35:13	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.81; tartalmi mintavetel (M2): 2Móz 35:1, 35:10, 35:30; manual, ts=2026-10-11
+exodus	35	14	2Móz 35:14	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.81; tartalmi mintavetel (M2): 2Móz 35:1, 35:10, 35:30; manual, ts=2026-10-11
+exodus	35	16	2Móz 35:16	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.81; tartalmi mintavetel (M2): 2Móz 35:1, 35:10, 35:30; manual, ts=2026-10-11
+exodus	35	19	2Móz 35:19	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.81; tartalmi mintavetel (M2): 2Móz 35:1, 35:10, 35:30; manual, ts=2026-10-11
+exodus	35	20	2Móz 35:20	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.81; tartalmi mintavetel (M2): 2Móz 35:1, 35:10, 35:30; manual, ts=2026-10-11
+exodus	35	21	2Móz 35:21	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.81; tartalmi mintavetel (M2): 2Móz 35:1, 35:10, 35:30; manual, ts=2026-10-11
+exodus	35	22	2Móz 35:22	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.81; tartalmi mintavetel (M2): 2Móz 35:1, 35:10, 35:30; manual, ts=2026-10-11
+exodus	35	23	2Móz 35:23	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.81; tartalmi mintavetel (M2): 2Móz 35:1, 35:10, 35:30; manual, ts=2026-10-11
+exodus	35	24	2Móz 35:24	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.81; tartalmi mintavetel (M2): 2Móz 35:1, 35:10, 35:30; manual, ts=2026-10-11
+exodus	35	25	2Móz 35:25	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.81; tartalmi mintavetel (M2): 2Móz 35:1, 35:10, 35:30; manual, ts=2026-10-11
+exodus	35	26	2Móz 35:26	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.81; tartalmi mintavetel (M2): 2Móz 35:1, 35:10, 35:30; manual, ts=2026-10-11
+exodus	35	27	2Móz 35:27	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.81; tartalmi mintavetel (M2): 2Móz 35:1, 35:10, 35:30; manual, ts=2026-10-11
+exodus	35	28	2Móz 35:28	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.81; tartalmi mintavetel (M2): 2Móz 35:1, 35:10, 35:30; manual, ts=2026-10-11
+exodus	35	29	2Móz 35:29	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.81; tartalmi mintavetel (M2): 2Móz 35:1, 35:10, 35:30; manual, ts=2026-10-11
+exodus	35	30	2Móz 35:30	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.81; tartalmi mintavetel (M2): 2Móz 35:1, 35:10, 35:30; manual, ts=2026-10-11
+exodus	35	31	2Móz 35:31	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.81; tartalmi mintavetel (M2): 2Móz 35:1, 35:10, 35:30; manual, ts=2026-10-11
+exodus	35	32	2Móz 35:32	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.81; tartalmi mintavetel (M2): 2Móz 35:1, 35:10, 35:30; manual, ts=2026-10-11
+exodus	35	33	2Móz 35:33	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.81; tartalmi mintavetel (M2): 2Móz 35:1, 35:10, 35:30; manual, ts=2026-10-11
+exodus	35	34	2Móz 35:34	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.81; tartalmi mintavetel (M2): 2Móz 35:1, 35:10, 35:30; manual, ts=2026-10-11
+exodus	35	35	2Móz 35:35	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.81; tartalmi mintavetel (M2): 2Móz 35:1, 35:10, 35:30; manual, ts=2026-10-11
+job	37	2	Jób 37:1	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+1, fejezet-szoszamkorrelacio r=0.70; tartalmi mintavetel (M2): Jób 37:1, 37:5, 37:23 (37:14 laza); manual, ts=2026-10-11
+job	37	3	Jób 37:2	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+1, fejezet-szoszamkorrelacio r=0.70; tartalmi mintavetel (M2): Jób 37:1, 37:5, 37:23 (37:14 laza); manual, ts=2026-10-11
+job	37	4	Jób 37:3	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+1, fejezet-szoszamkorrelacio r=0.70; tartalmi mintavetel (M2): Jób 37:1, 37:5, 37:23 (37:14 laza); manual, ts=2026-10-11
+job	37	5	Jób 37:4	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+1, fejezet-szoszamkorrelacio r=0.70; tartalmi mintavetel (M2): Jób 37:1, 37:5, 37:23 (37:14 laza); manual, ts=2026-10-11
+job	37	6	Jób 37:5	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+1, fejezet-szoszamkorrelacio r=0.70; tartalmi mintavetel (M2): Jób 37:1, 37:5, 37:23 (37:14 laza); manual, ts=2026-10-11
+job	37	7	Jób 37:6	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+1, fejezet-szoszamkorrelacio r=0.70; tartalmi mintavetel (M2): Jób 37:1, 37:5, 37:23 (37:14 laza); manual, ts=2026-10-11
+job	37	8	Jób 37:7	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+1, fejezet-szoszamkorrelacio r=0.70; tartalmi mintavetel (M2): Jób 37:1, 37:5, 37:23 (37:14 laza); manual, ts=2026-10-11
+job	37	9	Jób 37:8	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+1, fejezet-szoszamkorrelacio r=0.70; tartalmi mintavetel (M2): Jób 37:1, 37:5, 37:23 (37:14 laza); manual, ts=2026-10-11
+job	37	10	Jób 37:9	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+1, fejezet-szoszamkorrelacio r=0.70; tartalmi mintavetel (M2): Jób 37:1, 37:5, 37:23 (37:14 laza); manual, ts=2026-10-11
+job	37	11	Jób 37:10	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+1, fejezet-szoszamkorrelacio r=0.70; tartalmi mintavetel (M2): Jób 37:1, 37:5, 37:23 (37:14 laza); manual, ts=2026-10-11
+job	37	12	Jób 37:11	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+1, fejezet-szoszamkorrelacio r=0.70; tartalmi mintavetel (M2): Jób 37:1, 37:5, 37:23 (37:14 laza); manual, ts=2026-10-11
+job	37	13	Jób 37:12	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+1, fejezet-szoszamkorrelacio r=0.70; tartalmi mintavetel (M2): Jób 37:1, 37:5, 37:23 (37:14 laza); manual, ts=2026-10-11
+job	37	14	Jób 37:13	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+1, fejezet-szoszamkorrelacio r=0.70; tartalmi mintavetel (M2): Jób 37:1, 37:5, 37:23 (37:14 laza); manual, ts=2026-10-11
+job	37	15	Jób 37:14	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+1, fejezet-szoszamkorrelacio r=0.70; tartalmi mintavetel (M2): Jób 37:1, 37:5, 37:23 (37:14 laza); manual, ts=2026-10-11
+job	37	16	Jób 37:15	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+1, fejezet-szoszamkorrelacio r=0.70; tartalmi mintavetel (M2): Jób 37:1, 37:5, 37:23 (37:14 laza); manual, ts=2026-10-11
+job	37	17	Jób 37:16	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+1, fejezet-szoszamkorrelacio r=0.70; tartalmi mintavetel (M2): Jób 37:1, 37:5, 37:23 (37:14 laza); manual, ts=2026-10-11
+job	37	18	Jób 37:17	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+1, fejezet-szoszamkorrelacio r=0.70; tartalmi mintavetel (M2): Jób 37:1, 37:5, 37:23 (37:14 laza); manual, ts=2026-10-11
+job	37	19	Jób 37:18	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+1, fejezet-szoszamkorrelacio r=0.70; tartalmi mintavetel (M2): Jób 37:1, 37:5, 37:23 (37:14 laza); manual, ts=2026-10-11
+job	37	20	Jób 37:19	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+1, fejezet-szoszamkorrelacio r=0.70; tartalmi mintavetel (M2): Jób 37:1, 37:5, 37:23 (37:14 laza); manual, ts=2026-10-11
+job	37	21	Jób 37:20	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+1, fejezet-szoszamkorrelacio r=0.70; tartalmi mintavetel (M2): Jób 37:1, 37:5, 37:23 (37:14 laza); manual, ts=2026-10-11
+job	37	22	Jób 37:21	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+1, fejezet-szoszamkorrelacio r=0.70; tartalmi mintavetel (M2): Jób 37:1, 37:5, 37:23 (37:14 laza); manual, ts=2026-10-11
+job	37	23	Jób 37:22	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+1, fejezet-szoszamkorrelacio r=0.70; tartalmi mintavetel (M2): Jób 37:1, 37:5, 37:23 (37:14 laza); manual, ts=2026-10-11
+job	37	24	Jób 37:23	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+1, fejezet-szoszamkorrelacio r=0.70; tartalmi mintavetel (M2): Jób 37:1, 37:5, 37:23 (37:14 laza); manual, ts=2026-10-11
+daniel	3	1	Dán 3:1	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K+0, fejezet-szoszamkorrelacio r=0.89; tartalmi mintavetel (M2): Dán 3:1, 3:12, 3:25; manual, ts=2026-10-11
+daniel	3	2	Dán 3:2	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K+0, fejezet-szoszamkorrelacio r=0.89; tartalmi mintavetel (M2): Dán 3:1, 3:12, 3:25; manual, ts=2026-10-11
+daniel	3	3	Dán 3:3	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K+0, fejezet-szoszamkorrelacio r=0.89; tartalmi mintavetel (M2): Dán 3:1, 3:12, 3:25; manual, ts=2026-10-11
+daniel	3	4	Dán 3:4	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K+0, fejezet-szoszamkorrelacio r=0.89; tartalmi mintavetel (M2): Dán 3:1, 3:12, 3:25; manual, ts=2026-10-11
+daniel	3	5	Dán 3:5	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K+0, fejezet-szoszamkorrelacio r=0.89; tartalmi mintavetel (M2): Dán 3:1, 3:12, 3:25; manual, ts=2026-10-11
+daniel	3	6	Dán 3:6	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K+0, fejezet-szoszamkorrelacio r=0.89; tartalmi mintavetel (M2): Dán 3:1, 3:12, 3:25; manual, ts=2026-10-11
+daniel	3	7	Dán 3:7	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K+0, fejezet-szoszamkorrelacio r=0.89; tartalmi mintavetel (M2): Dán 3:1, 3:12, 3:25; manual, ts=2026-10-11
+daniel	3	8	Dán 3:8	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K+0, fejezet-szoszamkorrelacio r=0.89; tartalmi mintavetel (M2): Dán 3:1, 3:12, 3:25; manual, ts=2026-10-11
+daniel	3	9	Dán 3:9	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K+0, fejezet-szoszamkorrelacio r=0.89; tartalmi mintavetel (M2): Dán 3:1, 3:12, 3:25; manual, ts=2026-10-11
+daniel	3	10	Dán 3:10	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K+0, fejezet-szoszamkorrelacio r=0.89; tartalmi mintavetel (M2): Dán 3:1, 3:12, 3:25; manual, ts=2026-10-11
+daniel	3	11	Dán 3:11	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K+0, fejezet-szoszamkorrelacio r=0.89; tartalmi mintavetel (M2): Dán 3:1, 3:12, 3:25; manual, ts=2026-10-11
+daniel	3	12	Dán 3:12	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K+0, fejezet-szoszamkorrelacio r=0.89; tartalmi mintavetel (M2): Dán 3:1, 3:12, 3:25; manual, ts=2026-10-11
+daniel	3	13	Dán 3:13	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K+0, fejezet-szoszamkorrelacio r=0.89; tartalmi mintavetel (M2): Dán 3:1, 3:12, 3:25; manual, ts=2026-10-11
+daniel	3	14	Dán 3:14	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K+0, fejezet-szoszamkorrelacio r=0.89; tartalmi mintavetel (M2): Dán 3:1, 3:12, 3:25; manual, ts=2026-10-11
+daniel	3	15	Dán 3:15	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K+0, fejezet-szoszamkorrelacio r=0.89; tartalmi mintavetel (M2): Dán 3:1, 3:12, 3:25; manual, ts=2026-10-11
+daniel	3	16	Dán 3:16	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K+0, fejezet-szoszamkorrelacio r=0.89; tartalmi mintavetel (M2): Dán 3:1, 3:12, 3:25; manual, ts=2026-10-11
+daniel	3	17	Dán 3:17	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K+0, fejezet-szoszamkorrelacio r=0.89; tartalmi mintavetel (M2): Dán 3:1, 3:12, 3:25; manual, ts=2026-10-11
+daniel	3	18	Dán 3:18	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K+0, fejezet-szoszamkorrelacio r=0.89; tartalmi mintavetel (M2): Dán 3:1, 3:12, 3:25; manual, ts=2026-10-11
+daniel	3	19	Dán 3:19	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K+0, fejezet-szoszamkorrelacio r=0.89; tartalmi mintavetel (M2): Dán 3:1, 3:12, 3:25; manual, ts=2026-10-11
+daniel	3	20	Dán 3:20	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K+0, fejezet-szoszamkorrelacio r=0.89; tartalmi mintavetel (M2): Dán 3:1, 3:12, 3:25; manual, ts=2026-10-11
+daniel	3	21	Dán 3:21	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K+0, fejezet-szoszamkorrelacio r=0.89; tartalmi mintavetel (M2): Dán 3:1, 3:12, 3:25; manual, ts=2026-10-11
+daniel	3	22	Dán 3:22	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K+0, fejezet-szoszamkorrelacio r=0.89; tartalmi mintavetel (M2): Dán 3:1, 3:12, 3:25; manual, ts=2026-10-11
+daniel	3	23	Dán 3:23	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K+0, fejezet-szoszamkorrelacio r=0.89; tartalmi mintavetel (M2): Dán 3:1, 3:12, 3:25; manual, ts=2026-10-11
+daniel	3	91	Dán 3:24	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K+0, fejezet-szoszamkorrelacio r=0.89; tartalmi mintavetel (M2): Dán 3:1, 3:12, 3:25; manual, ts=2026-10-11
+daniel	3	92	Dán 3:25	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K+0, fejezet-szoszamkorrelacio r=0.89; tartalmi mintavetel (M2): Dán 3:1, 3:12, 3:25; manual, ts=2026-10-11
+daniel	3	93	Dán 3:26	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K+0, fejezet-szoszamkorrelacio r=0.89; tartalmi mintavetel (M2): Dán 3:1, 3:12, 3:25; manual, ts=2026-10-11
+daniel	3	94	Dán 3:27	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K+0, fejezet-szoszamkorrelacio r=0.89; tartalmi mintavetel (M2): Dán 3:1, 3:12, 3:25; manual, ts=2026-10-11
+daniel	3	95	Dán 3:28	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K+0, fejezet-szoszamkorrelacio r=0.89; tartalmi mintavetel (M2): Dán 3:1, 3:12, 3:25; manual, ts=2026-10-11
+daniel	3	96	Dán 3:29	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K+0, fejezet-szoszamkorrelacio r=0.89; tartalmi mintavetel (M2): Dán 3:1, 3:12, 3:25; manual, ts=2026-10-11
+daniel	3	97	Dán 3:30	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K+0, fejezet-szoszamkorrelacio r=0.89; tartalmi mintavetel (M2): Dán 3:1, 3:12, 3:25; manual, ts=2026-10-11
+hosea	2	4	Hós 2:1	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+3, fejezet-szoszamkorrelacio r=0.88; tartalmi mintavetel (M2): Hós 2:1, 2:8, 2:20; manual, ts=2026-10-11
+hosea	2	5	Hós 2:2	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+3, fejezet-szoszamkorrelacio r=0.88; tartalmi mintavetel (M2): Hós 2:1, 2:8, 2:20; manual, ts=2026-10-11
+hosea	2	6	Hós 2:3	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+3, fejezet-szoszamkorrelacio r=0.88; tartalmi mintavetel (M2): Hós 2:1, 2:8, 2:20; manual, ts=2026-10-11
+hosea	2	7	Hós 2:4	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+3, fejezet-szoszamkorrelacio r=0.88; tartalmi mintavetel (M2): Hós 2:1, 2:8, 2:20; manual, ts=2026-10-11
+hosea	2	8	Hós 2:5	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+3, fejezet-szoszamkorrelacio r=0.88; tartalmi mintavetel (M2): Hós 2:1, 2:8, 2:20; manual, ts=2026-10-11
+hosea	2	9	Hós 2:6	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+3, fejezet-szoszamkorrelacio r=0.88; tartalmi mintavetel (M2): Hós 2:1, 2:8, 2:20; manual, ts=2026-10-11
+hosea	2	10	Hós 2:7	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+3, fejezet-szoszamkorrelacio r=0.88; tartalmi mintavetel (M2): Hós 2:1, 2:8, 2:20; manual, ts=2026-10-11
+hosea	2	11	Hós 2:8	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+3, fejezet-szoszamkorrelacio r=0.88; tartalmi mintavetel (M2): Hós 2:1, 2:8, 2:20; manual, ts=2026-10-11
+hosea	2	12	Hós 2:9	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+3, fejezet-szoszamkorrelacio r=0.88; tartalmi mintavetel (M2): Hós 2:1, 2:8, 2:20; manual, ts=2026-10-11
+hosea	2	13	Hós 2:10	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+3, fejezet-szoszamkorrelacio r=0.88; tartalmi mintavetel (M2): Hós 2:1, 2:8, 2:20; manual, ts=2026-10-11
+hosea	2	14	Hós 2:11	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+3, fejezet-szoszamkorrelacio r=0.88; tartalmi mintavetel (M2): Hós 2:1, 2:8, 2:20; manual, ts=2026-10-11
+hosea	2	15	Hós 2:12	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+3, fejezet-szoszamkorrelacio r=0.88; tartalmi mintavetel (M2): Hós 2:1, 2:8, 2:20; manual, ts=2026-10-11
+hosea	2	16	Hós 2:13	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+3, fejezet-szoszamkorrelacio r=0.88; tartalmi mintavetel (M2): Hós 2:1, 2:8, 2:20; manual, ts=2026-10-11
+hosea	2	17	Hós 2:14	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+3, fejezet-szoszamkorrelacio r=0.88; tartalmi mintavetel (M2): Hós 2:1, 2:8, 2:20; manual, ts=2026-10-11
+hosea	2	18	Hós 2:15	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+3, fejezet-szoszamkorrelacio r=0.88; tartalmi mintavetel (M2): Hós 2:1, 2:8, 2:20; manual, ts=2026-10-11
+hosea	2	19	Hós 2:16	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+3, fejezet-szoszamkorrelacio r=0.88; tartalmi mintavetel (M2): Hós 2:1, 2:8, 2:20; manual, ts=2026-10-11
+hosea	2	20	Hós 2:17	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+3, fejezet-szoszamkorrelacio r=0.88; tartalmi mintavetel (M2): Hós 2:1, 2:8, 2:20; manual, ts=2026-10-11
+hosea	2	21	Hós 2:18	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+3, fejezet-szoszamkorrelacio r=0.88; tartalmi mintavetel (M2): Hós 2:1, 2:8, 2:20; manual, ts=2026-10-11
+hosea	2	22	Hós 2:19	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+3, fejezet-szoszamkorrelacio r=0.88; tartalmi mintavetel (M2): Hós 2:1, 2:8, 2:20; manual, ts=2026-10-11
+hosea	2	23	Hós 2:20	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+3, fejezet-szoszamkorrelacio r=0.88; tartalmi mintavetel (M2): Hós 2:1, 2:8, 2:20; manual, ts=2026-10-11
+hosea	2	24	Hós 2:21	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+3, fejezet-szoszamkorrelacio r=0.88; tartalmi mintavetel (M2): Hós 2:1, 2:8, 2:20; manual, ts=2026-10-11
+hosea	2	25	Hós 2:22	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+3, fejezet-szoszamkorrelacio r=0.88; tartalmi mintavetel (M2): Hós 2:1, 2:8, 2:20; manual, ts=2026-10-11
+hosea	13	1	Hós 13:1	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.73; tartalmi mintavetel (M2): Hós 13:1, 13:7; manual, ts=2026-10-11
+hosea	13	2	Hós 13:2	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.73; tartalmi mintavetel (M2): Hós 13:1, 13:7; manual, ts=2026-10-11
+hosea	13	3	Hós 13:3	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.73; tartalmi mintavetel (M2): Hós 13:1, 13:7; manual, ts=2026-10-11
+hosea	13	4	Hós 13:4	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.73; tartalmi mintavetel (M2): Hós 13:1, 13:7; manual, ts=2026-10-11
+hosea	13	5	Hós 13:5	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.73; tartalmi mintavetel (M2): Hós 13:1, 13:7; manual, ts=2026-10-11
+hosea	13	6	Hós 13:6	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.73; tartalmi mintavetel (M2): Hós 13:1, 13:7; manual, ts=2026-10-11
+hosea	13	7	Hós 13:7	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.73; tartalmi mintavetel (M2): Hós 13:1, 13:7; manual, ts=2026-10-11
+hosea	13	8	Hós 13:8	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.73; tartalmi mintavetel (M2): Hós 13:1, 13:7; manual, ts=2026-10-11
+hosea	13	9	Hós 13:9	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.73; tartalmi mintavetel (M2): Hós 13:1, 13:7; manual, ts=2026-10-11
+hosea	13	10	Hós 13:10	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.73; tartalmi mintavetel (M2): Hós 13:1, 13:7; manual, ts=2026-10-11
+hosea	13	11	Hós 13:11	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.73; tartalmi mintavetel (M2): Hós 13:1, 13:7; manual, ts=2026-10-11
+hosea	13	12	Hós 13:12	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.73; tartalmi mintavetel (M2): Hós 13:1, 13:7; manual, ts=2026-10-11
+hosea	13	13	Hós 13:13	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.73; tartalmi mintavetel (M2): Hós 13:1, 13:7; manual, ts=2026-10-11
+hosea	13	14	Hós 13:14	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.73; tartalmi mintavetel (M2): Hós 13:1, 13:7; manual, ts=2026-10-11
+hosea	13	15	Hós 13:15	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas L+0, fejezet-szoszamkorrelacio r=0.73; tartalmi mintavetel (M2): Hós 13:1, 13:7; manual, ts=2026-10-11
+hosea	14	1	Hós 14:1	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K-1+L+0, fejezet-szoszamkorrelacio r=0.95; tartalmi mintavetel (M2): Hós 14:1, 14:6; manual, ts=2026-10-11
+hosea	14	2	Hós 14:2	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K-1, fejezet-szoszamkorrelacio r=0.95; tartalmi mintavetel (M2): Hós 14:1, 14:6; manual, ts=2026-10-11
+hosea	14	3	Hós 14:3	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K-1, fejezet-szoszamkorrelacio r=0.95; tartalmi mintavetel (M2): Hós 14:1, 14:6; manual, ts=2026-10-11
+hosea	14	4	Hós 14:4	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K-1, fejezet-szoszamkorrelacio r=0.95; tartalmi mintavetel (M2): Hós 14:1, 14:6; manual, ts=2026-10-11
+hosea	14	5	Hós 14:5	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K-1, fejezet-szoszamkorrelacio r=0.95; tartalmi mintavetel (M2): Hós 14:1, 14:6; manual, ts=2026-10-11
+hosea	14	6	Hós 14:6	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K-1, fejezet-szoszamkorrelacio r=0.95; tartalmi mintavetel (M2): Hós 14:1, 14:6; manual, ts=2026-10-11
+hosea	14	7	Hós 14:7	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K-1, fejezet-szoszamkorrelacio r=0.95; tartalmi mintavetel (M2): Hós 14:1, 14:6; manual, ts=2026-10-11
+hosea	14	8	Hós 14:8	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K-1, fejezet-szoszamkorrelacio r=0.95; tartalmi mintavetel (M2): Hós 14:1, 14:6; manual, ts=2026-10-11
+hosea	14	9	Hós 14:9	A2 (F54 M1): nincs tabla-sor; fuggetlen parositas K-1, fejezet-szoszamkorrelacio r=0.95; tartalmi mintavetel (M2): Hós 14:1, 14:6; manual, ts=2026-10-11
+psalms	12	1	Zsolt 13:1	F54 DT-F54b: a Karoli a cimet szamozott versnek veszi, igy LXX Ps 12:1 -> Zsolt 13:1; tartalmi egyezes (manual, ts=2026-10-11): cim: "Az eneklőmesternek; Dávid zsoltára" = "eis to telos psalmos to Dauid"
+psalms	12	2	Zsolt 13:2	F54 DT-F54b: a Karoli a cimet szamozott versnek veszi, igy LXX Ps 12:2 -> Zsolt 13:2; tartalmi egyezes (manual, ts=2026-10-11): "Uram, meddig felejtkezel" = "heos pote kyrie epilethe mou"
+psalms	12	3	Zsolt 13:3	F54 DT-F54b: a Karoli a cimet szamozott versnek veszi, igy LXX Ps 12:3 -> Zsolt 13:3; tartalmi egyezes (manual, ts=2026-10-11): "Meddig tanakodjam lelkemben" = "heos tinos thesomai boulas en psyche mou"
+psalms	12	4	Zsolt 13:4	F54 DT-F54b: a Karoli a cimet szamozott versnek veszi, igy LXX Ps 12:4 -> Zsolt 13:4; tartalmi egyezes (manual, ts=2026-10-11): "Nézz ide, felelj nékem" = "epiblepson eisakouson mou kyrie"
+psalms	12	5	Zsolt 13:5	F54 DT-F54b: a Karoli a cimet szamozott versnek veszi, igy LXX Ps 12:5 -> Zsolt 13:5; tartalmi egyezes (manual, ts=2026-10-11): "Hogy ne mondja ellenségem" = "mepote eipe ho echthros mou"
+psalms	12	6	Zsolt 13:6	F54 DT-F54b: a Karoli a cimet szamozott versnek veszi, igy LXX Ps 12:6 -> Zsolt 13:6; tartalmi egyezes (manual, ts=2026-10-11): "kegyelmedben bíztam" = "ego de epi to eleei sou elpisa"

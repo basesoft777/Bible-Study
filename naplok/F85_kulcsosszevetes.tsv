@@ -1,0 +1,52 @@
+# proveniencia: scope=teljes ÓSZ (39 könyv, 23204 TAHOT-kulcs, 23204 Károli-vers) | forras=konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_1908.tsv, naplok/F85_kulcsvaltas.tsv, f22/versosszevonas.tsv, versbeosztas.py (detektor, csak olvas), tahot_lefedettseg_ellenoriz.py | ts=2026-10-09T14:18:36Z
+# GENERÁLT: eszkozok/tahot_verskulcs_kulcsosszevetes.py (csak olvas)
+vizsgalat	targy	eredmeny	reszlet
+4	a TAHOT-kulcsok formátuma (könyv fejezet:vers)	OK	23204 kulcs, 0 hibás []
+4	ÓSZ-könyvek a TAHOT-ban	OK	39 könyv
+4	a TAHOT-sorok száma	OK	469300 sor (fejléc nélkül), 23204 különböző kulcs
+1	TAHOT-kulcs Károli-vers nélkül	OK	0 kulcs []
+2	ÓSZ-Károli-vers TAHOT-sor nélkül	OK	0 vers (a 23204 ÓSZ-Károli-versből) []
+3	összevonás: a közös Károli-kulcson két TAHOT-vers (jelölve, NEM hiba)	OK	9 közös kulcs: 4Móz 29:39, Jób 16:22, Jób 36:33, Péld 11:31, Préd 2:26, Ézs 9:20, Ézs 64:1, Hós 1:11, Hós 11:11
+3	az összevonó kulcsok mind létező Károli-versek és TAHOT-kulcsok	OK	
+3	a naplóban több régi versből jövő új kulcsok ⊆ az f22/versosszevonas.tsv kulcsai	OK	0 kulcs a naplóban, 9 az összevonás-fájlban
+K	könyv 1Móz	OK	Károli 1533 vers, TAHOT 1533 kulcs / 32073 sor, Károli nélküli kulcs 0, TAHOT nélküli Károli-vers 0, összevonó kulcs 0
+K	könyv 2Móz	OK	Károli 1213 vers, TAHOT 1213 kulcs / 25733 sor, Károli nélküli kulcs 0, TAHOT nélküli Károli-vers 0, összevonó kulcs 0
+K	könyv 3Móz	OK	Károli 859 vers, TAHOT 859 kulcs / 18571 sor, Károli nélküli kulcs 0, TAHOT nélküli Károli-vers 0, összevonó kulcs 0
+K	könyv 4Móz	OK	Károli 1287 vers, TAHOT 1287 kulcs / 24881 sor, Károli nélküli kulcs 0, TAHOT nélküli Károli-vers 0, összevonó kulcs 1
+K	könyv 5Móz	OK	Károli 959 vers, TAHOT 959 kulcs / 22865 sor, Károli nélküli kulcs 0, TAHOT nélküli Károli-vers 0, összevonó kulcs 0
+K	könyv Józs	OK	Károli 658 vers, TAHOT 658 kulcs / 15737 sor, Károli nélküli kulcs 0, TAHOT nélküli Károli-vers 0, összevonó kulcs 0
+K	könyv Bír	OK	Károli 618 vers, TAHOT 618 kulcs / 15384 sor, Károli nélküli kulcs 0, TAHOT nélküli Károli-vers 0, összevonó kulcs 0
+K	könyv Ruth	OK	Károli 85 vers, TAHOT 85 kulcs / 2026 sor, Károli nélküli kulcs 0, TAHOT nélküli Károli-vers 0, összevonó kulcs 0
+K	könyv 1Sám	OK	Károli 811 vers, TAHOT 811 kulcs / 20727 sor, Károli nélküli kulcs 0, TAHOT nélküli Károli-vers 0, összevonó kulcs 0
+K	könyv 2Sám	OK	Károli 695 vers, TAHOT 695 kulcs / 17018 sor, Károli nélküli kulcs 0, TAHOT nélküli Károli-vers 0, összevonó kulcs 0
+K	könyv 1Kir	OK	Károli 817 vers, TAHOT 817 kulcs / 20149 sor, Károli nélküli kulcs 0, TAHOT nélküli Károli-vers 0, összevonó kulcs 0
+K	könyv 2Kir	OK	Károli 719 vers, TAHOT 719 kulcs / 18634 sor, Károli nélküli kulcs 0, TAHOT nélküli Károli-vers 0, összevonó kulcs 0
+K	könyv 1Krón	OK	Károli 942 vers, TAHOT 942 kulcs / 16549 sor, Károli nélküli kulcs 0, TAHOT nélküli Károli-vers 0, összevonó kulcs 0
+K	könyv 2Krón	OK	Károli 822 vers, TAHOT 822 kulcs / 21086 sor, Károli nélküli kulcs 0, TAHOT nélküli Károli-vers 0, összevonó kulcs 0
+K	könyv Ezsd	OK	Károli 280 vers, TAHOT 280 kulcs / 5806 sor, Károli nélküli kulcs 0, TAHOT nélküli Károli-vers 0, összevonó kulcs 0
+K	könyv Neh	OK	Károli 406 vers, TAHOT 406 kulcs / 8444 sor, Károli nélküli kulcs 0, TAHOT nélküli Károli-vers 0, összevonó kulcs 0
+K	könyv Eszt	OK	Károli 167 vers, TAHOT 167 kulcs / 4857 sor, Károli nélküli kulcs 0, TAHOT nélküli Károli-vers 0, összevonó kulcs 0
+K	könyv Jób	OK	Károli 1068 vers, TAHOT 1068 kulcs / 12482 sor, Károli nélküli kulcs 0, TAHOT nélküli Károli-vers 0, összevonó kulcs 2
+K	könyv Zsolt	OK	Károli 2527 vers, TAHOT 2527 kulcs / 29842 sor, Károli nélküli kulcs 0, TAHOT nélküli Károli-vers 0, összevonó kulcs 0
+K	könyv Péld	OK	Károli 914 vers, TAHOT 914 kulcs / 9703 sor, Károli nélküli kulcs 0, TAHOT nélküli Károli-vers 0, összevonó kulcs 1
+K	könyv Préd	OK	Károli 221 vers, TAHOT 221 kulcs / 4455 sor, Károli nélküli kulcs 0, TAHOT nélküli Károli-vers 0, összevonó kulcs 1
+K	könyv Én	OK	Károli 117 vers, TAHOT 117 kulcs / 1972 sor, Károli nélküli kulcs 0, TAHOT nélküli Károli-vers 0, összevonó kulcs 0
+K	könyv Ézs	OK	Károli 1290 vers, TAHOT 1290 kulcs / 25222 sor, Károli nélküli kulcs 0, TAHOT nélküli Károli-vers 0, összevonó kulcs 2
+K	könyv Jer	OK	Károli 1364 vers, TAHOT 1364 kulcs / 32529 sor, Károli nélküli kulcs 0, TAHOT nélküli Károli-vers 0, összevonó kulcs 0
+K	könyv Sir	OK	Károli 154 vers, TAHOT 154 kulcs / 2238 sor, Károli nélküli kulcs 0, TAHOT nélküli Károli-vers 0, összevonó kulcs 0
+K	könyv Ez	OK	Károli 1273 vers, TAHOT 1273 kulcs / 29224 sor, Károli nélküli kulcs 0, TAHOT nélküli Károli-vers 0, összevonó kulcs 0
+K	könyv Dán	OK	Károli 357 vers, TAHOT 357 kulcs / 9529 sor, Károli nélküli kulcs 0, TAHOT nélküli Károli-vers 0, összevonó kulcs 0
+K	könyv Hós	OK	Károli 195 vers, TAHOT 195 kulcs / 3581 sor, Károli nélküli kulcs 0, TAHOT nélküli Károli-vers 0, összevonó kulcs 2
+K	könyv Jóel	OK	Károli 73 vers, TAHOT 73 kulcs / 1438 sor, Károli nélküli kulcs 0, TAHOT nélküli Károli-vers 0, összevonó kulcs 0
+K	könyv Ámós	OK	Károli 146 vers, TAHOT 146 kulcs / 2978 sor, Károli nélküli kulcs 0, TAHOT nélküli Károli-vers 0, összevonó kulcs 0
+K	könyv Abd	OK	Károli 21 vers, TAHOT 21 kulcs / 434 sor, Károli nélküli kulcs 0, TAHOT nélküli Károli-vers 0, összevonó kulcs 0
+K	könyv Jón	OK	Károli 48 vers, TAHOT 48 kulcs / 1080 sor, Károli nélküli kulcs 0, TAHOT nélküli Károli-vers 0, összevonó kulcs 0
+K	könyv Mik	OK	Károli 105 vers, TAHOT 105 kulcs / 2105 sor, Károli nélküli kulcs 0, TAHOT nélküli Károli-vers 0, összevonó kulcs 0
+K	könyv Náh	OK	Károli 47 vers, TAHOT 47 kulcs / 828 sor, Károli nélküli kulcs 0, TAHOT nélküli Károli-vers 0, összevonó kulcs 0
+K	könyv Hab	OK	Károli 56 vers, TAHOT 56 kulcs / 1000 sor, Károli nélküli kulcs 0, TAHOT nélküli Károli-vers 0, összevonó kulcs 0
+K	könyv Sof	OK	Károli 53 vers, TAHOT 53 kulcs / 1120 sor, Károli nélküli kulcs 0, TAHOT nélküli Károli-vers 0, összevonó kulcs 0
+K	könyv Hag	OK	Károli 38 vers, TAHOT 38 kulcs / 911 sor, Károli nélküli kulcs 0, TAHOT nélküli Károli-vers 0, összevonó kulcs 0
+K	könyv Zak	OK	Károli 211 vers, TAHOT 211 kulcs / 4787 sor, Károli nélküli kulcs 0, TAHOT nélküli Károli-vers 0, összevonó kulcs 0
+K	könyv Mal	OK	Károli 55 vers, TAHOT 55 kulcs / 1302 sor, Károli nélküli kulcs 0, TAHOT nélküli Károli-vers 0, összevonó kulcs 0
+5	a versbeosztás-detektor az ÓSZ-ben (vershossz-alapú, független jel): eltolt / nincs_eredeti / nincs_karoli	OK	0 / 0 / 0 []
+L	tahot_lefedettseg_ellenoriz.py (fejezet-szint)	OK	kilépési kód 0; # TAHOT_kivonat.tsv fejezet-szintű lefedettség (F2 első lépés) | Fejezet-szinten nincs hiány. | # összesen hiányzó fejezet: 0

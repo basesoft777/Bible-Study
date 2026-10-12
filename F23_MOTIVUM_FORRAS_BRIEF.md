@@ -5,18 +5,20 @@ kod: MOTIVUM_FORRAS
 tipus: feladat
 fazis: 1
 modell: opus
-allapot: nem_indult
+allapot: fut
+ag: claude/f23-m1-forrassablon
+pr: https://github.com/basesoft777/Bible-Study/pull/258
 ad: a B szerkezet terve mérésekkel: szakasz-leképezés, forrássablon-tervezet, szintjelölés a SEMA-ban, CI-szabályok leírása; renderelés és fájlmozgatás nélkül
-kovetkezo: /kovetkezo; ⛔ az M0 felmérés után; az M1 a #12a próza-próba eredményét várja (DT-F32a)
-olvas: [sablonok/, tematikus_lezart/, motivumok/, lexikon/, genezis/, adat/SEMA.md, adat/res_forras.tsv, eszkozok/general.py, CLAUDE.md, ATALAKITASI_TERV.md.md, ADATVAGYON_TERV.md, MUNKATERV.md]
-ir: [sablonok/9_PaRDeS_motivum_forras_sablon.md, adat/SEMA.md]
-fugg: [32]
+kovetkezo: "Folytatás: a DT84 átvezetése (eldöntve 2026-10-12, 🟢: (1)–(13) a, a (7) és a (10) kiegészítve; N-F23a–c) a sablon v0-ba, a SEMA 3.10-be, a ci-tervbe és a pilot-tervbe (a `javaslat`-jelölések feloldása), új ágon; utána a #11 briefje a pilot-terv alapján"
+olvas: [sablonok/, tematikus_lezart/, motivumok/, lexikon/, genezis/, adat/SEMA.md, adat/res_forras.tsv, adat/szotar_szerepek.tsv, eszkozok/general.py, CLAUDE.md, ATALAKITASI_TERV.md.md, ADATVAGYON_TERV.md, MUNKATERV.md, naplok/TEREMT002_PROZA_PROBA_meres.md]
+ir: [sablonok/9_PaRDeS_motivum_forras_sablon.md, adat/SEMA.md, naplok/MOTIVUM_FORRAS_lekepezes.tsv, naplok/MOTIVUM_FORRAS_torzscikk_egyedi.tsv, naplok/MOTIVUM_FORRAS_parositas.tsv, naplok/MOTIVUM_FORRAS_naplo_keveredes.tsv, naplok/MOTIVUM_FORRAS_atfedes.tsv, naplok/MOTIVUM_FORRAS_M0.py, naplok/F23_zaras.md, naplok/ELLENOR_F23.md, naplok/ELLENOR_F23_2.md, naplok/MOTIVUM_FORRAS_ci_terv.md, naplok/MOTIVUM_FORRAS_pilot_terv.md]
+fugg: [32, 78]
 nem_fugg: [22, 52]
 ---
 
 # F<nn>_MOTIVUM_FORRAS_BRIEF.md — Egyforrású motívumdokumentum: forrássablon és mélységi szintek (terv)
 
-*FELADATOK #<nn> · Modell: opus · v1.3 · 2026.10.05 · döntések: D34–D39 (a naplózó brief rögzíti; a számok a befogadáskor a következő szabad D-számtól csúszhatnak), DT28 (v1.3)*
+*FELADATOK #<nn> · Modell: opus · v1.8 · 2026.10.08 · döntések: D34–D39 (a naplózó brief rögzíti; a számok a befogadáskor a következő szabad D-számtól csúszhatnak), DT28 (v1.3)*
 
 ## 1. Cél
 
@@ -57,12 +59,14 @@ Minden számot a menetben ténylegesen futtatott parancs kimenetéből vegyél. 
 
 ### M1 — terv (a jóváhagyás után)
 
-**⛔ Előfeltétel (DT-F32a, K1/4):** az M1 csak a #12a próza-próba eredményének ismeretében kezdhető: egy motívum teljes értelmező rétege a KONTEXTUS-szabályok szerint elkészült, és az eredmény az ISTENTISZT-001 mércéjét (L1–L5, #10) hozza. Ha a #12a még nem futott le, az M1 nem indul; állj meg, és add vissza a kérdést az orkesztrátornak.
+**⛔ Előfeltétel (DT-F32a, K1/4; DT74 (1), (5)):** az M1 csak a #12a próza-próba eredményének ismeretében kezdhető: egy motívum teljes értelmező rétege a KONTEXTUS-szabályok szerint elkészült (#64, lezárva; `naplok/TEREMT002_PROZA_PROBA_meres.md`). A mérés 7. szakasza („A mérce korlátja”) szerint az ISTENTISZT-001 aranyminta szótári része nem a szerepmátrix szerint épül; ezért az M1 a #78 szerepmátrix-váz (a rekonstruált aranyminta) után indul. A mérce: a lexikonoldal-sablon Minőségi kapuja L1–L7 + a DT2 két rés-szabálya (DT68 (2)), a szótári részen a #78 váza. Ha a #78 még nem futott le, az M1 nem indul; állj meg, és add vissza a kérdést az orkesztrátornak.
 
 1. **Forrássablon-tervezet:** `sablonok/9_PaRDeS_motivum_forras_sablon.md`. Szakaszonként:
    - kézi vagy adatból generált;
    - mélységi szint;
    - aktiválási feltétel.
+
+   A szótári szakasz a szerepmátrix (`adat/szotar_szerepek.tsv`, SEMA 2.13; ADATVAGYON_TERV 18.5) szerint épül: szerepenként, a mátrix sorrendjében, a nem adatosított szerep explicit üres blokk — a #78 váza szerint (DT74 (1)); a 13–14. szerep `javaslat` állapotú (DT-M4, DT76 (9)).
 
    A tematikus szakaszok a ⭐ küszöb (`COUNT(DISTINCT fo_elofordulas)`) alatt inaktívak (D37), ugyanúgy, ahogy ma a 0. és az 1/b szakasz is feltételes. A sablon fejlécében álljon: „tervezet, a #12 pilotja véglegesíti”.
    **Markerek (DT28):** a sablon megnevezi a (b) réteg markereit (a meglévő `RÉS-KEZDET` / `GENERÁLT-KEZDET` jelölők mintájára), és minden markerhez kimondja, **mit nyer ki belőle a generátor** és **melyik adattáblába** (pl. igehely-lista → `jeloltek.tsv`, nem közvetlenül `elofordulasok.tsv`: SEMA 3/2). Marker, amelyből semmit nem nyerünk ki, csak szerkezeti. Egyetlen marker sem jelent visszaírást: a generátor a forrásba nem ír, az adatból a forrásba semmi nem kerül vissza. A tematikus sablon v16 szabályai (pl. a BDB-jelentés oszlop magyarul) változatlanul átkerülnek. Ha egy szabály nem fér bele, `javaslat` jelölést kap.
@@ -79,7 +83,7 @@ Minden számot a menetben ténylegesen futtatott parancs kimenetéből vegyél. 
    Csak leírás. Az implementáció külön ágon megy (D6), a #11 előtt.
 4. **Pilot-bemenetek** a `naplok/MOTIVUM_FORRAS_pilot_terv.md`-ben (D38):
    - mit kell tudnia a #12-nek (TEREMT-002, natív);
-   - mit kell tudnia a #11 1. lépcsőjének (ISTENTISZT-001, örökölt);
+   - mit kell tudnia a #11 1. lépcsőjének (ISTENTISZT-001, örökölt; a #78 vázával rekonstruált aranyminta, DT74 (1));
    - milyen nulla-diff vagy elfogadott-diff kategóriákkal mérjük a migrációt;
    - a szétválasztás kategóriái (DT28): a régi tanulmány minden bekezdése egy célrétegbe kerül — `adat` (kinyerve a `jeloltek.tsv`-n át, döntéssel), `forras` (értelmező próza, marad a `motivumok/[ID].md`-ben), `generalt` (ma a forrásban áll, de adatból újraállítható: a migráció után nem kézi), `archivum` (egyik sem; megőrzött, de nem forrás). A pilot akkor sikeres, ha nincs bekezdés két rétegben, és a visszaírás-számláló nulla: egyetlen sor sem került az adatból a forrásba.
 
@@ -107,3 +111,9 @@ Minden számot a menetben ténylegesen futtatott parancs kimenetéből vegyél. 
 | v1.1 | 2026.10.04 | F32 K4: `fugg: [32]`; próza-elsőbbség a Célban; „Nincs benne” bővítve; M0/1 `kezi_forras` → `szint` kötelező | a KONTEXTUS (#32) K1/2 és K-D10; a #23-nak nincs értelmező (`munka: ertelmezo`) lépése: nem ír motívumfájlt, ezért jelölés nem kellett |
 | v1.2 | 2026.10.04 | DT-F32a (🟢): ⛔ megállási pont az M0 után, az M1 a #12a próza-próba eredményét várja; a #12a a #23 M0 és M1 közé esik | DT-F32a (Felhasználó, 2026.10.04); a függés számmal nem rögzíthető (a #12a nem önálló feladat), ezért a `kovetkezo` fejlécmező és a szöveg hordozza |
 | v1.3 | 2026.10.05 | DT28 (3. pont): „Egyirányúság” a Célban; M0/1 `B_helye` egyetlen érték, `szetvalasztando` jelölés; M0/4 a DT28 mércéje; M1/1 markerek: mit nyer ki a generátor és hova, visszaírás nincs; M1/2 a SEMA 3/9-re épít, a kinyerést írja le; M1/4 a szétválasztás négy kategóriája és a visszaírás-számláló | DT28 (Felhasználó, 2026.10.05, PR #195; az 1–2. pont a #197-ben); a brief hatóköre nem bővül: továbbra is csak tervez és mér |
+| v1.4 | 2026.10.07 | fejléc `ir`: az öt M0-kimenet (`naplok/MOTIVUM_FORRAS_lekepezes.tsv`, `_torzscikk_egyedi.tsv`, `_parositas.tsv`, `_naplo_keveredes.tsv`, `_atfedes.tsv`) felvéve; a hatókör nem bővül (az M0 eleve ezeket állítja elő) | DT65 (c) (Felhasználó, 2026.10.07): önálló fejléchiba-javítás; az `allapot` és a `fugg` nem változik |
+| v1.5 | 2026.10.07 | fejléc `ir`: a mérőszkript (`naplok/MOTIVUM_FORRAS_M0.py`), a zárófájl (`naplok/F23_zaras.md`) és a két független ellenőri jelentés (`naplok/ELLENOR_F23.md`, `naplok/ELLENOR_F23_2.md`) felvéve; a hatókör nem bővül (a fájlok az M0 menetében és ellenőrzésében keletkeztek) | ELLENOR_F23 8. pont és ELLENOR_F23_2 3. pont; a javítókört a Felhasználó hagyta jóvá (2026.10.07); az `allapot` és a `fugg` nem változik |
+| v1.6 | 2026.10.08 | TERV-INTEGRÁCIÓ: M1-előfeltétel a #78 szerepmátrix-váz (rekonstruált aranyminta) és a #64 mérése (7. szakasz: a mérce korlátja); mérce L1–L7 + DT2; a forrássablon szótári szakasza a szerepmátrix szerint; `fugg` + 78, `olvas` + `adat/szotar_szerepek.tsv`, a #64 mérése | DT74 (1), (5); DT68 (2); a TI-menet egyszeri fejléc-frissítése (DT75 (8)) |
+| v1.7 | 2026.10.08 | M1 indul: fejléc `allapot: fut`, új `ag`; `ir` + `naplok/MOTIVUM_FORRAS_ci_terv.md`, `naplok/MOTIVUM_FORRAS_pilot_terv.md` (az M1/3–4 kimenetei, eddig hiányoztak) | a #78 lezárult (PR #256), az M1 előfeltétele teljesült; a felhasználó jóváhagyása (2026.10.08) |
+| v1.8 | 2026.10.08 | M1 javítókör az ELLENOR_F23_M1 2–4. tétele szerint: a SEMA 3.10.5 és a sablon 6. pontja a 3/9-hez igazodik (kinyerés csak a `jeloltek.tsv`-n át, a proveniencia-lábjegyzet hivatkozás; a közvetlen `auditok.tsv`-út `javaslat`, DT84 (2) bővítve); a pilot-terv HAMART-001 RÉS-számai (jelölő-előfordulás / rés / `res_forras`-sor) és a 4.1 proveniencia-hatóköre pontosítva; a fejléc verziósora (v1.5) a verziónaplóhoz igazítva | ELLENOR_F23_M1; az orkesztrátor javítóköre (a felhasználó által jóváhagyott menet része); tartalmi döntés nincs, a hatókör nem bővül |
+| v1.9 | 2026.10.12 | DT84 eldöntve (🟢): fejléc `allapot: fut`, `kovetkezo` `Folytatás:` (az átvezetés); N-F23a–c a `NYITOTT_FELADATOK.md`-ben | a felhasználó döntése a chatben (2026.10.12) |

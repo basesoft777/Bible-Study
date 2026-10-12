@@ -23,3 +23,8 @@ naplok/FORDITAS_P_hibak/
 fp2/*_cache/
 fp2/_run/
 fp2/_dryrun/
+
+# F79 -- a generalt SQLite-adatbazis (nem verziozzuk)
+pardes.db
+pardes_minta.db
+pardes*.db.epit

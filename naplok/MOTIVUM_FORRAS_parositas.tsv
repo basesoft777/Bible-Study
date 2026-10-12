@@ -1,0 +1,11 @@
+fajl	motivum_id	besorolas	parositas_alapja	megjegyzes	forras_parancs
+tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md	HAMART-001	tanulmany	motivumok.tsv:forras_study+res_forras.tsv:tanulmany		python naplok/MOTIVUM_FORRAS_M0.py
+tematikus_lezart/Hadesz_Seol_tematikus.md	ALVIL-001	tanulmany	motivumok.tsv:forras_study+res_forras.tsv:tanulmany		python naplok/MOTIVUM_FORRAS_M0.py
+tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md	MENNY-001	tanulmany	motivumok.tsv:forras_study+res_forras.tsv:tanulmany		python naplok/MOTIVUM_FORRAS_M0.py
+tematikus_lezart/Konnyu_ellenorzes_4_lezart_tanulmany.md	—	nem_tanulmany	nincs motívum-hivatkozás	első sor: Könnyű, feltáró ellenőrzés — 4 lezárt tematikus tanulmány (Tehóm, Segítségül hívni az Úr nevét, Rafeusok/óriás-népek,	python naplok/MOTIVUM_FORRAS_M0.py
+tematikus_lezart/Melkizedek_tematikus.md	KIRALY-001	tanulmany	motivumok.tsv:forras_study+res_forras.tsv:tanulmany		python naplok/MOTIVUM_FORRAS_M0.py
+tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md	ANTROP-001	tanulmany	motivumok.tsv:forras_study+res_forras.tsv:tanulmany		python naplok/MOTIVUM_FORRAS_M0.py
+tematikus_lezart/Rafaim_tematikus.md	HODIT-001	tanulmany	motivumok.tsv:forras_study+res_forras.tsv:tanulmany		python naplok/MOTIVUM_FORRAS_M0.py
+tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md	ISTENTISZT-001	tanulmany	motivumok.tsv:forras_study+res_forras.tsv:tanulmany		python naplok/MOTIVUM_FORRAS_M0.py
+tematikus_lezart/Tehom_tematikus.md	TEREMT-001	tanulmany	motivumok.tsv:forras_study+res_forras.tsv:tanulmany		python naplok/MOTIVUM_FORRAS_M0.py
+—	TEREMT-002	nincs_tematikus	motivumok.tsv:forras_study=üres	statusz=feldolgozás alatt	python naplok/MOTIVUM_FORRAS_M0.py

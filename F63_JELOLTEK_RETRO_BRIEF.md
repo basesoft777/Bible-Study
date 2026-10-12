@@ -6,9 +6,12 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: nem_indult
+allapot: lezarva
+ag: claude/jeloltek-retro
+pr: https://github.com/basesoft777/Bible-Study/pull/278
+lezarva_osszegzes: "jeloltek.tsv +250 sor (344 → 594 fizikai sor, proveniencia scope=manual): HAMART 170, ISTENTISZT 60, KIRALY 14, ALVIL 2, TEREMT 2, HODIT 1, MENNY 1, ANTROP 0; nem_vizsgalt.py (hozzáfűzés, lelet-mérés, közös kategorizálás); DT95–c, N-F63a–e; K4 az ANTROP-001-nél nem teljesül (elfogadva); a 0 még nem vizsgált nem teljességi jelentés (HAMART, MENNY); független ellenőr 2 kör, eltérések javítva"
 ad: a 8 retroaktív (F3/N14) motívum vizsgált, de a jeloltek.tsv-ből hiányzó jelöltjei a naplókból pótolva, mindegyik dontes és indoklas mezővel (ahol a napló nem mond döntést: nyitva, explicit jelöléssel); egy generátor (eszkozok/nem_vizsgalt.py) adja a „még nem vizsgált” listát (auditok-scan − jeloltek); az ANTROP-001 lelet-lapjának (12-es) első teljes adatfutása
-kovetkezo: /kovetkezo; ⛔ az M0 után (forrás-leképezés és hiánymérés), és az M2 ANTROP-001 mintája után
+kovetkezo: "—"
 olvas: [adat/jeloltek.tsv, adat/elofordulasok.tsv, adat/auditok.tsv, adat/motivumok.tsv, adat/SEMA.md, tematikus_lezart/, motivumlog/, melyelemzesek/, genezis/, eszkozok/jelolt.py, eszkozok/lekerdez.py]
 ir: [adat/jeloltek.tsv, eszkozok/nem_vizsgalt.py, eszkozok/teszt_nem_vizsgalt.py]
 fugg: []
