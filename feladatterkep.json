@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-10-13",
-   "commit": "e9e255ad"
+   "commit": "ca78c3cb"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -87,7 +87,7 @@
   {
    "kulcs": "dt",
    "cimke": "Nyitott döntés",
-   "db": 4
+   "db": 3
   }
  ],
  "sor": [
@@ -849,16 +849,6 @@
      "🟡"
     ],
     "sor": 201
-   },
-   {
-    "id": "DT128",
-    "feladat": "#76 OLVASOI_KONKORDANCIA (ADATVAGYON_TERV 4. szakasz, 20. pont: 1908 / modern változat)",
-    "kerdes": "Készüljön-e saját, modernizált Károli-szövegréteg az 1908-as mellett, és ha igen, milyen szinten? A Károli 1908 közkincs; a saját modernizálás a projekt saját adata lenne (DT116). A mai revideált Károli-kiadások védettek, nem használhatók. A réteg az 1908-as szöveget nem írja felül; a vers-lapon kapcsolóval váltható. A szótövezés `to_mai` megfeleltetése (a 2026-10-13-i aranyminta-tervezet) helyesírási szinten ugyanazt az adatot adhatja. *(forrás: a chat, 2026-10-13; ADATVAGYON_TERV 4. szakasz 20. pont)*",
-    "allapot": "nyitott",
-    "jelek": [
-     "🟡"
-    ],
-    "sor": 203
    }
   ],
   "alkalmazasra_var": [
@@ -1653,6 +1643,16 @@
      "🟢"
     ],
     "sor": 202
+   },
+   {
+    "id": "DT128",
+    "feladat": "#76 OLVASOI_KONKORDANCIA (ADATVAGYON_TERV 4. szakasz, 20. pont: 1908 / modern változat)",
+    "kerdes": "Készüljön-e saját, modernizált Károli-szövegréteg az 1908-as mellett, és ha igen, milyen szinten? A Károli 1908 közkincs; a saját modernizálás a projekt saját adata lenne (DT116). A mai revideált Károli-kiadások védettek, nem használhatók. A réteg az 1908-as szöveget nem írja felül; a vers-lapon kapcsolóval váltható. A szótövezés `to_mai` megfeleltetése (a 2026-10-13-i aranyminta-tervezet) helyesírási szinten ugyanazt az adatot adhatja. *(forrás: a chat, 2026-10-13; ADATVAGYON_TERV 4. szakasz 20. pont)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 203
    },
    {
     "id": "DT129",
