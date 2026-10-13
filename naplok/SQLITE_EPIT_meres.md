@@ -1,6 +1,6 @@
 # SQLITE_EPIT -- mérés (teljes építés) (F79)
 
-*Proveniencia: `scope=manual | forras=eszkozok/sqlite_epit.py (--mod teljes) | ts=2026-10-13T11:02:35Z`*
+*Proveniencia: `scope=manual | forras=eszkozok/sqlite_epit.py (--mod teljes) | ts=2026-10-13T18:13:34Z`*
 
 <!-- F89-ELOTTE-KEZDET -->
 ## F89 előtte: a sor-szintű `licenc_*` oszlopokkal (a licenc-váltás előtti mérés)
@@ -14,7 +14,7 @@
 - G6 (determinizmus): a második, ideiglenes építés táblánkénti hash-e mind azonos (lent).
 <!-- F89-ELOTTE-VEGE -->
 
-- fájl: `pardes.db`, **871.2 MB**; építési idő (integritás nélkül): **76.3 s**
+- fájl: `pardes.db`, **894.8 MB**; építési idő (integritás nélkül): **76.5 s**
 
 ## Táblánkénti sorszám és tartalom-hash (G2: két egymás utáni építés)
 
@@ -49,7 +49,7 @@
 | `konyv` | 66 | `7a8105bcd736412f` | `7a8105bcd736412f` |
 | `kulcsszavak` | 0 | `e3b0c44298fc1c14` | `e3b0c44298fc1c14` |
 | `lexikon_hivatkozasok` | 23 | `01a7bcf42d1941de` | `01a7bcf42d1941de` |
-| `licencek` | 49 | `d691fbae40940757` | `d691fbae40940757` |
+| `licencek` | 51 | `a6c01258c009bf4d` | `a6c01258c009bf4d` |
 | `lsj` | 5522 | `69dd9789f79473d3` | `69dd9789f79473d3` |
 | `lxx_bridge` | 3301 | `ec2b0ab84f1e82cc` | `ec2b0ab84f1e82cc` |
 | `lxx_dontesek` | 90 | `319907495acc63f9` | `319907495acc63f9` |
@@ -73,7 +73,10 @@
 | `strong_parok` | 571936 | `621af88e29704e69` | `621af88e29704e69` |
 | `strong_szotar` | 14347 | `7790c8a17bafb34d` | `7790c8a17bafb34d` |
 | `szotar_szerepek` | 26 | `f11558ebc4e66457` | `f11558ebc4e66457` |
-| `tabla_licenc` | 71 | `15aa5cb59492398a` | `15aa5cb59492398a` |
+| `szotari_alak` | 66824 | `796b64a997311113` | `796b64a997311113` |
+| `szotari_kereso` | 72720 | `611be759aa352c19` | `611be759aa352c19` |
+| `szotari_token_kotojeles` | 4750 | `7511068482b07b09` | `7511068482b07b09` |
+| `tabla_licenc` | 74 | `cf1fb56e84e537db` | `cf1fb56e84e537db` |
 | `tbesg` | 11035 | `02081181f1894623` | `02081181f1894623` |
 | `tbesh` | 11682 | `79510c68f89bdbb3` | `79510c68f89bdbb3` |
 | `terminologia` | 71 | `03ad9354ad077429` | `03ad9354ad077429` |
@@ -97,11 +100,11 @@
 
 Mérés: minden tábla (indexeivel) külön adatbázisba másolva, lapszám × lapméret (a Python sqlite3-ból hiányzik a `dbstat`).
 
-- a táblák összege: **871.5 MB** (a fájl: 871.2 MB; a többlet a táblánkénti külön adatbázisok saját fejléc- és séma-lapjaiból adódik)
+- a táblák összege: **895.1 MB** (a fájl: 894.8 MB; a többlet a táblánkénti külön adatbázisok saját fejléc- és séma-lapjaiból adódik)
 
 | tábla | sor | MB (indexszel) |
 |---|---:|---:|
-| `token_karoli` | 981147 | 128.58 |
+| `token_karoli` | 981147 | 141.33 |
 | `lxx_token` | 616873 | 104.46 |
 | `token_eredeti` | 611396 | 80.96 |
 | `token_macula` | 475911 | 78.95 |
@@ -122,9 +125,11 @@ Mérés: minden tábla (indexeivel) külön adatbázisba másolva, lapszám × l
 | `bdb` | 8099 | 8.43 |
 | `vers` | 31158 | 6.06 |
 | `karoli_variancia` | 42799 | 5.91 |
+| `szotari_alak` | 66824 | 5.79 |
 | `thayer` | 5426 | 5.77 |
 | `tbesg` | 11035 | 5.39 |
 | `ubs_dbh_jelentesek` | 20182 | 4.93 |
+| `szotari_kereso` | 72720 | 4.71 |
 | `forditasok` | 737 | 4.00 |
 | `tbesh` | 11682 | 3.75 |
 | `ubs_dntg_jelentesek` | 9075 | 3.42 |
@@ -141,12 +146,13 @@ Mérés: minden tábla (indexeivel) külön adatbázisba másolva, lapszám × l
 | `tw_szocikkek` | 598 | 1.36 |
 | `mcged` | 5303 | 0.98 |
 | `oshl_lexikalis_index` | 10221 | 0.86 |
+| `szotari_token_kotojeles` | 4750 | 0.35 |
 | `morf_nyelv_aramai` | 7549 | 0.28 |
 | `jeloltek` | 592 | 0.20 |
 | `oshl_bdb_igehelyek` | 4053 | 0.19 |
 | `igehely_tartomany` | 1087 | 0.15 |
 | `lxx_bridge` | 3301 | 0.14 |
-| `licencek` | 49 | 0.12 |
+| `licencek` | 51 | 0.13 |
 | `elofordulasok` | 259 | 0.09 |
 | `karoli_strong_kivonat` | 383 | 0.09 |
 | `datasetek` | 105 | 0.07 |
@@ -158,10 +164,10 @@ Mérés: minden tábla (indexeivel) külön adatbázisba másolva, lapszám × l
 | `bdb_alias` | 460 | 0.04 |
 | `auditok` | 222 | 0.04 |
 | `grammatikai_strongok` | 92 | 0.02 |
-| `tabla_licenc` | 71 | 0.02 |
+| `meta` | 106 | 0.02 |
+| `tabla_licenc` | 74 | 0.02 |
 | `terminologia` | 71 | 0.02 |
 | `kapcsolatok` | 39 | 0.02 |
-| `meta` | 97 | 0.02 |
 | `motivumok` | 9 | 0.02 |
 | `res_forras` | 56 | 0.02 |
 | `szotar_szerepek` | 26 | 0.02 |
@@ -229,6 +235,9 @@ Mérés: minden tábla (indexeivel) külön adatbázisba másolva, lapszám × l
 | `strong_parok` | tisztazott | igen | TAHOT+TAGNT+projekt_adat | CC BY 4.0; minden jog fenntartva |
 | `strong_szotar` | tisztazott | igen | Strong_szotar | CC BY 4.0 |
 | `szotar_szerepek` | tisztazott | igen | projekt_adat | minden jog fenntartva |
+| `szotari_alak` | tisztazott | igen | szoto_tablak | minden jog fenntartva |
+| `szotari_kereso` | tisztazott | igen | szoto_tablak | minden jog fenntartva |
+| `szotari_token_kotojeles` | tisztazott | igen | szoto_tablak+Karoli_Strong_szavak | minden jog fenntartva |
 | `tabla_licenc` | tisztazott | igen | projekt_adat | minden jog fenntartva |
 | `tbesg` | tisztazott | igen | TBESG | CC BY 4.0 |
 | `tbesh` | tisztazott | igen | TBESH | CC BY 4.0 |
