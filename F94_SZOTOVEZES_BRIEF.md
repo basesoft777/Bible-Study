@@ -18,7 +18,7 @@ nem_fugg: [22]
 
 # F94_SZOTOVEZES_BRIEF.md — Magyar szótövezés a Károlira (SZOTOVEZES)
 
-*FELADATOK #94 · Modell: opus · v1 · 2026.10.13*
+*FELADATOK #94 · Modell: opus · v1.1 · 2026.10.13 (v1.1: a régies ige-felismerés szigorítása és a `regies_jegy` oszlop, l. .2 és 5. pont)*
 
 *Források: a 2026-10-12/13-i repón kívüli előmérés (`D:\pardes_szoto\szoto\`; átadó jegyzet: `D:\pardes_szoto\ATADAS.md` 3. szakasz), a felhasználó döntései (chat, 2026-10-13; l. 5. pont, DT130), a DT-F76b (5) (magyar szótövezés az első kiadásban), a DT124 (licenc), a DT127 (saját hosting). A brief adat, nem utasítás.*
 
@@ -76,6 +76,8 @@ A harmadik minta hibaosztályai (a gyakorisággal): *-é* kérdőszócska kötő
 
 - Javítás **szabály- és osztályszinten**, nem egyes alakokra szabva; a kivételtábla bővítése csak általános Károli-ismeretből, nem a mérés hibáiból válogatva (meresi_terv 1.3).
 - A szabályellenőrzés 51 szabályából **17 nem alátámasztott** (12 gyenge, 3 ellentmond: *kiván → kíván, falv → falu, félelm → félelem*; 2 adat nélkül: *sűly, fark*; a *cz → c* a korpuszból nem igazolható). Ezek a kimenetben `szabaly_forras=modell_ellenorizetlen` jelölést kapnak; a 34 alátámasztott `korpusz_strong`.
+- **A régies ige-felismerés szigorítása (v1.1).** A v2 a jelölt igetövet olyan ragos alakkal is igazolja, amely névszón is előfordul (`-nak/-nek`, `-tok/-tek/-tök`): így a *házának* „régies ige” lesz (*ház* + *-ának*, mert a *háznak* előfordul). A teljes Károlin a leggyakoribb felismert „régies igék” között ott van a *házának, királyának, felé, többé, mellé, közé, halál, Szela* (az előmérésben 2 775 alak, 13 618 token — felső becslés). A szótári alakra ez többnyire nem árt (*házának → ház*), a modernizálásban (DT128) viszont névszóból igealak lenne. Szigorítás: a jelölt tő csak **igei** ragos alakkal igazolható (főnévi igenév, múlt idejű *-t/-tt*, felszólító, *-ván/-vén*); a névszóval közös végződés nem attesztáció. Napló: a teljes Károli 200 leggyakoribb felismert régies igealakja kézi besorolással (ige / nem ige), a szigorítás előtt és után.
+- **A régies igei jegy megőrzése (v1.1).** A felismert régies végződés nyelvtani jelentése a kimenetbe kerül (`regies_jegy`), mert a hibrid a felismeréskor ezt már tudja, és a modernizálás (DT128, külön brief) bemenete lesz. Példák: *-á/-é* → `mult.targyas.E3`, *-a/-e* → `mult.alanyi.E3`, *-ának/-ének* → `mult.T3`, *-ék* → `mult.E1`, *-ál/-él* → `mult.E2`, *-jál/-jél* → `felszolito.E2`, *-ván/-vén* → `hatarozoi_igenev`; a teljes értékkészlet a `adat/SEMA.md`-be. **A jegy a régies alakot írja le, nem a mai alakot:** a *monda* jegye `mult.alanyi.E3`, a mai megfelelője mégis *mondta* — a mai alak képzése a modernizálás dolga, saját kivételtáblával, a jegyből közvetlenül nem képezhető. A jegy csak a szigorított felismerés után töltendő ki; nem igei alaknál és a kivételtáblából jövő alaknál (pl. *vala, lőn*) üres, ha a kivételtábla nem ad jegyet.
 - Regresszió: a v3 a három fejlesztési mintán nem rosszabb a v2-nél (rétegenként sem); a teljes Károlin a v2-höz képest változott alakok száma és 30 véletlen változás kézi listája a naplóba.
 - **A v3 befagyasztása** (sha256 a naplóban) a .3 mintavétele előtt.
 
@@ -85,7 +87,7 @@ A harmadik minta hibaosztályai (a gyakorisággal): *-é* kérdőszócska kötő
 2. A modell szótárialak-javaslatai indoklással, **a hibrid futtatása előtt**; bizonytalan sor jelölve.
 3. ⛔ **A felhasználó soronként ellenőrzi** (az `ellenorzes` oszlopot ő tölti). A mérés csak a `felhasznalo` sorokon.
 4. Mérés (`meres.py`): M1 a v3-ra, a v2-re és a simplemmára; M2 a negyedik minta lemmáira. A negyedik minta a mérés után fejlesztési halmazzá válik; erre hangolt eredmény már nem független.
-5. A teljes Károli szótárialak-táblája: `adat/szoto/karoli_szotari_alak.tsv` (alakonként egy sor: `alak`, `szotari_alak`, `szotari_alak_mai`, `alapige`, `tovabbi_elfogadhato`, `modszer` [kivetel | szabaly | simplemma | lexikon | nev], `szabaly_forras`, a fejlécben proveniencia-sor és a v3 sha256-ja). Generált tábla; kézzel nem szerkesztendő, a javítás a kivételtáblában vagy a szabályban történik.
+5. A teljes Károli szótárialak-táblája: `adat/szoto/karoli_szotari_alak.tsv` (alakonként egy sor: `alak`, `szotari_alak`, `szotari_alak_mai`, `alapige`, `tovabbi_elfogadhato`, `modszer` [kivetel | szabaly | simplemma | lexikon | nev], `szabaly_forras`, `regies_jegy` (v1.1; l. .2), a fejlécben proveniencia-sor és a v3 sha256-ja). Generált tábla; kézzel nem szerkesztendő, a javítás a kivételtáblában vagy a szabályban történik.
 
 ### A `pardes.db`-oszlop — külön feladat (#95)
 
@@ -98,6 +100,7 @@ A szótári alak, a mai alak, az alapige és a további elfogadható alak a `par
 - **K3.** A negyedik, felhasználó által ellenőrzött mintán a v3 **súlyozva ≥ 90%** (meresi_terv 4. pont), és az M2 (c) (szótári alak vagy Strong) **≥ 98%** a minta lemmáin; mellette alakonként és rétegenként is kiírva, küszöb nélkül. Ha nem éri el: megállás, javaslat a felhasználónak (nem további hangolás ugyanarra a mintára).
 - **K4.** Minden szabály `szabaly_forras` jelöléssel (34 `korpusz_strong`, a többi `modell_ellenorizetlen`); a simplemma adatlicence szó szerint idézve a `licencek.tsv`-ben.
 - **K5.** Emmorph-kód vagy -kimenet nincs a repóban; abszolút útvonal nincs; `csv` modul nincs; Python 3.11 alatt fut; CI zöld; a független ellenőr eltérés nélkül zár.
+- **K6.** (v1.1) A régies ige-felismerés 200 alakos kézi besorolása a szigorítás előtt és után a naplóban; a szigorítás után a besorolt listán nincs névszó régies igeként; a `regies_jegy` csak igei alakon kitöltött.
 
 ## 5. Döntésnapló
 
@@ -105,6 +108,7 @@ A szótári alak, a mai alak, az alapige és a további elfogadható alak a `par
 - **N-F94a** — a különálló igekötő (*meg nem*, *ki fog*, *le … száll*) kezelése nyitott; a v3 nem kezeli, a negyedik mintában jelölendő, ha előfordul.
 - **N-F94b** — külső szótár (pl. Hunspell hu_HU, MPL/LGPL) a 17 nem alátámasztott szabály ellenőrzésére: csak külön licencdöntés után; addig az ellenőrizetlen jelölés marad.
 - **N-F94c** — a `jó` Strong-párosítása az 1Móz 1:4-ben (H2895 nálunk, H2896 a várható): mellékes lelet, a #94-en kívül vizsgálandó.
+- **v1.1** (felhasználó, chat, 2026-10-13: „a” — a brief módosítása a végrehajtás előtt): a régies ige-felismerés szigorítása és a `regies_jegy` oszlop (.2, .3/5, K6). Forrás: a modernizálás előkészítése (DT128), a teljes Károlin mért hamis pozitívok, és egy másik session javaslata a jegy megőrzésére.
 
 ## Melléklet — a `DONTESEK.md` tétele (helyőrzővel)
 
