@@ -1,0 +1,53 @@
+# GENERÁLT: eszkozok/szoto/szabaly_ellenorzes.py (F94.1) — kézzel nem szerkeszthető | scope=hibrid.py (sha256:864d6876437a) HELYESIRAS (9) + TOVALTO (42) szabályai; a párosított Károli-könyvek (57 szavak-fájl, oldal=hu, 484820 token) | forras=adat/karoli_strong/szavak_*.tsv (együttes sha256:c3266499df09; modell-kimenet, javaslat) | ts=2026-10-13T13:10Z
+tipus	szabaly	regi_alak	regi_token	par	par_token	tamasz	konyv	minosites	pelda
+helyesírás	űl$ → ül	26	160	21	155	64% (71/111)	csak régi 0, csak új 41, mindkettő 9	gyenge	közűl(60)~közül(695); feleségűl(18)~feleségül(56); körűl(13)~körül(124); köröskörűl(12)~köröskörül(134)
+helyesírás	űle → üle	15	60	8	45	93% (41/44)	csak régi 1, csak új 26, mindkettő 4	alátámasztva	szűle(31)~szüle(7); leűle(5)~leüle(11); közűletek(3)~közületek(35); űle(2)~üle(14)
+helyesírás	^szűl → szül	33	124	16	103	89% (93/104)	csak régi 5, csak új 18, mindkettő 8	alátámasztva	szűle(31)~szüle(7); szűlt(19)~szült(19); szűlé(18)~szülé(17); szűl(8)~szül(10)
+helyesírás	körűl → körül	19	47	9	35	67% (22/33)	csak régi 1, csak új 27, mindkettő 2	gyenge	körűl(13)~körül(124); köröskörűl(12)~köröskörül(134); körűlmetélé(3)~körülmetélé(2); körűlmetéletlen(2)~körülmetéletlen(13)
+helyesírás	sűly → süly	1	2	0	0	—	csak régi 0, csak új 0, mindkettő 0	nincs adat	
+helyesírás	nyny → nny	35	139	8	82	65% (53/82)	csak régi 5, csak új 13, mindkettő 18	gyenge	aranynyal(51)~arannyal(5); bizonynyal(16)~bizonnyal(4); tudománynyal(8)~tudománnyal(1); menynyivel(2)~mennyivel(19)
+helyesírás	^setét → sötét	14	50	8	42	67% (29/43)	csak régi 9, csak új 13, mindkettő 5	gyenge	setétség(15)~sötétség(28); setétségben(9)~sötétségben(13); setétben(6)~sötétben(8); setétségnek(4)~sötétségnek(6)
+helyesírás	cz → c	783	2088	5	14	97% (30/31)	csak régi 6, csak új 2, mindkettő 3	alátámasztva	harminczhárom(5)~harminchárom(1); harminczezer(4)~harmincezer(1); tizennyolczezer(3)~tizennyolcezer(2); nyolczvanhat(1)~nyolcvanhat(1)
+helyesírás	^kiván → kíván	51	122	21	81	16% (13/80)	csak régi 5, csak új 13, mindkettő 17	ellentmond	kiván(11)~kíván(7); kivánsága(9)~kívánsága(11); kivánatos(8)~kívánatos(7); kivánják(6)~kívánják(3)
+tőváltó	lelk- → lélek	53	641	6	171	89% (594/670)	csak régi 13, csak új 3, mindkettő 34	alátámasztva	lelkem(111); lelke(110); lelkét(73); lelkemet(63) | fő Strong régi: H5315,H7307, új: G4151,H5315,H7307
+tőváltó	ur- → úr	47	1468	14	6142	57% (893/1559)	csak régi 2, csak új 6, mindkettő 47	gyenge	uram(552); urat(342); ura(257); urának(63) | fő Strong régi: H0113,H3068, új: H3068
+tőváltó	tav- → tó	7	9	7	15	75% (9/12)	csak régi 4, csak új 5, mindkettő 2	alátámasztva	tavakat(2); tavává(2); tavaira(1); tavat(1) | fő Strong régi: H0098,H1295,H5921, új: H0098,H1295,H8583
+tőváltó	magv- → mag	15	81	81	1630	79% (68/86)	csak régi 0, csak új 31, mindkettő 25	alátámasztva	magva(22); magvát(14); magvából(12); magvának(11) | fő Strong régi: H2233, új: H2233
+tőváltó	sátr- → sátor	11	20	40	342	89% (16/18)	csak régi 3, csak új 16, mindkettő 10	alátámasztva	sátrai(4); sátrakat(3); sátrait(3); sátraiból(2) | fő Strong régi: H0168, új: H0168
+tőváltó	derek- → derék	25	46	4	14	79% (45/57)	csak régi 12, csak új 3, mindkettő 6	alátámasztva	derekának(8); derekadat(6); derekán(4); derekukat(2) | fő Strong régi: H4975,H5921, új: H2428,H4803,H4975,H5921
+tőváltó	kez- → kéz	88	1262	8	40	85% (1107/1309)	csak régi 27, csak új 0, mindkettő 17	alátámasztva	kezébe(185); keze(120); kezéből(114); kezét(105) | fő Strong régi: H3027, új: H3027
+tőváltó	nev- → név	38	781	5	18	91% (755/834)	csak régi 38, csak új 0, mindkettő 9	alátámasztva	neve(190); nevét(154); nevében(56); nevedet(42) | fő Strong régi: H8034, új: G3686,H8034
+tőváltó	viz- → víz	38	347	12	164	90% (320/356)	csak régi 11, csak új 5, mindkettő 22	alátámasztva	vizet(113); vizek(87); vize(16); vizét(15) | fő Strong régi: H4325, új: H4325
+tőváltó	tüz- → tűz	9	84	13	232	82% (69/84)	csak régi 3, csak új 17, mindkettő 18	alátámasztva	tüzet(54); tüze(14); tüzét(8); tüzében(3) | fő Strong régi: H0784,H2740, új: H0784
+tőváltó	kenyer- → kenyér	21	196	6	54	81% (162/200)	csak régi 12, csak új 0, mindkettő 19	alátámasztva	kenyeret(113); kenyerét(15); kenyerek(13); kenyeredet(10) | fő Strong régi: H3899,H4682, új: H3899
+tőváltó	level- → levél	11	57	5	27	56% (34/61)	csak régi 5, csak új 3, mindkettő 11	gyenge	levelet(34); leveleket(8); levele(4); levelei(2) | fő Strong régi: H0107,H5612, új: G1992,H5612
+tőváltó	madar- → madár	19	76	5	30	77% (61/79)	csak régi 8, csak új 3, mindkettő 9	alátámasztva	madarak(18); madarat(15); madarainak(7); madaraknak(7) | fő Strong régi: H5775,H6833, új: H5775,H6833
+tőváltó	falv- → falu	4	7	8	48	29% (2/7)	csak régi 3, csak új 5, mindkettő 2	ellentmond	falvakban(3); falvait(2); falvainak(1); falvak(1) | fő Strong régi: H2333,H2334,H2691,H3723,H5892, új: H1323,H2691
+tőváltó	ökr- → ökör	17	88	6	51	89% (82/92)	csak régi 9, csak új 3, mindkettő 11	alátámasztva	ökröt(28); ökrök(12); ökrét(8); ökröket(8) | fő Strong régi: H1241,H7794, új: H1241,H7794
+tőváltó	bokr- → bokor	1	3	1	2	33% (1/3)	csak régi 1, csak új 1, mindkettő 1	gyenge	bokrok(3) | fő Strong régi: H2336,H5521,H7880, új: H7880
+tőváltó	szav- → szó	40	399	17	159	82% (338/413)	csak régi 4, csak új 4, mindkettő 31	alátámasztva	szavát(110); szava(84); szavára(75); szavakat(13) | fő Strong régi: H1697,H6963, új: H1697,H6963
+tőváltó	erej- → erő	12	109	16	127	46% (53/116)	csak régi 6, csak új 9, mindkettő 24	gyenge	ereje(34); erejét(26); erejével(19); erejének(10) | fő Strong régi: H3581,H5797, új: H3581,H5797
+tőváltó	lov- → ló	22	109	7	49	86% (102/118)	csak régi 13, csak új 4, mindkettő 12	alátámasztva	lovak(22); lovakat(20); lovat(16); lovakon(13) | fő Strong régi: H5483, új: H3876,H5483
+tőváltó	köv- → kő	25	241	8	70	55% (134/244)	csak régi 5, csak új 2, mindkettő 24	gyenge	követ(68); követeket(51); köveket(40); kövek(17) | fő Strong régi: H0068,H4397, új: H0068
+tőváltó	füv- → fű	7	28	5	32	47% (14/30)	csak régi 8, csak új 5, mindkettő 6	gyenge	füvet(14); füve(4); füvön(3); füveknek(3) | fő Strong régi: H1314,H2682,H6211,H6212, új: G5528,H1877,H2682,H6212
+tőváltó	nyar- → nyár	1	1	4	12	100% (1/1)	csak régi 0, csak új 6, mindkettő 1	alátámasztva	nyarat(1) | fő Strong régi: H7019, új: H7019
+tőváltó	pohar- → pohár	11	28	4	17	86% (25/29)	csak régi 6, csak új 4, mindkettő 5	alátámasztva	poharat(6); poharát(6); pohara(4); poharakból(2) | fő Strong régi: H1375,H3563,H3713, új: H1375,H3563,H3713
+tőváltó	gyöker- → gyökér	12	32	1	2	79% (26/33)	csak régi 13, csak új 1, mindkettő 1	alátámasztva	gyökere(7); gyökeret(6); gyökereit(4); gyökerök(3) | fő Strong régi: H8328, új: H8328
+tőváltó	tehen- → tehén	8	23	2	12	61% (14/23)	csak régi 5, csak új 2, mindkettő 2	gyenge	tehenet(8); tehenek(5); teheneidnek(3); teheneket(2) | fő Strong régi: H0504,H6510,H7794, új: H6510
+tőváltó	szeker- → szekér	28	124	8	40	95% (124/131)	csak régi 11, csak új 1, mindkettő 12	alátámasztva	szekeret(21); szekerek(20); szekereket(15); szekerei(11) | fő Strong régi: H4818,H5699,H7393, új: H0413,H4818,H5699,H7393
+tőváltó	kebl- → kebel	13	16	13	19	60% (12/20)	csak régi 6, csak új 5, mindkettő 5	gyenge	kebleden(2); keblébe(2); keblében(2); keblem(1) | fő Strong régi: H0413,H1717,H2436,H7130, új: H0413,H2436
+tőváltó	terh- → teher	11	55	5	23	53% (28/53)	csak régi 14, csak új 4, mindkettő 7	gyenge	terhét(23); terhe(12); terhet(8); terhére(4) | fő Strong régi: H4853,H5375, új: H2029,H4853
+tőváltó	ajk- → ajak	31	64	8	11	80% (57/71)	csak régi 16, csak új 2, mindkettő 5	alátámasztva	ajkai(7); ajkait(7); ajkaim(4); ajkaival(4) | fő Strong régi: H8193, új: H8193
+tőváltó	fark- → farok	4	10	0	0	0% (0/10)	csak régi 5, csak új 0, mindkettő 0	nincs adat	farkát(6); farkat(2); farka(1); farkait(1) | fő Strong régi: H0451,H2180, új: —
+tőváltó	dolg- → dolog	45	439	9	159	38% (144/377)	csak régi 12, csak új 3, mindkettő 30	gyenge	dolgot(127); dolgai(52); dolgokat(47); dolga(24) | fő Strong régi: H1697, új: H1697
+tőváltó	torny- → torony	16	37	3	13	78% (31/40)	csak régi 9, csak új 1, mindkettő 4	alátámasztva	tornyot(8); tornyok(5); tornyokat(3); tornya(3) | fő Strong régi: H1785,H4026, új: H4026,H5704
+tőváltó	esztendej- → esztendő	7	162	11	229	87% (148/170)	csak régi 1, csak új 12, mindkettő 16	alátámasztva	esztendejében(108); esztendeje(24); esztendejéig(15); esztendejétől(5) | fő Strong régi: H8141, új: H8141
+tőváltó	idej- → idő	10	280	16	252	83% (229/275)	csak régi 6, csak új 5, mindkettő 35	alátámasztva	idejében(92); ideje(86); idején(74); idejét(8) | fő Strong régi: H3117,H6256, új: H3117,H6256
+tőváltó	mezej- → mező	9	44	17	207	70% (33/47)	csak régi 1, csak új 13, mindkettő 16	alátámasztva	mezején(22); mezejére(5); mezejének(5); mezejéről(5) | fő Strong régi: H7704, új: H7704
+tőváltó	tetej- → tető	8	82	7	9	82% (98/120)	csak régi 20, csak új 1, mindkettő 4	alátámasztva	tetején(34); tetejére(26); tetejéről(6); tetejét(6) | fő Strong régi: H5921,H7218, új: H1354,H1406,H5921,H7218
+tőváltó	fi- → fiú	72	4535	9	72	93% (4405/4745)	csak régi 25, csak új 0, mindkettő 27	alátámasztva	fiai(1397); fia(1207); fiainak(506); fiának(298) | fő Strong régi: H1121, új: G5207,H1121,H5288
+tőváltó	kegyelm- → kegyelem	22	161	6	44	76% (131/172)	csak régi 13, csak új 5, mindkettő 15	alátámasztva	kegyelme(61); kegyelmet(25); kegyelmed(20); kegyelmedet(8) | fő Strong régi: G5485,H2617, új: G5485,H2617
+tőváltó	félelm- → félelem	19	65	6	36	24% (16/67)	csak régi 9, csak új 6, mindkettő 8	ellentmond	félelme(24); félelmére(9); félelmében(6); félelmét(5) | fő Strong régi: H2851,H3374,H6343, új: G5401,H6343
+tőváltó	értelm- → értelem	11	64	5	37	26% (18/69)	csak régi 10, csak új 1, mindkettő 8	ellentmond	értelmet(21); értelmét(18); értelme(11); értelmetek(3) | fő Strong régi: H0998,H6591,H8394, új: G5426,H0998,H8394
+tőváltó	szerelm- → szerelem	13	29	3	7	78% (25/32)	csak régi 9, csak új 0, mindkettő 2	alátámasztva	szerelme(5); szerelmemben(4); szerelmében(4); szerelmet(3) | fő Strong régi: H0160,H1730,H7068, új: H0160,H1730,H7065,H7068
+tőváltó	eg- → ég	17	150	14	283	82% (126/153)	csak régi 7, csak új 12, mindkettő 22	alátámasztva	egek(57); eget(30); egeket(24); egeknek(8) | fő Strong régi: H8064, új: H8064

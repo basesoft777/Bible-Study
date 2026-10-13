@@ -1,0 +1,117 @@
+# proveniencia: scope=Jer, Jób, Luk, Jak Károli-szóalakjai (vers.karoli_szoveg), az 1. és 2. minta alakjai nélkül, rétegzett, mag 20261013; a gyakoriság a négy könyvön belüli; Strong-adat a forrásban nincs (a strong oszlop üres) | forras=szoto_harmadik_minta.tsv (sha256:c805d55133f423d9d9f2718d50ed450d5f3bfb84853debd7085b0a04a847b3c3; a repón kívüli előmérés, 2026-10-12/13; átvétel: eszkozok/szoto/minta_atvetel.py, F94.0) | ts=2026-10-13T12:05Z
+# allapot: mind a 113 sort a felhasználó ellenőrizte (2026-10-13): ellenorzes=felhasznalo; a soronkénti, nem általános döntés-szöveg az indoklas végén [döntés: …]; a szótári alakokat a modell a hibrid futtatása ELŐTT rögzítette; felhasznalo 113, modell_ellenorizetlen 0
+# a forrás saját fejléce (szó szerint): proveniencia: scope=Jer, Jób, Luk, Jak Károli-szóalakjai (vers.karoli_szoveg), az első és a független minta alakjai nélkül, rétegzett, mag 20261013 (harmadik_jeloltek.py, sha256:e505a5e12eb5) | forras=pardes.db (2026-10-12T08:27:32Z) + modell tő-javaslat az öt döntés szerint, a hibrid futtatása ELŐTT (modell: claude-opus-5-5, manual; mind a 113 sort a felhasználó ellenőrizte 2026-10-13, l. ellenorzes oszlop) | ts=2026-10-13
+alak	gyakorisag	kategoria	szotari_alak	szotari_alak_mai	alapige	tovabbi_elfogadhato	ellenorzes	indoklas	pelda_igehely	strong
+És	862	gyakori	és	és			felhasznalo	kötőszó	Jer 1:6	
+A	291	gyakori	a	a			felhasznalo	névelő	Jer 1:2	
+e	282	gyakori	e	ez			felhasznalo	régies mutató névmás („e mai napon”), az ez régi alakja (2. döntés)	Jer 1:10	
+néktek	132	gyakori	ti	ti			felhasznalo	ragos személyes névmás (3. döntés)	Jer 3:14	
+Júda	129	gyakori	Júda	Júda			felhasznalo	tulajdonnév, Károli-átírás (5. döntés)	Jer 1:2	
+Ha	127	gyakori	ha	ha			felhasznalo	kötőszó	Jer 2:11	
+király	114	gyakori	király	király			felhasznalo	szótári alak	Jer 3:6	
+De	113	gyakori	de	de			felhasznalo	kötőszó	Jer 2:28	
+mit	111	gyakori	mi	mi			felhasznalo	kérdő névmás tárgyesete	Jer 1:7	
+ellen	104	gyakori	ellen	ellen			felhasznalo	névutó	Jer 1:15	
+vagy	104	gyakori	vagy	vagy		van	felhasznalo	kétértelmű alak: kötőszó (Jer 2:14 „a vagy”) vagy a van E/2-je („te vagy”); a kötőszói tő rögzítve [döntés: felhasználói döntés 2026-10-13: mind ok (a modell javaslata); kétértelmű alak (kötőszó / a van E/2-je), mindkét szótári alak helyes]	Jer 2:14	
+Nem	98	gyakori	nem	nem			felhasznalo	tagadószó	Jer 2:20	
+úgy	97	gyakori	úgy	úgy			felhasznalo	határozószó	Jer 2:21	
+Ezt	95	gyakori	ez	ez			felhasznalo	mutató névmás tárgyesete	Jer 2:2	
+felől	94	gyakori	felől	felől			felhasznalo	névutó	Jer 1:13	
+csak	94	gyakori	csak	csak			felhasznalo	módosítószó	Jer 2:6	
+még	92	gyakori	még	még			felhasznalo	határozószó	Jer 2:2	
+miatt	88	gyakori	miatt	miatt			felhasznalo	névutó	Jer 2:36	
+babiloni	86	gyakori	babiloni	babiloni			felhasznalo	-i képzős melléknév, önálló szótári alak	Jer 20:4	
+Jézus	84	gyakori	Jézus	Jézus			felhasznalo	tulajdonnév	Luk 2:43	
+Azért	83	gyakori	azért	azért			felhasznalo	kötőszó/határozószó, önálló szótári alak	Jer 2:9	
+azok	80	gyakori	az	az			felhasznalo	mutató névmás többese	Jer 2:8	
+fia	80	gyakori	fiú	fiú			felhasznalo	birtokos alak, tőváltó (fi-)	Jer 20:1	
+Jeremiás	76	gyakori	Jeremiás	Jeremiás			felhasznalo	tulajdonnév	Jer 1:11	
+Seregek	75	gyakori	Seregek	Seregek			felhasznalo	Istenre vonatkozó cím („a Seregek Ura”): névként marad; Istenre nem vonatkozó előfordulásnál a tő sereg [döntés: felhasználói döntés 2026-10-13: Seregek, ha Istenre vonatkozik]	Jer 6:9	
+felügyelők	1	regies_helyesiras	felügyelő	felügyelő			felhasznalo	többes szám	Jer 29:26	
+eljőtök	1	regies_helyesiras	eljön	eljön	jön		felhasznalo	a jő a jön régi alakja (2. döntés); igekötős (4. döntés)	Jer 7:10	
+tudománynyal	2	regies_helyesiras	tudomány	tudomány			felhasznalo	nyny = nny (régies helyesírás), -val rag	Jer 3:15	
+kiküldök	1	regies_helyesiras	kiküld	kiküld	küld		felhasznalo	E/1 jelen; igekötős	Jer 25:9	
+bűngyűlölő	2	regies_helyesiras	bűngyűlölő	bűngyűlölő			felhasznalo	összetett melléknév, nem bontjuk	Jób 1:8	
+hitszegők	1	regies_helyesiras	hitszegő	hitszegő			felhasznalo	többes szám	Jer 9:2	
+gyermekszűlőt	1	regies_helyesiras	gyermekszűlő	gyermekszülő			felhasznalo	szűl = szül (régies helyesírás); összetétel, nem bontjuk	Jer 50:43	
+czédrust	1	regies_helyesiras	czédrus	cédrus			felhasznalo	cz = c (régies helyesírás), tárgyrag	Jób 40:12	
+tömlöczre	1	regies_helyesiras	tömlöcz	tömlöc			felhasznalo	cz = c, -re rag	Luk 22:33	
+gyűlöletesek	1	regies_helyesiras	gyűlöletes	gyűlöletes			felhasznalo	melléknév többese	Luk 21:17	
+mostani	1	regies_helyesiras	mostani	mostani			felhasznalo	-i képzős melléknév, önálló szótári alak (nem a most)	Luk 19:42	
+legelőjök	1	regies_helyesiras	legelő	legelő			felhasznalo	birtokos alak, régies -jök = -jük	Jer 49:20	
+kevéssé	2	regies_ige	kevéssé	kevéssé			felhasznalo	önálló határozószó („egy kevéssé” = egy kicsit; „kevéssé” = kevésbé); a Károliban mind a 9 előfordulás ilyen [döntés: felhasználói döntés 2026-10-13: kevéssé]	Jób 10:20	
+repülvén	1	regies_ige	repül	repül			felhasznalo	-vén határozói igenév	Jer 48:9	
+magának	4	regies_ige	maga	maga			felhasznalo	visszaható névmás, -nak rag	Jer 16:20	
+cselekedék	9	regies_ige	cselekedik	cselekszik			felhasznalo	régies múlt E/1; a cselekedik a cselekszik régi alakja	Jer 36:8	
+fejedelemmé	2	regies_ige	fejedelem	fejedelem			felhasznalo	-vé rag (hasonult)	Jer 49:19	
+szidalommá	1	regies_ige	szidalom	szidalom			felhasznalo	-vá rag (hasonult)	Jer 44:12	
+lakjál	1	regies_ige	lakik	lakik			felhasznalo	régies felszólító E/2 (-jál)	Jer 40:5	
+bolonddá	3	regies_ige	bolond	bolond			felhasznalo	-vá rag (hasonult)	Jer 10:14	
+láttad-é	2	regies_ige	lát	lát			felhasznalo	múlt E/2 tárgyas + -é kérdőszócska	Jób 38:17	
+arrafelé	1	regies_ige	arrafelé	arrafelé			felhasznalo	határozószó, önálló szótári alak	Jer 50:5	
+véghetetlen-é	1	regies_ige	véghetetlen	végtelen			felhasznalo	a véghetetlen a végtelen régi alakja (2. döntés) + -é kérdőszócska [döntés: felhasználói döntés 2026-10-13: mind ok (a modell javaslata)]	Jób 22:5	
+értheti-é	1	regies_ige	érthet	érthet	ért	ért	felhasznalo	-het képzős ige külön szótári alak + tárgyas E/3 + -é; a mérésben a szótári alak és az alapige is helyes [döntés: felhasználói döntés 2026-10-13: C) képzett igealak (-hat/-het, szenvedő) külön szótári alak, alapige-oszloppal]	Jób 36:29	
+kívánának	1	regies_ige	kíván	kíván			felhasznalo	régies múlt T/3	Luk 11:16	
+megütközzék	1	regies_ige	megütközik	megütközik	ütközik		felhasznalo	felszólító E/3; igekötős	Luk 14:31	
+hívhatja-é	1	regies_ige	hívhat	hívhat	hív	hív	felhasznalo	-hat képzős ige külön szótári alak + tárgyas E/3 + -é; a mérésben a szótári alak és az alapige is helyes [döntés: felhasználói döntés 2026-10-13: C) képzett igealak (-hat/-het, szenvedő) külön szótári alak, alapige-oszloppal]	Jób 27:10	
+elérheted-é	1	regies_ige	elérhet	elérhet	ér	ér	felhasznalo	-het képzős, igekötős ige külön szótári alak + tárgyas E/2 + -é; a mérésben a szótári alak és az alapige is helyes [döntés: felhasználói döntés 2026-10-13: C) képzett igealak (-hat/-het, szenvedő) külön szótári alak, alapige-oszloppal]	Jób 11:7	
+megkiván	1	regies_ige	megkíván	megkíván	kíván		felhasznalo	kiván = kíván (régies helyesírás); igekötős	Jób 23:13	
+vízieké	1	regies_ige	vízi	vízi			felhasznalo	főnevesült melléknév többese + -é birtokjel („vízieké”); a tő a vízi [döntés: felhasználói döntés 2026-10-13: mind ok (a modell javaslata)]	Jak 3:7	
+jajgatván	1	regies_ige	jajgat	jajgat			felhasznalo	-ván határozói igenév	Jak 5:1	
+határozod-é	1	regies_ige	határoz	határoz			felhasznalo	tárgyas E/2 + -é; az igekötő külön áll („határozod-é meg”), ezért a tő igekötő nélkül	Jób 38:33	
+Jákóbnak	3	tulajdonnev	Jákób	Jákób			felhasznalo	tulajdonnév, -nak rag	Jer 31:7	
+Jóhanánnak	1	tulajdonnev	Jóhanán	Jóhanán			felhasznalo	tulajdonnév, -nak rag	Jer 40:16	
+Melkié	2	tulajdonnev	Melki	Melki			felhasznalo	tulajdonnév + -é birtokjel („ez Melkié”)	Luk 3:24	
+Silóval	1	tulajdonnev	Siló	Siló			felhasznalo	tulajdonnév, -val rag	Jer 7:14	
+Sálmoné	1	tulajdonnev	Sálmon	Sálmon			felhasznalo	tulajdonnév + -é birtokjel	Luk 3:32	
+Theofilus	1	tulajdonnev	Theofilus	Theofilus			felhasznalo	tulajdonnév	Luk 1:3	
+Iskariotes	1	tulajdonnev	Iskariotes	Iskariotes			felhasznalo	tulajdonnév (melléknév)	Luk 6:16	
+Mutassa	1	tulajdonnev	mutat	mutat			felhasznalo	mondatkezdő ige, nem tulajdonnév; felszólító tárgyas E/3; az igekötő külön áll („Mutassa meg”) [döntés: felhasználói döntés 2026-10-13: mind ok (a modell javaslata); a különálló igekötő („Mutassa meg”) nélkül, szóalakonként]	Jak 3:13	
+boldoguljanak	1	ragos_nevszo	boldogul	boldogul			felhasznalo	felszólító T/3	Jer 5:28	
+adának	2	ragos_nevszo	ad	ad			felhasznalo	régies múlt T/3	Luk 7:29	
+könnyeivel	2	ragos_nevszo	könny	könny			felhasznalo	birtokos többes + -vel	Luk 7:38	
+nyájat	2	ragos_nevszo	nyáj	nyáj			felhasznalo	tárgyrag	Jób 21:11	
+lélekben	2	ragos_nevszo	lélek	lélek			felhasznalo	-ben rag	Luk 1:80	
+megfizet	2	ragos_nevszo	megfizet	megfizet	fizet		felhasznalo	jelen E/3; igekötős	Jer 51:6	
+tanítványoknak	3	ragos_nevszo	tanítvány	tanítvány			felhasznalo	többes + -nak	Luk 9:16	
+igéjéért	1	ragos_nevszo	ige	ige			felhasznalo	birtokos + -ért	Jer 23:9	
+örömre	1	ragos_nevszo	öröm	öröm			felhasznalo	-re rag	Jer 31:13	
+határodban	2	ragos_nevszo	határ	határ			felhasznalo	birtokos + -ban	Jer 15:13	
+földéről	13	ragos_nevszo	föld	föld			felhasznalo	birtokos + -ről	Jer 2:6	
+írástudónak	1	ragos_nevszo	írástudó	írástudó			felhasznalo	összetett főnév, -nak rag	Jer 36:23	
+emberhez	4	ragos_nevszo	ember	ember			felhasznalo	-hez rag	Luk 6:48	
+szárazságban	1	ragos_nevszo	szárazság	szárazság			felhasznalo	-ban rag	Jer 17:6	
+készítének	2	ragos_nevszo	készít	készít			felhasznalo	régies múlt T/3	Jób 10:8	
+békességért	1	ragos_nevszo	békesség	békesség			felhasznalo	-ért rag	Jer 33:9	
+betelének	3	ragos_nevszo	betelik	betelik	telik		felhasznalo	régies múlt T/3; igekötős	Luk 2:6	
+atyámnak	4	ragos_nevszo	atya	atya			felhasznalo	birtokos (atyám) + -nak	Jer 3:19	
+házadhoz	1	ragos_nevszo	ház	ház			felhasznalo	birtokos + -hoz	Luk 8:39	
+paréjtól	1	ragos_nevszo	paréj	paréj			felhasznalo	-tól rag	Luk 11:42	
+fillért	1	ragos_nevszo	fillér	fillér			felhasznalo	tárgyrag	Luk 21:2	
+lakókat	1	ragos_nevszo	lakó	lakó			felhasznalo	többes + tárgyrag	Jer 46:8	
+meggyarapodnak	1	ragos_nevszo	meggyarapodik	meggyarapodik	gyarapodik		felhasznalo	jelen T/3; igekötős	Jób 39:7	
+követelnek	1	ragos_nevszo	követel	követel			felhasznalo	jelen T/3	Luk 12:48	
+fiaknak	1	ragos_nevszo	fiú	fiú			felhasznalo	többes (fiak) + -nak, tőváltó	Jer 48:45	
+barátaiért	1	ragos_nevszo	barát	barát			felhasznalo	birtokos többes + -ért	Jób 42:10	
+mindenöket	1	ragos_nevszo	minden	minden			felhasznalo	birtokos (régies -ök = -ük) + tárgyrag	Luk 5:11	
+barázdához	1	ragos_nevszo	barázda	barázda			felhasznalo	-hoz rag	Jób 39:13	
+vendégséget	1	ragos_nevszo	vendégség	vendégség			felhasznalo	tárgyrag	Jób 1:4	
+mindenektől	1	ragos_nevszo	minden	minden			felhasznalo	többes + -től	Luk 4:15	
+maradjanak	1	ragos_nevszo	marad	marad			felhasznalo	felszólító T/3	Jer 43:4	
+kerekségének	1	ragos_nevszo	kerekség	kerekség			felhasznalo	birtokos + -nek	Jób 37:11	
+elközelget	1	ragos_nevszo	elközelget	elközelget	közelget		felhasznalo	jelen E/3; igekötős	Luk 21:28	
+elhivésére	1	ragos_nevszo	elhivés	elhivés			felhasznalo	birtokos + -re; az elhisz igéből képzett főnév („elhivésére” = elhinni); mai megfelelője bizonytalan [döntés: felhasználói döntés 2026-10-13: mind ok (a modell javaslata); a mai elhívés nem igazolt, ezért mindkét oszlopban elhivés]	Luk 24:25	
+kövekre	1	ragos_nevszo	kő	kő			felhasznalo	többes (kövek) + -re, tőváltó	Jer 43:10	
+elenyésznek	2	ige_mai_alak	elenyészik	elenyészik	enyészik		felhasznalo	jelen T/3; igekötős	Jób 24:24	
+mehetek	3	ige_mai_alak	mehet	mehet	megy	megy	felhasznalo	-het képzős ige külön szótári alak + E/1; a mérésben a szótári alak és az alapige is helyes [döntés: felhasználói döntés 2026-10-13: C) képzett igealak (-hat/-het, szenvedő) külön szótári alak, alapige-oszloppal]	Jer 36:5	
+megháborodott	2	ige_mai_alak	megháborodik	megháborodik	háborodik	megháborodott	felhasznalo	múlt E/3, vagy melléknévi igenév; igekötős [döntés: felhasználói döntés 2026-10-13: mind ok (a modell javaslata); Zsolt 6:4 ige, Jer 46:7–8 melléknévi igenév: mindkettő helyes]	Jer 46:7	
+nemzetnek	3	ige_mai_alak	nemzet	nemzet			felhasznalo	-nek rag	Jer 29:18	
+másnak	3	ige_mai_alak	más	más			felhasznalo	-nak rag	Jób 31:10	
+hallgattatok	9	ige_mai_alak	hallgat	hallgat			felhasznalo	múlt T/2	Jer 3:13	
+polyvának	1	ige_mai_alak	polyva	pelyva			felhasznalo	a polyva a pelyva régi alakja (2. döntés), -nak rag	Jer 23:28	
+megbocsátani	1	ige_mai_alak	megbocsát	megbocsát	bocsát		felhasznalo	főnévi igenév; igekötős	Luk 5:24	
+verettek	1	ige_mai_alak	veretik	veretik	ver	ver	felhasznalo	régies szenvedő (-etik) múlt T/3 („verettek le”, Jer 46:15); a szenvedő alak a szótári alak, nem vonjuk a ver alá; a -tetik képzésű megverettetik külön szótári alak [döntés: felhasználói döntés 2026-10-13: veretik; a megverettetik külön]	Jer 46:15	
+vonszolják	1	ige_mai_alak	vonszol	vonszol			felhasznalo	tárgyas T/3	Jób 24:10	
+cselekedetünknek	1	ige_mai_alak	cselekedet	cselekedet			felhasznalo	birtokos + -nek	Luk 23:41	
+küldünk	1	ige_mai_alak	küld	küld			felhasznalo	jelen T/1	Jer 42:6	
+feloldja	1	ige_mai_alak	felold	felold	old		felhasznalo	tárgyas E/3; igekötős	Jób 12:18	

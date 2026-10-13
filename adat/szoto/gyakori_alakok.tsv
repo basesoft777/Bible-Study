@@ -1,0 +1,404 @@
+# proveniencia: scope=a Károli 1908 leggyakoribb 400 alakja (kisbetűs + mondatkezdő előfordulás; a teljes Károli 553804 tokenjének 60.4%-a) | forras=adat/szoto/karoli_lexikon.tsv (sha256:215f687f5d68; a kiválasztás) + manual (a szótári alak modell-javaslat a DT130 szerint, modell: claude-opus-5-5, nem a simplemma vagy a hibrid kimenetéből átvéve; a kitöltés előtt a modell látta a napló 9. szakaszának A- és C-hibalistáit, l. 11.1) | ts=2026-10-13T15:10Z
+# allapot: ellenorzes soronként: felhasznalo, ha a felhasználó átnézte (l. ellenorzes-proveniencia), különben modell_ellenorizetlen. A szótári alak kézi forrása az eszkozok/szoto/k_tabla_epit.py JAVASLAT szótára (javítás ott); az ellenorzes oszlopot a felhasználó tölti, az újraépítés megtartja, ha a sor szótári alakja nem változott (DT-F94c, SEMA 2.27)
+# ellenorzes-proveniencia: scope=a 4. minta 113 sora és a K tábla 400 sora | forras=felhasználói átnézés, áttekintő oldal (https://claude.ai/artifact/PvJ8YFw3y561Nku1xwBdkr), 2026-10-13 | ts=2026-10-13T15:10Z
+rang	alak	gyakorisag	szotari_alak	szotari_alak_mai	alapige	tovabbi_elfogadhato	ellenorzes	indoklas
+1	a	48840	a	a			felhasznalo	önálló szótári alak
+2	és	40617	és	és			felhasznalo	önálló szótári alak
+3	az	28897	az	az			felhasznalo	önálló szótári alak
+4	ő	8392	ő	ő			felhasznalo	önálló szótári alak
+5	hogy	7789	hogy	hogy			felhasznalo	önálló szótári alak
+6	nem	6387	nem	nem			felhasznalo	önálló szótári alak
+7	pedig	5899	pedig	pedig			felhasznalo	önálló szótári alak
+8	meg	4916	meg	meg			felhasznalo	önálló szótári alak
+9	én	4856	én	én			felhasznalo	önálló szótári alak
+10	te	4732	te	te			felhasznalo	önálló szótári alak
+11	ki	4210	ki	ki		aki	felhasznalo	igekötő, kérdő névmás vagy vonatkozó névmás (mai: aki) — DT-F94a, DT130 (11)
+12	mert	4189	mert	mert			felhasznalo	önálló szótári alak
+13	vala	4128	van	van			felhasznalo	a van rendhagyó alakja, kivételtábla (DT130 (6)); régies múlt
+14	is	3604	is	is			felhasznalo	önálló szótári alak
+15	monda	2829	mond	mond			felhasznalo	régies múlt idő, alanyi E/3
+16	mint	2773	mint	mint			felhasznalo	önálló szótári alak
+17	azt	2735	az	az			felhasznalo	mutató névmás ragos/többes alakja
+18	minden	2623	minden	minden			felhasznalo	önálló szótári alak
+19	ne	2410	ne	ne			felhasznalo	önálló szótári alak
+20	el	2330	el	el			felhasznalo	önálló szótári alak
+21	mikor	2138	mikor	mikor			felhasznalo	önálló szótári alak
+22	azért	2119	azért	azért			felhasznalo	önálló szótári alak
+23	ha	2099	ha	ha			felhasznalo	önálló szótári alak
+24	kik	2089	ki	aki		ki	felhasznalo	vonatkozó/kérdő névmás; mai alakja vonatkozó használatban aki (DT130 (2)); kérdő olvasat: ki
+25	de	1994	de	de			felhasznalo	önálló szótári alak
+26	egy	1951	egy	egy			felhasznalo	önálló szótári alak
+27	ti	1868	ti	ti			felhasznalo	önálló szótári alak
+28	őt	1846	ő	ő			felhasznalo	személyes névmás tárgyesete
+29	mi	1845	mi	mi			felhasznalo	önálló szótári alak
+30	van	1818	van	van			felhasznalo	önálló szótári alak
+31	néki	1738	ő	ő			felhasznalo	ragos személyes névmás: a szótári alak a személyes névmás (DT130 (3))
+32	ezt	1522	ez	ez			felhasznalo	mutató névmás ragos/többes alakja
+33	e	1497	e	ez			felhasznalo	régies mutató névmás, az ez régi alakja (DT130 (2)); kérdőszócska-olvasat: e
+34	ez	1461	ez	ez			felhasznalo	önálló szótári alak
+35	való	1427	való	való			felhasznalo	önálló szótári alak
+36	fiai	1426	fiú	fiú			felhasznalo	tőváltó (fi-): fiú
+37	mind	1371	mind	mind			felhasznalo	önálló szótári alak
+38	sem	1365	sem	sem			felhasznalo	önálló szótári alak
+39	őket	1362	ő	ő			felhasznalo	személyes névmás tárgyesete, többes
+40	mely	1353	mely	amely			felhasznalo	vonatkozó névmás, régi alak; mai: amely (DT130 (2))
+41	egész	1322	egész	egész			felhasznalo	önálló szótári alak
+42	előtt	1267	előtt	előtt			felhasznalo	önálló szótári alak
+43	szerint	1260	szerint	szerint			felhasznalo	önálló szótári alak
+44	ímé	1253	íme	íme			felhasznalo	régies indulatszó (ím, íme)
+45	fia	1243	fiú	fiú			felhasznalo	tőváltó (fi-): fiú
+46	mondván	1237	mond	mond			felhasznalo	határozói igenév
+47	király	1232	király	király			felhasznalo	önálló szótári alak
+48	volt	1191	van	van			felhasznalo	a van rendhagyó alakja, kivételtábla (DT130 (6))
+49	nékik	1146	ő	ő			felhasznalo	ragos személyes névmás: a szótári alak a személyes névmás (DT130 (3))
+50	engem	1140	én	én			felhasznalo	személyes névmás tárgyesete
+51	vagy	1081	vagy	vagy		van	felhasznalo	kötőszó, vagy a van E/2-je (DT130 (11))
+52	nagy	1052	nagy	nagy			felhasznalo	önálló szótári alak
+53	annak	984	az	az			felhasznalo	mutató névmás ragos/többes alakja
+54	legyen	973	lesz	lesz			felhasznalo	a lesz alakja, külön szótári alak (DT130 (7)); felszólító
+55	mit	970	mi	mi		ami	felhasznalo	kérdő/vonatkozó névmás tárgyesete; a Károli „a mit” szerkezetében vonatkozó névmás, mai alakja amit (felhasználó, 2026-10-13)
+56	melyet	969	mely	amely			felhasznalo	vonatkozó névmás, régi alak; mai: amely (DT130 (2))
+57	fel	942	fel	fel			felhasznalo	önálló szótári alak
+58	mondja	938	mond	mond			felhasznalo	jelen, tárgyas E/3
+59	hanem	931	hanem	hanem			felhasznalo	önálló szótári alak
+60	akkor	926	akkor	akkor			felhasznalo	önálló szótári alak
+61	közül	915	közül	közül			felhasznalo	önálló szótári alak
+62	nékem	892	én	én			felhasznalo	ragos személyes névmás: a szótári alak a személyes névmás (DT130 (3))
+63	s	881	s	s			felhasznalo	önálló szótári alak
+64	ott	854	ott	ott			felhasznalo	önálló szótári alak
+65	téged	836	te	te			felhasznalo	személyes névmás tárgyesete
+66	ellen	829	ellen	ellen			felhasznalo	önálló szótári alak
+67	úgy	828	úgy	úgy			felhasznalo	önálló szótári alak
+68	néktek	802	ti	ti			felhasznalo	ragos személyes névmás: a szótári alak a személyes névmás (DT130 (3))
+69	lesz	790	lesz	lesz			felhasznalo	a lesz alakja, külön szótári alak (DT130 (7))
+70	néked	784	te	te			felhasznalo	ragos személyes névmás: a szótári alak a személyes névmás (DT130 (3))
+71	így	737	így	így			felhasznalo	önálló szótári alak
+72	még	730	még	még			felhasznalo	önálló szótári alak
+73	nép	714	nép	nép			felhasznalo	önálló szótári alak
+74	által	704	által	által			felhasznalo	önálló szótári alak
+75	azok	693	az	az			felhasznalo	mutató névmás ragos/többes alakja
+76	lőn	691	lesz	lesz			felhasznalo	a lesz alakja, külön szótári alak (DT130 (7)); régies múlt
+77	csak	662	csak	csak			felhasznalo	önálló szótári alak
+78	ember	657	ember	ember			felhasznalo	önálló szótári alak
+79	között	645	között	között			felhasznalo	önálló szótári alak
+80	ezek	641	ez	ez			felhasznalo	mutató névmás ragos/többes alakja
+81	vagyok	625	van	van			felhasznalo	a van rendhagyó alakja, kivételtábla (DT130 (6))
+82	azokat	624	az	az			felhasznalo	mutató névmás ragos/többes alakja
+83	valának	614	van	van			felhasznalo	a van rendhagyó alakja, kivételtábla (DT130 (6)); régies múlt T/3
+84	föld	612	föld	föld			felhasznalo	önálló szótári alak
+85	be	603	be	be			felhasznalo	önálló szótári alak
+86	napon	580	nap	nap			felhasznalo	-on rag
+87	most	571	most	most			felhasznalo	önálló szótári alak
+88	két	567	két	két		kettő	felhasznalo	a kettő jelzői alakja
+89	vele	565	ő	ő			felhasznalo	ragos személyes névmás: a szótári alak a személyes névmás (DT130 (3))
+90	miatt	532	miatt	miatt			felhasznalo	önálló szótári alak
+91	felől	522	felől	felől			felhasznalo	önálló szótári alak
+92	fiainak	517	fiú	fiú			felhasznalo	tőváltó (fi-): fiú
+93	titeket	514	ti	ti			felhasznalo	személyes névmás tárgyesete
+94	azután	495	azután	azután			felhasznalo	önálló szótári alak
+95	azon	492	az	az			felhasznalo	mutató névmás ragos/többes alakja (azon: -on rag, vagy jelzői „azon”)
+96	jó	479	jó	jó			felhasznalo	önálló szótári alak
+97	fogva	457	fogva	fogva		fog	felhasznalo	névutóként (… fogva); határozói igenév olvasata: fog
+98	sok	453	sok	sok			felhasznalo	önálló szótári alak
+99	melyeket	434	mely	amely			felhasznalo	vonatkozó névmás, régi alak; mai: amely (DT130 (2))
+100	együtt	433	együtt	együtt			felhasznalo	önálló szótári alak
+101	se	432	se	se			felhasznalo	önálló szótári alak
+102	mivelhogy	418	mivelhogy	mivelhogy			felhasznalo	önálló szótári alak
+103	igen	414	igen	igen			felhasznalo	önálló szótári alak
+104	valaki	414	valaki	valaki			felhasznalo	önálló szótári alak
+105	azoknak	413	az	az			felhasznalo	mutató névmás ragos/többes alakja
+106	mondának	408	mond	mond			felhasznalo	régies múlt idő T/3
+107	szent	402	szent	szent			felhasznalo	önálló szótári alak
+108	maga	400	maga	maga			felhasznalo	önálló szótári alak
+109	volna	394	van	van			felhasznalo	a van rendhagyó alakja, kivételtábla (DT130 (6)); feltételes
+110	szól	390	szól	szól			felhasznalo	önálló szótári alak
+111	ők	386	ő	ő			felhasznalo	személyes névmás többese
+112	miért	383	miért	miért			felhasznalo	önálló szótári alak
+113	olyan	383	olyan	olyan			felhasznalo	önálló szótári alak
+114	vannak	383	van	van			felhasznalo	a van rendhagyó alakja, kivételtábla (DT130 (6))
+115	szóla	382	szól	szól			felhasznalo	régies múlt idő, alanyi E/3
+116	kinek	367	ki	aki		ki	felhasznalo	vonatkozó/kérdő névmás; mai alakja vonatkozó használatban aki (DT130 (2)); kérdő olvasat: ki
+117	földön	365	föld	föld			felhasznalo	-ön rag
+118	királya	363	király	király			felhasznalo	birtokos
+119	hozzá	359	ő	ő		hozzá	felhasznalo	ragos személyes névmás: a szótári alak a személyes névmás (DT130 (3)); igekötői / határozószói olvasat: hozzá (DT130 (11))
+120	avagy	348	avagy	avagy			felhasznalo	önálló szótári alak
+121	mindnyájan	345	mindnyájan	mindnyájan			felhasznalo	önálló szótári alak
+122	oda	339	oda	oda			felhasznalo	önálló szótári alak
+123	után	339	után	után			felhasznalo	önálló szótári alak
+124	hol	338	hol	hol			felhasznalo	önálló szótári alak
+125	le	338	le	le			felhasznalo	önálló szótári alak
+126	nincs	337	nincs	nincs			felhasznalo	önálló szótári alak
+127	míg	336	míg	míg			felhasznalo	önálló szótári alak
+128	senki	334	senki	senki			felhasznalo	önálló szótári alak
+129	majd	332	majd	majd			felhasznalo	önálló szótári alak
+130	minket	330	mi	mi			felhasznalo	személyes névmás tárgyesete
+131	melyek	326	mely	amely			felhasznalo	vonatkozó névmás, régi alak; mai: amely (DT130 (2))
+132	hét	322	hét	hét			felhasznalo	önálló szótári alak
+133	felele	318	felel	felel			felhasznalo	régies múlt idő, alanyi E/3
+134	bizony	316	bizony	bizony			felhasznalo	önálló szótári alak
+135	embernek	315	ember	ember			felhasznalo	-nek rag
+136	földet	308	föld	föld			felhasznalo	tárgyrag
+137	felé	304	felé	felé			felhasznalo	önálló szótári alak
+138	fiának	301	fiú	fiú			felhasznalo	tőváltó (fi-): fiú
+139	kit	300	ki	aki		ki	felhasznalo	vonatkozó/kérdő névmás; mai alakja vonatkozó használatban aki (DT130 (2)); kérdő olvasat: ki
+140	oh	299	oh	ó			felhasznalo	régies indulatszó
+141	királynak	297	király	király			felhasznalo	-nak rag
+142	többé	297	többé	többé			felhasznalo	önálló szótári alak
+143	nékünk	295	mi	mi			felhasznalo	ragos személyes névmás: a szótári alak a személyes névmás (DT130 (3))
+144	pap	295	pap	pap			felhasznalo	önálló szótári alak
+145	nap	291	nap	nap			felhasznalo	önálló szótári alak
+146	alatt	289	alatt	alatt			felhasznalo	önálló szótári alak
+147	hozzám	286	én	én			felhasznalo	ragos személyes névmás: a szótári alak a személyes névmás (DT130 (3))
+148	miképen	286	miképen	miképpen			felhasznalo	régies helyesírás
+149	három	283	három	három			felhasznalo	önálló szótári alak
+150	uram	281	úr	úr			felhasznalo	birtokos E/1; tőváltó (ur-); a nagybetűs Uram névként a hibrid névágán megy
+151	igaz	275	igaz	igaz			felhasznalo	önálló szótári alak
+152	semmi	271	semmi	semmi			felhasznalo	önálló szótári alak
+153	ama	269	ama	ama			felhasznalo	önálló szótári alak
+154	sőt	269	sőt	sőt			felhasznalo	önálló szótári alak
+155	benne	265	ő	ő			felhasznalo	ragos személyes névmás: a szótári alak a személyes névmás (DT130 (3))
+156	menj	264	megy	megy			felhasznalo	felszólító E/2; tőváltó
+157	emberek	263	ember	ember			felhasznalo	többes
+158	mondom	263	mond	mond			felhasznalo	jelen, tárgyas E/1
+159	ismét	262	ismét	ismét			felhasznalo	önálló szótári alak
+160	házának	260	ház	ház			felhasznalo	birtokos + -nak
+161	mellett	260	mellett	mellett			felhasznalo	önálló szótári alak
+162	vissza	260	vissza	vissza			felhasznalo	önálló szótári alak
+163	város	259	város	város			felhasznalo	önálló szótári alak
+164	földre	258	föld	föld			felhasznalo	-re rag
+165	nélkül	254	nélkül	nélkül			felhasznalo	önálló szótári alak
+166	velem	251	én	én			felhasznalo	ragos személyes névmás: a szótári alak a személyes névmás (DT130 (3))
+167	magát	249	maga	maga			felhasznalo	visszaható névmás tárgyesete
+168	veled	248	te	te			felhasznalo	ragos személyes névmás: a szótári alak a személyes névmás (DT130 (3))
+169	ezeket	245	ez	ez			felhasznalo	mutató névmás ragos/többes alakja
+170	voltak	244	van	van			felhasznalo	a van rendhagyó alakja, kivételtábla (DT130 (6))
+171	asszony	243	asszony	asszony			felhasznalo	önálló szótári alak
+172	mondá	243	mond	mond			felhasznalo	régies múlt idő, tárgyas E/3
+173	egészen	239	egészen	egészen			felhasznalo	önálló szótári alak
+174	földnek	239	föld	föld			felhasznalo	-nek rag
+175	gyülekezet	238	gyülekezet	gyülekezet			felhasznalo	önálló szótári alak
+176	reá	237	ő	ő		rá	felhasznalo	ragos személyes névmás: a szótári alak a személyes névmás (DT130 (3)); régies rá; igekötői olvasat: rá (DT130 (11))
+177	háza	235	ház	ház			felhasznalo	birtokos
+178	elméne	234	elmegy	elmegy	megy		felhasznalo	régies múlt idő; igekötős (DT130 (4))
+179	más	231	más	más			felhasznalo	önálló szótári alak
+180	abban	228	az	az			felhasznalo	mutató névmás ragos/többes alakja
+181	kell	228	kell	kell			felhasznalo	önálló szótári alak
+182	arra	227	az	az			felhasznalo	mutató névmás ragos/többes alakja
+183	gonosz	227	gonosz	gonosz			felhasznalo	önálló szótári alak
+184	legyenek	227	lesz	lesz			felhasznalo	a lesz alakja, külön szótári alak (DT130 (7)); felszólító
+185	neve	227	név	név			felhasznalo	birtokos; tőváltó (nev-)
+186	napig	224	nap	nap			felhasznalo	-ig rag
+187	át	224	át	át			felhasznalo	önálló szótári alak
+188	erős	222	erős	erős			felhasznalo	önálló szótári alak
+189	első	221	első	első			felhasznalo	önálló szótári alak
+190	lészen	221	lesz	lesz			felhasznalo	a lesz alakja, külön szótári alak (DT130 (7)); régies
+191	velök	221	ő	ő			felhasznalo	ragos személyes névmás: a szótári alak a személyes névmás (DT130 (3)); régies -ök = -ük
+192	alá	218	alá	alá			felhasznalo	önálló szótári alak
+193	kiket	217	ki	aki		ki	felhasznalo	vonatkozó/kérdő névmás; mai alakja vonatkozó használatban aki (DT130 (2)); kérdő olvasat: ki
+194	felett	215	felett	felett			felhasznalo	önálló szótári alak
+195	mondják	214	mond	mond			felhasznalo	jelen, tárgyas T/3
+196	férfiú	212	férfiú	férfi			felhasznalo	a férfi régi alakja (DT130 (2))
+197	lesznek	212	lesz	lesz			felhasznalo	a lesz alakja, külön szótári alak (DT130 (7))
+198	sing	212	sing	sing			felhasznalo	önálló szótári alak
+199	elé	211	elé	elé			felhasznalo	önálló szótári alak
+200	hát	211	hát	hát			felhasznalo	önálló szótári alak
+201	mivel	211	mivel	mivel			felhasznalo	önálló szótári alak
+202	nincsen	210	nincs	nincs			felhasznalo	a nincs régies alakja
+203	adott	207	ad	ad			felhasznalo	múlt E/3 (melléknévi olvasat: adott)
+204	földén	207	föld	föld			felhasznalo	birtokos + -n
+205	népnek	207	nép	nép			felhasznalo	-nek rag
+206	pogányok	207	pogány	pogány			felhasznalo	többes
+207	teljes	207	teljes	teljes			felhasznalo	önálló szótári alak
+208	kezébe	204	kéz	kéz			felhasznalo	birtokos + -be; tőváltó
+209	másik	202	másik	másik			felhasznalo	önálló szótári alak
+210	kicsoda	199	kicsoda	kicsoda			felhasznalo	önálló szótári alak
+211	lett	199	lesz	lesz			felhasznalo	a lesz alakja, külön szótári alak (DT130 (7)); múlt
+212	rajta	199	ő	ő			felhasznalo	ragos személyes névmás: a szótári alak a személyes névmás (DT130 (3))
+213	egyik	198	egyik	egyik			felhasznalo	önálló szótári alak
+214	fiát	198	fiú	fiú			felhasznalo	tőváltó (fi-): fiú
+215	cselekedett	197	cselekedik	cselekszik			felhasznalo	múlt E/3; a cselekedik a cselekszik régi alakja (DT130 (2))
+216	már	197	már	már			felhasznalo	önálló szótári alak
+217	férfiak	195	férfiú	férfi			felhasznalo	többes; a férfiú a férfi régi alakja (DT130 (2))
+218	népet	194	nép	nép			felhasznalo	tárgyrag
+219	hozzád	192	te	te			felhasznalo	ragos személyes névmás: a szótári alak a személyes névmás (DT130 (3))
+220	ennek	191	ez	ez			felhasznalo	mutató névmás ragos/többes alakja
+221	kérlek	191	kér	kér			felhasznalo	jelen E/1, 2. személyű tárggyal (-lek)
+222	tehát	189	tehát	tehát			felhasznalo	önálló szótári alak
+223	előtte	188	előtt	előtt			felhasznalo	névutó személyragos alakja; a szótári alak a névutó
+224	embert	188	ember	ember			felhasznalo	tárgyrag
+225	azonban	187	azonban	azonban			felhasznalo	önálló szótári alak
+226	jobb	187	jobb	jobb		jó	felhasznalo	a jó középfoka (vagy: jobb kéz); középfokú olvasat: jó
+227	napján	187	nap	nap			felhasznalo	birtokos + -n
+228	népek	187	nép	nép			felhasznalo	többes
+229	vajjon	187	vajjon	vajon			felhasznalo	régies helyesírás
+230	jő	186	jön	jön			felhasznalo	a jön régi alakja (DT130 (2))
+231	méne	186	megy	megy			felhasznalo	régies múlt idő; tőváltó
+232	elől	185	elől	elől			felhasznalo	önálló szótári alak
+233	hadd	183	hadd	hadd		hagy	felhasznalo	módosítószó; a hagy felszólító alakjából
+234	tiszta	183	tiszta	tiszta			felhasznalo	önálló szótári alak
+235	királyának	182	király	király			felhasznalo	birtokos + -nak
+236	szolgái	182	szolga	szolga			felhasznalo	birtokos többes
+237	itt	181	itt	itt			felhasznalo	önálló szótári alak
+238	jól	181	jól	jól			felhasznalo	önálló szótári alak
+239	szemei	181	szem	szem			felhasznalo	birtokos többes
+240	papok	179	pap	pap			felhasznalo	többes
+241	kiki	178	kiki	kiki			felhasznalo	önálló szótári alak
+242	arany	177	arany	arany			felhasznalo	önálló szótári alak
+243	fiait	176	fiú	fiú			felhasznalo	tőváltó (fi-): fiú
+244	házában	176	ház	ház			felhasznalo	birtokos + -ban
+245	megy	176	megy	megy			felhasznalo	önálló szótári alak
+246	tenger	176	tenger	tenger			felhasznalo	önálló szótári alak
+247	valami	176	valami	valami			felhasznalo	önálló szótári alak
+248	nemzé	175	nemz	nemz			felhasznalo	régies múlt idő, tárgyas E/3
+249	ilyen	172	ilyen	ilyen			felhasznalo	önálló szótári alak
+250	négy	171	négy	négy			felhasznalo	önálló szótári alak
+251	népe	171	nép	nép			felhasznalo	birtokos
+252	próféta	171	próféta	próféta			felhasznalo	önálló szótári alak
+253	vagytok	171	van	van			felhasznalo	a van rendhagyó alakja, kivételtábla (DT130 (6))
+254	annakokáért	170	annakokáért	annakokáért			felhasznalo	önálló szótári alak
+255	beszéde	170	beszéd	beszéd			felhasznalo	birtokos
+256	ma	170	ma	ma			felhasznalo	önálló szótári alak
+257	nevét	170	név	név			felhasznalo	birtokos + tárgyrag; tőváltó (nev-)
+258	esztendeig	169	esztendő	esztendő			felhasznalo	tőváltó (esztende-) + -ig
+259	melyen	167	mely	amely			felhasznalo	vonatkozó névmás, régi alak; mai: amely (DT130 (2))
+260	mondd	167	mond	mond			felhasznalo	felszólító, tárgyas E/2
+261	atyja	166	atya	atya			felhasznalo	birtokos; tőváltó (atyj-)
+262	veletek	166	ti	ti			felhasznalo	ragos személyes névmás: a szótári alak a személyes névmás (DT130 (3))
+263	inkább	165	inkább	inkább			felhasznalo	önálló szótári alak
+264	mellé	165	mellé	mellé			felhasznalo	önálló szótári alak
+265	ide	164	ide	ide			felhasznalo	önálló szótári alak
+266	ellene	163	ellen	ellen			felhasznalo	névutó személyragos alakja; a szótári alak a névutó
+267	házába	162	ház	ház			felhasznalo	birtokos + -ba
+268	örökké	162	örökké	örökké			felhasznalo	önálló szótári alak
+269	tőlem	161	én	én			felhasznalo	ragos személyes névmás: a szótári alak a személyes névmás (DT130 (3))
+270	menjetek	160	megy	megy			felhasznalo	felszólító T/2; tőváltó
+271	tisztátalan	159	tisztátalan	tisztátalan			felhasznalo	önálló szótári alak
+272	öt	159	öt	öt			felhasznalo	önálló szótári alak
+273	előtted	156	előtt	előtt			felhasznalo	névutó személyragos alakja; a szótári alak a névutó
+274	zsidók	156	zsidó	zsidó			felhasznalo	többes
+275	ég	156	ég	ég			felhasznalo	önálló szótári alak
+276	akár	155	akár	akár			felhasznalo	önálló szótári alak
+277	dolgot	155	dolog	dolog			felhasznalo	tárgyrag; tőváltó (dolg-)
+278	ház	155	ház	ház			felhasznalo	önálló szótári alak
+279	kenyeret	155	kenyér	kenyér			felhasznalo	tárgyrag; tőváltó (kenyer-)
+280	mai	155	mai	mai			felhasznalo	önálló szótári alak
+281	légy	154	lesz	lesz			felhasznalo	a lesz alakja, külön szótári alak (DT130 (7)); felszólító E/2
+282	tíz	154	tíz	tíz			felhasznalo	önálló szótári alak
+283	éjjel	154	éjjel	éjjel			felhasznalo	önálló szótári alak
+284	időben	153	idő	idő			felhasznalo	-ben rag
+285	reggel	153	reggel	reggel			felhasznalo	önálló szótári alak
+286	ment	152	megy	megy		ment	felhasznalo	múlt E/3; tőváltó; a ment ige olvasata: ment (DT130 (11))
+287	várost	151	város	város			felhasznalo	tárgyrag
+288	idegen	150	idegen	idegen			felhasznalo	önálló szótári alak
+289	semmit	150	semmi	semmi			felhasznalo	tárgyrag
+290	törvény	150	törvény	törvény			felhasznalo	önálló szótári alak
+291	körül	149	körül	körül			felhasznalo	önálló szótári alak
+292	él	148	él	él			felhasznalo	önálló szótári alak
+293	mindent	147	minden	minden			felhasznalo	tárgyrag
+294	szólott	147	szól	szól			felhasznalo	múlt
+295	atyjának	146	atya	atya			felhasznalo	birtokos + -nak; tőváltó (atyj-)
+296	úton	144	út	út			felhasznalo	-on rag
+297	adom	142	ad	ad			felhasznalo	jelen, tárgyas E/1
+298	közé	142	közé	közé			felhasznalo	önálló szótári alak
+299	legyetek	142	lesz	lesz			felhasznalo	a lesz alakja, külön szótári alak (DT130 (7)); felszólító
+300	adá	141	ad	ad			felhasznalo	régies múlt idő, tárgyas E/3
+301	mondjátok	141	mond	mond			felhasznalo	felszólító / jelen, tárgyas T/2
+302	áll	141	áll	áll			felhasznalo	önálló szótári alak
+303	jaj	140	jaj	jaj			felhasznalo	önálló szótári alak
+304	leánya	140	leány	lány			felhasznalo	birtokos; a lány a leány összevont alakja (DT130 (2))
+305	pusztában	140	puszta	puszta			felhasznalo	-ban rag
+306	dolog	139	dolog	dolog			felhasznalo	önálló szótári alak
+307	ellenem	139	ellen	ellen			felhasznalo	névutó személyragos alakja; a szótári alak a névutó
+308	hozzátok	139	ti	ti			felhasznalo	ragos személyes névmás: a szótári alak a személyes névmás (DT130 (3))
+309	házát	139	ház	ház			felhasznalo	birtokos + tárgyrag
+310	kedves	139	kedves	kedves			felhasznalo	önálló szótári alak
+311	kiknek	138	ki	aki		ki	felhasznalo	vonatkozó/kérdő névmás; mai alakja vonatkozó használatban aki (DT130 (2)); kérdő olvasat: ki
+312	köröskörül	138	köröskörül	köröskörül			felhasznalo	önálló szótári alak
+313	keze	137	kéz	kéz			felhasznalo	birtokos; tőváltó (kez-)
+314	adja	136	ad	ad			felhasznalo	jelen, tárgyas E/3
+315	menjen	136	megy	megy			felhasznalo	felszólító E/3; tőváltó
+316	nemzetségéből	136	nemzetség	nemzetség			felhasznalo	birtokos + -ből
+317	lélek	135	lélek	lélek			felhasznalo	önálló szótári alak
+318	ezért	134	ezért	ezért			felhasznalo	önálló szótári alak
+319	közt	134	között	között		közt	felhasznalo	a között rövid alakja
+320	tőle	134	ő	ő			felhasznalo	ragos személyes névmás: a szótári alak a személyes névmás (DT130 (3))
+321	ád	134	ad	ad			felhasznalo	régies jelen E/3 (ad)
+322	ellened	133	ellen	ellen			felhasznalo	névutó személyragos alakja; a szótári alak a névutó
+323	menének	133	megy	megy			felhasznalo	régies múlt idő T/3; tőváltó
+324	sokaság	133	sokaság	sokaság			felhasznalo	önálló szótári alak
+325	írva	132	ír	ír			felhasznalo	határozói igenév
+326	cselekszik	131	cselekedik	cselekszik			felhasznalo	DT130 (2): egy szó régi és mai alakja
+327	esztendős	131	esztendős	esztendős			felhasznalo	önálló szótári alak
+328	tűz	131	tűz	tűz			felhasznalo	önálló szótári alak
+329	ezüst	130	ezüst	ezüst			felhasznalo	önálló szótári alak
+330	vizet	130	víz	víz			felhasznalo	tárgyrag; tőváltó (viz-)
+331	adok	129	ad	ad			felhasznalo	jelen, alanyi E/1
+332	ezer	129	ezer	ezer			felhasznalo	önálló szótári alak
+333	kezét	129	kéz	kéz			felhasznalo	birtokos + tárgyrag; tőváltó
+334	gonoszt	128	gonosz	gonosz			felhasznalo	tárgyrag
+335	jött	128	jön	jön			felhasznalo	múlt E/3
+336	bűnért	127	bűn	bűn			felhasznalo	-ért rag
+337	férfi	127	férfi	férfi			felhasznalo	önálló szótári alak
+338	házat	127	ház	ház			felhasznalo	tárgyrag
+339	szavát	127	szó	szó			felhasznalo	birtokos + tárgyrag; tőváltó (szav-)
+340	vagyunk	127	van	van			felhasznalo	a van rendhagyó alakja, kivételtábla (DT130 (6))
+341	abból	126	az	az			felhasznalo	mutató névmás ragos/többes alakja
+342	fegyver	126	fegyver	fegyver			felhasznalo	önálló szótári alak
+343	melylyel	126	mely	amely			felhasznalo	vonatkozó névmás, régi alak; mai: amely (DT130 (2)); régies helyesírás (lyly = lly)
+344	adtam	125	ad	ad			felhasznalo	múlt E/1
+345	valók	125	való	való			felhasznalo	melléknévi igenév (van) többese
+346	vedd	125	vesz	vesz			felhasznalo	felszólító, tárgyas E/2; tőváltó
+347	atyámfiai	124	atyafi	atyafi			felhasznalo	birtokos (atyámfia) többes; régies összetétel
+348	bizonyságot	124	bizonyság	bizonyság			felhasznalo	tárgyrag
+349	cselekedék	124	cselekedik	cselekszik			felhasznalo	régies múlt idő E/1; DT130 (2)
+350	fog	124	fog	fog			felhasznalo	önálló szótári alak
+351	népem	124	nép	nép			felhasznalo	birtokos E/1
+352	elő	123	elő	elő			felhasznalo	önálló szótári alak
+353	felelvén	123	felel	felel			felhasznalo	határozói igenév
+354	örök	122	örök	örök			felhasznalo	önálló szótári alak
+355	előttem	121	előtt	előtt			felhasznalo	névutó személyragos alakja; a szótári alak a névutó
+356	lelkem	121	lélek	lélek			felhasznalo	birtokos E/1; tőváltó (lelk-)
+357	kezéből	120	kéz	kéz			felhasznalo	birtokos + -ből; tőváltó
+358	száz	120	száz	száz			felhasznalo	önálló szótári alak
+359	helyen	119	hely	hely			felhasznalo	-en rag
+360	királyi	119	királyi	királyi			felhasznalo	önálló szótári alak
+361	hiszen	118	hiszen	hiszen			felhasznalo	önálló szótári alak
+362	kelj	118	kel	kel			felhasznalo	felszólító E/2
+363	kivül	118	kivül	kívül			felhasznalo	régies helyesírás
+364	lelke	118	lélek	lélek			felhasznalo	birtokos; tőváltó (lelk-)
+365	meghala	118	meghal	meghal	hal		felhasznalo	régies múlt idő; igekötős
+366	miket	118	mi	mi		ami	felhasznalo	kérdő/vonatkozó névmás tárgyesete, többes; vonatkozó olvasatban mai alakja amiket (felhasználó, 2026-10-13)
+367	adta	117	ad	ad			felhasznalo	múlt, tárgyas E/3
+368	jézus	117	Jézus	Jézus			felhasznalo	tulajdonnév (a mondatkezdő előfordulásokkal együtt számolva)
+369	új	117	új	új			felhasznalo	önálló szótári alak
+370	jót	116	jó	jó			felhasznalo	tárgyrag
+371	kiméne	116	kimegy	kimegy	megy		felhasznalo	régies múlt idő; igekötős
+372	ugyan	116	ugyan	ugyan			felhasznalo	önálló szótári alak
+373	igazságot	115	igazság	igazság			felhasznalo	tárgyrag
+374	nemzetsége	115	nemzetség	nemzetség			felhasznalo	birtokos
+375	szíve	115	szív	szív			felhasznalo	birtokos
+376	utána	115	után	után		utána	felhasznalo	névutó személyragos alakja; a szótári alak a névutó; határozószói olvasat: utána
+377	velünk	115	mi	mi			felhasznalo	ragos személyes névmás: a szótári alak a személyes névmás (DT130 (3))
+378	szólj	113	szól	szól			felhasznalo	felszólító E/2
+379	azzal	112	az	az			felhasznalo	mutató névmás ragos/többes alakja
+380	áldozatul	112	áldozat	áldozat			felhasznalo	-ul rag
+381	beméne	111	bemegy	bemegy	megy		felhasznalo	régies múlt idő; igekötős
+382	reám	111	én	én			felhasznalo	ragos személyes névmás: a szótári alak a személyes névmás (DT130 (3)); régies rám
+383	fiam	110	fiú	fiú			felhasznalo	tőváltó (fi-): fiú
+384	hogyha	110	hogyha	hogyha			felhasznalo	önálló szótári alak
+385	igazság	110	igazság	igazság			felhasznalo	önálló szótári alak
+386	mindörökké	110	mindörökké	mindörökké			felhasznalo	önálló szótári alak
+387	sokan	110	sok	sok			felhasznalo	-an határozórag
+388	egybe	109	egybe	egybe			felhasznalo	önálló szótári alak
+389	esztendejében	109	esztendő	esztendő			felhasznalo	birtokos + -ben; tőváltó (esztendej-)
+390	magának	109	maga	maga			felhasznalo	visszaható névmás, -nak rag
+391	második	109	második	második			felhasznalo	önálló szótári alak
+392	uralkodék	109	uralkodik	uralkodik			felhasznalo	régies múlt idő E/3 (-ék)
+393	gyermek	108	gyermek	gyermek			felhasznalo	önálló szótári alak
+394	húsz	108	húsz	húsz			felhasznalo	önálló szótári alak
+395	közel	108	közel	közel			felhasznalo	önálló szótári alak
+396	próféták	108	próféta	próféta			felhasznalo	többes
+397	örökkévaló	108	örökkévaló	örökkévaló			felhasznalo	önálló szótári alak
+398	benned	107	te	te			felhasznalo	ragos személyes névmás: a szótári alak a személyes névmás (DT130 (3))
+399	beszédét	107	beszéd	beszéd			felhasznalo	birtokos + tárgyrag
+400	helyre	107	hely	hely			felhasznalo	-re rag

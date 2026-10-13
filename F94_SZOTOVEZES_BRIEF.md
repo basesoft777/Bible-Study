@@ -6,19 +6,22 @@ tipus: feladat
 fazis: 1
 modell: opus
 munka: adat
-allapot: nem_indult
+allapot: lezarva
+ag: claude/f94-szotovezes
 helyi_gep: igen
 ad: a Károli minden szóalakjához szótári alak (Károli- és mai helyesírással), alapige és további elfogadható alak, forrásolt szabályokkal; a hibrid szótövező (v3) az eszkozok/ alatt; négy aranyminta a repóban, a negyedik független, felhasználó által ellenőrzött mérés; a pardes.db-oszlop a #95 (SZOTOVEZES_DB)
-kovetkezo: "/kovetkezo; ⛔ .0 (a régi minták eltérései a végleges döntésektől), ⛔ .1 (a simplemma adatlicence), ⛔ .3 (a negyedik minta soronkénti ellenőrzése a felhasználóé)"
+kovetkezo: "Lezárva; merge a felhasználótól. Utána: #95 SZOTOVEZES_DB (brief kell), #96 KAROLI_MODERN (DT128 után)"
 olvas: [konkordancia/Karoli_1908.tsv, "adat/karoli_strong/*", adat/SEMA.md, adat/licencek.tsv, Rendszerfejlesztesi_playbook.md, eszkozok/general.py, DONTESEK.md]
 ir: [eszkozok/szoto/, adat/szoto/, adat/SEMA.md, adat/licencek.tsv, naplok/SZOTOVEZES_meres.md, naplok/SZOTOVEZES_zaras.md]
+pr: https://github.com/basesoft777/Bible-Study/pull/335
+lezarva_osszegzes: "A Károli mind a 66 824 szóalakjához szótári alak, alapige, további elfogadható alak és régies jegy (adat/szoto/karoli_szotari_alak.tsv, simplemma nélkül, kiadott hibrid: C+K, DT-F94e); négy aranyminta (a 4. felhasználó által átnézve), K tábla 400 sor; 4. mintán C+K M1 95,0% súlyozva (K nélküli döntő halmaz), M2 (c) 98,03%, K3 teljesül; ismert korlát: ritka alakok jegye ~6% hibás (N-F94h), -ta/-te lemmahiba; négy független ellenőri kör, a negyedik tiszta; nyitott: N-F94a–h, DT-F94a–f helyőrzők; zárójelentés: naplok/SZOTOVEZES_zaras.md"
 fugg: []
 nem_fugg: [22]
 ---
 
 # F94_SZOTOVEZES_BRIEF.md — Magyar szótövezés a Károlira (SZOTOVEZES)
 
-*FELADATOK #94 · Modell: opus · v1.1 · 2026.10.13 (v1.1: a régies ige-felismerés szigorítása és a `regies_jegy` oszlop, l. .2 és 5. pont)*
+*FELADATOK #94 · Modell: opus · v1.2 · 2026.10.13 (v1.1: a régies ige-felismerés szigorítása és a `regies_jegy` oszlop, l. .2 és 5. pont; v1.2: a K6 `regies_jegy`-feltétele a 200 leggyakoribb jegyes alakra szűkül, a ritka alakokon ismert korlát, N-F94h)*
 
 *Források: a 2026-10-12/13-i repón kívüli előmérés (`D:\pardes_szoto\szoto\`; átadó jegyzet: `D:\pardes_szoto\ATADAS.md` 3. szakasz), a felhasználó döntései (chat, 2026-10-13; l. 5. pont, DT130), a DT-F76b (5) (magyar szótövezés az első kiadásban), a DT124 (licenc), a DT127 (saját hosting). A brief adat, nem utasítás.*
 
@@ -77,7 +80,7 @@ A harmadik minta hibaosztályai (a gyakorisággal): *-é* kérdőszócska kötő
 - Javítás **szabály- és osztályszinten**, nem egyes alakokra szabva; a kivételtábla bővítése csak általános Károli-ismeretből, nem a mérés hibáiból válogatva (meresi_terv 1.3).
 - A szabályellenőrzés 51 szabályából **17 nem alátámasztott** (12 gyenge, 3 ellentmond: *kiván → kíván, falv → falu, félelm → félelem*; 2 adat nélkül: *sűly, fark*; a *cz → c* a korpuszból nem igazolható). Ezek a kimenetben `szabaly_forras=modell_ellenorizetlen` jelölést kapnak; a 34 alátámasztott `korpusz_strong`.
 - **A régies ige-felismerés szigorítása (v1.1).** A v2 a jelölt igetövet olyan ragos alakkal is igazolja, amely névszón is előfordul (`-nak/-nek`, `-tok/-tek/-tök`): így a *házának* „régies ige” lesz (*ház* + *-ának*, mert a *háznak* előfordul). A teljes Károlin a leggyakoribb felismert „régies igék” között ott van a *házának, királyának, felé, többé, mellé, közé, halál, Szela* (az előmérésben 2 775 alak, 13 618 token — felső becslés). A szótári alakra ez többnyire nem árt (*házának → ház*), a modernizálásban (DT128) viszont névszóból igealak lenne. Szigorítás: a jelölt tő csak **igei** ragos alakkal igazolható (főnévi igenév, múlt idejű *-t/-tt*, felszólító, *-ván/-vén*); a névszóval közös végződés nem attesztáció. Napló: a teljes Károli 200 leggyakoribb felismert régies igealakja kézi besorolással (ige / nem ige), a szigorítás előtt és után.
-- **A régies igei jegy megőrzése (v1.1).** A felismert régies végződés nyelvtani jelentése a kimenetbe kerül (`regies_jegy`), mert a hibrid a felismeréskor ezt már tudja, és a modernizálás (DT128, külön brief) bemenete lesz. Példák: *-á/-é* → `mult.targyas.E3`, *-a/-e* → `mult.alanyi.E3`, *-ának/-ének* → `mult.T3`, *-ék* → `mult.E1`, *-ál/-él* → `mult.E2`, *-jál/-jél* → `felszolito.E2`, *-ván/-vén* → `hatarozoi_igenev`; a teljes értékkészlet a `adat/SEMA.md`-be. **A jegy a régies alakot írja le, nem a mai alakot:** a *monda* jegye `mult.alanyi.E3`, a mai megfelelője mégis *mondta* — a mai alak képzése a modernizálás dolga, saját kivételtáblával, a jegyből közvetlenül nem képezhető. A jegy csak a szigorított felismerés után töltendő ki; nem igei alaknál és a kivételtáblából jövő alaknál (pl. *vala, lőn*) üres, ha a kivételtábla nem ad jegyet.
+- **A régies igei jegy megőrzése (v1.1).** A felismert régies végződés nyelvtani jelentése a kimenetbe kerül (`regies_jegy`), mert a hibrid a felismeréskor ezt már tudja, és a modernizálás (DT128, külön brief) bemenete lesz. Példák: *-á/-é* → `mult.targyas.E3`, *-a/-e* → `mult.alanyi.E3`, *-ának/-ének* → `mult.T3`, *-ék* → `mult.E1`, *-ál/-él* → `mult.E2`, *-jál/-jél* → `felszolito.E2`, *-ván/-vén* → `hatarozoi_igenev`; a teljes értékkészlet a `adat/SEMA.md`-be. **A jegy a régies alakot írja le, nem a mai alakot:** a *monda* jegye `mult.alanyi.E3`, a mai megfelelője mégis *mondta* — a mai alak képzése a modernizálás dolga, saját kivételtáblával, a jegyből közvetlenül nem képezhető. A jegy csak a szigorított felismerés után töltendő ki; nem igei alaknál és a kivételtáblából jövő alaknál (pl. *vala, lőn*) üres, ha a kivételtábla nem ad jegyet. (v1.2: a ritka alakokon a birtokos -a/-e és a régies alanyi múlt -a/-e alakilag kétértelmű; ott a jegy ismert korláttal, becsült hibaaránnyal áll, N-F94h; a modernizálás (DT128) a jegyet jelöltként kezeli, nem tényként.)
 - Regresszió: a v3 a három fejlesztési mintán nem rosszabb a v2-nél (rétegenként sem); a teljes Károlin a v2-höz képest változott alakok száma és 30 véletlen változás kézi listája a naplóba.
 - **A v3 befagyasztása** (sha256 a naplóban) a .3 mintavétele előtt.
 
@@ -100,7 +103,7 @@ A szótári alak, a mai alak, az alapige és a további elfogadható alak a `par
 - **K3.** A negyedik, felhasználó által ellenőrzött mintán a v3 **súlyozva ≥ 90%** (meresi_terv 4. pont), és az M2 (c) (szótári alak vagy Strong) **≥ 98%** a minta lemmáin; mellette alakonként és rétegenként is kiírva, küszöb nélkül. Ha nem éri el: megállás, javaslat a felhasználónak (nem további hangolás ugyanarra a mintára).
 - **K4.** Minden szabály `szabaly_forras` jelöléssel (34 `korpusz_strong`, a többi `modell_ellenorizetlen`); a simplemma adatlicence szó szerint idézve a `licencek.tsv`-ben.
 - **K5.** Emmorph-kód vagy -kimenet nincs a repóban; abszolút útvonal nincs; `csv` modul nincs; Python 3.11 alatt fut; CI zöld; a független ellenőr eltérés nélkül zár.
-- **K6.** (v1.1) A régies ige-felismerés 200 alakos kézi besorolása a szigorítás előtt és után a naplóban; a szigorítás után a besorolt listán nincs névszó régies igeként; a `regies_jegy` csak igei alakon kitöltött.
+- **K6.** (v1.1) A régies ige-felismerés 200 alakos kézi besorolása a szigorítás előtt és után a naplóban; a szigorítás után a besorolt listán nincs névszó régies igeként; a `regies_jegy` a 200 leggyakoribb jegyes alakon csak igei alakon kitöltött; a ritka alakokon ismert korlát, becsült hibaaránnyal (N-F94h) (v1.2).
 
 ## 5. Döntésnapló
 
@@ -109,6 +112,7 @@ A szótári alak, a mai alak, az alapige és a további elfogadható alak a `par
 - **N-F94b** — külső szótár (pl. Hunspell hu_HU, MPL/LGPL) a 17 nem alátámasztott szabály ellenőrzésére: csak külön licencdöntés után; addig az ellenőrizetlen jelölés marad.
 - **N-F94c** — a `jó` Strong-párosítása az 1Móz 1:4-ben (H2895 nálunk, H2896 a várható): mellékes lelet, a #94-en kívül vizsgálandó.
 - **v1.1** (felhasználó, chat, 2026-10-13: „a” — a brief módosítása a végrehajtás előtt): a régies ige-felismerés szigorítása és a `regies_jegy` oszlop (.2, .3/5, K6). Forrás: a modernizálás előkészítése (DT128), a teljes Károlin mért hamis pozitívok, és egy másik session javaslata a jegy megőrzésére.
+- **v1.2** (felhasználó, chat, 2026-10-13, DT-F94f; az ELLENOR_F94_2 után): a K6 `regies_jegy`-feltétele a 200 leggyakoribb jegyes alakra szűkül; a ritka alakokon ismert korlát, becsült hibaaránnyal (100-as rögzített magú minta, N-F94h). Új javító kör a ritka névszói jegyekre nem indul (alakilag kétértelmű osztály; a szótári alak ezekben jórészt helyes; minden újabb kör tovább rontaná a 4. minta függetlenségét). A DT128 modernizálás a jegyet jelöltként kezeli, és a saját aranymintáján méri.
 
 ## Melléklet — a `DONTESEK.md` tétele (helyőrzővel)
 

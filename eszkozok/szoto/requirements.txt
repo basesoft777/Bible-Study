@@ -1,0 +1,4 @@
+# F94 (#94 SZOTOVEZES): CSAK FEJLESZTÉSI függőség — a hibrid A változata és a mérők (meres.py, meres_m2.py) használják.
+# A kiadott út (a C+K hibrid és a karoli_szotari_alak.tsv előállítása: szotari_alak_epit.py) simplemma NÉLKÜL fut (DT-F94e).
+# A simplemma kódja MIT; a nyelvi adata ODbL 1.0 — csak fejlesztési mérce, kiadásba nem kerül (adat/licencek.tsv simplemma_nyelvi_adat).
+simplemma==2.0.0
