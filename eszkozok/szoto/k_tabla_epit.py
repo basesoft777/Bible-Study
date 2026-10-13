@@ -5,9 +5,13 @@ a kisbetűs és a mondatkezdő nagybetűs előfordulások összege szerinti els�
 előfordulás név, az nem számít). N = 400 (indoklás: naplok/SZOTOVEZES_meres.md 11. szakasz). A kiválasztás NEM a
 mérés hibáiból és nem a minták alakjaiból történik (meresi_terv 1.3).
 
-A szótári alakok modell-javaslatok a DT130 szerint (modell: claude-opus-5-5), NEM a simplemma kimenetéből: a
-kitöltéskor sem a simplemma, sem a hibrid kimenete nem volt a modell előtt (DT-F94c: különben ODbL-származék).
-`ellenorzes=modell_ellenorizetlen`; `felhasznalo` csak a felhasználó átnézése után lehet (a modell soha nem írja).
+A szótári alakok modell-javaslatok a DT130 szerint (modell: claude-opus-5-5); NEM a simplemma vagy a hibrid
+kimenetéből lettek átvéve (DT-F94c: különben ODbL-származék): a K alakjain a kitöltéskor egyiket sem futtattam, és
+összevetés utáni átvétel sem történt. Proveniencia-korlát (a napló 11.1 szerint): a kitöltés előtt a modell látta a
+napló 9. szakaszának hibalistáit, vagyis néhány gyakori alak hibrid A (simplemmás) és C kimenetét a mintákon (pl.
+*mert → mer*, *azt*, *mit*); ezek hibás kimenetek voltak, a K a DT130 szerinti, attól eltérő szótári alakot adja.
+Mind a 400 sort a felhasználó soronként ellenőrizte (2026-10-13, `ellenorzes=felhasznalo`, a proveniencia a tábla
+`# ellenorzes-proveniencia:` sorában).
 
 Az alábbi JAVASLAT szótár csak a nem önmagára leképezett alakokat sorolja; a többi alak szótári alakja önmaga
 (önálló szótári alak: kötőszó, határozószó, névutó, szám, alapalakú névszó vagy ige).
@@ -201,7 +205,8 @@ def main():
         o.write(f'# proveniencia: scope=a Károli 1908 leggyakoribb {a.n} alakja (kisbetűs + mondatkezdő előfordulás; a teljes Károli '
                 f'{sum(f.values())} tokenjének {100 * sum(n for _, n in rend) / sum(f.values()):.1f}%-a) | forras=adat/szoto/karoli_lexikon.tsv '
                 f'(sha256:{h[:12]}; a kiválasztás) + manual (a szótári alak modell-javaslat a DT130 szerint, modell: claude-opus-5-5, '
-                f'a simplemma és a hibrid kimenete nélkül) | ts={a.ts}\n')
+                f'nem a simplemma vagy a hibrid kimenetéből átvéve; a kitöltés előtt a modell látta a napló 9. szakaszának A- és C-hibalistáit, '
+                f'l. 11.1) | ts={a.ts}\n')
         prov_e = a.felhasznalo_atnezte or (regi_prov[0] if regi_prov else '')
         o.write('# allapot: ellenorzes soronként: felhasznalo, ha a felhasználó átnézte (l. ellenorzes-proveniencia), különben '
                 'modell_ellenorizetlen. A szótári alak kézi forrása az eszkozok/szoto/k_tabla_epit.py JAVASLAT szótára (javítás ott); az ellenorzes oszlopot '
