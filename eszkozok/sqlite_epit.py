@@ -991,32 +991,31 @@ class Epito(object):
         def cv_elso(x):
             m = re.search(r'(\d+):(\d+)', x)
             return (int(m.group(1)), int(m.group(2))) if m else None
-        sorok, szaml, elteres = [], {'LXX_OS': 0, 'versificacios_terkep': 0, 'nincs': 0}, []
+        sorok, szaml, elteres, csak_terkep = [], {'LXX_OS': 0, 'nincs': 0}, [], 0
         for ig in self.vi.lista:
             if ig not in self.ot_versek:
                 continue
+            # a versifikációs térkép NEM forrás (DT-F92b): értéke csak a külön, nem kanonikus `terkep_ertek` oszlopban áll
+            tv = ' | '.join(g for g, _ in terkep.get(ig, []))
             if ig in os_par:
                 tk = {cv_elso(g) for g, _ in terkep.get(ig, [])} - {None}
                 for (lx, kjv, ok, forma) in os_par[ig]:
-                    mj = ok
                     if ig in terkep and cv_elso(lx) not in tk:
-                        mj = (mj + '; ' if mj else '') + 'térkép eltér: ' + ' | '.join(g for g, _ in terkep[ig])
                         elteres.append(ig)
-                    sorok.append((ig, lx, kjv, 'LXX_OS', mj, forma))
+                    sorok.append((ig, lx, kjv, 'LXX_OS', ok, forma, tv))
                     szaml['LXX_OS'] += 1
-            elif ig in terkep:
-                for g, tip in terkep[ig]:
-                    sorok.append((ig, g, '', 'versificacios_terkep', tip, ''))
-                    szaml['versificacios_terkep'] += 1
             else:
-                sorok.append((ig, '', '', 'nincs', '', ''))
+                if tv:
+                    csak_terkep += 1
+                sorok.append((ig, '', '', 'nincs', '', '', tv))
                 szaml['nincs'] += 1
         both = sum(1 for ig in self.ot_versek if ig in os_par and ig in terkep)
         if self.minta is not None:
             sorok = [x for x in sorok if x[0] in self.minta]
         self.tabla('lxx_versszam',
                    [('karoli_igehely', 'TEXT'), ('lxx_igehely', 'TEXT'), ('kjv_vers', 'TEXT'),
-                    ('forras', 'TEXT'), ('megjegyzes', 'TEXT'), ('szovegforma', 'TEXT')],
+                    ('forras', 'TEXT'), ('megjegyzes', 'TEXT'), ('szovegforma', 'TEXT'),
+                    ('terkep_ertek', 'TEXT')],
                    sorok, SZARMAZTATOTT_LICENC['lxx_versszam'], ['karoli_igehely', 'lxx_igehely'])
         for k, v in szaml.items():
             meta.append(('lxx_versszam:sor:' + k, str(v)))
@@ -1030,10 +1029,11 @@ class Epito(object):
                             'a térkép sora nem Károli-kulccsal áll (nem kerül a táblába; sor)')] = nem_meghat
         meta.append(('lxx_versszam:mindket_forras_verse', str(both)))
         meta.append(('lxx_versszam:forras_elteres_verse', str(len(set(elteres)))))
+        meta.append(('lxx_versszam:nincs_de_van_terkep_ertek_verse', str(csak_terkep)))
         self.norm_jelentes[('lxx_versszam', 'LXX_OS ≠ versifikációs térkép',
                             'a két forrás LXX-versszáma eltér (vers)')] = len(set(elteres))
         self.norm_jelentes[('lxx_versszam', 'nincs LXX-megfelelő',
-                            'sem a LXX_OS, sem a térkép nem ad értéket (vers; üres lxx_igehely, kitöltés nélkül)')] = szaml['nincs']
+                            'a LXX_OS nem ad értéket (vers; üres lxx_igehely, kitöltés nélkül; a térkép értéke legfeljebb a nem kanonikus terkep_ertek oszlopban)')] = szaml['nincs']
 
     def _nave_vers(self, os_sorok):
         if not self.licenc_ellenorzes('nave_vers', SZARMAZTATOTT_LICENC['nave_vers']):

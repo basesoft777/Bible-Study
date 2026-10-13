@@ -1,6 +1,6 @@
 # SQLITE_EPIT -- mérés (teljes építés) (F79)
 
-*Proveniencia: `scope=manual | forras=eszkozok/sqlite_epit.py (--mod teljes) | ts=2026-10-13T10:14:22Z`*
+*Proveniencia: `scope=manual | forras=eszkozok/sqlite_epit.py (--mod teljes) | ts=2026-10-13T10:45:46Z`*
 
 <!-- F89-ELOTTE-KEZDET -->
 ## F89 előtte: a sor-szintű `licenc_*` oszlopokkal (a licenc-váltás előtti mérés)
@@ -14,7 +14,7 @@
 - G6 (determinizmus): a második, ideiglenes építés táblánkénti hash-e mind azonos (lent).
 <!-- F89-ELOTTE-VEGE -->
 
-- fájl: `pardes.db`, **857.6 MB**; építési idő (integritás nélkül): **69.9 s**
+- fájl: `pardes.db`, **871.2 MB**; építési idő (integritás nélkül): **65.3 s**
 
 ## Táblánkénti sorszám és tartalom-hash (G2: két egymás utáni építés)
 
@@ -53,8 +53,8 @@
 | `lsj` | 5522 | `69dd9789f79473d3` | `69dd9789f79473d3` |
 | `lxx_bridge` | 3301 | `ec2b0ab84f1e82cc` | `ec2b0ab84f1e82cc` |
 | `lxx_dontesek` | 90 | `319907495acc63f9` | `319907495acc63f9` |
-| `lxx_token` | 616873 | `04b4ec7414e8a1b9` | `04b4ec7414e8a1b9` |
-| `lxx_versszam` | 24255 | `64f4bf7a0310ee30` | `64f4bf7a0310ee30` |
+| `lxx_token` | 616873 | `f2d57f0950e55a0b` | `f2d57f0950e55a0b` |
+| `lxx_versszam` | 24255 | `b06fa18133c84916` | `b06fa18133c84916` |
 | `lxx_versszintu_parok` | 104518 | `e5df63a54e7e715b` | `e5df63a54e7e715b` |
 | `mcged` | 5303 | `0ec3cb35b769c931` | `0ec3cb35b769c931` |
 | `morf_kulcs_heber` | 124 | `a8a99f9c96eaa270` | `a8a99f9c96eaa270` |
@@ -62,7 +62,7 @@
 | `motivumok` | 9 | `c4edba7875e2080b` | `c4edba7875e2080b` |
 | `nave_basokant` | 85246 | `47af606d9a5ec410` | `47af606d9a5ec410` |
 | `nave_vers` | 156214 | `b4ea05b01c9cd4b9` | `b4ea05b01c9cd4b9` |
-| `normalizalas_jelentes` | 293 | `41389e36ec83706f` | `41389e36ec83706f` |
+| `normalizalas_jelentes` | 472 | `67ae9ae7191aa4ee` | `67ae9ae7191aa4ee` |
 | `oshl_bdb_igehelyek` | 4053 | `29d7049456d8409a` | `29d7049456d8409a` |
 | `oshl_lexikalis_index` | 10221 | `b525fa2474213677` | `b525fa2474213677` |
 | `res_forras` | 56 | `e91d76726be3fdb5` | `e91d76726be3fdb5` |
@@ -97,12 +97,12 @@
 
 Mérés: minden tábla (indexeivel) külön adatbázisba másolva, lapszám × lapméret (a Python sqlite3-ból hiányzik a `dbstat`).
 
-- a táblák összege: **857.9 MB** (a fájl: 857.6 MB; a többlet a táblánkénti külön adatbázisok saját fejléc- és séma-lapjaiból adódik)
+- a táblák összege: **871.5 MB** (a fájl: 871.2 MB; a többlet a táblánkénti külön adatbázisok saját fejléc- és séma-lapjaiból adódik)
 
 | tábla | sor | MB (indexszel) |
 |---|---:|---:|
 | `token_karoli` | 981147 | 128.58 |
-| `lxx_token` | 616873 | 91.12 |
+| `lxx_token` | 616873 | 104.46 |
 | `token_eredeti` | 611396 | 80.96 |
 | `token_macula` | 475911 | 78.95 |
 | `frazis_pozicio` | 941747 | 68.94 |
@@ -132,7 +132,7 @@ Mérés: minden tábla (indexeivel) külön adatbázisba másolva, lapszám × l
 | `sece_h` | 8674 | 3.26 |
 | `sdbh_domenek` | 22280 | 2.96 |
 | `kh` | 32407 | 2.93 |
-| `lxx_versszam` | 24255 | 2.19 |
+| `lxx_versszam` | 24255 | 2.42 |
 | `sece_g` | 5523 | 1.98 |
 | `vers_szamozas` | 22931 | 1.87 |
 | `fts_motivum` | 624 | 1.83 |
@@ -154,14 +154,14 @@ Mérés: minden tábla (indexeivel) külön adatbázisba másolva, lapszám × l
 | `bdb_igehely_javitas` | 93 | 0.06 |
 | `lxx_dontesek` | 90 | 0.05 |
 | `morf_kulcs_heber` | 124 | 0.05 |
+| `normalizalas_jelentes` | 472 | 0.05 |
 | `bdb_alias` | 460 | 0.04 |
 | `auditok` | 222 | 0.04 |
-| `normalizalas_jelentes` | 293 | 0.03 |
 | `grammatikai_strongok` | 92 | 0.02 |
 | `tabla_licenc` | 71 | 0.02 |
 | `terminologia` | 71 | 0.02 |
 | `kapcsolatok` | 39 | 0.02 |
-| `meta` | 92 | 0.02 |
+| `meta` | 97 | 0.02 |
 | `motivumok` | 9 | 0.02 |
 | `res_forras` | 56 | 0.02 |
 | `szotar_szerepek` | 26 | 0.02 |
@@ -264,6 +264,8 @@ Mérés: minden tábla (indexeivel) külön adatbázisba másolva, lapszám × l
 | kh | nincs ilyen Károli-vers (forrás-oldal) | 10 / 24 | `1Kor 3:23`, `Hós 11:12`, `Hós 1:12`, `Ján 1:52`, `Jób 36:34`, `Luk 23:57`, `Péld 11:32`, `Róm 3:31` |
 | kjv | nincs ilyen Károli-vers | 146 / 702 | `1Kor 3:23`, `1Sám 23:29`, `2Kor 13:14`, `2Móz 36:38`, `4Móz 12:16`, `4Móz 29:40`, `ApCsel 19:41`, `Hós 11:12` |
 | lxx_versszam | a két forrás LXX-versszáma eltér (vers) | 1 / 1888 | `LXX_OS ≠ versifikációs térkép` |
+| lxx_versszam | a térkép kulcsa nem Károli-vers | 178 / 216 | `1Kir 5:32`, `1Sám 23:29`, `2Móz 36:38`, `4Móz 12:16`, `4Móz 29:40`, `Dán 1:22`, `Dán 1:23`, `Dán 1:24` |
+| lxx_versszam | a térkép sora nem Károli-kulccsal áll (nem kerül a táblába; sor) | 1 / 39 | `NEM_MEGHATAROZHATO` |
 | lxx_versszam | sem a LXX_OS, sem a térkép nem ad értéket (vers; üres lxx_igehely, kitöltés nélkül) | 1 / 246 | `nincs LXX-megfelelő` |
 | nave_vers | a forrás-sor nem bomlik versekre (nem kerül a nave_vers-be) | 4 / 9390 | `fejezet_szintu`, `igehely_nelkuli`, `nem_ertelmezheto_hely`, `nincs_karoli_vers_a_tartomanyban` |
 | oshl_bdb_igehelyek | Strong-szám nem normalizálható | 1 / 397 | `—` |
@@ -278,5 +280,5 @@ Mérés: minden tábla (indexeivel) külön adatbázisba másolva, lapszám × l
 
 - strong_parok: a teljes TAHOT+TAGNT-ból (31161 vers, grammatikai_strongok és H9001-H9049 nélkül), mód-független
 - FTS: 50 fájl, 624 rovat; átmeneti régi tanulmányok `regi_forras=1`; a #11 `migralt: igen` jelzője miatt kiesett: nincs (a jelző még nem létezik)
-- Szándékosan nem betöltött konkordancia-táblák: Macula_gorog (a Macula_heber_*, LXX_OS/* és a BDB_strong_alias az F92 óta betöltve), KJV_/ASV_Strongs_{Genesis,Exodus,Proverbs} (a #48 vezeti ki; a KJV_Strongs_teljes betöltve), a BDB_*/aram/alias segédtáblák, SDBH_SDGNT_domenfa, a versmegfeleltetési segédtáblák; a licencsor hiánya miatt kimaradt táblák száma: 0
+- Szándékosan nem betöltött konkordancia-táblák: Macula_gorog (a Macula_heber_*, LXX_OS/* és a BDB_strong_alias az F92 óta betöltve), KJV_/ASV_Strongs_{Genesis,Exodus,Proverbs} (a #48 vezeti ki; a KJV_Strongs_teljes betöltve), a BDB_*/aram segédtáblák (a BDB_strong_alias az F92 óta betöltve: bdb_alias), SDBH_SDGNT_domenfa, a versmegfeleltetési segédtáblák; a licencsor hiánya miatt kimaradt táblák száma: 0
 

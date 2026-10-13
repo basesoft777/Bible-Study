@@ -1100,6 +1100,32 @@ class TestDbMeres(unittest.TestCase):
         finally:
             con.close()
 
+    def test_lxx_parhuzamos_szovegformak_nem_fesulnek_ossze(self):
+        """Ellenőr ÚJ-1: ahol egy Károli-versre két LXX-szövegforma esik (Dán, Bír, Józs), az olvasási út formánként csoportosít."""
+        if not os.path.exists(self.db):
+            self.skipTest('nincs pardes.db')
+        con = self.dm.kapcsolat(self.db)
+        try:
+            if not self._uj_tablak_vannak(con) or not self.dm._van_oszlop(con, 'lxx_token', 'szovegforma'):
+                self.skipTest('a pardes.db még nem hordozza a szovegforma oszlopot (újraépítés kell)')
+            for elo in ('Dán', 'Bír', 'Józs'):
+                sor = con.execute("SELECT karoli_igehely FROM lxx_token WHERE karoli_igehely LIKE ? "
+                                  "GROUP BY karoli_igehely HAVING COUNT(DISTINCT szovegforma)>1 LIMIT 1", (elo + ' %',)).fetchone()
+                self.assertIsNotNone(sor, elo)
+                d = self.dm.db_vers(con, sor[0])
+                self.assertGreaterEqual(len(d['lxx_formak']), 2, sor[0])
+                darab = {f: con.execute('SELECT COUNT(*) FROM lxx_token WHERE karoli_igehely=? AND szovegforma=?',
+                                        (sor[0], f)).fetchone()[0] for f in d['lxx_formak']}
+                self.assertEqual(len(d['lxx_szavak']), sum(darab.values()))
+                sorrend = [r[0] for r in con.execute(
+                    'SELECT szovegforma FROM lxx_token WHERE karoli_igehely=? ORDER BY szovegforma, pozicio, rowid', (sor[0],))]
+                self.assertEqual(sorrend, sorted(sorrend))   # formánként összefüggő blokkok
+                formak_lxx = [r[0] for r in con.execute(
+                    "SELECT DISTINCT szovegforma FROM lxx_versszam WHERE karoli_igehely=? AND forras='LXX_OS'", (sor[0],))]
+                self.assertGreaterEqual(len(formak_lxx), 2, sor[0])
+        finally:
+            con.close()
+
     def test_macula_kot_ketertelmu_pozicio_sorrend(self):
         mac = [{'strong': 'H0430'}, {'strong': 'H0430'}, {'strong': None}]
         # eltérő szegmentálás (3 Macula-sor, 2 TAHOT-token): a kétszer álló Strong kétértelmű, az első használatlan dönt

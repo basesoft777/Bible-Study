@@ -10,8 +10,8 @@ Mindegyik tábla: `meta`-sor (sorszám, hash) és `tabla_licenc`-sor (DT113); az
 
 | tábla | oszlopok (javaslat) | indexek | forrás | sor | mért méret | licenc-kulcs |
 |---|---|---|---|---:|---:|---|
-| `token_macula` | `xml_id`, `igehely`, `sorszam` (a `ref` `!n` része), `szo`, `lemma`, `strong`, `morf`, `szofaj`, `gloss`, `lxx_szo`, `lxx_strong` | `(igehely, sorszam)`, `strong` | `Macula_heber_*.tsv` (50 fájl) | 475 911 (23 031 vers) | 60,4 MB | `Macula_heber` |
-| `lxx_token` | `lxx_igehely`, `karoli_igehely`, `pozicio`, `szoalak`, `lemma`, `morf`, `strong` | `(lxx_igehely, pozicio)`, `karoli_igehely`, `strong` | `LXX_OS/*.tsv` (59 könyvfájl) | 616 873 (30 336 LXX-vers) | 86,3 MB | `LXX_OS` |
+| `token_macula` | `xml_id`, `igehely`, `sorszam` (a `ref` `!n` része), `szo`, `lemma`, `strong`, `morf`, `szofaj`, `gloss`, `lxx_szo`, `lxx_strong` | `(igehely, sorszam)`, `strong` | `Macula_heber_*.tsv` (39 fájl) | 475 911 (23 031 vers) | 60,4 MB | `Macula_heber` |
+| `lxx_token` | `lxx_igehely`, `karoli_igehely`, `pozicio`, `szoalak`, `lemma`, `morf`, `strong` | `(lxx_igehely, pozicio)`, `karoli_igehely`, `strong` | `LXX_OS/*.tsv` (59 könyvfájl, 2 nem-könyv fájl kimarad) | 616 873 (30 336 LXX-vers) | 86,3 MB | `LXX_OS` |
 | `bdb_alias` | `masodlagos_strong`, `tabla_strong`, `bdb_id`, `nyelv`, `cimszo`, `szoveg_hasonlosag` | `masodlagos_strong` | `BDB_strong_alias.tsv` | 460 | < 0,1 MB | lásd 4.4 |
 | `nave_vers` | `tema_id`, `tema`, `cimke`, `kapcsolat`, `nave_hely` (az eredeti KJV-hivatkozás), `igehely` (Károli), `tartomanyos` (0/1) | `igehely`, `tema_id` | `Nave_basokant.tsv` + `vers_szamozas` | kb. 150–160 ezer (becslés, 4.2) | kb. 19 MB (becslés) | `Nave_basokant`, `Karoli_versmegfeleltetes` |
 | `lxx_versszam` | `karoli_igehely`, `lxx_igehely`, `kjv_vers`, `forras` | `karoli_igehely`, `lxx_igehely` | `LXX_OS` verskulcsa (+ lásd 4.1) | 30 336 + a 4.1 szerinti pótlás | 2,4 MB | `LXX_OS`, `Karoli_versmegfeleltetes` |

@@ -527,8 +527,8 @@ class Integracio(unittest.TestCase):
         self.assertEqual((bontott, sum(kih.values())), (1, 3))
 
     def test_f92_lxx_versszam_minden_ot_versre(self):
-        self.assertTrue({f for (f,) in self.con.execute('SELECT DISTINCT forras FROM lxx_versszam')}
-                        <= {'LXX_OS', 'versificacios_terkep', 'nincs'})
+        # DT-F92b: a terkep nem forras -- csak LXX_OS vagy nincs; a terkep erteke a nem kanonikus terkep_ertek oszlopban
+        self.assertTrue({f for (f,) in self.con.execute('SELECT DISTINCT forras FROM lxx_versszam')} <= {'LXX_OS', 'nincs'})
         # a kitoltetlen hiany ures lxx_igehely-vel
         self.assertEqual(self.con.execute("SELECT COUNT(*) FROM lxx_versszam WHERE forras='nincs' "
                                           "AND lxx_igehely!=''").fetchone()[0], 0)
@@ -539,7 +539,7 @@ class Integracio(unittest.TestCase):
                                "WHERE karoli_igehely LIKE '1Móz %'").fetchone()[0]
         self.assertEqual(van, hi)
         m = self._meta_dict()
-        self.assertGreaterEqual(int(m['lxx_versszam:sor:LXX_OS']) + int(m['lxx_versszam:sor:versificacios_terkep'])
+        self.assertGreaterEqual(int(m['lxx_versszam:sor:LXX_OS'])
                                 + int(m['lxx_versszam:sor:nincs']), int(m['lxx_versszam:ot_vers']))
 
     def test_f92_lxx_szovegforma_parhuzamos_formak(self):

@@ -892,7 +892,7 @@ ol.jel { gap: 12px; }
   function adatrBlokk(cim, lista, kulcs, rajz) {
     return el('div', { class: 'blokk' },
       el('h3', { text: cim }),
-      lista.length ? el('div', { class: 'sorok' }, lista.map(rajz)) : el('p', { class: 'meg', text: 'Nincs sor erre a vershez.' }),
+      lista.length ? el('div', { class: 'sorok' }, lista.map(rajz)) : el('p', { class: 'meg', text: 'Nincs sor erre a vershez: a forrás (adatréteg) erre a szakaszra nem ad adatot.' }),
       forras(kulcs));
   }
   const mot = x => (x.motivum && (x.motivum.ui_cimke || x.motivum.cim)) || '';
