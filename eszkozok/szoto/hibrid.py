@@ -30,7 +30,10 @@ A v2-höz képest (osztály- és szabályszintű javítások, F94_SZOTOVEZES_BRI
    -t/-tt, -ván/-vén, felszólító -jon/-jen/-jön, -ik-es alak); a névszóval közös -nak/-nek/-tok/-tek/-tök végződés
    nem attesztáció, és a simplemma-ismeret önmagában sem (házának ↛ ház mint ige).
 9. Régies igei jegy (`regies_jegy`, v1.1): a felismert régies végződés nyelvtani jegye (értékkészlet: SEMA 2.27);
-   a jegy a régies alakot írja le, nem a mai megfelelőt (monda: mult.alanyi.E3, mai megfelelője mégis: mondta).
+   a jegy a régies alakot írja le, nem a mai megfelelőt (monda: mult.alanyi.E3, mai megfelelője mégis: mondta). Az -ék
+   -ik-es igénél `mult.E3` (tartózkodék), egyébként `mult.E1` (láték) — N-F94e, az első befagyasztás után javítva.
+A KIADOTT változat a CK (DT-F94e, a felhasználó döntése, 2026-10-13): a szótárialak-tábla (`szotari_alak_epit.py`) simplemma
+nélkül készül; az A (simplemmával) csak fejlesztési mérce.
 10. Szabályforrás (`szabaly_forras`): a helyesírási és tőváltó szabályoknál a szabályellenőrzés
    (`adat/szoto/szabaly_ellenorzes.tsv`, 2026-10-13) alátámasztott szabályai `korpusz_strong`, a cz → c `manual`
    (a felhasználó utasítása, 2026-10-13), a többi és az új szabályok `modell_ellenorizetlen`."""
@@ -479,7 +482,7 @@ def _nevszo_to(w, nev=False, szigoru=False, laza=False):
                 continue
             if bh == 0 and rhossz == -1 and (t in NAGY_BELUL if nev else t in KIS):
                 jeloltek.append(t)
-            for t2 in {t, _hosszitas_vissza(t)}:
+            for t2 in dict.fromkeys((t, _hosszitas_vissza(t))):  # rendezett (a halmaz bejárása hash-függő volt)
                 kulcs = t2.lower()
                 if kulcs in TOVALTO:
                     v = TOVALTO[kulcs]
@@ -788,6 +791,10 @@ def elemez(alak):
     for n in nyom:
         if n[0] == 'R' and n[2]:
             jegy = n[2]
+            # N-F94e: az -ik-es igék régies múlt E/3-a is -ék (tartózkodék, uralkodék, esék); a nem -ik-es igéknél az -ék E/1
+            # (láték = láttam). A szabályág (R) jegyére; a kivételtábla saját jegyét nem írja felül.
+            if jegy == 'mult.E1' and t.endswith('ik'):
+                jegy = 'mult.E3'
         elif n[0] == 'X' and n[2]:
             jegy = n[2]
     alapige = next((n[1] for n in nyom if n[0] == 'A'), '')

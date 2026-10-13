@@ -880,3 +880,116 @@ A K3 a v3 A-ra és a v3 C+K-ra teljesül, a v3 C-re (K nélkül) nem. A döntő 
 - A C+K-val (a simplemma nélkül) a K3 teljesül, tehát a 2. lehetőség (a simplemma csak fejlesztési mérce) a küszöb szerint járható. Az M2 (c) azonban a döntő halmazon épp a határon van (98,02%), és a ritka alakokon a C/C+K alakonként jóval gyengébb az A-nál.
 - A C-ben a gyenge rétegek (régies helyesírás 33%, ritka ragos névszó, mai igealak) saját szabályokkal javíthatók lennének, de **ugyanerre a mintára nem hangolok** (brief K3); egy javítás új, független mérést kívánna.
 - Az N-F94e (-ik-es igék *-ék* alakjának jegye) a döntéssel együtt javítandó (a v3 újbóli befagyasztásával).
+
+
+## 16. DT-F94e: a kiadott hibrid a C+K; N-F94e; a v3 újbóli befagyasztása; a szótárialak-tábla; K1–K6 (F94.3)
+
+### 16.1 A döntés (a felhasználó, 2026-10-13)
+
+DT-F94e = 2.: **a kiadott hibrid a C+K, a simplemma csak fejlesztési mérce**; a DT-F94c ezzel végleges (mindkettő 🟢). A `licencek.tsv`: a `simplemma_nyelvi_adat` csak fejlesztési mérce, kiadásba nem kerül (ODbL 1.0, `tisztazott`; új címke a SEMA 2.19-ben); a `szoto_tablak` a repó saját adatlicence + a Károli 1908 (közkincs). Új nyitott tétel: N-F94g (a C+K ritka alakjai; javítás Hunspell-lel, külön licencdöntéssel, új ötödik mintán — nem a #94 része). `requirements.txt`: a simplemma csak fejlesztési függőség.
+
+**Keresési mód (Kiegészítés B):** a C+K pontossága a (c) módra (szótári alak VAGY Strong) érvényes — M2 (c) a 4. mintán 98,4% (K nélküli lemmákon 98,0%); a tisztán szótári alakos keresésre (a) nem: a K nélküli lemmákon 91,8%. A `karoli_szotari_alak.tsv` fejléce és a zárójelentés ezt kimondja.
+
+### 16.2 N-F94e és a determinizálás — a v3 újbóli befagyasztása
+
+- **N-F94e (általános szabály):** a szabályág (R) *-ék* jegye -ik-es szótári alaknál `mult.E3` (*tartózkodék, uralkodék, esék, cselekedék*), egyébként `mult.E1` (*láték*); a kivételtábla saját jegyét nem írja felül. Csak a jegyet érinti, a szótári alakot nem. Megfigyelés (manual, nem javítva): magas hangrendű, nem -ik-es igénél az *-ék* a T/3 tárgyassal is egyezik (*kérék* = kértem / kérték; *kényszeríték őt*), ott a jegy szövegkörnyezet nélkül nem dönthető el. A 3. minta *cselekedék* indoklása E/1-et írt, a Jer 36:8 alanya Báruk (E/3) — az indoklás nem mért mező.
+- **Determinizálás:** a `_nevszo_to` egy halmazt járt be (`{t, _hosszitas_vissza(t)}`), amelynek sorrendje a Python string-hash véletlenítése miatt futásonként változott, és egyenlő jelöltek között döntött (a teljes Károlin 4 alak: *emelém, tudnád, tudnám, Összehajtám*). Rendezett bejárásra javítva; a tábla két hash-maggal és Python 3.14 / 3.11 alatt bájtra azonos. A `hibrid_v2.py` (befagyasztott összevetési másolat) és az előmérés v2-je ugyanezt a hibát hordozza; a K2 bitre egyezett, a v2 nem kerül kiadásra.
+- **Újbóli befagyasztás:** `eszkozok/szoto/hibrid.py` sha256 `74d0ebe5062240857355ae49480375d3648cc7747eeff49811702c775d8c89ed` (git blob `e1d9d91c59b8b1509c8a273c98253f19156e544e`); K tábla `a5d9ad94273e0db5a29b7acbba0532758db0e68eb743334000ac3f7d17494f65`; lexikon `215f687f5d68…` (változatlan).
+
+### 16.3 Regresszió és a 4. minta mérésének frissítése
+
+**A 4. minta a mérés és a fenti javítások után fejlesztési halmaz; az erre a v3-ra kapott eredmény már nem független** (brief .3/4). A javítások a szótári alakot a három fejlesztési mintán nem változtatták:
+
+##### szoto_minta_1_fejlesztes.tsv (213 alak, 6375 előfordulás)
+
+| elemző | ossz | gyakori | ragos_nevszo | regies_ige | regies_helyesiras | ige_mai_alak | tulajdonnev |
+|---|---|---|---|---|---|---|---|
+| hibrid A | 97% / 99.4% (206/213) | 98% / 99.6% (54/55) | 98% / 99.1% (64/65) | 91% / 93.9% (41/45) | 100% / 100.0% (14/14) | 86% / 89.5% (6/7) | 100% / 100.0% (27/27) |
+| hibrid C | 85% / 94.3% (182/213) | 89% / 95.0% (49/55) | 82% / 82.2% (53/65) | 87% / 93.9% (39/45) | 79% / 88.2% (11/14) | 43% / 52.6% (3/7) | 100% / 100.0% (27/27) |
+| hibrid CK | 91% / 99.0% (193/213) | 100% / 100.0% (55/55) | 89% / 93.0% (58/65) | 87% / 93.9% (39/45) | 79% / 88.2% (11/14) | 43% / 52.6% (3/7) | 100% / 100.0% (27/27) |
+| v2 A | 95% / 99.2% (203/213) | 98% / 99.6% (54/55) | 95% / 96.6% (62/65) | 91% / 93.9% (41/45) | 100% / 100.0% (14/14) | 71% / 78.9% (5/7) | 100% / 100.0% (27/27) |
+| v2 C | 79% / 92.6% (169/213) | 85% / 93.8% (47/55) | 71% / 73.6% (46/65) | 80% / 88.6% (36/45) | 79% / 88.2% (11/14) | 29% / 42.1% (2/7) | 100% / 100.0% (27/27) |
+
+scope=szoto_minta_1_fejlesztes.tsv (sha256:a7f8d65d42de) | forras=eszkozok/szoto/meres.py + hibrid.py (v3, sha256:74d0ebe50622) + gyakori_alakok.tsv (sha256:a5d9ad94273e) + hibrid_v2.py (sha256:864d6876437a) + adat/szoto/karoli_lexikon.tsv (sha256:215f687f5d68) + simplemma 2.0.0 (hu.plzma sha256:0ebc6a84a326) | futtatókörnyezet: Python 3.11.17 (Linux) | ts=2026-10-13T15:38Z
+
+##### szoto_minta_2_fejlesztes.tsv (180 alak, 1695 előfordulás)
+
+| elemző | ossz | gyakori | ragos_nevszo | regies_ige | regies_helyesiras | ige_mai_alak | tulajdonnev |
+|---|---|---|---|---|---|---|---|
+| hibrid A | 93% / 97.9% (167/180) | 100% / 100.0% (40/40) | 91% / 93.0% (58/64) | 94% / 95.3% (30/32) | 77% / 69.2% (10/13) | 90% / 91.0% (19/21) | 100% / 100.0% (10/10) |
+| hibrid C | 84% / 87.8% (151/180) | 90% / 87.6% (36/40) | 84% / 86.5% (54/64) | 78% / 81.4% (25/32) | 85% / 74.4% (11/13) | 71% / 82.1% (15/21) | 100% / 100.0% (10/10) |
+| hibrid CK | 87% / 96.0% (156/180) | 98% / 98.4% (39/40) | 88% / 92.1% (56/64) | 78% / 81.4% (25/32) | 85% / 74.4% (11/13) | 71% / 82.1% (15/21) | 100% / 100.0% (10/10) |
+| v2 A | 92% / 97.6% (166/180) | 100% / 100.0% (40/40) | 91% / 93.0% (58/64) | 94% / 95.3% (30/32) | 77% / 69.2% (10/13) | 86% / 85.9% (18/21) | 100% / 100.0% (10/10) |
+| v2 C | 80% / 85.8% (144/180) | 90% / 87.6% (36/40) | 78% / 76.7% (50/64) | 78% / 81.4% (25/32) | 85% / 74.4% (11/13) | 57% / 64.1% (12/21) | 100% / 100.0% (10/10) |
+
+scope=szoto_minta_2_fejlesztes.tsv (sha256:587e47bded57) | forras=eszkozok/szoto/meres.py + hibrid.py (v3, sha256:74d0ebe50622) + gyakori_alakok.tsv (sha256:a5d9ad94273e) + hibrid_v2.py (sha256:864d6876437a) + adat/szoto/karoli_lexikon.tsv (sha256:215f687f5d68) + simplemma 2.0.0 (hu.plzma sha256:0ebc6a84a326) | futtatókörnyezet: Python 3.11.17 (Linux) | ts=2026-10-13T15:38Z
+
+##### szoto_minta_3_ellenorzott.tsv (113 alak, 3745 előfordulás)
+
+| elemző | ossz | gyakori | ragos_nevszo | regies_ige | regies_helyesiras | ige_mai_alak | tulajdonnev |
+|---|---|---|---|---|---|---|---|
+| hibrid A | 94% / 99.7% (106/113) | 100% / 100.0% (25/25) | 91% / 90.6% (32/35) | 100% / 100.0% (20/20) | 75% / 78.6% (9/12) | 100% / 100.0% (13/13) | 88% / 81.8% (7/8) |
+| hibrid C | 76% / 91.3% (86/113) | 88% / 92.0% (22/25) | 71% / 78.1% (25/35) | 95% / 97.2% (19/20) | 25% / 28.6% (3/12) | 77% / 58.6% (10/13) | 88% / 81.8% (7/8) |
+| hibrid CK | 79% / 99.0% (89/113) | 100% / 100.0% (25/25) | 71% / 78.1% (25/35) | 95% / 97.2% (19/20) | 25% / 28.6% (3/12) | 77% / 58.6% (10/13) | 88% / 81.8% (7/8) |
+| v2 A | 80% / 99.1% (90/113) | 100% / 100.0% (25/25) | 80% / 84.4% (28/35) | 50% / 58.3% (10/20) | 67% / 71.4% (8/12) | 92% / 96.6% (12/13) | 88% / 81.8% (7/8) |
+| v2 C | 56% / 90.3% (63/113) | 88% / 92.0% (22/25) | 51% / 62.5% (18/35) | 40% / 30.6% (8/20) | 17% / 21.4% (2/12) | 54% / 48.3% (7/13) | 75% / 72.7% (6/8) |
+
+scope=szoto_minta_3_ellenorzott.tsv (sha256:bafc1e67a061) | forras=eszkozok/szoto/meres.py + hibrid.py (v3, sha256:74d0ebe50622) + gyakori_alakok.tsv (sha256:a5d9ad94273e) + hibrid_v2.py (sha256:864d6876437a) + adat/szoto/karoli_lexikon.tsv (sha256:215f687f5d68) + simplemma 2.0.0 (hu.plzma sha256:0ebc6a84a326) | futtatókörnyezet: Python 3.11.17 (Linux) | ts=2026-10-13T15:38Z
+
+Egyedi romlás a v2-höz képest (a regressziós szkript most a 4. mintát is látja):
+
+```
+szoto_minta_1_fejlesztes.tsv A ROMLÁS: —
+szoto_minta_1_fejlesztes.tsv C ROMLÁS: —
+szoto_minta_1_fejlesztes.tsv CK ROMLÁS: —
+szoto_minta_2_fejlesztes.tsv A ROMLÁS: —
+szoto_minta_2_fejlesztes.tsv C ROMLÁS: leheletének(ragos_nevszo,1): v2=lehelet v3=leheletének
+szoto_minta_2_fejlesztes.tsv CK ROMLÁS: leheletének(ragos_nevszo,1): v2=lehelet v3=leheletének
+szoto_minta_3_ellenorzott.tsv A ROMLÁS: —
+szoto_minta_3_ellenorzott.tsv C ROMLÁS: —
+szoto_minta_3_ellenorzott.tsv CK ROMLÁS: —
+szoto_minta_4_fuggetlen.tsv A ROMLÁS: atyafiaival(ragos_nevszo,1): v2=atyafi v3=atyafiai
+szoto_minta_4_fuggetlen.tsv C ROMLÁS: atyafiaival(ragos_nevszo,1): v2=atyafi v3=atyafiaival
+szoto_minta_4_fuggetlen.tsv CK ROMLÁS: atyafiaival(ragos_nevszo,1): v2=atyafi v3=atyafiaival
+```
+
+Az *atyafiaival* (4. minta) a v3-ban az első befagyasztáskor is hibás volt (a 15. szakasz számai ezt már tartalmazzák); a *leheletének* a szigorítás ára (11.3).
+
+A 4. minta M1-e változatlan (15.1); az M2 a determinizálás miatt a második tizedesben mozdult (C 89,65 → 89,66%, C+K 91,77 → 91,78% (a), lemmánkénti átlag A 90,7 → 90,8%), a (c) változatlan:
+
+##### M2 — a minta minden lemmája: 99 lemma, célhalmaz 58027 token (célhalmaz nélküli lemma: 7: kárbunkulus, tévelyedik, jóna, béth-aven, girzeus, felingereltetik, nyiratkozik)
+
+| változat | (a) token-súlyozva | (b) | (c) | (a) lemmánkénti átlag | (c) lemmánkénti átlag |
+|---|---|---|---|---|---|
+| hibrid A | 97.57% | 98.03% | 98.65% (57244/58027) | 91.6% | 99.0% |
+| hibrid C | 91.01% | 91.01% | 94.70% (54953/58027) | 74.4% | 98.1% |
+| hibrid CK | 95.87% | 95.87% | 98.40% (57097/58027) | 75.0% | 98.3% |
+
+*A 12 leggyengébb lemma ((a), A / C; célhalmaz, fő Strong):* se 0% / 100% (146, H3808); bíz 87% / 0% (38, H0982); űz 100% / 0% (29, H3423); kényszerít 100% / 0% (8, H7650); unoka 100% / 0% (8, H1121); láncz 83% / 0% (6, H8333); összegyűlekezik 33% / 0% (3, H0622); elhajt 100% / 0% (3, H3947); hosszútűrés 100% / 0% (2, G3326); hunyorgat 0% / 100% (2, H7169); hívogat 100% / 0% (2, H7121); keresztülszúr 100% / 0% (2, H1856)
+
+##### M2 — a K tábla alakjai nélküli lemmák (a DT-F94c döntő halmaza): 79 lemma, célhalmaz 19645 token (célhalmaz nélküli lemma: 7: kárbunkulus, tévelyedik, jóna, béth-aven, girzeus, felingereltetik, nyiratkozik)
+
+| változat | (a) token-súlyozva | (b) | (c) | (a) lemmánkénti átlag | (c) lemmánkénti átlag |
+|---|---|---|---|---|---|
+| hibrid A | 95.59% | 96.21% | 98.20% (19292/19645) | 90.8% | 99.1% |
+| hibrid C | 89.66% | 89.66% | 97.60% (19173/19645) | 68.9% | 97.9% |
+| hibrid CK | 91.78% | 91.78% | 98.02% (19257/19645) | 69.4% | 97.9% |
+
+*A 12 leggyengébb lemma ((a), A / C; célhalmaz, fő Strong):* bíz 87% / 0% (38, H0982); űz 100% / 0% (29, H3423); kényszerít 100% / 0% (8, H7650); unoka 100% / 0% (8, H1121); láncz 83% / 0% (6, H8333); összegyűlekezik 33% / 0% (3, H0622); elhajt 100% / 0% (3, H3947); hosszútűrés 100% / 0% (2, G3326); hunyorgat 0% / 100% (2, H7169); hívogat 100% / 0% (2, H7121); keresztülszúr 100% / 0% (2, H1856); ötvenedes 0% / 100% (1, H2572)
+
+scope=szoto_minta_4_fuggetlen.tsv (sha256:4f754045d207) lemmái; a párosított Károli-könyvek (484820 hu token, 58041 alak) | forras=eszkozok/szoto/meres_m2.py + adat/karoli_strong/szavak_*.tsv (együttes sha256:c3266499df09; modell-kimenet, javaslat) + hibrid.py (v3, sha256:74d0ebe50622) + gyakori_alakok.tsv (sha256:a5d9ad94273e) + karoli_lexikon.tsv (sha256:215f687f5d68) + simplemma 2.0.0 (hu.plzma sha256:0ebc6a84a326) | futtatókörnyezet: Python 3.11.17 (Linux) | ts=2026-10-13T15:39Z
+
+### 16.4 A teljes Károli szótárialak-táblája
+
+`adat/szoto/karoli_szotari_alak.tsv` (generált, `eszkozok/szoto/szotari_alak_epit.py`; sha256 `d757ba74a5b523cf98174d50af0876ae86e9342b915027a474533673450f989f`): 66 824 sor (a korpusz-lexikon minden írásmódja), a C+K változattal, **simplemma nélkül** — az előállító a simplemma importját letiltja, és hibával áll meg, ha egy sor `modszer=simplemma` lenne. Módszer: lexikon 43 672, szabály 14 931, név 6 772, K tábla 770, kivétel 679. `szabaly_forras`: üres 51 877, `modell_ellenorizetlen` 13 498, `manual` 733, `korpusz_strong` 716. `regies_jegy`: 3 297 sor (`mult.targyas.E3` 738, `hatarozoi_igenev` 690, `mult.T3` 551, `mult.alanyi.E3` 508, `mult.E1` 394, `mult.E3` 160, `felszolito.E2` 92, `mult.E2` 76, `mult.T1` 53, `mult.T2` 35), mind szabály-, kivétel- vagy K-sorban. **Ismert korlát (új, manual):** a régies E/1 tárgyas *-ám/-ém* (*emelém, összehajtám*) nincs a felismert végződések között.
+
+### 16.5 K1–K6
+
+| feltétel | állapot |
+|---|---|
+| K1 — a három régi minta a repóban, egységes sémával, soronként `ellenorzes`; az eltérés-lista naplózva és lezárva | **teljesül** (5., 5.1, 6. szakasz; DT-F94a/b 🟢; üres `ellenorzes` nincs) |
+| K2 — az átvett v2 a három mintán bitre az előmérés M1-e | **teljesül** (9.1: 99,2 / 97,6 / 80% / 99,1%; 61 673 alakon azonos kimenet) |
+| K3 — a 4. mintán súlyozva ≥ 90%, M2 (c) ≥ 98% | **teljesül a kiadott C+K-ra** (M1 súlyozva 98,5%, a döntő K nélküli halmazon 94,6%; M2 (c) 98,4%, K nélküli lemmákon 98,02% — a határon) és az A-ra; a C-re (K nélkül) nem (15.3) |
+| K4 — minden szabály `szabaly_forras`; a simplemma adatlicence szó szerint idézve | **teljesül** a DT-F94d szerinti számmal (30 `korpusz_strong` + 1 `manual` + 22 `modell_ellenorizetlen`; a brief 34-e helyett, 13.2); idézet: `licencek.tsv` |
+| K5 — emMorph-kód/-kimenet nincs; abszolút útvonal nincs; `csv` modul nincs; Python 3.11; CI zöld; független ellenőr eltérés nélkül zár | **teljesül** az ellenőrzött részekben (gépi keresés: nincs emMorph-fájl/-hivatkozás a kódban, nincs abszolút útvonal, nincs `csv`; Python 3.11.17 alatt a tábla bájtra azonos; a helyi CI-ellenőrző zöld); **a független ellenőrzés még hátra van** |
+| K6 — 200 alakos kézi besorolás előtte/utána; utána nincs névszó régies igeként; a `regies_jegy` csak igei alakon | **teljesül** (11.4: előtte 74 / 200 nem ige, utána 0; a v2 74 nem-igéjéből a táblában egy sem kap jegyet; jegy csak szabály-, kivétel- és K-sorban) |
