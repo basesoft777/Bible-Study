@@ -100,7 +100,7 @@ def db_vers(con, ig):
         for (x,) in con.execute("SELECT lxx_igehely FROM lxx_versszam WHERE karoli_igehely=? AND forras='LXX_OS' ORDER BY rowid", (ig,)):
             if x not in lxx:
                 lxx.append(x)
-        lxx_extra = [tuple(x) for x in con.execute(
+        lxx_extra = [tuple(x[:2]) for x in con.execute(
             "SELECT forras, lxx_igehely FROM lxx_versszam WHERE karoli_igehely=? AND forras!='LXX_OS' ORDER BY rowid", (ig,))]
     else:
         lxx = [x[0] for x in con.execute('SELECT DISTINCT lxx_igehely FROM lxx_versszintu_parok WHERE igehely=?', (ig,))]
@@ -111,6 +111,7 @@ def db_vers(con, ig):
             'SELECT DISTINCT r.lexid FROM ubs_dbh_referenciak r JOIN ubs_dbh_jelentesek j ON j.lexid=r.lexid '
             'WHERE r.igehely=? AND r.strong=?', (ig, st)))
     macula = lxx_szavak = nave = None
+    lxx_formak = []
     if _van_tabla(con, 'token_macula'):
         macula = [{'szo': a, 'lemma': b, 'strong': hnorm(c) if c else None, 'morf': d, 'szofaj': e, 'gloss': f,
                    'lxx': g, 'lxx_strong': hnorm(h) if h else None}
@@ -119,7 +120,9 @@ def db_vers(con, ig):
                       'WHERE igehely=? ORDER BY rowid', (ig,))]
     if _van_tabla(con, 'lxx_token'):
         lxx_szavak = [{'szoalak': a, 'lemma': b, 'strong': c or '', 'morf': d} for a, b, c, d in con.execute(
-            'SELECT szoalak, lemma, strong, morf FROM lxx_token WHERE karoli_igehely=? ORDER BY pozicio, rowid', (ig,))]
+            'SELECT szoalak, lemma, strong, morf FROM lxx_token WHERE karoli_igehely=? ORDER BY szovegforma, pozicio, rowid', (ig,))]
+        # F92 (ellenőr ÚJ-1): a párhuzamos szövegformák (Dán/Bír/Józs) külön csoportban, nem összefésülve
+        lxx_formak = [x[0] for x in con.execute('SELECT DISTINCT szovegforma FROM lxx_token WHERE karoli_igehely=? ORDER BY szovegforma', (ig,))]
     if _van_tabla(con, 'nave_vers'):
         nave, lat = [], set()
         for tema, cimke, hely, tart, tid in con.execute(
@@ -129,7 +132,7 @@ def db_vers(con, ig):
                 nave.append((tema, cimke, hely, bool(tart), tid))
     return {'karoli': r[0] if r else None, 'par': dict(par), 'heber': heber, 'tsk': tsk, 'kh_db': kh_db,
             'versszam': sz, 'lxx': lxx, 'lxx_extra': lxx_extra, 'ubs': ubs,
-            'macula': macula, 'lxx_szavak': lxx_szavak, 'nave': nave}
+            'macula': macula, 'lxx_szavak': lxx_szavak, 'lxx_formak': lxx_formak, 'nave': nave}
 
 
 def db_szo(con, strong):

@@ -864,12 +864,18 @@ class Epito(object):
 
     # -- F92: az olvasoi lapok hiany-tablai (DT-F92a) ----------------------------------------
     def _lxx_os_fajlok(self):
-        """A LXX_OS konyvfajlok (`szoalak` oszlop) sorai fajlsorrendben; a 3 nem-konyv fajl kimarad."""
+        """A LXX_OS konyvfajlok (`szoalak` oszlop) sorai fajlsorrendben; a 2 nem-konyv fajl
+        (karoli_fejezet_dontes.tsv, karoli_vers_felulbiralas.tsv) kimarad. Minden sor `_fajl` kulcsa a
+        fajl neve kiterjesztes nelkul: ez a szovegforma (ellenor UJ-1: a Dan, Bir, Jozs parhuzamos
+        LXX-szovegformai -- daniel / daniel-theodotion, judges / judges-vaticanus-b, joshua /
+        joshua-vaticanus-b -- ugyanarra a Karoli-versre esnek, es nem fesulhetnek ossze)."""
         for f in sorted(glob.glob(os.path.join(self.konk, 'LXX_OS', '*.tsv'))):
             fej, sorok = G.tsv_beolvas(f)
             if 'szoalak' not in fej:
                 continue
+            forma = os.path.splitext(os.path.basename(f))[0]
             for r in sorok:
+                r['_fajl'] = forma
                 yield r
 
     def _olvasoi_tablak(self):
@@ -934,13 +940,13 @@ class Epito(object):
                 st = ('G%04d' % int(r['strong'])) if r['strong'].isdigit() else None
                 ki.append((r['igehely_lxx'], r['igehely_kjv'], ig, r['karoli_ok'],
                            int(r['pozicio']) if r['pozicio'].isdigit() else None,
-                           r['szoalak'], r['lemma'], r['morf'], st, r['strong_ok']))
+                           r['szoalak'], r['lemma'], r['morf'], st, r['strong_ok'], r['_fajl']))
             self.tabla('lxx_token',
                        [('lxx_igehely', 'TEXT'), ('kjv_vers', 'TEXT'), ('karoli_igehely', 'TEXT'),
                         ('karoli_ok', 'TEXT'), ('pozicio', 'INTEGER'), ('szoalak', 'TEXT'), ('lemma', 'TEXT'),
-                        ('morf', 'TEXT'), ('strong', 'TEXT'), ('strong_ok', 'TEXT')],
+                        ('morf', 'TEXT'), ('strong', 'TEXT'), ('strong_ok', 'TEXT'), ('szovegforma', 'TEXT')],
                        ki, SZARMAZTATOTT_LICENC['lxx_token'],
-                       ['lxx_igehely, pozicio', 'karoli_igehely', 'strong'])
+                       ['lxx_igehely, pozicio', 'karoli_igehely, szovegforma, pozicio', 'strong'])
             meta.append(('lxx_token:forras_sor', str(len(os_sorok))))
         self._lxx_versszam(os_sorok)
         # -- bdb_alias
@@ -966,11 +972,18 @@ class Epito(object):
             if ig not in self.vi.halmaz:
                 self.jelent_norm('lxx_versszam', ig, 'nincs ilyen Károli-vers')
                 continue
-            k = (r['igehely_lxx'], r['igehely_kjv'], r['karoli_ok'])
+            k = (r['igehely_lxx'], r['igehely_kjv'], r['karoli_ok'], r['_fajl'])
             if k not in os_par.setdefault(ig, []):
                 os_par[ig].append(k)
-        terkep = {}
+        terkep, nem_meghat, nem_karoli = {}, 0, set()
         for r in G.tsv_beolvas(os.path.join(self.konk, 'LXX_versificacios_terkep.tsv'))[1]:
+            if r['Karoli_igehely'] == 'NEM_MEGHATAROZHATO':
+                nem_meghat += 1      # nem Karoli-kulcs: a sor nem kerul a tablaba, de szamolt (ellenor UJ-4)
+                continue
+            if r['Karoli_igehely'] not in self.vi.halmaz:
+                nem_karoli.add(r['Karoli_igehely'])
+                self.jelent_norm('lxx_versszam', r['Karoli_igehely'], 'a térkép kulcsa nem Károli-vers')
+                continue
             v = terkep.setdefault(r['Karoli_igehely'], [])
             if (r['Gorog_LXX_vers'], r['Elteres_tipusa']) not in v:
                 v.append((r['Gorog_LXX_vers'], r['Elteres_tipusa']))
@@ -984,30 +997,37 @@ class Epito(object):
                 continue
             if ig in os_par:
                 tk = {cv_elso(g) for g, _ in terkep.get(ig, [])} - {None}
-                for (lx, kjv, ok) in os_par[ig]:
+                for (lx, kjv, ok, forma) in os_par[ig]:
                     mj = ok
                     if ig in terkep and cv_elso(lx) not in tk:
                         mj = (mj + '; ' if mj else '') + 'térkép eltér: ' + ' | '.join(g for g, _ in terkep[ig])
                         elteres.append(ig)
-                    sorok.append((ig, lx, kjv, 'LXX_OS', mj))
+                    sorok.append((ig, lx, kjv, 'LXX_OS', mj, forma))
                     szaml['LXX_OS'] += 1
             elif ig in terkep:
                 for g, tip in terkep[ig]:
-                    sorok.append((ig, g, '', 'versificacios_terkep', tip))
+                    sorok.append((ig, g, '', 'versificacios_terkep', tip, ''))
                     szaml['versificacios_terkep'] += 1
             else:
-                sorok.append((ig, '', '', 'nincs', ''))
+                sorok.append((ig, '', '', 'nincs', '', ''))
                 szaml['nincs'] += 1
         both = sum(1 for ig in self.ot_versek if ig in os_par and ig in terkep)
         if self.minta is not None:
             sorok = [x for x in sorok if x[0] in self.minta]
         self.tabla('lxx_versszam',
                    [('karoli_igehely', 'TEXT'), ('lxx_igehely', 'TEXT'), ('kjv_vers', 'TEXT'),
-                    ('forras', 'TEXT'), ('megjegyzes', 'TEXT')],
+                    ('forras', 'TEXT'), ('megjegyzes', 'TEXT'), ('szovegforma', 'TEXT')],
                    sorok, SZARMAZTATOTT_LICENC['lxx_versszam'], ['karoli_igehely', 'lxx_igehely'])
         for k, v in szaml.items():
             meta.append(('lxx_versszam:sor:' + k, str(v)))
         meta.append(('lxx_versszam:ot_vers', str(len(self.ot_versek))))
+        meta.append(('lxx_versszam:terkep_nem_meghatarozhato_sor', str(nem_meghat)))
+        meta.append(('lxx_versszam:terkep_nem_karoli_kulcs', str(len(nem_karoli))))
+        meta.append(('lxx_versszam:terkep_karoli_kulcs', str(len(terkep))))
+        meta.append(('lxx_versszam:terkep_ot_vers', str(sum(1 for k in terkep if k in self.ot_versek))))
+        meta.append(('lxx_versszam:terkep_nem_ot_vers', str(sum(1 for k in terkep if k not in self.ot_versek))))
+        self.norm_jelentes[('lxx_versszam', 'NEM_MEGHATAROZHATO',
+                            'a térkép sora nem Károli-kulccsal áll (nem kerül a táblába; sor)')] = nem_meghat
         meta.append(('lxx_versszam:mindket_forras_verse', str(both)))
         meta.append(('lxx_versszam:forras_elteres_verse', str(len(set(elteres)))))
         self.norm_jelentes[('lxx_versszam', 'LXX_OS ≠ versifikációs térkép',
@@ -1130,7 +1150,7 @@ class Epito(object):
             self.megjegyzesek.append(
                 'Szándékosan nem betöltött konkordancia-táblák: Macula_gorog (a Macula_heber_*, LXX_OS/* és a BDB_strong_alias az F92 óta betöltve), '
                 'KJV_/ASV_Strongs_{Genesis,Exodus,Proverbs} (a #48 vezeti ki; a KJV_Strongs_teljes betöltve), '
-                'a BDB_*/aram/alias segédtáblák, SDBH_SDGNT_domenfa, a versmegfeleltetési segédtáblák; '
+                'a BDB_*/aram segédtáblák (a BDB_strong_alias az F92 óta betöltve: bdb_alias), SDBH_SDGNT_domenfa, a versmegfeleltetési segédtáblák; '
                 'a licencsor hiánya miatt kimaradt táblák száma: %d' % len(self.kihagyott))
         sorok = [(t, nyers, ok, d) for (t, nyers, ok), d in sorted(self.norm_jelentes.items())]
         self.tabla('normalizalas_jelentes', [('tabla', 'TEXT'), ('nyers', 'TEXT'), ('ok', 'TEXT'),

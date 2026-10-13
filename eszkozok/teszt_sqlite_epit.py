@@ -542,6 +542,45 @@ class Integracio(unittest.TestCase):
         self.assertGreaterEqual(int(m['lxx_versszam:sor:LXX_OS']) + int(m['lxx_versszam:sor:versificacios_terkep'])
                                 + int(m['lxx_versszam:sor:nincs']), int(m['lxx_versszam:ot_vers']))
 
+    def test_f92_lxx_szovegforma_parhuzamos_formak(self):
+        # ellenor UJ-1: a Dan/Bir/Jozs parhuzamos LXX-szovegformai nem fesulhetnek ossze
+        ep = S.Epito(ROOT, os.path.join(self.tmp, 'f.db'), 'minta')
+        formak = {}
+        for r in ep._lxx_os_fajlok():
+            if r['igehely_karoli']:
+                formak.setdefault(r['igehely_karoli'], set()).add(r['_fajl'])
+        tobb = {ig: f for ig, f in formak.items() if len(f) > 1}
+        self.assertTrue(any('daniel' in f and 'daniel-theodotion' in f for f in tobb.values()))
+        self.assertTrue(any('judges' in f and 'judges-vaticanus-b' in f for f in tobb.values()))
+        self.assertTrue(any('joshua' in f and 'joshua-vaticanus-b' in f for f in tobb.values()))
+        # az oszlop a minta-adatbazisban: a szovegforma a fajlnev, minden sornak van
+        ertekek = {x for (x,) in self.con.execute('SELECT DISTINCT szovegforma FROM lxx_token')}
+        self.assertIn('genesis', ertekek)
+        self.assertEqual(self.con.execute("SELECT COUNT(*) FROM lxx_token WHERE IFNULL(szovegforma,'')=''").fetchone()[0], 0)
+        self.assertEqual(self.con.execute("SELECT COUNT(*) FROM lxx_versszam WHERE forras='LXX_OS' "
+                                          "AND IFNULL(szovegforma,'')=''").fetchone()[0], 0)
+        # ahol a minta tartalmaz tobbformas verset, az lxx_versszam kulon sort ad formankent
+        for ig, n in self.con.execute("SELECT karoli_igehely, COUNT(DISTINCT szovegforma) FROM lxx_token "
+                                      "GROUP BY karoli_igehely HAVING COUNT(DISTINCT szovegforma)>1"):
+            self.assertGreaterEqual(self.con.execute("SELECT COUNT(DISTINCT szovegforma) FROM lxx_versszam "
+                                                     "WHERE karoli_igehely=? AND forras='LXX_OS'", (ig,)).fetchone()[0], n)
+
+    def test_f92_terkep_nem_meghatarozhato_nem_esik_ki_nemanan(self):
+        m = self._meta_dict()
+        sorok = G.tsv_beolvas(os.path.join(ROOT, 'konkordancia', 'LXX_versificacios_terkep.tsv'))[1]
+        nm = sum(1 for r in sorok if r['Karoli_igehely'] == 'NEM_MEGHATAROZHATO')
+        self.assertGreater(nm, 0)
+        self.assertEqual(int(m['lxx_versszam:terkep_nem_meghatarozhato_sor']), nm)
+        jel = self.con.execute("SELECT darab FROM normalizalas_jelentes WHERE tabla='lxx_versszam' "
+                               "AND nyers='NEM_MEGHATAROZHATO'").fetchone()
+        self.assertEqual(jel[0], nm)
+        # a terkep-sorok minden kulcsa szamolt: NEM_MEGHATAROZHATO + Karoli-kulcs + nem Karoli-vers
+        kulcsok = {r['Karoli_igehely'] for r in sorok} - {'NEM_MEGHATAROZHATO'}
+        self.assertEqual(int(m['lxx_versszam:terkep_karoli_kulcs']) + int(m['lxx_versszam:terkep_nem_karoli_kulcs']),
+                         len(kulcsok))
+        self.assertEqual(int(m['lxx_versszam:terkep_ot_vers']) + int(m['lxx_versszam:terkep_nem_ot_vers']),
+                         int(m['lxx_versszam:terkep_karoli_kulcs']))
+
     def test_f92_macula_ketertelmu_strong_pozicio_sorrendben(self):
         rossz = self.con.execute("SELECT COUNT(*) FROM token_macula WHERE strong IS NOT NULL AND igehely!='' "
                                  "AND (strong_poz IS NULL OR strong_n IS NULL OR strong_poz<1 OR strong_poz>strong_n)").fetchone()[0]
