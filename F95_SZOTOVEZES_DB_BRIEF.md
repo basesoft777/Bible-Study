@@ -6,10 +6,10 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: megallt
+allapot: fut
 ag: claude/f95-szotovezes-db
 ad: a pardes.db új táblája a Károli minden szóalakjához (szótári alak, mai szótári alak, alapige, további elfogadható alak, módszer, régies jegy) táblaszintű licenccel és meta-sorral; a token_karoli tokenjeihez kapcsolható pontos-alak kulccsal; indexek a szótári alak, a mai alak, az alapige és a további elfogadható alak szerinti kereséshez; a (c) keresési mód (szótári alak VAGY Strong) mintalekérdezése mérve; frissességi teszt a forrás-TSV-re
-kovetkezo: "Te: ⛔ az M0 után (naplok/SZOTOVEZES_DB_M0.md 8. szakasz): a táblaterv (T1 szotari_alak + T2 szotari_kereso + részleges token-index), a kapcsolási kulcs (token_karoli.szo = alak) és a nem illeszkedő tokenek kezelése (A: kötőjeles segédtábla, B: dokumentált hiány) jóváhagyása; utána /kovetkezo az M1-gyel"
+kovetkezo: "M1 (építés), M2 (mérés), M3 (zárás) — az M0 ⛔ jóváhagyva (DT-F95a)"
 olvas: [adat/szoto/karoli_szotari_alak.tsv, adat/SEMA.md, adat/licencek.tsv, eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, eszkozok/olvaso_pilot/db_meres.py, naplok/SQLITE_EPIT_meres.md, naplok/SZOTOVEZES_zaras.md, "adat/karoli_strong/szavak_*.tsv", F76_OLVASOI_KONKORDANCIA_BRIEF.md]
 ir: [eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, eszkozok/olvaso_pilot/db_meres.py, adat/SEMA.md, naplok/SQLITE_EPIT_meres.md, naplok/SZOTOVEZES_DB_M0.md, naplok/SZOTOVEZES_DB_zaras.md]
 fugg: [92, 94]
@@ -69,3 +69,4 @@ A #94 mérése szerint a pontosság a **(c) módra** érvényes: szótári alak 
 | Verzió | Dátum | Döntés | Forrás |
 |---|---|---|---|
 | v1 | 2026-10-13 | A csonk kitöltése a #94 lezárása után; a kapcsolási kulcs a pontos alak (`token_karoli.szo`), nem a `szo_kis`; a (c) mód lekérdezése a #95-ben mérve, a felület a #76-ban | felhasználó (chat, 2026-10-13: „írd meg a #95 briefjét”); `naplok/SZOTOVEZES_zaras.md` |
+| v1.1 | 2026-10-13 | Az M0 ⛔ jóváhagyása: `szotari_alak` + `szotari_kereso` + részleges token-index; kulcs `token_karoli.szo = alak` (pontos); (A) `szotari_token_kotojeles` segédtábla (4 750 darab-token), a 6 felfüggesztett kötőjeles token dokumentált hiány; (c) mód Strong-ága a `token_par.strong`-ból, `grammatikai_strongok` szűréssel, a 100 ms-os küszöb az (a) módra és a kereső táblára, a (c) mód mérve és jelentve (DT-F95a) | felhasználó (chat, „mehet”, az orkesztrátoron át); `naplok/SZOTOVEZES_DB_M0.md` |
