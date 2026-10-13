@@ -6,11 +6,11 @@ tipus: feladat
 fazis: 1
 modell: opus
 munka: adat
-allapot: megallt
+allapot: fut
 ag: claude/f94-szotovezes
 helyi_gep: igen
 ad: a Károli minden szóalakjához szótári alak (Károli- és mai helyesírással), alapige és további elfogadható alak, forrásolt szabályokkal; a hibrid szótövező (v3) az eszkozok/ alatt; négy aranyminta a repóban, a negyedik független, felhasználó által ellenőrzött mérés; a pardes.db-oszlop a #95 (SZOTOVEZES_DB)
-kovetkezo: "Te: ⛔ F94.3 — (1) a 4. minta soronkénti ellenőrzése: adat/szoto/szoto_minta_4_fuggetlen.tsv, az ellenorzes oszlopot te írod felhasznalo-ra (7 bizonytalan sor); (2) a K tábla 400 sorának átnézése: adat/szoto/gyakori_alakok.tsv (ellenorzes: felhasznalo); (3) DT-F94d (K4: 30+1 korpusz_strong/manual a 34 helyett). Utána: mérés (A és C+K, a K-sorok nélkül is), K3, DT-F94c végleges döntése. Napló: naplok/SZOTOVEZES_meres.md 11–12. szakasz"
+kovetkezo: "F94.3 fut: a 7 eldöntött 4.-mintasor, DT-F94d, a meres.py független (K-sorok nélküli) száma; utána ⛔ a 4. minta többi sora és a K tábla átnézése a felhasználóé"
 olvas: [konkordancia/Karoli_1908.tsv, "adat/karoli_strong/*", adat/SEMA.md, adat/licencek.tsv, Rendszerfejlesztesi_playbook.md, eszkozok/general.py, DONTESEK.md]
 ir: [eszkozok/szoto/, adat/szoto/, adat/SEMA.md, adat/licencek.tsv, naplok/SZOTOVEZES_meres.md, naplok/SZOTOVEZES_zaras.md]
 fugg: []
