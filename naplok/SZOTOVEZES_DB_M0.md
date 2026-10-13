@@ -93,7 +93,7 @@ Megjegyzés: a *ki* (283 Strong) és az *ő* (76) a Strong-ágat szétveti; a (c
 
 ## 9. M2 mérés (a jóváhagyott terv szerint, a kész `pardes.db`-n)
 
-*Kiváltó: `python eszkozok/olvaso_pilot/db_meres.py --szoto` (a lemmalista a 6. szakaszban, a mérés előtt rögzítve). A teljes építés: `python eszkozok/sqlite_epit.py --mod teljes --ketszer --meret --naplo --proba` (G2: azonos; 15 próbapont MEGEGYEZIK; `naplok/SQLITE_EPIT_meres.md`).*
+*Kiváltó: `python eszkozok/olvaso_pilot/db_meres.py --szoto` (a lemmalista a 6. szakaszban, a mérés előtt rögzítve). A teljes építés: `python eszkozok/sqlite_epit.py --mod teljes --ketszer --meret --naplo --proba` (G2: azonos; 9/9 próbapont MEGEGYEZIK, `naplok/SQLITE_EPIT_proba_teljes.md`; `naplok/SQLITE_EPIT_meres.md`).*
 
 *Proveniencia: `scope=szotari_alak, szotari_kereso, szotari_token_kotojeles | forras=pardes.db meta.epites_ts=2026-10-13T18:10:45Z meta.mod=teljes (hash:szotari_alak=796b64a99731) | ts=2026-10-13T18:14:28Z`; gép: Windows-11-10.0.26300-SP0, 8 CPU, python 3.14.7, pardes.db 938.3 MB*
 
