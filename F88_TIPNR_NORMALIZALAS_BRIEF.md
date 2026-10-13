@@ -6,7 +6,8 @@ tipus: feladat
 fazis: 1
 munka: adat
 modell: sonnet
-allapot: nem_indult
+allapot: fut
+ag: claude/f88-tipnr-normalizalas
 ad: a pardes.db tipnr.strong oszlopa az alapszámot hordozza (a nagy- és kisbetűs utótag levágva, a TIPNR-betöltő kifejezett szabályaként), új utotag oszlop, a strong_nyers marad; SEMA 1.2 bővítve; a G6202 a normalizálási jelentésben; teszt és újraépítés, a NULL-arány mérve
 kovetkezo: "M0 felmérés (csak olvas); ⛔, ha a mérés eltér a DT111 feltevésétől"
 olvas: [DONTESEK.md, NYITOTT_FELADATOK.md, adat/SEMA.md, eszkozok/strong_util.py, eszkozok/sqlite_epit.py, konkordancia/TIPNR_kivonat.tsv, naplok/SQLITE_EPIT_meres.md]
