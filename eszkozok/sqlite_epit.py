@@ -51,6 +51,28 @@ import general as G  # noqa: E402
 import ellenoriz as E  # noqa: E402
 from strong_util import strong_normalizal  # noqa: E402
 
+
+_TIPNR_UTOTAG_RE = re.compile(r'^(.*\d)([A-Za-z])$')
+
+
+def tipnr_strong_szetvalaszt(nyers):
+    """F88 (DT111): a TIPNR `Strong-szám` mezőjének szétválasztása -> (alapszám, utótag).
+
+    A TIPNR a Strong-számhoz egyértelműsítő betűutótagot fűz (`G2424G` Jézus, `G2424H`
+    Barabbás, `H3063N` Júdea; a nagybetű személyt/entitást különböztet meg egy lexémán
+    belül, a kisbetű, pl. `H5838z`, ugyanígy). A `pardes.db` TIPNR-betöltőjének
+    kifejezett szabálya: a `strong` oszlop az alapszámot (SEMA 1.2 alak) hordozza, az
+    utótag az `utotag` oszlopba kerül, a teljes érték a `strong_nyers`-ben marad.
+    Utótag nélküli értékre az utótag üres szöveg. Nem értelmezhető értékre ValueError
+    (a hívó a normalizálási jelentésbe teszi). A `strong_util.strong_normalizal()`
+    alapértéke (`utotag='tilt'`) NEM változik: máshol az utótag hibát jelezhet.
+    """
+    if isinstance(nyers, str) and '+' not in nyers:
+        m = _TIPNR_UTOTAG_RE.match(nyers.strip())
+        if m:
+            return strong_normalizal(m.group(1)), m.group(2)
+    return strong_normalizal(nyers), ''
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # A normalizalo tabla `Lam` -> `JSir` (DT24), az adat-kulcsok viszont `Sir` (Siralmak).
@@ -297,6 +319,7 @@ class Epito(object):
         self.kihagyott = []       # (tabla, ok)
         self.norm_jelentes = {}   # (tabla, nyers, ok) -> darab
         self.megjegyzesek = []
+        self.token_strong_halmaz = set()   # minden TAHOT/TAGNT-ból kinyert alapszám (minta módban is teljes)
 
     # -- licenc ----------------------------------------------------------
     def licenc_feloldas(self, kulcsok):
@@ -463,6 +486,7 @@ class Epito(object):
                     self.jelent_norm(fajl, r['Strong-szám'], 'Strong-szám nem normalizálható')
                     lanc = None
                 elemek = lanc.split('+') if lanc else []
+                self.token_strong_halmaz.update(elemek)
                 for s in elemek:
                     if s in grammatikai or ('H9001' <= s <= 'H9049'):
                         continue
@@ -573,12 +597,15 @@ class Epito(object):
             if self.minta is not None and (ig is None or ig not in self.minta):
                 continue
             try:
-                s = strong_normalizal(r['Strong-szám'])
+                s, utotag = tipnr_strong_szetvalaszt(r['Strong-szám'])   # F88, DT111
             except ValueError:
                 self.jelent_norm('tipnr', r['Strong-szám'], 'Strong-szám nem normalizálható')
-                s = None
-            tip.append((r['Név (normalizált)'], r['Névváltozat'], s, r['Strong-szám'], r['Nyelv'], ig, r['Igehely']))
-        self.tabla('tipnr', [('nev', 'TEXT'), ('nevvaltozat', 'TEXT'), ('strong', 'TEXT'),
+                s, utotag = None, None
+            if s is not None and s not in self.token_strong_halmaz and utotag:
+                # jelölés, nem javítás: a levágott alapszám a token_strong-ban nem szerepel
+                self.jelent_norm('tipnr', s, 'levágott alapszám nincs a token_strong-ban')
+            tip.append((r['Név (normalizált)'], r['Névváltozat'], s, utotag, r['Strong-szám'], r['Nyelv'], ig, r['Igehely']))
+        self.tabla('tipnr', [('nev', 'TEXT'), ('nevvaltozat', 'TEXT'), ('strong', 'TEXT'), ('utotag', 'TEXT'),
                              ('strong_nyers', 'TEXT'), ('nyelv', 'TEXT'), ('igehely', 'TEXT'), ('step_nyers', 'TEXT')],
                    tip, SZARMAZTATOTT_LICENC['tipnr'], ['igehely', 'strong'])
 
