@@ -117,6 +117,9 @@ SZARMAZTATOTT_LICENC = {
     'lxx_versszam': ['LXX_OS', 'Versifikacios_tablak', 'Karoli_versmegfeleltetes'],
     'bdb_alias': ['BDB', 'projekt_adat'],
     'nave_vers': ['Nave_basokant', 'Karoli_versmegfeleltetes', 'LXX_OS'],
+    # F95 (DT-F95a): a szotari alak tablai (a #94 kimenete); a kotojeles segedtabla a token_karoli-bol is szarmazik
+    'szotari_alak': ['szoto_tablak'], 'szotari_kereso': ['szoto_tablak'],
+    'szotari_token_kotojeles': ['szoto_tablak', 'Karoli_Strong_szavak'],
 }
 
 # Altalanos (oszlopait valtozatlanul atvevo) konkordancia-tablak:
@@ -437,6 +440,7 @@ class Epito(object):
         self._konyv_vers(karoli)
         self._eredeti_tokenek()
         self._karoli_strong()
+        self._szotari_alak()
         self._kereszthivatkozasok()
         self._bsb_szamozas()
         self._kjv()
@@ -592,6 +596,74 @@ class Epito(object):
                                       ('strong', 'TEXT'), ('szo', 'TEXT')],
                    sorted(poz), SZARMAZTATOTT_LICENC['frazis_pozicio'],
                    ['igehely, oldal, sorszam', 'strong'])
+
+    # -- F95: szotari alak (DT-F95a) -------------------------------------------------------------
+    def _szotari_alak(self):
+        """A #94 kimenete (adat/szoto/karoli_szotari_alak.tsv, generalt) a pardes.db-be: szotari_alak
+        (alakszintu, kulcs: alak), szotari_kereso (NFC kisbetus keresoalak -> alak, mezok), a
+        szotari_token_kotojeles segedtabla (a token_karoli altal szetvagott kotojeles alakok darabjai) es
+        a token_karoli reszleges indexe a pontos-alak kapcsolasra. A `szoto/` alkonyvtarat az
+        _adat_tablak nem olvassa, ezert sajat metodus."""
+        lic = SZARMAZTATOTT_LICENC['szotari_alak']
+        if not self.licenc_ellenorzes('szotari_alak', lic):
+            return
+        fej, sorok = G.tsv_beolvas(os.path.join(self.adat, 'szoto', 'karoli_szotari_alak.tsv'))
+        oszl = ['alak', 'szotari_alak', 'szotari_alak_mai', 'alapige', 'tovabbi_elfogadhato', 'modszer',
+                'szabaly_forras', 'regies_jegy']
+        assert fej == oszl, fej
+        self.tabla('szotari_alak', [(o, 'TEXT') for o in oszl], (tuple(r[o] for o in oszl) for r in sorok),
+                   lic, ['szotari_alak'])
+        self.con.execute('CREATE UNIQUE INDEX "ux_szotari_alak_alak" ON "szotari_alak" (alak)')
+        # kereso: (NFC kisbetus keresoalak, alak) -> melyik mezo(k)bol szarmazik
+        sorrend = ('szotari', 'mai', 'alapige', 'tovabbi')
+        kereso = {}
+        for r in sorok:
+            ertekek = [('szotari', r['szotari_alak']), ('mai', r['szotari_alak_mai']), ('alapige', r['alapige'])]
+            if r['tovabbi_elfogadhato']:
+                ertekek += [('tovabbi', t) for t in r['tovabbi_elfogadhato'].split('|')]
+            for mezo, ertek in ertekek:
+                if ertek:
+                    kereso.setdefault((unicodedata.normalize('NFC', ertek).lower(), r['alak']), set()).add(mezo)
+        self.tabla('szotari_kereso', [('keresoalak', 'TEXT'), ('alak', 'TEXT'), ('mezok', 'TEXT')],
+                   ((k, a, ','.join(m for m in sorrend if m in ms)) for (k, a), ms in sorted(kereso.items())),
+                   SZARMAZTATOTT_LICENC['szotari_kereso'], ['keresoalak, alak'])
+        self.olvasoi_meta.append(('szotari_alak:forras_sor', str(len(sorok))))
+        if 'token_karoli' not in self.tablak:
+            return
+        self.con.execute('CREATE INDEX "ix_token_karoli_szo_hu" ON "token_karoli" (szo, igehely, sorszam) '
+                         "WHERE oldal='hu'")
+        alakok = {r['alak'] for r in sorok}
+        kotojeles = {a for a in alakok if '-' in a}
+        versek = {}
+        for f in sorted(glob.glob(os.path.join(self.adat, 'karoli_strong', 'szavak_*.tsv'))):
+            for r in G.tsv_beolvas(f)[1]:
+                if r['oldal'] == 'hu' and self._benne(r['vers']):
+                    versek.setdefault(r['vers'], []).append((int(r['sorszam']), r['szo']))
+        darabok, hu_db, nem_talal = set(), 0, 0
+        for ig, toks in versek.items():
+            toks.sort()
+            hu_db += len(toks)
+            nem_talal += sum(1 for _, sz in toks if sz not in alakok)
+            for k in (3, 2):
+                for st in range(0, len(toks) - k + 1):
+                    ablak = toks[st:st + k]
+                    alak = '-'.join(sz for _, sz in ablak)
+                    if alak in kotojeles:
+                        for n, sz in ablak:
+                            darabok.add((ig, n, alak, 1 if sz in alakok else 0))
+        tok_kulcs = {(ig, n) for ig, n, _, _ in darabok}
+        feloldott = {(ig, n) for ig, n, _, p in darabok if not p}
+        self.tabla('szotari_token_kotojeles', [('igehely', 'TEXT'), ('sorszam', 'INTEGER'), ('alak', 'TEXT'),
+                                               ('pontos_talalat', 'INTEGER')],
+                   sorted(darabok), SZARMAZTATOTT_LICENC['szotari_token_kotojeles'],
+                   ['igehely, sorszam', 'alak'])
+        self.olvasoi_meta += [
+            ('szotari_token:hu_token', str(hu_db)),
+            ('szotari_token:pontos_alak_nem_talal', str(nem_talal)),
+            ('szotari_token:kotojeles_darab_token', str(len(tok_kulcs))),
+            ('szotari_token:kotojeles_feloldott_nem_pontos', str(len(feloldott))),
+            ('szotari_token:nem_oldodik_fel', str(nem_talal - len(feloldott))),
+        ]
 
     # -- TSK, Karoli-KH, TIPNR ---------------------------------------------------
     def _kereszthivatkozasok(self):
