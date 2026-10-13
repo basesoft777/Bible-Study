@@ -109,14 +109,15 @@ def main():
     eredm = {}
     for kulcs, e in lemmak.items():
         L = e['L']
-        jelolt_alak = set().union(*(kimenet_alak.get(l, set()) for l in L))
+        jelolt_alak = sorted(set().union(*(kimenet_alak.get(l, set()) for l in L)))  # rendezett: determinisztikus
         st_szam = collections.Counter()
         for w in jelolt_alak:
             for st, n in alak_st[w].items():
                 for s in st:
                     if not GRAM.match(s):
                         st_szam[s] += n
-        fo = st_szam.most_common(1)[0][0] if st_szam else None
+        # egyenlő darabszámnál a kisebb Strong-szám (determinisztikus; korábban a halmaz bejárási sorrendje döntött)
+        fo = min(st_szam, key=lambda s: (-st_szam[s], s)) if st_szam else None
         r = {'cel': 0, 'fo': fo or '—', 'k': e['k'], 'alakok': e['alakok']}
         for v in VALTOZATOK:
             for m in 'abc':

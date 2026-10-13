@@ -34,6 +34,11 @@ A v2-höz képest (osztály- és szabályszintű javítások, F94_SZOTOVEZES_BRI
    -ik-es igénél `mult.E3` (tartózkodék), egyébként `mult.E1` (láték) — N-F94e, az első befagyasztás után javítva.
 A KIADOTT változat a CK (DT-F94e, a felhasználó döntése, 2026-10-13): a szótárialak-tábla (`szotari_alak_epit.py`) simplemma
 nélkül készül; az A (simplemmával) csak fejlesztési mérce.
+Az ELLENOR_F94 utáni javítás (F94.5, általános szabályok): R1 — névszóképzős tő (-ság/-ség, -mány/-mény, -vány/-vény,
+-alom/-elem; -ás/-és, ha előtte igető áll vagy a tő legalább 6 betű) nem régies igető; R2 — a birtokos névszó (a megnyújtott
+tő névszói raggal is áll) nem -a/-e, -ának/-ének igealak; a C/C+K-ban az -at/-et/-ot/-öt végű tőnél a névszóval közös
+-nak/-nek attesztáció nem elég (kivéve a -hat/-het, -tat/-tet igeképzőt); a csupasz-tő lépés igevizsgálata csak szigorú igei
+alakot néz; simplemma nélkül az -ás/-és/-ság/-ség képzős főnév ragos alakja attesztáció nélkül is szótári alakot kap.
 10. Szabályforrás (`szabaly_forras`): a helyesírási és tőváltó szabályoknál a szabályellenőrzés
    (`adat/szoto/szabaly_ellenorzes.tsv`, 2026-10-13) alátámasztott szabályai `korpusz_strong`, a cz → c `manual`
    (a felhasználó utasítása, 2026-10-13), a többi és az új szabályok `modell_ellenorizetlen`."""
@@ -311,7 +316,16 @@ def _att_igei(c):
         return True
     if len(c) <= 3:
         return False
-    return not _nevszoi(c) and any(_att(c, v) for v in IGEI_ATTEST_FELTETELES)
+    # a gyenge, névszóval közös -nak/-nek/-tok/-tek/-tök attesztáció csak az A-ban (ott a simplemma igei tudása is dönt);
+    # a C/C+K-ban kimarad (ELLENOR_F94: ritka névszónál átengedte a tövet, pl. felekezet-nek, születés-ének)
+    if _nevszoi(c) or not any(_att(c, v) for v in IGEI_ATTEST_FELTETELES):
+        return False
+    if _VALTOZAT == 'A':
+        return True
+    # C/C+K (ELLENOR_F94): az -at/-et/-ot/-öt végű tőnél (a névszóképző -at/-et osztálya: felekezet, gyülekezet) a
+    # névszóval közös végződés nem elég, szigorú igei alak kell (az ilyen igéknek — mutat, szeret — van)
+    # (a -hat/-het és a -tat/-tet igeképző kivétel: szólhat, megfelelhet, elemésztet)
+    return not re.search(r'(at|et|ot|öt)$', c) or bool(re.search(r'(hat|het|tat|tet)$', c))
 
 
 def _ik_ige(c):
@@ -493,6 +507,12 @@ def _nevszo_to(w, nev=False, szigoru=False, laza=False):
                 elif nev:
                     if t2 in NAGY_BELUL and len(t2) >= 2:
                         jeloltek.append(t2)
+                elif (laza and _VALTOZAT != 'A' and bh and len(t2) >= 5 and KIS.get(t2, 0) < 2
+                      and re.search(r'(ás|és|ság|ség)$', t2)):
+                    # simplemma nélkül: -ás/-és/-ság/-ség képzős főnév birtokos/ragos alakja attesztáció nélkül is
+                    # (dicsekvés-ének, születés-e); a csupasz-tő lépés -a/-e szabályának párja
+                    jeloltek.append(t2)
+                    rovid_ok.add(t2)
                 elif t2 in KIS and len(t2) >= 3 and (
                         (_ismert(t2) and _lem(t2) == t2) or (laza and not _ismert(t2) and KIS[t2] >= 2)):
                     jeloltek.append(t2)
@@ -522,7 +542,7 @@ def _csupasz(t, nev=False):
     Károliban önállóan előfordul, legalább harmadannyiszor, mint t, akkor a csupasz tövet adja. A puszta -a/-e
     birtokos jelnél a tő legalább 4 betű (a v2 feltétele), a többinél legalább 3."""
     lex = NAGY_BELUL if nev else KIS
-    if not nev and (_att_igei(t) or any(_att(t, v) for v in ('ja', 'je', 'ják', 'jék', 'ta', 'te', 'ták', 'ték', 'á', 'é'))):
+    if not nev and (any(_att(t, v) for v in IGEI_ATTEST) or any(_att(t, v) for v in ('ja', 'je', 'ják', 'jék', 'ta', 'te', 'ták', 'ték', 'á', 'é'))):
         return t  # igeként igazolt tő (fogad, marad, tagad): nem birtokos alak
     for b in _CSUPASZ_BIRT:
         if t.endswith(b) and len(t) > len(b):
@@ -603,6 +623,12 @@ def _regies_ige(w2):
         # az -a/-e (múlt, alanyi) csak akkor, ha az alak nem ismert névszó (fia, keze, háza)
         if v in (r'a$', r'e$') and _ismert(w2):
             continue
+        if re.search(r'(ság|ség|mány|mény|vány|vény|alom|elem)$', c) or (
+                re.search(r'(ás|és)$', c) and (len(c) >= 6 or _att_igei(c[:-2]))):
+            continue  # R1 (ELLENOR_F94): névszóképzős tő nem igető (születés-e, lakosság-a, teremtés-ének); a rövid ás/vés ige marad
+        if v in (r'ának$', r'ének$', r'a$', r'e$') and any(
+                (c + ('á' if v in (r'ának$', r'a$') else 'é') + r) in KIS for r in _ESETRAG + ('t', 'vel', 'val')):
+            continue  # R2 (ELLENOR_F94): birtokos névszó — a megnyújtott tő névszói raggal is áll (felekezeté-ben)
         if v in (r'ának$', r'ének$', r'a$', r'e$') and any((c + r) in KIS for r in _ESETRAG):
             continue  # a tő egyértelmű névszói esetraggal is előfordul (fej-re, szív-ben): fejének, szívének névszó
         if v in (r'ál$', r'él$', r'ék$') and _nevszoi(w2):

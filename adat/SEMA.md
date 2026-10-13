@@ -1171,12 +1171,12 @@ A Károli szóalakjainak **szótári alakja** (lemma; nem nyelvtani szótő, DT1
 | `kategoria` | réteg: `gyakori` \| `ragos_nevszo` \| `regies_ige` \| `regies_helyesiras` \| `ige_mai_alak` \| `tulajdonnev` (a mintavétel rétege, nem a helyes elemzés: pl. a 3. mintában a *Mutassa* `tulajdonnev` rétegből jött) |
 | `szotari_alak` | a szótári alak Károli-helyesírással (DT130 (1)–(9)); névnél a Károli-átírás (5) |
 | `szotari_alak_mai` | ugyanez mai helyesírással (*mely* → *amely*, *orca* → *arc*); a kereső mindkettőre talál (DT130 (1)) |
-| `alapige` | igénél az igekötő és a képző nélküli ige (DT130 (4), (10)); a 3. minta konvenciója szerint üres, ha nem ige, vagy azonos a szótári alakkal. *Az 1. minta a forrás szerint minden sorban kitölti, a 2. mintának nincs ilyen oszlopa (üres) — l. `naplok/SZOTOVEZES_meres.md` 5. szakasz, E-7, E-8.* |
+| `alapige` | igénél az igekötő és a képző nélküli ige (DT130 (4), (10)); üres, ha nem ige, vagy azonos a szótári alakkal (mind a négy mintában; az 1. és 2. mintát a DT-F94a E-7/E-8 erre a konvencióra igazította: a 2. minta igekötős igéi alapigét kaptak, az 1. minta azonos értékű alapigéi kiürültek — `naplok/SZOTOVEZES_meres.md` 5.1). |
 | `tovabbi_elfogadhato` | a mérésben szintén helyes további alakok `\|`-vel (kétértelmű alak másik olvasata, DT130 (11); képzett igénél az alapige, (10)); üres, ha nincs |
 | `ellenorzes` | **kötelező, nem üres:** `felhasznalo` (a felhasználó a sort ellenőrizte vagy eldöntötte) \| `modell_ellenorizetlen` (a felhasználó „mehet”-tel engedte, a sort nem nézte). **Nem „ellenőrizve”.** A mérés (`meres.py`) a negyedik mintán csak a `felhasznalo` sorokat veszi. Az `ellenorzes` oszlopot a felhasználó tölti, a modell soha (F94.3). |
 | `indoklas` | a szótári alak indoklása (modell, manual); a 3. mintában a soronkénti, nem általános felhasználói döntés szó szerint, `[döntés: …]` alakban a végén |
 | `pelda_igehely` | egy előfordulás (`IGEHELY`, 1.1) |
-| `strong` | a példa-előfordulás Strong-párja(i) a régi `token_karoli`-ból (1–2. minta); a 3. mintában üres (a forrás nem hordozta) |
+| `strong` | a példa-előfordulás Strong-párja(i) a repó Károli–Strong párosításából (`adat/karoli_strong/szavak_<könyv>.tsv`, SEMA 2.20; modell-kimenet, javaslat; `eszkozok/szoto/minta_strong.py`, F94.1b, illetve `minta4_ir.py`); üres, ha a token betoldás, vagy a könyv nincs párosítva (a 3. minta: a forrás nem hordozta; a 4. mintában az Mk, Ján, Róm, Jel) |
 
 **Generált táblák (F94.1–.3; kézzel nem szerkeszthetők, a javítás a kivételtáblában vagy a szabályban történik):**
 
