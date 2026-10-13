@@ -1,90 +1,90 @@
 # proveniencia: scope=1Móz 1–25 Károli-szóalakjai (token_karoli, oldal=hu), rétegzett válogatás; a gyakoriság az 1Móz 1–25-ön belüli | forras=szoto_aranyminta_tervezet.tsv (sha256:11e8151172fc1310f3e46d6f82b4e7e9da1eb0c3587731746f3860d5a7e7d551; a repón kívüli előmérés, 2026-10-12/13; átvétel: eszkozok/szoto/minta_atvetel.py, F94.0) | ts=2026-10-13T12:05Z
-# allapot: fejlesztési halmaz (a hibrid v1/v2 ezen hangolva); a szótári alakok modell-javaslatok, a felhasználó a sorokat nem nézte („mehet”): ellenorzes=modell_ellenorizetlen; felhasznalo 0, modell_ellenorizetlen 213
+# allapot: fejlesztési halmaz (a hibrid v1/v2 ezen hangolva); a szótári alakok modell-javaslatok, a felhasználó a sorokat nem nézte („mehet”): ellenorzes=modell_ellenorizetlen; javítva a DT-F94a/b szerint (F94.0f, eszkozok/szoto/minta_javit_f94a.py); felhasznalo 3, modell_ellenorizetlen 210
 # a forrás saját fejléce (szó szerint): proveniencia: scope=1Móz 1–25 Károli-szóalakok (token_karoli, oldal=hu), rétegzett válogatás | forras=pardes.db (2026-10-12T08:27:32Z) + kézi tő-javaslat (modell: claude-opus-5-5, ellenőrizetlen) | ts=2026-10-13 // dontesek (a felhasznalo, chat, 2026-10-13, mind az ot javaslat elfogadva): (1) a keresés a mai helyesírású alakra is talál (to_mai); (2) ugyanazon szó régi és mai alakja egy tő (mely/amely, mostan/most), két külön szó nem (esztendő/év, atya/apa); (3) a névmás töve a személyes névmás (néki, vele, nékik -> ő); (4) az ige töve az igekötős ige (elmegy), az alapige külön oszlopban (megy), a keresés mindkettőre talál; (5) a tulajdonnév Károli átírásában marad, csak a rag válik le
 alak	gyakorisag	kategoria	szotari_alak	szotari_alak_mai	alapige	tovabbi_elfogadhato	ellenorzes	indoklas	pelda_igehely	strong
-a	817	gyakori	a	a	a		modell_ellenorizetlen	névelő	1Móz 1:1	
-és	798	gyakori	és	és	és		modell_ellenorizetlen	kötőszó	1Móz 1:1	H9002
-az	661	gyakori	az	az	az		modell_ellenorizetlen	névelő vagy mutató névmás; itt kétértelmű	1Móz 1:1	
-ő	247	gyakori	ő	ő	ő		modell_ellenorizetlen	személyes névmás	1Móz 1:11	H9023
-pedig	199	gyakori	pedig	pedig	pedig		modell_ellenorizetlen	kötőszó	1Móz 1:2	H9002
-vala	189	gyakori	van	van	van		modell_ellenorizetlen	múlt idejű létige / segédige (volt)	1Móz 1:2	
-én	138	gyakori	én	én	én		modell_ellenorizetlen		1Móz 4:9	H9020
-monda	133	gyakori	mond	mond	mond		modell_ellenorizetlen	régies múlt (mondta)	1Móz 1:3	H0559
-hogy	131	gyakori	hogy	hogy	hogy		modell_ellenorizetlen		1Móz 1:4	H9005
-te	128	gyakori	te	te	te		modell_ellenorizetlen		1Móz 3:15	H9021
-minden	80	gyakori	minden	minden	minden		modell_ellenorizetlen		1Móz 1:29	H3605
-is	69	gyakori	is	is	is		modell_ellenorizetlen		1Móz 1:22	H1571
-meg	64	gyakori	meg	meg	meg		modell_ellenorizetlen	igekötő külön írva	1Móz 1:9	H8085
-azért	59	gyakori	azért	azért	azért		modell_ellenorizetlen		1Móz 3:6	
-néki	58	gyakori	ő	ő	ő		modell_ellenorizetlen	régies „neki”; a tő a névmás (ő), névmásragos alak	1Móz 1:11	H9005+H9033
-lőn	55	gyakori	lesz	lesz	lesz		modell_ellenorizetlen	régies múlt (lett)	1Móz 1:3	H1961
-nem	55	gyakori	nem	nem	nem		modell_ellenorizetlen		1Móz 2:5	H3808
-van	51	gyakori	van	van	van		modell_ellenorizetlen		1Móz 1:12	
-azt	47	gyakori	az	az	az		modell_ellenorizetlen	mutató névmás tárgyesete	1Móz 2:3	
-ki	45	gyakori	ki	ki	ki		modell_ellenorizetlen	vonatkozó névmás vagy igekötő; kétértelmű	1Móz 2:5	H0834
-mert	43	gyakori	mert	mert	mert		modell_ellenorizetlen		1Móz 2:5	H3588
-mely	40	gyakori	mely	amely	amely		modell_ellenorizetlen	régies vonatkozó névmás	1Móz 1:6	H0834
-egész	40	gyakori	egész	egész	egész		modell_ellenorizetlen		1Móz 1:26	H3605
-föld	37	gyakori	föld	föld	föld		modell_ellenorizetlen		1Móz 1:2	H0776
-el	37	gyakori	el	el	el		modell_ellenorizetlen	igekötő külön írva	1Móz 3:13	H1980
-egy	36	gyakori	egy	egy	egy		modell_ellenorizetlen		1Móz 1:9	
-s	32	gyakori	s	s	s		modell_ellenorizetlen	kötőszó (és)	1Móz 2:5	H9001
-szerint	31	gyakori	szerint	szerint	szerint		modell_ellenorizetlen	névutó	1Móz 1:11	H9005
-ott	31	gyakori	ott	ott	ott		modell_ellenorizetlen		1Móz 2:12	H8033
-mikor	29	gyakori	mikor	mikor	mikor		modell_ellenorizetlen		1Móz 2:4	H9003
-annak	29	gyakori	az	az	az		modell_ellenorizetlen	mutató névmás részeshatározója	1Móz 2:12	H9023
-ne	29	gyakori	ne	ne	ne		modell_ellenorizetlen		1Móz 2:17	H3808
-között	28	gyakori	között	között	között		modell_ellenorizetlen	névutó	1Móz 1:6	H0996
-való	28	gyakori	való	való	való		modell_ellenorizetlen	melléknévi igenév (van)	1Móz 1:7	
-mint	28	gyakori	mint	mint	mint		modell_ellenorizetlen		1Móz 3:5	H9004
-melyet	27	gyakori	mely	amely	amely		modell_ellenorizetlen		1Móz 2:2	H0834
-ez	27	gyakori	ez	ez	ez		modell_ellenorizetlen		1Móz 2:11	H1931
-fiai	27	gyakori	fiú	fiú	fiú		modell_ellenorizetlen	birtokos többes (a fiai); tő: fiú	1Móz 6:2	H1121
-őt	25	gyakori	ő	ő	ő		modell_ellenorizetlen		1Móz 1:27	H9033
-esztendős	25	gyakori	esztendős	esztendős	esztendős		modell_ellenorizetlen		1Móz 5:32	H8141
-mondván	24	gyakori	mond	mond	mond		modell_ellenorizetlen	határozói igenév	1Móz 1:22	H9005+H0559
-vele	24	gyakori	ő	ő	ő		modell_ellenorizetlen	névmásragos alak (vele)	1Móz 3:6	H0854+H9033
-földnek	23	gyakori	föld	föld	föld		modell_ellenorizetlen		1Móz 1:10	H0776
-mind	23	gyakori	mind	mind	mind		modell_ellenorizetlen		1Móz 1:26	H3605
-sem	23	gyakori	sem	sem	sem		modell_ellenorizetlen		1Móz 2:5	H3808
-be	22	gyakori	be	be	be		modell_ellenorizetlen	igekötő	1Móz 1:22	H0935
-ímé	22	gyakori	ím	íme	íme		modell_ellenorizetlen	régies indulatszó	1Móz 1:31	H2009
-ember	22	gyakori	ember	ember	ember		modell_ellenorizetlen		1Móz 2:5	H0120
-előtt	22	gyakori	előtt	előtt	előtt		modell_ellenorizetlen	névutó	1Móz 4:7	H9005
-kik	22	gyakori	ki	aki	aki		modell_ellenorizetlen	vonatkozó névmás többes	1Móz 6:4	H0834
-ti	21	gyakori	ti	ti	ti		modell_ellenorizetlen		1Móz 3:5	H9026
-nevét	21	gyakori	név	név	név		modell_ellenorizetlen	birtokos tárgy (a nevét)	1Móz 4:25	H8034+H9023
-legyen	20	gyakori	lesz	lesz	lesz		modell_ellenorizetlen	felszólító mód	1Móz 1:11	H1961
-nemze	20	gyakori	nemz	nemz	nemz		modell_ellenorizetlen	régies múlt	1Móz 5:3	H3205
-minekutánna	20	gyakori	minekutánna	miután	miután		modell_ellenorizetlen	régies kötőszó	1Móz 5:4	H0310
-nemzé	36	regies_ige	nemz	nemz	nemz		modell_ellenorizetlen	régies múlt, tárgyas (nemzette)	1Móz 4:18	H3205
-nevezé	18	regies_ige	nevez	nevez	nevez		modell_ellenorizetlen	régies múlt	1Móz 1:5	H7121
-valának	18	regies_ige	van	van	van		modell_ellenorizetlen	régies múlt, többes (voltak)	1Móz 4:8	
-látá	17	regies_ige	lát	lát	lát		modell_ellenorizetlen	régies múlt	1Móz 1:4	H7200
-mondának	10	regies_ige	mond	mond	mond		modell_ellenorizetlen	régies múlt, többes	1Móz 11:3	H0559
-teremté	9	regies_ige	teremt	teremt	teremt		modell_ellenorizetlen	régies múlt	1Móz 1:1	H1254
-szűlé	8	regies_ige	szül	szül	szül		modell_ellenorizetlen	régies helyesírás (szűl) + régies múlt	1Móz 4:2	H3205
+a	817	gyakori	a	a			modell_ellenorizetlen	névelő	1Móz 1:1	
+és	798	gyakori	és	és			modell_ellenorizetlen	kötőszó	1Móz 1:1	H9002
+az	661	gyakori	az	az			modell_ellenorizetlen	névelő vagy mutató névmás; itt kétértelmű	1Móz 1:1	
+ő	247	gyakori	ő	ő			modell_ellenorizetlen	személyes névmás	1Móz 1:11	H9023
+pedig	199	gyakori	pedig	pedig			modell_ellenorizetlen	kötőszó	1Móz 1:2	H9002
+vala	189	gyakori	van	van			modell_ellenorizetlen	múlt idejű létige / segédige (volt)	1Móz 1:2	
+én	138	gyakori	én	én			modell_ellenorizetlen		1Móz 4:9	H9020
+monda	133	gyakori	mond	mond			modell_ellenorizetlen	régies múlt (mondta)	1Móz 1:3	H0559
+hogy	131	gyakori	hogy	hogy			modell_ellenorizetlen		1Móz 1:4	H9005
+te	128	gyakori	te	te			modell_ellenorizetlen		1Móz 3:15	H9021
+minden	80	gyakori	minden	minden			modell_ellenorizetlen		1Móz 1:29	H3605
+is	69	gyakori	is	is			modell_ellenorizetlen		1Móz 1:22	H1571
+meg	64	gyakori	meg	meg			modell_ellenorizetlen	igekötő külön írva	1Móz 1:9	H8085
+azért	59	gyakori	azért	azért			modell_ellenorizetlen		1Móz 3:6	
+néki	58	gyakori	ő	ő			modell_ellenorizetlen	régies „neki”; a tő a névmás (ő), névmásragos alak	1Móz 1:11	H9005+H9033
+lőn	55	gyakori	lesz	lesz			modell_ellenorizetlen	régies múlt (lett)	1Móz 1:3	H1961
+nem	55	gyakori	nem	nem			modell_ellenorizetlen		1Móz 2:5	H3808
+van	51	gyakori	van	van			modell_ellenorizetlen		1Móz 1:12	
+azt	47	gyakori	az	az			modell_ellenorizetlen	mutató névmás tárgyesete	1Móz 2:3	
+ki	45	gyakori	ki	ki		aki	felhasznalo	vonatkozó névmás vagy igekötő; kétértelmű [döntés 2026-10-13 (DT-F94a): három olvasat — igekötő (1Móz 2:5 „hajtott ki”), kérdő névmás (Ézs 41:26 „Ki jelenté meg”), vonatkozó névmás (1Móz 2:5 „ki a földet művelje”, mai alakja: aki)]	1Móz 2:5	H0834
+mert	43	gyakori	mert	mert			modell_ellenorizetlen		1Móz 2:5	H3588
+mely	40	gyakori	mely	amely			modell_ellenorizetlen	régies vonatkozó névmás	1Móz 1:6	H0834
+egész	40	gyakori	egész	egész			modell_ellenorizetlen		1Móz 1:26	H3605
+föld	37	gyakori	föld	föld			modell_ellenorizetlen		1Móz 1:2	H0776
+el	37	gyakori	el	el			modell_ellenorizetlen	igekötő külön írva	1Móz 3:13	H1980
+egy	36	gyakori	egy	egy			modell_ellenorizetlen		1Móz 1:9	
+s	32	gyakori	s	s			modell_ellenorizetlen	kötőszó (és)	1Móz 2:5	H9001
+szerint	31	gyakori	szerint	szerint			modell_ellenorizetlen	névutó	1Móz 1:11	H9005
+ott	31	gyakori	ott	ott			modell_ellenorizetlen		1Móz 2:12	H8033
+mikor	29	gyakori	mikor	mikor			modell_ellenorizetlen		1Móz 2:4	H9003
+annak	29	gyakori	az	az			modell_ellenorizetlen	mutató névmás részeshatározója	1Móz 2:12	H9023
+ne	29	gyakori	ne	ne			modell_ellenorizetlen		1Móz 2:17	H3808
+között	28	gyakori	között	között			modell_ellenorizetlen	névutó	1Móz 1:6	H0996
+való	28	gyakori	való	való			modell_ellenorizetlen	melléknévi igenév (van)	1Móz 1:7	
+mint	28	gyakori	mint	mint			modell_ellenorizetlen		1Móz 3:5	H9004
+melyet	27	gyakori	mely	amely			modell_ellenorizetlen		1Móz 2:2	H0834
+ez	27	gyakori	ez	ez			modell_ellenorizetlen		1Móz 2:11	H1931
+fiai	27	gyakori	fiú	fiú			modell_ellenorizetlen	birtokos többes (a fiai); tő: fiú	1Móz 6:2	H1121
+őt	25	gyakori	ő	ő			modell_ellenorizetlen		1Móz 1:27	H9033
+esztendős	25	gyakori	esztendős	esztendős			modell_ellenorizetlen		1Móz 5:32	H8141
+mondván	24	gyakori	mond	mond			modell_ellenorizetlen	határozói igenév	1Móz 1:22	H9005+H0559
+vele	24	gyakori	ő	ő			modell_ellenorizetlen	névmásragos alak (vele)	1Móz 3:6	H0854+H9033
+földnek	23	gyakori	föld	föld			modell_ellenorizetlen		1Móz 1:10	H0776
+mind	23	gyakori	mind	mind			modell_ellenorizetlen		1Móz 1:26	H3605
+sem	23	gyakori	sem	sem			modell_ellenorizetlen		1Móz 2:5	H3808
+be	22	gyakori	be	be			modell_ellenorizetlen	igekötő	1Móz 1:22	H0935
+ímé	22	gyakori	ím	íme			modell_ellenorizetlen	régies indulatszó	1Móz 1:31	H2009
+ember	22	gyakori	ember	ember			modell_ellenorizetlen		1Móz 2:5	H0120
+előtt	22	gyakori	előtt	előtt			modell_ellenorizetlen	névutó	1Móz 4:7	H9005
+kik	22	gyakori	ki	aki			modell_ellenorizetlen	vonatkozó névmás többes	1Móz 6:4	H0834
+ti	21	gyakori	ti	ti			modell_ellenorizetlen		1Móz 3:5	H9026
+nevét	21	gyakori	név	név			modell_ellenorizetlen	birtokos tárgy (a nevét)	1Móz 4:25	H8034+H9023
+legyen	20	gyakori	lesz	lesz			modell_ellenorizetlen	felszólító mód	1Móz 1:11	H1961
+nemze	20	gyakori	nemz	nemz			modell_ellenorizetlen	régies múlt	1Móz 5:3	H3205
+minekutánna	20	gyakori	minekutánna	miután			modell_ellenorizetlen	régies kötőszó	1Móz 5:4	H0310
+nemzé	36	regies_ige	nemz	nemz			modell_ellenorizetlen	régies múlt, tárgyas (nemzette)	1Móz 4:18	H3205
+nevezé	18	regies_ige	nevez	nevez			modell_ellenorizetlen	régies múlt	1Móz 1:5	H7121
+valának	18	regies_ige	van	van			modell_ellenorizetlen	régies múlt, többes (voltak)	1Móz 4:8	
+látá	17	regies_ige	lát	lát			modell_ellenorizetlen	régies múlt	1Móz 1:4	H7200
+mondának	10	regies_ige	mond	mond			modell_ellenorizetlen	régies múlt, többes	1Móz 11:3	H0559
+teremté	9	regies_ige	teremt	teremt			modell_ellenorizetlen	régies múlt	1Móz 1:1	H1254
+szűlé	8	regies_ige	szül	szül			modell_ellenorizetlen	régies helyesírás (szűl) + régies múlt	1Móz 4:2	H3205
 megáldá	7	regies_ige	megáld	megáld	áld		modell_ellenorizetlen	igekötős régies múlt	1Móz 1:22	H1288
-vevé	6	regies_ige	vesz	vesz	vesz		modell_ellenorizetlen	régies múlt (vette); tőváltó ige	1Móz 2:15	H3947
-helyezteté	5	regies_ige	helyeztet	helyeztet	helyeztet		modell_ellenorizetlen	régies múlt, műveltető	1Móz 1:17	H5414
+vevé	6	regies_ige	vesz	vesz			modell_ellenorizetlen	régies múlt (vette); tőváltó ige	1Móz 2:15	H3947
+helyezteté	5	regies_ige	helyeztet	helyez	helyez		felhasznalo	régies múlt, műveltető [döntés 2026-10-13 (DT-F94a): nem műveltető (H5414 Qal); mai alak és alapige: helyez; a -tat/-tet nem általános szabály, alakonként dől el]	1Móz 1:17	H5414
 felemelé	5	regies_ige	felemel	felemel	emel		modell_ellenorizetlen		1Móz 18:2	H5375
-mondá	4	regies_ige	mond	mond	mond		modell_ellenorizetlen		1Móz 3:3	H0559
-ismeré	4	regies_ige	ismer	ismer	ismer		modell_ellenorizetlen		1Móz 4:1	H3045
+mondá	4	regies_ige	mond	mond			modell_ellenorizetlen		1Móz 3:3	H0559
+ismeré	4	regies_ige	ismer	ismer			modell_ellenorizetlen		1Móz 4:1	H3045
 elmenének	4	regies_ige	elmegy	elmegy	megy		modell_ellenorizetlen	régies múlt, többes (elmentek); tőváltó	1Móz 8:3	H1980
 meghajtá	4	regies_ige	meghajt	meghajt	hajt		modell_ellenorizetlen		1Móz 18:2	H7812
-születének	3	regies_ige	születik	születik	születik		modell_ellenorizetlen	régies múlt, többes	1Móz 6:1	H3205
-vevének	3	regies_ige	vesz	vesz	vesz		modell_ellenorizetlen	régies múlt, többes; tőváltó	1Móz 6:2	H1396
-nevekedének	3	regies_ige	nevekedik	növekedik	növekedik		modell_ellenorizetlen	régies helyesírás és múlt	1Móz 7:17	H9001+H7235
+születének	3	regies_ige	születik	születik			felhasznalo	régies múlt, többes [döntés 2026-10-13 (DT-F94a): változatlan, önálló -ik-es ige, nem szenvedő képzés]	1Móz 6:1	H3205
+vevének	3	regies_ige	vesz	vesz			modell_ellenorizetlen	régies múlt, többes; tőváltó	1Móz 6:2	H1396
+nevekedének	3	regies_ige	nevekedik	növekedik			modell_ellenorizetlen	régies helyesírás és múlt	1Móz 7:17	H9001+H7235
 kibocsátá	3	regies_ige	kibocsát	kibocsát	bocsát		modell_ellenorizetlen		1Móz 8:7	H7971
 meglátá	3	regies_ige	meglát	meglát	lát		modell_ellenorizetlen		1Móz 9:22	H7200
-hívá	3	regies_ige	hív	hív	hív		modell_ellenorizetlen		1Móz 12:8	H7121
+hívá	3	regies_ige	hív	hív			modell_ellenorizetlen		1Móz 12:8	H7121
 körűlmetélé	3	regies_helyesiras	körülmetél	körülmetél	metél		modell_ellenorizetlen	lásd régies ige	1Móz 17:23	H4135
 feltevé	3	regies_ige	feltesz	feltesz	tesz		modell_ellenorizetlen	tőváltó	1Móz 21:14	H7760
 elválasztá	2	regies_ige	elválaszt	elválaszt	választ		modell_ellenorizetlen		1Móz 1:4	H0914
 elvégezé	2	regies_ige	elvégez	elvégez	végez		modell_ellenorizetlen		1Móz 2:2	H3615
 megnyilatkozának	2	regies_ige	megnyilatkozik	megnyilatkozik	nyilatkozik		modell_ellenorizetlen		1Móz 3:7	H6491
-szűlének	2	regies_ige	szül	szül	szül		modell_ellenorizetlen	régies helyesírás és múlt	1Móz 6:4	H3205
-talála	2	regies_ige	talál	talál	talál		modell_ellenorizetlen		1Móz 6:8	H4672
+szűlének	2	regies_ige	szül	szül			modell_ellenorizetlen	régies helyesírás és múlt	1Móz 6:4	H3205
+talála	2	regies_ige	talál	talál			modell_ellenorizetlen		1Móz 6:8	H4672
 bemenének	2	regies_ige	bemegy	bemegy	megy		modell_ellenorizetlen	tőváltó	1Móz 7:16	H0935
 felszáradának	2	regies_ige	felszárad	felszárad	szárad		modell_ellenorizetlen		1Móz 8:7	H3001
 megtudá	2	regies_ige	megtud	megtud	tud		modell_ellenorizetlen		1Móz 8:11	H3045
@@ -92,126 +92,126 @@ letelepedének	2	regies_ige	letelepedik	letelepedik	telepedik		modell_ellenorize
 felvevé	2	regies_ige	felvesz	felvesz	vesz		modell_ellenorizetlen	tőváltó	1Móz 11:31	H3947
 eljutának	2	regies_ige	eljut	eljut	jut		modell_ellenorizetlen		1Móz 11:31	H0935
 megveré	2	regies_ige	megver	megver	ver		modell_ellenorizetlen		1Móz 12:17	H5060
-menének	2	regies_ige	megy	megy	megy		modell_ellenorizetlen	tőváltó	1Móz 14:7	H0935
-esének	2	regies_ige	esik	esik	esik		modell_ellenorizetlen		1Móz 14:10	H5307
+menének	2	regies_ige	megy	megy			modell_ellenorizetlen	tőváltó	1Móz 14:7	H0935
+esének	2	regies_ige	esik	esik			modell_ellenorizetlen		1Móz 14:10	H5307
 meghallá	2	regies_ige	meghall	meghall	hall		modell_ellenorizetlen		1Móz 14:14	H8085
 visszahozá	2	regies_ige	visszahoz	visszahoz	hoz		modell_ellenorizetlen		1Móz 14:16	H7725
-evének	2	regies_ige	eszik	eszik	eszik		modell_ellenorizetlen	tőváltó (ettek)	1Móz 18:8	H0398
+evének	2	regies_ige	eszik	eszik			modell_ellenorizetlen	tőváltó (ettek)	1Móz 18:8	H0398
 elsűlyeszté	2	regies_ige	elsüllyeszt	elsüllyeszt	süllyeszt		modell_ellenorizetlen	régies helyesírás	1Móz 19:25	H2015
 elbeszélé	2	regies_ige	elbeszél	elbeszél	beszél		modell_ellenorizetlen		1Móz 20:8	H1696
 megtölté	2	regies_ige	megtölt	megtölt	tölt		modell_ellenorizetlen		1Móz 21:19	H4390
-Monda	16	regies_ige	mond	mond	mond		modell_ellenorizetlen	mondatkezdő nagybetű	1Móz 4:10	H9001+H0559
-Lőn	5	regies_ige	lesz	lesz	lesz		modell_ellenorizetlen	mondatkezdő nagybetű	1Móz 4:3	H1961
-Éle	9	regies_ige	él	él	él		modell_ellenorizetlen	mondatkezdő; régies múlt (élt)	1Móz 5:6	H2421
-setétség	3	regies_helyesiras	setétség	sötétség	sötétség		modell_ellenorizetlen	régies helyesírás	1Móz 1:2	H2822
-setétségtől	2	regies_helyesiras	setétség	sötétség	sötétség		modell_ellenorizetlen		1Móz 1:4	H9002+H0996+H2822
-nékik	8	regies_helyesiras	ő	ő	ő		modell_ellenorizetlen	régies „nekik”	1Móz 1:28	H9005+H9038
-őnéki	8	regies_helyesiras	ő	ő	ő		modell_ellenorizetlen	nyomatékos névmás	1Móz 7:16	H9005+H9033
-nemzetségei	6	regies_helyesiras	nemzetség	nemzetség	nemzetség		modell_ellenorizetlen	birtokos többes	1Móz 10:18	H4940
-nemzetségök	4	regies_helyesiras	nemzetség	nemzetség	nemzetség		modell_ellenorizetlen	régies birtokos személyrag (-ök = -ük)	1Móz 10:20	H1471+H9028
-szövetségemet	6	regies_helyesiras	szövetség	szövetség	szövetség		modell_ellenorizetlen	birtokos tárgy	1Móz 17:2	H1285+H9020
-szövetségűl	3	regies_helyesiras	szövetség	szövetség	szövetség		modell_ellenorizetlen	régies helyesírás (-űl = -ül), határozórag	1Móz 17:7	H9005+H1285
-segítségűl	3	regies_helyesiras	segítség	segítség	segítség		modell_ellenorizetlen	régies helyesírás (-űl)	1Móz 12:8	H9003
-Mostan	3	regies_helyesiras	mostan	most	most		modell_ellenorizetlen	régies határozószó	1Móz 4:11	H9002+H6258
-esztendőt	12	regies_helyesiras	esztendő	esztendő	esztendő		modell_ellenorizetlen	régies szó; a mai „év” más szó, nem tő	1Móz 5:3	H8141
-reggel	12	regies_helyesiras	reggel	reggel	reggel		modell_ellenorizetlen		1Móz 1:5	H1242
-asszonynyá	3	regies_helyesiras	asszony	asszony	asszony		modell_ellenorizetlen	régies helyesírás (nyny = nny), átváltozás-rag	1Móz 1:27	H5347
-földön	41	ragos_nevszo	föld	föld	föld		modell_ellenorizetlen		1Móz 1:11	H9003+H0776
-földet	14	ragos_nevszo	föld	föld	föld		modell_ellenorizetlen		1Móz 1:1	H0776
-földre	14	ragos_nevszo	föld	föld	föld		modell_ellenorizetlen		1Móz 1:15	H5921+H0776
-földről	9	ragos_nevszo	föld	föld	föld		modell_ellenorizetlen		1Móz 2:6	H9006+H5921+H0776
-földére	5	ragos_nevszo	föld	föld	föld		modell_ellenorizetlen	birtokos + rag	1Móz 11:31	H0776+H9011
-fiakat	19	ragos_nevszo	fiú	fiú	fiú		modell_ellenorizetlen	tőváltó (fi-)	1Móz 5:4	H1121
-leányokat	17	ragos_nevszo	leány	lány	lány		modell_ellenorizetlen	régies szóalak (a „lány” ennek összevont alakja)	1Móz 5:4	H1323
-fiainak	15	ragos_nevszo	fiú	fiú	fiú		modell_ellenorizetlen		1Móz 7:7	H1121
-fiának	11	ragos_nevszo	fiú	fiú	fiú		modell_ellenorizetlen		1Móz 4:17	H1121+H9023
-fiamnak	6	ragos_nevszo	fiú	fiú	fiú		modell_ellenorizetlen		1Móz 24:3	H9005+H1121+H9020
-életének	14	ragos_nevszo	élet	élet	élet		modell_ellenorizetlen		1Móz 5:5	H3117
-életben	5	ragos_nevszo	élet	élet	élet		modell_ellenorizetlen		1Móz 6:19	H2421
-feleséget	10	ragos_nevszo	feleség	feleség	feleség		modell_ellenorizetlen		1Móz 4:19	H0802
-feleségének	6	ragos_nevszo	feleség	feleség	feleség		modell_ellenorizetlen		1Móz 3:21	H0802
-vizet	8	ragos_nevszo	víz	víz	víz		modell_ellenorizetlen	tőváltó (viz-)	1Móz 18:4	H4325
-fűvet	6	ragos_nevszo	fű	fű	fű		modell_ellenorizetlen	tőváltó (füv-)	1Móz 1:11	H6212
-állatokat	6	ragos_nevszo	állat	állat	állat		modell_ellenorizetlen		1Móz 1:21	H7431
-állatot	4	ragos_nevszo	állat	állat	állat		modell_ellenorizetlen		1Móz 7:4	H3351
-embernek	6	ragos_nevszo	ember	ember	ember		modell_ellenorizetlen		1Móz 2:16	H9005+H0121
-méhében	6	ragos_nevszo	méh	méh	méh		modell_ellenorizetlen		1Móz 4:1	
-testből	6	ragos_nevszo	test	test	test		modell_ellenorizetlen		1Móz 6:19	H9006+H1320
-testet	4	ragos_nevszo	test	test	test		modell_ellenorizetlen		1Móz 1:16	H3974
-magodnak	6	ragos_nevszo	mag	mag	mag		modell_ellenorizetlen	birtokos (magod) + rag	1Móz 12:7	H9005+H2233+H9021
-magot	4	ragos_nevszo	mag	mag	mag		modell_ellenorizetlen		1Móz 4:25	H2233
-helyre	5	ragos_nevszo	hely	hely	hely		modell_ellenorizetlen		1Móz 1:9	H9009+H4725
-égből	5	ragos_nevszo	ég	ég	ég		modell_ellenorizetlen		1Móz 8:2	H4480+H8064
-égnek	4	ragos_nevszo	ég	ég	ég		modell_ellenorizetlen		1Móz 1:8	H8064
-bárkából	5	ragos_nevszo	bárka	bárka	bárka		modell_ellenorizetlen		1Móz 8:10	H4480+H8392
-királyának	5	ragos_nevszo	király	király	király		modell_ellenorizetlen		1Móz 14:1	H4428
-királyával	4	ragos_nevszo	király	király	király		modell_ellenorizetlen		1Móz 14:9	H4428
-barmokat	4	ragos_nevszo	barom	barom	barom		modell_ellenorizetlen	tőváltó (barm-)	1Móz 1:24	H0929
-képére	4	ragos_nevszo	kép	kép	kép		modell_ellenorizetlen		1Móz 1:27	H9003+H6754
-fájáról	4	ragos_nevszo	fa	fa	fa		modell_ellenorizetlen	birtokos (fája) + rag	1Móz 2:16	H9006+H6086
-nevet	4	ragos_nevszo	név	név	név		modell_ellenorizetlen	tőváltó (nev-)	1Móz 2:19	H8034
-asszonynak	4	ragos_nevszo	asszony	asszony	asszony		modell_ellenorizetlen		1Móz 3:1	H0413+H0802
-gyümölcséből	4	ragos_nevszo	gyümölcs	gyümölcs	gyümölcs		modell_ellenorizetlen		1Móz 3:2	H9006+H6529
-színéről	4	ragos_nevszo	szín	szín	szín		modell_ellenorizetlen		1Móz 4:14	H9006+H5921+H6440
-keletre	4	ragos_nevszo	kelet	kelet	kelet		modell_ellenorizetlen		1Móz 4:16	H9006+H6924
-hetet	4	ragos_nevszo	hét	hét	hét		modell_ellenorizetlen	tőváltó (het-)	1Móz 7:2	H7651
-esztendőben	4	ragos_nevszo	esztendő	esztendő	esztendő		modell_ellenorizetlen		1Móz 8:13	H9003+H8141
-házából	4	ragos_nevszo	ház	ház	ház		modell_ellenorizetlen		1Móz 12:1	H9006+H1004
-népet	4	ragos_nevszo	nép	nép	nép		modell_ellenorizetlen		1Móz 14:16	H1471
-kenyeret	4	ragos_nevszo	kenyér	kenyér	kenyér		modell_ellenorizetlen	tőváltó (kenyer-)	1Móz 14:18	H3899
-dolgot	4	ragos_nevszo	dolog	dolog	dolog		modell_ellenorizetlen	tőváltó (dolg-)	1Móz 18:25	H1697
-atyjának	4	ragos_nevszo	atya	atya	atya		modell_ellenorizetlen	régies szó (mai megfelelője: apa — más szó, nem tő); birtokos (atyja)	1Móz 9:22	H0001+H9023
-atyjafiának	8	ragos_nevszo	atyafi	atyafi	atyafi		modell_ellenorizetlen	régies összetétel (testvér)	1Móz 4:21	H0251
-atyádfiának	3	ragos_nevszo	atyafi	atyafi	atyafi		modell_ellenorizetlen		1Móz 4:10	H0251+H9021
-testvérének	3	ragos_nevszo	testvér	testvér	testvér		modell_ellenorizetlen		1Móz 9:22	H9005+H0251+H9023
-férjének	2	ragos_nevszo	férj	férj	férj		modell_ellenorizetlen		1Móz 3:6	H9005+H0376+H9024
-urának	3	ragos_nevszo	úr	úr	úr		modell_ellenorizetlen	tőváltó (ur-)	1Móz 24:9	H0113+H9023
-uramnak	7	ragos_nevszo	úr	úr	úr		modell_ellenorizetlen		1Móz 24:12	H0113+H9020
-szavának	2	ragos_nevszo	szó	szó	szó		modell_ellenorizetlen	tőváltó (szav-)	1Móz 16:2	H9005+H6963
-sokaságának	2	ragos_nevszo	sokaság	sokaság	sokaság		modell_ellenorizetlen		1Móz 17:4	H1995
-népének	2	ragos_nevszo	nép	nép	nép		modell_ellenorizetlen		1Móz 20:18	H9005
-szolgának	2	ragos_nevszo	szolga	szolga	szolga		modell_ellenorizetlen		1Móz 18:7	H0413+H9009+H5288
-esztendeig	16	ragos_nevszo	esztendő	esztendő	esztendő		modell_ellenorizetlen	tőváltó (esztende-) + rag	1Móz 5:7	H8141
-napon	12	ragos_nevszo	nap	nap	nap		modell_ellenorizetlen		1Móz 2:2	H9003+H3117
-napig	7	ragos_nevszo	nap	nap	nap		modell_ellenorizetlen		1Móz 7:17	H3117
-melyben	5	ragos_nevszo	mely	amely	amely		modell_ellenorizetlen		1Móz 1:11	H0834+H9003+H9033
-melynek	4	ragos_nevszo	mely	amely	amely		modell_ellenorizetlen		1Móz 1:12	
-kinek	8	ragos_nevszo	ki	aki	aki		modell_ellenorizetlen		1Móz 9:5	H9002
-azokat	12	ragos_nevszo	az	az	az		modell_ellenorizetlen		1Móz 1:17	H9038
-azoknak	6	ragos_nevszo	az	az	az		modell_ellenorizetlen		1Móz 2:1	H9028
-abban	6	ragos_nevszo	az	az	az		modell_ellenorizetlen		1Móz 6:4	H9003+H1992
-engemet	4	ragos_nevszo	én	én	én		modell_ellenorizetlen	régies tárgyeset (engem)	1Móz 4:14	H9030
-legyenek	4	ige_mai_alak	lesz	lesz	lesz		modell_ellenorizetlen	felszólító, többes	1Móz 1:14	H1961
-töltsétek	3	ige_mai_alak	tölt	tölt	tölt		modell_ellenorizetlen	felszólító	1Móz 1:22	H4390
-mossátok	2	ige_mai_alak	mos	mos	mos		modell_ellenorizetlen		1Móz 18:4	H7364
-tekints	2	ige_mai_alak	tekint	tekint	tekint		modell_ellenorizetlen		1Móz 13:14	H7200
-látsz	2	ige_mai_alak	lát	lát	lát		modell_ellenorizetlen		1Móz 13:15	H0859+H7200
-világítsanak	2	ige_mai_alak	világít	világít	világít		modell_ellenorizetlen		1Móz 1:15	H0215
-nincsen	4	ige_mai_alak	nincs	nincs	nincs		modell_ellenorizetlen	régies alak; tagadó létige	1Móz 13:9	H0369
-Isten	113	tulajdonnev	Isten	Isten	Isten		modell_ellenorizetlen		1Móz 1:1	H0430
-Úr	100	tulajdonnev	Úr	Úr	Úr		modell_ellenorizetlen		1Móz 2:4	H3068
-Úrnak	19	tulajdonnev	Úr	Úr	Úr		modell_ellenorizetlen		1Móz 4:3	H3068
-Uram	10	tulajdonnev	Úr	Úr	Úr		modell_ellenorizetlen	birtokos (Uram); tőváltó	1Móz 15:2	H0136
-Ábrahám	75	tulajdonnev	Ábrahám	Ábrahám	Ábrahám		modell_ellenorizetlen		1Móz 17:5	H0085
-Ábrahámnak	26	tulajdonnev	Ábrahám	Ábrahám	Ábrahám		modell_ellenorizetlen		1Móz 17:9	H9005+H0085
-Ábrám	35	tulajdonnev	Ábrám	Ábrám	Ábrám		modell_ellenorizetlen	Ábrahám korábbi neve; külön név	1Móz 11:29	H0087
-Ábrámnak	15	tulajdonnev	Ábrám	Ábrám	Ábrám		modell_ellenorizetlen		1Móz 11:31	H0413+H0087
-Noé	27	tulajdonnev	Noé	Noé	Noé		modell_ellenorizetlen		1Móz 5:32	H5146
-Noénak	9	tulajdonnev	Noé	Noé	Noé		modell_ellenorizetlen		1Móz 5:29	H5146
-Sára	21	tulajdonnev	Sára	Sára	Sára		modell_ellenorizetlen		1Móz 17:15	H8283
-Szárai	9	tulajdonnev	Szárai	Szárai	Szárai		modell_ellenorizetlen	Sára korábbi neve; külön név	1Móz 11:29	H8297
-Lót	18	tulajdonnev	Lót	Lót	Lót		modell_ellenorizetlen		1Móz 12:4	H3876
-Lótot	9	tulajdonnev	Lót	Lót	Lót		modell_ellenorizetlen		1Móz 11:27	H3876
-Izsák	15	tulajdonnev	Izsák	Izsák	Izsák		modell_ellenorizetlen		1Móz 21:5	H3327
-Izsáknak	7	tulajdonnev	Izsák	Izsák	Izsák		modell_ellenorizetlen		1Móz 17:19	H9005+H3327
-Abimélek	13	tulajdonnev	Abimélek	Abimélek	Abimélek		modell_ellenorizetlen		1Móz 20:2	H0040
-Kanaán	12	tulajdonnev	Kanaán	Kanaán	Kanaán		modell_ellenorizetlen		1Móz 9:25	H3667
-Sodoma	11	tulajdonnev	Sodoma	Sodoma	Sodoma		modell_ellenorizetlen		1Móz 10:19	H5467
-Kain	9	tulajdonnev	Kain	Kain	Kain		modell_ellenorizetlen		1Móz 4:2	H7014
-Khéth	9	tulajdonnev	Khéth	Khéth	Khéth		modell_ellenorizetlen	régies névátírás; a nevet nem modernizáljuk	1Móz 23:3	H2845
-Sém	8	tulajdonnev	Sém	Sém	Sém		modell_ellenorizetlen		1Móz 7:13	H8035
-Hágár	8	tulajdonnev	Hágár	Hágár	Hágár		modell_ellenorizetlen		1Móz 16:1	H1904
-Ismáel	8	tulajdonnev	Ismáel	Ismáel	Ismáel		modell_ellenorizetlen		1Móz 17:18	H3458
-Rebekát	8	tulajdonnev	Rebeka	Rebeka	Rebeka		modell_ellenorizetlen		1Móz 22:23	H7259
-Ádám	7	tulajdonnev	Ádám	Ádám	Ádám		modell_ellenorizetlen		1Móz 3:20	H0121
-Nákhor	7	tulajdonnev	Nákhor	Nákhor	Nákhor		modell_ellenorizetlen		1Móz 11:24	H5152
+Monda	16	regies_ige	mond	mond			modell_ellenorizetlen	mondatkezdő nagybetű	1Móz 4:10	H9001+H0559
+Lőn	5	regies_ige	lesz	lesz			modell_ellenorizetlen	mondatkezdő nagybetű	1Móz 4:3	H1961
+Éle	9	regies_ige	él	él			modell_ellenorizetlen	mondatkezdő; régies múlt (élt)	1Móz 5:6	H2421
+setétség	3	regies_helyesiras	setétség	sötétség			modell_ellenorizetlen	régies helyesírás	1Móz 1:2	H2822
+setétségtől	2	regies_helyesiras	setétség	sötétség			modell_ellenorizetlen		1Móz 1:4	H9002+H0996+H2822
+nékik	8	regies_helyesiras	ő	ő			modell_ellenorizetlen	régies „nekik”	1Móz 1:28	H9005+H9038
+őnéki	8	regies_helyesiras	ő	ő			modell_ellenorizetlen	nyomatékos névmás	1Móz 7:16	H9005+H9033
+nemzetségei	6	regies_helyesiras	nemzetség	nemzetség			modell_ellenorizetlen	birtokos többes	1Móz 10:18	H4940
+nemzetségök	4	regies_helyesiras	nemzetség	nemzetség			modell_ellenorizetlen	régies birtokos személyrag (-ök = -ük)	1Móz 10:20	H1471+H9028
+szövetségemet	6	regies_helyesiras	szövetség	szövetség			modell_ellenorizetlen	birtokos tárgy	1Móz 17:2	H1285+H9020
+szövetségűl	3	regies_helyesiras	szövetség	szövetség			modell_ellenorizetlen	régies helyesírás (-űl = -ül), határozórag	1Móz 17:7	H9005+H1285
+segítségűl	3	regies_helyesiras	segítség	segítség			modell_ellenorizetlen	régies helyesírás (-űl)	1Móz 12:8	H9003
+Mostan	3	regies_helyesiras	mostan	most			modell_ellenorizetlen	régies határozószó	1Móz 4:11	H9002+H6258
+esztendőt	12	regies_helyesiras	esztendő	esztendő			modell_ellenorizetlen	régies szó; a mai „év” más szó, nem tő	1Móz 5:3	H8141
+reggel	12	regies_helyesiras	reggel	reggel			modell_ellenorizetlen		1Móz 1:5	H1242
+asszonynyá	3	regies_helyesiras	asszony	asszony			modell_ellenorizetlen	régies helyesírás (nyny = nny), átváltozás-rag	1Móz 1:27	H5347
+földön	41	ragos_nevszo	föld	föld			modell_ellenorizetlen		1Móz 1:11	H9003+H0776
+földet	14	ragos_nevszo	föld	föld			modell_ellenorizetlen		1Móz 1:1	H0776
+földre	14	ragos_nevszo	föld	föld			modell_ellenorizetlen		1Móz 1:15	H5921+H0776
+földről	9	ragos_nevszo	föld	föld			modell_ellenorizetlen		1Móz 2:6	H9006+H5921+H0776
+földére	5	ragos_nevszo	föld	föld			modell_ellenorizetlen	birtokos + rag	1Móz 11:31	H0776+H9011
+fiakat	19	ragos_nevszo	fiú	fiú			modell_ellenorizetlen	tőváltó (fi-)	1Móz 5:4	H1121
+leányokat	17	ragos_nevszo	leány	lány			modell_ellenorizetlen	régies szóalak (a „lány” ennek összevont alakja)	1Móz 5:4	H1323
+fiainak	15	ragos_nevszo	fiú	fiú			modell_ellenorizetlen		1Móz 7:7	H1121
+fiának	11	ragos_nevszo	fiú	fiú			modell_ellenorizetlen		1Móz 4:17	H1121+H9023
+fiamnak	6	ragos_nevszo	fiú	fiú			modell_ellenorizetlen		1Móz 24:3	H9005+H1121+H9020
+életének	14	ragos_nevszo	élet	élet			modell_ellenorizetlen		1Móz 5:5	H3117
+életben	5	ragos_nevszo	élet	élet			modell_ellenorizetlen		1Móz 6:19	H2421
+feleséget	10	ragos_nevszo	feleség	feleség			modell_ellenorizetlen		1Móz 4:19	H0802
+feleségének	6	ragos_nevszo	feleség	feleség			modell_ellenorizetlen		1Móz 3:21	H0802
+vizet	8	ragos_nevszo	víz	víz			modell_ellenorizetlen	tőváltó (viz-)	1Móz 18:4	H4325
+fűvet	6	ragos_nevszo	fű	fű			modell_ellenorizetlen	tőváltó (füv-)	1Móz 1:11	H6212
+állatokat	6	ragos_nevszo	állat	állat			modell_ellenorizetlen		1Móz 1:21	H7431
+állatot	4	ragos_nevszo	állat	állat			modell_ellenorizetlen		1Móz 7:4	H3351
+embernek	6	ragos_nevszo	ember	ember			modell_ellenorizetlen		1Móz 2:16	H9005+H0121
+méhében	6	ragos_nevszo	méh	méh			modell_ellenorizetlen		1Móz 4:1	
+testből	6	ragos_nevszo	test	test			modell_ellenorizetlen		1Móz 6:19	H9006+H1320
+testet	4	ragos_nevszo	test	test			modell_ellenorizetlen		1Móz 1:16	H3974
+magodnak	6	ragos_nevszo	mag	mag			modell_ellenorizetlen	birtokos (magod) + rag	1Móz 12:7	H9005+H2233+H9021
+magot	4	ragos_nevszo	mag	mag			modell_ellenorizetlen		1Móz 4:25	H2233
+helyre	5	ragos_nevszo	hely	hely			modell_ellenorizetlen		1Móz 1:9	H9009+H4725
+égből	5	ragos_nevszo	ég	ég			modell_ellenorizetlen		1Móz 8:2	H4480+H8064
+égnek	4	ragos_nevszo	ég	ég			modell_ellenorizetlen		1Móz 1:8	H8064
+bárkából	5	ragos_nevszo	bárka	bárka			modell_ellenorizetlen		1Móz 8:10	H4480+H8392
+királyának	5	ragos_nevszo	király	király			modell_ellenorizetlen		1Móz 14:1	H4428
+királyával	4	ragos_nevszo	király	király			modell_ellenorizetlen		1Móz 14:9	H4428
+barmokat	4	ragos_nevszo	barom	barom			modell_ellenorizetlen	tőváltó (barm-)	1Móz 1:24	H0929
+képére	4	ragos_nevszo	kép	kép			modell_ellenorizetlen		1Móz 1:27	H9003+H6754
+fájáról	4	ragos_nevszo	fa	fa			modell_ellenorizetlen	birtokos (fája) + rag	1Móz 2:16	H9006+H6086
+nevet	4	ragos_nevszo	név	név			modell_ellenorizetlen	tőváltó (nev-)	1Móz 2:19	H8034
+asszonynak	4	ragos_nevszo	asszony	asszony			modell_ellenorizetlen		1Móz 3:1	H0413+H0802
+gyümölcséből	4	ragos_nevszo	gyümölcs	gyümölcs			modell_ellenorizetlen		1Móz 3:2	H9006+H6529
+színéről	4	ragos_nevszo	szín	szín			modell_ellenorizetlen		1Móz 4:14	H9006+H5921+H6440
+keletre	4	ragos_nevszo	kelet	kelet			modell_ellenorizetlen		1Móz 4:16	H9006+H6924
+hetet	4	ragos_nevszo	hét	hét			modell_ellenorizetlen	tőváltó (het-)	1Móz 7:2	H7651
+esztendőben	4	ragos_nevszo	esztendő	esztendő			modell_ellenorizetlen		1Móz 8:13	H9003+H8141
+házából	4	ragos_nevszo	ház	ház			modell_ellenorizetlen		1Móz 12:1	H9006+H1004
+népet	4	ragos_nevszo	nép	nép			modell_ellenorizetlen		1Móz 14:16	H1471
+kenyeret	4	ragos_nevszo	kenyér	kenyér			modell_ellenorizetlen	tőváltó (kenyer-)	1Móz 14:18	H3899
+dolgot	4	ragos_nevszo	dolog	dolog			modell_ellenorizetlen	tőváltó (dolg-)	1Móz 18:25	H1697
+atyjának	4	ragos_nevszo	atya	atya			modell_ellenorizetlen	régies szó (mai megfelelője: apa — más szó, nem tő); birtokos (atyja)	1Móz 9:22	H0001+H9023
+atyjafiának	8	ragos_nevszo	atyafi	atyafi			modell_ellenorizetlen	régies összetétel (testvér)	1Móz 4:21	H0251
+atyádfiának	3	ragos_nevszo	atyafi	atyafi			modell_ellenorizetlen		1Móz 4:10	H0251+H9021
+testvérének	3	ragos_nevszo	testvér	testvér			modell_ellenorizetlen		1Móz 9:22	H9005+H0251+H9023
+férjének	2	ragos_nevszo	férj	férj			modell_ellenorizetlen		1Móz 3:6	H9005+H0376+H9024
+urának	3	ragos_nevszo	úr	úr			modell_ellenorizetlen	tőváltó (ur-)	1Móz 24:9	H0113+H9023
+uramnak	7	ragos_nevszo	úr	úr			modell_ellenorizetlen		1Móz 24:12	H0113+H9020
+szavának	2	ragos_nevszo	szó	szó			modell_ellenorizetlen	tőváltó (szav-)	1Móz 16:2	H9005+H6963
+sokaságának	2	ragos_nevszo	sokaság	sokaság			modell_ellenorizetlen		1Móz 17:4	H1995
+népének	2	ragos_nevszo	nép	nép			modell_ellenorizetlen		1Móz 20:18	H9005
+szolgának	2	ragos_nevszo	szolga	szolga			modell_ellenorizetlen		1Móz 18:7	H0413+H9009+H5288
+esztendeig	16	ragos_nevszo	esztendő	esztendő			modell_ellenorizetlen	tőváltó (esztende-) + rag	1Móz 5:7	H8141
+napon	12	ragos_nevszo	nap	nap			modell_ellenorizetlen		1Móz 2:2	H9003+H3117
+napig	7	ragos_nevszo	nap	nap			modell_ellenorizetlen		1Móz 7:17	H3117
+melyben	5	ragos_nevszo	mely	amely			modell_ellenorizetlen		1Móz 1:11	H0834+H9003+H9033
+melynek	4	ragos_nevszo	mely	amely			modell_ellenorizetlen		1Móz 1:12	
+kinek	8	ragos_nevszo	ki	aki			modell_ellenorizetlen		1Móz 9:5	H9002
+azokat	12	ragos_nevszo	az	az			modell_ellenorizetlen		1Móz 1:17	H9038
+azoknak	6	ragos_nevszo	az	az			modell_ellenorizetlen		1Móz 2:1	H9028
+abban	6	ragos_nevszo	az	az			modell_ellenorizetlen		1Móz 6:4	H9003+H1992
+engemet	4	ragos_nevszo	én	én			modell_ellenorizetlen	régies tárgyeset (engem)	1Móz 4:14	H9030
+legyenek	4	ige_mai_alak	lesz	lesz			modell_ellenorizetlen	felszólító, többes	1Móz 1:14	H1961
+töltsétek	3	ige_mai_alak	tölt	tölt			modell_ellenorizetlen	felszólító	1Móz 1:22	H4390
+mossátok	2	ige_mai_alak	mos	mos			modell_ellenorizetlen		1Móz 18:4	H7364
+tekints	2	ige_mai_alak	tekint	tekint			modell_ellenorizetlen		1Móz 13:14	H7200
+látsz	2	ige_mai_alak	lát	lát			modell_ellenorizetlen		1Móz 13:15	H0859+H7200
+világítsanak	2	ige_mai_alak	világít	világít			modell_ellenorizetlen		1Móz 1:15	H0215
+nincsen	4	ige_mai_alak	nincs	nincs			modell_ellenorizetlen	régies alak; tagadó létige	1Móz 13:9	H0369
+Isten	113	tulajdonnev	Isten	Isten			modell_ellenorizetlen		1Móz 1:1	H0430
+Úr	100	tulajdonnev	Úr	Úr			modell_ellenorizetlen		1Móz 2:4	H3068
+Úrnak	19	tulajdonnev	Úr	Úr			modell_ellenorizetlen		1Móz 4:3	H3068
+Uram	10	tulajdonnev	Úr	Úr			modell_ellenorizetlen	birtokos (Uram); tőváltó	1Móz 15:2	H0136
+Ábrahám	75	tulajdonnev	Ábrahám	Ábrahám			modell_ellenorizetlen		1Móz 17:5	H0085
+Ábrahámnak	26	tulajdonnev	Ábrahám	Ábrahám			modell_ellenorizetlen		1Móz 17:9	H9005+H0085
+Ábrám	35	tulajdonnev	Ábrám	Ábrám			modell_ellenorizetlen	Ábrahám korábbi neve; külön név	1Móz 11:29	H0087
+Ábrámnak	15	tulajdonnev	Ábrám	Ábrám			modell_ellenorizetlen		1Móz 11:31	H0413+H0087
+Noé	27	tulajdonnev	Noé	Noé			modell_ellenorizetlen		1Móz 5:32	H5146
+Noénak	9	tulajdonnev	Noé	Noé			modell_ellenorizetlen		1Móz 5:29	H5146
+Sára	21	tulajdonnev	Sára	Sára			modell_ellenorizetlen		1Móz 17:15	H8283
+Szárai	9	tulajdonnev	Szárai	Szárai			modell_ellenorizetlen	Sára korábbi neve; külön név	1Móz 11:29	H8297
+Lót	18	tulajdonnev	Lót	Lót			modell_ellenorizetlen		1Móz 12:4	H3876
+Lótot	9	tulajdonnev	Lót	Lót			modell_ellenorizetlen		1Móz 11:27	H3876
+Izsák	15	tulajdonnev	Izsák	Izsák			modell_ellenorizetlen		1Móz 21:5	H3327
+Izsáknak	7	tulajdonnev	Izsák	Izsák			modell_ellenorizetlen		1Móz 17:19	H9005+H3327
+Abimélek	13	tulajdonnev	Abimélek	Abimélek			modell_ellenorizetlen		1Móz 20:2	H0040
+Kanaán	12	tulajdonnev	Kanaán	Kanaán			modell_ellenorizetlen		1Móz 9:25	H3667
+Sodoma	11	tulajdonnev	Sodoma	Sodoma			modell_ellenorizetlen		1Móz 10:19	H5467
+Kain	9	tulajdonnev	Kain	Kain			modell_ellenorizetlen		1Móz 4:2	H7014
+Khéth	9	tulajdonnev	Khéth	Khéth			modell_ellenorizetlen	régies névátírás; a nevet nem modernizáljuk	1Móz 23:3	H2845
+Sém	8	tulajdonnev	Sém	Sém			modell_ellenorizetlen		1Móz 7:13	H8035
+Hágár	8	tulajdonnev	Hágár	Hágár			modell_ellenorizetlen		1Móz 16:1	H1904
+Ismáel	8	tulajdonnev	Ismáel	Ismáel			modell_ellenorizetlen		1Móz 17:18	H3458
+Rebekát	8	tulajdonnev	Rebeka	Rebeka			modell_ellenorizetlen		1Móz 22:23	H7259
+Ádám	7	tulajdonnev	Ádám	Ádám			modell_ellenorizetlen		1Móz 3:20	H0121
+Nákhor	7	tulajdonnev	Nákhor	Nákhor			modell_ellenorizetlen		1Móz 11:24	H5152

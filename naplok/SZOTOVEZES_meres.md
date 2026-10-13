@@ -237,3 +237,16 @@ Nincs eltérő sor (az 1. és 2. mintában ilyen alak nem fordul elő, vagy a po
 Az 1. minta a forrásban minden sorban kitölti az `alapige`-t: nem igei sorban a mai szótári alakkal (160 sor, pl. a, és, az, ő, pedig), igekötő nélküli igénél a szótári alakkal (30 sor, pl. nemzé, nevezé, valának, látá, mondának). A 3. minta (felhasználó által ellenőrzött) az `alapige`-t csak ott tölti, ahol eltér a szótári alaktól (igekötős vagy képzett ige); a 2. mintának nincs `alapige` oszlopa (mind a 180 sor üres). Javaslat (modell): a 3. minta konvenciója, vagyis az 1. minta azonos értékű `alapige`-mezőinek ürítése. A mérést nem érinti (az M1 a szótári alakot, a mai alakot és a tovabbi_elfogadhato-t veti össze).
 
 scope=adat/szoto/szoto_minta_1_fejlesztes.tsv (sha256:294771857de4) + szoto_minta_2_fejlesztes.tsv (sha256:489a3043ae01), DT130 (4), (6)–(11) | forras=eszkozok/szoto/elteres_dt130.py + konkordancia/Karoli_1908.tsv (sha256:49335bbcc77d) | ts=2026-10-13T12:08Z
+
+### 5.1 Döntés és javítás (DT-F94a, DT-F94b; F94.0f)
+
+*proveniencia: scope=adat/szoto/szoto_minta_1_fejlesztes.tsv + szoto_minta_2_fejlesztes.tsv | forras=manual (a felhasználó döntése, chat, 2026-10-13; alkalmazás: eszkozok/szoto/minta_javit_f94a.py, idempotens, a nem érintett mezők változatlanok) | ts=2026-10-13*
+
+- **E-4:** *vettetének* — alapige *vet*. *születének* — változatlan (önálló ige).
+- **E-5 (alakonként, általános szabály nélkül):** *helyezteté* — szótári alak *helyeztet*, mai alak *helyez*, alapige *helyez* (nem műveltető, H5414 Qal). *tudatá* — *tudat* / *tudat*, alapige *tud* (valódi műveltető, H8085 Hif’íl).
+- **E-6:** *ki* — tovabbi_elfogadhato *aki*; az indoklásban a három olvasat (igekötő: 1Móz 2:5 „hajtott ki”; kérdő névmás: Ézs 41:26 „Ki jelenté meg”; vonatkozó névmás: 1Móz 2:5 „ki a földet művelje”). *elvesznek* — tovabbi_elfogadhato *elvesz*, a sor *elvész* marad (Ézs 41:11, H0006).
+- **E-7:** a 16 igekötős ige alapigéje a fenti javaslat-oszlop szerint; az `ellenorzes` nem változott (a felhasználó egyenként nem nézte át).
+- **E-8:** az 1. minta azonos értékű alapigéi kiürültek (189 mező; a 190. a *helyezteté*, amely az E-5 szerint *helyez* lett); formai igazítás, az `ellenorzes` nem változott.
+- **E-2 / DT-F94b:** *seregeknek* — szótári alak *sereg*, tovabbi_elfogadhato *Seregek*.
+- **`ellenorzes=felhasznalo` lett:** *vettetének, születének, helyezteté, tudatá, ki, elvesznek* (már az volt), *seregeknek*. Az 1. mintában most 3, a 2. mintában 9 `felhasznalo` sor.
+- **Megfigyelések (manual, nem adat):** a felhasználó a Bible Discovery moduljaiból hozott összevetést; a szövegük és Strong-rétegük nem kerül adatba (DT124). Ézs 44:6 „a seregeknek … Ura”: a *seregek* köznév, az Istenre vonatkozó cím a szókapcsolat. Zsolt 13:2 *orcádat*: a *cz → c* helyesírás egy modern megfelelője (nem korpusz-támasz).

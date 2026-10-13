@@ -1,5 +1,5 @@
 # proveniencia: scope=Zsolt 1–41 és Ézs 40–55 Károli-szóalakjai (token_karoli, oldal=hu), az 1. minta alakjai nélkül, rétegzett; a terv szerinti Gal/Ef/Zsid rész ÜRES maradt, mert a token_karoli csak az ÓSZ 39 könyvét tartalmazta; a gyakoriság a Zsolt 1–41 + Ézs 40–55 hatókörön belüli | forras=szoto_fuggetlen_minta.tsv (sha256:cbdf2843c34cfe7f8151e83034c47bed128424efbd74aa431e2919110c49a1c5; a repón kívüli előmérés, 2026-10-12/13; átvétel: eszkozok/szoto/minta_atvetel.py, F94.0) | ts=2026-10-13T12:05Z
-# allapot: eredetileg független minta, a hibrid v2 hangolása óta fejlesztési halmaz; a 6 nyitott sor a felhasználó döntésével lezárva (ellenorzes=felhasznalo), a többi a felhasználó „mehet”-jével, soronkénti átnézés nélkül (modell_ellenorizetlen); felhasznalo 6, modell_ellenorizetlen 174
+# allapot: eredetileg független minta, a hibrid v2 hangolása óta fejlesztési halmaz; a 6 nyitott sor a felhasználó döntésével lezárva (ellenorzes=felhasznalo), a többi a felhasználó „mehet”-jével, soronkénti átnézés nélkül (modell_ellenorizetlen); javítva a DT-F94a/b szerint (F94.0f, eszkozok/szoto/minta_javit_f94a.py); felhasznalo 9, modell_ellenorizetlen 171
 # a forrás saját fejléce (szó szerint): proveniencia: scope=Zsolt 1–41, Ézs 40–55, Gal, Ef, Zsid Károli-szóalakjai (token_karoli, oldal=hu), az első minta alakjai nélkül, rétegzett | forras=pardes.db (2026-10-12T08:27:32Z) + kézi tő-javaslat a 2026-10-13-i öt döntés szerint, a hibrid futtatása előtt (modell: claude-opus-5-5); a 6 nyitott sor a felhasználó döntésével lezárva (2026-10-13), a többi sor ellenőrizetlen („mehet”) | ts=2026-10-13
 alak	gyakorisag	kategoria	szotari_alak	szotari_alak_mai	alapige	tovabbi_elfogadhato	ellenorzes	indoklas	pelda_igehely	strong
 engem	104	gyakori	én	én			modell_ellenorizetlen		Ézs 40:25	H9030
@@ -43,37 +43,37 @@ reám	13	gyakori	én	én			modell_ellenorizetlen	régies „rám”	Ézs 41:1	H0
 vannak	12	gyakori	van	van			modell_ellenorizetlen		Ézs 41:27	
 lesznek	7	gyakori	lesz	lesz			modell_ellenorizetlen		Ézs 41:11	H1961
 jelenté	4	regies_ige	jelent	jelent			modell_ellenorizetlen		Ézs 41:26	H5046
-tudatá	2	regies_ige	tudat	tudat			modell_ellenorizetlen		Ézs 41:26	H8085
-kiterjeszté	2	regies_ige	kiterjeszt	kiterjeszt			modell_ellenorizetlen		Ézs 42:5	H7554
-megváltá	2	regies_ige	megvált	megvált			modell_ellenorizetlen		Ézs 44:23	H1350
+tudatá	2	regies_ige	tudat	tudat	tud		felhasznalo	[döntés 2026-10-13 (DT-F94a): valódi műveltető (H8085 Hif’íl), a C) szerint; alapige: tud]	Ézs 41:26	H8085
+kiterjeszté	2	regies_ige	kiterjeszt	kiterjeszt	terjeszt		modell_ellenorizetlen		Ézs 42:5	H7554
+megváltá	2	regies_ige	megvált	megvált	vált		modell_ellenorizetlen		Ézs 44:23	H1350
 alkotá	2	regies_ige	alkot	alkot			modell_ellenorizetlen		Ézs 45:18	H3335
-megvígasztalá	2	regies_ige	megvígasztal	megvígasztal			modell_ellenorizetlen		Ézs 49:13	H5162
+megvígasztalá	2	regies_ige	megvígasztal	megvígasztal	vígasztal		modell_ellenorizetlen		Ézs 49:13	H5162
 hordozá	2	regies_ige	hordoz	hordoz			modell_ellenorizetlen		Ézs 53:4	H5445+H9038
 mértéklé	1	regies_ige	mértékel	mértékel			modell_ellenorizetlen	régies ige (mérték-el)	Ézs 40:12	H8505
 foglalá	1	regies_ige	foglal	foglal			modell_ellenorizetlen		Ézs 40:12	H3557
 támasztá	1	regies_ige	támaszt	támaszt			modell_ellenorizetlen		Ézs 41:2	H5782
 hallá	1	regies_ige	hall	hall			modell_ellenorizetlen		Ézs 41:26	H8085
-kifeszíté	1	regies_ige	kifeszít	kifeszít			modell_ellenorizetlen		Ézs 42:5	H5186+H9038
-megerősíté	1	regies_ige	megerősít	megerősít			modell_ellenorizetlen		Ézs 45:18	H3559
+kifeszíté	1	regies_ige	kifeszít	kifeszít	feszít		modell_ellenorizetlen		Ézs 42:5	H5186+H9038
+megerősíté	1	regies_ige	megerősít	megerősít	erősít		modell_ellenorizetlen		Ézs 45:18	H3559
 emészté	1	regies_ige	emészt	emészt			modell_ellenorizetlen		Ézs 47:14	H8313
 hirdeté	1	regies_ige	hirdet	hirdet			modell_ellenorizetlen		Ézs 48:3	H3318
 mívelé	1	regies_ige	mível	művel			felhasznalo	régies helyesírás; felhasználói döntés 2026-10-13	Ézs 48:5	H6213
 parancsolá	1	regies_ige	parancsol	parancsol			modell_ellenorizetlen		Ézs 48:5	H6680
 terjeszté	1	regies_ige	terjeszt	terjeszt			modell_ellenorizetlen		Ézs 48:13	H2946
-megalapítá	1	regies_ige	megalapít	megalapít			modell_ellenorizetlen		Ézs 51:13	H3245
+megalapítá	1	regies_ige	megalapít	megalapít	alapít		modell_ellenorizetlen		Ézs 51:13	H3245
 nyomorgatá	1	regies_ige	nyomorgat	nyomorgat			modell_ellenorizetlen		Ézs 52:4	H6231
-elszéleszté	1	regies_ige	elszéleszt	elszéleszt			modell_ellenorizetlen		Zsolt 18:15	H6327
-vettetének	1	regies_ige	vettetik	vettetik			modell_ellenorizetlen	régies szenvedő (vettettek)	Ézs 40:24	H2232
-megrémülének	1	regies_ige	megrémül	megrémül			modell_ellenorizetlen		Ézs 41:5	H3372
-elhamvadának	1	regies_ige	elhamvad	elhamvad			modell_ellenorizetlen		Ézs 43:17	H3518
+elszéleszté	1	regies_ige	elszéleszt	elszéleszt	széleszt		modell_ellenorizetlen		Zsolt 18:15	H6327
+vettetének	1	regies_ige	vettetik	vettetik	vet		felhasznalo	régies szenvedő (vettettek) [döntés 2026-10-13 (DT-F94a): szenvedő képzett igealak, a C) szerint; alapige: vet]	Ézs 40:24	H2232
+megrémülének	1	regies_ige	megrémül	megrémül	rémül		modell_ellenorizetlen		Ézs 41:5	H3372
+elhamvadának	1	regies_ige	elhamvad	elhamvad	hamvad		modell_ellenorizetlen		Ézs 43:17	H3518
 származának	1	regies_ige	származik	származik			modell_ellenorizetlen		Ézs 48:1	H3318
-bekövetkezének	1	regies_ige	bekövetkezik	bekövetkezik			modell_ellenorizetlen		Ézs 48:3	H0935
+bekövetkezének	1	regies_ige	bekövetkezik	bekövetkezik	következik		modell_ellenorizetlen		Ézs 48:3	H0935
 tevé	1	regies_ige	tesz	tesz			modell_ellenorizetlen	tőváltó	Ézs 49:2	H7760
 ismerél	2	regies_ige	ismer	ismer			modell_ellenorizetlen	régies múlt, E/2	Ézs 45:4	H3045+H9030
 mondaná	2	regies_ige	mond	mond			modell_ellenorizetlen	feltételes, tárgyas	Ézs 42:22	H0559
 volnék	1	regies_ige	van	van			modell_ellenorizetlen	feltételes	Ézs 40:25	H7737
-meglennének	1	regies_ige	meglesz	meglesz			modell_ellenorizetlen	feltételes, T/3	Ézs 42:9	H6779
-elhagynának	1	regies_ige	elhagy	elhagy			modell_ellenorizetlen	feltételes	Zsolt 27:10	H5800
+meglennének	1	regies_ige	meglesz	meglesz	lesz		modell_ellenorizetlen	feltételes, T/3	Ézs 42:9	H6779
+elhagynának	1	regies_ige	elhagy	elhagy	hagy		modell_ellenorizetlen	feltételes	Zsolt 27:10	H5800
 néked	10	regies_helyesiras	te	te			modell_ellenorizetlen	régies „neked”	Ézs 41:9	H9005+H9031
 előttök	2	regies_helyesiras	előtt	előtt			modell_ellenorizetlen	régies személyrag (-ök = -ük); névutó	Ézs 42:16	H9005+H6440+H9028
 velök	2	regies_helyesiras	ő	ő			modell_ellenorizetlen	régies, névmásragos	Ézs 42:16	H9038
@@ -98,7 +98,7 @@ népeknek	6	ragos_nevszo	nép	nép			modell_ellenorizetlen		Ézs 42:1	H3816
 igazat	6	ragos_nevszo	igaz	igaz			modell_ellenorizetlen		Zsolt 5:13	H6662
 rosszat	6	ragos_nevszo	rossz	rossz			modell_ellenorizetlen		Zsolt 15:3	H7451
 melyeket	5	ragos_nevszo	mely	amely			modell_ellenorizetlen		Ézs 42:16	
-seregeknek	5	ragos_nevszo	sereg	sereg			modell_ellenorizetlen		Ézs 44:6	H6635
+seregeknek	5	ragos_nevszo	sereg	sereg		Seregek	felhasznalo	[döntés 2026-10-13 (DT-F94b): sereg, további elfogadható Seregek; a kisbetűs alak a Károliban mindkét jelentésben áll (a 85 kisbetűs seregek…-tokenből 64 Ur-/Isten- előtt); manual megfigyelés: Ézs 44:6 „a seregeknek … Ura” — a szó köznév, a cím a szókapcsolat]	Ézs 44:6	H6635
 előre	5	ragos_nevszo	elő	elő			modell_ellenorizetlen		Ézs 44:8	H9006+H0227
 kiket	5	ragos_nevszo	ki	aki			modell_ellenorizetlen		Ézs 46:3	
 időben	5	ragos_nevszo	idő	idő			modell_ellenorizetlen		Ézs 51:9	H9003+H6256
@@ -153,14 +153,14 @@ prédává	1	ragos_nevszo	préda	préda			modell_ellenorizetlen		Ézs 42:22	H900
 bolondsággá	1	ragos_nevszo	bolondság	bolondság			modell_ellenorizetlen		Ézs 44:25	H5528
 bíznak	8	ige_mai_alak	bízik	bízik			modell_ellenorizetlen		Ézs 40:31	H2620
 járnak	5	ige_mai_alak	jár	jár			modell_ellenorizetlen		Ézs 40:31	H1980
-megszégyenülnek	5	ige_mai_alak	megszégyenül	megszégyenül			modell_ellenorizetlen		Ézs 41:11	H0954
+megszégyenülnek	5	ige_mai_alak	megszégyenül	megszégyenül	szégyenül		modell_ellenorizetlen		Ézs 41:11	H0954
 szólnak	5	ige_mai_alak	szól	szól			modell_ellenorizetlen		Ézs 45:24	H1696
 örüljenek	5	ige_mai_alak	örül	örül			modell_ellenorizetlen		Zsolt 13:5	H8055
-elvesznek	4	ige_mai_alak	elvész	elvész			felhasznalo	elpusztulnak (H0006 ábad); felhasználói döntés 2026-10-13	Ézs 41:11	H0006
+elvesznek	4	ige_mai_alak	elvész	elvész	vész	elvesz	felhasznalo	elpusztulnak (H0006 ábad); felhasználói döntés 2026-10-13 [döntés 2026-10-13 (DT-F94a): a sor elvész marad (Ézs 41:11, H0006); a kétértelmű alak másik olvasata: elvesz]	Ézs 41:11	H0006
 szeret	4	ige_mai_alak	szeret	szeret			modell_ellenorizetlen		Ézs 41:24	H0157
 tudnak	4	ige_mai_alak	tud	tud			modell_ellenorizetlen		Ézs 42:16	H3045
 látnak	4	ige_mai_alak	lát	lát			modell_ellenorizetlen		Ézs 44:9	H7200
-leborulnak	4	ige_mai_alak	leborul	leborul			modell_ellenorizetlen		Ézs 45:14	H7812
+leborulnak	4	ige_mai_alak	leborul	leborul	borul		modell_ellenorizetlen		Ézs 45:14	H7812
 jőnek	4	ige_mai_alak	jön	jön			modell_ellenorizetlen	régies alak (jőnek = jönnek)	Ézs 47:9	H0935
 törnek	4	ige_mai_alak	tör	tör			modell_ellenorizetlen		Zsolt 38:13	H1245
 keresnek	3	ige_mai_alak	keres	keres			modell_ellenorizetlen		Ézs 41:17	H1245
@@ -170,7 +170,7 @@ emlékezzél	3	ige_mai_alak	emlékezik	emlékszik			felhasznalo	régies; felhasz
 cselekedjél	3	ige_mai_alak	cselekedik	cselekszik			felhasznalo	régies; felhasználói döntés 2026-10-13	Zsolt 34:15	H6213
 bosszankodjál	3	ige_mai_alak	bosszankodik	bosszankodik			modell_ellenorizetlen		Zsolt 37:1	H2734
 jelentsék	2	ige_mai_alak	jelent	jelent			modell_ellenorizetlen		Ézs 41:22	H5046
-megértsék	1	ige_mai_alak	megért	megért			modell_ellenorizetlen		Ézs 41:20	H7919
+megértsék	1	ige_mai_alak	megért	megért	ért		modell_ellenorizetlen		Ézs 41:20	H7919
 vegyék	1	ige_mai_alak	vesz	vesz			modell_ellenorizetlen	tőváltó	Ézs 41:20	H7760
 Izráel	30	tulajdonnev	Izráel	Izráel			modell_ellenorizetlen		Ézs 40:27	H3478
 Dávid	27	tulajdonnev	Dávid	Dávid			modell_ellenorizetlen		Ézs 55:3	H9005+H1732
