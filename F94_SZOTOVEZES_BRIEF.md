@@ -6,11 +6,11 @@ tipus: feladat
 fazis: 1
 modell: opus
 munka: adat
-allapot: megallt
+allapot: fut
 ag: claude/f94-szotovezes
 helyi_gep: igen
 ad: a Károli minden szóalakjához szótári alak (Károli- és mai helyesírással), alapige és további elfogadható alak, forrásolt szabályokkal; a hibrid szótövező (v3) az eszkozok/ alatt; négy aranyminta a repóban, a negyedik független, felhasználó által ellenőrzött mérés; a pardes.db-oszlop a #95 (SZOTOVEZES_DB)
-kovetkezo: "Te: ⛔ F94.3 — a 4. minta többi 106 sorának soronkénti ellenőrzése (adat/szoto/szoto_minta_4_fuggetlen.tsv, ellenorzes: felhasznalo) és a K tábla 400 sorának átnézése (adat/szoto/gyakori_alakok.tsv); döntés kérdés: a kategoria mintavételi réteg maradjon-e (felingereltessenek vissza), vagy mind a 18 eltérő sor elemzés szerint (napló 13.1). Utána: mérés (meres.py --csak-felhasznalo --fuggetlen; döntő: K-sorok nélkül, ahol C+K = C), K3, DT-F94c végleges döntése"
+kovetkezo: "F94.3 fut: a felhasználói átnézés alkalmazása (4. minta, K tábla), M2, a 4. mintás mérés (M1, M2, K3); utána ⛔ a DT-F94c végleges döntése a felhasználóé"
 olvas: [konkordancia/Karoli_1908.tsv, "adat/karoli_strong/*", adat/SEMA.md, adat/licencek.tsv, Rendszerfejlesztesi_playbook.md, eszkozok/general.py, DONTESEK.md]
 ir: [eszkozok/szoto/, adat/szoto/, adat/SEMA.md, adat/licencek.tsv, naplok/SZOTOVEZES_meres.md, naplok/SZOTOVEZES_zaras.md]
 fugg: []
