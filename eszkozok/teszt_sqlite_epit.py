@@ -10,7 +10,7 @@ eszkozok/teszt_sqlite_epit.py -- F79 M2: az `sqlite_epit.py` tesztjei.
                 sertese megallitja az epitest (1-6., 8., + 9., 13.); a 7. szabaly jelentes
   normalizalas: STEP-alaku sor a magyar kulcson elerheto; Lam -> Sir; a nem leKepezheto
                 sor a jelentesben
-  determinizmus (G2), licenc-oszlopok (G6), `kapcsolodas` idezojelei (split-korut), G3
+  determinizmus (G2), tablaszintu licenc (G4, F89), `kapcsolodas` idezojelei (split-korut), G3
 """
 
 import os
@@ -278,7 +278,7 @@ class TipnrUtotag(unittest.TestCase):
 
 
 class Integracio(unittest.TestCase):
-    """A kis minta ketszeri epitese (G2), licenc-oszlopok (G6), normalizalas, idezojelek."""
+    """A kis minta ketszeri epitese (G2), tablaszintu licenc (G4, F89), normalizalas, idezojelek."""
 
     @classmethod
     def setUpClass(cls):
@@ -300,12 +300,64 @@ class Integracio(unittest.TestCase):
         self.assertEqual(ha, hb)
         self.assertGreater(len(ha), 30)
 
-    def test_g6_licenc_oszlopok_kitoltve(self):
-        for (n,) in self.con.execute("SELECT name FROM sqlite_master WHERE type='table' "
-                                     "AND name NOT LIKE 'sqlite_%' AND name NOT LIKE 'fts_motivum_%'").fetchall():
-            ures = self.con.execute('SELECT COUNT(*) FROM "%s" WHERE IFNULL(licenc_allapot,"")="" '
-                                    'OR IFNULL(kereskedelmi,"")="" OR IFNULL(licenc_dataset,"")=""' % n).fetchone()[0]
-            self.assertEqual(ures, 0, n)
+    def _tablak(self):
+        return [n for (n,) in self.con.execute(
+            "SELECT name FROM sqlite_master WHERE type='table' "
+            "AND name NOT LIKE 'sqlite_%' AND name NOT LIKE 'fts_motivum_%'").fetchall()]
+
+    def test_g4_nincs_licenc_oszlop_az_adattablakban(self):
+        # F89 / DT113: a licenc tablaszintu; egyik adattablanak (az FTS-t is beleertve) sincs licenc-oszlopa
+        tiltott = {'licenc_allapot', 'kereskedelmi', 'licenc_dataset'}
+        for n in self._tablak():
+            if n == 'tabla_licenc':
+                continue
+            oszlopok = {r[1] for r in self.con.execute('PRAGMA table_info("%s")' % n)}
+            self.assertFalse(oszlopok & tiltott, n)
+
+    def test_g4_minden_tablanak_pontosan_egy_tabla_licenc_sora(self):
+        tablak = self._tablak()
+        self.assertIn('tabla_licenc', tablak)
+        sorok = self.con.execute('SELECT tabla, COUNT(*) FROM tabla_licenc GROUP BY tabla').fetchall()
+        self.assertEqual(sorted(n for n, _ in sorok), sorted(tablak))
+        self.assertTrue(all(d == 1 for _, d in sorok))
+        ures = self.con.execute("SELECT COUNT(*) FROM tabla_licenc WHERE IFNULL(licenc_allapot,'')='' "
+                                "OR IFNULL(kereskedelmi,'')='' OR IFNULL(licenc_dataset,'')='' "
+                                "OR IFNULL(cimke,'')=''").fetchone()[0]
+        self.assertEqual(ures, 0)
+
+    def test_g4_karoli_strong_tablak_sajat_licencsora(self):
+        for t, ds in (('token_par', 'Karoli_Strong_parok'), ('token_karoli', 'Karoli_Strong_szavak'),
+                      ('frazis_pozicio', 'Karoli_Strong_parok')):
+            r = self.con.execute('SELECT licenc_dataset, licenc_allapot, kereskedelmi, cimke '
+                                 'FROM tabla_licenc WHERE tabla=?', (t,)).fetchall()
+            self.assertEqual(r, [(ds, 'tisztazott', 'igen', 'minden jog fenntartva')], t)
+
+    def test_g4_legszigorubb_ertek(self):
+        # egy szarmaztatott tabla a forrasai kozul a legszigorubb erteket kapja (DT109 (2c))
+        ep = S.Epito(ROOT, os.path.join(self.tmp, 'd.db'), 'minta')
+        ep.licencek = {
+            'A': {'allapot': 'kozkincs', 'kereskedelmi': 'igen', 'cimke': 'kozkincs'},
+            'B': {'allapot': 'tisztazatlan', 'kereskedelmi': 'nem', 'cimke': 'tisztazatlan'},
+            'C': {'allapot': 'tisztazott', 'kereskedelmi': 'feltetelesen', 'cimke': 'kozkincs'},
+        }
+        self.assertEqual(ep.licenc_feloldas(['A', 'B', 'C']),
+                         ('tisztazatlan', 'nem', 'A+B+C', 'kozkincs; tisztazatlan'))
+        self.assertEqual(ep.licenc_feloldas(['A', 'C']), ('tisztazott', 'feltetelesen', 'A+C', 'kozkincs'))
+        # a valodi leltar: a strong_parok (TAHOT, TAGNT, projekt_adat) egyutt tisztazott/igen
+        r = self.con.execute("SELECT licenc_allapot, kereskedelmi FROM tabla_licenc WHERE tabla='strong_parok'").fetchone()
+        self.assertEqual(r, ('tisztazott', 'igen'))
+
+    def test_g4_zart_csomagbol_kizarando_cimkek_megkulonboztethetok(self):
+        # a CC BY-SA (SDBH, SDGNT, UBS, LSJ, tW) es az MCGED sora a cimkerol felismerheto, a sajat adat nem
+        _, licencsorok = S.G.tsv_beolvas(os.path.join(ROOT, 'adat', 'licencek.tsv'))
+        ep = S.Epito(ROOT, os.path.join(self.tmp, 'e.db'), 'minta')
+        ep.licencek = {r['dataset']: r for r in licencsorok}
+        for k in ('SDBH', 'SDGNT', 'UBS_DBH', 'UBS_DNTG', 'LSJ', 'tW_szocikkek'):
+            self.assertEqual(ep.licenc_feloldas([k])[3], 'CC BY-SA 4.0', k)
+        self.assertEqual(ep.licenc_feloldas(['MCGED'])[3], '© Mounce 1993')
+        for k in ('projekt_adat', 'Karoli_Strong_parok', 'Karoli_Strong_szavak', 'karoli_variancia'):
+            self.assertEqual(ep.licenc_feloldas([k])[0:2], ('tisztazott', 'igen'), k)
+            self.assertEqual(ep.licenc_feloldas([k])[3], 'minden jog fenntartva', k)
 
     def test_g6_ismeretlen_licenc_nem_kap_alaperteket(self):
         # licencsor nelkuli tabla nem epul be (a mintaban nincs ilyen, a mechanizmus kozvetlenul)
@@ -392,10 +444,12 @@ class Integracio(unittest.TestCase):
 
     def test_adat_tabla_sajat_licence(self):
         for t in ('morf_kulcs_heber', 'morf_nyelv_aramai'):
-            r = self.con.execute('SELECT DISTINCT licenc_dataset, licenc_allapot, kereskedelmi FROM "%s"' % t).fetchall()
+            r = self.con.execute('SELECT licenc_dataset, licenc_allapot, kereskedelmi FROM tabla_licenc '
+                                 'WHERE tabla=?', (t,)).fetchall()
             self.assertEqual(r, [(t, 'tisztazott', 'igen')])
-        r = self.con.execute('SELECT DISTINCT licenc_dataset FROM motivumok').fetchall()
-        self.assertEqual(r, [('projekt_adat',)])
+        r = self.con.execute("SELECT licenc_dataset, licenc_allapot, kereskedelmi, cimke FROM tabla_licenc "
+                             "WHERE tabla='motivumok'").fetchall()
+        self.assertEqual(r, [('projekt_adat', 'tisztazott', 'igen', 'minden jog fenntartva')])
 
     def test_tagnt_karoli_vers_nelkuli_kulcsok(self):
         nevek = {r[0] for r in self.con.execute(
