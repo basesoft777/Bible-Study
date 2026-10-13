@@ -94,14 +94,45 @@ def db_vers(con, ig):
     tsk = con.execute('SELECT cel_igehely, votes FROM tsk WHERE igehely=? ORDER BY votes DESC', (ig,)).fetchall()
     kh_db = con.execute('SELECT COUNT(*) FROM kh WHERE igehely=?', (ig,)).fetchone()[0]
     sz = con.execute('SELECT osztaly, kjv_igehely, mt_igehely, megfeleltetes_forras FROM vers_szamozas WHERE igehely=?', (ig,)).fetchone()
-    lxx = [x[0] for x in con.execute('SELECT DISTINCT lxx_igehely FROM lxx_versszintu_parok WHERE igehely=?', (ig,))]
+    if _van_tabla(con, 'lxx_versszam'):
+        # F92: az LXX-versszam minden OSZ versre; a LXX_OS-sorok a TSV-ut (lxx_igehely.setdefault) megfeleloi
+        lxx = []
+        for (x,) in con.execute("SELECT lxx_igehely FROM lxx_versszam WHERE karoli_igehely=? AND forras='LXX_OS' ORDER BY rowid", (ig,)):
+            if x not in lxx:
+                lxx.append(x)
+        lxx_extra = [tuple(x[:2]) for x in con.execute(
+            "SELECT forras, lxx_igehely FROM lxx_versszam WHERE karoli_igehely=? AND forras!='LXX_OS' ORDER BY rowid", (ig,))]
+    else:
+        lxx = [x[0] for x in con.execute('SELECT DISTINCT lxx_igehely FROM lxx_versszintu_parok WHERE igehely=?', (ig,))]
+        lxx_extra = []
     ubs = {}
     for st in {h[0] for h in heber}:
         ubs[st] = sorted(x[0] for x in con.execute(
             'SELECT DISTINCT r.lexid FROM ubs_dbh_referenciak r JOIN ubs_dbh_jelentesek j ON j.lexid=r.lexid '
             'WHERE r.igehely=? AND r.strong=?', (ig, st)))
+    macula = lxx_szavak = nave = None
+    lxx_formak = []
+    if _van_tabla(con, 'token_macula'):
+        macula = [{'szo': a, 'lemma': b, 'strong': hnorm(c) if c else None, 'morf': d, 'szofaj': e, 'gloss': f,
+                   'lxx': g, 'lxx_strong': hnorm(h) if h else None}
+                  for a, b, c, d, e, f, g, h in con.execute(
+                      'SELECT szo, lemma, strong_nyers, morf, szofaj, gloss, lxx_szo, lxx_strong FROM token_macula '
+                      'WHERE igehely=? ORDER BY rowid', (ig,))]
+    if _van_tabla(con, 'lxx_token'):
+        lxx_szavak = [{'szoalak': a, 'lemma': b, 'strong': c or '', 'morf': d} for a, b, c, d in con.execute(
+            'SELECT szoalak, lemma, strong, morf FROM lxx_token WHERE karoli_igehely=? ORDER BY szovegforma, pozicio, rowid', (ig,))]
+        # F92 (ellenőr ÚJ-1): a párhuzamos szövegformák (Dán/Bír/Józs) külön csoportban, nem összefésülve
+        lxx_formak = [x[0] for x in con.execute('SELECT DISTINCT szovegforma FROM lxx_token WHERE karoli_igehely=? ORDER BY szovegforma', (ig,))]
+    if _van_tabla(con, 'nave_vers'):
+        nave, lat = [], set()
+        for tema, cimke, hely, tart, tid in con.execute(
+                'SELECT tema, cimke, nave_hely, tartomanyos, tema_id FROM nave_vers WHERE igehely=? ORDER BY forras_sor, rowid', (ig,)):
+            if (tema, cimke, hely) not in lat:
+                lat.add((tema, cimke, hely))
+                nave.append((tema, cimke, hely, bool(tart), tid))
     return {'karoli': r[0] if r else None, 'par': dict(par), 'heber': heber, 'tsk': tsk, 'kh_db': kh_db,
-            'versszam': sz, 'lxx': lxx, 'ubs': ubs}
+            'versszam': sz, 'lxx': lxx, 'lxx_extra': lxx_extra, 'ubs': ubs,
+            'macula': macula, 'lxx_szavak': lxx_szavak, 'lxx_formak': lxx_formak, 'nave': nave}
 
 
 def db_szo(con, strong):
@@ -111,6 +142,19 @@ def db_szo(con, strong):
     for (szoveg,) in con.execute("SELECT forditas_hu FROM forditasok WHERE szotar='BDB' AND strong=? ORDER BY rowid", (strong,)):
         if szoveg and szoveg.strip():
             bdb_hu = szoveg.replace('\\n', '\n')
+    alias = None
+    if not bdb_hu and not (bdb_en and bdb_en[0]) and _van_tabla(con, 'bdb_alias'):
+        # F92: a szocikk masik Strong-szam alatt all (bdb_alias); a pilot szabalya szerint csak ha a sajat szocikk hianyzik
+        a = con.execute('SELECT tabla_strong, bdb_id, szoveg_hasonlosag FROM bdb_alias WHERE masodlagos_strong=?', (strong,)).fetchone()
+        if a:
+            en2 = con.execute('SELECT teljes_szocikk FROM bdb WHERE strong=?', (a[0],)).fetchone()
+            hu2 = None
+            for (szoveg,) in con.execute("SELECT forditas_hu FROM forditasok WHERE szotar='BDB' AND strong=? ORDER BY rowid", (a[0],)):
+                if szoveg and szoveg.strip():
+                    hu2 = szoveg.replace('\\n', '\n')
+            if hu2 or (en2 and en2[0]):
+                alias = {'tabla_strong': a[0], 'bdb_id': a[1], 'hasonlosag': a[2]}
+                bdb_en, bdb_hu = en2, hu2
     elo = con.execute("SELECT COUNT(*), COUNT(DISTINCT substr(igehely, 1, instr(igehely, ' ') - 1)) FROM token_strong WHERE strong=?", (strong,)).fetchone()
     alak, magas = Counter(), 0
     gramm = con.execute('SELECT 1 FROM grammatikai_strongok WHERE strong=?', (strong,)).fetchone() if _van_oszlop(con, 'grammatikai_strongok', 'strong') else None
@@ -120,11 +164,19 @@ def db_szo(con, strong):
             alak[a] += 1
             magas += (bz == 'magas')
     bridge = sorted(((int(c), g) for g, c in con.execute('SELECT greek_strong, count FROM lxx_bridge WHERE strong=?', (strong,))), reverse=True)[:3]
-    return {'szotar': sz, 'bdb_en': bdb_en[0] if bdb_en else '', 'bdb_hu': bdb_hu, 'elofordulas': elo[0], 'konyvek': elo[1],
+    return {'szotar': sz, 'bdb_en': bdb_en[0] if bdb_en else '', 'bdb_hu': bdb_hu, 'alias': alias, 'elofordulas': elo[0], 'konyvek': elo[1],
             'karoli_osszes': sum(alak.values()), 'karoli_magas': magas, 'karoli_top8': alak.most_common(8), 'bridge': bridge, 'gramm': bool(gramm)}
 
 
 _OSZLOP = {}
+_TABLA = {}
+
+
+def _van_tabla(con, nev):
+    k = (id(con), nev)
+    if k not in _TABLA:
+        _TABLA[k] = bool(con.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name=?", (nev,)).fetchone())
+    return _TABLA[k]
 
 
 def _van_oszlop(con, tabla, oszlop):
@@ -181,7 +233,57 @@ def hasonlit_vers(con, v, db=None):
     lxx_ok = ('a DB nem ad LXX-verset (az lxx_versszintu_parok csak a héber–görög Strong-párral rendelkező versekre tartalmaz sort)'
               if not d['lxx'] else 'a DB más LXX-verset ad, mint a TSV (LXX_OS első találat)')
     ki['lxx_vers_szam'] = ((not vs['lxx'] and not d['lxx']) or vs['lxx'] in d['lxx'], vs['lxx'], d['lxx'], lxx_ok)
+    if d.get('lxx_extra'):
+        EXTRA['lxx_versszam_nem_LXX_OS'][d['lxx_extra'][0][0]] += 1
+    if d.get('macula') is not None:
+        th_strong = [w['strong'] for w in v['heber']]
+        kot, ketert = macula_kot(th_strong, d['macula'], len(v['heber']))
+        EXTRA['macula_ketertelmu_token'] += ketert
+        EXTRA['macula_ketertelmu_vers'] += 1 if ketert else 0
+        EXTRA['macula_token_osszes'] += len(v['heber'])
+        tsv_m = [macula_kulcs(w.get('macula')) for w in v['heber']]
+        db_m = [macula_kulcs(m) for m in kot]
+        ki['macula'] = (tsv_m == db_m, tsv_m, db_m, '')
+    if d.get('lxx_szavak') is not None:
+        tsv_l = [(x['szoalak'], x['lemma'], x['strong'], x['morf']) for x in v['lxx']]
+        db_l = [(x['szoalak'], x['lemma'], x['strong'], x['morf']) for x in d['lxx_szavak']]
+        ki['lxx_szavak'] = (tsv_l == db_l, tsv_l, db_l, '')
+    if d.get('nave') is not None:
+        tsv_n = [(x['tema'], x['cimke'], x['hely'], bool(x['tart']), x['id']) for x in v['nave']]
+        ki['nave'] = (tsv_n == d['nave'], tsv_n, d['nave'], '')
     return ki
+
+
+EXTRA = {'macula_ketertelmu_token': 0, 'macula_ketertelmu_vers': 0, 'macula_token_osszes': 0,
+         'lxx_versszam_nem_LXX_OS': Counter()}
+
+
+def macula_kulcs(m):
+    """A Macula-sor összevethető alakja (a pilot a lxx mezőt az LXX_OS szóalakjával felülírhatja: az eredeti `lxx_macula`)."""
+    if not m:
+        return None
+    return (m['szo'], m['lemma'], m['strong'], m['morf'], m['szofaj'], m['gloss'], m.get('lxx_macula', m['lxx']), m['lxx_strong'])
+
+
+def macula_kot(th_strong, mac, th_db):
+    """A pilot (adat.py) Macula–TAHOT kötése: azonos szegmentálásnál sorrend, egyébként Strong szerint az első
+    még nem használt sor (a H9xxx prefixum a Strong nélküli sorral). Visszaad: (kötött Macula-sorok, kétértelmű
+    kötések száma). Kétértelmű: több használatlan jelölt közül pozíció-sorrend választ (DT-F92a 6.); a „0 eltérés”
+    ilyenkor nem jelent igazolt illesztést."""
+    if len(mac) == th_db:
+        return list(mac), 0
+    hasznalt, ki, ketert = set(), [], 0
+    for st in th_strong:
+        if st and st.startswith('H9'):
+            jel = [i for i, m in enumerate(mac) if m['strong'] is None and i not in hasznalt]
+        else:
+            jel = [i for i, m in enumerate(mac) if m['strong'] == st and i not in hasznalt]
+        if len(jel) > 1:
+            ketert += 1
+        ki.append(mac[jel[0]] if jel else None)
+        if jel:
+            hasznalt.add(jel[0])
+    return ki, ketert
 
 
 def hasonlit_szo(con, l, db=None):
@@ -193,7 +295,7 @@ def hasonlit_szo(con, l, db=None):
                            (sz == ('', '', '', '')), (l['lemma'], l['kiejtes'], l['szofaj'], l['rovid']), sz, '')
     # a JSON (adat.py) az angol szöveget csak magyar fordítás hiányában tárolja: ott nincs mivel összevetni
     alias_ok = ('a szócikk a BDB_strong_alias.tsv (#57) szerint másik Strong-szám alatt áll; a pardes.db az alias-táblát nem hordozza'
-                if l.get('bdb_alias') else '')
+                if l.get('bdb_alias') and 'alias' not in d else '')
     ki['bdb_angol'] = (l['bdb_hu'] is not None or (l['bdb_en'] or '') == d['bdb_en'],
                        len(l['bdb_en'] or ''), len(d['bdb_en']), alias_ok)
     ki['bdb_magyar'] = (l['bdb_hu'] == d['bdb_hu'], len(l['bdb_hu'] or ''), len(d['bdb_hu'] or ''), alias_ok)
@@ -207,6 +309,8 @@ def hasonlit_szo(con, l, db=None):
     tsv_b = [(x['strong'], x['db']) for x in l['lxx']]
     db_b = [(g, c) for c, g in d['bridge']]
     ki['lxx_bridge'] = (tsv_b == db_b, tsv_b, db_b, '')
+    if 'alias' in d:
+        ki['bdb_alias'] = ((l.get('bdb_alias') or None) == d['alias'], l.get('bdb_alias'), d['alias'], '')
     return ki
 
 
@@ -224,8 +328,18 @@ def hasonlit_gorog(con, g, db=None):
     ki['tbesg'] = (egyezik_vagva(g['tbesg'], d['tbesg']), len(g['tbesg']), len(d['tbesg']), 'a JSON vágott szöveg (előtag-egyezés)' if (g['tbesg'] or '').endswith('…') else '')
     ki['thayer'] = (egyezik_vagva(g['thayer'], d['thayer']), len(g['thayer']), len(d['thayer']), 'a JSON vágott szöveg (előtag-egyezés)' if (g['thayer'] or '').endswith('…') else '')
     ki['magyar_szocikk'] = (len(g['hu']) == min(d['hu_db'], 6), len(g['hu']), d['hu_db'], '')
+    # F92: a pilot TSV-útja (adat.py) a TAGNT Strong-mezőjét egészben hnorm-olja, a „+” láncok elemeit (pl. G4155+G0575)
+    # nem számolja; a pardes.db token_strong táblája a lánc elemeit külön sorként tartalmazza. Az eltérés oka ellenőrizve:
+    # DB-szám = TSV-szám + a láncelemként szereplő előfordulások.
+    ok = ''
+    if (g['usz_db'], g['usz_versek_db']) != (d['usz_db'], d['usz_versek_db']):
+        lanc = con.execute("SELECT COUNT(*) FROM token_strong s JOIN token_eredeti e ON e.igehely=s.igehely AND e.sorszam=s.sorszam "
+                           "WHERE s.strong=? AND e.nyelv='G' AND e.strong_lanc LIKE '%+%'", (g['strong'],)).fetchone()[0]
+        if lanc and g['usz_db'] + lanc == d['usz_db']:
+            ok = ('a pilot TSV-útja a „+” Strong-láncok elemeit nem számolja (%d előfordulás láncelemként), a token_strong igen; '
+                  'DB-szám = TSV-szám + láncelem' % lanc)
     ki['usz_elofordulas'] = ((g['usz_db'], g['usz_versek_db']) == (d['usz_db'], d['usz_versek_db']),
-                             (g['usz_db'], g['usz_versek_db']), (d['usz_db'], d['usz_versek_db']), '')
+                             (g['usz_db'], g['usz_versek_db']), (d['usz_db'], d['usz_versek_db']), ok)
     tsv_h = [(x['strong'], x['db']) for x in g['heber']]
     db_h = [(h, c) for c, h in d['heber']]
     ki['heber_hatter'] = (tsv_h == db_h, tsv_h, db_h, '')
@@ -304,7 +418,9 @@ LAPHOZ_TABLAK = ['vers', 'token_par', 'token_eredeti', 'token_strong', 'tsk', 'k
                  # a régi ág (claude/olvasoi-pilot) bővebb blokkjai (F60.5–F60.9)
                  'bsb', 'kjv', 'tipnr', 'nave_basokant', 'igehely_tartomany', 'lxx_dontesek', 'kapcsolatok', 'motivumok',
                  'morf_kulcs_heber', 'sdbh_domenek', 'sdgnt_domenek', 'sece_h', 'sece_g', 'tbesh', 'lsj', 'mcged',
-                 'ubs_dntg_jelentesek', 'ubs_dntg_referenciak', 'tw_szocikkek', 'oshl_lexikalis_index', 'oshl_bdb_igehelyek']
+                 'ubs_dntg_jelentesek', 'ubs_dntg_referenciak', 'tw_szocikkek', 'oshl_lexikalis_index', 'oshl_bdb_igehelyek',
+                 # F92 (#92): az olvasói lapok eddig hiányzó táblái
+                 'token_macula', 'lxx_token', 'lxx_versszam', 'bdb_alias', 'nave_vers']
 
 
 def tabla_meretek():
@@ -317,9 +433,10 @@ def tabla_meretek():
     if not os.path.exists(ut):
         return ki
     for s in open(ut, encoding='utf-8'):
-        m = re.match(r'^\| `(\w+)` \| (\d+) \| ([\d.]+) \| ([\d.]+) \|', s)
+        # F89 óta a táblázat `| tábla | sor | MB |` (a licenc_* oszlopok nélkül); a régi 4 oszlopos alak is elfogadott
+        m = re.match(r'^\| `(\w+)` \| (\d+) \| ([\d.]+) \|(?: ([\d.]+) \|)?', s)
         if m:
-            ki[m.group(1)] = (float(m.group(3)) * MIB_MB, float(m.group(4)) * MIB_MB)
+            ki[m.group(1)] = (float(m.group(3)) * MIB_MB, float(m.group(4) or m.group(3)) * MIB_MB)
     return ki
 
 
@@ -379,13 +496,21 @@ TSV_FORRAS = {'vers': ['konkordancia/Karoli_1908.tsv'], 'token_par': ['adat/karo
               'thayer': ['konkordancia/Thayer_teljes.tsv'], 'tbesg': ['konkordancia/TBESG.txt'],
               'lxx_bridge': ['adat/kulso/lxx_bridge.tsv'],
               'lxx_versszintu_parok': ['konkordancia/LXX_OS/'],
+              'token_macula': ['konkordancia/Macula_heber_*.tsv'], 'lxx_token': ['konkordancia/LXX_OS/'],
+              'lxx_versszam': ['konkordancia/LXX_OS/', 'konkordancia/LXX_versificacios_terkep.tsv'],
+              'bdb_alias': ['konkordancia/BDB_strong_alias.tsv'],
+              'nave_vers': ['konkordancia/Nave_basokant.tsv', 'konkordancia/Karoli_versmegfeleltetes.tsv', 'konkordancia/LXX_OS/'],
               'ubs_dbh_referenciak': ['konkordancia/UBS_DBH_referenciak.tsv'], 'ubs_dbh_jelentesek': ['konkordancia/UBS_DBH_jelentesek.tsv'],
               'grammatikai_strongok': ['adat/grammatikai_strongok.tsv'], 'licencek': ['adat/licencek.tsv']}
 EGYEZO_SORSZAM = {'strong_szotar': 'konkordancia/Strong_szotar.tsv', 'bdb': 'konkordancia/BDB_teljes_unabridged.tsv',
                   'thayer': 'konkordancia/Thayer_teljes.tsv', 'lxx_bridge': 'adat/kulso/lxx_bridge.tsv',
                   'forditasok': 'adat/forditasok.tsv', 'tsk': 'konkordancia/TSK_kereszthivatkozasok.tsv',
                   'ubs_dbh_jelentesek': 'konkordancia/UBS_DBH_jelentesek.tsv', 'ubs_dbh_referenciak': 'konkordancia/UBS_DBH_referenciak.tsv',
-                  'kh': 'konkordancia/Karoli_kereszthivatkozasok.tsv', 'vers': 'konkordancia/Karoli_1908.tsv'}
+                  'kh': 'konkordancia/Karoli_kereszthivatkozasok.tsv', 'vers': 'konkordancia/Karoli_1908.tsv',
+                  'bdb_alias': 'konkordancia/BDB_strong_alias.tsv'}
+# F92: a forrás-sorszám a meta-ban (az építéskori TSV-sorok), a mostani TSV-sorokhoz hasonlítva
+META_FORRAS_SOR = {'token_macula': ('token_macula:forras_sor', ['konkordancia/Macula_heber_*.tsv']),
+                   'nave_vers': ('nave_vers:nave_basokant_sor', ['konkordancia/Nave_basokant.tsv'])}
 
 
 def git(*a):
@@ -442,6 +567,15 @@ def frissesseg(con, hash_ellenorzes):
             sor['tsv_sor_most'] = osszeg
             if sor['meta_sor'] is not None and osszeg != sor['meta_sor']:
                 valt.append('sorszám: tsv (TAHOT+TAGNT) %d, adatbázis %d (különbség %+d)' % (osszeg, sor['meta_sor'], osszeg - sor['meta_sor']))
+        if t in META_FORRAS_SOR and META_FORRAS_SOR[t][0] in m:
+            import glob as _g
+            most = 0
+            for pat in META_FORRAS_SOR[t][1]:
+                for f in sorted(_g.glob(GY + pat)):
+                    most += tsv_sorok(os.path.relpath(f, GY).replace('\\', '/'))
+            sor['tsv_sor_most'] = most
+            if most != int(m[META_FORRAS_SOR[t][0]]):
+                valt.append('forrás-sorszám: tsv %d, az építéskori %s' % (most, m[META_FORRAS_SOR[t][0]]))
         if t in EGYEZO_SORSZAM and os.path.exists(GY + EGYEZO_SORSZAM[t]):
             ts_sor = tsv_sorok(EGYEZO_SORSZAM[t])
             sor['tsv_sor_most'] = ts_sor
@@ -463,13 +597,13 @@ BLOKKOK = [
     ('vers-lap: Károli-szöveg', 'vers', ['vers'], None),
     ('vers-lap: Károli–Strong párosítás (aláhúzás)', 'vers', ['token_par'], None),
     ('vers-lap: héber szavak (TAHOT: alak, átírás, tükörfordítás, Strong)', 'vers', ['token_eredeti'], None),
-    ('vers-lap: igealak-kód, szófaj (Macula)', 'vers', [], 'konkordancia/Macula_heber_*.tsv'),
-    ('vers-lap: héber–görög párosítás szavanként (Macula)', 'vers', [], 'konkordancia/Macula_heber_*.tsv'),
-    ('vers-lap: görög szóalak és a Septuaginta-vers szavai (LXX_OS)', 'vers', [], 'konkordancia/LXX_OS/*.tsv'),
-    ('vers-lap: LXX-versszám', 'vers', ['lxx_versszintu_parok'], None),
+    ('vers-lap: igealak-kód, szófaj (Macula)', 'vers', ['token_macula'], None),
+    ('vers-lap: héber–görög párosítás szavanként (Macula)', 'vers', ['token_macula'], None),
+    ('vers-lap: görög szóalak és a Septuaginta-vers szavai (LXX_OS)', 'vers', ['lxx_token'], None),
+    ('vers-lap: LXX-versszám', 'vers', ['lxx_versszam'], None),
     ('vers-lap: versszámozás (MT / KJV)', 'vers', ['vers_szamozas'], None),
     ('vers-lap: angol szavak szavanként (BSB, KJV+Strong)', 'vers', ['bsb', 'kjv'], None),
-    ('vers-lap: Nave-témák (a tartományok versekre bontva)', 'vers', ['nave_basokant', 'igehely_tartomany'], None),
+    ('vers-lap: Nave-témák (a tartományok versekre bontva)', 'vers', ['nave_vers'], None),
     ('vers-lap: TIPNR (személy- és helynevek)', 'vers', ['tipnr'], None),
     ('vers-lap: igealak magyar feloldása (morf_kulcs_heber)', 'vers', ['morf_kulcs_heber'], None),
     ('vers-lap: LXX-döntés, kapcsolat, motívum (adatréteg-sorok)', 'vers', ['lxx_dontesek', 'kapcsolatok', 'motivumok'], None),
@@ -479,7 +613,7 @@ BLOKKOK = [
     ('szó-lap (héber): Strong-szótár (szótő, kiejtés, szófaj, rövid jelentés)', 'szo', ['strong_szotar'], None),
     ('szó-lap (héber): előfordulás, könyvek száma', 'szo', ['token_strong'], None),
     ('szó-lap (héber): Károli-alakok és bizonyosság', 'szo', ['token_par'], None),
-    ('szó-lap (héber): BDB angol szócikk', 'szo', ['bdb'], None),
+    ('szó-lap (héber): BDB angol szócikk (és az alias-tábla)', 'szo', ['bdb', 'bdb_alias'], None),
     ('szó-lap (héber): BDB magyar fordítás', 'szo', ['forditasok'], None),
     ('szó-lap (héber): görög megfelelő (lxx_bridge)', 'szo', ['lxx_bridge'], None),
     ('szó-lap (héber): szemantikai domén (SDBH)', 'szo', ['sdbh_domenek'], None),
@@ -510,7 +644,9 @@ def lefedettseg(con, adat):
     for t, oszlop in (('vers', 'igehely'), ('token_par', 'igehely'), ('token_eredeti', 'igehely'), ('tsk', 'igehely'), ('kh', 'igehely'),
                       ('vers_szamozas', 'igehely'), ('lxx_versszintu_parok', 'igehely'), ('ubs_dbh_referenciak', 'igehely'),
                       ('bsb', 'igehely'), ('kjv', 'igehely'), ('tipnr', 'igehely'), ('igehely_tartomany', 'igehely'),
-                      ('lxx_dontesek', 'igehely'), ('kapcsolatok', 'forras_igehely')):
+                      ('lxx_dontesek', 'igehely'), ('kapcsolatok', 'forras_igehely'),
+                      ('token_macula', 'igehely'), ('lxx_token', 'karoli_igehely'), ('lxx_versszam', 'karoli_igehely'),
+                      ('nave_vers', 'igehely')):
         if t in tablak:
             n = 0
             for i in range(0, len(igek), 400):
@@ -530,7 +666,7 @@ def lefedettseg(con, adat):
                 resz = kulcsok[i:i + 400]
                 seg += con.execute('SELECT COUNT(*) FROM %s WHERE %s IN (%s)' % (t, col, ','.join('?' * len(resz))), resz).fetchone()[0]
             tseg[t] = seg
-    for t in ('grammatikai_strongok', 'morf_kulcs_heber', 'motivumok'):   # nem szakasz-függő táblák: az összes sor
+    for t in ('grammatikai_strongok', 'morf_kulcs_heber', 'motivumok', 'bdb_alias'):   # nem szakasz-függő táblák (a bdb_alias kereső-tábla: csak akkor kell sor, ha a szócikk hiányzik): az összes sor
         if t in tablak:
             tseg[t] = con.execute('SELECT COUNT(*) FROM %s' % t).fetchone()[0]
     ki, db_ben, tsv_kell = [], 0, 0
@@ -600,20 +736,30 @@ def main():
                         'versszamozas': 'vers_szamozas' in valt, 'strong_szotar': 'strong_szotar' in valt, 'bdb_angol': 'bdb' in valt,
                         'bdb_magyar': 'forditasok' in valt, 'elofordulas': 'token_strong' in valt, 'karoli_alakok': 'token_par' in valt,
                         'lxx_bridge': 'lxx_bridge' in valt, 'tbesg': 'tbesg' in valt, 'thayer': 'thayer' in valt, 'magyar_szocikk': 'forditasok' in valt,
-                        'usz_elofordulas': 'token_strong' in valt, 'heber_hatter': 'lxx_bridge' in valt}
+                        'usz_elofordulas': 'token_strong' in valt, 'heber_hatter': 'lxx_bridge' in valt,
+                        'macula': 'token_macula' in valt, 'lxx_szavak': 'lxx_token' in valt, 'nave': 'nave_vers' in valt,
+                        'lxx_vers_szam': 'lxx_versszam' in valt, 'bdb_alias': 'bdb_alias' in valt}
     for sz in (a.szakasz or SZAKASZOK):
         adat = adat_json(sz, a.json_konyvtar)
         prov = 'scope=%s | forras=%s | ts=%s' % (sz, forras, ts)
         versek = [v['igehely'] for v in adat['versek']]
         r = {'proveniencia': prov, 'versek': len(versek), 'heber_lapok': len(adat['lapok']), 'gorog_lapok': len(adat['gor_lapok'])}
         r['D1'] = lefedettseg(con, adat)
+        EXTRA['macula_ketertelmu_token'] = EXTRA['macula_ketertelmu_vers'] = EXTRA['macula_token_osszes'] = 0
+        EXTRA['lxx_versszam_nem_LXX_OS'] = Counter()
         r['D2'] = egyezes(con, adat, forras_valtozott)
+        r['D2_kiegeszitesek'] = {'macula_ketertelmu_token': EXTRA['macula_ketertelmu_token'],
+                                 'macula_ketertelmu_vers': EXTRA['macula_ketertelmu_vers'],
+                                 'macula_token_osszes': EXTRA['macula_token_osszes'],
+                                 'lxx_versszam_csak_nem_LXX_OS_forras': dict(EXTRA['lxx_versszam_nem_LXX_OS'])}
         r['D3'] = ido(a.db, versek, list(adat['lapok']), list(adat['gor_lapok']))
         eredmeny['szakaszok'][sz] = r
         print('==', prov)
         print('D1: db-ből előállítható blokk %d / %d; TSV kell %d' % (r['D1']['db_bol_elo_allithato'], r['D1']['osszes_blokk'], r['D1']['tsv_kell']))
         for k, v in r['D2'].items():
             print('D2 %-40s vizsgált %5d, eltérő %5d %s' % (k, v['vizsgalt'], v['eltero'], v['okok'] if v['eltero'] else ''))
+        print('D2 kiegészítés (Macula–TAHOT kétértelmű kötés: több használatlan azonos-Strong jelölt, pozíció-sorrend dönt; a 0 eltérés ilyenkor nem igazolt illesztés):',
+              json.dumps(r['D2_kiegeszitesek'], ensure_ascii=False))
         for k, v in r['D3'].items():
             print('D3 %-6s meleg median %s ms, p95 %s ms | hideg median %s ms, p95 %s ms' % (k, v['meleg_median_ms'], v['meleg_p95_ms'], v['hideg_median_ms'], v['hideg_p95_ms']))
     print('D4:', json.dumps({k: v for k, v in eredmeny['D4'].items() if k not in ('szukseges_tablak', 'nem_kell')}, ensure_ascii=False))

@@ -1050,6 +1050,92 @@ class TestDbMeres(unittest.TestCase):
         finally:
             con.close()
 
+    # -- F92 (DT-F92a): az új táblák olvasási útja ------------------------------------------
+    def _uj_tablak_vannak(self, con):
+        return all(self.dm._van_tabla(con, t) for t in ('token_macula', 'lxx_token', 'lxx_versszam', 'bdb_alias', 'nave_vers'))
+
+    def test_d2_uj_blokkok_zsolt22_es_1moz(self):
+        if not os.path.exists(self.db):
+            self.skipTest('nincs pardes.db')
+        con = self.dm.kapcsolat(self.db)
+        try:
+            if not self._uj_tablak_vannak(con):
+                self.skipTest('a pardes.db még nem hordozza az F92 tábláit (újraépítés kell)')
+            for kulcs, ig in (('zsolt', 'Zsolt 22:3'), ('zsolt', 'Zsolt 22:1'), ('gen', '1Móz 1:1'), ('gen', '1Móz 1:4')):
+                ki = self.dm.hasonlit_vers(con, vers(ADAT[kulcs], ig))
+                for blokk in ('macula', 'lxx_szavak', 'nave', 'lxx_vers_szam'):
+                    self.assertIn(blokk, ki)
+                    self.assertTrue(ki[blokk][0], '%s %s: tsv=%r db=%r' % (ig, blokk, ki[blokk][1], ki[blokk][2]))
+        finally:
+            con.close()
+
+    def test_d2_bdb_alias_szo_lap(self):
+        if not os.path.exists(self.db):
+            self.skipTest('nincs pardes.db')
+        con = self.dm.kapcsolat(self.db)
+        try:
+            if not self._uj_tablak_vannak(con):
+                self.skipTest('a pardes.db még nem hordozza az F92 tábláit (újraépítés kell)')
+            for s in ('H0136', 'H7358'):
+                ki = self.dm.hasonlit_szo(con, ADAT['zsolt']['lapok'][s])
+                for blokk in ('bdb_angol', 'bdb_magyar', 'bdb_alias'):
+                    self.assertTrue(ki[blokk][0], '%s %s: tsv=%r db=%r' % (s, blokk, ki[blokk][1], ki[blokk][2]))
+                self.assertIsNotNone(ki['bdb_alias'][2])
+        finally:
+            con.close()
+
+    def test_d2_uj_blokk_elteres_kimutatasa(self):
+        if not os.path.exists(self.db):
+            self.skipTest('nincs pardes.db')
+        con = self.dm.kapcsolat(self.db)
+        try:
+            if not self._uj_tablak_vannak(con):
+                self.skipTest('a pardes.db még nem hordozza az F92 tábláit (újraépítés kell)')
+            v = json.loads(json.dumps(vers(ADAT['zsolt'], 'Zsolt 22:3')))
+            v['lxx'][0]['szoalak'] += 'x'
+            v['nave'] = v['nave'][1:]
+            ki = self.dm.hasonlit_vers(con, v)
+            self.assertFalse(ki['lxx_szavak'][0])
+            self.assertFalse(ki['nave'][0])
+        finally:
+            con.close()
+
+    def test_lxx_parhuzamos_szovegformak_nem_fesulnek_ossze(self):
+        """Ellenőr ÚJ-1: ahol egy Károli-versre két LXX-szövegforma esik (Dán, Bír, Józs), az olvasási út formánként csoportosít."""
+        if not os.path.exists(self.db):
+            self.skipTest('nincs pardes.db')
+        con = self.dm.kapcsolat(self.db)
+        try:
+            if not self._uj_tablak_vannak(con) or not self.dm._van_oszlop(con, 'lxx_token', 'szovegforma'):
+                self.skipTest('a pardes.db még nem hordozza a szovegforma oszlopot (újraépítés kell)')
+            for elo in ('Dán', 'Bír', 'Józs'):
+                sor = con.execute("SELECT karoli_igehely FROM lxx_token WHERE karoli_igehely LIKE ? "
+                                  "GROUP BY karoli_igehely HAVING COUNT(DISTINCT szovegforma)>1 LIMIT 1", (elo + ' %',)).fetchone()
+                self.assertIsNotNone(sor, elo)
+                d = self.dm.db_vers(con, sor[0])
+                self.assertGreaterEqual(len(d['lxx_formak']), 2, sor[0])
+                darab = {f: con.execute('SELECT COUNT(*) FROM lxx_token WHERE karoli_igehely=? AND szovegforma=?',
+                                        (sor[0], f)).fetchone()[0] for f in d['lxx_formak']}
+                self.assertEqual(len(d['lxx_szavak']), sum(darab.values()))
+                sorrend = [r[0] for r in con.execute(
+                    'SELECT szovegforma FROM lxx_token WHERE karoli_igehely=? ORDER BY szovegforma, pozicio, rowid', (sor[0],))]
+                self.assertEqual(sorrend, sorted(sorrend))   # formánként összefüggő blokkok
+                formak_lxx = [r[0] for r in con.execute(
+                    "SELECT DISTINCT szovegforma FROM lxx_versszam WHERE karoli_igehely=? AND forras='LXX_OS'", (sor[0],))]
+                self.assertGreaterEqual(len(formak_lxx), 2, sor[0])
+        finally:
+            con.close()
+
+    def test_macula_kot_ketertelmu_pozicio_sorrend(self):
+        mac = [{'strong': 'H0430'}, {'strong': 'H0430'}, {'strong': None}]
+        # eltérő szegmentálás (3 Macula-sor, 2 TAHOT-token): a kétszer álló Strong kétértelmű, az első használatlan dönt
+        kot, ketert = self.dm.macula_kot(['H0430', 'H0430'], mac, 2)
+        self.assertEqual(kot, [mac[0], mac[1]])
+        self.assertEqual(ketert, 1)           # csak az első kötésnél volt egynél több jelölt
+        # azonos szegmentálás: sorrend szerinti kötés, nincs kétértelműség
+        kot, ketert = self.dm.macula_kot(['H0430', 'H0430', 'H9020'], mac, 3)
+        self.assertEqual((kot, ketert), (mac, 0))
+
 
 class TestEpitHatokor(unittest.TestCase):
     def test_fejezet_tartomany(self):

@@ -28,6 +28,7 @@ if hasattr(sys.stderr, 'reconfigure'):
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import general as G  # noqa: E402
 import sqlite_epit as S  # noqa: E402
+import nave_bontas as NB  # noqa: E402
 
 ROOT = S.ROOT
 
@@ -467,6 +468,143 @@ class Integracio(unittest.TestCase):
     def test_probak_megegyeznek(self):
         for p in S.probak(self.a, ROOT):
             self.assertTrue(p['ok'], '%s: %s' % (p['pont'], p['megj']))
+
+    # -- F92 (DT-F92a): az olvasoi lapok hiany-tablai ------------------------------------------
+    def _meta_dict(self):
+        return dict(self.con.execute('SELECT kulcs, ertek FROM meta').fetchall())
+
+    def test_f92_ujtablak_betoltve_es_licenccel(self):
+        for t, ds in (('token_macula', 'Macula_heber'), ('lxx_token', 'LXX_OS'), ('bdb_alias', 'BDB+projekt_adat'),
+                      ('nave_vers', 'Nave_basokant+Karoli_versmegfeleltetes+LXX_OS'),
+                      ('lxx_versszam', 'LXX_OS+Versifikacios_tablak+Karoli_versmegfeleltetes')):
+            self.assertGreater(self.con.execute('SELECT COUNT(*) FROM "%s"' % t).fetchone()[0], 100, t)
+            r = self.con.execute('SELECT licenc_dataset FROM tabla_licenc WHERE tabla=?', (t,)).fetchall()
+            self.assertEqual(r, [(ds,)], t)
+            self.assertTrue(self.con.execute('SELECT 1 FROM meta WHERE kulcs=?', ('hash:' + t,)).fetchone(), t)
+        # a bdb_alias meta-sorban latszik a ket osszetevo
+        self.assertEqual(self._meta_dict()['bdb_alias:licenc_osszetevok'], 'BDB+projekt_adat')
+
+    def test_f92_sorszamok_a_forrassal(self):
+        gen = G.tsv_beolvas(os.path.join(ROOT, 'konkordancia', 'Macula_heber_Genezis.tsv'))[1]
+        db = sum(1 for r in gen if r['karoli'].startswith('1Móz ') and ';' not in r['karoli'])
+        self.assertEqual(self.con.execute("SELECT COUNT(*) FROM token_macula WHERE igehely LIKE '1Móz %'").fetchone()[0], db)
+        lx = G.tsv_beolvas(os.path.join(ROOT, 'konkordancia', 'LXX_OS', 'genesis.tsv'))[1]
+        db = sum(1 for r in lx if r['igehely_karoli'].startswith('1Móz '))
+        self.assertEqual(self.con.execute("SELECT COUNT(*) FROM lxx_token WHERE karoli_igehely LIKE '1Móz %'").fetchone()[0], db)
+        al = G.tsv_beolvas(os.path.join(ROOT, 'konkordancia', 'BDB_strong_alias.tsv'))[1]
+        self.assertEqual(self.con.execute('SELECT COUNT(*) FROM bdb_alias').fetchone()[0], len(al))
+
+    def test_f92_nave_semmi_nem_tunik_el_nemanak(self):
+        m = self._meta_dict()
+        nave = G.tsv_beolvas(os.path.join(ROOT, 'konkordancia', 'Nave_basokant.tsv'))[1]
+        kihagyott = sum(int(v) for k, v in m.items()
+                        if k.startswith('nave_vers:kihagyott:'))
+        self.assertEqual(int(m['nave_vers:nave_basokant_sor']), len(nave))
+        self.assertEqual(int(m['nave_vers:bontott_forras_sor']) + kihagyott, len(nave))
+        self.assertEqual(int(m['nave_vers:kihagyott_osszes']), kihagyott)
+        # fejezet-szintu es igehely nelkuli sor nem kerul a nave_vers-be (a kihagyott szamuk egyezik a forrassal)
+        self.assertEqual(int(m['nave_vers:kihagyott:fejezet_szintu']),
+                         sum(1 for r in nave if NB.hely_elemez(r['igehely'])
+                             and NB.hely_elemez(r['igehely'])[0] == 'fejezet'))
+        self.assertEqual(int(m['nave_vers:kihagyott:igehely_nelkuli']),
+                         sum(1 for r in nave if not r['igehely'].strip()))
+        self.assertEqual(self.con.execute(
+            "SELECT COUNT(*) FROM nave_vers WHERE nave_hely='' OR igehely IS NULL OR igehely=''").fetchone()[0], 0)
+        jel = {ok: d for ok, d in self.con.execute(
+            "SELECT nyers, darab FROM normalizalas_jelentes WHERE tabla='nave_vers'")}
+        self.assertEqual(jel['fejezet_szintu'], int(m['nave_vers:kihagyott:fejezet_szintu']))
+
+    def test_f92_nave_bontas_modul(self):
+        karoli = ['Zsolt 22:1', 'Zsolt 22:2', 'Zsolt 22:3', 'Zsolt 23:1']
+        racs = NB.KjvRacs(karoli, {}, {'Zsolt 22:1': '22:2', 'Zsolt 22:2': '22:3', 'Zsolt 22:3': '22:4'})
+        self.assertEqual(racs.bont('Zsolt', 22, 2, 22, 3), ['Zsolt 22:1', 'Zsolt 22:2'])   # KJV-szamozas szerint
+        self.assertEqual(NB.hely_elemez('2Móz 6:16-20'), ('vers', '2Móz', 6, 16, 6, 20))
+        self.assertEqual(NB.hely_elemez('Zsolt 22'), ('fejezet', 'Zsolt', 22))
+        self.assertIsNone(NB.hely_elemez(''))
+        sorok = [{'igehely': 'Zsolt 22:2'}, {'igehely': 'Zsolt 22'}, {'igehely': ''}, {'igehely': 'Zsolt 99:1'}]
+        ki, kih, bontott = NB.nave_bont(sorok, racs)
+        self.assertEqual(len(sorok), bontott + sum(kih.values()))
+        self.assertEqual((bontott, sum(kih.values())), (1, 3))
+
+    def test_f92_lxx_versszam_minden_ot_versre(self):
+        # DT-F92b: a terkep nem forras -- csak LXX_OS vagy nincs; a terkep erteke a nem kanonikus terkep_ertek oszlopban
+        self.assertTrue({f for (f,) in self.con.execute('SELECT DISTINCT forras FROM lxx_versszam')} <= {'LXX_OS', 'nincs'})
+        # a kitoltetlen hiany ures lxx_igehely-vel
+        self.assertEqual(self.con.execute("SELECT COUNT(*) FROM lxx_versszam WHERE forras='nincs' "
+                                          "AND lxx_igehely!=''").fetchone()[0], 0)
+        # minden 1Moz-vers (TAHOT heber token) legalabb egy sorral szerepel
+        hi = self.con.execute("SELECT COUNT(DISTINCT igehely) FROM token_eredeti WHERE nyelv='H' "
+                              "AND igehely LIKE '1Móz %' AND van_vers=1").fetchone()[0]
+        van = self.con.execute("SELECT COUNT(DISTINCT karoli_igehely) FROM lxx_versszam "
+                               "WHERE karoli_igehely LIKE '1Móz %'").fetchone()[0]
+        self.assertEqual(van, hi)
+        m = self._meta_dict()
+        self.assertGreaterEqual(int(m['lxx_versszam:sor:LXX_OS'])
+                                + int(m['lxx_versszam:sor:nincs']), int(m['lxx_versszam:ot_vers']))
+
+    def test_f92_lxx_szovegforma_parhuzamos_formak(self):
+        # ellenor UJ-1: a Dan/Bir/Jozs parhuzamos LXX-szovegformai nem fesulhetnek ossze
+        ep = S.Epito(ROOT, os.path.join(self.tmp, 'f.db'), 'minta')
+        formak = {}
+        for r in ep._lxx_os_fajlok():
+            if r['igehely_karoli']:
+                formak.setdefault(r['igehely_karoli'], set()).add(r['_fajl'])
+        tobb = {ig: f for ig, f in formak.items() if len(f) > 1}
+        self.assertTrue(any('daniel' in f and 'daniel-theodotion' in f for f in tobb.values()))
+        self.assertTrue(any('judges' in f and 'judges-vaticanus-b' in f for f in tobb.values()))
+        self.assertTrue(any('joshua' in f and 'joshua-vaticanus-b' in f for f in tobb.values()))
+        # az oszlop a minta-adatbazisban: a szovegforma a fajlnev, minden sornak van
+        ertekek = {x for (x,) in self.con.execute('SELECT DISTINCT szovegforma FROM lxx_token')}
+        self.assertIn('genesis', ertekek)
+        self.assertEqual(self.con.execute("SELECT COUNT(*) FROM lxx_token WHERE IFNULL(szovegforma,'')=''").fetchone()[0], 0)
+        self.assertEqual(self.con.execute("SELECT COUNT(*) FROM lxx_versszam WHERE forras='LXX_OS' "
+                                          "AND IFNULL(szovegforma,'')=''").fetchone()[0], 0)
+        # ahol a minta tartalmaz tobbformas verset, az lxx_versszam kulon sort ad formankent
+        for ig, n in self.con.execute("SELECT karoli_igehely, COUNT(DISTINCT szovegforma) FROM lxx_token "
+                                      "GROUP BY karoli_igehely HAVING COUNT(DISTINCT szovegforma)>1"):
+            self.assertGreaterEqual(self.con.execute("SELECT COUNT(DISTINCT szovegforma) FROM lxx_versszam "
+                                                     "WHERE karoli_igehely=? AND forras='LXX_OS'", (ig,)).fetchone()[0], n)
+
+    def test_f92_terkep_nem_meghatarozhato_nem_esik_ki_nemanan(self):
+        m = self._meta_dict()
+        sorok = G.tsv_beolvas(os.path.join(ROOT, 'konkordancia', 'LXX_versificacios_terkep.tsv'))[1]
+        nm = sum(1 for r in sorok if r['Karoli_igehely'] == 'NEM_MEGHATAROZHATO')
+        self.assertGreater(nm, 0)
+        self.assertEqual(int(m['lxx_versszam:terkep_nem_meghatarozhato_sor']), nm)
+        jel = self.con.execute("SELECT darab FROM normalizalas_jelentes WHERE tabla='lxx_versszam' "
+                               "AND nyers='NEM_MEGHATAROZHATO'").fetchone()
+        self.assertEqual(jel[0], nm)
+        # a terkep-sorok minden kulcsa szamolt: NEM_MEGHATAROZHATO + Karoli-kulcs + nem Karoli-vers
+        kulcsok = {r['Karoli_igehely'] for r in sorok} - {'NEM_MEGHATAROZHATO'}
+        self.assertEqual(int(m['lxx_versszam:terkep_karoli_kulcs']) + int(m['lxx_versszam:terkep_nem_karoli_kulcs']),
+                         len(kulcsok))
+        self.assertEqual(int(m['lxx_versszam:terkep_ot_vers']) + int(m['lxx_versszam:terkep_nem_ot_vers']),
+                         int(m['lxx_versszam:terkep_karoli_kulcs']))
+
+    def test_f92_macula_ketertelmu_strong_pozicio_sorrendben(self):
+        rossz = self.con.execute("SELECT COUNT(*) FROM token_macula WHERE strong IS NOT NULL AND igehely!='' "
+                                 "AND (strong_poz IS NULL OR strong_n IS NULL OR strong_poz<1 OR strong_poz>strong_n)").fetchone()[0]
+        self.assertEqual(rossz, 0)
+        for ig, st, n, k, mx in self.con.execute(
+                "SELECT igehely, strong, MAX(strong_n), COUNT(*), COUNT(DISTINCT strong_poz) FROM token_macula "
+                "WHERE strong IS NOT NULL AND igehely!='' GROUP BY igehely, strong"):
+            self.assertEqual((k, mx), (n, n), (ig, st))
+        self.assertGreater(int(self._meta_dict()['token_macula:ketertelmu_vers_strong_csoport']), 0)
+
+    def test_f92_magyar_szo_index(self):
+        self.assertEqual(S.szo_kis('Kép,'), 'kép')
+        self.assertEqual(S.szo_kis('Isten-s'), 'istens')
+        for sql in ("SELECT * FROM token_karoli WHERE szo_kis='kép'",
+                    "SELECT * FROM token_par WHERE hu_szo_kis='kép'",
+                    "SELECT a.igehely FROM token_karoli a JOIN token_karoli b ON a.igehely=b.igehely "
+                    "AND a.oldal=b.oldal AND b.sorszam=a.sorszam+1 WHERE a.szo_kis='segítségül' AND b.szo_kis='hív'"):
+            terv = ' '.join(r[3] for r in self.con.execute('EXPLAIN QUERY PLAN ' + sql))
+            self.assertIn('USING', terv, sql)
+            self.assertIn('INDEX', terv, sql)
+        for szo, kis in self.con.execute('SELECT szo, szo_kis FROM token_karoli LIMIT 2000'):
+            self.assertEqual(S.szo_kis(szo), kis)
+        for szo, kis in self.con.execute('SELECT hu_szo, hu_szo_kis FROM token_par LIMIT 2000'):
+            self.assertEqual(S.szo_kis(szo), kis)
 
 
 if __name__ == '__main__':
