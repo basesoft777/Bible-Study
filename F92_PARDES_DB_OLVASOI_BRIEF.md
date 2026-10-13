@@ -7,7 +7,7 @@ fazis: 1
 modell: sonnet
 munka: adat
 allapot: nem_indult
-ad: a pardes.db új táblái (token_macula, lxx_token, bdb_alias, nave_vers, lxx_versszam) táblaszintű licenccel és meta-sorral, az adatbázis újraépítve; a #60 pilot D1–D5 mérése mindkét szakaszon újrafuttatva (D1 39/39, D2 0 eltérés, D5 friss); mérethatár nélkül (DT-F92a)
+ad: a pardes.db új táblái (token_macula, lxx_token, bdb_alias, nave_vers, lxx_versszam) táblaszintű licenccel és meta-sorral, az adatbázis újraépítve; a #60 pilot D1–D5 mérése mindkét szakaszon újrafuttatva (D1 39/39, D2 0 eltérés, D5 friss); mérethatár nélkül (DT127); index a magyar szavakra (v1.1)
 kovetkezo: /kovetkezo; ⛔ M0 után (a táblaterv és a mért méret jóváhagyása)
 olvas: [eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, naplok/SQLITE_EPIT_meres.md, adat/SEMA.md, adat/licencek.tsv, "konkordancia/Macula_heber_*.tsv", "konkordancia/LXX_OS/*.tsv", konkordancia/BDB_strong_alias.tsv, konkordancia/Nave_basokant.tsv, konkordancia/LXX_versszintu_parok.tsv, ADATVAGYON_TERV.md, DONTESEK.md]
 ir: [eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, naplok/SQLITE_EPIT_meres.md, adat/SEMA.md, naplok/PARDES_DB_OLVASOI_M0.md, naplok/PARDES_DB_OLVASOI_zaras.md]
@@ -17,7 +17,7 @@ nem_fugg: [52]
 
 # A `pardes.db` kiegészítése az olvasói lapokhoz — a hat hiány pótlása, újraépítés, egyezési teszt (PARDES_DB_OLVASOI)
 
-*Befogadásra váró brief-tervezet. Forrás: a #60 olvasói pilot értékelő jelentése (`naplok/OLVASOI_PILOT_ertekeles.md` 8.3, M2b D1–D5) és a felhasználó döntése a chatben (2026-10-12): a hat hiány pótlása, saját szerveres kiszolgálással (DT-F92a). A fejlécet a `/befogad` adja.*
+*Befogadásra váró brief-tervezet. Forrás: a #60 olvasói pilot értékelő jelentése (`naplok/OLVASOI_PILOT_ertekeles.md` 8.3, M2b D1–D5) és a felhasználó döntése a chatben (2026-10-12): a hat hiány pótlása, saját szerveres kiszolgálással (DT127). A fejlécet a `/befogad` adja.*
 
 **Javasolt fejléc-adatok:** `tipus: feladat` · `fazis: 1` · `modell: sonnet` · `munka: adat` · `fugg: [88, 89]` (mindhárom az `eszkozok/sqlite_epit.py`-t írja; a #88 → #89 → ez a sorrend) · `kovetkezo: "/kovetkezo; ⛔ M0 után (a táblaterv és a mért méret jóváhagyása)"`.
 
@@ -34,7 +34,7 @@ A #60 pilot mérése szerint az olvasói lap 39 blokkjából 35 állítható el�
 
 Az adatbázis ráadásul elmarad a forrás-TSV-ktől (D5: TAGNT +350 sor, `token_par`), ezért az ÚSZ-előfordulás 117 / 52 görög lapon eltér.
 
-A feladat: a hat hiány pótlása az építőben, az adatbázis újraépítése, és a TSV–adatbázis egyezés tesztje. **Mérethatár nincs** (DT-F92a: saját szerver megoldható; a Netlify-keret nem köt). A méretet mérni és naplózni kell, de nem elfogadási feltétel.
+A feladat: a hat hiány pótlása az építőben, az adatbázis újraépítése, és a TSV–adatbázis egyezés tesztje. **Mérethatár nincs** (DT127: saját szerver megoldható; a Netlify-keret nem köt). A méretet mérni és naplózni kell, de nem elfogadási feltétel.
 
 ## 2. Hatókör
 
@@ -45,12 +45,13 @@ A feladat: a hat hiány pótlása az építőben, az adatbázis újraépítése,
   - `bdb_alias` (a `BDB_strong_alias.tsv`-ből);
   - `nave_vers`: téma × vers. A tartomány-bontás szabálya a pilot `adat.py`-jából az építőbe (vagy közös modulba) kerül, hogy egy helyen éljen;
   - `lxx_versszam`: Károli-vers → LXX-vers minden versre (az LXX_OS verskulcsából).
+- Index a magyar szavakra (v1.1): kisbetűs, normalizált szóoszlop (`hu_szo_kis`, `szo_kis`; a Károli-írásjel nélkül) a `token_par`-ban és a `token_karoli`-ban, rajta index. Ok: a #76 kiinduló mérése (2026-10-12) szerint a magyar szóra és frázisra keresés ma 1–3 s (pontos „kép” 3,2 s; „segítségül hív…” frázis 1,3 s), mert ezeken a mezőkön nincs index. A szótövezés nem része (külön döntés).
 - Az adatbázis újraépítése a mostani TSV-kből; a `naplok/SQLITE_EPIT_meres.md` táblánkénti mérete frissítve.
 - A #60 `db_meres.py` D1–D5 újrafuttatása mindkét pilot-szakaszon (1Móz 1–25, Zsolt 22).
-- Tesztek: minden új táblára betöltési teszt; a D2-egyezés tesztje.
+- Tesztek: minden új táblára betöltési teszt; a D2-egyezés tesztje; az index használatának tesztje (a lekérdezésterv indexet használ).
 
 **Nincs benne**
-- A kiszolgálás (szerver, API, felület): a #76 (#25a) dolga, a DT-F92a bemenetként megy oda.
+- A kiszolgálás (szerver, API, felület): a #76 (#25a) dolga, a DT127 bemenetként megy oda.
 - Karcsú olvasói kivonat (`olvaso.db`): saját szerver mellett nem kell; később optimalizálásként felvehető.
 - Adatjavítás a forrás-TSV-kben (pl. a `tW_szocikkek.tsv` U+FFFD-je, a zsoltárfeliratok számozása — az utóbbi a #91).
 
@@ -67,7 +68,15 @@ A feladat: a hat hiány pótlása az építőben, az adatbázis újraépítése,
 - **K2.** A D2: 0 eltérés a TSV-út és az adatbázis-út között minden blokkon, mindkét szakaszon; ahol mégis eltér, az ok a forrásban dokumentált, és a felhasználó elfogadja.
 - **K3.** A D5: a `meta` hash minden betöltött táblára egyezik a forrás-TSV mostani állapotával.
 - **K4.** A tesztek zöldek, a CI zöld, a független ellenőr eltérés nélkül zár.
+- **K5.** A magyar szóra (pontos alak, kisbetűsen) és a kétszavas magyar frázisra keresés 100 ms alatt fut ugyanazon a gépen, ahol a kiinduló mérés 1–3 s volt; a mérés proveniencia-sorral a jelentésben.
 
 ## 5. Kapcsolódás
 
-#79 (SQLITE_EPIT), #88 (TIPNR_NORMALIZALAS), #89 (LICENC_RENDEZES), #60 (OLVASOI_PILOT: `db_meres.py`, értékelő jelentés 8.3), #76 (OLVASOI_KONKORDANCIA, hosting ⛔), DT113, DT-F92a, ADATVAGYON_TERV 3. szakasz.
+#79 (SQLITE_EPIT), #88 (TIPNR_NORMALIZALAS), #89 (LICENC_RENDEZES), #60 (OLVASOI_PILOT: `db_meres.py`, értékelő jelentés 8.3), #76 (OLVASOI_KONKORDANCIA, hosting ⛔), DT113, DT127, ADATVAGYON_TERV 3. szakasz.
+
+## 6. Döntésnapló
+
+| Verzió | Dátum | Döntés | Forrás |
+|---|---|---|---|
+| v1 | 2026-10-12 | Befogadás (F92.1): a hat hiány pótlása, újraépítés, egyezési teszt; mérethatár nélkül (DT127). | a felhasználó jóváhagyása a chatben (2026-10-12) |
+| v1.1 | 2026-10-13 | Index a magyar szavakra (normalizált kisbetűs szóoszlop + index a `token_par`-ban és a `token_karoli`-ban), K5. Ok: a #76 kiinduló mérése, magyar szóra és frázisra 1–3 s. A szótövezés nem része. | a felhasználó jóváhagyása a chatben (2026-10-13) |
