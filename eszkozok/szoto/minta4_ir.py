@@ -101,7 +101,7 @@ JAVASLAT = {
     'szemnek': J('szem', ind='-nek rag'), 'káromlásra': J('káromlás', ind='-ra rag'), 'romlásra': J('romlás', ind='-ra rag'),
     'vehet': J('vehet', ap='vesz', tov='vesz', ind='-het képzős ige külön szótári alak (DT130 (10)); alapige: vesz'),
     'kivánnak': J('kiván', 'kíván', ind='kiván = kíván (régies helyesírás); jelen T/3'),
-    'mikre': J('mi', 'ami', tov='mi', ind='vonatkozó névmás többes + -re („a mikre” = amikre); mai alakja ami (DT130 (2))',
+    'mikre': J('mi', 'ami', ind='vonatkozó névmás többes + -re („a mikre” = amikre); mai alakja ami (DT130 (2))',
                biz='vonatkozó (ami) vagy kérdő (mi) olvasat; mindkettő elfogadhatónak jelölve'),
     'tisztátalannak': J('tisztátalan', ind='-nak rag'), 'betegségben': J('betegség', ind='-ben rag'),
     'szegénységet': J('szegénység', ind='tárgyrag'),
@@ -141,8 +141,11 @@ def strong(alak, igehely):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--jeloltek', required=True)
+    ap.add_argument('--felulir', action='store_true', help='a meglévő (a felhasználó által már ellenőrzött) minta felülírása')
     ap.add_argument('--ts', default=datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%MZ'))
     a = ap.parse_args()
+    if os.path.exists(KI) and not a.felulir:
+        sys.exit(f'HIBA: {KI} már létezik (a felhasználó ellenorzes-jelölései elveszhetnek); --felulir kell')
     sorok = open(a.jeloltek, encoding='utf-8').read().split('\n')
     prov_j = sorok[0].lstrip('# ').strip()
     fej = sorok[1].split('\t')

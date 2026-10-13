@@ -7,7 +7,9 @@ rétegenként (`kategoria`). Elemzők: a hibrid A/B/C változata (eszkozok/szoto
 Az M2 (keresési találati arány, pooled definíció) a negyedik mintához készül (F94.3).
 
 Használat:
-    python eszkozok/szoto/meres.py [--minta <tsv> ...] [--csak-felhasznalo] [--hibak A] [--lexikon <tsv>]
+    python eszkozok/szoto/meres.py [--minta <tsv> ...] [--csak-felhasznalo] [--fuggetlen] [--valtozatok A C CK] [--v2 A C]
+A 4. (független) minta döntő száma (DT-F94c): --minta adat/szoto/szoto_minta_4_fuggetlen.tsv --csak-felhasznalo --fuggetlen
+(a K tábla alakjai nélkül; mellette a fejlesztés közben látott alakok nélkül és minden sorral).
 Alapértelmezés: a három átvett minta (és a negyedik, ha létezik)."""
 import argparse
 import collections
@@ -35,7 +37,9 @@ except ImportError:
 SZ = os.path.join(REPO, 'adat', 'szoto')
 ALAP = ['szoto_minta_1_fejlesztes.tsv', 'szoto_minta_2_fejlesztes.tsv', 'szoto_minta_3_ellenorzott.tsv',
         'szoto_minta_4_fuggetlen.tsv']
-KAT = ['ossz', 'gyakori', 'ragos_nevszo', 'regies_ige', 'regies_helyesiras', 'ige_mai_alak', 'tulajdonnev']
+# a v3 fejlesztése közben (K6-lista, véletlen változásminták) már látott alakok a 4. mintából (napló 12. szakasz)
+LATOTT = {'többé', 'tartózkodék', 'szombatimat', 'tévelyedjék'}
+KAT = ['ossz','gyakori', 'ragos_nevszo', 'regies_ige', 'regies_helyesiras', 'ige_mai_alak', 'tulajdonnev']
 
 
 def sha(p, n=12):
@@ -92,6 +96,8 @@ def main():
     ap.add_argument('--v2', nargs='*', default=[], help='összevetésül a v2 (hibrid_v2.py) változatai')
     ap.add_argument('--simplemma', action='store_true', help='a simplemma önmagában is')
     ap.add_argument('--lexikon', help='más korpusz-lexikon (csak összevetéshez)')
+    ap.add_argument('--fuggetlen', action='store_true',
+                    help='a független (4.) minta mérése: K-sorok nélkül (döntő), K-sorok és látott alakok nélkül, és minden sor')
     a = ap.parse_args()
     if a.lexikon:
         hibrid.lexikon_betolt(a.lexikon)
@@ -99,7 +105,22 @@ def main():
     ts = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%MZ')
     el = elemzok(a.valtozatok, a.v2, a.simplemma)
     for p in mintak:
-        sorok = beolvas(p, a.csak_felhasznalo)
+        osszes = beolvas(p, a.csak_felhasznalo)
+        if a.fuggetlen:
+            # DT-F94c döntő száma: a K tábla alakjai nélkül (a K-t és a mintát ugyanaz a modell írta), és külön a
+            # v3 fejlesztése közben már látott alakok nélkül is (naplok/SZOTOVEZES_meres.md 12. szakasz)
+            reszek = [('a K tábla alakjai NÉLKÜL — a DT-F94c DÖNTŐ száma', [r for r in osszes if r['alak'].lower() not in hibrid.K]),
+                      ('a K tábla alakjai és a fejlesztés közben látott alakok (' + ', '.join(sorted(LATOTT)) + ') NÉLKÜL',
+                       [r for r in osszes if r['alak'].lower() not in hibrid.K and r['alak'].lower() not in LATOTT]),
+                      ('minden sor (a K tábla alakjaival; tájékoztató)', osszes)]
+        else:
+            reszek = [('', osszes)]
+        for cim, sorok in reszek:
+            meres_egy(p, cim, sorok, el, a, ts)
+
+
+def meres_egy(p, cim, sorok, el, a, ts):
+    if True:
         c = collections.defaultdict(collections.Counter)
         hibak = collections.defaultdict(list)
         for r in sorok:
@@ -111,7 +132,8 @@ def main():
                     c[n][(k, ok, 's')] += r['gy']
                 if not ok:
                     hibak[n].append((r['gy'], r['alak'], t, '/'.join(sorted(r['jo']))))
-        print(f'#### {os.path.basename(p)} ({len(sorok)} alak{", csak felhasznalo" if a.csak_felhasznalo else ""})\n')
+        print(f'#### {os.path.basename(p)}{" — " + cim if cim else ""} ({len(sorok)} alak, {sum(r["gy"] for r in sorok)} előfordulás'
+              f'{", csak felhasznalo" if a.csak_felhasznalo else ""})\n')
         print('| elemző | ' + ' | '.join(KAT) + ' |')
         print('|---|' + '---|' * len(KAT))
         for n in el:

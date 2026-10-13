@@ -730,3 +730,35 @@ A 4. minta mintavétele és a modell-javaslatok ezután készülnek, a hibrid fu
 - **A v3 fejlesztése közben már látott alakok:** *többé* (K6-lista, 30-as változásminta, K tábla), *tartózkodék* (K6-lista), valamint két, a végleges listákban már nem szereplő, de egy korábbi 30-as változásmintában látott alak: *szombatimat* (a „-i csak magánhangzó után” szabály visszavonásakor), *tévelyedjék*. A mérésben ezek külön jelölhetők.
 - **Megfigyelés (nem javítva, a v3 befagyasztva):** az -ik-es igék régies múlt **E/3**-a is *-ék* (*tartózkodék, uralkodék, lakozék, esék*: „Saul … tartózkodék”), a v3 viszont minden *-ék*-et `mult.E1` jeggyel lát el (*láték* = láttam, helyes). A jegy -ik-es igénél hibás; javítás a 4. mintás mérés után (N-F94e).
 - **A K4 számeltérése:** a v3-ban 30 `korpusz_strong` + 1 `manual` + 22 `modell_ellenorizetlen` (a 10. szakasz repó-alapú szabályellenőrzése és a *cz → c* utasítás szerint), a brief K4-e 34-et írt (az előmérés száma). Döntés: DT-F94d.
+
+
+## 13. A felhasználó döntései (2026-10-13) a 4. mintán, a DT-F94d és a mérési iránymutatás
+
+### 13.1 A 4. minta hét bizonytalan sora
+
+*proveniencia: scope=adat/szoto/szoto_minta_4_fuggetlen.tsv, 7 sor | forras=manual (a felhasználó döntése, chat, 2026-10-13; alkalmazás: eszkozok/szoto/minta4_javit.py, idempotens) | ts=2026-10-13*
+
+`ellenorzes=felhasznalo` lett, a `[bizonytalan: …]` helyén `[döntés: …]`: *Filiszteusok* (Filiszteus, további: Filiszteusok), *Girzeusokat* (Girzeus, további: Girzeusok), *összegyűlekezének* (összegyűlekezik / összegyülekezik, alapige gyülekezik), *elfeledték* (elfeled / elfelejt, alapige feled), *mikre* (mi / ami; a `tovabbi_elfogadhato` ürítve, mert azonos a szótári alakkal), *felingereltessenek* (felingereltetik, alapige ingerel; kategória `ragos_nevszo` → `regies_ige`), *bízott* (bíz, további: bízik). A többi 106 sor `modell_ellenorizetlen` maradt; az átnézésük a felhasználónál van. A `minta4_ir.py` ezentúl nem írja felül a meglévő mintát (`--felulir` nélkül hibával áll meg), és a *mikre* javaslata is ürített `tovabbi`-val szerepel benne.
+
+**A rétegzés:** a mintavételt nem érinti (a rétegenkénti húzás a jelölt-listán már megtörtént: 35 ragos névszó, 20 régies ige), de a rétegenkénti kiírás 34 / 21 lesz. A SEMA 2.27 szerint a `kategoria` a **mintavételi réteg**, nem a helyes elemzés; a 4. mintában további 17 sor rétege tér el az elemzéstől: a `regies_ige` rétegben névszó *ötvenedesekké, házánál, veszszejévé, fügefának, hosszútűrésénél, kárbunkulusoknál*; a `ragos_nevszo` rétegben ige *összehívá, hunyorgat, hívogatnak, megtére, törekesznek, vehet, kivánnak, keresztülszúrjanak, múlnak, űzzenek*; az `ige_mai_alak` rétegben névszó *dolgotok, jóakaratja, szegénységök*; a `tulajdonnev` rétegben ige *Üldözzem-é* (ugyanez a jelenség a 3. mintában is: *adának, készítének* a ragos névszó rétegben). Javaslat (modell): a mérés rétegenkénti számai a mintavételi rétegre vonatkozzanak (a 3. mintával összevethetően), és a *felingereltessenek* visszakerüljön a `ragos_nevszo` rétegbe; vagy egységesen mind a 18 sor átsorolódjon elemzés szerinti rétegbe. A felhasználó dönt; addig a döntése szerinti egy átsorolás áll.
+
+### 13.2 DT-F94d: a K4 szabályszáma
+
+**a) Az összeg.** 30 + 1 + 22 = **53** szabály = 9 helyesírási + **44** tőváltó. Az előmérés 51 szabálya 9 + 42 volt; a v3 két új tőváltót vett fel (*kötel- → kötél*, *atyj- → atya*; 11.2, a v2 ismert hibáiból: *köteleid → kötelei*, *atyámnak → atyám*). A két új szabályt a szabályellenőrzés (10. szakasz) még nem mérte (az a v2 szabálylistáján futott), ezért `modell_ellenorizetlen`. Az 51 eredeti szabály: 30 `korpusz_strong` + 1 `manual` + 20 `modell_ellenorizetlen`.
+
+**b) A 34 → 30 eltérés szabályonként.** Az előmérés 34 alátámasztott szabályából négy nem `korpusz_strong` a v3-ban:
+
+| szabály | Strong-támasz az előmérésben (`token_karoli`, ÓSZ) | a repó párosításában (`adat/karoli_strong`, 57 könyv) | minősítés most | a v3 jelölése | ok |
+|---|---|---|---|---|---|
+| körűl → körül | 71% (22/31) | 67% (22/33) | gyenge | `modell_ellenorizetlen` | a 70%-os küszöb alá esett: a régi alakoknak 2-vel több Strong-párja van, egyik sem az új alak fő Strongja |
+| nyny → nny | 71% (52/73) | 65% (53/82) | gyenge | `modell_ellenorizetlen` | a bővebb (ÚSZ-levelekkel bővült) és más párosítás 9 új párt adott, ebből 1 támasztja alá |
+| ^setét → sötét | 72% (31/43) | 67% (29/43) | gyenge | `modell_ellenorizetlen` | azonos párszám, 2 pár más Stronghoz került a #22 párosításában |
+| cz → c | 97% (30/31) | 97% (30/31) | alátámasztva | `manual` | a felhasználó utasítása (7.3): a 759 cz-alakból csak 5-nek van c-s párja, a korpusz érdemben nem igazolja; általános helyesírás-történeti tudás |
+
+Mindhárom átsorolt szabály a 70%-os küszöb közelében (65–72%) volt; az ok a párosítás cseréje (a régi `token_karoli` helyett a repó #22-párosítása, pl. a 6.1-ben javított téves párok) és a hatókör bővülése, nem a szabály változása. (A *értelm- → értelem* a gyenge sávból az ellentmondóba került, a jelölése mindkét esetben `modell_ellenorizetlen`.) A DT-F94d a felhasználó döntésével 🟢 (adatréteg-elsőbbség).
+
+### 13.3 Mérési iránymutatás (a mérés még nem indult)
+
+*A felhasználó döntése (2026-10-13):* a DT-F94c döntő száma a 4. mintán **a K tábla alakjai nélküli** M1 (alakonként és súlyozva), nem kiegészítő szám; a fejlesztés közben látott négy alak (*többé, tartózkodék, szombatimat, tévelyedjék*) nélküli szám is a naplóba kerül. A `meres.py --fuggetlen` mindhárom halmazt kiírja: (1) a K tábla alakjai nélkül — **döntő**; (2) a K tábla alakjai és a látott alakok nélkül; (3) minden sor (tájékoztató). A mérés a `--csak-felhasznalo` kapcsolóval, a felhasználó átnézése után fut.
+
+**Figyelem (manual, a kód próbája a 3. mintán):** a K tábla alakjai nélküli halmazon a C+K **szükségszerűen azonos a C-vel**, mert a K tábla csak a saját alakjaira hat (a 3. mintán: K nélkül C = C+K = 73% / 92,3%, 90 alak). A döntő szám tehát az A (simplemmával) és a C (simplemma és K nélkül) összevetése a nem-K sorokon; a K tábla hozzájárulása csak a K-sorokon mérhető, azokat pedig a mintával együtt ugyanaz a modell írta, ezért ott a független ellenőrzés a felhasználó soronkénti átnézése.
