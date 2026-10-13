@@ -11,7 +11,7 @@ ad: kutatói olvasói felület helyben (WSL): bibliaszöveg-kezdőlap könyv–f
 kovetkezo: "/kovetkezo; ⛔ M0 (terv), ⛔ M1 (helyi környezet: a disztribúció létrehozása a felhasználóé), ⛔ M5 (helyi próbaüzem), ⛔ M6 (VPS), ⛔ M7 (nyilvános közzététel)"
 olvas: [ADATVAGYON_TERV.md, MUNKATERV.md, adat/szotar_szerepek.tsv, adat/SEMA.md, adat/licencek.tsv, "eszkozok/olvaso_pilot/*", eszkozok/sqlite_epit.py, naplok/OLVASOI_PILOT_ertekeles.md, naplok/SQLITE_EPIT_meres.md, DONTESEK.md]
 ir: [eszkozok/olvaso_szerver/, naplok/OLVASOI_KONKORDANCIA_M0.md, naplok/OLVASOI_KONKORDANCIA_meres.md, naplok/OLVASOI_KONKORDANCIA_zaras.md]
-fugg: [44, 79, 92]
+fugg: [44, 79, 92, 95]
 nem_fugg: [52, 93]
 ---
 
