@@ -51,7 +51,8 @@ if hasattr(sys.stderr, 'reconfigure'):
     sys.stderr.reconfigure(encoding='utf-8')
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import general as G  # noqa: E402
+import general as G
+import nave_bontas as NB  # noqa: E402
 import ellenoriz as E  # noqa: E402
 from strong_util import strong_normalizal  # noqa: E402
 
@@ -110,6 +111,12 @@ SZARMAZTATOTT_LICENC = {
     'igehely_tartomany': ['projekt_adat'], 'normalizalas_jelentes': ['projekt_adat'],
     'meta': ['projekt_adat'], 'fts_motivum': ['projekt_adat'],
     'oshl_bdb_igehelyek': ['OSHL_BDB'], 'oshl_lexikalis_index': ['OSHL'],
+    # F92 (DT-F92a): az olvasoi lapok hiany-tablai
+    'token_macula': ['Macula_heber'],
+    'lxx_token': ['LXX_OS'],
+    'lxx_versszam': ['LXX_OS', 'Versifikacios_tablak', 'Karoli_versmegfeleltetes'],
+    'bdb_alias': ['BDB', 'projekt_adat'],
+    'nave_vers': ['Nave_basokant', 'Karoli_versmegfeleltetes', 'LXX_OS'],
 }
 
 # Altalanos (oszlopait valtozatlanul atvevo) konkordancia-tablak:
@@ -152,6 +159,14 @@ SZIGOR_KERESKEDELMI = {'nem': 0, 'tisztazatlan': 1, 'feltetelesen': 2, 'igen': 3
 
 class LicencHiany(Exception):
     pass
+
+
+def szo_kis(s):
+    """F92 (v1.1): a magyar szo kisbetus, normalizalt alakja a kereshetosegre: NFC, kisbetu, minden
+    nem-betu/szamjegy karakter (Karoli-irasjel, kotojel, aposztrof) nelkul. A kereso oldalon
+    ugyanez a fuggveny (vagy azonos szabaly) alkalmazando."""
+    s = unicodedata.normalize('NFC', s or '').lower()
+    return re.sub(r'[\W_]+', '', s)
 
 
 def azonosito(s):
@@ -326,6 +341,8 @@ class Epito(object):
         self.kihagyott = []       # (tabla, ok)
         self.norm_jelentes = {}   # (tabla, nyers, ok) -> darab
         self.megjegyzesek = []
+        self.olvasoi_meta = []   # F92: (kulcs, ertek) meta-sorok az olvasoi tablakhoz
+        self.ot_versek = set()   # F92: a TAHOT-ban heber tokent hordozo Karoli-versek (minta modban is teljes)
         self.token_strong_halmaz = set()   # minden TAHOT/TAGNT-ból kinyert alapszám (minta módban is teljes)
 
     # -- licenc ----------------------------------------------------------
@@ -427,6 +444,7 @@ class Epito(object):
         self._tbes()
         self._altalanos()
         self._adat_tablak()
+        self._olvasoi_tablak()
         self._tartomanyok()
         self._fts()
         self._jelentes_tabla()
@@ -495,6 +513,8 @@ class Epito(object):
                 if ig not in self.vi.halmaz:   # tokenenként: az előfordulás-szám a valós tokenszám
                     self.jelent_norm(fajl, ig, 'nincs ilyen Károli-vers (token_eredeti.van_vers=0)')
                 szamlalo[ig] = szamlalo.get(ig, 0) + 1
+                if nyelv == 'H' and ig in self.vi.halmaz:
+                    self.ot_versek.add(ig)
                 try:
                     lanc = strong_normalizal(r['Strong-szám'])
                 except ValueError:
@@ -548,7 +568,7 @@ class Epito(object):
                 if not self._benne(r['vers']):
                     continue
                 pare.append((r['vers'], int(r['hu_sorszam']), r['hu_szo'], int(r['er_sorszam']),
-                             r['er_szo'], r['strong'], r['bizonyossag'], r['forras']))
+                             r['er_szo'], r['strong'], r['bizonyossag'], r['forras'], szo_kis(r['hu_szo'])))
                 poz.add((r['vers'], 'hu', int(r['hu_sorszam']), r['strong'], r['hu_szo']))
                 poz.add((r['vers'], 'er', int(r['er_sorszam']), r['strong'], r['er_szo']))
         for f in sorted(glob.glob(os.path.join(self.adat, 'karoli_strong', 'szavak_*.tsv'))):
@@ -556,16 +576,18 @@ class Epito(object):
                 if not self._benne(r['vers']):
                     continue
                 szav.append((r['vers'], r['oldal'], int(r['sorszam']), r['szo'], r['allapot'],
-                             r['partner_sorszam'], r['strong'], r['bizonyossag'], r['forras']))
+                             r['partner_sorszam'], r['strong'], r['bizonyossag'], r['forras'], szo_kis(r['szo'])))
         lic = SZARMAZTATOTT_LICENC['token_par']
         self.tabla('token_par', [('igehely', 'TEXT'), ('hu_sorszam', 'INTEGER'), ('hu_szo', 'TEXT'),
                                  ('er_sorszam', 'INTEGER'), ('er_szo', 'TEXT'), ('strong', 'TEXT'),
-                                 ('bizonyossag', 'TEXT'), ('forras', 'TEXT')],
-                   pare, lic, ['strong', 'hu_szo', 'igehely, hu_sorszam'])
+                                 ('bizonyossag', 'TEXT'), ('forras', 'TEXT'), ('hu_szo_kis', 'TEXT')],
+                   pare, lic, ['strong', 'hu_szo', 'igehely, hu_sorszam', 'hu_szo_kis'])
         self.tabla('token_karoli', [('igehely', 'TEXT'), ('oldal', 'TEXT'), ('sorszam', 'INTEGER'),
                                     ('szo', 'TEXT'), ('allapot', 'TEXT'), ('partner_sorszam', 'TEXT'),
-                                    ('strong', 'TEXT'), ('bizonyossag', 'TEXT'), ('forras', 'TEXT')],
-                   szav, SZARMAZTATOTT_LICENC['token_karoli'], ['igehely, oldal, sorszam', 'strong'])
+                                    ('strong', 'TEXT'), ('bizonyossag', 'TEXT'), ('forras', 'TEXT'),
+                                    ('szo_kis', 'TEXT')],
+                   szav, SZARMAZTATOTT_LICENC['token_karoli'],
+                   ['igehely, oldal, sorszam', 'strong', 'szo_kis, igehely, oldal, sorszam'])
         self.tabla('frazis_pozicio', [('igehely', 'TEXT'), ('oldal', 'TEXT'), ('sorszam', 'INTEGER'),
                                       ('strong', 'TEXT'), ('szo', 'TEXT')],
                    sorted(poz), SZARMAZTATOTT_LICENC['frazis_pozicio'],
@@ -840,6 +862,189 @@ class Epito(object):
             self._altalanos_betolt('karoli_variancia', 'adat/karoli_variancia.tsv', None, None,
                                    SZARMAZTATOTT_LICENC['karoli_variancia'])
 
+    # -- F92: az olvasoi lapok hiany-tablai (DT-F92a) ----------------------------------------
+    def _lxx_os_fajlok(self):
+        """A LXX_OS konyvfajlok (`szoalak` oszlop) sorai fajlsorrendben; a 3 nem-konyv fajl kimarad."""
+        for f in sorted(glob.glob(os.path.join(self.konk, 'LXX_OS', '*.tsv'))):
+            fej, sorok = G.tsv_beolvas(f)
+            if 'szoalak' not in fej:
+                continue
+            for r in sorok:
+                yield r
+
+    def _olvasoi_tablak(self):
+        meta = self.olvasoi_meta
+        # -- token_macula
+        if self.licenc_ellenorzes('token_macula', SZARMAZTATOTT_LICENC['token_macula']):
+            sorok, szam, db_nyers = [], {}, 0
+            for f in sorted(glob.glob(os.path.join(self.konk, 'Macula_heber_*.tsv'))):
+                for r in G.tsv_beolvas(f)[1]:
+                    db_nyers += 1
+                    ig = r['karoli']
+                    if ig and ig not in self.vi.halmaz:
+                        self.jelent_norm('token_macula', ig, 'nincs ilyen Károli-vers')
+                    try:
+                        st = strong_normalizal(r['strong']) if r['strong'] else None
+                    except ValueError:
+                        st = None
+                        self.jelent_norm('token_macula', r['strong'], 'Strong-szám nem normalizálható')
+                    try:
+                        lst = strong_normalizal(r['gorog_strong']) if r['gorog_strong'] else None
+                    except ValueError:
+                        lst = None
+                        self.jelent_norm('token_macula', r['gorog_strong'], 'görög Strong-szám nem normalizálható')
+                    m = re.search(r'!(\d+)$', r['ref'])
+                    poz = None
+                    if st and ig:
+                        szam[(ig, st)] = szam.get((ig, st), 0) + 1
+                        poz = szam[(ig, st)]
+                    sorok.append([r['xml_id'], ig, int(m.group(1)) if m else None, r['kk_mod'], r['allapot'],
+                                  r['szo'], r['lemma'], st, r['strong'], poz, None, r['morf'], r['szofaj'],
+                                  r['gloss'], r['gorog_lxx'], lst])
+            # kétértelmű vers+Strong illesztés (DT-F92a 6.): ugyanaz a Strong egy versben többször
+            ketert_csoport = sum(1 for v in szam.values() if v > 1)
+            ketert_token = sum(v for v in szam.values() if v > 1)
+            for x in sorok:
+                if x[7] and x[1]:
+                    x[10] = szam[(x[1], x[7])]
+            if self.minta is not None:
+                sorok = [x for x in sorok if x[1] in self.minta]
+            self.tabla('token_macula',
+                       [('xml_id', 'TEXT'), ('igehely', 'TEXT'), ('sorszam', 'INTEGER'), ('kk_mod', 'TEXT'),
+                        ('allapot', 'TEXT'), ('szo', 'TEXT'), ('lemma', 'TEXT'), ('strong', 'TEXT'),
+                        ('strong_nyers', 'TEXT'), ('strong_poz', 'INTEGER'), ('strong_n', 'INTEGER'),
+                        ('morf', 'TEXT'), ('szofaj', 'TEXT'), ('gloss', 'TEXT'), ('lxx_szo', 'TEXT'),
+                        ('lxx_strong', 'TEXT')],
+                       sorok, SZARMAZTATOTT_LICENC['token_macula'], ['igehely, sorszam', 'strong', 'xml_id'])
+            meta.append(('token_macula:forras_sor', str(db_nyers)))
+            meta.append(('token_macula:ketertelmu_vers_strong_csoport', str(ketert_csoport)))
+            meta.append(('token_macula:ketertelmu_vers_strong_token', str(ketert_token)))
+            self.norm_jelentes[('token_macula', 'azonos Strong egy versben többször',
+                                'kétértelmű vers+Strong illesztés (csoport; feloldás: strong_poz = pozíció-sorrend)')] = ketert_csoport
+        # -- lxx_token, lxx_versszam: a LXX_OS egyszer olvasva
+        os_sorok = list(self._lxx_os_fajlok())
+        if self.licenc_ellenorzes('lxx_token', SZARMAZTATOTT_LICENC['lxx_token']):
+            ki = []
+            for r in os_sorok:
+                ig = r['igehely_karoli']
+                if ig and ig not in self.vi.halmaz:
+                    self.jelent_norm('lxx_token', ig, 'nincs ilyen Károli-vers')
+                if self.minta is not None and ig not in self.minta:
+                    continue
+                st = ('G%04d' % int(r['strong'])) if r['strong'].isdigit() else None
+                ki.append((r['igehely_lxx'], r['igehely_kjv'], ig, r['karoli_ok'],
+                           int(r['pozicio']) if r['pozicio'].isdigit() else None,
+                           r['szoalak'], r['lemma'], r['morf'], st, r['strong_ok']))
+            self.tabla('lxx_token',
+                       [('lxx_igehely', 'TEXT'), ('kjv_vers', 'TEXT'), ('karoli_igehely', 'TEXT'),
+                        ('karoli_ok', 'TEXT'), ('pozicio', 'INTEGER'), ('szoalak', 'TEXT'), ('lemma', 'TEXT'),
+                        ('morf', 'TEXT'), ('strong', 'TEXT'), ('strong_ok', 'TEXT')],
+                       ki, SZARMAZTATOTT_LICENC['lxx_token'],
+                       ['lxx_igehely, pozicio', 'karoli_igehely', 'strong'])
+            meta.append(('lxx_token:forras_sor', str(len(os_sorok))))
+        self._lxx_versszam(os_sorok)
+        # -- bdb_alias
+        if self.licenc_ellenorzes('bdb_alias', SZARMAZTATOTT_LICENC['bdb_alias']):
+            ki = [(r['masodlagos_strong'], r['tabla_strong'], r['bdb_id'], r['nyelv'], r['cimszo'],
+                   r['szoveg_hasonlosag']) for r in G.tsv_beolvas(os.path.join(self.konk, 'BDB_strong_alias.tsv'))[1]]
+            self.tabla('bdb_alias',
+                       [('masodlagos_strong', 'TEXT'), ('tabla_strong', 'TEXT'), ('bdb_id', 'TEXT'),
+                        ('nyelv', 'TEXT'), ('cimszo', 'TEXT'), ('szoveg_hasonlosag', 'TEXT')],
+                       ki, SZARMAZTATOTT_LICENC['bdb_alias'], ['masodlagos_strong'])
+            meta.append(('bdb_alias:licenc_osszetevok', '+'.join(SZARMAZTATOTT_LICENC['bdb_alias'])))
+        self._nave_vers(os_sorok)
+
+    def _lxx_versszam(self, os_sorok):
+        if not self.licenc_ellenorzes('lxx_versszam', SZARMAZTATOTT_LICENC['lxx_versszam']):
+            return
+        meta = self.olvasoi_meta
+        os_par = {}
+        for r in os_sorok:
+            ig = r['igehely_karoli']
+            if not ig:
+                continue
+            if ig not in self.vi.halmaz:
+                self.jelent_norm('lxx_versszam', ig, 'nincs ilyen Károli-vers')
+                continue
+            k = (r['igehely_lxx'], r['igehely_kjv'], r['karoli_ok'])
+            if k not in os_par.setdefault(ig, []):
+                os_par[ig].append(k)
+        terkep = {}
+        for r in G.tsv_beolvas(os.path.join(self.konk, 'LXX_versificacios_terkep.tsv'))[1]:
+            v = terkep.setdefault(r['Karoli_igehely'], [])
+            if (r['Gorog_LXX_vers'], r['Elteres_tipusa']) not in v:
+                v.append((r['Gorog_LXX_vers'], r['Elteres_tipusa']))
+
+        def cv_elso(x):
+            m = re.search(r'(\d+):(\d+)', x)
+            return (int(m.group(1)), int(m.group(2))) if m else None
+        sorok, szaml, elteres = [], {'LXX_OS': 0, 'versificacios_terkep': 0, 'nincs': 0}, []
+        for ig in self.vi.lista:
+            if ig not in self.ot_versek:
+                continue
+            if ig in os_par:
+                tk = {cv_elso(g) for g, _ in terkep.get(ig, [])} - {None}
+                for (lx, kjv, ok) in os_par[ig]:
+                    mj = ok
+                    if ig in terkep and cv_elso(lx) not in tk:
+                        mj = (mj + '; ' if mj else '') + 'térkép eltér: ' + ' | '.join(g for g, _ in terkep[ig])
+                        elteres.append(ig)
+                    sorok.append((ig, lx, kjv, 'LXX_OS', mj))
+                    szaml['LXX_OS'] += 1
+            elif ig in terkep:
+                for g, tip in terkep[ig]:
+                    sorok.append((ig, g, '', 'versificacios_terkep', tip))
+                    szaml['versificacios_terkep'] += 1
+            else:
+                sorok.append((ig, '', '', 'nincs', ''))
+                szaml['nincs'] += 1
+        both = sum(1 for ig in self.ot_versek if ig in os_par and ig in terkep)
+        if self.minta is not None:
+            sorok = [x for x in sorok if x[0] in self.minta]
+        self.tabla('lxx_versszam',
+                   [('karoli_igehely', 'TEXT'), ('lxx_igehely', 'TEXT'), ('kjv_vers', 'TEXT'),
+                    ('forras', 'TEXT'), ('megjegyzes', 'TEXT')],
+                   sorok, SZARMAZTATOTT_LICENC['lxx_versszam'], ['karoli_igehely', 'lxx_igehely'])
+        for k, v in szaml.items():
+            meta.append(('lxx_versszam:sor:' + k, str(v)))
+        meta.append(('lxx_versszam:ot_vers', str(len(self.ot_versek))))
+        meta.append(('lxx_versszam:mindket_forras_verse', str(both)))
+        meta.append(('lxx_versszam:forras_elteres_verse', str(len(set(elteres)))))
+        self.norm_jelentes[('lxx_versszam', 'LXX_OS ≠ versifikációs térkép',
+                            'a két forrás LXX-versszáma eltér (vers)')] = len(set(elteres))
+        self.norm_jelentes[('lxx_versszam', 'nincs LXX-megfelelő',
+                            'sem a LXX_OS, sem a térkép nem ad értéket (vers; üres lxx_igehely, kitöltés nélkül)')] = szaml['nincs']
+
+    def _nave_vers(self, os_sorok):
+        if not self.licenc_ellenorzes('nave_vers', SZARMAZTATOTT_LICENC['nave_vers']):
+            return
+        meta = self.olvasoi_meta
+        lxx_kjv = {}
+        for r in os_sorok:
+            if r['igehely_karoli'] and r['karoli_ok'] != 'zsolt_felirat_eltolas':
+                lxx_kjv.setdefault(r['igehely_karoli'], r['igehely_kjv'])
+        vm_kjv = {r['igehely_karoli']: r['igehely_kjv'] for r in
+                  G.tsv_beolvas(os.path.join(self.konk, 'Karoli_versmegfeleltetes.tsv'))[1]}
+        racs = NB.KjvRacs(self.vi.lista, lxx_kjv, vm_kjv)
+        nave = G.tsv_beolvas(os.path.join(self.konk, 'Nave_basokant.tsv'))[1]
+        ki, kihagyott, bontott = NB.nave_bont(nave, racs)
+        assert len(nave) == bontott + sum(kihagyott.values())
+        sorok = []
+        for (i, r, ig, tart) in ki:
+            if self.minta is not None and ig not in self.minta:
+                continue
+            sorok.append((i, r['tema_id'], r['tema'], r['cimke'], r['kapcsolat'], r['igehely'], ig, tart))
+        self.tabla('nave_vers',
+                   [('forras_sor', 'INTEGER'), ('tema_id', 'TEXT'), ('tema', 'TEXT'), ('cimke', 'TEXT'),
+                    ('kapcsolat', 'TEXT'), ('nave_hely', 'TEXT'), ('igehely', 'TEXT'), ('tartomanyos', 'INTEGER')],
+                   sorok, SZARMAZTATOTT_LICENC['nave_vers'], ['igehely', 'tema_id', 'forras_sor'])
+        meta.append(('nave_vers:nave_basokant_sor', str(len(nave))))
+        meta.append(('nave_vers:bontott_forras_sor', str(bontott)))
+        for ok, d in sorted(kihagyott.items()):
+            meta.append(('nave_vers:kihagyott:' + ok, str(d)))
+            self.norm_jelentes[('nave_vers', ok, 'a forrás-sor nem bomlik versekre (nem kerül a nave_vers-be)')] = d
+        meta.append(('nave_vers:kihagyott_osszes', str(sum(kihagyott.values()))))
+
     # -- igehely_tartomany ---------------------------------------------------------------
     def _tartomanyok(self):
         sorok = []
@@ -923,7 +1128,7 @@ class Epito(object):
     def _jelentes_tabla(self):
         if self.mod == 'teljes':
             self.megjegyzesek.append(
-                'Szándékosan nem betöltött konkordancia-táblák: Macula_heber_*/Macula_gorog, LXX_OS/*, '
+                'Szándékosan nem betöltött konkordancia-táblák: Macula_gorog (a Macula_heber_*, LXX_OS/* és a BDB_strong_alias az F92 óta betöltve), '
                 'KJV_/ASV_Strongs_{Genesis,Exodus,Proverbs} (a #48 vezeti ki; a KJV_Strongs_teljes betöltve), '
                 'a BDB_*/aram/alias segédtáblák, SDBH_SDGNT_domenfa, a versmegfeleltetési segédtáblák; '
                 'a licencsor hiánya miatt kimaradt táblák száma: %d' % len(self.kihagyott))
@@ -936,7 +1141,7 @@ class Epito(object):
         self.tabla('meta', [('kulcs', 'TEXT'), ('ertek', 'TEXT')],
                    [('mod', self.mod), ('epites_ts', ts_most()),
                     ('forras', 'adat/*.tsv, konkordancia/*.tsv (eszkozok/sqlite_epit.py, F79)'),
-                    ('kihagyott_tablak', '; '.join('%s (%s)' % k for k in self.kihagyott))],
+                    ('kihagyott_tablak', '; '.join('%s (%s)' % k for k in self.kihagyott))] + self.olvasoi_meta,
                    SZARMAZTATOTT_LICENC['meta'])
 
     def _tabla_licenc(self):
