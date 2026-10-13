@@ -198,6 +198,9 @@ _j('mult.T3', 'mondának', 'valának', 'vevének', 'tevének', 'menének', 'jöv
    'lőnének')
 _j('mult.E1', 'mondék', 'valék', 'vevék', 'tevék', 'menék', 'jövék', 'vivék')
 _j('mult.E3', 'evék', 'ivék')  # N-F94e: az -ik-es eszik/iszik régies múlt E/3-a (1Móz 3:6, 9:21)
+# DT-F94f pontosítás (felhasználó, 2026-10-13): a megevék a Károli mind a 4 helyén T/3 tárgyas (2Krón 30:18, Ezsd 6:21,
+# Mk 4:4, Luk 8:5); a jegykészletben (SEMA 2.27) nincs rá címke, ezért jegy nélküli kivételtábla-sor (üres), nem az evék öröksége
+JEGY['megevék'] = ''
 _j('mult.E2', 'valál')
 _j('mult.T1', 'valánk')
 _j('mult.T2', 'valátok')
@@ -669,7 +672,8 @@ def _kivetel(w):
         return KIVETEL[w]
     for ik in IGEKOTO:
         if w.startswith(ik) and w[len(ik):] in IGEI:
-            _NYOM.append(('X', w[len(ik):], JEGY.get(w[len(ik):], '')))
+            # az igekötős alak saját jegye (ha van) elsőbb az igekötő nélküli alakénál (megevék, DT-F94f)
+            _NYOM.append(('X', w[len(ik):], JEGY.get(w, JEGY.get(w[len(ik):], ''))))
             _NYOM.append(('A', KIVETEL[w[len(ik):]], None))
             return ik + KIVETEL[w[len(ik):]]
     return None
