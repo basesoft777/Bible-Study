@@ -9,7 +9,7 @@ modell: sonnet
 allapot: fut
 ag: claude/f89-licenc-rendezes
 ad: jogfenntartó LICENSE a repó gyökerében (a saját adat és a próza minden jog fenntartva, a harmadik fél adata a licencek.tsv szerint); a licencek.tsv projekt_adat sora tisztazott, új sorok a karoli_strong/* és karoli_variancia számára, a projekt_adat-on múló sorok újraértékelve; a sqlite_epit.py SZARMAZTATOTT_LICENC cseréje és táblaszintű licenc (tabla_licenc), a méret újramérve (a #86 N-F86b bemenete)
-kovetkezo: "F89.2–F89.6 végrehajtása (LICENSE, licencek.tsv, SEMA 2.19, lexikon-újragenerálás, sqlite_epit.py, mérés); utána fuggetlen-ellenor és zárás (orkesztrátor)"
+kovetkezo: "Orkesztrátor: az M2 (lexikon újragenerálása) eltérésének eldöntése (l. naplok/F89_M0_felmeres.md 5. szakasz), majd fuggetlen-ellenor és zárás; M1, M3, M4 kész (F89.2–F89.5)"
 olvas: [DONTESEK.md, NYITOTT_FELADATOK.md, adat/SEMA.md, adat/licencek.tsv, adat/datasetek.tsv, eszkozok/sqlite_epit.py, eszkozok/lexikon_general.py, eszkozok/general.py, eszkozok/igazolas_migracio.py, naplok/SQLITE_EPIT_meres.md, Rendszerfejlesztesi_playbook.md]
 ir: [LICENSE, adat/licencek.tsv, adat/SEMA.md, eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, naplok/SQLITE_EPIT_meres.md, NYITOTT_FELADATOK.md, lexikon/]
 fugg: [79]
