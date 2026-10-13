@@ -1,6 +1,6 @@
 # SQLITE_EPIT -- mérés (teljes építés) (F79)
 
-*Proveniencia: `scope=manual | forras=eszkozok/sqlite_epit.py (--mod teljes) | ts=2026-10-13T10:45:46Z`*
+*Proveniencia: `scope=manual | forras=eszkozok/sqlite_epit.py (--mod teljes) | ts=2026-10-13T11:02:35Z`*
 
 <!-- F89-ELOTTE-KEZDET -->
 ## F89 előtte: a sor-szintű `licenc_*` oszlopokkal (a licenc-váltás előtti mérés)
@@ -14,7 +14,7 @@
 - G6 (determinizmus): a második, ideiglenes építés táblánkénti hash-e mind azonos (lent).
 <!-- F89-ELOTTE-VEGE -->
 
-- fájl: `pardes.db`, **871.2 MB**; építési idő (integritás nélkül): **65.3 s**
+- fájl: `pardes.db`, **871.2 MB**; építési idő (integritás nélkül): **76.3 s**
 
 ## Táblánkénti sorszám és tartalom-hash (G2: két egymás utáni építés)
 
@@ -54,7 +54,7 @@
 | `lxx_bridge` | 3301 | `ec2b0ab84f1e82cc` | `ec2b0ab84f1e82cc` |
 | `lxx_dontesek` | 90 | `319907495acc63f9` | `319907495acc63f9` |
 | `lxx_token` | 616873 | `f2d57f0950e55a0b` | `f2d57f0950e55a0b` |
-| `lxx_versszam` | 24255 | `b06fa18133c84916` | `b06fa18133c84916` |
+| `lxx_versszam` | 24232 | `bd70d222a8b64479` | `bd70d222a8b64479` |
 | `lxx_versszintu_parok` | 104518 | `e5df63a54e7e715b` | `e5df63a54e7e715b` |
 | `mcged` | 5303 | `0ec3cb35b769c931` | `0ec3cb35b769c931` |
 | `morf_kulcs_heber` | 124 | `a8a99f9c96eaa270` | `a8a99f9c96eaa270` |
@@ -62,7 +62,7 @@
 | `motivumok` | 9 | `c4edba7875e2080b` | `c4edba7875e2080b` |
 | `nave_basokant` | 85246 | `47af606d9a5ec410` | `47af606d9a5ec410` |
 | `nave_vers` | 156214 | `b4ea05b01c9cd4b9` | `b4ea05b01c9cd4b9` |
-| `normalizalas_jelentes` | 472 | `67ae9ae7191aa4ee` | `67ae9ae7191aa4ee` |
+| `normalizalas_jelentes` | 472 | `06c8b737bd704a99` | `06c8b737bd704a99` |
 | `oshl_bdb_igehelyek` | 4053 | `29d7049456d8409a` | `29d7049456d8409a` |
 | `oshl_lexikalis_index` | 10221 | `b525fa2474213677` | `b525fa2474213677` |
 | `res_forras` | 56 | `e91d76726be3fdb5` | `e91d76726be3fdb5` |
@@ -132,7 +132,7 @@ Mérés: minden tábla (indexeivel) külön adatbázisba másolva, lapszám × l
 | `sece_h` | 8674 | 3.26 |
 | `sdbh_domenek` | 22280 | 2.96 |
 | `kh` | 32407 | 2.93 |
-| `lxx_versszam` | 24255 | 2.42 |
+| `lxx_versszam` | 24232 | 2.43 |
 | `sece_g` | 5523 | 1.98 |
 | `vers_szamozas` | 22931 | 1.87 |
 | `fts_motivum` | 624 | 1.83 |
@@ -263,10 +263,10 @@ Mérés: minden tábla (indexeivel) külön adatbázisba másolva, lapszám × l
 | kh | nincs ilyen Károli-vers (cél-oldal) | 41 / 72 | `1Kir 4:39`, `1Kor 3:23`, `1Móz 2:28`, `1Sám 23:39`, `2Kir 22:23`, `2Kir 7:21`, `2Móz 15:29`, `2Sám 21:23` |
 | kh | nincs ilyen Károli-vers (forrás-oldal) | 10 / 24 | `1Kor 3:23`, `Hós 11:12`, `Hós 1:12`, `Ján 1:52`, `Jób 36:34`, `Luk 23:57`, `Péld 11:32`, `Róm 3:31` |
 | kjv | nincs ilyen Károli-vers | 146 / 702 | `1Kor 3:23`, `1Sám 23:29`, `2Kor 13:14`, `2Móz 36:38`, `4Móz 12:16`, `4Móz 29:40`, `ApCsel 19:41`, `Hós 11:12` |
+| lxx_versszam | a LXX_OS nem ad értéket (vers; üres lxx_igehely, kitöltés nélkül; a térkép értéke legfeljebb a nem kanonikus terkep_ertek oszlopban) | 1 / 383 | `nincs LXX-megfelelő` |
 | lxx_versszam | a két forrás LXX-versszáma eltér (vers) | 1 / 1888 | `LXX_OS ≠ versifikációs térkép` |
 | lxx_versszam | a térkép kulcsa nem Károli-vers | 178 / 216 | `1Kir 5:32`, `1Sám 23:29`, `2Móz 36:38`, `4Móz 12:16`, `4Móz 29:40`, `Dán 1:22`, `Dán 1:23`, `Dán 1:24` |
 | lxx_versszam | a térkép sora nem Károli-kulccsal áll (nem kerül a táblába; sor) | 1 / 39 | `NEM_MEGHATAROZHATO` |
-| lxx_versszam | sem a LXX_OS, sem a térkép nem ad értéket (vers; üres lxx_igehely, kitöltés nélkül) | 1 / 246 | `nincs LXX-megfelelő` |
 | nave_vers | a forrás-sor nem bomlik versekre (nem kerül a nave_vers-be) | 4 / 9390 | `fejezet_szintu`, `igehely_nelkuli`, `nem_ertelmezheto_hely`, `nincs_karoli_vers_a_tartomanyban` |
 | oshl_bdb_igehelyek | Strong-szám nem normalizálható | 1 / 397 | `—` |
 | oshl_lexikalis_index | Strong-szám nem normalizálható | 1 / 930 | `—` |

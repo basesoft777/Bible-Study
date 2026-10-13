@@ -93,3 +93,11 @@ gép: Windows-11-10.0.26300-SP0, 8 CPU, python 3.14.7
 ```
 
 A találatszám különbsége: az előtte-adatbázis régebbi építés, és a `szo_kis` az írásjelet levágja.
+
+## 7. M1 — eltérések az M0 tervtől (ellenőri ÚJ-3)
+
+*Proveniencia: `scope=a megvalósított séma az M0 táblatervhez képest + a méret | forras=naplok/SQLITE_EPIT_meres.md (teljes építés, ts=2026-10-13T10:59:43Z), eszkozok/sqlite_epit.py | ts=2026-10-13`*
+
+- **Méret:** a jóváhagyott kb. +209 MB helyett **+252,2 MiB** (619,0 → 871,2 MiB). Az új táblák mért mérete (MiB, indexszel): `lxx_token` 104,46 (M0: 86,3), `token_macula` 78,95 (M0: 60,4), `nave_vers` 20,23 (M0 becslés: 19,4), `lxx_versszam` 2,43 (M0: 2,4), `bdb_alias` 0,04; összesen 206,1. A `szo_kis` / `hu_szo_kis` oszlopok és indexeik a többi: 46,1 (M0: 40,4).
+- **Többletoszlopok az M0 tervhez képest:** `token_macula`: `kk_mod`, `allapot`, `strong_nyers`, `strong_poz`, `strong_n` (a kétértelmű vers+Strong illesztés számára, DT-F92a 6.), és `xml_id`-index; `lxx_token`: `kjv_vers`, `karoli_ok`, `strong_ok`, `szovegforma` (a párhuzamos LXX-formák miatt) és `(karoli_igehely, szovegforma, pozicio)` index; `lxx_versszam`: `megjegyzes`, `szovegforma`, `terkep_ertek` (nem kanonikus); `nave_vers`: `forras_sor` (a számlálás-egyenlet miatt) és index; `token_karoli` indexe `(szo_kis, igehely, oldal, sorszam)` (fedő index a frázis-keresésre).
+- A térkép-lefedés M0-s 5 205 értéke a `NEM_MEGHATAROZHATO` címkét is kulcsnak számolta; a valódi Károli-kulcs 5 204, ebből 5 026 ÓSZ-vers és 178 nem Károli-vers.
