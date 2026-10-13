@@ -350,3 +350,61 @@ scope=adat/szoto/szoto_minta_1_fejlesztes.tsv + szoto_minta_2_fejlesztes.tsv, a 
 ### 6.2 Átírva
 
 A `minta_strong.py --ir` a 83 eltérő `strong` mezőt átírta (más mező nem változott; a fájlok fejlécében `# strong:` proveniencia-sor). Utána a lista 0 eltérést ad.
+
+
+## 7. Megfigyelések (F94.1; manual, javítás nélkül)
+
+### 7.1 A hátravetett igekötő (N-F94d)
+
+A tövezés alakonként megy: a *vettettek el*, *ragadja el*, *jelenté … meg*, *hajtott ki*, *felejtkezel el*, *rejted el* igéje igekötő nélküli alakként kap szótári alakot, ezért az igekötős szótári alakra (*elvet*, *elragad*, *megjelent*, *kihajt*) keresve ezek nem jönnek elő, az alapigére igen. Gyakoriság a teljes Károliban (`eszkozok/szoto/hatravetett_igekoto.py`, heurisztika):
+
+| igekötő | alsó becslés (utána írásjel / versvég) | felső becslés (minden külön álló token) | példa |
+|---|---|---|---|
+| meg | 1022 | 4869 | 1Móz 3:4 „haltok meg” |
+| el | 573 | 2317 | 1Móz 12:19 „menj el” |
+| fel | 221 | 937 | 1Móz 13:17 „Kelj fel” |
+| ki | 193 | 4033 | 1Móz 2:5 „hajtott ki” |
+| hozzá | 131 | 355 | 1Móz 15:4 „ő hozzá” |
+| be | 113 | 600 | 1Móz 7:2 „vígy be” |
+| alá | 103 | 218 | 1Móz 1:28 „birodalmatok alá” |
+| reá | 90 | 237 | 1Móz 15:12 „ő reá” |
+| vissza | 74 | 259 | 1Móz 8:12 „hozzá vissza” |
+| le | 71 | 336 | 1Móz 44:26 „mehetünk le” |
+| át | 51 | 224 | 1Móz 48:17 „tegye át” |
+| oda | 47 | 320 | 1Móz 19:20 „kérlek oda” |
+| elő | 44 | 123 | 1Móz 43:9 „kérd elő” |
+| föl | 36 | 91 | Bír 5:2 „kele föl” |
+| utána | 35 | 112 | 1Móz 22:1 „ezeknek utána” |
+| rá | 22 | 66 | 5Móz 25:3 „üttessen rá” |
+| össze | 20 | 100 | 1Móz 3:7 „azért össze” |
+| szét | 8 | 23 | 4Móz 1:51 „azt szét” |
+| széjjel | 1 | 1 | 4Móz 16:37 „hintsd széjjel” |
+| végig | 1 | 16 | 5Móz 31:30 „mind végig” |
+| **összesen** | **2856** | **15237** | |
+
+scope=OT+NT-full (31158 Károli-vers) | forras=konkordancia/Karoli_1908.tsv (sha256:49335bbcc77d) + eszkozok/szoto/hatravetett_igekoto.py (heurisztika, manual megfigyelés) | ts=2026-10-13T12:28Z
+
+Olvasat (manual): az „alsó becslés” a *meg, el, fel, föl, ki, be, le, át, elő, vissza, rá* igekötőknél valóban hátravetett igekötő (összesen 2 420 token); a *hozzá, alá, reá, oda, utána, össze, szét, végig* sorában névutó- és határozószói használat is van („ő hozzá”, „birodalmatok alá”, „ezeknek utána”), ezért ott nem alsó becslés. A felső becslés a *ki* névmást és a *meg* kötőszót is tartalmazza. Nyitott tétel: N-F94d (`NYITOTT_FELADATOK.md`); a brief N-F94a-ja (különálló igekötő) ennek az előre vetett párja.
+
+### 7.2 Ézs 41:11 — a Strong-párosítás
+
+*proveniencia: scope=range:Ézs 41:11 | forras=konkordancia/TAHOT_kivonat.tsv + adat/karoli_strong/szavak_Ezs.tsv | ts=2026-10-13*
+
+A `TAHOT_kivonat.tsv` sorai szerint a vers 2. héber tokenje H0954 (*jēbōšū*, „szégyenben maradnak”), a 15. H0006 (*jōbdū*, „elvesznek”). A repó párosítása: *megszégyenülnek* → H0954, *elvesznek* → H0006 (mindkettő `alacsony` bizonyosságú javaslat); a 2. minta két sora ugyanezt hordozza. A felhasználó által behozott Bible Discovery-összevetésben a párosítás eltolt; a mi H0954-ünk a TAHOT-sorral egyezik. Csak megfigyelés: a Discovery szövege és Strong-rétege adatba nem kerül (DT124).
+
+### 7.3 A *cz → c* szabály forrásjelölése (a .2-ben alkalmazandó)
+
+A felhasználó utasítása (2026-10-13): a *cz → c* szabály `szabaly_forras` értéke `manual` (általános helyesírás-történeti tudás), mellette a korpusz-támasz száma: a 759 cz-alakból 5-nek van c-s párja a Károliban. A Zsolt 13:2 *orczádat* / mai *orcádat* manual megfigyelés, nem korpusz-támasz. A K4 „34 `korpusz_strong`”-ja így 33 `korpusz_strong` + 1 `manual` lesz; ez a .2-ben a szabálytáblában jelenik meg.
+
+## 8. A simplemma adatlicence (F94.1/6) ⛔
+
+*proveniencia: scope=simplemma 2.0.0 | forras=a telepített csomag `simplemma-2.0.0.dist-info/METADATA` („Credits and licenses”) és `licenses/LICENSE`; https://github.com/adbar/simplemma/tree/main/licenses (a mappa fájlnevei); https://github.com/michmech/lemmatization-lists README | ts=2026-10-13*
+
+Szó szerinti idézetek:
+
+- METADATA: „The software is licensed under the MIT license. For information on the licenses of the linguistic information databases, see the `licenses` folder.”
+- METADATA: „The surface lookups (non-greedy mode) rely on lemmatization lists derived from the following sources, listed in order of relative importance:” — „Lemmatization lists by Michal Měchura (Open Database License)”; „Wiktionary entries packaged by the Kaikki project”; „FreeLing project”; „spaCy lookups data”; „Unimorph Project”; „Wikinflection corpus by Eleni Metheniti (CC BY 4.0 License)”.
+- A forrásrepó `licenses` mappája: `CC_BY_License.txt`, `Open_Database_License.txt`, `Other.txt`, `PL_License.txt`, `TR_Source.txt`; az `Other.txt` szövege: „See 2b.- DATA COMPONENTS in https://github.com/TALP-UPC/FreeLing/blob/master/COPYING”.
+- A lemmatization-lists README: a lista tartalmazza a `lemmatization-hu.txt`-t („Hungarian (hu) (39,898 pairs)”); licence: „Available under the Open Database License”.
+
+Következtetés (manual, nem jogi vélemény): a simplemma **kódja** MIT, a **magyar adata** (legalább részben) az ODbL alatti lemmatization-lists-ből származik, a többi forrás licence nyelvenként nem azonosított (CC BY, FreeLing-adat, Wiktionary/Kaikki). Az ODbL share-alike adatbázis-licenc: a belőle származtatott adatbázis (pl. a `karoli_szotari_alak.tsv` simplemma-módszerű sorai) ODbL alá kerülhet, és forrásmegjelölést kíván. Ez **nem MIT-kompatibilis** a nyilvános kiadással a brief értelmében → megállás, a felhasználó dönt (DT-F94c). A `licencek.tsv` sora a döntés után kerül be.

@@ -6,11 +6,11 @@ tipus: feladat
 fazis: 1
 modell: opus
 munka: adat
-allapot: fut
+allapot: megallt
 ag: claude/f94-szotovezes
 helyi_gep: igen
 ad: a Károli minden szóalakjához szótári alak (Károli- és mai helyesírással), alapige és további elfogadható alak, forrásolt szabályokkal; a hibrid szótövező (v3) az eszkozok/ alatt; négy aranyminta a repóban, a negyedik független, felhasználó által ellenőrzött mérés; a pardes.db-oszlop a #95 (SZOTOVEZES_DB)
-kovetkezo: "F94.0f (a DT-F94a/b alkalmazása), utána .1; ⛔ .1 (a simplemma adatlicence), ⛔ .3 (a negyedik minta soronkénti ellenőrzése a felhasználóé)"
+kovetkezo: "Te: ⛔ F94.1 — a simplemma adatlicence nem tisztán MIT (a magyar adat az ODbL alatti lemmatization-lists-ből is jön): döntés a DT-F94c-ben (1. ODbL elfogadása / 2. simplemma csak mérce / 3. más szótár / 4. halasztás); l. naplok/SZOTOVEZES_meres.md 8. szakasz. Kész: .0 (a DT-F94a/b alkalmazva), a minták strong-oszlopa, N-F94d, Ézs 41:11. Hátra: .1/1–5 (eszközök, K2), .2, .3"
 olvas: [konkordancia/Karoli_1908.tsv, "adat/karoli_strong/*", adat/SEMA.md, adat/licencek.tsv, Rendszerfejlesztesi_playbook.md, eszkozok/general.py, DONTESEK.md]
 ir: [eszkozok/szoto/, adat/szoto/, adat/SEMA.md, adat/licencek.tsv, naplok/SZOTOVEZES_meres.md, naplok/SZOTOVEZES_zaras.md]
 fugg: []
