@@ -717,3 +717,16 @@ scope=a korpusz-lexikon kisbetűs és mondat belsejében nagybetűs alakjai | fo
 | `eszkozok/szoto/hibrid_v2.py` (összevetéshez) | `864d6876437a468ccda04a243c5ee2926c0e2cd6460b35652b1c31389835d204` |
 
 A 4. minta mintavétele és a modell-javaslatok ezután készülnek, a hibrid futtatása előtt (F94.3).
+
+
+## 12. A negyedik (független) minta (F94.3/1–2) ⛔
+
+*proveniencia: scope=5Móz, 1Sám, Péld, Ez, Mk, Ján, Róm, Jel Károli-szóalakjai, az 1–3. minta alakjai nélkül, rétegzett, mag 20261013 | forras=konkordancia/Karoli_1908.tsv + eszkozok/szoto/minta4_jeloltek.py (mintavétel) + manual (a szótári alak modell-javaslat, eszkozok/szoto/minta4_ir.py) | ts=2026-10-13*
+
+- **Sorrend:** a v3 befagyasztása (11.7) után a mintavétel, utána a modell-javaslatok a példavers alapján; **a hibridet és a simplemmát a 4. minta alakjain nem futtattam.**
+- **Mintavétel:** a 3. minta mintavevőjével azonos rétegszabályok és rétegen belüli gyakoriság-rétegzés; 113 alak (gyakori 25, ragos névszó 35, régies ige 20, régies helyesírás 12, mai igealak 13, tulajdonnév 8). A nyolc könyvben 20 838 alak, 60 945 token.
+- **A tábla:** `adat/szoto/szoto_minta_4_fuggetlen.tsv` (SEMA 2.27). `ellenorzes=modell_ellenorizetlen` minden sorban; **a felhasználó soronként ellenőrzi, és ő írja `felhasznalo`-ra; a mérés csak a `felhasznalo` sorokon fut** (`meres.py --csak-felhasznalo`). 7 sor `[bizonytalan: …]` jelölésű (Filiszteusok, Girzeusokat: a népnév szótári alaka; elfeledték: elfeled/elfelejt; összegyűlekezének: mai írásmód; mikre: mi/ami; felingereltessenek: szenvedő/műveltető; bízott: bíz/bízik). A `strong` a repó párosításából (5Móz, 1Sám, Péld, Ez; 82 sor); az Mk, Ján, Róm, Jel nincs párosítva.
+- **Átfedés a K táblával (fontos a C+K méréséhez):** a 4. minta 20 alakja (mind a gyakori rétegben: *hanem, közül, által, azon, Akkor, sok, többé, oda, se, jó, két, valaki, maga, hét, hol, most, hozzám, sing, volna, senki*) a K tábla sora is, és a két javaslat szótári alakja azonos (ugyanaz a modell írta mindkettőt). Ez a minta súlyának **73%-a** (2 221 / 3 053 előfordulás). A C+K súlyozott M1-e a 4. mintán ezért nagyrészt a K-sorok és a mintasorok egyezésén múlik; független ellenőrzést a felhasználó átnézése ad (a K táblát és a 4. mintát együtt nézi). Javaslat: a mérés a C+K-t a K-sorok nélkül is kiírja (alakonként és súlyozva).
+- **A v3 fejlesztése közben már látott alakok:** *többé* (K6-lista, 30-as változásminta, K tábla), *tartózkodék* (K6-lista), valamint két, a végleges listákban már nem szereplő, de egy korábbi 30-as változásmintában látott alak: *szombatimat* (a „-i csak magánhangzó után” szabály visszavonásakor), *tévelyedjék*. A mérésben ezek külön jelölhetők.
+- **Megfigyelés (nem javítva, a v3 befagyasztva):** az -ik-es igék régies múlt **E/3**-a is *-ék* (*tartózkodék, uralkodék, lakozék, esék*: „Saul … tartózkodék”), a v3 viszont minden *-ék*-et `mult.E1` jeggyel lát el (*láték* = láttam, helyes). A jegy -ik-es igénél hibás; javítás a 4. mintás mérés után (N-F94e).
+- **A K4 számeltérése:** a v3-ban 30 `korpusz_strong` + 1 `manual` + 22 `modell_ellenorizetlen` (a 10. szakasz repó-alapú szabályellenőrzése és a *cz → c* utasítás szerint), a brief K4-e 34-et írt (az előmérés száma). Döntés: DT-F94d.
