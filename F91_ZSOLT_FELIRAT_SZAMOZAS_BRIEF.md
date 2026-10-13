@@ -9,9 +9,9 @@ munka: adat
 allapot: fut
 ag: claude/f91-zsolt-felirat-szamozas
 ad: minden feliratos zsoltár felmérve (felirat-hossz, eltolás, a két tábla állítása), proveniencia-sorral; a Karoli_versmegfeleltetes.tsv és a LXX_versificacios_terkep.tsv javítva a jóváhagyott szabály szerint (a Zsolt 22-n 0 ellentmondás az LXX_OS-szel); hatásmérés a #60 pilotra és a pardes.db-re
-kovetkezo: "Folytatás: DT-F91a eldöntve (A1/B3/N2, 2026-10-13); előbb az M0-mérő kiterjesztése az összes könyvre és a Karoli_igehely oszlop fogyasztóinak felmérése, utána M2"
+kovetkezo: "DT-F91b eldöntése (a pardes.db lxx_versszam.terkep_ertek kulcsa az átnevezés után); utána Folytatás: M2 (A1/N2 a Zsolt-ra, B3 átnevezés + a fogyasztók — sqlite_epit.py, teszt_sqlite_epit.py — átállítása); M0b kész: naplok/ZSOLT_FELIRAT_SZAMOZAS_M0b.md"
 olvas: [konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, "konkordancia/LXX_OS/*.tsv", konkordancia/LXX_OS/README.md, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_versificacios_terkep.tsv, konkordancia/Nave_basokant.tsv, naplok/KAROLI_KK1b_hianyzo_es_zsoltar.md, naplok/OLVASOI_PILOT_adatfelmeres.md, naplok/LXX_OS_LEFEDETTSEG_M2.md, DONTESEK.md]
-ir: [konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_versificacios_terkep.tsv, naplok/ZSOLT_FELIRAT_SZAMOZAS_M0.md, naplok/ZSOLT_FELIRAT_SZAMOZAS_zaras.md, DONTESEK.md]
+ir: [konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_versificacios_terkep.tsv, naplok/ZSOLT_FELIRAT_SZAMOZAS_M0.md, naplok/ZSOLT_FELIRAT_SZAMOZAS_M0b.md, naplok/ZSOLT_FELIRAT_SZAMOZAS_M0b_terkep.md, eszkozok/terkep_kjv_kulcs_felmeres.py, naplok/ZSOLT_FELIRAT_SZAMOZAS_zaras.md, DONTESEK.md]
 fugg: []
 ---
 
