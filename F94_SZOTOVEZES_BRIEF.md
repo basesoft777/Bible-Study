@@ -6,11 +6,11 @@ tipus: feladat
 fazis: 1
 modell: opus
 munka: adat
-allapot: fut
+allapot: megallt
 ag: claude/f94-szotovezes
 helyi_gep: igen
 ad: a Károli minden szóalakjához szótári alak (Károli- és mai helyesírással), alapige és további elfogadható alak, forrásolt szabályokkal; a hibrid szótövező (v3) az eszkozok/ alatt; négy aranyminta a repóban, a negyedik független, felhasználó által ellenőrzött mérés; a pardes.db-oszlop a #95 (SZOTOVEZES_DB)
-kovetkezo: "F94.1 fut: az eszközök átvétele és a simplemma-változatok mérése (A/B/C, DT-F94c részleges döntés); utána ⛔ a mérés eredményénél, a felhasználó dönt (DT-F94c)"
+kovetkezo: "Te: ⛔ F94.1 — a simplemma A/B/C mérése kész (naplok/SZOTOVEZES_meres.md 9. szakasz): 3. mintán súlyozva A 99,1%, B 90,2%, C 90,3% (alakonként 80 / 53 / 56%); a K2 teljesül. Döntés a DT-F94c-ben (1. ODbL elfogadása / 2. simplemma csak mérce / 3. más szótár). Hátra: szabaly_ellenorzes.py átvétele, .2, .3"
 olvas: [konkordancia/Karoli_1908.tsv, "adat/karoli_strong/*", adat/SEMA.md, adat/licencek.tsv, Rendszerfejlesztesi_playbook.md, eszkozok/general.py, DONTESEK.md]
 ir: [eszkozok/szoto/, adat/szoto/, adat/SEMA.md, adat/licencek.tsv, naplok/SZOTOVEZES_meres.md, naplok/SZOTOVEZES_zaras.md]
 fugg: []

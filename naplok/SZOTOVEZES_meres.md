@@ -408,3 +408,85 @@ Szó szerinti idézetek:
 - A lemmatization-lists README: a lista tartalmazza a `lemmatization-hu.txt`-t („Hungarian (hu) (39,898 pairs)”); licence: „Available under the Open Database License”.
 
 Következtetés (manual, nem jogi vélemény): a simplemma **kódja** MIT, a **magyar adata** (legalább részben) az ODbL alatti lemmatization-lists-ből származik, a többi forrás licence nyelvenként nem azonosított (CC BY, FreeLing-adat, Wiktionary/Kaikki). Az ODbL share-alike adatbázis-licenc: a belőle származtatott adatbázis (pl. a `karoli_szotari_alak.tsv` simplemma-módszerű sorai) ODbL alá kerülhet, és forrásmegjelölést kíván. Ez **nem MIT-kompatibilis** a nyilvános kiadással a brief értelmében → megállás, a felhasználó dönt (DT-F94c). A `licencek.tsv` sora a döntés után kerül be.
+
+
+## 9. A simplemma szerepének mérése: A / B / C (F94.1, DT-F94c részleges döntés)
+
+*A felhasználó döntése (2026-10-13): a WSL-es Python 3.11 a helyben telepített simplemma 2.0.0 csomagkönyvtárat PYTHONPATH-on kapja (csak a `simplemma` csomag egy ideiglenes könyvtárban, a repón kívül; új letöltés nincs); M1 mindhárom mintán, három változattal; a mérés után megállás. A DT-F94c 🟡 marad.*
+
+**Futtatókörnyezet:** WSL (Ubuntu), Python 3.11.17 (a repón kívüli uv-venv), simplemma 2.0.0 (a magyar adatfájl `hu.plzma` sha256-ja a proveniencia-sorokban). A repó eszközei (`eszkozok/szoto/hibrid.py`, `lexikon_epit.py`, `meres.py`) így Python 3.11 alatt is futnak.
+
+**Változatok** (`hibrid.valtozat()`; a pontos szöveg a `hibrid.py` docstringjében):
+- **A** — az előmérés v2-je: a simplemma tartalék-lemmatizáló és igető-igazoló is.
+- **B** — simplemma nélkül: a lemmatizáló az alakot adja vissza, a `simplemma.is_known` mindig hamis, és a régies igevégződés-réteg jelöltjét semmi nem igazolja (a réteg nem vág).
+- **C** — simplemma nélkül, tartalék-lemmatizáló nélkül, de az igető-igazolást a Károli-lexikon (`adat/szoto/karoli_lexikon.tsv`, a közkincs Károli 1908-ból, DT-F33e) végzi. **Az elfogadás feltétele (rögzítve):** a régies végződés levágása után kapott c jelölt tő elfogadott, ha (1) c önálló kisbetűs alakként előfordul a Károliban (E/3 jelen: *teremt*, *lát*); vagy (2) c+*ik* előfordul, és c nem -tat/-tet/-ít/-szt végű (*születik*); vagy (3) c valamely igei ragos alakja előfordul (az A-val azonos lista: -ni, -ani, -eni, -ott, -ett, -ött, -tt, -ván, -vén, -nak, -nek, -tek, -tok, -tök). Az igekötő-leválasztás ugyanaz, mint az A-ban. A névszói ágban a C-ben sincs simplemma-próba (a `is_known` hamis), mert a lexikonbeli előfordulás nem jelenti, hogy az alak szótári alak (a *földön* is előfordul).
+
+### 9.1 Az átvétel próbája (K2)
+
+- **Korpusz-lexikon:** a `lexikon_epit.py` a `konkordancia/Karoli_1908.tsv`-ből épít; az adatrésze (a `#`-sor és a fejléc nélkül) **bájtra azonos** az előmérés `karoli_lexikon.tsv`-jével (66 824 alak; `cmp`).
+- **Viselkedés:** az előmérés `hibrid.py`-ja és a repó `hibrid.py`-jának A változata a lexikon mind a 61 673 alakján (a kisbetűs és a mondat belsejében nagybetűs alakok) azonos kimenetet ad: `Python 3.11.17; alak: 61673; eltérő kimenet: 0 []`. *(Átvételi hiba, javítva a mérés előtt: az új betöltő először az `alak\t` előtagú sorokat fejlécként hagyta ki, és ezzel a Károli valódi „alak” szavát is; most csak a pontos fejlécsort.)*
+- **M1, A változat** (az 1–2. mintán a DT-F94a/b előtti állapot, a `c9332ca8` commitból; a 3. minta változatlan):
+
+| minta | előmérés | most (A) |
+|---|---|---|
+| 1. (súlyozva) | 99,2% | 95% / 99.2% (203/213) |
+| 2. (súlyozva) | 97,6% | 92% / 97.6% (166/180) |
+| 3. (alakonként / súlyozva) | 80% / 99,1% (90/113) | 80% / 99.1% (90/113) |
+
+A K2 teljesül: mindhárom szám bitre az előmérésé.
+
+*scope=elotte_szoto_minta_1_fejlesztes.tsv (sha256:294771857de4) | forras=eszkozok/szoto/meres.py + hibrid.py (sha256:864d6876437a) + adat/szoto/karoli_lexikon.tsv (sha256:215f687f5d68) + simplemma 2.0.0 (hu.plzma sha256:0ebc6a84a326) | futtatókörnyezet: Python 3.11.17 (Linux) | ts=2026-10-13T13:04Z*
+
+### 9.2 M1 a mostani mintákon (a DT-F94a/b után), A / B / C és a simplemma önmagában
+
+##### szoto_minta_1_fejlesztes.tsv (213 alak)
+
+| elemző | ossz | gyakori | ragos_nevszo | regies_ige | regies_helyesiras | ige_mai_alak | tulajdonnev |
+|---|---|---|---|---|---|---|---|
+| hibrid A | 95% / 99.2% (203/213) | 98% / 99.6% (54/55) | 95% / 96.6% (62/65) | 91% / 93.9% (41/45) | 100% / 100.0% (14/14) | 71% / 78.9% (5/7) | 100% / 100.0% (27/27) |
+| hibrid B | 70% / 90.8% (149/213) | 84% / 93.3% (46/55) | 66% / 71.2% (43/65) | 44% / 56.9% (20/45) | 79% / 88.2% (11/14) | 29% / 42.1% (2/7) | 100% / 100.0% (27/27) |
+| hibrid C | 79% / 92.6% (169/213) | 85% / 93.8% (47/55) | 71% / 73.6% (46/65) | 80% / 88.6% (36/45) | 79% / 88.2% (11/14) | 29% / 42.1% (2/7) | 100% / 100.0% (27/27) |
+| simplemma | 70% / 84.6% (149/213) | 80% / 87.2% (44/55) | 60% / 64.0% (39/65) | 60% / 58.9% (27/45) | 79% / 75.0% (11/14) | 86% / 89.5% (6/7) | 81% / 90.3% (22/27) |
+
+*A hibrid A hibái (alak → kimenet | helyes; gyakoriság):* minekutánna → minekutána | minekutánna/miután (20); Éle → éle | él (9); magodnak → magod | mag (6); földére → földér | föld (5); fájáról → fája | fa (4); elsűlyeszté → elsülyeszt | elsüllyeszt (2); letelepedének → leteleped | letelepedik (2); megnyilatkozának → megnyilatkoz | megnyilatkozik (2); mossátok → moss | mos (2); tekints → tekints | tekint (2)
+
+*A hibrid C hibái (alak → kimenet | helyes; gyakoriság):* minden → mind | minden (80); azt → azt | az (47); mert → mer | mert (43); föld → föl | föld (37); annak → annak | az (29); mint → min | mint (28); mind → min | mind (23); kik → kik | aki/ki (22); esztendeig → esztendeig | esztendő (16); azokat → azok | az (12); feleséget → felesége | feleség (10); Éle → éle | él (9); kinek → kin | aki/ki (8); abban → abba | az (6); azoknak → azok | az (6); magodnak → magod | mag (6); méhében → méhe | méh (6); állatokat → áll | állat (6); felemelé → felemelik | felemel (5); égből → égből | ég (5); atyjának → atyja | atya (4); barmokat → barmok | barom (4); fájáról → fája | fa (4); gyümölcséből → gyümölcse | gyümölcs (4); hetet → hetet | hét (4); házából → háza | ház (4); képére → képe | kép (4); színéről → színe | szín (4); égnek → égnek | ég (4); körűlmetélé → körülmetélé | körülmetél (3); segítségűl → segítségül | segítség (3); szövetségűl → szövetségül | szövetség (3); töltsétek → tölts | tölt (3); elbeszélé → elbeszélik | elbeszél (2); elsűlyeszté → elsülyeszt | elsüllyeszt (2); elvégezé → elvégezik | elvégez (2); esének → esének | esik (2); letelepedének → leteleped | letelepedik (2); látsz → látsz | lát (2); megnyilatkozának → megnyilatkoz | megnyilatkozik (2); megtölté → megtöltik | megtölt (2); mossátok → moss | mos (2); tekints → tekints | tekint (2); világítsanak → világítsanak | világít (2)
+
+scope=szoto_minta_1_fejlesztes.tsv (sha256:a7f8d65d42de) | forras=eszkozok/szoto/meres.py + hibrid.py (sha256:864d6876437a) + adat/szoto/karoli_lexikon.tsv (sha256:215f687f5d68) + simplemma 2.0.0 (hu.plzma sha256:0ebc6a84a326) | futtatókörnyezet: Python 3.11.17 (Linux) | ts=2026-10-13T13:04Z
+
+##### szoto_minta_2_fejlesztes.tsv (180 alak)
+
+| elemző | ossz | gyakori | ragos_nevszo | regies_ige | regies_helyesiras | ige_mai_alak | tulajdonnev |
+|---|---|---|---|---|---|---|---|
+| hibrid A | 92% / 97.6% (166/180) | 100% / 100.0% (40/40) | 91% / 93.0% (58/64) | 94% / 95.3% (30/32) | 77% / 69.2% (10/13) | 86% / 85.9% (18/21) | 100% / 100.0% (10/10) |
+| hibrid B | 68% / 84.1% (123/180) | 90% / 87.6% (36/40) | 73% / 75.3% (47/64) | 25% / 25.6% (8/32) | 77% / 69.2% (10/13) | 57% / 64.1% (12/21) | 100% / 100.0% (10/10) |
+| hibrid C | 80% / 85.8% (144/180) | 90% / 87.6% (36/40) | 78% / 76.7% (50/64) | 78% / 81.4% (25/32) | 85% / 74.4% (11/13) | 57% / 64.1% (12/21) | 100% / 100.0% (10/10) |
+| simplemma | 69% / 78.4% (124/180) | 80% / 80.3% (32/40) | 72% / 80.9% (46/64) | 69% / 69.8% (22/32) | 0% / 0.0% (0/13) | 76% / 75.6% (16/21) | 80% / 84.2% (8/10) |
+
+*A hibrid A hibái (alak → kimenet | helyes; gyakoriság):* orczádat → orcádat | arc/orca (7); előre → előre | elő (5); eleitől → elei | eleje/elő (4); elvesznek → elveszik | elvesz/elvész (4); törnek → törik | tör (4); bosszankodjál → bosszankodjál | bosszankodik (3); gyalázatot → gyaláz | gyalázat (3); gyűlölőim → gyűlöl | gyűlölő (3); Mostantól → mostantól | most/mostan (2); alkotójának → alkot | alkotó (1); felebarátjának → felebarátja | felebarát (1); mértéklé → mértéklé | mértékel (1); szigetekké → szigetek | sziget (1); vettetének → vettet | vettetik (1)
+
+*A hibrid C hibái (alak → kimenet | helyes; gyakoriság):* Mert → mer | mert (70); ezt → ezt | ez (41); éneklőmesternek → éneklőmesternek | éneklőmester (19); olyan → oly | olyan (15); bíznak → bíznak | bízik (8); szívében → szíve | szív (8); ezeket → ezek | ez (7); méhétől → méhe | méh (7); orczádat → orcádat | arc/orca (7); kiket → kik | aki/ki (5); eleitől → eleitől | eleje/elő (4); szeret → szer | szeret (4); bosszankodjál → bosszankodjál | bosszankodik (3); cselekedjél → cselekedj | cselekedik/cselekszik (3); emlékezzél → emlékezz | emlékezik/emlékszik (3); fejedelmeket → fejedelmek | fejedelem (3); folyóvizeket → folyóvizek | folyóvíz (3); gyűlölőim → gyűlölői | gyűlölő (3); halmokat → halmok | halom (3); hegyeket → hegyek | hegy (3); házában → háza | ház (3); mennek → mennek | megy (3); jelentsék → jelentsék | jelent (2); mondaná → mondaná | mond (2); alkotójának → alkotója | alkotó (1); barátjának → barátja | barát (1); elhagynának → elhagynának | elhagy (1); elszéleszté → elszéleszté | elszéleszt (1); felebarátjának → felebarátja | felebarát (1); megalapítá → megalapítá | megalapít (1); megértsék → megértsék | megért (1); mértéklé → mértéklé | mértékel (1); szigetekké → szigetek | sziget (1); vegyék → vegyék | vesz (1); vettetének → vettet | vettetik (1); volnék → volnék | van (1)
+
+scope=szoto_minta_2_fejlesztes.tsv (sha256:587e47bded57) | forras=eszkozok/szoto/meres.py + hibrid.py (sha256:864d6876437a) + adat/szoto/karoli_lexikon.tsv (sha256:215f687f5d68) + simplemma 2.0.0 (hu.plzma sha256:0ebc6a84a326) | futtatókörnyezet: Python 3.11.17 (Linux) | ts=2026-10-13T13:04Z
+
+##### szoto_minta_3_ellenorzott.tsv (113 alak)
+
+| elemző | ossz | gyakori | ragos_nevszo | regies_ige | regies_helyesiras | ige_mai_alak | tulajdonnev |
+|---|---|---|---|---|---|---|---|
+| hibrid A | 80% / 99.1% (90/113) | 100% / 100.0% (25/25) | 80% / 84.4% (28/35) | 50% / 58.3% (10/20) | 67% / 71.4% (8/12) | 92% / 96.6% (12/13) | 88% / 81.8% (7/8) |
+| hibrid B | 53% / 90.2% (60/113) | 88% / 92.0% (22/25) | 49% / 57.8% (17/35) | 30% / 33.3% (6/20) | 17% / 21.4% (2/12) | 54% / 48.3% (7/13) | 75% / 72.7% (6/8) |
+| hibrid C | 56% / 90.3% (63/113) | 88% / 92.0% (22/25) | 51% / 62.5% (18/35) | 40% / 30.6% (8/20) | 17% / 21.4% (2/12) | 54% / 48.3% (7/13) | 75% / 72.7% (6/8) |
+| simplemma | 67% / 88.6% (76/113) | 84% / 89.7% (21/25) | 74% / 59.4% (26/35) | 45% / 55.6% (9/20) | 58% / 64.3% (7/12) | 77% / 89.7% (10/13) | 38% / 27.3% (3/8) |
+
+*A hibrid A hibái (alak → kimenet | helyes; gyakoriság):* atyámnak → atyám | atya (4); magának → mag | maga (4); Melkié → melkié | melki (2); kevéssé → kevés | kevéssé (2); láttad-é → láttad-é | lát (2); barátaiért → barátai | barát (1); elhivésére → elhisz | elhivés (1); eljőtök → eljőtök | eljön (1); elérheted-é → elérheted-é | elérhet/ér (1); feloldja → feloldja | felold (1); gyermekszűlőt → gyermekszűlőt | gyermekszülő/gyermekszűlő (1); határozod-é → határozod-é | határoz (1); hitszegők → hitszegők | hitszegő (1); házadhoz → háza | ház (1); hívhatja-é → hívhatja-é | hív/hívhat (1); igéjéért → igéje | ige (1); kerekségének → kereksége | kerekség (1); legelőjök → legel | legelő (1); meggyarapodnak → meggyarapodnak | meggyarapodik (1); megkiván → megki | megkíván (1); megütközzék → megütközzék | megütközik (1); véghetetlen-é → véghetetlen-é | véghetetlen/végtelen (1); értheti-é → értheti-é | ért/érthet (1)
+
+*A hibrid C hibái (alak → kimenet | helyes; gyakoriság):* mit → mit | mi (111); Ezt → ezt | ez (95); azok → azok | az (80); cselekedék → cselekedék | cselekedik/cselekszik (9); hallgattatok → hallgattatok | hallgat (9); atyámnak → atyám | atya (4); magának → mag | maga (4); tanítványoknak → tanítványok | tanítvány (3); Melkié → melkié | melki (2); adának → adá | ad (2); elenyésznek → elenyésznek | elenyészik (2); kevéssé → kevés | kevéssé (2); könnyeivel → könnyeivel | könny (2); láttad-é → láttad-é | lát (2); tudománynyal → tudománnyal | tudomány (2); Mutassa → mutassa | mutat (1); barátaiért → barátai | barát (1); barázdához → barázdához | barázda (1); boldoguljanak → boldoguljanak | boldogul (1); czédrust → cédrust | czédrus/cédrus (1); elhivésére → elhivésére | elhivés (1); eljőtök → eljőtök | eljön (1); elérheted-é → elérheted-é | elérhet/ér (1); feloldja → feloldja | felold (1); felügyelők → felügyelők | felügyelő (1); fillért → fillért | fillér (1); gyermekszűlőt → gyermekszűlőt | gyermekszülő/gyermekszűlő (1); gyűlöletesek → gyűlöletesek | gyűlöletes (1); határozod-é → határozod-é | határoz (1); hitszegők → hitszegők | hitszegő (1); házadhoz → háza | ház (1); hívhatja-é → hívhatja-é | hív/hívhat (1); igéjéért → igéje | ige (1); kerekségének → kereksége | kerekség (1); kiküldök → kiküldök | kiküld (1); követelnek → követelnek | követel (1); lakókat → lakók | lakó (1); megbocsátani → megbocsátani | megbocsát (1); meggyarapodnak → meggyarapodnak | meggyarapodik (1); megkiván → megki | megkíván (1); megütközzék → megütközzék | megütközik (1); mostani → mostan | mostani (1); paréjtól → paréjtól | paréj (1); tömlöczre → tömlöcre | tömlöc/tömlöcz (1); vendégséget → vendégséget | vendégség (1); verettek → verettek | ver/veretik (1); vonszolják → vonszolják | vonszol (1); véghetetlen-é → véghetetlen-é | véghetetlen/végtelen (1); vízieké → vízieké | vízi (1); értheti-é → értheti-é | ért/érthet (1)
+
+scope=szoto_minta_3_ellenorzott.tsv (sha256:bafc1e67a061) | forras=eszkozok/szoto/meres.py + hibrid.py (sha256:864d6876437a) + adat/szoto/karoli_lexikon.tsv (sha256:215f687f5d68) + simplemma 2.0.0 (hu.plzma sha256:0ebc6a84a326) | futtatókörnyezet: Python 3.11.17 (Linux) | ts=2026-10-13T13:04Z
+
+### 9.3 Olvasat (manual, nem döntés)
+
+- **A B és a C messze az A alatt van.** A 3. (felhasználó által ellenőrzött) mintán súlyozva A 99,1%, B 90,2%, C 90,3%; alakonként A 80%, B 53%, C 56%. Az 1–2. (fejlesztési) mintán súlyozva A 99,2 / 97,6%, C 92,6 / 85,8%.
+- **A C az igető-igazolást nagyrészt pótolja** (régies ige az 1–2. mintán: A 91–94%, B 25–44%, C 78–80% alakonként); a 3. mintán a régies igék rétege kicsi és vegyes (20 alak).
+- **A veszteség zöme a névszói ágból jön**, ahol a simplemma szótári-alak próbája védte a már szótári alakot a további vágástól: *mert → mer, minden → mind, föld → föl, mint → min, szeret → szer*, és ahol a tartalék-lemmatizáló a névmást vitte szótári alakra: *azt, ezt, mit, azok, annak* (a 3. mintán a *mit* 111, az *Ezt* 95, az *azok* 80 előfordulás). Ezeket a C a megadott feltétel szerint nem pótolja; pótlásuk (pl. a Károli-lexikon gyakoriságával vagy a kivételtábla bővítésével) új szabály lenne, amelyet nem hangoltam a mérés után.
+- A felhasználó által megfogalmazott döntési szabály szerint („ha C/B közel az A-hoz → 2. opció”) a C/B **nincs közel** az A-hoz. A döntés a felhasználóé (DT-F94c).
