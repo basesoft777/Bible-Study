@@ -58,43 +58,53 @@ def beolvas(p, csak_felhasznalo):
     return ki
 
 
-def elemzok():
+def elemzok(valtozatok, v2, simp):
+    """név -> (modul, változat); a változat None: a simplemma önmagában."""
     e = {}
-    for v in ('A', 'B', 'C'):
+    for v in valtozatok:
         if v == 'A' and simplemma is None:
             continue
-        e[f'hibrid {v}'] = v
-    if simplemma is not None:
-        e['simplemma'] = None
+        e[f'hibrid {v}'] = (hibrid, v)
+    if v2:
+        import hibrid_v2
+        for v in v2:
+            if v == 'A' and simplemma is None:
+                continue
+            e[f'v2 {v}'] = (hibrid_v2, v)
+    if simp and simplemma is not None:
+        e['simplemma'] = (None, None)
     return e
 
 
-def elemez(nev, v, alak):
-    if v is None:
+def elemez(modul, v, alak):
+    if modul is None:
         return simplemma.lemmatize(alak, lang='hu').lower()
-    hibrid.valtozat(v)
-    return hibrid.to(alak).lower()
+    modul.valtozat(v)
+    return modul.to(alak).lower()
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--minta', nargs='*')
     ap.add_argument('--csak-felhasznalo', action='store_true')
-    ap.add_argument('--hibak', nargs='*', default=['A', 'C'], help='melyik hibrid-változat hibáit listázza')
+    ap.add_argument('--hibak', nargs='*', default=['hibrid A', 'hibrid CK'], help='melyik elemző hibáit listázza')
+    ap.add_argument('--valtozatok', nargs='*', default=['A', 'C', 'CK'], help='a hibrid (v3) változatai')
+    ap.add_argument('--v2', nargs='*', default=[], help='összevetésül a v2 (hibrid_v2.py) változatai')
+    ap.add_argument('--simplemma', action='store_true', help='a simplemma önmagában is')
     ap.add_argument('--lexikon', help='más korpusz-lexikon (csak összevetéshez)')
     a = ap.parse_args()
     if a.lexikon:
         hibrid.lexikon_betolt(a.lexikon)
     mintak = a.minta or [os.path.join(SZ, f) for f in ALAP if os.path.exists(os.path.join(SZ, f))]
     ts = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%MZ')
-    el = elemzok()
+    el = elemzok(a.valtozatok, a.v2, a.simplemma)
     for p in mintak:
         sorok = beolvas(p, a.csak_felhasznalo)
         c = collections.defaultdict(collections.Counter)
         hibak = collections.defaultdict(list)
         for r in sorok:
-            for n, v in el.items():
-                t = elemez(n, v, r['alak'])
+            for n, (mod, v) in el.items():
+                t = elemez(mod, v, r['alak'])
                 ok = t in r['jo']
                 for k in ('ossz', r['kat']):
                     c[n][(k, ok, 'a')] += 1
@@ -111,12 +121,11 @@ def main():
                 js, hs = c[n][(k, True, 's')], c[n][(k, False, 's')]
                 cel.append(f'{100 * ja / (ja + ha):.0f}% / {100 * js / (js + hs):.1f}% ({ja}/{ja + ha})' if ja + ha else '—')
             print(f'| {n} | ' + ' | '.join(cel) + ' |')
-        for v in a.hibak:
-            n = f'hibrid {v}'
+        for n in a.hibak:
             if n in hibak:
                 print(f'\n*A {n} hibái (alak → kimenet | helyes; gyakoriság):* ' +
                       '; '.join(f'{al} → {t} | {jo} ({g})' for g, al, t, jo in sorted(hibak[n], key=lambda x: (-x[0], x[1]))))
-        print(f'\nscope={os.path.basename(p)} (sha256:{sha(p)}) | forras=eszkozok/szoto/meres.py + hibrid.py (sha256:{sha(os.path.join(ITT, "hibrid.py"))}) '
+        print(f'\nscope={os.path.basename(p)} (sha256:{sha(p)}) | forras=eszkozok/szoto/meres.py + hibrid.py (v3, sha256:{sha(os.path.join(ITT, "hibrid.py"))}) + gyakori_alakok.tsv (sha256:{sha(hibrid._KTAB)})' + (f' + hibrid_v2.py (sha256:{sha(os.path.join(ITT, "hibrid_v2.py"))})' if a.v2 else '') + ' '
               f'+ {"a megadott lexikon" if a.lexikon else "adat/szoto/karoli_lexikon.tsv"} (sha256:{sha(a.lexikon or hibrid._LEX)})'
               + (f' + simplemma {simplemma.__version__} (hu.plzma sha256:{sha(os.path.join(os.path.dirname(simplemma.__file__), "strategies", "dictionaries", "data", "hu.plzma"))})'
                  if simplemma else ' (simplemma nélkül)')
