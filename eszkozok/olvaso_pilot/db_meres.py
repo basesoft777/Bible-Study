@@ -421,6 +421,8 @@ LAPHOZ_TABLAK = ['vers', 'token_par', 'token_eredeti', 'token_strong', 'tsk', 'k
                  'ubs_dntg_jelentesek', 'ubs_dntg_referenciak', 'tw_szocikkek', 'oshl_lexikalis_index', 'oshl_bdb_igehelyek',
                  # F92 (#92): az olvasói lapok eddig hiányzó táblái
                  'token_macula', 'lxx_token', 'lxx_versszam', 'bdb_alias', 'nave_vers']
+# F95: a D5-ben (frissesseg) ellenorzott, de a D4 (a lapok szukseges reszhalmaza) mereset nem valtoztato tablak
+D5_TOVABBI = ['szotari_alak', 'szotari_kereso', 'szotari_token_kotojeles']
 
 
 def tabla_meretek():
@@ -501,13 +503,16 @@ TSV_FORRAS = {'vers': ['konkordancia/Karoli_1908.tsv'], 'token_par': ['adat/karo
               'bdb_alias': ['konkordancia/BDB_strong_alias.tsv'],
               'nave_vers': ['konkordancia/Nave_basokant.tsv', 'konkordancia/Karoli_versmegfeleltetes.tsv', 'konkordancia/LXX_OS/'],
               'ubs_dbh_referenciak': ['konkordancia/UBS_DBH_referenciak.tsv'], 'ubs_dbh_jelentesek': ['konkordancia/UBS_DBH_jelentesek.tsv'],
-              'grammatikai_strongok': ['adat/grammatikai_strongok.tsv'], 'licencek': ['adat/licencek.tsv']}
+              'grammatikai_strongok': ['adat/grammatikai_strongok.tsv'], 'licencek': ['adat/licencek.tsv'],
+              # F95 (#95): a szotari alak tablaja es a belole szarmaztatott kereso
+              'szotari_alak': ['adat/szoto/karoli_szotari_alak.tsv'], 'szotari_kereso': ['adat/szoto/karoli_szotari_alak.tsv'],
+              'szotari_token_kotojeles': ['adat/szoto/karoli_szotari_alak.tsv', 'adat/karoli_strong/']}
 EGYEZO_SORSZAM = {'strong_szotar': 'konkordancia/Strong_szotar.tsv', 'bdb': 'konkordancia/BDB_teljes_unabridged.tsv',
                   'thayer': 'konkordancia/Thayer_teljes.tsv', 'lxx_bridge': 'adat/kulso/lxx_bridge.tsv',
                   'forditasok': 'adat/forditasok.tsv', 'tsk': 'konkordancia/TSK_kereszthivatkozasok.tsv',
                   'ubs_dbh_jelentesek': 'konkordancia/UBS_DBH_jelentesek.tsv', 'ubs_dbh_referenciak': 'konkordancia/UBS_DBH_referenciak.tsv',
                   'kh': 'konkordancia/Karoli_kereszthivatkozasok.tsv', 'vers': 'konkordancia/Karoli_1908.tsv',
-                  'bdb_alias': 'konkordancia/BDB_strong_alias.tsv'}
+                  'bdb_alias': 'konkordancia/BDB_strong_alias.tsv', 'szotari_alak': 'adat/szoto/karoli_szotari_alak.tsv'}
 # F92: a forrás-sorszám a meta-ban (az építéskori TSV-sorok), a mostani TSV-sorokhoz hasonlítva
 META_FORRAS_SOR = {'token_macula': ('token_macula:forras_sor', ['konkordancia/Macula_heber_*.tsv']),
                    'nave_vers': ('nave_vers:nave_basokant_sor', ['konkordancia/Nave_basokant.tsv'])}
@@ -544,7 +549,7 @@ def frissesseg(con, hash_ellenorzes):
     except ValueError:
         epites = None
     sorok, elter = [], []
-    for t in LAPHOZ_TABLAK:
+    for t in LAPHOZ_TABLAK + D5_TOVABBI:
         if t == 'meta':
             continue
         h = m.get('hash:' + t)
@@ -701,6 +706,124 @@ def adat_json(szakasz, json_konyvtar):
     return json.load(open(os.path.join(tmp, 'olvaso_pilot.json'), encoding='utf-8'))
 
 
+# ----------------------------------------------------------------------------------------
+# F95 (#95 SZOTOVEZES_DB): a szotari alak tablainak merese (--szoto)
+# ----------------------------------------------------------------------------------------
+# A mintalista az M0-ban (naplok/SZOTOVEZES_DB_M0.md 6. szakasz) rogzitve, a meres elott.
+SZOTO_GYAKORI = ['és', 'ő', 'én', 'te', 'Úr', 'hogy', 'ki', 'mond', 'nem', 'fiú']
+SZOTO_TARTALMAS = ['Isten', 'király', 'föld', 'ember', 'szól', 'város', 'Izráel', 'Dávid', 'lélek', 'cselekedik']
+SZOTO_RITKA = ['Giddél', 'atyjaik', 'Simsai', 'Selúmiel', 'megszerzés', 'Ófel', 'Amaria', 'Kimhám', 'bírták', 'Hái']
+SZOTO_KONYVCSOPORT = [
+    ('Tóra (1–5Móz)', ['1Móz', '2Móz', '3Móz', '4Móz', '5Móz']),
+    ('történeti (Józs–Eszt)', ['Józs', 'Bír', 'Ruth', '1Sám', '2Sám', '1Kir', '2Kir', '1Krón', '2Krón', 'Ezsd', 'Neh', 'Eszt']),
+    ('költői (Jób–Sir)', ['Jób', 'Zsolt', 'Péld', 'Préd', 'Én', 'Sir']),
+    ('próféták (Ézs–Mal)', ['Ézs', 'Jer', 'Ez', 'Dán', 'Hós', 'Jóel', 'Ámós', 'Abd', 'Jón', 'Mik', 'Náh', 'Hab', 'Sof', 'Hag', 'Zak', 'Mal']),
+    ('ÚSZ, párosított (Gal–Júd)', ['Gal', 'Ef', 'Fil', 'Kol', '1Thessz', '2Thessz', '1Tim', '2Tim', 'Tit', 'Filem', 'Zsid', 'Jak',
+                                  '1Pét', '2Pét', '1Ján', '2Ján', '3Ján', 'Júd']),
+    ('ÚSZ, párosítatlan (Mt, Mk, Luk, Ján, ApCsel, Róm, 1–2Kor, Jel)', ['Mt', 'Mk', 'Luk', 'Ján', 'ApCsel', 'Róm', '1Kor', '2Kor', 'Jel']),
+]
+SZOTO_Q_A = ("SELECT t.igehely, t.sorszam FROM szotari_alak a JOIN token_karoli t ON t.szo=a.alak AND t.oldal='hu' "
+             "WHERE a.szotari_alak=?")
+SZOTO_Q_K = ("SELECT t.igehely, t.sorszam FROM szotari_kereso k JOIN token_karoli t ON t.szo=k.alak AND t.oldal='hu' "
+             "WHERE k.keresoalak=?")
+SZOTO_Q_C = """SELECT igehely, sorszam FROM (
+ SELECT t.igehely, t.sorszam FROM szotari_alak a JOIN token_karoli t ON t.szo=a.alak AND t.oldal='hu' WHERE a.szotari_alak=?1
+ UNION
+ SELECT t2.igehely, t2.sorszam FROM token_par p2 JOIN token_karoli t2 ON t2.igehely=p2.igehely AND t2.oldal='hu' AND t2.sorszam=p2.hu_sorszam
+ WHERE p2.strong IN (SELECT DISTINCT p.strong FROM szotari_alak a JOIN token_karoli t ON t.szo=a.alak AND t.oldal='hu'
+                     JOIN token_par p ON p.igehely=t.igehely AND p.hu_sorszam=t.sorszam
+                     WHERE a.szotari_alak=?1 AND p.strong NOT IN (SELECT strong FROM grammatikai_strongok)))"""
+
+
+def szoto_meres(db_ut):
+    """A #95 merese a kesz pardes.db-n: D5 a szotari tablakra, a kapcsolasi arany konyvcsoportonkent, a keresesi
+    modok (a, kereso, c) ideje es talalati szama a rogzitett lemmalistan (meleg: 5 futas medianja; hideg: uj kapcsolat)."""
+    import unicodedata
+    ts = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
+    con = kapcsolat(db_ut)
+    m = meta(con)
+    prov = 'scope=%s | forras=pardes.db meta.epites_ts=%s meta.mod=%s (hash:szotari_alak=%s) | ts=%s' % (
+        'szotari_alak, szotari_kereso, szotari_token_kotojeles', m.get('epites_ts'), m.get('mod'),
+        m.get('hash:szotari_alak', '?').split('|')[-1][:12], ts)
+    ki = ['*Proveniencia: `%s`; gép: %s, %d CPU, python %s, pardes.db %.1f MB*' % (
+        prov, platform.platform(), os.cpu_count() or 0, platform.python_version(), os.path.getsize(db_ut) / 1e6), '']
+    # D5
+    fr = frissesseg(con, True)
+    ki.append('**D5 (frissesség)**: eltérő táblák (az egész `pardes.db`): %s' % (fr['eltero_tablak'] or 'nincs'))
+    for sor in fr['tablak']:
+        if sor['tabla'] in D5_TOVABBI:
+            ki.append('- `%s`: meta-sor %s, hash egyezik a tartalommal: %s, tsv-sor most: %s, eltérés: %s' % (
+                sor['tabla'], sor['meta_sor'], sor.get('tartalom_egyezik_a_meta_hash-sel'), sor.get('tsv_sor_most', '—'),
+                sor['eltérés'] or 'nincs'))
+    ki.append('')
+    # kapcsolasi arany
+    ki.append('**Kapcsolási arány** (`token_karoli` `oldal=hu` token; pontos = `szo`=`alak`; +kötőjeles = a `szotari_token_kotojeles` feloldja):')
+    ki.append('')
+    ki.append('| könyvcsoport | hu token | pontos | % | +kötőjeles | % | nem illeszkedik |')
+    ki.append('|---|---:|---:|---:|---:|---:|---:|')
+    tot = [0, 0, 0]
+    for nev, konyvek in SZOTO_KONYVCSOPORT:
+        ph = ','.join('?' * len(konyvek))
+        n, p = con.execute(
+            "SELECT COUNT(*), SUM(EXISTS(SELECT 1 FROM szotari_alak a WHERE a.alak=t.szo)) FROM token_karoli t "
+            "WHERE t.oldal='hu' AND substr(t.igehely,1,instr(t.igehely,' ')-1) IN (%s)" % ph, konyvek).fetchone()
+        p = p or 0
+        fel = con.execute(
+            "SELECT COUNT(*) FROM token_karoli t WHERE t.oldal='hu' AND substr(t.igehely,1,instr(t.igehely,' ')-1) IN (%s) "
+            "AND NOT EXISTS (SELECT 1 FROM szotari_alak a WHERE a.alak=t.szo) AND EXISTS "
+            "(SELECT 1 FROM szotari_token_kotojeles k WHERE k.igehely=t.igehely AND k.sorszam=t.sorszam)" % ph, konyvek).fetchone()[0]
+        tot = [tot[0] + n, tot[1] + p, tot[2] + fel]
+        ki.append('| %s | %d | %d | %s | %d | %s | %d |' % (nev, n, p, '%.2f' % (100.0 * p / n) if n else '—', p + fel,
+                                                          '%.2f' % (100.0 * (p + fel) / n) if n else '—', n - p - fel))
+    ki.append('| **összesen** | %d | %d | %.4f | %d | %.4f | %d |' % (
+        tot[0], tot[1], 100.0 * tot[1] / tot[0], tot[1] + tot[2], 100.0 * (tot[1] + tot[2]) / tot[0], tot[0] - tot[1] - tot[2]))
+    ki.append('')
+    # idozites
+    def egy(sql, par):
+        t0 = time.perf_counter()
+        r = con.execute(sql, par).fetchall()
+        return (time.perf_counter() - t0) * 1000.0, len(r)
+
+    def hideg(sql, par):
+        c = kapcsolat(db_ut)
+        t0 = time.perf_counter()
+        r = c.execute(sql, par).fetchall()
+        ms = (time.perf_counter() - t0) * 1000.0
+        c.close()
+        return ms, len(r)
+
+    ki.append('**Keresési idők** (ms; meleg = 5 futás mediánja, hideg = új kapcsolat, első futás; találat = token): ')
+    ki.append('')
+    ki.append('| csoport | lemma | (a) meleg | (a) hideg | találat | kereső meleg | kereső hideg | találat | (c) meleg | (c) hideg | találat | Strong |')
+    ki.append('|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|')
+    max_a, max_k = {}, {}
+    for csop, lista in (('gyakori', SZOTO_GYAKORI), ('tartalmas', SZOTO_TARTALMAS), ('ritka', SZOTO_RITKA)):
+        for l in lista:
+            kl = unicodedata.normalize('NFC', l).lower()
+            egy(SZOTO_Q_A, (l,)); egy(SZOTO_Q_K, (kl,)); egy(SZOTO_Q_C, (l,))
+            ta = statistics.median([egy(SZOTO_Q_A, (l,))[0] for _ in range(5)])
+            tk = statistics.median([egy(SZOTO_Q_K, (kl,))[0] for _ in range(5)])
+            tc = statistics.median([egy(SZOTO_Q_C, (l,))[0] for _ in range(5)])
+            ha, na = hideg(SZOTO_Q_A, (l,))
+            hk, nk = hideg(SZOTO_Q_K, (kl,))
+            hc, nc = hideg(SZOTO_Q_C, (l,))
+            ns = con.execute("SELECT COUNT(DISTINCT p.strong) FROM szotari_alak a JOIN token_karoli t ON t.szo=a.alak AND t.oldal='hu' "
+                             "JOIN token_par p ON p.igehely=t.igehely AND p.hu_sorszam=t.sorszam WHERE a.szotari_alak=? "
+                             "AND p.strong NOT IN (SELECT strong FROM grammatikai_strongok)", (l,)).fetchone()[0]
+            ki.append('| %s | %s | %.1f | %.1f | %d | %.1f | %.1f | %d | %.1f | %.1f | %d | %d |' % (csop, l, ta, ha, na, tk, hk, nk, tc, hc, nc, ns))
+            max_a[csop] = max(max_a.get(csop, 0), ta, ha)
+            max_k[csop] = max(max_k.get(csop, 0), tk, hk)
+    ki.append('')
+    ki.append('A maximum (a) idő csoportonként: %s; a kereső tábla maximuma: %s (K4: 100 ms az (a) módra és a kereső táblára).' % (
+        {k: round(v, 1) for k, v in max_a.items()}, {k: round(v, 1) for k, v in max_k.items()}))
+    # terv
+    ki.append('')
+    ki.append('**EXPLAIN QUERY PLAN** (a keresés indexet használ):')
+    for nev, sql, par in (('(a)', SZOTO_Q_A, ('ember',)), ('kereső', SZOTO_Q_K, ('ember',))):
+        ki.append('- %s: %s' % (nev, ' / '.join(r[3] for r in con.execute('EXPLAIN QUERY PLAN ' + sql, par))))
+    return '\n'.join(ki)
+
+
 def main():
     ap = argparse.ArgumentParser(description='Olvasói pilot: a pardes.db mérése (M2b)')
     ap.add_argument('--db', default=alap_db())
@@ -709,7 +832,11 @@ def main():
     ap.add_argument('--kimenet', default=os.path.join(tempfile.gettempdir(), 'olvaso_pilot'))
     ap.add_argument('--nincs-hash', action='store_true', help='a meta hash újraszámítása nélkül (gyorsabb)')
     ap.add_argument('--nincs-tomorites', action='store_true', help='a gzip-arány mérése nélkül')
+    ap.add_argument('--szoto', action='store_true', help='F95: csak a szótári alak tábláinak mérése (markdown a kimenetre)')
     a = ap.parse_args()
+    if a.szoto:
+        print(szoto_meres(a.db))
+        return 0
     os.makedirs(a.kimenet, exist_ok=True)
     ki_ut = os.path.join(a.kimenet, 'olvaso_pilot_db_meres.json')
     ts = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%MZ')

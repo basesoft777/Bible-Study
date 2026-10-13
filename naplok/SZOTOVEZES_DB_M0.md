@@ -90,3 +90,70 @@ Megjegyzés: a *ki* (283 Strong) és az *ő* (76) a Strong-ágat szétveti; a (c
 2. **Kapcsolási kulcs:** `token_karoli.szo` = `szotari_alak.alak` (pontos, kis-/nagybetű-érzékeny).
 3. **Nem illeszkedő tokenek:** (A) kötőjeles segédtábla (4 750 sor) + 6 felfüggesztett kötőjeles token dokumentált hiányként; vagy (B) csak dokumentált hiány.
 4. **A (c) mód mintalista** (fent) és a „fő Strong” definíciója (nem nyelvtani Strong, `token_par`-ból) jóváhagyása; a K4 100 ms-os küszöbe az (a) és kereső módra érvényes, a (c) gyakori lemmákra nem teljesül (mérve, jelentve).
+
+## 9. M2 mérés (a jóváhagyott terv szerint, a kész `pardes.db`-n)
+
+*Kiváltó: `python eszkozok/olvaso_pilot/db_meres.py --szoto` (a lemmalista a 6. szakaszban, a mérés előtt rögzítve). A teljes építés: `python eszkozok/sqlite_epit.py --mod teljes --ketszer --meret --naplo --proba` (G2: azonos; 15 próbapont MEGEGYEZIK; `naplok/SQLITE_EPIT_meres.md`).*
+
+*Proveniencia: `scope=szotari_alak, szotari_kereso, szotari_token_kotojeles | forras=pardes.db meta.epites_ts=2026-10-13T18:10:45Z meta.mod=teljes (hash:szotari_alak=796b64a99731) | ts=2026-10-13T18:14:28Z`; gép: Windows-11-10.0.26300-SP0, 8 CPU, python 3.14.7, pardes.db 938.3 MB*
+
+**D5 (frissesség)**: eltérő táblák (az egész `pardes.db`): nincs
+- `szotari_alak`: meta-sor 66824, hash egyezik a tartalommal: True, tsv-sor most: 66824, eltérés: nincs
+- `szotari_kereso`: meta-sor 72720, hash egyezik a tartalommal: True, tsv-sor most: —, eltérés: nincs
+- `szotari_token_kotojeles`: meta-sor 4750, hash egyezik a tartalommal: True, tsv-sor most: —, eltérés: nincs
+
+**Kapcsolási arány** (`token_karoli` `oldal=hu` token; pontos = `szo`=`alak`; +kötőjeles = a `szotari_token_kotojeles` feloldja):
+
+| könyvcsoport | hu token | pontos | % | +kötőjeles | % | nem illeszkedik |
+|---|---:|---:|---:|---:|---:|---:|
+| Tóra (1–5Móz) | 118302 | 118088 | 99.82 | 118297 | 100.00 | 5 |
+| történeti (Józs–Eszt) | 157698 | 157184 | 99.67 | 157697 | 100.00 | 1 |
+| költői (Jób–Sir) | 66169 | 66038 | 99.80 | 66169 | 100.00 | 0 |
+| próféták (Ézs–Mal) | 114710 | 114508 | 99.82 | 114710 | 100.00 | 0 |
+| ÚSZ, párosított (Gal–Júd) | 27941 | 27930 | 99.96 | 27941 | 100.00 | 0 |
+| ÚSZ, párosítatlan (Mt, Mk, Luk, Ján, ApCsel, Róm, 1–2Kor, Jel) | 0 | 0 | — | 0 | — | 0 |
+| **összesen** | 484820 | 483748 | 99.7789 | 484814 | 99.9988 | 6 |
+
+**Keresési idők** (ms; meleg = 5 futás mediánja, hideg = új kapcsolat, első futás; találat = token): 
+
+| csoport | lemma | (a) meleg | (a) hideg | találat | kereső meleg | kereső hideg | találat | (c) meleg | (c) hideg | találat | Strong |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| gyakori | és | 18.8 | 20.6 | 33877 | 18.9 | 20.5 | 33877 | 379.7 | 385.7 | 55453 | 24 |
+| gyakori | ő | 7.5 | 9.1 | 13493 | 7.2 | 8.8 | 13493 | 670.7 | 659.2 | 67160 | 76 |
+| gyakori | én | 3.5 | 5.2 | 6503 | 3.4 | 4.5 | 6504 | 378.6 | 375.1 | 34127 | 62 |
+| gyakori | te | 3.4 | 5.2 | 6419 | 3.4 | 5.0 | 6420 | 275.2 | 298.6 | 25029 | 44 |
+| gyakori | Úr | 3.4 | 4.4 | 6163 | 4.2 | 5.3 | 7615 | 266.0 | 257.4 | 20605 | 23 |
+| gyakori | hogy | 3.1 | 4.1 | 5700 | 3.1 | 4.0 | 5700 | 273.7 | 273.8 | 28671 | 42 |
+| gyakori | ki | 3.1 | 4.3 | 5575 | 3.0 | 4.0 | 5583 | 874.4 | 852.6 | 80335 | 283 |
+| gyakori | mond | 2.6 | 3.7 | 4873 | 2.8 | 3.8 | 5014 | 273.9 | 271.9 | 21326 | 54 |
+| gyakori | nem | 2.8 | 3.8 | 4811 | 2.6 | 3.4 | 4811 | 173.1 | 172.6 | 16772 | 76 |
+| gyakori | fiú | 2.5 | 3.8 | 4496 | 2.5 | 3.4 | 4506 | 268.6 | 261.9 | 22287 | 57 |
+| tartalmas | Isten | 1.9 | 2.9 | 3419 | 2.2 | 3.0 | 3671 | 232.4 | 230.5 | 20306 | 38 |
+| tartalmas | király | 1.4 | 2.4 | 2659 | 1.4 | 2.3 | 2659 | 161.2 | 156.9 | 13479 | 26 |
+| tartalmas | föld | 1.5 | 2.6 | 2612 | 1.5 | 2.4 | 2612 | 202.2 | 203.9 | 16736 | 40 |
+| tartalmas | ember | 0.9 | 1.8 | 1405 | 0.8 | 1.6 | 1405 | 306.4 | 304.7 | 28623 | 66 |
+| tartalmas | szól | 0.8 | 2.1 | 1344 | 0.8 | 1.7 | 1351 | 282.7 | 277.5 | 24936 | 53 |
+| tartalmas | város | 0.7 | 1.6 | 1141 | 0.7 | 1.5 | 1141 | 119.4 | 119.6 | 10701 | 29 |
+| tartalmas | Izráel | 1.3 | 2.3 | 2462 | 1.3 | 2.3 | 2462 | 157.2 | 157.1 | 13944 | 14 |
+| tartalmas | Dávid | 0.6 | 1.7 | 1069 | 0.7 | 1.4 | 1069 | 131.9 | 128.4 | 11509 | 12 |
+| tartalmas | lélek | 0.5 | 1.4 | 810 | 0.6 | 1.2 | 813 | 50.0 | 49.2 | 3310 | 16 |
+| tartalmas | cselekedik | 0.6 | 1.6 | 995 | 0.6 | 1.4 | 1024 | 199.8 | 202.3 | 17575 | 54 |
+| ritka | Giddél | 0.1 | 0.9 | 4 | 0.1 | 0.7 | 4 | 0.1 | 1.3 | 4 | 1 |
+| ritka | atyjaik | 0.1 | 0.9 | 4 | 0.1 | 0.7 | 4 | 12.9 | 14.3 | 1216 | 1 |
+| ritka | Simsai | 0.1 | 1.0 | 4 | 0.1 | 0.8 | 4 | 0.1 | 1.1 | 4 | 1 |
+| ritka | Selúmiel | 0.1 | 0.8 | 5 | 0.1 | 0.7 | 5 | 0.1 | 1.2 | 5 | 1 |
+| ritka | megszerzés | 0.1 | 0.9 | 4 | 0.1 | 0.7 | 4 | 27.2 | 28.8 | 2892 | 3 |
+| ritka | Ófel | 0.1 | 0.8 | 3 | 0.1 | 0.9 | 3 | 0.1 | 1.3 | 5 | 1 |
+| ritka | Amaria | 0.1 | 0.8 | 3 | 0.1 | 0.7 | 3 | 0.2 | 1.2 | 16 | 1 |
+| ritka | Kimhám | 0.1 | 0.9 | 4 | 0.1 | 0.9 | 4 | 0.5 | 3.6 | 173 | 2 |
+| ritka | bírták | 0.1 | 0.9 | 5 | 0.1 | 0.7 | 5 | 0.6 | 4.7 | 222 | 3 |
+| ritka | Hái | 0.1 | 0.9 | 3 | 0.1 | 0.9 | 3 | 0.2 | 1.5 | 41 | 1 |
+
+A maximum (a) idő csoportonként: {'gyakori': 20.6, 'tartalmas': 2.9, 'ritka': 1.0}; a kereső tábla maximuma: {'gyakori': 20.5, 'tartalmas': 3.0, 'ritka': 0.9} (K4: 100 ms az (a) módra és a kereső táblára).
+
+**EXPLAIN QUERY PLAN** (a keresés indexet használ):
+- (a): SEARCH a USING INDEX ix_szotari_alak_0 (szotari_alak=?) / SEARCH t USING COVERING INDEX ix_token_karoli_szo_hu (szo=?)
+- kereső: SEARCH k USING COVERING INDEX ix_szotari_kereso_0 (keresoalak=?) / SEARCH t USING COVERING INDEX ix_token_karoli_szo_hu (szo=?)
+
+
+**Értékelés.** K2: a pontos kulcs 99,7789% (= az előmérés 99,78%-a), a kötőjeles segédtáblával 99,9988%; a 6 megmaradó token a felfüggesztett kötőjeles. K3: a D5 a három új táblán hash- és sorszám-egyezést ad, eltérő tábla nincs. K4: az (a) mód és a kereső tábla maximuma 20,6 ms (hideg is) a 100 ms alatt; a (c) mód gyakori lemmákon 173–874 ms, ritkákon 0,1–27 ms; ez a #76 felé ismert korlát. A mintalekérdezések az `EXPLAIN QUERY PLAN` szerint indexet használnak.

@@ -1449,7 +1449,7 @@ def tablameret(db_path):
                     con.execute('INSERT INTO x."%s" SELECT %s FROM main."%s"' % (
                         nev, ', '.join('"%s"' % c for c in cols), nev))
                     for isql in indexek:
-                        con.execute(isql.replace('CREATE INDEX "', 'CREATE INDEX x."', 1))
+                        con.execute(isql.replace('INDEX "', 'INDEX x."', 1))  # UNIQUE INDEX is (F95)
                 con.commit()
                 lap = con.execute('PRAGMA x.page_count').fetchone()[0]
                 meret = con.execute('PRAGMA x.page_size').fetchone()[0]

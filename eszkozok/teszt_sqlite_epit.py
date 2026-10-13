@@ -673,6 +673,18 @@ class Integracio(unittest.TestCase):
         nem = [szo for (szo,) in self.con.execute("SELECT szo FROM token_karoli WHERE oldal='hu'") if szo not in alakok]
         self.assertEqual(len(nem), int(meta['szotari_token:pontos_alak_nem_talal']))
 
+    def test_f95_frissesseg_d5_felveszi_a_forras_tsv_t(self):
+        sys.path.insert(0, os.path.join(ROOT, 'eszkozok', 'olvaso_pilot'))
+        import db_meres as DM
+        rel = 'adat/szoto/karoli_szotari_alak.tsv'
+        for t in ('szotari_alak', 'szotari_kereso', 'szotari_token_kotojeles'):
+            self.assertIn(rel, DM.TSV_FORRAS[t])
+            self.assertIn(t, DM.D5_TOVABBI)
+        self.assertEqual(DM.EGYEZO_SORSZAM['szotari_alak'], rel)
+        # a D5 sorszam-szamlalasa (# sorok es fejlec nelkul) = a minta meta-sora
+        self.assertEqual(str(DM.tsv_sorok(rel)),
+                         dict(self.con.execute('SELECT kulcs, ertek FROM meta')).get('szotari_alak:forras_sor'))
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=1)
