@@ -6,10 +6,12 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: fut
+allapot: lezarva
 ag: claude/f95-szotovezes-db
+pr: 337
+lezarva_osszegzes: "pardes.db +3 tábla (szotari_alak 66 824, szotari_kereso 72 720, szotari_token_kotojeles 4 750) szoto_tablak licenccel és hash meta-sorral; kulcs token_karoli.szo = alak; kapcsolás 99,7789% (+kötőjeles 99,9988%); (a) és kereső max. 20,6 ms, (c) gyakori lemmákon 173–874 ms (ismert korlát a #76 felé); D5 friss; DT-F95a"
 ad: a pardes.db új táblája a Károli minden szóalakjához (szótári alak, mai szótári alak, alapige, további elfogadható alak, módszer, régies jegy) táblaszintű licenccel és meta-sorral; a token_karoli tokenjeihez kapcsolható pontos-alak kulccsal; indexek a szótári alak, a mai alak, az alapige és a további elfogadható alak szerinti kereséshez; a (c) keresési mód (szótári alak VAGY Strong) mintalekérdezése mérve; frissességi teszt a forrás-TSV-re
-kovetkezo: "M1 (építés), M2 (mérés), M3 (zárás) — az M0 ⛔ jóváhagyva (DT-F95a)"
+kovetkezo: "—; hátra: független ellenőr, CI, merge (felhasználó); a #76 a (c) mód lapozását kezeli"
 olvas: [adat/szoto/karoli_szotari_alak.tsv, adat/SEMA.md, adat/licencek.tsv, eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, eszkozok/olvaso_pilot/db_meres.py, naplok/SQLITE_EPIT_meres.md, naplok/SZOTOVEZES_zaras.md, "adat/karoli_strong/szavak_*.tsv", F76_OLVASOI_KONKORDANCIA_BRIEF.md]
 ir: [eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, eszkozok/olvaso_pilot/db_meres.py, adat/SEMA.md, naplok/SQLITE_EPIT_meres.md, naplok/SZOTOVEZES_DB_M0.md, naplok/SZOTOVEZES_DB_zaras.md]
 fugg: [92, 94]
