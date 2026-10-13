@@ -6,7 +6,8 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: nem_indult
+allapot: fut
+ag: claude/f95-szotovezes-db
 ad: a pardes.db új táblája a Károli minden szóalakjához (szótári alak, mai szótári alak, alapige, további elfogadható alak, módszer, régies jegy) táblaszintű licenccel és meta-sorral; a token_karoli tokenjeihez kapcsolható pontos-alak kulccsal; indexek a szótári alak, a mai alak, az alapige és a további elfogadható alak szerinti kereséshez; a (c) keresési mód (szótári alak VAGY Strong) mintalekérdezése mérve; frissességi teszt a forrás-TSV-re
 kovetkezo: "/kovetkezo; ⛔ M0 után (a táblaterv, a kapcsolási kulcs és a nem illeszkedő tokenek kezelésének jóváhagyása)"
 olvas: [adat/szoto/karoli_szotari_alak.tsv, adat/SEMA.md, adat/licencek.tsv, eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, eszkozok/olvaso_pilot/db_meres.py, naplok/SQLITE_EPIT_meres.md, naplok/SZOTOVEZES_zaras.md, "adat/karoli_strong/szavak_*.tsv", F76_OLVASOI_KONKORDANCIA_BRIEF.md]
