@@ -172,22 +172,4 @@ Mérés: minden tábla (indexeivel) külön adatbázisba másolva, lapszám × l
 - FTS: 50 fájl, 624 rovat; átmeneti régi tanulmányok `regi_forras=1`; a #11 `migralt: igen` jelzője miatt kiesett: nincs (a jelző még nem létezik)
 - Szándékosan nem betöltött konkordancia-táblák: Macula_heber_*/Macula_gorog, LXX_OS/*, KJV_/ASV_Strongs_{Genesis,Exodus,Proverbs} (a #48 vezeti ki; a KJV_Strongs_teljes betöltve), a BDB_*/aram/alias segédtáblák, SDBH_SDGNT_domenfa, a versmegfeleltetési segédtáblák; a licencsor hiánya miatt kimaradt táblák száma: 0
 
-
-## F88 — a TIPNR Strong-normalizálás mérése (DT111)
-
-*Proveniencia: `scope=manual | forras=eszkozok/sqlite_epit.py (--mod teljes --ketszer --meret --naplo), a kész pardes.db lekérdezése | ts=2026-10-13`. Kézzel hozzáfűzött szakasz: a generált rész újragenerálása nem hozza létre.*
-
-| mutató | F79 (előtte) | F88 (utána) |
-|---|---:|---:|
-| `tipnr` sorok | 35 522 | 35 522 |
-| `strong IS NULL` | 16 928 (47,7%) | **0 (0,0%)** |
-| utótagos sor (`utotag` nem üres) | – | 16 928 |
-| utótag nélküli sor, `strong` = `strong_nyers` | 18 594 | 18 594 |
-| `tipnr` mérete (indexszel) | 3,91 MB | 4,12 MB |
-| `tipnr` sorai, amelyek `strong`-ja a `token_strong`-ban szerepel | – | 35 433 / 35 522 |
-
-- Megmaradt NULL sor nincs; a „Strong-szám nem normalizálható” ok a `tipnr`-nél nem fordul elő.
-- A levágott alapszámok közül a `token_strong`-ban nem szerepel: `G6202` (1 sor) — jelölés, nem javítás (a normalizálási jelentésben).
-- Az utótag nélküli sorok közül 63 különböző alapszám (89 sor) már az F79 óta sem szerepel a `token_strong`-ban (pl. `G0300`, `G0962`); ez nem az F88 hatóköre, és a jelentés nem jelöli.
-- Két építés, táblánkénti hash azonos (G2); a `tipnr` hash-e `d4a93c34d0e36db8`.
-- A többi tábla hash-eltérése az F79-es mérés óta a main-be került más változásokból ered (pl. `bdb_karoli`, `token_*`), nem az F88-ból.
+*A TIPNR Strong-normalizálás (F88, DT111) előtte/utána mérése külön, nem felülírt naplóban áll: `naplok/F88_meres.md`.*
