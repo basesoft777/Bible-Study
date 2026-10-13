@@ -70,6 +70,16 @@ A nullázás kötelező — `H779` nem érvényes érték, mert a datasetek rend
 Több Strong-szám egy cellában: `+` jellel, sorrendben (`G0934+G2406`).
 G-kiegészítő kód: `G` + öt számjegy, nem nullával kezdődik (TAGNT, pl. `G20447`).
 
+**A TIPNR betűutótagja (F88, DT111).** A `TIPNR_kivonat.tsv` a Strong-számhoz egyértelműsítő
+betűt fűz: a **nagybetű** (`G2424G` Jézus, `G2424H` Barabbás, `H3063G` Júda, `H3063N` Júdea)
+személyt/entitást különböztet meg egy lexémán belül, nem jelentésváltozatot; a **kisbetű**
+(`H5838z`) ugyanígy utótag. Ez nem SEMA 1.2 alak, a `strong_util.strong_normalizal()` hibaként
+elutasítja (alapérték: `utotag='tilt'`). A `pardes.db` TIPNR-betöltője kifejezett szabállyal
+(`sqlite_epit.tipnr_strong_szetvalaszt`) levágja: a `tipnr.strong` az **alapszámot** (SEMA 1.2
+alak) hordozza, így a `token_strong` kulcsán illeszkedik; az utótag a `tipnr.utotag`
+oszlopba kerül (utótag nélküli soron üres); a teljes eredeti érték a `tipnr.strong_nyers`-ben
+marad. Amit a levágás után sem lehet normalizálni, a `normalizalas_jelentes`-be kerül.
+
 ### 1.3 `DATUM`
 
 `ÉÉÉÉ.HH.NN` (`2026.09.13`). Relatív dátum (*„tegnap", „a múlt héten"*) nem írható be.
