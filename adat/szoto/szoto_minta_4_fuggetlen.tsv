@@ -1,117 +1,118 @@
 # proveniencia: scope=5Móz,1Sám,Péld,Ez,Mk,Ján,Róm,Jel Károli-szóalakjai, az 1–3. minta alakjai nélkül, rétegzett, mag 20261013 | forras=konkordancia/Karoli_1908.tsv (sha256:49335bbcc77d) + eszkozok/szoto/minta4_jeloltek.py | alak a nyolc könyvben: 20838, token: 60945 (jelölt-lista sha256:3147f6c802a2) + manual (a szótári alak modell-javaslat a DT130 és a DT-F94a/b szerint, modell: claude-opus-5-5, a hibrid v3 befagyasztása után, a hibrid futtatása ELŐTT; eszkozok/szoto/minta4_ir.py) | ts=2026-10-13T13:51Z
-# allapot: független minta; ellenorzes=modell_ellenorizetlen minden sorban — a felhasználó soronként ellenőrzi és ő írja felhasznalo-ra (F94.3 ⛔); a mérés (meres.py --csak-felhasznalo) csak a felhasznalo sorokon. A [bizonytalan: …] jelölésű sorok döntést kérnek. A strong a repó párosításából (5Móz, 1Sám, Péld, Ez); Mk, Ján, Róm, Jel nincs párosítva: üres
-# dontes: a 7 [bizonytalan] sor a felhasználó döntésével lezárva (2026-10-13, eszkozok/szoto/minta4_javit.py); felhasznalo 7, modell_ellenorizetlen 106; a többi sor átnézése a felhasználónál
+# allapot: független minta; mind a 113 sort a felhasználó soronként ellenőrizte (ellenorzes=felhasznalo); a mérés (meres.py --csak-felhasznalo --fuggetlen) mind a 113 soron. A strong a repó párosításából (5Móz, 1Sám, Péld, Ez); Mk, Ján, Róm, Jel nincs párosítva: üres. A kategoria a mintavételi réteg (SEMA 2.27)
+# dontes: a 7 [bizonytalan] sor a felhasználó döntésével lezárva (2026-10-13), a további 106 sor változatlanul elfogadva; felhasznalo 113, modell_ellenorizetlen 0 (eszkozok/szoto/minta4_javit.py)
+# ellenorzes-proveniencia: scope=a 4. minta 113 sora és a K tábla 400 sora | forras=felhasználói átnézés, áttekintő oldal (https://claude.ai/artifact/PvJ8YFw3y561Nku1xwBdkr), 2026-10-13 | ts=2026-10-13T15:10Z
 alak	gyakorisag	kategoria	szotari_alak	szotari_alak_mai	alapige	tovabbi_elfogadhato	ellenorzes	indoklas	pelda_igehely	strong
-hanem	239	gyakori	hanem	hanem			modell_ellenorizetlen	kötőszó	5Móz 1:26	H9001
-Saul	222	gyakori	Saul	Saul			modell_ellenorizetlen	tulajdonnév	1Sám 9:2	H7586
-közül	184	gyakori	közül	közül			modell_ellenorizetlen	névutó	5Móz 1:35	H9003
-Istened	152	gyakori	Isten	Isten			modell_ellenorizetlen	birtokos E/2 („az Úr, a te Istened”); Isten névként (DT130 (5))	5Móz 1:21	H0430+H9021
-által	142	gyakori	által	által			modell_ellenorizetlen	névutó	5Móz 4:28	H3027
-azon	129	gyakori	az	az			modell_ellenorizetlen	mutató névmás -on raggal / jelzői „azon” (5Móz 1:44 „azon a hegyen”)	5Móz 1:44	H1931
-Akkor	124	gyakori	akkor	akkor			modell_ellenorizetlen	határozószó, mondatkezdő nagybetű	5Móz 1:29	H9001
-sok	112	gyakori	sok	sok			modell_ellenorizetlen	határozatlan számnév	5Móz 1:46	H7227
+hanem	239	gyakori	hanem	hanem			felhasznalo	kötőszó	5Móz 1:26	H9001
+Saul	222	gyakori	Saul	Saul			felhasznalo	tulajdonnév	1Sám 9:2	H7586
+közül	184	gyakori	közül	közül			felhasznalo	névutó	5Móz 1:35	H9003
+Istened	152	gyakori	Isten	Isten			felhasznalo	birtokos E/2 („az Úr, a te Istened”); Isten névként (DT130 (5))	5Móz 1:21	H0430+H9021
+által	142	gyakori	által	által			felhasznalo	névutó	5Móz 4:28	H3027
+azon	129	gyakori	az	az			felhasznalo	mutató névmás -on raggal / jelzői „azon” (5Móz 1:44 „azon a hegyen”)	5Móz 1:44	H1931
+Akkor	124	gyakori	akkor	akkor			felhasznalo	határozószó, mondatkezdő nagybetű	5Móz 1:29	H9001
+sok	112	gyakori	sok	sok			felhasznalo	határozatlan számnév	5Móz 1:46	H7227
 Filiszteusok	110	gyakori	Filiszteus	Filiszteus		Filiszteusok	felhasznalo	népnév többese; a népnév Károli-átírásban (DT130 (5)) [döntés: felhasználó, 2026-10-13: a javaslat szerint — a népnév szótári alakja egyes számú (Filiszteus), a többes (Filiszteusok) további elfogadható alak: a kettős elfogadás a keresést védi]	1Sám 4:1	H6430
-Istennek	108	gyakori	Isten	Isten			modell_ellenorizetlen	-nek rag; név	5Móz 4:33	H0430
-többé	106	gyakori	többé	többé			modell_ellenorizetlen	határozószó („nem … többé”)	5Móz 13:11	H3254
-oda	102	gyakori	oda	oda			modell_ellenorizetlen	határozószó / igekötő	5Móz 1:37	H8033
-se	102	gyakori	se	se			modell_ellenorizetlen	tagadószó	5Móz 2:27	
-jó	98	gyakori	jó	jó			modell_ellenorizetlen	melléknév	5Móz 1:35	H2896
-Sámuel	97	gyakori	Sámuel	Sámuel			modell_ellenorizetlen	tulajdonnév	1Sám 2:18	H8050
-két	96	gyakori	két	két		kettő	modell_ellenorizetlen	a kettő jelzői alakja	5Móz 3:8	H8147
-valaki	96	gyakori	valaki	valaki			modell_ellenorizetlen	határozatlan névmás	5Móz 15:7	H9003+H9031
-maga	92	gyakori	maga	maga			modell_ellenorizetlen	visszaható névmás	5Móz 3:22	H1931
-hét	90	gyakori	hét	hét			modell_ellenorizetlen	számnév (5Móz 16:3 „hét napig”)	5Móz 16:3	H7651
-hol	88	gyakori	hol	hol			modell_ellenorizetlen	kérdő határozószó	5Móz 1:31	H0834
-most	85	gyakori	most	most			modell_ellenorizetlen	határozószó	5Móz 1:10	H9009+H3117
-hozzám	85	gyakori	én	én			modell_ellenorizetlen	ragos személyes névmás (DT130 (3))	5Móz 1:22	H0413+H9030
-sing	85	gyakori	sing	sing			modell_ellenorizetlen	mértékegység (könyök)	5Móz 3:11	H0520
-volna	84	gyakori	van	van			modell_ellenorizetlen	a van feltételes alakja (DT130 (6))	5Móz 2:36	
-senki	82	gyakori	senki	senki			modell_ellenorizetlen	névmás	5Móz 7:24	H0376
-kilenczedik	2	regies_helyesiras	kilenczedik	kilencedik			modell_ellenorizetlen	cz = c (régies helyesírás); sorszámnév	Ez 24:1	H8671
-harminczezer	2	regies_helyesiras	harminczezer	harmincezer			modell_ellenorizetlen	cz = c; számnév	1Sám 4:10	H7970+H0505
-körülöttök	4	regies_helyesiras	körül	körül			modell_ellenorizetlen	névutó + régies -ök (= -ük) személyrag (a 2. minta előttök → előtt mintájára)	1Sám 13:16	H5973+H9038
-lánczot	2	regies_helyesiras	láncz	lánc			modell_ellenorizetlen	cz = c, tárgyrag	Ez 7:23	H7569
-utczára	1	regies_helyesiras	utcza	utca			modell_ellenorizetlen	cz = c, -ra rag	1Sám 9:26	H9009+H2351+H9011
-harczolnának	1	regies_helyesiras	harczol	harcol			modell_ellenorizetlen	cz = c; feltételes T/3	1Sám 17:19	H3898
-közűlök	1	regies_helyesiras	közül	közül			modell_ellenorizetlen	névutó + régies -ök személyrag; űl = ül (régies helyesírás)	Ján 7:44	
-czédrusfa	1	regies_helyesiras	czédrusfa	cédrusfa			modell_ellenorizetlen	cz = c; összetett főnév	Ez 17:3	H9009+H0730
-fejedelmök	1	regies_helyesiras	fejedelem	fejedelem			modell_ellenorizetlen	birtokos T/3 régies -ök (= -ük); tőváltó (fejedelm-)	Ez 37:25	H5387+H9005+H9038
-kivánságát	1	regies_helyesiras	kivánság	kívánság			modell_ellenorizetlen	kiván = kíván (régies helyesírás); birtokos + tárgyrag	Péld 10:3	H1942
-czédrusfából	1	regies_helyesiras	czédrusfa	cédrusfa			modell_ellenorizetlen	cz = c; -ból rag	Ez 27:24	H0729
+Istennek	108	gyakori	Isten	Isten			felhasznalo	-nek rag; név	5Móz 4:33	H0430
+többé	106	gyakori	többé	többé			felhasznalo	határozószó („nem … többé”)	5Móz 13:11	H3254
+oda	102	gyakori	oda	oda			felhasznalo	határozószó / igekötő	5Móz 1:37	H8033
+se	102	gyakori	se	se			felhasznalo	tagadószó	5Móz 2:27	
+jó	98	gyakori	jó	jó			felhasznalo	melléknév	5Móz 1:35	H2896
+Sámuel	97	gyakori	Sámuel	Sámuel			felhasznalo	tulajdonnév	1Sám 2:18	H8050
+két	96	gyakori	két	két		kettő	felhasznalo	a kettő jelzői alakja	5Móz 3:8	H8147
+valaki	96	gyakori	valaki	valaki			felhasznalo	határozatlan névmás	5Móz 15:7	H9003+H9031
+maga	92	gyakori	maga	maga			felhasznalo	visszaható névmás	5Móz 3:22	H1931
+hét	90	gyakori	hét	hét			felhasznalo	számnév (5Móz 16:3 „hét napig”)	5Móz 16:3	H7651
+hol	88	gyakori	hol	hol			felhasznalo	kérdő határozószó	5Móz 1:31	H0834
+most	85	gyakori	most	most			felhasznalo	határozószó	5Móz 1:10	H9009+H3117
+hozzám	85	gyakori	én	én			felhasznalo	ragos személyes névmás (DT130 (3))	5Móz 1:22	H0413+H9030
+sing	85	gyakori	sing	sing			felhasznalo	mértékegység (könyök)	5Móz 3:11	H0520
+volna	84	gyakori	van	van			felhasznalo	a van feltételes alakja (DT130 (6))	5Móz 2:36	
+senki	82	gyakori	senki	senki			felhasznalo	névmás	5Móz 7:24	H0376
+kilenczedik	2	regies_helyesiras	kilenczedik	kilencedik			felhasznalo	cz = c (régies helyesírás); sorszámnév	Ez 24:1	H8671
+harminczezer	2	regies_helyesiras	harminczezer	harmincezer			felhasznalo	cz = c; számnév	1Sám 4:10	H7970+H0505
+körülöttök	4	regies_helyesiras	körül	körül			felhasznalo	névutó + régies -ök (= -ük) személyrag (a 2. minta előttök → előtt mintájára)	1Sám 13:16	H5973+H9038
+lánczot	2	regies_helyesiras	láncz	lánc			felhasznalo	cz = c, tárgyrag	Ez 7:23	H7569
+utczára	1	regies_helyesiras	utcza	utca			felhasznalo	cz = c, -ra rag	1Sám 9:26	H9009+H2351+H9011
+harczolnának	1	regies_helyesiras	harczol	harcol			felhasznalo	cz = c; feltételes T/3	1Sám 17:19	H3898
+közűlök	1	regies_helyesiras	közül	közül			felhasznalo	névutó + régies -ök személyrag; űl = ül (régies helyesírás)	Ján 7:44	
+czédrusfa	1	regies_helyesiras	czédrusfa	cédrusfa			felhasznalo	cz = c; összetett főnév	Ez 17:3	H9009+H0730
+fejedelmök	1	regies_helyesiras	fejedelem	fejedelem			felhasznalo	birtokos T/3 régies -ök (= -ük); tőváltó (fejedelm-)	Ez 37:25	H5387+H9005+H9038
+kivánságát	1	regies_helyesiras	kivánság	kívánság			felhasznalo	kiván = kíván (régies helyesírás); birtokos + tárgyrag	Péld 10:3	H1942
+czédrusfából	1	regies_helyesiras	czédrusfa	cédrusfa			felhasznalo	cz = c; -ból rag	Ez 27:24	H0729
 összegyűlekezének	1	regies_helyesiras	összegyűlekezik	összegyülekezik	gyülekezik		felhasznalo	régies múlt T/3; igekötős (DT130 (4)) [döntés: felhasználó, 2026-10-13: a javaslat szerint — régies összegyűlekezik, mai összegyülekezik, alapige gyülekezik]	Mk 6:30	
-ötvenedesekké	1	regies_ige	ötvenedes	ötvenedes			modell_ellenorizetlen	főnév többese + -ké (-vé) rag; nem ige (a mintavevő -é végződés-szűrője hozta)	5Móz 1:15	H8269+H2572
-vágván	1	regies_ige	vág	vág			modell_ellenorizetlen	-ván határozói igenév	5Móz 20:19	H9005+H5080
-vagyunk-é	2	regies_ige	van	van			modell_ellenorizetlen	a van T/1 alakja + -é kérdőszócska	Ján 9:40	
-tartózkodék	9	regies_ige	tartózkodik	tartózkodik			modell_ellenorizetlen	régies múlt E/3 (-ik-es igénél az -ék E/3: „Saul … tartózkodék”)	1Sám 14:2	H3427
-elküldének	1	regies_ige	elküld	elküld	küld		modell_ellenorizetlen	régies múlt T/3; igekötős	1Sám 5:11	H7971
-terítsék	1	regies_ige	terít	terít			modell_ellenorizetlen	felszólító T/3 tárgyas; az igekötő külön áll („terítsék ki”), ezért a szótári alak igekötő nélkül (N-F94a)	5Móz 22:17	H6566
+ötvenedesekké	1	regies_ige	ötvenedes	ötvenedes			felhasznalo	főnév többese + -ké (-vé) rag; nem ige (a mintavevő -é végződés-szűrője hozta)	5Móz 1:15	H8269+H2572
+vágván	1	regies_ige	vág	vág			felhasznalo	-ván határozói igenév	5Móz 20:19	H9005+H5080
+vagyunk-é	2	regies_ige	van	van			felhasznalo	a van T/1 alakja + -é kérdőszócska	Ján 9:40	
+tartózkodék	9	regies_ige	tartózkodik	tartózkodik			felhasznalo	régies múlt E/3 (-ik-es igénél az -ék E/3: „Saul … tartózkodék”)	1Sám 14:2	H3427
+elküldének	1	regies_ige	elküld	elküld	küld		felhasznalo	régies múlt T/3; igekötős	1Sám 5:11	H7971
+terítsék	1	regies_ige	terít	terít			felhasznalo	felszólító T/3 tárgyas; az igekötő külön áll („terítsék ki”), ezért a szótári alak igekötő nélkül (N-F94a)	5Móz 22:17	H6566
 elfeledték	1	regies_ige	elfeled	elfelejt	feled		felhasznalo	múlt T/3 tárgyas; az elfeled az elfelejt régi alakja (DT130 (2)); igekötős [döntés: felhasználó, 2026-10-13: a javaslat szerint — elfeled / mai elfelejt, alapige feled; egy szó két alakja, DT130 (2)]	1Sám 12:9	H7911
-házánál	3	regies_ige	ház	ház			modell_ellenorizetlen	birtokos + -nál	5Móz 22:21	H1004
-merítvén	1	regies_ige	merít	merít			modell_ellenorizetlen	-vén határozói igenév	1Sám 7:6	H7579
-ítél	2	regies_ige	ítél	ítél			modell_ellenorizetlen	jelen E/3	Ján 5:22	
-kényszeríték	1	regies_ige	kényszerít	kényszerít			modell_ellenorizetlen	régies múlt T/3 tárgyas („kényszeríték őt”)	1Sám 28:23	H6555
-elhajtá	1	regies_ige	elhajt	elhajt	hajt		modell_ellenorizetlen	régies múlt E/3 tárgyas; igekötős	1Sám 23:5	H5090
-veszszejévé	1	regies_ige	veszsző	vessző			modell_ellenorizetlen	szsz = ssz (régies helyesírás); birtokos + -vé rag	Ez 7:11	H9005+H4294
-törlé	1	regies_ige	töröl	töröl			modell_ellenorizetlen	régies múlt E/3 tárgyas; tővéghangzó-kiesés (törl-); az igekötő külön áll („törlé meg”)	Ján 11:2	
-megkené	1	regies_ige	megken	megken	ken		modell_ellenorizetlen	régies múlt E/3 tárgyas; igekötős	Ján 12:3	
-fügefának	1	regies_ige	fügefa	fügefa			modell_ellenorizetlen	-nak rag	Mk 11:14	
-hosszútűrésénél	1	regies_ige	hosszútűrés	hosszútűrés			modell_ellenorizetlen	birtokos + -nél (névutós szerkezet: … fogva)	Róm 3:26	
-futván	1	regies_ige	fut	fut			modell_ellenorizetlen	-ván határozói igenév	Mk 10:17	
-kárbunkulusoknál	1	regies_ige	kárbunkulus	kárbunkulus			modell_ellenorizetlen	többes + -nál	Péld 3:15	H9006+H6443
-tévelyedjék	1	regies_ige	tévelyedik	tévelyedik			modell_ellenorizetlen	felszólító E/3; az igekötő külön áll („el ne tévelyedjék”)	Ez 14:11	H8582
-Istenünkéi	1	tulajdonnev	Isten	Isten			modell_ellenorizetlen	birtokos T/1 + -é birtokjel + -i többes birtok („a mi Istenünkéi”); név	5Móz 29:29	H0430+H9025
-Úré	5	tulajdonnev	Úr	Úr			modell_ellenorizetlen	név + -é birtokjel	1Sám 2:8	H9005+H3068
-Gileádot	3	tulajdonnev	Gileád	Gileád			modell_ellenorizetlen	tulajdonnév + tárgyrag	5Móz 3:10	H1568
-Krisztussal	2	tulajdonnev	Krisztus	Krisztus			modell_ellenorizetlen	tulajdonnév + -sal	Róm 6:8	
-Jóna	1	tulajdonnev	Jóna	Jóna			modell_ellenorizetlen	tulajdonnév („a Jóna fia”)	Ján 1:43	
-Üldözzem-é	1	tulajdonnev	üldöz	üldöz			modell_ellenorizetlen	mondatkezdő ige, nem tulajdonnév; felszólító E/1 tárgyas + -é kérdőszócska	1Sám 30:8	
-Béth-Avenen	1	tulajdonnev	Béth-Aven	Béth-Aven			modell_ellenorizetlen	helynév + -en rag („Béth-Avenen túl”)	1Sám 14:23	
+házánál	3	regies_ige	ház	ház			felhasznalo	birtokos + -nál	5Móz 22:21	H1004
+merítvén	1	regies_ige	merít	merít			felhasznalo	-vén határozói igenév	1Sám 7:6	H7579
+ítél	2	regies_ige	ítél	ítél			felhasznalo	jelen E/3	Ján 5:22	
+kényszeríték	1	regies_ige	kényszerít	kényszerít			felhasznalo	régies múlt T/3 tárgyas („kényszeríték őt”)	1Sám 28:23	H6555
+elhajtá	1	regies_ige	elhajt	elhajt	hajt		felhasznalo	régies múlt E/3 tárgyas; igekötős	1Sám 23:5	H5090
+veszszejévé	1	regies_ige	veszsző	vessző			felhasznalo	szsz = ssz (régies helyesírás); birtokos + -vé rag	Ez 7:11	H9005+H4294
+törlé	1	regies_ige	töröl	töröl			felhasznalo	régies múlt E/3 tárgyas; tővéghangzó-kiesés (törl-); az igekötő külön áll („törlé meg”)	Ján 11:2	
+megkené	1	regies_ige	megken	megken	ken		felhasznalo	régies múlt E/3 tárgyas; igekötős	Ján 12:3	
+fügefának	1	regies_ige	fügefa	fügefa			felhasznalo	-nak rag	Mk 11:14	
+hosszútűrésénél	1	regies_ige	hosszútűrés	hosszútűrés			felhasznalo	birtokos + -nél (névutós szerkezet: … fogva)	Róm 3:26	
+futván	1	regies_ige	fut	fut			felhasznalo	-ván határozói igenév	Mk 10:17	
+kárbunkulusoknál	1	regies_ige	kárbunkulus	kárbunkulus			felhasznalo	többes + -nál	Péld 3:15	H9006+H6443
+tévelyedjék	1	regies_ige	tévelyedik	tévelyedik			felhasznalo	felszólító E/3; az igekötő külön áll („el ne tévelyedjék”)	Ez 14:11	H8582
+Istenünkéi	1	tulajdonnev	Isten	Isten			felhasznalo	birtokos T/1 + -é birtokjel + -i többes birtok („a mi Istenünkéi”); név	5Móz 29:29	H0430+H9025
+Úré	5	tulajdonnev	Úr	Úr			felhasznalo	név + -é birtokjel	1Sám 2:8	H9005+H3068
+Gileádot	3	tulajdonnev	Gileád	Gileád			felhasznalo	tulajdonnév + tárgyrag	5Móz 3:10	H1568
+Krisztussal	2	tulajdonnev	Krisztus	Krisztus			felhasznalo	tulajdonnév + -sal	Róm 6:8	
+Jóna	1	tulajdonnev	Jóna	Jóna			felhasznalo	tulajdonnév („a Jóna fia”)	Ján 1:43	
+Üldözzem-é	1	tulajdonnev	üldöz	üldöz			felhasznalo	mondatkezdő ige, nem tulajdonnév; felszólító E/1 tárgyas + -é kérdőszócska	1Sám 30:8	
+Béth-Avenen	1	tulajdonnev	Béth-Aven	Béth-Aven			felhasznalo	helynév + -en rag („Béth-Avenen túl”)	1Sám 14:23	
 Girzeusokat	1	tulajdonnev	Girzeus	Girzeus		Girzeusok	felhasznalo	népnév többese + tárgyrag [döntés: felhasználó, 2026-10-13: a javaslat szerint — Girzeus, további elfogadható: Girzeusok (mint a Filiszteusok)]	1Sám 27:8	H1511
-szombatimat	3	ragos_nevszo	szombat	szombat			modell_ellenorizetlen	birtokos többes E/1 (régies -im) + tárgyrag	Ez 20:20	H7676+H9020
-házától	3	ragos_nevszo	ház	ház			modell_ellenorizetlen	birtokos + -tól	5Móz 24:1	H9006+H1004+H9023
-másodiknak	1	ragos_nevszo	második	második			modell_ellenorizetlen	sorszámnév + -nak	1Sám 8:2	H8034+H4932+H9023
-összehívá	1	ragos_nevszo	összehív	összehív	hív		modell_ellenorizetlen	régies múlt E/3 tárgyas; igekötős	1Sám 15:4	H8085
-hunyorgat	2	ragos_nevszo	hunyorgat	hunyorgat			modell_ellenorizetlen	jelen E/3	Péld 6:13	H7169+H9003+H5869
-hosszúságot	2	ragos_nevszo	hosszúság	hosszúság			modell_ellenorizetlen	tárgyrag	Ez 45:3	H0753
-feltámadására	2	ragos_nevszo	feltámadás	feltámadás			modell_ellenorizetlen	birtokos + -ra	Ján 5:29	
-nyelvével	2	ragos_nevszo	nyelv	nyelv			modell_ellenorizetlen	birtokos + -vel	Péld 17:20	H9003+H3956+H9023
-kezemnek	1	ragos_nevszo	kéz	kéz			modell_ellenorizetlen	birtokos E/1 + -nek; tőváltó (kez-)	5Móz 8:17	H3027+H9020
-siklusnak	1	ragos_nevszo	siklus	siklus			modell_ellenorizetlen	-nak rag	1Sám 9:8	H8255
-hívogatnak	1	ragos_nevszo	hívogat	hívogat			modell_ellenorizetlen	jelen T/3	5Móz 33:19	H7121
-atyafiaival	1	ragos_nevszo	atyafi	atyafi			modell_ellenorizetlen	birtokos többes + -val	5Móz 10:9	H5973+H0251+H9023
-egeknek	1	ragos_nevszo	ég	ég			modell_ellenorizetlen	többes + -nek; tőváltó (eg-)	5Móz 10:14	H8064
-szolgáivá	2	ragos_nevszo	szolga	szolga			modell_ellenorizetlen	birtokos többes + -vá	Róm 6:18	
-unokákat	1	ragos_nevszo	unoka	unoka			modell_ellenorizetlen	többes + tárgyrag	5Móz 4:25	H1121
-dicsőségétől	2	ragos_nevszo	dicsőség	dicsőség			modell_ellenorizetlen	birtokos + -től	Ez 43:2	H9006+H3519+H9023
-szómat	3	ragos_nevszo	szó	szó			modell_ellenorizetlen	birtokos E/1 + tárgyrag	Ján 8:43	
-megtére	2	ragos_nevszo	megtér	megtér	tér		modell_ellenorizetlen	régies múlt E/3; igekötős	1Sám 14:46	H5927
-törekesznek	1	ragos_nevszo	törekedik	törekszik			modell_ellenorizetlen	jelen T/3; a törekedik a törekszik régi alakja (DT130 (2))	1Sám 25:26	H1245
-szívűeknek	1	ragos_nevszo	szívű	szívű			modell_ellenorizetlen	melléknév főnevesült többese + -nek („a keseredett szívűeknek”)	Péld 31:6	H9005+H5315
-köntösökben	1	ragos_nevszo	köntös	köntös			modell_ellenorizetlen	többes + -ben	Mk 12:38	
-tisztátalanságodnak	1	ragos_nevszo	tisztátalanság	tisztátalanság			modell_ellenorizetlen	birtokos E/2 + -nak	Ez 22:15	H2932+H9022+H4480+H9032
-szemnek	1	ragos_nevszo	szem	szem			modell_ellenorizetlen	-nek rag	Péld 21:4	H5869
-káromlásra	1	ragos_nevszo	káromlás	káromlás			modell_ellenorizetlen	-ra rag	Jel 13:6	
-romlásra	1	ragos_nevszo	romlás	romlás			modell_ellenorizetlen	-ra rag	Péld 4:16	H3782
-vehet	1	ragos_nevszo	vehet	vehet	vesz	vesz	modell_ellenorizetlen	-het képzős ige külön szótári alak (DT130 (10)); alapige: vesz	Ján 3:27	
-kivánnak	1	ragos_nevszo	kiván	kíván			modell_ellenorizetlen	kiván = kíván (régies helyesírás); jelen T/3	Péld 10:24	H8378
+szombatimat	3	ragos_nevszo	szombat	szombat			felhasznalo	birtokos többes E/1 (régies -im) + tárgyrag	Ez 20:20	H7676+H9020
+házától	3	ragos_nevszo	ház	ház			felhasznalo	birtokos + -tól	5Móz 24:1	H9006+H1004+H9023
+másodiknak	1	ragos_nevszo	második	második			felhasznalo	sorszámnév + -nak	1Sám 8:2	H8034+H4932+H9023
+összehívá	1	ragos_nevszo	összehív	összehív	hív		felhasznalo	régies múlt E/3 tárgyas; igekötős	1Sám 15:4	H8085
+hunyorgat	2	ragos_nevszo	hunyorgat	hunyorgat			felhasznalo	jelen E/3	Péld 6:13	H7169+H9003+H5869
+hosszúságot	2	ragos_nevszo	hosszúság	hosszúság			felhasznalo	tárgyrag	Ez 45:3	H0753
+feltámadására	2	ragos_nevszo	feltámadás	feltámadás			felhasznalo	birtokos + -ra	Ján 5:29	
+nyelvével	2	ragos_nevszo	nyelv	nyelv			felhasznalo	birtokos + -vel	Péld 17:20	H9003+H3956+H9023
+kezemnek	1	ragos_nevszo	kéz	kéz			felhasznalo	birtokos E/1 + -nek; tőváltó (kez-)	5Móz 8:17	H3027+H9020
+siklusnak	1	ragos_nevszo	siklus	siklus			felhasznalo	-nak rag	1Sám 9:8	H8255
+hívogatnak	1	ragos_nevszo	hívogat	hívogat			felhasznalo	jelen T/3	5Móz 33:19	H7121
+atyafiaival	1	ragos_nevszo	atyafi	atyafi			felhasznalo	birtokos többes + -val	5Móz 10:9	H5973+H0251+H9023
+egeknek	1	ragos_nevszo	ég	ég			felhasznalo	többes + -nek; tőváltó (eg-)	5Móz 10:14	H8064
+szolgáivá	2	ragos_nevszo	szolga	szolga			felhasznalo	birtokos többes + -vá	Róm 6:18	
+unokákat	1	ragos_nevszo	unoka	unoka			felhasznalo	többes + tárgyrag	5Móz 4:25	H1121
+dicsőségétől	2	ragos_nevszo	dicsőség	dicsőség			felhasznalo	birtokos + -től	Ez 43:2	H9006+H3519+H9023
+szómat	3	ragos_nevszo	szó	szó			felhasznalo	birtokos E/1 + tárgyrag	Ján 8:43	
+megtére	2	ragos_nevszo	megtér	megtér	tér		felhasznalo	régies múlt E/3; igekötős	1Sám 14:46	H5927
+törekesznek	1	ragos_nevszo	törekedik	törekszik			felhasznalo	jelen T/3; a törekedik a törekszik régi alakja (DT130 (2))	1Sám 25:26	H1245
+szívűeknek	1	ragos_nevszo	szívű	szívű			felhasznalo	melléknév főnevesült többese + -nek („a keseredett szívűeknek”)	Péld 31:6	H9005+H5315
+köntösökben	1	ragos_nevszo	köntös	köntös			felhasznalo	többes + -ben	Mk 12:38	
+tisztátalanságodnak	1	ragos_nevszo	tisztátalanság	tisztátalanság			felhasznalo	birtokos E/2 + -nak	Ez 22:15	H2932+H9022+H4480+H9032
+szemnek	1	ragos_nevszo	szem	szem			felhasznalo	-nek rag	Péld 21:4	H5869
+káromlásra	1	ragos_nevszo	káromlás	káromlás			felhasznalo	-ra rag	Jel 13:6	
+romlásra	1	ragos_nevszo	romlás	romlás			felhasznalo	-ra rag	Péld 4:16	H3782
+vehet	1	ragos_nevszo	vehet	vehet	vesz	vesz	felhasznalo	-het képzős ige külön szótári alak (DT130 (10)); alapige: vesz	Ján 3:27	
+kivánnak	1	ragos_nevszo	kiván	kíván			felhasznalo	kiván = kíván (régies helyesírás); jelen T/3	Péld 10:24	H8378
 mikre	1	ragos_nevszo	mi	ami			felhasznalo	vonatkozó névmás többes + -re („a mikre” = amikre); mai alakja ami (DT130 (2)) [döntés: felhasználó, 2026-10-13: szótári alak mi, mai ami (vonatkozó olvasat, Ján 13:29); a tovabbi_elfogadhato (mi) ürítve, mert azonos a szótári alakkal]	Ján 13:29	
-tisztátalannak	1	ragos_nevszo	tisztátalan	tisztátalan			modell_ellenorizetlen	-nak rag	Róm 14:14	
-betegségben	1	ragos_nevszo	betegség	betegség			modell_ellenorizetlen	-ben rag	Ján 5:4	
-szegénységet	1	ragos_nevszo	szegénység	szegénység			modell_ellenorizetlen	tárgyrag	Péld 30:8	H7389
-felingereltessenek	1	regies_ige	felingereltetik	felingereltetik	ingerel	ingerel	felhasznalo	szenvedő (-tetik) felszólító T/3 („hogy ők felingereltessenek”); külön szótári alak (DT130 (10)); igekötős [döntés: felhasználó, 2026-10-13: szenvedő olvasat, a javaslat szerint — felingereltetik, alapige ingerel; a kategória ragos_nevszo → regies_ige]	Róm 11:11	
-keresztülszúrjanak	1	ragos_nevszo	keresztülszúr	keresztülszúr	szúr		modell_ellenorizetlen	felszólító T/3; igekötős	1Sám 31:4	H1856
-múlnak	1	ragos_nevszo	múlik	múlik			modell_ellenorizetlen	jelen T/3; az igekötő külön áll („el nem múlnak”)	Mk 13:31	
-űzzenek	1	ragos_nevszo	űz	űz			modell_ellenorizetlen	felszólító T/3 („gúnyt űzzenek”)	1Sám 31:4	H5953
-dolgotok	1	ige_mai_alak	dolog	dolog			modell_ellenorizetlen	birtokos T/2; tőváltó (dolg-)	5Móz 5:33	H9005+H9036
-jóakaratja	3	ige_mai_alak	jóakarat	jóakarat			modell_ellenorizetlen	birtokos	Péld 14:35	H7522
-várja	2	ige_mai_alak	vár	vár			modell_ellenorizetlen	jelen E/3 tárgyas	Mk 15:43	
+tisztátalannak	1	ragos_nevszo	tisztátalan	tisztátalan			felhasznalo	-nak rag	Róm 14:14	
+betegségben	1	ragos_nevszo	betegség	betegség			felhasznalo	-ben rag	Ján 5:4	
+szegénységet	1	ragos_nevszo	szegénység	szegénység			felhasznalo	tárgyrag	Péld 30:8	H7389
+felingereltessenek	1	ragos_nevszo	felingereltetik	felingereltetik	ingerel	ingerel	felhasznalo	szenvedő (-tetik) felszólító T/3 („hogy ők felingereltessenek”); külön szótári alak (DT130 (10)); igekötős [döntés: felhasználó, 2026-10-13: szenvedő olvasat, a javaslat szerint — felingereltetik, alapige ingerel; a kategória a mintavételi réteg (ragos_nevszo) marad: a korábbi regies_ige-átsorolás visszavonva]	Róm 11:11	
+keresztülszúrjanak	1	ragos_nevszo	keresztülszúr	keresztülszúr	szúr		felhasznalo	felszólító T/3; igekötős	1Sám 31:4	H1856
+múlnak	1	ragos_nevszo	múlik	múlik			felhasznalo	jelen T/3; az igekötő külön áll („el nem múlnak”)	Mk 13:31	
+űzzenek	1	ragos_nevszo	űz	űz			felhasznalo	felszólító T/3 („gúnyt űzzenek”)	1Sám 31:4	H5953
+dolgotok	1	ige_mai_alak	dolog	dolog			felhasznalo	birtokos T/2; tőváltó (dolg-)	5Móz 5:33	H9005+H9036
+jóakaratja	3	ige_mai_alak	jóakarat	jóakarat			felhasznalo	birtokos	Péld 14:35	H7522
+várja	2	ige_mai_alak	vár	vár			felhasznalo	jelen E/3 tárgyas	Mk 15:43	
 bízott	3	ige_mai_alak	bíz	bíz		bízik	felhasznalo	múlt E/3; itt tárgyas „rábíz” jelentés („bízott reám valamit”) [döntés: felhasználó, 2026-10-13: a javaslat szerint — bíz, további elfogadható bízik (H6680, „rábíz” olvasat)]	1Sám 21:2	H6680
-dicsekedünk	3	ige_mai_alak	dicsekedik	dicsekszik			modell_ellenorizetlen	jelen T/1; a dicsekedik a dicsekszik régi alakja (DT130 (2))	Róm 5:2	
-látják	11	ige_mai_alak	lát	lát			modell_ellenorizetlen	jelen T/3 tárgyas	Mk 6:50	
-felállának	1	ige_mai_alak	feláll	feláll	áll		modell_ellenorizetlen	régies múlt T/3; igekötős	5Móz 31:14	H3320
-szegénységök	1	ige_mai_alak	szegénység	szegénység			modell_ellenorizetlen	birtokos T/3, régies -ök (= -ük)	Péld 10:15	H7389+H9028
-ehetének	1	ige_mai_alak	ehet	ehet	eszik	eszik	modell_ellenorizetlen	-het képzős ige külön szótári alak, régies múlt T/3 (DT130 (10)); alapige: eszik	Mk 3:20	
-öltek	1	ige_mai_alak	öl	öl			modell_ellenorizetlen	múlt T/3 („senkit sem öltek meg”)	1Sám 30:2	H4191
-nyiratkoznak	1	ige_mai_alak	nyiratkozik	nyiratkozik			modell_ellenorizetlen	jelen T/3	Ez 27:31	H7139
-kioltani	1	ige_mai_alak	kiolt	kiolt	olt		modell_ellenorizetlen	főnévi igenév; igekötős	Mk 3:4	
-építeni	1	ige_mai_alak	épít	épít			modell_ellenorizetlen	főnévi igenév	Ez 11:3	H1129
+dicsekedünk	3	ige_mai_alak	dicsekedik	dicsekszik			felhasznalo	jelen T/1; a dicsekedik a dicsekszik régi alakja (DT130 (2))	Róm 5:2	
+látják	11	ige_mai_alak	lát	lát			felhasznalo	jelen T/3 tárgyas	Mk 6:50	
+felállának	1	ige_mai_alak	feláll	feláll	áll		felhasznalo	régies múlt T/3; igekötős	5Móz 31:14	H3320
+szegénységök	1	ige_mai_alak	szegénység	szegénység			felhasznalo	birtokos T/3, régies -ök (= -ük)	Péld 10:15	H7389+H9028
+ehetének	1	ige_mai_alak	ehet	ehet	eszik	eszik	felhasznalo	-het képzős ige külön szótári alak, régies múlt T/3 (DT130 (10)); alapige: eszik	Mk 3:20	
+öltek	1	ige_mai_alak	öl	öl			felhasznalo	múlt T/3 („senkit sem öltek meg”)	1Sám 30:2	H4191
+nyiratkoznak	1	ige_mai_alak	nyiratkozik	nyiratkozik			felhasznalo	jelen T/3	Ez 27:31	H7139
+kioltani	1	ige_mai_alak	kiolt	kiolt	olt		felhasznalo	főnévi igenév; igekötős	Mk 3:4	
+építeni	1	ige_mai_alak	épít	épít			felhasznalo	főnévi igenév	Ez 11:3	H1129

@@ -762,3 +762,24 @@ Mindhárom átsorolt szabály a 70%-os küszöb közelében (65–72%) volt; az 
 *A felhasználó döntése (2026-10-13):* a DT-F94c döntő száma a 4. mintán **a K tábla alakjai nélküli** M1 (alakonként és súlyozva), nem kiegészítő szám; a fejlesztés közben látott négy alak (*többé, tartózkodék, szombatimat, tévelyedjék*) nélküli szám is a naplóba kerül. A `meres.py --fuggetlen` mindhárom halmazt kiírja: (1) a K tábla alakjai nélkül — **döntő**; (2) a K tábla alakjai és a látott alakok nélkül; (3) minden sor (tájékoztató). A mérés a `--csak-felhasznalo` kapcsolóval, a felhasználó átnézése után fut.
 
 **Figyelem (manual, a kód próbája a 3. mintán):** a K tábla alakjai nélküli halmazon a C+K **szükségszerűen azonos a C-vel**, mert a K tábla csak a saját alakjaira hat (a 3. mintán: K nélkül C = C+K = 73% / 92,3%, 90 alak). A döntő szám tehát az A (simplemmával) és a C (simplemma és K nélkül) összevetése a nem-K sorokon; a K tábla hozzájárulása csak a K-sorokon mérhető, azokat pedig a mintával együtt ugyanaz a modell írta, ezért ott a független ellenőrzés a felhasználó soronkénti átnézése.
+
+
+## 14. A felhasználói átnézés alkalmazása, megfigyelések (F94.3, 2026-10-13)
+
+*proveniencia: scope=a 4. minta 113 sora és a K tábla 400 sora | forras=felhasználói átnézés, áttekintő oldal (https://claude.ai/artifact/PvJ8YFw3y561Nku1xwBdkr), 2026-10-13 | ts=2026-10-13T15:10Z*
+
+- **4. minta:** mind a 113 sor `ellenorzes=felhasznalo` (`minta4_javit.py`, idempotens); a 106 sor változatlan, a 7 korábban eldöntött sor marad. A *felingereltessenek* kategóriája visszakerült a mintavételi rétegre (`ragos_nevszo`): a rétegek 25 / 35 / 20 / 12 / 13 / 8, a mintavétel szerint. A 13.1-ben listázott 18 sor elemzés szerinti rétege csak ott, a naplóban szerepel (külön oszlop nincs).
+- **K tábla:** mind a 400 sor `ellenorzes=felhasznalo` (`k_tabla_epit.py --felhasznalo-atnezte …`, a proveniencia-sor a fájlban); két sor változott a `JAVASLAT`-ban: *mit* (rang 55) és *miket* (rang 366) `tovabbi_elfogadhato = ami` (a Károli „a mit” szerkezetében vonatkozó névmás). A felhasználó külön megvizsgálta és a javaslat mellett hagyta: *vala/valának → van*, *monda → mond*, *ki* (további: aki), *vagy* (további: van).
+- **A *vagy* a repó párosításában** (`adat/karoli_strong/parok_*.tsv`, a parok-fájlok együttes sha256-ja `bb482963c328`; modell-kimenet, javaslat): 603 párosított *vagy*-token. Kötőszói Strong: kb. 483 (H0176 263, H9002 118, H0518 43, G2228 35, H0518+H9002 9, H9001 6, H3588+H9002 3, H2006 3, G2532 2, H5704+H9002 1); kérdő partikula (H9008): 5; **létige-olvasat** kb. 77 — főként a névszói mondat névmási alanyán (H0859 50, H0859+H8033 1, H1931 11, H1932 3, H9031 2, H9021 1), igei Stronggal (H1961 4, G1510 5); egyéb 12 (H9042 4, H9005 2, H3302 2, H1819 2, H0413 1, H9041 1); a maradék 26 token ritka kombináció. A felhasználó becslése (kb. 480 / 64) nagyságrendben egyezik; a létige-olvasat a pontosabb számlálással 77.
+- **N-F94f (új nyitott tétel, megfigyelés, javítás nélkül): a különírt vonatkozó névmás.** A Károli a vonatkozó névmást többnyire két szóban írja („a ki”, „a mely”, „a mit”); a tövezés alakonként megy, ezért a különírt *a* névelőként kap szótári alakot, holott a vonatkozó névmás (aki, amely, ami) része, és az *amely*-re keresve az *a* token nem jelenik meg. Gyakoriság (`eszkozok/szoto/kulonirt_vonatkozo.py`, heurisztika, manual):
+
+| család | különírt („a” + névmás), felső | alsó (a „mi” birtokos nélkül) | egybeírt (aki-, amely-, ami-) | példa |
+|---|---|---|---|---|
+| ki- | 5282 | 5282 | 17 | 1Móz 2:8 „a kit” |
+| mely- | 1565 | 1565 | 11 | 1Móz 1:6 „a mely” |
+| mi- | 1987 | 1425 | 8 | 1Móz 1:26 „a mi” |
+| **összesen** | **8834** | **8272** | **36** | |
+
+scope=OT+NT-full | forras=konkordancia/Karoli_1908.tsv (sha256:49335bbcc77d) + eszkozok/szoto/kulonirt_vonatkozo.py (heurisztika, manual megfigyelés) | ts=2026-10-13T15:15Z
+
+  A „ki” családban a felső becslés kevés igekötői *ki*-t is tartalmazhat („a ki…” igekötő + ige ritka). Rokona: N-F94d (hátravetett igekötő), N-F94a (különálló igekötő).

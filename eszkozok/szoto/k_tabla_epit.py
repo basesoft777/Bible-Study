@@ -73,7 +73,8 @@ JAVASLAT = {
     'kik': J('ki', 'aki', tov='ki', ind=_VONATK), 'kinek': J('ki', 'aki', tov='ki', ind=_VONATK),
     'kit': J('ki', 'aki', tov='ki', ind=_VONATK), 'kiket': J('ki', 'aki', tov='ki', ind=_VONATK),
     'kiknek': J('ki', 'aki', tov='ki', ind=_VONATK),
-    'mit': J('mi', ind='kérdő/vonatkozó névmás tárgyesete'), 'miket': J('mi', ind='kérdő/vonatkozó névmás tárgyesete, többes'),
+    'mit': J('mi', tov='ami', ind='kérdő/vonatkozó névmás tárgyesete; a Károli „a mit” szerkezetében vonatkozó névmás, mai alakja amit (felhasználó, 2026-10-13)'),
+    'miket': J('mi', tov='ami', ind='kérdő/vonatkozó névmás tárgyesete, többes; vonatkozó olvasatban mai alakja amiket (felhasználó, 2026-10-13)'),
     'mely': J('mely', 'amely', ind=_MELY), 'melyet': J('mely', 'amely', ind=_MELY), 'melyeket': J('mely', 'amely', ind=_MELY),
     'melyek': J('mely', 'amely', ind=_MELY), 'melyen': J('mely', 'amely', ind=_MELY),
     'melylyel': J('mely', 'amely', ind=_MELY + '; régies helyesírás (lyly = lly)'),
@@ -167,6 +168,9 @@ def main():
     ap.add_argument('--n', type=int, default=400)
     ap.add_argument('--ts', default=datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%MZ'))
     ap.add_argument('--lista', action='store_true', help='csak az önmagára leképezett alakok listája (átnézéshez)')
+    ap.add_argument('--felhasznalo-atnezte', metavar='PROVENIENCIA',
+                    help='a felhasználó mind a sorokat átnézte: minden sor ellenorzes=felhasznalo, ezzel a proveniencia-sorral '
+                         '(csak a felhasználó kifejezett döntése alapján; a modell magától soha)')
     a = ap.parse_args()
     f = collections.Counter()
     for l in open(LEX, encoding='utf-8'):
@@ -184,7 +188,10 @@ def main():
     h = hashlib.sha256(open(LEX, 'rb').read()).hexdigest()
     # a felhasználó által már kitöltött `ellenorzes` megmarad, ha a sor szótári alakja nem változott
     regi = {}
+    regi_prov = []
     if os.path.exists(KI):
+        regi_prov = [s[len('# ellenorzes-proveniencia: '):] for s in open(KI, encoding='utf-8').read().split('\n')
+                     if s.startswith('# ellenorzes-proveniencia: ')]
         sorok = [s for s in open(KI, encoding='utf-8').read().split('\n') if s and not s.startswith('#')]
         fej = sorok[0].split('\t')
         for s in sorok[1:]:
@@ -195,15 +202,18 @@ def main():
                 f'{sum(f.values())} tokenjének {100 * sum(n for _, n in rend) / sum(f.values()):.1f}%-a) | forras=adat/szoto/karoli_lexikon.tsv '
                 f'(sha256:{h[:12]}; a kiválasztás) + manual (a szótári alak modell-javaslat a DT130 szerint, modell: claude-opus-5-5, '
                 f'a simplemma és a hibrid kimenete nélkül) | ts={a.ts}\n')
-        o.write('# allapot: ellenorzes=modell_ellenorizetlen minden sorban; felhasznalo csak a felhasználó átnézése után (F94.3 ⛔). '
-                'A szótári alak kézi forrása az eszkozok/szoto/k_tabla_epit.py JAVASLAT szótára (javítás ott); az ellenorzes oszlopot '
-                'a felhasználó itt tölti, az újraépítés megtartja, ha a sor szótári alakja nem változott (DT-F94c, SEMA 2.27)\n')
+        prov_e = a.felhasznalo_atnezte or (regi_prov[0] if regi_prov else '')
+        o.write('# allapot: ellenorzes soronként: felhasznalo, ha a felhasználó átnézte (l. ellenorzes-proveniencia), különben '
+                'modell_ellenorizetlen. A szótári alak kézi forrása az eszkozok/szoto/k_tabla_epit.py JAVASLAT szótára (javítás ott); az ellenorzes oszlopot '
+                'a felhasználó tölti, az újraépítés megtartja, ha a sor szótári alakja nem változott (DT-F94c, SEMA 2.27)\n')
+        if prov_e:
+            o.write('# ellenorzes-proveniencia: ' + prov_e + '\n')
         o.write('\t'.join(OSZLOP) + '\n')
         for i, (w, n) in enumerate(rend, 1):
             sz, mai, apg, tov, ind = JAVASLAT.get(w, (w, w, '', '', 'önálló szótári alak'))
-            ell = 'modell_ellenorizetlen'
+            ell = 'felhasznalo' if a.felhasznalo_atnezte else 'modell_ellenorizetlen'
             r = regi.get(w)
-            if r and (r['szotari_alak'], r['szotari_alak_mai'], r['alapige'], r['tovabbi_elfogadhato']) == (sz, mai, apg, tov):
+            if not a.felhasznalo_atnezte and r and (r['szotari_alak'], r['szotari_alak_mai'], r['alapige'], r['tovabbi_elfogadhato']) == (sz, mai, apg, tov):
                 ell = r['ellenorzes']
             o.write('\t'.join([str(i), w, str(n), sz, mai, apg, tov, ell, ind]) + '\n')
     print(f'{KI}: {len(rend)} sor, ebből {sum(1 for w, _ in rend if w in JAVASLAT)} nem önmagára leképezett')
