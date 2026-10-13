@@ -6,12 +6,14 @@ tipus: feladat
 fazis: 1
 munka: adat
 modell: sonnet
-allapot: fut
+allapot: lezarva
 ag: claude/f89-licenc-rendezes
 ad: jogfenntartó LICENSE a repó gyökerében (a saját adat és a próza minden jog fenntartva, a harmadik fél adata a licencek.tsv szerint); a licencek.tsv projekt_adat sora tisztazott, új sorok a karoli_strong/* és karoli_variancia számára, a projekt_adat-on múló sorok újraértékelve; a sqlite_epit.py SZARMAZTATOTT_LICENC cseréje és táblaszintű licenc (tabla_licenc), a méret újramérve (a #86 N-F86b bemenete)
-kovetkezo: "fuggetlen-ellenor, majd zárás; DT-F89b eldöntve (2.: a lexikon nem generálódik újra, külön feladat)"
+kovetkezo: "—"
 olvas: [DONTESEK.md, NYITOTT_FELADATOK.md, adat/SEMA.md, adat/licencek.tsv, adat/datasetek.tsv, eszkozok/sqlite_epit.py, eszkozok/lexikon_general.py, eszkozok/general.py, eszkozok/igazolas_migracio.py, naplok/SQLITE_EPIT_meres.md, Rendszerfejlesztesi_playbook.md]
 ir: [LICENSE, adat/licencek.tsv, adat/SEMA.md, eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, naplok/SQLITE_EPIT_meres.md, NYITOTT_FELADATOK.md, lexikon/]
+pr: PRSZAM
+lezarva_osszegzes: "LICENSE (minden jog fenntartva), licencek.tsv rendezve, pardes.db táblaszintű licenc (878,9→619,0 MB); lexikon-újragenerálás külön (N-F89a); DT116, DT113, DT-F89a/b"
 fugg: [79]
 ---
 
