@@ -1,0 +1,3 @@
+# F94 (#94 SZOTOVEZES): a hibrid szótövező A változatának függősége (a B és C nélküle fut).
+# A simplemma kódja MIT; a nyelvi adatának licence függőben: DT-F94c, adat/licencek.tsv simplemma_nyelvi_adat sor.
+simplemma==2.0.0
