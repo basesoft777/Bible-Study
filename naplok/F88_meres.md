@@ -1,6 +1,6 @@
 # F88 — a TIPNR Strong-normalizálás mérése (DT111)
 
-*Proveniencia: `scope=manual | forras=eszkozok/sqlite_epit.py (--mod teljes), a kész pardes.db lekérdezése | ts=2026-10-13`. Külön napló: az `sqlite_epit.py --naplo` futása nem írja felül. A teljes építés generált mérése: `naplok/SQLITE_EPIT_meres.md`.*
+*Proveniencia: `scope=manual | forras=eszkozok/sqlite_epit.py (--mod teljes --ketszer --meret --naplo), a kész pardes.db lekérdezése | ts=2026-10-13`. A hash-egyezés a `--ketszer`, a táblaméret a `--meret` futásból. Független újramérés (F88.9): `naplok/ELLENOR_F88_2.md` — a számok egyeznek. Külön napló: az `sqlite_epit.py --naplo` futása nem írja felül. A teljes építés generált mérése: `naplok/SQLITE_EPIT_meres.md`.*
 
 | mutató | F79 (előtte) | F88 (utána) |
 |---|---:|---:|

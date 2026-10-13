@@ -172,4 +172,3 @@ Mérés: minden tábla (indexeivel) külön adatbázisba másolva, lapszám × l
 - FTS: 50 fájl, 624 rovat; átmeneti régi tanulmányok `regi_forras=1`; a #11 `migralt: igen` jelzője miatt kiesett: nincs (a jelző még nem létezik)
 - Szándékosan nem betöltött konkordancia-táblák: Macula_heber_*/Macula_gorog, LXX_OS/*, KJV_/ASV_Strongs_{Genesis,Exodus,Proverbs} (a #48 vezeti ki; a KJV_Strongs_teljes betöltve), a BDB_*/aram/alias segédtáblák, SDBH_SDGNT_domenfa, a versmegfeleltetési segédtáblák; a licencsor hiánya miatt kimaradt táblák száma: 0
 
-*A TIPNR Strong-normalizálás (F88, DT111) előtte/utána mérése külön, nem felülírt naplóban áll: `naplok/F88_meres.md`.*

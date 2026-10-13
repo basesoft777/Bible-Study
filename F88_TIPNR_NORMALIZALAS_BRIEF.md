@@ -13,7 +13,7 @@ kovetkezo: "—"
 pr: 322
 lezarva_osszegzes: "pardes.db tipnr.strong = alapszám, új utotag oszlop, NULL 47,7% → 0%; G6202 a jelentésben; 6 új teszt; DT111, N-F79c lezárva"
 olvas: [DONTESEK.md, NYITOTT_FELADATOK.md, adat/SEMA.md, eszkozok/strong_util.py, eszkozok/sqlite_epit.py, konkordancia/TIPNR_kivonat.tsv, naplok/SQLITE_EPIT_meres.md]
-ir: [eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, adat/SEMA.md, naplok/SQLITE_EPIT_meres.md, NYITOTT_FELADATOK.md]
+ir: [eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, adat/SEMA.md, naplok/SQLITE_EPIT_meres.md, naplok/F88_meres.md, naplok/F88_zaras.md, naplok/ELLENOR_F88.md, naplok/ELLENOR_F88_2.md, NYITOTT_FELADATOK.md]
 fugg: [79]
 ---
 
@@ -48,8 +48,9 @@ jelentésváltozatot. A cél: a `strong` oszlop az **alapszámot** hordozza, íg
 - `adat/SEMA.md` 1.2: egy bekezdés a TIPNR-utótagról (mi a nagy- és a kisbetűs utótag, a
   `pardes.db` betöltője levágja, a teljes érték a `strong_nyers`-ben, az utótag az `utotag`-ban).
 - `eszkozok/teszt_sqlite_epit.py`: tesztek (4. pont, G3).
-- Teljes újraépítés és mérés a `naplok/SQLITE_EPIT_meres.md`-ben (a `tipnr` sorai, a NULL-arány
-  előtte/utána, a táblaméret).
+- Teljes újraépítés és mérés a `naplok/F88_meres.md`-ben (a `tipnr` sorai, a NULL-arány
+  előtte/utána, a táblaméret). *(F88.6: eredetileg a `naplok/SQLITE_EPIT_meres.md`-ben, de az
+  generált napló, a következő `--naplo` futás felülírná — ezért külön fájl.)*
 
 **Nincs benne**
 
