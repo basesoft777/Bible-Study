@@ -346,3 +346,7 @@ Az 1–2. minta 393 sorából **83** sor `strong` mezője tér el a repó páros
 | 2 | Dávid | Ézs 55:3 | H9005+H1732 | H1732 | #16 parositva H1732 (alacsony) |
 
 scope=adat/szoto/szoto_minta_1_fejlesztes.tsv + szoto_minta_2_fejlesztes.tsv, a pelda_igehely verse | forras=eszkozok/szoto/minta_strong.py + szavak_1Moz.tsv sha256:e62bba953842, szavak_Zsolt.tsv sha256:3eb9085ae600, szavak_Ezs.tsv sha256:d77853e2f34d (modell-kimenet, javaslat) | ts=2026-10-13T12:26Z
+
+### 6.2 Átírva
+
+A `minta_strong.py --ir` a 83 eltérő `strong` mezőt átírta (más mező nem változott; a fájlok fejlécében `# strong:` proveniencia-sor). Utána a lista 0 eltérést ad.
