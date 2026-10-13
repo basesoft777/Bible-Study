@@ -250,6 +250,33 @@ class Normalizalas(unittest.TestCase):
         self.assertIsNone(S.hu_igehely_parse('nem igehely'))
 
 
+class TipnrUtotag(unittest.TestCase):
+    """F88 (DT111): a TIPNR-betöltő utótag-szabálya, G3 (a)-(e)."""
+
+    def test_nagybetus_utotag(self):
+        self.assertEqual(S.tipnr_strong_szetvalaszt('G2424G'), ('G2424', 'G'))
+        self.assertEqual(S.tipnr_strong_szetvalaszt('H3063N'), ('H3063', 'N'))
+
+    def test_kisbetus_utotag(self):
+        self.assertEqual(S.tipnr_strong_szetvalaszt('H5838z'), ('H5838', 'z'))
+
+    def test_utotag_nelkuli_valtozatlan(self):
+        self.assertEqual(S.tipnr_strong_szetvalaszt('H0175'), ('H0175', ''))
+        self.assertEqual(S.tipnr_strong_szetvalaszt('H175'), ('H0175', ''))
+
+    def test_nem_ertelmezheto_valueerror(self):
+        for rossz in ('—', '', 'X123G', 'G2424G+H0001', 'G0000G', 'H12345A'):
+            with self.assertRaises(ValueError, msg=rossz):
+                S.tipnr_strong_szetvalaszt(rossz)
+
+    def test_strong_util_tilt_tovabbra_is_elutasit(self):
+        import strong_util as SU
+        with self.assertRaises(ValueError):
+            SU.strong_normalizal('G2424G')
+        with self.assertRaises(ValueError):
+            SU.strong_normalizal('H5838z')
+
+
 class Integracio(unittest.TestCase):
     """A kis minta ketszeri epitese (G2), licenc-oszlopok (G6), normalizalas, idezojelek."""
 
@@ -298,6 +325,29 @@ class Integracio(unittest.TestCase):
         self.assertGreater(n, 0)
         for t in ('kh', 'tipnr'):
             self.assertEqual(self.con.execute("SELECT COUNT(*) FROM %s WHERE igehely LIKE 'JSir%%'" % t).fetchone()[0], 0)
+
+    def test_tipnr_utotag_oszlopok(self):
+        """G3 (a)-(c) az épített mintán; (d) a megmaradt NULL név szerint a jelentésben."""
+        sorok = self.con.execute("SELECT strong, utotag, strong_nyers FROM tipnr").fetchall()
+        self.assertTrue(sorok)
+        van_utotagos = van_nelkuli = False
+        for s, u, ny in sorok:
+            if s is None:
+                continue
+            self.assertEqual(s + (u or ''), S.strong_normalizal(ny[:-1]) + ny[-1] if u else S.strong_normalizal(ny))
+            if u:
+                van_utotagos = True
+                self.assertTrue(ny.endswith(u) and ny != s)
+            else:
+                van_nelkuli = True
+                self.assertEqual(s, S.strong_normalizal(ny))
+        self.assertTrue(van_utotagos and van_nelkuli)
+        r = self.con.execute("SELECT strong, utotag, strong_nyers FROM tipnr WHERE strong_nyers='H0040G' LIMIT 1").fetchone()
+        self.assertEqual(r, ('H0040', 'G', 'H0040G'))
+        null_sor = self.con.execute("SELECT COUNT(*) FROM tipnr WHERE strong IS NULL").fetchone()[0]
+        jelentes = self.con.execute("SELECT COALESCE(SUM(darab),0) FROM normalizalas_jelentes "
+                                    "WHERE tabla='tipnr' AND ok='Strong-szám nem normalizálható'").fetchone()[0]
+        self.assertEqual(null_sor, jelentes)
 
     def test_nem_lekepezheto_a_jelentesben(self):
         r = self.con.execute("SELECT darab FROM normalizalas_jelentes WHERE tabla='tipnr' "
