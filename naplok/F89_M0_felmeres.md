@@ -64,7 +64,7 @@ All rights reserved.
 Ez a nyilatkozat leltár, nem jogi vélemény.
 ```
 
-## 4. Javaslat és nyitott kérdések (DT-F89a, helyőrző; a DONTESEK.md-be nem írtam, mert a brief D1–D3-at már nevesíti)
+## 4. Javaslat és nyitott kérdések (DT131, helyőrző; a DONTESEK.md-be nem írtam, mert a brief D1–D3-at már nevesíti)
 
 - **D1 (felhasználó):** a `LICENSE` szövege (a fenti tervezet jó-e, fájlkörönként bontva) és a **jogtulajdonos neve + éve + kapcsolat**. Név nélkül nem írom meg a fájlt.
 - **D2 (felhasználó):** új zárt `cimke`-érték `minden jog fenntartva`, a `projekt-adat` kivétel megszűnik (javaslat). Alternatíva: a `projekt-adat` címke marad, csak a licenc-szöveg változik (kisebb diff, de a címke nem mondja ki a jogállást). Hatás: a 8 lexikonfájl újragenerálása.
@@ -76,11 +76,11 @@ Ez a nyilatkozat leltár, nem jogi vélemény.
 
 ## 5. M1–M4 végrehajtás: igazolások és eltérések (F89.2–F89.5)
 
-*Proveniencia: `scope=repó (F89 worktree) | forras=adat/licencek.tsv (split('\t')), eszkozok/general.py --cel lexikon, eszkozok/sqlite_epit.py --mod teljes | ts=2026-10-13`. A D1–D3 döntés: DT-F89a (felhasználó, 2026-10-13).*
+*Proveniencia: `scope=repó (F89 worktree) | forras=adat/licencek.tsv (split('\t')), eszkozok/general.py --cel lexikon, eszkozok/sqlite_epit.py --mod teljes | ts=2026-10-13`. A D1–D3 döntés: DT131 (felhasználó, 2026-10-13).*
 
 **G1 (soronkénti összevetés, `licencek.tsv`).** Az írás előtt a szkript minden sort összevetett az eredetivel (`split('\t')`/`'\t'.join()`, `csv` nélkül, 10 mező ellenőrizve). Változott pontosan 4 sor: `projekt_adat`, `Karoli_Strong_kivonat`, `LXX_versszintu_parok`, `Karoli_versmegfeleltetes`; hozzáadva 3 sor: `Karoli_Strong_parok`, `Karoli_Strong_szavak`, `karoli_variancia`. A többi sor és a fejlécsorok bájtra azonosak.
 
-**G2.** A `projekt_adat`: `tisztazott`, `kereskedelmi=igen`, `share_alike=nem`, `cimke=minden jog fenntartva`, `forras_hely` = a `LICENSE` 1. sora + DT-F89a. A három új sor minden mezője kitöltött, a `kotelezo_megjeloles` szó szerint a TAHOT/TAGNT sor megjelölése ("Data created by www.STEPBible.org based on work at Tyndale House Cambridge (CC BY 4.0)").
+**G2.** A `projekt_adat`: `tisztazott`, `kereskedelmi=igen`, `share_alike=nem`, `cimke=minden jog fenntartva`, `forras_hely` = a `LICENSE` 1. sora + DT131. A három új sor minden mezője kitöltött, a `kotelezo_megjeloles` szó szerint a TAHOT/TAGNT sor megjelölése ("Data created by www.STEPBible.org based on work at Tyndale House Cambridge (CC BY 4.0)").
 
 **K3 (újraértékelt sorok).** A `Karoli_Strong_kivonat`, `LXX_versszintu_parok`, `Karoli_versmegfeleltetes` mindhárom `tisztazott` lett: a projekt_adat sor `tisztazott`, a komponensek sorai (Karoli_1908 közkincs, Strong_szotar/LXX_OS/TAHOT `tisztazott`; a verse_pairs a LXX_OS sor szerint, a TVTMS-rész a Versifikacios_tablak sor szerint) szó szerinti idézetet hordoznak, és a `forras_hely` ezekre mutat. A `cimke` mindháromnál `minden jog fenntartva` (a saját rész jogállása; a harmadik fél komponensek a `licenc` oszlopban és a komponens-sorokban); ez a SEMA 2.19 `cimke`-szabályába beírva. Ha az orkesztrátor a vegyes sorokra CC BY 4.0 címkét szán, az a három sor `cimke` mezőjének átírása és a lexikon újragenerálása.
 

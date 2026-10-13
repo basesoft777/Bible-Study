@@ -13,7 +13,7 @@ kovetkezo: "—"
 olvas: [DONTESEK.md, NYITOTT_FELADATOK.md, adat/SEMA.md, adat/licencek.tsv, adat/datasetek.tsv, eszkozok/sqlite_epit.py, eszkozok/lexikon_general.py, eszkozok/general.py, eszkozok/igazolas_migracio.py, naplok/SQLITE_EPIT_meres.md, Rendszerfejlesztesi_playbook.md]
 ir: [LICENSE, adat/licencek.tsv, adat/SEMA.md, eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, naplok/SQLITE_EPIT_meres.md, NYITOTT_FELADATOK.md, lexikon/]
 pr: 332
-lezarva_osszegzes: "LICENSE (minden jog fenntartva), licencek.tsv rendezve, pardes.db táblaszintű licenc (878,9→619,0 MB); lexikon-újragenerálás külön (N-F89a); DT116, DT113, DT-F89a/b"
+lezarva_osszegzes: "LICENSE (minden jog fenntartva), licencek.tsv rendezve, pardes.db táblaszintű licenc (878,9→619,0 MB); lexikon-újragenerálás külön (N-F89a); DT116, DT113, DT131/b"
 fugg: [79]
 ---
 
@@ -133,7 +133,7 @@ ellenőrzött párosítás szerzői jogi védelme.
 | DT112 | A projekt saját adatának licence (CC BY 4.0) | — | felülírva a DT-F89a-val (felhasználó, 2026.10.12) |
 | DT116 | A projekt saját adatának jogai | minden jog fenntartva (adat és próza); a harmadik fél adata a saját sora szerint; a CC BY-SA és az MCGED nem kerülhet zárt csomagba | eldöntve (felhasználó, 2026.10.12) |
 | DT113 | Licenc soronként vagy táblánként | táblaszintű (`tabla_licenc`), a DT-F89a-val egy menetben | eldöntve (felhasználó, 2026.10.12) |
-| D1 | A `LICENSE` szövege és a jogtulajdonos neve (Demeter Tamás, 2026; kapcsolat nincs kiírva) | rövid jogfenntartó nyilatkozat fájlkörönként, a harmadik fél adatára a `licencek.tsv`-re utalva; a név a felhasználótól | eldöntve a javaslat szerint (felhasználó, 2026.10.13; DT-F89a) |
-| D2 | A címke | új zárt `cimke`-érték: `minden jog fenntartva` (SEMA 2.19); a `projekt-adat` kivétel megszűnik | eldöntve a javaslat szerint (felhasználó, 2026.10.13; DT-F89a) |
-| D3 | A `projekt_adat` `kereskedelmi` értéke | `igen` — a jogtulajdonos maga kereskedelmileg felhasználhatja (DT-F86a); harmadik félnek a `LICENSE` nem ad jogot. `nem` esetén a „legszigorúbb érték” szabály minden saját származtatott táblát `nem`-re vinne, és a #86 csomagja nem épülhetne rájuk | eldöntve a javaslat szerint (felhasználó, 2026.10.13; DT-F89a) |
-| DT-F89b | A lexikon (`lexikon/*_TUDOMANYOS.md`) újragenerálása a #89-ben | 2. a lexikon most nem generálódik újra; a címkeváltás (146 előfordulás, 8 fájl) a tartalmi újragenerálással együtt, külön feladatként (N-F89a) | eldöntve: 2. (felhasználó, 2026-10-13) |
+| D1 | A `LICENSE` szövege és a jogtulajdonos neve (Demeter Tamás, 2026; kapcsolat nincs kiírva) | rövid jogfenntartó nyilatkozat fájlkörönként, a harmadik fél adatára a `licencek.tsv`-re utalva; a név a felhasználótól | eldöntve a javaslat szerint (felhasználó, 2026.10.13; DT131) |
+| D2 | A címke | új zárt `cimke`-érték: `minden jog fenntartva` (SEMA 2.19); a `projekt-adat` kivétel megszűnik | eldöntve a javaslat szerint (felhasználó, 2026.10.13; DT131) |
+| D3 | A `projekt_adat` `kereskedelmi` értéke | `igen` — a jogtulajdonos maga kereskedelmileg felhasználhatja (DT-F86a); harmadik félnek a `LICENSE` nem ad jogot. `nem` esetén a „legszigorúbb érték” szabály minden saját származtatott táblát `nem`-re vinne, és a #86 csomagja nem épülhetne rájuk | eldöntve a javaslat szerint (felhasználó, 2026.10.13; DT131) |
+| DT132 | A lexikon (`lexikon/*_TUDOMANYOS.md`) újragenerálása a #89-ben | 2. a lexikon most nem generálódik újra; a címkeváltás (146 előfordulás, 8 fájl) a tartalmi újragenerálással együtt, külön feladatként (N-F89a) | eldöntve: 2. (felhasználó, 2026-10-13) |

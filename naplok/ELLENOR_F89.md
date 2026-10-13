@@ -10,13 +10,13 @@ ELTÉRÉS: 8 tétel
 | 0 modell | OK | — | tényleges: claude-opus-5-5; kért: opus |
 | 0 modell-mezők | NEM ELLENŐRIZHETŐ | `naplok/F89_M0_felmeres.md:3` | a végrehajtó tényleges modelljét lekérdezéssel nem lehet igazolni; adattáblába a menet nem írt `modell` mezőt |
 | G1 | OK | `adat/licencek.tsv:11,33,34,49,53–55` | `git diff --numstat` → 7/4: 4 módosított és 3 új sor, más hunk nincs; az író szkript `csv`-mentessége csak a naplóból igazolt |
-| G2 | OK | `adat/licencek.tsv:49,53–55` | projekt_adat `tisztazott`, forras_hely LICENSE + DT-F89a, kereskedelmi=igen, share_alike=nem; az új sorok minden mezője kitöltött |
-| G3 | NEM ELLENŐRIZHETŐ | `naplok/F89_M0_felmeres.md:90` | DT-F89b (2.) miatt a lexikon nem generálódott újra; az éles `lexikon/` 146 helyen `projekt-adat` címkét hordoz (8 fájl); szabad licenc-jelölés nincs |
+| G2 | OK | `adat/licencek.tsv:49,53–55` | projekt_adat `tisztazott`, forras_hely LICENSE + DT131, kereskedelmi=igen, share_alike=nem; az új sorok minden mezője kitöltött |
+| G3 | NEM ELLENŐRIZHETŐ | `naplok/F89_M0_felmeres.md:90` | DT132 (2.) miatt a lexikon nem generálódott újra; az éles `lexikon/` 146 helyen `projekt-adat` címkét hordoz (8 fájl); szabad licenc-jelölés nincs |
 | G4 | OK (kódszinten) / pardes.db NEM ELLENŐRIZHETŐ | `eszkozok/sqlite_epit.py` | licenc_* oszlopok kikerültek, minden tábla `tabla_licenc`-sort kap; az FTS árnyéktáblák (`fts_motivum_%`) nem kapnak sort |
 | G5 | OK | `naplok/SQLITE_EPIT_meres.md` | 878,9 → 619,0 MB; tisztazatlan 1 (`kjv`), CC BY-SA/MCGED 9, NC 0; megjegyzés: az NC-detektálás a `cimke`-ben „BY-NC”-t keres, a tisztazatlan NC-sor címkéje `tisztázatlan` |
 | G6 | NEM ELLENŐRIZHETŐ | `naplok/SQLITE_EPIT_meres.md:19–21` | építés és teszt nem futtatható az ellenőrben |
 | D1–D3, DT116/DT113 | OK | `LICENSE`, `adat/SEMA.md:921,957–959` | a döntések szerint |
-| DT-F89b | ELTÉRÉS | `DONTESEK.md:206–208` | üres sor került a DT-F89a és a DT-F89b közé, a fájl végéről hiányzik az újsor; a DT-F89a „Alkalmazás” szövege (lexikon-újragenerálás) elavult; a brief döntésnaplójában nincs DT-F89b sor |
+| DT132 | ELTÉRÉS | `DONTESEK.md:206–208` | üres sor került a DT131 és a DT132 közé, a fájl végéről hiányzik az újsor; a DT131 „Alkalmazás” szövege (lexikon-újragenerálás) elavult; a brief döntésnaplójában nincs DT132 sor |
 | A1 | OK | `naplok/F89_M0_felmeres.md` | a számok lekérdezéssel stimmelnek (50 sor a licencek.tsv-ben, 8 tisztazatlan, 146/8) |
 | A2 | ELTÉRÉS | `NYITOTT_FELADATOK.md:54`; `DONTESEK.md:208` | a „külön feladat” (a lexikon újragenerálása és a címkeváltás) sehol nincs nyilvántartva (nincs N-F89a helyőrző) |
 | A3–A5 | nem értelmezett | — | — |
@@ -32,7 +32,7 @@ ELTÉRÉS: 8 tétel
 ## ELTÉRÉS-ek súlyossági sorrendben
 
 1. CI E5 HIBA (`SQLITE_EPIT_meres.md`: törölt címsor jelölés nélkül).
-2. `DONTESEK.md` DT-F89b sor: üres sor a táblában, hiányzó záró újsor, elavult DT-F89a „Alkalmazás” szöveg, nincs sor a brief döntésnaplójában.
+2. `DONTESEK.md` DT132 sor: üres sor a táblában, hiányzó záró újsor, elavult DT131 „Alkalmazás” szöveg, nincs sor a brief döntésnaplójában.
 3. A2: a lexikon-újragenerálás nincs nyilvántartva.
 4. SEMA 2.19 2. szabály: ellentmondó megjegyzések a három `tisztazott` soron.
 5. `kotelezo_megjeloles` hiánya a három újraértékelt soron.
