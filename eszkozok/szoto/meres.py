@@ -112,7 +112,9 @@ def main():
             reszek = [('a K tábla alakjai NÉLKÜL — a DT-F94c DÖNTŐ száma', [r for r in osszes if r['alak'].lower() not in hibrid.K]),
                       ('a K tábla alakjai és a fejlesztés közben látott alakok (' + ', '.join(sorted(LATOTT)) + ') NÉLKÜL',
                        [r for r in osszes if r['alak'].lower() not in hibrid.K and r['alak'].lower() not in LATOTT]),
-                      ('minden sor (a K tábla alakjaival; tájékoztató)', osszes)]
+                      ('minden sor (a K tábla alakjaival; tájékoztató)', osszes),
+                      ('CSAK a K tábla alakjai (a C+K hozzájárulása; a K táblát a felhasználó ellenőrizte)',
+                       [r for r in osszes if r['alak'].lower() in hibrid.K])]
         else:
             reszek = [('', osszes)]
         for cim, sorok in reszek:
