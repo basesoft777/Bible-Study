@@ -325,8 +325,18 @@ def hasonlit_gorog(con, g, db=None):
     ki['tbesg'] = (egyezik_vagva(g['tbesg'], d['tbesg']), len(g['tbesg']), len(d['tbesg']), 'a JSON vágott szöveg (előtag-egyezés)' if (g['tbesg'] or '').endswith('…') else '')
     ki['thayer'] = (egyezik_vagva(g['thayer'], d['thayer']), len(g['thayer']), len(d['thayer']), 'a JSON vágott szöveg (előtag-egyezés)' if (g['thayer'] or '').endswith('…') else '')
     ki['magyar_szocikk'] = (len(g['hu']) == min(d['hu_db'], 6), len(g['hu']), d['hu_db'], '')
+    # F92: a pilot TSV-útja (adat.py) a TAGNT Strong-mezőjét egészben hnorm-olja, a „+” láncok elemeit (pl. G4155+G0575)
+    # nem számolja; a pardes.db token_strong táblája a lánc elemeit külön sorként tartalmazza. Az eltérés oka ellenőrizve:
+    # DB-szám = TSV-szám + a láncelemként szereplő előfordulások.
+    ok = ''
+    if (g['usz_db'], g['usz_versek_db']) != (d['usz_db'], d['usz_versek_db']):
+        lanc = con.execute("SELECT COUNT(*) FROM token_strong s JOIN token_eredeti e ON e.igehely=s.igehely AND e.sorszam=s.sorszam "
+                           "WHERE s.strong=? AND e.nyelv='G' AND e.strong_lanc LIKE '%+%'", (g['strong'],)).fetchone()[0]
+        if lanc and g['usz_db'] + lanc == d['usz_db']:
+            ok = ('a pilot TSV-útja a „+” Strong-láncok elemeit nem számolja (%d előfordulás láncelemként), a token_strong igen; '
+                  'DB-szám = TSV-szám + láncelem' % lanc)
     ki['usz_elofordulas'] = ((g['usz_db'], g['usz_versek_db']) == (d['usz_db'], d['usz_versek_db']),
-                             (g['usz_db'], g['usz_versek_db']), (d['usz_db'], d['usz_versek_db']), '')
+                             (g['usz_db'], g['usz_versek_db']), (d['usz_db'], d['usz_versek_db']), ok)
     tsv_h = [(x['strong'], x['db']) for x in g['heber']]
     db_h = [(h, c) for c, h in d['heber']]
     ki['heber_hatter'] = (tsv_h == db_h, tsv_h, db_h, '')
@@ -420,9 +430,10 @@ def tabla_meretek():
     if not os.path.exists(ut):
         return ki
     for s in open(ut, encoding='utf-8'):
-        m = re.match(r'^\| `(\w+)` \| (\d+) \| ([\d.]+) \| ([\d.]+) \|', s)
+        # F89 óta a táblázat `| tábla | sor | MB |` (a licenc_* oszlopok nélkül); a régi 4 oszlopos alak is elfogadott
+        m = re.match(r'^\| `(\w+)` \| (\d+) \| ([\d.]+) \|(?: ([\d.]+) \|)?', s)
         if m:
-            ki[m.group(1)] = (float(m.group(3)) * MIB_MB, float(m.group(4)) * MIB_MB)
+            ki[m.group(1)] = (float(m.group(3)) * MIB_MB, float(m.group(4) or m.group(3)) * MIB_MB)
     return ki
 
 

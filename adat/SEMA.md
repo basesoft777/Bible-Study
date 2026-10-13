@@ -1138,6 +1138,24 @@ A #38 BDB-fordítása a Károli–Strong párosítás hiányos állapotában ké
 
 Kulcs: `strong` + `tipus` + `karoli_alak` (az `alak` sor egyedi a szócikkön belül). Rendezés: `strong` növekvően; szócikkenként a `szocikk` sor, majd az alakok az előfordulás-szám csökkenő, azonos számnál a kisbetűs szóalak kódpont-sorrendjében (Unicode, nem magyar ábécé: a magyar ékezetes betűk a latin alapbetűk után, az `a`–`z` blokk végén állnak). A szócikk-adat és a `forditasok.tsv` sora a `strong` mezőn kapcsolható (join). Ellenőrzés: `python eszkozok/teszt_bdb_adatblokk.py` (`KaroliTabla`: minden kész szócikk megvan, és minden sorban (`szocikk` és `alak`) nem üres a proveniencia, az `alak` soré a szócikk soréval azonos; a példaversek a `Konyv_normalizalo_tabla.tsv` könyvsorrendjében állnak; ismert Strongokon — H2617, H5785, H8057 — a példák forrássorra visszakereshetők; a `forditasok.tsv` hash-e a tábla-építés előtt és után azonos).
 
+### 2.26 A `pardes.db` olvasói táblái — `token_macula`, `lxx_token`, `lxx_versszam`, `bdb_alias`, `nave_vers` (F92, FELADATOK #92, DT-F92a)
+
+Generált nézet (`eszkozok/sqlite_epit.py`; DT28): az adatbázis nem commitolt, kézzel nem írható. A táblák az olvasói lapok eddig csak TSV-ből előálló blokkjait adják; mindegyik `meta`-sorral (sorszám és hash: `hash:<tábla>`) és táblaszintű licenccel (`tabla_licenc`, DT113) épül. Kulcs, ahol van: a **Károli-igehely**.
+
+| tábla | forrás | licenc-kulcsok | tartalom |
+|---|---|---|---|
+| `token_macula` | `konkordancia/Macula_heber_*.tsv` | `Macula_heber` | héber token: `xml_id`, `igehely`, `sorszam` (Macula-szósorszám), `kk_mod`, `allapot`, `szo`, `lemma`, `strong` (SEMA 1.2) + `strong_nyers`, `strong_poz`/`strong_n`, `morf`, `szofaj`, `gloss`, `lxx_szo`, `lxx_strong` |
+| `lxx_token` | `konkordancia/LXX_OS/*.tsv` (a `szoalak` oszlopos könyvfájlok) | `LXX_OS` | LXX-szó: `lxx_igehely`, `kjv_vers`, `karoli_igehely` (üres: nincs Károli-megfelelő), `karoli_ok`, `pozicio`, `szoalak`, `lemma`, `morf`, `strong` (G + 4 számjegy), `strong_ok` |
+| `lxx_versszam` | `LXX_OS` verskulcsa + `LXX_versificacios_terkep.tsv` | `LXX_OS`, `Versifikacios_tablak`, `Karoli_versmegfeleltetes` | minden ÓSZ Károli-versre legalább egy sor: `karoli_igehely`, `lxx_igehely`, `kjv_vers`, `forras` (`LXX_OS` / `versificacios_terkep` / `nincs`), `megjegyzes` |
+| `bdb_alias` | `konkordancia/BDB_strong_alias.tsv` | `BDB`, `projekt_adat` (a `meta`-ban: `bdb_alias:licenc_osszetevok`) | másodlagos Strong → a BDB-szócikket hordozó Strong, `bdb_id`, `nyelv`, `cimszo`, `szoveg_hasonlosag` |
+| `nave_vers` | `konkordancia/Nave_basokant.tsv` + a KJV→Károli megfeleltetés | `Nave_basokant`, `Karoli_versmegfeleltetes`, `LXX_OS` | Nave-téma × Károli-vers: `forras_sor`, `tema_id`, `tema`, `cimke`, `kapcsolat`, `nave_hely` (az eredeti KJV-hivatkozás), `igehely`, `tartomanyos` |
+
+**Szabályok.**
+- **`lxx_versszam`:** az `LXX_OS` az elsődleges forrás; ahol a Károli-versre nincs `LXX_OS`-sor, a versifikációs térkép adja (`forras=versificacios_terkep`, a térkép típusa a `megjegyzes`-ben); ahol egyik sem ad értéket, a sor `forras=nincs`, **üres `lxx_igehely`-vel, kitöltés nélkül** (CLAUDE.md 3. szabály). Ahol az `LXX_OS` és a térkép is ad értéket és eltérnek, az `LXX_OS`-sor `megjegyzes`-e jelzi (`térkép eltér: …`); a számok a `normalizalas_jelentes` `lxx_versszam` soraiban és a `meta` `lxx_versszam:*` kulcsaiban.
+- **`nave_vers`:** a bontás szabálya az `eszkozok/nave_bontas.py`-ban él (KJV-szám szerint, a Károli-vers KJV-kulcsa: `LXX_OS` `igehely_kjv` → fejezet-eltolás → `Karoli_versmegfeleltetes` → Károli-szám). **Fejezet-szintű és igehely nélküli sor nem kerül bele** (a fejezet-nézet a `nave_basokant`-ból jön); a kihagyott sorok száma okonként a `meta` `nave_vers:kihagyott:<ok>` kulcsaiban és a `normalizalas_jelentes`-ben. Invariáns: `nave_vers:nave_basokant_sor` = `nave_vers:bontott_forras_sor` + `nave_vers:kihagyott_osszes` (semmi nem tűnik el némán).
+- **`token_macula`:** a Macula–TAHOT illesztés vers+Strong alapon történik. Ahol ugyanaz a Strong egy versben többször áll, az illesztés **kétértelmű**; a `strong_n` a vers+Strong előfordulásainak száma, a `strong_poz` a fájlsorrend szerinti pozíció (a feloldás pozíció-sorrend). A kétértelmű csoportok száma: `meta` `token_macula:ketertelmu_vers_strong_csoport`. A „0 eltérés” ilyenkor nem jelent helyes illesztést.
+- **`szo_kis` / `hu_szo_kis`** (a `token_karoli`-ban, illetve a `token_par`-ban): a magyar szó kisbetűs, nem-betű/szám karakterektől mentes alakja (`sqlite_epit.szo_kis`); a keresés ezen indexel (`token_karoli`: `szo_kis, igehely, oldal, sorszam`). A kereső oldalon ugyanez a normalizálás alkalmazandó.
+
 ---
 
 ## 3. Integritási szabályok

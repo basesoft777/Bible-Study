@@ -53,3 +53,43 @@ Javaslat: új közös modul `eszkozok/nave_bontas.py` (tiszta függvények: hely
 ## 5. Mit kérek jóváhagyásra
 
 (a) az 1. szakasz táblaterve (oszlopok, indexek); (b) a kb. 209 MB növekedés (kb. 830 MB összesen); (c) a 4.1 (explicit hiány / térkép-pótlás), 4.2 (fejezet-sorok), 4.4 (licenc), 4.6 (`db_meres.py`) pontok javasolt megoldása; (d) a Nave-bontás közös modulja (3. szakasz).
+
+## 6. M2 — a K5 mérés nyers kimenete (előtte–utána)
+
+*Proveniencia: `scope=K5, magyar szóra és kétszavas frázisra keresés, 7 ismétlés, új kapcsolat minden ismétlésnél, median | forras=a fő munkamásolat F79-es pardes.db-je (előtte) és a #92 újraépített pardes.db (utána), lekérdezések: token_par/token_karoli, előtte lower(), utána hu_szo_kis/szo_kis | ts=2026-10-13`*
+
+```
+gép: Windows-11-10.0.26300-SP0, 8 CPU, python 3.14.7
+== ELŐTTE (a fő munkamásolat F79-es pardes.db: nincs szo_kis; lower() keresés) | C:/Users/bases/Desktop/Bible-Study/pardes.db | 886.4 MB
+  token_par szó        kép              találat      4  median    165.5 ms  max    209.4 ms
+  token_karoli szó     kép              találat      4  median    327.7 ms  max    401.5 ms
+  token_par szó        Isten            találat   1306  median    161.1 ms  max    164.0 ms
+  token_karoli szó     Isten            találat   1293  median    325.8 ms  max    328.7 ms
+  token_par szó        szeretet         találat      7  median    162.5 ms  max    164.2 ms
+  token_karoli szó     szeretet         találat      6  median    326.1 ms  max    329.7 ms
+  token_par szó        ország           találat     72  median    159.1 ms  max    163.8 ms
+  token_karoli szó     ország           találat     63  median    324.7 ms  max    327.4 ms
+  token_par szó        segítségül       találat     51  median    161.0 ms  max    162.8 ms
+  token_karoli szó     segítségül       találat     47  median    325.7 ms  max    329.3 ms
+  token_karoli frázis  segítségül hív   találat      1  median    326.5 ms  max    347.2 ms
+  token_karoli frázis  Isten fia        találat      0  median    334.4 ms  max    451.5 ms
+  token_karoli frázis  örök élet        találat      0  median    328.3 ms  max    338.7 ms
+  legnagyobb median: 334.4 ms
+== UTÁNA (F92: szo_kis / hu_szo_kis index) | C:/Users/bases/Desktop/wt-f92-pardes-db-olvasoi/pardes.db | 899.3 MB
+  token_par szó        kép              találat      4  median      0.8 ms  max      0.9 ms
+  token_karoli szó     kép              találat      4  median      0.7 ms  max      0.7 ms
+  token_par szó        Isten            találat   1515  median      9.1 ms  max      9.3 ms
+  token_karoli szó     Isten            találat   1508  median      1.8 ms  max      2.0 ms
+  token_par szó        szeretet         találat     27  median      0.9 ms  max      1.2 ms
+  token_karoli szó     szeretet         találat     25  median      0.7 ms  max      0.8 ms
+  token_par szó        ország           találat     72  median      1.3 ms  max      1.4 ms
+  token_karoli szó     ország           találat     63  median      0.7 ms  max      0.9 ms
+  token_par szó        segítségül       találat     55  median      1.1 ms  max      1.2 ms
+  token_karoli szó     segítségül       találat     50  median      0.7 ms  max      0.8 ms
+  token_karoli frázis  segítségül hív   találat      1  median      0.8 ms  max      0.8 ms
+  token_karoli frázis  Isten fia        találat      3  median      1.7 ms  max      1.7 ms
+  token_karoli frázis  örök élet        találat      4  median      0.8 ms  max      0.8 ms
+  legnagyobb median: 9.1 ms
+```
+
+A találatszám különbsége: az előtte-adatbázis régebbi építés, és a `szo_kis` az írásjelet levágja.
