@@ -17,7 +17,7 @@ nem_fugg: [52, 93]
 
 # Olvasói konkordancia motívum nélkül — kutatói felület a `pardes.db`-ből, előbb helyben (WSL), három váltható nézettel (OLVASOI_KONKORDANCIA)
 
-*Befogadásra váró brief-tervezet: a #76 csonkjának kitöltése (`F76_OLVASOI_KONKORDANCIA_BRIEF.md`, ugyanazon a számon és néven). Források: a DT-F76b (a felhasználó öt alapdöntése és a (4) pontosítása, 2026-10-13), a DT127 (saját hosting, a `pardes.db` mérete nem köt), a DT128 (modernizált Károli-réteg, nyitott), a DT124 (kiadási kapcsoló), a #60 olvasói pilot értékelő jelentése (`naplok/OLVASOI_PILOT_ertekeles.md`, 8. pont), és a látványterv (https://claude.ai/artifact/SivJAN3Q9iSFm9j8EziAiE). A csonk „Bemenet a hosting ⛔-hez és a CI-hez” szakasza (N-F76a–c) a kitöltésnél megmarad.*
+*Befogadásra váró brief-tervezet: a #76 csonkjának kitöltése (`F76_OLVASOI_KONKORDANCIA_BRIEF.md`, ugyanazon a számon és néven). Források: a DT129 (a felhasználó öt alapdöntése és a (4) pontosítása, 2026-10-13), a DT127 (saját hosting, a `pardes.db` mérete nem köt), a DT128 (modernizált Károli-réteg, nyitott), a DT124 (kiadási kapcsoló), a #60 olvasói pilot értékelő jelentése (`naplok/OLVASOI_PILOT_ertekeles.md`, 8. pont), és a látványterv (https://claude.ai/artifact/SivJAN3Q9iSFm9j8EziAiE). A csonk „Bemenet a hosting ⛔-hez és a CI-hez” szakasza (N-F76a–c) a kitöltésnél megmarad.*
 
 **Javasolt fejléc-adatok:** `tipus: feladat` · `fazis: 1` · `modell: sonnet` · `munka: adat` · `fugg: [44, 79, 92]` · `nem_fugg: [52]` · `kovetkezo: "/kovetkezo; ⛔ M0 (terv), ⛔ M1 (helyi környezet: a disztribúció létrehozása a felhasználóé), ⛔ M5 (helyi próbaüzem), ⛔ M6 (VPS), ⛔ M7 (nyilvános közzététel)"`.
 
@@ -33,15 +33,15 @@ Az olvasói felület első, motívum nélküli kiadása **kutatóknak**: a kezd�
 
 Az első kiadás **helyben, WSL-ben** fut; a VPS-re telepítés és a nyilvános közzététel külön megállók.
 
-## 2. Architektúra (DT-F76b, DT127)
+## 2. Architektúra (DT129, DT127)
 
 - **Adatforrás:** a `pardes.db` (a #92 után: a hat hiány pótolva, a magyar szavak indexe, újraépítve). A TSV az igazságforrás; az adatbázis belőle generált, kézzel nem szerkesztett index; a lapok és a keresés ennek nézetei.
 - **Lapelőállítás a szerveren**, kérésre, állandó címekkel (pl. `/1Moz/1/4`, `/szo/H0216`) és gyorsítótárral. Az adatbázis nem kerül ki a böngészőbe; a böngésző csak a kért lap HTML-jét kapja. Előre legyártott statikus HTML az első kiadásban nincs; a kód úgy épüljön, hogy statikus export később egy paranccsal előállítható legyen.
 - **A blokkok** a #60 pilot `eszkozok/olvaso_pilot/` blokklogikájából, az adatbázisra átírva (jellegjelölés: forrásadat / gépi feldolgozás / modell-kimenet; forrás- és licencsor minden blokk alatt, N-F33b).
 - **Interlineáris illesztés pozíció szerint** a `token_par` táblából (a pilot sorrendi, Strong-szám szerinti illesztése nem elég: ismétlődő szónál téveszthet).
-- **Hozzáférési szintek már most** (DT-F76b (3)): a lapelőállítás blokkonként jogosultságot néz; a szintek és a blokk–szint hozzárendelés **konfigurációban**, nem a kódban. Az első kiadásban minden blokk mindenkinek elérhető; a tartalmi szétválasztás és a DT-M6 viszonya külön döntés. Belépés és fizetés nem része.
+- **Hozzáférési szintek már most** (DT129 (3)): a lapelőállítás blokkonként jogosultságot néz; a szintek és a blokk–szint hozzárendelés **konfigurációban**, nem a kódban. Az első kiadásban minden blokk mindenkinek elérhető; a tartalmi szétválasztás és a DT-M6 viszonya külön döntés. Belépés és fizetés nem része.
 - **Kiadási kapcsoló** (DT124): a KJV-Strong blokk minden nyilvános kiadásból kimarad (GPL), az MCGED kereskedelmi kiadásból; a pilot `--kiadas {belso,nyilvanos,kereskedelmi}` szabálya a szerveren is.
-- **Magyar szótövezés** (DT-F76b (5)): a keresés a tőre is talál, ha a szótövezési döntés (a repón kívüli előmérés alapján, `D:\pardes_szoto\szoto\`) a hibrid megoldást jóváhagyja, és a szótő-oszlop a `pardes.db`-ben van. Addig a keresés a pontos szóalakra és a Strong-számra megy, és ezt a felület jelzi.
+- **Magyar szótövezés** (DT129 (5)): a keresés a tőre is talál, ha a szótövezési döntés (a repón kívüli előmérés alapján, `D:\pardes_szoto\szoto\`) a hibrid megoldást jóváhagyja, és a szótő-oszlop a `pardes.db`-ben van. Addig a keresés a pontos szóalakra és a Strong-számra megy, és ezt a felület jelzi.
 - **Technika:** Python 3.11, kis webes keretrendszer (FastAPI vagy Flask, az M0-ban eldöntve), SQLite csak olvasásra, fordított proxy (Caddy vagy nginx). A nézetek közti váltás és a választott nézet megjegyzése az első kiadás része.
 
 ## 3. Hatókör
@@ -78,7 +78,7 @@ Az első kiadás **helyben, WSL-ben** fut; a VPS-re telepítés és a nyilvános
 
 ## 6. Kapcsolódás
 
-#60 (OLVASOI_PILOT), #79 (SQLITE_EPIT), #88, #89, #91, #92 (PARDES_DB_OLVASOI), #78 (szerepmátrix), #25b; DT-M4, DT-M6, DT76, DT78 (17), DT124, DT126, DT127, DT128, DT-F76b; ADATVAGYON_TERV 3–4. és 8. szakasz; N-F76a–c (a csonkból).
+#60 (OLVASOI_PILOT), #79 (SQLITE_EPIT), #88, #89, #91, #92 (PARDES_DB_OLVASOI), #78 (szerepmátrix), #25b; DT-M4, DT-M6, DT76, DT78 (17), DT124, DT126, DT127, DT128, DT129; ADATVAGYON_TERV 3–4. és 8. szakasz; N-F76a–c (a csonkból).
 
 ## Bemenet a hosting ⛔-hez és a CI-hez
 
