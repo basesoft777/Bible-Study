@@ -250,3 +250,99 @@ scope=adat/szoto/szoto_minta_1_fejlesztes.tsv (sha256:294771857de4) + szoto_mint
 - **E-2 / DT-F94b:** *seregeknek* — szótári alak *sereg*, tovabbi_elfogadhato *Seregek*.
 - **`ellenorzes=felhasznalo` lett:** *vettetének, születének, helyezteté, tudatá, ki, elvesznek* (már az volt), *seregeknek*. Az 1. mintában most 3, a 2. mintában 9 `felhasznalo` sor.
 - **Megfigyelések (manual, nem adat):** a felhasználó a Bible Discovery moduljaiból hozott összevetést; a szövegük és Strong-rétegük nem kerül adatba (DT124). Ézs 44:6 „a seregeknek … Ura”: a *seregek* köznév, az Istenre vonatkozó cím a szókapcsolat. Zsolt 13:2 *orcádat*: a *cz → c* helyesírás egy modern megfelelője (nem korpusz-támasz).
+
+## 6. A minták Strong-oszlopa (F94.1)
+
+### 6.1 Eltérés-lista az újraszámítás előtt
+
+*A régi `strong` érték a `pardes.db` `token_karoli`-jából jött (a 2026-10-12-i állapot); az új a repó Károli–Strong párosításából (SEMA 2.20, modell-kimenet, javaslat, nem ellenőrizve). Példa a régi hibára: az 1. minta *ki* sora (1Móz 2:5) H0834-et adott, de a `TAHOT_kivonat.tsv` szerint a versben nincs H0834 (a vers vonatkozó *ki*-je a párosításban betoldás).*
+
+Az 1–2. minta 393 sorából **83** sor `strong` mezője tér el a repó párosításától (ebből 4 a párosításban betoldás vagy nincs ilyen token: üres lesz); a példaversben nem található alak: 0.
+
+| minta | alak | példa | régi (token_karoli) | új (karoli_strong) | a vers azonos alakú tokenjei (sorszám, állapot, Strong, bizonyosság) |
+|---|---|---|---|---|---|
+| 1 | vala | 1Móz 1:2 | — | H1961 | #7 parositva H1961 (magas); #10 betoldas — (magas); #19 betoldas — (magas) |
+| 1 | én | 1Móz 4:9 | H9020 | H0595 | #21 parositva H0595 (magas); #23 parositva H9020 (magas) |
+| 1 | hogy | 1Móz 1:4 | H9005 | H3588 | #4 parositva H3588 (magas) |
+| 1 | is | 1Móz 1:22 | H1571 | H9002 | #17 parositva H9002 (magas) |
+| 1 | meg | 1Móz 1:9 | H8085 | H7200 | #15 parositva H7200 (magas) |
+| 1 | néki | 1Móz 1:11 | H9005+H9033 | H9033 | #23 parositva H9033 (alacsony) |
+| 1 | azt | 1Móz 2:3 | — | H9033 | #9 parositva H9033 (magas) |
+| 1 | ki | 1Móz 2:5 | H0834 | H6779 | #16 parositva H6779 (magas); #32 betoldas — (alacsony) |
+| 1 | mely | 1Móz 1:6 | H0834 | — | #10 betoldas — (alacsony) |
+| 1 | el | 1Móz 3:13 | H1980 | H5377 | #17 parositva H5377 (magas) |
+| 1 | egy | 1Móz 1:9 | — | H0259 | #11 parositva H0259 (magas) |
+| 1 | s | 1Móz 2:5 | H9001 | H9002 | #9 parositva H9002 (magas) |
+| 1 | annak | 1Móz 2:12 | H9023 | H1931 | #2 parositva H1931 (magas) |
+| 1 | között | 1Móz 1:6 | H0996 | H9003+H8432 | #8 parositva H9003+H8432 (magas) |
+| 1 | való | 1Móz 1:7 | — | H0834 | #11 parositva H0834 (alacsony); #16 parositva H0834 (alacsony) |
+| 1 | esztendős | 1Móz 5:32 | H8141 | H1121+H8141 | #5 parositva H1121+H8141 (magas) |
+| 1 | vele | 1Móz 3:6 | H0854+H9033 | H5973+H9034 | #31 parositva H5973+H9034 (magas) |
+| 1 | földnek | 1Móz 1:10 | H0776 | H9005+H0776 | #6 parositva H9005+H0776 (alacsony) |
+| 1 | sem | 1Móz 2:5 | H3808 | H2962 | #5 parositva H2962 (alacsony); #14 parositva H2962 (alacsony); #30 parositva H0369 (magas) |
+| 1 | be | 1Móz 1:22 | H0935 | H4390 | #11 parositva H4390 (magas) |
+| 1 | előtt | 1Móz 4:7 | H9005 | H9005+H6607 | #17 parositva H9005+H6607 (magas) |
+| 1 | legyen | 1Móz 1:11 | H1961 | — | #22 betoldas — (magas) |
+| 1 | valának | 1Móz 4:8 | — | H1961+H9048 | #16 parositva H1961+H9048 (magas) |
+| 1 | szűlé | 1Móz 4:2 | H3205 | H9005+H3205 | #3 parositva H9005+H3205 (magas) |
+| 1 | elmenének | 1Móz 8:3 | H1980 | H7725 | #2 parositva H7725 (magas) |
+| 1 | vevének | 1Móz 6:2 | H1396 | H3947 | #13 parositva H3947 (magas) |
+| 1 | Monda | 1Móz 4:10 | H9001+H0559 | H0559 | #1 parositva H0559 (magas) |
+| 1 | őnéki | 1Móz 7:16 | H9005+H9033 | H0853+H9033 | #17 parositva H0853+H9033 (alacsony) |
+| 1 | földön | 1Móz 1:11 | H9003+H0776 | H5921+H0776 | #26 parositva H5921+H0776 (magas) |
+| 1 | földről | 1Móz 2:6 | H9006+H5921+H0776 | H4480+H0776 | #7 parositva H4480+H0776 (magas) |
+| 1 | fiainak | 1Móz 7:7 | H1121 | H1121+H9023 | #12 parositva H1121+H9023 (magas) |
+| 1 | életének | 1Móz 5:5 | H3117 | H0834+H2421 | #5 parositva H0834+H2421 (magas) |
+| 1 | feleségének | 1Móz 3:21 | H0802 | H9005+H0802+H9023 | #10 parositva H9005+H0802+H9023 (alacsony) |
+| 1 | állatokat | 1Móz 1:21 | H7431 | H8577 | #7 parositva H8577 (magas); #13 parositva H5315+H2416 (magas) |
+| 1 | embernek | 1Móz 2:16 | H9005+H0121 | H5921+H0120 | #7 parositva H5921+H0120 (magas) |
+| 1 | helyre | 1Móz 1:9 | H9009+H4725 | H0413+H4725 | #12 parositva H0413+H4725 (magas) |
+| 1 | égből | 1Móz 8:2 | H4480+H8064 | H4480+H9009+H8064 | #15 parositva H4480+H9009+H8064 (alacsony) |
+| 1 | égnek | 1Móz 1:8 | H8064 | H9005+H8064 | #6 parositva H9005+H8064 (alacsony) |
+| 1 | képére | 1Móz 1:27 | H9003+H6754 | H9003+H6754+H9023 | #9 parositva H9003+H6754+H9023 (magas); #11 parositva H9003+H6754 (magas) |
+| 1 | nevet | 1Móz 2:19 | H8034 | H7121 | #28 parositva H7121 (alacsony) |
+| 1 | keletre | 1Móz 4:16 | H9006+H6924 | H6926 | #13 parositva H6926 (magas) |
+| 1 | népet | 1Móz 14:16 | H1471 | H5971 | #19 parositva H5971 (magas) |
+| 1 | atyjafiának | 1Móz 4:21 | H0251 | H0251+H9023 | #3 parositva H0251+H9023 (magas) |
+| 1 | melyben | 1Móz 1:11 | H0834+H9003+H9033 | H0834+H9003 | #21 parositva H0834+H9003 (alacsony) |
+| 1 | melynek | 1Móz 1:12 | — | H0834 | #17 parositva H0834 (alacsony) |
+| 1 | kinek | 1Móz 9:5 | H9002 | — | #20 betoldas — (alacsony); #21 parositva H0376 (magas) |
+| 1 | nincsen | 1Móz 13:9 | H0369 | H3808 | #2 parositva H3808 (magas) |
+| 1 | Úrnak | 1Móz 4:3 | H3068 | H9005+H3068 | #10 parositva H9005+H3068 (magas) |
+| 1 | Ábrahámnak | 1Móz 17:9 | H9005+H0085 | H0413+H0085 | #4 parositva H0413+H0085 (magas) |
+| 1 | Ábrámnak | 1Móz 11:31 | H0413+H0087 | H0087 | #20 parositva H0087 (magas) |
+| 1 | Izsáknak | 1Móz 17:19 | H9005+H3327 | H3327 | #17 parositva H3327 (magas) |
+| 1 | Ádám | 1Móz 3:20 | H0121 | H0120 | #4 parositva H0120 (magas) |
+| 2 | vagyok | Ézs 41:4 | — | H1931 | #23 parositva H1931 (alacsony) |
+| 2 | fel | Ézs 40:9 | H5375 | H5927 | #4 parositva H5927 (alacsony) |
+| 2 | téged | Ézs 41:12 | H9031 | H9021 | #14 parositva H9021 (alacsony) |
+| 2 | nékem | Ézs 41:28 | H9005+H9030 | — | #17 betoldas — (alacsony) |
+| 2 | Ímé | Ézs 40:10 | H2005 | H2009 | #1 parositva H2009 (alacsony); #10 parositva H2009 (alacsony) |
+| 2 | Istenem | Ézs 40:27 | H0430+H9020 | H9006+H0430+H9020 | #18 parositva H9006+H0430+H9020 (alacsony) |
+| 2 | föl | Ézs 40:9 | H5782 | H7311 | #8 parositva H7311 (alacsony); #14 parositva H7311 (alacsony) |
+| 2 | lesz | Ézs 43:10 | — | H1961 | #33 parositva H1961 (alacsony) |
+| 2 | zsoltára | Zsolt 3:1 | H4210 | H4210+H9005 | #2 parositva H4210+H9005 (alacsony) |
+| 2 | lelkemet | Ézs 42:1 | H5315+H9020 | H7307+H9020 | #15 parositva H7307+H9020 (alacsony) |
+| 2 | nagy | Ézs 40:26 | H7227 | H7230 | #22 parositva H7230 (alacsony) |
+| 2 | Úrban | Ézs 40:31 | H9003+H3068 | H3068 | #5 parositva H3068 (alacsony) |
+| 2 | igaz | Ézs 44:2 | H6662 | H3484 | #21 parositva H3484 (alacsony) |
+| 2 | tőlem | Ézs 43:27 | H4480+H9030 | H9003+H9030 | #8 parositva H9003+H9030 (alacsony) |
+| 2 | vannak | Ézs 41:27 | — | H9048 | #7 parositva H9048 (alacsony) |
+| 2 | szívében | Ézs 47:8 | H9003+H3820+H9023 | H9003+H3824+H9024 | #15 parositva H9003+H3824+H9024 (alacsony) |
+| 2 | ezeket | Ézs 42:16 | H0428 | H0428+H1697 | #28 parositva H0428+H1697 (alacsony) |
+| 2 | népeknek | Ézs 42:1 | H3816 | H9005+H1471 | #22 parositva H9005+H1471 (alacsony) |
+| 2 | kiket | Ézs 46:3 | — | H9009 | #11 parositva H9009 (alacsony) |
+| 2 | időben | Ézs 51:9 | H9003+H6256 | H3117 | #17 parositva H3117 (alacsony) |
+| 2 | gyülekezetben | Zsolt 22:23 | H9003+H6951 | H9003+H8432+H6951 | #9 parositva H9003+H8432+H6951 (alacsony) |
+| 2 | igazságban | Ézs 41:2 | H9003+H6664 | H6664 | #8 parositva H6664 (alacsony) |
+| 2 | titeket | Ézs 41:24 | H9036 | H9003+H9036 | #15 parositva H9003+H9036 (alacsony) |
+| 2 | igaznak | Ézs 43:26 | H6662 | H6663 | #9 parositva H6663 (alacsony) |
+| 2 | sötétséget | Ézs 42:16 | H2822 | H4285 | #20 parositva H4285 (alacsony) |
+| 2 | házában | Ézs 44:13 | H9003+H1004 | H1004 | #23 parositva H1004 (alacsony) |
+| 2 | bíznak | Ézs 40:31 | H2620 | H6960 | #6 parositva H6960 (alacsony) |
+| 2 | szólnak | Ézs 45:24 | H1696 | H0559 | #6 parositva H0559 (alacsony) |
+| 2 | örüljenek | Zsolt 13:5 | H8055 | H1523 | #9 parositva H1523 (alacsony) |
+| 2 | szeret | Ézs 41:24 | H0157 | H0977 | #16 parositva H0977 (alacsony) |
+| 2 | Dávid | Ézs 55:3 | H9005+H1732 | H1732 | #16 parositva H1732 (alacsony) |
+
+scope=adat/szoto/szoto_minta_1_fejlesztes.tsv + szoto_minta_2_fejlesztes.tsv, a pelda_igehely verse | forras=eszkozok/szoto/minta_strong.py + szavak_1Moz.tsv sha256:e62bba953842, szavak_Zsolt.tsv sha256:3eb9085ae600, szavak_Ezs.tsv sha256:d77853e2f34d (modell-kimenet, javaslat) | ts=2026-10-13T12:26Z
