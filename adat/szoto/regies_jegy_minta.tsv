@@ -1,0 +1,103 @@
+# proveniencia: scope=a karoli_szotari_alak.tsv 3232 jegyes sorából (regies_jegy nem üres) 100 elemű egyszerű véletlen minta, mag 20261013 | forras=adat/szoto/karoli_szotari_alak.tsv (sha256:565e1f573ef8) + konkordancia/Karoli_1908.tsv (sha256:49335bbcc77d; a példavers: az első vers, amelyben az alak pontosan így áll) + manual (a besorolás modell-állítás, modell: claude-opus-5-5) + eszkozok/szoto/jegy_minta.py | ts=2026-10-13T18:00Z
+# allapot: ellenorzes=modell_ellenorizetlen minden sorban (a felhasználó nem nézte át); a hibaarány-becslés a naplóban és a zárójelentésben (N-F94h). igei / jegy_helyes: igen | nem | ketes (ketes: a példavers alapján nem dönthető)
+alak	szotari_alak	regies_jegy	modszer	pelda_igehely	igei	jegy_helyes	ellenorzes	indoklas
+Elbocsátá	elbocsát	mult.targyas.E3	szabaly	1Móz 28:5	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+Elmenének	elmegy	mult.T3	kivetel	1Móz 42:5	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+Előhivatának	előhivat	mult.T3	szabaly	Eszt 3:12	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+Előhozatá	előhozat	mult.targyas.E3	szabaly	Ezsd 1:8	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+Futa	fut	mult.alanyi.E3	szabaly	Ján 20:2	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+Fölkele	fölkel	mult.alanyi.E3	szabaly	Ezsd 10:5	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+Intének	intik	mult.T3	szabaly	Luk 5:7	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes; mellékes lemmahiba: intik (helyesen: int)
+Javítgatá	javítgat	mult.targyas.E3	szabaly	Neh 3:19	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+Kivonulának	kivonul	mult.T3	szabaly	2Sám 10:8	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+Megfutamodék	megfutamodik	mult.E3	szabaly	1Sám 4:17	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+Meggyökerezvén	meggyökerez	hatarozoi_igenev	szabaly	Kol 2:7	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes; mellékes lemmahiba: meggyökerez (helyesen: meggyökerezik)
+Megindítá	megindít	mult.targyas.E3	szabaly	Zsolt 78:26	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+Szerzék	szerz	mult.E1	szabaly	Préd 2:8	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+Terjede	terjed	mult.alanyi.E3	szabaly	ApCsel 13:49	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+Uralkodék	uralkodik	mult.E3	k_tabla	2Sám 8:15	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+beküldének	beküld	mult.T3	szabaly	Mk 3:31	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+betérének	betér	mult.T3	szabaly	1Móz 19:3	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+bevevé	bevesz	mult.targyas.E3	kivetel	4Móz 32:41	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+borulának	borul	mult.T3	szabaly	4Móz 16:22	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+bíráskodának	bíráskodik	mult.T3	szabaly	Ruth 1:1	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+bízál	bízik	mult.E2	szabaly	2Krón 16:7	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+elfeledkezétek	elfeledkezik	mult.T2	szabaly	Ézs 65:11	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+elhengeríté	elhengerít	mult.targyas.E3	szabaly	Mt 28:2	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+elhívatá	elhívat	mult.targyas.E3	szabaly	Bír 16:18	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+eljárván	eljár	hatarozoi_igenev	szabaly	ApCsel 13:6	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+elkezde	elkezd	mult.alanyi.E3	szabaly	ApCsel 12:1	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+eloszlának	eloszl	mult.T3	szabaly	Zsolt 104:7	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes; mellékes lemmahiba: eloszl (helyesen: eloszlik)
+elrejtőzének	elrejtőz	mult.T3	szabaly	1Sám 14:22	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes; mellékes lemmahiba: elrejtőz (helyesen: elrejtőzik)
+elszakasztván	elszakaszt	hatarozoi_igenev	szabaly	1Kir 11:11	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+eltisztítá	eltisztít	mult.targyas.E3	szabaly	Ézs 4:4	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+elutazék	elutaz	mult.E1	szabaly	Mt 21:33	igen	nem	modell_ellenorizetlen	az -ik-es elutazik E/3-a (Mt 21:33: a gazda „elutazék”); a jegy mult.E1, helyesen E/3 — a lemmából hiányzik az -ik (elutaz), ezért az N-F94e-szabály nem fogta
+elveszté	elveszt	mult.targyas.E3	szabaly	1Móz 19:29	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+elválának	elválik	mult.T3	szabaly	1Móz 13:11	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+előhivatván	előhivat	hatarozoi_igenev	szabaly	Mt 18:32	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+felszedé	felszed	mult.targyas.E3	szabaly	1Sám 20:38	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+felszökvén	felszök	hatarozoi_igenev	szabaly	ApCsel 3:8	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+felöltözteté	felöltöztet	mult.targyas.E3	szabaly	1Móz 3:21	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+föltekintvén	föltekint	hatarozoi_igenev	szabaly	Mk 7:34	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+füstölögtete	füstölögtet	mult.alanyi.E3	szabaly	2Móz 40:27	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+hajlának	hajlik	mult.T3	szabaly	2Móz 12:36	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+irigykedének	irigyked	mult.T3	szabaly	1Móz 26:14	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes; mellékes lemmahiba: irigyked (helyesen: irigykedik)
+kihányván	kihány	hatarozoi_igenev	szabaly	ApCsel 27:38	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+kiirtatván	kiirtat	hatarozoi_igenev	szabaly	4Móz 15:31	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+kivonván	kivon	hatarozoi_igenev	szabaly	Mk 14:47	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+kiálta	kiált	mult.alanyi.E3	szabaly	1Móz 21:17	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+kiáltának	kiált	mult.T3	szabaly	2Móz 5:15	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+kiűzék	kiűz	mult.E1	szabaly	4Móz 5:4	igen	nem	modell_ellenorizetlen	T/3 tárgyas (4Móz 5:4: „Izráel fiai … kiűzék azokat”); a jegy mult.E1 — a magas hangrendű -ék E/1 / T/3 tárgyas kétértelműség (N-F94e megjegyzés)
+készítél	készít	mult.E2	szabaly	2Móz 15:17	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+könyörűle	könyörűl	mult.alanyi.E3	szabaly	2Móz 2:6	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+lehányván	lehány	hatarozoi_igenev	szabaly	2Kir 23:12	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+leszállván	leszáll	hatarozoi_igenev	szabaly	Mt 28:2	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+leszállál	leszáll	mult.E2	szabaly	Neh 9:13	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+levevé	levesz	mult.targyas.E3	kivetel	1Móz 41:42	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+levága	levág	mult.alanyi.E3	szabaly	2Sám 8:5	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+leülének	leül	mult.T3	szabaly	Ruth 4:2	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+megbáná	megbán	mult.targyas.E3	szabaly	Jón 3:10	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+megcselekedvén	megcseleked	hatarozoi_igenev	szabaly	5Móz 5:1	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+megcsókolván	megcsókol	hatarozoi_igenev	szabaly	2Sám 19:39	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+megeleveníttetvén	megeleveníttet	hatarozoi_igenev	szabaly	1Pét 3:18	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+megelégedvén	megelégedik	hatarozoi_igenev	szabaly	2Krón 24:15	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+megerősíte	megerősít	mult.alanyi.E3	szabaly	Dán 10:18	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+megfordulánk	megfordul	mult.T1	szabaly	5Móz 2:1	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+meghasítá	meghasít	mult.targyas.E3	szabaly	Bír 15:19	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+megmenté	megment	mult.targyas.E3	szabaly	1Móz 37:21	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+megsegítteték	megsegíttet	mult.E1	szabaly	2Krón 26:15	igen	nem	modell_ellenorizetlen	szenvedő E/3 (2Krón 26:15: „csudálatosan megsegítteték”); a jegy mult.E1, helyesen E/3 (a szenvedő -tetik -ik-es; a lemma megsegíttet)
+megszámlálá	megszámlál	mult.targyas.E3	szabaly	4Móz 4:34	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+megtaláltaték	megtaláltat	mult.E1	szabaly	2Krón 15:15	igen	nem	modell_ellenorizetlen	szenvedő E/3 (2Krón 15:15: „megtaláltaték általok”); a jegy mult.E1, helyesen E/3
+megverettetének	megverettet	mult.T3	szabaly	1Sám 7:10	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+megvervén	megver	hatarozoi_igenev	szabaly	Ézs 19:22	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+megélede	megéled	mult.alanyi.E3	szabaly	1Kir 17:22	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+megépüle	megépül	mult.alanyi.E3	szabaly	Mk 8:25	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+megölelé	megölelik	mult.targyas.E3	szabaly	1Móz 29:13	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes; mellékes lemmahiba: megölelik (helyesen: megölel)
+megövedzvén	megövedz	hatarozoi_igenev	szabaly	ApCsel 27:17	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+menénk	men	mult.T1	szabaly	1Sám 10:14	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes; mellékes lemmahiba: men (helyesen: megy)
+metélék	metélik	mult.E3	szabaly	2Móz 39:3	igen	nem	modell_ellenorizetlen	T/3 tárgyas (2Móz 39:3: „fonalakká metélék”); a jegy mult.E3, mert a lemma tévesen -ik-es (metélik); helyesen T/3 tárgyas
+méré	mér	mult.targyas.E3	szabaly	2Sám 8:2	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+nemzének	nemz	mult.T3	szabaly	1Krón 23:11	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+növekedék	növekedik	mult.E3	szabaly	1Sám 2:26	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+odaszólítá	odaszólít	mult.targyas.E3	szabaly	Mk 9:35	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+rohana	rohan	mult.alanyi.E3	szabaly	1Sám 22:18	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+rohanván	rohan	hatarozoi_igenev	szabaly	1Kir 2:34	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+szólhata	szólhat	mult.alanyi.E3	szabaly	Luk 1:22	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+szűle	szűl	mult.alanyi.E3	szabaly	1Móz 4:25	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+találá	talál	mult.targyas.E3	szabaly	1Móz 16:7	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+teremvén	terem	hatarozoi_igenev	szabaly	Kol 1:10	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+tétetének	tétet	mult.T3	szabaly	Dán 7:9	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+utóléré	utólér	mult.targyas.E3	szabaly	1Móz 44:6	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+veszté	veszt	mult.targyas.E3	szabaly	1Kir 16:12	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+vevé	vesz	mult.targyas.E3	kivetel	1Móz 2:15	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+virágozék	virágoz	mult.E1	szabaly	1Móz 40:10	igen	nem	modell_ellenorizetlen	E/3 (1Móz 40:10: a szőlőtő „virágozék”), az -ik-es virágzik/virágozik alakja; a jegy mult.E1, a lemmából hiányzik az -ik
+visszafordula	visszafordul	mult.alanyi.E3	szabaly	Józs 8:24	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+visszamarada	visszamarad	mult.alanyi.E3	szabaly	Luk 2:43	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+visszatérének	visszatér	mult.T3	szabaly	1Móz 21:32	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+visszatérétek	visszatér	mult.T2	szabaly	5Móz 1:45	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+visszavevé	visszavesz	mult.targyas.E3	kivetel	1Sám 7:14	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+vonakodék	vonakodik	mult.E3	szabaly	1Móz 39:8	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+Áldá	áld	mult.targyas.E3	szabaly	1Krón 29:20	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+állíta	állít	mult.alanyi.E3	szabaly	1Móz 21:28	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+általkelvén	általkel	hatarozoi_igenev	szabaly	5Móz 30:18	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
+érkezénk	érkezik	mult.T1	szabaly	ApCsel 21:1	igen	igen	modell_ellenorizetlen	igei alak; a jegy a példavers szerint helyes
