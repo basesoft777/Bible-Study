@@ -1,0 +1,184 @@
+# proveniencia: scope=Zsolt 1–41 és Ézs 40–55 Károli-szóalakjai (token_karoli, oldal=hu), az 1. minta alakjai nélkül, rétegzett; a terv szerinti Gal/Ef/Zsid rész ÜRES maradt, mert a token_karoli csak az ÓSZ 39 könyvét tartalmazta; a gyakoriság a Zsolt 1–41 + Ézs 40–55 hatókörön belüli | forras=szoto_fuggetlen_minta.tsv (sha256:cbdf2843c34cfe7f8151e83034c47bed128424efbd74aa431e2919110c49a1c5; a repón kívüli előmérés, 2026-10-12/13; átvétel: eszkozok/szoto/minta_atvetel.py, F94.0) | ts=2026-10-13T12:05Z
+# allapot: eredetileg független minta, a hibrid v2 hangolása óta fejlesztési halmaz; a 6 nyitott sor a felhasználó döntésével lezárva (ellenorzes=felhasznalo), a többi a felhasználó „mehet”-jével, soronkénti átnézés nélkül (modell_ellenorizetlen); felhasznalo 6, modell_ellenorizetlen 174
+# a forrás saját fejléce (szó szerint): proveniencia: scope=Zsolt 1–41, Ézs 40–55, Gal, Ef, Zsid Károli-szóalakjai (token_karoli, oldal=hu), az első minta alakjai nélkül, rétegzett | forras=pardes.db (2026-10-12T08:27:32Z) + kézi tő-javaslat a 2026-10-13-i öt döntés szerint, a hibrid futtatása előtt (modell: claude-opus-5-5); a 6 nyitott sor a felhasználó döntésével lezárva (2026-10-13), a többi sor ellenőrizetlen („mehet”) | ts=2026-10-13
+alak	gyakorisag	kategoria	szotari_alak	szotari_alak_mai	alapige	tovabbi_elfogadhato	ellenorzes	indoklas	pelda_igehely	strong
+engem	104	gyakori	én	én			modell_ellenorizetlen		Ézs 40:25	H9030
+Az	101	gyakori	az	az			modell_ellenorizetlen		Ézs 42:13	
+Mert	70	gyakori	mert	mert			modell_ellenorizetlen		Ézs 43:3	H3588
+őket	56	gyakori	ő	ő			modell_ellenorizetlen		Ézs 40:24	H9038
+szól	47	gyakori	szól	szól			modell_ellenorizetlen		Ézs 40:1	H0559
+vagyok	47	gyakori	van	van			modell_ellenorizetlen		Ézs 41:4	
+fel	42	gyakori	fel	fel			modell_ellenorizetlen		Ézs 40:9	H5375
+ezt	41	gyakori	ez	ez			modell_ellenorizetlen		Ézs 41:4	
+téged	41	gyakori	te	te			modell_ellenorizetlen		Ézs 41:12	H9031
+de	36	gyakori	de	de			modell_ellenorizetlen		Ézs 40:8	H9002
+nékem	32	gyakori	én	én			modell_ellenorizetlen	régies „nekem”	Ézs 41:28	H9005+H9030
+Ímé	31	gyakori	ím	íme			modell_ellenorizetlen		Ézs 40:10	H2005
+Urat	29	gyakori	Úr	Úr			modell_ellenorizetlen		Ézs 50:10	H3068
+Istenem	28	gyakori	Isten	Isten			modell_ellenorizetlen		Ézs 40:27	H0430+H9020
+nincs	27	gyakori	nincs	nincs			modell_ellenorizetlen		Ézs 41:17	H0369
+így	24	gyakori	így	így			modell_ellenorizetlen		Ézs 40:1	
+mi	22	gyakori	mi	mi			modell_ellenorizetlen		Ézs 40:3	H9025
+föl	22	gyakori	föl	fel			modell_ellenorizetlen	régies igekötő-alak	Ézs 40:9	H5782
+mondja	22	gyakori	mond	mond			modell_ellenorizetlen		Ézs 41:6	H0559
+lesz	22	gyakori	lesz	lesz			modell_ellenorizetlen		Ézs 43:10	
+rajtam	22	gyakori	én	én			modell_ellenorizetlen	névmásragos (3. döntés)	Ézs 43:11	H9030
+zsoltára	22	gyakori	zsoltár	zsoltár			modell_ellenorizetlen		Zsolt 3:1	H4210
+ha	20	gyakori	ha	ha			modell_ellenorizetlen		Ézs 40:7	H3588
+lelkemet	20	gyakori	lélek	lélek			modell_ellenorizetlen	tőváltó (lelk-)	Ézs 42:1	H5315+H9020
+nagy	19	gyakori	nagy	nagy			modell_ellenorizetlen		Ézs 40:26	H7227
+gonoszok	19	gyakori	gonosz	gonosz			modell_ellenorizetlen		Ézs 53:9	H7563
+éneklőmesternek	19	gyakori	éneklőmester	éneklőmester			modell_ellenorizetlen		Zsolt 4:1	H9005+H5329
+Úrban	18	gyakori	Úr	Úr			modell_ellenorizetlen		Ézs 40:31	H9003+H3068
+volt	17	gyakori	van	van			modell_ellenorizetlen		Ézs 41:28	
+igaz	17	gyakori	igaz	igaz			modell_ellenorizetlen		Ézs 44:2	H6662
+együtt	16	gyakori	együtt	együtt			modell_ellenorizetlen		Ézs 41:1	H3162
+tőlem	16	gyakori	én	én			modell_ellenorizetlen	névmásragos	Ézs 43:27	H4480+H9030
+nép	15	gyakori	nép	nép			modell_ellenorizetlen		Ézs 40:7	H5971
+olyan	15	gyakori	olyan	olyan			modell_ellenorizetlen		Ézs 42:19	
+benne	15	gyakori	ő	ő			modell_ellenorizetlen	névmásragos	Ézs 42:25	H9003+H9033
+vissza	14	gyakori	vissza	vissza			modell_ellenorizetlen		Ézs 42:22	H7725
+benned	14	gyakori	te	te			modell_ellenorizetlen	névmásragos	Zsolt 5:12	H9003+H9031
+reám	13	gyakori	én	én			modell_ellenorizetlen	régies „rám”	Ézs 41:1	H0413+H9030
+vannak	12	gyakori	van	van			modell_ellenorizetlen		Ézs 41:27	
+lesznek	7	gyakori	lesz	lesz			modell_ellenorizetlen		Ézs 41:11	H1961
+jelenté	4	regies_ige	jelent	jelent			modell_ellenorizetlen		Ézs 41:26	H5046
+tudatá	2	regies_ige	tudat	tudat			modell_ellenorizetlen		Ézs 41:26	H8085
+kiterjeszté	2	regies_ige	kiterjeszt	kiterjeszt			modell_ellenorizetlen		Ézs 42:5	H7554
+megváltá	2	regies_ige	megvált	megvált			modell_ellenorizetlen		Ézs 44:23	H1350
+alkotá	2	regies_ige	alkot	alkot			modell_ellenorizetlen		Ézs 45:18	H3335
+megvígasztalá	2	regies_ige	megvígasztal	megvígasztal			modell_ellenorizetlen		Ézs 49:13	H5162
+hordozá	2	regies_ige	hordoz	hordoz			modell_ellenorizetlen		Ézs 53:4	H5445+H9038
+mértéklé	1	regies_ige	mértékel	mértékel			modell_ellenorizetlen	régies ige (mérték-el)	Ézs 40:12	H8505
+foglalá	1	regies_ige	foglal	foglal			modell_ellenorizetlen		Ézs 40:12	H3557
+támasztá	1	regies_ige	támaszt	támaszt			modell_ellenorizetlen		Ézs 41:2	H5782
+hallá	1	regies_ige	hall	hall			modell_ellenorizetlen		Ézs 41:26	H8085
+kifeszíté	1	regies_ige	kifeszít	kifeszít			modell_ellenorizetlen		Ézs 42:5	H5186+H9038
+megerősíté	1	regies_ige	megerősít	megerősít			modell_ellenorizetlen		Ézs 45:18	H3559
+emészté	1	regies_ige	emészt	emészt			modell_ellenorizetlen		Ézs 47:14	H8313
+hirdeté	1	regies_ige	hirdet	hirdet			modell_ellenorizetlen		Ézs 48:3	H3318
+mívelé	1	regies_ige	mível	művel			felhasznalo	régies helyesírás; felhasználói döntés 2026-10-13	Ézs 48:5	H6213
+parancsolá	1	regies_ige	parancsol	parancsol			modell_ellenorizetlen		Ézs 48:5	H6680
+terjeszté	1	regies_ige	terjeszt	terjeszt			modell_ellenorizetlen		Ézs 48:13	H2946
+megalapítá	1	regies_ige	megalapít	megalapít			modell_ellenorizetlen		Ézs 51:13	H3245
+nyomorgatá	1	regies_ige	nyomorgat	nyomorgat			modell_ellenorizetlen		Ézs 52:4	H6231
+elszéleszté	1	regies_ige	elszéleszt	elszéleszt			modell_ellenorizetlen		Zsolt 18:15	H6327
+vettetének	1	regies_ige	vettetik	vettetik			modell_ellenorizetlen	régies szenvedő (vettettek)	Ézs 40:24	H2232
+megrémülének	1	regies_ige	megrémül	megrémül			modell_ellenorizetlen		Ézs 41:5	H3372
+elhamvadának	1	regies_ige	elhamvad	elhamvad			modell_ellenorizetlen		Ézs 43:17	H3518
+származának	1	regies_ige	származik	származik			modell_ellenorizetlen		Ézs 48:1	H3318
+bekövetkezének	1	regies_ige	bekövetkezik	bekövetkezik			modell_ellenorizetlen		Ézs 48:3	H0935
+tevé	1	regies_ige	tesz	tesz			modell_ellenorizetlen	tőváltó	Ézs 49:2	H7760
+ismerél	2	regies_ige	ismer	ismer			modell_ellenorizetlen	régies múlt, E/2	Ézs 45:4	H3045+H9030
+mondaná	2	regies_ige	mond	mond			modell_ellenorizetlen	feltételes, tárgyas	Ézs 42:22	H0559
+volnék	1	regies_ige	van	van			modell_ellenorizetlen	feltételes	Ézs 40:25	H7737
+meglennének	1	regies_ige	meglesz	meglesz			modell_ellenorizetlen	feltételes, T/3	Ézs 42:9	H6779
+elhagynának	1	regies_ige	elhagy	elhagy			modell_ellenorizetlen	feltételes	Zsolt 27:10	H5800
+néked	10	regies_helyesiras	te	te			modell_ellenorizetlen	régies „neked”	Ézs 41:9	H9005+H9031
+előttök	2	regies_helyesiras	előtt	előtt			modell_ellenorizetlen	régies személyrag (-ök = -ük); névutó	Ézs 42:16	H9005+H6440+H9028
+velök	2	regies_helyesiras	ő	ő			modell_ellenorizetlen	régies, névmásragos	Ézs 42:16	H9038
+közülök	3	regies_helyesiras	közül	közül			modell_ellenorizetlen	régies személyrag	Ézs 43:9	H9003+H9038
+belőlök	2	regies_helyesiras	ő	ő			modell_ellenorizetlen	névmásragos, régies személyrag	Ézs 44:15	H9006+H9038
+bennök	2	regies_helyesiras	ő	ő			modell_ellenorizetlen	névmásragos, régies személyrag	Zsolt 16:3	H9003+H9038
+erejök	1	regies_helyesiras	erő	erő			modell_ellenorizetlen	régies személyrag, tőváltó (erej-)	Ézs 40:31	H3581
+szűlt	2	regies_helyesiras	szül	szül			modell_ellenorizetlen	régies helyesírás	Ézs 51:2	H2342
+gyűlölőim	3	regies_helyesiras	gyűlölő	gyűlölő			modell_ellenorizetlen		Zsolt 9:14	H8130+H9030
+orczádat	7	regies_helyesiras	orca	arc			felhasznalo	régies helyesírás (cz) és szóalak; egy szó régi és mai alakja; felhasználói döntés 2026-10-13	Zsolt 13:2	H6440+H9021
+Mostantól	2	regies_helyesiras	mostan	most			modell_ellenorizetlen	régies határozószó + rag	Ézs 43:13	H9006+H3117
+ragadománynyá	1	regies_helyesiras	ragadomány	ragadomány			modell_ellenorizetlen	régies helyesírás (nyny)	Ézs 42:22	H4933
+kivánságának	2	regies_helyesiras	kívánság	kívánság			modell_ellenorizetlen	régies helyesírás (kiván)	Zsolt 27:12	H9003+H5315
+egeket	9	ragos_nevszo	ég	ég			modell_ellenorizetlen	tőváltó (eg-)	Ézs 40:12	H8064
+népeket	8	ragos_nevszo	nép	nép			modell_ellenorizetlen		Ézs 41:2	H1471
+igazságot	8	ragos_nevszo	igazság	igazság			modell_ellenorizetlen		Ézs 45:19	H6664
+szívében	8	ragos_nevszo	szív	szív			modell_ellenorizetlen		Ézs 47:8	H9003+H3820+H9023
+ezeket	7	ragos_nevszo	ez	ez			modell_ellenorizetlen		Ézs 42:16	H0428
+méhétől	7	ragos_nevszo	méh	méh			modell_ellenorizetlen		Ézs 44:2	H9006+H0990
+gonosznak	7	ragos_nevszo	gonosz	gonosz			modell_ellenorizetlen		Zsolt 10:2	H7563
+népeknek	6	ragos_nevszo	nép	nép			modell_ellenorizetlen		Ézs 42:1	H3816
+igazat	6	ragos_nevszo	igaz	igaz			modell_ellenorizetlen		Zsolt 5:13	H6662
+rosszat	6	ragos_nevszo	rossz	rossz			modell_ellenorizetlen		Zsolt 15:3	H7451
+melyeket	5	ragos_nevszo	mely	amely			modell_ellenorizetlen		Ézs 42:16	
+seregeknek	5	ragos_nevszo	sereg	sereg			modell_ellenorizetlen		Ézs 44:6	H6635
+előre	5	ragos_nevszo	elő	elő			modell_ellenorizetlen		Ézs 44:8	H9006+H0227
+kiket	5	ragos_nevszo	ki	aki			modell_ellenorizetlen		Ézs 46:3	
+időben	5	ragos_nevszo	idő	idő			modell_ellenorizetlen		Ézs 51:9	H9003+H6256
+ítéletet	5	ragos_nevszo	ítélet	ítélet			modell_ellenorizetlen		Zsolt 7:7	H4941
+gyülekezetben	5	ragos_nevszo	gyülekezet	gyülekezet			modell_ellenorizetlen		Zsolt 22:23	H9003+H6951
+igazságodat	5	ragos_nevszo	igazság	igazság			modell_ellenorizetlen		Zsolt 30:10	H0571+H9021
+pusztában	4	ragos_nevszo	puszta	puszta			modell_ellenorizetlen		Ézs 40:3	H9003+H4057
+kietlenben	4	ragos_nevszo	kietlen	kietlen			modell_ellenorizetlen		Ézs 40:3	H9003+H6160
+eleitől	4	ragos_nevszo	elő	eleje			felhasznalo	régies (eleitől fogva); bizonytalan, kivételtábla-jelölt; felhasználói döntés 2026-10-13	Ézs 40:21	H9006+H7218
+igazságban	4	ragos_nevszo	igazság	igazság			modell_ellenorizetlen		Ézs 41:2	H9003+H6664
+titeket	4	ragos_nevszo	ti	ti			modell_ellenorizetlen		Ézs 41:24	H9036
+éneket	4	ragos_nevszo	ének	ének			modell_ellenorizetlen		Ézs 42:10	H7892
+igaznak	4	ragos_nevszo	igaz	igaz			modell_ellenorizetlen		Ézs 43:26	H6662
+békességet	4	ragos_nevszo	békesség	békesség			modell_ellenorizetlen		Ézs 45:7	H7965
+kezéből	4	ragos_nevszo	kéz	kéz			modell_ellenorizetlen	tőváltó (kez-)	Ézs 51:17	H9006+H3027
+nevedet	4	ragos_nevszo	név	név			modell_ellenorizetlen	tőváltó	Zsolt 5:12	H8034+H9021
+segítségemre	4	ragos_nevszo	segítség	segítség			modell_ellenorizetlen		Zsolt 22:20	H9005+H5833+H9020
+hegyeket	3	ragos_nevszo	hegy	hegy			modell_ellenorizetlen		Ézs 40:12	H2022
+halmokat	3	ragos_nevszo	halom	halom			modell_ellenorizetlen	tőváltó (halm-)	Ézs 40:12	H1389
+fejedelmeket	3	ragos_nevszo	fejedelem	fejedelem			modell_ellenorizetlen	tőváltó (fejedelm-)	Ézs 40:23	H7336
+népnek	3	ragos_nevszo	nép	nép			modell_ellenorizetlen		Ézs 42:5	H9005+H5971
+dicsőségemet	3	ragos_nevszo	dicsőség	dicsőség			modell_ellenorizetlen		Ézs 42:8	H3519+H9020
+sötétséget	3	ragos_nevszo	sötétség	sötétség			modell_ellenorizetlen		Ézs 42:16	H2822
+tűzben	3	ragos_nevszo	tűz	tűz			modell_ellenorizetlen		Ézs 43:2	H1119+H0784
+folyóvizeket	3	ragos_nevszo	folyóvíz	folyóvíz			modell_ellenorizetlen	tőváltó (-viz-)	Ézs 43:19	H5104
+házában	3	ragos_nevszo	ház	ház			modell_ellenorizetlen		Ézs 44:13	H9003+H1004
+világosságot	3	ragos_nevszo	világosság	világosság			modell_ellenorizetlen		Ézs 45:7	H0216
+gyalázatot	3	ragos_nevszo	gyalázat	gyalázat			modell_ellenorizetlen		Ézs 45:16	H3637
+árvának	2	ragos_nevszo	árva	árva			modell_ellenorizetlen		Zsolt 10:14	H3490
+nyomorúságának	1	ragos_nevszo	nyomorúság	nyomorúság			modell_ellenorizetlen		Ézs 40:2	H6635+H9024
+barátjának	1	ragos_nevszo	barát	barát			modell_ellenorizetlen		Ézs 41:6	H9005+H0251+H9023
+búsulásának	1	ragos_nevszo	búsulás	búsulás			modell_ellenorizetlen		Ézs 42:25	H0639+H9023
+derekának	1	ragos_nevszo	derék	derék			modell_ellenorizetlen	tőváltó (derek-)	Ézs 45:1	H4975
+alkotójának	1	ragos_nevszo	alkotó	alkotó			modell_ellenorizetlen		Ézs 45:9	H9005+H3335+H9033
+magvának	1	ragos_nevszo	mag	mag			modell_ellenorizetlen	régies tőváltó (magv-)	Ézs 45:19	H9005+H2233
+leányának	1	ragos_nevszo	leány	lány			modell_ellenorizetlen		Zsolt 9:15	H1323
+lelkének	1	ragos_nevszo	lélek	lélek			modell_ellenorizetlen		Zsolt 10:3	H5315+H9023
+felebarátjának	1	ragos_nevszo	felebarát	felebarát			modell_ellenorizetlen		Zsolt 15:3	H9005+H7453+H9023
+ellenségének	1	ragos_nevszo	ellenség	ellenség			modell_ellenorizetlen		Zsolt 18:1	H0341+H9023
+leheletének	1	ragos_nevszo	lehelet	lehelet			modell_ellenorizetlen		Zsolt 18:16	H5397
+árnyékának	1	ragos_nevszo	árnyék	árnyék			modell_ellenorizetlen		Zsolt 23:4	H6757
+hajlékának	1	ragos_nevszo	hajlék	hajlék			modell_ellenorizetlen		Zsolt 26:8	H4908
+sátrának	1	ragos_nevszo	sátor	sátor			modell_ellenorizetlen	tőváltó (sátr-)	Zsolt 27:5	H0168+H9023
+kezének	1	ragos_nevszo	kéz	kéz			modell_ellenorizetlen		Zsolt 28:5	H3027+H9023
+szájának	1	ragos_nevszo	száj	száj			modell_ellenorizetlen		Zsolt 33:6	H6310+H9023
+szolgájának	1	ragos_nevszo	szolga	szolga			modell_ellenorizetlen		Zsolt 35:27	H5650+H9023
+szövetségévé	2	ragos_nevszo	szövetség	szövetség			modell_ellenorizetlen		Ézs 42:6	H9005+H1285
+pozdorjává	1	ragos_nevszo	pozdorja	pozdorja			modell_ellenorizetlen		Ézs 41:15	H9004+H4671
+tavává	1	ragos_nevszo	tó	tó			modell_ellenorizetlen	tőváltó (tav-)	Ézs 41:18	H9005+H0098
+szigetekké	1	ragos_nevszo	sziget	sziget			modell_ellenorizetlen		Ézs 42:15	H9005+H0339
+prédává	1	ragos_nevszo	préda	préda			modell_ellenorizetlen		Ézs 42:22	H9005+H0957
+bolondsággá	1	ragos_nevszo	bolondság	bolondság			modell_ellenorizetlen		Ézs 44:25	H5528
+bíznak	8	ige_mai_alak	bízik	bízik			modell_ellenorizetlen		Ézs 40:31	H2620
+járnak	5	ige_mai_alak	jár	jár			modell_ellenorizetlen		Ézs 40:31	H1980
+megszégyenülnek	5	ige_mai_alak	megszégyenül	megszégyenül			modell_ellenorizetlen		Ézs 41:11	H0954
+szólnak	5	ige_mai_alak	szól	szól			modell_ellenorizetlen		Ézs 45:24	H1696
+örüljenek	5	ige_mai_alak	örül	örül			modell_ellenorizetlen		Zsolt 13:5	H8055
+elvesznek	4	ige_mai_alak	elvész	elvész			felhasznalo	elpusztulnak (H0006 ábad); felhasználói döntés 2026-10-13	Ézs 41:11	H0006
+szeret	4	ige_mai_alak	szeret	szeret			modell_ellenorizetlen		Ézs 41:24	H0157
+tudnak	4	ige_mai_alak	tud	tud			modell_ellenorizetlen		Ézs 42:16	H3045
+látnak	4	ige_mai_alak	lát	lát			modell_ellenorizetlen		Ézs 44:9	H7200
+leborulnak	4	ige_mai_alak	leborul	leborul			modell_ellenorizetlen		Ézs 45:14	H7812
+jőnek	4	ige_mai_alak	jön	jön			modell_ellenorizetlen	régies alak (jőnek = jönnek)	Ézs 47:9	H0935
+törnek	4	ige_mai_alak	tör	tör			modell_ellenorizetlen		Zsolt 38:13	H1245
+keresnek	3	ige_mai_alak	keres	keres			modell_ellenorizetlen		Ézs 41:17	H1245
+várnak	3	ige_mai_alak	vár	vár			modell_ellenorizetlen		Ézs 42:4	H3176
+mennek	3	ige_mai_alak	megy	megy			modell_ellenorizetlen	tőváltó	Ézs 45:14	H5674
+emlékezzél	3	ige_mai_alak	emlékezik	emlékszik			felhasznalo	régies; felhasználói döntés 2026-10-13	Ézs 44:21	H2142
+cselekedjél	3	ige_mai_alak	cselekedik	cselekszik			felhasznalo	régies; felhasználói döntés 2026-10-13	Zsolt 34:15	H6213
+bosszankodjál	3	ige_mai_alak	bosszankodik	bosszankodik			modell_ellenorizetlen		Zsolt 37:1	H2734
+jelentsék	2	ige_mai_alak	jelent	jelent			modell_ellenorizetlen		Ézs 41:22	H5046
+megértsék	1	ige_mai_alak	megért	megért			modell_ellenorizetlen		Ézs 41:20	H7919
+vegyék	1	ige_mai_alak	vesz	vesz			modell_ellenorizetlen	tőváltó	Ézs 41:20	H7760
+Izráel	30	tulajdonnev	Izráel	Izráel			modell_ellenorizetlen		Ézs 40:27	H3478
+Dávid	27	tulajdonnev	Dávid	Dávid			modell_ellenorizetlen		Ézs 55:3	H9005+H1732
+Jákób	19	tulajdonnev	Jákób	Jákób			modell_ellenorizetlen		Ézs 40:27	H3290
+Szela	17	tulajdonnev	Szela	Szela			modell_ellenorizetlen		Zsolt 3:3	H5542
+Izráelnek	12	tulajdonnev	Izráel	Izráel			modell_ellenorizetlen		Ézs 41:14	H3478
+Dávidé	10	tulajdonnev	Dávid	Dávid			modell_ellenorizetlen	birtokjel	Zsolt 11:1	H9005+H1732
+Jeruzsálem	6	tulajdonnev	Jeruzsálem	Jeruzsálem			modell_ellenorizetlen		Ézs 40:2	H3389
+Istene	11	tulajdonnev	Isten	Isten			modell_ellenorizetlen		Ézs 41:17	H0430
+Úrhoz	7	tulajdonnev	Úr	Úr			modell_ellenorizetlen		Ézs 55:7	H0413+H3068
+Ura	7	tulajdonnev	Úr	Úr			modell_ellenorizetlen	tőváltó	Ézs 44:6	H3068
