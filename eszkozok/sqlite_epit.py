@@ -214,7 +214,7 @@ def integritas(adat_dir):
 def integritas_md(sorok, adat_dir, mod):
     ki = ['# SQLITE_EPIT -- integritás-ellenőrzés (F79)', '',
           '*Proveniencia: `scope=manual | forras=%s | ts=%s`; az ellenőrzés a betöltés ELŐTT, '
-          'a TSV-sorlistákon fut, az `eszkozok/ellenoriz.py` függvényeivel (DT-F79a (3), (7)); '
+          'a TSV-sorlistákon fut, az `eszkozok/ellenoriz.py` függvényeivel (DT109 (3), (7)); '
           'építési mód: %s.*' % (os.path.relpath(adat_dir, ROOT).replace(os.sep, '/') + '/*.tsv',
                                   ts_most(), mod), '']
     for s in sorok:
