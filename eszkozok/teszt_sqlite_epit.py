@@ -606,6 +606,73 @@ class Integracio(unittest.TestCase):
         for szo, kis in self.con.execute('SELECT hu_szo, hu_szo_kis FROM token_par LIMIT 2000'):
             self.assertEqual(S.szo_kis(szo), kis)
 
+    # -- F95: szotari alak (DT-F95a) -----------------------------------------------------------
+    def _szoto_tsv(self):
+        return G.tsv_beolvas(os.path.join(ROOT, 'adat', 'szoto', 'karoli_szotari_alak.tsv'))[1]
+
+    def test_f95_szotari_alak_sorszam_licenc_hash(self):
+        sorok = self._szoto_tsv()
+        self.assertEqual(self.con.execute('SELECT COUNT(*) FROM szotari_alak').fetchone()[0], len(sorok))
+        # a Karoli valodi *alak* szava nem veszik el fejlecnek
+        self.assertEqual(self.con.execute("SELECT szotari_alak FROM szotari_alak WHERE alak='alak'").fetchall(),
+                         [('alak',)])
+        self.assertEqual(self.con.execute("SELECT COUNT(*) FROM szotari_alak WHERE modszer='simplemma'").fetchone()[0], 0)
+        for t in ('szotari_alak', 'szotari_kereso', 'szotari_token_kotojeles'):
+            self.assertEqual(self.con.execute('SELECT COUNT(*) FROM tabla_licenc WHERE tabla=?', (t,)).fetchone()[0], 1, t)
+        self.assertEqual(self.con.execute("SELECT licenc_dataset FROM tabla_licenc WHERE tabla='szotari_alak'").fetchone()[0],
+                         'szoto_tablak')
+        meta = dict(self.con.execute('SELECT kulcs, ertek FROM meta').fetchall())
+        self.assertEqual(meta['szotari_alak:forras_sor'], str(len(sorok)))
+        self.assertTrue(meta['hash:szotari_alak'].startswith('%d|' % len(sorok)))
+        db, h = S.tablak_hash(self.a)['szotari_alak']
+        self.assertEqual((db, h), (len(sorok), meta['hash:szotari_alak'].split('|')[1]))
+
+    def test_f95_kereso_negy_mezo(self):
+        sorok = self._szoto_tsv()
+        n = self.con.execute('SELECT COUNT(*) FROM szotari_kereso').fetchone()[0]
+        self.assertGreaterEqual(n, len(sorok))
+        ures = self.con.execute("SELECT COUNT(*) FROM szotari_kereso WHERE keresoalak='' OR mezok=''").fetchone()[0]
+        self.assertEqual(ures, 0)
+        # mind a negy mezo kereshető: szotari, mai, alapige, tovabbi
+        mezok = ' '.join(m for (m,) in self.con.execute('SELECT DISTINCT mezok FROM szotari_kereso'))
+        for m in ('szotari', 'mai', 'alapige', 'tovabbi'):
+            self.assertIn(m, mezok)
+        # a nagybetus lemma kisbetus keresessel is megvan
+        self.assertGreater(self.con.execute(
+            "SELECT COUNT(*) FROM szotari_kereso k JOIN szotari_alak a ON a.alak=k.alak "
+            "WHERE k.keresoalak='isten' AND a.szotari_alak='Isten'").fetchone()[0], 0)
+
+    def test_f95_index_hasznalat(self):
+        for sql in ("SELECT * FROM szotari_alak WHERE alak='Isten'",
+                    "SELECT * FROM szotari_alak WHERE szotari_alak='ember'",
+                    "SELECT * FROM szotari_kereso WHERE keresoalak='ember'",
+                    "SELECT t.igehely, t.sorszam FROM szotari_kereso k JOIN token_karoli t ON t.szo=k.alak "
+                    "AND t.oldal='hu' WHERE k.keresoalak='ember'"):
+            terv = ' '.join(r[3] for r in self.con.execute('EXPLAIN QUERY PLAN ' + sql))
+            self.assertIn('INDEX', terv, sql)
+            self.assertNotIn('SCAN t', terv, sql)
+            self.assertNotIn('SCAN k', terv, sql)
+            self.assertNotIn('SCAN szotari_alak', terv, sql)
+
+    def test_f95_kotojeles_segedtabla(self):
+        meta = dict(self.con.execute('SELECT kulcs, ertek FROM meta').fetchall())
+        db = self.con.execute('SELECT COUNT(*) FROM szotari_token_kotojeles').fetchone()[0]
+        self.assertGreater(db, 0)
+        # minden darab egy kotojeles alakhoz tartozik, es a tokenek a token_karoli-ban megvannak
+        rossz = self.con.execute(
+            "SELECT COUNT(*) FROM szotari_token_kotojeles k WHERE k.alak NOT LIKE '%-%' OR NOT EXISTS "
+            "(SELECT 1 FROM token_karoli t WHERE t.igehely=k.igehely AND t.oldal='hu' AND t.sorszam=k.sorszam)").fetchone()[0]
+        self.assertEqual(rossz, 0)
+        nem_pontos = self.con.execute('SELECT COUNT(DISTINCT igehely||sorszam) FROM szotari_token_kotojeles '
+                                      'WHERE pontos_talalat=0').fetchone()[0]
+        self.assertEqual(str(nem_pontos), meta['szotari_token:kotojeles_feloldott_nem_pontos'])
+        # a pontos talalat nelkuli hu tokenek = a feloldottak + a feloldhatatlanok
+        self.assertEqual(int(meta['szotari_token:pontos_alak_nem_talal']),
+                         nem_pontos + int(meta['szotari_token:nem_oldodik_fel']))
+        alakok = {r['alak'] for r in self._szoto_tsv()}
+        nem = [szo for (szo,) in self.con.execute("SELECT szo FROM token_karoli WHERE oldal='hu'") if szo not in alakok]
+        self.assertEqual(len(nem), int(meta['szotari_token:pontos_alak_nem_talal']))
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=1)
