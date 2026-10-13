@@ -918,7 +918,7 @@ Kulcs: `dataset`. Fejlécsorok `#`-tel; olvasás `split('\t')`.
 | `kotelezo_megjeloles` | a kötelező forrásmegjelölés **szó szerint**, ha a forrás megad ilyet; egyébként üres |
 | `allapot` | `tisztazott` (a licenc a forrás saját dokumentumából, megadott helyen igazolt) \| `kozkincs` (F33 / DT-F33d; feltételei a 2. szabályban) \| `tisztazatlan` |
 | `megjegyzes` | tudnivaló; `javaslat:` kezdetű mondat = eltérés vagy javasolt teendő (nem döntés) |
-| `cimke` | zárt (F42 / DT-F42g): a generált nézetekben megjelenő rövid licenc-címke; **kötelező minden sorra**. Értékek: `közkincs` \| `CC0 1.0` \| `CC BY 4.0` \| `CC BY-SA 4.0` \| `© Mounce 1993` \| `projekt-adat` \| `tisztázatlan`. Szabály: `allapot=tisztazatlan` sor címkéje `tisztázatlan` (kivétel: a `projekt_adat` sor, címkéje `projekt-adat`); `tisztazott` és `kozkincs` sor címkéje a `licenc` oszlop szerinti rövid név. Új típusú licencnél a címke-értékkészlet bővítése SEMA-változtatás. A tábla **utolsó** oszlopa. |
+| `cimke` | zárt (F42 / DT-F42g): a generált nézetekben megjelenő rövid licenc-címke; **kötelező minden sorra**. Értékek: `közkincs` \| `CC0 1.0` \| `CC BY 4.0` \| `CC BY-SA 4.0` \| `© Mounce 1993` \| `minden jog fenntartva` \| `tisztázatlan`. Szabály: `allapot=tisztazatlan` sor címkéje `tisztázatlan`; `tisztazott` és `kozkincs` sor címkéje a `licenc` oszlop szerinti rövid név. A `minden jog fenntartva` a projekt saját adatáé és prózáé (F89 / DT-F89a, DT116): a `projekt_adat` soré, valamint azoké a származtatott soroké, amelyeknek a saját része ez (`Karoli_Strong_parok`, `Karoli_Strong_szavak`, `karoli_variancia`, `Karoli_Strong_kivonat`, `LXX_versszintu_parok`, `Karoli_versmegfeleltetes`); a harmadik fél komponenseire a `licenc` oszlop és a komponens-sorok vonatkoznak. A korábbi `projekt-adat` címke megszűnt. Új típusú licencnél a címke-értékkészlet bővítése SEMA-változtatás. A tábla **utolsó** oszlopa. |
 
 **Két bővítés a briefhez képest.** A `kereskedelmi` és a `share_alike` oszlop a
 `tisztazatlan` értéket is felveszi: egy ismeretlen licencű forrásnál sem `igen`, sem `nem`
@@ -954,8 +954,9 @@ licenc-szövegen túli feltételt jelöl (pl. védjegy-szabály, UK Crown-jog).
    **Nave_basokant** (Nave, 1897) sorra a `kozkincs` állapothoz a (c) feltétel nem követelmény: a mű kora miatt közkincs,
    kiadói nyilatkozat nélkül is. A kivétel a művekre szól, a digitális réteg külön feltételeit (formázás, lekaparás)
    nem igazolja; azokat a sorok megjegyzése `javaslat:` jelöléssel tartja nyilván. Más sorra nem általánosítható.
-3. A `projekt_adat` sor a repó saját adatáé; a repónak nincs LICENSE-fájlja, tehát a
-   kimeneti réteg licence nyitott kérdés (DT-F24).
+3. A `projekt_adat` sor a repó saját adatáé és prózáé. **F89 / DT-F89a (felhasználói döntés, 2026.10.13; DT116):** a jogok forrása a jogtulajdonos döntése, a repó gyökerében lévő `LICENSE`-ban rögzítve (ez a sor `forras_hely`-e);
+   minden jog fenntartva, `kereskedelmi=igen` (a jogtulajdonos maga használhatja; harmadik félnek a `LICENSE` nem ad jogot), `share_alike=nem`, `allapot=tisztazott`.
+   A harmadik fél adatára a `LICENSE` nem terjed ki, az a saját sora szerint érvényes; a CC BY-SA és az MCGED eredetű rész nem kerülhet zárt csomagba. (A DT-F24 halasztása lezárva, a DT112 felülírva.)
 
 **N9 (a licenc-besorolás kettős forrása): lezárva (F42 / DT-F42g, 2026-10-05).** A generátor (`eszkozok/lexikon_general.py`) a licenc-állapotot (`allapot`) és a megjelenő rövid címkét (`cimke`) ebből a táblából olvassa; a kódban nincs licenc-konstans, és nincs alapértelmezett érték.
 

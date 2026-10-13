@@ -16,9 +16,13 @@ Lepesek:
   3. Igehely-normalizalas: a STEPBible-alaku datasetek a `Konyv_normalizalo_tabla.tsv`-n at,
      a Siralmak kulcsa `Sir` (a normalizalo tabla `JSir`-je explicit alias; DT-F79a (6)).
      A nem leKepezheto / nem Karoli-versre mutato sor a `normalizalas_jelentes` tablaba kerul.
-  4. Licenc: minden tablan `licenc_allapot`, `kereskedelmi`, `licenc_dataset` (az
-     `adat/licencek.tsv`-bol). Alapertek nincs: licencsor nelkuli tabla kimarad, es a
-     jelentesben all. Szarmaztatott tabla licence a forrasaie kozul a legszigorubb.
+  4. Licenc (F89, DT113): TABLASZINTU, a `tabla_licenc(tabla, licenc_allapot, kereskedelmi,
+     licenc_dataset, cimke)` tablaban (az `adat/licencek.tsv`-bol); az adattablak soraiban
+     nincs licenc-oszlop. Minden epitett tablanak pontosan egy `tabla_licenc`-sora van.
+     Alapertek nincs: licencsor nelkuli tabla kimarad, es a jelentesben all. Szarmaztatott
+     tabla licence a forrasaie kozul a legszigorubb (DT109 (2c)). A `cimke` a licencsorok
+     `cimke` ertekei (tobb forrasnal `; `-vel), hogy egy zart csomag (#86) a CC BY-SA es az
+     MCGED tablakat szurni tudja.
 
 CLI:
     python eszkozok/sqlite_epit.py [--mod minta|teljes] [--kimenet FAJL] [--proba] [--naplo]
@@ -87,10 +91,12 @@ RESERVALT_OSZLOP = {'licenc_allapot', 'kereskedelmi', 'licenc_dataset'}
 # Tabla -> a licencek.tsv `dataset` kulcsai. Szarmaztatott tablanal tobb kulcs: a
 # legszigorubb ertek ervenyes (DT-F79a (2c)).
 SZARMAZTATOTT_LICENC = {
-    'token_par': ['Karoli_1908', 'TAHOT', 'projekt_adat'],
-    'token_karoli': ['Karoli_1908', 'TAHOT', 'projekt_adat'],
-    'frazis_pozicio': ['Karoli_1908', 'TAHOT', 'projekt_adat'],
-    'karoli_variancia': ['Karoli_1908', 'TAHOT', 'projekt_adat'],
+    # F89 (DT-F89a): a Karoli-Strong tablak sajat licencsora van (minden jog fenntartva; a
+    # forrasaik, Karoli 1908 es TAHOT/TAGNT, a sor megjegyzeseben es a komponens-sorokban)
+    'token_par': ['Karoli_Strong_parok'],
+    'token_karoli': ['Karoli_Strong_szavak'],
+    'frazis_pozicio': ['Karoli_Strong_parok'],
+    'karoli_variancia': ['karoli_variancia'],
     'token_eredeti': ['TAHOT', 'TAGNT'],
     'token_strong': ['TAHOT', 'TAGNT'],
     'strong_parok': ['TAHOT', 'TAGNT', 'projekt_adat'],
@@ -208,7 +214,7 @@ def integritas(adat_dir):
 def integritas_md(sorok, adat_dir, mod):
     ki = ['# SQLITE_EPIT -- integritás-ellenőrzés (F79)', '',
           '*Proveniencia: `scope=manual | forras=%s | ts=%s`; az ellenőrzés a betöltés ELŐTT, '
-          'a TSV-sorlistákon fut, az `eszkozok/ellenoriz.py` függvényeivel (DT-F79a (3), (7)); '
+          'a TSV-sorlistákon fut, az `eszkozok/ellenoriz.py` függvényeivel (DT109 (3), (7)); '
           'építési mód: %s.*' % (os.path.relpath(adat_dir, ROOT).replace(os.sep, '/') + '/*.tsv',
                                   ts_most(), mod), '']
     for s in sorok:
@@ -315,6 +321,7 @@ class Epito(object):
         self.tmp = kimenet + '.epit'
         self.con = None
         self.licencek = {}
+        self.tabla_lic = {}       # tabla -> (licenc_allapot, kereskedelmi, licenc_dataset, cimke)
         self.tablak = {}          # nev -> sorszam
         self.kihagyott = []       # (tabla, ok)
         self.norm_jelentes = {}   # (tabla, nyers, ok) -> darab
@@ -334,7 +341,14 @@ class Epito(object):
             ker.append(sor['kereskedelmi'])
         a = min(allapotok, key=lambda x: SZIGOR_ALLAPOT[x])
         c = min(ker, key=lambda x: SZIGOR_KERESKEDELMI[x])
-        return a, c, '+'.join(kulcsok)
+        cimkek = []
+        for k in kulcsok:
+            cim = self.licencek[k].get('cimke', '')
+            if not cim:
+                raise LicencHiany('üres cimke: %s' % k)
+            if cim not in cimkek:
+                cimkek.append(cim)
+        return a, c, '+'.join(kulcsok), '; '.join(cimkek)
 
     def jelent_norm(self, tabla, nyers, ok):
         k = (tabla, nyers, ok)
@@ -342,29 +356,29 @@ class Epito(object):
 
     # -- tabla-letrehozas -------------------------------------------------
     def tabla(self, nev, oszlopok, sorok, lic, indexek=()):
-        """oszlopok: [(nev, tipus)]; sorok: iteralhato tuple-ok. Licenc nelkul nem epul."""
+        """oszlopok: [(nev, tipus)]; sorok: iteralhato tuple-ok. Licenc nelkul nem epul.
+        A licenc tablaszintu (F89, DT113): a `tabla_licenc` egy sora, nem sor-oszlop."""
         try:
-            a, c, ds = self.licenc_feloldas(lic)
+            lic_ertek = self.licenc_feloldas(lic)
         except LicencHiany as exc:
             self.kihagyott.append((nev, str(exc)))
             return False
-        cols = list(oszlopok) + [('licenc_allapot', 'TEXT'), ('kereskedelmi', 'TEXT'),
-                                 ('licenc_dataset', 'TEXT')]
+        cols = list(oszlopok)
         self.con.execute('CREATE TABLE "%s" (%s)' % (nev, ', '.join(
             '"%s" %s' % (n, t) for n, t in cols)))
         ph = ','.join('?' * len(cols))
         n = 0
-        extra = (a, c, ds)
 
         def gen():
             nonlocal n
             for s in sorok:
                 n += 1
-                yield tuple(s) + extra
+                yield tuple(s)
         self.con.executemany('INSERT INTO "%s" VALUES (%s)' % (nev, ph), gen())
         for i, ix in enumerate(indexek):
             self.con.execute('CREATE INDEX "ix_%s_%d" ON "%s" (%s)' % (nev, i, nev, ix))
         self.tablak[nev] = n
+        self.tabla_lic[nev] = lic_ertek
         return True
 
     def licenc_ellenorzes(self, nev, lic):
@@ -417,6 +431,7 @@ class Epito(object):
         self._fts()
         self._jelentes_tabla()
         self._meta()
+        self._tabla_licenc()
 
     # -- minta ---------------------------------------------------------------
     def _minta_versek(self):
@@ -849,11 +864,10 @@ class Epito(object):
     def _fts(self):
         if not self.licenc_ellenorzes('fts_motivum', SZARMAZTATOTT_LICENC['fts_motivum']):
             return
-        a, c, ds = self.licenc_feloldas(SZARMAZTATOTT_LICENC['fts_motivum'])
+        self.tabla_lic['fts_motivum'] = self.licenc_feloldas(SZARMAZTATOTT_LICENC['fts_motivum'])
         self.con.execute(
             'CREATE VIRTUAL TABLE fts_motivum USING fts5(szoveg, motivum_id UNINDEXED, rovat UNINDEXED, '
-            'forras_fajl UNINDEXED, regi_forras UNINDEXED, licenc_allapot UNINDEXED, '
-            'kereskedelmi UNINDEXED, licenc_dataset UNINDEXED, tokenize="unicode61 remove_diacritics 2")')
+            'forras_fajl UNINDEXED, regi_forras UNINDEXED, tokenize="unicode61 remove_diacritics 2")')
         motivumok = G.tsv_beolvas(os.path.join(self.adat, 'motivumok.tsv'))[1]
         regi_id = {}
         for m in motivumok:
@@ -897,8 +911,8 @@ class Epito(object):
             for rovat, torzs in _rovatok(szoveg):
                 if not torzs.strip():
                     continue
-                self.con.execute('INSERT INTO fts_motivum VALUES (?,?,?,?,?,?,?,?)',
-                                 (torzs, mid, rovat, rel, regi, a, c, ds))
+                self.con.execute('INSERT INTO fts_motivum VALUES (?,?,?,?,?)',
+                                 (torzs, mid, rovat, rel, regi))
                 n += 1
         self.tablak['fts_motivum'] = n
         self.megjegyzesek.append('FTS: %d fájl, %d rovat; átmeneti régi tanulmányok `regi_forras=1`; '
@@ -924,6 +938,17 @@ class Epito(object):
                     ('forras', 'adat/*.tsv, konkordancia/*.tsv (eszkozok/sqlite_epit.py, F79)'),
                     ('kihagyott_tablak', '; '.join('%s (%s)' % k for k in self.kihagyott))],
                    SZARMAZTATOTT_LICENC['meta'])
+
+    def _tabla_licenc(self):
+        """F89 (DT113): a tablaszintu licenc. Minden epitett tablanak (a sajat magat is beleertve)
+        pontosan egy sora van; a licenc-oszlopok nem kerulnek az adattablakba."""
+        sajat = self.licenc_feloldas(['projekt_adat'])
+        sorok = [(n,) + v for n, v in sorted(self.tabla_lic.items()) if n != 'tabla_licenc']
+        sorok.append(('tabla_licenc',) + sajat)
+        sorok.sort()
+        self.tabla('tabla_licenc', [('tabla', 'TEXT'), ('licenc_allapot', 'TEXT'), ('kereskedelmi', 'TEXT'),
+                                    ('licenc_dataset', 'TEXT'), ('cimke', 'TEXT')],
+                   sorok, ['projekt_adat'], ['tabla'])
 
 
 def _rovatok(szoveg):
@@ -1097,10 +1122,10 @@ def proba_md(eredmenyek):
 
 
 def tablameret(db_path):
-    """{tabla: (sorszam, bajt_indexszel, bajt_licenc_oszlopok_nelkul|None)} -- a Python sqlite3
-    nem tartalmazza a dbstat modult, ezert minden tablat (indexeivel) kulon ideiglenes adatbazisba
-    masolunk, es a lapszam * lapmeret adja a bajtot; a masodik ertek ugyanez a 3 licenc_* oszlop
-    nelkul (a #86 N-F86b bemenete: a licenc_* oszlopok valodi reszesedese)."""
+    """{tabla: (sorszam, bajt_indexszel)} -- a Python sqlite3 nem tartalmazza a dbstat modult,
+    ezert minden tablat (indexeivel) kulon ideiglenes adatbazisba masolunk, es a lapszam *
+    lapmeret adja a bajtot. (F89: a licenc tablaszintu, a sor-szintu licenc_* oszlopok
+    reszesedese mar nem merendo.)"""
     import tempfile
     con = sqlite3.connect(db_path)
     ki = {}
@@ -1112,37 +1137,30 @@ def tablameret(db_path):
             sorszam = con.execute('SELECT COUNT(*) FROM "%s"' % nev).fetchone()[0]
             indexek = [r[0] for r in con.execute(
                 "SELECT sql FROM sqlite_master WHERE type='index' AND tbl_name=? AND sql IS NOT NULL", (nev,))]
-            meretek = []
-            valtozatok = (True, False) if not sql.upper().startswith('CREATE VIRTUAL') else (True,)
-            for licenccel in valtozatok:
-                f = os.path.join(tmpdir, 'x.db')
-                con.execute("ATTACH DATABASE ? AS x", (f,))
-                try:
-                    if sql.upper().startswith('CREATE VIRTUAL'):
-                        con.execute(sql.replace('CREATE VIRTUAL TABLE ' + nev, 'CREATE VIRTUAL TABLE x.' + nev, 1))
-                        con.execute('INSERT INTO x."%s" SELECT * FROM main."%s"' % (nev, nev))
-                    else:
-                        cols = [r[1] for r in con.execute('PRAGMA main.table_info("%s")' % nev)]
-                        if not licenccel:
-                            cols = [c for c in cols if c not in RESERVALT_OSZLOP]
-                        deklar = []
-                        for r in con.execute('PRAGMA main.table_info("%s")' % nev):
-                            if r[1] in cols:
-                                deklar.append('"%s" %s' % (r[1], r[2]))
-                        con.execute('CREATE TABLE x."%s" (%s)' % (nev, ', '.join(deklar)))
-                        con.execute('INSERT INTO x."%s" SELECT %s FROM main."%s"' % (
-                            nev, ', '.join('"%s"' % c for c in cols), nev))
-                        for isql in indexek:
-                            con.execute(isql.replace('CREATE INDEX "', 'CREATE INDEX x."', 1))
-                    con.commit()
-                    lap = con.execute('PRAGMA x.page_count').fetchone()[0]
-                    meret = con.execute('PRAGMA x.page_size').fetchone()[0]
-                    meretek.append(lap * meret)
-                finally:
-                    con.execute('DETACH DATABASE x')
-                    if os.path.exists(f):
-                        os.remove(f)
-            ki[nev] = (sorszam, meretek[0], meretek[1] if len(meretek) > 1 else None)
+            f = os.path.join(tmpdir, 'x.db')
+            con.execute("ATTACH DATABASE ? AS x", (f,))
+            try:
+                if sql.upper().startswith('CREATE VIRTUAL'):
+                    con.execute(sql.replace('CREATE VIRTUAL TABLE ' + nev, 'CREATE VIRTUAL TABLE x.' + nev, 1))
+                    con.execute('INSERT INTO x."%s" SELECT * FROM main."%s"' % (nev, nev))
+                else:
+                    deklar, cols = [], []
+                    for r in con.execute('PRAGMA main.table_info("%s")' % nev):
+                        cols.append(r[1])
+                        deklar.append('"%s" %s' % (r[1], r[2]))
+                    con.execute('CREATE TABLE x."%s" (%s)' % (nev, ', '.join(deklar)))
+                    con.execute('INSERT INTO x."%s" SELECT %s FROM main."%s"' % (
+                        nev, ', '.join('"%s"' % c for c in cols), nev))
+                    for isql in indexek:
+                        con.execute(isql.replace('CREATE INDEX "', 'CREATE INDEX x."', 1))
+                con.commit()
+                lap = con.execute('PRAGMA x.page_count').fetchone()[0]
+                meret = con.execute('PRAGMA x.page_size').fetchone()[0]
+                ki[nev] = (sorszam, lap * meret)
+            finally:
+                con.execute('DETACH DATABASE x')
+                if os.path.exists(f):
+                    os.remove(f)
         return ki
     finally:
         con.close()
@@ -1178,22 +1196,28 @@ def meres_md(epito, hashek, ido, meret, mod, tmeret=None, masodik=None):
     ki.append('')
     if tmeret:
         ossz = sum(v[1] for v in tmeret.values())
-        oszl = sum(v[1] - v[2] for v in tmeret.values() if v[2] is not None)
-        ki += ['## Táblánkénti bájtméret és a `licenc_*` oszlopok részesedése (a #86 N-F86b bemenete)', '',
+        ki += ['## Táblánkénti bájtméret', '',
                'Mérés: minden tábla (indexeivel) külön adatbázisba másolva, lapszám × lapméret (a Python sqlite3-ból '
-               'hiányzik a `dbstat`); a „licenc nélkül” oszlop ugyanez a három `licenc_*` oszlop nélkül.', '',
+               'hiányzik a `dbstat`).', '',
                '- a táblák összege: **%.1f MB** (a fájl: %.1f MB; a többlet a táblánkénti külön adatbázisok saját fejléc- és séma-lapjaiból adódik)'
                % (ossz / 1048576.0, meret / 1048576.0),
-               '- a `licenc_*` oszlopok összes részesedése: **%.1f MB (%.1f%%)**' % (oszl / 1048576.0, 100.0 * oszl / ossz),
-               '', '| tábla | sor | MB (indexszel) | MB licenc_* nélkül | licenc_* részesedés |',
-               '|---|---:|---:|---:|---:|']
-        for n, (db, b, b2) in sorted(tmeret.items(), key=lambda x: -x[1][1]):
-            if b2 is None:
-                ki.append('| `%s` | %d | %.2f | (FTS: nincs külön mérés) | |' % (n, db, b / 1048576.0))
-            else:
-                ki.append('| `%s` | %d | %.2f | %.2f | %.1f%% |' % (
-                    n, db, b / 1048576.0, b2 / 1048576.0, 100.0 * (b - b2) / b if b else 0.0))
+               '', '| tábla | sor | MB (indexszel) |', '|---|---:|---:|']
+        for n, (db, b) in sorted(tmeret.items(), key=lambda x: -x[1][1]):
+            ki.append('| `%s` | %d | %.2f |' % (n, db, b / 1048576.0))
         ki.append('')
+    if getattr(epito, 'tabla_lic', None):
+        ki += ['## Táblaszintű licenc (`tabla_licenc`, F89 / DT113)', '',
+               '| tábla | licenc_allapot | kereskedelmi | licenc_dataset | cimke |', '|---|---|---|---|---|']
+        for n, (a, c, ds, cim) in sorted(epito.tabla_lic.items()):
+            ki.append('| `%s` | %s | %s | %s | %s |' % (n, a, c, ds, cim))
+        ki.append('')
+        tt = sorted(n for n, v in epito.tabla_lic.items() if v[0] == 'tisztazatlan')
+        sa = sorted(n for n, v in epito.tabla_lic.items() if 'CC BY-SA' in v[3] or 'Mounce' in v[3])
+        nc = sorted(n for n, v in epito.tabla_lic.items() if 'BY-NC' in v[3])
+        ki += ['- `tisztazatlan` állapotú táblák (%d): %s' % (len(tt), ', '.join('`%s`' % n for n in tt) or 'nincs'),
+               '- CC BY-SA 4.0 vagy MCGED (`© Mounce 1993`) címkéjű táblák (%d; zárt csomagból kizárandók, DT116): %s'
+               % (len(sa), ', '.join('`%s`' % n for n in sa) or 'nincs'),
+               '- CC BY-NC címkéjű táblák (%d): %s' % (len(nc), ', '.join('`%s`' % n for n in nc) or 'nincs'), '']
     if epito.kihagyott:
         ki += ['## Kimaradt táblák (licencsor hiánya, G6)', '']
         ki += ['- `%s`: %s' % k for k in epito.kihagyott]
@@ -1221,6 +1245,26 @@ def proba_naplo_md(eredmenyek, mod):
           '', 'Összesítés: %d/%d egyezik.' % (sum(1 for p in eredmenyek if p['ok']), len(eredmenyek)), '',
           proba_md(eredmenyek)]
     return '\n'.join(ki) + '\n'
+
+
+ELOTTE_KEZDET = '<!-- F89-ELOTTE-KEZDET -->'
+ELOTTE_VEGE = '<!-- F89-ELOTTE-VEGE -->'
+
+
+def elotte_blokk_atvesz(mpath, szoveg):
+    """F89: a kezzel rogzitett "elotte" meres (a licenc-valtas elotti allapot) a mereslog
+    ujrairasakor megmarad: a korabbi fajl jelolt blokkja az uj fajl elejere kerul."""
+    if not os.path.exists(mpath):
+        return szoveg
+    with open(mpath, encoding='utf-8', newline='') as f:
+        regi = f.read().replace(chr(13) + chr(10), chr(10))
+    if ELOTTE_KEZDET not in regi or ELOTTE_VEGE not in regi:
+        return szoveg
+    blokk = regi[regi.index(ELOTTE_KEZDET):regi.index(ELOTTE_VEGE) + len(ELOTTE_VEGE)]
+    sorok = szoveg.split(chr(10))
+    # a fejlec (1. sor), ures sor, proveniencia, ures sor utan, a "- fajl" sor elott
+    idx = next(i for i, x in enumerate(sorok) if x.startswith('- fájl:'))
+    return chr(10).join(sorok[:idx] + [blokk, ''] + sorok[idx:])
 
 
 def irj(path, szoveg):
@@ -1265,8 +1309,7 @@ def main(argv=None):
     hashek = tablak_hash(kimenet)
     con = sqlite3.connect(kimenet)
     for n, (db, h) in hashek.items():
-        con.execute('INSERT INTO meta VALUES (?,?,?,?,?)', ('hash:' + n, '%d|%s' % (db, h),
-                    'projekt_adat', 'tisztazatlan', 'projekt_adat'))
+        con.execute('INSERT INTO meta VALUES (?,?)', ('hash:' + n, '%d|%s' % (db, h)))
     con.commit()
     con.close()
     masodik = None
@@ -1283,7 +1326,10 @@ def main(argv=None):
     meret = os.path.getsize(kimenet)
     if args.naplo:
         nev = 'SQLITE_EPIT_meres_minta.md' if args.mod == 'minta' else 'SQLITE_EPIT_meres.md'
-        irj(os.path.join(args.gyoker, 'naplok', nev), meres_md(ep, hashek, ido, meret, args.mod, tmeret, masodik))
+        mpath = os.path.join(args.gyoker, 'naplok', nev)
+        szoveg = meres_md(ep, hashek, ido, meret, args.mod, tmeret, masodik)
+        szoveg = elotte_blokk_atvesz(mpath, szoveg)
+        irj(mpath, szoveg)
         if proba is not None:
             irj(os.path.join(args.gyoker, 'naplok', 'SQLITE_EPIT_proba_%s.md' % args.mod), proba_naplo_md(proba, args.mod))
     print('kész: %s (%.1f MB, %.1f s, %d tábla)' % (kimenet, meret / 1048576.0, ido, len(hashek)))

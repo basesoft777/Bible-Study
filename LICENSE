@@ -1,0 +1,22 @@
+Copyright (c) 2026 Demeter Tamás. Minden jog fenntartva.
+All rights reserved.
+
+1. Saját adat. A repó saját adatrétege minden jog fenntartva: az adat/*.tsv fájlok,
+   az adat/karoli_strong/* és az adat/karoli_variancia.tsv, valamint a belőlük épített
+   pardes.db saját táblái. A Károli–Strong párosítás a jogtulajdonos irányításával és
+   ellenőrzésével készült.
+
+2. Próza. A tanulmányok (tematikus_lezart/, genezis/, ujszovetseg/, melyelemzesek/,
+   motivumlog/), a lexikon/ és a motivumok/ alatti motívumcikkek minden jog fenntartva.
+
+3. Harmadik fél adata. A konkordancia/ alatti és a repóba átvett harmadik féltől
+   származó adatra ez a nyilatkozat NEM terjed ki. Ezek licencét, a kötelező
+   megjelöléseket és az állapotukat az adat/licencek.tsv rögzíti (köztük CC BY 4.0,
+   CC BY-SA 4.0, közkincs és korlátozott felhasználású források); azok feltételei
+   érvényesek. A saját adat harmadik fél adatából származtatott részére a forrás
+   megjelölési és ShareAlike-feltételei továbbra is vonatkoznak.
+
+4. Engedély nélkül a fentiek másolása, terjesztése, módosítása és felhasználása nem
+   megengedett. Engedély a jogtulajdonostól kérhető.
+
+Ez a nyilatkozat leltár, nem jogi vélemény.
