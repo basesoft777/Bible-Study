@@ -1265,7 +1265,7 @@ regies_jegy: 4 eltérés [('Evék', 'mult.E1', 'mult.E3'), ('evék', 'mult.E1', 
 sorrend azonos: True | sorok: 66824
 ```
 
-Csak a `regies_jegy` változott, 4 soron (*Evék, evék, ivék, megevék*); minden más oszlop bájtra azonos, a sorrend és a sorszám is. A fejlécben csak a hibrid sha256-ja változott. Újramérés nem kellett (a szótári alak nem változott; az M1/M2/K3 érvényben, 17.5). **A v3 befagyasztása:** `eszkozok/szoto/hibrid.py` sha256 `719ee6fff776993f0793cb3b1a82ba8111a93245e4c34551f289917fe6e4624e`; `adat/szoto/karoli_szotari_alak.tsv` sha256 `565e1f573ef85f531e819f749af2e34c946d9c8d4f7ab1bd663d72a363ef91bb`.
+Csak a `regies_jegy` változott, 4 soron (*Evék, evék, ivék, megevék*) — *pontosítás (18.6, ELLENOR_F94_3, DT-F94f): a *megevék* `mult.E3`-a tévedés volt (mind a 4 helyén T/3 tárgyas); a jegye most üres, a befagyasztás a 18.6 szerint* —; minden más oszlop bájtra azonos, a sorrend és a sorszám is. A fejlécben csak a hibrid sha256-ja változott. Újramérés nem kellett (a szótári alak nem változott; az M1/M2/K3 érvényben, 17.5). **A v3 befagyasztása:** `eszkozok/szoto/hibrid.py` sha256 `719ee6fff776993f0793cb3b1a82ba8111a93245e4c34551f289917fe6e4624e`; `adat/szoto/karoli_szotari_alak.tsv` sha256 `565e1f573ef85f531e819f749af2e34c946d9c8d4f7ab1bd663d72a363ef91bb`.
 
 ### 18.3 A korlát számszerűsítése: 100-as minta a jegyes sorokból
 
@@ -1294,3 +1294,29 @@ a -ta/-te osztály gyanús sorai (mult.alanyi.E3, a tő = az alak -a/-e nélkül
 ### 18.5 A DT128 modernizálás felé
 
 A modernizálási brief a `regies_jegy`-et **jelöltként** kezelje, ne tényként, és a saját aranymintáján mérje (a 100-as jegy-minta ebbe beépíthető).
+
+### 18.6 A *megevék* jegye (ELLENOR_F94_3; a felhasználó döntése, 2026-10-13)
+
+Az ELLENOR_F94_3 szerint a *megevék* `mult.E3` jegye a Károli mind a 4 előfordulásában hibás: T/3 tárgyas, többes alannyal (2Krón 30:18, Ezsd 6:21, Mk 4:4, Luk 8:5). Az E/3 az előző kör tévedése volt (a 18.2 javítása a *megevék*-et az *evék* jegyével együtt E/3-ra tette). **A döntés** (felhasználó, chat, 2026-10-13): (d) `mult.E1` saját `JEGY['megevék']` bejegyzéssel, *ha a SEMA 2.27 szövege alátámasztja*; ha nem, (b) üres jegy. Az (a) (`mult.T3` jelentésének bővítése) és a (c) (`mult.E3` marad) nem jön.
+
+**A SEMA 2.27 `mult.E1` meghatározása szó szerint:** „`mult.E1` (-ék nem -ik-es igén: *láték*; magas hangrendű igénél a T/3 tárgyassal azonos alakú, l. napló 16.)”. A hivatkozott napló 16.2 (N-F94e): „magas hangrendű, nem -ik-es igénél az *-ék* a T/3 tárgyassal is egyezik”.
+
+**Értékelés: a szöveg a (d)-t nem támasztja alá, ezért (b).** A `mult.E1` meghatározása az *-ék* alakot **nem -ik-es** igére korlátozza, a T/3 tárgyassal való alaki azonosságot is csak ezen belül mondja ki; az -ik-es igék *-ék* alakjának címkéje a `mult.E3` („-ék -ik-es igén”, N-F94e). Az *eszik* -ik-es ige, tehát a *megevék*-re a `mult.E1` a SEMA szövege szerint nem illik. Ugyanezt mutatja a 18.3 mintája: a T/3 tárgyas *-ék* alakon álló `mult.E1`-et (*kiűzék*) hibás jegynek számolta. A T/3 tárgyas múltra a jegykészletben nincs címke, újat bevezetni nem szabad; a SEMA 2.27 szerint az üres jegy a „kivételtábla jegy nélküli sora” is lehet. A *megevék* jegye ezért **üres**.
+
+**A kód** (`hibrid.py`): `JEGY['megevék'] = ''`, és a kivételtábla igekötős ágában az igekötős alak saját jegye elsőbb az igekötő nélküli alakénál: `JEGY.get(w, JEGY.get(w[len(ik):], ''))`. A többi igekötős alak viselkedése nem változik (a `JEGY`-ben nincs más igekötős kulcs; a táblában igazolva, lent). Az *evék* jegye `mult.E3` marad (az *evék* 2 helyen T/3 tárgyas: 2Móz 16:35, Ján 6:58 — kétértelmű alak, N-F94h); az *Evék, evék, ivék* sor nem változott (az *ivék* mind a 9 helyén E/3).
+
+**Oszloponkénti igazolás** (a tábla a 18.6 előtt és után, `split('\t')`, soronként és oszloponként; az előállítás `--ts` nélkül, a valódi idővel):
+
+```
+alak: 0 eltérés 
+szotari_alak: 0 eltérés 
+szotari_alak_mai: 0 eltérés 
+alapige: 0 eltérés 
+tovabbi_elfogadhato: 0 eltérés 
+modszer: 0 eltérés 
+szabaly_forras: 0 eltérés 
+regies_jegy: 1 eltérés [('megevék', 'mult.E3', '')]
+sorrend azonos: True | sorok: 66824
+```
+
+Csak a *megevék* `regies_jegy`-e változott (`mult.E3` → üres), 1 adatsor; minden más oszlop bájtra azonos, a sorrend és a sorszám is. A fejlécben a `# GENERÁLT` sor hibrid-sha256-ja és ts-e változott (`ts=2026-10-13T17:14Z`, az újragenerálás tényleges ideje). Újramérés nem kellett (a szótári alak nem változott). A 18.3 mintájában a *megevék* nem szerepel, a becslés változatlan. **A v3 befagyasztása (érvényes):** `eszkozok/szoto/hibrid.py` sha256 `60e1c21510037dd09c589be81acf127c8a975694b03eaef8a6f3fbc9c7cd2efb`; `adat/szoto/karoli_szotari_alak.tsv` sha256 `c3fc23c93a7350c5950e6b760db67fec6a2dc45ad2892e1b2dcd2726c5358612`. A 18.2 sha-i ezzel elavultak.

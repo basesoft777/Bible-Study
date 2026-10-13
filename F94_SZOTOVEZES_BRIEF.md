@@ -10,7 +10,7 @@ allapot: fut
 ag: claude/f94-szotovezes
 helyi_gep: igen
 ad: a Károli minden szóalakjához szótári alak (Károli- és mai helyesírással), alapige és további elfogadható alak, forrásolt szabályokkal; a hibrid szótövező (v3) az eszkozok/ alatt; négy aranyminta a repóban, a negyedik független, felhasználó által ellenőrzött mérés; a pardes.db-oszlop a #95 (SZOTOVEZES_DB)
-kovetkezo: "Kész a szűkített harmadik ellenőrzésre: független ellenőr, majd lezárás"
+kovetkezo: "Kész a szűkített negyedik ellenőrzésre: független ellenőr, majd lezárás"
 olvas: [konkordancia/Karoli_1908.tsv, "adat/karoli_strong/*", adat/SEMA.md, adat/licencek.tsv, Rendszerfejlesztesi_playbook.md, eszkozok/general.py, DONTESEK.md]
 ir: [eszkozok/szoto/, adat/szoto/, adat/SEMA.md, adat/licencek.tsv, naplok/SZOTOVEZES_meres.md, naplok/SZOTOVEZES_zaras.md]
 fugg: []
