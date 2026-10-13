@@ -1158,6 +1158,32 @@ Generált nézet (`eszkozok/sqlite_epit.py`; DT28): az adatbázis nem commitolt,
 - **`token_macula`:** a Macula–TAHOT illesztés vers+Strong alapon történik. Ahol ugyanaz a Strong egy versben többször áll, az illesztés **kétértelmű**; a `strong_n` a vers+Strong előfordulásainak száma, a `strong_poz` a fájlsorrend szerinti pozíció (a feloldás pozíció-sorrend). A kétértelmű csoportok száma: `meta` `token_macula:ketertelmu_vers_strong_csoport`. A „0 eltérés” ilyenkor nem jelent helyes illesztést.
 - **`szo_kis` / `hu_szo_kis`** (a `token_karoli`-ban, illetve a `token_par`-ban): a magyar szó kisbetűs, nem-betű/szám karakterektől mentes alakja (`sqlite_epit.szo_kis`); a keresés ezen indexel (`token_karoli`: `szo_kis, igehely, oldal, sorszam`). A kereső oldalon ugyanez a normalizálás alkalmazandó.
 
+### 2.27 `adat/szoto/` — magyar szótövezés: minták, korpusz-lexikon, szabályellenőrzés, szótári alak (F94, FELADATOK #94, DT130)
+
+A Károli szóalakjainak **szótári alakja** (lemma; nem nyelvtani szótő, DT130 (6)). Olvasás `split('\t')`, írás `'\t'.join()` (a `csv` modul tilos). Minden fájl első sora `# proveniencia: …` (vagy generált táblánál `# GENERÁLT: …`), utána további `#`-sorok állhatnak; az első nem-`#` sor a fejléc. A Strong-szám formátuma 1.2; több Strong `+`-szal.
+
+**Minták** — `szoto_minta_1_fejlesztes.tsv` (213 alak, 1Móz 1–25), `szoto_minta_2_fejlesztes.tsv` (180 alak, Zsolt 1–41 + Ézs 40–55; a terv szerinti Gal/Ef/Zsid rész üres), `szoto_minta_3_ellenorzott.tsv` (113 alak, Jer/Jób/Luk/Jak); a negyedik (F94.3) `szoto_minta_4_fuggetlen.tsv` néven. Az 1–3. a repón kívüli előmérés átvétele (`eszkozok/szoto/minta_atvetel.py`, F94.0), a fejlécben a forrásfájl neve + sha256. **Kézi forrás** (a szótári alak modell- vagy felhasználói állítás), a javítás soronként, a `ellenorzes` frissítésével. Kulcs: `alak` (a mintán belül egyedi, kis-/nagybetű-érzékeny).
+
+| Oszlop | Jelentés |
+|---|---|
+| `alak` | a Károli-szóalak, ahogy a szövegben áll (nagybetűvel is, ha úgy fordul elő) |
+| `gyakorisag` | előfordulás a minta hatókörén belül (a proveniencia-sor mondja meg a hatókört); az M1 súlya |
+| `kategoria` | réteg: `gyakori` \| `ragos_nevszo` \| `regies_ige` \| `regies_helyesiras` \| `ige_mai_alak` \| `tulajdonnev` (a mintavétel rétege, nem a helyes elemzés: pl. a 3. mintában a *Mutassa* `tulajdonnev` rétegből jött) |
+| `szotari_alak` | a szótári alak Károli-helyesírással (DT130 (1)–(9)); névnél a Károli-átírás (5) |
+| `szotari_alak_mai` | ugyanez mai helyesírással (*mely* → *amely*, *orca* → *arc*); a kereső mindkettőre talál (DT130 (1)) |
+| `alapige` | igénél az igekötő és a képző nélküli ige (DT130 (4), (10)); a 3. minta konvenciója szerint üres, ha nem ige, vagy azonos a szótári alakkal. *Az 1. minta a forrás szerint minden sorban kitölti, a 2. mintának nincs ilyen oszlopa (üres) — l. `naplok/SZOTOVEZES_meres.md` 5. szakasz, E-7, E-8.* |
+| `tovabbi_elfogadhato` | a mérésben szintén helyes további alakok `\|`-vel (kétértelmű alak másik olvasata, DT130 (11); képzett igénél az alapige, (10)); üres, ha nincs |
+| `ellenorzes` | **kötelező, nem üres:** `felhasznalo` (a felhasználó a sort ellenőrizte vagy eldöntötte) \| `modell_ellenorizetlen` (a felhasználó „mehet”-tel engedte, a sort nem nézte). **Nem „ellenőrizve”.** A mérés (`meres.py`) a negyedik mintán csak a `felhasznalo` sorokat veszi. Az `ellenorzes` oszlopot a felhasználó tölti, a modell soha (F94.3). |
+| `indoklas` | a szótári alak indoklása (modell, manual); a 3. mintában a soronkénti, nem általános felhasználói döntés szó szerint, `[döntés: …]` alakban a végén |
+| `pelda_igehely` | egy előfordulás (`IGEHELY`, 1.1) |
+| `strong` | a példa-előfordulás Strong-párja(i) a régi `token_karoli`-ból (1–2. minta); a 3. mintában üres (a forrás nem hordozta) |
+
+**Generált táblák (F94.1–.3; kézzel nem szerkeszthetők, a javítás a kivételtáblában vagy a szabályban történik):**
+
+- `karoli_lexikon.tsv` — a hibrid korpusz-lexikona a `konkordancia/Karoli_1908.tsv`-ből (`eszkozok/szoto/lexikon_epit.py`; nem a `pardes.db`-ből, DT28): `alak`, `kisbetus` (kisbetűs előfordulás), `nagy_belul` (nagybetűs, mondat belsejében), `nagy_kezdo` (nagybetűs, mondatkezdő helyzetben: a vers első szava, vagy `. ! ? :` után).
+- `szabaly_ellenorzes.tsv` — a hibrid helyesírási és tőváltó szabályainak Strong-támasza (`eszkozok/szoto/szabaly_ellenorzes.py`, az `adat/karoli_strong/`-ból): `tipus`, `szabaly`, `regi_alak`, `regi_token`, `par`, `par_token`, `tamasz`, `konyv`, `minosites` (`alátámasztva` \| `gyenge` \| `ellentmond` \| `nincs adat`), `pelda`.
+- `karoli_szotari_alak.tsv` — a teljes Károli szótárialak-táblája (F94.3; alakonként egy sor): `alak`, `szotari_alak`, `szotari_alak_mai`, `alapige`, `tovabbi_elfogadhato`, `modszer` (`kivetel` \| `szabaly` \| `simplemma` \| `lexikon` \| `nev`), `szabaly_forras` (`korpusz_strong`: a szabályellenőrzés alátámasztotta \| `modell_ellenorizetlen`), `regies_jegy` (a felismert régies végződés nyelvtani jegye; a teljes értékkészlet az F94.2 után ide kerül); a fejlécben proveniencia-sor és a hibrid v3 sha256-ja.
+
 ---
 
 ## 3. Integritási szabályok
