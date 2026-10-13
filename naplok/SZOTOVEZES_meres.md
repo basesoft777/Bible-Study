@@ -560,3 +560,160 @@ Helyesírásinál a „pár” oszlop: hány régi alaknak van cserélt párja a
 Összesen: alátámasztva: 31, gyenge: 14, ellentmond: 4, nincs adat: 2
 
 scope=hibrid.py (sha256:864d6876437a) HELYESIRAS (9) + TOVALTO (42) szabályai; a párosított Károli-könyvek (57 szavak-fájl, oldal=hu, 484820 token) | forras=adat/karoli_strong/szavak_*.tsv (együttes sha256:c3266499df09; modell-kimenet, javaslat) | ts=2026-10-13T13:10Z
+
+
+## 11. Hibrid v3 (F94.2)
+
+### 11.1 A K tábla (C+K változat, DT-F94c)
+
+*proveniencia: scope=a Károli 1908 leggyakoribb 400 alakja | forras=adat/szoto/karoli_lexikon.tsv (a kiválasztás, gépi) + manual (a szótári alak modell-javaslat a DT130 szerint, modell: claude-opus-5-5) | ts=2026-10-13*
+
+- **N = 400.** A gyakorisági lista (kisbetűs + mondatkezdő előfordulás, kisbetűsítve) lefedettsége: 100 alak 49,7%, 200 alak 55,0%, 300 alak 58,1%, **400 alak 60,4%**, 500 alak 62,1%, 1000 alak 67,7% (553 804 token). A 400. alak 107-szer fordul elő. 300 felett a lefedettség lassan nő (kb. 2 százalékpont / 100 alak), és a K-sorokat a felhasználó soronként nézi át (F94.3 ⛔); a 400 a kettő közti egyensúly. A sorok kiválasztása gépi (`eszkozok/szoto/k_tabla_epit.py`), nem a mérés hibáiból és nem a minták alakjaiból (meresi_terv 1.3).
+- **A szótári alak forrása:** modell-javaslat a DT130 szerint; 222 sor nem önmagára leképezett (ragos névmás → személyes névmás, a van/lesz rendhagyó alakjai, régies igealakok, birtokos/ragos névszók, régi/mai írásmód), 178 önálló szótári alak. **A simplemma kimenetéből nem jön** (DT-F94c): a kitöltéskor a simplemmát és a hibridet a K alakjain nem futtattam, és összevetés utáni átvétel sem történt. Őszinte korlát: a 9. szakasz hibalistái (néhány gyakori alak A- és C-kimenete a mintákon, pl. *mert → mer, azt*) a kitöltés előtt a modell előtt voltak; ezek a DT130 szerinti szótári alakot nem befolyásolják, de a felhasználó átnézésekor érdemes tudni.
+- `ellenorzes=modell_ellenorizetlen` mind a 400 sorban; `felhasznalo` csak a felhasználó átnézése után (F94.3 ⛔, a 4. mintával együtt). A K a v3 része: a v3 befagyasztása a K tábla mostani tartalmával történik; a felhasználói javítás a C+K változatot a 4. minta mérése előtt módosíthatja — ez esetben a K tábla új sha256-ja a mérés proveniencia-sorában áll.
+
+### 11.2 A v3 változásai (osztály- és szabályszinten)
+
+A teljes lista a `eszkozok/szoto/hibrid.py` leírásában. Röviden: -é kérdőszócska kötőjellel; birtokos + rag (csupasz-tő bővítése, -ság/-ség/-ás/-és + birtokos -a/-e); igekötő + ismeretlen ige; képzett igealak (DT130 (10): -hat/-het, szenvedő -tatik/-tetik, alapigével); mai igei ragozás igei attesztációval (C/CK; az A-ban csak ha a simplemma-ág nem változtatott); kivételtábla (maga, névutók és határozószók -á/-é alakja, hozzá/reá, v-tövű igék -vén alakja, jő-alakok, lesz/visz/hisz/tesz/vesz alapalakja, egyétek); tőváltó *kötel-*, *atyj-*; *^kiván* igekötő után is; -ök → -ük lexikon-attesztációval; a simplemma tulajdonnévi lemmája kisbetűs alakra elvetve; -ás/-és/-ság/-ség képzős főnév a simplemma alapszava helyett.
+
+**Szigorított régies ige-felismerés (v1.1):** a jelölt tő csak igei alakkal igazolható (-ni, -ott/-ett/-ött/-tt, -ván/-vén, -jon/-jen/-jön; önmaga nem; legfeljebb hárombetűs tőnél két különböző alak); a -nak/-nek/-tok/-tek/-tök csak akkor, ha a tő a Károliban egyértelmű névszói raggal nem fordul elő; az igekötő önmagában nem igető; -ik-es ige csak mássalhangzós, önállóan elő nem forduló, igeileg attesztált tőből; a -ál/-él/-ék végű névszó és az egyértelmű névszói esetraggal is előforduló tő (*fej-re*, *szív-ben*) nem régies ige; a -ték/-tték múlt T/3; -felé/-felől határozószó kizárva. Az A-ban a simplemma igei tudása (ismert főnévi igenév / múlt idejű alak ugyanarra a tőre) is igazol; a névszói „ismert szó” próba nem.
+
+**Régies igei jegy (`regies_jegy`):** értékkészlet: `mult.alanyi.E3` (-a/-e), `mult.targyas.E3` (-á/-é), `mult.E1` (-ék), `mult.E2` (-ál/-él), `mult.T1` (-ánk/-énk), `mult.T2` (-átok/-étek), `mult.T3` (-ának/-ének), `felszolito.E2` (-jál/-jél, -zzál …), `hatarozoi_igenev` (-ván/-vén); a kivételtábla régies igealakjai (vala, vevé, menének …) saját jegyet kapnak; a mai felszólító (-jen, -janak) és a nem igei alak jegye üres. A K-sor jegye a szabályág (C) elemzéséből jön, ha az ugyanarra a szótári alakra jut.
+
+**Szabályforrás (`szabaly_forras`):** a helyesírási (9) és tőváltó (44, ebből 2 új: *kötel-*, *atyj-*) szabályokból **30 `korpusz_strong`** (a 10. szakasz szabályellenőrzésének alátámasztott szabályai, a *cz → c* nélkül), **1 `manual`** (*cz → c*, 7.3), **22 `modell_ellenorizetlen`** (a nem alátámasztott 20 + a 2 új, ellenőrizetlen tőváltó); a régies végződés-, képző- és ragozási szabályok `modell_ellenorizetlen`.
+
+### 11.3 Regresszió: v3 a v2-höz képest a három fejlesztési mintán
+
+*A v2 = `eszkozok/szoto/hibrid_v2.py` (az átvett előmérési v2, A/B/C kapcsolóval). Alakonként / súlyozva, rétegenként.*
+
+##### szoto_minta_1_fejlesztes.tsv (213 alak)
+
+| elemző | ossz | gyakori | ragos_nevszo | regies_ige | regies_helyesiras | ige_mai_alak | tulajdonnev |
+|---|---|---|---|---|---|---|---|
+| hibrid A | 97% / 99.4% (206/213) | 98% / 99.6% (54/55) | 98% / 99.1% (64/65) | 91% / 93.9% (41/45) | 100% / 100.0% (14/14) | 86% / 89.5% (6/7) | 100% / 100.0% (27/27) |
+| hibrid C | 85% / 94.3% (182/213) | 89% / 95.0% (49/55) | 82% / 82.2% (53/65) | 87% / 93.9% (39/45) | 79% / 88.2% (11/14) | 43% / 52.6% (3/7) | 100% / 100.0% (27/27) |
+| hibrid CK | 91% / 99.0% (193/213) | 100% / 100.0% (55/55) | 89% / 93.0% (58/65) | 87% / 93.9% (39/45) | 79% / 88.2% (11/14) | 43% / 52.6% (3/7) | 100% / 100.0% (27/27) |
+| v2 A | 95% / 99.2% (203/213) | 98% / 99.6% (54/55) | 95% / 96.6% (62/65) | 91% / 93.9% (41/45) | 100% / 100.0% (14/14) | 71% / 78.9% (5/7) | 100% / 100.0% (27/27) |
+| v2 C | 79% / 92.6% (169/213) | 85% / 93.8% (47/55) | 71% / 73.6% (46/65) | 80% / 88.6% (36/45) | 79% / 88.2% (11/14) | 29% / 42.1% (2/7) | 100% / 100.0% (27/27) |
+
+scope=szoto_minta_1_fejlesztes.tsv (sha256:a7f8d65d42de) | forras=eszkozok/szoto/meres.py + hibrid.py (v3, sha256:682e83127d2b) + gyakori_alakok.tsv (sha256:7c7160343b55) + hibrid_v2.py (sha256:864d6876437a) + adat/szoto/karoli_lexikon.tsv (sha256:215f687f5d68) + simplemma 2.0.0 (hu.plzma sha256:0ebc6a84a326) | futtatókörnyezet: Python 3.11.17 (Linux) | ts=2026-10-13T13:46Z
+
+##### szoto_minta_2_fejlesztes.tsv (180 alak)
+
+| elemző | ossz | gyakori | ragos_nevszo | regies_ige | regies_helyesiras | ige_mai_alak | tulajdonnev |
+|---|---|---|---|---|---|---|---|
+| hibrid A | 93% / 97.9% (167/180) | 100% / 100.0% (40/40) | 91% / 93.0% (58/64) | 94% / 95.3% (30/32) | 77% / 69.2% (10/13) | 90% / 91.0% (19/21) | 100% / 100.0% (10/10) |
+| hibrid C | 84% / 87.8% (151/180) | 90% / 87.6% (36/40) | 84% / 86.5% (54/64) | 78% / 81.4% (25/32) | 85% / 74.4% (11/13) | 71% / 82.1% (15/21) | 100% / 100.0% (10/10) |
+| hibrid CK | 87% / 96.0% (156/180) | 98% / 98.4% (39/40) | 88% / 92.1% (56/64) | 78% / 81.4% (25/32) | 85% / 74.4% (11/13) | 71% / 82.1% (15/21) | 100% / 100.0% (10/10) |
+| v2 A | 92% / 97.6% (166/180) | 100% / 100.0% (40/40) | 91% / 93.0% (58/64) | 94% / 95.3% (30/32) | 77% / 69.2% (10/13) | 86% / 85.9% (18/21) | 100% / 100.0% (10/10) |
+| v2 C | 80% / 85.8% (144/180) | 90% / 87.6% (36/40) | 78% / 76.7% (50/64) | 78% / 81.4% (25/32) | 85% / 74.4% (11/13) | 57% / 64.1% (12/21) | 100% / 100.0% (10/10) |
+
+scope=szoto_minta_2_fejlesztes.tsv (sha256:587e47bded57) | forras=eszkozok/szoto/meres.py + hibrid.py (v3, sha256:682e83127d2b) + gyakori_alakok.tsv (sha256:7c7160343b55) + hibrid_v2.py (sha256:864d6876437a) + adat/szoto/karoli_lexikon.tsv (sha256:215f687f5d68) + simplemma 2.0.0 (hu.plzma sha256:0ebc6a84a326) | futtatókörnyezet: Python 3.11.17 (Linux) | ts=2026-10-13T13:46Z
+
+##### szoto_minta_3_ellenorzott.tsv (113 alak)
+
+| elemző | ossz | gyakori | ragos_nevszo | regies_ige | regies_helyesiras | ige_mai_alak | tulajdonnev |
+|---|---|---|---|---|---|---|---|
+| hibrid A | 94% / 99.7% (106/113) | 100% / 100.0% (25/25) | 91% / 90.6% (32/35) | 100% / 100.0% (20/20) | 75% / 78.6% (9/12) | 100% / 100.0% (13/13) | 88% / 81.8% (7/8) |
+| hibrid C | 76% / 91.3% (86/113) | 88% / 92.0% (22/25) | 71% / 78.1% (25/35) | 95% / 97.2% (19/20) | 25% / 28.6% (3/12) | 77% / 58.6% (10/13) | 88% / 81.8% (7/8) |
+| hibrid CK | 79% / 99.0% (89/113) | 100% / 100.0% (25/25) | 71% / 78.1% (25/35) | 95% / 97.2% (19/20) | 25% / 28.6% (3/12) | 77% / 58.6% (10/13) | 88% / 81.8% (7/8) |
+| v2 A | 80% / 99.1% (90/113) | 100% / 100.0% (25/25) | 80% / 84.4% (28/35) | 50% / 58.3% (10/20) | 67% / 71.4% (8/12) | 92% / 96.6% (12/13) | 88% / 81.8% (7/8) |
+| v2 C | 56% / 90.3% (63/113) | 88% / 92.0% (22/25) | 51% / 62.5% (18/35) | 40% / 30.6% (8/20) | 17% / 21.4% (2/12) | 54% / 48.3% (7/13) | 75% / 72.7% (6/8) |
+
+scope=szoto_minta_3_ellenorzott.tsv (sha256:bafc1e67a061) | forras=eszkozok/szoto/meres.py + hibrid.py (v3, sha256:682e83127d2b) + gyakori_alakok.tsv (sha256:7c7160343b55) + hibrid_v2.py (sha256:864d6876437a) + adat/szoto/karoli_lexikon.tsv (sha256:215f687f5d68) + simplemma 2.0.0 (hu.plzma sha256:0ebc6a84a326) | futtatókörnyezet: Python 3.11.17 (Linux) | ts=2026-10-13T13:46Z
+
+**Eredmény:** a v3 A **mindhárom mintán és minden rétegben legalább a v2 A szintjén** áll (a 3. mintán 80% / 99,1% → 94% / 99,7%); a v3 C minden rétegben legalább a v2 C szintjén. Egyedi alakon (a v2-ben helyes, a v3-ban hibás):
+
+```
+szoto_minta_1_fejlesztes.tsv A ROMLÁS: —
+szoto_minta_1_fejlesztes.tsv C ROMLÁS: —
+szoto_minta_1_fejlesztes.tsv CK ROMLÁS: —
+szoto_minta_2_fejlesztes.tsv A ROMLÁS: —
+szoto_minta_2_fejlesztes.tsv C ROMLÁS: leheletének(ragos_nevszo,1): v2=lehelet v3=leheletének
+szoto_minta_2_fejlesztes.tsv CK ROMLÁS: leheletének(ragos_nevszo,1): v2=lehelet v3=leheletének
+szoto_minta_3_ellenorzott.tsv A ROMLÁS: —
+szoto_minta_3_ellenorzott.tsv C ROMLÁS: —
+szoto_minta_3_ellenorzott.tsv CK ROMLÁS: —
+```
+
+A *leheletének* (C, CK) a v1.1 szigorítás közvetlen ára: a v2 a *leheletnek* alakkal „igazolta” a *lehelet*-et régies igének, és így véletlenül jó tövet adott; a v3 ezt már nem fogadja el, a névszói ág pedig a ritka *lehelet*-et nem attesztálja. A C+K a 3. (ellenőrzött) mintán súlyozva 99,0%, az A 99,7%; alakonként 79% és 94%.
+
+### 11.4 K6 — a teljes Károli 200 leggyakoribb felismert régies igealakja, kézi besorolással
+
+*proveniencia a lista alatt; a besorolás manual (modell: claude-opus-5-5). A gyakoriság kisbetűsítve; a mondat belsejében nagybetűs (név) alakok kihagyva, mert a hibrid névágon tövezi őket.*
+
+**Előtte (v2 A):** 74 / 200 **nem ige** (névszó, névutó, határozószó, névmás): felé, többé, házának, királyának, mellé, közé, nemzetsége, magának, földére, halál, angyala, népének, sátorának, sokasága, továbbá, háznépe, leányának, szélessége, zsoltára, fölé, nemzetségének, feleségének, életének, gyülekezete, magassága, emberének, nyilván, igazsága, földének, belé, maradéka, szövetségének, városának, dicsőségének, gyümölcse, seregének, hosszúsága, testvérének, testének, uralkodásának, erőssége, fiaié, gonoszsága, királyságának, országának, reménysége, gazdagsága, parancsolata, rendelése, fejének, szájának, szívének, ítélete, gyülekezetének, temploma, teljessége, világossága, angyalának, bölcsesége, férjének, mögé, nyílása, elsőszülötte, felének, hegyének, oltára, tisztának, hajlékának, háznépének, irgalmassága, kevélysége, robota, törvényének, zúgása. A többi 126 ige (köztük téves tövű igék is: *tudjátok → tudj, egyétek → egyik, bocsátok → bocs*).
+
+(hibrid_v2, A): a 200 leggyakoribb felismert régies igealak
+
+mondván (1237) → mond; felé (304) → fel; többé (297) → több; házának (260) → ház; királyának (182) → király; nemzé (175) → nemz; mellé (165) → mell; közé (142) → köz; felelvén (123) → felel; nemzetsége (115) → nemzetség; magának (109) → mag; látá (92) → lát; földére (90) → földér; látván (87) → lát; tudjátok (87) → tudj; nevezé (83) → nevez; halál (81) → hal; angyala (69) → angyal; cselekedjél (68) → cselekedik; elmenvén (68) → elmen; elindulának (67) → elindul; népének (63) → nép; sátorának (62) → sátor; felelének (60) → felel; sokasága (60) → sokaság; elküldé (59) → elküld; továbbá (59) → tovább; cselekedének (58) → cselekedik; háznépe (58) → háznép; emlékezzél (56) → emlékezik; bemenvén (54) → bemen; felkelvén (54) → felkel; leányának (53) → leány; megtudjátok (52) → megtudj; szélessége (52) → szélesség; menvén (51) → men; megölé (50) → megöl; zsoltára (48) → zsoltár; kimenvén (47) → kimen; meghallá (47) → meghall; megveré (47) → megver; hallván (46) → hall; fölé (45) → föl; nemzetségének (45) → nemzetség; szólának (45) → szól; tudván (45) → tud; megáldá (44) → megáld; feleségének (42) → feleség; megparancsolá (41) → megparancsol; felemelé (39) → felemel; elbocsátá (38) → elbocsát; életének (38) → élet; egyétek (37) → egyik; veté (36) → vet; kiáltának (35) → kiált; akará (34) → akar; bocsátok (33) → bocs; csinálának (33) → csinál; gyülekezete (33) → gyülekezet; állának (33) → áll; elbeszélé (32) → elbeszél; magassága (32) → magasság; emberének (31) → ember; kezdé (31) → kezd; tartsátok (31) → tarts; nyilván (30) → nyil; felkelének (29) → felkel; igazsága (29) → igazság; követé (29) → követ; megkérdé (29) → megkérd; parancsolá (29) → parancsol; cselekedvén (28) → cselekedik; hozának (28) → hoz; szólván (27) → szól; földének (26) → föld; megépíté (26) → megépít; belé (25) → bel; eljutának (25) → eljut; maradéka (25) → maradék; meghajtá (25) → meghajt; meglátá (25) → meglát; szövetségének (25) → szövetség; városának (25) → város; dicsőségének (24) → dicsőség; gyümölcse (24) → gyümölcs; seregének (24) → sereg; szólítá (24) → szólít; visszatérének (24) → visszatér; építé (24) → épít; összegyűjté (24) → összegyűjt; elvégezé (23) → elvégez; felgerjede (22) → felgerjed; hagyá (22) → hagy; hosszúsága (22) → hosszúság; teremté (22) → teremt; testvérének (22) → testvér; elfutának (21) → elfut; jutának (21) → jut; kéré (21) → kér; szeressétek (21) → szeress; testének (21) → test; uralkodásának (21) → uralkodás; akarván (20) → akar; beborítá (20) → beborít; erőssége (20) → erősség; fiaié (20) → fiai; gonoszsága (20) → gonoszság; királyságának (20) → királyság; országának (20) → ország; reménysége (20) → reménység; gazdagsága (19) → gazdagság; helyhezteté (19) → helyheztet; illeté (19) → illet; küldének (19) → küld; megfogván (19) → megfog; megnyitá (19) → megnyit; megszaggatá (19) → megszaggat; szülé (19) → szül; áldozának (19) → áldoz; elfuta (18) → elfut; hallá (18) → hall; leborula (18) → leborul; parancsolata (18) → parancsolat; rendelése (18) → rendelés; szűlé (18) → szül; találá (18) → talál; vessétek (18) → vess; vetének (18) → vet; bízzál (17) → bízik; fejének (17) → fej; hívatá (17) → hívat; megemészté (17) → megemészt; megfélemlének (17) → megféleml; megtartsátok (17) → megtarts; szájának (17) → száj; szívének (17) → szív; ítélete (17) → ítélet; összegyűlének (17) → összegyűl; bocsátá (16) → bocsát; gyülekezetének (16) → gyülekezet; temploma (16) → templom; izenvén (15) → izen; járván (15) → jár; kinyújtá (15) → kinyújt; lakozának (15) → lakozik; leborulának (15) → leborul; megcsókolá (15) → megcsókol; meghalának (15) → meghal; megméré (15) → megmér; megállának (15) → megáll; teljessége (15) → teljesség; világossága (15) → világosság; angyalának (14) → angyal; bölcsesége (14) → bölcseség; felindítá (14) → felindít; férjének (14) → férj; hivatá (14) → hivat; hívá (14) → hív; megkérdezé (14) → megkérdez; méré (14) → mér; mögé (14) → mög; nyílása (14) → nyílás; öljétek (14) → ölj; elsőszülötte (13) → elsőszülött; felének (13) → fel; hegyének (13) → hegy; ismeré (13) → ismer; kezdének (13) → kezd; követvén (13) → követ; küldé (13) → küld; maradának (13) → marad; megdorgálá (13) → megdorgál; meggyógyítá (13) → meggyógyít; meghallgatá (13) → meghallgat; megszabadítá (13) → megszabadít; oltára (13) → oltár; tisztának (13) → tiszt; vetvén (13) → vet; akarjátok (12) → akarj; ejté (12) → ejt; elküldvén (12) → elküld; elrejté (12) → elrejt; felállítá (12) → felállít; fölkele (12) → fölkel; hajlékának (12) → hajlék; háznépének (12) → háznép; irgalmassága (12) → irgalmasság; járának (12) → jár; kevélysége (12) → kevélység; kitölté (12) → kitölt; kiűzé (12) → kiűz; kérvén (12) → kér; megcsinálá (12) → megcsinál; meghagyá (12) → meghagy; meglátván (12) → meglát; robota (12) → robot; találának (12) → talál; tanítván (12) → tanít; törvényének (12) → törvény; zúgása (12) → zúgás
+
+**Utána (v3 A): 0 / 200 nem ige** — a besorolt listán nincs névszó régies igeként (K6). A tövek közül nem mind helyes (pl. *látszék → látsz*, *egybegyűle → egybegyül*, *egybegyűjté → egybegyűjtik*, *megjelenék → megjelen*), de mind ige.
+
+#### Utána (hibrid v3, A): a 200 leggyakoribb felismert régies igealak (végződés, jegy)
+
+mondván (1237) → mond [hatarozoi_igenev]; nemzé (175) → nemz [mult.targyas.E3]; adá (141) → ad [mult.targyas.E3]; cselekedék (124) → cselekszik [mult.E1]; felelvén (123) → felel [hatarozoi_igenev]; uralkodék (109) → uralkodik [mult.E1]; látá (92) → lát [mult.targyas.E3]; látván (87) → lát [hatarozoi_igenev]; nevezé (83) → nevez [mult.targyas.E3]; cselekedjél (68) → cselekszik [felszolito.E2]; elindulának (67) → elindul [mult.T3]; ütének (64) → üt [mult.T3]; esék (62) → esik [mult.E1]; felelének (60) → felel [mult.T3]; elküldé (59) → elküld [mult.targyas.E3]; cselekedének (58) → cselekszik [mult.T3]; emlékezzél (56) → emlékszik [felszolito.E2]; felkelvén (54) → felkel [hatarozoi_igenev]; megölé (50) → megöl [mult.targyas.E3]; meghallá (47) → meghall [mult.targyas.E3]; megveré (47) → megver [mult.targyas.E3]; hallván (46) → hall [hatarozoi_igenev]; adának (45) → ad [mult.T3]; szólának (45) → szól [mult.T3]; tudván (45) → tud [hatarozoi_igenev]; megáldá (44) → megáld [mult.targyas.E3]; megparancsolá (41) → megparancsol [mult.targyas.E3]; felemelé (39) → felemel [mult.targyas.E3]; elbocsátá (38) → elbocsát [mult.targyas.E3]; láték (37) → lát [mult.E1]; eltemeték (36) → eltemet [mult.E1]; veté (36) → vet [mult.targyas.E3]; kiáltának (35) → kiált [mult.T3]; tetszék (35) → tetszik [mult.E1]; akará (34) → akar [mult.targyas.E3]; csinálának (33) → csinál [mult.T3]; állának (33) → áll [mult.T3]; elbeszélé (32) → elbeszél [mult.targyas.E3]; kezdé (31) → kezd [mult.targyas.E3]; megjelenék (31) → megjelen [mult.E1]; adván (29) → ad [hatarozoi_igenev]; eltemetteték (29) → eltemettet [mult.E1]; felkelének (29) → felkel [mult.T3]; követé (29) → követ [mult.targyas.E3]; lakozék (29) → lakozik [mult.E1]; megkérdé (29) → megkérd [mult.targyas.E3]; parancsolá (29) → parancsol [mult.targyas.E3]; cselekedvén (28) → cselekszik [hatarozoi_igenev]; hozának (28) → hoz [mult.T3]; megölék (28) → megöl [mult.E1]; szólván (27) → szól [hatarozoi_igenev]; eltávozék (26) → eltávozik [mult.E1]; megépíté (26) → megépít [mult.targyas.E3]; áldozék (26) → áldoz [mult.E1]; eljutának (25) → eljut [mult.T3]; meghajtá (25) → meghajt [mult.targyas.E3]; meglátá (25) → meglát [mult.targyas.E3]; adaték (24) → adatik [mult.E1]; szólítá (24) → szólít [mult.targyas.E3]; visszatérének (24) → visszatér [mult.T3]; építé (24) → épít [mult.targyas.E3]; összegyűjté (24) → összegyűjt [mult.targyas.E3]; elvégezé (23) → elvégez [mult.targyas.E3]; imádkozék (23) → imádkozik [mult.E1]; felgerjede (22) → felgerjed [mult.alanyi.E3]; hagyá (22) → hagy [mult.targyas.E3]; teremté (22) → teremt [mult.targyas.E3]; elfutának (21) → elfut [mult.T3]; jutának (21) → jut [mult.T3]; kéré (21) → kér [mult.targyas.E3]; akarván (20) → akar [hatarozoi_igenev]; beborítá (20) → beborít [mult.targyas.E3]; hallék (20) → hall [mult.E1]; helyhezteté (19) → helyheztet [mult.targyas.E3]; illeté (19) → illet [mult.targyas.E3]; küldének (19) → küld [mult.T3]; megfogván (19) → megfog [hatarozoi_igenev]; megnyitá (19) → megnyit [mult.targyas.E3]; megszaggatá (19) → megszaggat [mult.targyas.E3]; szülé (19) → szül [mult.targyas.E3]; áldozának (19) → áldoz [mult.T3]; elfuta (18) → elfut [mult.alanyi.E3]; hallá (18) → hall [mult.targyas.E3]; kérék (18) → kér [mult.E1]; leborula (18) → leborul [mult.alanyi.E3]; szűlé (18) → szül [mult.targyas.E3]; találá (18) → talál [mult.targyas.E3]; vetének (18) → vet [mult.T3]; érkezék (18) → érkezik [mult.E1]; bízzál (17) → bízik [felszolito.E2]; hívatá (17) → hívat [mult.targyas.E3]; követék (17) → követ [mult.E1]; megemészté (17) → megemészt [mult.targyas.E3]; megfélemlének (17) → megféleml [mult.T3]; nevezék (17) → nevez [mult.E1]; összegyűlének (17) → összegyűl [mult.T3]; bocsátá (16) → bocsát [mult.targyas.E3]; izenvén (15) → izen [hatarozoi_igenev]; járván (15) → jár [hatarozoi_igenev]; kinyújtá (15) → kinyújt [mult.targyas.E3]; lakozának (15) → lakozik [mult.T3]; leborulának (15) → leborul [mult.T3]; megcsókolá (15) → megcsókol [mult.targyas.E3]; meghalának (15) → meghal [mult.T3]; megméré (15) → megmér [mult.targyas.E3]; megállának (15) → megáll [mult.T3]; felindítá (14) → felindít [mult.targyas.E3]; hivatá (14) → hivat [mult.targyas.E3]; hívá (14) → hív [mult.targyas.E3]; kezdék (14) → kezd [mult.E1]; megkérdezé (14) → megkérdez [mult.targyas.E3]; megkérdezék (14) → megkérdez [mult.E1]; méré (14) → mér [mult.targyas.E3]; tartózkodék (14) → tartózkodik [mult.E1]; elbeszélék (13) → elbeszél [mult.E1]; ismeré (13) → ismer [mult.targyas.E3]; kezdének (13) → kezd [mult.T3]; követvén (13) → követ [hatarozoi_igenev]; küldé (13) → küld [mult.targyas.E3]; maradának (13) → marad [mult.T3]; megdorgálá (13) → megdorgál [mult.targyas.E3]; meggyógyítá (13) → meggyógyít [mult.targyas.E3]; meghallgatá (13) → meghallgat [mult.targyas.E3]; megkérdék (13) → megkérd [mult.E1]; megszabadítá (13) → megszabadít [mult.targyas.E3]; megtelék (13) → megtel [mult.E1]; vetvén (13) → vet [hatarozoi_igenev]; élvén (13) → él [hatarozoi_igenev]; ejté (12) → ejt [mult.targyas.E3]; elküldvén (12) → elküld [hatarozoi_igenev]; elküldék (12) → elküld [mult.E1]; elrejté (12) → elrejt [mult.targyas.E3]; felelék (12) → felel [mult.E1]; felállítá (12) → felállít [mult.targyas.E3]; fölkele (12) → fölkel [mult.alanyi.E3]; járának (12) → jár [mult.T3]; kitölté (12) → kitölt [mult.targyas.E3]; kiűzé (12) → kiűz [mult.targyas.E3]; kérvén (12) → kér [hatarozoi_igenev]; megcsinálá (12) → megcsinál [mult.targyas.E3]; meghagyá (12) → meghagy [mult.targyas.E3]; meglátván (12) → meglát [hatarozoi_igenev]; megverék (12) → megver [mult.E1]; találának (12) → talál [mult.T3]; tanítván (12) → tanít [hatarozoi_igenev]; állítá (12) → állít [mult.targyas.E3]; egybegyűle (11) → egybegyül [mult.alanyi.E3]; elfoglalá (11) → elfoglal [mult.targyas.E3]; fogadá (11) → fogad [mult.targyas.E3]; hallgatának (11) → hallgat [mult.T3]; javítgata (11) → javítgat [mult.alanyi.E3]; kiáltván (11) → kiált [hatarozoi_igenev]; levágá (11) → levág [mult.targyas.E3]; leülvén (11) → leül [hatarozoi_igenev]; megerősíté (11) → megerősít [mult.targyas.E3]; megfogá (11) → megfog [mult.targyas.E3]; megmutatá (11) → megmutat [mult.targyas.E3]; megszámlálá (11) → megszámlál [mult.targyas.E3]; megölvén (11) → megöl [hatarozoi_igenev]; szállának (11) → száll [mult.T3]; tartván (11) → tart [hatarozoi_igenev]; építének (11) → épít [mult.T3]; adál (10) → ad [mult.E2]; csinálá (10) → csinál [mult.targyas.E3]; egybegyűlének (10) → egybegyűl [mult.T3]; elhozá (10) → elhoz [mult.targyas.E3]; elkezdé (10) → elkezd [mult.targyas.E3]; elálmélkodának (10) → elálmélkodik [mult.T3]; fogá (10) → fog [mult.targyas.E3]; fordulván (10) → fordul [hatarozoi_igenev]; gondolá (10) → gondol [mult.targyas.E3]; hozá (10) → hoz [mult.targyas.E3]; kinyujtá (10) → kinyujt [mult.targyas.E3]; lakék (10) → lakik [mult.E1]; látszék (10) → látsz [mult.E1]; megemlékezék (10) → megemlékezik [mult.E1]; megfordulván (10) → megfordul [hatarozoi_igenev]; megjelenté (10) → megjelent [mult.targyas.E3]; megrémülének (10) → megrémül [mult.T3]; megtérének (10) → megtér [mult.T3]; megállván (10) → megáll [hatarozoi_igenev]; növekedék (10) → növekedik [mult.E1]; találtatának (10) → találtat [mult.T3]; távozék (10) → távoz [mult.E1]; tölté (10) → tölt [mult.targyas.E3]; állván (10) → áll [hatarozoi_igenev]; betölté (9) → betölt [mult.targyas.E3]; csináltata (9) → csináltat [mult.alanyi.E3]; egybegyűjté (9) → egybegyűjtik [mult.targyas.E3]; elfüstölögteté (9) → elfüstölögtet [mult.targyas.E3]; elhagyván (9) → elhagy [hatarozoi_igenev]; elveté (9) → elvet [mult.targyas.E3]; előszólítván (9) → előszólít [hatarozoi_igenev]; engedé (9) → enged [mult.targyas.E3]; esének (9) → esik [mult.T3]; fordulának (9) → fordul [mult.T3]; gondolván (9) → gondol [hatarozoi_igenev]; hadakozék (9) → hadakozik [mult.E1]; helyezteté (9) → helyeztet [mult.targyas.E3]; helyezék (9) → helyez [mult.E1]
+
+scope=a teljes Károli korpusz-lexikona (62869 kisbetűsített alak) | forras=eszkozok/szoto/regies_felismeres.py + hibrid_v2.py (sha256:864d6876437a) + hibrid.py (sha256:682e83127d2b) + karoli_lexikon.tsv (sha256:215f687f5d68) | ts=2026-10-13T13:45Z
+
+### 11.5 A teljes Károli: v2 → v3 változás és 30 véletlen változás kézi listája
+
+A teljes Károli 61673 alakjából **4605** alak kimenete változott (v2 A → v3 A), 13740 előfordulás.
+
+| # | alak | előfordulás | v2 | v3 | kézi ítélet (manual) |
+|---|---|---|---|---|---|
+| 1 | babiloniai | 1 | Babilon | babiloniai | jobb (-i képzős melléknév) |
+| 2 | bíráskodék | 2 | bír | bíráskodik | jobb |
+| 3 | cselekedtetek-é | 2 | cselekedtetek-É | cselekedik | jobb |
+| 4 | elfelejtkezzék | 1 | elfelejtkezzék | elfelejtkezik | jobb |
+| 5 | eltávozhatnám | 1 | eltávozhatnám | eltávozik | részben jobb (DT130 (10): eltávozhat lenne; az alapige helyes) |
+| 6 | elátkozom | 2 | elátkozom | elátkoz | jobb |
+| 7 | felindíttatván | 1 | felindíttat | felindíttatván | rosszabb (a ritka műveltető -ván alakja igazolatlan) |
+| 8 | feltátom | 1 | feltátom | feltát | jobb |
+| 9 | fonál | 1 | fon | fonál | jobb |
+| 10 | hamisságukat | 2 | hamis | hamisság | jobb |
+| 11 | háborgatása | 2 | háborgat | háborgatás | jobb |
+| 12 | hívatni | 2 | hívatni | hívatik | semleges (mindkettő hibás: hívat) |
+| 13 | járjatok | 31 | járj | jár | jobb |
+| 14 | jövendölgetnek | 1 | jövendölgetnek | jövendölget | jobb |
+| 15 | kezdjétek | 1 | kéz | kezd | jobb |
+| 16 | kisarjadt | 1 | kisarjadt | kisarjad | jobb |
+| 17 | megholtaké | 1 | megholtak | meghal | semleges (megholt lenne) |
+| 18 | megidősödtél | 1 | megidősödtél | megidősöd | részben jobb (megidősödik) |
+| 19 | meglehet | 4 | megvan | meglehet | jobb |
+| 20 | napjaimban | 2 | napjai | nap | jobb |
+| 21 | paráználkodott | 8 | paráználkodott | paráználkodik | jobb |
+| 22 | pikkelye | 5 | pikkely | pikkelye | rosszabb (pikkely; a v2 a hamis régies-ige úton jutott rá) |
+| 23 | szidalmazhatja | 1 | szidalmazhatja | szidalmazhat | jobb |
+| 24 | szorongatásnak | 3 | szorongat | szorongatás | jobb |
+| 25 | takarhatja | 1 | takar | takarhat | jobb |
+| 26 | tapodja | 6 | tapodja | tapod | jobb |
+| 27 | tartod-é | 3 | tartod-É | tart | jobb |
+| 28 | táplálására | 1 | táplál | táplálás | jobb |
+| 29 | övezkedjenek | 1 | övezkedjen | övezked | részben jobb (övezkedik) |
+| 30 | üssétek | 1 | üss | üt | jobb |
+
+scope=a korpusz-lexikon kisbetűs és mondat belsejében nagybetűs alakjai | forras=eszkozok/szoto/valtozas_v2_v3.py (mag 20261013) + hibrid_v2.py (sha256:864d6876437a) + hibrid.py (sha256:682e83127d2b) + karoli_lexikon.tsv (sha256:215f687f5d68) | ts=2026-10-13T13:46Z
+
+Összesítés (manual): 24 jobb, 2 részben jobb, 2 semleges (mindkét változat hibás), 2 rosszabb.
+
+### 11.6 Ismert korlátok (nem javítva, a 4. mintás mérés előtt)
+
+- a szigorítás ára a ritka igéken (más igei alak nélkül): *mélyede, felindíttatván, sírának* (homográf névszóval); a C-ben *leheletének*;
+- a simplemma-ág hibái az A-ban: *bűn → bű*, *hasának → hasa*;
+- *látszék → látsz* (a *látsz* a *lát* E/2-je is), *egybegyűle → egybegyül* (az *űle → üle* szabály a *gyűl* hosszú ű-jét is rövidíti), passzív/műveltető kétértelműség (*hívatni → hívatik*);
+- a `szotari_alak` Károli-írásmódja a helyesírási szabályok visszafordításával közelített (`_VISSZA`), nem minden esetben pontos;
+- a különálló igekötő (N-F94a, N-F94d) nem kezelt.
+
+### 11.7 A v3 befagyasztása (a .3 mintavétele előtt)
+
+*proveniencia: scope=hibrid v3 | forras=a repó fájljai (sha256, LF sorvégekkel, ahogy a git tárolja) | ts=2026-10-13*
+
+| fájl | sha256 |
+|---|---|
+| `eszkozok/szoto/hibrid.py` (v3) | `682e83127d2bc2e7dd81ed68308b016f157bf6e878f855caf2f5a27142ab003c` (git blob `458b5ea5b5976aba6e4b2d6e9c735459e660b686`) |
+| `adat/szoto/gyakori_alakok.tsv` (K tábla, a felhasználó átnézése előtt) | `7c7160343b55c07df1c21171215bc2ae9c6ca17dfff61d9f9d18a2d89eacebc6` |
+| `adat/szoto/karoli_lexikon.tsv` | `215f687f5d68eff664da51bd4884a25ef927c1f67131e60ce5114faaee239215` |
+| `eszkozok/szoto/hibrid_v2.py` (összevetéshez) | `864d6876437a468ccda04a243c5ee2926c0e2cd6460b35652b1c31389835d204` |
+
+A 4. minta mintavétele és a modell-javaslatok ezután készülnek, a hibrid futtatása előtt (F94.3).

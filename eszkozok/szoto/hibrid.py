@@ -163,7 +163,7 @@ _k('tesz', 'tevé', 'tevék', 'tevének', 'tőn', 'tőnek', 'tegye', 'tegyed', '
 _k('megy', 'méne', 'menének', 'menék', 'mene', 'ment', 'mentek', 'menj', 'menjetek', 'menvén', ige=True)
 _k('jön', 'jöve', 'jövének', 'jövék', 'jőve', 'jőjön', 'jövel', 'jöjj', 'jő', 'jőnek', 'jőjj', 'jőjjön', 'jőjjenek',
    'jövén', 'jőtök', 'jövök', 'jősz', 'jövünk', 'jőjetek', 'jőjenek', ige=True)
-_k('eszik', 'evé', 'evék', 'evének', 'egyél', 'egyetek', 'egyék', 'evett', 'evén', ige=True)
+_k('eszik', 'evé', 'evék', 'evének', 'egyél', 'egyetek', 'egyék', 'evett', 'evén', 'egyétek', 'egyed', 'egyem', ige=True)
 _k('iszik', 'ivá', 'ivék', 'ivának', 'igyál', 'igyatok', 'igyék', 'ivott', 'ivén', ige=True)
 _k('hisz', 'hivé', 'hivének', 'higyj', 'higyjetek', 'hitt', 'hittek', 'hivén', ige=True)
 _k('visz', 'vivé', 'vivék', 'vivének', 'vigye', 'vidd', 'vitt', 'vitte', 'vivén', ige=True)
@@ -231,7 +231,7 @@ BIRT = ['jaink', 'jeink', 'aink', 'eink', 'jaim', 'jeim', 'aim', 'eim', 'jaid', 
         'am', 'em', 'om', 'öm', 'ad', 'ed', 'od', 'öd', 'ja', 'je', 'a', 'e', 'm', 'd', 'i']
 _MGH = set('aáeéiíoóöőuúüű')
 _MGH_BIRT = ('a', 'e', 'ok', 'ek', 'ök', 'ak', 'ai', 'ei', 'aim', 'eim', 'aid', 'eid', 'aink', 'eink', 'am', 'em', 'ad', 'ed', 'atok', 'etek')
-IGEKOTO = ['vissza', 'össze', 'utána', 'hozzá', 'széjjel', 'szét', 'meg', 'fel', 'föl', 'ki', 'be', 'el', 'le', 'rá',
+IGEKOTO = ['vissza', 'össze', 'egybe', 'utána', 'hozzá', 'széjjel', 'szét', 'meg', 'fel', 'föl', 'ki', 'be', 'el', 'le', 'rá',
            'reá', 'át', 'oda', 'ide', 'alá', 'elő', 'ellen', 'végig', 'után']
 # régies igevégződés -> a régies alak jegye
 IGEVEG = [(r'ván$', 'hatarozoi_igenev'), (r'vén$', 'hatarozoi_igenev'), (r'ának$', 'mult.T3'), (r'ének$', 'mult.T3'),
@@ -301,15 +301,25 @@ def _att(c, v):
 
 
 def _att_igei(c):
-    """Szigorú igei attesztáció (önmaga nélkül), a feltételes névszói-közös végződésekkel."""
-    if any(_att(c, v) for v in IGEI_ATTEST):
+    """Szigorú igei attesztáció (önmaga nélkül), a feltételes névszói-közös végződésekkel. Legfeljebb hárombetűs
+    tőnél legalább két különböző igei alak kell (ki-ván, fel-ett egyedül nem igazol)."""
+    db = sum(1 for v in IGEI_ATTEST if _att(c, v))
+    if db >= (2 if len(c) <= 3 else 1):
         return True
+    if len(c) <= 3:
+        return False
     return not _nevszoi(c) and any(_att(c, v) for v in IGEI_ATTEST_FELTETELES)
 
 
 def _ik_ige(c):
-    """c + -ik előfordul, és c mássalhangzóra végződik (az -áik/-éik birtokos többes nem -ik-es ige: szolgáik)."""
-    return (c + 'ik') in KIS and c[-1:] not in _MGH
+    """-ik-es ige: c + -ik előfordul, c mássalhangzóra végződik (szolgáik: birtokos többes), a puszta c nem fordul
+    elő önállóan (üt, gyűjt: akkor a c+ik tárgyas T/3), és c-nek van szigorú igei alakja (esett, született)."""
+    if (c + 'ik') not in KIS or c[-1:] in _MGH or c in KIS or c in IGEKOTO:
+        return False
+    for ik in IGEKOTO:
+        if c.startswith(ik) and c[len(ik):] in KIS:
+            return False  # egybegyűjt: a gyűjt önállóan is áll
+    return sum(1 for v in IGEI_ATTEST if _att(c, v)) >= (2 if len(c) <= 3 else 1)
 
 
 def _igei(c):
@@ -317,8 +327,13 @@ def _igei(c):
     return _att_igei(c) or _ik_ige(c)
 
 
-_NEVSZOI_RAG = ('nak', 'nek', 't', 'ot', 'et', 'at', 'ban', 'ben', 'ra', 're', 'ról', 'ről', 'ba', 'be', 'ból', 'ből',
+# a -nak/-nek nincs benne: az igei T/3-mal közös, nem dönt
+_NEVSZOI_RAG = ('t', 'ot', 'et', 'at', 'ban', 'ben', 'ra', 're', 'ról', 'ről', 'ba', 'be', 'ból', 'ből',
                 'hoz', 'hez', 'val', 'vel', 'ért')
+
+
+# egyértelmű névszói esetragok (az -at/-et/-t nem: igéből is képez főnevet, kezd-et, áll-at)
+_ESETRAG = ('ban', 'ben', 'ra', 're', 'ba', 'be', 'ból', 'ből', 'ról', 'ről', 'hoz', 'hez', 'höz')
 
 
 def _nevszoi(w):
@@ -327,7 +342,7 @@ def _nevszoi(w):
 
 
 # Képzett igealak (DT130 (10)): a -hat/-het képzős és a szenvedő igealak külön szótári alak, alapigével
-_HATHET = re.compile(r'^(.+?)(hat|het)(játok|jétek|ják|jék|ja|je|nánk|nénk|nák|nék|ná|né|na|ne|unk|ünk|tok|tek|tök|'
+_HATHET = re.compile(r'^(.+?)(hat|het)(játok|jétek|ják|jék|juk|jük|ja|je|nánk|nénk|nák|nék|ná|né|na|ne|unk|ünk|tok|tek|tök|'
                      r'nak|nek|ott|ett|om|em|öm|ok|ek|ök|od|ed|ik|sz|i|ja)?$')
 _HATHET_ALAP = {'me': 'megy', 'te': 'tesz', 've': 'vesz', 'vi': 'visz', 'hi': 'hisz', 'le': 'lesz', 'jö': 'jön',
                 'e': 'eszik', 'i': 'iszik'}
@@ -337,8 +352,9 @@ _MAI_VEG = sorted({'játok', 'jétek', 'ják', 'jék', 'juk', 'jük', 'jatok', '
                    'öttek', 'tak', 'tek', 'ottam', 'ettem', 'öttem', 'tam', 'tem', 'ottál', 'ettél', 'öttél', 'tál', 'tél',
                    'ottunk', 'ettünk', 'öttünk', 'tunk', 'tünk', 'ott', 'ett', 'ött', 'unk', 'ünk', 'nak', 'nek', 'tok',
                    'tök', 'ok', 'ek', 'ök', 'om', 'em', 'öm', 'sz', 'ja', 'je', 'ta', 'te', 'i', 'ni', 'ani', 'eni', 'va',
-                   've', 'tad', 'ted', 'od', 'ed', 'öd', 'jon', 'jen', 'jön', 'jak', 'jek', 'janak', 'jenek', 'nék', 'nánk', 'nénk', 'nák', 'na', 'ne'},
+                   've', 'tad', 'ted', 'od', 'ed', 'öd', 'jon', 'jen', 'jön', 'jak', 'jek', 'janak', 'jenek', 'nék', 'nánk', 'nénk', 'nák'},
                   key=len, reverse=True)
+_SZEMELYRAG = ('nak', 'nek', 'tok', 'tek', 'tök', 'ok', 'ek', 'ök', 'unk', 'ünk', 'om', 'em', 'öm')
 _HASONULT = re.compile(r'^(.*)(ss|zz|cc)(a|e|ák|ék|uk|ük|átok|étek|on|en|ön|anak|enek|unk|ünk|ad|ed|ál|él|ék|ák)$')
 
 
@@ -349,6 +365,12 @@ def _ige_to(c):
     if _ik_ige(c) and c not in KIS and not re.search(r'(tat|tet|ít|szt)$', c):
         return c + 'ik'
     if _att_igei(c):
+        # igeként igazolt tő: ha az -ik-es alak is előfordul, és a puszta tő önállóan nem, az -ik-es a szótári alak
+        # (megháborod-ott -> megháborodik)
+        if (c + 'ik') in KIS and c not in KIS and c[-1:] not in _MGH and not re.search(r'(tat|tet|ít|szt)$', c):
+            return c + 'ik'
+        if _VALTOZAT == 'A' and _lem(c) == c + 'ik':
+            return c + 'ik'
         return c
     return None
 
@@ -387,7 +409,9 @@ def _kepzett(w2):
     m = _SZENVEDO.match(w2)
     if m:
         lemma = m.group(1) + m.group(2) + 'ik'
-        if lemma in KIS:
+        kepzett = m.group(1) + m.group(2)
+        # a -tat/-tet/-at/-et előtti rész+képző önálló igeként igazolt: múlt vagy műveltető, nem szenvedő (égettek, megismertetni)
+        if lemma in KIS and kepzett not in KIS and not _att_igei(kepzett):
             r = _igekotovel(m.group(1), _ige_to)
             if r:
                 _NYOM.append(('C', 'szenvedo', None))
@@ -410,7 +434,9 @@ def _mai_ige(w2):
     if _VALTOZAT == 'B':
         return None
     for v in _MAI_VEG:
-        if w2.endswith(v) and len(w2) - len(v) >= (3 if v == 'sz' else 2):
+        if w2.endswith(v) and len(w2) - len(v) >= 3 and not (
+                v[0] == 't' and w2[-len(v) - 1] in _MGH) and not (
+                v in _SZEMELYRAG and w2[-len(v) - 1] in 'aáeé'):  # születte-nek ↛  # a -ta/-te/-tam … múlt mássalhangzós tőre jár (nevezete ↛ neveze)
             r = _igekotovel(w2[:-len(v)], _ige_to)
             if r:
                 _NYOM.append(('M', v, None))
@@ -444,9 +470,9 @@ def _nevszo_to(w, nev=False, szigoru=False, laza=False):
         alapok.append((m.group(1) + {'nny': 'ny', 'ssz': 'sz', 'zzs': 'zs', 'ggy': 'gy', 'tty': 'ty', 'lly': 'ly',
                                      'ccs': 'cs'}.get(m.group(2), m.group(2)[0]), -1))
     for a, rhossz in alapok:
-        # az -m/-d/-i birtokos jel kötőhangzó nélkül csak magánhangzó után áll (atyá-m, fia-i; föld ↛ föl + -d)
+        # az -m/-d birtokos jel kötőhangzó nélkül csak magánhangzó után áll (atyá-m; föld ↛ föl + -d)
         lista = [(a, 0)] + [(a[:-len(b)], len(b)) for b in BIRT if a.endswith(b) and len(a) - len(b) >= 2 and not (
-            b in ('m', 'd', 'i') and a[:-len(b)][-1:] not in _MGH)]
+            b in ('m', 'd') and a[:-len(b)][-1:] not in _MGH) and not (b in ('ai', 'ei') and a[:-2].endswith('i'))]
         b_mgh = {a[:-len(b)]: b for b in BIRT if a.endswith(b) and b in _MGH_BIRT}
         for t, bh in lista:
             if a == w and bh == 0:
@@ -493,51 +519,71 @@ def _csupasz(t, nev=False):
     Károliban önállóan előfordul, legalább harmadannyiszor, mint t, akkor a csupasz tövet adja. A puszta -a/-e
     birtokos jelnél a tő legalább 4 betű (a v2 feltétele), a többinél legalább 3."""
     lex = NAGY_BELUL if nev else KIS
+    if not nev and (_att_igei(t) or any(_att(t, v) for v in ('ja', 'je', 'ják', 'jék', 'ta', 'te', 'ták', 'ték', 'á', 'é'))):
+        return t  # igeként igazolt tő (fogad, marad, tagad): nem birtokos alak
     for b in _CSUPASZ_BIRT:
         if t.endswith(b) and len(t) > len(b):
+            if b in ('ai', 'ei') and t[:-2].endswith('i'):
+                continue  # -i képzős melléknév (babilóniai), nem birtokos többes
             if b[0] in 'áé':
                 # hosszú magánhangzós birtokos jel: a tővégi -a/-e nyúlt meg (atyám -> atya)
                 c = t[:-len(b)] + ('a' if b[0] == 'á' else 'e')
             else:
                 c = _hosszitas_vissza(t[:-len(b)])
-            if len(c) >= (4 if nev and b in ('a', 'e') else 3) and c in lex and lex[c] >= 2 and (
+            if len(c) >= (4 if nev and b in ('a', 'e') else 3) and c in lex and lex[c] >= (2 if len(c) == 3 else 1) and (
                     b[0] in 'áé' or 3 * lex[c] >= lex.get(t, 0)) and (
                     nev or not _ismert(c) or _lem(c) == c):
                 _NYOM.append(('L', None, None))
                 return c
-            if not nev and b in ('a', 'e') and re.search(r'(ság|ség)$', c) and len(c) >= 6:
+            if not nev and b in ('a', 'e') and re.search(r'(ság|ség|ás|és)$', c) and len(c) >= 5:
                 # -ság/-ség képzős főnév birtokos -a/-e-vel (kereksége -> kerekség), attesztáció nélkül is
                 _NYOM.append(('L', None, None))
                 return c
     return t
 
 
+def _simplemma_ige(c):
+    """Az A-ban: a simplemma igeként ismeri c-t — főnévi igeneve vagy múlt idejű alakja c-re (vagy c+ik-re)
+    lemmatizál (igei tudás, nem a névszói „ismert szó” próba; házni ↛ ház)."""
+    for v in ('ni', 'ani', 'eni', 'ott', 'ett', 'ött', 'tt'):
+        if _ismert(c + v) and _lem(c + v) in (c, c + 'ik'):  # csak ismert alak (királyni: ismeretlen, nem igazol)
+            return True
+    return False
+
+
 def _ige_jelolt(c):
     """A jelölt tő igeként igazolva (v3, szigorított): igei alakja előfordul a Károliban (`_igei`). Az A-ban a
     simplemma dönti el az -ik-es és a tárgyas olvasat közti választást. Visszaadja a szótári alakot vagy None-t."""
-    if _VALTOZAT == 'B' or len(c) < 2:
-        return None
+    if _VALTOZAT == 'B' or len(c) < 2 or c in IGEKOTO:
+        return None  # az igekötő önmagában nem igető (kié ↛ ki, felének ↛ fel)
     if len(c) == 2:
         # kétbetűs igető (ad-ának, öl-é): csak szigorú igei attesztációval
         if _ik_ige(c):
             return c + 'ik'
         return c if _att_igei(c) else None
     ik = c + 'ik'
+    _a_ik = _VALTOZAT == 'A' and _lem(c) == ik
     if _VALTOZAT == 'A':
         # -ik-es ige előbb: a simplemma szótári alaknak tartja, és a Károliban előfordul (az -ik-es alak igei)
-        if _ismert(ik) and _lem(ik) == ik and _ik_ige(c):
+        if _ismert(ik) and _lem(ik) == ik and ik in KIS and c[-1:] not in _MGH and c not in KIS and c not in IGEKOTO:
             return ik
-        if _ismert(c) and _lem(c) in (c, ik) and _igei(c):
+        if _ismert(c) and _lem(c) in (c, ik) and (_igei(c) or _simplemma_ige(c)):
             return _lem(c)
     # műveltető/tárgyas képzős tőnél (-tat/-tet/-ít/-szt) az -ik a tárgyas T/3 (helyeztetik), nem -ik-es ige
     if _ik_ige(c) and c not in KIS and not _ismert(ik) and not re.search(r'(tat|tet|ít|szt)$', c):
         return ik
     if _att_igei(c):
-        return c
+        # igeként igazolt tő: ha az -ik-es alak is előfordul, és a puszta tő önállóan nem, az -ik-es a szótári alak
+        # (megháborod-ott -> megháborodik)
+        if (c + 'ik') in KIS and c not in KIS and c[-1:] not in _MGH and not re.search(r'(tat|tet|ít|szt)$', c):
+            return c + 'ik'
+        return ik if _a_ik else c
     return None
 
 
 def _regies_ige(w2):
+    if w2.endswith(('felé', 'felől')):
+        return None  # irányhatározószó (fölfelé, lefelé, kifelé)
     jeloltek = [(v, j, re.sub(v, '', w2)) for v, j in IGEVEG if re.search(v, w2)]
     # felszólító: -jál/-jél; kettőzött sziszegővel -zzál/-zzél, -sszál/-sszél (régies E/2)
     m = re.match(r'^(.*)j(ál|él)$', w2)
@@ -554,8 +600,19 @@ def _regies_ige(w2):
         # az -a/-e (múlt, alanyi) csak akkor, ha az alak nem ismert névszó (fia, keze, háza)
         if v in (r'a$', r'e$') and _ismert(w2):
             continue
-        if v in (r'ál$', r'él$') and _nevszoi(w2):
-            continue  # a -ál/-él végű névszó (halál, kenyér) névszói raggal is előfordul
+        if v in (r'ának$', r'ének$', r'a$', r'e$') and any((c + r) in KIS for r in _ESETRAG):
+            continue  # a tő egyértelmű névszói esetraggal is előfordul (fej-re, szív-ben): fejének, szívének névszó
+        if v in (r'ál$', r'él$', r'ék$') and _nevszoi(w2):
+            continue  # a -ál/-él/-ék végű névszó (halál, hajlék, maradék) névszói raggal is előfordul
+        if v == r'ék$' and re.search(r't{1,2}ék$', w2) and _att_igei(re.sub(r't{1,2}ék$', '', w2)):
+            continue  # -ték/-tték: múlt T/3 tárgyas (megismer-ték), nem régies E/1
+        if v in (r'ván$', r'vén$') and len(c) >= 4 and c[-1] not in _MGH and c not in IGEKOTO and _VALTOZAT != 'B' and (
+                (_VALTOZAT == 'A' and _ismert(c)) or _igei(c)
+                or any(_att(c, x) for x in ('á', 'é', 'ék', 'ának', 'ének', 'nak', 'nek', 'ja', 'je', 'ni'))):
+            # a -ván/-vén határozói igenév maga igei: a ritka ige (temetget-vén) más alak nélkül is elfogadott
+            t = _ige_jelolt(c) or (c + 'ik' if _VALTOZAT == 'A' and _lem(c) == c + 'ik' else c)
+            _NYOM.append(('R', v, jegy))
+            return t
         if v == 'jm' and len(c) == 2 and _VALTOZAT != 'B' and _igei(c):
             # kétbetűs igető a -j- előtt (él-jen, ál-ljon nem): csak igei attesztációval
             _NYOM.append(('R', v, jegy))
@@ -606,7 +663,9 @@ def to(alak):
         return _csupasz(_nevszo_to(alak, nev=True) or alak, nev=True)
     del _NYOM[:]
     t = _to_koznev(w)
-    return t if t in KIVETEL.values() else _csupasz(t)
+    if t in KIVETEL.values() or any(n[0] in ('R', 'M', 'C', 'A', 'X') for n in _NYOM):
+        return t  # kivétel vagy igei elemzés: a birtokos jel leválasztása nem alkalmazható (fogad ↛ fog)
+    return _csupasz(t)
 
 
 def _to_koznev(w):
@@ -632,16 +691,18 @@ def _to_koznev(w):
     if _VALTOZAT in ('C', 'CK'):
         r = _mai_ige(w2)
         if r:
-            if r[1]:
-                _NYOM.append(('A', r[1], None))
+            ap = r[1] or _alapige(r[0])
+            if ap and ap != r[0]:
+                _NYOM.append(('A', ap, None))
             return r[0]
     t = _koznev_lem(w2)
     if t == w2 and _VALTOZAT == 'A':
         mentes = list(_NYOM)
         r = _mai_ige(w2)
         if r:
-            if r[1]:
-                _NYOM.append(('A', r[1], None))
+            ap = r[1] or _alapige(r[0])
+            if ap and ap != r[0]:
+                _NYOM.append(('A', ap, None))
             return r[0]
         _NYOM[:] = mentes
     if t == w2:
@@ -660,6 +721,15 @@ def _to_koznev(w):
 
 def _koznev_lem(w2):
     lem = _lem(w2)
+    elotag = lem[:-2] if lem.endswith('ik') else lem
+    for kepzo in ('ság', 'ség', 'ás', 'és'):
+        maradek = w2[len(elotag + kepzo):]
+        if lem != w2 and w2.startswith(elotag + kepzo) and (
+                not maradek or maradek[0] in _MGH or any(maradek.startswith(r) for r in RAG)):  # bíráskodik ↛ bírás
+            # -ás/-és, -ság/-ség képzős főnév: a főnév a szótári alak, nem az alapszó (kijavítása -> kijavítás,
+            # megkeményedés, hamissága -> hamisság)
+            _NYOM.append(('S', None, None))
+            return elotag + kepzo
     if lem == w2 and _ismert(w2):
         # a simplemma szótári alaknak tartja (föld, mert, istenem): csak szigorú birtokosjel-leválasztás
         return _nevszo_to(w2, szigoru=True) or w2
