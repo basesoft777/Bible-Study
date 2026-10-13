@@ -6,10 +6,12 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: fut
+allapot: lezarva
 ad: a pardes.db új táblái (token_macula, lxx_token, bdb_alias, nave_vers, lxx_versszam) táblaszintű licenccel és meta-sorral, az adatbázis újraépítve; a #60 pilot D1–D5 mérése mindkét szakaszon újrafuttatva (D1 39/39, D2 0 eltérés, D5 friss); mérethatár nélkül (DT127); index a magyar szavakra (v1.1)
-kovetkezo: "ellenőr 3. kör + zárás (a lezárást az orkesztrátor végzi); nyitott: DT-F92c (kanonikus ÚSZ-számlálás), DT-F92d (a térkép versbeosztása)"
+kovetkezo: "—; nyitott: DT-F92c (kanonikus ÚSZ-számlálás), DT-F92d (a térkép versbeosztása), N-F92a"
 ag: claude/f92-pardes-db-olvasoi
+pr: PRSZAM
+lezarva_osszegzes: "pardes.db +5 olvasói tábla (token_macula, lxx_token, lxx_versszam, bdb_alias, nave_vers) meta-sorral és licenccel, magyar szó index (K5 334→9 ms); D1 1Móz 39/39, Zsolt 22 38/39 (forrásoldali hiány); D2 0 eltérés az ÚSZ-láncelemek kivételével (elfogadva, nem végleges); térkép nem forrás; DT-F92a–d, N-F92a"
 olvas: [eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, naplok/SQLITE_EPIT_meres.md, adat/SEMA.md, adat/licencek.tsv, "konkordancia/Macula_heber_*.tsv", "konkordancia/LXX_OS/*.tsv", konkordancia/BDB_strong_alias.tsv, konkordancia/Nave_basokant.tsv, konkordancia/LXX_versszintu_parok.tsv, ADATVAGYON_TERV.md, DONTESEK.md]
 ir: [eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, eszkozok/nave_bontas.py, eszkozok/f92_db_igazolas.py, naplok/PARDES_DB_OLVASOI_db_igazolas.md, eszkozok/olvaso_pilot/sablon.html, DONTESEK.md, eszkozok/olvaso_pilot/db_meres.py, eszkozok/olvaso_pilot/teszt_olvaso_pilot.py, NYITOTT_FELADATOK.md, naplok/SQLITE_EPIT_meres.md, adat/SEMA.md, naplok/PARDES_DB_OLVASOI_M0.md, naplok/PARDES_DB_OLVASOI_zaras.md]
 fugg: []
