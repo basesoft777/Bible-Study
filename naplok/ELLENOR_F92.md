@@ -37,7 +37,7 @@ K2 ÚSZ-eltérés elfogadása; a térkép mint második forrás (1Móz 32:1 hib�
 ---
 # 2. kör (HEAD 430e06dd) — ELTÉRÉS: 5 tétel
 *A fuggetlen-ellenor subagent jelentése tömörítve; az orkesztrátor mentette. Az ellenőr a pardes.db-t nem olvashatta (szerepkorlát).*
-ÚJ-1, ÚJ-3, ÚJ-4, ÚJ-5, ÚJ-6 forrás- és diff-szinten OK; ÚJ-2 maradékkal. Új eltérések: (1) DONTESEK.md DT-F92c/d sora 3 cellás a 8 oszlopos táblában; (2) a brief `kovetkezo` elavult; (3) SEMA 2.26 táblasora még a `versificacios_terkep` forrásértéket adta; (4) `f92_terkep_bontas.py` beégetett állítás-sora, egyirányú ÚSZ-ellenőrzés, elavult lekérdezés; (5) K4: tesztet az ellenőr nem futtathat.
+ÚJ-1, ÚJ-3, ÚJ-4, ÚJ-5, ÚJ-6 forrás- és diff-szinten OK; ÚJ-2 maradékkal. Új eltérések: (1) DONTESEK.md DT133/d sora 3 cellás a 8 oszlopos táblában; (2) a brief `kovetkezo` elavult; (3) SEMA 2.26 táblasora még a `versificacios_terkep` forrásértéket adta; (4) `f92_terkep_bontas.py` beégetett állítás-sora, egyirányú ÚSZ-ellenőrzés, elavult lekérdezés; (5) K4: tesztet az ellenőr nem futtathat.
 NEM ELLENŐRIZHETŐ az ellenőrnek (DB-olvasás kellene): K3 meta-hash, Macula kétértelmű csoportok, lxx_versszam sorszámai, szovegforma, Nave 75 856/156 214, 5 420 G-Strong, térkép-bontás.
 ## Javítás (F92.9, `7698123b`)
 (1)–(4) javítva; az `f92_terkep_bontas.py` helyett `eszkozok/f92_db_igazolas.py` (csak olvas, `mode=ro`), kimenete `naplok/PARDES_DB_OLVASOI_db_igazolas.md`: minden várt érték egyezik, eltérés nincs. *Ez a végrehajtó saját igazolása, nem független ellenőri lekérdezés.* Az orkesztrátor a javítás után lefuttatta: `teszt_sqlite_epit.py` OK, `teszt_olvaso_pilot.py` 105 OK, `feladatok.py ellenoriz` 0 hiba.

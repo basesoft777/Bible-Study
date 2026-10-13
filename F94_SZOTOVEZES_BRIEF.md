@@ -14,7 +14,7 @@ kovetkezo: "Lezárva; merge a felhasználótól. Utána: #95 SZOTOVEZES_DB (brie
 olvas: [konkordancia/Karoli_1908.tsv, "adat/karoli_strong/*", adat/SEMA.md, adat/licencek.tsv, Rendszerfejlesztesi_playbook.md, eszkozok/general.py, DONTESEK.md]
 ir: [eszkozok/szoto/, adat/szoto/, adat/SEMA.md, adat/licencek.tsv, naplok/SZOTOVEZES_meres.md, naplok/SZOTOVEZES_zaras.md]
 pr: https://github.com/basesoft777/Bible-Study/pull/335
-lezarva_osszegzes: "A Károli mind a 66 824 szóalakjához szótári alak, alapige, további elfogadható alak és régies jegy (adat/szoto/karoli_szotari_alak.tsv, simplemma nélkül, kiadott hibrid: C+K, DT-F94e); négy aranyminta (a 4. felhasználó által átnézve), K tábla 400 sor; 4. mintán C+K M1 95,0% súlyozva (K nélküli döntő halmaz), M2 (c) 98,03%, K3 teljesül; ismert korlát: ritka alakok jegye ~6% hibás (N-F94h), -ta/-te lemmahiba; négy független ellenőri kör, a negyedik tiszta; nyitott: N-F94a–h, DT-F94a–f helyőrzők; zárójelentés: naplok/SZOTOVEZES_zaras.md"
+lezarva_osszegzes: "A Károli mind a 66 824 szóalakjához szótári alak, alapige, további elfogadható alak és régies jegy (adat/szoto/karoli_szotari_alak.tsv, simplemma nélkül, kiadott hibrid: C+K, DT139); négy aranyminta (a 4. felhasználó által átnézve), K tábla 400 sor; 4. mintán C+K M1 95,0% súlyozva (K nélküli döntő halmaz), M2 (c) 98,03%, K3 teljesül; ismert korlát: ritka alakok jegye ~6% hibás (N-F94h), -ta/-te lemmahiba; négy független ellenőri kör, a negyedik tiszta; nyitott: N-F94a–h, DT135–f helyőrzők; zárójelentés: naplok/SZOTOVEZES_zaras.md"
 fugg: []
 nem_fugg: [22]
 ---
@@ -112,7 +112,7 @@ A szótári alak, a mai alak, az alapige és a további elfogadható alak a `par
 - **N-F94b** — külső szótár (pl. Hunspell hu_HU, MPL/LGPL) a 17 nem alátámasztott szabály ellenőrzésére: csak külön licencdöntés után; addig az ellenőrizetlen jelölés marad.
 - **N-F94c** — a `jó` Strong-párosítása az 1Móz 1:4-ben (H2895 nálunk, H2896 a várható): mellékes lelet, a #94-en kívül vizsgálandó.
 - **v1.1** (felhasználó, chat, 2026-10-13: „a” — a brief módosítása a végrehajtás előtt): a régies ige-felismerés szigorítása és a `regies_jegy` oszlop (.2, .3/5, K6). Forrás: a modernizálás előkészítése (DT128), a teljes Károlin mért hamis pozitívok, és egy másik session javaslata a jegy megőrzésére.
-- **v1.2** (felhasználó, chat, 2026-10-13, DT-F94f; az ELLENOR_F94_2 után): a K6 `regies_jegy`-feltétele a 200 leggyakoribb jegyes alakra szűkül; a ritka alakokon ismert korlát, becsült hibaaránnyal (100-as rögzített magú minta, N-F94h). Új javító kör a ritka névszói jegyekre nem indul (alakilag kétértelmű osztály; a szótári alak ezekben jórészt helyes; minden újabb kör tovább rontaná a 4. minta függetlenségét). A DT128 modernizálás a jegyet jelöltként kezeli, és a saját aranymintáján méri.
+- **v1.2** (felhasználó, chat, 2026-10-13, DT140; az ELLENOR_F94_2 után): a K6 `regies_jegy`-feltétele a 200 leggyakoribb jegyes alakra szűkül; a ritka alakokon ismert korlát, becsült hibaaránnyal (100-as rögzített magú minta, N-F94h). Új javító kör a ritka névszói jegyekre nem indul (alakilag kétértelmű osztály; a szótári alak ezekben jórészt helyes; minden újabb kör tovább rontaná a 4. minta függetlenségét). A DT128 modernizálás a jegyet jelöltként kezeli, és a saját aranymintáján méri.
 
 ## Melléklet — a `DONTESEK.md` tétele (helyőrzővel)
 

@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-10-13",
-   "commit": "75897b01"
+   "commit": "8f562329"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -72,7 +72,7 @@
   {
    "kulcs": "ready",
    "cimke": "Indítható most",
-   "db": 7
+   "db": 6
   },
   {
    "kulcs": "wait",
@@ -654,22 +654,6 @@
    "leiras_hiany": true
   },
   {
-   "kulcs": "SZOTOVEZES",
-   "szam": 94,
-   "kod": "SZOTOVEZES",
-   "cim": "Magyar szótövezés a Károlira — szótári alak és alapige minden szóalakhoz, licenctiszta hibrid eszközzel, mért pontossággal",
-   "fazis": "1",
-   "allapot": "ready",
-   "brief_allapot": "nem_indult",
-   "most": "/kovetkezo; ⛔ .0 (a régi minták eltérései a végleges döntésektől), ⛔ .1 (a simplemma adatlicence), ⛔ .3 (a negyedik minta soronkénti ellenőrzése a felhasználóé)",
-   "fugg": "—",
-   "tervezett": false,
-   "reszletes": "",
-   "roviden": "",
-   "leiras_forras": null,
-   "leiras_hiany": true
-  },
-  {
    "kulcs": "SZOTOVEZES_DB",
    "szam": 95,
    "kod": "SZOTOVEZES_DB",
@@ -678,7 +662,7 @@
    "allapot": "idle",
    "brief_allapot": "brief_kell",
    "most": "brief kell a #94 lezárása után; a #92 merge-e után futhat",
-   "fugg": "#92 (kész), #94",
+   "fugg": "#92 (kész), #94 (kész)",
    "tervezett": false,
    "reszletes": "",
    "roviden": "",
@@ -694,7 +678,7 @@
    "allapot": "idle",
    "brief_allapot": "brief_kell",
    "most": "brief kell a #94 lezárása után (sorrend: #94 → #96, a #95-tel párhuzamosan); nyitott: a Hunspell hu_HU licencdöntés (N-F94b)",
-   "fugg": "#94",
+   "fugg": "#94 (kész)",
    "tervezett": false,
    "reszletes": "",
    "roviden": "",
@@ -778,13 +762,12 @@
    "ELOFIZETES_FEED",
    "ZSOLT_FELIRAT_SZAMOZAS",
    "TIPNR_TOKEN_HIANY",
-   "SZOTOVEZES",
    "SZOTOVEZES_DB",
    "KAROLI_MODERN",
    "TERV_BEFOGAD"
   ]
  },
- "terkep": "flowchart LR\n  classDef stop fill:#d93025,stroke:#8c1d18,color:#ffffff,stroke-width:2px\n  classDef run fill:#1e8e3e,stroke:#0d5226,color:#ffffff,stroke-width:2px\n  classDef ready fill:#1a73e8,stroke:#0b3d91,color:#ffffff,stroke-width:2px\n  classDef wait fill:#f9ab00,stroke:#a86f00,color:#2b1d00,stroke-width:2px\n  classDef plan fill:#8e44ad,stroke:#5b2470,color:#ffffff,stroke-width:2px,stroke-dasharray:6 3\n  classDef idle fill:#80868b,stroke:#4a4f54,color:#ffffff\n  classDef dt fill:#ff6d00,stroke:#a34500,color:#ffffff,stroke-width:2px\n\n  P_MCP_BUROK[\"MCP_BUROK\"]:::plan\n  P_SZPA_AUDIT[\"SZPA_AUDIT\"]:::plan\n  P_TERV_BEFOGAD[\"TERV_BEFOGAD\"]:::plan\n  T10[\"#10 LEXIKON_LEZARAS\"]:::idle\n  T11[\"#11 MIGRACIO\"]:::idle\n  T12[\"#12 TEREMT-002 3. lépés…\"]:::idle\n  T13[\"#13 1Móz 17-től a…\"]:::idle\n  T22[\"#22 Károli–Strong párosítás…\"]:::stop\n  T23[\"#23 MOTIVUM_FORRAS\"]:::ready\n  T25[\"#25 OLVASOI_HTML\"]:::idle\n  T27[\"#27 FP3\"]:::idle\n  T36[\"#36 LEXIKON_UJRAGEN\"]:::wait\n  T38[\"#38 BDB_FORDITAS\"]:::ready\n  T48[\"#48 KJV_REGI_KIVEZETES\"]:::wait\n  T50[\"#50 CI_JAVITO_KOR\"]:::ready\n  T52[\"#52 TERV_SZINKRON\"]:::stop\n  T55[\"#55 ZSOLTAR_UJRAELLENORZES\"]:::stop\n  T59[\"#59 SZOSZEDET\"]:::ready\n  T67[\"#67 BDB_JAVITAS_KAPU\"]:::idle\n  T69[\"#69 SEMA_DATASET_SZAM\"]:::idle\n  T7[\"#7 Thayer teljes magyar…\"]:::idle\n  T70[\"#70 SZOTAR_S26\"]:::wait\n  T74[\"#74 TANULMANY_JAVITAS_GEPI\"]:::idle\n  T75[\"#75 TANULMANY_JAVITAS\"]:::idle\n  T76[\"#76 OLVASOI_KONKORDANCIA\"]:::wait\n  T81[\"#81 KAROLI_UJJLENYOMAT\"]:::idle\n  T86[\"#86 ELOFIZETES_FEED\"]:::stop\n  T9[\"#9 SZOTAR S2\"]:::wait\n  T91[\"#91 ZSOLT_FELIRAT_SZAMOZAS\"]:::ready\n  T93[\"#93 TIPNR_TOKEN_HIANY\"]:::ready\n  T94[\"#94 SZOTOVEZES\"]:::ready\n  T95[\"#95 SZOTOVEZES_DB\"]:::idle\n  T96[\"#96 KAROLI_MODERN\"]:::idle\n  D_DT_F38i{{\"DT-F38i\"}}:::dt\n  D_DT_M1{{\"DT-M1\"}}:::dt\n  D_DT_M3{{\"DT-M3\"}}:::dt\n  D_DT_M4{{\"DT-M4\"}}:::dt\n  D_DT_M5{{\"DT-M5\"}}:::dt\n  D_DT_M6{{\"DT-M6\"}}:::dt\n  D_DT_M7{{\"DT-M7\"}}:::dt\n  D_DT_M8{{\"DT-M8\"}}:::dt\n  D_DT127{{\"DT127\"}}:::dt\n  D_DT128{{\"DT128\"}}:::dt\n  D_DT129{{\"DT129\"}}:::dt\n  D_DT130{{\"DT130\"}}:::dt\n  D_DT2{{\"DT2\"}}:::dt\n  D_DT28{{\"DT28\"}}:::dt\n  D_DT52{{\"DT52\"}}:::dt\n  D_DT56{{\"DT56\"}}:::dt\n  D_DT57{{\"DT57\"}}:::dt\n  D_DT66{{\"DT66\"}}:::dt\n  D_DT71{{\"DT71\"}}:::dt\n  D_DT74{{\"DT74\"}}:::dt\n  D_DT75{{\"DT75\"}}:::dt\n  D_DT77{{\"DT77\"}}:::dt\n  D_DT78{{\"DT78\"}}:::dt\n  D_DT90{{\"DT90\"}}:::dt\n\n  P_MCP_BUROK --> D_DT_M3\n  P_MCP_BUROK --> D_DT_M5\n  P_MCP_BUROK --> D_DT_M7\n  P_SZPA_AUDIT --> D_DT77\n  P_TERV_BEFOGAD --> D_DT_M8\n  T10 --> D_DT2\n  T10 --> D_DT74\n  T10 --> T11\n  T10 --> T52\n  T10 --> T9\n  T11 --> D_DT74\n  T11 --> T23\n  T11 --> T52\n  T11 --> T9\n  T12 --> D_DT74\n  T12 --> T11\n  T13 --> T10\n  T22 --> D_DT56\n  T22 --> D_DT57\n  T22 --> D_DT71\n  T23 --> D_DT28\n  T23 --> D_DT66\n  T23 --> D_DT74\n  T25 --> T11\n  T25 --> T12\n  T25 --> T23\n  T36 --> D_DT28\n  T36 --> D_DT74\n  T36 --> T27\n  T36 --> T38\n  T36 --> T52\n  T36 --> T9\n  T38 --> D_DT52\n  T38 --> D_DT56\n  T38 --> D_DT_F38i\n  T48 --> T22\n  T52 --> D_DT78\n  T52 --> D_DT90\n  T55 --> D_DT74\n  T67 --> T27\n  T67 --> T7\n  T67 --> T9\n  T70 --> D_DT74\n  T70 --> T55\n  T70 --> T9\n  T75 --> T74\n  T76 --> D_DT127\n  T76 --> D_DT128\n  T76 --> D_DT129\n  T76 --> D_DT75\n  T76 --> D_DT_M1\n  T76 --> D_DT_M4\n  T76 --> D_DT_M6\n  T76 --> T95\n  T86 --> T27\n  T86 --> T38\n  T86 --> T52\n  T86 --> T7\n  T86 --> T76\n  T86 --> T9\n  T9 --> D_DT28\n  T9 --> D_DT74\n  T9 --> T23\n  T9 --> T27\n  T9 --> T52\n  T94 --> D_DT130\n  T95 --> T94\n  T96 --> T94",
+ "terkep": "flowchart LR\n  classDef stop fill:#d93025,stroke:#8c1d18,color:#ffffff,stroke-width:2px\n  classDef run fill:#1e8e3e,stroke:#0d5226,color:#ffffff,stroke-width:2px\n  classDef ready fill:#1a73e8,stroke:#0b3d91,color:#ffffff,stroke-width:2px\n  classDef wait fill:#f9ab00,stroke:#a86f00,color:#2b1d00,stroke-width:2px\n  classDef plan fill:#8e44ad,stroke:#5b2470,color:#ffffff,stroke-width:2px,stroke-dasharray:6 3\n  classDef idle fill:#80868b,stroke:#4a4f54,color:#ffffff\n  classDef dt fill:#ff6d00,stroke:#a34500,color:#ffffff,stroke-width:2px\n\n  P_MCP_BUROK[\"MCP_BUROK\"]:::plan\n  P_SZPA_AUDIT[\"SZPA_AUDIT\"]:::plan\n  P_TERV_BEFOGAD[\"TERV_BEFOGAD\"]:::plan\n  T10[\"#10 LEXIKON_LEZARAS\"]:::idle\n  T11[\"#11 MIGRACIO\"]:::idle\n  T12[\"#12 TEREMT-002 3. lépés…\"]:::idle\n  T13[\"#13 1Móz 17-től a…\"]:::idle\n  T22[\"#22 Károli–Strong párosítás…\"]:::stop\n  T23[\"#23 MOTIVUM_FORRAS\"]:::ready\n  T25[\"#25 OLVASOI_HTML\"]:::idle\n  T27[\"#27 FP3\"]:::idle\n  T36[\"#36 LEXIKON_UJRAGEN\"]:::wait\n  T38[\"#38 BDB_FORDITAS\"]:::ready\n  T48[\"#48 KJV_REGI_KIVEZETES\"]:::wait\n  T50[\"#50 CI_JAVITO_KOR\"]:::ready\n  T52[\"#52 TERV_SZINKRON\"]:::stop\n  T55[\"#55 ZSOLTAR_UJRAELLENORZES\"]:::stop\n  T59[\"#59 SZOSZEDET\"]:::ready\n  T67[\"#67 BDB_JAVITAS_KAPU\"]:::idle\n  T69[\"#69 SEMA_DATASET_SZAM\"]:::idle\n  T7[\"#7 Thayer teljes magyar…\"]:::idle\n  T70[\"#70 SZOTAR_S26\"]:::wait\n  T74[\"#74 TANULMANY_JAVITAS_GEPI\"]:::idle\n  T75[\"#75 TANULMANY_JAVITAS\"]:::idle\n  T76[\"#76 OLVASOI_KONKORDANCIA\"]:::wait\n  T81[\"#81 KAROLI_UJJLENYOMAT\"]:::idle\n  T86[\"#86 ELOFIZETES_FEED\"]:::stop\n  T9[\"#9 SZOTAR S2\"]:::wait\n  T91[\"#91 ZSOLT_FELIRAT_SZAMOZAS\"]:::ready\n  T93[\"#93 TIPNR_TOKEN_HIANY\"]:::ready\n  T95[\"#95 SZOTOVEZES_DB\"]:::idle\n  T96[\"#96 KAROLI_MODERN\"]:::idle\n  D_DT_F38i{{\"DT-F38i\"}}:::dt\n  D_DT_M1{{\"DT-M1\"}}:::dt\n  D_DT_M3{{\"DT-M3\"}}:::dt\n  D_DT_M4{{\"DT-M4\"}}:::dt\n  D_DT_M5{{\"DT-M5\"}}:::dt\n  D_DT_M6{{\"DT-M6\"}}:::dt\n  D_DT_M7{{\"DT-M7\"}}:::dt\n  D_DT_M8{{\"DT-M8\"}}:::dt\n  D_DT127{{\"DT127\"}}:::dt\n  D_DT128{{\"DT128\"}}:::dt\n  D_DT129{{\"DT129\"}}:::dt\n  D_DT2{{\"DT2\"}}:::dt\n  D_DT28{{\"DT28\"}}:::dt\n  D_DT52{{\"DT52\"}}:::dt\n  D_DT56{{\"DT56\"}}:::dt\n  D_DT57{{\"DT57\"}}:::dt\n  D_DT66{{\"DT66\"}}:::dt\n  D_DT71{{\"DT71\"}}:::dt\n  D_DT74{{\"DT74\"}}:::dt\n  D_DT75{{\"DT75\"}}:::dt\n  D_DT77{{\"DT77\"}}:::dt\n  D_DT78{{\"DT78\"}}:::dt\n  D_DT90{{\"DT90\"}}:::dt\n\n  P_MCP_BUROK --> D_DT_M3\n  P_MCP_BUROK --> D_DT_M5\n  P_MCP_BUROK --> D_DT_M7\n  P_SZPA_AUDIT --> D_DT77\n  P_TERV_BEFOGAD --> D_DT_M8\n  T10 --> D_DT2\n  T10 --> D_DT74\n  T10 --> T11\n  T10 --> T52\n  T10 --> T9\n  T11 --> D_DT74\n  T11 --> T23\n  T11 --> T52\n  T11 --> T9\n  T12 --> D_DT74\n  T12 --> T11\n  T13 --> T10\n  T22 --> D_DT56\n  T22 --> D_DT57\n  T22 --> D_DT71\n  T23 --> D_DT28\n  T23 --> D_DT66\n  T23 --> D_DT74\n  T25 --> T11\n  T25 --> T12\n  T25 --> T23\n  T36 --> D_DT28\n  T36 --> D_DT74\n  T36 --> T27\n  T36 --> T38\n  T36 --> T52\n  T36 --> T9\n  T38 --> D_DT52\n  T38 --> D_DT56\n  T38 --> D_DT_F38i\n  T48 --> T22\n  T52 --> D_DT78\n  T52 --> D_DT90\n  T55 --> D_DT74\n  T67 --> T27\n  T67 --> T7\n  T67 --> T9\n  T70 --> D_DT74\n  T70 --> T55\n  T70 --> T9\n  T75 --> T74\n  T76 --> D_DT127\n  T76 --> D_DT128\n  T76 --> D_DT129\n  T76 --> D_DT75\n  T76 --> D_DT_M1\n  T76 --> D_DT_M4\n  T76 --> D_DT_M6\n  T76 --> T95\n  T86 --> T27\n  T86 --> T38\n  T86 --> T52\n  T86 --> T7\n  T86 --> T76\n  T86 --> T9\n  T9 --> D_DT28\n  T9 --> D_DT74\n  T9 --> T23\n  T9 --> T27\n  T9 --> T52",
  "dontesek": {
   "nyitott": [
    {
@@ -818,7 +801,7 @@
     "sor": 201
    },
    {
-    "id": "DT-F92c",
+    "id": "DT133",
     "feladat": "#92 PARDES_DB_OLVASOI (K2)",
     "kerdes": "Melyik a görög ÚSZ-előfordulás kanonikus számlálása? A `pardes.db` `token_strong` táblája a TAGNT `+` Strong-láncainak elemeit is számolja (pl. a krázis-alak, κἀγώ = καί + ἐγώ, a második szót is tartalmazza), a `lekerdez.py scan` és a pilot TSV-útja (`adat.py`) csak az egész Strong-mezőt. Eltérés: 27 / 1 230 és 11 / 305 görög lapon (példa: G4218, CLI 29, DB 54); mind az 5 420 G-Strongra DB = egész mező + láncelem (`eszkozok/f92_db_igazolas.py`, `naplok/PARDES_DB_OLVASOI_db_igazolas.md` 7. szakasz). Ez a kutatási menet 3. lépését (teljes ÓSZ/ÚSZ scan) érinti, a #92 nem javítja.",
     "allapot": "nyitott",
@@ -828,7 +811,7 @@
     "sor": 208
    },
    {
-    "id": "DT-F92d",
+    "id": "DT134",
     "feladat": "#92 PARDES_DB_OLVASOI (versifikációs térkép)",
     "kerdes": "Milyen versbeosztást követ a `LXX_versificacios_terkep.tsv` `Gorog_LXX_vers` oszlopa, és használható-e átszámítással? A térkép és az `LXX_OS` a 4 889 közös versből 1 888-on eltér (pl. 1Móz 32:1: `LXX_OS` Genesis 32:2, térkép Gen.32:1), ezért a #92 nem forrásként kezeli: `lxx_versszam.forras` = `LXX_OS` / `nincs`, a térkép értéke csak a nem kanonikus `terkep_ertek` oszlopban. A 39 `NEM_MEGHATAROZHATO` sor ezzel tárgytalan.",
     "allapot": "nyitott",
@@ -1680,6 +1663,66 @@
      "🟢"
     ],
     "sor": 207
+   },
+   {
+    "id": "DT135",
+    "feladat": "#94 SZOTOVEZES (.0 ⛔: a régi 1–2. minta eltérés-listája)",
+    "kerdes": "Az 1. és 2. minta a DT130 előtti döntések szerint készült. A gépi összevetés (`eszkozok/szoto/elteres_dt130.py`, `naplok/SZOTOVEZES_meres.md` 5. szakasz) a DT130 (6)–(7) (van/lesz) és (9) (kevéssé) pontján nem talált eltérést. Eltér: E-4 (10) képzett igealak alapige nélkül: *vettetének → vettetik* (2. minta); gépi jelöltként *születének → születik* (1. minta; önálló -ik-es ige lehet); E-5 (nem DT130-pont) műveltető alapige nélkül: *helyezteté → helyeztet* (a gépi lista csak a -tat/-tet végűt fogja; a 2. minta *tudatá → tudat* is ilyen); E-6 (11) kétértelmű alak: *ki* (igekötő / vonatkozó névmás, mai alakja *aki*), *elvesznek* (elvesz / elvész; a sort a felhasználó *elvész*-ként zárta); E-7 (4) igekötős ige alapige nélkül: 16 sor a 2. mintában (a mintának nincs alapige-oszlopa); E-8 konvenció: az 1. minta 190 sorában az alapige a szótári alakkal azonos (nem ige / igekötő nélküli ige), a 3. minta ilyenkor üresen hagyja; E-2 (8) l. DT136. A mérést csak az E-4 és E-6 érinti (a tovabbi_elfogadhato). *(forrás: F94_SZOTOVEZES_BRIEF.md .0/3; `naplok/SZOTOVEZES_meres.md` 5. szakasz)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 210
+   },
+   {
+    "id": "DT136",
+    "feladat": "#94 SZOTOVEZES (.0: a DT130 (8) hatóköre)",
+    "kerdes": "A DT130 (8) szerint a *Seregek* névként marad, ha Istenre vonatkozik, a kisbetűs *seregek* → *sereg*. A teljes Károliban (`konkordancia/Karoli_1908.tsv`) a nagybetűs alak 223 token (*Seregek* 119, *Seregeknek* 104), mind Ur-/Isten- előtt; a kisbetűs *seregek…* 85 tokenből viszont 64 is Ur-/Isten- előtt áll (*seregek Ura* 34, *seregeknek Ura* 30; pl. Ézs 44:6 „a seregeknek Ura”), vagyis Istenre vonatkozó cím kisbetűvel. A 2. minta *seregeknek* sora (példa: Ézs 44:6) a pont betűje szerint *sereg*. A szótárialak-tábla alakonként egy sort ad (szövegkörnyezet nélkül), ezért az alak nem bontható olvasatra. *(forrás: `eszkozok/szoto/elteres_dt130.py`, `naplok/SZOTOVEZES_meres.md` 5. szakasz E-2)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 211
+   },
+   {
+    "id": "DT137",
+    "feladat": "#94 SZOTOVEZES (.1 ⛔: a simplemma adatlicence)",
+    "kerdes": "A simplemma 2.0.0 kódja MIT, de a nyelvi adatát a csomag nem MIT alatt adja: „For information on the licenses of the linguistic information databases, see the `licenses` folder.” A források között az első: „Lemmatization lists by Michal Měchura (Open Database License)”, amely tartalmazza a magyar listát (`lemmatization-hu.txt`, 39 898 pár); további források: Kaikki/Wiktionary, FreeLing, spaCy lookups, Unimorph, Wikinflection (CC BY 4.0); a magyarra pontosan melyik vonatkozik, a csomag nem mondja meg. A hibrid a simplemmát kétszer használja: az ismeretlen alakok tartalék-lemmatizálójaként és a régies igető igazolásaként (`is_known`), tehát az adata a szótárialak-tábla döntéseibe is belefolyik. Az ODbL share-alike: a származtatott adatbázis ODbL alá kerülhet, és forrásmegjelölést kíván. A brief .1/6 szerint ez nem MIT-kompatibilis a nyilvános kiadással. *(forrás: `naplok/SZOTOVEZES_meres.md` 8. szakasz; nem jogi vélemény)*  Részleges döntés (felhasználó, 2026-10-13): A/B/C mérés WSL-es Python 3.11-gyel, a helyi simplemma 2.0.0-val; a `licencek.tsv` sora függőben felvéve. Mérés (F94.1, `naplok/SZOTOVEZES_meres.md` 9. szakasz): a 3. (ellenőrzött) mintán alakonként / súlyozva A (simplemmával) 80% / 99,1%, B (nélküle) 53% / 90,2%, C (nélküle, Károli-lexikonos igető-igazolással) 56% / 90,3%; az 1–2. mintán súlyozva A 99,2 / 97,6%, C 92,6 / 85,8%. A C a régies igék igazolását nagyrészt pótolja, a veszteség zöme a névszói ágból és a névmásokból jön (*mert → mer, minden → mind, azt, mit, azok*). A K2 teljesül (A = 80% / 99,1%).",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 212
+   },
+   {
+    "id": "DT138",
+    "feladat": "#94 SZOTOVEZES (K4: a korpusz_strong szabályok száma)",
+    "kerdes": "A brief K4-e „34 `korpusz_strong`, a többi `modell_ellenorizetlen`” — ez az előmérés szabályellenőrzésének száma (a `pardes.db` régi `token_karoli`-jából, csak ÓSZ). A repó saját szabályellenőrzése (`eszkozok/szoto/szabaly_ellenorzes.py`, az `adat/karoli_strong/` párosításából, 57 könyv) 31 alátámasztott szabályt ad (átsorolódott: *körűl*, *nyny*, *setét* → gyenge; *értelm-* → ellentmond); a *cz → c* a felhasználó utasítása szerint `manual`. A v3-ban így 30 `korpusz_strong` + 1 `manual` + 22 `modell_ellenorizetlen` (a 2 új tőváltóval). *(forrás: `naplok/SZOTOVEZES_meres.md` 10. és 11.2 szakasz)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 213
+   },
+   {
+    "id": "DT139",
+    "feladat": "#94 SZOTOVEZES (DT137 végleges: a simplemma szerepe a kiadott hibridben)",
+    "kerdes": "A DT137 halasztását a 4. (független, felhasználó által ellenőrzött) minta mérése után kell lezárni. Mérés (`naplok/SZOTOVEZES_meres.md` 15. szakasz): a döntő halmazon (a K tábla alakjai nélkül, 93 alak) M1 alakonként / súlyozva A (simplemmával) 78% / 96,6%, C+K = C (simplemma nélkül) 60% / 94,6%; minden soron A 81% / 95,7%, C+K 67% / 98,5%. M2 (c) a K nélküli lemmákon A 98,20%, C+K 98,02%, C 97,60%. A K3 teljesül az A-ra és a C+K-ra, a K nélküli C-re nem. A ritka alakokon a C+K alakonként jóval gyengébb (ragos névszó 83% / 66%, régies helyesírás 58% / 33%, mai igealak 92% / 62%). A simplemma nyelvi adata ODbL (DT137, `licencek.tsv`). *(forrás: `naplok/SZOTOVEZES_meres.md` 15. szakasz)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 214
+   },
+   {
+    "id": "DT140",
+    "feladat": "#94 SZOTOVEZES (ELLENOR_F94_2: a K6 maradéka)",
+    "kerdes": "Az újraellenőrzés szerint a kiadott táblában a ritka alakokon további nem igei alakok kapnak igei `regies_jegy`-et (legalább 13: *alája, körüle, bérese, vendége, felirata, követe, feljáratának …*; osztályok: -at/-et végű főnév, ritka birtokos -a/-e, névutó); a birtokos -a/-e alakilag egyezik a régies alanyi múlt -a/-e-vel. A brief K6-a („a `regies_jegy` csak igei alakon kitöltött”) így a teljes táblára nem teljesül. *(forrás: `naplok/ELLENOR_F94_2.md`)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 215
    }
   ],
   "javasolt": [],

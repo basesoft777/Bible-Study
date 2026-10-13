@@ -1,5 +1,5 @@
 # proveniencia: scope=Zsolt 1–41 és Ézs 40–55 Károli-szóalakjai (token_karoli, oldal=hu), az 1. minta alakjai nélkül, rétegzett; a terv szerinti Gal/Ef/Zsid rész ÜRES maradt, mert a token_karoli csak az ÓSZ 39 könyvét tartalmazta; a gyakoriság a Zsolt 1–41 + Ézs 40–55 hatókörön belüli | forras=szoto_fuggetlen_minta.tsv (sha256:cbdf2843c34cfe7f8151e83034c47bed128424efbd74aa431e2919110c49a1c5; a repón kívüli előmérés, 2026-10-12/13; átvétel: eszkozok/szoto/minta_atvetel.py, F94.0) | ts=2026-10-13T12:05Z
-# allapot: eredetileg független minta, a hibrid v2 hangolása óta fejlesztési halmaz; a 6 nyitott sor a felhasználó döntésével lezárva (ellenorzes=felhasznalo), a többi a felhasználó „mehet”-jével, soronkénti átnézés nélkül (modell_ellenorizetlen); javítva a DT-F94a/b szerint (F94.0f, eszkozok/szoto/minta_javit_f94a.py); felhasznalo 9, modell_ellenorizetlen 171
+# allapot: eredetileg független minta, a hibrid v2 hangolása óta fejlesztési halmaz; a 6 nyitott sor a felhasználó döntésével lezárva (ellenorzes=felhasznalo), a többi a felhasználó „mehet”-jével, soronkénti átnézés nélkül (modell_ellenorizetlen); javítva a DT135/b szerint (F94.0f, eszkozok/szoto/minta_javit_f94a.py); felhasznalo 9, modell_ellenorizetlen 171
 # a forrás saját fejléce (szó szerint): proveniencia: scope=Zsolt 1–41, Ézs 40–55, Gal, Ef, Zsid Károli-szóalakjai (token_karoli, oldal=hu), az első minta alakjai nélkül, rétegzett | forras=pardes.db (2026-10-12T08:27:32Z) + kézi tő-javaslat a 2026-10-13-i öt döntés szerint, a hibrid futtatása előtt (modell: claude-opus-5-5); a 6 nyitott sor a felhasználó döntésével lezárva (2026-10-13), a többi sor ellenőrizetlen („mehet”) | ts=2026-10-13
 # strong: scope=a pelda_igehely verse | forras=adat/karoli_strong/szavak_<könyv>.tsv (modell-kimenet, javaslat; nem ellenőrizve), eszkozok/szoto/minta_strong.py, F94.1 | ts=2026-10-13T12:27Z
 alak	gyakorisag	kategoria	szotari_alak	szotari_alak_mai	alapige	tovabbi_elfogadhato	ellenorzes	indoklas	pelda_igehely	strong
@@ -44,7 +44,7 @@ reám	13	gyakori	én	én			modell_ellenorizetlen	régies „rám”	Ézs 41:1	H0
 vannak	12	gyakori	van	van			modell_ellenorizetlen		Ézs 41:27	H9048
 lesznek	7	gyakori	lesz	lesz			modell_ellenorizetlen		Ézs 41:11	H1961
 jelenté	4	regies_ige	jelent	jelent			modell_ellenorizetlen		Ézs 41:26	H5046
-tudatá	2	regies_ige	tudat	tudat	tud		felhasznalo	[döntés 2026-10-13 (DT-F94a): valódi műveltető (H8085 Hif’íl), a C) szerint; alapige: tud]	Ézs 41:26	H8085
+tudatá	2	regies_ige	tudat	tudat	tud		felhasznalo	[döntés 2026-10-13 (DT135): valódi műveltető (H8085 Hif’íl), a C) szerint; alapige: tud]	Ézs 41:26	H8085
 kiterjeszté	2	regies_ige	kiterjeszt	kiterjeszt	terjeszt		modell_ellenorizetlen		Ézs 42:5	H7554
 megváltá	2	regies_ige	megvált	megvált	vált		modell_ellenorizetlen		Ézs 44:23	H1350
 alkotá	2	regies_ige	alkot	alkot			modell_ellenorizetlen		Ézs 45:18	H3335
@@ -64,7 +64,7 @@ terjeszté	1	regies_ige	terjeszt	terjeszt			modell_ellenorizetlen		Ézs 48:13	H2
 megalapítá	1	regies_ige	megalapít	megalapít	alapít		modell_ellenorizetlen		Ézs 51:13	H3245
 nyomorgatá	1	regies_ige	nyomorgat	nyomorgat			modell_ellenorizetlen		Ézs 52:4	H6231
 elszéleszté	1	regies_ige	elszéleszt	elszéleszt	széleszt		modell_ellenorizetlen		Zsolt 18:15	H6327
-vettetének	1	regies_ige	vettetik	vettetik	vet		felhasznalo	régies szenvedő (vettettek) [döntés 2026-10-13 (DT-F94a): szenvedő képzett igealak, a C) szerint; alapige: vet]	Ézs 40:24	H2232
+vettetének	1	regies_ige	vettetik	vettetik	vet		felhasznalo	régies szenvedő (vettettek) [döntés 2026-10-13 (DT135): szenvedő képzett igealak, a C) szerint; alapige: vet]	Ézs 40:24	H2232
 megrémülének	1	regies_ige	megrémül	megrémül	rémül		modell_ellenorizetlen		Ézs 41:5	H3372
 elhamvadának	1	regies_ige	elhamvad	elhamvad	hamvad		modell_ellenorizetlen		Ézs 43:17	H3518
 származának	1	regies_ige	származik	származik			modell_ellenorizetlen		Ézs 48:1	H3318
@@ -99,7 +99,7 @@ népeknek	6	ragos_nevszo	nép	nép			modell_ellenorizetlen		Ézs 42:1	H9005+H147
 igazat	6	ragos_nevszo	igaz	igaz			modell_ellenorizetlen		Zsolt 5:13	H6662
 rosszat	6	ragos_nevszo	rossz	rossz			modell_ellenorizetlen		Zsolt 15:3	H7451
 melyeket	5	ragos_nevszo	mely	amely			modell_ellenorizetlen		Ézs 42:16	
-seregeknek	5	ragos_nevszo	sereg	sereg		Seregek	felhasznalo	[döntés 2026-10-13 (DT-F94b): sereg, további elfogadható Seregek; a kisbetűs alak a Károliban mindkét jelentésben áll (a 85 kisbetűs seregek…-tokenből 64 Ur-/Isten- előtt); manual megfigyelés: Ézs 44:6 „a seregeknek … Ura” — a szó köznév, a cím a szókapcsolat]	Ézs 44:6	H6635
+seregeknek	5	ragos_nevszo	sereg	sereg		Seregek	felhasznalo	[döntés 2026-10-13 (DT136): sereg, további elfogadható Seregek; a kisbetűs alak a Károliban mindkét jelentésben áll (a 85 kisbetűs seregek…-tokenből 64 Ur-/Isten- előtt); manual megfigyelés: Ézs 44:6 „a seregeknek … Ura” — a szó köznév, a cím a szókapcsolat]	Ézs 44:6	H6635
 előre	5	ragos_nevszo	elő	elő			modell_ellenorizetlen		Ézs 44:8	H9006+H0227
 kiket	5	ragos_nevszo	ki	aki			modell_ellenorizetlen		Ézs 46:3	H9009
 időben	5	ragos_nevszo	idő	idő			modell_ellenorizetlen		Ézs 51:9	H3117
@@ -157,7 +157,7 @@ járnak	5	ige_mai_alak	jár	jár			modell_ellenorizetlen		Ézs 40:31	H1980
 megszégyenülnek	5	ige_mai_alak	megszégyenül	megszégyenül	szégyenül		modell_ellenorizetlen		Ézs 41:11	H0954
 szólnak	5	ige_mai_alak	szól	szól			modell_ellenorizetlen		Ézs 45:24	H0559
 örüljenek	5	ige_mai_alak	örül	örül			modell_ellenorizetlen		Zsolt 13:5	H1523
-elvesznek	4	ige_mai_alak	elvész	elvész	vész	elvesz	felhasznalo	elpusztulnak (H0006 ábad); felhasználói döntés 2026-10-13 [döntés 2026-10-13 (DT-F94a): a sor elvész marad (Ézs 41:11, H0006); a kétértelmű alak másik olvasata: elvesz]	Ézs 41:11	H0006
+elvesznek	4	ige_mai_alak	elvész	elvész	vész	elvesz	felhasznalo	elpusztulnak (H0006 ábad); felhasználói döntés 2026-10-13 [döntés 2026-10-13 (DT135): a sor elvész marad (Ézs 41:11, H0006); a kétértelmű alak másik olvasata: elvesz]	Ézs 41:11	H0006
 szeret	4	ige_mai_alak	szeret	szeret			modell_ellenorizetlen		Ézs 41:24	H0977
 tudnak	4	ige_mai_alak	tud	tud			modell_ellenorizetlen		Ézs 42:16	H3045
 látnak	4	ige_mai_alak	lát	lát			modell_ellenorizetlen		Ézs 44:9	H7200

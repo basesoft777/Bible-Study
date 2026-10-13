@@ -1,5 +1,5 @@
 # proveniencia: scope=a Károli 1908 leggyakoribb 400 alakja (kisbetűs + mondatkezdő előfordulás; a teljes Károli 553804 tokenjének 60.4%-a) | forras=adat/szoto/karoli_lexikon.tsv (sha256:215f687f5d68; a kiválasztás) + manual (a szótári alak modell-javaslat a DT130 szerint, modell: claude-opus-5-5, nem a simplemma vagy a hibrid kimenetéből átvéve; a kitöltés előtt a modell látta a napló 9. szakaszának A- és C-hibalistáit, l. 11.1) | ts=2026-10-13T15:10Z
-# allapot: ellenorzes soronként: felhasznalo, ha a felhasználó átnézte (l. ellenorzes-proveniencia), különben modell_ellenorizetlen. A szótári alak kézi forrása az eszkozok/szoto/k_tabla_epit.py JAVASLAT szótára (javítás ott); az ellenorzes oszlopot a felhasználó tölti, az újraépítés megtartja, ha a sor szótári alakja nem változott (DT-F94c, SEMA 2.27)
+# allapot: ellenorzes soronként: felhasznalo, ha a felhasználó átnézte (l. ellenorzes-proveniencia), különben modell_ellenorizetlen. A szótári alak kézi forrása az eszkozok/szoto/k_tabla_epit.py JAVASLAT szótára (javítás ott); az ellenorzes oszlopot a felhasználó tölti, az újraépítés megtartja, ha a sor szótári alakja nem változott (DT137, SEMA 2.27)
 # ellenorzes-proveniencia: scope=a 4. minta 113 sora és a K tábla 400 sora | forras=felhasználói átnézés, áttekintő oldal (https://claude.ai/artifact/PvJ8YFw3y561Nku1xwBdkr), 2026-10-13 | ts=2026-10-13T15:10Z
 rang	alak	gyakorisag	szotari_alak	szotari_alak_mai	alapige	tovabbi_elfogadhato	ellenorzes	indoklas
 1	a	48840	a	a			felhasznalo	önálló szótári alak
@@ -12,7 +12,7 @@ rang	alak	gyakorisag	szotari_alak	szotari_alak_mai	alapige	tovabbi_elfogadhato	e
 8	meg	4916	meg	meg			felhasznalo	önálló szótári alak
 9	én	4856	én	én			felhasznalo	önálló szótári alak
 10	te	4732	te	te			felhasznalo	önálló szótári alak
-11	ki	4210	ki	ki		aki	felhasznalo	igekötő, kérdő névmás vagy vonatkozó névmás (mai: aki) — DT-F94a, DT130 (11)
+11	ki	4210	ki	ki		aki	felhasznalo	igekötő, kérdő névmás vagy vonatkozó névmás (mai: aki) — DT135, DT130 (11)
 12	mert	4189	mert	mert			felhasznalo	önálló szótári alak
 13	vala	4128	van	van			felhasznalo	a van rendhagyó alakja, kivételtábla (DT130 (6)); régies múlt
 14	is	3604	is	is			felhasznalo	önálló szótári alak

@@ -10,17 +10,17 @@
 2. **`licencek.tsv`, `szoto_tablak` sor:** komponensként csak a Károli 1908 és a `simplemma_nyelvi_adat` szerepel, ami ellentmond a sor saját „ODbL-összetevő nincs” állításának; hiányzik a TAHOT/TAGNT (CC BY 4.0, kötelező forrásmegjelöléssel), pedig a minták `strong` oszlopa és a `szabaly_ellenorzes.tsv` az `adat/karoli_strong/`-ból származik; a `kotelezo_megjeloles` értéke `—`, a SEMA szerint ilyenkor üres kell.
 3. **`licencek.tsv`, `simplemma_nyelvi_adat` sor:** `kereskedelmi=nem`, holott az ODbL megengedi (a SEMA 2.19 szerint a mező a licencről szól, a CC BY-SA sorok is `igen`); `allapot=tisztazott`, miközben a licenc oszlop „nyelvenként nem azonosított forrásokat” is említ (a SEMA 2. szabálya szerint ez legalább részben `tisztazatlan`).
 4. **Nyitott tételek (A2):** az N-F94e javítva van (`hibrid.py`, zárójelentés), mégis nyitottként áll a `NYITOTT_FELADATOK.md:58`-ban; az N-F94a–c csak a briefben szerepel, önálló tételként nincs a `NYITOTT_FELADATOK.md`-ben, az N-F94c (*jó*, 1Móz 1:4) a brief lezárásával elveszne (`lekerdez.py scan H2895 --szakasz "1Móz 1:4"` n=1, H2896 n=0).
-5. **Proveniencia-ellentmondás:** a `k_tabla_epit.py:8-9` docstringje szerint a K tábla kitöltésekor sem a simplemma, sem a hibrid kimenete nem volt a modell előtt; a napló 11.1 („Őszinte korlát”, `naplok/SZOTOVEZES_meres.md:572`) szerint a 9. szakasz A- és C-hibalistái a kitöltés előtt a modell előtt voltak. A DT-F94c ODbL-kérdése miatt lényeges.
+5. **Proveniencia-ellentmondás:** a `k_tabla_epit.py:8-9` docstringje szerint a K tábla kitöltésekor sem a simplemma, sem a hibrid kimenete nem volt a modell előtt; a napló 11.1 („Őszinte korlát”, `naplok/SZOTOVEZES_meres.md:572`) szerint a 9. szakasz A- és C-hibalistái a kitöltés előtt a modell előtt voltak. A DT137 ODbL-kérdése miatt lényeges.
 6. **A brief .2 hibaosztályai a kiadott C+K-ban hibásak** (v3 A-ban javultak): *Melkié → Melkié* (helyesen *melki*; `karoli_szotari_alak.tsv:7613`), *atyámnak → atyám* (helyesen *atya*; `:13003`), *meggyarapodnak → meggyarapod* (helyesen *meggyarapodik*; `:40622`). A zárójelentés nem nevesíti.
-7. **`adat/SEMA.md` 2.27 elavult sorai:** az `alapige` sor („a 2. mintának nincs ilyen oszlopa”) a DT-F94a E-7/E-8 után nem igaz; a `strong` sor forrása „a régi `token_karoli`”, az F94.1b óta `adat/karoli_strong`.
+7. **`adat/SEMA.md` 2.27 elavult sorai:** az `alapige` sor („a 2. mintának nincs ilyen oszlopa”) a DT135 E-7/E-8 után nem igaz; a `strong` sor forrása „a régi `token_karoli`”, az F94.1b óta `adat/karoli_strong`.
 
 Megfigyelés (nem eltérés): az *összegyűlekezik* lemma fő Strongja a napló 15.2 szakaszában H6950, a 16.3-ban H0622.
 
 ## Ami rendben van (saját lekérdezéssel igazolva)
 
 - CI (`futtat.py`, E2–E16, E19, E20, E26): 0 találat; E25 3 (régi, a diffben nem szereplő fájlok); E27: 33 (régi ághivatkozások, nincsenek a diffben; 30 sor csonkolva, nem ellenőrizhető).
-- K1: a minták 213 / 180 / 113 / 113 sorral, `ellenorzes` sehol üres; a `felhasznalo` 12 sor az 1–2. mintán (6 eredeti + a DT-F94a új sorai). DT-F94b: *Seregek* 119, *Seregeknek* 104, kisbetűs *seregeknek* 85 előfordulás; Ézs 44:6 „a seregeknek Ura”.
-- DT-F94a Strong-ellenőrzés: H5414 (1Móz 1:17), H8085 (Ézs 41:26), H0006 (Ézs 41:11) a `scan`-ben n=1.
+- K1: a minták 213 / 180 / 113 / 113 sorral, `ellenorzes` sehol üres; a `felhasznalo` 12 sor az 1–2. mintán (6 eredeti + a DT135 új sorai). DT136: *Seregek* 119, *Seregeknek* 104, kisbetűs *seregeknek* 85 előfordulás; Ézs 44:6 „a seregeknek Ura”.
+- DT135 Strong-ellenőrzés: H5414 (1Móz 1:17), H8085 (Ézs 41:26), H0006 (Ézs 41:11) a `scan`-ben n=1.
 - K4: `KORPUSZ_STRONG` 30 elem, `MANUAL={'cz → c'}`; 9 + 44 = 53 szabály; a kimenetben 14 947 sor `korpusz_strong|manual|modell_ellenorizetlen`; a simplemma-licencidézet szó szerinti.
 - K5: nincs emMorph-/hfst-hivatkozás kódban vagy adatban (csak két „nem része” docstring); nincs abszolút `C:`/`D:`/`/mnt` útvonal; nincs `csv` modul, `split('\t')` / `'\t'.join`; kódolási őr mind a 19 .py-ban.
 - Simplemma nélküli előállítás: `sys.modules['simplemma']=None` + őr; `modszer=simplemma` sor 0; a `karoli_szotari_alak.tsv` 66 824 sora = a lexikon; a fejléc `# GENERÁLT` sora és a Kiegészítés B figyelmeztetés megvan.
@@ -30,7 +30,7 @@ Megfigyelés (nem eltérés): az *összegyűlekezik* lemma fő Strongja a napló
 
 ## Nem ellenőrizhető az ellenőr szerepéből
 
-K2 és K3 számai (a `meres.py` + simplemma WSL-ben futna, nem megengedett parancs; a v3 a mérés után +9/−2 sorral módosult, ez a naplóban 16.2–16.3 jelölve), Python 3.11 alatti futás (f-string-szintaxis 3.12+: 0 találat), DT-F94a törzsállítások (Qal / Hif'íl), a felhasználói átnézés bizonyítéka (claude.ai-oldal, repóadatból nem igazolható), hogy a hibridet a javaslatok előtt helyben nem futtatták-e.
+K2 és K3 számai (a `meres.py` + simplemma WSL-ben futna, nem megengedett parancs; a v3 a mérés után +9/−2 sorral módosult, ez a naplóban 16.2–16.3 jelölve), Python 3.11 alatti futás (f-string-szintaxis 3.12+: 0 találat), DT135 törzsállítások (Qal / Hif'íl), a felhasználói átnézés bizonyítéka (claude.ai-oldal, repóadatból nem igazolható), hogy a hibridet a javaslatok előtt helyben nem futtatták-e.
 
 ## Lezárás
 
