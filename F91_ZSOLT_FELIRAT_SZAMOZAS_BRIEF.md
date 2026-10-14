@@ -6,12 +6,12 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: fut
+allapot: dontesre_var
 ag: claude/f91-zsolt-felirat-szamozas
 ad: minden feliratos zsoltár felmérve (felirat-hossz, eltolás, a két tábla állítása), proveniencia-sorral; a Karoli_versmegfeleltetes.tsv és a LXX_versificacios_terkep.tsv javítva a jóváhagyott szabály szerint (a Zsolt 22-n 0 ellentmondás az LXX_OS-szel); hatásmérés a #60 pilotra és a pardes.db-re
-kovetkezo: "Folytatás: az A-oldali M2 (F91.8–F91.10), a macula_kk hatásmérés (F91.11: 0 érintett sor, nincs DT-F91d) és a B-oldali M2 (F91.12: KJV_igehely, builder KJV-kulcson, tesztek 61 OK, f92 0 eltérés, l. naplok/ZSOLT_FELIRAT_SZAMOZAS_M2c.md) kész; következő a független ellenőrzés (fuggetlen-ellenor), majd a zárás (naplok/ZSOLT_FELIRAT_SZAMOZAS_zaras.md); nyitva: pardes.db újraépítése, N-F91a, N-F91b"
+kovetkezo: "Te: DT-F91d (E1) eldöntése; utána zárás (független ellenőr újrafuttatása a változásokra, zárójelentés)"
 olvas: [konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, "konkordancia/LXX_OS/*.tsv", konkordancia/LXX_OS/README.md, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_versificacios_terkep.tsv, konkordancia/Nave_basokant.tsv, naplok/KAROLI_KK1b_hianyzo_es_zsoltar.md, naplok/OLVASOI_PILOT_adatfelmeres.md, naplok/LXX_OS_LEFEDETTSEG_M2.md, DONTESEK.md]
-ir: [konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_versificacios_terkep.tsv, naplok/ZSOLT_FELIRAT_SZAMOZAS_M0.md, naplok/ZSOLT_FELIRAT_SZAMOZAS_M0b.md, naplok/ZSOLT_FELIRAT_SZAMOZAS_M0b_terkep.md, eszkozok/terkep_kjv_kulcs_felmeres.py, naplok/ZSOLT_FELIRAT_SZAMOZAS_M2a.md, eszkozok/f91_versmegf_javit.py, naplok/KAROLI_KK4_tabla_veglegesit.py, naplok/ZSOLT_FELIRAT_SZAMOZAS_M2b_macula.md, eszkozok/f91_macula_hatasmeres.py, naplok/ZSOLT_FELIRAT_SZAMOZAS_M2c.md, naplok/ZSOLT_FELIRAT_SZAMOZAS_zaras.md, DONTESEK.md, NYITOTT_FELADATOK.md, adat/SEMA.md, eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, eszkozok/f92_db_igazolas.py, eszkozok/zsolt_felirat_felmeres.py, eszkozok/olvaso_pilot/README.md, eszkozok/olvaso_pilot/felmeres.py, eszkozok/zsolt_felirat_halmaz.py, naplok/ZSOLT_FELIRAT_SZAMOZAS_M2d.md]
+ir: [konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_versificacios_terkep.tsv, naplok/ZSOLT_FELIRAT_SZAMOZAS_M0.md, naplok/ZSOLT_FELIRAT_SZAMOZAS_M0b.md, naplok/ZSOLT_FELIRAT_SZAMOZAS_M0b_terkep.md, eszkozok/terkep_kjv_kulcs_felmeres.py, naplok/ZSOLT_FELIRAT_SZAMOZAS_M2a.md, eszkozok/f91_versmegf_javit.py, naplok/KAROLI_KK4_tabla_veglegesit.py, naplok/ZSOLT_FELIRAT_SZAMOZAS_M2b_macula.md, eszkozok/f91_macula_hatasmeres.py, naplok/ZSOLT_FELIRAT_SZAMOZAS_M2c.md, naplok/ZSOLT_FELIRAT_SZAMOZAS_zaras.md, DONTESEK.md, NYITOTT_FELADATOK.md, adat/SEMA.md, eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, eszkozok/f92_db_igazolas.py, eszkozok/zsolt_felirat_felmeres.py, eszkozok/olvaso_pilot/README.md, eszkozok/olvaso_pilot/felmeres.py, eszkozok/zsolt_felirat_halmaz.py, naplok/ZSOLT_FELIRAT_SZAMOZAS_M2d.md, naplok/ZSOLT_FELIRAT_SZAMOZAS_M2e_lxx_os.md, eszkozok/f91_lxx_os_replay.py]
 fugg: []
 ---
 
