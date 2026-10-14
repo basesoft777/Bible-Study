@@ -31,6 +31,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, 'eszkozok'))
 sys.path.insert(0, os.path.join(ROOT, 'eszkozok', 'olvaso_pilot'))
 import nave_bontas as NB  # noqa: E402
+import zsolt_felirat_halmaz as ZFH  # noqa: E402
 
 ELTERESEK = []
 
@@ -221,7 +222,10 @@ def terkep(con):
     def hozzaad(ig, cv):
         if re.fullmatch(r'\d+:\d+', cv):
             kjv_karoli.setdefault('%s %s' % (ig.rsplit(' ', 1)[0], cv), set()).add(ig)
-    for ig, kjv in con.execute("SELECT DISTINCT karoli_igehely, kjv_vers FROM lxx_versszam WHERE IFNULL(kjv_vers,'')!='' AND IFNULL(megjegyzes,'')!='zsolt_felirat_eltolas'"):
+    felirat = ZFH.felirat_versek()    # F91 E2: a közös felirat-halmaz (nem a `karoli_ok` jelölés)
+    for ig, kjv in con.execute("SELECT DISTINCT karoli_igehely, kjv_vers FROM lxx_versszam WHERE IFNULL(kjv_vers,'')!=''"):
+        if ig in felirat:
+            continue
         for cv in kjv.split(';'):
             hozzaad(ig, cv)
     vers = {x for (x,) in con.execute('SELECT igehely FROM vers')}
@@ -238,14 +242,17 @@ def terkep(con):
     egyez('KJV-kulcs a térképben (különböző)', len(kulcsok), 5204)
     egyez('  ebből Károli-versre átváltható (LXX_OS kjv_vers + A-tábla)', len(atvalt), 5001)
     egyez('  ebből nincs Károli-vers (karoli_nelkul)', len(set(kulcsok) - atvalt), 203)
-    egyez('Károli-vers, amelyhez a térkép értéke kerül (KJV→Károli után)', len(karoli_vers), 5002)
-    egyez('  ebből ÓSZ-vers az lxx_versszam-ban', len(karoli_vers & ot), 5002)
-    egyez('  ebből LXX_OS-sal is', len(karoli_vers & van_os), 4907)
+    egyez('Károli-vers, amelyhez a térkép értéke kerül (KJV→Károli után)', len(karoli_vers), 5001)
+    egyez('  ebből ÓSZ-vers az lxx_versszam-ban', len(karoli_vers & ot), 5001)
+    egyez('  ebből LXX_OS-sal is', len(karoli_vers & van_os), 4906)
     egyez('  ebből csak térkép (forras=nincs, terkep_ertek)', len(karoli_vers & csak), 95)
     egyez('  ebből Károli-vers, de nem ÓSZ-vers az lxx_versszam-ban', len((karoli_vers - ot) & vers), 0)
-    egyez('nem üres terkep_ertek (Károli-vers, lxx_versszam)', len({x for (x,) in con.execute("SELECT DISTINCT karoli_igehely FROM lxx_versszam WHERE IFNULL(terkep_ertek,'')!=''")}), 5002)
+    egyez('nem üres terkep_ertek (Károli-vers, lxx_versszam)', len({x for (x,) in con.execute("SELECT DISTINCT karoli_igehely FROM lxx_versszam WHERE IFNULL(terkep_ertek,'')!=''")}), 5001)
     zs22 = con.execute("SELECT COUNT(*), SUM(terkep_ertek!='') FROM lxx_versszam WHERE karoli_igehely LIKE 'Zsolt 22:%' AND forras='LXX_OS'").fetchone()
     egyez('Zsolt 22: LXX_OS-sor / ebből nem üres terkep_ertek (F91: KJV-kulcson illesztve; a felirat-versnek nincs KJV-kulcsa)', '%d / %d' % zs22, '32 / 31')
+    # F91 E2: a közös felirat-halmaz (67 vers, Zsolt 13:1 is) egyetlen versének sincs terkep_ertek-e
+    fe = [ig for (ig, t) in con.execute("SELECT karoli_igehely, terkep_ertek FROM lxx_versszam") if ig in felirat and t]
+    egyez('felirat-halmaz (%d vers) verse, amelynek van terkep_ertek-e' % len(felirat), len(fe), 0)
 
 
 def usz(con):

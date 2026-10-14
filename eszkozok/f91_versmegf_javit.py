@@ -16,6 +16,9 @@ import re
 import os
 from collections import defaultdict
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import zsolt_felirat_halmaz as ZFH  # noqa: E402
+
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 if hasattr(sys.stderr, 'reconfigure'):
@@ -42,17 +45,10 @@ def _kjv_sorrend(x):
 
 def etalon_betolt():
     """-> (dd, et, kivetel): dd = {zsoltár: d}, et = {zsoltár: {károli_vers: {KJV-értékek}}}."""
-    kar = defaultdict(set)
-    for ln in rows(os.path.join(K, 'Karoli_1908.tsv')):
-        m = re.match(r'Zsolt (\d+):(\d+)\t', ln)
-        if m:
-            kar[int(m.group(1))].add(int(m.group(2)))
-    kjv = defaultdict(set)
-    for ln in rows(os.path.join(K, 'KJV_Strongs_teljes.tsv')):
-        m = re.match(r'Psa\.(\d+)\.(\d+)\t', ln)
-        if m:
-            kjv[int(m.group(1))].add(int(m.group(2)))
-    d = {c: max(kar[c]) - max(kjv[c]) for c in range(1, 151)}
+    # F91 E2: a felirat-halmaz (d zsoltáronként) egy helyen, a Károli- és a KJV-verszámból él (zsolt_felirat_halmaz.py);
+    # az LXX_OS-etalon csak az ÉRTÉKET adja, a felirat-hosszat nem.
+    dd = ZFH.felirat_d()
+    kivetel = sorted(c for c in dd if c in ZFH.KIVETELEK)
 
     et = defaultdict(lambda: defaultdict(set))
     for ln in rows(os.path.join(K, 'LXX_OS', 'psalms-lxx.tsv')):
@@ -64,18 +60,6 @@ def etalon_betolt():
             for x in p[1].split(';'):
                 et[int(m.group(1))][int(m.group(2))].add(x)
 
-    def etalon_d(c):
-        best = 0
-        for v, s in et[c].items():
-            if len(s) == 1:
-                m = re.fullmatch(r'(\d+):(\d+)', next(iter(s)))
-                if m and int(m.group(1)) == c:
-                    best = max(best, v - int(m.group(2)))
-        return best
-
-    erintett = [c for c in range(1, 151) if d[c] > 0 or etalon_d(c) > 0]
-    dd = {c: (d[c] if d[c] > 0 else etalon_d(c)) for c in erintett}
-    kivetel = [c for c in erintett if d[c] == 0]
     return dd, et, kivetel
 
 

@@ -53,6 +53,7 @@ if hasattr(sys.stderr, 'reconfigure'):
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import general as G
 import nave_bontas as NB  # noqa: E402
+import zsolt_felirat_halmaz as ZFH  # noqa: E402
 import ellenoriz as E  # noqa: E402
 from strong_util import strong_normalizal  # noqa: E402
 
@@ -1051,13 +1052,14 @@ class Epito(object):
         # a KJV-kulcs -> Károli-vers(ek) átváltását (1) az LXX_OS sorai (`igehely_kjv`, `os_par`) és (2) a javított
         # A-tábla (`Karoli_versmegfeleltetes.tsv` `igehely_kjv`) adja; a `terkep_ertek` Károli-kulcsos marad.
         kjv_karoli = {}
+        felirat = ZFH.felirat_versek()
 
         def kjv_kulcs(ig, cv):
             return '%s %s' % (ig.rsplit(' ', 1)[0], cv)
         for ig, lista in os_par.items():
             for (lx, kjv, ok, forma) in lista:
-                if ok == 'zsolt_felirat_eltolas':
-                    continue     # a felirat-versnek nincs KJV-megfelelője (mint a _nave_vers-ben és az A-táblában)
+                if ig in felirat:
+                    continue     # a felirat-versnek nincs KJV-megfelelője; a közös felirat-halmaz (F91 E2, ZFH) a mérvadó, nem a `karoli_ok` jelölés
                 for cv in kjv.split(';'):
                     if re.fullmatch(r'\d+:\d+', cv):
                         v_ = kjv_karoli.setdefault(kjv_kulcs(ig, cv), [])
