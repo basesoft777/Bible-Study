@@ -488,12 +488,15 @@ def _r_magyar_gorog(d, K):
 
 def _f_usz(K):
     n, v, versek = q.usz(K.con, K.strong)
-    return (n, v, versek) if n else None
+    return (n, v, versek, q.usz_lanc(K.con, K.strong)) if n else None
 
 
 def _r_usz(d, K):
-    n, v, versek = d
+    n, v, versek, lanc = d
     ki = Markup('<p><b>%d</b> előfordulás <b>%d</b> versben.</p>') % (n, v)
+    if lanc:
+        ki += Markup('<p class="megj">A számlálás bontása: <b>%d</b> előfordulás, ebből <b>%d</b> láncelemként (a TAGNT „+” Strong-láncában, pl. krázis-alaknál); '
+                     'az egész mezős előfordulás %d. A <code>token_strong</code> a láncelemeket is számolja (DT-F76d).</p>') % (n, lanc, n - lanc)
     return ki + _tabla(['Igehely', 'Károli-szöveg'], [[ig_link(K, ig), t] for ig, t in versek])
 
 

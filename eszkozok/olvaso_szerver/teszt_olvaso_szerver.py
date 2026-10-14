@@ -327,6 +327,22 @@ class TestLapok(unittest.TestCase):
             self.assertEqual(len(re.findall(r'<h3>[^<]*<span class="jelleg jelleg-', h)), len(ids))
             self.assertEqual(len(re.findall(r'<p class="forras">Forrás és licenc: ', h)), len(ids))
 
+    def test_usz_elofordulas_bontasa_lanc_elemre(self):
+        """DT-F76d / DT133: a görög szó-lapon az előfordulás mellett látszik a „+” Strong-lánc eredetű rész (G4218: 54, ebből 25)."""
+        con = self.app.extensions['pardes']['db'].kapcsolat()
+        self.assertEqual(q.usz(con, 'G4218')[0], 54)
+        self.assertEqual(q.usz_lanc(con, 'G4218'), 25)
+        h = self.get('/r/szo/G4218').get_data(as_text=True)
+        self.assertIn('<b>54</b> előfordulás', h)
+        self.assertIn('ebből <b>25</b> láncelemként', h)
+        self.assertIn('az egész mezős előfordulás 29', h)
+        # invariáns: összes = egész mezős + láncelem (több szóra, független számolás a nyers tábla egész mezős soraiból)
+        for g in ('G2532', 'G0746', 'G3056', 'G1504', 'G4218', 'G1161'):
+            egesz = con.execute("SELECT COUNT(*) FROM token_eredeti WHERE nyelv='G' AND strong_lanc=?", (g,)).fetchone()[0]
+            self.assertEqual(q.usz(con, g)[0], egesz + q.usz_lanc(con, g), g)
+        # lánc nélküli szónál nincs bontás-sor
+        self.assertNotIn('láncelemként', self.get('/r/szo/G0746').get_data(as_text=True))
+
     def test_szo_lap_allando_cim(self):
         r = self.get('/szo/H0216')
         self.assertEqual(r.status_code, 200)
@@ -699,7 +715,8 @@ class TestD2PilotEgyezes(unittest.TestCase):
                 a[0] += 1
                 if not eg:
                     a[1] += 1
-                    # az egyetlen engedett eltérés: usz_elofordulas, dokumentált „+” Strong-lánc okkal (DT133); minden más bukik
+                    # az egyetlen engedett eltérés: usz_elofordulas, dokumentált „+” Strong-lánc okkal (DT-F76d: elfogadva, a token_strong a helyes
+                    # számlálás; DT133 külön, nyitott); minden más bukik
                     self.assertEqual(k, 'gorog_szo:usz_elofordulas', 'váratlan eltérés: %s (%s)' % (k, ok))
                     self.assertIn('a pilot TSV-útja a „+” Strong-láncok elemeit nem számolja', ok, 'az eltérésnek nincs/más az oka: %s %r' % (k, ok))
                     self.assertIn('DB-szám = TSV-szám + láncelem', ok)

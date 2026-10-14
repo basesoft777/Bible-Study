@@ -425,6 +425,14 @@ def usz(con, g):
     return n[0], n[1], versek
 
 
+def usz_lanc(con, g):
+    """Hány előfordulás számít „+” Strong-lánc elemeként (a `token_strong` a TAGNT lánc-elemeit külön sorként is számolja,
+    DT133 / DT-F76d). A bontás: `usz()` első értéke = az egész mezős előfordulás + ez a szám."""
+    return con.execute(
+        "SELECT COUNT(*) FROM token_strong s JOIN token_eredeti e ON e.igehely=s.igehely AND e.sorszam=s.sorszam "
+        "WHERE s.strong=? AND e.nyelv='G' AND e.strong_lanc LIKE '%+%'", (g,)).fetchone()[0]
+
+
 def lsj(con, g):
     r = con.execute('SELECT teljes_szocikk FROM lsj WHERE strong=?', (g,)).fetchone()
     return r[0] if r else None
