@@ -568,18 +568,22 @@ class Integracio(unittest.TestCase):
     def test_f92_terkep_nem_meghatarozhato_nem_esik_ki_nemanan(self):
         m = self._meta_dict()
         sorok = G.tsv_beolvas(os.path.join(ROOT, 'konkordancia', 'LXX_versificacios_terkep.tsv'))[1]
-        nm = sum(1 for r in sorok if r['Karoli_igehely'] == 'NEM_MEGHATAROZHATO')
+        nm = sum(1 for r in sorok if r['KJV_igehely'] == 'NEM_MEGHATAROZHATO')
         self.assertGreater(nm, 0)
         self.assertEqual(int(m['lxx_versszam:terkep_nem_meghatarozhato_sor']), nm)
         jel = self.con.execute("SELECT darab FROM normalizalas_jelentes WHERE tabla='lxx_versszam' "
                                "AND nyers='NEM_MEGHATAROZHATO'").fetchone()
         self.assertEqual(jel[0], nm)
-        # a terkep-sorok minden kulcsa szamolt: NEM_MEGHATAROZHATO + Karoli-kulcs + nem Karoli-vers
-        kulcsok = {r['Karoli_igehely'] for r in sorok} - {'NEM_MEGHATAROZHATO'}
-        self.assertEqual(int(m['lxx_versszam:terkep_karoli_kulcs']) + int(m['lxx_versszam:terkep_nem_karoli_kulcs']),
-                         len(kulcsok))
+        # a terkep-sorok minden kulcsa szamolt (F91, DT-F91b): NEM_MEGHATAROZHATO + KJV-kulcs (a KJV-kulcs vagy
+        # atvalthato Karoli-versre, vagy 'karoli_nelkul')
+        kulcsok = {r['KJV_igehely'] for r in sorok} - {'NEM_MEGHATAROZHATO'}
+        self.assertEqual(int(m['lxx_versszam:terkep_kjv_kulcs']), len(kulcsok))
+        self.assertLessEqual(int(m['lxx_versszam:terkep_kjv_kulcs_karoli_nelkul']), len(kulcsok))
         self.assertEqual(int(m['lxx_versszam:terkep_ot_vers']) + int(m['lxx_versszam:terkep_nem_ot_vers']),
                          int(m['lxx_versszam:terkep_karoli_kulcs']))
+        # a terkep oszlopa KJV_igehely (nem Karoli_igehely): az atnevezes utan a regi nev nincs
+        self.assertIn('KJV_igehely', sorok[0])
+        self.assertNotIn('Karoli_igehely', sorok[0])
 
     def test_f92_macula_ketertelmu_strong_pozicio_sorrendben(self):
         rossz = self.con.execute("SELECT COUNT(*) FROM token_macula WHERE strong IS NOT NULL AND igehely!='' "

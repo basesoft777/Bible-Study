@@ -403,7 +403,7 @@ R('Karoli_ures_helyorzo_sorok', K + 'Karoli_ures_helyorzo_sorok.tsv', NEM, 'Kár
 R('TAHOT_kivonat_nyitott_esetek', K + 'TAHOT_kivonat_nyitott_esetek.tsv', NEM, 'STEP-vers', None,
   lambda c: '%d sor a szakasz könyvére' % sum(1 for r in sorok(K + 'TAHOT_kivonat_nyitott_esetek.tsv') if r[0].startswith(c['step'] + '.')), 'minőségi napló (nyitott esetek); nem tartalmi adat')
 R('UBS_DBH_anomaliak / UBS_DNTG_anomaliak / SDBH_SDGNT_anomaliak', K + 'UBS_*_anomaliak.tsv, SDBH_SDGNT_anomaliak.tsv', NEM, 'szócikk', ['UBS_DBH'], NA('minőségi napló'), 'import-anomáliák; nem tartalmi adat')
-R('LXX_versificacios_terkep', K + 'LXX_versificacios_terkep.tsv', NEM, 'vers (Károli-igehely) → héber/latin/LXX-vers', ['Versifikacios_tablak'], V(K + 'LXX_versificacios_terkep.tsv', 0),
+R('LXX_versificacios_terkep', K + 'LXX_versificacios_terkep.tsv', NEM, 'vers (KJV-igehely; F91 óta) → héber/latin/LXX-vers', ['Versifikacios_tablak'], V(K + 'LXX_versificacios_terkep.tsv', 0),
   'a „Károli-igehely” oszlop a Zsolt 22-re KJV-számozású (22:1 = „Psa.22:1-2”, EGYIK_SEM): a Károli (MT) számozásával ellentmond, ezért megjelenítése félrevezető lenne (lásd az összefoglalót)')
 R('Nem_parszolhato_terkep_ertekek', K + 'Nem_parszolhato_terkep_ertekek.tsv', NEM, 'Károli-igehely', ['Versifikacios_tablak'], SOR(K + 'Nem_parszolhato_terkep_ertekek.tsv', 1), 'a verszámozási térkép nem értelmezhető értékei (segédtábla)')
 R('Betu_utotag_kizarva', K + 'Betu_utotag_kizarva.tsv', NEM, 'Károli-igehely', ['Versifikacios_tablak'], SOR(K + 'Betu_utotag_kizarva.tsv', 1), 'betűutótagos LXX-hivatkozások kizárt sorai (segédtábla)')

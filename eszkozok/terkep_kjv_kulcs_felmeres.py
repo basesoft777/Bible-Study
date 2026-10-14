@@ -96,7 +96,7 @@ keys_in_map = defaultdict(set)
 ex_nonexist = defaultdict(list)
 hos = []
 for r in sorok(os.path.join(K, 'LXX_versificacios_terkep.tsv')):
-    if r[0] == 'Karoli_igehely':
+    if r[0] in ('Karoli_igehely', 'KJV_igehely'):   # F91.12: az oszlop átnevezve (KJV_igehely)
         continue
     m = re.fullmatch(r'(\S+) (\d+):(\d+)', r[0])
     if not m:

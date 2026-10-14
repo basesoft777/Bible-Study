@@ -1047,18 +1047,43 @@ class Epito(object):
             k = (r['igehely_lxx'], r['igehely_kjv'], r['karoli_ok'], r['_fajl'])
             if k not in os_par.setdefault(ig, []):
                 os_par[ig].append(k)
-        terkep, nem_meghat, nem_karoli = {}, 0, set()
+        # F91 (DT-F91b): a térkép `KJV_igehely` oszlopa KJV-kulcs (nem Károli-vers). A builder a KJV-kulcson illeszt:
+        # a KJV-kulcs -> Károli-vers(ek) átváltását (1) az LXX_OS sorai (`igehely_kjv`, `os_par`) és (2) a javított
+        # A-tábla (`Karoli_versmegfeleltetes.tsv` `igehely_kjv`) adja; a `terkep_ertek` Károli-kulcsos marad.
+        kjv_karoli = {}
+
+        def kjv_kulcs(ig, cv):
+            return '%s %s' % (ig.rsplit(' ', 1)[0], cv)
+        for ig, lista in os_par.items():
+            for (lx, kjv, ok, forma) in lista:
+                if ok == 'zsolt_felirat_eltolas':
+                    continue     # a felirat-versnek nincs KJV-megfelelője (mint a _nave_vers-ben és az A-táblában)
+                for cv in kjv.split(';'):
+                    if re.fullmatch(r'\d+:\d+', cv):
+                        v_ = kjv_karoli.setdefault(kjv_kulcs(ig, cv), [])
+                        if ig not in v_:
+                            v_.append(ig)
+        for r in G.tsv_beolvas(os.path.join(self.konk, 'Karoli_versmegfeleltetes.tsv'))[1]:
+            ig, cv = r['igehely_karoli'], r['igehely_kjv']
+            if ig in self.vi.halmaz and re.fullmatch(r'\d+:\d+', cv):
+                v_ = kjv_karoli.setdefault(kjv_kulcs(ig, cv), [])
+                if ig not in v_:
+                    v_.append(ig)
+        terkep, nem_meghat, kjv_kulcsok, kjv_karoli_nelkul = {}, 0, set(), set()
         for r in G.tsv_beolvas(os.path.join(self.konk, 'LXX_versificacios_terkep.tsv'))[1]:
-            if r['Karoli_igehely'] == 'NEM_MEGHATAROZHATO':
-                nem_meghat += 1      # nem Karoli-kulcs: a sor nem kerul a tablaba, de szamolt (ellenor UJ-4)
+            kk_ = r['KJV_igehely']
+            if kk_ == 'NEM_MEGHATAROZHATO':
+                nem_meghat += 1      # nem KJV-kulcs: a sor nem kerul a tablaba, de szamolt (ellenor UJ-4)
                 continue
-            if r['Karoli_igehely'] not in self.vi.halmaz:
-                nem_karoli.add(r['Karoli_igehely'])
-                self.jelent_norm('lxx_versszam', r['Karoli_igehely'], 'a térkép kulcsa nem Károli-vers')
+            kjv_kulcsok.add(kk_)
+            if kk_ not in kjv_karoli:
+                kjv_karoli_nelkul.add(kk_)
+                self.jelent_norm('lxx_versszam', kk_, 'a térkép KJV-kulcsához nincs Károli-vers')
                 continue
-            v = terkep.setdefault(r['Karoli_igehely'], [])
-            if (r['Gorog_LXX_vers'], r['Elteres_tipusa']) not in v:
-                v.append((r['Gorog_LXX_vers'], r['Elteres_tipusa']))
+            for ig in kjv_karoli[kk_]:
+                v = terkep.setdefault(ig, [])
+                if (r['Gorog_LXX_vers'], r['Elteres_tipusa']) not in v:
+                    v.append((r['Gorog_LXX_vers'], r['Elteres_tipusa']))
 
         def cv_elso(x):
             m = re.search(r'(\d+):(\d+)', x)
@@ -1093,7 +1118,8 @@ class Epito(object):
             meta.append(('lxx_versszam:sor:' + k, str(v)))
         meta.append(('lxx_versszam:ot_vers', str(len(self.ot_versek))))
         meta.append(('lxx_versszam:terkep_nem_meghatarozhato_sor', str(nem_meghat)))
-        meta.append(('lxx_versszam:terkep_nem_karoli_kulcs', str(len(nem_karoli))))
+        meta.append(('lxx_versszam:terkep_kjv_kulcs', str(len(kjv_kulcsok))))
+        meta.append(('lxx_versszam:terkep_kjv_kulcs_karoli_nelkul', str(len(kjv_karoli_nelkul))))
         meta.append(('lxx_versszam:terkep_karoli_kulcs', str(len(terkep))))
         meta.append(('lxx_versszam:terkep_ot_vers', str(sum(1 for k in terkep if k in self.ot_versek))))
         meta.append(('lxx_versszam:terkep_nem_ot_vers', str(sum(1 for k in terkep if k not in self.ot_versek))))

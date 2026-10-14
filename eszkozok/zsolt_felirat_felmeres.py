@@ -83,7 +83,7 @@ for r in sorok(os.path.join(K, 'Karoli_versmegfeleltetes.tsv')):
 # --- B tábla: LXX_versificacios_terkep ---
 tB = defaultdict(lambda: defaultdict(list))
 for r in sorok(os.path.join(K, 'LXX_versificacios_terkep.tsv')):
-    if r[0] == 'Karoli_igehely':
+    if r[0] in ('Karoli_igehely', 'KJV_igehely'):   # F91.12: az oszlop átnevezve (KJV_igehely)
         continue
     m = re.fullmatch(r'Zsolt (\d+):(\d+)', r[0])
     if m:
