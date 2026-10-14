@@ -12,3 +12,18 @@
 - **Nyitott döntés a felhasználónak:** ki, mikor és melyik ágon építi újra a `pardes.db`-t. Addig az M2 mehet, de a Zsolt-lapok és a Nave/LXX-versszám blokkok a régi számozást mutatnák.
 - **Nem történt meg:** merge, M5–M7, a rootfs letöltési méretének mérése (utólag nem mérhető).
 - **Következő:** M2 (alkalmazás), külön `/kovetkezo`-val, ugyanezen az ágon.
+
+# Zárójelentés — #76 OLVASOI_KONKORDANCIA, 2. menet (M2: alkalmazás)
+
+*Állapot: a feladat NEM kész (M3–M7 hátra), `allapot: megallt`; az M2 kész. Ág: `claude/olvasoi-konkordancia-m2` (F76.10–F76.20). Részletes napló: `naplok/OLVASOI_KONKORDANCIA_M0.md` 4.4.*
+
+- **Elkészült:** Flask-alkalmazás (`eszkozok/olvaso_szerver/`), Flasktól független `oldalak.py`, 40 blokk-azonosító (a pilot 39 blokkja, a 9. kettéválasztva), három nézet (az Interlineáris `token_par` pozíció szerint), `pardes_nezet` süti csak nézetváltáskor, konfigurációs hozzáférés, kiadási kapcsoló authorizerrel, `/pardes.db` → 404, `/statusz`, gunicorn gthread 1×4, `telepit.sh` (az indítás az ellenőrzés sikeréhez kötött).
+- **Tesztek (végrehajtói futás, nem független ellenőri):** `teszt_olvaso_szerver.py`, 61 teszt, OK, 63,9 s, Python 3.12.3 (`pardes` WSL); parancs és proveniencia: M0 4.4.
+- **E1 lezárva:** a `pardes.db` újraépült (F97, `epites_ts=2026-10-14T09:35:00Z`), D5 eltérő tábla nincs, `frissesseg.py` ÉP. **E3 lezárva:** `naplok/PARDES_DB_UJRAEPIT_zaras.md` 6. és 9. szakasz (64 építő-teszt, 3.12.3); az itteni E3-mal azonos tárgy.
+- **DT-F76d eldöntve (a):** a D2 egyetlen eltérése (`gorog_szo:usz_elofordulas`, 27 és 11 lap: a „+” Strong-láncok) elfogadva, a `token_strong` a helyes; a brief K1 a kivételt kimondja, a D2-teszt csak ezt az okot engedi át; a szó-lapon bontás látszik („54, ebből 25 láncelemként”). A DT133 külön, nyitott.
+- **Jelleg-átírás a pilot szerint (M0 3.4; régi → új):** `vers.versszamozas` gépi → forrásadat; `vers.lxx_versszam` gépi → forrásadat; `szo.usz` gépi → forrásadat; `vers.bsb` forrásadat → forrásadat + gépi; `vers.kjv` forrásadat → forrásadat + gépi; `vers.nave` gépi → forrásadat + gépi; `vers.tipnr` gépi → forrásadat + gépi; `szo.tbesh` forrásadat → forrásadat + gépi. Más blokk jellege nem változott; a `szo.magyar_gorog` (nincs pilot-cím) modell-kimenet marad.
+- **Ellenőri tételek (`ELLENOR_F76_M2.md`):** 1. D2/K1: döntve (DT-F76d), brief átírva; 2. szövegoszlop jelleg- és forrássor: javítva; 3. D2-teszt `ok` mező: javítva; 4. jelleg-összevetés a pilottal: javítva (teszt); 5. telepit.sh és .gitignore: javítva; 6. ismeretlen blokk-azonosító: javítva; 7. DT-helyőrző: felvéve. Az újrafutó független ellenőrzés az orkesztrátoré.
+- **Egyeztetett eltérések:** BDB gépi apparátus-bontása nincs átírva; a fordított proxy nincs kiválasztva; a kereső (M3) nincs, csak gyorsugrás; a Nave a `nave_vers`-ből jön (a pilot `bovites.py` marad, `ir` kívül).
+- **Nyitott:** N-F76d (BDB-bontás; Caddy vs nginx, javaslat Caddy; `NYITOTT_FELADATOK.md`); DT133 (a `scan`-javítás és a korábbi görög ÚSZ-scanek felmérése) nyitott, nem módosult; M4 mérés a korláttal.
+- **Nem történt meg:** M3, M4, merge, PR, M5–M7; a `pr` és `lezarva_osszegzes` mező üres.
+- **Következő:** M3 (keresés), külön `/kovetkezo`-val; ⛔ M5, ⛔ M6, ⛔ M7.

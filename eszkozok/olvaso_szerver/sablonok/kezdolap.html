@@ -1,0 +1,25 @@
+{% extends "alap.html" %}
+{% block tartalom %}
+<h1>Károli-bibliaszöveg</h1>
+<form class="valaszto" action="/ugras" method="get">
+  <label>Könyv
+    <select name="konyv">
+      {% for k in konyvek %}<option value="{{ k.slug }}">{{ k.nev }}</option>{% endfor %}
+    </select>
+  </label>
+  <label>Fejezet <input type="number" name="fej" min="1" max="176" value="1"></label>
+  <label>Vers <input type="number" name="vers" min="1" max="176" placeholder="(üres: az egész fejezet)"></label>
+  <button type="submit">Megnyitás</button>
+</form>
+{% for csoport, ot in (("Ószövetség", true), ("Újszövetség", false)) %}
+<h2>{{ csoport }}</h2>
+<div class="konyvek">
+  {% for k in konyvek if k.ot == ot %}
+  <details class="konyv">
+    <summary><a href="/{{ k.slug }}">{{ k.nev }}</a> <span class="szam">({{ k.fejezetek|length }} fejezet)</span></summary>
+    <p class="fejezetek">{% for f in k.fejezetek %}<a href="/{{ k.slug }}/{{ f }}">{{ f }}</a> {% endfor %}</p>
+  </details>
+  {% endfor %}
+</div>
+{% endfor %}
+{% endblock %}

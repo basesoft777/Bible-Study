@@ -1,0 +1,6 @@
+<article class="szolap" data-strong="{{ strong }}">
+  <h2 class="szocim">{{ strong }} <span class="{{ 'gor' if gorog else 'heb' }}"{% if gorog %} lang="grc"{% else %} lang="he" dir="rtl"{% endif %}>{{ lemma }}</span></h2>
+  <p class="szoalcim">{{ atiras }}{% if atiras and jelentes %} · {% endif %}{{ jelentes }}</p>
+  <p><a href="/szo/{{ strong }}">szó-lap önálló címen</a></p>
+  {{ blokkok }}
+</article>
