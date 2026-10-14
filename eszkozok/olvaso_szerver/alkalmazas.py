@@ -1,0 +1,221 @@
+"""Az olvasói szerver Flask-alkalmazása (#76 M2, DT146/1).
+
+Csak útvonalat, sütit, fejlécet és gyorsítótárat kezel; a lapok tartalma az `oldalak.py`-ban készül, az SQL a
+`lekerdezesek.py`-ban áll. Az adatbázis nem kerül ki a böngészőbe: a böngésző csak a kért lap HTML-jét kapja; nincs
+`.db`/`.tsv` kiszolgálás (a `/pardes.db` ismeretlen könyvnek számít, 404).
+
+Indítás (a célgépen): gunicorn -c gunicorn_conf.py "alkalmazas:letrehoz()"   (1 worker, 4 szál: gthread)
+Fejlesztés:           python alkalmazas.py --port 8765
+"""
+import json
+import os
+import sys
+import tomllib
+from urllib.parse import urlencode
+
+from flask import Flask, Response, abort, jsonify, make_response, redirect, request
+
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+if hasattr(sys.stderr, 'reconfigure'):
+    sys.stderr.reconfigure(encoding='utf-8')
+
+import adatbazis
+import hozzaferes as hozz_modul
+import lekerdezesek
+import oldalak
+from gyorsitotar import Gyorsitotar
+
+KONFIG_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'konfig')
+
+CSP = "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'self'; frame-ancestors 'none'"
+
+
+def _konfig(konfig_dir=None):
+    d = konfig_dir or os.environ.get('PARDES_KONFIG_DIR') or KONFIG_DIR
+    with open(os.path.join(d, 'szerver.toml'), 'rb') as f:
+        return tomllib.load(f), d
+
+
+def letrehoz(db_ut=None, kiadas=None, konfig_dir=None, hozzaferes=None):
+    """Az alkalmazás-gyár. Paraméter > környezeti változó > konfiguráció."""
+    konf, kdir = _konfig(konfig_dir)
+    db_ut = db_ut or os.environ.get('PARDES_DB') or konf.get('db') or (adatbazis.GY + 'pardes.db')
+    kiadas = kiadas or os.environ.get('PARDES_KIADAS') or konf.get('kiadas', 'belso')
+    hozz = hozzaferes or hozz_modul.Hozzaferes.betolt(kdir)
+    db = adatbazis.Adatbazis(db_ut, kiadas, mmap_bajt=int(konf.get('mmap_bajt', 0)))
+    gyar = oldalak.OldalGyar(db, hozz)
+    suti = konf.get('suti', {})
+    suti_nev = suti.get('nev', 'pardes_nezet')
+    gy = konf.get('gyorsitotar', {})
+    cache = Gyorsitotar(gy.get('max_lap', 512), gy.get('max_bajt', 64 * 1024 * 1024))
+    nyilvanos_mod = kiadas != 'belso'
+
+    app = Flask(__name__, static_folder=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'statikus'), static_url_path='/statikus')
+    app.config['JSON_AS_ASCII'] = False
+    app.extensions['pardes'] = {'db': db, 'gyar': gyar, 'cache': cache, 'hozz': hozz}
+
+    # -- nézet és szint ---------------------------------------------------------------------------------------------------
+    def nezet_kerese():
+        """`?nezet=` > süti > alap. A süti itt NEM jön létre (csak a /nezet/<nev> útvonalon)."""
+        return oldalak.nezet_ervenyes(request.args.get('nezet') or request.cookies.get(suti_nev))
+
+    def aktualis_ut():
+        return request.path
+
+    # -- közös lap-kiszolgálás gyorsítótárral és ETaggel ---------------------------------------------------------------------
+    def kiszolgal(kulcs_reszek, elo, fragment=False):
+        szint = hozz.szint(request)
+        nezet = nezet_kerese()
+        kulcs = (request.path, tuple(sorted(kulcs_reszek.items())), nezet, szint, kiadas, gyar.kozos.adatbazis_kulcs, oldalak.SABLON_VERZIO, fragment)
+        etag = Gyorsitotar.etag(kulcs)
+        hit = cache.kap(kulcs)
+        if hit is None:
+            try:
+                hit = elo(nezet, szint)
+            except oldalak.NemTalalhato as ex:
+                return hiba(404, str(ex))
+            cache.tesz(kulcs, hit)
+            allapot = 'MISS'
+        else:
+            allapot = 'HIT'
+        if request.headers.get('If-None-Match') == etag:
+            r = make_response('', 304)
+        else:
+            r = make_response(hit)
+            r.headers['Content-Type'] = 'text/html; charset=utf-8'
+        r.headers['ETag'] = etag
+        r.headers['Cache-Control'] = 'public, max-age=300' if nyilvanos_mod else 'no-cache'
+        r.headers['X-Cache'] = allapot
+        # a nézet a sütitől függ: a közbenső gyorsítótárak ne keverjék
+        r.headers['Vary'] = 'Cookie'
+        return r
+
+    def hiba(kod, uzenet):
+        nezet = nezet_kerese()
+        try:
+            html = gyar.hiba_lap(kod, uzenet, nezet, request.path)
+        except Exception:
+            html = '<!doctype html><title>%s</title><p>%s</p>' % (kod, 'hiba')
+        r = make_response(html, kod)
+        r.headers['Content-Type'] = 'text/html; charset=utf-8'
+        r.headers['Cache-Control'] = 'no-store'
+        return r
+
+    @app.errorhandler(404)
+    def _404(_):
+        return hiba(404, 'A keresett oldal nem található.')
+
+    @app.errorhandler(405)
+    def _405(_):
+        return hiba(405, 'Ez a művelet nem engedélyezett.')
+
+    @app.errorhandler(500)
+    def _500(_):
+        return hiba(500, 'Belső hiba.')
+
+    # -- fejlécek -----------------------------------------------------------------------------------------------------------
+    @app.after_request
+    def _fejlecek(r):
+        r.headers.setdefault('Content-Security-Policy', CSP)
+        r.headers.setdefault('X-Content-Type-Options', 'nosniff')
+        r.headers.setdefault('Referrer-Policy', 'same-origin')
+        return r
+
+    # -- útvonalak -----------------------------------------------------------------------------------------------------------
+    @app.get('/')
+    def kezdolap():
+        ut = aktualis_ut()
+        return kiszolgal({}, lambda nezet, szint: gyar.kezdolap(nezet, ut))
+
+    @app.get('/<konyv>')
+    def konyv_lap(konyv):
+        ut = aktualis_ut()
+        return kiszolgal({}, lambda nezet, szint: gyar.konyv_lap(konyv, nezet, ut))
+
+    def _fejezet(konyv, fej, vers):
+        szo = lekerdezesek.hnorm(request.args.get('szo', '')[:12]) or ''
+        ful = request.args.get('ful', '') if request.args.get('ful') in ('szo', 'vers') else ''
+        ut = request.path + ('?' + urlencode([(k, v) for k, v in (('szo', szo), ('ful', ful)) if v]) if (szo or ful) else '')
+        return kiszolgal({'szo': szo, 'ful': ful}, lambda nezet, szint: gyar.fejezet_lap(konyv, fej, vers, nezet, szint, szo, ful, ut))
+
+    @app.get('/<konyv>/<int:fej>')
+    def fejezet_lap(konyv, fej):
+        return _fejezet(konyv, fej, None)
+
+    @app.get('/<konyv>/<int:fej>/<int:vers>')
+    def vers_lap(konyv, fej, vers):
+        return _fejezet(konyv, fej, vers)
+
+    @app.get('/szo/<strong>')
+    def szo_lap(strong):
+        ut = aktualis_ut()
+        return kiszolgal({}, lambda nezet, szint: gyar.szo_lap(strong, nezet, szint, ut))
+
+    @app.get('/r/szo/<strong>')
+    def szo_toredek(strong):
+        return kiszolgal({}, lambda nezet, szint: gyar.szo_fragment(strong, szint), fragment=True)
+
+    @app.get('/r/vers/<konyv>/<int:fej>/<int:vers>')
+    def vers_toredek(konyv, fej, vers):
+        return kiszolgal({}, lambda nezet, szint: gyar.vers_fragment(konyv, fej, vers, szint), fragment=True)
+
+    @app.get('/nezet/<nev>')
+    def nezet_valtas(nev):
+        """A nézet beállítása: itt (és csak itt) jön létre a funkcionális süti (DT146/4)."""
+        if nev not in oldalak.NEZETEK:
+            return hiba(404, 'Ismeretlen nézet.')
+        r = redirect(oldalak.biztonsagos_vissza(request.args.get('vissza')), 302)
+        r.set_cookie(suti_nev, nev, max_age=int(suti.get('max_kor_mp', 31536000)), samesite='Lax', httponly=True, secure=bool(suti.get('secure', False)), path='/')
+        r.headers['Cache-Control'] = 'no-store'
+        return r
+
+    @app.get('/ugras')
+    def ugras():
+        """Navigáció: az `?q=` (igehely vagy Strong-szám) vagy a `konyv`/`fej`/`vers` űrlapmezők alapján átirányít."""
+        q = request.args.get('q')
+        if q is None and request.args.get('konyv'):
+            q = '%s %s%s' % (request.args.get('konyv', ''), request.args.get('fej', '1') or '1', (':' + request.args['vers']) if request.args.get('vers') else '')
+        cel = oldalak.ugras_celpont(gyar.kozos, q)
+        if not cel:
+            return hiba(404, 'Nem értelmezhető cél. Adj meg igehelyet (pl. 1Móz 1:4) vagy Strong-számot (pl. H0216). A keresés még nem része ennek a kiadásnak.')
+        r = redirect(cel, 302)
+        r.headers['Cache-Control'] = 'no-store'
+        return r
+
+    @app.get('/statusz')
+    def statusz():
+        s = gyar.statusz()
+        ut = os.environ.get('PARDES_FRISSESSEG_FAJL')
+        fr = 'nem futott'
+        if ut and os.path.exists(ut):
+            sorok = [l.strip() for l in open(ut, encoding='utf-8') if l.strip()]
+            fr = sorok[-1] if sorok else 'üres'
+        s['frissesseg'] = fr
+        n, b = cache.meret()
+        s['gyorsitotar'] = {'lap': n, 'bajt': b, 'talalat': cache.talalat, 'melle': cache.melle}
+        s['allapot'] = 'ok'
+        r = Response(json.dumps(s, ensure_ascii=False), mimetype='application/json')
+        r.headers['Cache-Control'] = 'no-store'
+        return r
+
+    @app.get('/robots.txt')
+    def robots():
+        return Response('User-agent: *\nDisallow: /\n', mimetype='text/plain')
+
+    return app
+
+
+def main():
+    import argparse
+    ap = argparse.ArgumentParser(description='PaRDeS olvasó (fejlesztői szerver; élesben gunicorn)')
+    ap.add_argument('--db')
+    ap.add_argument('--kiadas', choices=adatbazis.KIADASOK)
+    ap.add_argument('--port', type=int, default=8765)
+    ap.add_argument('--host', default='127.0.0.1')
+    a = ap.parse_args()
+    letrehoz(a.db, a.kiadas).run(host=a.host, port=a.port, threaded=True)
+
+
+if __name__ == '__main__':
+    main()

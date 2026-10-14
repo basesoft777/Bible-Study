@@ -1,0 +1,12 @@
+# Hozzáférési szintek és blokk–szint hozzárendelés (#76 M2, M0 3.5). A kódban csak a mechanizmus van.
+# A szintek növekvő sorrendben állnak; a szint neve szabad.
+szintek = ["nyilvanos", "regisztralt", "kutato"]
+
+# Az első kiadásban belépés nincs: mindenki ezt a szintet kapja (DT129 (3)): mindenki mindent lát.
+alapertelmezett_szint = "kutato"
+
+# blokk-id -> a legkisebb szint, amely látja. Ami nincs a listában: a `default` szint.
+# Példa a későbbi tartalmi szétválasztásra (ma nincs kitöltve):
+#   "szo.bdb_magyar" = "regisztralt"
+[blokk]
+default = "nyilvanos"

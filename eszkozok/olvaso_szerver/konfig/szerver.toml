@@ -1,0 +1,26 @@
+# Az olvasói szerver konfigurációja (#76 M2). Környezeti változóval felülírható:
+#   PARDES_DB, PARDES_KIADAS, PARDES_KONFIG_DIR
+# A fájlt a repó tartalmazza; titkot nem hordoz.
+
+# A pardes.db helye. Üres = a repó gyökerének pardes.db-je (fejlesztés); a célgépen a PARDES_DB felülírja.
+db = ""
+
+# kiadás: belso | nyilvanos | kereskedelmi (DT124)
+#   belso         minden blokk
+#   nyilvanos     a KJV-Strong blokk (GPL) kimarad
+#   kereskedelmi  a KJV-Strong és az MCGED (nem kereskedelmi) is kimarad
+kiadas = "belso"
+
+[suti]
+# a nézetet megjegyző funkcionális süti (DT146/4): csak nézetváltáskor jön létre
+nev = "pardes_nezet"
+max_kor_mp = 31536000     # 1 év
+secure = false            # HTTPS mögött (VPS) true
+
+[gyorsitotar]
+max_lap = 512
+max_bajt = 67108864       # 64 MB
+
+[lapozas]
+# a keresés (M3) oldalmérete; az M2 nem használja
+oldalmeret = 50

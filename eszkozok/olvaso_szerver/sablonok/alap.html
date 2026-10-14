@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>{{ cim }} – PaRDeS olvasó</title>
+<link rel="stylesheet" href="/statikus/olvaso.css">
+<script src="/statikus/olvaso.js" defer></script>
+</head>
+<body class="nezet-{{ nezet }}">
+<header class="fejlec">
+  <a class="logo" href="/">PaRDeS olvasó</a>
+  <form class="ugras" action="/ugras" method="get" role="search">
+    <input type="text" name="q" placeholder="1Móz 1:4 vagy H0216 (Ctrl+K)" aria-label="Ugrás igehelyre vagy Strong-számra" maxlength="60" autocomplete="off">
+    <button type="submit">Ugrás</button>
+  </form>
+  <nav class="nezetvalto" aria-label="Nézet">
+    {% for kod, nev in nezetek %}
+    <a href="/nezet/{{ kod }}?vissza={{ ut|default('/')|urlencode }}"{% if kod == nezet %} class="aktiv" aria-current="true"{% endif %}>{{ nev }}</a>
+    {% endfor %}
+  </nav>
+</header>
+<main class="tartalom">
+{% block tartalom %}{% endblock %}
+</main>
+<footer class="labjegyzet">
+  Kiadás: <b>{{ kiadas }}</b> · adatbázis építve: {{ epites_ts }} · Az adatok a repó TSV-táblázataiból generált <code>pardes.db</code>-ből jönnek; minden blokk jelleg- és forrássorral.
+  A keresés (Strong-szám, magyar szó, frázis) még nem része ennek a kiadásnak.
+</footer>
+</body>
+</html>

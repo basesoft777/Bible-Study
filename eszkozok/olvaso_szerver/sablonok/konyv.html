@@ -1,0 +1,6 @@
+{% extends "alap.html" %}
+{% block tartalom %}
+<h1>{{ nev }}</h1>
+<p class="fejezetek">{% for f, db in fejezetek %}<a href="/{{ slug }}/{{ f }}" title="{{ db }} vers">{{ f }}</a> {% endfor %}</p>
+<p><a href="/">← kezdőlap</a></p>
+{% endblock %}
