@@ -1,6 +1,6 @@
 # OLVASOI_KONKORDANCIA — M0 terv (#76)
 
-*Csak olvas: a terv semmit nem telepít, nem tölt le, nem épít újra. A „javaslat” jelölésű tételek javaslatok; a döntés a felhasználóé (DT-F76c). Modell: `claude-sonnet-5-5`. Állapot: ⛔ jóváhagyásra vár.*
+*Csak olvas: a terv semmit nem telepít, nem tölt le, nem épít újra. A „javaslat” jelölésű tételek javaslatok; a döntés a felhasználóé (DT-F76c). Modell: `claude-sonnet-5-5`. Állapot: **M0 jóváhagyva (felhasználó, chat, 2026-10-14); DT-F76c eldöntve.** A szöveg a döntések szerint átvezetve.*
 
 Mért adatok forrása, ahol nincs más jelölés: `scope=pardes.db (a fő munkamásolat, 938 287 104 bájt), csak olvasás (mode=ro) | forras=meta.epites_ts=2026-10-13T18:10:45Z, 73 hash-sor; EXPLAIN QUERY PLAN és egyszeri időmérés, Windows, Python 3.14 | ts=2026-10-14`. Az időértékek tájékoztatók (nem a VPS-korlátokkal mért); a mérés az M4-é.
 
@@ -84,7 +84,7 @@ Ugyanaz a blokk-regiszter és ugyanaz az adat, három elrendezés (Jinja2 sablon
 | **Interlineáris** | versenként minden magyar szó alatt a párosított eredeti szó és Strong-szám; mellette a szó-lap | az illesztés a `token_par.hu_sorszam` / `er_sorszam` pozíció szerint, **nem** Strong-szám szerint (a pilot sorrendi illesztése ismétlődő szónál téveszthet, brief 2. szakasz); a párosítatlan eredeti szavak (a `token_eredeti` szavai, amelyek `er_sorszam`-a nem szerepel a `token_par`-ban) a vers alatt külön sorban |
 | **Munkaasztal** | verslista, szöveg, és egyszerre nyitva a szó-lap és a vers részletei; Ctrl+K gyorsugrás | a Ctrl+K a `/` kereső dobozára fókuszál / könyv–fejezet–vers beírás (pl. `1Moz 1:4`) az 3.2 útvonalra ugrik; nincs külön szerveroldali logika |
 
-**Megjegyzés és váltás.** A választás a `pardes_nezet` sütiben él (`olvaso` | `interlinearis` | `munkaasztal`; `SameSite=Lax`, `HttpOnly`, 1 év; személyes adatot nem hordoz), a `?nezet=` paraméter felülírja. Az ismeretlen érték az alapra esik vissza. A gyorsítótár kulcsa tartalmazza a nézetet (3.8). A nézetváltó sima hivatkozás (`/nezet/…`), JS nélkül is működik.
+**Megjegyzés és váltás.** A választás a `pardes_nezet` sütiben él (`olvaso` | `interlinearis` | `munkaasztal`; `SameSite=Lax`, `HttpOnly`, 1 év; személyes adatot nem hordoz), a `?nezet=` paraméter felülírja. Az ismeretlen érték az alapra esik vissza. A gyorsítótár kulcsa tartalmazza a nézetet (3.8). A nézetváltó sima hivatkozás (`/nezet/…`), JS nélkül is működik. **Döntés (DT-F76c/4): a süti csak nézetváltáskor jön létre**; első látogatáskor és böngészéskor nem állítunk be sütit (süti nélkül az alap, az Olvasópult érvényes).
 
 **Kattinthatóság.** Az első kiadásban a pilot szabálya érvényes: kattintható a fő héber szóhoz kötött Károli-szó (a pilot: 58,8% az 1Móz 1–25-ben; `naplok/OLVASOI_PILOT_ertekeles.md` 8.1). A nyelvtani elemhez kötött 24,8% szó-lapjának kérdése felületi döntés (pilot 8.4/5); nem része az M0-nak, nyitott megjegyzés (6. szakasz, 8).
 
@@ -194,6 +194,8 @@ Minden lekérdezés paraméteres (`?`); az egyetlen dinamikus elem a `LIMIT`/`OF
 
 A mért szám a pardes.db-n, hideg Windows-gyorsítótárral nem mérendő pontosan; az M4 a VPS-t utánzó korlátokkal méri a K5-öt (vers-lap, szó-lap, magyar szó < 100 ms).
 
+**M3-ellenőrzés (DT-F76c/3):** az önillesztés `igehely`-egyezést követel, tehát a frázis nem lóg át versen; az M3 igazolja a vershatárt, külön a Károli-versösszevonásos helyeken (9 hely, `f22/versosszevonas.tsv`), ahol két TAHOT-vers áll egy Károli-versen. 
+
 **A `frazis_pozicio` indexe (E4/E5, DT-F76c/3).** A `frazis_pozicio`-nak a `strong` és az (`igehely`,`oldal`,`sorszam`) indexén kívül nincs szó-indexe (`EXPLAIN`: `SCAN a`). A fenti `token_karoli`-alapú frázis-keresés ezt megkerüli, tehát **a tervhez új index nem kell**; a `frazis_pozicio` a Strong-sorozatos keresésben marad. Nincs `sqlite_epit.py`-módosítás.
 
 ### 3.7 Biztonság (N-F76c elő)
@@ -208,16 +210,36 @@ A mért szám a pardes.db-n, hideg Windows-gyorsítótárral nem mérendő ponto
 
 - **Lap-gyorsítótár:** korlátos LRU (alap: 512 lap vagy 64 MB, amelyik előbb betelik) a kész HTML-re; kulcs: `(útvonal, normalizált paraméterek, nézet, szint, kiadás, adatbázis-kulcs, sablon-verzió)`. Az `adatbazis-kulcs` a `meta.epites_ts` + a `meta` hash-sorok hash-e. Egy folyamat egy gyorsítótárat tart (a szerver 1–2 worker; a kimenet a worker-ek között nem megosztott, ez az 1 vCPU-nál nem baj).
 - **HTTP:** `ETag` = a gyorsítótár-kulcs hash-e, `Cache-Control: no-cache` a próbaüzemben (belső), `public, max-age=300` a nyilvános módban; a Caddy `encode zstd gzip`.
-- **Frissesség (K4):** a `telepit.sh` a telepítés feltételeként lefuttatja az `adatbazis.py --frissesseg`-et: a `meta` `hash:<tábla>` sorait (73 sor) összeveti (a) az adatbázis tényleges tábláinak hash-ével, (b) a telepítéshez adott **manifesttel** (a forrás-TSV-k sha256-ja, amelyet az építés pillanatában, a repó gépén készítünk: `pardes.db` + `manifest.tsv` együtt kerül a célgépre). Eltérésnél a telepítés megáll. A WSL-ben a repó TSV-i is elérhetők lehetnek (klón), de a VPS-en a TSV-k nincsenek meg, ezért a manifest a kötelező mechanizmus. A `/statusz` ugyanazt mutatja futás közben.
+- **Frissesség (K4):** a `telepit.sh` a telepítés feltételeként lefuttatja az `adatbazis.py --frissesseg`-et: a `meta` `hash:<tábla>` sorait (73 sor) összeveti (a) az adatbázis tényleges tábláinak hash-ével, (b) a telepítéshez adott **manifesttel** (a forrás-TSV-k sha256-ja, amelyet az építés pillanatában, a repó gépén készítünk: `pardes.db` + `manifest.tsv` együtt kerül a célgépre). A manifest a célgépre kerülő táblákat fedi (nyilvános célgépen a szűrt példány táblakészletét, 6. szakasz 6.). Eltérésnél a telepítés megáll. A WSL-ben a repó TSV-i is elérhetők lehetnek (klón), de a VPS-en a TSV-k nincsenek meg, ezért a manifest a kötelező mechanizmus. A `/statusz` ugyanazt mutatja futás közben.
 
 ## 4. Telepítő szkript és M1 (terv; nem fut le most)
 
-Az M1 a felhasználóé és jóváhagyásra vár; a szkript az M2 elején készül el, az M1-ben a felhasználó a disztribúciót hozza létre:
+**Az M1 a felhasználó jóváhagyására vár** (a letöltés és a telepítés külön jóváhagyás). A szkript az M2 elején készül el; az M1-ben a felhasználó hozza létre a disztribúciót.
 
-1. (Felhasználó, M1) `wsl --install -d Ubuntu-24.04 --name pardes --location E:\WSL\pardes`, felhasználónév és jelszó megadása.
-2. `telepit.sh` (a disztribúcióban, a projekt-könyvtárból; a VPS-en SSH-n át ugyanez): `apt` csomagok (git, curl, caddy vagy nginx, sqlite3), `uv` telepítése, `uv sync` (3.12, zárolt), a `pardes.db` és a manifest másolása a disztribúció ext4 lemezére (`~/pardes/adat/`; a másolás Windowsról egyszeri ~0,94 GB, a későbbiekben az építés a disztribúcióban is futhat), frissességi teszt (3.8), `systemd` egység (gunicorn) vagy kézi indítás, a fordított proxy konfigurációja (helyben `localhost:8080` → gunicorn `127.0.0.1:8000`).
-3. Az aranyminta-teszt (szótövezés) lefut a 3.12-n; eltérésnél 3.11, az `.python-version` az eredménnyel rögzítődik.
-4. A disztribúció nem érinti a meglévő `Ubuntu`-t; a letöltések (Ubuntu-kép, csomagok) az M1 jóváhagyásakor állnak (név, forrás, méret a kérdésben).
+### 4.1 Mit tölt le a `wsl --install -d Ubuntu-24.04 --name pardes --location E:\WSL\pardes`
+
+*Az alábbi méretek **becslések**, nem mértem őket (nem futott letöltés, a repó nem tartalmaz ilyen adatot); a parancs kimenete az M1-ben pontosítja. A parancs előfeltétele a `--name` és `--location` kapcsolókat ismerő WSL: `wsl --version` ellenőrzendő (a kapcsolók újabb, 2.4.x körüli WSL-kiadásban jelentek meg; ez emlékezetből való állítás, nem repó-tény).*
+
+| Mit | Forrás | Becsült méret | Hova kerül |
+|---|---|---|---|
+| Ubuntu 24.04 WSL-lemezkép (rootfs) | a Microsoft által kiszolgált WSL disztribúciós lista (Canonical hivatalos Ubuntu 24.04 WSL-képe); a pontos URL a `wsl --list --online` / a parancs kimenete | letöltés ≈ 300–450 MB (becslés) | letöltési gyorsítótár, majd kibontva |
+| A telepített disztribúció (`ext4.vhdx`) | kibontás a fenti képből | kezdetben ≈ 1,5–2,5 GB (becslés); a vhdx nő a használattal | `E:\WSL\pardes` (E: szabad 640,2 GB; `E:\WSL` még nem létezik, a parancs létrehozza) |
+| WSL-frissítés, ha a telepített WSL a kapcsolókhoz régi | Microsoft | néhány tíz MB (becslés) | rendszer |
+
+A meglévő `Ubuntu` disztribúciót a parancs nem érinti (külön név és hely). A C: szabad helye 1,9 GB: **semmi nem kerülhet C:-re** (a parancs `--location` miatt E:-re ír; az M1 ezt a parancs előtt újra ellenőrzi).
+
+### 4.2 A telepítés utáni lépések (a disztribúcióban, a felhasználó jelszava után)
+
+1. `wsl -d pardes` — első indítás, felhasználónév és jelszó megadása (a felhasználóé).
+2. `/etc/wsl.conf`: `[boot] systemd=true`, majd a disztribúció újraindítása (`wsl --terminate pardes`) — **disztribúciónként** érvényes, a globális `.wslconfig`-hoz és a meglévő `Ubuntu`-hoz nem nyúlunk.
+3. Ellenőrzés: `systemctl is-system-running`, a `cpuset` és `memory` cgroup-vezérlők elérhetősége (`cat /sys/fs/cgroup/cgroup.controllers`) — az erőforrás-korlát előfeltétele (6. szakasz 5.).
+4. `sudo apt update && sudo apt install -y git curl sqlite3 ca-certificates` + a fordított proxy (Caddy vagy nginx; az M2 dönti el a konfigurációval) — becsült letöltés ≈ 100–250 MB (becslés).
+5. `uv` telepítése (a hivatalos telepítő vagy a csomagkezelő; ≈ 20–40 MB, becslés); `python3 --version` = 3.12 (Ubuntu 24.04 alap).
+6. A projekt-tároló klónozása a disztribúció saját lemezére (`~/pardes/`), **nem** `/mnt`-re; `uv sync` (zárolt függőségek: Flask, Jinja2, Werkzeug, gunicorn és tranzitívjaik; becslés < 50 MB PyPI-ról).
+7. `pardes.db` + manifest másolása a disztribúció ext4 lemezére (≈ 0,94 GB, helyi példány: a teljes fájl, 6. szakasz 6.); frissességi teszt (3.8).
+8. Az aranyminta-teszt (szótövezés) a 3.12-n; eltérésnél 3.11, az `.python-version` az eredménnyel rögzítődik (2. szakasz (b)).
+9. Az erőforrás-korlátozott indítás kipróbálása: `systemd-run … -p MemoryMax=2G -p AllowedCPUs=0` (6. szakasz 5.), a gunicorn indítása, `GET /statusz`.
+10. Az M1 zárása: napló a tényleges letöltött és lemezen foglalt méretekkel (proveniencia-sorral), a becslések cseréje mért értékre.
 
 ## 5. Keretrendszer: Flask vagy FastAPI (indoklással)
 
@@ -235,14 +257,15 @@ Az M1 a felhasználóé és jóváhagyásra vár; a szkript az M2 elején kész�
 
 ## 6. Döntésre váró pontok (DT-F76c) és nyitott kérdések
 
-A `DONTESEK.md`-be egyetlen helyőrzős tétel kerül (`DT-F76c`); döntést az 1–6. alpont kér, a 7–8. tájékoztató:
+**DT-F76c eldöntve (felhasználó, chat, 2026-10-14).** A döntések:
 
-1. **Keretrendszer:** Flask (javaslat) / FastAPI. Indoklás: 5. szakasz.
-2. **Szótő-keresés alapértelmezése (E3):** javaslat: az alap a pontos alak ∪ szótári alak ((a) mód, #95: max. 20,6 ms); a **Strong-ággal bővített (c) mód külön kapcsoló** („minden alak, ami ehhez a szóhoz kötött”), mert gyakori lemmákon 173–874 ms (a #95 mérése), lapozva. Alternatíva: az (c) az alap. A felület mindkét módnál megmutatja, mit talált és milyen módon (mi a „tő”: szótári alak, nem nyelvtani szótő; DT130).
-3. **Frázis-keresés a `token_karoli`-ból** (E4): javaslat; nem kell új index vagy építő-módosítás. Alternatíva: a `sqlite_epit.py` bővítése (`frazis_pozicio` szó-index) külön feladatban; a #76 `ir` mezőjében az építő nincs.
-4. **Nézet sütije:** `pardes_nezet`, `SameSite=Lax`, `HttpOnly`, 1 év, funkcionális (nem követő); javaslat. A belépés nélküli első kiadásban nem igényel hozzájárulási szalagot (funkcionális süti); a nyilvános közzétételnél (M7) a jogi átnézés része.
-5. **Erőforrás-korlát a mérésnél (M4):** az 1 vCPU / 2 GB utánzása a disztribúción belül, **nem** a globális `.wslconfig`-gal (az a meglévő `Ubuntu`-t is korlátozná): `taskset -c 0` és cgroup-limit (`systemd-run --scope -p MemoryMax=2G`, ha a disztribúcióban a systemd fut), vagy ennek hiányában `prlimit`/RSS-figyelés; az M4 jelentése rögzíti a tényleges módszert és az eltérést a valódi VPS-től (a Windows-WSL2 virtualizációja miatt a lapidő csak tájékoztató; a mérvadó mérés az M6 éles szerverén). Javaslat.
-6. **A teljes `pardes.db` a célgépen vagy a lapokhoz szükséges részhalmaz:** a pilot D4: 548,4 MB a szükséges rész (a fájl 886,4 MB a F79 mérésekor); a mai fájl 938 287 104 bájt (a #92 és #95 táblái hozzáadva), tehát a 20 GB-os VPS-lemezen elfér; javaslat: **a teljes fájl** (egyszerűbb, a frissességi teszt egy fájlra szól), a kizárt (kiadás szerinti) táblák jelenléte nem kockázat, mert az authorizer tiltja az olvasásukat. Alternatíva: kiadás szerint megszűrt példány (defense in depth) — az M6/M7-nél érdemes újra mérlegelni.
+1. **Keretrendszer: Flask.**
+2. **Szótő-keresés:** az alap az alak ∪ szótári alak ((a) mód); a Strong-ággal bővített (c) mód kapcsolóval. A felület mindkét módnál megmutatja, mit talált és milyen módon (a „tő” szótári alak, DT130).
+3. **Frázis-keresés a `token_karoli`-ból.** Az M3 ellenőrzi a vershatárt (3.6).
+4. **Nézet sütije: funkcionális `pardes_nezet`** (`SameSite=Lax`, `HttpOnly`, 1 év); **a süti csak nézetváltáskor jön létre** (3.3).
+5. **Erőforrás-korlát a disztribúción belül, `systemd-run` módszerrel:** `-p MemoryMax=2G -p AllowedCPUs=0` (1 vCPU, 2 GB), `prlimit` nélkül; globális `.wslconfig` nincs. Előfeltétel: `systemd=true` a disztribúció `wsl.conf`-jában és elérhető `cpuset`/`memory` cgroup-vezérlő (4.2/3. lépés; az M1 ellenőrzi). Az M4 jelentése rögzíti a tényleges módszert; a Windows-WSL2 mérés tájékoztató, a mérvadó az M6.
+6. **Adatbázis:** helyben (WSL) a **teljes `pardes.db`**, a kiadás szerinti olvasási tiltással (authorizer). A **nyilvános célgépre (M6/M7) szűrt példány kerül, a telepítés előtt** előállítva (a kiadás által kizárt táblák nélkül: `nyilvanos` — `kjv`; `kereskedelmi` — `kjv`, `mcged`), a manifest ezt a táblakészletet fedi (3.8). A szűrő-lépés (`szur_peldany` jellegű parancs) az M6 előtti tétel; az authorizer a szűrt példányon is fennmarad (kettős védelem).
+
 7. **Szótövezés és a `pardes.db` frissessége:** az `Ubuntu-24.04` disztribúción a hfst-et a szerver nem használja; a szótő-tábla kész. Nincs döntés, megjegyzés.
 8. **Nyitott megjegyzés (nem akadály):** a nyelvtani elemhez kötött Károli-szavak (24,8%) szó-lapja; a pilot 8.4/5 kérdése. Az M0 az alapszabályt (pilot-szabály) viszi át.
 
@@ -280,4 +303,4 @@ Motívumréteg (#25b), új adat, modernizált Károli (DT128), belépés/fizeté
 
 ## 10. Állapot
 
-**⛔ M0: a terv jóváhagyásra vár** (a felhasználó: a DT-F76c 1–6. alpontja, különösen az 1., 2., 5.). Jóváhagyás után az M1 (a disztribúció létrehozása a felhasználóé), utána az M2.
+**M0 jóváhagyva (felhasználó, chat, 2026-10-14); DT-F76c eldöntve.** Következő: **⛔ M1** — a `pardes` WSL-disztribúció letöltésének és telepítésének jóváhagyása (név, forrás, becsült méret a 4.1 táblában), a létrehozás és a jelszó a felhasználóé; utána az M2.
