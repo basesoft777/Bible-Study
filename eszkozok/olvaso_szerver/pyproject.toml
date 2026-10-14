@@ -1,0 +1,17 @@
+[project]
+name = "pardes-olvaso-szerver"
+version = "0.0.1"
+description = "PaRDeS olvasói konkordancia (#76): szerveroldali lapelőállítás a pardes.db-ből"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "flask",
+    "gunicorn",
+]
+
+[dependency-groups]
+dev = [
+    "simplemma",   # csak a szótövező mérce-tesztekhez (MIT); a szerver futásidőben nem használja
+]
+
+[tool.uv]
+package = false
