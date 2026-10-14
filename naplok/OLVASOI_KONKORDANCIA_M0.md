@@ -284,6 +284,29 @@ A meglévő `Ubuntu` disztribúciót a parancs nem érinti (külön név és hel
 - A `~/probe/app.py` (próba) és a `~/szoto_arany/` (aranyminta-másolatok) a disztribúcióban maradt, a repón kívül; törölhetők.
 - A Windows-oldali `pardes.db` és a distroban lévő példány azonos (sha256); a szerver M2-től a distro példányát használja.
 
+### 4.4 M2 zárónapló (2026-10-14; alkalmazás — lapok, nézetek, hozzáférés, kiadási kapcsoló)
+
+`scope=eszkozok/olvaso_szerver/ (F76.11–F76.12), pardes.db epites_ts=2026-10-14T09:35:00Z, a pardes WSL-disztribúció Python 3.12.3-ja (uv-venv: Flask 3.1.3, gunicorn 26.2.0) | forras=unittest (56 teszt), db_meres.py D5, egyszeri curl/test_client mérés | ts=2026-10-14`
+
+**E1 (K4 frissesség) — az M1-ben nyitott eltérés megszűnt.** A `pardes.db` az F97 óta újraépült a main-en (`epites_ts=2026-10-14T09:35:00Z`; az M1-ben 2026-10-13T18:10:45Z volt). `db_meres.py` D5 (a fő munkamásolaton): **eltérő táblák: nincs**. `frissesseg.py --manifest`: 73 meta-sor, **ÉP**, a manifest egyezik, a disztribúció `~/pardes/pardes.db` másolatán is (3.12.3). Újraépítést nem végeztem. A frissességet a gép `/statusz` is mutatja (`PARDES_FRISSESSEG_FAJL`, ha a `telepit.sh ellenorzes` futott).
+
+**Mi készült.** Flask-app-gyár (`alkalmazas.py`), a Flasktól független lapelőállítás (`oldalak.py`), blokk-regiszter (`blokkok.py`: 40 azonosító a pilot 39 blokkjára, mert a 9. blokk BSB/KJV két bejegyzés — a KJV-fél kiadási kizárása miatt), az összes SQL a `lekerdezesek.py`-ban (paraméterezve), csak olvasó kapcsolat authorizerrel (`adatbazis.py`), konfigurációs hozzáférési szintek (`hozzaferes.py`, `konfig/`), LRU+ETag (`gyorsitotar.py`), Jinja2-sablonok (autoescape, CSP: nincs inline script/stílus), gunicorn gthread 1×4 (`gunicorn_conf.py`), `telepit.sh` (kornyezet/ellenorzes/indit/indit-korlat), `export.py` váz, `README.md`. Három nézet (Olvasópult, Interlineáris `token_par` pozíció szerinti illesztéssel + párosítatlan eredeti szavak külön sorban, Munkaasztal); `pardes_nezet` süti csak a `/nezet/<nev>` útvonalon jön létre (SameSite=Lax, HttpOnly, 1 év), a `?nezet=` felülírja; kezdőlap könyv–fejezet–vers választóval és `/ugras?q=` gyorsugrással (Ctrl+K).
+
+**Tesztek: 56, zöld** (`teszt_olvaso_szerver.py`, 3.12.3, `-W error::ResourceWarning`): lapok és állandó címek, minden blokk jelleg- és forrás+licencsorral, hozzáférési szintek (a tiltott blokk függvénye nem fut), kiadási kapcsoló mindhárom kiadásra (az authorizer-napló üres; kizárt tábla olvasása hibával áll meg), `/pardes.db` és társai 404, SQL-injekció (útvonal, paraméter, lekérdezés-függvények), XSS (szintetikus `<script>` adatsor minden blokkban, a tW U+FFFD cikk), nézetváltás-süti, gyorsítótár/ETag/304, a `oldalak.py` Flask nélkül is fut (export).
+
+**D2-egyezés a #60 pilottal** (a szerver saját `lekerdezesek.py` lekérdezései a `db_meres.py` összehasonlítóival, a TSV-ből készült `adat.py` JSON ellen): 1Móz 1–25: 21 991 összevetés, Zsolt 22: 3 022 összevetés. **Az egyetlen eltérés a `gorog_szo:usz_elofordulas`: 27 (1Móz 1–25) és 11 (Zsolt 22) görög szó-lapon** — a `db_meres.py` saját mérésével azonos darabszám és azonos, dokumentált ok (a pilot TSV-útja a „+” Strong-láncok elemeit nem számolja, a `token_strong` igen; DB-szám = TSV-szám + láncelem). A brief „0 eltérés” követelménye tehát **szó szerint nem teljesül ezen az egy blokkcsoporton**; a teszt azt őrzi, hogy más eltérés nincs, és hogy a szerver azonosan viselkedik a `db_meres.py`-val vers- és szóonként. Döntést kér: elfogadható-e a dokumentált ok (javaslat: igen; a `token_strong` a helyes, a pilot TSV-útja alulszámol).
+
+**Eltérések a tervtől (M0) és a briefhez.**
+1. Blokkszám: 40 regiszter-azonosító (l. fent).
+2. A BDB-szócikk **gépi apparátus-bontása** (`bdb_szelet.py`) nem lett átírva: a BDB-blokkok a teljes szöveget escape-elve, görgethető dobozban mutatják. A bontás külön, kis feladat lehet (jelleg: gépi feldolgozás).
+3. A fordított proxy (Caddy vagy nginx) kiválasztása nem történt meg: az M2-höz nem kell (a helyi próbaüzem a gunicornon fut), és a `caddy` csomag letiltva áll a disztribúcióban. Döntés az M5/M6 előtt (javaslat: Caddy, HTTPS automatikus). A `statikus/` kiszolgálását addig a Flask végzi.
+4. Nave: a `nave_vers` (előbontott) táblát olvassa a szerver, így a közös `nave_bontas.py` (N-F92a) nem kell; a pilot-példány (`olvaso_pilot/bovites.py`) az `ir` mezőn kívül esik, nem töröltem.
+5. A kattintható szó a pilot szabálya szerinti fő szó (nem nyelvtani Strong); a nyelvtani elemhez kötött szavak szó-lapja nyitott felületi kérdés (M0 3.3 „Kattinthatóság”).
+6. A `kereses` útvonal és a keresődoboz tartalma (M3) nincs; a fejlécben csak navigációs gyorsugrás van, és ezt a felület kiírja.
+7. A tesztek a repó-gyökérben futnak a Windows-munkafán a `pardes` venv Pythonjával (`/mnt/c/...`), a DB a disztribúció ext4 lemezén; a Windows 3.14 Python nem tartalmaz Flaskot, ott csak a nem-Flask tesztek futnának (az import `markupsafe`-et is kér), tehát a 3.12-venv a támogatott út.
+
+**Informatív időmérés (nem M4; 8 CPU-s WSL, korlát nélkül, egyszeri):** vers-lap `1Móz 1:4` 148 ms (gunicorn, hideg lap), 1 ms (gyorsítótárból); szó-lap `H0430` 80 ms hideg; nyolc párhuzamos kérés 0,4 s alatt. A K5 mérése az M4-é (`systemd-run` korláttal; az `indit-korlat` próbája: `Cpus_allowed_list: 0`, `/statusz` 200).
+
 ## 5. Keretrendszer: Flask vagy FastAPI (indoklással)
 
 | Szempont | Flask | FastAPI |

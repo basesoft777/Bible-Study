@@ -12,3 +12,15 @@
 - **Nyitott döntés a felhasználónak:** ki, mikor és melyik ágon építi újra a `pardes.db`-t. Addig az M2 mehet, de a Zsolt-lapok és a Nave/LXX-versszám blokkok a régi számozást mutatnák.
 - **Nem történt meg:** merge, M5–M7, a rootfs letöltési méretének mérése (utólag nem mérhető).
 - **Következő:** M2 (alkalmazás), külön `/kovetkezo`-val, ugyanezen az ágon.
+
+# Zárójelentés — #76 OLVASOI_KONKORDANCIA, 2. menet (M2: alkalmazás)
+
+*Állapot: a feladat NEM kész, `allapot: megallt`. Ág: `claude/olvasoi-konkordancia-m2` (F76.10–F76.13). Részletes napló: `naplok/OLVASOI_KONKORDANCIA_M0.md` 4.4.*
+
+- **Elkészült:** Flask-alkalmazás az `eszkozok/olvaso_szerver/` alatt; Flasktól független lapelőállítás (`oldalak.py`); 40 blokk-azonosító (a pilot 39 blokkja, a 9. kettéválasztva) jelleg-címkével és forrás+licencsorral; három nézet (az Interlineáris `token_par` pozíció szerint); `pardes_nezet` süti csak nézetváltáskor; konfigurációs hozzáférési szintek; kiadási kapcsoló authorizerrel; csak olvasó SQLite; `/pardes.db` → 404; `/statusz`; gyorsítótár/ETag; gunicorn gthread 1×4; `telepit.sh`; `export.py` váz.
+- **Tesztek:** 56 zöld, Python 3.12.3 (`pardes` WSL), `-W error::ResourceWarning`.
+- **E1 (frissesség):** megszűnt: a `pardes.db` újraépült (F97, `epites_ts=2026-10-14T09:35:00Z`), D5 eltérő táblák: nincs, `frissesseg.py` ÉP (a Windows-példányon és a disztribúción is). Újraépítést nem végeztem.
+- **D2 a pilottal:** 1Móz 1–25 (21 991 összevetés) és Zsolt 22 (3 022): az egyetlen eltérés a `gorog_szo:usz_elofordulas` (27, ill. 11), azonos a `db_meres.py` saját mérésével és dokumentált okú („+” Strong-láncok). **Nem „0 eltérés”: döntés kell** (javaslat: elfogadni).
+- **Eltérések:** BDB-szócikk gépi apparátus-bontása nem átírva; a fordított proxy (Caddy/nginx) nincs kiválasztva (az M2-höz nem kell, M5/M6 előtt dönteni); a kereső (M3) nincs, a fejléc csak gyorsugrást ad.
+- **Nem történt meg:** M3 (keresés), M4 (mérés korláttal), merge, PR, M5–M7.
+- **Következő:** M3 (keresés), külön `/kovetkezo`-val, ugyanezen az ágon; ⛔ M5, ⛔ M6, ⛔ M7.
