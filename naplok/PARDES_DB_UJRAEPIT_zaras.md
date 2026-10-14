@@ -40,6 +40,20 @@ Proveniencia: `scope=pardes.db + manifest_pardes_db.tsv (73 tábla) | forras=esz
 
 A brief 3. lépés 8. pontja a `pardes` disztribúció `~/probe/` és `~/szoto_arany/` könyvtárát nevezi (M0 4.3: „a `~/probe/app.py` és a `~/szoto_arany/` a disztribúcióban maradt”). Mérés (`wsl -d pardes`, felhasználó `basesoft`, home `/home/basesoft`, és root): egyik sem létezik (`ls`: „No such file or directory”; `find / -xdev -maxdepth 4 -name probe -o -name szoto_arany`: nincs találat); az `Ubuntu` disztribúcióban sincs. A törlés tehát tárgytalan, ha nem más helyen állnak; ezt a felhasználónak kell megerősítenie.
 
-## 6. Hátravan (jóváhagyás után)
+## 6. Építő-tesztek Python 3.12-n
 
-Másolás a `~/pardes/pardes.db` helyére + sha256-egyezés + másolat-épségi teszt; `teszt_sqlite_epit.py` 3.12-n (F79/F92/F95); takarítás; az F76 E1 és E3 lezárásának kimondása; `feladatok.py ellenoriz`.
+Futtatás: `wsl -d pardes`, Python **3.12.3**, a repó `/mnt/c/Users/bases/Desktop/Bible-Study` úton csak olvasva (M0 (a) út), `PYTHONDONTWRITEBYTECODE=1`, `TMPDIR=/tmp` (a tesztek ideiglenes kimenete a disztribúció `/tmp`-jébe ment). `python3 eszkozok/teszt_sqlite_epit.py` (F79, F92, F95 tesztjei): **Ran 64 tests in 200,874 s — OK**. Futás után a repó munkafája tiszta (`git status` üres). Minden teszt futtatható volt, nem futtatott teszt nincs. (A kimenet „INTEGRITÁS-SÉRTÉS” sorai a negatív tesztek szándékos kimenetei.)
+
+Proveniencia: `scope=eszkozok/teszt_sqlite_epit.py, 64 teszt | forras=unittest, Python 3.12.3, pardes disztribúció | ts=2026-10-14`
+
+## 7. Takarítás
+
+`~/probe/` és `~/szoto_arany/`: **tárgytalan — nem létezik a pardes disztribúcióban.** A keresés módja: `ls` a `/home/basesoft`, `/root`, `/tmp/probe` alatt (basesoft és root felhasználóként), és `find / -xdev -maxdepth 4 -name probe -o -name szoto_arany`: nincs találat. Az Ubuntu disztribúcióhoz nem nyúltam.
+
+## 8. A disztribúció példányának cseréje — NEM FUTOTT LE
+
+A régi `~/pardes/pardes.db` átnevezése `.regi`-re, az új másolása, sha256-egyezés és a másolat-épségi teszt a disztribúcióban **nem történt meg**: a Claude Code engedély-osztályozó a disztribúció módosítását megtagadta (a jóváhagyás az orkesztrátor üzenetében érkezett, nem a felhasználótól közvetlenül). Folytatás: a felhasználó engedélyével, vagy a felhasználó futtatja. A terv: `mv pardes.db pardes.db.regi` (a `.regi` törlése külön jóváhagyás nélkül tilos), `cp` az új db-t és a manifestet, `sha256sum` = 500183a1…708b, `python3 eszkozok/olvaso_szerver/frissesseg.py --db pardes.db --manifest eszkozok/olvaso_szerver/manifest_pardes_db.tsv`.
+
+## 9. Az F76 E1 és E3 lezárása
+
+**Nem mondható ki**, amíg a 8. szakasz le nem fut: az E1 (D5/TSV-frissesség) a build-gépi igazolással (3. szakasz) teljesült, de a disztribúció példánya még a régi; az E3 (3.12-es építő-tesztek) a 6. szakasz szerint teljesült. A teljes lezárás a csere után.
