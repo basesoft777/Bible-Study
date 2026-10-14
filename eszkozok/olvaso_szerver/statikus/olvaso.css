@@ -1,7 +1,7 @@
 /* Arculat (F76 arculat, #98 M1): a #60 pilot tokenjei a szerver változónevein (--fg = a pilot --ink, --panel = a pilot --surface).
    A token-értékek forrása a konfig/arculat.json; a :root és a sötét téma blokkjait a szerver a /arculat.css címen adja (arculat.py).
    Ez a stíluslap token-értéket nem ismétel: a színek, betűcsaládok, betűméretek, sorközök, a regiszterben kitett térközök és a
-   lekerekítések var(--…)-hivatkozások; a többi térköz literál (naplok/TERVEZO_MOD_M1.md). */
+   lekerekítések var(--…)-hivatkozások; a többi térköz literál (lista és indok: naplok/TERVEZO_MOD_zaras.md, M1). */
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--bg); color: var(--fg); }
 a { color: var(--accent); }
