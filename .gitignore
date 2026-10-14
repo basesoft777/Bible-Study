@@ -28,3 +28,7 @@ fp2/_dryrun/
 pardes.db
 pardes_minta.db
 pardes*.db.epit
+
+# #76 olvasói szerver: helyi környezet és a frissességi teszt eredménye
+eszkozok/olvaso_szerver/.venv/
+eszkozok/olvaso_szerver/frissesseg_eredmeny.txt
