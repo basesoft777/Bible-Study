@@ -13,17 +13,19 @@ Szerveroldali Flask-alkalmazás, amely a `pardes.db`-ből (csak olvasásra) áll
 | `adatbazis.py` | csak olvasó kapcsolat, `set_authorizer` a kiadás szerint kizárt táblákra |
 | `hozzaferes.py` | hozzáférési szintek a `konfig/hozzaferes.toml`-ból |
 | `gyorsitotar.py` | korlátos LRU a kész lapokra |
-| `konfig/` | `szerver.toml` (kiadás, süti, gyorsítótár), `hozzaferes.toml` |
-| `sablonok/`, `statikus/` | Jinja2 (autoescape), CSS, kis JS (nincs inline script/stílus: CSP) |
+| `konfig/` | `szerver.toml` (kiadás, süti, gyorsítótár), `hozzaferes.toml`, `arculat.json` (az arculati token-fájl, #98) |
+| `arculat.py` | a token-fájl betöltése és ellenőrzése, a token-blokk (`:root`, sötét téma) előállítása; a szerver a `/arculat.css?v=<hash>` címen adja (#98 M1, DT-F98e) |
+| `sablonok/`, `statikus/` | Jinja2 (autoescape), CSS, kis JS (nincs inline script/stílus: CSP); az `olvaso.css` token-értéket nem ismétel, csak `var(--…)`-hivatkozást |
 | `gunicorn_conf.py`, `telepit.sh` | indítás (gthread, 1 worker, 4 szál), környezet, frissességi teszt |
 | `frissesseg.py`, `manifest_pardes_db.tsv` | az épségi teszt (K4), M1 |
 | `export.py` | statikus export váza |
 | `teszt_olvaso_szerver.py` | tesztek (unittest) |
+| `teszt_arculat.py` | a token-fájl, a token-blokk és az `/arculat.css` tesztjei (#98 M1) |
 | `teszt_pilot_aranymintaval.py` | a kirajzolt blokk-készlet összevetése a #60 pilot aranymintájával (írásjeles szöveg, számlálók, szócsempék, „Ebben a versben”, Nave, blokk-címek); a döntések (DT148–i) tesztjei, az Interlineáris csempék |
 
 ## Útvonalak
 
-`/` kezdőlap · `/<könyv>` · `/<könyv>/<fejezet>` · `/<könyv>/<fejezet>/<vers>` · `/szo/<H0216|G1504>` · `/nezet/<olvaso|interlinearis|munkaasztal>?vissza=` · `/ugras?q=` · `/r/szo/<strong>`, `/r/vers/…` (töredékek) · `/statusz` · `/robots.txt`. A könyvkód ASCII-sített (`1Moz`). `.db`/`.tsv` nincs kiszolgálva.
+`/` kezdőlap · `/<könyv>` · `/<könyv>/<fejezet>` · `/<könyv>/<fejezet>/<vers>` · `/szo/<H0216|G1504>` · `/nezet/<olvaso|interlinearis|munkaasztal>?vissza=` · `/ugras?q=` · `/r/szo/<strong>`, `/r/vers/…` (töredékek) · `/arculat.css?v=<hash>` (a token-blokk) · `/statusz` · `/robots.txt`. A könyvkód ASCII-sített (`1Moz`). `.db`/`.tsv` nincs kiszolgálva.
 
 ## Futtatás
 
