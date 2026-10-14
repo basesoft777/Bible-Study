@@ -6,10 +6,10 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: fut
+allapot: megallt
 ag: claude/f97-pardes-db-ujraepit
 ad: friss pardes.db a main TSV-iből (D5 0 eltérés), új manifest a másolat-épséghez, a pardes disztribúció példánya cserélve (sha256 és másolat-épségi teszt), az F79/F92/F95 építő-tesztek Python 3.12-n; az F76 E1 és E3 lezárása
-kovetkezo: "Te: a végrehajtás fut; ⛔ a disztribúcióba másolás előtt"
+kovetkezo: "Te: jóváhagyás a pardes disztribúcióba másoláshoz (és a ~/probe, ~/szoto_arany törléséhez)"
 olvas: [eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, eszkozok/olvaso_pilot/db_meres.py, eszkozok/olvaso_szerver/frissesseg.py, naplok/OLVASOI_KONKORDANCIA_M0.md, naplok/ELLENOR_F76.md, naplok/SQLITE_EPIT_meres.md, adat/SEMA.md]
 ir: [eszkozok/olvaso_szerver/manifest_pardes_db.tsv, naplok/SQLITE_EPIT_meres.md, naplok/SQLITE_EPIT_integritas.md, naplok/SQLITE_EPIT_proba_teljes.md, naplok/PARDES_DB_UJRAEPIT_zaras.md]
 fugg: [91, 95]
