@@ -9,7 +9,7 @@ munka: adat
 allapot: megallt
 ag: claude/olvasoi-konkordancia-m2
 ad: kutatói olvasói felület helyben (WSL): bibliaszöveg-kezdőlap könyv–fejezet–vers választóval, három váltható nézet (Olvasópult, Interlineáris, Munkaasztal), a #60 pilot teljes blokk-készlete a pardes.db-ből szerveroldali lapelőállítással, keresés (Strong, magyar szó és frázis, héber frázis), hozzáférési szintek konfigurációból, kiadási kapcsoló, telepítő szkript; mérés a VPS-t utánzó korlátokkal
-kovetkezo: "/kovetkezo; M2 kész a DT-F76d (D2-eltérés) elfogadásáig függőben; következő: M3; ⛔ M5, ⛔ M6, ⛔ M7"
+kovetkezo: "/kovetkezo; M2 kész; következő: M3 (keresés); ⛔ M5, ⛔ M6, ⛔ M7"
 olvas: [ADATVAGYON_TERV.md, MUNKATERV.md, adat/szotar_szerepek.tsv, adat/SEMA.md, adat/licencek.tsv, "eszkozok/olvaso_pilot/*", eszkozok/sqlite_epit.py, naplok/OLVASOI_PILOT_ertekeles.md, naplok/SQLITE_EPIT_meres.md, DONTESEK.md]
 ir: [eszkozok/olvaso_szerver/, naplok/OLVASOI_KONKORDANCIA_M0.md, naplok/OLVASOI_KONKORDANCIA_meres.md, naplok/OLVASOI_KONKORDANCIA_zaras.md]
 fugg: [44, 79, 92, 95, 97]
@@ -70,7 +70,7 @@ Az első kiadás **helyben, WSL-ben** fut; a VPS-re telepítés és a nyilvános
 
 ## 5. Elfogadás
 
-- **K1.** Minden lap és keresés a `pardes.db`-ből jön; a #60 két szakaszán a D2-egyezés 0 eltérés.
+- **K1.** Minden lap és keresés a `pardes.db`-ből jön; a #60 két szakaszán a D2-egyezés 0 eltérés, egyetlen dokumentált kivétellel: a görög szó-lapok `usz_elofordulas` blokkja, ahol a `token_strong` a TAGNT „+” Strong-láncainak elemeit is számolja, a pilot TSV-útja nem (DT-F76d: elfogadva; a lapon az érték bontása látszik).
 - **K2.** A három nézet váltható, a választás megmarad; a kezdőlap a bibliaszöveg könyv-, fejezet- és versválasztóval.
 - **K3.** Minden blokk jellegjelöléssel, forrás- és licencsorral; a hozzáférési szintek konfigurációból zárnak; a kiadási kapcsoló szerint a KJV-Strong és (kereskedelmi módban) az MCGED kimarad.
 - **K4.** Az adatbázis a böngészőbe nem kerül ki; a frissességi teszt (a `meta` hashek egyeznek a TSV-kkel) a telepítés feltétele.
