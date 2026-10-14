@@ -4,12 +4,12 @@ cim: Olvasói konkordancia motívum nélkül (#25a) — kutatói felület a pard
 kod: OLVASOI_KONKORDANCIA
 tipus: feladat
 fazis: 1
-modell: sonnet
+modell: opus
 munka: adat
-allapot: megallt
+allapot: fut
 ag: claude/olvasoi-konkordancia-m2b
 ad: kutatói olvasói felület helyben (WSL): bibliaszöveg-kezdőlap könyv–fejezet–vers választóval, három váltható nézet (Olvasópult, Interlineáris, Munkaasztal), a #60 pilot teljes blokk-készlete a pardes.db-ből szerveroldali lapelőállítással, keresés (Strong, magyar szó és frázis, héber frázis), hozzáférési szintek konfigurációból, kiadási kapcsoló, telepítő szkript; mérés a VPS-t utánzó korlátokkal
-kovetkezo: "/kovetkezo; M2b: kész, felhasználói vizuális összevetés (pilot és szerver egymás mellett), utána merge; M3; ⛔ M5–M7"
+kovetkezo: "Folytatás: M3 (keresés), új ágon a main-ről; az M2b kész és mergelve (PR #344); ⛔ M5, ⛔ M6, ⛔ M7"
 olvas: [ADATVAGYON_TERV.md, MUNKATERV.md, adat/szotar_szerepek.tsv, adat/SEMA.md, adat/licencek.tsv, "eszkozok/olvaso_pilot/*", eszkozok/sqlite_epit.py, naplok/OLVASOI_PILOT_ertekeles.md, naplok/SQLITE_EPIT_meres.md, DONTESEK.md]
 ir: [eszkozok/olvaso_szerver/, naplok/OLVASOI_KONKORDANCIA_M0.md, naplok/OLVASOI_KONKORDANCIA_meres.md, naplok/OLVASOI_KONKORDANCIA_zaras.md, naplok/OLVASOI_KONKORDANCIA_pilot_osszevetes.md, naplok/ELLENOR_F76_M2b.md, naplok/ELLENOR_F76_M2b_3.md, naplok/ELLENOR_F76_M2b_4.md]
 fugg: [44, 79, 92, 95, 97]
@@ -20,7 +20,7 @@ nem_fugg: [52, 93]
 
 *Befogadásra váró brief-tervezet: a #76 csonkjának kitöltése (`F76_OLVASOI_KONKORDANCIA_BRIEF.md`, ugyanazon a számon és néven). Források: a DT129 (a felhasználó öt alapdöntése és a (4) pontosítása, 2026-10-13), a DT127 (saját hosting, a `pardes.db` mérete nem köt), a DT128 (modernizált Károli-réteg, nyitott), a DT124 (kiadási kapcsoló), a #60 olvasói pilot értékelő jelentése (`naplok/OLVASOI_PILOT_ertekeles.md`, 8. pont), és a látványterv (https://claude.ai/artifact/SivJAN3Q9iSFm9j8EziAiE). A csonk „Bemenet a hosting ⛔-hez és a CI-hez” szakasza (N-F76a–c) a kitöltésnél megmarad.*
 
-**Javasolt fejléc-adatok:** `tipus: feladat` · `fazis: 1` · `modell: sonnet` · `munka: adat` · `fugg: [44, 79, 92]` · `nem_fugg: [52]` · `kovetkezo: "/kovetkezo; ⛔ M0 (terv), ⛔ M1 (helyi környezet: a disztribúció létrehozása a felhasználóé), ⛔ M5 (helyi próbaüzem), ⛔ M6 (VPS), ⛔ M7 (nyilvános közzététel)"`.
+**Javasolt fejléc-adatok:** `tipus: feladat` · `fazis: 1` · `modell: opus` (a befogadáskor sonnet; az M3-tól opus, F76.38) · `munka: adat` · `fugg: [44, 79, 92]` · `nem_fugg: [52]` · `kovetkezo: "/kovetkezo; ⛔ M0 (terv), ⛔ M1 (helyi környezet: a disztribúció létrehozása a felhasználóé), ⛔ M5 (helyi próbaüzem), ⛔ M6 (VPS), ⛔ M7 (nyilvános közzététel)"`.
 
 ## 1. Cél
 
