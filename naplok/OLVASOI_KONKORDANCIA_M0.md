@@ -241,7 +241,7 @@ A meglévő `Ubuntu` disztribúciót a parancs nem érinti (külön név és hel
 4. `sudo apt update && sudo apt install -y git curl sqlite3 ca-certificates` + a fordított proxy (Caddy vagy nginx; az M2 dönti el a konfigurációval) — becsült letöltés ≈ 100–250 MB (becslés).
 5. `uv` telepítése (a hivatalos telepítő vagy a csomagkezelő; ≈ 20–40 MB, becslés); `python3 --version` = 3.12 (Ubuntu 24.04 alap).
 6. A projekt-tároló klónozása a disztribúció saját lemezére (`~/pardes/`), **nem** `/mnt`-re; `uv sync` (zárolt függőségek: Flask, Jinja2, Werkzeug, gunicorn és tranzitívjaik; becslés < 50 MB PyPI-ról).
-7. `pardes.db` + manifest másolása a disztribúció ext4 lemezére (≈ 0,94 GB, helyi példány: a teljes fájl, 6. szakasz 6.); frissességi teszt (3.8).
+7. `pardes.db` + manifest másolása a disztribúció ext4 lemezére (≈ 0,94 GB, helyi példány: a teljes fájl, 6. szakasz 6.); másolat-épségi teszt (3.8; a TSV-frissesség külön: D5).
 8. Az aranyminta-teszt (szótövezés) a 3.12-n; eltérésnél 3.11, az `.python-version` az eredménnyel rögzítődik (2. szakasz (b)).
 9. Az erőforrás-korlátozott indítás kipróbálása: `systemd-run … -p MemoryMax=2G -p AllowedCPUs=0` (6. szakasz 5.), a gunicorn indítása, `GET /statusz`.
 10. Az M1 zárása: napló a tényleges letöltött és lemezen foglalt méretekkel (proveniencia-sorral), a becslések cseréje mért értékre.
@@ -259,7 +259,7 @@ A meglévő `Ubuntu` disztribúciót a parancs nem érinti (külön név és hel
 | 5. uv, Python | `uv` 0.13.1 a hivatalos telepítővel (a telepítő szkript 71 300 bájt; a bináris a `~/.local/bin` alatt 37 MB, `du -sb ~/.local` = 38,2 MB); Python **3.12.3** a rendszer csomagjából (`UV_PYTHON_DOWNLOADS=never`, interpreter-letöltés nem történt) |
 | 6. klón, uv sync | `git clone --depth 1 --filter=blob:none --sparse --branch claude/olvasoi-konkordancia`, `sparse-checkout set eszkozok adat/szoto naplok`: munkamásolat 63 MB, `.git` 18 MB (a 389 MB-os `konkordancia/` **nem** töltődött le); `uv lock` + `uv sync --all-groups`: flask 3.1.3, gunicorn 26.2.0, simplemma 2.0.0 (dev, 18,1 MiB letöltés); `.venv` 25 MB; a `uv.lock` a repóban (F76.5) |
 | 7. pardes.db | a fő munkamásolat `pardes.db`-je (938 287 104 bájt) a disztribúció ext4 lemezére (`~/pardes/pardes.db`), a másolás 15,1 s; **sha256 egyezik** (589e0422ef0731f4…) a forrással; **másolat-épségi teszt** (`eszkozok/olvaso_szerver/frissesseg.py`, manifest: `manifest_pardes_db.tsv`, 73 tábla): 73 tábla újraszámolt hash-e = `meta`, `meta` = manifest, **ÉP**, 33 s (`epites_ts=2026-10-13T18:10:45Z`). Ez másolat-épség, **nem a TSV-frissesség**: l. a K4-bekezdést alább |
-| 8. szótövező aranyminta-teszt | Python **3.12.3** alatt a hibrid v2 a harmadik mintán (113 alak): **ossz 80% / 99,1% súlyozva (90/113)**, minden réteg és minden sor **azonos** a Windowson (3.14, simplemma 2.0.0) rögzített eredménnyel; a `meres_harmadik_reszlet.tsv` bájtra azonos (`cmp`); a bemenetek sha256-ja egyezik (hibrid.py `7ee1b6050740`, minta `c805d55133f4`, `karoli_lexikon.tsv` `75ad61617a88`). A kiadott út (C+K, simplemma nélkül): `szotari_alak_epit.py` 3.12-n újragenerálva: 66 824 sor, a törzs sha256-ja (a `#` fejlécsorok nélkül) **azonos** a repó `adat/szoto/karoli_szotari_alak.tsv`-jével (2313dcf488811696…). **Nincs eltérés, nincs visszalépés 3.11-re: az `.python-version` = 3.12 véglegesedik.** |
+| 8. szótövező aranyminta-teszt | Python **3.12.3** alatt a hibrid v2 a harmadik mintán (113 alak): **ossz 80% / 99,1% súlyozva (90/113)**, minden réteg és minden sor **azonos** a Windowson (3.14, simplemma 2.0.0) rögzített eredménnyel; a `meres_harmadik_reszlet.tsv` bájtra azonos (`cmp`); a bemenetek sha256-ja egyezik (hibrid.py `7ee1b6050740`, minta `c805d55133f4`, `karoli_lexikon.tsv` `75ad61617a88`). A kiadott út (C+K, simplemma nélkül): `szotari_alak_epit.py` 3.12-n újragenerálva: 66 824 sor, a törzs sha256-ja (a `#` fejlécsorok nélkül) **azonos** a repó `adat/szoto/karoli_szotari_alak.tsv`-jével (2313dcf488811696…). **Nincs eltérés a szótövező mintán, nincs visszalépés 3.11-re. A 3.12 az F79/F92/F95 építők és tesztek futtatása nélkül, csak erre az aranymintára (és a kiadott szótári alak-generátor bájtazonosságára) építve véglegesedett; az építők 3.12-es futása nem igazolt (2. szakasz (b)).** |
 | 9. korlátozott indítás | `systemd-run --unit=pardes-proba -p User=basesoft -p MemoryMax=2G -p AllowedCPUs=0` + gunicorn (`gthread`, 1 worker, 4 szál) egy próba-Flask-alkalmazással (nem része a repónak): `GET /statusz` → HTTP 200, 6,1 ms, `cpus: 1`, `epites_ts` és a `meta` 73 hash-sora olvasható; a szolgáltatást leállítottam |
 | 10. zárónapló | ez a szakasz |
 
@@ -334,7 +334,7 @@ A meglévő `Ubuntu` disztribúciót a parancs nem érinti (külön név és hel
 | K1 | lapok és keresés csak a `pardes.db`-ből; D2-egyezés a pilot két szakaszán (7. szakasz) |
 | K2 | három nézet, süti, kezdőlap a bibliaszöveg választóval (3.2–3.3) |
 | K3 | blokkregiszter jelleggel és licencsorral, hozzáférési konfig, kiadási kapcsoló + authorizer (3.4–3.5) |
-| K4 | nincs db-kiszolgálás, `mode=ro`, `query_only`; a manifest-alapú frissességi teszt a telepítés feltétele (3.7–3.8) |
+| K4 | nincs db-kiszolgálás, `mode=ro`, `query_only`; a másolat-épségi teszt és az építés gépén a D5 (TSV-frissesség) a telepítés feltétele (3.7–3.8); a D5 ma 3 táblára eltér, a K4 nyitott (4.3) |
 | K5 | M4: vers-lap, szó-lap, keresés idő a korlátozott környezetben; magyar szóra keresés < 100 ms (a tájékoztató mérés 0,5 ms) |
 | K6 | tesztek 3.12 (szükség esetén 3.11) alatt, CI, független ellenőr |
 
@@ -348,6 +348,6 @@ Motívumréteg (#25b), új adat, modernizált Károli (DT128), belépés/fizeté
 
 ## 10. Állapot
 
-**M0 jóváhagyva (felhasználó, chat, 2026-10-14); DT-F76c eldöntve. M1 lefutott a `pardes` disztribúcióban (4.3 zárónapló): a környezet kész, az aranyminta-teszt eltérés nélkül lefutott a 3.12-n, a frissességi teszt zöld.** Következő: M2 (az alkalmazás), a brief szerint.
+**M0 jóváhagyva (felhasználó, chat, 2026-10-14); DT-F76c eldöntve. M1 lefutott a `pardes` disztribúcióban (4.3 zárónapló): a környezet kész, az aranyminta-teszt eltérés nélkül lefutott a 3.12-n, a másolat-épségi teszt zöld (a TSV-frissesség a K4 szerint nem igazolt).** Következő: M2 (az alkalmazás), a brief szerint.
 
-**Nyitott:** a K4 TSV-frissesség (D5) három táblára eltér (4.3), a `pardes.db` újraépítése az M5 előtt szükséges; az építő-tesztek 3.12-es futtatása nem igazolt (2. szakasz (b)).
+**M1: megállás a K4-nél (E1 NYITOTT, nem javított).** A frissesség **nem igazolt**: a D5 lefutott, de három táblára eltérést talált. A `frissesseg.py` csak másolat-épséget igazol. **Nyitott:** a K4 TSV-frissesség (D5) három táblára eltér (4.3), a `pardes.db` újraépítése az M5 előtt szükséges; az építő-tesztek 3.12-es futtatása nem igazolt (2. szakasz (b)).
