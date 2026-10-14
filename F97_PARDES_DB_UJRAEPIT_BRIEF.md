@@ -6,9 +6,12 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: nem_indult
+allapot: lezarva
+pr: https://github.com/basesoft777/Bible-Study/pull/342
+lezarva_osszegzes: "Új pardes.db (73 tábla, D5 0 eltérés, sha256 500183a1…708b), új manifest, a disztribúció példánya cserélve (a felhasználó futtatta; .regi megmaradt), 3.12-es tesztek 64 OK; F76 E1 és E3 lezárva; N-F97a nyitott."
+ag: claude/f97-pardes-db-ujraepit
 ad: friss pardes.db a main TSV-iből (D5 0 eltérés), új manifest a másolat-épséghez, a pardes disztribúció példánya cserélve (sha256 és másolat-épségi teszt), az F79/F92/F95 építő-tesztek Python 3.12-n; az F76 E1 és E3 lezárása
-kovetkezo: "/kovetkezo; ⛔ a disztribúcióba másolás előtt"
+kovetkezo: "Lezárva; merge a felhasználótól. N-F97a nyitott."
 olvas: [eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, eszkozok/olvaso_pilot/db_meres.py, eszkozok/olvaso_szerver/frissesseg.py, naplok/OLVASOI_KONKORDANCIA_M0.md, naplok/ELLENOR_F76.md, naplok/SQLITE_EPIT_meres.md, adat/SEMA.md]
 ir: [eszkozok/olvaso_szerver/manifest_pardes_db.tsv, naplok/SQLITE_EPIT_meres.md, naplok/SQLITE_EPIT_integritas.md, naplok/SQLITE_EPIT_proba_teljes.md, naplok/PARDES_DB_UJRAEPIT_zaras.md]
 fugg: [91, 95]

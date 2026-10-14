@@ -1,6 +1,6 @@
 # SQLITE_EPIT -- mérés (teljes építés) (F79)
 
-*Proveniencia: `scope=manual | forras=eszkozok/sqlite_epit.py (--mod teljes) | ts=2026-10-13T18:13:34Z`*
+*Proveniencia: `scope=manual | forras=eszkozok/sqlite_epit.py (--mod teljes) | ts=2026-10-14T10:13:14Z`*
 
 <!-- F89-ELOTTE-KEZDET -->
 ## F89 előtte: a sor-szintű `licenc_*` oszlopokkal (a licenc-váltás előtti mérés)
@@ -14,7 +14,7 @@
 - G6 (determinizmus): a második, ideiglenes építés táblánkénti hash-e mind azonos (lent).
 <!-- F89-ELOTTE-VEGE -->
 
-- fájl: `pardes.db`, **894.8 MB**; építési idő (integritás nélkül): **76.5 s**
+- fájl: `pardes.db`, **894.8 MB**; építési idő (integritás nélkül): **84.0 s**
 
 ## Táblánkénti sorszám és tartalom-hash (G2: két egymás utáni építés)
 
@@ -45,7 +45,7 @@
 | `kiejtes_heber_kivetelek` | 1 | `c8d5b893f05d9328` | `c8d5b893f05d9328` |
 | `kiejtes_kivetelek` | 5 | `df6dcdea66e3260b` | `df6dcdea66e3260b` |
 | `kiejtes_szabalyok` | 24 | `27d3d4eeab3064e7` | `27d3d4eeab3064e7` |
-| `kjv` | 348606 | `3f610b1b66a047c2` | `3f610b1b66a047c2` |
+| `kjv` | 348606 | `b37d69d6deca8fa0` | `b37d69d6deca8fa0` |
 | `konyv` | 66 | `7a8105bcd736412f` | `7a8105bcd736412f` |
 | `kulcsszavak` | 0 | `e3b0c44298fc1c14` | `e3b0c44298fc1c14` |
 | `lexikon_hivatkozasok` | 23 | `01a7bcf42d1941de` | `01a7bcf42d1941de` |
@@ -54,7 +54,7 @@
 | `lxx_bridge` | 3301 | `ec2b0ab84f1e82cc` | `ec2b0ab84f1e82cc` |
 | `lxx_dontesek` | 90 | `319907495acc63f9` | `319907495acc63f9` |
 | `lxx_token` | 616873 | `f2d57f0950e55a0b` | `f2d57f0950e55a0b` |
-| `lxx_versszam` | 24232 | `bd70d222a8b64479` | `bd70d222a8b64479` |
+| `lxx_versszam` | 24232 | `ed2e52eb62ba13ee` | `ed2e52eb62ba13ee` |
 | `lxx_versszintu_parok` | 104518 | `e5df63a54e7e715b` | `e5df63a54e7e715b` |
 | `mcged` | 5303 | `0ec3cb35b769c931` | `0ec3cb35b769c931` |
 | `morf_kulcs_heber` | 124 | `a8a99f9c96eaa270` | `a8a99f9c96eaa270` |
@@ -62,7 +62,7 @@
 | `motivumok` | 9 | `c4edba7875e2080b` | `c4edba7875e2080b` |
 | `nave_basokant` | 85246 | `47af606d9a5ec410` | `47af606d9a5ec410` |
 | `nave_vers` | 156214 | `b4ea05b01c9cd4b9` | `b4ea05b01c9cd4b9` |
-| `normalizalas_jelentes` | 472 | `06c8b737bd704a99` | `06c8b737bd704a99` |
+| `normalizalas_jelentes` | 497 | `3e2d5df4f3ab5502` | `3e2d5df4f3ab5502` |
 | `oshl_bdb_igehelyek` | 4053 | `29d7049456d8409a` | `29d7049456d8409a` |
 | `oshl_lexikalis_index` | 10221 | `b525fa2474213677` | `b525fa2474213677` |
 | `res_forras` | 56 | `e91d76726be3fdb5` | `e91d76726be3fdb5` |
@@ -94,7 +94,7 @@
 | `ubs_dntg_jelentesek` | 9075 | `669391a5962b6fb2` | `669391a5962b6fb2` |
 | `ubs_dntg_referenciak` | 130948 | `9afe1e9724d2e732` | `9afe1e9724d2e732` |
 | `vers` | 31158 | `0076280f851ecdd6` | `0076280f851ecdd6` |
-| `vers_szamozas` | 22931 | `102f5474e027c9d4` | `102f5474e027c9d4` |
+| `vers_szamozas` | 22931 | `422dfb72e9893749` | `422dfb72e9893749` |
 
 ## Táblánkénti bájtméret
 
@@ -139,7 +139,7 @@ Mérés: minden tábla (indexeivel) külön adatbázisba másolva, lapszám × l
 | `kh` | 32407 | 2.93 |
 | `lxx_versszam` | 24232 | 2.43 |
 | `sece_g` | 5523 | 1.98 |
-| `vers_szamozas` | 22931 | 1.87 |
+| `vers_szamozas` | 22931 | 1.88 |
 | `fts_motivum` | 624 | 1.83 |
 | `strong_szotar` | 14347 | 1.58 |
 | `sdgnt_domenek` | 9075 | 1.44 |
@@ -159,12 +159,12 @@ Mérés: minden tábla (indexeivel) külön adatbázisba másolva, lapszám × l
 | `lexikon_hivatkozasok` | 23 | 0.07 |
 | `bdb_igehely_javitas` | 93 | 0.06 |
 | `lxx_dontesek` | 90 | 0.05 |
+| `normalizalas_jelentes` | 497 | 0.05 |
 | `morf_kulcs_heber` | 124 | 0.05 |
-| `normalizalas_jelentes` | 472 | 0.05 |
 | `bdb_alias` | 460 | 0.04 |
 | `auditok` | 222 | 0.04 |
 | `grammatikai_strongok` | 92 | 0.02 |
-| `meta` | 106 | 0.02 |
+| `meta` | 107 | 0.02 |
 | `tabla_licenc` | 74 | 0.02 |
 | `terminologia` | 71 | 0.02 |
 | `kapcsolatok` | 39 | 0.02 |
@@ -273,8 +273,8 @@ Mérés: minden tábla (indexeivel) külön adatbázisba másolva, lapszám × l
 | kh | nincs ilyen Károli-vers (forrás-oldal) | 10 / 24 | `1Kor 3:23`, `Hós 11:12`, `Hós 1:12`, `Ján 1:52`, `Jób 36:34`, `Luk 23:57`, `Péld 11:32`, `Róm 3:31` |
 | kjv | nincs ilyen Károli-vers | 146 / 702 | `1Kor 3:23`, `1Sám 23:29`, `2Kor 13:14`, `2Móz 36:38`, `4Móz 12:16`, `4Móz 29:40`, `ApCsel 19:41`, `Hós 11:12` |
 | lxx_versszam | a LXX_OS nem ad értéket (vers; üres lxx_igehely, kitöltés nélkül; a térkép értéke legfeljebb a nem kanonikus terkep_ertek oszlopban) | 1 / 383 | `nincs LXX-megfelelő` |
-| lxx_versszam | a két forrás LXX-versszáma eltér (vers) | 1 / 1888 | `LXX_OS ≠ versifikációs térkép` |
-| lxx_versszam | a térkép kulcsa nem Károli-vers | 178 / 216 | `1Kir 5:32`, `1Sám 23:29`, `2Móz 36:38`, `4Móz 12:16`, `4Móz 29:40`, `Dán 1:22`, `Dán 1:23`, `Dán 1:24` |
+| lxx_versszam | a két forrás LXX-versszáma eltér (vers) | 1 / 799 | `LXX_OS ≠ versifikációs térkép` |
+| lxx_versszam | a térkép KJV-kulcsához nincs Károli-vers | 203 / 247 | `1Kir 22:46`, `1Kir 22:47`, `1Kir 22:48`, `1Kir 22:49`, `1Kir 5:32`, `2Móz 35:15`, `2Móz 35:17`, `2Móz 35:18` |
 | lxx_versszam | a térkép sora nem Károli-kulccsal áll (nem kerül a táblába; sor) | 1 / 39 | `NEM_MEGHATAROZHATO` |
 | nave_vers | a forrás-sor nem bomlik versekre (nem kerül a nave_vers-be) | 4 / 9390 | `fejezet_szintu`, `igehely_nelkuli`, `nem_ertelmezheto_hely`, `nincs_karoli_vers_a_tartomanyban` |
 | oshl_bdb_igehelyek | Strong-szám nem normalizálható | 1 / 397 | `—` |
