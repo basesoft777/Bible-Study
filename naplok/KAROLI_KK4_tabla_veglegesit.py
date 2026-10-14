@@ -60,6 +60,7 @@ sorok = fejlec + ["\t".join(r) for r in final_rows]
 # A szabaly egy helyen el: eszkozok/f91_versmegf_javit.py (ezt importaljuk, nem duplikaljuk).
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "eszkozok"))
 import f91_versmegf_javit
+# A javito rogzitett ts=2026-10-14 erteke a SZABALY datuma (az F91 A1-javitas idobelyege), nem a futase.
 sorok = f91_versmegf_javit.javit(sorok)
 
 # LF sorvég minden platformon (a .gitattributes is *.tsv eol=lf)

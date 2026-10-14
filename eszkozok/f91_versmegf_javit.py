@@ -24,7 +24,7 @@ if hasattr(sys.stderr, 'reconfigure'):
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 K = os.path.join(ROOT, 'konkordancia')
 TABLA = os.path.join(K, 'Karoli_versmegfeleltetes.tsv')
-# Rögzített időbélyeg (a szabály dátuma): a generátor kimenete így determinisztikus.
+# Rögzített időbélyeg: a SZABÁLY dátuma (az F91 A1-javítás időbélyege), nem a futásé; így a generátor kimenete determinisztikus.
 TS = '2026-10-14'
 JEGYZET_ELO = '# F91 javítás'
 
@@ -165,7 +165,7 @@ def javit(lines, ts=TS, naplo=print):
     jegyzet = (JEGYZET_ELO + ' (DT-F91a, A1; DT-F91c): a feliratos zsoltárok (%d) igehely_kjv oszlopa az LXX_OS '
                'Károli-kulcsú etalonból; felirat-versek (v <= d) üres KJV, megjegyzés "felirat"; ahol egy Károli-versben '
                'több KJV-vers áll (Zsolt 13:6), az első KJV-vers, `;`-os érték nincs; '
-               'forras=lxx_os_etalon_f91 | forras=eszkozok/f91_versmegf_javit.py | ts=%s' % (len(erintett), ts))
+               'forras=lxx_os_etalon_f91 | forras=eszkozok/f91_versmegf_javit.py | ts=%s (a szabály dátuma, nem a futásé)' % (len(erintett), ts))
     ujak = [l for l in ujak if not l.startswith(JEGYZET_ELO)]
     idx = max(i for i, l in enumerate(ujak) if l.startswith('#'))
     ujak.insert(idx + 1, jegyzet)

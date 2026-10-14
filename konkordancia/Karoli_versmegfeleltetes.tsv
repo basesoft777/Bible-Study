@@ -2,7 +2,7 @@
 # forras: lxx-morph@c91f6b1e8fb3ba37df701e6ae31f675ace71a2b2 (verse_pairs.jsonl, TVTMS-alapu MT-KJV kulcs, CC BY 4.0) + Karoli_1908.tsv + TAHOT_kivonat.tsv + eszkozok/lxx_kivonat_fetch_v2.py KEZI_ELTOLASOK
 # sha256(verse_pairs.jsonl)=3a91c571f1f32545f78397a256fdfa5124bcbcbc42902411a8a93209dcb2e985
 # proveniencia: forras=KAROLI_KULCS_BRIEF.md KK4 (2. menet) | ts=2026-09-25
-# F91 javítás (DT-F91a, A1; DT-F91c): a feliratos zsoltárok (63) igehely_kjv oszlopa az LXX_OS Károli-kulcsú etalonból; felirat-versek (v <= d) üres KJV, megjegyzés "felirat"; ahol egy Károli-versben több KJV-vers áll (Zsolt 13:6), az első KJV-vers, `;`-os érték nincs; forras=lxx_os_etalon_f91 | forras=eszkozok/f91_versmegf_javit.py | ts=2026-10-14
+# F91 javítás (DT-F91a, A1; DT-F91c): a feliratos zsoltárok (63) igehely_kjv oszlopa az LXX_OS Károli-kulcsú etalonból; felirat-versek (v <= d) üres KJV, megjegyzés "felirat"; ahol egy Károli-versben több KJV-vers áll (Zsolt 13:6), az első KJV-vers, `;`-os érték nincs; forras=lxx_os_etalon_f91 | forras=eszkozok/f91_versmegf_javit.py | ts=2026-10-14 (a szabály dátuma, nem a futásé)
 igehely_karoli	igehely_kjv	igehely_mt	osztaly	forras	megjegyzes
 1Kir 10:1	10:1		KJV	szamlalas	
 1Kir 10:10	10:10		KJV	szamlalas	

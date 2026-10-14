@@ -62,3 +62,11 @@ Az A táblát közvetlenül ellenőrző teszt a repóban nincs (az `eszkozok/ell
 - Ezután a generátor a repó táblájára futott: a tábla bájtra egyezik az ideiglenes kimenettel (sha256 `e247798c9fe5443d63e129cbc529c9fb54684f803066505f0636c364371fb8e7`); ez a javított állapot (A1 + DT-F91c).
 - Mért: az etalon-eltérés az érintett 63 zsoltáron 1 055 → **0**, ebből Zsolt 22: 32 → **0**; módosuló sor 1 055; d-szabálytól eltérő sor **0** (a Zsolt 13:6 most a d-szabállyal is egyezik); `;` az `igehely_kjv` oszlopban **0 sor**; a javító önálló futtatása a kész táblán: 0 módosuló sor (idempotens); a nem komment sorok száma 22 932 (Δ = 0).
 - A `LXX_versificacios_terkep.tsv`, a Nave, a `sqlite_epit.py` és a fogyasztók érintetlenek (N-F91b, B-oldal). A Zsolt 13:6 `;`-mentessé válása a Nave `beolvas_versmegf` hibáját (`nincs_a_tablaban`, 3 sor) is megszünteti, de a Nave újragenerálása továbbra sem történt meg (N-F91b).
+
+## 7. F91.10: a `ts` jelentése és a javító hatóköre (2026-10-14)
+
+**A `ts=2026-10-14` a SZABÁLY dátuma** (az F91 A1-javítás időbélyege), nem a futásé; a generátor és a `eszkozok/f91_versmegf_javit.py` kommentje, valamint a tábla `# F91 javítás` jegyzetsora is ezt mondja (`ts=2026-10-14 (a szabály dátuma, nem a futásé)`).
+
+Újrafuttatás-igazolás (generátor, ideiglenes kimenet `KK4_KIMENET`): a repó táblájától pontosan 1 sor tér el, az `# F91 javítás` jegyzetsor (a szövege bővült); a másik 22 937 sor bájtra azonos. A tábla az új kimenetre cserélve (sha256 `edd6b457…`).
+
+**Hatókör (mért, `A1 előtti állapot` = `git show 8be00828^:…` vs mostani tábla):** az A1 előtti és a mostani tábla sorszáma azonos (22 937, a jegyzetsor nélkül); változott sor 1 055, mind `Zsolt`, 63 zsoltár (a `javit()` 63 elemű `dd`-jével azonos halmaz); a 63 zsoltáron kívüli 21 882 sor bájtra azonos. A „több KJV-vers → az első kerül a mezőbe” szabály az etalonban (`psalms-lxx.tsv`, 63 zsoltár) pontosan 1 versen tüzel: Zsolt 13:6 (`13:5;13:6`). A `javit()` kódja csak a `Zsolt N:M` kulcsú, `dd`-ben szereplő sorokhoz nyúl (`etalon_betolt()` csak a `psalms-lxx.tsv`-t olvassa), más könyvön a szabály nem fut.
