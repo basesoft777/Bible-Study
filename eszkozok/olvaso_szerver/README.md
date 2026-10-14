@@ -19,7 +19,7 @@ Szerveroldali Flask-alkalmazás, amely a `pardes.db`-ből (csak olvasásra) áll
 | `frissesseg.py`, `manifest_pardes_db.tsv` | az épségi teszt (K4), M1 |
 | `export.py` | statikus export váza |
 | `teszt_olvaso_szerver.py` | tesztek (unittest) |
-| `teszt_pilot_aranymintaval.py` | a kirajzolt blokk-készlet összevetése a #60 pilot aranymintájával (írásjeles szöveg, számlálók, szócsempék, „Ebben a versben”, Nave, blokk-címek); a döntésre váró hiányok `expectedFailure` (DT-F76e–i) |
+| `teszt_pilot_aranymintaval.py` | a kirajzolt blokk-készlet összevetése a #60 pilot aranymintájával (írásjeles szöveg, számlálók, szócsempék, „Ebben a versben”, Nave, blokk-címek); a döntések (DT-F76e–i) tesztjei, az Interlineáris csempék |
 
 ## Útvonalak
 

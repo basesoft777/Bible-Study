@@ -148,8 +148,24 @@ A brief „a #60 pilot teljes blokk-készlete (39 blokk)” szöveg tehát a *m�
 
 Blokkszám: 46 azonosító (az M2 40-e + 6). A szócsempe-blokkok mellett a táblázatos blokkok megmaradtak (a tartalom azonos, a táblázat részletesebb); eltávolításuk elrendezési döntés lehetne.
 
-**Nem pótolva (döntésre vár, a teszt `expectedFailure`):** P3 folyó szöveg (DT-F76e), H1 magyar alapjelentés (DT-F76f), H4 bontott magyar BDB (DT-F76g), V15 LXX többlet és számozási eltérés (DT-F76h), P4/P5 aláhúzás-kapcsoló és témaváltó (DT-F76i). **Nem pótolva, nem döntésköteles, kis tétel:** G1 (a görög szó-lap „szó adatai” számlálói: szófaj, „5 héber szó mögötte”), V5/V6 (TSK-szám és formátum), G6 (SDGNT megjegyzés): N-F76h.
+**(Az F76.25 idején még nem pótolva; a döntések után az F76.30 pótolta, l. lent) Döntésre várt, a teszt `expectedFailure` volt:** P3 folyó szöveg (DT-F76e), H1 magyar alapjelentés (DT-F76f), H4 bontott magyar BDB (DT-F76g), V15 LXX többlet és számozási eltérés (DT-F76h), P4/P5 aláhúzás-kapcsoló és témaváltó (DT-F76i). **Nem pótolva, nem döntésköteles, kis tétel:** G1 (a görög szó-lap „szó adatai” számlálói: szófaj, „5 héber szó mögötte”), V5/V6 (TSK-szám és formátum), G6 (SDGNT megjegyzés): N-F76h.
 
 **Tesztfutás, végrehajtói futás, nem független ellenőri:** `scope=eszkozok/olvaso_szerver/teszt_pilot_aranymintaval.py (19 teszt: 14 zöld, 5 expectedFailure) és teszt_olvaso_szerver.py (62 teszt, ezek között a pilot D2-egyezése mindkét szakaszon, az egyetlen dokumentált eltérés a DT-F76d „+” Strong-lánc) | forras=unittest, Python 3.12.3, pardes WSL-disztribúció, parancs: wsl -d pardes -- env PARDES_DB=/home/basesoft/pardes/pardes.db PARDES_PILOT_JSON=<pilot JSON-ok: 1moz_1_1_2_3, zsolt_22, 1moz_1_25> <venv>/bin/python -W error::ResourceWarning <fájl> (a Windows-munkafán, /mnt/c), a pardes.db epites_ts=2026-10-14T09:35:00Z | ts=2026-10-14`. Eredmény: **OK** mindkét fájlra (65,8 s és 4,7 s).
 
 *Megjegyzés a futó szerverhez:* a felhasználó 8765-ös portján futó szerver az M2 kódjával indult (a Flask fejlesztői szerver nem tölti újra a kódot, és a lapokat gyorsítótárazza); az M2b változásai újraindítás után látszanak.
+
+**A döntések kódja (F76.30–F76.31; DT-F76e–i, felhasználó, 2026-10-14):**
+
+| Döntés | Mi készült | Teszt |
+|---|---|---|
+| e (c) | az Olvasópult egyetlen folyó bekezdés kis versszámokkal; az Interlineáris és a Munkaasztal versenként | `test_DT_F76e_…` |
+| f (a) | a szó-lap fejlécében magyar „Alapjelentés” (`bdb_szelet.alap_jelentes`), híján az angol Strong-glossza; az angol glossza a Strong-szótár blokkban marad | `test_DT_F76f_…` (minden pilot-lapra) |
+| g (b) | `szo.bdb_apparatus` blokk: a szerver a pilot `bdb_szelet.py`-ját hívja (importlib, kódmásolás nélkül, a pilot könyvtára nem kerül a `sys.path`-ra), jelleg: forrásadat + modell-kimenet + gépi feldolgozás, „hibás határ előfordulhat” jelzés, „Lefordítva · modell, dátum” (`forditasok`), minden szöveg escape-elve | `test_DT_F76g_…` (bontás szócikkenként egyezik a pilot `appar`-jával, 1Móz 1:1–2:3 és Zsolt 22 összes héber lapján) |
+| h (c) | `vers.lxx_tobblet` blokk „Az adat még nincs a DB-ben” jelzéssel (N-F76j); a forrássor a két TSV-t nevezi | `test_DT_F76h_…` |
+| i (a) | „Kapcsolt szavak jelölése” kapcsoló és Rendszer/Világos/Sötét témaváltó (localStorage, süti nélkül; CSP-barát) | `test_DT_F76i_…` |
+| 3. pont | az Interlineáris nézet szavai csempék: magyar szó, alatta az eredeti, átírás, angol tükörfordítás, Strong (a pilot héber-csempe tartalma, a `token_eredeti`-ból az `er_sorszam` szerint); kattintásra a szó-lap; nyelvtani elem link nélkül | `test_interlinearis_csempek_…` |
+| 4. pont | az ETag és a gyorsítótár kulcsa tartalmazza a kód/sablon/statikus/konfig és a pilot `bdb_szelet.py` hash-ét (`oldalak.kod_verzio`, induláskor; `/statusz` is mutatja) | `test_etag_es_gyorsitotar_kulcsa_…`, `test_kod_verzio_valtozik_…` |
+
+Az Interlineáris csempe tartalmánál az „angol tükörfordítás” (a pilot csempéjének `gl` mezője) áll a „rövid jelentés” helyett: a pilot mintáját követtem; ha a TAHOT rövid jelentése kell, egyetlen mező cseréje.
+
+**Tesztfutás, végrehajtói futás, nem független ellenőri (F76.30):** `scope=eszkozok/olvaso_szerver/teszt_pilot_aranymintaval.py (22 teszt, mind zöld, expectedFailure már nincs) és teszt_olvaso_szerver.py (65 teszt, köztük a D2-egyezés, az egyetlen eltérés a DT-F76d) | forras=unittest, Python 3.12.3, pardes WSL-disztribúció, ugyanaz a parancs mint fent, a pardes.db epites_ts=2026-10-14T09:35:00Z | ts=2026-10-14`. Eredmény: **OK** mindkét fájlra (72 s és 9 s). A regiszter 48 azonosítós.
