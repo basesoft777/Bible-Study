@@ -7,8 +7,8 @@
    "eszkozok/feladatterkep_kartyak.tsv"
   ],
   "belyeg": {
-   "datum": "2026-10-13",
-   "commit": "8855fa87"
+   "datum": "2026-10-14",
+   "commit": "35bbe96d"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -72,7 +72,7 @@
   {
    "kulcs": "ready",
    "cimke": "Indítható most",
-   "db": 7
+   "db": 6
   },
   {
    "kulcs": "wait",
@@ -112,14 +112,6 @@
    "kod": "OLVASOI_KONKORDANCIA",
    "cim": "Olvasói konkordancia motívum nélkül (#25a) — kutatói felület a pardes.db-ből, előbb helyben (WSL), három váltható nézettel",
    "most": "/kovetkezo; ⛔ M0 (terv), ⛔ M1 (helyi környezet: a disztribúció létrehozása a felhasználóé), ⛔ M5 (helyi próbaüzem), ⛔ M6 (VPS), ⛔ M7 (nyilvános közzététel)",
-   "felbemaradt": false,
-   "parhuzamos": true
-  },
-  {
-   "szam": 91,
-   "kod": "ZSOLT_FELIRAT_SZAMOZAS",
-   "cim": "Feliratos zsoltárok Károli–KJV számozása — felmérés és a versmegfeleltető táblák javítása",
-   "most": "/kovetkezo; ⛔ M1 után (a javítási szabály jóváhagyása)",
    "felbemaradt": false,
    "parhuzamos": true
   },
@@ -630,22 +622,6 @@
    "leiras_hiany": true
   },
   {
-   "kulcs": "ZSOLT_FELIRAT_SZAMOZAS",
-   "szam": 91,
-   "kod": "ZSOLT_FELIRAT_SZAMOZAS",
-   "cim": "Feliratos zsoltárok Károli–KJV számozása — felmérés és a versmegfeleltető táblák javítása",
-   "fazis": "1",
-   "allapot": "ready",
-   "brief_allapot": "nem_indult",
-   "most": "/kovetkezo; ⛔ M1 után (a javítási szabály jóváhagyása)",
-   "fugg": "—",
-   "tervezett": false,
-   "reszletes": "",
-   "roviden": "",
-   "leiras_forras": null,
-   "leiras_hiany": true
-  },
-  {
    "kulcs": "TIPNR_TOKEN_HIANY",
    "szam": 93,
    "kod": "TIPNR_TOKEN_HIANY",
@@ -752,13 +728,12 @@
    "TANULMANY_JAVITAS",
    "KAROLI_UJJLENYOMAT",
    "ELOFIZETES_FEED",
-   "ZSOLT_FELIRAT_SZAMOZAS",
    "TIPNR_TOKEN_HIANY",
    "KAROLI_MODERN",
    "TERV_BEFOGAD"
   ]
  },
- "terkep": "flowchart LR\n  classDef stop fill:#d93025,stroke:#8c1d18,color:#ffffff,stroke-width:2px\n  classDef run fill:#1e8e3e,stroke:#0d5226,color:#ffffff,stroke-width:2px\n  classDef ready fill:#1a73e8,stroke:#0b3d91,color:#ffffff,stroke-width:2px\n  classDef wait fill:#f9ab00,stroke:#a86f00,color:#2b1d00,stroke-width:2px\n  classDef plan fill:#8e44ad,stroke:#5b2470,color:#ffffff,stroke-width:2px,stroke-dasharray:6 3\n  classDef idle fill:#80868b,stroke:#4a4f54,color:#ffffff\n  classDef dt fill:#ff6d00,stroke:#a34500,color:#ffffff,stroke-width:2px\n\n  P_MCP_BUROK[\"MCP_BUROK\"]:::plan\n  P_SZPA_AUDIT[\"SZPA_AUDIT\"]:::plan\n  P_TERV_BEFOGAD[\"TERV_BEFOGAD\"]:::plan\n  T10[\"#10 LEXIKON_LEZARAS\"]:::idle\n  T11[\"#11 MIGRACIO\"]:::idle\n  T12[\"#12 TEREMT-002 3. lépés…\"]:::idle\n  T13[\"#13 1Móz 17-től a…\"]:::idle\n  T22[\"#22 Károli–Strong párosítás…\"]:::stop\n  T23[\"#23 MOTIVUM_FORRAS\"]:::ready\n  T25[\"#25 OLVASOI_HTML\"]:::idle\n  T27[\"#27 FP3\"]:::idle\n  T36[\"#36 LEXIKON_UJRAGEN\"]:::wait\n  T38[\"#38 BDB_FORDITAS\"]:::ready\n  T48[\"#48 KJV_REGI_KIVEZETES\"]:::wait\n  T50[\"#50 CI_JAVITO_KOR\"]:::ready\n  T52[\"#52 TERV_SZINKRON\"]:::stop\n  T55[\"#55 ZSOLTAR_UJRAELLENORZES\"]:::stop\n  T59[\"#59 SZOSZEDET\"]:::ready\n  T67[\"#67 BDB_JAVITAS_KAPU\"]:::idle\n  T69[\"#69 SEMA_DATASET_SZAM\"]:::idle\n  T7[\"#7 Thayer teljes magyar…\"]:::idle\n  T70[\"#70 SZOTAR_S26\"]:::wait\n  T74[\"#74 TANULMANY_JAVITAS_GEPI\"]:::idle\n  T75[\"#75 TANULMANY_JAVITAS\"]:::idle\n  T76[\"#76 OLVASOI_KONKORDANCIA\"]:::ready\n  T81[\"#81 KAROLI_UJJLENYOMAT\"]:::idle\n  T86[\"#86 ELOFIZETES_FEED\"]:::stop\n  T9[\"#9 SZOTAR S2\"]:::wait\n  T91[\"#91 ZSOLT_FELIRAT_SZAMOZAS\"]:::ready\n  T93[\"#93 TIPNR_TOKEN_HIANY\"]:::ready\n  T96[\"#96 KAROLI_MODERN\"]:::idle\n  D_DT_F38i{{\"DT-F38i\"}}:::dt\n  D_DT_M1{{\"DT-M1\"}}:::dt\n  D_DT_M3{{\"DT-M3\"}}:::dt\n  D_DT_M4{{\"DT-M4\"}}:::dt\n  D_DT_M5{{\"DT-M5\"}}:::dt\n  D_DT_M6{{\"DT-M6\"}}:::dt\n  D_DT_M7{{\"DT-M7\"}}:::dt\n  D_DT_M8{{\"DT-M8\"}}:::dt\n  D_DT127{{\"DT127\"}}:::dt\n  D_DT128{{\"DT128\"}}:::dt\n  D_DT129{{\"DT129\"}}:::dt\n  D_DT2{{\"DT2\"}}:::dt\n  D_DT28{{\"DT28\"}}:::dt\n  D_DT52{{\"DT52\"}}:::dt\n  D_DT56{{\"DT56\"}}:::dt\n  D_DT57{{\"DT57\"}}:::dt\n  D_DT66{{\"DT66\"}}:::dt\n  D_DT71{{\"DT71\"}}:::dt\n  D_DT74{{\"DT74\"}}:::dt\n  D_DT75{{\"DT75\"}}:::dt\n  D_DT77{{\"DT77\"}}:::dt\n  D_DT78{{\"DT78\"}}:::dt\n  D_DT90{{\"DT90\"}}:::dt\n\n  P_MCP_BUROK --> D_DT_M3\n  P_MCP_BUROK --> D_DT_M5\n  P_MCP_BUROK --> D_DT_M7\n  P_SZPA_AUDIT --> D_DT77\n  P_TERV_BEFOGAD --> D_DT_M8\n  T10 --> D_DT2\n  T10 --> D_DT74\n  T10 --> T11\n  T10 --> T52\n  T10 --> T9\n  T11 --> D_DT74\n  T11 --> T23\n  T11 --> T52\n  T11 --> T9\n  T12 --> D_DT74\n  T12 --> T11\n  T13 --> T10\n  T22 --> D_DT56\n  T22 --> D_DT57\n  T22 --> D_DT71\n  T23 --> D_DT28\n  T23 --> D_DT66\n  T23 --> D_DT74\n  T25 --> T11\n  T25 --> T12\n  T25 --> T23\n  T36 --> D_DT28\n  T36 --> D_DT74\n  T36 --> T27\n  T36 --> T38\n  T36 --> T52\n  T36 --> T9\n  T38 --> D_DT52\n  T38 --> D_DT56\n  T38 --> D_DT_F38i\n  T48 --> T22\n  T52 --> D_DT78\n  T52 --> D_DT90\n  T55 --> D_DT74\n  T67 --> T27\n  T67 --> T7\n  T67 --> T9\n  T70 --> D_DT74\n  T70 --> T55\n  T70 --> T9\n  T75 --> T74\n  T76 --> D_DT127\n  T76 --> D_DT128\n  T76 --> D_DT129\n  T76 --> D_DT75\n  T76 --> D_DT_M1\n  T76 --> D_DT_M4\n  T76 --> D_DT_M6\n  T86 --> T27\n  T86 --> T38\n  T86 --> T52\n  T86 --> T7\n  T86 --> T76\n  T86 --> T9\n  T9 --> D_DT28\n  T9 --> D_DT74\n  T9 --> T23\n  T9 --> T27\n  T9 --> T52",
+ "terkep": "flowchart LR\n  classDef stop fill:#d93025,stroke:#8c1d18,color:#ffffff,stroke-width:2px\n  classDef run fill:#1e8e3e,stroke:#0d5226,color:#ffffff,stroke-width:2px\n  classDef ready fill:#1a73e8,stroke:#0b3d91,color:#ffffff,stroke-width:2px\n  classDef wait fill:#f9ab00,stroke:#a86f00,color:#2b1d00,stroke-width:2px\n  classDef plan fill:#8e44ad,stroke:#5b2470,color:#ffffff,stroke-width:2px,stroke-dasharray:6 3\n  classDef idle fill:#80868b,stroke:#4a4f54,color:#ffffff\n  classDef dt fill:#ff6d00,stroke:#a34500,color:#ffffff,stroke-width:2px\n\n  P_MCP_BUROK[\"MCP_BUROK\"]:::plan\n  P_SZPA_AUDIT[\"SZPA_AUDIT\"]:::plan\n  P_TERV_BEFOGAD[\"TERV_BEFOGAD\"]:::plan\n  T10[\"#10 LEXIKON_LEZARAS\"]:::idle\n  T11[\"#11 MIGRACIO\"]:::idle\n  T12[\"#12 TEREMT-002 3. lépés…\"]:::idle\n  T13[\"#13 1Móz 17-től a…\"]:::idle\n  T22[\"#22 Károli–Strong párosítás…\"]:::stop\n  T23[\"#23 MOTIVUM_FORRAS\"]:::ready\n  T25[\"#25 OLVASOI_HTML\"]:::idle\n  T27[\"#27 FP3\"]:::idle\n  T36[\"#36 LEXIKON_UJRAGEN\"]:::wait\n  T38[\"#38 BDB_FORDITAS\"]:::ready\n  T48[\"#48 KJV_REGI_KIVEZETES\"]:::wait\n  T50[\"#50 CI_JAVITO_KOR\"]:::ready\n  T52[\"#52 TERV_SZINKRON\"]:::stop\n  T55[\"#55 ZSOLTAR_UJRAELLENORZES\"]:::stop\n  T59[\"#59 SZOSZEDET\"]:::ready\n  T67[\"#67 BDB_JAVITAS_KAPU\"]:::idle\n  T69[\"#69 SEMA_DATASET_SZAM\"]:::idle\n  T7[\"#7 Thayer teljes magyar…\"]:::idle\n  T70[\"#70 SZOTAR_S26\"]:::wait\n  T74[\"#74 TANULMANY_JAVITAS_GEPI\"]:::idle\n  T75[\"#75 TANULMANY_JAVITAS\"]:::idle\n  T76[\"#76 OLVASOI_KONKORDANCIA\"]:::ready\n  T81[\"#81 KAROLI_UJJLENYOMAT\"]:::idle\n  T86[\"#86 ELOFIZETES_FEED\"]:::stop\n  T9[\"#9 SZOTAR S2\"]:::wait\n  T93[\"#93 TIPNR_TOKEN_HIANY\"]:::ready\n  T96[\"#96 KAROLI_MODERN\"]:::idle\n  D_DT_F38i{{\"DT-F38i\"}}:::dt\n  D_DT_M1{{\"DT-M1\"}}:::dt\n  D_DT_M3{{\"DT-M3\"}}:::dt\n  D_DT_M4{{\"DT-M4\"}}:::dt\n  D_DT_M5{{\"DT-M5\"}}:::dt\n  D_DT_M6{{\"DT-M6\"}}:::dt\n  D_DT_M7{{\"DT-M7\"}}:::dt\n  D_DT_M8{{\"DT-M8\"}}:::dt\n  D_DT127{{\"DT127\"}}:::dt\n  D_DT128{{\"DT128\"}}:::dt\n  D_DT129{{\"DT129\"}}:::dt\n  D_DT2{{\"DT2\"}}:::dt\n  D_DT28{{\"DT28\"}}:::dt\n  D_DT52{{\"DT52\"}}:::dt\n  D_DT56{{\"DT56\"}}:::dt\n  D_DT57{{\"DT57\"}}:::dt\n  D_DT66{{\"DT66\"}}:::dt\n  D_DT71{{\"DT71\"}}:::dt\n  D_DT74{{\"DT74\"}}:::dt\n  D_DT75{{\"DT75\"}}:::dt\n  D_DT77{{\"DT77\"}}:::dt\n  D_DT78{{\"DT78\"}}:::dt\n  D_DT90{{\"DT90\"}}:::dt\n\n  P_MCP_BUROK --> D_DT_M3\n  P_MCP_BUROK --> D_DT_M5\n  P_MCP_BUROK --> D_DT_M7\n  P_SZPA_AUDIT --> D_DT77\n  P_TERV_BEFOGAD --> D_DT_M8\n  T10 --> D_DT2\n  T10 --> D_DT74\n  T10 --> T11\n  T10 --> T52\n  T10 --> T9\n  T11 --> D_DT74\n  T11 --> T23\n  T11 --> T52\n  T11 --> T9\n  T12 --> D_DT74\n  T12 --> T11\n  T13 --> T10\n  T22 --> D_DT56\n  T22 --> D_DT57\n  T22 --> D_DT71\n  T23 --> D_DT28\n  T23 --> D_DT66\n  T23 --> D_DT74\n  T25 --> T11\n  T25 --> T12\n  T25 --> T23\n  T36 --> D_DT28\n  T36 --> D_DT74\n  T36 --> T27\n  T36 --> T38\n  T36 --> T52\n  T36 --> T9\n  T38 --> D_DT52\n  T38 --> D_DT56\n  T38 --> D_DT_F38i\n  T48 --> T22\n  T52 --> D_DT78\n  T52 --> D_DT90\n  T55 --> D_DT74\n  T67 --> T27\n  T67 --> T7\n  T67 --> T9\n  T70 --> D_DT74\n  T70 --> T55\n  T70 --> T9\n  T75 --> T74\n  T76 --> D_DT127\n  T76 --> D_DT128\n  T76 --> D_DT129\n  T76 --> D_DT75\n  T76 --> D_DT_M1\n  T76 --> D_DT_M4\n  T76 --> D_DT_M6\n  T86 --> T27\n  T86 --> T38\n  T86 --> T52\n  T86 --> T7\n  T86 --> T76\n  T86 --> T9\n  T9 --> D_DT28\n  T9 --> D_DT74\n  T9 --> T23\n  T9 --> T27\n  T9 --> T52",
  "dontesek": {
   "nyitott": [
    {
@@ -1716,7 +1691,7 @@
     "sor": 215
    },
    {
-    "id": "DT-F95a",
+    "id": "DT141",
     "feladat": "#95 SZOTOVEZES_DB (M0 ⛔)",
     "kerdes": "Milyen táblákban és milyen kulccsal kerüljön a #94 szótári alak táblája a `pardes.db`-be, és hogyan kezeljük a `token_karoli` kötőjeles darabjait? *(forrás: `naplok/SZOTOVEZES_DB_M0.md`)*",
     "allapot": "alkalmazasra_var",
@@ -1724,6 +1699,46 @@
      "🟢"
     ],
     "sor": 216
+   },
+   {
+    "id": "DT142",
+    "feladat": "#91 ZSOLT_FELIRAT_SZAMOZAS (M1 ⛔: a javítási szabály)",
+    "kerdes": "Milyen szabály szerint javítsuk a `Karoli_versmegfeleltetes.tsv`-t és a `LXX_versificacios_terkep.tsv`-t a feliratos zsoltárokra, mi a kivétel, és érinti-e a Nave `karoli_allapot` oszlopát? *(forrás: `naplok/ZSOLT_FELIRAT_SZAMOZAS_M0.md`; DT125)* Az M0 mérése: 150 zsoltárból 62 feliratos (Károli-max − KJV-max = d; d = 1: 58, d = 2: 4, ti. Zsolt 51, 52, 54, 60), +1 kivétel (Zsolt 13: a két maximum egyenlő, mégis eltolt, mert a KJV a 13:5-öt két versre bontja; az LXX_OS Károli-kulcsa: 2→1, 3→2, 4→3, 5→4, 6→5+6). A Károli max = TAHOT max mind a 150-ben; az LXX_OS etalon d-je a Zsolt 13 kivételével mindenhol egyezik a mért d-vel (tehát a d-szabály és az etalon azonos eredményt ad a 62 zsoltáron). A tábla (`Karoli_versmegfeleltetes`): 917 vers hibás KJV-értékű, +66 feliratversre ad KJV-értéket, 925 vers ellentmond az LXX_OS KJV-oszlopának; a Zsolt 22-n 30 + 1. A B tábla (`LXX_versificacios_terkep`): a `Karoli_igehely` oszlop valójában KJV-számozású (TVTMS-sorok), 995 Károli-vers Héber-halmaza ≠ {v} (ebben 8 nem feliratos hiba is van: Zsolt 1 → Psa 151-re kulcsolt, Zsolt 37 dupla sor; ezek nem tartoznak ide), 107 Károli-vers hiányzik. A Nave: 2 036 vers-szintű Zsolt-sor `karoli_allapot = azonos`, `igehely_karoli` üres a feliratos fejezetekben (+3 sor a Zsolt 13-ban); a 639 `tartomany` sor külön kérdés.",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 217
+   },
+   {
+    "id": "DT143",
+    "feladat": "#91 ZSOLT_FELIRAT_SZAMOZAS (M0b → M2 előtt)",
+    "kerdes": "A B3 (a `LXX_versificacios_terkep.tsv` `Karoli_igehely` oszlopának átnevezése `KJV_igehely`-re) után mi legyen a `pardes.db` `lxx_versszam.terkep_ertek` kulcsa? *(forrás: `naplok/ZSOLT_FELIRAT_SZAMOZAS_M0b.md`; DT142)* Az M0b mérés megerősítette: az oszlop a zsoltárokon kívül is KJV-kulcsú (28 sor kulcsa tisztán KJV-vers, pl. Hós 11:12, Jón 1:17; a nem zsoltári Latin-oszlop 80%-ban a kulccsal egyezik), tehát a B3 helyes, és az LXX_OS szinte minden könyvre ad Károli-kulcsot. Az oszlopot név szerint olvassa a `eszkozok/sqlite_epit.py` `_lxx_versszam` (5 hivatkozás) és a `eszkozok/teszt_sqlite_epit.py` (2 hivatkozás): az átnevezés `KeyError`-ral töri őket. A `sqlite_epit.py` a kulcsot Károli-versként értelmezi, ezért a `terkep_ertek` ma is téves Károli-versre kerül a Károli ≠ KJV helyeken (62 feliratos zsoltár, Hós 14, Jób 38–41 stb.). A `f92_db_igazolas.py` keménykódolt várt számokat (5 204 / 5 026 / 4 889 / 137 / 178) tartalmaz; az `f17/macula_kk.py` pozíció szerint olvassa és Károli-versként használja a kulcsot. Tartalmi kérdés, hogy a térkép értéke milyen kulccsal éljen tovább a `pardes.db`-ben.",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 218
+   },
+   {
+    "id": "DT144",
+    "feladat": "#91 ZSOLT_FELIRAT_SZAMOZAS (A1 után: Zsolt 13:6, generátor, Nave)",
+    "kerdes": "(1) Mi legyen a `Karoli_versmegfeleltetes.tsv` Zsolt 13:6 `igehely_kjv` értéke (az etalon `13:5;13:6`)? (2) Az A1 egy GENERÁLT táblát foltoz (`naplok/KAROLI_KK4_tabla_veglegesit.py`): hol éljen a szabály? (3) Mi legyen a Nave-újragenerálással (forrás-sha eltérés, ~247 soros drift)? *(forrás: `naplok/ZSOLT_FELIRAT_SZAMOZAS_M2a.md`)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 219
+   },
+   {
+    "id": "DT145",
+    "feladat": "#91 ZSOLT_FELIRAT_SZAMOZAS (E1: az LXX_OS újragenerálása, körkörös függés)",
+    "kerdes": "Hogyan kerüljön ki a körkörös függés az A-tábla (`Karoli_versmegfeleltetes.tsv`) és az LXX_OS (`lxx_os_import.py`) között? Az A-tábla generátora (`f91_versmegf_javit.py`) az LXX_OS Károli-kulcsú etalonjából olvas; az LXX_OS gap-fill lépése (`lefedettseg_javit_konyv`, `_tabla_kjv`) az A-táblából veszi a felirat-vers KJV-kulcsát. Az F91 óta a felirat-versek KJV-értéke az A-táblában üres, ezért az LXX_OS újragenerálásakor a felirat-szabály nem találna jelöltet. *(forrás: `naplok/ZSOLT_FELIRAT_SZAMOZAS_M2e_lxx_os.md`; ELLENOR_F91 E1)* MÉRT (offline: a gap-fill lépés újrafuttatása a commitolt LXX_OS-en; a teljes `--letolt` futás a hiányzó források letöltése miatt nem készült, ehhez külön engedély kell): a régi A-táblával a 14 érintett könyv mindegyike 0 eltéréssel reprodukálódik; az új A-táblával csak a `psalms-lxx.tsv` változik: 66 vers / 671 token (`karoli_ok`: a `zsolt_felirat_eltolas` jelölés elvész, 64 vers → `sorrend_beagyazas`), ebből 2 vers / 29 token (LXX 29:1 → Zsolt 30:1, LXX 64:1 → Zsolt 65:1) a Károli-kulcsot is elveszti; az `igehely_kjv` (az etalon) nem változik; a javító az így regenerált etalonnal a mostani A-táblát bájtra azonosan adja (fixpont).",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 220
    }
   ],
   "javasolt": [],

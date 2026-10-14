@@ -6,10 +6,10 @@
 
 | tétel | állapot |
 |---|---|
-| E1 (DT-F91d (a)): `_tabla_kjv()` a 67 felirat-versre a közös halmazból; a replay a módosított importert hívja; DT 8 cellás, 🟢, kimondja a fixpontot; `lxx_os_import.py` az `ir`-ben | OK (kód); a replay eredménye NEM ELLENŐRIZHETŐ az ellenőrnek |
+| E1 (DT145 (a)): `_tabla_kjv()` a 67 felirat-versre a közös halmazból; a replay a módosított importert hívja; DT 8 cellás, 🟢, kimondja a fixpontot; `lxx_os_import.py` az `ir`-ben | OK (kód); a replay eredménye NEM ELLENŐRIZHETŐ az ellenőrnek |
 | E2: közös halmaz, a builder és az f92 ebből szűr; pontosan a 67 vers; A-tábla 67 `felirat` sora = a halmaz | OK |
 | E3: `ir` mező fedi a 26+1 fájlt | OK (a két ELLENOR-napló az `ir`-be került) |
-| E4: DT-F91a–d 8 cellás, 🟢 | OK |
+| E4: DT142–d 8 cellás, 🟢 | OK |
 | E5: N-F91a/b (7 `Psa.Psa.151`, Zsolt 37 = 40 sor, 203 = 105+47+35+5+3+2+2+2+1+1, NAVE-0130 az N-F91b-ben) | OK |
 | E6: M2a §1 jelölve | OK |
 | ÚJ-a: `adat/SEMA.md:1154` 4907 → 4906 | ELTÉRÉS — **javítva** |

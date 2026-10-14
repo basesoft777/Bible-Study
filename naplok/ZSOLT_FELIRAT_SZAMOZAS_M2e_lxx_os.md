@@ -1,6 +1,6 @@
 # ZSOLT_FELIRAT_SZAMOZAS_M2e_lxx_os.md — az LXX_OS újragenerálása az új A-táblával (F91 E1, CSAK MÉRÉS)
 
-*Végrehajtó: claude-sonnet-5-5. Mért adat. A mérés idején az `eszkozok/lxx_os_import.py` és a `konkordancia/LXX_OS/` fájljai nem módosultak [ELAVULT az `lxx_os_import.py`-ra: az F91.16 a DT-F91d (a) szerint módosította, l. 6. szakasz; a `konkordancia/LXX_OS/` fájljai továbbra sem módosultak]; a mérés memóriában fut: `python eszkozok/f91_lxx_os_replay.py` (a táblázat a 3. szakaszban és a szkript kimenetében azonos).*
+*Végrehajtó: claude-sonnet-5-5. Mért adat. A mérés idején az `eszkozok/lxx_os_import.py` és a `konkordancia/LXX_OS/` fájljai nem módosultak [ELAVULT az `lxx_os_import.py`-ra: az F91.16 a DT145 (a) szerint módosította, l. 6. szakasz; a `konkordancia/LXX_OS/` fájljai továbbra sem módosultak]; a mérés memóriában fut: `python eszkozok/f91_lxx_os_replay.py` (a táblázat a 3. szakaszban és a szkript kimenetében azonos).*
 
 Proveniencia: `scope=LEFEDETTSEG_KONYVEK (14 könyv, elsődleges LXX_OS-fájlok), gap-fill lépés | forras=konkordancia/LXX_OS/*.tsv + eszkozok/lxx_os_import.py lefedettseg_javit_konyv() | ts=2026-10-14` · `scope=A-tábla, régi = 25e39a1a (az ág merge-base-e), új = HEAD | forras=konkordancia/Karoli_versmegfeleltetes.tsv | ts=2026-10-14` · `scope=Zsolt, felirat-halmaz | forras=eszkozok/zsolt_felirat_halmaz.py | ts=2026-10-14`
 
@@ -44,7 +44,7 @@ Következmény a `pardes.db`-re (kódolvasásból, nem építve): a 64 vers `meg
 
 Az (a) opció prototípusa (memóriában): a gap-fill-ben a felirat-halmaz versei (`zsolt_felirat_halmaz.felirat_versek()`) az A-tábla helyett a halmazból kapják a KJV-kulcsot (`Zsolt c:v` → `c:v`, ahogy a régi A-tábla identitása is volt), minden más vers marad `tabla.get(ig)`. Eredmény: a commitolt `psalms-lxx.tsv`-hez képest **0 eltérő token-sor, 0 vers** — a felirat-jelölés (66 vers / 671 token) és a két Károli-kulcs (Zsolt 30:1, 65:1) megmarad. A változtatás az `lxx_os_import.py`-ben a `tk` képzése (egy sor) és az import a közös modulból; ezt a döntésig nem hajtottam végre.
 
-## 6. Megvalósítás és igazolás (F91.16; DT-F91d (a), a felhasználó döntése, 2026-10-14)
+## 6. Megvalósítás és igazolás (F91.16; DT145 (a), a felhasználó döntése, 2026-10-14)
 
 **Változás.** Az `eszkozok/lxx_os_import.py` `_tabla_kjv()` függvénye az A-tábla beolvasása után a közös felirat-halmaz (`zsolt_felirat_halmaz.felirat_versek()`, 67 vers) minden versére felülírja a KJV-kulcsot a Károli-kulcsból (`Zsolt c:v` -> `c:v`). A `lefedettseg_javit_konyv()` `tk = tabla.get(ig)` sora változatlan, ezért a `zsolt_felirat_eltolas` jelölés és a két Károli-kulcs (LXX 29:1 -> Zsolt 30:1, LXX 64:1 -> Zsolt 65:1) logikája érintetlen. A `konkordancia/LXX_OS/` fájljait nem írtam, a `--letolt` futást nem indítottam.
 

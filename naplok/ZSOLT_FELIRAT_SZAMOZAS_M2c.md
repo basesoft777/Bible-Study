@@ -1,4 +1,4 @@
-# ZSOLT_FELIRAT_SZAMOZAS_M2c.md — a B-oldali M2: a térkép `KJV_igehely` oszlopa, a builder KJV-kulcson illeszt (F91, DT-F91b)
+# ZSOLT_FELIRAT_SZAMOZAS_M2c.md — a B-oldali M2: a térkép `KJV_igehely` oszlopa, a builder KJV-kulcson illeszt (F91, DT143)
 
 *Végrehajtó: claude-sonnet-5-5. Mért adat. A `pardes.db` (938 MB, nem verziózott) nem lett felülírva: az előtte/utána méréshez két ideiglenes teljes építés készült (`sqlite_epit.py --mod teljes --kimenet <temp>`), ugyanazon A-tábla (A1 utáni) mellett, csak a builder + a térkép oszlopneve különbözik.*
 

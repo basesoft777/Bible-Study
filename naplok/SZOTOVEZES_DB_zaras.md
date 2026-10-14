@@ -1,6 +1,6 @@
 # SZOTOVEZES_DB (#95) — zárójelentés
 
-*2026-10-13 · ág: `claude/f95-szotovezes-db` · modell: claude-sonnet-5-5 · részletek: `naplok/SZOTOVEZES_DB_M0.md` (M0 felmérés, 9. szakasz M2 mérés) · döntés: DT-F95a*
+*2026-10-13 · ág: `claude/f95-szotovezes-db` · modell: claude-sonnet-5-5 · részletek: `naplok/SZOTOVEZES_DB_M0.md` (M0 felmérés, 9. szakasz M2 mérés) · döntés: DT141*
 
 - **Eredmény:** a `pardes.db` három új táblát kapott, táblaszintű `szoto_tablak` licenccel és `hash:` meta-sorral: `szotari_alak` (66 824 sor = a TSV adatsorai; a *alak* sor megvan, `simplemma` 0), `szotari_kereso` (72 720 sor; NFC kisbetűs keresőalak, `mezok`: szótári/mai/alapige/további) és `szotari_token_kotojeles` (4 750 token). Kulcs: `token_karoli.szo` = `alak`; részleges index a `token_karoli`-n (`oldal='hu'`). Teljes építés: 894,8 MiB, G2 azonos, a 9 próbapont megegyezik (9/9; `naplok/SQLITE_EPIT_proba_teljes.md`).
 - **K1** teljesül · **K2** teljesül: a pontos kulcs 99,7789%, a kötőjeles táblával 99,9988%; a 6 megmaradó token felfüggesztett kötőjel (dokumentált hiány) · **K3** teljesül: a D5 hash- és sorszám-egyezés, eltérő tábla nincs · **K4** teljesül az (a) módra és a kereső táblára (max. 20,6 ms hidegen is, indexszel); a (c) mód mérve, proveniencia-sorral · **K5**: `teszt_sqlite_epit.py` 61 teszt zöld; a független ellenőr és a CI hátra van.

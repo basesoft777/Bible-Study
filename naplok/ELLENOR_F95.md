@@ -14,8 +14,8 @@
 | K5 | NEM ELLENŐRIZHETŐ | a 61 teszt darabszáma stimmel; a futtatás nem megengedett parancs az ellenőrnek |
 | (c) mód 173–874 ms | OK | a zárójelentés a #76 felé ismert korlátként rögzíti |
 | `tablameret()` javítás | OK | a UNIQUE INDEX az `x` sémába irányul; a mért hatás konzisztens |
-| DT-F95a (1)–(4) | OK | a kód megfelel a jóváhagyott döntésnek |
-| DT-F95a jóváhagyás | nem ellenőrizhető a repóból | a sorrend rendben: ⛔ megállás `1e6c6b1a`, jóváhagyás `81c38b34`, építés csak utána |
+| DT141 (1)–(4) | OK | a kód megfelel a jóváhagyott döntésnek |
+| DT141 jóváhagyás | nem ellenőrizhető a repóból | a sorrend rendben: ⛔ megállás `1e6c6b1a`, jóváhagyás `81c38b34`, építés csak utána |
 | Egyeztetett eltérés (#22) | OK | `adat/karoli_strong` és `adat/szoto` diffje üres, a `szavak_*.tsv` nem változott |
 | L1–L4 | OK | adatsor nem törlődött; minden `adat/**/*.tsv` Δ = 0 |
 | CI (saját futás) | OK | `futtat.py` rc=0; az E25/E27 találatok a diffen kívüli fájlokra vonatkoznak |
