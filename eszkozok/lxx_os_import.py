@@ -462,7 +462,7 @@ def _karoli_szavak():
 
 
 def _tabla_kjv():
-    """{igehely_karoli: igehely_kjv} a Karoli_versmegfeleltetes.tsv-ből"""
+    """{igehely_karoli: igehely_kjv} a Karoli_versmegfeleltetes.tsv-ből; a felirat-versek a közös felirat-halmazból (DT-F91d)"""
     global _TABLA_CACHE
     if _TABLA_CACHE is None:
         d = {}
@@ -473,6 +473,12 @@ def _tabla_kjv():
                     continue
                 p = sor.split("\t")
                 d[p[0]] = p[1]
+        # F91 (DT-F91d, (a)): a feliratos zsoltárok felirat-versein a KJV-kulcs a közös felirat-halmazból
+        # (Károli+KJV verszámokból) képződik, nem az A-tábla felirat-soraiból (azok KJV-értéke üres);
+        # a felirat-vers a következő KJV-vers jelöltje, mint a régi identitás-sor volt.
+        import zsolt_felirat_halmaz as _zfh
+        for ig in _zfh.felirat_versek():
+            d[ig] = ig.split(" ", 1)[1]
         _TABLA_CACHE = d
     return _TABLA_CACHE
 

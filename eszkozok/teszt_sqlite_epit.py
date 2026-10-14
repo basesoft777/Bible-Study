@@ -568,18 +568,22 @@ class Integracio(unittest.TestCase):
     def test_f92_terkep_nem_meghatarozhato_nem_esik_ki_nemanan(self):
         m = self._meta_dict()
         sorok = G.tsv_beolvas(os.path.join(ROOT, 'konkordancia', 'LXX_versificacios_terkep.tsv'))[1]
-        nm = sum(1 for r in sorok if r['Karoli_igehely'] == 'NEM_MEGHATAROZHATO')
+        nm = sum(1 for r in sorok if r['KJV_igehely'] == 'NEM_MEGHATAROZHATO')
         self.assertGreater(nm, 0)
         self.assertEqual(int(m['lxx_versszam:terkep_nem_meghatarozhato_sor']), nm)
         jel = self.con.execute("SELECT darab FROM normalizalas_jelentes WHERE tabla='lxx_versszam' "
                                "AND nyers='NEM_MEGHATAROZHATO'").fetchone()
         self.assertEqual(jel[0], nm)
-        # a terkep-sorok minden kulcsa szamolt: NEM_MEGHATAROZHATO + Karoli-kulcs + nem Karoli-vers
-        kulcsok = {r['Karoli_igehely'] for r in sorok} - {'NEM_MEGHATAROZHATO'}
-        self.assertEqual(int(m['lxx_versszam:terkep_karoli_kulcs']) + int(m['lxx_versszam:terkep_nem_karoli_kulcs']),
-                         len(kulcsok))
+        # a terkep-sorok minden kulcsa szamolt (F91, DT-F91b): NEM_MEGHATAROZHATO + KJV-kulcs (a KJV-kulcs vagy
+        # atvalthato Karoli-versre, vagy 'karoli_nelkul')
+        kulcsok = {r['KJV_igehely'] for r in sorok} - {'NEM_MEGHATAROZHATO'}
+        self.assertEqual(int(m['lxx_versszam:terkep_kjv_kulcs']), len(kulcsok))
+        self.assertLessEqual(int(m['lxx_versszam:terkep_kjv_kulcs_karoli_nelkul']), len(kulcsok))
         self.assertEqual(int(m['lxx_versszam:terkep_ot_vers']) + int(m['lxx_versszam:terkep_nem_ot_vers']),
                          int(m['lxx_versszam:terkep_karoli_kulcs']))
+        # a terkep oszlopa KJV_igehely (nem Karoli_igehely): az atnevezes utan a regi nev nincs
+        self.assertIn('KJV_igehely', sorok[0])
+        self.assertNotIn('Karoli_igehely', sorok[0])
 
     def test_f92_macula_ketertelmu_strong_pozicio_sorrendben(self):
         rossz = self.con.execute("SELECT COUNT(*) FROM token_macula WHERE strong IS NOT NULL AND igehely!='' "
@@ -684,6 +688,40 @@ class Integracio(unittest.TestCase):
         # a D5 sorszam-szamlalasa (# sorok es fejlec nelkul) = a minta meta-sora
         self.assertEqual(str(DM.tsv_sorok(rel)),
                          dict(self.con.execute('SELECT kulcs, ertek FROM meta')).get('szotari_alak:forras_sor'))
+
+
+class FeliratHalmaz(unittest.TestCase):
+    """F91 E2: az egyetlen, Karoli+KJV verszamokbol szamolt felirat-halmaz (zsolt_felirat_halmaz.py)."""
+
+    def test_halmaz_67_vers_63_zsoltar(self):
+        import zsolt_felirat_halmaz as ZFH
+        self.assertEqual(ZFH.onellenorzes(), (67, 63))
+        d = ZFH.felirat_d()
+        self.assertEqual(sorted(c for c, x in d.items() if x == 2), [51, 52, 54, 60])
+        self.assertIn('Zsolt 13:1', ZFH.felirat_versek())      # az etalon szerinti kivetel
+        self.assertNotIn('Zsolt 13:2', ZFH.felirat_versek())
+
+    def test_a_tabla_felirat_sorai_a_halmaz(self):
+        # az A-tabla (Karoli_versmegfeleltetes.tsv) `felirat` megjegyzesu sorai = a halmaz (fogyaszto, nem forras)
+        import zsolt_felirat_halmaz as ZFH
+        sorok = G.tsv_beolvas(os.path.join(ROOT, 'konkordancia', 'Karoli_versmegfeleltetes.tsv'))[1]
+        a = {r['igehely_karoli'] for r in sorok if r['igehely_karoli'].startswith('Zsolt ')
+             and r['megjegyzes'].startswith('felirat')}
+        self.assertEqual(a, set(ZFH.felirat_versek()))
+
+    def test_a_felirat_versnek_nincs_terkep_erteke_a_db_ben(self):
+        import zsolt_felirat_halmaz as ZFH
+        tmp = tempfile.mkdtemp()
+        try:
+            ki = os.path.join(tmp, 'f.db')
+            self.assertEqual(S.main(['--mod', 'minta', '--kimenet', ki]), 0)
+            con = sqlite3.connect(ki)
+            rossz = [ig for (ig, t) in con.execute("SELECT karoli_igehely, terkep_ertek FROM lxx_versszam")
+                     if ig in ZFH.felirat_versek() and t]
+            con.close()
+            self.assertEqual(rossz, [])
+        finally:
+            shutil.rmtree(tmp, ignore_errors=True)
 
 
 if __name__ == '__main__':

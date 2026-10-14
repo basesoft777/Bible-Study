@@ -2,6 +2,7 @@
 # forras: lxx-morph@c91f6b1e8fb3ba37df701e6ae31f675ace71a2b2 (verse_pairs.jsonl, TVTMS-alapu MT-KJV kulcs, CC BY 4.0) + Karoli_1908.tsv + TAHOT_kivonat.tsv + eszkozok/lxx_kivonat_fetch_v2.py KEZI_ELTOLASOK
 # sha256(verse_pairs.jsonl)=3a91c571f1f32545f78397a256fdfa5124bcbcbc42902411a8a93209dcb2e985
 # proveniencia: forras=KAROLI_KULCS_BRIEF.md KK4 (2. menet) | ts=2026-09-25
+# F91 javítás (DT-F91a, A1; DT-F91c): a feliratos zsoltárok (63) igehely_kjv oszlopa az LXX_OS Károli-kulcsú etalonból; felirat-versek (v <= d) üres KJV, megjegyzés "felirat"; ahol egy Károli-versben több KJV-vers áll (Zsolt 13:6), az első KJV-vers, `;`-os érték nincs; forras=lxx_os_etalon_f91 | forras=eszkozok/f91_versmegf_javit.py | ts=2026-10-14 (a szabály dátuma, nem a futásé)
 igehely_karoli	igehely_kjv	igehely_mt	osztaly	forras	megjegyzes
 1Kir 10:1	10:1		KJV	szamlalas	
 1Kir 10:10	10:10		KJV	szamlalas	
@@ -18913,35 +18914,35 @@ Zsolt 101:5	101:5		KJV	szamlalas
 Zsolt 101:6	101:6		KJV	szamlalas	
 Zsolt 101:7	101:7		KJV	szamlalas	
 Zsolt 101:8	101:8		KJV	szamlalas	
-Zsolt 102:1	102:1	102:1	MT	tvtms	
-Zsolt 102:10	102:10	102:10	MT	tvtms	
-Zsolt 102:11	102:11	102:11	MT	tvtms	
-Zsolt 102:12	102:12	102:12	MT	tvtms	
-Zsolt 102:13	102:13	102:13	MT	tvtms	
-Zsolt 102:14	102:14	102:14	MT	tvtms	
-Zsolt 102:15	102:15	102:15	MT	tvtms	
-Zsolt 102:16	102:16	102:16	MT	tvtms	
-Zsolt 102:17	102:17	102:17	MT	tvtms	
-Zsolt 102:18	102:18	102:18	MT	tvtms	
-Zsolt 102:19	102:19	102:19	MT	tvtms	
-Zsolt 102:2	102:2	102:2	MT	tvtms	
-Zsolt 102:20	102:20	102:20	MT	tvtms	
-Zsolt 102:21	102:21	102:21	MT	tvtms	
-Zsolt 102:22	102:22	102:22	MT	tvtms	
-Zsolt 102:23	102:23	102:23	MT	tvtms	
-Zsolt 102:24	102:24	102:24	MT	tvtms	
-Zsolt 102:25	102:25	102:25	MT	tvtms	
-Zsolt 102:26	102:26	102:26	MT	tvtms	
-Zsolt 102:27	102:27	102:27	MT	tvtms	
-Zsolt 102:28	102:28	102:28	MT	tvtms	
-Zsolt 102:29		102:29	MT	szamlalas	
-Zsolt 102:3	102:3	102:3	MT	tvtms	
-Zsolt 102:4	102:4	102:4	MT	tvtms	
-Zsolt 102:5	102:5	102:5	MT	tvtms	
-Zsolt 102:6	102:6	102:6	MT	tvtms	
-Zsolt 102:7	102:7	102:7	MT	tvtms	
-Zsolt 102:8	102:8	102:8	MT	tvtms	
-Zsolt 102:9	102:9	102:9	MT	tvtms	
+Zsolt 102:1		102:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 102:10	102:9	102:10	MT	lxx_os_etalon_f91	
+Zsolt 102:11	102:10	102:11	MT	lxx_os_etalon_f91	
+Zsolt 102:12	102:11	102:12	MT	lxx_os_etalon_f91	
+Zsolt 102:13	102:12	102:13	MT	lxx_os_etalon_f91	
+Zsolt 102:14	102:13	102:14	MT	lxx_os_etalon_f91	
+Zsolt 102:15	102:14	102:15	MT	lxx_os_etalon_f91	
+Zsolt 102:16	102:15	102:16	MT	lxx_os_etalon_f91	
+Zsolt 102:17	102:16	102:17	MT	lxx_os_etalon_f91	
+Zsolt 102:18	102:17	102:18	MT	lxx_os_etalon_f91	
+Zsolt 102:19	102:18	102:19	MT	lxx_os_etalon_f91	
+Zsolt 102:2	102:1	102:2	MT	lxx_os_etalon_f91	
+Zsolt 102:20	102:19	102:20	MT	lxx_os_etalon_f91	
+Zsolt 102:21	102:20	102:21	MT	lxx_os_etalon_f91	
+Zsolt 102:22	102:21	102:22	MT	lxx_os_etalon_f91	
+Zsolt 102:23	102:22	102:23	MT	lxx_os_etalon_f91	
+Zsolt 102:24	102:23	102:24	MT	lxx_os_etalon_f91	
+Zsolt 102:25	102:24	102:25	MT	lxx_os_etalon_f91	
+Zsolt 102:26	102:25	102:26	MT	lxx_os_etalon_f91	
+Zsolt 102:27	102:26	102:27	MT	lxx_os_etalon_f91	
+Zsolt 102:28	102:27	102:28	MT	lxx_os_etalon_f91	
+Zsolt 102:29	102:28	102:29	MT	lxx_os_etalon_f91	
+Zsolt 102:3	102:2	102:3	MT	lxx_os_etalon_f91	
+Zsolt 102:4	102:3	102:4	MT	lxx_os_etalon_f91	
+Zsolt 102:5	102:4	102:5	MT	lxx_os_etalon_f91	
+Zsolt 102:6	102:5	102:6	MT	lxx_os_etalon_f91	
+Zsolt 102:7	102:6	102:7	MT	lxx_os_etalon_f91	
+Zsolt 102:8	102:7	102:8	MT	lxx_os_etalon_f91	
+Zsolt 102:9	102:8	102:9	MT	lxx_os_etalon_f91	
 Zsolt 103:1	103:1		KJV	szamlalas	
 Zsolt 103:10	103:10		KJV	szamlalas	
 Zsolt 103:11	103:11		KJV	szamlalas	
@@ -19135,20 +19136,20 @@ Zsolt 107:6	107:6		KJV	szamlalas
 Zsolt 107:7	107:7		KJV	szamlalas	
 Zsolt 107:8	107:8		KJV	szamlalas	
 Zsolt 107:9	107:9		KJV	szamlalas	
-Zsolt 108:1	108:1	108:1	MT	tvtms	
-Zsolt 108:10	108:10	108:10	MT	tvtms	
-Zsolt 108:11	108:11	108:11	MT	tvtms	
-Zsolt 108:12	108:12	108:12	MT	tvtms	
-Zsolt 108:13	108:13	108:13	MT	tvtms	
-Zsolt 108:14		108:14	MT	szamlalas	
-Zsolt 108:2	108:2	108:2	MT	tvtms	
-Zsolt 108:3	108:3	108:3	MT	tvtms	
-Zsolt 108:4	108:4	108:4	MT	tvtms	
-Zsolt 108:5	108:5	108:5	MT	tvtms	
-Zsolt 108:6	108:6	108:6	MT	tvtms	
-Zsolt 108:7	108:7	108:7	MT	tvtms	
-Zsolt 108:8	108:8	108:8	MT	tvtms	
-Zsolt 108:9	108:9	108:9	MT	tvtms	
+Zsolt 108:1		108:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 108:10	108:9	108:10	MT	lxx_os_etalon_f91	
+Zsolt 108:11	108:10	108:11	MT	lxx_os_etalon_f91	
+Zsolt 108:12	108:11	108:12	MT	lxx_os_etalon_f91	
+Zsolt 108:13	108:12	108:13	MT	lxx_os_etalon_f91	
+Zsolt 108:14	108:13	108:14	MT	lxx_os_etalon_f91	
+Zsolt 108:2	108:1	108:2	MT	lxx_os_etalon_f91	
+Zsolt 108:3	108:2	108:3	MT	lxx_os_etalon_f91	
+Zsolt 108:4	108:3	108:4	MT	lxx_os_etalon_f91	
+Zsolt 108:5	108:4	108:5	MT	lxx_os_etalon_f91	
+Zsolt 108:6	108:5	108:6	MT	lxx_os_etalon_f91	
+Zsolt 108:7	108:6	108:7	MT	lxx_os_etalon_f91	
+Zsolt 108:8	108:7	108:8	MT	lxx_os_etalon_f91	
+Zsolt 108:9	108:8	108:9	MT	lxx_os_etalon_f91	
 Zsolt 109:1	109:1		KJV	szamlalas	
 Zsolt 109:10	109:10		KJV	szamlalas	
 Zsolt 109:11	109:11		KJV	szamlalas	
@@ -19559,15 +19560,15 @@ Zsolt 129:5	129:5		KJV	szamlalas
 Zsolt 129:6	129:6		KJV	szamlalas	
 Zsolt 129:7	129:7		KJV	szamlalas	
 Zsolt 129:8	129:8		KJV	szamlalas	
-Zsolt 12:1	12:1	12:1	MT	tvtms	
-Zsolt 12:2	12:2	12:2	MT	tvtms	
-Zsolt 12:3	12:3	12:3	MT	tvtms	
-Zsolt 12:4	12:4	12:4	MT	tvtms	
-Zsolt 12:5	12:5	12:5	MT	tvtms	
-Zsolt 12:6	12:6	12:6	MT	tvtms	
-Zsolt 12:7	12:7	12:7	MT	tvtms	
-Zsolt 12:8	12:8	12:8	MT	tvtms	
-Zsolt 12:9		12:9	MT	szamlalas	
+Zsolt 12:1		12:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 12:2	12:1	12:2	MT	lxx_os_etalon_f91	
+Zsolt 12:3	12:2	12:3	MT	lxx_os_etalon_f91	
+Zsolt 12:4	12:3	12:4	MT	lxx_os_etalon_f91	
+Zsolt 12:5	12:4	12:5	MT	lxx_os_etalon_f91	
+Zsolt 12:6	12:5	12:6	MT	lxx_os_etalon_f91	
+Zsolt 12:7	12:6	12:7	MT	lxx_os_etalon_f91	
+Zsolt 12:8	12:7	12:8	MT	lxx_os_etalon_f91	
+Zsolt 12:9	12:8	12:9	MT	lxx_os_etalon_f91	
 Zsolt 130:1	130:1		KJV	szamlalas	
 Zsolt 130:2	130:2		KJV	szamlalas	
 Zsolt 130:3	130:3		KJV	szamlalas	
@@ -19691,26 +19692,26 @@ Zsolt 139:6	139:6		KJV	szamlalas
 Zsolt 139:7	139:7		KJV	szamlalas	
 Zsolt 139:8	139:8		KJV	szamlalas	
 Zsolt 139:9	139:9		KJV	szamlalas	
-Zsolt 13:1	13:1		KJV	szamlalas	
-Zsolt 13:2	13:2		KJV	szamlalas	
-Zsolt 13:3	13:3		KJV	szamlalas	
-Zsolt 13:4	13:4		KJV	szamlalas	
-Zsolt 13:5	13:5		KJV	szamlalas	
-Zsolt 13:6	13:6		KJV	szamlalas	
-Zsolt 140:1	140:1	140:1	MT	tvtms	
-Zsolt 140:10	140:10	140:10	MT	tvtms	
-Zsolt 140:11	140:11	140:11	MT	tvtms	
-Zsolt 140:12	140:12	140:12	MT	tvtms	
-Zsolt 140:13	140:13	140:13	MT	tvtms	
-Zsolt 140:14		140:14	MT	szamlalas	
-Zsolt 140:2	140:2	140:2	MT	tvtms	
-Zsolt 140:3	140:3	140:3	MT	tvtms	
-Zsolt 140:4	140:4	140:4	MT	tvtms	
-Zsolt 140:5	140:5	140:5	MT	tvtms	
-Zsolt 140:6	140:6	140:6	MT	tvtms	
-Zsolt 140:7	140:7	140:7	MT	tvtms	
-Zsolt 140:8	140:8	140:8	MT	tvtms	
-Zsolt 140:9	140:9	140:9	MT	tvtms	
+Zsolt 13:1			KJV	lxx_os_etalon_f91	felirat
+Zsolt 13:2	13:1		KJV	lxx_os_etalon_f91	
+Zsolt 13:3	13:2		KJV	lxx_os_etalon_f91	
+Zsolt 13:4	13:3		KJV	lxx_os_etalon_f91	
+Zsolt 13:5	13:4		KJV	lxx_os_etalon_f91	
+Zsolt 13:6	13:5		KJV	lxx_os_etalon_f91	KJV 13:5–6 egy Károli-versben (etalon: 13:5;13:6)
+Zsolt 140:1		140:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 140:10	140:9	140:10	MT	lxx_os_etalon_f91	
+Zsolt 140:11	140:10	140:11	MT	lxx_os_etalon_f91	
+Zsolt 140:12	140:11	140:12	MT	lxx_os_etalon_f91	
+Zsolt 140:13	140:12	140:13	MT	lxx_os_etalon_f91	
+Zsolt 140:14	140:13	140:14	MT	lxx_os_etalon_f91	
+Zsolt 140:2	140:1	140:2	MT	lxx_os_etalon_f91	
+Zsolt 140:3	140:2	140:3	MT	lxx_os_etalon_f91	
+Zsolt 140:4	140:3	140:4	MT	lxx_os_etalon_f91	
+Zsolt 140:5	140:4	140:5	MT	lxx_os_etalon_f91	
+Zsolt 140:6	140:5	140:6	MT	lxx_os_etalon_f91	
+Zsolt 140:7	140:6	140:7	MT	lxx_os_etalon_f91	
+Zsolt 140:8	140:7	140:8	MT	lxx_os_etalon_f91	
+Zsolt 140:9	140:8	140:9	MT	lxx_os_etalon_f91	
 Zsolt 141:1	141:1		KJV	szamlalas	
 Zsolt 141:10	141:10		KJV	szamlalas	
 Zsolt 141:2	141:2		KJV	szamlalas	
@@ -19721,14 +19722,14 @@ Zsolt 141:6	141:6		KJV	szamlalas
 Zsolt 141:7	141:7		KJV	szamlalas	
 Zsolt 141:8	141:8		KJV	szamlalas	
 Zsolt 141:9	141:9		KJV	szamlalas	
-Zsolt 142:1	142:1	142:1	MT	tvtms	
-Zsolt 142:2	142:2	142:2	MT	tvtms	
-Zsolt 142:3	142:3	142:3	MT	tvtms	
-Zsolt 142:4	142:4	142:4	MT	tvtms	
-Zsolt 142:5	142:5	142:5	MT	tvtms	
-Zsolt 142:6	142:6	142:6	MT	tvtms	
-Zsolt 142:7	142:7	142:7	MT	tvtms	
-Zsolt 142:8		142:8	MT	szamlalas	
+Zsolt 142:1		142:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 142:2	142:1	142:2	MT	lxx_os_etalon_f91	
+Zsolt 142:3	142:2	142:3	MT	lxx_os_etalon_f91	
+Zsolt 142:4	142:3	142:4	MT	lxx_os_etalon_f91	
+Zsolt 142:5	142:4	142:5	MT	lxx_os_etalon_f91	
+Zsolt 142:6	142:5	142:6	MT	lxx_os_etalon_f91	
+Zsolt 142:7	142:6	142:7	MT	lxx_os_etalon_f91	
+Zsolt 142:8	142:7	142:8	MT	lxx_os_etalon_f91	
 Zsolt 143:1	143:1		KJV	szamlalas	
 Zsolt 143:10	143:10		KJV	szamlalas	
 Zsolt 143:11	143:11		KJV	szamlalas	
@@ -19874,134 +19875,134 @@ Zsolt 17:6	17:6		KJV	szamlalas
 Zsolt 17:7	17:7		KJV	szamlalas	
 Zsolt 17:8	17:8		KJV	szamlalas	
 Zsolt 17:9	17:9		KJV	szamlalas	
-Zsolt 18:1	18:1	18:1	MT	tvtms	
-Zsolt 18:10	18:10	18:10	MT	tvtms	
-Zsolt 18:11	18:11	18:11	MT	tvtms	
-Zsolt 18:12	18:12	18:12	MT	tvtms	
-Zsolt 18:13	18:13	18:13	MT	tvtms	
-Zsolt 18:14	18:14	18:14	MT	tvtms	
-Zsolt 18:15	18:15	18:15	MT	tvtms	
-Zsolt 18:16	18:16	18:16	MT	tvtms	
-Zsolt 18:17	18:17	18:17	MT	tvtms	
-Zsolt 18:18	18:18	18:18	MT	tvtms	
-Zsolt 18:19	18:19	18:19	MT	tvtms	
-Zsolt 18:2	18:2	18:2	MT	tvtms	
-Zsolt 18:20	18:20	18:20	MT	tvtms	
-Zsolt 18:21	18:21	18:21	MT	tvtms	
-Zsolt 18:22	18:22	18:22	MT	tvtms	
-Zsolt 18:23	18:23	18:23	MT	tvtms	
-Zsolt 18:24	18:24	18:24	MT	tvtms	
-Zsolt 18:25	18:25	18:25	MT	tvtms	
-Zsolt 18:26	18:26	18:26	MT	tvtms	
-Zsolt 18:27	18:27	18:27	MT	tvtms	
-Zsolt 18:28	18:28	18:28	MT	tvtms	
-Zsolt 18:29	18:29	18:29	MT	tvtms	
-Zsolt 18:3	18:3	18:3	MT	tvtms	
-Zsolt 18:30	18:30	18:30	MT	tvtms	
-Zsolt 18:31	18:31	18:31	MT	tvtms	
-Zsolt 18:32	18:32	18:32	MT	tvtms	
-Zsolt 18:33	18:33	18:33	MT	tvtms	
-Zsolt 18:34	18:34	18:34	MT	tvtms	
-Zsolt 18:35	18:35	18:35	MT	tvtms	
-Zsolt 18:36	18:36	18:36	MT	tvtms	
-Zsolt 18:37	18:37	18:37	MT	tvtms	
-Zsolt 18:38	18:38	18:38	MT	tvtms	
-Zsolt 18:39	18:39	18:39	MT	tvtms	
-Zsolt 18:4	18:4	18:4	MT	tvtms	
-Zsolt 18:40	18:40	18:40	MT	tvtms	
-Zsolt 18:41	18:41	18:41	MT	tvtms	
-Zsolt 18:42	18:42	18:42	MT	tvtms	
-Zsolt 18:43	18:43	18:43	MT	tvtms	
-Zsolt 18:44	18:44	18:44	MT	tvtms	
-Zsolt 18:45	18:45	18:45	MT	tvtms	
-Zsolt 18:46	18:46	18:46	MT	tvtms	
-Zsolt 18:47	18:47	18:47	MT	tvtms	
-Zsolt 18:48	18:48	18:48	MT	tvtms	
-Zsolt 18:49	18:49	18:49	MT	tvtms	
-Zsolt 18:5	18:5	18:5	MT	tvtms	
-Zsolt 18:50	18:50	18:50	MT	tvtms	
-Zsolt 18:51		18:51	MT	szamlalas	
-Zsolt 18:6	18:6	18:6	MT	tvtms	
-Zsolt 18:7	18:7	18:7	MT	tvtms	
-Zsolt 18:8	18:8	18:8	MT	tvtms	
-Zsolt 18:9	18:9	18:9	MT	tvtms	
-Zsolt 19:1	19:1	19:1	MT	tvtms	
-Zsolt 19:10	19:10	19:10	MT	tvtms	
-Zsolt 19:11	19:11	19:11	MT	tvtms	
-Zsolt 19:12	19:12	19:12	MT	tvtms	
-Zsolt 19:13	19:13	19:13	MT	tvtms	
-Zsolt 19:14	19:14	19:14	MT	tvtms	
-Zsolt 19:15		19:15	MT	szamlalas	
-Zsolt 19:2	19:2	19:2	MT	tvtms	
-Zsolt 19:3	19:3	19:3	MT	tvtms	
-Zsolt 19:4	19:4	19:4	MT	tvtms	
-Zsolt 19:5	19:5	19:5	MT	tvtms	
-Zsolt 19:6	19:6	19:6	MT	tvtms	
-Zsolt 19:7	19:7	19:7	MT	tvtms	
-Zsolt 19:8	19:8	19:8	MT	tvtms	
-Zsolt 19:9	19:9	19:9	MT	tvtms	
+Zsolt 18:1		18:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 18:10	18:9	18:10	MT	lxx_os_etalon_f91	
+Zsolt 18:11	18:10	18:11	MT	lxx_os_etalon_f91	
+Zsolt 18:12	18:11	18:12	MT	lxx_os_etalon_f91	
+Zsolt 18:13	18:12	18:13	MT	lxx_os_etalon_f91	
+Zsolt 18:14	18:13	18:14	MT	lxx_os_etalon_f91	
+Zsolt 18:15	18:14	18:15	MT	lxx_os_etalon_f91	
+Zsolt 18:16	18:15	18:16	MT	lxx_os_etalon_f91	
+Zsolt 18:17	18:16	18:17	MT	lxx_os_etalon_f91	
+Zsolt 18:18	18:17	18:18	MT	lxx_os_etalon_f91	
+Zsolt 18:19	18:18	18:19	MT	lxx_os_etalon_f91	
+Zsolt 18:2	18:1	18:2	MT	lxx_os_etalon_f91	
+Zsolt 18:20	18:19	18:20	MT	lxx_os_etalon_f91	
+Zsolt 18:21	18:20	18:21	MT	lxx_os_etalon_f91	
+Zsolt 18:22	18:21	18:22	MT	lxx_os_etalon_f91	
+Zsolt 18:23	18:22	18:23	MT	lxx_os_etalon_f91	
+Zsolt 18:24	18:23	18:24	MT	lxx_os_etalon_f91	
+Zsolt 18:25	18:24	18:25	MT	lxx_os_etalon_f91	
+Zsolt 18:26	18:25	18:26	MT	lxx_os_etalon_f91	
+Zsolt 18:27	18:26	18:27	MT	lxx_os_etalon_f91	
+Zsolt 18:28	18:27	18:28	MT	lxx_os_etalon_f91	
+Zsolt 18:29	18:28	18:29	MT	lxx_os_etalon_f91	
+Zsolt 18:3	18:2	18:3	MT	lxx_os_etalon_f91	
+Zsolt 18:30	18:29	18:30	MT	lxx_os_etalon_f91	
+Zsolt 18:31	18:30	18:31	MT	lxx_os_etalon_f91	
+Zsolt 18:32	18:31	18:32	MT	lxx_os_etalon_f91	
+Zsolt 18:33	18:32	18:33	MT	lxx_os_etalon_f91	
+Zsolt 18:34	18:33	18:34	MT	lxx_os_etalon_f91	
+Zsolt 18:35	18:34	18:35	MT	lxx_os_etalon_f91	
+Zsolt 18:36	18:35	18:36	MT	lxx_os_etalon_f91	
+Zsolt 18:37	18:36	18:37	MT	lxx_os_etalon_f91	
+Zsolt 18:38	18:37	18:38	MT	lxx_os_etalon_f91	
+Zsolt 18:39	18:38	18:39	MT	lxx_os_etalon_f91	
+Zsolt 18:4	18:3	18:4	MT	lxx_os_etalon_f91	
+Zsolt 18:40	18:39	18:40	MT	lxx_os_etalon_f91	
+Zsolt 18:41	18:40	18:41	MT	lxx_os_etalon_f91	
+Zsolt 18:42	18:41	18:42	MT	lxx_os_etalon_f91	
+Zsolt 18:43	18:42	18:43	MT	lxx_os_etalon_f91	
+Zsolt 18:44	18:43	18:44	MT	lxx_os_etalon_f91	
+Zsolt 18:45	18:44	18:45	MT	lxx_os_etalon_f91	
+Zsolt 18:46	18:45	18:46	MT	lxx_os_etalon_f91	
+Zsolt 18:47	18:46	18:47	MT	lxx_os_etalon_f91	
+Zsolt 18:48	18:47	18:48	MT	lxx_os_etalon_f91	
+Zsolt 18:49	18:48	18:49	MT	lxx_os_etalon_f91	
+Zsolt 18:5	18:4	18:5	MT	lxx_os_etalon_f91	
+Zsolt 18:50	18:49	18:50	MT	lxx_os_etalon_f91	
+Zsolt 18:51	18:50	18:51	MT	lxx_os_etalon_f91	
+Zsolt 18:6	18:5	18:6	MT	lxx_os_etalon_f91	
+Zsolt 18:7	18:6	18:7	MT	lxx_os_etalon_f91	
+Zsolt 18:8	18:7	18:8	MT	lxx_os_etalon_f91	
+Zsolt 18:9	18:8	18:9	MT	lxx_os_etalon_f91	
+Zsolt 19:1		19:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 19:10	19:9	19:10	MT	lxx_os_etalon_f91	
+Zsolt 19:11	19:10	19:11	MT	lxx_os_etalon_f91	
+Zsolt 19:12	19:11	19:12	MT	lxx_os_etalon_f91	
+Zsolt 19:13	19:12	19:13	MT	lxx_os_etalon_f91	
+Zsolt 19:14	19:13	19:14	MT	lxx_os_etalon_f91	
+Zsolt 19:15	19:14	19:15	MT	lxx_os_etalon_f91	
+Zsolt 19:2	19:1	19:2	MT	lxx_os_etalon_f91	
+Zsolt 19:3	19:2	19:3	MT	lxx_os_etalon_f91	
+Zsolt 19:4	19:3	19:4	MT	lxx_os_etalon_f91	
+Zsolt 19:5	19:4	19:5	MT	lxx_os_etalon_f91	
+Zsolt 19:6	19:5	19:6	MT	lxx_os_etalon_f91	
+Zsolt 19:7	19:6	19:7	MT	lxx_os_etalon_f91	
+Zsolt 19:8	19:7	19:8	MT	lxx_os_etalon_f91	
+Zsolt 19:9	19:8	19:9	MT	lxx_os_etalon_f91	
 Zsolt 1:1	1:1		KJV	szamlalas	
 Zsolt 1:2	1:2		KJV	szamlalas	
 Zsolt 1:3	1:3		KJV	szamlalas	
 Zsolt 1:4	1:4		KJV	szamlalas	
 Zsolt 1:5	1:5		KJV	szamlalas	
 Zsolt 1:6	1:6		KJV	szamlalas	
-Zsolt 20:1	20:1	20:1	MT	tvtms	
-Zsolt 20:10		20:10	MT	szamlalas	
-Zsolt 20:2	20:2	20:2	MT	tvtms	
-Zsolt 20:3	20:3	20:3	MT	tvtms	
-Zsolt 20:4	20:4	20:4	MT	tvtms	
-Zsolt 20:5	20:5	20:5	MT	tvtms	
-Zsolt 20:6	20:6	20:6	MT	tvtms	
-Zsolt 20:7	20:7	20:7	MT	tvtms	
-Zsolt 20:8	20:8	20:8	MT	tvtms	
-Zsolt 20:9	20:9	20:9	MT	tvtms	
-Zsolt 21:1	21:1	21:1	MT	tvtms	
-Zsolt 21:10	21:10	21:10	MT	tvtms	
-Zsolt 21:11	21:11	21:11	MT	tvtms	
-Zsolt 21:12	21:12	21:12	MT	tvtms	
-Zsolt 21:13	21:13	21:13	MT	tvtms	
-Zsolt 21:14		21:14	MT	szamlalas	
-Zsolt 21:2	21:2	21:2	MT	tvtms	
-Zsolt 21:3	21:3	21:3	MT	tvtms	
-Zsolt 21:4	21:4	21:4	MT	tvtms	
-Zsolt 21:5	21:5	21:5	MT	tvtms	
-Zsolt 21:6	21:6	21:6	MT	tvtms	
-Zsolt 21:7	21:7	21:7	MT	tvtms	
-Zsolt 21:8	21:8	21:8	MT	tvtms	
-Zsolt 21:9	21:9	21:9	MT	tvtms	
-Zsolt 22:1	22:1	22:1	MT	tvtms	
-Zsolt 22:10	22:10	22:10	MT	tvtms	
-Zsolt 22:11	22:11	22:11	MT	tvtms	
-Zsolt 22:12	22:12	22:12	MT	tvtms	
-Zsolt 22:13	22:13	22:13	MT	tvtms	
-Zsolt 22:14	22:14	22:14	MT	tvtms	
-Zsolt 22:15	22:15	22:15	MT	tvtms	
-Zsolt 22:16	22:16	22:16	MT	tvtms	
-Zsolt 22:17	22:17	22:17	MT	tvtms	
-Zsolt 22:18	22:18	22:18	MT	tvtms	
-Zsolt 22:19	22:19	22:19	MT	tvtms	
-Zsolt 22:2	22:2	22:2	MT	tvtms	
-Zsolt 22:20	22:20	22:20	MT	tvtms	
-Zsolt 22:21	22:21	22:21	MT	tvtms	
-Zsolt 22:22	22:22	22:22	MT	tvtms	
-Zsolt 22:23	22:23	22:23	MT	tvtms	
-Zsolt 22:24	22:24	22:24	MT	tvtms	
-Zsolt 22:25	22:25	22:25	MT	tvtms	
-Zsolt 22:26	22:26	22:26	MT	tvtms	
-Zsolt 22:27	22:27	22:27	MT	tvtms	
-Zsolt 22:28	22:28	22:28	MT	tvtms	
-Zsolt 22:29	22:29	22:29	MT	tvtms	
-Zsolt 22:3	22:3	22:3	MT	tvtms	
-Zsolt 22:30	22:30	22:30	MT	tvtms	
-Zsolt 22:31	22:31	22:31	MT	tvtms	
-Zsolt 22:32		22:32	MT	szamlalas	
-Zsolt 22:4	22:4	22:4	MT	tvtms	
-Zsolt 22:5	22:5	22:5	MT	tvtms	
-Zsolt 22:6	22:6	22:6	MT	tvtms	
-Zsolt 22:7	22:7	22:7	MT	tvtms	
-Zsolt 22:8	22:8	22:8	MT	tvtms	
-Zsolt 22:9	22:9	22:9	MT	tvtms	
+Zsolt 20:1		20:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 20:10	20:9	20:10	MT	lxx_os_etalon_f91	
+Zsolt 20:2	20:1	20:2	MT	lxx_os_etalon_f91	
+Zsolt 20:3	20:2	20:3	MT	lxx_os_etalon_f91	
+Zsolt 20:4	20:3	20:4	MT	lxx_os_etalon_f91	
+Zsolt 20:5	20:4	20:5	MT	lxx_os_etalon_f91	
+Zsolt 20:6	20:5	20:6	MT	lxx_os_etalon_f91	
+Zsolt 20:7	20:6	20:7	MT	lxx_os_etalon_f91	
+Zsolt 20:8	20:7	20:8	MT	lxx_os_etalon_f91	
+Zsolt 20:9	20:8	20:9	MT	lxx_os_etalon_f91	
+Zsolt 21:1		21:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 21:10	21:9	21:10	MT	lxx_os_etalon_f91	
+Zsolt 21:11	21:10	21:11	MT	lxx_os_etalon_f91	
+Zsolt 21:12	21:11	21:12	MT	lxx_os_etalon_f91	
+Zsolt 21:13	21:12	21:13	MT	lxx_os_etalon_f91	
+Zsolt 21:14	21:13	21:14	MT	lxx_os_etalon_f91	
+Zsolt 21:2	21:1	21:2	MT	lxx_os_etalon_f91	
+Zsolt 21:3	21:2	21:3	MT	lxx_os_etalon_f91	
+Zsolt 21:4	21:3	21:4	MT	lxx_os_etalon_f91	
+Zsolt 21:5	21:4	21:5	MT	lxx_os_etalon_f91	
+Zsolt 21:6	21:5	21:6	MT	lxx_os_etalon_f91	
+Zsolt 21:7	21:6	21:7	MT	lxx_os_etalon_f91	
+Zsolt 21:8	21:7	21:8	MT	lxx_os_etalon_f91	
+Zsolt 21:9	21:8	21:9	MT	lxx_os_etalon_f91	
+Zsolt 22:1		22:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 22:10	22:9	22:10	MT	lxx_os_etalon_f91	
+Zsolt 22:11	22:10	22:11	MT	lxx_os_etalon_f91	
+Zsolt 22:12	22:11	22:12	MT	lxx_os_etalon_f91	
+Zsolt 22:13	22:12	22:13	MT	lxx_os_etalon_f91	
+Zsolt 22:14	22:13	22:14	MT	lxx_os_etalon_f91	
+Zsolt 22:15	22:14	22:15	MT	lxx_os_etalon_f91	
+Zsolt 22:16	22:15	22:16	MT	lxx_os_etalon_f91	
+Zsolt 22:17	22:16	22:17	MT	lxx_os_etalon_f91	
+Zsolt 22:18	22:17	22:18	MT	lxx_os_etalon_f91	
+Zsolt 22:19	22:18	22:19	MT	lxx_os_etalon_f91	
+Zsolt 22:2	22:1	22:2	MT	lxx_os_etalon_f91	
+Zsolt 22:20	22:19	22:20	MT	lxx_os_etalon_f91	
+Zsolt 22:21	22:20	22:21	MT	lxx_os_etalon_f91	
+Zsolt 22:22	22:21	22:22	MT	lxx_os_etalon_f91	
+Zsolt 22:23	22:22	22:23	MT	lxx_os_etalon_f91	
+Zsolt 22:24	22:23	22:24	MT	lxx_os_etalon_f91	
+Zsolt 22:25	22:24	22:25	MT	lxx_os_etalon_f91	
+Zsolt 22:26	22:25	22:26	MT	lxx_os_etalon_f91	
+Zsolt 22:27	22:26	22:27	MT	lxx_os_etalon_f91	
+Zsolt 22:28	22:27	22:28	MT	lxx_os_etalon_f91	
+Zsolt 22:29	22:28	22:29	MT	lxx_os_etalon_f91	
+Zsolt 22:3	22:2	22:3	MT	lxx_os_etalon_f91	
+Zsolt 22:30	22:29	22:30	MT	lxx_os_etalon_f91	
+Zsolt 22:31	22:30	22:31	MT	lxx_os_etalon_f91	
+Zsolt 22:32	22:31	22:32	MT	lxx_os_etalon_f91	
+Zsolt 22:4	22:3	22:4	MT	lxx_os_etalon_f91	
+Zsolt 22:5	22:4	22:5	MT	lxx_os_etalon_f91	
+Zsolt 22:6	22:5	22:6	MT	lxx_os_etalon_f91	
+Zsolt 22:7	22:6	22:7	MT	lxx_os_etalon_f91	
+Zsolt 22:8	22:7	22:8	MT	lxx_os_etalon_f91	
+Zsolt 22:9	22:8	22:9	MT	lxx_os_etalon_f91	
 Zsolt 23:1	23:1		KJV	szamlalas	
 Zsolt 23:2	23:2		KJV	szamlalas	
 Zsolt 23:3	23:3		KJV	szamlalas	
@@ -20098,44 +20099,44 @@ Zsolt 2:6	2:6		KJV	szamlalas
 Zsolt 2:7	2:7		KJV	szamlalas	
 Zsolt 2:8	2:8		KJV	szamlalas	
 Zsolt 2:9	2:9		KJV	szamlalas	
-Zsolt 30:1	30:1	30:1	MT	tvtms	
-Zsolt 30:10	30:10	30:10	MT	tvtms	
-Zsolt 30:11	30:11	30:11	MT	tvtms	
-Zsolt 30:12	30:12	30:12	MT	tvtms	
-Zsolt 30:13		30:13	MT	szamlalas	
-Zsolt 30:2	30:2	30:2	MT	tvtms	
-Zsolt 30:3	30:3	30:3	MT	tvtms	
-Zsolt 30:4	30:4	30:4	MT	tvtms	
-Zsolt 30:5	30:5	30:5	MT	tvtms	
-Zsolt 30:6	30:6	30:6	MT	tvtms	
-Zsolt 30:7	30:7	30:7	MT	tvtms	
-Zsolt 30:8	30:8	30:8	MT	tvtms	
-Zsolt 30:9	30:9	30:9	MT	tvtms	
-Zsolt 31:1	31:1	31:1	MT	tvtms	
-Zsolt 31:10	31:10	31:10	MT	tvtms	
-Zsolt 31:11	31:11	31:11	MT	tvtms	
-Zsolt 31:12	31:12	31:12	MT	tvtms	
-Zsolt 31:13	31:13	31:13	MT	tvtms	
-Zsolt 31:14	31:14	31:14	MT	tvtms	
-Zsolt 31:15	31:15	31:15	MT	tvtms	
-Zsolt 31:16	31:16	31:16	MT	tvtms	
-Zsolt 31:17	31:17	31:17	MT	tvtms	
-Zsolt 31:18	31:18	31:18	MT	tvtms	
-Zsolt 31:19	31:19	31:19	MT	tvtms	
-Zsolt 31:2	31:2	31:2	MT	tvtms	
-Zsolt 31:20	31:20	31:20	MT	tvtms	
-Zsolt 31:21	31:21	31:21	MT	tvtms	
-Zsolt 31:22	31:22	31:22	MT	tvtms	
-Zsolt 31:23	31:23	31:23	MT	tvtms	
-Zsolt 31:24	31:24	31:24	MT	tvtms	
-Zsolt 31:25		31:25	MT	szamlalas	
-Zsolt 31:3	31:3	31:3	MT	tvtms	
-Zsolt 31:4	31:4	31:4	MT	tvtms	
-Zsolt 31:5	31:5	31:5	MT	tvtms	
-Zsolt 31:6	31:6	31:6	MT	tvtms	
-Zsolt 31:7	31:7	31:7	MT	tvtms	
-Zsolt 31:8	31:8	31:8	MT	tvtms	
-Zsolt 31:9	31:9	31:9	MT	tvtms	
+Zsolt 30:1		30:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 30:10	30:9	30:10	MT	lxx_os_etalon_f91	
+Zsolt 30:11	30:10	30:11	MT	lxx_os_etalon_f91	
+Zsolt 30:12	30:11	30:12	MT	lxx_os_etalon_f91	
+Zsolt 30:13	30:12	30:13	MT	lxx_os_etalon_f91	
+Zsolt 30:2	30:1	30:2	MT	lxx_os_etalon_f91	
+Zsolt 30:3	30:2	30:3	MT	lxx_os_etalon_f91	
+Zsolt 30:4	30:3	30:4	MT	lxx_os_etalon_f91	
+Zsolt 30:5	30:4	30:5	MT	lxx_os_etalon_f91	
+Zsolt 30:6	30:5	30:6	MT	lxx_os_etalon_f91	
+Zsolt 30:7	30:6	30:7	MT	lxx_os_etalon_f91	
+Zsolt 30:8	30:7	30:8	MT	lxx_os_etalon_f91	
+Zsolt 30:9	30:8	30:9	MT	lxx_os_etalon_f91	
+Zsolt 31:1		31:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 31:10	31:9	31:10	MT	lxx_os_etalon_f91	
+Zsolt 31:11	31:10	31:11	MT	lxx_os_etalon_f91	
+Zsolt 31:12	31:11	31:12	MT	lxx_os_etalon_f91	
+Zsolt 31:13	31:12	31:13	MT	lxx_os_etalon_f91	
+Zsolt 31:14	31:13	31:14	MT	lxx_os_etalon_f91	
+Zsolt 31:15	31:14	31:15	MT	lxx_os_etalon_f91	
+Zsolt 31:16	31:15	31:16	MT	lxx_os_etalon_f91	
+Zsolt 31:17	31:16	31:17	MT	lxx_os_etalon_f91	
+Zsolt 31:18	31:17	31:18	MT	lxx_os_etalon_f91	
+Zsolt 31:19	31:18	31:19	MT	lxx_os_etalon_f91	
+Zsolt 31:2	31:1	31:2	MT	lxx_os_etalon_f91	
+Zsolt 31:20	31:19	31:20	MT	lxx_os_etalon_f91	
+Zsolt 31:21	31:20	31:21	MT	lxx_os_etalon_f91	
+Zsolt 31:22	31:21	31:22	MT	lxx_os_etalon_f91	
+Zsolt 31:23	31:22	31:23	MT	lxx_os_etalon_f91	
+Zsolt 31:24	31:23	31:24	MT	lxx_os_etalon_f91	
+Zsolt 31:25	31:24	31:25	MT	lxx_os_etalon_f91	
+Zsolt 31:3	31:2	31:3	MT	lxx_os_etalon_f91	
+Zsolt 31:4	31:3	31:4	MT	lxx_os_etalon_f91	
+Zsolt 31:5	31:4	31:5	MT	lxx_os_etalon_f91	
+Zsolt 31:6	31:5	31:6	MT	lxx_os_etalon_f91	
+Zsolt 31:7	31:6	31:7	MT	lxx_os_etalon_f91	
+Zsolt 31:8	31:7	31:8	MT	lxx_os_etalon_f91	
+Zsolt 31:9	31:8	31:9	MT	lxx_os_etalon_f91	
 Zsolt 32:1	32:1		KJV	szamlalas	
 Zsolt 32:10	32:10		KJV	szamlalas	
 Zsolt 32:11	32:11		KJV	szamlalas	
@@ -20169,29 +20170,29 @@ Zsolt 33:6	33:6		KJV	szamlalas
 Zsolt 33:7	33:7		KJV	szamlalas	
 Zsolt 33:8	33:8		KJV	szamlalas	
 Zsolt 33:9	33:9		KJV	szamlalas	
-Zsolt 34:1	34:1	34:1	MT	tvtms	
-Zsolt 34:10	34:10	34:10	MT	tvtms	
-Zsolt 34:11	34:11	34:11	MT	tvtms	
-Zsolt 34:12	34:12	34:12	MT	tvtms	
-Zsolt 34:13	34:13	34:13	MT	tvtms	
-Zsolt 34:14	34:14	34:14	MT	tvtms	
-Zsolt 34:15	34:15	34:15	MT	tvtms	
-Zsolt 34:16	34:16	34:16	MT	tvtms	
-Zsolt 34:17	34:17	34:17	MT	tvtms	
-Zsolt 34:18	34:18	34:18	MT	tvtms	
-Zsolt 34:19	34:19	34:19	MT	tvtms	
-Zsolt 34:2	34:2	34:2	MT	tvtms	
-Zsolt 34:20	34:20	34:20	MT	tvtms	
-Zsolt 34:21	34:21	34:21	MT	tvtms	
-Zsolt 34:22	34:22	34:22	MT	tvtms	
-Zsolt 34:23		34:23	MT	szamlalas	
-Zsolt 34:3	34:3	34:3	MT	tvtms	
-Zsolt 34:4	34:4	34:4	MT	tvtms	
-Zsolt 34:5	34:5	34:5	MT	tvtms	
-Zsolt 34:6	34:6	34:6	MT	tvtms	
-Zsolt 34:7	34:7	34:7	MT	tvtms	
-Zsolt 34:8	34:8	34:8	MT	tvtms	
-Zsolt 34:9	34:9	34:9	MT	tvtms	
+Zsolt 34:1		34:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 34:10	34:9	34:10	MT	lxx_os_etalon_f91	
+Zsolt 34:11	34:10	34:11	MT	lxx_os_etalon_f91	
+Zsolt 34:12	34:11	34:12	MT	lxx_os_etalon_f91	
+Zsolt 34:13	34:12	34:13	MT	lxx_os_etalon_f91	
+Zsolt 34:14	34:13	34:14	MT	lxx_os_etalon_f91	
+Zsolt 34:15	34:14	34:15	MT	lxx_os_etalon_f91	
+Zsolt 34:16	34:15	34:16	MT	lxx_os_etalon_f91	
+Zsolt 34:17	34:16	34:17	MT	lxx_os_etalon_f91	
+Zsolt 34:18	34:17	34:18	MT	lxx_os_etalon_f91	
+Zsolt 34:19	34:18	34:19	MT	lxx_os_etalon_f91	
+Zsolt 34:2	34:1	34:2	MT	lxx_os_etalon_f91	
+Zsolt 34:20	34:19	34:20	MT	lxx_os_etalon_f91	
+Zsolt 34:21	34:20	34:21	MT	lxx_os_etalon_f91	
+Zsolt 34:22	34:21	34:22	MT	lxx_os_etalon_f91	
+Zsolt 34:23	34:22	34:23	MT	lxx_os_etalon_f91	
+Zsolt 34:3	34:2	34:3	MT	lxx_os_etalon_f91	
+Zsolt 34:4	34:3	34:4	MT	lxx_os_etalon_f91	
+Zsolt 34:5	34:4	34:5	MT	lxx_os_etalon_f91	
+Zsolt 34:6	34:5	34:6	MT	lxx_os_etalon_f91	
+Zsolt 34:7	34:6	34:7	MT	lxx_os_etalon_f91	
+Zsolt 34:8	34:7	34:8	MT	lxx_os_etalon_f91	
+Zsolt 34:9	34:8	34:9	MT	lxx_os_etalon_f91	
 Zsolt 35:1	35:1		KJV	szamlalas	
 Zsolt 35:10	35:10		KJV	szamlalas	
 Zsolt 35:11	35:11		KJV	szamlalas	
@@ -20220,19 +20221,19 @@ Zsolt 35:6	35:6		KJV	szamlalas
 Zsolt 35:7	35:7		KJV	szamlalas	
 Zsolt 35:8	35:8		KJV	szamlalas	
 Zsolt 35:9	35:9		KJV	szamlalas	
-Zsolt 36:1	36:1	36:1	MT	tvtms	
-Zsolt 36:10	36:10	36:10	MT	tvtms	
-Zsolt 36:11	36:11	36:11	MT	tvtms	
-Zsolt 36:12	36:12	36:12	MT	tvtms	
-Zsolt 36:13		36:13	MT	szamlalas	
-Zsolt 36:2	36:2	36:2	MT	tvtms	
-Zsolt 36:3	36:3	36:3	MT	tvtms	
-Zsolt 36:4	36:4	36:4	MT	tvtms	
-Zsolt 36:5	36:5	36:5	MT	tvtms	
-Zsolt 36:6	36:6	36:6	MT	tvtms	
-Zsolt 36:7	36:7	36:7	MT	tvtms	
-Zsolt 36:8	36:8	36:8	MT	tvtms	
-Zsolt 36:9	36:9	36:9	MT	tvtms	
+Zsolt 36:1		36:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 36:10	36:9	36:10	MT	lxx_os_etalon_f91	
+Zsolt 36:11	36:10	36:11	MT	lxx_os_etalon_f91	
+Zsolt 36:12	36:11	36:12	MT	lxx_os_etalon_f91	
+Zsolt 36:13	36:12	36:13	MT	lxx_os_etalon_f91	
+Zsolt 36:2	36:1	36:2	MT	lxx_os_etalon_f91	
+Zsolt 36:3	36:2	36:3	MT	lxx_os_etalon_f91	
+Zsolt 36:4	36:3	36:4	MT	lxx_os_etalon_f91	
+Zsolt 36:5	36:4	36:5	MT	lxx_os_etalon_f91	
+Zsolt 36:6	36:5	36:6	MT	lxx_os_etalon_f91	
+Zsolt 36:7	36:6	36:7	MT	lxx_os_etalon_f91	
+Zsolt 36:8	36:7	36:8	MT	lxx_os_etalon_f91	
+Zsolt 36:9	36:8	36:9	MT	lxx_os_etalon_f91	
 Zsolt 37:1	37:1		KJV	szamlalas	
 Zsolt 37:10	37:10		KJV	szamlalas	
 Zsolt 37:11	37:11		KJV	szamlalas	
@@ -20273,213 +20274,213 @@ Zsolt 37:6	37:6		KJV	szamlalas
 Zsolt 37:7	37:7		KJV	szamlalas	
 Zsolt 37:8	37:8		KJV	szamlalas	
 Zsolt 37:9	37:9		KJV	szamlalas	
-Zsolt 38:1	38:1	38:1	MT	tvtms	
-Zsolt 38:10	38:10	38:10	MT	tvtms	
-Zsolt 38:11	38:11	38:11	MT	tvtms	
-Zsolt 38:12	38:12	38:12	MT	tvtms	
-Zsolt 38:13	38:13	38:13	MT	tvtms	
-Zsolt 38:14	38:14	38:14	MT	tvtms	
-Zsolt 38:15	38:15	38:15	MT	tvtms	
-Zsolt 38:16	38:16	38:16	MT	tvtms	
-Zsolt 38:17	38:17	38:17	MT	tvtms	
-Zsolt 38:18	38:18	38:18	MT	tvtms	
-Zsolt 38:19	38:19	38:19	MT	tvtms	
-Zsolt 38:2	38:2	38:2	MT	tvtms	
-Zsolt 38:20	38:20	38:20	MT	tvtms	
-Zsolt 38:21	38:21	38:21	MT	tvtms	
-Zsolt 38:22	38:22	38:22	MT	tvtms	
-Zsolt 38:23		38:23	MT	szamlalas	
-Zsolt 38:3	38:3	38:3	MT	tvtms	
-Zsolt 38:4	38:4	38:4	MT	tvtms	
-Zsolt 38:5	38:5	38:5	MT	tvtms	
-Zsolt 38:6	38:6	38:6	MT	tvtms	
-Zsolt 38:7	38:7	38:7	MT	tvtms	
-Zsolt 38:8	38:8	38:8	MT	tvtms	
-Zsolt 38:9	38:9	38:9	MT	tvtms	
-Zsolt 39:1	39:1	39:1	MT	tvtms	
-Zsolt 39:10	39:10	39:10	MT	tvtms	
-Zsolt 39:11	39:11	39:11	MT	tvtms	
-Zsolt 39:12	39:12	39:12	MT	tvtms	
-Zsolt 39:13	39:13	39:13	MT	tvtms	
-Zsolt 39:14		39:14	MT	szamlalas	
-Zsolt 39:2	39:2	39:2	MT	tvtms	
-Zsolt 39:3	39:3	39:3	MT	tvtms	
-Zsolt 39:4	39:4	39:4	MT	tvtms	
-Zsolt 39:5	39:5	39:5	MT	tvtms	
-Zsolt 39:6	39:6	39:6	MT	tvtms	
-Zsolt 39:7	39:7	39:7	MT	tvtms	
-Zsolt 39:8	39:8	39:8	MT	tvtms	
-Zsolt 39:9	39:9	39:9	MT	tvtms	
-Zsolt 3:1	3:1	3:1	MT	tvtms	
-Zsolt 3:2	3:2	3:2	MT	tvtms	
-Zsolt 3:3	3:3	3:3	MT	tvtms	
-Zsolt 3:4	3:4	3:4	MT	tvtms	
-Zsolt 3:5	3:5	3:5	MT	tvtms	
-Zsolt 3:6	3:6	3:6	MT	tvtms	
-Zsolt 3:7	3:7	3:7	MT	tvtms	
-Zsolt 3:8	3:8	3:8	MT	tvtms	
-Zsolt 3:9		3:9	MT	szamlalas	
-Zsolt 40:1	40:1	40:1	MT	tvtms	
-Zsolt 40:10	40:10	40:10	MT	tvtms	
-Zsolt 40:11	40:11	40:11	MT	tvtms	
-Zsolt 40:12	40:12	40:12	MT	tvtms	
-Zsolt 40:13	40:13	40:13	MT	tvtms	
-Zsolt 40:14	40:14	40:14	MT	tvtms	
-Zsolt 40:15	40:15	40:15	MT	tvtms	
-Zsolt 40:16	40:16	40:16	MT	tvtms	
-Zsolt 40:17	40:17	40:17	MT	tvtms	
-Zsolt 40:18		40:18	MT	szamlalas	
-Zsolt 40:2	40:2	40:2	MT	tvtms	
-Zsolt 40:3	40:3	40:3	MT	tvtms	
-Zsolt 40:4	40:4	40:4	MT	tvtms	
-Zsolt 40:5	40:5	40:5	MT	tvtms	
-Zsolt 40:6	40:6	40:6	MT	tvtms	
-Zsolt 40:7	40:7	40:7	MT	tvtms	
-Zsolt 40:8	40:8	40:8	MT	tvtms	
-Zsolt 40:9	40:9	40:9	MT	tvtms	
-Zsolt 41:1	41:1	41:1	MT	tvtms	
-Zsolt 41:10	41:10	41:10	MT	tvtms	
-Zsolt 41:11	41:11	41:11	MT	tvtms	
-Zsolt 41:12	41:12	41:12	MT	tvtms	
-Zsolt 41:13	41:13	41:13	MT	tvtms	
-Zsolt 41:14		41:14	MT	szamlalas	
-Zsolt 41:2	41:2	41:2	MT	tvtms	
-Zsolt 41:3	41:3	41:3	MT	tvtms	
-Zsolt 41:4	41:4	41:4	MT	tvtms	
-Zsolt 41:5	41:5	41:5	MT	tvtms	
-Zsolt 41:6	41:6	41:6	MT	tvtms	
-Zsolt 41:7	41:7	41:7	MT	tvtms	
-Zsolt 41:8	41:8	41:8	MT	tvtms	
-Zsolt 41:9	41:9	41:9	MT	tvtms	
-Zsolt 42:1	42:1	42:1	MT	tvtms	
-Zsolt 42:10	42:10	42:10	MT	tvtms	
-Zsolt 42:11	42:11	42:11	MT	tvtms	
-Zsolt 42:12		42:12	MT	szamlalas	
-Zsolt 42:2	42:2	42:2	MT	tvtms	
-Zsolt 42:3	42:3	42:3	MT	tvtms	
-Zsolt 42:4	42:4	42:4	MT	tvtms	
-Zsolt 42:5	42:5	42:5	MT	tvtms	
-Zsolt 42:6	42:6	42:6	MT	tvtms	
-Zsolt 42:7	42:7	42:7	MT	tvtms	
-Zsolt 42:8	42:8	42:8	MT	tvtms	
-Zsolt 42:9	42:9	42:9	MT	tvtms	
+Zsolt 38:1		38:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 38:10	38:9	38:10	MT	lxx_os_etalon_f91	
+Zsolt 38:11	38:10	38:11	MT	lxx_os_etalon_f91	
+Zsolt 38:12	38:11	38:12	MT	lxx_os_etalon_f91	
+Zsolt 38:13	38:12	38:13	MT	lxx_os_etalon_f91	
+Zsolt 38:14	38:13	38:14	MT	lxx_os_etalon_f91	
+Zsolt 38:15	38:14	38:15	MT	lxx_os_etalon_f91	
+Zsolt 38:16	38:15	38:16	MT	lxx_os_etalon_f91	
+Zsolt 38:17	38:16	38:17	MT	lxx_os_etalon_f91	
+Zsolt 38:18	38:17	38:18	MT	lxx_os_etalon_f91	
+Zsolt 38:19	38:18	38:19	MT	lxx_os_etalon_f91	
+Zsolt 38:2	38:1	38:2	MT	lxx_os_etalon_f91	
+Zsolt 38:20	38:19	38:20	MT	lxx_os_etalon_f91	
+Zsolt 38:21	38:20	38:21	MT	lxx_os_etalon_f91	
+Zsolt 38:22	38:21	38:22	MT	lxx_os_etalon_f91	
+Zsolt 38:23	38:22	38:23	MT	lxx_os_etalon_f91	
+Zsolt 38:3	38:2	38:3	MT	lxx_os_etalon_f91	
+Zsolt 38:4	38:3	38:4	MT	lxx_os_etalon_f91	
+Zsolt 38:5	38:4	38:5	MT	lxx_os_etalon_f91	
+Zsolt 38:6	38:5	38:6	MT	lxx_os_etalon_f91	
+Zsolt 38:7	38:6	38:7	MT	lxx_os_etalon_f91	
+Zsolt 38:8	38:7	38:8	MT	lxx_os_etalon_f91	
+Zsolt 38:9	38:8	38:9	MT	lxx_os_etalon_f91	
+Zsolt 39:1		39:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 39:10	39:9	39:10	MT	lxx_os_etalon_f91	
+Zsolt 39:11	39:10	39:11	MT	lxx_os_etalon_f91	
+Zsolt 39:12	39:11	39:12	MT	lxx_os_etalon_f91	
+Zsolt 39:13	39:12	39:13	MT	lxx_os_etalon_f91	
+Zsolt 39:14	39:13	39:14	MT	lxx_os_etalon_f91	
+Zsolt 39:2	39:1	39:2	MT	lxx_os_etalon_f91	
+Zsolt 39:3	39:2	39:3	MT	lxx_os_etalon_f91	
+Zsolt 39:4	39:3	39:4	MT	lxx_os_etalon_f91	
+Zsolt 39:5	39:4	39:5	MT	lxx_os_etalon_f91	
+Zsolt 39:6	39:5	39:6	MT	lxx_os_etalon_f91	
+Zsolt 39:7	39:6	39:7	MT	lxx_os_etalon_f91	
+Zsolt 39:8	39:7	39:8	MT	lxx_os_etalon_f91	
+Zsolt 39:9	39:8	39:9	MT	lxx_os_etalon_f91	
+Zsolt 3:1		3:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 3:2	3:1	3:2	MT	lxx_os_etalon_f91	
+Zsolt 3:3	3:2	3:3	MT	lxx_os_etalon_f91	
+Zsolt 3:4	3:3	3:4	MT	lxx_os_etalon_f91	
+Zsolt 3:5	3:4	3:5	MT	lxx_os_etalon_f91	
+Zsolt 3:6	3:5	3:6	MT	lxx_os_etalon_f91	
+Zsolt 3:7	3:6	3:7	MT	lxx_os_etalon_f91	
+Zsolt 3:8	3:7	3:8	MT	lxx_os_etalon_f91	
+Zsolt 3:9	3:8	3:9	MT	lxx_os_etalon_f91	
+Zsolt 40:1		40:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 40:10	40:9	40:10	MT	lxx_os_etalon_f91	
+Zsolt 40:11	40:10	40:11	MT	lxx_os_etalon_f91	
+Zsolt 40:12	40:11	40:12	MT	lxx_os_etalon_f91	
+Zsolt 40:13	40:12	40:13	MT	lxx_os_etalon_f91	
+Zsolt 40:14	40:13	40:14	MT	lxx_os_etalon_f91	
+Zsolt 40:15	40:14	40:15	MT	lxx_os_etalon_f91	
+Zsolt 40:16	40:15	40:16	MT	lxx_os_etalon_f91	
+Zsolt 40:17	40:16	40:17	MT	lxx_os_etalon_f91	
+Zsolt 40:18	40:17	40:18	MT	lxx_os_etalon_f91	
+Zsolt 40:2	40:1	40:2	MT	lxx_os_etalon_f91	
+Zsolt 40:3	40:2	40:3	MT	lxx_os_etalon_f91	
+Zsolt 40:4	40:3	40:4	MT	lxx_os_etalon_f91	
+Zsolt 40:5	40:4	40:5	MT	lxx_os_etalon_f91	
+Zsolt 40:6	40:5	40:6	MT	lxx_os_etalon_f91	
+Zsolt 40:7	40:6	40:7	MT	lxx_os_etalon_f91	
+Zsolt 40:8	40:7	40:8	MT	lxx_os_etalon_f91	
+Zsolt 40:9	40:8	40:9	MT	lxx_os_etalon_f91	
+Zsolt 41:1		41:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 41:10	41:9	41:10	MT	lxx_os_etalon_f91	
+Zsolt 41:11	41:10	41:11	MT	lxx_os_etalon_f91	
+Zsolt 41:12	41:11	41:12	MT	lxx_os_etalon_f91	
+Zsolt 41:13	41:12	41:13	MT	lxx_os_etalon_f91	
+Zsolt 41:14	41:13	41:14	MT	lxx_os_etalon_f91	
+Zsolt 41:2	41:1	41:2	MT	lxx_os_etalon_f91	
+Zsolt 41:3	41:2	41:3	MT	lxx_os_etalon_f91	
+Zsolt 41:4	41:3	41:4	MT	lxx_os_etalon_f91	
+Zsolt 41:5	41:4	41:5	MT	lxx_os_etalon_f91	
+Zsolt 41:6	41:5	41:6	MT	lxx_os_etalon_f91	
+Zsolt 41:7	41:6	41:7	MT	lxx_os_etalon_f91	
+Zsolt 41:8	41:7	41:8	MT	lxx_os_etalon_f91	
+Zsolt 41:9	41:8	41:9	MT	lxx_os_etalon_f91	
+Zsolt 42:1		42:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 42:10	42:9	42:10	MT	lxx_os_etalon_f91	
+Zsolt 42:11	42:10	42:11	MT	lxx_os_etalon_f91	
+Zsolt 42:12	42:11	42:12	MT	lxx_os_etalon_f91	
+Zsolt 42:2	42:1	42:2	MT	lxx_os_etalon_f91	
+Zsolt 42:3	42:2	42:3	MT	lxx_os_etalon_f91	
+Zsolt 42:4	42:3	42:4	MT	lxx_os_etalon_f91	
+Zsolt 42:5	42:4	42:5	MT	lxx_os_etalon_f91	
+Zsolt 42:6	42:5	42:6	MT	lxx_os_etalon_f91	
+Zsolt 42:7	42:6	42:7	MT	lxx_os_etalon_f91	
+Zsolt 42:8	42:7	42:8	MT	lxx_os_etalon_f91	
+Zsolt 42:9	42:8	42:9	MT	lxx_os_etalon_f91	
 Zsolt 43:1	43:1		KJV	szamlalas	
 Zsolt 43:2	43:2		KJV	szamlalas	
 Zsolt 43:3	43:3		KJV	szamlalas	
 Zsolt 43:4	43:4		KJV	szamlalas	
 Zsolt 43:5	43:5		KJV	szamlalas	
-Zsolt 44:1	44:1	44:1	MT	tvtms	
-Zsolt 44:10	44:10	44:10	MT	tvtms	
-Zsolt 44:11	44:11	44:11	MT	tvtms	
-Zsolt 44:12	44:12	44:12	MT	tvtms	
-Zsolt 44:13	44:13	44:13	MT	tvtms	
-Zsolt 44:14	44:14	44:14	MT	tvtms	
-Zsolt 44:15	44:15	44:15	MT	tvtms	
-Zsolt 44:16	44:16	44:16	MT	tvtms	
-Zsolt 44:17	44:17	44:17	MT	tvtms	
-Zsolt 44:18	44:18	44:18	MT	tvtms	
-Zsolt 44:19	44:19	44:19	MT	tvtms	
-Zsolt 44:2	44:2	44:2	MT	tvtms	
-Zsolt 44:20	44:20	44:20	MT	tvtms	
-Zsolt 44:21	44:21	44:21	MT	tvtms	
-Zsolt 44:22	44:22	44:22	MT	tvtms	
-Zsolt 44:23	44:23	44:23	MT	tvtms	
-Zsolt 44:24	44:24	44:24	MT	tvtms	
-Zsolt 44:25	44:25	44:25	MT	tvtms	
-Zsolt 44:26	44:26	44:26	MT	tvtms	
-Zsolt 44:27		44:27	MT	szamlalas	
-Zsolt 44:3	44:3	44:3	MT	tvtms	
-Zsolt 44:4	44:4	44:4	MT	tvtms	
-Zsolt 44:5	44:5	44:5	MT	tvtms	
-Zsolt 44:6	44:6	44:6	MT	tvtms	
-Zsolt 44:7	44:7	44:7	MT	tvtms	
-Zsolt 44:8	44:8	44:8	MT	tvtms	
-Zsolt 44:9	44:9	44:9	MT	tvtms	
-Zsolt 45:1	45:1	45:1	MT	tvtms	
-Zsolt 45:10	45:10	45:10	MT	tvtms	
-Zsolt 45:11	45:11	45:11	MT	tvtms	
-Zsolt 45:12	45:12	45:12	MT	tvtms	
-Zsolt 45:13	45:13	45:13	MT	tvtms	
-Zsolt 45:14	45:14	45:14	MT	tvtms	
-Zsolt 45:15	45:15	45:15	MT	tvtms	
-Zsolt 45:16	45:16	45:16	MT	tvtms	
-Zsolt 45:17	45:17	45:17	MT	tvtms	
-Zsolt 45:18		45:18	MT	szamlalas	
-Zsolt 45:2	45:2	45:2	MT	tvtms	
-Zsolt 45:3	45:3	45:3	MT	tvtms	
-Zsolt 45:4	45:4	45:4	MT	tvtms	
-Zsolt 45:5	45:5	45:5	MT	tvtms	
-Zsolt 45:6	45:6	45:6	MT	tvtms	
-Zsolt 45:7	45:7	45:7	MT	tvtms	
-Zsolt 45:8	45:8	45:8	MT	tvtms	
-Zsolt 45:9	45:9	45:9	MT	tvtms	
-Zsolt 46:1	46:1	46:1	MT	tvtms	
-Zsolt 46:10	46:10	46:10	MT	tvtms	
-Zsolt 46:11	46:11	46:11	MT	tvtms	
-Zsolt 46:12		46:12	MT	szamlalas	
-Zsolt 46:2	46:2	46:2	MT	tvtms	
-Zsolt 46:3	46:3	46:3	MT	tvtms	
-Zsolt 46:4	46:4	46:4	MT	tvtms	
-Zsolt 46:5	46:5	46:5	MT	tvtms	
-Zsolt 46:6	46:6	46:6	MT	tvtms	
-Zsolt 46:7	46:7	46:7	MT	tvtms	
-Zsolt 46:8	46:8	46:8	MT	tvtms	
-Zsolt 46:9	46:9	46:9	MT	tvtms	
-Zsolt 47:1	47:1	47:1	MT	tvtms	
-Zsolt 47:10		47:10	MT	szamlalas	
-Zsolt 47:2	47:2	47:2	MT	tvtms	
-Zsolt 47:3	47:3	47:3	MT	tvtms	
-Zsolt 47:4	47:4	47:4	MT	tvtms	
-Zsolt 47:5	47:5	47:5	MT	tvtms	
-Zsolt 47:6	47:6	47:6	MT	tvtms	
-Zsolt 47:7	47:7	47:7	MT	tvtms	
-Zsolt 47:8	47:8	47:8	MT	tvtms	
-Zsolt 47:9	47:9	47:9	MT	tvtms	
-Zsolt 48:1	48:1	48:1	MT	tvtms	
-Zsolt 48:10	48:10	48:10	MT	tvtms	
-Zsolt 48:11	48:11	48:11	MT	tvtms	
-Zsolt 48:12	48:12	48:12	MT	tvtms	
-Zsolt 48:13	48:13	48:13	MT	tvtms	
-Zsolt 48:14	48:14	48:14	MT	tvtms	
-Zsolt 48:15		48:15	MT	szamlalas	
-Zsolt 48:2	48:2	48:2	MT	tvtms	
-Zsolt 48:3	48:3	48:3	MT	tvtms	
-Zsolt 48:4	48:4	48:4	MT	tvtms	
-Zsolt 48:5	48:5	48:5	MT	tvtms	
-Zsolt 48:6	48:6	48:6	MT	tvtms	
-Zsolt 48:7	48:7	48:7	MT	tvtms	
-Zsolt 48:8	48:8	48:8	MT	tvtms	
-Zsolt 48:9	48:9	48:9	MT	tvtms	
-Zsolt 49:1	49:1	49:1	MT	tvtms	
-Zsolt 49:10	49:10	49:10	MT	tvtms	
-Zsolt 49:11	49:11	49:11	MT	tvtms	
-Zsolt 49:12	49:12	49:12	MT	tvtms	
-Zsolt 49:13	49:13	49:13	MT	tvtms	
-Zsolt 49:14	49:14	49:14	MT	tvtms	
-Zsolt 49:15	49:15	49:15	MT	tvtms	
-Zsolt 49:16	49:16	49:16	MT	tvtms	
-Zsolt 49:17	49:17	49:17	MT	tvtms	
-Zsolt 49:18	49:18	49:18	MT	tvtms	
-Zsolt 49:19	49:19	49:19	MT	tvtms	
-Zsolt 49:2	49:2	49:2	MT	tvtms	
-Zsolt 49:20	49:20	49:20	MT	tvtms	
-Zsolt 49:21		49:21	MT	szamlalas	
-Zsolt 49:3	49:3	49:3	MT	tvtms	
-Zsolt 49:4	49:4	49:4	MT	tvtms	
-Zsolt 49:5	49:5	49:5	MT	tvtms	
-Zsolt 49:6	49:6	49:6	MT	tvtms	
-Zsolt 49:7	49:7	49:7	MT	tvtms	
-Zsolt 49:8	49:8	49:8	MT	tvtms	
-Zsolt 49:9	49:9	49:9	MT	tvtms	
-Zsolt 4:1	4:1	4:1	MT	tvtms	
-Zsolt 4:2	4:2	4:2	MT	tvtms	
-Zsolt 4:3	4:3	4:3	MT	tvtms	
-Zsolt 4:4	4:4	4:4	MT	tvtms	
-Zsolt 4:5	4:5	4:5	MT	tvtms	
-Zsolt 4:6	4:6	4:6	MT	tvtms	
-Zsolt 4:7	4:7	4:7	MT	tvtms	
-Zsolt 4:8	4:8	4:8	MT	tvtms	
-Zsolt 4:9		4:9	MT	szamlalas	
+Zsolt 44:1		44:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 44:10	44:9	44:10	MT	lxx_os_etalon_f91	
+Zsolt 44:11	44:10	44:11	MT	lxx_os_etalon_f91	
+Zsolt 44:12	44:11	44:12	MT	lxx_os_etalon_f91	
+Zsolt 44:13	44:12	44:13	MT	lxx_os_etalon_f91	
+Zsolt 44:14	44:13	44:14	MT	lxx_os_etalon_f91	
+Zsolt 44:15	44:14	44:15	MT	lxx_os_etalon_f91	
+Zsolt 44:16	44:15	44:16	MT	lxx_os_etalon_f91	
+Zsolt 44:17	44:16	44:17	MT	lxx_os_etalon_f91	
+Zsolt 44:18	44:17	44:18	MT	lxx_os_etalon_f91	
+Zsolt 44:19	44:18	44:19	MT	lxx_os_etalon_f91	
+Zsolt 44:2	44:1	44:2	MT	lxx_os_etalon_f91	
+Zsolt 44:20	44:19	44:20	MT	lxx_os_etalon_f91	
+Zsolt 44:21	44:20	44:21	MT	lxx_os_etalon_f91	
+Zsolt 44:22	44:21	44:22	MT	lxx_os_etalon_f91	
+Zsolt 44:23	44:22	44:23	MT	lxx_os_etalon_f91	
+Zsolt 44:24	44:23	44:24	MT	lxx_os_etalon_f91	
+Zsolt 44:25	44:24	44:25	MT	lxx_os_etalon_f91	
+Zsolt 44:26	44:25	44:26	MT	lxx_os_etalon_f91	
+Zsolt 44:27	44:26	44:27	MT	lxx_os_etalon_f91	
+Zsolt 44:3	44:2	44:3	MT	lxx_os_etalon_f91	
+Zsolt 44:4	44:3	44:4	MT	lxx_os_etalon_f91	
+Zsolt 44:5	44:4	44:5	MT	lxx_os_etalon_f91	
+Zsolt 44:6	44:5	44:6	MT	lxx_os_etalon_f91	
+Zsolt 44:7	44:6	44:7	MT	lxx_os_etalon_f91	
+Zsolt 44:8	44:7	44:8	MT	lxx_os_etalon_f91	
+Zsolt 44:9	44:8	44:9	MT	lxx_os_etalon_f91	
+Zsolt 45:1		45:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 45:10	45:9	45:10	MT	lxx_os_etalon_f91	
+Zsolt 45:11	45:10	45:11	MT	lxx_os_etalon_f91	
+Zsolt 45:12	45:11	45:12	MT	lxx_os_etalon_f91	
+Zsolt 45:13	45:12	45:13	MT	lxx_os_etalon_f91	
+Zsolt 45:14	45:13	45:14	MT	lxx_os_etalon_f91	
+Zsolt 45:15	45:14	45:15	MT	lxx_os_etalon_f91	
+Zsolt 45:16	45:15	45:16	MT	lxx_os_etalon_f91	
+Zsolt 45:17	45:16	45:17	MT	lxx_os_etalon_f91	
+Zsolt 45:18	45:17	45:18	MT	lxx_os_etalon_f91	
+Zsolt 45:2	45:1	45:2	MT	lxx_os_etalon_f91	
+Zsolt 45:3	45:2	45:3	MT	lxx_os_etalon_f91	
+Zsolt 45:4	45:3	45:4	MT	lxx_os_etalon_f91	
+Zsolt 45:5	45:4	45:5	MT	lxx_os_etalon_f91	
+Zsolt 45:6	45:5	45:6	MT	lxx_os_etalon_f91	
+Zsolt 45:7	45:6	45:7	MT	lxx_os_etalon_f91	
+Zsolt 45:8	45:7	45:8	MT	lxx_os_etalon_f91	
+Zsolt 45:9	45:8	45:9	MT	lxx_os_etalon_f91	
+Zsolt 46:1		46:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 46:10	46:9	46:10	MT	lxx_os_etalon_f91	
+Zsolt 46:11	46:10	46:11	MT	lxx_os_etalon_f91	
+Zsolt 46:12	46:11	46:12	MT	lxx_os_etalon_f91	
+Zsolt 46:2	46:1	46:2	MT	lxx_os_etalon_f91	
+Zsolt 46:3	46:2	46:3	MT	lxx_os_etalon_f91	
+Zsolt 46:4	46:3	46:4	MT	lxx_os_etalon_f91	
+Zsolt 46:5	46:4	46:5	MT	lxx_os_etalon_f91	
+Zsolt 46:6	46:5	46:6	MT	lxx_os_etalon_f91	
+Zsolt 46:7	46:6	46:7	MT	lxx_os_etalon_f91	
+Zsolt 46:8	46:7	46:8	MT	lxx_os_etalon_f91	
+Zsolt 46:9	46:8	46:9	MT	lxx_os_etalon_f91	
+Zsolt 47:1		47:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 47:10	47:9	47:10	MT	lxx_os_etalon_f91	
+Zsolt 47:2	47:1	47:2	MT	lxx_os_etalon_f91	
+Zsolt 47:3	47:2	47:3	MT	lxx_os_etalon_f91	
+Zsolt 47:4	47:3	47:4	MT	lxx_os_etalon_f91	
+Zsolt 47:5	47:4	47:5	MT	lxx_os_etalon_f91	
+Zsolt 47:6	47:5	47:6	MT	lxx_os_etalon_f91	
+Zsolt 47:7	47:6	47:7	MT	lxx_os_etalon_f91	
+Zsolt 47:8	47:7	47:8	MT	lxx_os_etalon_f91	
+Zsolt 47:9	47:8	47:9	MT	lxx_os_etalon_f91	
+Zsolt 48:1		48:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 48:10	48:9	48:10	MT	lxx_os_etalon_f91	
+Zsolt 48:11	48:10	48:11	MT	lxx_os_etalon_f91	
+Zsolt 48:12	48:11	48:12	MT	lxx_os_etalon_f91	
+Zsolt 48:13	48:12	48:13	MT	lxx_os_etalon_f91	
+Zsolt 48:14	48:13	48:14	MT	lxx_os_etalon_f91	
+Zsolt 48:15	48:14	48:15	MT	lxx_os_etalon_f91	
+Zsolt 48:2	48:1	48:2	MT	lxx_os_etalon_f91	
+Zsolt 48:3	48:2	48:3	MT	lxx_os_etalon_f91	
+Zsolt 48:4	48:3	48:4	MT	lxx_os_etalon_f91	
+Zsolt 48:5	48:4	48:5	MT	lxx_os_etalon_f91	
+Zsolt 48:6	48:5	48:6	MT	lxx_os_etalon_f91	
+Zsolt 48:7	48:6	48:7	MT	lxx_os_etalon_f91	
+Zsolt 48:8	48:7	48:8	MT	lxx_os_etalon_f91	
+Zsolt 48:9	48:8	48:9	MT	lxx_os_etalon_f91	
+Zsolt 49:1		49:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 49:10	49:9	49:10	MT	lxx_os_etalon_f91	
+Zsolt 49:11	49:10	49:11	MT	lxx_os_etalon_f91	
+Zsolt 49:12	49:11	49:12	MT	lxx_os_etalon_f91	
+Zsolt 49:13	49:12	49:13	MT	lxx_os_etalon_f91	
+Zsolt 49:14	49:13	49:14	MT	lxx_os_etalon_f91	
+Zsolt 49:15	49:14	49:15	MT	lxx_os_etalon_f91	
+Zsolt 49:16	49:15	49:16	MT	lxx_os_etalon_f91	
+Zsolt 49:17	49:16	49:17	MT	lxx_os_etalon_f91	
+Zsolt 49:18	49:17	49:18	MT	lxx_os_etalon_f91	
+Zsolt 49:19	49:18	49:19	MT	lxx_os_etalon_f91	
+Zsolt 49:2	49:1	49:2	MT	lxx_os_etalon_f91	
+Zsolt 49:20	49:19	49:20	MT	lxx_os_etalon_f91	
+Zsolt 49:21	49:20	49:21	MT	lxx_os_etalon_f91	
+Zsolt 49:3	49:2	49:3	MT	lxx_os_etalon_f91	
+Zsolt 49:4	49:3	49:4	MT	lxx_os_etalon_f91	
+Zsolt 49:5	49:4	49:5	MT	lxx_os_etalon_f91	
+Zsolt 49:6	49:5	49:6	MT	lxx_os_etalon_f91	
+Zsolt 49:7	49:6	49:7	MT	lxx_os_etalon_f91	
+Zsolt 49:8	49:7	49:8	MT	lxx_os_etalon_f91	
+Zsolt 49:9	49:8	49:9	MT	lxx_os_etalon_f91	
+Zsolt 4:1		4:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 4:2	4:1	4:2	MT	lxx_os_etalon_f91	
+Zsolt 4:3	4:2	4:3	MT	lxx_os_etalon_f91	
+Zsolt 4:4	4:3	4:4	MT	lxx_os_etalon_f91	
+Zsolt 4:5	4:4	4:5	MT	lxx_os_etalon_f91	
+Zsolt 4:6	4:5	4:6	MT	lxx_os_etalon_f91	
+Zsolt 4:7	4:6	4:7	MT	lxx_os_etalon_f91	
+Zsolt 4:8	4:7	4:8	MT	lxx_os_etalon_f91	
+Zsolt 4:9	4:8	4:9	MT	lxx_os_etalon_f91	
 Zsolt 50:1	50:1		KJV	szamlalas	
 Zsolt 50:10	50:10		KJV	szamlalas	
 Zsolt 50:11	50:11		KJV	szamlalas	
@@ -20503,220 +20504,220 @@ Zsolt 50:6	50:6		KJV	szamlalas
 Zsolt 50:7	50:7		KJV	szamlalas	
 Zsolt 50:8	50:8		KJV	szamlalas	
 Zsolt 50:9	50:9		KJV	szamlalas	
-Zsolt 51:1	51:1	51:1	MT	tvtms	
-Zsolt 51:10	51:10	51:10	MT	tvtms	
-Zsolt 51:11	51:11	51:11	MT	tvtms	
-Zsolt 51:12	51:12	51:12	MT	tvtms	
-Zsolt 51:13	51:13	51:13	MT	tvtms	
-Zsolt 51:14	51:14	51:14	MT	tvtms	
-Zsolt 51:15	51:15	51:15	MT	tvtms	
-Zsolt 51:16	51:16	51:16	MT	tvtms	
-Zsolt 51:17	51:17	51:17	MT	tvtms	
-Zsolt 51:18	51:18	51:18	MT	tvtms	
-Zsolt 51:19	51:19	51:19	MT	tvtms	
-Zsolt 51:2	51:2	51:2	MT	tvtms	
-Zsolt 51:20		51:20	MT	szamlalas	
-Zsolt 51:21		51:21	MT	szamlalas	
-Zsolt 51:3	51:3	51:3	MT	tvtms	
-Zsolt 51:4	51:4	51:4	MT	tvtms	
-Zsolt 51:5	51:5	51:5	MT	tvtms	
-Zsolt 51:6	51:6	51:6	MT	tvtms	
-Zsolt 51:7	51:7	51:7	MT	tvtms	
-Zsolt 51:8	51:8	51:8	MT	tvtms	
-Zsolt 51:9	51:9	51:9	MT	tvtms	
-Zsolt 52:1	52:1	52:1	MT	tvtms	
-Zsolt 52:10		52:10	MT	szamlalas	
-Zsolt 52:11		52:11	MT	szamlalas	
-Zsolt 52:2	52:2	52:2	MT	tvtms	
-Zsolt 52:3	52:3	52:3	MT	tvtms	
-Zsolt 52:4	52:4	52:4	MT	tvtms	
-Zsolt 52:5	52:5	52:5	MT	tvtms	
-Zsolt 52:6	52:6	52:6	MT	tvtms	
-Zsolt 52:7	52:7	52:7	MT	tvtms	
-Zsolt 52:8	52:8	52:8	MT	tvtms	
-Zsolt 52:9	52:9	52:9	MT	tvtms	
-Zsolt 53:1	53:1	53:1	MT	tvtms	
-Zsolt 53:2	53:2	53:2	MT	tvtms	
-Zsolt 53:3	53:3	53:3	MT	tvtms	
-Zsolt 53:4	53:4	53:4	MT	tvtms	
-Zsolt 53:5	53:5	53:5	MT	tvtms	
-Zsolt 53:6	53:6	53:6	MT	tvtms	
-Zsolt 53:7		53:7	MT	szamlalas	
-Zsolt 54:1	54:1	54:1	MT	tvtms	
-Zsolt 54:2	54:2	54:2	MT	tvtms	
-Zsolt 54:3	54:3	54:3	MT	tvtms	
-Zsolt 54:4	54:4	54:4	MT	tvtms	
-Zsolt 54:5	54:5	54:5	MT	tvtms	
-Zsolt 54:6	54:6	54:6	MT	tvtms	
-Zsolt 54:7	54:7	54:7	MT	tvtms	
-Zsolt 54:8		54:8	MT	szamlalas	
-Zsolt 54:9		54:9	MT	szamlalas	
-Zsolt 55:1	55:1	55:1	MT	tvtms	
-Zsolt 55:10	55:10	55:10	MT	tvtms	
-Zsolt 55:11	55:11	55:11	MT	tvtms	
-Zsolt 55:12	55:12	55:12	MT	tvtms	
-Zsolt 55:13	55:13	55:13	MT	tvtms	
-Zsolt 55:14	55:14	55:14	MT	tvtms	
-Zsolt 55:15	55:15	55:15	MT	tvtms	
-Zsolt 55:16	55:16	55:16	MT	tvtms	
-Zsolt 55:17	55:17	55:17	MT	tvtms	
-Zsolt 55:18	55:18	55:18	MT	tvtms	
-Zsolt 55:19	55:19	55:19	MT	tvtms	
-Zsolt 55:2	55:2	55:2	MT	tvtms	
-Zsolt 55:20	55:20	55:20	MT	tvtms	
-Zsolt 55:21	55:21	55:21	MT	tvtms	
-Zsolt 55:22	55:22	55:22	MT	tvtms	
-Zsolt 55:23	55:23	55:23	MT	tvtms	
-Zsolt 55:24		55:24	MT	szamlalas	
-Zsolt 55:3	55:3	55:3	MT	tvtms	
-Zsolt 55:4	55:4	55:4	MT	tvtms	
-Zsolt 55:5	55:5	55:5	MT	tvtms	
-Zsolt 55:6	55:6	55:6	MT	tvtms	
-Zsolt 55:7	55:7	55:7	MT	tvtms	
-Zsolt 55:8	55:8	55:8	MT	tvtms	
-Zsolt 55:9	55:9	55:9	MT	tvtms	
-Zsolt 56:1	56:1	56:1	MT	tvtms	
-Zsolt 56:10	56:10	56:10	MT	tvtms	
-Zsolt 56:11	56:11	56:11	MT	tvtms	
-Zsolt 56:12	56:12	56:12	MT	tvtms	
-Zsolt 56:13	56:13	56:13	MT	tvtms	
-Zsolt 56:14		56:14	MT	szamlalas	
-Zsolt 56:2	56:2	56:2	MT	tvtms	
-Zsolt 56:3	56:3	56:3	MT	tvtms	
-Zsolt 56:4	56:4	56:4	MT	tvtms	
-Zsolt 56:5	56:5	56:5	MT	tvtms	
-Zsolt 56:6	56:6	56:6	MT	tvtms	
-Zsolt 56:7	56:7	56:7	MT	tvtms	
-Zsolt 56:8	56:8	56:8	MT	tvtms	
-Zsolt 56:9	56:9	56:9	MT	tvtms	
-Zsolt 57:1	57:1	57:1	MT	tvtms	
-Zsolt 57:10	57:10	57:10	MT	tvtms	
-Zsolt 57:11	57:11	57:11	MT	tvtms	
-Zsolt 57:12		57:12	MT	szamlalas	
-Zsolt 57:2	57:2	57:2	MT	tvtms	
-Zsolt 57:3	57:3	57:3	MT	tvtms	
-Zsolt 57:4	57:4	57:4	MT	tvtms	
-Zsolt 57:5	57:5	57:5	MT	tvtms	
-Zsolt 57:6	57:6	57:6	MT	tvtms	
-Zsolt 57:7	57:7	57:7	MT	tvtms	
-Zsolt 57:8	57:8	57:8	MT	tvtms	
-Zsolt 57:9	57:9	57:9	MT	tvtms	
-Zsolt 58:1	58:1	58:1	MT	tvtms	
-Zsolt 58:10	58:10	58:10	MT	tvtms	
-Zsolt 58:11	58:11	58:11	MT	tvtms	
-Zsolt 58:12		58:12	MT	szamlalas	
-Zsolt 58:2	58:2	58:2	MT	tvtms	
-Zsolt 58:3	58:3	58:3	MT	tvtms	
-Zsolt 58:4	58:4	58:4	MT	tvtms	
-Zsolt 58:5	58:5	58:5	MT	tvtms	
-Zsolt 58:6	58:6	58:6	MT	tvtms	
-Zsolt 58:7	58:7	58:7	MT	tvtms	
-Zsolt 58:8	58:8	58:8	MT	tvtms	
-Zsolt 58:9	58:9	58:9	MT	tvtms	
-Zsolt 59:1	59:1	59:1	MT	tvtms	
-Zsolt 59:10	59:10	59:10	MT	tvtms	
-Zsolt 59:11	59:11	59:11	MT	tvtms	
-Zsolt 59:12	59:12	59:12	MT	tvtms	
-Zsolt 59:13	59:13	59:13	MT	tvtms	
-Zsolt 59:14	59:14	59:14	MT	tvtms	
-Zsolt 59:15	59:15	59:15	MT	tvtms	
-Zsolt 59:16	59:16	59:16	MT	tvtms	
-Zsolt 59:17	59:17	59:17	MT	tvtms	
-Zsolt 59:18		59:18	MT	szamlalas	
-Zsolt 59:2	59:2	59:2	MT	tvtms	
-Zsolt 59:3	59:3	59:3	MT	tvtms	
-Zsolt 59:4	59:4	59:4	MT	tvtms	
-Zsolt 59:5	59:5	59:5	MT	tvtms	
-Zsolt 59:6	59:6	59:6	MT	tvtms	
-Zsolt 59:7	59:7	59:7	MT	tvtms	
-Zsolt 59:8	59:8	59:8	MT	tvtms	
-Zsolt 59:9	59:9	59:9	MT	tvtms	
-Zsolt 5:1	5:1	5:1	MT	tvtms	
-Zsolt 5:10	5:10	5:10	MT	tvtms	
-Zsolt 5:11	5:11	5:11	MT	tvtms	
-Zsolt 5:12	5:12	5:12	MT	tvtms	
-Zsolt 5:13		5:13	MT	szamlalas	
-Zsolt 5:2	5:2	5:2	MT	tvtms	
-Zsolt 5:3	5:3	5:3	MT	tvtms	
-Zsolt 5:4	5:4	5:4	MT	tvtms	
-Zsolt 5:5	5:5	5:5	MT	tvtms	
-Zsolt 5:6	5:6	5:6	MT	tvtms	
-Zsolt 5:7	5:7	5:7	MT	tvtms	
-Zsolt 5:8	5:8	5:8	MT	tvtms	
-Zsolt 5:9	5:9	5:9	MT	tvtms	
-Zsolt 60:1	60:1	60:1	MT	tvtms	
-Zsolt 60:10	60:10	60:10	MT	tvtms	
-Zsolt 60:11	60:11	60:11	MT	tvtms	
-Zsolt 60:12	60:12	60:12	MT	tvtms	
-Zsolt 60:13		60:13	MT	szamlalas	
-Zsolt 60:14		60:14	MT	szamlalas	
-Zsolt 60:2	60:2	60:2	MT	tvtms	
-Zsolt 60:3	60:3	60:3	MT	tvtms	
-Zsolt 60:4	60:4	60:4	MT	tvtms	
-Zsolt 60:5	60:5	60:5	MT	tvtms	
-Zsolt 60:6	60:6	60:6	MT	tvtms	
-Zsolt 60:7	60:7	60:7	MT	tvtms	
-Zsolt 60:8	60:8	60:8	MT	tvtms	
-Zsolt 60:9	60:9	60:9	MT	tvtms	
-Zsolt 61:1	61:1	61:1	MT	tvtms	
-Zsolt 61:2	61:2	61:2	MT	tvtms	
-Zsolt 61:3	61:3	61:3	MT	tvtms	
-Zsolt 61:4	61:4	61:4	MT	tvtms	
-Zsolt 61:5	61:5	61:5	MT	tvtms	
-Zsolt 61:6	61:6	61:6	MT	tvtms	
-Zsolt 61:7	61:7	61:7	MT	tvtms	
-Zsolt 61:8	61:8	61:8	MT	tvtms	
-Zsolt 61:9		61:9	MT	szamlalas	
-Zsolt 62:1	62:1	62:1	MT	tvtms	
-Zsolt 62:10	62:10	62:10	MT	tvtms	
-Zsolt 62:11	62:11	62:11	MT	tvtms	
-Zsolt 62:12	62:12	62:12	MT	tvtms	
-Zsolt 62:13		62:13	MT	szamlalas	
-Zsolt 62:2	62:2	62:2	MT	tvtms	
-Zsolt 62:3	62:3	62:3	MT	tvtms	
-Zsolt 62:4	62:4	62:4	MT	tvtms	
-Zsolt 62:5	62:5	62:5	MT	tvtms	
-Zsolt 62:6	62:6	62:6	MT	tvtms	
-Zsolt 62:7	62:7	62:7	MT	tvtms	
-Zsolt 62:8	62:8	62:8	MT	tvtms	
-Zsolt 62:9	62:9	62:9	MT	tvtms	
-Zsolt 63:1	63:1	63:1	MT	tvtms	
-Zsolt 63:10	63:10	63:10	MT	tvtms	
-Zsolt 63:11	63:11	63:11	MT	tvtms	
-Zsolt 63:12		63:12	MT	szamlalas	
-Zsolt 63:2	63:2	63:2	MT	tvtms	
-Zsolt 63:3	63:3	63:3	MT	tvtms	
-Zsolt 63:4	63:4	63:4	MT	tvtms	
-Zsolt 63:5	63:5	63:5	MT	tvtms	
-Zsolt 63:6	63:6	63:6	MT	tvtms	
-Zsolt 63:7	63:7	63:7	MT	tvtms	
-Zsolt 63:8	63:8	63:8	MT	tvtms	
-Zsolt 63:9	63:9	63:9	MT	tvtms	
-Zsolt 64:1	64:1	64:1	MT	tvtms	
-Zsolt 64:10	64:10	64:10	MT	tvtms	
-Zsolt 64:11		64:11	MT	szamlalas	
-Zsolt 64:2	64:2	64:2	MT	tvtms	
-Zsolt 64:3	64:3	64:3	MT	tvtms	
-Zsolt 64:4	64:4	64:4	MT	tvtms	
-Zsolt 64:5	64:5	64:5	MT	tvtms	
-Zsolt 64:6	64:6	64:6	MT	tvtms	
-Zsolt 64:7	64:7	64:7	MT	tvtms	
-Zsolt 64:8	64:8	64:8	MT	tvtms	
-Zsolt 64:9	64:9	64:9	MT	tvtms	
-Zsolt 65:1	65:1	65:1	MT	tvtms	
-Zsolt 65:10	65:10	65:10	MT	tvtms	
-Zsolt 65:11	65:11	65:11	MT	tvtms	
-Zsolt 65:12	65:12	65:12	MT	tvtms	
-Zsolt 65:13	65:13	65:13	MT	tvtms	
-Zsolt 65:14		65:14	MT	szamlalas	
-Zsolt 65:2	65:2	65:2	MT	tvtms	
-Zsolt 65:3	65:3	65:3	MT	tvtms	
-Zsolt 65:4	65:4	65:4	MT	tvtms	
-Zsolt 65:5	65:5	65:5	MT	tvtms	
-Zsolt 65:6	65:6	65:6	MT	tvtms	
-Zsolt 65:7	65:7	65:7	MT	tvtms	
-Zsolt 65:8	65:8	65:8	MT	tvtms	
-Zsolt 65:9	65:9	65:9	MT	tvtms	
+Zsolt 51:1		51:1	MT	lxx_os_etalon_f91	felirat 2 vers
+Zsolt 51:10	51:8	51:10	MT	lxx_os_etalon_f91	
+Zsolt 51:11	51:9	51:11	MT	lxx_os_etalon_f91	
+Zsolt 51:12	51:10	51:12	MT	lxx_os_etalon_f91	
+Zsolt 51:13	51:11	51:13	MT	lxx_os_etalon_f91	
+Zsolt 51:14	51:12	51:14	MT	lxx_os_etalon_f91	
+Zsolt 51:15	51:13	51:15	MT	lxx_os_etalon_f91	
+Zsolt 51:16	51:14	51:16	MT	lxx_os_etalon_f91	
+Zsolt 51:17	51:15	51:17	MT	lxx_os_etalon_f91	
+Zsolt 51:18	51:16	51:18	MT	lxx_os_etalon_f91	
+Zsolt 51:19	51:17	51:19	MT	lxx_os_etalon_f91	
+Zsolt 51:2		51:2	MT	lxx_os_etalon_f91	felirat 2 vers
+Zsolt 51:20	51:18	51:20	MT	lxx_os_etalon_f91	
+Zsolt 51:21	51:19	51:21	MT	lxx_os_etalon_f91	
+Zsolt 51:3	51:1	51:3	MT	lxx_os_etalon_f91	
+Zsolt 51:4	51:2	51:4	MT	lxx_os_etalon_f91	
+Zsolt 51:5	51:3	51:5	MT	lxx_os_etalon_f91	
+Zsolt 51:6	51:4	51:6	MT	lxx_os_etalon_f91	
+Zsolt 51:7	51:5	51:7	MT	lxx_os_etalon_f91	
+Zsolt 51:8	51:6	51:8	MT	lxx_os_etalon_f91	
+Zsolt 51:9	51:7	51:9	MT	lxx_os_etalon_f91	
+Zsolt 52:1		52:1	MT	lxx_os_etalon_f91	felirat 2 vers
+Zsolt 52:10	52:8	52:10	MT	lxx_os_etalon_f91	
+Zsolt 52:11	52:9	52:11	MT	lxx_os_etalon_f91	
+Zsolt 52:2		52:2	MT	lxx_os_etalon_f91	felirat 2 vers
+Zsolt 52:3	52:1	52:3	MT	lxx_os_etalon_f91	
+Zsolt 52:4	52:2	52:4	MT	lxx_os_etalon_f91	
+Zsolt 52:5	52:3	52:5	MT	lxx_os_etalon_f91	
+Zsolt 52:6	52:4	52:6	MT	lxx_os_etalon_f91	
+Zsolt 52:7	52:5	52:7	MT	lxx_os_etalon_f91	
+Zsolt 52:8	52:6	52:8	MT	lxx_os_etalon_f91	
+Zsolt 52:9	52:7	52:9	MT	lxx_os_etalon_f91	
+Zsolt 53:1		53:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 53:2	53:1	53:2	MT	lxx_os_etalon_f91	
+Zsolt 53:3	53:2	53:3	MT	lxx_os_etalon_f91	
+Zsolt 53:4	53:3	53:4	MT	lxx_os_etalon_f91	
+Zsolt 53:5	53:4	53:5	MT	lxx_os_etalon_f91	
+Zsolt 53:6	53:5	53:6	MT	lxx_os_etalon_f91	
+Zsolt 53:7	53:6	53:7	MT	lxx_os_etalon_f91	
+Zsolt 54:1		54:1	MT	lxx_os_etalon_f91	felirat 2 vers
+Zsolt 54:2		54:2	MT	lxx_os_etalon_f91	felirat 2 vers
+Zsolt 54:3	54:1	54:3	MT	lxx_os_etalon_f91	
+Zsolt 54:4	54:2	54:4	MT	lxx_os_etalon_f91	
+Zsolt 54:5	54:3	54:5	MT	lxx_os_etalon_f91	
+Zsolt 54:6	54:4	54:6	MT	lxx_os_etalon_f91	
+Zsolt 54:7	54:5	54:7	MT	lxx_os_etalon_f91	
+Zsolt 54:8	54:6	54:8	MT	lxx_os_etalon_f91	
+Zsolt 54:9	54:7	54:9	MT	lxx_os_etalon_f91	
+Zsolt 55:1		55:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 55:10	55:9	55:10	MT	lxx_os_etalon_f91	
+Zsolt 55:11	55:10	55:11	MT	lxx_os_etalon_f91	
+Zsolt 55:12	55:11	55:12	MT	lxx_os_etalon_f91	
+Zsolt 55:13	55:12	55:13	MT	lxx_os_etalon_f91	
+Zsolt 55:14	55:13	55:14	MT	lxx_os_etalon_f91	
+Zsolt 55:15	55:14	55:15	MT	lxx_os_etalon_f91	
+Zsolt 55:16	55:15	55:16	MT	lxx_os_etalon_f91	
+Zsolt 55:17	55:16	55:17	MT	lxx_os_etalon_f91	
+Zsolt 55:18	55:17	55:18	MT	lxx_os_etalon_f91	
+Zsolt 55:19	55:18	55:19	MT	lxx_os_etalon_f91	
+Zsolt 55:2	55:1	55:2	MT	lxx_os_etalon_f91	
+Zsolt 55:20	55:19	55:20	MT	lxx_os_etalon_f91	
+Zsolt 55:21	55:20	55:21	MT	lxx_os_etalon_f91	
+Zsolt 55:22	55:21	55:22	MT	lxx_os_etalon_f91	
+Zsolt 55:23	55:22	55:23	MT	lxx_os_etalon_f91	
+Zsolt 55:24	55:23	55:24	MT	lxx_os_etalon_f91	
+Zsolt 55:3	55:2	55:3	MT	lxx_os_etalon_f91	
+Zsolt 55:4	55:3	55:4	MT	lxx_os_etalon_f91	
+Zsolt 55:5	55:4	55:5	MT	lxx_os_etalon_f91	
+Zsolt 55:6	55:5	55:6	MT	lxx_os_etalon_f91	
+Zsolt 55:7	55:6	55:7	MT	lxx_os_etalon_f91	
+Zsolt 55:8	55:7	55:8	MT	lxx_os_etalon_f91	
+Zsolt 55:9	55:8	55:9	MT	lxx_os_etalon_f91	
+Zsolt 56:1		56:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 56:10	56:9	56:10	MT	lxx_os_etalon_f91	
+Zsolt 56:11	56:10	56:11	MT	lxx_os_etalon_f91	
+Zsolt 56:12	56:11	56:12	MT	lxx_os_etalon_f91	
+Zsolt 56:13	56:12	56:13	MT	lxx_os_etalon_f91	
+Zsolt 56:14	56:13	56:14	MT	lxx_os_etalon_f91	
+Zsolt 56:2	56:1	56:2	MT	lxx_os_etalon_f91	
+Zsolt 56:3	56:2	56:3	MT	lxx_os_etalon_f91	
+Zsolt 56:4	56:3	56:4	MT	lxx_os_etalon_f91	
+Zsolt 56:5	56:4	56:5	MT	lxx_os_etalon_f91	
+Zsolt 56:6	56:5	56:6	MT	lxx_os_etalon_f91	
+Zsolt 56:7	56:6	56:7	MT	lxx_os_etalon_f91	
+Zsolt 56:8	56:7	56:8	MT	lxx_os_etalon_f91	
+Zsolt 56:9	56:8	56:9	MT	lxx_os_etalon_f91	
+Zsolt 57:1		57:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 57:10	57:9	57:10	MT	lxx_os_etalon_f91	
+Zsolt 57:11	57:10	57:11	MT	lxx_os_etalon_f91	
+Zsolt 57:12	57:11	57:12	MT	lxx_os_etalon_f91	
+Zsolt 57:2	57:1	57:2	MT	lxx_os_etalon_f91	
+Zsolt 57:3	57:2	57:3	MT	lxx_os_etalon_f91	
+Zsolt 57:4	57:3	57:4	MT	lxx_os_etalon_f91	
+Zsolt 57:5	57:4	57:5	MT	lxx_os_etalon_f91	
+Zsolt 57:6	57:5	57:6	MT	lxx_os_etalon_f91	
+Zsolt 57:7	57:6	57:7	MT	lxx_os_etalon_f91	
+Zsolt 57:8	57:7	57:8	MT	lxx_os_etalon_f91	
+Zsolt 57:9	57:8	57:9	MT	lxx_os_etalon_f91	
+Zsolt 58:1		58:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 58:10	58:9	58:10	MT	lxx_os_etalon_f91	
+Zsolt 58:11	58:10	58:11	MT	lxx_os_etalon_f91	
+Zsolt 58:12	58:11	58:12	MT	lxx_os_etalon_f91	
+Zsolt 58:2	58:1	58:2	MT	lxx_os_etalon_f91	
+Zsolt 58:3	58:2	58:3	MT	lxx_os_etalon_f91	
+Zsolt 58:4	58:3	58:4	MT	lxx_os_etalon_f91	
+Zsolt 58:5	58:4	58:5	MT	lxx_os_etalon_f91	
+Zsolt 58:6	58:5	58:6	MT	lxx_os_etalon_f91	
+Zsolt 58:7	58:6	58:7	MT	lxx_os_etalon_f91	
+Zsolt 58:8	58:7	58:8	MT	lxx_os_etalon_f91	
+Zsolt 58:9	58:8	58:9	MT	lxx_os_etalon_f91	
+Zsolt 59:1		59:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 59:10	59:9	59:10	MT	lxx_os_etalon_f91	
+Zsolt 59:11	59:10	59:11	MT	lxx_os_etalon_f91	
+Zsolt 59:12	59:11	59:12	MT	lxx_os_etalon_f91	
+Zsolt 59:13	59:12	59:13	MT	lxx_os_etalon_f91	
+Zsolt 59:14	59:13	59:14	MT	lxx_os_etalon_f91	
+Zsolt 59:15	59:14	59:15	MT	lxx_os_etalon_f91	
+Zsolt 59:16	59:15	59:16	MT	lxx_os_etalon_f91	
+Zsolt 59:17	59:16	59:17	MT	lxx_os_etalon_f91	
+Zsolt 59:18	59:17	59:18	MT	lxx_os_etalon_f91	
+Zsolt 59:2	59:1	59:2	MT	lxx_os_etalon_f91	
+Zsolt 59:3	59:2	59:3	MT	lxx_os_etalon_f91	
+Zsolt 59:4	59:3	59:4	MT	lxx_os_etalon_f91	
+Zsolt 59:5	59:4	59:5	MT	lxx_os_etalon_f91	
+Zsolt 59:6	59:5	59:6	MT	lxx_os_etalon_f91	
+Zsolt 59:7	59:6	59:7	MT	lxx_os_etalon_f91	
+Zsolt 59:8	59:7	59:8	MT	lxx_os_etalon_f91	
+Zsolt 59:9	59:8	59:9	MT	lxx_os_etalon_f91	
+Zsolt 5:1		5:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 5:10	5:9	5:10	MT	lxx_os_etalon_f91	
+Zsolt 5:11	5:10	5:11	MT	lxx_os_etalon_f91	
+Zsolt 5:12	5:11	5:12	MT	lxx_os_etalon_f91	
+Zsolt 5:13	5:12	5:13	MT	lxx_os_etalon_f91	
+Zsolt 5:2	5:1	5:2	MT	lxx_os_etalon_f91	
+Zsolt 5:3	5:2	5:3	MT	lxx_os_etalon_f91	
+Zsolt 5:4	5:3	5:4	MT	lxx_os_etalon_f91	
+Zsolt 5:5	5:4	5:5	MT	lxx_os_etalon_f91	
+Zsolt 5:6	5:5	5:6	MT	lxx_os_etalon_f91	
+Zsolt 5:7	5:6	5:7	MT	lxx_os_etalon_f91	
+Zsolt 5:8	5:7	5:8	MT	lxx_os_etalon_f91	
+Zsolt 5:9	5:8	5:9	MT	lxx_os_etalon_f91	
+Zsolt 60:1		60:1	MT	lxx_os_etalon_f91	felirat 2 vers
+Zsolt 60:10	60:8	60:10	MT	lxx_os_etalon_f91	
+Zsolt 60:11	60:9	60:11	MT	lxx_os_etalon_f91	
+Zsolt 60:12	60:10	60:12	MT	lxx_os_etalon_f91	
+Zsolt 60:13	60:11	60:13	MT	lxx_os_etalon_f91	
+Zsolt 60:14	60:12	60:14	MT	lxx_os_etalon_f91	
+Zsolt 60:2		60:2	MT	lxx_os_etalon_f91	felirat 2 vers
+Zsolt 60:3	60:1	60:3	MT	lxx_os_etalon_f91	
+Zsolt 60:4	60:2	60:4	MT	lxx_os_etalon_f91	
+Zsolt 60:5	60:3	60:5	MT	lxx_os_etalon_f91	
+Zsolt 60:6	60:4	60:6	MT	lxx_os_etalon_f91	
+Zsolt 60:7	60:5	60:7	MT	lxx_os_etalon_f91	
+Zsolt 60:8	60:6	60:8	MT	lxx_os_etalon_f91	
+Zsolt 60:9	60:7	60:9	MT	lxx_os_etalon_f91	
+Zsolt 61:1		61:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 61:2	61:1	61:2	MT	lxx_os_etalon_f91	
+Zsolt 61:3	61:2	61:3	MT	lxx_os_etalon_f91	
+Zsolt 61:4	61:3	61:4	MT	lxx_os_etalon_f91	
+Zsolt 61:5	61:4	61:5	MT	lxx_os_etalon_f91	
+Zsolt 61:6	61:5	61:6	MT	lxx_os_etalon_f91	
+Zsolt 61:7	61:6	61:7	MT	lxx_os_etalon_f91	
+Zsolt 61:8	61:7	61:8	MT	lxx_os_etalon_f91	
+Zsolt 61:9	61:8	61:9	MT	lxx_os_etalon_f91	
+Zsolt 62:1		62:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 62:10	62:9	62:10	MT	lxx_os_etalon_f91	
+Zsolt 62:11	62:10	62:11	MT	lxx_os_etalon_f91	
+Zsolt 62:12	62:11	62:12	MT	lxx_os_etalon_f91	
+Zsolt 62:13	62:12	62:13	MT	lxx_os_etalon_f91	
+Zsolt 62:2	62:1	62:2	MT	lxx_os_etalon_f91	
+Zsolt 62:3	62:2	62:3	MT	lxx_os_etalon_f91	
+Zsolt 62:4	62:3	62:4	MT	lxx_os_etalon_f91	
+Zsolt 62:5	62:4	62:5	MT	lxx_os_etalon_f91	
+Zsolt 62:6	62:5	62:6	MT	lxx_os_etalon_f91	
+Zsolt 62:7	62:6	62:7	MT	lxx_os_etalon_f91	
+Zsolt 62:8	62:7	62:8	MT	lxx_os_etalon_f91	
+Zsolt 62:9	62:8	62:9	MT	lxx_os_etalon_f91	
+Zsolt 63:1		63:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 63:10	63:9	63:10	MT	lxx_os_etalon_f91	
+Zsolt 63:11	63:10	63:11	MT	lxx_os_etalon_f91	
+Zsolt 63:12	63:11	63:12	MT	lxx_os_etalon_f91	
+Zsolt 63:2	63:1	63:2	MT	lxx_os_etalon_f91	
+Zsolt 63:3	63:2	63:3	MT	lxx_os_etalon_f91	
+Zsolt 63:4	63:3	63:4	MT	lxx_os_etalon_f91	
+Zsolt 63:5	63:4	63:5	MT	lxx_os_etalon_f91	
+Zsolt 63:6	63:5	63:6	MT	lxx_os_etalon_f91	
+Zsolt 63:7	63:6	63:7	MT	lxx_os_etalon_f91	
+Zsolt 63:8	63:7	63:8	MT	lxx_os_etalon_f91	
+Zsolt 63:9	63:8	63:9	MT	lxx_os_etalon_f91	
+Zsolt 64:1		64:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 64:10	64:9	64:10	MT	lxx_os_etalon_f91	
+Zsolt 64:11	64:10	64:11	MT	lxx_os_etalon_f91	
+Zsolt 64:2	64:1	64:2	MT	lxx_os_etalon_f91	
+Zsolt 64:3	64:2	64:3	MT	lxx_os_etalon_f91	
+Zsolt 64:4	64:3	64:4	MT	lxx_os_etalon_f91	
+Zsolt 64:5	64:4	64:5	MT	lxx_os_etalon_f91	
+Zsolt 64:6	64:5	64:6	MT	lxx_os_etalon_f91	
+Zsolt 64:7	64:6	64:7	MT	lxx_os_etalon_f91	
+Zsolt 64:8	64:7	64:8	MT	lxx_os_etalon_f91	
+Zsolt 64:9	64:8	64:9	MT	lxx_os_etalon_f91	
+Zsolt 65:1		65:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 65:10	65:9	65:10	MT	lxx_os_etalon_f91	
+Zsolt 65:11	65:10	65:11	MT	lxx_os_etalon_f91	
+Zsolt 65:12	65:11	65:12	MT	lxx_os_etalon_f91	
+Zsolt 65:13	65:12	65:13	MT	lxx_os_etalon_f91	
+Zsolt 65:14	65:13	65:14	MT	lxx_os_etalon_f91	
+Zsolt 65:2	65:1	65:2	MT	lxx_os_etalon_f91	
+Zsolt 65:3	65:2	65:3	MT	lxx_os_etalon_f91	
+Zsolt 65:4	65:3	65:4	MT	lxx_os_etalon_f91	
+Zsolt 65:5	65:4	65:5	MT	lxx_os_etalon_f91	
+Zsolt 65:6	65:5	65:6	MT	lxx_os_etalon_f91	
+Zsolt 65:7	65:6	65:7	MT	lxx_os_etalon_f91	
+Zsolt 65:8	65:7	65:8	MT	lxx_os_etalon_f91	
+Zsolt 65:9	65:8	65:9	MT	lxx_os_etalon_f91	
 Zsolt 66:1	66:1		KJV	szamlalas	
 Zsolt 66:10	66:10		KJV	szamlalas	
 Zsolt 66:11	66:11		KJV	szamlalas	
@@ -20737,104 +20738,104 @@ Zsolt 66:6	66:6		KJV	szamlalas
 Zsolt 66:7	66:7		KJV	szamlalas	
 Zsolt 66:8	66:8		KJV	szamlalas	
 Zsolt 66:9	66:9		KJV	szamlalas	
-Zsolt 67:1	67:1	67:1	MT	tvtms	
-Zsolt 67:2	67:2	67:2	MT	tvtms	
-Zsolt 67:3	67:3	67:3	MT	tvtms	
-Zsolt 67:4	67:4	67:4	MT	tvtms	
-Zsolt 67:5	67:5	67:5	MT	tvtms	
-Zsolt 67:6	67:6	67:6	MT	tvtms	
-Zsolt 67:7	67:7	67:7	MT	tvtms	
-Zsolt 67:8		67:8	MT	szamlalas	
-Zsolt 68:1	68:1	68:1	MT	tvtms	
-Zsolt 68:10	68:10	68:10	MT	tvtms	
-Zsolt 68:11	68:11	68:11	MT	tvtms	
-Zsolt 68:12	68:12	68:12	MT	tvtms	
-Zsolt 68:13	68:13	68:13	MT	tvtms	
-Zsolt 68:14	68:14	68:14	MT	tvtms	
-Zsolt 68:15	68:15	68:15	MT	tvtms	
-Zsolt 68:16	68:16	68:16	MT	tvtms	
-Zsolt 68:17	68:17	68:17	MT	tvtms	
-Zsolt 68:18	68:18	68:18	MT	tvtms	
-Zsolt 68:19	68:19	68:19	MT	tvtms	
-Zsolt 68:2	68:2	68:2	MT	tvtms	
-Zsolt 68:20	68:20	68:20	MT	tvtms	
-Zsolt 68:21	68:21	68:21	MT	tvtms	
-Zsolt 68:22	68:22	68:22	MT	tvtms	
-Zsolt 68:23	68:23	68:23	MT	tvtms	
-Zsolt 68:24	68:24	68:24	MT	tvtms	
-Zsolt 68:25	68:25	68:25	MT	tvtms	
-Zsolt 68:26	68:26	68:26	MT	tvtms	
-Zsolt 68:27	68:27	68:27	MT	tvtms	
-Zsolt 68:28	68:28	68:28	MT	tvtms	
-Zsolt 68:29	68:29	68:29	MT	tvtms	
-Zsolt 68:3	68:3	68:3	MT	tvtms	
-Zsolt 68:30	68:30	68:30	MT	tvtms	
-Zsolt 68:31	68:31	68:31	MT	tvtms	
-Zsolt 68:32	68:32	68:32	MT	tvtms	
-Zsolt 68:33	68:33	68:33	MT	tvtms	
-Zsolt 68:34	68:34	68:34	MT	tvtms	
-Zsolt 68:35	68:35	68:35	MT	tvtms	
-Zsolt 68:36		68:36	MT	szamlalas	
-Zsolt 68:4	68:4	68:4	MT	tvtms	
-Zsolt 68:5	68:5	68:5	MT	tvtms	
-Zsolt 68:6	68:6	68:6	MT	tvtms	
-Zsolt 68:7	68:7	68:7	MT	tvtms	
-Zsolt 68:8	68:8	68:8	MT	tvtms	
-Zsolt 68:9	68:9	68:9	MT	tvtms	
-Zsolt 69:1	69:1	69:1	MT	tvtms	
-Zsolt 69:10	69:10	69:10	MT	tvtms	
-Zsolt 69:11	69:11	69:11	MT	tvtms	
-Zsolt 69:12	69:12	69:12	MT	tvtms	
-Zsolt 69:13	69:13	69:13	MT	tvtms	
-Zsolt 69:14	69:14	69:14	MT	tvtms	
-Zsolt 69:15	69:15	69:15	MT	tvtms	
-Zsolt 69:16	69:16	69:16	MT	tvtms	
-Zsolt 69:17	69:17	69:17	MT	tvtms	
-Zsolt 69:18	69:18	69:18	MT	tvtms	
-Zsolt 69:19	69:19	69:19	MT	tvtms	
-Zsolt 69:2	69:2	69:2	MT	tvtms	
-Zsolt 69:20	69:20	69:20	MT	tvtms	
-Zsolt 69:21	69:21	69:21	MT	tvtms	
-Zsolt 69:22	69:22	69:22	MT	tvtms	
-Zsolt 69:23	69:23	69:23	MT	tvtms	
-Zsolt 69:24	69:24	69:24	MT	tvtms	
-Zsolt 69:25	69:25	69:25	MT	tvtms	
-Zsolt 69:26	69:26	69:26	MT	tvtms	
-Zsolt 69:27	69:27	69:27	MT	tvtms	
-Zsolt 69:28	69:28	69:28	MT	tvtms	
-Zsolt 69:29	69:29	69:29	MT	tvtms	
-Zsolt 69:3	69:3	69:3	MT	tvtms	
-Zsolt 69:30	69:30	69:30	MT	tvtms	
-Zsolt 69:31	69:31	69:31	MT	tvtms	
-Zsolt 69:32	69:32	69:32	MT	tvtms	
-Zsolt 69:33	69:33	69:33	MT	tvtms	
-Zsolt 69:34	69:34	69:34	MT	tvtms	
-Zsolt 69:35	69:35	69:35	MT	tvtms	
-Zsolt 69:36	69:36	69:36	MT	tvtms	
-Zsolt 69:37		69:37	MT	szamlalas	
-Zsolt 69:4	69:4	69:4	MT	tvtms	
-Zsolt 69:5	69:5	69:5	MT	tvtms	
-Zsolt 69:6	69:6	69:6	MT	tvtms	
-Zsolt 69:7	69:7	69:7	MT	tvtms	
-Zsolt 69:8	69:8	69:8	MT	tvtms	
-Zsolt 69:9	69:9	69:9	MT	tvtms	
-Zsolt 6:1	6:1	6:1	MT	tvtms	
-Zsolt 6:10	6:10	6:10	MT	tvtms	
-Zsolt 6:11		6:11	MT	szamlalas	
-Zsolt 6:2	6:2	6:2	MT	tvtms	
-Zsolt 6:3	6:3	6:3	MT	tvtms	
-Zsolt 6:4	6:4	6:4	MT	tvtms	
-Zsolt 6:5	6:5	6:5	MT	tvtms	
-Zsolt 6:6	6:6	6:6	MT	tvtms	
-Zsolt 6:7	6:7	6:7	MT	tvtms	
-Zsolt 6:8	6:8	6:8	MT	tvtms	
-Zsolt 6:9	6:9	6:9	MT	tvtms	
-Zsolt 70:1	70:1	70:1	MT	tvtms	
-Zsolt 70:2	70:2	70:2	MT	tvtms	
-Zsolt 70:3	70:3	70:3	MT	tvtms	
-Zsolt 70:4	70:4	70:4	MT	tvtms	
-Zsolt 70:5	70:5	70:5	MT	tvtms	
-Zsolt 70:6		70:6	MT	szamlalas	
+Zsolt 67:1		67:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 67:2	67:1	67:2	MT	lxx_os_etalon_f91	
+Zsolt 67:3	67:2	67:3	MT	lxx_os_etalon_f91	
+Zsolt 67:4	67:3	67:4	MT	lxx_os_etalon_f91	
+Zsolt 67:5	67:4	67:5	MT	lxx_os_etalon_f91	
+Zsolt 67:6	67:5	67:6	MT	lxx_os_etalon_f91	
+Zsolt 67:7	67:6	67:7	MT	lxx_os_etalon_f91	
+Zsolt 67:8	67:7	67:8	MT	lxx_os_etalon_f91	
+Zsolt 68:1		68:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 68:10	68:9	68:10	MT	lxx_os_etalon_f91	
+Zsolt 68:11	68:10	68:11	MT	lxx_os_etalon_f91	
+Zsolt 68:12	68:11	68:12	MT	lxx_os_etalon_f91	
+Zsolt 68:13	68:12	68:13	MT	lxx_os_etalon_f91	
+Zsolt 68:14	68:13	68:14	MT	lxx_os_etalon_f91	
+Zsolt 68:15	68:14	68:15	MT	lxx_os_etalon_f91	
+Zsolt 68:16	68:15	68:16	MT	lxx_os_etalon_f91	
+Zsolt 68:17	68:16	68:17	MT	lxx_os_etalon_f91	
+Zsolt 68:18	68:17	68:18	MT	lxx_os_etalon_f91	
+Zsolt 68:19	68:18	68:19	MT	lxx_os_etalon_f91	
+Zsolt 68:2	68:1	68:2	MT	lxx_os_etalon_f91	
+Zsolt 68:20	68:19	68:20	MT	lxx_os_etalon_f91	
+Zsolt 68:21	68:20	68:21	MT	lxx_os_etalon_f91	
+Zsolt 68:22	68:21	68:22	MT	lxx_os_etalon_f91	
+Zsolt 68:23	68:22	68:23	MT	lxx_os_etalon_f91	
+Zsolt 68:24	68:23	68:24	MT	lxx_os_etalon_f91	
+Zsolt 68:25	68:24	68:25	MT	lxx_os_etalon_f91	
+Zsolt 68:26	68:25	68:26	MT	lxx_os_etalon_f91	
+Zsolt 68:27	68:26	68:27	MT	lxx_os_etalon_f91	
+Zsolt 68:28	68:27	68:28	MT	lxx_os_etalon_f91	
+Zsolt 68:29	68:28	68:29	MT	lxx_os_etalon_f91	
+Zsolt 68:3	68:2	68:3	MT	lxx_os_etalon_f91	
+Zsolt 68:30	68:29	68:30	MT	lxx_os_etalon_f91	
+Zsolt 68:31	68:30	68:31	MT	lxx_os_etalon_f91	
+Zsolt 68:32	68:31	68:32	MT	lxx_os_etalon_f91	
+Zsolt 68:33	68:32	68:33	MT	lxx_os_etalon_f91	
+Zsolt 68:34	68:33	68:34	MT	lxx_os_etalon_f91	
+Zsolt 68:35	68:34	68:35	MT	lxx_os_etalon_f91	
+Zsolt 68:36	68:35	68:36	MT	lxx_os_etalon_f91	
+Zsolt 68:4	68:3	68:4	MT	lxx_os_etalon_f91	
+Zsolt 68:5	68:4	68:5	MT	lxx_os_etalon_f91	
+Zsolt 68:6	68:5	68:6	MT	lxx_os_etalon_f91	
+Zsolt 68:7	68:6	68:7	MT	lxx_os_etalon_f91	
+Zsolt 68:8	68:7	68:8	MT	lxx_os_etalon_f91	
+Zsolt 68:9	68:8	68:9	MT	lxx_os_etalon_f91	
+Zsolt 69:1		69:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 69:10	69:9	69:10	MT	lxx_os_etalon_f91	
+Zsolt 69:11	69:10	69:11	MT	lxx_os_etalon_f91	
+Zsolt 69:12	69:11	69:12	MT	lxx_os_etalon_f91	
+Zsolt 69:13	69:12	69:13	MT	lxx_os_etalon_f91	
+Zsolt 69:14	69:13	69:14	MT	lxx_os_etalon_f91	
+Zsolt 69:15	69:14	69:15	MT	lxx_os_etalon_f91	
+Zsolt 69:16	69:15	69:16	MT	lxx_os_etalon_f91	
+Zsolt 69:17	69:16	69:17	MT	lxx_os_etalon_f91	
+Zsolt 69:18	69:17	69:18	MT	lxx_os_etalon_f91	
+Zsolt 69:19	69:18	69:19	MT	lxx_os_etalon_f91	
+Zsolt 69:2	69:1	69:2	MT	lxx_os_etalon_f91	
+Zsolt 69:20	69:19	69:20	MT	lxx_os_etalon_f91	
+Zsolt 69:21	69:20	69:21	MT	lxx_os_etalon_f91	
+Zsolt 69:22	69:21	69:22	MT	lxx_os_etalon_f91	
+Zsolt 69:23	69:22	69:23	MT	lxx_os_etalon_f91	
+Zsolt 69:24	69:23	69:24	MT	lxx_os_etalon_f91	
+Zsolt 69:25	69:24	69:25	MT	lxx_os_etalon_f91	
+Zsolt 69:26	69:25	69:26	MT	lxx_os_etalon_f91	
+Zsolt 69:27	69:26	69:27	MT	lxx_os_etalon_f91	
+Zsolt 69:28	69:27	69:28	MT	lxx_os_etalon_f91	
+Zsolt 69:29	69:28	69:29	MT	lxx_os_etalon_f91	
+Zsolt 69:3	69:2	69:3	MT	lxx_os_etalon_f91	
+Zsolt 69:30	69:29	69:30	MT	lxx_os_etalon_f91	
+Zsolt 69:31	69:30	69:31	MT	lxx_os_etalon_f91	
+Zsolt 69:32	69:31	69:32	MT	lxx_os_etalon_f91	
+Zsolt 69:33	69:32	69:33	MT	lxx_os_etalon_f91	
+Zsolt 69:34	69:33	69:34	MT	lxx_os_etalon_f91	
+Zsolt 69:35	69:34	69:35	MT	lxx_os_etalon_f91	
+Zsolt 69:36	69:35	69:36	MT	lxx_os_etalon_f91	
+Zsolt 69:37	69:36	69:37	MT	lxx_os_etalon_f91	
+Zsolt 69:4	69:3	69:4	MT	lxx_os_etalon_f91	
+Zsolt 69:5	69:4	69:5	MT	lxx_os_etalon_f91	
+Zsolt 69:6	69:5	69:6	MT	lxx_os_etalon_f91	
+Zsolt 69:7	69:6	69:7	MT	lxx_os_etalon_f91	
+Zsolt 69:8	69:7	69:8	MT	lxx_os_etalon_f91	
+Zsolt 69:9	69:8	69:9	MT	lxx_os_etalon_f91	
+Zsolt 6:1		6:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 6:10	6:9	6:10	MT	lxx_os_etalon_f91	
+Zsolt 6:11	6:10	6:11	MT	lxx_os_etalon_f91	
+Zsolt 6:2	6:1	6:2	MT	lxx_os_etalon_f91	
+Zsolt 6:3	6:2	6:3	MT	lxx_os_etalon_f91	
+Zsolt 6:4	6:3	6:4	MT	lxx_os_etalon_f91	
+Zsolt 6:5	6:4	6:5	MT	lxx_os_etalon_f91	
+Zsolt 6:6	6:5	6:6	MT	lxx_os_etalon_f91	
+Zsolt 6:7	6:6	6:7	MT	lxx_os_etalon_f91	
+Zsolt 6:8	6:7	6:8	MT	lxx_os_etalon_f91	
+Zsolt 6:9	6:8	6:9	MT	lxx_os_etalon_f91	
+Zsolt 70:1		70:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 70:2	70:1	70:2	MT	lxx_os_etalon_f91	
+Zsolt 70:3	70:2	70:3	MT	lxx_os_etalon_f91	
+Zsolt 70:4	70:3	70:4	MT	lxx_os_etalon_f91	
+Zsolt 70:5	70:4	70:5	MT	lxx_os_etalon_f91	
+Zsolt 70:6	70:5	70:6	MT	lxx_os_etalon_f91	
 Zsolt 71:1	71:1		KJV	szamlalas	
 Zsolt 71:10	71:10		KJV	szamlalas	
 Zsolt 71:11	71:11		KJV	szamlalas	
@@ -20930,51 +20931,51 @@ Zsolt 74:6	74:6		KJV	szamlalas
 Zsolt 74:7	74:7		KJV	szamlalas	
 Zsolt 74:8	74:8		KJV	szamlalas	
 Zsolt 74:9	74:9		KJV	szamlalas	
-Zsolt 75:1	75:1	75:1	MT	tvtms	
-Zsolt 75:10	75:10	75:10	MT	tvtms	
-Zsolt 75:11		75:11	MT	szamlalas	
-Zsolt 75:2	75:2	75:2	MT	tvtms	
-Zsolt 75:3	75:3	75:3	MT	tvtms	
-Zsolt 75:4	75:4	75:4	MT	tvtms	
-Zsolt 75:5	75:5	75:5	MT	tvtms	
-Zsolt 75:6	75:6	75:6	MT	tvtms	
-Zsolt 75:7	75:7	75:7	MT	tvtms	
-Zsolt 75:8	75:8	75:8	MT	tvtms	
-Zsolt 75:9	75:9	75:9	MT	tvtms	
-Zsolt 76:1	76:1	76:1	MT	tvtms	
-Zsolt 76:10	76:10	76:10	MT	tvtms	
-Zsolt 76:11	76:11	76:11	MT	tvtms	
-Zsolt 76:12	76:12	76:12	MT	tvtms	
-Zsolt 76:13		76:13	MT	szamlalas	
-Zsolt 76:2	76:2	76:2	MT	tvtms	
-Zsolt 76:3	76:3	76:3	MT	tvtms	
-Zsolt 76:4	76:4	76:4	MT	tvtms	
-Zsolt 76:5	76:5	76:5	MT	tvtms	
-Zsolt 76:6	76:6	76:6	MT	tvtms	
-Zsolt 76:7	76:7	76:7	MT	tvtms	
-Zsolt 76:8	76:8	76:8	MT	tvtms	
-Zsolt 76:9	76:9	76:9	MT	tvtms	
-Zsolt 77:1	77:1	77:1	MT	tvtms	
-Zsolt 77:10	77:10	77:10	MT	tvtms	
-Zsolt 77:11	77:11	77:11	MT	tvtms	
-Zsolt 77:12	77:12	77:12	MT	tvtms	
-Zsolt 77:13	77:13	77:13	MT	tvtms	
-Zsolt 77:14	77:14	77:14	MT	tvtms	
-Zsolt 77:15	77:15	77:15	MT	tvtms	
-Zsolt 77:16	77:16	77:16	MT	tvtms	
-Zsolt 77:17	77:17	77:17	MT	tvtms	
-Zsolt 77:18	77:18	77:18	MT	tvtms	
-Zsolt 77:19	77:19	77:19	MT	tvtms	
-Zsolt 77:2	77:2	77:2	MT	tvtms	
-Zsolt 77:20	77:20	77:20	MT	tvtms	
-Zsolt 77:21		77:21	MT	szamlalas	
-Zsolt 77:3	77:3	77:3	MT	tvtms	
-Zsolt 77:4	77:4	77:4	MT	tvtms	
-Zsolt 77:5	77:5	77:5	MT	tvtms	
-Zsolt 77:6	77:6	77:6	MT	tvtms	
-Zsolt 77:7	77:7	77:7	MT	tvtms	
-Zsolt 77:8	77:8	77:8	MT	tvtms	
-Zsolt 77:9	77:9	77:9	MT	tvtms	
+Zsolt 75:1		75:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 75:10	75:9	75:10	MT	lxx_os_etalon_f91	
+Zsolt 75:11	75:10	75:11	MT	lxx_os_etalon_f91	
+Zsolt 75:2	75:1	75:2	MT	lxx_os_etalon_f91	
+Zsolt 75:3	75:2	75:3	MT	lxx_os_etalon_f91	
+Zsolt 75:4	75:3	75:4	MT	lxx_os_etalon_f91	
+Zsolt 75:5	75:4	75:5	MT	lxx_os_etalon_f91	
+Zsolt 75:6	75:5	75:6	MT	lxx_os_etalon_f91	
+Zsolt 75:7	75:6	75:7	MT	lxx_os_etalon_f91	
+Zsolt 75:8	75:7	75:8	MT	lxx_os_etalon_f91	
+Zsolt 75:9	75:8	75:9	MT	lxx_os_etalon_f91	
+Zsolt 76:1		76:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 76:10	76:9	76:10	MT	lxx_os_etalon_f91	
+Zsolt 76:11	76:10	76:11	MT	lxx_os_etalon_f91	
+Zsolt 76:12	76:11	76:12	MT	lxx_os_etalon_f91	
+Zsolt 76:13	76:12	76:13	MT	lxx_os_etalon_f91	
+Zsolt 76:2	76:1	76:2	MT	lxx_os_etalon_f91	
+Zsolt 76:3	76:2	76:3	MT	lxx_os_etalon_f91	
+Zsolt 76:4	76:3	76:4	MT	lxx_os_etalon_f91	
+Zsolt 76:5	76:4	76:5	MT	lxx_os_etalon_f91	
+Zsolt 76:6	76:5	76:6	MT	lxx_os_etalon_f91	
+Zsolt 76:7	76:6	76:7	MT	lxx_os_etalon_f91	
+Zsolt 76:8	76:7	76:8	MT	lxx_os_etalon_f91	
+Zsolt 76:9	76:8	76:9	MT	lxx_os_etalon_f91	
+Zsolt 77:1		77:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 77:10	77:9	77:10	MT	lxx_os_etalon_f91	
+Zsolt 77:11	77:10	77:11	MT	lxx_os_etalon_f91	
+Zsolt 77:12	77:11	77:12	MT	lxx_os_etalon_f91	
+Zsolt 77:13	77:12	77:13	MT	lxx_os_etalon_f91	
+Zsolt 77:14	77:13	77:14	MT	lxx_os_etalon_f91	
+Zsolt 77:15	77:14	77:15	MT	lxx_os_etalon_f91	
+Zsolt 77:16	77:15	77:16	MT	lxx_os_etalon_f91	
+Zsolt 77:17	77:16	77:17	MT	lxx_os_etalon_f91	
+Zsolt 77:18	77:17	77:18	MT	lxx_os_etalon_f91	
+Zsolt 77:19	77:18	77:19	MT	lxx_os_etalon_f91	
+Zsolt 77:2	77:1	77:2	MT	lxx_os_etalon_f91	
+Zsolt 77:20	77:19	77:20	MT	lxx_os_etalon_f91	
+Zsolt 77:21	77:20	77:21	MT	lxx_os_etalon_f91	
+Zsolt 77:3	77:2	77:3	MT	lxx_os_etalon_f91	
+Zsolt 77:4	77:3	77:4	MT	lxx_os_etalon_f91	
+Zsolt 77:5	77:4	77:5	MT	lxx_os_etalon_f91	
+Zsolt 77:6	77:5	77:6	MT	lxx_os_etalon_f91	
+Zsolt 77:7	77:6	77:7	MT	lxx_os_etalon_f91	
+Zsolt 77:8	77:7	77:8	MT	lxx_os_etalon_f91	
+Zsolt 77:9	77:8	77:9	MT	lxx_os_etalon_f91	
 Zsolt 78:1	78:1		KJV	szamlalas	
 Zsolt 78:10	78:10		KJV	szamlalas	
 Zsolt 78:11	78:11		KJV	szamlalas	
@@ -21060,61 +21061,61 @@ Zsolt 79:6	79:6		KJV	szamlalas
 Zsolt 79:7	79:7		KJV	szamlalas	
 Zsolt 79:8	79:8		KJV	szamlalas	
 Zsolt 79:9	79:9		KJV	szamlalas	
-Zsolt 7:1	7:1	7:1	MT	tvtms	
-Zsolt 7:10	7:10	7:10	MT	tvtms	
-Zsolt 7:11	7:11	7:11	MT	tvtms	
-Zsolt 7:12	7:12	7:12	MT	tvtms	
-Zsolt 7:13	7:13	7:13	MT	tvtms	
-Zsolt 7:14	7:14	7:14	MT	tvtms	
-Zsolt 7:15	7:15	7:15	MT	tvtms	
-Zsolt 7:16	7:16	7:16	MT	tvtms	
-Zsolt 7:17	7:17	7:17	MT	tvtms	
-Zsolt 7:18		7:18	MT	szamlalas	
-Zsolt 7:2	7:2	7:2	MT	tvtms	
-Zsolt 7:3	7:3	7:3	MT	tvtms	
-Zsolt 7:4	7:4	7:4	MT	tvtms	
-Zsolt 7:5	7:5	7:5	MT	tvtms	
-Zsolt 7:6	7:6	7:6	MT	tvtms	
-Zsolt 7:7	7:7	7:7	MT	tvtms	
-Zsolt 7:8	7:8	7:8	MT	tvtms	
-Zsolt 7:9	7:9	7:9	MT	tvtms	
-Zsolt 80:1	80:1	80:1	MT	tvtms	
-Zsolt 80:10	80:10	80:10	MT	tvtms	
-Zsolt 80:11	80:11	80:11	MT	tvtms	
-Zsolt 80:12	80:12	80:12	MT	tvtms	
-Zsolt 80:13	80:13	80:13	MT	tvtms	
-Zsolt 80:14	80:14	80:14	MT	tvtms	
-Zsolt 80:15	80:15	80:15	MT	tvtms	
-Zsolt 80:16	80:16	80:16	MT	tvtms	
-Zsolt 80:17	80:17	80:17	MT	tvtms	
-Zsolt 80:18	80:18	80:18	MT	tvtms	
-Zsolt 80:19	80:19	80:19	MT	tvtms	
-Zsolt 80:2	80:2	80:2	MT	tvtms	
-Zsolt 80:20		80:20	MT	szamlalas	
-Zsolt 80:3	80:3	80:3	MT	tvtms	
-Zsolt 80:4	80:4	80:4	MT	tvtms	
-Zsolt 80:5	80:5	80:5	MT	tvtms	
-Zsolt 80:6	80:6	80:6	MT	tvtms	
-Zsolt 80:7	80:7	80:7	MT	tvtms	
-Zsolt 80:8	80:8	80:8	MT	tvtms	
-Zsolt 80:9	80:9	80:9	MT	tvtms	
-Zsolt 81:1	81:1	81:1	MT	tvtms	
-Zsolt 81:10	81:10	81:10	MT	tvtms	
-Zsolt 81:11	81:11	81:11	MT	tvtms	
-Zsolt 81:12	81:12	81:12	MT	tvtms	
-Zsolt 81:13	81:13	81:13	MT	tvtms	
-Zsolt 81:14	81:14	81:14	MT	tvtms	
-Zsolt 81:15	81:15	81:15	MT	tvtms	
-Zsolt 81:16	81:16	81:16	MT	tvtms	
-Zsolt 81:17		81:17	MT	szamlalas	
-Zsolt 81:2	81:2	81:2	MT	tvtms	
-Zsolt 81:3	81:3	81:3	MT	tvtms	
-Zsolt 81:4	81:4	81:4	MT	tvtms	
-Zsolt 81:5	81:5	81:5	MT	tvtms	
-Zsolt 81:6	81:6	81:6	MT	tvtms	
-Zsolt 81:7	81:7	81:7	MT	tvtms	
-Zsolt 81:8	81:8	81:8	MT	tvtms	
-Zsolt 81:9	81:9	81:9	MT	tvtms	
+Zsolt 7:1		7:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 7:10	7:9	7:10	MT	lxx_os_etalon_f91	
+Zsolt 7:11	7:10	7:11	MT	lxx_os_etalon_f91	
+Zsolt 7:12	7:11	7:12	MT	lxx_os_etalon_f91	
+Zsolt 7:13	7:12	7:13	MT	lxx_os_etalon_f91	
+Zsolt 7:14	7:13	7:14	MT	lxx_os_etalon_f91	
+Zsolt 7:15	7:14	7:15	MT	lxx_os_etalon_f91	
+Zsolt 7:16	7:15	7:16	MT	lxx_os_etalon_f91	
+Zsolt 7:17	7:16	7:17	MT	lxx_os_etalon_f91	
+Zsolt 7:18	7:17	7:18	MT	lxx_os_etalon_f91	
+Zsolt 7:2	7:1	7:2	MT	lxx_os_etalon_f91	
+Zsolt 7:3	7:2	7:3	MT	lxx_os_etalon_f91	
+Zsolt 7:4	7:3	7:4	MT	lxx_os_etalon_f91	
+Zsolt 7:5	7:4	7:5	MT	lxx_os_etalon_f91	
+Zsolt 7:6	7:5	7:6	MT	lxx_os_etalon_f91	
+Zsolt 7:7	7:6	7:7	MT	lxx_os_etalon_f91	
+Zsolt 7:8	7:7	7:8	MT	lxx_os_etalon_f91	
+Zsolt 7:9	7:8	7:9	MT	lxx_os_etalon_f91	
+Zsolt 80:1		80:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 80:10	80:9	80:10	MT	lxx_os_etalon_f91	
+Zsolt 80:11	80:10	80:11	MT	lxx_os_etalon_f91	
+Zsolt 80:12	80:11	80:12	MT	lxx_os_etalon_f91	
+Zsolt 80:13	80:12	80:13	MT	lxx_os_etalon_f91	
+Zsolt 80:14	80:13	80:14	MT	lxx_os_etalon_f91	
+Zsolt 80:15	80:14	80:15	MT	lxx_os_etalon_f91	
+Zsolt 80:16	80:15	80:16	MT	lxx_os_etalon_f91	
+Zsolt 80:17	80:16	80:17	MT	lxx_os_etalon_f91	
+Zsolt 80:18	80:17	80:18	MT	lxx_os_etalon_f91	
+Zsolt 80:19	80:18	80:19	MT	lxx_os_etalon_f91	
+Zsolt 80:2	80:1	80:2	MT	lxx_os_etalon_f91	
+Zsolt 80:20	80:19	80:20	MT	lxx_os_etalon_f91	
+Zsolt 80:3	80:2	80:3	MT	lxx_os_etalon_f91	
+Zsolt 80:4	80:3	80:4	MT	lxx_os_etalon_f91	
+Zsolt 80:5	80:4	80:5	MT	lxx_os_etalon_f91	
+Zsolt 80:6	80:5	80:6	MT	lxx_os_etalon_f91	
+Zsolt 80:7	80:6	80:7	MT	lxx_os_etalon_f91	
+Zsolt 80:8	80:7	80:8	MT	lxx_os_etalon_f91	
+Zsolt 80:9	80:8	80:9	MT	lxx_os_etalon_f91	
+Zsolt 81:1		81:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 81:10	81:9	81:10	MT	lxx_os_etalon_f91	
+Zsolt 81:11	81:10	81:11	MT	lxx_os_etalon_f91	
+Zsolt 81:12	81:11	81:12	MT	lxx_os_etalon_f91	
+Zsolt 81:13	81:12	81:13	MT	lxx_os_etalon_f91	
+Zsolt 81:14	81:13	81:14	MT	lxx_os_etalon_f91	
+Zsolt 81:15	81:14	81:15	MT	lxx_os_etalon_f91	
+Zsolt 81:16	81:15	81:16	MT	lxx_os_etalon_f91	
+Zsolt 81:17	81:16	81:17	MT	lxx_os_etalon_f91	
+Zsolt 81:2	81:1	81:2	MT	lxx_os_etalon_f91	
+Zsolt 81:3	81:2	81:3	MT	lxx_os_etalon_f91	
+Zsolt 81:4	81:3	81:4	MT	lxx_os_etalon_f91	
+Zsolt 81:5	81:4	81:5	MT	lxx_os_etalon_f91	
+Zsolt 81:6	81:5	81:6	MT	lxx_os_etalon_f91	
+Zsolt 81:7	81:6	81:7	MT	lxx_os_etalon_f91	
+Zsolt 81:8	81:7	81:8	MT	lxx_os_etalon_f91	
+Zsolt 81:9	81:8	81:9	MT	lxx_os_etalon_f91	
 Zsolt 82:1	82:1		KJV	szamlalas	
 Zsolt 82:2	82:2		KJV	szamlalas	
 Zsolt 82:3	82:3		KJV	szamlalas	
@@ -21123,52 +21124,52 @@ Zsolt 82:5	82:5		KJV	szamlalas
 Zsolt 82:6	82:6		KJV	szamlalas	
 Zsolt 82:7	82:7		KJV	szamlalas	
 Zsolt 82:8	82:8		KJV	szamlalas	
-Zsolt 83:1	83:1	83:1	MT	tvtms	
-Zsolt 83:10	83:10	83:10	MT	tvtms	
-Zsolt 83:11	83:11	83:11	MT	tvtms	
-Zsolt 83:12	83:12	83:12	MT	tvtms	
-Zsolt 83:13	83:13	83:13	MT	tvtms	
-Zsolt 83:14	83:14	83:14	MT	tvtms	
-Zsolt 83:15	83:15	83:15	MT	tvtms	
-Zsolt 83:16	83:16	83:16	MT	tvtms	
-Zsolt 83:17	83:17	83:17	MT	tvtms	
-Zsolt 83:18	83:18	83:18	MT	tvtms	
-Zsolt 83:19		83:19	MT	szamlalas	
-Zsolt 83:2	83:2	83:2	MT	tvtms	
-Zsolt 83:3	83:3	83:3	MT	tvtms	
-Zsolt 83:4	83:4	83:4	MT	tvtms	
-Zsolt 83:5	83:5	83:5	MT	tvtms	
-Zsolt 83:6	83:6	83:6	MT	tvtms	
-Zsolt 83:7	83:7	83:7	MT	tvtms	
-Zsolt 83:8	83:8	83:8	MT	tvtms	
-Zsolt 83:9	83:9	83:9	MT	tvtms	
-Zsolt 84:1	84:1	84:1	MT	tvtms	
-Zsolt 84:10	84:10	84:10	MT	tvtms	
-Zsolt 84:11	84:11	84:11	MT	tvtms	
-Zsolt 84:12	84:12	84:12	MT	tvtms	
-Zsolt 84:13		84:13	MT	szamlalas	
-Zsolt 84:2	84:2	84:2	MT	tvtms	
-Zsolt 84:3	84:3	84:3	MT	tvtms	
-Zsolt 84:4	84:4	84:4	MT	tvtms	
-Zsolt 84:5	84:5	84:5	MT	tvtms	
-Zsolt 84:6	84:6	84:6	MT	tvtms	
-Zsolt 84:7	84:7	84:7	MT	tvtms	
-Zsolt 84:8	84:8	84:8	MT	tvtms	
-Zsolt 84:9	84:9	84:9	MT	tvtms	
-Zsolt 85:1	85:1	85:1	MT	tvtms	
-Zsolt 85:10	85:10	85:10	MT	tvtms	
-Zsolt 85:11	85:11	85:11	MT	tvtms	
-Zsolt 85:12	85:12	85:12	MT	tvtms	
-Zsolt 85:13	85:13	85:13	MT	tvtms	
-Zsolt 85:14		85:14	MT	szamlalas	
-Zsolt 85:2	85:2	85:2	MT	tvtms	
-Zsolt 85:3	85:3	85:3	MT	tvtms	
-Zsolt 85:4	85:4	85:4	MT	tvtms	
-Zsolt 85:5	85:5	85:5	MT	tvtms	
-Zsolt 85:6	85:6	85:6	MT	tvtms	
-Zsolt 85:7	85:7	85:7	MT	tvtms	
-Zsolt 85:8	85:8	85:8	MT	tvtms	
-Zsolt 85:9	85:9	85:9	MT	tvtms	
+Zsolt 83:1		83:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 83:10	83:9	83:10	MT	lxx_os_etalon_f91	
+Zsolt 83:11	83:10	83:11	MT	lxx_os_etalon_f91	
+Zsolt 83:12	83:11	83:12	MT	lxx_os_etalon_f91	
+Zsolt 83:13	83:12	83:13	MT	lxx_os_etalon_f91	
+Zsolt 83:14	83:13	83:14	MT	lxx_os_etalon_f91	
+Zsolt 83:15	83:14	83:15	MT	lxx_os_etalon_f91	
+Zsolt 83:16	83:15	83:16	MT	lxx_os_etalon_f91	
+Zsolt 83:17	83:16	83:17	MT	lxx_os_etalon_f91	
+Zsolt 83:18	83:17	83:18	MT	lxx_os_etalon_f91	
+Zsolt 83:19	83:18	83:19	MT	lxx_os_etalon_f91	
+Zsolt 83:2	83:1	83:2	MT	lxx_os_etalon_f91	
+Zsolt 83:3	83:2	83:3	MT	lxx_os_etalon_f91	
+Zsolt 83:4	83:3	83:4	MT	lxx_os_etalon_f91	
+Zsolt 83:5	83:4	83:5	MT	lxx_os_etalon_f91	
+Zsolt 83:6	83:5	83:6	MT	lxx_os_etalon_f91	
+Zsolt 83:7	83:6	83:7	MT	lxx_os_etalon_f91	
+Zsolt 83:8	83:7	83:8	MT	lxx_os_etalon_f91	
+Zsolt 83:9	83:8	83:9	MT	lxx_os_etalon_f91	
+Zsolt 84:1		84:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 84:10	84:9	84:10	MT	lxx_os_etalon_f91	
+Zsolt 84:11	84:10	84:11	MT	lxx_os_etalon_f91	
+Zsolt 84:12	84:11	84:12	MT	lxx_os_etalon_f91	
+Zsolt 84:13	84:12	84:13	MT	lxx_os_etalon_f91	
+Zsolt 84:2	84:1	84:2	MT	lxx_os_etalon_f91	
+Zsolt 84:3	84:2	84:3	MT	lxx_os_etalon_f91	
+Zsolt 84:4	84:3	84:4	MT	lxx_os_etalon_f91	
+Zsolt 84:5	84:4	84:5	MT	lxx_os_etalon_f91	
+Zsolt 84:6	84:5	84:6	MT	lxx_os_etalon_f91	
+Zsolt 84:7	84:6	84:7	MT	lxx_os_etalon_f91	
+Zsolt 84:8	84:7	84:8	MT	lxx_os_etalon_f91	
+Zsolt 84:9	84:8	84:9	MT	lxx_os_etalon_f91	
+Zsolt 85:1		85:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 85:10	85:9	85:10	MT	lxx_os_etalon_f91	
+Zsolt 85:11	85:10	85:11	MT	lxx_os_etalon_f91	
+Zsolt 85:12	85:11	85:12	MT	lxx_os_etalon_f91	
+Zsolt 85:13	85:12	85:13	MT	lxx_os_etalon_f91	
+Zsolt 85:14	85:13	85:14	MT	lxx_os_etalon_f91	
+Zsolt 85:2	85:1	85:2	MT	lxx_os_etalon_f91	
+Zsolt 85:3	85:2	85:3	MT	lxx_os_etalon_f91	
+Zsolt 85:4	85:3	85:4	MT	lxx_os_etalon_f91	
+Zsolt 85:5	85:4	85:5	MT	lxx_os_etalon_f91	
+Zsolt 85:6	85:5	85:6	MT	lxx_os_etalon_f91	
+Zsolt 85:7	85:6	85:7	MT	lxx_os_etalon_f91	
+Zsolt 85:8	85:7	85:8	MT	lxx_os_etalon_f91	
+Zsolt 85:9	85:8	85:9	MT	lxx_os_etalon_f91	
 Zsolt 86:1	86:1		KJV	szamlalas	
 Zsolt 86:10	86:10		KJV	szamlalas	
 Zsolt 86:11	86:11		KJV	szamlalas	
@@ -21193,88 +21194,88 @@ Zsolt 87:4	87:4		KJV	szamlalas
 Zsolt 87:5	87:5		KJV	szamlalas	
 Zsolt 87:6	87:6		KJV	szamlalas	
 Zsolt 87:7	87:7		KJV	szamlalas	
-Zsolt 88:1	88:1	88:1	MT	tvtms	
-Zsolt 88:10	88:10	88:10	MT	tvtms	
-Zsolt 88:11	88:11	88:11	MT	tvtms	
-Zsolt 88:12	88:12	88:12	MT	tvtms	
-Zsolt 88:13	88:13	88:13	MT	tvtms	
-Zsolt 88:14	88:14	88:14	MT	tvtms	
-Zsolt 88:15	88:15	88:15	MT	tvtms	
-Zsolt 88:16	88:16	88:16	MT	tvtms	
-Zsolt 88:17	88:17	88:17	MT	tvtms	
-Zsolt 88:18	88:18	88:18	MT	tvtms	
-Zsolt 88:19		88:19	MT	szamlalas	
-Zsolt 88:2	88:2	88:2	MT	tvtms	
-Zsolt 88:3	88:3	88:3	MT	tvtms	
-Zsolt 88:4	88:4	88:4	MT	tvtms	
-Zsolt 88:5	88:5	88:5	MT	tvtms	
-Zsolt 88:6	88:6	88:6	MT	tvtms	
-Zsolt 88:7	88:7	88:7	MT	tvtms	
-Zsolt 88:8	88:8	88:8	MT	tvtms	
-Zsolt 88:9	88:9	88:9	MT	tvtms	
-Zsolt 89:1	89:1	89:1	MT	tvtms	
-Zsolt 89:10	89:10	89:10	MT	tvtms	
-Zsolt 89:11	89:11	89:11	MT	tvtms	
-Zsolt 89:12	89:12	89:12	MT	tvtms	
-Zsolt 89:13	89:13	89:13	MT	tvtms	
-Zsolt 89:14	89:14	89:14	MT	tvtms	
-Zsolt 89:15	89:15	89:15	MT	tvtms	
-Zsolt 89:16	89:16	89:16	MT	tvtms	
-Zsolt 89:17	89:17	89:17	MT	tvtms	
-Zsolt 89:18	89:18	89:18	MT	tvtms	
-Zsolt 89:19	89:19	89:19	MT	tvtms	
-Zsolt 89:2	89:2	89:2	MT	tvtms	
-Zsolt 89:20	89:20	89:20	MT	tvtms	
-Zsolt 89:21	89:21	89:21	MT	tvtms	
-Zsolt 89:22	89:22	89:22	MT	tvtms	
-Zsolt 89:23	89:23	89:23	MT	tvtms	
-Zsolt 89:24	89:24	89:24	MT	tvtms	
-Zsolt 89:25	89:25	89:25	MT	tvtms	
-Zsolt 89:26	89:26	89:26	MT	tvtms	
-Zsolt 89:27	89:27	89:27	MT	tvtms	
-Zsolt 89:28	89:28	89:28	MT	tvtms	
-Zsolt 89:29	89:29	89:29	MT	tvtms	
-Zsolt 89:3	89:3	89:3	MT	tvtms	
-Zsolt 89:30	89:30	89:30	MT	tvtms	
-Zsolt 89:31	89:31	89:31	MT	tvtms	
-Zsolt 89:32	89:32	89:32	MT	tvtms	
-Zsolt 89:33	89:33	89:33	MT	tvtms	
-Zsolt 89:34	89:34	89:34	MT	tvtms	
-Zsolt 89:35	89:35	89:35	MT	tvtms	
-Zsolt 89:36	89:36	89:36	MT	tvtms	
-Zsolt 89:37	89:37	89:37	MT	tvtms	
-Zsolt 89:38	89:38	89:38	MT	tvtms	
-Zsolt 89:39	89:39	89:39	MT	tvtms	
-Zsolt 89:4	89:4	89:4	MT	tvtms	
-Zsolt 89:40	89:40	89:40	MT	tvtms	
-Zsolt 89:41	89:41	89:41	MT	tvtms	
-Zsolt 89:42	89:42	89:42	MT	tvtms	
-Zsolt 89:43	89:43	89:43	MT	tvtms	
-Zsolt 89:44	89:44	89:44	MT	tvtms	
-Zsolt 89:45	89:45	89:45	MT	tvtms	
-Zsolt 89:46	89:46	89:46	MT	tvtms	
-Zsolt 89:47	89:47	89:47	MT	tvtms	
-Zsolt 89:48	89:48	89:48	MT	tvtms	
-Zsolt 89:49	89:49	89:49	MT	tvtms	
-Zsolt 89:5	89:5	89:5	MT	tvtms	
-Zsolt 89:50	89:50	89:50	MT	tvtms	
-Zsolt 89:51	89:51	89:51	MT	tvtms	
-Zsolt 89:52	89:52	89:52	MT	tvtms	
-Zsolt 89:53		89:53	MT	szamlalas	
-Zsolt 89:6	89:6	89:6	MT	tvtms	
-Zsolt 89:7	89:7	89:7	MT	tvtms	
-Zsolt 89:8	89:8	89:8	MT	tvtms	
-Zsolt 89:9	89:9	89:9	MT	tvtms	
-Zsolt 8:1	8:1	8:1	MT	tvtms	
-Zsolt 8:10		8:10	MT	szamlalas	
-Zsolt 8:2	8:2	8:2	MT	tvtms	
-Zsolt 8:3	8:3	8:3	MT	tvtms	
-Zsolt 8:4	8:4	8:4	MT	tvtms	
-Zsolt 8:5	8:5	8:5	MT	tvtms	
-Zsolt 8:6	8:6	8:6	MT	tvtms	
-Zsolt 8:7	8:7	8:7	MT	tvtms	
-Zsolt 8:8	8:8	8:8	MT	tvtms	
-Zsolt 8:9	8:9	8:9	MT	tvtms	
+Zsolt 88:1		88:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 88:10	88:9	88:10	MT	lxx_os_etalon_f91	
+Zsolt 88:11	88:10	88:11	MT	lxx_os_etalon_f91	
+Zsolt 88:12	88:11	88:12	MT	lxx_os_etalon_f91	
+Zsolt 88:13	88:12	88:13	MT	lxx_os_etalon_f91	
+Zsolt 88:14	88:13	88:14	MT	lxx_os_etalon_f91	
+Zsolt 88:15	88:14	88:15	MT	lxx_os_etalon_f91	
+Zsolt 88:16	88:15	88:16	MT	lxx_os_etalon_f91	
+Zsolt 88:17	88:16	88:17	MT	lxx_os_etalon_f91	
+Zsolt 88:18	88:17	88:18	MT	lxx_os_etalon_f91	
+Zsolt 88:19	88:18	88:19	MT	lxx_os_etalon_f91	
+Zsolt 88:2	88:1	88:2	MT	lxx_os_etalon_f91	
+Zsolt 88:3	88:2	88:3	MT	lxx_os_etalon_f91	
+Zsolt 88:4	88:3	88:4	MT	lxx_os_etalon_f91	
+Zsolt 88:5	88:4	88:5	MT	lxx_os_etalon_f91	
+Zsolt 88:6	88:5	88:6	MT	lxx_os_etalon_f91	
+Zsolt 88:7	88:6	88:7	MT	lxx_os_etalon_f91	
+Zsolt 88:8	88:7	88:8	MT	lxx_os_etalon_f91	
+Zsolt 88:9	88:8	88:9	MT	lxx_os_etalon_f91	
+Zsolt 89:1		89:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 89:10	89:9	89:10	MT	lxx_os_etalon_f91	
+Zsolt 89:11	89:10	89:11	MT	lxx_os_etalon_f91	
+Zsolt 89:12	89:11	89:12	MT	lxx_os_etalon_f91	
+Zsolt 89:13	89:12	89:13	MT	lxx_os_etalon_f91	
+Zsolt 89:14	89:13	89:14	MT	lxx_os_etalon_f91	
+Zsolt 89:15	89:14	89:15	MT	lxx_os_etalon_f91	
+Zsolt 89:16	89:15	89:16	MT	lxx_os_etalon_f91	
+Zsolt 89:17	89:16	89:17	MT	lxx_os_etalon_f91	
+Zsolt 89:18	89:17	89:18	MT	lxx_os_etalon_f91	
+Zsolt 89:19	89:18	89:19	MT	lxx_os_etalon_f91	
+Zsolt 89:2	89:1	89:2	MT	lxx_os_etalon_f91	
+Zsolt 89:20	89:19	89:20	MT	lxx_os_etalon_f91	
+Zsolt 89:21	89:20	89:21	MT	lxx_os_etalon_f91	
+Zsolt 89:22	89:21	89:22	MT	lxx_os_etalon_f91	
+Zsolt 89:23	89:22	89:23	MT	lxx_os_etalon_f91	
+Zsolt 89:24	89:23	89:24	MT	lxx_os_etalon_f91	
+Zsolt 89:25	89:24	89:25	MT	lxx_os_etalon_f91	
+Zsolt 89:26	89:25	89:26	MT	lxx_os_etalon_f91	
+Zsolt 89:27	89:26	89:27	MT	lxx_os_etalon_f91	
+Zsolt 89:28	89:27	89:28	MT	lxx_os_etalon_f91	
+Zsolt 89:29	89:28	89:29	MT	lxx_os_etalon_f91	
+Zsolt 89:3	89:2	89:3	MT	lxx_os_etalon_f91	
+Zsolt 89:30	89:29	89:30	MT	lxx_os_etalon_f91	
+Zsolt 89:31	89:30	89:31	MT	lxx_os_etalon_f91	
+Zsolt 89:32	89:31	89:32	MT	lxx_os_etalon_f91	
+Zsolt 89:33	89:32	89:33	MT	lxx_os_etalon_f91	
+Zsolt 89:34	89:33	89:34	MT	lxx_os_etalon_f91	
+Zsolt 89:35	89:34	89:35	MT	lxx_os_etalon_f91	
+Zsolt 89:36	89:35	89:36	MT	lxx_os_etalon_f91	
+Zsolt 89:37	89:36	89:37	MT	lxx_os_etalon_f91	
+Zsolt 89:38	89:37	89:38	MT	lxx_os_etalon_f91	
+Zsolt 89:39	89:38	89:39	MT	lxx_os_etalon_f91	
+Zsolt 89:4	89:3	89:4	MT	lxx_os_etalon_f91	
+Zsolt 89:40	89:39	89:40	MT	lxx_os_etalon_f91	
+Zsolt 89:41	89:40	89:41	MT	lxx_os_etalon_f91	
+Zsolt 89:42	89:41	89:42	MT	lxx_os_etalon_f91	
+Zsolt 89:43	89:42	89:43	MT	lxx_os_etalon_f91	
+Zsolt 89:44	89:43	89:44	MT	lxx_os_etalon_f91	
+Zsolt 89:45	89:44	89:45	MT	lxx_os_etalon_f91	
+Zsolt 89:46	89:45	89:46	MT	lxx_os_etalon_f91	
+Zsolt 89:47	89:46	89:47	MT	lxx_os_etalon_f91	
+Zsolt 89:48	89:47	89:48	MT	lxx_os_etalon_f91	
+Zsolt 89:49	89:48	89:49	MT	lxx_os_etalon_f91	
+Zsolt 89:5	89:4	89:5	MT	lxx_os_etalon_f91	
+Zsolt 89:50	89:49	89:50	MT	lxx_os_etalon_f91	
+Zsolt 89:51	89:50	89:51	MT	lxx_os_etalon_f91	
+Zsolt 89:52	89:51	89:52	MT	lxx_os_etalon_f91	
+Zsolt 89:53	89:52	89:53	MT	lxx_os_etalon_f91	
+Zsolt 89:6	89:5	89:6	MT	lxx_os_etalon_f91	
+Zsolt 89:7	89:6	89:7	MT	lxx_os_etalon_f91	
+Zsolt 89:8	89:7	89:8	MT	lxx_os_etalon_f91	
+Zsolt 89:9	89:8	89:9	MT	lxx_os_etalon_f91	
+Zsolt 8:1		8:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 8:10	8:9	8:10	MT	lxx_os_etalon_f91	
+Zsolt 8:2	8:1	8:2	MT	lxx_os_etalon_f91	
+Zsolt 8:3	8:2	8:3	MT	lxx_os_etalon_f91	
+Zsolt 8:4	8:3	8:4	MT	lxx_os_etalon_f91	
+Zsolt 8:5	8:4	8:5	MT	lxx_os_etalon_f91	
+Zsolt 8:6	8:5	8:6	MT	lxx_os_etalon_f91	
+Zsolt 8:7	8:6	8:7	MT	lxx_os_etalon_f91	
+Zsolt 8:8	8:7	8:8	MT	lxx_os_etalon_f91	
+Zsolt 8:9	8:8	8:9	MT	lxx_os_etalon_f91	
 Zsolt 90:1	90:1		KJV	szamlalas	
 Zsolt 90:10	90:10		KJV	szamlalas	
 Zsolt 90:11	90:11		KJV	szamlalas	
@@ -21308,22 +21309,22 @@ Zsolt 91:6	91:6		KJV	szamlalas
 Zsolt 91:7	91:7		KJV	szamlalas	
 Zsolt 91:8	91:8		KJV	szamlalas	
 Zsolt 91:9	91:9		KJV	szamlalas	
-Zsolt 92:1	92:1	92:1	MT	tvtms	
-Zsolt 92:10	92:10	92:10	MT	tvtms	
-Zsolt 92:11	92:11	92:11	MT	tvtms	
-Zsolt 92:12	92:12	92:12	MT	tvtms	
-Zsolt 92:13	92:13	92:13	MT	tvtms	
-Zsolt 92:14	92:14	92:14	MT	tvtms	
-Zsolt 92:15	92:15	92:15	MT	tvtms	
-Zsolt 92:16		92:16	MT	szamlalas	
-Zsolt 92:2	92:2	92:2	MT	tvtms	
-Zsolt 92:3	92:3	92:3	MT	tvtms	
-Zsolt 92:4	92:4	92:4	MT	tvtms	
-Zsolt 92:5	92:5	92:5	MT	tvtms	
-Zsolt 92:6	92:6	92:6	MT	tvtms	
-Zsolt 92:7	92:7	92:7	MT	tvtms	
-Zsolt 92:8	92:8	92:8	MT	tvtms	
-Zsolt 92:9	92:9	92:9	MT	tvtms	
+Zsolt 92:1		92:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 92:10	92:9	92:10	MT	lxx_os_etalon_f91	
+Zsolt 92:11	92:10	92:11	MT	lxx_os_etalon_f91	
+Zsolt 92:12	92:11	92:12	MT	lxx_os_etalon_f91	
+Zsolt 92:13	92:12	92:13	MT	lxx_os_etalon_f91	
+Zsolt 92:14	92:13	92:14	MT	lxx_os_etalon_f91	
+Zsolt 92:15	92:14	92:15	MT	lxx_os_etalon_f91	
+Zsolt 92:16	92:15	92:16	MT	lxx_os_etalon_f91	
+Zsolt 92:2	92:1	92:2	MT	lxx_os_etalon_f91	
+Zsolt 92:3	92:2	92:3	MT	lxx_os_etalon_f91	
+Zsolt 92:4	92:3	92:4	MT	lxx_os_etalon_f91	
+Zsolt 92:5	92:4	92:5	MT	lxx_os_etalon_f91	
+Zsolt 92:6	92:5	92:6	MT	lxx_os_etalon_f91	
+Zsolt 92:7	92:6	92:7	MT	lxx_os_etalon_f91	
+Zsolt 92:8	92:7	92:8	MT	lxx_os_etalon_f91	
+Zsolt 92:9	92:8	92:9	MT	lxx_os_etalon_f91	
 Zsolt 93:1	93:1		KJV	szamlalas	
 Zsolt 93:2	93:2		KJV	szamlalas	
 Zsolt 93:3	93:3		KJV	szamlalas	
@@ -21406,27 +21407,27 @@ Zsolt 99:6	99:6		KJV	szamlalas
 Zsolt 99:7	99:7		KJV	szamlalas	
 Zsolt 99:8	99:8		KJV	szamlalas	
 Zsolt 99:9	99:9		KJV	szamlalas	
-Zsolt 9:1	9:1	9:1	MT	tvtms	
-Zsolt 9:10	9:10	9:10	MT	tvtms	
-Zsolt 9:11	9:11	9:11	MT	tvtms	
-Zsolt 9:12	9:12	9:12	MT	tvtms	
-Zsolt 9:13	9:13	9:13	MT	tvtms	
-Zsolt 9:14	9:14	9:14	MT	tvtms	
-Zsolt 9:15	9:15	9:15	MT	tvtms	
-Zsolt 9:16	9:16	9:16	MT	tvtms	
-Zsolt 9:17	9:17	9:17	MT	tvtms	
-Zsolt 9:18	9:18	9:18	MT	tvtms	
-Zsolt 9:19	9:19	9:19	MT	tvtms	
-Zsolt 9:2	9:2	9:2	MT	tvtms	
-Zsolt 9:20	9:20	9:20	MT	tvtms	
-Zsolt 9:21		9:21	MT	szamlalas	
-Zsolt 9:3	9:3	9:3	MT	tvtms	
-Zsolt 9:4	9:4	9:4	MT	tvtms	
-Zsolt 9:5	9:5	9:5	MT	tvtms	
-Zsolt 9:6	9:6	9:6	MT	tvtms	
-Zsolt 9:7	9:7	9:7	MT	tvtms	
-Zsolt 9:8	9:8	9:8	MT	tvtms	
-Zsolt 9:9	9:9	9:9	MT	tvtms	
+Zsolt 9:1		9:1	MT	lxx_os_etalon_f91	felirat
+Zsolt 9:10	9:9	9:10	MT	lxx_os_etalon_f91	
+Zsolt 9:11	9:10	9:11	MT	lxx_os_etalon_f91	
+Zsolt 9:12	9:11	9:12	MT	lxx_os_etalon_f91	
+Zsolt 9:13	9:12	9:13	MT	lxx_os_etalon_f91	
+Zsolt 9:14	9:13	9:14	MT	lxx_os_etalon_f91	
+Zsolt 9:15	9:14	9:15	MT	lxx_os_etalon_f91	
+Zsolt 9:16	9:15	9:16	MT	lxx_os_etalon_f91	
+Zsolt 9:17	9:16	9:17	MT	lxx_os_etalon_f91	
+Zsolt 9:18	9:17	9:18	MT	lxx_os_etalon_f91	
+Zsolt 9:19	9:18	9:19	MT	lxx_os_etalon_f91	
+Zsolt 9:2	9:1	9:2	MT	lxx_os_etalon_f91	
+Zsolt 9:20	9:19	9:20	MT	lxx_os_etalon_f91	
+Zsolt 9:21	9:20	9:21	MT	lxx_os_etalon_f91	
+Zsolt 9:3	9:2	9:3	MT	lxx_os_etalon_f91	
+Zsolt 9:4	9:3	9:4	MT	lxx_os_etalon_f91	
+Zsolt 9:5	9:4	9:5	MT	lxx_os_etalon_f91	
+Zsolt 9:6	9:5	9:6	MT	lxx_os_etalon_f91	
+Zsolt 9:7	9:6	9:7	MT	lxx_os_etalon_f91	
+Zsolt 9:8	9:7	9:8	MT	lxx_os_etalon_f91	
+Zsolt 9:9	9:8	9:9	MT	lxx_os_etalon_f91	
 Ámós 1:1	1:1		KJV	szamlalas	
 Ámós 1:10	1:10		KJV	szamlalas	
 Ámós 1:11	1:11		KJV	szamlalas	
