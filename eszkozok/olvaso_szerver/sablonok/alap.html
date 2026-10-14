@@ -20,6 +20,11 @@
     <a href="/nezet/{{ kod }}?vissza={{ ut|default('/')|urlencode }}"{% if kod == nezet %} class="aktiv" aria-current="true"{% endif %}>{{ nev }}</a>
     {% endfor %}
   </nav>
+  <div class="tema" role="group" aria-label="Színséma">
+    <button type="button" data-tema="rendszer" aria-pressed="true">Rendszer</button>
+    <button type="button" data-tema="light" aria-pressed="false">Világos</button>
+    <button type="button" data-tema="dark" aria-pressed="false">Sötét</button>
+  </div>
 </header>
 <main class="tartalom">
 {% block tartalom %}{% endblock %}

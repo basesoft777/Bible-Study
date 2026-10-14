@@ -9,6 +9,7 @@ Fejlesztés:           python alkalmazas.py --port 8765
 """
 import json
 import os
+import re
 import sys
 import tomllib
 from urllib.parse import urlencode
@@ -67,7 +68,7 @@ def letrehoz(db_ut=None, kiadas=None, konfig_dir=None, hozzaferes=None):
     def kiszolgal(kulcs_reszek, elo, fragment=False):
         szint = hozz.szint(request)
         nezet = nezet_kerese()
-        kulcs = (request.path, tuple(sorted(kulcs_reszek.items())), nezet, szint, kiadas, gyar.kozos.adatbazis_kulcs, oldalak.SABLON_VERZIO, fragment)
+        kulcs = (request.path, tuple(sorted(kulcs_reszek.items())), nezet, szint, kiadas, gyar.kozos.adatbazis_kulcs, oldalak.SABLON_VERZIO, gyar.kod_verzio, fragment)
         etag = Gyorsitotar.etag(kulcs)
         hit = cache.kap(kulcs)
         if hit is None:
@@ -154,7 +155,11 @@ def letrehoz(db_ut=None, kiadas=None, konfig_dir=None, hozzaferes=None):
 
     @app.get('/r/szo/<strong>')
     def szo_toredek(strong):
-        return kiszolgal({}, lambda nezet, szint: gyar.szo_fragment(strong, szint), fragment=True)
+        # `?ig=1Moz/1/2`: a vers-kontextus (az „Ebben a versben” blokkhoz); csak szigorúan ellenőrzött alakban
+        m = re.match(r'^([A-Za-z0-9]{1,12})/([0-9]{1,3})/([0-9]{1,3})$', request.args.get('ig', ''))
+        kk = gyar.kozos.slug_kk.get(m.group(1)) if m else None
+        ig = '%s %d:%d' % (kk, int(m.group(2)), int(m.group(3))) if kk else None
+        return kiszolgal({'ig': ig or ''}, lambda nezet, szint: gyar.szo_fragment(strong, szint, ig), fragment=True)
 
     @app.get('/r/vers/<konyv>/<int:fej>/<int:vers>')
     def vers_toredek(konyv, fej, vers):

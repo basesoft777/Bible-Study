@@ -166,7 +166,8 @@ class TestRegiszterEsAdatbazis(unittest.TestCase):
         # 46 = az M2 40 azonosítója (a pilot 39 mért adatblokkja; a 9. BSB/KJV két bejegyzés) + az M2b 6 új azonosítója: két szócsempe-blokk
         # (héber, LXX), az LXX versszintű együttelőfordulás, az „Ebben a versben” (szó-lap), az adatréteg-blokk háromra bontása (+2); a pilot kirajzolt blokk-készlete
         # a teszt_pilot_aranymintaval.py-ban van, a hiányzó (DT-F76e–i) expectedFailure-ként
-        self.assertEqual(len(blokkok.REGISZTER), 46)
+        # +2 (F76.30–31): a bontott BDB-szócikk (szo.bdb_apparatus) és az „LXX többlet” blokk (vers.lxx_tobblet, „az adat még nincs a DB-ben”)
+        self.assertEqual(len(blokkok.REGISZTER), 48)
         self.assertEqual({b.oldal for b in blokkok.REGISZTER}, set(blokkok.OLDALAK))
 
     def test_minden_tablanak_van_licencsora(self):
@@ -188,7 +189,7 @@ class TestRegiszterEsAdatbazis(unittest.TestCase):
         'vers.tipnr': ('Tulajdonnevek (TIPNR)', True), 'vers.morf_hu': ('Héber szöveg', False), 'vers.motivum': ('Motívumadat (adatréteg)', True),
         'vers.kapcsolat': ('Igehely-kapcsolatok (adatréteg)', True), 'vers.lxx_dontes': ('LXX-fordítói döntések (adatréteg)', True),
         'vers.lxx_par': ('LXX versszintű együttelőfordulás', True), 'vers.heber_csempe': ('Héber szöveg', True), 'vers.lxx_csempe': ('Septuaginta', True),
-        'szo.ebben': ('Ebben a versben', True),
+        'szo.ebben': ('Ebben a versben', True), 'szo.bdb_apparatus': ('BDB-szócikk', True), 'vers.lxx_tobblet': ('LXX többlet és számozási eltérés', True),
         'vers.tsk': ('Kereszthivatkozások (TSK', True), 'vers.kh': ('Károli-kereszthivatkozások', True), 'vers.ubs': ('Ebben a versben', False),
         'szo.szotar': ('Szó adatai (héber)', False), 'szo.elofordulas': ('Szó adatai (héber)', False), 'szo.karoli_alakok': ('Szó adatai (héber)', False),
         'szo.bdb_angol': ('BDB-szócikk', False), 'szo.bdb_magyar': ('BDB-szócikk', False), 'szo.lxx_bridge': ('Görög megfelelő', True),
@@ -398,6 +399,52 @@ class TestLapok(unittest.TestCase):
         # más nézet = más kulcs
         c = self.get('/1Moz/1/3?nezet=interlinearis')
         self.assertNotEqual(c.headers['ETag'], a.headers['ETag'])
+
+    def test_etag_es_gyorsitotar_kulcsa_tartalmazza_a_kod_verziojat(self):
+        """Kódváltozás után a szerver nem adhat 304-et és nem szolgálhat ki régi lapot a gyorsítótárból (F76.31)."""
+        gyar = self.app.extensions['pardes']['gyar']
+        a = self.get('/1Moz/1/3')
+        self.assertEqual(self.get('/1Moz/1/3').headers['X-Cache'], 'HIT')
+        regi = gyar.kod_verzio
+        try:
+            gyar.kod_verzio = 'masik-kod-verzio'
+            b = self.get('/1Moz/1/3', headers={'If-None-Match': a.headers['ETag']})
+            self.assertEqual(b.status_code, 200)                         # a régi ETag-re már nem 304
+            self.assertEqual(b.headers['X-Cache'], 'MISS')                # és nem a régi lap jön a gyorsítótárból
+            self.assertNotEqual(b.headers['ETag'], a.headers['ETag'])
+        finally:
+            gyar.kod_verzio = regi
+        self.assertEqual(self.get('/1Moz/1/3').headers['ETag'], a.headers['ETag'])
+        self.assertIn(regi, str(self.get('/statusz').get_data(as_text=True)))
+
+    def test_kod_verzio_valtozik_a_fajl_valtozasaval(self):
+        import shutil
+        tmp = tempfile.mkdtemp(prefix='kodverzio_')
+        try:
+            for n, t in (('a.py', 'x = 1\n'), ('b.html', '<p>b</p>'), ('c.css', 'a{}'), ('teszt_x.py', 'nem szamit')):
+                with open(os.path.join(tmp, n), 'w', encoding='utf-8', newline='') as f:
+                    f.write(t)
+            gy = [(tmp, ('.py', '.html', '.css', '.js', '.toml'))]
+            v1 = oldalak.kod_verzio(gy)
+            self.assertEqual(v1, oldalak.kod_verzio(gy))                 # determinisztikus
+            with open(os.path.join(tmp, 'teszt_x.py'), 'w', encoding='utf-8') as f:
+                f.write('mas')
+            self.assertEqual(v1, oldalak.kod_verzio(gy))                 # a teszt_*.py nem számít
+            for n in ('a.py', 'b.html', 'c.css'):
+                with open(os.path.join(tmp, n), 'a', encoding='utf-8') as f:
+                    f.write(' ')
+                v2 = oldalak.kod_verzio(gy)
+                self.assertNotEqual(v1, v2, n)
+                v1 = v2
+        finally:
+            shutil.rmtree(tmp, ignore_errors=True)
+        self.assertEqual(len(oldalak.kod_verzio()), 16)                  # az alap: a szerver és a pilot bdb_szelet.py
+
+    def test_szo_toredek_vers_kontextussal(self):
+        h = self.get('/r/szo/H6440?ig=1Moz/1/2').get_data(as_text=True)
+        self.assertIn('data-blokk="szo.ebben"', h)
+        self.assertNotIn('data-blokk="szo.ebben"', self.get('/r/szo/H6440?ig=nincs/1/2').get_data(as_text=True))
+        self.assertNotIn('data-blokk="szo.ebben"', self.get('/r/szo/H6440?ig=1Moz/1/2;drop').get_data(as_text=True))     # csak szigorú alak
 
     def test_biztonsagi_fejlecek(self):
         r = self.get('/')

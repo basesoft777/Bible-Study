@@ -10,6 +10,8 @@ Kimenet: a forrásokból jövő szöveg mindenütt escape-elt (`markupsafe`); `M
 kiadás szerint kimarad; így az M2-ben 40 azonosító állt a pilot 39 mért adatblokkjára. Az M2b a pilot kirajzolt készletéhez hozzáad hatot
 (héber és LXX szócsempe, LXX versszintű együttelőfordulás, „Ebben a versben”, az adatréteg-blokk háromra bontása): 46 azonosító.
 """
+import importlib.util
+import os
 import re
 import unicodedata
 from dataclasses import dataclass
@@ -19,6 +21,17 @@ from markupsafe import Markup, escape
 
 import adatbazis
 import lekerdezesek as q
+
+def _pilot_modul(nev):
+    """A #60 pilot meglévő modulja (kódmásolás nélkül, DT-F76g): csak a megadott fájl töltődik be, a pilot könyvtára nem kerül a `sys.path`-ra."""
+    ut = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'olvaso_pilot', nev + '.py')
+    spec = importlib.util.spec_from_file_location('pilot_' + nev, ut)
+    m = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(m)
+    return m
+
+
+bdb_szelet = _pilot_modul('bdb_szelet')
 
 JELLEG = {
     'forras': ('forrásadat', 'jelleg-forras', 'változtatás nélkül egy adatkészletből'),
@@ -41,6 +54,7 @@ class Blokk:
     fetch: Callable
     render: Callable
     jelleg_megj: str = ''
+    forras_szoveg: str = ''      # ha a blokk adata nincs a pardes.db-ben: a forrás- és licencsor szövege (tábla híján)
     vers_kell: bool = False      # csak vers-kontextussal jelenik meg (a szó-lap „Ebben a versben” blokkja)
 
     def __post_init__(self):
@@ -593,6 +607,119 @@ def _alias_megj(a):
     return Markup('<p class="megj">A szócikk másik Strong-szám alatt áll (alias, gépi): %s, BDB-azonosító %s, szöveghasonlóság %s.</p>') % (a['tabla_strong'], a['bdb_id'], a['hasonlosag'])
 
 
+def _bdb_bontas(K):
+    """A BDB-szócikk gépi szeletelése a pilot `bdb_szelet.szeletel`-ével (DT-F76g): a magyar fordítás, ennek híján az angol eredeti szövegére;
+    a lemma a Strong-szótár szótője. None, ha nincs szócikk."""
+    def f():
+        d = _bdb_adat(K)
+        szoveg = d['hu'] or d['en']
+        if not szoveg:
+            return None
+        sz = q.strong_szotar(K.con, K.strong)
+        appar = bdb_szelet.szeletel(szoveg, sz[0] if sz else '')
+        if not appar:
+            return None
+        hu = bool(d['hu'])
+        forras_strong = d['alias']['tabla_strong'] if d['alias'] else K.strong
+        return {'appar': appar, 'hu': hu, 'meta': q.bdb_magyar_meta(K.con, forras_strong) if hu else None, 'alias': d['alias'],
+                'alap': bdb_szelet.alap_jelentes(appar['alap']) if hu else None}
+    return K.memo('bdb_bontas', f)
+
+
+def alapjelentes(K):
+    """A szó-lap fejlécének alapjelentése (DT-F76f): a magyar BDB-sor gépi tisztítása (`bdb_szelet.alap_jelentes`), ennek híján az angol
+    Strong-glossza. {'szoveg', 'nyelv', 'tisztitott'} vagy None."""
+    b = _bdb_bontas(K)
+    if b and b['hu'] and b['alap'] and b['alap'].get('szoveg'):
+        return {'szoveg': b['alap']['szoveg'], 'nyelv': 'hu', 'tisztitott': b['alap']['tisztitott']}
+    sz = q.strong_szotar(K.con, K.strong)
+    return {'szoveg': sz[3], 'nyelv': 'en', 'tisztitott': False} if sz and sz[3] else None
+
+
+def _helyek(n):
+    return Markup('<span class="helyek">%s hely</span>') % n if n else Markup('')
+
+
+def _rovid(s, n):
+    s = s or ''
+    return s if len(s) <= n else re.sub(r'\s+\S*$', '', s[:n]) + ' …'
+
+
+def _torzsek_html(tl):
+    ki = Markup('')
+    for t in tl:
+        fej = Markup('')
+        if t['nev']:
+            fej = Markup('<h5>%s%s</h5>') % (t['nev'], Markup('<span class="helyek">%s előfordulás a BDB szerint</span>') % t['db'] if t['db'] else '')
+        li = Markup('')
+        for i, j in enumerate(t['jelentesek']):
+            al = Markup('')
+            if j['al']:
+                al = Markup('<ol class="al">%s</ol>') % Markup('').join(
+                    Markup('<li data-jel="%s."><p class="jsz">%s</p>%s</li>') % (s['jel'] or '', s['szoveg'] or '', _helyek(s['ref'])) for s in j['al'])
+            elso = j['szoveg'] or (j['al'][0]['szoveg'] if j['al'] else '')
+            li += Markup('<li data-jel="%s"><details%s><summary><span class="jt">%s</span>%s</summary><p class="jsz">%s</p>%s</details></li>') % (
+                j['jel'] or '·', Markup(' open') if i == 0 else '', _rovid(elso, 110), _helyek(j['ref']), j['szoveg'] or '', al)
+        ki += Markup('<div class="torzs">%s<ol class="jel">%s</ol></div>') % (fej, li)
+    return ki
+
+
+SZAKASZ_CIM = {'elo': 'Zárójeles előszócikk (más gyök)', 'arámi': "Arámi (Pe'al) rész", 'azonos_lemma': 'További homonima ugyanezen a lemmán', 'masik_lemma': 'Másik szó (más lemma)'}
+
+
+def _f_bdb_apparatus(K):
+    return _bdb_bontas(K)
+
+
+def _r_bdb_apparatus(d, K):
+    """A pilot `apparatus()` átirata: a `bdb_szelet.szeletel` kimenete, minden szöveg escape-elve (csak a saját, escape-elt elemek Markup)."""
+    a, hu = d['appar'], d['hu']
+    forras = 'BDB (Brown–Driver–Briggs), magyar fordítás · gépi bontás' if hu else 'BDB (Brown–Driver–Briggs), angol eredeti · gépi bontás'
+
+    def resz(cim, tartalom):
+        return Markup('<div class="app"><h4>%s</h4><p class="forrasnev"><span class="fcim">Forrás</span> %s</p>%s</div>') % (cim, forras, tartalom)
+
+    ki = Markup('<span class="allapot%s">%s</span>') % ('' if hu else ' folyamat', ('Lefordítva · %s' % d['meta']) if hu else 'Magyar fordítás nincs · az angol eredeti áll')
+    if d['alias']:
+        al = d['alias']
+        ki += Markup('<p class="megj">A szócikk a(z) %s Strong-szám alatt áll (%s, szövegi hasonlóság %s; a BDB_strong_alias.tsv alias-párosítása).</p>') % (al['tabla_strong'], al['bdb_id'], al['hasonlosag'])
+    ki += Markup('<p class="megj">Gépi szeletelés (próba): a határokat a szócikk saját jelölői adják (gondolatjel, sorszámok, törzsnevek); hibás határ előfordulhat. A szöveg nem változik.</p>')
+    fej = a['fej']
+    ki += resz('Címszó', Markup('<div class="cimszo"><span class="he" lang="he">%s</span><span>%s</span>%s<span class="helyek">%s igehely-hivatkozás a szócikkben</span></div>') % (
+        fej.get('heber') or '', ' · '.join(x for x in (fej.get('atiras'), ('%s. címszó' % fej['homonima']) if fej.get('homonima') else '') if x),
+        Markup('<span class="helyek">%s előfordulás (BDB)</span>') % fej['ossz'] if fej.get('ossz') else '', a['ref_ossz']))
+    ki += resz('Alapjelentés és szófaj', Markup('<p class="jsz">%s</p>') % (a['alap'] or '—'))
+    if a.get('szakaszok'):
+        reszek = Markup('')
+        for x in a['szakaszok']:
+            cim = SZAKASZ_CIM['elo'] if x['szerep'] == 'elo' else (SZAKASZ_CIM['arámi'] if x['nyelv'] == 'arámi' else SZAKASZ_CIM[x['szerep']])
+            if x['szerep'] != 'elo' and x.get('jel'):
+                cim = '%s. %s' % (x['jel'], cim)
+            ny = Markup('<ul class="lista">%s</ul>') % Markup('').join(Markup('<li>%s</li>') % n for n in x['nyelvi']) if x['nyelvi'] else Markup('')
+            reszek += Markup('<details><summary class="megj">%s · <span class="he" lang="he">%s</span> · %s%s</summary>%s%s</details>') % (
+                cim, x['heber'] or '', _rovid(x['alap'] or '—', 80), _helyek(x.get('ref')), ny, _torzsek_html(x['torzsek']))
+        ki += resz('Ugyanabban a BDB-sorban további szakaszok (%d) — nem ennek a címszónak a szerkezete' % len(a['szakaszok']), reszek)
+    if a.get('nyelvi'):
+        ki += resz('Nyelvi háttér (etimológia, rokon nyelvek)', Markup('<ul class="lista">%s</ul>') % Markup('').join(Markup('<li>%s</li>') % n for n in a['nyelvi']))
+    if a.get('alaktan'):
+        ki += resz('Alakok (alaktani apparátus)', Markup('<details><summary class="megj">%s</summary><p class="jsz">%s</p></details>') % (_rovid(a['alaktan'], 120), a['alaktan']))
+    ki += resz('Jelentésszerkezet törzsenként' if any(t['nev'] for t in a['torzsek']) else 'Jelentésszerkezet', _torzsek_html(a['torzsek']))
+    if a.get('irodalom') or a.get('krit'):
+        ki += resz('Irodalmi és szövegkritikai jelek', Markup('<div class="jelek">%s%s</div>') % (
+            Markup('').join(Markup('<span class="jel-cimke" title="BDB irodalmi hivatkozás (szerző^mű)">%s</span>') % x for x in a.get('irodalom') or []),
+            Markup('').join(Markup('<span class="jel-cimke krit" title="a BDB jele">%s</span>') % x for x in a.get('krit') or [])))
+    return ki
+
+
+def _f_lxx_tobblet(K):
+    return {'hiany': True}
+
+
+def _r_lxx_tobblet(d, K):
+    return Markup('<p class="ures">Az adat még nincs a DB-ben: a LXX_tobblet_szakaszok.tsv és a Verzifikacios_elteres_tabla.tsv a pardes.db következő újraépítésekor '
+                  'kerül be (N-F76j). Üres eredmény itt nem jelenti azt, hogy a versnek nincs LXX-többlete vagy számozási eltérése.</p>')
+
+
 def _f_bdb_angol(K):
     d = _bdb_adat(K)
     return d if d['en'] else None
@@ -784,6 +911,8 @@ REGISZTER = [
     B('vers.kapcsolat', 'vers', 'Igehely-kapcsolatok (adatréteg)', 'forras', ('kapcsolatok',), _f_kapcsolat, _r_kapcsolat),
     B('vers.lxx_dontes', 'vers', 'LXX-fordítói döntések (adatréteg)', 'forras', ('lxx_dontesek',), _f_lxx_dontes, _r_lxx_dontes, 'soronként saját proveniencia-mező'),
     B('vers.lxx_par', 'vers', 'LXX versszintű együttelőfordulás', 'forras', ('lxx_versszintu_parok',), _f_lxx_par, _r_lxx_par, 'együttelőfordulás a versben, nem szóillesztés'),
+    B('vers.lxx_tobblet', 'vers', 'LXX többlet és számozási eltérés', 'forras', (), _f_lxx_tobblet, _r_lxx_tobblet, 'az adat még nincs a DB-ben (N-F76j)',
+      forras_szoveg='LXX_tobblet_szakaszok.tsv, Verzifikacios_elteres_tabla.tsv (Versifikacios_tablak; licenc: adat/licencek.tsv; a pardes.db-ben még nincsenek)'),
     B('vers.tsk', 'vers', 'Kereszthivatkozások (TSK)', 'forras', ('tsk',), _f_tsk, _r_tsk),
     B('vers.kh', 'vers', 'Károli-kereszthivatkozások', 'forras', ('kh',), _f_kh, _r_kh),
     B('vers.ubs', 'vers', 'UBS-jelentés az előfordulásra', 'forras', ('ubs_dbh_referenciak', 'ubs_dbh_jelentesek'), _f_ubs, _r_ubs),
@@ -792,6 +921,8 @@ REGISZTER = [
     B('szo.elofordulas', 'szo_h', 'Előfordulás, könyvek száma', 'gepi', ('token_strong',), _f_elofordulas, _r_elofordulas),
     B('szo.ebben', 'szo_h', 'Ebben a versben', ('forras', 'gepi', 'modell'), ('token_par', 'token_eredeti', 'token_macula', 'lxx_token', 'ubs_dbh_referenciak', 'ubs_dbh_jelentesek', 'morf_kulcs_heber', 'morf_nyelv_aramai'), _f_ebben, _r_ebben, vers_kell=True),
     B('szo.karoli_alakok', 'szo_h', 'Károli-alakok és bizonyosság', 'modell', ('token_par',), _f_karoli_alakok, _r_karoli_alakok),
+    B('szo.bdb_apparatus', 'szo_h', 'BDB-szócikk apparátusokra bontva', ('forras', 'modell', 'gepi'), ('bdb', 'bdb_alias', 'forditasok'), _f_bdb_apparatus, _r_bdb_apparatus,
+      'a pilot gépi szeletelése (bdb_szelet.py); hibás határ előfordulhat'),
     B('szo.bdb_angol', 'szo_h', 'BDB-szócikk (angol)', 'forras', ('bdb', 'bdb_alias'), _f_bdb_angol, _r_bdb_angol, 'az alias gépi feldolgozás'),
     B('szo.bdb_magyar', 'szo_h', 'BDB-szócikk (magyar fordítás)', 'modell', ('forditasok',), _f_bdb_magyar, _r_bdb_magyar),
     B('szo.lxx_bridge', 'szo_h', 'Görög megfelelő (lxx_bridge)', 'forras', ('lxx_bridge',), _f_lxx_bridge, _r_lxx_bridge),
@@ -828,6 +959,8 @@ def blokkok_oldalra(oldal):
 # ---------------------------------------------------------------------------------------------------------------------
 def forras_sor(b, kozos):
     """Forrás- és licencsor a `tabla_licenc`/`licencek` táblákból: dataset, licenc-címke, jelzések."""
+    if b.forras_szoveg:
+        return 'Forrás és licenc: ' + b.forras_szoveg
     reszek, lat = [], set()
     for t in b.tablak:
         l = kozos.licenc.get(t)

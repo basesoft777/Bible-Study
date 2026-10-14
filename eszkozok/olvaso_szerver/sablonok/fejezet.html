@@ -1,11 +1,13 @@
 {% extends "alap.html" %}
+{% macro szavak(v) %}{% for w in v.szavak %}{% if w.fo %}<a class="szo{{ ' par-' ~ w.biz if w.biz else '' }}" href="/{{ slug }}/{{ fej }}/{{ v.vers }}?szo={{ w.fo }}&amp;ful=szo#v{{ v.vers }}" data-strong="{{ w.fo }}">{{ w.kiir }}</a>{% else %}<span class="szo-nincs">{{ w.kiir }}</span>{% endif %}{{ '' if w.szokoz is false else ' ' }}{% endfor %}{% if not v.szavak %}{{ v.szoveg }}{% endif %}{% endmacro %}
 {% macro vers_szoveg(v) %}
 <p class="vers{% if vers == v.vers %} kijelolt{% endif %}" id="v{{ v.vers }}">
   <a class="versszam" href="/{{ slug }}/{{ fej }}/{{ v.vers }}{% if szo %}?szo={{ szo }}{% endif %}#v{{ v.vers }}">{{ v.vers }}</a>
-  {% for w in v.szavak %}{% if w.fo %}<a class="szo{{ ' par-' ~ w.biz if w.biz else '' }}" href="/{{ slug }}/{{ fej }}/{{ v.vers }}?szo={{ w.fo }}&amp;ful=szo#v{{ v.vers }}" data-strong="{{ w.fo }}">{{ w.kiir }}</a>{% else %}<span class="szo-nincs">{{ w.kiir }}</span>{% endif %}{{ '' if w.szokoz is false else ' ' }}{% endfor %}
-  {% if not v.szavak %}{{ v.szoveg }}{% endif %}
+  {{ szavak(v) }}
 </p>
 {% endmacro %}
+{% macro vers_folyo(v) %}<span class="vers{% if vers == v.vers %} kijelolt{% endif %}" id="v{{ v.vers }}"><a class="versszam" href="/{{ slug }}/{{ fej }}/{{ v.vers }}{% if szo %}?szo={{ szo }}{% endif %}#v{{ v.vers }}">{{ v.vers }}</a>{{ szavak(v) }}</span> {% endmacro %}
+{% macro jeloles_kapcsolo() %}<label class="kapcs"><input type="checkbox" id="jeloles" checked> Kapcsolt szavak jelölése</label>{% endmacro %}
 {% macro interlinearis(v) %}
 <div class="il-vers{% if vers == v.vers %} kijelolt{% endif %}" id="v{{ v.vers }}">
   <a class="versszam" href="/{{ slug }}/{{ fej }}/{{ v.vers }}{% if szo %}?szo={{ szo }}{% endif %}#v{{ v.vers }}">{{ v.vers }}</a>
@@ -13,8 +15,12 @@
     {% for w in v.szavak %}
     <div class="il-szo">
       <span class="hu">{{ w.kiir }}</span>
-      {% for ers, erszo, st, bz in w.parok %}
-      <span class="er"><span class="heb" lang="he" dir="rtl">{{ erszo }}</span> <a class="strong" href="/{{ slug }}/{{ fej }}/{{ v.vers }}?szo={{ st }}&amp;ful=szo#v{{ v.vers }}">{{ st }}</a></span>
+      {% for e in w.er %}
+      <span class="er{{ ' nyelvtani' if e.nyt else '' }}">
+        {% if e.nyt %}<span class="er-fo" title="Nyelvtani elem: nincs szó-lapja">{% else %}<a class="er-fo" href="/{{ slug }}/{{ fej }}/{{ v.vers }}?szo={{ e.st }}&amp;ful=szo#v{{ v.vers }}" title="{{ e.st }} szó-lapja">{% endif %}
+          <span class="heb" lang="he" dir="rtl">{{ e.szo }}</span><span class="at">{{ e.at }}</span><span class="gl">{{ e.tukor }}</span><span class="st">{{ e.st }}</span>
+        {% if e.nyt %}</span>{% else %}</a>{% endif %}
+      </span>
       {% else %}
       <span class="er ures-par">–</span>
       {% endfor %}
@@ -72,7 +78,8 @@
 <div class="oszlopok olvaso">
   <section class="szoveg-oszlop" aria-label="Károli-szöveg">
     {{ szoveg_jegy }}
-    {% for v in versek %}{{ vers_szoveg(v) }}{% endfor %}
+    {{ jeloles_kapcsolo() }}
+    <p class="folyo" id="szoveg">{% for v in versek %}{{ vers_folyo(v) }}{% endfor %}</p>
   </section>
   <aside class="jobb-oszlop">{{ panelek(szo_html, vers_html, ful, false) }}</aside>
 </div>
@@ -80,6 +87,7 @@
 <div class="oszlopok interlinearis">
   <section class="szoveg-oszlop" aria-label="Interlineáris szöveg">
     {{ szoveg_jegy }}
+    {{ jeloles_kapcsolo() }}
     {% for v in versek %}{{ interlinearis(v) }}{% endfor %}
   </section>
   <aside class="jobb-oszlop">{{ panelek(szo_html, none, 'szo', true) }}
@@ -93,6 +101,7 @@
   </nav>
   <section class="szoveg-oszlop" aria-label="Károli-szöveg">
     {{ szoveg_jegy }}
+    {{ jeloles_kapcsolo() }}
     {% for v in versek %}{{ vers_szoveg(v) }}{% endfor %}
   </section>
   <aside class="jobb-oszlop ketto">{{ panelek(szo_html, vers_html, ful, true) }}</aside>

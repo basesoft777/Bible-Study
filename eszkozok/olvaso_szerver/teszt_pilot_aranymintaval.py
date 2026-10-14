@@ -96,6 +96,15 @@ class TestPilotAranymintaval(unittest.TestCase):
                     kapott = szoveg(' '.join(szavak))
                     # kötőjel után nincs szóköz a forrásban: az összefűzést a sima szóköz-egységesítés nem tudja visszaadni → szóköz nélkül hasonlítunk
                     self.assertEqual(kapott.replace(' ', ''), szoveg(v['karoli']).replace(' ', ''), '%s (%s)' % (v['igehely'], nezet))
+                elif nezet == 'olvaso':
+                    # folyó szöveg (DT-F76e): egy bekezdés, a versek <span class="vers"> elemek; a vers szövege a következő versig tart
+                    folyo = re.search(r'<p class="folyo" id="szoveg">(.*?)</p>', h, re.S).group(1)
+                    darabok = re.split(r'<span class="vers[^"]*" id="v(\d+)">', folyo)
+                    vers_html = {int(darabok[i]): darabok[i + 1] for i in range(1, len(darabok), 2)}
+                    self.assertIn(vn, vers_html, v['igehely'])
+                    kapott = html.unescape(re.sub(r'<[^>]+>', '', re.sub(r'<a class="versszam".*?</a>', '', vers_html[vn], flags=re.S)))
+                    kapott = re.sub(r'\s+', ' ', kapott).strip()
+                    self.assertEqual(kapott, szoveg(v['karoli']), '%s (%s)' % (v['igehely'], nezet))
                 else:
                     m = re.search(r'<p class="vers[^"]*" id="v%d">(.*?)</p>' % vn, h, re.S)
                     self.assertIsNotNone(m, v['igehely'])
@@ -282,41 +291,136 @@ class TestPilotAranymintaval(unittest.TestCase):
         t = szoveg(self.szo_panel('H6440'))
         self.assertIn('57 feldolgozott könyv', t)
 
-    # -- 7. tartalmi döntésre váró hiányok: jelölt hiány (expectedFailure), nem zöld ---------------------------------------
-    @unittest.expectedFailure
+    # -- 7. a döntések (DT-F76e–i, felhasználó, 2026-10-14) kódja: valódi tesztek ---------------------------------------------
     def test_DT_F76f_magyar_alapjelentes_a_szo_lapon(self):
-        """DT-F76f: a pilot magyar „Alapjelentés” sora („arc, arcok is”) a szerveren nincs (az angol Strong-glossza áll)."""
-        l = self.pilot['1moz_1_1_2_3']['lapok']['H6440']
-        self.assertEqual(l['alapjelentes']['szoveg'], 'arc, arcok is')
+        """DT-F76f (a): a fejlécben a magyar alapjelentés (a pilot `alap_jelentes()` szabálya), híján az angol Strong-glossza; minden pilot-lapra."""
+        n = hu = 0
+        for azon, adat in self.pilot.items():
+            for strong, l in adat['lapok'].items():
+                a = blokkok.alapjelentes(self.K(strong=strong))
+                if l['alapjelentes'] and l['alapjelentes']['szoveg']:
+                    self.assertEqual((a['szoveg'], a['nyelv'], a['tisztitott']), (l['alapjelentes']['szoveg'], 'hu', l['alapjelentes']['tisztitott']), strong)
+                    hu += 1
+                else:
+                    self.assertEqual((a['szoveg'], a['nyelv']) if a else None, (l['rovid'], 'en') if l['rovid'] else None, strong)
+                n += 1
+        self.assertGreater(hu, 100)
         t = szoveg(self.szo_panel('H6440', '1Móz 1:2'))
         self.assertIn('Alapjelentés arc, arcok is', t)
+        self.assertIn('face', t)                                          # az angol Strong-glossza a Strong-szótár blokkban megmarad
 
-    @unittest.expectedFailure
-    def test_DT_F76g_magyar_bdb_apparatusokra_bontva(self):
-        """DT-F76g (N-F76d (1)): a pilot BDB-szócikke apparátusokra bontott, „Lefordítva · modell, dátum” sorral; a szerveré bontatlan."""
+    def test_DT_F76g_bdb_bontas_egyezik_a_pilottal_szocikkenkent(self):
+        """DT-F76g (b): a szerver a pilot `bdb_szelet.py`-ját hívja; a bontás, a jelölés és az alias szócikkenként egyezik a pilotéval."""
+        import json
+        n = 0
+        for azon, adat in self.pilot.items():
+            for strong, l in adat['lapok'].items():
+                d = blokkok._bdb_bontas(self.K(strong=strong))
+                if l['appar'] is None:
+                    self.assertIsNone(d, strong)
+                    continue
+                self.assertIsNotNone(d, strong)
+                self.assertEqual(json.dumps(d['appar'], sort_keys=True, ensure_ascii=False), json.dumps(l['appar'], sort_keys=True, ensure_ascii=False), strong)
+                self.assertEqual(d['hu'], bool(l['bdb_hu']), strong)
+                self.assertEqual(d['meta'], l['bdb_hu_meta'], strong)
+                self.assertEqual(bool(d['alias']), bool(l['bdb_alias']), strong)
+                n += 1
+        self.assertGreater(n, 200)
+
+    def test_DT_F76g_bdb_apparatus_a_lapon(self):
         l = self.pilot['1moz_1_1_2_3']['lapok']['H6440']
         h = self.szo_panel('H6440')
-        self.assertIn('Lefordítva · %s' % l['bdb_hu_meta'], szoveg(h))
-        for cim in ('Címszó', 'Alapjelentés és szófaj', 'Alakok', 'Jelentésszerkezet'):
-            self.assertRegex(h, r'<h4>\s*%s' % cim)
+        i = h.index('data-blokk="szo.bdb_apparatus"')
+        blokk = h[i:h.index('</section>', i)]
+        t = szoveg(blokk)
+        self.assertIn('Lefordítva · %s' % l['bdb_hu_meta'], t)
+        self.assertIn('hibás határ előfordulhat', t)
+        for cim in ('Címszó', 'Alapjelentés és szófaj', 'Alakok (alaktani apparátus)', 'Jelentésszerkezet'):
+            self.assertRegex(blokk, r'<h4>\s*%s' % re.escape(cim))
+        for jelleg in ('jelleg-forras', 'jelleg-modell', 'jelleg-gepi'):
+            self.assertIn(jelleg, blokk[:blokk.index('</h3>')])
+        self.assertIn('arc, arcok is', t)
 
-    @unittest.expectedFailure
-    def test_DT_F76h_lxx_tobblet_es_szamozasi_elteres_blokk(self):
-        """DT-F76h: a pilot „LXX többlet és számozási eltérés” blokkja a szerveren nincs (a két forrástábla nincs a pardes.db-ben)."""
-        self.assertIn('LXX többlet és számozási eltérés', szoveg(self.vers_panel('1Móz 1:2')))
+    def test_DT_F76g_bdb_apparatus_escape_elt(self):
+        """A bontott szócikk minden szövege escape-elt (M0 3.7): szintetikus `<script>` a szeletelt mezőkben nem kerül a HTML-be."""
+        x = '<script>alert(1)</script>'
+        d = {'hu': True, 'meta': x, 'alias': {'tabla_strong': x, 'bdb_id': x, 'hasonlosag': x}, 'alap': None, 'appar': {
+            'fej': {'heber': x, 'atiras': x, 'homonima': x, 'ossz': x}, 'alap': x, 'nyelvi': [x], 'alaktan': x, 'ref_ossz': x, 'irodalom': [x], 'krit': [x],
+            'torzsek': [{'nev': x, 'db': x, 'jelentesek': [{'jel': x, 'szoveg': x, 'ref': x, 'al': [{'jel': x, 'szoveg': x, 'ref': x}]}]}],
+            'szakaszok': [{'szerep': 'azonos_lemma', 'nyelv': 'héber', 'jel': x, 'heber': x, 'alap': x, 'nyelvi': [x], 'ref': x, 'torzsek': [
+                {'nev': x, 'db': x, 'jelentesek': [{'jel': x, 'szoveg': x, 'ref': x, 'al': []}]}]}]}}
+        h = str(blokkok._r_bdb_apparatus(d, self.K(strong='H6440')))
+        self.assertNotIn('<script>', h)
+        self.assertIn('&lt;script&gt;', h)
 
-    @unittest.expectedFailure
-    def test_DT_F76e_olvasopult_folyo_szoveg(self):
-        """DT-F76e: a pilot Károli-szövege egyetlen folyó szöveg kis versszámokkal; a szerveren versenként külön bekezdés."""
+    def test_DT_F76h_lxx_tobblet_blokk_az_adat_meg_nincs_a_db_ben(self):
+        """DT-F76h (c): a blokk megjelenik, és kimondja, hogy az adat még nincs a DB-ben (üres eredmény nem negatív lelet); a forrássor a TSV-ket nevezi."""
+        h = self.vers_panel('1Móz 1:2')
+        i = h.index('data-blokk="vers.lxx_tobblet"')
+        blokk = h[i:h.index('</section>', i)]
+        self.assertIn('LXX többlet és számozási eltérés', blokk)
+        t = szoveg(blokk)
+        self.assertIn('Az adat még nincs a DB-ben', t)
+        self.assertIn('N-F76j', t)
+        self.assertIn('Verzifikacios_elteres_tabla.tsv', t)
+        self.assertIn('jelleg-forras', blokk)
+        self.assertIn('<p class="forras">Forrás és licenc: LXX_tobblet_szakaszok.tsv', blokk)
+
+    def test_DT_F76e_olvasopult_folyo_szoveg_a_masik_ketto_versenkent(self):
+        """DT-F76e (c): az Olvasópult folyó szöveg kis versszámokkal (a pilot elrendezése), az Interlineáris és a Munkaasztal versenként."""
         h = self.fejezet('1Móz 1:1', 'olvaso')
+        self.assertEqual(len(re.findall(r'<p class="folyo"', h)), 1)
         self.assertNotIn('<p class="vers', h)
+        self.assertEqual(len(re.findall(r'<span class="vers[ "]', h)), 31)
+        self.assertEqual(len(re.findall(r'<a class="versszam"', h)), 31)
+        m = self.fejezet('1Móz 1:1', 'munkaasztal')
+        self.assertEqual(len(re.findall(r'<p class="vers[ "]', m)), 31)
+        self.assertNotIn('class="folyo"', m)
+        i = self.fejezet('1Móz 1:1', 'interlinearis')
+        self.assertEqual(len(re.findall(r'<div class="il-vers[ "]', i)), 31)
+        self.assertNotIn('class="folyo"', i)
 
-    @unittest.expectedFailure
     def test_DT_F76i_alahuzas_kapcsolo_es_tema_valto(self):
-        """DT-F76i: a pilot „Kapcsolt szavak jelölése” kapcsolója és a Rendszer/Világos/Sötét témaváltója a szerveren nincs."""
-        h = self.fejezet('1Móz 1:1')
-        self.assertIn('Kapcsolt szavak jelölése', h)
-        self.assertIn('data-tema', h)
+        """DT-F76i (a): „Kapcsolt szavak jelölése” kapcsoló mindhárom nézetben, Rendszer/Világos/Sötét témaváltó; a JS és a CSS kezeli (CSP: nincs inline)."""
+        for nezet in ('olvaso', 'interlinearis', 'munkaasztal'):
+            h = self.fejezet('1Móz 1:1', nezet)
+            self.assertIn('<input type="checkbox" id="jeloles" checked> Kapcsolt szavak jelölése', h, nezet)
+            for t in ('rendszer', 'light', 'dark'):
+                self.assertIn('data-tema="%s"' % t, h, nezet)
+            self.assertNotIn('<script>', h)
+        with open(os.path.join(D, 'statikus', 'olvaso.js'), encoding='utf-8') as f:
+            js = f.read()
+        with open(os.path.join(D, 'statikus', 'olvaso.css'), encoding='utf-8') as f:
+            css = f.read()
+        self.assertIn("getElementById('jeloles')", js)
+        self.assertIn("setAttribute('data-tema'", js)
+        self.assertIn('.nincs-jeloles .szo', css)
+        self.assertIn(':root[data-tema="dark"]', css)
+        self.assertIn(':root:not([data-tema="light"])', css)
+
+    def test_interlinearis_csempek_a_pilot_heber_csempei_szerint(self):
+        """F76.30: az Interlineáris nézet szavai csempék: magyar szó, alatta az eredeti, átírás, angol tükörfordítás, Strong (a pilot héber-csempe adata)."""
+        n = 0
+        for azon, adat in self.pilot.items():
+            lapok = {}
+            for v in adat['versek']:
+                kk, fej, vn = igehely_reszek(v['igehely'])
+                if (kk, fej) not in lapok:
+                    lapok[(kk, fej)] = self.fejezet(v['igehely'], 'interlinearis')
+                h = lapok[(kk, fej)]
+                m = re.search(r'<div class="il-vers[^"]*" id="v%d">(.*?)(?=<div class="il-vers|</section>)' % vn, h, re.S)
+                self.assertIsNotNone(m, v['igehely'])
+                csempek = re.findall(r'<span class="heb" lang="he" dir="rtl">(.*?)</span><span class="at">(.*?)</span><span class="gl">(.*?)</span><span class="st">(.*?)</span>', m.group(1))
+                self.assertGreater(len(csempek), 0, v['igehely'])
+                pilot = {(w['heber'], w['atiras'], w['tukor'], w['strong']) for w in v['heber']}
+                for c in csempek:
+                    c = tuple(html.unescape(x) for x in c)
+                    self.assertIn(c, pilot, '%s: a csempe nincs a pilot héber szavai között' % v['igehely'])
+                    n += 1
+        self.assertGreater(n, 300)
+        h = self.fejezet('1Móz 1:1', 'interlinearis')
+        self.assertIn('href="/1Moz/1/1?szo=H0430&amp;ful=szo#v1"', h)                # kattintásra a szó-lap
+        self.assertIn('class="er nyelvtani"', h)                                        # a nyelvtani elemnek nincs szó-lapja
 
 
 if __name__ == '__main__':

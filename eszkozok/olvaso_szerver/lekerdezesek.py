@@ -131,6 +131,14 @@ def fejezet_szavak(con, kk, fej):
     return ki
 
 
+def fejezet_eredeti(con, kk, fej):
+    """{(igehely, sorszam): (kiejtes, angol_tukorford, rovid_jelentes)} a fejezet eredeti szavaira (az Interlineáris csempékhez; a
+    `token_par.er_sorszam` a `token_eredeti.sorszam`-ra illeszkedik)."""
+    return {(ig, sz): (kiej or '', tukor or '', rovid or '') for ig, sz, kiej, tukor, rovid in con.execute(
+        "SELECT e.igehely, e.sorszam, e.kiejtes, e.angol_tukorford, e.rovid_jelentes FROM vers v JOIN token_eredeti e ON e.igehely=v.igehely "
+        "WHERE v.konyv=? AND v.fejezet=?", (kk, fej))}
+
+
 def fejezet_parositatlan(con, kk, fej):
     """{igehely: [(sorszam, szo, strong)]} — az eredeti szavak, amelyek `sorszam`-a nem szerepel a `token_par` `er_sorszam`
     oszlopában (az Interlineáris nézet vers alatti külön sora)."""
@@ -410,6 +418,15 @@ def bdb_magyar(con, s):
         if szoveg and szoveg.strip():
             hu = szoveg.replace('\\n', '\n')
     return hu
+
+
+def bdb_magyar_meta(con, s):
+    """A magyar BDB-szócikk fordítás-jelölése: „modell, dátum” (a `forditasok.modell`, `.datum`; ugyanaz a sor, amelyet `bdb_magyar` választ: az utolsó nem üres)."""
+    meta = None
+    for szoveg, modell, datum in con.execute("SELECT forditas_hu, modell, datum FROM forditasok WHERE szotar='BDB' AND strong=? ORDER BY rowid", (s,)):
+        if szoveg and szoveg.strip():
+            meta = '%s, %s' % (modell, datum)
+    return meta
 
 
 def bdb_alias(con, s):

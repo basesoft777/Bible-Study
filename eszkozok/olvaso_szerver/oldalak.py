@@ -23,6 +23,28 @@ NEZETEK = ('olvaso', 'interlinearis', 'munkaasztal')
 NEZET_NEVEK = {'olvaso': 'Olvasópult', 'interlinearis': 'Interlineáris', 'munkaasztal': 'Munkaasztal'}
 ALAP_NEZET = 'olvaso'
 SABLON_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'sablonok')
+SZERVER_DIR = os.path.dirname(os.path.abspath(__file__))
+PILOT_DIR = os.path.join(os.path.dirname(SZERVER_DIR), 'olvaso_pilot')
+
+
+def kod_verzio(gyokerek=None):
+    """A kód, a sablonok, a statikus fájlok és a konfiguráció tartalom-hash-e (a lap ETag-jébe és a gyorsítótár kulcsába kerül): kódváltozás után
+    a szerver nem adhat 304-et vagy gyorsítótárból régi lapot. `gyokerek`: [(könyvtár, [kiterjesztések])]; alap: a szerver könyvtára
+    (.py a tesztek nélkül, .html, .css, .js, .toml) és a pilot `bdb_szelet.py`-ja (a BDB-bontás ezt hívja)."""
+    h = hashlib.sha256()
+    if gyokerek is None:
+        gyokerek = [(SZERVER_DIR, ('.py', '.html', '.css', '.js', '.toml')), (PILOT_DIR, ('bdb_szelet.py',))]
+    for gyoker, kit in gyokerek:
+        for ut, _, nevek in sorted(os.walk(gyoker)):
+            if '.venv' in ut or '__pycache__' in ut:
+                continue
+            for n in sorted(nevek):
+                if n.startswith('teszt_') or not (n.endswith(tuple(kit))):
+                    continue
+                with open(os.path.join(ut, n), 'rb') as f:
+                    tartalom = f.read().replace(b'\r\n', b'\n')
+                h.update(os.path.relpath(os.path.join(ut, n), gyoker).replace(os.sep, '/').encode('utf-8') + b'\x00' + tartalom + b'\x00')
+    return h.hexdigest()[:16]
 
 
 class NemTalalhato(Exception):
@@ -92,6 +114,7 @@ class OldalGyar:
     def __init__(self, db, hozzaferes, sablon_dir=SABLON_DIR):
         self.db = db
         self.hozz = hozzaferes
+        self.kod_verzio = kod_verzio()           # induláskor számolt; a gyorsítótár kulcsában és az ETag-ben
         self.kiadas = db.kiadas
         con = db.kapcsolat()
         self.kozos = Kozos(con)
@@ -139,16 +162,18 @@ class OldalGyar:
         K = Kontekst(con, self.kozos, ig=ig, strong=s)
         oldal = 'szo_h' if s[0] == 'H' else 'szo_g'
         sz = q.strong_szotar(con, s)
+        alapjel = None
         if s[0] == 'G':
             tb = q.tbesg(con, s)
             fej = (tb[0], tb[1], tb[2]) if tb else ('', '', '')
         else:
-            fej = (sz[0], sz[1], sz[3]) if sz else ('', '', '')
-        return s, fej, self._blokkok(oldal, K, szint)
+            fej = (sz[0], sz[1], sz[2]) if sz else ('', '', '')          # szótő, kiejtés, szófaj; az alapjelentés külön sor (DT-F76f)
+            alapjel = blokkok.alapjelentes(K)
+        return s, fej, self._blokkok(oldal, K, szint), alapjel
 
     def szo_fragment(self, strong, szint, ig=None):
-        s, fej, torzs = self.szo_torzs(strong, szint, ig)
-        return self.jinja.get_template('_szo_panel.html').render(strong=s, lemma=fej[0], atiras=fej[1], jelentes=fej[2], blokkok=torzs, gorog=s[0] == 'G')
+        s, fej, torzs, alapjel = self.szo_torzs(strong, szint, ig)
+        return self.jinja.get_template('_szo_panel.html').render(strong=s, lemma=fej[0], atiras=fej[1], jelentes=fej[2], alapjel=alapjel, blokkok=torzs, gorog=s[0] == 'G')
 
     def vers_fragment(self, slug, fej, vers, szint):
         kk, ig = _ig_kulcs(self.kozos, slug, fej, vers)
@@ -199,6 +224,13 @@ class OldalGyar:
         parositatlan = q.fejezet_parositatlan(con, kk, fej) if nezet == 'interlinearis' else {}
         for v in vlista:
             v['parositatlan'] = parositatlan.get(v['ig'], [])
+        if nezet == 'interlinearis':
+            # szócsempék: a magyar szó alatt az eredeti szó, átírás, angol tükörfordítás, Strong (a #60 pilot csempéinek mintájára)
+            ered = q.fejezet_eredeti(con, kk, fej)
+            for v in vlista:
+                for w in v['szavak']:
+                    w['er'] = [{'szo': erszo, 'st': st, 'at': ered.get((v['ig'], ers), ('', '', ''))[0], 'tukor': ered.get((v['ig'], ers), ('', '', ''))[1],
+                                'nyt': st in self.kozos.nyelvtani} for ers, erszo, st, bz in w['parok']]
         szo_html = vers_html = None
         szo_n = None
         if szo:
@@ -246,8 +278,8 @@ class OldalGyar:
                 ('Károli–Strong: %d könyv' % sz['konyv'], False)]
 
     def szo_lap(self, strong, nezet, szint, ut):
-        s, fej, torzs = self.szo_torzs(strong, szint)
-        return self._render('szo.html', strong=s, lemma=fej[0], atiras=fej[1], jelentes=fej[2], blokkok=torzs, gorog=s[0] == 'G', nezet=nezet, ut=ut,
+        s, fej, torzs, alapjel = self.szo_torzs(strong, szint)
+        return self._render('szo.html', strong=s, lemma=fej[0], atiras=fej[1], jelentes=fej[2], alapjel=alapjel, blokkok=torzs, gorog=s[0] == 'G', nezet=nezet, ut=ut,
                             cim=s)
 
     def hiba_lap(self, kod, uzenet, nezet, ut):
@@ -257,7 +289,7 @@ class OldalGyar:
     def statusz(self):
         con = self.con()
         return {'epites_ts': self.kozos.meta.get('epites_ts', ''), 'meta_hash_sorok': q.meta_hashek_db(con),
-                'kiadas': self.kiadas, 'adatbazis_kulcs': self.kozos.adatbazis_kulcs, 'sablon_verzio': SABLON_VERZIO}
+                'kiadas': self.kiadas, 'adatbazis_kulcs': self.kozos.adatbazis_kulcs, 'sablon_verzio': SABLON_VERZIO, 'kod_verzio': self.kod_verzio}
 
 
 # ---------------------------------------------------------------------------------------------------------------------
