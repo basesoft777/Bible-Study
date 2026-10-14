@@ -4,7 +4,7 @@ cim: Olvasói konkordancia motívum nélkül (#25a) — kutatói felület a pard
 kod: OLVASOI_KONKORDANCIA
 tipus: feladat
 fazis: 1
-modell: sonnet
+modell: opus
 munka: adat
 allapot: megallt
 ag: claude/olvasoi-konkordancia-m2b
