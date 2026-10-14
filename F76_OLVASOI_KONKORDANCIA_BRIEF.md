@@ -70,7 +70,7 @@ Az első kiadás **helyben, WSL-ben** fut; a VPS-re telepítés és a nyilvános
 
 ## 5. Elfogadás
 
-- **K1.** Minden lap és keresés a `pardes.db`-ből jön; a #60 két szakaszán a D2-egyezés 0 eltérés, egyetlen dokumentált kivétellel: a görög szó-lapok `usz_elofordulas` blokkja, ahol a `token_strong` a TAGNT „+” Strong-láncainak elemeit is számolja, a pilot TSV-útja nem (DT-F76d: elfogadva; a lapon az érték bontása látszik).
+- **K1.** Minden lap és keresés a `pardes.db`-ből jön; a #60 két szakaszán a D2-egyezés 0 eltérés, egyetlen dokumentált kivétellel: a görög szó-lapok `usz_elofordulas` blokkja, ahol a `token_strong` a TAGNT „+” Strong-láncainak elemeit is számolja, a pilot TSV-útja nem (DT147: elfogadva; a lapon az érték bontása látszik).
 - **K2.** A három nézet váltható, a választás megmarad; a kezdőlap a bibliaszöveg könyv-, fejezet- és versválasztóval.
 - **K3.** Minden blokk jellegjelöléssel, forrás- és licencsorral; a hozzáférési szintek konfigurációból zárnak; a kiadási kapcsoló szerint a KJV-Strong és (kereskedelmi módban) az MCGED kimarad. A hozzáférési szint próbaüzemi váltója (fejléc, `/szint/<nev>`, süti; csak a `belso` kiadásban) a felhasználó kérésére került be (2026-10-14), és az M5 próbaüzem egyik ellenőrzési pontja; a #86 freemium/prémium határát nem dönti el.
 - **K4.** Az adatbázis a böngészőbe nem kerül ki; a frissességi teszt (a `meta` hashek egyeznek a TSV-kkel) a telepítés feltétele.
