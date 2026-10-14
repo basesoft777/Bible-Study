@@ -143,10 +143,9 @@ def fejezet_parositatlan(con, kk, fej):
     return ki
 
 
-def fo_szo(parok, nyelvtani, szofaj_map):
-    """A pilot szabálya (adat.py): ha egy Károli-szó több eredeti szót ad vissza, a fő szó előbb a `magas`
-    bizonyosságú, azon belül a tartalmas szófajú (nem elöljáró/kötőszó/partikula/névmás/indulatszó); a nyelvtani
-    Strong-számok kimaradnak. Visszaad: (strong, bizonyossag) vagy None."""
+def fo_lista(parok, nyelvtani, szofaj_map):
+    """A fő szó szabályával rendezett lista: [(strong, bizonyossag), ...]; az első a fő szó, a többi a „több héber szót ad
+    vissza” esetben a kísérő (a pilot `hu_szavak[].fo` és `.tobbi`)."""
     funkcio = ('elöljárószó', 'kötőszó', 'partikula', 'névmás', 'indulatszó')
 
     def funkcioszo(st):
@@ -154,7 +153,38 @@ def fo_szo(parok, nyelvtani, szofaj_map):
 
     fo = [(st, bz) for (_, _, st, bz) in parok if st not in nyelvtani]
     fo.sort(key=lambda k: (k[1] != 'magas', funkcioszo(k[0])))
+    return fo
+
+
+def fo_szo(parok, nyelvtani, szofaj_map):
+    """A pilot szabálya (adat.py): ha egy Károli-szó több eredeti szót ad vissza, a fő szó előbb a `magas`
+    bizonyosságú, azon belül a tartalmas szófajú (nem elöljáró/kötőszó/partikula/névmás/indulatszó); a nyelvtani
+    Strong-számok kimaradnak. Visszaad: (strong, bizonyossag) vagy None."""
+    fo = fo_lista(parok, nyelvtani, szofaj_map)
     return fo[0] if fo else None
+
+
+def szovegbe_igazit(szoveg, szavak):
+    """A `token_karoli` szavai írásjel nélküliek; a vers szövegéből (`vers.karoli_szoveg`) visszaadja a szavakhoz tartozó
+    írásjelet. `szavak`: a tokenek szövege sorrendben. Visszaad: [(kiir, szokoz_utan)]: `kiir` = nyitó írásjel + szó + záró írásjel;
+    `szokoz_utan` hamis, ha a következő szó közvetlenül kapcsolódik (kötőjel: *Béth-Semes* = Béth, Semes).
+    Ha egy szó nem található a szövegben (a sorrendben), a kimenet a szó maga, írásjel nélkül, és a keresés a helyén marad."""
+    ki, pos, n = [], 0, len(szoveg or '')
+    for szo in szavak:
+        i = (szoveg or '').find(szo, pos)
+        if i < 0 or not szo:
+            ki.append((szo, True))
+            continue
+        pre = szoveg[pos:i].strip()
+        if pre and (any(c.isalnum() for c in pre)):
+            pre = ''                                       # átugrott szavak: nem tapasztjuk a szóra
+        j = i + len(szo)
+        k = j
+        while k < n and not szoveg[k].isalnum() and not szoveg[k].isspace():
+            k += 1
+        ki.append((pre + szo + szoveg[j:k], not (k < n and not szoveg[k].isspace())))
+        pos = k
+    return ki
 
 
 # ---------------------------------------------------------------------------------------------------------------------
@@ -212,6 +242,12 @@ def aramai_xml(con, xml_idk):
 def lxx_szavak(con, ig):
     return [{'szoalak': a, 'lemma': b, 'strong': c or '', 'morf': d, 'szovegforma': e} for a, b, c, d, e in con.execute(
         'SELECT szoalak, lemma, strong, morf, szovegforma FROM lxx_token WHERE karoli_igehely=? ORDER BY szovegforma, pozicio, rowid', (ig,))]
+
+
+def lxx_szavak_sorrendben(con, ig):
+    """Az LXX-vers szavai a szövegbeli sorrendben (a pilot `lxx` listája; a csempe-blokk és a görög párosítás ezt használja)."""
+    return [{'szoalak': a, 'lemma': b, 'strong': c or '', 'morf': d} for a, b, c, d in con.execute(
+        'SELECT szoalak, lemma, strong, morf FROM lxx_token WHERE karoli_igehely=? ORDER BY CAST(pozicio AS INTEGER), rowid', (ig,))]
 
 
 def lxx_versszam(con, ig):
@@ -292,6 +328,55 @@ def ubs_d2(con, ig, strongok):
     for st in set(strongok):
         ki[st] = sorted(x[0] for x in con.execute(
             'SELECT DISTINCT r.lexid FROM ubs_dbh_referenciak r JOIN ubs_dbh_jelentesek j ON j.lexid=r.lexid WHERE r.igehely=? AND r.strong=?', (ig, st)))
+    return ki
+
+
+def nave_fejezet(con, ig):
+    """A Nave fejezet-szintű hivatkozásai a vers Károli-fejezetére: [(tema, cimke, hely, tema_id)] ismétlődések nélkül, a TSV sorrendjében
+    (a `nave_vers` a fejezet-szintű sorokat nem tartalmazza, SEMA 2.x: a fejezet-nézet a `nave_basokant`-ból jön)."""
+    kk, _, vf = ig.rpartition(' ')
+    kulcs = kk + ' ' + vf.split(':')[0]
+    ki, lat = [], set()
+    for tema, cimke, hely, tid in con.execute("SELECT tema, cimke, igehely, tema_id FROM nave_basokant WHERE hely_tipus='fejezet' AND igehely=? ORDER BY rowid", (kulcs,)):
+        if (tema, cimke, hely) not in lat:
+            lat.add((tema, cimke, hely))
+            ki.append((tema, cimke, hely, tid))
+    return ki
+
+
+def lxx_versszintu(con, ig):
+    """{heber_strong: [gorog_strong, ...]} a vers LXX-versszintű együttelőfordulásaira (nem szóillesztés), rendezve (a pilot `lxx_par`)."""
+    d = defaultdict(set)
+    for h, g in con.execute('SELECT heber_strong, gorog_strong FROM lxx_versszintu_parok WHERE igehely=?', (ig,)):
+        d[h].add(g)
+    return {h: sorted(g) for h, g in sorted(d.items())}
+
+
+def heber_strongok_versekre(con, igehelyek):
+    """A versek héber szavainak normalizált Strong-számai (TAHOT), a nyelvtaniak nélkül, rendezve."""
+    ki = set()
+    for (sn,) in _in(con, "SELECT DISTINCT strong_nyers FROM token_eredeti WHERE nyelv='H' AND igehely IN ", '', igehelyek):
+        n = hnorm(sn)
+        if n:
+            ki.add(n)
+    return sorted(ki)
+
+
+def gorog_strongok_versekre(con, igehelyek):
+    """A versek görög szavai (LXX_OS): a pilot `gor_szavak` első forrása (a Macula-párokat a héber csempék párosítása adja, l. `oldalak.szamlalok`)."""
+    return {st for (st,) in _in(con, "SELECT DISTINCT strong FROM lxx_token WHERE strong <> '' AND karoli_igehely IN ", '', igehelyek) if st}
+
+
+def karoli_strong_konyvek(con):
+    """A Károli–Strong párosítással feldolgozott könyvek ASCII-kódja (a pilot `karoli_konyvek`), rendezve."""
+    return sorted({konyv_slug(k) for (k,) in con.execute("SELECT DISTINCT substr(igehely, 1, instr(igehely, ' ') - 1) FROM token_par")})
+
+
+def hu_par_szavak(con, ig):
+    """{hu_sorszam: (hu_szo, [(er_sorszam, er_szo, strong, bizonyossag)])} a Károli-szavak héber párjaihoz („Károli itt”)."""
+    ki = {}
+    for hs, hu, ers, erszo, st, bz in con.execute('SELECT hu_sorszam, hu_szo, er_sorszam, er_szo, strong, bizonyossag FROM token_par WHERE igehely=? ORDER BY hu_sorszam, er_sorszam', (ig,)):
+        ki.setdefault(hs, (hu, []))[1].append((ers, erszo, st, bz))
     return ki
 
 

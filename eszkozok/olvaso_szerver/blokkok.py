@@ -7,9 +7,11 @@ hiány hibát dob.
 
 Kimenet: a forrásokból jövő szöveg mindenütt escape-elt (`markupsafe`); `Markup` csak a saját, escape-elt elemekből
 összeállított töredék. A 9. blokk (angol szavak) két regiszter-bejegyzés (BSB, KJV), mert a KJV-fél GPL miatt
-kiadás szerint kimarad; így a regiszterben 40 azonosító áll a pilot 39 blokkjára.
+kiadás szerint kimarad; így az M2-ben 40 azonosító állt a pilot 39 mért adatblokkjára. Az M2b a pilot kirajzolt készletéhez hozzáad hatot
+(héber és LXX szócsempe, LXX versszintű együttelőfordulás, „Ebben a versben”, az adatréteg-blokk háromra bontása): 46 azonosító.
 """
 import re
+import unicodedata
 from dataclasses import dataclass
 from typing import Callable
 
@@ -39,6 +41,7 @@ class Blokk:
     fetch: Callable
     render: Callable
     jelleg_megj: str = ''
+    vers_kell: bool = False      # csak vers-kontextussal jelenik meg (a szó-lap „Ebben a versben” blokkja)
 
     def __post_init__(self):
         j = (self.jelleg,) if isinstance(self.jelleg, str) else tuple(self.jelleg)
@@ -88,6 +91,24 @@ def strong_link(K, s):
     if not n:
         return e(s or '')
     return Markup('<a class="strong" href="/szo/%s">%s</a>') % (n, n)
+
+
+def _ctx_href(K, strong):
+    """A Strong-szám hivatkozásának címe a vers-kontextusban: `/<könyv>/<fejezet>/<vers>?szo=H0430&ful=szo#v<vers>` (a szó-lap a vers mellett
+    nyílik meg, így az „Ebben a versben” blokk is megjelenik); vers nélkül az önálló szó-lap."""
+    n = q.hnorm(strong) if strong else None
+    m = re.match(r'^(.+?) (\d+):(\d+)$', K.ig or '')
+    slug = K.kozos.slug.get(m.group(1)) if m else None
+    if slug and n:
+        return '/%s/%s/%s?szo=%s&ful=szo#v%s' % (slug, m.group(2), m.group(3), n, m.group(3))
+    return '/szo/%s' % n if n else '#'
+
+
+def ctx_strong_link(K, strong, szoveg=None, osztaly='strong'):
+    n = q.hnorm(strong) if strong else None
+    if not n:
+        return e(szoveg or strong or '')
+    return Markup('<a class="%s" href="%s">%s</a>') % (osztaly, _ctx_href(K, n), szoveg or n)
 
 
 def ig_link(K, szoveg):
@@ -249,7 +270,11 @@ def _f_bsb(K):
 
 
 def _r_angol(d, K):
-    return _tabla(['#', 'Angol szó', 'Strong', 'Morf'], [[str(x[0]), x[1] or '', strong_link(K, x[2]) if x[2] else '', x[3] or ''] for x in d])
+    """Szavankénti csempék (a pilot angol blokkjai): az angol szó és alatta a Strong-szám (kattintható); üres szó: —."""
+    cs = Markup('').join(
+        Markup('<span class="ang-csempe" title="%s"><span class="ang">%s</span><span class="st">%s</span></span>') % (
+            x[3] or '', x[1] or '—', ctx_strong_link(K, x[2], x[2], 'st-link') if x[2] else '') for x in d)
+    return Markup('<div class="angol-sor" lang="en">%s</div>') % cs
 
 
 def _f_kjv(K):
@@ -257,14 +282,23 @@ def _f_kjv(K):
 
 
 def _f_nave(K):
-    return q.nave(K.con, K.ig)
+    vers, fej = q.nave(K.con, K.ig), q.nave_fejezet(K.con, K.ig)
+    return (vers, fej) if (vers or fej) else None
 
 
 def _r_nave(d, K):
-    sorok = [[tema, cimke or '', ig_link(K, hely) if hely else '', 'tartomány (versekre bontva)' if t else 'vers'] for tema, cimke, hely, t, tid in d[:80]]
-    ki = _tabla(['Téma', 'Cím', 'Nave-hely', 'Jelleg'], sorok)
-    if len(d) > 80:
-        ki += Markup('<p class="megj">Összesen %d sor; az első 80 látszik.</p>') % len(d)
+    d, fej = d
+    ki = Markup('')
+    if d:
+        sorok = [[tema, cimke or '', ig_link(K, hely) if hely else '', 'tartomány (versekre bontva)' if t else 'vers'] for tema, cimke, hely, t, tid in d[:80]]
+        ki += _tabla(['Téma', 'Cím', 'Nave-hely', 'Jelleg'], sorok)
+        if len(d) > 80:
+            ki += Markup('<p class="megj">Összesen %d sor; az első 80 látszik.</p>') % len(d)
+    else:
+        ki += Markup('<p class="ures">Nincs Nave-sor erre a vershez.</p>')
+    if fej:
+        ki += Markup('<details class="fejezet-nave"><summary>Fejezet-szintű hivatkozások (%d)</summary>%s</details>') % (
+            len(fej), _tabla(['Téma', 'Cím', 'Nave-hely'], [[tema, cimke or '', ig_link(K, hely)] for tema, cimke, hely, tid in fej]))
     return ki
 
 
@@ -276,29 +310,31 @@ def _r_tipnr(d, K):
     return _tabla(['Név', 'Névváltozat', 'Strong', 'Nyelv'], [[n, v or '', strong_link(K, s) if s else '', ny or ''] for n, v, s, ny in d])
 
 
-def _f_adatreteg(K):
-    lx = q.lxx_dontesek(K.con, K.ig)
-    kap = q.kapcsolatok(K.con, K.ig)
-    mot = q.motivum_elofordulasok(K.con, K.ig)
-    return (lx, kap, mot) if (lx or kap or mot) else None
+def _f_motivum(K):
+    return q.motivum_elofordulasok(K.con, K.ig)
 
 
-def _r_adatreteg(d, K):
-    lx, kap, mot = d
-    ki = Markup('')
-    if mot:
-        ki += Markup('<h4>Motívum-előfordulások</h4>')
-        ki += _tabla(['Azonosító', 'Motívum', 'Funkció', 'Strong', 'Károli-szó', 'Megbízhatóság', 'Proveniencia'],
-                     [[a, cim or '', fk or '', strong_link(K, st) if st else '', kszo or '', mb or '', pr or ''] for a, ig, fk, st, kszo, mb, pr, cim in mot])
-    if kap:
-        ki += Markup('<h4>Igehely-kapcsolatok</h4>')
-        ki += _tabla(['Forrás', 'Cél', 'Azonosító', 'Típus', 'Funkció', 'Bizonyosság'],
-                     [[ig_link(K, a), ig_link(K, b), c, t or '', f or '', bz or ''] for a, b, c, t, f, bz in kap])
-    if lx:
-        ki += Markup('<h4>LXX-fordítói döntések</h4>')
-        ki += _tabla(['Azonosító', 'LXX-hely', 'Héber', 'Görög', 'Típus', 'Megjegyzés', 'Bizonyosság', 'Proveniencia'],
-                     [[a, c or '', strong_link(K, hs) if hs else '', Markup('%s %s') % (_gor(gl), strong_link(K, gs) if gs else ''), t or '', mj or '', bz or '', pv or ''] for a, ig, c, hs, gl, gs, t, mj, bz, pv in lx])
-    return ki
+def _r_motivum(mot, K):
+    return _tabla(['Azonosító', 'Motívum', 'Funkció', 'Strong', 'Károli-szó', 'Megbízhatóság', 'Proveniencia'],
+                  [[a, cim or '', fk or '', strong_link(K, st) if st else '', kszo or '', mb or '', pr or ''] for a, ig, fk, st, kszo, mb, pr, cim in mot])
+
+
+def _f_kapcsolat(K):
+    return q.kapcsolatok(K.con, K.ig)
+
+
+def _r_kapcsolat(kap, K):
+    return _tabla(['Forrás', 'Cél', 'Azonosító', 'Típus', 'Funkció', 'Bizonyosság'],
+                  [[ig_link(K, a), ig_link(K, b), c, t or '', f or '', bz or ''] for a, b, c, t, f, bz in kap])
+
+
+def _f_lxx_dontes(K):
+    return q.lxx_dontesek(K.con, K.ig)
+
+
+def _r_lxx_dontes(lx, K):
+    return _tabla(['Azonosító', 'LXX-hely', 'Héber', 'Görög', 'Típus', 'Megjegyzés', 'Bizonyosság', 'Proveniencia'],
+                  [[a, c or '', strong_link(K, hs) if hs else '', Markup('%s %s') % (_gor(gl), strong_link(K, gs) if gs else ''), t or '', mj or '', bz or '', pv or ''] for a, ig, c, hs, gl, gs, t, mj, bz, pv in lx])
 
 
 def _f_tsk(K):
@@ -318,6 +354,183 @@ def _f_kh(K):
 
 def _r_kh(d, K):
     return _lista([ig_link(K, a) for a, b in d])
+
+
+def _f_lxx_par(K):
+    return q.lxx_versszintu(K.con, K.ig) or None
+
+
+def _r_lxx_par(d, K):
+    lem = K.kozos_szotar(list(d))
+    sorok = Markup('').join(
+        Markup('<div class="sor"><span class="fo">%s%s</span><span class="al">%s</span></div>') % (
+            strong_link(K, h), Markup(' · %s') % _heb(lem[h][0]) if lem.get(h) and lem[h][0] else '',
+            Markup(', ').join(strong_link(K, g) for g in gs)) for h, gs in d.items())
+    return Markup('<details open><summary class="megj">%d héber szó, %d pár</summary><div class="sorok">%s</div></details>') % (
+        len(d), sum(len(g) for g in d.values()), sorok)
+
+
+# --- szócsempék: a héber szöveg és az LXX szavanként (a pilot `heber-sor` és `lxx-sor`)
+def _csupasz(szo):
+    """Görög szóalak ékezet és hehezet nélkül, kisbetűvel, végső szigma egységesítve (a pilot `csupasz`-a)."""
+    t = unicodedata.normalize('NFD', szo or '')
+    t = ''.join(c for c in t if unicodedata.category(c) != 'Mn')
+    return t.lower().replace('ς', 'σ').strip('.,;·')
+
+
+def _tavolsag(a, b):
+    if a == b:
+        return 0
+    elozo = list(range(len(b) + 1))
+    for i, ca in enumerate(a, 1):
+        akt = [i]
+        for j, cb in enumerate(b, 1):
+            akt.append(min(elozo[j] + 1, akt[j - 1] + 1, elozo[j - 1] + (ca != cb)))
+        elozo = akt
+    return elozo[-1]
+
+
+def _heber_csempek(K):
+    """A vers héber szavai (TAHOT) a Macula-sorral párosítva (pozíció szerint, eltérő szegmentálásnál Strong szerint), a görög
+    LXX-megfelelővel, a magyar alaktannal: a pilot `adat.py` párosítása. A memo-ban lévő Macula-sorokat nem módosítja."""
+    def f():
+        con, ig = K.con, K.ig
+        th = [{'strong': q.hnorm(sn) or sn, 'heber': alak, 'atiras': kiej, 'tukor': tukor}
+              for sz, ny, sn, alak, kiej, szoto, rovid, tukor in q.eredeti_szavak(con, ig) if ny == 'H']
+        mac = [dict(m) for m in K.memo('macula', lambda: q.macula(con, ig))]
+        if len(mac) == len(th):
+            for w, m in zip(th, mac):
+                w['macula'] = m
+        else:
+            hasznalt = set()
+            for w in th:
+                if w['strong'] and w['strong'].startswith('H9'):
+                    jel = [i for i, m in enumerate(mac) if m['strong'] is None and i not in hasznalt]
+                else:
+                    jel = [i for i, m in enumerate(mac) if m['strong'] == w['strong'] and i not in hasznalt]
+                w['macula'] = mac[jel[0]] if jel else None
+                if jel:
+                    hasznalt.add(jel[0])
+        # a görög szóalak az LXX_OS-ből (Rahlfs) jön; a Macula csak a párosítást adja (szóalakja helyenként hibás)
+        szabad = [dict(x) for x in q.lxx_szavak_sorrendben(con, ig)]
+        for w in th:
+            m = w['macula']
+            if m and m.get('lxx_strong'):
+                jelolt = [x for x in szabad if x['strong'] == m['lxx_strong'] and not x.get('_hasznalt')]
+                mc = _csupasz(m['lxx'])
+                cel = next((x for x in jelolt if _csupasz(x['szoalak']) == mc), None)
+                if cel is None:
+                    cel = next((x for x in jelolt if _tavolsag(_csupasz(x['szoalak']), mc) <= 1), None)
+                if cel:
+                    cel['_hasznalt'] = True
+                    m['lxx'] = cel['szoalak']
+        aramai = K.kozos.aramai_lekerdez(con, [m['xml_id'] for m in mac if m.get('xml_id')])
+        for w in th:
+            m = w['macula']
+            w['nyelvtani'] = (not w['strong']) or w['strong'] in K.kozos.nyelvtani
+            if m:
+                m['nyelv'] = aramai.get(m['xml_id'], 'H')
+                m['morf_hu'] = morf_dekodol(K.kozos.morf_kulcs, m['morf'], m['nyelv'])[0] if m['morf'] else ''
+        return th
+    return K.memo('heber_csempek', f)
+
+
+def _f_heber_csempe(K):
+    return _heber_csempek(K) or None
+
+
+def _r_heber_csempe(th, K):
+    ki = Markup('')
+    for w in th:
+        m = w.get('macula') or {}
+        mf = m.get('morf_hu') or m.get('szofaj') or ''
+        cim = ('Nyelvtani elem (prefixum, névelő, tárgyjelölő): nincs szó-lapja' if w['nyelvtani'] else '%s szó-lapja' % w['strong']) + (' · morfológia: %s' % m['morf'] if m.get('morf') else '')
+        fo = Markup('<span class="he" lang="he">%s</span><span class="at">%s</span><span class="gl">%s</span><span class="st">%s</span>%s') % (
+            w['heber'], w['atiras'] or '', w['tukor'] or '', w['strong'] or '', Markup('<span class="mf">%s</span>') % mf if mf else '')
+        if not w['nyelvtani']:
+            fo = Markup('<a class="he-fo" href="%s" title="%s">%s</a>') % (_ctx_href(K, w['strong']), cim, fo)
+        else:
+            fo = Markup('<span class="he-fo" title="%s">%s</span>') % (cim, fo)
+        if m.get('lxx'):
+            if m.get('lxx_strong'):
+                lx = Markup('<a class="lx kat" lang="grc" href="%s" title="%s görög szó-lapja">%s</a>') % (_ctx_href(K, m['lxx_strong']), m['lxx_strong'], m['lxx'])
+            else:
+                lx = Markup('<span class="lx" lang="grc" title="nincs Strong-szám">%s</span>') % m['lxx']
+        else:
+            lx = Markup('<span class="lx ures">LXX: —</span>')
+        ki += Markup('<div class="he-szo%s" data-strong="%s">%s%s</div>') % (' nyelvtani' if w['nyelvtani'] else '', w['strong'] or '', fo, lx)
+    return Markup('<p class="megj">Jobbról balra. Szavanként: átírás, angol tükörfordítás, Strong-szám, igealak (magyarul), alul a görög LXX-megfelelő (kattintható). '
+                  'Szaggatott keret: nyelvtani elem, nincs szó-lapja.</p><div class="heber-sor" lang="he" dir="rtl">%s</div>') % ki
+
+
+def _f_lxx_csempe(K):
+    return q.lxx_szavak_sorrendben(K.con, K.ig) or None
+
+
+def _r_lxx_csempe(d, K):
+    cs = Markup('').join(
+        (Markup('<a class="gk" href="%s" data-strong="%s" title="%s · %s · kattintásra görög szó-lap"><span class="gr" lang="grc">%s</span><small>%s</small></a>') % (
+            _ctx_href(K, x['strong']), x['strong'], x['lemma'] or '', x['morf'] or '', x['szoalak'], x['strong'])
+         if x['strong'] else
+         Markup('<span class="nincs-st" title="%s · %s"><span class="gr" lang="grc">%s</span><small>nincs Strong</small></span>') % (x['lemma'] or '', x['morf'] or '', x['szoalak']))
+        for x in d)
+    return Markup('<p class="megj">A keretes, aláhúzott görög szavakra kattintva megnyílik a görög szó-lap (jelentés, újszövetségi előfordulások, héber háttér). '
+                  'A szó alatt a Strong-szám; „nincs Strong”: a szónak nincs újszövetségi Strong-száma.</p><div class="lxx-sor" lang="grc">%s</div>') % cs
+
+
+# --- „Ebben a versben”: a szó-lap vers-kontextusos blokkja (a pilot `ebbenAVersben`)
+def _f_ebben(K):
+    if not K.ig or not K.strong or K.strong[0] != 'H':
+        return None
+    talalat = [w for w in _heber_csempek(K) if w['strong'] == K.strong]
+    ubs, lat = [], set()
+    for st, lex, dom, df, gl in q.ubs_dbh(K.con, K.ig):
+        if st == K.strong and lex not in lat:
+            lat.add(lex)
+            ubs.append((dom, df, gl))
+    par = q.hu_par_szavak(K.con, K.ig)
+    szofaj = q.szofajok(K.con, {p[2] for _, (hu, ps) in par.items() for p in ps})
+    karoli = None
+    for hs, (hu, ps) in sorted(par.items()):
+        fo = q.fo_lista(ps, K.kozos.nyelvtani, szofaj)
+        if fo and (fo[0][0] == K.strong or any(x[0] == K.strong for x in fo[1:])):
+            karoli = (hu, fo)
+            break
+    return {'talalat': talalat, 'ubs': ubs, 'karoli': karoli}
+
+
+def _r_ebben(d, K):
+    if not d['talalat']:
+        return Markup('<p class="megj">A szó nem fordul elő a %s versben.</p>') % K.ig
+    w = d['talalat'][0]
+    m = w.get('macula') or {}
+    ki = Markup('<p class="megj">Vers: %s</p>') % K.ig
+    if d['karoli']:
+        hu, fo = d['karoli']
+        sor = Markup('Károli itt: „%s”') % hu
+        if len(fo) > 1:
+            lem = K.kozos_szotar([x[0] for x in fo])
+            reszek = []
+            for st, bz in fo:
+                lemma = _heb((lem.get(st) or (st,))[0] or st)
+                cim = Markup('<b>%s</b>') % lemma if st == K.strong else Markup('<a href="%s">%s</a>') % (_ctx_href(K, st), lemma)
+                reszek.append(Markup('%s (%s%s)') % (cim, st, ', %s bizonyosság' % bz if bz and bz != 'magas' else ''))
+            sor += Markup(' — ez a magyar szó több héber szót ad vissza együtt: ') + Markup(' + ').join(reszek)
+        ki += Markup('<p class="megj karoli-itt">%s</p>') % sor
+    if m.get('morf'):
+        ki += Markup('<p class="megj alak">Alak: %s (%s) · %s (%s)</p>') % (_heb(w['heber']), w['atiras'] or '', m.get('morf_hu') or m.get('szofaj') or '', m['morf'])
+    if m.get('lxx'):
+        if m.get('lxx_strong'):
+            lx = Markup('<a class="gk" lang="grc" href="%s">%s</a>') % (_ctx_href(K, m['lxx_strong']), m['lxx'])
+        else:
+            lx = _gor(m['lxx'])
+        ki += Markup('<p class="megj">Görögül ebben a versben (LXX): %s%s</p>') % (lx, Markup(' · %s') % m['lxx_strong'] if m.get('lxx_strong') else '')
+    if d['ubs']:
+        for dom, df, gl in d['ubs']:
+            ki += Markup('<div class="ubs"><span class="dom">%s</span> <span class="def" lang="en">%s</span> <span class="gl" lang="en">Glosszák: %s</span></div>') % (dom or '', df or '', gl or '')
+    else:
+        ki += Markup('<p class="megj">A UBS-szótár ehhez az előforduláshoz nem ad jelentés-besorolást.</p>')
+    return ki
 
 
 def _f_ubs(K):
@@ -357,7 +570,9 @@ def _f_karoli_alakok(K):
 def _r_karoli_alakok(d, K):
     ossz, magas, top = d
     ki = Markup('<p>%d Károli-előfordulás, ebből %d magas bizonyosságú.</p>') % (ossz, magas)
-    return ki + _tabla(['Károli-alak', 'Darab'], [[a, str(n)] for a, n in top])
+    ki += _tabla(['Károli-alak', 'Darab'], [[a, str(n)] for a, n in top])
+    kv = K.kozos.karoli_strong_konyvek
+    return ki + Markup('<p class="megj">A %d feldolgozott könyv (%s) szó szintű párjai alapján; a többi könyv még hiányzik.</p>') % (len(kv), ', '.join(kv))
 
 
 def _bdb_adat(K):
@@ -551,6 +766,9 @@ REGISZTER = [
     # vers-lap
     B('vers.karoli', 'vers', 'Károli-szöveg', 'forras', ('vers',), _f_karoli, _r_karoli),
     B('vers.par', 'vers', 'Károli–Strong párosítás', 'modell', ('token_par',), _f_par, _r_par, 'a pontozott aláhúzás a szövegben is modell-kimenet'),
+    B('vers.heber_csempe', 'vers', 'Héber szöveg', ('forras', 'gepi'), ('token_eredeti', 'token_macula', 'lxx_token', 'morf_kulcs_heber', 'morf_nyelv_aramai'), _f_heber_csempe, _r_heber_csempe,
+      'szavankénti csempék; a táblázatos nézet alább'),
+    B('vers.lxx_csempe', 'vers', 'Septuaginta (LXX, Rahlfs)', 'forras', ('lxx_token',), _f_lxx_csempe, _r_lxx_csempe, 'szavankénti csempék; a táblázatos nézet alább'),
     B('vers.eredeti', 'vers', 'Eredeti szavak (TAHOT / TAGNT)', 'forras', ('token_eredeti',), _f_eredeti, _r_eredeti),
     B('vers.macula_morf', 'vers', 'Igealak-kód és szófaj (Macula)', 'forras', ('token_macula',), _f_macula, _r_macula_morf),
     B('vers.macula_gorog', 'vers', 'Héber–görög párosítás szavanként (Macula)', 'forras', ('token_macula',), _f_macula, _r_macula_gorog),
@@ -559,16 +777,20 @@ REGISZTER = [
     B('vers.versszamozas', 'vers', 'Versszámozás (MT / KJV)', 'forras', ('vers_szamozas',), _f_versszamozas, _r_versszamozas),
     B('vers.bsb', 'vers', 'Angol szavak szavanként (BSB)', ('forras', 'gepi'), ('bsb',), _f_bsb, _r_angol),
     B('vers.kjv', 'vers', 'Angol szavak szavanként (KJV + Strong)', ('forras', 'gepi'), ('kjv',), _f_kjv, _r_angol, 'a Strong-címkék GPL-eredetűek: nyilvános kiadásból kimarad'),
-    B('vers.nave', 'vers', 'Témák (Nave, versekre bontva)', ('forras', 'gepi'), ('nave_vers',), _f_nave, _r_nave),
+    B('vers.nave', 'vers', 'Témák (Nave, versekre bontva)', ('forras', 'gepi'), ('nave_vers', 'nave_basokant'), _f_nave, _r_nave),
     B('vers.tipnr', 'vers', 'Tulajdonnevek (TIPNR)', ('forras', 'gepi'), ('tipnr',), _f_tipnr, _r_tipnr),
     B('vers.morf_hu', 'vers', 'Az igealak magyar feloldása', 'gepi', ('morf_kulcs_heber', 'token_macula', 'morf_nyelv_aramai'), _f_morf_hu, _r_morf_hu),
-    B('vers.adatreteg', 'vers', 'LXX-döntés, kapcsolat, motívum (adatréteg)', 'forras', ('lxx_dontesek', 'kapcsolatok', 'elofordulasok', 'motivumok'), _f_adatreteg, _r_adatreteg, 'soronként saját proveniencia-mező'),
+    B('vers.motivum', 'vers', 'Motívumadat (adatréteg)', 'forras', ('elofordulasok', 'motivumok'), _f_motivum, _r_motivum, 'soronként saját proveniencia-mező'),
+    B('vers.kapcsolat', 'vers', 'Igehely-kapcsolatok (adatréteg)', 'forras', ('kapcsolatok',), _f_kapcsolat, _r_kapcsolat),
+    B('vers.lxx_dontes', 'vers', 'LXX-fordítói döntések (adatréteg)', 'forras', ('lxx_dontesek',), _f_lxx_dontes, _r_lxx_dontes, 'soronként saját proveniencia-mező'),
+    B('vers.lxx_par', 'vers', 'LXX versszintű együttelőfordulás', 'forras', ('lxx_versszintu_parok',), _f_lxx_par, _r_lxx_par, 'együttelőfordulás a versben, nem szóillesztés'),
     B('vers.tsk', 'vers', 'Kereszthivatkozások (TSK)', 'forras', ('tsk',), _f_tsk, _r_tsk),
     B('vers.kh', 'vers', 'Károli-kereszthivatkozások', 'forras', ('kh',), _f_kh, _r_kh),
     B('vers.ubs', 'vers', 'UBS-jelentés az előfordulásra', 'forras', ('ubs_dbh_referenciak', 'ubs_dbh_jelentesek'), _f_ubs, _r_ubs),
     # héber szó-lap
     B('szo.szotar', 'szo_h', 'Strong-szótár', 'forras', ('strong_szotar',), _f_szotar, _r_szotar),
     B('szo.elofordulas', 'szo_h', 'Előfordulás, könyvek száma', 'gepi', ('token_strong',), _f_elofordulas, _r_elofordulas),
+    B('szo.ebben', 'szo_h', 'Ebben a versben', ('forras', 'gepi', 'modell'), ('token_par', 'token_eredeti', 'token_macula', 'lxx_token', 'ubs_dbh_referenciak', 'ubs_dbh_jelentesek', 'morf_kulcs_heber', 'morf_nyelv_aramai'), _f_ebben, _r_ebben, vers_kell=True),
     B('szo.karoli_alakok', 'szo_h', 'Károli-alakok és bizonyosság', 'modell', ('token_par',), _f_karoli_alakok, _r_karoli_alakok),
     B('szo.bdb_angol', 'szo_h', 'BDB-szócikk (angol)', 'forras', ('bdb', 'bdb_alias'), _f_bdb_angol, _r_bdb_angol, 'az alias gépi feldolgozás'),
     B('szo.bdb_magyar', 'szo_h', 'BDB-szócikk (magyar fordítás)', 'modell', ('forditasok',), _f_bdb_magyar, _r_bdb_magyar),

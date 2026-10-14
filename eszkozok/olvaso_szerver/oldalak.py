@@ -48,6 +48,7 @@ class Kozos:
         self.share_alike = q.licenc_share_alike(con)
         self.morf_kulcs = q.morf_kulcs(con)
         self.nyelvtani = q.nyelvtani_strongok(con)
+        self.karoli_strong_konyvek = q.karoli_strong_konyvek(con)       # a Károli–Strong párosítású könyvek (fejléc-számláló, szó-lap jelzés)
         self.meta = q.meta(con)
         self.fejezet_szam = {}
         for kk, _, _, _ in self.konyvek:
@@ -108,6 +109,8 @@ class OldalGyar:
         for b in blokkok.blokkok_oldalra(oldal):
             if b.kiadas_kizart(self.kiadas):
                 continue
+            if b.vers_kell and not K.ig:
+                continue                                  # vers-kontextus nélkül nincs értelme (pl. „Ebben a versben”)
             if not self.hozz.lathato(b.id, szint):
                 continue
             ki.append(blokkok.blokk_html(b, K))
@@ -124,15 +127,16 @@ class OldalGyar:
         return self.db.kapcsolat()
 
     # -- töredékek (a `/r/...` útvonalak és a lapok panelei) --------------------------------------------------------------
-    def szo_torzs(self, strong, szint):
-        """A szó-lap blokkjai (HTML-töredék); NemTalalhato, ha a Strong-szám ismeretlen."""
+    def szo_torzs(self, strong, szint, ig=None):
+        """A szó-lap blokkjai (HTML-töredék); NemTalalhato, ha a Strong-szám ismeretlen. `ig`: az igehely, amelyben a szót
+        olvassák (az „Ebben a versben” blokk csak vers-kontextussal jelenik meg)."""
         s = q.hnorm(strong)
         if not s:
             raise NemTalalhato('érvénytelen Strong-szám')
         con = self.con()
         if not q.strong_van(con, s):
             raise NemTalalhato('ismeretlen Strong-szám')
-        K = Kontekst(con, self.kozos, strong=s)
+        K = Kontekst(con, self.kozos, ig=ig, strong=s)
         oldal = 'szo_h' if s[0] == 'H' else 'szo_g'
         sz = q.strong_szotar(con, s)
         if s[0] == 'G':
@@ -142,8 +146,8 @@ class OldalGyar:
             fej = (sz[0], sz[1], sz[3]) if sz else ('', '', '')
         return s, fej, self._blokkok(oldal, K, szint)
 
-    def szo_fragment(self, strong, szint):
-        s, fej, torzs = self.szo_torzs(strong, szint)
+    def szo_fragment(self, strong, szint, ig=None):
+        s, fej, torzs = self.szo_torzs(strong, szint, ig)
         return self.jinja.get_template('_szo_panel.html').render(strong=s, lemma=fej[0], atiras=fej[1], jelentes=fej[2], blokkok=torzs, gorog=s[0] == 'G')
 
     def vers_fragment(self, slug, fej, vers, szint):
@@ -185,10 +189,12 @@ class OldalGyar:
         for ig, v, szoveg in versek:
             ws = []
             van_par = False
-            for sz, szo_, parok in szavak.get(ig, []):
+            tokenek = szavak.get(ig, [])
+            irasjel = q.szovegbe_igazit(szoveg, [t[1] for t in tokenek])      # a szavak írásjellel (a `vers.karoli_szoveg`-ből)
+            for (sz, szo_, parok), (kiir, szokoz) in zip(tokenek, irasjel):
                 fo = q.fo_szo(parok, self.kozos.nyelvtani, szofaj)
                 van_par = van_par or bool(parok)
-                ws.append({'sz': sz, 'szo': szo_, 'fo': fo[0] if fo else None, 'biz': fo[1] if fo else None, 'parok': parok})
+                ws.append({'sz': sz, 'szo': szo_, 'kiir': kiir, 'szokoz': szokoz, 'fo': fo[0] if fo else None, 'biz': fo[1] if fo else None, 'parok': parok})
             vlista.append({'ig': ig, 'vers': v, 'szoveg': szoveg, 'szavak': ws, 'van_par': van_par})
         parositatlan = q.fejezet_parositatlan(con, kk, fej) if nezet == 'interlinearis' else {}
         for v in vlista:
@@ -199,19 +205,45 @@ class OldalGyar:
             szo_n = q.hnorm(szo)
         if szo_n:
             try:
-                szo_html = self.szo_fragment(szo_n, szint)
+                szo_html = self.szo_fragment(szo_n, szint, ('%s %d:%d' % (kk, fej, vers)) if vers is not None else None)
             except NemTalalhato:
                 szo_n, szo_html = None, None
         if vers is not None:
             vers_html = self.vers_fragment(slug, fej, vers, szint)
         if ful not in ('szo', 'vers'):
             ful = 'szo' if (szo_html and not vers_html) else 'vers'
+        cimkek = self.cimkek(self.szamlalok([v['ig'] for v in vlista]))
         fl = [f for f, _ in self.kozos.fejezet_szam[kk]]
         elozo = fl[fl.index(fej) - 1] if fl.index(fej) > 0 else None
         kovetkezo = fl[fl.index(fej) + 1] if fl.index(fej) + 1 < len(fl) else None
         return self._render('fejezet.html', kk=kk, slug=slug, nev=self.kozos.nev[kk], fej=fej, vers=vers, versek=vlista, nezet=nezet,
-                            szo=szo_n, szo_html=szo_html, vers_html=vers_html, ful=ful, ut=ut, elozo=elozo, kovetkezo=kovetkezo,
+                            szo=szo_n, szo_html=szo_html, vers_html=vers_html, ful=ful, ut=ut, elozo=elozo, kovetkezo=kovetkezo, cimkek=cimkek,
                             cim='%s %d' % (self.kozos.nev[kk], fej), szoveg_jegy=blokkok.szoveg_jegy_html(self.kozos, nezet))
+
+    def szamlalok(self, igehelyek):
+        """A fejléc-számlálók a versek halmazára (a #60 pilot szabálya): héber szó-lapok (a versek héber szavai, nyelvtani nélkül), görög
+        szó-lapok (az LXX-szavak, a Macula-párok és a héber lapok lxx_bridge első három sora), ezek közül a magyar BDB-szócikkel bírók
+        (a hiányzót az alias pótolja, mint a lapon), a Károli–Strong párosítású könyvek száma."""
+        con = self.con()
+        heber = [s for s in q.heber_strongok_versekre(con, igehelyek) if s not in self.kozos.nyelvtani]
+        gorog = set(q.gorog_strongok_versekre(con, igehelyek))
+        for ig in igehelyek:                                            # a Macula-párok: csak a TAHOT-szóhoz párosított sorok (a héber csempék szabálya)
+            for w in blokkok._heber_csempek(Kontekst(con, self.kozos, ig=ig)):
+                if (w.get('macula') or {}).get('lxx_strong'):
+                    gorog.add(w['macula']['lxx_strong'])
+        hu_db = 0
+        for s in heber:
+            gorog.update(g for _, g in q.lxx_bridge_h(con, s)[:3])
+            if blokkok._bdb_adat(Kontekst(con, self.kozos, strong=s))['hu']:
+                hu_db += 1
+        return {'vers': len(igehelyek), 'heber': len(heber), 'gorog': len(gorog), 'bdb_hu': hu_db, 'konyv': len(self.kozos.karoli_strong_konyvek)}
+
+    @staticmethod
+    def cimkek(sz):
+        """A számlálók címkéi: [(szöveg, arany)]; arany, ha a magyar BDB nem teljes."""
+        return [('%d vers' % sz['vers'], False), ('%d héber + %d görög szó-lap' % (sz['heber'], sz['gorog']), False),
+                ('BDB magyarul: %d/%d' % (sz['bdb_hu'], sz['heber']), sz['bdb_hu'] < sz['heber']),
+                ('Károli–Strong: %d könyv' % sz['konyv'], False)]
 
     def szo_lap(self, strong, nezet, szint, ut):
         s, fej, torzs = self.szo_torzs(strong, szint)

@@ -2,7 +2,7 @@
 {% macro vers_szoveg(v) %}
 <p class="vers{% if vers == v.vers %} kijelolt{% endif %}" id="v{{ v.vers }}">
   <a class="versszam" href="/{{ slug }}/{{ fej }}/{{ v.vers }}{% if szo %}?szo={{ szo }}{% endif %}#v{{ v.vers }}">{{ v.vers }}</a>
-  {% for w in v.szavak %}{% if w.fo %}<a class="szo{{ ' par-' ~ w.biz if w.biz else '' }}" href="/{{ slug }}/{{ fej }}/{{ v.vers }}?szo={{ w.fo }}&amp;ful=szo#v{{ v.vers }}" data-strong="{{ w.fo }}">{{ w.szo }}</a>{% else %}<span class="szo-nincs">{{ w.szo }}</span>{% endif %} {% endfor %}
+  {% for w in v.szavak %}{% if w.fo %}<a class="szo{{ ' par-' ~ w.biz if w.biz else '' }}" href="/{{ slug }}/{{ fej }}/{{ v.vers }}?szo={{ w.fo }}&amp;ful=szo#v{{ v.vers }}" data-strong="{{ w.fo }}">{{ w.kiir }}</a>{% else %}<span class="szo-nincs">{{ w.kiir }}</span>{% endif %}{{ '' if w.szokoz is false else ' ' }}{% endfor %}
   {% if not v.szavak %}{{ v.szoveg }}{% endif %}
 </p>
 {% endmacro %}
@@ -12,7 +12,7 @@
   <div class="il-szavak">
     {% for w in v.szavak %}
     <div class="il-szo">
-      <span class="hu">{{ w.szo }}</span>
+      <span class="hu">{{ w.kiir }}</span>
       {% for ers, erszo, st, bz in w.parok %}
       <span class="er"><span class="heb" lang="he" dir="rtl">{{ erszo }}</span> <a class="strong" href="/{{ slug }}/{{ fej }}/{{ v.vers }}?szo={{ st }}&amp;ful=szo#v{{ v.vers }}">{{ st }}</a></span>
       {% else %}
@@ -54,6 +54,20 @@
     {% if kovetkezo %}<a href="/{{ slug }}/{{ kovetkezo }}">{{ kovetkezo }}. fejezet →</a>{% endif %}
   </p>
 </div>
+<div class="cimkek" id="cimkek">
+  {% for szoveg, arany in cimkek %}<span class="cimke{{ ' arany' if arany else '' }}">{{ szoveg }}</span>
+  {% endfor %}
+</div>
+<details class="utmutato" id="utmutato"{% if vers is none %} open{% endif %}>
+  <summary>Hogyan olvasd ezt az oldalt?</summary>
+  <ol>
+    <li>A fejezet <b>Károli-szövege</b> áll a lapon ({{ nev }} {{ fej }}), írásjelekkel, ahogy a Bibliában olvasod. A kis számok a versszámok. A fejléc jobb szélén váltható a nézet: Olvasópult (szöveg és jobb oldalt a részletek), Interlineáris (a magyar szavak alatt az eredeti szó), Munkaasztal (verslista, szöveg, és egyszerre a szó és a vers lapja).</li>
+    <li>A <b>pontozottan aláhúzott szavakhoz</b> a héber eredetiben is tartozik szó. Rákattintva a <b>Szó</b> fülön megnyílik a szó teljes lapja: mit jelent, hogyan fordítja Károli, mi az alakja ebben a versben, hol fordul elő, mi a görög megfelelője.</li>
+    <li>A <b>versszámra</b> kattintva a <b>Vers részletei</b> nyílik meg: a vers héber eredetije szavanként, a görög fordítás (Septuaginta) és a kapcsolódó igehelyek.</li>
+    <li>A <b>görög szavak</b> is kattinthatók (keretes, aláhúzott szavak): ilyenkor a görög szó lapja nyílik meg, és onnan a héber szóra is vissza lehet lépni.</li>
+    <li>Minden blokk címe mellett a jellege áll: <span class="jelleg jelleg-forras">forrásadat</span> (változtatás nélkül egy adatkészletből), <span class="jelleg jelleg-gepi">gépi feldolgozás</span> (szabály rendezi vagy párosítja), <span class="jelleg jelleg-modell">modell-kimenet</span> (nyelvi modell fordította vagy párosította; javaslat-értékű). A pontozott aláhúzás a szövegben is modell-kimenet (a Károli–Strong párosítás). A blokk alatt a forrás és a licenc áll. <b>Arany számláló</b> a fejlécben: a magyar BDB-fordítás még nem teljes.</li>
+  </ol>
+</details>
 {% if nezet == 'olvaso' %}
 <div class="oszlopok olvaso">
   <section class="szoveg-oszlop" aria-label="Károli-szöveg">

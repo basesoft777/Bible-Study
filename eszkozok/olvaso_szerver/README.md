@@ -8,7 +8,7 @@ Szerveroldali Flask-alkalmazás, amely a `pardes.db`-ből (csak olvasásra) áll
 |---|---|
 | `alkalmazas.py` | Flask-gyár: útvonalak, süti, fejlécek, gyorsítótár/ETag; SQL nincs benne |
 | `oldalak.py` | a lapelőállítás (HTML-szöveg), **nem függ a Flasktól**; a statikus export erre épül |
-| `blokkok.py` | a blokk-regiszter (40 azonosító a pilot 39 blokkjára), jelleg-címke, forrás- és licencsor |
+| `blokkok.py` | a blokk-regiszter (46 azonosító: az M2 40-e a pilot 39 mért adatblokkjára + az M2b 6 új blokkja a pilot kirajzolt készletéhez), jelleg-címke, forrás- és licencsor |
 | `lekerdezesek.py` | az összes SQL, paraméterezve (N-F76c) |
 | `adatbazis.py` | csak olvasó kapcsolat, `set_authorizer` a kiadás szerint kizárt táblákra |
 | `hozzaferes.py` | hozzáférési szintek a `konfig/hozzaferes.toml`-ból |

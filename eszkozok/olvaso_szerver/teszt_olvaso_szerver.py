@@ -163,7 +163,10 @@ class TestRegiszterEsAdatbazis(unittest.TestCase):
         cls.kozos = oldalak.Kozos(cls.con)
 
     def test_blokkszam_es_oldalak(self):
-        self.assertEqual(len(blokkok.REGISZTER), 40)      # a pilot 39 blokkja; a 9. (BSB/KJV) két bejegyzés
+        # 46 = az M2 40 azonosítója (a pilot 39 mért adatblokkja; a 9. BSB/KJV két bejegyzés) + az M2b 6 új azonosítója: két szócsempe-blokk
+        # (héber, LXX), az LXX versszintű együttelőfordulás, az „Ebben a versben” (szó-lap), az adatréteg-blokk háromra bontása (+2); a pilot kirajzolt blokk-készlete
+        # a teszt_pilot_aranymintaval.py-ban van, a hiányzó (DT-F76e–i) expectedFailure-ként
+        self.assertEqual(len(blokkok.REGISZTER), 46)
         self.assertEqual({b.oldal for b in blokkok.REGISZTER}, set(blokkok.OLDALAK))
 
     def test_minden_tablanak_van_licencsora(self):
@@ -182,7 +185,10 @@ class TestRegiszterEsAdatbazis(unittest.TestCase):
         'vers.macula_morf': ('Ebben a versben', False), 'vers.macula_gorog': ('Ebben a versben', False), 'vers.lxx_szavak': ('Septuaginta', True),
         'vers.lxx_versszam': ('Versszámozás', False), 'vers.versszamozas': ('Versszámozás', True),
         'vers.bsb': ('Angol szó szavanként (BSB)', True), 'vers.kjv': ('Angol szó szavanként (KJV)', True), 'vers.nave': ('Témák (Nave)', True),
-        'vers.tipnr': ('Tulajdonnevek (TIPNR)', True), 'vers.morf_hu': ('Héber szöveg', False), 'vers.adatreteg': ('Motívumadat (adatréteg)', False),
+        'vers.tipnr': ('Tulajdonnevek (TIPNR)', True), 'vers.morf_hu': ('Héber szöveg', False), 'vers.motivum': ('Motívumadat (adatréteg)', True),
+        'vers.kapcsolat': ('Igehely-kapcsolatok (adatréteg)', True), 'vers.lxx_dontes': ('LXX-fordítói döntések (adatréteg)', True),
+        'vers.lxx_par': ('LXX versszintű együttelőfordulás', True), 'vers.heber_csempe': ('Héber szöveg', True), 'vers.lxx_csempe': ('Septuaginta', True),
+        'szo.ebben': ('Ebben a versben', True),
         'vers.tsk': ('Kereszthivatkozások (TSK', True), 'vers.kh': ('Károli-kereszthivatkozások', True), 'vers.ubs': ('Ebben a versben', False),
         'szo.szotar': ('Szó adatai (héber)', False), 'szo.elofordulas': ('Szó adatai (héber)', False), 'szo.karoli_alakok': ('Szó adatai (héber)', False),
         'szo.bdb_angol': ('BDB-szócikk', False), 'szo.bdb_magyar': ('BDB-szócikk', False), 'szo.lxx_bridge': ('Görög megfelelő', True),
@@ -323,9 +329,16 @@ class TestLapok(unittest.TestCase):
         for strong, oldal in (('H0216', 'szo_h'), ('G0746', 'szo_g'), ('H9001', 'szo_h')):
             h = self.get('/r/szo/' + strong).get_data(as_text=True)
             ids = re.findall(r'data-blokk="([^"]+)"', h)
-            self.assertEqual(ids, [b.id for b in blokkok.blokkok_oldalra(oldal)], strong)
+            # a vers-kontextust igénylő blokk (szo.ebben) önálló szó-lapon nem jelenik meg
+            self.assertEqual(ids, [b.id for b in blokkok.blokkok_oldalra(oldal) if not b.vers_kell], strong)
             self.assertEqual(len(re.findall(r'<h3>[^<]*<span class="jelleg jelleg-', h)), len(ids))
             self.assertEqual(len(re.findall(r'<p class="forras">Forrás és licenc: ', h)), len(ids))
+
+    def test_szo_lap_vers_kontextussal_az_ebben_a_versben_blokkal(self):
+        h = self.get('/1Moz/1/2?szo=H6440&ful=szo').get_data(as_text=True)
+        self.assertIn('data-blokk="szo.ebben"', h)
+        self.assertNotIn('data-blokk="szo.ebben"', self.get('/szo/H6440').get_data(as_text=True))
+        self.assertNotIn('data-blokk="szo.ebben"', self.get('/r/szo/H6440').get_data(as_text=True))
 
     def test_usz_elofordulas_bontasa_lanc_elemre(self):
         """DT-F76d / DT133: a görög szó-lapon az előfordulás mellett látszik a „+” Strong-lánc eredetű rész (G4218: 54, ebből 25)."""
@@ -566,7 +579,7 @@ class TestHozzaferesiSzintek(unittest.TestCase):
     def test_alap_konfig_mindent_lat(self):
         app = app_keszit('belso')
         t = app.test_client().get('/r/vers/1Moz/1/4').get_data(as_text=True)
-        self.assertEqual(len(re.findall(r'data-blokk=', t)), 17)
+        self.assertEqual(len(re.findall(r'data-blokk=', t)), len(blokkok.blokkok_oldalra('vers')))
 
 
 @unittest.skipUnless(VAN_DB and VAN_FLASK, 'nincs pardes.db vagy Flask')
