@@ -16,7 +16,7 @@ from collections import Counter, defaultdict
 # ---------------------------------------------------------------------------------------------------------------------
 # normalizálás
 # ---------------------------------------------------------------------------------------------------------------------
-STRONG_RE = re.compile(r'^([HG])0*([0-9]{1,4})([A-Za-z]?)$')
+STRONG_RE = re.compile(r'^([HGhg])0*([0-9]{1,4})([A-Za-z]?)$')
 
 
 def hnorm(s):
@@ -61,6 +61,11 @@ def _in(con, sql_elo, sql_uto, lista, elo_param=(), uto_param=(), csomag=400):
 # ---------------------------------------------------------------------------------------------------------------------
 def meta(con):
     return {k: v for k, v in con.execute('SELECT kulcs, ertek FROM meta WHERE kulcs NOT LIKE ?', ('hash:%',))}
+
+
+def meta_sorok(con):
+    """A teljes `meta` tábla (kulcs, érték), kulcs szerint rendezve: az adatbázis-kulcs (gyorsítótár) ebből hash-elődik."""
+    return con.execute('SELECT kulcs, ertek FROM meta ORDER BY kulcs').fetchall()
 
 
 def meta_hashek_db(con):

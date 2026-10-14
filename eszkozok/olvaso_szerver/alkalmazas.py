@@ -189,7 +189,8 @@ def letrehoz(db_ut=None, kiadas=None, konfig_dir=None, hozzaferes=None):
         ut = os.environ.get('PARDES_FRISSESSEG_FAJL')
         fr = 'nem futott'
         if ut and os.path.exists(ut):
-            sorok = [l.strip() for l in open(ut, encoding='utf-8') if l.strip()]
+            with open(ut, encoding='utf-8') as f:
+                sorok = [l.strip() for l in f if l.strip()]
             fr = sorok[-1] if sorok else 'üres'
         s['frissesseg'] = fr
         n, b = cache.meret()

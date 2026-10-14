@@ -53,7 +53,7 @@ class Kozos:
         for kk, _, _, _ in self.konyvek:
             self.fejezet_szam[kk] = q.fejezetek(con, kk)
         h = hashlib.sha256()
-        for k, v in con.execute('SELECT kulcs, ertek FROM meta ORDER BY kulcs'):
+        for k, v in q.meta_sorok(con):
             h.update(('%s=%s\n' % (k, v)).encode('utf-8'))
         self.adatbazis_kulcs = '%s-%s' % (self.meta.get('epites_ts', ''), h.hexdigest()[:12])
 
