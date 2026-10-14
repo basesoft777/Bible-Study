@@ -18,7 +18,7 @@
       {% for e in w.er %}
       <span class="er{{ ' nyelvtani' if e.nyt else '' }}">
         {% if e.nyt %}<span class="er-fo" title="Nyelvtani elem: nincs szó-lapja">{% else %}<a class="er-fo" href="/{{ slug }}/{{ fej }}/{{ v.vers }}?szo={{ e.st }}&amp;ful=szo#v{{ v.vers }}" title="{{ e.st }} szó-lapja">{% endif %}
-          <span class="heb" lang="he" dir="rtl">{{ e.szo }}</span><span class="at">{{ e.at }}</span><span class="gl">{{ e.tukor }}</span><span class="st">{{ e.st }}</span>
+          {% if e.gor %}<span class="gor" lang="el">{{ e.szo }}</span>{% else %}<span class="heb" lang="he" dir="rtl">{{ e.szo }}</span>{% endif %}<span class="at">{{ e.at }}</span><span class="gl">{{ e.tukor }}</span><span class="st">{{ e.st }}</span>
         {% if e.nyt %}</span>{% else %}</a>{% endif %}
       </span>
       {% else %}
@@ -29,7 +29,7 @@
   </div>
   {% if v.parositatlan %}
   <div class="il-parositatlan"><span class="cimke">Párosítatlan eredeti szavak:</span>
-    {% for sz, szo_, st in v.parositatlan %}<span class="er"><span class="heb" lang="he" dir="rtl">{{ szo_ }}</span> {% if st %}<a class="strong" href="/{{ slug }}/{{ fej }}/{{ v.vers }}?szo={{ st }}&amp;ful=szo#v{{ v.vers }}">{{ st }}</a>{% endif %}</span> {% endfor %}
+    {% for sz, szo_, st in v.parositatlan %}<span class="er">{% if st[:1] == 'G' %}<span class="gor" lang="el">{{ szo_ }}</span>{% else %}<span class="heb" lang="he" dir="rtl">{{ szo_ }}</span>{% endif %} {% if st %}<a class="strong" href="/{{ slug }}/{{ fej }}/{{ v.vers }}?szo={{ st }}&amp;ful=szo#v{{ v.vers }}">{{ st }}</a>{% endif %}</span> {% endfor %}
   </div>
   {% endif %}
   {% if not v.van_par %}<p class="megj">Ehhez a vershez nincs Károli–Strong párosítás (üres eredmény, nem negatív lelet).</p>{% endif %}
@@ -87,7 +87,6 @@
 <div class="oszlopok interlinearis">
   <section class="szoveg-oszlop" aria-label="Interlineáris szöveg">
     {{ szoveg_jegy }}
-    {{ jeloles_kapcsolo() }}
     {% for v in versek %}{{ interlinearis(v) }}{% endfor %}
   </section>
   <aside class="jobb-oszlop">{{ panelek(szo_html, none, 'szo', true) }}

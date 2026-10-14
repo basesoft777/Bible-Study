@@ -34,6 +34,8 @@ def kod_verzio(gyokerek=None):
     h = hashlib.sha256()
     if gyokerek is None:
         gyokerek = [(SZERVER_DIR, ('.py', '.html', '.css', '.js', '.toml')), (PILOT_DIR, ('bdb_szelet.py',))]
+        if os.environ.get('PARDES_KONFIG_DIR'):                      # külső konfiguráció (kiadás, hozzáférési szintek) is a verzió része
+            gyokerek.append((os.environ['PARDES_KONFIG_DIR'], ('.toml',)))
     for gyoker, kit in gyokerek:
         for ut, _, nevek in sorted(os.walk(gyoker)):
             if '.venv' in ut or '__pycache__' in ut:
@@ -127,6 +129,11 @@ class OldalGyar:
         self.hozz.ellenoriz_blokkok(blokkok.BLOKK_ID)
 
     # -- belső ---------------------------------------------------------------------------------------------------------
+    def _latszik(self, blokk_id, szint):
+        b = blokkok.BLOKK_ID[blokk_id]
+        return (not b.kiadas_kizart(self.kiadas) and self.hozz.lathato(b.id, szint)
+                and all(self._latszik(k, szint) for k in b.kovet))
+
     def _blokkok(self, oldal, K, szint):
         ki = []
         for b in blokkok.blokkok_oldalra(oldal):
@@ -134,7 +141,7 @@ class OldalGyar:
                 continue
             if b.vers_kell and not K.ig:
                 continue                                  # vers-kontextus nélkül nincs értelme (pl. „Ebben a versben”)
-            if not self.hozz.lathato(b.id, szint):
+            if not self.hozz.lathato(b.id, szint) or not all(self._latszik(k, szint) for k in b.kovet):
                 continue
             ki.append(blokkok.blokk_html(b, K))
         return Markup('').join(ki)
@@ -168,7 +175,8 @@ class OldalGyar:
             fej = (tb[0], tb[1], tb[2]) if tb else ('', '', '')
         else:
             fej = (sz[0], sz[1], sz[2]) if sz else ('', '', '')          # szótő, kiejtés, szófaj; az alapjelentés külön sor (DT-F76f)
-            alapjel = blokkok.alapjelentes(K)
+            # az alapjelentés is átmegy a blokk-szűrésen (kiadás és hozzáférési szint): tiltott BDB/Strong-szótár esetén nem olvas és nem szivárog
+            alapjel = blokkok.alapjelentes(K, self._latszik('szo.bdb_magyar', szint) and self._latszik('szo.bdb_apparatus', szint), self._latszik('szo.szotar', szint))
         return s, fej, self._blokkok(oldal, K, szint), alapjel
 
     def szo_fragment(self, strong, szint, ig=None):
@@ -229,7 +237,7 @@ class OldalGyar:
             ered = q.fejezet_eredeti(con, kk, fej)
             for v in vlista:
                 for w in v['szavak']:
-                    w['er'] = [{'szo': erszo, 'st': st, 'at': ered.get((v['ig'], ers), ('', '', ''))[0], 'tukor': ered.get((v['ig'], ers), ('', '', ''))[1],
+                    w['er'] = [{'szo': erszo, 'st': st, 'gor': st[:1] == 'G', 'at': ered.get((v['ig'], ers), ('', '', ''))[0], 'tukor': ered.get((v['ig'], ers), ('', '', ''))[1],
                                 'nyt': st in self.kozos.nyelvtani} for ers, erszo, st, bz in w['parok']]
         szo_html = vers_html = None
         szo_n = None
@@ -244,7 +252,7 @@ class OldalGyar:
             vers_html = self.vers_fragment(slug, fej, vers, szint)
         if ful not in ('szo', 'vers'):
             ful = 'szo' if (szo_html and not vers_html) else 'vers'
-        cimkek = self.cimkek(self.szamlalok([v['ig'] for v in vlista]))
+        cimkek = self.cimkek(self.szamlalok([v['ig'] for v in vlista], szint))
         fl = [f for f, _ in self.kozos.fejezet_szam[kk]]
         elozo = fl[fl.index(fej) - 1] if fl.index(fej) > 0 else None
         kovetkezo = fl[fl.index(fej) + 1] if fl.index(fej) + 1 < len(fl) else None
@@ -252,11 +260,13 @@ class OldalGyar:
                             szo=szo_n, szo_html=szo_html, vers_html=vers_html, ful=ful, ut=ut, elozo=elozo, kovetkezo=kovetkezo, cimkek=cimkek,
                             cim='%s %d' % (self.kozos.nev[kk], fej), szoveg_jegy=blokkok.szoveg_jegy_html(self.kozos, nezet))
 
-    def szamlalok(self, igehelyek):
+    def szamlalok(self, igehelyek, szint=None):
         """A fejléc-számlálók a versek halmazára (a #60 pilot szabálya): héber szó-lapok (a versek héber szavai, nyelvtani nélkül), görög
         szó-lapok (az LXX-szavak, a Macula-párok és a héber lapok lxx_bridge első három sora), ezek közül a magyar BDB-szócikkel bírók
         (a hiányzót az alias pótolja, mint a lapon), a Károli–Strong párosítású könyvek száma."""
         con = self.con()
+        szint = self.hozz.szint() if szint is None else szint
+        magyar_ok = self._latszik('szo.bdb_magyar', szint) and self._latszik('szo.bdb_apparatus', szint)
         heber = [s for s in q.heber_strongok_versekre(con, igehelyek) if s not in self.kozos.nyelvtani]
         gorog = set(q.gorog_strongok_versekre(con, igehelyek))
         for ig in igehelyek:                                            # a Macula-párok: csak a TAHOT-szóhoz párosított sorok (a héber csempék szabálya)
@@ -266,16 +276,18 @@ class OldalGyar:
         hu_db = 0
         for s in heber:
             gorog.update(g for _, g in q.lxx_bridge_h(con, s)[:3])
-            if blokkok._bdb_adat(Kontekst(con, self.kozos, strong=s))['hu']:
+            if magyar_ok and blokkok._bdb_adat(Kontekst(con, self.kozos, strong=s))['hu']:
                 hu_db += 1
-        return {'vers': len(igehelyek), 'heber': len(heber), 'gorog': len(gorog), 'bdb_hu': hu_db, 'konyv': len(self.kozos.karoli_strong_konyvek)}
+        # tiltott magyar BDB (szint vagy kiadás): a számláló nem jelenik meg (None), a tiltott táblát nem olvassuk
+        return {'vers': len(igehelyek), 'heber': len(heber), 'gorog': len(gorog), 'bdb_hu': hu_db if magyar_ok else None, 'konyv': len(self.kozos.karoli_strong_konyvek)}
 
     @staticmethod
     def cimkek(sz):
         """A számlálók címkéi: [(szöveg, arany)]; arany, ha a magyar BDB nem teljes."""
-        return [('%d vers' % sz['vers'], False), ('%d héber + %d görög szó-lap' % (sz['heber'], sz['gorog']), False),
-                ('BDB magyarul: %d/%d' % (sz['bdb_hu'], sz['heber']), sz['bdb_hu'] < sz['heber']),
-                ('Károli–Strong: %d könyv' % sz['konyv'], False)]
+        ki = [('%d vers' % sz['vers'], False), ('%d héber + %d görög szó-lap' % (sz['heber'], sz['gorog']), False)]
+        if sz['bdb_hu'] is not None:
+            ki.append(('BDB magyarul: %d/%d' % (sz['bdb_hu'], sz['heber']), sz['bdb_hu'] < sz['heber']))
+        return ki + [('Károli–Strong: %d könyv' % sz['konyv'], False)]
 
     def szo_lap(self, strong, nezet, szint, ut):
         s, fej, torzs, alapjel = self.szo_torzs(strong, szint)

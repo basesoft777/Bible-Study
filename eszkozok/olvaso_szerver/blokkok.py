@@ -55,6 +55,8 @@ class Blokk:
     render: Callable
     jelleg_megj: str = ''
     forras_szoveg: str = ''      # ha a blokk adata nincs a pardes.db-ben: a forrás- és licencsor szövege (tábla híján)
+    kovet: tuple = ()            # azok a blokkok, amelyek láthatóságát követi (a bontott BDB ugyanazt a magyar szócikket mutatja, mint a szo.bdb_magyar)
+    jelleg_fn: Callable = None   # az adatból függő jelleg (pl. a bontott BDB: modell-kimenet csak magyar bontásnál)
     vers_kell: bool = False      # csak vers-kontextussal jelenik meg (a szó-lap „Ebben a versben” blokkja)
 
     def __post_init__(self):
@@ -626,12 +628,15 @@ def _bdb_bontas(K):
     return K.memo('bdb_bontas', f)
 
 
-def alapjelentes(K):
+def alapjelentes(K, magyar_ok=True, angol_ok=True):
     """A szó-lap fejlécének alapjelentése (DT-F76f): a magyar BDB-sor gépi tisztítása (`bdb_szelet.alap_jelentes`), ennek híján az angol
-    Strong-glossza. {'szoveg', 'nyelv', 'tisztitott'} vagy None."""
-    b = _bdb_bontas(K)
+    Strong-glossza. {'szoveg', 'nyelv', 'tisztitott'} vagy None. `magyar_ok`/`angol_ok`: a hívó (OldalGyar) a blokk-szintű kiadási és
+    hozzáférési szűrésen átengedte-e a BDB-t, illetve a Strong-szótárat; tiltott forrást nem olvas (F76.32, E1)."""
+    b = _bdb_bontas(K) if magyar_ok else None
     if b and b['hu'] and b['alap'] and b['alap'].get('szoveg'):
         return {'szoveg': b['alap']['szoveg'], 'nyelv': 'hu', 'tisztitott': b['alap']['tisztitott']}
+    if not angol_ok:
+        return None
     sz = q.strong_szotar(K.con, K.strong)
     return {'szoveg': sz[3], 'nyelv': 'en', 'tisztitott': False} if sz and sz[3] else None
 
@@ -922,8 +927,9 @@ REGISZTER = [
     B('szo.ebben', 'szo_h', 'Ebben a versben', ('forras', 'gepi', 'modell'), ('token_par', 'token_eredeti', 'token_macula', 'lxx_token', 'ubs_dbh_referenciak', 'ubs_dbh_jelentesek', 'morf_kulcs_heber', 'morf_nyelv_aramai'), _f_ebben, _r_ebben, vers_kell=True),
     B('szo.karoli_alakok', 'szo_h', 'Károli-alakok és bizonyosság', 'modell', ('token_par',), _f_karoli_alakok, _r_karoli_alakok),
     B('szo.bdb_apparatus', 'szo_h', 'BDB-szócikk apparátusokra bontva', ('forras', 'modell', 'gepi'), ('bdb', 'bdb_alias', 'forditasok'), _f_bdb_apparatus, _r_bdb_apparatus,
-      'a pilot gépi szeletelése (bdb_szelet.py); hibás határ előfordulhat'),
-    B('szo.bdb_angol', 'szo_h', 'BDB-szócikk (angol)', 'forras', ('bdb', 'bdb_alias'), _f_bdb_angol, _r_bdb_angol, 'az alias gépi feldolgozás'),
+      'a pilot gépi szeletelése (bdb_szelet.py); hibás határ előfordulhat',
+      kovet=('szo.bdb_magyar',), jelleg_fn=lambda d: ('forras', 'modell', 'gepi') if d['hu'] else ('forras', 'gepi')),     # modell-kimenet csak a magyar fordításból készült bontásnál
+    B('szo.bdb_angol', 'szo_h', 'BDB-szócikk (angol)', 'forras', ('bdb', 'bdb_alias', 'forditasok'), _f_bdb_angol, _r_bdb_angol, 'az alias gépi feldolgozás'),
     B('szo.bdb_magyar', 'szo_h', 'BDB-szócikk (magyar fordítás)', 'modell', ('forditasok',), _f_bdb_magyar, _r_bdb_magyar),
     B('szo.lxx_bridge', 'szo_h', 'Görög megfelelő (lxx_bridge)', 'forras', ('lxx_bridge',), _f_lxx_bridge, _r_lxx_bridge),
     B('szo.sdbh', 'szo_h', 'Szemantikai domén (SDBH)', 'forras', ('sdbh_domenek',), _f_sdbh, _r_sdbh, 'üres eredmény nem negatív lelet'),
@@ -994,9 +1000,9 @@ def jelleg_cimkek(jellegek):
 
 def blokk_html(b, K):
     """A blokk teljes HTML-je. Hibát dob, ha a jelleg- vagy a forrássor hiányozna."""
-    cimkek = jelleg_cimkek(b.jelleg)
     forras = forras_sor(b, K.kozos)
     adat = b.fetch(K)
+    cimkek = jelleg_cimkek(b.jelleg_fn(adat) if (b.jelleg_fn and adat) else b.jelleg)
     torzs = None
     if adat:
         torzs = b.render(adat, K)

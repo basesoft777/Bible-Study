@@ -5,8 +5,8 @@ Károli-szöveg, a fejléc-számlálók és az útmutató, a héber és az LXX s
 blokk, az LXX versszintű együttelőfordulás, a fejezet-szintű Nave, a blokk-címek és a magyar tartalom. Az aranymintát a
 TSV-ből készült pilot JSON adja (`eszkozok/olvaso_pilot/adat.py`), mindkét pilot-szakaszon (1Móz 1:1–2:3 és Zsolt 22).
 
-Ahol a pótlás tartalmi döntésre vár (DT-F76e–i, `DONTESEK.md`), a teszt `expectedFailure`: a hiányt rögzíti, nem állítja zöldre;
-ha a döntés után a funkció elkészül, a teszt „váratlan siker”-ként jelez, és a jelölést el kell távolítani.
+A DT-F76e–i döntések (felhasználó, 2026-10-14) kódja kész, tesztjük (7. szakasz) valódi teszt: expectedFailure nincs. A tesztek a
+blokk-jelenlétet, a pilot adatával való egyezést és a szerkezetet nézik; a pilot JSON ugyanabból a TSV-ből készül, amelyből a `pardes.db`.
 
 Futtatás (Python 3.12, `pardes` WSL-disztribúció; a DB-s tesztek DB nélkül kimaradnak):
     PARDES_DB=/home/basesoft/pardes/pardes.db python eszkozok/olvaso_szerver/teszt_pilot_aranymintaval.py
@@ -382,9 +382,12 @@ class TestPilotAranymintaval(unittest.TestCase):
 
     def test_DT_F76i_alahuzas_kapcsolo_es_tema_valto(self):
         """DT-F76i (a): „Kapcsolt szavak jelölése” kapcsoló mindhárom nézetben, Rendszer/Világos/Sötét témaváltó; a JS és a CSS kezeli (CSP: nincs inline)."""
+        # az Interlineárisban nincs aláhúzott szó, ott a kapcsoló nem jelenik meg (F76.32, E4)
+        self.assertNotIn('id="jeloles"', self.fejezet('1Móz 1:1', 'interlinearis'))
         for nezet in ('olvaso', 'interlinearis', 'munkaasztal'):
             h = self.fejezet('1Móz 1:1', nezet)
-            self.assertIn('<input type="checkbox" id="jeloles" checked> Kapcsolt szavak jelölése', h, nezet)
+            if nezet != 'interlinearis':
+                self.assertIn('<input type="checkbox" id="jeloles" checked> Kapcsolt szavak jelölése', h, nezet)
             for t in ('rendszer', 'light', 'dark'):
                 self.assertIn('data-tema="%s"' % t, h, nezet)
             self.assertNotIn('<script>', h)
@@ -411,12 +414,13 @@ class TestPilotAranymintaval(unittest.TestCase):
                 m = re.search(r'<div class="il-vers[^"]*" id="v%d">(.*?)(?=<div class="il-vers|</section>)' % vn, h, re.S)
                 self.assertIsNotNone(m, v['igehely'])
                 csempek = re.findall(r'<span class="heb" lang="he" dir="rtl">(.*?)</span><span class="at">(.*?)</span><span class="gl">(.*?)</span><span class="st">(.*?)</span>', m.group(1))
+                csempek = [tuple(html.unescape(x) for x in c) for c in csempek]
                 self.assertGreater(len(csempek), 0, v['igehely'])
-                pilot = {(w['heber'], w['atiras'], w['tukor'], w['strong']) for w in v['heber']}
-                for c in csempek:
-                    c = tuple(html.unescape(x) for x in c)
-                    self.assertIn(c, pilot, '%s: a csempe nincs a pilot héber szavai között' % v['igehely'])
-                    n += 1
+                # teljes egyezés: a csempék sorrendben a token_par párjai, mindegyik a pilot héber szavából (er_sorszam = a TAHOT-lista helye)
+                vart = [(v['heber'][ers - 1]['heber'], v['heber'][ers - 1]['atiras'], v['heber'][ers - 1]['tukor'], v['heber'][ers - 1]['strong'])
+                        for hs, hu, ers, erszo, st, bz in q.par_szavak(self.con, v['igehely']) if st]
+                self.assertEqual(csempek, vart, '%s: az Interlineáris csempék nem egyeznek a pilot héber szavaival' % v['igehely'])
+                n += len(csempek)
         self.assertGreater(n, 300)
         h = self.fejezet('1Móz 1:1', 'interlinearis')
         self.assertIn('href="/1Moz/1/1?szo=H0430&amp;ful=szo#v1"', h)                # kattintásra a szó-lap

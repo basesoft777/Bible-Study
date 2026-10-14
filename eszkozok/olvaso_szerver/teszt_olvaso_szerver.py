@@ -401,7 +401,7 @@ class TestLapok(unittest.TestCase):
         self.assertNotEqual(c.headers['ETag'], a.headers['ETag'])
 
     def test_etag_es_gyorsitotar_kulcsa_tartalmazza_a_kod_verziojat(self):
-        """Kódváltozás után a szerver nem adhat 304-et és nem szolgálhat ki régi lapot a gyorsítótárból (F76.31)."""
+        """Kódváltozás után a szerver nem adhat 304-et és nem szolgálhat ki régi lapot a gyorsítótárból (F76.30)."""
         gyar = self.app.extensions['pardes']['gyar']
         a = self.get('/1Moz/1/3')
         self.assertEqual(self.get('/1Moz/1/3').headers['X-Cache'], 'HIT')
@@ -416,6 +416,23 @@ class TestLapok(unittest.TestCase):
             gyar.kod_verzio = regi
         self.assertEqual(self.get('/1Moz/1/3').headers['ETag'], a.headers['ETag'])
         self.assertIn(regi, str(self.get('/statusz').get_data(as_text=True)))
+
+    def test_bdb_apparatus_jellege_a_bontas_nyelvetol_fugg(self):
+        """F76.32 (E7): a „modell-kimenet” csak a magyar fordításból készült bontásnál áll a címkék között."""
+        c = self.get
+        hu = c('/r/szo/H6440').get_data(as_text=True)
+        i = hu.index('data-blokk="szo.bdb_apparatus"')
+        self.assertIn('jelleg-modell', hu[i:hu.index('</h3>', i)])
+        for s in ('H0002', 'H0003', 'H0005'):          # ahol nincs magyar BDB: angol bontás (vagy nincs szócikk)
+            t = c('/r/szo/' + s).get_data(as_text=True)
+            if 'data-blokk="szo.bdb_apparatus"' not in t:
+                continue
+            j = t.index('data-blokk="szo.bdb_apparatus"')
+            blokk = t[j:t.index('</section>', j)]
+            if 'Magyar fordítás nincs' in blokk:
+                self.assertNotIn('jelleg-modell', blokk[:blokk.index('</h3>')], s)
+                return
+        self.skipTest('nincs angol-only BDB-szócikk a mintában')
 
     def test_kod_verzio_valtozik_a_fajl_valtozasaval(self):
         import shutil
@@ -615,6 +632,54 @@ class TestHozzaferesiSzintek(unittest.TestCase):
         s = c.get('/r/szo/H0216').get_data(as_text=True)
         self.assertNotIn('szo.bdb_magyar', s)
         self.assertIn('data-blokk="szo.bdb_angol"', s)
+
+    def test_alapjelentes_es_szamlalo_a_blokk_szuresen_at(self):
+        """F76.32 (E1): a szó-lap fejlécének magyar alapjelentése és a „BDB magyarul” számláló is a blokk-szűrésen megy át: tiltott szintnél vagy
+        kizárt `forditasok` táblánál az angol Strong-glosszára esik vissza (és a számláló elmarad), nem szivárog és nem ad 500-at."""
+        import unittest.mock as mock
+        # (1) hozzáférési szint: a szo.bdb_magyar nem látható
+        h = hozzaferes.Hozzaferes(['nyilvanos', 'kutato'], 'nyilvanos', {'szo.bdb_magyar': 'kutato'}, 'nyilvanos')
+        c = app_keszit('belso', hozz=h).test_client()
+        r = c.get('/r/szo/H6440')
+        self.assertEqual(r.status_code, 200)
+        t = r.get_data(as_text=True)
+        self.assertNotIn('arc, arcok is', t)                      # a magyar alapjelentés nem szivárog
+        self.assertRegex(t, r'<p class="alapjel" lang="en"[^>]*><span class="fcim">Alapjelentés</span> face')
+        self.assertNotIn('data-blokk="szo.bdb_apparatus"', t)
+        ch = c.get('/1Moz/1')
+        self.assertEqual(ch.status_code, 200)
+        self.assertNotIn('BDB magyarul', ch.get_data(as_text=True))
+        # (2) kiadás: a forditasok tábla kizárt (az authorizer olvasni sem engedi): nincs 500
+        with mock.patch.dict(adatbazis.TABLA_KIZARAS, {'forditasok': ('nyilvanos',)}):
+            c2 = app_keszit('nyilvanos').test_client()
+            r2 = c2.get('/r/szo/H6440')
+            self.assertEqual(r2.status_code, 200)
+            t2 = r2.get_data(as_text=True)
+            self.assertNotIn('arc, arcok is', t2)
+            self.assertIn('face', t2)
+            ch2 = c2.get('/1Moz/1')
+            self.assertEqual(ch2.status_code, 200)
+            self.assertNotIn('BDB magyarul', ch2.get_data(as_text=True))
+            self.assertEqual(c2.get('/1Moz/1/2?szo=H6440&ful=szo').status_code, 200)
+        # (3) alap konfig: a magyar alapjelentés és a számláló megvan
+        t3 = app_keszit('belso').test_client().get('/r/szo/H6440').get_data(as_text=True)
+        self.assertIn('arc, arcok is', t3)
+
+    def test_kod_verzio_a_kulso_konfigot_is_tartalmazza(self):
+        import shutil
+        import unittest.mock as mock
+        tmp = tempfile.mkdtemp(prefix='konfig_')
+        try:
+            with open(os.path.join(tmp, 'hozzaferes.toml'), 'w', encoding='utf-8') as f:
+                f.write('a = 1\n')
+            with mock.patch.dict(os.environ, {'PARDES_KONFIG_DIR': tmp}):
+                v1 = oldalak.kod_verzio()
+                with open(os.path.join(tmp, 'hozzaferes.toml'), 'a', encoding='utf-8') as f:
+                    f.write('b = 2\n')
+                self.assertNotEqual(v1, oldalak.kod_verzio())
+            self.assertNotEqual(v1, oldalak.kod_verzio())              # a külső konfig nélkül más
+        finally:
+            shutil.rmtree(tmp, ignore_errors=True)
 
     def test_a_szint_a_gyorsitotar_kulcsaban_van(self):
         h1 = hozzaferes.Hozzaferes(['nyilvanos', 'kutato'], 'nyilvanos', {'vers.tsk': 'kutato'}, 'nyilvanos')
