@@ -12,7 +12,7 @@ ad: kutatói olvasói felület helyben (WSL): bibliaszöveg-kezdőlap könyv–f
 kovetkezo: "/kovetkezo; M1 kész (naplok/OLVASOI_KONKORDANCIA_M0.md 4.3); következő: M2 (alkalmazás); ⛔ M5, ⛔ M6, ⛔ M7"
 olvas: [ADATVAGYON_TERV.md, MUNKATERV.md, adat/szotar_szerepek.tsv, adat/SEMA.md, adat/licencek.tsv, "eszkozok/olvaso_pilot/*", eszkozok/sqlite_epit.py, naplok/OLVASOI_PILOT_ertekeles.md, naplok/SQLITE_EPIT_meres.md, DONTESEK.md]
 ir: [eszkozok/olvaso_szerver/, naplok/OLVASOI_KONKORDANCIA_M0.md, naplok/OLVASOI_KONKORDANCIA_meres.md, naplok/OLVASOI_KONKORDANCIA_zaras.md]
-fugg: [44, 79, 92, 95]
+fugg: [44, 79, 92, 95, 97]
 nem_fugg: [52, 93]
 ---
 
