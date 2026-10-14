@@ -6,7 +6,8 @@ tipus: feladat
 fazis: 1
 modell: opus
 munka: folyamat
-allapot: nem_indult
+allapot: fut
+ag: claude/tervezo-mod
 ad: tervező mód a belső kiadásban: elem kiválasztása a futó felületen, csak az elem tulajdonságai magyar néven, azonnali előnézet, „Küldés a szerverre” külön gombbal egy arculati token-fájlba; elem-regiszter és regiszter-őr teszt, tartalék a regisztrálatlan elemekre; a méretek változókra cserélve, a megjelenés változatlan; szinkron-kimenet a design systemhez
 kovetkezo: "/kovetkezo; ⛔ M0 (az elem-regiszter és a token-fájl formája), ⛔ M3 (a felhasználó kipróbálja)"
 olvas: [F76_OLVASOI_KONKORDANCIA_BRIEF.md, eszkozok/olvaso_szerver/README.md, eszkozok/olvaso_szerver/statikus/olvaso.css, eszkozok/olvaso_szerver/sablonok/alap.html, eszkozok/olvaso_szerver/alkalmazas.py, eszkozok/olvaso_szerver/hozzaferes.py, eszkozok/olvaso_szerver/konfig/szerver.toml, naplok/OLVASOI_KONKORDANCIA_M0.md]
