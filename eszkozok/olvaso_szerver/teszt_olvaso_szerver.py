@@ -471,7 +471,10 @@ class TestLapok(unittest.TestCase):
         t = self.get('/r/szo/H0776').get_data(as_text=True)
         i = t.index('data-blokk="szo.bdb_apparatus"')
         blokk = t[i:t.index('</section>', i)]
-        self.assertEqual(re.findall(r'<span class="jcim">([^<]*)</span>', blokk)[:3], ['föld', 'ország', 'talaj'])
+        # az 1. és a 3. főjelentésnek nincs saját meghatározása: a cím az a. alpontból kölcsönzött, és ezt a megjelenés jelzi
+        self.assertEqual(re.findall(r'<span class="jcim">(?:<span class="kolcsonzott"[^>]*>)?([^<]*)', blokk)[:3], ['föld', 'ország', 'talaj'])
+        self.assertEqual(re.findall(r'<span class="jcim">(<span class="kolcsonzott")?', blokk)[:3], ['<span class="kolcsonzott"', '', '<span class="kolcsonzott"'])
+        self.assertIn('title="A BDB-ben ennek a jelentésnek nincs saját meghatározása; a cím az a. alpontból képződik (gépi)."', blokk)
         # a szám a kiírt igehely-hivatkozásoké, nem az előfordulásoké: a felirat és a súgó ezt mondja
         self.assertRegex(blokk, r'<span class="helyek" title="a BDB ennél a jelentésnél[^"]*">60 hivatkozás</span>')
         self.assertNotRegex(blokk, r'\d hely</span>')
