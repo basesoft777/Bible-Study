@@ -20,7 +20,7 @@ nem_fugg: [52, 93]
 
 *Befogadásra váró brief-tervezet: a #76 csonkjának kitöltése (`F76_OLVASOI_KONKORDANCIA_BRIEF.md`, ugyanazon a számon és néven). Források: a DT129 (a felhasználó öt alapdöntése és a (4) pontosítása, 2026-10-13), a DT127 (saját hosting, a `pardes.db` mérete nem köt), a DT128 (modernizált Károli-réteg, nyitott), a DT124 (kiadási kapcsoló), a #60 olvasói pilot értékelő jelentése (`naplok/OLVASOI_PILOT_ertekeles.md`, 8. pont), és a látványterv (https://claude.ai/artifact/SivJAN3Q9iSFm9j8EziAiE). A csonk „Bemenet a hosting ⛔-hez és a CI-hez” szakasza (N-F76a–c) a kitöltésnél megmarad.*
 
-**Javasolt fejléc-adatok:** `tipus: feladat` · `fazis: 1` · `modell: sonnet` · `munka: adat` · `fugg: [44, 79, 92]` · `nem_fugg: [52]` · `kovetkezo: "/kovetkezo; ⛔ M0 (terv), ⛔ M1 (helyi környezet: a disztribúció létrehozása a felhasználóé), ⛔ M5 (helyi próbaüzem), ⛔ M6 (VPS), ⛔ M7 (nyilvános közzététel)"`.
+**Javasolt fejléc-adatok:** `tipus: feladat` · `fazis: 1` · `modell: opus` (a befogadáskor sonnet; az M3-tól opus, F76.38) · `munka: adat` · `fugg: [44, 79, 92]` · `nem_fugg: [52]` · `kovetkezo: "/kovetkezo; ⛔ M0 (terv), ⛔ M1 (helyi környezet: a disztribúció létrehozása a felhasználóé), ⛔ M5 (helyi próbaüzem), ⛔ M6 (VPS), ⛔ M7 (nyilvános közzététel)"`.
 
 ## 1. Cél
 
