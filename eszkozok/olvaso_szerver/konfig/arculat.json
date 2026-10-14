@@ -1,0 +1,171 @@
+{
+  "betucsalad": {
+    "gr": "\"Noto Serif\", \"SBL Greek\", \"Gentium Plus\", Georgia, serif",
+    "he": "\"Frank Ruhl Libre\", \"SBL Hebrew\", \"Ezra SIL\", \"Times New Roman\", serif",
+    "mono": "\"IBM Plex Mono\", ui-monospace, Consolas, monospace",
+    "text": "\"Source Serif 4\", \"Noto Serif\", Georgia, serif",
+    "ui": "\"IBM Plex Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif"
+  },
+  "betumeret": {
+    "adat-tabla": "13.5px",
+    "alapjelentes": "1.25rem",
+    "alcim": "16px",
+    "allapot": "12.5px",
+    "angol-szo": "14px",
+    "apparatus-alcim": "16px",
+    "apparatus-cim": "12.5px",
+    "blokkcim": "1.3rem",
+    "cimszo-heber": "1.4rem",
+    "csempe-glossza": "13.5px",
+    "csempe-heber": "1.7rem",
+    "csempe-lxx": "14px",
+    "csempe-megj": "13px",
+    "forrascim": "12px",
+    "forrassor": "13px",
+    "gomb": "13px",
+    "gomb-kis": "12.5px",
+    "heb-betu": "1.15em",
+    "helyszam": "12.5px",
+    "igehely": "1.25rem",
+    "il-atiras": "12px",
+    "il-csempe": "16px",
+    "il-eredeti-sor": "14px",
+    "il-glossza": "12.5px",
+    "il-gorog": "1.15rem",
+    "il-heber": "1.5rem",
+    "il-magyar": "1.05rem",
+    "il-strong": "11.5px",
+    "jel-cimke": "12px",
+    "jelleg": "12.5px",
+    "karoli-folyo": "1.25rem",
+    "karoli-folyo-mobil": "1.15rem",
+    "karoli-panel": "1.375rem",
+    "kiscim": "14px",
+    "logo": "1.15rem",
+    "lxx-sor": "1.2rem",
+    "megjegyzes": "13px",
+    "oldalcim": "1.625rem",
+    "panel": "16px",
+    "sor": "14px",
+    "strong-szam": "12px",
+    "szakaszcim": "19px",
+    "szamlalo": "13px",
+    "szoalcim": "13.5px",
+    "szocikk": "16.5px",
+    "szocim-gorog": "2.2rem",
+    "szocim-heber": "3rem",
+    "szoveg-jegy": "13px",
+    "torzs": "15px",
+    "ubs": "13.5px",
+    "utmutato": "14px",
+    "versszam": "0.6em"
+  },
+  "lekerekites": {
+    "csempe": "6px",
+    "kiemeles": "4px",
+    "kis-csempe": "5px",
+    "panel": "10px",
+    "pill": "999px",
+    "szo": "3px"
+  },
+  "sorkoz": {
+    "alapjelentes": "1.4",
+    "apparatus-alcim": "1.35",
+    "blokkcim": "1.25",
+    "csempe": "1.3",
+    "forrassor": "1.5",
+    "il-magyar": "1.4",
+    "jelleg": "1.4",
+    "karoli-folyo": "1.85",
+    "karoli-folyo-mobil": "1.75",
+    "karoli-panel": "1.75",
+    "lxx-csempe": "1.2",
+    "lxx-sor": "1.4",
+    "oldalcim": "1.25",
+    "szocikk": "1.72",
+    "szocim-gorog": "1.4",
+    "szocim-heber": "1.5",
+    "szoveg-jegy": "1.4",
+    "torzs": "1.6"
+  },
+  "szin": {
+    "accent": {
+      "dark": "#8cc4b1",
+      "light": "#1f5a49"
+    },
+    "accent-soft": {
+      "dark": "#23362f",
+      "light": "#e2eee8"
+    },
+    "bg": {
+      "dark": "#151918",
+      "light": "#f5f2ea"
+    },
+    "fg": {
+      "dark": "#e6e9e4",
+      "light": "#1b1a17"
+    },
+    "gold": {
+      "dark": "#e2b25a",
+      "light": "#8a5a00"
+    },
+    "gold-soft": {
+      "dark": "#3a2f1a",
+      "light": "#f7ecd2"
+    },
+    "low": {
+      "dark": "#c3a6d8",
+      "light": "#7a5a93"
+    },
+    "muted": {
+      "dark": "#9ba49f",
+      "light": "#58554d"
+    },
+    "panel": {
+      "dark": "#1d2321",
+      "light": "#fffdf8"
+    },
+    "rule": {
+      "dark": "#313936",
+      "light": "#ddd7c9"
+    }
+  },
+  "terkoz": {
+    "ang-csempe-vizsz": "8px",
+    "blokkkoz": "18px",
+    "cimkesor": "6px",
+    "fejlec-fugg": "10px",
+    "fejlec-oszlop": "20px",
+    "fejlec-sor": "12px",
+    "gomb-fugg": "4px",
+    "gomb-vizsz": "10px",
+    "gombsor": "4px",
+    "he-csempe-fugg": "8px",
+    "he-csempe-min": "72px",
+    "he-csempe-vizsz": "10px",
+    "he-sor": "6px",
+    "il-csempe-fugg": "6px",
+    "il-csempe-vizsz": "8px",
+    "il-sor-fugg": "8px",
+    "il-sor-vizsz": "6px",
+    "jelleg-fugg": "1px",
+    "jelleg-vizsz": "7px",
+    "kis-csempe-fugg": "2px",
+    "labjegyzet-fugg": "12px",
+    "lxx-csempe-vizsz": "6px",
+    "lxx-sor-fugg": "6px",
+    "lxx-sor-vizsz": "12px",
+    "oldal": "16px",
+    "oszlopkoz": "16px",
+    "panel-fugg": "24px",
+    "szamlalo-fugg": "3px",
+    "szamlalo-vizsz": "9px",
+    "tartalom-fent": "12px",
+    "tartalom-lent": "32px",
+    "utmutato-fugg": "10px",
+    "utmutato-vizsz": "14px",
+    "valaszto-oszlop": "14px",
+    "valaszto-sor": "10px"
+  },
+  "verzio": 1
+}
