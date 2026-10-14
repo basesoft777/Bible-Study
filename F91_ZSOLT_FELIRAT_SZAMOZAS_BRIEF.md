@@ -6,12 +6,13 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: fut
+allapot: lezarva
 ag: claude/f91-zsolt-felirat-szamozas
 ad: minden feliratos zsoltár felmérve (felirat-hossz, eltolás, a két tábla állítása), proveniencia-sorral; a Karoli_versmegfeleltetes.tsv és a LXX_versificacios_terkep.tsv javítva a jóváhagyott szabály szerint (a Zsolt 22-n 0 ellentmondás az LXX_OS-szel); hatásmérés a #60 pilotra és a pardes.db-re
-kovetkezo: "Folytatás: független ellenőr újrafuttatása, majd zárás draft PR-ig"
+kovetkezo: "Lezárva; merge a felhasználótól. Utána: a pardes.db és a naplok/PARDES_DB_OLVASOI_db_igazolas.md újraépítése a main-en; N-F91a, N-F91b"
 olvas: [konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, "konkordancia/LXX_OS/*.tsv", konkordancia/LXX_OS/README.md, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_versificacios_terkep.tsv, konkordancia/Nave_basokant.tsv, naplok/KAROLI_KK1b_hianyzo_es_zsoltar.md, naplok/OLVASOI_PILOT_adatfelmeres.md, naplok/LXX_OS_LEFEDETTSEG_M2.md, DONTESEK.md]
-ir: [konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_versificacios_terkep.tsv, naplok/ZSOLT_FELIRAT_SZAMOZAS_M0.md, naplok/ZSOLT_FELIRAT_SZAMOZAS_M0b.md, naplok/ZSOLT_FELIRAT_SZAMOZAS_M0b_terkep.md, eszkozok/terkep_kjv_kulcs_felmeres.py, naplok/ZSOLT_FELIRAT_SZAMOZAS_M2a.md, eszkozok/f91_versmegf_javit.py, naplok/KAROLI_KK4_tabla_veglegesit.py, naplok/ZSOLT_FELIRAT_SZAMOZAS_M2b_macula.md, eszkozok/f91_macula_hatasmeres.py, naplok/ZSOLT_FELIRAT_SZAMOZAS_M2c.md, naplok/ZSOLT_FELIRAT_SZAMOZAS_zaras.md, DONTESEK.md, NYITOTT_FELADATOK.md, adat/SEMA.md, eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, eszkozok/f92_db_igazolas.py, eszkozok/zsolt_felirat_felmeres.py, eszkozok/olvaso_pilot/README.md, eszkozok/olvaso_pilot/felmeres.py, eszkozok/zsolt_felirat_halmaz.py, naplok/ZSOLT_FELIRAT_SZAMOZAS_M2d.md, naplok/ZSOLT_FELIRAT_SZAMOZAS_M2e_lxx_os.md, eszkozok/f91_lxx_os_replay.py, eszkozok/lxx_os_import.py]
+ir: [konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_versificacios_terkep.tsv, naplok/ZSOLT_FELIRAT_SZAMOZAS_M0.md, naplok/ZSOLT_FELIRAT_SZAMOZAS_M0b.md, naplok/ZSOLT_FELIRAT_SZAMOZAS_M0b_terkep.md, eszkozok/terkep_kjv_kulcs_felmeres.py, naplok/ZSOLT_FELIRAT_SZAMOZAS_M2a.md, eszkozok/f91_versmegf_javit.py, naplok/KAROLI_KK4_tabla_veglegesit.py, naplok/ZSOLT_FELIRAT_SZAMOZAS_M2b_macula.md, eszkozok/f91_macula_hatasmeres.py, naplok/ZSOLT_FELIRAT_SZAMOZAS_M2c.md, naplok/ZSOLT_FELIRAT_SZAMOZAS_zaras.md, DONTESEK.md, NYITOTT_FELADATOK.md, adat/SEMA.md, eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, eszkozok/f92_db_igazolas.py, eszkozok/zsolt_felirat_felmeres.py, eszkozok/olvaso_pilot/README.md, eszkozok/olvaso_pilot/felmeres.py, eszkozok/zsolt_felirat_halmaz.py, naplok/ZSOLT_FELIRAT_SZAMOZAS_M2d.md, naplok/ZSOLT_FELIRAT_SZAMOZAS_M2e_lxx_os.md, eszkozok/f91_lxx_os_replay.py, eszkozok/lxx_os_import.py, naplok/ELLENOR_F91.md, naplok/ELLENOR_F91_2.md]
+lezarva_osszegzes: "Az 1 055 sor 63 zsoltáron javítva a Karoli_versmegfeleltetes.tsv-ben (0 eltérés az LXX_OS-szel), a javítás a generátorban él; a térkép oszlopa KJV_igehely, a builder a KJV-kulcson illeszt; közös felirat-halmaz (67 vers); a pardes.db újraépítése merge után; N-F91a, N-F91b nyitott."
 fugg: []
 ---
 
