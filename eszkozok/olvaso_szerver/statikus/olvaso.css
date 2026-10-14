@@ -137,7 +137,7 @@ a.er-fo:hover, a.er-fo:focus-visible { background: var(--accent-soft); border-ra
 .jsz { margin: 2px 0; }
 .torzs h5 { margin: 8px 0 2px; }
 /* jelentésszerkezet (a pilot sablon.html ol.jel/ol.al szabályai): a jelölő a blokk `data-jel` attribútuma (1, 2 … / a., b. …), nem a
-   böngésző számozása; a kinyitott jelentésnél a rövid összegzés (.jt) rejtve, mert a teljes szöveg (.jsz) alatta áll */
+   böngésző számozása; a főjelentés címe (.jcim, gépi, a szócikk saját szavaiból) nyitva és csukva is látszik */
 ol.jel, ol.al { list-style: none; margin: 4px 0; padding: 0; display: grid; gap: 12px; }
 ol.jel > li, ol.al > li { position: relative; padding-left: 2.3rem; }
 ol.jel > li::before, ol.al > li::before { content: attr(data-jel); position: absolute; left: 0; top: 3px; font: 600 var(--fs-jelentes-jel) var(--font-mono); color: var(--accent); }
@@ -145,9 +145,25 @@ ol.al { gap: 6px; margin-top: 6px; padding-left: 4px; border-left: 2px solid var
 ol.al > li { padding-left: 1.8rem; display: grid; gap: 2px; }
 ol.jel details summary { cursor: pointer; display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: baseline; list-style: none; }
 ol.jel details summary::-webkit-details-marker { display: none; }
-ol.jel details[open] > summary .jt { display: none; }
 ol.jel details[open] > summary::after { content: 'összecsuk'; font-size: var(--fs-megjegyzes); color: var(--muted); }
-.jt { font: var(--fs-jelentes-osszegzo)/var(--lh-jelentes-osszegzo) var(--font-text); }
+.jcim { font: 600 var(--fs-jelentes-cim)/var(--lh-jelentes-cim) var(--font-text); }
+ol.jel > li, ol.al > li { scroll-margin-top: 8px; }
+ol.jel > li:target > details > summary .jcim, ol.al > li:target { background: var(--accent-soft); border-radius: var(--radius-kiemeles); }
+/* a jelentésszerkezet vázlata: a főjelentések címe és helyszáma, alattuk az alpontok; a sorok a részletes jelentésre ugranak */
+.jel-vazlat { margin: 4px 0 14px; padding: var(--space-utmutato-fugg) var(--space-utmutato-vizsz); background: var(--panel); border: 1px solid var(--rule); border-radius: var(--radius-panel); font: var(--fs-sor)/var(--lh-forrassor) var(--font-ui); }
+.jel-vazlat ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.jel-vazlat a { color: inherit; text-decoration: none; unicode-bidi: isolate; }
+.jcim { unicode-bidi: isolate; }
+.jel-vazlat a:hover, .jel-vazlat a:focus-visible { color: var(--accent); text-decoration: underline; }
+.jel-vazlat .vz-fo { font-weight: 600; }
+.jel-vazlat .vz-jel { display: inline-block; min-width: 1.6rem; font: 600 var(--fs-jelentes-jel) var(--font-mono); color: var(--accent); }
+.jel-vazlat .vz-al { display: block; padding-left: 1.6rem; color: var(--muted); }
+/* a BDB rövidítései: a szövegben pontozott aláhúzás, rámutatva a feloldás; a blokk végén a jelmagyarázat */
+.jsz abbr[title] { text-decoration: underline dotted; text-decoration-color: var(--muted); text-underline-offset: 3px; cursor: help; }
+.jelmagyarazat { display: grid; grid-template-columns: max-content 1fr; gap: 2px 12px; margin: 4px 0 6px; font: var(--fs-sor)/var(--lh-forrassor) var(--font-ui); }
+.jelmagyarazat dt { font: 600 var(--fs-jelentes-jel) var(--font-mono); color: var(--accent); }
+.jelmagyarazat dd { margin: 0; }
+.jel-vazlat .vz-torzs { font: 600 var(--fs-apparatus-alcim) var(--font-text); margin: 6px 0 2px; }
 .jel-cimke { display: inline-block; font: var(--fs-jel-cimke) var(--font-mono); padding: 1px 6px; margin: 1px; border: 1px solid var(--rule); border-radius: var(--radius-kiemeles); }
 .jel-cimke.krit { color: var(--gold); border-color: var(--gold); }
 .allapot { display: inline-block; font: 600 var(--fs-allapot) var(--font-ui); padding: 1px 8px; border-radius: var(--radius-pill); background: var(--gold-soft); color: var(--gold); margin: 0 0 4px; }

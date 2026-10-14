@@ -645,8 +645,12 @@ def alapjelentes(K, magyar_ok=True, angol_ok=True):
     return {'szoveg': sz[3], 'nyelv': 'en', 'tisztitott': False} if sz and sz[3] else None
 
 
+_HIVATKOZAS_SUGO = ('a BDB ennél a jelentésnél kiírt igehely-hivatkozásainak gépi száma (minden „fejezet:vers” alak), '
+                    'nem a szó előfordulásainak száma: a „vö.” helyek beleszámítanak, az „és máshol” nem')
+
+
 def _helyek(n):
-    return Markup('<span class="helyek">%s hely</span>') % n if n else Markup('')
+    return Markup('<span class="helyek" title="%s">%s hivatkozás</span>') % (_HIVATKOZAS_SUGO, n) if n else Markup('')
 
 
 def _rovid(s, n):
@@ -654,9 +658,177 @@ def _rovid(s, n):
     return s if len(s) <= n else re.sub(r'\s+\S*$', '', s[:n]) + ' …'
 
 
-def _torzsek_html(tl):
+# A jelentés címe (gépi, a szócikk saját szavaiból, értelmezés nélkül): a szöveg eleje a zárójeles részek nélkül, az első
+# igehely-hivatkozásig, pontosvesszőig, kettőspontig, egyenlőségjelig, gondolatjelig, vagy a magyar szöveg utáni első héber szóig
+# (a vezető héber kifejezés marad). A vessző nem határ („rossz, kellemetlen, ártalmas”), csak ha a főjelentésnek nincs saját szövege
+# (a BDB „1. a. …” szerkezete): ekkor a cím az első alpontéból képződik, annak első vesszőjéig (H0776: „föld”).
+_CIM_REF = re.compile(r'(?:\b\d?[A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]{0,5}\s+)?\d+:\d+')
+_CIM_BETUK = re.compile(r'[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű]{2}')
+
+
+def _zarojel_nelkul(s):
+    """A felső szintű (…) és […] csoportok nélkül; a szó belsejében álló zárójel (héber `מַחֲשֶׁבֶת(ה)רָעָה`) marad."""
+    ki, mely, i = [], 0, 0
+    while i < len(s):
+        c = s[i]
+        if not mely and c in '([' and i and not s[i - 1].isspace():
+            j = s.find(')' if c == '(' else ']', i)
+            if j > 0:
+                ki.append(s[i:j + 1])
+                i = j + 1
+                continue
+        if c in '([':
+            mely += 1
+        elif c in ')]' and mely:
+            mely -= 1
+        elif not mely:
+            ki.append(c)
+        i += 1
+    return ''.join(ki)
+
+
+_CIM_IRASJEL = re.compile(r'[;:=]')
+_CIM_HEBER = re.compile(r'[׳״]?[֐-׿יִ-ﭏ]')
+
+
+def jelentes_cim(szoveg, vesszoig=False, max_hossz=48):
+    nyers = re.sub(r'\s+', ' ', szoveg or '').strip()
+    s = re.sub(r'\s+', ' ', _zarojel_nelkul(nyers)).strip().lstrip(' =:;,.—-')
+    kp = _CIM_IRASJEL.search(s)
+    if kp and s[kp.start()] == ':' and len(re.findall(r'[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű]{2,}', s[:kp.start()])) <= 1:
+        kp = _CIM_IRASJEL.search(s, kp.end())        # „+ מִן comparativus: rosszabb, mint”: a jelentés a kettőspont után áll
+    hatar = [m.start() for m in (_CIM_REF.search(s), kp, re.search(r'\s—\s', s),
+                                 re.search(r',', s) if vesszoig else None) if m]
+    b = _CIM_BETUK.search(s)
+    if b:
+        # a magyar szöveg utáni héber idézet határ, ha utána nem a magyar mondat folytatódik (hanem hivatkozás, írásjel, vége), és
+        # előtte nem egyetlen szó áll vessző nélkül („ellentéte עֶרֶב”); a vezető héber kifejezés marad
+        h = _CIM_HEBER.search(s, b.end())
+        if h:
+            vege = re.match(r'(?:[֐-׿יִ-ﭏ׳״\'־\-]+\s*)+', s[h.start():])
+            folytatodik = re.match(r'\s*[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű]{2}', s[h.start() + (vege.end() if vege else 0):])
+            elotag = s[:h.start()].strip()
+            egy_szo = ' ' not in elotag and ',' not in elotag
+            if not folytatodik and not egy_szo:
+                hatar.append(h.start())
+    if hatar:
+        s = s[:min(hatar)]
+    s = re.sub(r'\s+', ' ', s).strip(' ,;:=—-.')
+    if not _CIM_BETUK.search(s):
+        if vesszoig:
+            return ''
+        s = nyers
+    return _rovid(s, max_hossz)
+
+
+# A BDB rövidítéseinek jelmagyarázata (konfig/bdb_jelek.tsv, kézi összeállítás): a jelentések szövegében <abbr>-ral jelölve, a blokk végén
+# a szócikkben előforduló jelek listája. A forrásjelek (J, E, P …) csak zárójelben („(J)”, „(mind P)”, „(mindkettő J E)”) jelölők.
+def _bdb_jelek_betolt():
+    ut = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'konfig', 'bdb_jelek.tsv')
+    jelek, fej = {}, None
+    with open(ut, encoding='utf-8') as f:
+        for sor in f:
+            sor = sor.rstrip('\n')
+            if not sor or sor.startswith('#'):
+                continue
+            mezok = sor.split('\t')
+            if fej is None:
+                fej = mezok
+                continue
+            d = dict(zip(fej, mezok))
+            jelek[d['jel']] = (d['feloldas'], d['csoport'])
+    return jelek
+
+
+BDB_JELEK = _bdb_jelek_betolt()
+_FORRASJEL = sorted((j for j, (_, cs) in BDB_JELEK.items() if cs == 'forrásjel'), key=len, reverse=True)
+_SZOJEL = sorted((j for j, (_, cs) in BDB_JELEK.items() if cs != 'forrásjel'), key=len, reverse=True)
+_HATAR = r'\w֐-׿יִ-ﭏ'
+_SZOJEL_RE = re.compile(r'(?<![%s])(%s)(?![%s])' % (_HATAR, '|'.join(re.escape(j) for j in _SZOJEL), _HATAR))
+_FJ = '|'.join(re.escape(j) for j in _FORRASJEL)
+_FORRAS_ZAROJEL_RE = re.compile(r'\(((?:(?:mind|mindkettő|mindhárom)\s+)?(?:%s)(?:\s+(?:%s))*)\)' % (_FJ, _FJ))
+_FORRAS_BETU_RE = re.compile(r'(?<![\w])(%s)(?![\w])' % _FJ)
+
+
+def _abbr(jel):
+    return Markup('<abbr title="%s">%s</abbr>') % (BDB_JELEK[jel][0], jel)
+
+
+def _jeles(szoveg, talalt=None):
+    """A szöveg escape-elve, a jelmagyarázat jelei <abbr>-ral; a `talalt` halmazba gyűjti a megjelölt jeleket."""
+    ki, poz = [], 0
+    s = szoveg or ''
+    for m in _FORRAS_ZAROJEL_RE.finditer(s):
+        ki.append(_jeles_szojel(s[poz:m.start()], talalt))
+        belso = Markup('')
+        bp = 0
+        for b in _FORRAS_BETU_RE.finditer(m.group(1)):
+            belso += escape(m.group(1)[bp:b.start()]) + _abbr(b.group(1))
+            if talalt is not None:
+                talalt.add(b.group(1))
+            bp = b.end()
+        ki.append(Markup('(') + belso + escape(m.group(1)[bp:]) + Markup(')'))
+        poz = m.end()
+    ki.append(_jeles_szojel(s[poz:], talalt))
+    return Markup('').join(ki)
+
+
+def _jeles_szojel(s, talalt):
+    ki, poz = Markup(''), 0
+    for m in _SZOJEL_RE.finditer(s):
+        ki += escape(s[poz:m.start()]) + _abbr(m.group(1))
+        if talalt is not None:
+            talalt.add(m.group(1))
+        poz = m.end()
+    return ki + escape(s[poz:])
+
+
+def _jelmagyarazat_html(talalt):
+    if not talalt:
+        return Markup('')
+    rend = {'forrásjel': 0, 'szövegtanú': 1, 'rövidítés': 2, 'szerző': 3}
+    sorok = sorted(talalt, key=lambda j: (rend.get(BDB_JELEK[j][1], 9), j))
+    return Markup('<dl class="jelmagyarazat">%s</dl><p class="megj">A feloldás nem a BDB része; csak a fenti jelentésekben előforduló '
+                  'jelek. A szövegben a pontozottan aláhúzott jelre mutatva is megjelenik.</p>') % Markup('').join(
+        Markup('<dt>%s</dt><dd>%s</dd>') % (j, BDB_JELEK[j][0]) for j in sorok)
+
+
+def _fo_cim(j):
+    sajat = jelentes_cim(j['szoveg'], vesszoig=True) and jelentes_cim(j['szoveg'], max_hossz=70)
+    return sajat or (jelentes_cim(j['al'][0]['szoveg'], vesszoig=True) if j['al'] else '')
+
+
+def _jel_id(elotag, ti, jel, al=''):
+    return '%s-%d-%s%s' % (elotag, ti, jel or 'x', al)
+
+
+def _vazlat_html(tl, elotag):
+    """A jelentésszerkezet vázlata: főjelentésenként a jelölő, a cím és a helyszám, alatta az alpontok címe; minden sor a részletes
+    jelentésre ugrik. A számozatlan előtag (igéknél az alak-lista) kimarad. Üres, ha egyetlen jelentés van alpontok nélkül."""
+    torzsek = [(ti, t, [j for j in t['jelentesek'] if j['jel']]) for ti, t in enumerate(tl)]
+    if not any(len(js) > 1 or any(j['al'] for j in js) for _, _, js in torzsek):
+        return Markup('')
     ki = Markup('')
-    for t in tl:
+    for ti, t, js in torzsek:
+        if not js:
+            continue
+        if t['nev']:
+            ki += Markup('<p class="vz-torzs">%s</p>') % t['nev']
+        sorok = Markup('')
+        for j in js:
+            al = Markup('')
+            if j['al']:
+                al = Markup('<span class="vz-al">%s</span>') % Markup(' · ').join(
+                    Markup('<a href="#%s">%s. %s</a>') % (_jel_id(elotag, ti, j['jel'], s['jel']), s['jel'], jelentes_cim(s['szoveg'])) for s in j['al'])
+            sorok += Markup('<li><a class="vz-fo" href="#%s"><span class="vz-jel">%s</span>%s</a>%s%s</li>') % (
+                _jel_id(elotag, ti, j['jel']), j['jel'], _fo_cim(j), _helyek(j['ref']), al)
+        ki += Markup('<ol>%s</ol>') % sorok
+    return Markup('<nav class="jel-vazlat" aria-label="A jelentésszerkezet vázlata">%s</nav>') % ki
+
+
+def _torzsek_html(tl, elotag='bdb', talalt=None):
+    ki = Markup('')
+    for ti, t in enumerate(tl):
         fej = Markup('')
         if t['nev']:
             fej = Markup('<h5>%s%s</h5>') % (t['nev'], Markup('<span class="helyek">%s előfordulás a BDB szerint</span>') % t['db'] if t['db'] else '')
@@ -665,10 +837,11 @@ def _torzsek_html(tl):
             al = Markup('')
             if j['al']:
                 al = Markup('<ol class="al">%s</ol>') % Markup('').join(
-                    Markup('<li data-jel="%s."><p class="jsz">%s</p>%s</li>') % (s['jel'] or '', s['szoveg'] or '', _helyek(s['ref'])) for s in j['al'])
-            elso = j['szoveg'] or (j['al'][0]['szoveg'] if j['al'] else '')
-            li += Markup('<li data-jel="%s"><details%s><summary><span class="jt">%s</span>%s</summary><p class="jsz">%s</p>%s</details></li>') % (
-                j['jel'] or '·', Markup(' open'), _rovid(elso, 110), _helyek(j['ref']), j['szoveg'] or '', al)
+                    Markup('<li id="%s" data-jel="%s."><p class="jsz">%s</p>%s</li>') % (
+                        _jel_id(elotag, ti, j['jel'], s['jel']), s['jel'] or '', _jeles(s['szoveg'], talalt), _helyek(s['ref'])) for s in j['al'])
+            sajat = Markup('<p class="jsz">%s</p>') % _jeles(j['szoveg'], talalt) if j['szoveg'] else Markup('')
+            li += Markup('<li id="%s" data-jel="%s"><details open><summary><span class="jcim">%s</span>%s</summary>%s%s</details></li>') % (
+                _jel_id(elotag, ti, j['jel'] or 'x%d' % i), j['jel'] or '·', _fo_cim(j), _helyek(j['ref']), sajat, al)
         ki += Markup('<div class="torzs">%s<ol class="jel">%s</ol></div>') % (fej, li)
     return ki
 
@@ -700,19 +873,24 @@ def _r_bdb_apparatus(d, K):
     ki += resz('Alapjelentés és szófaj', Markup('<p class="jsz">%s</p>') % (a['alap'] or '—'))
     if a.get('szakaszok'):
         reszek = Markup('')
-        for x in a['szakaszok']:
+        for k, x in enumerate(a['szakaszok']):
             cim = SZAKASZ_CIM['elo'] if x['szerep'] == 'elo' else (SZAKASZ_CIM['arámi'] if x['nyelv'] == 'arámi' else SZAKASZ_CIM[x['szerep']])
             if x['szerep'] != 'elo' and x.get('jel'):
                 cim = '%s. %s' % (x['jel'], cim)
             ny = Markup('<ul class="lista">%s</ul>') % Markup('').join(Markup('<li>%s</li>') % n for n in x['nyelvi']) if x['nyelvi'] else Markup('')
             reszek += Markup('<details open><summary class="megj">%s · <span class="he" lang="he">%s</span> · %s%s</summary>%s%s</details>') % (
-                cim, x['heber'] or '', _rovid(x['alap'] or '—', 80), _helyek(x.get('ref')), ny, _torzsek_html(x['torzsek']))
+                cim, x['heber'] or '', _rovid(x['alap'] or '—', 80), _helyek(x.get('ref')), ny, _torzsek_html(x['torzsek'], 'bdb-s%d' % k))
         ki += resz('Ugyanabban a BDB-sorban további szakaszok (%d) — nem ennek a címszónak a szerkezete' % len(a['szakaszok']), reszek)
     if a.get('nyelvi'):
         ki += resz('Nyelvi háttér (etimológia, rokon nyelvek)', Markup('<ul class="lista">%s</ul>') % Markup('').join(Markup('<li>%s</li>') % n for n in a['nyelvi']))
     if a.get('alaktan'):
         ki += resz('Alakok (alaktani apparátus)', Markup('<details open><summary class="megj">%s</summary><p class="jsz">%s</p></details>') % (_rovid(a['alaktan'], 120), a['alaktan']))
-    ki += resz('Jelentésszerkezet törzsenként' if any(t['nev'] for t in a['torzsek']) else 'Jelentésszerkezet', _torzsek_html(a['torzsek']))
+    talalt = set()
+    ki += resz('Jelentésszerkezet törzsenként' if any(t['nev'] for t in a['torzsek']) else 'Jelentésszerkezet',
+               _vazlat_html(a['torzsek'], 'bdb') + _torzsek_html(a['torzsek'], 'bdb', talalt))
+    if talalt:
+        ki += Markup('<div class="app"><h4>Jelmagyarázat</h4><p class="forrasnev"><span class="fcim">Forrás</span> projekt_adat '
+                     '(konfig/bdb_jelek.tsv), kézi összeállítás · proveniencia: manual</p>%s</div>') % _jelmagyarazat_html(talalt)
     if a.get('irodalom') or a.get('krit'):
         ki += resz('Irodalmi és szövegkritikai jelek', Markup('<div class="jelek">%s%s</div>') % (
             Markup('').join(Markup('<span class="jel-cimke" title="BDB irodalmi hivatkozás (szerző^mű)">%s</span>') % x for x in a.get('irodalom') or []),
