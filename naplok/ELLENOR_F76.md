@@ -7,7 +7,7 @@
 ## Rendben (OK)
 - Modell: a commitok Co-Authored-By sora Sonnet 5.5, a brief `modell: sonnet` (az önazonosság repóból nem igazolható).
 - `ir` mező betartva (8 fájl; a `DONTESEK.md` és a saját brief koordinációs fájl). A `sqlite_epit.py` érintetlen.
-- DT-F76c egyezik a chatben rögzített hat döntéssel (a konkrét `MemoryMax=2G`/`AllowedCPUs=0` érték az M0 6/5 és 4.3/3 pontban áll, nem a DONTESEK-cellában).
+- DT146 egyezik a chatben rögzített hat döntéssel (a konkrét `MemoryMax=2G`/`AllowedCPUs=0` érték az M0 6/5 és 4.3/3 pontban áll, nem a DONTESEK-cellában).
 - Mért számok: 39 blokk, szótő-táblák (66 824 / 72 720 sor), pilot-számok (58,8%, 24,8%, 93 ms) egyeznek a forrásokkal.
 - ⛔ M0 rendben; ⛔ M5–M7 nem kezdődött el; `allapot: megallt` megengedett.
 - `adat/` és `konkordancia/` alatt 0 változás. `futtat.py`: E2–E16, E19, E20, E26: 0; E25: 3 és E27: 34 régebbi, nem F76-hoz kötődő találat.

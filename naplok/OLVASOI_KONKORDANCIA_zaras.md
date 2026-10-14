@@ -2,7 +2,7 @@
 
 *Állapot: a feladat NEM kész, `allapot: megallt`. Ez a menet az M0 (terv) és az M1 (helyi környezet) lépéseit fedi; az M2–M7 hátravan. Ág: `claude/olvasoi-konkordancia` (F76.0–F76.8).*
 
-- **M0:** terv és hat döntés (DT-F76c 🟢, 2026-10-14): Flask, alak ∪ szótári alak, frázis a `token_karoli`-ból, `pardes_nezet` süti csak váltáskor, `systemd-run` korlát a disztribúción belül, helyben a teljes db authorizerrel, nyilvános célgépen szűrt példány. A terv: `naplok/OLVASOI_KONKORDANCIA_M0.md`.
+- **M0:** terv és hat döntés (DT146 🟢, 2026-10-14): Flask, alak ∪ szótári alak, frázis a `token_karoli`-ból, `pardes_nezet` süti csak váltáskor, `systemd-run` korlát a disztribúción belül, helyben a teljes db authorizerrel, nyilvános célgépen szűrt példány. A terv: `naplok/OLVASOI_KONKORDANCIA_M0.md`.
 - **M1:** `pardes` WSL-disztribúció (Ubuntu 24.04, `E:\WSL\pardes`), Python 3.12 uv-vel, `pardes.db` a disztribúció saját lemezén, korlátozott indítás (`/statusz` 200). Az M1 zárónaplója az M0 fájl 4.3 szakaszában van. A mért méretek ott állnak (`ext4.vhdx` 2,73 GiB az M1 végén).
 - **Szótövező aranyminta 3.12-n:** hibrid v2 súlyozva 99,1%, bájtra azonos a Windowson rögzítettel.
 - **Független ellenőr:** `naplok/ELLENOR_F76.md`, 8 eltérés. Javítva: E2, E4–E8. **Nyitott: E1 és E3.**

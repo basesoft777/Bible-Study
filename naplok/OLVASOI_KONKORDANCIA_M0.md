@@ -1,6 +1,6 @@
 # OLVASOI_KONKORDANCIA — M0 terv (#76)
 
-*Csak olvas: a terv semmit nem telepít, nem tölt le, nem épít újra. A „javaslat” jelölésű tételek javaslatok; a döntés a felhasználóé (DT-F76c). Modell: `claude-sonnet-5-5`. Állapot: **M0 jóváhagyva (felhasználó, chat, 2026-10-14); DT-F76c eldöntve.** A szöveg a döntések szerint átvezetve.*
+*Csak olvas: a terv semmit nem telepít, nem tölt le, nem épít újra. A „javaslat” jelölésű tételek javaslatok; a döntés a felhasználóé (DT146). Modell: `claude-sonnet-5-5`. Állapot: **M0 jóváhagyva (felhasználó, chat, 2026-10-14); DT146 eldöntve.** A szöveg a döntések szerint átvezetve.*
 
 Mért adatok forrása, ahol nincs más jelölés: `scope=pardes.db (a fő munkamásolat, 938 287 104 bájt), csak olvasás (mode=ro) | forras=meta.epites_ts=2026-10-13T18:10:45Z, 73 hash-sor; EXPLAIN QUERY PLAN és egyszeri időmérés, Windows, Python 3.14 | ts=2026-10-14`. Az időértékek tájékoztatók (nem a VPS-korlátokkal mért); a mérés az M4-é.
 
@@ -10,7 +10,7 @@ Mért adatok forrása, ahol nincs más jelölés: `scope=pardes.db (a fő munkam
 - Három nézet (Olvasópult, Interlineáris, Munkaasztal) ugyanabból a blokk-regiszterből; a nézet sütiben és `?nezet=` paraméterben él; JavaScript nélkül is működik (a szó-lap és a vers részletei külön, állandó című lap).
 - 39 blokk a #60 pilot `BLOKKOK` listájából; mindegyik regiszter-bejegyzés: jelleg, tábla(k), `tabla_licenc` kulcs, minimális hozzáférési szint, kiadási kizárás. A jelleg- és licencsor a regiszterből generálódik, így nem maradhat ki.
 - Hozzáférés és kiadás konfigurációból (TOML). Az SQLite-kapcsolat `set_authorizer`-rel megtiltja a kiadásból kizárt táblák olvasását, tehát a kizárás nem csak a megjelenítésen múlik.
-- Döntések (DT-F76c, eldöntve 2026-10-14, 6. szakasz): Flask; szótő-keresés alapja alak ∪ szótári alak ((c) mód kapcsolóval); frázis-keresés a `token_karoli`-ból; süti csak nézetváltáskor; korlát a disztribúción belül `systemd-run`-nal; helyben a teljes `pardes.db`, a nyilvános célgépen szűrt példány.
+- Döntések (DT146, eldöntve 2026-10-14, 6. szakasz): Flask; szótő-keresés alapja alak ∪ szótári alak ((c) mód kapcsolóval); frázis-keresés a `token_karoli`-ból; süti csak nézetváltáskor; korlát a disztribúción belül `systemd-run`-nal; helyben a teljes `pardes.db`, a nyilvános célgépen szűrt példány.
 - Öt eltérés/változás a briefhez képest (1. szakasz): kettő a felhasználóval egyeztetett (E1, E2), három a repó mai állapotából vagy a mért adatból következik (E3–E5).
 
 ## 1. Egyeztetett eltérések a brieftől, és a brief óta változott tények
@@ -29,7 +29,7 @@ Mért adatok forrása, ahol nincs más jelölés: `scope=pardes.db (a fő munkam
 
 **(b) Python 3.12, uv-val rögzítve.** Az Ubuntu 24.04 alap Pythonja 3.12. A projekt gyökerében `.python-version` (3.12) és zárolt függőségek (`pyproject.toml` + `uv.lock`); a VPS-en ugyanez a telepítő szkriptből. A szótövező aranyminta-teszt (hibrid v2, 99,1% súlyozva; `D:\pardes_szoto\ATADAS.md` 3. szakasz) az M1-ben fut a 3.12-n; **eltérés esetén visszalépés 3.11-re** (a hfst Python-kötés kompatibilitása 3.12-vel nem ellenőrzött). A szótövezés kimenete (a `szotari_alak` tábla) kész adat a `pardes.db`-ben; a szerver a hfst-et **nem** használja futásidőben (csak olvassa a táblát), így a 3.11-re visszalépés a szerver kódját nem érinti. Az `.python-version` ezért az M1 aranyminta-teszt után véglegesedik. Az F79/F92/F95 építők és tesztjeik (`sqlite_epit.py`, `teszt_sqlite_epit.py`) Windowson 3.14-en futnak; **a 3.12-n való futásukat az M1 nem igazolta** (a ritka klónban nincs `konkordancia/`, a tesztek a TSV-kből építenek; a 389 MB letöltése nem volt jóváhagyva). Az építő nem szerveroldali eszköz: a szerver a kész `pardes.db`-t csak olvassa, a 3.12-re vonatkozó igazolás a szerver kódjára és a szótövező kimenetre (4.3/8. lépés) szól. Nyitott: az építő-tesztek 3.12-es futtatása (csak ha a `pardes.db`-t a disztribúcióban építenénk újra).
 
-**(c) Keretrendszer: Flask** (DT-F76c/1, a felhasználó döntése, 2026-10-14; indoklás: 5. szakasz).
+**(c) Keretrendszer: Flask** (DT146/1, a felhasználó döntése, 2026-10-14; indoklás: 5. szakasz).
 
 ## 3. Architektúra
 
@@ -87,7 +87,7 @@ Ugyanaz a blokk-regiszter és ugyanaz az adat, három elrendezés (Jinja2 sablon
 | **Interlineáris** | versenként minden magyar szó alatt a párosított eredeti szó és Strong-szám; mellette a szó-lap | az illesztés a `token_par.hu_sorszam` / `er_sorszam` pozíció szerint, **nem** Strong-szám szerint (a pilot sorrendi illesztése ismétlődő szónál téveszthet, brief 2. szakasz); a párosítatlan eredeti szavak (a `token_eredeti` szavai, amelyek `er_sorszam`-a nem szerepel a `token_par`-ban) a vers alatt külön sorban |
 | **Munkaasztal** | verslista, szöveg, és egyszerre nyitva a szó-lap és a vers részletei; Ctrl+K gyorsugrás | a Ctrl+K a `/` kereső dobozára fókuszál / könyv–fejezet–vers beírás (pl. `1Moz 1:4`) az 3.2 útvonalra ugrik; nincs külön szerveroldali logika |
 
-**Megjegyzés és váltás.** A választás a `pardes_nezet` sütiben él (`olvaso` | `interlinearis` | `munkaasztal`; `SameSite=Lax`, `HttpOnly`, 1 év; személyes adatot nem hordoz), a `?nezet=` paraméter felülírja. Az ismeretlen érték az alapra esik vissza. A gyorsítótár kulcsa tartalmazza a nézetet (3.8). A nézetváltó sima hivatkozás (`/nezet/…`), JS nélkül is működik. **Döntés (DT-F76c/4): a süti csak nézetváltáskor jön létre**; első látogatáskor és böngészéskor nem állítunk be sütit (süti nélkül az alap, az Olvasópult érvényes).
+**Megjegyzés és váltás.** A választás a `pardes_nezet` sütiben él (`olvaso` | `interlinearis` | `munkaasztal`; `SameSite=Lax`, `HttpOnly`, 1 év; személyes adatot nem hordoz), a `?nezet=` paraméter felülírja. Az ismeretlen érték az alapra esik vissza. A gyorsítótár kulcsa tartalmazza a nézetet (3.8). A nézetváltó sima hivatkozás (`/nezet/…`), JS nélkül is működik. **Döntés (DT146/4): a süti csak nézetváltáskor jön létre**; első látogatáskor és böngészéskor nem állítunk be sütit (süti nélkül az alap, az Olvasópult érvényes).
 
 **Kattinthatóság.** Az első kiadásban a pilot szabálya érvényes: kattintható a fő héber szóhoz kötött Károli-szó (a pilot: 58,8% az 1Móz 1–25-ben; `naplok/OLVASOI_PILOT_ertekeles.md` 8.1). A nyelvtani elemhez kötött 24,8% szó-lapjának kérdése felületi döntés (pilot 8.4/5); nem része az M0-nak, nyitott megjegyzés (6. szakasz, 8).
 
@@ -199,9 +199,9 @@ A mért szám a pardes.db-n, hideg Windows-gyorsítótárral nem mérendő ponto
 
 **A #76 nyitott bemenete a `NYITOTT_FELADATOK.md`-ből (nem döntések, az M2/M3 figyelembe veszi):** **N-F94f** (a különírt vonatkozó névmás: „a melyet”; az *amely*-re keresve az „a” token nem jelenik meg) és **N-F94d** (a hátravetett igekötő: *vettettek el*; az igekötős szótári alakra keresve nem jön elő, csak az alapigére; rokon: N-F94a): a szótő-keresés ((a) és (c) mód) eredményét ez korlátozza, a felület ne ígérjen teljes körű találatot, és a súgó jelezze; **N-F92a** (a Nave-bontás két példánya): a #76 kiolvasója az `eszkozok/nave_bontas.py` közös modult használja, a pilot-példány (`olvaso_pilot/bovites.py`) a #76-ban megszűnik; addig a `teszt_olvaso_pilot.py` D2-egyezési tesztje őrzi az azonosságot.
 
-**M3-ellenőrzés (DT-F76c/3):** az önillesztés `igehely`-egyezést követel, tehát a frázis nem lóg át versen; az M3 igazolja a vershatárt, külön a Károli-versösszevonásos helyeken (9 hely, `f22/versosszevonas.tsv`), ahol két TAHOT-vers áll egy Károli-versen. 
+**M3-ellenőrzés (DT146/3):** az önillesztés `igehely`-egyezést követel, tehát a frázis nem lóg át versen; az M3 igazolja a vershatárt, külön a Károli-versösszevonásos helyeken (9 hely, `f22/versosszevonas.tsv`), ahol két TAHOT-vers áll egy Károli-versen. 
 
-**A `frazis_pozicio` indexe (E4/E5, DT-F76c/3).** A `frazis_pozicio`-nak a `strong` és az (`igehely`,`oldal`,`sorszam`) indexén kívül nincs szó-indexe (`EXPLAIN`: `SCAN a`). A fenti `token_karoli`-alapú frázis-keresés ezt megkerüli, tehát **a tervhez új index nem kell**; a `frazis_pozicio` a Strong-sorozatos keresésben marad. Nincs `sqlite_epit.py`-módosítás.
+**A `frazis_pozicio` indexe (E4/E5, DT146/3).** A `frazis_pozicio`-nak a `strong` és az (`igehely`,`oldal`,`sorszam`) indexén kívül nincs szó-indexe (`EXPLAIN`: `SCAN a`). A fenti `token_karoli`-alapú frázis-keresés ezt megkerüli, tehát **a tervhez új index nem kell**; a `frazis_pozicio` a Strong-sorozatos keresésben marad. Nincs `sqlite_epit.py`-módosítás.
 
 ### 3.7 Biztonság (N-F76c elő)
 
@@ -278,7 +278,7 @@ A meglévő `Ubuntu` disztribúciót a parancs nem érinti (külön név és hel
 **K4 — TSV-frissesség (D5, Windows-oldalon futtatva, 2026-10-14):** a `db_meres.py` `frissesseg(con, True)` függvénye (hash-újraszámítással, 41 s). `scope=pardes.db (fő munkamásolat, epites_ts=2026-10-13T18:10:45Z, 73 hash-sor) | forras=eszkozok/olvaso_pilot/db_meres.py D5, a repó git-története | ts=2026-10-14`. **Eltérő táblák: `vers_szamozas`, `lxx_versszam`, `nave_vers`.** Ok: a forrás-TSV-k az építés után módosultak: `konkordancia/Karoli_versmegfeleltetes.tsv` (utolsó commit 2026-10-14T07:47+02:00, F91.10; a `nave_vers` és a `vers_szamozas` forrása), `konkordancia/LXX_versificacios_terkep.tsv` (2026-10-14T08:12+02:00, F91.12; az `lxx_versszam` forrása). A `pardes.db` tehát a #91 (feliratos zsoltárok számozása) javításai előtti állapot. **A K4 feltétele ma nem teljesül ezekre a táblákra; a `pardes.db` újraépítése szükséges az M5 előtt** (a #79 építője, `eszkozok/sqlite_epit.py`; ez nem a #76 `ir` mezője, ezért nem végeztem el, és a disztribúció példánya is a régi). Addig a Zsolt-lapok és a Nave/LXX-versszám blokkok a régi számozást mutatnák; az M2 D2-egyezési tesztje a Zsolt 22-re ezt jelezné. Döntés kell: ki, mikor és melyik ágon építteti újra az adatbázist.
 
 **Ismert tudnivalók / nyitott pontok:**
-- A `systemd=true` az új disztribúció alapja volt; ha a `wsl.conf` a jövőben változik, az érinti az erőforrás-korlát módszerét (DT-F76c/5).
+- A `systemd=true` az új disztribúció alapja volt; ha a `wsl.conf` a jövőben változik, az érinti az erőforrás-korlát módszerét (DT146/5).
 - A rootfs letöltési méretét nem tudtam utólag megállapítani; ha a felhasználó adata kell, a Windows `wsl --install` kimenetéből olvasható.
 - A klón ritka (sparse): a `konkordancia/` és `adat/` többi része nincs a disztribúcióban; az M2 szerver a `pardes.db`-t használja, a TSV-k frissességét a Windows oldali `db_meres.py` D5 igazolja (3.8).
 - A `~/probe/app.py` (próba) és a `~/szoto_arany/` (aranyminta-másolatok) a disztribúcióban maradt, a repón kívül; törölhetők.
@@ -298,9 +298,9 @@ A meglévő `Ubuntu` disztribúciót a parancs nem érinti (külön név és hel
 
 **Javaslat: Flask** (a szinkron, egyszerű kérés–válasz modellre; kevesebb függőség, kisebb támadási felület; a lapelőállítás a Flasktól független `oldalak.py`-ban él, így a döntés bármikor visszafordítható). Kiszolgáló: gunicorn `--worker-class gthread --workers 1 --threads 4` az 1 vCPU-ra (az M4 méri, hogy 2 worker ad-e többet).
 
-## 6. Döntésre váró pontok (DT-F76c) és nyitott kérdések
+## 6. Döntésre váró pontok (DT146) és nyitott kérdések
 
-**DT-F76c eldöntve (felhasználó, chat, 2026-10-14).** A döntések:
+**DT146 eldöntve (felhasználó, chat, 2026-10-14).** A döntések:
 
 1. **Keretrendszer: Flask.**
 2. **Szótő-keresés:** az alap az alak ∪ szótári alak ((a) mód); a Strong-ággal bővített (c) mód kapcsolóval. A felület mindkét módnál megmutatja, mit talált és milyen módon (a „tő” szótári alak, DT130).
@@ -348,6 +348,6 @@ Motívumréteg (#25b), új adat, modernizált Károli (DT128), belépés/fizeté
 
 ## 10. Állapot
 
-**M0 jóváhagyva (felhasználó, chat, 2026-10-14); DT-F76c eldöntve. M1 lefutott a `pardes` disztribúcióban (4.3 zárónapló): a környezet kész, az aranyminta-teszt eltérés nélkül lefutott a 3.12-n, a másolat-épségi teszt zöld (a TSV-frissesség a K4 szerint nem igazolt).** Következő: M2 (az alkalmazás), a brief szerint.
+**M0 jóváhagyva (felhasználó, chat, 2026-10-14); DT146 eldöntve. M1 lefutott a `pardes` disztribúcióban (4.3 zárónapló): a környezet kész, az aranyminta-teszt eltérés nélkül lefutott a 3.12-n, a másolat-épségi teszt zöld (a TSV-frissesség a K4 szerint nem igazolt).** Következő: M2 (az alkalmazás), a brief szerint.
 
 **M1: megállás a K4-nél (E1 NYITOTT, nem javított).** A frissesség **nem igazolt**: a D5 lefutott, de három táblára eltérést talált. A `frissesseg.py` csak másolat-épséget igazol. **Nyitott:** a K4 TSV-frissesség (D5) három táblára eltér (4.3), a `pardes.db` újraépítése az M5 előtt szükséges; az építő-tesztek 3.12-es futtatása nem igazolt (2. szakasz (b)).
