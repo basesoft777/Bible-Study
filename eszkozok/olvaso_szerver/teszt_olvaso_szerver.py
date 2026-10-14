@@ -434,6 +434,20 @@ class TestLapok(unittest.TestCase):
                 return
         self.skipTest('nincs angol-only BDB-szócikk a mintában')
 
+    def test_bdb_jelentesszerkezet_jeloloi_a_szocikkbol(self):
+        """A jelentésszerkezet jelölője a szócikké (H1242 בֹּקֶר: 1 → a.–h., 2), nem a böngésző 1, 2, 3 számozása: a lap a jelölőt a
+        `data-jel` attribútumba írja, a stíluslap ezt mutatja (`list-style: none` + `content: attr(data-jel)`), és a kinyitott
+        jelentésnél a rövid összegzés (.jt) rejtve marad, hogy a szöveg ne álljon kétszer."""
+        t = self.get('/r/szo/H1242').get_data(as_text=True)
+        i = t.index('data-blokk="szo.bdb_apparatus"')
+        blokk = t[i:t.index('</section>', i)]
+        self.assertEqual(re.findall(r'<li data-jel="([^"]*)"><details', blokk), ['1', '2'])
+        self.assertEqual(re.findall(r'<li data-jel="([a-z]\.)"', blokk), ['%s.' % b for b in 'abcdefgh'])
+        css = open(os.path.join(D, 'statikus', 'olvaso.css'), encoding='utf-8').read()
+        self.assertRegex(css, r'ol\.jel, ol\.al \{[^}]*list-style: none')
+        self.assertRegex(css, r'ol\.jel > li::before, ol\.al > li::before \{[^}]*content: attr\(data-jel\)')
+        self.assertRegex(css, r'details\[open\] > summary \.jt \{ display: none; \}')
+
     def test_kod_verzio_valtozik_a_fajl_valtozasaval(self):
         import shutil
         tmp = tempfile.mkdtemp(prefix='kodverzio_')

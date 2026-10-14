@@ -136,8 +136,18 @@ a.er-fo:hover, a.er-fo:focus-visible { background: var(--accent-soft); border-ra
 .helyek { color: var(--muted); margin-left: 6px; }
 .jsz { margin: 2px 0; }
 .torzs h5 { margin: 8px 0 2px; }
-ol.jel { margin: 4px 0; padding-left: 1.3rem; }
-ol.al { margin: 4px 0; padding-left: 1.2rem; }
+/* jelentésszerkezet (a pilot sablon.html ol.jel/ol.al szabályai): a jelölő a blokk `data-jel` attribútuma (1, 2 … / a., b. …), nem a
+   böngésző számozása; a kinyitott jelentésnél a rövid összegzés (.jt) rejtve, mert a teljes szöveg (.jsz) alatta áll */
+ol.jel, ol.al { list-style: none; margin: 4px 0; padding: 0; display: grid; gap: 12px; }
+ol.jel > li, ol.al > li { position: relative; padding-left: 2.3rem; }
+ol.jel > li::before, ol.al > li::before { content: attr(data-jel); position: absolute; left: 0; top: 3px; font: 600 var(--fs-jelentes-jel) var(--font-mono); color: var(--accent); }
+ol.al { gap: 6px; margin-top: 6px; padding-left: 4px; border-left: 2px solid var(--accent-soft); }
+ol.al > li { padding-left: 1.8rem; display: grid; gap: 2px; }
+ol.jel details summary { cursor: pointer; display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: baseline; list-style: none; }
+ol.jel details summary::-webkit-details-marker { display: none; }
+ol.jel details[open] > summary .jt { display: none; }
+ol.jel details[open] > summary::after { content: 'összecsuk'; font-size: var(--fs-megjegyzes); color: var(--muted); }
+.jt { font: var(--fs-jelentes-osszegzo)/var(--lh-jelentes-osszegzo) var(--font-text); }
 .jel-cimke { display: inline-block; font: var(--fs-jel-cimke) var(--font-mono); padding: 1px 6px; margin: 1px; border: 1px solid var(--rule); border-radius: var(--radius-kiemeles); }
 .jel-cimke.krit { color: var(--gold); border-color: var(--gold); }
 .allapot { display: inline-block; font: 600 var(--fs-allapot) var(--font-ui); padding: 1px 8px; border-radius: var(--radius-pill); background: var(--gold-soft); color: var(--gold); margin: 0 0 4px; }

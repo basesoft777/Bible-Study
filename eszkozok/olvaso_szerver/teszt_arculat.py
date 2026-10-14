@@ -59,8 +59,8 @@ class TestTokenFajl(unittest.TestCase):
         a = arculat.Arculat.betolt()
         self.assertEqual(sorted(a.adat['szin']), sorted(SZINEK))
         self.assertEqual(sorted(a.adat['betucsalad']), ['gr', 'he', 'mono', 'text', 'ui'])
-        self.assertEqual(len(a.adat['betumeret']), 52)       # DT-F98a: szerep szerinti betűméret-tokenek
-        self.assertEqual(len(a.adat['sorkoz']), 18)          # DT-F98c: a sorköz állítható
+        self.assertEqual(len(a.adat['betumeret']), 54)       # DT-F98a: szerep szerinti betűméret-tokenek (+2: a jelentésszerkezet jelölője és összegzése)
+        self.assertEqual(len(a.adat['sorkoz']), 19)          # DT-F98c: a sorköz állítható (+1: a jelentés-összegzés)
         self.assertEqual(len(a.adat['terkoz']), 35)          # DT-F98b: csak a regiszterben kitett térközök
         self.assertEqual(len(a.adat['lekerekites']), 6)
 
@@ -184,7 +184,7 @@ class TestStiluslapEsTokenBlokk(unittest.TestCase):
         self.assertIn('--space-he-csempe-min: 72px;', gyoker)
         self.assertIn('--radius-pill: 999px;', gyoker)
         self.assertIn('--font-he: "Frank Ruhl Libre"', gyoker)
-        self.assertEqual(len(re.findall(r'^  --', b, re.M)), 10 + 5 + 52 + 18 + 35 + 6)
+        self.assertEqual(len(re.findall(r'^  --', b, re.M)), 10 + 5 + 54 + 19 + 35 + 6)
 
     def test_a_token_blokk_determinisztikus(self):
         self.assertEqual(arculat.Arculat.betolt().css, arculat.Arculat.betolt().css)
