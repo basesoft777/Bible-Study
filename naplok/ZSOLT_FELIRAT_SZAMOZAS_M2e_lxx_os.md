@@ -43,3 +43,15 @@ Következmény a `pardes.db`-re (kódolvasásból, nem építve): a 64 vers `meg
 ## 5. Ellenpróba az (a) opcióra
 
 Az (a) opció prototípusa (memóriában): a gap-fill-ben a felirat-halmaz versei (`zsolt_felirat_halmaz.felirat_versek()`) az A-tábla helyett a halmazból kapják a KJV-kulcsot (`Zsolt c:v` → `c:v`, ahogy a régi A-tábla identitása is volt), minden más vers marad `tabla.get(ig)`. Eredmény: a commitolt `psalms-lxx.tsv`-hez képest **0 eltérő token-sor, 0 vers** — a felirat-jelölés (66 vers / 671 token) és a két Károli-kulcs (Zsolt 30:1, 65:1) megmarad. A változtatás az `lxx_os_import.py`-ben a `tk` képzése (egy sor) és az import a közös modulból; ezt a döntésig nem hajtottam végre.
+
+## 6. Megvalósítás és igazolás (F91.16; DT-F91d (a), a felhasználó döntése, 2026-10-14)
+
+**Változás.** Az `eszkozok/lxx_os_import.py` `_tabla_kjv()` függvénye az A-tábla beolvasása után a közös felirat-halmaz (`zsolt_felirat_halmaz.felirat_versek()`, 67 vers) minden versére felülírja a KJV-kulcsot a Károli-kulcsból (`Zsolt c:v` -> `c:v`). A `lefedettseg_javit_konyv()` `tk = tabla.get(ig)` sora változatlan, ezért a `zsolt_felirat_eltolas` jelölés és a két Károli-kulcs (LXX 29:1 -> Zsolt 30:1, LXX 64:1 -> Zsolt 65:1) logikája érintetlen. A `konkordancia/LXX_OS/` fájljait nem írtam, a `--letolt` futást nem indítottam.
+
+**Igazolás.** Az `eszkozok/f91_lxx_os_replay.py` most a módosított importer-függvényt hívja (nincs másolt logika, a prototípus-ág kikerült). Eredmény mind a 14 könyvre (2Móz, 4Móz, Józs, 1Sám, 1Kir, Jób, Zsolt, Péld, Én, Ézs, Jer, Dán, Hós, Jón): **régi A-tábla (25e39a1a): 0 eltérő vers / 0 token; új A-tábla: 0 eltérő vers / 0 token, 0 kulcsot vesztett vers**; `ELTERES-OSSZEG: 0`. Negatív kontroll: a módosítás nélküli importerrel az új A-tábla a Zsoltokon 66 vers / 671 token eltérést (2 kulcsot vesztett vers) ad, tehát a replay érzékeny a változásra. A `psalms-lxx.tsv` felirat-jelölése (66 vers / 671 token) és a két Károli-kulcs megmarad.
+
+**Regressziós ellenőrzés (iii).** Futtatás: `python eszkozok/f91_lxx_os_replay.py [regi_revizio]` (alapértelmezett régi revízió: `25e39a1a`). Elvárt: minden könyvsor `0/0` mindkét A-táblával, az utolsó sor `ELTERES-OSSZEG: 0`, kilépési kód 0; bármely eltérésnél 1. Offline, nem ír a repóba.
+
+**Határ (ii).** A kör csak a felirat-versekre szűnik meg. A NEM felirat verseken az LXX_OS az A-táblából (`_tabla_kjv`), az A-tábla az LXX_OS etalonjából dolgozik; a mostani adaton ez fixpont (3. szakasz), de az A-tábla és az LXX_OS közötti függés ott megmarad.
+
+**NAVE-0130 (N-F91b).** A `_nave_vers` a `karoli_ok` jelölést használja; a felirat-halmazra átírva a `nave_vers` 156 214 sorából 1 sor tűnne el (NAVE-0130, `Zsolt 13:1-4`, `Zsolt 13:1`). Ezt az N-F91b-ben kell eldönteni; az F91 nem nyúl hozzá (a megjegyzés az `NYITOTT_FELADATOK.md` N-F91b tételében).

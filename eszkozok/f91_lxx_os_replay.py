@@ -2,10 +2,12 @@
 
 Nem ír a repóba. A commitolt LXX_OS gap-fill-eredetű sorait (karoli_ok: zsolt_felirat_eltolas, versmegfeleltetes_tabla,
 sorrend_beagyazas) kulcs nélkülire állítja, majd lefuttatja a lefedettseg_javit_konyv()-et a REGI (a megadott git-revízió)
-és az UJ (munkafa) Karoli_versmegfeleltetes.tsv-vel, es az (a) prototípussal (a felirat-halmaz versein a KJV-kulcs a
-zsolt_felirat_halmaz-ból). Kimenet: könyvenként az eltérő vers/token. A teljes újragenerálás (--letolt) nem része.
+és az UJ (munkafa) Karoli_versmegfeleltetes.tsv-vel;
+a felirat-versek KJV-kulcsát az importer maga képzi a közös felirat-halmazból (DT-F91d (a)): a replay a módosított
+importer-függvényt hívja, nem másolt logikát. Kimenet: könyvenként az eltérő vers/token. A teljes újragenerálás (--letolt) nem része.
 
-Használat: python eszkozok/f91_lxx_os_replay.py [regi_revizio, alapertelmezes 25e39a1a]
+Regressziós ellenőrzés (DT-F91d (iii)): elvárt kimenet minden könyvre 0/0 mindkét A-táblával, kilépési kód 0;
+bármely eltérésnél 1. Futtatás: python eszkozok/f91_lxx_os_replay.py [regi_revizio, alapertelmezes 25e39a1a]
 Proveniencia: scope=LEFEDETTSEG_KONYVEK | forras=konkordancia/LXX_OS/*.tsv + eszkozok/lxx_os_import.py | ts=2026-10-14
 """
 import os
@@ -21,7 +23,6 @@ if hasattr(sys.stderr, 'reconfigure'):
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, 'eszkozok'))
 import lxx_os_import as L  # noqa: E402
-import zsolt_felirat_halmaz as Z  # noqa: E402
 
 GAP_OK = {'zsolt_felirat_eltolas', 'versmegfeleltetes_tabla', 'sorrend_beagyazas'}
 UJ = os.path.join(ROOT, 'konkordancia', 'Karoli_versmegfeleltetes.tsv')
@@ -42,7 +43,7 @@ def beolvas(slug):
     return sorok
 
 
-def replay(slug, tabla_path, felirat_proto=False):
+def replay(slug, tabla_path):
     L.VERSMEGFELELTETES_TSV = tabla_path
     L._TABLA_CACHE = None
     comm = beolvas(slug)
@@ -50,11 +51,6 @@ def replay(slug, tabla_path, felirat_proto=False):
     for p in run:
         if p[3] in GAP_OK:
             p[2], p[3] = '', ''
-    if felirat_proto:
-        t = dict(L._tabla_kjv())
-        for ig in Z.felirat_versek():
-            t[ig] = ig.split(' ', 1)[1]
-        L._TABLA_CACHE = t
     L.lefedettseg_javit_konyv(slug, run)
     elt_vers = {p[0] for p, q in zip(comm, run) if p[2:4] != q[2:4]}
     elt_tok = sum(1 for p, q in zip(comm, run) if p[2:4] != q[2:4])
@@ -68,10 +64,13 @@ if __name__ == '__main__':
     regi = os.path.join(tmp, 'regi.tsv')
     with open(regi, 'wb') as f:
         f.write(subprocess.check_output(['git', '-C', ROOT, 'show', '%s:konkordancia/Karoli_versmegfeleltetes.tsv' % rev]))
-    print('könyv | token-sor | régi A-tábla: eltérő vers/token | új A-tábla: eltérő vers/token (kulcsot vesztett vers) | (a) prototípus')
+    print('könyv | token-sor | régi A-tábla: eltérő vers/token | új A-tábla: eltérő vers/token (kulcsot vesztett vers)')
+    ossz = 0
     for konyv in L.LEFEDETTSEG_KONYVEK:
         slug = L.elsodleges_slug(konyv)
         n, rv, rt, _ = replay(slug, regi)
         _, uv, ut, uk = replay(slug, UJ)
-        _, pv, pt, _ = replay(slug, UJ, felirat_proto=True)
-        print('%s | %d | %d/%d | %d/%d (%d) | %d/%d' % (konyv, n, rv, rt, uv, ut, uk, pv, pt))
+        print('%s | %d | %d/%d | %d/%d (%d)' % (konyv, n, rv, rt, uv, ut, uk))
+        ossz += rv + rt + uv + ut + uk
+    print('ELTERES-OSSZEG: %d (elvart: 0)' % ossz)
+    sys.exit(1 if ossz else 0)
