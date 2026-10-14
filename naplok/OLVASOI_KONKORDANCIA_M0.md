@@ -10,7 +10,7 @@ Mért adatok forrása, ahol nincs más jelölés: `scope=pardes.db (a fő munkam
 - Három nézet (Olvasópult, Interlineáris, Munkaasztal) ugyanabból a blokk-regiszterből; a nézet sütiben és `?nezet=` paraméterben él; JavaScript nélkül is működik (a szó-lap és a vers részletei külön, állandó című lap).
 - 39 blokk a #60 pilot `BLOKKOK` listájából; mindegyik regiszter-bejegyzés: jelleg, tábla(k), `tabla_licenc` kulcs, minimális hozzáférési szint, kiadási kizárás. A jelleg- és licencsor a regiszterből generálódik, így nem maradhat ki.
 - Hozzáférés és kiadás konfigurációból (TOML). Az SQLite-kapcsolat `set_authorizer`-rel megtiltja a kiadásból kizárt táblák olvasását, tehát a kizárás nem csak a megjelenítésen múlik.
-- Döntésre váró pontok (6. szakasz): a keretrendszer (javaslat: Flask), a szótő-keresés alapértelmezett módja, a frázis-keresés forrása (`token_karoli`), a nézet sütije, a korlátozás módszere a mérésnél, a célgépen tartott adatbázis.
+- Döntések (DT-F76c, eldöntve 2026-10-14, 6. szakasz): Flask; szótő-keresés alapja alak ∪ szótári alak ((c) mód kapcsolóval); frázis-keresés a `token_karoli`-ból; süti csak nézetváltáskor; korlát a disztribúción belül `systemd-run`-nal; helyben a teljes `pardes.db`, a nyilvános célgépen szűrt példány.
 - Öt eltérés/változás a briefhez képest (1. szakasz): kettő a felhasználóval egyeztetett (E1, E2), három a repó mai állapotából vagy a mért adatból következik (E3–E5).
 
 ## 1. Egyeztetett eltérések a brieftől, és a brief óta változott tények
@@ -27,9 +27,9 @@ Mért adatok forrása, ahol nincs más jelölés: `scope=pardes.db (a fő munkam
 
 **(a) Helyi környezet.** Külön WSL-disztribúció: neve `pardes`, kiadása `Ubuntu-24.04`, helye `E:\WSL\pardes`. A telepítés az **M1**-é, a felhasználó jóváhagyásával; az M0-ban semmit nem telepítettem és nem töltöttem le. A felhasználó meglévő `Ubuntu` disztribúciója (WSL2, jelenleg fut; `wsl -l -v`, 2026-10-14) érintetlen marad. Következmény az M1/M4-re: **a `.wslconfig` globális** (minden disztribúcióra érvényes), ezért az erőforrás-korlát (1 vCPU, 2 GB) nem a `.wslconfig`-ban, hanem a disztribúción belül, a processz szintjén állítandó be (6. szakasz, D-F76c/5). A megbízott disztribúció a **saját ext4 lemezén** tartja a `pardes.db`-t (nem a `/mnt/c`, `/mnt/e` DrvFs-en: ott lassú az SQLite és a fájlzárolás).
 
-**(b) Python 3.12, uv-val rögzítve.** Az Ubuntu 24.04 alap Pythonja 3.12. A projekt gyökerében `.python-version` (3.12) és zárolt függőségek (`pyproject.toml` + `uv.lock`); a VPS-en ugyanez a telepítő szkriptből. A szótövező aranyminta-teszt (hibrid v2, 99,1% súlyozva; `D:\pardes_szoto\ATADAS.md` 3. szakasz) az M1-ben fut a 3.12-n; **eltérés esetén visszalépés 3.11-re** (a hfst Python-kötés kompatibilitása 3.12-vel nem ellenőrzött). A szótövezés kimenete (a `szotari_alak` tábla) kész adat a `pardes.db`-ben; a szerver a hfst-et **nem** használja futásidőben (csak olvassa a táblát), így a 3.11-re visszalépés a szerver kódját nem érinti. Az `.python-version` ezért az M1 aranyminta-teszt után véglegesedik. Az F79/F92/F95 építők és tesztek Windowson 3.14-en futnak; a 3.12-n való futásukat az M1 zöld csomag-tesztje igazolja.
+**(b) Python 3.12, uv-val rögzítve.** Az Ubuntu 24.04 alap Pythonja 3.12. A projekt gyökerében `.python-version` (3.12) és zárolt függőségek (`pyproject.toml` + `uv.lock`); a VPS-en ugyanez a telepítő szkriptből. A szótövező aranyminta-teszt (hibrid v2, 99,1% súlyozva; `D:\pardes_szoto\ATADAS.md` 3. szakasz) az M1-ben fut a 3.12-n; **eltérés esetén visszalépés 3.11-re** (a hfst Python-kötés kompatibilitása 3.12-vel nem ellenőrzött). A szótövezés kimenete (a `szotari_alak` tábla) kész adat a `pardes.db`-ben; a szerver a hfst-et **nem** használja futásidőben (csak olvassa a táblát), így a 3.11-re visszalépés a szerver kódját nem érinti. Az `.python-version` ezért az M1 aranyminta-teszt után véglegesedik. Az F79/F92/F95 építők és tesztjeik (`sqlite_epit.py`, `teszt_sqlite_epit.py`) Windowson 3.14-en futnak; **a 3.12-n való futásukat az M1 nem igazolta** (a ritka klónban nincs `konkordancia/`, a tesztek a TSV-kből építenek; a 389 MB letöltése nem volt jóváhagyva). Az építő nem szerveroldali eszköz: a szerver a kész `pardes.db`-t csak olvassa, a 3.12-re vonatkozó igazolás a szerver kódjára és a szótövező kimenetre (4.3/8. lépés) szól. Nyitott: az építő-tesztek 3.12-es futtatása (csak ha a `pardes.db`-t a disztribúcióban építenénk újra).
 
-**(c) Keretrendszer: Flask** (javaslat, indoklás a 5. szakaszban; a döntés a felhasználóé).
+**(c) Keretrendszer: Flask** (DT-F76c/1, a felhasználó döntése, 2026-10-14; indoklás: 5. szakasz).
 
 ## 3. Architektúra
 
@@ -43,6 +43,9 @@ eszkozok/olvaso_szerver/
   lekerdezesek.py   az összes SQL (paraméteres), blokkonként egy függvény
   oldalak.py        vers-lap, szó-lap, fejezet-lap, kereső-lap előállítása (HTML-szöveget ad; nem függ a Flasktól)
   kereses.py        keresési mód-szétválasztás, normalizálás (magyar, héber), lapozás
+  frissesseg.py     a telepítés utáni épségi teszt (meta ↔ táblák ↔ manifest); `--manifest-keszit` az építés gépén (M1-ben kész)
+  manifest_pardes_db.tsv  a pardes.db meta hash-sorainak másolata (a másolat-épséghez)
+  pyproject.toml, uv.lock, .python-version   Python 3.12, zárolt függőségek (M1-ben kész)
   hozzaferes.py     szintek és blokk–szint hozzárendelés a konfigurációból
   gyorsitotar.py    LRU a kész lapokra + ETag
   konfig/szerver.toml, konfig/hozzaferes.toml
@@ -194,6 +197,8 @@ Minden lekérdezés paraméteres (`?`); az egyetlen dinamikus elem a `LIMIT`/`OF
 
 A mért szám a pardes.db-n, hideg Windows-gyorsítótárral nem mérendő pontosan; az M4 a VPS-t utánzó korlátokkal méri a K5-öt (vers-lap, szó-lap, magyar szó < 100 ms).
 
+**A #76 nyitott bemenete a `NYITOTT_FELADATOK.md`-ből (nem döntések, az M2/M3 figyelembe veszi):** **N-F94f** (a különírt vonatkozó névmás: „a melyet”; az *amely*-re keresve az „a” token nem jelenik meg) és **N-F94d** (a hátravetett igekötő: *vettettek el*; az igekötős szótári alakra keresve nem jön elő, csak az alapigére; rokon: N-F94a): a szótő-keresés ((a) és (c) mód) eredményét ez korlátozza, a felület ne ígérjen teljes körű találatot, és a súgó jelezze; **N-F92a** (a Nave-bontás két példánya): a #76 kiolvasója az `eszkozok/nave_bontas.py` közös modult használja, a pilot-példány (`olvaso_pilot/bovites.py`) a #76-ban megszűnik; addig a `teszt_olvaso_pilot.py` D2-egyezési tesztje őrzi az azonosságot.
+
 **M3-ellenőrzés (DT-F76c/3):** az önillesztés `igehely`-egyezést követel, tehát a frázis nem lóg át versen; az M3 igazolja a vershatárt, külön a Károli-versösszevonásos helyeken (9 hely, `f22/versosszevonas.tsv`), ahol két TAHOT-vers áll egy Károli-versen. 
 
 **A `frazis_pozicio` indexe (E4/E5, DT-F76c/3).** A `frazis_pozicio`-nak a `strong` és az (`igehely`,`oldal`,`sorszam`) indexén kívül nincs szó-indexe (`EXPLAIN`: `SCAN a`). A fenti `token_karoli`-alapú frázis-keresés ezt megkerüli, tehát **a tervhez új index nem kell**; a `frazis_pozicio` a Strong-sorozatos keresésben marad. Nincs `sqlite_epit.py`-módosítás.
@@ -210,15 +215,15 @@ A mért szám a pardes.db-n, hideg Windows-gyorsítótárral nem mérendő ponto
 
 - **Lap-gyorsítótár:** korlátos LRU (alap: 512 lap vagy 64 MB, amelyik előbb betelik) a kész HTML-re; kulcs: `(útvonal, normalizált paraméterek, nézet, szint, kiadás, adatbázis-kulcs, sablon-verzió)`. Az `adatbazis-kulcs` a `meta.epites_ts` + a `meta` hash-sorok hash-e. Egy folyamat egy gyorsítótárat tart (a szerver 1–2 worker; a kimenet a worker-ek között nem megosztott, ez az 1 vCPU-nál nem baj).
 - **HTTP:** `ETag` = a gyorsítótár-kulcs hash-e, `Cache-Control: no-cache` a próbaüzemben (belső), `public, max-age=300` a nyilvános módban; a Caddy `encode zstd gzip`.
-- **Frissesség (K4):** a `telepit.sh` a telepítés feltételeként lefuttatja az `adatbazis.py --frissesseg`-et: a `meta` `hash:<tábla>` sorait (73 sor) összeveti (a) az adatbázis tényleges tábláinak hash-ével, (b) a telepítéshez adott **manifesttel** (a forrás-TSV-k sha256-ja, amelyet az építés pillanatában, a repó gépén készítünk: `pardes.db` + `manifest.tsv` együtt kerül a célgépre). A manifest a célgépre kerülő táblákat fedi (nyilvános célgépen a szűrt példány táblakészletét, 6. szakasz 6.). Eltérésnél a telepítés megáll. A WSL-ben a repó TSV-i is elérhetők lehetnek (klón), de a VPS-en a TSV-k nincsenek meg, ezért a manifest a kötelező mechanizmus. A `/statusz` ugyanazt mutatja futás közben.
+- **Frissesség (K4), két külön igazolás:** (1) **másolat-épség** a célgépen: a `telepit.sh` lefuttatja a `frissesseg.py`-t: a `meta` `hash:<tábla>` sorait (73) összeveti az adatbázis tényleges tábláinak újraszámolt hash-ével és a telepítéshez adott `manifest_pardes_db.tsv`-vel. A manifest ugyanabból a `meta`-ból készül, tehát **ez nem frissességi bizonyíték**, csak azt mutatja, hogy a célgépre ugyanaz a példány került, és ép. (2) **TSV-frissesség** az építés gépén: a `eszkozok/olvaso_pilot/db_meres.py` D5-je (git-alapú: a forrás-TSV-k utolsó commitja az építés időpontja után van-e; a `meta` hash a tábla mai tartalmával). Ez a K4 tényleges feltétele; a telepítés (és az M5/M6) előtt le kell futtatni, és eltérésnél a `pardes.db`-t újra kell építeni. A `/statusz` az épségi eredményt és az `epites_ts`-t mutatja futás közben. A manifest a célgépre kerülő táblákat fedi (nyilvános célgépen a szűrt példány táblakészletét, 6. szakasz 6.).
 
 ## 4. Telepítő szkript és M1 (terv; nem fut le most)
 
-**Az M1 a felhasználó jóváhagyására vár** (a letöltés és a telepítés külön jóváhagyás). A szkript az M2 elején készül el; az M1-ben a felhasználó hozza létre a disztribúciót.
+**Az M1 jóváhagyva (felhasználó, chat, 2026-10-14) és lefutott; a mért eredmény a 4.3-ban áll.** A telepítő szkript az M2 elején készül el; a disztribúciót a felhasználó hozta létre. Az alábbi 4.1/4.2 az M1 előtti terv (a méretek becslések).
 
 ### 4.1 Mit tölt le a `wsl --install -d Ubuntu-24.04 --name pardes --location E:\WSL\pardes`
 
-*Az alábbi méretek **becslések** (a mért értékek: 4.3); nem mértem őket (nem futott letöltés, a repó nem tartalmaz ilyen adatot); a parancs kimenete az M1-ben pontosítja. A parancs előfeltétele a `--name` és `--location` kapcsolókat ismerő WSL: `wsl --version` ellenőrzendő (a kapcsolók újabb, 2.4.x körüli WSL-kiadásban jelentek meg; ez emlékezetből való állítás, nem repó-tény).*
+*Az alábbi méretek **becslések** (a mért értékek: 4.3); az M1 előtt nem voltak mérve (nem futott letöltés, a repó nem tartalmaz ilyen adatot). A parancs előfeltétele a `--name` és `--location` kapcsolókat ismerő WSL: `wsl --version` ellenőrzendő (a kapcsolók újabb, 2.4.x körüli WSL-kiadásban jelentek meg; ez emlékezetből való állítás, nem repó-tény).*
 
 | Mit | Forrás | Becsült méret | Hova kerül |
 |---|---|---|---|
@@ -250,10 +255,10 @@ A meglévő `Ubuntu` disztribúciót a parancs nem érinti (külön név és hel
 | 1. első indítás | a felhasználó létrehozta a Linux-felhasználót (`basesoft`, uid 1000); a jelszót nem ismerem, rootként és `basesoft`-ként dolgoztam |
 | 2. systemd | `/etc/wsl.conf` már tartalmazta a `[boot] systemd=true` sort (az új disztribúció alapja); **nem módosítottam**, `.wslconfig`-hoz és a meglévő `Ubuntu`-hoz nem nyúltam; `systemctl is-system-running` = `running` (systemd 255) |
 | 3. cgroup | `cgroup2fs`; `cgroup.controllers` = cpuset cpu io memory hugetlb pids rdma. Az `systemd-run -p MemoryMax=2G -p AllowedCPUs=0` próba: `Cpus_allowed_list: 0`, `memory.max` = 2147483648, `cpuset.cpus` = 0, `nproc` = 1 (a disztribúció 8 CPU-t és 7 905 MB RAM-ot lát) |
-| 4. apt | `git` és `ca-certificates` már megvolt; telepítve: `sqlite3` 3.45.1, `caddy` 2.6.2 (+ libnss3, libnspr4; 4 csomag frissült); **letöltés 14,5 MB, lemezfoglalás +46,1 MB**; a `caddy` szolgáltatás **letiltva és leállítva** (a konfiguráció M2) |
+| 4. apt | `git` és `ca-certificates` már megvolt; telepítve: `sqlite3` 3.45.1, `caddy` 2.6.2 (+ libnss3, libnspr4; 4 csomag frissült); **letöltés 14,5 MB, lemezfoglalás +46,1 MB**; a `caddy` szolgáltatás **letiltva és leállítva**; a Caddy előtelepítése a 4.2/4. lépés szerinti előkészítés, **nem döntés**: Caddy vagy nginx között az M2 dönt (nginx esetén a `caddy` csomag eltávolítandó) |
 | 5. uv, Python | `uv` 0.13.1 a hivatalos telepítővel (a telepítő szkript 71 300 bájt; a bináris a `~/.local/bin` alatt 37 MB, `du -sb ~/.local` = 38,2 MB); Python **3.12.3** a rendszer csomagjából (`UV_PYTHON_DOWNLOADS=never`, interpreter-letöltés nem történt) |
 | 6. klón, uv sync | `git clone --depth 1 --filter=blob:none --sparse --branch claude/olvasoi-konkordancia`, `sparse-checkout set eszkozok adat/szoto naplok`: munkamásolat 63 MB, `.git` 18 MB (a 389 MB-os `konkordancia/` **nem** töltődött le); `uv lock` + `uv sync --all-groups`: flask 3.1.3, gunicorn 26.2.0, simplemma 2.0.0 (dev, 18,1 MiB letöltés); `.venv` 25 MB; a `uv.lock` a repóban (F76.5) |
-| 7. pardes.db | a fő munkamásolat `pardes.db`-je (938 287 104 bájt) a disztribúció ext4 lemezére (`~/pardes/pardes.db`), a másolás 15,1 s; **sha256 egyezik** (589e0422ef0731f4…) a forrással; **frissességi teszt** (`eszkozok/olvaso_szerver/frissesseg.py`, manifest: `manifest_pardes_db.tsv`, 73 tábla): 73 tábla újraszámolt hash-e = `meta`, a `meta` = manifest, **EREDMÉNY: FRISS ÉS ÉP**, 33 s (`epites_ts=2026-10-13T18:10:45Z`) |
+| 7. pardes.db | a fő munkamásolat `pardes.db`-je (938 287 104 bájt) a disztribúció ext4 lemezére (`~/pardes/pardes.db`), a másolás 15,1 s; **sha256 egyezik** (589e0422ef0731f4…) a forrással; **másolat-épségi teszt** (`eszkozok/olvaso_szerver/frissesseg.py`, manifest: `manifest_pardes_db.tsv`, 73 tábla): 73 tábla újraszámolt hash-e = `meta`, `meta` = manifest, **ÉP**, 33 s (`epites_ts=2026-10-13T18:10:45Z`). Ez másolat-épség, **nem a TSV-frissesség**: l. a K4-bekezdést alább |
 | 8. szótövező aranyminta-teszt | Python **3.12.3** alatt a hibrid v2 a harmadik mintán (113 alak): **ossz 80% / 99,1% súlyozva (90/113)**, minden réteg és minden sor **azonos** a Windowson (3.14, simplemma 2.0.0) rögzített eredménnyel; a `meres_harmadik_reszlet.tsv` bájtra azonos (`cmp`); a bemenetek sha256-ja egyezik (hibrid.py `7ee1b6050740`, minta `c805d55133f4`, `karoli_lexikon.tsv` `75ad61617a88`). A kiadott út (C+K, simplemma nélkül): `szotari_alak_epit.py` 3.12-n újragenerálva: 66 824 sor, a törzs sha256-ja (a `#` fejlécsorok nélkül) **azonos** a repó `adat/szoto/karoli_szotari_alak.tsv`-jével (2313dcf488811696…). **Nincs eltérés, nincs visszalépés 3.11-re: az `.python-version` = 3.12 véglegesedik.** |
 | 9. korlátozott indítás | `systemd-run --unit=pardes-proba -p User=basesoft -p MemoryMax=2G -p AllowedCPUs=0` + gunicorn (`gthread`, 1 worker, 4 szál) egy próba-Flask-alkalmazással (nem része a repónak): `GET /statusz` → HTTP 200, 6,1 ms, `cpus: 1`, `epites_ts` és a `meta` 73 hash-sora olvasható; a szolgáltatást leállítottam |
 | 10. zárónapló | ez a szakasz |
@@ -270,6 +275,8 @@ A meglévő `Ubuntu` disztribúciót a parancs nem érinti (külön név és hel
 | klón | — | 63 MB munkamásolat + 18 MB `.git` (ritka, blob-szűrt) |
 | a disztribúció szabad helye | — | `/` 1,0 TB látszólagos, 954 GB szabad a gazda E: lemezén (E: szabad: 637,5 GB a végén); C: szabad 16,5 GB a végén (az M0 mérésekor 1,9 GB; C:-re a disztribúció nem ír) |
 
+**K4 — TSV-frissesség (D5, Windows-oldalon futtatva, 2026-10-14):** a `db_meres.py` `frissesseg(con, True)` függvénye (hash-újraszámítással, 41 s). `scope=pardes.db (fő munkamásolat, epites_ts=2026-10-13T18:10:45Z, 73 hash-sor) | forras=eszkozok/olvaso_pilot/db_meres.py D5, a repó git-története | ts=2026-10-14`. **Eltérő táblák: `vers_szamozas`, `lxx_versszam`, `nave_vers`.** Ok: a forrás-TSV-k az építés után módosultak: `konkordancia/Karoli_versmegfeleltetes.tsv` (utolsó commit 2026-10-14T07:47+02:00, F91.10; a `nave_vers` és a `vers_szamozas` forrása), `konkordancia/LXX_versificacios_terkep.tsv` (2026-10-14T08:12+02:00, F91.12; az `lxx_versszam` forrása). A `pardes.db` tehát a #91 (feliratos zsoltárok számozása) javításai előtti állapot. **A K4 feltétele ma nem teljesül ezekre a táblákra; a `pardes.db` újraépítése szükséges az M5 előtt** (a #79 építője, `eszkozok/sqlite_epit.py`; ez nem a #76 `ir` mezője, ezért nem végeztem el, és a disztribúció példánya is a régi). Addig a Zsolt-lapok és a Nave/LXX-versszám blokkok a régi számozást mutatnák; az M2 D2-egyezési tesztje a Zsolt 22-re ezt jelezné. Döntés kell: ki, mikor és melyik ágon építteti újra az adatbázist.
+
 **Ismert tudnivalók / nyitott pontok:**
 - A `systemd=true` az új disztribúció alapja volt; ha a `wsl.conf` a jövőben változik, az érinti az erőforrás-korlát módszerét (DT-F76c/5).
 - A rootfs letöltési méretét nem tudtam utólag megállapítani; ha a felhasználó adata kell, a Windows `wsl --install` kimenetéből olvasható.
@@ -284,7 +291,7 @@ A meglévő `Ubuntu` disztribúciót a parancs nem érinti (külön név és hel
 | Munka természete | szinkron SQLite-olvasás, szerveroldali HTML | az `async` előnye nem érvényesül: az `sqlite3` blokkol, szálkészlet kell hozzá |
 | Függőségek | flask, jinja2, werkzeug, markupsafe, itsdangerous, click, blinker; kiszolgáló: gunicorn | fastapi, starlette, pydantic, uvicorn (+ jinja2); nagyobb futásidejű készlet |
 | Sablonok / escape | Jinja2 beépített, autoescape alapból HTML-sablonokra | Jinja2 külön csatolva |
-| Memória 2 GB-on | egy gunicorn worker (gthread) ~ 40–60 MB RSS; az SQLite oldalcache közös | hasonló; az uvicorn+pydantic többletet ad |
+| Memória 2 GB-on | egy gunicorn worker (gthread) ~ 40–60 MB RSS (**becslés, nem mért**; az M4 méri); az SQLite oldalcache közös | hasonló; az uvicorn+pydantic többletet ad |
 | Tesztelés | `app.test_client()` szerver nélkül | `TestClient` (httpx függőség) |
 | Eddigi gyakorlat a repóban | — (nincs webes kód) | — |
 | API-séma, validáció | nem kell (nincs JSON API, a paramétereket a `kereses.py` fix szabályai ellenőrzik) | automatikus dokumentáció, típus-ellenőrzés: itt feleslegesek |
@@ -335,8 +342,12 @@ Mérési módszer (M4): 20+ vers-lap (a két pilot-szakasz véletlen mintája), 
 
 ## 9. Mi nincs az M0-ban (a brief szerint)
 
+A szótő-keresés ismert korlátai (N-F94a/d/f) és a Nave-bontás közös modulja (N-F92a) a 3.6 szerint nyitott bemenetek, nem az M0 hatóköre.
+
 Motívumréteg (#25b), új adat, modernizált Károli (DT128), belépés/fizetés, a hozzáférési szintek tartalmi szétválasztása, a szótő-oszlop előállítása. A frázis-keresés előtag-toleranciája az M3 része (3.6), nem külön feladat.
 
 ## 10. Állapot
 
 **M0 jóváhagyva (felhasználó, chat, 2026-10-14); DT-F76c eldöntve. M1 lefutott a `pardes` disztribúcióban (4.3 zárónapló): a környezet kész, az aranyminta-teszt eltérés nélkül lefutott a 3.12-n, a frissességi teszt zöld.** Következő: M2 (az alkalmazás), a brief szerint.
+
+**Nyitott:** a K4 TSV-frissesség (D5) három táblára eltér (4.3), a `pardes.db` újraépítése az M5 előtt szükséges; az építő-tesztek 3.12-es futtatása nem igazolt (2. szakasz (b)).

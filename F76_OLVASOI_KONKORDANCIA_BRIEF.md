@@ -43,14 +43,14 @@ Az első kiadás **helyben, WSL-ben** fut; a VPS-re telepítés és a nyilvános
 - **Hozzáférési szintek már most** (DT129 (3)): a lapelőállítás blokkonként jogosultságot néz; a szintek és a blokk–szint hozzárendelés **konfigurációban**, nem a kódban. Az első kiadásban minden blokk mindenkinek elérhető; a tartalmi szétválasztás és a DT-M6 viszonya külön döntés. Belépés és fizetés nem része.
 - **Kiadási kapcsoló** (DT124): a KJV-Strong blokk minden nyilvános kiadásból kimarad (GPL), az MCGED kereskedelmi kiadásból; a pilot `--kiadas {belso,nyilvanos,kereskedelmi}` szabálya a szerveren is.
 - **Magyar szótövezés** (DT129 (5)): a keresés a tőre is talál, ha a szótövezési döntés (a repón kívüli előmérés alapján, `D:\pardes_szoto\szoto\`) a hibrid megoldást jóváhagyja, és a szótő-oszlop a `pardes.db`-ben van. Addig a keresés a pontos szóalakra és a Strong-számra megy, és ezt a felület jelzi.
-- **Technika:** Python 3.11, kis webes keretrendszer (FastAPI vagy Flask, az M0-ban eldöntve), SQLite csak olvasásra, fordított proxy (Caddy vagy nginx). A nézetek közti váltás és a választott nézet megjegyzése az első kiadás része.
+- **Technika:** Python 3.12 (eredetileg 3.11; egyeztetett eltérés, DT-F76c és M0 1. szakasz E1), kis webes keretrendszer (FastAPI vagy Flask, az M0-ban eldöntve), SQLite csak olvasásra, fordított proxy (Caddy vagy nginx). A nézetek közti váltás és a választott nézet megjegyzése az első kiadás része.
 
 ## 3. Hatókör
 
 **Benne van**
 - A webalkalmazás a fenti architektúrával; a három nézet; navigáció (könyv, fejezet, vers); keresés (Strong-szám, magyar szó, kétszavas magyar frázis, héber frázis a `frazis_pozicio`-ból).
-- A helyi szerverkörnyezet leírása és telepítő szkriptje (WSL, külön disztribúció a D:-n), amely később a VPS-en is fut.
-- Tesztek: lapok és keresés; a #60 D2-egyezése mindkét pilot-szakaszon (1Móz 1–25, Zsolt 22); Python 3.11; link- és keresési próba (N-F76b); SQL-injekció és XSS (N-F76c); hozzáférési szintek; kiadási kapcsoló.
+- A helyi szerverkörnyezet leírása és telepítő szkriptje (WSL, külön disztribúció az E:-n), amely később a VPS-en is fut.
+- Tesztek: lapok és keresés; a #60 D2-egyezése mindkét pilot-szakaszon (1Móz 1–25, Zsolt 22); Python 3.12 (eredetileg 3.11, DT-F76c/E1); link- és keresési próba (N-F76b); SQL-injekció és XSS (N-F76c); hozzáférési szintek; kiadási kapcsoló.
 - Mérés a VPS-t utánzó korlátokkal (1 vCPU, 2 GB RAM): vers-lap, szó-lap, keresés ideje.
 
 **Nincs benne**
@@ -60,7 +60,7 @@ Az első kiadás **helyben, WSL-ben** fut; a VPS-re telepítés és a nyilvános
 ## 4. Lépések
 
 - **M0 — terv (csak olvas).** Útvonalak, a három nézet, a blokkok listája a pilotból, a lekérdezések SQL-terve, a keretrendszer választása, a hozzáférésiszint-konfiguráció formája. ⛔ Jóváhagyás.
-- **M1 — ⛔ helyi környezet.** Külön WSL-disztribúció a D:-n, hogy a felhasználó meglévő Ubuntuja (futó projekt) érintetlen maradjon: `wsl --install -d Ubuntu-24.04 --name pardes --location D:\WSL\pardes`. **A disztribúció létrehozása és a jelszó megadása a felhasználóé**; utána a telepítő szkript (Python 3.11, csomagok, a `pardes.db` a disztribúció saját lemezén, fordított proxy).
+- **M1 — ⛔ helyi környezet.** Külön WSL-disztribúció az E:-n (eredetileg D:; egyeztetett eltérés, M0 1. szakasz E2), hogy a felhasználó meglévő Ubuntuja (futó projekt) érintetlen maradjon: `wsl --install -d Ubuntu-24.04 --name pardes --location E:\WSL\pardes`. **A disztribúció létrehozása és a jelszó megadása a felhasználóé**; utána a telepítő szkript (Python 3.12, csomagok, a `pardes.db` a disztribúció saját lemezén, fordított proxy).
 - **M2 — alkalmazás.** Lapok és nézetek, navigáció, hozzáférési szintek, kiadási kapcsoló; tesztek.
 - **M3 — keresés.** Strong-szám, magyar szó és frázis (a #92 indexén), héber frázis; a szótő-keresés, ha a szótő-oszlop addig elkészül.
 - **M4 — mérés.** A VPS-t utánzó korlátokkal; D2-egyezés a pilottal; jelentés proveniencia-sorral.
@@ -75,7 +75,7 @@ Az első kiadás **helyben, WSL-ben** fut; a VPS-re telepítés és a nyilvános
 - **K3.** Minden blokk jellegjelöléssel, forrás- és licencsorral; a hozzáférési szintek konfigurációból zárnak; a kiadási kapcsoló szerint a KJV-Strong és (kereskedelmi módban) az MCGED kimarad.
 - **K4.** Az adatbázis a böngészőbe nem kerül ki; a frissességi teszt (a `meta` hashek egyeznek a TSV-kkel) a telepítés feltétele.
 - **K5.** A VPS-t utánzó korlátokkal mért vers-lap idő a jelentésben (a pilot: 93 ms medián, szó-lap 3–5 ms); a magyar szóra keresés 100 ms alatt (#92 K5).
-- **K6.** Tesztek zöldek (Python 3.11 alatt is), CI zöld, a független ellenőr eltérés nélkül zár.
+- **K6.** Tesztek zöldek (Python 3.12 alatt; eredetileg 3.11, DT-F76c/E1), CI zöld, a független ellenőr eltérés nélkül zár.
 
 ## 6. Kapcsolódás
 

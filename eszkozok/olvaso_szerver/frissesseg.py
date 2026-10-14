@@ -3,8 +3,10 @@
 Három lépés:
   1. a `meta` tábla `hash:<tábla>` sorai (építéskori sorszám|sha256) egyeznek a tábla mai, újraszámolt tartalmával
      (ugyanaz a hash, mint az eszkozok/sqlite_epit.py `tablak_hash`-e: rendezett tartalom, `\\t`-bal és `\\n`-nel);
-  2. ha van manifest (`--manifest`), a `meta` hash-sorai egyeznek a manifest soraival (a manifestet az építés gépén
-     készíti a `--manifest-keszit`; a TSV-k frissességét ott a `eszkozok/olvaso_pilot/db_meres.py` D5 ellenőrzi);
+  2. ha van manifest (`--manifest`), a `meta` hash-sorai egyeznek a manifest soraival. A manifestet a `--manifest-keszit`
+     ugyanannak az adatbázisnak a `meta` soraiból írja, ezért ez a lépés **másolat-épséget** igazol (a célgépre ugyanaz
+     a példány került), **nem** a forrás-TSV-k frissességét. A TSV-frissesség (K4) az építés gépén a
+     `eszkozok/olvaso_pilot/db_meres.py` D5-je (git-alapú), amelyet a telepítés előtt le kell futtatni;
   3. kiírja az építés időpontját (`meta.epites_ts`) és a kiadás szempontjából fontos tábláinak hiányát.
 
 Kilépési kód: 0 = friss és ép, 1 = eltérés (a telepítés megáll).
@@ -69,7 +71,7 @@ def main():
     ap.add_argument('--db', required=True)
     ap.add_argument('--manifest')
     ap.add_argument('--manifest-keszit', dest='keszit')
-    ap.add_argument('--csak-meta', action='store_true', help='nem számolja újra a táblák hash-ét (gyors; csak a manifest-egyezés)')
+    ap.add_argument('--csak-meta', action='store_true', help='nem számolja újra a táblák hash-ét (gyors, NEM teljes ellenőrzés: manifest nélkül semmit nem igazol, kilépési kód 2)')
     a = ap.parse_args()
     con = nyit(a.db)
     meta = meta_hashek(con)
@@ -97,8 +99,17 @@ def main():
         print('manifest sorai:', len(man), '| eltérés a meta-tól:', len([h for h in hiba if h.startswith('manifest')]))
     for h in hiba[:30]:
         print('HIBA:', h)
-    print('EREDMÉNY:', 'FRISS ÉS ÉP' if not hiba else 'ELTÉRÉS (%d)' % len(hiba))
-    return 0 if not hiba else 1
+    if hiba:
+        print('EREDMÉNY: ELTÉRÉS (%d)' % len(hiba))
+        return 1
+    if a.csak_meta and not a.manifest:
+        print('EREDMÉNY: NEM ELLENŐRZÖTT (--csak-meta manifest nélkül: a táblák hash-e nem lett újraszámolva, a manifesttel nem lett összevetve)')
+        return 2
+    if a.csak_meta:
+        print('EREDMÉNY: CSAK META–MANIFEST EGYEZÉS, nem teljes ellenőrzés (a táblák hash-e nem lett újraszámolva)')
+        return 0
+    print('EREDMÉNY: ÉP (a táblák újraszámolt hash-e = meta%s); a forrás-TSV-k frissességét ez NEM igazolja (db_meres.py D5)' % (' = manifest' if a.manifest else ''))
+    return 0
 
 
 if __name__ == '__main__':
