@@ -1,12 +1,12 @@
-# PARDES_DB_UJRAEPIT — zárónapló (#97) — VÁZLAT, a ⛔ megállásig
+# PARDES_DB_UJRAEPIT — zárónapló (#97)
 
-*Állapot: a 3. lépés 1–4. pontja kész; az 5. pontnál (⛔) megállt. A disztribúcióba másolás, a 3.12-es építő-tesztek, a takarítás és az E1/E3 lezárásának kimondása még hátravan; ezeket a jóváhagyás után egészíti ki a folytatás.*
+*Állapot: a 3. lépés minden pontja kész (újraépítés, D5, manifest, csere a disztribúcióban, 3.12-es tesztek, takarítás tárgytalan); az ellenőri javítások (F97.5–F97.6) átvezetve. A brief `allapot` mezője `megallt`; a `lezarva`-t az orkesztrátor állítja az ellenőr újrafuttatása után.*
 
 Modell: `claude-sonnet-5-5`. Python (Windows, építés és mérés): 3.14.7.
 
 ## 1. M0 — a 3.12-es tesztfuttatás helye
 
-Választás (javaslat, jóváhagyásra): **(a)** — a `pardes` disztribúció (Python 3.12.3) a Windows-oldali repót a `/mnt/c/Users/bases/Desktop/Bible-Study` úton csak olvassa; `PYTHONDONTWRITEBYTECODE=1` mellett fut, így a repóba nem ír. Indok: a ritka klón (`~/pardes`) nem tartalmazza a `konkordancia/` könyvtárat (389 MB), az (b) út a klón bővítését és ~0,4 GB lemezt jelentene a disztribúció `ext4.vhdx`-ében, és a teszt a tiszta `main` + ág tartalmát kell lássa; a `teszt_sqlite_epit.py` a repó `adat/` táblait ideiglenes könyvtárba másolja (`tempfile.mkdtemp`, a disztribúció `/tmp`-jében), a repóba nem ír. A `/mnt/c` (9p) lassabb; elfogadható, mert a teszt nem teljesítménytest.
+Választás: **(a)** (a felhasználó a chatben jóváhagyta) — a `pardes` disztribúció (Python 3.12.3) a Windows-oldali repót a `/mnt/c/Users/bases/Desktop/Bible-Study` úton csak olvassa; `PYTHONDONTWRITEBYTECODE=1` mellett fut, így a repóba nem ír. Indok: a ritka klón (`~/pardes`) nem tartalmazza a `konkordancia/` könyvtárat (389 MB), az (b) út a klón bővítését és ~0,4 GB lemezt jelentene a disztribúció `ext4.vhdx`-ében, és a teszt a tiszta `main` + ág tartalmát kell lássa; a `teszt_sqlite_epit.py` a repó `adat/` táblait ideiglenes könyvtárba másolja (`tempfile.mkdtemp`, a disztribúció `/tmp`-jében), a repóba nem ír. A `/mnt/c` (9p) lassabb; elfogadható, mert a teszt nem teljesítménytest.
 
 ## 2. Újraépítés
 
@@ -24,9 +24,15 @@ Proveniencia: `scope=pardes.db teljes újraépítés a main 9e18cbde (F97 ág) T
 
 A `--naplo` frissítette: `naplok/SQLITE_EPIT_integritas.md`, `naplok/SQLITE_EPIT_meres.md` (a `SQLITE_EPIT_proba_teljes.md` csak `--proba` esetén készül, nem változott).
 
+**Mérési napló (F97.5):** a `naplok/SQLITE_EPIT_meres.md`-t egy repón kívüli, azonos tartalmú építés írta (`--mod teljes --naplo --ketszer --meret --kimenet <repón kívüli>/pardes.db`, 84,0 s, 73 tábla; a G2 második építése hash-táblája azonos; mind a 73 tábla sorszáma és hash-e egyezik a 2. szakasz építéséével). A disztribúció és a repó `pardes.db`-je nem változott (sha256 500183a1…708b), a manifest sem. Az első `--naplo` futás `--ketszer`/`--meret` nélkül eldobta a G2- és a bájtméret-szakaszt (E5); a generátor hibája N-F97a, az F97-ben nem javított. Az ideiglenes db törölve.
+
+Proveniencia: `scope=pardes.db repón kívüli ismételt építés, 73 tábla hash-összevetés | forras=eszkozok/sqlite_epit.py --mod teljes --naplo --ketszer --meret | ts=2026-10-14`
+
 ## 3. D5 — TSV-frissesség (az építés gépén)
 
-`python eszkozok/olvaso_pilot/db_meres.py --db pardes.db --nincs-tomorites` (hash-újraszámítással): **eltérő táblák: nincs (0)**; `hash_ellenorzes_futott: true`; 47 vizsgált tábla, mindegyiknél a meta-hash egyezik a tartalommal; a három korábban eltérő tábla (`vers_szamozas`, `lxx_versszam`, `nave_vers`) már nem tér el. A futás ideje 5 perc 32 s.
+`python eszkozok/olvaso_pilot/db_meres.py --db pardes.db --nincs-tomorites` (hash-újraszámítással): **eltérő táblák: nincs (0)**; `hash_ellenorzes_futott: true`; 47 vizsgált tábla a 73-ból, mindegyiknél a meta-hash egyezik a tartalommal; a három korábban eltérő tábla (`vers_szamozas`, `lxx_versszam`, `nave_vers`) már nem tér el. A futás ideje 5 perc 32 s.
+
+**A D5 hatóköre:** a D5 a 73 táblából 47-et vizsgál (a forrás-TSV-hez rendelhető táblák), és a *forrás-TSV* változását érzékeli, az **építőkód** változását nem. Példa: a `kjv` tábla hash-e (`b37d69d6deca8fa0`) az F91.12/F91.14 építő-változás miatt változott, a `normalizalas_jelentes` +25 sorral, miközben a D5 ezt nem jelzi. A D5 0 eltérése tehát a TSV-frissességet igazolja, nem azt, hogy az építőkód a régi db építése óta változatlan.
 
 Proveniencia: `scope=pardes.db (új, epites_ts=2026-10-14T09:35:00Z), hash-újraszámítás, a forrás-TSV-k git-állapota | forras=eszkozok/olvaso_pilot/db_meres.py D5 | ts=2026-10-14`
 
@@ -55,7 +61,7 @@ Proveniencia: `scope=eszkozok/teszt_sqlite_epit.py, 64 teszt | forras=unittest, 
 A cserét a felhasználó futtatta a saját termináljában (`f97_csere.sh`), a kimenetét a chatben közölte; az engedély-osztályozó a disztribúció írását a Claude Code-nak megtagadta, ezt nem kerültem meg.
 
 - régi db sha256: `589e0422ef0731f4a8c9e9fbe2f751dfb0ff9fa725ed2c8fd028e8a1b3004e10` (átnevezve `pardes.db.regi`-re)
-- új db sha256: `500183a1cd515953c88034097edbd854150723b59ce9e4cd86a9d3393fdf708b` — **egyezik** a forrással (6. szakasz előtti 2. szakasz)
+- új db sha256: `500183a1cd515953c88034097edbd854150723b59ce9e4cd86a9d3393fdf708b` — **egyezik** a forrással (a 2. szakasz sha256-ja)
 - másolat-épség (`frissesseg.py` a manifesttel, a disztribúcióban): `epites_ts` 2026-10-14T09:35:00Z, meta hash-sorok 73, újraszámolt táblák 73, eltérés a meta-tól 0; manifest sorai 73, eltérés 0; **ÉP**; kilépési kód 0. Ez másolat-épség, nem TSV-frissesség (az a 3. szakasz D5-je).
 - Csak olvasó ellenőrzés általam (`ls -l`, `sha256sum` a `~/pardes` alatt): `pardes.db` 938 303 488 bájt, sha256 500183a1…708b; `pardes.db.regi` 938 287 104 bájt, sha256 589e0422…004e10. A `.regi` megvan; **törlése külön jóváhagyás nélkül tilos**, marad.
 
