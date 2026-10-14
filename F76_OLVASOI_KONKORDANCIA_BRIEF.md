@@ -12,7 +12,7 @@ ad: kutatói olvasói felület helyben (WSL): bibliaszöveg-kezdőlap könyv–f
 kovetkezo: "Folytatás: M3 (keresés), új ágon a main-ről; az M2b kész és mergelve (PR #344); ⛔ M5, ⛔ M6, ⛔ M7"
 olvas: [ADATVAGYON_TERV.md, MUNKATERV.md, adat/szotar_szerepek.tsv, adat/SEMA.md, adat/licencek.tsv, "eszkozok/olvaso_pilot/*", eszkozok/sqlite_epit.py, naplok/OLVASOI_PILOT_ertekeles.md, naplok/SQLITE_EPIT_meres.md, DONTESEK.md]
 ir: [eszkozok/olvaso_szerver/, naplok/OLVASOI_KONKORDANCIA_M0.md, naplok/OLVASOI_KONKORDANCIA_meres.md, naplok/OLVASOI_KONKORDANCIA_zaras.md, naplok/OLVASOI_KONKORDANCIA_pilot_osszevetes.md, naplok/ELLENOR_F76_M2b.md, naplok/ELLENOR_F76_M2b_3.md, naplok/ELLENOR_F76_M2b_4.md]
-fugg: [44, 79, 92, 95, 97]
+fugg: [44, 79, 92, 95, 97, 98]
 nem_fugg: [52, 93]
 ---
 
