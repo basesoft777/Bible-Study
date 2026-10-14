@@ -50,10 +50,19 @@ Proveniencia: `scope=eszkozok/teszt_sqlite_epit.py, 64 teszt | forras=unittest, 
 
 `~/probe/` és `~/szoto_arany/`: **tárgytalan — nem létezik a pardes disztribúcióban.** A keresés módja: `ls` a `/home/basesoft`, `/root`, `/tmp/probe` alatt (basesoft és root felhasználóként), és `find / -xdev -maxdepth 4 -name probe -o -name szoto_arany`: nincs találat. Az Ubuntu disztribúcióhoz nem nyúltam.
 
-## 8. A disztribúció példányának cseréje — NEM FUTOTT LE
+## 8. A disztribúció példányának cseréje
 
-A régi `~/pardes/pardes.db` átnevezése `.regi`-re, az új másolása, sha256-egyezés és a másolat-épségi teszt a disztribúcióban **nem történt meg**: a Claude Code engedély-osztályozó a disztribúció módosítását megtagadta (a jóváhagyás az orkesztrátor üzenetében érkezett, nem a felhasználótól közvetlenül). Folytatás: a felhasználó engedélyével, vagy a felhasználó futtatja. A terv: `mv pardes.db pardes.db.regi` (a `.regi` törlése külön jóváhagyás nélkül tilos), `cp` az új db-t és a manifestet, `sha256sum` = 500183a1…708b, `python3 eszkozok/olvaso_szerver/frissesseg.py --db pardes.db --manifest eszkozok/olvaso_szerver/manifest_pardes_db.tsv`.
+A cserét a felhasználó futtatta a saját termináljában (`f97_csere.sh`), a kimenetét a chatben közölte; az engedély-osztályozó a disztribúció írását a Claude Code-nak megtagadta, ezt nem kerültem meg.
+
+- régi db sha256: `589e0422ef0731f4a8c9e9fbe2f751dfb0ff9fa725ed2c8fd028e8a1b3004e10` (átnevezve `pardes.db.regi`-re)
+- új db sha256: `500183a1cd515953c88034097edbd854150723b59ce9e4cd86a9d3393fdf708b` — **egyezik** a forrással (6. szakasz előtti 2. szakasz)
+- másolat-épség (`frissesseg.py` a manifesttel, a disztribúcióban): `epites_ts` 2026-10-14T09:35:00Z, meta hash-sorok 73, újraszámolt táblák 73, eltérés a meta-tól 0; manifest sorai 73, eltérés 0; **ÉP**; kilépési kód 0. Ez másolat-épség, nem TSV-frissesség (az a 3. szakasz D5-je).
+- Csak olvasó ellenőrzés általam (`ls -l`, `sha256sum` a `~/pardes` alatt): `pardes.db` 938 303 488 bájt, sha256 500183a1…708b; `pardes.db.regi` 938 287 104 bájt, sha256 589e0422…004e10. A `.regi` megvan; **törlése külön jóváhagyás nélkül tilos**, marad.
+
+Proveniencia: `scope=pardes disztribúció ~/pardes/pardes.db | forras=f97_csere.sh, a felhasználó által futtatva, kimenete a chatben közölve | ts=2026-10-14`; a sha256-ellenőrzés: `scope=~/pardes/pardes.db és .regi | forras=ls -l, sha256sum (wsl -d pardes, csak olvasás) | ts=2026-10-14`
 
 ## 9. Az F76 E1 és E3 lezárása
 
-**Nem mondható ki**, amíg a 8. szakasz le nem fut: az E1 (D5/TSV-frissesség) a build-gépi igazolással (3. szakasz) teljesült, de a disztribúció példánya még a régi; az E3 (3.12-es építő-tesztek) a 6. szakasz szerint teljesült. A teljes lezárás a csere után.
+- **E1 lezárva:** a TSV-frissesség a build-gépen igazolt (D5, 0 eltérő tábla, 3. szakasz), a disztribúció példánya az új db (sha256 egyezik), a másolat-épségi teszt zöld.
+- **E3 lezárva:** az F79/F92/F95 építő-tesztek Python 3.12.3-on OK (6. szakasz, 64 teszt).
+- A brief `allapot` mezője `megallt` marad; a `lezarva`-t az orkesztrátor állítja az ellenőr után.
