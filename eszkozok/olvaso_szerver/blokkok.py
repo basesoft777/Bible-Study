@@ -765,10 +765,10 @@ B = Blokk
 REGISZTER = [
     # vers-lap
     B('vers.karoli', 'vers', 'Károli-szöveg', 'forras', ('vers',), _f_karoli, _r_karoli),
-    B('vers.par', 'vers', 'Károli–Strong párosítás', 'modell', ('token_par',), _f_par, _r_par, 'a pontozott aláhúzás a szövegben is modell-kimenet'),
     B('vers.heber_csempe', 'vers', 'Héber szöveg', ('forras', 'gepi'), ('token_eredeti', 'token_macula', 'lxx_token', 'morf_kulcs_heber', 'morf_nyelv_aramai'), _f_heber_csempe, _r_heber_csempe,
       'szavankénti csempék; a táblázatos nézet alább'),
     B('vers.lxx_csempe', 'vers', 'Septuaginta (LXX, Rahlfs)', 'forras', ('lxx_token',), _f_lxx_csempe, _r_lxx_csempe, 'szavankénti csempék; a táblázatos nézet alább'),
+    B('vers.par', 'vers', 'Károli–Strong párosítás', 'modell', ('token_par',), _f_par, _r_par, 'a pontozott aláhúzás a szövegben is modell-kimenet'),
     B('vers.eredeti', 'vers', 'Eredeti szavak (TAHOT / TAGNT)', 'forras', ('token_eredeti',), _f_eredeti, _r_eredeti),
     B('vers.macula_morf', 'vers', 'Igealak-kód és szófaj (Macula)', 'forras', ('token_macula',), _f_macula, _r_macula_morf),
     B('vers.macula_gorog', 'vers', 'Héber–görög párosítás szavanként (Macula)', 'forras', ('token_macula',), _f_macula, _r_macula_gorog),

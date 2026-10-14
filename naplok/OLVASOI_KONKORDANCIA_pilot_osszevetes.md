@@ -132,4 +132,24 @@ A brief „a #60 pilot teljes blokk-készlete (39 blokk)” szöveg tehát a *m�
 
 ## 7. A pótlás állapota
 
-A pótlás (mechanikus tételek) a következő szakaszokban kerül rögzítésre, a végrehajtás után.
+**Pótolva (F76.25–F76.26, döntés nélküli tételek), a pilot aranymintájával szemben tesztelve:**
+
+| Sor | Mi készült | Hol |
+|---|---|---|
+| P3 (írásjel) | a fejezet-szöveg a `token_karoli` szavaiból és a `vers.karoli_szoveg` írásjeleiből (`szovegbe_igazit`; a kötőjeles összetétel szóköz nélkül) mindhárom nézetben | `lekerdezesek.py`, `oldalak.py`, `fejezet.html` |
+| P1, P2 | fejléc-számlálók (n vers, x héber + y görög szó-lap, BDB magyarul a/x arannyal, Károli–Strong k könyv) és a „Hogyan olvasd” útmutató | `oldalak.szamlalok`, `fejezet.html` |
+| V3, V4 | „Héber szöveg” szócsempe-blokk (héber, átírás, angol tükör, Strong, magyar alaktan, alatta az LXX-megfelelő; nyelvtani elem szaggatott kerettel) és „Septuaginta” csempe-blokk (görög szó + Strong, kattintható), a vers mellett nyíló szó-lappal | `blokkok.py` (`_heber_csempek` a pilot párosításával) |
+| V7, V8 | BSB és KJV szavankénti csempék | `blokkok._r_angol` |
+| V9 | fejezet-szintű Nave (a `nave_basokant` `hely_tipus='fejezet'` soraiból) | `q.nave_fejezet` |
+| V11–V13 | a motívum, kapcsolat és LXX-döntés blokk három önálló blokk, saját címmel, jelleg- és forrássorral | `blokkok.py` |
+| V14 | LXX versszintű együttelőfordulás | `q.lxx_versszintu` |
+| H2 | „Ebben a versben” a héber szó-lapon (Károli itt, alak és magyar alaktan, LXX-párja, UBS-besorolás), csak vers-kontextussal | `szo.ebben` (`vers_kell`) |
+| H3 | a „57 feldolgozott könyv” jelzés a Károli-alakok blokkban | `blokkok._r_karoli_alakok` |
+
+Blokkszám: 46 azonosító (az M2 40-e + 6). A szócsempe-blokkok mellett a táblázatos blokkok megmaradtak (a tartalom azonos, a táblázat részletesebb); eltávolításuk elrendezési döntés lehetne.
+
+**Nem pótolva (döntésre vár, a teszt `expectedFailure`):** P3 folyó szöveg (DT-F76e), H1 magyar alapjelentés (DT-F76f), H4 bontott magyar BDB (DT-F76g), V15 LXX többlet és számozási eltérés (DT-F76h), P4/P5 aláhúzás-kapcsoló és témaváltó (DT-F76i). **Nem pótolva, nem döntésköteles, kis tétel:** G1 (a görög szó-lap „szó adatai” számlálói: szófaj, „5 héber szó mögötte”), V5/V6 (TSK-szám és formátum), G6 (SDGNT megjegyzés): N-F76h.
+
+**Tesztfutás, végrehajtói futás, nem független ellenőri:** `scope=eszkozok/olvaso_szerver/teszt_pilot_aranymintaval.py (19 teszt: 14 zöld, 5 expectedFailure) és teszt_olvaso_szerver.py (62 teszt, ezek között a pilot D2-egyezése mindkét szakaszon, az egyetlen dokumentált eltérés a DT-F76d „+” Strong-lánc) | forras=unittest, Python 3.12.3, pardes WSL-disztribúció, parancs: wsl -d pardes -- env PARDES_DB=/home/basesoft/pardes/pardes.db PARDES_PILOT_JSON=<pilot JSON-ok: 1moz_1_1_2_3, zsolt_22, 1moz_1_25> <venv>/bin/python -W error::ResourceWarning <fájl> (a Windows-munkafán, /mnt/c), a pardes.db epites_ts=2026-10-14T09:35:00Z | ts=2026-10-14`. Eredmény: **OK** mindkét fájlra (65,8 s és 4,7 s).
+
+*Megjegyzés a futó szerverhez:* a felhasználó 8765-ös portján futó szerver az M2 kódjával indult (a Flask fejlesztői szerver nem tölti újra a kódot, és a lapokat gyorsítótárazza); az M2b változásai újraindítás után látszanak.
