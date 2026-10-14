@@ -17,7 +17,7 @@ Szabály (DT-F91a): a feliratos zsoltárokban az `igehely_kjv` az LXX_OS Károli
 
 - A módosult sorokból felirat-vers (üres KJV, `felirat` megjegyzés): 67 (59 × 1 + 4 × 2, benne Zsolt 13:1); a többi tartalmi vers `igehely_kjv`-je javult.
 - Védőellenőrzés a szkriptben: minden nem érintett sor (a 63 zsoltáron kívül, és a fejléc) bájtra azonos az eredetivel; az oszlopszám minden sorban 6; a `git diff` kizárólag `Zsolt …` sorokat és a jegyzetsort mutatja.
-- A d-szabály (`c:(v−d)`) mint ellenőrzés: **1 eltérés**, Zsolt 13:6, ahol az etalon `13:5;13:6` (a KJV a 13:5-öt két versre bontja), a d-szabály `13:5`. Ez a DT-F91a által rögzített kivétel; a mező az etalon pontosvesszős alakját viszi.
+- A d-szabály (`c:(v−d)`) mint ellenőrzés: **1 eltérés**, Zsolt 13:6, ahol az etalon `13:5;13:6` (a KJV a 13:5-öt két versre bontja), a d-szabály `13:5`. Ez a DT-F91a által rögzített kivétel; a mező az etalon pontosvesszős alakját viszi. **[ELAVULT — a `;`-os mező-alakot a DT-F91c (1a) felülírta: a Zsolt 13:6 `igehely_kjv` = `13:5`, a megjegyzésben az etalon-érték; l. a 6. szakaszt és DT-F91c. A táblában `;`-os érték nincs.]**
 - Zsolt 13:1: az etalonban a KJV-értéke `13:1` (üres `karoli_ok`), de az etalon-d = 1, ezért felirat-versként üres KJV + `felirat` lett (mint a többi feliratos zsoltár első verse).
 - **Figyelem:** a tábla fejléce szerint generált (`naplok/KAROLI_KK4_tabla_veglegesit.py`). A KK4-generátor újrafuttatása ezt a javítást visszavonná; a javítás az `eszkozok/f91_versmegf_javit.py` újrafuttatásával visszaállítható.
 
