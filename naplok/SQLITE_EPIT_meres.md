@@ -1,6 +1,6 @@
 # SQLITE_EPIT -- mérés (teljes építés) (F79)
 
-*Proveniencia: `scope=manual | forras=eszkozok/sqlite_epit.py (--mod teljes) | ts=2026-10-14T09:35:36Z`*
+*Proveniencia: `scope=manual | forras=eszkozok/sqlite_epit.py (--mod teljes) | ts=2026-10-14T10:13:14Z`*
 
 <!-- F89-ELOTTE-KEZDET -->
 ## F89 előtte: a sor-szintű `licenc_*` oszlopokkal (a licenc-váltás előtti mérés)
@@ -14,85 +14,170 @@
 - G6 (determinizmus): a második, ideiglenes építés táblánkénti hash-e mind azonos (lent).
 <!-- F89-ELOTTE-VEGE -->
 
-- fájl: `pardes.db`, **894.8 MB**; építési idő (integritás nélkül): **81.9 s**
+- fájl: `pardes.db`, **894.8 MB**; építési idő (integritás nélkül): **84.0 s**
 
-## Táblánkénti sorszám és tartalom-hash
+## Táblánkénti sorszám és tartalom-hash (G2: két egymás utáni építés)
 
-| tábla | sor | sha256 (rendezett tartalom) |
-|---|---:|---|
-| `auditok` | 222 | `ff0b81ca81304142` |
-| `bdb` | 8099 | `2ca2507b37f42492` |
-| `bdb_alias` | 460 | `240ac43c6b7e06e8` |
-| `bdb_igehely_javitas` | 93 | `5f885473b14841eb` |
-| `bdb_karoli` | 62526 | `cc27eaa08d54fae5` |
-| `bsb` | 277817 | `4b24bc5224e67e83` |
-| `datasetek` | 105 | `1d3885285a09a685` |
-| `dontes_hatas` | 10 | `91cd5e7d73cf45c1` |
-| `elofordulasok` | 259 | `44055e771f0ecda1` |
-| `forditasok` | 737 | `e89fa68a4a1f06ae` |
-| `frazis_pozicio` | 941747 | `7dfad52aeb6f9c61` |
-| `fts_motivum` | 624 | `633891ec0abcdcf5` |
-| `grammatikai_strongok` | 92 | `c506e4015b2c0c91` |
-| `igehely_tartomany` | 1087 | `520d9f4f840fc6b5` |
-| `jeloltek` | 592 | `a2ec01077075640f` |
-| `kapcsolatok` | 39 | `d2fafe8c49ccc81f` |
-| `karoli_strong_kivonat` | 383 | `a379213a4e0bc6bb` |
-| `karoli_variancia` | 42799 | `5a9ac67d6e6c51d1` |
-| `kh` | 32407 | `68eb4cbd78ec3508` |
-| `kiejtes_heber_jeloltszabalyok` | 20 | `70347451bb064d77` |
-| `kiejtes_heber_kivetelek` | 1 | `c8d5b893f05d9328` |
-| `kiejtes_kivetelek` | 5 | `df6dcdea66e3260b` |
-| `kiejtes_szabalyok` | 24 | `27d3d4eeab3064e7` |
-| `kjv` | 348606 | `b37d69d6deca8fa0` |
-| `konyv` | 66 | `7a8105bcd736412f` |
-| `kulcsszavak` | 0 | `e3b0c44298fc1c14` |
-| `lexikon_hivatkozasok` | 23 | `01a7bcf42d1941de` |
-| `licencek` | 51 | `a6c01258c009bf4d` |
-| `lsj` | 5522 | `69dd9789f79473d3` |
-| `lxx_bridge` | 3301 | `ec2b0ab84f1e82cc` |
-| `lxx_dontesek` | 90 | `319907495acc63f9` |
-| `lxx_token` | 616873 | `f2d57f0950e55a0b` |
-| `lxx_versszam` | 24232 | `ed2e52eb62ba13ee` |
-| `lxx_versszintu_parok` | 104518 | `e5df63a54e7e715b` |
-| `mcged` | 5303 | `0ec3cb35b769c931` |
-| `morf_kulcs_heber` | 124 | `a8a99f9c96eaa270` |
-| `morf_nyelv_aramai` | 7549 | `ef2f696a0992e0f5` |
-| `motivumok` | 9 | `c4edba7875e2080b` |
-| `nave_basokant` | 85246 | `47af606d9a5ec410` |
-| `nave_vers` | 156214 | `b4ea05b01c9cd4b9` |
-| `normalizalas_jelentes` | 497 | `3e2d5df4f3ab5502` |
-| `oshl_bdb_igehelyek` | 4053 | `29d7049456d8409a` |
-| `oshl_lexikalis_index` | 10221 | `b525fa2474213677` |
-| `res_forras` | 56 | `e91d76726be3fdb5` |
-| `sdbh_domenek` | 22280 | `a76d2c6bacb6c8f9` |
-| `sdgnt_domenek` | 9075 | `51a12b44854aca28` |
-| `sece_g` | 5523 | `d62a71806bcd514a` |
-| `sece_h` | 8674 | `7e9eab69417345f0` |
-| `strong_parok` | 571936 | `621af88e29704e69` |
-| `strong_szotar` | 14347 | `7790c8a17bafb34d` |
-| `szotar_szerepek` | 26 | `f11558ebc4e66457` |
-| `szotari_alak` | 66824 | `796b64a997311113` |
-| `szotari_kereso` | 72720 | `611be759aa352c19` |
-| `szotari_token_kotojeles` | 4750 | `7511068482b07b09` |
-| `tabla_licenc` | 74 | `cf1fb56e84e537db` |
-| `tbesg` | 11035 | `02081181f1894623` |
-| `tbesh` | 11682 | `79510c68f89bdbb3` |
-| `terminologia` | 71 | `03ad9354ad077429` |
-| `thayer` | 5426 | `03507af618fc151c` |
-| `tipnr` | 35522 | `7f70556658040c48` |
-| `token_eredeti` | 611396 | `75a604b8a9278532` |
-| `token_karoli` | 981147 | `126d4e3ab7b98734` |
-| `token_macula` | 475911 | `dc00cf4f469c9273` |
-| `token_par` | 492380 | `7ee91e0a5b198b74` |
-| `token_strong` | 611655 | `69f5cda7c3c2310f` |
-| `tsk` | 432949 | `9acf0b780d4f3871` |
-| `tw_szocikkek` | 598 | `e805af98eac22877` |
-| `ubs_dbh_jelentesek` | 20182 | `56c21557ad70fe45` |
-| `ubs_dbh_referenciak` | 389212 | `79f34a88a3233d53` |
-| `ubs_dntg_jelentesek` | 9075 | `669391a5962b6fb2` |
-| `ubs_dntg_referenciak` | 130948 | `9afe1e9724d2e732` |
-| `vers` | 31158 | `0076280f851ecdd6` |
-| `vers_szamozas` | 22931 | `422dfb72e9893749` |
+**AZONOS** -- a második, ideiglenes építés táblánkénti rendezett tartalom-hash-e mind azonos.
+
+| tábla | sor | sha256 (1. építés) | sha256 (2. építés) |
+|---|---:|---|---|
+| `auditok` | 222 | `ff0b81ca81304142` | `ff0b81ca81304142` |
+| `bdb` | 8099 | `2ca2507b37f42492` | `2ca2507b37f42492` |
+| `bdb_alias` | 460 | `240ac43c6b7e06e8` | `240ac43c6b7e06e8` |
+| `bdb_igehely_javitas` | 93 | `5f885473b14841eb` | `5f885473b14841eb` |
+| `bdb_karoli` | 62526 | `cc27eaa08d54fae5` | `cc27eaa08d54fae5` |
+| `bsb` | 277817 | `4b24bc5224e67e83` | `4b24bc5224e67e83` |
+| `datasetek` | 105 | `1d3885285a09a685` | `1d3885285a09a685` |
+| `dontes_hatas` | 10 | `91cd5e7d73cf45c1` | `91cd5e7d73cf45c1` |
+| `elofordulasok` | 259 | `44055e771f0ecda1` | `44055e771f0ecda1` |
+| `forditasok` | 737 | `e89fa68a4a1f06ae` | `e89fa68a4a1f06ae` |
+| `frazis_pozicio` | 941747 | `7dfad52aeb6f9c61` | `7dfad52aeb6f9c61` |
+| `fts_motivum` | 624 | `633891ec0abcdcf5` | `633891ec0abcdcf5` |
+| `grammatikai_strongok` | 92 | `c506e4015b2c0c91` | `c506e4015b2c0c91` |
+| `igehely_tartomany` | 1087 | `520d9f4f840fc6b5` | `520d9f4f840fc6b5` |
+| `jeloltek` | 592 | `a2ec01077075640f` | `a2ec01077075640f` |
+| `kapcsolatok` | 39 | `d2fafe8c49ccc81f` | `d2fafe8c49ccc81f` |
+| `karoli_strong_kivonat` | 383 | `a379213a4e0bc6bb` | `a379213a4e0bc6bb` |
+| `karoli_variancia` | 42799 | `5a9ac67d6e6c51d1` | `5a9ac67d6e6c51d1` |
+| `kh` | 32407 | `68eb4cbd78ec3508` | `68eb4cbd78ec3508` |
+| `kiejtes_heber_jeloltszabalyok` | 20 | `70347451bb064d77` | `70347451bb064d77` |
+| `kiejtes_heber_kivetelek` | 1 | `c8d5b893f05d9328` | `c8d5b893f05d9328` |
+| `kiejtes_kivetelek` | 5 | `df6dcdea66e3260b` | `df6dcdea66e3260b` |
+| `kiejtes_szabalyok` | 24 | `27d3d4eeab3064e7` | `27d3d4eeab3064e7` |
+| `kjv` | 348606 | `b37d69d6deca8fa0` | `b37d69d6deca8fa0` |
+| `konyv` | 66 | `7a8105bcd736412f` | `7a8105bcd736412f` |
+| `kulcsszavak` | 0 | `e3b0c44298fc1c14` | `e3b0c44298fc1c14` |
+| `lexikon_hivatkozasok` | 23 | `01a7bcf42d1941de` | `01a7bcf42d1941de` |
+| `licencek` | 51 | `a6c01258c009bf4d` | `a6c01258c009bf4d` |
+| `lsj` | 5522 | `69dd9789f79473d3` | `69dd9789f79473d3` |
+| `lxx_bridge` | 3301 | `ec2b0ab84f1e82cc` | `ec2b0ab84f1e82cc` |
+| `lxx_dontesek` | 90 | `319907495acc63f9` | `319907495acc63f9` |
+| `lxx_token` | 616873 | `f2d57f0950e55a0b` | `f2d57f0950e55a0b` |
+| `lxx_versszam` | 24232 | `ed2e52eb62ba13ee` | `ed2e52eb62ba13ee` |
+| `lxx_versszintu_parok` | 104518 | `e5df63a54e7e715b` | `e5df63a54e7e715b` |
+| `mcged` | 5303 | `0ec3cb35b769c931` | `0ec3cb35b769c931` |
+| `morf_kulcs_heber` | 124 | `a8a99f9c96eaa270` | `a8a99f9c96eaa270` |
+| `morf_nyelv_aramai` | 7549 | `ef2f696a0992e0f5` | `ef2f696a0992e0f5` |
+| `motivumok` | 9 | `c4edba7875e2080b` | `c4edba7875e2080b` |
+| `nave_basokant` | 85246 | `47af606d9a5ec410` | `47af606d9a5ec410` |
+| `nave_vers` | 156214 | `b4ea05b01c9cd4b9` | `b4ea05b01c9cd4b9` |
+| `normalizalas_jelentes` | 497 | `3e2d5df4f3ab5502` | `3e2d5df4f3ab5502` |
+| `oshl_bdb_igehelyek` | 4053 | `29d7049456d8409a` | `29d7049456d8409a` |
+| `oshl_lexikalis_index` | 10221 | `b525fa2474213677` | `b525fa2474213677` |
+| `res_forras` | 56 | `e91d76726be3fdb5` | `e91d76726be3fdb5` |
+| `sdbh_domenek` | 22280 | `a76d2c6bacb6c8f9` | `a76d2c6bacb6c8f9` |
+| `sdgnt_domenek` | 9075 | `51a12b44854aca28` | `51a12b44854aca28` |
+| `sece_g` | 5523 | `d62a71806bcd514a` | `d62a71806bcd514a` |
+| `sece_h` | 8674 | `7e9eab69417345f0` | `7e9eab69417345f0` |
+| `strong_parok` | 571936 | `621af88e29704e69` | `621af88e29704e69` |
+| `strong_szotar` | 14347 | `7790c8a17bafb34d` | `7790c8a17bafb34d` |
+| `szotar_szerepek` | 26 | `f11558ebc4e66457` | `f11558ebc4e66457` |
+| `szotari_alak` | 66824 | `796b64a997311113` | `796b64a997311113` |
+| `szotari_kereso` | 72720 | `611be759aa352c19` | `611be759aa352c19` |
+| `szotari_token_kotojeles` | 4750 | `7511068482b07b09` | `7511068482b07b09` |
+| `tabla_licenc` | 74 | `cf1fb56e84e537db` | `cf1fb56e84e537db` |
+| `tbesg` | 11035 | `02081181f1894623` | `02081181f1894623` |
+| `tbesh` | 11682 | `79510c68f89bdbb3` | `79510c68f89bdbb3` |
+| `terminologia` | 71 | `03ad9354ad077429` | `03ad9354ad077429` |
+| `thayer` | 5426 | `03507af618fc151c` | `03507af618fc151c` |
+| `tipnr` | 35522 | `7f70556658040c48` | `7f70556658040c48` |
+| `token_eredeti` | 611396 | `75a604b8a9278532` | `75a604b8a9278532` |
+| `token_karoli` | 981147 | `126d4e3ab7b98734` | `126d4e3ab7b98734` |
+| `token_macula` | 475911 | `dc00cf4f469c9273` | `dc00cf4f469c9273` |
+| `token_par` | 492380 | `7ee91e0a5b198b74` | `7ee91e0a5b198b74` |
+| `token_strong` | 611655 | `69f5cda7c3c2310f` | `69f5cda7c3c2310f` |
+| `tsk` | 432949 | `9acf0b780d4f3871` | `9acf0b780d4f3871` |
+| `tw_szocikkek` | 598 | `e805af98eac22877` | `e805af98eac22877` |
+| `ubs_dbh_jelentesek` | 20182 | `56c21557ad70fe45` | `56c21557ad70fe45` |
+| `ubs_dbh_referenciak` | 389212 | `79f34a88a3233d53` | `79f34a88a3233d53` |
+| `ubs_dntg_jelentesek` | 9075 | `669391a5962b6fb2` | `669391a5962b6fb2` |
+| `ubs_dntg_referenciak` | 130948 | `9afe1e9724d2e732` | `9afe1e9724d2e732` |
+| `vers` | 31158 | `0076280f851ecdd6` | `0076280f851ecdd6` |
+| `vers_szamozas` | 22931 | `422dfb72e9893749` | `422dfb72e9893749` |
+
+## Táblánkénti bájtméret
+
+Mérés: minden tábla (indexeivel) külön adatbázisba másolva, lapszám × lapméret (a Python sqlite3-ból hiányzik a `dbstat`).
+
+- a táblák összege: **895.1 MB** (a fájl: 894.8 MB; a többlet a táblánkénti külön adatbázisok saját fejléc- és séma-lapjaiból adódik)
+
+| tábla | sor | MB (indexszel) |
+|---|---:|---:|
+| `token_karoli` | 981147 | 141.33 |
+| `lxx_token` | 616873 | 104.46 |
+| `token_eredeti` | 611396 | 80.96 |
+| `token_macula` | 475911 | 78.95 |
+| `frazis_pozicio` | 941747 | 68.94 |
+| `token_par` | 492380 | 63.04 |
+| `token_strong` | 611655 | 35.13 |
+| `ubs_dbh_referenciak` | 389212 | 33.79 |
+| `kjv` | 348606 | 32.96 |
+| `bsb` | 277817 | 30.95 |
+| `tsk` | 432949 | 27.53 |
+| `strong_parok` | 571936 | 27.19 |
+| `lxx_versszintu_parok` | 104518 | 20.46 |
+| `nave_vers` | 156214 | 20.23 |
+| `bdb_karoli` | 62526 | 12.62 |
+| `ubs_dntg_referenciak` | 130948 | 11.09 |
+| `lsj` | 5522 | 9.45 |
+| `nave_basokant` | 85246 | 8.73 |
+| `bdb` | 8099 | 8.43 |
+| `vers` | 31158 | 6.06 |
+| `karoli_variancia` | 42799 | 5.91 |
+| `szotari_alak` | 66824 | 5.79 |
+| `thayer` | 5426 | 5.77 |
+| `tbesg` | 11035 | 5.39 |
+| `ubs_dbh_jelentesek` | 20182 | 4.93 |
+| `szotari_kereso` | 72720 | 4.71 |
+| `forditasok` | 737 | 4.00 |
+| `tbesh` | 11682 | 3.75 |
+| `ubs_dntg_jelentesek` | 9075 | 3.42 |
+| `tipnr` | 35522 | 3.36 |
+| `sece_h` | 8674 | 3.26 |
+| `sdbh_domenek` | 22280 | 2.96 |
+| `kh` | 32407 | 2.93 |
+| `lxx_versszam` | 24232 | 2.43 |
+| `sece_g` | 5523 | 1.98 |
+| `vers_szamozas` | 22931 | 1.88 |
+| `fts_motivum` | 624 | 1.83 |
+| `strong_szotar` | 14347 | 1.58 |
+| `sdgnt_domenek` | 9075 | 1.44 |
+| `tw_szocikkek` | 598 | 1.36 |
+| `mcged` | 5303 | 0.98 |
+| `oshl_lexikalis_index` | 10221 | 0.86 |
+| `szotari_token_kotojeles` | 4750 | 0.35 |
+| `morf_nyelv_aramai` | 7549 | 0.28 |
+| `jeloltek` | 592 | 0.20 |
+| `oshl_bdb_igehelyek` | 4053 | 0.19 |
+| `igehely_tartomany` | 1087 | 0.15 |
+| `lxx_bridge` | 3301 | 0.14 |
+| `licencek` | 51 | 0.13 |
+| `elofordulasok` | 259 | 0.09 |
+| `karoli_strong_kivonat` | 383 | 0.09 |
+| `datasetek` | 105 | 0.07 |
+| `lexikon_hivatkozasok` | 23 | 0.07 |
+| `bdb_igehely_javitas` | 93 | 0.06 |
+| `lxx_dontesek` | 90 | 0.05 |
+| `normalizalas_jelentes` | 497 | 0.05 |
+| `morf_kulcs_heber` | 124 | 0.05 |
+| `bdb_alias` | 460 | 0.04 |
+| `auditok` | 222 | 0.04 |
+| `grammatikai_strongok` | 92 | 0.02 |
+| `meta` | 107 | 0.02 |
+| `tabla_licenc` | 74 | 0.02 |
+| `terminologia` | 71 | 0.02 |
+| `kapcsolatok` | 39 | 0.02 |
+| `motivumok` | 9 | 0.02 |
+| `res_forras` | 56 | 0.02 |
+| `szotar_szerepek` | 26 | 0.02 |
+| `konyv` | 66 | 0.01 |
+| `dontes_hatas` | 10 | 0.01 |
+| `kiejtes_heber_jeloltszabalyok` | 20 | 0.01 |
+| `kiejtes_heber_kivetelek` | 1 | 0.01 |
+| `kiejtes_kivetelek` | 5 | 0.01 |
+| `kiejtes_szabalyok` | 24 | 0.01 |
+| `kulcsszavak` | 0 | 0.01 |
 
 ## Táblaszintű licenc (`tabla_licenc`, F89 / DT113)
 
