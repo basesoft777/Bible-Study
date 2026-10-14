@@ -20,7 +20,7 @@ Választás: **(a)** (a felhasználó a chatben jóváhagyta) — a `pardes` dis
 | sha256 | 500183a1cd515953c88034097edbd854150723b59ce9e4cd86a9d3393fdf708b |
 | építési idő | 81,9 s |
 
-Proveniencia: `scope=pardes.db teljes újraépítés a main 9e18cbde (F97 ág) TSV-iből | forras=eszkozok/sqlite_epit.py --mod teljes --naplo, kilépési kód 0 | ts=2026-10-14`
+Proveniencia: `scope=pardes.db teljes újraépítés az origin/main 8478b02c TSV-iből (az F97 ág 9e18cbde csak a briefet érinti) | forras=eszkozok/sqlite_epit.py --mod teljes --naplo, kilépési kód 0 | ts=2026-10-14`
 
 A `--naplo` frissítette: `naplok/SQLITE_EPIT_integritas.md`, `naplok/SQLITE_EPIT_meres.md` (a `SQLITE_EPIT_proba_teljes.md` csak `--proba` esetén készül, nem változott).
 
@@ -44,7 +44,7 @@ Proveniencia: `scope=pardes.db + manifest_pardes_db.tsv (73 tábla) | forras=esz
 
 ## 5. A törlendő könyvtárak (⛔ előtti állapot)
 
-A brief 3. lépés 8. pontja a `pardes` disztribúció `~/probe/` és `~/szoto_arany/` könyvtárát nevezi (M0 4.3: „a `~/probe/app.py` és a `~/szoto_arany/` a disztribúcióban maradt”). Mérés (`wsl -d pardes`, felhasználó `basesoft`, home `/home/basesoft`, és root): egyik sem létezik (`ls`: „No such file or directory”; `find / -xdev -maxdepth 4 -name probe -o -name szoto_arany`: nincs találat); az `Ubuntu` disztribúcióban sincs. A törlés tehát tárgytalan, ha nem más helyen állnak; ezt a felhasználónak kell megerősítenie.
+A brief 3. lépés 8. pontja a `pardes` disztribúció `~/probe/` és `~/szoto_arany/` könyvtárát nevezi (M0 4.3: „a `~/probe/app.py` és a `~/szoto_arany/` a disztribúcióban maradt”). Mérés (`wsl -d pardes`, felhasználó `basesoft`, home `/home/basesoft`, és root): egyik sem létezik (`ls`: „No such file or directory”; `find / -xdev -maxdepth 4 -name probe -o -name szoto_arany`: nincs találat); az `Ubuntu` disztribúcióban sincs. A törlés tehát tárgytalan; a felhasználó ezt a chatben a másik session üzenetén át megerősítette (2026-10-14: „TÁRGYTALAN”).
 
 ## 6. Építő-tesztek Python 3.12-n
 
@@ -72,3 +72,9 @@ Proveniencia: `scope=pardes disztribúció ~/pardes/pardes.db | forras=f97_csere
 - **E1 lezárva:** a TSV-frissesség a build-gépen igazolt (D5, 0 eltérő tábla, 3. szakasz), a disztribúció példánya az új db (sha256 egyezik), a másolat-épségi teszt zöld.
 - **E3 lezárva:** az F79/F92/F95 építő-tesztek Python 3.12.3-on OK (6. szakasz, 64 teszt).
 - A brief `allapot` mezője `megallt` marad; a `lezarva`-t az orkesztrátor állítja az ellenőr után.
+
+## 10. A `feladatok.py ellenoriz` futása (elfogadás 4.)
+
+`python eszkozok/feladatok.py ellenoriz` → `117 brief, 0 hiba, 0 figyelmeztetés` (az F97.6 utáni állapoton, az orkesztrátor futtatta).
+
+Proveniencia: `scope=feladatok.py ellenoriz, ág HEAD dcb45d91 | forras=eszkozok/feladatok.py | ts=2026-10-14`
