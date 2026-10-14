@@ -92,6 +92,7 @@ class Kontekst:
     def __init__(self, con, kozos, ig=None, strong=None):
         self.con, self.kozos, self.ig, self.strong = con, kozos, ig, strong
         self._memo = {}
+        self.magyar_ok = True        # a magyar BDB (`forditasok`) olvasható-e ezen a lapon (szint és kiadás szerint); a hívó állítja
 
     def memo(self, kulcs, f):
         if kulcs not in self._memo:
@@ -173,6 +174,7 @@ class OldalGyar:
         if not q.strong_van(con, s):
             raise NemTalalhato('ismeretlen Strong-szám')
         K = Kontekst(con, self.kozos, ig=ig, strong=s)
+        K.magyar_ok = self._latszik('szo.bdb_magyar', szint) and self._latszik('szo.bdb_apparatus', szint)
         oldal = 'szo_h' if s[0] == 'H' else 'szo_g'
         sz = q.strong_szotar(con, s)
         alapjel = None
@@ -183,9 +185,10 @@ class OldalGyar:
             else:                                                      # tiltott TBESG: a Strong-szótár (szótő, kiejtés, rövid jelentés), ha az látszik
                 fej = (sz[0], sz[1], sz[3]) if (sz and self._latszik('szo.szotar', szint)) else ('', '', '')
         else:
-            fej = (sz[0], sz[1], sz[2]) if sz else ('', '', '')          # szótő, kiejtés, szófaj; az alapjelentés külön sor (DT-F76f)
+            # szótő, kiejtés, szófaj (a Strong-szótár blokk láthatóságát követi, mint a görög ág); az alapjelentés külön sor (DT-F76f)
+            fej = (sz[0], sz[1], sz[2]) if (sz and self._latszik('szo.szotar', szint)) else ('', '', '')
             # az alapjelentés is átmegy a blokk-szűrésen (kiadás és hozzáférési szint): tiltott BDB/Strong-szótár esetén nem olvas és nem szivárog
-            alapjel = blokkok.alapjelentes(K, self._latszik('szo.bdb_magyar', szint) and self._latszik('szo.bdb_apparatus', szint), self._latszik('szo.szotar', szint))
+            alapjel = blokkok.alapjelentes(K, K.magyar_ok, self._latszik('szo.szotar', szint))
         return s, fej, self._blokkok(oldal, K, szint), alapjel
 
     def szo_fragment(self, strong, szint, ig=None):
@@ -238,15 +241,17 @@ class OldalGyar:
                 van_par = van_par or bool(parok)
                 ws.append({'sz': sz, 'szo': szo_, 'kiir': kiir, 'szokoz': szokoz, 'fo': fo[0] if fo else None, 'biz': fo[1] if fo else None, 'parok': parok})
             vlista.append({'ig': ig, 'vers': v, 'szoveg': szoveg, 'szavak': ws, 'van_par': van_par})
-        parositatlan = q.fejezet_parositatlan(con, kk, fej) if nezet == 'interlinearis' else {}
+        # az Interlineáris csempék az eredeti szavak és a párosítás blokkjainak láthatóságát követik (zárt blokknál nem jelennek meg)
+        csempe_ok = self._latszik('vers.eredeti', szint) and self._latszik('vers.par', szint)
+        parositatlan = q.fejezet_parositatlan(con, kk, fej) if (nezet == 'interlinearis' and csempe_ok) else {}
         for v in vlista:
             v['parositatlan'] = parositatlan.get(v['ig'], [])
         if nezet == 'interlinearis':
             # szócsempék: a magyar szó alatt az eredeti szó, átírás, angol tükörfordítás, Strong (a #60 pilot csempéinek mintájára)
-            ered = q.fejezet_eredeti(con, kk, fej)
+            ered = q.fejezet_eredeti(con, kk, fej) if csempe_ok else {}
             for v in vlista:
                 for w in v['szavak']:
-                    w['er'] = [{'szo': erszo, 'st': st, 'gor': st[:1] == 'G', 'at': ered.get((v['ig'], ers), ('', '', ''))[0], 'tukor': ered.get((v['ig'], ers), ('', '', ''))[1],
+                    w['er'] = None if not csempe_ok else [{'szo': erszo, 'st': st, 'gor': st[:1] == 'G', 'at': ered.get((v['ig'], ers), ('', '', ''))[0], 'tukor': ered.get((v['ig'], ers), ('', '', ''))[1],
                                 'nyt': st in self.kozos.nyelvtani} for ers, erszo, st, bz in w['parok']]
         szo_html = vers_html = None
         szo_n = None

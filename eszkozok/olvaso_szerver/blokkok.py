@@ -313,7 +313,7 @@ def _r_nave(d, K):
     else:
         ki += Markup('<p class="ures">Nincs Nave-sor erre a vershez.</p>')
     if fej:
-        ki += Markup('<details class="fejezet-nave"><summary>Fejezet-szintű hivatkozások (%d)</summary>%s</details>') % (
+        ki += Markup('<details class="fejezet-nave" open><summary>Fejezet-szintű hivatkozások (%d)</summary>%s</details>') % (
             len(fej), _tabla(['Téma', 'Cím', 'Nave-hely'], [[tema, cimke or '', ig_link(K, hely)] for tema, cimke, hely, tid in fej]))
     return ki
 
@@ -592,13 +592,16 @@ def _r_karoli_alakok(d, K):
 
 
 def _bdb_adat(K):
+    """A BDB-szócikk angol és magyar szövege (és az alias). A magyar fordítást (`forditasok`) csak akkor olvassa, ha a lap `magyar_ok`
+    (a `szo.bdb_magyar` és `szo.bdb_apparatus` blokk szint és kiadás szerint látható): tiltott magyar BDB-t sem a szó-lap, sem a számláló nem olvas."""
     def f():
-        en, hu = q.bdb_angol(K.con, K.strong), q.bdb_magyar(K.con, K.strong)
+        mo = getattr(K, 'magyar_ok', True)
+        en, hu = q.bdb_angol(K.con, K.strong), (q.bdb_magyar(K.con, K.strong) if mo else None)
         alias = None
         if not hu and not en:
             a = q.bdb_alias(K.con, K.strong)
             if a:
-                en2, hu2 = q.bdb_angol(K.con, a[0]), q.bdb_magyar(K.con, a[0])
+                en2, hu2 = q.bdb_angol(K.con, a[0]), (q.bdb_magyar(K.con, a[0]) if mo else None)
                 if hu2 or en2:
                     alias, en, hu = {'tabla_strong': a[0], 'bdb_id': a[1], 'hasonlosag': a[2]}, en2, hu2
         return {'en': en, 'hu': hu, 'alias': alias}
@@ -631,7 +634,8 @@ def _bdb_bontas(K):
 def alapjelentes(K, magyar_ok=True, angol_ok=True):
     """A szó-lap fejlécének alapjelentése (DT-F76f): a magyar BDB-sor gépi tisztítása (`bdb_szelet.alap_jelentes`), ennek híján az angol
     Strong-glossza. {'szoveg', 'nyelv', 'tisztitott'} vagy None. `magyar_ok`/`angol_ok`: a hívó (OldalGyar) a blokk-szintű kiadási és
-    hozzáférési szűrésen átengedte-e a BDB-t, illetve a Strong-szótárat; tiltott forrást nem olvas (F76.32, E1)."""
+    hozzáférési szűrésen átengedte-e a magyar BDB-t, illetve a Strong-szótárat; ezek tiltása esetén a megfelelő forrást nem olvassa
+    (a magyar BDB-hez a `K.magyar_ok` is kell: `_bdb_adat`)."""
     b = _bdb_bontas(K) if magyar_ok else None
     if b and b['hu'] and b['alap'] and b['alap'].get('szoveg'):
         return {'szoveg': b['alap']['szoveg'], 'nyelv': 'hu', 'tisztitott': b['alap']['tisztitott']}
@@ -924,12 +928,13 @@ REGISZTER = [
     # héber szó-lap
     B('szo.szotar', 'szo_h', 'Strong-szótár', 'forras', ('strong_szotar',), _f_szotar, _r_szotar),
     B('szo.elofordulas', 'szo_h', 'Előfordulás, könyvek száma', 'gepi', ('token_strong',), _f_elofordulas, _r_elofordulas),
-    B('szo.ebben', 'szo_h', 'Ebben a versben', ('forras', 'gepi', 'modell'), ('token_par', 'token_eredeti', 'token_macula', 'lxx_token', 'ubs_dbh_referenciak', 'ubs_dbh_jelentesek', 'morf_kulcs_heber', 'morf_nyelv_aramai'), _f_ebben, _r_ebben, vers_kell=True),
+    B('szo.ebben', 'szo_h', 'Ebben a versben', ('forras', 'gepi', 'modell'), ('token_par', 'token_eredeti', 'token_macula', 'lxx_token', 'ubs_dbh_referenciak', 'ubs_dbh_jelentesek', 'morf_kulcs_heber', 'morf_nyelv_aramai'), _f_ebben, _r_ebben, vers_kell=True,
+      kovet=('vers.ubs', 'vers.heber_csempe', 'vers.par')),     # az UBS DBH-, a héber csempe- és a párosítás-adat blokkjainak láthatóságát követi
     B('szo.karoli_alakok', 'szo_h', 'Károli-alakok és bizonyosság', 'modell', ('token_par',), _f_karoli_alakok, _r_karoli_alakok),
     B('szo.bdb_apparatus', 'szo_h', 'BDB-szócikk apparátusokra bontva', ('forras', 'modell', 'gepi'), ('bdb', 'bdb_alias', 'forditasok'), _f_bdb_apparatus, _r_bdb_apparatus,
       'a pilot gépi szeletelése (bdb_szelet.py); hibás határ előfordulhat',
       kovet=('szo.bdb_magyar',), jelleg_fn=lambda d: ('forras', 'modell', 'gepi') if d['hu'] else ('forras', 'gepi')),     # modell-kimenet csak a magyar fordításból készült bontásnál
-    B('szo.bdb_angol', 'szo_h', 'BDB-szócikk (angol)', 'forras', ('bdb', 'bdb_alias', 'forditasok'), _f_bdb_angol, _r_bdb_angol, 'az alias gépi feldolgozás'),
+    B('szo.bdb_angol', 'szo_h', 'BDB-szócikk (angol)', 'forras', ('bdb', 'bdb_alias'), _f_bdb_angol, _r_bdb_angol, 'az alias gépi feldolgozás'),
     B('szo.bdb_magyar', 'szo_h', 'BDB-szócikk (magyar fordítás)', 'modell', ('forditasok',), _f_bdb_magyar, _r_bdb_magyar),
     B('szo.lxx_bridge', 'szo_h', 'Görög megfelelő (lxx_bridge)', 'forras', ('lxx_bridge',), _f_lxx_bridge, _r_lxx_bridge),
     B('szo.sdbh', 'szo_h', 'Szemantikai domén (SDBH)', 'forras', ('sdbh_domenek',), _f_sdbh, _r_sdbh, 'üres eredmény nem negatív lelet'),

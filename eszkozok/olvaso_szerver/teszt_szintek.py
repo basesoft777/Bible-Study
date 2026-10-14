@@ -4,9 +4,11 @@ A szintváltó (fejléc, `/szint/<nev>`, süti) a felhasználó kérésére ker�
 Csak a `belso` kiadásban jelenik meg és hat; `nyilvanos` és `kereskedelmi` kiadásban sem a vezérlő, sem a süti, sem a `?szint=` paraméter nem
 emelheti a szintet.
 
-A teszt a SAJÁT próba-konfigját használja (`konfig/hozzaferes_proba.toml`): a saját fordításból (`forditasok`: magyar BDB, Thayer, TBESH,
-TBESG, LSJ, UBS_DNTG) jövő blokkok a `kutato` szinten vannak (a DT-F86c javaslata szerint). Ez a #86 freemium/prémium határát NEM dönti
-el, csak a mechanizmust próbálja; az éles `konfig/hozzaferes.toml`-ban mindenki `kutato`.
+A teszt a SAJÁT próba-konfigját használja (`konfig/hozzaferes_proba.toml`). A próba-konfig a MECHANIZMUST próbálja: a `kutato` szinthez kötött
+blokkok a `forditasok`-ból olvasók (`szo.bdb_magyar`, `szo.bdb_apparatus`, `szo.magyar_gorog`) és további, a Thayer, TBESH, TBESG, LSJ, UBS_DNTG
+szótárakhoz tartozó blokkok (`szo.thayer`, `szo.tbesh`, `szo.tbesg`, `szo.lsj`, `szo.ubs_dntg`), amelyek az eredeti angol forrástáblákat olvassák, nem a
+`forditasok`-at. NEM követi pontosan a DT-F86c fordítás-listáját: a DT-F86c szerint a BY-SA-eredetű tartalom (pl. UBS_DNTG) nem zárható, a próba mégis zárja,
+mert csak a szűrést próbálja. A #86 freemium/prémium határát nem dönti el; az éles `konfig/hozzaferes.toml`-ban mindenki `kutato`.
 
 A valódi lapok: a két pilot-szakasz (1Móz 1:1–2:3, Zsolt 22) összes héber és görög szava, és versei.
 
@@ -18,6 +20,7 @@ import os
 import re
 import sys
 import unittest
+import unittest.mock as mock
 
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
@@ -30,6 +33,7 @@ sys.path.insert(0, D)
 import adatbazis
 import blokkok
 import hozzaferes
+import lekerdezesek as q
 import oldalak
 from teszt_olvaso_szerver import DB, KONFIG, VAN_DB, VAN_FLASK, _pilot_json
 from teszt_pilot_aranymintaval import SZAKASZOK, VAN_PILOT, igehely_reszek, szoveg
@@ -150,6 +154,7 @@ class TestSzintekValodiLapokon(unittest.TestCase):
         cls.hozz = proba_hozz()
         cls.gyar = oldalak.OldalGyar(adatbazis.Adatbazis(DB, 'belso'), cls.hozz)
         cls.rang = {n: cls.hozz.szint_nevbol(n) for n in (ALSO, KOZEP, FELSO)}
+        cls.con = cls.gyar.con()
         cls.pilot = {azon: _pilot_json(sz, azon) for sz, azon in SZAKASZOK}
 
     def szo(self, strong, szint, ig=None):
@@ -169,14 +174,19 @@ class TestSzintekValodiLapokon(unittest.TestCase):
                 self.assertNotIn('data-blokk="szo.bdb_apparatus"', lent)
                 if l['bdb_hu']:
                     hu += 1
-                    # a magyar szöveg egy olyan darabja, amely az angol szócikkben nincs (a címsor sok szócikkben azonos): fent megvan, lent sehol
-                    mag, lent_t, fent_t = szoveg(l['bdb_hu']), szoveg(lent), szoveg(fent)
-                    ablak = next((mag[i:i + 40] for i in range(0, max(1, len(mag) - 40), 20) if mag[i:i + 40] not in lent_t and mag[i:i + 40] in fent_t), None)
-                    self.assertIsNotNone(ablak, '%s: nincs megkülönböztethető magyar szövegrész' % strong) if len(mag) > 200 else None
-                    if ablak:
-                        self.assertNotIn(ablak, lent_t, strong)                       # a magyar szöveg sehol nem szivárog
-                        self.assertIn(ablak, fent_t, strong)
-                        kulon += 1
+                    # a magyar szócikk megkülönböztető darabjai a `forditasok` ADATBÓL (nem a renderelt lapból): fix hosszú, fix helyű szakaszok a szócikk
+                    # elejétől, amelyek az angol BDB-szövegben nincsenek (a címsor sok szócikkben azonos). Magas szinten mind megvan a HTML-ben,
+                    # alacsony szinten egyik sincs meg.
+                    bdb = blokkok._bdb_adat(oldalak.Kontekst(self.con, self.gyar.kozos, strong=strong))      # a forditasok adatból (alias esetén az alias szócikke)
+                    mag, ang = szoveg(bdb['hu']), szoveg(bdb['en'] or '')
+                    darabok = [mag[i:i + 30] for i in range(0, min(len(mag) - 30, 400), 40) if mag[i:i + 30] not in ang]
+                    lent_t, fent_t = szoveg(lent), szoveg(fent)
+                    if len(mag) > 300:
+                        self.assertGreaterEqual(len(darabok), 2, '%s: nincs elég megkülönböztető magyar darab' % strong)
+                    for d in darabok:
+                        self.assertNotIn(d, lent_t, '%s: a magyar szöveg szivárog alacsony szinten: %r' % (strong, d))
+                        self.assertIn(d, fent_t, '%s: a magyar darab magas szinten sincs a lapon: %r' % (strong, d))
+                    kulon += bool(darabok)
                     for b in HEBER_ZART[:2]:
                         self.assertIn(b, idk_fent, strong)
                     self.assertIn('Lefordítva · %s' % l['bdb_hu_meta'], szoveg(fent), strong)
@@ -255,6 +265,53 @@ class TestSzintekValodiLapokon(unittest.TestCase):
         self.assertIn('<h4>Jelentésszerkezet', blokk)
         j = blokk.index('<h4>Jelentésszerkezet')
         self.assertIn('<details open>', blokk[j:j + 600])
+
+    # -- F76.36: a szűrés kikerülhetetlen (ellenőri 4. kör) ------------------------------------------------------------------------
+    def _gyar(self, blokk_szint):
+        h = hozzaferes.Hozzaferes([ALSO, FELSO], ALSO, blokk_szint, ALSO)
+        return oldalak.OldalGyar(adatbazis.Adatbazis(DB, 'belso'), h), h
+
+    def test_ebben_a_versben_es_az_interlinearis_csempek_koveti_a_blokkok_lathatosagat(self):
+        gyar, h = self._gyar({'vers.ubs': FELSO, 'vers.eredeti': FELSO})
+        lent, fent = h.rang[ALSO], h.rang[FELSO]
+        # szo.ebben: az UBS DBH blokkot követi (zárt vers.ubs: a blokk nem jelenik meg, nincs 500)
+        self.assertNotIn('data-blokk="szo.ebben"', gyar.szo_fragment('H6440', lent, '1Móz 1:2'))
+        self.assertIn('data-blokk="szo.ebben"', gyar.szo_fragment('H6440', fent, '1Móz 1:2'))
+        self.assertNotIn('Ebben a versben', gyar.fejezet_lap('1Moz', 1, 2, 'olvaso', lent, 'H6440', 'szo', '/'))
+        # Interlineáris csempék: a vers.eredeti blokkot követik
+        l = gyar.fejezet_lap('1Moz', 1, None, 'interlinearis', lent, None, 'szo', '/')
+        self.assertNotIn('class="er', l)
+        self.assertNotIn('il-parositatlan', l)
+        self.assertNotIn('אֱלֹהִ', l)                                         # az eredeti szó nem jelenik meg
+        self.assertIn('class="il-szo"', l)                                   # a magyar szavak igen
+        f = gyar.fejezet_lap('1Moz', 1, None, 'interlinearis', fent, None, 'szo', '/')
+        self.assertIn('class="er', f)
+        self.assertIn('אֱלֹהִ', f)
+
+    def test_tiltott_magyar_bdb_forditasok_tablat_nem_olvas(self):
+        """1e: ha a szo.bdb_magyar zárt, a `forditasok` BDB-sorait sem a szó-lap blokkjai, sem az alapjelentés, sem a számláló nem olvassa."""
+        gyar, h = self._gyar({'szo.bdb_magyar': FELSO})
+        with mock.patch.object(q, 'bdb_magyar', side_effect=AssertionError('a tiltott magyar BDB olvasása lefutott')), \
+                mock.patch.object(q, 'bdb_magyar_meta', side_effect=AssertionError('a tiltott magyar BDB olvasása lefutott')):
+            t = gyar.szo_fragment('H6440', h.rang[ALSO], '1Móz 1:2')
+            self.assertIn('data-blokk="szo.bdb_angol"', t)
+            self.assertNotIn('data-blokk="szo.bdb_apparatus"', t)
+            gyar.fejezet_lap('1Moz', 1, None, 'olvaso', h.rang[ALSO], None, 'szo', '/')
+            self.assertNotIn('BDB magyarul', gyar.fejezet_lap('1Moz', 1, None, 'olvaso', h.rang[ALSO], None, 'szo', '/'))
+        # az angol blokk forrássora nem listáz fordítás-datasetet
+        i = t.index('data-blokk="szo.bdb_angol"')
+        forras = t[i:t.index('</section>', i)]
+        self.assertNotIn('forditasok', forras)
+        gyar.szo_fragment('H6440', h.rang[FELSO])                            # magas szinten olvas (nincs mock): rendben
+
+    def test_heber_fejlec_a_szo_szotar_lathatosagat_koveti(self):
+        gyar, h = self._gyar({'szo.szotar': FELSO})
+        lent = gyar.szo_fragment('H6440', h.rang[ALSO])
+        self.assertNotIn('data-blokk="szo.szotar"', lent)
+        self.assertNotIn('pe.Nei', lent)                                     # a kiejtés (Strong-szótár adat) nem szivárog a fejlécben
+        self.assertNotIn('class="alapjel" lang="en"', lent)                  # az angol Strong-glossza sem
+        self.assertIn('pe.Nei', gyar.szo_fragment('H6440', h.rang[FELSO]))
+        self.assertIn('data-blokk="szo.elofordulas"', lent)                  # a többi blokk marad
 
 
 if __name__ == '__main__':

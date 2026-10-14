@@ -213,6 +213,7 @@ class TestPilotAranymintaval(unittest.TestCase):
             self.assertEqual(q.nave_fejezet(self.con, v['igehely']), vart, v['igehely'])
         h = szoveg(self.vers_panel('1Móz 1:1'))
         self.assertIn('Fejezet-szintű hivatkozások (2)', h)
+        self.assertIn('<details class="fejezet-nave" open>', self.vers_panel('1Móz 1:1'))        # a pilot kinyitja (mindNyit)
         self.assertIn('MIRACLES', h)
 
     # -- 5. „Ebben a versben” a szó-lapon -------------------------------------------------------------------------------
