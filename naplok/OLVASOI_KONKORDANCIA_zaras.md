@@ -27,3 +27,15 @@
 - **Nyitott:** N-F76d (BDB-bontás; Caddy vs nginx, javaslat Caddy; `NYITOTT_FELADATOK.md`); DT133 (a `scan`-javítás és a korábbi görög ÚSZ-scanek felmérése) nyitott, nem módosult; M4 mérés a korláttal.
 - **Nem történt meg:** M3, M4, merge, PR, M5–M7; a `pr` és `lezarva_osszegzes` mező üres.
 - **Következő:** M3 (keresés), külön `/kovetkezo`-val; ⛔ M5, ⛔ M6, ⛔ M7.
+
+# Zárójelentés — #76 OLVASOI_KONKORDANCIA, 3. menet (M2b: a #60 pilot kirajzolt blokk-készletének pótlása)
+
+*Állapot: `allapot: megallt`; az M2 „kész” állítása függőben a DT-F76e–i döntéséig. Ág: `claude/olvasoi-konkordancia-m2b` (F76.23–F76.27). Részletek és tábla: `naplok/OLVASOI_KONKORDANCIA_pilot_osszevetes.md`.*
+
+- **Ok:** a felhasználó szerint a szerver nem egyezik a #60 pilottal. Mérés (pilot újraépítve a repón kívül, böngészőben kirajzolva, szerver Flask test_client-tel, 1Móz 1:1–2:3 és Zsolt 22): az észrevételek **igazoltak**, két ponton árnyalva (a magyar BDB megvan nyersen; a motívum-blokk megvan, összevonva). Az M0 3.4 „39 blokkja” a *mért adatblokkok* listája, nem a kirajzolt blokkoké (N-F76g).
+- **Pótolva (döntés nélkül):** írásjeles Károli-szöveg mindhárom nézetben; fejléc-számlálók és „Hogyan olvasd”; héber és LXX szócsempék, BSB/KJV csempék; „Ebben a versben” a szó-lapon (vers-kontextussal); LXX versszintű együttelőfordulás; fejezet-szintű Nave; adatréteg-blokk háromra bontva; „57 feldolgozott könyv” jelzés. Regiszter: 46 blokk-azonosító.
+- **Döntésre vár (DT-F76e–i, ⛔ a pótlás a döntésig nem készül):** e) folyó szöveg vs versenkénti sor; f) magyar alapjelentés vs angol Strong-glossza; g) a magyar BDB bontása és forrása (N-F76d (1)); h) „LXX többlet és számozási eltérés”: a két forrástábla nincs a `pardes.db`-ben; i) aláhúzás-kapcsoló és témaváltó. Kisebb formai eltérések: N-F76h.
+- **Tesztek (végrehajtói futás, nem független ellenőri):** új `teszt_pilot_aranymintaval.py`: 19 teszt, 14 zöld + 5 `expectedFailure` (a döntésre váró hiányok, nem zöldre állítva); `teszt_olvaso_szerver.py`: 62 teszt, OK. Python 3.12.3, `pardes` WSL-disztribúció; parancs és proveniencia: az összevetés 7. szakasza.
+- **A futó szerver** (8765) az M2 kódjával indult; újraindítás kell (a Flask-szerver nem tölti újra a kódot, és gyorsítótáraz).
+- **Nem történt meg:** a döntésre váró pótlások, M3, M4, merge, PR, M5–M7; az `ir` mezőn kívül csak a `NYITOTT_FELADATOK.md` (N-F76f–h), a `DONTESEK.md` (DT-F76e–i) és a brief fejléce változott.
+- **Következő:** a DT-F76e–i döntése és a felhasználó vizuális összevetése; utána M3 (keresés), külön `/kovetkezo`-val; ⛔ M5, ⛔ M6, ⛔ M7.
