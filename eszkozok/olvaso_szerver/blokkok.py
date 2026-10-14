@@ -798,6 +798,24 @@ def _fo_cim(j):
     return sajat or (jelentes_cim(j['al'][0]['szoveg'], vesszoig=True) if j['al'] else '')
 
 
+# a címben a héber szavak (pontozott betűk, geres, maqqéf, szón belüli zárójel) futama
+_HEB_SZO = r"[׳״']?[֐-׿יִ-ﭏ][֐-׿יִ-ﭏ׳״'־()\-]*"
+_HEB_FUTAM = re.compile(r'%s(?:\s+%s)*' % (_HEB_SZO, _HEB_SZO))
+
+
+def _cim_html(cim):
+    """A cím megjelenítése: a vezető héber kifejezés a magyar szöveg mögé kerül („gonosz tervet kigondolni מַחֲשֶׁבֶת(ה)רָעָה חָשַׁב”), hogy a
+    jelentés álljon elöl; minden héber futam lang="he"-vel, elkülönítve. A szavak nem változnak, csak a vezető héber helye."""
+    m = _HEB_FUTAM.match(cim or '')
+    if m and _CIM_BETUK.search(cim[m.end():]):
+        cim = '%s %s' % (cim[m.end():].strip(' ,;:'), m.group(0))
+    ki, poz = Markup(''), 0
+    for h in _HEB_FUTAM.finditer(cim or ''):
+        ki += escape(cim[poz:h.start()]) + Markup('<span class="he" lang="he">%s</span>') % h.group(0)
+        poz = h.end()
+    return ki + escape((cim or '')[poz:])
+
+
 def _jel_id(elotag, ti, jel, al=''):
     return '%s-%d-%s%s' % (elotag, ti, jel or 'x', al)
 
@@ -819,9 +837,9 @@ def _vazlat_html(tl, elotag):
             al = Markup('')
             if j['al']:
                 al = Markup('<span class="vz-al">%s</span>') % Markup(' · ').join(
-                    Markup('<a href="#%s">%s. %s</a>') % (_jel_id(elotag, ti, j['jel'], s['jel']), s['jel'], jelentes_cim(s['szoveg'])) for s in j['al'])
+                    Markup('<a href="#%s">%s. %s</a>') % (_jel_id(elotag, ti, j['jel'], s['jel']), s['jel'], _cim_html(jelentes_cim(s['szoveg']))) for s in j['al'])
             sorok += Markup('<li><a class="vz-fo" href="#%s"><span class="vz-jel">%s</span>%s</a>%s%s</li>') % (
-                _jel_id(elotag, ti, j['jel']), j['jel'], _fo_cim(j), _helyek(j['ref']), al)
+                _jel_id(elotag, ti, j['jel']), j['jel'], _cim_html(_fo_cim(j)), _helyek(j['ref']), al)
         ki += Markup('<ol>%s</ol>') % sorok
     return Markup('<nav class="jel-vazlat" aria-label="A jelentésszerkezet vázlata">%s</nav>') % ki
 
@@ -841,7 +859,7 @@ def _torzsek_html(tl, elotag='bdb', talalt=None):
                         _jel_id(elotag, ti, j['jel'], s['jel']), s['jel'] or '', _jeles(s['szoveg'], talalt), _helyek(s['ref'])) for s in j['al'])
             sajat = Markup('<p class="jsz">%s</p>') % _jeles(j['szoveg'], talalt) if j['szoveg'] else Markup('')
             li += Markup('<li id="%s" data-jel="%s"><details open><summary><span class="jcim">%s</span>%s</summary>%s%s</details></li>') % (
-                _jel_id(elotag, ti, j['jel'] or 'x%d' % i), j['jel'] or '·', _fo_cim(j), _helyek(j['ref']), sajat, al)
+                _jel_id(elotag, ti, j['jel'] or 'x%d' % i), j['jel'] or '·', _cim_html(_fo_cim(j)), _helyek(j['ref']), sajat, al)
         ki += Markup('<div class="torzs">%s<ol class="jel">%s</ol></div>') % (fej, li)
     return ki
 

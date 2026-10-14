@@ -495,6 +495,12 @@ class TestLapok(unittest.TestCase):
         self.assertEqual(jc('+ מִן comparativus: rosszabb, mint, 2Sám 19:8; felsőfokként', max_hossz=70), '+ מִן comparativus: rosszabb, mint')
         self.assertEqual(jc('מַחֲשֶׁבֶת(ה)רָעָה חָשַׁב gonosz (ártalmas) tervet kigondolni Ez 38:10', max_hossz=70),
                          'מַחֲשֶׁבֶת(ה)רָעָה חָשַׁב gonosz tervet kigondolni')
+        # a vezető héber a magyar mögé kerül, minden héber futam lang="he"-vel
+        self.assertEqual(str(blokkok._cim_html('מַחֲשֶׁבֶת(ה)רָעָה חָשַׁב gonosz tervet kigondolni')),
+                         'gonosz tervet kigondolni <span class="he" lang="he">מַחֲשֶׁבֶת(ה)רָעָה חָשַׁב</span>')
+        self.assertEqual(str(blokkok._cim_html('+ מִן comparativus: rosszabb, mint')),
+                         '+ <span class="he" lang="he">מִן</span> comparativus: rosszabb, mint')
+        self.assertEqual(str(blokkok._cim_html('a <b>')), 'a &lt;b&gt;')
         t = self.get('/r/szo/H7451').get_data(as_text=True)
         cimek = re.findall(r'<span class="jcim">([^<]*)</span>', t)
         self.assertEqual(cimek[:3], ['rossz, kellemetlen, ártalmas', 'rossz, kellemetlen, fájdalmat, boldogtalanságot, nyomorúságot okozó',
