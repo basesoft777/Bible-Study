@@ -45,18 +45,28 @@ for igehely_karoli, sorok in sorted(rows_by_karoli.items()):
         final_rows.append((igehely_karoli,) + sorok[0])
         osszevont.append((igehely_karoli, "VARATLAN_TOBBSOR_NEM_KEZI", len(sorok)))
 
-out_path = "konkordancia/Karoli_versmegfeleltetes.tsv"
-with open(out_path, "w", encoding="utf-8") as out:
-    out.write("# GENERÁLT: naplok/KAROLI_KK4_tabla_veglegesit.py — kézzel nem szerkesztendő.\n")
-    out.write(f"# forras: lxx-morph@{LXX_MORPH_COMMIT} (verse_pairs.jsonl, TVTMS-alapu MT-KJV kulcs, CC BY 4.0) "
-              f"+ Karoli_1908.tsv + TAHOT_kivonat.tsv + eszkozok/lxx_kivonat_fetch_v2.py KEZI_ELTOLASOK\n")
-    out.write(f"# sha256(verse_pairs.jsonl)={VERSE_PAIRS_SHA256}\n")
-    out.write("# proveniencia: forras=KAROLI_KULCS_BRIEF.md KK4 (2. menet) | ts=2026-09-25\n")
-    out.write("igehely_karoli\tigehely_kjv\tigehely_mt\tosztaly\tforras\tmegjegyzes\n")
-    for r in final_rows:
-        out.write("\t".join(r) + "\n")
+out_path = os.environ.get("KK4_KIMENET", "konkordancia/Karoli_versmegfeleltetes.tsv")
+fejlec = [
+    "# GENERÁLT: naplok/KAROLI_KK4_tabla_veglegesit.py — kézzel nem szerkesztendő.",
+    f"# forras: lxx-morph@{LXX_MORPH_COMMIT} (verse_pairs.jsonl, TVTMS-alapu MT-KJV kulcs, CC BY 4.0) "
+    f"+ Karoli_1908.tsv + TAHOT_kivonat.tsv + eszkozok/lxx_kivonat_fetch_v2.py KEZI_ELTOLASOK",
+    f"# sha256(verse_pairs.jsonl)={VERSE_PAIRS_SHA256}",
+    "# proveniencia: forras=KAROLI_KULCS_BRIEF.md KK4 (2. menet) | ts=2026-09-25",
+    "igehely_karoli\tigehely_kjv\tigehely_mt\tosztaly\tforras\tmegjegyzes",
+]
+sorok = fejlec + ["\t".join(r) for r in final_rows]
 
-print(f"Vegleges tabla: {len(final_rows)} sor -> {out_path}")
+# F91 (DT-F91a A1, DT-F91c): a feliratos zsoltarok igehely_kjv oszlopa az LXX_OS-etalonbol.
+# A szabaly egy helyen el: eszkozok/f91_versmegf_javit.py (ezt importaljuk, nem duplikaljuk).
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "eszkozok"))
+import f91_versmegf_javit
+sorok = f91_versmegf_javit.javit(sorok)
+
+# LF sorvég minden platformon (a .gitattributes is *.tsv eol=lf)
+with open(out_path, "w", encoding="utf-8", newline="\n") as out:
+    out.write("\n".join(sorok) + "\n")
+
+print(f"Vegleges tabla: {len(final_rows)} adatsor -> {out_path}")
 print(f"Osszevont/duplikalt-feloldott sorok: {len(osszevont)}")
 for o in osszevont:
     print(" ", o)
