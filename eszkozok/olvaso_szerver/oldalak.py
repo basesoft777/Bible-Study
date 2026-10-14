@@ -15,6 +15,7 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 from markupsafe import Markup, escape
 
 import adatbazis
+import arculat as arculat_modul
 import blokkok
 import lekerdezesek as q
 
@@ -30,10 +31,11 @@ PILOT_DIR = os.path.join(os.path.dirname(SZERVER_DIR), 'olvaso_pilot')
 def kod_verzio(gyokerek=None):
     """A kód, a sablonok, a statikus fájlok és a konfiguráció tartalom-hash-e (a lap ETag-jébe és a gyorsítótár kulcsába kerül): kódváltozás után
     a szerver nem adhat 304-et vagy gyorsítótárból régi lapot. `gyokerek`: [(könyvtár, [kiterjesztések])]; alap: a szerver könyvtára
-    (.py a tesztek nélkül, .html, .css, .js, .toml) és a pilot `bdb_szelet.py`-ja (a BDB-bontás ezt hívja)."""
+    (.py a tesztek nélkül, .html, .css, .js, .toml, .json — a token-fájl, #98) és a pilot `bdb_szelet.py`-ja (a BDB-bontás ezt hívja).
+    A token-fájl futás közbeni változását (#98 M2, mentés) nem ez követi, hanem az `arculat.hash` (a kulcsban külön tag)."""
     h = hashlib.sha256()
     if gyokerek is None:
-        gyokerek = [(SZERVER_DIR, ('.py', '.html', '.css', '.js', '.toml')), (PILOT_DIR, ('bdb_szelet.py',))]
+        gyokerek = [(SZERVER_DIR, ('.py', '.html', '.css', '.js', '.toml', '.json')), (PILOT_DIR, ('bdb_szelet.py',))]
         if os.environ.get('PARDES_KONFIG_DIR'):                      # külső konfiguráció (kiadás, hozzáférési szintek) is a verzió része
             gyokerek.append((os.environ['PARDES_KONFIG_DIR'], ('.toml',)))
     for gyoker, kit in gyokerek:
@@ -114,9 +116,11 @@ def _ig_kulcs(kozos, slug, fej, vers):
 # az oldalgyár
 # ---------------------------------------------------------------------------------------------------------------------
 class OldalGyar:
-    def __init__(self, db, hozzaferes, sablon_dir=SABLON_DIR):
+    def __init__(self, db, hozzaferes, sablon_dir=SABLON_DIR, arculat=None):
         self.db = db
         self.hozz = hozzaferes
+        # az arculati token-fájl (#98): a lap a token-blokkot a `/arculat.css?v=<hash>` címen linkeli
+        self.arculat = arculat or arculat_modul.Arculat.betolt()
         self.kod_verzio = kod_verzio()           # induláskor számolt; a gyorsítótár kulcsában és az ETag-ben
         self.kiadas = db.kiadas
         con = db.kapcsolat()
@@ -152,6 +156,7 @@ class OldalGyar:
         ctx.setdefault('kiadas', self.kiadas)
         ctx.setdefault('epites_ts', self.kozos.meta.get('epites_ts', ''))
         ctx.setdefault('nezet', ALAP_NEZET)
+        ctx.setdefault('arculat_hash', self.arculat.hash)
         sz = ctx.pop('szint', None)
         # a szintváltó vezérlő CSAK a belső kiadásban (próbaüzem): máshol a szint nem választható
         ctx['szint_vezerlo'] = self.kiadas == 'belso'
@@ -315,7 +320,7 @@ class OldalGyar:
     def statusz(self):
         con = self.con()
         return {'epites_ts': self.kozos.meta.get('epites_ts', ''), 'meta_hash_sorok': q.meta_hashek_db(con),
-                'kiadas': self.kiadas, 'adatbazis_kulcs': self.kozos.adatbazis_kulcs, 'sablon_verzio': SABLON_VERZIO, 'kod_verzio': self.kod_verzio}
+                'kiadas': self.kiadas, 'adatbazis_kulcs': self.kozos.adatbazis_kulcs, 'sablon_verzio': SABLON_VERZIO, 'kod_verzio': self.kod_verzio, 'arculat_hash': self.arculat.hash}
 
 
 # ---------------------------------------------------------------------------------------------------------------------

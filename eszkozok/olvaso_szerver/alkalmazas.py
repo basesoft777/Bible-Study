@@ -22,6 +22,7 @@ if hasattr(sys.stderr, 'reconfigure'):
     sys.stderr.reconfigure(encoding='utf-8')
 
 import adatbazis
+import arculat as arculat_modul
 import hozzaferes as hozz_modul
 import lekerdezesek
 import oldalak
@@ -45,7 +46,7 @@ def letrehoz(db_ut=None, kiadas=None, konfig_dir=None, hozzaferes=None):
     kiadas = kiadas or os.environ.get('PARDES_KIADAS') or konf.get('kiadas', 'belso')
     hozz = hozzaferes or hozz_modul.Hozzaferes.betolt(kdir)
     db = adatbazis.Adatbazis(db_ut, kiadas, mmap_bajt=int(konf.get('mmap_bajt', 0)))
-    gyar = oldalak.OldalGyar(db, hozz)
+    gyar = oldalak.OldalGyar(db, hozz, arculat=arculat_modul.Arculat.konfigbol(kdir))
     suti = konf.get('suti', {})
     suti_nev = suti.get('nev', 'pardes_nezet')
     szint_suti_nev = suti.get('szint_nev', 'pardes_szint')
@@ -77,7 +78,9 @@ def letrehoz(db_ut=None, kiadas=None, konfig_dir=None, hozzaferes=None):
     def kiszolgal(kulcs_reszek, elo, fragment=False):
         szint = szint_kerese()
         nezet = nezet_kerese()
-        kulcs = (request.path, tuple(sorted(kulcs_reszek.items())), nezet, szint, kiadas, gyar.kozos.adatbazis_kulcs, oldalak.SABLON_VERZIO, gyar.kod_verzio, fragment)
+        # az arculat hash-e külön tag (#98): a token-fájl változása után nincs 304 és nincs régi lap a gyorsítótárból
+        kulcs = (request.path, tuple(sorted(kulcs_reszek.items())), nezet, szint, kiadas, gyar.kozos.adatbazis_kulcs, oldalak.SABLON_VERZIO, gyar.kod_verzio,
+                 gyar.arculat.hash, fragment)
         etag = Gyorsitotar.etag(kulcs)
         hit = cache.kap(kulcs)
         if hit is None:
@@ -223,6 +226,21 @@ def letrehoz(db_ut=None, kiadas=None, konfig_dir=None, hozzaferes=None):
         s['allapot'] = 'ok'
         r = Response(json.dumps(s, ensure_ascii=False), mimetype='application/json')
         r.headers['Cache-Control'] = 'no-store'
+        return r
+
+    @app.get('/arculat.css')
+    def arculat_css():
+        """A token-blokk (#98, DT-F98e): a `konfig/arculat.json`-ból generálva, nem fájlból. A lap `?v=<hash>`-sel linkeli;
+        a jelenlegi hash-sel kért változat sokáig gyorsítótárazható, minden más kérés újraellenőrzendő."""
+        a = gyar.arculat
+        etag = '"arculat-%s"' % a.hash
+        if request.headers.get('If-None-Match') == etag:
+            r = make_response('', 304)
+        else:
+            r = Response(a.css, mimetype='text/css')
+            r.headers['Content-Type'] = 'text/css; charset=utf-8'
+        r.headers['ETag'] = etag
+        r.headers['Cache-Control'] = 'public, max-age=31536000, immutable' if request.args.get('v') == a.hash else 'no-cache'
         return r
 
     @app.get('/robots.txt')
