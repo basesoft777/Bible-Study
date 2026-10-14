@@ -151,6 +151,12 @@ class OldalGyar:
         ctx.setdefault('kiadas', self.kiadas)
         ctx.setdefault('epites_ts', self.kozos.meta.get('epites_ts', ''))
         ctx.setdefault('nezet', ALAP_NEZET)
+        sz = ctx.pop('szint', None)
+        # a szintváltó vezérlő CSAK a belső kiadásban (próbaüzem): máshol a szint nem választható
+        ctx['szint_vezerlo'] = self.kiadas == 'belso'
+        if ctx['szint_vezerlo']:
+            ctx['szintek'] = self.hozz.szintek
+            ctx['szint_nev'] = self.hozz.szint_neve(sz if sz is not None else self.hozz.szint())
         return self.jinja.get_template(sablon).render(**ctx)
 
     def con(self):
@@ -171,8 +177,11 @@ class OldalGyar:
         sz = q.strong_szotar(con, s)
         alapjel = None
         if s[0] == 'G':
-            tb = q.tbesg(con, s)
-            fej = (tb[0], tb[1], tb[2]) if tb else ('', '', '')
+            tb = q.tbesg(con, s) if self._latszik('szo.tbesg', szint) else None
+            if tb:
+                fej = (tb[0], tb[1], tb[2])
+            else:                                                      # tiltott TBESG: a Strong-szótár (szótő, kiejtés, rövid jelentés), ha az látszik
+                fej = (sz[0], sz[1], sz[3]) if (sz and self._latszik('szo.szotar', szint)) else ('', '', '')
         else:
             fej = (sz[0], sz[1], sz[2]) if sz else ('', '', '')          # szótő, kiejtés, szófaj; az alapjelentés külön sor (DT-F76f)
             # az alapjelentés is átmegy a blokk-szűrésen (kiadás és hozzáférési szint): tiltott BDB/Strong-szótár esetén nem olvas és nem szivárog
@@ -192,17 +201,17 @@ class OldalGyar:
         return self.jinja.get_template('_vers_panel.html').render(igehely=ig, blokkok=self._blokkok('vers', K, szint))
 
     # -- lapok ---------------------------------------------------------------------------------------------------------
-    def kezdolap(self, nezet, ut):
+    def kezdolap(self, nezet, ut, szint=None):
         konyvek = []
         for kk, sl, nev, sor in self.kozos.konyvek:
             konyvek.append({'kk': kk, 'slug': sl, 'nev': nev, 'ot': sor < 39, 'fejezetek': [f for f, _ in self.kozos.fejezet_szam[kk]]})
-        return self._render('kezdolap.html', konyvek=konyvek, nezet=nezet, ut=ut, cim='Károli-bibliaszöveg')
+        return self._render('kezdolap.html', konyvek=konyvek, nezet=nezet, ut=ut, szint=szint, cim='Károli-bibliaszöveg')
 
-    def konyv_lap(self, slug, nezet, ut):
+    def konyv_lap(self, slug, nezet, ut, szint=None):
         kk = self.kozos.slug_kk.get(slug)
         if kk is None:
             raise NemTalalhato('ismeretlen könyv')
-        return self._render('konyv.html', kk=kk, slug=slug, nev=self.kozos.nev[kk], fejezetek=self.kozos.fejezet_szam[kk], nezet=nezet, ut=ut, cim=self.kozos.nev[kk])
+        return self._render('konyv.html', kk=kk, slug=slug, nev=self.kozos.nev[kk], fejezetek=self.kozos.fejezet_szam[kk], nezet=nezet, ut=ut, szint=szint, cim=self.kozos.nev[kk])
 
     def fejezet_lap(self, slug, fej, vers, nezet, szint, szo, ful, ut):
         kk = self.kozos.slug_kk.get(slug)
@@ -258,7 +267,7 @@ class OldalGyar:
         kovetkezo = fl[fl.index(fej) + 1] if fl.index(fej) + 1 < len(fl) else None
         return self._render('fejezet.html', kk=kk, slug=slug, nev=self.kozos.nev[kk], fej=fej, vers=vers, versek=vlista, nezet=nezet,
                             szo=szo_n, szo_html=szo_html, vers_html=vers_html, ful=ful, ut=ut, elozo=elozo, kovetkezo=kovetkezo, cimkek=cimkek,
-                            cim='%s %d' % (self.kozos.nev[kk], fej), szoveg_jegy=blokkok.szoveg_jegy_html(self.kozos, nezet))
+                            szint=szint, cim='%s %d' % (self.kozos.nev[kk], fej), szoveg_jegy=blokkok.szoveg_jegy_html(self.kozos, nezet))
 
     def szamlalok(self, igehelyek, szint=None):
         """A fejléc-számlálók a versek halmazára (a #60 pilot szabálya): héber szó-lapok (a versek héber szavai, nyelvtani nélkül), görög
@@ -291,11 +300,11 @@ class OldalGyar:
 
     def szo_lap(self, strong, nezet, szint, ut):
         s, fej, torzs, alapjel = self.szo_torzs(strong, szint)
-        return self._render('szo.html', strong=s, lemma=fej[0], atiras=fej[1], jelentes=fej[2], alapjel=alapjel, blokkok=torzs, gorog=s[0] == 'G', nezet=nezet, ut=ut,
+        return self._render('szo.html', strong=s, lemma=fej[0], atiras=fej[1], jelentes=fej[2], alapjel=alapjel, blokkok=torzs, gorog=s[0] == 'G', nezet=nezet, ut=ut, szint=szint,
                             cim=s)
 
-    def hiba_lap(self, kod, uzenet, nezet, ut):
-        return self._render('hiba.html', kod=kod, uzenet=uzenet, nezet=nezet, ut=ut, cim='Hiba')
+    def hiba_lap(self, kod, uzenet, nezet, ut, szint=None):
+        return self._render('hiba.html', kod=kod, uzenet=uzenet, nezet=nezet, ut=ut, szint=szint, cim='Hiba')
 
     # -- az állapot (`/statusz`) ---------------------------------------------------------------------------------------
     def statusz(self):

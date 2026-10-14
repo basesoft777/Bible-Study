@@ -1,0 +1,18 @@
+# PRÓBA-konfiguráció a tesztekhez (`teszt_szintek.py`). NEM az éles konfig: a szerver ezt nem tölti be (az éles fájl a `hozzaferes.toml`,
+# ott mindenki `kutato`). Célja: a szintváltó és a blokk–szint zárás vizsgálata a valódi lapokon.
+#
+# A saját fordításból (`adat/forditasok.tsv`: magyar BDB, Thayer, TBESH, TBESG, LSJ, UBS_DNTG) jövő blokkok a magasabb szinten vannak
+# (a DT-F86c javaslata szerint: saját fordítás nem freemium). Ez a #86 freemium/prémium határát NEM dönti el: csak a mechanizmust próbálja.
+szintek = ["nyilvanos", "regisztralt", "kutato"]
+alapertelmezett_szint = "nyilvanos"
+
+[blokk]
+default = "nyilvanos"
+"szo.bdb_magyar" = "kutato"
+"szo.bdb_apparatus" = "kutato"
+"szo.magyar_gorog" = "kutato"
+"szo.thayer" = "kutato"
+"szo.tbesh" = "kutato"
+"szo.tbesg" = "kutato"
+"szo.lsj" = "kutato"
+"szo.ubs_dntg" = "kutato"

@@ -664,7 +664,7 @@ def _torzsek_html(tl):
                     Markup('<li data-jel="%s."><p class="jsz">%s</p>%s</li>') % (s['jel'] or '', s['szoveg'] or '', _helyek(s['ref'])) for s in j['al'])
             elso = j['szoveg'] or (j['al'][0]['szoveg'] if j['al'] else '')
             li += Markup('<li data-jel="%s"><details%s><summary><span class="jt">%s</span>%s</summary><p class="jsz">%s</p>%s</details></li>') % (
-                j['jel'] or '·', Markup(' open') if i == 0 else '', _rovid(elso, 110), _helyek(j['ref']), j['szoveg'] or '', al)
+                j['jel'] or '·', Markup(' open'), _rovid(elso, 110), _helyek(j['ref']), j['szoveg'] or '', al)
         ki += Markup('<div class="torzs">%s<ol class="jel">%s</ol></div>') % (fej, li)
     return ki
 
@@ -701,13 +701,13 @@ def _r_bdb_apparatus(d, K):
             if x['szerep'] != 'elo' and x.get('jel'):
                 cim = '%s. %s' % (x['jel'], cim)
             ny = Markup('<ul class="lista">%s</ul>') % Markup('').join(Markup('<li>%s</li>') % n for n in x['nyelvi']) if x['nyelvi'] else Markup('')
-            reszek += Markup('<details><summary class="megj">%s · <span class="he" lang="he">%s</span> · %s%s</summary>%s%s</details>') % (
+            reszek += Markup('<details open><summary class="megj">%s · <span class="he" lang="he">%s</span> · %s%s</summary>%s%s</details>') % (
                 cim, x['heber'] or '', _rovid(x['alap'] or '—', 80), _helyek(x.get('ref')), ny, _torzsek_html(x['torzsek']))
         ki += resz('Ugyanabban a BDB-sorban további szakaszok (%d) — nem ennek a címszónak a szerkezete' % len(a['szakaszok']), reszek)
     if a.get('nyelvi'):
         ki += resz('Nyelvi háttér (etimológia, rokon nyelvek)', Markup('<ul class="lista">%s</ul>') % Markup('').join(Markup('<li>%s</li>') % n for n in a['nyelvi']))
     if a.get('alaktan'):
-        ki += resz('Alakok (alaktani apparátus)', Markup('<details><summary class="megj">%s</summary><p class="jsz">%s</p></details>') % (_rovid(a['alaktan'], 120), a['alaktan']))
+        ki += resz('Alakok (alaktani apparátus)', Markup('<details open><summary class="megj">%s</summary><p class="jsz">%s</p></details>') % (_rovid(a['alaktan'], 120), a['alaktan']))
     ki += resz('Jelentésszerkezet törzsenként' if any(t['nev'] for t in a['torzsek']) else 'Jelentésszerkezet', _torzsek_html(a['torzsek']))
     if a.get('irodalom') or a.get('krit'):
         ki += resz('Irodalmi és szövegkritikai jelek', Markup('<div class="jelek">%s%s</div>') % (

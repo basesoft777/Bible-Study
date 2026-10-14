@@ -6,6 +6,9 @@ szintek = ["nyilvanos", "regisztralt", "kutato"]
 alapertelmezett_szint = "kutato"
 
 # blokk-id -> a legkisebb szint, amely látja. Ami nincs a listában: a `default` szint.
+# A szintváltó (fejléc, `/szint/<nev>`, F76.34) a próbaüzemhez van: csak a `belso` kiadásban hat, süti jegyzi meg. A hozzáférési szintek
+# tartalmi szétválasztását (mi freemium, mi prémium: #86, DT-F86c) ez a fájl és a váltó NEM dönti el; a tesztek próba-konfigja a
+# `hozzaferes_proba.toml`, ezt az éles szerver nem tölti be.
 # Példa a későbbi tartalmi szétválasztásra (ma nincs kitöltve):
 #   "szo.bdb_magyar" = "regisztralt"
 [blokk]

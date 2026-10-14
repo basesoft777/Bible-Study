@@ -20,6 +20,12 @@
     <a href="/nezet/{{ kod }}?vissza={{ ut|default('/')|urlencode }}"{% if kod == nezet %} class="aktiv" aria-current="true"{% endif %}>{{ nev }}</a>
     {% endfor %}
   </nav>
+  {% if szint_vezerlo %}
+  <nav class="szintvalto" aria-label="Hozzáférési szint (próbaüzem)"><span class="szint-cim">Szint</span>
+    {% for n in szintek %}<a href="/szint/{{ n }}?vissza={{ ut|default('/')|urlencode }}"{% if n == szint_nev %} class="aktiv" aria-current="true"{% endif %}>{{ n }}</a>
+    {% endfor %}
+  </nav>
+  {% endif %}
   <div class="tema" role="group" aria-label="Színséma">
     <button type="button" data-tema="rendszer" aria-pressed="true">Rendszer</button>
     <button type="button" data-tema="light" aria-pressed="false">Világos</button>

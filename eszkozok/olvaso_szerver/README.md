@@ -37,3 +37,9 @@ PARDES_DB=/út/pardes.db python eszkozok/olvaso_szerver/teszt_olvaso_szerver.py
 ```
 
 Kiadás: `PARDES_KIADAS=belso|nyilvanos|kereskedelmi` (vagy `konfig/szerver.toml`). Nyilvános kiadásban a KJV-Strong blokk, kereskedelmiben az MCGED is kimarad; az adatbázis-kapcsolat ezeket a táblákat olvasni sem engedi.
+
+## Hozzáférési szintek és a szintváltó (F76.34)
+
+A szintek és a blokk–szint hozzárendelés a `konfig/hozzaferes.toml`-ban vannak (éles: mindenki `kutato`). A fejléc **szintváltója** (`/szint/<nev>`, funkcionális süti `pardes_szint`, SameSite=Lax, HttpOnly, csak váltáskor jön létre) a próbaüzemhez van, a felhasználó kérésére (2026-10-14); **csak a `belso` kiadásban** jelenik meg és hat. `nyilvanos` és `kereskedelmi` kiadásban sem a vezérlő, sem a süti, sem a `?szint=` paraméter nem emelheti a szintet. A szint része a gyorsítótár-kulcsnak és az ETag-nek.
+
+A `konfig/hozzaferes_proba.toml` a **tesztek** próba-konfigja (a saját fordításból jövő blokkok — magyar BDB, Thayer, TBESH, TBESG, LSJ, UBS_DNTG — a `kutato` szinten, a DT-F86c javaslata szerint); az éles szerver nem tölti be. **Ez a #86 freemium/prémium határát nem dönti el**, csak a mechanizmust próbálja (`teszt_szintek.py`, a két pilot-szakasz valódi lapjain).
