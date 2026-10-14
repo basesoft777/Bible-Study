@@ -218,7 +218,7 @@ A mért szám a pardes.db-n, hideg Windows-gyorsítótárral nem mérendő ponto
 
 ### 4.1 Mit tölt le a `wsl --install -d Ubuntu-24.04 --name pardes --location E:\WSL\pardes`
 
-*Az alábbi méretek **becslések**, nem mértem őket (nem futott letöltés, a repó nem tartalmaz ilyen adatot); a parancs kimenete az M1-ben pontosítja. A parancs előfeltétele a `--name` és `--location` kapcsolókat ismerő WSL: `wsl --version` ellenőrzendő (a kapcsolók újabb, 2.4.x körüli WSL-kiadásban jelentek meg; ez emlékezetből való állítás, nem repó-tény).*
+*Az alábbi méretek **becslések** (a mért értékek: 4.3); nem mértem őket (nem futott letöltés, a repó nem tartalmaz ilyen adatot); a parancs kimenete az M1-ben pontosítja. A parancs előfeltétele a `--name` és `--location` kapcsolókat ismerő WSL: `wsl --version` ellenőrzendő (a kapcsolók újabb, 2.4.x körüli WSL-kiadásban jelentek meg; ez emlékezetből való állítás, nem repó-tény).*
 
 | Mit | Forrás | Becsült méret | Hova kerül |
 |---|---|---|---|
@@ -240,6 +240,42 @@ A meglévő `Ubuntu` disztribúciót a parancs nem érinti (külön név és hel
 8. Az aranyminta-teszt (szótövezés) a 3.12-n; eltérésnél 3.11, az `.python-version` az eredménnyel rögzítődik (2. szakasz (b)).
 9. Az erőforrás-korlátozott indítás kipróbálása: `systemd-run … -p MemoryMax=2G -p AllowedCPUs=0` (6. szakasz 5.), a gunicorn indítása, `GET /statusz`.
 10. Az M1 zárása: napló a tényleges letöltött és lemezen foglalt méretekkel (proveniencia-sorral), a becslések cseréje mért értékre.
+
+### 4.3 M1 zárónapló (2026-10-14; a becslések helyett mért értékek)
+
+`scope=pardes WSL-disztribúció (Ubuntu 24.04.5 LTS, WSL2), E:\WSL\pardes; a 4.2 lépései | forras=a disztribúcióban futtatott parancsok kimenete (wsl -d pardes), D:\pardes_szoto\szoto\meres_harmadik*, a repó a608882b…fd4175b2 állapota | ts=2026-10-14`
+
+| Lépés (4.2) | Eredmény |
+|---|---|
+| 1. első indítás | a felhasználó létrehozta a Linux-felhasználót (`basesoft`, uid 1000); a jelszót nem ismerem, rootként és `basesoft`-ként dolgoztam |
+| 2. systemd | `/etc/wsl.conf` már tartalmazta a `[boot] systemd=true` sort (az új disztribúció alapja); **nem módosítottam**, `.wslconfig`-hoz és a meglévő `Ubuntu`-hoz nem nyúltam; `systemctl is-system-running` = `running` (systemd 255) |
+| 3. cgroup | `cgroup2fs`; `cgroup.controllers` = cpuset cpu io memory hugetlb pids rdma. Az `systemd-run -p MemoryMax=2G -p AllowedCPUs=0` próba: `Cpus_allowed_list: 0`, `memory.max` = 2147483648, `cpuset.cpus` = 0, `nproc` = 1 (a disztribúció 8 CPU-t és 7 905 MB RAM-ot lát) |
+| 4. apt | `git` és `ca-certificates` már megvolt; telepítve: `sqlite3` 3.45.1, `caddy` 2.6.2 (+ libnss3, libnspr4; 4 csomag frissült); **letöltés 14,5 MB, lemezfoglalás +46,1 MB**; a `caddy` szolgáltatás **letiltva és leállítva** (a konfiguráció M2) |
+| 5. uv, Python | `uv` 0.13.1 a hivatalos telepítővel (a telepítő szkript 71 300 bájt; a bináris a `~/.local/bin` alatt 37 MB, `du -sb ~/.local` = 38,2 MB); Python **3.12.3** a rendszer csomagjából (`UV_PYTHON_DOWNLOADS=never`, interpreter-letöltés nem történt) |
+| 6. klón, uv sync | `git clone --depth 1 --filter=blob:none --sparse --branch claude/olvasoi-konkordancia`, `sparse-checkout set eszkozok adat/szoto naplok`: munkamásolat 63 MB, `.git` 18 MB (a 389 MB-os `konkordancia/` **nem** töltődött le); `uv lock` + `uv sync --all-groups`: flask 3.1.3, gunicorn 26.2.0, simplemma 2.0.0 (dev, 18,1 MiB letöltés); `.venv` 25 MB; a `uv.lock` a repóban (F76.5) |
+| 7. pardes.db | a fő munkamásolat `pardes.db`-je (938 287 104 bájt) a disztribúció ext4 lemezére (`~/pardes/pardes.db`), a másolás 15,1 s; **sha256 egyezik** (589e0422ef0731f4…) a forrással; **frissességi teszt** (`eszkozok/olvaso_szerver/frissesseg.py`, manifest: `manifest_pardes_db.tsv`, 73 tábla): 73 tábla újraszámolt hash-e = `meta`, a `meta` = manifest, **EREDMÉNY: FRISS ÉS ÉP**, 33 s (`epites_ts=2026-10-13T18:10:45Z`) |
+| 8. szótövező aranyminta-teszt | Python **3.12.3** alatt a hibrid v2 a harmadik mintán (113 alak): **ossz 80% / 99,1% súlyozva (90/113)**, minden réteg és minden sor **azonos** a Windowson (3.14, simplemma 2.0.0) rögzített eredménnyel; a `meres_harmadik_reszlet.tsv` bájtra azonos (`cmp`); a bemenetek sha256-ja egyezik (hibrid.py `7ee1b6050740`, minta `c805d55133f4`, `karoli_lexikon.tsv` `75ad61617a88`). A kiadott út (C+K, simplemma nélkül): `szotari_alak_epit.py` 3.12-n újragenerálva: 66 824 sor, a törzs sha256-ja (a `#` fejlécsorok nélkül) **azonos** a repó `adat/szoto/karoli_szotari_alak.tsv`-jével (2313dcf488811696…). **Nincs eltérés, nincs visszalépés 3.11-re: az `.python-version` = 3.12 véglegesedik.** |
+| 9. korlátozott indítás | `systemd-run --unit=pardes-proba -p User=basesoft -p MemoryMax=2G -p AllowedCPUs=0` + gunicorn (`gthread`, 1 worker, 4 szál) egy próba-Flask-alkalmazással (nem része a repónak): `GET /statusz` → HTTP 200, 6,1 ms, `cpus: 1`, `epites_ts` és a `meta` 73 hash-sora olvasható; a szolgáltatást leállítottam |
+| 10. zárónapló | ez a szakasz |
+
+**Mért méretek** (a 4.1 táblázat becsléseinek cseréje):
+
+| Mit | Becslés | Mért |
+|---|---|---|
+| a rootfs letöltése | ≈ 300–450 MB | **nem mérhető utólag** (a letöltést a felhasználó indította; a WSL nem naplózza). A kicsomagolt, telepítés utáni `ext4.vhdx`: **1 455 423 488 bájt (1,36 GiB)** |
+| `ext4.vhdx` most | 1,5–2,5 GB kezdetben | **2 931 818 496 bájt (2,73 GiB)** az M1 végén (+1,48 GB: pardes.db 0,94 GB, klón 0,08 GB, `uv`, `.venv`, csomagok, apt-gyorsítótár 131 MB) |
+| apt | ≈ 100–250 MB | **14,5 MB letöltés**, +46,1 MB lemez |
+| uv | ≈ 20–40 MB | **37 MB** a telepített bináris |
+| Python-csomagok | < 50 MB | `.venv` **25 MB** (ebből a simplemma 18,1 MiB letöltés) |
+| klón | — | 63 MB munkamásolat + 18 MB `.git` (ritka, blob-szűrt) |
+| a disztribúció szabad helye | — | `/` 1,0 TB látszólagos, 954 GB szabad a gazda E: lemezén (E: szabad: 637,5 GB a végén); C: szabad 16,5 GB a végén (az M0 mérésekor 1,9 GB; C:-re a disztribúció nem ír) |
+
+**Ismert tudnivalók / nyitott pontok:**
+- A `systemd=true` az új disztribúció alapja volt; ha a `wsl.conf` a jövőben változik, az érinti az erőforrás-korlát módszerét (DT-F76c/5).
+- A rootfs letöltési méretét nem tudtam utólag megállapítani; ha a felhasználó adata kell, a Windows `wsl --install` kimenetéből olvasható.
+- A klón ritka (sparse): a `konkordancia/` és `adat/` többi része nincs a disztribúcióban; az M2 szerver a `pardes.db`-t használja, a TSV-k frissességét a Windows oldali `db_meres.py` D5 igazolja (3.8).
+- A `~/probe/app.py` (próba) és a `~/szoto_arany/` (aranyminta-másolatok) a disztribúcióban maradt, a repón kívül; törölhetők.
+- A Windows-oldali `pardes.db` és a distroban lévő példány azonos (sha256); a szerver M2-től a distro példányát használja.
 
 ## 5. Keretrendszer: Flask vagy FastAPI (indoklással)
 
@@ -303,4 +339,4 @@ Motívumréteg (#25b), új adat, modernizált Károli (DT128), belépés/fizeté
 
 ## 10. Állapot
 
-**M0 jóváhagyva (felhasználó, chat, 2026-10-14); DT-F76c eldöntve.** Következő: **⛔ M1** — a `pardes` WSL-disztribúció letöltésének és telepítésének jóváhagyása (név, forrás, becsült méret a 4.1 táblában), a létrehozás és a jelszó a felhasználóé; utána az M2.
+**M0 jóváhagyva (felhasználó, chat, 2026-10-14); DT-F76c eldöntve. M1 lefutott a `pardes` disztribúcióban (4.3 zárónapló): a környezet kész, az aranyminta-teszt eltérés nélkül lefutott a 3.12-n, a frissességi teszt zöld.** Következő: M2 (az alkalmazás), a brief szerint.

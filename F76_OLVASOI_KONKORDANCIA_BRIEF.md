@@ -9,7 +9,7 @@ munka: adat
 allapot: megallt
 ag: claude/olvasoi-konkordancia
 ad: kutatói olvasói felület helyben (WSL): bibliaszöveg-kezdőlap könyv–fejezet–vers választóval, három váltható nézet (Olvasópult, Interlineáris, Munkaasztal), a #60 pilot teljes blokk-készlete a pardes.db-ből szerveroldali lapelőállítással, keresés (Strong, magyar szó és frázis, héber frázis), hozzáférési szintek konfigurációból, kiadási kapcsoló, telepítő szkript; mérés a VPS-t utánzó korlátokkal
-kovetkezo: "Te: M1 — a pardes WSL-disztribúció letöltésének és telepítésének jóváhagyása (név, forrás, méret megadva az M1 tervben); utána ⛔ M5, ⛔ M6, ⛔ M7"
+kovetkezo: "/kovetkezo; M1 kész (naplok/OLVASOI_KONKORDANCIA_M0.md 4.3); következő: M2 (alkalmazás); ⛔ M5, ⛔ M6, ⛔ M7"
 olvas: [ADATVAGYON_TERV.md, MUNKATERV.md, adat/szotar_szerepek.tsv, adat/SEMA.md, adat/licencek.tsv, "eszkozok/olvaso_pilot/*", eszkozok/sqlite_epit.py, naplok/OLVASOI_PILOT_ertekeles.md, naplok/SQLITE_EPIT_meres.md, DONTESEK.md]
 ir: [eszkozok/olvaso_szerver/, naplok/OLVASOI_KONKORDANCIA_M0.md, naplok/OLVASOI_KONKORDANCIA_meres.md, naplok/OLVASOI_KONKORDANCIA_zaras.md]
 fugg: [44, 79, 92, 95]
