@@ -24,3 +24,4 @@
 - **Eltérések:** BDB-szócikk gépi apparátus-bontása nem átírva; a fordított proxy (Caddy/nginx) nincs kiválasztva (az M2-höz nem kell, M5/M6 előtt dönteni); a kereső (M3) nincs, a fejléc csak gyorsugrást ad.
 - **Nem történt meg:** M3 (keresés), M4 (mérés korláttal), merge, PR, M5–M7.
 - **Következő:** M3 (keresés), külön `/kovetkezo`-val, ugyanezen az ágon; ⛔ M5, ⛔ M6, ⛔ M7.
+- **Ellenőri javítás (F76.14–F76.19):** a 7 tételből 6 javítva (tesztek: 60 zöld); a D2-eltérés döntése DT-F76d-ben vár, ezért az M2 „kész” állítása függőben. N-F76d: BDB-bontás, Caddy/nginx.

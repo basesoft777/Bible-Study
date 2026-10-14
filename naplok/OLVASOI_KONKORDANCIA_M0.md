@@ -307,6 +307,8 @@ A meglévő `Ubuntu` disztribúciót a parancs nem érinti (külön név és hel
 
 **Informatív időmérés (nem M4; 8 CPU-s WSL, korlát nélkül, egyszeri):** vers-lap `1Móz 1:4` 148 ms (gunicorn, hideg lap), 1 ms (gyorsítótárból); szó-lap `H0430` 80 ms hideg; nyolc párhuzamos kérés 0,4 s alatt. A K5 mérése az M4-é (`systemd-run` korláttal; az `indit-korlat` próbája: `Cpus_allowed_list: 0`, `/statusz` 200).
 
+**Ellenőri javítások (F76.15–F76.19, `naplok/ELLENOR_F76_M2.md`):** a D2-teszt az `ok` mezőt is őrzi (csak a „+” Strong-lánc eredetű `usz_elofordulas` engedett, minden más bukik); jelleg-összevetési teszt a pilot `sablon.html` SUGO-listájával (a pilot a mérvadó: `vers.versszamozas`, `vers.lxx_versszam`, `szo.usz` forrásadat; `vers.bsb`, `vers.kjv`, `vers.nave`, `vers.tipnr`, `szo.tbesh` forrásadat + gépi feldolgozás, a blokk több jelleg-címkét kap); a szövegoszlop (aláhúzás, szópárok) modell-kimenet jelleg-címkét és forrássort kap mindhárom nézetben; `telepit.sh indit` megköveteli az `ellenorzes` sikerét, `.venv` és `frissesseg_eredmeny.txt` `.gitignore`-ban; ismeretlen blokk-azonosító a `hozzaferes.toml`-ban indulási hiba; DT-F76d (D2) és N-F76d (BDB-bontás, Caddy/nginx) felvéve. Tesztek: 60, zöld (3.12.3).
+
 ## 5. Keretrendszer: Flask vagy FastAPI (indoklással)
 
 | Szempont | Flask | FastAPI |
