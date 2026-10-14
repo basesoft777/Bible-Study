@@ -97,8 +97,10 @@ class OldalGyar:
         self.jinja = Environment(loader=FileSystemLoader(sablon_dir), autoescape=select_autoescape(['html']),
                                  trim_blocks=True, lstrip_blocks=True)
         # a regisztert egyszer ellenőrzi: minden tábla licencsora megvan (hiány indulási hiba)
-        for b in blokkok.REGISZTER:
+        for b in blokkok.REGISZTER + [blokkok.SZOVEG_FORRAS, blokkok.SZOVEG_PAR]:
             blokkok.forras_sor(b, self.kozos)
+        # elgépelt blokk-azonosító a hozzáférési konfigban indulási hiba (ne maradjon csendben nyitva)
+        self.hozz.ellenoriz_blokkok(blokkok.BLOKK_ID)
 
     # -- belső ---------------------------------------------------------------------------------------------------------
     def _blokkok(self, oldal, K, szint):
@@ -209,7 +211,7 @@ class OldalGyar:
         kovetkezo = fl[fl.index(fej) + 1] if fl.index(fej) + 1 < len(fl) else None
         return self._render('fejezet.html', kk=kk, slug=slug, nev=self.kozos.nev[kk], fej=fej, vers=vers, versek=vlista, nezet=nezet,
                             szo=szo_n, szo_html=szo_html, vers_html=vers_html, ful=ful, ut=ut, elozo=elozo, kovetkezo=kovetkezo,
-                            cim='%s %d' % (self.kozos.nev[kk], fej))
+                            cim='%s %d' % (self.kozos.nev[kk], fej), szoveg_jegy=blokkok.szoveg_jegy_html(self.kozos, nezet))
 
     def szo_lap(self, strong, nezet, szint, ut):
         s, fej, torzs = self.szo_torzs(strong, szint)

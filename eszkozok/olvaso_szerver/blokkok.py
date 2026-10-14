@@ -34,11 +34,15 @@ class Blokk:
     id: str
     oldal: str
     cim: str
-    jelleg: str
+    jelleg: object          # str vagy tuple: a pilot SUGO-listája szerinti jellegek (egy blokk több jellegű is lehet)
     tablak: tuple
     fetch: Callable
     render: Callable
     jelleg_megj: str = ''
+
+    def __post_init__(self):
+        j = (self.jelleg,) if isinstance(self.jelleg, str) else tuple(self.jelleg)
+        object.__setattr__(self, 'jelleg', j)
 
     def kiadas_kizart(self, kiadas):
         ki = adatbazis.kizart_tablak(kiadas)
@@ -548,12 +552,12 @@ REGISZTER = [
     B('vers.macula_morf', 'vers', 'Igealak-kód és szófaj (Macula)', 'forras', ('token_macula',), _f_macula, _r_macula_morf),
     B('vers.macula_gorog', 'vers', 'Héber–görög párosítás szavanként (Macula)', 'forras', ('token_macula',), _f_macula, _r_macula_gorog),
     B('vers.lxx_szavak', 'vers', 'Görög szóalak és LXX-vers szavai (LXX_OS)', 'forras', ('lxx_token',), _f_lxx_szavak, _r_lxx_szavak),
-    B('vers.lxx_versszam', 'vers', 'LXX-versszám', 'gepi', ('lxx_versszam',), _f_lxx_versszam, _r_lxx_versszam),
-    B('vers.versszamozas', 'vers', 'Versszámozás (MT / KJV)', 'gepi', ('vers_szamozas',), _f_versszamozas, _r_versszamozas),
-    B('vers.bsb', 'vers', 'Angol szavak szavanként (BSB)', 'forras', ('bsb',), _f_bsb, _r_angol),
-    B('vers.kjv', 'vers', 'Angol szavak szavanként (KJV + Strong)', 'forras', ('kjv',), _f_kjv, _r_angol, 'a Strong-címkék GPL-eredetűek: nyilvános kiadásból kimarad'),
-    B('vers.nave', 'vers', 'Témák (Nave, versekre bontva)', 'gepi', ('nave_vers',), _f_nave, _r_nave),
-    B('vers.tipnr', 'vers', 'Tulajdonnevek (TIPNR)', 'gepi', ('tipnr',), _f_tipnr, _r_tipnr),
+    B('vers.lxx_versszam', 'vers', 'LXX-versszám', 'forras', ('lxx_versszam',), _f_lxx_versszam, _r_lxx_versszam),
+    B('vers.versszamozas', 'vers', 'Versszámozás (MT / KJV)', 'forras', ('vers_szamozas',), _f_versszamozas, _r_versszamozas),
+    B('vers.bsb', 'vers', 'Angol szavak szavanként (BSB)', ('forras', 'gepi'), ('bsb',), _f_bsb, _r_angol),
+    B('vers.kjv', 'vers', 'Angol szavak szavanként (KJV + Strong)', ('forras', 'gepi'), ('kjv',), _f_kjv, _r_angol, 'a Strong-címkék GPL-eredetűek: nyilvános kiadásból kimarad'),
+    B('vers.nave', 'vers', 'Témák (Nave, versekre bontva)', ('forras', 'gepi'), ('nave_vers',), _f_nave, _r_nave),
+    B('vers.tipnr', 'vers', 'Tulajdonnevek (TIPNR)', ('forras', 'gepi'), ('tipnr',), _f_tipnr, _r_tipnr),
     B('vers.morf_hu', 'vers', 'Az igealak magyar feloldása', 'gepi', ('morf_kulcs_heber', 'token_macula', 'morf_nyelv_aramai'), _f_morf_hu, _r_morf_hu),
     B('vers.adatreteg', 'vers', 'LXX-döntés, kapcsolat, motívum (adatréteg)', 'forras', ('lxx_dontesek', 'kapcsolatok', 'elofordulasok', 'motivumok'), _f_adatreteg, _r_adatreteg, 'soronként saját proveniencia-mező'),
     B('vers.tsk', 'vers', 'Kereszthivatkozások (TSK)', 'forras', ('tsk',), _f_tsk, _r_tsk),
@@ -569,14 +573,14 @@ REGISZTER = [
     B('szo.sdbh', 'szo_h', 'Szemantikai domén (SDBH)', 'forras', ('sdbh_domenek',), _f_sdbh, _r_sdbh, 'üres eredmény nem negatív lelet'),
     B('szo.sece_h', 'szo_h', 'SECE-szócikk (héber)', 'forras', ('sece_h',), _f_sece_h, _r_szoveg),
     B('szo.oshl', 'szo_h', 'OSHL: TWOT- és BDB-azonosító, BDB-helyek', 'forras', ('oshl_lexikalis_index', 'oshl_bdb_igehelyek'), _f_oshl, _r_oshl),
-    B('szo.tbesh', 'szo_h', 'Bővített Strong-szócikk (TBESH)', 'forras', ('tbesh',), _f_tbesh, _r_tbesh),
+    B('szo.tbesh', 'szo_h', 'Bővített Strong-szócikk (TBESH)', ('forras', 'gepi'), ('tbesh',), _f_tbesh, _r_tbesh),
     B('szo.tw_h', 'szo_h', 'translationWords', 'forras', ('tw_szocikkek',), _f_tw, _r_tw),
     B('szo.nyelvtani', 'szo_h', 'Nyelvtani Strong-számok szűrése', 'gepi', ('grammatikai_strongok',), _f_nyelvtani, _r_nyelvtani),
     # görög szó-lap
     B('szo.tbesg', 'szo_g', 'TBESG', 'forras', ('tbesg',), _f_tbesg, _r_tbesg),
     B('szo.thayer', 'szo_g', 'Thayer (angol)', 'forras', ('thayer',), _f_thayer, _r_szoveg),
     B('szo.magyar_gorog', 'szo_g', 'Magyar jelentés (Thayer, UBS DNTG)', 'modell', ('forditasok',), _f_magyar_gorog, _r_magyar_gorog),
-    B('szo.usz', 'szo_g', 'ÚSZ-előfordulás és versek', 'gepi', ('token_strong', 'vers'), _f_usz, _r_usz),
+    B('szo.usz', 'szo_g', 'ÚSZ-előfordulás és versek', 'forras', ('token_strong', 'vers'), _f_usz, _r_usz),
     B('szo.heber_hatter', 'szo_g', 'Héber háttér (lxx_bridge)', 'forras', ('lxx_bridge',), _f_heber_hatter, _r_heber_hatter),
     B('szo.sdgnt', 'szo_g', 'Szemantikai domén (SDGNT)', 'forras', ('sdgnt_domenek',), _f_sdgnt, _r_sdbh, 'üres eredmény nem negatív lelet'),
     B('szo.sece_g', 'szo_g', 'SECE-szócikk (görög)', 'forras', ('sece_g',), _f_sece_g, _r_szoveg),
@@ -622,11 +626,17 @@ def forras_sor(b, kozos):
     return 'Forrás és licenc: ' + ' · '.join(reszek)
 
 
+def jelleg_cimkek(jellegek):
+    """A jelleg-címkék HTML-je (egy vagy több)."""
+    for j in jellegek:
+        if j not in JELLEG:
+            raise BlokkHiba('ismeretlen jelleg: %s' % j)
+    return Markup(' ').join(Markup('<span class="jelleg %s" title="%s">%s</span>') % (JELLEG[j][1], JELLEG[j][2], JELLEG[j][0]) for j in jellegek)
+
+
 def blokk_html(b, K):
     """A blokk teljes HTML-je. Hibát dob, ha a jelleg- vagy a forrássor hiányozna."""
-    if b.jelleg not in JELLEG:
-        raise BlokkHiba('ismeretlen jelleg: %s (%s)' % (b.jelleg, b.id))
-    nev, osz, _ = JELLEG[b.jelleg]
+    cimkek = jelleg_cimkek(b.jelleg)
     forras = forras_sor(b, K.kozos)
     adat = b.fetch(K)
     torzs = None
@@ -634,10 +644,28 @@ def blokk_html(b, K):
         torzs = b.render(adat, K)
     if not torzs:
         torzs = _ures()
+    megj = Markup('<span class="megj">%s</span>') % b.jelleg_megj if b.jelleg_megj else Markup('')
     html = Markup(
-        '<section class="blokk" id="b-%s" data-blokk="%s"><h3>%s <span class="jelleg %s" title="%s">%s</span></h3>%s'
-        '<p class="forras">%s</p></section>') % (
-            b.id.replace('.', '-'), b.id, b.cim, osz, JELLEG[b.jelleg][2] + (' · ' + b.jelleg_megj if b.jelleg_megj else ''), nev, torzs, forras)
-    if 'class="jelleg' not in html or 'class="forras"' not in html:
+        '<section class="blokk" id="b-%s" data-blokk="%s"><h3>%s %s %s</h3>%s<p class="forras">%s</p></section>') % (
+            b.id.replace('.', '-'), b.id, b.cim, cimkek, megj, torzs, forras)
+    if 'class="jelleg ' not in html or 'class="forras"' not in html:
         raise BlokkHiba('hiányzó jelleg-címke vagy forrássor: %s' % b.id)
     return html
+
+
+# a szövegoszlop jelölése (Olvasópult, Interlineáris, Munkaasztal): a Károli-szöveg forrásadat, az aláhúzás és a
+# szópárok a `token_par` modell-kimenete; a párosítatlan eredeti szavak a `token_karoli`-ból jönnek
+SZOVEG_FORRAS = B('szoveg.karoli', 'vers', 'szövegoszlop', 'forras', ('vers',), None, None)
+SZOVEG_PAR = B('szoveg.par', 'vers', 'szövegoszlop', 'modell', ('token_par', 'token_karoli'), None, None)
+
+
+def szoveg_jegy_html(kozos, nezet):
+    """Jelleg-címke és forrássor a szövegoszlop fölé; hibát dob, ha a licencsor hiányzik."""
+    if nezet == 'interlinearis':
+        par = 'A szavak alatti szópárok és a párosítatlan eredeti szavak sora:'
+    else:
+        par = 'A szavak pontozott aláhúzása (a kattintható szó):'
+    return Markup(
+        '<div class="szoveg-jegy"><p><b>Károli-szöveg</b> %s<br><span class="forras">%s</span></p>'
+        '<p><b>%s</b> Károli–Strong párosítás %s<br><span class="forras">%s</span></p></div>') % (
+            jelleg_cimkek(SZOVEG_FORRAS.jelleg), forras_sor(SZOVEG_FORRAS, kozos), par, jelleg_cimkek(SZOVEG_PAR.jelleg), forras_sor(SZOVEG_PAR, kozos))

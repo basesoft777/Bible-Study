@@ -71,6 +71,20 @@ class TestHozzaferesKonfig(unittest.TestCase):
         self.assertFalse(h.lathato('nincs_a_regiszterben', 1, ismert=False))
         self.assertTrue(h.lathato('nincs_a_regiszterben', 2, ismert=False))
 
+    def test_ismeretlen_blokk_azonosito_a_konfigban_indulasi_hiba(self):
+        h = hozzaferes.Hozzaferes(['a', 'b'], 'a', {'vers.tsk': 'b', 'vers.tsl_elgepelve': 'b'}, 'a')
+        with self.assertRaises(ValueError) as e:
+            h.ellenoriz_blokkok(blokkok.BLOKK_ID)
+        self.assertIn('vers.tsl_elgepelve', str(e.exception))
+        hozzaferes.Hozzaferes(['a', 'b'], 'a', {'vers.tsk': 'b'}, 'a').ellenoriz_blokkok(blokkok.BLOKK_ID)   # érvényes: nem dob
+        hozzaferes.Hozzaferes.betolt(KONFIG).ellenoriz_blokkok(blokkok.BLOKK_ID)                              # az alap konfig érvényes
+
+    @unittest.skipUnless(VAN_DB, 'nincs pardes.db')
+    def test_oldalgyar_nem_indul_elgepelt_konfiggal(self):
+        h = hozzaferes.Hozzaferes(['a', 'b'], 'a', {'vers.nincs_ilyen': 'b'}, 'a')
+        with self.assertRaises(ValueError):
+            oldalak.OldalGyar(adatbazis.Adatbazis(DB, 'belso'), h)
+
     def test_hibas_konfig_megallit(self):
         with self.assertRaises(ValueError):
             hozzaferes.Hozzaferes(['a', 'b'], 'z', {}, 'a')            # ismeretlen alapértelmezett szint
@@ -154,11 +168,60 @@ class TestRegiszterEsAdatbazis(unittest.TestCase):
 
     def test_minden_tablanak_van_licencsora(self):
         for b in blokkok.REGISZTER:
-            self.assertIn(b.jelleg, blokkok.JELLEG)
+            for j in b.jelleg:
+                self.assertIn(j, blokkok.JELLEG)
             sor = blokkok.forras_sor(b, self.kozos)            # hiány BlokkHiba
             self.assertTrue(sor.startswith('Forrás és licenc: '), b.id)
             for t in b.tablak:
                 self.assertTrue(self.con.execute("SELECT 1 FROM sqlite_master WHERE name=?", (t,)).fetchone(), '%s: nincs %s tábla' % (b.id, t))
+
+    # a blokk -> a pilot `sablon.html` SUGO-listájának címe; pontos=True: a blokknak saját pilot-címe van (a jellegek halmaza egyezik),
+    # False: a pilot-cím több regiszter-blokkot fed (a blokk jellegei a pilot jellegeinek részhalmaza)
+    PILOT_CIM = {
+        'vers.karoli': ('Károli-szöveg', False), 'vers.par': ('Károli-szöveg', False), 'vers.eredeti': ('Héber szöveg', False),
+        'vers.macula_morf': ('Ebben a versben', False), 'vers.macula_gorog': ('Ebben a versben', False), 'vers.lxx_szavak': ('Septuaginta', True),
+        'vers.lxx_versszam': ('Versszámozás', False), 'vers.versszamozas': ('Versszámozás', True),
+        'vers.bsb': ('Angol szó szavanként (BSB)', True), 'vers.kjv': ('Angol szó szavanként (KJV)', True), 'vers.nave': ('Témák (Nave)', True),
+        'vers.tipnr': ('Tulajdonnevek (TIPNR)', True), 'vers.morf_hu': ('Héber szöveg', False), 'vers.adatreteg': ('Motívumadat (adatréteg)', False),
+        'vers.tsk': ('Kereszthivatkozások (TSK', True), 'vers.kh': ('Károli-kereszthivatkozások', True), 'vers.ubs': ('Ebben a versben', False),
+        'szo.szotar': ('Szó adatai (héber)', False), 'szo.elofordulas': ('Szó adatai (héber)', False), 'szo.karoli_alakok': ('Szó adatai (héber)', False),
+        'szo.bdb_angol': ('BDB-szócikk', False), 'szo.bdb_magyar': ('BDB-szócikk', False), 'szo.lxx_bridge': ('Görög megfelelő', True),
+        'szo.sdbh': ('Szemantikai domén (SDBH)', True), 'szo.sece_h': ('SECE-szócikk (héber)', True), 'szo.oshl': ('TWOT- és BDB-azonosító', True),
+        'szo.tbesh': ('Bővített Strong-szócikk', True), 'szo.tw_h': ('translationWords', True), 'szo.nyelvtani': ('Szó adatai (héber)', False),
+        'szo.tbesg': ('Szó adatai (görög)', False), 'szo.thayer': ('Szótári szöveg (angol)', False), 'szo.usz': ('Az Újszövetségben', True),
+        'szo.heber_hatter': ('Héber háttér', True), 'szo.sdgnt': ('Szemantikai domén (SDGNT)', True), 'szo.sece_g': ('SECE-szócikk (görög)', True),
+        'szo.lsj': ('LSJ-szócikk', True), 'szo.mcged': ('Mounce-szótár', True), 'szo.ubs_dntg': ('UBS DNTG jelentések', True), 'szo.tw_g': ('translationWords', True),
+        # a magyar Thayer/UBS DNTG jelentésnek nincs önálló SUGO-címe: a pilot README „Jelleg” táblája szerint modell-kimenet (#28)
+    }
+
+    @staticmethod
+    def _pilot_jellegek():
+        """A pilot sablon SUGO-listájából: {cím: set(jellegek)} (a sablon a mérvadó)."""
+        with open(GY + 'eszkozok/olvaso_pilot/sablon.html', encoding='utf-8') as f:
+            t = f.read()
+        ki = {}
+        for sor in t.split('\n'):
+            m = re.match(r"^\s*\['([^']+)', \[.*\], \[((?:'[a-z]+'(?:, )?)+)\]\],?\s*$", sor)
+            if m:
+                ki[m.group(1)] = set(re.findall(r"'([a-z]+)'", m.group(2)))
+        return ki
+
+    def test_jelleg_egyezik_a_pilottal(self):
+        """M0 3.4: a regiszter jellegei a pilot sablonjáéval egyeznek; eltérésnél a pilot a mérvadó."""
+        pilot = self._pilot_jellegek()
+        self.assertGreater(len(pilot), 30)
+        for b in blokkok.REGISZTER:
+            if b.id == 'szo.magyar_gorog':
+                self.assertEqual(b.jelleg, ('modell',))
+                continue
+            cim, pontos = self.PILOT_CIM[b.id]
+            self.assertIn(cim, pilot, '%s: nincs ilyen pilot-cím: %s' % (b.id, cim))
+            mine, theirs = set(b.jelleg), pilot[cim]
+            if pontos:
+                self.assertEqual(mine, theirs, '%s ↔ %s' % (b.id, cim))
+            else:
+                self.assertTrue(mine <= theirs, '%s ↔ %s: %s ⊄ %s' % (b.id, cim, mine, theirs))
+        self.assertEqual(set(self.PILOT_CIM) | {'szo.magyar_gorog'}, set(blokkok.BLOKK_ID))
 
     def test_licenc_jelzesek(self):
         b = blokkok.BLOKK_ID['szo.mcged']
@@ -243,15 +306,25 @@ class TestLapok(unittest.TestCase):
         h = self.get('/r/vers/1Moz/1/4').get_data(as_text=True)
         ids = re.findall(r'data-blokk="([^"]+)"', h)
         self.assertEqual(ids, [b.id for b in blokkok.blokkok_oldalra('vers')])
-        self.assertEqual(len(re.findall(r'class="jelleg jelleg-(?:forras|gepi|modell)"', h)), len(ids))
+        self.assertEqual(len(re.findall(r'<h3>[^<]*<span class="jelleg jelleg-', h)), len(ids))      # blokkonként legalább egy címke
         self.assertEqual(len(re.findall(r'<p class="forras">Forrás és licenc: ', h)), len(ids))
+
+    def test_szovegoszlop_jelleg_es_forras_mindharom_nezetben(self):
+        for n in oldalak.NEZETEK:
+            h = self.get('/1Moz/1/4?nezet=' + n).get_data(as_text=True)
+            i = h.index('class="szoveg-jegy"')
+            jegy = h[i:i + 2500]
+            self.assertIn('jelleg-modell', jegy, n)
+            self.assertIn('jelleg-forras', jegy, n)
+            self.assertIn('Karoli_Strong_parok (token_par)', jegy, n)
+            self.assertIn('Karoli_1908 (vers)', jegy, n)
 
     def test_minden_szo_blokk_jelleggel_es_forrassal(self):
         for strong, oldal in (('H0216', 'szo_h'), ('G0746', 'szo_g'), ('H9001', 'szo_h')):
             h = self.get('/r/szo/' + strong).get_data(as_text=True)
             ids = re.findall(r'data-blokk="([^"]+)"', h)
             self.assertEqual(ids, [b.id for b in blokkok.blokkok_oldalra(oldal)], strong)
-            self.assertEqual(len(re.findall(r'class="jelleg jelleg-', h)), len(ids))
+            self.assertEqual(len(re.findall(r'<h3>[^<]*<span class="jelleg jelleg-', h)), len(ids))
             self.assertEqual(len(re.findall(r'<p class="forras">Forrás és licenc: ', h)), len(ids))
 
     def test_szo_lap_allando_cim(self):
@@ -626,6 +699,10 @@ class TestD2PilotEgyezes(unittest.TestCase):
                 a[0] += 1
                 if not eg:
                     a[1] += 1
+                    # az egyetlen engedett eltérés: usz_elofordulas, dokumentált „+” Strong-lánc okkal (DT133); minden más bukik
+                    self.assertEqual(k, 'gorog_szo:usz_elofordulas', 'váratlan eltérés: %s (%s)' % (k, ok))
+                    self.assertIn('a pilot TSV-útja a „+” Strong-láncok elemeit nem számolja', ok, 'az eltérésnek nincs/más az oka: %s %r' % (k, ok))
+                    self.assertIn('DB-szám = TSV-szám + láncelem', ok)
 
         for v in adat['versek']:
             sz = self.szerver_vers(v['igehely'])

@@ -57,6 +57,7 @@
 {% if nezet == 'olvaso' %}
 <div class="oszlopok olvaso">
   <section class="szoveg-oszlop" aria-label="Károli-szöveg">
+    {{ szoveg_jegy }}
     {% for v in versek %}{{ vers_szoveg(v) }}{% endfor %}
   </section>
   <aside class="jobb-oszlop">{{ panelek(szo_html, vers_html, ful, false) }}</aside>
@@ -64,6 +65,7 @@
 {% elif nezet == 'interlinearis' %}
 <div class="oszlopok interlinearis">
   <section class="szoveg-oszlop" aria-label="Interlineáris szöveg">
+    {{ szoveg_jegy }}
     {% for v in versek %}{{ interlinearis(v) }}{% endfor %}
   </section>
   <aside class="jobb-oszlop">{{ panelek(szo_html, none, 'szo', true) }}
@@ -76,6 +78,7 @@
     {% for v in versek %}<a href="/{{ slug }}/{{ fej }}/{{ v.vers }}{% if szo %}?szo={{ szo }}{% endif %}#v{{ v.vers }}"{% if vers == v.vers %} class="aktiv"{% endif %}><b>{{ v.vers }}</b> {{ v.szoveg[:28] }}…</a>{% endfor %}
   </nav>
   <section class="szoveg-oszlop" aria-label="Károli-szöveg">
+    {{ szoveg_jegy }}
     {% for v in versek %}{{ vers_szoveg(v) }}{% endfor %}
   </section>
   <aside class="jobb-oszlop ketto">{{ panelek(szo_html, vers_html, ful, true) }}</aside>

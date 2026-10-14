@@ -36,6 +36,12 @@ class Hozzaferes:
         default = b.pop('default', c['szintek'][0])
         return cls(c['szintek'], c['alapertelmezett_szint'], b, default)
 
+    def ellenoriz_blokkok(self, ismert_idk):
+        """A konfigban szereplő minden blokk-azonosítónak a regiszterben kell lennie; különben ValueError (indulási hiba)."""
+        ismeretlen = sorted(set(self.blokk_szint) - set(ismert_idk))
+        if ismeretlen:
+            raise ValueError('hozzaferes.toml: ismeretlen blokk-azonosító(k): %s' % ', '.join(ismeretlen))
+
     def szint(self, kerés=None):
         """A kérés szintje (rang). Belépés nincs: az alapértelmezett szint; később a bejelentkezés cseréli le."""
         return self.rang[self.alap_szint]

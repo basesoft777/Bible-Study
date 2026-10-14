@@ -70,3 +70,5 @@ table.adat th { color: var(--muted); font-weight: 600; }
 .lista { margin: 4px 0; padding-left: 18px; }
 .karoli-szoveg { font: 18px/1.6 var(--font-text); margin: 0; }
 .szocim .heb, .szocim .gor { font-size: 1.3em; }
+.szoveg-jegy { font: 13px/1.4 var(--font-ui); color: var(--muted); margin: 0 0 12px; padding: 6px 8px; border: 1px solid var(--rule); border-radius: 6px; }
+.szoveg-jegy p { margin: 0 0 4px; }
