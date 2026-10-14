@@ -9,6 +9,7 @@ Fejlesztés:           python alkalmazas.py --port 8765
 """
 import json
 import os
+import re
 import sys
 import tomllib
 from urllib.parse import urlencode
@@ -47,6 +48,7 @@ def letrehoz(db_ut=None, kiadas=None, konfig_dir=None, hozzaferes=None):
     gyar = oldalak.OldalGyar(db, hozz)
     suti = konf.get('suti', {})
     suti_nev = suti.get('nev', 'pardes_nezet')
+    szint_suti_nev = suti.get('szint_nev', 'pardes_szint')
     gy = konf.get('gyorsitotar', {})
     cache = Gyorsitotar(gy.get('max_lap', 512), gy.get('max_bajt', 64 * 1024 * 1024))
     nyilvanos_mod = kiadas != 'belso'
@@ -63,11 +65,19 @@ def letrehoz(db_ut=None, kiadas=None, konfig_dir=None, hozzaferes=None):
     def aktualis_ut():
         return request.path
 
+    def szint_kerese():
+        """A kérés szintje (rang). CSAK a `belso` kiadásban választható (a `pardes_szint` süti); `nyilvanos` és `kereskedelmi` kiadásban a süti és
+        minden paraméter (`?szint=`) figyelmen kívül marad: az alapértelmezett szint érvényes, azt semmi nem emelheti (F76.34)."""
+        if kiadas != 'belso':
+            return hozz.szint(request)
+        r = hozz.szint_nevbol(request.cookies.get(szint_suti_nev))
+        return r if r is not None else hozz.szint(request)
+
     # -- közös lap-kiszolgálás gyorsítótárral és ETaggel ---------------------------------------------------------------------
     def kiszolgal(kulcs_reszek, elo, fragment=False):
-        szint = hozz.szint(request)
+        szint = szint_kerese()
         nezet = nezet_kerese()
-        kulcs = (request.path, tuple(sorted(kulcs_reszek.items())), nezet, szint, kiadas, gyar.kozos.adatbazis_kulcs, oldalak.SABLON_VERZIO, fragment)
+        kulcs = (request.path, tuple(sorted(kulcs_reszek.items())), nezet, szint, kiadas, gyar.kozos.adatbazis_kulcs, oldalak.SABLON_VERZIO, gyar.kod_verzio, fragment)
         etag = Gyorsitotar.etag(kulcs)
         hit = cache.kap(kulcs)
         if hit is None:
@@ -94,7 +104,7 @@ def letrehoz(db_ut=None, kiadas=None, konfig_dir=None, hozzaferes=None):
     def hiba(kod, uzenet):
         nezet = nezet_kerese()
         try:
-            html = gyar.hiba_lap(kod, uzenet, nezet, request.path)
+            html = gyar.hiba_lap(kod, uzenet, nezet, request.path, szint_kerese())
         except Exception:
             html = '<!doctype html><title>%s</title><p>%s</p>' % (kod, 'hiba')
         r = make_response(html, kod)
@@ -126,12 +136,12 @@ def letrehoz(db_ut=None, kiadas=None, konfig_dir=None, hozzaferes=None):
     @app.get('/')
     def kezdolap():
         ut = aktualis_ut()
-        return kiszolgal({}, lambda nezet, szint: gyar.kezdolap(nezet, ut))
+        return kiszolgal({}, lambda nezet, szint: gyar.kezdolap(nezet, ut, szint))
 
     @app.get('/<konyv>')
     def konyv_lap(konyv):
         ut = aktualis_ut()
-        return kiszolgal({}, lambda nezet, szint: gyar.konyv_lap(konyv, nezet, ut))
+        return kiszolgal({}, lambda nezet, szint: gyar.konyv_lap(konyv, nezet, ut, szint))
 
     def _fejezet(konyv, fej, vers):
         szo = lekerdezesek.hnorm(request.args.get('szo', '')[:12]) or ''
@@ -154,7 +164,11 @@ def letrehoz(db_ut=None, kiadas=None, konfig_dir=None, hozzaferes=None):
 
     @app.get('/r/szo/<strong>')
     def szo_toredek(strong):
-        return kiszolgal({}, lambda nezet, szint: gyar.szo_fragment(strong, szint), fragment=True)
+        # `?ig=1Moz/1/2`: a vers-kontextus (az „Ebben a versben” blokkhoz); csak szigorúan ellenőrzött alakban
+        m = re.match(r'^([A-Za-z0-9]{1,12})/([0-9]{1,3})/([0-9]{1,3})$', request.args.get('ig', ''))
+        kk = gyar.kozos.slug_kk.get(m.group(1)) if m else None
+        ig = '%s %d:%d' % (kk, int(m.group(2)), int(m.group(3))) if kk else None
+        return kiszolgal({'ig': ig or ''}, lambda nezet, szint: gyar.szo_fragment(strong, szint, ig), fragment=True)
 
     @app.get('/r/vers/<konyv>/<int:fej>/<int:vers>')
     def vers_toredek(konyv, fej, vers):
@@ -167,6 +181,17 @@ def letrehoz(db_ut=None, kiadas=None, konfig_dir=None, hozzaferes=None):
             return hiba(404, 'Ismeretlen nézet.')
         r = redirect(oldalak.biztonsagos_vissza(request.args.get('vissza')), 302)
         r.set_cookie(suti_nev, nev, max_age=int(suti.get('max_kor_mp', 31536000)), samesite='Lax', httponly=True, secure=bool(suti.get('secure', False)), path='/')
+        r.headers['Cache-Control'] = 'no-store'
+        return r
+
+    @app.get('/szint/<nev>')
+    def szint_valtas(nev):
+        """A hozzáférési szint próbaüzemi választása (F76.34, a felhasználó kérésére): funkcionális süti, csak váltáskor, csak a `belso` kiadásban.
+        Más kiadásban az útvonal nem létezik (404, süti nélkül)."""
+        if kiadas != 'belso' or hozz.szint_nevbol(nev) is None:
+            return hiba(404, 'Ismeretlen szint.')
+        r = redirect(oldalak.biztonsagos_vissza(request.args.get('vissza')), 302)
+        r.set_cookie(szint_suti_nev, nev, max_age=int(suti.get('max_kor_mp', 31536000)), samesite='Lax', httponly=True, secure=bool(suti.get('secure', False)), path='/')
         r.headers['Cache-Control'] = 'no-store'
         return r
 

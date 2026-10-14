@@ -14,6 +14,7 @@ kiadas = "belso"
 [suti]
 # a nézetet megjegyző funkcionális süti (DT146/4): csak nézetváltáskor jön létre
 nev = "pardes_nezet"
+szint_nev = "pardes_szint"   # a hozzáférési szintet megjegyző süti: CSAK a belso kiadásban, csak szintváltáskor (F76.34)
 max_kor_mp = 31536000     # 1 év
 secure = false            # HTTPS mögött (VPS) true
 

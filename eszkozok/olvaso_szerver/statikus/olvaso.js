@@ -43,6 +43,35 @@
     var cel = panel.querySelector('.ful-tartalom[data-ful=szo]');
     if (!cel) { return; }
     ev.preventDefault();
-    betolt('/r/szo/' + encodeURIComponent(a.getAttribute('data-strong')), cel, 'szo');
+    // a vers-kontextus a hivatkozás útvonalából (/1Moz/1/2): az „Ebben a versben” blokkhoz
+    var m = /^\/([A-Za-z0-9]+)\/(\d+)\/(\d+)$/.exec(a.pathname);
+    betolt('/r/szo/' + encodeURIComponent(a.getAttribute('data-strong')) + (m ? '?ig=' + m[1] + '/' + m[2] + '/' + m[3] : ''), cel, 'szo');
   });
+
+  // az olvasó helyi beállításai (csak a böngészőben, localStorage; sütit nem hoznak létre): a kapcsolt szavak jelölése és a színséma
+  function tarol(kulcs, ertek) { try { window.localStorage.setItem(kulcs, ertek); } catch (e) { /* tiltott tároló: a beállítás csak az oldalra érvényes */ } }
+  function olvas(kulcs) { try { return window.localStorage.getItem(kulcs); } catch (e) { return null; } }
+
+  var jeloles = document.getElementById('jeloles');
+  if (jeloles) {
+    var jelolesAllit = function () {
+      document.querySelectorAll('.szoveg-oszlop').forEach(function (o) { o.classList.toggle('nincs-jeloles', !jeloles.checked); });
+    };
+    jeloles.checked = olvas('pardes_jeloles') !== 'ki';
+    jelolesAllit();
+    jeloles.addEventListener('change', function () { tarol('pardes_jeloles', jeloles.checked ? 'be' : 'ki'); jelolesAllit(); });
+  }
+
+  var temaGombok = document.querySelectorAll('.tema button[data-tema]');
+  function temaAllit(tema) {
+    if (tema === 'light' || tema === 'dark') { document.documentElement.setAttribute('data-tema', tema); }
+    else { document.documentElement.removeAttribute('data-tema'); tema = 'rendszer'; }
+    temaGombok.forEach(function (g) { g.setAttribute('aria-pressed', g.getAttribute('data-tema') === tema ? 'true' : 'false'); });
+  }
+  if (temaGombok.length) {
+    temaAllit(olvas('pardes_tema'));
+    temaGombok.forEach(function (g) {
+      g.addEventListener('click', function () { var t = g.getAttribute('data-tema'); tarol('pardes_tema', t); temaAllit(t); });
+    });
+  }
 })();

@@ -7,11 +7,11 @@ fazis: 1
 modell: sonnet
 munka: adat
 allapot: megallt
-ag: claude/olvasoi-konkordancia-m2
+ag: claude/olvasoi-konkordancia-m2b
 ad: kutatói olvasói felület helyben (WSL): bibliaszöveg-kezdőlap könyv–fejezet–vers választóval, három váltható nézet (Olvasópult, Interlineáris, Munkaasztal), a #60 pilot teljes blokk-készlete a pardes.db-ből szerveroldali lapelőállítással, keresés (Strong, magyar szó és frázis, héber frázis), hozzáférési szintek konfigurációból, kiadási kapcsoló, telepítő szkript; mérés a VPS-t utánzó korlátokkal
-kovetkezo: "/kovetkezo; M2 kész; következő: M3 (keresés); ⛔ M5, ⛔ M6, ⛔ M7"
+kovetkezo: "/kovetkezo; M2b: kész, felhasználói vizuális összevetés (pilot és szerver egymás mellett), utána merge; M3; ⛔ M5–M7"
 olvas: [ADATVAGYON_TERV.md, MUNKATERV.md, adat/szotar_szerepek.tsv, adat/SEMA.md, adat/licencek.tsv, "eszkozok/olvaso_pilot/*", eszkozok/sqlite_epit.py, naplok/OLVASOI_PILOT_ertekeles.md, naplok/SQLITE_EPIT_meres.md, DONTESEK.md]
-ir: [eszkozok/olvaso_szerver/, naplok/OLVASOI_KONKORDANCIA_M0.md, naplok/OLVASOI_KONKORDANCIA_meres.md, naplok/OLVASOI_KONKORDANCIA_zaras.md]
+ir: [eszkozok/olvaso_szerver/, naplok/OLVASOI_KONKORDANCIA_M0.md, naplok/OLVASOI_KONKORDANCIA_meres.md, naplok/OLVASOI_KONKORDANCIA_zaras.md, naplok/OLVASOI_KONKORDANCIA_pilot_osszevetes.md, naplok/ELLENOR_F76_M2b.md, naplok/ELLENOR_F76_M2b_3.md, naplok/ELLENOR_F76_M2b_4.md]
 fugg: [44, 79, 92, 95, 97]
 nem_fugg: [52, 93]
 ---
@@ -72,7 +72,7 @@ Az első kiadás **helyben, WSL-ben** fut; a VPS-re telepítés és a nyilvános
 
 - **K1.** Minden lap és keresés a `pardes.db`-ből jön; a #60 két szakaszán a D2-egyezés 0 eltérés, egyetlen dokumentált kivétellel: a görög szó-lapok `usz_elofordulas` blokkja, ahol a `token_strong` a TAGNT „+” Strong-láncainak elemeit is számolja, a pilot TSV-útja nem (DT-F76d: elfogadva; a lapon az érték bontása látszik).
 - **K2.** A három nézet váltható, a választás megmarad; a kezdőlap a bibliaszöveg könyv-, fejezet- és versválasztóval.
-- **K3.** Minden blokk jellegjelöléssel, forrás- és licencsorral; a hozzáférési szintek konfigurációból zárnak; a kiadási kapcsoló szerint a KJV-Strong és (kereskedelmi módban) az MCGED kimarad.
+- **K3.** Minden blokk jellegjelöléssel, forrás- és licencsorral; a hozzáférési szintek konfigurációból zárnak; a kiadási kapcsoló szerint a KJV-Strong és (kereskedelmi módban) az MCGED kimarad. A hozzáférési szint próbaüzemi váltója (fejléc, `/szint/<nev>`, süti; csak a `belso` kiadásban) a felhasználó kérésére került be (2026-10-14), és az M5 próbaüzem egyik ellenőrzési pontja; a #86 freemium/prémium határát nem dönti el.
 - **K4.** Az adatbázis a böngészőbe nem kerül ki; a frissességi teszt (a `meta` hashek egyeznek a TSV-kkel) a telepítés feltétele.
 - **K5.** A VPS-t utánzó korlátokkal mért vers-lap idő a jelentésben (a pilot: 93 ms medián, szó-lap 3–5 ms); a magyar szóra keresés 100 ms alatt (#92 K5).
 - **K6.** Tesztek zöldek (Python 3.12 alatt; eredetileg 3.11, DT146/E1), CI zöld, a független ellenőr eltérés nélkül zár.

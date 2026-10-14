@@ -28,8 +28,9 @@ class Hozzaferes:
         self.default = default
 
     @classmethod
-    def betolt(cls, konfig_dir=None):
-        ut = os.path.join(konfig_dir or os.environ.get('PARDES_KONFIG_DIR') or KONFIG_DIR, 'hozzaferes.toml')
+    def betolt(cls, konfig_dir=None, fajl='hozzaferes.toml'):
+        """`fajl`: az éles konfig a `hozzaferes.toml`; a tesztek saját próba-konfigja (`hozzaferes_proba.toml`) ugyanezen a könyvtáron át tölthető."""
+        ut = os.path.join(konfig_dir or os.environ.get('PARDES_KONFIG_DIR') or KONFIG_DIR, fajl)
         with open(ut, 'rb') as f:
             c = tomllib.load(f)
         b = dict(c.get('blokk', {}))
@@ -45,6 +46,10 @@ class Hozzaferes:
     def szint(self, kerés=None):
         """A kérés szintje (rang). Belépés nincs: az alapértelmezett szint; később a bejelentkezés cseréli le."""
         return self.rang[self.alap_szint]
+
+    def szint_nevbol(self, nev):
+        """A szintnév rangja, vagy None, ha ismeretlen (a szintváltó süti értékének ellenőrzése)."""
+        return self.rang.get(nev)
 
     def szint_neve(self, rang):
         return self.szintek[rang]
