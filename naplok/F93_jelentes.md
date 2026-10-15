@@ -79,6 +79,7 @@ A brief a hatókört „62 token nélküli *görög* alapszám”-ként írta le
 - az `ir` mezőből kikerült az `eszkozok/sqlite_epit.py`, az `eszkozok/teszt_sqlite_epit.py` és az `adat/SEMA.md`, mert a DT-F93a (a) szerint a #93 nem ír a `pardes.db`-be (a brief 3. pontjának M2 (a) ága); a G5 emiatt nem alkalmazható;
 - az `olvas` mezőbe bekerült a `konkordancia/TAHOT_kivonat.tsv` (a héber alapszámok forrása);
 - a névegyeztetés nem csak a TIPNR névcímkén, hanem a token glosszáján is múlik (M1), és a „gyenge társ” szabály mindkét nyelvre egységes.
+- **jelölés nélküli görög szövegváltozat (DT-F93c):** a brief szerint a szövegváltozathoz kiadás-jelölés kell a `Névváltozat`-ban; jelölés nélkül akkor lehet szövegváltozat, ha a versen álló token glosszája egyezik a névvel, és a token `Kritikai kiadás` mezője nem tartalmazza a TR-t (így a G2179); nem egyező glosszával „nem eldönthető” (G3535).
 
 ## 3. Döntések és nyitott tételek
 
