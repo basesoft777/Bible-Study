@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-10-15",
-   "commit": "10a572cf"
+   "commit": "814e7cfb"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -72,7 +72,7 @@
   {
    "kulcs": "ready",
    "cimke": "Indítható most",
-   "db": 6
+   "db": 5
   },
   {
    "kulcs": "wait",
@@ -113,14 +113,6 @@
    "cim": "Olvasói konkordancia motívum nélkül (#25a) — kutatói felület a pardes.db-ből, előbb helyben (WSL), három váltható nézettel",
    "most": "Folytatás: M3 (keresés), új ágon a main-ről; az M2b kész és mergelve (PR #344); ⛔ M5, ⛔ M6, ⛔ M7",
    "felbemaradt": true,
-   "parhuzamos": true
-  },
-  {
-   "szam": 93,
-   "kod": "TIPNR_TOKEN_HIANY",
-   "cim": "A TIPNR 62 token nélküli görög alapszáma — szövegváltozat vagy hiány (88 sor)",
-   "most": "M0 felmérés (csak olvas); ⛔ a jelölés helyéről (DT-F93a) a felhasználó dönt",
-   "felbemaradt": false,
    "parhuzamos": true
   }
  ],
@@ -622,22 +614,6 @@
    "leiras_hiany": true
   },
   {
-   "kulcs": "TIPNR_TOKEN_HIANY",
-   "szam": 93,
-   "kod": "TIPNR_TOKEN_HIANY",
-   "cim": "A TIPNR 62 token nélküli görög alapszáma — szövegváltozat vagy hiány (88 sor)",
-   "fazis": "1",
-   "allapot": "ready",
-   "brief_allapot": "nem_indult",
-   "most": "M0 felmérés (csak olvas); ⛔ a jelölés helyéről (DT-F93a) a felhasználó dönt",
-   "fugg": "#88 (kész)",
-   "tervezett": false,
-   "reszletes": "",
-   "roviden": "",
-   "leiras_forras": null,
-   "leiras_hiany": true
-  },
-  {
    "kulcs": "KAROLI_MODERN",
    "szam": 96,
    "kod": "KAROLI_MODERN",
@@ -662,7 +638,7 @@
    "allapot": "idle",
    "brief_allapot": "nem_indult",
    "most": "Halasztva: a #98 (TERVEZO_MOD) lezárásáig — ugyanazt az ir-t írja (eszkozok/olvaso_szerver/), és az elem-regisztere ennek elfogadási feltétele; utána /kovetkezo; ⛔ M0 (aranyminta, mérések, DT-F99a–d), ⛔ M2, ⛔ M4, ⛔ M5, ⛔ M6",
-   "fugg": "#93*",
+   "fugg": "—",
    "tervezett": false,
    "reszletes": "",
    "roviden": "",
@@ -760,14 +736,13 @@
    "TANULMANY_JAVITAS",
    "KAROLI_UJJLENYOMAT",
    "ELOFIZETES_FEED",
-   "TIPNR_TOKEN_HIANY",
    "KAROLI_MODERN",
    "BDB_SZELETELO",
    "ADATBAZIS_FRISSITES",
    "TERV_BEFOGAD"
   ]
  },
- "terkep": "flowchart LR\n  classDef stop fill:#d93025,stroke:#8c1d18,color:#ffffff,stroke-width:2px\n  classDef run fill:#1e8e3e,stroke:#0d5226,color:#ffffff,stroke-width:2px\n  classDef ready fill:#1a73e8,stroke:#0b3d91,color:#ffffff,stroke-width:2px\n  classDef wait fill:#f9ab00,stroke:#a86f00,color:#2b1d00,stroke-width:2px\n  classDef plan fill:#8e44ad,stroke:#5b2470,color:#ffffff,stroke-width:2px,stroke-dasharray:6 3\n  classDef idle fill:#80868b,stroke:#4a4f54,color:#ffffff\n  classDef dt fill:#ff6d00,stroke:#a34500,color:#ffffff,stroke-width:2px\n\n  P_MCP_BUROK[\"MCP_BUROK\"]:::plan\n  P_SZPA_AUDIT[\"SZPA_AUDIT\"]:::plan\n  P_TERV_BEFOGAD[\"TERV_BEFOGAD\"]:::plan\n  T10[\"#10 LEXIKON_LEZARAS\"]:::idle\n  T101[\"#101 ADATBAZIS_FRISSITES\"]:::idle\n  T11[\"#11 MIGRACIO\"]:::idle\n  T12[\"#12 TEREMT-002 3. lépés…\"]:::idle\n  T13[\"#13 1Móz 17-től a…\"]:::idle\n  T22[\"#22 Károli–Strong párosítás…\"]:::stop\n  T23[\"#23 MOTIVUM_FORRAS\"]:::ready\n  T25[\"#25 OLVASOI_HTML\"]:::idle\n  T27[\"#27 FP3\"]:::idle\n  T36[\"#36 LEXIKON_UJRAGEN\"]:::wait\n  T38[\"#38 BDB_FORDITAS\"]:::ready\n  T48[\"#48 KJV_REGI_KIVEZETES\"]:::wait\n  T50[\"#50 CI_JAVITO_KOR\"]:::ready\n  T52[\"#52 TERV_SZINKRON\"]:::stop\n  T55[\"#55 ZSOLTAR_UJRAELLENORZES\"]:::stop\n  T59[\"#59 SZOSZEDET\"]:::ready\n  T67[\"#67 BDB_JAVITAS_KAPU\"]:::idle\n  T69[\"#69 SEMA_DATASET_SZAM\"]:::idle\n  T7[\"#7 Thayer teljes magyar…\"]:::idle\n  T70[\"#70 SZOTAR_S26\"]:::wait\n  T74[\"#74 TANULMANY_JAVITAS_GEPI\"]:::idle\n  T75[\"#75 TANULMANY_JAVITAS\"]:::idle\n  T76[\"#76 OLVASOI_KONKORDANCIA\"]:::ready\n  T81[\"#81 KAROLI_UJJLENYOMAT\"]:::idle\n  T86[\"#86 ELOFIZETES_FEED\"]:::stop\n  T9[\"#9 SZOTAR S2\"]:::wait\n  T93[\"#93 TIPNR_TOKEN_HIANY\"]:::ready\n  T96[\"#96 KAROLI_MODERN\"]:::idle\n  T99[\"#99 BDB_SZELETELO\"]:::idle\n  D_DT_F38i{{\"DT-F38i\"}}:::dt\n  D_DT_M1{{\"DT-M1\"}}:::dt\n  D_DT_M3{{\"DT-M3\"}}:::dt\n  D_DT_M4{{\"DT-M4\"}}:::dt\n  D_DT_M5{{\"DT-M5\"}}:::dt\n  D_DT_M6{{\"DT-M6\"}}:::dt\n  D_DT_M7{{\"DT-M7\"}}:::dt\n  D_DT_M8{{\"DT-M8\"}}:::dt\n  D_DT127{{\"DT127\"}}:::dt\n  D_DT128{{\"DT128\"}}:::dt\n  D_DT129{{\"DT129\"}}:::dt\n  D_DT146{{\"DT146\"}}:::dt\n  D_DT147{{\"DT147\"}}:::dt\n  D_DT148{{\"DT148\"}}:::dt\n  D_DT149{{\"DT149\"}}:::dt\n  D_DT150{{\"DT150\"}}:::dt\n  D_DT151{{\"DT151\"}}:::dt\n  D_DT152{{\"DT152\"}}:::dt\n  D_DT2{{\"DT2\"}}:::dt\n  D_DT28{{\"DT28\"}}:::dt\n  D_DT52{{\"DT52\"}}:::dt\n  D_DT56{{\"DT56\"}}:::dt\n  D_DT57{{\"DT57\"}}:::dt\n  D_DT66{{\"DT66\"}}:::dt\n  D_DT71{{\"DT71\"}}:::dt\n  D_DT74{{\"DT74\"}}:::dt\n  D_DT75{{\"DT75\"}}:::dt\n  D_DT77{{\"DT77\"}}:::dt\n  D_DT78{{\"DT78\"}}:::dt\n  D_DT90{{\"DT90\"}}:::dt\n\n  P_MCP_BUROK --> D_DT_M3\n  P_MCP_BUROK --> D_DT_M5\n  P_MCP_BUROK --> D_DT_M7\n  P_SZPA_AUDIT --> D_DT77\n  P_TERV_BEFOGAD --> D_DT_M8\n  T10 --> D_DT2\n  T10 --> D_DT74\n  T10 --> T11\n  T10 --> T52\n  T10 --> T9\n  T11 --> D_DT74\n  T11 --> T23\n  T11 --> T52\n  T11 --> T9\n  T12 --> D_DT74\n  T12 --> T11\n  T13 --> T10\n  T22 --> D_DT56\n  T22 --> D_DT57\n  T22 --> D_DT71\n  T23 --> D_DT28\n  T23 --> D_DT66\n  T23 --> D_DT74\n  T25 --> T11\n  T25 --> T12\n  T25 --> T23\n  T36 --> D_DT28\n  T36 --> D_DT74\n  T36 --> T27\n  T36 --> T38\n  T36 --> T52\n  T36 --> T9\n  T38 --> D_DT52\n  T38 --> D_DT56\n  T38 --> D_DT_F38i\n  T48 --> T22\n  T52 --> D_DT78\n  T52 --> D_DT90\n  T55 --> D_DT74\n  T67 --> T27\n  T67 --> T7\n  T67 --> T9\n  T70 --> D_DT74\n  T70 --> T55\n  T70 --> T9\n  T75 --> T74\n  T76 --> D_DT127\n  T76 --> D_DT128\n  T76 --> D_DT129\n  T76 --> D_DT146\n  T76 --> D_DT147\n  T76 --> D_DT148\n  T76 --> D_DT149\n  T76 --> D_DT150\n  T76 --> D_DT151\n  T76 --> D_DT152\n  T76 --> D_DT75\n  T76 --> D_DT_M1\n  T76 --> D_DT_M4\n  T76 --> D_DT_M6\n  T86 --> T27\n  T86 --> T38\n  T86 --> T52\n  T86 --> T7\n  T86 --> T76\n  T86 --> T9\n  T9 --> D_DT28\n  T9 --> D_DT74\n  T9 --> T23\n  T9 --> T27\n  T9 --> T52\n  T99 --> T93",
+ "terkep": "flowchart LR\n  classDef stop fill:#d93025,stroke:#8c1d18,color:#ffffff,stroke-width:2px\n  classDef run fill:#1e8e3e,stroke:#0d5226,color:#ffffff,stroke-width:2px\n  classDef ready fill:#1a73e8,stroke:#0b3d91,color:#ffffff,stroke-width:2px\n  classDef wait fill:#f9ab00,stroke:#a86f00,color:#2b1d00,stroke-width:2px\n  classDef plan fill:#8e44ad,stroke:#5b2470,color:#ffffff,stroke-width:2px,stroke-dasharray:6 3\n  classDef idle fill:#80868b,stroke:#4a4f54,color:#ffffff\n  classDef dt fill:#ff6d00,stroke:#a34500,color:#ffffff,stroke-width:2px\n\n  P_MCP_BUROK[\"MCP_BUROK\"]:::plan\n  P_SZPA_AUDIT[\"SZPA_AUDIT\"]:::plan\n  P_TERV_BEFOGAD[\"TERV_BEFOGAD\"]:::plan\n  T10[\"#10 LEXIKON_LEZARAS\"]:::idle\n  T101[\"#101 ADATBAZIS_FRISSITES\"]:::idle\n  T11[\"#11 MIGRACIO\"]:::idle\n  T12[\"#12 TEREMT-002 3. lépés…\"]:::idle\n  T13[\"#13 1Móz 17-től a…\"]:::idle\n  T22[\"#22 Károli–Strong párosítás…\"]:::stop\n  T23[\"#23 MOTIVUM_FORRAS\"]:::ready\n  T25[\"#25 OLVASOI_HTML\"]:::idle\n  T27[\"#27 FP3\"]:::idle\n  T36[\"#36 LEXIKON_UJRAGEN\"]:::wait\n  T38[\"#38 BDB_FORDITAS\"]:::ready\n  T48[\"#48 KJV_REGI_KIVEZETES\"]:::wait\n  T50[\"#50 CI_JAVITO_KOR\"]:::ready\n  T52[\"#52 TERV_SZINKRON\"]:::stop\n  T55[\"#55 ZSOLTAR_UJRAELLENORZES\"]:::stop\n  T59[\"#59 SZOSZEDET\"]:::ready\n  T67[\"#67 BDB_JAVITAS_KAPU\"]:::idle\n  T69[\"#69 SEMA_DATASET_SZAM\"]:::idle\n  T7[\"#7 Thayer teljes magyar…\"]:::idle\n  T70[\"#70 SZOTAR_S26\"]:::wait\n  T74[\"#74 TANULMANY_JAVITAS_GEPI\"]:::idle\n  T75[\"#75 TANULMANY_JAVITAS\"]:::idle\n  T76[\"#76 OLVASOI_KONKORDANCIA\"]:::ready\n  T81[\"#81 KAROLI_UJJLENYOMAT\"]:::idle\n  T86[\"#86 ELOFIZETES_FEED\"]:::stop\n  T9[\"#9 SZOTAR S2\"]:::wait\n  T96[\"#96 KAROLI_MODERN\"]:::idle\n  T99[\"#99 BDB_SZELETELO\"]:::idle\n  D_DT_F38i{{\"DT-F38i\"}}:::dt\n  D_DT_M1{{\"DT-M1\"}}:::dt\n  D_DT_M3{{\"DT-M3\"}}:::dt\n  D_DT_M4{{\"DT-M4\"}}:::dt\n  D_DT_M5{{\"DT-M5\"}}:::dt\n  D_DT_M6{{\"DT-M6\"}}:::dt\n  D_DT_M7{{\"DT-M7\"}}:::dt\n  D_DT_M8{{\"DT-M8\"}}:::dt\n  D_DT127{{\"DT127\"}}:::dt\n  D_DT128{{\"DT128\"}}:::dt\n  D_DT129{{\"DT129\"}}:::dt\n  D_DT146{{\"DT146\"}}:::dt\n  D_DT147{{\"DT147\"}}:::dt\n  D_DT148{{\"DT148\"}}:::dt\n  D_DT149{{\"DT149\"}}:::dt\n  D_DT150{{\"DT150\"}}:::dt\n  D_DT151{{\"DT151\"}}:::dt\n  D_DT152{{\"DT152\"}}:::dt\n  D_DT2{{\"DT2\"}}:::dt\n  D_DT28{{\"DT28\"}}:::dt\n  D_DT52{{\"DT52\"}}:::dt\n  D_DT56{{\"DT56\"}}:::dt\n  D_DT57{{\"DT57\"}}:::dt\n  D_DT66{{\"DT66\"}}:::dt\n  D_DT71{{\"DT71\"}}:::dt\n  D_DT74{{\"DT74\"}}:::dt\n  D_DT75{{\"DT75\"}}:::dt\n  D_DT77{{\"DT77\"}}:::dt\n  D_DT78{{\"DT78\"}}:::dt\n  D_DT90{{\"DT90\"}}:::dt\n\n  P_MCP_BUROK --> D_DT_M3\n  P_MCP_BUROK --> D_DT_M5\n  P_MCP_BUROK --> D_DT_M7\n  P_SZPA_AUDIT --> D_DT77\n  P_TERV_BEFOGAD --> D_DT_M8\n  T10 --> D_DT2\n  T10 --> D_DT74\n  T10 --> T11\n  T10 --> T52\n  T10 --> T9\n  T11 --> D_DT74\n  T11 --> T23\n  T11 --> T52\n  T11 --> T9\n  T12 --> D_DT74\n  T12 --> T11\n  T13 --> T10\n  T22 --> D_DT56\n  T22 --> D_DT57\n  T22 --> D_DT71\n  T23 --> D_DT28\n  T23 --> D_DT66\n  T23 --> D_DT74\n  T25 --> T11\n  T25 --> T12\n  T25 --> T23\n  T36 --> D_DT28\n  T36 --> D_DT74\n  T36 --> T27\n  T36 --> T38\n  T36 --> T52\n  T36 --> T9\n  T38 --> D_DT52\n  T38 --> D_DT56\n  T38 --> D_DT_F38i\n  T48 --> T22\n  T52 --> D_DT78\n  T52 --> D_DT90\n  T55 --> D_DT74\n  T67 --> T27\n  T67 --> T7\n  T67 --> T9\n  T70 --> D_DT74\n  T70 --> T55\n  T70 --> T9\n  T75 --> T74\n  T76 --> D_DT127\n  T76 --> D_DT128\n  T76 --> D_DT129\n  T76 --> D_DT146\n  T76 --> D_DT147\n  T76 --> D_DT148\n  T76 --> D_DT149\n  T76 --> D_DT150\n  T76 --> D_DT151\n  T76 --> D_DT152\n  T76 --> D_DT75\n  T76 --> D_DT_M1\n  T76 --> D_DT_M4\n  T76 --> D_DT_M6\n  T86 --> T27\n  T86 --> T38\n  T86 --> T52\n  T86 --> T7\n  T86 --> T76\n  T86 --> T9\n  T9 --> D_DT28\n  T9 --> D_DT74\n  T9 --> T23\n  T9 --> T27\n  T9 --> T52",
  "dontesek": {
   "nyitott": [
    {
@@ -778,7 +753,7 @@
     "jelek": [
      "🟡"
     ],
-    "sor": 167
+    "sor": 171
    },
    {
     "id": "DT106",
@@ -788,7 +763,7 @@
     "jelek": [
      "🟡"
     ],
-    "sor": 183
+    "sor": 187
    },
    {
     "id": "DT126",
@@ -798,7 +773,7 @@
     "jelek": [
      "🟡"
     ],
-    "sor": 203
+    "sor": 207
    },
    {
     "id": "DT133",
@@ -808,7 +783,7 @@
     "jelek": [
      "🟡"
     ],
-    "sor": 210
+    "sor": 214
    },
    {
     "id": "DT134",
@@ -818,7 +793,7 @@
     "jelek": [
      "🟡"
     ],
-    "sor": 211
+    "sor": 215
    },
    {
     "id": "DT159",
@@ -828,7 +803,7 @@
     "jelek": [
      "🟡"
     ],
-    "sor": 236
+    "sor": 240
    }
   ],
   "alkalmazasra_var": [
@@ -1033,6 +1008,46 @@
     "sor": 107
    },
    {
+    "id": "DT-F93a",
+    "feladat": "#93 TIPNR_TOKEN_HIANY (M0 ⛔)",
+    "kerdes": "(1) Hol áll a jelölés: (a) csak `naplok/F93_alapszamok.tsv` + jelentés, vagy (b) a `pardes.db` `normalizalas_jelentes`-ében is? (2) A hatókör: a brief „62 görög alapszám” leírása nem pontos. Mérés (`naplok/F93_jelentes.md` M0): 88 sor / 62 alapszám egyezik az F88-cal, de 23 sor / 16 alapszám görög (ebből 9 sor / 5 alapszám `LXX.*`, igehely nélkül), 65 sor / 46 alapszám héber (TAHOT-oldali hiány). Mi legyen a héber résszel és az `LXX.*` sorokkal?",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 108
+   },
+   {
+    "id": "DT-F93b",
+    "feladat": "#93 TIPNR_TOKEN_HIANY (M1 átnézése: a héber „szövegváltozat” osztály)",
+    "kerdes": "A brief „szövegváltozat” definíciója a TAGNT `Kritikai kiadás` mezőjére épül; a TAHOT-kivonatnak nincs ilyen mezője, tehát a héber sorokon a definíció nem teljesülhet (G3). Mi legyen a héber sorokkal, amelyek `Névváltozat`-ában ESV/KJV/NIV/ASV vagy LK/LQ/Mss jelölés áll?",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 109
+   },
+   {
+    "id": "DT-F93c",
+    "feladat": "#93 TIPNR_TOKEN_HIANY (ELLENOR_F93: jelölés nélküli görög szövegváltozat)",
+    "kerdes": "A brief szerint a szövegváltozathoz kiadás-jelölés kell a `Névváltozat`-ban. A G2179 (Ephesus, Jel 2:1) jelölés nélkül lett „szövegváltozat”, mert a versen álló G2181 token `Kritikai kiadás` mezője nem tartalmazza a TR-t; a G3535 (Nineveh) hasonló, de a token glosszája nem egyezik a névvel. Mikor lehet jelölés nélkül szövegváltozat?",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 110
+   },
+   {
+    "id": "DT-F93d",
+    "feladat": "#93 TIPNR_TOKEN_HIANY (ELLENOR_F93: a proveniencia `ts` mezője)",
+    "kerdes": "A CLAUDE.md 1. szabálya szerint a lekérdezésből származó állítás a lekérdezés saját proveniencia-sorát kapja (`scope=… \\| forras=… \\| ts=…`). A `naplok/F93_alapszamok.tsv` `ts` mezője a `pardes.db` `meta.epites_ts` értéke (az adatállapot időpontja), nem a szkript futásáé. Elfogadható-e?",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 111
+   },
+   {
     "id": "DT-M1",
     "feladat": "MUNKATERV → OLVASOI_KONKORDANCIA (#25a)",
     "kerdes": "Kiadható-e az olvasói konkordancia (vers- és szó-lap, motívum nélkül) a #25 előtt, a #11/#23-tól függetlenül? Ez átrendezi a FELADATOK sorrendjét: a #25 kettéválik, #25a konkordancia (függ SQLITE_EPIT, #44), #25b motívumos nézet (függ #11, #23). *(forrás: `MUNKATERV.md` 2. szakasz, 0. lépcső)*",
@@ -1040,7 +1055,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 109
+    "sor": 113
    },
    {
     "id": "DT-M2",
@@ -1050,7 +1065,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 110
+    "sor": 114
    },
    {
     "id": "DT-M3",
@@ -1060,7 +1075,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 111
+    "sor": 115
    },
    {
     "id": "DT-M4",
@@ -1070,7 +1085,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 112
+    "sor": 116
    },
    {
     "id": "DT-M5",
@@ -1080,7 +1095,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 113
+    "sor": 117
    },
    {
     "id": "DT-M6",
@@ -1090,7 +1105,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 114
+    "sor": 118
    },
    {
     "id": "DT-M7",
@@ -1100,7 +1115,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 115
+    "sor": 119
    },
    {
     "id": "DT-M8",
@@ -1110,7 +1125,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 116
+    "sor": 120
    },
    {
     "id": "DT28",
@@ -1120,7 +1135,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 117
+    "sor": 121
    },
    {
     "id": "DT37",
@@ -1130,7 +1145,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 118
+    "sor": 122
    },
    {
     "id": "DT38",
@@ -1140,7 +1155,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 119
+    "sor": 123
    },
    {
     "id": "DT39",
@@ -1150,7 +1165,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 120
+    "sor": 124
    },
    {
     "id": "DT41",
@@ -1160,7 +1175,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 122
+    "sor": 126
    },
    {
     "id": "DT35",
@@ -1170,7 +1185,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 123
+    "sor": 127
    },
    {
     "id": "DT36",
@@ -1180,7 +1195,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 124
+    "sor": 128
    },
    {
     "id": "DT30",
@@ -1190,7 +1205,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 125
+    "sor": 129
    },
    {
     "id": "DT31",
@@ -1200,7 +1215,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 126
+    "sor": 130
    },
    {
     "id": "DT32",
@@ -1210,7 +1225,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 127
+    "sor": 131
    },
    {
     "id": "DT33",
@@ -1220,7 +1235,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 128
+    "sor": 132
    },
    {
     "id": "DT34",
@@ -1230,7 +1245,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 129
+    "sor": 133
    },
    {
     "id": "DT42",
@@ -1240,7 +1255,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 130
+    "sor": 134
    },
    {
     "id": "DT43",
@@ -1250,7 +1265,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 131
+    "sor": 135
    },
    {
     "id": "DT44",
@@ -1260,7 +1275,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 132
+    "sor": 136
    },
    {
     "id": "DT45",
@@ -1270,7 +1285,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 133
+    "sor": 137
    },
    {
     "id": "DT56",
@@ -1280,7 +1295,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 139
+    "sor": 143
    },
    {
     "id": "DT57",
@@ -1290,7 +1305,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 140
+    "sor": 144
    },
    {
     "id": "DT66",
@@ -1301,7 +1316,7 @@
      "🟢",
      "✅"
     ],
-    "sor": 146
+    "sor": 150
    },
    {
     "id": "DT67",
@@ -1311,7 +1326,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 147
+    "sor": 151
    },
    {
     "id": "DT68",
@@ -1321,7 +1336,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 148
+    "sor": 152
    },
    {
     "id": "DT69",
@@ -1331,7 +1346,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 149
+    "sor": 153
    },
    {
     "id": "DT73",
@@ -1341,7 +1356,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 150
+    "sor": 154
    },
    {
     "id": "DT74",
@@ -1351,7 +1366,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 151
+    "sor": 155
    },
    {
     "id": "DT75",
@@ -1361,7 +1376,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 152
+    "sor": 156
    },
    {
     "id": "DT76",
@@ -1371,7 +1386,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 153
+    "sor": 157
    },
    {
     "id": "DT77",
@@ -1381,7 +1396,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 154
+    "sor": 158
    },
    {
     "id": "DT78",
@@ -1391,7 +1406,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 155
+    "sor": 159
    },
    {
     "id": "DT79",
@@ -1401,7 +1416,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 156
+    "sor": 160
    },
    {
     "id": "DT81",
@@ -1411,7 +1426,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 158
+    "sor": 162
    },
    {
     "id": "DT83",
@@ -1421,7 +1436,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 160
+    "sor": 164
    },
    {
     "id": "DT92",
@@ -1432,7 +1447,7 @@
      "🟢",
      "✅"
     ],
-    "sor": 169
+    "sor": 173
    },
    {
     "id": "DT93",
@@ -1442,7 +1457,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 170
+    "sor": 174
    },
    {
     "id": "DT94",
@@ -1452,7 +1467,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 171
+    "sor": 175
    },
    {
     "id": "DT95",
@@ -1462,7 +1477,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 172
+    "sor": 176
    },
    {
     "id": "DT96",
@@ -1472,7 +1487,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 173
+    "sor": 177
    },
    {
     "id": "DT97",
@@ -1482,7 +1497,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 174
+    "sor": 178
    },
    {
     "id": "DT98",
@@ -1492,7 +1507,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 175
+    "sor": 179
    },
    {
     "id": "DT99",
@@ -1502,7 +1517,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 176
+    "sor": 180
    },
    {
     "id": "DT100",
@@ -1512,7 +1527,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 177
+    "sor": 181
    },
    {
     "id": "DT102",
@@ -1522,7 +1537,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 179
+    "sor": 183
    },
    {
     "id": "DT103",
@@ -1532,7 +1547,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 180
+    "sor": 184
    },
    {
     "id": "DT111",
@@ -1542,7 +1557,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 188
+    "sor": 192
    },
    {
     "id": "DT112",
@@ -1552,7 +1567,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 189
+    "sor": 193
    },
    {
     "id": "DT113",
@@ -1562,7 +1577,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 190
+    "sor": 194
    },
    {
     "id": "DT114",
@@ -1572,7 +1587,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 191
+    "sor": 195
    },
    {
     "id": "DT115",
@@ -1582,7 +1597,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 192
+    "sor": 196
    },
    {
     "id": "DT116",
@@ -1592,7 +1607,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 193
+    "sor": 197
    },
    {
     "id": "DT117",
@@ -1602,7 +1617,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 194
+    "sor": 198
    },
    {
     "id": "DT118",
@@ -1612,7 +1627,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 195
+    "sor": 199
    },
    {
     "id": "DT124",
@@ -1622,7 +1637,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 201
+    "sor": 205
    },
    {
     "id": "DT125",
@@ -1632,7 +1647,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 202
+    "sor": 206
    },
    {
     "id": "DT127",
@@ -1642,7 +1657,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 204
+    "sor": 208
    },
    {
     "id": "DT128",
@@ -1652,7 +1667,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 205
+    "sor": 209
    },
    {
     "id": "DT129",
@@ -1662,7 +1677,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 206
+    "sor": 210
    },
    {
     "id": "DT130",
@@ -1672,7 +1687,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 207
+    "sor": 211
    },
    {
     "id": "DT131",
@@ -1682,7 +1697,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 208
+    "sor": 212
    },
    {
     "id": "DT132",
@@ -1692,7 +1707,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 209
+    "sor": 213
    },
    {
     "id": "DT135",
@@ -1702,7 +1717,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 212
+    "sor": 216
    },
    {
     "id": "DT136",
@@ -1712,7 +1727,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 213
+    "sor": 217
    },
    {
     "id": "DT137",
@@ -1722,7 +1737,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 214
+    "sor": 218
    },
    {
     "id": "DT138",
@@ -1732,7 +1747,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 215
+    "sor": 219
    },
    {
     "id": "DT139",
@@ -1742,7 +1757,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 216
+    "sor": 220
    },
    {
     "id": "DT140",
@@ -1752,7 +1767,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 217
+    "sor": 221
    },
    {
     "id": "DT141",
@@ -1762,7 +1777,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 218
+    "sor": 222
    },
    {
     "id": "DT142",
@@ -1772,7 +1787,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 219
+    "sor": 223
    },
    {
     "id": "DT143",
@@ -1782,7 +1797,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 220
+    "sor": 224
    },
    {
     "id": "DT144",
@@ -1792,7 +1807,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 221
+    "sor": 225
    },
    {
     "id": "DT145",
@@ -1802,7 +1817,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 222
+    "sor": 226
    },
    {
     "id": "DT146",
@@ -1812,7 +1827,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 223
+    "sor": 227
    },
    {
     "id": "DT147",
@@ -1822,7 +1837,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 224
+    "sor": 228
    },
    {
     "id": "DT148",
@@ -1832,7 +1847,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 225
+    "sor": 229
    },
    {
     "id": "DT149",
@@ -1842,7 +1857,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 226
+    "sor": 230
    },
    {
     "id": "DT150",
@@ -1852,7 +1867,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 227
+    "sor": 231
    },
    {
     "id": "DT151",
@@ -1862,7 +1877,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 228
+    "sor": 232
    },
    {
     "id": "DT152",
@@ -1872,7 +1887,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 229
+    "sor": 233
    },
    {
     "id": "DT153",
@@ -1882,7 +1897,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 230
+    "sor": 234
    },
    {
     "id": "DT154",
@@ -1892,7 +1907,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 231
+    "sor": 235
    },
    {
     "id": "DT155",
@@ -1902,7 +1917,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 232
+    "sor": 236
    },
    {
     "id": "DT156",
@@ -1912,7 +1927,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 233
+    "sor": 237
    },
    {
     "id": "DT157",
@@ -1922,7 +1937,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 234
+    "sor": 238
    },
    {
     "id": "DT158",
@@ -1932,7 +1947,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 235
+    "sor": 239
    }
   ],
   "javasolt": [],
@@ -1945,7 +1960,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 157,
+    "sor": 161,
     "oszlopszam": 10,
     "fejlec_oszlopszam": 8
    },
@@ -1957,7 +1972,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 159,
+    "sor": 163,
     "oszlopszam": 7,
     "fejlec_oszlopszam": 8
    },
@@ -1969,7 +1984,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 161,
+    "sor": 165,
     "oszlopszam": 10,
     "fejlec_oszlopszam": 8
    }
