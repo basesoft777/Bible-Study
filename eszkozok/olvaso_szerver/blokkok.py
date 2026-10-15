@@ -31,7 +31,7 @@ def _pilot_modul(nev):
     return m
 
 
-bdb_szelet = _pilot_modul('bdb_szelet')
+import bdb_szelet  # noqa: E402  (élesben a szerver mellett, DT-F99c (a); a pilot ugyanezt tölti be)
 
 JELLEG = {
     'forras': ('forrásadat', 'jelleg-forras', 'változtatás nélkül egy adatkészletből'),
@@ -993,6 +993,34 @@ def _r_oshl(d, K):
     return ki
 
 
+def _f_oshl_csalad(K):
+    d = q.oshl_csalad(K.con, K.strong)
+    return d if d is not None else {'nincs_oszlop': True}
+
+
+def _r_oshl_csalad(d, K):
+    """„Rokon szavak” (F99 M1): a gyök és a származékai Strong-linkkel; ha nincs család, kifejezett felirat (nem negatív lelet)."""
+    if d.get('nincs_oszlop'):
+        return Markup('<p class="ures">Az adatbázisban még nincs OSHL-gyökcsalád adat (a pardes.db újraépítése után jelenik meg).</p>')
+    if not d['csaladok']:
+        if 'single' in d['tipusok']:
+            return Markup('<p class="ures">Nincs OSHL-gyökcsalád: az OSHL a szót családon kívüliként jelöli (single). Nem negatív lelet.</p>')
+        return Markup('<p class="ures">Nincs OSHL-gyökcsalád (az OSHL-ben ehhez a szóhoz nincs gyökcsalád-adat). Nem negatív lelet.</p>')
+    ki = Markup('')
+    for cs in d['csaladok']:
+        oid, st, lemma, atiras, szofaj, def_en, gyok = cs['gyok']
+        nev = gyok if gyok and gyok != '—' else lemma
+        ki += Markup('<h4>Gyök: %s %s</h4>') % (_heb(nev), strong_link(K, st) if st and st != '—' else Markup('(Strong-szám nélküli gyök-bejegyzés)'))
+        sorok = []
+        for t_oid, t_st, t_lemma, t_atiras, t_szofaj, t_def in cs['tagok']:
+            sorok.append([strong_link(K, t_st) if t_st and t_st != '—' else '—', _heb(t_lemma), t_atiras or '', t_szofaj or '', t_def or ''])
+        if sorok:
+            ki += _tabla(['Strong', 'Lemma', 'Átírás', 'Szófaj', 'Angol meghatározás'], sorok)
+        else:
+            ki += Markup('<p class="ures">A gyök-bejegyzésnek nincs felsorolt származéka.</p>')
+    return ki
+
+
 def _f_tbesh(K):
     return q.tbesh(K.con, K.strong)
 
@@ -1146,6 +1174,8 @@ REGISZTER = [
     B('szo.sdbh', 'szo_h', 'Szemantikai domén (SDBH)', 'forras', ('sdbh_domenek',), _f_sdbh, _r_sdbh, 'üres eredmény nem negatív lelet'),
     B('szo.sece_h', 'szo_h', 'SECE-szócikk (héber)', 'forras', ('sece_h',), _f_sece_h, _r_szoveg),
     B('szo.oshl', 'szo_h', 'OSHL: TWOT- és BDB-azonosító, BDB-helyek', 'forras', ('oshl_lexikalis_index', 'oshl_bdb_igehelyek'), _f_oshl, _r_oshl),
+    B('szo.oshl_csalad', 'szo_h', 'Rokon szavak (OSHL-gyökcsalád)', 'forras', ('oshl_lexikalis_index',), _f_oshl_csalad, _r_oshl_csalad,
+      'az OSHL <etym> eleme: a gyök és a származékai; üres család nem negatív lelet'),
     B('szo.tbesh', 'szo_h', 'Bővített Strong-szócikk (TBESH)', ('forras', 'gepi'), ('tbesh',), _f_tbesh, _r_tbesh),
     B('szo.tw_h', 'szo_h', 'translationWords', 'forras', ('tw_szocikkek',), _f_tw, _r_tw),
     B('szo.nyelvtani', 'szo_h', 'Nyelvtani Strong-számok szűrése', 'gepi', ('grammatikai_strongok',), _f_nyelvtani, _r_nyelvtani),

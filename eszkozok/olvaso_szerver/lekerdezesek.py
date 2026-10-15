@@ -490,6 +490,36 @@ def sece_g(con, s):
     return r[0] if r else None
 
 
+def oshl_csalad(con, s):
+    """F99 M1: a szó OSHL-gyökcsaládja (`oshl_lexikalis_index` etym_tipus / etym_cel / gyok). Visszaad:
+    None, ha az adatbázisban nincsenek gyökcsalád-oszlopok (régebbi építés); különben {'tipusok': [a szó bejegyzéseinek etym_tipus-a],
+    'csaladok': [{'gyok_id', 'gyok': (oshl_id, strong, lemma, atiras, szofaj, def_en, gyok), 'tagok': [(oshl_id, strong, lemma, atiras, szofaj, def_en)]}]}.
+    A `sub` a gyök (main) bejegyzésre mutat, a `main` a származékait listázza; a gyök-bejegyzésnek nem mindig van Strong-száma."""
+    oszl = {r[1] for r in con.execute('PRAGMA table_info(oshl_lexikalis_index)')}
+    if not {'etym_tipus', 'etym_cel', 'gyok'} <= oszl:
+        return None
+    sajat = con.execute('SELECT oshl_id, etym_tipus, etym_cel FROM oshl_lexikalis_index WHERE strong=? ORDER BY rowid', (s,)).fetchall()
+    gyok_idk = []
+    for oid, tipus, cel in sajat:
+        g = oid if tipus == 'main' else (cel if tipus == 'sub' and cel and cel != '—' else None)
+        if g and g not in gyok_idk:
+            gyok_idk.append(g)
+    csaladok = []
+    for g in gyok_idk:
+        gy = con.execute('SELECT oshl_id, strong, lemma, atiras, szofaj, def_en, gyok, etym_cel FROM oshl_lexikalis_index WHERE oshl_id=? '
+                         'ORDER BY rowid LIMIT 1', (g,)).fetchone()
+        if not gy:
+            continue
+        tagok = []
+        for t in [x for x in (gy[7] or '').split(',') if x and x != '—']:
+            r = con.execute('SELECT oshl_id, strong, lemma, atiras, szofaj, def_en FROM oshl_lexikalis_index WHERE oshl_id=? ORDER BY rowid LIMIT 1',
+                            (t,)).fetchone()
+            if r:
+                tagok.append(r)
+        csaladok.append({'gyok_id': g, 'gyok': gy[:7], 'tagok': tagok})
+    return {'tipusok': [t for _, t, _ in sajat], 'csaladok': csaladok}
+
+
 def oshl(con, s):
     """(lexikális index sorai, BDB-helyek)"""
     lex = con.execute('SELECT twot, bdb_id, nyelv, oshl_id, lemma, atiras, szofaj, def_en FROM oshl_lexikalis_index WHERE strong=? ORDER BY rowid', (s,)).fetchall()
