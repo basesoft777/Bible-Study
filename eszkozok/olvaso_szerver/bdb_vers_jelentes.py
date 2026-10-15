@@ -44,12 +44,17 @@ KAROLI = os.path.join(REPO, 'konkordancia', 'Karoli_1908.tsv')
 F85_ELVETVE = os.path.join(REPO, 'naplok', 'F85_macula_elvetve.tsv')
 KI = os.path.join(REPO, 'adat', 'bdb_vers_jelentes.tsv')
 TAHOT = os.path.join(REPO, 'konkordancia', 'TAHOT_kivonat.tsv')
-F85_KULCSVALTAS = os.path.join(REPO, 'naplok', 'F85_kulcsvaltas.tsv')
+F85_ESETLISTA = os.path.join(REPO, 'naplok', 'F85_esetlista.tsv')
 # DT-F99h (b) (felhasználó, 2026-10-15): a Károli-kulcs javítása csak a rendszeres eltolású fejezetekben, fejezetszintű eltolás-táblával,
-# amelynek forrása az F85 dokumentált átkulcsolása (naplok/F85_kulcsvaltas.tsv: régi TAHOT-kulcs → Károli-vers, 337 vers); a TAHOT-számok
-# csak megerősítik (a fejezet akkor kerül a táblába, ha az F85 szerinti Károli-verseken a TAHOT a sorok legalább felénél, és többnél
-# hordozza a szócikk Strong-számát, mint a régi kulcson; mérés: naplok/BDB_SZELETELO_M0.md 9.12). Soronkénti ±3 verses keresés nincs.
-F85_FEJEZETEK = {'2Móz 36', '4Móz 30', 'Hós 12', 'Jób 17', 'Jób 37', 'Péld 12', 'Én 6', 'Ézs 8', 'Ézs 9'}
+# amelynek forrása az F85 dokumentált javítása. Az F85 esetlistája (naplok/F85_esetlista.tsv) minden eltolt TAHOT-versnél megadja a vers
+# WLC (MT) megfelelőjét és a Károli-versét: ez az MT → Károli megfeleltetés (`eltolas` és `osszevonas_2_1` sor, WLC-illeszkedés J ≥ 0,5,
+# egyértelmű). A régi TAHOT-kulcs (F85_kulcsvaltas.tsv `regi_kulcs`) nem MT-szám (a Dán 4-ben és a Hós 2-ben el is tér tőle), ezért nem az
+# a forrás. A TAHOT-számok csak megerősítenek (mérés: naplok/BDB_SZELETELO_M0.md 9.13). Soronkénti ±3 verses keresés nincs.
+# Az Ézs 3: az F85 a Macula `karoli` oszlopát itt elvetette (naplok/F85_macula_elvetve.tsv, 26 vers), de MT → Károli megfeleltetést nem
+# rögzített; a Károli-szöveg szerint a Károli Ézs 3:1 az MT Ézs 2:22 (a Károli Ézs 2-ben 21, az Ézs 3-ban 27 vers), így MT 2:22 → K 3:1,
+# MT 3:n → K 3:(n+1). A TAHOT a sorok 190/211-ében megerősíti; a sorok `f85_regio` okkódot kapnak (az eltolás értéke nem az F85-ből jön).
+EZS3 = {'Ézs 2:22': 'Ézs 3:1'}
+EZS3.update({'Ézs 3:%d' % v: 'Ézs 3:%d' % (v + 1) for v in range(1, 27)})
 
 # DT-F99i: a `szakasz` a címszó homonima-száma (vagy h:<váz>), a `resz` a szócikk római számos fő tagolása (üres, ha nincs)
 FEJ = ['strong', 'bdb_id', 'sorszam', 'poz', 'nyers', 'konyv_feloldas', 'mt_vers', 'karoli_vers', 'vers_feloldas', 'szakasz', 'resz',
@@ -119,9 +124,10 @@ def betolt():
     for d in tsv_sorok(F85_ELVETVE):
         elvetett.add((d['konyv'], int(d['fejezet'])))
     f85 = collections.defaultdict(set)
-    for d in tsv_sorok(F85_KULCSVALTAS):
-        if d['regi_kulcs'].rsplit(':', 1)[0] in F85_FEJEZETEK:
-            f85[d['regi_kulcs']].add(d['uj_kulcs'])
+    for d in tsv_sorok(F85_ESETLISTA):
+        m = re.search(r'WLC=(\S+ \d+:\d+) J=([\d.]+)', d.get('igazolas', ''))
+        if m and d['tipus'] in ('eltolas', 'osszevonas_2_1') and float(m.group(2)) >= 0.5:
+            f85[m.group(1)].add(d['karoli_vers'])
     f85 = {k: next(iter(v)) for k, v in f85.items() if len(v) == 1}
     tahot = collections.defaultdict(set)
     for d in tsv_sorok(TAHOT):
@@ -204,10 +210,12 @@ def general(ts, strongok=None):
                 if h['konyv'] in osz:
                     mt, kar, vmod, kieg = mt_karoli(K, versek, mt2k, vm_karoli, vm_mt, elvetett, h['konyv'], h['c'], h['v'])
                     n_st = int(re.match(r'^H0*(\d+)', strong).group(1))
-                    if mt in f85:
-                        # DT-F99h (b): az F85 fejezetszintű eltolás-táblája
-                        kar, vmod = f85[mt], 'atkulcsolt_f85'
-                        kieg = ','.join(x for x in kieg.split(',') if x not in ('nincs_karoli', 'karoli_vers_nem_letezik'))
+                    if mt in f85 or mt in EZS3:
+                        # DT-F99h (b): az F85 eltolás-táblája (esetlista: WLC → Károli), ill. az Ézs 3 (F85-régió, a Károli-szöveg szerint)
+                        kar, vmod = f85.get(mt) or EZS3[mt], 'atkulcsolt_f85'
+                        kieg = ','.join(x for x in kieg.split(',') if x not in ('nincs_karoli', 'karoli_vers_nem_letezik', 'tobb_karoli_vers'))
+                        if mt not in f85:
+                            kieg = ','.join(x for x in ('f85_regio', kieg) if x)
                     elif 'nincs_karoli' in kieg.split(',') or 'karoli_vers_nem_letezik' in kieg.split(','):
                         # DT-F99h kiegészítés: az azonos számú Károli-vers, ha a TAHOT ott hordozza a szót
                         azon = '%s %d:%d' % (KAROLI_KONYV.get(h['konyv'], h['konyv']), h['c'], h['v'])
@@ -237,10 +245,10 @@ def general(ts, strongok=None):
 def kiir(sorok, modhash, ts):
     fej = ['# GENERÁLT: eszkozok/olvaso_szerver/bdb_vers_jelentes.py --ts %s — kézzel nem szerkesztendő (F99 M2; séma: adat/SEMA.md 2.29).' % ts,
            '# forras: konkordancia/BDB_teljes_unabridged.tsv@%s + Macula_heber_* (MT-versek, MT→Károli) + Karoli_versmegfeleltetes.tsv@%s + '
-           'Karoli_1908.tsv@%s (Károli-versek) + naplok/F85_macula_elvetve.tsv + naplok/F85_kulcsvaltas.tsv@%s (DT-F99h) + OSHL_lexikalis_index.tsv (bdb_id) + '
+           'Karoli_1908.tsv@%s (Károli-versek) + naplok/F85_macula_elvetve.tsv + naplok/F85_esetlista.tsv@%s (DT-F99h) + OSHL_lexikalis_index.tsv (bdb_id) + '
            'TAHOT_kivonat.tsv@%s (DT-F99h, DT-F99k); '
            'kód: bdb_szelet.py+bdb_vers_jelentes.py@%s (DT-F99g: a kód-hash csak itt áll, a sorok proveniencia-mezője erre a fejlécre hivatkozik); szabály: DT-F99a, DT-F99h, DT-F99i, DT-F99j, DT-F99k'
-           % (fajl_hash(BDB_EN), fajl_hash(VERSMEGF), fajl_hash(KAROLI), fajl_hash(F85_KULCSVALTAS), fajl_hash(TAHOT), modhash),
+           % (fajl_hash(BDB_EN), fajl_hash(VERSMEGF), fajl_hash(KAROLI), fajl_hash(F85_ESETLISTA), fajl_hash(TAHOT), modhash),
            '\t'.join(FEJ)]
     for s in sorok:
         for x in s:

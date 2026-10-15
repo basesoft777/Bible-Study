@@ -607,3 +607,29 @@ elem; teszt: `teszt_olvaso_szerver.py` `test_bdb_proba_es_mert_pontossag`). Az �
 
 **A külön javítási feladat brief-tervezete:** `beerkezo/BDB_SZELETELO_JAVITAS_brief_tervezet.md` (a `/befogad`-hoz; nem fogadtam be, a
 `FELADATOK.md`-hez nem nyúltam).
+
+### 9.13 A független ellenőr (naplok/ELLENOR_F99.md) eltéréseinek javítása a zárás előtt (F99.35–)
+
+**1. Károli-kulcs, rendszeres eltolás (DT-F99h (b)).** Az F99.29 eltolás-táblája a `F85_kulcsvaltas.tsv` régi TAHOT-kulcsát vette
+MT-számnak — ez hiba volt: a régi TAHOT-kulcs nem MT-szám (a Dán 4-ben és a Hós 2-ben el is tér). A javított forrás az F85 esetlistája
+(`naplok/F85_esetlista.tsv`): minden eltolt TAHOT-versnél dokumentálja a WLC (MT) megfelelőt és a Károli-verset (`eltolas`,
+`osszevonas_2_1`, J ≥ 0,5, 345 egyértelmű MT-vers). Az Ézs 3: az F85 a Macula-adatot elvetette (`F85_macula_elvetve.tsv`, 26 vers), MT →
+Károli megfeleltetést nem rögzített; a Károli-szöveg próbája (`lekerdez.py karoli "Ézs 3:1"` → az MT 2:22 szövege; `scan H0113 --szakasz
+"Ézs 3"` → Ézs 3:2) szerint MT 2:22 → K 3:1, MT 3:n → K 3:(n+1); ezek a sorok `f85_regio` okkódot kapnak (az eltolás értéke nem az F85-ből).
+
+Más Károli-versre került (az F99.34-es táblához képest) **514 sor**; a TAHOT-találat a régi → az új Károli-versen:
+
+| fejezet | sor | TAHOT régi → új |
+|---|---:|---:|
+| Ézs 3 | 209 | 7 → 191 |
+| Hós 2 | 207 | 9 → 186 |
+| Ézs 64 | 77 | 4 → 69 |
+| Ézs 2 (MT 2:22 → K 3:1) | 9 | 0 → 9 |
+| Én 7 | 7 | 0 → 7 |
+| Hós 14 | 5 | 0 → 0 |
+
+**Próba:** H0113 „Isa 3:1” — MT Ézs 3:1 → **Károli Ézs 3:2** (a TAHOT ott hordozza; teszt). **Maradék (nyitott tétel):** 1Krón 12 (78 sor,
+`atkulcsolt`; a TAHOT vegyes: az azonos számon 126, −1-en 123 találat a 256 sorból — a megerősítés gyenge, az F85 nem dokumentálja) és
+5Móz 5 (54 sor; azonos számon 105, +3-on 80 a 179-ből — a Dekalógus versbeosztása, az F85 nem dokumentálja). A Hós 14 5 sora a TAHOT szerint
+egyik változatban sem igazolt. A gépi Károli-összevetés (`naplok/BDB_SZELETELO_M2_karoli.md`) szerint a rendszeres eltolású fejezetek közül
+csak a 1Krón 12 és az 5Móz 5 maradt.

@@ -198,7 +198,7 @@ class Tabla(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.sorok, _ = V.general('2026-10-15', ['H1242', 'H0006', 'H0015', 'H0196', 'H0226', 'H6666', 'H5591', 'H8079', 'H5704',
-                                                      'H8641', 'H0068', 'H1802'])
+                                                      'H8641', 'H0068', 'H1802', 'H0113'])
 
     def test_minden_sorban_jelentespont_feloldasi_mod_es_proveniencia(self):
         i = {k: n for n, k in enumerate(V.FEJ)}
@@ -251,6 +251,9 @@ class Tabla(unittest.TestCase):
         self.assertEqual((x[i['mt_vers']], x[i['karoli_vers']], x[i['vers_feloldas']]), ('2Móz 36:6', '2Móz 36:5', 'atkulcsolt_f85'))
         x = sor(self.sorok, strong='H0068', poz='3699')[0]
         self.assertEqual((x[i['karoli_vers']], x[i['vers_feloldas']], x[i['okkod']]), ('2Móz 35:33', 'azonos_tahot', 'karoli_tahot'))
+        # ELLENOR_F99 1. pont: az Ézs 3 (Károli 3:1 = MT 2:22; MT 3:n → Károli 3:(n+1)); próba: H0113 „Isa 3:1” → Ézs 3:2
+        x = [y for y in sor(self.sorok, strong='H0113') if y[i['mt_vers']] == 'Ézs 3:1'][0]
+        self.assertEqual((x[i['karoli_vers']], x[i['vers_feloldas']], x[i['okkod']]), ('Ézs 3:2', 'atkulcsolt_f85', 'f85_regio'))
         # seed-101 M049: forras_hiba
         x = sor(self.sorok, strong='H1802', poz='512')[0]
         self.assertIn('forras_hiba', x[i['okkod']].split(','))

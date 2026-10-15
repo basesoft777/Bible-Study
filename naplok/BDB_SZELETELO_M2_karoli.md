@@ -10,30 +10,26 @@ A TAHOT `Igehely` kulcsa a Károli-vers, amelynek a héber szövegét a sor hord
 
 | feloldás | TAHOT-ban a Strong a Károli-versen | nincs | arány |
 |---|---:|---:|---:|
-| atkulcsolt | 5985 | 1006 | 85.61% |
-| atkulcsolt_f85 | 1023 | 76 | 93.08% |
-| azonos | 136623 | 13585 | 90.96% |
-| azonos_f85 | 7 | 201 | 3.37% |
-| azonos_tahot | 645 | 0 | 100.00% |
-| **összesen** | 144283 | 14868 | 90.66% |
+| atkulcsolt | 5383 | 698 | 88.52% |
+| atkulcsolt_f85 | 2619 | 373 | 87.53% |
+| azonos | 136172 | 13391 | 91.05% |
+| azonos_tahot | 551 | 0 | 100.00% |
+| **összesen** | 144725 | 14462 | 90.92% |
 
 Fejezetenként rendszeres eltolás (a TAHOT-találat nélküli sorok közül legalább 20, amelyeknél a szomszédos vers hordozza a szót, egyirányú eltolással; ez a kulcsolás rendszerhibájának jele, nem a Strong-címkézésé):
 
 | feloldás | fejezet | eltolás (Károli-vers + d) | sor | a fejezet találat nélküli sorai |
 |---|---|---:|---:|---:|
-| azonos_f85 | Ézs 3 | +1 | 180 | 201 |
-| atkulcsolt | Hós 2 | -1 | 164 | 185 |
 | atkulcsolt | 1Krón 12 | +1 | 78 | 98 |
-| atkulcsolt | Ézs 64 | -1 | 65 | 72 |
 | azonos | 5Móz 5 | +3 | 54 | 74 |
 
 A `nincs_karoli` okkódú (Károli-megfelelő nélküli, DT-F99a (3) a) szűretlen sorok, a TAHOT szerint:
 
 | eset | sor |
 |---|---:|
-| a ±3 versnyi környezetben a TAHOT-ban | 135 |
-| a környezetben sincs | 66 |
-| nincs azonos számú Károli-vers | 33 |
+| a ±3 versnyi környezetben a TAHOT-ban | 134 |
+| a környezetben sincs | 54 |
+| nincs azonos számú Károli-vers | 13 |
 
 ## 3. A vak minta (200 véletlen sor)
 
