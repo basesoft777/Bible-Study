@@ -638,7 +638,9 @@ class TestMentes(_Ideiglenes, unittest.TestCase):
         self.assertEqual(self.ment({'tokenek': {'space-he-csempe-min': '80px'}}, kod=self.kod()).status_code, 200)
         uj = self.fajl()
         adat = json.loads(uj)
-        self.assertEqual(uj.decode('utf-8'), json.dumps(adat, ensure_ascii=False, indent=2, sort_keys=True) + '\n')
+        # a sorvég a lemezes fájlé marad (core.autocrlf=true mellett a munkafa CRLF is lehet; l. test_a_crlf_sorveg_megmarad)
+        sv = '\r\n' if b'\r\n' in self.eredeti else '\n'
+        self.assertEqual(uj.decode('utf-8'), (json.dumps(adat, ensure_ascii=False, indent=2, sort_keys=True) + '\n').replace('\n', sv))
         diff = [s for s in difflib.unified_diff(self.eredeti.decode().splitlines(), uj.decode().splitlines(), lineterm='', n=0)
                 if s[:1] in '+-' and not s.startswith(('+++', '---'))]
         self.assertEqual(diff, ['-    "he-csempe-min": "72px",', '+    "he-csempe-min": "80px",'])
