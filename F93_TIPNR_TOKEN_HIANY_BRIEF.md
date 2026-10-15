@@ -6,13 +6,13 @@ tipus: feladat
 fazis: 1
 munka: adat
 modell: sonnet
-allapot: megallt
+allapot: fut
 ag: claude/f93-tipnr-token-hiany
 ad: a 62 alapszám (88 TIPNR-sor) mindegyike osztályozva (szövegváltozat / számozási eltérés / adathiány / nem eldönthető), forrásmegjelöléssel naplózva; az eredmény jelölés, nem javítás
-kovetkezo: "Te: DT-F93a — a jelölés helye ((a)/(b)) és a hatókör (a 62 alapszámból 46 héber, 5 LXX; l. naplok/F93_jelentes.md M0)"
+kovetkezo: M1 (szkript és lista)
 fugg: [88]
-olvas: [naplok/F88_meres.md, naplok/ELLENOR_F88_2.md, adat/SEMA.md, konkordancia/TIPNR_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_TIPNR_Normalizalo_README.md, eszkozok/sqlite_epit.py, F90_TAGNT_ZAROJELES_BRIEF.md]
-ir: [naplok/F93_jelentes.md, naplok/F93_alapszamok.tsv, eszkozok/f93_tipnr_token_hiany.py, eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, adat/SEMA.md, NYITOTT_FELADATOK.md, DONTESEK.md]
+olvas: [naplok/F88_meres.md, naplok/ELLENOR_F88_2.md, adat/SEMA.md, konkordancia/TIPNR_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_TIPNR_Normalizalo_README.md, eszkozok/sqlite_epit.py, F90_TAGNT_ZAROJELES_BRIEF.md]
+ir: [naplok/F93_jelentes.md, naplok/F93_alapszamok.tsv, eszkozok/f93_tipnr_token_hiany.py, NYITOTT_FELADATOK.md, DONTESEK.md]
 ---
 
 # F93_TIPNR_TOKEN_HIANY_BRIEF.md — a TIPNR token nélküli görög alapszámai
@@ -105,4 +105,4 @@ sem a TIPNR, sem a TAGNT nem módosul, és token sem keletkezik.
 
 | Tétel | Kérdés | Javaslat | Állapot |
 |---|---|---|---|
-| DT-F93a | Hol áll a jelölés: (a) csak `naplok/F93_alapszamok.tsv` + jelentés, vagy (b) a `pardes.db` `normalizalas_jelentes`-ében is? | (a), ha a `nem eldönthető` osztály üres vagy kicsi; (b), ha az olvasói felületnek (#92) kell a lekérdezéskor | nyitott — ⛔ az M0 után, a felhasználó dönt |
+| DT-F93a | Hol áll a jelölés: (a) csak `naplok/F93_alapszamok.tsv` + jelentés, vagy (b) a `pardes.db` `normalizalas_jelentes`-ében is? | (a), ha a `nem eldönthető` osztály üres vagy kicsi; (b), ha az olvasói felületnek (#92) kell a lekérdezéskor | 🟢 eldöntve: (a), a hatókör (iii) — mind a 62 alapszám (görög TAGNT, héber TAHOT), az osztályok + „alak-/névhasítás”, „nincs Károli-vers” (a felhasználó döntése, 2026-10-15, chat) |
