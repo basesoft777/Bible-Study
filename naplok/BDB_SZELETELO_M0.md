@@ -441,3 +441,46 @@ régi neveken marad, felülírás nélkül). A vak lap fejléce a 9.5 római sza
 kiszűrt sorból várhatóan egy sem esik. A mérce változatlan (a 200 véletlen soron): könyv/vers ≥ 99% (legfeljebb 2 hiba), jelentéspont ≥ 97%
 (legfeljebb 6 hiba), a 9.5 szabályával. Ha a felhasználó csak a 200 véletlen sort kéri: `--minta 100 --minta-kieg 0` (a kulcs és a vak lap
 újragenerálódik).
+
+### 9.9 A seed-100 újramérés ítélete és a szűrő-lista (F99.20–F99.21)
+
+**Mért eredmény** (F99.20, `naplok/BDB_SZELETELO_M2_seed100_osszevetes.txt`, a 9.5 szabályával, a 200 véletlen soron): könyv/vers
+198/200, jelentéspont 182/200 (18 eltérés). Ez a megfigyelt állapot marad; a minta nem javítódik „zöldre”.
+
+**Ítélet** (a felhasználó utasítására, javítás előtt, forrásidézettel: `naplok/BDB_SZELETELO_M2_seed100_iteletek.md`; a jóváhagyás a
+felhasználóé):
+
+| | jelentéspont | könyv/vers | szűrés | forrás |
+|---|---:|---:|---:|---:|
+| szeletelő-hiba | 15 | 1 (M013) | 3 (M001, M075; M158 vitás) | — |
+| kitöltő-hiba | 0 | 0 (M134 rövidítés, nem hiba) | 1 (M121) | — |
+| kulcs-ellentmondás | 3 (M019, M078: két római szint; M230: „— Note.”) | — | — | — |
+| `forras_hiba` | — | — | — | 3 (M006, M064, M079) |
+
+**Kapu:** 15 (vagy M076 forrás-OCR-ként: 14) szeletelő-hiba > 6 → a mérce a seed-100-on nem teljesült; a jóváhagyás után javítás (a
+9.6-os okcsoportok mentén: jelöletlen második címszó/alcímszó, héber prezentációs alakok U+FB1D–FB4F, fejléc, számjelölő, OCR, fő
+tagolás; DT-F99i), újragenerálás, újramérés **seed 101**-gyel, változatlan mércével és szabályokkal.
+
+**Most javítva (a felhasználó 4., 6. és 7. pontja; ez nem jelentéspont-javítás):**
+- **M013 — öröklés nem létező fejezetre.** A könyv nem öröklődik olyan fejezetre, amely az örökölt könyvben nincs („Malachi 3:20 … 5:9;
+  31:2; … 143:1”): okkód `orokles_hibas`, könyv és vers nélkül, bizonytalan (a táblában marad). A teljes táblán 103 sor (ezek korábban
+  a téves könyvvel `nem_letezo_vers`-ként álltak: 590 → 487).
+- **`forras_hiba`** (új okkód, SEMA 2.29): M006 (Jóel 1:4 → Jón 1:4), M064 (Zsolt 9:8 → 9:18), M079 (Ezsd 7:4, 6 → Dán 7:4, 6); a
+  tábla a forrást rögzíti, nem szűrt; a TAHOT a helyes verset igazolja. Kézi lista: `bdb_vers_jelentes.py` `FORRAS_HIBA`.
+- **Szűrő-lista (DT-F99j):** a közeli sigla közül a megnevezett kommentár-siglák (`Schr^…`, `COT`, `Dr`, `Dr^…`, `MI`, `MI^…`, `ᵑ7…`,
+  `Fl^…`, `De^…`) `sigla_lista` okkóddal kiszűrve, ha a siglát és a helyet csak héber idézett alak, „on”/„in” vagy „i.” választja el,
+  egy tagmondatban (lezáró zárójel, pontosvessző, kettőspont, gondolatjel után a hely bibliai: „(MI^10) Jer 48:1”, „Dr^Amos 4:9: Exod
+  10:13”). Teljes tábla: `sigla_lista` 24, `sigla_kozel` 389 → 364 (egy sor `orokles_hibas` lett), `szurt=1` 627 → 651. Mind a 24 sort
+  átnéztem (kommentár- vagy Targum-hely); a mintában M010 (MI), M176 (COT on Josh 17:11), M229 (Dr on 2Sam 8:3), seed-99 M159, M225
+  (Targum) esik ide.
+- **Jelzés (Targum):** a `ᵑ7^J`, `ᵑ7^Onk`, `ᵑ7^Jer` a felhasználó listáján szerepel, de szövegtanú: a szövegtanú-kivétel (5. pont:
+  `ᵐ5^Judg 15:9`, `ᵐ5^Lev 11:30` közvetlenül tapadva → szeletelő-hiba, a javítás az ítélet után) ellentmondhat neki. A mai állapot: a
+  közeli `ᵑ7` a listán (kiszűrve), a közvetlenül tapadt `ᵐ5^` még `sigla_tapadt`. A két szabályt a javítókörben egyeztetni kell.
+- **A bizonytalan réteg** (DT-F99j) nem része az M2 mércéjének, csak tájékoztató mutató.
+
+**Tájékoztató újraszámolás** (nem mérés; a seed-100 kulcsa a mai táblával, `m2_minta_osszevet.py --mai-tabla`): jelentéspont 182/200
+(változatlan: jelentéspont-javítás nem történt), könyv/vers 198/200 (M013 most könyv nélküli, bizonytalan sor), kiszűrt réteg 22/25
+(M001, M075, M121 — az ítélet szerint), bizonytalan réteg 3/25.
+
+**A tábla** (F99.21): 160 616 sor; jelentéspont: csomópont 122 072, `fej` 9 274, `tagolatlan` 29 270 (változatlan); `szurt=1` 651. Az
+aranyminta változatlan (EN 8/32, HU 4/14 hibás szócikk; eltérés 74/72).
