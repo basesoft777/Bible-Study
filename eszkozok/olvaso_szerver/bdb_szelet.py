@@ -100,8 +100,13 @@ PERSON = (r'(?:(?:hímnemű|nőnemű|közös)\s+)?(?:egyes|többes)\s+szám\s+(?
 # Az angol alaklista személyszáma pont nélkül is áll („3 feminine singular כָּֽלְתָה 1Sam 20:7”, „1 singular suffix”; F99 M2, aranyminta
 # 2.3/1): nem jelölő, ha utána suffix/consecutive, vagy héber alak és utána héber, zárójel, „+”, „;”, szám vagy igehely jön (a H4908
 # „3 plural מִשְׁכָּנוֺת, dwellings” és a H0776 „5 plural אֲרָצוֺת is almost wholly late” valódi jelentés). A „2 2nd son” jelölő (H0029).
+# A héber alak után vesszővel álló igehely is alaklista (H1157 „1 plural בַּעֲדֵנוּ, Amos 9:10”).
 PERSON_EN = (r'(?:masculine\s+|feminine\s+|common\s+)?(?:singular|plural)\s+(?:suffix\b|consecutive\b|'
-             r'[֐-׿׳][^\s,]*(?![^\s,])\s*(?=[֐-׿׳(+;]|\d|[1-3]?[A-Z][a-z]{0,8}\.?\s+\d))')
+             r'[֐-׿׳][^\s,]*(?![^\s,])\s*(?=[֐-׿׳(+;]|\d|,?\s*[1-3]?[A-Z][a-z]{0,8}\.?\s+\d))')
+# A magyar fordítás pont nélküli személyszáma (H1157 „1 többes szám בַּעֲדֵנוּ, Ámós 9:10”) ugyanezzel a feltétellel: a héber alakot
+# héber, zárójel, „+”, „;”, szám vagy (vesszővel) igehely követi; a H4908 „3 többes szám מִשְׁכָּנוֺת, lakóhelyek” jelentés marad.
+PERSON_HU_PONT_NELKUL = (r'(?:(?:hímnemű|nőnemű|közös)\s+)?(?:egyes|többes)\s+szám\s+[\u0590-\u05ff׳][^\s,]*(?![^\s,])\s*'
+                         r'(?=[\u0590-\u05ff׳(+;]|\d|,?\s*[1-3]?[A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]{0,8}\.?\s+\d)')
 # könyvnév része (F99 M2, aranyminta 2.3/2): „1 Kings 21”, „1 Samuel 14”, „2 Chron”
 KONYV_SZAM = r'(?:Kings|Samuel|Chronicles|Chron|Sam|Kin|Ki|Chr|Kgs)\b'
 
@@ -110,7 +115,7 @@ def _szam_minta():
     # szám, előtte szóköz/kezdet/gondolatjel, utána szóköz és nem szám/hivatkozás
     # változatok: „— 1 …”, „1. …”, „1.a …” (a betű az alpont), és hivatkozás utáni „… 48:14 2 first”
     # a „1. egyes szám”, „3. nőnemű”, „2. hímnemű többes szám” alak-személyek nem jelentés-sorszámok (H0157, H1869, H7121)
-    return re.compile(r'(?:(?<=—\s)|(?<=[.;:)]\s)|(?<=\d\s)|^)(?!\d{1,2}\.\s+' + PERSON + r')(?!\d{1,2}\.?\s+' + PERSON_EN + r')(?!\d\s+' + KONYV_SZAM + r')(\d{1,2})(?:\.(?=[a-l]\s)|\.?\s)(?=[^\d\s:,;.)(&]|\d{1,2}(?:st|nd|rd|th)\b)'
+    return re.compile(r'(?:(?<=—\s)|(?<=[.;:)]\s)|(?<=\d\s)|^)(?!\d{1,2}\.\s+' + PERSON + r')(?!\d{1,2}\.?\s+' + PERSON_EN + r')(?!\d{1,2}\s+' + PERSON_HU_PONT_NELKUL + r')(?!\d\s+' + KONYV_SZAM + r')(\d{1,2})(?:\.(?=[a-l]\s)|\.?\s)(?=[^\d\s:,;.)(&]|\d{1,2}(?:st|nd|rd|th)\b)'
                       r'(?!\S*\^)')
 
 

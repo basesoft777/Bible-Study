@@ -13,6 +13,7 @@ csomópontjai szerint), okkóddal. A szabályok a DT-F99a döntése szerint (fel
 Használat (a repó gyökeréből):
   python eszkozok/olvaso_szerver/bdb_vers_jelentes.py --ts 2026-10-15        # írja az adat/bdb_vers_jelentes.tsv-t
   python eszkozok/olvaso_szerver/bdb_vers_jelentes.py --ts 2026-10-15 --ellenoriz   # újragenerál a memóriába, bájtra összeveti
+  python eszkozok/olvaso_szerver/bdb_vers_jelentes.py --minta 99                     # az M2 ⛔ vak munkalapja és kulcsa (naplok/)
 Azonos bemenettel és --ts-sel bájtra azonos. I/O: split('\\t') / '\\t'.join (csv modul nélkül).
 """
 import argparse
@@ -142,7 +143,8 @@ def general(ts, strongok=None):
         savok = B.csomopont_savok(szoveg, r)
         # tagolatlan szócikk (nincs számozott jelentés, alpont, törzs): a hivatkozás az egész szócikkhez tartozik
         tagolt = any(not ut.endswith('/-') or szint == 'alpont' or not ut.startswith('-/') for _, _, _, ut, szint in savok)
-        prov = 'scope=%s | forras=bdb_vers_jelentes@%s | ts=%s' % (strong, modhash, ts)
+        # DT-F99g (felhasználó, 2026-10-15): a kód-hash csak a fájl fejlécében áll; a sor a forrásra és a generátorra hivatkozik
+        prov = 'scope=%s | forras=bdb_vers_jelentes.py (fejléc) | ts=%s' % (strong, ts)
         for n, h in enumerate(B.hivatkozasok(szoveg), 1):
             szak, ut = B.jelentespont(h['poz'], savok)
             if not tagolt:
@@ -167,7 +169,7 @@ def kiir(sorok, modhash, ts):
     fej = ['# GENERÁLT: eszkozok/olvaso_szerver/bdb_vers_jelentes.py --ts %s — kézzel nem szerkesztendő (F99 M2; séma: adat/SEMA.md 2.29).' % ts,
            '# forras: konkordancia/BDB_teljes_unabridged.tsv@%s + Macula_heber_* (MT-versek, MT→Károli) + Karoli_versmegfeleltetes.tsv@%s + '
            'Karoli_1908.tsv@%s (Károli-versek) + naplok/F85_macula_elvetve.tsv + OSHL_lexikalis_index.tsv (bdb_id); '
-           'kód: bdb_szelet.py+bdb_vers_jelentes.py@%s (a sorok proveniencia-mezője erre hivatkozik); szabály: DT-F99a'
+           'kód: bdb_szelet.py+bdb_vers_jelentes.py@%s (DT-F99g: a kód-hash csak itt áll, a sorok proveniencia-mezője erre a fejlécre hivatkozik); szabály: DT-F99a'
            % (fajl_hash(BDB_EN), fajl_hash(VERSMEGF), fajl_hash(KAROLI), modhash),
            '\t'.join(FEJ)]
     for s in sorok:
@@ -177,11 +179,13 @@ def kiir(sorok, modhash, ts):
     return '\n'.join(fej + ['\t'.join(s) for s in sorok]) + '\n'
 
 
-def minta(seed, n, kieg, ki_ut):
-    """Az M2 ⛔ minta-ellenőrzésének munkalapja (javaslat: naplok/BDB_SZELETELO_M0.md 9.4): a meglévő táblából `n` egyszerű véletlen sor
-    (random.Random(seed)), és rétegenként `kieg` további sor a kiszűrt (szurt=1) és a bizonytalan (sigla_kozel, tobbertelmu) hivatkozásokból.
-    Soronként a forrás-környezet (±70 karakter) és a jelentéspont csomópontjának eleje, kitöltendő ítélet-oszlopokkal. Csak olvas, a
-    munkalapot a megadott útra írja (a repón kívülre vagy a naplok/ alá)."""
+def minta(seed, n, kieg, vak_ut, kulcs_ut):
+    """Az M2 ⛔ minta-ellenőrzésének két fájlja (a felhasználó döntése, 2026-10-15; naplok/BDB_SZELETELO_M0.md 9.4):
+    (a) VAK munkalap a független ellenőrnek: a hivatkozás azonosítója, a Strong, a nyers hivatkozás és a környezete a szócikk szövegéből,
+        üres kitöltendő oszlopokkal — semmi a szeletelő feloldásából (könyv, vers, jelentéspont, szűrés, réteg);
+    (b) KULCS: ugyanazok az azonosítók a szeletelő kimenetével és a réteggel (az ellenőrnek nem adjuk).
+    A minta: `n` egyszerű véletlen sor a teljes táblából (random.Random(seed)), és rétegenként `kieg` sor a kiszűrt (szurt=1) és a bizonytalan
+    (sigla_kozel, tobbertelmu) hivatkozásokból; a sorrend a seeddel megkeverve (a réteg a vak lapon nem látszik). Csak olvas."""
     import random
     fej, sorok = None, []
     with open(KI, encoding='utf-8', newline='') as f:
@@ -195,42 +199,52 @@ def minta(seed, n, kieg, ki_ut):
             sorok.append(dict(zip(fej, m)))
     rnd = random.Random(seed)
     valasztott = [('veletlen', s) for s in rnd.sample(sorok, n)]
+    marad = [s for s in sorok if not any(s is x for _, x in valasztott)]
     for nev, felt in (('szurt', lambda s: s['szurt'] == '1'),
                       ('bizonytalan', lambda s: any(o in s['okkod'].split(',') for o in ('sigla_kozel', 'tobbertelmu')))):
-        pool = [s for s in sorok if felt(s)]
+        pool = [s for s in marad if felt(s)]
         valasztott += [(nev, s) for s in rnd.sample(pool, min(kieg, len(pool)))]
-    en, lem, _, _, _, _ = betolt()
-    ki = ['# M2 ⛔ minta-munkalap: seed=%d, %d véletlen + %d/réteg kiegészítő; forrás: adat/bdb_vers_jelentes.tsv' % (seed, n, kieg),
-          '\t'.join(['reteg', 'strong', 'sorszam', 'nyers', 'kornyezet', 'konyv_feloldas', 'mt_vers', 'karoli_vers', 'vers_feloldas',
-                     'szakasz', 'utvonal', 'csomopont_eleje', 'okkod', 'szurt', 'itelet_konyv_vers', 'itelet_jelentespont', 'itelet_szures', 'megjegyzes'])]
-    cache = {}
-    for reteg, s in valasztott:
-        szoveg = en[s['strong']]
-        if s['strong'] not in cache:
-            r = B.szeletel(szoveg, lem.get(s['strong'], ''))
-            cache[s['strong']] = (B.lapit(szoveg), B.csomopont_savok(szoveg, r))
-        flat, savok = cache[s['strong']]
+    rnd.shuffle(valasztott)
+    en = {d['Strong_padded']: d['Teljes_szocikk'] for d in tsv_sorok(BDB_EN)}
+    vak = ['# M2 ⛔ VAK munkalap (F99): seed=%d; %d sor. Forrás: a BDB angol szócikke (konkordancia/BDB_teljes_unabridged.tsv, a Strong sora).' % (seed, len(valasztott)),
+           '# Kitöltendő soronként, a szócikk TELJES szövegéből (a környezet csak tájékoztat; a könyv a szócikkben korábban állhat): '
+           'konyv_mt = a hivatkozott hely könyve és MT fejezet:verse (pl. „1Móz 32:1”; egyfejezetes könyvnél 1. fejezet), ha bibliai hely; '
+           'karoli_vers = a Károli-szám, ha eltér (különben „=”); jelentespont = a BDB tagolása szerinti hely (római szakasz, törzs, jelentés, alpont, '
+           'pl. „II Qal/2/a”, „-/1/b”), vagy „fej” (címsor, nyelvi háttér, alaktan), vagy „tagolatlan” (a szócikknek nincs törzse, számozott jelentése, alpontja); '
+           'szures = „bibliai” vagy „alhivatkozas: <ok>” (pl. kommentár-hely, nem bibliai mű) vagy „bizonytalan: <ok>”.',
+           '# A poz a hivatkozás kezdete a szöveg „lapított” alakjában (sortörés helyett szóköz; „1.a” → „1. a.”), csak a megtaláláshoz.',
+           '\t'.join(['azon', 'strong', 'poz', 'nyers', 'kornyezet', 'konyv_mt', 'karoli_vers', 'jelentespont', 'szures', 'megjegyzes'])]
+    kulcs = ['# M2 ⛔ KULCS (F99): seed=%d; a szeletelő kimenete (adat/bdb_vers_jelentes.tsv) a vak munkalap azonosítóival. Az ellenőrnek NEM adandó.' % seed,
+             '\t'.join(['azon', 'reteg', 'strong', 'sorszam', 'poz', 'nyers', 'konyv_feloldas', 'mt_vers', 'karoli_vers', 'vers_feloldas',
+                        'szakasz', 'utvonal', 'okkod', 'szurt'])]
+    for k, (reteg, s) in enumerate(valasztott, 1):
+        azon = 'M%03d' % k
+        flat = B.lapit(en[s['strong']])
         p = int(s['poz'])
-        korny = flat[max(0, p - 70):p] + '⟦' + flat[p:p + len(s['nyers'])] + '⟧' + flat[p + len(s['nyers']):p + len(s['nyers']) + 70]
-        csp = next((flat[a:min(b, a + 50)] for a, b, sz, ut, _ in savok if sz == s['szakasz'] and ut == s['utvonal']), '')
-        ki.append('\t'.join([reteg, s['strong'], s['sorszam'], s['nyers'], korny.replace('\t', ' '), s['konyv_feloldas'], s['mt_vers'], s['karoli_vers'],
-                             s['vers_feloldas'], s['szakasz'], s['utvonal'], csp.replace('\t', ' '), s['okkod'], s['szurt'], '', '', '', '']))
-    with open(ki_ut, 'w', encoding='utf-8', newline='\n') as f:
-        f.write('\n'.join(ki) + '\n')
-    print('munkalap: %s (%d sor)' % (ki_ut, len(valasztott)))
+        hossz = len(s['nyers']) if flat[p:p + len(s['nyers'])] == s['nyers'] else len(s['nyers'].lstrip(', '))
+        korny = flat[max(0, p - 100):p] + '⟦' + flat[p:p + hossz] + '⟧' + flat[p + hossz:p + hossz + 100]
+        vak.append('\t'.join([azon, s['strong'], s['poz'], s['nyers'], korny.replace('\t', ' '), '', '', '', '', '']))
+        kulcs.append('\t'.join([azon, reteg, s['strong'], s['sorszam'], s['poz'], s['nyers'], s['konyv_feloldas'], s['mt_vers'], s['karoli_vers'],
+                                s['vers_feloldas'], s['szakasz'], s['utvonal'], s['okkod'], s['szurt']]))
+    for ut, ki in ((vak_ut, vak), (kulcs_ut, kulcs)):
+        with open(ut, 'w', encoding='utf-8', newline='\n') as f:
+            f.write('\n'.join(ki) + '\n')
+    print('vak munkalap: %s; kulcs: %s (%d sor; réteg: %s)' % (vak_ut, kulcs_ut, len(valasztott),
+                                                               dict(collections.Counter(r for r, _ in valasztott))))
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('--minta', type=int, metavar='SEED', help='az M2 ⛔ minta-munkalapja (nem írja a táblát)')
+    ap.add_argument('--minta', type=int, metavar='SEED', help='az M2 ⛔ vak munkalapja és kulcsa (nem írja a táblát)')
     ap.add_argument('--minta-n', type=int, default=200)
     ap.add_argument('--minta-kieg', type=int, default=25)
-    ap.add_argument('--minta-ki', default=None)
+    ap.add_argument('--minta-vak', default=os.path.join(REPO, 'naplok', 'BDB_SZELETELO_M2_minta_vak.tsv'))
+    ap.add_argument('--minta-kulcs', default=os.path.join(REPO, 'naplok', 'BDB_SZELETELO_M2_minta_kulcs.tsv'))
     ap.add_argument('--ts', help='a proveniencia ts mezője (a futás napja); azonos ts-sel bájtra azonos a kimenet')
     ap.add_argument('--ellenoriz', action='store_true', help='nem ír: újragenerál és összeveti a meglévő táblával')
     a = ap.parse_args()
     if a.minta is not None:
-        minta(a.minta, a.minta_n, a.minta_kieg, a.minta_ki or os.path.join(REPO, 'naplok', 'BDB_SZELETELO_M2_minta.tsv'))
+        minta(a.minta, a.minta_n, a.minta_kieg, a.minta_vak, a.minta_kulcs)
         return
     if not a.ts:
         ap.error('--ts kell')

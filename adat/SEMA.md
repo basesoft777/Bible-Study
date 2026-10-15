@@ -1242,7 +1242,7 @@ fejléc. Olvasás `split('\t')`. A pardes.db-be az `adat/` tábláival együtt k
 | `utvonal` | a jelentéspont: `<törzs>/<jelentés>/<alpont>` (hiányzó szint `-`, mint az aranymintában); `fej` (a csomópontokon kívül: címsor, nyelvi háttér, alaktan); `tagolatlan` (a szócikkben nincs törzs, számozott jelentés vagy alpont: a hivatkozás az egészhez tartozik). A használati csoport (M3) még nem része |
 | `okkod` | vesszővel: `nem_bibliai`, `sigla_tapadt` (kiszűrve), `sigla_kozel`, `tobbertelmu`, `ismeretlen_alak`, `nincs_elozmeny` (bizonytalan, a táblában marad), `nem_letezo_vers`, `nincs_karoli`, `tobb_karoli_vers` (a Macula több Károli-verset ad; az első áll), `usz`; üres: feloldott bibliai hivatkozás |
 | `szurt` | `1`: álhivatkozás, kiszűrve (DT-F99a (1): `nem_bibliai`, `sigla_tapadt`); `0`: nem |
-| `proveniencia` | **minden sorban:** `scope=<Strong> | forras=bdb_vers_jelentes@<kód-hash> | ts=<nap>` (gépi; `manual` nem lehet); a kód-hash a `bdb_szelet.py` és a `bdb_vers_jelentes.py` tartalmáé, a bemenetek a fájl `# forras:` sorában |
+| `proveniencia` | **minden sorban:** `scope=<Strong> \| forras=bdb_vers_jelentes.py (fejléc) \| ts=<nap>` (gépi; `manual` nem lehet). A kód-hash (a `bdb_szelet.py` és a `bdb_vers_jelentes.py` tartalmáé) és a bemenetek hash-e **csak a fájl `# forras:` fejlécsorában** áll (DT-F99g, felhasználó, 2026-10-15; eltér a brief soronkénti `bdb_szelet@<commit>` alakjától: így egy szeletelő-javítás nem írja újra az összes sort) |
 
 Kulcs: `strong` + `sorszam`. A jelentéspont a gépi szeletelés szerint áll (a szeletelő ismert hibái, `naplok/BDB_SZELETELO_M0.md` 2.3, öröklődnek); a pontosságát az M2 ⛔ 200-as mintája méri.
 

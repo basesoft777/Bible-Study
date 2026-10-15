@@ -71,7 +71,7 @@ class SzerkezetJavitas(unittest.TestCase):
     def setUpClass(cls):
         cls.en, cls.lem = {}, {}
         for d in V.tsv_sorok(V.BDB_EN):
-            if d['Strong_padded'] in ('H3615', 'H0776', 'H4908', 'H0029', 'H5022', 'H0157'):
+            if d['Strong_padded'] in ('H3615', 'H0776', 'H4908', 'H0029', 'H5022', 'H0157', 'H1157'):
                 cls.en[d['Strong_padded']] = d['Teljes_szocikk']
 
     def jelek(self, s, torzs=None):
@@ -90,6 +90,7 @@ class SzerkezetJavitas(unittest.TestCase):
 
     def test_konyvnev_szama_nem_jelolo_es_sorszamnev(self):
         self.assertEqual(self.jelek('H5022'), [])                                # „1 Kings 21”
+        self.assertTrue(B.szeletel(self.en['H1157'])['torzsek'][0]['jelentesek'][0]['szoveg'].startswith('literal'))   # „1 plural …, Amos 9:10”
         self.assertEqual([j for j, _ in self.jelek('H0029')], [str(i) for i in range(1, 9)])   # „2 Chronicles 13:23. 2 2nd son”
 
 
@@ -104,7 +105,8 @@ class Tabla(unittest.TestCase):
             self.assertEqual(len(s), len(V.FEJ))
             self.assertTrue(s[i['utvonal']], s)
             self.assertIn(s[i['konyv_feloldas']], ('kiirt', 'orokolt', 'folytatas', 'feloldhatatlan'))
-            self.assertTrue(s[i['proveniencia']].startswith('scope=%s | forras=bdb_vers_jelentes@' % s[0]), s)
+            self.assertTrue(s[i['proveniencia']].startswith('scope=%s | forras=bdb_vers_jelentes.py (fejléc) | ts=' % s[0]), s)
+            self.assertNotIn('@', s[i['proveniencia']])          # DT-F99g: a kód-hash csak a fejlécben
             self.assertNotIn('manual', s[i['proveniencia']])
             if s[i['szurt']] == '1':
                 self.assertEqual(s[i['karoli_vers']], '')
