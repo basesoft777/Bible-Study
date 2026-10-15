@@ -663,7 +663,7 @@ class BdbSzeletelesAtnezes(unittest.TestCase):
         'H0834': [("", "1 2 3 4(abcd) 5 6 7(abc) 8(abcdef)")],
         'H3588': [("", "1(abcdefg) 2(abc) 3(abcde)")],
         'H0935': [("Qal", "- 1(ab) 2(abcdefg) 3 4"), ("Hiph'il", "- 1(abcdefg) 2(abcde)"), ("Hoph'al", "-(abc)")],
-        'H3027': [("", "1(ab) 2 3(abcde) 4(abcdefg) 5(abcdefghi)")],   # F99 M2: az aranyminta szerint (adat/bdb_aranyminta.tsv)
+        'H3027': [("", "1(abcde) 2 3(abcde) 4(abcdefg) 5(abcdefghi)")],   # az aranyminta szerint (adat/bdb_aranyminta.tsv); ISMERT HIBA, l. lent
         'H5973': [("", "1(abcdefg) 2 3(abcde) 4(ab) 5")],   # F99 seed-100: a „מֵעִם_72” alcímszó a. – d. pontja külön szakasz
         'H2896': [("", "1(abcd) 2(abcde) 3(abcde) 4(ab) 5 6 7 8 9(ab) 10(ab)")],
         'H3205': [("Qal", "- 1(abc) 2(ab) 3"), ("Niph'al", "-"), ("Pi'el", "-"), ("Pu'al", "-"), ("Hiph'il", "- 1 2"), ("Hoph'al", "-"),
@@ -702,12 +702,21 @@ class BdbSzeletelesAtnezes(unittest.TestCase):
                                           for j in t['jelentesek'])))
         return ki
 
+    # ELLENOR_F99 5.: a várt szerkezet az aranymintáé; ahol a szeletelő ma ettől eltér, az ismert hiba itt áll (a teszt nem rögzíti a hibás
+    # kimenetet elvárásként). Ha a hiba megszűnik, a teszt jelez: a sort ki kell venni ebből a listából.
+    ISMERT_HIBA = {'H3027': 'a magyar szövegben az 1. jelentés c–e alpontja nem bomlik (az „Est 3:10. c.” tapadt jelölő a fordításban más '
+                            'alakú); javítási feladat: beerkezo/BDB_SZELETELO_JAVITAS_brief_tervezet.md'}
+
     def test_varhato_szerkezet(self):
         import bdb_szelet
         for st, vart in self.VART.items():
             with self.subTest(strong=st):
                 self.assertIn(st, self.SOROK)
-                self.assertEqual(self.alak(bdb_szelet.szeletel(self.SOROK[st])), vart)
+                kapott = self.alak(bdb_szelet.szeletel(self.SOROK[st]))
+                if st in self.ISMERT_HIBA:
+                    self.assertNotEqual(kapott, vart, 'az ismert hiba megszűnt (%s): vedd ki az ISMERT_HIBA-ból' % st)
+                    continue
+                self.assertEqual(kapott, vart)
 
     def test_h7121_jelentesei_a_helyen(self):
         import bdb_szelet
