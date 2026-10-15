@@ -6,11 +6,14 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: folyamat
-allapot: nem_indult
+allapot: lezarva
+ag: claude/olvaso-indito
 ad: egy közös indító-szkript, amelyet a három asztali parancsikon hív: leállítja a régi példányt, a WSL-beli pardes.db-t a Windows-oldalihoz igazítja (csak eltérésnél másol), és kódváltozáskor magától újrainduló szervert indít; a lap láblécében ág, kódverzió és adatbázis, figyelmeztetéssel, ha valami nem friss; a tesztek egyetlen belépési pontról, natív fájlokból futnak
-kovetkezo: /kovetkezo; ⛔ M0 (a felmérés és a DT-F100a–b), ⛔ M2 (a felhasználó kipróbálja a parancsikonokat)
+kovetkezo: Te: merge után, a fő checkout main-re állításával a három parancsikon kipróbálása (M2.2 ⛔); utána az ütemezett feladat jóváhagyása (DT-F100b)
 olvas: [eszkozok/olvaso_szerver/README.md, eszkozok/olvaso_szerver/frissesseg.py, eszkozok/olvaso_szerver/manifest_pardes_db.tsv, eszkozok/olvaso_szerver/pyproject.toml]
-ir: [eszkozok/olvaso_szerver/indit.sh, eszkozok/olvaso_szerver/alkalmazas.py, eszkozok/olvaso_szerver/sablonok/alap.html, eszkozok/olvaso_szerver/teszt_indito.py, eszkozok/olvaso_szerver/README.md, eszkozok/teszt_futtat.py, CLAUDE.md, naplok/OLVASO_INDITO_zaras.md]
+ir: [eszkozok/olvaso_szerver/indit.sh, eszkozok/olvaso_szerver/allapot.py, eszkozok/olvaso_szerver/alkalmazas.py, eszkozok/olvaso_szerver/oldalak.py, eszkozok/olvaso_szerver/sablonok/alap.html, eszkozok/olvaso_szerver/teszt_indito.py, eszkozok/olvaso_szerver/README.md, eszkozok/teszt_futtat.py, CLAUDE.md, .gitattributes, naplok/OLVASO_INDITO_M0_felmeres.md, naplok/OLVASO_INDITO_M1_merés.md, naplok/OLVASO_INDITO_M2_gepi_proba.md, naplok/ELLENOR_F100.md, DONTESEK.md, naplok/OLVASO_INDITO_zaras.md]
+pr: https://github.com/basesoft777/Bible-Study/pull/351
+lezarva_osszegzes: "Az olvasó-szerver automatikus indítása: indit.sh (régi példány leállítása, epites_ts-alapú atomi adatbázis-szinkron, stat-újratöltő), élő lábléc (ág, commit, építési idő, figyelmeztetés), teszt_futtat.py (WSL venv, natív PARDES_DB; a hat tesztfájl együtt 274,6 mp); M2.2 (parancsikonok kipróbálása) a merge és a fő checkout main-re állítása után."
 fugg: []
 nem_fugg: [76]
 ---
@@ -70,7 +73,7 @@ Ami még nincs megoldva (2026-10-14/15-ei esetek):
 ### M2 — próba ⛔
 
 1. Gépi próba: indítás → kódfájl módosítása (`touch`) → az újraindulás a naplóban; a Windows-oldali `pardes.db` `epites_ts`-ének eltérése → másolás az indításkor; ágváltás → a lábléc figyelmeztet.
-2. ⛔ A felhasználó kipróbálja a három parancsikont. Megállás; zárónapló.
+2. ⛔ A felhasználó kipróbálja a három parancsikont — **feltétele: a merge, és hogy a fő checkout a `main`-en álljon** (addig a parancsikonok tartalék ága fut). Ezután, a felhasználó külön jóváhagyásával (DT-F100b): a 8765-ös (belső) példány ütemezett feladata bejelentkezéskorra. Megállás; zárónapló.
 
 ## 5. Elfogadási feltételek
 
@@ -78,7 +81,7 @@ Ami még nincs megoldva (2026-10-14/15-ei esetek):
 - Egy `.py` vagy sablonfájl módosítása után a futó szerver legfeljebb 5 másodpercen belül az új kóddal válaszol (a lábléc commit-hashe vagy a módosított fájl hatása mutatja).
 - Ha a Windows-oldali `pardes.db` újabb, az indításkor a másolat frissül; ha azonos, nincs másolás (a napló kiírja, melyik történt). A másolás közben a régi példány ép marad (ideiglenes név + átnevezés).
 - A lábléc mindhárom kiadásban mutatja az ágat, a commitot és az adatbázis építési idejét; nem `main` ágon és régi adatbázisnál figyelmeztet.
-- `teszt_futtat.py`-vel a `teszt_olvaso_szerver.py` a választott környezetben 5 percen belül lefut; a teszt induláskor kiírja, melyik adatbázist nyitotta meg, és figyelmeztet, ha az a `/mnt/c` alatt van.
+- `teszt_futtat.py`-vel a négy tesztfájl (`teszt_olvaso_szerver.py`, `teszt_szintek.py` és a további kettő) együtt a DT-F100a (c) szerinti környezetben együtt 5 percen (300 mp) belül lefut (az M1 mérése: 274,6 mp a hat fájlra; referencia: `teszt_olvaso_szerver.py` 118–124 mp, `teszt_szintek.py` #98-nál 19 perc párhuzamos futás mellett); a teszt induláskor kiírja, melyik adatbázist nyitotta meg, és figyelmeztet, ha az a `/mnt/c` alatt van.
 - A meglévő tesztek zöldek; a #98 regiszter-őre zöld (a lábléc új elemei regisztrálva vagy indokolva kizárva).
 
 ## 6. Döntésnapló

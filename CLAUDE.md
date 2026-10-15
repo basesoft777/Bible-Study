@@ -158,6 +158,8 @@ alatt van, a wrapper `sys.`-használata `NameError`-ral bukik, mielőtt bármi
 lefutna. Dokumentált eset: `lekerdez.py`, `grammatikai_strongok_general.py`,
 `tahot_lefedettseg_ellenoriz.py`, l. `F4_BRIEF.md` „Tétel E".)
 
+**Az olvasó-szerver tesztjei** (`eszkozok/olvaso_szerver/teszt_*.py`) csak `python eszkozok/teszt_futtat.py` hívással futnak (Windowsról és WSL-ből is, `--gyors`: a lassú `teszt_szintek.py` nélkül): a WSL venv-jét és a WSL-natív `~/pardes/pardes.db`-t választja, kiírja, melyik adatbázist nyitotta meg, és figyelmeztet, ha az a `/mnt/c` alatt van; `PARDES_DB` nélküli kézi futtatás a `/mnt/c`-ről 45+ perc (#100, DT-F100a).
+
 ## TSV-olvasás — a `csv` modul nem használható ezeken a táblákon
 
 **Az `adat/*.tsv` és a `konkordancia/*.tsv` olvasása `split('\t')`, írása `'\t'.join()`.**

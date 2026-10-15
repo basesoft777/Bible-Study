@@ -126,6 +126,8 @@ class OldalGyar:
         # a tervező mód (#98 M2): a kapcsoló, a szkript és a stíluslap a lapon; csak a szerver kapcsolja be, a belso kiadásban
         # (alkalmazas.letrehoz); a statikus export és más kiadás lapján nincs nyoma
         self.tervezo = False
+        # a lábléc élő állapota (#100, `allapot.LablecFigyelo`): az `alkalmazas.letrehoz` állítja be; a statikus export lapján None (a lábléc ott változatlan)
+        self.lablec = None
         con = db.kapcsolat()
         self.kozos = Kozos(con)
         self.jinja = Environment(loader=FileSystemLoader(sablon_dir), autoescape=select_autoescape(['html']),
@@ -160,6 +162,7 @@ class OldalGyar:
         ctx.setdefault('epites_ts', self.kozos.meta.get('epites_ts', ''))
         ctx.setdefault('nezet', ALAP_NEZET)
         ctx.setdefault('arculat_hash', self.arculat.hash)
+        ctx.setdefault('lablec', self.lablec.kap() if self.lablec else None)
         ctx['tervezo'] = bool(self.tervezo) and self.kiadas == 'belso'
         if ctx['tervezo']:
             ctx['tervezo_v'] = self.kod_verzio

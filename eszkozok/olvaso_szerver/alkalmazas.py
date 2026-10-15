@@ -6,6 +6,7 @@ Csak útvonalat, sütit, fejlécet és gyorsítótárat kezel; a lapok tartalma 
 
 Indítás (a célgépen): gunicorn -c gunicorn_conf.py "alkalmazas:letrehoz()"   (1 worker, 4 szál: gthread)
 Fejlesztés:           python alkalmazas.py --port 8765
+Kód-újratöltéssel:    python alkalmazas.py --port 8765 --ujratolt   (az `indit.sh` ezt használja; l. `figyelt_fajlok`)
 """
 import json
 import os
@@ -22,6 +23,7 @@ if hasattr(sys.stderr, 'reconfigure'):
     sys.stderr.reconfigure(encoding='utf-8')
 
 import adatbazis
+import allapot as allapot_modul
 import arculat as arculat_modul
 import hozzaferes as hozz_modul
 import lekerdezesek
@@ -48,6 +50,8 @@ def letrehoz(db_ut=None, kiadas=None, konfig_dir=None, hozzaferes=None):
     hozz = hozzaferes or hozz_modul.Hozzaferes.betolt(kdir)
     db = adatbazis.Adatbazis(db_ut, kiadas, mmap_bajt=int(konf.get('mmap_bajt', 0)))
     gyar = oldalak.OldalGyar(db, hozz, arculat=arculat_modul.Arculat.konfigbol(kdir))
+    # a lábléc indítási állapota (#100): ág, commit, építési idő, figyelmeztetések; a statikus exportban nincs (ott a lábléc változatlan)
+    gyar.lablec = allapot_modul.LablecFigyelo(kiadas, gyar.kozos.meta.get('epites_ts', ''))
     # az elem-regiszter (#98 M2): induláskor ellenőrzött (ismeretlen vagy nem állítható token indulási hiba), minden kiadásban
     regiszter = tervezo_modul.Regiszter.konfigbol(kdir, gyar.arculat.adat)
     suti = konf.get('suti', {})
@@ -89,7 +93,7 @@ def letrehoz(db_ut=None, kiadas=None, konfig_dir=None, hozzaferes=None):
         nezet = nezet_kerese()
         # az arculat hash-e külön tag (#98): a token-fájl változása után nincs 304 és nincs régi lap a gyorsítótárból
         kulcs = (request.path, tuple(sorted(kulcs_reszek.items())), nezet, szint, kiadas, gyar.kozos.adatbazis_kulcs, oldalak.SABLON_VERZIO, gyar.kod_verzio,
-                 gyar.arculat.hash, fragment)
+                 gyar.arculat.hash, fragment, gyar.lablec.kap().kulcs() if gyar.lablec else None)
         etag = Gyorsitotar.etag(kulcs)
         hit = cache.kap(kulcs)
         if hit is None:
@@ -259,6 +263,23 @@ def letrehoz(db_ut=None, kiadas=None, konfig_dir=None, hozzaferes=None):
     return app
 
 
+def figyelt_fajlok(szerver_dir=None):
+    """Az újratöltő által figyelt, nem Python-modul fájlok (#100): a Werkzeug alapból csak a betöltött modulokat nézi, a sablonokat,
+    a konfigurációt és a statikus fájlokat nem; a pilot `bdb_szelet.py`-ja (a BDB-bontás) modulként töltődik be, de kívül esik a szerver
+    könyvtárán. A tervező mód által futás közben írt `arculat.json` és `.elozo`-ja KIMARAD: a mentés újraindítás nélkül hat (a szerver
+    az `arculat.hash`-ből követi), a figyelése minden mentésnél újraindítaná a szervert."""
+    d = szerver_dir or os.path.dirname(os.path.abspath(__file__))
+    ki = []
+    for alk in ('sablonok', 'konfig', 'statikus'):
+        for gyoker, _, nevek in os.walk(os.path.join(d, alk)):
+            for n in sorted(nevek):
+                if n.startswith('arculat.json') or n.endswith('.pyc'):
+                    continue
+                ki.append(os.path.join(gyoker, n))
+    ki.append(os.path.join(os.path.dirname(d), 'olvaso_pilot', 'bdb_szelet.py'))
+    return sorted(f for f in ki if os.path.isfile(f))
+
+
 def main():
     import argparse
     ap = argparse.ArgumentParser(description='PaRDeS olvasó (fejlesztői szerver; élesben gunicorn)')
@@ -266,8 +287,20 @@ def main():
     ap.add_argument('--kiadas', choices=adatbazis.KIADASOK)
     ap.add_argument('--port', type=int, default=8765)
     ap.add_argument('--host', default='127.0.0.1')
+    ap.add_argument('--ujratolt', action='store_true', help='kódváltozáskor magától újraindul (Werkzeug stat-újratöltő: a /mnt/c-n az inotify nem működik)')
     a = ap.parse_args()
-    letrehoz(a.db, a.kiadas).run(host=a.host, port=a.port, threaded=True)
+    if not a.ujratolt:
+        letrehoz(a.db, a.kiadas).run(host=a.host, port=a.port, threaded=True)
+        return
+    # az újratöltővel a szülő-folyamat csak a figyelő: az alkalmazást (adatbázis, regiszter) csak a gyerek építi fel, így a mért indulás nem duplázódik
+    from werkzeug.serving import is_running_from_reloader, run_simple
+    app = letrehoz(a.db, a.kiadas) if is_running_from_reloader() else (lambda environ, start: [])
+    if is_running_from_reloader():
+        L = app.extensions['pardes']['gyar'].lablec.kap()
+        print('[indítás] kiadás=%s ág=%s commit=%s kod_verzio=%s epites_ts=%s%s' % (
+            L.kiadas, L.ag, L.commit, app.extensions['pardes']['gyar'].kod_verzio, L.epites_ts,
+            ''.join(' FIGYELEM: ' + f for f in L.figyelmeztetesek)), flush=True)
+    run_simple(a.host, a.port, app, threaded=True, use_reloader=True, reloader_type='stat', reloader_interval=1, extra_files=figyelt_fajlok())
 
 
 if __name__ == '__main__':
