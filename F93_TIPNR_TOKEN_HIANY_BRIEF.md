@@ -6,10 +6,10 @@ tipus: feladat
 fazis: 1
 munka: adat
 modell: sonnet
-allapot: fut
+allapot: megallt
 ag: claude/f93-tipnr-token-hiany
 ad: a 62 alapszám (88 TIPNR-sor) mindegyike osztályozva (szövegváltozat / számozási eltérés / adathiány / nem eldönthető), forrásmegjelöléssel naplózva; az eredmény jelölés, nem javítás
-kovetkezo: M0 felmérés (csak olvas); ⛔ a jelölés helyéről (DT-F93a) a felhasználó dönt
+kovetkezo: "Te: DT-F93a — a jelölés helye ((a)/(b)) és a hatókör (a 62 alapszámból 46 héber, 5 LXX; l. naplok/F93_jelentes.md M0)"
 fugg: [88]
 olvas: [naplok/F88_meres.md, naplok/ELLENOR_F88_2.md, adat/SEMA.md, konkordancia/TIPNR_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_TIPNR_Normalizalo_README.md, eszkozok/sqlite_epit.py, F90_TAGNT_ZAROJELES_BRIEF.md]
 ir: [naplok/F93_jelentes.md, naplok/F93_alapszamok.tsv, eszkozok/f93_tipnr_token_hiany.py, eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, adat/SEMA.md, NYITOTT_FELADATOK.md, DONTESEK.md]
