@@ -265,8 +265,8 @@ class Tabla(unittest.TestCase):
         self.assertEqual((x[i['szakasz']], x[i['resz']], x[i['utvonal']]), ('III', 'I', '-/3'))
 
 
-@unittest.skipUnless(os.environ.get('PARDES_LASSU') or os.name == 'nt', 'a teljes újragenerálás lassú a /mnt/c-n (PARDES_LASSU=1 kapcsolja be)')
 class Ujrageneralas(unittest.TestCase):
+    """ELLENOR_F99 3.: platformtól függetlenül fut (a kód- és a forrás-hash LF-re normalizált tartalomból számolódik)."""
     def test_bajtra_azonos(self):
         with open(V.KI, encoding='utf-8', newline='') as f:
             regi = f.read()

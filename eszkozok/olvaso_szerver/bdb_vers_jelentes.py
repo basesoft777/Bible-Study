@@ -78,11 +78,29 @@ FORRAS_HIBA = {
 
 
 def fajl_hash(ut):
-    h = hashlib.sha256()
+    """A fájl tartalmának sha256-ja LF-re normalizált szövegből (ELLENOR_F99 3.: a repó core.autocrlf=true-val megy, a `*.py` munkafa-
+    példánya platformonként CRLF vagy LF; a hash így checkouttól függetlenül azonos)."""
     with open(ut, 'rb') as f:
-        for d in iter(lambda: f.read(1 << 20), b''):
-            h.update(d)
+        adat = f.read()
+    return hashlib.sha256(adat.replace(b'\r\n', b'\n')).hexdigest()[:12]
+
+
+def fajlok_hash(utak):
+    """Több fájl együttes hash-e (a fájlnevek sorrendjében, LF-re normalizálva)."""
+    h = hashlib.sha256()
+    for ut in sorted(utak):
+        h.update(os.path.basename(ut).encode('utf-8') + b'\0' + fajl_hash(ut).encode('ascii') + b'\n')
     return h.hexdigest()[:12]
+
+
+# ELLENOR_F99 4.: a kód-hash a tábla előállításában részt vevő minden kódot fed
+KOD_FAJLOK = [os.path.join(D, 'bdb_szelet.py'), os.path.abspath(__file__), os.path.join(REPO, 'eszkozok', 'bdb_konyv_javit.py'),
+              os.path.join(REPO, 'eszkozok', 'normalizal.py')]
+
+
+def macula_fajlok():
+    k = os.path.join(REPO, 'konkordancia')
+    return [os.path.join(k, f) for f in sorted(os.listdir(k)) if f.startswith('Macula_heber_') and f.endswith('.tsv')]
 
 
 def tsv_sorok(ut):
@@ -175,7 +193,7 @@ def general(ts, strongok=None):
     en, lem, bdb_id, vm_karoli, vm_mt, elvetett, tahot, f85 = betolt()
     versek, _, mt2k = K.macula_betolt()
     osz = set(K.OSZ)
-    modhash = '%s+%s' % (fajl_hash(os.path.join(D, 'bdb_szelet.py')), fajl_hash(os.path.abspath(__file__)))
+    modhash = '+'.join(fajl_hash(u) for u in KOD_FAJLOK)
     sorok = []
     for strong in sorted(strongok if strongok is not None else en):
         szoveg = en[strong]
@@ -244,11 +262,12 @@ def general(ts, strongok=None):
 
 def kiir(sorok, modhash, ts):
     fej = ['# GENERÁLT: eszkozok/olvaso_szerver/bdb_vers_jelentes.py --ts %s — kézzel nem szerkesztendő (F99 M2; séma: adat/SEMA.md 2.29).' % ts,
-           '# forras: konkordancia/BDB_teljes_unabridged.tsv@%s + Macula_heber_* (MT-versek, MT→Károli) + Karoli_versmegfeleltetes.tsv@%s + '
-           'Karoli_1908.tsv@%s (Károli-versek) + naplok/F85_macula_elvetve.tsv + naplok/F85_esetlista.tsv@%s (DT-F99h) + OSHL_lexikalis_index.tsv (bdb_id) + '
-           'TAHOT_kivonat.tsv@%s (DT-F99h, DT-F99k); '
-           'kód: bdb_szelet.py+bdb_vers_jelentes.py@%s (DT-F99g: a kód-hash csak itt áll, a sorok proveniencia-mezője erre a fejlécre hivatkozik); szabály: DT-F99a, DT-F99h, DT-F99i, DT-F99j, DT-F99k'
-           % (fajl_hash(BDB_EN), fajl_hash(VERSMEGF), fajl_hash(KAROLI), fajl_hash(F85_ESETLISTA), fajl_hash(TAHOT), modhash),
+           '# forras: konkordancia/BDB_teljes_unabridged.tsv@%s + Macula_heber_*.tsv (%d fájl)@%s (MT-versek, MT→Károli) + '
+           'Karoli_versmegfeleltetes.tsv@%s + Karoli_1908.tsv@%s (Károli-versek) + naplok/F85_macula_elvetve.tsv@%s + naplok/F85_esetlista.tsv@%s '
+           '(DT-F99h) + OSHL_lexikalis_index.tsv@%s (bdb_id) + Strong_szotar.tsv@%s (lemma) + TAHOT_kivonat.tsv@%s (DT-F99h, DT-F99k); '
+           'kód: bdb_szelet.py+bdb_vers_jelentes.py+bdb_konyv_javit.py+normalizal.py@%s (LF-re normalizált tartalom; DT-F99g: a kód-hash csak itt áll, a sorok proveniencia-mezője erre a fejlécre hivatkozik); szabály: DT-F99a, DT-F99h, DT-F99i, DT-F99j, DT-F99k'
+           % (fajl_hash(BDB_EN), len(macula_fajlok()), fajlok_hash(macula_fajlok()), fajl_hash(VERSMEGF), fajl_hash(KAROLI), fajl_hash(F85_ELVETVE),
+              fajl_hash(F85_ESETLISTA), fajl_hash(OSHL_INDEX), fajl_hash(STRONG_SZOTAR), fajl_hash(TAHOT), modhash),
            '\t'.join(FEJ)]
     for s in sorok:
         for x in s:
