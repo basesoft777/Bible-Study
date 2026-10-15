@@ -4,7 +4,7 @@
 
 ## 1. Eredmény röviden
 
-- **Aranyminta** (`adat/bdb_aranyminta.tsv`, SEMA 2.28): 32 szócikk, 14 magyar fordítással is; benne a beszélgetés nyolc szócikke. A minta a mérések előtt készült, a szócikkek szövegének olvasásából; a független ellenőr átnézte (`naplok/ELLENOR_F99_minta.md`: 11 eltérés, 5 bizonytalan pont), a felhasználó döntései szerint javítva (F99.6, 2.4): 658 sor, ebből 458 `fuggetlen_ellenor`, 200 `modell_ellenorizetlen` (a H6440, H7307, H0430 egésze, amelyet a felhasználó a javított mintában néz át, és az új vagy javított sorok).
+- **Aranyminta** (`adat/bdb_aranyminta.tsv`, SEMA 2.28): 32 szócikk, 14 magyar fordítással is; benne a beszélgetés nyolc szócikke. A minta a mérések előtt készült, a szócikkek szövegének olvasásából; a független ellenőr átnézte (`naplok/ELLENOR_F99_minta.md`: 11 eltérés, 5 bizonytalan pont), a felhasználó döntései szerint javítva (F99.6, 2.4): 658 sor, ebből 607 `fuggetlen_ellenor`, 51 `modell_ellenorizetlen` (az új vagy javított sorok a H6440, H7307, H0430-on kívül; a három szócikket a felhasználó a második ellenőrzés alapján elfogadta, F99.7).
 - **A mai szeletelő az aranymintán** (a javított mintán): szerkezeti eltérés nélkül 15 / 32 szócikk angolul, 7 / 14 magyarul; a használati csoportokat (184 várt csoport) egyáltalán nem bontja; a jelentéscímek 169 / 195 (magyar) és 24 / 43 (angol) esetben egyeznek. A 0 eltérés feltétele messze van; a hibák hét osztályba esnek (2.3).
 - **Hivatkozások** (angol BDB, 8099 szócikk): 160 459 hivatkozás 8025 szócikkben — 107 321 kiírt könyvvel, 42 397 örökölt, 10 738 vesszős vers-folytatás, 3 feloldhatatlan. Álhivatkozás-jelölt 1062 (368 nem bibliai mű, 253 tapadt sigla, 441 közeli sigla), és 790 a nemi tanú („noun masculine^Gen 1:27”), amely **valódi** bibliai hivatkozás. Az MT → Károli átkulcsoláshoz a brief forrása, a `Karoli_versmegfeleltetes.tsv`, a hivatkozások 89%-ánál (141 959) nem ad MT-számot; a Macula `karoli` oszlopa mindenre ad, de ismert hibás régiókkal (DT-F99a).
 - **Bevezetők** (angol): a csoport-bevezetők túlnyomó része mondatkezdő vagy vessző utáni helyzetben áll, jelentéshatáron ritkán; az „absolute” 663-szor az alaktanban (status absolutus) áll, nem használati csoport. A kész magyar szócikkekben ugyanannak a bevezetőnek két-három alakja él (followed by: „utána” 527, „követi” 302, ragos héber 460), és az angol–magyar szám szócikkenként ritkán egyezik (DT-F99b).
@@ -100,7 +100,11 @@ A független ellenőr (`naplok/ELLENOR_F99_minta.md`) 11 eltérést (E1–E11) �
 
 **B3 (H6696 Qal/2, a felhasználó döntése: marad).** Az első „with עַל of city” vessző után áll („shut in, besiege, with עַל of city”), ezért a csoportszabály szerint nem csoport, hanem a jelentés fejének része; a párhuzamos négy tag („; with עַל person”, „; with אֶל of city”, „; with אֶל person”, „; with אֵת of city only”) mondatkezdő, ezért csoport. A minta szabálykövető, de **aszimmetrikus**: az olvasó négy csoportot lát, az ötödik párhuzamos használat a fejben marad. Ha a megjelenítés (M4) ezt zavarónak mutatja, a csoportszabály (DT-F99b (1)) módosítása a helye, nem a mintáé.
 
-Az ellenőrzés jelölése (`ellenorzes`): a H6440, H7307, H0430 minden sora `modell_ellenorizetlen` (a felhasználó a javított mintában nézi át); a többi szócikk változatlan sora `fuggetlen_ellenor`; az új vagy javított sorok `modell_ellenorizetlen`. `felhasznalo`-t a modell nem ír. Minden nem üres horgony (1017) a forrásszövegben megvan (pontozás nélkül, NFC).
+Az ellenőrzés jelölése (`ellenorzes`): a többi szócikk változatlan sora `fuggetlen_ellenor`, az új vagy javított sorok `modell_ellenorizetlen`; a H6440, H7307, H0430 a F99.6-ban `modell_ellenorizetlen` volt, a felhasználó a második ellenőrzés alapján elfogadta, ezért a F99.7-től minden soruk `fuggetlen_ellenor` (607 / 51).
+
+**Határeset (H0430 3.; a felhasználó döntése, 2026-10-15: marad csoport nélkül).** A 3. jelentésben álló „in many phrases” nem csoport: a DT-F99b (1) (a) listája szó szerinti (`in phrase(s)`), a „many” közbeékelt jelzővel álló alak nem illeszkedik. Ha az M3 bevezető-felismerése ezt is fogná, a minta e pontja átírandó.
+
+A H0430 1/a megjegyzése javítva (F99.7): a `cim` mező üres, a cím nem vizsgált (a korábbi „a cím a kettőspontig” pontatlan volt). `felhasznalo`-t a modell nem ír. Minden nem üres horgony (1017) a forrásszövegben megvan (pontozás nélkül, NFC).
 
 ## 3. Hivatkozás-mérés (M0.2)
 
@@ -204,6 +208,19 @@ Olvasat:
 ## 5. OSHL `<etym>` (M0.4) — nem futott
 
 A `LexicalIndex.xml` (OSHL @ `21c9add13bc727d3a951361778e97e3ff7afd1ce`, sha256 `8f7a605c…`) nincs a gépen (repó, `D:\`, WSL-home és ideiglenes könyvtárak átnézve); a repóban csak a belőle generált `OSHL_lexikalis_index.tsv` és `OSHL_BDB_igehelyek.tsv` van, egyikben sincs `<etym>`. A letöltés (`python eszkozok/oshl_index_import.py --letolt`: a GitHub codeload tarball a rögzített commitról, SHA-ellenőrzéssel) felhasználói engedélyt kíván, ezért nem indítottam: DT-F99f. Az engedély után a mérés (main / sub / single darabszám, a sub-célok feloldhatósága a Strong-kulcsainkra, a לַיְלָה H3915 családja) a #99 ágán pótolható, mielőtt az M1 indul.
+
+**Az M0.4 előkészítése (F99.7, DT-F99f (b) után; a letöltés még nem indult).** A forrás adatai a GitHub git-fa API-jából (`gh api repos/openscriptures/HebrewLexicon/git/trees/21c9add13bc727d3a951361778e97e3ff7afd1ce`: csak metaadat, fájltartalom nélkül):
+
+| Tétel | Érték |
+|---|---|
+| repó, commit | `openscriptures/HebrewLexicon` @ `21c9add13bc727d3a951361778e97e3ff7afd1ce` (2019-09-02T22:24:11Z) |
+| útvonal | `LexicalIndex.xml` (a repó gyökerében) |
+| méret | **1 782 592 bájt** (kb. 1,7 MiB) |
+| git blob SHA-1 | `d11eb2078532f3119c70822bd27a91b484d4727b` |
+| várt SHA-256 (`oshl_index_import.py`, `LEXICAL_INDEX_SHA256`) | `8f7a605c58899d2f44430149c143c00903976e1e91232476677972a69e5bc85f` |
+| letöltési út (DT-F99f (b)) | `https://raw.githubusercontent.com/openscriptures/HebrewLexicon/21c9add13bc727d3a951361778e97e3ff7afd1ce/LexicalIndex.xml`, a repón kívüli ideiglenes könyvtárba; utána a git blob SHA-1 és a SHA-256 ellenőrzése, eltérésnél megállás |
+
+`scope=openscriptures/HebrewLexicon git-fa a rögzített commiton | forras=GitHub REST API git/trees + commits | ts=2026-10-15`
 
 ## 6. Mellékes leletek
 

@@ -1215,7 +1215,7 @@ A BDB-szócikkek **várt szerkezete** kézzel, a szeletelő (`eszkozok/olvaso_pi
 | `ellenorzes` | `modell_ellenorizetlen` (a modell készítette vagy javította, átnézés nélkül) \| `fuggetlen_ellenor` (a független ellenőr átnézte, `naplok/ELLENOR_F99_minta.md`, az eltéréseket a felhasználó eldöntötte) \| `felhasznalo` (a felhasználó ellenőrizte); a modell `felhasznalo`-t soha nem ír |
 | `proveniencia` | `manual` (nem lekérdezés; 1.5) |
 
-Kulcs: `strong` + `szakasz` + `utvonal` + `szint`. Állapot (F99.6, 2026-10-15, a független ellenőr jelentése és a felhasználó döntései után): 32 szócikk (14 magyar fordítással), 658 sor (184 csoport, 1 utaló); 458 sor `fuggetlen_ellenor`, 200 `modell_ellenorizetlen` (a H6440, H7307, H0430 egésze és az új vagy javított sorok).
+Kulcs: `strong` + `szakasz` + `utvonal` + `szint`. Állapot (F99.6, 2026-10-15, a független ellenőr jelentése és a felhasználó döntései után): 32 szócikk (14 magyar fordítással), 658 sor (184 csoport, 1 utaló); 607 sor `fuggetlen_ellenor`, 51 `modell_ellenorizetlen` (az új vagy javított sorok; a H6440, H7307, H0430 a F99.7-től, a felhasználó elfogadása után, `fuggetlen_ellenor`).
 
 ---
 

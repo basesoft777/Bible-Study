@@ -1,5 +1,5 @@
 # proveniencia: manual — F99 M0 (BDB_SZELETELO), kézi aranyminta: a szócikk szövegének kézi olvasása (konkordancia/BDB_teljes_unabridged.tsv; a magyar fordításé az adat/forditasok.tsv utolsó nem üres BDB-sora, mint a szerver bdb_magyar-ja); a szeletelő kimenete a minta készítésekor nem volt forrás. Séma: adat/SEMA.md 2.28. ts=2026-10-15
-# ellenorzes: fuggetlen_ellenor = a független ellenőr átnézte (naplok/ELLENOR_F99_minta.md), az eltéréseket a felhasználó eldöntötte (2026-10-15); modell_ellenorizetlen = új vagy javított sor, illetve a H6440, H7307, H0430 szócikk (a felhasználó a javított mintában nézi át); felhasznalo-t a modell nem ír
+# ellenorzes: fuggetlen_ellenor = a független ellenőr átnézte (naplok/ELLENOR_F99_minta.md), az eltéréseket és a javítást a felhasználó elfogadta (2026-10-15; a H6440, H7307, H0430 a második ellenőrzés után); modell_ellenorizetlen = új vagy javított sor átnézés nélkül; felhasznalo-t a modell nem ír
 strong	szakasz	utvonal	szint	jel	okkod	kezdet_en	kezdet_hu	cim	megjegyzes	ellenorzes	proveniencia
 H0196			szocikk			אֱוִלִי			csonk szócikk: nincs törzs, nincs számozott jelentés	fuggetlen_ellenor	manual
 H0382			szocikk						csonk, héber címszó nélkül („Iysh -Towb”)	fuggetlen_ellenor	manual
@@ -250,155 +250,155 @@ H0559		Qal/4/+7	csoport	absolute		absolute 1Sam 16:16	abszolút használatban 1S
 H0559		Niph'al	torzs	Niph'al					a második „Niph`al Infinitive” és a „Qal Perfect” a szövegben hivatkozás, nem fejléc	fuggetlen_ellenor	manual
 H0559		Hiph'il	torzs	Hiph'il					a fejléc idézet után áll („… to God.' Hiph`il Perfect”)	fuggetlen_ellenor	manual
 H0559		Hithpa'el	torzs	Hithpa'el					a „2 masculine plural” személyszám, a „457 f.” nem alpont	fuggetlen_ellenor	manual
-H6440			szocikk			מָּנֶה			két fő rész római számmal: I. az arc (1–7), II. „מְּנֵי elöljárószókkal” (1–8); a II. nem homonima, hanem a szócikk második fő része	modell_ellenorizetlen	manual
-H6440		-/1	jelentes	1		face, faces	arc, arcok	arc, arcok	az „— I. 1.” kezdet	modell_ellenorizetlen	manual
-H6440		-/1/a	alpont	a		literally, of man	szó szerint, emberé	szó szerint, emberé		modell_ellenorizetlen	manual
-H6440		-/1/b	alpont	b		of ׳י	a ׳י-ról	a ׳י-ról		modell_ellenorizetlen	manual
-H6440		-/1/c	alpont	c		אֶלמָּֿנִים מָּנִים face to face	אֶלמָּֿנִים מָּנִים színről színre	színről színre, látásáról		modell_ellenorizetlen	manual
-H6440		-/1/d	alpont	d		of relations with	a פ ׳הֵרִים	a פ ׳הֵרִים ׳׃י-hoz való viszonyról		modell_ellenorizetlen	manual
-H6440		-/1/e	alpont	e		of ׳י himself	magáról a ׳י-ról	magáról a ׳י-ról		modell_ellenorizetlen	manual
-H6440		-/2	jelentes	2				jelenlét	saját meghatározás nélkül; kölcsönzött cím (a „=” nélkül)	modell_ellenorizetlen	manual
-H6440		-/2/a	alpont	a		= presence, person	= jelenlét, személy	jelenlét, személy, a ׳י-é		modell_ellenorizetlen	manual
-H6440		-/2/b	alpont	b		with ראה technically	ראה-val szakkifejezésként	ראה-val szakkifejezésként	a „(+ 3 other uses”, „Niph`al, see II 2” hivatkozás; az angol „with ראה” az alpont feje, nem csoport	modell_ellenorizetlen	manual
-H6440		-/2/b/+1	csoport	especially		especially as privilege	különösen kiváltságként			modell_ellenorizetlen	manual
-H6440		-/3	jelentes	3		face of seraphim	a szeráfok arca	a szeráfok arca		modell_ellenorizetlen	manual
-H6440		-/4	jelentes	4		face of animals	állatok arca	állatok arca		modell_ellenorizetlen	manual
-H6440		-/5	jelentes	5		face (= surface) of ground	a föld (הָאֲדָמָה) színe	a föld színe		modell_ellenorizetlen	manual
-H6440		-/6	jelentes	6		as adverb of location	helyhatározószóként	helyhatározószóként	a „Judg 1:10-13”, „13 összesen” száma nem jelölő	modell_ellenorizetlen	manual
-H6440		-/7	jelentes	7		for other phrases see	más fordulatokhoz l.	más fordulatokhoz l.	utalólista: a benne álló „Hiph`il 5”, „Pi`el 3”, „I. חָרָה”, „II. חלה”, „IV. חמר”, „I. מוּל”, „I. עֵבֶר”, „II. עֻמָּה”, „2 c”, „1 a”, „6 a” hivatkozás, nem törzs, szakasz vagy jelölő	modell_ellenorizetlen	manual
-H6440	II		szakasz	II		מְּנֵי			„II. מְּנֵי with prepositions:” — fő rész, nem homonima	modell_ellenorizetlen	manual
-H6440	II	-/1	jelentes	1		אֶלמְּֿנֵי	אֶלמְּֿנֵי		a cím csak héber (nem vizsgált)	modell_ellenorizetlen	manual
-H6440	II	-/1/a	alpont	a		to the presence of	valakinek a színe elé	valakinek a színe elé		modell_ellenorizetlen	manual
-H6440	II	-/1/a/+1	csoport	with		with יָצָא			a magyar ragos alakkal („יָצָא-val”): nincs mondatkezdő bevezető	modell_ellenorizetlen	manual
-H6440	II	-/1/b	alpont	b		to the front of	valaminek az elejére	valaminek az elejére, mozgást jelentő ige után		modell_ellenorizetlen	manual
-H6440	II	-/1/c	alpont	c		towards or on the front of	valami felé vagy valaminek az elején	valami felé vagy valaminek az elején		modell_ellenorizetlen	manual
-H6440	II	-/1/d	alpont	d		on to the surface of	valaminek a felszínére	valaminek a felszínére		modell_ellenorizetlen	manual
-H6440	II	-/2	jelentes	2		אֶתמְּֿנֵי close by	אֶתמְּֿנֵי közel	közel valaminek az arcához vagy elejéhez		modell_ellenorizetlen	manual
-H6440	II	-/2/a	alpont	a		the presence of	valakinek a jelenlétében	valakinek a jelenlétében	a „Qal, afterwards pointed as Niph`al” hivatkozás, nem törzs	modell_ellenorizetlen	manual
-H6440	II	-/2/b	alpont	b		in front of	valami előtt	valami előtt	a végén álló „— מְּנֵי מֵאֵת from before, see II. אֵת 4a.” utalás nem szakasz	modell_ellenorizetlen	manual
-H6440	II	-/3	jelentes	3		בִּפְנֵי	בִּפְנֵי		„3. בִּפְנֵי: (a) … (b) …”: alpont nélkül, zárójeles harmadik szinttel; a cím csak héber	modell_ellenorizetlen	manual
-H6440	II	-/3/+1	csoport	(a)		(a) in the face of	(a) valakinek az arcába			modell_ellenorizetlen	manual
-H6440	II	-/3/+2	csoport	(b)		(b) in front of	(b) valaminek az elején			modell_ellenorizetlen	manual
-H6440	II	-/4	jelentes	4		לִפְנֵי, properly	לִפְנֵי, tulajdonképpen		a cím hosszú, nem vizsgált	modell_ellenorizetlen	manual
-H6440	II	-/4/a	alpont	a		With the implication of	azzal a mellékjelentéssel	azzal a mellékjelentéssel, hogy	a „2 Chron 24:51” könyvnév; a „7 etc.” nem jelölő	modell_ellenorizetlen	manual
-H6440	II	-/4/a/+1	csoport	(a)		(a) under the eye or oversight	(a) valakinek a szeme vagy felügyelete			modell_ellenorizetlen	manual
-H6440	II	-/4/a/+2	csoport	(b)		(b) under the eye and regard	(b) valakinek a szeme és figyelme			modell_ellenorizetlen	manual
-H6440	II	-/4/a/+3	csoport	(c)		(c) figurative for in (or into)	(c) képletesen: valakinek			modell_ellenorizetlen	manual
-H6440	II	-/4/a/+4	csoport	(d)		(d) openly before	(d) nyíltan valaki előtt			modell_ellenorizetlen	manual
-H6440	II	-/4/a/+5	csoport	(e)		(e) in presence of the moon	(e) a hold vagy a nap			modell_ellenorizetlen	manual
-H6440	II	-/4/a/+6	csoport	(f)		(f) free before	(f) szabadon valaki előtt			modell_ellenorizetlen	manual
-H6440	II	-/4/a/+7	csoport	(g)		(g) in the sight (estimation)	(g) valakinek a szemében			modell_ellenorizetlen	manual
-H6440	II	-/4/a/+8	csoport	(h)		(h) י ׳לִפְנֵי, specifically	(h) י ׳לִפְנֵי, különösen			modell_ellenorizetlen	manual
-H6440	II	-/4/b	alpont	b		In other phrases	Más fordulatokban	Más fordulatokban	a „see נָגַף Niph`al” hivatkozás, nem törzs	modell_ellenorizetlen	manual
-H6440	II	-/4/b/+1	csoport	(a)		(a) לִפְנֵי עָמַד to stand before	(a) לִפְנֵי עָמַד valaki előtt állni			modell_ellenorizetlen	manual
-H6440	II	-/4/b/+2	csoport	(b)		(b) לִפְנֵי הִשְׁתַּחֲוָה	(b) לִפְנֵי הִשְׁתַּחֲוָה			modell_ellenorizetlen	manual
-H6440	II	-/4/b/+3	csoport	(c)		(c) to be smitten	(c) megveretni			modell_ellenorizetlen	manual
-H6440	II	-/4/b/+4	csoport	(d)		(d) לִפְנֵי עָמַד to stand (make	(d) לִפְנֵי עָמַד megállni			modell_ellenorizetlen	manual
-H6440	II	-/4/b/+5	csoport	(e)		(e) in hostile sense	(e) ellenséges értelemben			modell_ellenorizetlen	manual
-H6440	II	-/4/b/+6	csoport	(f)		(f) לִפְנֵי (נָתַן) שִׂים	(f) לִפְנֵי (נָתַן) שִׂים			modell_ellenorizetlen	manual
-H6440	II	-/4/b/+7	csoport	(g)		(g) לִפְנֵי נָתַן to set before	(g) לִפְנֵי נָתַן valaki elé adni			modell_ellenorizetlen	manual
-H6440	II	-/4/c	alpont	c		With reference to position	A helyzetre vonatkozóan	A helyzetre vonatkozóan		modell_ellenorizetlen	manual
-H6440	II	-/4/c/+1	csoport	(a)		(a) in front of, before	(a) valami előtt, elöl			modell_ellenorizetlen	manual
-H6440	II	-/4/c/+2	csoport	(b)		(b) of a leader	(b) vezérről			modell_ellenorizetlen	manual
-H6440	II	-/4/c/+3	csoport	(c)		(c) denoting superiority	(c) felsőbbséget jelölve			modell_ellenorizetlen	manual
-H6440	II	-/4/d	alpont	d		Of places	Helyekről	Helyekről		modell_ellenorizetlen	manual
-H6440	II	-/4/e	alpont	e		Of time, before	Időről: előtt	Időről	a „30 לְפָנָיו” száma nem jelölő; a „Sq. infinitive” / „Infinitivus követi” nem mondatkezdő bevezető-egyezés: nem csoport	modell_ellenorizetlen	manual
-H6440	II	-/4/f	alpont	f		In the manner of	Valaminek a módjára	Valaminek a módjára, mint		modell_ellenorizetlen	manual
-H6440	II	-/5	jelentes	5		מִלִּפְנֵי_73 from before	מִלִּפְנֵי_73: valami elől	valami elől		modell_ellenorizetlen	manual
-H6440	II	-/5/a	alpont	a		from the presence of	valakinek a jelenlétéből	valakinek a jelenlétéből	a „see 6” / „l. 6” hivatkozás	modell_ellenorizetlen	manual
-H6440	II	-/5/a/+1	csoport	(a)		(a) Gen 41:46	(a) 1Móz 41:46			modell_ellenorizetlen	manual
-H6440	II	-/5/a/+2	csoport	(b)		(b) of taking, etc.	(b) valaminek a valaki elől			modell_ellenorizetlen	manual
-H6440	II	-/5/a/+3	csoport	(c)		(c) with בקשׁ	(c) בקשׁ-val			modell_ellenorizetlen	manual
-H6440	II	-/5/a/+4	csoport	(d)		(d) of cutting off	(d) a ׳י elől való kiirtásról			modell_ellenorizetlen	manual
-H6440	II	-/5/a/+5	csoport	(e)		(e) of expelling	(e) a betolakodó elől			modell_ellenorizetlen	manual
-H6440	II	-/5/b	alpont	b		(Chiefly late) to express	(Főleg késői) a forrás		a cím hosszú, nem vizsgált	modell_ellenorizetlen	manual
-H6440	II	-/5/c	alpont	c		of time, once	időről, egyszer		a végén álló „— With the later usages …” megjegyzés a c. része	modell_ellenorizetlen	manual
-H6440	II	-/6	jelentes	6		מִמְּנֵי from the face	מִמְּנֵי valakinek az arca		a cím nem vizsgált	modell_ellenorizetlen	manual
-H6440	II	-/6/a	alpont	a		(often with suggestion of causation	(gyakran okozati mellékjelentéssel		a „24 מִמָּנֶיךָ” száma nem jelölő; a cím nem vizsgált	modell_ellenorizetlen	manual
-H6440	II	-/6/b	alpont	b		implying causation more distinctly	az okozatiságot határozottabban	az okozatiságot határozottabban sejtetve		modell_ellenorizetlen	manual
-H6440	II	-/6/c	alpont	c		of the cause, whether nearer	az okról, akár közelebbi	az okról, akár közelebbi, akár távolabbi	a végén álló „— Num 33:8 see” utalás a c. része	modell_ellenorizetlen	manual
-H6440	II	-/6/c/+1	csoport	(a)		(a) Gen 6:13	(a) 1Móz 6:13			modell_ellenorizetlen	manual
-H6440	II	-/6/c/+2	csoport	(b)		(b) stating the reason	(b) annak az oknak			modell_ellenorizetlen	manual
-H6440	II	-/6/c/+3	csoport	(c)		(c) with אֲשֶׁר as a conjunction	(c) אֲשֶׁר-val kötőszóként			modell_ellenorizetlen	manual
-H6440	II	-/7	jelentes	7		עַלמְּֿנֵי (compare	a עַלמְּֿנֵי (vö.		a cím nem vizsgált; a magyar „a” névelővel kezdődik	modell_ellenorizetlen	manual
-H6440	II	-/7/a	alpont	a		From the sense of face or front	Az arc vagy elülső rész jelentéséből	Az arc vagy elülső rész jelentéséből	a „23 (read” száma nem jelölő	modell_ellenorizetlen	manual
-H6440	II	-/7/a/+1	csoport	(a)		(a) in front of (more definite	(a) valami előtt (határozottabb			modell_ellenorizetlen	manual
-H6440	II	-/7/a/+2	csoport	(b)		(b) before, to the exclusion	(b) valaki előtt, egy másik kizárásával			modell_ellenorizetlen	manual
-H6440	II	-/7/a/+3	csoport	(c)		(c) in addition to	(c) valamin felül			modell_ellenorizetlen	manual
-H6440	II	-/7/a/+4	csoport	(d)		(d) of localities	(d) helyekről			modell_ellenorizetlen	manual
-H6440	II	-/7/a/+5	csoport	(ε)		(ε) with verbs implying direction	(ε) irányt sejtető igékkel		OCR-torzult jelölő a forrásban („(ε)”): jelölőnek számít (felhasználói döntés 2026-10-15, ELLENOR_F99_minta E1)	modell_ellenorizetlen	manual
-H6440	II	-/7/b	alpont	b		From the sense of surface	A felszín jelentéséből	A felszín jelentéséből		modell_ellenorizetlen	manual
-H6440	II	-/8	jelentes	8		מֵעַלמְּֿנֵי	מֵעַלמְּֿנֵי		a cím csak héber	modell_ellenorizetlen	manual
-H6440	II	-/8/a	alpont	a		from before the face of	valakinek az arca elől	valakinek az arca elől		modell_ellenorizetlen	manual
-H6440	II	-/8/b	alpont	b		from of the surface of	valaminek a felszínéről		a cím nem vizsgált	modell_ellenorizetlen	manual
-H7307			szocikk			רוּחַ			főnév, 9 jelentés alpontokkal; az „absolute ׳ר” a status absolutus (alaktan)	modell_ellenorizetlen	manual
-H7307		-/1	jelentes	1		breath of mouth or nostrils	a száj vagy az orrlyukak lehelete	a száj vagy az orrlyukak lehelete		modell_ellenorizetlen	manual
-H7307		-/1/a	alpont	a		מִּיו רוּחַ Job 15:30	מִּיו רוּחַ Jób 15:30		héber idézettel és igehellyel kezdődik; a cím nem vizsgált	modell_ellenorizetlen	manual
-H7307		-/1/b	alpont	b		as mere breath	mint puszta lehelet	mint puszta lehelet	a „compare 2e.” / „vö. 2e.” hivatkozás	modell_ellenorizetlen	manual
-H7307		-/1/c	alpont	c		as word of command	mint parancsszó	mint parancsszó		modell_ellenorizetlen	manual
-H7307		-/1/c/+1	csoport	(1)		(1) of God	(1) Istené			modell_ellenorizetlen	manual
-H7307		-/1/c/+2	csoport	(2)		(2) of Messianic king	(2) a messiási királyé			modell_ellenorizetlen	manual
-H7307		-/1/d	alpont	d		as hard breathing	mint haragban az orrlyukakon	mint haragban az orrlyukakon át való heves lélegzés		modell_ellenorizetlen	manual
-H7307		-/1/d/+1	csoport	(1)		(1) of God	(1) Istené			modell_ellenorizetlen	manual
-H7307		-/1/d/+2	csoport	(2)		(2) of man	(2) emberé			modell_ellenorizetlen	manual
-H7307		-/1/e	alpont	e		as sign and symbol of life	mint az élet jele és jelképe	mint az élet jele és jelképe		modell_ellenorizetlen	manual
-H7307		-/2	jelentes	2		wind (117 t.)	szél (117-szer)	szél		modell_ellenorizetlen	manual
-H7307		-/2/a	alpont	a		wind of heaven	az ég szele	az ég szele		modell_ellenorizetlen	manual
-H7307		-/2/b	alpont	b		quarter (of wind), side	(szél)irány, oldal	(szél)irány, oldal	a „(szél)irány” szón belüli zárójel	modell_ellenorizetlen	manual
-H7307		-/2/c	alpont	c		breath of air	légvétel	légvétel		modell_ellenorizetlen	manual
-H7307		-/2/d	alpont	d		air, gas, from womb	levegő, gáz, a méhből	levegő, gáz, a méhből		modell_ellenorizetlen	manual
-H7307		-/2/e	alpont	e		vain, empty thing	hiábavaló, üres dolog	hiábavaló, üres dolog		modell_ellenorizetlen	manual
-H7307		-/3	jelentes	3		spirit, as that which breathes	szellem, mint ami a felélénkülésben		a cím hosszú, nem vizsgált	modell_ellenorizetlen	manual
-H7307		-/3/a	alpont	a		spirit, animation, vivacity	szellem, élénkség, elevenség	szellem, élénkség, elevenség, erő		modell_ellenorizetlen	manual
-H7307		-/3/b	alpont	b		courage	bátorság	bátorság		modell_ellenorizetlen	manual
-H7307		-/3/c	alpont	c		temper, especially anger	indulat, különösen harag	indulat, különösen harag		modell_ellenorizetlen	manual
-H7307		-/3/d	alpont	d		impatience or patience	türelmetlenség vagy türelem	türelmetlenség vagy türelem		modell_ellenorizetlen	manual
-H7307		-/3/e	alpont	e		spirit, disposition, as troubled	szellem, hangulat, mint zaklatott	szellem, hangulat, mint zaklatott, keserű vagy elégedetlen	a magyar „(a) szelleme” (רוּח(וׅ fordítása) nem zárójeles csoport-jelölő	modell_ellenorizetlen	manual
-H7307		-/3/f	alpont	f		as crushed	mint összetört	mint összetört		modell_ellenorizetlen	manual
-H7307		-/3/g	alpont	g		disposition of various kinds	különféle hajlam	különféle hajlam, gyakran megmagyarázhatatlan és fékezhetetlen indíttatás		modell_ellenorizetlen	manual
-H7307		-/3/h	alpont	h		prophetic spirit	prófétai szellem	prófétai szellem		modell_ellenorizetlen	manual
-H7307		-/4	jelentes	4		spirit of the living, breathing being	az élő, lélegző lény szelleme		a cím hosszú, nem vizsgált	modell_ellenorizetlen	manual
-H7307		-/4/a	alpont	a		gift and creation of God	Isten ajándéka és teremtménye	Isten ajándéka és teremtménye		modell_ellenorizetlen	manual
-H7307		-/4/b	alpont	b		God preserves it	Isten megőrzi	Isten megőrzi		modell_ellenorizetlen	manual
-H7307		-/4/c	alpont	c		it is therefore God's spirit	ezért Isten Szelleme	ezért Isten Szelleme		modell_ellenorizetlen	manual
-H7307		-/4/d	alpont	d		it departs at death	a halálkor eltávozik	a halálkor eltávozik		modell_ellenorizetlen	manual
-H7307		-/4/d/+1	csoport	especially		especially 104:29	különösen 104:29			modell_ellenorizetlen	manual
-H7307		-/4/e	alpont	e		disembodied being	testetlen lény	testetlen lény		modell_ellenorizetlen	manual
-H7307		-/5	jelentes	5		spirit as seat of emotion	a szellem mint az érzelmek székhelye	a szellem mint az érzelmek székhelye = נֶפֶשׁ		modell_ellenorizetlen	manual
-H7307		-/5/a	alpont	a		desire	vágy	vágy		modell_ellenorizetlen	manual
-H7307		-/5/b	alpont	b		sorrow, trouble	bánat, zaklatottság	bánat, zaklatottság	a végén álló „— 1Sam 1:15 see קָשֶׁה.” utalás a b. része	modell_ellenorizetlen	manual
-H7307		-/6	jelentes	6		occasionally, (and late)	alkalmanként (és későn)		a cím nem vizsgált	modell_ellenorizetlen	manual
-H7307		-/7	jelentes	7		rarely of the will	ritkán az akaratról	ritkán az akaratról	a „22 (P)” száma nem jelölő	modell_ellenorizetlen	manual
-H7307		-/8	jelentes	8		רוּחַ especially of moral character	רוּחַ különösen az erkölcsi jellemről	különösen az erkölcsi jellemről		modell_ellenorizetlen	manual
-H7307		-/9	jelentes	9		spirit of God	Isten Szelleme	Isten Szelleme		modell_ellenorizetlen	manual
-H7307		-/9/a	alpont	a		as inspiring ecstatic state	mint a prófétálás eksztatikus	mint a prófétálás eksztatikus állapotát ihlető	a „25”, „29”, „10”, „22”, „24” igehely-folytatás, nem jelölő	modell_ellenorizetlen	manual
-H7307		-/9/b	alpont	b		spirit as impelling prophets	a Szellem mint a prófétákat		a cím nem vizsgált	modell_ellenorizetlen	manual
-H7307		-/9/c	alpont	c		imparting warlike energy	harci erőt, végrehajtó	harci erőt, végrehajtó és kormányzó hatalmat közöl		modell_ellenorizetlen	manual
-H7307		-/9/c/+1	csoport	(1)		(1) to מְלָכִים	(1) a מְלָכִים			modell_ellenorizetlen	manual
-H7307		-/9/c/+2	csoport	(2)		(2) resting upon Messianic king	(2) a messiási királyon			modell_ellenorizetlen	manual
-H7307		-/9/d	alpont	d		late, as endowing men	későn, mint az embereket	későn, mint az embereket különféle ajándékokkal felruházó		modell_ellenorizetlen	manual
-H7307		-/9/e	alpont	e		as energy of life	mint az élet energiája	mint az élet energiája		modell_ellenorizetlen	manual
-H7307		-/9/f	alpont	f		= ancient angel of the presence	= az orca régi angyala	az orca régi angyala és a későbbi Sekina		modell_ellenorizetlen	manual
-H0430			szocikk			אֱלֹהִים			főnév; a 3. és 4. jelentésben sok könyvnév+számláló („Chronicles 38 t.”, „1 Samuel 14”, „1 Chronicles 13”) és igehely-folytatás, egyik sem jelölő	modell_ellenorizetlen	manual
-H0430		-/1	jelentes	1		plural in number	többes számú jelentésben	többes számú jelentésben		modell_ellenorizetlen	manual
-H0430		-/1/a	alpont	a		rulers, judges	uralkodók, bírák		a cím a kettőspontig	modell_ellenorizetlen	manual
-H0430		-/1/b	alpont	b		divine ones, superhuman beings	isteni lények, emberfeletti lények		a cím nem vizsgált	modell_ellenorizetlen	manual
-H0430		-/1/c	alpont	c		angels Psalm Psa 97:7	angyalok Zsolt Zsolt 97:7	angyalok	a „Gen 6:4 (J; so ᵐ5 …” utáni „4” és a „Jos^Ant. i. 3. 1” nem jelölő	modell_ellenorizetlen	manual
-H0430		-/1/d	alpont	d		gods	istenek	istenek		modell_ellenorizetlen	manual
-H0430		-/2	jelentes	2		Plural intensive	Intenzív többes szám	Intenzív többes szám		modell_ellenorizetlen	manual
-H0430		-/2/a	alpont	a		god or goddess	isten vagy istennő	isten vagy istennő, mindig suffixummal		modell_ellenorizetlen	manual
-H0430		-/2/b	alpont	b		godlike one	istenszerű lény	istenszerű lény		modell_ellenorizetlen	manual
-H0430		-/2/c	alpont	c		works of God	Isten művei	Isten művei, vagy kiváltképpen őhozzá tartozó dolgok		modell_ellenorizetlen	manual
-H0430		-/2/d	alpont	d		God (see 3 & 4)	Isten (l. 3 & 4)	Isten	a „(see 3 & 4)” hivatkozás, a 3 nem jelölő	modell_ellenorizetlen	manual
-H0430		-/3	jelentes	3		הָאֱלֹהִים the (TRUE) God	הָאֱלֹהִים az (IGAZ) Isten	az Isten		modell_ellenorizetlen	manual
-H0430		-/3/+1	csoport	(a)		(a) angel	(a) angyal			modell_ellenorizetlen	manual
-H0430		-/3/+2	csoport	(b)		(b) prophet	(b) próféta			modell_ellenorizetlen	manual
-H0430		-/4	jelentes	4		אֱלֹהִים = God	אֱלֹהִים = Isten	Isten		modell_ellenorizetlen	manual
-H0430		-/4/a	alpont	a		אלהים (as subject	a אלהים-t (alanyként		a cím nem vizsgált	modell_ellenorizetlen	manual
-H0430		-/4/b	alpont	b		construct אֱלֹהֵי	status constructus אֱלֹהֵי		a cím nem vizsgált	modell_ellenorizetlen	manual
-H0430		-/4/b/+1	csoport	(a)		(a) with persons	(a) személyekkel			modell_ellenorizetlen	manual
-H0430		-/4/b/+2	csoport	(β)		(β) with nouns of attributes	(β) tulajdonságot vagy viszonyt jelölő		OCR-torzult jelölő a forrásban („(β)”): jelölőnek számít (felhasználói döntés 2026-10-15, ELLENOR_F99_minta E1)	modell_ellenorizetlen	manual
-H0430		-/4/c	alpont	c		with suffix in P	suffixummal a P-ben	suffixummal a P-ben	az angol „with suffix” az alpont feje, nem csoport	modell_ellenorizetlen	manual
+H6440			szocikk			מָּנֶה			két fő rész római számmal: I. az arc (1–7), II. „מְּנֵי elöljárószókkal” (1–8); a II. nem homonima, hanem a szócikk második fő része	fuggetlen_ellenor	manual
+H6440		-/1	jelentes	1		face, faces	arc, arcok	arc, arcok	az „— I. 1.” kezdet	fuggetlen_ellenor	manual
+H6440		-/1/a	alpont	a		literally, of man	szó szerint, emberé	szó szerint, emberé		fuggetlen_ellenor	manual
+H6440		-/1/b	alpont	b		of ׳י	a ׳י-ról	a ׳י-ról		fuggetlen_ellenor	manual
+H6440		-/1/c	alpont	c		אֶלמָּֿנִים מָּנִים face to face	אֶלמָּֿנִים מָּנִים színről színre	színről színre, látásáról		fuggetlen_ellenor	manual
+H6440		-/1/d	alpont	d		of relations with	a פ ׳הֵרִים	a פ ׳הֵרִים ׳׃י-hoz való viszonyról		fuggetlen_ellenor	manual
+H6440		-/1/e	alpont	e		of ׳י himself	magáról a ׳י-ról	magáról a ׳י-ról		fuggetlen_ellenor	manual
+H6440		-/2	jelentes	2				jelenlét	saját meghatározás nélkül; kölcsönzött cím (a „=” nélkül)	fuggetlen_ellenor	manual
+H6440		-/2/a	alpont	a		= presence, person	= jelenlét, személy	jelenlét, személy, a ׳י-é		fuggetlen_ellenor	manual
+H6440		-/2/b	alpont	b		with ראה technically	ראה-val szakkifejezésként	ראה-val szakkifejezésként	a „(+ 3 other uses”, „Niph`al, see II 2” hivatkozás; az angol „with ראה” az alpont feje, nem csoport	fuggetlen_ellenor	manual
+H6440		-/2/b/+1	csoport	especially		especially as privilege	különösen kiváltságként			fuggetlen_ellenor	manual
+H6440		-/3	jelentes	3		face of seraphim	a szeráfok arca	a szeráfok arca		fuggetlen_ellenor	manual
+H6440		-/4	jelentes	4		face of animals	állatok arca	állatok arca		fuggetlen_ellenor	manual
+H6440		-/5	jelentes	5		face (= surface) of ground	a föld (הָאֲדָמָה) színe	a föld színe		fuggetlen_ellenor	manual
+H6440		-/6	jelentes	6		as adverb of location	helyhatározószóként	helyhatározószóként	a „Judg 1:10-13”, „13 összesen” száma nem jelölő	fuggetlen_ellenor	manual
+H6440		-/7	jelentes	7		for other phrases see	más fordulatokhoz l.	más fordulatokhoz l.	utalólista: a benne álló „Hiph`il 5”, „Pi`el 3”, „I. חָרָה”, „II. חלה”, „IV. חמר”, „I. מוּל”, „I. עֵבֶר”, „II. עֻמָּה”, „2 c”, „1 a”, „6 a” hivatkozás, nem törzs, szakasz vagy jelölő	fuggetlen_ellenor	manual
+H6440	II		szakasz	II		מְּנֵי			„II. מְּנֵי with prepositions:” — fő rész, nem homonima	fuggetlen_ellenor	manual
+H6440	II	-/1	jelentes	1		אֶלמְּֿנֵי	אֶלמְּֿנֵי		a cím csak héber (nem vizsgált)	fuggetlen_ellenor	manual
+H6440	II	-/1/a	alpont	a		to the presence of	valakinek a színe elé	valakinek a színe elé		fuggetlen_ellenor	manual
+H6440	II	-/1/a/+1	csoport	with		with יָצָא			a magyar ragos alakkal („יָצָא-val”): nincs mondatkezdő bevezető	fuggetlen_ellenor	manual
+H6440	II	-/1/b	alpont	b		to the front of	valaminek az elejére	valaminek az elejére, mozgást jelentő ige után		fuggetlen_ellenor	manual
+H6440	II	-/1/c	alpont	c		towards or on the front of	valami felé vagy valaminek az elején	valami felé vagy valaminek az elején		fuggetlen_ellenor	manual
+H6440	II	-/1/d	alpont	d		on to the surface of	valaminek a felszínére	valaminek a felszínére		fuggetlen_ellenor	manual
+H6440	II	-/2	jelentes	2		אֶתמְּֿנֵי close by	אֶתמְּֿנֵי közel	közel valaminek az arcához vagy elejéhez		fuggetlen_ellenor	manual
+H6440	II	-/2/a	alpont	a		the presence of	valakinek a jelenlétében	valakinek a jelenlétében	a „Qal, afterwards pointed as Niph`al” hivatkozás, nem törzs	fuggetlen_ellenor	manual
+H6440	II	-/2/b	alpont	b		in front of	valami előtt	valami előtt	a végén álló „— מְּנֵי מֵאֵת from before, see II. אֵת 4a.” utalás nem szakasz	fuggetlen_ellenor	manual
+H6440	II	-/3	jelentes	3		בִּפְנֵי	בִּפְנֵי		„3. בִּפְנֵי: (a) … (b) …”: alpont nélkül, zárójeles harmadik szinttel; a cím csak héber	fuggetlen_ellenor	manual
+H6440	II	-/3/+1	csoport	(a)		(a) in the face of	(a) valakinek az arcába			fuggetlen_ellenor	manual
+H6440	II	-/3/+2	csoport	(b)		(b) in front of	(b) valaminek az elején			fuggetlen_ellenor	manual
+H6440	II	-/4	jelentes	4		לִפְנֵי, properly	לִפְנֵי, tulajdonképpen		a cím hosszú, nem vizsgált	fuggetlen_ellenor	manual
+H6440	II	-/4/a	alpont	a		With the implication of	azzal a mellékjelentéssel	azzal a mellékjelentéssel, hogy	a „2 Chron 24:51” könyvnév; a „7 etc.” nem jelölő	fuggetlen_ellenor	manual
+H6440	II	-/4/a/+1	csoport	(a)		(a) under the eye or oversight	(a) valakinek a szeme vagy felügyelete			fuggetlen_ellenor	manual
+H6440	II	-/4/a/+2	csoport	(b)		(b) under the eye and regard	(b) valakinek a szeme és figyelme			fuggetlen_ellenor	manual
+H6440	II	-/4/a/+3	csoport	(c)		(c) figurative for in (or into)	(c) képletesen: valakinek			fuggetlen_ellenor	manual
+H6440	II	-/4/a/+4	csoport	(d)		(d) openly before	(d) nyíltan valaki előtt			fuggetlen_ellenor	manual
+H6440	II	-/4/a/+5	csoport	(e)		(e) in presence of the moon	(e) a hold vagy a nap			fuggetlen_ellenor	manual
+H6440	II	-/4/a/+6	csoport	(f)		(f) free before	(f) szabadon valaki előtt			fuggetlen_ellenor	manual
+H6440	II	-/4/a/+7	csoport	(g)		(g) in the sight (estimation)	(g) valakinek a szemében			fuggetlen_ellenor	manual
+H6440	II	-/4/a/+8	csoport	(h)		(h) י ׳לִפְנֵי, specifically	(h) י ׳לִפְנֵי, különösen			fuggetlen_ellenor	manual
+H6440	II	-/4/b	alpont	b		In other phrases	Más fordulatokban	Más fordulatokban	a „see נָגַף Niph`al” hivatkozás, nem törzs	fuggetlen_ellenor	manual
+H6440	II	-/4/b/+1	csoport	(a)		(a) לִפְנֵי עָמַד to stand before	(a) לִפְנֵי עָמַד valaki előtt állni			fuggetlen_ellenor	manual
+H6440	II	-/4/b/+2	csoport	(b)		(b) לִפְנֵי הִשְׁתַּחֲוָה	(b) לִפְנֵי הִשְׁתַּחֲוָה			fuggetlen_ellenor	manual
+H6440	II	-/4/b/+3	csoport	(c)		(c) to be smitten	(c) megveretni			fuggetlen_ellenor	manual
+H6440	II	-/4/b/+4	csoport	(d)		(d) לִפְנֵי עָמַד to stand (make	(d) לִפְנֵי עָמַד megállni			fuggetlen_ellenor	manual
+H6440	II	-/4/b/+5	csoport	(e)		(e) in hostile sense	(e) ellenséges értelemben			fuggetlen_ellenor	manual
+H6440	II	-/4/b/+6	csoport	(f)		(f) לִפְנֵי (נָתַן) שִׂים	(f) לִפְנֵי (נָתַן) שִׂים			fuggetlen_ellenor	manual
+H6440	II	-/4/b/+7	csoport	(g)		(g) לִפְנֵי נָתַן to set before	(g) לִפְנֵי נָתַן valaki elé adni			fuggetlen_ellenor	manual
+H6440	II	-/4/c	alpont	c		With reference to position	A helyzetre vonatkozóan	A helyzetre vonatkozóan		fuggetlen_ellenor	manual
+H6440	II	-/4/c/+1	csoport	(a)		(a) in front of, before	(a) valami előtt, elöl			fuggetlen_ellenor	manual
+H6440	II	-/4/c/+2	csoport	(b)		(b) of a leader	(b) vezérről			fuggetlen_ellenor	manual
+H6440	II	-/4/c/+3	csoport	(c)		(c) denoting superiority	(c) felsőbbséget jelölve			fuggetlen_ellenor	manual
+H6440	II	-/4/d	alpont	d		Of places	Helyekről	Helyekről		fuggetlen_ellenor	manual
+H6440	II	-/4/e	alpont	e		Of time, before	Időről: előtt	Időről	a „30 לְפָנָיו” száma nem jelölő; a „Sq. infinitive” / „Infinitivus követi” nem mondatkezdő bevezető-egyezés: nem csoport	fuggetlen_ellenor	manual
+H6440	II	-/4/f	alpont	f		In the manner of	Valaminek a módjára	Valaminek a módjára, mint		fuggetlen_ellenor	manual
+H6440	II	-/5	jelentes	5		מִלִּפְנֵי_73 from before	מִלִּפְנֵי_73: valami elől	valami elől		fuggetlen_ellenor	manual
+H6440	II	-/5/a	alpont	a		from the presence of	valakinek a jelenlétéből	valakinek a jelenlétéből	a „see 6” / „l. 6” hivatkozás	fuggetlen_ellenor	manual
+H6440	II	-/5/a/+1	csoport	(a)		(a) Gen 41:46	(a) 1Móz 41:46			fuggetlen_ellenor	manual
+H6440	II	-/5/a/+2	csoport	(b)		(b) of taking, etc.	(b) valaminek a valaki elől			fuggetlen_ellenor	manual
+H6440	II	-/5/a/+3	csoport	(c)		(c) with בקשׁ	(c) בקשׁ-val			fuggetlen_ellenor	manual
+H6440	II	-/5/a/+4	csoport	(d)		(d) of cutting off	(d) a ׳י elől való kiirtásról			fuggetlen_ellenor	manual
+H6440	II	-/5/a/+5	csoport	(e)		(e) of expelling	(e) a betolakodó elől			fuggetlen_ellenor	manual
+H6440	II	-/5/b	alpont	b		(Chiefly late) to express	(Főleg késői) a forrás		a cím hosszú, nem vizsgált	fuggetlen_ellenor	manual
+H6440	II	-/5/c	alpont	c		of time, once	időről, egyszer		a végén álló „— With the later usages …” megjegyzés a c. része	fuggetlen_ellenor	manual
+H6440	II	-/6	jelentes	6		מִמְּנֵי from the face	מִמְּנֵי valakinek az arca		a cím nem vizsgált	fuggetlen_ellenor	manual
+H6440	II	-/6/a	alpont	a		(often with suggestion of causation	(gyakran okozati mellékjelentéssel		a „24 מִמָּנֶיךָ” száma nem jelölő; a cím nem vizsgált	fuggetlen_ellenor	manual
+H6440	II	-/6/b	alpont	b		implying causation more distinctly	az okozatiságot határozottabban	az okozatiságot határozottabban sejtetve		fuggetlen_ellenor	manual
+H6440	II	-/6/c	alpont	c		of the cause, whether nearer	az okról, akár közelebbi	az okról, akár közelebbi, akár távolabbi	a végén álló „— Num 33:8 see” utalás a c. része	fuggetlen_ellenor	manual
+H6440	II	-/6/c/+1	csoport	(a)		(a) Gen 6:13	(a) 1Móz 6:13			fuggetlen_ellenor	manual
+H6440	II	-/6/c/+2	csoport	(b)		(b) stating the reason	(b) annak az oknak			fuggetlen_ellenor	manual
+H6440	II	-/6/c/+3	csoport	(c)		(c) with אֲשֶׁר as a conjunction	(c) אֲשֶׁר-val kötőszóként			fuggetlen_ellenor	manual
+H6440	II	-/7	jelentes	7		עַלמְּֿנֵי (compare	a עַלמְּֿנֵי (vö.		a cím nem vizsgált; a magyar „a” névelővel kezdődik	fuggetlen_ellenor	manual
+H6440	II	-/7/a	alpont	a		From the sense of face or front	Az arc vagy elülső rész jelentéséből	Az arc vagy elülső rész jelentéséből	a „23 (read” száma nem jelölő	fuggetlen_ellenor	manual
+H6440	II	-/7/a/+1	csoport	(a)		(a) in front of (more definite	(a) valami előtt (határozottabb			fuggetlen_ellenor	manual
+H6440	II	-/7/a/+2	csoport	(b)		(b) before, to the exclusion	(b) valaki előtt, egy másik kizárásával			fuggetlen_ellenor	manual
+H6440	II	-/7/a/+3	csoport	(c)		(c) in addition to	(c) valamin felül			fuggetlen_ellenor	manual
+H6440	II	-/7/a/+4	csoport	(d)		(d) of localities	(d) helyekről			fuggetlen_ellenor	manual
+H6440	II	-/7/a/+5	csoport	(ε)		(ε) with verbs implying direction	(ε) irányt sejtető igékkel		OCR-torzult jelölő a forrásban („(ε)”): jelölőnek számít (felhasználói döntés 2026-10-15, ELLENOR_F99_minta E1)	fuggetlen_ellenor	manual
+H6440	II	-/7/b	alpont	b		From the sense of surface	A felszín jelentéséből	A felszín jelentéséből		fuggetlen_ellenor	manual
+H6440	II	-/8	jelentes	8		מֵעַלמְּֿנֵי	מֵעַלמְּֿנֵי		a cím csak héber	fuggetlen_ellenor	manual
+H6440	II	-/8/a	alpont	a		from before the face of	valakinek az arca elől	valakinek az arca elől		fuggetlen_ellenor	manual
+H6440	II	-/8/b	alpont	b		from of the surface of	valaminek a felszínéről		a cím nem vizsgált	fuggetlen_ellenor	manual
+H7307			szocikk			רוּחַ			főnév, 9 jelentés alpontokkal; az „absolute ׳ר” a status absolutus (alaktan)	fuggetlen_ellenor	manual
+H7307		-/1	jelentes	1		breath of mouth or nostrils	a száj vagy az orrlyukak lehelete	a száj vagy az orrlyukak lehelete		fuggetlen_ellenor	manual
+H7307		-/1/a	alpont	a		מִּיו רוּחַ Job 15:30	מִּיו רוּחַ Jób 15:30		héber idézettel és igehellyel kezdődik; a cím nem vizsgált	fuggetlen_ellenor	manual
+H7307		-/1/b	alpont	b		as mere breath	mint puszta lehelet	mint puszta lehelet	a „compare 2e.” / „vö. 2e.” hivatkozás	fuggetlen_ellenor	manual
+H7307		-/1/c	alpont	c		as word of command	mint parancsszó	mint parancsszó		fuggetlen_ellenor	manual
+H7307		-/1/c/+1	csoport	(1)		(1) of God	(1) Istené			fuggetlen_ellenor	manual
+H7307		-/1/c/+2	csoport	(2)		(2) of Messianic king	(2) a messiási királyé			fuggetlen_ellenor	manual
+H7307		-/1/d	alpont	d		as hard breathing	mint haragban az orrlyukakon	mint haragban az orrlyukakon át való heves lélegzés		fuggetlen_ellenor	manual
+H7307		-/1/d/+1	csoport	(1)		(1) of God	(1) Istené			fuggetlen_ellenor	manual
+H7307		-/1/d/+2	csoport	(2)		(2) of man	(2) emberé			fuggetlen_ellenor	manual
+H7307		-/1/e	alpont	e		as sign and symbol of life	mint az élet jele és jelképe	mint az élet jele és jelképe		fuggetlen_ellenor	manual
+H7307		-/2	jelentes	2		wind (117 t.)	szél (117-szer)	szél		fuggetlen_ellenor	manual
+H7307		-/2/a	alpont	a		wind of heaven	az ég szele	az ég szele		fuggetlen_ellenor	manual
+H7307		-/2/b	alpont	b		quarter (of wind), side	(szél)irány, oldal	(szél)irány, oldal	a „(szél)irány” szón belüli zárójel	fuggetlen_ellenor	manual
+H7307		-/2/c	alpont	c		breath of air	légvétel	légvétel		fuggetlen_ellenor	manual
+H7307		-/2/d	alpont	d		air, gas, from womb	levegő, gáz, a méhből	levegő, gáz, a méhből		fuggetlen_ellenor	manual
+H7307		-/2/e	alpont	e		vain, empty thing	hiábavaló, üres dolog	hiábavaló, üres dolog		fuggetlen_ellenor	manual
+H7307		-/3	jelentes	3		spirit, as that which breathes	szellem, mint ami a felélénkülésben		a cím hosszú, nem vizsgált	fuggetlen_ellenor	manual
+H7307		-/3/a	alpont	a		spirit, animation, vivacity	szellem, élénkség, elevenség	szellem, élénkség, elevenség, erő		fuggetlen_ellenor	manual
+H7307		-/3/b	alpont	b		courage	bátorság	bátorság		fuggetlen_ellenor	manual
+H7307		-/3/c	alpont	c		temper, especially anger	indulat, különösen harag	indulat, különösen harag		fuggetlen_ellenor	manual
+H7307		-/3/d	alpont	d		impatience or patience	türelmetlenség vagy türelem	türelmetlenség vagy türelem		fuggetlen_ellenor	manual
+H7307		-/3/e	alpont	e		spirit, disposition, as troubled	szellem, hangulat, mint zaklatott	szellem, hangulat, mint zaklatott, keserű vagy elégedetlen	a magyar „(a) szelleme” (רוּח(וׅ fordítása) nem zárójeles csoport-jelölő	fuggetlen_ellenor	manual
+H7307		-/3/f	alpont	f		as crushed	mint összetört	mint összetört		fuggetlen_ellenor	manual
+H7307		-/3/g	alpont	g		disposition of various kinds	különféle hajlam	különféle hajlam, gyakran megmagyarázhatatlan és fékezhetetlen indíttatás		fuggetlen_ellenor	manual
+H7307		-/3/h	alpont	h		prophetic spirit	prófétai szellem	prófétai szellem		fuggetlen_ellenor	manual
+H7307		-/4	jelentes	4		spirit of the living, breathing being	az élő, lélegző lény szelleme		a cím hosszú, nem vizsgált	fuggetlen_ellenor	manual
+H7307		-/4/a	alpont	a		gift and creation of God	Isten ajándéka és teremtménye	Isten ajándéka és teremtménye		fuggetlen_ellenor	manual
+H7307		-/4/b	alpont	b		God preserves it	Isten megőrzi	Isten megőrzi		fuggetlen_ellenor	manual
+H7307		-/4/c	alpont	c		it is therefore God's spirit	ezért Isten Szelleme	ezért Isten Szelleme		fuggetlen_ellenor	manual
+H7307		-/4/d	alpont	d		it departs at death	a halálkor eltávozik	a halálkor eltávozik		fuggetlen_ellenor	manual
+H7307		-/4/d/+1	csoport	especially		especially 104:29	különösen 104:29			fuggetlen_ellenor	manual
+H7307		-/4/e	alpont	e		disembodied being	testetlen lény	testetlen lény		fuggetlen_ellenor	manual
+H7307		-/5	jelentes	5		spirit as seat of emotion	a szellem mint az érzelmek székhelye	a szellem mint az érzelmek székhelye = נֶפֶשׁ		fuggetlen_ellenor	manual
+H7307		-/5/a	alpont	a		desire	vágy	vágy		fuggetlen_ellenor	manual
+H7307		-/5/b	alpont	b		sorrow, trouble	bánat, zaklatottság	bánat, zaklatottság	a végén álló „— 1Sam 1:15 see קָשֶׁה.” utalás a b. része	fuggetlen_ellenor	manual
+H7307		-/6	jelentes	6		occasionally, (and late)	alkalmanként (és későn)		a cím nem vizsgált	fuggetlen_ellenor	manual
+H7307		-/7	jelentes	7		rarely of the will	ritkán az akaratról	ritkán az akaratról	a „22 (P)” száma nem jelölő	fuggetlen_ellenor	manual
+H7307		-/8	jelentes	8		רוּחַ especially of moral character	רוּחַ különösen az erkölcsi jellemről	különösen az erkölcsi jellemről		fuggetlen_ellenor	manual
+H7307		-/9	jelentes	9		spirit of God	Isten Szelleme	Isten Szelleme		fuggetlen_ellenor	manual
+H7307		-/9/a	alpont	a		as inspiring ecstatic state	mint a prófétálás eksztatikus	mint a prófétálás eksztatikus állapotát ihlető	a „25”, „29”, „10”, „22”, „24” igehely-folytatás, nem jelölő	fuggetlen_ellenor	manual
+H7307		-/9/b	alpont	b		spirit as impelling prophets	a Szellem mint a prófétákat		a cím nem vizsgált	fuggetlen_ellenor	manual
+H7307		-/9/c	alpont	c		imparting warlike energy	harci erőt, végrehajtó	harci erőt, végrehajtó és kormányzó hatalmat közöl		fuggetlen_ellenor	manual
+H7307		-/9/c/+1	csoport	(1)		(1) to מְלָכִים	(1) a מְלָכִים			fuggetlen_ellenor	manual
+H7307		-/9/c/+2	csoport	(2)		(2) resting upon Messianic king	(2) a messiási királyon			fuggetlen_ellenor	manual
+H7307		-/9/d	alpont	d		late, as endowing men	későn, mint az embereket	későn, mint az embereket különféle ajándékokkal felruházó		fuggetlen_ellenor	manual
+H7307		-/9/e	alpont	e		as energy of life	mint az élet energiája	mint az élet energiája		fuggetlen_ellenor	manual
+H7307		-/9/f	alpont	f		= ancient angel of the presence	= az orca régi angyala	az orca régi angyala és a későbbi Sekina		fuggetlen_ellenor	manual
+H0430			szocikk			אֱלֹהִים			főnév; a 3. és 4. jelentésben sok könyvnév+számláló („Chronicles 38 t.”, „1 Samuel 14”, „1 Chronicles 13”) és igehely-folytatás, egyik sem jelölő	fuggetlen_ellenor	manual
+H0430		-/1	jelentes	1		plural in number	többes számú jelentésben	többes számú jelentésben		fuggetlen_ellenor	manual
+H0430		-/1/a	alpont	a		rulers, judges	uralkodók, bírák		a cím nem vizsgált	fuggetlen_ellenor	manual
+H0430		-/1/b	alpont	b		divine ones, superhuman beings	isteni lények, emberfeletti lények		a cím nem vizsgált	fuggetlen_ellenor	manual
+H0430		-/1/c	alpont	c		angels Psalm Psa 97:7	angyalok Zsolt Zsolt 97:7	angyalok	a „Gen 6:4 (J; so ᵐ5 …” utáni „4” és a „Jos^Ant. i. 3. 1” nem jelölő	fuggetlen_ellenor	manual
+H0430		-/1/d	alpont	d		gods	istenek	istenek		fuggetlen_ellenor	manual
+H0430		-/2	jelentes	2		Plural intensive	Intenzív többes szám	Intenzív többes szám		fuggetlen_ellenor	manual
+H0430		-/2/a	alpont	a		god or goddess	isten vagy istennő	isten vagy istennő, mindig suffixummal		fuggetlen_ellenor	manual
+H0430		-/2/b	alpont	b		godlike one	istenszerű lény	istenszerű lény		fuggetlen_ellenor	manual
+H0430		-/2/c	alpont	c		works of God	Isten művei	Isten művei, vagy kiváltképpen őhozzá tartozó dolgok		fuggetlen_ellenor	manual
+H0430		-/2/d	alpont	d		God (see 3 & 4)	Isten (l. 3 & 4)	Isten	a „(see 3 & 4)” hivatkozás, a 3 nem jelölő	fuggetlen_ellenor	manual
+H0430		-/3	jelentes	3		הָאֱלֹהִים the (TRUE) God	הָאֱלֹהִים az (IGAZ) Isten	az Isten		fuggetlen_ellenor	manual
+H0430		-/3/+1	csoport	(a)		(a) angel	(a) angyal			fuggetlen_ellenor	manual
+H0430		-/3/+2	csoport	(b)		(b) prophet	(b) próféta			fuggetlen_ellenor	manual
+H0430		-/4	jelentes	4		אֱלֹהִים = God	אֱלֹהִים = Isten	Isten		fuggetlen_ellenor	manual
+H0430		-/4/a	alpont	a		אלהים (as subject	a אלהים-t (alanyként		a cím nem vizsgált	fuggetlen_ellenor	manual
+H0430		-/4/b	alpont	b		construct אֱלֹהֵי	status constructus אֱלֹהֵי		a cím nem vizsgált	fuggetlen_ellenor	manual
+H0430		-/4/b/+1	csoport	(a)		(a) with persons	(a) személyekkel			fuggetlen_ellenor	manual
+H0430		-/4/b/+2	csoport	(β)		(β) with nouns of attributes	(β) tulajdonságot vagy viszonyt jelölő		OCR-torzult jelölő a forrásban („(β)”): jelölőnek számít (felhasználói döntés 2026-10-15, ELLENOR_F99_minta E1)	fuggetlen_ellenor	manual
+H0430		-/4/c	alpont	c		with suffix in P	suffixummal a P-ben	suffixummal a P-ben	az angol „with suffix” az alpont feje, nem csoport	fuggetlen_ellenor	manual
 H7121			szocikk	I		קָרָא			ige; Qal 1–6 alpontokkal, Niph`al 1–2, Pu`al (F60.35 átnézett szerkezet)	fuggetlen_ellenor	manual
 H7121		Qal	torzs	Qal					fejléc: „Qal_655”; a személyszámok („3 feminine singular”) nem jelentések	fuggetlen_ellenor	manual
 H7121		Qal/1	jelentes	1				hívni	saját meghatározás nélkül; kölcsönzött cím	fuggetlen_ellenor	manual
