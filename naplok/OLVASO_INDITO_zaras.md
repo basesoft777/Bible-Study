@@ -9,7 +9,9 @@
 - **Egyeztetett eltérések a briefhez:** élő lábléc (`LablecFigyelo`); `.gitattributes` `*.sh eol=lf`; a `.bat` fájlokban a `timeout /t 7` helyett `/statusz`-ra váró hurok; tartalék ág a `.bat`-okban (törölhető a merge után).
 - **Ismert korlát:** szintaxishibás szerverfájl mentése után a szerver leáll, és a javítás nem indítja újra; a parancsikon újraindítja (felügyelő a hatókörön kívül).
 
-## Az M2 ⛔ feltétele (nyitott)
+## M2.2 és DT-F100b (2026-10-15, lezárva)
 
-- **Az M2.2 (a három parancsikon kipróbálása) csak a merge után, és csak akkor értelmes, ha a fő checkout a `main`-en áll.** Most a (mergelt) `claude/tervezo-mod` ágon áll, ezért a `.bat`-ok tartalék-ága (régi indítás) futna. Az átállást a merge után egy másik session végzi.
-- Utána, a felhasználó külön jóváhagyásával: a 8765-ös példány ütemezett feladata (DT-F100b); a `.bat` tartalék-ág törlése.
+- **M2.2 ⛔: SIKERES** (a felhasználó jelentése, 11:06): a belső parancsikon az `indit.sh`-val indult (a régi példány leállt, DB-másolás nem kellett, `--ujratolt`), a lap magától megnyílt, a lábléc `main`-t mutat, figyelmeztetés nélkül.
+- **Két hiba a `.bat` fájlokban** (a repón kívül, mindháromban javítva): (1) `wsl -d pardes -- bash -lc "…$S…"`: a `--` miatt a WSL alapértelmezett shellje a `$S`-t üresre fejtette ki, az `indit.sh` el sem indult → `wsl -d pardes -e bash -lc`; (2) a várakozó ciklus `-TimeoutSec 2`, a hideg első `/statusz` 2,1 mp → `-TimeoutSec 15`, 60 próbálkozás, „ne zárd be az ablakot” üzenet. A README a `-e` formát rögzíti.
+- **DT-F100b (a felhasználó jóváhagyásával):** ütemezett feladat `PaRDeS olvaso belso 8765` (Windows Feladatütemező, bejelentkezéskor, rejtett PowerShell → `wsl -d pardes -e bash -lc` → `indit.sh belso 8765`, csak ha az `indit.sh` megvan). Egyszeri indítással igazolva: `/statusz` 200. Visszavonás: a feladat törlése (`Unregister-ScheduledTask -TaskName "PaRDeS olvaso belso 8765"`). A nyilvános (8766) és a kereskedelmi (8768) példányra nincs ütemezés.
+- **Még nyitott:** a `.bat` fájlok tartalék ága (régi indítás) törölhető, mert az `indit.sh` a `main`-en van.
