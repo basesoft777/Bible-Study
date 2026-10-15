@@ -398,7 +398,7 @@ def ellenoriz(briefek, gyoker=REPO):
             hibak.append((b.fajl, mh[1]))
         if fej.get('helyi_gep') not in (None, 'igen', 'nem'):
             hibak.append((b.fajl, 'helyi_gep: igen | nem'))
-        m = re.match(r'^F(\d\d)_', b.fajl)
+        m = re.match(r'^F(\d{2,})_', b.fajl)
         if m:
             if b.szam is None:
                 hibak.append((b.fajl, 'F<nn>_ nevű fájl, de nincs `feladat` mező'))
@@ -1225,7 +1225,7 @@ def atvetel(gyoker=REPO, forras=None, szaraz=False):
 def kovetkezo_szam(briefek):
     hasznalt = [b.szam for b in briefek if b.szam is not None]
     for b in briefek:
-        m = re.match(r'^F(\d\d)_', b.fajl)
+        m = re.match(r'^F(\d{2,})_', b.fajl)
         if m:
             hasznalt.append(int(m.group(1)))
     return (max(hasznalt) if hasznalt else 0) + 1

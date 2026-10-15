@@ -248,6 +248,13 @@ class EllenorizTest(Alap):
         self.g.brief('F02_A_BRIEF.md', brief_szoveg(1))
         self.assertTrue(any('nem egyezik a `feladat`' in u for _, u in self.hibak()))
 
+    def test_haromjegyu_szam(self):
+        # a #100 az első háromjegyű feladat: az F100_… név érvényes, és a számot a fájlnévvel veti össze
+        self.g.brief('F100_A_BRIEF.md', brief_szoveg(100))
+        self.assertEqual(self.hibak(), [])
+        self.g.brief('F101_B_BRIEF.md', brief_szoveg(100))
+        self.assertTrue(any('nem egyezik a `feladat`' in u for _, u in self.hibak()))
+
     def test_modell_egyezes(self):
         self.g.brief('F01_A_BRIEF.md', brief_szoveg(1, modell='opus',
                                                     extra='*v1 · Modell: sonnet · x*'))
@@ -454,6 +461,11 @@ class KovetkezoSzamTest(Alap):
 
     def test_ures(self):
         self.assertEqual(F.kovetkezo_szam(self.g.briefek()), 1)
+
+    def test_haromjegyu(self):
+        self.g.brief('F99_A_BRIEF.md', brief_szoveg(99))
+        self.g.brief('F100_B_BRIEF.md', brief_szoveg(100))
+        self.assertEqual(F.kovetkezo_szam(self.g.briefek()), 101)
 
 
 class KeszDatumTest(Alap):
