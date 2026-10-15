@@ -4,8 +4,8 @@
 
 ## 1. Eredmény röviden
 
-- **Aranyminta** (`adat/bdb_aranyminta.tsv`, SEMA 2.28): 32 szócikk, 622 sor, ebből 14 szócikk magyar fordítással is; benne a beszélgetés nyolc szócikke. A minta a mérések előtt készült, a szócikkek szövegének olvasásából; minden sora `ellenorzes=modell_ellenorizetlen` (a felhasználó vagy a független ellenőr nem nézte át: DT-F99e).
-- **A mai szeletelő az aranymintán:** szerkezeti eltérés nélkül 16 / 32 szócikk angolul, 7 / 14 magyarul; a használati csoportokat (151 várt csoport) egyáltalán nem bontja; a jelentéscímek 169 / 195 (magyar) és 24 / 43 (angol) esetben egyeznek. A 0 eltérés feltétele messze van; a hibák hét osztályba esnek (2.3).
+- **Aranyminta** (`adat/bdb_aranyminta.tsv`, SEMA 2.28): 32 szócikk, 14 magyar fordítással is; benne a beszélgetés nyolc szócikke. A minta a mérések előtt készült, a szócikkek szövegének olvasásából; a független ellenőr átnézte (`naplok/ELLENOR_F99_minta.md`: 11 eltérés, 5 bizonytalan pont), a felhasználó döntései szerint javítva (F99.6, 2.4): 658 sor, ebből 458 `fuggetlen_ellenor`, 200 `modell_ellenorizetlen` (a H6440, H7307, H0430 egésze, amelyet a felhasználó a javított mintában néz át, és az új vagy javított sorok).
+- **A mai szeletelő az aranymintán** (a javított mintán): szerkezeti eltérés nélkül 15 / 32 szócikk angolul, 7 / 14 magyarul; a használati csoportokat (184 várt csoport) egyáltalán nem bontja; a jelentéscímek 169 / 195 (magyar) és 24 / 43 (angol) esetben egyeznek. A 0 eltérés feltétele messze van; a hibák hét osztályba esnek (2.3).
 - **Hivatkozások** (angol BDB, 8099 szócikk): 160 459 hivatkozás 8025 szócikkben — 107 321 kiírt könyvvel, 42 397 örökölt, 10 738 vesszős vers-folytatás, 3 feloldhatatlan. Álhivatkozás-jelölt 1062 (368 nem bibliai mű, 253 tapadt sigla, 441 közeli sigla), és 790 a nemi tanú („noun masculine^Gen 1:27”), amely **valódi** bibliai hivatkozás. Az MT → Károli átkulcsoláshoz a brief forrása, a `Karoli_versmegfeleltetes.tsv`, a hivatkozások 89%-ánál (141 959) nem ad MT-számot; a Macula `karoli` oszlopa mindenre ad, de ismert hibás régiókkal (DT-F99a).
 - **Bevezetők** (angol): a csoport-bevezetők túlnyomó része mondatkezdő vagy vessző utáni helyzetben áll, jelentéshatáron ritkán; az „absolute” 663-szor az alaktanban (status absolutus) áll, nem használati csoport. A kész magyar szócikkekben ugyanannak a bevezetőnek két-három alakja él (followed by: „utána” 527, „követi” 302, ragos héber 460), és az angol–magyar szám szócikkenként ritkán egyezik (DT-F99b).
 
@@ -28,7 +28,7 @@ Az eljárás: a `--dump` a szócikk szövegét a jelölő-jelöltek (gondolatjel
 
 ### 2.2 Összevetés a mai szeletelővel
 
-`# Aranyminta-összevetés: scope=adat/bdb_aranyminta.tsv (32 szócikk) × bdb_szelet.szeletel | forras=BDB_teljes_unabridged.tsv@d4b15b2faea6 + forditasok.tsv@f01130a1be9a + bdb_szelet@edf8ce69 | ts=2026-10-15T14:00` (WSL venv, a címekhez a szerver `blokkok._fo_cim` és `jelentes_cim` függvénye)
+`# Aranyminta-összevetés: scope=adat/bdb_aranyminta.tsv (32 szócikk, F99.6-os javított minta) × bdb_szelet.szeletel | forras=BDB_teljes_unabridged.tsv@d4b15b2faea6 + forditasok.tsv@f01130a1be9a + bdb_szelet@9f3f57ab | ts=2026-10-15T14:50` (az első, javítás előtti futás: `edf8ce69`, 2026-10-15T14:00: eltérés nélkül 16 / 32 és 7 / 14, 151 csoport) (WSL venv, a címekhez a szerver `blokkok._fo_cim` és `jelentes_cim` függvénye)
 
 | Strong | várt csomópont | csoport | EN szerkezeti eltérés | HU szerkezeti eltérés | HU/EN cím-eltérés |
 |---|---|---|---|---|---|
@@ -36,7 +36,7 @@ Az eljárás: a `--dump` a szócikk szövegét a jelölő-jelöltek (gondolatjel
 | H5022 | 0 | 0 | 1 (fölösleges 1) | — | 0 |
 | H4111 | 2 | 0 | 0 | — | 1 |
 | H2939 | 1 | 0 | 1 (hiányzik 1) | — | 0 |
-| H3176 | 6 | 5 | 0 | — | 2 |
+| H3176 | 8 | 5 | 2 (hiányzik 2) | — | 2 |
 | H5203 | 9 | 0 | 0 | — | 3 |
 | H6504 | 10 | 1 | 5 (hiányzik 3, fölösleges 2) | — | 0 |
 | H4900 | 10 | 1 | 2 (hiányzik 2) | — | 1 |
@@ -48,22 +48,22 @@ Az eljárás: a `--dump` a szócikk szövegét a jelölő-jelöltek (gondolatjel
 | H4060 | 5 | 0 | 0 | — | 2 |
 | H1124 | 2 | 3 | 0 | — | 0 |
 | H5648 | 6 | 0 | 0 | — | 3 |
-| H1242 | 10 | 5 | 0 | 0 | 2 |
+| H1242 | 10 | 6 | 0 | 0 | 2 |
 | H0776 | 22 | 2 | 0 | 0 | 3 |
 | H7451 | 22 | 7 | 8 (hiányzik 8) | 8 (hiányzik 8) | 1 |
 | H3615 | 23 | 13 | 12 (hiányzik 7, fölösleges 5) | 0 | 1 |
 | H0559 | 8 | 11 | 5 (hiányzik 4, rossz kezdet 1) | 1 (hiányzik 1) | 2 |
-| H6440 | 45 | 33 | 40 (hiányzik 31, fölösleges 9) | 40 (hiányzik 31, fölösleges 9) | 1 |
-| H7307 | 40 | 6 | 0 | 0 | 1 |
-| H0430 | 15 | 3 | 0 | 0 | 3 |
-| H7121 | 43 | 19 | 0 | 0 | 5 |
-| H3027 | 34 | 28 | 28 (hiányzik 24, fölösleges 4) | 28 (hiányzik 24, fölösleges 4) | 3 |
-| H0834 | 47 | 0 | 28 (hiányzik 26, rossz kezdet 2) | 27 (hiányzik 26, rossz kezdet 1) | 1 |
-| H2490 | 30 | 0 | 6 (hiányzik 4, fölösleges 2) | 9 (hiányzik 7, fölösleges 2) | 1 |
-| H1157 | 5 | 0 | 1 (rossz kezdet 1) | 1 (rossz kezdet 1) | 1 |
+| H6440 | 45 | 35 | 40 (hiányzik 31, fölösleges 9) | 40 (hiányzik 31, fölösleges 9) | 1 |
+| H7307 | 40 | 7 | 0 | 0 | 1 |
+| H0430 | 15 | 4 | 0 | 0 | 3 |
+| H7121 | 43 | 20 | 0 | 0 | 5 |
+| H3027 | 34 | 33 | 28 (hiányzik 24, fölösleges 4) | 28 (hiányzik 24, fölösleges 4) | 3 |
+| H0834 | 50 | 16 | 31 (hiányzik 29, rossz kezdet 2) | 30 (hiányzik 29, rossz kezdet 1) | 1 |
+| H2490 | 30 | 4 | 6 (hiányzik 4, fölösleges 2) | 9 (hiányzik 7, fölösleges 2) | 1 |
+| H1157 | 5 | 2 | 1 (rossz kezdet 1) | 1 (rossz kezdet 1) | 1 |
 | H0157 | 10 | 7 | 1 (rossz kezdet 1) | 0 | 1 |
 
-Összesen: szerkezeti eltérés nélküli szócikk angolul 16 / 32, magyarul 7 / 14; eltérés 168 (EN) és 140 (HU) — benne a címek; csoport: 151 várt, 0 bontva. A cím-eltérés a megjelenített nyelven számít (a magyar fordítású szócikkeknél magyarul).
+Összesen: szerkezeti eltérés nélküli szócikk angolul 15 / 32, magyarul 7 / 14; eltérés 173 (EN) és 143 (HU) — benne a címek; csoport: 184 várt, 0 bontva. A cím-eltérés a megjelenített nyelven számít (a magyar fordítású szócikkeknél magyarul).
 
 ### 2.3 A hibaosztályok (a minta szövegéből)
 
@@ -75,7 +75,32 @@ Az eljárás: a `--dump` a szócikk szövegét a jelölő-jelöltek (gondolatjel
 6. **Elveszett számozott jelentések** a sorrend-feltétel miatt: H3027 4–5 (a „4 יָד is used…” nem jelölő a szeletelőnek), H2490 III Hiph`il 2, a tapadt alpont-jelölő („c.as to hands”, H3027 1/c).
 7. **Csoport és cím**: csoportbontás nincs. A cím-eltérések jellemzően: a cím a használati megjegyzést is viszi („wait, tarry for, followed by לְ”, „make, accusative of thing”); a `=` határ levágja a jelentést („Képletesen = erő, hatalom” → „Képletesen”); a héber szó a címben megszakítja („jelenlét, személy, a ׳י-é” → „jelenlét, személy, a”); a szó eleji zárójel kiesik („(szél)irány” → „irány”); igehellyel vagy héberrel kezdődő jelentésnél a cím a kettőspont előtti egy szó („all Isaiah”).
 
+8. **(F99.6) OCR-torzult jelölők**: a forrásban a jelölő tapadt vagy torzult alakban áll (`-1בְּיַד`, `-2אֶליַֿד`, `3as a conjunction`, `(β)`, `(ε)`); a felhasználó döntése szerint ezek jelölők (H3027 5/a–5/h, H0834 שֶׁ 3., H0430 4/b, H6440 II 7/a). A H3176 Hiph`il két számozatlan, önálló jelentése (`okkod=szamozatlan_jelentes`) a szeletelőnek egy szövegtömb.
+
 **Ami jó:** a számozott jelentések és alpontok az egyszerű főnévi és igei szócikkekben (H1242, H0776, H7307, H0430, H7121, H5145, H4060, H5648) hibátlanok mindkét nyelven; a szakasz-felismerés a szabályos „II. <héber> noun” fejeknél (H4686, H4060, H6696) működik.
+
+### 2.4 A független ellenőrzés és a javítás (F99.5–F99.6)
+
+A független ellenőr (`naplok/ELLENOR_F99_minta.md`) 11 eltérést (E1–E11) és 5 bizonytalan pontot (B1–B5) talált; a felhasználó döntései (2026-10-15) szerint a minta javítva (`adat/bdb_aranyminta.tsv`, 622 → 658 sor):
+
+| Szócikk | Változás | Döntés |
+|---|---|---|
+| H3027 | 5/a: (1), (2) csoport (az 5/b-ből átkerült (1) és az OCR-alakú `-2`); 5/b: (1)–(4) (az OCR-alakú `-1`, `-2`); 5/g, 5/h: a `-2` (2) csoport; a hamis „a (2) hiányzik” megjegyzések törölve; 5/c (4): a horgony „(4) בְּיַד”, a hamis „nincs szóköz” megjegyzés törölve | E1, B5 (498) |
+| H0834 | שֶׁ: saját 3. jelentés („3as a conjunction”, magyarul „3kötőszóként”) 3/a, 3/b alponttal és a 3/a (a), (b) csoportjával; a két `kihagy` sor és a hamis „hiányzik” indok törölve; a שֶׁ 1. megjegyzése javítva („see מָה 1e b.”); zárójeles csoport: 2. (a)(b), 4/b (a)(β)(γ)(δ) (a `kihagy -/4/b` helyett), 6. (a)(b)(c), 8/a (a)(β)(γ), שֶׁ 4/b (a)(b) | E2, E3, B5 (562) |
+| H0430 | az „(a) angel / (b) prophet” a 3. jelentés csoportja (nem a 2/b-é); 4/b (β) csoport | E4, E5 |
+| H6440 | II 7/a (ε) csoport; II 1/a „with יָצָא” csoport | E6, E7 |
+| H2490 | III Hiph`il 2: négy „with” csoport (Infinitive, ו consecutive, בְּ, מן) | E8 |
+| H1157 | 2: „with כִּמֶּר” és „With לְ ׳מִבַּעַד” csoport | E9 |
+| H7307 | 4/d „especially 104:29” csoport | E10 |
+| H7121 | Qal 4/a „with acc of roll, book” csoport (az „acc” = with accusative) | E11 |
+| H5766 | „I. עַלְוָה transposed from עַוְלָה”: `utalo` sor (`okkod=utalo_cimszo`), nem szakasz | B1 |
+| H1242 | 1/b „& especially” csoport (a „; &” mondatkezdő) | B2 |
+| H3176 | Hiph`il: két számozatlan jelentés (`Hiph'il/-1` „wait, tarry”, `Hiph'il/-2` „wait for, hope for”), `okkod=szamozatlan_jelentes`; az „absolute hope” csoport a második alá | B4 |
+| H0559 | Qal/4 megjegyzés: „compare 1 Kings 5:20” könyvnév | B5 (234) |
+
+**B3 (H6696 Qal/2, a felhasználó döntése: marad).** Az első „with עַל of city” vessző után áll („shut in, besiege, with עַל of city”), ezért a csoportszabály szerint nem csoport, hanem a jelentés fejének része; a párhuzamos négy tag („; with עַל person”, „; with אֶל of city”, „; with אֶל person”, „; with אֵת of city only”) mondatkezdő, ezért csoport. A minta szabálykövető, de **aszimmetrikus**: az olvasó négy csoportot lát, az ötödik párhuzamos használat a fejben marad. Ha a megjelenítés (M4) ezt zavarónak mutatja, a csoportszabály (DT-F99b (1)) módosítása a helye, nem a mintáé.
+
+Az ellenőrzés jelölése (`ellenorzes`): a H6440, H7307, H0430 minden sora `modell_ellenorizetlen` (a felhasználó a javított mintában nézi át); a többi szócikk változatlan sora `fuggetlen_ellenor`; az új vagy javított sorok `modell_ellenorizetlen`. `felhasznalo`-t a modell nem ír. Minden nem üres horgony (1017) a forrásszövegben megvan (pontozás nélkül, NFC).
 
 ## 3. Hivatkozás-mérés (M0.2)
 
@@ -193,7 +218,7 @@ A `LexicalIndex.xml` (OSHL @ `21c9add13bc727d3a951361778e97e3ff7afd1ce`, sha256 
 - **DT-F99b** — a csoport-bevezetők listája, kötelező magyar alakja, kapu, időzítés a #38-ban, a kész 674 szócikk (4. szakasz).
 - **DT-F99c** — a szeletelő helye élesben.
 - **DT-F99d** — a modell-magyarázat teljes futása (az M6 mérése után dönthető; most előjegyzés).
-- **DT-F99e** — az aranyminta átnézése (a „0 eltérés” mércéje csak ellenőrzött mintán értelmes).
+- **DT-F99e** — az aranyminta átnézése (a „0 eltérés” mércéje csak ellenőrzött mintán értelmes). Eldöntve (b): a független ellenőr átnézte (F99.5), a minta a felhasználó döntései szerint javítva (F99.6, 2.4); a H6440, H7307, H0430 felhasználói átnézése nyitott.
 - **DT-F99f** — a `LexicalIndex.xml` letöltése az M0.4-hez és az M1-hez.
 
 ## 8. Reprodukálás

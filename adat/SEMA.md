@@ -1205,16 +1205,17 @@ A BDB-szócikkek **várt szerkezete** kézzel, a szeletelő (`eszkozok/olvaso_pi
 |---|---|
 | `strong` | a BDB-sor kulcsa (`H` + 4 jegy, mint a `BDB_teljes_unabridged.tsv` `Strong_padded` mezője) |
 | `szakasz` | üres: a fő (a Strong-lemmához tartozó) szakasz; római szám (`II`, `III`): a római számmal jelölt homonima vagy fő rész; héber szó: a jelöletlen al- vagy arámi címszó (az összevetés a mássalhangzó-vázon illeszt) |
-| `utvonal` | `<törzs>/<jelentés>/<alpont>/+<n>`; a hiányzó szint `-` (`-/1`: törzs nélküli 1. jelentés; `-/a`: jelentés nélküli alpont); a törzs neve a szeletelő alakjában (`Pi'el`, `Hithpa'el`) |
-| `szint` | `szocikk` (szócikkenként egy: a `kezdet_en` a címszó héber alakja, a `jel` a homonima-szám) \| `szakasz` \| `torzs` \| `jelentes` \| `alpont` \| `csoport` (használati csoport: a mondatkezdő bevezető, pl. `absolute`, `followed by`, `with`, vagy a zárójeles harmadik szint `(1)`, `(a)`; a végleges bevezető-lista a DT-F99b) \| `kihagy` (az útvonal alatti csomópontokat az összevetés nem nézi: a forrás hiányos, vagy a szint nincs rögzítve; a `megjegyzes` mondja meg, miért) |
+| `utvonal` | `<törzs>/<jelentés>/<alpont>/+<n>`; a hiányzó szint `-` (`-/1`: törzs nélküli 1. jelentés; `-/a`: jelentés nélküli alpont); a számozatlan, de önálló jelentés `-1`, `-2` (`Hiph'il/-2`, `okkod=szamozatlan_jelentes`); a törzs neve a szeletelő alakjában (`Pi'el`, `Hithpa'el`) |
+| `szint` | `szocikk` (szócikkenként egy: a `kezdet_en` a címszó héber alakja, a `jel` a homonima-szám) \| `szakasz` \| `torzs` \| `jelentes` \| `alpont` \| `csoport` (használati csoport: a mondatkezdő bevezető, pl. `absolute`, `followed by`, `with`, vagy a zárójeles harmadik szint `(1)`, `(a)`, `(β)` — mindenhol csoport, az OCR-torzult alak (`-1`, `-2`, `3as`) is jelölő; a bevezető-lista a DT-F99b) \| `utalo` (utaló címszó saját tartalom nélkül, pl. „I. עַלְוָה transposed from עַוְלָה”; nem szakasz, az összevetés nem csomópontként kezeli) \| `kihagy` (az útvonal alatti csomópontokat az összevetés nem nézi: a forrás hiányos, vagy a szint nincs rögzítve; a `megjegyzes` mondja meg, miért) |
 | `jel` | a jelölő (`1`, `a`, `Qal`, `II`, a csoport bevezetőjének kulcsa) |
+| `okkod` | üres, vagy gépi okkód: `utalo_cimszo` (az `utalo` sor), `szamozatlan_jelentes` (a számozatlan önálló jelentés) |
 | `kezdet_en`, `kezdet_hu` | a csomópont saját szövegének eleje (a jelölő után), az összevetés horgonya; üres: nem vizsgált (a magyarnál: nincs fordítás, vagy a horgony nem ellenőrzött) |
 | `cim` | a várt jelentéscím (a szócikk saját szavai, a zárójeles részek nélkül, az első igehelyig, pontosvesszőig vagy kettőspontig); üres: nem vizsgált. Az összevetés a héber betűk és az írásjelek nélkül hasonlít |
 | `megjegyzes` | miért ez a szerkezet (ál-jelölők, forráshibák, hivatkozásként álló törzsnevek) |
-| `ellenorzes` | `modell_ellenorizetlen` (a modell készítette, senki nem nézte át) \| `felhasznalo` (a felhasználó ellenőrizte); a modell `felhasznalo`-t soha nem ír |
+| `ellenorzes` | `modell_ellenorizetlen` (a modell készítette vagy javította, átnézés nélkül) \| `fuggetlen_ellenor` (a független ellenőr átnézte, `naplok/ELLENOR_F99_minta.md`, az eltéréseket a felhasználó eldöntötte) \| `felhasznalo` (a felhasználó ellenőrizte); a modell `felhasznalo`-t soha nem ír |
 | `proveniencia` | `manual` (nem lekérdezés; 1.5) |
 
-Kulcs: `strong` + `szakasz` + `utvonal` + `szint`. A 2026-10-15-i állapot: 32 szócikk (14 magyar fordítással), 622 sor.
+Kulcs: `strong` + `szakasz` + `utvonal` + `szint`. Állapot (F99.6, 2026-10-15, a független ellenőr jelentése és a felhasználó döntései után): 32 szócikk (14 magyar fordítással), 658 sor (184 csoport, 1 utaló); 458 sor `fuggetlen_ellenor`, 200 `modell_ellenorizetlen` (a H6440, H7307, H0430 egésze és az új vagy javított sorok).
 
 ---
 
