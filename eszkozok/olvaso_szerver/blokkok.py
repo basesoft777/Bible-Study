@@ -874,6 +874,10 @@ def _torzsek_html(tl, elotag='bdb', talalt=None):
     return ki
 
 
+# DT-F99l (c) (felhasználó, 2026-10-15): a BDB-szeletelő „próba” jelöléssel élesedik; a lapon a NYERS mért pontosság áll (a seed-101 vak
+# minta, 200 véletlen igehely, jelentéspont: 184/200; Clopper–Pearson 95%), az ítélet utáni érték csak a naplóban (naplok/BDB_SZELETELO_M0.md 9.11)
+BDB_MERT_PONTOSSAG = ('Mért pontosság (jelentéspont, 200 véletlen igehely vak ellenőrzéssel, 2026-10-15): 92,0% '
+                      '(95%-os konfidencia-intervallum: 87,3–95,4%).')
 SZAKASZ_CIM = {'elo': 'Zárójeles előszócikk (más gyök)', 'arámi': "Arámi (Pe'al) rész", 'azonos_lemma': 'További homonima ugyanezen a lemmán', 'masik_lemma': 'Másik szó (más lemma)',
                'tagolas': 'rész (a címszó fő tagolása)'}
 
@@ -894,7 +898,7 @@ def _r_bdb_apparatus(d, K):
     if d['alias']:
         al = d['alias']
         ki += Markup('<p class="megj">A szócikk a(z) %s Strong-szám alatt áll (%s, szövegi hasonlóság %s; a BDB_strong_alias.tsv alias-párosítása).</p>') % (al['tabla_strong'], al['bdb_id'], al['hasonlosag'])
-    ki += Markup('<p class="megj">Gépi szeletelés (próba): a határokat a szócikk saját jelölői adják (gondolatjel, sorszámok, törzsnevek); hibás határ előfordulhat. A szöveg nem változik.</p>')
+    ki += Markup('<p class="megj">Gépi szeletelés (próba): a határokat a szócikk saját jelölői adják (gondolatjel, sorszámok, törzsnevek); hibás határ előfordulhat. A szöveg nem változik. %s</p>') % BDB_MERT_PONTOSSAG
     fej = a['fej']
     ki += resz('Címszó', Markup('<div class="cimszo"><span class="he" lang="he">%s</span><span>%s</span>%s<span class="helyek">%s igehely-hivatkozás a szócikkben</span></div>') % (
         fej.get('heber') or '', ' · '.join(x for x in (fej.get('atiras'), ('%s. címszó' % fej['homonima']) if fej.get('homonima') else '') if x),

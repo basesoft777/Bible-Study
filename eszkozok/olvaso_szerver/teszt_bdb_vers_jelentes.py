@@ -197,7 +197,8 @@ class Seed100Javitas(unittest.TestCase):
 class Tabla(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.sorok, _ = V.general('2026-10-15', ['H1242', 'H0006', 'H0015', 'H0196', 'H0226', 'H6666', 'H5591', 'H8079', 'H5704'])
+        cls.sorok, _ = V.general('2026-10-15', ['H1242', 'H0006', 'H0015', 'H0196', 'H0226', 'H6666', 'H5591', 'H8079', 'H5704',
+                                                      'H8641', 'H0068', 'H1802'])
 
     def test_minden_sorban_jelentespont_feloldasi_mod_es_proveniencia(self):
         i = {k: n for n, k in enumerate(V.FEJ)}
@@ -241,6 +242,18 @@ class Tabla(unittest.TestCase):
         # … és szűrt, ha nem („ᵐ5^Lev 11:30”: a שְׂמָמִית nincs a 3Móz 11:30-ban; seed-100 M075)
         x = sor(self.sorok, strong='H8079', nyers='Lev 11:30')[0]
         self.assertEqual((x[V.FEJ.index('okkod')], x[V.FEJ.index('szurt')], x[V.FEJ.index('karoli_vers')]), ('sigla_tapadt', '1', ''))
+
+    def test_karoli_f85_es_tahot(self):
+        # DT-F99h (b): az F85 fejezetszintű eltolás-táblája (seed-99 M112: 2Móz 36:6 MT → Károli 36:5) és a nincs_karoli sor azonos
+        # számú Károli-versre, ha a TAHOT ott hordozza a szót (karoli_tahot)
+        i = {k: n for n, k in enumerate(V.FEJ)}
+        x = sor(self.sorok, strong='H8641', poz='1739')[0]
+        self.assertEqual((x[i['mt_vers']], x[i['karoli_vers']], x[i['vers_feloldas']]), ('2Móz 36:6', '2Móz 36:5', 'atkulcsolt_f85'))
+        x = sor(self.sorok, strong='H0068', poz='3699')[0]
+        self.assertEqual((x[i['karoli_vers']], x[i['vers_feloldas']], x[i['okkod']]), ('2Móz 35:33', 'azonos_tahot', 'karoli_tahot'))
+        # seed-101 M049: forras_hiba
+        x = sor(self.sorok, strong='H1802', poz='512')[0]
+        self.assertIn('forras_hiba', x[i['okkod']].split(','))
 
     def test_ket_romai_szint(self):
         # DT-F99i: „H5704. ad III. עַד … I. preposition … 3 Of degree … Exod 9:7” — homonima III, rész I (seed-100 M019)

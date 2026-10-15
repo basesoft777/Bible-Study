@@ -8,6 +8,8 @@ hivatkozás helye), a seed-100 mintájára (`naplok/BDB_SZELETELO_M2_seed100_ite
 (F99.27). A szeletelőn a jóváhagyásig nincs javítás. Proveniencia: `scope=seed-101 vak minta | forras=BDB_teljes_unabridged.tsv +
 TAHOT_kivonat.tsv (ellenőrzés) | ts=2026-10-15`; az ítélet értelmezés (manual), nem gépi eredmény.*
 
+**Jóváhagyva** (felhasználó, 2026-10-15): az ítéletek; M029 kulcs-ellentmondás marad (a homonima/fő rész kérdés a javítási feladatba); M049, M121 `forras_hiba` (a táblában alkalmazva, F99.29); M092 `orokles_hibas` (a javítási feladatba); a kapu: DT-F99l (c).
+
 ## 1. Összesítő
 
 | kategória | jelentéspont (16) | ebből a hely számozott szócikkben | nem számozott (tagolatlan, fej-/alaktani sor, jelöletlen alcímszó) |
