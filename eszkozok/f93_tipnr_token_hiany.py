@@ -379,9 +379,12 @@ def main(argv):
                         indok.append('%s: kiadás-jelölés (%s), de a névhez illő %s token Kritikai kiadás mezője (%s) tartalmazza a jelölt kiadást'
                                      % (hely, tagszoveg, em[0][0], em[0][3]))
                     else:
+                        # a kiadás-mező az első erős (egyező glosszájú), a TR-t tartalmazó tokené (mint a szövegváltozat-ágon)
+                        e0 = [e for e in jeloltek if keres & kiadas_halmaz(e[3])][0]
+                        kiadasok_l[-1:] = [e0[3]]
                         osztalyok.append('alak-/névhasítás')
                         indok.append('%s: nincs kiadás-jelölés; a versen %s (Kritikai kiadás: %s, tartalmazza a TR-t); a TIPNR a névalaknak külön Strong-számot ad'
-                                     % (hely, emtxt(em), em[0][3]))
+                                     % (hely, emtxt(em), e0[3]))
                 else:
                     if tag:
                         osztalyok.append('nem eldönthető')
