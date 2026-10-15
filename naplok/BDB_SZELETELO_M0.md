@@ -2,6 +2,28 @@
 
 *Feladat: FELADATOK #99 (`F99_BDB_SZELETELO_BRIEF.md`), ág: `claude/bdb-szeletelo`. Modell: `claude-opus-5-5` (a brief `modell: opus` mezőjével egyezik). Állapot: az M0 mind az öt lépése kész (a 4. lépés, az OSHL `<etym>`, a F99.8-ban, 5. szakasz); a döntések a `DONTESEK.md`-ben (DT-F99a–c, e, f eldöntve, DT-F99d az M6-ra előjegyezve). Eszköz: `eszkozok/olvaso_pilot/bdb_szelet_m0.py` (csak olvas; `--dump`, `--arany`, `--hivatkozas`, `--jelolo`).*
 
+## 0. Rendezett összegzés a zárás előtt (F99.29, 2026-10-15)
+
+*A részletek a 2–9.11. szakaszban; a zárójelentés: `naplok/BDB_SZELETELO_zaras.md`. A #99 lezárásáról és a hatóköri résről (M3–M6) a
+felhasználó dönt; a független ellenőrt az orkesztrátor indítja.*
+
+| mérföldkő | állapot | bizonyíték |
+|---|---|---|
+| M0 aranyminta és mérések | **kész** | 2–5. szakasz; DT-F99a–c, e, f |
+| M1 gyökcsalád (OSHL `<etym>`) | **kész** | 9.1; `szo.oshl_csalad` blokk |
+| M2 hivatkozás-feloldás, vers → jelentés tábla | **kész, a mérce nem teljesült** | 9.3–9.11; seed-101: könyv/vers 0 valódi hiba, jelentéspont 184/200 = 92,0% (95% CI 87,3–95,4%), az ítélet után 93,5% (89,1–96,5%); DT-F99l (c): „próba” jelöléssel élesítve, a mért szám a szó-lapon |
+| M3 jelentésen belüli tagolás (használati csoportok) | **nem készült el** | a szeletelő csoportokra nem bont (az aranyminta 184 várt csoportjából 0); a DT-F99b terminológia nincs bevezetve |
+| M4 megjelenítés („ebben a versben”, kattintható helyek, pontos hivatkozásszám, `bdb_jelek.tsv`, felhasználói próba) | **nagyrészt nem készült el** | kész: a szeletelő éles modul (DT-F99c), a „próba” felirat a mért pontossággal (DT-F99l); nincs: kattintható helyek, „ebben a versben” kiemelés és „nem idézi” felirat, csoportsorok, `bdb_jelek.tsv`, a ⛔ felhasználói próba |
+| M5 héber szórend | **nem készült el** | — |
+| M6 modell-magyarázat próbája | **nem készült el** | `adat/bdb_magyarazat_proba.tsv` nincs; DT-F99d nyitott |
+| Elfogadás: aranyminta 0 eltérés | **nem teljesült** | EN 7/32, HU 4/14 hibás szócikk; szerkezeti eltérés 71/72 |
+
+**A tábla zárásakor** (`adat/bdb_vers_jelentes.tsv`): 160 616 sor; csomópont 122 457, `fej` 8 759, `tagolatlan` 29 400; `resz` 6 010;
+`szurt=1` 531; Károli-vers 159 151 sorban (`atkulcsolt_f85` 1 099, `azonos_tahot` 645, `nincs_karoli` 234; DT-F99h (b)).
+
+**Külön feladatba:** a szeletelő javítása a seed-101 hibaosztályai szerint (brief-tervezet: `beerkezo/BDB_SZELETELO_JAVITAS_brief_tervezet.md`);
+az M3–M6 sorsáról a felhasználó dönt (nem zártam le, ami nincs kész).
+
 ## 1. Eredmény röviden
 
 - **Aranyminta** (`adat/bdb_aranyminta.tsv`, SEMA 2.28): 32 szócikk, 14 magyar fordítással is; benne a beszélgetés nyolc szócikke. A minta a mérések előtt készült, a szócikkek szövegének olvasásából; a független ellenőr átnézte (`naplok/ELLENOR_F99_minta.md`: 11 eltérés, 5 bizonytalan pont), a felhasználó döntései szerint javítva (F99.6, 2.4): 658 sor, ebből 607 `fuggetlen_ellenor`, 51 `modell_ellenorizetlen` (az új vagy javított sorok a H6440, H7307, H0430-on kívül; a három szócikket a felhasználó a második ellenőrzés alapján elfogadta, F99.7).
@@ -540,3 +562,48 @@ kitöltő-hiba, 3 kulcs-ellentmondás (M008 görög negyedik szint; M011 nagybet
 A 13-ból 12 számozott szócikkben, 1 (M238) jelöletlen alcímszóban. **Javaslat:** (b) nem teljesül (1/13), a hibák szórtak (7 okcsoport)
 → **(c)**. A `forras_hiba`-jelöltek: M049 (2Móz 2:6 → 2:16) és M121 (Dán 3:13 → 3:15) a TAHOT szerint `forras_hiba`; M092 nem az (a forrás
 helyes, a tábla öröklési szabálya a hiba: az egyfejezetes Abdiás után nem folytatja a 2Krón-t).
+
+### 9.12 DT-F99h (b), DT-F99l (c) alkalmazása és a zárás előkészítése (F99.29)
+
+**A felhasználó döntései (2026-10-15):** a seed-101 ítéletek jóváhagyva (M029 kulcs-ellentmondás marad; M049, M121 `forras_hiba`; M092
+`orokles_hibas`, a javítási feladatba); DT-F99l (c); DT-F99h (b); külön javítási feladat brief-tervezete; a zárás lépései.
+
+**DT-F99h (b) — fejezetszintű eltolás-tábla az F85-ből.** Forrás: `naplok/F85_kulcsvaltas.tsv` (régi TAHOT-kulcs → Károli-vers, 337 vers,
+mind egyértelmű). A TAHOT megerősítése fejezetenként (a tábla szűretlen sorai, amelyek MT-verse az F85-ben átkulcsolt):
+
+| fejezet | sor | TAHOT-találat a régi Károli-versen | az F85 szerinti versen | a táblába |
+|---|---:|---:|---:|---|
+| 2Móz 36 | 151 | 14 | 137 | igen |
+| 4Móz 30 | 127 | 0 | 116 | igen |
+| Hós 12 | 128 | 104 | 116 | igen |
+| Jób 17 | 100 | 0 | 91 | igen |
+| Jób 37 | 140 | 127 | 132 | igen |
+| Péld 12 | 162 | 0 | 158 | igen |
+| Én 6 | 91 | 2 | 86 | igen |
+| Ézs 8 | 19 | 0 | 18 | igen |
+| Ézs 9 | 181 | 8 | 169 | igen |
+| Dán 4 | 555 | 377 | 48 | nem (a TAHOT ellentmond) |
+| Hós 2 | 216 | 33 | 12 | nem |
+| Ézs 64 | 75 | 4 | 8 | nem (< 50%) |
+| Hós 14 | 82 | 0 | 6 | nem (< 50%) |
+| Jób 40, Préd 1, 2, 8, 9, 10 | — | — | — | nincs változás (a Macula már a Károli-versre kulcsol) |
+
+Feltétel: az F85 szerinti versen a TAHOT a sorok legalább felénél, és többnél hordozza a szót, mint a régin. A Dán 4 és a Hós 2 eltérése
+arra utal, hogy ott a BDB MT-száma és a TAHOT régi kulcsa más számozást követ; ezeket a szabály nem érinti (soronkénti keresés nincs).
+**Kiegészítés:** a `nincs_karoli` sor az azonos számú Károli-versre kerül, ha az létezik és a TAHOT ott hordozza a szót (`azonos_tahot`,
+okkód `karoli_tahot`). **Hatás:** `atkulcsolt_f85` 1 099 sor (a TAHOT 1 023-at igazol), `azonos_tahot` 645, a `nincs_karoli` 1 371 → 234;
+Károli-vers 158 014 → 159 151 sorban. A gépi Károli-összevetés (`naplok/BDB_SZELETELO_M2_karoli.md`) újrafuttatva.
+
+**Az M027 és az M112 újraellenőrzése (seed-99):** **M112** (H8641, 2Móz 36:6 MT) — a tábla most **2Móz 36:5** (`atkulcsolt_f85`); a TAHOT a
+H8641-et a 2Móz 36:5-ben hordozza: **javítva**. **M027** (H2543, Neh 7:68) — **változatlan, Neh 7:68** (`tobb_karoli_vers`); a TAHOT a
+H2543-at a Neh 7:69-ben hordozza. A Neh 7 nincs az F85 dokumentált átkulcsolásai között, ezért a (b) szabály nem érinti (soronkénti javítás
+nincs) — nyitott tétel.
+
+**DT-F99l (c) a szó-lapon:** a BDB-blokk „Gépi szeletelés (próba)” felirata mellett a nyers mért pontosság: „92,0% (95%-os
+konfidencia-intervallum: 87,3–95,4%)” (`blokkok.py` `BDB_MERT_PONTOSSAG`, a meglévő `megj` osztállyal — a regiszter-őr szerint nincs új
+elem; teszt: `teszt_olvaso_szerver.py` `test_bdb_proba_es_mert_pontossag`). Az ítélet utáni 93,5% csak itt, a naplóban.
+
+**`forras_hiba`:** M049 (H1802, „Exod 2:6” → 2Móz 2:16, 19) és M121 (H7804, „Dan 3:13” → Dán 3:15) a `FORRAS_HIBA` listán (5 sor).
+
+**A külön javítási feladat brief-tervezete:** `beerkezo/BDB_SZELETELO_JAVITAS_brief_tervezet.md` (a `/befogad`-hoz; nem fogadtam be, a
+`FELADATOK.md`-hez nem nyúltam).
