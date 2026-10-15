@@ -58,19 +58,19 @@ def main():
     DFEL = tabla_sorok(olvas(os.path.join(R, 'FELADATOK.md')), r'D\d+')   # D34–D41 a FELADATOK-ban
     NY = nyitott_tetelek(olvas(os.path.join(R, 'NYITOTT_FELADATOK.md')))
     SEMA = sema_szakaszok(olvas(os.path.join(R, 'adat', 'SEMA.md')))
-    briefek = {f[:3]: f for f in os.listdir(R) if re.match(r'F\d\d_.*BRIEF\.md$', f)}
+    briefek = {f.split('_', 1)[0]: f for f in os.listdir(R) if re.match(r'F\d{2,}_.*BRIEF\.md$', f)}
     terv = olvas(a.terv)
     ki = []
     ki.append(f'# Terv-átnézés — {os.path.basename(a.terv)} ↔ repó\n\nGenerált: {datetime.date.today()} · `terv_atnezes.py` · nem értelmez, hivatkozásokat olvas egybe. Üres cella = a terv olyat mond, amire a repóban nincs hivatkozott sor.\n')
     osszes_fejbol = []
     for cim, szoveg in szakaszok(terv):
         ki.append(f'\n## {cim}\n')
-        fel = sorted({int(x) for x in re.findall(r'#(\d{1,2})\b', szoveg)})
+        fel = sorted({int(x) for x in re.findall(r'#(\d{1,3})\b', szoveg)})
         dts = sorted(set(re.findall(r'\bDT-?[A-Z]?\d+[a-z]?\b', szoveg)))
         ds  = sorted(set(re.findall(r'\bD(\d{1,2})\b', szoveg)), key=int)
         ns  = sorted(set(re.findall(r'\bN-?[A-Z]?\d+[a-z]?\b', szoveg)))
         sem = sorted(set(re.findall(r'\b(\d\.\d{1,2})\b(?=[^\d]|$)', szoveg)))
-        fs  = sorted(set(re.findall(r'\bF(\d{2})\b', szoveg)))
+        fs  = sorted(set(re.findall(r'\bF(\d{2,3})\b', szoveg)))
         rows = []
         for n in fel:
             if n in FEL: rows.append(('FELADATOK', f'#{n}', f"{FEL[n]['statusz']} · {FEL[n]['nev'][:90]} · függ: {FEL[n]['fugg'][:50]}"))
