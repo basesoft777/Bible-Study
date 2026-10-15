@@ -6,10 +6,11 @@ tipus: feladat
 fazis: 1
 munka: adat
 modell: sonnet
-allapot: megallt
+allapot: lezarva
 ag: claude/f93-tipnr-token-hiany
+lezarva_osszegzes: "A TIPNR 62 token nélküli alapszáma (88 sor; 16 görög, 46 héber) mind osztályozva, 17 nem eldönthető; a jelölés a naplok/F93_alapszamok.tsv-ben és a jelentésben áll (DT-F93a–d, N-F93a–c); az osztálylista bővülését a jelentés Egyeztetett eltérés szakasza rögzíti."
 ad: a 62 alapszám (88 TIPNR-sor) mindegyike osztályozva (szövegváltozat / számozási eltérés / adathiány / nem eldönthető), forrásmegjelöléssel naplózva; az eredmény jelölés, nem javítás
-kovetkezo: "Zárás: fuggetlen-ellenor (4. kör), fejléc lezarva, draft PR"
+kovetkezo: "—"
 fugg: [88]
 olvas: [naplok/F88_meres.md, naplok/ELLENOR_F88_2.md, adat/SEMA.md, konkordancia/TIPNR_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/Karoli_TIPNR_Normalizalo_README.md, eszkozok/sqlite_epit.py, F90_TAGNT_ZAROJELES_BRIEF.md]
 ir: [naplok/F93_jelentes.md, naplok/F93_alapszamok.tsv, eszkozok/f93_tipnr_token_hiany.py, NYITOTT_FELADATOK.md, DONTESEK.md]
