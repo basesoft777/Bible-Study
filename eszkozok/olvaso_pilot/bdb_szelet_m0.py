@@ -9,6 +9,8 @@ Módok (a repó gyökeréből):
         igehely-hivatkozások mérése az angol BDB-n (kiírt / örökölt / feloldhatatlan könyv, álhivatkozás-jelöltek, MT ≠ Károli)
   python eszkozok/olvaso_pilot/bdb_szelet_m0.py --jelolo
         használati csoport-bevezetők mérése az angol BDB-n és a magyar fordításban
+  python eszkozok/olvaso_pilot/bdb_szelet_m0.py --etym <LexicalIndex.xml> [--etym-minta 3915 …]
+        az OSHL <etym> mérése (M0.4); a fájl a repón kívül, SHA-256-tal ellenőrizve
 
 I/O: split('\\t') (csv modul nélkül).
 """
@@ -656,6 +658,102 @@ def jelolo_meres():
         print('- %s ↔ %s: azonos szám %d szócikkben, eltérő %d, egyik sem %d' % (ek, ' / '.join(hks), egyezik, kulonbozik, mindketto0))
 
 
+# ---------------------------------------------------------------------------
+# --etym: az OSHL LexicalIndex.xml <etym> elemének mérése (M0.4)
+# ---------------------------------------------------------------------------
+
+OSHL_LEXINDEX_SHA256 = '8f7a605c58899d2f44430149c143c00903976e1e91232476677972a69e5bc85f'
+
+
+def etym_meres(ut, minta=('3915',)):
+    import xml.etree.ElementTree as ET
+    h = hashlib.sha256(open(ut, 'rb').read()).hexdigest()
+    if h != OSHL_LEXINDEX_SHA256:
+        sys.exit('HIBA: a LexicalIndex.xml SHA-256-ja eltér: %s' % h)
+    ns = '{http://openscriptures.github.com/morphhb/namespace}'
+    bejegyzes = {}
+    for part in ET.parse(ut).getroot().iter(ns + 'part'):
+        nyelv = part.get('{http://www.w3.org/XML/1998/namespace}lang')
+        for e in part.findall(ns + 'entry'):
+            w = e.find(ns + 'w')
+            x = e.find(ns + 'xref')
+            et = e.find(ns + 'etym')
+            st = x.get('strong') if x is not None else None
+            bejegyzes[e.get('id')] = {
+                'nyelv': nyelv, 'lemma': ''.join(w.itertext()) if w is not None else '', 'xlit': w.get('xlit') if w is not None else '',
+                'strong': ('H%04d' % int(st)) if st and st.isdigit() else None,
+                'tipus': et.get('type') if et is not None else None, 'gyok': et.get('root') if et is not None else None,
+                'cel': [t.strip() for t in (et.text or '').split(',') if t.strip()] if et is not None else []}
+    bdb = set(bdb_en())
+    c = collections.Counter()
+    for i, b in bejegyzes.items():
+        t = b['tipus'] or 'nincs_etym'
+        c['%s:%s' % (b['nyelv'], t)] += 1
+        c['ossz:' + t] += 1
+        if t == 'main':
+            c['main:gyok_attributummal' if b['gyok'] else 'main:gyok_nelkul'] += 1
+            c['main:szarmazek_nelkul' if not b['cel'] else 'main:szarmazekkal'] += 1
+            for x in b['cel']:
+                c['main_lista_elem'] += 1
+                y = bejegyzes.get(x)
+                if not y:
+                    c['main_lista_elem:nem_letezo_id'] += 1
+                elif y['tipus'] != 'sub' or i not in y['cel']:
+                    c['main_lista_elem:nem_kolcsonos'] += 1
+        if t == 'sub':
+            cel = b['cel'][0] if b['cel'] else None
+            y = bejegyzes.get(cel)
+            if len(b['cel']) != 1:
+                c['sub:nem_egy_cel'] += 1
+            if not y:
+                c['sub_cel:nem_letezo_id'] += 1
+            else:
+                c['sub_cel:tipus_' + (y['tipus'] or 'nincs')] += 1
+                c['sub_cel:strong_' + ('van' if y['strong'] else 'nincs')] += 1
+                if y['strong']:
+                    c['sub_cel:strong_a_bdb_tablaban' if y['strong'] in bdb else 'sub_cel:strong_nincs_a_bdb_tablaban'] += 1
+                if y['tipus'] == 'main' and i not in y['cel']:
+                    c['sub:a_cel_listaja_nem_tartalmazza'] += 1
+        if b['strong']:
+            c['strong_bejegyzes:' + t] += 1
+    # Strong-szintű lefedettség: a BDB-tábla Strongjai közül hánynak van (legalább egy) családja az OSHL-ben
+    strong_tipus = collections.defaultdict(set)
+    for b in bejegyzes.values():
+        if b['strong']:
+            strong_tipus[b['strong']].add(b['tipus'] or 'nincs_etym')
+    for s in bdb:
+        tl = strong_tipus.get(s)
+        if not tl:
+            c['bdb_strong:nincs_oshl_bejegyzes'] += 1
+        elif tl & {'main', 'sub'}:
+            c['bdb_strong:van_csalad'] += 1
+        elif 'single' in tl:
+            c['bdb_strong:single'] += 1
+        else:
+            c['bdb_strong:etym_nelkul'] += 1
+    print(prov('OSHL LexicalIndex.xml <etym> (minden <entry>); a BDB-tábla Strongjai: %d' % len(bdb),
+               'openscriptures/HebrewLexicon@21c9add13bc727d3a951361778e97e3ff7afd1ce LexicalIndex.xml sha256=%s… + BDB_teljes_unabridged.tsv@%s + bdb_szelet_m0@%s'
+               % (h[:12], sha(BDB_EN), commit())))
+    for k in sorted(c):
+        print('%s\t%d' % (k, c[k]))
+    for st in minta:
+        print('\n## Minta: H%04d' % int(st))
+        for i, b in bejegyzes.items():
+            if b['strong'] == 'H%04d' % int(st):
+                print('  %s %s %s %s etym=%s gyok=%s cel=%s' % (i, b['nyelv'], b['lemma'], b['xlit'], b['tipus'], b['gyok'], b['cel']))
+                csal = []
+                if b['tipus'] == 'sub' and b['cel']:
+                    m = bejegyzes.get(b['cel'][0], {})
+                    csal = [b['cel'][0]] + m.get('cel', [])
+                elif b['tipus'] == 'main':
+                    csal = [i] + b['cel']
+                for x in csal:
+                    y = bejegyzes.get(x, {})
+                    print('    család: %s %s %s %s %s' % (x, y.get('strong'), y.get('lemma'), y.get('xlit'), y.get('tipus')))
+                if not csal:
+                    print('    nincs OSHL-gyökcsalád (etym=%s)' % b['tipus'])
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--dump', nargs='+')
@@ -664,6 +762,8 @@ def main():
     ap.add_argument('--arany', action='store_true')
     ap.add_argument('--hivatkozas', action='store_true')
     ap.add_argument('--jelolo', action='store_true')
+    ap.add_argument('--etym', metavar='LEXICALINDEX_XML')
+    ap.add_argument('--etym-minta', nargs='*', default=['3915', '1242', '7307'])
     a = ap.parse_args()
     if a.dump:
         hu = bdb_hu()
@@ -676,6 +776,8 @@ def main():
         hivatkozas_meres()
     if a.jelolo:
         jelolo_meres()
+    if a.etym:
+        etym_meres(a.etym, a.etym_minta)
 
 
 if __name__ == '__main__':

@@ -1,12 +1,13 @@
 # BDB_SZELETELO — M0: aranyminta és mérések (F99.1–F99.3)
 
-*Feladat: FELADATOK #99 (`F99_BDB_SZELETELO_BRIEF.md`), ág: `claude/bdb-szeletelo`. Modell: `claude-opus-5-5` (a brief `modell: opus` mezőjével egyezik). Állapot: az M0 1–3. lépése kész, a 4. lépés (OSHL `<etym>`) nem futott (6. szakasz), az 5. lépés döntései a `DONTESEK.md`-ben (DT-F99a–f). Eszköz: `eszkozok/olvaso_pilot/bdb_szelet_m0.py` (csak olvas; `--dump`, `--arany`, `--hivatkozas`, `--jelolo`).*
+*Feladat: FELADATOK #99 (`F99_BDB_SZELETELO_BRIEF.md`), ág: `claude/bdb-szeletelo`. Modell: `claude-opus-5-5` (a brief `modell: opus` mezőjével egyezik). Állapot: az M0 mind az öt lépése kész (a 4. lépés, az OSHL `<etym>`, a F99.8-ban, 5. szakasz); a döntések a `DONTESEK.md`-ben (DT-F99a–c, e, f eldöntve, DT-F99d az M6-ra előjegyezve). Eszköz: `eszkozok/olvaso_pilot/bdb_szelet_m0.py` (csak olvas; `--dump`, `--arany`, `--hivatkozas`, `--jelolo`).*
 
 ## 1. Eredmény röviden
 
 - **Aranyminta** (`adat/bdb_aranyminta.tsv`, SEMA 2.28): 32 szócikk, 14 magyar fordítással is; benne a beszélgetés nyolc szócikke. A minta a mérések előtt készült, a szócikkek szövegének olvasásából; a független ellenőr átnézte (`naplok/ELLENOR_F99_minta.md`: 11 eltérés, 5 bizonytalan pont), a felhasználó döntései szerint javítva (F99.6, 2.4): 658 sor, ebből 607 `fuggetlen_ellenor`, 51 `modell_ellenorizetlen` (az új vagy javított sorok a H6440, H7307, H0430-on kívül; a három szócikket a felhasználó a második ellenőrzés alapján elfogadta, F99.7).
 - **A mai szeletelő az aranymintán** (a javított mintán): szerkezeti eltérés nélkül 15 / 32 szócikk angolul, 7 / 14 magyarul; a használati csoportokat (184 várt csoport) egyáltalán nem bontja; a jelentéscímek 169 / 195 (magyar) és 24 / 43 (angol) esetben egyeznek. A 0 eltérés feltétele messze van; a hibák hét osztályba esnek (2.3).
 - **Hivatkozások** (angol BDB, 8099 szócikk): 160 459 hivatkozás 8025 szócikkben — 107 321 kiírt könyvvel, 42 397 örökölt, 10 738 vesszős vers-folytatás, 3 feloldhatatlan. Álhivatkozás-jelölt 1062 (368 nem bibliai mű, 253 tapadt sigla, 441 közeli sigla), és 790 a nemi tanú („noun masculine^Gen 1:27”), amely **valódi** bibliai hivatkozás. Az MT → Károli átkulcsoláshoz a brief forrása, a `Karoli_versmegfeleltetes.tsv`, a hivatkozások 89%-ánál (141 959) nem ad MT-számot; a Macula `karoli` oszlopa mindenre ad, de ismert hibás régiókkal (DT-F99a).
+- **OSHL `<etym>`** (5. szakasz): main 2643, sub 4368, single 574; a BDB-tábla 8099 Strongjából 5310-nek van gyökcsaládja; a H3915 לַיְלָה `single` (nincs családja).
 - **Bevezetők** (angol): a csoport-bevezetők túlnyomó része mondatkezdő vagy vessző utáni helyzetben áll, jelentéshatáron ritkán; az „absolute” 663-szor az alaktanban (status absolutus) áll, nem használati csoport. A kész magyar szócikkekben ugyanannak a bevezetőnek két-három alakja él (followed by: „utána” 527, „követi” 302, ragos héber 460), és az angol–magyar szám szócikkenként ritkán egyezik (DT-F99b).
 
 ## 2. Aranyminta (M0.1)
@@ -205,11 +206,31 @@ Olvasat:
 - A **zárójeles harmadik szint** (`(1)`, `(a)`) mindig zárójelként mérődik (a szeletelő zárójel-felismerője a nyitó zárójel miatt), de a minta szerint valódi tagolás (H3615 Pi`el 2c, H6440 II 4a, H7121 Niph`al 2d).
 - A magyarban **a followed by háromféleképpen** áll („utána” 527, „követi” 302, és a magyar ragozás miatt a „+ X-val” alak 460), a figurative kétféleképpen („átvitt értelemben” 406, „képletesen” 172), az opposed to kétféleképpen („ellentéte” 283, „szemben” 54). A „with + héber” csoportnak nincs magyar bevezetője (a magyar ragoz: „עַל-val”). Az M3 egyező-szám szabálya a mai fordításon a csoportok kisebbik részét bontaná.
 
-## 5. OSHL `<etym>` (M0.4) — nem futott
+## 5. OSHL `<etym>` (M0.4)
 
-A `LexicalIndex.xml` (OSHL @ `21c9add13bc727d3a951361778e97e3ff7afd1ce`, sha256 `8f7a605c…`) nincs a gépen (repó, `D:\`, WSL-home és ideiglenes könyvtárak átnézve); a repóban csak a belőle generált `OSHL_lexikalis_index.tsv` és `OSHL_BDB_igehelyek.tsv` van, egyikben sincs `<etym>`. A letöltés (`python eszkozok/oshl_index_import.py --letolt`: a GitHub codeload tarball a rögzített commitról, SHA-ellenőrzéssel) felhasználói engedélyt kíván, ezért nem indítottam: DT-F99f. Az engedély után a mérés (main / sub / single darabszám, a sub-célok feloldhatósága a Strong-kulcsainkra, a לַיְלָה H3915 családja) a #99 ágán pótolható, mielőtt az M1 indul.
+**Letöltés (F99.8, a felhasználó jóváhagyásával, 2026-10-15; DT-F99f (b)).** A `LexicalIndex.xml` a rögzített commit nyers URL-jéről, a repón kívüli ideiglenes könyvtárba; méret 1 782 592 bájt, git blob SHA-1 `d11eb2078532f3119c70822bd27a91b484d4727b`, SHA-256 `8f7a605c58899d2f44430149c143c00903976e1e91232476677972a69e5bc85f` — mind egyezik a várttal. A fájl nem került a repóba; a mérés (`--etym`) futás előtt újra ellenőrzi a SHA-256-ot.
 
-**Az M0.4 előkészítése (F99.7, DT-F99f (b) után; a letöltés még nem indult).** A forrás adatai a GitHub git-fa API-jából (`gh api repos/openscriptures/HebrewLexicon/git/trees/21c9add13bc727d3a951361778e97e3ff7afd1ce`: csak metaadat, fájltartalom nélkül):
+`scope=OSHL LexicalIndex.xml <etym> (minden <entry>); a BDB-tábla Strongjai: 8099 | forras=openscriptures/HebrewLexicon@21c9add13bc727d3a951361778e97e3ff7afd1ce LexicalIndex.xml sha256=8f7a605c5889… + BDB_teljes_unabridged.tsv@d4b15b2faea6 + bdb_szelet_m0@51bad829 | ts=2026-10-15T14:58`
+
+| Tétel | héber | arámi | összes |
+|---|---|---|---|
+| `main` (gyök-bejegyzés, a származékok listájával) | 2340 | 303 | 2643 |
+| `sub` (származék, a gyökre mutat) | 4167 | 201 | 4368 |
+| `single` (nincs gyökcsalád) | 356 | 218 | 574 |
+| `<etym>` nélkül | 2569 | 67 | 2636 |
+
+- **`main`:** 2458 hordoz `root` attribútumot (a gyök mássalhangzói, pl. `root="אבד"`), 185 nem; 1909-nek van származék-listája, 734-nek nincs (egyelemű „család”). A lista 4366 eleméből 1 nem kölcsönös (a hivatkozott elem nem `sub`, vagy nem a listázó `main`-re mutat).
+- **`sub`:** mind a 4368 pontosan egy célra mutat, és a cél mindig `main`. A cél-bejegyzések közül 2871-nek van Strong-száma (ebből 2794 a BDB-táblában, 77 nem), **1497-nek nincs** — ezek a puszta gyök-bejegyzések (pl. `רוח rwḥ`): a szó-lapon a gyök Strong-link nélkül, csak héber alakjával jeleníthető meg. 3 `sub`-ot a célja listája nem tartalmaz.
+- **A BDB-tábla 8099 Strongja** (a Strong legalább egy OSHL-bejegyzése szerint): **5310-nek van gyökcsaládja** (`main` vagy `sub`), 476 `single`, 2306-nál nincs `<etym>`, 7-nek nincs OSHL-bejegyzése. A blokk tehát kb. kétharmad szócikken tölthető; a többinél a „nincs OSHL-gyökcsalád” felirat áll (nem negatív lelet).
+
+**Minták.**
+- **H3915 לַ֫יְלָה (a brief mintája):** `etym=single` — az OSHL szerint **nincs gyökcsaládja**; a szó-lapon a „nincs OSHL-gyökcsalád” felirat jelenik meg.
+- **H1242 בֹּ֫קֶר:** `sub` → `bxk` בָּקַר (H1239, `main`); a család: H0951 בּוֹקֵר, H1241 בָּקָר, H1242 בֹּקֶר, H1243 בַּקָּרָה, H1244 בִּקֹּרֶת.
+- **H7307 רוּחַ:** `sub` → `ltn` רוח (gyök-bejegyzés, **Strong nélkül**); a család: H7307 רוּחַ, H7306 רִיחַ, H7381 רֵיחַ.
+
+Az M1 a `oshl_index_import.py`-ba a `etym_tipus` (`main` / `sub` / `single`, üres: nincs), `etym_cel` (a `sub` célja, a `main` listája) és `gyok` (a `main` `root` attribútuma) oszlopot veszi fel; az elfogadási feltétel (a blokk darabszámai egyeznek ezzel a méréssel) a fenti számokra vonatkozik.
+
+**Az előkészítés (F99.7, DT-F99f (b) után; a letöltés még nem indult).** A forrás adatai a GitHub git-fa API-jából (`gh api repos/openscriptures/HebrewLexicon/git/trees/21c9add13bc727d3a951361778e97e3ff7afd1ce`: csak metaadat, fájltartalom nélkül):
 
 | Tétel | Érték |
 |---|---|
@@ -236,7 +257,7 @@ A `LexicalIndex.xml` (OSHL @ `21c9add13bc727d3a951361778e97e3ff7afd1ce`, sha256 
 - **DT-F99c** — a szeletelő helye élesben.
 - **DT-F99d** — a modell-magyarázat teljes futása (az M6 mérése után dönthető; most előjegyzés).
 - **DT-F99e** — az aranyminta átnézése (a „0 eltérés” mércéje csak ellenőrzött mintán értelmes). Eldöntve (b): a független ellenőr átnézte (F99.5), a minta a felhasználó döntései szerint javítva (F99.6, 2.4); a H6440, H7307, H0430 felhasználói átnézése nyitott.
-- **DT-F99f** — a `LexicalIndex.xml` letöltése az M0.4-hez és az M1-hez.
+- **DT-F99f** — a `LexicalIndex.xml` letöltése az M0.4-hez és az M1-hez. Eldöntve (b), a letöltés megtörtént (F99.8), az M0.4 lefutott (5. szakasz).
 
 ## 8. Reprodukálás
 
