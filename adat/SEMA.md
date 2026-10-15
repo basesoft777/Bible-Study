@@ -1197,6 +1197,25 @@ A Károli szóalakjainak **szótári alakja** (lemma; nem nyelvtani szótő, DT1
 
 **K tábla** — `gyakori_alakok.tsv` (F94.2, DT137; a C+K mérési változat): a Károli 1908 leggyakoribb 400 alakja (kisbetűs + mondatkezdő előfordulás, kisbetűsítve; a sorhalmazt a `eszkozok/szoto/k_tabla_epit.py` gépileg választja), a szótári alak modell-javaslat a DT130 szerint (nem a simplemma kimenetéből). Oszlopok: `rang`, `alak` (kisbetűs), `gyakorisag`, `szotari_alak`, `szotari_alak_mai`, `alapige`, `tovabbi_elfogadhato` (mint a mintáknál), `ellenorzes` (`modell_ellenorizetlen` \| `felhasznalo`; a felhasználó tölti, a modell soha; az újraépítés megtartja, ha a sor szótári alakja nem változott), `indoklas`. A szótári alak kézi forrása a `k_tabla_epit.py` `JAVASLAT` szótára (javítás ott).
 
+### 2.28 `bdb_aranyminta.tsv` — a BDB-szeletelő aranymintája (F99, FELADATOK #99, M0)
+
+A BDB-szócikkek **várt szerkezete** kézzel, a szeletelő (`eszkozok/olvaso_pilot/bdb_szelet.py`) mérésére: szakaszok (homonima-sor, jelöletlen al- és arámi címszó, fő rész), törzsek, jelentések, alpontok, használati csoportok, a jelentéscím és a csomópont szövegkezdete angolul és (ahol a `forditasok.tsv`-ben van) magyarul. **Kézi forrás**, nem generált: a minta a szócikk szövegének olvasásából készül, a szeletelő kimenete nem forrása (a projekt szabálya: előbb a minta, utána a mérés). Az első két sor `# proveniencia: …` és `# ellenorzes: …`, a harmadik a fejléc. Olvasás `split('\t')`, írás `'\t'.join()`. Az összevetés: `python eszkozok/olvaso_pilot/bdb_szelet_m0.py --arany` (a címekhez a szerver `blokkok` modulja kell, ezért a WSL venv-ben fut; nélküle a címek kimaradnak, és ezt kiírja).
+
+| Oszlop | Jelentés |
+|---|---|
+| `strong` | a BDB-sor kulcsa (`H` + 4 jegy, mint a `BDB_teljes_unabridged.tsv` `Strong_padded` mezője) |
+| `szakasz` | üres: a fő (a Strong-lemmához tartozó) szakasz; római szám (`II`, `III`): a római számmal jelölt homonima vagy fő rész; héber szó: a jelöletlen al- vagy arámi címszó (az összevetés a mássalhangzó-vázon illeszt) |
+| `utvonal` | `<törzs>/<jelentés>/<alpont>/+<n>`; a hiányzó szint `-` (`-/1`: törzs nélküli 1. jelentés; `-/a`: jelentés nélküli alpont); a törzs neve a szeletelő alakjában (`Pi'el`, `Hithpa'el`) |
+| `szint` | `szocikk` (szócikkenként egy: a `kezdet_en` a címszó héber alakja, a `jel` a homonima-szám) \| `szakasz` \| `torzs` \| `jelentes` \| `alpont` \| `csoport` (használati csoport: a mondatkezdő bevezető, pl. `absolute`, `followed by`, `with`, vagy a zárójeles harmadik szint `(1)`, `(a)`; a végleges bevezető-lista a DT-F99b) \| `kihagy` (az útvonal alatti csomópontokat az összevetés nem nézi: a forrás hiányos, vagy a szint nincs rögzítve; a `megjegyzes` mondja meg, miért) |
+| `jel` | a jelölő (`1`, `a`, `Qal`, `II`, a csoport bevezetőjének kulcsa) |
+| `kezdet_en`, `kezdet_hu` | a csomópont saját szövegének eleje (a jelölő után), az összevetés horgonya; üres: nem vizsgált (a magyarnál: nincs fordítás, vagy a horgony nem ellenőrzött) |
+| `cim` | a várt jelentéscím (a szócikk saját szavai, a zárójeles részek nélkül, az első igehelyig, pontosvesszőig vagy kettőspontig); üres: nem vizsgált. Az összevetés a héber betűk és az írásjelek nélkül hasonlít |
+| `megjegyzes` | miért ez a szerkezet (ál-jelölők, forráshibák, hivatkozásként álló törzsnevek) |
+| `ellenorzes` | `modell_ellenorizetlen` (a modell készítette, senki nem nézte át) \| `felhasznalo` (a felhasználó ellenőrizte); a modell `felhasznalo`-t soha nem ír |
+| `proveniencia` | `manual` (nem lekérdezés; 1.5) |
+
+Kulcs: `strong` + `szakasz` + `utvonal` + `szint`. A 2026-10-15-i állapot: 32 szócikk (14 magyar fordítással), 622 sor.
+
 ---
 
 ## 3. Integritási szabályok
