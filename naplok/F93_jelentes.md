@@ -1,6 +1,6 @@
 # F93 jelentés — a TIPNR token nélküli alapszámai
 
-*FELADATOK #93 · Modell: claude-sonnet-5-5 · állapot: az M0–M3 kész, a zárás (független ellenőr, draft PR) hátra van · döntések: DT-F93a, DT-F93b · lista: `naplok/F93_alapszamok.tsv` · szkript: `eszkozok/f93_tipnr_token_hiany.py`*
+*FELADATOK #93 · Modell: claude-sonnet-5-5 · állapot: az M0–M3 kész, két ellenőri kör javítva, a zárás (3. kör, draft PR) hátra van · döntések: DT-F93a, DT-F93b, DT-F93c, DT-F93d · lista: `naplok/F93_alapszamok.tsv` · szkript: `eszkozok/f93_tipnr_token_hiany.py`*
 
 ## 1. Eredmény
 
@@ -92,6 +92,8 @@ A brief a hatókört „62 token nélküli *görög* alapszám”-ként írta le
 
 - **DT-F93a** (🟢, a felhasználó döntése, 2026-10-15, chat): (1) a jelölés csak a `naplok/F93_alapszamok.tsv`-ben és a jelentésben áll; (2) hatókör (iii): mind a 62 alapszám, az osztálylista kiegészítésével.
 - **DT-F93b** (🟢, a felhasználó döntése, 2026-10-15, chat): a héber „szövegváltozat” osztály megszűnik; „fordítási névalak” és „ketiv/qere” osztály.
+- **DT-F93c** (🟢, a felhasználó döntése, 2026-10-15, chat): jelölés nélküli görög szövegváltozat csak egyező glosszájú, a TR-t nem tartalmazó kiadás-mezejű tokennel lehet (G2179); nem egyező glosszával „nem eldönthető” (G3535).
+- **DT-F93d** (🟢, a felhasználó döntése, 2026-10-15, chat): a proveniencia `ts` mezője a `pardes.db` `meta.epites_ts` értéke (az adatállapot időpontja), nem a futásé; a szkript rögzített adatállapotot olvas, és a G4 (bájtazonos futás) ezt kívánja.
 - **N-F93a** (helyőrző, `NYITOTT_FELADATOK.md`): a ketiv/qere (LK/LQ/Mss) jelölés jelentése és hiánya a TAHOT-kivonatban; eldöntendő, kell-e a nyers STEPBible TAHOT vagy a TIPNR kiadás-jelmagyarázata a jelöléshez (12 alapszám érintett).
 - **N-F93c** (helyőrző, `NYITOTT_FELADATOK.md`): a TAGNT `Kritikai kiadás` mezőjének „»N” jelölése (pl. `TR»1`); a jelentését a repó nem rögzíti, ezért a G3496 (Neapolis) „nem eldönthető”.
 - **N-F93b** (helyőrző, `NYITOTT_FELADATOK.md`): a `lekerdez.py scan` néma nem-találata a 62 alapszámra (pl. `scan G0300` → `n=0`); eldöntendő, jelezze-e a lekérdezés vagy az olvasói felület (#92) a hiányt a lista alapján. A #93 a `lekerdez.py`-t nem érinti.
@@ -105,7 +107,7 @@ Végleges `DT`/`N` számot ágon nem írtam; a számot a `main`-en a `szamkioszt
 - **G3** Minden görög „szövegváltozat” sor megnevezi a TAGNT-oldali Strong-számot és a `Kritikai kiadás` mezőt; minden sor proveniencia-sort hordoz; ahol a repó adata nem dönt, „nem eldönthető”.
 - **G4** Két futás kimenete bájtazonos (a lista sha256-ja: `0c7946c1b40de82e54e684f4292fb369263784f93aaad936770f68819a5ed5a0`).
 - **G5** nem alkalmazható (DT-F93a (a): nincs `pardes.db`-változás).
-- `python eszkozok/feladatok.py ellenoriz`: 0 hiba. A független ellenőrzés (`fuggetlen-ellenor`) a zárás része, még nem futott.
+- `python eszkozok/feladatok.py ellenoriz`: 0 hiba. Független ellenőrzés (`fuggetlen-ellenor`): 1. kör `naplok/ELLENOR_F93.md` — 6 eltérés, javítva F93.13–F93.16; 2. kör `naplok/ELLENOR_F93_2.md` — 3 eltérés (a jelentés elavult G2568-mondata, a DT-F93c vegyes találatnál, a jelentés fejléce/döntései), javítva F93.18–F93.20; a 3. kör a zárás része, még nem futott.
 
 ## Munkanapló (M0–M1)
 
@@ -177,7 +179,7 @@ Nem eldönthető, mert hiányzó osztály: az `LXX.*` 9 sor (5 alapszám) nem ka
 
 *(A szabályok rögzítése az M1 javításai után.)*
 
-**Névegyeztetés** (a versen lévő token megkeresése): (1) TIPNR-azonosság: azonos névcímkéjű másik TIPNR-sor Strong-száma a vers tokenjei között; (2) glossz-egyezés: a token `Rövid jelentés` vagy `Angol tükörfordítás` mezője egyezik a névcímkével vagy a `Névváltozat` nagybetűs névalakjával. A két bizonyíték együtt adja a társ-tokenek listáját, nyelvtől függetlenül egységesen. Egy találat „gyenge”, ha a token glosszája nem egyezik a névalakkal (pl. H0415 `LORD` ↔ H0410 `God`/`El`; G2568 ↔ G2570 `good`/`Fair`; G3535 ↔ G3536 `Ninevite`). **Szabály, mindkét nyelvre:** ha a sorban nincs kiadás-/fordítás-jelölés, és a versen csak gyenge társ van, az osztály „nem eldönthető” (jelölés nélküli „szövegváltozat” vagy „alak-/névhasítás” csak egyező glosszával lehet, mint a G2179); jelölés mellett a glossz eltérése maga a jelzés (a görög TR-jelölésű sorokban a szövegváltozat, a héber fordítás-jelölésű sorokban a fordítási névalak). A G2568 és a G3535 ezért „nem eldönthető”. Az, hogy a versen más nevű token van, nem bizonyíték.
+**Névegyeztetés** (a versen lévő token megkeresése): (1) TIPNR-azonosság: azonos névcímkéjű másik TIPNR-sor Strong-száma a vers tokenjei között; (2) glossz-egyezés: a token `Rövid jelentés` vagy `Angol tükörfordítás` mezője egyezik a névcímkével vagy a `Névváltozat` nagybetűs névalakjával. A két bizonyíték együtt adja a társ-tokenek listáját, nyelvtől függetlenül egységesen. Egy találat „gyenge”, ha a token glosszája nem egyezik a névalakkal (pl. H0415 `LORD` ↔ H0410 `God`/`El`; G2568 ↔ G2570 `good`/`Fair`; G3535 ↔ G3536 `Ninevite`). **Szabály, mindkét nyelvre:** ha a sorban nincs kiadás-/fordítás-jelölés, és a versen csak gyenge társ van, az osztály „nem eldönthető” (jelölés nélküli „szövegváltozat” vagy „alak-/névhasítás” csak egyező glosszával lehet, mint a G2179); jelölés mellett a glossz eltérése maga a jelzés (a görög TR-jelölésű sorokban a szövegváltozat, a héber fordítás-jelölésű sorokban a fordítási névalak). A G3535 ezért „nem eldönthető”. A G2568-nál a gyenge névcímke-alapú társ (G2570) mellett a G2570+G3040 egymást követő tokenek glosszái (`Fair`+`Havens`) együtt szigorúan egyenlők a „Fair Havens” névvel, ezért a G2568 alak-/névhasítás. Az, hogy a versen más nevű token van, nem bizonyíték.
 
 **Több tokenre bontott név (3. bizonyíték).** A versen egymást követő tokenek (legfeljebb 5) glosszái (mind a Rövid jelentés, vagy mind az Angol tükörfordítás; a `[..]` és `<..>` betoldások nélkül, írásjel- és kisbetű-különbség nélkül) együtt szigorúan egyenlők a névcímkével vagy a Névváltozat valamelyik névalakjával (pl. `Nea`+`Polis` = Neapolis; `Ben-`+`Hesed` = Ben-hesed; `Shushan-`+`eduth`; `house of`+`Ashtaroth`). Minden tokennek ki kell tennie a névalak egy részét. Az egyetlen tokenes, kisbetűs névalak (pl. `villages`) is csak pontos egyenlőséggel számít.
 
