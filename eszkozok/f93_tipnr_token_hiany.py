@@ -28,8 +28,12 @@ Pusztán az, hogy a versen más nevű
 token van, NEM bizonyíték (és az indoklás sem állítja azt): ez az „azonos nevű” hamis állítás hibája volt.
 
 Osztályok:
-  szövegváltozat      (CSAK görög) a névhez illő token `Kritikai kiadás` mezője a TR-t nem tartalmazza
-                      (kiadás-jelölés a Névváltozatban: TR/Byz; jelölés nélkül is, ha a token TR nélküli)
+  szövegváltozat      (CSAK görög) a névhez illő token `Kritikai kiadás` mezője a TR-t nem tartalmazza.
+                      Kiadás-jelölés (TR/Byz) a Névváltozatban: a névhez illő bármely token számít.
+                      Jelölés nélkül (DT-F93c) CSAK olyan token, amelynek glosszája egyezik a névvel
+                      (nem „gyenge”, csak névcímke-alapú társ); vegyes találatnál (gyenge és erős token
+                      ugyanazon a versen) a gyenge token nem választható, a jelölés nélküli sor
+                      szövegváltozat-besorolását csak az erős, TR nélküli token adhatja.
   fordítási névalak   (CSAK héber, DT-F93b) a Névváltozat csak fordítás-jelölést (ESV/KJV/NIV/ASV)
                       hordoz, és a versen a névhez illő token áll
   ketiv/qere          (CSAK héber, DT-F93b) LK/LQ/Mss jelölés, ÉS a TAHOT az adott versen ketiv/qere-
@@ -47,7 +51,8 @@ Osztályok:
 
 Vegyes sorú alapszám (több TIPNR-sor): ha a sorok osztálya versenként eltér, az alapszám
 „nem eldönthető” (az indoklás felsorolja a sorok osztályait); csak ha minden sor azonos osztályú,
-kapja azt az alapszám. (Pl. H3482, H3159.)
+kapja azt az alapszám. A mostani listában nincs ilyen alapszám (a H3482 és a H3159 sorai is azonos
+osztályúak), a szabály tehát jelenleg nem érvényesül, de a kód tartalmazza.
 
 A görög `Kritikai kiadás` alapkiadásai: NA28, NA27, Tyn, SBL, WH, Treg, TR, Byz. A TAHOT-kivonatnak
 nincs ilyen mezője (DT-F93b), ezért a G3 (Kritikai kiadás mező) csak a görög szövegváltozat-sorokra áll.
@@ -356,7 +361,9 @@ def main(argv):
                                  % (hely, emtxt(em)))
                     continue
                 keres = (tag & {'TR', 'Byz'}) or {'TR'}
-                lack = [e for e in em if not (keres & kiadas_halmaz(e[3]))]
+                # DT-F93c: jelölés nélkül csak egyező glosszájú (nem gyenge) token lehet szövegváltozat
+                jeloltek = em if tag else [e for e in em if 'nem egyezik a névalakkal' not in e[2]]
+                lack = [e for e in jeloltek if not (keres & kiadas_halmaz(e[3]))]
                 if lack:
                     e = lack[0]
                     strongok[-1:] = ['%s:%s' % (hely, e[0])]
