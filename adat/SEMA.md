@@ -1217,6 +1217,35 @@ A BDB-szócikkek **várt szerkezete** kézzel, a szeletelő (`eszkozok/olvaso_pi
 
 Kulcs: `strong` + `szakasz` + `utvonal` + `szint`. Állapot (F99.6, 2026-10-15, a független ellenőr jelentése és a felhasználó döntései után): 32 szócikk (14 magyar fordítással), 658 sor (184 csoport, 1 utaló); 607 sor `fuggetlen_ellenor`, 51 `modell_ellenorizetlen` (az új vagy javított sorok; a H6440, H7307, H0430 a F99.7-től, a felhasználó elfogadása után, `fuggetlen_ellenor`).
 
+
+### 2.29 `bdb_vers_jelentes.tsv` — a BDB igehely-hivatkozásai jelentésponthoz kötve (F99, FELADATOK #99, M2)
+
+**Generált** (`python eszkozok/olvaso_szerver/bdb_vers_jelentes.py --ts <nap>`; kézzel nem szerkeszthető; azonos bemenettel és `--ts`-sel
+bájtra azonos, a `--ellenoriz` és a `teszt_bdb_vers_jelentes.py` ellenőrzi). Az angol BDB (`konkordancia/BDB_teljes_unabridged.tsv`)
+minden szócikkének minden igehely-hivatkozására egy sor, a szócikkön belüli sorrendben. **Lexikai index, nem study-adat:** keresési
+találatból nem lehet közvetlenül study-sor (CLAUDE.md 2. szabály); bármely felhasználása a `jeloltek.tsv`-n megy át. A szabályok a DT-F99a
+döntése szerint (felhasználó, 2026-10-15). Az első két sor `# GENERÁLT: …` és `# forras: …` (a bemenetek hash-e és a kód hash-e), a harmadik a
+fejléc. Olvasás `split('\t')`. A pardes.db-be az `adat/` tábláival együtt kerül (`sqlite_epit.py`, licenc: BDB + Macula_heber + projekt_adat).
+
+| Oszlop | Jelentés |
+|---|---|
+| `strong` | a BDB-sor kulcsa (`Strong_padded`) |
+| `bdb_id` | a Strong OSHL BDB-azonosító(i) (`OSHL_lexikalis_index.tsv`), vesszővel; üres, ha nincs |
+| `sorszam` | a hivatkozás sorszáma a szócikkben (1-től) |
+| `poz` | a hivatkozás kezdete a szeletelő szövegében (`bdb_szelet.lapit`: sortörés szóközre, „1.a” → „1. a.”), karakterben |
+| `nyers` | a hivatkozás a forrásban (`Gen 44:19`, `17:4`, a vers-folytatásnál `, 25`) |
+| `konyv_feloldas` | `kiirt` (könyvvel) \| `orokolt` (könyv nélküli fejezet:vers, a megelőző könyv a szócikk elejéig visszafelé) \| `folytatas` (vesszős vers-folytatás: „Gen 18:18, 25” → 18:25) \| `feloldhatatlan` (nincs megelőző könyv) |
+| `mt_vers` | a feloldott MT-vers (Károli-könyvrövidítéssel; a BDB az MT számozását követi); üres a kiszűrt és a könyv nélküli sorban |
+| `karoli_vers` | a Károli-vers a `Karoli_1908.tsv` kulcsa szerint (a Siralmak `Sir`); **üres, ha nincs** (kiszűrt sor, nem létező vers, Károli-megfelelő nélkül): kitöltés nélkül |
+| `vers_feloldas` | `azonos` \| `atkulcsolt` (a Macula `karoli` oszlopa szerint más Károli-vers) \| `azonos_f85` (az F85-ben elvetett Macula-régió: azonos kulcs) \| `atkulcsolt_bizonytalan` (a Károli-versmegfeleltetés MT-osztályú sora mást mond) \| `nem_letezo_vers` (az MT-ben nincs ilyen vers) \| `nincs_karoli` \| `usz` (újszövetségi hely, nem kulcsolva) \| üres (kiszűrt vagy könyv nélküli sor) |
+| `szakasz` | a jelentéspont szakasza: üres (fő), római szám, vagy `h:<mássalhangzó-váz>` |
+| `utvonal` | a jelentéspont: `<törzs>/<jelentés>/<alpont>` (hiányzó szint `-`, mint az aranymintában); `fej` (a csomópontokon kívül: címsor, nyelvi háttér, alaktan); `tagolatlan` (a szócikkben nincs törzs, számozott jelentés vagy alpont: a hivatkozás az egészhez tartozik). A használati csoport (M3) még nem része |
+| `okkod` | vesszővel: `nem_bibliai`, `sigla_tapadt` (kiszűrve), `sigla_kozel`, `tobbertelmu`, `ismeretlen_alak`, `nincs_elozmeny` (bizonytalan, a táblában marad), `nem_letezo_vers`, `nincs_karoli`, `tobb_karoli_vers` (a Macula több Károli-verset ad; az első áll), `usz`; üres: feloldott bibliai hivatkozás |
+| `szurt` | `1`: álhivatkozás, kiszűrve (DT-F99a (1): `nem_bibliai`, `sigla_tapadt`); `0`: nem |
+| `proveniencia` | **minden sorban:** `scope=<Strong> | forras=bdb_vers_jelentes@<kód-hash> | ts=<nap>` (gépi; `manual` nem lehet); a kód-hash a `bdb_szelet.py` és a `bdb_vers_jelentes.py` tartalmáé, a bemenetek a fájl `# forras:` sorában |
+
+Kulcs: `strong` + `sorszam`. A jelentéspont a gépi szeletelés szerint áll (a szeletelő ismert hibái, `naplok/BDB_SZELETELO_M0.md` 2.3, öröklődnek); a pontosságát az M2 ⛔ 200-as mintája méri.
+
 ---
 
 ## 3. Integritási szabályok
