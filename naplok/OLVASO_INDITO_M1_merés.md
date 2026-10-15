@@ -28,7 +28,7 @@ A kiírt fejléc: `adatbázis: /home/basesoft/pardes/pardes.db -- WSL-natív ala
 - `teszt_szintek.py`: **77,5 mp** egyedül futtatva (13 teszt, 76,7 mp a unittest szerint). A #98-nál mért 19 perc párhuzamos futás mellett volt; az itteni szám NEM párhuzamos. Az előző mondat nem azt állítja, hogy a párhuzamos futás gyorsabb lenne: csak annyit, hogy a 19 perc terhelt gépen (több session egyszerre) keletkezett, az itteni egyedüli futás 77,5 mp.
 - `teszt_pilot_aranymintaval.py`: 44,3 mp (a `konkordancia/`-t a `/mnt/c`-ről olvasó pilot-összevetés — a D2 `adat.py`-t futtatja; a DT-F100a (c) lassúság-kockázata itt nem jelentkezett).
 
-**Az órákról:** a fájlonkénti időket a `teszt_futtat.py` a WSL monotonic órájával méri; a kezdő és záró időbélyeget a Windows-óra adta (10:00:08 → 10:04:33 = 265 mp), a fájlonkénti idők összege 274,6 mp. A ~3,5%-os eltérés a WSL2 és a Windows óra eltérése (nem párhuzamos futás okozza; a fájlok egymás után futottak); az elfogadási feltétel szempontjából a nagyságrend számít.
+**Az órákról:** a fájlonkénti időket a `teszt_futtat.py` a WSL monotonic órájával méri; a kezdő és záró időbélyeget a Windows-óra adta (10:00:08 → 10:04:33 = 265 mp), a fájlonkénti idők összege 274,6 mp. A ~3,5%-os eltérés oka nem ismert (a fájlok egymás után futottak, tehát az összeg nem lehetne nagyobb a fal-időnél; óraeltérés a feltételezett magyarázat, nem mért tény); az elfogadási feltétel szempontjából a nagyságrend számít.
 
 **A mérés korlátja:** egyetlen futás fájlonként (a két teljes futás: 09:54–09:57 `--gyors`, és 10:00–10:04 teljes), nem ismételt mérés; a szórás nincs becsülve. A szám a `/mnt/c`-ről olvasott kódra és `konkordancia/`-ra vonatkozik; másolat nem készült.
 
@@ -39,9 +39,9 @@ Proveniencia: `proba_m2.py` (a session scratch-könyvtárában), 2026-10-15 10:0
 | Mérés | Érték |
 |---|---|
 | 895 MB-os adatbázis másolása `cp`-vel a WSL-natív lemezre (két másolat az előkészítéshez) | 12,4–22,3 mp két másolatra, azaz ~6–11 s egy másolatra (a háttérterheléstől függ) |
-| `indit.sh` indulása eltérő `epites_ts`-sel (leállítás + másolás + szerver) a `/statusz` 200-ig | 6,4–10,9 mp (három futás: 10,9; 8,9; 6,4) |
+| `indit.sh` indulása eltérő `epites_ts`-sel (leállítás + másolás + szerver) a `/statusz` 200-ig | 6,4–13,3 mp (az M1 három futása: 10,9; 8,9; 6,4 – ezek nyers kimenete nem maradt meg, nem igazolható; az M2 gépi próba 5. lépése, `OLVASO_INDITO_M2_gepi_proba.md`: 13,3) |
 | `indit.sh` indulása azonos `epites_ts`-sel (nincs másolás) | a 6. lépésben kb. 5 mp két egymás utáni kattintásra együtt |
-| kódváltozás (`touch`) → az újraindított szerver válaszol | 1,0–1,2 mp (öt fájlfajta; egy korábbi futásban az első újraindulás 3,3 mp) |
+| kódváltozás (`touch`) → az újraindított szerver válaszol | 1,0–1,1 mp (öt fájlfajta, M2 gépi próba; egy korábbi futásban az első újraindulás 3,3 mp) |
 | a módosított sablon hatása a lapon | 0,1 mp (a sablont a Jinja amúgy is frissen olvassa; az újraindulás ezen kívül ~1 mp) |
 | ágváltás → a lábléc az új ágat mutatja | 2,5–2,8 mp (a lábléc 3 mp-es újraolvasási ideje) |
 

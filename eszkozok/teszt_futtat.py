@@ -107,14 +107,21 @@ def main():
     if os.path.isfile(db):
         print('[teszt_futtat] adatbázis mérete: %.0f MB, epites_ts: %s' % (os.path.getsize(db) / 1048576, epites_ts(db)))
     else:
-        print('[teszt_futtat] FIGYELEM: az adatbázis nem létezik (%s): a DB-s tesztek kimaradnak' % db)
+        print('[teszt_futtat] HIBA: az adatbázis nem létezik (%s): a DB-s tesztek kimaradnának (hamis zöld), ezért megállok.' % db)
+        return 2
     if os.path.abspath(db).replace('\\', '/').startswith('/mnt/'):
         print('[teszt_futtat] FIGYELEM: az adatbázis a /mnt/c alatt van -- a WSL ezt nagyon lassan olvassa (45+ perc a ~2 perc helyett). '
               'Másold a WSL-natív ~/pardes/pardes.db-re (az indit.sh ezt teszi), vagy állítsd a PARDES_DB-t arra.')
     try:
         import flask  # noqa: F401
     except ImportError:
-        print('[teszt_futtat] FIGYELEM: ebben a Pythonban nincs Flask: a Flask-os tesztek kimaradnak. A venv: ~/pardes/eszkozok/olvaso_szerver/.venv')
+        venv = os.path.expanduser('~/pardes/eszkozok/olvaso_szerver/.venv/bin/python')
+        if os.path.isfile(venv) and os.path.abspath(venv) != os.path.abspath(sys.executable):
+            print('[teszt_futtat] ebben a Pythonban nincs Flask: újraindítás a WSL venv-jével (%s)' % venv, flush=True)
+            sys.stdout.flush()
+            os.execv(venv, [venv] + sys.argv)
+        print('[teszt_futtat] HIBA: ebben a Pythonban nincs Flask, és a WSL venv sem található (%s): a Flask-os tesztek kimaradnának (hamis zöld), ezért megállok.' % venv)
+        return 2
 
     fajlok = tesztfajlok()
     if a.fajl:
