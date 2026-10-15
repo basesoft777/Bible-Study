@@ -14,6 +14,7 @@ Használat (a repó gyökeréből):
   python eszkozok/olvaso_szerver/bdb_vers_jelentes.py --ts 2026-10-15        # írja az adat/bdb_vers_jelentes.tsv-t
   python eszkozok/olvaso_szerver/bdb_vers_jelentes.py --ts 2026-10-15 --ellenoriz   # újragenerál a memóriába, bájtra összeveti
   python eszkozok/olvaso_szerver/bdb_vers_jelentes.py --minta 99                     # az M2 ⛔ vak munkalapja és kulcsa (naplok/)
+  python eszkozok/olvaso_szerver/bdb_vers_jelentes.py --minta 100                    # újramérés: naplok/BDB_SZELETELO_M2_minta_seed100_{vak,kulcs}.tsv
 Azonos bemenettel és --ts-sel bájtra azonos. I/O: split('\\t') / '\\t'.join (csv modul nélkül).
 """
 import argparse
@@ -141,14 +142,16 @@ def general(ts, strongok=None):
         szoveg = en[strong]
         r = B.szeletel(szoveg, lem.get(strong, ''))
         savok = B.csomopont_savok(szoveg, r)
-        # tagolatlan szócikk (nincs számozott jelentés, alpont, törzs): a hivatkozás az egész szócikkhez tartozik
-        tagolt = any(not ut.endswith('/-') or szint == 'alpont' or not ut.startswith('-/') for _, _, _, ut, szint in savok)
+        # a szakaszok sávja: a csomópontokon kívüli hivatkozás a saját szakaszának „fej”-e, vagy „tagolatlan”, ha a szakaszban nincs
+        # törzs, számozott jelentés vagy alpont (F99 M2 újramérés előtt: a szakasz a kulcs része)
+        szsav = B.szakasz_savok(szoveg, r)
         # DT-F99g (felhasználó, 2026-10-15): a kód-hash csak a fájl fejlécében áll; a sor a forrásra és a generátorra hivatkozik
         prov = 'scope=%s | forras=bdb_vers_jelentes.py (fejléc) | ts=%s' % (strong, ts)
         for n, h in enumerate(B.hivatkozasok(szoveg), 1):
-            szak, ut = B.jelentespont(h['poz'], savok)
-            if not tagolt:
-                szak, ut = '', 'tagolatlan'
+            szak, ut = B.jelentespont(h['poz'], savok, szsav)
+            if ut == '-/-':
+                tag = next((t for a, b, c, t in szsav if a <= h['poz'] < b), True)
+                ut = 'fej' if tag else 'tagolatlan'
             ok = h['okkod']
             mt = kar = ''
             vmod = ''
@@ -212,6 +215,12 @@ def minta(seed, n, kieg, vak_ut, kulcs_ut):
            'karoli_vers = a Károli-szám, ha eltér (különben „=”); jelentespont = a BDB tagolása szerinti hely (római szakasz, törzs, jelentés, alpont, '
            'pl. „II Qal/2/a”, „-/1/b”), vagy „fej” (címsor, nyelvi háttér, alaktan), vagy „tagolatlan” (a szócikknek nincs törzse, számozott jelentése, alpontja); '
            'szures = „bibliai” vagy „alhivatkozas: <ok>” (pl. kommentár-hely, nem bibliai mű) vagy „bizonytalan: <ok>”.',
+           '# A RÓMAI SZAKASZ a jelentéspont része (a felhasználó döntése, 2026-10-15): (1) ha a forrás a címszó előtt római számot ír („H3499. yether '
+           'I. יֶ֫תֶר noun …”, „II. [יָאַל] verb …”), azt a FŐ címszónál is írd („I fej”, „II Hiph`il”); (2) a szócikk római számos fő tagolása '
+           '(„I. of man: 1 … II. of God: 1 …”, „I. between men … II. between God and man …”) szintén szakasz („II Qal/3”); igénél a tagolás a törzsön belüli, '
+           'a rákövetkező törzs (pl. Niph`al) már nem tartozik a tagoláshoz; (3) római számot csak a forrásban kiírtat írj, következtetettet ne; (4) a '
+           'jelöletlen második címszó (római szám nélkül) szakaszát római szám nélkül, a saját törzs/jelentés útvonalával írd. Az összevetés csak a „`” és az '
+           '„\'” különbségét, és a „fej” = „tagolatlan” = „<törzs>” (= „<törzs>/-”) egyenértékűséget normálja; a zárójeles szint („(2)”, „(c)”) külön mutató.',
            '# A poz a hivatkozás kezdete a szöveg „lapított” alakjában (sortörés helyett szóköz; „1.a” → „1. a.”), csak a megtaláláshoz.',
            '\t'.join(['azon', 'strong', 'poz', 'nyers', 'kornyezet', 'konyv_mt', 'karoli_vers', 'jelentespont', 'szures', 'megjegyzes'])]
     kulcs = ['# M2 ⛔ KULCS (F99): seed=%d; a szeletelő kimenete (adat/bdb_vers_jelentes.tsv) a vak munkalap azonosítóival. Az ellenőrnek NEM adandó.' % seed,
@@ -238,13 +247,16 @@ def main():
     ap.add_argument('--minta', type=int, metavar='SEED', help='az M2 ⛔ vak munkalapja és kulcsa (nem írja a táblát)')
     ap.add_argument('--minta-n', type=int, default=200)
     ap.add_argument('--minta-kieg', type=int, default=25)
-    ap.add_argument('--minta-vak', default=os.path.join(REPO, 'naplok', 'BDB_SZELETELO_M2_minta_vak.tsv'))
-    ap.add_argument('--minta-kulcs', default=os.path.join(REPO, 'naplok', 'BDB_SZELETELO_M2_minta_kulcs.tsv'))
+    # a 99-es seed a régi neveken; minden más seed saját fájlpárt kap (…_minta_seed<N>_vak.tsv / _kulcs.tsv), a korábbi minta nem íródik felül
+    ap.add_argument('--minta-vak', default=None)
+    ap.add_argument('--minta-kulcs', default=None)
     ap.add_argument('--ts', help='a proveniencia ts mezője (a futás napja); azonos ts-sel bájtra azonos a kimenet')
     ap.add_argument('--ellenoriz', action='store_true', help='nem ír: újragenerál és összeveti a meglévő táblával')
     a = ap.parse_args()
     if a.minta is not None:
-        minta(a.minta, a.minta_n, a.minta_kieg, a.minta_vak, a.minta_kulcs)
+        alap = 'BDB_SZELETELO_M2_minta' if a.minta == 99 else 'BDB_SZELETELO_M2_minta_seed%d' % a.minta
+        minta(a.minta, a.minta_n, a.minta_kieg, a.minta_vak or os.path.join(REPO, 'naplok', alap + '_vak.tsv'),
+              a.minta_kulcs or os.path.join(REPO, 'naplok', alap + '_kulcs.tsv'))
         return
     if not a.ts:
         ap.error('--ts kell')

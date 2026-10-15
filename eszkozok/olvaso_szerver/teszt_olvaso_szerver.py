@@ -513,7 +513,11 @@ class TestLapok(unittest.TestCase):
         self.assertEqual(str(blokkok._cim_html('a <b>')), 'a &lt;b&gt;')
         t = self.get('/r/szo/H7451').get_data(as_text=True)
         cimek = re.findall(r'<span class="jcim">([^<]*)</span>', t)
-        self.assertEqual(cimek[:3], ['rossz, kellemetlen, ártalmas', 'rossz, kellemetlen, fájdalmat, boldogtalanságot, nyomorúságot okozó',
+        # F99 M2: a szeletelő a II. רַע (főnév) és a רָעָה szakaszt külön választja; a lap ezeket a fő szerkezet előtt mutatja, ezért a fő
+        # szerkezet első három címét a saját helyén keressük
+        self.assertIn('rossz, kellemetlen, ártalmas', cimek)
+        i = cimek.index('rossz, kellemetlen, ártalmas')
+        self.assertEqual(cimek[i:i + 3], ['rossz, kellemetlen, ártalmas', 'rossz, kellemetlen, fájdalmat, boldogtalanságot, nyomorúságot okozó',
                                      'rossz, nem tetsző'])
 
     def test_kod_verzio_valtozik_a_fajl_valtozasaval(self):

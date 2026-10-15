@@ -51,6 +51,26 @@ class Hivatkozasok(unittest.TestCase):
         h = B.hivatkozasok('H9999. x אב noun see 4:5.')
         self.assertEqual((h[0]['konyv'], h[0]['okkod'], h[0]['konyv_mod']), (None, 'nincs_elozmeny', 'feloldhatatlan'))
 
+    def test_zarojelbeli_nem_bibliai_nem_oroklodik_kifele(self):
+        # F99 M2 vak minta (M040, M210): a zárójelen belüli nem bibliai könyvjelölő után a zárójel előtti könyv folytatódik
+        h = B.hivatkozasok('H9999. x אב noun masculine^Ezek 24:4 piece (Ecclus אב Ecclesiasticus 50:12a); — absolute 24:4; 24:6.')
+        ok = [(x['nyers'], x['konyv'], x['okkod']) for x in h]
+        self.assertEqual(ok[1][2], 'nem_bibliai')
+        self.assertEqual(ok[2:], [('24:4', 'Ez', ''), ('24:6', 'Ez', '')])
+        h = B.hivatkozasok('H9999. x אב noun masculine^Num 10:14 standard (compare also Di 2:2); construct 2:3 7t.')
+        self.assertEqual([(x['nyers'], x['okkod']) for x in h][1:], [('Di 2:2', 'nem_bibliai'), ('2:3', '')])
+
+    def test_kozvetlen_szerzo_sigla_tapadt(self):
+        # F99 M2 vak minta (M006, M036, M115, M128, M201, M204): a közvetlenül előtte álló szerző^mű sigla tapadt; a lezárt megjegyzés,
+        # a szövegtanú, a könyvrész („Isa^2”) és a forráskritikai „R^D” nem
+        def ok(t):
+            return [x['okkod'] for x in B.hivatkozasok('H9999. x אב noun ' + t)]
+        self.assertEqual(ok('loan-word, Schr^COT Gen 2:8; Schr^COT on Neh 1:1; see Schr^ib. 24:1; compare Fl^De Job 6:2.'),
+                         ['sigla_tapadt'] * 4)
+        # ezek a közeli-sigla szabály alá esnek (bizonytalan, a táblában maradnak), a tapadt alá nem
+        self.assertEqual(ok('suffix (Kö^ii.l,74) Jer 6:13; (both R^D), Jer 6:24; ᵐ5^B Ezra 10:21; Isa^3 Isa 50:9; (compare R^D Josh 13:22).'),
+                         ['sigla_kozel'] * 5)
+
 
 class Jelentespont(unittest.TestCase):
     def test_alpont_es_fej(self):
@@ -71,7 +91,8 @@ class SzerkezetJavitas(unittest.TestCase):
     def setUpClass(cls):
         cls.en, cls.lem = {}, {}
         for d in V.tsv_sorok(V.BDB_EN):
-            if d['Strong_padded'] in ('H3615', 'H0776', 'H4908', 'H0029', 'H5022', 'H0157', 'H1157'):
+            if d['Strong_padded'] in ('H3615', 'H0776', 'H4908', 'H0029', 'H5022', 'H0157', 'H1157', 'H1961', 'H1285', 'H2764', 'H5030',
+                                      'H3117', 'H6086', 'H3581', 'H2490', 'H2803', 'H1419', 'H3220'):
                 cls.en[d['Strong_padded']] = d['Teljes_szocikk']
 
     def jelek(self, s, torzs=None):
@@ -92,6 +113,39 @@ class SzerkezetJavitas(unittest.TestCase):
         self.assertEqual(self.jelek('H5022'), [])                                # „1 Kings 21”
         self.assertTrue(B.szeletel(self.en['H1157'])['torzsek'][0]['jelentesek'][0]['szoveg'].startswith('literal'))   # „1 plural …, Amos 9:10”
         self.assertEqual([j for j, _ in self.jelek('H0029')], [str(i) for i in range(1, 9)])   # „2 Chronicles 13:23. 2 2nd son”
+
+    # F99 M2, a vak minta eltérései (naplok/BDB_SZELETELO_M0.md 9.5)
+    def test_fo_tagolas_romai_szakaszai(self):
+        # H1961: „I. 1. a. Fall out … above II. Come into being … III. Be” — a Qal-ban, a törzs öröklődik; H1285: I./II./III. glosszával
+        sz = [(x['jel'], [t['nev'] for t in x['torzsek']]) for x in B.szeletel(self.en['H1961'])['szakaszok']]
+        self.assertEqual(sz[:3], [('I', ['Qal']), ('II', ['Qal']), ('III', ['Qal'])])
+        self.assertEqual([x['jel'] for x in B.szeletel(self.en['H1285'])['szakaszok']], ['I', 'II', 'III'])
+        # H2803: „Qal … I. of man: 1 … II. of God: 1 … Niph`al …” — a tagolás a Qal-on belüli; a Niph`al a fő címszó törzse
+        r = B.szeletel(self.en['H2803'])
+        self.assertEqual([t['nev'] for t in r['torzsek']], ['Qal', "Niph'al", "Pi'el", "Hithpa'el", "Pe'al"])
+        self.assertEqual([(x['jel'], [t['nev'] for t in x['torzsek']]) for x in r['szakaszok']], [('I', ['Qal']), ('II', ['Qal'])])
+
+    def test_fejleci_glossza_szamozasa_nem_szerkezet(self):
+        # H2764: „1 devoted thing. 2 devotion, ban; — … — thing devoted to ׳י: 1 thing hostile …”
+        self.assertTrue(B.szeletel(self.en['H2764'])['torzsek'][0]['jelentesek'][0]['szoveg'].startswith('thing hostile'))
+
+    def test_kimaradt_jelolok(self):
+        self.assertEqual([j for j, _ in self.jelek('H5030')], ['1', '2', '3'])        # „… see חתם 2 false prophets”
+        self.assertEqual([j for j, _ in self.jelek('H3117')], [str(i) for i in range(1, 8)])   # „… 7g below 4 Plural days”
+        self.assertEqual(self.jelek('H6086')[0], ('1', ['a', 'b', 'c', 'd', 'e', 'f']))   # „— 1 (c. 150 t.) a. a standing tree”
+        self.assertEqual([j for j, _ in self.jelek('H1419')], [str(i) for i in range(1, 11)])  # „— great, 1 in magnitude”
+        self.assertEqual([j for j, _ in self.jelek('H3220')], [str(i) for i in range(1, 10)])  # „especially 1 Mediterranean”
+
+    def test_cimszo_alakvaltozattal(self):
+        # H3581: „II. כֹּחַ and (Dan 11:6) כּוֺחַ noun masculine” — egy II. szakasz, az alakváltozat nem nyit újat
+        sz = B.szeletel(self.en['H3581'])['szakaszok']
+        self.assertEqual([x['jel'] for x in sz], ['II'])
+        self.assertEqual([j['jel'] for j in sz[0]['torzsek'][0]['jelentesek']][:3], ['1', '2', '3'])
+
+    def test_homonima_utalas_nem_jelolo(self):
+        # H2490 II: „Polel Participle from 1. חוּל dancers” — homonima-utalás, nem jelentés-sorszám
+        ii = [x for x in B.szeletel(self.en['H2490'])['szakaszok'] if x['jel'] == 'II'][0]
+        self.assertEqual([j['jel'] for t in ii['torzsek'] for j in t['jelentesek'] if j['jel']], [])
 
 
 class Tabla(unittest.TestCase):

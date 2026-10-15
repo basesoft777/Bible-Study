@@ -874,7 +874,8 @@ def _torzsek_html(tl, elotag='bdb', talalt=None):
     return ki
 
 
-SZAKASZ_CIM = {'elo': 'Zárójeles előszócikk (más gyök)', 'arámi': "Arámi (Pe'al) rész", 'azonos_lemma': 'További homonima ugyanezen a lemmán', 'masik_lemma': 'Másik szó (más lemma)'}
+SZAKASZ_CIM = {'elo': 'Zárójeles előszócikk (más gyök)', 'arámi': "Arámi (Pe'al) rész", 'azonos_lemma': 'További homonima ugyanezen a lemmán', 'masik_lemma': 'Másik szó (más lemma)',
+               'tagolas': 'rész (a címszó fő tagolása)'}
 
 
 def _f_bdb_apparatus(K):
@@ -900,15 +901,22 @@ def _r_bdb_apparatus(d, K):
         Markup('<span class="helyek">%s előfordulás (BDB)</span>') % fej['ossz'] if fej.get('ossz') else '', a['ref_ossz']))
     ki += resz('Alapjelentés és szófaj', Markup('<p class="jsz">%s</p>') % (a['alap'] or '—'))
     if a.get('szakaszok'):
-        reszek = Markup('')
-        for k, x in enumerate(a['szakaszok']):
-            cim = SZAKASZ_CIM['elo'] if x['szerep'] == 'elo' else (SZAKASZ_CIM['arámi'] if x['nyelv'] == 'arámi' else SZAKASZ_CIM[x['szerep']])
-            if x['szerep'] != 'elo' and x.get('jel'):
-                cim = '%s. %s' % (x['jel'], cim)
-            ny = Markup('<ul class="lista">%s</ul>') % Markup('').join(Markup('<li>%s</li>') % n for n in x['nyelvi']) if x['nyelvi'] else Markup('')
-            reszek += Markup('<details open><summary class="megj">%s · <span class="he" lang="he">%s</span> · %s%s</summary>%s%s</details>') % (
-                cim, x['heber'] or '', _rovid(x['alap'] or '—', 80), _helyek(x.get('ref')), ny, _torzsek_html(x['torzsek'], 'bdb-s%d' % k))
-        ki += resz('Ugyanabban a BDB-sorban további szakaszok (%d) — nem ennek a címszónak a szerkezete' % len(a['szakaszok']), reszek)
+        # F99 M2: a `tagolas` szerepű szakasz a címszó saját római számos fő tagolása (H1961, H1285), nem más szócikk
+        for tag_e, cimsor in ((False, 'Ugyanabban a BDB-sorban további szakaszok (%d) — nem ennek a címszónak a szerkezete'),
+                              (True, 'A címszó fő tagolása (%d rész, római számmal)')):
+            reszek, db = Markup(''), 0
+            for k, x in enumerate(a['szakaszok']):
+                if (x['szerep'] == 'tagolas') != tag_e:
+                    continue
+                db += 1
+                cim = SZAKASZ_CIM['elo'] if x['szerep'] == 'elo' else (SZAKASZ_CIM['arámi'] if x['nyelv'] == 'arámi' else SZAKASZ_CIM[x['szerep']])
+                if x['szerep'] != 'elo' and x.get('jel'):
+                    cim = '%s. %s' % (x['jel'], cim)
+                ny = Markup('<ul class="lista">%s</ul>') % Markup('').join(Markup('<li>%s</li>') % n for n in x['nyelvi']) if x['nyelvi'] else Markup('')
+                reszek += Markup('<details open><summary class="megj">%s · <span class="he" lang="he">%s</span> · %s%s</summary>%s%s</details>') % (
+                    cim, x['heber'] or '', _rovid(x['alap'] or '—', 80), _helyek(x.get('ref')), ny, _torzsek_html(x['torzsek'], 'bdb-s%d' % k))
+            if db:
+                ki += resz(cimsor % db, reszek)
     if a.get('nyelvi'):
         ki += resz('Nyelvi háttér (etimológia, rokon nyelvek)', Markup('<ul class="lista">%s</ul>') % Markup('').join(Markup('<li>%s</li>') % n for n in a['nyelvi']))
     if a.get('alaktan'):
