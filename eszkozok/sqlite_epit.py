@@ -155,8 +155,9 @@ ALTALANOS_TOVABBI_INDEX = {'oshl_lexikalis_index': ['oshl_id']}
 # adat/ tabla, amelynek SAJAT licencek.tsv-sora van (nem projekt_adat); a tobbi adat/ tabla projekt_adat
 ADAT_LICENC = {'morf_kulcs_heber': ['morf_kulcs_heber'], 'morf_nyelv_aramai': ['morf_nyelv_aramai'],
                # F99: a BDB-szeletelő táblái a BDB szövegéből (horgony, nyers hivatkozás) és a Macula MT → Károli
-               # megfeleltetéséből is származnak: a legszigorúbb érték érvényes (licenc_feloldas)
-               'bdb_aranyminta': ['BDB', 'projekt_adat'], 'bdb_vers_jelentes': ['BDB', 'Macula_heber', 'projekt_adat']}
+               # megfeleltetéséből is származnak: a legszigorúbb érték érvényes (licenc_feloldas). ELLENOR_F99 6.: a `bdb_id` oszlop
+               # OSHL-adat (CC BY 4.0), a TAHOT (CC BY 4.0) a szűrésben (DT-F99k) és a Károli-kulcsban (DT-F99h) dönt
+               'bdb_aranyminta': ['BDB', 'projekt_adat'], 'bdb_vers_jelentes': ['BDB', 'Macula_heber', 'OSHL', 'TAHOT', 'projekt_adat']}
 
 ADAT_KIHAGYOTT = {'karoli_variancia'}  # külön kezelve (szarmaztatott licenc)
 
