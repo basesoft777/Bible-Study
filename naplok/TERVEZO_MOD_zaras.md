@@ -1,6 +1,6 @@
 # TERVEZO_MOD — zárónapló (#98)
 
-*A napló szakaszonként bővül: M1 (előkészítés), M2 (tervező mód és mentés), M3 (felhasználói próba), zárás. Az M0 terve: `naplok/TERVEZO_MOD_M0.md`; a döntések: DT-F98a–f, `DONTESEK.md`.*
+*A napló szakaszonként bővül: M1 (előkészítés), M2 (tervező mód és mentés), M3 (felhasználói próba), zárás. Az M0 terve: `naplok/TERVEZO_MOD_M0.md`; a döntések: DT-F98a–f, a zárásnál nyitott DT-F98g, `DONTESEK.md`; az ellenőri napló: `naplok/ELLENOR_TERVEZO_MOD.md`.*
 
 ## M1 — előkészítés
 
@@ -384,3 +384,39 @@ Az `eszkozok/feladatok.py ellenoriz`: 118 brief, 0 hiba, 0 figyelmeztetés.
 1. **⛔ M3 — a felhasználó kipróbálja** a futó szerveren: kiválaszt, állít, előnézetben lát, visszavon, ment, visszaállít. Az észrevételei ide kerülnek, a javítás ugyanebben a menetben.
 2. A hét regiszteren kívüli token (M2.1) csak előnézetben állítható; ha mentést is akar rájuk, magyar névvel a regiszterbe kell venni őket.
 3. A belső kiadás fejlécében új gomb jelenik meg (M2.6); ha zavaró, a helye és a megjelenése a `tervezo.css`-ben állítható.
+
+## Zárás
+
+*Modell: `claude-opus-5-5` (a brief `modell: opus`, egyezik). Ág: `claude/tervezo-mod`. Állapot: **lezárva**; push és draft PR a felhasználó kérésére (chat, 2026-10-15), merge nincs.*
+
+**M3.** A felhasználó a chatben (2026-10-15) a független ellenőrzést, a zárást és a draft PR-t kérte. Az M3 kézi próbájának észrevételei ebben a naplóban nem szerepelnek; a zárás nem állítja, hogy a próba megtörtént.
+
+**A független ellenőr eredménye** (`naplok/ELLENOR_TERVEZO_MOD.md`, F98.22; `fuggetlen-ellenor`, `claude-opus-5-5`, az `origin/main...HEAD` háromárú diffjén): **5 eltérés**, 2 közepes, 3 kisebb. A többi pont (csak `belso` kiadás, POST + egyszeri kód, regiszteres token és értékszűrés, CSP, atomi írás és ETag, regiszter 83/46, stíluslap egyetlen forrás, szinkron-szkript, CI, adattábla Δ = 0, ⛔ pontok) OK; a megjelenés-azonosság és a tesztek valódi futtatása az ellenőr szerepéből nem volt ellenőrizhető.
+
+**Javítva (kisebb hibák):**
+
+- **Regiszter-őr (F98.23).** Az őr a kliens (`statikus/olvaso.js`, `tervezo_statikus/tervezo.js`) `classList.add/toggle/remove` literál-osztályait is olvassa; a nem literál argumentum, a `className =` és a `setAttribute('class', …)` hiba (kivétel a tervező saját panelét építő `h()` segéd). A néma kihagyás helyett hiba: egyszeres idézőjeles vagy idézőjel nélküli `class=`, a literálon belül le nem zárt attribútum (összefűzés), a Jinja-kifejezés nem literál ága (`{{ x or 'y' }}`), az előző osztálynévhez tapadó kifejezés-kimenet. A Jinja-kifejezést kimenet-alternatívákként olvassa, ezért a feltétel literálja (`ful == 'szo'`) már nem számít osztálynak: a régi őr két hamis előfordulása (`szo`, `vers`, `fejezet.html` 42–43) és a `blokkok.py` `'class="jelleg ' in html` vizsgálatából vett `forras` megszűnt (mindhárom osztály máshol valódi előfordulással a felületen marad). A `[kizart]` lista három osztállyal bővült, indokkal: `nincs-jeloles` (az `olvaso.js:58` állapot-osztálya, literál szabállyal), `tz-nem`, `tz-hiba` (a tervező saját vezérlőinek állapotai, a `tervezo.css`-ből). Mai eredmény: 130 osztály (222 előfordulás, 20 dinamikus), 81 a regiszterben, **49 kizárva, 0 hiba**. Két új teszt; a README „minden CSS-osztály” állítása pontosítva (mit olvas az őr, mit nem).
+- **Mentési végpont (F98.24).** A token létezését a mentés a **lemezes** token-fájl alapján vizsgálja (arra ír): a lemezen hiányzó kulcs 400 („nem regisztrált token”), nem `KeyError`/500. A nem érvényes lemezes fájl (rossz JSON vagy forma) külön hibát ad: 500, „a lemezes token-fájl nem érvényes, a mentés nem írt: …” (nem „a törzs nem érvényes JSON”). A fájl mindkét esetben változatlan; egy új teszt (3 eset).
+- **Proxy-állítás (F98.25).** A README és az M2.3 „Korlát” bekezdése nem állítja többé, hogy fordított proxy mögött a mentés nem működik: a feltétel továbbító fejlécet adó vagy a külső `Host`-ot megtartó proxy (Caddy) mögött tart, az nginx alapbeállítása mögött megkerülhető. A viselkedés nem változott.
+
+**Nyitva:** **DT-F98g** (🟡, `DONTESEK.md`): a helyi-kérés feltétel megkerülhetősége alapértelmezett nginx mögött; opciók: (a) kifejezett kapcsoló (`PARDES_TERVEZO=1`), (b) bind-cím ellenőrzése, (c) a #76 M5 proxy-konfigja (N-F76d) zárja ki; javaslat (a). Tartalmi döntés a zárásban nincs.
+
+**Megjegyzések.**
+
+- **Az F98.3 commit modellje.** A brief `modell: opus`; az F98.3 (a DT-F98a–e rögzítése a `DONTESEK.md`-ben) „Claude Sonnet 5.5” társszerzővel, az orkesztrátor-sessionből készült. A commit csak a felhasználó chatbeli döntéseit rögzíti, értelmező vagy adat-tartalmat nem ír; a naplókban a modell mindenhol `claude-opus-5-5`, adattábla-`modell` mező a diffben nincs.
+- **Az F98.9 és az F98.11–F98.13 (BDB-jelentésszerkezet)** a felhasználó külön munkája ezen az ágon, F98-előtaggal, a #98-ba keveredve (`blokkok.py`, `bdb_jelek.tsv`, `teszt_olvaso_szerver.py`, `olvaso.css`, `arculat.json`, `teszt_szintek.py`). A brief hatóköre a blokk-tartalom módosítását kizárja; a regiszter 74–83. sora és a szelektor-teszt rájuk épül, ezért nem választhatók le. A PR leírása ezt jelzi.
+- Az ág a zárás előtt az `origin/main`-re rebase-elődött; a naplók commit-hivatkozásai a rebase után frissültek (F98.27).
+
+**Tesztek (a javítások után, rebase előtt):**
+
+| Tesztfájl | Eredmény | Kihagyva |
+|---|---|---|
+| `teszt_tervezo.py` | 48 OK (45 + 3 új) | 0 |
+| `teszt_arculat.py` | 22 OK | 0 |
+| `teszt_szintek.py` | 13 OK | 0 |
+| `teszt_pilot_aranymintaval.py` | 22 OK | 0 |
+| `teszt_olvaso_szerver.py` | 71 OK | 0 |
+
+`python eszkozok/olvaso_szerver/regiszter_or.py`: 0 hiba. `python eszkozok/feladatok.py ellenoriz`: 118 brief, 0 hiba, 0 figyelmeztetés.
+
+*Proveniencia:* `scope=eszkozok/olvaso_szerver/ @F98.25 (regiszter_or.py 23 158 B sha256 a6ee4264c499174e; tervezo.py 28 404 B sha256 ebe410dedd775ca4; konfig/elemek.toml 35 024 B sha256 16f1c5181cd281a7; konfig/arculat.json változatlan), ~/pardes/pardes.db (ext4 másolat) | forras=unittest a pardes WSL .venv-jével (Python 3.12.3); regiszter_or.py; eszkozok/feladatok.py ellenoriz; naplok/ELLENOR_TERVEZO_MOD.md | ts=2026-10-15`
