@@ -6,10 +6,10 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: folyamat
-allapot: fut
+allapot: dontesre_var
 ag: claude/olvaso-indito
 ad: egy közös indító-szkript, amelyet a három asztali parancsikon hív: leállítja a régi példányt, a WSL-beli pardes.db-t a Windows-oldalihoz igazítja (csak eltérésnél másol), és kódváltozáskor magától újrainduló szervert indít; a lap láblécében ág, kódverzió és adatbázis, figyelmeztetéssel, ha valami nem friss; a tesztek egyetlen belépési pontról, natív fájlokból futnak
-kovetkezo: /kovetkezo; ⛔ M0 (a felmérés és a DT-F100a–b), ⛔ M2 (a felhasználó kipróbálja a parancsikonokat)
+kovetkezo: Te: DT-F100a–b eldöntése (M0 ⛔)
 olvas: [eszkozok/olvaso_szerver/README.md, eszkozok/olvaso_szerver/frissesseg.py, eszkozok/olvaso_szerver/manifest_pardes_db.tsv, eszkozok/olvaso_szerver/pyproject.toml]
 ir: [eszkozok/olvaso_szerver/indit.sh, eszkozok/olvaso_szerver/alkalmazas.py, eszkozok/olvaso_szerver/sablonok/alap.html, eszkozok/olvaso_szerver/teszt_indito.py, eszkozok/olvaso_szerver/README.md, eszkozok/teszt_futtat.py, CLAUDE.md, naplok/OLVASO_INDITO_zaras.md]
 fugg: []
