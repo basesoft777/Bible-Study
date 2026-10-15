@@ -484,3 +484,43 @@ tagolás; DT-F99i), újragenerálás, újramérés **seed 101**-gyel, változatl
 
 **A tábla** (F99.21): 160 616 sor; jelentéspont: csomópont 122 072, `fej` 9 274, `tagolatlan` 29 270 (változatlan); `szurt=1` 651. Az
 aranyminta változatlan (EN 8/32, HU 4/14 hibás szócikk; eltérés 74/72).
+
+### 9.10 A javítókör a seed-100 ítélete után (F99.23) és a seed-101 újramérés előkészítése
+
+**A felhasználó döntései (2026-10-15):** az ítéletek jóváhagyva (15 szeletelő-hiba, a mérce a seed-100-on nem teljesült); M158 és M076
+szeletelő-hiba; új szabály a sigla melletti hivatkozásra (DT-F99k); a Targum (ᵑ7) lekerül a kommentár-listáról; a javítókör az öt
+okcsoport, a DT-F99i két római szintje és a DT-F99k; utána újramérés seed 101-gyel, változatlan mércével és szabályokkal.
+
+**Javítás okcsoportonként** (`bdb_szelet.py`; tesztek: `teszt_bdb_vers_jelentes.py` `Seed100Javitas`, `SzerkezetJavitas`):
+
+| okcsoport | seed-100 sor | mi változott |
+|---|---|---|
+| jelöletlen alcímszó | M037, M114, M174, M240 | a `JELOLETLEN` két-három héber alakot és vesszőt is elfogad („תּוֺלַ֫עַת תּוֺלֵעָה,_40 noun”), a „proper name”-et, és a szófaj nélküli, gyakoriság-számos alcímszót („מֵעִם_72 from with”); nem címszó az alpont-jelölő („a. ”) után és a fejléc első mondatában („Anathoth עֲנָתוֺת and (1Kin 2:26) עֲנָתֹת proper name”); a nemre utaló szó utáni „1.” a 2-vel már jelölő („masculine 1. Levites … 2”) |
+| prezentációs héber alak | M065, M149 | a `CIM` és a `JELOLETLEN` betűosztálya U+FB1D–FB4F-et is fed; a lemma-illesztés (`_kons`) NFD-felbontás után |
+| fejléc | M100, M105, M129, M195 | a „H<szám>.” nélküli betű-szócikk (H9003, H9005) belső fejjel bomlik; több lemma-egyező címszó közül az igehelyes a fő; a „II. בָּ֑ד בַּד, noun” két alakú címszó; a gondolatjel nélküli fejléc-összefoglaló („1 surely. 2 … only 1 asseverative …”) után az újrainduló számozás a szerkezet; a fejlécben megnevezett egyetlen törzs („verb Hiph`il break”) a később álló törzsfejléc előtti jelentések törzse |
+| számjelölő | M098, M161, M210 | a „29:5 a. 6 b;” versrész nem jelölő; a „3 1Chr 2:23” jelölő; a „2 (approximately 175 times …)” jelölő (szigorú és laza mintában) |
+| OCR | M052, M076 | a „Perfect”-hez tapadt törzsnév („QalPerfect”) törzsfejléc; a sorozat folytatásában „1” = „l.”, „masculine” = „m.” (ELLENOR_F99_minta E1) |
+
+**DT-F99i — két római szint, két mező.** A tábla új `resz` oszlopa a szócikk fő tagolása, a `szakasz` a címszó homonima-száma (a sávok
+címkéje „<homonima>§<rész>”, `bdb_szelet.szakasz_bont`). Az aranyminta `resz` oszlopot kapott (a 658 mai sorban üres: a minta
+szócikkeiben nincs fő tagolás), a `bdb_szelet_m0.py --arany` a (`szakasz`, `resz`) párral illeszt. Az összevető (`m2_minta_osszevet.py`,
+a seed-101 mérés ELŐTT rögzítve): a homonima-szám a jelentéspont elején, a fő rész a vak lap új `resz` oszlopában; mindkettő pontosan
+egyezzen; a régi (seed-99/100) kitöltésben a második római szám a rész. A mérce és a többi szabály (9.5) változatlan.
+
+**DT-F99k — a sigla melletti hivatkozás a TAHOT szerint.** A tapadt, közeli és listás sigla melletti hivatkozás szűrt, ha a TAHOT
+(`Igehely` = Károli-vers; Károli-vers híján az azonos számú vers) a versben nem hordozza a szócikk Strong-számát; ha hordozza: bibliai,
+okkód `sigla_igazolt`. A kommentár-lista: `Schr^…`, `COT`, `Dr`, `Dr^…`, `MI`, `MI^…`, `Fl^…`, `De^…`, `Hup^…` (a ᵑ7 lekerült). A TAHOT a
+tábla fejlécének forrássorában hash-sel áll. Hatás: `sigla_igazolt` 484 (bibliai), szűrt `sigla_tapadt` 112, `sigla_kozel` 86,
+`sigla_lista` 3; `szurt=1` 651 → 531. A seed-100-ban: M158 bibliai, M001 és M075 szűrt (a TAHOT a szót a versben nem hordozza).
+
+**A tábla** (F99.23): 160 616 sor; jelentéspont: csomópont 122 457, `fej` 8 759, `tagolatlan` 29 400; `resz` 6 010 sorban.
+**Aranyminta:** hibás szócikk EN 8 → 7/32, HU 4/14; szerkezeti eltérés EN 74 → 71, HU 72; jó cím EN 27/46, HU 199/231.
+**Tájékoztató** (nem mérés; a seed-100 kulcsa a mai táblával): jelentéspont 182 → 193/200; a seed-99 mintán 180/200 (a régi kitöltés
+egy római száma itt homonima-számként olvasódik, a fő részt ezért nem találja — a DT-F99i előtti formátum).
+
+**Seed 101** (`python eszkozok/olvaso_szerver/bdb_vers_jelentes.py --minta 101`): `naplok/BDB_SZELETELO_M2_minta_seed101_vak.tsv` (vak
+munkalap, új `resz` oszloppal és a DT-F99i kitöltési szabályával a fejlécben) és `naplok/BDB_SZELETELO_M2_minta_seed101_kulcs.tsv`
+(kulcs, `resz` oszloppal; az ellenőrnek nem adandó); 200 véletlen + 25 kiszűrt + 25 bizonytalan, keverve. A bizonytalan réteg a
+DT-F99k után: `tobbertelmu`, `orokles_hibas`, `sigla_igazolt` (a TAHOT által bibliainak ítélt sigla-sorok; tájékoztató, DT-F99j). Mérce
+(a 200 véletlen soron): könyv/vers ≥ 99% (≤ 2 hiba), jelentéspont ≥ 97% (≤ 6 hiba). Ha a seed-101 sem teljesül, nincs seed-102 (az
+orkesztrátor kezeli).
