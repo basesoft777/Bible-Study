@@ -633,3 +633,26 @@ Más Károli-versre került (az F99.34-es táblához képest) **514 sor**; a TAH
 5Móz 5 (54 sor; azonos számon 105, +3-on 80 a 179-ből — a Dekalógus versbeosztása, az F85 nem dokumentálja). A Hós 14 5 sora a TAHOT szerint
 egyik változatban sem igazolt. A gépi Károli-összevetés (`naplok/BDB_SZELETELO_M2_karoli.md`) szerint a rendszeres eltolású fejezetek közül
 csak a 1Krón 12 és az 5Móz 5 maradt.
+
+### 9.14 A szűrés hamis pozitív és hamis negatív aránya a seed-101-en (ELLENOR_F99 2.)
+
+**Módszer** (rögzítve): a mért kulcs (`naplok/BDB_SZELETELO_M2_minta_seed101_kulcs.tsv`, F99.25-ös tábla) `szurt` mezője két „valóság”
+ellen: **(A) a TAHOT** — a hivatkozás feloldott versén (Károli-vers, ennek híján az azonos számú vers) a TAHOT hordozza-e a szócikk
+Strong-számát (csak bibliai könyvre feloldható sornál; a nem bibliai könyvű sor „nem alkalmazható”); **(B) a vak kitöltés** (a két
+független ellenőr `szures` mezője: „alhivatkozas” = kiszűrendő, „bizonytalan”, „bibliai”). A hamis pozitív: a kulcs szűr, a valóság
+bibliai; a hamis negatív: a kulcs nem szűr, a valóság alhivatkozás.
+
+| réteg | n | a kulcs szűr | (B) hamis pozitív | (B) hamis negatív | (A) szűrt, de a TAHOT hordozza | (A) nem alkalmazható |
+|---|---:|---:|---:|---:|---:|---:|
+| véletlen | 200 | 1 | 0 / 1 | 0 / 199 (3 „bizonytalan”) | 0 | — |
+| kiszűrt | 25 | 25 | **3 / 25** (M001, M109, M159) | — | 0 | 19 (nem bibliai könyv) |
+| bizonytalan | 25 | 3 | 1 / 3 (M223) | **7 / 22** (M054, M065, M147, M149, M191, M198, M230) | 0 | — |
+
+**Elbírálás a forrással / a TAHOT-tal:** M001 (H2623 „116:15”) és M159 (H4912 „1:1”) **igazolt hamis pozitív**: a könyv egy nem bibliai
+jelölőről öröklődött (`nem_bibliai`), a TAHOT a szót a Zsolt 116:15-ben (és a 149:1, 5, 9-ben, 4 sor), ill. a Péld 1:1-ben hordozza
+(`lekerdez.py scan H2623 --szakasz "Zsolt 116"`, `scan H4912 --szakasz "Péld 1"`). M109 (H6305 „23:31”, `sigla_kozel`): a TAHOT nem
+igazolja. M223 (H8034 „Hosea 2:19”): a Hós 2 Károli-kulcsának javítása (F99.35) után a TAHOT igazolja, a sor ma `sigla_igazolt` (bibliai).
+A hét `sigla_igazolt` eltérés (M054 Di^Lev 7:30, M065 Dr^Amos 2:2, M147 COT^Gen 10:22, M149 Dr^Deut 2:11, M191 Baer^Josh 1:7, M198
+Du^Isa 29:3, M230 Dr^1Sam 14:18): a DT-F99k szerint bibliai (a szó a versben áll), a vak kitöltés kommentár-helynek ítélte — az elbírálás
+(a DT-F99k finomítása) a javítási feladatba került (`beerkezo/BDB_SZELETELO_JAVITAS_brief_tervezet.md`). A H2623/H4912 öröklési hibája
+ugyanoda.

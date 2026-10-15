@@ -40,9 +40,13 @@ szeletelő-hiba szórt. Ez a feladat a hibaosztályokat javítja, az útvonal-fo
    (`adat/bdb_aranyminta.tsv`, SEMA 2.28), a szeletelőben, a táblában (SEMA 2.29) és az összevetőben (`m2_minta_osszevet.py`).
 3. **Öröklés:** az egyfejezetes könyv (pl. „Obadiah 19”) után a könyv nélküli hely a megelőző könyvet folytatja (seed-101 M092:
    „2Chr 17:2; compare 34:6; … Obadiah 19; … 31:1” → 2Krón 31:1; ma `orokles_hibas`).
-4. **Homonima vagy fő rész** (M029, DT-F99i mintájára): a héber címszóval álló szócikken belüli „II. פְּנֵי with prepositions” fej
+4. **Szűrés (seed-101, napló 9.14):** a nem bibliai jelölőről öröklődő könyv a bibliai helyre (igazolt hamis pozitív: H2623
+   „116:15” — és a Zsolt 149:1, 5, 9, 4 sor —, H4912 „1:1”); a hét `sigla_igazolt` eltérés elbírálása (M054, M065, M147, M149, M191, M198,
+   M230: a TAHOT szerint a szó a versben áll, a vak kitöltés kommentár-helynek ítélte — a DT-F99k finomítása); a lezárt megjegyzés utáni
+   hely sigla-sora (M223-típus, `bdb_szelet.py` megjegyzés, ELLENOR_F99 9.).
+5. **Homonima vagy fő rész** (M029, DT-F99i mintájára): a héber címszóval álló szócikken belüli „II. פְּנֵי with prepositions” fej
    besorolása (`szakasz` vagy `resz`); döntési pont.
-5. **Újramérés:** új vak minta (új seed, 200 véletlen + 25 kiszűrt + 25 bizonytalan), a #99 rögzített összevetési szabályával (9.5 +
+6. **Újramérés:** új vak minta (új seed, 200 véletlen + 25 kiszűrt + 25 bizonytalan), a #99 rögzített összevetési szabályával (9.5 +
    DT-F99i); a mérce változatlan (könyv/vers ≥ 99%, jelentéspont ≥ 97%); a kapu következményét az ítélet ELŐTT rögzíteni (a DT-F99l
    mintájára).
 
