@@ -13,7 +13,12 @@ Névegyeztetés (a versen lévő token megkeresése) -- a repó adatából, két
       amelynek Strong-száma a vers tokenjei között megvan (utótagos TIPNR-sor is számít);
   (2) glossz-egyezés: a vers valamely tokenének `Rövid jelentés` vagy `Angol tükörfordítás` mezője
       egyezik a névcímkével vagy a Névváltozat egyik nagybetűvel kezdődő névalakjával.
-Az (1) erősebb; a (2) csak akkor számít, ha (1) nem talált. Pusztán az, hogy a versen más nevű
+A két bizonyíték együtt adja a társ-tokenek listáját (nyelvtől függetlenül, egységesen). Egy találat
+"gyenge", ha a token glosszája nem egyezik a névalakkal (az összetartozás csak a TIPNR névcímkén
+alapul). Szabály, MINDKÉT nyelvre: ha a sorban nincs kiadás-/fordítás-jelölés, és a versen csak gyenge
+társ van, az osztály "nem eldönthető" (így jelölés nélküli "szövegváltozat" vagy "alak-/névhasítás"
+sem lehet gyenge találatból); jelölés mellett a glossz eltérése maga lehet a jelzés (pl. görög TR-jelölés).
+Pusztán az, hogy a versen más nevű
 token van, NEM bizonyíték (és az indoklás sem állítja azt): ez az „azonos nevű” hamis állítás hibája volt.
 
 Osztályok:
@@ -144,9 +149,7 @@ def main(argv):
                     megj += (" (a token glosszája '%s' / '%s' nem egyezik a névalakkal: az összetartozás csak a TIPNR "
                              "névcímkén alapul, amely összetett nevek részeit is csoportosítja)" % (gl[1], gl[2]))
                 ered.append((st, 'tipnr', megj, kk[st]))
-        if ered:
-            return ered
-        # (2) glossz-egyezés
+        # (2) glossz-egyezés (az (1) mellett is: a társ-tokenek listája egységes)
         for (alak, honnan) in nev_alakok(nev, nv):
             n = norm(alak)
             if not n:
@@ -164,6 +167,10 @@ def main(argv):
                 seen.add(e[0])
                 egyedi.append(e)
         return egyedi
+
+    def gyenge(em):
+        """Igaz, ha van találat, de mind csak névcímkén alapul (a token glosszája nem egyezik a névalakkal)."""
+        return bool(em) and all('nem egyezik a névalakkal' in e[2] for e in em)
 
     def emtxt(em):
         return '; '.join('%s token: %s' % (e[0], e[2]) for e in em[:3])
@@ -248,6 +255,11 @@ def main(argv):
                     indok.append('%s: kiadás-jelölés (%s), de nincs köztük a TAGNT Kritikai kiadás mezőjének összevethető kiadása (TR/Byz)'
                                  % (hely, tagszoveg))
                     continue
+                if not tag and gyenge(em):
+                    osztalyok.append('nem eldönthető')
+                    indok.append('%s: nincs jelölés; a versen csak névcímke-alapú társ van, a token glosszája nem egyezik a névalakkal, ezért az azonosság a repó adatából nem dönthető el: %s'
+                                 % (hely, emtxt(em)))
+                    continue
                 keres = (tag & {'TR', 'Byz'}) or {'TR'}
                 lack = [e for e in em if not (keres & kiadas_halmaz(e[3]))]
                 if lack:
@@ -298,7 +310,7 @@ def main(argv):
                 osztalyok.append('nem eldönthető')
                 indok.append('%s: ismeretlen jelölés (%s)' % (hely, tagszoveg))
             else:
-                if em and all('nem egyezik a névalakkal' in e[2] for e in em):
+                if gyenge(em):
                     osztalyok.append('nem eldönthető')
                     indok.append('%s: nincs jelölés (Névváltozat: %s); a versen csak névcímke-alapú társ van, a token glosszája nem egyezik a névalakkal, ezért az azonosság a repó adatából nem dönthető el: %s'
                                  % (hely, nv, emtxt(em)))
