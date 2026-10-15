@@ -275,7 +275,7 @@ python eszkozok/olvaso_szerver/bdb_vers_jelentes.py --minta 99 --minta-ki <út>
 
 A `--arany` Windows-Pythonnal is fut, de a szerver `blokkok` modulja nélkül (nincs `markupsafe`) a címek összevetése kimarad, és ezt kiírja. Az eredmények determinisztikusak (a `ts` mezőn kívül); a fenti számok a `edf8ce69` állapoton futottak.
 
-## 9. M1 és M2 az M2 ⛔-ig (F99.9–F99.11)
+## 9. M1 és M2 az M2 ⛔-ig (F99.9–F99.13)
 
 *A felhasználó jóváhagyásával (2026-10-15: „mehet az M1”, az M2 ⛔ minta-ellenőrzéséig). Ez a szakasz az M0 napló folytatása, mert a brief `ir`-je M1/M2 naplót nem nevez meg.*
 
@@ -294,7 +294,7 @@ A `--arany` Windows-Pythonnal is fut, de a szerver `blokkok` modulja nélkül (n
 
 - **A szeletelőben** (`bdb_szelet.py`): `lapit` (a szeletelő szövegalakja), `hivatkozasok` (a DT-F99a szabályai; a könyvalakok a `bdb_konyv_javit.py`-ból lustán), `csomopont_savok` (a csomópontok sávjai szöveg-egyezéssel), `jelentespont`.
 - **Két szerkezeti javítás** (az aranyminta 2.3/1–2 osztálya; a hivatkozások jelentéspontja ezekre épül): a pont nélküli angol személyszám („3 feminine singular כָּֽלְתָה 1Sam 20:7”, „1 singular suffix”) és a könyvnév száma („1 Kings 21”, „2 Chronicles”) nem jelentés-sorszám; a „2 2nd son” jelölő. A határ: a héber alakot követő vesszős glossza vagy angol szó (H4908 „3 plural מִשְׁכָּנוֺת, dwellings”, H0776 „5 plural אֲרָצוֺת is almost wholly late”) jelentés marad. Hatás: az angol BDB 92 szócikkének bontása változik (szúrópróba: H0029, H0141, H0175, H0385, H0499, H0669, H0758, H0854, H0935, H1201, H1265, H1382 — mind javulás; a H1129 Qal-ja továbbra is hibás: az „, 1 (literal)” jelölőt a szigorú minta nem ismeri fel), a magyaré egyiké sem. Teszt: `teszt_bdb_vers_jelentes.py` `SzerkezetJavitas`; a pilot tesztjei közül csak a main-en is fennálló 3 (Zsolt 22 versszámozás) hibás.
-- **Az aranyminta a javítás után** (`bdb_szelet@b164b873`, ts=2026-10-15T15:30): szerkezeti eltérés nélkül **19 / 32** angolul (eddig 15), 7 / 14 magyarul; eltérés 158 (EN) és 143 (HU); a H3615, H0157, H5022, H6696 és a H4111 angolul hibátlan; a H0559 angol 1. jelentése (a tapadt „263.1Say”) most hiányzik a hamis „1 Kings” helyett. Nyitott a H1157 angol „1 plural בַּעֲדֵנוּ, Amos 9:10” (vesszővel követett igehely): a következő szerkezeti javítás (a tábla újragenerálásával együtt).
+- **Az aranyminta a javítás után** (`bdb_szelet@b164b873`, ts=2026-10-15T15:30): szerkezeti eltérés nélkül **19 / 32** angolul (eddig 15), 7 / 14 magyarul; eltérés 158 (EN) és 143 (HU); a H3615, H0157, H5022, H6696 és a H4111 angolul hibátlan; a H0559 angol 1. jelentése (a tapadt „263.1Say”) most hiányzik a hamis „1 Kings” helyett. **F99.13:** a H1157 „1 plural בַּעֲדֵנוּ, Amos 9:10” (a héber alakot vesszővel követett igehely) és magyarul a pont nélküli „1 többes szám בַּעֲדֵנוּ, Ámós 9:10” is alaklista (a H4908 „3 többes szám מִשְׁכָּנוֺת, lakóhelyek” jelentés marad); a változás mindkét nyelven egyedül a H1157-et érinti. Az aranyminta ezután (`bdb_szelet` munkapéldány a F99.12 után, ts=2026-10-15): szerkezeti eltérés nélkül **20 / 32** angolul, **8 / 14** magyarul; eltérés 157 (EN), 141 (HU); magyar cím 170 / 195.
 - **A tábla** (`adat/bdb_vers_jelentes.tsv`, SEMA 2.29, `datasetek.tsv`: `BDB_vers_jelentes`, korlatos): `python eszkozok/olvaso_szerver/bdb_vers_jelentes.py --ts 2026-10-15`; bájtra reprodukálható (`--ellenoriz`, és a teszt Windowson).
 
 `scope=angol BDB, 8099 szócikk, minden hivatkozás | forras=bdb_vers_jelentes@<kód-hash a fájl fejlécében> (BDB_teljes_unabridged.tsv@d4b15b2faea6, Macula_heber_*, Karoli_versmegfeleltetes.tsv, Karoli_1908.tsv, F85_macula_elvetve.tsv, OSHL_lexikalis_index.tsv) | ts=2026-10-15`
@@ -314,10 +314,29 @@ A `--arany` Windows-Pythonnal is fut, de a szerver `blokkok` modulja nélkül (n
 Megjegyzések:
 - A Károli-vers a `Karoli_1908.tsv` kulcsa (a Siralmak ott és a versmegfeleltetésben is `Sir`, a könyvalak-táblában `JSir`): a link így a szerver versére mutat. A versmegfeleltetés nem teljes Károli-verslista (pl. a Dán 3 sorai hiányoznak belőle), ezért a vers létezését a `Karoli_1908.tsv` dönti el.
 - A jelentéspont a szeletelő csomópontjaihoz kötődik; a szeletelő ismert hibái (2.3, 3–7. osztály) öröklődnek. A „tagolatlan” azt jelenti, hogy a szócikkben nincs törzs, számozott jelentés és alpont: a hivatkozás az egész szócikkhez tartozik.
-- **Tárhely-megjegyzés:** a tábla 25,6 MB; a sorok proveniencia-mezője a brief szerint a kód hash-ét viszi, ezért minden szeletelő-javítás után az összes sor változik (a git-történetben teljes újraírás). Javaslat (nem döntöttem el): a kód-hash csak a fájl fejlécében álljon, a sor `forras` mezője a generátorra hivatkozzon.
+- **Proveniencia (DT-F99g, felhasználó, 2026-10-15, eltér a brieftől):** a kód-hash csak a fájl `# forras:` fejlécsorában áll; a sor `scope=<Strong> | forras=bdb_vers_jelentes.py (fejléc) | ts=<nap>`. Így egy szeletelő-javítás csak a ténylegesen változó sorokat írja át. A tábla 23,5 MB.
+- **Briefen kívüli lépés (a felhasználó utólag jóváhagyta, 2026-10-15):** az `sqlite_epit.py` `ADAT_LICENC`-je az `adat/bdb_aranyminta` táblát a BDB, az `adat/bdb_vers_jelentes`-t a BDB és a Macula_heber licencsorával is viszi (a projekt_adat mellett; a legszigorúbb érték érvényes), mert a tartalmuk ezekből a forrásokból származik.
+- **A F99.13-as tábla** (a H1157-javítás és a DT-F99g után): a számok a fenti táblázattal azonosak, kivéve a jelentéspontot: csomópont 116 624, fej 8 910, tagolatlan 35 082.
 
-### 9.4 Javaslat az M2 ⛔ minta-ellenőrzésére
+### 9.4 Az M2 ⛔ minta-ellenőrzése (a felhasználó döntése, 2026-10-15)
 
-- **Minta:** `python eszkozok/olvaso_szerver/bdb_vers_jelentes.py --minta 99` (seed **99**; a táblából, nem írja): **200 egyszerű véletlen sor** a teljes 160 616-ból (`random.Random(99).sample`), és két kiegészítő réteg, egyenként **25** sor: a kiszűrt (`szurt=1`) és a bizonytalan (`sigla_kozel`, `tobbertelmu`) hivatkozásokból — az álhivatkozás-szűrés hamis pozitívja és negatívja a véletlen mintán önmagában nem mérhető (619 szűrt sor a 160 616-ból). A munkalap soronként: a hivatkozás ±70 karakteres környezete (⟦…⟧ jelöléssel), a feloldott könyv, MT- és Károli-vers, a jelentéspont és a csomópontja szövegének eleje, és üres ítélet-oszlopok (`itelet_konyv_vers`, `itelet_jelentespont`, `itelet_szures`, `megjegyzes`). Alapértelmezett helye `naplok/BDB_SZELETELO_M2_minta.tsv` (a brief `ir`-jébe felveendő), vagy a repón kívül. A seed 99-cel kipróbálva: 250 sor.
-- **Eljárás:** a független ellenőr tölti ki a munkalapot a BDB-szöveg alapján (a szócikk teljes szövege a táblából; kétes szerkezetnél a nyomtatott BDB oldala), soronként: könyv+vers helyes-e, a jelentéspont helyes-e (a hivatkozás a BDB tagolása szerint melyik jelentés/alpont alá tartozik; „fej” és „tagolatlan” is ítélendő), a szűrés helyes-e. Az eltéréseket a felhasználó dönti el (mint a DT-F99e-nél).
-- **Mérce** (a brief 4. szakasza): a 200-as véletlen mintán könyv és vers ≥ 99%, jelentéspont ≥ 97%; az álhivatkozás-szűrés hamis pozitívja (a `szurt` réteg) és hamis negatívja (a véletlen és a bizonytalan réteg) külön. Kockázat: a jelentéspont a szeletelő szerkezeti hibáit örökli (2.3: jelöletlen második címszó, írásjel nélküli törzsfejléc stb.); ha a 97% nem teljesül, a hibás szócikk-osztályok javítása (M3/M4) után a tábla újragenerálandó és a minta újramérendő.
+- **Minta** (`python eszkozok/olvaso_szerver/bdb_vers_jelentes.py --minta 99`, a F99.13-as, javított táblából): seed **99**; **200 egyszerű véletlen sor** a teljes 160 616-ból (`random.Random(99).sample`), és két kiegészítő réteg, egyenként **25** sor a maradékból: a kiszűrt (`szurt=1`) és a bizonytalan (`sigla_kozel`, `tobbertelmu`) hivatkozások — a 619 szűrt sor miatt az álhivatkozás-szűrés hibáit a véletlen minta önmagában nem méri. A 250 sor a seeddel megkeverve, `M001`–`M250` azonosítóval.
+- **Két fájl:**
+  - `naplok/BDB_SZELETELO_M2_minta_vak.tsv` — **vak munkalap** a független ellenőrnek: `azon`, `strong`, `poz`, `nyers` (a forrásbeli hivatkozás), `kornyezet` (±100 karakter a szócikk szövegéből, a hivatkozás ⟦…⟧ között), és üres kitöltendő oszlopok: `konyv_mt`, `karoli_vers`, `jelentespont`, `szures`, `megjegyzes`; a fejléc-sorok a kitöltés szabályát adják. **Semmi a szeletelő kimenetéből** (könyv, vers, jelentéspont, szűrés, réteg) nem szerepel benne.
+  - `naplok/BDB_SZELETELO_M2_minta_kulcs.tsv` — **kulcs**: ugyanazok az azonosítók a réteggel és a szeletelő kimenetével (`konyv_feloldas`, `mt_vers`, `karoli_vers`, `vers_feloldas`, `szakasz`, `utvonal`, `okkod`, `szurt`). **Az ellenőrnek nem adandó.**
+- **Eljárás:** a független ellenőr vakon tölti ki a munkalapot a BDB szövegéből (`konkordancia/BDB_teljes_unabridged.tsv`, a Strong sora; a könyv a szócikkben korábban is állhat; kétes szerkezetnél a nyomtatott BDB). Utána a kitöltött lapot az orkesztrátor (vagy egy összevető lépés) a kulccsal veti össze; minden eltérést a felhasználó dönt el.
+- **Mérce** (a brief 4. szakasza; a 200-as véletlen rétegen): könyv és vers ≥ 99% (legfeljebb **2** hiba), jelentéspont ≥ 97% (legfeljebb **6** hiba); a szűrés hamis pozitívja a `szurt` rétegen, hamis negatívja a véletlen és a bizonytalan rétegen, külön.
+- **Konfidencia-intervallum** (95%, n = 200; a hibaarányra):
+
+| hiba / 200 | pontbecslés | Clopper–Pearson | Wilson |
+|---|---|---|---|
+| 0 | 0% | 0,00–1,83% | 0,00–1,88% |
+| 1 | 0,5% | 0,01–2,75% | 0,09–2,78% |
+| 2 | 1,0% | 0,12–3,57% | 0,27–3,57% |
+| 3 | 1,5% | 0,31–4,32% | 0,51–4,32% |
+| 6 | 3,0% | 1,11–6,42% | 1,38–6,39% |
+| 7 | 3,5% | 1,42–7,08% | 1,71–7,05% |
+
+  A mérce a pontbecslésre vonatkozik; 200 elemű mintán a 99%-os pontosság a 95%-os intervallum alsó határával (2 hibánál 96,4%) nem igazolható, csak a pontbecsléssel. A napló az eredmény mellé az intervallumot is közli.
+- **Kockázat:** a jelentéspont a szeletelő szerkezeti hibáit örökli (2.3: jelöletlen második címszó, írásjel nélküli törzsfejléc stb.); ha a 97% nem teljesül, a hibás szócikk-osztályok javítása (M3/M4) után a tábla újragenerálandó és a minta újramérendő.
+
