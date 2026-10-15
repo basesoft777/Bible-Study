@@ -524,3 +524,19 @@ munkalap, új `resz` oszloppal és a DT-F99i kitöltési szabályával a fejléc
 DT-F99k után: `tobbertelmu`, `orokles_hibas`, `sigla_igazolt` (a TAHOT által bibliainak ítélt sigla-sorok; tájékoztató, DT-F99j). Mérce
 (a 200 véletlen soron): könyv/vers ≥ 99% (≤ 2 hiba), jelentéspont ≥ 97% (≤ 6 hiba). Ha a seed-101 sem teljesül, nincs seed-102 (az
 orkesztrátor kezeli).
+
+### 9.11 A seed-101 újramérés ítélete és a kapu (F99.26–F99.28)
+
+**Mért eredmény** (F99.26, `naplok/BDB_SZELETELO_M2_seed101_osszevetes.txt`, a 9.5 + DT-F99i szabályával, a 200 véletlen soron): könyv/vers
+197/200 — a felhasználó elfogadta, 0 valódi hiba (M011, M072, M119 rövidítés); jelentéspont 184/200 (16 eltérés; Clopper–Pearson 95%:
+87,3–95,4%). A normalizálás szélesítése elvetve (utólagos mércelazítás).
+
+**A kapu következménye az ítélet ELŐTT rögzítve:** DT-F99l (F99.27): (a) ≤ 6 szeletelő-hiba → teljesült; (b) > 6, és ≥ 2/3 nem számozott
+szócikkben → a mérce a számozott szócikkekre szűkül; (c) > 6, szórt → „próba” jelöléssel élesedik, a pontosság és intervalluma a lapon,
+további javítás külön feladat, nincs több mérési kör.
+
+**Ítélet** (`naplok/BDB_SZELETELO_M2_seed101_iteletek.md`, forrásidézettel; a jóváhagyás a felhasználóé): 13 szeletelő-hiba, 0
+kitöltő-hiba, 3 kulcs-ellentmondás (M008 görög negyedik szint; M011 nagybetűs csoportszint; M029 „II. פְּנֵי”: homonima vagy fő rész).
+A 13-ból 12 számozott szócikkben, 1 (M238) jelöletlen alcímszóban. **Javaslat:** (b) nem teljesül (1/13), a hibák szórtak (7 okcsoport)
+→ **(c)**. A `forras_hiba`-jelöltek: M049 (2Móz 2:6 → 2:16) és M121 (Dán 3:13 → 3:15) a TAHOT szerint `forras_hiba`; M092 nem az (a forrás
+helyes, a tábla öröklési szabálya a hiba: az egyfejezetes Abdiás után nem folytatja a 2Krón-t).
