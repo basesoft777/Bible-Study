@@ -15,6 +15,8 @@ import os
 import re
 import sqlite3
 import sys
+import threading
+import time
 
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
@@ -159,6 +161,30 @@ class Lablec:
     def szotar(self):
         return {'kiadas': self.kiadas, 'ag': self.ag, 'commit': self.commit, 'epites_ts': self.epites_ts, 'forras_ts': self.forras_ts,
                 'figyelmeztetesek': self.figyelmeztetesek}
+
+    def kulcs(self):
+        """A gyorsítótár-kulcs része: a lábléc tartalma. Ha az ág, a commit vagy a figyelmeztetés változik, a kész lapok nem használhatók tovább."""
+        return (self.ag, self.commit, self.epites_ts, self.forras_ts, tuple(self.figyelmeztetesek))
+
+
+class LablecFigyelo:
+    """Élő lábléc: a git-állapotot és a forrás-adatbázis építési idejét `ttl` másodpercenként újraolvassa (néhány kis fájlolvasás), így az ágváltás
+    vagy a Windows-oldali adatbázis újraépítése újraindítás nélkül is látszik. A futó adatbázis `epites_ts`-e a folyamat élettartamára rögzített."""
+
+    def __init__(self, kiadas, epites_ts, kezdo=SZERVER_DIR, kornyezet=None, ttl=3.0):
+        self._args = (kiadas, epites_ts, kezdo, kornyezet)
+        self.ttl = ttl
+        self._zar = threading.Lock()
+        self._t = None
+        self._lablec = None
+
+    def kap(self):
+        with self._zar:
+            most = time.monotonic()
+            if self._lablec is None or most - self._t >= self.ttl:
+                self._lablec = Lablec.keszit(*self._args)
+                self._t = most
+            return self._lablec
 
 
 def figyelmeztetesek(ag, epites_ts, forras_ts=''):

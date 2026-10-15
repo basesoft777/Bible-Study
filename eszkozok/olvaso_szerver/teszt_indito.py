@@ -184,6 +184,83 @@ class TesztLablec(unittest.TestCase):
         self.assertEqual(L.figyelmeztetesek, [])
 
 
+class TesztLablecFigyelo(unittest.TestCase):
+    def test_ttl_alatt_a_regi_allapot_marad_utana_az_uj(self):
+        env = {'PARDES_AG': 'main', 'PARDES_COMMIT': 'aaaaaaaa'}
+        f = allapot.LablecFigyelo('belso', 'ts', kornyezet=env, ttl=3600)
+        self.assertEqual(f.kap().ag, 'main')
+        env['PARDES_AG'] = 'claude/masik'
+        self.assertEqual(f.kap().ag, 'main', 'a ttl alatt nem olvas újra')
+        f.ttl = 0
+        L = f.kap()
+        self.assertEqual(L.ag, 'claude/masik')
+        self.assertEqual(len(L.figyelmeztetesek), 1)
+
+    def test_a_kulcs_valtozik_az_allapottal(self):
+        a = allapot.Lablec('belso', 'main', 'aaaaaaaa', 'ts')
+        b = allapot.Lablec('belso', 'claude/x', 'aaaaaaaa', 'ts', figyelmeztetesek=['f'])
+        self.assertNotEqual(a.kulcs(), b.kulcs())
+        self.assertEqual(a.kulcs(), allapot.Lablec('belso', 'main', 'aaaaaaaa', 'ts').kulcs())
+
+
+class TesztLablecAlkalmazas(unittest.TestCase):
+    """A lábléc a valódi alkalmazáson, mindhárom kiadásban (Flask és pardes.db kell; enélkül kimarad, kifejezetten jelölve)."""
+
+    @classmethod
+    def setUpClass(cls):
+        try:
+            import flask  # noqa: F401
+        except ImportError:
+            raise unittest.SkipTest('nincs Flask: a lábléc alkalmazás-tesztje kimarad (nem zöld)')
+        cls.db = os.environ.get('PARDES_DB') or os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(D))), 'pardes.db')
+        if not os.path.isfile(cls.db):
+            raise unittest.SkipTest('nincs pardes.db (%s): a lábléc alkalmazás-tesztje kimarad (nem zöld)' % cls.db)
+        import alkalmazas
+        cls.alk = alkalmazas
+
+    def _kliens(self, kiadas):
+        app = self.alk.letrehoz(self.db, kiadas)
+        app.extensions['pardes']['gyar'].lablec.ttl = 0                         # minden kérésnél újraolvas
+        return app, app.test_client()
+
+    def test_mindharom_kiadasban_ag_commit_epites_ts_es_az_uj_allapot_azonnal_latszik(self):
+        reg = {k: os.environ.get(k) for k in ('PARDES_AG', 'PARDES_COMMIT', 'PARDES_FORRAS_DB')}
+        self.addCleanup(lambda: [os.environ.pop(k, None) if v is None else os.environ.__setitem__(k, v) for k, v in reg.items()])
+        os.environ['PARDES_AG'], os.environ['PARDES_COMMIT'] = 'main', 'abcd1234'
+        os.environ.pop('PARDES_FORRAS_DB', None)
+        for kiadas in ('belso', 'nyilvanos', 'kereskedelmi'):
+            with self.subTest(kiadas=kiadas):
+                app, c = self._kliens(kiadas)
+                ts = app.extensions['pardes']['gyar'].kozos.meta.get('epites_ts', '')
+                r = c.get('/1Moz/1/1')
+                self.assertEqual(r.status_code, 200)
+                h = r.get_data(as_text=True)
+                for resz in ('ág: <b>main</b>', '<code>abcd1234</code>', 'adatbázis építve: ' + ts, 'Kiadás: <b>%s</b>' % kiadas):
+                    self.assertIn(resz, h)
+                self.assertNotIn('Figyelem:', h)
+                etag_main = r.headers['ETag']
+                os.environ['PARDES_AG'] = 'claude/valami'                       # ágváltás: újraindítás nélkül új lábléc, új ETag, nem a régi lap a gyorsítótárból
+                r2 = c.get('/1Moz/1/1')
+                h2 = r2.get_data(as_text=True)
+                self.assertIn('ág: <b>claude/valami</b>', h2)
+                self.assertIn('Figyelem:', h2)
+                self.assertNotEqual(r2.headers['ETag'], etag_main)
+                self.assertEqual(c.get('/1Moz/1/1', headers={'If-None-Match': etag_main}).status_code, 200, 'a régi ETag-gel nem járhat 304')
+                os.environ['PARDES_AG'] = 'main'
+
+    def test_regebbi_adatbazis_masolat_figyelmeztet(self):
+        t = tempfile.mkdtemp(prefix='indito_app_')
+        self.addCleanup(shutil.rmtree, t, True)
+        f = os.path.join(t, 'forras.db')
+        kis_db(f, '2999-01-01T00:00:00Z')
+        reg = {k: os.environ.get(k) for k in ('PARDES_AG', 'PARDES_COMMIT', 'PARDES_FORRAS_DB')}
+        self.addCleanup(lambda: [os.environ.pop(k, None) if v is None else os.environ.__setitem__(k, v) for k, v in reg.items()])
+        os.environ.update(PARDES_AG='main', PARDES_COMMIT='abcd1234', PARDES_FORRAS_DB=f)
+        app, c = self._kliens('belso')
+        h = c.get('/').get_data(as_text=True)
+        self.assertIn('Az adatbázis-másolat régebbi', h)
+
+
 class TesztLablecSablon(unittest.TestCase):
     """Az `alap.html` lábléce a valódi sablonból (csak Jinja2 kell, Flask és adatbázis nem)."""
 

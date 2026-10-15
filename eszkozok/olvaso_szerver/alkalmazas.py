@@ -51,7 +51,7 @@ def letrehoz(db_ut=None, kiadas=None, konfig_dir=None, hozzaferes=None):
     db = adatbazis.Adatbazis(db_ut, kiadas, mmap_bajt=int(konf.get('mmap_bajt', 0)))
     gyar = oldalak.OldalGyar(db, hozz, arculat=arculat_modul.Arculat.konfigbol(kdir))
     # a lábléc indítási állapota (#100): ág, commit, építési idő, figyelmeztetések; a statikus exportban nincs (ott a lábléc változatlan)
-    gyar.lablec = allapot_modul.Lablec.keszit(kiadas, gyar.kozos.meta.get('epites_ts', ''))
+    gyar.lablec = allapot_modul.LablecFigyelo(kiadas, gyar.kozos.meta.get('epites_ts', ''))
     # az elem-regiszter (#98 M2): induláskor ellenőrzött (ismeretlen vagy nem állítható token indulási hiba), minden kiadásban
     regiszter = tervezo_modul.Regiszter.konfigbol(kdir, gyar.arculat.adat)
     suti = konf.get('suti', {})
@@ -93,7 +93,7 @@ def letrehoz(db_ut=None, kiadas=None, konfig_dir=None, hozzaferes=None):
         nezet = nezet_kerese()
         # az arculat hash-e külön tag (#98): a token-fájl változása után nincs 304 és nincs régi lap a gyorsítótárból
         kulcs = (request.path, tuple(sorted(kulcs_reszek.items())), nezet, szint, kiadas, gyar.kozos.adatbazis_kulcs, oldalak.SABLON_VERZIO, gyar.kod_verzio,
-                 gyar.arculat.hash, fragment)
+                 gyar.arculat.hash, fragment, gyar.lablec.kap().kulcs() if gyar.lablec else None)
         etag = Gyorsitotar.etag(kulcs)
         hit = cache.kap(kulcs)
         if hit is None:
@@ -296,7 +296,7 @@ def main():
     from werkzeug.serving import is_running_from_reloader, run_simple
     app = letrehoz(a.db, a.kiadas) if is_running_from_reloader() else (lambda environ, start: [])
     if is_running_from_reloader():
-        L = app.extensions['pardes']['gyar'].lablec
+        L = app.extensions['pardes']['gyar'].lablec.kap()
         print('[indítás] kiadás=%s ág=%s commit=%s kod_verzio=%s epites_ts=%s%s' % (
             L.kiadas, L.ag, L.commit, app.extensions['pardes']['gyar'].kod_verzio, L.epites_ts,
             ''.join(' FIGYELEM: ' + f for f in L.figyelmeztetesek)), flush=True)
