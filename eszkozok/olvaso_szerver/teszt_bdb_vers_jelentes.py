@@ -67,9 +67,10 @@ class Hivatkozasok(unittest.TestCase):
             return [x['okkod'] for x in B.hivatkozasok('H9999. x אב noun ' + t)]
         self.assertEqual(ok('loan-word, Schr^COT Gen 2:8; Schr^COT on Neh 1:1; see Schr^ib. 24:1; compare Fl^De Job 6:2.'),
                          ['sigla_tapadt'] * 4)
-        # DT-F99j (seed-100): a megnevezett kommentár-siglák listája (`sigla_lista`, kiszűrve), egy tagmondatban a hellyel
+        # DT-F99j (seed-100): a megnevezett kommentár-siglák listája (`sigla_lista`), egy tagmondatban a hellyel; a Targum (ᵑ7)
+        # szövegtanú, nincs a listán (felhasználó, 2026-10-15) — a sigla melletti sorokról a generátorban a TAHOT dönt (DT-F99k)
         self.assertEqual(ok('cuneiform KG^121 COT on Josh 17:11; compare Bae^l.c. Dr on 2Sam 8:3; so ᵑ7^Jer כ ׳הֵי Gen 26:4.'),
-                         ['sigla_lista'] * 3)
+                         ['sigla_lista', 'sigla_lista', 'sigla_kozel'])
         self.assertEqual(ok('in Moab (MI^10) Jer 48:1; compare Dr^Amos 4:9: Exod 10:13; Schr^COT Glossary and Isa 46:1.'),
                          ['sigla_kozel', 'sigla_tapadt', 'sigla_kozel', 'sigla_kozel'])
         # ezek a közeli-sigla szabály alá esnek (bizonytalan, a táblában maradnak), a tapadt alá nem
@@ -127,8 +128,8 @@ class SzerkezetJavitas(unittest.TestCase):
         self.assertEqual([x['jel'] for x in B.szeletel(self.en['H1285'])['szakaszok']], ['I', 'II', 'III'])
         # H2803: „Qal … I. of man: 1 … II. of God: 1 … Niph`al …” — a tagolás a Qal-on belüli; a Niph`al a fő címszó törzse
         r = B.szeletel(self.en['H2803'])
-        self.assertEqual([t['nev'] for t in r['torzsek']], ['Qal', "Niph'al", "Pi'el", "Hithpa'el", "Pe'al"])
-        self.assertEqual([(x['jel'], [t['nev'] for t in x['torzsek']]) for x in r['szakaszok']], [('I', ['Qal']), ('II', ['Qal'])])
+        self.assertEqual([t['nev'] for t in r['torzsek']], ['Qal', "Niph'al", "Pi'el", "Hithpa'el"])   # a Pe`al az arámi חֲשַׁב szakasza
+        self.assertEqual([(x['jel'], [t['nev'] for t in x['torzsek']]) for x in r['szakaszok']][:2], [('I', ['Qal']), ('II', ['Qal'])])
 
     def test_fejleci_glossza_szamozasa_nem_szerkezet(self):
         # H2764: „1 devoted thing. 2 devotion, ban; — … — thing devoted to ׳י: 1 thing hostile …”
@@ -137,7 +138,8 @@ class SzerkezetJavitas(unittest.TestCase):
     def test_kimaradt_jelolok(self):
         self.assertEqual([j for j, _ in self.jelek('H5030')], ['1', '2', '3'])        # „… see חתם 2 false prophets”
         self.assertEqual([j for j, _ in self.jelek('H3117')], [str(i) for i in range(1, 8)])   # „… 7g below 4 Plural days”
-        self.assertEqual(self.jelek('H6086')[0], ('1', ['a', 'b', 'c', 'd', 'e', 'f']))   # „— 1 (c. 150 t.) a. a standing tree”
+        # „— 1 (c. 150 t.) a. a standing tree … 2 (approximately 175 times …) a. wood” (seed-100 M161)
+        self.assertEqual(self.jelek('H6086')[:2], [('1', ['a', 'b', 'c']), ('2', ['a', 'b', 'c', 'd', 'e', 'f'])])
         self.assertEqual([j for j, _ in self.jelek('H1419')], [str(i) for i in range(1, 11)])  # „— great, 1 in magnitude”
         self.assertEqual([j for j, _ in self.jelek('H3220')], [str(i) for i in range(1, 10)])  # „especially 1 Mediterranean”
 
@@ -153,10 +155,49 @@ class SzerkezetJavitas(unittest.TestCase):
         self.assertEqual([j['jel'] for t in ii['torzsek'] for j in t['jelentesek'] if j['jel']], [])
 
 
+class Seed100Javitas(unittest.TestCase):
+    """F99 M2 (felhasználó, 2026-10-15): a seed-100 jóváhagyott szeletelő-hibái (naplok/BDB_SZELETELO_M2_seed100_iteletek.md) — a hely
+    jelentéspontja (címke, útvonal) a mai szeletelővel. A címke DT-F99i szerint „<homonima>§<rész>”."""
+    ESETEK = [
+        ('M037', 'H8438', 832, 'h:תולעת', '-/2'),        # jelöletlen második címszó két alakkal
+        ('M052', 'H7832', 497, '', 'Qal/1/a'),           # „QalPerfect” (OCR)
+        ('M065', 'H7704', 2649, '', '-/1/f'),            # prezentációs „שׂ” a címszóban
+        ('M076', 'H2022', 10988, '', '-/1/m'),           # OCR: „l.” → „1”, „m.” → „masculine”
+        ('M098', 'H9005', 29478, '', '-/5/g'),           # „29:5 a. 6 b” nem jelölő
+        ('M100', 'H9003', 2098, 'I§I', '-/2'),           # fej nélküli betű-szócikk, fő tagolás
+        ('M105', 'H0905', 961, 'II', '-/1/b'),           # „II. בָּ֑ד בַּד, noun” a címszó, nem az utaló „III.”
+        ('M114', 'H5973', 10544, 'h:מעם', '-/-/a'),     # szófaj nélküli alcímszó „מֵעִם_72”
+        ('M129', 'H0389', 667, '', '-/1'),               # fejléc-összefoglaló gondolatjel nélkül
+        ('M149', 'H4911', 1061, 'II', 'Qal/-'),          # prezentációs „שׁ” a II. címszóban
+        ('M161', 'H6086', 2423, '', '-/2/a'),            # „2 (approximately 175 times …)”
+        ('M195', 'H6331', 921, '', "Hiph'il/1/b"),       # „verb Hiph`il” a fejlécben
+        ('M210', 'H0758', 685, '', '-/4/a'),             # „3 1Chr 2:23” jelölő
+        ('M240', 'H1138', 100, '', '-/1/a'),             # „proper name, masculine 1. Levites”
+    ]
+
+    @classmethod
+    def setUpClass(cls):
+        kell = {e[1] for e in cls.ESETEK}
+        cls.en = {d['Strong_padded']: d['Teljes_szocikk'] for d in V.tsv_sorok(V.BDB_EN) if d['Strong_padded'] in kell}
+        cls.lem = {}
+        with open(V.STRONG_SZOTAR, encoding='utf-8') as f:
+            for i, l in enumerate(f):
+                m = l.rstrip('\n').split('\t')
+                if i and len(m) > 1 and m[0] in kell:
+                    cls.lem.setdefault(m[0], m[1])
+
+    def test_jelentespontok(self):
+        for az, st, poz, cimke, ut in self.ESETEK:
+            with self.subTest(az=az):
+                t = self.en[st]
+                r = B.szeletel(t, self.lem.get(st, ''))
+                self.assertEqual(B.jelentespont(poz, B.csomopont_savok(t, r), B.szakasz_savok(t, r)), (cimke, ut))
+
+
 class Tabla(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.sorok, _ = V.general('2026-10-15', ['H1242', 'H0006', 'H0015', 'H0196', 'H0226', 'H6666', 'H5591'])
+        cls.sorok, _ = V.general('2026-10-15', ['H1242', 'H0006', 'H0015', 'H0196', 'H0226', 'H6666', 'H5591', 'H8079', 'H5704'])
 
     def test_minden_sorban_jelentespont_feloldasi_mod_es_proveniencia(self):
         i = {k: n for n, k in enumerate(V.FEJ)}
@@ -193,9 +234,19 @@ class Tabla(unittest.TestCase):
         x = sor(self.sorok, strong='H5591', poz='422')[0]
         self.assertEqual((x[i['mt_vers']], x[i['okkod']], x[i['szurt']]), ('Jóel 1:4', 'forras_hiba', '0'))
 
-    def test_sigla_tapadt_kiszurve(self):
+    def test_sigla_tahot_szerint(self):
+        # DT-F99k: a sigla melletti hivatkozás bibliai marad, ha a TAHOT a versben hordozza a Strong-számot („De^Job 34:36”: אָבִי)
         x = sor(self.sorok, strong='H0015', nyers='Job 34:36')[0]
+        self.assertEqual((x[V.FEJ.index('okkod')], x[V.FEJ.index('szurt')], x[V.FEJ.index('karoli_vers')]), ('sigla_igazolt', '0', 'Jób 34:36'))
+        # … és szűrt, ha nem („ᵐ5^Lev 11:30”: a שְׂמָמִית nincs a 3Móz 11:30-ban; seed-100 M075)
+        x = sor(self.sorok, strong='H8079', nyers='Lev 11:30')[0]
         self.assertEqual((x[V.FEJ.index('okkod')], x[V.FEJ.index('szurt')], x[V.FEJ.index('karoli_vers')]), ('sigla_tapadt', '1', ''))
+
+    def test_ket_romai_szint(self):
+        # DT-F99i: „H5704. ad III. עַד … I. preposition … 3 Of degree … Exod 9:7” — homonima III, rész I (seed-100 M019)
+        i = {k: n for n, k in enumerate(V.FEJ)}
+        x = sor(self.sorok, strong='H5704', nyers='Exod 9:7')[0]
+        self.assertEqual((x[i['szakasz']], x[i['resz']], x[i['utvonal']]), ('III', 'I', '-/3'))
 
 
 @unittest.skipUnless(os.environ.get('PARDES_LASSU') or os.name == 'nt', 'a teljes újragenerálás lassú a /mnt/c-n (PARDES_LASSU=1 kapcsolja be)')

@@ -43,10 +43,16 @@ VERSMEGF = os.path.join(REPO, 'konkordancia', 'Karoli_versmegfeleltetes.tsv')
 KAROLI = os.path.join(REPO, 'konkordancia', 'Karoli_1908.tsv')
 F85_ELVETVE = os.path.join(REPO, 'naplok', 'F85_macula_elvetve.tsv')
 KI = os.path.join(REPO, 'adat', 'bdb_vers_jelentes.tsv')
+TAHOT = os.path.join(REPO, 'konkordancia', 'TAHOT_kivonat.tsv')
 
-FEJ = ['strong', 'bdb_id', 'sorszam', 'poz', 'nyers', 'konyv_feloldas', 'mt_vers', 'karoli_vers', 'vers_feloldas', 'szakasz', 'utvonal',
-       'okkod', 'szurt', 'proveniencia']
-SZURENDO = {'nem_bibliai', 'sigla_tapadt', 'sigla_lista'}
+# DT-F99i: a `szakasz` a címszó homonima-száma (vagy h:<váz>), a `resz` a szócikk római számos fő tagolása (üres, ha nincs)
+FEJ = ['strong', 'bdb_id', 'sorszam', 'poz', 'nyers', 'konyv_feloldas', 'mt_vers', 'karoli_vers', 'vers_feloldas', 'szakasz', 'resz',
+       'utvonal', 'okkod', 'szurt', 'proveniencia']
+SZURENDO = {'nem_bibliai'}
+# DT-F99k (felhasználó, 2026-10-15): a sigla melletti (tapadt, közeli vagy listás) hivatkozás akkor szűrődik, ha a TAHOT szerint a vers
+# NEM tartalmazza a szócikk Strong-számát; ha tartalmazza, bibliai hivatkozás marad, okkód `sigla_igazolt`. A TAHOT `Igehely` kulcsa a
+# Károli-vers (F85.6); Károli-vers híján az azonos számú vers.
+SIGLA_OK = {'sigla_tapadt', 'sigla_kozel', 'sigla_lista'}
 # F99 M2 (felhasználó, 2026-10-15, seed-100 M006, M064, M079): a BDB forrásszövegének hibás igehelye. A tábla a forrás szövegét rögzíti
 # (könyv, vers, jelentéspont változatlan), az okkód `forras_hiba`; nem szűrt. Kulcs: (Strong, poz); érték: a forrással igazolt ok (kézi,
 # a felhasználó döntése; a vak ellenőr megjegyzése a TAHOT-tal egyezik).
@@ -103,7 +109,12 @@ def betolt():
     elvetett = set()
     for d in tsv_sorok(F85_ELVETVE):
         elvetett.add((d['konyv'], int(d['fejezet'])))
-    return en, lem, bdb_id, vm_karoli, vm_mt, elvetett
+    tahot = collections.defaultdict(set)
+    for d in tsv_sorok(TAHOT):
+        m = re.match(r'^H0*(\d+)', d.get('Strong-szám', ''))
+        if m:
+            tahot[d['Igehely']].add(int(m.group(1)))
+    return en, lem, bdb_id, vm_karoli, vm_mt, elvetett, tahot
 
 
 # A Károli-szöveg (Karoli_1908.tsv) és a versmegfeleltetés a Siralmakat „Sir”-nek írja, a könyvalak-tábla (LEK) „JSir”-nek: a Károli-vers
@@ -141,7 +152,7 @@ def mt_karoli(K, versek, mt2k, vm_karoli, vm_mt, elvetett, konyv, c, v):
 def general(ts, strongok=None):
     """A tábla sorai (és a kód-hash); `strongok`: csak ezek a szócikkek (tesztekhez)."""
     K = B._konyvtabla()
-    en, lem, bdb_id, vm_karoli, vm_mt, elvetett = betolt()
+    en, lem, bdb_id, vm_karoli, vm_mt, elvetett, tahot = betolt()
     versek, _, mt2k = K.macula_betolt()
     osz = set(K.OSZ)
     modhash = '%s+%s' % (fajl_hash(os.path.join(D, 'bdb_szelet.py')), fajl_hash(os.path.abspath(__file__)))
@@ -156,7 +167,8 @@ def general(ts, strongok=None):
         # DT-F99g (felhasználó, 2026-10-15): a kód-hash csak a fájl fejlécében áll; a sor a forrásra és a generátorra hivatkozik
         prov = 'scope=%s | forras=bdb_vers_jelentes.py (fejléc) | ts=%s' % (strong, ts)
         for n, h in enumerate(B.hivatkozasok(szoveg), 1):
-            szak, ut = B.jelentespont(h['poz'], savok, szsav)
+            cimke, ut = B.jelentespont(h['poz'], savok, szsav)
+            szak, resz = B.szakasz_bont(cimke)
             if ut == '-/-':
                 tag = next((t for a, b, c, t in szsav if a <= h['poz'] < b), True)
                 ut = 'fej' if tag else 'tagolatlan'
@@ -173,7 +185,8 @@ def general(ts, strongok=None):
                 kmod = 'feloldhatatlan'
             if (strong, h['poz']) in FORRAS_HIBA:
                 ok = ok + ',forras_hiba' if ok else 'forras_hiba'
-            if h['konyv'] and h['okkod'] not in SZURENDO:
+            szurt = h['okkod'] in SZURENDO
+            if h['konyv'] and not szurt:
                 if h['konyv'] in osz:
                     mt, kar, vmod, kieg = mt_karoli(K, versek, mt2k, vm_karoli, vm_mt, elvetett, h['konyv'], h['c'], h['v'])
                     if kieg:
@@ -181,17 +194,27 @@ def general(ts, strongok=None):
                 else:
                     mt, vmod = '%s %d:%d' % (h['konyv'], h['c'], h['v']), 'usz'
                     ok = ok + ',usz' if ok else 'usz'
+            if h['okkod'] in SIGLA_OK and ok.split(',')[0] in SIGLA_OK:
+                # DT-F99k: a TAHOT dönt (a Károli-versen, annak híján az azonos számú versen)
+                kulcs = kar or ('%s %d:%d' % (KAROLI_KONYV.get(h['konyv'], h['konyv']), h['c'], h['v']) if h['konyv'] else '')
+                n_st = int(re.match(r'^H0*(\d+)', strong).group(1))
+                if kulcs and n_st in tahot.get(kulcs, ()):
+                    ok = ','.join(['sigla_igazolt'] + ok.split(',')[1:])
+                else:
+                    szurt = True
+                    mt = kar = vmod = ''
+                    ok = h['okkod']
             sorok.append([strong, ','.join(bdb_id.get(strong, [])), str(n), str(h['poz']), h['nyers'], kmod, mt, kar, vmod,
-                          szak, ut, ok, '1' if h['okkod'] in SZURENDO else '0', prov])
+                          szak, resz, ut, ok, '1' if szurt else '0', prov])
     return sorok, modhash
 
 
 def kiir(sorok, modhash, ts):
     fej = ['# GENERÁLT: eszkozok/olvaso_szerver/bdb_vers_jelentes.py --ts %s — kézzel nem szerkesztendő (F99 M2; séma: adat/SEMA.md 2.29).' % ts,
            '# forras: konkordancia/BDB_teljes_unabridged.tsv@%s + Macula_heber_* (MT-versek, MT→Károli) + Karoli_versmegfeleltetes.tsv@%s + '
-           'Karoli_1908.tsv@%s (Károli-versek) + naplok/F85_macula_elvetve.tsv + OSHL_lexikalis_index.tsv (bdb_id); '
-           'kód: bdb_szelet.py+bdb_vers_jelentes.py@%s (DT-F99g: a kód-hash csak itt áll, a sorok proveniencia-mezője erre a fejlécre hivatkozik); szabály: DT-F99a'
-           % (fajl_hash(BDB_EN), fajl_hash(VERSMEGF), fajl_hash(KAROLI), modhash),
+           'Karoli_1908.tsv@%s (Károli-versek) + naplok/F85_macula_elvetve.tsv + OSHL_lexikalis_index.tsv (bdb_id) + TAHOT_kivonat.tsv@%s (DT-F99k); '
+           'kód: bdb_szelet.py+bdb_vers_jelentes.py@%s (DT-F99g: a kód-hash csak itt áll, a sorok proveniencia-mezője erre a fejlécre hivatkozik); szabály: DT-F99a, DT-F99i, DT-F99j, DT-F99k'
+           % (fajl_hash(BDB_EN), fajl_hash(VERSMEGF), fajl_hash(KAROLI), fajl_hash(TAHOT), modhash),
            '\t'.join(FEJ)]
     for s in sorok:
         for x in s:
@@ -222,8 +245,8 @@ def minta(seed, n, kieg, vak_ut, kulcs_ut):
     valasztott = [('veletlen', s) for s in rnd.sample(sorok, n)]
     marad = [s for s in sorok if not any(s is x for _, x in valasztott)]
     for nev, felt in (('szurt', lambda s: s['szurt'] == '1'),
-                      ('bizonytalan', lambda s: any(o in s['okkod'].split(',') for o in ('sigla_kozel', 'tobbertelmu')))):
-        pool = [s for s in marad if felt(s)]
+                      ('bizonytalan', lambda s: any(o in s['okkod'].split(',') for o in ('sigla_kozel', 'tobbertelmu', 'orokles_hibas', 'sigla_igazolt')))):
+        pool = [s for s in marad if felt(s)]  # noqa
         valasztott += [(nev, s) for s in rnd.sample(pool, min(kieg, len(pool)))]
     rnd.shuffle(valasztott)
     en = {d['Strong_padded']: d['Teljes_szocikk'] for d in tsv_sorok(BDB_EN)}
@@ -234,25 +257,26 @@ def minta(seed, n, kieg, vak_ut, kulcs_ut):
            'pl. „II Qal/2/a”, „-/1/b”), vagy „fej” (címsor, nyelvi háttér, alaktan), vagy „tagolatlan” (a szócikknek nincs törzse, számozott jelentése, alpontja); '
            'szures = „bibliai” vagy „alhivatkozas: <ok>” (pl. kommentár-hely, nem bibliai mű) vagy „bizonytalan: <ok>”.',
            '# A RÓMAI SZAKASZ a jelentéspont része (a felhasználó döntése, 2026-10-15): (1) ha a forrás a címszó előtt római számot ír („H3499. yether '
-           'I. יֶ֫תֶר noun …”, „II. [יָאַל] verb …”), azt a FŐ címszónál is írd („I fej”, „II Hiph`il”); (2) a szócikk római számos fő tagolása '
-           '(„I. of man: 1 … II. of God: 1 …”, „I. between men … II. between God and man …”) szintén szakasz („II Qal/3”); igénél a tagolás a törzsön belüli, '
-           'a rákövetkező törzs (pl. Niph`al) már nem tartozik a tagoláshoz; (3) római számot csak a forrásban kiírtat írj, következtetettet ne; (4) a '
+           'I. יֶ֫תֶר noun …”, „II. [יָאַל] verb …”), azt a FŐ címszónál is írd („I fej”, „II Hiph`il”); (2) a szócikk római számos fő tagolását '
+           '(„I. of man: 1 … II. of God: 1 …”, „I. preposition … II. conjunction …”) a KÜLÖN `resz` oszlopba írd (csak a római számot, pl. „II”), '
+           'NEM a jelentéspontba (DT-F99i: két római szint, két mező; pl. „ad III. עַד … I. preposition … 3 …” → jelentespont „III -/3”, resz „I”); '
+           'igénél a tagolás a törzsön belüli, a rákövetkező törzs (pl. Niph`al) már nem tartozik a tagoláshoz (resz üres); (3) római számot csak a forrásban kiírtat írj, következtetettet ne; (4) a '
            'jelöletlen második címszó (római szám nélkül) szakaszát római szám nélkül, a saját törzs/jelentés útvonalával írd. Az összevetés csak a „`” és az '
            '„\'” különbségét, és a „fej” = „tagolatlan” = „<törzs>” (= „<törzs>/-”) egyenértékűséget normálja; a zárójeles szint („(2)”, „(c)”) külön mutató.',
            '# A poz a hivatkozás kezdete a szöveg „lapított” alakjában (sortörés helyett szóköz; „1.a” → „1. a.”), csak a megtaláláshoz.',
-           '\t'.join(['azon', 'strong', 'poz', 'nyers', 'kornyezet', 'konyv_mt', 'karoli_vers', 'jelentespont', 'szures', 'megjegyzes'])]
+           '\t'.join(['azon', 'strong', 'poz', 'nyers', 'kornyezet', 'konyv_mt', 'karoli_vers', 'jelentespont', 'resz', 'szures', 'megjegyzes'])]
     kulcs = ['# M2 ⛔ KULCS (F99): seed=%d; a szeletelő kimenete (adat/bdb_vers_jelentes.tsv) a vak munkalap azonosítóival. Az ellenőrnek NEM adandó.' % seed,
              '\t'.join(['azon', 'reteg', 'strong', 'sorszam', 'poz', 'nyers', 'konyv_feloldas', 'mt_vers', 'karoli_vers', 'vers_feloldas',
-                        'szakasz', 'utvonal', 'okkod', 'szurt'])]
+                        'szakasz', 'resz', 'utvonal', 'okkod', 'szurt'])]
     for k, (reteg, s) in enumerate(valasztott, 1):
         azon = 'M%03d' % k
         flat = B.lapit(en[s['strong']])
         p = int(s['poz'])
         hossz = len(s['nyers']) if flat[p:p + len(s['nyers'])] == s['nyers'] else len(s['nyers'].lstrip(', '))
         korny = flat[max(0, p - 100):p] + '⟦' + flat[p:p + hossz] + '⟧' + flat[p + hossz:p + hossz + 100]
-        vak.append('\t'.join([azon, s['strong'], s['poz'], s['nyers'], korny.replace('\t', ' '), '', '', '', '', '']))
+        vak.append('\t'.join([azon, s['strong'], s['poz'], s['nyers'], korny.replace('\t', ' '), '', '', '', '', '', '']))
         kulcs.append('\t'.join([azon, reteg, s['strong'], s['sorszam'], s['poz'], s['nyers'], s['konyv_feloldas'], s['mt_vers'], s['karoli_vers'],
-                                s['vers_feloldas'], s['szakasz'], s['utvonal'], s['okkod'], s['szurt']]))
+                                s['vers_feloldas'], s['szakasz'], s['resz'], s['utvonal'], s['okkod'], s['szurt']]))
     for ut, ki in ((vak_ut, vak), (kulcs_ut, kulcs)):
         with open(ut, 'w', encoding='utf-8', newline='\n') as f:
             f.write('\n'.join(ki) + '\n')
@@ -287,14 +311,17 @@ def main():
     with open(KI, 'w', encoding='utf-8', newline='\n') as f:
         f.write(szoveg)
     c = collections.Counter()
+    i = {k: n for n, k in enumerate(FEJ)}
     for s in sorok:
         c['sor'] += 1
-        c['szurt=' + s[12]] += 1
-        c['konyv:' + s[5]] += 1
-        c['vers:' + (s[8] or '—')] += 1
-        c['karoli_vers_van' if s[7] else 'karoli_vers_nincs'] += 1
-        c['jelentespont:' + (s[10] if s[10] in ('fej', 'tagolatlan') else 'csomopont')] += 1
-        for o in s[11].split(','):
+        c['szurt=' + s[i['szurt']]] += 1
+        c['konyv:' + s[i['konyv_feloldas']]] += 1
+        c['vers:' + (s[i['vers_feloldas']] or '—')] += 1
+        c['karoli_vers_van' if s[i['karoli_vers']] else 'karoli_vers_nincs'] += 1
+        c['jelentespont:' + (s[i['utvonal']] if s[i['utvonal']] in ('fej', 'tagolatlan') else 'csomopont')] += 1
+        if s[i['resz']]:
+            c['resz:van'] += 1
+        for o in s[i['okkod']].split(','):
             if o:
                 c['okkod:' + o] += 1
     for k in sorted(c):

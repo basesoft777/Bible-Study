@@ -3,6 +3,7 @@ az `eszkozok/olvaso_pilot/bdb_szelet.py` betöltőn át ugyanezt a modult haszn�
 címszó, alapjelentés, nyelvi háttér, alaktan, törzsek (igéknél), jelentésszerkezet (1, 2 … / a, b …),
 igehely-hivatkozások száma, irodalmi és szövegkritikai jelek. A határok heurisztikusak."""
 import re
+import unicodedata
 
 TORZS = (r"Qal|Niph`al|Pi`el|Pu`al|Hiph`il|Hoph`al|Hithpa`el|Hithpe`el|Hithpo`el|Hithpalpel|"
          r"Pilpel|Polpal|Polel|Polal|Po`el|Po`al|Pil`el|Pul`al|Pual|Piel|Hiphil|Niphal|Hophal|Ishtaphel|Tiph`el|"
@@ -10,7 +11,8 @@ TORZS = (r"Qal|Niph`al|Pi`el|Pu`al|Hiph`il|Hoph`al|Hithpa`el|Hithpe`el|Hithpo`el
 # a forrás változatos törzsnév-írásai egy alakra (F99 M2: a vak minta-ellenőrzés a „Piel”-t és a „Pi`el”-t egynek veszi)
 TORZS_KANON = {'Pual': "Pu'al", 'Piel': "Pi'el", 'Hiphil': "Hiph'il", 'Niphal': "Niph'al", 'Hophal': "Hoph'al", 'Ishtaphel': "Ishtaph'el"}
 ARAMI_TORZS = re.compile(r"Pe`al|Pa`el|Aph`el|Haph`el|Shaph`el|Ithpe`el|Ithpa`al|Ithpa`el|Ithpo`el|Hithpe`el|Hithpa`al|Pe`il|Ishtaph`al")
-TORZS_FEJ = re.compile(r'(?<![\w`])(' + TORZS + r')(?:_(\d+)|(?=\s+(?:\([^)]{0,40}\)\s+)?(?:perfectum|imperfectum|participium|imperativus|infinitivus|'
+# seed-100 (H7832): OCR-ban a törzsnév a „Perfect”-hez tapadhat („— QalPerfect3masculine singular”)
+TORZS_FEJ = re.compile(r'(?<![\w`])(' + TORZS + r')(?:_(\d+)|(?=\s*(?:\([^)]{0,40}\)\s+)?(?:perfectum|imperfectum|participium|imperativus|infinitivus|'
                        r'Perfect|Imperfect|Participle|Imperative|Infinitive)))')
 REF = re.compile(r'\d+:\d+')
 NYELV = re.compile(r'(asszír|arab|arámi|szír|szíriai|föníciai|etióp|sabeus|ugariti|akkád|újhéber|nabateus|palmirai|'
@@ -87,6 +89,12 @@ def _szamozott(szoveg, minta_fn, elso, laza_fn=None, laza_elso=False):
                 break
         if not van and talalat and varas.isdigit():
             van = _hezag(szoveg, poz, varas, minta_fn, bent)
+        if not van and talalat and varas in OCR_BETU:
+            # seed-100 (H2022): OCR-torzult alpont-jelölő a sorozat folytatásában — „l.” helyett „1”, „m.” helyett „masculine”
+            # (ELLENOR_F99_minta E1: az OCR-torzult jelölő is jelölő)
+            m = next((m for m in OCR_BETU[varas].finditer(szoveg, poz) if not bent[m.start(1)]), None)
+            if m:
+                van = (varas, m.start(1), m.end())
         if not van:
             return talalat
         talalat.append(van)
@@ -119,8 +127,11 @@ def _szam_minta():
     # szám, előtte szóköz/kezdet/gondolatjel, utána szóköz és nem szám/hivatkozás
     # változatok: „— 1 …”, „1. …”, „1.a …” (a betű az alpont), és hivatkozás utáni „… 48:14 2 first”
     # a „1. egyes szám”, „3. nőnemű”, „2. hímnemű többes szám” alak-személyek nem jelentés-sorszámok (H0157, H1869, H7121)
-    return re.compile(r'(?:(?<=—\s)|(?<=\s-\s)|(?<=;-\s)|(?<=[.;:)]\s)|(?<=\d\s)|^)(?!\d{1,2}\.\s+' + PERSON + r')(?!\d{1,2}\.?\s+' + PERSON_EN + r')(?!\d{1,2}\s+' + PERSON_HU_PONT_NELKUL + r')(?!\d\s+' + KONYV_SZAM + r')(\d{1,2})(?:\.(?=[a-l]\s)|\.?\s)(?=[^\d\s:,;.)(&]|\d{1,2}(?:st|nd|rd|th)\b|\((?:c\.|kb\.)?\s*\d+\s*(?:t\.|-?szor|-?szer|-?ször)\))'
+    return re.compile(r'(?:(?<=—\s)|(?<=\s-\s)|(?<=;-\s)|(?<=[.;:)]\s)|(?<=\d\s)|^)(?!\d{1,2}\.\s+' + PERSON + r')(?!\d{1,2}\.?\s+' + PERSON_EN + r')(?!\d{1,2}\s+' + PERSON_HU_PONT_NELKUL + r')(?!\d\s+' + KONYV_SZAM + r')(\d{1,2})(?:\.(?=[a-l]\s)|\.?\s)(?![a-e][;,]\s)(?=[^\d\s:,;.)(&]|\d{1,2}(?:st|nd|rd|th)\b|[1-3][A-Z][a-z]+\.?\s+\d|\((?:c\.|kb\.|approximately|about)?\s*\d+\s*(?:t\.|times|-?szor|-?szer|-?ször)[);])'
                       r'(?!\S*\^)')
+
+
+OCR_BETU = {'l': re.compile(r'(?<=[.;]\s)(1)\s(?=[a-z]{2})'), 'm': re.compile(r'(?<=[.;]\s)(masculine)\s(?=[a-z]{2})')}
 
 
 def _laza_ok(szoveg, poz, folytatas=False):
@@ -160,7 +171,8 @@ def _szam_laza():
     # A héber szó előtti laza szám csak pont nélkül és nem „from/see” után jelölő („from 1. חוּל” homonima-utalás, H2490 II).
     return re.compile(r'(?<=[a-záéíóöőúüű\u0590-\u05ff]\s)(?<!from\s)(?<!see\s)(?<!lásd\s)(?!\d{1,2}\.\s+' + PERSON + r')(?!\d{1,2}\.?\s+' + PERSON_EN + r')(?!\d\s+' + KONYV_SZAM + r')'
                       r'(?!\d{1,2}\.?\s+(?:egyes|többes)\s+szám\s+(?:hímnem|nőnem|közös)\b)'
-                      r'(\d{1,2})(?:\.?\s(?=[a-záéíóöőúüű]{2}|a\s[a-z])|\s(?=[\u0590-\u05ff]))')
+                      r'(\d{1,2})(?:\.?\s(?=[a-záéíóöőúüű]{2}|a\s[a-z]|\((?:c\.|kb\.|approximately|about)\s*\d+\s*(?:t\.|times|-?szor|-?szer|-?ször)[);])'
+                      r'|\s(?=[\u0590-\u05ff]))')
 
 
 def _betu_minta():
@@ -268,7 +280,9 @@ def _egy(szoveg, ige_e=None):
             if bent[m.start()]:
                 continue
             uj = _szamozott(torzs[m.start():], _szam_minta, '1', _szam_laza)
-            if len(uj) >= 3:
+            # seed-100 (H1138 „proper name, masculine 1. Levites, a. … 2 a chief”): a nemre utaló szó utáni pontos „1.” már a 2-vel is
+            nemszo = re.search(r'(?:masculine|feminine|hímnemű|nőnemű)\s$', torzs[max(0, m.start() - 12):m.start()])
+            if len(uj) >= 3 or (len(uj) >= 2 and nemszo and torzs[m.start() + 1] == '.'):
                 szamok = [(j, k + m.start(), t + m.start()) for j, k, t in uj]
                 break
     if not tf and len(szamok) >= 2 and len(torzs[szamok[0][2]:szamok[1][1]]) < 40:
@@ -276,10 +290,16 @@ def _egy(szoveg, ige_e=None):
         # 2. után gondolatjel áll, és onnan új, legalább 1–2-es számozás indul, az a valódi szerkezet (H2764)
         hatar = szamok[2][1] if len(szamok) > 2 else len(torzs)
         g = torzs.find('— ', szamok[1][1], hatar)
-        if g >= 0:
-            uj = _szamozott(torzs[g:], _szam_minta, '1', _szam_laza)
-            if len(uj) >= 2:
-                szamok = [(j, k + g, t + g) for j, k, t in uj]
+        uj = _szamozott(torzs[g:], _szam_minta, '1', _szam_laza) if g >= 0 else []
+        if len(uj) >= 2:
+            szamok = [(j, k + g, t + g) for j, k, t in uj]
+        elif len(szamok) == 2:
+            # seed-100 (H0389 „1 surely. 2 with a restrictive force …: a. … b. … Generally, only 1 asseverative … 2 restrictive: a.”): a
+            # gondolatjel nélküli összefoglaló után 250 karakteren belül újrainduló (laza vagy szigorú) 1–2-es számozás a valódi szerkezet
+            u = szamok[1][2]
+            uj = _szamozott(torzs[u:], _szam_minta, '1', _szam_laza, True)
+            if len(uj) >= 2 and uj[0][1] < 250:
+                szamok = [(j, k + u, t + u) for j, k, t in uj]
     betu_rk = None
     if not tf and not szamok:
         # F99 M2: számozás nélküli, csak betűs alpontok a felső szinten („— wine: a. common drink … b. …”, „— a. of place … b. …”);
@@ -288,7 +308,17 @@ def _egy(szoveg, ige_e=None):
         if len(betuk) >= 2:
             g = torzs.rfind('— ', 0, betuk[0][1])
             betu_rk = g + 2 if g >= 0 else betuk[0][1]
-    if tf:
+    # seed-100 (H6331 „[מָּרַר] verb Hiph`il break, frustrate …; — Perfect … — 1 break, violate … Hoph`al …”): a fejlécben megnevezett
+    # egyetlen törzs („verb Hiph`il”, „verb only Hiph`il”) a később álló törzsfejléc előtti számozott jelentések törzse
+    fej_torzs = None
+    if ige and tf:
+        mh = re.search(r'\b(?:verb|ige)\s+(?:only\s+|csak\s+)?(' + TORZS + r')\b', torzs[:150])
+        if mh and mh.group(1) not in {t.group(1) for t in tf} and _szamozott(torzs[:tf[0].start()], _szam_minta, '1'):
+            g = torzs.find('— ', mh.end(), tf[0].start())
+            fej_torzs = (mh.group(1), g if g >= 0 else mh.end())
+    if fej_torzs:
+        rk = fej_torzs[1]
+    elif tf:
         rk = tf[0].start()
     elif szamok:
         rk = szamok[0][1]
@@ -315,6 +345,9 @@ def _egy(szoveg, ige_e=None):
     alapjelentes = re.sub(r'\s{2,}', ' ', ''.join(alap)).strip(' :;,')
     # törzsek
     torzsek = []
+    if fej_torzs:
+        nev = fej_torzs[0].replace('`', "'")
+        torzsek.append({'nev': TORZS_KANON.get(nev, nev), 'db': '', 'jelentesek': _jelentesek(regio[:tf[0].start() - rk], True)})
     if tf:
         for i, t in enumerate(tf):
             v = tf[i + 1].start() - rk if i + 1 < len(tf) else len(regio)
@@ -337,13 +370,20 @@ def _egy(szoveg, ige_e=None):
 
 
 POS = r"(?:verb|noun|adjective|adverb|preposition|conjunction|particle|pronoun|interjection|ige|főnév|melléknév|határozószó|elöljárószó|kötőszó|partikula|névmás|indulatszó)"
-CIM = re.compile(r"(?<=[\s.;—])((?:IV|VI|V|I{1,3}))\.\s+(?=\[?[\u0590-\u05ff]+\]?(?:_\d+)?,?\s+"
-                 r"(?:(?:and|és)\s+\(\s*[^()]{0,30}\)\s*\[?[\u0590-\u05ff]+\]?,?\s+)?(?:(?:hímnemű|nőnemű|közös|denominativum)\s+)?"
-                 r"(?:" + POS + r"\b|with prepositions|elöljárószókkal))")
+# F99 M2 (seed-100): a héber betűosztály a prezentációs alakokat (U+FB1D–FB4F, pl. „שׂ” FB2B, „שׁ” FB2A) is fedi (H7704, H4911), és a
+# címszó két alakkal is állhat („II. בָּ֑ד בַּד, noun masculine”, H0905)
+HB = "\u0590-\u05ff\ufb1d-\ufb4f"
+CIM = re.compile(r"(?<=[\s.;—])((?:IV|VI|V|I{1,3}))\.\s+(?=\[?[" + HB + r"]+\]?(?:\s+\[?[" + HB + r"]+\]?){0,2}(?:_\d+)?,?(?:_\d+)?\s+"
+                 r"(?:(?:and|és)\s+\(\s*[^()]{0,30}\)\s*\[?[" + HB + r"]+\]?,?\s+)?(?:(?:hímnemű|nőnemű|közös|denominativum)\s+)?"
+                 r"(?:" + POS + r"\b|with prepositions|elöljárószókkal|proper name|tulajdonnév))")
 # F99 M2: jelöletlen második címszó mondathatáron (római szám nélkül): „… Toy). רָעָה_310 noun feminine”, „… 34:10. עַוְלָה noun
 # feminine^Job 11:14”, „… (Ew De Di). [שְׁפֵל] verb be low”, „… Qr. יַד noun feminine^Dan 5:5” (H7451, H5766, H8213, H3027)
-JELOLETLEN = re.compile(r"(?<=[.;)]\s)(?=\[?[\u0590-\u05ff][\u0590-\u05ff־]*\]?(?:_\d+)?\s+"
-                        r"(?:noun\s+(?:masculine|feminine)|verb\b|adjective\b|(?:hímnemű|nőnemű)\s+főnév|ige\b|melléknév\b))")
+# seed-100: két alak vesszővel („תּוֺלַ֫עַת תּוֺלֵעָה,_40 noun feminine”, H8438), tulajdonnév („בֻּנִּי proper name”, H1138), és a szófaj
+# nélküli, gyakoriság-számmal jelölt alcímszó („מֵעִם_72 from with or beside”, H5973: a „_N” csak címszón áll)
+JELOLETLEN = re.compile(r"(?<=[.;)]\s)(?<![\s(][a-l]\.\s)(?=\[?[" + HB + r"][" + HB + r"־]*\]?(?:\s+[" + HB + r"][" + HB + r"־]*){0,2}(?:,?_\d+)?\s+"
+                        r"(?:noun\s+(?:masculine|feminine)|verb\b|adjective\b|proper name\b|(?:hímnemű|nőnemű)\s+főnév|ige\b|"
+                        r"melléknév\b|tulajdonnév\b)"
+                        r"|\[?[" + HB + r"][" + HB + r"־]*\]?_\d+\s+[a-záéíóöőúüű]{2,})")
 
 # F99 M2: a szócikk római számos fő tagolása (nem homonima): „— inner part midst: I. seldom of things … II. elsewhere of men: 1 …” (H3820),
 # „I. between men. 1 … II. between God and man. 1 … III. Phrases.” (H1285), „I. 1. a. Fall out … II. Come into being … III. Be” (H1961).
@@ -368,7 +408,8 @@ def _tagolas(s, tilos):
 
 
 def _kons(x):
-    return re.sub(r"[\u0591-\u05c7]", "", x or "")
+    # a héber prezentációs alakok (U+FB1D–FB4F) kanonikus felbontása után (seed-100: „שׂ” FB2B, H7704)
+    return re.sub(r"[\u0591-\u05c7]", "", unicodedata.normalize('NFD', x or ""))
 
 
 def szeletel(szoveg, lemma=""):
@@ -379,6 +420,12 @@ def szeletel(szoveg, lemma=""):
     if not szoveg:
         return None
     s = szoveg.replace("\n", " ").strip()
+    # seed-100 (H9003 בְּ, H9005 לְ): a betű-szócikkek sora „H<szám>.” fej nélkül kezdődik („ב בּ ב,, Bêth, 2nd letter …”); a szakasz-
+    # bontás egy belső fejjel fut, a pozíciók az eredeti szövegre visszaszámolva
+    eltol = 0
+    if not re.match(r"^H\d+\.\s", s):
+        s = "H0000. - " + s
+        eltol = len("H0000. - ")
     mf = re.match(r"^(H\d+)\.\s+(\S+(?:\s')?)\s+", s)
     romai = [(m.start(), m.group(1)) for m in CIM.finditer(s) if mf and m.start() > mf.end()]
     # a jelöletlen címszó-fej csak akkor, ha nem egy római fej címszava (a „II. חֲמוֺר noun” héber szava ne nyisson új szakaszt; a
@@ -386,7 +433,9 @@ def szeletel(szoveg, lemma=""):
     def _romai_fej_resze(poz):
         return any(0 <= poz - r[0] <= 8 or (0 <= poz - r[0] <= 45 and '. ' not in s[r[0] + 3:poz]) for r in romai)
     heads = sorted(romai + [(m.start(), '') for m in JELOLETLEN.finditer(s)
-                            if mf and m.start() > mf.end() + 20 and not _romai_fej_resze(m.start())])
+                            if mf and m.start() > mf.end() + 20 and not _romai_fej_resze(m.start())
+                            # a fejléc első mondatában álló alakváltozat („Anathoth עֲנָתוֺת and (1Kin 2:26) עֲנָתֹת proper name”) nem új címszó
+                            and re.search(r'[.;]\s', s[mf.end():m.start()])])
     tagolas = _tagolas(s, [h[0] for h in heads]) if mf else []
     tag_poz = {p for p, _ in tagolas}
     heads = sorted(heads + tagolas)
@@ -441,16 +490,20 @@ def szeletel(szoveg, lemma=""):
                 e['torzsek'][0]['nev'] = elozo[-1]
         if not e or not e['fej']['heber']:
             continue
+        if eltol:
+            e['fej']['strong'] = ''
         szakaszok.append({'jel': (heads[i - 1][1] if i > 0 else e['fej'].get('homonima', '')), 'szoveg': resz, 'e': e,
-                          'kezd': hatarok[i], 'veg': hatarok[i + 1], 'tag': tag, 'folyt': folyt})
+                          'kezd': max(0, hatarok[i] - eltol), 'veg': hatarok[i + 1] - eltol, 'tag': tag, 'folyt': folyt})
     if not szakaszok:
         r = _egy(szoveg)
         r['elotag'] = ''
         r['szakaszok'] = []
         return r
     if lemma:
-        fo = next((k for k, x in enumerate(szakaszok)
-                   if not x['tag'] and not x['folyt'] and _kons(x['e']['fej']['heber']) == _kons(lemma)), None)
+        egyezo = [k for k, x in enumerate(szakaszok)
+                  if not x['tag'] and not x['folyt'] and _kons(x['e']['fej']['heber']) == _kons(lemma)]
+        # több egyező címszó közül az első igehelyes (H9003: a betű leírása igehely nélküli, a „I. בְּ, preposition” a fő)
+        fo = next((k for k in egyezo if szakaszok[k]['e']['ref_ossz'] > 0), egyezo[0] if egyezo else None)
         if fo is None:
             # F99 M2: a lemma egyik címszóval sem egyezik (H4325 מַיִם: „II. [מוֺ] = מַי víz. [מַי]_580 hímnemű főnév …”) — a fő elemzés az
             # első olyan (nem tagolás-) szakasz, amelyben van igehely: az igehely nélküli utaló csonk („= מַי víz.”) nem fő elemzés
@@ -467,6 +520,18 @@ def szeletel(szoveg, lemma=""):
     r = dict(szakaszok[fo]['e'])
     r['torzsek'] = list(r['torzsek']) + [t for x in gazda.get(fo, []) for t in x['e']['torzsek']]
     r['folyt_savok'] = [(x['kezd'], x['veg']) for x in gazda.get(fo, [])]
+    def cimke(k):
+        # a szakasz címkéje a sávokban: a fő szakaszé a saját homonima-száma, a többié a római száma vagy h:<váz>
+        if k == fo:
+            return szakaszok[fo]['e']['fej'].get('homonima', '') or ''
+        x = szakaszok[k]
+        return x['jel'] or 'h:' + _kons(x['e']['fej']['heber'])
+    gazda_tag, utolso_fo = {}, 0
+    for k, x in enumerate(szakaszok):
+        if x['tag']:
+            gazda_tag[k] = cimke(utolso_fo)
+        elif not x['folyt']:
+            utolso_fo = k
     ki = []
     for k, x in enumerate(szakaszok):
         if k == fo or x['folyt']:
@@ -484,6 +549,8 @@ def szeletel(szoveg, lemma=""):
             'folyt_savok': [(y['kezd'], y['veg']) for y in gazda.get(k, [])],
             'zarojeles': bool(re.match(r"^H\d+\.\s+\S+(?:\s')?\s+(?:[IVX]+\.\s+)?\[", x['szoveg'])),
             'kezd': x['kezd'], 'veg': x['veg'],
+            # DT-F99i: a fő tagolás (tagolas) szakasza a gazda-címszó homonima-számát is hordozza
+            'gazda': gazda_tag.get(k, ''),
         })
     elotag = ''
     if szakaszok[0]['jel'] == '' and fo != 0:
@@ -611,9 +678,10 @@ _SIGLA_KOZEL = re.compile(r'\S*\^\S*(?:\s+[^\s;()]+){0,2}\s*$')
 _SIGLA_ELOTTE = re.compile(r'(?:^|\s)(?!R\^)[A-Z][A-Za-zäöü]*\^[^\s),;\]\d][^\s),;\]]*\s+(?:on\s+|in\s+)?$')
 # F99 M2 (felhasználó, 2026-10-15, a seed-100 után, DT-F99j): a közeli sigla közül a megnevezett kommentár-siglák a szűrő listáján
 # vannak (`sigla_lista`, kiszűrve): Schrader COT („Schr^COT”, „COT on Josh 17:11”), Driver („Dr on 2Sam 8:3”, „Dr^…”), a Mésa-felirat
-# („MI^4”), a Targum („ᵑ7”, „ᵑ7^J” — szövegtanú: ütheti a szövegtanú-kivételt, l. naplo 9.9), Fleischer/Delitzsch („Fl^De”, „De^…”).
+# („MI^4”), Fleischer/Delitzsch („Fl^De”, „De^…”), Hupfeld („Hup^Now.”). A Targum (ᵑ7) és a LXX (ᵐ5) szövegtanú, nincs a listán
+# (felhasználó, 2026-10-15). Minden sigla melletti hivatkozásról a generátorban a TAHOT dönt (DT-F99k: `sigla_igazolt` vagy szűrt).
 # A többi `sigla_kozel` bibliai hivatkozásként a táblában marad, okkóddal.
-_SIGLA_LISTA = re.compile(r'^(?:Schr\^\S+|COT\.?|Dr|Dr\^\S*|MI|MI\^\S*|ᵑ7\S*|Fl\^\S+|De\^\S*)$')
+_SIGLA_LISTA = re.compile(r'^(?:Schr\^\S+|COT\.?|Dr|Dr\^\S*|MI|MI\^\S*|Fl\^\S+|De\^\S*|Hup\^\S*)$')
 _NEMI_TANU = re.compile(r'(?:masculine|feminine|plural|singular|hímnemű|nőnemű|főnév|_\d+)$')
 _FOLYTATAS = re.compile(r'\s*,\s*(\d{1,3})(?:\s*-\s*\d{1,3})?(?=[\s,;.)\]]|$)(?!\s*:)')
 # egyfejezetes könyv fejezetszám nélkül (DT-F99a (4)): „Obad 8”, „Obadiah 13” → 1. fejezet
@@ -700,7 +768,20 @@ def hivatkozasok(szoveg):
     return ki
 
 
+# DT-F99i (felhasználó, 2026-10-15): két római szint — a címszó homonima-száma és a szócikk fő tagolása (rész) külön mező. A sávok
+# címkéjében a tagolás-szakasz „<homonima>§<rész>” (pl. „III§I”); a `szakasz_bont` választja szét.
+RESZ_SEP = '§'
+
+
+def szakasz_bont(cimke):
+    """'III§I' -> ('III', 'I'); 'II' -> ('II', ''); '' -> ('', '')."""
+    a, _, b = (cimke or '').partition(RESZ_SEP)
+    return a, b
+
+
 def _szakasz_cimke(x):
+    if x.get('szerep') == 'tagolas':
+        return '%s%s%s' % (x.get('gazda', ''), RESZ_SEP, x['jel'])
     if x['jel']:
         return x['jel']
     return 'h:' + _kons(x['heber'])

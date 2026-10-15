@@ -180,8 +180,10 @@ def _kons(x):
     return re.sub(r'[֑-ׇ‎‏]', '', unicodedata.normalize('NFC', x or ''))
 
 
-def _szak_kulcs(cimke):
-    return cimke if (not cimke or RÓMAI.match(cimke)) else 'h:' + _kons(cimke)
+def _szak_kulcs(cimke, resz=''):
+    """DT-F99i: a szakasz kulcsa a homonima-szám (vagy h:<váz>) és — ha van — a fő tagolás római száma („III r:I”)."""
+    k = cimke if (not cimke or RÓMAI.match(cimke) or cimke.startswith('h:')) else 'h:' + _kons(cimke)
+    return '%s r:%s' % (k, resz) if resz else k
 
 
 def _ut_norm(ut, szint):
@@ -225,7 +227,10 @@ def _szeletelo_csomopontok(r):
                     ki[(szk, '%s/%s' % (jp, a['jel']), 'alpont')] = (a['szoveg'], ('al', a))
     torzsek('', r['torzsek'])
     for x in r.get('szakaszok', []):
-        szk = _szak_kulcs(x['jel']) if x['jel'] else 'h:' + _kons(x['heber'])
+        if x.get('szerep') == 'tagolas':
+            szk = _szak_kulcs(x.get('gazda', ''), x['jel'])
+        else:
+            szk = _szak_kulcs(x['jel']) if x['jel'] else 'h:' + _kons(x['heber'])
         ki[(szk, '', 'szakasz')] = (x['heber'], None)
         torzsek(szk, x['torzsek'])
     return ki
@@ -263,7 +268,7 @@ def arany():
     reszlet = []
     for strong in szocikkek:
         gs = [g for g in sorok if g['strong'] == strong]
-        kihagy = [(_szak_kulcs(g['szakasz']), g['utvonal']) for g in gs if g['szint'] == 'kihagy']
+        kihagy = [(_szak_kulcs(g['szakasz'], g.get('resz', '')), g['utvonal']) for g in gs if g['szint'] == 'kihagy']
         for nyelv, szoveg in (('en', en.get(strong)), ('hu', hu.get(strong))):
             if szoveg is None:
                 continue
@@ -272,7 +277,7 @@ def arany():
             vart = {}
             for g in gs:
                 if g['szint'] in SZERKEZET:
-                    vart[(_szak_kulcs(g['szakasz']), _ut_norm(g['utvonal'], g['szint']), g['szint'])] = g
+                    vart[(_szak_kulcs(g['szakasz'], g.get('resz', '')), _ut_norm(g['utvonal'], g['szint']), g['szint'])] = g
             elteres = []
             szocikk = next(g for g in gs if g['szint'] == 'szocikk')
             if _kons(r['fej'].get('heber')) != _kons(szocikk['kezdet_en']):
