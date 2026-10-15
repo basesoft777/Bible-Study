@@ -321,6 +321,341 @@ def arany():
         print('%s\t%d' % (k, ossz[k]))
 
 
+# ---------------------------------------------------------------------------
+# --hivatkozas: igehely-hivatkozások mérése az angol BDB-n
+# ---------------------------------------------------------------------------
+
+def _bkj():
+    sys.path.insert(0, os.path.join(REPO, 'eszkozok'))
+    import bdb_konyv_javit as K
+    return K
+
+
+# Irodalmi jel (sigla) a hivatkozás előtt: a hivatkozást megelőző legfeljebb két szó egyikében `^` áll, közben nincs mondat- vagy
+# zárójelhatár („De^Job 2:598”, „Dr^Sm i. 24, 5”, „Kö^ii. 2:453”). Jelölt, nem ítélet: a szűrés szabálya a DT-F99a.
+SIGLA_ELOTTE = re.compile(r'\S*\^\S*(?:\s+[^\s;()]+){0,2}\s*$')
+FOLYTATAS = re.compile(r'\s*,\s*(\d{1,3})(?:\s*-\s*\d{1,3})?(?=[\s,;.)\]]|$)(?!\s*:)')
+
+
+def hivatkozasok(szoveg, K):
+    """Egy szócikk igehely-hivatkozásai sorrendben: dict(poz, nyers, konyv, c, v, mod, ok).
+    mod: kiirt | orokolt | folytatas | feloldhatatlan; konyv=None, ha nem bibliai vagy nem dönthető el.
+    ok: '' (bibliai, feloldott) | nem_bibliai (Talmud, Korán, apokrif, kommentár: a LANCTORO / APOKRIF_ALIAS alakjai, és az utánuk
+    örökölt) | tobbertelmu (Kings, Sam, Chron …: a szám nélküli alak) | sigla_utan (álhivatkozás-jelölt) | nincs_elozmeny."""
+    s = re.sub(r'\s+', ' ', szoveg.replace('\n', ' '))
+    tok = []
+    for m in K.TOKEN.finditer(s):
+        tok.append((m.start(), m.end(), m.group(1), int(m.group(2)), int(m.group(3)), m.group(0)))
+    for m in K.TAPADT_SZAM.finditer(s):
+        tok.append((m.start(), m.end(), m.group(1) + m.group(2), int(m.group(3)), int(m.group(4)), m.group(0)))
+    kiirt = {t[0]: t for t in tok}
+    lefedett = set()
+    for t in tok:
+        lefedett.update(range(t[0], t[1]))
+    for m in K.CSUPASZ.finditer(s):
+        if m.start() in lefedett:
+            continue
+        kiirt.setdefault(m.start(), (m.start(), m.end(), None, int(m.group(1)), int(m.group(2)), m.group(0)))
+    ki = []
+    utolso = None          # (konyv | None, ok)
+    for p in sorted(kiirt):
+        a, e, alak, c, v, nyers = kiirt[p]
+        sig = ''
+        if a and s[a - 1] == '^':
+            elotte = re.search(r'(\S*)\^$', s[max(0, a - 30):a]).group(1)
+            sig = 'nem_tanu' if re.search(r'(?:masculine|feminine|plural|singular|hímnemű|nőnemű|főnév)$', elotte) else 'sigla_tapadt'
+        elif SIGLA_ELOTTE.search(s[max(0, a - 40):a]):
+            sig = 'sigla_kozel'
+        if alak is not None:
+            alak_n = alak.rstrip('.')
+            if alak_n in K.LEK:
+                konyv, ok = K.LEK[alak_n], ''
+            elif alak_n in K.LANCTORO or alak_n in K.N.APOKRIF_ALIAS:
+                konyv, ok = None, 'nem_bibliai'
+            elif alak_n in K.TOBBERTELMU:
+                konyv, ok = None, 'tobbertelmu'
+            else:
+                konyv, ok = None, 'ismeretlen_alak'
+            mod = 'kiirt'
+            utolso = (konyv, ok)
+        else:
+            if utolso is None:
+                konyv, ok, mod = None, 'nincs_elozmeny', 'feloldhatatlan'
+            else:
+                konyv, ok = utolso
+                mod = 'orokolt'
+        ki.append({'poz': a, 'nyers': nyers, 'konyv': konyv, 'c': c, 'v': v, 'mod': mod, 'ok': ok, 'sig': sig})
+        # vers-folytatás: „Gen 18:18, 25; 22:18” → 18:25 is hivatkozás
+        q = e
+        while True:
+            f = FOLYTATAS.match(s, q)
+            if not f:
+                break
+            ki.append({'poz': f.start(1), 'nyers': f.group(0).strip(), 'konyv': konyv, 'c': c, 'v': int(f.group(1)),
+                       'mod': 'folytatas', 'ok': ok, 'sig': sig})
+            q = f.end()
+    return ki
+
+
+def hivatkozas_meres():
+    K = _bkj()
+    en = bdb_en()
+    biz_versek, _, mt2k_nyers = K.macula_betolt()
+    mt2k = {kk: {(K.TAHOT_KONYV.get(x[0], x[0]), x[1], x[2]) for x in v} for kk, v in mt2k_nyers.items()}
+    # a Károli-versmegfeleltetés: Károli-vers -> (osztaly, igehely_mt); az MT-osztályú sorok MT-száma = Károli-szám
+    vm, vm_mt = {}, {}
+    fej = None
+    with open(os.path.join(REPO, 'konkordancia', 'Karoli_versmegfeleltetes.tsv'), encoding='utf-8', newline='') as f:
+        for sor in f:
+            if sor.startswith('#'):
+                continue
+            m = sor.rstrip('\n').split('\t')
+            if fej is None:
+                fej = m
+                continue
+            d = dict(zip(fej, m))
+            vm[d['igehely_karoli']] = d['osztaly']
+            if d['igehely_mt']:
+                kk = d['igehely_karoli'].rsplit(' ', 1)[0]
+                vm_mt['%s %s' % (kk, d['igehely_mt'])] = d['igehely_karoli']
+    osz = set(K.OSZ)
+    c = collections.Counter()
+    szocikk_ref = set()
+    sig_minta = collections.defaultdict(list)
+    ism, tobb, karoli_mas, karoli_nincs, nemletezo = collections.Counter(), collections.Counter(), [], [], []
+    for strong, szoveg in en.items():
+        hl = hivatkozasok(szoveg, K)
+        if hl:
+            szocikk_ref.add(strong)
+        for h in hl:
+            c['ossz'] += 1
+            c['mod:' + h['mod']] += 1
+            c['ok:' + (h['ok'] or 'bibliai')] += 1
+            if h['sig']:
+                c['sigla:' + h['sig']] += 1
+                if len(sig_minta[h['sig']]) < 12:
+                    sig_minta[h['sig']].append((strong, h['nyers'], re.sub(r'\s+', ' ', szoveg)[max(0, h['poz'] - 30):h['poz'] + 12]))
+            if h['ok'] == 'ismeretlen_alak':
+                ism[re.match(r'\S+', h['nyers']).group(0)] += 1
+            if h['ok'] == 'tobbertelmu':
+                tobb[re.match(r'\S+', h['nyers']).group(0)] += 1
+            if h['ok'] == '' and h['konyv']:
+                k = h['konyv']
+                if k not in osz:
+                    c['usz'] += 1
+                    continue
+                c['osz_bibliai'] += 1
+                if h['v'] not in biz_versek.get(k, {}).get(h['c'], ()):
+                    c['mt_nem_letezik'] += 1
+                    c['mt_nem_letezik:' + h['mod']] += 1
+                    if len(nemletezo) < 30:
+                        nemletezo.append((strong, h['nyers'], '%s %d:%d' % (k, h['c'], h['v']), h['mod']))
+                    continue
+                ig = '%s %d:%d' % (k, h['c'], h['v'])
+                # a Károli-versmegfeleltetés szerint (a brief forrása)
+                if ig in vm_mt:
+                    c['vm:MT_osztaly'] += 1
+                    if vm_mt[ig] != ig:
+                        c['vm:MT_osztaly_mas_karoli'] += 1
+                elif vm.get(ig) == 'KJV':
+                    c['vm:KJV_osztaly_mt_ismeretlen'] += 1
+                elif ig in vm:
+                    c['vm:%s_osztaly' % vm[ig]] += 1
+                else:
+                    c['vm:nincs_sor'] += 1
+                kar = mt2k.get((k, h['c'], h['v']))
+                if ig in vm_mt and kar and kar != {tuple([k] + [int(x) for x in vm_mt[ig].rsplit(' ', 1)[1].split(':')])}:
+                    c['macula_ellentmond_vm_MT_osztaly'] += 1
+                    c['macula_ellentmond_vm_MT_osztaly_konyv:' + k] += 1
+                if not kar:
+                    c['macula:karoli_nincs'] += 1
+                    if len(karoli_nincs) < 15:
+                        karoli_nincs.append((strong, ig))
+                elif kar != {(k, h['c'], h['v'])}:
+                    c['macula:karoli_mas'] += 1
+                    c['macula:karoli_mas_konyv:' + k] += 1
+                    if len(karoli_mas) < 20:
+                        karoli_mas.append((strong, ig, sorted('%s %d:%d' % x for x in kar)))
+                else:
+                    c['macula:karoli_azonos'] += 1
+    # független próba: az OSHL BDB-XML strukturált igehelyei (<ref r=…>) megvannak-e a mi feloldásunkban
+    oshl = collections.defaultdict(set)
+    for p in K.tsv(K.OSHL_REF)[1:]:
+        if len(p) >= 6 and p[0].startswith('H'):
+            oshl[p[0]].add((p[3], int(p[4]), int(p[5])))
+    mi = collections.defaultdict(set)
+    for strong, szoveg in en.items():
+        if strong in oshl:
+            for h in hivatkozasok(szoveg, K):
+                if h['konyv']:
+                    mi[strong].add((h['konyv'], h['c'], h['v']))
+    o_ossz = sum(len(v) for v in oshl.values())
+    o_van = sum(len(v & mi[s]) for s, v in oshl.items())
+    c['oshl_proba:oshl_hely'] = o_ossz
+    c['oshl_proba:megvan_a_feloldasban'] = o_van
+    hiany = [(s, sorted(v - mi[s])[:3]) for s, v in sorted(oshl.items()) if v - mi[s]][:12]
+    print(prov('angol BDB, minden szócikk (%d); hivatkozás = könyvvel kiírt vagy könyv nélküli fejezet:vers, és a vesszős vers-folytatás' % len(en),
+               'BDB_teljes_unabridged.tsv@%s + bdb_konyv_javit.TOKEN/CSUPASZ/LEK/LANCTORO + Macula_heber_* (MT-versek, MT→Károli) + bdb_szelet_m0@%s'
+               % (sha(BDB_EN), commit())))
+    print('szócikk hivatkozással: %d / %d' % (len(szocikk_ref), len(en)))
+    for k in sorted(c):
+        print('%s\t%d' % (k, c[k]))
+    print('\nismeretlen könyvalak (top 20):', ism.most_common(20))
+    print('többértelmű alak:', tobb.most_common())
+    for k, lst in sorted(sig_minta.items()):
+        print('\nsigla minta (%s):' % k)
+        for x in lst:
+            print('  ', x)
+    print('\nMT-ben nem létező vers (minta):')
+    for x in nemletezo:
+        print('  ', x)
+    print('\nMT ≠ Károli (minta):')
+    for x in karoli_mas:
+        print('  ', x)
+    print('\nMT-vers Károli-megfelelő nélkül (minta):')
+    for x in karoli_nincs:
+        print('  ', x)
+    print('\nOSHL-hely, amely a feloldásban nincs (minta):')
+    for x in hiany:
+        print('  ', x)
+
+
+# ---------------------------------------------------------------------------
+# --jelolo: használati csoport-bevezetők mérése
+# ---------------------------------------------------------------------------
+
+# Mérési jelöltlista (tágabb, mint az aranyminta szigorú listája): kulcs -> minta. A „with”-et a szerkezet szerint bontjuk.
+BEVEZETO_EN = [
+    ('absolute', r'absolute(?:ly)?\b'),
+    ('followed by', r'followed by\b'),
+    ('with + héber', r'with\s+(?=[֐-׿׳])'),
+    ('with accusative', r'with\s+accusative\b'),
+    ('with infinitive', r'with\s+infinitive\b'),
+    ('with suffix', r'with\s+suffix\b'),
+    ('Inf. abs. (as adverb)', r'(?:Inf(?:initive)?\.?\s+abs(?:olute)?\.?|infinitive absolute)(?:\s+(?:as\s+)?adverb\.?)?'),
+    ('in phrase(s)', r'in\s+phrases?\b'),
+    ('figurative', r'figurative(?:ly)?\b'),
+    ('opposed to', r'opposed to\b'),
+    ('especially', r'especially\b'),
+    ('also', r'also\b'),
+    ('so', r'so\b'),
+    ('often', r'often\b'),
+    ('rarely', r'rarely\b'),
+    ('(n) zárójeles szám', r'\(\d\)'),
+    ('(a) zárójeles betű', r'\([a-h]\)'),
+]
+BEVEZETO_HU = [
+    ('abszolút használatban', r'abszolút használat\w*'),
+    ('abszolút (egyéb)', r'abszolút(?! használat)\w*'),
+    ('status absolutus', r'status absolutus'),
+    ('utána', r'utána\b'),
+    ('követi', r'\S+\s+követi\b|követi\b'),
+    ('+ ragos héber (-val/-vel)', r'[֐-׿׳]+-(?:val|vel|lal|lel|ral|rel)\b'),
+    ('tárgyesetével', r'\w*\s?tárgyesetével'),
+    ('infinitivus absolutus', r'infinitivus absolutus\w*(?:\s+határozószóként)?'),
+    ('kifejezésekben/fordulatokban', r'(?:kifejezés|fordulat)\w*ban\b|(?:kifejezés|fordulat)\w*ben\b'),
+    ('átvitt értelemben', r'átvitt értelem\w*'),
+    ('képletesen', r'képletes\w*'),
+    ('ellentéte', r'ellentét\w*'),
+    ('szemben', r'\w+\s+szemben\b'),
+    ('különösen', r'különösen\b'),
+    ('továbbá', r'továbbá\b'),
+    ('így', r'így\b'),
+    ('gyakran', r'gyakran\b'),
+    ('ritkán', r'ritkán\b'),
+    ('(n) zárójeles szám', r'\(\d\)'),
+    ('(a) zárójeles betű', r'\([a-h]\)'),
+]
+
+
+def _csomopont_kezdetek(szoveg, r):
+    """A szeletelő csomópontjainak kezdőpozíciói a lapított szövegben, és a jelentésrégió kezdete (első törzs vagy jelentés)."""
+    flat = re.sub(r'\s+', ' ', szoveg.replace('\n', ' '))
+    kezd, start = [], 0
+    for sz, ut, szint, jel, sz2 in csomopontok(r):
+        k = re.sub(r'\s+', ' ', sz2 or '').strip()[:30]
+        if not k or szint == 'szakasz':
+            continue
+        i = flat.find(k, start)
+        if i >= 0:
+            kezd.append(i)
+            start = i
+    return flat, sorted(set(kezd))
+
+
+def _helyzet(flat, poz, kezd, zaro):
+    if kezd and poz < kezd[0]:
+        return 'alaktan_elotag'
+    if zaro[poz]:
+        return 'zarojelben'
+    if any(0 <= poz - k <= 2 for k in kezd):
+        return 'csomopont_eleje'
+    elotte = flat[max(0, poz - 3):poz]
+    if re.search(r'[;.:—]\s*$', elotte):
+        return 'mondatkezdo'
+    if re.search(r',\s*$', elotte):
+        return 'vesszo_utan'
+    return 'mondat_kozben'
+
+
+def jelolo_meres():
+    en, hu, lem = bdb_en(), bdb_hu(), lemma_tabla()
+    eredmeny = {}
+    for nyelv, korpusz, lista in (('en', en, BEVEZETO_EN), ('hu', hu, BEVEZETO_HU)):
+        c = collections.defaultdict(collections.Counter)
+        szocikk = collections.defaultdict(set)
+        for strong, szoveg in korpusz.items():
+            r = B.szeletel(szoveg, lem.get(strong, ''))
+            flat, kezd = _csomopont_kezdetek(szoveg, r)
+            zaro = B._zarojelben(flat)
+            for kulcs, minta in lista:
+                for m in re.finditer(r'(?<![\w-])(?:%s)' % minta, flat):
+                    h = _helyzet(flat, m.start(), kezd, zaro)
+                    c[kulcs][h] += 1
+                    c[kulcs]['ossz'] += 1
+                    szocikk[kulcs].add(strong)
+        eredmeny[nyelv] = (c, szocikk, len(korpusz))
+    print(prov('angol BDB (%d szócikk) és magyar BDB (%d szócikk, a szerver bdb_magyar-szabálya); helyzet a mai szeletelő csomópontjaihoz képest'
+               % (len(en), len(hu)), 'BDB_teljes_unabridged.tsv@%s + forditasok.tsv@%s + bdb_szelet@%s' % (sha(BDB_EN), sha(FORD), commit())))
+    oszl = ['ossz', 'csomopont_eleje', 'mondatkezdo', 'vesszo_utan', 'mondat_kozben', 'zarojelben', 'alaktan_elotag']
+    for nyelv in ('en', 'hu'):
+        c, szocikk, n = eredmeny[nyelv]
+        print('\n## %s (%d szócikk)' % (nyelv, n))
+        print('| bevezető | szócikk | ' + ' | '.join(oszl) + ' |')
+        print('|---|---|' + '---|' * len(oszl))
+        for kulcs, _ in (BEVEZETO_EN if nyelv == 'en' else BEVEZETO_HU):
+            print('| %s | %d | %s |' % (kulcs, len(szocikk[kulcs]), ' | '.join(str(c[kulcs][o]) for o in oszl)))
+    # a kész magyar szócikkeken: angol bevezető-szám vs. magyar megfelelő-szám szócikkenként (csak a jelentésrégióban, zárójelen kívül)
+    print('\n## A kész magyar szócikkek (%d): angol–magyar bevezetőszám szócikkenként (jelentésrégió, zárójelen kívül)' % len(hu))
+    parok = [('absolute', ['abszolút használatban', 'abszolút (egyéb)']), ('followed by', ['utána', 'követi']),
+             ('figurative', ['átvitt értelemben', 'képletesen']), ('opposed to', ['ellentéte', 'szemben']),
+             ('especially', ['különösen']), ('in phrase(s)', ['kifejezésekben/fordulatokban']),
+             ('Inf. abs. (as adverb)', ['infinitivus absolutus'])]
+    for ek, hks in parok:
+        egyezik = kulonbozik = mindketto0 = 0
+        for strong in hu:
+            def db(szoveg, lista, kulcsok):
+                r = B.szeletel(szoveg, lem.get(strong, ''))
+                flat, kezd = _csomopont_kezdetek(szoveg, r)
+                zaro = B._zarojelben(flat)
+                n = 0
+                for kulcs, minta in lista:
+                    if kulcs not in kulcsok:
+                        continue
+                    for m in re.finditer(r'(?<![\w-])(?:%s)' % minta, flat):
+                        if _helyzet(flat, m.start(), kezd, zaro) not in ('zarojelben', 'alaktan_elotag'):
+                            n += 1
+                return n
+            a, b = db(en.get(strong, ''), BEVEZETO_EN, [ek]), db(hu[strong], BEVEZETO_HU, hks)
+            if a == 0 and b == 0:
+                mindketto0 += 1
+            elif a == b:
+                egyezik += 1
+            else:
+                kulonbozik += 1
+        print('- %s ↔ %s: azonos szám %d szócikkben, eltérő %d, egyik sem %d' % (ek, ' / '.join(hks), egyezik, kulonbozik, mindketto0))
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--dump', nargs='+')
@@ -337,6 +672,10 @@ def main():
             dump(s, ny, a.ki)
     if a.arany:
         arany()
+    if a.hivatkozas:
+        hivatkozas_meres()
+    if a.jelolo:
+        jelolo_meres()
 
 
 if __name__ == '__main__':
