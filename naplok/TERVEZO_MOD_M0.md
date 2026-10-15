@@ -1,16 +1,16 @@
 # TERVEZO_MOD — M0 terv (#98)
 
-*Csak olvas: az M0 egyetlen szerver-fájlt sem módosít. A „javaslat” jelölésű tételek javaslatok; a döntés a felhasználóé (DT-F98a–e, `DONTESEK.md`). Modell: `claude-opus-5-5`. Állapot: **⛔ jóváhagyásra vár** (a regiszter magyar nevei és a tulajdonságok köre, valamint a DT-F98a–e).*
+*Csak olvas: az M0 egyetlen szerver-fájlt sem módosít. A „javaslat” jelölésű tételek javaslatok; a döntés a felhasználóé (DT153–e, `DONTESEK.md`). Modell: `claude-opus-5-5`. Állapot: **⛔ jóváhagyásra vár** (a regiszter magyar nevei és a tulajdonságok köre, valamint a DT153–e).*
 
 Mért adatok forrása, ahol nincs más jelölés: `scope=eszkozok/olvaso_szerver/ (statikus/olvaso.css 16 359 B, sablonok/*.html, blokkok.py, oldalak.py), ág claude/tervezo-mod, alap origin/main@147ada81 | forras=három felmérő szkript a session scratch-könyvtárában (osztalyok.py: class-attribútumok a sablonokból és a két Python-modulból; meretek.py: méret-értékek tulajdonság-csoportonként; holt.py: felülírt deklarációk, szelektoronként) | ts=2026-10-14`. A design system tokenjei: `scope=https://claude.ai/artifact/AtQvPhFShiG71apnGPm2AU, project/tokens.json (17 996 B, sha256 899439f5…), verzió 1791995892-d37b | forras=Artifact read | ts=2026-10-14`. A szerver nem futott; a „valódi lapon talál elemet” ellenőrzés az M2 tesztje.
 
 ## 0. Összefoglaló
 
 - **Elem-regiszter** (1. szakasz): 73 regiszter-sor 12 csoportban (61 önálló elem és 12 állapot- vagy változat-sor), magyar névvel és tulajdonság → token hozzárendeléssel; mellette a kizárt (szerkezeti, állapot- és horog-) osztályok listája, csoportonként indokolva. A mai felületen használt 109 osztályból (és 9 dinamikusan képzett osztályból) mindegyik vagy a regiszterben, vagy a kizárt listán áll.
-- **Token-fájl** (2. szakasz, javaslat): `eszkozok/olvaso_szerver/konfig/arculat.json`, tisztán értékek (szabad szöveg nélkül), a design system `tokens.json`-jával egyező szín- és stílusnevekkel. A szerver token-blokkja (a mai `:root` és a két sötét téma-blokk) ebből generálódik, **dinamikus útvonalon** (`/arculat.css?v=<hash>`), nem generált fájlként (DT-F98e).
-- **Méret-tokenek** (3. szakasz): 52 betűméret-, 18 sorköz-, 35 térköz- és 6 lekerekítés-token, a mai `olvaso.css` **ténylegesen érvényes** értékeiből. 46 felülírt („holt”) deklaráció van a stíluslapban; javaslat: az M1 ezeket törli (DT-F98d).
+- **Token-fájl** (2. szakasz, javaslat): `eszkozok/olvaso_szerver/konfig/arculat.json`, tisztán értékek (szabad szöveg nélkül), a design system `tokens.json`-jával egyező szín- és stílusnevekkel. A szerver token-blokkja (a mai `:root` és a két sötét téma-blokk) ebből generálódik, **dinamikus útvonalon** (`/arculat.css?v=<hash>`), nem generált fájlként (DT157).
+- **Méret-tokenek** (3. szakasz): 52 betűméret-, 18 sorköz-, 35 térköz- és 6 lekerekítés-token, a mai `olvaso.css` **ténylegesen érvényes** értékeiből. 46 felülírt („holt”) deklaráció van a stíluslapban; javaslat: az M1 ezeket törli (DT156).
 - **Panel** (4. szakasz): kattintásra a legbelső regisztrált elem, „szülő elem” lépéssel; csúszka vagy palettaminta; előnézet a `:root` CSS-változóival (CSSOM, CSP-kompatibilis); változáslista egyenkénti visszavonással; „Küldés a szerverre” külön gombbal.
-- **Öt döntés** kell (DT-F98a–e): a betűméret-tokenek szemcsézettsége, a térköz-tokenek köre, a sorköz állíthatósága, a holt deklarációk sorsa, és a token-blokk előállítási módja.
+- **Öt döntés** kell (DT153–e): a betűméret-tokenek szemcsézettsége, a térköz-tokenek köre, a sorköz állíthatósága, a holt deklarációk sorsa, és a token-blokk előállítási módja.
 - Két megfigyelés a mai stíluslapról (5. szakasz): a `.igehely` szelektor a táblázatbeli igehely-hivatkozásokra is ráhat; a design system `oldalcim` stílusa 300-as vastagságot ír, a szerver 600-at ad.
 
 ## 1. Az elem-regiszter tervezete (4. lépés a)
@@ -36,7 +36,7 @@ tulajdonsag = [
 oszlopok = "rács-elrendezés (a három nézet oszlopai); nincs állítható arculati értéke"
 ```
 
-A **tulajdonság típusa** a tokenből jön (szín → palettaminta; hossz → csúszka a token tartományával; sorköz → csúszka, ha a DT-F98c engedi). Egy elem több tokent is mutathat; egy token több elemnél is szerepelhet (a panel ilyenkor kiírja, hány szabályban és hány elemen hat).
+A **tulajdonság típusa** a tokenből jön (szín → palettaminta; hossz → csúszka a token tartományával; sorköz → csúszka, ha a DT155 engedi). Egy elem több tokent is mutathat; egy token több elemnél is szerepelhet (a panel ilyenkor kiírja, hány szabályban és hány elemen hat).
 
 **Választás a felületen:** kattintáskor a kattintott elemtől felfelé az első, regiszterbeli szelektorra illeszkedő elem lesz a kiválasztott (a legbelső). A panelen „Szülő elem ↑” lép egy szinttel feljebb a következő regisztrált elemre. Állapot-osztályok (`aktiv`, `kijelolt`) külön elemként szerepelnek, ha saját színük van (pl. „Nézetváltó gomb (aktív)”).
 
@@ -181,7 +181,7 @@ Jelmagyarázat: a token-nevek a 2–3. szakasz szerint; *szín* = a 10 színtoke
 
 **M. BDB-jelentésszerkezet** *(bővítés az M1 után, F98.14; **tervezet, a magyar nevek jóváhagyásra várnak**)*
 
-Forrás: az F98.9–F98.13 (`67d35334`…`33619789`) szabályai az `olvaso.css` 139–170. sorában és a `blokkok.py` `_vazlat_html` / `_torzsek_html` / `_fo_cim_html` / `_jelmagyarazat_html` / `_jeles` függvényei. Az `ol.jel` / `ol.al` szabályai az F98.9 óta a #60 pilot `sablon.html`-jének szabályai (a jelölő a `data-jel` attribútumból, `::before`-ral). A token-nevek a 3. szakasz jelölésével: `fs-jelentes-jel` = `betumeret.jelentes-jel` (13px), `fs-jelentes-cim` = `betumeret.jelentes-cim` (15.5px), `lh-jelentes-cim` = `sorkoz.jelentes-cim` (1.5); a `jelentes-cim` az F98.9-ben még `jelentes-osszegzo` volt, az F98.11 nevezte át. Csak a tokenből jövő tulajdonság szerepel; a literálok (`font-weight`, `min-width`, `padding-left`, `gap`, `margin`, `text-underline-offset`) nem állíthatók (DT-F98b).
+Forrás: az F98.9–F98.13 (`67d35334`…`33619789`) szabályai az `olvaso.css` 139–170. sorában és a `blokkok.py` `_vazlat_html` / `_torzsek_html` / `_fo_cim_html` / `_jelmagyarazat_html` / `_jeles` függvényei. Az `ol.jel` / `ol.al` szabályai az F98.9 óta a #60 pilot `sablon.html`-jének szabályai (a jelölő a `data-jel` attribútumból, `::before`-ral). A token-nevek a 3. szakasz jelölésével: `fs-jelentes-jel` = `betumeret.jelentes-jel` (13px), `fs-jelentes-cim` = `betumeret.jelentes-cim` (15.5px), `lh-jelentes-cim` = `sorkoz.jelentes-cim` (1.5); a `jelentes-cim` az F98.9-ben még `jelentes-osszegzo` volt, az F98.11 nevezte át. Csak a tokenből jövő tulajdonság szerepel; a literálok (`font-weight`, `min-width`, `padding-left`, `gap`, `margin`, `text-underline-offset`) nem állíthatók (DT154).
 
 | # | id | Magyar név | Szelektor | Állítható tulajdonságok |
 |---|---|---|---|---|
@@ -276,7 +276,7 @@ A szerver induláskor és minden mentés után a fájlból előállítja a mai `
 | hossz | `betumeret` | `px`, `rem`, `em` | px: 8–64 · rem/em: 0.5–4 |
 | hossz | `terkoz` | `px`, `rem`, `em` | px: 0–64 · rem/em: 0–4 |
 | hossz | `lekerekites` | `px` | 0–999 (a `pill` 999-e miatt) |
-| szorzó | `sorkoz` | szám, mértékegység nélkül | 1.0–2.4 *(csak ha a DT-F98c engedi)* |
+| szorzó | `sorkoz` | szám, mértékegység nélkül | 1.0–2.4 *(csak ha a DT155 engedi)* |
 | — | `betucsalad` | **nem írható** a mentési végponton (szabad szöveg) | — |
 
 A végpont csak a regiszterben valamely elemhez rendelt tokent fogadja; ismeretlen kulcs, rossz alak vagy tartományon kívüli érték → 400, a fájl változatlan.
@@ -351,11 +351,11 @@ Az értékek a mai `olvaso.css` **ténylegesen érvényes** deklarációi (a fel
 | `il-strong` | 11.5px | — | `.il-szo .st` | — |
 | `heb-betu` | 1.15em | — | `.heb` (szövegközi) | — |
 
-52 betűméret-token és 18 sorköz-token (a csempék közös 1.3-as sorköze egy token: `lh-csempe`; az LXX-csempéé `lh-lxx-csempe`). Az ugyanazon szerepű, ma azonos értékű helyek egy tokenen osztoznak (pl. `megjegyzes`: 7 szelektor); a különböző szerepű, véletlenül azonos értékűek külön tokent kapnak (pl. `szamlalo` és `megjegyzes`, mindkettő 13px) — így egy elem állítása nem húzza magával a szerepen kívüli elemeket (DT-F98a).
+52 betűméret-token és 18 sorköz-token (a csempék közös 1.3-as sorköze egy token: `lh-csempe`; az LXX-csempéé `lh-lxx-csempe`). Az ugyanazon szerepű, ma azonos értékű helyek egy tokenen osztoznak (pl. `megjegyzes`: 7 szelektor); a különböző szerepű, véletlenül azonos értékűek külön tokent kapnak (pl. `szamlalo` és `megjegyzes`, mindkettő 13px) — így egy elem állítása nem húzza magával a szerepen kívüli elemeket (DT153).
 
 ### 3.2 Térköz (`--space-*`)
 
-Csak a regiszterben kitett térközök (DT-F98b, javaslat (a)):
+Csak a regiszterben kitett térközök (DT154, javaslat (a)):
 
 | Token | Érték | Hol |
 |---|---|---|
@@ -403,7 +403,7 @@ A mai 10 színtoken változatlan nevekkel (`bg`, `panel`, `fg`, `muted`, `rule`,
 
 ### 3.5 Felülírt („holt”) deklarációk
 
-A `holt.py` 588 szelektoronkénti deklarációból **46-ot** talált, amelyet ugyanazon szelektor egy későbbi deklarációja teljesen felülír (az F76-arculat blokk a régi értékekre írt rá): pl. `body { font: 16px/1.5 … }` → 15px/1.6; `.jobb-oszlop { border-radius: 8px; padding: 10px 12px; font-size: 14.5px }`; `.he-szo { min-width: 64px; padding: 6px 8px }`; `.il-szo .hu { font-weight: 600 }`. Ezek a megjelenésre nem hatnak, de félrevezetők: aki a stíluslapban a `14.5px`-et keresi, rossz helyen állít. Javaslat: az M1 törli őket (DT-F98d), és a megjelenés-azonosság mérése ezt is lefedi.
+A `holt.py` 588 szelektoronkénti deklarációból **46-ot** talált, amelyet ugyanazon szelektor egy későbbi deklarációja teljesen felülír (az F76-arculat blokk a régi értékekre írt rá): pl. `body { font: 16px/1.5 … }` → 15px/1.6; `.jobb-oszlop { border-radius: 8px; padding: 10px 12px; font-size: 14.5px }`; `.he-szo { min-width: 64px; padding: 6px 8px }`; `.il-szo .hu { font-weight: 600 }`. Ezek a megjelenésre nem hatnak, de félrevezetők: aki a stíluslapban a `14.5px`-et keresi, rossz helyen állít. Javaslat: az M1 törli őket (DT156), és a megjelenés-azonosság mérése ezt is lefedi.
 
 ## 4. A panel működésének vázlata (4. lépés d)
 
@@ -461,16 +461,16 @@ A `holt.py` 588 szelektoronkénti deklarációból **46-ot** talált, amelyet ug
 
 A brief szerint a két pilot-szakasz (1Móz 1:1–2:3, Zsolt 22) és egy ÚSZ-fejezet lapjai a csere előtt és után azonosan renderelnek. **Módszer (javaslat):** a számított stílusok összevetése. Egy mérőszkript a futó szerver lapjain (1Moz/1, 1Moz/2, Zsolt/22, Jn/1; mindhárom nézetben; világos és sötét témában; egy héber és egy görög szó-lap) minden elemre kiírja a `getComputedStyle` méret-, szín- és tipográfia-tulajdonságait, a csere előtt és után; az összevetés 0 eltérést vár. Eszköz: Playwright (ha a `uv` környezetben telepíthető), egyébként a beépített böngésző JavaScript-eszköze ugyanazzal a mérő-szkripttel. Eltérésnél ⛔ megállás (a brief szerint). A mérés naplója proveniencia-sorral a zárónaplóba kerül.
 
-## 7. Döntésre váró pontok (DT-F98a–e, `DONTESEK.md`)
+## 7. Döntésre váró pontok (DT153–e, `DONTESEK.md`)
 
 | # | Kérdés | Javaslat |
 |---|---|---|
-| DT-F98a | A betűméret-tokenek szemcsézettsége: szerep szerinti tokenek (52, 3.1) vagy értékskála (kb. 24, pl. `fs-13`)? | szerep szerinti (az elemből induló állítás nem húzza magával a szerepen kívüli elemeket) |
-| DT-F98b | A térköz-tokenek köre: csak a regiszterben kitett térközök (35, a többi literál, listázva) vagy minden térköz-érték? | csak a kitett térközök |
-| DT-F98c | A sorköz állítható legyen-e (a brief a betűméretet, térközt, lekerekítést nevezi meg; a sorköz mértékegység nélküli szám)? | igen: `sorkoz` tokenek, 1.0–2.4 közti szám, a mentés értékszűrésében külön típus |
-| DT-F98d | A 46 felülírt („holt”) deklaráció: az M1 törli, vagy érintetlen marad? | törli (a megjelenés-azonosság mérése lefedi) |
-| DT-F98e | A token-blokk előállítása: dinamikus útvonal (`/arculat.css?v=<hash>`, nincs generált fájl a repóban) vagy generált, verziózott `statikus/arculat.css` (GENERÁLT fejléccel)? | dinamikus útvonal; a statikus export (`export.py`) ugyanabból a függvényből írja ki |
+| DT153 | A betűméret-tokenek szemcsézettsége: szerep szerinti tokenek (52, 3.1) vagy értékskála (kb. 24, pl. `fs-13`)? | szerep szerinti (az elemből induló állítás nem húzza magával a szerepen kívüli elemeket) |
+| DT154 | A térköz-tokenek köre: csak a regiszterben kitett térközök (35, a többi literál, listázva) vagy minden térköz-érték? | csak a kitett térközök |
+| DT155 | A sorköz állítható legyen-e (a brief a betűméretet, térközt, lekerekítést nevezi meg; a sorköz mértékegység nélküli szám)? | igen: `sorkoz` tokenek, 1.0–2.4 közti szám, a mentés értékszűrésében külön típus |
+| DT156 | A 46 felülírt („holt”) deklaráció: az M1 törli, vagy érintetlen marad? | törli (a megjelenés-azonosság mérése lefedi) |
+| DT157 | A token-blokk előállítása: dinamikus útvonal (`/arculat.css?v=<hash>`, nincs generált fájl a repóban) vagy generált, verziózott `statikus/arculat.css` (GENERÁLT fejléccel)? | dinamikus útvonal; a statikus export (`export.py`) ugyanabból a függvényből írja ki |
 
 ## 8. Állapot
 
-M0 kész, **⛔ jóváhagyásra vár**: a felhasználó a regiszter (1.1) magyar neveit és a tulajdonságok körét, valamint a DT-F98a–e-t hagyja jóvá vagy módosítja. Az M1 a jóváhagyás után indul, ugyanezen az ágon (`claude/tervezo-mod`).
+M0 kész, **⛔ jóváhagyásra vár**: a felhasználó a regiszter (1.1) magyar neveit és a tulajdonságok körét, valamint a DT153–e-t hagyja jóvá vagy módosítja. Az M1 a jóváhagyás után indul, ugyanezen az ágon (`claude/tervezo-mod`).

@@ -4,14 +4,14 @@
 
 *A commit-hivatkozások az `origin/main`-re való, ütközés nélküli rebase után az új hash-ekre frissítve (F98.27; az ellenőrzött fa tartalma azonos): az ellenőrzéskori HEAD `94162dc9` → `236000d4`, az F98.3 `77022490` → `5e888c89`. A merge-base (`147ada81`, a main commitja) az ellenőrzéskori állapotot írja le, változatlan.*
 
-A merge-base `147ada81`; az ág 3 committal le van maradva az `origin/main` mögött (F99.0 befogadás stb.), ezért az ellenőrzés a háromárú diffre (`origin/main...HEAD`, 28 fájl, +5666/−158) épül. A brief-ben nincs G/D jelölés; helyette a 3. (biztonság), 4. (lépések), 5. (elfogadás) pont és a DT-F98a–f.
+A merge-base `147ada81`; az ág 3 committal le van maradva az `origin/main` mögött (F99.0 befogadás stb.), ezért az ellenőrzés a háromárú diffre (`origin/main...HEAD`, 28 fájl, +5666/−158) épül. A brief-ben nincs G/D jelölés; helyette a 3. (biztonság), 4. (lépések), 5. (elfogadás) pont és a DT153–f.
 
 **ELTÉRÉS: 5 tétel**
 
 | pont | eredmény | hely | indok |
 |---|---|---|---|
-| modell | ELTÉRÉS (kisebb) | commit 5e888c89 | 21 commit „Claude Opus 5.5”, az F98.3 (DT-F98a–e rögzítése) „Claude Sonnet 5.5” (az orkesztrátor-session modellje), a brief `modell: opus`. A naplókban a modell mindenhol `claude-opus-5-5`; adattábla-`modell` mező nincs a diffben. |
-| DT-F98a–f | OK | DONTESEK.md:228–233 | mind 🟢, a felhasználó chatbeli döntésével; végleges DT-szám nincs |
+| modell | ELTÉRÉS (kisebb) | commit 5e888c89 | 21 commit „Claude Opus 5.5”, az F98.3 (DT153–e rögzítése) „Claude Sonnet 5.5” (az orkesztrátor-session modellje), a brief `modell: opus`. A naplókban a modell mindenhol `claude-opus-5-5`; adattábla-`modell` mező nincs a diffben. |
+| DT153–f | OK | DONTESEK.md:228–233 | mind 🟢, a felhasználó chatbeli döntésével; végleges DT-szám nincs |
 | csak `belso` kiadás | OK | alkalmazas.py, oldalak.py:162–165, alap.html | `teszt_tervezo.py:390–402`: más kiadásban minden `/tervezo/*` 404, a HTML-ben nincs „tervezo” |
 | loopback + proxy-fejlécek + helyi Host | **ELTÉRÉS (közepes)** | tervezo.py:351–369; README; zaras.md:332 | A kód a `remote_addr`-t, a tiltott fejlécek hiányát, a `Host`-ot és az `Origin`/`Sec-Fetch-Site`-ot vizsgálja. Az nginx alapbeállítása (`proxy_pass http://127.0.0.1:8000`) nem ad XFF-et, és a Host-ot `127.0.0.1:8000`-re írja: egy távoli `curl` (Origin/Sec-Fetch-Site nélkül) átmegy, a `GET /tervezo/kod` kódot ad, a `POST /tervezo/mentes` ír. A README és a napló „fordított proxy mögött a mentés nem működik” állítása csak a továbbító fejlécet adó/külső Hostot megtartó proxyra igaz (Caddy). A proxy-választás nyitott (N-F76d). Teszt nem fedi. Javaslat: kifejezett kapcsoló (pl. `PARDES_TERVEZO=1`) vagy a bind-cím ellenőrzése. |
 | POST + egyszeri kód | OK | tervezo.py:414–433, 540–578 | a kód a `GET /tervezo/kod`-ról jön (M0-ban jóváhagyott eltérés a „kód a lapban”-tól: a lap gyorsítótárazott); `hmac.compare_digest`, egyszer használható |

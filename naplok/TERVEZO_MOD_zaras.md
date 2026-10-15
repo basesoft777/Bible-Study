@@ -1,20 +1,20 @@
 # TERVEZO_MOD — zárónapló (#98)
 
-*A napló szakaszonként bővül: M1 (előkészítés), M2 (tervező mód és mentés), M3 (felhasználói próba), zárás. Az M0 terve: `naplok/TERVEZO_MOD_M0.md`; a döntések: DT-F98a–f, a zárásnál nyitott DT-F98g, `DONTESEK.md`; az ellenőri napló: `naplok/ELLENOR_TERVEZO_MOD.md`.*
+*A napló szakaszonként bővül: M1 (előkészítés), M2 (tervező mód és mentés), M3 (felhasználói próba), zárás. Az M0 terve: `naplok/TERVEZO_MOD_M0.md`; a döntések: DT153–f, a zárásnál nyitott DT159, `DONTESEK.md`; az ellenőri napló: `naplok/ELLENOR_TERVEZO_MOD.md`.*
 
 ## M1 — előkészítés
 
 *Modell: `claude-opus-5-5`. Ág: `claude/tervezo-mod`, alap `5e888c89` (F98.3). Állapot: **kész**; a megjelenés-azonosság mérése **0 eltérést** ad. A következő lépés az M2, amelyet a felhasználó „mehet”-je indít.*
 
-A felhasználó 2026-10-14-én a chatben jóváhagyta az M0-t (a regiszter magyar nevei és tulajdonság-köre), és a DT-F98a–e mind (a) szerint dőlt el. Az M1 ezek szerint készült.
+A felhasználó 2026-10-14-én a chatben jóváhagyta az M0-t (a regiszter magyar nevei és tulajdonság-köre), és a DT153–e mind (a) szerint dőlt el. Az M1 ezek szerint készült.
 
 ### M1.1 A token-fájl (`eszkozok/olvaso_szerver/konfig/arculat.json`)
 
-- **Tartalom:** 10 szín (világos és sötét érték), 5 betűcsalád, **52 betűméret** (DT-F98a, szerep szerint), **18 sorköz** (DT-F98c), **35 térköz** (DT-F98b, csak a regiszterben kitettek), **6 lekerekítés**. Az értékek a mai `olvaso.css` ténylegesen érvényes deklarációi, az M0 3. szakaszának névjegyzéke szerint. A fájl 4 158 bájt, `sha256` 16 jegye `13b0c486cc801556` (ez a lapokon a `/arculat.css?v=` értéke).
+- **Tartalom:** 10 szín (világos és sötét érték), 5 betűcsalád, **52 betűméret** (DT153, szerep szerint), **18 sorköz** (DT155), **35 térköz** (DT154, csak a regiszterben kitettek), **6 lekerekítés**. Az értékek a mai `olvaso.css` ténylegesen érvényes deklarációi, az M0 3. szakaszának névjegyzéke szerint. A fájl 4 158 bájt, `sha256` 16 jegye `13b0c486cc801556` (ez a lapokon a `/arculat.css?v=` értéke).
 - **Forma:** JSON, rendezett kulcsok, 2 szóközös behúzás, záró újsor; csak értékek, szabad szöveg nélkül (a magyar nevek az M2 regiszterébe kerülnek).
-- **Ellenőrzés betöltéskor** (`arculat.py`): ismeretlen csoport, rossz token-név (csak kisbetű, szám, kötőjel), rossz alakú érték (szín: `#rgb`, `#rrggbb`, `rgb()`, `hsl()`; betűméret és térköz: `px`/`rem`/`em`; lekerekítés: `px`; sorköz: mértékegység nélküli szám; betűcsalád: betű, szám, szóköz, idézőjel, vessző, kötőjel) → indulási hiba, a hibás kulcs megnevezésével. A **tartományokat** a betöltés nem ellenőrzi: azok az M2 mentési végpontjához tartoznak (l. DT-F98f).
+- **Ellenőrzés betöltéskor** (`arculat.py`): ismeretlen csoport, rossz token-név (csak kisbetű, szám, kötőjel), rossz alakú érték (szín: `#rgb`, `#rrggbb`, `rgb()`, `hsl()`; betűméret és térköz: `px`/`rem`/`em`; lekerekítés: `px`; sorköz: mértékegység nélküli szám; betűcsalád: betű, szám, szóköz, idézőjel, vessző, kötőjel) → indulási hiba, a hibás kulcs megnevezésével. A **tartományokat** a betöltés nem ellenőrzi: azok az M2 mentési végpontjához tartoznak (l. DT158).
 
-### M1.2 A token-blokk a szerveren (DT-F98e)
+### M1.2 A token-blokk a szerveren (DT157)
 
 - `arculat.css_blokk()` állítja elő a régi `olvaso.css` 3–15. sorának megfelelő blokkot: `:root` minden tokennel (a színek világos értékével), `@media (prefers-color-scheme: dark) { :root:not([data-tema="light"]) { … } }` és `:root[data-tema="dark"] { … }` (a színek sötét értékével, `color-scheme: dark`). Fejléce `/* GENERÁLT: … */`.
 - **Útvonal:** `GET /arculat.css` (`alkalmazas.py`): `text/css; charset=utf-8`, `ETag: "arculat-<hash>"`, 304 az egyező `If-None-Match`-re; a jelenlegi hash-sel kért változat `public, max-age=31536000, immutable`, minden más kérés `no-cache`. Minden kiadásban létezik (az arculat része, nem a tervező módé).
@@ -26,7 +26,7 @@ A felhasználó 2026-10-14-én a chatben jóváhagyta az M0-t (a regiszter magya
 ### M1.3 A stíluslap (`statikus/olvaso.css`)
 
 - A `:root` és a két sötét téma-blokk kikerült. A betűméret, a sorköz és a lekerekítés minden előfordulása, valamint a 35 kitett térköz `var(--…)`-hivatkozás. A stíluslapban nincs CSS-változó definíció és nincs színérték; minden `var()` létező token, és minden token használt (teszt).
-- **DT-F98d — a felülírt deklarációk törlése: 42 deklaráció.** Az M0 felmérése (`holt.py`) 46-ot számolt. Az M1 elemzője (`css_elemzo.py`, a session scratch-könyvtárában) szigorúbb: egy deklaráció csak akkor holt, ha ugyanazon szelektor (a szelektorlistát egyenként nézve), ugyanabban a média-környezetben egy későbbi deklarációja **minden longhandjét** felülírja (a `font`, `padding`, `margin`, `border-radius`, `gap`, `border`, `text-decoration`, `background` rövidítéseket longhandekre bontva). A különbség a **részben** felülírt rövidítésekből adódik: például a `.jelleg { font: 500 12.5px var(--font-ui) }` betűméretét a későbbi `font-size` felülírja, de a vastagságát és a családját nem, ezért nem holt. A törölt 42:
+- **DT156 — a felülírt deklarációk törlése: 42 deklaráció.** Az M0 felmérése (`holt.py`) 46-ot számolt. Az M1 elemzője (`css_elemzo.py`, a session scratch-könyvtárában) szigorúbb: egy deklaráció csak akkor holt, ha ugyanazon szelektor (a szelektorlistát egyenként nézve), ugyanabban a média-környezetben egy későbbi deklarációja **minden longhandjét** felülírja (a `font`, `padding`, `margin`, `border-radius`, `gap`, `border`, `text-decoration`, `background` rövidítéseket longhandekre bontva). A különbség a **részben** felülírt rövidítésekből adódik: például a `.jelleg { font: 500 12.5px var(--font-ui) }` betűméretét a későbbi `font-size` felülírja, de a vastagságát és a családját nem, ezért nem holt. A törölt 42:
 
 | Sor (régi) | Szelektor | Deklaráció |
 |---|---|---|
@@ -110,14 +110,14 @@ A felhasználó 2026-10-14-én a chatben jóváhagyta az M0-t (a regiszter magya
 
 *Proveniencia:* `scope=eszkozok/olvaso_szerver/ (olvaso.css előtte 16 156 B sha256 dd8f415d23cd295e @5e888c89, utána 16 952 B sha256 2f88b7c53315ac89 @61e2b626; konfig/arculat.json 4 158 B sha256 13b0c486cc801556), pardes.db a munkafa gyökerében, belső kiadás, 26 lapállapot × 3 téma, 35 813 elem | forras=meres.js (sha256 a27d0b54a9c3b578, 57 számított tulajdonság + befoglaló téglalap, SHA-256 lapállapotonként) a Claude desktop beépített böngészőjében, két egyidejű szerver (8801: git archive 5e888c89, 8802: munkafa) a pardes WSL-ben (Python 3.12.3, Flask 3.1.3); css_ekvivalencia.py, css_elemzo.py | ts=2026-10-14`
 
-### M1.5 A literálként maradt térközök és méretek (DT-F98b)
+### M1.5 A literálként maradt térközök és méretek (DT154)
 
-A DT-F98b szerint csak a regiszterben kitett 35 térköz token; a stíluslap többi hosszértéke literál marad. Az alábbi lista gépi (`literalok_md.py`, a session scratch-könyvtárában), a mai `olvaso.css` minden olyan deklarációja, amelynek az értékében `var()`-on kívül hosszérték áll; a sorszám az új stíluslapé.
+A DT154 szerint csak a regiszterben kitett 35 térköz token; a stíluslap többi hosszértéke literál marad. Az alábbi lista gépi (`literalok_md.py`, a session scratch-könyvtárában), a mai `olvaso.css` minden olyan deklarációja, amelynek az értékében `var()`-on kívül hosszérték áll; a sorszám az új stíluslapé.
 
 | Kód | Indok | Deklaráció |
 |---|---|---|
 | V | vonalvastagság (1–3px); a vonal színe token (`rule`, `accent`), a vastagság nem arculati méret | 25 |
-| M | címsor-, bekezdés- és blokk-margó, lista-behúzás; a regiszter nem teszi ki (DT-F98b) | 41 |
+| M | címsor-, bekezdés- és blokk-margó, lista-behúzás; a regiszter nem teszi ki (DT154) | 41 |
 | G | belső sor- és oszlopköz egy regiszterben ki nem tett tárolóban (1–12px) | 13 |
 | P | belső térköz olyan elemen, amelynek a regiszter nem ad térköz-tulajdonságot (szintváltó, fül, témaváltó, jel-címke, állapot, helyszám, gyorsugró mező, táblázat-cella) | 16 |
 | E | elrendezési méret (szélesség, legkisebb szélesség, magasság, oszlop, ragadós eltolás, `ch`/`vw`/`vh`); elrendezés-szerkesztés nincs a hatókörben | 14 |
@@ -269,9 +269,9 @@ Az `eszkozok/feladatok.py ellenoriz`: 118 brief, 0 hiba, 0 figyelmeztetés.
 
 ### M1.7 Megfigyelések és nyitott tételek az M2-höz
 
-1. **DT-F98f (🟡, `DONTESEK.md`): a térköz tartománya.** Az M0 2.2 a mentés térköz-tartományát javaslatként 0–64px-re tette, a `terkoz.he-csempe-min` mai értéke viszont 72px. A mentési végpont (M2) értékszűréséhez döntés kell; javaslat: (a) 0–128px (rem/em 0–8). A többi mai érték az M0 2.2 tartományán belül van.
+1. **DT158 (🟡, `DONTESEK.md`): a térköz tartománya.** Az M0 2.2 a mentés térköz-tartományát javaslatként 0–64px-re tette, a `terkoz.he-csempe-min` mai értéke viszont 72px. A mentési végpont (M2) értékszűréséhez döntés kell; javaslat: (a) 0–128px (rem/em 0–8). A többi mai érték az M0 2.2 tartományán belül van.
 2. **A regiszter és a tokenek.** Az M0 regiszter-tervezetének (1.1) mind a 104 méret- és 10 színhivatkozása létező token. Hét méret-token nincs egyetlen regiszter-elemen sem: `fs-alcim` (`h3`), `fs-kiscim` (`h4`), `fs-csempe-megj` (`.he-szo .mf`, `.he-szo .lx.ures`), `fs-il-eredeti-sor` (`.il-szo .er`, `.il-parositatlan`), `lh-jelleg`, `lh-lxx-csempe`, `space-oszlopkoz` (`.oszlopok`). Ezek az M2-ben a tartalékon (regisztrálatlan elem) át állíthatók; ha a felhasználó magyar nevet akar melléjük, a regiszter bővíthető (a jóváhagyott regiszter M1-ben nem változott).
-3. **A naplóhely.** A brief `ir` mezője a `naplok/TERVEZO_MOD_M0.md`-t és ezt a zárónaplót engedi írni, ezért az M1 naplója ennek az M1 szakasza (a DT-F98b „az M1 naplójában” megfogalmazása ezt jelenti). Az F98.7 commit üzenete még `naplok/TERVEZO_MOD_M1.md`-t nevez meg; a stíluslap fejkommentje már ide mutat (F98.10).
+3. **A naplóhely.** A brief `ir` mezője a `naplok/TERVEZO_MOD_M0.md`-t és ezt a zárónaplót engedi írni, ezért az M1 naplója ennek az M1 szakasza (a DT154 „az M1 naplójában” megfogalmazása ezt jelenti). Az F98.7 commit üzenete még `naplok/TERVEZO_MOD_M1.md`-t nevez meg; a stíluslap fejkommentje már ide mutat (F98.10).
 4. **A zárónapló szakaszai.** A tervező mód elkészülte után, az M2-ben a regiszter (`elemek.toml`) és a regiszter-őr, a mentési végpont tesztjei és a szinkron-szkript kerülnek ide; az M3-ban a felhasználó észrevételei.
 
 ### M1 utáni változás (F98.9, a felhasználó commitja, 67d35334)
@@ -298,7 +298,7 @@ Az F98.9 után három további commit került az ágra a BDB-jelentésszerkezetr
 
 *Modell: `claude-opus-5-5`. Ág: `claude/tervezo-mod`, alap `9e2e4af1` (F98.14); commitok: `67bbf736` (F98.15) … `10ff85d5` (F98.20). Állapot: **kész, ⛔ M3 (a felhasználó kipróbálja)**.*
 
-A felhasználó 2026-10-15-én a chatben jóváhagyta a regiszter 74–83. sorának magyar neveit (a 83. `jelentes-jelolo` sorral együtt); a `.jcim .he` / `.jel-vazlat .he` nem kap sort. A DT-F98a–f mind eldőlt (DT-F98f: (a)). Kérése volt még, hogy a `jt` (az F98.11 óta nem létező osztály) a végleges kizárt listára ne kerüljön, és az M0 1.2-ből is kikerüljön.
+A felhasználó 2026-10-15-én a chatben jóváhagyta a regiszter 74–83. sorának magyar neveit (a 83. `jelentes-jelolo` sorral együtt); a `.jcim .he` / `.jel-vazlat .he` nem kap sort. A DT153–f mind eldőlt (DT158: (a)). Kérése volt még, hogy a `jt` (az F98.11 óta nem létező osztály) a végleges kizárt listára ne kerüljön, és az M0 1.2-ből is kikerüljön.
 
 ### M2.1 Az elem-regiszter (`konfig/elemek.toml`, F98.15)
 
@@ -329,7 +329,7 @@ A felhasználó 2026-10-15-én a chatben jóváhagyta a regiszter 74–83. sorá
 
 A `/tervezo/terkep.json` (csak `belso`): a regiszter (szelektor-részek és közelítő specifitás), a tokenek (érték, csoport, típus, írható-e), a mentés tartományai, és a stíluslap szabálytérképe (`css_szabalyok`: szelektor → tokenes deklarációk; a dinamikus állapot — `:hover`, `:focus-visible`, `:target`, `::before` … — levágva és megjelölve, a média-lekérdezés megőrizve; a csak ál-elemből álló szelektor, pl. `::selection`, kimarad).
 
-**Korlát:** Fordított proxy mögött a feltétel csak akkor tartja távol a távoli kérést, ha a proxy továbbító fejlécet ad (`X-Forwarded-For`/`Forwarded`/`X-Real-IP`) vagy a külső `Host`-ot továbbítja: így a Caddy alapbeállítása. Az nginx alapbeállítása (`proxy_pass http://127.0.0.1:8000`, `proxy_set_header` nélkül) egyiket sem teszi: a kérés loopbackről, továbbító fejléc nélkül és `Host: 127.0.0.1:8000`-rel érkezik, így egy távoli, `Origin`/`Sec-Fetch-Site` nélküli kérés (pl. `curl`) átmegy a feltételen (a `GET /tervezo/kod` kódot ad, a `POST /tervezo/mentes` ír). A `belso` kiadást ezért proxy mögé csak továbbító fejlécet adó konfigurációval szabad tenni; a kérdés nyitott (DT-F98g, a proxy-választás: N-F76d; az ellenőri napló: `naplok/ELLENOR_TERVEZO_MOD.md`). *(Pontosítva a zárásnál, F98.25: a korábbi „fordított proxy mögött a mentés nem működik” állítás csak a továbbító fejlécet adó vagy a külső Host-ot megtartó proxyra igaz.)* Továbbá: több workerrel a mentés csak az egyik worker arculatát töltené újra. A tervező mód az egy workeres helyi futtatáshoz való (README).
+**Korlát:** Fordított proxy mögött a feltétel csak akkor tartja távol a távoli kérést, ha a proxy továbbító fejlécet ad (`X-Forwarded-For`/`Forwarded`/`X-Real-IP`) vagy a külső `Host`-ot továbbítja: így a Caddy alapbeállítása. Az nginx alapbeállítása (`proxy_pass http://127.0.0.1:8000`, `proxy_set_header` nélkül) egyiket sem teszi: a kérés loopbackről, továbbító fejléc nélkül és `Host: 127.0.0.1:8000`-rel érkezik, így egy távoli, `Origin`/`Sec-Fetch-Site` nélküli kérés (pl. `curl`) átmegy a feltételen (a `GET /tervezo/kod` kódot ad, a `POST /tervezo/mentes` ír). A `belso` kiadást ezért proxy mögé csak továbbító fejlécet adó konfigurációval szabad tenni; a kérdés nyitott (DT159, a proxy-választás: N-F76d; az ellenőri napló: `naplok/ELLENOR_TERVEZO_MOD.md`). *(Pontosítva a zárásnál, F98.25: a korábbi „fordított proxy mögött a mentés nem működik” állítás csak a továbbító fejlécet adó vagy a külső Host-ot megtartó proxyra igaz.)* Továbbá: több workerrel a mentés csak az egyik worker arculatát töltené újra. A tervező mód az egy workeres helyi futtatáshoz való (README).
 
 ### M2.4 A kliens (`tervezo_statikus/tervezo.js`, `tervezo.css`, F98.17)
 
@@ -399,11 +399,11 @@ Az `eszkozok/feladatok.py ellenoriz`: 118 brief, 0 hiba, 0 figyelmeztetés.
 - **Mentési végpont (F98.24).** A token létezését a mentés a **lemezes** token-fájl alapján vizsgálja (arra ír): a lemezen hiányzó kulcs 400 („nem regisztrált token”), nem `KeyError`/500. A nem érvényes lemezes fájl (rossz JSON vagy forma) külön hibát ad: 500, „a lemezes token-fájl nem érvényes, a mentés nem írt: …” (nem „a törzs nem érvényes JSON”). A fájl mindkét esetben változatlan; egy új teszt (3 eset).
 - **Proxy-állítás (F98.25).** A README és az M2.3 „Korlát” bekezdése nem állítja többé, hogy fordított proxy mögött a mentés nem működik: a feltétel továbbító fejlécet adó vagy a külső `Host`-ot megtartó proxy (Caddy) mögött tart, az nginx alapbeállítása mögött megkerülhető. A viselkedés nem változott.
 
-**Nyitva:** **DT-F98g** (🟡, `DONTESEK.md`): a helyi-kérés feltétel megkerülhetősége alapértelmezett nginx mögött; opciók: (a) kifejezett kapcsoló (`PARDES_TERVEZO=1`), (b) bind-cím ellenőrzése, (c) a #76 M5 proxy-konfigja (N-F76d) zárja ki; javaslat (a). Tartalmi döntés a zárásban nincs.
+**Nyitva:** **DT159** (🟡, `DONTESEK.md`): a helyi-kérés feltétel megkerülhetősége alapértelmezett nginx mögött; opciók: (a) kifejezett kapcsoló (`PARDES_TERVEZO=1`), (b) bind-cím ellenőrzése, (c) a #76 M5 proxy-konfigja (N-F76d) zárja ki; javaslat (a). Tartalmi döntés a zárásban nincs.
 
 **Megjegyzések.**
 
-- **Az F98.3 commit modellje.** A brief `modell: opus`; az F98.3 (a DT-F98a–e rögzítése a `DONTESEK.md`-ben) „Claude Sonnet 5.5” társszerzővel, az orkesztrátor-sessionből készült. A commit csak a felhasználó chatbeli döntéseit rögzíti, értelmező vagy adat-tartalmat nem ír; a naplókban a modell mindenhol `claude-opus-5-5`, adattábla-`modell` mező a diffben nincs.
+- **Az F98.3 commit modellje.** A brief `modell: opus`; az F98.3 (a DT153–e rögzítése a `DONTESEK.md`-ben) „Claude Sonnet 5.5” társszerzővel, az orkesztrátor-sessionből készült. A commit csak a felhasználó chatbeli döntéseit rögzíti, értelmező vagy adat-tartalmat nem ír; a naplókban a modell mindenhol `claude-opus-5-5`, adattábla-`modell` mező a diffben nincs.
 - **Az F98.9 és az F98.11–F98.13 (BDB-jelentésszerkezet)** a felhasználó külön munkája ezen az ágon, F98-előtaggal, a #98-ba keveredve (`blokkok.py`, `bdb_jelek.tsv`, `teszt_olvaso_szerver.py`, `olvaso.css`, `arculat.json`, `teszt_szintek.py`). A brief hatóköre a blokk-tartalom módosítását kizárja; a regiszter 74–83. sora és a szelektor-teszt rájuk épül, ezért nem választhatók le. A PR leírása ezt jelzi.
 - Az ág a zárás előtt az `origin/main`-re rebase-elődött; a naplók commit-hivatkozásai a rebase után frissültek (F98.27).
 

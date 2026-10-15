@@ -9,7 +9,7 @@ munka: folyamat
 allapot: lezarva
 ag: claude/tervezo-mod
 ad: tervező mód a belső kiadásban: elem kiválasztása a futó felületen, csak az elem tulajdonságai magyar néven, azonnali előnézet, „Küldés a szerverre” külön gombbal egy arculati token-fájlba; elem-regiszter és regiszter-őr teszt, tartalék a regisztrálatlan elemekre; a méretek változókra cserélve, a megjelenés változatlan; szinkron-kimenet a design systemhez
-kovetkezo: "Lezárva; merge a felhasználótól (draft PR). Nyitva: DT-F98g (a helyi-kérés feltétel alapértelmezett nginx mögött); utána a #76 M3"
+kovetkezo: "Lezárva; merge a felhasználótól (draft PR). Nyitva: DT159 (a helyi-kérés feltétel alapértelmezett nginx mögött); utána a #76 M3"
 olvas: [F76_OLVASOI_KONKORDANCIA_BRIEF.md, eszkozok/olvaso_szerver/README.md, eszkozok/olvaso_szerver/statikus/olvaso.css, eszkozok/olvaso_szerver/sablonok/alap.html, eszkozok/olvaso_szerver/alkalmazas.py, eszkozok/olvaso_szerver/hozzaferes.py, eszkozok/olvaso_szerver/konfig/szerver.toml, naplok/OLVASOI_KONKORDANCIA_M0.md]
 ir: [eszkozok/olvaso_szerver/, naplok/TERVEZO_MOD_M0.md, naplok/TERVEZO_MOD_zaras.md]
 pr: https://github.com/basesoft777/Bible-Study/pull/349
