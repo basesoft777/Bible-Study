@@ -8,6 +8,7 @@ munka: adat
 modell: sonnet
 allapot: lezarva
 ag: claude/f93-tipnr-token-hiany
+pr: https://github.com/basesoft777/Bible-Study/pull/355
 lezarva_osszegzes: "A TIPNR 62 token nélküli alapszáma (88 sor; 16 görög, 46 héber) mind osztályozva, 17 nem eldönthető; a jelölés a naplok/F93_alapszamok.tsv-ben és a jelentésben áll (DT-F93a–d, N-F93a–c); az osztálylista bővülését a jelentés Egyeztetett eltérés szakasza rögzíti."
 ad: a 62 alapszám (88 TIPNR-sor) mindegyike osztályozva (szövegváltozat / számozási eltérés / adathiány / nem eldönthető), forrásmegjelöléssel naplózva; az eredmény jelölés, nem javítás
 kovetkezo: "—"
