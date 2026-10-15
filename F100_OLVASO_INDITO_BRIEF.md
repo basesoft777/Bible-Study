@@ -6,12 +6,12 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: folyamat
-allapot: fut
+allapot: megallt
 ag: claude/olvaso-indito
 ad: egy közös indító-szkript, amelyet a három asztali parancsikon hív: leállítja a régi példányt, a WSL-beli pardes.db-t a Windows-oldalihoz igazítja (csak eltérésnél másol), és kódváltozáskor magától újrainduló szervert indít; a lap láblécében ág, kódverzió és adatbázis, figyelmeztetéssel, ha valami nem friss; a tesztek egyetlen belépési pontról, natív fájlokból futnak
-kovetkezo: Folytatás: M1 (indító, újratöltő, lábléc; a teszt_szintek.py idejének mérése); DT-F100a (c) és DT-F100b (igen, csak 8765, ütemezés az M2 után jóváhagyással) eldöntve; ⛔ M2
+kovetkezo: Te: a három parancsikon kipróbálása (M2 ⛔)
 olvas: [eszkozok/olvaso_szerver/README.md, eszkozok/olvaso_szerver/frissesseg.py, eszkozok/olvaso_szerver/manifest_pardes_db.tsv, eszkozok/olvaso_szerver/pyproject.toml]
-ir: [eszkozok/olvaso_szerver/indit.sh, eszkozok/olvaso_szerver/alkalmazas.py, eszkozok/olvaso_szerver/sablonok/alap.html, eszkozok/olvaso_szerver/teszt_indito.py, eszkozok/olvaso_szerver/README.md, eszkozok/teszt_futtat.py, CLAUDE.md, naplok/OLVASO_INDITO_zaras.md]
+ir: [eszkozok/olvaso_szerver/indit.sh, eszkozok/olvaso_szerver/allapot.py, eszkozok/olvaso_szerver/alkalmazas.py, eszkozok/olvaso_szerver/oldalak.py, eszkozok/olvaso_szerver/sablonok/alap.html, eszkozok/olvaso_szerver/teszt_indito.py, eszkozok/olvaso_szerver/README.md, eszkozok/teszt_futtat.py, CLAUDE.md, .gitattributes, naplok/OLVASO_INDITO_M1_merés.md, naplok/OLVASO_INDITO_M2_gepi_proba.md, naplok/OLVASO_INDITO_zaras.md]
 fugg: []
 nem_fugg: [76]
 ---
