@@ -9,7 +9,7 @@ munka: folyamat
 allapot: megallt
 ag: claude/tervezo-mod
 ad: tervező mód a belső kiadásban: elem kiválasztása a futó felületen, csak az elem tulajdonságai magyar néven, azonnali előnézet, „Küldés a szerverre” külön gombbal egy arculati token-fájlba; elem-regiszter és regiszter-őr teszt, tartalék a regisztrálatlan elemekre; a méretek változókra cserélve, a megjelenés változatlan; szinkron-kimenet a design systemhez
-kovetkezo: "Te: az új regiszter-sorok (naplok/TERVEZO_MOD_M0.md 1.1, M. BDB-jelentésszerkezet, 74–83) magyar neveinek jóváhagyása; utána az M2 ugyanezen az ágon — elem-regiszter (elemek.toml) és regiszter-őr, tervező mód kliens, mentési végpont (DT-F98f: (a), a térköz 0–128px, rem/em 0–8), szinkron-szkript; ⛔ M3 (a felhasználó kipróbálja)"
+kovetkezo: "Te: ⛔ M3 — a tervező mód kipróbálása a futó szerveren (belso kiadás, helyi gép: kapcsoló a fejlécben, kiválasztás, állítás, előnézet, visszavonás, Küldés a szerverre, Előző mentés vissza; menet: naplok/TERVEZO_MOD_zaras.md M2); az észrevételeid javítása ugyanezen az ágon, utána zárás (független ellenőr, draft PR)"
 olvas: [F76_OLVASOI_KONKORDANCIA_BRIEF.md, eszkozok/olvaso_szerver/README.md, eszkozok/olvaso_szerver/statikus/olvaso.css, eszkozok/olvaso_szerver/sablonok/alap.html, eszkozok/olvaso_szerver/alkalmazas.py, eszkozok/olvaso_szerver/hozzaferes.py, eszkozok/olvaso_szerver/konfig/szerver.toml, naplok/OLVASOI_KONKORDANCIA_M0.md]
 ir: [eszkozok/olvaso_szerver/, naplok/TERVEZO_MOD_M0.md, naplok/TERVEZO_MOD_zaras.md]
 fugg: []

@@ -293,3 +293,94 @@ Az F98.9 után három további commit került az ágra a BDB-jelentésszerkezetr
 - **Megjelenés:** a szó-lapok BDB-blokkja szándékosan változott (vázlat, jelentéscím, jelmagyarázat); az M1 megjelenés-azonossági mérését ezek a commitok nem érintik, mert az a 223efd45 állapotára vonatkozik. Új mérés ezekről a lapokról nem készült.
 
 *Proveniencia:* `scope=git diff 84f211ed..ec98a5b2 -- eszkozok/olvaso_szerver/{konfig/arculat.json,statikus/olvaso.css,blokkok.py}; arculat.tartalom_hash(konfig/arculat.json @ec98a5b2 és @84f211ed) | forras=git, eszkozok/olvaso_szerver/arculat.py | ts=2026-10-15`
+
+## M2 — tervező mód és mentés
+
+*Modell: `claude-opus-5-5`. Ág: `claude/tervezo-mod`, alap `fa344619` (F98.14); commitok: `019e1c30` (F98.15) … `03acfcb0` (F98.20). Állapot: **kész, ⛔ M3 (a felhasználó kipróbálja)**.*
+
+A felhasználó 2026-10-15-én a chatben jóváhagyta a regiszter 74–83. sorának magyar neveit (a 83. `jelentes-jelolo` sorral együtt); a `.jcim .he` / `.jel-vazlat .he` nem kap sort. A DT-F98a–f mind eldőlt (DT-F98f: (a)). Kérése volt még, hogy a `jt` (az F98.11 óta nem létező osztály) a végleges kizárt listára ne kerüljön, és az M0 1.2-ből is kikerüljön.
+
+### M2.1 Az elem-regiszter (`konfig/elemek.toml`, F98.15)
+
+- **83 `[[elem]]`** a jóváhagyott M0 1.1 szerint (A–L: 1–73, M: 74–83), elemenként `id`, `nev` (magyar név), `csoport`, `szelektor`, `tulajdonsag` (magyar név → token). A magyar nevek a jóváhagyott táblázat szövege. Ahol a táblázat egy tulajdonsághoz két tokent adott (pl. „Belső térköz → `space-gomb-fugg`, `space-gomb-vizsz`”), a regiszterben két tulajdonság áll zárójeles megkülönböztetéssel („Belső térköz (függőleges)”, „(vízszintes)”; a 16. sornál „(sorok)”, „(oszlopok)”, az 57. sornál „Sorköz (héber)”, „(görög)”, a 83. sornál „„összecsuk” felirat betűmérete” és „… színe”). Ez a forma a panelen egy csúszkát ad tokenenként; a név és a tulajdonságkör nem változott.
+- **Ellenőrzés induláskor** (`tervezo.Regiszter`, minden kiadásban): ismeretlen kulcs, ismétlődő `id`, üres név vagy szelektor, a token-fájlban nem létező token, betűcsalád-token (`font-*`, szabad szöveg) → indulási hiba, a hely megnevezésével.
+- **Írható tokenek:** a regiszterben valamely elemhez rendelt tokenek (a mentés csak ezeket fogadja, M0 2.2). A M1.7 hét regiszteren kívüli tokenje (`fs-alcim`, `fs-kiscim`, `fs-csempe-megj`, `fs-il-eredeti-sor`, `lh-jelleg`, `lh-lxx-csempe`, `space-oszlopkoz`) a tartalékon át előnézetben állítható, de nem menthető; a panel és a változáslista ezt jelöli („csak előnézet”). Ha a felhasználó menteni akarja őket, magyar névvel a regiszterbe kell venni őket (a panel másolható `elemek.toml`-részletet ad).
+- **A kizárt lista (`[kizart]`, 46 osztály)** a regiszter-őr kimenetéből készült, az M0 1.2 indokaival, osztályonként egy indokkal. Csak az az osztály áll rajta, amely a felületen előfordul **és** egyetlen regiszter-szelektorban sem szerepel; az M0 1.2 állapot- és szövegrész-osztályai közül a szelektorokban szereplők (`aktiv`, `kijelolt`, `arany`, `krit`, `folyamat`, `he`, `gk`, `st`, `st-link`, `at`, `gl`, `lx`, `hu`, `heb`, `gor`, `nincs-st`, `cimszo`, `torzs`, `app`, `al`, `jel`, `cimkek`, `vers`, `il-vers`) regisztráltnak számítanak, ezért nincsenek rajta (a `.jcim .he` / `.jel-vazlat .he` horga, a `he` is így). A **`jt`** nincs a felületen, így a listán sem (az őr az elavult kizárt osztályt hibának jelzi). Az M0 felmérésén túl két osztály került elő: `szo-nincs` (a felmérésből kimaradt; a párosítás nélküli Károli-szó) és `tervezo-kapcsolo` (az M2 saját vezérlője).
+
+### M2.2 A regiszter-őr (`regiszter_or.py`, F98.15)
+
+- **Módszer** (az M0 1.3 javaslata szerint): a sablonok `class="…"` attribútumai (a `{% … %}` közti szöveg osztály, a `{{ … }}` szöveg-literáljai osztályok; a dinamikus előtag `nezet-` → `oldalak.NEZETEK`, `par-` → `lekerdezesek.bizonyossag_ertekek`, az adatbázisból); a `blokkok.py` és az `oldalak.py` az `ast` modullal (a `class="…"`-t tartalmazó literálok; a `%s` operandusa: literál, feltételes kifejezés, függvényparaméter — alapérték és a hívási helyek literáljai, pl. `ctx_strong_link(…, 'st-link')` —, vagy modulszintű szótár-literál eleme, `JELLEG[j][1]`). A ki nem bontható kifejezés hiba.
+- **Hibák:** `ismeretlen CSS-osztály: <osztály> (<fájl>:<sor>) — vedd fel az elemek.toml [[elem]] vagy [kizart] részébe`; az elavult (a felületen nem szereplő) és a fölösleges (szelektorban is álló) kizárt osztály.
+- **Mai eredmény:** 127 osztály (221 előfordulás, 22 dinamikus kibontással), 81 a regiszter szelektoraiban, 46 kizárva, **0 hiba**. A `par-` értékkészlet az adatbázisból: `alacsony`, `magas`.
+
+### M2.3 A mentési végpont (`tervezo.py`, F98.16)
+
+| Követelmény (brief 3. pont) | Megvalósítás | Teszt (`teszt_tervezo.py`) |
+|---|---|---|
+| csak `belso` kiadás | a `/tervezo/*` útvonalakat az `alkalmazas.letrehoz` csak `belso` kiadásban jegyzi be; a lap `tervezo` jelzője is csak ott igaz; a kliens a `tervezo_statikus/` könyvtárból a `/tervezo/…` címen jön (nem a `/statikus/`-ból), így más kiadásban a fájl sem érhető el | `TestKiadasok.test_nyilvanos_es_kereskedelmi` (minden `/tervezo/*` GET és POST 404, a HTML-ben sem `tervezo`, sem `tervező`), `test_a_statikus_export_lapjan_nincs_tervezo` |
+| csak helyi kérés | `remote_addr` ∈ {127.0.0.1, ::1, ::ffff:127.0.0.1}, és nincs `X-Forwarded-For`/`Forwarded`/`X-Real-IP`/`X-Forwarded-Host`, és a `Host` `localhost`/`127.0.0.1`/`[::1]` (port megengedett), és az `Origin` (ha van) ugyanaz a helyi cím, és a `Sec-Fetch-Site` (ha van) `same-origin` vagy `none` | `TestMentesBiztonsag.test_kod_csak_helyi_kerésre` (10 tiltott és 3 engedett eset), `test_tavoli_keres_ervenyes_koddal_is_403` |
+| csak `POST` | `@app.post`; GET/PUT → 405 | `test_csak_post` |
+| egyszeri kód | `GET /tervezo/kod` (no-store, csak helyi kérés) ad egy 32 bájtos kódot (legfeljebb 16 érvényes, 30 percig); a `POST` `X-Tervezo-Kod` fejléce `hmac.compare_digest`-tel; minden elfogadott kód elhasználódik (a 400-as kérésé is); hiányzó vagy rossz kód: 403 | `test_kod_nelkul_rossz_koddal_403`, `test_a_kod_egyszeri`, `test_a_rossz_kerest_is_elhasznalja_a_kodot` |
+| csak regiszteres token, érvényes érték | törzs: `{"tokenek": {token: érték}}`, színnél `{"light"|"dark": …}`; a regiszteren kívüli, a betűcsalád- és az ismeretlen token, a rossz alak és a tartományon kívüli érték 400, a fájl változatlan; nem JSON tartalomtípus 415; legfeljebb 64 KB, 400 token | `TestErtekszures` (5 csoport határértékei), `test_a_rossz_ertek_400_es_a_fajl_valtozatlan` |
+| szabad szöveg nincs | a fájl a meglévő szótárból, csak érték-cserével, `json.dumps(sort_keys, indent=2)`; a betűcsalád nem írható; az érték csak szám+mértékegység vagy szín-alak | `test_a_fajl_determinisztikus_es_a_diff_kicsi` (a diff pontosan egy sor; a csoportok halmaza változatlan) |
+| atomi írás, előző állapot | ideiglenes fájl ugyanabban a könyvtárban (`fsync`), `os.replace`; előtte a régi tartalom `arculat.json.elozo`-ba (szintén atomi; `konfig/.gitignore`); `POST /tervezo/visszaallit` cserél (a visszaállítás is visszavonható); a sorvég (CRLF) megmarad | `test_atomi_iras_hiba_eseten_a_fajl_valtozatlan` (meghiúsuló `os.replace`: a fájl és a betöltött arculat változatlan, ideiglenes fájl nem marad), `test_elozo_allapot_es_visszaallitas`, `test_a_crlf_sorveg_megmarad` |
+| újratöltés, ETag | a mentés után az új `Arculat` a gyárban, a lap-gyorsítótár ürül (`Gyorsitotar.urit`); az `arculat.hash` (a tartalom sha256-ja) a lap gyorsítótár-kulcsában, az ETag-ben, a `/arculat.css?v=` címben és a térkép ETag-jében | `TestMentes.test_mentes_es_megjelenes_a_kovetkezo_lapkeresnel` (régi ETag-re 200 és MISS, új stíluslap-cím, süti nélküli kliensen is; a sötét érték mindkét sötét blokkban, a világos változatlan), `test_terkep` |
+| CSP nem lazul | a `CSP` állandó változatlan (`script-src 'self'; style-src 'self'`); a lapon nincs inline `<script>`, `<style>`, `style=` vagy `on…=`; a kliens nem használ `innerHTML`-t, `eval`-t, `style` attribútumot, `cssText`-et; az előnézet `style.setProperty('--…')` (CSSOM) | `test_csp_nem_lazul_es_nincs_inline`, `test_a_kliens_szkript_csp_kompatibilis` |
+
+A `/tervezo/terkep.json` (csak `belso`): a regiszter (szelektor-részek és közelítő specifitás), a tokenek (érték, csoport, típus, írható-e), a mentés tartományai, és a stíluslap szabálytérképe (`css_szabalyok`: szelektor → tokenes deklarációk; a dinamikus állapot — `:hover`, `:focus-visible`, `:target`, `::before` … — levágva és megjelölve, a média-lekérdezés megőrizve; a csak ál-elemből álló szelektor, pl. `::selection`, kimarad).
+
+**Korlát:** fordított proxy mögött a mentés nem működik (a továbbító fejléc tiltja); több workerrel a mentés csak az egyik worker arculatát töltené újra. A tervező mód az egy workeres helyi futtatáshoz való (README).
+
+### M2.4 A kliens (`tervezo_statikus/tervezo.js`, `tervezo.css`, F98.17)
+
+Az M0 4. szakaszának vázlata szerint: kapcsoló a fejlécben a szintváltó után (rejtett, amíg a szkript be nem tölt); kiemelés `data-tz-kiemelt` attribútummal és a `tervezo.css` körvonalával, címke a magyar névvel (regisztrálatlan elemnél szaggatott keret, „nem regisztrált elem: `span.mf`”); a kattintás kiválaszt (a legmagasabb specifitású illeszkedő regiszter-sor; az ugyanazon elemen illeszkedő többi sor gombként), nem navigál (a `click`, `auxclick` és `submit` a tervező módban elnyelve); „Szülő elem ↑”; panel csak a regiszterbeli tulajdonságokkal; csúszka és számmező a mentés tartományával (px 0.5, rem/em 0.025, sorköz 0.01 lépés), színválasztó + értékmező + 10 színes paletta a látott témában, mindkét téma értékével; „ez a token N szabályban, M elemen hat ezen a lapon”; változáslista egyenkénti (↶) és teljes visszavonással, `sessionStorage`-ban; „Küldés a szerverre” (megerősítés, kód, POST, újratöltés; a regiszteren kívüli token kimarad és a listában marad) és „Előző mentés vissza”. A tervező saját felülete rögzített színekkel dolgozik (nem az arculat tokenjeivel), hogy egy rossz előnézeti érték ne tegye használhatatlanná.
+
+**Böngészős ellenőrzés** (a Claude desktop beépített böngészője, 1280×900, a próbaszerver a `pardes` WSL-ben, 8799-es port, `belso` kiadás, a konfiguráció ideiglenes másolatával: `PARDES_KONFIG_DIR=/tmp/tz_konfig`; a képernyőkép időnként nem készült el, ezért az állapotot JavaScripttel olvastam, az egér-eseményeket szintetikusan küldtem — a valódi egeres próba az M3):
+
+| Lépés | Eredmény |
+|---|---|
+| kapcsoló | `aria-pressed="true"`, `data-tervezo` a `<html>`-en, a panel látszik („Tervező mód”) |
+| rámutatás a `.he-szo .gl`-re | címke: „Héber szócsempe: átírás és glossza”; a `.gl` kiemelve |
+| kattintás | a panel: „Héber szócsempe: átírás és glossza” · „Vers részletei: héber szócsempék · .he-szo .at, .he-szo .gl”; tulajdonságok: Betűméret (`--fs-csempe-glossza`, 1 szabály, 22 elem), Átírás színe (`--muted`, 26 szabály, 546 elem, világos `#58554d`, sötét `#9ba49f`); az URL nem változott |
+| csúszka 16px | a `.gl` számított mérete 13.5px → 16px; a változáslista: `--fs-csempe-glossza 13.5px → 16px` |
+| Szülő elem ↑ | „Héber szócsempe” |
+| tartalék: `.he-szo .mf` | „Nem regisztrált elem” · `span.mf`; betűméret (`--fs-csempe-megj`, „csak előnézet…”), szín (`--muted`), sorköz (`--lh-csempe`); a csúszkával 13px → 15px; másolható `elemek.toml`-részlet (`szelektor = ".he-szo .mf"`) |
+| szín (`.he-szo` → Háttér) `#fbf7ee`, rendszer-téma: sötét | a `body` háttere `rgb(251, 247, 238)`; `data-tema="light"` → `rgb(245, 242, 234)` (a világos érték változatlan); `dark` → ismét az új érték |
+| egyenkénti visszavonás | a glossza-méret vissza 13.5px-re; a kapcsoló felirata „Tervező (2)” |
+| Küldés a szerverre (+ versszám 0.7em) | újratöltés; `/arculat.css?v=cc491d795fceef22`, `--fs-versszam: 0.7em`, `--bg` sötét `#fbf7ee` mindkét sötét blokkban; a próbakonfig diffje pontosan két sor (`versszam`, `bg.dark`), az `.elozo` = az eredeti; a nem menthető `fs-csempe-megj` a listában maradt; **a repó `konfig/arculat.json`-ja érintetlen** |
+| Előző mentés vissza | újratöltés; `/arculat.css?v=ed1326eb32081fbf` (az eredeti hash), `--fs-versszam: 0.6em` |
+| konzol | nincs üzenet (CSP-sértés sem) |
+
+A Windows-os böngészőből a WSL-ben futó szerverhez érkező kérés a szerver felől loopback (a mentés működött), tehát a helyi kérés feltétele ebben a felállásban teljesül.
+
+### M2.5 A szinkron-szkript (`arculat_szinkron.py`, F98.18)
+
+`python arculat_szinkron.py --kimenet <tokens.json> [--alap <a design system mostani tokens.json-ja>] [--datum …]`: a design system szerkezete (`color.themes/tokens`, `type.fonts/families/groups`, `spacing.tokens`, `radius.tokens`, `name`, `meta`). Az értékek mindig a token-fájlból; a leírás `--alap`-pal a design systemé, különben a regiszterből („Használja: <elemek>”); a vastagság a szerver stíluslapjából (az `oldalcim` 600, M0 5. szakasz 2.); az em-es betűméret relatív értékként jelölve (M0 5. szakasz 3.); a `spacing` a szerver 35 térköz-tokenje. Próbafutás a design system mostani `tokens.json`-jával (`--alap`, a session scratch-könyvtárában, a kimenet is ott): 10 szín, 54 betűstílus (a design system 4 csoportja 7 + 5 + 5 + 1 stílussal, plusz „Szerver: további stílusok” 36-tal), 35 térköz, 6 lekerekítés, `meta.ref = claude/tervezo-mod@fa344619`. Feltöltés nem történt (az a felhasználó kérésére).
+
+### M2.6 Megjelenés-azonosság
+
+Az M2 a stíluslaphoz (`olvaso.css`) és a token-fájlhoz (`arculat.json`) nem nyúlt, tehát a meglévő elemek számított stílusa nem változhatott. A lapok HTML-jét a HEAD (`fa344619`, `git archive` pillanatkép) és a munkafa szerverén vetettem össze (16 lap: kezdőlap, könyvlap, hibalap, `/1Moz/1` mindhárom nézetben, panelek, `/Zsolt/22`, `/Jan/1`, öt szó-lap, két töredék): **nyilvános és kereskedelmi kiadásban 16/16 lap bájtra azonos**; a belső kiadásban a két töredék azonos, a 14 teljes lapon csak a három tervező-sor új (`<button class="tervezo-kapcsolo" … hidden>`, a `tervezo.css` és a `tervezo.js` linkje). A belső kiadás fejlécében így egy új gomb jelenik meg (a szkript betöltése után), ez szándékos változás.
+
+### M2.7 Tesztek
+
+| Tesztfájl | Eredmény | Kihagyva |
+|---|---|---|
+| `teszt_tervezo.py` (új) | 45 OK | 0 |
+| `teszt_arculat.py` | 22 OK | 0 |
+| `teszt_szintek.py` | 13 OK (az F98.20 után) | 0 |
+| `teszt_pilot_aranymintaval.py` | 22 OK | 0 |
+| `teszt_olvaso_szerver.py` | 71 OK | 0 |
+
+A `teszt_szintek.py` `test_bdb_szocikk_minden_resze_alapbol_nyitva` tesztje a HEAD-en (`fa344619`) is bukott: a „Jelentésszerkezet” címtől 600 karakteren belül várta a `<details open>`-t, de az F98.11 óta előtte a vázlat (`nav.jel-vazlat`) áll. A teszt szándéka (a szakasz első lenyitható része nyitva) változatlan; az F98.20 ezt az ellenőrzést írja (a pillanatképen a hiba igazolva).
+
+A brief tesztlistájából a **tartalék** kliensoldali része („a panel a tokenből jövő tulajdonságait kínálja, és az előnézet működik”) böngészőben, kézzel ellenőrzött (M2.4), nem automatikus teszt: a `pardes` venv-ben nincs fej nélküli böngésző. A szerveroldali fele (a térkép a `.he-szo .mf`-re a `fs-csempe-megj`-et adja, nem írhatóként) a `TestMentes.test_terkep`-ben automatikus.
+
+Az `eszkozok/feladatok.py ellenoriz`: 118 brief, 0 hiba, 0 figyelmeztetés.
+
+*Proveniencia:* `scope=eszkozok/olvaso_szerver/ @03acfcb0 (konfig/elemek.toml 34 541 B sha256 206de9651ad4e0a1; tervezo.py 27 546 B; tervezo_statikus/tervezo.js 27 582 B sha256 670c3863db5e9816; konfig/arculat.json változatlan, hash ed1326eb32081fbf), ~/pardes/pardes.db (ext4 másolat, a meta-kivonat az M1.6 szerint azonos), belso/nyilvanos/kereskedelmi kiadás | forras=unittest a pardes WSL .venv-jével (Python 3.12.3, Flask 3.1.3); regiszter_or.py; html_osszevet.py és head_szintek.sh (git archive fa344619) a session scratch-könyvtárában; a Claude desktop beépített böngészője (JavaScript-ellenőrzés, próbaszerver 8799, PARDES_KONFIG_DIR=/tmp/tz_konfig); arculat_szinkron.py a design system tokens.json-jával (verzió 1791995892-d37b, sha256 899439f5…) | ts=2026-10-15`
+
+### M2.8 Nyitott tételek az M3-hoz
+
+1. **⛔ M3 — a felhasználó kipróbálja** a futó szerveren: kiválaszt, állít, előnézetben lát, visszavon, ment, visszaállít. Az észrevételei ide kerülnek, a javítás ugyanebben a menetben.
+2. A hét regiszteren kívüli token (M2.1) csak előnézetben állítható; ha mentést is akar rájuk, magyar névvel a regiszterbe kell venni őket.
+3. A belső kiadás fejlécében új gomb jelenik meg (M2.6); ha zavaró, a helye és a megjelenése a `tervezo.css`-ben állítható.
