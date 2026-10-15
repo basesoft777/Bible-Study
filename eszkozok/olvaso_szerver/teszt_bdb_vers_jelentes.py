@@ -67,6 +67,11 @@ class Hivatkozasok(unittest.TestCase):
             return [x['okkod'] for x in B.hivatkozasok('H9999. x אב noun ' + t)]
         self.assertEqual(ok('loan-word, Schr^COT Gen 2:8; Schr^COT on Neh 1:1; see Schr^ib. 24:1; compare Fl^De Job 6:2.'),
                          ['sigla_tapadt'] * 4)
+        # DT-F99j (seed-100): a megnevezett kommentár-siglák listája (`sigla_lista`, kiszűrve), egy tagmondatban a hellyel
+        self.assertEqual(ok('cuneiform KG^121 COT on Josh 17:11; compare Bae^l.c. Dr on 2Sam 8:3; so ᵑ7^Jer כ ׳הֵי Gen 26:4.'),
+                         ['sigla_lista'] * 3)
+        self.assertEqual(ok('in Moab (MI^10) Jer 48:1; compare Dr^Amos 4:9: Exod 10:13; Schr^COT Glossary and Isa 46:1.'),
+                         ['sigla_kozel', 'sigla_tapadt', 'sigla_kozel', 'sigla_kozel'])
         # ezek a közeli-sigla szabály alá esnek (bizonytalan, a táblában maradnak), a tapadt alá nem
         self.assertEqual(ok('suffix (Kö^ii.l,74) Jer 6:13; (both R^D), Jer 6:24; ᵐ5^B Ezra 10:21; Isa^3 Isa 50:9; (compare R^D Josh 13:22).'),
                          ['sigla_kozel'] * 5)
@@ -151,7 +156,7 @@ class SzerkezetJavitas(unittest.TestCase):
 class Tabla(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.sorok, _ = V.general('2026-10-15', ['H1242', 'H0006', 'H0015', 'H0196', 'H0226'])
+        cls.sorok, _ = V.general('2026-10-15', ['H1242', 'H0006', 'H0015', 'H0196', 'H0226', 'H6666', 'H5591'])
 
     def test_minden_sorban_jelentespont_feloldasi_mod_es_proveniencia(self):
         i = {k: n for n, k in enumerate(V.FEJ)}
@@ -175,6 +180,18 @@ class Tabla(unittest.TestCase):
         x = sor(self.sorok, strong='H0196')[0]
         self.assertEqual(x[V.FEJ.index('utvonal')], 'tagolatlan')
         self.assertEqual(x[V.FEJ.index('karoli_vers')], 'Zak 11:15')
+
+    def test_orokles_nem_letezo_fejezetre_bizonytalan(self):
+        # seed-100 M013: „Malachi 3:20 … 5:9; … 143:1” — a Malakiásnak nincs 143. fejezete: a könyv nem öröklődik
+        i = {k: n for n, k in enumerate(V.FEJ)}
+        x = sor(self.sorok, strong='H6666', nyers='143:1')[0]
+        self.assertEqual((x[i['konyv_feloldas']], x[i['mt_vers']], x[i['okkod']], x[i['szurt']]), ('feloldhatatlan', '', 'orokles_hibas', '0'))
+
+    def test_forras_hiba_okkod(self):
+        # seed-100 M006: a forrás „Joel 1:4, 12”-t ír (a szó a Jón 1:4-ben áll): a tábla a forrást rögzíti, okkóddal
+        i = {k: n for n, k in enumerate(V.FEJ)}
+        x = sor(self.sorok, strong='H5591', poz='422')[0]
+        self.assertEqual((x[i['mt_vers']], x[i['okkod']], x[i['szurt']]), ('Jóel 1:4', 'forras_hiba', '0'))
 
     def test_sigla_tapadt_kiszurve(self):
         x = sor(self.sorok, strong='H0015', nyers='Job 34:36')[0]

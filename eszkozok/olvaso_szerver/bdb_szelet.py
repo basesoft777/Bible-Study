@@ -609,6 +609,11 @@ _SIGLA_KOZEL = re.compile(r'\S*\^\S*(?:\s+[^\s;()]+){0,2}\s*$')
 # Isa 24:16”, „Isa^3 50:9”: Deutero-/Trito-Ézsaiás), nem kommentár; az „R^D” forráskritikai jel (redaktor), utána bibliai hely áll
 # („(compare R^D Josh 13:22)”, H1109). A két szóval távolabbi `^`-os szó továbbra is `sigla_kozel`.
 _SIGLA_ELOTTE = re.compile(r'(?:^|\s)(?!R\^)[A-Z][A-Za-zäöü]*\^[^\s),;\]\d][^\s),;\]]*\s+(?:on\s+|in\s+)?$')
+# F99 M2 (felhasználó, 2026-10-15, a seed-100 után, DT-F99j): a közeli sigla közül a megnevezett kommentár-siglák a szűrő listáján
+# vannak (`sigla_lista`, kiszűrve): Schrader COT („Schr^COT”, „COT on Josh 17:11”), Driver („Dr on 2Sam 8:3”, „Dr^…”), a Mésa-felirat
+# („MI^4”), a Targum („ᵑ7”, „ᵑ7^J” — szövegtanú: ütheti a szövegtanú-kivételt, l. naplo 9.9), Fleischer/Delitzsch („Fl^De”, „De^…”).
+# A többi `sigla_kozel` bibliai hivatkozásként a táblában marad, okkóddal.
+_SIGLA_LISTA = re.compile(r'^(?:Schr\^\S+|COT\.?|Dr|Dr\^\S*|MI|MI\^\S*|ᵑ7\S*|Fl\^\S+|De\^\S*)$')
 _NEMI_TANU = re.compile(r'(?:masculine|feminine|plural|singular|hímnemű|nőnemű|főnév|_\d+)$')
 _FOLYTATAS = re.compile(r'\s*,\s*(\d{1,3})(?:\s*-\s*\d{1,3})?(?=[\s,;.)\]]|$)(?!\s*:)')
 # egyfejezetes könyv fejezetszám nélkül (DT-F99a (4)): „Obad 8”, „Obadiah 13” → 1. fejezet
@@ -674,7 +679,15 @@ def hivatkozasok(szoveg):
             elif _SIGLA_ELOTTE.search(s[max(0, a - 40):a]):
                 sajat = 'sigla_tapadt'
             elif _SIGLA_KOZEL.search(s[max(0, a - 40):a]):
-                sajat = 'sigla_kozel'
+                # csak a hivatkozással egy tagmondatban álló sigla számít: lezáró zárójel, pontosvessző, kettőspont vagy gondolatjel után
+                # a hely már bibliai („(MI^10) Jer 48:1”, „compare Dr^Amos 4:9: Exod 10:13”, „Dr^Sm; … 1Sam 16:1”)
+                ablak = re.split(r'[)\];:—]', s[max(0, a - 40):a])[-1]
+                # a hivatkozás előtt visszafelé csak a héber idézett alak, az „on”/„in” és az „i.” állhat a sigla és a hely között
+                # („ᵑ7^Jer כ ׳הֵי Gen 26:4”, „COT on Josh 17:11”); latin szó („compare”, „Glossary and”) vagy szám után a hely önálló
+                szavak = [w.strip(',') for w in re.findall(r'[^\s;()]+', ablak)]
+                while szavak and (re.fullmatch(r"[\u0590-\u05ff\ufb1d-\ufb4f׳־]+", szavak[-1]) or szavak[-1] in ('on', 'in', 'i.')):
+                    szavak.pop()
+                sajat = 'sigla_lista' if szavak and _SIGLA_LISTA.match(szavak[-1]) else 'sigla_kozel'
         ki.append({'poz': a, 'veg': e, 'nyers': nyers, 'konyv': konyv, 'c': c, 'v': v, 'konyv_mod': mod, 'okkod': sajat})
         q = e
         while True:

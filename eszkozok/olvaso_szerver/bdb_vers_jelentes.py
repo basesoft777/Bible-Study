@@ -46,7 +46,15 @@ KI = os.path.join(REPO, 'adat', 'bdb_vers_jelentes.tsv')
 
 FEJ = ['strong', 'bdb_id', 'sorszam', 'poz', 'nyers', 'konyv_feloldas', 'mt_vers', 'karoli_vers', 'vers_feloldas', 'szakasz', 'utvonal',
        'okkod', 'szurt', 'proveniencia']
-SZURENDO = {'nem_bibliai', 'sigla_tapadt'}
+SZURENDO = {'nem_bibliai', 'sigla_tapadt', 'sigla_lista'}
+# F99 M2 (felhasználó, 2026-10-15, seed-100 M006, M064, M079): a BDB forrásszövegének hibás igehelye. A tábla a forrás szövegét rögzíti
+# (könyv, vers, jelentéspont változatlan), az okkód `forras_hiba`; nem szűrt. Kulcs: (Strong, poz); érték: a forrással igazolt ok (kézi,
+# a felhasználó döntése; a vak ellenőr megjegyzése a TAHOT-tal egyezik).
+FORRAS_HIBA = {
+    ('H5591', 422): 'Joel 1:4, 12 — a סַעַר a Jón 1:4, 12-ben áll (könyvnév-hiba a forrásban)',
+    ('H7913', 185): 'Psa 9:8 — a שְׁכֵחֵי אֱלֹהִים a Zsolt 9:18-ban áll (számhiba a forrásban)',
+    ('H3051', 2292): 'Ezra 7:4, 6 — a יְהִיב Pe`il-alak a Dán 7:4, 6-ban áll (könyvnév-hiba a forrásban)',
+}
 
 
 def fajl_hash(ut):
@@ -155,7 +163,17 @@ def general(ts, strongok=None):
             ok = h['okkod']
             mt = kar = ''
             vmod = ''
-            if h['konyv'] and ok not in SZURENDO:
+            kmod = h['konyv_mod']
+            if (h['konyv'] and kmod in ('orokolt', 'folytatas') and h['konyv'] in osz and ok not in SZURENDO
+                    and h['c'] not in versek.get(h['konyv'], {})):
+                # F99 M2 (felhasználó, 2026-10-15, seed-100 M013 „Malachi 3:20 … 143:1”): nem létező fejezetre a könyv nem öröklődik;
+                # a sor bizonytalan (`orokles_hibas`), könyv és vers nélkül
+                h = dict(h, konyv=None)
+                ok = 'orokles_hibas'
+                kmod = 'feloldhatatlan'
+            if (strong, h['poz']) in FORRAS_HIBA:
+                ok = ok + ',forras_hiba' if ok else 'forras_hiba'
+            if h['konyv'] and h['okkod'] not in SZURENDO:
                 if h['konyv'] in osz:
                     mt, kar, vmod, kieg = mt_karoli(K, versek, mt2k, vm_karoli, vm_mt, elvetett, h['konyv'], h['c'], h['v'])
                     if kieg:
@@ -163,7 +181,7 @@ def general(ts, strongok=None):
                 else:
                     mt, vmod = '%s %d:%d' % (h['konyv'], h['c'], h['v']), 'usz'
                     ok = ok + ',usz' if ok else 'usz'
-            sorok.append([strong, ','.join(bdb_id.get(strong, [])), str(n), str(h['poz']), h['nyers'], h['konyv_mod'], mt, kar, vmod,
+            sorok.append([strong, ','.join(bdb_id.get(strong, [])), str(n), str(h['poz']), h['nyers'], kmod, mt, kar, vmod,
                           szak, ut, ok, '1' if h['okkod'] in SZURENDO else '0', prov])
     return sorok, modhash
 
