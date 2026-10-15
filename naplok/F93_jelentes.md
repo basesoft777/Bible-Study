@@ -1,6 +1,6 @@
 # F93 jelentés — a TIPNR token nélküli alapszámai
 
-*FELADATOK #93 · Modell: claude-sonnet-5-5 · állapot: az M0–M3 kész, két ellenőri kör javítva, a zárás (3. kör, draft PR) hátra van · döntések: DT-F93a, DT-F93b, DT-F93c, DT-F93d · lista: `naplok/F93_alapszamok.tsv` · szkript: `eszkozok/f93_tipnr_token_hiany.py`*
+*FELADATOK #93 · Modell: claude-sonnet-5-5 · állapot: lezárva · döntések: DT-F93a–d · nyitott tételek: N-F93a–c · lista: `naplok/F93_alapszamok.tsv` · szkript: `eszkozok/f93_tipnr_token_hiany.py`*
 
 ## 1. Eredmény
 
@@ -107,7 +107,8 @@ Végleges `DT`/`N` számot ágon nem írtam; a számot a `main`-en a `szamkioszt
 - **G3** Minden görög „szövegváltozat” sor megnevezi a TAGNT-oldali Strong-számot és a `Kritikai kiadás` mezőt; minden sor proveniencia-sort hordoz; ahol a repó adata nem dönt, „nem eldönthető”.
 - **G4** Két futás kimenete bájtazonos (a lista sha256-ja: `0c7946c1b40de82e54e684f4292fb369263784f93aaad936770f68819a5ed5a0`).
 - **G5** nem alkalmazható (DT-F93a (a): nincs `pardes.db`-változás).
-- `python eszkozok/feladatok.py ellenoriz`: 0 hiba. Független ellenőrzés (`fuggetlen-ellenor`): 1. kör `naplok/ELLENOR_F93.md` — 6 eltérés, javítva F93.13–F93.16; 2. kör `naplok/ELLENOR_F93_2.md` — 3 eltérés (a jelentés elavult G2568-mondata, a DT-F93c vegyes találatnál, a jelentés fejléce/döntései), javítva F93.18–F93.20; a 3. kör a zárás része, még nem futott.
+- `python eszkozok/feladatok.py ellenoriz`: 0 hiba. Független ellenőrzés (`fuggetlen-ellenor`), négy kör: `naplok/ELLENOR_F93.md` — 6 eltérés, javítva (F93.13–F93.16); `naplok/ELLENOR_F93_2.md` — 3 eltérés, javítva (F93.18–F93.20); `naplok/ELLENOR_F93_3.md` — 1 eltérés, javítva (ef55c97a); `naplok/ELLENOR_F93_4.md` — 2 nem tartalmi eltérés (elavult meta-sorok a jelentésben; kettős F93.21 előtag), a zárás commitjában rendezve.
+- Megjegyzés: az `F93.21` előtag két commiton áll (`cc7f41db`: a 3. kör jelentése; `ef55c97a`: a kódjavítás). A history nem íródik át, mert az ág már fent van; a `git log --grep="F93.21"` ezért két tételt ad vissza.
 
 ## Munkanapló (M0–M1)
 
