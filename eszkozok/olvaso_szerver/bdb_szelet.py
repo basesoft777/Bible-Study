@@ -747,8 +747,11 @@ def hivatkozasok(szoveg):
             elif _SIGLA_ELOTTE.search(s[max(0, a - 40):a]):
                 sajat = 'sigla_tapadt'
             elif _SIGLA_KOZEL.search(s[max(0, a - 40):a]):
-                # csak a hivatkozással egy tagmondatban álló sigla számít: lezáró zárójel, pontosvessző, kettőspont vagy gondolatjel után
-                # a hely már bibliai („(MI^10) Jer 48:1”, „compare Dr^Amos 4:9: Exod 10:13”, „Dr^Sm; … 1Sam 16:1”)
+                # a listás kommentár-sigla (sigla_lista) csak a hivatkozással egy tagmondatban számít: lezáró zárójel, pontosvessző,
+                # kettőspont vagy gondolatjel után a hely NEM listás, hanem `sigla_kozel` marad („(MI^10) Jer 48:1”, „compare Dr^Amos 4:9:
+                # Exod 10:13”, „Dr^Sm; … 1Sam 16:1”); hogy bibliai-e, azt a generátorban a TAHOT dönti el (DT-F99k: `sigla_igazolt` vagy
+                # szűrt). (ELLENOR_F99 9.: a korábbi megjegyzés „a hely már bibliai” állítása téves volt; a szabály módosítása — a lezárt
+                # megjegyzés utáni hely ne legyen sigla-sor — a javítási feladatban, pl. seed-101 M223.)
                 ablak = re.split(r'[)\];:—]', s[max(0, a - 40):a])[-1]
                 # a hivatkozás előtt visszafelé csak a héber idézett alak, az „on”/„in” és az „i.” állhat a sigla és a hely között
                 # („ᵑ7^Jer כ ׳הֵי Gen 26:4”, „COT on Josh 17:11”); latin szó („compare”, „Glossary and”) vagy szám után a hely önálló
