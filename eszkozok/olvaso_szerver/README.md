@@ -13,19 +13,35 @@ Szerveroldali Flask-alkalmazás, amely a `pardes.db`-ből (csak olvasásra) áll
 | `adatbazis.py` | csak olvasó kapcsolat, `set_authorizer` a kiadás szerint kizárt táblákra |
 | `hozzaferes.py` | hozzáférési szintek a `konfig/hozzaferes.toml`-ból |
 | `gyorsitotar.py` | korlátos LRU a kész lapokra |
-| `konfig/` | `szerver.toml` (kiadás, süti, gyorsítótár), `hozzaferes.toml`, `arculat.json` (az arculati token-fájl, #98) |
+| `konfig/` | `szerver.toml` (kiadás, süti, gyorsítótár), `hozzaferes.toml`, `arculat.json` (az arculati token-fájl, #98), `elemek.toml` (az elem-regiszter és a kizárt osztályok, #98 M2) |
 | `arculat.py` | a token-fájl betöltése és ellenőrzése, a token-blokk (`:root`, sötét téma) előállítása; a szerver a `/arculat.css?v=<hash>` címen adja (#98 M1, DT-F98e) |
+| `tervezo.py`, `tervezo_statikus/` | a tervező mód (#98 M2): a regiszter betöltése, a stíluslap szabálytérképe, a mentés értékszűrése, a mentési végpont; a kliens (`tervezo.js`, `tervezo.css`) a `/tervezo/…` címen, **csak a `belso` kiadásban** |
+| `regiszter_or.py` | a regiszter-őr: a felület minden CSS-osztálya a regiszterben vagy a kizárt listán (`python regiszter_or.py`) |
+| `arculat_szinkron.py` | a design system `tokens.json`-ja a token-fájlból (`--kimenet`, `--alap`; feltöltés nélkül) |
 | `sablonok/`, `statikus/` | Jinja2 (autoescape), CSS, kis JS (nincs inline script/stílus: CSP); az `olvaso.css` token-értéket nem ismétel, csak `var(--…)`-hivatkozást |
 | `gunicorn_conf.py`, `telepit.sh` | indítás (gthread, 1 worker, 4 szál), környezet, frissességi teszt |
 | `frissesseg.py`, `manifest_pardes_db.tsv` | az épségi teszt (K4), M1 |
 | `export.py` | statikus export váza |
 | `teszt_olvaso_szerver.py` | tesztek (unittest) |
 | `teszt_arculat.py` | a token-fájl, a token-blokk és az `/arculat.css` tesztjei (#98 M1) |
+| `teszt_tervezo.py` | a tervező mód tesztjei (#98 M2): regiszter, regiszter-őr, szabálytérkép, értékszűrés, a végpont biztonsága kiadásonként, atomi írás, ETag, szinkron-kimenet, a szelektorok a valódi lapokon |
 | `teszt_pilot_aranymintaval.py` | a kirajzolt blokk-készlet összevetése a #60 pilot aranymintájával (írásjeles szöveg, számlálók, szócsempék, „Ebben a versben”, Nave, blokk-címek); a döntések (DT148–i) tesztjei, az Interlineáris csempék |
 
 ## Útvonalak
 
 `/` kezdőlap · `/<könyv>` · `/<könyv>/<fejezet>` · `/<könyv>/<fejezet>/<vers>` · `/szo/<H0216|G1504>` · `/nezet/<olvaso|interlinearis|munkaasztal>?vissza=` · `/ugras?q=` · `/r/szo/<strong>`, `/r/vers/…` (töredékek) · `/arculat.css?v=<hash>` (a token-blokk) · `/statusz` · `/robots.txt`. A könyvkód ASCII-sített (`1Moz`). `.db`/`.tsv` nincs kiszolgálva.
+
+Csak a `belso` kiadásban (más kiadásban 404): `/tervezo/tervezo.js`, `/tervezo/tervezo.css`, `/tervezo/terkep.json` (a regiszter és a szabálytérkép), `/tervezo/kod` (egyszeri kód, csak helyi kérésre), `POST /tervezo/mentes`, `POST /tervezo/visszaallit`.
+
+## Tervező mód (#98 M2)
+
+A `belso` kiadásban a fejlécben, a szintváltó mellett a **Tervező** kapcsoló. Bekapcsolva a rámutatott elem keretet és címkét kap (a regiszterbeli magyar nevével; a regiszteren kívüli elem szaggatott keretet és „nem regisztrált elem” címkét), a kattintás nem navigál, hanem kiválaszt. A panel csak a kiválasztott elem regiszterbeli tulajdonságait mutatja (csúszka a méretekre, színválasztó és paletta a színekre; a szín a látott témában állítódik), és kiírja, hány szabályban és hány elemen hat a token a lapon. Minden állítás azonnal látszik (a `:root` CSS-változói, csak ebben a böngészőben); a változáslista egyenként és egészben visszavonható, és lapváltáskor megmarad (sessionStorage). A regisztrálatlan elem tokenjei gépi névvel állíthatók (előnézet), mellettük egy másolható `elemek.toml`-részlet.
+
+**Küldés a szerverre:** a változások a `konfig/arculat.json`-ba íródnak (rendezett, determinisztikus JSON → kis git-diff); a szerver újraindítás nélkül az új arculattal adja a lapokat (új `arculat.css?v=` hash, új ETag, ürített lap-gyorsítótár). Az előző állapot a `konfig/arculat.json.elozo`-ban (git-ignorált); az **Előző mentés vissza** gomb ezt állítja vissza. A commitot a végrehajtó vagy a felhasználó készíti, nem a szerver.
+
+**A mentés feltételei:** csak `belso` kiadás; csak helyi kérés (a forrás 127.0.0.1/::1, nincs `X-Forwarded-For`/`Forwarded`/`X-Real-IP` fejléc, a `Host` és az `Origin` helyi); csak `POST`; egyszeri kód a `GET /tervezo/kod`-ról (`X-Tervezo-Kod` fejléc); csak a regiszterben valamely elemhez rendelt token, érvényes értékkel (szín: `#rgb`, `#rrggbb`, `rgb()`, `hsl()`; betűméret px 8–64, rem/em 0.5–4; térköz px 0–128, rem/em 0–8 (DT-F98f); lekerekítés px 0–999; sorköz 1.0–2.4); a betűcsalád nem írható. Hiba: 403 (helyi kérés/kód), 400 (érték), 415 (nem JSON); a fájl ilyenkor változatlan. A CSP nem lazul (`script-src 'self'`, `style-src 'self'`). Fordított proxy mögött a mentés nem működik (a továbbító fejléc tiltja); több workerrel futtatva a mentés csak az egyik worker arculatát töltené újra, ezért a tervező mód az egy workeres fejlesztői vagy gunicorn-indításhoz való.
+
+**Regiszter-őr:** új CSS-osztály csak regisztrálva (`[[elem]]`) vagy indokkal kizárva (`[kizart]`) kerülhet a felületre: `python regiszter_or.py` (és a `teszt_tervezo.py`). **Szinkron:** `python arculat_szinkron.py --kimenet /tmp/tokens.json --alap <a design system mostani tokens.json-ja>`.
 
 ## Futtatás
 
@@ -36,6 +52,7 @@ PARDES_DB=/út/pardes.db python eszkozok/olvaso_szerver/alkalmazas.py --port 876
 PARDES_DB=/út/pardes.db ./telepit.sh ellenorzes && PARDES_DB=/út/pardes.db ./telepit.sh indit
 # tesztek
 PARDES_DB=/út/pardes.db python eszkozok/olvaso_szerver/teszt_olvaso_szerver.py
+PARDES_DB=/út/pardes.db python eszkozok/olvaso_szerver/teszt_tervezo.py
 ```
 
 Kiadás: `PARDES_KIADAS=belso|nyilvanos|kereskedelmi` (vagy `konfig/szerver.toml`). Nyilvános kiadásban a KJV-Strong blokk, kereskedelmiben az MCGED is kimarad; az adatbázis-kapcsolat ezeket a táblákat olvasni sem engedi.
