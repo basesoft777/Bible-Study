@@ -1,0 +1,126 @@
+azon	strong	konyv_mt	karoli_vers	jelentespont	szures	megjegyzes
+M001	H7065	Zak 1:14	=	fej	bibliai	a Pi`el alaktani felsorolása (az „— 1” előtt)
+M002	H0113	Ézs 51:22	=	-/3/(2)/a	bibliai	örökölt könyv: Isa 37:24; „compare”-utalás
+M003	H1762	Zsolt 116:8	=	tagolatlan	bibliai
+M004	H1714	-	-	fej	alhivatkozas: kommentár-hely (Dillmann, Num 2:2-höz)	a „Di” Dillmann rövidítése, nem bibliai könyv
+M005	H5594	-	-	Qal	alhivatkozas: kommentár-hely (Driver, Amos 5:16-hoz)	Qal számozatlan jelentésrésze
+M006	H4574	-	-	fej	alhivatkozas: kommentár-hely (Schrader COT, Gen 2:8-hoz)	a szócikk végére fűzött II. עדן gyök nyelvi háttere
+M007	H3820	Péld 17:20	=	II/6/b	bibliai	örökölt könyv: Prov 11:20; a római I./II. itt jelentéscsoport (dolgokról / emberről)
+M008	H0834	?	?	-/8/d	bizonytalan: hibás könyvfeloldás a forrásban	a „compare Kings 6:35; 6:37” torz; valószínűleg „cf. v 35. 37” (1Kir 8:35, 37), de a 2Krón 6:37 is olvasható; nem eldönthető
+M009	H2472	Jób 20:8	=	-/1	bibliai	örökölt könyv: Job 7:14
+M010	H1892	Préd 6:11	=	I/2	bibliai	örökölt könyv: „especially in Ecclesiastes … Eccl 1:2”; a fejszó „I. הֶבֶל”, a sorban csak az I. homonima áll
+M011	H2428	Ézs 8:4	=	-/3	bibliai
+M012	H7965	Ám 1:6	=	-/1	bibliai	„compare”-utalás egy szövegjavításban
+M013	H4644	Hós 9:6	=	tagolatlan	bibliai
+M014	H6524	Zsolt 92:13	92:12	I Qal	bibliai	örökölt könyv: Psa 72:7; Károli: a zsoltárcím nincs versként számozva
+M015	H3851	Ézs 66:15	=	fej	bibliai	alaktani rész; örökölt könyv: Isa 13:8
+M016	H3546	Dán 2:26	=	fej	bibliai	a Pe`al alaktani felsorolása; a szócikknek nincs számozott jelentése
+M017	H2022	Jer 4:15	=	-/2/b	bibliai
+M018	H4640	Ezsd 10:21	=	fej	bibliai	LXX-alak a jelentések előtt
+M019	H6057	Ez 36:8	=	tagolatlan	bibliai
+M020	H4725	Eszt 4:14	=	-/6	bibliai
+M021	H1973	3Móz 22:27	=	-/-/b	bibliai	a הָֽלְאָה rész csak betűs pontokra tagolódik (a./b.), szám nélkül
+M022	H6003	1Sám 15:6	=	tagolatlan	bibliai
+M023	H2868	Dán 6:15	6:14	Pe`al	bibliai	a szövegben „Pe”; számozatlan törzs; Károli Dán 6:1 = MT 6:2 (5:31-es versosztás)
+M024	H7110	Eszt 1:18	=	I/2	bibliai
+M025	H5975	2Kir 4:6	=	Qal/2/a	bibliai
+M026	H5713	Józs 24:27	=	II	bibliai	a II. homonima, számozott jelentés nélkül
+M027	H2543	Neh 7:68	?	II/1	bibliai	a BDB Baer-számozást jelöl; ha a Károli a lovak versét is számozza, a szamár-vers 7:69 lehet; a megengedett forrásokból nem ellenőrizhető
+M028	H3820	Ez 11:19	=	II/6/d	bibliai
+M029	H8398	Jób 37:12	=	fej	bibliai	alaktani rész
+M030	H7559	Dán 6:11	6:10	Pe`il/2	bibliai	a sorhoz fűzött arámi רְשַׁם szócikkben áll, nem a héber H7559-ben
+M031	H0819	Ezsd 10:19	=	-/2	bibliai	örökölt hely: Ezra 10:10
+M032	H4611	Zsolt 106:39	=	-/1	bibliai
+M033	H2416	Péld 8:35	=	-/2	bibliai	a sor több lemmát fűz össze (I. חַי, II. חַי, חַיָּה, II. חַיָּה, חַיִּים); a hely a római szám nélküli חַיִּים lemma 2. pontja
+M034	H5518	Ézs 34:13	=	II/1	bibliai
+M035	H6305	2Kir 23:31	=	-/1	bibliai	örökölt könyv: 2Kin 23:36; az LXX^L-olvasat forrását adja
+M036	H2887	-	-	fej	alhivatkozas: kommentár-hely (Schrader COT, Neh 1:1-hez)
+M037	H3423	Józs 17:12	=	Hiph`il/2/a	bibliai	örökölt könyv: Josh 8:7; a „b.” csak a hely után kezdődik
+M038	H5514	3Móz 7:38	=	tagolatlan	bibliai
+M039	H5771	2Kir 7:9	=	-/3	bibliai
+M040	H1714	4Móz 2:34	=	tagolatlan	bibliai	örökölt könyv: Num 10:14 a címsorban
+M041	H4592	Jer 51:33	=	-/1/e/b	bibliai	1 → e. „phrases” → b.
+M042	H8548	-	-	fej	alhivatkozas: nem kanonikus mű (Sirák)
+M043	H4581	Ez 30:15	=	-/1	bibliai	örökölt könyv: Ezek 24:25
+M044	H2748	Dán 2:2	=	-/2	bibliai
+M045	H3885	Jób 17:2	=	I Qal/2	bibliai
+M046	H7495	Hós 6:1	=	Qal/2/a	bibliai
+M047	H3499	1Móz 49:3	=	fej	bibliai	alaktani rész
+M048	H6086	5Móz 29:10	29:11	fej	bibliai	alaktani rész; MT 28:69 = Károli 29:1
+M049	H1234	2Móz 14:16	=	fej	bibliai	a Qal alaktani része
+M050	H3548	Neh 13:13	=	-/7	bibliai	örökölt könyv: Neh 13:4
+M051	H3117	2Kir 25:30	=	-/7/e/(3)	bibliai
+M052	H5262	3Móz 23:13	=	-/1	bibliai
+M053	H3915	1Móz 19:34	=	-/1	bibliai	örökölt hely: Gen 19:5
+M054	H1571	1Móz 3:6	=	-/1	bibliai
+M055	H5240	1Sám 15:9	=	tagolatlan	bibliai	utaló szócikk
+M056	H6440	Jer 1:17	=	II/4/b/(c)	bibliai	II. מְּנֵי with prepositions → 4 לִפְנֵי → b. → (c)
+M057	H4294	-	-	fej	alhivatkozas: nem kanonikus mű (Sirák)	a címsor jelentés-összefoglalójában
+M058	H7214	-	-	fej	alhivatkozas: kommentár-hely (Driver, Deut 33:17-hez)
+M059	H7708	1Móz 14:8	=	tagolatlan	bibliai	örökölt könyv: Gen 14:3
+M060	H5221	1Kir 22:34	=	Hiph`il/1/a	bibliai
+M061	H3448	-	-	fej	alhivatkozas: kommentár-hely (Wellhausen, 1Sam 14:49-hez)	etimológiai zárójel
+M062	H5039	Józs 7:15	=	-/1	bibliai
+M063	H8425	-	-	tagolatlan	alhivatkozas: kommentár-hely (Dillmann, Gen 10:2-höz)
+M064	H6633	4Móz 4:23	=	fej	bibliai	a Qal alaktani része
+M065	H8620	-	-	tagolatlan	alhivatkozas: kommentár-hely (Driver, Amos 1:1-hez)
+M066	H1197	Jer 10:13	=	II Niph`al	bibliai	a II. [בָּעַר] Niph`al részéhez tartozó lábjegyzet
+M067	H6709	-	-	tagolatlan	alhivatkozas: nem kanonikus mű (Sirák)
+M068	H2767	4Móz 21:3	=	tagolatlan	bibliai	örökölt könyv: Num 14:45
+M069	H2974	Józs 7:7	=	fej	bibliai	a Hiph`il alaktani része (fejszó: II. [יָאַל])
+M070	H5316	Józs 12:23	=	tagolatlan	bibliai	örökölt könyv: Josh 17:11
+M071	H0567	1Móz 10:16	=	-/1	bibliai
+M072	H4480	-	-	-/3/b/(e)	alhivatkozas: nem bibliai mű (Korán)
+M073	H7121	Hós 1:9	=	I Qal/6/a	bibliai	örökölt hely: Hosea 1:4; a „2 accusative” két tárgyat jelent, nem pontszám
+M074	H5324	2Kir 17:10	=	Hiph`il/2	bibliai
+M075	H6429	-	-	fej	alhivatkozas: kommentár-hely (Schrader COT, Gen 10:14-hez)	nyelvi háttér (asszír alak) az igehelyek után; a szócikk egyébként tagolatlan
+M076	H4376	Péld 23:23	=	Qal	bibliai	a Qal számozatlan jelentésrésze
+M077	H5656	1Krón 23:32	=	-/4	bibliai	örökölt hely: 1Chr 23:24
+M078	H4244	4Móz 26:33	=	-/1	bibliai
+M079	H6664	Zsolt 35:24	=	-/2/e	bibliai	örökölt könyv: Psa 48:11 / 9:5
+M080	H2346	Józs 6:20	=	-/1	bibliai	örökölt hely: Josh 6:5
+M081	H1961	5Móz 18:19	=	Qal I/2/b	bibliai	Qal → I. → 2 → b. (וְהָיָה) → (a) γ
+M082	H7342	Jer 51:58	=	I	bibliai	az I. רָחָב, számozott jelentés nélkül
+M083	H5922	Dán 2:10	=	-/1/a	bibliai
+M084	H6440	Péld 15:14	=	fej	bibliai	az „— I. 1.” előtti alaktani/nyelvtani rész
+M085	H5800	Ez 8:12	=	I Qal/2/f	bibliai
+M086	H8034	Ez 22:5	=	I/2/b	bibliai	örökölt könyv: Ezek 23:10; 2/b/(2); a közeli „Dan 22:14; Dan 22:19” a forrásban hibás (5Móz 22-re utal), de a hely könyvét nem érinti
+M087	H3772	Zsolt 101:8	=	Hiph`il/2/b	bibliai
+M088	H5137	3Móz 6:20	6:27	I Qal	bibliai	MT 5:20–26 = Károli 6:1–7, ezért MT 6:20 = Károli 6:27
+M089	H5612	Jer 36:11	=	?	bibliai	a 4. pont után álló szögletes zárójeles összefoglalóban; nem eldönthető, hogy a 4. ponthoz tartozik-e
+M090	H7121	Ez 39:11	=	I Qal/6/b	bibliai
+M091	H6757	-	-	fej	alhivatkozas: nem bibliai mű (Korán 2:18)	örökölt mű: Qor 2:16
+M092	H7364	1Móz 19:2	=	Qal/1	bibliai	örökölt könyv: Gen 18:4
+M093	H1870	Ez 18:23	=	-/6/d	bibliai	örökölt könyv: Ezek 16:47
+M094	H0006	Eszt 9:12	=	Pi`el/1	bibliai	örökölt hely: Est 9:6
+M095	H4939	Ézs 5:7	=	tagolatlan	bibliai
+M096	H6547	2Kir 18:21	=	tagolatlan	bibliai	örökölt könyv: 2Kin 17:7
+M097	H1242	1Sám 5:4	=	-/2	bibliai
+M098	H3409	Zsolt 45:4	45:3	-/1/a	bibliai	Károli: a kétverses cím (MT 45:1–2) után 45:1 = MT 45:3
+M099	H6031	2Sám 13:32	=	III Pi`el/2	bibliai	a sorban II. és III. [עָנָה]; a hely a III. Pi`el („Piel.”) 2. pontja
+M100	H4186	2Sám 9:12	=	-/5	bibliai
+M101	H2803	2Krón 9:20	=	fej	bibliai	a Niph`al alaktani része
+M102	H3027	Hós 13:14	=	-/5/g	bibliai	5 „יַד with preposition” → g. מִיַּד
+M103	H2896	1Móz 2:12	=	II/3/e	bibliai	fejszó: II. טוֺב
+M104	H1410	1Sám 22:5	=	III/2	bibliai	fejszó: III. גָּד
+M105	H1285	Ézs 28:18	=	I/1	bibliai	I. „between men” → 1; örökölt hely: Isa 28:15
+M106	H8548	Zsolt 51:5	51:3	-/1/a	bibliai	Károli: a kétverses cím (MT 51:1–2) miatt −2
+M107	H2233	2Sám 7:12	=	-/4/c	bibliai
+M108	H3920	Jób 36:8	=	Niph`al/2	bibliai
+M109	H0127	4Móz 16:31	=	-/4	bibliai	örökölt könyv: Num 16:30
+M110	H2404	-	-	fej	alhivatkozas: kommentár-hely (Wetzstein Delitzschnél, Psa 144:12-höz)
+M111	H5314	2Móz 31:17	=	fej	bibliai	a Niph`al alaktani része
+M112	H8641	2Móz 36:6	=	-/5	bibliai	örökölt hely: Exod 36:3
+M113	H9005	Péld 14:20	=	-/5/d	bibliai	örökölt könyv: Prov 13:13; a לְ szócikk sorának nincs Strong-előtagja
+M114	H5175	4Móz 21:6	=	I/1/a	bibliai
+M115	H4519	-	-	-/2	alhivatkozas: kommentár-hely (Schrader COT, 2Kin 21:1-hez)
+M116	H6086	1Kir 14:23	=	-/1/a	bibliai
+M117	H4581	Dán 11:38	=	-/2/b	bibliai
+M118	H2407	Neh 12:2	=	-/3	bibliai	örökölt könyv: Neh 10:5; a BDB a 3. pont után maga is kétesnek jelöli a 2-höz való viszonyát
+M119	H3516	JSir 2:11	=	fej	bibliai	alaktani rész (az első Lam 2:11 előfordulás)
+M120	H9005	Dán 11:4	=	-/1/h	bibliai	örökölt könyv: Dan 8:8
+M121	H2449	Zak 9:2	=	Qal	bibliai	a Qal számozatlan jelentésrésze
+M122	H5400	-	-	fej	alhivatkozas: nem kanonikus mű (Sirák)
+M123	H3232	1Krón 7:30	=	-/1	bibliai
+M124	H5496	2Sám 24:1	=	Hiph`il/2	bibliai
+M125	H4924	Neh 8:10	=	tagolatlan	bibliai	a sor harmadik lemmája ([מַשְׁמָן]), számozott jelentés nélkül

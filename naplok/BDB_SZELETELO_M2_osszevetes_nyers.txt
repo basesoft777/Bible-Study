@@ -1,0 +1,136 @@
+veletlen 200
+konyv/vers (MT) egyezik: 197
+karoli egyezik: 187
+jelentespont egyezik: 110
+VERS M012 H7965 Amos 1:6 | kulcs: Ámós 1:6 | ell: Ám 1:6
+VERS M228 H7620 Tob 11:19 | kulcs:  | ell: Tobit 11:19
+VERS M236 H8640 2Kin 19:9 | kulcs:  | ell: 2Kir 19:9
+KAROLI M014 | kulcs: Zsolt 92:13 | ell: 92:12
+KAROLI M027 | kulcs: Neh 7:68 | ell: ?
+KAROLI M029 | kulcs: Jób 37:11 | ell: =
+KAROLI M045 | kulcs:  | ell: =
+KAROLI M098 | kulcs: Zsolt 45:4 | ell: 45:3
+KAROLI M102 | kulcs:  | ell: =
+KAROLI M106 | kulcs: Zsolt 51:5 | ell: 51:3
+KAROLI M112 | kulcs:  | ell: =
+KAROLI M119 | kulcs: Sir 2:11 | ell: =
+KAROLI M145 | kulcs: Jób 37:3 | ell: =
+KAROLI M230 | kulcs: Sir 3:32 | ell: =
+JP M002 H0113 | kulcs: -/3/a | ell: -/3/(2)/a
+JP M007 H3820 | kulcs: -/6/b | ell: II/6/b
+JP M009 H2472 | kulcs: tagolatlan | ell: -/1
+JP M010 H1892 | kulcs: -/2 | ell: I/2
+JP M014 H6524 | kulcs: Qal/- | ell: I Qal
+JP M021 H1973 | kulcs: tagolatlan | ell: -/-/b
+JP M023 H2868 | kulcs: tagolatlan | ell: Pe`al
+JP M024 H7110 | kulcs: tagolatlan | ell: I/2
+JP M026 H5713 | kulcs: tagolatlan | ell: II
+JP M027 H2543 | kulcs: -/1 | ell: II/1
+JP M028 H3820 | kulcs: -/6/d | ell: II/6/d
+JP M029 H8398 | kulcs: tagolatlan | ell: fej
+JP M030 H7559 | kulcs: Pe'il/2 | ell: Pe`il/2
+JP M034 H5518 | kulcs: -/1 | ell: II/1
+JP M037 H3423 | kulcs: Hiph'il/2/a | ell: Hiph`il/2/a
+JP M041 H4592 | kulcs: -/1/e | ell: -/1/e/b
+JP M045 H3885 | kulcs: Qal/2 | ell: I Qal/2
+JP M048 H6086 | kulcs: tagolatlan | ell: fej
+JP M049 H1234 | kulcs: Qal/- | ell: fej
+JP M051 H3117 | kulcs: -/3/d | ell: -/7/e/(3)
+JP M056 H6440 | kulcs: -/7/d | ell: II/4/b/(c)
+JP M060 H5221 | kulcs: Hiph'il/1/a | ell: Hiph`il/1/a
+JP M064 H6633 | kulcs: Qal/- | ell: fej
+JP M066 H1197 | kulcs: Niph'al/- | ell: II Niph`al
+JP M069 H2974 | kulcs: Hiph'il/- | ell: fej
+JP M073 H7121 | kulcs: Qal/6/a | ell: I Qal/6/a
+JP M074 H5324 | kulcs: Hiph'il/2 | ell: Hiph`il/2
+JP M078 H4244 | kulcs: tagolatlan | ell: -/1
+JP M081 H1961 | kulcs: Qal/2/b | ell: Qal I/2/b
+JP M082 H7342 | kulcs: tagolatlan | ell: I
+JP M085 H5800 | kulcs: Qal/2/f | ell: I Qal/2/f
+JP M086 H8034 | kulcs: -/2/b | ell: I/2/b
+JP M087 H3772 | kulcs: Hiph'il/2/b | ell: Hiph`il/2/b
+JP M088 H5137 | kulcs: Qal/- | ell: I Qal
+JP M089 H5612 | kulcs: -/4 | ell: ?
+JP M090 H7121 | kulcs: Qal/6/b | ell: I Qal/6/b
+JP M094 H0006 | kulcs: Pi'el/1 | ell: Pi`el/1
+JP M099 H6031 | kulcs: Piel/2 | ell: III Pi`el/2
+JP M101 H2803 | kulcs: Niph'al/- | ell: fej
+JP M102 H3027 | kulcs: -/3/g | ell: -/5/g
+JP M103 H2896 | kulcs: -/3/e | ell: II/3/e
+JP M104 H1410 | kulcs: -/2 | ell: III/2
+JP M105 H1285 | kulcs: -/1 | ell: I/1
+JP M108 H3920 | kulcs: Niph'al/2 | ell: Niph`al/2
+JP M111 H5314 | kulcs: Niph'al/- | ell: fej
+JP M114 H5175 | kulcs: -/1/a | ell: I/1/a
+JP M116 H6086 | kulcs: tagolatlan | ell: -/1/a
+JP M119 H3516 | kulcs: tagolatlan | ell: fej
+JP M124 H5496 | kulcs: Hiph'il/2 | ell: Hiph`il/2
+JP M131 H5307 | kulcs: Hiph'il/- | ell: Hiph`il/fej
+JP M133 H7105 | kulcs: -/2 | ell: I -/2
+JP M139 H2764 | kulcs: -/2/a | ell: I -/1/a
+JP M140 H0657 | kulcs: tagolatlan | ell: -/2/c
+JP M142 H2939 | kulcs: tagolatlan | ell: Pa`el/fej
+JP M143 H3198 | kulcs: Hiph'il/- | ell: Hiph`il/fej
+JP M145 H7481 | kulcs: Hiph'il/- | ell: Hiph`il
+JP M147 H5892 | kulcs: -/1 | ell: II -/1
+JP M148 H2406 | kulcs: tagolatlan | ell: fej
+JP M150 H5532 | kulcs: Qal/- | ell: Qal/fej
+JP M163 H7451 | kulcs: -/10/d | ell: -/1
+JP M167 H0204 | kulcs: tagolatlan | ell: fej
+JP M169 H2659 | kulcs: Qal/- | ell: Qal/fej
+JP M172 H1219 | kulcs: Qal/- | ell: Qal/fej
+JP M177 H7489 | kulcs: Qal/1 | ell: I Qal/1
+JP M182 H1285 | kulcs: -/5/k | ell: III -/1
+JP M184 H3925 | kulcs: Piel/- | ell: Pi`el
+JP M185 H2826 | kulcs: Niph'al/- | ell: Niph`al
+JP M187 H5599 | kulcs: tagolatlan | ell: II tagolatlan
+JP M191 H3581 | kulcs: -/3 | ell: II -/3
+JP M196 H1696 | kulcs: Pi'el/- | ell: Pi`el/fej
+JP M198 H1565 | kulcs: tagolatlan | ell: fej
+JP M199 H3027 | kulcs: -/3/g | ell: -/5/b
+JP M203 H4948 | kulcs: tagolatlan | ell: fej
+JP M212 H5030 | kulcs: -/1 | ell: -/2
+JP M213 H0352 | kulcs: tagolatlan | ell: II fej
+JP M215 H6936 | kulcs: tagolatlan | ell: fej
+JP M216 H8333 | kulcs: tagolatlan | ell: fej
+JP M222 H1639 | kulcs: Qal/- | ell: Qal/fej
+JP M223 H3196 | kulcs: tagolatlan | ell: -/-/e
+JP M227 H4326 | kulcs: tagolatlan | ell: -/1/a
+JP M231 H6440 | kulcs: -/7/d | ell: II -/1/d
+JP M232 H2009 | kulcs: tagolatlan | ell: -/-/a
+JP M233 H1732 | kulcs: tagolatlan | ell: -/-/a
+JP M239 H3045 | kulcs: Hiph'il/- | ell: Hiph`il/fej
+JP M240 H3205 | kulcs: Qal/- | ell: Qal/fej
+JP M242 H5273 | kulcs: -/1 | ell: I -/1
+JP M245 H1931 | kulcs: tagolatlan | ell: -/3/c
+JP M246 H3034 | kulcs: Pi'el/- | ell: Pi`el
+JP M247 H0571 | kulcs: -/3 | ell: -/3/b
+JP M250 H1288 | kulcs: Pi'el/2/a | ell: Pi`el/2/a
+szurt 25 szures-egyezes: 23
+SZ M040 2:34 | kulcs: filtered nem_bibliai | ell: bibliai
+SZ M210 24:4 | kulcs: filtered nem_bibliai | ell: bibliai
+bizonytalan 25 szures-egyezes: 1
+SZ M006 Gen 2:8 | kulcs: bizonytalan sigla_kozel | ell: alhivatkozas: kommentár-hely (Schrader COT, Gen 2:8-hoz)
+SZ M013 Hosea 9:6 | kulcs: bizonytalan sigla_kozel | ell: bibliai
+SZ M016 Dan 2:26 | kulcs: bizonytalan sigla_kozel | ell: bibliai
+SZ M018 Ezra 10:21 | kulcs: bizonytalan sigla_kozel | ell: bibliai
+SZ M035 23:31 | kulcs: bizonytalan sigla_kozel | ell: bibliai
+SZ M036 Neh 1:1 | kulcs: bizonytalan sigla_kozel | ell: alhivatkozas: kommentár-hely (Schrader COT, Neh 1:1-hez)
+SZ M070 12:23 | kulcs: bizonytalan sigla_kozel | ell: bibliai
+SZ M115 2Kin 21:1 | kulcs: bizonytalan sigla_kozel | ell: alhivatkozas: kommentár-hely (Schrader COT, 2Kin 21:1-hez)
+SZ M118 12:2 | kulcs: bizonytalan sigla_kozel | ell: bibliai
+SZ M125 Neh 8:10 | kulcs: bizonytalan sigla_kozel | ell: bibliai
+SZ M126 Hosea 2:7 | kulcs: bizonytalan sigla_kozel | ell: bibliai
+SZ M128 Isa 41:25 | kulcs: bizonytalan sigla_kozel | ell: alhivatkozas: kommentár-hely (Schr^COT Isa 41:25, az etimológiában)
+SZ M129 1Chr 6:42 | kulcs: bizonytalan sigla_kozel | ell: bibliai
+SZ M134 Ezek 21:19 | kulcs: bizonytalan sigla_kozel | ell: bibliai
+SZ M144 Jer 6:13 | kulcs: bizonytalan sigla_kozel | ell: bibliai
+SZ M154 18:14 | kulcs: bizonytalan tobbertelmu | ell: bibliai
+SZ M159 Gen 28:17 | kulcs: bizonytalan sigla_kozel | ell: alhivatkozas: Targum-hely (ᵑ7^J Gen 28:17)
+SZ M178 3:22 | kulcs: bizonytalan tobbertelmu | ell: bibliai
+SZ M193 Jer 6:24 | kulcs: bizonytalan sigla_kozel | ell: bibliai
+SZ M194 Ear 7:10 | kulcs: bizonytalan tobbertelmu | ell: bibliai
+SZ M201 24:1 | kulcs: bizonytalan sigla_kozel | ell: alhivatkozas: kommentár-hely (Schr^ib. = Schr^COT, 2Kin 24:1)
+SZ M204 Job 6:2 | kulcs: bizonytalan sigla_kozel | ell: alhivatkozas: kommentár-hely (Fleischer Delitzsch Job-kommentárjában, 
+SZ M208 Gen 25:30 | kulcs: bizonytalan sigla_kozel | ell: bibliai
+SZ M225 , 22 | kulcs: bizonytalan sigla_kozel | ell: alhivatkozas: Targum-hely (ᵑ7^Jer Gen 26:22)
