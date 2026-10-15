@@ -1,0 +1,55 @@
+/* A tervező mód felülete (#98 M2): csak a belso kiadásban linkelődik (/tervezo/tervezo.css). Saját, rögzített színekkel dolgozik,
+   nem az arculat tokenjeivel: egy rossz előnézeti érték se tegye használhatatlanná a panelt, és a tervező ne állítsa önmagát.
+   Az elem kiemelése a data-tz-kiemelt / data-tz-kivalasztott attribútumon át, ebből a stíluslapból (nincs inline stílus). */
+.tervezo-kapcsolo { font: 12.5px/1.2 system-ui, -apple-system, "Segoe UI", sans-serif; padding: 3px 9px; border: 1px dashed #b45309; border-radius: 6px; background: transparent; color: #b45309; cursor: pointer; }
+.tervezo-kapcsolo[aria-pressed="true"] { background: #b45309; color: #ffffff; border-style: solid; }
+:root[data-tervezo] body { cursor: crosshair; }
+:root[data-tervezo] [data-tz-kiemelt="reg"] { outline: 2px solid #d9480f !important; outline-offset: 1px; }
+:root[data-tervezo] [data-tz-kiemelt="nem"] { outline: 2px dashed #7048e8 !important; outline-offset: 1px; }
+:root[data-tervezo] [data-tz-kivalasztott] { outline: 3px solid #e8590c !important; outline-offset: 2px; }
+
+.tz-ui { --tz-bg: #ffffff; --tz-bg2: #f6f8fa; --tz-fg: #1f2328; --tz-mut: #59636e; --tz-vonal: #d0d7de; --tz-fo: #b45309; --tz-hiba: #b42318; --tz-figy: #7048e8;
+  font: 13px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--tz-fg); letter-spacing: normal; text-transform: none; }
+@media (prefers-color-scheme: dark) { :root:not([data-tema="light"]) .tz-ui { --tz-bg: #1c2128; --tz-bg2: #22272e; --tz-fg: #e6edf3; --tz-mut: #9da7b3; --tz-vonal: #444c56; --tz-fo: #f0883e; --tz-hiba: #ff7b72; --tz-figy: #b197fc; } }
+:root[data-tema="dark"] .tz-ui { --tz-bg: #1c2128; --tz-bg2: #22272e; --tz-fg: #e6edf3; --tz-mut: #9da7b3; --tz-vonal: #444c56; --tz-fo: #f0883e; --tz-hiba: #ff7b72; --tz-figy: #b197fc; }
+
+.tz-cimke { position: fixed; z-index: 2147483001; pointer-events: none; background: #d9480f; color: #ffffff; font: 600 12px/1.3 system-ui, sans-serif; padding: 2px 6px; border-radius: 4px; max-width: 60vw; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tz-cimke.tz-nem { background: #7048e8; }
+.tz-probe { position: absolute; left: -9999px; top: 0; width: 1px; height: 1px; overflow: hidden; }
+
+.tz-panel { position: fixed; right: 16px; bottom: 16px; z-index: 2147483000; width: min(420px, calc(100vw - 32px)); max-height: min(82vh, 760px); overflow: auto; background: var(--tz-bg); border: 1px solid var(--tz-vonal); border-radius: 10px; box-shadow: 0 10px 30px rgba(0, 0, 0, .25); padding: 0 0 10px; }
+.tz-fej { position: sticky; top: 0; z-index: 1; display: flex; gap: 6px; align-items: center; padding: 8px 10px; background: var(--tz-bg2); border-bottom: 1px solid var(--tz-vonal); cursor: move; }
+.tz-cim { flex: 1; font-size: 14px; }
+.tz-alcim { padding: 6px 10px 2px; color: var(--tz-mut); font-size: 12px; overflow-wrap: anywhere; }
+.tz-tobb { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; padding: 2px 10px; }
+.tz-tulajdonsagok { padding: 2px 10px; }
+.tz-sor { padding: 8px 0; border-bottom: 1px solid var(--tz-vonal); }
+.tz-sorfej { display: flex; gap: 8px; align-items: baseline; justify-content: space-between; }
+.tz-nev { font-weight: 600; }
+.tz-token { font: 11.5px/1.3 ui-monospace, Consolas, monospace; color: var(--tz-mut); overflow-wrap: anywhere; }
+.tz-vezerlo { margin-top: 4px; }
+.tz-szinsor, .tz-hosszsor { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.tz-minta { display: inline-block; width: 22px; height: 22px; border: 1px solid var(--tz-vonal); border-radius: 4px; }
+.tz-szinvalaszto { width: 34px; height: 24px; padding: 0; border: 1px solid var(--tz-vonal); background: none; }
+.tz-mezo { width: 150px; font: 12px ui-monospace, Consolas, monospace; padding: 2px 4px; }
+.tz-tema, .tz-megj, .tz-hatas, .tz-egyseg { color: var(--tz-mut); font-size: 12px; }
+.tz-paletta { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 4px; }
+.tz-szinminta { width: 20px; height: 20px; padding: 0; border: 1px solid var(--tz-vonal); border-radius: 4px; cursor: pointer; }
+.tz-csuszka { flex: 1; min-width: 140px; }
+.tz-szam { width: 72px; font: 12px ui-monospace, Consolas, monospace; }
+.tz-figy { color: var(--tz-figy); font-size: 12px; margin: 4px 0; }
+.tz-szakasz { font-weight: 600; margin: 8px 0 4px; }
+.tz-toml { width: 100%; font: 11.5px/1.35 ui-monospace, Consolas, monospace; background: var(--tz-bg2); color: var(--tz-fg); border: 1px solid var(--tz-vonal); border-radius: 4px; }
+.tz-valtozasok { padding: 4px 10px; }
+.tz-vfej { display: flex; justify-content: space-between; align-items: center; }
+.tz-vlista { list-style: none; margin: 0; padding: 0; display: grid; gap: 3px; }
+.tz-vsor { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; font-size: 12px; }
+.tz-ertekek { flex: 1; font: 12px ui-monospace, Consolas, monospace; overflow-wrap: anywhere; }
+.tz-gombok { display: flex; gap: 8px; flex-wrap: wrap; padding: 8px 10px 0; }
+.tz-gomb { font: 12.5px/1.2 system-ui, sans-serif; padding: 4px 9px; border: 1px solid var(--tz-vonal); border-radius: 6px; background: var(--tz-bg2); color: var(--tz-fg); cursor: pointer; }
+.tz-gomb:disabled { opacity: .5; cursor: default; }
+.tz-gomb.tz-kis { padding: 2px 7px; font-size: 12px; }
+.tz-gomb.tz-fo { background: var(--tz-fo); border-color: var(--tz-fo); color: #ffffff; font-weight: 600; }
+.tz-uzenet { padding: 6px 10px 0; font-size: 12px; color: var(--tz-mut); min-height: 1em; }
+.tz-uzenet.tz-hiba { color: var(--tz-hiba); }
+@media print { .tz-ui, .tervezo-kapcsolo { display: none !important; } }
