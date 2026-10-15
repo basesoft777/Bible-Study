@@ -123,6 +123,9 @@ class OldalGyar:
         self.arculat = arculat or arculat_modul.Arculat.betolt()
         self.kod_verzio = kod_verzio()           # induláskor számolt; a gyorsítótár kulcsában és az ETag-ben
         self.kiadas = db.kiadas
+        # a tervező mód (#98 M2): a kapcsoló, a szkript és a stíluslap a lapon; csak a szerver kapcsolja be, a belso kiadásban
+        # (alkalmazas.letrehoz); a statikus export és más kiadás lapján nincs nyoma
+        self.tervezo = False
         con = db.kapcsolat()
         self.kozos = Kozos(con)
         self.jinja = Environment(loader=FileSystemLoader(sablon_dir), autoescape=select_autoescape(['html']),
@@ -157,6 +160,9 @@ class OldalGyar:
         ctx.setdefault('epites_ts', self.kozos.meta.get('epites_ts', ''))
         ctx.setdefault('nezet', ALAP_NEZET)
         ctx.setdefault('arculat_hash', self.arculat.hash)
+        ctx['tervezo'] = bool(self.tervezo) and self.kiadas == 'belso'
+        if ctx['tervezo']:
+            ctx['tervezo_v'] = self.kod_verzio
         sz = ctx.pop('szint', None)
         # a szintváltó vezérlő CSAK a belső kiadásban (próbaüzem): máshol a szint nem választható
         ctx['szint_vezerlo'] = self.kiadas == 'belso'

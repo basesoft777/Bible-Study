@@ -211,6 +211,11 @@ def par(con, ig):
     return dict(ki)
 
 
+def bizonyossag_ertekek(con):
+    """A `token_par` bizonyosság-értékei (a fejezet-lap `par-<érték>` osztályainak értékkészlete; a regiszter-őr, #98 M2)."""
+    return sorted(r[0] for r in con.execute('SELECT DISTINCT bizonyossag FROM token_par WHERE bizonyossag IS NOT NULL'))
+
+
 def par_szavak(con, ig):
     """[(hu_sorszam, hu_szo, er_sorszam, er_szo, strong, bizonyossag)] a Károli–Strong párosítás blokkhoz."""
     return con.execute('SELECT hu_sorszam, hu_szo, er_sorszam, er_szo, strong, bizonyossag FROM token_par WHERE igehely=? ORDER BY hu_sorszam, er_sorszam', (ig,)).fetchall()

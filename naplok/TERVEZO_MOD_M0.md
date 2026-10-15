@@ -212,15 +212,15 @@ Forrás: az F98.9–F98.13 (`84f211ed`…`ec98a5b2`) szabályai az `olvaso.css` 
 | `il-vers`, `il-szavak`, `il-parositatlan`, `folyo`, `vers` | sor- és bekezdés-tároló; a térköz a csempén (53) vagy a folyó szövegen (24) állítható |
 | `sorok`, `gordul`, `lista`, `al`, `jel`, `jelek`, `cimkek`, `konyvek`, `konyv`, `fejezetek`, `fejezet-nave`, `angol-sor` | lista-, görgető- és oszlop-tároló (behúzás, görgetés, hasábok); az elemek a gyermekeken |
 | `he-fo`, `er-fo`, `er`, `ures-par` | hivatkozás- vagy sor-burkoló a csempén belül; a rámutatás-háttér `accent-soft` a csempe (45, 53) tokenjét használja |
-| `cimszo`, `fo`, `def`, `dom`, `jt`, `karoli-itt`, `alak`, `strong`, `gr`, `gk`, `he`, `at`, `gl`, `st`, `st-link`, `lx`, `mf`, `kat`, `ang`, `hu`, `heb`, `gor` *(önmagukban)* | szövegrész-horog egy regisztrált elemen belül; a betűméretük a szülő-elem tokenje (pl. `ang` → 52) |
+| `cimszo`, `fo`, `def`, `dom`, `karoli-itt`, `alak`, `strong`, `gr`, `gk`, `he`, `at`, `gl`, `st`, `st-link`, `lx`, `mf`, `kat`, `ang`, `hu`, `heb`, `gor` *(önmagukban)* | szövegrész-horog egy regisztrált elemen belül; a betűméretük a szülő-elem tokenje (pl. `ang` → 52) |
 | `aktiv`, `kijelolt`, `nyelvtani`, `nincs-jeloles`, `par-magas`, `arany`, `krit`, `folyamat` *(önmagában)* | állapot-osztály; ahol saját színe van, változat-sorként a regiszterben áll (4, 6, 20, 28, 32, 67, 69) |
 | `nezet-olvaso`, `nezet-interlinearis`, `nezet-munkaasztal` | a `body` nézet-horga; CSS-szabály nincs rá |
 | `ugras` | a gyorsugrás űrlap: böngésző-alapértelmezett mező, token nélkül |
 | `he` a `.jcim`-ben és a `.jel-vazlat`-ban *(F98.12)* | szövegrész-horog: csak betűcsalád (a mentésen nem írható) és bidi-izolálás; a mérete a 79., illetve a 74. sor tokenje |
 
-*Az F98.11 óta a `jt` (a jelentés rövid összegzése) nem keletkezik: a helyét a `jcim` (79) vette át; a fenti szövegrész-horog sorban a `jt` történeti.*
+*Az F98.11 óta a `jt` (a jelentés rövid összegzése) nem keletkezik: a helyét a `jcim` (79) vette át, ezért a `jt` a fenti listából kikerült (M2, a felhasználó kérése, 2026-10-15).*
 
-A végleges kizárt lista az M2 regiszter-őrének kimenetéből készül; az itteni felsorolás a felmérő szkript 109 osztályát fedi (`osztalyok.py`).
+A végleges kizárt lista az M2 regiszter-őrének kimenetéből készült: `eszkozok/olvaso_szerver/konfig/elemek.toml` `[kizart]` (46 osztály, egyenként indokolva). Ott csak az az osztály áll, amely a felületen előfordul, és egyetlen regiszter-szelektorban sem szerepel; az itteni felsorolás állapot- és szövegrész-osztályai közül a szelektorokban szereplők (pl. `aktiv`, `kijelolt`, `he`, `gk`, `st`) regisztráltnak számítanak. Az itteni felsorolás a felmérő szkript 109 osztályát fedi (`osztalyok.py`); az M2 őre két további osztályt talált: `szo-nincs` (a felmérésből kimaradt) és `tervezo-kapcsolo` (az M2 saját vezérlője).
 
 ### 1.3 A regiszter-őr (M2) bemenete: a dinamikusan képzett osztályok
 
