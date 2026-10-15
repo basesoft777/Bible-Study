@@ -26,6 +26,7 @@ import arculat as arculat_modul
 import hozzaferes as hozz_modul
 import lekerdezesek
 import oldalak
+import tervezo as tervezo_modul
 from gyorsitotar import Gyorsitotar
 
 KONFIG_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'konfig')
@@ -47,6 +48,8 @@ def letrehoz(db_ut=None, kiadas=None, konfig_dir=None, hozzaferes=None):
     hozz = hozzaferes or hozz_modul.Hozzaferes.betolt(kdir)
     db = adatbazis.Adatbazis(db_ut, kiadas, mmap_bajt=int(konf.get('mmap_bajt', 0)))
     gyar = oldalak.OldalGyar(db, hozz, arculat=arculat_modul.Arculat.konfigbol(kdir))
+    # az elem-regiszter (#98 M2): induláskor ellenőrzött (ismeretlen vagy nem állítható token indulási hiba), minden kiadásban
+    regiszter = tervezo_modul.Regiszter.konfigbol(kdir, gyar.arculat.adat)
     suti = konf.get('suti', {})
     suti_nev = suti.get('nev', 'pardes_nezet')
     szint_suti_nev = suti.get('szint_nev', 'pardes_szint')
@@ -56,7 +59,13 @@ def letrehoz(db_ut=None, kiadas=None, konfig_dir=None, hozzaferes=None):
 
     app = Flask(__name__, static_folder=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'statikus'), static_url_path='/statikus')
     app.config['JSON_AS_ASCII'] = False
-    app.extensions['pardes'] = {'db': db, 'gyar': gyar, 'cache': cache, 'hozz': hozz}
+    app.extensions['pardes'] = {'db': db, 'gyar': gyar, 'cache': cache, 'hozz': hozz, 'regiszter': regiszter}
+
+    # -- a tervező mód (#98 M2): CSAK a belso kiadásban; más kiadásban a /tervezo/* útvonalak nem léteznek (404), és a lapon
+    #    nincs kapcsoló, szkript és stíluslap. A mentés feltételei (helyi kérés, egyszeri kód, értékszűrés): tervezo.py.
+    if kiadas == 'belso':
+        gyar.tervezo = True
+        tervezo_modul.utvonalak(app, gyar, cache, regiszter)
 
     # -- nézet és szint ---------------------------------------------------------------------------------------------------
     def nezet_kerese():
