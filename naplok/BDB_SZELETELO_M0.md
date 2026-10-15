@@ -268,4 +268,56 @@ wsl -d pardes -e bash -lc 'cd /mnt/c/Users/bases/Desktop/Bible-Study && ~/pardes
 python eszkozok/olvaso_pilot/bdb_szelet_m0.py --dump H1242 --nyelv hu --ki <könyvtár>
 ```
 
+```
+python eszkozok/olvaso_szerver/bdb_vers_jelentes.py --ts 2026-10-15 [--ellenoriz]
+python eszkozok/olvaso_szerver/bdb_vers_jelentes.py --minta 99 --minta-ki <út>
+```
+
 A `--arany` Windows-Pythonnal is fut, de a szerver `blokkok` modulja nélkül (nincs `markupsafe`) a címek összevetése kimarad, és ezt kiírja. Az eredmények determinisztikusak (a `ts` mezőn kívül); a fenti számok a `edf8ce69` állapoton futottak.
+
+## 9. M1 és M2 az M2 ⛔-ig (F99.9–F99.11)
+
+*A felhasználó jóváhagyásával (2026-10-15: „mehet az M1”, az M2 ⛔ minta-ellenőrzéséig). Ez a szakasz az M0 napló folytatása, mert a brief `ir`-je M1/M2 naplót nem nevez meg.*
+
+### 9.1 M1 — gyökcsalád
+
+- **Import** (F99.9): az `oshl_index_import.py` az `<entry>` `<etym>` elemét is kivonja: `etym_tipus` (`main` / `sub` / `single`; `—`: nincs), `etym_cel` (a `sub` célja, a `main` származék-listája, `oshl_id`-k), `gyok` (a `main` `root` attribútuma). A `konkordancia/OSHL_lexikalis_index.tsv` a repón kívüli, SHA-ellenőrzött `LexicalIndex.xml`-ből a `--forras` úton újragenerálva; az első tíz oszlop és a sorrend bájtra változatlan. Darabszám: main 2643, sub 4368, single 574, `—` 2636 (a M0.4-gyel egyezik), main gyökkel 2458. README frissítve (új SHA-256 a `#`-sorok nélkül).
+- **pardes.db** (F99.10): az általános betöltés viszi az új oszlopokat; új `oshl_id`-index (`ALTALANOS_TOVABBI_INDEX`). Teszt: `teszt_sqlite_epit.py` `OshlGyokcsalad` (5 teszt: oszlopok, darabszámok, index, H1242 családja, H3915 single).
+- **Szó-lap** (F99.10): új blokk `szo.oshl_csalad` „Rokon szavak (OSHL-gyökcsalád)” (forrásadat): a gyök és a származékok Strong-linkkel, a Strong nélküli gyök-bejegyzés jelölve („Strong-szám nélküli gyök-bejegyzés”, pl. H7307 → `רוח`), üres családnál „Nincs OSHL-gyökcsalád” (single vagy nincs adat; nem negatív lelet). Csak meglévő CSS-osztályok: az elem-regiszter (#98) nem bővül, a regiszter-őr zöld (`teszt_tervezo.py`). Teszt: `teszt_olvaso_szerver.py` (H1242: H1239 gyök, H0951, H1241, H1243, H1244; H3915: single-felirat; H7307: Strong nélküli gyök); a blokkszám 48 → 49.
+- **Eltérés a brieftől:** a brief M1.3 a blokkot „a #98 regiszterébe véve” kéri; mivel új elem (CSS-osztály) nem keletkezett, regiszter-bejegyzés nem kellett.
+
+### 9.2 DT-F99c — a szeletelő helye
+
+`eszkozok/olvaso_pilot/bdb_szelet.py` → `eszkozok/olvaso_szerver/bdb_szelet.py` (`git mv`). A régi helyen **betöltő** marad (a szerveri modult tölti be és minden nevét átveszi), így a pilot (`adat.py`, `meres.py`, `teszt_olvaso_pilot.py`), az M0 mérőeszköz és a briefek régi hivatkozásai kódmásolás nélkül működnek. A `blokkok.py` közvetlenül importálja; az `alkalmazas.py` figyelőlistájából a pilot-útvonal kikerült (a Werkzeug modulként figyeli).
+
+### 9.3 M2 — hivatkozás-feloldás és a vers → jelentés tábla (a ⛔ előtti lépések)
+
+- **A szeletelőben** (`bdb_szelet.py`): `lapit` (a szeletelő szövegalakja), `hivatkozasok` (a DT-F99a szabályai; a könyvalakok a `bdb_konyv_javit.py`-ból lustán), `csomopont_savok` (a csomópontok sávjai szöveg-egyezéssel), `jelentespont`.
+- **Két szerkezeti javítás** (az aranyminta 2.3/1–2 osztálya; a hivatkozások jelentéspontja ezekre épül): a pont nélküli angol személyszám („3 feminine singular כָּֽלְתָה 1Sam 20:7”, „1 singular suffix”) és a könyvnév száma („1 Kings 21”, „2 Chronicles”) nem jelentés-sorszám; a „2 2nd son” jelölő. A határ: a héber alakot követő vesszős glossza vagy angol szó (H4908 „3 plural מִשְׁכָּנוֺת, dwellings”, H0776 „5 plural אֲרָצוֺת is almost wholly late”) jelentés marad. Hatás: az angol BDB 92 szócikkének bontása változik (szúrópróba: H0029, H0141, H0175, H0385, H0499, H0669, H0758, H0854, H0935, H1201, H1265, H1382 — mind javulás; a H1129 Qal-ja továbbra is hibás: az „, 1 (literal)” jelölőt a szigorú minta nem ismeri fel), a magyaré egyiké sem. Teszt: `teszt_bdb_vers_jelentes.py` `SzerkezetJavitas`; a pilot tesztjei közül csak a main-en is fennálló 3 (Zsolt 22 versszámozás) hibás.
+- **Az aranyminta a javítás után** (`bdb_szelet@b164b873`, ts=2026-10-15T15:30): szerkezeti eltérés nélkül **19 / 32** angolul (eddig 15), 7 / 14 magyarul; eltérés 158 (EN) és 143 (HU); a H3615, H0157, H5022, H6696 és a H4111 angolul hibátlan; a H0559 angol 1. jelentése (a tapadt „263.1Say”) most hiányzik a hamis „1 Kings” helyett. Nyitott a H1157 angol „1 plural בַּעֲדֵנוּ, Amos 9:10” (vesszővel követett igehely): a következő szerkezeti javítás (a tábla újragenerálásával együtt).
+- **A tábla** (`adat/bdb_vers_jelentes.tsv`, SEMA 2.29, `datasetek.tsv`: `BDB_vers_jelentes`, korlatos): `python eszkozok/olvaso_szerver/bdb_vers_jelentes.py --ts 2026-10-15`; bájtra reprodukálható (`--ellenoriz`, és a teszt Windowson).
+
+`scope=angol BDB, 8099 szócikk, minden hivatkozás | forras=bdb_vers_jelentes@<kód-hash a fájl fejlécében> (BDB_teljes_unabridged.tsv@d4b15b2faea6, Macula_heber_*, Karoli_versmegfeleltetes.tsv, Karoli_1908.tsv, F85_macula_elvetve.tsv, OSHL_lexikalis_index.tsv) | ts=2026-10-15`
+
+| Tétel | Érték |
+|---|---|
+| sor (hivatkozás) | 160 616 (8025 szócikk) |
+| könyv: kiírt / örökölt / vers-folytatás / feloldhatatlan | 107 472 / 42 397 / 10 744 / 3 |
+| kiszűrve (`szurt=1`: nem bibliai 368, tapadt sigla 251) | 619 |
+| bizonytalan, a táblában marad: közeli sigla / többértelmű könyvalak / ismeretlen alak / nincs előzmény | 435 / 19 / 2 / 3 |
+| Károli-vers van / nincs | 157 920 / 2 696 |
+| vers: azonos / átkulcsolt / azonos (F85-régió) / átkulcsolt, bizonytalan | 150 473 / 7 238 / 209 / 0 |
+| vers: nem létező MT-vers / Károli-megfelelő nélkül / ÚSZ | 592 / 1 372 / 89 |
+| a Macula több Károli-verset ad (az első áll, `tobb_karoli_vers`) | 43 |
+| jelentéspont: csomópont / fej (címsor, alaktan) / tagolatlan szócikk | 116 627 / 8 907 / 35 082 |
+
+Megjegyzések:
+- A Károli-vers a `Karoli_1908.tsv` kulcsa (a Siralmak ott és a versmegfeleltetésben is `Sir`, a könyvalak-táblában `JSir`): a link így a szerver versére mutat. A versmegfeleltetés nem teljes Károli-verslista (pl. a Dán 3 sorai hiányoznak belőle), ezért a vers létezését a `Karoli_1908.tsv` dönti el.
+- A jelentéspont a szeletelő csomópontjaihoz kötődik; a szeletelő ismert hibái (2.3, 3–7. osztály) öröklődnek. A „tagolatlan” azt jelenti, hogy a szócikkben nincs törzs, számozott jelentés és alpont: a hivatkozás az egész szócikkhez tartozik.
+- **Tárhely-megjegyzés:** a tábla 25,6 MB; a sorok proveniencia-mezője a brief szerint a kód hash-ét viszi, ezért minden szeletelő-javítás után az összes sor változik (a git-történetben teljes újraírás). Javaslat (nem döntöttem el): a kód-hash csak a fájl fejlécében álljon, a sor `forras` mezője a generátorra hivatkozzon.
+
+### 9.4 Javaslat az M2 ⛔ minta-ellenőrzésére
+
+- **Minta:** `python eszkozok/olvaso_szerver/bdb_vers_jelentes.py --minta 99` (seed **99**; a táblából, nem írja): **200 egyszerű véletlen sor** a teljes 160 616-ból (`random.Random(99).sample`), és két kiegészítő réteg, egyenként **25** sor: a kiszűrt (`szurt=1`) és a bizonytalan (`sigla_kozel`, `tobbertelmu`) hivatkozásokból — az álhivatkozás-szűrés hamis pozitívja és negatívja a véletlen mintán önmagában nem mérhető (619 szűrt sor a 160 616-ból). A munkalap soronként: a hivatkozás ±70 karakteres környezete (⟦…⟧ jelöléssel), a feloldott könyv, MT- és Károli-vers, a jelentéspont és a csomópontja szövegének eleje, és üres ítélet-oszlopok (`itelet_konyv_vers`, `itelet_jelentespont`, `itelet_szures`, `megjegyzes`). Alapértelmezett helye `naplok/BDB_SZELETELO_M2_minta.tsv` (a brief `ir`-jébe felveendő), vagy a repón kívül. A seed 99-cel kipróbálva: 250 sor.
+- **Eljárás:** a független ellenőr tölti ki a munkalapot a BDB-szöveg alapján (a szócikk teljes szövege a táblából; kétes szerkezetnél a nyomtatott BDB oldala), soronként: könyv+vers helyes-e, a jelentéspont helyes-e (a hivatkozás a BDB tagolása szerint melyik jelentés/alpont alá tartozik; „fej” és „tagolatlan” is ítélendő), a szűrés helyes-e. Az eltéréseket a felhasználó dönti el (mint a DT-F99e-nél).
+- **Mérce** (a brief 4. szakasza): a 200-as véletlen mintán könyv és vers ≥ 99%, jelentéspont ≥ 97%; az álhivatkozás-szűrés hamis pozitívja (a `szurt` réteg) és hamis negatívja (a véletlen és a bizonytalan réteg) külön. Kockázat: a jelentéspont a szeletelő szerkezeti hibáit örökli (2.3: jelöletlen második címszó, írásjel nélküli törzsfejléc stb.); ha a 97% nem teljesül, a hibás szócikk-osztályok javítása (M3/M4) után a tábla újragenerálandó és a minta újramérendő.

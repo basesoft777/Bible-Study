@@ -6,10 +6,10 @@ tipus: feladat
 fazis: 1
 modell: opus
 munka: folyamat
-allapot: fut
+allapot: dontesre_var
 ag: claude/bdb-szeletelo
 ad: a BDB-szócikk gépi szeletelése éles modulként, aranymintán mérve (0 eltérés), a „próba” felirat nélkül; minden igehely-hivatkozás feloldva (könyv, Károli-vers) és jelentésponthoz kötve (vers → jelentés tábla, proveniencia soronként); jelentésen belüli tagolás a használati csoportok mentén; a szó-lapon pontos hivatkozásszám, kattintható helyek, „ebben a versben” kiemelés és a hiány explicit jelölése; „rokon szavak” blokk az OSHL gyökcsaládjából; a héber idézetek helyes szórendje a megjelenítésben; a modell írta jelentésmagyarázat 20 szócikkes próbája
-kovetkezo: "Következő: M1 (gyökcsalád: oshl_index_import.py <etym>-oszlopai, sqlite_epit.py, szó-lap blokk), az M1 előtt megállva. Az M0 lezárva (naplok/BDB_SZELETELO_M0.md; aranyminta elfogadva, DT-F99a–c, e, f eldöntve; M0.4: a LexicalIndex.xml letöltve, SHA egyezik, a repón kívül). A #76 M3 előtt; ⛔ M2, ⛔ M4, ⛔ M5, ⛔ M6"
+kovetkezo: "Te: az M2 ⛔ minta-ellenőrzés jóváhagyása — seed 99, 200 véletlen hivatkozás + 25 kiszűrt + 25 bizonytalan, munkalap: bdb_vers_jelentes.py --minta 99 (a naplok/BDB_SZELETELO_M2_minta.tsv az ir-be veendő), a független ellenőr tölti ki, az eltéréseket te döntöd el (naplok/BDB_SZELETELO_M0.md 9.4). Kész: M1 (gyökcsalád: import, pardes.db, szó-lap blokk), DT-F99c (a szeletelő a szerver mellett), M2.1–2 (adat/bdb_vers_jelentes.tsv, 160 616 sor). Utána M3; ⛔ M4, ⛔ M5, ⛔ M6"
 olvas: [eszkozok/olvaso_szerver/, eszkozok/sqlite_epit.py, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/BDB_teljes_unabridged_README.md, adat/forditasok.tsv, adat/terminologia.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, konkordancia/OSHL_lexikalis_index_README.md, konkordancia/OSHL_BDB_igehelyek.tsv, konkordancia/TAHOT_kivonat.tsv, eszkozok/bdb_konyv_javit.py, F38_BDB_FORDITAS_BRIEF.md, F98_TERVEZO_MOD_BRIEF.md, naplok/TERVEZO_MOD_M0.md, naplok/OLVASOI_PILOT_szeletelo_atnezes.md]
 ir: [eszkozok/olvaso_pilot/bdb_szelet.py, eszkozok/olvaso_pilot/, eszkozok/olvaso_szerver/, eszkozok/oshl_index_import.py, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/OSHL_lexikalis_index_README.md, eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, adat/bdb_vers_jelentes.tsv, adat/bdb_aranyminta.tsv, adat/bdb_magyarazat_proba.tsv, adat/SEMA.md, adat/datasetek.tsv, naplok/BDB_SZELETELO_M0.md, naplok/BDB_SZELETELO_zaras.md]
 fugg: []
