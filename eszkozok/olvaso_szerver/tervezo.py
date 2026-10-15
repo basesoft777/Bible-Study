@@ -80,6 +80,10 @@ class TervezoHiba(ValueError):
     """Érvénytelen kérés (400) vagy érvénytelen regiszter (indulási hiba)."""
 
 
+class LemezHiba(RuntimeError):
+    """A lemezes token-fájl nem érvényes (nem a kérés hibája): a mentés nem ír, a válasz 500 külön üzenettel."""
+
+
 def token_csoport(token):
     """`fs-torzs` → ('betumeret', 'torzs'); előtag nélkül szín: `bg` → ('szin', 'bg')."""
     for elo, csop in ELOTAG_CSOPORT:
@@ -443,18 +447,25 @@ class Mento:
         self.cache.urit()
         return uj_arculat
 
-    def mentes(self, valtozasok):
+    def mentes(self, torzs):
+        """A mentési kérés törzsének ellenőrzése és beírása. A tokenek létezését a **lemezes** token-fájl alapján vizsgálja (arra
+        ír): a lemezen hiányzó token TervezoHiba (400), a nem érvényes lemezes fájl LemezHiba (a fájl változatlan).
+        Visszaad: (az új arculat, a változások száma)."""
         with self._irzar:
             ut = self.gyar.arculat.ut
             with open(ut, 'rb') as f:
                 regi = f.read()
-            adat = copy.deepcopy(json.loads(regi.decode('utf-8')))
+            try:
+                adat = copy.deepcopy(arculat_modul.Arculat(ut, regi).adat)
+            except arculat_modul.ArculatHiba as ex:
+                raise LemezHiba('a lemezes token-fájl nem érvényes, a mentés nem írt: %s' % ex) from ex
+            valtozasok = valtozasok_ellenoriz(torzs, self.regiszter.tokenek(), adat)
             for csop, kulcs, tema, ertek in valtozasok:
                 if tema:
                     adat[csop][kulcs][tema] = ertek
                 else:
                     adat[csop][kulcs] = ertek
-            return self._beir(szerializal(adat, b'\r\n' in regi), regi)
+            return self._beir(szerializal(adat, b'\r\n' in regi), regi), len(valtozasok)
 
     def visszaallit(self):
         """Az előző állapot (`arculat.json.elozo`) visszaírása; a mostani állapot lesz az új előző (a visszaállítás is visszavonható)."""
@@ -556,13 +567,15 @@ def utvonalak(app, gyar, cache, regiszter):
             return valasz({'hiba': 'hiányzó vagy túl nagy törzs'}, 400)
         try:
             torzs = json.loads(request.get_data(cache=False).decode('utf-8'))
-            valtozasok = valtozasok_ellenoriz(torzs, regiszter.tokenek(), gyar.arculat.adat)
-            uj = mento.mentes(valtozasok)
         except (UnicodeDecodeError, json.JSONDecodeError):
             return valasz({'hiba': 'a törzs nem érvényes JSON'}, 400)
+        try:
+            uj, db = mento.mentes(torzs)
+        except LemezHiba as ex:                              # a szerver állapota rossz, nem a kérés: 500, külön üzenettel
+            return valasz({'hiba': str(ex)}, 500)
         except (TervezoHiba, arculat_modul.ArculatHiba) as ex:
             return valasz({'hiba': str(ex)}, 400)
-        return valasz({'ok': True, 'arculat_hash': uj.hash, 'valtozas': len(valtozasok), 'uj_kod': mento.uj_kod()})
+        return valasz({'ok': True, 'arculat_hash': uj.hash, 'valtozas': db, 'uj_kod': mento.uj_kod()})
 
     @app.post('/tervezo/visszaallit')
     def tervezo_visszaallit():

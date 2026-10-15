@@ -670,10 +670,28 @@ class TestMentes(_Ideiglenes, unittest.TestCase):
 
         with mock.patch.object(tervezo.os, 'replace', side_effect=hibas_replace):
             with self.assertRaises(OSError):
-                self.mento.mentes([('betumeret', 'versszam', None, '0.7em')])
+                self.mento.mentes({'tokenek': {'fs-versszam': '0.7em'}})
         self.assertEqual(self.fajl(), self.eredeti)
         self.assertIs(self.gyar.arculat, regi)
         self.assertEqual([n for n in os.listdir(self.kdir) if n.endswith('.tmp')], [])
+
+    def test_a_lemezes_fajl_az_irany(self):
+        """A token létezése a lemezes fájl szerint (arra ír): a lemezen hiányzó kulcs 400, nem 500; a nem érvényes lemezes
+        fájl 500, külön üzenettel (nem „a törzs nem érvényes JSON”); a fájl mindkét esetben változatlan."""
+        adat = json.loads(self.eredeti)
+        del adat['betumeret']['versszam']
+        hianyos = json.dumps(adat, ensure_ascii=False, indent=2, sort_keys=True).encode('utf-8') + b'\n'
+        for lemez, kod, minta in ((hianyos, 400, 'nem regisztrált token'),
+                                  (b'{"verzio": 1, ', 500, 'a lemezes token-fájl nem érvényes'),
+                                  (self.eredeti.replace(b'"verzio": 1', b'"verzio": 2'), 500, 'a lemezes token-fájl nem érvényes')):
+            with open(self.ut, 'wb') as f:
+                f.write(lemez)
+            r = self.ment({'tokenek': {'fs-versszam': '0.7em'}}, kod=self.kod())
+            self.assertEqual(r.status_code, kod, r.get_data(as_text=True))
+            self.assertIn(minta, r.get_json()['hiba'])
+            self.assertNotIn('a törzs nem érvényes JSON', r.get_json()['hiba'])
+            self.assertEqual(self.fajl(), lemez)
+            self.assertFalse(os.path.exists(self.ut + '.elozo'))
 
     def test_nincs_ideiglenes_fajl_a_mentes_utan(self):
         self.assertEqual(self.ment({'tokenek': {'radius-csempe': '8px'}}, kod=self.kod()).status_code, 200)
