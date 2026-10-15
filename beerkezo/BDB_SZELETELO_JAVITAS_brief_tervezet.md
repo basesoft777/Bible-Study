@@ -51,7 +51,7 @@ szeletelő-hiba szórt. Ez a feladat a hibaosztályokat javítja, az útvonal-fo
    mintájára).
 
 **Nincs benne:** a #99 M3–M6 (jelentésen belüli tagolás, megjelenítés, héber szórend, modell-magyarázat) — azok saját feladata; a
-Károli-kulcs (DT-F99h alkalmazva a #99-ben); az M027 (Neh 7:68 → TAHOT: 7:69) a Károli-kulcs külön tétele.
+Károli-kulcs (DT-F99h alkalmazva a #99-ben; a maradék nyitott tétel: N-F99d Neh 7:68 — a seed-99 M027 —, N-F99e 1Krón 12 és 5Móz 5).
 
 ## 3. Lépések
 
