@@ -179,6 +179,27 @@ Jelmagyarázat: a token-nevek a 2–3. szakasz szerint; *szín* = a 10 színtoke
 
 *Számolás:* 73 sor; ebből 61 önálló elem és 12 állapot- vagy változat-sor (4, 6, 9, 20, 27, 28, 32, 38–40, 67, 69).
 
+**M. BDB-jelentésszerkezet** *(bővítés az M1 után, F98.14; **tervezet, a magyar nevek jóváhagyásra várnak**)*
+
+Forrás: az F98.9–F98.13 (`84f211ed`…`ec98a5b2`) szabályai az `olvaso.css` 139–170. sorában és a `blokkok.py` `_vazlat_html` / `_torzsek_html` / `_fo_cim_html` / `_jelmagyarazat_html` / `_jeles` függvényei. Az `ol.jel` / `ol.al` szabályai az F98.9 óta a #60 pilot `sablon.html`-jének szabályai (a jelölő a `data-jel` attribútumból, `::before`-ral). A token-nevek a 3. szakasz jelölésével: `fs-jelentes-jel` = `betumeret.jelentes-jel` (13px), `fs-jelentes-cim` = `betumeret.jelentes-cim` (15.5px), `lh-jelentes-cim` = `sorkoz.jelentes-cim` (1.5); a `jelentes-cim` az F98.9-ben még `jelentes-osszegzo` volt, az F98.11 nevezte át. Csak a tokenből jövő tulajdonság szerepel; a literálok (`font-weight`, `min-width`, `padding-left`, `gap`, `margin`, `text-underline-offset`) nem állíthatók (DT-F98b).
+
+| # | id | Magyar név | Szelektor | Állítható tulajdonságok |
+|---|---|---|---|---|
+| 74 | jel-vazlat | Jelentésszerkezet vázlata (a BDB-blokk elején) | `.jel-vazlat` | Háttér → `panel` · Keret → `rule` · Lekerekítés → `radius-panel` · Betűméret → `fs-sor` · Sorköz → `lh-forrassor` · Belső térköz → `space-utmutato-fugg`, `space-utmutato-vizsz` · Hivatkozás színe rámutatáskor → `accent` *(a `.jel-vazlat a:hover`: a főjelentés- és az alpont-sorokon)* |
+| 75 | vz-torzs | Vázlat: törzscím (Qal, Nif'ál …) | `.jel-vazlat .vz-torzs` | Betűméret → `fs-apparatus-alcim` |
+| 76 | vz-fo | Vázlat: főjelentés sora | `.jel-vazlat .vz-fo` | Szín rámutatáskor → `accent` *(a 74. sor hivatkozás-szabálya; saját tokenje nincs, a vastagság literál)* |
+| 77 | vz-jel | Vázlat: jelentés-jelölő (1, 2 …) | `.jel-vazlat .vz-jel` | Betűméret → `fs-jelentes-jel` · Szín → `accent` |
+| 78 | vz-al | Vázlat: alpontok sora (a., b. …) | `.jel-vazlat .vz-al` | Szín → `muted` |
+| 79 | jcim | Jelentéscím (a részletes listában) | `.jcim` | Betűméret → `fs-jelentes-cim` · Sorköz → `lh-jelentes-cim` · Háttér, ha a jelentésre ugrottak → `accent-soft` · Lekerekítés, ha a jelentésre ugrottak → `radius-kiemeles` *(`ol.jel > li:target … .jcim`)* |
+| 80 | kolcsonzott | Kölcsönzött jelentéscím (az első alpontból) | `.kolcsonzott` | Szín → `muted` |
+| 81 | jelmagyarazat | BDB-jelmagyarázat (a blokk végén) | `.jelmagyarazat` | Betűméret → `fs-sor` · Sorköz → `lh-forrassor` · Jel betűmérete → `fs-jelentes-jel` · Jel színe → `accent` *(`.jelmagyarazat dt`)* |
+| 82 | bdb-rovidites | BDB-rövidítés a szócikk-szövegben | `.jsz abbr[title]` | Aláhúzás színe → `muted` |
+| 83 | jelentes-jelolo | Jelentés-jelölő a részletes listában (1, 2 … / a., b. …) | `ol.jel > li, ol.al > li` | Jelölő betűmérete → `fs-jelentes-jel` · Jelölő színe → `accent` *(`::before`)* · Alpontlista bal vonala → `accent-soft` *(`ol.al`)* · „összecsuk” felirat → `fs-megjegyzes`, `muted` *(`summary::after`)* *(a feladat felsorolásán túli, javasolt sor: e nélkül a jelölő tokenjei csak a vázlaton és a jelmagyarázaton át érhetők el)* |
+
+*Nem kap saját sort:* a `.jcim .he`, `.jel-vazlat .he` (a jelentéscím héber futama): a szabálya `font-family: var(--font-he)`, `font-weight: 400` és `unicode-bidi: isolate`; a betűcsalád a mentési végponton nem írható (2.2), a betűmérete a szülőé (79: `fs-jelentes-cim`, 74: `fs-sor`), tehát állítható tulajdonsága nincs. Az 1.2 kizárt listájába kerül (szövegrész-horog). A `.helyek` (64) az F98.12 óta nem törik (`white-space: nowrap`); állítható tulajdonsága nem változott.
+
+*Számolás a bővítés után:* 83 sor; ebből 71 önálló elem és 12 állapot- vagy változat-sor (a 74–83. sorok mind önállók).
+
 ### 1.2 Kizárt osztályok (szerkezeti, állapot- vagy horog-osztályok)
 
 | Osztály | Indok |
@@ -195,6 +216,9 @@ Jelmagyarázat: a token-nevek a 2–3. szakasz szerint; *szín* = a 10 színtoke
 | `aktiv`, `kijelolt`, `nyelvtani`, `nincs-jeloles`, `par-magas`, `arany`, `krit`, `folyamat` *(önmagában)* | állapot-osztály; ahol saját színe van, változat-sorként a regiszterben áll (4, 6, 20, 28, 32, 67, 69) |
 | `nezet-olvaso`, `nezet-interlinearis`, `nezet-munkaasztal` | a `body` nézet-horga; CSS-szabály nincs rá |
 | `ugras` | a gyorsugrás űrlap: böngésző-alapértelmezett mező, token nélkül |
+| `he` a `.jcim`-ben és a `.jel-vazlat`-ban *(F98.12)* | szövegrész-horog: csak betűcsalád (a mentésen nem írható) és bidi-izolálás; a mérete a 79., illetve a 74. sor tokenje |
+
+*Az F98.11 óta a `jt` (a jelentés rövid összegzése) nem keletkezik: a helyét a `jcim` (79) vette át; a fenti szövegrész-horog sorban a `jt` történeti.*
 
 A végleges kizárt lista az M2 regiszter-őrének kimenetéből készül; az itteni felsorolás a felmérő szkript 109 osztályát fedi (`osztalyok.py`).
 
