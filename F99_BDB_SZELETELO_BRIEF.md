@@ -6,10 +6,10 @@ tipus: feladat
 fazis: 1
 modell: opus
 munka: folyamat
-allapot: fut
+allapot: dontesre_var
 ag: claude/bdb-szeletelo
 ad: a BDB-szócikk gépi szeletelése éles modulként, aranymintán mérve (0 eltérés), a „próba” felirat nélkül; minden igehely-hivatkozás feloldva (könyv, Károli-vers) és jelentésponthoz kötve (vers → jelentés tábla, proveniencia soronként); jelentésen belüli tagolás a használati csoportok mentén; a szó-lapon pontos hivatkozásszám, kattintható helyek, „ebben a versben” kiemelés és a hiány explicit jelölése; „rokon szavak” blokk az OSHL gyökcsaládjából; a héber idézetek helyes szórendje a megjelenítésben; a modell írta jelentésmagyarázat 20 szócikkes próbája
-kovetkezo: "M0 fut (aranyminta, mérések); utána ⛔ DT-F99a–d. A #76 M3 előtt (felhasználói döntés 2026-10-15: ugyanazt az ir-t írják, eszkozok/olvaso_szerver/); ⛔ M0 (aranyminta, mérések, DT-F99a–d), ⛔ M2, ⛔ M4, ⛔ M5, ⛔ M6"
+kovetkezo: "Te: az M0 kész (naplok/BDB_SZELETELO_M0.md; aranyminta: adat/bdb_aranyminta.tsv, 32 szócikk, ellenőrizetlen); döntések a DONTESEK.md-ben: DT-F99a (álhivatkozás-szűrés, MT → Károli forrása), DT-F99b (csoport-bevezetők, magyar alak, kapu, #38-időzítés, a kész 674 szócikk), DT-F99c (a szeletelő helye), DT-F99e (az aranyminta átnézése), DT-F99f (a LexicalIndex.xml letöltése: az M0.4 OSHL-etym mérés enélkül nem futott); DT-F99d előjegyzés (M6). A döntések után: M0.4, majd M1. A #76 M3 előtt (felhasználói döntés 2026-10-15); ⛔ M2, ⛔ M4, ⛔ M5, ⛔ M6"
 olvas: [eszkozok/olvaso_szerver/, eszkozok/sqlite_epit.py, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/BDB_teljes_unabridged_README.md, adat/forditasok.tsv, adat/terminologia.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, konkordancia/OSHL_lexikalis_index_README.md, konkordancia/OSHL_BDB_igehelyek.tsv, konkordancia/TAHOT_kivonat.tsv, eszkozok/bdb_konyv_javit.py, F38_BDB_FORDITAS_BRIEF.md, F98_TERVEZO_MOD_BRIEF.md, naplok/TERVEZO_MOD_M0.md, naplok/OLVASOI_PILOT_szeletelo_atnezes.md]
 ir: [eszkozok/olvaso_pilot/bdb_szelet.py, eszkozok/olvaso_pilot/, eszkozok/olvaso_szerver/, eszkozok/oshl_index_import.py, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/OSHL_lexikalis_index_README.md, eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, adat/bdb_vers_jelentes.tsv, adat/bdb_aranyminta.tsv, adat/bdb_magyarazat_proba.tsv, adat/SEMA.md, adat/datasetek.tsv, naplok/BDB_SZELETELO_M0.md, naplok/BDB_SZELETELO_zaras.md]
 fugg: []
