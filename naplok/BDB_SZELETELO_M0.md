@@ -20,7 +20,7 @@ ellenőr (`naplok/ELLENOR_F99.md`) eltéréseit a 9.13–9.14 és az F99.35–F9
 | Elfogadás: aranyminta 0 eltérés | **nem teljesült** | EN 7/32, HU 4/14 hibás szócikk; szerkezeti eltérés 71/72 |
 
 **A tábla zárásakor** (`adat/bdb_vers_jelentes.tsv`): 160 616 sor; csomópont 122 457, `fej` 8 759, `tagolatlan` 29 400; `resz` 6 010;
-`szurt=1` 531; Károli-vers 159 151 sorban (`atkulcsolt_f85` 1 099, `azonos_tahot` 645, `nincs_karoli` 234; DT-F99h (b)).
+`szurt=1` 528; Károli-vers 159 187 sorban (`atkulcsolt_f85` 2 992, `azonos_tahot` 551, `nincs_karoli` 201; `f85_regio` 218; `sigla_igazolt` 487; DT-F99h (b), F99.35; saját számlálás a táblán, 2026-10-15).
 
 **Külön feladatba (a hatóköri döntés szerint):** a szeletelő javítása (`beerkezo/BDB_SZELETELO_JAVITAS_brief_tervezet.md`), M3
 (`BDB_M3_TAGOLAS_`, a DT-F99b (4) #38-kötésével), M4 (`BDB_M4_MEGJELENITES_`, DT-F99m), M5 (`BDB_M5_SZOREND_`), M6 (`BDB_M6_MAGYARAZAT_`,
@@ -535,7 +535,7 @@ egyezzen; a régi (seed-99/100) kitöltésben a második római szám a rész. A
 (`Igehely` = Károli-vers; Károli-vers híján az azonos számú vers) a versben nem hordozza a szócikk Strong-számát; ha hordozza: bibliai,
 okkód `sigla_igazolt`. A kommentár-lista: `Schr^…`, `COT`, `Dr`, `Dr^…`, `MI`, `MI^…`, `Fl^…`, `De^…`, `Hup^…` (a ᵑ7 lekerült). A TAHOT a
 tábla fejlécének forrássorában hash-sel áll. Hatás: `sigla_igazolt` 484 (bibliai), szűrt `sigla_tapadt` 112, `sigla_kozel` 86,
-`sigla_lista` 3; `szurt=1` 651 → 531. A seed-100-ban: M158 bibliai, M001 és M075 szűrt (a TAHOT a szót a versben nem hordozza).
+`sigla_lista` 3; `szurt=1` 651 → 531 (F99.24; a F99.35 után 528, l. 9.13). A seed-100-ban: M158 bibliai, M001 és M075 szűrt (a TAHOT a szót a versben nem hordozza).
 
 **A tábla** (F99.23): 160 616 sor; jelentéspont: csomópont 122 457, `fej` 8 759, `tagolatlan` 29 400; `resz` 6 010 sorban.
 **Aranyminta:** hibás szócikk EN 8 → 7/32, HU 4/14; szerkezeti eltérés EN 74 → 71, HU 72; jó cím EN 27/46, HU 199/231.
@@ -594,7 +594,7 @@ Feltétel: az F85 szerinti versen a TAHOT a sorok legalább felénél, és több
 arra utal, hogy ott a BDB MT-száma és a TAHOT régi kulcsa más számozást követ; ezeket a szabály nem érinti (soronkénti keresés nincs).
 **Kiegészítés:** a `nincs_karoli` sor az azonos számú Károli-versre kerül, ha az létezik és a TAHOT ott hordozza a szót (`azonos_tahot`,
 okkód `karoli_tahot`). **Hatás:** `atkulcsolt_f85` 1 099 sor (a TAHOT 1 023-at igazol), `azonos_tahot` 645, a `nincs_karoli` 1 371 → 234;
-Károli-vers 158 014 → 159 151 sorban. A gépi Károli-összevetés (`naplok/BDB_SZELETELO_M2_karoli.md`) újrafuttatva.
+Károli-vers 158 014 → 159 151 sorban (F99.29 állapot; a forrás a F99.35-ben az F85 esetlistájára cserélődött, a mai számok a 0. összegzésben és a 9.13-ban). A gépi Károli-összevetés (`naplok/BDB_SZELETELO_M2_karoli.md`) újrafuttatva.
 
 **Az M027 és az M112 újraellenőrzése (seed-99):** **M112** (H8641, 2Móz 36:6 MT) — a tábla most **2Móz 36:5** (`atkulcsolt_f85`); a TAHOT a
 H8641-et a 2Móz 36:5-ben hordozza: **javítva**. **M027** (H2543, Neh 7:68) — **változatlan, Neh 7:68** (`tobb_karoli_vers`); a TAHOT a
@@ -629,6 +629,14 @@ Más Károli-versre került (az F99.34-es táblához képest) **514 sor**; a TAH
 | Ézs 2 (MT 2:22 → K 3:1) | 9 | 0 → 9 |
 | Én 7 | 7 | 0 → 7 |
 | Hós 14 | 5 | 0 → 0 |
+
+**A F99.35 teljes változása** (saját számlálás: a F99.34-es és a F99.35-ös tábla sorról sorra, a proveniencia-mező nélkül): **1 893 sor**
+változott. Ebből **1 379 csak címke** — 645 `azonos` → `atkulcsolt_f85` és 640 `atkulcsolt` → `atkulcsolt_f85` (az esetlista fejezeteiben
+a Károli-vers már helyes volt, csak a feloldás módja lett az F85-é; az `azonos_f85` mint érték megszűnt), és 94 sor okkód-változása
+(`karoli_tahot` → üres, mert az esetlista adja ugyanazt a Károli-verset; `azonos_tahot` 645 → 551). **514 sor Károli-verse változott:** 478
+másik versre, 36 üresről kitöltöttre (köztük 3 sigla-sor, amely a helyes Károli-versen a TAHOT szerint `sigla_igazolt` lett: `szurt=1`
+531 → 528, `sigla_igazolt` 484 → 487). A tábla mai számai: `szurt=1` 528, `atkulcsolt_f85` 2 992 (ebből `f85_regio` 218), `azonos_tahot`
+551, `nincs_karoli` 201, Károli-vers 159 187 sorban.
 
 **Próba:** H0113 „Isa 3:1” — MT Ézs 3:1 → **Károli Ézs 3:2** (a TAHOT ott hordozza; teszt). **Maradék (nyitott tétel):** 1Krón 12 (78 sor,
 `atkulcsolt`; a TAHOT vegyes: az azonos számon 126, −1-en 123 találat a 256 sorból — a megerősítés gyenge, az F85 nem dokumentálja) és
