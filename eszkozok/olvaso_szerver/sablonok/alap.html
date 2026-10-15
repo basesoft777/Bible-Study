@@ -45,8 +45,13 @@
 {% block tartalom %}{% endblock %}
 </main>
 <footer class="labjegyzet">
-  Kiadás: <b>{{ kiadas }}</b> · adatbázis építve: {{ epites_ts }} · Az adatok a repó TSV-táblázataiból generált <code>pardes.db</code>-ből jönnek; a blokkok és a szövegoszlop jelleg- és forrássorral.
+  Kiadás: <b>{{ kiadas }}</b>{% if lablec %} · ág: <b>{{ lablec.ag }}</b> · commit: <code>{{ lablec.commit }}</code>{% endif %} · adatbázis építve: {{ epites_ts }} · Az adatok a repó TSV-táblázataiból generált <code>pardes.db</code>-ből jönnek; a blokkok és a szövegoszlop jelleg- és forrássorral.
   A keresés (Strong-szám, magyar szó, frázis) még nem része ennek a kiadásnak.
+  {% if lablec and lablec.figyelmeztetesek %}
+  {% for f in lablec.figyelmeztetesek %}
+  <div role="alert"><mark>Figyelem:</mark> {{ f }}</div>
+  {% endfor %}
+  {% endif %}
 </footer>
 </body>
 </html>

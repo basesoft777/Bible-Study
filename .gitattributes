@@ -10,3 +10,7 @@
 # A .claude/agents/*.md frontmatter YAML — a `claude plugin validate` CRLF-es
 # munkapéldányon is hibázhat rajta, tehát ugyanaz a tartóssági indok áll.
 .claude/agents/*.md text eol=lf
+
+# A WSL-ben futó shell-szkriptek (pl. eszkozok/olvaso_szerver/indit.sh, telepit.sh): a CRLF-es munkafa-példányon a bash
+# "command not found" (CR a sor végén) hibával bukik (F100). Az LF itt kötelező.
+*.sh text eol=lf
