@@ -6,12 +6,15 @@ tipus: feladat
 fazis: 1
 munka: adat
 modell: sonnet
-allapot: nem_indult
+allapot: lezarva
+ag: claude/f93-tipnr-token-hiany
+pr: https://github.com/basesoft777/Bible-Study/pull/355
+lezarva_osszegzes: "A TIPNR 62 token nélküli alapszáma (88 sor; 16 görög, 46 héber) mind osztályozva, 17 nem eldönthető; a jelölés a naplok/F93_alapszamok.tsv-ben és a jelentésben áll (DT-F93a–d, N-F93a–c); az osztálylista bővülését a jelentés Egyeztetett eltérés szakasza rögzíti."
 ad: a 62 alapszám (88 TIPNR-sor) mindegyike osztályozva (szövegváltozat / számozási eltérés / adathiány / nem eldönthető), forrásmegjelöléssel naplózva; az eredmény jelölés, nem javítás
-kovetkezo: M0 felmérés (csak olvas); ⛔ a jelölés helyéről (DT-F93a) a felhasználó dönt
+kovetkezo: "—"
 fugg: [88]
-olvas: [naplok/F88_meres.md, naplok/ELLENOR_F88_2.md, adat/SEMA.md, konkordancia/TIPNR_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_TIPNR_Normalizalo_README.md, eszkozok/sqlite_epit.py, F90_TAGNT_ZAROJELES_BRIEF.md]
-ir: [naplok/F93_jelentes.md, naplok/F93_alapszamok.tsv, eszkozok/f93_tipnr_token_hiany.py, eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, adat/SEMA.md, NYITOTT_FELADATOK.md, DONTESEK.md]
+olvas: [naplok/F88_meres.md, naplok/ELLENOR_F88_2.md, adat/SEMA.md, konkordancia/TIPNR_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/Karoli_TIPNR_Normalizalo_README.md, eszkozok/sqlite_epit.py, F90_TAGNT_ZAROJELES_BRIEF.md]
+ir: [naplok/F93_jelentes.md, naplok/F93_alapszamok.tsv, eszkozok/f93_tipnr_token_hiany.py, NYITOTT_FELADATOK.md, DONTESEK.md]
 ---
 
 # F93_TIPNR_TOKEN_HIANY_BRIEF.md — a TIPNR token nélküli görög alapszámai
@@ -104,4 +107,7 @@ sem a TIPNR, sem a TAGNT nem módosul, és token sem keletkezik.
 
 | Tétel | Kérdés | Javaslat | Állapot |
 |---|---|---|---|
-| DT-F93a | Hol áll a jelölés: (a) csak `naplok/F93_alapszamok.tsv` + jelentés, vagy (b) a `pardes.db` `normalizalas_jelentes`-ében is? | (a), ha a `nem eldönthető` osztály üres vagy kicsi; (b), ha az olvasói felületnek (#92) kell a lekérdezéskor | nyitott — ⛔ az M0 után, a felhasználó dönt |
+| DT-F93a | Hol áll a jelölés: (a) csak `naplok/F93_alapszamok.tsv` + jelentés, vagy (b) a `pardes.db` `normalizalas_jelentes`-ében is? | (a), ha a `nem eldönthető` osztály üres vagy kicsi; (b), ha az olvasói felületnek (#92) kell a lekérdezéskor | 🟢 eldöntve: (a), a hatókör (iii) — mind a 62 alapszám (görög TAGNT, héber TAHOT), az osztályok + „alak-/névhasítás”, „nincs Károli-vers” (a felhasználó döntése, 2026-10-15, chat) |
+| DT-F93b | A héber „szövegváltozat” osztály sorsa (a TAHOT-nak nincs Kritikai kiadás mezője) | (i) megszűnik: „fordítási névalak” (csak ESV/KJV/NIV/ASV) és „ketiv/qere” (LK/LQ/Mss, csak ha a TAHOT jelöli, különben „nem eldönthető”) | 🟢 eldöntve: (i) (a felhasználó döntése, 2026-10-15, chat); a G3 csak a görög „szövegváltozat” sorokra vonatkozik |
+| DT-F93c | Jelölés nélküli görög szövegváltozat (G2179, G3535) | (i) csak egyező glosszájú tokennel, amelynek `Kritikai kiadás` mezője nem tartalmazza a TR-t; különben „nem eldönthető” | 🟢 eldöntve: (i) (a felhasználó döntése, 2026-10-15, chat) |
+| DT-F93d | A proveniencia `ts` mezője | (i) a `pardes.db` `meta.epites_ts` értéke (adatállapot), nem a futásé; a G4 miatt | 🟢 eldöntve: (i) (a felhasználó döntése, 2026-10-15, chat) |
