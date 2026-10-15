@@ -1,6 +1,7 @@
-"""A regiszter-őr (#98 M2): a felület minden CSS-osztálya vagy a regiszterben, vagy a kizárt listán áll.
+"""A regiszter-őr (#98 M2): a felület általa olvasott CSS-osztályai vagy a regiszterben, vagy a kizárt listán állnak.
 
-A szerver sablonjaiban (`sablonok/*.html`) és blokkjaiban (`blokkok.py`, `oldalak.py`) használt minden CSS-osztályt összevet
+A szerver sablonjaiban (`sablonok/*.html`) és blokkjaiban (`blokkok.py`, `oldalak.py`) használt CSS-osztályokat, valamint a
+kliens (`statikus/olvaso.js`, `tervezo_statikus/tervezo.js`) `classList.add/toggle/remove` literál-osztályait összevet
 a regiszterrel (`konfig/elemek.toml` [[elem]] szelektorainak osztályai) és a kizárt listával ([kizart]). Az ismeretlen osztály
 hiba, az osztály és a hely megnevezésével. Így új elem csak regisztrálva vagy tudatosan kizárva kerülhet a felületre
 (a #76 M3-tól elfogadási feltétel).
@@ -12,7 +13,13 @@ Olvasás:
 - **Python-modulok** (`ast`): a `class="…"`-t tartalmazó szöveg-literálok; a `%s` helyére kerülő operandus kibontva: literál,
   feltételes kifejezés literál-ágakkal, függvényparaméter (az alapértéke és a hívási helyek literál-argumentumai), vagy egy
   modulszintű szótár-literál értékeinek eleme (`JELLEG[j][1]`).
-A ki nem bontható kifejezés is hiba (az őr nem találgat).
+- **JavaScript:** a `classList.add/toggle/remove` szöveg-literál argumentumai; a nem literál argumentum, a `className =` és a
+  `setAttribute('class', …)` hiba (kivétel a tervező saját paneljét építő `h()` segéd a `tervezo.js`-ben).
+A ki nem bontható kifejezés is hiba (az őr nem találgat), és a nem olvasott alak sem marad ki némán: a más alakú `class=`
+(egyszeres idézőjel, idézőjel nélkül), a literálon belül le nem zárt attribútum (összefűzés), a Jinja-kifejezés nem literál
+ága (`{{ x or 'y' }}` `x`-e) és az előző osztálynévhez tapadó kimenet hiba.
+Nem olvassa: a tervező saját panelének osztályait (`tz-…`, a `tervezo.css`-ből formázva, nem az arculatból), és a csak a
+stíluslapban szereplő osztályokat.
 
 Futtatás: python regiszter_or.py [--db pardes.db]
 """
@@ -32,6 +39,8 @@ if hasattr(sys.stderr, 'reconfigure'):
 D = os.path.dirname(os.path.abspath(__file__))
 SABLON_DIR = os.path.join(D, 'sablonok')
 PY_FAJLOK = (os.path.join(D, 'blokkok.py'), os.path.join(D, 'oldalak.py'))
+JS_FAJLOK = ((os.path.join(D, 'statikus', 'olvaso.js'), 'statikus/olvaso.js'),
+             (os.path.join(D, 'tervezo_statikus', 'tervezo.js'), 'tervezo_statikus/tervezo.js'))
 ELEMEK_UT = os.path.join(D, 'konfig', 'elemek.toml')
 OSZTALY = re.compile(r'^[A-Za-z_][A-Za-z0-9_-]*$')
 NEZETEK = ('olvaso', 'interlinearis', 'munkaasztal')          # = oldalak.NEZETEK (a teszt összeveti)
@@ -64,8 +73,13 @@ def _ervenyes(o, fajl, sor):
 # =====================================================================================================================
 # sablonok
 # =====================================================================================================================
-def _class_attributumok(szoveg):
-    """[(érték, eltolás)] a `class="…"` attribútumokra; a Jinja-kifejezésen belüli idézőjel nem zárja az attribútumot."""
+def _class_attributumok(szoveg, fajl='?'):
+    """[(érték, eltolás)] a `class="…"` attribútumokra; a Jinja-kifejezésen belüli idézőjel nem zárja az attribútumot.
+    A más alakú `class=` (egyszeres idézőjel, idézőjel nélkül, szóköz az egyenlőségjel körül) hiba: az őr nem hagyja ki némán."""
+    for m in re.finditer(r'(?<![\w.-])class\s*=', szoveg):
+        if not szoveg.startswith('class="', m.start()):
+            raise Kibonthatatlan('nem olvasható class attribútum (csak a class="…" alak olvasható): %r (%s:%d)' % (
+                szoveg[m.start():m.start() + 24], fajl, szoveg.count('\n', 0, m.start()) + 1))
     ki = []
     for m in re.finditer(r'(?<![\w-])class="', szoveg):
         i = m.end()
@@ -83,8 +97,35 @@ def _class_attributumok(szoveg):
     return ki
 
 
+def _jinja_alternativak(kif, fajl, sor):
+    """Egy `{{ … }}` kifejezés lehetséges kimenetei: [[rész]], ahol a rész szöveg-literál vagy None (nem literál érték).
+    A Jinja `~` összefűzését `+`-ként, a többit Python-kifejezésként olvassa (`a if f else b`, `a or b`); a feltétel nem
+    kimenet. Ami nem így olvasható, hiba."""
+    py = re.sub(r"('[^']*'|\"[^\"]*\")|~", lambda m: m.group(1) or '+', kif.strip())
+    try:
+        fa = ast.parse(py, mode='eval').body
+    except SyntaxError:
+        raise Kibonthatatlan('nem olvasható kifejezés a class attribútumban: {{%s}} (%s:%d)' % (kif.strip(), fajl, sor))
+
+    def alt(n):
+        if isinstance(n, ast.Constant) and isinstance(n.value, str):
+            return [[n.value]]
+        if isinstance(n, ast.IfExp):
+            return alt(n.body) + alt(n.orelse)
+        if isinstance(n, ast.BoolOp):                      # `a or b` / `a and b`: bármelyik operandus lehet a kimenet
+            return [r for v in n.values for r in alt(v)]
+        if isinstance(n, ast.BinOp) and isinstance(n.op, ast.Add):
+            return [x + y for x in alt(n.left) for y in alt(n.right)]
+        return [[None]]
+    return alt(fa)
+
+
 def sablon_ertek(ertek, dinamikus, fajl, sor):
-    """Egy `class` attribútum értékéből az osztályok: [(osztály, dinamikus-e)]."""
+    """Egy `class` attribútum értékéből az osztályok: [(osztály, dinamikus-e)].
+
+    A kifejezés nem literál része csak egy ismert dinamikus előtagot (`nezet-`, `par-`) követhet, szóköz nélkül; minden más
+    nem literál kimenet (pl. a `{{ x or 'y' }}` `x`-e) hiba. Hiba az is, ha a kifejezés kimenete szóköz nélkül tapadna az előtte
+    álló statikus osztálynévhez (`szo{{ 'x' }}`)."""
     ki = []
     ertek = re.sub(r'\{%.*?%\}', ' ', ertek, flags=re.S)
     poz = 0
@@ -92,8 +133,8 @@ def sablon_ertek(ertek, dinamikus, fajl, sor):
     for m in re.finditer(r'\{\{(.*?)\}\}', ertek, flags=re.S):
         elotte = ertek[poz:m.start()]
         kif = m.group(1)
-        literalok = [a if a is not None else b for a, b in re.findall(r"'([^']*)'|\"([^\"]*)\"", kif)]
-        if not literalok:
+        alternativak = _jinja_alternativak(kif, fajl, sor)
+        if all(a == [None] for a in alternativak):
             szavak = elotte.split()
             if elotte and not elotte[-1].isspace() and szavak and szavak[-1].endswith('-') and szavak[-1] in dinamikus:
                 elo = szavak[-1]
@@ -103,14 +144,26 @@ def sablon_ertek(ertek, dinamikus, fajl, sor):
                 raise Kibonthatatlan('kibonthatatlan kifejezés a class attribútumban: {{%s}} (%s:%d)' % (kif.strip(), fajl, sor))
         else:
             statikus.append(elotte)
-            for i, lit in enumerate(literalok):
-                elo = lit.strip()
-                if elo.endswith('-') and re.search(re.escape(lit) + r"['\"]\s*~", kif):
-                    if elo not in dinamikus:
-                        raise Kibonthatatlan('ismeretlen dinamikus előtag: %r (%s:%d)' % (elo, fajl, sor))
-                    ki += [(_ervenyes(elo + v, fajl, sor), True) for v in dinamikus[elo]]
-                else:
-                    ki += [(_ervenyes(o, fajl, sor), True) for o in lit.split()]
+            for a in alternativak:
+                valtozatok = ['']
+                for resz in a:
+                    if resz is not None:
+                        valtozatok = [v + resz for v in valtozatok]
+                        continue
+                    uj = []
+                    for v in valtozatok:
+                        szavak = v.split()
+                        elo = szavak[-1] if szavak and not v[-1].isspace() else ''
+                        if not elo.endswith('-'):
+                            raise Kibonthatatlan('kibonthatatlan (nem literál) ág a class attribútumban: {{%s}} (%s:%d)' % (kif.strip(), fajl, sor))
+                        if elo not in dinamikus:
+                            raise Kibonthatatlan('ismeretlen dinamikus előtag: %r (%s:%d)' % (elo, fajl, sor))
+                        uj += [v + d for d in dinamikus[elo]]
+                    valtozatok = uj
+                for v in valtozatok:
+                    if v and not v[0].isspace() and elotte and not elotte[-1].isspace():
+                        raise Kibonthatatlan('a kifejezés kimenete az előtte álló osztálynévhez tapad: {{%s}} (%s:%d)' % (kif.strip(), fajl, sor))
+                    ki += [(_ervenyes(o, fajl, sor), True) for o in v.split()]
         poz = m.end()
     statikus.append(ertek[poz:])
     ki += [(_ervenyes(o, fajl, sor), False) for o in ' '.join(statikus).split()]
@@ -124,7 +177,7 @@ def sablon_osztalyok(sablon_dir, dinamikus):
             continue
         with open(os.path.join(sablon_dir, n), encoding='utf-8') as f:
             szoveg = f.read()
-        for ertek, eltolas in _class_attributumok(szoveg):
+        for ertek, eltolas in _class_attributumok(szoveg, 'sablonok/' + n):
             sor = szoveg.count('\n', 0, eltolas) + 1
             for o, dyn in sablon_ertek(ertek, dinamikus, 'sablonok/' + n, sor):
                 ki.append(Elofordulas(o, 'sablonok/' + n, sor, dyn))
@@ -223,12 +276,19 @@ def py_osztalyok(utak):
             for ch in ast.iter_child_nodes(n):
                 ch._szulo = n
         for n in ast.walk(fa):
-            if isinstance(n, ast.JoinedStr) and any(isinstance(v, ast.Constant) and 'class="' in str(v.value) for v in n.values):
+            if isinstance(n, ast.JoinedStr) and any(isinstance(v, ast.Constant) and re.search(r'class\s*=', str(v.value)) for v in n.values):
                 raise Kibonthatatlan('f-string a class attribútumban (%s:%d)' % (fajl, n.lineno))
-            if not (isinstance(n, ast.Constant) and isinstance(n.value, str) and 'class="' in n.value):
+            if not (isinstance(n, ast.Constant) and isinstance(n.value, str) and re.search(r'(?<![\w.-])class\s*=', n.value)):
                 continue
             if isinstance(getattr(n, '_szulo', None), ast.Expr) or isinstance(getattr(n, '_szulo', None), ast.JoinedStr):
                 continue                                                              # docstring
+            if isinstance(getattr(n, '_szulo', None), ast.Compare):
+                continue                                                              # vizsgálat ('class="x' in html), nem kimenet
+            # a néma kihagyás helyett hiba: más alakú class= (egyszeres idézőjel stb.), és a literálon belül le nem zárt
+            # attribútum (az összefűzés: '<b class="a ' + x + '">')
+            if len(re.findall(r'(?<![\w.-])class\s*=', n.value)) != len(re.findall(r'(?<![\w.-])class="[^"]*"', n.value)):
+                raise Kibonthatatlan('nem olvasható vagy le nem zárt class attribútum (csak a teljes class="…" alak olvasható; '
+                                     'összefűzés?): %r (%s:%d)' % (n.value[:60], fajl, n.lineno))
             # az operandusok: Markup('…') % (…) vagy '…' % (…)
             fel = n._szulo
             if isinstance(fel, ast.Call):
@@ -260,6 +320,44 @@ def py_osztalyok(utak):
 
 
 # =====================================================================================================================
+# JavaScript (a kliens által adott osztályok)
+# =====================================================================================================================
+_JS_LITERAL = re.compile(r"""\s*(?:'([^'\\]*)'|"([^"\\]*)")\s*""")
+
+
+def js_osztalyok(utak):
+    """A `classList.add/toggle/remove(…)` hívások szöveg-literál osztályai. A nem literál osztály-argumentum hiba; a
+    `className =` és a `setAttribute('class', …)` is hiba (az őr nem olvassa, ezért nem hagyja ki némán). Kivétel: a
+    tervező saját paneljét építő segédfüggvény (`tervezo.js` `h()`: `e.className = osztaly`), amely a tervező saját,
+    `tervezo.css`-ből formázott vezérlőit adja, nem a felület elemeit."""
+    ki = []
+    for ut, fajl in utak:
+        with open(ut, encoding='utf-8') as f:
+            szoveg = f.read()
+        sor = lambda i: szoveg.count('\n', 0, i) + 1
+        for m in re.finditer(r'\bclassName\s*=(?!=)|setAttribute\(\s*[\'"]class[\'"]', szoveg):
+            if fajl.endswith('tervezo.js') and szoveg.startswith('className = osztaly;', m.start()):
+                continue
+            raise Kibonthatatlan('nem olvasható osztály-hozzárendelés (csak a classList.add/toggle/remove literál-argumentuma '
+                                 'olvasható): %s (%s:%d)' % (m.group(0), fajl, sor(m.start())))
+        for m in re.finditer(r'\.classList\.(add|toggle|remove)\(', szoveg):
+            i = m.end()
+            while True:
+                lm = _JS_LITERAL.match(szoveg, i)
+                if not lm:
+                    raise Kibonthatatlan('nem literál osztály a classList.%s hívásban (%s:%d)' % (m.group(1), fajl, sor(m.start())))
+                for o in (lm.group(1) if lm.group(1) is not None else lm.group(2)).split():
+                    ki.append(Elofordulas(_ervenyes(o, fajl, sor(m.start())), fajl, sor(m.start())))
+                i = lm.end()
+                if m.group(1) == 'toggle' or szoveg[i] == ')':           # a toggle második argumentuma a feltétel
+                    break
+                if szoveg[i] != ',':
+                    raise Kibonthatatlan('nem olvasható classList.%s hívás (%s:%d)' % (m.group(1), fajl, sor(m.start())))
+                i += 1
+    return ki
+
+
+# =====================================================================================================================
 # az összevetés
 # =====================================================================================================================
 def regiszter_adat(ut=ELEMEK_UT):
@@ -287,11 +385,11 @@ def bizonyossag_ertekek(db_ut):
         con.close()
 
 
-def felmeres(sablon_dir=SABLON_DIR, py_fajlok=PY_FAJLOK, biz=None):
+def felmeres(sablon_dir=SABLON_DIR, py_fajlok=PY_FAJLOK, biz=None, js_fajlok=None):
     """A felület osztály-előfordulásai: [Elofordulas]."""
     dinamikus = {'nezet-': list(NEZETEK), 'par-': list(biz if biz is not None else BIZONYOSSAG_TARTALEK)}
     ki, latott = [], set()
-    for e in sablon_osztalyok(sablon_dir, dinamikus) + py_osztalyok(py_fajlok):
+    for e in sablon_osztalyok(sablon_dir, dinamikus) + py_osztalyok(py_fajlok) + js_osztalyok(JS_FAJLOK if js_fajlok is None else js_fajlok):
         if (e.osztaly, e.fajl, e.sor) not in latott:                 # egy helyen egy osztály egyszer (a kibontás ismételheti)
             latott.add((e.osztaly, e.fajl, e.sor))
             ki.append(e)

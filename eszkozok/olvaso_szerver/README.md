@@ -16,7 +16,7 @@ Szerveroldali Flask-alkalmazás, amely a `pardes.db`-ből (csak olvasásra) áll
 | `konfig/` | `szerver.toml` (kiadás, süti, gyorsítótár), `hozzaferes.toml`, `arculat.json` (az arculati token-fájl, #98), `elemek.toml` (az elem-regiszter és a kizárt osztályok, #98 M2) |
 | `arculat.py` | a token-fájl betöltése és ellenőrzése, a token-blokk (`:root`, sötét téma) előállítása; a szerver a `/arculat.css?v=<hash>` címen adja (#98 M1, DT-F98e) |
 | `tervezo.py`, `tervezo_statikus/` | a tervező mód (#98 M2): a regiszter betöltése, a stíluslap szabálytérképe, a mentés értékszűrése, a mentési végpont; a kliens (`tervezo.js`, `tervezo.css`) a `/tervezo/…` címen, **csak a `belso` kiadásban** |
-| `regiszter_or.py` | a regiszter-őr: a felület minden CSS-osztálya a regiszterben vagy a kizárt listán (`python regiszter_or.py`) |
+| `regiszter_or.py` | a regiszter-őr: a sablonok és a blokkok `class="…"` osztályai és a kliens (`olvaso.js`, `tervezo.js`) `classList.add/toggle/remove` literál-osztályai a regiszterben vagy a kizárt listán (`python regiszter_or.py`) |
 | `arculat_szinkron.py` | a design system `tokens.json`-ja a token-fájlból (`--kimenet`, `--alap`; feltöltés nélkül) |
 | `sablonok/`, `statikus/` | Jinja2 (autoescape), CSS, kis JS (nincs inline script/stílus: CSP); az `olvaso.css` token-értéket nem ismétel, csak `var(--…)`-hivatkozást |
 | `gunicorn_conf.py`, `telepit.sh` | indítás (gthread, 1 worker, 4 szál), környezet, frissességi teszt |
@@ -41,7 +41,7 @@ A `belso` kiadásban a fejlécben, a szintváltó mellett a **Tervező** kapcsol
 
 **A mentés feltételei:** csak `belso` kiadás; csak helyi kérés (a forrás 127.0.0.1/::1, nincs `X-Forwarded-For`/`Forwarded`/`X-Real-IP` fejléc, a `Host` és az `Origin` helyi); csak `POST`; egyszeri kód a `GET /tervezo/kod`-ról (`X-Tervezo-Kod` fejléc); csak a regiszterben valamely elemhez rendelt token, érvényes értékkel (szín: `#rgb`, `#rrggbb`, `rgb()`, `hsl()`; betűméret px 8–64, rem/em 0.5–4; térköz px 0–128, rem/em 0–8 (DT-F98f); lekerekítés px 0–999; sorköz 1.0–2.4); a betűcsalád nem írható. Hiba: 403 (helyi kérés/kód), 400 (érték), 415 (nem JSON); a fájl ilyenkor változatlan. A CSP nem lazul (`script-src 'self'`, `style-src 'self'`). Fordított proxy mögött a mentés nem működik (a továbbító fejléc tiltja); több workerrel futtatva a mentés csak az egyik worker arculatát töltené újra, ezért a tervező mód az egy workeres fejlesztői vagy gunicorn-indításhoz való.
 
-**Regiszter-őr:** új CSS-osztály csak regisztrálva (`[[elem]]`) vagy indokkal kizárva (`[kizart]`) kerülhet a felületre: `python regiszter_or.py` (és a `teszt_tervezo.py`). **Szinkron:** `python arculat_szinkron.py --kimenet /tmp/tokens.json --alap <a design system mostani tokens.json-ja>`.
+**Regiszter-őr:** új CSS-osztály csak regisztrálva (`[[elem]]`) vagy indokkal kizárva (`[kizart]`) kerülhet a felületre: `python regiszter_or.py` (és a `teszt_tervezo.py`). Az őr a sablonok `class="…"` attribútumait, a `blokkok.py`/`oldalak.py` `class="…"`-literáljait és a kliens `classList.add/toggle/remove` literál-argumentumait olvassa; a nem olvasható alak (egyszeres idézőjeles vagy idézőjel nélküli `class=`, összefűzéssel le nem zárt attribútum, a Jinja-kifejezés nem literál ága, `className =`, nem literál `classList`-argumentum) hiba, nem marad ki némán. Nem olvassa a tervező saját panelének osztályait (`tz-…`, a `tervezo.css`-ből) és a csak a stíluslapban szereplő osztályokat. **Szinkron:** `python arculat_szinkron.py --kimenet /tmp/tokens.json --alap <a design system mostani tokens.json-ja>`.
 
 ## Futtatás
 

@@ -189,6 +189,54 @@ class TestRegiszterOr(unittest.TestCase):
             with self.assertRaises(regiszter_or.Kibonthatatlan):
                 regiszter_or.py_osztalyok([ut])
 
+    def test_a_js_altal_adott_osztalyok(self):
+        js = {(e.osztaly, e.fajl) for e in self.elof if e.fajl.endswith('.js')}
+        self.assertIn(('nincs-jeloles', 'statikus/olvaso.js'), js)
+        self.assertIn(('aktiv', 'statikus/olvaso.js'), js)
+        self.assertIn(('tz-nem', 'tervezo_statikus/tervezo.js'), js)
+        self.assertIn('nincs-jeloles', self.kizart)
+        with tempfile.TemporaryDirectory() as tmp:
+            ut = os.path.join(tmp, 'p.js')
+            with open(ut, 'w', encoding='utf-8') as f:
+                f.write("x.classList.add('proba-js', \"proba-js2\");\ny.classList.toggle('aktiv', !z);\n")
+            hibak = regiszter_or.ellenoriz(regiszter_or.felmeres(biz=self.biz, js_fajlok=((ut, 'p.js'),)), self.reg, self.kizart)
+            self.assertEqual(sorted(re.sub(r' —.*', '', h) for h in hibak if 'proba' in h),
+                             ['ismeretlen CSS-osztály: proba-js (p.js:1)', 'ismeretlen CSS-osztály: proba-js2 (p.js:1)'])
+            for rossz in ("x.classList.add(nev);\n", "x.classList.remove('a', b);\n", "x.className = 'a';\n",
+                          "x.setAttribute('class', 'a');\n"):
+                with open(ut, 'w', encoding='utf-8') as f:
+                    f.write(rossz)
+                with self.assertRaises(regiszter_or.Kibonthatatlan, msg=rossz):
+                    regiszter_or.js_osztalyok(((ut, 'p.js'),))
+
+    def test_a_nema_kihagyasi_mintak_hibat_adnak(self):
+        d = {'nezet-': ['x'], 'par-': ['magas']}
+        for ertek in ("a {{ x or 'b' }}", "a {{ 'b' if f else x }}", "szo{{ ' b' ~ x }}", "a{{ 'b' }}"):
+            with self.assertRaises(regiszter_or.Kibonthatatlan, msg=ertek):
+                regiszter_or.sablon_ertek(ertek, d, 'x.html', 1)
+        # a feltétel literálja nem osztály; a dinamikus előtag kibomlik
+        self.assertEqual(regiszter_or.sablon_ertek("ful{{ ' aktiv' if ful == 'szo' else '' }}", d, 'x.html', 1),
+                         [('aktiv', True), ('ful', False)])
+        self.assertEqual(regiszter_or.sablon_ertek("szo{{ ' par-' ~ w.biz if w.biz else '' }}", d, 'x.html', 1),
+                         [('par-magas', True), ('szo', False)])
+        with tempfile.TemporaryDirectory() as tmp:
+            sd = os.path.join(tmp, 'sablonok')
+            os.mkdir(sd)
+            for sablon in ("<b class='egyszeres'>x</b>", "<b class=csupasz>x</b>"):
+                with open(os.path.join(sd, 'a.html'), 'w', encoding='utf-8') as f:
+                    f.write(sablon)
+                with self.assertRaises(regiszter_or.Kibonthatatlan, msg=sablon):
+                    regiszter_or.sablon_osztalyok(sd, d)
+            ut = os.path.join(tmp, 'm.py')
+            for src in ("def f(x):\n    return '<b class=\"a ' + x + '\">'\n", "def f():\n    return \"<b class='a'>\"\n"):
+                with open(ut, 'w', encoding='utf-8') as f:
+                    f.write(src)
+                with self.assertRaises(regiszter_or.Kibonthatatlan, msg=src):
+                    regiszter_or.py_osztalyok([ut])
+            with open(ut, 'w', encoding='utf-8') as f:
+                f.write("def f(h):\n    return 'class=\"jelleg ' in h\n")      # vizsgálat, nem kimenet
+            self.assertEqual(regiszter_or.py_osztalyok([ut]), [])
+
     def test_elavult_kizart_osztaly_hibat_ad(self):
         k = dict(self.kizart, jt='szövegrész-horog')
         self.assertIn('elavult kizárt osztály: jt', '\n'.join(regiszter_or.ellenoriz(self.elof, self.reg, k)))

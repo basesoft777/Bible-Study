@@ -1009,6 +1009,7 @@ szo-nincs = "párosítás nélküli Károli-szó; a folyó szöveg (24) színét
 # állapot-osztályok saját token nélkül
 nyelvtani = "állapot-osztály (nyelvtani elem: szaggatott keret, halványítás, literálok); saját tokenje nincs"
 par-magas = "állapot-osztály (magas bizonyosságú pár: folytonos aláhúzás, literál); a színe a 26. sor tokenje"
+nincs-jeloles = "állapot-osztály a szövegoszlopon (az olvaso.js adja, a „jelölés” kapcsoló kikapcsolva): a kötött szó aláhúzása eltűnik (literál); saját tokenje nincs"
 # a body nézet-horga
 nezet-olvaso = "a body nézet-horga; CSS-szabály nincs rá"
 nezet-interlinearis = "a body nézet-horga; CSS-szabály nincs rá"
@@ -1016,3 +1017,5 @@ nezet-munkaasztal = "a body nézet-horga; CSS-szabály nincs rá"
 # űrlap és a tervező mód saját vezérlője
 ugras = "a gyorsugrás űrlap: böngésző-alapértelmezett mező, token nélkül"
 tervezo-kapcsolo = "a tervező mód saját kapcsolója (csak belso kiadás); a megjelenése a tervezo.css-ből, nem az arculatból (a tervező nem állítja önmagát)"
+tz-nem = "a tervező saját címkéjének állapota (nem regisztrált elem; a tervezo.js adja, csak belso kiadás); a tervezo.css-ből, nem az arculatból"
+tz-hiba = "a tervező saját üzenetsorának hibaállapota (a tervezo.js adja, csak belso kiadás); a tervezo.css-ből, nem az arculatból"
