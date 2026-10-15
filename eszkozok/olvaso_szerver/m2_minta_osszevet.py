@@ -7,6 +7,10 @@ Az összevetés szabálya (a felhasználó döntése, 2026-10-15; rögzítve a K
     („<törzs>/fej”, „<törzs>”) egyenértékű: egyik sem nevez meg számozott jelentést vagy alpontot;
   * a zárójeles szint („(2)”, „(c)”, „(β)”) külön mutató: a fő mutató a zárójeles szegmensek nélkül hasonlít, a második azt méri, hogy
     a kulcs (durvább) útvonala előtagja-e a kitöltött útvonalnak (helyes-e előtagként);
+  * DT-F99i (felhasználó, 2026-10-15; a seed-101 mérés ELŐTT rögzítve): két római szint, két mező — a címszó homonima-száma a
+    jelentéspont elején (a kulcsban a `szakasz`), a szócikk római számos fő tagolása (rész) külön (a kulcsban és az új vak lapon a `resz`
+    oszlop). Mindkettő pontosan egyezzen. A régi (seed-99/100) kitöltésekben nincs `resz` oszlop: ott a jelentéspont második római száma a
+    rész („III I/3”), egy római szám a homonima-szám;
   * könyv és MT-vers: pontos egyezés (a vak lap Károli-könyvrövidítést ír); a Károli-oszlopot nem a vak lap bírálja, hanem a gépi
     összevetés (`karoli_ellenoriz.py`).
 Csak olvas. Használat (a repó gyökeréből):
@@ -40,15 +44,19 @@ def bont(szakasz, ut):
     return sz, [x for x in (ut or '').split('/') if x != '']
 
 
-def bont_kitoltott(jp):
-    """A vak lap jelentéspontja: „II Qal/2/a”, „I -/2”, „Qal I/2/b”, „II/6/b”, „II fej”, „-/3/(2)/a” → (szakasz, [szegmensek])."""
+def bont_kitoltott(jp, resz_oszlop=None):
+    """A vak lap jelentéspontja: „II Qal/2/a”, „I -/2”, „Qal I/2/b”, „II/6/b”, „II fej”, „-/3/(2)/a” → (szakasz, rész, [szegmensek]).
+    Ha a lapnak van `resz` oszlopa (seed-101-től), a rész onnan jön; különben a jelentéspont második római száma a rész (DT-F99i)."""
     t = (jp or '').strip()
     sz = ''
+    resz = ''
     szavak = re.split(r'\s+', t)
     maradek = []
     for w in szavak:
         if ROMAI.match(w) and not sz:
             sz = w
+        elif ROMAI.match(w) and resz_oszlop is None and not resz:
+            resz = w
         else:
             maradek.append(w)
     t = ' '.join(maradek)
@@ -57,10 +65,15 @@ def bont_kitoltott(jp):
         sz = reszek.pop(0)
     # „Qal I/2/b”: a törzs utáni római szám
     for i, x in enumerate(reszek):
-        if ROMAI.match(x) and not sz and i > 0:
-            sz = reszek.pop(i)
+        if ROMAI.match(x) and (i > 0 or sz) and (not sz or (resz_oszlop is None and not resz)):
+            if not sz:
+                sz = reszek.pop(i)
+            else:
+                resz = reszek.pop(i)
             break
-    return sz, reszek
+    if resz_oszlop is not None:
+        resz = resz_oszlop.strip()
+    return sz, resz, reszek
 
 
 def normal(seg):
@@ -96,8 +109,8 @@ def main():
         for k in kulcs.values():
             m = mai.get((k['strong'], k['poz']))
             if m:
-                for o in ('konyv_feloldas', 'mt_vers', 'karoli_vers', 'vers_feloldas', 'szakasz', 'utvonal', 'okkod', 'szurt'):
-                    k[o] = m[o]
+                for o in ('konyv_feloldas', 'mt_vers', 'karoli_vers', 'vers_feloldas', 'szakasz', 'resz', 'utvonal', 'okkod', 'szurt'):
+                    k[o] = m.get(o, '')
             else:
                 k['utvonal'] = '?nincs a mai táblában'
     kit = {}
@@ -110,10 +123,11 @@ def main():
         mt_e = e['konyv_mt'].split(' (')[0].strip()
         ok_vers = k['mt_vers'] == mt_e or (not k['mt_vers'] and k['szurt'] == '1')
         ksz, kseg = bont(k['szakasz'], k['utvonal'])
-        esz, eseg = bont_kitoltott(e['jelentespont'])
-        ok_jp = (ksz == esz) and fo(kseg) == fo(eseg)
-        ok_elotag = (ksz == esz) and elotag(kseg, eseg)
-        szk = 'kiszurt' if k['szurt'] == '1' else ('bizonytalan' if any(o in k['okkod'].split(',') for o in ('sigla_kozel', 'tobbertelmu', 'ismeretlen_alak', 'nincs_elozmeny')) else 'bibliai')
+        kresz = k.get('resz', '') or ''
+        esz, eresz, eseg = bont_kitoltott(e['jelentespont'], e.get('resz') if 'resz' in e else None)
+        ok_jp = (ksz == esz) and (kresz == eresz) and fo(kseg) == fo(eseg)
+        ok_elotag = (ksz == esz) and (kresz == eresz) and elotag(kseg, eseg)
+        szk = 'kiszurt' if k['szurt'] == '1' else ('bizonytalan' if any(o in k['okkod'].split(',') for o in ('sigla_kozel', 'tobbertelmu', 'ismeretlen_alak', 'nincs_elozmeny', 'orokles_hibas')) else 'bibliai')
         sze = 'kiszurt' if e['szures'].startswith('alhiv') else ('bizonytalan' if e['szures'].startswith('bizony') else 'bibliai')
         sorok.append((azon, k, e, ok_vers, ok_jp, ok_elotag, szk, sze))
     v = [x for x in sorok if x[1]['reteg'] == 'veletlen']
@@ -127,8 +141,9 @@ def main():
             print('VERS\t%s\t%s\t%s\tkulcs: %s\tkitoltott: %s' % (x[0], x[1]['strong'], x[1]['nyers'], x[1]['mt_vers'], x[2]['konyv_mt']))
     for x in v:
         if not x[4]:
-            print('JP\t%s\t%s\tkulcs: %s %s\tkitoltott: %s\t%s' % (x[0], x[1]['strong'], x[1]['szakasz'], x[1]['utvonal'], x[2]['jelentespont'],
-                                                                  'előtagként helyes' if x[5] else ''))
+            print('JP\t%s\t%s\tkulcs: %s %s %s\tkitoltott: %s%s\t%s' % (
+                x[0], x[1]['strong'], x[1]['szakasz'], ('r:' + x[1]['resz']) if x[1].get('resz') else '', x[1]['utvonal'],
+                x[2]['jelentespont'], (' r:' + x[2]['resz']) if x[2].get('resz') else '', 'előtagként helyes' if x[5] else ''))
     for reteg in ('veletlen', 'kiszurt', 'szurt', 'bizonytalan'):
         s = [x for x in sorok if x[1]['reteg'] == reteg]
         if not s:
