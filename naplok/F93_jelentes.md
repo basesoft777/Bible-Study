@@ -181,7 +181,7 @@ Nem eldönthető, mert hiányzó osztály: az `LXX.*` 9 sor (5 alapszám) nem ka
 
 **Több tokenre bontott név (3. bizonyíték).** A versen egymást követő tokenek (legfeljebb 5) glosszái (mind a Rövid jelentés, vagy mind az Angol tükörfordítás; a `[..]` és `<..>` betoldások nélkül, írásjel- és kisbetű-különbség nélkül) együtt szigorúan egyenlők a névcímkével vagy a Névváltozat valamelyik névalakjával (pl. `Nea`+`Polis` = Neapolis; `Ben-`+`Hesed` = Ben-hesed; `Shushan-`+`eduth`; `house of`+`Ashtaroth`). Minden tokennek ki kell tennie a névalak egy részét. Az egyetlen tokenes, kisbetűs névalak (pl. `villages`) is csak pontos egyenlőséggel számít.
 
-**A `ts` jelentése.** A lista `proveniencia` mezőjének `ts` értéke a `pardes.db` `meta.epites_ts` értéke, vagyis az adatállapot időpontja, nem a szkript futásáé. Ez tudatos: a G4 (két futás bájtazonos) csak így teljesül, mert a futás ideje minden futásnál más volna; az adatállapot időpontja a lekérdezett adat tényleges keletkezési ideje.
+**A `ts` jelentése.** A lista `proveniencia` mezőjének `ts` értéke a `pardes.db` `meta.epites_ts` értéke, vagyis az adatállapot időpontja, nem a szkript futásáé. Ez tudatos: a G4 (két futás bájtazonos) csak így teljesül, mert a futás ideje minden futásnál más volna; az adatállapot időpontja a lekérdezett adat tényleges keletkezési ideje. Döntés: DT-F93d (🟢, a felhasználó döntése, 2026-10-15, chat).
 
 **Vegyes sorú alapszám:** ha egy alapszám több TIPNR-sora versenként eltérő osztályba esik (pl. a H3482, H3159 típusú népnévi alakok), az alapszám „nem eldönthető”, és az indoklás felsorolja a sorok osztályait; csak az azonos osztályú sorok alapszáma kapja azt az osztályt. (A javított futásban nincs ilyen alapszám.)
 
