@@ -11,7 +11,7 @@ ag: claude/f93-tipnr-token-hiany
 ad: a 62 alapszám (88 TIPNR-sor) mindegyike osztályozva (szövegváltozat / számozási eltérés / adathiány / nem eldönthető), forrásmegjelöléssel naplózva; az eredmény jelölés, nem javítás
 kovetkezo: "Zárás: fuggetlen-ellenor, fejléc lezarva, draft PR"
 fugg: [88]
-olvas: [naplok/F88_meres.md, naplok/ELLENOR_F88_2.md, adat/SEMA.md, konkordancia/TIPNR_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_TIPNR_Normalizalo_README.md, eszkozok/sqlite_epit.py, F90_TAGNT_ZAROJELES_BRIEF.md]
+olvas: [naplok/F88_meres.md, naplok/ELLENOR_F88_2.md, adat/SEMA.md, konkordancia/TIPNR_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/Karoli_TIPNR_Normalizalo_README.md, eszkozok/sqlite_epit.py, F90_TAGNT_ZAROJELES_BRIEF.md]
 ir: [naplok/F93_jelentes.md, naplok/F93_alapszamok.tsv, eszkozok/f93_tipnr_token_hiany.py, NYITOTT_FELADATOK.md, DONTESEK.md]
 ---
 
