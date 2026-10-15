@@ -22,6 +22,8 @@ if hasattr(sys.stderr, 'reconfigure'):
     sys.stderr.reconfigure(encoding='utf-8')
 
 SZERVER_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, SZERVER_DIR)
+import lekerdezesek                                  # noqa: E402  (stdlib-only modul; parancssori hívásnál a saját könyvtár nincs mindig a sys.path-on)
 FO_AG = 'main'
 ISMERETLEN = 'ismeretlen'
 
@@ -35,12 +37,12 @@ def db_epites_ts(ut):
     try:
         con = sqlite3.connect('file:%s?mode=ro' % ut.replace('\\', '/'), uri=True)
         try:
-            sor = con.execute('SELECT ertek FROM meta WHERE kulcs = ?', ('epites_ts',)).fetchone()
+            ts = lekerdezesek.meta(con).get('epites_ts')      # az SQL csak a lekerdezesek.py-ban áll (teszt_olvaso_szerver: test_sql_csak_a_lekerdezesekben)
         finally:
             con.close()
     except sqlite3.Error:
         return ''
-    return str(sor[0]) if sor and sor[0] is not None else ''
+    return str(ts) if ts is not None else ''
 
 
 def szinkron_dontes(forras_db, cel_db):

@@ -22,6 +22,9 @@ Szerveroldali Flask-alkalmazás, amely a `pardes.db`-ből (csak olvasásra) áll
 | `gunicorn_conf.py`, `telepit.sh` | indítás (gthread, 1 worker, 4 szál), környezet, frissességi teszt |
 | `frissesseg.py`, `manifest_pardes_db.tsv` | az épségi teszt (K4), M1 |
 | `export.py` | statikus export váza |
+| `indit.sh` | a közös indító (#100): régi példány leállítása, adatbázis-szinkron, szerver újratöltővel; a három asztali parancsikon ezt hívja |
+| `allapot.py` | az indító és a lábléc állapota (#100): szinkron-döntés (`meta.epites_ts`), ág és commit (fájlolvasással, `git` nélkül), lábléc-figyelmeztetések; stdlib |
+| `teszt_indito.py` | az indító tesztjei (#100): szinkron-döntés, git-olvasás, lábléc, `indit.sh` ideiglenes adatbázisokkal |
 | `teszt_olvaso_szerver.py` | tesztek (unittest) |
 | `teszt_arculat.py` | a token-fájl, a token-blokk és az `/arculat.css` tesztjei (#98 M1) |
 | `teszt_tervezo.py` | a tervező mód tesztjei (#98 M2): regiszter, regiszter-őr, szabálytérkép, értékszűrés, a végpont biztonsága kiadásonként, atomi írás, ETag, szinkron-kimenet, a szelektorok a valódi lapokon |
@@ -43,6 +46,22 @@ A `belso` kiadásban a fejlécben, a szintváltó mellett a **Tervező** kapcsol
 
 **Regiszter-őr:** új CSS-osztály csak regisztrálva (`[[elem]]`) vagy indokkal kizárva (`[kizart]`) kerülhet a felületre: `python regiszter_or.py` (és a `teszt_tervezo.py`). Az őr a sablonok `class="…"` attribútumait, a `blokkok.py`/`oldalak.py` `class="…"`-literáljait és a kliens `classList.add/toggle/remove` literál-argumentumait olvassa; a nem olvasható alak (egyszeres idézőjeles vagy idézőjel nélküli `class=`, összefűzéssel le nem zárt attribútum, a Jinja-kifejezés nem literál ága, `className =`, nem literál `classList`-argumentum) hiba, nem marad ki némán. Nem olvassa a tervező saját panelének osztályait (`tz-…`, a `tervezo.css`-ből) és a csak a stíluslapban szereplő osztályokat. **Szinkron:** `python arculat_szinkron.py --kimenet /tmp/tokens.json --alap <a design system mostani tokens.json-ja>`.
 
+## Indítás egy kattintással (#100)
+
+A három asztali parancsikon (`PaRDeS olvaso - belso (tervezo).bat` → 8765, `… - nyilvanos.bat` → 8766, `… - kereskedelmi.bat` → 8768) a WSL `pardes` disztribúcióban az `indit.sh <kiadás> <port>`-ot hívja a főcheckoutból:
+
+1. **Régi példány leállítása** a porton (`fuser -k -TERM`, 5 mp után KILL); a napló kiírja, futott-e régi példány.
+2. **Adatbázis-szinkron.** A Windows-oldali `pardes.db` (forrás: `<repó>/pardes.db`) és a WSL-beli másolat (`~/pardes/pardes.db`) `meta.epites_ts` értékét hasonlítja össze (kis olvasás, a 938 MB-ot nem olvassa be; a kulcs NEM a fájl mtime-ja, mert a másolás azt átírja). Eltérés vagy hiányzó másolat → `MÁSOLÁS` ideiglenes névre (`pardes.db.uj.<pid>`), majd atomi átnevezés: a régi állományt még nyitva tartó példányok ép adatot látnak, hiba esetén a meglévő másolat érintetlen. Azonos építési idő → `NINCS másolás`. A napló mindig kiírja, melyik történt.
+3. **Szerver újratöltővel:** `alkalmazas.py --ujratolt` (Werkzeug `stat`-mód: a `/mnt/c`-n az inotify nem működik). Figyelt fájlok: a betöltött Python-modulok (a szerver `.py` fájljai és a pilot `bdb_szelet.py`-ja) és az `extra_files`: `sablonok/`, `konfig/`, `statikus/`, a pilot `bdb_szelet.py`-ja. **Kivétel:** a `konfig/arculat.json` és az `.elozo`-ja, mert a tervező mód mentése futás közben írja, és újraindítás nélkül hat. Kódváltozás után a szerver legfeljebb pár másodperc alatt újraindul (a napló: `Detected change in … reloading`); az üresjárati terhelés ~1% egy magon (M0 felmérés 4.). Szintaxishibás szerverfájl mentése leállítja a szervert (az újratöltő gyereke import közben meghal): a javítás után a parancsikon újra indítja.
+
+Két egymás utáni kattintás sorosítva fut (zárfájl `~/pardes/.indit.zar`, amíg a port meg nem nyílik): a végén pontosan egy példány fut a porton.
+
+**Lábléc.** Minden lap alján a kiadás, az **ág**, a rövid **commit**, az **adatbázis építési ideje**; figyelmeztetés (`<mark>Figyelem:</mark>`), ha az ág nem `main`, ha az ág nem állapítható meg, vagy ha a Windows-oldali adatbázis újabb a futó másolatnál (az `indit.sh` a `PARDES_FORRAS_DB` környezeti változóval adja át a forrás útját; indításkor számolódik, nem követi a futás közbeni újraépítést; újraindítás a parancsikonnal). Az ág és a commit a `.git/HEAD` és a ref-fájlok közvetlen olvasásából jön (worktree-ben is; a WSL-beli `git` a Windows-útra mutató `.git` fájlt nem oldja fel). A lábléc csak a már regisztrált `labjegyzet` osztályt használja (regiszter-őr: nincs új osztály); a statikus exportban a lábléc változatlan.
+
+**Környezeti változók az `indit.sh`-ban** (alapérték elég az éles használathoz; a gépi próba ezekkel dolgozik): `PARDES_FORRAS_DB`, `PARDES_DB`, `PARDES_PY`, `PARDES_ZAR`, `PARDES_INDIT_CSAK_ELOKESZIT=1` (csak leállítás + szinkron).
+
+**A három parancsikon változása (2026-10-15, a repón kívül, az asztalon).** Mindhárom `.bat`-ban két sor változott, a többi (köztük a böngésző megnyitása) változatlan; az eredeti fájlok a session mentésében vannak. (1) A `start "…" wsl …` sor mostantól az `indit.sh <kiadás> <port>`-ot hívja; ha az `indit.sh` a főcheckoutban még nincs meg (a #100 mergelése előtt), a régi indítással fut tovább (a kiírt figyelmeztetéssel) — ez az átmeneti tartalék a merge után törölhető. (2) A `timeout /t 7` sor helyett a böngésző megnyitása előtt egy PowerShell-hurok vár a `/statusz` válaszára (legfeljebb ~90 mp), mert a másolás (~10 s) miatt a fix 7 másodperc kevés. A `.sh` fájlok sorvége a `.gitattributes`-ben `eol=lf` (CRLF-es munkafán a bash nem fut).
+
 ## Futtatás
 
 ```bash
@@ -50,10 +69,12 @@ A `belso` kiadásban a fejlécben, a szintváltó mellett a **Tervező** kapcsol
 PARDES_DB=/út/pardes.db python eszkozok/olvaso_szerver/alkalmazas.py --port 8765
 # éles jellegű
 PARDES_DB=/út/pardes.db ./telepit.sh ellenorzes && PARDES_DB=/út/pardes.db ./telepit.sh indit
-# tesztek
-PARDES_DB=/út/pardes.db python eszkozok/olvaso_szerver/teszt_olvaso_szerver.py
-PARDES_DB=/út/pardes.db python eszkozok/olvaso_szerver/teszt_tervezo.py
+# tesztek: EGYETLEN belépési pont (#100, DT-F100a (c)); Windowsról és WSL-ből is, a WSL venv-jét és a WSL-natív ~/pardes/pardes.db-t választja
+python eszkozok/teszt_futtat.py            # mind (a lassú teszt_szintek.py-val); --gyors: nélküle; --fajl teszt_tervezo: egy fájl; --reszletes
+# egy fájl kézzel (WSL venv): PARDES_DB=$HOME/pardes/pardes.db python eszkozok/olvaso_szerver/teszt_tervezo.py
 ```
+
+**Tesztek és a `/mnt/c`.** A `teszt_futtat.py` kiírja, melyik adatbázist nyitotta meg, és figyelmeztet, ha az a `/mnt/c` alatt van: a WSL a véletlen (SQLite-lapos) hozzáférést a `/mnt/c`-ről nagyon lassan olvassa (a `teszt_olvaso_szerver.py` 45+ perc a natív ~2 perc helyett). A kód és a `konkordancia/` a `/mnt/c`-ről olvasódik (nincs másolat). Mért idők: `naplok/OLVASO_INDITO_M1_merés.md`.
 
 Kiadás: `PARDES_KIADAS=belso|nyilvanos|kereskedelmi` (vagy `konfig/szerver.toml`). Nyilvános kiadásban a KJV-Strong blokk, kereskedelmiben az MCGED is kimarad; az adatbázis-kapcsolat ezeket a táblákat olvasni sem engedi.
 
