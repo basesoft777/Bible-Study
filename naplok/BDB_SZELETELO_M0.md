@@ -26,7 +26,7 @@ az M3–M6 sorsáról a felhasználó dönt (nem zártam le, ami nincs kész).
 
 ## 1. Eredmény röviden
 
-- **Aranyminta** (`adat/bdb_aranyminta.tsv`, SEMA 2.28): 32 szócikk, 14 magyar fordítással is; benne a beszélgetés nyolc szócikke. A minta a mérések előtt készült, a szócikkek szövegének olvasásából; a független ellenőr átnézte (`naplok/ELLENOR_F99_minta.md`: 11 eltérés, 5 bizonytalan pont), a felhasználó döntései szerint javítva (F99.6, 2.4): 658 sor, ebből 607 `fuggetlen_ellenor`, 51 `modell_ellenorizetlen` (az új vagy javított sorok a H6440, H7307, H0430-on kívül; a három szócikket a felhasználó a második ellenőrzés alapján elfogadta, F99.7).
+- **Aranyminta** (`adat/bdb_aranyminta.tsv`, SEMA 2.28): 32 szócikk, 14 magyar fordítással is; benne a beszélgetés nyolc szócikke. A minta a mérések előtt készült, a szócikkek szövegének olvasásából; a független ellenőr átnézte (`naplok/ELLENOR_F99_minta.md`: 11 eltérés, 5 bizonytalan pont), a felhasználó döntései szerint javítva (F99.6, 2.4): 658 sor, ebből 607 `fuggetlen_ellenor`, 51 `modell_ellenorizetlen` (az új vagy javított sorok a H6440, H7307, H0430-on kívül; a három szócikket egy második modell-ellenőrzés nézte át, F99.7). **Helyesbítés (ELLENOR_F99, 2026-10-15): a minta átnézése modell-ellenőrzés volt** — a 32 szócikket a független ellenőr (modell), a H6440, H7307, H0430-at egy második modell-ellenőr nézte át; a felhasználó az eltérésekről döntött, de a szócikkeket nem nézte át (a DT-F99e „a nyolc szócikket a felhasználó is átnézi” része nem teljesült). `felhasznalo` jelölésű sor nincs.
 - **A mai szeletelő az aranymintán** (a javított mintán): szerkezeti eltérés nélkül 15 / 32 szócikk angolul, 7 / 14 magyarul; a használati csoportokat (184 várt csoport) egyáltalán nem bontja; a jelentéscímek 169 / 195 (magyar) és 24 / 43 (angol) esetben egyeznek. A 0 eltérés feltétele messze van; a hibák hét osztályba esnek (2.3).
 - **Hivatkozások** (angol BDB, 8099 szócikk): 160 459 hivatkozás 8025 szócikkben — 107 321 kiírt könyvvel, 42 397 örökölt, 10 738 vesszős vers-folytatás, 3 feloldhatatlan. Álhivatkozás-jelölt 1062 (368 nem bibliai mű, 253 tapadt sigla, 441 közeli sigla), és 790 a nemi tanú („noun masculine^Gen 1:27”), amely **valódi** bibliai hivatkozás. Az MT → Károli átkulcsoláshoz a brief forrása, a `Karoli_versmegfeleltetes.tsv`, a hivatkozások 89%-ánál (141 959) nem ad MT-számot; a Macula `karoli` oszlopa mindenre ad, de ismert hibás régiókkal (DT-F99a).
 - **OSHL `<etym>`** (5. szakasz): main 2643, sub 4368, single 574; a BDB-tábla 8099 Strongjából 5310-nek van gyökcsaládja; a H3915 לַיְלָה `single` (nincs családja).
@@ -123,7 +123,7 @@ A független ellenőr (`naplok/ELLENOR_F99_minta.md`) 11 eltérést (E1–E11) �
 
 **B3 (H6696 Qal/2, a felhasználó döntése: marad).** Az első „with עַל of city” vessző után áll („shut in, besiege, with עַל of city”), ezért a csoportszabály szerint nem csoport, hanem a jelentés fejének része; a párhuzamos négy tag („; with עַל person”, „; with אֶל of city”, „; with אֶל person”, „; with אֵת of city only”) mondatkezdő, ezért csoport. A minta szabálykövető, de **aszimmetrikus**: az olvasó négy csoportot lát, az ötödik párhuzamos használat a fejben marad. Ha a megjelenítés (M4) ezt zavarónak mutatja, a csoportszabály (DT-F99b (1)) módosítása a helye, nem a mintáé.
 
-Az ellenőrzés jelölése (`ellenorzes`): a többi szócikk változatlan sora `fuggetlen_ellenor`, az új vagy javított sorok `modell_ellenorizetlen`; a H6440, H7307, H0430 a F99.6-ban `modell_ellenorizetlen` volt, a felhasználó a második ellenőrzés alapján elfogadta, ezért a F99.7-től minden soruk `fuggetlen_ellenor` (607 / 51).
+Az ellenőrzés jelölése (`ellenorzes`): a többi szócikk változatlan sora `fuggetlen_ellenor`, az új vagy javított sorok `modell_ellenorizetlen`; a H6440, H7307, H0430 a F99.6-ban `modell_ellenorizetlen` volt, egy második modell-ellenőrzés után a F99.7-től minden soruk `fuggetlen_ellenor` (607 / 51). (Helyesbítés: a második átnézés modell-ellenőrzés volt, nem felhasználói; a felhasználó a sorokat nem nézte át.)
 
 **Határeset (H0430 3.; a felhasználó döntése, 2026-10-15: marad csoport nélkül).** A 3. jelentésben álló „in many phrases” nem csoport: a DT-F99b (1) (a) listája szó szerinti (`in phrase(s)`), a „many” közbeékelt jelzővel álló alak nem illeszkedik. Ha az M3 bevezető-felismerése ezt is fogná, a minta e pontja átírandó.
 
@@ -278,7 +278,7 @@ Az M1 a `oshl_index_import.py`-ba a `etym_tipus` (`main` / `sub` / `single`, ür
 - **DT-F99b** — a csoport-bevezetők listája, kötelező magyar alakja, kapu, időzítés a #38-ban, a kész 674 szócikk (4. szakasz).
 - **DT-F99c** — a szeletelő helye élesben.
 - **DT-F99d** — a modell-magyarázat teljes futása (az M6 mérése után dönthető; most előjegyzés).
-- **DT-F99e** — az aranyminta átnézése (a „0 eltérés” mércéje csak ellenőrzött mintán értelmes). Eldöntve (b): a független ellenőr átnézte (F99.5), a minta a felhasználó döntései szerint javítva (F99.6, 2.4); a H6440, H7307, H0430 felhasználói átnézése nyitott.
+- **DT-F99e** — az aranyminta átnézése (a „0 eltérés” mércéje csak ellenőrzött mintán értelmes). Eldöntve (b): a független ellenőr (modell) átnézte (F99.5), a minta a felhasználó döntései szerint javítva (F99.6, 2.4); a H6440, H7307, H0430-at egy második modell-ellenőr nézte át. **Felhasználói átnézés nem történt** — a nyolc szócikkre előírt felhasználói átnézés nyitott.
 - **DT-F99f** — a `LexicalIndex.xml` letöltése az M0.4-hez és az M1-hez. Eldöntve (b), a letöltés megtörtént (F99.8), az M0.4 lefutott (5. szakasz).
 
 ## 8. Reprodukálás
@@ -553,7 +553,7 @@ orkesztrátor kezeli).
 197/200 — a felhasználó elfogadta, 0 valódi hiba (M011, M072, M119 rövidítés); jelentéspont 184/200 (16 eltérés; Clopper–Pearson 95%:
 87,3–95,4%). A normalizálás szélesítése elvetve (utólagos mércelazítás).
 
-**A kapu következménye az ítélet ELŐTT rögzítve:** DT-F99l (F99.27): (a) ≤ 6 szeletelő-hiba → teljesült; (b) > 6, és ≥ 2/3 nem számozott
+**A kapu következménye az ítélet ELŐTT rögzítve** — de a nyers 184/200 ismeretében (a küszöbök ezt látva születtek; ELLENOR_F99): DT-F99l (F99.27): (a) ≤ 6 szeletelő-hiba → teljesült; (b) > 6, és ≥ 2/3 nem számozott
 szócikkben → a mérce a számozott szócikkekre szűkül; (c) > 6, szórt → „próba” jelöléssel élesedik, a pontosság és intervalluma a lapon,
 további javítás külön feladat, nincs több mérési kör.
 
