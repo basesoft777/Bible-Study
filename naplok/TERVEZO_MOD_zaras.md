@@ -4,7 +4,7 @@
 
 ## M1 — előkészítés
 
-*Modell: `claude-opus-5-5`. Ág: `claude/tervezo-mod`, alap `77022490` (F98.3). Állapot: **kész**; a megjelenés-azonosság mérése **0 eltérést** ad. A következő lépés az M2, amelyet a felhasználó „mehet”-je indít.*
+*Modell: `claude-opus-5-5`. Ág: `claude/tervezo-mod`, alap `5e888c89` (F98.3). Állapot: **kész**; a megjelenés-azonosság mérése **0 eltérést** ad. A következő lépés az M2, amelyet a felhasználó „mehet”-je indít.*
 
 A felhasználó 2026-10-14-én a chatben jóváhagyta az M0-t (a regiszter magyar nevei és tulajdonság-köre), és a DT-F98a–e mind (a) szerint dőlt el. Az M1 ezek szerint készült.
 
@@ -67,7 +67,7 @@ A felhasználó 2026-10-14-én a chatben jóváhagyta az M0-t (a regiszter magya
 
 ### M1.4 A megjelenés-azonosság mérése
 
-**Módszer.** Két szerver futott egyszerre a `pardes` WSL-disztribúcióban (Python 3.12.3, Flask 3.1.3, a `.venv` a `~/pardes/eszkozok/olvaso_szerver/`-ből, csak olvasva), ugyanazon az adatbázison (`/mnt/c/…/Bible-Study/pardes.db`, belső kiadás): a **csere előtti** a `77022490` kódjával (`git archive` a session scratch-könyvtárába, 8801-es port), a **csere utáni** a munkafából (8802-es port). A mérés a Claude desktop app beépített böngészőjében futott, emulált 1280×900-as viewporton, és három lapon 375×812-esen is (mobil, a ≤640px-es média-lekérdezés is). A mérőszkript (`meres.js`, `sha256` 16 jegye a szkript szövegére `a27d0b54a9c3b578`, mindkét szerveren azonos) a `document.fonts.ready` után a `<html>`, a `<body>` és **minden** `body`-beli elem 57 számított tulajdonságát (betűcsalád, -méret, -vastagság, -stílus, sorköz, betűköz, számalak, OpenType-jellemzők, szín, háttérszín, átlátszóság, megjelenítés és flex/grid-igazítás, sor- és oszlopköz, a négy párna, a négy margó, a négy keret vastagsága, stílusa, színe, a négy sarok lekerekítése, aláhúzás vonala, stílusa, színe, vastagsága és eltolása, függőleges igazítás, legkisebb és legnagyobb szélesség, legnagyobb magasság, szóköz-kezelés, nagybetűsítés, színséma, körvonal) **és befoglaló téglalapját** (x, y, szélesség, magasság, két tizedesre) rögzítette, három témában (`data-tema="light"`, `data-tema="dark"`, attribútum nélkül = rendszer; a panel rendszer-beállítása sötét volt), és lapállapotonként SHA-256 kivonatot adott.
+**Módszer.** Két szerver futott egyszerre a `pardes` WSL-disztribúcióban (Python 3.12.3, Flask 3.1.3, a `.venv` a `~/pardes/eszkozok/olvaso_szerver/`-ből, csak olvasva), ugyanazon az adatbázison (`/mnt/c/…/Bible-Study/pardes.db`, belső kiadás): a **csere előtti** a `5e888c89` kódjával (`git archive` a session scratch-könyvtárába, 8801-es port), a **csere utáni** a munkafából (8802-es port). A mérés a Claude desktop app beépített böngészőjében futott, emulált 1280×900-as viewporton, és három lapon 375×812-esen is (mobil, a ≤640px-es média-lekérdezés is). A mérőszkript (`meres.js`, `sha256` 16 jegye a szkript szövegére `a27d0b54a9c3b578`, mindkét szerveren azonos) a `document.fonts.ready` után a `<html>`, a `<body>` és **minden** `body`-beli elem 57 számított tulajdonságát (betűcsalád, -méret, -vastagság, -stílus, sorköz, betűköz, számalak, OpenType-jellemzők, szín, háttérszín, átlátszóság, megjelenítés és flex/grid-igazítás, sor- és oszlopköz, a négy párna, a négy margó, a négy keret vastagsága, stílusa, színe, a négy sarok lekerekítése, aláhúzás vonala, stílusa, színe, vastagsága és eltolása, függőleges igazítás, legkisebb és legnagyobb szélesség, legnagyobb magasság, szóköz-kezelés, nagybetűsítés, színséma, körvonal) **és befoglaló téglalapját** (x, y, szélesség, magasság, két tizedesre) rögzítette, három témában (`data-tema="light"`, `data-tema="dark"`, attribútum nélkül = rendszer; a panel rendszer-beállítása sötét volt), és lapállapotonként SHA-256 kivonatot adott.
 
 **Lapok** (26 lapállapot × 3 téma; 35 813 elem): a két pilot-szakasz (1Móz 1:1–2:3: `/1Moz/1`, `/1Moz/2`; Zsolt 22: `/Zsolt/22`) és egy ÚSZ-fejezet (`/Jan/1`), mindhárom nézetben (Olvasópult, Interlineáris, Munkaasztal); a jobb oldali panel szó- és vers-füllel (`/1Moz/1/1?szo=H0430&ful=szo`, `/1Moz/1/2?ful=vers`, `/Jan/1/1?szo=G3056&ful=szo`, `/Zsolt/22/2?szo=H0410&ful=szo` Interlineárisban); szó-lapok (`/szo/H0430`, `/szo/G3056`, `/szo/H7307`, `/szo/H6440` — BDB-apparátus, görög szó); kezdőlap, könyvlap, hibalap; mobilon `/1Moz/1`, `/Jan/1/1?szo=G3056&ful=szo` (Interlineáris), `/szo/H0430`.
 
@@ -108,7 +108,7 @@ A felhasználó 2026-10-14-én a chatben jóváhagyta az M0-t (a regiszter magya
 
 **Amit a böngészős mérés nem fed le, és ami fedi.** A `:hover`, a `:focus-visible` és a `::selection` állapot nem idézhető elő a mérőszkriptből. Ezeket a **statikus ekvivalencia-ellenőrzés** (`css_ekvivalencia.py`, a session scratch-könyvtárában) fedi: a régi stíluslap a 42 felülírt deklaráció és a `:root`-blokkok nélkül, illetve az új stíluslap a tokenek visszahelyettesítésével **szabályról szabályra egyezik** (179 szabály); az egyetlen két eltérés az M1.3 két részben felülírt rövidítése. A generált token-blokk változói és értékei a régi `:root`-éval és a két sötét blokkéval egyeznek (15, 11, 11 változó, értékeltérés nincs), 111 új méret-tokennel kiegészülve (52 + 18 + 35 + 6).
 
-*Proveniencia:* `scope=eszkozok/olvaso_szerver/ (olvaso.css előtte 16 156 B sha256 dd8f415d23cd295e @77022490, utána 16 952 B sha256 2f88b7c53315ac89 @d2019dc5; konfig/arculat.json 4 158 B sha256 13b0c486cc801556), pardes.db a munkafa gyökerében, belső kiadás, 26 lapállapot × 3 téma, 35 813 elem | forras=meres.js (sha256 a27d0b54a9c3b578, 57 számított tulajdonság + befoglaló téglalap, SHA-256 lapállapotonként) a Claude desktop beépített böngészőjében, két egyidejű szerver (8801: git archive 77022490, 8802: munkafa) a pardes WSL-ben (Python 3.12.3, Flask 3.1.3); css_ekvivalencia.py, css_elemzo.py | ts=2026-10-14`
+*Proveniencia:* `scope=eszkozok/olvaso_szerver/ (olvaso.css előtte 16 156 B sha256 dd8f415d23cd295e @5e888c89, utána 16 952 B sha256 2f88b7c53315ac89 @61e2b626; konfig/arculat.json 4 158 B sha256 13b0c486cc801556), pardes.db a munkafa gyökerében, belső kiadás, 26 lapállapot × 3 téma, 35 813 elem | forras=meres.js (sha256 a27d0b54a9c3b578, 57 számított tulajdonság + befoglaló téglalap, SHA-256 lapállapotonként) a Claude desktop beépített böngészőjében, két egyidejű szerver (8801: git archive 5e888c89, 8802: munkafa) a pardes WSL-ben (Python 3.12.3, Flask 3.1.3); css_ekvivalencia.py, css_elemzo.py | ts=2026-10-14`
 
 ### M1.5 A literálként maradt térközök és méretek (DT-F98b)
 
@@ -250,7 +250,7 @@ A DT-F98b szerint csak a regiszterben kitett 35 térköz token; a stíluslap tö
 
 ### M1.6 Tesztek
 
-A szerver tesztjei a `pardes` WSL-disztribúcióban futottak (Python 3.12.3, Flask 3.1.3), az **M1 állapotának tiszta pillanatképén** (`git archive 223efd45 eszkozok adat` a session scratch-könyvtárába, a `konkordancia/` symlinkkel), hogy a pilot- és a D2-tesztek is lefussanak, és a munkafa közbeni változásai (F98.9) ne keveredjenek bele.
+A szerver tesztjei a `pardes` WSL-disztribúcióban futottak (Python 3.12.3, Flask 3.1.3), az **M1 állapotának tiszta pillanatképén** (`git archive cfa399e6 eszkozok adat` a session scratch-könyvtárába, a `konkordancia/` symlinkkel), hogy a pilot- és a D2-tesztek is lefussanak, és a munkafa közbeni változásai (F98.9) ne keveredjenek bele.
 
 | Tesztfájl | Eredmény | Kihagyva | Adatbázis |
 |---|---|---|---|
@@ -261,11 +261,11 @@ A szerver tesztjei a `pardes` WSL-disztribúcióban futottak (Python 3.12.3, Fla
 
 A `teszt_olvaso_szerver.py` első futása a `/mnt/c`-n lévő adatbázissal a D2-tesztben (`test_1moz_1_25`) több mint 30 percig nem jutott tovább: a 9P-fájlrendszeren a véletlen elérésű olvasás lassú, és egy másik, nem az M1-hez tartozó tesztfolyamat is ugyanazt a fájlt olvasta. Ezért a WSL ext4-en lévő másolattal futott újra; a két fájl ugyanaz az építés (a `meta` tábla 107 sora azonos, a kivonata `2cbcbe43106a06d1`, `epites_ts` 2026-10-14T09:35:00Z). Így 140 s alatt lefutott.
 
-**Az ág végállapotán** (84f211ed, az F98.9-cel; a munkafában csak a napló, a brief fejléce, a `DONTESEK.md` és a stage-elt fejkomment): `teszt_arculat.py` 22 OK (az F98.9 54/19-es tokenszámaival), `teszt_pilot_aranymintaval.py` 22 OK, 0 kihagyás.
+**Az ág végállapotán** (67d35334, az F98.9-cel; a munkafában csak a napló, a brief fejléce, a `DONTESEK.md` és a stage-elt fejkomment): `teszt_arculat.py` 22 OK (az F98.9 54/19-es tokenszámaival), `teszt_pilot_aranymintaval.py` 22 OK, 0 kihagyás.
 
 Az `eszkozok/feladatok.py ellenoriz`: 118 brief, 0 hiba, 0 figyelmeztetés.
 
-*Proveniencia:* `scope=eszkozok/olvaso_szerver/teszt_*.py @223efd45 (M1) és @84f211ed (végállapot: teszt_arculat, teszt_pilot_aranymintaval) | forras=unittest, pardes WSL .venv (Python 3.12.3, Flask 3.1.3) | ts=2026-10-14`
+*Proveniencia:* `scope=eszkozok/olvaso_szerver/teszt_*.py @cfa399e6 (M1) és @67d35334 (végállapot: teszt_arculat, teszt_pilot_aranymintaval) | forras=unittest, pardes WSL .venv (Python 3.12.3, Flask 3.1.3) | ts=2026-10-14`
 
 ### M1.7 Megfigyelések és nyitott tételek az M2-höz
 
@@ -274,29 +274,29 @@ Az `eszkozok/feladatok.py ellenoriz`: 118 brief, 0 hiba, 0 figyelmeztetés.
 3. **A naplóhely.** A brief `ir` mezője a `naplok/TERVEZO_MOD_M0.md`-t és ezt a zárónaplót engedi írni, ezért az M1 naplója ennek az M1 szakasza (a DT-F98b „az M1 naplójában” megfogalmazása ezt jelenti). Az F98.7 commit üzenete még `naplok/TERVEZO_MOD_M1.md`-t nevez meg; a stíluslap fejkommentje már ide mutat (F98.10).
 4. **A zárónapló szakaszai.** A tervező mód elkészülte után, az M2-ben a regiszter (`elemek.toml`) és a regiszter-őr, a mentési végpont tesztjei és a szinkron-szkript kerülnek ide; az M3-ban a felhasználó észrevételei.
 
-### M1 utáni változás (F98.9, a felhasználó commitja, 84f211ed)
+### M1 utáni változás (F98.9, a felhasználó commitja, 67d35334)
 
-Az M1 után az ágra került a 84f211ed (F98.9: BDB-jelentésszerkezet, a pilot `ol.jel`/`ol.al` szabályai az `olvaso.css`-ben). A fenti M1-számok az M1 állapotára (223efd45) igazak; az F98.9 óta:
+Az M1 után az ágra került a 67d35334 (F98.9: BDB-jelentésszerkezet, a pilot `ol.jel`/`ol.al` szabályai az `olvaso.css`-ben). A fenti M1-számok az M1 állapotára (cfa399e6) igazak; az F98.9 óta:
 
 - **Új tokenek (3):** `betumeret.jelentes-jel` (13px), `betumeret.jelentes-osszegzo` (15.5px), `sorkoz.jelentes-osszegzo` (1.5). A token-fájlban így **54 betűméret** és **19 sorköz** van (a térköz és a lekerekítés változatlan: 35, 6); az `arculat.json` hash-e `b677aeb7f42ecb27` (a lapokon `/arculat.css?v=b677aeb7f42ecb27`). A `teszt_arculat.py` tokenszámait az F98.9 frissítette (54/19).
 - **Literálok:** az M1.5 listájának `ol.jel` és `ol.al` sorai (139–140: `margin: 4px 0`, `padding-left: 1.3rem` / `1.2rem`) a régi szabályokat írják le; az F98.9 ezeket a pilot jelentéslista-szabályaira cserélte (`list-style: none`, `content: attr(data-jel)`, `gap: 12px` / `6px`, `padding-left: 2.3rem` / `1.8rem` stb.). Ezek új literál-térközök, ugyanabban a kategóriában (M, G, P), mint az M1.5 többi lista-behúzása és belső sorköze; a betűméretük már token.
 - **Szándékos megjelenés-változás:** a `/szo/H6440` szó-lap jelentéslistája az F98.9 óta másképp jelenik meg (a bontott BDB-szócikk alpontjai a., b. … jelölőt kapnak, a kinyitott jelentés összegzése rejtve). Mérve az M1 mérőszkriptjével (1280×900, a 8802-es szerver újraindítva az F98.9 állapotán): `/szo/H6440` light `a035c8efa529ead6`, dark/rendszer `2de0eafa069659de` (az M1-ben `02a230a931b43d54` / `8032f3874fb9a046`), ugyanannyi elemmel (425); az `/1Moz/1` (Olvasópult) és a `/szo/G3056` kivonata változatlan (`f8442e418704de30`, `1f0270feb3eb08b6`). Ez a változás nem az M1 megjelenés-azonosságának sérülése, hanem az F98.9 javítása.
 
-### M1 utáni változás (F98.11–F98.13, 1af2422b, 788326bd, ec98a5b2)
+### M1 utáni változás (F98.11–F98.13, f547e3d0, f993848e, 33619789)
 
 Az F98.9 után három további commit került az ágra a BDB-jelentésszerkezetről (F98.11: vázlat, állandó jelentéscím, „hivatkozás” felirat, jelmagyarázat; F98.12: a vezető héber a magyar mögé, héber futamok `lang="he"`-vel; F98.13: a kölcsönzött cím jelölése). Az arculatot érintő részük:
 
 - **Token-átnevezés (F98.11):** `betumeret.jelentes-osszegzo` → `betumeret.jelentes-cim` (15.5px) és `sorkoz.jelentes-osszegzo` → `sorkoz.jelentes-cim` (1.5); a CSS-ben `--fs-jelentes-osszegzo` / `--lh-jelentes-osszegzo` → `--fs-jelentes-cim` / `--lh-jelentes-cim`. A tokenszám nem változott (**54 betűméret, 19 sorköz**, 35 térköz, 6 lekerekítés). A `jelentes-osszegzo` név a repóban már csak a fenti F98.9-szakaszban és a `teszt_arculat.py` két megjegyzésében (62–63. sor: „összegzése”, „jelentés-összegzés”) áll; a tesztek számai helyesek.
-- **Az `arculat.json` hash-e:** `ed1326eb32081fbf` (a lapokon `/arculat.css?v=ed1326eb32081fbf`); a fájl 4 243 bájt. Számítva a szerver saját függvényével (`arculat.tartalom_hash`: a CRLF→LF után sha256, első 16 jegy); ugyanez a 84f211ed állapotára a fent rögzített `b677aeb7f42ecb27`-et adja, tehát a módszer azonos.
+- **Az `arculat.json` hash-e:** `ed1326eb32081fbf` (a lapokon `/arculat.css?v=ed1326eb32081fbf`); a fájl 4 243 bájt. Számítva a szerver saját függvényével (`arculat.tartalom_hash`: a CRLF→LF után sha256, első 16 jegy); ugyanez a 67d35334 állapotára a fent rögzített `b677aeb7f42ecb27`-et adja, tehát a módszer azonos.
 - **Új osztályok a stíluslapban (`olvaso.css` 149–170) és a `blokkok.py`-ban:** `jel-vazlat` (a vázlat `nav`-ja), `vz-torzs`, `vz-fo`, `vz-jel`, `vz-al` (a vázlat sorai), `jcim` (a részletes lista állandó jelentéscíme, a megszűnt `.jt` helyett; a `ol.jel details[open] > summary .jt { display: none }` szabály törölve), `kolcsonzott` (F98.13), `jelmagyarazat` (`dl`, a `konfig/bdb_jelek.tsv`-ből), a `.jsz abbr[title]` szabály (a BDB-rövidítések), a `.jcim .he, .jel-vazlat .he` szabály (F98.12) és a `.helyek { white-space: nowrap }` (F98.12). Minden új szabály méret- és színértéke létező token (`fs-jelentes-jel`, `fs-jelentes-cim`, `lh-jelentes-cim`, `fs-sor`, `lh-forrassor`, `fs-apparatus-alcim`, `space-utmutato-*`, `radius-panel`, `radius-kiemeles`; `panel`, `rule`, `accent`, `accent-soft`, `muted`); a literálok (`margin: 4px 0 14px`, `gap: 6px`, `gap: 2px 12px`, `min-width: 1.6rem`, `padding-left: 1.6rem`, `margin: 6px 0 2px`, `scroll-margin-top: 8px`, `text-underline-offset: 3px`) az M1.5 M, G, P kategóriájába tartoznak (lista-behúzás, belső sorköz, elem-közi margó).
 - **A regiszter:** az új elemek magyar névvel és állítható tulajdonsággal az M0 1.1 „M. BDB-jelentésszerkezet” részében (74–83. sor, F98.14), a felhasználó jóváhagyására várva; a `.jcim .he` / `.jel-vazlat .he` az 1.2 kizárt listájába került (állítható tulajdonsága nincs).
-- **Megjelenés:** a szó-lapok BDB-blokkja szándékosan változott (vázlat, jelentéscím, jelmagyarázat); az M1 megjelenés-azonossági mérését ezek a commitok nem érintik, mert az a 223efd45 állapotára vonatkozik. Új mérés ezekről a lapokról nem készült.
+- **Megjelenés:** a szó-lapok BDB-blokkja szándékosan változott (vázlat, jelentéscím, jelmagyarázat); az M1 megjelenés-azonossági mérését ezek a commitok nem érintik, mert az a cfa399e6 állapotára vonatkozik. Új mérés ezekről a lapokról nem készült.
 
-*Proveniencia:* `scope=git diff 84f211ed..ec98a5b2 -- eszkozok/olvaso_szerver/{konfig/arculat.json,statikus/olvaso.css,blokkok.py}; arculat.tartalom_hash(konfig/arculat.json @ec98a5b2 és @84f211ed) | forras=git, eszkozok/olvaso_szerver/arculat.py | ts=2026-10-15`
+*Proveniencia:* `scope=git diff 67d35334..33619789 -- eszkozok/olvaso_szerver/{konfig/arculat.json,statikus/olvaso.css,blokkok.py}; arculat.tartalom_hash(konfig/arculat.json @33619789 és @67d35334) | forras=git, eszkozok/olvaso_szerver/arculat.py | ts=2026-10-15`
 
 ## M2 — tervező mód és mentés
 
-*Modell: `claude-opus-5-5`. Ág: `claude/tervezo-mod`, alap `fa344619` (F98.14); commitok: `019e1c30` (F98.15) … `03acfcb0` (F98.20). Állapot: **kész, ⛔ M3 (a felhasználó kipróbálja)**.*
+*Modell: `claude-opus-5-5`. Ág: `claude/tervezo-mod`, alap `9e2e4af1` (F98.14); commitok: `67bbf736` (F98.15) … `10ff85d5` (F98.20). Állapot: **kész, ⛔ M3 (a felhasználó kipróbálja)**.*
 
 A felhasználó 2026-10-15-én a chatben jóváhagyta a regiszter 74–83. sorának magyar neveit (a 83. `jelentes-jelolo` sorral együtt); a `.jcim .he` / `.jel-vazlat .he` nem kap sort. A DT-F98a–f mind eldőlt (DT-F98f: (a)). Kérése volt még, hogy a `jt` (az F98.11 óta nem létező osztály) a végleges kizárt listára ne kerüljön, és az M0 1.2-ből is kikerüljön.
 
@@ -355,11 +355,11 @@ A Windows-os böngészőből a WSL-ben futó szerverhez érkező kérés a szerv
 
 ### M2.5 A szinkron-szkript (`arculat_szinkron.py`, F98.18)
 
-`python arculat_szinkron.py --kimenet <tokens.json> [--alap <a design system mostani tokens.json-ja>] [--datum …]`: a design system szerkezete (`color.themes/tokens`, `type.fonts/families/groups`, `spacing.tokens`, `radius.tokens`, `name`, `meta`). Az értékek mindig a token-fájlból; a leírás `--alap`-pal a design systemé, különben a regiszterből („Használja: <elemek>”); a vastagság a szerver stíluslapjából (az `oldalcim` 600, M0 5. szakasz 2.); az em-es betűméret relatív értékként jelölve (M0 5. szakasz 3.); a `spacing` a szerver 35 térköz-tokenje. Próbafutás a design system mostani `tokens.json`-jával (`--alap`, a session scratch-könyvtárában, a kimenet is ott): 10 szín, 54 betűstílus (a design system 4 csoportja 7 + 5 + 5 + 1 stílussal, plusz „Szerver: további stílusok” 36-tal), 35 térköz, 6 lekerekítés, `meta.ref = claude/tervezo-mod@fa344619`. Feltöltés nem történt (az a felhasználó kérésére).
+`python arculat_szinkron.py --kimenet <tokens.json> [--alap <a design system mostani tokens.json-ja>] [--datum …]`: a design system szerkezete (`color.themes/tokens`, `type.fonts/families/groups`, `spacing.tokens`, `radius.tokens`, `name`, `meta`). Az értékek mindig a token-fájlból; a leírás `--alap`-pal a design systemé, különben a regiszterből („Használja: <elemek>”); a vastagság a szerver stíluslapjából (az `oldalcim` 600, M0 5. szakasz 2.); az em-es betűméret relatív értékként jelölve (M0 5. szakasz 3.); a `spacing` a szerver 35 térköz-tokenje. Próbafutás a design system mostani `tokens.json`-jával (`--alap`, a session scratch-könyvtárában, a kimenet is ott): 10 szín, 54 betűstílus (a design system 4 csoportja 7 + 5 + 5 + 1 stílussal, plusz „Szerver: további stílusok” 36-tal), 35 térköz, 6 lekerekítés, `meta.ref = claude/tervezo-mod@9e2e4af1`. Feltöltés nem történt (az a felhasználó kérésére).
 
 ### M2.6 Megjelenés-azonosság
 
-Az M2 a stíluslaphoz (`olvaso.css`) és a token-fájlhoz (`arculat.json`) nem nyúlt, tehát a meglévő elemek számított stílusa nem változhatott. A lapok HTML-jét a HEAD (`fa344619`, `git archive` pillanatkép) és a munkafa szerverén vetettem össze (16 lap: kezdőlap, könyvlap, hibalap, `/1Moz/1` mindhárom nézetben, panelek, `/Zsolt/22`, `/Jan/1`, öt szó-lap, két töredék): **nyilvános és kereskedelmi kiadásban 16/16 lap bájtra azonos**; a belső kiadásban a két töredék azonos, a 14 teljes lapon csak a három tervező-sor új (`<button class="tervezo-kapcsolo" … hidden>`, a `tervezo.css` és a `tervezo.js` linkje). A belső kiadás fejlécében így egy új gomb jelenik meg (a szkript betöltése után), ez szándékos változás.
+Az M2 a stíluslaphoz (`olvaso.css`) és a token-fájlhoz (`arculat.json`) nem nyúlt, tehát a meglévő elemek számított stílusa nem változhatott. A lapok HTML-jét a HEAD (`9e2e4af1`, `git archive` pillanatkép) és a munkafa szerverén vetettem össze (16 lap: kezdőlap, könyvlap, hibalap, `/1Moz/1` mindhárom nézetben, panelek, `/Zsolt/22`, `/Jan/1`, öt szó-lap, két töredék): **nyilvános és kereskedelmi kiadásban 16/16 lap bájtra azonos**; a belső kiadásban a két töredék azonos, a 14 teljes lapon csak a három tervező-sor új (`<button class="tervezo-kapcsolo" … hidden>`, a `tervezo.css` és a `tervezo.js` linkje). A belső kiadás fejlécében így egy új gomb jelenik meg (a szkript betöltése után), ez szándékos változás.
 
 ### M2.7 Tesztek
 
@@ -371,13 +371,13 @@ Az M2 a stíluslaphoz (`olvaso.css`) és a token-fájlhoz (`arculat.json`) nem n
 | `teszt_pilot_aranymintaval.py` | 22 OK | 0 |
 | `teszt_olvaso_szerver.py` | 71 OK | 0 |
 
-A `teszt_szintek.py` `test_bdb_szocikk_minden_resze_alapbol_nyitva` tesztje a HEAD-en (`fa344619`) is bukott: a „Jelentésszerkezet” címtől 600 karakteren belül várta a `<details open>`-t, de az F98.11 óta előtte a vázlat (`nav.jel-vazlat`) áll. A teszt szándéka (a szakasz első lenyitható része nyitva) változatlan; az F98.20 ezt az ellenőrzést írja (a pillanatképen a hiba igazolva).
+A `teszt_szintek.py` `test_bdb_szocikk_minden_resze_alapbol_nyitva` tesztje a HEAD-en (`9e2e4af1`) is bukott: a „Jelentésszerkezet” címtől 600 karakteren belül várta a `<details open>`-t, de az F98.11 óta előtte a vázlat (`nav.jel-vazlat`) áll. A teszt szándéka (a szakasz első lenyitható része nyitva) változatlan; az F98.20 ezt az ellenőrzést írja (a pillanatképen a hiba igazolva).
 
 A brief tesztlistájából a **tartalék** kliensoldali része („a panel a tokenből jövő tulajdonságait kínálja, és az előnézet működik”) böngészőben, kézzel ellenőrzött (M2.4), nem automatikus teszt: a `pardes` venv-ben nincs fej nélküli böngésző. A szerveroldali fele (a térkép a `.he-szo .mf`-re a `fs-csempe-megj`-et adja, nem írhatóként) a `TestMentes.test_terkep`-ben automatikus.
 
 Az `eszkozok/feladatok.py ellenoriz`: 118 brief, 0 hiba, 0 figyelmeztetés.
 
-*Proveniencia:* `scope=eszkozok/olvaso_szerver/ @03acfcb0 (konfig/elemek.toml 34 541 B sha256 206de9651ad4e0a1; tervezo.py 27 546 B; tervezo_statikus/tervezo.js 27 582 B sha256 670c3863db5e9816; konfig/arculat.json változatlan, hash ed1326eb32081fbf), ~/pardes/pardes.db (ext4 másolat, a meta-kivonat az M1.6 szerint azonos), belso/nyilvanos/kereskedelmi kiadás | forras=unittest a pardes WSL .venv-jével (Python 3.12.3, Flask 3.1.3); regiszter_or.py; html_osszevet.py és head_szintek.sh (git archive fa344619) a session scratch-könyvtárában; a Claude desktop beépített böngészője (JavaScript-ellenőrzés, próbaszerver 8799, PARDES_KONFIG_DIR=/tmp/tz_konfig); arculat_szinkron.py a design system tokens.json-jával (verzió 1791995892-d37b, sha256 899439f5…) | ts=2026-10-15`
+*Proveniencia:* `scope=eszkozok/olvaso_szerver/ @10ff85d5 (konfig/elemek.toml 34 541 B sha256 206de9651ad4e0a1; tervezo.py 27 546 B; tervezo_statikus/tervezo.js 27 582 B sha256 670c3863db5e9816; konfig/arculat.json változatlan, hash ed1326eb32081fbf), ~/pardes/pardes.db (ext4 másolat, a meta-kivonat az M1.6 szerint azonos), belso/nyilvanos/kereskedelmi kiadás | forras=unittest a pardes WSL .venv-jével (Python 3.12.3, Flask 3.1.3); regiszter_or.py; html_osszevet.py és head_szintek.sh (git archive 9e2e4af1) a session scratch-könyvtárában; a Claude desktop beépített böngészője (JavaScript-ellenőrzés, próbaszerver 8799, PARDES_KONFIG_DIR=/tmp/tz_konfig); arculat_szinkron.py a design system tokens.json-jával (verzió 1791995892-d37b, sha256 899439f5…) | ts=2026-10-15`
 
 ### M2.8 Nyitott tételek az M3-hoz
 
