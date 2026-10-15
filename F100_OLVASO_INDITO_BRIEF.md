@@ -12,6 +12,8 @@ ad: egy közös indító-szkript, amelyet a három asztali parancsikon hív: le�
 kovetkezo: Te: merge után, a fő checkout main-re állításával a három parancsikon kipróbálása (M2.2 ⛔); utána az ütemezett feladat jóváhagyása (DT-F100b)
 olvas: [eszkozok/olvaso_szerver/README.md, eszkozok/olvaso_szerver/frissesseg.py, eszkozok/olvaso_szerver/manifest_pardes_db.tsv, eszkozok/olvaso_szerver/pyproject.toml]
 ir: [eszkozok/olvaso_szerver/indit.sh, eszkozok/olvaso_szerver/allapot.py, eszkozok/olvaso_szerver/alkalmazas.py, eszkozok/olvaso_szerver/oldalak.py, eszkozok/olvaso_szerver/sablonok/alap.html, eszkozok/olvaso_szerver/teszt_indito.py, eszkozok/olvaso_szerver/README.md, eszkozok/teszt_futtat.py, CLAUDE.md, .gitattributes, naplok/OLVASO_INDITO_M0_felmeres.md, naplok/OLVASO_INDITO_M1_merés.md, naplok/OLVASO_INDITO_M2_gepi_proba.md, naplok/ELLENOR_F100.md, DONTESEK.md, naplok/OLVASO_INDITO_zaras.md]
+pr: https://github.com/basesoft777/Bible-Study/pull/351
+lezarva_osszegzes: "Az olvasó-szerver automatikus indítása: indit.sh (régi példány leállítása, epites_ts-alapú atomi adatbázis-szinkron, stat-újratöltő), élő lábléc (ág, commit, építési idő, figyelmeztetés), teszt_futtat.py (WSL venv, natív PARDES_DB; a hat tesztfájl együtt 274,6 mp); M2.2 (parancsikonok kipróbálása) a merge és a fő checkout main-re állítása után."
 fugg: []
 nem_fugg: [76]
 ---
