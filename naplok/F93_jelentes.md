@@ -63,3 +63,18 @@ Nem eldönthető, mert hiányzó osztály: az `LXX.*` 9 sor (5 alapszám) nem ka
 ### 4. ⛔ Megállás
 
 A DT-F93a a `DONTESEK.md`-ben nyitott (a jelölés helye és a hatókör). Az M1 (szkript, lista) nem indult.
+
+## M1 — a lista és az osztályozás szabályai
+
+*(A végleges jelentés az M3-ban készül; ez a szakasz az M1 javítása után a szabályokat rögzíti. A lista: `naplok/F93_alapszamok.tsv`, a szkript: `eszkozok/f93_tipnr_token_hiany.py`.)*
+
+**Névegyeztetés** (a versen lévő token megkeresése): (1) TIPNR-azonosság: azonos névcímkéjű másik TIPNR-sor Strong-száma a vers tokenjei között; (2) glossz-egyezés: a token `Rövid jelentés` vagy `Angol tükörfordítás` mezője egyezik a névcímkével vagy a `Névváltozat` nagybetűs névalakjával. Az (1) csak akkor erős, ha a token glosszája a névalakot is támogatja; ha nem (pl. H0415 `LORD` ↔ H0410 `God`/`El`), az indoklás ezt kimondja, és jelölés nélküli sorban az eredmény „nem eldönthető”. Az, hogy a versen más nevű token van, nem bizonyíték.
+
+**Vegyes sorú alapszám:** ha egy alapszám több TIPNR-sora versenként eltérő osztályba esik (pl. a H3482, H3159 típusú népnévi alakok), az alapszám „nem eldönthető”, és az indoklás felsorolja a sorok osztályait; csak az azonos osztályú sorok alapszáma kapja azt az osztályt. (A javított futásban nincs ilyen alapszám.)
+
+**A javított M0/M1 esetek.**
+- G4566 (Satan, 2Kor 12:7): a versen G4567 σατανᾶ token áll, glosszája `Satan`; a korábbi „adathiány” a TIPNR-sorokra épült (G4567 nincs a vers TIPNR-soraiban). Új osztály: alak-/névhasítás.
+- G2179 (Ephesus, Jel 2:1): G2181 token, `Kritikai kiadás` NA28+NA27+Tyn+SBL+WH+Treg+Byz (TR nélkül) → szövegváltozat, jelölés nélkül is.
+- H3072 (LORD): a korábbi „azonos nevű” állítás hamis volt (H6664 `[is] righteousness`); most az indoklás azonos *névcímkéről* beszél, és kimondja, hogy a token glosszája nem egyezik a névalakkal.
+
+**DT-F93b (a felhasználó döntése, 2026-10-15, chat).** A TAHOT-nak nincs `Kritikai kiadás` mezője, ezért a héber „szövegváltozat” osztály megszűnt. Új osztályok héberre: „fordítási névalak” (csak ESV/KJV/NIV/ASV jelölés, a versen a névhez illő token), „ketiv/qere” (LK/LQ/Mss jelölés, ha a TAHOT a versen ketiv/qere-jelölést hordoz). A TAHOT-kivonat egy sorában sincs ketiv/qere-jelölés (a `TAHOT_TAGNT_README.md` szerint a ketiv/qere-illesztési üres helyőrzőket a kivonat kihagyja), ezért a „ketiv/qere” osztály üres, és az LK/LQ/Mss sorok „nem eldönthető”-k: az LK/LQ jelentését a repó nem rögzíti. A G3 (`Kritikai kiadás` mező) csak a görög „szövegváltozat” sorokra vonatkozik.
