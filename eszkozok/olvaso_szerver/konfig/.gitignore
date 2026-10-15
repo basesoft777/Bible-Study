@@ -1,0 +1,4 @@
+# A tervező mód mentése (#98 M2): az előző állapot (visszaállításhoz) és az atomi írás ideiglenes fájljai — helyiek, nem verziózzuk.
+# A mentett token-fájl (arculat.json) változása a git-diffben látszik; a commitot a végrehajtó vagy a felhasználó készíti.
+arculat.json.elozo
+.arculat.json.*.tmp

@@ -6,11 +6,14 @@ tipus: feladat
 fazis: 1
 modell: opus
 munka: folyamat
-allapot: nem_indult
+allapot: lezarva
+ag: claude/tervezo-mod
 ad: tervező mód a belső kiadásban: elem kiválasztása a futó felületen, csak az elem tulajdonságai magyar néven, azonnali előnézet, „Küldés a szerverre” külön gombbal egy arculati token-fájlba; elem-regiszter és regiszter-őr teszt, tartalék a regisztrálatlan elemekre; a méretek változókra cserélve, a megjelenés változatlan; szinkron-kimenet a design systemhez
-kovetkezo: "/kovetkezo; ⛔ M0 (az elem-regiszter és a token-fájl formája), ⛔ M3 (a felhasználó kipróbálja)"
+kovetkezo: "Lezárva; merge a felhasználótól (draft PR). Nyitva: DT-F98g (a helyi-kérés feltétel alapértelmezett nginx mögött); utána a #76 M3"
 olvas: [F76_OLVASOI_KONKORDANCIA_BRIEF.md, eszkozok/olvaso_szerver/README.md, eszkozok/olvaso_szerver/statikus/olvaso.css, eszkozok/olvaso_szerver/sablonok/alap.html, eszkozok/olvaso_szerver/alkalmazas.py, eszkozok/olvaso_szerver/hozzaferes.py, eszkozok/olvaso_szerver/konfig/szerver.toml, naplok/OLVASOI_KONKORDANCIA_M0.md]
 ir: [eszkozok/olvaso_szerver/, naplok/TERVEZO_MOD_M0.md, naplok/TERVEZO_MOD_zaras.md]
+pr: https://github.com/basesoft777/Bible-Study/pull/349
+lezarva_osszegzes: "Tervező mód a belső kiadásban: 83 elemes regiszter (elemek.toml), regiszter-őr (sablonok, blokkok, kliens classList; a néma minták hibát adnak), token-fájl (arculat.json) /arculat.css?v=<hash> útvonallal, mentési végpont (helyi kérés, egyszeri kód, értékszűrés, atomi írás, előző állapot), kliens (tervezo.js), szinkron-szkript; a megjelenés-azonosság 0 eltérés (M1). Független ellenőr: 5 eltérés, a 3 kisebb javítva (F98.23–F98.25), a proxy-kérdés DT-F98g-ként nyitva; az F98.9/F98.11–13 BDB-jelentésszerkezet a felhasználó külön munkája az ágon. Tesztek: 48+22+13+22+71 OK. Napló: naplok/TERVEZO_MOD_zaras.md, Zárás."
 fugg: []
 nem_fugg: [76]
 ---

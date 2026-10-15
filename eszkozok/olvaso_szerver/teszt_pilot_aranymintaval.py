@@ -399,8 +399,11 @@ class TestPilotAranymintaval(unittest.TestCase):
         self.assertIn("getElementById('jeloles')", js)
         self.assertIn("setAttribute('data-tema'", js)
         self.assertIn('.nincs-jeloles .szo', css)
-        self.assertIn(':root[data-tema="dark"]', css)
-        self.assertIn(':root:not([data-tema="light"])', css)
+        # a téma-blokkok a token-fájlból generált token-blokkban (#98 M1, DT-F98e; /arculat.css), nem az olvaso.css-ben
+        import arculat
+        blokk = arculat.Arculat.betolt().css
+        self.assertIn(':root[data-tema="dark"]', blokk)
+        self.assertIn(':root:not([data-tema="light"])', blokk)
 
     def test_interlinearis_csempek_a_pilot_heber_csempei_szerint(self):
         """F76.30: az Interlineáris nézet szavai csempék: magyar szó, alatta az eredeti, átírás, angol tükörfordítás, Strong (a pilot héber-csempe adata)."""

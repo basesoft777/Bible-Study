@@ -1,0 +1,1021 @@
+# Az elem-regiszter (#98 M2): a tervező módban kiválasztható elemek, a magyar nevük és az állítható tulajdonságaik.
+#
+# Forrás: naplok/TERVEZO_MOD_M0.md 1.1 (A–L: 1–73. sor, a felhasználó jóváhagyása 2026-10-14; M: 74–83. sor, 2026-10-15).
+# Egy [[elem]]: id (kisbetű, szám, kötőjel), nev (magyar név), csoport, szelektor (CSS), tulajdonsag (magyar név → token).
+# A token a CSS-változó neve `--` nélkül: szín (bg, panel, fg, muted, rule, accent, accent-soft, gold, gold-soft, low),
+# fs-* (betűméret), lh-* (sorköz), space-* (térköz), radius-* (lekerekítés); a token-fájl: konfig/arculat.json.
+# A tulajdonság típusa a tokenből jön (szín → palettaminta, hossz és sorköz → csúszka). Csak az itt szereplő tokenek
+# írhatók a mentési végponton (tervezo.py). A betűcsalád (font-*) nem állítható.
+#
+# A [kizart] tábla: a felület azon osztályai, amelyek egyetlen szelektorban sem szerepelnek, mert tisztán szerkezetiek
+# (osztály = "indok"). A regiszter-őr (regiszter_or.py, teszt_tervezo.py) ellenőrzi, hogy a felület minden osztálya vagy egy
+# szelektorban, vagy itt áll; az itteni osztály a felületen előfordul, és egyetlen szelektorban sem szerepel.
+
+# ---------------------------------------------------------------------------------------------------------------------
+# A. Fejléc
+# ---------------------------------------------------------------------------------------------------------------------
+[[elem]]
+id = "fejlec"
+nev = "Fejléc sávja"
+csoport = "Fejléc"
+szelektor = ".fejlec"
+tulajdonsag = [
+  { nev = "Alsó vonal színe", token = "rule" },
+  { nev = "Függőleges belső térköz", token = "space-fejlec-fugg" },
+  { nev = "Oldalmargó", token = "space-oldal" },
+  { nev = "Sorok közti köz", token = "space-fejlec-sor" },
+  { nev = "Elemek közti köz", token = "space-fejlec-oszlop" },
+]
+
+[[elem]]
+id = "logo"
+nev = "Logó („PaRDeS olvasó”)"
+csoport = "Fejléc"
+szelektor = ".logo"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-logo" },
+  { nev = "Szín", token = "fg" },
+]
+
+[[elem]]
+id = "nezetvalto"
+nev = "Nézetváltó gomb"
+csoport = "Fejléc"
+szelektor = ".nezetvalto a"
+tulajdonsag = [
+  { nev = "Szövegszín", token = "accent" },
+  { nev = "Keret színe", token = "rule" },
+  { nev = "Lekerekítés", token = "radius-csempe" },
+  { nev = "Belső térköz (függőleges)", token = "space-gomb-fugg" },
+  { nev = "Belső térköz (vízszintes)", token = "space-gomb-vizsz" },
+  { nev = "Gombok közti köz", token = "space-gombsor" },
+]
+
+[[elem]]
+id = "nezetvalto-aktiv"
+nev = "Nézetváltó gomb (aktív)"
+csoport = "Fejléc"
+szelektor = ".nezetvalto a.aktiv"
+tulajdonsag = [
+  { nev = "Háttér", token = "accent" },
+  { nev = "Szöveg", token = "bg" },
+]
+
+[[elem]]
+id = "szintvalto"
+nev = "Szintváltó gomb"
+csoport = "Fejléc"
+szelektor = ".szintvalto a"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-gomb" },
+  { nev = "Keret színe", token = "rule" },
+  { nev = "Lekerekítés", token = "radius-csempe" },
+]
+
+[[elem]]
+id = "szintvalto-aktiv"
+nev = "Szintváltó gomb (aktív)"
+csoport = "Fejléc"
+szelektor = ".szintvalto a.aktiv"
+tulajdonsag = [
+  { nev = "Háttér", token = "fg" },
+  { nev = "Szöveg", token = "bg" },
+]
+
+[[elem]]
+id = "szint-cim"
+nev = "Szintváltó felirat („Szint”)"
+csoport = "Fejléc"
+szelektor = ".szint-cim"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-gomb-kis" },
+  { nev = "Szín", token = "muted" },
+]
+
+[[elem]]
+id = "tema"
+nev = "Témaváltó gomb"
+csoport = "Fejléc"
+szelektor = ".tema button"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-gomb-kis" },
+  { nev = "Háttér", token = "panel" },
+  { nev = "Szöveg", token = "fg" },
+  { nev = "Keret", token = "rule" },
+  { nev = "Lekerekítés", token = "radius-csempe" },
+]
+
+[[elem]]
+id = "tema-aktiv"
+nev = "Témaváltó gomb (aktív)"
+csoport = "Fejléc"
+szelektor = '.tema button[aria-pressed="true"]'
+tulajdonsag = [
+  { nev = "Háttér", token = "accent" },
+  { nev = "Szöveg", token = "bg" },
+]
+
+# ---------------------------------------------------------------------------------------------------------------------
+# B. Oldal és keret
+# ---------------------------------------------------------------------------------------------------------------------
+[[elem]]
+id = "oldal"
+nev = "Oldal alapja"
+csoport = "Oldal és keret"
+szelektor = "body"
+tulajdonsag = [
+  { nev = "Háttér", token = "bg" },
+  { nev = "Szövegszín", token = "fg" },
+  { nev = "Alap betűméret", token = "fs-torzs" },
+  { nev = "Alap sorköz", token = "lh-torzs" },
+]
+
+[[elem]]
+id = "tartalom"
+nev = "Tartalom-terület"
+csoport = "Oldal és keret"
+szelektor = ".tartalom"
+tulajdonsag = [
+  { nev = "Felső belső térköz", token = "space-tartalom-fent" },
+  { nev = "Oldalmargó", token = "space-oldal" },
+  { nev = "Alsó belső térköz", token = "space-tartalom-lent" },
+]
+
+[[elem]]
+id = "labjegyzet"
+nev = "Lábjegyzet (kiadás, építés ideje)"
+csoport = "Oldal és keret"
+szelektor = ".labjegyzet"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-megjegyzes" },
+  { nev = "Szín", token = "muted" },
+  { nev = "Felső vonal", token = "rule" },
+  { nev = "Függőleges belső térköz", token = "space-labjegyzet-fugg" },
+]
+
+[[elem]]
+id = "lapcim"
+nev = "Lapcím"
+csoport = "Oldal és keret"
+szelektor = "h1"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-oldalcim" },
+  { nev = "Sorköz", token = "lh-oldalcim" },
+  { nev = "Szín", token = "fg" },
+]
+
+[[elem]]
+id = "szakaszcim"
+nev = "Szakaszcím (kezdőlap: Ószövetség/Újszövetség)"
+csoport = "Oldal és keret"
+szelektor = "h2:not(.szocim):not(.igehely)"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-szakaszcim" },
+]
+
+[[elem]]
+id = "hivatkozas"
+nev = "Hivatkozás (általános)"
+csoport = "Oldal és keret"
+szelektor = "a"
+tulajdonsag = [
+  { nev = "Szín", token = "accent" },
+]
+
+[[elem]]
+id = "valaszto"
+nev = "Könyv–fejezet–vers választó felirata"
+csoport = "Oldal és keret"
+szelektor = ".valaszto label"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-megjegyzes" },
+  { nev = "Szín", token = "muted" },
+  { nev = "Mezők közti köz (sorok)", token = "space-valaszto-sor" },
+  { nev = "Mezők közti köz (oszlopok)", token = "space-valaszto-oszlop" },
+]
+
+[[elem]]
+id = "megjegyzes"
+nev = "Megjegyzés, szám, címke (szürke apró szöveg)"
+csoport = "Oldal és keret"
+szelektor = ".megj, .szam, .cimke:not(.cimkek .cimke)"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-megjegyzes" },
+  { nev = "Szín", token = "muted" },
+]
+
+[[elem]]
+id = "ures"
+nev = "Üres eredmény jelzése"
+csoport = "Oldal és keret"
+szelektor = ".ures"
+tulajdonsag = [
+  { nev = "Szín", token = "muted" },
+]
+
+# ---------------------------------------------------------------------------------------------------------------------
+# C. Fejezet-lap fölső része
+# ---------------------------------------------------------------------------------------------------------------------
+[[elem]]
+id = "szamlalo"
+nev = "Számláló címke"
+csoport = "Fejezet-lap fölső része"
+szelektor = ".cimkek .cimke"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-szamlalo" },
+  { nev = "Háttér", token = "accent-soft" },
+  { nev = "Szöveg", token = "accent" },
+  { nev = "Lekerekítés", token = "radius-pill" },
+  { nev = "Belső térköz (függőleges)", token = "space-szamlalo-fugg" },
+  { nev = "Belső térköz (vízszintes)", token = "space-szamlalo-vizsz" },
+  { nev = "Címkék közti köz", token = "space-cimkesor" },
+]
+
+[[elem]]
+id = "szamlalo-arany"
+nev = "Számláló címke: hiányos fordítás (arany)"
+csoport = "Fejezet-lap fölső része"
+szelektor = ".cimkek .cimke.arany"
+tulajdonsag = [
+  { nev = "Háttér", token = "gold-soft" },
+  { nev = "Szöveg és keret", token = "gold" },
+]
+
+[[elem]]
+id = "utmutato"
+nev = "Útmutató doboz („Hogyan olvasd…”)"
+csoport = "Fejezet-lap fölső része"
+szelektor = ".utmutato"
+tulajdonsag = [
+  { nev = "Háttér", token = "panel" },
+  { nev = "Keret", token = "rule" },
+  { nev = "Lekerekítés", token = "radius-panel" },
+  { nev = "Betűméret", token = "fs-utmutato" },
+  { nev = "Belső térköz (függőleges)", token = "space-utmutato-fugg" },
+  { nev = "Belső térköz (vízszintes)", token = "space-utmutato-vizsz" },
+]
+
+[[elem]]
+id = "szoveg-jegy"
+nev = "Szövegoszlop jegyzete (jelleg és forrás a szöveg fölött)"
+csoport = "Fejezet-lap fölső része"
+szelektor = ".szoveg-jegy"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-szoveg-jegy" },
+  { nev = "Sorköz", token = "lh-szoveg-jegy" },
+  { nev = "Szín", token = "muted" },
+  { nev = "Keret", token = "rule" },
+  { nev = "Lekerekítés", token = "radius-csempe" },
+]
+
+[[elem]]
+id = "kapcs"
+nev = "Kapcsoló („Kapcsolt szavak jelölése”)"
+csoport = "Fejezet-lap fölső része"
+szelektor = ".kapcs"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-megjegyzes" },
+  { nev = "Szín", token = "muted" },
+]
+
+# ---------------------------------------------------------------------------------------------------------------------
+# D. Folyó szöveg (Olvasópult, Munkaasztal)
+# ---------------------------------------------------------------------------------------------------------------------
+[[elem]]
+id = "karoli-folyo"
+nev = "Folyó Károli-szöveg"
+csoport = "Folyó szöveg"
+szelektor = ".szoveg-oszlop"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-karoli-folyo" },
+  { nev = "Sorköz", token = "lh-karoli-folyo" },
+  { nev = "Betűméret mobilon", token = "fs-karoli-folyo-mobil" },
+  { nev = "Sorköz mobilon", token = "lh-karoli-folyo-mobil" },
+  { nev = "Szín", token = "fg" },
+]
+
+[[elem]]
+id = "versszam"
+nev = "Versszám"
+csoport = "Folyó szöveg"
+szelektor = ".versszam"
+tulajdonsag = [
+  { nev = "Betűméret (a szöveghez viszonyítva)", token = "fs-versszam" },
+  { nev = "Szín", token = "accent" },
+]
+
+[[elem]]
+id = "kotott-szo"
+nev = "Kötött szó (pontozott aláhúzás)"
+csoport = "Folyó szöveg"
+szelektor = ".szo"
+tulajdonsag = [
+  { nev = "Aláhúzás színe", token = "muted" },
+  { nev = "Rámutatáskor háttér", token = "accent-soft" },
+  { nev = "Rámutatáskor aláhúzás", token = "accent" },
+  { nev = "Lekerekítés", token = "radius-szo" },
+]
+
+[[elem]]
+id = "kotott-szo-alacsony"
+nev = "Kötött szó: nem „magas” bizonyosság"
+csoport = "Folyó szöveg"
+szelektor = ".szo.par-alacsony"
+tulajdonsag = [
+  { nev = "Aláhúzás színe", token = "low" },
+]
+
+[[elem]]
+id = "kijelolt-vers"
+nev = "Kijelölt vers"
+csoport = "Folyó szöveg"
+szelektor = ".vers.kijelolt, .il-vers.kijelolt"
+tulajdonsag = [
+  { nev = "Háttér", token = "accent-soft" },
+  { nev = "Lekerekítés", token = "radius-kiemeles" },
+]
+
+[[elem]]
+id = "verslista"
+nev = "Verslista (Munkaasztal)"
+csoport = "Folyó szöveg"
+szelektor = ".verslista"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-megjegyzes" },
+  { nev = "Elválasztó", token = "rule" },
+  { nev = "Aktív sor háttere", token = "accent-soft" },
+]
+
+# ---------------------------------------------------------------------------------------------------------------------
+# E. Jobb oldali panel
+# ---------------------------------------------------------------------------------------------------------------------
+[[elem]]
+id = "jobb-panel"
+nev = "Jobb oldali panel"
+csoport = "Jobb oldali panel"
+szelektor = ".jobb-oszlop"
+tulajdonsag = [
+  { nev = "Háttér", token = "panel" },
+  { nev = "Keret", token = "rule" },
+  { nev = "Lekerekítés", token = "radius-panel" },
+  { nev = "Betűméret", token = "fs-panel" },
+  { nev = "Függőleges belső térköz", token = "space-panel-fugg" },
+]
+
+[[elem]]
+id = "ful"
+nev = "Fül („Szó” / „Vers részletei”)"
+csoport = "Jobb oldali panel"
+szelektor = ".ful"
+tulajdonsag = [
+  { nev = "Keret", token = "rule" },
+  { nev = "Lekerekítés", token = "radius-csempe" },
+]
+
+[[elem]]
+id = "ful-aktiv"
+nev = "Fül (aktív)"
+csoport = "Jobb oldali panel"
+szelektor = ".ful.aktiv"
+tulajdonsag = [
+  { nev = "Háttér", token = "accent" },
+  { nev = "Szöveg", token = "bg" },
+]
+
+[[elem]]
+id = "vers-panel-cim"
+nev = "Vers-panel címe (igehely)"
+csoport = "Jobb oldali panel"
+szelektor = "h2.igehely"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-igehely" },
+]
+
+[[elem]]
+id = "karoli-panel"
+nev = "A vers Károli-szövege a panelen"
+csoport = "Jobb oldali panel"
+szelektor = ".karoli-szoveg"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-karoli-panel" },
+  { nev = "Sorköz", token = "lh-karoli-panel" },
+]
+
+# ---------------------------------------------------------------------------------------------------------------------
+# F. Blokk (minden blokk közös keretei)
+# ---------------------------------------------------------------------------------------------------------------------
+[[elem]]
+id = "blokk"
+nev = "Blokk"
+csoport = "Blokk"
+szelektor = ".blokk"
+tulajdonsag = [
+  { nev = "Elválasztó vonal", token = "rule" },
+  { nev = "Két blokk közti köz", token = "space-blokkkoz" },
+]
+
+[[elem]]
+id = "blokkcim"
+nev = "Blokkcím"
+csoport = "Blokk"
+szelektor = ".blokk h3"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-blokkcim" },
+  { nev = "Sorköz", token = "lh-blokkcim" },
+]
+
+[[elem]]
+id = "jelleg"
+nev = "Jelleg-címke (közös forma)"
+csoport = "Blokk"
+szelektor = ".jelleg"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-jelleg" },
+  { nev = "Lekerekítés", token = "radius-pill" },
+  { nev = "Belső térköz (függőleges)", token = "space-jelleg-fugg" },
+  { nev = "Belső térköz (vízszintes)", token = "space-jelleg-vizsz" },
+]
+
+[[elem]]
+id = "jelleg-forras"
+nev = "Jelleg-címke: forrásadat"
+csoport = "Blokk"
+szelektor = ".jelleg-forras"
+tulajdonsag = [
+  { nev = "Szöveg és keret", token = "accent" },
+]
+
+[[elem]]
+id = "jelleg-gepi"
+nev = "Jelleg-címke: gépi feldolgozás"
+csoport = "Blokk"
+szelektor = ".jelleg-gepi"
+tulajdonsag = [
+  { nev = "Szöveg", token = "muted" },
+  { nev = "Keret", token = "rule" },
+]
+
+[[elem]]
+id = "jelleg-modell"
+nev = "Jelleg-címke: modell-kimenet"
+csoport = "Blokk"
+szelektor = ".jelleg-modell"
+tulajdonsag = [
+  { nev = "Szöveg és keret", token = "gold" },
+  { nev = "Háttér", token = "gold-soft" },
+]
+
+[[elem]]
+id = "forrassor"
+nev = "Forrássor (forrás és licenc a blokk alatt)"
+csoport = "Blokk"
+szelektor = ".forras, .forrasnev"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-forrassor" },
+  { nev = "Sorköz", token = "lh-forrassor" },
+  { nev = "Szín", token = "muted" },
+]
+
+[[elem]]
+id = "adattabla"
+nev = "Adattábla (Nave, TSK, TIPNR …)"
+csoport = "Blokk"
+szelektor = "table.adat"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-adat-tabla" },
+  { nev = "Sorvonal", token = "rule" },
+  { nev = "Fejléc színe", token = "muted" },
+]
+
+[[elem]]
+id = "igehely-link"
+nev = "Igehely-hivatkozás a blokkokban"
+csoport = "Blokk"
+szelektor = "a.igehely"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-igehely" },
+]
+
+# ---------------------------------------------------------------------------------------------------------------------
+# G. Vers részletei: héber szócsempék
+# ---------------------------------------------------------------------------------------------------------------------
+[[elem]]
+id = "heber-sor"
+nev = "Héber szósor"
+csoport = "Vers részletei: héber szócsempék"
+szelektor = ".heber-sor"
+tulajdonsag = [
+  { nev = "Csempék közti köz", token = "space-he-sor" },
+]
+
+[[elem]]
+id = "he-szo"
+nev = "Héber szócsempe"
+csoport = "Vers részletei: héber szócsempék"
+szelektor = ".he-szo"
+tulajdonsag = [
+  { nev = "Háttér", token = "bg" },
+  { nev = "Keret", token = "rule" },
+  { nev = "Lekerekítés", token = "radius-csempe" },
+  { nev = "Belső térköz (függőleges)", token = "space-he-csempe-fugg" },
+  { nev = "Belső térköz (vízszintes)", token = "space-he-csempe-vizsz" },
+  { nev = "Legkisebb szélesség", token = "space-he-csempe-min" },
+]
+
+[[elem]]
+id = "he-szo-heber"
+nev = "Héber szócsempe: héber szó"
+csoport = "Vers részletei: héber szócsempék"
+szelektor = ".he-szo .he"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-csempe-heber" },
+  { nev = "Sorköz", token = "lh-csempe" },
+]
+
+[[elem]]
+id = "he-szo-glossza"
+nev = "Héber szócsempe: átírás és glossza"
+csoport = "Vers részletei: héber szócsempék"
+szelektor = ".he-szo .at, .he-szo .gl"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-csempe-glossza" },
+  { nev = "Átírás színe", token = "muted" },
+]
+
+[[elem]]
+id = "strong-szam"
+nev = "Strong-szám (csempéken és az LXX-soron)"
+csoport = "Vers részletei: héber szócsempék"
+szelektor = ".he-szo .st, .ang-csempe .st, .ang-csempe .st-link, .lxx-sor small"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-strong-szam" },
+  { nev = "Szín", token = "muted" },
+]
+
+[[elem]]
+id = "he-szo-lxx"
+nev = "Héber szócsempe: görög (LXX) megfelelő"
+csoport = "Vers részletei: héber szócsempék"
+szelektor = ".he-szo .lx"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-csempe-lxx" },
+  { nev = "Szín", token = "accent" },
+  { nev = "Elválasztó", token = "rule" },
+]
+
+# ---------------------------------------------------------------------------------------------------------------------
+# H. LXX-sor és angol csempék
+# ---------------------------------------------------------------------------------------------------------------------
+[[elem]]
+id = "lxx-sor"
+nev = "LXX-sor (Septuaginta)"
+csoport = "LXX-sor és angol csempék"
+szelektor = ".lxx-sor"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-lxx-sor" },
+  { nev = "Sorköz", token = "lh-lxx-sor" },
+  { nev = "Csempék közti köz (függőleges)", token = "space-lxx-sor-fugg" },
+  { nev = "Csempék közti köz (vízszintes)", token = "space-lxx-sor-vizsz" },
+]
+
+[[elem]]
+id = "lxx-csempe"
+nev = "LXX-csempe (kattintható görög szó)"
+csoport = "LXX-sor és angol csempék"
+szelektor = ".lxx-sor .gk"
+tulajdonsag = [
+  { nev = "Háttér", token = "bg" },
+  { nev = "Keret", token = "rule" },
+  { nev = "Szöveg", token = "accent" },
+  { nev = "Lekerekítés", token = "radius-kis-csempe" },
+  { nev = "Belső térköz (függőleges)", token = "space-kis-csempe-fugg" },
+  { nev = "Belső térköz (vízszintes)", token = "space-lxx-csempe-vizsz" },
+]
+
+[[elem]]
+id = "ang-csempe"
+nev = "Angol szócsempe"
+csoport = "LXX-sor és angol csempék"
+szelektor = ".ang-csempe"
+tulajdonsag = [
+  { nev = "Háttér", token = "bg" },
+  { nev = "Keret", token = "rule" },
+  { nev = "Lekerekítés", token = "radius-kis-csempe" },
+  { nev = "Betűméret", token = "fs-angol-szo" },
+  { nev = "Belső térköz (függőleges)", token = "space-kis-csempe-fugg" },
+  { nev = "Belső térköz (vízszintes)", token = "space-ang-csempe-vizsz" },
+]
+
+# ---------------------------------------------------------------------------------------------------------------------
+# I. Interlineáris
+# ---------------------------------------------------------------------------------------------------------------------
+[[elem]]
+id = "il-csempe"
+nev = "Interlineáris csempe"
+csoport = "Interlineáris"
+szelektor = ".il-szo"
+tulajdonsag = [
+  { nev = "Háttér", token = "bg" },
+  { nev = "Keret", token = "rule" },
+  { nev = "Lekerekítés", token = "radius-csempe" },
+  { nev = "Betűméret", token = "fs-il-csempe" },
+  { nev = "Belső térköz (függőleges)", token = "space-il-csempe-fugg" },
+  { nev = "Belső térköz (vízszintes)", token = "space-il-csempe-vizsz" },
+  { nev = "Csempék közti köz (függőleges)", token = "space-il-sor-fugg" },
+  { nev = "Csempék közti köz (vízszintes)", token = "space-il-sor-vizsz" },
+]
+
+[[elem]]
+id = "il-magyar"
+nev = "Interlineáris: magyar szó"
+csoport = "Interlineáris"
+szelektor = ".il-szo .hu"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-il-magyar" },
+  { nev = "Sorköz", token = "lh-il-magyar" },
+]
+
+[[elem]]
+id = "il-eredeti"
+nev = "Interlineáris: eredeti szó (héber / görög)"
+csoport = "Interlineáris"
+szelektor = ".il-szo .heb, .il-szo .gor"
+tulajdonsag = [
+  { nev = "Héber betűméret", token = "fs-il-heber" },
+  { nev = "Görög betűméret", token = "fs-il-gorog" },
+  { nev = "Sorköz", token = "lh-csempe" },
+]
+
+[[elem]]
+id = "il-apro"
+nev = "Interlineáris: átírás, glossza, Strong-szám"
+csoport = "Interlineáris"
+szelektor = ".il-szo .at, .il-szo .gl, .il-szo .st"
+tulajdonsag = [
+  { nev = "Átírás", token = "fs-il-atiras" },
+  { nev = "Glossza", token = "fs-il-glossza" },
+  { nev = "Strong-szám", token = "fs-il-strong" },
+  { nev = "Szín", token = "muted" },
+]
+
+# ---------------------------------------------------------------------------------------------------------------------
+# J. Szó-lap fejléce
+# ---------------------------------------------------------------------------------------------------------------------
+[[elem]]
+id = "szocim"
+nev = "Szó-lap címszava"
+csoport = "Szó-lap fejléce"
+szelektor = ".szocim"
+tulajdonsag = [
+  { nev = "Héber betűméret", token = "fs-szocim-heber" },
+  { nev = "Görög betűméret", token = "fs-szocim-gorog" },
+  { nev = "Sorköz (héber)", token = "lh-szocim-heber" },
+  { nev = "Sorköz (görög)", token = "lh-szocim-gorog" },
+]
+
+[[elem]]
+id = "szoalcim"
+nev = "Szó-lap alcíme (átírás, jelentés)"
+csoport = "Szó-lap fejléce"
+szelektor = ".szoalcim"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-szoalcim" },
+  { nev = "Szín", token = "muted" },
+]
+
+[[elem]]
+id = "alapjel"
+nev = "Alapjelentés (szó-lap fejléc)"
+csoport = "Szó-lap fejléce"
+szelektor = ".alapjel"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-alapjelentes" },
+  { nev = "Sorköz", token = "lh-alapjelentes" },
+]
+
+[[elem]]
+id = "fcim"
+nev = "Kis nagybetűs felirat („Alapjelentés”, „Forrás”)"
+csoport = "Szó-lap fejléce"
+szelektor = ".fcim"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-forrascim" },
+  { nev = "Szín", token = "accent" },
+]
+
+# ---------------------------------------------------------------------------------------------------------------------
+# K. BDB-apparátus
+# ---------------------------------------------------------------------------------------------------------------------
+[[elem]]
+id = "app-cim"
+nev = "Apparátus szakaszcím (nagybetűs)"
+csoport = "BDB-apparátus"
+szelektor = ".app h4"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-apparatus-cim" },
+  { nev = "Szín", token = "accent" },
+]
+
+[[elem]]
+id = "app-alcim"
+nev = "Apparátus törzscím (Qal, Nif'ál …)"
+csoport = "BDB-apparátus"
+szelektor = ".torzs h5, .app h5"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-apparatus-alcim" },
+  { nev = "Sorköz", token = "lh-apparatus-alcim" },
+]
+
+[[elem]]
+id = "szocikk"
+nev = "Szócikk-szöveg"
+csoport = "BDB-apparátus"
+szelektor = ".jsz, .szoveg"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-szocikk" },
+  { nev = "Sorköz", token = "lh-szocikk" },
+]
+
+[[elem]]
+id = "helyek"
+nev = "Helyszám-címke"
+csoport = "BDB-apparátus"
+szelektor = ".helyek"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-helyszam" },
+  { nev = "Háttér", token = "bg" },
+  { nev = "Keret", token = "rule" },
+  { nev = "Lekerekítés", token = "radius-pill" },
+]
+
+[[elem]]
+id = "cimszo-heber"
+nev = "Apparátus címszó (héber)"
+csoport = "BDB-apparátus"
+szelektor = ".cimszo .he"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-cimszo-heber" },
+]
+
+[[elem]]
+id = "allapot"
+nev = "Fordítás-állapot („Lefordítva …”)"
+csoport = "BDB-apparátus"
+szelektor = ".allapot"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-allapot" },
+  { nev = "Háttér", token = "gold-soft" },
+  { nev = "Szöveg", token = "gold" },
+  { nev = "Lekerekítés", token = "radius-pill" },
+]
+
+[[elem]]
+id = "allapot-folyamat"
+nev = "Fordítás-állapot: nincs fordítás"
+csoport = "BDB-apparátus"
+szelektor = ".allapot.folyamat"
+tulajdonsag = [
+  { nev = "Háttér", token = "panel" },
+  { nev = "Keret", token = "rule" },
+  { nev = "Szöveg", token = "muted" },
+]
+
+[[elem]]
+id = "jel-cimke"
+nev = "Irodalmi és szövegkritikai jel"
+csoport = "BDB-apparátus"
+szelektor = ".jel-cimke"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-jel-cimke" },
+  { nev = "Keret", token = "rule" },
+  { nev = "Lekerekítés", token = "radius-kiemeles" },
+]
+
+[[elem]]
+id = "jel-cimke-krit"
+nev = "Szövegkritikai jel (arany)"
+csoport = "BDB-apparátus"
+szelektor = ".jel-cimke.krit"
+tulajdonsag = [
+  { nev = "Szöveg és keret", token = "gold" },
+]
+
+# ---------------------------------------------------------------------------------------------------------------------
+# L. Egyéb blokk-elemek
+# ---------------------------------------------------------------------------------------------------------------------
+[[elem]]
+id = "ubs"
+nev = "UBS-jelentés sora"
+csoport = "Egyéb blokk-elemek"
+szelektor = ".ubs"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-ubs" },
+  { nev = "Bal oldali vonal", token = "accent" },
+  { nev = "Domén színe", token = "accent" },
+]
+
+[[elem]]
+id = "parsor"
+nev = "Párlista sora (héber–görög párok)"
+csoport = "Egyéb blokk-elemek"
+szelektor = ".sor"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-sor" },
+]
+
+[[elem]]
+id = "heber-kozi"
+nev = "Szövegközi héber szó"
+csoport = "Egyéb blokk-elemek"
+szelektor = ".heb"
+tulajdonsag = [
+  { nev = "Betűméret (a környezethez viszonyítva)", token = "fs-heb-betu" },
+]
+
+[[elem]]
+id = "nincs-st"
+nev = "LXX-szó Strong-szám nélkül"
+csoport = "Egyéb blokk-elemek"
+szelektor = ".lxx-sor .nincs-st small"
+tulajdonsag = [
+  { nev = "Szín", token = "gold" },
+]
+
+# ---------------------------------------------------------------------------------------------------------------------
+# M. BDB-jelentésszerkezet (F98.11–F98.13; jóváhagyva 2026-10-15)
+# ---------------------------------------------------------------------------------------------------------------------
+[[elem]]
+id = "jel-vazlat"
+nev = "Jelentésszerkezet vázlata (a BDB-blokk elején)"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".jel-vazlat"
+tulajdonsag = [
+  { nev = "Háttér", token = "panel" },
+  { nev = "Keret", token = "rule" },
+  { nev = "Lekerekítés", token = "radius-panel" },
+  { nev = "Betűméret", token = "fs-sor" },
+  { nev = "Sorköz", token = "lh-forrassor" },
+  { nev = "Belső térköz (függőleges)", token = "space-utmutato-fugg" },
+  { nev = "Belső térköz (vízszintes)", token = "space-utmutato-vizsz" },
+  { nev = "Hivatkozás színe rámutatáskor", token = "accent" },
+]
+
+[[elem]]
+id = "vz-torzs"
+nev = "Vázlat: törzscím (Qal, Nif'ál …)"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".jel-vazlat .vz-torzs"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-apparatus-alcim" },
+]
+
+[[elem]]
+id = "vz-fo"
+nev = "Vázlat: főjelentés sora"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".jel-vazlat .vz-fo"
+tulajdonsag = [
+  { nev = "Szín rámutatáskor", token = "accent" },
+]
+
+[[elem]]
+id = "vz-jel"
+nev = "Vázlat: jelentés-jelölő (1, 2 …)"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".jel-vazlat .vz-jel"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-jelentes-jel" },
+  { nev = "Szín", token = "accent" },
+]
+
+[[elem]]
+id = "vz-al"
+nev = "Vázlat: alpontok sora (a., b. …)"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".jel-vazlat .vz-al"
+tulajdonsag = [
+  { nev = "Szín", token = "muted" },
+]
+
+[[elem]]
+id = "jcim"
+nev = "Jelentéscím (a részletes listában)"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".jcim"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-jelentes-cim" },
+  { nev = "Sorköz", token = "lh-jelentes-cim" },
+  { nev = "Háttér, ha a jelentésre ugrottak", token = "accent-soft" },
+  { nev = "Lekerekítés, ha a jelentésre ugrottak", token = "radius-kiemeles" },
+]
+
+[[elem]]
+id = "kolcsonzott"
+nev = "Kölcsönzött jelentéscím (az első alpontból)"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".kolcsonzott"
+tulajdonsag = [
+  { nev = "Szín", token = "muted" },
+]
+
+[[elem]]
+id = "jelmagyarazat"
+nev = "BDB-jelmagyarázat (a blokk végén)"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".jelmagyarazat"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-sor" },
+  { nev = "Sorköz", token = "lh-forrassor" },
+  { nev = "Jel betűmérete", token = "fs-jelentes-jel" },
+  { nev = "Jel színe", token = "accent" },
+]
+
+[[elem]]
+id = "bdb-rovidites"
+nev = "BDB-rövidítés a szócikk-szövegben"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".jsz abbr[title]"
+tulajdonsag = [
+  { nev = "Aláhúzás színe", token = "muted" },
+]
+
+[[elem]]
+id = "jelentes-jelolo"
+nev = "Jelentés-jelölő a részletes listában (1, 2 … / a., b. …)"
+csoport = "BDB-jelentésszerkezet"
+szelektor = "ol.jel > li, ol.al > li"
+tulajdonsag = [
+  { nev = "Jelölő betűmérete", token = "fs-jelentes-jel" },
+  { nev = "Jelölő színe", token = "accent" },
+  { nev = "Alpontlista bal vonala", token = "accent-soft" },
+  { nev = "„összecsuk” felirat betűmérete", token = "fs-megjegyzes" },
+  { nev = "„összecsuk” felirat színe", token = "muted" },
+]
+
+# ---------------------------------------------------------------------------------------------------------------------
+# Kizárt osztályok (a regiszter-őr kimenetéből; M0 1.2 indokai szerint)
+# Csak az az osztály áll itt, amely a felületen előfordul, és egyetlen [[elem]] szelektorában sem szerepel (a regiszter-őr
+# mindkettőt ellenőrzi). Az állapot- és szövegrész-osztályok, amelyek egy szelektorban szerepelnek (pl. aktiv, kijelolt, he,
+# gk, st), regisztráltnak számítanak, ezért nincsenek itt.
+# ---------------------------------------------------------------------------------------------------------------------
+[kizart]
+# a nézetek rács-elrendezése; elrendezés-szerkesztés nincs a hatókörben
+oszlopok = "a nézetek rács-tárolója; az oszlopköz (space-oszlopkoz) elrendezési érték, a tartalékon át állítható"
+olvaso = "az Olvasópult rács-elrendezése (oszlopszélességek); elrendezés-szerkesztés nincs a hatókörben"
+interlinearis = "az Interlineáris nézet rács-elrendezése; elrendezés-szerkesztés nincs a hatókörben"
+munkaasztal = "a Munkaasztal rács-elrendezése; elrendezés-szerkesztés nincs a hatókörben"
+# JavaScript-horgok
+panel = "JavaScript-horog (fülváltás, töredék-betöltés); saját megjelenése nincs (a jobb oldali panel a 30. sor)"
+ful-tartalom = "JavaScript-horog (a fül tartalma); saját megjelenése nincs"
+fulek = "a fülek sora (flex-tároló, a köz a nézetváltó space-gombsor tokenje); a fül a 31–32. sor"
+# tartalmi burkolók
+szolap = "tartalmi burkoló (article); a megjelenés a gyermek-elemeken"
+verslap = "tartalmi burkoló (article); a megjelenés a gyermek-elemeken"
+# sablon-horgok, CSS-szabály nélkül
+fejezetfej = "sablon-horog (a fejezet-lap címe és lapozója); CSS-szabály nincs rá"
+lapozo = "sablon-horog (előző/következő fejezet); CSS-szabály nincs rá"
+ketto = "sablon-horog (a Munkaasztal két panele); CSS-szabály nincs rá"
+# sor- és bekezdés-tárolók
+il-szavak = "az interlineáris csempék sora; a csempék közti köz a 53. sor (Interlineáris csempe) tulajdonsága"
+il-parositatlan = "a párosítatlan eredeti szavak sora (tároló); a betűmérete (fs-il-eredeti-sor) a tartalékon át állítható"
+folyo = "a folyó szöveg bekezdés-tárolója; a betű a Folyó Károli-szöveg (24) tokenjeiből"
+# lista-, görgető- és oszlop-tárolók
+sorok = "a párlista sorainak tárolója (rács); a sor a 71. sor"
+gordul = "görgető tároló (legnagyobb magasság); arculati értéke nincs"
+lista = "felsorolás-tároló (behúzás); arculati értéke nincs"
+jelek = "a jel-címkék tárolója; a címke a 68–69. sor"
+konyvek = "a kezdőlap könyvlistájának hasábjai; elrendezési érték"
+konyv = "egy könyv a kezdőlap listájában (details); a megjelenés a gyermek-elemeken"
+fejezetek = "a fejezetszámok sora; a hivatkozás a 15. sor"
+fejezet-nave = "a fejezet-szintű Nave-hivatkozások (details) tárolója"
+angol-sor = "az angol csempék sora (flex-tároló); a csempe az 52. sor"
+# hivatkozás- vagy sor-burkolók a csempén belül
+he-fo = "hivatkozás-burkoló a héber csempén belül; a rámutatás-háttér (accent-soft) és lekerekítés (radius-kiemeles) a 28. sor tokenjei"
+er-fo = "hivatkozás-burkoló az interlineáris csempén belül; a rámutatás-háttér a 28. sor tokenje"
+er = "az interlineáris csempe eredeti-szó sora; a betűmérete (fs-il-eredeti-sor) a tartalékon át állítható"
+ures-par = "üres pár jele az interlineáris csempén (–); arculati értéke nincs"
+# szövegrész-horgok egy regisztrált elemen belül
+mf = "szövegrész-horog a héber csempén (igealak); a betűmérete (fs-csempe-megj) a tartalékon át állítható"
+kat = "szövegrész-horog: kattintható LXX-megfelelő (aláhúzás); a szín és a méret a 49. sor tokenje"
+gr = "szövegrész-horog: görög szó az LXX-sorban; a méret és a szín az 50–51. sor tokenje"
+ang = "szövegrész-horog: az angol szó a csempén; a betűmérete az 52. sor tokenje (fs-angol-szo)"
+strong = "szövegrész-horog: Strong-szám hivatkozás a táblákban és a párosítatlan sorban; a színe a 15. sor (hivatkozás)"
+fo = "szövegrész-horog: a párlista fő szava (vastagság, literál); a méret a 71. sor tokenje"
+dom = "szövegrész-horog: az UBS-domén; a színe a 70. sor tulajdonsága (Domén színe)"
+def = "szövegrész-horog: az UBS-definíció; a méret a 70. sor tokenje"
+karoli-itt = "szövegrész-horog („Károli itt”) a szó-lapon; a megjegyzés (17. sor) tokenjeit használja"
+alak = "szövegrész-horog (igealak sor) a szó-lapon; a megjegyzés (17. sor) tokenjeit használja"
+szo-nincs = "párosítás nélküli Károli-szó; a folyó szöveg (24) színét örökli, saját arculati értéke nincs"
+# állapot-osztályok saját token nélkül
+nyelvtani = "állapot-osztály (nyelvtani elem: szaggatott keret, halványítás, literálok); saját tokenje nincs"
+par-magas = "állapot-osztály (magas bizonyosságú pár: folytonos aláhúzás, literál); a színe a 26. sor tokenje"
+nincs-jeloles = "állapot-osztály a szövegoszlopon (az olvaso.js adja, a „jelölés” kapcsoló kikapcsolva): a kötött szó aláhúzása eltűnik (literál); saját tokenje nincs"
+# a body nézet-horga
+nezet-olvaso = "a body nézet-horga; CSS-szabály nincs rá"
+nezet-interlinearis = "a body nézet-horga; CSS-szabály nincs rá"
+nezet-munkaasztal = "a body nézet-horga; CSS-szabály nincs rá"
+# űrlap és a tervező mód saját vezérlője
+ugras = "a gyorsugrás űrlap: böngésző-alapértelmezett mező, token nélkül"
+tervezo-kapcsolo = "a tervező mód saját kapcsolója (csak belso kiadás); a megjelenése a tervezo.css-ből, nem az arculatból (a tervező nem állítja önmagát)"
+tz-nem = "a tervező saját címkéjének állapota (nem regisztrált elem; a tervezo.js adja, csak belso kiadás); a tervezo.css-ből, nem az arculatból"
+tz-hiba = "a tervező saját üzenetsorának hibaállapota (a tervezo.js adja, csak belso kiadás); a tervezo.css-ből, nem az arculatból"

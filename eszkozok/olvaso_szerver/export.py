@@ -22,9 +22,19 @@ import hozzaferes
 import oldalak
 
 
+def kiir_arculat(gyar, kimenet):
+    """A token-blokk (#98, DT-F98e) ugyanabból a függvényből (`arculat.css_blokk`), amelyből a szerver a `/arculat.css`-t adja;
+    a lapok `/arculat.css?v=<hash>` címen linkelik (a váz szerver-abszolút hivatkozásaival)."""
+    ut = os.path.join(kimenet, 'arculat.css')
+    with open(ut, 'w', encoding='utf-8', newline='\n') as f:
+        f.write(gyar.arculat.css)
+    return ut
+
+
 def kiir(gyar, kimenet, slug, szint):
     kk = gyar.kozos.slug_kk[slug]
     os.makedirs(os.path.join(kimenet, slug), exist_ok=True)
+    kiir_arculat(gyar, kimenet)
     n = 0
     for fej, _ in gyar.kozos.fejezet_szam[kk]:
         html = gyar.fejezet_lap(slug, fej, None, oldalak.ALAP_NEZET, szint, '', '', '/%s/%d' % (slug, fej))

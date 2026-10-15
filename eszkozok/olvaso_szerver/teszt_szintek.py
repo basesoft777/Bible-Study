@@ -264,7 +264,8 @@ class TestSzintekValodiLapokon(unittest.TestCase):
         blokk = self.szo('H6440', FELSO)
         self.assertIn('<h4>Jelentésszerkezet', blokk)
         j = blokk.index('<h4>Jelentésszerkezet')
-        self.assertIn('<details open>', blokk[j:j + 600])
+        # az F98.11 óta a részletes lista előtt a vázlat (nav.jel-vazlat) áll: a szakasz első lenyitható része legyen nyitva
+        self.assertTrue(blokk.startswith('<details open>', blokk.index('<details', j)))
 
     # -- F76.36: a szűrés kikerülhetetlen (ellenőri 4. kör) ------------------------------------------------------------------------
     def _gyar(self, blokk_szint):

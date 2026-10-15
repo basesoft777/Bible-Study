@@ -42,5 +42,11 @@ class Gyorsitotar:
                 _, r = self._d.popitem(last=False)
                 self._bajt -= len(r.encode('utf-8'))
 
+    def urit(self):
+        """Minden lap törlése (a tervező mód mentése után, #98 M2: a régi kulcsok úgyis elérhetetlenek)."""
+        with self._zar:
+            self._d.clear()
+            self._bajt = 0
+
     def meret(self):
         return len(self._d), self._bajt

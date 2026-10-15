@@ -434,6 +434,81 @@ class TestLapok(unittest.TestCase):
                 return
         self.skipTest('nincs angol-only BDB-szócikk a mintában')
 
+    def test_bdb_jelentesszerkezet_jeloloi_a_szocikkbol(self):
+        """A jelentésszerkezet jelölője a szócikké (H1242 בֹּקֶר: 1 → a.–h., 2), nem a böngésző 1, 2, 3 számozása: a lap a jelölőt a
+        `data-jel` attribútumba írja, a stíluslap ezt mutatja (`list-style: none` + `content: attr(data-jel)`)."""
+        t = self.get('/r/szo/H1242').get_data(as_text=True)
+        i = t.index('data-blokk="szo.bdb_apparatus"')
+        blokk = t[i:t.index('</section>', i)]
+        self.assertEqual(re.findall(r'<li id="[^"]+" data-jel="([^"]*)"><details', blokk), ['1', '2'])
+        self.assertEqual(re.findall(r'<li id="[^"]+" data-jel="([a-z]\.)"', blokk), ['%s.' % b for b in 'abcdefgh'])
+        css = open(os.path.join(D, 'statikus', 'olvaso.css'), encoding='utf-8').read()
+        self.assertRegex(css, r'ol\.jel, ol\.al \{[^}]*list-style: none')
+        self.assertRegex(css, r'ol\.jel > li::before, ol\.al > li::before \{[^}]*content: attr\(data-jel\)')
+
+    def test_bdb_jelmagyarazat(self):
+        """A BDB rövidítései (konfig/bdb_jelek.tsv, kézi) a jelentések szövegében <abbr>-ral, a blokk végén a szócikkben előfordulók
+        listája; a forrásjel csak zárójelben jelölő („(J)” igen, „J-ben” nem)."""
+        t = self.get('/r/szo/H1242').get_data(as_text=True)
+        i = t.index('data-blokk="szo.bdb_apparatus"')
+        blokk = t[i:t.index('</section>', i)]
+        self.assertIn('<abbr title="A. Klostermann">Klo</abbr>', blokk)
+        self.assertIn('(<abbr title="jahvista forrás', blokk)
+        self.assertIn('<h4>Jelmagyarázat</h4>', blokk)
+        jm = blokk[blokk.index('<dl class="jelmagyarazat">'):blokk.index('</dl>')]
+        jelek = re.findall(r'<dt>([^<]+)</dt>', jm)
+        for j in ('J', 'P', 'Klo', 'We', 'Dr', 'Che'):
+            self.assertIn(j, jelek)
+        self.assertEqual(len(jelek), len(set(jelek)))
+        self.assertNotIn('>J</abbr>-ben', blokk)
+        jeles = blokkok._jeles
+        self.assertEqual(str(jeles('Jelentés (J-ben) Dresden')), 'Jelentés (J-ben) Dresden')
+        self.assertEqual(str(jeles('<b>')), '&lt;b&gt;')
+
+    def test_bdb_jelentes_cime_es_vazlata(self):
+        """A főjelentés címe a szócikk saját szavaiból képződik (gépi): saját szöveg híján az első alpontéból (H0776 אֶרֶץ: 1 „föld”,
+        3 „talaj”); a blokk elején vázlat áll, amelynek minden sora egy létező jelentés-azonosítóra ugrik."""
+        t = self.get('/r/szo/H0776').get_data(as_text=True)
+        i = t.index('data-blokk="szo.bdb_apparatus"')
+        blokk = t[i:t.index('</section>', i)]
+        # az 1. és a 3. főjelentésnek nincs saját meghatározása: a cím az a. alpontból kölcsönzött, és ezt a megjelenés jelzi
+        self.assertEqual(re.findall(r'<span class="jcim">(?:<span class="kolcsonzott"[^>]*>)?([^<]*)', blokk)[:3], ['föld', 'ország', 'talaj'])
+        self.assertEqual(re.findall(r'<span class="jcim">(<span class="kolcsonzott")?', blokk)[:3], ['<span class="kolcsonzott"', '', '<span class="kolcsonzott"'])
+        self.assertIn('title="A BDB-ben ennek a jelentésnek nincs saját meghatározása; a cím az a. alpontból képződik (gépi)."', blokk)
+        # a szám a kiírt igehely-hivatkozásoké, nem az előfordulásoké: a felirat és a súgó ezt mondja
+        self.assertRegex(blokk, r'<span class="helyek" title="a BDB ennél a jelentésnél[^"]*">60 hivatkozás</span>')
+        self.assertNotRegex(blokk, r'\d hely</span>')
+        self.assertIn('class="jel-vazlat"', blokk)
+        vz = blokk[blokk.index('class="jel-vazlat"'):blokk.index('</nav>')]
+        celok = re.findall(r'href="#([^"]+)"', vz)
+        self.assertEqual(len(celok), 5 + 3 + 7 + 2 + 5)          # 5 főjelentés, a 4 alpontos csoport a., b. … alpontjai
+        idk = set(re.findall(r' id="([^"]+)"', blokk))
+        self.assertEqual([c for c in celok if c not in idk], [])
+        self.assertEqual(len(idk), len(re.findall(r' id="', blokk)), 'ismétlődő azonosító')
+        jc = blokkok.jelentes_cim
+        self.assertEqual(jc('föld, az egész föld (egy részével szemben) 1Móz 18:18, 25'), 'föld, az egész föld')
+        self.assertEqual(jc('föld, az egész föld (egy részével szemben) 1Móz 18:18', vesszoig=True), 'föld')
+        self.assertEqual(jc('', vesszoig=True), '')
+        self.assertEqual(jc('ország =', vesszoig=True), 'ország')
+        self.assertEqual(jc('gyakran (fent és máshol) elöljáróval (+ névelő); reggel'), 'gyakran elöljáróval')
+        # saját szövegű főjelentés: a vessző nem határ (H7451 רַע: a megkülönböztető rész a vessző után áll)
+        self.assertEqual(jc('rossz, kellemetlen, ártalmas: asszonyról, בְּעֵינֵי רָעָה 2Móz 21:8', max_hossz=70), 'rossz, kellemetlen, ártalmas')
+        self.assertEqual(jc('rossz, nem tetsző פְלשְׁתִּים סַרְנֵי בְּעֵינֵי 1Sám 29:7.', max_hossz=70), 'rossz, nem tetsző')
+        self.assertEqual(jc('הַמִּישׁוֺר אֶרֶץ a síkság földje 5Móz 4:33'), 'הַמִּישׁוֺר אֶרֶץ a síkság földje')
+        self.assertEqual(jc('+ מִן comparativus: rosszabb, mint, 2Sám 19:8; felsőfokként', max_hossz=70), '+ מִן comparativus: rosszabb, mint')
+        self.assertEqual(jc('מַחֲשֶׁבֶת(ה)רָעָה חָשַׁב gonosz (ártalmas) tervet kigondolni Ez 38:10', max_hossz=70),
+                         'מַחֲשֶׁבֶת(ה)רָעָה חָשַׁב gonosz tervet kigondolni')
+        # a vezető héber a magyar mögé kerül, minden héber futam lang="he"-vel
+        self.assertEqual(str(blokkok._cim_html('מַחֲשֶׁבֶת(ה)רָעָה חָשַׁב gonosz tervet kigondolni')),
+                         'gonosz tervet kigondolni <span class="he" lang="he">מַחֲשֶׁבֶת(ה)רָעָה חָשַׁב</span>')
+        self.assertEqual(str(blokkok._cim_html('+ מִן comparativus: rosszabb, mint')),
+                         '+ <span class="he" lang="he">מִן</span> comparativus: rosszabb, mint')
+        self.assertEqual(str(blokkok._cim_html('a <b>')), 'a &lt;b&gt;')
+        t = self.get('/r/szo/H7451').get_data(as_text=True)
+        cimek = re.findall(r'<span class="jcim">([^<]*)</span>', t)
+        self.assertEqual(cimek[:3], ['rossz, kellemetlen, ártalmas', 'rossz, kellemetlen, fájdalmat, boldogtalanságot, nyomorúságot okozó',
+                                     'rossz, nem tetsző'])
+
     def test_kod_verzio_valtozik_a_fajl_valtozasaval(self):
         import shutil
         tmp = tempfile.mkdtemp(prefix='kodverzio_')

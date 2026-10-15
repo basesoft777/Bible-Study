@@ -1,0 +1,65 @@
+# A BDB-szócikkek rövidítéseinek feloldása a szó-lap jelmagyarázatához (szo.bdb_apparatus). Kézi összeállítás, nem a BDB része.
+# Csak a magyar BDB-ben mért, egyértelmű jelek (a szövegkörnyezet a ᵐ5 után görög, a ᵑ9 után latin szót mutat); kimaradt a „De” (a magyar
+# „de” kötőszóval ütközik) és a bizonytalan feloldású Hu, Lo, Gu, Ri, Sam. A forrásjelek (J, E, P, D, H, R, JE) csak zárójelben jelölők.
+jel	feloldas	csoport	proveniencia
+J	jahvista forrás (a BDB forrásbesorolása a dokumentum-hipotézis szerint)	forrásjel	manual
+E	elohista forrás (a BDB forrásbesorolása a dokumentum-hipotézis szerint)	forrásjel	manual
+P	papi irat (Priesterschrift; a BDB forrásbesorolása)	forrásjel	manual
+D	deuteronomista forrás (a BDB forrásbesorolása)	forrásjel	manual
+H	Szentség-törvény (Heiligkeitsgesetz, 3Móz 17–26; a BDB forrásbesorolása)	forrásjel	manual
+R	szerkesztő (redaktor; a BDB forrásbesorolása)	forrásjel	manual
+JE	a jahvista és az elohista forrás együtt (a BDB forrásbesorolása)	forrásjel	manual
+׳י	JHVH, Isten neve	rövidítés	manual
+Kt	ketív: a leírt mássalhangzós szöveg	szövegtanú	manual
+Qr	qeré: a felolvasandó maszoréta olvasat	szövegtanú	manual
+MT	maszoréta szöveg	szövegtanú	manual
+ᵐ5	Septuaginta (LXX), görög fordítás	szövegtanú	manual
+ᵑ6	Pesitta, szír fordítás	szövegtanú	manual
+ᵑ7	Targum, arámi fordítás	szövegtanú	manual
+ᵑ9	Vulgata, latin fordítás	szövegtanú	manual
+⅏	szamaritánus Pentateuchus	szövegtanú	manual
+Vrss	az ősi fordítások (versiones)	szövegtanú	manual
+Syr	szír fordítás	szövegtanú	manual
+Aq	Aquila görög fordítása	szövegtanú	manual
+Symm	Symmachus görög fordítása	szövegtanú	manual
+Theod	Theodotion görög fordítása	szövegtanú	manual
+AV	Authorized Version (King James-fordítás, 1611)	szövegtanú	manual
+RV	Revised Version (angol revideált fordítás, 1885)	szövegtanú	manual
+Dr	S. R. Driver	szerző	manual
+We	J. Wellhausen	szerző	manual
+Klo	A. Klostermann	szerző	manual
+Che	T. K. Cheyne	szerző	manual
+Di	A. Dillmann	szerző	manual
+Ew	H. Ewald	szerző	manual
+Hi	F. Hitzig	szerző	manual
+Hup	H. Hupfeld	szerző	manual
+Bev	A. A. Bevan	szerző	manual
+Meinh	J. Meinhold	szerző	manual
+Stu	G. L. Studer	szerző	manual
+Gr	H. Graetz	szerző	manual
+Bi	G. Bickell	szerző	manual
+Kö	E. König	szerző	manual
+Ges	W. Gesenius	szerző	manual
+Thes	W. Gesenius: Thesaurus	szerző	manual
+Co	C. H. Cornill	szerző	manual
+Sta	B. Stade	szerző	manual
+Bu	K. Budde	szerző	manual
+Now	W. Nowack	szerző	manual
+Kue	A. Kuenen	szerző	manual
+Th	O. Thenius	szerző	manual
+Ol	J. Olshausen	szerző	manual
+Bae	F. Baethgen	szerző	manual
+Du	B. Duhm	szerző	manual
+Gie	F. Giesebrecht	szerző	manual
+RS	W. Robertson Smith	szerző	manual
+Lag	P. de Lagarde	szerző	manual
+Sm	R. Smend	szerző	manual
+Kau	E. Kautzsch	szerző	manual
+Hpt	P. Haupt	szerző	manual
+Toy	C. H. Toy	szerző	manual
+Marti	K. Marti	szerző	manual
+Kit	R. Kittel	szerző	manual
+HPS	H. P. Smith	szerző	manual
+Ki	D. Kimhi (Radak)	szerző	manual
+Ra	Rasi	szerző	manual
+AE	Ibn Ezra	szerző	manual
