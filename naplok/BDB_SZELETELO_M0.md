@@ -4,8 +4,9 @@
 
 ## 0. Rendezett összegzés a zárás előtt (F99.29, 2026-10-15)
 
-*A részletek a 2–9.11. szakaszban; a zárójelentés: `naplok/BDB_SZELETELO_zaras.md`. A #99 lezárásáról és a hatóköri résről (M3–M6) a
-felhasználó dönt; a független ellenőrt az orkesztrátor indítja.*
+*A részletek a 2–9.14. szakaszban; a zárójelentés: `naplok/BDB_SZELETELO_zaras.md`. **Hatóköri döntés (felhasználó, 2026-10-15):** a #99
+M0–M2 tartalommal zárul („próba”); az M3–M6 és a szeletelő javítása külön feladat (brief-tervezetek a `beerkezo/`-ban). A független
+ellenőr (`naplok/ELLENOR_F99.md`) eltéréseit a 9.13–9.14 és az F99.35–F99.44 javítja; a zárás a célzott újraellenőrzés után.*
 
 | mérföldkő | állapot | bizonyíték |
 |---|---|---|
@@ -21,8 +22,9 @@ felhasználó dönt; a független ellenőrt az orkesztrátor indítja.*
 **A tábla zárásakor** (`adat/bdb_vers_jelentes.tsv`): 160 616 sor; csomópont 122 457, `fej` 8 759, `tagolatlan` 29 400; `resz` 6 010;
 `szurt=1` 531; Károli-vers 159 151 sorban (`atkulcsolt_f85` 1 099, `azonos_tahot` 645, `nincs_karoli` 234; DT-F99h (b)).
 
-**Külön feladatba:** a szeletelő javítása a seed-101 hibaosztályai szerint (brief-tervezet: `beerkezo/BDB_SZELETELO_JAVITAS_brief_tervezet.md`);
-az M3–M6 sorsáról a felhasználó dönt (nem zártam le, ami nincs kész).
+**Külön feladatba (a hatóköri döntés szerint):** a szeletelő javítása (`beerkezo/BDB_SZELETELO_JAVITAS_brief_tervezet.md`), M3
+(`BDB_M3_TAGOLAS_`, a DT-F99b (4) #38-kötésével), M4 (`BDB_M4_MEGJELENITES_`, DT-F99m), M5 (`BDB_M5_SZOREND_`), M6 (`BDB_M6_MAGYARAZAT_`,
+DT-F99d) — mind `brief_tervezet.md`, befogadás a `/befogad`-dal. Nyitott tételek: N-F99a–e.
 
 ## 1. Eredmény röviden
 
