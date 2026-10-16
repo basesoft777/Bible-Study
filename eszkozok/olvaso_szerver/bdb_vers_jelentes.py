@@ -52,7 +52,8 @@ F85_ESETLISTA = os.path.join(REPO, 'naplok', 'F85_esetlista.tsv')
 # a forrás. A TAHOT-számok csak megerősítenek (mérés: naplok/BDB_SZELETELO_M0.md 9.13). Soronkénti ±3 verses keresés nincs.
 # Az Ézs 3: az F85 a Macula `karoli` oszlopát itt elvetette (naplok/F85_macula_elvetve.tsv, 26 vers), de MT → Károli megfeleltetést nem
 # rögzített; a Károli-szöveg szerint a Károli Ézs 3:1 az MT Ézs 2:22 (a Károli Ézs 2-ben 21, az Ézs 3-ban 27 vers), így MT 2:22 → K 3:1,
-# MT 3:n → K 3:(n+1). A TAHOT a sorok 190/211-ében megerősíti; a sorok `f85_regio` okkódot kapnak (az eltolás értéke nem az F85-ből jön).
+# MT 3:n → K 3:(n+1). A TAHOT a sorok 190/211-ében megerősíti. DT-F99n (felhasználó, 2026-10-16): az Ézs 3 eltolásának forrása a
+# Károli-szöveg (Karoli_1908.tsv) és a TAHOT, nem az F85 esetlista; a sorok saját `vers_feloldas` értéket kapnak: `atkulcsolt_karoli_szoveg`.
 EZS3 = {'Ézs 2:22': 'Ézs 3:1'}
 EZS3.update({'Ézs 3:%d' % v: 'Ézs 3:%d' % (v + 1) for v in range(1, 27)})
 
@@ -229,11 +230,12 @@ def general(ts, strongok=None):
                     mt, kar, vmod, kieg = mt_karoli(K, versek, mt2k, vm_karoli, vm_mt, elvetett, h['konyv'], h['c'], h['v'])
                     n_st = int(re.match(r'^H0*(\d+)', strong).group(1))
                     if mt in f85 or mt in EZS3:
-                        # DT-F99h (b): az F85 eltolás-táblája (esetlista: WLC → Károli), ill. az Ézs 3 (F85-régió, a Károli-szöveg szerint)
-                        kar, vmod = f85.get(mt) or EZS3[mt], 'atkulcsolt_f85'
+                        # DT-F99h (b): az F85 eltolás-táblája (esetlista: WLC → Károli); DT-F99n: az Ézs 3 a Károli-szöveg és a TAHOT szerint
+                        if mt in f85:
+                            kar, vmod = f85[mt], 'atkulcsolt_f85'
+                        else:
+                            kar, vmod = EZS3[mt], 'atkulcsolt_karoli_szoveg'
                         kieg = ','.join(x for x in kieg.split(',') if x not in ('nincs_karoli', 'karoli_vers_nem_letezik', 'tobb_karoli_vers'))
-                        if mt not in f85:
-                            kieg = ','.join(x for x in ('f85_regio', kieg) if x)
                     elif 'nincs_karoli' in kieg.split(',') or 'karoli_vers_nem_letezik' in kieg.split(','):
                         # DT-F99h kiegészítés: az azonos számú Károli-vers, ha a TAHOT ott hordozza a szót
                         azon = '%s %d:%d' % (KAROLI_KONYV.get(h['konyv'], h['konyv']), h['c'], h['v'])
@@ -263,9 +265,9 @@ def general(ts, strongok=None):
 def kiir(sorok, modhash, ts):
     fej = ['# GENERÁLT: eszkozok/olvaso_szerver/bdb_vers_jelentes.py --ts %s — kézzel nem szerkesztendő (F99 M2; séma: adat/SEMA.md 2.29).' % ts,
            '# forras: konkordancia/BDB_teljes_unabridged.tsv@%s + Macula_heber_*.tsv (%d fájl)@%s (MT-versek, MT→Károli) + '
-           'Karoli_versmegfeleltetes.tsv@%s + Karoli_1908.tsv@%s (Károli-versek) + naplok/F85_macula_elvetve.tsv@%s + naplok/F85_esetlista.tsv@%s '
-           '(DT-F99h) + OSHL_lexikalis_index.tsv@%s (bdb_id) + Strong_szotar.tsv@%s (lemma) + TAHOT_kivonat.tsv@%s (DT-F99h, DT-F99k); '
-           'kód: bdb_szelet.py+bdb_vers_jelentes.py+bdb_konyv_javit.py+normalizal.py@%s (LF-re normalizált tartalom; DT-F99g: a kód-hash csak itt áll, a sorok proveniencia-mezője erre a fejlécre hivatkozik); szabály: DT-F99a, DT-F99h, DT-F99i, DT-F99j, DT-F99k'
+           'Karoli_versmegfeleltetes.tsv@%s + Karoli_1908.tsv@%s (Károli-versek; az Ézs 3 eltolásának forrása is, DT-F99n) + naplok/F85_macula_elvetve.tsv@%s + naplok/F85_esetlista.tsv@%s '
+           '(DT-F99h) + OSHL_lexikalis_index.tsv@%s (bdb_id) + Strong_szotar.tsv@%s (lemma) + TAHOT_kivonat.tsv@%s (DT-F99h, DT-F99k; az Ézs 3 eltolásának megerősítése, DT-F99n); '
+           'kód: bdb_szelet.py+bdb_vers_jelentes.py+bdb_konyv_javit.py+normalizal.py@%s (LF-re normalizált tartalom; DT-F99g: a kód-hash csak itt áll, a sorok proveniencia-mezője erre a fejlécre hivatkozik); szabály: DT-F99a, DT-F99h, DT-F99i, DT-F99j, DT-F99k, DT-F99n'
            % (fajl_hash(BDB_EN), len(macula_fajlok()), fajlok_hash(macula_fajlok()), fajl_hash(VERSMEGF), fajl_hash(KAROLI), fajl_hash(F85_ELVETVE),
               fajl_hash(F85_ESETLISTA), fajl_hash(OSHL_INDEX), fajl_hash(STRONG_SZOTAR), fajl_hash(TAHOT), modhash),
            '\t'.join(FEJ)]

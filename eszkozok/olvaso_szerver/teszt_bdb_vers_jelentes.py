@@ -253,7 +253,9 @@ class Tabla(unittest.TestCase):
         self.assertEqual((x[i['karoli_vers']], x[i['vers_feloldas']], x[i['okkod']]), ('2Móz 35:33', 'azonos_tahot', 'karoli_tahot'))
         # ELLENOR_F99 1. pont: az Ézs 3 (Károli 3:1 = MT 2:22; MT 3:n → Károli 3:(n+1)); próba: H0113 „Isa 3:1” → Ézs 3:2
         x = [y for y in sor(self.sorok, strong='H0113') if y[i['mt_vers']] == 'Ézs 3:1'][0]
-        self.assertEqual((x[i['karoli_vers']], x[i['vers_feloldas']], x[i['okkod']]), ('Ézs 3:2', 'atkulcsolt_f85', 'f85_regio'))
+        # DT-F99n: saját vers_feloldas-érték, nem keveredik az F85-ösökkel
+        self.assertEqual((x[i['karoli_vers']], x[i['vers_feloldas']], x[i['okkod']]), ('Ézs 3:2', 'atkulcsolt_karoli_szoveg', ''))
+        self.assertFalse(any(y[i['vers_feloldas']] == 'atkulcsolt_f85' and y[i['mt_vers']].startswith('Ézs 3:') for y in self.sorok))
         # seed-101 M049: forras_hiba
         x = sor(self.sorok, strong='H1802', poz='512')[0]
         self.assertIn('forras_hiba', x[i['okkod']].split(','))

@@ -20,7 +20,7 @@ ellenőr (`naplok/ELLENOR_F99.md`) eltéréseit a 9.13–9.14 és az F99.35–F9
 | Elfogadás: aranyminta 0 eltérés | **nem teljesült** | EN 7/32, HU 4/14 hibás szócikk; szerkezeti eltérés 71/72 |
 
 **A tábla zárásakor** (`adat/bdb_vers_jelentes.tsv`): 160 616 sor; csomópont 122 457, `fej` 8 759, `tagolatlan` 29 400; `resz` 6 010;
-`szurt=1` 528; Károli-vers 159 187 sorban (`atkulcsolt_f85` 2 992, `azonos_tahot` 551, `nincs_karoli` 201; `f85_regio` 218; `sigla_igazolt` 487; DT-F99h (b), F99.35; saját számlálás a táblán, 2026-10-15).
+`szurt=1` 528; Károli-vers 159 187 sorban (`atkulcsolt_f85` 2 774, `atkulcsolt_karoli_szoveg` 218 — az Ézs 3, DT-F99n —, `azonos_tahot` 551, `nincs_karoli` 201; `sigla_igazolt` 487; DT-F99h (b), F99.35, F99.47; a generátor számlálása, 2026-10-16).
 
 **Külön feladatba (a hatóköri döntés szerint):** a szeletelő javítása (`beerkezo/BDB_SZELETELO_JAVITAS_brief_tervezet.md`), M3
 (`BDB_M3_TAGOLAS_`, a DT-F99b (4) #38-kötésével), M4 (`BDB_M4_MEGJELENITES_`, DT-F99m), M5 (`BDB_M5_SZOREND_`), M6 (`BDB_M6_MAGYARAZAT_`,
@@ -617,7 +617,7 @@ MT-számnak — ez hiba volt: a régi TAHOT-kulcs nem MT-szám (a Dán 4-ben és
 (`naplok/F85_esetlista.tsv`): minden eltolt TAHOT-versnél dokumentálja a WLC (MT) megfelelőt és a Károli-verset (`eltolas`,
 `osszevonas_2_1`, J ≥ 0,5, 345 egyértelmű MT-vers). Az Ézs 3: az F85 a Macula-adatot elvetette (`F85_macula_elvetve.tsv`, 26 vers), MT →
 Károli megfeleltetést nem rögzített; a Károli-szöveg próbája (`lekerdez.py karoli "Ézs 3:1"` → az MT 2:22 szövege; `scan H0113 --szakasz
-"Ézs 3"` → Ézs 3:2) szerint MT 2:22 → K 3:1, MT 3:n → K 3:(n+1); ezek a sorok `f85_regio` okkódot kapnak (az eltolás értéke nem az F85-ből).
+"Ézs 3"` → Ézs 3:2) szerint MT 2:22 → K 3:1, MT 3:n → K 3:(n+1); ezek a sorok `f85_regio` okkódot kaptak (az eltolás értéke nem az F85-ből; a F99.47 óta, DT-F99n: `vers_feloldas` `atkulcsolt_karoli_szoveg`, okkód nélkül, 9.15).
 
 Más Károli-versre került (az F99.34-es táblához képest) **514 sor**; a TAHOT-találat a régi → az új Károli-versen:
 
@@ -635,7 +635,7 @@ változott. Ebből **1 379 csak címke** — 645 `azonos` → `atkulcsolt_f85` �
 a Károli-vers már helyes volt, csak a feloldás módja lett az F85-é; az `azonos_f85` mint érték megszűnt), és 94 sor okkód-változása
 (`karoli_tahot` → üres, mert az esetlista adja ugyanazt a Károli-verset; `azonos_tahot` 645 → 551). **514 sor Károli-verse változott:** 478
 másik versre, 36 üresről kitöltöttre (köztük 3 sigla-sor, amely a helyes Károli-versen a TAHOT szerint `sigla_igazolt` lett: `szurt=1`
-531 → 528, `sigla_igazolt` 484 → 487). A tábla mai számai: `szurt=1` 528, `atkulcsolt_f85` 2 992 (ebből `f85_regio` 218), `azonos_tahot`
+531 → 528, `sigla_igazolt` 484 → 487). A tábla számai a F99.35 után: `szurt=1` 528, `atkulcsolt_f85` 2 992 (ebből `f85_regio` 218; a F99.47 óta 2 774 + `atkulcsolt_karoli_szoveg` 218, 9.15), `azonos_tahot`
 551, `nincs_karoli` 201, Károli-vers 159 187 sorban.
 
 **Próba:** H0113 „Isa 3:1” — MT Ézs 3:1 → **Károli Ézs 3:2** (a TAHOT ott hordozza; teszt). **Maradék (nyitott tétel):** 1Krón 12 (78 sor,
@@ -666,3 +666,13 @@ A hét `sigla_igazolt` eltérés (M054 Di^Lev 7:30, M065 Dr^Amos 2:2, M147 COT^G
 Du^Isa 29:3, M230 Dr^1Sam 14:18): a DT-F99k szerint bibliai (a szó a versben áll), a vak kitöltés kommentár-helynek ítélte — az elbírálás
 (a DT-F99k finomítása) a javítási feladatba került (`beerkezo/BDB_SZELETELO_JAVITAS_brief_tervezet.md`). A H2623/H4912 öröklési hibája
 ugyanoda.
+
+### 9.15 DT-F99n — az Ézs 3 Károli-kulcsának forrása (F99.47)
+
+A felhasználó döntése (2026-10-16, (a)): az Ézs 3 eltolásának forrása a Károli-szöveg (`Karoli_1908.tsv`: a Károli Ézs 3:1 az MT 2:22
+szövege) és a TAHOT (190/211 sor megerősítés), nem az F85 esetlista; a sorok maradnak. A sorok saját `vers_feloldas`-értéket kapnak:
+**`atkulcsolt_karoli_szoveg`, 218 sor** (MT 2:22 és MT 3:1–26; a korábbi `atkulcsolt_f85` + `f85_regio` okkód megszűnt, az F85-ös sorok
+`atkulcsolt_f85`-je 2 774). A fejléc proveniencia-sora a `Karoli_1908.tsv`-t és a `TAHOT_kivonat.tsv`-t hash-sel, az Ézs 3 forrásaként is
+megnevezi (DT-F99n). Teszt: a H0113 „Isa 3:1” → Ézs 3:2, `atkulcsolt_karoli_szoveg`, és Ézs 3-as sor nem `atkulcsolt_f85`. A sorok
+proveniencia-mezőjének `ts=` értéke a táblával együtt a 2026-10-15 marad (a generálás napja helyett a szabálykészlet napja; a sorok a
+fejléc hash-ére hivatkoznak, DT-F99g).
