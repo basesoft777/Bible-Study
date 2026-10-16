@@ -673,6 +673,6 @@ A felhasználó döntése (2026-10-16, (a)): az Ézs 3 eltolásának forrása a 
 szövege) és a TAHOT (190/211 sor megerősítés), nem az F85 esetlista; a sorok maradnak. A sorok saját `vers_feloldas`-értéket kapnak:
 **`atkulcsolt_karoli_szoveg`, 218 sor** (MT 2:22 és MT 3:1–26; a korábbi `atkulcsolt_f85` + `f85_regio` okkód megszűnt, az F85-ös sorok
 `atkulcsolt_f85`-je 2 774). A fejléc proveniencia-sora a `Karoli_1908.tsv`-t és a `TAHOT_kivonat.tsv`-t hash-sel, az Ézs 3 forrásaként is
-megnevezi (DT-F99n). Teszt: a H0113 „Isa 3:1” → Ézs 3:2, `atkulcsolt_karoli_szoveg`, és Ézs 3-as sor nem `atkulcsolt_f85`. A sorok
-proveniencia-mezőjének `ts=` értéke a táblával együtt a 2026-10-15 marad (a generálás napja helyett a szabálykészlet napja; a sorok a
-fejléc hash-ére hivatkoznak, DT-F99g).
+megnevezi (DT-F99n). Teszt: a H0113 „Isa 3:1” → Ézs 3:2, `atkulcsolt_karoli_szoveg`, és Ézs 3-as sor nem `atkulcsolt_f85`. A tábla
+`--ts 2026-10-16`-tal újragenerálva (F99.50, a felhasználó utasítására): a sorok proveniencia-mezőjének `ts=` értéke a tényleges futás napja,
+mind a 160 616 sorban `ts=2026-10-16` (a F99.47 előbb tévesen a 2026-10-15-öt hagyta meg); `--ellenoriz`: bájtra azonos.
