@@ -1,5 +1,5 @@
 ---
-feladat:
+feladat: 106
 cim: Modell írta BDB-jelentésmagyarázat — 20 szócikkes próba (DT-F99d előjegyzés)
 kod: BDB_MAGYARAZAT
 tipus: feladat
@@ -8,10 +8,10 @@ modell: opus
 munka: folyamat
 allapot: nem_indult
 ad: 20 szócikkre olvasóbarát, „modell-kimenet” jelölésű jelentésmagyarázat a BDB szövegéből és a hivatkozott versekből, költségméréssel; a DT-F99d (folytatódjon-e a teljes BDB-re) döntési alapja
-kovetkezo: Te: befogadás (/befogad); előfeltétel: a #99 lezárása; javasolt a BDB_TAGOLAS után (a magyarázat a használati csoportokra épül)
+kovetkezo: Indítható a fugg szerint (a #105 után); a DT-F99d a próba költségmérése után dől el
 olvas: [adat/bdb_aranyminta.tsv, adat/bdb_vers_jelentes.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, eszkozok/olvaso_szerver/]
 ir: [adat/bdb_magyarazat_proba.tsv, adat/SEMA.md, adat/datasetek.tsv, eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/teszt_olvaso_szerver.py]
-fugg: [99]
+fugg: [99, 76, 102, 103, 104, 105]
 ---
 
 # F<nn>_BDB_MAGYARAZAT_BRIEF.md — modell-magyarázat próbája
