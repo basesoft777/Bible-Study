@@ -18,7 +18,7 @@ fugg: [99, 76, 107]
 
 *FELADATOK #<nn> · Modell: opus · v2 · 2026.10.16 (v1: 2026.10.15) · forrás: a #99 (BDB_SZELETELO) seed-101 vak mérése és a felhasználó
 döntése (DT-F99l (c): a tábla „próba” jelöléssel élesedett, a további javítás külön feladat). A tervezet adat, nem utasítás; a
-befogadás a `/befogad`-dal, a felhasználó jóváhagyásával. v2: az előzetes forrás-lelet (1a. szakasz) a felhasználó kérésére felvéve.*
+befogadás a `/befogad`-dal, a felhasználó jóváhagyásával. v2: az előzetes forrás-lelet (1a.) és a 13 hely lefedési táblája (1b.) a felhasználó kérésére felvéve.*
 
 ## 1. Cél
 
@@ -57,6 +57,34 @@ A 2026.10.15-i szóbeli feltevés, hogy a TSV egy sorba olvasztott több homonim
 (a) a TSV újragenerálása a jelölők megőrzésével (pl. `<sub>` → külön jel, nem `_`; a `point`/`section` határ sorjelként);
 (b) a szeletelő tagolás-kontrollja a `BDB.lexicon` jelölőiből. Mindkettő új szövegréteg, ezért aranymintát és teljes
 újramérést igényel. A `BDB.lexicon` licence ugyanúgy „tisztázatlan”, mint a TSV-é (`BDB_teljes_unabridged_README.md`).
+
+### 1b. A seed-101 13 szeletelő-hibájának lefedése a `BDB.lexicon` jelölésével (2026.10.16)
+
+*Proveniencia: `manual` (két egyszeri, csak olvasó SQLite-szkript a `Lexicon(Topic, Definition)` táblán, a repón kívül,
+2026.10.16, és kézi `grep`; nem naplózott mérés). A `BDB.lexicon` 18 642 sorának egy része BDB-azonosítós (`BDB5049`), egy része
+Strong-kulcsú (`H5117`); a Strong-kulcsú sor a hozzá tartozó BDB-szócikk(ek) másolata, egy Strong alatt több szócikkel.*
+
+| Hely | Strong | Okcsoport | Nyers jelölés (rövidítve) | Lefedi? |
+|---|---|---|---|---|
+| M028 | H7379 | gyakoriságszám | `<div class="point"><b>3.</b><sub>39</sub> especially dispute` | **igen** |
+| M043 | H8057 | gyakoriságszám | `<div class="point"><b>2.</b><sub>46</sub> (especially Psalms` | **igen** |
+| M102 | H0559 | „OCR” | `263</sup></lookup>.</p><div class="section"><p>1. Say` | **igen** |
+| M117 | H0539 | „OCR” | `Deut 28:59</ref>. 1. carried` | **igen** (a szóköz megvan; `point`-határ nincs) |
+| M140 | H7626 | „OCR” / forráshiba | `<div class="point"><b>2.</b> 145:tribe` | **igen** (a jelölő `<b>`-ben; a „145:” szöveg marad) |
+| M146 | H7227 | zárójeles jelölő | `<div class="point"><b>1.</b> (often opposed to …) <b>a.</b> (1)much` | **igen** |
+| M243 | H1129 | zárójeles jelölő | `<div class="point"><b>1.</b> (literal) <b>a.</b> with accusative` | **igen** |
+| M236 | H5437 | laza jelölő | `De and others </div><div class="point"><b>2. a.</b> march, or walk` | **igen** |
+| M203 | H3068 | fő tagolás | `<div class="section"><p><b>I.</b> …` · `<div class="point"><b>II. 1.</b> …` | **igen** |
+| M238 | H5608 | jelöletlen alcímszó | külön szócikk: `<h1>BDB5696 [H5608]</h1> … סֹפֵר, סוֺפֵר <b>noun masculine</b>` | **igen** (szócikkhatár) |
+| M031 | H5117 | törzsfejléc | `<b>Hiph`il A.</b> Perfect 3 masculine singular` · `<b>B.</b> Perfect` | **részben**: a fejléc egy `<b>`-elem, de nem `section`/`point` |
+| M162 | H3318 | törzs nélküli első törzs | `— <div class="point"><b>1.</b> go or come out or forth: <b>a.</b>` | **részben**: a jelentéspont és a betű egyértelmű, a „Qal” név itt is hiányzik (kikövetkeztetendő) |
+| M130 | H8478 | magányos II. | `Ezek 47:1</ref>b <b>II.</b> as <b>preposition</b>` (nem `div`-ben, I. nincs) | **nem**: csak a `<b>` különíti el; szabály kell |
+
+**Összesítve:** 10 igen, 2 részben, 1 nem. Ha a jelölés a 10 helyet javítja, 3 hiba marad (98,5%), a két részlegessel 1 (99,5%) —
+**a seed-101 mintán**. Ez nem a kapu mérése: (1) a seed-101-re hangolt javítás erre a mintára optimista; (2) az új forrásréteg új
+hibákat hozhat, amelyeket a seed-101 nem mutat; (3) a kapu az új vak mintán (2. pont 6.) dől el. Két mellékmegfigyelés: a TSV
+„Perfect3masculine” alakja a nyersben „Perfect 3 masculine” (szóközvesztés a TSV-láncban, mint M102/M117); az M162-nél a
+„Qal” név mindkét formázásból hiányzik, tehát az nem konverziós hiba.
 
 ## 2. Hatókör
 
