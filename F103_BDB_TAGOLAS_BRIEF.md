@@ -1,5 +1,5 @@
 ---
-feladat:
+feladat: 103
 cim: BDB jelentésen belüli tagolás (használati csoportok) és a csoport-bevezetők terminológiája
 kod: BDB_TAGOLAS
 tipus: feladat
@@ -8,10 +8,10 @@ modell: opus
 munka: folyamat
 allapot: nem_indult
 ad: a BDB-szeletelő a jelentést (és alpontot) használati csoportokra bontja a DT-F99b szerinti bevezetők mentén (angolul mindig, magyarul csak egyező jelölőszámnál), és a bevezetők kötelező magyar alakja a terminológiában a #38 adagjai közé kötve
-kovetkezo: Te: befogadás (/befogad); előfeltétel: a #99 lezárása; időzítés: a #38 következő adagja előtt (DT-F99b (4))
-olvas: [eszkozok/olvaso_szerver/bdb_szelet.py, eszkozok/olvaso_pilot/bdb_szelet_m0.py, adat/bdb_aranyminta.tsv, adat/forditasok.tsv, konkordancia/BDB_teljes_unabridged.tsv, naplok/BDB_SZELETELO_M0.md, F38_BDB_FORDITAS_BRIEF.md]
-ir: [eszkozok/olvaso_szerver/bdb_szelet.py, eszkozok/olvaso_szerver/teszt_bdb_vers_jelentes.py, eszkozok/olvaso_pilot/bdb_szelet_m0.py, adat/terminologia.tsv, adat/bdb_vers_jelentes.tsv, adat/SEMA.md]
-fugg: [99]
+kovetkezo: Indítható a fugg szerint (a #76 és a #102 után); a terminológia-lista a ⛔ 3. pontnál a #38 következő adagjába kerül (DT-F99b (4))
+olvas: [eszkozok/olvaso_pilot/bdb_szelet_m0.py, adat/bdb_aranyminta.tsv, adat/forditasok.tsv, konkordancia/BDB_teljes_unabridged.tsv, naplok/BDB_SZELETELO_M0.md, F38_BDB_FORDITAS_BRIEF.md]
+ir: [eszkozok/olvaso_szerver/bdb_szelet.py, eszkozok/olvaso_szerver/teszt_bdb_vers_jelentes.py, adat/bdb_vers_jelentes.tsv, adat/SEMA.md]
+fugg: [99, 76, 102]
 ---
 
 # F<nn>_BDB_TAGOLAS_BRIEF.md — BDB jelentésen belüli tagolás és terminológia

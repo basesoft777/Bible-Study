@@ -1,5 +1,5 @@
 ---
-feladat:
+feladat: 104
 cim: BDB-blokk megjelenítése — „ebben a versben” kiemelés (DT-F99m), kattintható helyek, pontos hivatkozásszám
 kod: BDB_MEGJELENITES
 tipus: feladat
@@ -8,10 +8,10 @@ modell: opus
 munka: folyamat
 allapot: nem_indult
 ad: a szó-lap BDB-blokkjában a teljes szócikk mindig látszik, két jelölési szinttel (erős: „a BDB itt idézi”; gyenge: „vonatkozhat”), kattintható igehelyekkel és pontos hivatkozásszámmal, a „próba” felirat és a mért pontosság a kiemelés mellett
-kovetkezo: Te: befogadás (/befogad); előfeltétel: a #99 lezárása
-olvas: [eszkozok/olvaso_szerver/, adat/bdb_vers_jelentes.tsv, konkordancia/TAHOT_kivonat.tsv, konfig/bdb_jelek.tsv, naplok/BDB_SZELETELO_M0.md]
+kovetkezo: Indítható a fugg szerint (a #76, a #102 és a #103 után)
+olvas: [eszkozok/olvaso_szerver/, adat/bdb_vers_jelentes.tsv, konkordancia/TAHOT_kivonat.tsv, eszkozok/olvaso_szerver/konfig/bdb_jelek.tsv, naplok/BDB_SZELETELO_M0.md]
 ir: [eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/lekerdezesek.py, eszkozok/olvaso_szerver/sablonok/, eszkozok/olvaso_szerver/statikus/, eszkozok/olvaso_szerver/konfig/elemek.toml, eszkozok/olvaso_szerver/teszt_olvaso_szerver.py, eszkozok/olvaso_szerver/bdb_szelet.py]
-fugg: [99]
+fugg: [99, 76, 102, 103]
 ---
 
 # F<nn>_BDB_MEGJELENITES_BRIEF.md — a BDB-blokk megjelenítése
