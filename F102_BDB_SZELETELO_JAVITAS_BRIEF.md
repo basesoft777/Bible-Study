@@ -28,8 +28,9 @@ szeletelő-hiba szórt. Ez a feladat a hibaosztályokat javítja, az útvonal-fo
 
 ## 1a. Előzetes lelet: a hibák egy része a szövegrétegben keletkezik (2026.10.16, kézi szúrópróba)
 
-*Proveniencia: `manual` (kézi `grep` a két fájlon és három `word_study`-lekérdezés a bible-mcp szerveren, 2026.10.16; nem
-lefuttatott, naplózott mérés). A pontok hipotézisek, az 1. lépés igazolja vagy elveti őket.*
+*Proveniencia: `manual` (kézi `grep` a két fájlon, 2026.10.16; nem lefuttatott, naplózott mérés). A pontok hipotézisek, az 1. lépés
+igazolja vagy elveti őket. (Javítva 2026.10.16: az első változat bible-mcp-kimenetet is bizonyítékként idézett, ami a DT32-vel
+ütközik; a bizonyíték most a repó saját adata, a szerver legfeljebb rámutatás.)*
 
 A szeletelő a `BDB_teljes_unabridged.tsv` sima szövegét olvassa. Ez a `DictBDB.json` (Eliran Wong, Tim Morton átirata)
 HTML-jének `konkordancia/_convert_bdb.py`-val lecsupaszított alakja. Ugyanennek a digitalizálás-családnak egy másik formázása,
@@ -46,12 +47,11 @@ a `konkordancia/lexikonok_nyers/BDB.lexicon` (biblematedata, SQLite) a jelentés
 Nyitott: a `_convert_bdb.py` az ismeretlen tagot szóközre cseréli (15. sor), ezért az M102/M117 összeolvadása valószínűleg már a
 `DictBDB.json`-ban megvan. Ezt csak a `DictBDB.json` maga dönti el; a repóban nincs meg, az URL a README-ben áll.
 
-**A bible-mcp BDB-je** (`corpus_info`: OpenScriptures `BrownDriverBriggs.xml`, a `LexicalIndex.xml`-en át Strong-ra kötve, CC BY 4.0
-jelölés) csak jelentés-fejeket ad, igehelyek nélkül, ~700 karakterre vágva. Ugyanez a forrás a repóban már megvan
-(`OSHL_lexikalis_index.tsv`, `OSHL_BDB_igehelyek.tsv`). A jelentés-fejek független kontrollnak jók; a H7626-nál
-„1. rod, staff, club, sceptre. 2. tribe” igazolja, hogy a „145:” szemét. Igehely-hozzárendelésre nem alkalmas. A homográf-betűi
-(H0559a, H0539a) az előfordulás-adat lemmaváltozatai, nem BDB-homonimák; a TSV a saját homográf-toldalékait (`H0090a`) megőrzi.
-A 2026.10.15-i szóbeli feltevés, hogy a TSV egy sorba olvasztott több homonimát (M130, M029), ezzel gyengült, de nincs mérve.
+**A H7626 „145:” forráshiba-voltát a repó saját adata igazolja:** a `BDB_teljes_unabridged.tsv` H7626-sorának összefoglaló feje
+„1 rod, staff, club, sceptre. 2 tribe” — a 2. jelentés a „tribe”, a „145:” tehát a szövegbe került idegen elem. (A bible-mcp
+csak ráirányította a figyelmet erre a fejre; kimenete a DT32 szerint nem bizonyíték.) A TSV homográf-toldalékait a
+`BDB_teljes_unabridged_README.md` írja le (`H90a` → `H0090a`); a 2026.10.15-i szóbeli feltevés, hogy a TSV egy sorba olvasztott több
+homonimát (M130, M029), nincs mérve — az 1. lépés dönti el.
 
 **Javaslat (döntésre, nem hatókör):** az OCR-okcsoport és a gyakoriságszámos jelölő javítása ne a szövegben folyjon. Két út:
 (a) a TSV újragenerálása a jelölők megőrzésével (pl. `<sub>` → külön jel, nem `_`; a `point`/`section` határ sorjelként);
