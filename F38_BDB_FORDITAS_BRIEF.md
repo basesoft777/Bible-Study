@@ -85,6 +85,28 @@ Adagonként kb. 500 000 karakter, a sorrend szerint. Minden adag végén megáll
 
 **⛔ Mz:** a terminológia és a szúrópróba jóváhagyása.
 
+## ⛔ Mj — a forrás tagolás-jelölői (a következő adag előtt; DT-F38l, 2026.10.16)
+
+*Felvéve a felhasználó kérésére, a #102 előzetes leletéből (`F102_BDB_SZELETELO_JAVITAS_BRIEF.md` 1a–1b., PR #359). Proveniencia:
+`manual` (kézi szúrópróba és egyszeri, csak olvasó szkript a repón kívül, 2026.10.16).*
+
+**A lelet.** A fordítás forrása, a `BDB_teljes_unabridged.tsv`, a `DictBDB.json` HTML-jének sima szöveggé alakított változata. A
+tagolás-jelölők (jelentéspont, fő szakasz, gyakoriságszám) ebben már nincsenek meg; a `konkordancia/lexikonok_nyers/BDB.lexicon`
+ugyanezt a szöveget jelölőkkel őrzi (`class="point"` 20 515, `class="section"` 913). A magyar fordítás ezért szintén jelölők nélküli.
+A konverziós maradványokat a fordítás átviszi: az „N_M” alakú (gyakoriságszámmal tapadt) jelölő az angol TSV 9 szócikkében áll, ebből
+7 már le van fordítva, és mind a 7 magyar szövegben szó szerint megmaradt (`2_46`, `3_39`); a „2 145:törzs” (H7626) forráshiba szintén.
+A tapadt „N.szó” alakot a fordító részben szétválasztotta (EN 9 → HU 7 szócikk; H0559 „263.1Say” → „263. 1 Mondani”).
+
+**Mi véd ma.** A tagolás-kapu (`eszkozok/forditas_kapuk.py`, „tagolas”) a forrás minden általa felismert jelölőjét sorrendben
+megköveteli a fordításban. A jelentésszámok így a magyar szövegben is az angolt követik — de csak ott, ahol a sima szövegből a
+jelölő felismerhető; ahol a szeletelő téved (#102 seed-101: 13 hely), ott a kapu sem lát jelölőt.
+
+**Miért most.** A 8 099 szócikkből 674 kész (≈ 8%). A tagolás forrásáról a #102 1. lépése dönt (DT-F102d helyőrző, #102 1a.);
+ha a jelölt forrásra vált, a magyar szövegnek is hordoznia kell a jelentéshatárokat, különben az angol és a magyar tagolás elválik.
+Minél több adag készül el addig, annál drágább az utólagos illesztés vagy újrafordítás.
+
+**Döntés (`DONTESEK.md` DT-F38l):** l. ott az opciókat. A döntésig a következő adag nem indul.
+
 ## Megállási pont (minden adag végén)
 
 1. Az adag fordításai az `emeles.py rogzit` útján az `adat/forditasok.tsv`-be kerülnek, `allapot=sonnet` (~~`opus`~~ — a DT-F38e szerint), `modell` a tényleges modellnév (kötelező, nincs alapérték).
