@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-10-16",
-   "commit": "644fecca"
+   "commit": "fddf9a45"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -662,7 +662,7 @@
    "allapot": "wait",
    "brief_allapot": "nem_indult",
    "most": "Indítható a fugg szerint (a #76 után): az 1. lépéssel",
-   "fugg": "#76, #99 (kész), #107",
+   "fugg": "#76, #99 (kész), #107*",
    "tervezett": false,
    "reszletes": "",
    "roviden": "",
