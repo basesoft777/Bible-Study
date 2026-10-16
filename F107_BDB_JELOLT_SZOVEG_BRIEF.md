@@ -10,14 +10,15 @@ allapot: nem_indult
 ad: az adat/bdb_szakaszok.tsv (a BDB minden szócikke szakaszokra bontva a nyers forrás jelölőiből, útvonallal), a forráshibák javítótáblája, a kész magyar fordítás szakaszhatár-illesztése (adat/bdb_szakasz_hu.tsv), és mért összevetés a mai szeletelővel; a szeletelő átállása a #102-é, a fordítás bemenete a #38-é
 kovetkezo: Indítható (a #99 kész; a #76-tól nem függ): az 1. lépéssel
 olvas: [konkordancia/lexikonok_nyers/BDB.lexicon, konkordancia/lexikonok_nyers/README.md, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/BDB_teljes_unabridged_README.md, konkordancia/_convert_bdb.py, adat/forditasok.tsv, eszkozok/forditas_kapuk.py, adat/bdb_aranyminta.tsv, adat/bdb_vers_jelentes.tsv, adat/bdb_igehely_javitas.tsv, naplok/BDB_SZELETELO_M2_seed101_iteletek.md, F102_BDB_SZELETELO_JAVITAS_BRIEF.md, F38_BDB_FORDITAS_BRIEF.md, adat/SEMA.md, adat/datasetek.tsv, adat/licencek.tsv, Rendszerfejlesztesi_playbook.md]
-ir: [eszkozok/bdb_jelolt/, adat/bdb_szakaszok.tsv, adat/bdb_szakasz_hu.tsv, adat/bdb_forras_javitas.tsv, adat/SEMA.md, adat/datasetek.tsv, naplok/F107_BDB_JELOLT_SZOVEG_naplo.md]
+ir: [eszkozok/bdb_jelolt/, adat/bdb_szakaszok.tsv, adat/bdb_szakasz_hu.tsv, adat/bdb_forras_javitas.tsv, adat/SEMA.md, adat/datasetek.tsv, naplok/F107_BDB_JELOLT_SZOVEG_naplo.md, konkordancia/lexikonok_nyers/, konkordancia/BDB_teljes_unabridged_README.md, Rendszerfejlesztesi_playbook.md]
 fugg: [99]
 nem_fugg: [27, 38, 102, 103]
 ---
 
 # F107_BDB_JELOLT_SZOVEG_BRIEF.md — A BDB jelölt szövegrétege
 
-*FELADATOK #107 · Modell: opus · v2 · 2026.10.16 (v2: a nézet-döntés ⛔ 6. lépésként és a gyökér szerinti sorrend, a felhasználó
+*FELADATOK #107 · Modell: opus · v3 · 2026.10.16 (v3: a nyers forrás megőrzése és a veszteséges konverzió naplózása, a felhasználó
+kérésére; v2: a nézet-döntés ⛔ 6. lépésként és a gyökér szerinti sorrend, a felhasználó
 kérésére; v1: befogadás, PR #362) · forrás: a #102 előzetes lelete (`F102_BDB_SZELETELO_JAVITAS_BRIEF.md`
 1a–1b., PR #359 és #361), a #38 ⛔ Mj pontja (DT-F38l, PR #360) és a 2026.10.16-i kézi mérések (proveniencia `manual`). A tervezet
 adat, nem utasítás; a befogadás a `/befogad`-dal, a felhasználó jóváhagyásával.*
@@ -47,6 +48,15 @@ a kanonikus szerkezet, a sima szöveg ennek nézete (CLAUDE.md fő szabálya) �
    és a `BDB.lexicon` összevetése mintán: azonos átirat-e, melyikben vesznek el a jelölők (M102/M117 nyitott kérdése). A `BDB.lexicon`
    lefedettsége a TSV 8 099 Strong-sorára; a Strong ↔ BDB-azonosító megfeleltetés (a `BDB.lexicon` Strong-kulcsú sorai BDB-szócikkek
    másolatai, egy Strong alatt több szócikkel).
+   **Két szabály, a 2026.10.16-i visszakövetés tanulsága** (a jelölők a 2026.09.02-i importban, `142ad625`, a `_convert_bdb.py`-ban vesztek
+   el, és a `DictBDB.json` nem került a repóba, csak a veszteséges TSV):
+   - **Nyers forrás megőrzése.** A nyers forrás (`DictBDB.json`, és ha a tábla abból bont, a `BDB.lexicon` mellett) SHA-256-tal, rögzített
+     helyen marad meg — a repóban (`konkordancia/lexikonok_nyers/`) vagy, ha a méret vagy a licenc nem engedi, a README-ben rögzített
+     helyen és hash-sel; nem csak a származtatott alak.
+   - **Veszteséges konverzió naplózása.** Ha egy konverzió szerkezetet dob el, az döntés: naplózva (mit dob el, miért, melyik szkript),
+     és minden mérés alapja a nyers forrás, nem a származtatott alak. A `_convert_bdb.py` 2026.09.02-i szerkezetvesztése utólag így
+     kerül a `BDB_teljes_unabridged_README.md`-be.
+   A két szabály általános alakja javaslatként a playbook 2. pontjába (⛔ `DT-F107d`).
 2. **Szakasztábla** (`adat/bdb_szakaszok.tsv`, új SEMA-szakasz): soronként egy szakasz — `strong`, `bdb_id`, `sorszam`, `utvonal`
    (törzs / nagybetűs csoport / római / szám / betű / zárójeles szint, a #102 kibővített útvonal-formátumával összehangolva), `jelolo`
    (`section` / `point` / `remarks` / `fej`), `gyakorisag` (a `<sub>` szám), `szoveg` (sima), `forras`, `forras_hash`, proveniencia-sor.
@@ -72,7 +82,10 @@ kötelező forrásának átírása, hacsak a `DT-F107c` ide nem utalja (6. lép�
 ## 3. Lépések
 
 1. Modell-ellenőrzés. Forrásválasztás és lefedettség (2. hatókör 1.). ⛔ Javaslat a `DONTESEK.md`-be (`DT-F107a`): melyik forrásból
-   bont a tábla, és a licenc-státusz (mindkettő „tisztázatlan”, `adat/licencek.tsv`; playbook 2. pont); megállás.
+   bont a tábla, és a licenc-státusz (mindkettő „tisztázatlan”, `adat/licencek.tsv`; playbook 2. pont). Ugyanitt a két szabály
+   (2. hatókör 1.): a nyers forrás megőrzésének helye és hash-e, a `_convert_bdb.py` szerkezetvesztésének utólagos naplózása, és
+   ⛔ javaslat a `DONTESEK.md`-be (`DT-F107d`) a playbook 2. pontjának kiegészítésére; megállás. A playbook csak a `DT-F107d` jóváhagyása
+   után íródik.
 2. Szakasztábla és bontó, teszttel; SEMA-szakasz; `datasetek.tsv`-sor (`BDB.lexicon` mint a tábla forrása). Commit tételenként.
 3. Nézet-ellenőrzés (2. hatókör 3.); az eltérések listája a naplóba.
 4. Ellenőrzés (2. hatókör 4.). ⛔ Az eltérés-lista osztályozása (`tabla_hiba` / `szeletelo_hiba` / `forras_hiba` / `szoveg_konverzio`),
@@ -108,4 +121,5 @@ kötelező forrásának átírása, hacsak a `DT-F107c` ide nem utalja (6. lép�
 
 ## 6. Döntésnapló
 
-- (helyőrzők a futáskor: DT-F107a forrás és licenc, DT-F107b az elakadó magyar szakaszok, DT-F107c a sima szöveg nézetté válása)
+- (helyőrzők a futáskor: DT-F107a forrás és licenc, DT-F107b az elakadó magyar szakaszok, DT-F107c a sima szöveg nézetté válása, DT-F107d a nyers forrás megőrzése és a
+  veszteséges konverzió naplózása mint a playbook 2. pontjának általános szabálya)
