@@ -31,7 +31,7 @@ def _pilot_modul(nev):
     return m
 
 
-bdb_szelet = _pilot_modul('bdb_szelet')
+import bdb_szelet  # noqa: E402  (élesben a szerver mellett, DT-F99c (a); a pilot ugyanezt tölti be)
 
 JELLEG = {
     'forras': ('forrásadat', 'jelleg-forras', 'változtatás nélkül egy adatkészletből'),
@@ -874,7 +874,12 @@ def _torzsek_html(tl, elotag='bdb', talalt=None):
     return ki
 
 
-SZAKASZ_CIM = {'elo': 'Zárójeles előszócikk (más gyök)', 'arámi': "Arámi (Pe'al) rész", 'azonos_lemma': 'További homonima ugyanezen a lemmán', 'masik_lemma': 'Másik szó (más lemma)'}
+# DT-F99l (c) (felhasználó, 2026-10-15): a BDB-szeletelő „próba” jelöléssel élesedik; a lapon a NYERS mért pontosság áll (a seed-101 vak
+# minta, 200 véletlen igehely, jelentéspont: 184/200; Clopper–Pearson 95%), az ítélet utáni érték csak a naplóban (naplok/BDB_SZELETELO_M0.md 9.11)
+BDB_MERT_PONTOSSAG = ('Mért pontosság (jelentéspont, 200 véletlen igehely vak ellenőrzéssel, 2026-10-15): 92,0% '
+                      '(95%-os konfidencia-intervallum: 87,3–95,4%).')
+SZAKASZ_CIM = {'elo': 'Zárójeles előszócikk (más gyök)', 'arámi': "Arámi (Pe'al) rész", 'azonos_lemma': 'További homonima ugyanezen a lemmán', 'masik_lemma': 'Másik szó (más lemma)',
+               'tagolas': 'rész (a címszó fő tagolása)'}
 
 
 def _f_bdb_apparatus(K):
@@ -893,22 +898,29 @@ def _r_bdb_apparatus(d, K):
     if d['alias']:
         al = d['alias']
         ki += Markup('<p class="megj">A szócikk a(z) %s Strong-szám alatt áll (%s, szövegi hasonlóság %s; a BDB_strong_alias.tsv alias-párosítása).</p>') % (al['tabla_strong'], al['bdb_id'], al['hasonlosag'])
-    ki += Markup('<p class="megj">Gépi szeletelés (próba): a határokat a szócikk saját jelölői adják (gondolatjel, sorszámok, törzsnevek); hibás határ előfordulhat. A szöveg nem változik.</p>')
+    ki += Markup('<p class="megj">Gépi szeletelés (próba): a határokat a szócikk saját jelölői adják (gondolatjel, sorszámok, törzsnevek); hibás határ előfordulhat. A szöveg nem változik. %s</p>') % BDB_MERT_PONTOSSAG
     fej = a['fej']
     ki += resz('Címszó', Markup('<div class="cimszo"><span class="he" lang="he">%s</span><span>%s</span>%s<span class="helyek">%s igehely-hivatkozás a szócikkben</span></div>') % (
         fej.get('heber') or '', ' · '.join(x for x in (fej.get('atiras'), ('%s. címszó' % fej['homonima']) if fej.get('homonima') else '') if x),
         Markup('<span class="helyek">%s előfordulás (BDB)</span>') % fej['ossz'] if fej.get('ossz') else '', a['ref_ossz']))
     ki += resz('Alapjelentés és szófaj', Markup('<p class="jsz">%s</p>') % (a['alap'] or '—'))
     if a.get('szakaszok'):
-        reszek = Markup('')
-        for k, x in enumerate(a['szakaszok']):
-            cim = SZAKASZ_CIM['elo'] if x['szerep'] == 'elo' else (SZAKASZ_CIM['arámi'] if x['nyelv'] == 'arámi' else SZAKASZ_CIM[x['szerep']])
-            if x['szerep'] != 'elo' and x.get('jel'):
-                cim = '%s. %s' % (x['jel'], cim)
-            ny = Markup('<ul class="lista">%s</ul>') % Markup('').join(Markup('<li>%s</li>') % n for n in x['nyelvi']) if x['nyelvi'] else Markup('')
-            reszek += Markup('<details open><summary class="megj">%s · <span class="he" lang="he">%s</span> · %s%s</summary>%s%s</details>') % (
-                cim, x['heber'] or '', _rovid(x['alap'] or '—', 80), _helyek(x.get('ref')), ny, _torzsek_html(x['torzsek'], 'bdb-s%d' % k))
-        ki += resz('Ugyanabban a BDB-sorban további szakaszok (%d) — nem ennek a címszónak a szerkezete' % len(a['szakaszok']), reszek)
+        # F99 M2: a `tagolas` szerepű szakasz a címszó saját római számos fő tagolása (H1961, H1285), nem más szócikk
+        for tag_e, cimsor in ((False, 'Ugyanabban a BDB-sorban további szakaszok (%d) — nem ennek a címszónak a szerkezete'),
+                              (True, 'A címszó fő tagolása (%d rész, római számmal)')):
+            reszek, db = Markup(''), 0
+            for k, x in enumerate(a['szakaszok']):
+                if (x['szerep'] == 'tagolas') != tag_e:
+                    continue
+                db += 1
+                cim = SZAKASZ_CIM['elo'] if x['szerep'] == 'elo' else (SZAKASZ_CIM['arámi'] if x['nyelv'] == 'arámi' else SZAKASZ_CIM[x['szerep']])
+                if x['szerep'] != 'elo' and x.get('jel'):
+                    cim = '%s. %s' % (x['jel'], cim)
+                ny = Markup('<ul class="lista">%s</ul>') % Markup('').join(Markup('<li>%s</li>') % n for n in x['nyelvi']) if x['nyelvi'] else Markup('')
+                reszek += Markup('<details open><summary class="megj">%s · <span class="he" lang="he">%s</span> · %s%s</summary>%s%s</details>') % (
+                    cim, x['heber'] or '', _rovid(x['alap'] or '—', 80), _helyek(x.get('ref')), ny, _torzsek_html(x['torzsek'], 'bdb-s%d' % k))
+            if db:
+                ki += resz(cimsor % db, reszek)
     if a.get('nyelvi'):
         ki += resz('Nyelvi háttér (etimológia, rokon nyelvek)', Markup('<ul class="lista">%s</ul>') % Markup('').join(Markup('<li>%s</li>') % n for n in a['nyelvi']))
     if a.get('alaktan'):
@@ -990,6 +1002,34 @@ def _r_oshl(d, K):
     if hely:
         ki += Markup('<h4>BDB-helyek (az első %d)</h4>') % len(hely)
         ki += _lista([Markup('%s %s:%s (%s)') % (k, f, v, b) for b, k, f, v in hely])
+    return ki
+
+
+def _f_oshl_csalad(K):
+    d = q.oshl_csalad(K.con, K.strong)
+    return d if d is not None else {'nincs_oszlop': True}
+
+
+def _r_oshl_csalad(d, K):
+    """„Rokon szavak” (F99 M1): a gyök és a származékai Strong-linkkel; ha nincs család, kifejezett felirat (nem negatív lelet)."""
+    if d.get('nincs_oszlop'):
+        return Markup('<p class="ures">Az adatbázisban még nincs OSHL-gyökcsalád adat (a pardes.db újraépítése után jelenik meg).</p>')
+    if not d['csaladok']:
+        if 'single' in d['tipusok']:
+            return Markup('<p class="ures">Nincs OSHL-gyökcsalád: az OSHL a szót családon kívüliként jelöli (single). Nem negatív lelet.</p>')
+        return Markup('<p class="ures">Nincs OSHL-gyökcsalád (az OSHL-ben ehhez a szóhoz nincs gyökcsalád-adat). Nem negatív lelet.</p>')
+    ki = Markup('')
+    for cs in d['csaladok']:
+        oid, st, lemma, atiras, szofaj, def_en, gyok = cs['gyok']
+        nev = gyok if gyok and gyok != '—' else lemma
+        ki += Markup('<h4>Gyök: %s %s</h4>') % (_heb(nev), strong_link(K, st) if st and st != '—' else Markup('(Strong-szám nélküli gyök-bejegyzés)'))
+        sorok = []
+        for t_oid, t_st, t_lemma, t_atiras, t_szofaj, t_def in cs['tagok']:
+            sorok.append([strong_link(K, t_st) if t_st and t_st != '—' else '—', _heb(t_lemma), t_atiras or '', t_szofaj or '', t_def or ''])
+        if sorok:
+            ki += _tabla(['Strong', 'Lemma', 'Átírás', 'Szófaj', 'Angol meghatározás'], sorok)
+        else:
+            ki += Markup('<p class="ures">A gyök-bejegyzésnek nincs felsorolt származéka.</p>')
     return ki
 
 
@@ -1146,6 +1186,8 @@ REGISZTER = [
     B('szo.sdbh', 'szo_h', 'Szemantikai domén (SDBH)', 'forras', ('sdbh_domenek',), _f_sdbh, _r_sdbh, 'üres eredmény nem negatív lelet'),
     B('szo.sece_h', 'szo_h', 'SECE-szócikk (héber)', 'forras', ('sece_h',), _f_sece_h, _r_szoveg),
     B('szo.oshl', 'szo_h', 'OSHL: TWOT- és BDB-azonosító, BDB-helyek', 'forras', ('oshl_lexikalis_index', 'oshl_bdb_igehelyek'), _f_oshl, _r_oshl),
+    B('szo.oshl_csalad', 'szo_h', 'Rokon szavak (OSHL-gyökcsalád)', 'forras', ('oshl_lexikalis_index',), _f_oshl_csalad, _r_oshl_csalad,
+      'az OSHL <etym> eleme: a gyök és a származékai; üres család nem negatív lelet'),
     B('szo.tbesh', 'szo_h', 'Bővített Strong-szócikk (TBESH)', ('forras', 'gepi'), ('tbesh',), _f_tbesh, _r_tbesh),
     B('szo.tw_h', 'szo_h', 'translationWords', 'forras', ('tw_szocikkek',), _f_tw, _r_tw),
     B('szo.nyelvtani', 'szo_h', 'Nyelvtani Strong-számok szűrése', 'gepi', ('grammatikai_strongok',), _f_nyelvtani, _r_nyelvtani),

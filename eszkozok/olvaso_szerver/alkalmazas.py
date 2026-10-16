@@ -265,8 +265,8 @@ def letrehoz(db_ut=None, kiadas=None, konfig_dir=None, hozzaferes=None):
 
 def figyelt_fajlok(szerver_dir=None):
     """Az újratöltő által figyelt, nem Python-modul fájlok (#100): a Werkzeug alapból csak a betöltött modulokat nézi, a sablonokat,
-    a konfigurációt és a statikus fájlokat nem; a pilot `bdb_szelet.py`-ja (a BDB-bontás) modulként töltődik be, de kívül esik a szerver
-    könyvtárán. A tervező mód által futás közben írt `arculat.json` és `.elozo`-ja KIMARAD: a mentés újraindítás nélkül hat (a szerver
+    a konfigurációt és a statikus fájlokat nem. A BDB-szeletelő (`bdb_szelet.py`) a DT-F99c óta a szerver könyvtárában él, a Werkzeug
+    modulként figyeli. A tervező mód által futás közben írt `arculat.json` és `.elozo`-ja KIMARAD: a mentés újraindítás nélkül hat (a szerver
     az `arculat.hash`-ből követi), a figyelése minden mentésnél újraindítaná a szervert."""
     d = szerver_dir or os.path.dirname(os.path.abspath(__file__))
     ki = []
@@ -276,7 +276,6 @@ def figyelt_fajlok(szerver_dir=None):
                 if n.startswith('arculat.json') or n.endswith('.pyc'):
                     continue
                 ki.append(os.path.join(gyoker, n))
-    ki.append(os.path.join(os.path.dirname(d), 'olvaso_pilot', 'bdb_szelet.py'))
     return sorted(f for f in ki if os.path.isfile(f))
 
 

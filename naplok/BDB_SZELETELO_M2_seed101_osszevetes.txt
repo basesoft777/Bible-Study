@@ -1,0 +1,46 @@
+# M2 minta-összevetés: kulcs=naplok/BDB_SZELETELO_M2_minta_seed101_kulcs.tsv; kitöltött: naplok/BDB_SZELETELO_M2_seed101_kitoltott_A.tsv, naplok/BDB_SZELETELO_M2_seed101_kitoltott_B.tsv
+veletlen	200
+konyv_vers_egyezik	197
+jelentespont_egyezik	184
+jelentespont_elotagkent_helyes	185
+VERS	M011	H6485	Amos 3:2	kulcs: Ámós 3:2	kitoltott: Ám 3:2
+VERS	M072	H1250	8:5	kulcs: Ámós 8:5	kitoltott: Ám 8:5
+VERS	M119	H3318	Amos 4:3	kulcs: Ámós 4:3	kitoltott: Ám 4:3
+JP	M008	H4519	kulcs:   -/1/b	kitoltott: -/1/b/(2)/δ	előtagként helyes
+JP	M011	H6485	kulcs:   Qal/3	kitoltott: Qal/A/3	
+JP	M028	H7379	kulcs:   -/2	kitoltott: -/3	
+JP	M029	H6440	kulcs: II  -/4/e	kitoltott: -/4/e r:II	
+JP	M031	H5117	kulcs:   Qal/2/c	kitoltott: Hiph`il/B/2	
+JP	M043	H8057	kulcs:   -/1	kitoltott: -/2	
+JP	M102	H0559	kulcs:   Qal/-	kitoltott: Qal/1	
+JP	M117	H0539	kulcs: I  Niph'al/-	kitoltott: I Niph`al/4	
+JP	M130	H8478	kulcs:   -/2/a	kitoltott: -/2/a r:II	
+JP	M140	H7626	kulcs:   -/2	kitoltott: -/1/a	
+JP	M146	H7227	kulcs: I  fej	kitoltott: I -/1/g	
+JP	M162	H3318	kulcs:   fej	kitoltott: Qal/1/a	
+JP	M203	H3068	kulcs:   -/2/a	kitoltott: -/2/a r:II	
+JP	M236	H5437	kulcs:   Qal/1/c	kitoltott: Qal/2/c	
+JP	M238	H5608	kulcs:   Pu'al/1/b	kitoltott: -/1/b	
+JP	M243	H1129	kulcs:   Qal/-/i	kitoltott: Qal/1/i	
+szures_veletlen	200	egyezik 197
+SZ	M049	2:6	kulcs: bibliai 	kitoltott: bizonytalan: a forrás „2:6”-ot ír, de a tartalom és az alaktan (Exod 2:16, 2:19)
+SZ	M121	3:13	kulcs: bibliai 	kitoltott: bizonytalan: a forrás „3:13”-at ír, de a szuffixumos alak és a jelentésrész „3:1
+SZ	M242	1Sam 2:6	kulcs: bibliai 	kitoltott: bizonytalan: a nyers „1Sam 2:6” valószínűleg a szócikk 1Sam 26:6-jának (Ahimelek
+szures_szurt	25	egyezik 22
+SZ	M001	116:15	kulcs: kiszurt nem_bibliai	kitoltott: bibliai
+SZ	M109	23:31	kulcs: kiszurt sigla_kozel	kitoltott: bibliai
+SZ	M159	1:1	kulcs: kiszurt nem_bibliai	kitoltott: bibliai
+szures_bizonytalan	25	egyezik 12
+SZ	M023	33:14	kulcs: bizonytalan orokles_hibas	kitoltott: bibliai
+SZ	M051	17:9	kulcs: bizonytalan orokles_hibas	kitoltott: bibliai
+SZ	M054	Lev 7:30	kulcs: bibliai sigla_igazolt	kitoltott: alhivatkozas: kommentár-hely (Di^Lev 7:30, Dillmann)
+SZ	M065	Amos 2:2	kulcs: bibliai sigla_igazolt	kitoltott: alhivatkozas: kommentár-hely (Dr^Amos 2:2, Driver)
+SZ	M071	13:2	kulcs: bizonytalan orokles_hibas	kitoltott: bibliai
+SZ	M138	15:15	kulcs: bizonytalan orokles_hibas	kitoltott: bibliai
+SZ	M147	Gen 10:22	kulcs: bibliai sigla_igazolt	kitoltott: alhivatkozas: kommentár-hely (COT^Gen 10:22)
+SZ	M148	23:27	kulcs: bizonytalan orokles_hibas	kitoltott: bibliai
+SZ	M149	Deut 2:11	kulcs: bibliai sigla_igazolt	kitoltott: alhivatkozas: kommentár-hely (Dr^Deut 2:11)
+SZ	M191	Josh 1:7	kulcs: bibliai sigla_igazolt	kitoltott: alhivatkozas: kiadás-hivatkozás (Baer^Josh 1:7, a helyesírás forrása)
+SZ	M198	Isa 29:3	kulcs: bibliai sigla_igazolt	kitoltott: alhivatkozas: kommentár-hely (Du^Isa 29:3)
+SZ	M223	Hosea 2:19	kulcs: kiszurt sigla_kozel	kitoltott: bibliai
+SZ	M230	1Sam 14:18	kulcs: bibliai sigla_igazolt	kitoltott: alhivatkozas: kommentár-hely (Dr^1Sam 14:18)

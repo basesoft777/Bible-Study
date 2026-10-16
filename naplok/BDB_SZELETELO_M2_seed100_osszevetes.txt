@@ -1,0 +1,62 @@
+# M2 minta-összevetés: kulcs=naplok/BDB_SZELETELO_M2_minta_seed100_kulcs.tsv; kitöltött: naplok/BDB_SZELETELO_M2_seed100_kitoltott_A.tsv, naplok/BDB_SZELETELO_M2_seed100_kitoltott_B.tsv
+veletlen	200
+konyv_vers_egyezik	198
+jelentespont_egyezik	182
+jelentespont_elotagkent_helyes	181
+VERS	M013	H6666	143:1	kulcs: Mal 143:1	kitoltott: Zsolt 143:1
+VERS	M134	H0594	7:7	kulcs: Ámós 7:7	kitoltott: Ám 7:7
+JP	M019	H5704	kulcs: I -/3	kitoltott: III I/3	
+JP	M037	H8438	kulcs: I -/2	kitoltott: -/2	
+JP	M052	H7832	kulcs:  fej	kitoltott: Qal/1/a	
+JP	M065	H7704	kulcs:  -/4/f	kitoltott: -/1/f	
+JP	M076	H2022	kulcs:  -/1/k	kitoltott: -/1/m	
+JP	M078	H6213	kulcs: II Qal/2	kitoltott: I Qal/2	
+JP	M098	H9005	kulcs:  -/6	kitoltott: -/5/g/(c)	
+JP	M100	H9003	kulcs:  -/2	kitoltott: I I/2	
+JP	M105	H0905	kulcs: III -/1/b	kitoltott: II -/1/b	
+JP	M114	H5973	kulcs:  -/5/a	kitoltott: -/a	
+JP	M129	H0389	kulcs:  -/2/b	kitoltott: -/1	
+JP	M149	H4911	kulcs: I Qal/-	kitoltott: II Qal	
+JP	M161	H6086	kulcs:  -/1/c	kitoltott: -/2/a	
+JP	M174	H5973	kulcs:  -/5/a	kitoltott: -/a	
+JP	M195	H6331	kulcs:  fej	kitoltott: Hiph`il/1/b	
+JP	M210	H0758	kulcs:  -/2/a	kitoltott: -/a	
+JP	M230	H6258	kulcs:  -/2/g	kitoltott: -/2	
+JP	M240	H1138	kulcs:  -/-/a	kitoltott: -/1/a	
+szures_veletlen	200	egyezik 194
+SZ	M006	Joel 1:4	kulcs: bibliai 	kitoltott: bizonytalan: a forrás Joel 1:4-et ír, de a סַעַר Jón 1:4, 12-ben áll (Jóel 1:4 a
+SZ	M064	Psa 9:8	kulcs: bibliai 	kitoltott: bizonytalan: a שְׁכֵחֵי אֱלֹהִים a Zsolt 9:18-ban áll; a „9:8” valószínűleg szám
+SZ	M070	1Chr 1:36	kulcs: bizonytalan sigla_kozel	kitoltott: bibliai
+SZ	M079	, 6	kulcs: bibliai 	kitoltott: bizonytalan: a forrás „Ezra 7:4, 6”-ot ír, de a יְהִיב Pe`il-alak a Dán 7:4, 6-b
+SZ	M146	2Kin 20:9	kulcs: bizonytalan sigla_kozel	kitoltott: bibliai
+SZ	M158	Gen 16:13	kulcs: kiszurt sigla_tapadt	kitoltott: bibliai
+szures_szurt	25	egyezik 22
+SZ	M001	Judg 15:9	kulcs: kiszurt sigla_tapadt	kitoltott: bibliai
+SZ	M075	Lev 11:30	kulcs: kiszurt sigla_tapadt	kitoltott: bibliai
+SZ	M121	Ges 41:19	kulcs: kiszurt nem_bibliai	kitoltott: bizonytalan: „Ges 41:19 Thes” – szerzői hivatkozás (Gesenius, Thesaurus); a 41:1
+szures_bizonytalan	25	egyezik 0
+SZ	M003	17:6	kulcs: bizonytalan sigla_kozel	kitoltott: bibliai
+SZ	M008	Job 15:32	kulcs: bizonytalan sigla_kozel	kitoltott: bibliai
+SZ	M010	Deut 1:7	kulcs: bizonytalan sigla_kozel	kitoltott: alhivatkozas: a Mésa-felirat (MI) 7. sora, nem bibliai hely
+SZ	M022	5:10	kulcs: bizonytalan sigla_kozel	kitoltott: bibliai
+SZ	M046	1Chr 7:16	kulcs: bizonytalan sigla_kozel	kitoltott: bibliai
+SZ	M083	, 17	kulcs: bizonytalan sigla_kozel	kitoltott: bibliai
+SZ	M085	Isa 17:2	kulcs: bizonytalan sigla_kozel	kitoltott: bibliai
+SZ	M099	1Chr 8:12	kulcs: bizonytalan sigla_kozel	kitoltott: bibliai
+SZ	M104	3:17	kulcs: bizonytalan sigla_kozel	kitoltott: bibliai
+SZ	M123	Psa 45:5	kulcs: bizonytalan sigla_kozel	kitoltott: bibliai
+SZ	M131	Ezek 5:11	kulcs: bizonytalan sigla_kozel	kitoltott: bibliai
+SZ	M135	Psa 59:10	kulcs: bizonytalan sigla_kozel	kitoltott: bibliai
+SZ	M160	Jer 9:12	kulcs: bizonytalan sigla_kozel	kitoltott: bibliai
+SZ	M165	Deut 14:17	kulcs: bizonytalan sigla_kozel	kitoltott: bibliai
+SZ	M171	Jer 43:6	kulcs: bizonytalan sigla_kozel	kitoltott: bibliai
+SZ	M176	Josh 17:11	kulcs: bizonytalan sigla_kozel	kitoltott: alhivatkozas: Schrader COT jegyzetének helye
+SZ	M179	Isa 28:25	kulcs: bizonytalan sigla_kozel	kitoltott: bibliai
+SZ	M189	Isa 42:1	kulcs: bizonytalan sigla_kozel	kitoltott: bibliai
+SZ	M203	Josh 13:22	kulcs: bizonytalan sigla_kozel	kitoltott: bibliai
+SZ	M223	1Chr 4:17	kulcs: bizonytalan sigla_kozel	kitoltott: bibliai
+SZ	M229	2Sam 8:3	kulcs: bizonytalan sigla_kozel	kitoltott: alhivatkozas: Driver kommentárjának helye
+SZ	M231	Ezra 8:2	kulcs: bizonytalan sigla_kozel	kitoltott: bibliai
+SZ	M235	23:1	kulcs: bizonytalan sigla_kozel	kitoltott: bibliai
+SZ	M245	Judg 11:26	kulcs: bizonytalan sigla_kozel	kitoltott: bibliai
+SZ	M249	Judg 7:11	kulcs: bizonytalan sigla_kozel	kitoltott: bibliai

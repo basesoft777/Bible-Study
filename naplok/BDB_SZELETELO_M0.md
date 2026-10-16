@@ -1,0 +1,678 @@
+# BDB_SZELETELO — M0: aranyminta és mérések (F99.1–F99.3)
+
+*Feladat: FELADATOK #99 (`F99_BDB_SZELETELO_BRIEF.md`), ág: `claude/bdb-szeletelo`. Modell: `claude-opus-5-5` (a brief `modell: opus` mezőjével egyezik). Állapot: az M0 mind az öt lépése kész (a 4. lépés, az OSHL `<etym>`, a F99.8-ban, 5. szakasz); a döntések a `DONTESEK.md`-ben (DT-F99a–c, e, f eldöntve, DT-F99d az M6-ra előjegyezve). Eszköz: `eszkozok/olvaso_pilot/bdb_szelet_m0.py` (csak olvas; `--dump`, `--arany`, `--hivatkozas`, `--jelolo`).*
+
+## 0. Rendezett összegzés a zárás előtt (F99.29, 2026-10-15)
+
+*A részletek a 2–9.14. szakaszban; a zárójelentés: `naplok/BDB_SZELETELO_zaras.md`. **Hatóköri döntés (felhasználó, 2026-10-15):** a #99
+M0–M2 tartalommal zárul („próba”); az M3–M6 és a szeletelő javítása külön feladat (brief-tervezetek a `beerkezo/`-ban). A független
+ellenőr (`naplok/ELLENOR_F99.md`) eltéréseit a 9.13–9.14 és az F99.35–F99.44 javítja; a zárás a célzott újraellenőrzés után.*
+
+| mérföldkő | állapot | bizonyíték |
+|---|---|---|
+| M0 aranyminta és mérések | **kész** | 2–5. szakasz; DT-F99a–c, e, f |
+| M1 gyökcsalád (OSHL `<etym>`) | **kész** | 9.1; `szo.oshl_csalad` blokk |
+| M2 hivatkozás-feloldás, vers → jelentés tábla | **kész, a mérce nem teljesült** | 9.3–9.11; seed-101: könyv/vers 0 valódi hiba, jelentéspont 184/200 = 92,0% (95% CI 87,3–95,4%), az ítélet után 93,5% (89,1–96,5%); DT-F99l (c): „próba” jelöléssel élesítve, a mért szám a szó-lapon |
+| M3 jelentésen belüli tagolás (használati csoportok) | **nem készült el** | a szeletelő csoportokra nem bont (az aranyminta 184 várt csoportjából 0); a DT-F99b terminológia nincs bevezetve |
+| M4 megjelenítés („ebben a versben”, kattintható helyek, pontos hivatkozásszám, `bdb_jelek.tsv`, felhasználói próba) | **nagyrészt nem készült el** | kész: a szeletelő éles modul (DT-F99c), a „próba” felirat a mért pontossággal (DT-F99l); nincs: kattintható helyek, „ebben a versben” kiemelés és „nem idézi” felirat, csoportsorok, `bdb_jelek.tsv`, a ⛔ felhasználói próba |
+| M5 héber szórend | **nem készült el** | — |
+| M6 modell-magyarázat próbája | **nem készült el** | `adat/bdb_magyarazat_proba.tsv` nincs; DT-F99d nyitott |
+| Elfogadás: aranyminta 0 eltérés | **nem teljesült** | EN 7/32, HU 4/14 hibás szócikk; szerkezeti eltérés 71/72 |
+
+**A tábla zárásakor** (`adat/bdb_vers_jelentes.tsv`): 160 616 sor; csomópont 122 457, `fej` 8 759, `tagolatlan` 29 400; `resz` 6 010;
+`szurt=1` 528; Károli-vers 159 187 sorban (`atkulcsolt_f85` 2 774, `atkulcsolt_karoli_szoveg` 218 — az Ézs 3, DT-F99n —, `azonos_tahot` 551, `nincs_karoli` 201; `sigla_igazolt` 487; DT-F99h (b), F99.35, F99.47; a generátor számlálása, 2026-10-16).
+
+**Külön feladatba (a hatóköri döntés szerint):** a szeletelő javítása (`beerkezo/BDB_SZELETELO_JAVITAS_brief_tervezet.md`), M3
+(`BDB_M3_TAGOLAS_`, a DT-F99b (4) #38-kötésével), M4 (`BDB_M4_MEGJELENITES_`, DT-F99m), M5 (`BDB_M5_SZOREND_`), M6 (`BDB_M6_MAGYARAZAT_`,
+DT-F99d) — mind `brief_tervezet.md`, befogadás a `/befogad`-dal. Nyitott tételek: N-F99a–e.
+
+## 1. Eredmény röviden
+
+- **Aranyminta** (`adat/bdb_aranyminta.tsv`, SEMA 2.28): 32 szócikk, 14 magyar fordítással is; benne a beszélgetés nyolc szócikke. A minta a mérések előtt készült, a szócikkek szövegének olvasásából; a független ellenőr átnézte (`naplok/ELLENOR_F99_minta.md`: 11 eltérés, 5 bizonytalan pont), a felhasználó döntései szerint javítva (F99.6, 2.4): 658 sor, ebből 607 `fuggetlen_ellenor`, 51 `modell_ellenorizetlen` (az új vagy javított sorok a H6440, H7307, H0430-on kívül; a három szócikket egy második modell-ellenőrzés nézte át, F99.7). **Helyesbítés (ELLENOR_F99, 2026-10-15): a minta átnézése modell-ellenőrzés volt** — a 32 szócikket a független ellenőr (modell), a H6440, H7307, H0430-at egy második modell-ellenőr nézte át; a felhasználó az eltérésekről döntött, de a szócikkeket nem nézte át (a DT-F99e „a nyolc szócikket a felhasználó is átnézi” része nem teljesült). `felhasznalo` jelölésű sor nincs.
+- **A mai szeletelő az aranymintán** (a javított mintán): szerkezeti eltérés nélkül 15 / 32 szócikk angolul, 7 / 14 magyarul; a használati csoportokat (184 várt csoport) egyáltalán nem bontja; a jelentéscímek 169 / 195 (magyar) és 24 / 43 (angol) esetben egyeznek. A 0 eltérés feltétele messze van; a hibák hét osztályba esnek (2.3).
+- **Hivatkozások** (angol BDB, 8099 szócikk): 160 459 hivatkozás 8025 szócikkben — 107 321 kiírt könyvvel, 42 397 örökölt, 10 738 vesszős vers-folytatás, 3 feloldhatatlan. Álhivatkozás-jelölt 1062 (368 nem bibliai mű, 253 tapadt sigla, 441 közeli sigla), és 790 a nemi tanú („noun masculine^Gen 1:27”), amely **valódi** bibliai hivatkozás. Az MT → Károli átkulcsoláshoz a brief forrása, a `Karoli_versmegfeleltetes.tsv`, a hivatkozások 89%-ánál (141 959) nem ad MT-számot; a Macula `karoli` oszlopa mindenre ad, de ismert hibás régiókkal (DT-F99a).
+- **OSHL `<etym>`** (5. szakasz): main 2643, sub 4368, single 574; a BDB-tábla 8099 Strongjából 5310-nek van gyökcsaládja; a H3915 לַיְלָה `single` (nincs családja).
+- **Bevezetők** (angol): a csoport-bevezetők túlnyomó része mondatkezdő vagy vessző utáni helyzetben áll, jelentéshatáron ritkán; az „absolute” 663-szor az alaktanban (status absolutus) áll, nem használati csoport. A kész magyar szócikkekben ugyanannak a bevezetőnek két-három alakja él (followed by: „utána” 527, „követi” 302, ragos héber 460), és az angol–magyar szám szócikkenként ritkán egyezik (DT-F99b).
+
+## 2. Aranyminta (M0.1)
+
+### 2.1 Összetétel és módszer
+
+| Csoport | Szócikkek |
+|---|---|
+| a beszélgetés nyolc szócikke (mind magyarul is) | H1242 בֹּקֶר, H0776 אֶרֶץ, H7451 רַע, H3615 כָּלָה, H0559 אָמַר, H6440 פָּנֶה, H7307 רוּחַ, H0430 אֱלֹהִים |
+| további magyar (az F60.35 átnézés nehéz esetei) | H7121, H0157, H3027, H0834, H2490, H1157 |
+| csak angol: több törzsű ige | H3176, H5203, H6504, H4900, H8213 |
+| csak angol: homonima-sor, jelöletlen második címszó | H6696 (II–IV), H4686, H4060, H5766 (עָוֶל + עַוְלָה), H8213 (+ arámi שְׁפֵל) |
+| csak angol: arámi ige | H1124, H5648, H2939 |
+| csak angol: főnév, tulajdonnév, csonk | H5145, H4111, H5022, H0196, H0382, H5379 |
+
+Az eljárás: a `--dump` a szócikk szövegét a jelölő-jelöltek (gondolatjel, törzsnév, szám, betű, római címszó) előtt tördelve és a csoport-bevezető jelöltekkel írta ki; a várt szerkezetet ebből, a szöveg olvasásával rögzítettem, angolul és (ahol van) magyarul. A szeletelő mai kimenete a dumpban látszott, de nem forrása a mintának; ahol eltért, a szöveg döntött (pl. H5203: a „(on ground, compare Niph`al 1)” hivatkozás, nem törzsfejléc). A minta szintjei: szócikk (címszó, homonima-szám), szakasz, törzs, jelentés, alpont, csoport; minden csomóponthoz szövegkezdet (horgony) és jelentéscím. Ahol a forrás hiányos (H0834 שֶׁ: a 3. jelölő hiányzik, a „b.” kétszer áll), `kihagy` sor zárja ki a részfát, okkal.
+
+**A csoport-sorok** a DT-F99b előtti, szigorú jelöltlistán állnak: mondatkezdő (`;` `.` `:` `—` után) `absolute`, `followed by`, `with` + héber / accusative / suffix, `figurative`, `Inf. abs. as adverb`, `in phrase(s)`, `opposed to`, `especially`, valamint a zárójeles harmadik szint `(1)`, `(a)`. Az alpont első tagmondata (pl. H1242 1/e „opposed to עֶרֶב”) az alpont feje, nem csoport; a „so” és az „also” nem nyit csoportot (a BDB-ben a felsorolt igehelyek folytatása). Ha a DT-F99b mást dönt, a csoport-sorok átírandók (a többi szint független tőle).
+
+### 2.2 Összevetés a mai szeletelővel
+
+`# Aranyminta-összevetés: scope=adat/bdb_aranyminta.tsv (32 szócikk, F99.6-os javított minta) × bdb_szelet.szeletel | forras=BDB_teljes_unabridged.tsv@d4b15b2faea6 + forditasok.tsv@f01130a1be9a + bdb_szelet@9f3f57ab | ts=2026-10-15T14:50` (az első, javítás előtti futás: `edf8ce69`, 2026-10-15T14:00: eltérés nélkül 16 / 32 és 7 / 14, 151 csoport) (WSL venv, a címekhez a szerver `blokkok._fo_cim` és `jelentes_cim` függvénye)
+
+| Strong | várt csomópont | csoport | EN szerkezeti eltérés | HU szerkezeti eltérés | HU/EN cím-eltérés |
+|---|---|---|---|---|---|
+| H0196, H0382, H5379 | 0 | 0 | 0 | — | 0 |
+| H5022 | 0 | 0 | 1 (fölösleges 1) | — | 0 |
+| H4111 | 2 | 0 | 0 | — | 1 |
+| H2939 | 1 | 0 | 1 (hiányzik 1) | — | 0 |
+| H3176 | 8 | 5 | 2 (hiányzik 2) | — | 2 |
+| H5203 | 9 | 0 | 0 | — | 3 |
+| H6504 | 10 | 1 | 5 (hiányzik 3, fölösleges 2) | — | 0 |
+| H4900 | 10 | 1 | 2 (hiányzik 2) | — | 1 |
+| H6696 | 7 | 6 | 1 (fölösleges 1) | — | 2 |
+| H4686 | 3 | 0 | 0 | — | 1 |
+| H5145 | 7 | 0 | 0 | — | 1 |
+| H5766 | 4 | 0 | 7 (hiányzik 4, fölösleges 3) | — | 0 |
+| H8213 | 10 | 1 | 3 (hiányzik 2, fölösleges 1) | — | 3 |
+| H4060 | 5 | 0 | 0 | — | 2 |
+| H1124 | 2 | 3 | 0 | — | 0 |
+| H5648 | 6 | 0 | 0 | — | 3 |
+| H1242 | 10 | 6 | 0 | 0 | 2 |
+| H0776 | 22 | 2 | 0 | 0 | 3 |
+| H7451 | 22 | 7 | 8 (hiányzik 8) | 8 (hiányzik 8) | 1 |
+| H3615 | 23 | 13 | 12 (hiányzik 7, fölösleges 5) | 0 | 1 |
+| H0559 | 8 | 11 | 5 (hiányzik 4, rossz kezdet 1) | 1 (hiányzik 1) | 2 |
+| H6440 | 45 | 35 | 40 (hiányzik 31, fölösleges 9) | 40 (hiányzik 31, fölösleges 9) | 1 |
+| H7307 | 40 | 7 | 0 | 0 | 1 |
+| H0430 | 15 | 4 | 0 | 0 | 3 |
+| H7121 | 43 | 20 | 0 | 0 | 5 |
+| H3027 | 34 | 33 | 28 (hiányzik 24, fölösleges 4) | 28 (hiányzik 24, fölösleges 4) | 3 |
+| H0834 | 50 | 16 | 31 (hiányzik 29, rossz kezdet 2) | 30 (hiányzik 29, rossz kezdet 1) | 1 |
+| H2490 | 30 | 4 | 6 (hiányzik 4, fölösleges 2) | 9 (hiányzik 7, fölösleges 2) | 1 |
+| H1157 | 5 | 2 | 1 (rossz kezdet 1) | 1 (rossz kezdet 1) | 1 |
+| H0157 | 10 | 7 | 1 (rossz kezdet 1) | 0 | 1 |
+
+Összesen: szerkezeti eltérés nélküli szócikk angolul 15 / 32, magyarul 7 / 14; eltérés 173 (EN) és 143 (HU) — benne a címek; csoport: 184 várt, 0 bontva. A cím-eltérés a megjelenített nyelven számít (a magyar fordítású szócikkeknél magyarul).
+
+### 2.3 A hibaosztályok (a minta szövegéből)
+
+1. **Pont nélküli személyszám jelentés-sorszámnak** (az F60.35 szabálya csak a ponttal álló alakot zárja ki): H3615 EN („3 feminine singular”, „1 singular”), H0157 EN („1 singular אֵהָ֑ב”), H1157 („1 plural בַּעֲדֵנוּ”, magyarul is), H6696 IV („1 singular suffix”). A magyar fordítás ponttal írja, ezért magyarul a H3615 és a H0157 helyes.
+2. **Könyvnév része jelölőnek** („1 Kings 21”, „1 Samuel 14”, „2 Chron”): H5022, H0559 EN (az igazi 1. jelentés „263.1Say” tapadt alakban áll, az „1 Kings 5:19” lett az 1.).
+3. **Törzsfejléc írásjel nélkül**: igehely vagy idézet után (H6504 „Est 3:8 Hiph`il Perfect”, H0559 „… to God.' Hiph`il Perfect”), illetve a szófaj után az egyetlen törzs (H2939 „verb Pa`el feed”). A H6504-ben a Hiph`il két jelentése a Pu`al alá került.
+4. **Jelölő hivatkozó törzsnév után**: H4900 „compare Niph`al 6. trail seed” — a 6. és 7. Qal-jelentés elvész (az 5.-be olvad).
+5. **Jelöletlen második címszó** (római szám nélkül, mondat közben: nőnemű alak, al-címszó, arámi címszó): H5766 עַוְלָה, H7451 רָעָה, H8213 שְׁפֵל, H3027 יַד, H0834 בַּאֲשֶׁר / מֵאֲשֶׁר / כַּאֲשֶׁר / שֶׁ. A számozott jelentések a fő címszóhoz kerülnek, vagy elvesznek. **Római homonima-fej előfordulásszámmal** („II. רַע_126 noun”, magyarul „II. [חלל] denominativum ige”): a `CIM` minta nem ismeri fel (H7451, H2490 HU). **Fő rész római számmal** (H6440 „II. מְּנֵי with prepositions”): nem homonima, de a számozás újraindul; a mai szeletelő a II. 1–8-at az I. 7–8 alá teszi.
+6. **Elveszett számozott jelentések** a sorrend-feltétel miatt: H3027 4–5 (a „4 יָד is used…” nem jelölő a szeletelőnek), H2490 III Hiph`il 2, a tapadt alpont-jelölő („c.as to hands”, H3027 1/c).
+7. **Csoport és cím**: csoportbontás nincs. A cím-eltérések jellemzően: a cím a használati megjegyzést is viszi („wait, tarry for, followed by לְ”, „make, accusative of thing”); a `=` határ levágja a jelentést („Képletesen = erő, hatalom” → „Képletesen”); a héber szó a címben megszakítja („jelenlét, személy, a ׳י-é” → „jelenlét, személy, a”); a szó eleji zárójel kiesik („(szél)irány” → „irány”); igehellyel vagy héberrel kezdődő jelentésnél a cím a kettőspont előtti egy szó („all Isaiah”).
+
+8. **(F99.6) OCR-torzult jelölők**: a forrásban a jelölő tapadt vagy torzult alakban áll (`-1בְּיַד`, `-2אֶליַֿד`, `3as a conjunction`, `(β)`, `(ε)`); a felhasználó döntése szerint ezek jelölők (H3027 5/a–5/h, H0834 שֶׁ 3., H0430 4/b, H6440 II 7/a). A H3176 Hiph`il két számozatlan, önálló jelentése (`okkod=szamozatlan_jelentes`) a szeletelőnek egy szövegtömb.
+
+**Ami jó:** a számozott jelentések és alpontok az egyszerű főnévi és igei szócikkekben (H1242, H0776, H7307, H0430, H7121, H5145, H4060, H5648) hibátlanok mindkét nyelven; a szakasz-felismerés a szabályos „II. <héber> noun” fejeknél (H4686, H4060, H6696) működik.
+
+### 2.4 A független ellenőrzés és a javítás (F99.5–F99.6)
+
+A független ellenőr (`naplok/ELLENOR_F99_minta.md`) 11 eltérést (E1–E11) és 5 bizonytalan pontot (B1–B5) talált; a felhasználó döntései (2026-10-15) szerint a minta javítva (`adat/bdb_aranyminta.tsv`, 622 → 658 sor):
+
+| Szócikk | Változás | Döntés |
+|---|---|---|
+| H3027 | 5/a: (1), (2) csoport (az 5/b-ből átkerült (1) és az OCR-alakú `-2`); 5/b: (1)–(4) (az OCR-alakú `-1`, `-2`); 5/g, 5/h: a `-2` (2) csoport; a hamis „a (2) hiányzik” megjegyzések törölve; 5/c (4): a horgony „(4) בְּיַד”, a hamis „nincs szóköz” megjegyzés törölve | E1, B5 (498) |
+| H0834 | שֶׁ: saját 3. jelentés („3as a conjunction”, magyarul „3kötőszóként”) 3/a, 3/b alponttal és a 3/a (a), (b) csoportjával; a két `kihagy` sor és a hamis „hiányzik” indok törölve; a שֶׁ 1. megjegyzése javítva („see מָה 1e b.”); zárójeles csoport: 2. (a)(b), 4/b (a)(β)(γ)(δ) (a `kihagy -/4/b` helyett), 6. (a)(b)(c), 8/a (a)(β)(γ), שֶׁ 4/b (a)(b) | E2, E3, B5 (562) |
+| H0430 | az „(a) angel / (b) prophet” a 3. jelentés csoportja (nem a 2/b-é); 4/b (β) csoport | E4, E5 |
+| H6440 | II 7/a (ε) csoport; II 1/a „with יָצָא” csoport | E6, E7 |
+| H2490 | III Hiph`il 2: négy „with” csoport (Infinitive, ו consecutive, בְּ, מן) | E8 |
+| H1157 | 2: „with כִּמֶּר” és „With לְ ׳מִבַּעַד” csoport | E9 |
+| H7307 | 4/d „especially 104:29” csoport | E10 |
+| H7121 | Qal 4/a „with acc of roll, book” csoport (az „acc” = with accusative) | E11 |
+| H5766 | „I. עַלְוָה transposed from עַוְלָה”: `utalo` sor (`okkod=utalo_cimszo`), nem szakasz | B1 |
+| H1242 | 1/b „& especially” csoport (a „; &” mondatkezdő) | B2 |
+| H3176 | Hiph`il: két számozatlan jelentés (`Hiph'il/-1` „wait, tarry”, `Hiph'il/-2` „wait for, hope for”), `okkod=szamozatlan_jelentes`; az „absolute hope” csoport a második alá | B4 |
+| H0559 | Qal/4 megjegyzés: „compare 1 Kings 5:20” könyvnév | B5 (234) |
+
+**B3 (H6696 Qal/2, a felhasználó döntése: marad).** Az első „with עַל of city” vessző után áll („shut in, besiege, with עַל of city”), ezért a csoportszabály szerint nem csoport, hanem a jelentés fejének része; a párhuzamos négy tag („; with עַל person”, „; with אֶל of city”, „; with אֶל person”, „; with אֵת of city only”) mondatkezdő, ezért csoport. A minta szabálykövető, de **aszimmetrikus**: az olvasó négy csoportot lát, az ötödik párhuzamos használat a fejben marad. Ha a megjelenítés (M4) ezt zavarónak mutatja, a csoportszabály (DT-F99b (1)) módosítása a helye, nem a mintáé.
+
+Az ellenőrzés jelölése (`ellenorzes`): a többi szócikk változatlan sora `fuggetlen_ellenor`, az új vagy javított sorok `modell_ellenorizetlen`; a H6440, H7307, H0430 a F99.6-ban `modell_ellenorizetlen` volt, egy második modell-ellenőrzés után a F99.7-től minden soruk `fuggetlen_ellenor` (607 / 51). (Helyesbítés: a második átnézés modell-ellenőrzés volt, nem felhasználói; a felhasználó a sorokat nem nézte át.)
+
+**Határeset (H0430 3.; a felhasználó döntése, 2026-10-15: marad csoport nélkül).** A 3. jelentésben álló „in many phrases” nem csoport: a DT-F99b (1) (a) listája szó szerinti (`in phrase(s)`), a „many” közbeékelt jelzővel álló alak nem illeszkedik. Ha az M3 bevezető-felismerése ezt is fogná, a minta e pontja átírandó.
+
+A H0430 1/a megjegyzése javítva (F99.7): a `cim` mező üres, a cím nem vizsgált (a korábbi „a cím a kettőspontig” pontatlan volt). `felhasznalo`-t a modell nem ír. Minden nem üres horgony (1017) a forrásszövegben megvan (pontozás nélkül, NFC).
+
+## 3. Hivatkozás-mérés (M0.2)
+
+`scope=angol BDB, minden szócikk (8099); hivatkozás = könyvvel kiírt vagy könyv nélküli fejezet:vers, és a vesszős vers-folytatás | forras=BDB_teljes_unabridged.tsv@d4b15b2faea6 + bdb_konyv_javit.TOKEN/CSUPASZ/LEK/LANCTORO + Macula_heber_* (MT-versek, MT→Károli) + bdb_szelet_m0@edf8ce69 | ts=2026-10-15T13:59`
+
+| Tétel | Érték |
+|---|---|
+| hivatkozás összesen / szócikk hivatkozással | 160 459 / 8025 (a 8099-ből) |
+| kiírt könyvvel / örökölt / vers-folytatás („18:18, 25”) / feloldhatatlan (könyv nincs előtte) | 107 321 / 42 397 / 10 738 / 3 |
+| nem bibliai mű (Talmud, Korán, apokrif, kommentár-sigla a `LANCTORO`-ból és az utánuk örökölt) | 368 |
+| többértelmű könyvalak (Kings, Sam, De, Jes …) / ismeretlen alak | 19 / 2 |
+| sigla: a hivatkozás a `^`-hoz tapad („De^Job 34:36”, „COT^Gen 23:16”, „Dr^1Sam 10:19”) | 253 |
+| sigla: `^`-os szó a megelőző két szóban („Dl^w); city Ezek 26:17”, „Schr^COT Judges 1:37”) | 441 |
+| nemi tanú („noun masculine^Prov 14:4”: hol igazolt a nem) — **bibliai hivatkozás** | 790 |
+| ÓSZ-hivatkozás (bibliai, feloldott) / ÚSZ | 159 978 / 89 |
+| MT-ben nem létező vers (Macula versei; kiírt 451, örökölt 109, folytatás 9) | 569 |
+| Károli-versmegfeleltetés: MT-osztályú sor (MT = Károli) | 11 020 |
+| Károli-versmegfeleltetés: KJV-osztályú sor, **MT-szám nincs** a táblában | 141 959 |
+| Károli-versmegfeleltetés: KEZI-osztályú sor / nincs sor az MT-kulcsra | 2 176 / 4 254 |
+| Macula `karoli`: azonos vers / más Károli-vers / nincs Károli-megfelelő | 150 781 / 7 256 / 1 372 |
+| független próba: az OSHL BDB-XML strukturált igehelyei közül megvan a feloldásban | 3191 / 3515 (90,8%) |
+
+Megjegyzések:
+- **Az előzetes mérés** (a brief 2. lépése: 150 082 hivatkozás; 103 293 kiírt, 46 438 örökölt, 351 feloldhatatlan) más határokkal készült; a vers-folytatás nélkül itt 149 721. A feloldhatatlan 3 (nem 351), mert a könyvet a szócikk elejéig visszafelé öröklöm, és a nem bibliai alak is lánc-elem (utána az öröklés `nem_bibliai`).
+- **A hiányzó OSHL-helyek** (9%) mintája: egyfejezetes könyv fejezet nélkül („Obad 8”: a mai minta nem ismeri fel), és a két forrás eltérése (H0012: BDB „8:6”, OSHL „8:8”; H0033: BDB „8:32”, OSHL „8:52”). A pontos arány az M2 200-as mintáján mérendő.
+- **MT → Károli.** A `Karoli_versmegfeleltetes.tsv` MT-oszlopa csak az MT-osztályú (Károli = MT) sorokban áll; a KJV-osztályú versekben, ahol a Károli a KJV számozását követi, az MT-szám hiányzik, pedig az MT ≠ KJV helyek ide esnek (1Krón 6, 1Móz 32, 2Sám 19, 5Móz 13/23/29, Jóel, Mal, Jób 40–41 stb.). A Macula `karoli` oszlopa minden MT-szóhoz ad Károli-verset, és a BDB-hivatkozások MT-osztályú versein egyszer sem mond ellent a táblának; a hibás régiói ismertek (`naplok/F85_jelentes.md`: Ézs 3, Ézs 9, Én 6, Hós 2, 12; N-F85b). Néhány eltolás gyanús (Préd 9 +2, Préd 10 −3, Neh 4 +6), ezeket a Macula-oszlop javítása nélkül nem minősítem.
+- **A BDB az MT számozását követi** (pl. „Malachi 3:19”, „Gen 32:1” a „he rose early” sorban, „Hosea 12:15”), ezért az átkulcsolás szükséges.
+
+## 4. Jelölő-mérés (M0.3)
+
+`scope=angol BDB (8099 szócikk) és magyar BDB (674 szócikk, a szerver bdb_magyar-szabálya); helyzet a mai szeletelő csomópontjaihoz képest | forras=BDB_teljes_unabridged.tsv@d4b15b2faea6 + forditasok.tsv@f01130a1be9a + bdb_szelet@edf8ce69 | ts=2026-10-15T13:59`
+
+A helyzet: *csomópont eleje* (a jelentés vagy alpont első szava), *mondatkezdő* (`;` `.` `:` `—` után), *vessző után*, *mondat közben*, *zárójelben*, *alaktan* (az első törzs vagy jelentés előtt). A szeletelő hibái (2.3) a helyzet-besorolást kis mértékben torzítják.
+
+**Angol (8099 szócikk)**
+
+| bevezető | szócikk | össz | csomópont eleje | mondatkezdő | vessző után | mondat közben | zárójelben | alaktan |
+|---|---|---|---|---|---|---|---|---|
+| absolute | 1986 | 2913 | 57 | 956 | 223 | 845 | 169 | 663 |
+| followed by | 435 | 1709 | 53 | 563 | 396 | 292 | 372 | 33 |
+| with + héber | 944 | 2637 | 87 | 854 | 527 | 523 | 553 | 93 |
+| with accusative | 418 | 1079 | 56 | 321 | 441 | 157 | 80 | 24 |
+| with infinitive | 34 | 36 | 4 | 12 | 6 | 10 | 3 | 1 |
+| with suffix | 112 | 131 | 4 | 33 | 15 | 38 | 18 | 23 |
+| Inf. abs. (as adverb) | 291 | 406 | 15 | 266 | 6 | 59 | 49 | 11 |
+| in phrase(s) | 150 | 162 | 11 | 29 | 21 | 94 | 4 | 3 |
+| figurative | 1111 | 1962 | 173 | 481 | 249 | 310 | 689 | 60 |
+| opposed to | 448 | 798 | 7 | 82 | 67 | 38 | 576 | 28 |
+| especially | 772 | 1249 | 46 | 312 | 295 | 220 | 230 | 146 |
+| also | 1932 | 3817 | 5 | 735 | 348 | 1471 | 829 | 429 |
+| so | 1927 | 3391 | 4 | 776 | 920 | 352 | 1058 | 281 |
+| often | 434 | 904 | 21 | 118 | 45 | 459 | 188 | 73 |
+| rarely | 94 | 120 | 13 | 28 | 11 | 26 | 24 | 18 |
+| (n) zárójeles szám | 151 | 509 | 0 | 0 | 0 | 0 | 496 | 13 |
+| (a) zárójeles betű | 84 | 485 | 0 | 0 | 0 | 0 | 476 | 9 |
+
+**Magyar (674 szócikk)**
+
+| bevezető | szócikk | össz | csomópont eleje | mondatkezdő | vessző után | mondat közben | zárójelben | alaktan |
+|---|---|---|---|---|---|---|---|---|
+| abszolút használatban | 174 | 469 | 35 | 214 | 122 | 42 | 46 | 10 |
+| abszolút (egyéb) | 11 | 13 | 0 | 3 | 1 | 2 | 5 | 2 |
+| status absolutus | 247 | 322 | 5 | 55 | 7 | 47 | 5 | 203 |
+| utána | 103 | 527 | 24 | 202 | 121 | 54 | 113 | 13 |
+| követi | 65 | 302 | 4 | 64 | 42 | 122 | 67 | 3 |
+| ragos héber (-val/-vel) | 80 | 460 | 9 | 121 | 48 | 185 | 90 | 7 |
+| tárgyesetével | 117 | 498 | 31 | 6 | 11 | 423 | 27 | 0 |
+| infinitivus absolutus | 133 | 221 | 2 | 160 | 4 | 24 | 29 | 2 |
+| kifejezésekben / fordulatokban | 97 | 146 | 1 | 2 | 1 | 131 | 10 | 1 |
+| átvitt értelemben | 145 | 406 | 52 | 102 | 39 | 45 | 157 | 11 |
+| képletesen | 66 | 172 | 19 | 54 | 18 | 27 | 53 | 1 |
+| ellentéte | 115 | 283 | 1 | 34 | 20 | 33 | 190 | 5 |
+| szemben | 34 | 54 | 0 | 3 | 6 | 33 | 9 | 3 |
+| különösen | 373 | 852 | 58 | 306 | 220 | 101 | 110 | 57 |
+| továbbá | 325 | 861 | 3 | 472 | 196 | 47 | 62 | 81 |
+| így | 454 | 1427 | 0 | 430 | 422 | 154 | 323 | 98 |
+| gyakran | 256 | 664 | 19 | 99 | 38 | 343 | 126 | 39 |
+| ritkán | 102 | 156 | 14 | 35 | 7 | 32 | 43 | 25 |
+| (n) zárójeles szám | 95 | 412 | 0 | 0 | 0 | 0 | 403 | 9 |
+| (a) zárójeles betű | 64 | 398 | 0 | 0 | 0 | 0 | 388 | 10 |
+
+**Az angol–magyar szám szócikkenként** (a kész magyar szócikkek, jelentésrégió, zárójelen kívül; „azonos” = ugyanannyi bevezető mindkét nyelven, legalább egy):
+
+| angol | magyar megfelelő | azonos | eltérő | egyik sem |
+|---|---|---|---|---|
+| absolute | abszolút használatban / abszolút | 80 | 205 | 389 |
+| followed by | utána / követi | 85 | 66 | 523 |
+| figurative | átvitt értelemben / képletesen | 155 | 73 | 446 |
+| opposed to | ellentéte / szemben | 43 | 54 | 577 |
+| especially | különösen | 236 | 94 | 344 |
+| in phrase(s) | kifejezésekben / fordulatokban | 47 | 52 | 575 |
+| Inf. abs. (as adverb) | infinitivus absolutus | 123 | 5 | 546 |
+
+Olvasat:
+- A csoportok határa a BDB-ben **a mondatkezdő helyzet** (`;` után); jelentéshatáron a bevezető ritka (absolute 57, followed by 53). A vessző utáni és mondat közbeni előfordulások többnyire egy igehely-felsorolás belső megjegyzései, nem csoportfejek: a biztonságos szabály a mondatkezdő helyzet.
+- Az **„absolute”** kétértelmű: 663 az alaktanban (status absolutus), és a jelentésrégióban is áll főnévi alaknévként („— absolute ׳ר Gen 26:29”, H7451 רָעָה). Ez a DT27 kapu nélküli döntésének oka; csoport-bevezető csak a jelentésrégióban és igei szócikkben, vagy a magyar „abszolút használatban” alakkal azonosítható.
+- A **„so” és „also”** a leggyakoribb mondatkezdő szavak, de felsorolás-folytatók; csoportnak venni hamis határt adna (a 3391 + 3817 előfordulásból 1511 mondatkezdő).
+- A **zárójeles harmadik szint** (`(1)`, `(a)`) mindig zárójelként mérődik (a szeletelő zárójel-felismerője a nyitó zárójel miatt), de a minta szerint valódi tagolás (H3615 Pi`el 2c, H6440 II 4a, H7121 Niph`al 2d).
+- A magyarban **a followed by háromféleképpen** áll („utána” 527, „követi” 302, és a magyar ragozás miatt a „+ X-val” alak 460), a figurative kétféleképpen („átvitt értelemben” 406, „képletesen” 172), az opposed to kétféleképpen („ellentéte” 283, „szemben” 54). A „with + héber” csoportnak nincs magyar bevezetője (a magyar ragoz: „עַל-val”). Az M3 egyező-szám szabálya a mai fordításon a csoportok kisebbik részét bontaná.
+
+## 5. OSHL `<etym>` (M0.4)
+
+**Letöltés (F99.8, a felhasználó jóváhagyásával, 2026-10-15; DT-F99f (b)).** A `LexicalIndex.xml` a rögzített commit nyers URL-jéről, a repón kívüli ideiglenes könyvtárba; méret 1 782 592 bájt, git blob SHA-1 `d11eb2078532f3119c70822bd27a91b484d4727b`, SHA-256 `8f7a605c58899d2f44430149c143c00903976e1e91232476677972a69e5bc85f` — mind egyezik a várttal. A fájl nem került a repóba; a mérés (`--etym`) futás előtt újra ellenőrzi a SHA-256-ot.
+
+`scope=OSHL LexicalIndex.xml <etym> (minden <entry>); a BDB-tábla Strongjai: 8099 | forras=openscriptures/HebrewLexicon@21c9add13bc727d3a951361778e97e3ff7afd1ce LexicalIndex.xml sha256=8f7a605c5889… + BDB_teljes_unabridged.tsv@d4b15b2faea6 + bdb_szelet_m0@51bad829 | ts=2026-10-15T14:58`
+
+| Tétel | héber | arámi | összes |
+|---|---|---|---|
+| `main` (gyök-bejegyzés, a származékok listájával) | 2340 | 303 | 2643 |
+| `sub` (származék, a gyökre mutat) | 4167 | 201 | 4368 |
+| `single` (nincs gyökcsalád) | 356 | 218 | 574 |
+| `<etym>` nélkül | 2569 | 67 | 2636 |
+
+- **`main`:** 2458 hordoz `root` attribútumot (a gyök mássalhangzói, pl. `root="אבד"`), 185 nem; 1909-nek van származék-listája, 734-nek nincs (egyelemű „család”). A lista 4366 eleméből 1 nem kölcsönös (a hivatkozott elem nem `sub`, vagy nem a listázó `main`-re mutat).
+- **`sub`:** mind a 4368 pontosan egy célra mutat, és a cél mindig `main`. A cél-bejegyzések közül 2871-nek van Strong-száma (ebből 2794 a BDB-táblában, 77 nem), **1497-nek nincs** — ezek a puszta gyök-bejegyzések (pl. `רוח rwḥ`): a szó-lapon a gyök Strong-link nélkül, csak héber alakjával jeleníthető meg. 3 `sub`-ot a célja listája nem tartalmaz.
+- **A BDB-tábla 8099 Strongja** (a Strong legalább egy OSHL-bejegyzése szerint): **5310-nek van gyökcsaládja** (`main` vagy `sub`), 476 `single`, 2306-nál nincs `<etym>`, 7-nek nincs OSHL-bejegyzése. A blokk tehát kb. kétharmad szócikken tölthető; a többinél a „nincs OSHL-gyökcsalád” felirat áll (nem negatív lelet).
+
+**Minták.**
+- **H3915 לַ֫יְלָה (a brief mintája):** `etym=single` — az OSHL szerint **nincs gyökcsaládja**; a szó-lapon a „nincs OSHL-gyökcsalád” felirat jelenik meg.
+- **H1242 בֹּ֫קֶר:** `sub` → `bxk` בָּקַר (H1239, `main`); a család: H0951 בּוֹקֵר, H1241 בָּקָר, H1242 בֹּקֶר, H1243 בַּקָּרָה, H1244 בִּקֹּרֶת.
+- **H7307 רוּחַ:** `sub` → `ltn` רוח (gyök-bejegyzés, **Strong nélkül**); a család: H7307 רוּחַ, H7306 רִיחַ, H7381 רֵיחַ.
+
+Az M1 a `oshl_index_import.py`-ba a `etym_tipus` (`main` / `sub` / `single`, üres: nincs), `etym_cel` (a `sub` célja, a `main` listája) és `gyok` (a `main` `root` attribútuma) oszlopot veszi fel; az elfogadási feltétel (a blokk darabszámai egyeznek ezzel a méréssel) a fenti számokra vonatkozik.
+
+**Az előkészítés (F99.7, DT-F99f (b) után; a letöltés még nem indult).** A forrás adatai a GitHub git-fa API-jából (`gh api repos/openscriptures/HebrewLexicon/git/trees/21c9add13bc727d3a951361778e97e3ff7afd1ce`: csak metaadat, fájltartalom nélkül):
+
+| Tétel | Érték |
+|---|---|
+| repó, commit | `openscriptures/HebrewLexicon` @ `21c9add13bc727d3a951361778e97e3ff7afd1ce` (2019-09-02T22:24:11Z) |
+| útvonal | `LexicalIndex.xml` (a repó gyökerében) |
+| méret | **1 782 592 bájt** (kb. 1,7 MiB) |
+| git blob SHA-1 | `d11eb2078532f3119c70822bd27a91b484d4727b` |
+| várt SHA-256 (`oshl_index_import.py`, `LEXICAL_INDEX_SHA256`) | `8f7a605c58899d2f44430149c143c00903976e1e91232476677972a69e5bc85f` |
+| letöltési út (DT-F99f (b)) | `https://raw.githubusercontent.com/openscriptures/HebrewLexicon/21c9add13bc727d3a951361778e97e3ff7afd1ce/LexicalIndex.xml`, a repón kívüli ideiglenes könyvtárba; utána a git blob SHA-1 és a SHA-256 ellenőrzése, eltérésnél megállás |
+
+`scope=openscriptures/HebrewLexicon git-fa a rögzített commiton | forras=GitHub REST API git/trees + commits | ts=2026-10-15`
+
+## 6. Mellékes leletek
+
+- A `Karoli_versmegfeleltetes.tsv` MT-oszlopa csak az MT-osztályú sorokban áll (KJV-osztályú sorban üres) — az MT → Károli átkulcsolásnak önmagában nem elég forrása (DT-F99a).
+- A Macula `karoli` oszlopának gyanús eltolásai (Préd 9, 10, 12; Neh 4) az N-F85b körébe tartoznak, ott nyitottak.
+- Az OSHL BDB-XML és a BDB-szöveg néhol eltér (H0012, H0033): az OSHL nem aranyminta, csak független próba.
+- A brief N-F99a (translationWords nyers Markdown) és N-F99b (OSHL-táblázat mobilon) a záráskor kerül a `NYITOTT_FELADATOK.md`-be.
+
+## 7. Döntési kérdések (⛔, `DONTESEK.md`)
+
+- **DT-F99a** — álhivatkozás-szűrés és MT → Károli átkulcsolás (3. szakasz).
+- **DT-F99b** — a csoport-bevezetők listája, kötelező magyar alakja, kapu, időzítés a #38-ban, a kész 674 szócikk (4. szakasz).
+- **DT-F99c** — a szeletelő helye élesben.
+- **DT-F99d** — a modell-magyarázat teljes futása (az M6 mérése után dönthető; most előjegyzés).
+- **DT-F99e** — az aranyminta átnézése (a „0 eltérés” mércéje csak ellenőrzött mintán értelmes). Eldöntve (b): a független ellenőr (modell) átnézte (F99.5), a minta a felhasználó döntései szerint javítva (F99.6, 2.4); a H6440, H7307, H0430-at egy második modell-ellenőr nézte át. **Felhasználói átnézés nem történt** — a nyolc szócikkre előírt felhasználói átnézés nyitott.
+- **DT-F99f** — a `LexicalIndex.xml` letöltése az M0.4-hez és az M1-hez. Eldöntve (b), a letöltés megtörtént (F99.8), az M0.4 lefutott (5. szakasz).
+
+## 8. Reprodukálás
+
+```
+python eszkozok/olvaso_pilot/bdb_szelet_m0.py --hivatkozas
+python eszkozok/olvaso_pilot/bdb_szelet_m0.py --jelolo
+wsl -d pardes -e bash -lc 'cd /mnt/c/Users/bases/Desktop/Bible-Study && ~/pardes/eszkozok/olvaso_szerver/.venv/bin/python eszkozok/olvaso_pilot/bdb_szelet_m0.py --arany'
+python eszkozok/olvaso_pilot/bdb_szelet_m0.py --dump H1242 --nyelv hu --ki <könyvtár>
+```
+
+```
+python eszkozok/olvaso_szerver/bdb_vers_jelentes.py --ts 2026-10-15 [--ellenoriz]
+python eszkozok/olvaso_szerver/bdb_vers_jelentes.py --minta 99 --minta-ki <út>
+```
+
+A `--arany` Windows-Pythonnal is fut, de a szerver `blokkok` modulja nélkül (nincs `markupsafe`) a címek összevetése kimarad, és ezt kiírja. Az eredmények determinisztikusak (a `ts` mezőn kívül); a fenti számok a `edf8ce69` állapoton futottak.
+
+## 9. M1 és M2 az M2 ⛔-ig (F99.9–F99.13)
+
+*A felhasználó jóváhagyásával (2026-10-15: „mehet az M1”, az M2 ⛔ minta-ellenőrzéséig). Ez a szakasz az M0 napló folytatása, mert a brief `ir`-je M1/M2 naplót nem nevez meg.*
+
+### 9.1 M1 — gyökcsalád
+
+- **Import** (F99.9): az `oshl_index_import.py` az `<entry>` `<etym>` elemét is kivonja: `etym_tipus` (`main` / `sub` / `single`; `—`: nincs), `etym_cel` (a `sub` célja, a `main` származék-listája, `oshl_id`-k), `gyok` (a `main` `root` attribútuma). A `konkordancia/OSHL_lexikalis_index.tsv` a repón kívüli, SHA-ellenőrzött `LexicalIndex.xml`-ből a `--forras` úton újragenerálva; az első tíz oszlop és a sorrend bájtra változatlan. Darabszám: main 2643, sub 4368, single 574, `—` 2636 (a M0.4-gyel egyezik), main gyökkel 2458. README frissítve (új SHA-256 a `#`-sorok nélkül).
+- **pardes.db** (F99.10): az általános betöltés viszi az új oszlopokat; új `oshl_id`-index (`ALTALANOS_TOVABBI_INDEX`). Teszt: `teszt_sqlite_epit.py` `OshlGyokcsalad` (5 teszt: oszlopok, darabszámok, index, H1242 családja, H3915 single).
+- **Szó-lap** (F99.10): új blokk `szo.oshl_csalad` „Rokon szavak (OSHL-gyökcsalád)” (forrásadat): a gyök és a származékok Strong-linkkel, a Strong nélküli gyök-bejegyzés jelölve („Strong-szám nélküli gyök-bejegyzés”, pl. H7307 → `רוח`), üres családnál „Nincs OSHL-gyökcsalád” (single vagy nincs adat; nem negatív lelet). Csak meglévő CSS-osztályok: az elem-regiszter (#98) nem bővül, a regiszter-őr zöld (`teszt_tervezo.py`). Teszt: `teszt_olvaso_szerver.py` (H1242: H1239 gyök, H0951, H1241, H1243, H1244; H3915: single-felirat; H7307: Strong nélküli gyök); a blokkszám 48 → 49.
+- **Eltérés a brieftől:** a brief M1.3 a blokkot „a #98 regiszterébe véve” kéri; mivel új elem (CSS-osztály) nem keletkezett, regiszter-bejegyzés nem kellett.
+
+### 9.2 DT-F99c — a szeletelő helye
+
+`eszkozok/olvaso_pilot/bdb_szelet.py` → `eszkozok/olvaso_szerver/bdb_szelet.py` (`git mv`). A régi helyen **betöltő** marad (a szerveri modult tölti be és minden nevét átveszi), így a pilot (`adat.py`, `meres.py`, `teszt_olvaso_pilot.py`), az M0 mérőeszköz és a briefek régi hivatkozásai kódmásolás nélkül működnek. A `blokkok.py` közvetlenül importálja; az `alkalmazas.py` figyelőlistájából a pilot-útvonal kikerült (a Werkzeug modulként figyeli).
+
+### 9.3 M2 — hivatkozás-feloldás és a vers → jelentés tábla (a ⛔ előtti lépések)
+
+- **A szeletelőben** (`bdb_szelet.py`): `lapit` (a szeletelő szövegalakja), `hivatkozasok` (a DT-F99a szabályai; a könyvalakok a `bdb_konyv_javit.py`-ból lustán), `csomopont_savok` (a csomópontok sávjai szöveg-egyezéssel), `jelentespont`.
+- **Két szerkezeti javítás** (az aranyminta 2.3/1–2 osztálya; a hivatkozások jelentéspontja ezekre épül): a pont nélküli angol személyszám („3 feminine singular כָּֽלְתָה 1Sam 20:7”, „1 singular suffix”) és a könyvnév száma („1 Kings 21”, „2 Chronicles”) nem jelentés-sorszám; a „2 2nd son” jelölő. A határ: a héber alakot követő vesszős glossza vagy angol szó (H4908 „3 plural מִשְׁכָּנוֺת, dwellings”, H0776 „5 plural אֲרָצוֺת is almost wholly late”) jelentés marad. Hatás: az angol BDB 92 szócikkének bontása változik (szúrópróba: H0029, H0141, H0175, H0385, H0499, H0669, H0758, H0854, H0935, H1201, H1265, H1382 — mind javulás; a H1129 Qal-ja továbbra is hibás: az „, 1 (literal)” jelölőt a szigorú minta nem ismeri fel), a magyaré egyiké sem. Teszt: `teszt_bdb_vers_jelentes.py` `SzerkezetJavitas`; a pilot tesztjei közül csak a main-en is fennálló 3 (Zsolt 22 versszámozás) hibás.
+- **Az aranyminta a javítás után** (`bdb_szelet@b164b873`, ts=2026-10-15T15:30): szerkezeti eltérés nélkül **19 / 32** angolul (eddig 15), 7 / 14 magyarul; eltérés 158 (EN) és 143 (HU); a H3615, H0157, H5022, H6696 és a H4111 angolul hibátlan; a H0559 angol 1. jelentése (a tapadt „263.1Say”) most hiányzik a hamis „1 Kings” helyett. **F99.13:** a H1157 „1 plural בַּעֲדֵנוּ, Amos 9:10” (a héber alakot vesszővel követett igehely) és magyarul a pont nélküli „1 többes szám בַּעֲדֵנוּ, Ámós 9:10” is alaklista (a H4908 „3 többes szám מִשְׁכָּנוֺת, lakóhelyek” jelentés marad); a változás mindkét nyelven egyedül a H1157-et érinti. Az aranyminta ezután (`bdb_szelet` munkapéldány a F99.12 után, ts=2026-10-15): szerkezeti eltérés nélkül **20 / 32** angolul, **8 / 14** magyarul; eltérés 157 (EN), 141 (HU); magyar cím 170 / 195.
+- **A tábla** (`adat/bdb_vers_jelentes.tsv`, SEMA 2.29, `datasetek.tsv`: `BDB_vers_jelentes`, korlatos): `python eszkozok/olvaso_szerver/bdb_vers_jelentes.py --ts 2026-10-15`; bájtra reprodukálható (`--ellenoriz`, és a teszt Windowson).
+
+`scope=angol BDB, 8099 szócikk, minden hivatkozás | forras=bdb_vers_jelentes@<kód-hash a fájl fejlécében> (BDB_teljes_unabridged.tsv@d4b15b2faea6, Macula_heber_*, Karoli_versmegfeleltetes.tsv, Karoli_1908.tsv, F85_macula_elvetve.tsv, OSHL_lexikalis_index.tsv) | ts=2026-10-15`
+
+| Tétel | Érték |
+|---|---|
+| sor (hivatkozás) | 160 616 (8025 szócikk) |
+| könyv: kiírt / örökölt / vers-folytatás / feloldhatatlan | 107 472 / 42 397 / 10 744 / 3 |
+| kiszűrve (`szurt=1`: nem bibliai 368, tapadt sigla 251) | 619 |
+| bizonytalan, a táblában marad: közeli sigla / többértelmű könyvalak / ismeretlen alak / nincs előzmény | 435 / 19 / 2 / 3 |
+| Károli-vers van / nincs | 157 920 / 2 696 |
+| vers: azonos / átkulcsolt / azonos (F85-régió) / átkulcsolt, bizonytalan | 150 473 / 7 238 / 209 / 0 |
+| vers: nem létező MT-vers / Károli-megfelelő nélkül / ÚSZ | 592 / 1 372 / 89 |
+| a Macula több Károli-verset ad (az első áll, `tobb_karoli_vers`) | 43 |
+| jelentéspont: csomópont / fej (címsor, alaktan) / tagolatlan szócikk | 116 627 / 8 907 / 35 082 |
+
+Megjegyzések:
+- A Károli-vers a `Karoli_1908.tsv` kulcsa (a Siralmak ott és a versmegfeleltetésben is `Sir`, a könyvalak-táblában `JSir`): a link így a szerver versére mutat. A versmegfeleltetés nem teljes Károli-verslista (pl. a Dán 3 sorai hiányoznak belőle), ezért a vers létezését a `Karoli_1908.tsv` dönti el.
+- A jelentéspont a szeletelő csomópontjaihoz kötődik; a szeletelő ismert hibái (2.3, 3–7. osztály) öröklődnek. A „tagolatlan” azt jelenti, hogy a szócikkben nincs törzs, számozott jelentés és alpont: a hivatkozás az egész szócikkhez tartozik.
+- **Proveniencia (DT-F99g, felhasználó, 2026-10-15, eltér a brieftől):** a kód-hash csak a fájl `# forras:` fejlécsorában áll; a sor `scope=<Strong> | forras=bdb_vers_jelentes.py (fejléc) | ts=<nap>`. Így egy szeletelő-javítás csak a ténylegesen változó sorokat írja át. A tábla 23,5 MB.
+- **Briefen kívüli lépés (a felhasználó utólag jóváhagyta, 2026-10-15):** az `sqlite_epit.py` `ADAT_LICENC`-je az `adat/bdb_aranyminta` táblát a BDB, az `adat/bdb_vers_jelentes`-t a BDB és a Macula_heber licencsorával is viszi (a projekt_adat mellett; a legszigorúbb érték érvényes), mert a tartalmuk ezekből a forrásokból származik.
+- **A F99.13-as tábla** (a H1157-javítás és a DT-F99g után): a számok a fenti táblázattal azonosak, kivéve a jelentéspontot: csomópont 116 624, fej 8 910, tagolatlan 35 082.
+
+### 9.4 Az M2 ⛔ minta-ellenőrzése (a felhasználó döntése, 2026-10-15)
+
+- **Minta** (`python eszkozok/olvaso_szerver/bdb_vers_jelentes.py --minta 99`, a F99.13-as, javított táblából): seed **99**; **200 egyszerű véletlen sor** a teljes 160 616-ból (`random.Random(99).sample`), és két kiegészítő réteg, egyenként **25** sor a maradékból: a kiszűrt (`szurt=1`) és a bizonytalan (`sigla_kozel`, `tobbertelmu`) hivatkozások — a 619 szűrt sor miatt az álhivatkozás-szűrés hibáit a véletlen minta önmagában nem méri. A 250 sor a seeddel megkeverve, `M001`–`M250` azonosítóval.
+- **Két fájl:**
+  - `naplok/BDB_SZELETELO_M2_minta_vak.tsv` — **vak munkalap** a független ellenőrnek: `azon`, `strong`, `poz`, `nyers` (a forrásbeli hivatkozás), `kornyezet` (±100 karakter a szócikk szövegéből, a hivatkozás ⟦…⟧ között), és üres kitöltendő oszlopok: `konyv_mt`, `karoli_vers`, `jelentespont`, `szures`, `megjegyzes`; a fejléc-sorok a kitöltés szabályát adják. **Semmi a szeletelő kimenetéből** (könyv, vers, jelentéspont, szűrés, réteg) nem szerepel benne.
+  - `naplok/BDB_SZELETELO_M2_minta_kulcs.tsv` — **kulcs**: ugyanazok az azonosítók a réteggel és a szeletelő kimenetével (`konyv_feloldas`, `mt_vers`, `karoli_vers`, `vers_feloldas`, `szakasz`, `utvonal`, `okkod`, `szurt`). **Az ellenőrnek nem adandó.**
+- **Eljárás:** a független ellenőr vakon tölti ki a munkalapot a BDB szövegéből (`konkordancia/BDB_teljes_unabridged.tsv`, a Strong sora; a könyv a szócikkben korábban is állhat; kétes szerkezetnél a nyomtatott BDB). Utána a kitöltött lapot az orkesztrátor (vagy egy összevető lépés) a kulccsal veti össze; minden eltérést a felhasználó dönt el.
+- **Mérce** (a brief 4. szakasza; a 200-as véletlen rétegen): könyv és vers ≥ 99% (legfeljebb **2** hiba), jelentéspont ≥ 97% (legfeljebb **6** hiba); a szűrés hamis pozitívja a `szurt` rétegen, hamis negatívja a véletlen és a bizonytalan rétegen, külön.
+- **Konfidencia-intervallum** (95%, n = 200; a hibaarányra):
+
+| hiba / 200 | pontbecslés | Clopper–Pearson | Wilson |
+|---|---|---|---|
+| 0 | 0% | 0,00–1,83% | 0,00–1,88% |
+| 1 | 0,5% | 0,01–2,75% | 0,09–2,78% |
+| 2 | 1,0% | 0,12–3,57% | 0,27–3,57% |
+| 3 | 1,5% | 0,31–4,32% | 0,51–4,32% |
+| 6 | 3,0% | 1,11–6,42% | 1,38–6,39% |
+| 7 | 3,5% | 1,42–7,08% | 1,71–7,05% |
+
+  A mérce a pontbecslésre vonatkozik; 200 elemű mintán a 99%-os pontosság a 95%-os intervallum alsó határával (2 hibánál 96,4%) nem igazolható, csak a pontbecsléssel. A napló az eredmény mellé az intervallumot is közli.
+- **Kockázat:** a jelentéspont a szeletelő szerkezeti hibáit örökli (2.3: jelöletlen második címszó, írásjel nélküli törzsfejléc stb.); ha a 97% nem teljesül, a hibás szócikk-osztályok javítása (M3/M4) után a tábla újragenerálandó és a minta újramérendő.
+
+### 9.5 Az összevetés rögzített szabálya (a felhasználó döntése, 2026-10-15; a következő mérés előtt)
+
+A seed-99 vak minta (két független kitöltés: `naplok/BDB_SZELETELO_M2_minta_kitoltott_A.tsv`, `_B.tsv`; nyers összevetés:
+`naplok/BDB_SZELETELO_M2_osszevetes_nyers.txt`) után a felhasználó döntése: **a jelentéspont ⛔ kritériuma nem teljesült**, az összevetés
+szabályát a következő mérés előtt rögzíteni kell. A szabály (`eszkozok/olvaso_szerver/m2_minta_osszevet.py` docstringje és kódja):
+
+1. **A római szakasz a kulcs része.** A fő címszó is a saját, a forrásban kiírt római számával áll („H3499. yether I. יֶ֫תֶר noun …” → `I`);
+   a szócikk római számos fő tagolása („I. of man … II. of God …”) szintén szakasz. A jelöletlen második címszó (`h:…` a táblában) római
+   szám nélkül hasonlít, ahogy a vak lap írja.
+2. **Normálható csak:** (a) a backtick és az aposztróf a törzsnévben („Pi`el” = „Pi'el”); (b) a `fej`, a `tagolatlan` és a
+   `<törzs>/-` (`<törzs>/fej`, `<törzs>`) egyenértékű — egyik sem nevez meg számozott jelentést vagy alpontot.
+3. **A zárójeles szint** („(2)”, „(c)”) **külön mutató:** a fő mutató a zárójeles szegmensek nélkül hasonlít; a második azt méri, hogy
+   a kulcs (durvább) útvonala előtagja-e a kitöltöttnek (`jelentespont_elotagkent_helyes`).
+4. **Könyv és MT-vers** pontos egyezés (a vak lap Károli-rövidítést ír); a **Károli-oszlopot nem a vak lap bírálja**, hanem a gépi
+   összevetés (9.7).
+
+A seed-99 könyv/vers eredménye (a felhasználó elfogadta): **0 valódi hiba / 200** (M012 rövidítés-eltérés; M228 apokrif, M236 `COT^`
+helynév: a szűrés helyes). A hibaarány 95%-os felső határa **Clopper–Pearson 1,83%** (Wilson 1,88%), azaz a pontosság alsó határa 98,2%.
+
+### 9.6 A seed-99 eltérések okai és a javítás (F99.17)
+
+A 9 valódi jelentéspont-eltérés és a szakaszvesztéses sorok okonként (a felhasználó 3. pontja); mindegyik javítva a
+`eszkozok/olvaso_szerver/bdb_szelet.py`-ban, tesztben rögzítve (`teszt_bdb_vers_jelentes.py`, `SzerkezetJavitas`):
+
+| ok | sorok (minta) | szócikk | javítás |
+|---|---|---|---|
+| **szakaszvesztés** — fel nem ismert címszó | M056, M231 | H6440 | a „II. פְּנֵי with prepositions” fej (`CIM`: `with prepositions` / `elöljárószókkal`) |
+| | M163 | H7451 | jelöletlen második címszó („… Toy). רָעָה_310 noun feminine”, `JELOLETLEN`) |
+| | M191 | H3581 | „II. כֹּחַ and (Dan 11:6) כּוֺחַ noun” — az alakváltozat a címszó része, nem új szakasz |
+| **szakaszvesztés** — római számos fő tagolás | M182, M105 | H1285 | `TAGOLAS`: I./II./III. glosszával („I. between men …”) |
+| | M007, M028 | H3820 | „I. seldom of things … II. elsewhere of men: 1 …” |
+| | M081 | H1961 | „I. 1. a. Fall out … above II. Come into being … III. Be”: írásjel nélküli folytatás (`TAGOLAS_FOLYT`); a törzs (Qal) öröklődik, a rákövetkező törzs (Niph`al) a fő címszóé (ugyanígy H2803, H2388) |
+| **OCR-jelölő a H3027-ben** | M102, M199 | H3027 | tapadt alpont („Est 3:10. c.as to hands”); héber szó előtti laza sorszám („below 4 יָד”) |
+| **egyéb** — kimaradt vagy hamis jelölő | M051 | H3117 | hézagpótlás: a 3 és az 5 között a „below 4 Plural” a 4. jelölő |
+| | M139 | H2764 | a fejléc glossza-számozása („1 devoted thing. 2 devotion, ban; —”) nem a szerkezet; a valódi a gondolatjel után indul |
+| | M212 | H5030 | héber szó utáni folytató jelölő („see חתם 2 false prophets”) |
+| | M116 | H6086 | „— 1 (c. 150 t.) a.” — a gyakoriság-zárójel nem zárja ki a jelölőt |
+
+A korpusz-szintű visszaellenőrzés (szerkezet-diff a F99.15-ös szeletelőhöz, a pilot regressziós tesztje, az aranyminta) további, ugyanezekből
+a szabályokból eredő hibákat mutatott, ezek is javítva: a „from 1. חוּל” homonima-utalás nem jelölő (H2490 II); a személyszám a laza és a
+hézagpótló mintában sem jelölő („suffixummal 3. többes szám hímnem”, H0996; „perfectum 3. hímnemű egyes szám”, H4191); az „1” vessző vagy
+nagybetűs szó mellett is jelölő, ha legalább a 3-ig folytatódik (H1419 „nagy, 1 méretben”, H3220 „especially 1 Mediterranean”); ha a lemma
+egyik címszóval sem egyezik, az igehely nélküli utaló csonk nem fő elemzés (H4325); a törzsnév kanonikus alakja (`Pual` → `Pu'al`). A
+tagolás-szakasz szerepe `tagolas` (a szó-lapon „A címszó fő tagolása” alatt, nem „másik szó”).
+
+**Mérés a seed-99 mintán a mai táblával** (tájékoztató, nem új mérés; `m2_minta_osszevet.py --mai-tabla`):
+
+| | F99.15 tábla, a 9.5 szabályával | mai tábla |
+|---|---:|---:|
+| könyv/vers (MT) | 199/200 | 199/200 |
+| jelentéspont (pontos) | 152/200 | **185/200** |
+| jelentéspont (előtagként helyes) | 153/200 | 187/200 |
+| szűrés, kiszűrt réteg | 23/25 | **25/25** |
+
+A maradék 15 pontos eltérés: 10 sorban a kitöltés elhagyja a forrásban kiírt fő római számot (M047, M069, M137, M150, M169, M207, M220, M230,
+M237, M249), 1 sorban a forrásban nem álló római számot ír (M177, H7489), M089 kitöltetlen („?”), 3 sor finomabb szintet ad (M041, M051,
+M247; előtagként helyes). Ezek a 9.5 szabálya szerint a kitöltés eltérései; a seed-100 vak lap fejléce ezért a római szakasz szabályát
+kifejezetten kimondja.
+
+**Szűrés (4. pont).** M040 (H1714 „2:34”) és M210 (H5409 „24:4”) oka: a **zárójelen belüli nem bibliai könyvjelölő** („(… compare also Di
+2:2)”, „(Ecclus … Ecclesiasticus 50:12a)”) a zárójel után is öröklődött, így a rákövetkező bibliai helyek `nem_bibliai`-ként kiestek.
+Javítás: a zárójelben álló nem bibliai/ismeretlen könyv nem öröklődik a zárójelen kívülre (a zárójel előtti könyv folytatódik). A
+`Schr^COT` / `Schr^ib.` (és a többi, közvetlenül a hivatkozás előtt álló, nagybetűs szerző^mű sigla: `Fl^De`, `Wetzst^Del`, `Nö^COT`,
+`Ges^Comm.` …) a DT-F99a tapadt sigla szabálya alá került (`sigla_tapadt`, kiszűrve); kivétel a lezárt megjegyzés („(Kö^ii.l,74) Jer
+6:13”), a szövegtanú („ᵐ5^B Ezra 10:21”, „ᵑ7^J Gen 28:17” — marad `sigla_kozel`), a könyvrész („Isa^2”) és a forráskritikai „R^D”.
+Hatás a teljes táblán: `nem_bibliai` 368 → 330 (38 sor visszakerül), `sigla_tapadt` 251 → 297, `sigla_kozel` 435 → 389, `szurt=1`
+619 → 627.
+
+**A tábla** (`adat/bdb_vers_jelentes.tsv`, újragenerálva): 160 616 sor (változatlan), 23,5 MB; jelentéspont: csomópont 122 072, `fej`
+9 274, `tagolatlan` 29 270. **Aranyminta** (`bdb_szelet_m0.py --arany`, F99.15 → most): hibás szócikk EN 13/32 → 8/32, HU 7/14 → 4/14;
+szerkezeti eltérés EN 158 → 74, HU 143 → 72; jó cím EN 24/43 → 27/46, HU 169/195 → 199/231. A pilot tesztjei: csak a 3 korábbi (Zsolt
+22, N-F99c) hibás; a prototípus-regresszió listája (+11 lap, +7 lemma-lap) indoklással frissítve.
+
+### 9.7 A Károli-oszlop gépi összevetése (5. pont)
+
+`python eszkozok/olvaso_szerver/m2_karoli_ellenoriz.py` → `naplok/BDB_SZELETELO_M2_karoli.md`. A próba: a TAHOT `Igehely` kulcsa a
+Károli-vers (F85.6); ha a szócikk Strong-száma a táblai Károli-vers TAHOT-sorai között van, a kulcs a héber szöveg szerint helyes.
+
+- **Teljes tábla:** a szűretlen, Károli-verses sorok 90,4%-a igazolt (azonos 90,7%, átkulcsolt 85,8%, `azonos_f85` **3,4%**). A hiány nagy
+  része Strong-címkézési eltérés, de 8 fejezetben rendszeres eltolás (Ézs 3 +1, Hós 2 −1, Ézs 9 +1, 1Krón 12 +1, 2Móz 36 −1, Ézs 64 −1,
+  5Móz 5 +3, Én 6 −3; együtt ~830 sor) — az F85-ben a TAHOT-ban kijavított régiók, ahol a Macula `karoli` oszlopa és az „azonos” feltevés
+  hibás. A `nincs_karoli` 1 372 sorából 719-nél az azonos számú Károli-vers hordozza a szót.
+- **A minta:** M098 (Zsolt 45:3/45:4) — **a tábla helyes: Zsolt 45:4** (a TAHOT a 45:4-en hordozza a H3409-et, a 45:3-on nem); az A
+  kitöltés 45:3-a hibás. Ugyanígy a táblát igazolja M014 (Zsolt 92:13), M106 (Zsolt 51:5), M029 (Jób 37:12 MT → 37:11), M145 (Jób 37:4 MT
+  → 37:3; a szó mindkét versben áll), M119 (Sir 2:11). A tábla hibája: M027 (Neh 7:68 → a TAHOT szerint 7:69) és a kulcs-üres sorok: M102
+  (Hós 13:14 — a TAHOT ott hordozza), M112 (2Móz 36:6 → 36:5, a 2Móz 36 rendszeres eltolása), M045 (Jób 17:2 → a TAHOT szerint 17:1). M230
+  (JSir 3:32 → a TAHOT szerint 3:22): forrásbeli eltérés, nem kulcsolási.
+- **Döntés kell:** DT-F99h (a TAHOT mint a Károli-kulcs ellenőrzője/javítója; javaslat: fejezetszintű eltolás-tábla és a `nincs_karoli`
+  kitöltése). A seed-100 mérés könyv/vers mutatója az MT-versre vonatkozik, ezt a DT-F99h nem érinti.
+
+### 9.8 Az újramérés (6. pont): seed 100
+
+`python eszkozok/olvaso_szerver/bdb_vers_jelentes.py --minta 100` → `naplok/BDB_SZELETELO_M2_minta_seed100_vak.tsv` (vak munkalap) és
+`naplok/BDB_SZELETELO_M2_minta_seed100_kulcs.tsv` (kulcs; az ellenőrnek nem adandó). A mintavétel a seeddel paraméterezett (a 99-es seed a
+régi neveken marad, felülírás nélkül). A vak lap fejléce a 9.5 római szakasz-szabályát kifejezetten kimondja.
+
+**Rétegek — javaslat:** a korábbi arány (200 véletlen + 25 kiszűrt + 25 bizonytalan), mert a szűrés szabálya ebben a körben változott
+(zárójelen belüli nem bibliai könyv, közvetlen szerző-sigla): a hamis pozitívot csak a kiszűrt réteg méri, a 200 véletlen sorba a 627
+kiszűrt sorból várhatóan egy sem esik. A mérce változatlan (a 200 véletlen soron): könyv/vers ≥ 99% (legfeljebb 2 hiba), jelentéspont ≥ 97%
+(legfeljebb 6 hiba), a 9.5 szabályával. Ha a felhasználó csak a 200 véletlen sort kéri: `--minta 100 --minta-kieg 0` (a kulcs és a vak lap
+újragenerálódik).
+
+### 9.9 A seed-100 újramérés ítélete és a szűrő-lista (F99.20–F99.21)
+
+**Mért eredmény** (F99.20, `naplok/BDB_SZELETELO_M2_seed100_osszevetes.txt`, a 9.5 szabályával, a 200 véletlen soron): könyv/vers
+198/200, jelentéspont 182/200 (18 eltérés). Ez a megfigyelt állapot marad; a minta nem javítódik „zöldre”.
+
+**Ítélet** (a felhasználó utasítására, javítás előtt, forrásidézettel: `naplok/BDB_SZELETELO_M2_seed100_iteletek.md`; a jóváhagyás a
+felhasználóé):
+
+| | jelentéspont | könyv/vers | szűrés | forrás |
+|---|---:|---:|---:|---:|
+| szeletelő-hiba | 15 | 1 (M013) | 3 (M001, M075; M158 vitás) | — |
+| kitöltő-hiba | 0 | 0 (M134 rövidítés, nem hiba) | 1 (M121) | — |
+| kulcs-ellentmondás | 3 (M019, M078: két római szint; M230: „— Note.”) | — | — | — |
+| `forras_hiba` | — | — | — | 3 (M006, M064, M079) |
+
+**Kapu:** 15 (vagy M076 forrás-OCR-ként: 14) szeletelő-hiba > 6 → a mérce a seed-100-on nem teljesült; a jóváhagyás után javítás (a
+9.6-os okcsoportok mentén: jelöletlen második címszó/alcímszó, héber prezentációs alakok U+FB1D–FB4F, fejléc, számjelölő, OCR, fő
+tagolás; DT-F99i), újragenerálás, újramérés **seed 101**-gyel, változatlan mércével és szabályokkal.
+
+**Most javítva (a felhasználó 4., 6. és 7. pontja; ez nem jelentéspont-javítás):**
+- **M013 — öröklés nem létező fejezetre.** A könyv nem öröklődik olyan fejezetre, amely az örökölt könyvben nincs („Malachi 3:20 … 5:9;
+  31:2; … 143:1”): okkód `orokles_hibas`, könyv és vers nélkül, bizonytalan (a táblában marad). A teljes táblán 103 sor (ezek korábban
+  a téves könyvvel `nem_letezo_vers`-ként álltak: 590 → 487).
+- **`forras_hiba`** (új okkód, SEMA 2.29): M006 (Jóel 1:4 → Jón 1:4), M064 (Zsolt 9:8 → 9:18), M079 (Ezsd 7:4, 6 → Dán 7:4, 6); a
+  tábla a forrást rögzíti, nem szűrt; a TAHOT a helyes verset igazolja. Kézi lista: `bdb_vers_jelentes.py` `FORRAS_HIBA`.
+- **Szűrő-lista (DT-F99j):** a közeli sigla közül a megnevezett kommentár-siglák (`Schr^…`, `COT`, `Dr`, `Dr^…`, `MI`, `MI^…`, `ᵑ7…`,
+  `Fl^…`, `De^…`) `sigla_lista` okkóddal kiszűrve, ha a siglát és a helyet csak héber idézett alak, „on”/„in” vagy „i.” választja el,
+  egy tagmondatban (lezáró zárójel, pontosvessző, kettőspont, gondolatjel után a hely bibliai: „(MI^10) Jer 48:1”, „Dr^Amos 4:9: Exod
+  10:13”). Teljes tábla: `sigla_lista` 24, `sigla_kozel` 389 → 364 (egy sor `orokles_hibas` lett), `szurt=1` 627 → 651. Mind a 24 sort
+  átnéztem (kommentár- vagy Targum-hely); a mintában M010 (MI), M176 (COT on Josh 17:11), M229 (Dr on 2Sam 8:3), seed-99 M159, M225
+  (Targum) esik ide.
+- **Jelzés (Targum):** a `ᵑ7^J`, `ᵑ7^Onk`, `ᵑ7^Jer` a felhasználó listáján szerepel, de szövegtanú: a szövegtanú-kivétel (5. pont:
+  `ᵐ5^Judg 15:9`, `ᵐ5^Lev 11:30` közvetlenül tapadva → szeletelő-hiba, a javítás az ítélet után) ellentmondhat neki. A mai állapot: a
+  közeli `ᵑ7` a listán (kiszűrve), a közvetlenül tapadt `ᵐ5^` még `sigla_tapadt`. A két szabályt a javítókörben egyeztetni kell.
+- **A bizonytalan réteg** (DT-F99j) nem része az M2 mércéjének, csak tájékoztató mutató.
+
+**Tájékoztató újraszámolás** (nem mérés; a seed-100 kulcsa a mai táblával, `m2_minta_osszevet.py --mai-tabla`): jelentéspont 182/200
+(változatlan: jelentéspont-javítás nem történt), könyv/vers 198/200 (M013 most könyv nélküli, bizonytalan sor), kiszűrt réteg 22/25
+(M001, M075, M121 — az ítélet szerint), bizonytalan réteg 3/25.
+
+**A tábla** (F99.21): 160 616 sor; jelentéspont: csomópont 122 072, `fej` 9 274, `tagolatlan` 29 270 (változatlan); `szurt=1` 651. Az
+aranyminta változatlan (EN 8/32, HU 4/14 hibás szócikk; eltérés 74/72).
+
+### 9.10 A javítókör a seed-100 ítélete után (F99.23) és a seed-101 újramérés előkészítése
+
+**A felhasználó döntései (2026-10-15):** az ítéletek jóváhagyva (15 szeletelő-hiba, a mérce a seed-100-on nem teljesült); M158 és M076
+szeletelő-hiba; új szabály a sigla melletti hivatkozásra (DT-F99k); a Targum (ᵑ7) lekerül a kommentár-listáról; a javítókör az öt
+okcsoport, a DT-F99i két római szintje és a DT-F99k; utána újramérés seed 101-gyel, változatlan mércével és szabályokkal.
+
+**Javítás okcsoportonként** (`bdb_szelet.py`; tesztek: `teszt_bdb_vers_jelentes.py` `Seed100Javitas`, `SzerkezetJavitas`):
+
+| okcsoport | seed-100 sor | mi változott |
+|---|---|---|
+| jelöletlen alcímszó | M037, M114, M174, M240 | a `JELOLETLEN` két-három héber alakot és vesszőt is elfogad („תּוֺלַ֫עַת תּוֺלֵעָה,_40 noun”), a „proper name”-et, és a szófaj nélküli, gyakoriság-számos alcímszót („מֵעִם_72 from with”); nem címszó az alpont-jelölő („a. ”) után és a fejléc első mondatában („Anathoth עֲנָתוֺת and (1Kin 2:26) עֲנָתֹת proper name”); a nemre utaló szó utáni „1.” a 2-vel már jelölő („masculine 1. Levites … 2”) |
+| prezentációs héber alak | M065, M149 | a `CIM` és a `JELOLETLEN` betűosztálya U+FB1D–FB4F-et is fed; a lemma-illesztés (`_kons`) NFD-felbontás után |
+| fejléc | M100, M105, M129, M195 | a „H<szám>.” nélküli betű-szócikk (H9003, H9005) belső fejjel bomlik; több lemma-egyező címszó közül az igehelyes a fő; a „II. בָּ֑ד בַּד, noun” két alakú címszó; a gondolatjel nélküli fejléc-összefoglaló („1 surely. 2 … only 1 asseverative …”) után az újrainduló számozás a szerkezet; a fejlécben megnevezett egyetlen törzs („verb Hiph`il break”) a később álló törzsfejléc előtti jelentések törzse |
+| számjelölő | M098, M161, M210 | a „29:5 a. 6 b;” versrész nem jelölő; a „3 1Chr 2:23” jelölő; a „2 (approximately 175 times …)” jelölő (szigorú és laza mintában) |
+| OCR | M052, M076 | a „Perfect”-hez tapadt törzsnév („QalPerfect”) törzsfejléc; a sorozat folytatásában „1” = „l.”, „masculine” = „m.” (ELLENOR_F99_minta E1) |
+
+**DT-F99i — két római szint, két mező.** A tábla új `resz` oszlopa a szócikk fő tagolása, a `szakasz` a címszó homonima-száma (a sávok
+címkéje „<homonima>§<rész>”, `bdb_szelet.szakasz_bont`). Az aranyminta `resz` oszlopot kapott (a 658 mai sorban üres: a minta
+szócikkeiben nincs fő tagolás), a `bdb_szelet_m0.py --arany` a (`szakasz`, `resz`) párral illeszt. Az összevető (`m2_minta_osszevet.py`,
+a seed-101 mérés ELŐTT rögzítve): a homonima-szám a jelentéspont elején, a fő rész a vak lap új `resz` oszlopában; mindkettő pontosan
+egyezzen; a régi (seed-99/100) kitöltésben a második római szám a rész. A mérce és a többi szabály (9.5) változatlan.
+
+**DT-F99k — a sigla melletti hivatkozás a TAHOT szerint.** A tapadt, közeli és listás sigla melletti hivatkozás szűrt, ha a TAHOT
+(`Igehely` = Károli-vers; Károli-vers híján az azonos számú vers) a versben nem hordozza a szócikk Strong-számát; ha hordozza: bibliai,
+okkód `sigla_igazolt`. A kommentár-lista: `Schr^…`, `COT`, `Dr`, `Dr^…`, `MI`, `MI^…`, `Fl^…`, `De^…`, `Hup^…` (a ᵑ7 lekerült). A TAHOT a
+tábla fejlécének forrássorában hash-sel áll. Hatás: `sigla_igazolt` 484 (bibliai), szűrt `sigla_tapadt` 112, `sigla_kozel` 86,
+`sigla_lista` 3; `szurt=1` 651 → 531 (F99.24; a F99.35 után 528, l. 9.13). A seed-100-ban: M158 bibliai, M001 és M075 szűrt (a TAHOT a szót a versben nem hordozza).
+
+**A tábla** (F99.23): 160 616 sor; jelentéspont: csomópont 122 457, `fej` 8 759, `tagolatlan` 29 400; `resz` 6 010 sorban.
+**Aranyminta:** hibás szócikk EN 8 → 7/32, HU 4/14; szerkezeti eltérés EN 74 → 71, HU 72; jó cím EN 27/46, HU 199/231.
+**Tájékoztató** (nem mérés; a seed-100 kulcsa a mai táblával): jelentéspont 182 → 193/200; a seed-99 mintán 180/200 (a régi kitöltés
+egy római száma itt homonima-számként olvasódik, a fő részt ezért nem találja — a DT-F99i előtti formátum).
+
+**Seed 101** (`python eszkozok/olvaso_szerver/bdb_vers_jelentes.py --minta 101`): `naplok/BDB_SZELETELO_M2_minta_seed101_vak.tsv` (vak
+munkalap, új `resz` oszloppal és a DT-F99i kitöltési szabályával a fejlécben) és `naplok/BDB_SZELETELO_M2_minta_seed101_kulcs.tsv`
+(kulcs, `resz` oszloppal; az ellenőrnek nem adandó); 200 véletlen + 25 kiszűrt + 25 bizonytalan, keverve. A bizonytalan réteg a
+DT-F99k után: `tobbertelmu`, `orokles_hibas`, `sigla_igazolt` (a TAHOT által bibliainak ítélt sigla-sorok; tájékoztató, DT-F99j). Mérce
+(a 200 véletlen soron): könyv/vers ≥ 99% (≤ 2 hiba), jelentéspont ≥ 97% (≤ 6 hiba). Ha a seed-101 sem teljesül, nincs seed-102 (az
+orkesztrátor kezeli).
+
+### 9.11 A seed-101 újramérés ítélete és a kapu (F99.26–F99.28)
+
+**Mért eredmény** (F99.26, `naplok/BDB_SZELETELO_M2_seed101_osszevetes.txt`, a 9.5 + DT-F99i szabályával, a 200 véletlen soron): könyv/vers
+197/200 — a felhasználó elfogadta, 0 valódi hiba (M011, M072, M119 rövidítés); jelentéspont 184/200 (16 eltérés; Clopper–Pearson 95%:
+87,3–95,4%). A normalizálás szélesítése elvetve (utólagos mércelazítás).
+
+**A kapu következménye az ítélet ELŐTT rögzítve** — de a nyers 184/200 ismeretében (a küszöbök ezt látva születtek; ELLENOR_F99): DT-F99l (F99.27): (a) ≤ 6 szeletelő-hiba → teljesült; (b) > 6, és ≥ 2/3 nem számozott
+szócikkben → a mérce a számozott szócikkekre szűkül; (c) > 6, szórt → „próba” jelöléssel élesedik, a pontosság és intervalluma a lapon,
+további javítás külön feladat, nincs több mérési kör.
+
+**Ítélet** (`naplok/BDB_SZELETELO_M2_seed101_iteletek.md`, forrásidézettel; a jóváhagyás a felhasználóé): 13 szeletelő-hiba, 0
+kitöltő-hiba, 3 kulcs-ellentmondás (M008 görög negyedik szint; M011 nagybetűs csoportszint; M029 „II. פְּנֵי”: homonima vagy fő rész).
+A 13-ból 12 számozott szócikkben, 1 (M238) jelöletlen alcímszóban. **Javaslat:** (b) nem teljesül (1/13), a hibák szórtak (7 okcsoport)
+→ **(c)**. A `forras_hiba`-jelöltek: M049 (2Móz 2:6 → 2:16) és M121 (Dán 3:13 → 3:15) a TAHOT szerint `forras_hiba`; M092 nem az (a forrás
+helyes, a tábla öröklési szabálya a hiba: az egyfejezetes Abdiás után nem folytatja a 2Krón-t).
+
+### 9.12 DT-F99h (b), DT-F99l (c) alkalmazása és a zárás előkészítése (F99.29)
+
+**A felhasználó döntései (2026-10-15):** a seed-101 ítéletek jóváhagyva (M029 kulcs-ellentmondás marad; M049, M121 `forras_hiba`; M092
+`orokles_hibas`, a javítási feladatba); DT-F99l (c); DT-F99h (b); külön javítási feladat brief-tervezete; a zárás lépései.
+
+**DT-F99h (b) — fejezetszintű eltolás-tábla az F85-ből.** Forrás: `naplok/F85_kulcsvaltas.tsv` (régi TAHOT-kulcs → Károli-vers, 337 vers,
+mind egyértelmű). A TAHOT megerősítése fejezetenként (a tábla szűretlen sorai, amelyek MT-verse az F85-ben átkulcsolt):
+
+| fejezet | sor | TAHOT-találat a régi Károli-versen | az F85 szerinti versen | a táblába |
+|---|---:|---:|---:|---|
+| 2Móz 36 | 151 | 14 | 137 | igen |
+| 4Móz 30 | 127 | 0 | 116 | igen |
+| Hós 12 | 128 | 104 | 116 | igen |
+| Jób 17 | 100 | 0 | 91 | igen |
+| Jób 37 | 140 | 127 | 132 | igen |
+| Péld 12 | 162 | 0 | 158 | igen |
+| Én 6 | 91 | 2 | 86 | igen |
+| Ézs 8 | 19 | 0 | 18 | igen |
+| Ézs 9 | 181 | 8 | 169 | igen |
+| Dán 4 | 555 | 377 | 48 | nem (a TAHOT ellentmond) |
+| Hós 2 | 216 | 33 | 12 | nem |
+| Ézs 64 | 75 | 4 | 8 | nem (< 50%) |
+| Hós 14 | 82 | 0 | 6 | nem (< 50%) |
+| Jób 40, Préd 1, 2, 8, 9, 10 | — | — | — | nincs változás (a Macula már a Károli-versre kulcsol) |
+
+Feltétel: az F85 szerinti versen a TAHOT a sorok legalább felénél, és többnél hordozza a szót, mint a régin. A Dán 4 és a Hós 2 eltérése
+arra utal, hogy ott a BDB MT-száma és a TAHOT régi kulcsa más számozást követ; ezeket a szabály nem érinti (soronkénti keresés nincs).
+**Kiegészítés:** a `nincs_karoli` sor az azonos számú Károli-versre kerül, ha az létezik és a TAHOT ott hordozza a szót (`azonos_tahot`,
+okkód `karoli_tahot`). **Hatás:** `atkulcsolt_f85` 1 099 sor (a TAHOT 1 023-at igazol), `azonos_tahot` 645, a `nincs_karoli` 1 371 → 234;
+Károli-vers 158 014 → 159 151 sorban (F99.29 állapot; a forrás a F99.35-ben az F85 esetlistájára cserélődött, a mai számok a 0. összegzésben és a 9.13-ban). A gépi Károli-összevetés (`naplok/BDB_SZELETELO_M2_karoli.md`) újrafuttatva.
+
+**Az M027 és az M112 újraellenőrzése (seed-99):** **M112** (H8641, 2Móz 36:6 MT) — a tábla most **2Móz 36:5** (`atkulcsolt_f85`); a TAHOT a
+H8641-et a 2Móz 36:5-ben hordozza: **javítva**. **M027** (H2543, Neh 7:68) — **változatlan, Neh 7:68** (`tobb_karoli_vers`); a TAHOT a
+H2543-at a Neh 7:69-ben hordozza. A Neh 7 nincs az F85 dokumentált átkulcsolásai között, ezért a (b) szabály nem érinti (soronkénti javítás
+nincs) — nyitott tétel.
+
+**DT-F99l (c) a szó-lapon:** a BDB-blokk „Gépi szeletelés (próba)” felirata mellett a nyers mért pontosság: „92,0% (95%-os
+konfidencia-intervallum: 87,3–95,4%)” (`blokkok.py` `BDB_MERT_PONTOSSAG`, a meglévő `megj` osztállyal — a regiszter-őr szerint nincs új
+elem; teszt: `teszt_olvaso_szerver.py` `test_bdb_proba_es_mert_pontossag`). Az ítélet utáni 93,5% csak itt, a naplóban.
+
+**`forras_hiba`:** M049 (H1802, „Exod 2:6” → 2Móz 2:16, 19) és M121 (H7804, „Dan 3:13” → Dán 3:15) a `FORRAS_HIBA` listán (5 sor).
+
+**A külön javítási feladat brief-tervezete:** `beerkezo/BDB_SZELETELO_JAVITAS_brief_tervezet.md` (a `/befogad`-hoz; nem fogadtam be, a
+`FELADATOK.md`-hez nem nyúltam).
+
+### 9.13 A független ellenőr (naplok/ELLENOR_F99.md) eltéréseinek javítása a zárás előtt (F99.35–)
+
+**1. Károli-kulcs, rendszeres eltolás (DT-F99h (b)).** Az F99.29 eltolás-táblája a `F85_kulcsvaltas.tsv` régi TAHOT-kulcsát vette
+MT-számnak — ez hiba volt: a régi TAHOT-kulcs nem MT-szám (a Dán 4-ben és a Hós 2-ben el is tér). A javított forrás az F85 esetlistája
+(`naplok/F85_esetlista.tsv`): minden eltolt TAHOT-versnél dokumentálja a WLC (MT) megfelelőt és a Károli-verset (`eltolas`,
+`osszevonas_2_1`, J ≥ 0,5, 345 egyértelmű MT-vers). Az Ézs 3: az F85 a Macula-adatot elvetette (`F85_macula_elvetve.tsv`, 26 vers), MT →
+Károli megfeleltetést nem rögzített; a Károli-szöveg próbája (`lekerdez.py karoli "Ézs 3:1"` → az MT 2:22 szövege; `scan H0113 --szakasz
+"Ézs 3"` → Ézs 3:2) szerint MT 2:22 → K 3:1, MT 3:n → K 3:(n+1); ezek a sorok `f85_regio` okkódot kaptak (az eltolás értéke nem az F85-ből; a F99.47 óta, DT-F99n: `vers_feloldas` `atkulcsolt_karoli_szoveg`, okkód nélkül, 9.15).
+
+Más Károli-versre került (az F99.34-es táblához képest) **514 sor**; a TAHOT-találat a régi → az új Károli-versen:
+
+| fejezet | sor | TAHOT régi → új |
+|---|---:|---:|
+| Ézs 3 | 209 | 7 → 191 |
+| Hós 2 | 207 | 9 → 186 |
+| Ézs 64 | 77 | 4 → 69 |
+| Ézs 2 (MT 2:22 → K 3:1) | 9 | 0 → 9 |
+| Én 7 | 7 | 0 → 7 |
+| Hós 14 | 5 | 0 → 0 |
+
+**A F99.35 teljes változása** (saját számlálás: a F99.34-es és a F99.35-ös tábla sorról sorra, a proveniencia-mező nélkül): **1 893 sor**
+változott. Ebből **1 379 csak címke** — 645 `azonos` → `atkulcsolt_f85` és 640 `atkulcsolt` → `atkulcsolt_f85` (az esetlista fejezeteiben
+a Károli-vers már helyes volt, csak a feloldás módja lett az F85-é; az `azonos_f85` mint érték megszűnt), és 94 sor okkód-változása
+(`karoli_tahot` → üres, mert az esetlista adja ugyanazt a Károli-verset; `azonos_tahot` 645 → 551). **514 sor Károli-verse változott:** 478
+másik versre, 36 üresről kitöltöttre (köztük 3 sigla-sor, amely a helyes Károli-versen a TAHOT szerint `sigla_igazolt` lett: `szurt=1`
+531 → 528, `sigla_igazolt` 484 → 487). A tábla számai a F99.35 után: `szurt=1` 528, `atkulcsolt_f85` 2 992 (ebből `f85_regio` 218; a F99.47 óta 2 774 + `atkulcsolt_karoli_szoveg` 218, 9.15), `azonos_tahot`
+551, `nincs_karoli` 201, Károli-vers 159 187 sorban.
+
+**Próba:** H0113 „Isa 3:1” — MT Ézs 3:1 → **Károli Ézs 3:2** (a TAHOT ott hordozza; teszt). **Maradék (nyitott tétel):** 1Krón 12 (78 sor,
+`atkulcsolt`; a TAHOT vegyes: az azonos számon 126, −1-en 123 találat a 256 sorból — a megerősítés gyenge, az F85 nem dokumentálja) és
+5Móz 5 (54 sor; azonos számon 105, +3-on 80 a 179-ből — a Dekalógus versbeosztása, az F85 nem dokumentálja). A Hós 14 5 sora a TAHOT szerint
+egyik változatban sem igazolt. A gépi Károli-összevetés (`naplok/BDB_SZELETELO_M2_karoli.md`) szerint a rendszeres eltolású fejezetek közül
+csak a 1Krón 12 és az 5Móz 5 maradt.
+
+### 9.14 A szűrés hamis pozitív és hamis negatív aránya a seed-101-en (ELLENOR_F99 2.)
+
+**Módszer** (rögzítve): a mért kulcs (`naplok/BDB_SZELETELO_M2_minta_seed101_kulcs.tsv`, F99.25-ös tábla) `szurt` mezője két „valóság”
+ellen: **(A) a TAHOT** — a hivatkozás feloldott versén (Károli-vers, ennek híján az azonos számú vers) a TAHOT hordozza-e a szócikk
+Strong-számát (csak bibliai könyvre feloldható sornál; a nem bibliai könyvű sor „nem alkalmazható”); **(B) a vak kitöltés** (a két
+független ellenőr `szures` mezője: „alhivatkozas” = kiszűrendő, „bizonytalan”, „bibliai”). A hamis pozitív: a kulcs szűr, a valóság
+bibliai; a hamis negatív: a kulcs nem szűr, a valóság alhivatkozás.
+
+| réteg | n | a kulcs szűr | (B) hamis pozitív | (B) hamis negatív | (A) szűrt, de a TAHOT hordozza | (A) nem alkalmazható |
+|---|---:|---:|---:|---:|---:|---:|
+| véletlen | 200 | 1 | 0 / 1 | 0 / 199 (3 „bizonytalan”) | 0 | — |
+| kiszűrt | 25 | 25 | **3 / 25** (M001, M109, M159) | — | 0 | 19 (nem bibliai könyv) |
+| bizonytalan | 25 | 3 | 1 / 3 (M223) | **7 / 22** (M054, M065, M147, M149, M191, M198, M230) | 0 | — |
+
+**Elbírálás a forrással / a TAHOT-tal:** M001 (H2623 „116:15”) és M159 (H4912 „1:1”) **igazolt hamis pozitív**: a könyv egy nem bibliai
+jelölőről öröklődött (`nem_bibliai`), a TAHOT a szót a Zsolt 116:15-ben (és a 149:1, 5, 9-ben, 4 sor), ill. a Péld 1:1-ben hordozza
+(`lekerdez.py scan H2623 --szakasz "Zsolt 116"`, `scan H4912 --szakasz "Péld 1"`). M109 (H6305 „23:31”, `sigla_kozel`): a TAHOT nem
+igazolja. M223 (H8034 „Hosea 2:19”): a Hós 2 Károli-kulcsának javítása (F99.35) után a TAHOT igazolja, a sor ma `sigla_igazolt` (bibliai).
+A hét `sigla_igazolt` eltérés (M054 Di^Lev 7:30, M065 Dr^Amos 2:2, M147 COT^Gen 10:22, M149 Dr^Deut 2:11, M191 Baer^Josh 1:7, M198
+Du^Isa 29:3, M230 Dr^1Sam 14:18): a DT-F99k szerint bibliai (a szó a versben áll), a vak kitöltés kommentár-helynek ítélte — az elbírálás
+(a DT-F99k finomítása) a javítási feladatba került (`beerkezo/BDB_SZELETELO_JAVITAS_brief_tervezet.md`). A H2623/H4912 öröklési hibája
+ugyanoda.
+
+### 9.15 DT-F99n — az Ézs 3 Károli-kulcsának forrása (F99.47)
+
+A felhasználó döntése (2026-10-16, (a)): az Ézs 3 eltolásának forrása a Károli-szöveg (`Karoli_1908.tsv`: a Károli Ézs 3:1 az MT 2:22
+szövege) és a TAHOT (190/211 sor megerősítés), nem az F85 esetlista; a sorok maradnak. A sorok saját `vers_feloldas`-értéket kapnak:
+**`atkulcsolt_karoli_szoveg`, 218 sor** (MT 2:22 és MT 3:1–26; a korábbi `atkulcsolt_f85` + `f85_regio` okkód megszűnt, az F85-ös sorok
+`atkulcsolt_f85`-je 2 774). A fejléc proveniencia-sora a `Karoli_1908.tsv`-t és a `TAHOT_kivonat.tsv`-t hash-sel, az Ézs 3 forrásaként is
+megnevezi (DT-F99n). Teszt: a H0113 „Isa 3:1” → Ézs 3:2, `atkulcsolt_karoli_szoveg`, és Ézs 3-as sor nem `atkulcsolt_f85`. A tábla
+`--ts 2026-10-16`-tal újragenerálva (F99.50, a felhasználó utasítására): a sorok proveniencia-mezőjének `ts=` értéke a tényleges futás napja,
+mind a 160 616 sorban `ts=2026-10-16` (a F99.47 előbb tévesen a 2026-10-15-öt hagyta meg); `--ellenoriz`: bájtra azonos.

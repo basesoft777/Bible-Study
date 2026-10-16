@@ -167,7 +167,8 @@ class TestRegiszterEsAdatbazis(unittest.TestCase):
         # (héber, LXX), az LXX versszintű együttelőfordulás, az „Ebben a versben” (szó-lap), az adatréteg-blokk háromra bontása (+2); a pilot kirajzolt blokk-készlete
         # a teszt_pilot_aranymintaval.py-ban van (a DT-F76e–i döntések kódja és tesztje kész, expectedFailure nincs)
         # +2 (F76.30–31): a bontott BDB-szócikk (szo.bdb_apparatus) és az „LXX többlet” blokk (vers.lxx_tobblet, „az adat még nincs a DB-ben”)
-        self.assertEqual(len(blokkok.REGISZTER), 48)
+        # +1 (F99 M1): a „Rokon szavak (OSHL-gyökcsalád)” blokk (szo.oshl_csalad)
+        self.assertEqual(len(blokkok.REGISZTER), 49)
         self.assertEqual({b.oldal for b in blokkok.REGISZTER}, set(blokkok.OLDALAK))
 
     def test_minden_tablanak_van_licencsora(self):
@@ -194,6 +195,7 @@ class TestRegiszterEsAdatbazis(unittest.TestCase):
         'szo.szotar': ('Szó adatai (héber)', False), 'szo.elofordulas': ('Szó adatai (héber)', False), 'szo.karoli_alakok': ('Szó adatai (héber)', False),
         'szo.bdb_angol': ('BDB-szócikk', False), 'szo.bdb_magyar': ('BDB-szócikk', False), 'szo.lxx_bridge': ('Görög megfelelő', True),
         'szo.sdbh': ('Szemantikai domén (SDBH)', True), 'szo.sece_h': ('SECE-szócikk (héber)', True), 'szo.oshl': ('TWOT- és BDB-azonosító', True),
+        'szo.oshl_csalad': ('TWOT- és BDB-azonosító', False),   # F99 M1: a pilotnak nincs gyökcsalád-blokkja; az OSHL-cím jellegét örökli
         'szo.tbesh': ('Bővített Strong-szócikk', True), 'szo.tw_h': ('translationWords', True), 'szo.nyelvtani': ('Szó adatai (héber)', False),
         'szo.tbesg': ('Szó adatai (görög)', False), 'szo.thayer': ('Szótári szöveg (angol)', False), 'szo.usz': ('Az Újszövetségben', True),
         'szo.heber_hatter': ('Héber háttér', True), 'szo.sdgnt': ('Szemantikai domén (SDGNT)', True), 'szo.sece_g': ('SECE-szócikk (görög)', True),
@@ -384,7 +386,12 @@ class TestLapok(unittest.TestCase):
         self.assertEqual(r.status_code, 200)
         j = r.get_json()
         self.assertEqual(j['kiadas'], 'belso')
-        self.assertEqual(j['meta_hash_sorok'], 73)
+        # a hash-sorok száma az építéstől függ (F99: +bdb_aranyminta, +bdb_vers_jelentes): a meta tábla saját számával vetjük össze
+        con = adatbazis.Adatbazis(DB, 'belso').kapcsolat()
+        vart = con.execute("SELECT COUNT(*) FROM meta WHERE kulcs LIKE 'hash:%'").fetchone()[0]
+        con.close()
+        self.assertGreaterEqual(vart, 73)
+        self.assertEqual(j['meta_hash_sorok'], vart)
         self.assertRegex(j['epites_ts'], r'^\d{4}-\d\d-\d\dT')
         self.assertNotIn('igehely', r.get_data(as_text=True).lower().replace('adatbazis_kulcs', ''))   # nincs adat-tartalom
 
@@ -465,6 +472,14 @@ class TestLapok(unittest.TestCase):
         self.assertEqual(str(jeles('Jelentés (J-ben) Dresden')), 'Jelentés (J-ben) Dresden')
         self.assertEqual(str(jeles('<b>')), '&lt;b&gt;')
 
+    def test_bdb_proba_es_mert_pontossag(self):
+        """DT-F99l (c): a BDB-blokk „próba” jelölése mellett a nyers mért pontosság és a konfidencia-intervallum áll (F99, seed-101)."""
+        t = self.get('/r/szo/H7451').get_data(as_text=True)
+        self.assertIn('Gépi szeletelés (próba)', t)
+        self.assertIn('92,0%', t)
+        self.assertIn('87,3–95,4%', t)
+        self.assertNotIn('93,5%', t)          # az ítélet utáni érték csak a naplóban
+
     def test_bdb_jelentes_cime_es_vazlata(self):
         """A főjelentés címe a szócikk saját szavaiból képződik (gépi): saját szöveg híján az első alpontéból (H0776 אֶרֶץ: 1 „föld”,
         3 „talaj”); a blokk elején vázlat áll, amelynek minden sora egy létező jelentés-azonosítóra ugrik."""
@@ -506,7 +521,11 @@ class TestLapok(unittest.TestCase):
         self.assertEqual(str(blokkok._cim_html('a <b>')), 'a &lt;b&gt;')
         t = self.get('/r/szo/H7451').get_data(as_text=True)
         cimek = re.findall(r'<span class="jcim">([^<]*)</span>', t)
-        self.assertEqual(cimek[:3], ['rossz, kellemetlen, ártalmas', 'rossz, kellemetlen, fájdalmat, boldogtalanságot, nyomorúságot okozó',
+        # F99 M2: a szeletelő a II. רַע (főnév) és a רָעָה szakaszt külön választja; a lap ezeket a fő szerkezet előtt mutatja, ezért a fő
+        # szerkezet első három címét a saját helyén keressük
+        self.assertIn('rossz, kellemetlen, ártalmas', cimek)
+        i = cimek.index('rossz, kellemetlen, ártalmas')
+        self.assertEqual(cimek[i:i + 3], ['rossz, kellemetlen, ártalmas', 'rossz, kellemetlen, fájdalmat, boldogtalanságot, nyomorúságot okozó',
                                      'rossz, nem tetsző'])
 
     def test_kod_verzio_valtozik_a_fajl_valtozasaval(self):
@@ -578,6 +597,29 @@ class TestLapok(unittest.TestCase):
         self.assertIn('Párosítatlan eredeti szavak', h)       # pl. az אֶת (H0853)
         h = self.get('/Mt/1/1?nezet=interlinearis').get_data(as_text=True)
         self.assertIn('nincs Károli–Strong párosítás', h)        # ÚSZ: nincs token_par: explicit üres, nem néma
+
+    def _rokon(self, strong):
+        h = self.get('/r/szo/' + strong).get_data(as_text=True)
+        i = h.index('data-blokk="szo.oshl_csalad"')
+        return h[i:h.index('</section>', i)]
+
+    def test_rokon_szavak_oshl_gyokcsalad(self):
+        """F99 M1: a gyök és a származékok Strong-linkkel (H1242 בֹּקֶר: gyök H1239, család H0951, H1241, H1243, H1244); az OSHL szerint
+        családon kívüli szónál (H3915 לַיְלָה, single) kifejezett „nincs” felirat; a Strong nélküli gyök-bejegyzés (H7307: רוח) jelölve."""
+        con = adatbazis.Adatbazis(DB, 'belso').kapcsolat()
+        van_oszlop = 'etym_tipus' in {r[1] for r in con.execute('PRAGMA table_info(oshl_lexikalis_index)')}
+        con.close()
+        if not van_oszlop:
+            self.skipTest('a pardes.db még a gyökcsalád-oszlopok nélkül épült (újraépítés kell)')
+        b = self._rokon('H1242')
+        self.assertIn('href="/szo/H1239"', b)
+        for s in ('H0951', 'H1241', 'H1243', 'H1244'):
+            self.assertIn('href="/szo/%s"' % s, b)
+        self.assertIn('Nincs OSHL-gyökcsalád', self._rokon('H3915'))
+        self.assertIn('single', self._rokon('H3915'))
+        b = self._rokon('H7307')
+        self.assertIn('Strong-szám nélküli gyök-bejegyzés', b)
+        self.assertIn('href="/szo/H7306"', b)
 
 
 @unittest.skipUnless(VAN_DB and VAN_FLASK, 'nincs pardes.db vagy Flask')

@@ -1092,6 +1092,7 @@ ol.jel { gap: 12px; }
   const SZAKASZ_CIM = x => x.szerep === 'elo' ? 'Zárójeles előszócikk (más gyök)'
     : x.nyelv === 'arámi' ? `${x.jel ? x.jel + '. ' : ''}Arámi (Pe'al) rész`
     : x.szerep === 'azonos_lemma' ? `${x.jel ? x.jel + '. ' : ''}További homonima ugyanezen a lemmán`
+    : x.szerep === 'tagolas' ? `${x.jel ? x.jel + '. ' : ''}rész (a címszó fő tagolása)`
     : `${x.jel ? x.jel + '. ' : ''}Másik szó (más lemma)`;
   function apparatus(l) {
     const a = l.appar;

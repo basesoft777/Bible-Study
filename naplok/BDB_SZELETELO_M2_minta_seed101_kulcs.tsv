@@ -1,0 +1,252 @@
+# M2 ⛔ KULCS (F99): seed=101; a szeletelő kimenete (adat/bdb_vers_jelentes.tsv) a vak munkalap azonosítóival. Az ellenőrnek NEM adandó.
+azon	reteg	strong	sorszam	poz	nyers	konyv_feloldas	mt_vers	karoli_vers	vers_feloldas	szakasz	resz	utvonal	okkod	szurt
+M001	szurt	H2623	52	2039	116:15	orokolt						-/2/b	nem_bibliai	1
+M002	veletlen	H0842	30	1631	Micah 5:13	kiirt	Mik 5:13	Mik 5:14	atkulcsolt			-/-/b		0
+M003	veletlen	H5833	25	755	Psa 27:9	kiirt	Zsolt 27:9	Zsolt 27:9	azonos	I		-/2/b		0
+M004	veletlen	H3588	416	13854	Job 7:21	kiirt	Jób 7:21	Jób 7:21	azonos			-/3/c		0
+M005	veletlen	H5055	8	345	Ezek 34:21	kiirt	Ez 34:21	Ez 34:21	azonos			Qal/-		0
+M006	veletlen	H1300	2	157	Job 20:25	kiirt	Jób 20:25	Jób 20:25	azonos			tagolatlan		0
+M007	veletlen	H3381	139	4149	Psa 49:15	kiirt	Zsolt 49:15	Zsolt 49:15	azonos			Qal/1/i		0
+M008	veletlen	H4519	67	1597	, 15	folytatas	Józs 22:15	Józs 22:15	azonos			-/1/b		0
+M009	veletlen	H4428	88	2089	Ezek 37:22	kiirt	Ez 37:22	Ez 37:22	azonos	I		-/2		0
+M010	veletlen	H3709	37	1611	Exod 4:4	kiirt	2Móz 4:4	2Móz 4:4	azonos			-/1/a		0
+M011	veletlen	H6485	55	2292	Amos 3:2	kiirt	Ámós 3:2	Ámós 3:2	azonos			Qal/3		0
+M012	veletlen	H3658	50	1712	Gen 4:21	kiirt	1Móz 4:21	1Móz 4:21	azonos			tagolatlan		0
+M013	veletlen	H1390	28	637	1Sam 13:16	kiirt	1Sám 13:16	1Sám 13:16	azonos	II		-/2		0
+M014	veletlen	H5822	1	144	Deut 14:12	kiirt	5Móz 14:12	5Móz 14:12	azonos			tagolatlan		0
+M015	veletlen	H3603	36	1329	1Chr 29:7	kiirt	1Krón 29:7	1Krón 29:7	azonos			-/3/b		0
+M016	veletlen	H5637	11	499	Jer 6:28	kiirt	Jer 6:28	Jer 6:28	azonos			Qal/-		0
+M017	szurt	H8626	1	84	Ecclus 47:9	kiirt						fej	nem_bibliai	1
+M018	veletlen	H7998	40	1226	Prov 31:11	kiirt	Péld 31:11	Péld 31:11	azonos			-/4		0
+M019	veletlen	H2142	158	5514	Psa 136:23	kiirt	Zsolt 136:23	Zsolt 136:23	azonos		II	Qal/1/c		0
+M020	veletlen	H6441	10	433	Ezek 40:16	kiirt	Ez 40:16	Ez 40:16	azonos			-/2		0
+M021	veletlen	H5133	3	300	Job 39:13	kiirt	Jób 39:13	Jób 39:16	atkulcsolt			tagolatlan		0
+M022	veletlen	H4082	9	635	Ezra 2:1	kiirt	Ezsd 2:1	Ezsd 2:1	azonos			-/3		0
+M023	bizonytalan	H4022	7	398	33:14	feloldhatatlan						tagolatlan	orokles_hibas	0
+M024	veletlen	H0888	1	180	Dan 6:15	kiirt	Dán 6:15	Dán 6:14	atkulcsolt			Pe'al/-		0
+M025	szurt	H7892	1	62	Ecclus 40:21	kiirt						fej	nem_bibliai	1
+M026	szurt	H4150	88	3161	Sota 9:15	kiirt						-/3/b	nem_bibliai	1
+M027	veletlen	H7272	32	1019	Job 13:27	kiirt	Jób 13:27	Jób 13:27	azonos			-/1/a		0
+M028	veletlen	H7379	34	838	25:1	orokolt	5Móz 25:1	5Móz 25:1	azonos			-/2		0
+M029	veletlen	H6440	414	12577	Gen 13:10	kiirt	1Móz 13:10	1Móz 13:10	azonos	II		-/4/e		0
+M030	veletlen	H3751	2	342	2Chr 35:20	kiirt	2Krón 35:20	2Krón 35:20	azonos			tagolatlan		0
+M031	veletlen	H5117	176	6504	Eccl 2:18	kiirt	Préd 2:18	Préd 2:19	atkulcsolt			Qal/2/c		0
+M032	veletlen	H4682	13	379	Exod 12:39	kiirt	2Móz 12:39	2Móz 12:39	azonos	I		tagolatlan		0
+M033	veletlen	H0398	94	2806	16:4	orokolt	1Kir 16:4	1Kir 16:4	azonos			Qal/2		0
+M034	veletlen	H7725	314	8160	Josh 24:20	kiirt	Józs 24:20	Józs 24:20	azonos			Qal/6/g		0
+M035	veletlen	H5631	45	1555	Deut 23:1	kiirt						tagolatlan	sigla_tapadt	1
+M036	veletlen	H0787	2	295	4:12	orokolt	Ezsd 4:12	Ezsd 4:12	azonos			tagolatlan		0
+M037	veletlen	H0215	7	387	Gen 44:3	kiirt	1Móz 44:3	1Móz 44:3	azonos			Qal/-		0
+M038	szurt	H0834	561	21430	Aboth 1:12	kiirt						-/8/f	nem_bibliai	1
+M039	veletlen	H2896	524	11570	2Kin 25:28	kiirt	2Kir 25:28	2Kir 25:28	azonos	h:טובה		-/2/a		0
+M040	veletlen	H3559	93	3612	Judg 12:6	kiirt	Bír 12:6	Bír 12:6	azonos	I		Hiph'il/-		0
+M041	veletlen	H3183	1	118	Gen 46:24	kiirt	1Móz 46:24	1Móz 46:24	azonos			tagolatlan		0
+M042	veletlen	H3996	8	313	Ezek 26:10	kiirt	Ez 26:10	Ez 26:10	azonos			fej		0
+M043	veletlen	H8057	41	838	Joel 1:16	kiirt	Jóel 1:16	Jóel 1:16	azonos			-/1		0
+M044	veletlen	H3733	1	411	Gen 31:34	kiirt	1Móz 31:34	1Móz 31:34	azonos	I		tagolatlan		0
+M045	veletlen	H3824	3	126	20:8	orokolt	5Móz 20:8	5Móz 20:8	azonos			tagolatlan		0
+M046	veletlen	H2449	40	1311	Psa 19:8	kiirt	Zsolt 19:8	Zsolt 19:8	azonos			Hiph'il/-		0
+M047	veletlen	H2063	165	6419	Deut 6:1	kiirt	5Móz 6:1	5Móz 6:1	azonos			-/3		0
+M048	veletlen	H4325	35	1134	Lev 11:34	kiirt	3Móz 11:34	3Móz 11:34	azonos			fej		0
+M049	veletlen	H1802	6	512	2:6	orokolt	2Móz 2:6	2Móz 2:6	azonos			Qal/-		0
+M050	veletlen	H6590	1	191	Dan 5:16	kiirt	Dán 5:16	Dán 5:16	azonos			Pe'al/-		0
+M051	bizonytalan	H6886	3	253	17:9	feloldhatatlan						tagolatlan	orokles_hibas	0
+M052	veletlen	H9005	1274	35631	Isa 54:16	kiirt	Ézs 54:16	Ézs 54:16	azonos			-/5/i		0
+M053	veletlen	H6499	26	836	Ezek 43:23	kiirt	Ez 43:23	Ez 43:23	azonos			-/2/b		0
+M054	bizonytalan	H8573	29	989	Lev 7:30	kiirt	3Móz 7:30	3Móz 7:30	azonos			-/2/b	sigla_igazolt	0
+M055	veletlen	H1696	30	1970	Gen 16:13	kiirt	1Móz 16:13	1Móz 16:13	azonos			Qal/-		0
+M056	veletlen	H1767	28	2383	2Chr 12:11	kiirt	2Krón 12:11	2Krón 12:11	azonos			-/2/c		0
+M057	veletlen	H4994	75	2182	34:9	orokolt	2Móz 34:9	2Móz 34:9	azonos	I		-/4/c		0
+M058	veletlen	H4731	1	48	Zech 11:7	kiirt	Zak 11:7	Zak 11:7	azonos			fej		0
+M059	veletlen	H0959	7	284	2Sam 6:16	kiirt	2Sám 6:16	2Sám 6:16	azonos			Qal/-		0
+M060	veletlen	H4731	9	579	Hosea 4:12	kiirt	Hós 4:12	Hós 4:12	azonos			fej		0
+M061	veletlen	H3027	387	14066	21:2	orokolt	Józs 21:2	Józs 21:2	azonos			-/5/d		0
+M062	veletlen	H3824	100	2206	139:23	orokolt	Zsolt 139:23	Zsolt 139:23	azonos		II	-/2		0
+M063	veletlen	H0995	173	3495	Isa 14:16	kiirt	Ézs 14:16	Ézs 14:16	azonos			Hithpa'el/-		0
+M064	veletlen	H7552	3	144	1Chr 2:43	kiirt	1Krón 2:43	1Krón 2:43	azonos			-/1/b		0
+M065	bizonytalan	H7782	2	247	Amos 2:2	kiirt	Ámós 2:2	Ámós 2:2	azonos			tagolatlan	sigla_igazolt	0
+M066	veletlen	H5253	15	724	Isa 59:13	kiirt	Ézs 59:13	Ézs 59:13	azonos	I		Niph'al/-		0
+M067	veletlen	H2091	55	2025	, 9	folytatas	2Krón 9:9	2Krón 9:9	azonos			-/5		0
+M068	veletlen	H2706	92	2645	Ezek 11:12	kiirt	Ez 11:12	Ez 11:12	azonos			-/7/g		0
+M069	veletlen	H2233	205	6860	30:6	orokolt	5Móz 30:6	5Móz 30:6	azonos			-/4/g		0
+M070	bizonytalan	H0894	12	614	, 19	folytatas	Ézs 13:19	Ézs 13:19	azonos			tagolatlan	sigla_igazolt	0
+M071	bizonytalan	H1552	5	198	13:2	feloldhatatlan						tagolatlan	orokles_hibas	0
+M072	veletlen	H1250	3	110	8:5	orokolt	Ámós 8:5	Ámós 8:5	azonos	III		tagolatlan		0
+M073	szurt	H3959	2	400	Psa 32:4	kiirt				II		tagolatlan	sigla_tapadt	1
+M074	veletlen	H5055	11	486	Deut 33:17	kiirt	5Móz 33:17	5Móz 33:17	azonos			Qal/-		0
+M075	veletlen	H2659	12	522	Psa 34:6	kiirt	Zsolt 34:6	Zsolt 34:6	azonos	II		Qal/-		0
+M076	bizonytalan	H1980	273	8689	Jer 3:6	kiirt	Jer 3:6	Jer 3:6	azonos		I	Qal/1/d	sigla_igazolt	0
+M077	veletlen	H5549	16	1216	Exod 9:17	kiirt	2Móz 9:17	2Móz 9:17	azonos	I		Hithpa'el/-		0
+M078	veletlen	H6040	42	726	Exod 3:17	kiirt	2Móz 3:17	2Móz 3:17	azonos			-/1		0
+M079	szurt	H0061	15	384	2:129	orokolt						-/2	nem_bibliai	1
+M080	veletlen	H5920	1047	31474	8:10	orokolt	2Sám 8:10	2Sám 8:10	azonos		III	-/-/a		0
+M081	veletlen	H1234	27	1162	Isa 63:12	kiirt	Ézs 63:12	Ézs 63:12	azonos			Qal/1		0
+M082	szurt	H4480	899	33604	Yeb 8:2	kiirt						-/4/d	nem_bibliai	1
+M083	veletlen	H5697	8	353	46:20	orokolt	Jer 46:20	Jer 46:20	azonos	I		tagolatlan		0
+M084	veletlen	H4480	3	436	Judg 5:14	kiirt	Bír 5:14	Bír 5:14	azonos			fej		0
+M085	veletlen	H3063	51	1195	2Sam 2:4	kiirt	2Sám 2:4	2Sám 2:4	azonos		I	-/2		0
+M086	veletlen	H4574	3	265	Prov 29:17	kiirt	Péld 29:17	Péld 29:17	azonos			tagolatlan		0
+M087	veletlen	H3611	18	584	Job 30:1	kiirt	Jób 30:1	Jób 30:1	azonos			-/-/a		0
+M088	veletlen	H6099	11	294	Isa 60:22	kiirt	Ézs 60:22	Ézs 60:22	azonos			-/1		0
+M089	veletlen	H0227	34	995	Isa 58:8	kiirt	Ézs 58:8	Ézs 58:8	azonos			-/1/b		0
+M090	veletlen	H3426	49	3190	5:12	orokolt	Préd 5:12		nincs_karoli			-/2/b	nincs_karoli	0
+M091	veletlen	H2691	3	118	7:8	orokolt	1Kir 7:8	1Kir 7:8	azonos	I		fej		0
+M092	bizonytalan	H0669	80	1564	31:1	feloldhatatlan						-/4	orokles_hibas	0
+M093	veletlen	H0113	268	5380	73:28	orokolt	Zsolt 73:28	Zsolt 73:28	azonos			-/4		0
+M094	veletlen	H7760	53	2121	Zech 6:11	kiirt	Zak 6:11	Zak 6:11	azonos	I		Qal/1/a		0
+M095	szurt	H3318	581	16018	Co 24:10	kiirt						Hiph'il/4/a	nem_bibliai	1
+M096	veletlen	H2781	35	692	1Sam 17:26	kiirt	1Sám 17:26	1Sám 17:26	azonos			-/1		0
+M097	veletlen	H5068	4	505	25:2	orokolt	2Móz 25:2	2Móz 25:2	azonos			Qal/-		0
+M098	szurt	H9003	125	5695	4:47	orokolt				I	I	-/7/c	nem_bibliai	1
+M099	veletlen	H6160	47	1386	, 6	folytatas	Ézs 35:6	Ézs 35:6	azonos	I		-/5		0
+M100	veletlen	H5006	30	787	Jer 23:17	kiirt	Jer 23:17	Jer 23:17	azonos			Pi'el/-		0
+M101	veletlen	H5975	274	8190	2Kin 23:3	kiirt	2Kir 23:3	2Kir 23:3	azonos			Hiph'il/6/c		0
+M102	veletlen	H0559	53	1924	1Chr 17:4	kiirt	1Krón 17:4	1Krón 17:4	azonos			Qal/-		0
+M103	veletlen	H2340	18	433	24:11	orokolt	Józs 24:11	Józs 24:11	azonos			-/2		0
+M104	veletlen	H1980	910	37004	1Sam 25:27	kiirt	1Sám 25:27	1Sám 25:27	azonos			Hithpa'el/1/b		0
+M105	veletlen	H0935	475	14050	Psa 45:15	kiirt	Zsolt 45:15	Zsolt 45:15	azonos			Hoph'al/-		0
+M106	veletlen	H2896	352	7705	Prov 14:14	kiirt	Péld 14:14	Péld 14:14	azonos	II		-/10/a		0
+M107	bizonytalan	H0255	1	76	Isa 13:21	kiirt	Ézs 13:21	Ézs 13:21	azonos			tagolatlan	sigla_igazolt	0
+M108	veletlen	H4191	376	7312	1Kin 2:24	kiirt	1Kir 2:24	1Kir 2:24	azonos			Hoph'al/2		0
+M109	szurt	H6305	2	233	23:31	orokolt						-/1	sigla_kozel	1
+M110	veletlen	H6287	8	356	Isa 3:20	kiirt	Ézs 3:20	Ézs 3:20	azonos_f85			tagolatlan		0
+M111	veletlen	H7604	35	1307	, 16	folytatas	Ézs 11:16	Ézs 11:16	azonos	I		Niph'al/1		0
+M112	szurt	H8025	28	951	Deut 25:9	kiirt						Qal/2	sigla_tapadt	1
+M113	veletlen	H4457	5	305	37:23	orokolt	2Móz 37:23	2Móz 37:23	azonos			-/2		0
+M114	veletlen	H5771	52	1120	5:5	orokolt	Hós 5:5	Hós 5:5	azonos			-/1/a		0
+M115	szurt	H4378	4	501	Qor 16:85	kiirt						tagolatlan	nem_bibliai	1
+M116	veletlen	H3651	302	8629	22:19	orokolt	Ez 22:19	Ez 22:19	azonos	I		-/3/d		0
+M117	veletlen	H0539	43	1725	93:5	orokolt	Zsolt 93:5	Zsolt 93:5	azonos	I		Niph'al/-		0
+M118	veletlen	H1984	115	5474	150:6	orokolt	Zsolt 150:6	Zsolt 150:6	azonos	II		Pi'el/2/d		0
+M119	veletlen	H3318	21	980	Amos 4:3	kiirt	Ámós 4:3	Ámós 4:3	azonos			fej		0
+M120	veletlen	H3021	18	581	47:12	orokolt	Ézs 47:12	Ézs 47:12	azonos			Qal/1		0
+M121	veletlen	H7804	5	532	3:13	orokolt	Dán 3:13	Dán 3:13	azonos			tagolatlan		0
+M122	veletlen	H1961	360	11912	14:6	orokolt	Bír 14:6	Bír 14:6	azonos		II	Qal/1/b		0
+M123	szurt	H4480	896	33575	Ter 8:11	kiirt						-/4/d	nem_bibliai	1
+M124	veletlen	H7885	3	212	Ezek 27:8	kiirt	Ez 27:8	Ez 27:8	azonos			tagolatlan		0
+M125	szurt	H2435	27	982	11:1	orokolt						-/2	nem_bibliai	1
+M126	veletlen	H2964	27	900	Prov 31:15	kiirt	Péld 31:15	Péld 31:15	azonos			-/2		0
+M127	szurt	H5207	3	148	Ecclus 45:16	kiirt						tagolatlan	nem_bibliai	1
+M128	veletlen	H3485	9	636	Exod 1:3	kiirt	2Móz 1:3	2Móz 1:3	azonos			-/1		0
+M129	veletlen	H5869	246	7121	, 45	folytatas	1Móz 24:45	1Móz 24:45	azonos	II		fej		0
+M130	veletlen	H8478	110	3485	Hab 3:16	kiirt	Hab 3:16	Hab 3:16	azonos			-/2/a		0
+M131	szurt	H3850	1	49	1Macc 11:34	kiirt						tagolatlan	nem_bibliai	1
+M132	veletlen	H0241	46	1266	Psa 45:11	kiirt	Zsolt 45:11	Zsolt 45:11	azonos			-/2/a		0
+M133	veletlen	H2077	71	1667	, 24	folytatas	2Kir 10:24	2Kir 10:24	azonos	I	I	-/2		0
+M134	veletlen	H2945	32	765	43:6	orokolt	Jer 43:6	Jer 43:6	azonos			tagolatlan		0
+M135	veletlen	H0312	51	1532	, 17	folytatas	Bír 2:17	Bír 2:17	azonos	I		tagolatlan		0
+M136	veletlen	H0905	29	1227	Isa 26:13	kiirt	Ézs 26:13	Ézs 26:13	azonos	II		-/1/c		0
+M137	bizonytalan	H4758	7	302	Song 2:14	kiirt	Én 2:14	Én 2:14	azonos			fej	sigla_igazolt	0
+M138	bizonytalan	H3895	4	209	15:15	feloldhatatlan				I		fej	orokles_hibas	0
+M139	veletlen	H6347	5	200	Dan 3:2	kiirt	Dán 3:2	Dán 3:2	azonos			tagolatlan		0
+M140	veletlen	H7626	29	818	2Sam 7:14	kiirt	2Sám 7:14	2Sám 7:14	azonos			-/2		0
+M141	veletlen	H5612	116	3309	1Chr 9:1	kiirt	1Krón 9:1	1Krón 9:1	azonos			-/3/e		0
+M142	bizonytalan	H1856	13	539	1Sam 31:4	kiirt	1Sám 31:4	1Sám 31:4	azonos			Qal/-	sigla_igazolt	0
+M143	veletlen	H4480	136	7426	Psa 101:8	kiirt	Zsolt 101:8	Zsolt 101:8	azonos			-/2/a		0
+M144	veletlen	H3318	597	16400	Ezek 46:20	kiirt	Ez 46:20	Ez 46:20	azonos			Hiph'il/4/d		0
+M145	bizonytalan	H6215	28	477	49:18	feloldhatatlan						tagolatlan	orokles_hibas	0
+M146	veletlen	H7227	101	2944	22:15	orokolt	2Sám 22:15	2Sám 22:15	azonos	I		fej		0
+M147	bizonytalan	H5867	1	173	Gen 10:22	kiirt	1Móz 10:22	1Móz 10:22	azonos	I		tagolatlan	sigla_igazolt	0
+M148	bizonytalan	H5493	129	4396	23:27	feloldhatatlan						Hiph'il/-	orokles_hibas	0
+M149	bizonytalan	H7497	1	139	Deut 2:11	kiirt	5Móz 2:11	5Móz 2:11	azonos	II		tagolatlan	sigla_igazolt	0
+M150	veletlen	H7794	52	1394	1Kin 1:19	kiirt	1Kir 1:19	1Kir 1:19	azonos			tagolatlan		0
+M151	szurt	H5130	27	1773	Ecclus 12:18	kiirt				I		Hiph'il/1/b	nem_bibliai	1
+M152	veletlen	H1654	2	92	6:1	orokolt	Neh 6:1	Neh 6:1	azonos	I		tagolatlan		0
+M153	veletlen	H4872	62	1360	Neh 1:8	kiirt	Neh 1:8	Neh 1:8	azonos			tagolatlan		0
+M154	veletlen	H2471	14	733	Num 6:19	kiirt	4Móz 6:19	4Móz 6:19	azonos			-/2/d		0
+M155	veletlen	H4679	14	318	1Chr 12:8	kiirt	1Krón 12:8	1Krón 12:7	atkulcsolt			-/1		0
+M156	veletlen	H0167	3	256	Isa 13:20	kiirt	Ézs 13:20	Ézs 13:20	azonos			Pi'el/-		0
+M157	veletlen	H0520	47	1879	6:3	orokolt	1Kir 6:3	1Kir 6:3	azonos	II		-/1		0
+M158	veletlen	H7043	35	2001	Gen 8:21	kiirt	1Móz 8:21	1Móz 8:21	azonos			Pi'el/-		0
+M159	szurt	H4912	49	1489	1:1	orokolt				II		-/6	nem_bibliai	1
+M160	veletlen	H1323	5	334	34:17	orokolt	1Móz 34:17	1Móz 34:17	azonos	I		fej		0
+M161	veletlen	H3034	5	1021	Psa 75:2	kiirt	Zsolt 75:2	Zsolt 75:2	azonos			Hiph'il/-		0
+M162	veletlen	H3318	99	2728	Psa 114:1	kiirt	Zsolt 114:1	Zsolt 114:1	azonos			fej		0
+M163	veletlen	H7760	191	6125	Hag 1:5	kiirt	Hag 1:5	Hag 1:5	azonos	I		Qal/2/b		0
+M164	veletlen	H8064	42	1444	Isa 47:13	kiirt	Ézs 47:13	Ézs 47:13	azonos			-/1/a		0
+M165	veletlen	H6912	56	1784	2Kin 13:13	kiirt	2Kir 13:13	2Kir 13:13	azonos			Niph'al/-		0
+M166	bizonytalan	H1769	7	313	Josh 13:9	kiirt	Józs 13:9	Józs 13:9	azonos			-/1	sigla_igazolt	0
+M167	veletlen	H8242	11	504	Josh 9:4	kiirt	Józs 9:4	Józs 9:4	azonos			-/1		0
+M168	veletlen	H5927	108	2962	Exod 24:12	kiirt	2Móz 24:12	2Móz 24:12	azonos			Qal/2/b		0
+M169	veletlen	H0833	24	734	Prov 3:18	kiirt	Péld 3:18	Péld 3:18	azonos			Pu'al/2		0
+M170	veletlen	H6137	4	429	, 14	folytatas	1Kir 12:14	1Kir 12:14	azonos			tagolatlan		0
+M171	veletlen	H2822	39	907	Psa 139:11	kiirt	Zsolt 139:11	Zsolt 139:11	azonos			-/2		0
+M172	veletlen	H0929	59	1275	14:15	orokolt	Zak 14:15	Zak 14:15	azonos			-/2		0
+M173	veletlen	H6872	9	403	Job 14:17	kiirt	Jób 14:17	Jób 14:17	azonos	I		tagolatlan		0
+M174	veletlen	H5439	82	2170	97:2	orokolt	Zsolt 97:2	Zsolt 97:2	azonos			-/2/a		0
+M175	veletlen	H4598	2	209	Exod 28:31	kiirt	2Móz 28:31	2Móz 28:31	azonos			fej		0
+M176	veletlen	H0776	149	2794	107:34	orokolt	Zsolt 107:34	Zsolt 107:34	azonos			-/3/b		0
+M177	veletlen	H6235	2	495	1Kin 7:43	kiirt	1Kir 7:43	1Kir 7:43	azonos			fej		0
+M178	veletlen	H0120	31	773	4:25	orokolt	Jer 4:25	Jer 4:25	azonos			-/1		0
+M179	veletlen	H2620	60	1404	91:4	orokolt	Zsolt 91:4	Zsolt 91:4	azonos			Qal/-		0
+M180	veletlen	H0517	24	628	Num 12:12	kiirt	4Móz 12:12	4Móz 12:12	azonos			-/1		0
+M181	veletlen	H5959	6	170	Song 1:3	kiirt	Én 1:3	Én 1:3	azonos			tagolatlan		0
+M182	veletlen	H4327	6	457	Gen 1:21	kiirt	1Móz 1:21	1Móz 1:21	azonos			tagolatlan		0
+M183	veletlen	H5975	70	2219	1Kin 22:21	kiirt	1Kir 22:21	1Kir 22:21	azonos			Qal/1/d		0
+M184	veletlen	H9004	70	3815	Gen 22:17	kiirt	1Móz 22:17	1Móz 22:17	azonos			-/1/b		0
+M185	veletlen	H6467	16	518	64:10	orokolt	Zsolt 64:10	Zsolt 64:10	azonos			-/1/a		0
+M186	veletlen	H3372	180	2522	11:6	orokolt	Józs 11:6	Józs 11:6	azonos			Qal/1/c		0
+M187	veletlen	H4196	105	4200	8:20	orokolt	1Móz 8:20	1Móz 8:20	azonos			-/8		0
+M188	veletlen	H2803	76	2088	, 8	folytatas	2Móz 39:8	2Móz 39:8	azonos		I	Qal/5		0
+M189	veletlen	H3940	7	176	Exod 20:18	kiirt	2Móz 20:18	2Móz 20:18	azonos			tagolatlan		0
+M190	veletlen	H7720	3	159	Isa 3:18	kiirt	Ézs 3:18	Ézs 3:18	azonos_f85			tagolatlan		0
+M191	bizonytalan	H8040	1	45	Josh 1:7	kiirt	Józs 1:7	Józs 1:7	azonos			fej	sigla_igazolt	0
+M192	veletlen	H3490	11	367	Exod 22:21	kiirt	2Móz 22:21	2Móz 22:22	atkulcsolt			tagolatlan		0
+M193	veletlen	H2026	50	1389	20:11	orokolt	1Móz 20:11	1Móz 20:11	azonos			Qal/1/a		0
+M194	veletlen	H5045	39	1006	2Chr 28:18	kiirt	2Krón 28:18	2Krón 28:18	azonos			-/1/a		0
+M195	veletlen	H6509	32	1643	Gen 17:6	kiirt	1Móz 17:6	1Móz 17:6	azonos			Hiph'il/2		0
+M196	veletlen	H5186	134	4994	Zech 1:16	kiirt	Zak 1:16	Zak 1:16	azonos			Niph'al/-		0
+M197	szurt	H7528	1	70	Ecclus 43:8	kiirt				I		fej	nem_bibliai	1
+M198	bizonytalan	H1754	1	62	Isa 29:3	kiirt	Ézs 29:3	Ézs 29:3	azonos			-/1	sigla_igazolt	0
+M199	veletlen	H6654	28	761	30:4	orokolt	2Móz 30:4	2Móz 30:4	azonos			tagolatlan		0
+M200	veletlen	H7568	29	1112	Exod 27:4	kiirt	2Móz 27:4	2Móz 27:4	azonos			-/2		0
+M201	veletlen	H4735	10	443	Exod 9:3	kiirt	2Móz 9:3	2Móz 9:3	azonos			-/1		0
+M202	veletlen	H2138	5	290	20:14	orokolt	5Móz 20:14	5Móz 20:14	azonos			tagolatlan		0
+M203	veletlen	H3068	218	7711	Judg 6:10	kiirt	Bír 6:10	Bír 6:10	azonos			-/2/a		0
+M204	veletlen	H1817	104	2787	Ezek 26:2	kiirt	Ez 26:2	Ez 26:2	azonos			-/4		0
+M205	veletlen	H9005	113	4690	Judg 1:34	kiirt	Bír 1:34	Bír 1:34	azonos			-/1/g		0
+M206	veletlen	H7563	92	1865	Psa 1:6	kiirt	Zsolt 1:6	Zsolt 1:6	azonos			-/3		0
+M207	szurt	H5358	5	202	Ecclesiasticus 48:7	kiirt						fej	nem_bibliai	1
+M208	veletlen	H7121	372	9932	2Sam 12:28	kiirt	2Sám 12:28	2Sám 12:28	azonos	I		Niph'al/2/d		0
+M209	bizonytalan	H6541	1	183	Gen 8:9	kiirt						fej	sigla_kozel	1
+M210	veletlen	H7200	470	14874	Est 4:8	kiirt	Eszt 4:8	Eszt 4:8	azonos			Hiph'il/1/a		0
+M211	veletlen	H1369	22	474	Ezek 32:29	kiirt	Ez 32:29	Ez 32:29	azonos			-/2		0
+M212	veletlen	H6370	27	933	Ezek 23:20	kiirt	Ez 23:20	Ez 23:20	azonos			-/2		0
+M213	veletlen	H2850	51	1710	2Sam 24:6	kiirt	2Sám 24:6	2Sám 24:6	azonos			-/2/b		0
+M214	veletlen	H0702	45	2001	1Chr 23:10	kiirt	1Krón 23:10	1Krón 23:10	azonos	I		-/1/b		0
+M215	bizonytalan	H7925	44	1707	1Sam 9:26	kiirt	1Sám 9:26	1Sám 9:26	azonos			tagolatlan	sigla_igazolt	0
+M216	veletlen	H1818	62	1752	2Kin 21:16	kiirt	2Kir 21:16	2Kir 21:16	azonos			-/2/b		0
+M217	bizonytalan	H1760	10	616	Jer 23:12	kiirt	Jer 23:12	Jer 23:12	azonos			Qal/-	sigla_igazolt	0
+M218	veletlen	H2652	4	126	, 11	folytatas	1Sám 4:11	1Sám 4:11	azonos			tagolatlan		0
+M219	veletlen	H0370	10	361	2Kin 6:27	kiirt	2Kir 6:27	2Kir 6:27	azonos	I		tagolatlan		0
+M220	veletlen	H0995	28	874	Prov 24:12	kiirt	Péld 24:12	Péld 24:12	azonos			Qal/2/a		0
+M221	veletlen	H2416	447	9200	22:4	orokolt	Péld 22:4	Péld 22:4	azonos	h:חיים		-/2		0
+M222	bizonytalan	H7604	95	3042	7:24	orokolt				I		Hiph'il/1	sigla_kozel	1
+M223	bizonytalan	H8034	205	6419	Hosea 2:19	kiirt				I		-/4	sigla_kozel	1
+M224	veletlen	H8141	17	588	11:12	orokolt	5Móz 11:12	5Móz 11:12	azonos			tagolatlan		0
+M225	veletlen	H3701	131	3490	Lev 25:50	kiirt	3Móz 25:50	3Móz 25:50	azonos			-/8/e		0
+M226	veletlen	H9000	322	11354	Job 29:12	kiirt	Jób 29:12	Jób 29:12	azonos			-/1/k		0
+M227	veletlen	H8184	10	527	2Sam 21:9	kiirt	2Sám 21:9	2Sám 21:9	azonos			-/1		0
+M228	veletlen	H6434	14	407	Job 1:19	kiirt	Jób 1:19	Jób 1:19	azonos			-/1/a		0
+M229	veletlen	H1870	539	10576	19:9	orokolt	5Móz 19:9	5Móz 19:9	azonos			-/6/e		0
+M230	bizonytalan	H1931	43	3640	1Sam 14:18	kiirt	1Sám 14:18	1Sám 14:18	azonos			-/1/a	sigla_igazolt	0
+M231	veletlen	H2015	15	479	Job 12:15	kiirt	Jób 12:15	Jób 12:15	azonos			Qal/-		0
+M232	veletlen	H5975	210	5924	Lev 18:23	kiirt	3Móz 18:23	3Móz 18:23	azonos			Qal/7/f		0
+M233	szurt	H5104	62	2373	Gen 24:10	kiirt						-/3	sigla_tapadt	1
+M234	szurt	H7887	7	321	2Sam 8:17	kiirt						tagolatlan	sigla_tapadt	1
+M235	szurt	H1994	2	503	Matt 5:13	kiirt						-/-/a	sigla_kozel	1
+M236	veletlen	H5437	76	3320	2Sam 5:23	kiirt	2Sám 5:23	2Sám 5:23	azonos			Qal/1/c		0
+M237	veletlen	H1004	122	3972	20:2	orokolt	2Móz 20:2	2Móz 20:2	azonos			-/1/a		0
+M238	veletlen	H5608	126	4372	, 22	folytatas	Ézs 36:22	Ézs 36:22	azonos			Pu'al/1/b		0
+M239	veletlen	H3976	13	640	Prov 11:1	kiirt	Péld 11:1	Péld 11:1	azonos			tagolatlan		0
+M240	veletlen	H7725	629	17735	2Chr 10:6	kiirt	2Krón 10:6	2Krón 10:6	azonos			Hiph'il/3		0
+M241	szurt	H6693	4	329	Gi 32:19	kiirt				I		tagolatlan	nem_bibliai	1
+M242	veletlen	H2850	57	2264	1Sam 2:6	kiirt	1Sám 2:6	1Sám 2:6	azonos			-/2/b		0
+M243	veletlen	H1129	209	4523	Ezra 1:3	kiirt	Ezsd 1:3	Ezsd 1:3	azonos			Qal/-/i		0
+M244	veletlen	H2470	58	1311	2Chr 32:24	kiirt	2Krón 32:24	2Krón 32:24	azonos	I		Qal/2		0
+M245	veletlen	H7467	10	267	1Chr 9:8	kiirt	1Krón 9:8	1Krón 9:8	azonos			-/4		0
+M246	veletlen	H0995	83	1850	17:28	orokolt	Péld 17:28	Péld 17:28	azonos			Niph'al/-		0
+M247	veletlen	H6601	21	1431	Exod 22:15	kiirt	2Móz 22:15	2Móz 22:16	atkulcsolt	h:מתה		Pi'el/-		0
+M248	veletlen	H1058	105	2485	Gen 33:4	kiirt	1Móz 33:4	1Móz 33:4	azonos			Qal/3		0
+M249	veletlen	H4283	27	620	Josh 5:11	kiirt	Józs 5:11	Józs 5:11	azonos			tagolatlan		0
+M250	veletlen	H0623	6	301	15:17	orokolt	1Krón 15:17	1Krón 15:17	azonos			-/2		0

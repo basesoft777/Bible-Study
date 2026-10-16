@@ -724,5 +724,51 @@ class FeliratHalmaz(unittest.TestCase):
             shutil.rmtree(tmp, ignore_errors=True)
 
 
+
+class OshlGyokcsalad(unittest.TestCase):
+    """F99 M1: az OSHL-index gyökcsalád-oszlopai (etym_tipus, etym_cel, gyok) a pardes.db-be kerülnek, oshl_id-indexszel;
+    a darabszámok egyeznek az M0.4 mérésével (naplok/BDB_SZELETELO_M0.md 5. szakasz)."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.tmp = tempfile.mkdtemp()
+        e = S.Epito(S.ROOT, os.path.join(cls.tmp, 'o.db'), 'teljes')
+        e.con = sqlite3.connect(':memory:')
+        _, licencsorok = G.tsv_beolvas(os.path.join(e.adat, 'licencek.tsv'))
+        e.licencek = {r['dataset']: r for r in licencsorok}
+        e._altalanos_betolt('oshl_lexikalis_index', 'konkordancia/OSHL_lexikalis_index.tsv', 'strong', None, ['OSHL'])
+        cls.con = e.con
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.con.close()
+        shutil.rmtree(cls.tmp, ignore_errors=True)
+
+    def test_az_uj_oszlopok_a_tablaban(self):
+        oszl = [r[1] for r in self.con.execute('PRAGMA table_info(oshl_lexikalis_index)')]
+        for o in ('etym_tipus', 'etym_cel', 'gyok'):
+            self.assertIn(o, oszl)
+
+    def test_darabszamok_az_m0_meres_szerint(self):
+        db = dict(self.con.execute('SELECT etym_tipus, COUNT(*) FROM oshl_lexikalis_index GROUP BY etym_tipus'))
+        self.assertEqual(db, {'main': 2643, 'sub': 4368, 'single': 574, '—': 2636})
+        self.assertEqual(self.con.execute("SELECT COUNT(*) FROM oshl_lexikalis_index WHERE etym_tipus='main' AND gyok<>'—'").fetchone()[0], 2458)
+
+    def test_oshl_id_index(self):
+        ix = [r[0] for r in self.con.execute("SELECT sql FROM sqlite_master WHERE type='index' AND tbl_name='oshl_lexikalis_index'")]
+        self.assertTrue(any('oshl_id' in (x or '') for x in ix), ix)
+
+    def test_minta_h1242_csaladja(self):
+        cel = self.con.execute("SELECT etym_tipus, etym_cel FROM oshl_lexikalis_index WHERE strong='H1242'").fetchone()
+        self.assertEqual(cel, ('sub', 'bxk'))
+        gy = self.con.execute("SELECT strong, etym_tipus, etym_cel FROM oshl_lexikalis_index WHERE oshl_id='bxk'").fetchone()
+        self.assertEqual(gy[0], 'H1239')
+        self.assertEqual(gy[1], 'main')
+        self.assertEqual(set(gy[2].split(',')), {'blz', 'bxl', 'bxm', 'bxn', 'bxo'})
+
+    def test_minta_h3915_nincs_csalad(self):
+        self.assertEqual(self.con.execute("SELECT etym_tipus FROM oshl_lexikalis_index WHERE strong='H3915'").fetchone()[0], 'single')
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=1)

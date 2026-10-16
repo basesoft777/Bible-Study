@@ -659,16 +659,16 @@ class BdbSzeletelesAtnezes(unittest.TestCase):
 
     VART = {
         'H7121': [("Qal", "- 1(ab) 2(abcd) 3(abcd) 4(abc) 5(abcdef) 6(abcdefghi)"), ("Niph'al", "- 1 2(abcd)"), ("Pu'al", "-")],
-        'H9003': [("", "1 2(abc) 3 4 5 6 7(abcde) 8(abcde)")],
+        'H9003': [("", "-")],   # F99 seed-100 (DT-F99i): a fej nélküli betű-szócikk szakaszokra bomlik; a jelentések az I.–III. fő rész szakaszaiban
         'H0834': [("", "1 2 3 4(abcd) 5 6 7(abc) 8(abcdef)")],
         'H3588': [("", "1(abcdefg) 2(abc) 3(abcde)")],
         'H0935': [("Qal", "- 1(ab) 2(abcdefg) 3 4"), ("Hiph'il", "- 1(abcdefg) 2(abcde)"), ("Hoph'al", "-(abc)")],
-        'H3027': [("", "1(ab) 2 3(abcdefghi)")],
-        'H5973': [("", "1(abcdefg) 2 3(abcde) 4(ab) 5(abcd)")],
+        'H3027': [("", "1(abcde) 2 3(abcde) 4(abcdefg) 5(abcdefghi)")],   # az aranyminta szerint (adat/bdb_aranyminta.tsv); ISMERT HIBA, l. lent
+        'H5973': [("", "1(abcdefg) 2 3(abcde) 4(ab) 5")],   # F99 seed-100: a „מֵעִם_72” alcímszó a. – d. pontja külön szakasz
         'H2896': [("", "1(abcd) 2(abcde) 3(abcde) 4(ab) 5 6 7 8 9(ab) 10(ab)")],
         'H3205': [("Qal", "- 1(abc) 2(ab) 3"), ("Niph'al", "-"), ("Pi'el", "-"), ("Pu'al", "-"), ("Hiph'il", "- 1 2"), ("Hoph'al", "-"),
                   ("Hithpa'el", "-")],
-        'H3772': [("Qal", "- 1(ab) 2 3 4"), ("Niph'al", "- 1(abc) 2 3 4"), ("Pual", "- 1 2"), ("Hiph'il", "- 1 2(abc) 3 4 5"), ("Hoph'al", "-")],
+        'H3772': [("Qal", "- 1(ab) 2 3 4"), ("Niph'al", "- 1(abc) 2 3 4"), ("Pu'al", "- 1 2"), ("Hiph'il", "- 1 2(abc) 3 4 5"), ("Hoph'al", "-")],
         'H3559': [("Niph'al", "- 1(abcd) 2 3 4"), ("Hiph'il", "- 1(abcd) 2(ab) 3 4"), ("Hoph'al", "- 1 2(ab) 3 4")],
         'H5800': [("Qal", "- 1(abcdefghijk) 2(abcdefg) 3"), ("Niph'al", "- 1 2"), ("Pu'al", "-")],
         'H0157': [("Qal", "- 1 2 3 4 5"), ("Niph'al", "-"), ("Pi'el", "- 1 2")],
@@ -702,12 +702,21 @@ class BdbSzeletelesAtnezes(unittest.TestCase):
                                           for j in t['jelentesek'])))
         return ki
 
+    # ELLENOR_F99 5.: a várt szerkezet az aranymintáé; ahol a szeletelő ma ettől eltér, az ismert hiba itt áll (a teszt nem rögzíti a hibás
+    # kimenetet elvárásként). Ha a hiba megszűnik, a teszt jelez: a sort ki kell venni ebből a listából.
+    ISMERT_HIBA = {'H3027': 'a magyar szövegben az 1. jelentés c–e alpontja nem bomlik (az „Est 3:10. c.” tapadt jelölő a fordításban más '
+                            'alakú); javítási feladat: beerkezo/BDB_SZELETELO_JAVITAS_brief_tervezet.md'}
+
     def test_varhato_szerkezet(self):
         import bdb_szelet
         for st, vart in self.VART.items():
             with self.subTest(strong=st):
                 self.assertIn(st, self.SOROK)
-                self.assertEqual(self.alak(bdb_szelet.szeletel(self.SOROK[st])), vart)
+                kapott = self.alak(bdb_szelet.szeletel(self.SOROK[st]))
+                if st in self.ISMERT_HIBA:
+                    self.assertNotEqual(kapott, vart, 'az ismert hiba megszűnt (%s): vedd ki az ISMERT_HIBA-ból' % st)
+                    continue
+                self.assertEqual(kapott, vart)
 
     def test_h7121_jelentesei_a_helyen(self):
         import bdb_szelet
@@ -766,12 +775,13 @@ class TestRegresszioProto(unittest.TestCase):
         'morf_hu': (746, 'macula.morf_hu: a prototípusban üres volt, a v2 az adat/morf_kulcs_heber.tsv-ből feloldja (F60.5, gépi feldolgozás)'),
         'tbesg_teljes': (38, 'gor_lapok.*.tbesg: a prototípus 900 karakterre vágta „…”-tal; a v3.1 szabály szerint a teljes angol szöveg áll a lapon (F60.45)'),
         'thayer_teljes': (64, 'gor_lapok.*.thayer: a prototípus 700 karakterre vágta „…”-tal; a teljes angol szöveg áll a lapon (F60.45)'),
-        'bdb_szeletelo': (40, 'lapok.*.appar (40 szó-lap, l. BDB_LAPOK): a BDB-szeletelő változásai a prototípus óta (F60.17, F60.18, F60.21, F60.23, F60.25, F60.35): jelentés-határok, a jelentés-sorszámok és a személyszám-jelölők kezelése, fejléc (héber szó, átírás), irodalom-/kritika-sorok; a prototípus-kulcsok értéke ezeken a lapokon eltér'),
-        'bdb_lemma_arg': (8, 'lapok.{H1254,H2416,H3651,H4723,H6960,H7235,H7287,H7363}.appar (a fenti 40-nel átfedve): a `szeletel(szoveg, lemma)` második argumentuma (F60.17, 8b642341) a homonima-szerepet jelöli (`azonos_lemma` / `masik_lemma` / `elo`); a teszt külön ellenőrzi, hogy a lemma-argumentum pontosan ennél a 8 lapnál módosítja a kimenetet'),
+        'bdb_szeletelo': (52, 'lapok.*.appar (52 szó-lap, l. BDB_LAPOK): a BDB-szeletelő változásai a prototípus óta (F60.17, F60.18, F60.21, F60.23, F60.25, F60.35): jelentés-határok, a jelentés-sorszámok és a személyszám-jelölők kezelése, fejléc (héber szó, átírás), irodalom-/kritika-sorok; F99 M2 (a vak minta után, +11 lap): a vesszős/nagybetűs szó melletti „1” (H0226, H0402, H1419, H3220), a gyakoriság-zárójeles „1 (kb. 150-szer)” (H6086), a jelöletlen második címszó szakasza (H0259, H2896, H3220, H4325, H6754, H6996), a római számos fő tagolás (H2145); F99 seed-100 (+1 lap): az arámi שְׁמַיִן külön szakasz (H8064); a prototípus-kulcsok értéke ezeken a lapokon eltér'),
+        'bdb_lemma_arg': (16, 'lapok.{H1254,H1288,H2416,H2896,H3220,H3651,H4325,H4723,H5414,H6213,H6754,H6960,H6996,H7235,H7287,H7363}.appar (a fenti 52-vel átfedve): a `szeletel(szoveg, lemma)` második argumentuma (F60.17, 8b642341) a homonima-szerepet jelöli (`azonos_lemma` / `masik_lemma` / `elo`); F99 M2: a jelöletlen második címszó (arámi rész: H1288, H5414; H2896, H3220, H6754, H6996) szerepe, és a H4325-ben a lemmával nem egyező, igehely nélküli utaló csonk helyett a fő szakasz; F99 seed-100: a H6213 II. עָשָׂה címszava (a fő tagolás külön szakasza mellett) homonima-szerepet kap; a teszt külön ellenőrzi, hogy a lemma-argumentum pontosan ennél a 16 lapnál módosítja a kimenetet'),
         'prov_elofordulas': (1, 'prov.elofordulas: a „(nem teljes)” megjegyzés kivéve (F60.29: a TAHOT fejezet-szinten teljes, F85)'),
     }
-    BDB_LEMMA_LAPOK = {'H1254', 'H2416', 'H3651', 'H4723', 'H6960', 'H7235', 'H7287', 'H7363'}
-    BDB_LAPOK = BDB_LEMMA_LAPOK | {
+    BDB_LEMMA_LAPOK = {'H1254', 'H2416', 'H3651', 'H4723', 'H6960', 'H7235', 'H7287', 'H7363',
+                       'H1288', 'H2896', 'H3220', 'H4325', 'H5414', 'H6754', 'H6996', 'H6213'}
+    BDB_LAPOK = BDB_LEMMA_LAPOK | {'H0226', 'H0259', 'H0402', 'H1419', 'H2145', 'H6086', 'H8064'} | {
         'H0215', 'H0559', 'H0914', 'H1288', 'H1876', 'H1961', 'H2009', 'H2232', 'H2822', 'H2895', 'H3117', 'H3318', 'H3533',
         'H3605', 'H3615', 'H3915', 'H4390', 'H4725', 'H4910', 'H5414', 'H5774', 'H6213', 'H6440', 'H6509', 'H6635', 'H6942',
         'H7121', 'H7200', 'H7430', 'H7637', 'H8147', 'H8317'}

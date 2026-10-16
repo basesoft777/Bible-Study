@@ -1,6 +1,7 @@
-"""OSHL lexikális index import — TWOT-szám és BDB-azonosító kivonat.
+"""OSHL lexikális index import — TWOT-szám, BDB-azonosító és gyökcsalád (<etym>) kivonat.
 
-Forrás: openscriptures/HebrewLexicon (CC BY 4.0). Lásd F6_BRIEF.md F6.1.
+Forrás: openscriptures/HebrewLexicon (CC BY 4.0). Lásd F6_BRIEF.md F6.1; a gyökcsalád-oszlopok
+(etym_tipus, etym_cel, gyok): F99_BDB_SZELETELO_BRIEF.md M1.
 """
 
 import sys
@@ -38,6 +39,7 @@ NYELV_MAP = {"heb": "heber", "arc": "arameus"}
 HEADER = [
     "strong", "strong_eredeti", "twot", "bdb_id", "nyelv", "oshl_id",
     "lemma", "atiras", "szofaj", "def_en",
+    "etym_tipus", "etym_cel", "gyok",
 ]
 
 
@@ -120,11 +122,21 @@ def process_lexical_index(xml_path):
             w_el = entry.find(tag("w"))
             pos_el = entry.find(tag("pos"))
             def_el = entry.find(tag("def"))
+            etym_el = entry.find(tag("etym"))
 
             lemma = clean_text("".join(w_el.itertext())) if w_el is not None else EM_DASH
             atiras = clean_text(w_el.get("xlit")) if w_el is not None else EM_DASH
             szofaj = clean_text("".join(pos_el.itertext())) if pos_el is not None else EM_DASH
             def_en = clean_text("".join(def_el.itertext())) if def_el is not None else EM_DASH
+            # <etym type="main|sub|single" root="…">id, id, …</etym>: a sub célja a gyök (main) bejegyzés
+            # oshl_id-je, a main szövege a származékok oshl_id-listája (F99 M1)
+            if etym_el is not None:
+                etym_tipus = etym_el.get("type") or EM_DASH
+                celok = [t.strip() for t in (etym_el.text or "").split(",") if t.strip()]
+                etym_cel = ",".join(celok) if celok else EM_DASH
+                gyok = clean_text(etym_el.get("root"))
+            else:
+                etym_tipus = etym_cel = gyok = EM_DASH
 
             for xref in entry.findall(tag("xref")):
                 bdb_raw = xref.get("bdb")
@@ -139,6 +151,7 @@ def process_lexical_index(xml_path):
                 rows.add((
                     strong, strong_eredeti, twot, bdb_id, nyelv, oshl_id,
                     lemma, atiras, szofaj, def_en,
+                    etym_tipus, etym_cel, gyok,
                 ))
     return rows
 
