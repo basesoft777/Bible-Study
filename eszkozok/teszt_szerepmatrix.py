@@ -334,5 +334,38 @@ class TestKiejtesF09(unittest.TestCase):
         self.assertEqual(LG.lemma_kiejtes('H7497')[1], 'ráfá')
 
 
+class TestUbsDbhF09(unittest.TestCase):
+    """F09 S2.3: a héber 5. (tömör jelentés) és 9. (versenkénti jelentés) szerep az UBS DBH-ból."""
+
+    def _szerep(self, motivum_id, n):
+        szoveg = _blokk(motivum_id)[0]
+        sz = _szakaszok(szoveg)['heber']
+        m = re.search(r'^#### %d\. .*?(?=^#### |\Z)' % n, sz, re.M | re.S)
+        return m.group(0)
+
+    def test_tomor_jelentes_darabszamok_az_adatbol(self):
+        b = self._szerep('ISTENTISZT-001', 5)
+        jel, _hiv, darab = LG.ubs_dbh_adatok()
+        for t in ('H7121', 'H8034'):
+            ossz = sum(v for (s, _), v in darab.items() if s == t)
+            self.assertIn('**%s** · UBS DBH: %d jelentés, %d hivatkozott hely' % (t, len(jel[t]), ossz), b)
+        self.assertIn('19 jelentés', b)
+        self.assertIn('*(fordításra vár)*', b)  # nincs magyar fordítás: nem gépi, jelölt
+
+    def test_versenkenti_jelentes_es_mt_szamozas(self):
+        b = self._szerep('ISTENTISZT-001', 9)
+        self.assertIn('| Zsolt 79:6 | H7121 | `006562001011000` — to acknowledge (a deity) | — |', b)
+        # Zsolt 116:13 -- a Károli-szám eltér az MT-től? a megfeleltetés a táblából, nem találgatás
+        self.assertNotIn('Róm 10:13', b)  # ÚSZ-sor nem kerül ide
+        ures = self._szerep('ALVIL-001', 9)
+        # Károli Préd 9:12: a versmegfeleltetésben nincs MT-vers -> nincs találgatás
+        self.assertRegex(ures, r'\| Préd 9:12 \| H7585 \| — \| versszámozás-eltérés \(KEZI\)')
+
+    def test_nem_usz_vers_kihagyva(self):
+        b = self._szerep('HAMART-001', 9)
+        for vers in ('Gal 3:10', 'Mk 7:21'):
+            self.assertNotIn('| %s |' % vers, b)
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
