@@ -9,7 +9,7 @@ modell: sonnet
 allapot: nem_indult
 ad: `/elteres` parancs, amely egy `ELTÉRÉS: <n> tétel` jelentést egyeztetett besorolással, a brief modelljén futó javítással és korlátozott számú újraellenőrzéssel zár le
 kovetkezo: a brief végrehajtása a `/kovetkezo`-val
-olvas: [.claude/commands/kovetkezo.md, .claude/commands/befogad.md, .claude/agents/, MUNKAMENET.md, BRIEF_SABLON.md, "naplok/ELLENOR_*"]
+olvas: [.claude/commands/kovetkezo.md, .claude/commands/befogad.md, .claude/agents/, MUNKAMENET.md, BRIEF_SABLON.md]
 ir: [.claude/commands/elteres.md, .claude/commands/kovetkezo.md]
 fugg: []
 ---
