@@ -1,19 +1,17 @@
-# F23 zárás — a DT84 átvezetése (#23 MOTIVUM_FORRAS)
+# F23 zárás — a DT84 átvezetése és a feladat lezárása (#23 MOTIVUM_FORRAS)
 
-*2026.10.17 · ág: `claude/f23-dt84-atvezetes` · modell: claude-opus-5-5 · állapot: `fut`; DT-F23b (c.) és DT-F23c (a.) eldöntve 🟢 (felhasználó, 2026-10-17), alkalmazva: F23.D14; a két élő sablon (`2_`, `4_`) a diffbe került, ezért új független ellenőrzés kell. Független ellenőrzés: `naplok/ELLENOR_F23_3.md` (ELTÉRÉS, 8 tétel), javítva: F23.D9–D11; újraellenőrzés: `naplok/ELLENOR_F23_4.md` (ELTÉRÉS, 1 alacsony tétel: a D11 említése, javítva).*
+*2026.10.17 · ág: `claude/f23-dt84-atvezetes` (PR #370, merge `11f5fc8`, 2026-10-17); lezárás: `claude/f23-zaras` (F23.Z) · modell: claude-opus-5-5 · állapot: `lezarva` (felhasználó, chat, 2026-10-17).*
 
-- A négy tervfájl `javaslat`-jelölései a DT84 (1)–(13) a szerint feloldva: `sablonok/9_PaRDeS_motivum_forras_sablon.md` (v0.1; F23.D1), `adat/SEMA.md` 3.10 (F23.D2), `naplok/MOTIVUM_FORRAS_ci_terv.md` (F23.D3), `naplok/MOTIVUM_FORRAS_pilot_terv.md` (F23.D4). A 9. pont / 8. szakasz összefoglalja a döntéseket.
-- (7) kiegészítés: a tanulmány-sablon v18 tükörszabályának B-beli alakja a forrássablon 7. pontjában; a `2_…` és a `4_…` élő sablon a DT-F23b (c.) szerint felfüggesztő sort kapott (F23.D14), a teljes átírás a #11-é.
-- (10) kiegészítés: „kiadható `apparatus` nézet (a DT-F86a szerint prémium)” a „nyilvános” helyett; a `【NAPLO】` egyenkénti ítélete (folyamat-nyom `belso`, módszertani figyelmeztetés apparátus-szöveg, külön indokolt sor). Mért kiindulás: 36 `【NAPLO`-sor az éles lapokon (`grep -c`, ts=2026-10-17; egyezik a DT84-gyel).
-- Javítva menet közben: a pilot-terv 2.3 még proveniencia-lábjegyzet → `auditok.tsv` kinyerést írt, ellentétben a DT84 (2)-vel.
-- DT-F23c: a `kapcsolatok.tsv` új `indoklas` oszlopát (DT84 (8)) melyik feladat veszi fel. A DT-F23a helyőrzőt a DT84 már elhasználta, ezért b és c. A DT66 ✅ (F23.D5).
-- Ellenőrzés: `python eszkozok/feladatok.py ellenoriz` 128 brief, 0 hiba; `eszkozok/ellenorzes/futtat.py` (diff-mód, commit-üzenetekkel) HIBA 0. A címsor-átnevezések E5-jelölése: F23.D6.
-- K4, `git diff --stat origin/main..c238518e` (a D10 előtt): `DONTESEK.md` 4 ±; `F23_MOTIVUM_FORRAS_BRIEF.md` 10 ±; `adat/SEMA.md` 86 ±; `naplok/ELLENOR_F23_3.md` +16; `naplok/F23_zaras.md` +19; `naplok/MOTIVUM_FORRAS_ci_terv.md` 40 ±; `naplok/MOTIVUM_FORRAS_lekepezes.tsv` 10 ±; `naplok/MOTIVUM_FORRAS_pilot_terv.md` 115 ±; `sablonok/9_PaRDeS_motivum_forras_sablon.md` 75 ± (9 fájl, 247+, 128−). Tartalmi fájl (`tematikus_lezart/`, `motivumok/`, `lexikon/`, `genezis/`, `general.py`, `adat/*.tsv`) nincs köztük.
+- A négy tervfájl `javaslat`-jelölései a DT84 (1)–(13) a szerint feloldva: `sablonok/9_PaRDeS_motivum_forras_sablon.md` (v0.1; F23.D1), `adat/SEMA.md` 3.10 (F23.D2), `naplok/MOTIVUM_FORRAS_ci_terv.md` (F23.D3), `naplok/MOTIVUM_FORRAS_pilot_terv.md` (F23.D4). A DT66 ✅ (F23.D5); a DT84 🟢 marad, mert a #11 alkalmazza.
+- (7): a `2_` v18 és a `4_` v10 visszaírási szabálya, valamint a `4_` Lezárási checklist 12. pontja a DT-F23b (c.) szerint felfüggesztő sort kapott (F23.D14); a teljes átírás a #11-é.
+- (10): „kiadható `apparatus` nézet (a DT-F86a szerint prémium)”; a `【NAPLO】` egyenkénti ítélete. Mért kiindulás: 36 `【NAPLO`-sor az éles lapokon (`grep -c`, ts=2026-10-17; egyezik a DT84-gyel).
+- Független ellenőrzés: `naplok/ELLENOR_F23_3.md` (ELTÉRÉS, 8; javítva D9–D11), `_4.md` (ELTÉRÉS, 1 alacsony; javítva), `_5.md` (ELTÉRÉS, 5; javítva D15). A D15 utáni újraellenőrzés jelentése a repóban nincs; a lezárás a felhasználó döntése.
+- Ellenőrzés (#370): `feladatok.py ellenoriz` 0 hiba; `ellenorzes/futtat.py` diff-módban HIBA 0. K4: tartalmi fájl (`tematikus_lezart/`, `motivumok/`, `lexikon/`, `genezis/`, `general.py`, `adat/*.tsv`) nem változott.
+- Nyitott tételek gazdája (`NYITOTT_FELADATOK.md`): N-F23a → #11 (DT-F11b, a T3 előtt); N-F23b → #86 (3.1) és az E29 implementációja; N-F23c → gazda nincs (a #11 kizárja, a #86 briefje nem veszi fel).
 
-## Folytatási pont (DT84 után)
+## Átadás a #11-nek
 
-1. Új független ellenőrzés (a diff az F23.D14 óta két élő sablont is érint: felfüggesztő sorok a `2_` v18 és a `4_` v10 szabálya, valamint a `4_` Lezárási checklist 12. pontja elé/mellé; verziószám nem emelkedett).
-2. A #11 briefjének megírása a pilot-terv alapján: külön lépés (a #11 saját briefje, `allapot: brief_kell`; nincs a #23 `ir` mezőjében). Átadandó: a #11 kötelezettsége a DT-F23b szerint a `sablonok/2_PaRDeS_bovitett_sablon.md` v18 és a `sablonok/4_PaRDeS_tematikus_sablon.md` v10 visszaírási szabályának, valamint a `4_` Lezárási checklist 12. pontjának teljes átírása (a két sablon a #11 `ir`-jébe). A DT-F23c szerint a #11 első tétele önálló séma-tétel: a `kapcsolatok.tsv` `indoklas` oszlopa (SEMA 2.3, fejléc, üres értékek, eszközök), saját commitokkal és független ellenőrzéssel, a migráció előtt.
+A #11 briefje (`F11_MIGRACIO_BRIEF.md`) a main-en van. Kötelezettségei: (1) első, önálló séma-tétel a DT-F23c szerint: a `kapcsolatok.tsv` `indoklas` oszlopa (SEMA 2.3, fejléc, üres értékek, eszközök), saját commitokkal és független ellenőrzéssel, a migráció előtt; (2) a DT-F23b szerint a `sablonok/2_PaRDeS_bovitett_sablon.md` v18 és a `sablonok/4_PaRDeS_tematikus_sablon.md` v10 visszaírási szabályának, valamint a `4_` Lezárási checklist 12. pontjának teljes átírása; (3) a DT84 alkalmazása a pilot-terv szerint, utána a DT84 ✅.
 
 ---
 

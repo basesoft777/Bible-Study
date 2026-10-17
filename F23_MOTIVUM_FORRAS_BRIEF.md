@@ -5,20 +5,21 @@ kod: MOTIVUM_FORRAS
 tipus: feladat
 fazis: 1
 modell: opus
-allapot: fut
+allapot: lezarva
 ag: claude/f23-dt84-atvezetes
 pr: https://github.com/basesoft777/Bible-Study/pull/370
 ad: a B szerkezet terve mérésekkel: szakasz-leképezés, forrássablon-tervezet, szintjelölés a SEMA-ban, CI-szabályok leírása; renderelés és fájlmozgatás nélkül
-kovetkezo: "Folytatás: a DT84 átvezetve (sablon v0.1, SEMA 3.10, ci-terv, pilot-terv; ág claude/f23-dt84-atvezetes); a DT-F23b (c.: a 2_/4_ sablon visszaírási szabálya felfüggesztve, F23.D14) és a DT-F23c (a.: az indoklas oszlop a #11 első, önálló séma-tétele — SEMA 2.3, fejléc, üres értékek, eszközök —, saját commitokkal és független ellenőrzéssel, a migráció előtt) eldöntve; utána a #11 briefje a pilot-terv alapján (külön lépés: a #11 saját briefje, nem e brief ir-je); a #11 kötelezettsége a DT-F23b szerint a sablonok/2_PaRDeS_bovitett_sablon.md v18 és a sablonok/4_PaRDeS_tematikus_sablon.md v10 visszaírási szabályának, valamint a 4_ Lezárási checklist 12. pontjának teljes átírása (a két sablon a #11 ir-jébe)"
+kovetkezo: "lezárva; a PR #370 mergelve 2026-10-17 (11f5fc8). Átadás a #11-nek (F11_MIGRACIO_BRIEF.md, a main-en): első tétele a DT-F23c önálló séma-tétele (kapcsolatok.tsv indoklas oszlop, SEMA 2.3), utána a DT-F23b sablon-átírás (2_ v18, 4_ v10 visszaírási szabály és a 4_ checklist 12. pontja); N-F23a a #11-é"
+lezarva_osszegzes: a B szerkezet terve (M0 öt mérése, forrássablon v0.1, SEMA 3.10, CI-terv E28/E29, pilot-terv); DT66, DT84 átvezetve, DT-F23b/c eldöntve; független ellenőrzés `naplok/ELLENOR_F23*.md`; merge `11f5fc8` (PR #370, 10.17); folytatás: #11
 olvas: [sablonok/, tematikus_lezart/, motivumok/, lexikon/, genezis/, adat/SEMA.md, adat/res_forras.tsv, adat/szotar_szerepek.tsv, eszkozok/general.py, CLAUDE.md, ATALAKITASI_TERV.md.md, ADATVAGYON_TERV.md, MUNKATERV.md, naplok/TEREMT002_PROZA_PROBA_meres.md]
-ir: [sablonok/9_PaRDeS_motivum_forras_sablon.md, adat/SEMA.md, naplok/MOTIVUM_FORRAS_lekepezes.tsv, naplok/MOTIVUM_FORRAS_torzscikk_egyedi.tsv, naplok/MOTIVUM_FORRAS_parositas.tsv, naplok/MOTIVUM_FORRAS_naplo_keveredes.tsv, naplok/MOTIVUM_FORRAS_atfedes.tsv, naplok/MOTIVUM_FORRAS_M0.py, naplok/F23_zaras.md, naplok/ELLENOR_F23.md, naplok/ELLENOR_F23_2.md, naplok/MOTIVUM_FORRAS_ci_terv.md, naplok/MOTIVUM_FORRAS_pilot_terv.md, sablonok/2_PaRDeS_bovitett_sablon.md, sablonok/4_PaRDeS_tematikus_sablon.md, naplok/ELLENOR_F23_3.md, naplok/ELLENOR_F23_4.md, naplok/ELLENOR_F23_5.md]
+ir: [sablonok/9_PaRDeS_motivum_forras_sablon.md, adat/SEMA.md, naplok/MOTIVUM_FORRAS_lekepezes.tsv, naplok/MOTIVUM_FORRAS_torzscikk_egyedi.tsv, naplok/MOTIVUM_FORRAS_parositas.tsv, naplok/MOTIVUM_FORRAS_naplo_keveredes.tsv, naplok/MOTIVUM_FORRAS_atfedes.tsv, naplok/MOTIVUM_FORRAS_M0.py, naplok/F23_zaras.md, naplok/ELLENOR_F23.md, naplok/ELLENOR_F23_2.md, naplok/MOTIVUM_FORRAS_ci_terv.md, naplok/MOTIVUM_FORRAS_pilot_terv.md, sablonok/2_PaRDeS_bovitett_sablon.md, sablonok/4_PaRDeS_tematikus_sablon.md, naplok/ELLENOR_F23_3.md, naplok/ELLENOR_F23_4.md, naplok/ELLENOR_F23_5.md, NYITOTT_FELADATOK.md]
 fugg: [32, 78]
 nem_fugg: [22, 52]
 ---
 
 # F<nn>_MOTIVUM_FORRAS_BRIEF.md — Egyforrású motívumdokumentum: forrássablon és mélységi szintek (terv)
 
-*FELADATOK #<nn> · Modell: opus · v1.13 · 2026.10.17 · döntések: D34–D39 (a naplózó brief rögzíti; a számok a befogadáskor a következő szabad D-számtól csúszhatnak), DT28 (v1.3)*
+*FELADATOK #<nn> · Modell: opus · v1.14 · 2026.10.17 · döntések: D34–D39 (a naplózó brief rögzíti; a számok a befogadáskor a következő szabad D-számtól csúszhatnak), DT28 (v1.3)*
 
 ## 1. Cél
 
@@ -121,3 +122,4 @@ Minden számot a menetben ténylegesen futtatott parancs kimenetéből vegyél. 
 | v1.11 | 2026.10.17 | javítókör az ELLENOR_F23_3 1–8. tétele szerint (F23.D9–D11): a DT-F86c függő *javaslat*-hivatkozás; a maradék próza→`auditok.tsv` utak a DT84 (2) szerint; a `lekepezes.tsv` 5 során jelölt DT84-eltérés; az ISTENTISZT-001 és a HAMART-001 `jeloltek` száma friss méréssel; SEMA 3.10.7 4. ↔ 3/9 összekötő mondat; a `pr` mező üres (a mergelt #258 helyett); a sablon 9. pont jelölése; `git diff --stat` a zárásban | ELLENOR_F23_3; az orkesztrátor javítóköre; tartalmi döntés nincs |
 | v1.12 | 2026.10.17 | DT-F23b (c.) és DT-F23c (a.) eldöntve és alkalmazva (F23.D14): felfüggesztő sor a `2_` sablon v18 és a `4_` sablon v10 visszaírási szabálya elé és a `4_` Lezárási checklist 12. pontjára (verziószám nélkül); `ir` + `sablonok/2_PaRDeS_bovitett_sablon.md`, `sablonok/4_PaRDeS_tematikus_sablon.md`; `kovetkezo`: a #11 első tétele önálló séma-tétel (DT-F23c) | DT-F23b, DT-F23c (felhasználó, 2026-10-17, chat) |
 | v1.13 | 2026.10.17 | javítókör az ELLENOR_F23_5 öt tétele szerint (F23.D15): a #11-nek átadva a DT-F23b kötelezettsége (`kovetkezo`, zárónapló); a zárónapló 6. sora a D14-hez igazítva; a `4_` sablon checklist-záró mondata a 12. pont felfüggesztését jelzi; a törzs-fejléc verziósora v1.13; `ir` + `naplok/ELLENOR_F23_3.md`, `_4.md`, `_5.md` | ELLENOR_F23_5; az orkesztrátor javítóköre; tartalmi döntés nincs |
+| v1.14 | 2026.10.17 | lezárás (F23.Z0–Z1, ág `claude/f23-zaras`): `allapot: lezarva`, `lezarva_osszegzes`, `kovetkezo` lezárt állapotra (átadás a #11-nek); `ag`/`pr` a #370-en marad; zárónapló végleges; N-F23a–c gazdája a `NYITOTT_FELADATOK.md`-ben; `ir` + `NYITOTT_FELADATOK.md`; a DT84 🟢 marad (a #11 alkalmazza) | felhasználó (chat, 2026-10-17): „zárd le a #23-at” |
