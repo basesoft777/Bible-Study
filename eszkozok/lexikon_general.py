@@ -884,12 +884,32 @@ TBESH_FORRAS_JELZO = {
 }
 
 
+def tbesh_szoveg_dedup(szoveg):
+    """F09 J5 (ellenőri 2. mellékhiba): a TBESH.txt több jelentés-sora (pl. H0127: soil / country / planet)
+    ugyanazt a számozott jelentéslistát ismétli (`: soil 1) ... | : country 1) ... | : planet 1) ...`).
+    Ha minden ` | `-szel elválasztott rész azonos számozott farokkal végződik, a farok egyszer áll,
+    a címkék (`: soil | : country | : planet`) előtte maradnak; egyébként a szöveg változatlan."""
+    reszek = szoveg.split(' | ')
+    if len(reszek) < 2:
+        return szoveg
+    fejek, farkak = [], set()
+    for r_ in reszek:
+        m_ = re.match(r'^(: [^0-9]*?) (1\) .*)$', r_)
+        if not m_:
+            return szoveg
+        fejek.append(m_.group(1))
+        farkak.add(m_.group(2))
+    if len(farkak) != 1:
+        return szoveg
+    return ' | '.join(fejek) + ' ' + farkak.pop()
+
+
 def _tbesh_konsz_blokk(r, ctx):
     """Egy konszolidált TBESH-sor forrásblokkja a #78 renderének mintájára (`_szotar_reszek`)."""
     bek = ['##### TBESH %s — (konszolidált szócikk)' % r['strong']]
     if r.get('rovid_glosszak') and r['rovid_glosszak'] != EM_DASH:
         bek.append('**Röviden:** %s' % r['rovid_glosszak'])
-    bek.append('> %s' % r['teljes_szoveg'])
+    bek.append('> %s' % tbesh_szoveg_dedup(r['teljes_szoveg']))
     hu = forditas_ehhez('TBESH', r['strong'], r['strong'], 'teljes', 'forditas_hu')
     bek.append('**🇭🇺** %s' % hu if hu else FORDITASRA_VAR)
     bek.append('*Forrás: %s (%s)*' % (TBESH_KONSZ_FAJL, TBESH_FORRAS_JELZO.get(r['forras'], r['forras'])))

@@ -20,7 +20,7 @@ nem_fugg: [7, 22, 27, 38, 52, 55, 107, 109, 110]
 
 # F09_SZOTAR_S2_BRIEF.md — Szótári adatréteg, 2. menet
 
-*FELADATOK #9 · Modell: sonnet · v2 · 2026.10.17 · döntés: DT74 (3)–(4), D52, D34, DT185–e · előzmény: `F05_SZOTAR_BRIEF.md` 2. menet (S2.1–S2.9, K9–K14), `F78_SZEREPMATRIX_VAZ_BRIEF.md`, `naplok/F78_meres.md` 9–14.*
+*FELADATOK #9 · Modell: sonnet · v2 · 2026.10.17 · döntés: DT74 (3)–(4), D52, D34, DT185–DT189 · előzmény: `F05_SZOTAR_BRIEF.md` 2. menet (S2.1–S2.9, K9–K14), `F78_SZEREPMATRIX_VAZ_BRIEF.md`, `naplok/F78_meres.md` 9–14.*
 
 A v1 csonk volt: a lépéseket az `F05_SZOTAR_BRIEF.md` 2. menetére bízta. Az a menet a DT74 (4) és a DT186 előtt készült, ezért három ponton nem hajtható végre úgy, ahogy le van írva:
 
@@ -28,7 +28,7 @@ A v1 csonk volt: a lépéseket az `F05_SZOTAR_BRIEF.md` 2. menetére bízta. Az 
 - a hatókört nem szűkíti a 8 motívum Strongjaira (DT74 (4)), és nem a #78 szerepmátrix-vázának blokkjait tölti, mert a váz akkor még nem létezett;
 - az **S2.6** azóta leválasztott feladat (#70, felhasználói döntés, 2026.10.06).
 
-Ez a brief az S2.1–S2.9-et ehhez igazítva veszi át. A befogadáskor nyitott három pontot a felhasználó eldöntötte (DT187–e, 2026-10-17); a megmaradt „[javaslat]” jelölésű pontok végrehajtási részletek, a végrehajtó a zárójelentésben jelzi, melyik változatot követte.
+Ez a brief az S2.1–S2.9-et ehhez igazítva veszi át. A befogadáskor nyitott három pontot a felhasználó eldöntötte (DT187–DT189, 2026-10-17); a megmaradt „[javaslat]” jelölésű pontok végrehajtási részletek, a végrehajtó a zárójelentésben jelzi, melyik változatot követte.
 
 ## 1. Cél
 
@@ -169,4 +169,4 @@ Az F05 K9–K14-ből, a DT186 és a DT74 (4) szerint igazítva.
 - **DT188** — mind a 26 héber lemma a `kiejtes_kivetelek.tsv`-be — **eldöntve** (2026-10-17).
 - **DT189** — a 2/b 3 kézi glosszája a #70/#11-ben; a 7. szerep SECE-adatot kap, a „l. 2/b” mutató kiegészítő sor — **eldöntve** (2026-10-17).
 
-*A `DT185`–`e` helyőrző; végleges számot a `szamkiosztas` Action ad merge után.*
+*A DT185–DT189 végleges szám (a `szamkiosztas` Action adta, a `DT-F09a–e` helyőrzőkből). A javító menet (F9.J1–J6) ellenőri eltérései nyomán a `DT-F09g–j` új helyőrző a `DONTESEK.md`-ben; a végleges számot a `szamkiosztas` adja merge után.*

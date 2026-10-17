@@ -989,7 +989,7 @@ az özönvíz-világ elpusztulása és a jelenlegi világ tűzre tartatása — 
 
 **Röviden:** land: soil; land: country; land: planet
 
-> : soil 1) ground, land 1a) ground (as general, tilled, yielding sustenance) 1b) piece of ground, a specific plot of land 1c) earth substance (for building or constructing) 1d) ground as earth's visible surface 1e) land, territory, country 1f) whole inhabited earth 1g) city in Naphtali | : country 1) ground, land 1a) ground (as general, tilled, yielding sustenance) 1b) piece of ground, a specific plot of land 1c) earth substance (for building or constructing) 1d) ground as earth's visible surface 1e) land, territory, country 1f) whole inhabited earth 1g) city in Naphtali | : planet 1) ground, land 1a) ground (as general, tilled, yielding sustenance) 1b) piece of ground, a specific plot of land 1c) earth substance (for building or constructing) 1d) ground as earth's visible surface 1e) land, territory, country 1f) whole inhabited earth 1g) city in Naphtali
+> : soil | : country | : planet 1) ground, land 1a) ground (as general, tilled, yielding sustenance) 1b) piece of ground, a specific plot of land 1c) earth substance (for building or constructing) 1d) ground as earth's visible surface 1e) land, territory, country 1f) whole inhabited earth 1g) city in Naphtali
 
 *(fordításra vár)*
 
