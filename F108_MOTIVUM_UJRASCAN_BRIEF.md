@@ -6,9 +6,9 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: folyamat
-allapot: dontesre_var
+allapot: fut
 ad: a 9 motívum minden előfordulás- és jelöltsorának kulcs-ellenőrzése a mai TAHOT-on, a gerinc-Strongok újrascanje, az új találatok a jeloltek.tsv-ben (dontes=nyitva), és mért napló; az elofordulasok.tsv javítása csak jóváhagyott döntés után
-kovetkezo: Te: DT-F108a (a 25 nyitva jelölt elbírálásának módja; a tág Strongok új helyeinek kezelése) — lépések 1–3 kész
+kovetkezo: DT-F108a eldöntve ((a)+(d)); hátra: független ellenőr és PR; az alkalmazás (TEREMT-001 Jób 41:32 elbírálása, az ISTENTISZT-001 szűrő-pilot) külön tétel(ek), /befogad-dal
 ag: claude/f108-motivum-ujrascan
 olvas: [adat/motivumok.tsv, F55_ZSOLTAR_UJRAELLENORZES_BRIEF.md, adat/elofordulasok.tsv, adat/jeloltek.tsv, adat/grammatikai_strongok.tsv, adat/SEMA.md, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv, eszkozok/lekerdez.py, eszkozok/jelolt.py, naplok/F84_jelentes.md, naplok/F85_jelentes.md, naplok/F85_esetlista.tsv, NYITOTT_FELADATOK.md]
 ir: [adat/jeloltek.tsv, naplok/F108_MOTIVUM_UJRASCAN_naplo.md, naplok/F108_ujrascan_elteresek.tsv]
@@ -72,4 +72,7 @@ a `Karoli_versmegfeleltetes.tsv` Ézs 9-hibája (N-F85a); a bible-mcp bármilyen
 
 ## 5. Döntésnapló
 
-- (helyőrző a futáskor: DT-F108a a javítás és az elbírálás módja)
+- DT-F108a (2026-10-17, a felhasználó): **(a) + (d)**. Kulcsjavító tétel nem kell (0 eltolódott ÓSZ-kulcs). A 25 `nyitva`
+  jelölt motívumonként, a saját menetben bírálódik el, a TEREMT-001 Jób 41:32-vel kezdve. A tág gerinc-Strongok új helyeire
+  szűrő: az `adat/motivumok.tsv` negatív kritériuma + kollokáció; a szűrőt előbb az ISTENTISZT-001-en próbáljuk ki. A (c)
+  (szűretlen ~2 400 sor a `jeloltek.tsv`-be) elvetve.
