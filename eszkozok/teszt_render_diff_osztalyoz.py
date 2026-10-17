@@ -58,10 +58,28 @@ class IsmeretlenElerheto(unittest.TestCase):
         self.assertEqual(set(eredmeny), {R.ISMERETLEN})
 
     def test_torzscikk_ismert_szakasz(self):
-        eles = '## 2. Kapcsolatok\nrégi\n'
-        proba = '## 2. Kapcsolatok\núj\n'
+        # hozzáadott sor, vagy olyan törölt sor, amelynek jelölt-sora (címke + igehely) a próbában megvan
+        eles = '## 2. Kapcsolatok\n| [Jób 1:1](#v) | régi |\n'
+        proba = '## 2. Kapcsolatok\n| [Jób 1:1](#v) | új |\nújabb sor\n'
         eredmeny = osztaly(eles, proba, 'TESZT-001_TORZSCIKK.md')
         self.assertEqual(set(eredmeny), {'torzscikk_res'})
+
+    def test_torzscikk_torolt_sor_eltunik_ismeretlen(self):
+        eles = '## 2. Kapcsolatok\n- **TSK-kereszthivatkozás** (szavazatszám): Róm 8:1 (5)\n'
+        proba = '## 2. Kapcsolatok\nmás tartalom\n'
+        eredmeny = osztaly(eles, proba, 'TESZT-001_TORZSCIKK.md')
+        self.assertEqual(eredmeny[R.ISMERETLEN]['torolt'], ['- **TSK-kereszthivatkozás** (szavazatszám): Róm 8:1 (5)'])
+
+    def test_licenc_es_lxx_torolt_sor_eltunik_ismeretlen(self):
+        for blokk_nev in ('idezes', 'kolofon', 'lxx'):
+            eles = blokk(blokk_nev, ['| Jób 1:1 | régi sor |'])
+            proba = blokk(blokk_nev, ['teljesen más'])
+            e = osztaly(eles, proba)
+            self.assertEqual(e[R.ISMERETLEN]['torolt'], ['| Jób 1:1 | régi sor |'], blokk_nev)
+            # ha a jelölt-sor (címke + igehely) megvan a próbában, besorolt
+            proba2 = blokk(blokk_nev, ['| Jób 1:1 | új sor |'])
+            e2 = osztaly(eles, proba2)
+            self.assertNotIn(R.ISMERETLEN, e2, blokk_nev)
 
     def test_par_magyarazat_nelkul_ismeretlen(self):
         # azonos normalizált kulcs, latin zárójel-eltérés, de nincs héber/görög írásjegy és nincs blokk-kategória
@@ -165,11 +183,17 @@ class ForditasJelzoEsKiejtes(unittest.TestCase):
 
 class TovabbEl(unittest.TestCase):
     def test_tovabb_el_okai(self):
-        sz = R.ProbaSzoveg(['| 1Móz 3:15 | valami hosszabb szöveg itt |', '**TWOT:** 959a'])
+        sz = R.ProbaSzoveg(['| 1Móz 3:15 | valami hosszabb szöveg itt |', '**TWOT:** 959a', '- Károli-KH: Ézs 38:18',
+                            '- TSK: 1Móz 3:15 (Votes: 20)', '**H7585** · **TWOT:** 2303c'])
         self.assertEqual(sz.tovabb_el('**TWOT:** 959a'), 'sor')
-        self.assertEqual(sz.tovabb_el('- TSK: 1Móz 3:15 (Votes: 20)'), 'igehely')
-        self.assertEqual(sz.tovabb_el('**Címke:** 959a'), 'ertek')
+        self.assertEqual(sz.tovabb_el('- TSK: 1Móz 3:15 (Votes: 21)'), 'cimke_igehely')
+        self.assertEqual(sz.tovabb_el('**TWOT:** 2303c'), 'ertek')
+        self.assertIsNone(sz.tovabb_el('**Más:** 2303c'))
         self.assertIsNone(sz.tovabb_el('- TSK: Róm 12:11 (Votes: 35)'))
+        # az igehely önmagában (más sorban, más címkével) nem elég: Ézs 38:18 csak Károli-KH sorban van
+        self.assertIsNone(sz.tovabb_el('- TSK: Ézs 38:18 (Votes: 15)'))
+        # a szigorúbb részlet-ág: csak egyetlen próba-sor része lehet
+        self.assertIsNone(sz.tovabb_el('valami hosszabb szöveg itt és még sok minden más'))
 
 
 class MegnevezettTablak(unittest.TestCase):
@@ -196,7 +220,7 @@ class MegnevezettTablak(unittest.TestCase):
         self.assertEqual(e[R.ISMERETLEN]['torolt'], ['- TSK: Róm 8:1 (Votes: 99)'])
 
     def test_tabla_merete(self):
-        self.assertEqual(len(R.ISMERT_HIBA_TSK_VERSSZAM), 11)
+        self.assertEqual(len(R.ISMERT_HIBA_TSK_VERSSZAM), 13)
         self.assertEqual(len(R.ATKULCSOLT_SOROK), 3)
 
 

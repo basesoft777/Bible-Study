@@ -337,14 +337,16 @@ ATKULCSOLT_SOROK = {
     ('ALVIL-001', '- Károli-KH: Jób 1:21'): 'Jób 17:13',
 }
 # 2. ISMERT HIBA (N-F09g): a TSK-tábla KJV-számozású, a tsk_index() átváltás nélkül Károli-kulccsal keres; a Préd 9:10
-#    alatti 11 TSK-jelölt a KJV 9:10 = Károli 9:12 vershez tartozott, és emiatt veszett el. CSAK ez a 11 sor:
+#    alatti 11 TSK-jelölt a KJV 9:10 = Károli 9:12 vershez tartozott, és emiatt veszett el. CSAK ez a 13 sor (12 TSK-jelölt a tudományos oldalon + a törzscikk-oldal összevont sora):
 ISMERT_HIBA_TSK_VERSSZAM = {
     ('ALVIL-001', '- TSK: Kol 3:23 (Votes: 71)'), ('ALVIL-001', '- TSK: Ef 5:16 (Votes: 35)'),
     ('ALVIL-001', '- TSK: Róm 12:11 (Votes: 35)'), ('ALVIL-001', '- TSK: Zsolt 6:5 (Votes: 24)'),
     ('ALVIL-001', '- TSK: 1Kor 9:24 (Votes: 19)'), ('ALVIL-001', '- TSK: Préd 11:6 (Votes: 18)'),
     ('ALVIL-001', '- TSK: 2Krón 31:20 (Votes: 17)'), ('ALVIL-001', '- TSK: 2Krón 31:21 (Votes: 17)'),
     ('ALVIL-001', '- TSK: Jer 29:13 (Votes: 17)'), ('ALVIL-001', '- TSK: Mt 6:33 (Votes: 15)'),
-    ('ALVIL-001', '- TSK: Ézs 38:19 (Votes: 15)'),
+    ('ALVIL-001', '- TSK: Ézs 38:19 (Votes: 15)'), ('ALVIL-001', '- TSK: Ézs 38:18 (Votes: 15)'),
+    # a törzscikk-oldal ugyanezen 12 jelöltje egy sorban (lexikon/ALVIL-001_TORZSCIKK.md:676)
+    ('ALVIL-001', '- **TSK-kereszthivatkozás** (szavazatszám): Kol 3:23 (71), Ef 5:16 (35), Róm 12:11 (35), Zsolt 6:5 (24), 1Kor 9:24 (19), Préd 11:6 (18), 2Krón 31:20 (17), 2Krón 31:21 (17), Jer 29:13 (17), Mt 6:33 (15), Ézs 38:18 (15), Ézs 38:19 (15)'),
 }
 
 
@@ -452,30 +454,49 @@ def _norm(sor):
     return re.sub(r'\s+', ' ', s).strip()
 
 
+def _forrascimke(n):
+    """A normalizált sor forráscímkéje: az első igehely előtti szöveg (pl. `TSK:`, `Károli-KH:`, `[`)."""
+    m = _IGEHELY_RE.search(n)
+    return n[:m.start()].strip() if m else ''
+
+
 class ProbaSzoveg(object):
-    """A próba normalizált szövege a `tovabb_el` kereséséhez."""
+    """A próba normalizált sorai a `tovabb_el` kereséséhez."""
 
     def __init__(self, sorok):
-        self.sorok = set(_norm(s) for s in sorok if s.strip())
-        self.szoveg = '\n'.join(_norm(s) for s in sorok if s.strip())
+        self.sorok = []   # (nyers sor első jele, normalizált sor)
+        for s in sorok:
+            if s.strip():
+                self.sorok.append((s.strip()[:1], _norm(s)))
+        self.halmaz = set(n for _, n in self.sorok)
 
     def tovabb_el(self, sor):
-        """Hol él tovább a (törölt) sor tartalma a próbában? -- 'sor' (a normalizált sor egy próba-sorral egyezik),
-        'reszlet' (a normalizált sor, legalább 12 jegy, része a próba szövegének), 'igehely' (a sor minden
-        igehelye megvan a próba szövegében), vagy None (sehol nem él tovább)."""
+        """Hol él tovább a (törölt) sor tartalma a próbában? Szigorú (3. javító menet): ugyanaz a JELÖLT-SOR kell
+        a forráscímkéjével együtt --
+          'sor'          a normalizált sor egy próba-sorral egyezik;
+          'cimke_igehely' ugyanabban a próba-sorban (azonos kezdőjellel) megvan a sor forráscímkéje ÉS minden igehelye;
+          'reszlet'      a normalizált sor (legalább 20 jegy) egyetlen próba-sor része;
+          'ertek'        `**Címke:** érték` sor: ugyanabban a próba-sorban a címke ÉS az érték is megvan;
+        vagy None. Az igehely önmagában (más sorban, címke nélkül) NEM elég."""
         n = _norm(sor)
         if not n:
             return 'sor'
-        if n in self.sorok:
+        if n in self.halmaz:
             return 'sor'
-        if len(n) >= 12 and n in self.szoveg:
-            return 'reszlet'
+        jel = sor.strip()[:1]
         ige = _IGEHELY_RE.findall(n)
-        if ige and all(i in self.szoveg for i in ige):
-            return 'igehely'
+        cimke = _forrascimke(n)
+        if ige:
+            for j, pn in self.sorok:
+                if j == jel and cimke in pn and all(i in pn for i in ige):
+                    return 'cimke_igehely'
+        if len(n) >= 20 and any(n in pn for _, pn in self.sorok):
+            return 'reszlet'
         m = _CIMKE_ERTEK_RE.match(sor.strip())
-        if m and len(m.group(1)) >= 2 and m.group(1) != '—' and m.group(1) in self.szoveg:
-            return 'ertek'   # `**Címke:** érték` sor: az érték (pl. TWOT-szám) a próbában megvan
+        if m and len(m.group(1)) >= 2 and m.group(1) != '—':
+            c = re.match(r'^\*\*([^*]+:)\*\*', sor.strip())
+            if c and any(c.group(1) in pn and m.group(1) in pn for _, pn in self.sorok):
+                return 'ertek'
         return None
 
 
@@ -503,10 +524,11 @@ def _tudomanyos_kategoria(sor, kontextus, irany, proba=None, motivum=None):
     if irany == 'torolt' and ATKULCSOLT_KULCS.get(ATKULCSOLT_SOROK.get((motivum, s))):
         return 'elavult_adat'  # F87.3 átkulcsolás: a régi kulcs sora
     blokk, nyelv, szerep, rokon = kontextus
-    if blokk in ('idezes', 'kolofon'):
-        return 'licenc'
-    if blokk == 'lxx':
-        return 'lxx_korpusz'
+    if blokk in ('idezes', 'kolofon', 'lxx'):
+        # a törölt sor csak akkor besorolt, ha a tartalma tovább él (3. javító menet); különben ismeretlen
+        if irany == 'torolt' and proba is not None and proba.tovabb_el(s) is None:
+            return ISMERETLEN
+        return 'licenc' if blokk != 'lxx' else 'lxx_korpusz'
     if _LEIRO_RE.match(s) or _URES_ALLAPOT_RE.match(s) or (irany == 'torolt' and _URES_ERTEK_RE.match(s)):
         # blokk-leíró mondat / üres-állapot jelzés / értéktelen címkesor: sablonmondat, amely a blokk adatából
         # számolt számot vagy az üresség tényét hordozza -- a blokk szerint besorolva (adatot nem hordoz)
@@ -536,7 +558,17 @@ def _tudomanyos_kategoria(sor, kontextus, irany, proba=None, motivum=None):
     return ISMERETLEN  # ismeretlen generált blokk
 
 
-def _torzscikk_kategoria(sor, szakasz):
+def _torzscikk_kategoria(sor, szakasz, irany='hozzaadott', proba=None, motivum=None):
+    s = sor.strip()
+    if irany == 'torolt' and (motivum, s) in ISMERT_HIBA_TSK_VERSSZAM:
+        return 'ismert_hiba_tsk_versszam'
+    kat = _torzscikk_kat(sor, szakasz)
+    if irany == 'torolt' and kat != ISMERETLEN and proba is not None and proba.tovabb_el(s) is None:
+        return ISMERETLEN   # a törölt sor tartalma sehol nem él tovább
+    return kat
+
+
+def _torzscikk_kat(sor, szakasz):
     if sor.strip().startswith('| **Fő szavak**'):
         return 'kiejtes'
     if szakasz.startswith('5. Szótári'):
@@ -581,9 +613,11 @@ def proba_osztalyoz(fajl_nev, eles_szoveg, proba_szoveg):
             pk = _par_kategoria(s, partner[0])
             if pk is not None:
                 return pk
+        # azonos normalizált kulcsú partner: a sor tartalma a partnerben él tovább, a túlélés-próba felesleges
+        pv = None if partner else proba_sz
         if torzscikk:
-            return _torzscikk_kategoria(s, k)
-        return _tudomanyos_kategoria(s, k, irany, proba_sz, fajl_nev.split('_')[0])
+            return _torzscikk_kategoria(s, k, irany, pv, fajl_nev.split('_')[0])
+        return _tudomanyos_kategoria(s, k, irany, pv, fajl_nev.split('_')[0])
 
     for s, k in torolt:
         eredmeny[kategoria(s, k, 'torolt')]['torolt'].append(s)
