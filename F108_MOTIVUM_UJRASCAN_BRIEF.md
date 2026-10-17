@@ -6,9 +6,10 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: folyamat
-allapot: nem_indult
+allapot: fut
 ad: a 9 motívum minden előfordulás- és jelöltsorának kulcs-ellenőrzése a mai TAHOT-on, a gerinc-Strongok újrascanje, az új találatok a jeloltek.tsv-ben (dontes=nyitva), és mért napló; az elofordulasok.tsv javítása csak jóváhagyott döntés után
-kovetkezo: Indítható: az 1. lépéssel
+kovetkezo: Folytatás: a 2. lépés (kulcs-összevetés)
+ag: claude/f108-motivum-ujrascan
 olvas: [adat/motivumok.tsv, F55_ZSOLTAR_UJRAELLENORZES_BRIEF.md, adat/elofordulasok.tsv, adat/jeloltek.tsv, adat/grammatikai_strongok.tsv, adat/SEMA.md, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv, eszkozok/lekerdez.py, eszkozok/jelolt.py, naplok/F84_jelentes.md, naplok/F85_jelentes.md, naplok/F85_esetlista.tsv, NYITOTT_FELADATOK.md]
 ir: [adat/jeloltek.tsv, naplok/F108_MOTIVUM_UJRASCAN_naplo.md, naplok/F108_ujrascan_elteresek.tsv]
 fugg: [84, 85]
