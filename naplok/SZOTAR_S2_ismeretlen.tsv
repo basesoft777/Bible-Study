@@ -1,33 +1,36 @@
-fajl	irany	sor
-ALVIL-001_TUDOMANYOS.md	torolt	- `adat/forditas_ubs.tsv` (projekt-adat)
-ALVIL-001_TUDOMANYOS.md	torolt	| `forditas_ubs.tsv` | `adat/forditas_ubs.tsv` | projekt-adat | elofordulasok |
-ANTROP-001_TUDOMANYOS.md	torolt	- `adat/forditas_ubs.tsv` (projekt-adat)
-ANTROP-001_TUDOMANYOS.md	torolt	| `forditas_ubs.tsv` | `adat/forditas_ubs.tsv` | projekt-adat | elofordulasok |
-HAMART-001_TORZSCIKK.md	torolt	- **LXX:** Zsolt(LXX) 73:20 — — — kutatói azonosítás függőben
-HAMART-001_TUDOMANYOS.md	torolt	- `adat/forditas_ubs.tsv` (projekt-adat)
-HAMART-001_TUDOMANYOS.md	torolt	| `forditas_ubs.tsv` | `adat/forditas_ubs.tsv` | projekt-adat | elofordulasok |
-HODIT-001_TORZSCIKK.md	torolt	- **LXX:** — — — — szamozas_elteres
-HODIT-001_TORZSCIKK.md	torolt	- **LXX:** — — — — szamozas_elteres
-HODIT-001_TORZSCIKK.md	torolt	- **LXX:** — — — — szamozas_elteres
-HODIT-001_TORZSCIKK.md	torolt	- **LXX:** — — — — szamozas_elteres
-HODIT-001_TORZSCIKK.md	torolt	- **LXX:** — — — — szamozas_elteres
-HODIT-001_TORZSCIKK.md	torolt	- **LXX:** Zsolt(LXX) 87:11 — — — kutatói azonosítás függőben
-HODIT-001_TUDOMANYOS.md	torolt	- LXX (Septuaginta — lxx-morph + GreekWordList szövegkorpusz) (`konkordancia/LXX_OS/1-chronicles.tsv`, `konkordancia/LXX_OS/2-samuel.tsv`, `konkordancia/LXX_OS/deuteronomy.tsv`, `konkordancia/LXX_OS/genesis.tsv`, `konkordancia/LXX_OS/isaiah.tsv`, `konkordancia/LXX_OS/job-lxx.tsv`, `konkordancia/LXX_OS/joshua.tsv`, `konkordancia/LXX_OS/numbers.tsv`, `konkordancia/LXX_OS/proverbs.tsv`, `konkordancia/LXX_OS/psalms-lxx.tsv`, CC BY 4.0)
-HODIT-001_TUDOMANYOS.md	torolt	- `adat/forditas_ubs.tsv` (projekt-adat)
-HODIT-001_TUDOMANYOS.md	torolt	| `forditas_ubs.tsv` | `adat/forditas_ubs.tsv` | projekt-adat | elofordulasok |
-HODIT-001_TUDOMANYOS.md	torolt	| `joshua.tsv` | `konkordancia/LXX_OS/joshua.tsv` | CC BY 4.0 | lxx |
-ISTENTISZT-001_TORZSCIKK.md	torolt	- LSJ (Liddell-Scott-Jones, A Greek-English Lexicon) — CC BY-SA 3.0
-ISTENTISZT-001_TUDOMANYOS.md	torolt	- BDB (Brown–Driver–Briggs, A Hebrew and English Lexicon of the Old Testament, 1906) (`konkordancia/BDB_teljes_unabridged.tsv`, közkincs)
-KIRALY-001_TORZSCIKK.md	torolt	- **LXX:** Zsolt(LXX) 75:3 — — — kutatói azonosítás függőben
-KIRALY-001_TUDOMANYOS.md	torolt	- BDB (Brown–Driver–Briggs, A Hebrew and English Lexicon of the Old Testament, 1906) (`konkordancia/BDB_teljes_unabridged.tsv`, közkincs)
-KIRALY-001_TUDOMANYOS.md	torolt	- `adat/forditas_ubs.tsv` (projekt-adat)
-KIRALY-001_TUDOMANYOS.md	torolt	| `forditas_ubs.tsv` | `adat/forditas_ubs.tsv` | projekt-adat | elofordulasok |
-MENNY-001_TORZSCIKK.md	torolt	- **LXX:** — — — — szamozas_elteres
-MENNY-001_TUDOMANYOS.md	torolt	- `adat/forditas_ubs.tsv` (projekt-adat)
-MENNY-001_TUDOMANYOS.md	torolt	| `forditas_ubs.tsv` | `adat/forditas_ubs.tsv` | projekt-adat | elofordulasok |
-TEREMT-001_TORZSCIKK.md	torolt	- **LXX:** — — — — szamozas_elteres
-TEREMT-001_TORZSCIKK.md	torolt	- **LXX:** — — — — szamozas_elteres
-TEREMT-001_TORZSCIKK.md	torolt	- **LXX:** — — — — szamozas_elteres
-TEREMT-001_TORZSCIKK.md	torolt	- **LXX:** — — — — szamozas_elteres
-TEREMT-001_TUDOMANYOS.md	torolt	- `adat/forditas_ubs.tsv` (projekt-adat)
-TEREMT-001_TUDOMANYOS.md	torolt	| `forditas_ubs.tsv` | `adat/forditas_ubs.tsv` | projekt-adat | elofordulasok |
+fajl	irany	sor	felhasznaloi_besorolas
+ALVIL-001_TUDOMANYOS.md	torolt	- `adat/forditas_ubs.tsv` (projekt-adat)	forditas_ubs_forras_elavult
+ALVIL-001_TUDOMANYOS.md	torolt	| `forditas_ubs.tsv` | `adat/forditas_ubs.tsv` | projekt-adat | elofordulasok |	forditas_ubs_forras_elavult
+ANTROP-001_TUDOMANYOS.md	torolt	- `adat/forditas_ubs.tsv` (projekt-adat)	forditas_ubs_forras_elavult
+ANTROP-001_TUDOMANYOS.md	torolt	| `forditas_ubs.tsv` | `adat/forditas_ubs.tsv` | projekt-adat | elofordulasok |	forditas_ubs_forras_elavult
+HAMART-001_TORZSCIKK.md	torolt	- **LXX:** Zsolt(LXX) 73:20 — — — kutatói azonosítás függőben	kutatoi_azonositas_feloldodott
+HAMART-001_TUDOMANYOS.md	torolt	- `adat/forditas_ubs.tsv` (projekt-adat)	forditas_ubs_forras_elavult
+HAMART-001_TUDOMANYOS.md	torolt	| `forditas_ubs.tsv` | `adat/forditas_ubs.tsv` | projekt-adat | elofordulasok |	forditas_ubs_forras_elavult
+HODIT-001_TORZSCIKK.md	torolt	- **LXX:** — — — — szamozas_elteres	szamozas_elteres_helyorzo_feloldodott
+HODIT-001_TORZSCIKK.md	torolt	- **LXX:** — — — — szamozas_elteres	szamozas_elteres_helyorzo_feloldodott
+HODIT-001_TORZSCIKK.md	torolt	- **LXX:** — — — — szamozas_elteres	szamozas_elteres_helyorzo_feloldodott
+HODIT-001_TORZSCIKK.md	torolt	- **LXX:** — — — — szamozas_elteres	szamozas_elteres_helyorzo_feloldodott
+HODIT-001_TORZSCIKK.md	torolt	- **LXX:** — — — — szamozas_elteres	szamozas_elteres_helyorzo_feloldodott
+HODIT-001_TORZSCIKK.md	torolt	- **LXX:** Zsolt(LXX) 87:11 — — — kutatói azonosítás függőben	kutatoi_azonositas_feloldodott
+HODIT-001_TUDOMANYOS.md	torolt	- LXX (Septuaginta — lxx-morph + GreekWordList szövegkorpusz) (`konkordancia/LXX_OS/1-chronicles.tsv`, `konkordancia/LXX_OS/2-samuel.tsv`, `konkordancia/LXX_OS/deuteronomy.tsv`, `konkordancia/LXX_OS/genesis.tsv`, `konkordancia/LXX_OS/isaiah.tsv`, `konkordancia/LXX_OS/job-lxx.tsv`, `konkordancia/LXX_OS/joshua.tsv`, `konkordancia/LXX_OS/numbers.tsv`, `konkordancia/LXX_OS/proverbs.tsv`, `konkordancia/LXX_OS/psalms-lxx.tsv`, CC BY 4.0)	joshua_forrasvaltas
+HODIT-001_TUDOMANYOS.md	torolt	- `adat/forditas_ubs.tsv` (projekt-adat)	forditas_ubs_forras_elavult
+HODIT-001_TUDOMANYOS.md	torolt	| `forditas_ubs.tsv` | `adat/forditas_ubs.tsv` | projekt-adat | elofordulasok |	forditas_ubs_forras_elavult
+HODIT-001_TUDOMANYOS.md	torolt	| `joshua.tsv` | `konkordancia/LXX_OS/joshua.tsv` | CC BY 4.0 | lxx |	joshua_forrasvaltas
+ISTENTISZT-001_TORZSCIKK.md	torolt	- LSJ (Liddell-Scott-Jones, A Greek-English Lexicon) — CC BY-SA 3.0	bdb_lsj_formatumvaltozas
+ISTENTISZT-001_TUDOMANYOS.md	torolt	- BDB (Brown–Driver–Briggs, A Hebrew and English Lexicon of the Old Testament, 1906) (`konkordancia/BDB_teljes_unabridged.tsv`, közkincs)	bdb_lsj_formatumvaltozas
+KIRALY-001_TORZSCIKK.md	torolt	- **LXX:** Zsolt(LXX) 75:3 — — — kutatói azonosítás függőben	kutatoi_azonositas_feloldodott
+KIRALY-001_TUDOMANYOS.md	torolt	- BDB (Brown–Driver–Briggs, A Hebrew and English Lexicon of the Old Testament, 1906) (`konkordancia/BDB_teljes_unabridged.tsv`, közkincs)	bdb_lsj_formatumvaltozas
+KIRALY-001_TUDOMANYOS.md	torolt	- `adat/forditas_ubs.tsv` (projekt-adat)	forditas_ubs_forras_elavult
+KIRALY-001_TUDOMANYOS.md	torolt	| `forditas_ubs.tsv` | `adat/forditas_ubs.tsv` | projekt-adat | elofordulasok |	forditas_ubs_forras_elavult
+MENNY-001_TORZSCIKK.md	torolt	- **LXX:** — — — — szamozas_elteres	szamozas_elteres_helyorzo_feloldodott
+MENNY-001_TUDOMANYOS.md	torolt	- `adat/forditas_ubs.tsv` (projekt-adat)	forditas_ubs_forras_elavult
+MENNY-001_TUDOMANYOS.md	torolt	| `forditas_ubs.tsv` | `adat/forditas_ubs.tsv` | projekt-adat | elofordulasok |	forditas_ubs_forras_elavult
+TEREMT-001_TORZSCIKK.md	torolt	- **LXX:** — — — — szamozas_elteres	szamozas_elteres_helyorzo_feloldodott
+TEREMT-001_TORZSCIKK.md	torolt	- **LXX:** — — — — szamozas_elteres	szamozas_elteres_helyorzo_feloldodott
+TEREMT-001_TORZSCIKK.md	torolt	- **LXX:** — — — — szamozas_elteres	szamozas_elteres_helyorzo_feloldodott
+TEREMT-001_TORZSCIKK.md	torolt	- **LXX:** — — — — szamozas_elteres	szamozas_elteres_helyorzo_feloldodott
+TEREMT-001_TUDOMANYOS.md	torolt	- `adat/forditas_ubs.tsv` (projekt-adat)	forditas_ubs_forras_elavult
+TEREMT-001_TUDOMANYOS.md	torolt	| `forditas_ubs.tsv` | `adat/forditas_ubs.tsv` | projekt-adat | elofordulasok |	forditas_ubs_forras_elavult
+# felhasznaloi_besorolas: a felhasználó 2026-10-17-én (chat) átnézte és elfogadta a 32 sort: 14 forditas_ubs.tsv forrás-/kolofonsor elavult (a fájl a forditasok.tsv-be olvadt, cfa7d0d6); 2 HODIT-001 joshua.tsv sor forrásváltás joshua-vaticanus-b.tsv-re (main-döntés, KK7.5.2/F54.2); 3 BDB/LSJ forrássor formátumváltozás; 10 üres szamozas_elteres LXX-helyőrző és 3 kutatói azonosítás függőben sor feloldódott.
+# ellenőrzés (scope=generalt_proba/F09_szotar_s2_proba/lexikon/{HAMART,KIRALY,HODIT}-001_TORZSCIKK.md | forras=grep | ts=2026-10-17): a Zsolt(LXX) 73:20 (HAMART-001: ἀνομία G0458, eltérő), 75:3 (KIRALY-001: εἰρήνη G1515, eltérő) és 87:11 (HODIT-001: ἰατρός G2395, eltérő) a próbában tartalommal szerepel (lista- és táblasor); mindhárom feloldódott.
+# csoportdarabszámok: 14/2/3/10/3 (mért, 32 sor, mind kapott értéket). A fájlt a render_diff_osztalyoz.py --proba újrafuttatása felülírja.
