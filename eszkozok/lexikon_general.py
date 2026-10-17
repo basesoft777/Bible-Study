@@ -932,7 +932,7 @@ def tbesh_szoveg_dedup(szoveg):
     return ' | '.join(fejek) + ' ' + farkak.pop()
 
 
-SZEMELYNEV_POS_RE = re.compile(r'^N:.*-P$')
+SZEMELYNEV_POS_RE = re.compile(r'^N:')   # minden N: kezdetű (tulajdonnév) morfológia (DT-F09h kiegészítés, 2. rész)
 
 
 def tbesh_sorok_tokenhez(token):
@@ -945,6 +945,15 @@ def tbesh_sorok_tokenhez(token):
     if pontos:
         return pontos
     return [r for r in sorok if not SZEMELYNEV_POS_RE.match(r.get('pos_kod', ''))]
+
+
+def tbesh_csak_tulajdonnev(token):
+    """A token alszócikkei (strong-kulcsok), ha a TBESH.txt-ben van sor, de mind tulajdonnév (`N:`): ilyenkor
+    a blokk nem `a forrás nem tárgyalja`, hanem `csak tulajdonnév-alszócikk` jelzést kap."""
+    sorok = tbesh_konszolidalt().get(token, [])
+    if sorok and not tbesh_sorok_tokenhez(token):
+        return [r['strong'] for r in sorok]
+    return []
 
 
 def _tbesh_konsz_blokk(r, ctx):
@@ -986,6 +995,9 @@ def _tartalom_heber_tbesh(nyelv, n, tokenek_ny, reszek, ctx):
         # csak a pontos (betűutótag nélküli) Strong-sor: a H1121a/b stb. STEP-alszócikkek más szavak
         # (pl. a H1121b Beno, személynév), nem a motívum tokenjének szócikkei (D38)
         sorok = tbesh_sorok_tokenhez(t)
+        if not sorok and tbesh_csak_tulajdonnev(t):
+            out.append('**%s** · *csak tulajdonnév-alszócikk: %s* *(TBESH)*' % (t, ', '.join(tbesh_csak_tulajdonnev(t))))
+            continue
         if not sorok:
             out.append('**%s** · %s *(TBESH)*' % (t, NEM_TARGYALJA))
             continue
@@ -1456,6 +1468,8 @@ def szerep_lefedettseg_cella(nyelv, sor, token):
     if (nyelv, n, token) in SZEREP_TOKEN_MUTATO:
         return 'BDB 2.c (DT-F42a)' if (nyelv, n, token) == ('heber', 1, 'H7121') else 'bekötés később'
     van = szerep_token_adat_van(nyelv, n, token)
+    if van is False and (nyelv, n) == ('heber', 1) and tbesh_csak_tulajdonnev(token):
+        return 'csak tulajdonnév-alszócikk: %s' % ', '.join(tbesh_csak_tulajdonnev(token))
     if van is False:
         return 'a forrás nem tárgyalja'
     return sor.get('forras', EM_DASH)

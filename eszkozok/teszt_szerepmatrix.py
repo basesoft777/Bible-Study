@@ -456,9 +456,20 @@ class TestTbeshF09(unittest.TestCase):
         self.assertIn('alszócikk: H1121a', m)
         self.assertNotIn('H1121b', m)
         # az öt érintett token egyikénél sincs hamis „nem tárgyalja” a TBESH-nél
-        for tok in ('H2403', 'H7451', 'H1121', 'H2416', 'H7497'):
+        for tok in ('H2403', 'H7451', 'H1121', 'H2416'):
             self.assertTrue(LG.tbesh_sorok_tokenhez(tok), tok)
             self.assertTrue(LG.szerep_token_adat_van('heber', 1, tok), tok)
+        self.assertEqual([r['strong'] for r in LG.tbesh_sorok_tokenhez('H7451')], ['H7451a', 'H7451b', 'H7451c'])
+        self.assertEqual([r['strong'] for r in LG.tbesh_sorok_tokenhez('H2416')], ['H2416a', 'H2416b', 'H2416c', 'H2416d', 'H2416e'])
+        # H7497: mind tulajdonnév (N:) -> kiesik, de nem „nem tárgyalja”, hanem pontos jelzés
+        self.assertEqual(LG.tbesh_sorok_tokenhez('H7497'), [])
+        self.assertEqual(LG.tbesh_csak_tulajdonnev('H7497'), ['H7497a', 'H7497b'])
+        ctx7 = {'fl': {}, 'szerep': 'Alapjelentés'}
+        out7 = LG._tartalom_heber_tbesh('heber', 1, ['H7497'], {'H7497': {'forras_blokkok': []}}, ctx7)
+        self.assertEqual(out7, ['**H7497** · *csak tulajdonnév-alszócikk: H7497a, H7497b* *(TBESH)*'])
+        self.assertNotIn('nem tárgyalja', out7[0])
+        sor = {'allapot': 'adatosítva', 'sorrend': '1', 'forras': 'TBESH'}
+        self.assertEqual(LG.szerep_lefedettseg_cella('heber', sor, 'H7497'), 'csak tulajdonnév-alszócikk: H7497a, H7497b')
         # ténylegesen hiányzó token: marad a „nem tárgyalja”
         self.assertEqual(LG.tbesh_sorok_tokenhez('H9998'), [])
         ctx = {'fl': {}, 'szerep': 'Alapjelentés'}

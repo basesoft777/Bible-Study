@@ -369,25 +369,7 @@ ua.
 
 *Forrás: konkordancia/TBESH.txt (a TBESH.txt szövege)*
 
-##### TBESH H7497a — (konszolidált szócikk; alszócikk: H7497a)
-
-**Röviden:** Rapha
-
-> A man living at the time of United Monarchy, first mentioned at 2Sa.21.16; father of: Goliath (H1555), Ishbi-benob (H3430), Saph (H5593), Lahmi (H3902), huge_man (H4060A); also translated "giant"; Also named: re.pha.im (רְפָאִים "Raphaite" H7497H) § giant, Rephah
-
-*(fordításra vár)*
-
-*Forrás: konkordancia/TBESH.txt (a TBESH.txt szövege)*
-
-##### TBESH H7497b — (konszolidált szócikk; alszócikk: H7497b)
-
-**Röviden:** Rephaim; (Valley of) Rephaim; Raphaite
-
-> 1) giants, Rephaim 1a) old tribe of giants 2) People descended from Repha(?), first mentioned at Gen.14.5 Also named: zam.zom (זַמְזֻמִּים "Zamzummin" H2157) | Combined with e.meq (עֵ֫מֶק " Valley" H6010P) This name means giants, | Descendants from Rapha, who lived at the time of United Monarchy, first mentioned at 2Sa.21.16; father of: Goliath (H1555), Ishbi-benob (H3430), Saph (H5593), Lahmi (H3902), huge_man (H4060A); also translated "giant"; Group of ra.pah (רָפָה "Rapha" H7497A) giants, Rephaim old tribe of giants
-
-*(fordításra vár)*
-
-*Forrás: konkordancia/TBESH.txt (a TBESH.txt szövege)*
+**H7497** · *csak tulajdonnév-alszócikk: H7497a, H7497b* *(TBESH)*
 
 #### 2. Mélységi szócikk
 
