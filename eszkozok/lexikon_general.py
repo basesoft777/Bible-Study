@@ -1188,11 +1188,175 @@ def _tartalom_sece(nyelv, n, tokenek_ny, reszek, ctx):
     return out
 
 
+# --- F09 S2.5: tW + TWOT (3. szerep), BDB-etimológia (héber 8.), LXX versszintű párok (héber 6.) ---
+
+TW_TSV = os.path.join(KONKORDANCIA, 'tW_szocikkek.tsv')
+TW_FAJL = 'konkordancia/tW_szocikkek.tsv'
+BDB_ETIM_TSV = os.path.join(KONKORDANCIA, 'BDB_etimologia_kezi_hatarok.tsv')
+BDB_ETIM_FAJL = 'konkordancia/BDB_etimologia_kezi_hatarok.tsv'
+BDB_TELJES_FAJL = 'konkordancia/BDB_teljes_unabridged.tsv'
+LXX_PAROK_TSV = os.path.join(KONKORDANCIA, 'LXX_versszintu_parok.tsv')
+LXX_PAROK_FAJL = 'konkordancia/LXX_versszintu_parok.tsv'
+LXX_PAROK_TOP = 10
+
+_tw_cache = None
+_bdb_etim_cache = None
+_lxx_parok_cache = None
+
+
+def tw_szocikkek():
+    """(sorok, strong -> [sor]) a tW_szocikkek.tsv-ből; a `strong` mező `+`-szal elválasztott lista."""
+    global _tw_cache
+    if _tw_cache is None:
+        sorok = L.read_tsv_skip_comments(TW_TSV)
+        idx = {}
+        for r in sorok:
+            r['strongok'] = [s for s in r['strong'].split('+') if s]
+            for s in r['strongok']:
+                idx.setdefault(s, []).append(r)
+        _tw_cache = (sorok, idx)
+    return _tw_cache
+
+
+def _tw_szoveg_idezetblokk(szoveg):
+    """A tW-szöveg `\\n` jelölései valódi sortörésre, soronként idézőblokkba (a szöveg változatlan; a
+    formázás a módosítás, a kolofon jelzi)."""
+    sorok = szoveg.replace('\\n', '\n').split('\n')
+    return '\n'.join(('> %s' % s).rstrip() for s in sorok)
+
+
+def _tw_cikk_blokk(r, tokenek):
+    kotes = [s for s in r['strongok'] if s in tokenek]
+    hu = forditas_ehhez('tW_szocikkek', r['strongok'][0] if r['strongok'] else EM_DASH, r['tw_id'], EM_DASH, 'forditas_hu')
+    return ('<details>\n<summary>%s — %s (tW; a motívum tokenje: %s)</summary>\n\n%s\n\n%s\n\n</details>'
+            % (r['tw_id'], r['cim'], ', '.join(kotes), _tw_szoveg_idezetblokk(r['szoveg']),
+               '**🇭🇺** %s' % hu if hu else FORDITASRA_VAR))
+
+
+def _tartalom_teologiai(nyelv, n, tokenek_ny, reszek, ctx):
+    """3. szerep (Teológiai szócikk): unfoldingWord Translation Words (mindkét nyelven elfogadva, S0b.2),
+    héberül a TWOT-szám hivatkozásként (D19). A szócikk szövege egyszer áll (szócikkenként), a tokenek
+    sorai rá mutatnak; a Strong-kötés a tW saját `Word Data` listáját követi. Ahol nincs tW-szócikk: `a forrás
+    nem tárgyalja` (D11)."""
+    _sorok, idx = tw_szocikkek()
+    tokenhalmaz = set(tokenek_ny)
+    out = []
+    latott = []
+    for t in tokenek_ny:
+        sorok_t = []
+        if nyelv == 'heber':
+            sorok_t.append('**%s** · %s' % (t, reszek[t]['twot']))
+        cikkek = idx.get(t, [])
+        if cikkek:
+            sorok_t.append('**%s** · tW: %s' % (t, ', '.join('`%s`' % c['tw_id'] for c in cikkek)))
+            for c in cikkek:
+                if c['tw_id'] not in [x['tw_id'] for x in latott]:
+                    latott.append(c)
+        else:
+            sorok_t.append('**%s** · %s *(tW)*' % (t, NEM_TARGYALJA))
+        out.append('\n\n'.join(sorok_t))
+    if latott:
+        out.append('*A tW-szócikkek szövege (angolul; a magyar fordítás a gyorsítótárból, ahol van, különben '
+                   'fordításra vár). A Strong-kötés a tW saját listáján alapul, nem a projekt azonosítása.*')
+        out.extend(_tw_cikk_blokk(c, tokenhalmaz) for c in latott)
+        ctx['fl'].setdefault(TW_FAJL, set()).add('tW_szocikkek')
+    if nyelv == 'heber':
+        ctx['fl'].setdefault('konkordancia/OSHL_lexikalis_index.tsv', set()).add('OSHL')
+    return out
+
+
+def bdb_etimologia():
+    """strong -> sor a BDB_etimologia_kezi_hatarok.tsv-ből."""
+    global _bdb_etim_cache
+    if _bdb_etim_cache is None:
+        _bdb_etim_cache = {r['strong']: r for r in L.read_tsv_skip_comments(BDB_ETIM_TSV)}
+    return _bdb_etim_cache
+
+
+def _tartalom_heber_etimologia(nyelv, n, tokenek_ny, reszek, ctx):
+    """Héber 8. szerep (Nyelvi háttér): a BDB-szócikk feje (etimológia, rokon nyelvi adatok) az
+    elsőként zárójelen kívüli em-dash előtti határig (D41). Csak `gepi` és `jovahagyott` határ
+    (F05 D41); `nem_targyalja`: `a forrás nem tárgyalja`."""
+    idx = bdb_etimologia()
+    out = []
+    for t in tokenek_ny:
+        r = idx.get(t)
+        if r is None or r['allapot'] == 'nem_targyalja':
+            out.append('**%s** · %s *(BDB: a szócikk feje nem ad nyelvi hátteret)*' % (t, NEM_TARGYALJA))
+            continue
+        if r['allapot'] not in ('gepi', 'jovahagyott'):
+            out.append('**%s** · *a BDB-határ állapota %s: nem renderelhető* (F05 D41)' % (t, r['allapot']))
+            continue
+        hu = forditas_ehhez('BDB', t, t, 'nyelvi_hatter', 'forditas_hu')
+        out.append('\n\n'.join([
+            '##### BDB %s — nyelvi háttér (a szócikk feje)' % t,
+            '> %s' % r['nyelvi_hatter'],
+            '**🇭🇺** %s' % hu if hu else FORDITASRA_VAR,
+            '*Forrás: %s (a szócikk: %s); határ: %s*' % (BDB_ETIM_FAJL, BDB_TELJES_FAJL,
+                                                         'gépi' if r['allapot'] == 'gepi' else 'jóváhagyott')]))
+    if tokenek_ny:
+        ctx['fl'].setdefault(BDB_ETIM_FAJL, set()).add('BDB')
+        ctx['fl'].setdefault(BDB_TELJES_FAJL, set()).add('BDB')
+    return out
+
+
+def lxx_versszintu_parok():
+    """heber_strong -> {'versek': {igehely: [gorog_strong,...]}, 'proveniencia': első sor proveniencia-ja}."""
+    global _lxx_parok_cache
+    if _lxx_parok_cache is None:
+        d = {}
+        for r in L.read_tsv_skip_comments(LXX_PAROK_TSV):
+            e = d.setdefault(r['heber_strong'], {'versek': {}, 'proveniencia': r['proveniencia']})
+            gs = e['versek'].setdefault(r['igehely'], [])
+            if r['gorog_strong']:
+                gs.append(r['gorog_strong'])
+        _lxx_parok_cache = d
+    return _lxx_parok_cache
+
+
+def _tartalom_heber_lxx_parok(nyelv, n, tokenek_ny, reszek, ctx):
+    """Héber 6. szerep (LXX-híd): a 3. szakaszra mutató hivatkozás MELLETT, külön sorban a
+    LXX_versszintu_parok.tsv összesítése -- versszintű együtt-előfordulás, NEM szóillesztés és nem
+    LXX-fordítói döntés (F05 S13, D14, D25)."""
+    parok = lxx_versszintu_parok()
+    out = ['*Hivatkozás: %s.*' % SZEREP_HIVATKOZAS[(nyelv, n)],
+           '*Versszintű együtt-előfordulás, nem szóillesztés (a token összes ÓSZ-i helye, a grammatikai '
+           'szavak szűrésével; nem LXX-fordítói döntés):*']
+    for t in tokenek_ny:
+        e = parok.get(t)
+        if not e:
+            out.append('**%s** · %s *(LXX versszintű párok)*' % (t, NEM_TARGYALJA))
+            continue
+        versek = e['versek']
+        parral = {v: gs for v, gs in versek.items() if gs}
+        szamlalo = {}
+        for gs in parral.values():
+            for g in set(gs):
+                szamlalo[g] = szamlalo.get(g, 0) + 1
+        legjobb = sorted(szamlalo.items(), key=lambda x: (-x[1], x[0]))[:LXX_PAROK_TOP]
+        reszek_g = []
+        for g, db in legjobb:
+            lk = lemma_kiejtes(g)
+            reszek_g.append('%s (%s, %s): %d vers' % (lk[0], lk[1], g, db) if lk else '%s: %d vers' % (g, db))
+        out.append('**%s** · %d vers az LXX_OS-ben (ebből %d vers görög tartalmi szóval); leggyakoribb görög '
+                   'társak: %s' % (t, len(versek), len(parral), '; '.join(reszek_g) if reszek_g else EM_DASH))
+    if tokenek_ny:
+        prov = next((parok[t]['proveniencia'] for t in tokenek_ny if t in parok), EM_DASH)
+        prov = re.sub(r' \| heber_strong=H\d{4}', '', prov)
+        out.append('*Proveniencia (a tábla soraiból): %s*' % prov)
+        ctx['fl'].setdefault(LXX_PAROK_FAJL, set()).add('LXX_versszintu_parok')
+    return out
+
+
 # Szerepenkénti egyedi építők: (nyelv, sorrend) -> függvény(nyelv, n, tokenek_ny, reszek, ctx) -> bekezdések.
 # A többi szerep az alábbi általános ágakon (SZEREP_SZOTAR / SZEREP_SAJAT) épül.
 SZEREP_EPITO = {
     ('heber', 1): _tartalom_heber_tbesh,
+    ('gorog', 3): _tartalom_teologiai,
+    ('heber', 3): _tartalom_teologiai,
     ('heber', 5): _tartalom_heber_dbh_tomor,
+    ('heber', 6): _tartalom_heber_lxx_parok,
+    ('heber', 8): _tartalom_heber_etimologia,
     ('heber', 9): _tartalom_heber_dbh_vers,
     ('gorog', 5): _tartalom_gorog_tomor,
     ('gorog', 7): _tartalom_sece,
@@ -1763,6 +1927,8 @@ FAJL_TELJES_NEV = {
     'konkordancia/Thayer_teljes.tsv': "Thayer (Thayer's Greek-English Lexicon of the New Testament)",
     'konkordancia/UBS_DNTG_jelentesek.tsv': 'UBS (UBS Dictionary of New Testament Greek — Louw–Nida szemantikai domének)',
     'konkordancia/MCGED_teljes.tsv': 'Mounce (Mounce Concise Greek-English Dictionary)',
+    'konkordancia/tW_szocikkek.tsv': 'tW (Translation Words — unfoldingWord)',
+    'konkordancia/BDB_etimologia_kezi_hatarok.tsv': 'BDB (Brown–Driver–Briggs, A Hebrew and English Lexicon of the Old Testament, 1906)',
     'konkordancia/SECE_G_teljes.tsv': "SECE (Strong's Exhaustive Concordance, Enhanced)",
     'konkordancia/SECE_H_teljes.tsv': "SECE (Strong's Exhaustive Concordance, Enhanced)",
     'konkordancia/UBS_DBH_jelentesek.tsv': 'UBS DBH (UBS Dictionary of Biblical Hebrew — Semantic Dictionary of Biblical Hebrew)',
@@ -1775,7 +1941,8 @@ FAJL_TELJES_NEV = {
     'konkordancia/LSJ_teljes.tsv': 'LSJ (Liddell-Scott-Jones, A Greek-English Lexicon)',
 }
 ADATFORRAS_FAJLOK = {'konkordancia/Karoli_1908.tsv', 'konkordancia/Karoli_kereszthivatkozasok.tsv',
-                      'adat/lexikon_hivatkozasok.tsv', 'konkordancia/Karoli_versmegfeleltetes.tsv'}
+                      'adat/lexikon_hivatkozasok.tsv', 'konkordancia/Karoli_versmegfeleltetes.tsv',
+                      'konkordancia/LXX_versszintu_parok.tsv'}
 
 
 def _teljes_nev(fajl):

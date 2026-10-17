@@ -201,8 +201,9 @@ class TestVazIstentiszt(unittest.TestCase):
         self.assertIn('| UBS-jelentés |', inspect.getsource(LG.blokk_elofordulasok))
 
     def test_forrasszoveg_nem_szivarog_nem_forras_szerepbe(self):
-        # idézőblokk ('> ') csak a forrás-szerepekben lehet (görög 1., 2., 8.; héber 1., 2.)
-        forras = set(LG.SZEREP_SZOTAR)
+        # idézőblokk ('> ') csak a forrásszöveget idéző szerepekben lehet (görög 1., 2., 8.; héber 1., 2.; F09:
+        # a 3. szerep tW-szövege mindkét nyelven, a héber 8. BDB-etimológiája)
+        forras = set(LG.SZEREP_SZOTAR) | {('gorog', 3), ('heber', 3), ('heber', 8)}
         for r in self.tabla:
             n = int(r['sorrend'])
             kulcs = 'kozos' if n >= 12 else r['nyelv']
@@ -243,9 +244,13 @@ class TestVazIstentiszt(unittest.TestCase):
         self.assertIn('adat/szotar_szerepek.tsv', self.szoveg.split('\n')[0])
 
     def test_nincs_kitoltes_gyenge_anyaggal(self):
-        # a nem adatosított szerep alatt nincs idézőblokk (forrás-szöveg)
-        for ny, n in (('gorog', 3), ('gorog', 7), ('heber', 5), ('heber', 8), ('heber', 9)):
-            self.assertNotIn('\n> ', self._blokk_szerep(ny, n))
+        # a `javaslat` szerepek (12-14.) alatt nincs idézőblokk és nincs tartalom: csak jelölt üres blokk
+        for n in (12, 13, 14):
+            b = self._blokk_szerep('kozos', n)
+            self.assertNotIn('\n> ', b)
+            self.assertIn('ÜRES-BLOKK', b)
+        # F09: nem marad `nincs adatosítva` szerep a táblában (a `javaslat` megengedett)
+        self.assertEqual([r for r in self.tabla if r['allapot'] == 'nincs adatosítva'], [])
 
 
 class TestVazTeremt(unittest.TestCase):
@@ -266,7 +271,9 @@ class TestVazTeremt(unittest.TestCase):
         self.assertIn('#12b', sz['heber'])  # a TEREMT-002 szótári bekötése a #12b-é (DT-F09c)
         self.assertNotIn('#9 dolga', sz['heber'])
         self.assertIn('ÜRES-BLOKK: Mélységi szócikk | adatosítva, nincs bekötve', sz['heber'])
-        self.assertNotIn('\n> ', sz['heber'])
+        for n in (1, 2):
+            m = re.search(r'^#### %d\. .*?(?=^#### |\Z)' % n, sz['heber'], re.M | re.S)
+            self.assertNotIn('\n> ', m.group(0), n)  # nincs szótári szöveg: a bekötés a #12b-é
         # a TWOT és a domén megvan, a tokenhez kötve
         self.assertIn('**H8414** · **TWOT:**', sz['heber'])
 
@@ -372,6 +379,52 @@ class TestSeceMounceF09(unittest.TestCase):
         self.assertEqual(LG.mcged_sor('G0012')['gk_szam'], 'G50012')
         # az UBS DNTG magyar glosszája a gyorsítótárból jön, ahol van
         self.assertIn('| hívni; nevezni |', b)
+
+
+class TestTeologiaiF09(unittest.TestCase):
+    """F09 S2.5: tW + TWOT (3. szerep), BDB-etimológia (héber 8.), LXX versszintű párok (héber 6.)."""
+
+    def _szerep(self, motivum_id, nyelv, n):
+        szoveg = _blokk(motivum_id)[0]
+        sz = _szakaszok(szoveg)[nyelv]
+        m = re.search(r'^#### %d\. .*?(?=^#### |\Z)' % n, sz, re.M | re.S)
+        return m.group(0)
+
+    def test_tw_mindket_nyelven_es_twot_hivatkozas(self):
+        g = self._szerep('ISTENTISZT-001', 'gorog', 3)
+        self.assertIn('**G1941** · tW: `kt/call-speakloudly`', g)
+        self.assertIn('> The terms “call” and “call out,” in this sense, mean to speak loudly.', g)
+        self.assertIn('*(fordításra vár)*', g)
+        self.assertNotIn('®', g)  # az unfoldingWord® védjegy a származékos szövegben nem szerepel
+        h = self._szerep('ISTENTISZT-001', 'heber', 3)
+        self.assertIn('**H7121** · **TWOT:** 2063', h)
+        self.assertIn('**H8034** · tW: `kt/pray`, `other/renown`, `other/report`', h)
+        # egy szócikk egyszer áll, akkor is, ha két token hivatkozik rá (other/renown: H7121 és H8034)
+        self.assertEqual(h.count('<summary>other/renown'), 1)
+
+    def test_tw_hianyzo_szocikk_nem_targyalja(self):
+        h = self._szerep('HODIT-001', 'heber', 3)
+        self.assertIn('**H7496** · *a forrás nem tárgyalja* *(tW)*', h)  # rephaim: nincs tW-szócikk
+        self.assertIn('**H7496** · **TWOT:**', h)
+
+    def test_bdb_etimologia_hatarok(self):
+        b = self._szerep('ISTENTISZT-001', 'heber', 8)
+        self.assertIn('##### BDB H7121 — nyelvi háttér', b)
+        self.assertIn('határ: gépi', b)
+        self.assertIn('határ: jóváhagyott', b)  # H8034 kézi határ
+        h = self._szerep('HAMART-001', 'heber', 8)
+        self.assertIn('**H0779** · *a forrás nem tárgyalja* *(BDB: a szócikk feje nem ad nyelvi hátteret)*', h)
+        # javaslat-állapotú határ nem renderelhető (D41): a tábla ma nem tartalmaz ilyet
+        self.assertEqual([r for r in LG.bdb_etimologia().values() if r['allapot'] == 'javaslat'], [])
+
+    def test_lxx_versszintu_parok_jelolve_es_hivatkozas_marad(self):
+        b = self._szerep('ISTENTISZT-001', 'heber', 6)
+        self.assertIn('*Hivatkozás: l. a 3. szakaszt (LXX-fordítói döntések).*', b)
+        self.assertIn('Versszintű együtt-előfordulás, nem szóillesztés', b)
+        self.assertIn('**H8034** · 764 vers az LXX_OS-ben', b)
+        self.assertIn('Proveniencia (a tábla soraiból): scope=LXX_OS-versszint', b)
+        # a görög oldalon nincs ilyen sor (a tábla héber-kulcsú)
+        self.assertNotIn('versszint', self._szerep('ISTENTISZT-001', 'gorog', 6))
 
 
 class TestUbsDbhF09(unittest.TestCase):
