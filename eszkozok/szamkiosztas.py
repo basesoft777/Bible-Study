@@ -99,11 +99,13 @@ def _olvas(ut):
 def _fajlok(gyoker):
     """A helyorzot tartalmazo .md/.tsv fajlok (gyokerhez viszonyitott, '/'-es utak)."""
     try:
+        # -z: NUL-lal elvalasztott, idezetlen utak -- e nelkul a nem ASCII
+        # fajlnevet (core.quotepath) a git "naplok/mer\303\251s.md" alakban adja
         ki = subprocess.check_output(
-            ['git', 'grep', '-l', '-I', '-E',
+            ['git', 'grep', '-l', '-z', '-I', '-E',
              r'(^|[^A-Za-z0-9-])(DT|N|D)-F[0-9]+', '--', '*.md', '*.tsv'],
             cwd=gyoker, stderr=subprocess.DEVNULL).decode('utf-8', errors='replace')
-        talalat = [s.strip() for s in ki.splitlines() if s.strip()]
+        talalat = [s for s in ki.split('\0') if s]
     except subprocess.CalledProcessError as e:
         if e.returncode == 1:       # nincs talalat
             talalat = []

@@ -126,6 +126,21 @@ class SzamkiosztasTeszt(unittest.TestCase):
             with open(os.path.join(gy, 'crlf.md'), 'rb') as f:
                 self.assertEqual(f.read(), b'DT7\r\nmasodik DT6\r\n')
 
+    def test_ekezetes_fajlnev_git_greppel(self):
+        # main 2026-10-17: a git grep a nem ASCII utat idezve adta vissza
+        # ("naplok/mer\303\251s.md"), a _fajlok ezt fajlnevnek vette -> FileNotFoundError
+        with _Gyoker() as gy:
+            os.makedirs(os.path.join(gy, 'naplok'))
+            with open(os.path.join(gy, 'naplok', 'mérés.md'), 'wb') as f:
+                f.write('mérés DT-F40a\n'.encode('utf-8'))
+            _git(gy, 'init', '-q')
+            _git(gy, 'config', 'core.quotepath', 'true')
+            _git(gy, 'add', '-A')
+            self.assertIn('naplok/mérés.md', SK._fajlok(gy))
+            h, _, _ = SK.terv(gy)
+            SK.alkalmaz(gy, h, ir=True)
+            self.assertEqual(_olvas(gy, 'naplok/mérés.md'), 'mérés DT7\n')
+
 
 def _git(gy, *args):
     subprocess.check_call(('git', '-c', 'user.email=t@t', '-c', 'user.name=t') + args, cwd=gy,
