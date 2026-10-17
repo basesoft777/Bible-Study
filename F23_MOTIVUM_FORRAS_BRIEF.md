@@ -9,7 +9,7 @@ allapot: fut
 ag: claude/f23-dt84-atvezetes
 pr: https://github.com/basesoft777/Bible-Study/pull/258
 ad: a B szerkezet terve mérésekkel: szakasz-leképezés, forrássablon-tervezet, szintjelölés a SEMA-ban, CI-szabályok leírása; renderelés és fájlmozgatás nélkül
-kovetkezo: "Folytatás: a DT84 átvezetése (eldöntve 2026-10-12, 🟢: (1)–(13) a, a (7) és a (10) kiegészítve; N-F23a–c) a sablon v0-ba, a SEMA 3.10-be, a ci-tervbe és a pilot-tervbe (a `javaslat`-jelölések feloldása), új ágon; utána a #11 briefje a pilot-terv alapján"
+kovetkezo: "Folytatás: a DT84 átvezetve (sablon v0.1, SEMA 3.10, ci-terv, pilot-terv; ág claude/f23-dt84-atvezetes); a DT-F23b (a 2_/4_ sablon visszaírási szabályának szövege: mikor, hol) és a DT-F23c (a kapcsolatok.tsv indoklas oszlopának végrehajtója) döntésre vár; utána a #11 briefje a pilot-terv alapján (külön lépés: a #11 saját briefje, nem e brief ir-je)"
 olvas: [sablonok/, tematikus_lezart/, motivumok/, lexikon/, genezis/, adat/SEMA.md, adat/res_forras.tsv, adat/szotar_szerepek.tsv, eszkozok/general.py, CLAUDE.md, ATALAKITASI_TERV.md.md, ADATVAGYON_TERV.md, MUNKATERV.md, naplok/TEREMT002_PROZA_PROBA_meres.md]
 ir: [sablonok/9_PaRDeS_motivum_forras_sablon.md, adat/SEMA.md, naplok/MOTIVUM_FORRAS_lekepezes.tsv, naplok/MOTIVUM_FORRAS_torzscikk_egyedi.tsv, naplok/MOTIVUM_FORRAS_parositas.tsv, naplok/MOTIVUM_FORRAS_naplo_keveredes.tsv, naplok/MOTIVUM_FORRAS_atfedes.tsv, naplok/MOTIVUM_FORRAS_M0.py, naplok/F23_zaras.md, naplok/ELLENOR_F23.md, naplok/ELLENOR_F23_2.md, naplok/MOTIVUM_FORRAS_ci_terv.md, naplok/MOTIVUM_FORRAS_pilot_terv.md]
 fugg: [32, 78]
@@ -18,7 +18,7 @@ nem_fugg: [22, 52]
 
 # F<nn>_MOTIVUM_FORRAS_BRIEF.md — Egyforrású motívumdokumentum: forrássablon és mélységi szintek (terv)
 
-*FELADATOK #<nn> · Modell: opus · v1.8 · 2026.10.08 · döntések: D34–D39 (a naplózó brief rögzíti; a számok a befogadáskor a következő szabad D-számtól csúszhatnak), DT28 (v1.3)*
+*FELADATOK #<nn> · Modell: opus · v1.10 · 2026.10.17 · döntések: D34–D39 (a naplózó brief rögzíti; a számok a befogadáskor a következő szabad D-számtól csúszhatnak), DT28 (v1.3)*
 
 ## 1. Cél
 
@@ -117,3 +117,4 @@ Minden számot a menetben ténylegesen futtatott parancs kimenetéből vegyél. 
 | v1.7 | 2026.10.08 | M1 indul: fejléc `allapot: fut`, új `ag`; `ir` + `naplok/MOTIVUM_FORRAS_ci_terv.md`, `naplok/MOTIVUM_FORRAS_pilot_terv.md` (az M1/3–4 kimenetei, eddig hiányoztak) | a #78 lezárult (PR #256), az M1 előfeltétele teljesült; a felhasználó jóváhagyása (2026.10.08) |
 | v1.8 | 2026.10.08 | M1 javítókör az ELLENOR_F23_M1 2–4. tétele szerint: a SEMA 3.10.5 és a sablon 6. pontja a 3/9-hez igazodik (kinyerés csak a `jeloltek.tsv`-n át, a proveniencia-lábjegyzet hivatkozás; a közvetlen `auditok.tsv`-út `javaslat`, DT84 (2) bővítve); a pilot-terv HAMART-001 RÉS-számai (jelölő-előfordulás / rés / `res_forras`-sor) és a 4.1 proveniencia-hatóköre pontosítva; a fejléc verziósora (v1.5) a verziónaplóhoz igazítva | ELLENOR_F23_M1; az orkesztrátor javítóköre (a felhasználó által jóváhagyott menet része); tartalmi döntés nincs, a hatókör nem bővül |
 | v1.9 | 2026.10.12 | DT84 eldöntve (🟢): fejléc `allapot: fut`, `kovetkezo` `Folytatás:` (az átvezetés); N-F23a–c a `NYITOTT_FELADATOK.md`-ben | a felhasználó döntése a chatben (2026.10.12) |
+| v1.10 | 2026.10.17 | a DT84 átvezetése (F23.D0–D5, ág `claude/f23-dt84-atvezetes`): a négy tervfájl `javaslat`-jelölései feloldva; a DT84-en kívül maradt két kérdés: DT-F23b, DT-F23c (🟡); a DT66 ✅; fejléc `ag`, `kovetkezo`; az `ir` nem bővül (a 2_/4_ sablon szövege a DT-F23b-től függ) | DT84 (felhasználó, 2026-10-12); a futtatás jóváhagyása (orkesztrátor, „mehet”) |
