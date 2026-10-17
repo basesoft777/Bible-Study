@@ -1,0 +1,343 @@
+<title>Motívumlap-mockup</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+Hebrew:wght@400;600&display=swap">
+<style>
+/* Elrendezés: fejléc-kártya, alatta kétoszlopos munkafelület — balra a nézetek (eloszlás, ívek, lista, határ), jobbra ragadós elemző panel */
+:root{
+  --bg:#f3f5f7; --surface:#ffffff; --ink:#18212b; --muted:#5b6876; --line:#d8dee5;
+  --osz:#2f5d7c; --usz:#a9652a; --rej:#9aa6b2; --accent:#2f5d7c; --hl:#e7eef4;
+  --parh:#2f5d7c; --betelj:#a9652a; --varians:#6b5aa6;
+  --f-display:"Spectral", Georgia, "Times New Roman", serif;
+  --f-body:"IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, Consolas, monospace;
+  --f-heb:"Noto Serif Hebrew", "SBL Hebrew", "Times New Roman", serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#12171d; --surface:#1a2129; --ink:#e3e8ee; --muted:#9aa7b5; --line:#2d3743;
+  --osz:#7fb2d6; --usz:#e0a46c; --rej:#5f6c79; --accent:#7fb2d6; --hl:#22303d;
+  --parh:#7fb2d6; --betelj:#e0a46c; --varians:#ab9ae6; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#12171d; --surface:#1a2129; --ink:#e3e8ee; --muted:#9aa7b5; --line:#2d3743;
+  --osz:#7fb2d6; --usz:#e0a46c; --rej:#5f6c79; --accent:#7fb2d6; --hl:#22303d;
+  --parh:#7fb2d6; --betelj:#e0a46c; --varians:#ab9ae6; color-scheme:dark }
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.55;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:28px 48px}
+.wrap{max-width:1180px;margin:0 auto;display:grid;gap:22px}
+h1,h2{font-family:var(--f-display);font-weight:600;text-wrap:balance;margin:0}
+h1{font-size:2rem;line-height:1.15}
+h2{font-size:1.25rem}
+.mono{font-family:var(--f-mono);font-size:.82rem}
+.eyebrow{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.intro{max-width:72ch;color:var(--muted);margin:0}
+.head{display:grid;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:22px}
+.meta{display:flex;flex-wrap:wrap;gap:8px}
+.pill{border:1px solid var(--line);border-radius:999px;padding:2px 10px;font-size:.8rem;color:var(--muted)}
+.pill b{color:var(--ink);font-weight:600}
+.pill.st{border-color:var(--accent);color:var(--accent)}
+.def{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.def > div{min-width:0}
+.def p{margin:4px 0 0}
+.heb{font-family:var(--f-heb)}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:22px;align-items:start}
+@media (max-width:900px){.grid{grid-template-columns:minmax(0,1fr)}}
+.col{display:grid;gap:22px;min-width:0}
+section.v{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 18px 16px;display:grid;gap:10px;min-width:0}
+.vh{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px}
+.ihlet{font-size:.75rem;color:var(--muted);border:1px dashed var(--line);border-radius:6px;padding:1px 8px}
+.ihlet b{color:var(--ink);font-weight:600}
+.note{font-size:.84rem;color:var(--muted);margin:0;max-width:75ch}
+.svgbox{overflow-x:auto}
+svg text{font-family:var(--f-mono);fill:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:.8rem;color:var(--muted)}
+.sw{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:6px}
+.row{all:unset;cursor:pointer;display:grid;gap:1px;padding:7px 10px;border-radius:6px;border:1px solid var(--line);min-width:0}
+.row:hover,.row:focus-visible{background:var(--hl)}
+.row:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.row.on{border-color:var(--accent);background:var(--hl)}
+.row .r{font-family:var(--f-mono);font-size:.82rem;font-weight:500}
+.row .k{font-size:.8rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row.osz .r{color:var(--osz)} .row.usz .r{color:var(--usz)}
+.filt{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:.82rem;color:var(--muted)}
+.filt button{all:unset;cursor:pointer;color:var(--accent);text-decoration:underline}
+.groups{display:grid;gap:10px}
+.grp{border-top:1px solid var(--line);padding-top:10px;display:grid;gap:6px}
+.grp .gh{display:flex;justify-content:space-between;gap:10px;font-weight:500;font-size:.9rem}
+.grp .gh span{font-family:var(--f-mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.chips{display:flex;flex-wrap:wrap;gap:5px}
+.chip{all:unset;cursor:pointer;font-family:var(--f-mono);font-size:.75rem;padding:1px 7px;border-radius:4px;border:1px solid var(--line);color:var(--muted)}
+.chip:hover,.chip:focus-visible{border-color:var(--rej);color:var(--ink)}
+.chip.on{border-color:var(--ink);color:var(--ink)}
+aside{position:sticky;top:calc(env(safe-area-inset-top, 0px) + 12px);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;display:grid;gap:12px;min-width:0}
+@media (max-width:900px){aside{position:static}}
+aside h2{font-size:1.5rem}
+.dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 12px;font-size:.84rem;margin:0}
+.dl dt{color:var(--muted)} .dl dd{margin:0;min-width:0;overflow-wrap:anywhere}
+.badge{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.04em;padding:1px 8px;border-radius:4px}
+.badge.be{background:var(--osz);color:var(--surface)}
+.badge.el{background:var(--rej);color:var(--surface)}
+.prov{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);border-top:1px solid var(--line);padding-top:8px;overflow-wrap:anywhere}
+.quote{font-family:var(--f-display);font-size:1.02rem;margin:0;font-style:italic}
+.rel{display:grid;gap:6px;font-size:.84rem}
+.rel div{border-left:3px solid var(--line);padding-left:8px}
+.todo{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.todo div{border:1px dashed var(--line);border-radius:8px;padding:12px;font-size:.86rem;min-width:0}
+.todo b{display:block;margin-bottom:2px}
+.foot{font-size:.78rem;color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){ .arc{transition:opacity .15s} }
+</style>
+
+<div class="wrap">
+  <div style="display:grid;gap:8px">
+    <div class="eyebrow">Mockup · motívumlap a más programok ötleteiből</div>
+    <p class="intro">Négy ötlet egy oldalon, az ISTENTISZT-001 valós adatain (<span class="mono">adat/motivumok.tsv</span>, <span class="mono">elofordulasok.tsv</span>, <span class="mono">jeloltek.tsv</span>, <span class="mono">kapcsolatok.tsv</span>). Kattints egy könyvre, egy igehelyre vagy egy kizárt jelöltre: a jobb oldali panel mutatja a részleteit és a származását.</p>
+  </div>
+
+  <header class="head">
+    <div class="vh"><span class="eyebrow mono" id="mid"></span><span class="ihlet">ihlet: <b>Logos</b> Factbook — egy gyűjtőlap mindenről</span></div>
+    <h1 id="mcim"></h1>
+    <div class="meta" id="mmeta"></div>
+    <div class="def">
+      <div><div class="eyebrow">Negatív kritérium — ami nélkül nem tartozik ide</div><p id="mneg"></p></div>
+      <div><div class="eyebrow">Fölérendelt fogalom — erre felé hígulna</div><p id="mfol"></p>
+        <div class="eyebrow" style="margin-top:12px">Számok</div><p id="mszam" class="mono"></p></div>
+    </div>
+  </header>
+
+  <div class="grid">
+    <div class="col">
+      <section class="v" id="s-elo">
+        <div class="vh"><h2>Hol fordul elő a kánonban?</h2><span class="ihlet">ihlet: <b>Accordance</b> — találatok eloszlása könyvenként</span></div>
+        <p class="note">Fölfelé a beépített előfordulások, lefelé a megvizsgált, de kizárt jelöltek. A lefelé mutató rész a mi többletünk: az is látszik, hol kerestünk eredmény nélkül.</p>
+        <div class="svgbox"><svg id="dist" viewBox="0 0 690 190" width="100%" style="min-width:560px" role="img" aria-label="Eloszlás könyvenként"></svg></div>
+        <div class="legend"><span><i class="sw" style="background:var(--osz)"></i>ÓSZ, beépítve</span><span><i class="sw" style="background:var(--usz)"></i>ÚSZ, beépítve</span><span><i class="sw" style="background:var(--rej)"></i>kizárt jelölt</span></div>
+      </section>
+
+      <section class="v">
+        <div class="vh"><h2>Kapcsolatok hálója</h2><span class="ihlet">ihlet: <b>OpenBible.info</b> / Chris Harrison — íves kereszthivatkozás-ábra</span></div>
+        <p class="note">A <span class="mono">kapcsolatok.tsv</span> 25 sora ívként. A pontok kánoni sorrendben állnak, egyenlő közzel. Vidd az egeret egy ív fölé: a kapcsolat funkciója jelenik meg.</p>
+        <div class="svgbox"><svg id="arcs" viewBox="0 0 690 300" width="100%" style="min-width:600px" role="img" aria-label="Kapcsolatok ívdiagramja"></svg></div>
+        <div class="legend"><span><i class="sw" style="background:var(--parh)"></i>Párhuzam</span><span><i class="sw" style="background:var(--betelj)"></i>Beteljesedés</span><span><i class="sw" style="background:var(--varians)"></i>Variáns</span></div>
+        <p class="note" id="arcinfo">&nbsp;</p>
+      </section>
+
+      <section class="v">
+        <div class="vh"><h2>Előfordulások</h2><span class="ihlet">ihlet: <b>BibleWorks</b> — elemző panel, oldalváltás nélkül</span></div>
+        <div class="filt" id="filt"></div>
+        <div class="list" id="list"></div>
+      </section>
+
+      <section class="v">
+        <div class="vh"><h2>A határ: mi nem tartozik ide, és miért</h2><span class="ihlet">egyik programban sincs — <b>saját</b></span></div>
+        <p class="note">A <span class="mono">jeloltek.tsv</span> elutasított sorai az indoklás szerint csoportosítva. A határt a kizárások rajzolják meg; az olvasó is lássa őket.</p>
+        <div class="groups" id="groups"></div>
+      </section>
+
+      <section class="v">
+        <div class="vh"><h2>Ami a mockupból kimaradt</h2><span class="ihlet">a következő körre</span></div>
+        <p class="note">Ehhez a három ötlethez a mockup nem kért le adatot. Kitalált számokkal nem töltöttem ki őket.</p>
+        <div class="todo">
+          <div><b>A Károli fordítási megoszlása</b>ihlet: Blue Letter Bible. A <span class="mono">karoli_variancia</span> táblából: a H7121 hányféleképpen, milyen arányban szerepel a Károliban.</div>
+          <div><b>MT–LXX–ÚSZ párhuzamos sor</b>ihlet: Bible Hub, Logos. Például a Jóel 2:32 → ApCsel 2:21, Róm 10:13 egy sorban, a görög ige kiemelésével.</div>
+          <div><b>Színezett nyelvtan a szövegben</b>ihlet: STEPBible. A binján és az aktív vagy passzív szerkezet színnel, így a negatív kritérium (aktív קָרָא + בְּ) a versben látszik.</div>
+        </div>
+      </section>
+    </div>
+
+    <aside id="panel" aria-live="polite"></aside>
+  </div>
+
+  <p class="foot">A mockup adatai a repó táblái, kivonatolva 2026-10-15-én (<span class="mono">scope=adat/*.tsv, id=ISTENTISZT-001 | forras=manual | ts=2026-10-15</span>). A tanulmány értelmező prózája nem szerepel benne.</p>
+</div>
+
+<script>
+const D = __DATA__;
+const OT = "1Móz 2Móz 3Móz 4Móz 5Móz Józs Bír Ruth 1Sám 2Sám 1Kir 2Kir 1Krón 2Krón Ezsd Neh Eszt Jób Zsolt Péld Préd Én Ézs Jer JSir Ez Dán Hós Jóel Ám Abd Jón Mik Náh Hab Sof Agg Zak Mal".split(" ");
+const NT = "Mt Mk Lk Jn ApCsel Róm 1Kor 2Kor Gal Ef Fil Kol 1Thessz 2Thessz 1Tim 2Tim Tit Filem Zsid Jak 1Pét 2Pét 1Jn 2Jn 3Jn Júd Jel".split(" ");
+const BOOKS = OT.concat(NT);
+const NS = "http://www.w3.org/2000/svg";
+function parse(ref){ const m = ref.match(/^(\S+)\s+(\d+):(\d+)/); if(!m) return null; return {b:m[1], bi:BOOKS.indexOf(m[1]), c:+m[2], v:+m[3]}; }
+function key(ref){ const p = parse(ref); return p ? p.bi*1e6 + p.c*1e3 + p.v : 9e9; }
+function isNT(ref){ const p = parse(ref); return p && p.bi >= OT.length; }
+function el(tag, attrs, parent){ const e = document.createElementNS(NS, tag); for(const k in attrs) e.setAttribute(k, attrs[k]); if(parent) parent.appendChild(e); return e; }
+function h(tag, cls, txt){ const e = document.createElement(tag); if(cls) e.className = cls; if(txt != null) e.textContent = txt; return e; }
+
+const M = D.mot;
+const elo = D.elo.slice().sort((a,b)=>key(a.igehely)-key(b.igehely));
+const jel = D.jel;
+const jelBy = {}; jel.forEach(r => jelBy[r.igehely] = r);
+const be = jel.filter(r => r.dontes === "beépítve");
+const el_ = jel.filter(r => r.dontes !== "beépítve");
+const eloBy = {}; elo.forEach(r => eloBy[r.igehely] = r);
+
+// fejléc
+document.getElementById("mid").textContent = M.id;
+document.getElementById("mcim").textContent = M.cim;
+const meta = document.getElementById("mmeta");
+[["azonosság", M.azonossag_tipusa], ["PaRDeS", M.pardes_szint], ["téma", M.tema]].forEach(([k,v]) => { const p = h("span","pill"); p.append(k+": "); p.append(h("b",null,v)); meta.append(p); });
+const st = h("span","pill st", "státusz: " + M.statusz + " · " + M.statusz_verzio + " · " + M.statusz_datum); meta.append(st);
+document.getElementById("mneg").innerHTML = "";
+(function(){ // héber szakaszok saját betűvel
+  const t = M.negativ_kriterium, out = document.getElementById("mneg");
+  t.split(/([֐-׿][֐-׿\s\.…]*[֐-׿]|[֐-׿])/).forEach(part => {
+    if(/[֐-׿]/.test(part)){ const s = h("span","heb",part); s.dir="rtl"; out.append(s); } else out.append(part);
+  });
+})();
+document.getElementById("mfol").textContent = M.folerendelt_fogalom;
+const nOT = elo.filter(r=>!isNT(r.igehely)).length;
+document.getElementById("mszam").textContent = `${elo.length} előfordulás (ÓSZ ${nOT}, ÚSZ ${elo.length-nOT}) · ${jel.length} jelölt, ebből ${el_.length} kizárva · ${D.kap.length} kapcsolat`;
+
+// állapot
+let selBook = null, selRef = null;
+
+// eloszlás
+(function(){
+  const svg = document.getElementById("dist");
+  const X0 = 12, W = 10, BASE = 92, UP = 13, DOWN = 4.2;
+  const up = {}, down = {};
+  elo.forEach(r => { const p = parse(r.igehely); if(p) up[p.bi] = (up[p.bi]||0)+1; });
+  el_.forEach(r => { const p = parse(r.igehely); if(p) down[p.bi] = (down[p.bi]||0)+1; });
+  // rács
+  [1,2,3,4,5].forEach(n => { el("line",{x1:X0,x2:X0+66*W,y1:BASE-n*UP,y2:BASE-n*UP,stroke:"var(--line)","stroke-width":.5},svg); });
+  el("text",{x:X0-4,y:BASE-5*UP+3,"text-anchor":"end","font-size":7},svg).textContent="5";
+  el("line",{x1:X0,x2:X0+66*W,y1:BASE,y2:BASE,stroke:"var(--muted)","stroke-width":.8},svg);
+  // ÓSZ/ÚSZ határ
+  const xs = X0 + OT.length*W;
+  el("line",{x1:xs,x2:xs,y1:12,y2:BASE+50,stroke:"var(--muted)","stroke-dasharray":"2 3","stroke-width":.8},svg);
+  el("text",{x:X0,y:10,"font-size":8},svg).textContent="ÓSZ";
+  el("text",{x:xs+4,y:10,"font-size":8},svg).textContent="ÚSZ";
+  BOOKS.forEach((b,i) => {
+    const x = X0 + i*W, u = up[i]||0, d = down[i]||0;
+    const g = el("g",{class:"bk","data-i":i,style:"cursor:"+(u||d?"pointer":"default")},svg);
+    el("rect",{x:x,y:12,width:W,height:BASE+60,fill:"transparent"},g);
+    if(u) el("rect",{x:x+1.5,y:BASE-u*UP,width:W-3,height:u*UP,rx:1,fill:i>=OT.length?"var(--usz)":"var(--osz)"},g);
+    if(d) el("rect",{x:x+1.5,y:BASE+1,width:W-3,height:d*DOWN,rx:1,fill:"var(--rej)"},g);
+    if(u||d){
+      const t = el("text",{x:x+W/2,y:BASE+d*DOWN+12,"font-size":7,"text-anchor":"end",transform:`rotate(-55 ${x+W/2} ${BASE+d*DOWN+12})`},g); t.textContent=b;
+      const tt = el("title",{},g); tt.textContent = `${b}: ${u} beépítve, ${d} kizárt jelölt`;
+      g.addEventListener("click",()=>{ selBook = (selBook===b?null:b); renderList(); markDist(); });
+    }
+  });
+})();
+function markDist(){
+  document.querySelectorAll("#dist .bk").forEach(g => {
+    const b = BOOKS[+g.dataset.i];
+    g.style.opacity = (!selBook || selBook===b) ? 1 : .35;
+  });
+}
+
+// ívek
+(function(){
+  const svg = document.getElementById("arcs");
+  const refs = new Set(elo.map(r=>r.igehely));
+  D.kap.forEach(k => { refs.add(k.forras_igehely); refs.add(k.cel_igehely); });
+  const nodes = [...refs].sort((a,b)=>key(a)-key(b));
+  const X0 = 16, X1 = 674, BASE = 205;
+  const step = (X1-X0)/(nodes.length-1);
+  const pos = {}; nodes.forEach((r,i)=> pos[r] = X0 + i*step);
+  const col = {"Párhuzam":"var(--parh)","Beteljesedés":"var(--betelj)","Variáns":"var(--varians)"};
+  const info = document.getElementById("arcinfo");
+  D.kap.forEach(k => {
+    const a = pos[k.forras_igehely], b = pos[k.cel_igehely]; if(a==null||b==null) return;
+    const x1 = Math.min(a,b), x2 = Math.max(a,b), rx = (x2-x1)/2, ry = Math.min(rx*.9, 190);
+    const p = el("path",{class:"arc",d:`M${x1} ${BASE} A${rx} ${ry} 0 0 1 ${x2} ${BASE}`,fill:"none",stroke:col[k.tipus]||"var(--muted)","stroke-width":1.6,"stroke-opacity":.75,"data-a":k.forras_igehely,"data-b":k.cel_igehely},svg);
+    el("title",{},p).textContent = `${k.forras_igehely} → ${k.cel_igehely} · ${k.tipus} · ${k.funkcio}`;
+    p.addEventListener("mouseenter",()=>{ info.textContent = `${k.forras_igehely} → ${k.cel_igehely} · ${k.tipus} (${k.pardes_szint}, bizonyosság: ${k.bizonyossag}) — ${k.funkcio}`; });
+    p.addEventListener("click",()=>select(k.forras_igehely));
+  });
+  el("line",{x1:X0,x2:X1,y1:BASE,y2:BASE,stroke:"var(--line)"},svg);
+  nodes.forEach(r => {
+    const x = pos[r], nt = isNT(r);
+    const g = el("g",{class:"nd","data-r":r,style:"cursor:pointer"},svg);
+    el("circle",{cx:x,cy:BASE,r:3.4,fill:nt?"var(--usz)":"var(--osz)"},g);
+    const t = el("text",{x:x,y:BASE+10,"font-size":7.5,"text-anchor":"end",transform:`rotate(-60 ${x} ${BASE+10})`},g); t.textContent = r;
+    g.addEventListener("click",()=>select(r));
+  });
+})();
+function markArcs(){
+  document.querySelectorAll("#arcs .arc").forEach(p => {
+    const on = !selRef || p.dataset.a===selRef || p.dataset.b===selRef;
+    p.style.opacity = on ? 1 : .12; p.setAttribute("stroke-width", (selRef && on) ? 2.6 : 1.6);
+  });
+  document.querySelectorAll("#arcs .nd").forEach(g => { g.querySelector("text").style.fill = g.dataset.r===selRef ? "var(--ink)" : ""; g.querySelector("text").style.fontWeight = g.dataset.r===selRef ? "600" : ""; });
+}
+
+// lista
+function renderList(){
+  const list = document.getElementById("list"), filt = document.getElementById("filt");
+  list.innerHTML = ""; filt.innerHTML = "";
+  const rows = elo.filter(r => !selBook || parse(r.igehely).b===selBook);
+  filt.append(`${rows.length} igehely` + (selBook ? ` · szűrve: ${selBook}` : " · kattints az eloszlásban egy könyvre a szűréshez"));
+  if(selBook){ const b = h("button",null,"szűrés törlése"); b.onclick = ()=>{ selBook=null; renderList(); markDist(); }; filt.append(b); }
+  rows.forEach(r => {
+    const j = jelBy[r.igehely];
+    const b = h("button","row "+(isNT(r.igehely)?"usz":"osz")+(selRef===r.igehely?" on":""));
+    b.append(h("span","r",r.igehely), h("span","k", j && j.karoli_szo ? "„"+j.karoli_szo+"”" : "—"));
+    b.onclick = ()=>select(r.igehely);
+    list.append(b);
+  });
+}
+
+// határ
+function ok(t){
+  if(/név nélküli/.test(t)) return "Név nélküli segítségül hívás (H7121, שֵׁם nélkül) — rokon igehasználat, nem a formula";
+  if(/névadás/.test(t)) return "Névadás (H7121 + H8034), nem invokáció";
+  if(/erkölcsi intelm/.test(t)) return "A kereszthivatkozás erkölcsi intelemhez köt, nem a formulához";
+  if(/Károli-KH célhelye/.test(t)) return "Károli-kereszthivatkozás célhelye, a formula nélkül";
+  if(/nem tartalmazza|nincs ἐπικαλέομαι/.test(t)) return "A formula (H7121 + H8034 / ἐπικαλέομαι) nincs a versben";
+  if(/tartalmilag NEM releváns/.test(t)) return "Ellenőrizve, tartalmilag nem releváns";
+  return "Egyéb";
+}
+(function(){
+  const box = document.getElementById("groups"), g = {};
+  el_.forEach(r => { const k = ok(r.indoklas); (g[k] = g[k] || []).push(r); });
+  Object.entries(g).sort((a,b)=>b[1].length-a[1].length).forEach(([k,rs]) => {
+    const d = h("div","grp"), gh = h("div","gh");
+    gh.append(h("div",null,k), h("span",null,rs.length+" jelölt"));
+    const ch = h("div","chips");
+    rs.sort((a,b)=>key(a.igehely)-key(b.igehely)).forEach(r => { const c = h("button","chip",r.igehely); c.dataset.r = r.igehely; c.onclick = ()=>select(r.igehely); ch.append(c); });
+    d.append(gh, ch); box.append(d);
+  });
+})();
+
+// panel
+function select(ref){
+  selRef = ref; renderList(); markArcs(); renderPanel();
+  document.querySelectorAll(".chip").forEach(c => c.classList.toggle("on", c.dataset.r===ref));
+  if(window.matchMedia("(max-width:900px)").matches) document.getElementById("panel").scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block:"start"});
+}
+function renderPanel(){
+  const P = document.getElementById("panel"); P.innerHTML = "";
+  if(!selRef){
+    P.append(h("div","eyebrow","Elemző panel"), h("h2",null,"Válassz egy igehelyet"));
+    P.append(h("p","note","Kattints a listában, az ábrán egy pontra vagy ívre, vagy a határ-szakaszban egy kizárt jelöltre. A panel a forrás-táblák sorait mutatja, a származásukkal együtt."));
+    const ex = h("button","chip","Példa: Jóel 2:32"); ex.onclick = ()=>select("Jóel 2:32"); P.append(ex);
+    return;
+  }
+  const j = jelBy[selRef], e = eloBy[selRef];
+  P.append(h("div","eyebrow",isNT(selRef)?"Újszövetség":"Ószövetség"), h("h2",null,selRef));
+  if(j){ const bd = h("span","badge "+(j.dontes==="beépítve"?"be":"el"), j.dontes); P.append(bd); }
+  if(j && j.karoli_szo) P.append(h("p","quote","„"+j.karoli_szo+"”"));
+  if(e && e.kapcsolodas){ const d = h("div"); d.append(h("div","eyebrow","Kapcsolódás (elofordulasok.tsv)")); d.append(h("p",null,e.kapcsolodas)); d.lastChild.style.margin="4px 0 0"; P.append(d); }
+  if(j){
+    const d = h("div"); d.append(h("div","eyebrow","Döntés indoklása (jeloltek.tsv)"));
+    const p = h("p",null,j.indoklas); p.style.margin="4px 0 0"; d.append(p); P.append(d);
+    const dl = h("dl","dl");
+    [["azonosítás", j.azonositas_modja], ["megbízhatóság", j.megbizhatosag], ["keresés", j.forras_kereses], ["dátum", j.datum]].forEach(([k,v]) => { dl.append(h("dt",null,k), h("dd",null, v || "— (üres mező)")); });
+    P.append(dl);
+  }
+  const rels = D.kap.filter(k => k.forras_igehely===selRef || k.cel_igehely===selRef);
+  if(rels.length){
+    const d = h("div","rel"); d.append(h("div","eyebrow",`Kapcsolatok (${rels.length})`));
+    rels.forEach(k => { const x = h("div"); const other = k.forras_igehely===selRef ? k.cel_igehely : k.forras_igehely;
+      const a = h("button","chip",(k.forras_igehely===selRef?"→ ":"← ")+other); a.onclick=()=>select(other);
+      x.append(a, " ", h("b",null,k.tipus), " · "+k.funkcio); x.style.borderColor = k.tipus==="Beteljesedés"?"var(--betelj)":k.tipus==="Variáns"?"var(--varians)":"var(--parh)"; d.append(x); });
+    P.append(d);
+  }
+  P.append(h("div","prov", `scope=${j?"jeloltek.tsv":""}${e?" + elofordulasok.tsv":""}${rels.length?" + kapcsolatok.tsv":""} | forras=${j && j.forras_kereses ? "a sor forras_kereses mezője" : "manual"} | ts=${j && j.datum ? j.datum : "—"}`));
+}
+
+renderList(); markDist(); renderPanel();
+</script>

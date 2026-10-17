@@ -1,0 +1,4 @@
+#v4gomb .uj{height:15px;font-size:.55rem;padding:0 4px}
+#v4gomb{font-family:var(--f-text);font-weight:600}
+.v4menu input[type=range]{width:100%;accent-color:var(--accent)}
+.v4menu output{font-family:var(--f-mono);text-transform:none;letter-spacing:0;margin-left:6px;color:var(--fg)}
