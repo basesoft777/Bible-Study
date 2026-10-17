@@ -1,6 +1,6 @@
 # F23 zárás — a DT84 átvezetése (#23 MOTIVUM_FORRAS)
 
-*2026.10.17 · ág: `claude/f23-dt84-atvezetes` · modell: claude-opus-5-5 · állapot: `fut`; döntésre vár: DT-F23b, DT-F23c (🟡). Független ellenőrzés még nem futott.*
+*2026.10.17 · ág: `claude/f23-dt84-atvezetes` · modell: claude-opus-5-5 · állapot: `fut`; döntésre vár: DT-F23b, DT-F23c (🟡). Független ellenőrzés: `naplok/ELLENOR_F23_3.md` (ELTÉRÉS, 8 tétel), javítva: F23.D9–D10; újraellenőrzés még nem futott.*
 
 - A négy tervfájl `javaslat`-jelölései a DT84 (1)–(13) a szerint feloldva: `sablonok/9_PaRDeS_motivum_forras_sablon.md` (v0.1; F23.D1), `adat/SEMA.md` 3.10 (F23.D2), `naplok/MOTIVUM_FORRAS_ci_terv.md` (F23.D3), `naplok/MOTIVUM_FORRAS_pilot_terv.md` (F23.D4). A 9. pont / 8. szakasz összefoglalja a döntéseket.
 - (7) kiegészítés: a tanulmány-sablon v18 tükörszabályának B-beli alakja a forrássablon 7. pontjában; a `2_…` és a `4_…` élő sablon szövegét a menet nem írta: mikor és hol — DT-F23b.
@@ -8,7 +8,7 @@
 - Javítva menet közben: a pilot-terv 2.3 még proveniencia-lábjegyzet → `auditok.tsv` kinyerést írt, ellentétben a DT84 (2)-vel.
 - DT-F23c: a `kapcsolatok.tsv` új `indoklas` oszlopát (DT84 (8)) melyik feladat veszi fel. A DT-F23a helyőrzőt a DT84 már elhasználta, ezért b és c. A DT66 ✅ (F23.D5).
 - Ellenőrzés: `python eszkozok/feladatok.py ellenoriz` 128 brief, 0 hiba; `eszkozok/ellenorzes/futtat.py` (diff-mód, commit-üzenetekkel) HIBA 0. A címsor-átnevezések E5-jelölése: F23.D6.
-- Tartalmi fájl (`tematikus_lezart/`, `motivumok/`, `lexikon/`, `genezis/`, `general.py`, adattábla) nem változott.
+- K4, `git diff --stat origin/main..c238518e` (a D10 előtt): `DONTESEK.md` 4 ±; `F23_MOTIVUM_FORRAS_BRIEF.md` 10 ±; `adat/SEMA.md` 86 ±; `naplok/ELLENOR_F23_3.md` +16; `naplok/F23_zaras.md` +19; `naplok/MOTIVUM_FORRAS_ci_terv.md` 40 ±; `naplok/MOTIVUM_FORRAS_lekepezes.tsv` 10 ±; `naplok/MOTIVUM_FORRAS_pilot_terv.md` 115 ±; `sablonok/9_PaRDeS_motivum_forras_sablon.md` 75 ± (9 fájl, 247+, 128−). Tartalmi fájl (`tematikus_lezart/`, `motivumok/`, `lexikon/`, `genezis/`, `general.py`, `adat/*.tsv`) nincs köztük.
 
 ## Folytatási pont (DT84 után)
 
