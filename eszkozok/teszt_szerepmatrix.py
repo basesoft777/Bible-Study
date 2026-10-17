@@ -381,6 +381,38 @@ class TestSeceMounceF09(unittest.TestCase):
         self.assertIn('| hívni; nevezni |', b)
 
 
+class TestTbeshF09(unittest.TestCase):
+    """F09 S2.2 / S2.5b: a héber 1. szerep (TBESH) és a H8034 bekötése (DT-F09c)."""
+
+    def test_h8034_sor_szo_szerinti_a_forrasbol(self):
+        sorok = [r for r in LG.lexikon_hivatkozasok_ehhez('H8034') if r['szotar'] == 'TBESH']
+        self.assertEqual(len(sorok), 1)
+        r = sorok[0]
+        self.assertEqual((r['entry_id'], r['jelentes_szam'], r['forrasfajl']),
+                         ('H8034', 'teljes', 'konkordancia/TBESH.txt'))
+        raw = None
+        with io.open(LG.TBESH_TXT, encoding='utf-8') as f:
+            for sor in f:
+                if sor.startswith('H8034\t'):
+                    raw = sor.rstrip('\r\n').split('\t')[-1]
+        tiszta = re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', raw)).strip()
+        self.assertIn(r['szoveg_en'], tiszta)
+
+    def test_teremt002_tokenekhez_nincs_hivatkozas_sor(self):
+        # DT-F09c (2): a TEREMT-002 szótári bekötése a #12b-é, adatsort a #9 nem ír
+        for t in ('H8414', 'H0922'):
+            self.assertEqual(LG.lexikon_hivatkozasok_ehhez(t), [], t)
+
+    def test_konszolidalt_pontos_strong_sor_es_nem_targyalja(self):
+        szoveg = _blokk('HAMART-001')[0]
+        heber = _szakaszok(szoveg)['heber']
+        m = re.search(r'^#### 1\. .*?(?=^#### |\Z)', heber, re.M | re.S).group(0)
+        self.assertIn('##### TBESH H0127 — (konszolidált szócikk)', m)
+        # betűutótagos alszócikk (pl. H2403a/b) nem azonos a tokennel (D38)
+        self.assertNotIn('##### TBESH H2403a', m)
+        self.assertNotIn('##### TBESH H2403b', m)
+
+
 class TestTeologiaiF09(unittest.TestCase):
     """F09 S2.5: tW + TWOT (3. szerep), BDB-etimológia (héber 8.), LXX versszintű párok (héber 6.)."""
 

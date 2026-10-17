@@ -488,7 +488,7 @@ def ubs_jelentes_cella(sor_id, igehely, strong_field):
             szoveg = hu
         else:
             angol = definicio_idx.get((strong, lexid)) or glosszak
-            szoveg = '%s *(fordítás függőben)*' % angol
+            szoveg = '%s %s' % (angol, FORDITASRA_VAR)
         jelolt = '' if egyertelmu == 'igen' else ' *(jelölt, nem egyértelmű)*'
         tokenenkent.setdefault(strong, []).append('%s — %s%s' % (entry_kod, szoveg, jelolt))
 
@@ -777,7 +777,7 @@ def _szotar_reszek(strong, szint_eltolas, fajl_licenc_kulcsok, fajl_licenc_kulcs
             if hu:
                 bek.append('**🇭🇺** %s' % hu)
             else:
-                bek.append('*Fordítás függőben.*')
+                bek.append(FORDITASRA_VAR)
             bek.append('*Forrás: %s*' % r['forrasfajl'])
             forras_blokkok.append((r['szotar'], bek))
 
