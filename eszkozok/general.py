@@ -1064,13 +1064,19 @@ def elesites(cel, path, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek
                      % (max_iteracio, cel))
 
 
+def helyi_kimenet_engedett(kimenet, gyoker=None):
+    """DT-F09h: a `--helyi-lexicon` kimenete csak a repón kívül lehet. Az útvonalat `realpath` + `normcase` után
+    vetjük össze a repó gyökerével (Windows alatt a kis-/nagybetű és a szimbolikus út nem kerülheti meg)."""
+    rp = os.path.normcase(os.path.realpath(kimenet))
+    rr = os.path.normcase(os.path.realpath(gyoker or ROOT))
+    return rp != rr and not rp.startswith(rr.rstrip(os.sep) + os.sep)
+
+
 def main():
     args = build_parser().parse_args()
     if args.helyi_lexicon:
-        kim = os.path.abspath(args.kimenet)
-        tiltott = [os.path.abspath(os.path.join(ROOT, 'generalt_proba')), os.path.abspath(os.path.join(ROOT, 'lexikon'))]
-        if args.ir or kim in tiltott or any(kim.startswith(x + os.sep) for x in tiltott) or args.kimenet == build_parser().get_default('kimenet'):
-            raise SystemExit('--helyi-lexicon: csak explicit, nem verziózott --kimenet könyvtárba (nem a generalt_proba/ vagy lexikon/ alá, --ir nélkül; DT-F09h)')
+        if args.ir or not helyi_kimenet_engedett(args.kimenet):
+            raise SystemExit('--helyi-lexicon: csak a repón KÍVÜLI --kimenet könyvtárba, --ir nélkül (a repó alatti utak, a gyökér is, tiltottak; DT-F09h)')
         import lexikon_general as _lg
         _lg.TBESH_HELYI_LEXICON = True
 

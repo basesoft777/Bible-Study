@@ -511,6 +511,15 @@ class TestTbeshVerziozottF09(unittest.TestCase):
         self.assertTrue(sorok)
         self.assertTrue(all(r['_fajl'] == LG.TBESH_KONSZ_FAJL for r in sorok))
 
+    def test_helyi_kimenet_csak_a_repon_kivul(self):
+        import tempfile
+        gy = G.ROOT
+        for rossz in (os.path.join(gy, 'naplok', 'x'), os.path.join(gy, 'Generalt_proba', 'x'),
+                      os.path.join(gy, 'GENERALT_PROBA', 'x'), os.path.join(gy, 'adat', 'x'), gy,
+                      os.path.join(gy, 'naplok', '..', 'lexikon')):
+            self.assertFalse(G.helyi_kimenet_engedett(rossz), rossz)
+        self.assertTrue(G.helyi_kimenet_engedett(os.path.join(tempfile.gettempdir(), 'f09_helyi_teszt')))
+
     def test_helyi_lexicon_kapcsolo_nem_ir_verziozott_helyre(self):
         import subprocess
         gen = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'general.py')
