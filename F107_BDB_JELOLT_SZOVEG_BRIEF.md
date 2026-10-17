@@ -61,6 +61,10 @@ a kanonikus szerkezet, a sima szöveg ennek nézete (CLAUDE.md fő szabálya) �
    (törzs / nagybetűs csoport / római / szám / betű / zárójeles szint, a #102 kibővített útvonal-formátumával összehangolva), `jelolo`
    (`section` / `point` / `remarks` / `fej`), `gyakorisag` (a `<sub>` szám), `szoveg` (sima), `forras`, `forras_hash`, proveniencia-sor.
    Bontó: `eszkozok/bdb_jelolt/` (a CLAUDE.md shell- és TSV-szabályai szerint; teszttel).
+   *Nyitott (⛔ `DT-F09f`, 2026-10-17):* legyen-e a tábla kulcsa (`strong` + `bdb_id` + `utvonal`) a BDB-tagolás egyetlen kanonikus
+   kulcsa minden fogyasztónak — a lexikon (`adat/lexikon_hivatkozasok.tsv` `jelentes_szam`), az olvasó (`adat/bdb_vers_jelentes.tsv`)
+   és a fordítás (`bdb_szakasz_hu.tsv`, #38) is erre mutasson, CI-kapuval. Jóváhagyás esetén az útvonal-formátum ebben a lépésben
+   fagy be, és a végrehajtó ehhez méri a 4. lépés összevetését.
 3. **Nézet-ellenőrzés, nem csere.** A szakaszok szövegéből generált sima szöveg összevetése a `BDB_teljes_unabridged.tsv`-vel
    (whitespace-normalizálva); az eltérések listája (ez mutatja a konverziós maradványokat). **A TSV-t ez a feladat a 6. lépés döntése
    előtt nem írja át**: a #38 `forras_hash`-e erre a szövegre mutat. A gyökérszintű cél, hogy a sima szöveg a táblából (és a
@@ -123,3 +127,6 @@ kötelező forrásának átírása, hacsak a `DT-F107c` ide nem utalja (6. lép�
 
 - (helyőrzők a futáskor: DT-F107a forrás és licenc, DT-F107b az elakadó magyar szakaszok, DT-F107c a sima szöveg nézetté válása, DT-F107d a nyers forrás megőrzése és a
   veszteséges konverzió naplózása mint a playbook 2. pontjának általános szabálya)
+- `DT-F09f` (a #9 ágán nyitva, 2026-10-17, 🟡): a szakasztábla mint a BDB-tagolás egyetlen kanonikus forrása minden fogyasztónak
+  (lexikon, olvasó, fordítás), közös kulccsal és CI-kapuval; a lexikon 4 BDB-sorának átkulcsolása jóváhagyás esetén a #107 után
+  külön tétel (`DONTESEK.md`).
