@@ -1,0 +1,11 @@
+# SZOTAR S2 (#9) — zárójelentés
+
+*Ág: `claude/f09-szotar-s2` · modell: `claude-sonnet-5-5` · ts=2026-10-17 · részletek: `naplok/F09_S0_kiindulas.md`, `naplok/SZOTAR_S2_diff.tsv`*
+
+1. **Kész:** S0, S2.1–S2.5, S2.5b, S2.7, S2.8, S2.9; az éles `lexikon/` bájtra változatlan (16 hash egyezik, `git diff --stat lexikon/` üres). S2.6 a #70-é.
+2. **Mért (scope=`adat/elofordulasok.tsv` + `generalt_proba/F09_szotar_s2_proba/` | forras=`naplok/F09_S0_meres.py`, `render_diff_osztalyoz.py --proba` | ts=2026-10-17):** 8 motívum Strongja H 24 + G 13; `kiejtes_kivetelek.tsv` héber 26 + görög 3; `KIEJT` 0; `kiejtes.py --ellenoriz` 26/26; `szotar_szerepek.tsv`: adatosítva 20, javaslat 6, `nincs adatosítva` 0.
+3. **Próba:** 8 `_TUDOMANYOS` + 8 `_TORZSCIKK`; törzscikkben `nincs adatosítva` 0, Cremer/Girdlestone 0; 314 `(fordításra vár)` sor; `ellenoriz.py` SÉRTÉS 0; `feladatok.py ellenoriz` 0 hiba; `teszt_szerepmatrix.py` 38 teszt zöld.
+4. **Diff-osztályozó (`SZOTAR_S2_diff.tsv`):** ismeretlen kategória 0; sorok: teologiai 3678, szerep_vaz 546, ubs_dbh 484, lxx_korpusz 831, licenc 403, elavult_adat 385, kiejtes 272, szerep 196, jeloles 160, fordites_jelzo 100, tbesh 98, mounce_sece 143, nyelvi_hatter 65, torzscikk_res 678.
+5. **Eltérések a briefhez / javaslat-pontok:** `szerep_vaz` kategória követve; két kiegészítő kategória (`elavult_adat`, `fordites_jelzo`) kellett a besoroláshoz; UBS DBH anomália (5 sor) nem állította meg a menetet (nem érinti a szöveget); a héber 1. szerep a helyben élő konszolidált TBESH-t olvassa, kivéve H7121 (BDB 2.c mutató) és TEREMT-002 (#12b) — l. N-F09d; a régi „Fordítás függőben” jelző „(fordításra vár)”-ra egységesült; `teszt_szerepmatrix.py` az `ir`-en kívül módosult (új elvárások).
+6. **Nyitott:** `NYITOTT_FELADATOK.md` N-F09a–f (+ N-F78a lezárva). DT-F09f helyőrzőt a menet nem használt.
+7. **Következő:** független ellenőr (`fuggetlen-ellenor`), PR — az orkesztrátor indítja; merge csak a felhasználótól.
