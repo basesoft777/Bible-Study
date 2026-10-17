@@ -1,0 +1,33 @@
+# Lekerdezes-naplo (lekerdez.py --naplo). Kulcs nincs. Sema: adat/SEMA.md 2.9
+id	lepes	proveniencia	datum
+F108	B3	scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H8415 | n=35 | ts=2026-10-17T16:58Z | csatorna=cli	2026.10.17
+F108	B3	scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H3548 | n=653 | ts=2026-10-17T16:58Z | csatorna=cli	2026.10.17
+F108	B3	scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H8004 | n=2 | ts=2026-10-17T16:58Z | csatorna=cli	2026.10.17
+F108	B3	scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G5010 | n=9 | ts=2026-10-17T16:58Z | csatorna=cli	2026.10.17
+F108	B3	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H7121+H8034 | n=196 | ts=2026-10-17T16:58Z | csatorna=cli	2026.10.17
+F108	B3	scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli	2026.10.17
+F108	B3	scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G0012 | n=9 | ts=2026-10-17T16:58Z | csatorna=cli	2026.10.17
+F108	B3	scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H7585 | n=64 | ts=2026-10-17T16:58Z | csatorna=cli	2026.10.17
+F108	B3	scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G0086 | n=10 | ts=2026-10-17T16:58Z | csatorna=cli	2026.10.17
+F108	B3	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H1121+H0430 | n=279 | ts=2026-10-17T16:58Z | csatorna=cli	2026.10.17
+F108	B3	scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H5303 | n=2 | ts=2026-10-17T16:58Z | csatorna=cli	2026.10.17
+F108	B3	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=G4151+G5590 | n=6 | ts=2026-10-17T16:58Z | csatorna=cli	2026.10.17
+F108	B3	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H5315+H2416 | n=61 | ts=2026-10-17T16:58Z | csatorna=cli	2026.10.17
+F108	B3	scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H7497 | n=24 | ts=2026-10-17T16:59Z | csatorna=cli	2026.10.17
+F108	B3	scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H7496 | n=8 | ts=2026-10-17T16:59Z | csatorna=cli	2026.10.17
+F108	B3	scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H5303 | n=2 | ts=2026-10-17T16:59Z | csatorna=cli	2026.10.17
+F108	B3	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H8414+H0922 | n=3 | ts=2026-10-17T16:59Z | csatorna=cli	2026.10.17
+F108	B3	scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H0127 | n=211 | ts=2026-10-17T16:59Z | csatorna=cli	2026.10.17
+F108	B3	scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H0779 | n=52 | ts=2026-10-17T16:59Z | csatorna=cli	2026.10.17
+F108	B3	scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H2403 | n=271 | ts=2026-10-17T16:59Z | csatorna=cli	2026.10.17
+F108	B3	scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H2555 | n=59 | ts=2026-10-17T16:59Z | csatorna=cli	2026.10.17
+F108	B3	scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H6093 | n=3 | ts=2026-10-17T16:59Z | csatorna=cli	2026.10.17
+F108	B3	scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H7843 | n=135 | ts=2026-10-17T16:59Z | csatorna=cli	2026.10.17
+F108	B3	scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H7043 | n=79 | ts=2026-10-17T16:59Z | csatorna=cli	2026.10.17
+F108	B3	scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H7451 | n=621 | ts=2026-10-17T16:59Z | csatorna=cli	2026.10.17
+F108	B3	scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1311 | n=5 | ts=2026-10-17T16:59Z | csatorna=cli	2026.10.17
+F108	B3	scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1944 | n=2 | ts=2026-10-17T16:59Z | csatorna=cli	2026.10.17
+F108	B3	scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G2671 | n=5 | ts=2026-10-17T16:59Z | csatorna=cli	2026.10.17
+F108	B3	scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G5351 | n=8 | ts=2026-10-17T16:59Z | csatorna=cli	2026.10.17
+F108	B3	scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G5356 | n=8 | ts=2026-10-17T16:59Z | csatorna=cli	2026.10.17
+F108	B3	scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G2704 | n=1 | ts=2026-10-17T16:59Z | csatorna=cli	2026.10.17
