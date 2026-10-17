@@ -1407,7 +1407,8 @@ azzal a megjegyzéssel, hogy új oszlopot kérhet. A DT84 döntése:
 1. **Alátámasztás → `kapcsolatok.tsv`, új `indoklas` oszlop** (DT84 (8) a). A mai sémában
    a soronkénti funkció-/bizonyosság-indoklásnak nincs oszlopa (2.3: `funkcio` van,
    indoklás nincs). Az oszlop felvétele (a 2.3 bővítése és a tábla) nem ennek a tervnek
-   a része (a #23 adattáblát nem ír); a #11 előtt, külön lépésben kell megtörténnie.
+   a része (a #23 adattáblát nem ír); hogy melyik lépés és mikor végzi, arról a
+   `DONTESEK.md` DT-F23c tétele dönt.
 2. **Minősítés → `jeloltek.tsv`, a „független megerősítés” generált** (DT84 (8) a): az
    „új találat” és a „nem releváns” a `dontes` (`beépítve` / `nyitva` / `elutasítva`) és
    az `indoklas` mezőbe képezhető, a kereszthivatkozás forrás-verse a `forras_kereses`

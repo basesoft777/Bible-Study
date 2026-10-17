@@ -129,7 +129,7 @@ előbecslés: a végleges besorolás blokkonként, a #11 leképezési táblájá
 | fejléc verzió-sora (1) | `adat` + `archivum` | `motivumok.tsv` `statusz_verzio`; a verziótörténet archívum |
 | 0. Forrás-összegyűjtés (3) | `archivum` (folyamat-nyom) | ha van benne `auditok`-sorrá tehető lekérdezés-nyom: `adat` |
 | 1. Előfordulások (15) | `generalt` (a tábla: 32 sor már az adatban) + `forras`/`belso` (P1–P7, `【NAPLO`) | `ADAT-NÉZET` `--cel study` |
-| 1/b. Kapcsolatok (7) | `generalt` (a tábla: 25 sor már a `kapcsolatok.tsv`-ben); az Alátámasztás `adat` (`kapcsolatok.tsv` új `indoklas` oszlopa, DT84 (8)) | SEMA 3.10.7 1.; az oszlop felvétele a #11 előtt |
+| 1/b. Kapcsolatok (7) | `generalt` (a tábla: 25 sor már a `kapcsolatok.tsv`-ben); az Alátámasztás `adat` (`kapcsolatok.tsv` új `indoklas` oszlopa, DT84 (8)) | SEMA 3.10.7 1.; az oszlop felvételének helye: DT-F23c |
 | 2. Eredeti nyelvi összevetés (38) | `forras` (értelmezés, Miért fontos) + `adat` (2/b szótári kivonat → `lexikon_hivatkozasok.tsv`) | sablon 2, 2.M; a 2/b blokk megszűnik |
 | 3. PaRDeS (32) | `forras` | sablon 3, `RÉS: ertelmezes` |
 | 4. Kutatási sablon (2) | `forras` vagy `INAKTÍV` | sablon 4 |
