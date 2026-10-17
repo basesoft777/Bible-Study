@@ -169,7 +169,7 @@ class TestVazIstentiszt(unittest.TestCase):
 
     def test_heber_tbesh_nincs_sor_jelolve(self):
         # F09 S2.2/S2.5b: a TBESH marad a forrás (adatosítva); a H7121 mutatója a BDB 2.c (DT-F42a,
-        # a TBESH „részlet” sora nem kerül vissza), a H8034 TBESH-szövege megvan (DT-F09c)
+        # a TBESH „részlet” sora nem kerül vissza), a H8034 TBESH-szövege megvan (DT187)
         b = self._blokk_szerep('heber', 1)
         self.assertEqual(len(UROS_RE.findall(b)), 1)
         self.assertTrue(all(a == 'adatosítva, nincs bekötve' for _, a in UROS_RE.findall(b)))
@@ -268,7 +268,7 @@ class TestVazTeremt(unittest.TestCase):
         self.assertEqual(h, [(int(r['sorrend']), r['szerep']) for r in tabla])
         # lexikon_hivatkozasok-sor nincs: az 1. és 2. szerep adatosítva, de nincs sor -> jelölt üres blokk
         self.assertIn('ÜRES-BLOKK: Alapjelentés | adatosítva, nincs bekötve', sz['heber'])
-        self.assertIn('#12b', sz['heber'])  # a TEREMT-002 szótári bekötése a #12b-é (DT-F09c)
+        self.assertIn('#12b', sz['heber'])  # a TEREMT-002 szótári bekötése a #12b-é (DT187)
         self.assertNotIn('#9 dolga', sz['heber'])
         self.assertIn('ÜRES-BLOKK: Mélységi szócikk | adatosítva, nincs bekötve', sz['heber'])
         for n in (1, 2):
@@ -349,7 +349,7 @@ def _nfc(s):
 
 
 class TestSeceMounceF09(unittest.TestCase):
-    """F09 S2.4: SECE (7. szerep, mindkét nyelven) és Mounce (görög 5. szerep kiegészítője); DT-F09e."""
+    """F09 S2.4: SECE (7. szerep, mindkét nyelven) és Mounce (görög 5. szerep kiegészítője); DT189."""
 
     def _szerep(self, motivum_id, nyelv, n):
         szoveg = _blokk(motivum_id)[0]
@@ -361,7 +361,7 @@ class TestSeceMounceF09(unittest.TestCase):
         g = self._szerep('ISTENTISZT-001', 'gorog', 7)
         self.assertIn(_nfc('**G1941** · SECE — héber megfelelők (8): זָכַר, מָצָא, נָקַב, עָשָׂה, קָרָא, שׂוּם, שָׁכַן, שֻׁם'), _nfc(g))
         self.assertNotIn('ÜRES-BLOKK', g)
-        self.assertIn('*Hivatkozás:', g)  # DT-F09e: a „l. 2/b” kiegészítő sorként marad
+        self.assertIn('*Hivatkozás:', g)  # DT189: a „l. 2/b” kiegészítő sorként marad
         self.assertIn('l. 2/b', g)
         h = self._szerep('ISTENTISZT-001', 'heber', 7)
         self.assertIn(_nfc('**H8034** · SECE — görög megfelelők (6): θρόνος, καλέω, καλός, καύχημα, ὄνομα, Σήμ'), _nfc(h))
@@ -417,7 +417,7 @@ class TestLabjegyzetF09(unittest.TestCase):
 
 
 class TestTbeshF09(unittest.TestCase):
-    """F09 S2.2 / S2.5b: a héber 1. szerep (TBESH) és a H8034 bekötése (DT-F09c)."""
+    """F09 S2.2 / S2.5b: a héber 1. szerep (TBESH) és a H8034 bekötése (DT187)."""
 
     def test_h8034_sor_szo_szerinti_a_forrasbol(self):
         sorok = [r for r in LG.lexikon_hivatkozasok_ehhez('H8034') if r['szotar'] == 'TBESH']
@@ -434,7 +434,7 @@ class TestTbeshF09(unittest.TestCase):
         self.assertIn(r['szoveg_en'], tiszta)
 
     def test_teremt002_tokenekhez_nincs_hivatkozas_sor(self):
-        # DT-F09c (2): a TEREMT-002 szótári bekötése a #12b-é, adatsort a #9 nem ír
+        # DT187 (2): a TEREMT-002 szótári bekötése a #12b-é, adatsort a #9 nem ír
         for t in ('H8414', 'H0922'):
             self.assertEqual(LG.lexikon_hivatkozasok_ehhez(t), [], t)
 

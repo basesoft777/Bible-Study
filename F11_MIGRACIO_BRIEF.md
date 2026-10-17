@@ -17,7 +17,7 @@ nem_fugg: [27, 38, 52, 55, 107, 109, 110]
 
 # F11_MIGRACIO_BRIEF.md — Migráció: egy forrásból renderelés
 
-*FELADATOK #11 · Modell: opus · v1 · 2026.10.17 · döntések: D34, D38, DT28, DT66, DT74 (3), DT78 (22), DT84, DT-F23b, DT-F23c*
+*FELADATOK #11 · Modell: opus · v1 · 2026.10.17 · döntések: D34, D38, DT28, DT66, DT74 (3), DT78 (22), DT84, DT182, DT183*
 
 **Állapot-megjegyzés a befogadáshoz.** A #23 (a pilot-terv forrása) munkája a `main`-en van (PR #370 ága már nem hordoz saját commitot), de a #23 `allapot: fut`. A #11 `fugg: [9, 23]` ezért addig nem engedi a futtatást, amíg a #23 le nem zárul és a #9 el nem készül; a brief tartalma a pilot-tervre épül, és a `main`-en olvasható.
 
@@ -27,8 +27,8 @@ A D34 (B út) megvalósítása a **1. lépcsőn**: az ISTENTISZT-001 motívum eg
 
 Két további kötelezettség (felhasználói döntések, 2026-10-17):
 
-- **DT-F23c:** az `indoklas` oszlop felvétele a `kapcsolatok.tsv`-be a #11 **első, önálló séma-tétele**, saját commitokkal és független ellenőrzéssel, a migráció előtt.
-- **DT-F23b:** a `sablonok/2_PaRDeS_bovitett_sablon.md` (v18) „Tartalmi visszaírás lezárt tematikus tanulmányba” és a `sablonok/4_PaRDeS_tematikus_sablon.md` (v10) „Tartalmi visszaírás bővített tanulmányokba” szabályának, valamint a 4_ Lezárási checklist 12. pontjának **teljes átírása** (ma felfüggesztő sor áll előttük, F23.D14). A két sablon ezért az `ir` mezőben van.
+- **DT183:** az `indoklas` oszlop felvétele a `kapcsolatok.tsv`-be a #11 **első, önálló séma-tétele**, saját commitokkal és független ellenőrzéssel, a migráció előtt.
+- **DT182:** a `sablonok/2_PaRDeS_bovitett_sablon.md` (v18) „Tartalmi visszaírás lezárt tematikus tanulmányba” és a `sablonok/4_PaRDeS_tematikus_sablon.md` (v10) „Tartalmi visszaírás bővített tanulmányokba” szabályának, valamint a 4_ Lezárási checklist 12. pontjának **teljes átírása** (ma felfüggesztő sor áll előttük, F23.D14). A két sablon ezért az `ir` mezőben van.
 
 ## 2. Hatókör
 
@@ -56,7 +56,7 @@ Két további kötelezettség (felhasználói döntések, 2026-10-17):
 - **M6. ⛔ Független ellenőrzés** (`naplok/ELLENOR_F11_M.md`) a teljes base..head diffen.
 - **M7.** Az ISTENTISZT-001 forrásában a beemelt nevesített tanítói sor hivatkozássá alakul a 7. lépés saját fájljára (DT66 (2), DT88); ha a saját fájl nem létezik: DT-tétel és megállás.
 
-### T. A két sablon átírása (DT-F23b, a migrációval együtt)
+### T. A két sablon átírása (DT182, a migrációval együtt)
 
 - **T1.** `sablonok/2_PaRDeS_bovitett_sablon.md` 7. pont: a felfüggesztett szabály helyén a B-beli szabály (a bővítettben felmerült lelet adatrésze a `jeloltek.tsv`-n át, döntéssel; az értelmezés saját szöveggel a `motivumok/[ID].md`-be; a túloldalon csak hivatkozás; kézi másolás egyik irányban sincs); a „Korlát” bekezdés és a verziósor frissítve (a v21 tervezett, a tényleges szám a futtatáskor).
 - **T2.** `sablonok/4_PaRDeS_tematikus_sablon.md`: a „Tartalmi visszaírás bővített tanulmányokba” alszakasz (447. sor körül) megszűnik / „megszűnt, l. DT84 (7)” jelölést kap; a Lezárási checklist 12. pontja átírva (a hivatkozott szabály megszűnt); a v10 verziósor és a szakaszra mutató belső hivatkozások (60., 243., 424–430. sor) frissítve. Lezárt tanulmányba és a `genezis/`-be nem kerül semmi.

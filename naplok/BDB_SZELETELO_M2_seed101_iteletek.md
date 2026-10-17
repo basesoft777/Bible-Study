@@ -4,11 +4,11 @@
 hivatkozás helye), a seed-100 mintájára (`naplok/BDB_SZELETELO_M2_seed100_iteletek.md`). Kategóriák: **szeletelő-hiba**, **kitöltő-hiba**
 (csak a forrással bizonyítva), **kulcs-ellentmondás**, **`forras_hiba`**. Az ítélet a mért állapothoz kötődik: kulcs
 `naplok/BDB_SZELETELO_M2_minta_seed101_kulcs.tsv` (F99.25-ös tábla), kitöltések `naplok/BDB_SZELETELO_M2_seed101_kitoltott_A.tsv` és
-`_B.tsv`, összevetés `naplok/BDB_SZELETELO_M2_seed101_osszevetes.txt` (F99.26). A kapu következménye az ítélet előtt rögzítve: DT-F99l
+`_B.tsv`, összevetés `naplok/BDB_SZELETELO_M2_seed101_osszevetes.txt` (F99.26). A kapu következménye az ítélet előtt rögzítve: DT177
 (F99.27). A szeletelőn a jóváhagyásig nincs javítás. Proveniencia: `scope=seed-101 vak minta | forras=BDB_teljes_unabridged.tsv +
 TAHOT_kivonat.tsv (ellenőrzés) | ts=2026-10-15`; az ítélet értelmezés (manual), nem gépi eredmény.*
 
-**Jóváhagyva** (felhasználó, 2026-10-15): az ítéletek; M029 kulcs-ellentmondás marad (a homonima/fő rész kérdés a javítási feladatba); M049, M121 `forras_hiba` (a táblában alkalmazva, F99.29); M092 `orokles_hibas` (a javítási feladatba); a kapu: DT-F99l (c).
+**Jóváhagyva** (felhasználó, 2026-10-15): az ítéletek; M029 kulcs-ellentmondás marad (a homonima/fő rész kérdés a javítási feladatba); M049, M121 `forras_hiba` (a táblában alkalmazva, F99.29); M092 `orokles_hibas` (a javítási feladatba); a kapu: DT177 (c).
 
 ## 1. Összesítő
 
@@ -21,7 +21,7 @@ TAHOT_kivonat.tsv (ellenőrzés) | ts=2026-10-15`; az ítélet értelmezés (man
 
 **Könyv/vers** (a felhasználó elfogadta): 0 valódi hiba (M011, M072, M119 rövidítés).
 
-**A kapu kiértékelése (DT-F99l) — JAVASLAT, a jóváhagyás előtt:** 13 szeletelő-hiba > 6, tehát nem (a). A (b) feltétele (a hibák ≥ 2/3-a
+**A kapu kiértékelése (DT177) — JAVASLAT, a jóváhagyás előtt:** 13 szeletelő-hiba > 6, tehát nem (a). A (b) feltétele (a hibák ≥ 2/3-a
 nem számozott szócikkben): 1/13 = 8% — **nem teljesül**. A hibák szórtak (7 okcsoport, l. 3. pont) → **(c)**: a tábla „próba” jelöléssel
 élesedik, a mért pontosság és intervalluma a lapon látszik (seed-101: jelentéspont 184/200 = 92,0%, Clopper–Pearson 95%: 87,3–95,4%; az
 ítélet szerinti 13 szeletelő-hibával 187/200 = 93,5%, 89,1–96,5%); a további szeletelő-javítás külön feladat (brief-tervezet a
@@ -34,7 +34,7 @@ nem számozott szócikkben): 1/13 = 8% — **nem teljesül**. A hibák szórtak 
 | M008 | H4519 | `-/1/b` | `-/1/b/(2)/δ` | „γ. מ ׳מַטֵּה … δ. מ שֵׁבֶט ׳חֲצִי Deut 3:13 (D), Josh 13:29; 22:13, 15 (all P)” | igen | **kulcs-ellentmondás** | a görög betűs negyedik szintet (δ) a szabály nem kezeli; a kulcs előtagként helyes |
 | M011 | H6485 | `Qal/3` | `Qal/A/3` | „A. 1. a. pay attention to … 3 with עַל person, visit upon … Amos 3:2 … B. appoint: 1 …” | igen | **kulcs-ellentmondás** | a nagybetűs csoportszint (A./B.) nincs az útvonal-formátumban; a 3. pont mindkét olvasatban helyes |
 | M028 | H7379 | `-/2` | `-/3` | „2. of public hostilities … 3_39 especially dispute, controversy … Deut 21:5 (+נֶגַע), 25:1” | igen | **szeletelő-hiba** | a gyakoriság-számmal tapadt jelölő („3_39”) nem jelölő |
-| M029 | H6440 | `II -/4/e` | `-/4/e`, rész `II` | „II. מְּנֵי with prepositions … 4 לִפְנֵי … e. Of time … Gen 13:10” | igen | **kulcs-ellentmondás** | a „II. פְּנֵי” fej héber címszóval áll (az aranyminta `szakasz` II-ként rögzíti), de a szócikken belüli fő rész is lehet (DT-F99i); a szabály nem dönti el |
+| M029 | H6440 | `II -/4/e` | `-/4/e`, rész `II` | „II. מְּנֵי with prepositions … 4 לִפְנֵי … e. Of time … Gen 13:10” | igen | **kulcs-ellentmondás** | a „II. פְּנֵי” fej héber címszóval áll (az aranyminta `szakasz` II-ként rögzíti), de a szócikken belüli fő rész is lehet (DT174); a szabály nem dönti el |
 | M031 | H5117 | `Qal/2/c` | `Hiph`il/B/2` | „Hiph`il A. Perfect3masculine singular הֵנִיחַ … B. Perfect … הִנִּיחַ … leave or bequeath … Eccl 2:18” | igen | **szeletelő-hiba** | a „Hiph`il A. Perfect” törzsfejléc nem ismert fel (a betűcsoport a törzsnév és a „Perfect” között áll), a Hiph`il a Qal-ba olvad |
 | M043 | H8057 | `-/1` | `-/2` | „… malicious joy Ezek 35:15 … 2_46 (especially Psalms Chronicles) religious: … Joel 1:16” | igen | **szeletelő-hiba** | „2_46” — mint M028 |
 | M102 | H0559 | `Qal/-` | `Qal/1` | „… see Dr^Expositor, April, 1887, 263.1Say (subject God Gen 3:1 … 1Chr 17:4” | igen | **szeletelő-hiba** | OCR: a „1” a megelőző lapszámhoz és a szóhoz tapad („263.1Say”) |

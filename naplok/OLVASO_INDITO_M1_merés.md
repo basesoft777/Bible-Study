@@ -1,6 +1,6 @@
 # #100 OLVASO_INDITO — M1 mérések
 
-*Ág: `claude/olvaso-indito` · végrehajtó: `claude-sonnet-5-5` · mérés napja: 2026-10-15 (helyi idő, +02:00). A mérések a `pardes` WSL-disztribúcióban futottak (Python 3.12.3, a `~/pardes` venv), a kód és a `konkordancia/` a `/mnt/c`-ről olvasódott (DT-F100a (c)), a `PARDES_DB` a WSL-natív `~/pardes/pardes.db` (895 MB, `epites_ts` = `2026-10-14T09:35:00Z`). Nyers kimenet: a session scratch-könyvtárában (nem a repóban).*
+*Ág: `claude/olvaso-indito` · végrehajtó: `claude-sonnet-5-5` · mérés napja: 2026-10-15 (helyi idő, +02:00). A mérések a `pardes` WSL-disztribúcióban futottak (Python 3.12.3, a `~/pardes` venv), a kód és a `konkordancia/` a `/mnt/c`-ről olvasódott (DT160 (c)), a `PARDES_DB` a WSL-natív `~/pardes/pardes.db` (895 MB, `epites_ts` = `2026-10-14T09:35:00Z`). Nyers kimenet: a session scratch-könyvtárában (nem a repóban).*
 
 ## 1. A tesztek együttes ideje (elfogadási feltétel)
 
@@ -20,13 +20,13 @@ A kiírt fejléc: `adatbázis: /home/basesoft/pardes/pardes.db -- WSL-natív ala
 | a `teszt_szintek.py` nélkül (`--gyors`; a `teszt_indito.py`-val) | 202 | 197,2 | zöld |
 | **mind a hat fájl** | 215 | **274,6** | zöld |
 
-*Megjegyzés a „négy tesztfájlhoz”.* A brief négy tesztfájlt nevez; az `eszkozok/olvaso_szerver/teszt_*.py` ma öt fájl (`teszt_arculat`, `teszt_olvaso_szerver`, `teszt_pilot_aranymintaval`, `teszt_szintek`, `teszt_tervezo`), a #100 hatodikat (`teszt_indito.py`) ad. A fenti táblázat mindegyiket külön mutatja; az elfogadási feltétel (a fájlok együtt, a DT-F100a (c) szerinti környezetben a mért idő alatt lefutnak) **teljesül**: a teljes készlet 4,6 perc.
+*Megjegyzés a „négy tesztfájlhoz”.* A brief négy tesztfájlt nevez; az `eszkozok/olvaso_szerver/teszt_*.py` ma öt fájl (`teszt_arculat`, `teszt_olvaso_szerver`, `teszt_pilot_aranymintaval`, `teszt_szintek`, `teszt_tervezo`), a #100 hatodikat (`teszt_indito.py`) ad. A fenti táblázat mindegyiket külön mutatja; az elfogadási feltétel (a fájlok együtt, a DT160 (c) szerinti környezetben a mért idő alatt lefutnak) **teljesül**: a teljes készlet 4,6 perc.
 
 **Összevetés a referenciával:**
 
 - `teszt_olvaso_szerver.py`: **122,4 mp** (referencia: 118–124 mp) — egyezik. Egy korábbi, a SQL-szabály miatt egyetlen tesztben bukó futás (09:54–09:57, a `teszt_futtat --gyors` első próbája, 71 teszt) 131,9 mp-et mért; ugyanaz a kód, a különbség terhelés-ingadozás.
 - `teszt_szintek.py`: **77,5 mp** egyedül futtatva (13 teszt, 76,7 mp a unittest szerint). A #98-nál mért 19 perc párhuzamos futás mellett volt; az itteni szám NEM párhuzamos. Az előző mondat nem azt állítja, hogy a párhuzamos futás gyorsabb lenne: csak annyit, hogy a 19 perc terhelt gépen (több session egyszerre) keletkezett, az itteni egyedüli futás 77,5 mp.
-- `teszt_pilot_aranymintaval.py`: 44,3 mp (a `konkordancia/`-t a `/mnt/c`-ről olvasó pilot-összevetés — a D2 `adat.py`-t futtatja; a DT-F100a (c) lassúság-kockázata itt nem jelentkezett).
+- `teszt_pilot_aranymintaval.py`: 44,3 mp (a `konkordancia/`-t a `/mnt/c`-ről olvasó pilot-összevetés — a D2 `adat.py`-t futtatja; a DT160 (c) lassúság-kockázata itt nem jelentkezett).
 
 **Az órákról:** a fájlonkénti időket a `teszt_futtat.py` a WSL monotonic órájával méri; a kezdő és záró időbélyeget a Windows-óra adta (10:00:08 → 10:04:33 = 265 mp), a fájlonkénti idők összege 274,6 mp. A ~3,5%-os eltérés oka nem ismert (a fájlok egymás után futottak, tehát az összeg nem lehetne nagyobb a fal-időnél; óraeltérés a feltételezett magyarázat, nem mért tény); az elfogadási feltétel szempontjából a nagyságrend számít.
 

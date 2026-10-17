@@ -7,8 +7,8 @@ fazis: 1
 modell: opus
 munka: folyamat
 allapot: nem_indult
-ad: a BDB-szeletelő a jelentést (és alpontot) használati csoportokra bontja a DT-F99b szerinti bevezetők mentén (angolul mindig, magyarul csak egyező jelölőszámnál), és a bevezetők kötelező magyar alakja a terminológiában a #38 adagjai közé kötve
-kovetkezo: Indítható a fugg szerint (a #76 és a #102 után); a terminológia-lista a ⛔ 3. pontnál a #38 következő adagjába kerül (DT-F99b (4))
+ad: a BDB-szeletelő a jelentést (és alpontot) használati csoportokra bontja a DT167 szerinti bevezetők mentén (angolul mindig, magyarul csak egyező jelölőszámnál), és a bevezetők kötelező magyar alakja a terminológiában a #38 adagjai közé kötve
+kovetkezo: Indítható a fugg szerint (a #76 és a #102 után); a terminológia-lista a ⛔ 3. pontnál a #38 következő adagjába kerül (DT167 (4))
 olvas: [eszkozok/olvaso_pilot/bdb_szelet_m0.py, adat/bdb_aranyminta.tsv, adat/forditasok.tsv, konkordancia/BDB_teljes_unabridged.tsv, naplok/BDB_SZELETELO_M0.md, F38_BDB_FORDITAS_BRIEF.md]
 ir: [eszkozok/olvaso_szerver/bdb_szelet.py, eszkozok/olvaso_szerver/teszt_bdb_vers_jelentes.py, adat/bdb_vers_jelentes.tsv, adat/SEMA.md]
 fugg: [99, 76, 102]
@@ -28,15 +28,15 @@ A szó-lap BDB-blokkjában a jelentésen belüli használati csoportok (pl. „a
 ## 2. Hatókör
 
 **Benne:**
-- A DT-F99b (1) (a) csoporthatár-szabálya az angol szövegen (mondatkezdő bevezető a listáról; a zárójeles harmadik szint).
-- Magyar szövegen bontás csak akkor, ha az adott jelentésben az angol és a magyar jelölők száma és sorrendje egyezik (DT-F99b (5) (a));
+- A DT167 (1) (a) csoporthatár-szabálya az angol szövegen (mondatkezdő bevezető a listáról; a zárójeles harmadik szint).
+- Magyar szövegen bontás csak akkor, ha az adott jelentésben az angol és a magyar jelölők száma és sorrendje egyezik (DT167 (5) (a));
   a le nem fordított szócikkeknél az angol tagolás látszik.
-- **Terminológia — a #38-kötés (DT-F99b (4), ELLENOR_F99 7.):** a DT-F99b (2) kötelező alakjai (followed by → „utána”, Inf. abs. as adverb →
+- **Terminológia — a #38-kötés (DT167 (4), ELLENOR_F99 7.):** a DT167 (2) kötelező alakjai (followed by → „utána”, Inf. abs. as adverb →
   „infinitivus absolutus határozószóként”, in phrase(s) → „kifejezésekben”, figurative → „átvitt értelemben”, opposed to → „ellentéte”,
   especially → „különösen”, absolute → „abszolút használatban”) az `adat/terminologia.tsv`-be, **a #38 (BDB_FORDITAS) következő adagja
-  előtt**, kapuval (DT-F99b (3) (a), az „abszolút használatban” kivételével); a kötést a `F38_BDB_FORDITAS_BRIEF.md`-ben és a
+  előtt**, kapuval (DT167 (3) (a), az „abszolút használatban” kivételével); a kötést a `F38_BDB_FORDITAS_BRIEF.md`-ben és a
   `dontes_hatas.tsv`-ben is rögzíteni kell (a #99 lezárása után ez a feladat viszi tovább, különben elárvul).
-- A kész 674 magyar szócikk: csak mérés és lista a régi alakokról (csere nincs; DT-F99b (5) (a)).
+- A kész 674 magyar szócikk: csak mérés és lista a régi alakokról (csere nincs; DT167 (5) (a)).
 - A vers → jelentés tábla csoport-szintű útvonala (SEMA 2.29 bővítése).
 
 **Nincs benne:** a megjelenítés („ebben a versben”, csoportsorok a lapon — a BDB_MEGJELENITES feladat), a szeletelő seed-101-es javításai
@@ -57,4 +57,4 @@ A szó-lap BDB-blokkjában a jelentésen belüli használati csoportok (pl. „a
 
 ## 5. Döntésnapló
 
-- (helyőrzők a futáskor; előzmény: DT-F99b)
+- (helyőrzők a futáskor; előzmény: DT167)

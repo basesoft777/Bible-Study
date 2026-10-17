@@ -23,7 +23,7 @@ Fejezetenként rendszeres eltolás (a TAHOT-találat nélküli sorok közül leg
 | atkulcsolt | 1Krón 12 | +1 | 78 | 98 |
 | azonos | 5Móz 5 | +3 | 54 | 74 |
 
-A `nincs_karoli` okkódú (Károli-megfelelő nélküli, DT-F99a (3) a) szűretlen sorok, a TAHOT szerint:
+A `nincs_karoli` okkódú (Károli-megfelelő nélküli, DT166 (3) a) szűretlen sorok, a TAHOT szerint:
 
 | eset | sor |
 |---|---:|

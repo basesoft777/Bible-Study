@@ -838,8 +838,8 @@ SZEREP_HIVATKOZAS = {
     ('gorog', 8): 'a motívum saját tokenjeihez nincs LSJ-sor a `lexikon_hivatkozasok.tsv`-ben; a rokon szavaknál (alább) és a kézi 2/b szakaszban l.',
     ('gorog', 9): 'l. az 1. szakasz táblázatát (UBS-jelentés oszlop; csak újszövetségi sorok)',
 }
-# A 7. szerep (SECE) adatosítva (F09 S2.4, DT-F09e); a kézi 2/b szakaszban álló SECE-táblázatok a #70-ig
-# (a 2/b átírása) érintetlenek, ezért a „l. 2/b” mutató kiegészítő sorként marad (DT-F09e).
+# A 7. szerep (SECE) adatosítva (F09 S2.4, DT189); a kézi 2/b szakaszban álló SECE-táblázatok a #70-ig
+# (a 2/b átírása) érintetlenek, ezért a „l. 2/b” mutató kiegészítő sorként marad (DT189).
 SZEREP_KEZI_2B = {
     ('gorog', 7): 'a kézi SECE-táblázatok a 2/b szakaszban a #70-ig változatlanul állnak (l. 2/b), ha van',
     ('heber', 7): 'a kézi SECE-táblázatok a 2/b szakaszban a #70-ig változatlanul állnak (l. 2/b), ha van',
@@ -905,8 +905,8 @@ def _token_mutato_blokk(szerep, token, mutato):
 
 def _tartalom_heber_tbesh(nyelv, n, tokenek_ny, reszek, ctx):
     """Héber 1. szerep (Alapjelentés): TBESH. Sorrend tokenenként: (1) kijelölt mutató (H7121: BDB 2.c,
-    DT-F42a; a TEREMT-002 tokenjei: #12b, DT-F09c); (2) a `lexikon_hivatkozasok.tsv` TBESH-sora (bekötött
-    szó szerinti kivonat, F6.3-minta, DT-F09c); (3) a konszolidált tábla sorai; (4) `a forrás nem tárgyalja`."""
+    DT-F42a; a TEREMT-002 tokenjei: #12b, DT187); (2) a `lexikon_hivatkozasok.tsv` TBESH-sora (bekötött
+    szó szerinti kivonat, F6.3-minta, DT187); (3) a konszolidált tábla sorai; (4) `a forrás nem tárgyalja`."""
     out = []
     for t in tokenek_ny:
         mutato = SZEREP_TOKEN_MUTATO.get((nyelv, n, t))
@@ -1445,10 +1445,10 @@ def _szerep_tartalom(nyelv, n, tokenek_ny, reszek, ctx):
 
 
 # DT-F78d (lezárva): a TBESH (CC BY 4.0, DT-F33f) a héber 1. szerep forrása marad, `adatosítva`; a DT-F42a csak a
-# H7121 „részlet” sorát váltotta ki BDB-vel. F09 (DT-F09c): a TEREMT-002 két tokenének (H8414, H0922) szótári
+# H7121 „részlet” sorát váltotta ki BDB-vel. F09 (DT187): a TEREMT-002 két tokenének (H8414, H0922) szótári
 # bekötése a #12b dolga; a render ezeken a helyeken a mutatót adja, adatsort a #9 nem ír.
 # Tokenenkénti mutató az üres blokkon.
-_TEREMT002_MUTATO = 'a TEREMT-002 szótári bekötése a #12b dolga (DT-F09c)'
+_TEREMT002_MUTATO = 'a TEREMT-002 szótári bekötése a #12b dolga (DT187)'
 SZEREP_TOKEN_MUTATO = {
     ('heber', 1, 'H7121'): 'a H7121 alapjelentését a BDB 2.c adja (DT-F42a)',
     ('heber', 1, 'H8414'): _TEREMT002_MUTATO,

@@ -34,7 +34,7 @@ Ha a 2. lépés elmarad, a szerver a régi adatot mutatja, és erre semmi nem fi
 ## 2. Cél
 
 - **Észlelés:** az indító és a lábléc tudja, ha a `pardes.db` régebbi a forrásainál (az `sqlite_epit.py` által olvasott `adat/` és `konkordancia/` fájlok).
-- **Automatikus újraépítés:** ha a források újabbak, az indító (parancsikon vagy bejelentkezéskori ütemezett feladat, #100 DT-F100b) újraépít, és csak siker után cseréli az adatbázist; a szerver közben a régi, ép adatbázissal indul vagy fut tovább, nem vár percekig.
+- **Automatikus újraépítés:** ha a források újabbak, az indító (parancsikon vagy bejelentkezéskori ütemezett feladat, #100 DT161) újraépít, és csak siker után cseréli az adatbázist; a szerver közben a régi, ép adatbázissal indul vagy fut tovább, nem vár percekig.
 - **Hiba esetén:** az integritás-ellenőrzés bukásakor marad a régi adatbázis, a lábléc kiírja, hogy az újraépítés elbukott és hol a napló.
 - **Kézi lehetőség:** negyedik asztali parancsikon „PaRDeS adatbázis újraépítése”.
 

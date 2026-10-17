@@ -1,8 +1,8 @@
-# ELLENŐR — F99_BDB_SZELETELO_BRIEF.md, aranyminta (szűkített feladat, DT-F99e (b))
+# ELLENŐR — F99_BDB_SZELETELO_BRIEF.md, aranyminta (szűkített feladat, DT170 (b))
 
 *A `fuggetlen-ellenor` subagent jelentése; fájlba mentette az orkesztrátor (az ellenőrnek nincs író eszköze). Tartomány: `main`..`claude/bdb-szeletelo` (efa31894). Tényleges ellenőr-modell: `claude-opus-5-5`.*
 
-**Hatókör:** csak az `adat/bdb_aranyminta.tsv` 32 szócikke (622 sor: 32 szócikk + 151 csoport + 439 egyéb) összevetve a forrással (`konkordancia/BDB_teljes_unabridged.tsv`; magyarul 14 szócikknél az `adat/forditasok.tsv` utolsó nem üres BDB-sora). Szabály: a DT-F99b (1)(a) eldöntött listája (a minta ennél szigorúbb, korábbi listán készült). Mind a 622 sor `modell_ellenorizetlen`. Egyik forrásfájl sem változott az ágon. Az ellenőr egyszeri szabályszegése: egy `grep` láncot futtatott (csak olvasott).
+**Hatókör:** csak az `adat/bdb_aranyminta.tsv` 32 szócikke (622 sor: 32 szócikk + 151 csoport + 439 egyéb) összevetve a forrással (`konkordancia/BDB_teljes_unabridged.tsv`; magyarul 14 szócikknél az `adat/forditasok.tsv` utolsó nem üres BDB-sora). Szabály: a DT167 (1)(a) eldöntött listája (a minta ennél szigorúbb, korábbi listán készült). Mind a 622 sor `modell_ellenorizetlen`. Egyik forrásfájl sem változott az ágon. Az ellenőr egyszeri szabályszegése: egy `grep` láncot futtatott (csak olvasott).
 
 ## Eltérések (11)
 
@@ -15,7 +15,7 @@
 | E5 | H0430 3. jelentés | 388 | BDB 401 | „(a) angel / (b) prophet” zárójeles szint, csoportsor nincs (alacsony súly). |
 | E6 | H6440 II/7/a (ε) | 319–323 | BDB 6022, HU 111 | Az ötödik tag („with verbs implying direction”) csoportsor nélkül. |
 | E7 | H6440 II/1/a | 267 | BDB 6022 | „with יָצָא” mondatkezdő, csoportsor nincs (alacsony). |
-| E8 | H2490 III Hiph'il/2 | 600 | BDB 2336, HU 387 | 4 mondatkezdő „with …” bevezető (Infinitive, ו consecutive, בְּ, מן) → 4 csoport hiányzik (a DT-F99b eldöntött listájának következménye). |
+| E8 | H2490 III Hiph'il/2 | 600 | BDB 2336, HU 387 | 4 mondatkezdő „with …” bevezető (Infinitive, ו consecutive, בְּ, מן) → 4 csoport hiányzik (a DT167 eldöntött listájának következménye). |
 | E9 | H1157 2. jelentés | 607 | BDB 1082 | „with כִּמֶּר” és „With לְ…” mondatkezdő with + héber, csoportsor egyikhez sincs. |
 | E10 | H7307 4/d | 358 | BDB 6834, HU 214 | „; especially 104:29” csoportsor nélkül (alacsony). |
 | E11 | H7121 4/a | 414–415 | BDB 6660 | „; with acc of roll, book” rövidített „with accusative”, csak a másik csoport rögzítve (alacsony, vitatható). |
@@ -37,7 +37,7 @@ Közös mintázat (E1, E2, E4): az OCR-torzult jelölőket (`-1`, `-2`, `3as`, `
 | H1242 בֹּקֶר | 121–136 | OK; bizonytalan: B2 |
 | H0776 אֶרֶץ | 137–161 | OK (a 4. jelentés címében a héber sorrendje fordított a forrásban; héber nélkül egyezik) |
 | H7451 רַע | 162–191 | OK |
-| H3615 כָּלָה | 192–228 | OK (a Pi'el/1/d/+2 a DT-F99b szerint rendben) |
+| H3615 כָּלָה | 192–228 | OK (a Pi'el/1/d/+2 a DT167 szerint rendben) |
 | H0559 אָמַר | 229–248 | OK; pontatlan megjegyzés: B5 (234) |
 | H6440 פָּנֶה | 249–327 | ELTÉRÉS: E6, E7 |
 | H7307 רוּחַ | 328–374 | ELTÉRÉS: E10 |

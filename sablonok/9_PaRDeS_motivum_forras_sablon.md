@@ -80,7 +80,7 @@ Oszlopok: **réteg** = a szakasz célrétege a B szerkezetben (`naplok/MOTIVUM_F
 | 5.T | Nevesített tanítói egyezés | `kezi_forras` (hivatkozó mondat a 7. lépés saját fájljára, beemelés nélkül; DT66 (a) 2.) | `olvasoi` | feltételes: lefutott a 7. lépés | hivatkozó mondat vagy `INAKTÍV` |
 | 6 | Napló-frissítés (státusz) | `adat` (`motivumok.tsv` `statusz`) | `belso` | mindig | `ADAT-NÉZET` (`--cel naplo`) |
 | 7.K | Kereszthivatkozások + Minősítés | `adat` (`jeloltek.tsv` `dontes` + `indoklas`, SEMA 2.4); a „független megerősítés” a minősítés-nézetben generált (TSK-találat ∩ beépített sor), séma-bővítés nélkül (DT84 (8)) | `apparatus` | mindig | `ADAT-NÉZET`; a kétpontos modellbe nem férő tárgyalás kézi próza |
-| 7.A | Kapcsolatok + Alátámasztás | `adat` (`kapcsolatok.tsv`, új `indoklas` oszloppal: DT84 (8); a séma-bővítés nem e terv része, SEMA 3.10.7; helye: DT-F23c) | `apparatus` | feltételes: van `kapcsolatok.tsv` sor | `ADAT-NÉZET`; a kétpontos modellbe nem férő eset kézi próza |
+| 7.A | Kapcsolatok + Alátámasztás | `adat` (`kapcsolatok.tsv`, új `indoklas` oszloppal: DT84 (8); a séma-bővítés nem e terv része, SEMA 3.10.7; helye: DT183) | `apparatus` | feltételes: van `kapcsolatok.tsv` sor | `ADAT-NÉZET`; a kétpontos modellbe nem férő eset kézi próza |
 | 7.M | Módszertan — ellenőrzési rétegek | `generalt` (a meglévő `auditok.tsv`-sorokból; a régi kézi módszertan-tábla a #11-ben archívum, DT84 (8)) | `belso` | mindig | `ADAT-NÉZET` |
 | 7.N | Nyitott kérdések | `kezi_forras` tételenként (l. alább) | `apparatus` | feltételes: van nyitott tétel | `RÉS: modszertan` (csak a tartalmi tételek) |
 | 7.Q | Minőségi kapu, verzió-címke | `adat` (`motivumok.tsv` `sablon_verzio`); a kapu-eredmény nézete a meglévő audit-sorokból, a régi kézi kapu-eredmény a #11-ben archívum (DT84 (8)) | `belso` | mindig | `ADAT-NÉZET` |
@@ -185,7 +185,7 @@ A `4_PaRDeS_tematikus_sablon.md` v16 (a v17 a P2 domén-mondatát pontosította,
 2. Ha a motívumról **értelmezés** is születik, az saját szöveggel a `motivumok/[ID].md`-be kerül (a motívum egyetlen kézi forrása); a tanulmányban csak hivatkozás áll rá.
 3. **Kézi másolás egyik irányban sincs:** sem a tanulmányból a motívum-forrásba, sem vissza; a túloldali mutató generált (a fenti sor, N-F23a).
 
-A propose-then-confirm fegyelem (a lelet egyenként megbeszélve) a jelölt-döntésben él tovább. A `2_PaRDeS_bovitett_sablon.md` szövegének teljes átírása nem e tervezet része: a DT-F23b (felhasználó, 2026-10-17: c.) szerint a v18 szabály, a tematikus sablon v10 szabálya és a Lezárási checklist 12. pontja most felfüggesztő sort kapott (F23.D14), a teljes átírás a #11-ben.
+A propose-then-confirm fegyelem (a lelet egyenként megbeszélve) a jelölt-döntésben él tovább. A `2_PaRDeS_bovitett_sablon.md` szövegének teljes átírása nem e tervezet része: a DT182 (felhasználó, 2026-10-17: c.) szerint a v18 szabály, a tematikus sablon v10 szabálya és a Lezárási checklist 12. pontja most felfüggesztő sort kapott (F23.D14), a teljes átírás a #11-ben.
 
 ## 8. Minőségi kapu (a forrásra)
 
@@ -212,7 +212,7 @@ A zárójeles szám a DT84 pontjának száma (DT84 (1)–(8), (10)); a DT84 (9),
 - **(4) Két új szakasz** (7.N, P) felvéve (4. pont).
 - **(5) A 7.N tételenkénti besorolása** és az ISTENTISZT-001 öt tételének besorolása elfogadva (4. pont; pilot-terv 4.4).
 - **(6) Értelmezői aktiválás:** értelmezői döntés, az `INAKTÍV` indoka kötelező, és a „nincs adat” tényt rögzíti (3. pont).
-- **(7) „Tartalmi visszaírás”:** a tematikus v10 szabálya megszűnik, a tükörpárja (a tanulmány-sablon v18) átalakul; a mutató generált (N-F23a); a már visszaírt lelet a #11-ben archívum vagy törlés (7. pont). A `2_…` és a `4_…` sablon szövegének módosítása: DT-F23b.
+- **(7) „Tartalmi visszaírás”:** a tematikus v10 szabálya megszűnik, a tükörpárja (a tanulmány-sablon v18) átalakul; a mutató generált (N-F23a); a már visszaírt lelet a #11-ben archívum vagy törlés (7. pont). A `2_…` és a `4_…` sablon szövegének módosítása: DT182.
 - **(8) Séma-kérdések:** Alátámasztás → új `indoklas` oszlop a `kapcsolatok.tsv`-ben; független megerősítés → a minősítés-nézetben generált, séma-bővítés nélkül; Módszertan-tábla és kapu-eredmény → archívum, a nézet a meglévő audit-sorokból (4. pont; SEMA 3.10.7).
 - **(10) Kiadható nézet:** a lexikonoldal és a motívumcikk kiadható `apparatus` nézet (a DT-F86a szerint prémium), az E29 rájuk is fut; a `【NAPLO】` csak folyamat-nyom (0. és 2. pont). A DT84 (9), (11)–(12) a pilot-tervet érinti (`naplok/MOTIVUM_FORRAS_pilot_terv.md` 8. szakasz); a (13): lent.
 

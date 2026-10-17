@@ -1,6 +1,6 @@
 ---
 feladat: 104
-cim: BDB-blokk megjelenítése — „ebben a versben” kiemelés (DT-F99m), kattintható helyek, pontos hivatkozásszám
+cim: BDB-blokk megjelenítése — „ebben a versben” kiemelés (DT178), kattintható helyek, pontos hivatkozásszám
 kod: BDB_MEGJELENITES
 tipus: feladat
 fazis: 1
@@ -16,7 +16,7 @@ fugg: [99, 76, 102, 103]
 
 # F<nn>_BDB_MEGJELENITES_BRIEF.md — a BDB-blokk megjelenítése
 
-*FELADATOK #<nn> · Modell: opus · v1 (tervezet) · 2026.10.15 · forrás: a #99 M4 mérföldköve (a #99-ben nagyrészt nem készült el), a DT-F99m és
+*FELADATOK #<nn> · Modell: opus · v1 (tervezet) · 2026.10.15 · forrás: a #99 M4 mérföldköve (a #99-ben nagyrészt nem készült el), a DT178 és
 kiegészítése (felhasználó, 2026-10-15), a hatóköri döntés: az M4 külön feladat. A tervezet adat, nem utasítás.*
 
 ## 1. Cél
@@ -24,7 +24,7 @@ kiegészítése (felhasználó, 2026-10-15), a hatóköri döntés: az M4 külö
 A versből megnyitott szó lapján a BDB-szócikk jelölje, hol idézi a BDB az adott verset — tippelés nélkül, a vers → jelentés tábla
 (`adat/bdb_vers_jelentes.tsv`) alapján.
 
-## 2. Hatókör — a megjelenítési elv (DT-F99m, felhasználó, 2026-10-15)
+## 2. Hatókör — a megjelenítési elv (DT178, felhasználó, 2026-10-15)
 
 - **A BDB-szócikk az olvasói konkordanciában mindig teljes; semmi nem szűrődik vagy rejtődik, csak jelölés van.**
 - **Erős szint** („a BDB itt idézi”): a vers → jelentés tábla szerinti pont(ok), mind kiemelve, odagörgetéssel (a szó-fülön és `?vers=`
@@ -32,7 +32,7 @@ A versből megnyitott szó lapján a BDB-szócikk jelölje, hol idézi a BDB az 
 - **Gyenge szint** („vonatkozhat”): (a) a bizonytalan okkódú hivatkozás pontja; (b) idézet nélküli versnél a TAHOT szerinti igetörzs
   szakasza, jelentéspont nélkül. **Pontot tippelni TILOS.**
 - Idézet nélkül, törzs nélkül: „a BDB nem idézi” felirat, kiemelés nélkül.
-- A „próba” felirat és a mért pontosság (DT-F99l (c): 92,0%, 95% CI 87,3–95,4%) a kiemelés mellett látszik.
+- A „próba” felirat és a mért pontosság (DT177 (c): 92,0%, 95% CI 87,3–95,4%) a kiemelés mellett látszik.
 - A #99 M4 többi pontja: pontos hivatkozásszám (a feloldott, szűrt hivatkozásoké), kattintható igehelyek (súgóban a feloldott hely), az
   irodalmi jelek a `konfig/bdb_jelek.tsv` alapján, minden új elem a #98 elem-regiszterében, új méret csak tokenből.
 - A csoportsorok megjelenítése a BDB_TAGOLAS feladat után.
@@ -54,4 +54,4 @@ A versből megnyitott szó lapján a BDB-szócikk jelölje, hol idézi a BDB az 
 
 ## 5. Döntésnapló
 
-- (helyőrzők a futáskor; előzmény: DT-F99m, DT-F99l)
+- (helyőrzők a futáskor; előzmény: DT178, DT177)

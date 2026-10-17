@@ -12,7 +12,7 @@ A tokeneket az `elofordulasok.tsv` `strong` oszlopából a `+` és a `;` mentén
 - **G: 13** — G0012, G0086, G0282, G0813, G1311, G1941, G1944, G2671, G4151, G5010, G5351, G5356, G5590
 - A 9. motívum (TEREMT-002, nem a 8 része): H0922, H8414.
 
-Az F05 §0 0.4 sorához (H 26, G 13, ebből 2 H a TEREMT-002-é, D29) képest: **H 24 + 2 = 26, G 13 — egyezik**. Token nem esett ki, új nem jött, a G-halmaz változatlan: a megállási feltétel nem teljesült. A hatókör: a fenti 24 H + 13 G token (K13d); a H8414/H0922 csak a kiejtés-sor kivétele (DT-F09d).
+Az F05 §0 0.4 sorához (H 26, G 13, ebből 2 H a TEREMT-002-é, D29) képest: **H 24 + 2 = 26, G 13 — egyezik**. Token nem esett ki, új nem jött, a G-halmaz változatlan: a megállási feltétel nem teljesült. A hatókör: a fenti 24 H + 13 G token (K13d); a H8414/H0922 csak a kiejtés-sor kivétele (DT188).
 
 ## 2. Kiejtés-kivételek, KIEJT (S0.2/2)
 

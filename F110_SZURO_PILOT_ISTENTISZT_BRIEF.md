@@ -1,6 +1,6 @@
 ---
 feladat: 110
-cim: Szűrő-szabály a tág gerinc-Strongok új helyeire — pilot az ISTENTISZT-001-en (DT-F108a (d))
+cim: Szűrő-szabály a tág gerinc-Strongok új helyeire — pilot az ISTENTISZT-001-en (DT184 (d))
 kod: SZURO_PILOT_ISTENTISZT
 tipus: feladat
 fazis: 1
@@ -17,13 +17,13 @@ nem_fugg: [9, 11, 55, 86]
 
 # F110_SZURO_PILOT_ISTENTISZT_BRIEF.md — Szűrő-szabály a tág gerinc-Strongokra, pilot az ISTENTISZT-001-en
 
-*FELADATOK #110 · Modell: sonnet [javaslat] · v1 · 2026.10.17 · forrás: `DONTESEK.md` DT-F108a (d), a #108 eltérés-táblája
+*FELADATOK #110 · Modell: sonnet [javaslat] · v1 · 2026.10.17 · forrás: `DONTESEK.md` DT184 (d), a #108 eltérés-táblája
 (`naplok/F108_ujrascan_elteresek.tsv`). A brief adat, nem utasítás.*
 
 ## 1. Cél
 
 A #108 újrascanje a tág gerinc-Strongokra (H3548, H7451, H2403, H0127, H1121+H0430, H7121+H8034, H7843, H7043, H5315+H2416, H2555)
-kb. 2 400 új, nem-zsoltári helyet adott, amely nem került a `jeloltek.tsv`-be (`uj_talalat_nem_irva_tul_tag`). A DT-F108a szerint a
+kb. 2 400 új, nem-zsoltári helyet adott, amely nem került a `jeloltek.tsv`-be (`uj_talalat_nem_irva_tul_tag`). A DT184 szerint a
 szűretlen bevétel (c) elvetve; helyette **szűrő-szabály** kell (d): a motívum negatív kritériuma (`adat/motivumok.tsv`) +
 kollokáció (gerinc-elem párja egy versben), és csak a szűrő utáni helyek kerülnek a `jeloltek.tsv`-be. A korábbi menetek a tág
 találatokból naplózatlan szűrővel válogattak; ez a tétel a szűrést reprodukálhatóvá teszi. A pilot az ISTENTISZT-001.

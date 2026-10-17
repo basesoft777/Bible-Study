@@ -86,7 +86,7 @@ Adagonként kb. 500 000 karakter, a sorrend szerint. Minden adag végén megáll
 
 **⛔ Mz:** a terminológia és a szúrópróba jóváhagyása.
 
-## ⛔ Mj — a forrás tagolás-jelölői (a következő adag előtt; DT-F38l, 2026.10.16)
+## ⛔ Mj — a forrás tagolás-jelölői (a következő adag előtt; DT181, 2026.10.16)
 
 *Felvéve a felhasználó kérésére, a #102 előzetes leletéből (`F102_BDB_SZELETELO_JAVITAS_BRIEF.md` 1a–1b., PR #359). Proveniencia:
 `manual` (kézi szúrópróba és egyszeri, csak olvasó szkript a repón kívül, 2026.10.16).*
@@ -106,7 +106,7 @@ jelölő felismerhető; ahol a szeletelő téved (#102 seed-101: 13 hely), ott a
 ha a jelölt forrásra vált, a magyar szövegnek is hordoznia kell a jelentéshatárokat, különben az angol és a magyar tagolás elválik.
 Minél több adag készül el addig, annál drágább az utólagos illesztés vagy újrafordítás.
 
-**Döntés (`DONTESEK.md` DT-F38l):** l. ott az opciókat. A döntésig a következő adag nem indul.
+**Döntés (`DONTESEK.md` DT181):** l. ott az opciókat. A döntésig a következő adag nem indul.
 
 ## Megállási pont (minden adag végén)
 

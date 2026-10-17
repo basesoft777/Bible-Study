@@ -28,7 +28,7 @@ ELTÉRÉS: 2 tétel
 | Lista 2: kulcstartomány | OK / részben NEM ELLENŐRIZHETŐ | – | A lista nem változott: 16 görög és 46 héber alapszám. A halmaz teljessége `pardes.db` nélkül nem ellenőrizhető. |
 | Lista 3: nulla-diff | OK | – | Lásd a G1-sort. |
 | Lista 4: E17 tábla-Δ | OK | – | Az `adat/` és a `konkordancia/` alatt egyetlen `.tsv` sem változott, sem a tartományban, sem a main-hez képest: minden tábla Δ = 0. A `naplok/F93_alapszamok.tsv` a tartományban Δ = 0. A main-hez képest +62 adatsor (+63 a fejléccel). Ez nem `adat/`/`konkordancia/` tábla, ezért az E17 nem vonatkozik rá. Bontási napló nem kell. |
-| Lista 5: ⛔ pontok | OK | brief 60, 75-76, 95 | A ⛔ pontok (DT-F93a, M0 mérés) korábbi körökben teljesültek. Ez a commit új döntést, végleges DT- vagy N-számot nem hoz. Merge és push nem történt. Az állapot `megallt`. |
+| Lista 5: ⛔ pontok | OK | brief 60, 75-76, 95 | A ⛔ pontok (DT162, M0 mérés) korábbi körökben teljesültek. Ez a commit új döntést, végleges DT- vagy N-számot nem hoz. Merge és push nem történt. Az állapot `megallt`. |
 
 ELTÉRÉS-ek súlyosság szerint:
 1. `naplok/F93_jelentes.md:3, 110` (enyhe). A fejléc és az ellenőrzési sor szerint a 3. kör „még nem futott” és „hátra van”. Valójában lefutott (1 eltérés), és az ef55c97a javította. A jelentés nem követte a menet állását.

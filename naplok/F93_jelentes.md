@@ -1,10 +1,10 @@
 # F93 jelentés — a TIPNR token nélküli alapszámai
 
-*FELADATOK #93 · Modell: claude-sonnet-5-5 · állapot: lezárva · döntések: DT-F93a–d · nyitott tételek: N-F93a–c · lista: `naplok/F93_alapszamok.tsv` · szkript: `eszkozok/f93_tipnr_token_hiany.py`*
+*FELADATOK #93 · Modell: claude-sonnet-5-5 · állapot: lezárva · döntések: DT162–d · nyitott tételek: N-F93a–c · lista: `naplok/F93_alapszamok.tsv` · szkript: `eszkozok/f93_tipnr_token_hiany.py`*
 
 ## 1. Eredmény
 
-A `pardes.db` `tipnr` tábla 35 522 sorából 89 sor `strong` értéke nem szerepel a `token_strong`-ban; ebből 1 a #88 levágott utótagos sora (`G6202`, az F88 jelentésében jelölve), **88 utótag nélküli sor, 62 különböző alapszám**. Mind a 62 alapszám pontosan egy osztályt kapott (a lista 62 sor, a mögötte álló TIPNR-sorok száma 88). A jelölés (DT-F93a (a)) csak a listában és ebben a jelentésben áll: sem a TIPNR/TAGNT/TAHOT, sem a `pardes.db`, sem a kód nem változott.
+A `pardes.db` `tipnr` tábla 35 522 sorából 89 sor `strong` értéke nem szerepel a `token_strong`-ban; ebből 1 a #88 levágott utótagos sora (`G6202`, az F88 jelentésében jelölve), **88 utótag nélküli sor, 62 különböző alapszám**. Mind a 62 alapszám pontosan egy osztályt kapott (a lista 62 sor, a mögötte álló TIPNR-sorok száma 88). A jelölés (DT162 (a)) csak a listában és ebben a jelentésben áll: sem a TIPNR/TAGNT/TAHOT, sem a `pardes.db`, sem a kód nem változott.
 `proveniencia: scope=tipnr(utótag nélkül) ∖ token_strong; token_eredeti (TAGNT/TAHOT) | forras=pardes.db (tipnr, token_strong, token_eredeti, meta; epites_ts=2026-10-14T09:35:00Z), konkordancia/Karoli_1908.tsv, konkordancia/Karoli_versmegfeleltetes.tsv | ts=2026-10-14T09:35:00Z` (a `ts` az adatállapot időpontja, l. az M1 szakaszt)
 
 ### Osztályonkénti darabszám (alapszám / TIPNR-sor; egyezik a listával)
@@ -31,7 +31,7 @@ Az alapszámok osztályonként:
 - nem eldönthető, görög (2): G3496, G3535
 - nem eldönthető, héber (15): H0071, H1006, H1023, H1181, H2072, H3108, H3274, H3328, H3889, H4319, H7864, H8053, H8073, H8351, H8445
 
-Az osztályok: **szövegváltozat** (csak görög: a névhez illő token `Kritikai kiadás` mezője a TR-t nem tartalmazza; jelölés nélkül csak egyező glosszával, DT-F93c); **alak-/névhasítás** (nincs kiadás-/fordítás-jelölés, a versen a névhez illő token megvan, a TIPNR a névalaknak külön Strong-számot ad); **fordítási névalak** (csak héber: csak ESV/KJV/NIV/ASV jelölés, a versen a névhez illő token vagy tokensor áll); **ketiv/qere** (LK/LQ/Mss jelölés, ha a TAHOT a versen ketiv/qere-jelölést hordoz); **adathiány** (nincs jelölés, és a versen nincs a névhez illő token); **nincs Károli-vers** (`LXX.*` hely, vagy nem létező Károli-vers, N-F79b); **nem eldönthető** (a repó adatából nem dönthető el; explicit jelölve, nem kitöltve). A „névhez illő token” szigorú: TIPNR-azonosság, glossz-egyezés, vagy egymást követő tokenek glosszáinak együttes egyenlősége a névalakkal (az M1 szakasz). A számozási eltérés és az adathiány osztály üres.
+Az osztályok: **szövegváltozat** (csak görög: a névhez illő token `Kritikai kiadás` mezője a TR-t nem tartalmazza; jelölés nélkül csak egyező glosszával, DT164); **alak-/névhasítás** (nincs kiadás-/fordítás-jelölés, a versen a névhez illő token megvan, a TIPNR a névalaknak külön Strong-számot ad); **fordítási névalak** (csak héber: csak ESV/KJV/NIV/ASV jelölés, a versen a névhez illő token vagy tokensor áll); **ketiv/qere** (LK/LQ/Mss jelölés, ha a TAHOT a versen ketiv/qere-jelölést hordoz); **adathiány** (nincs jelölés, és a versen nincs a névhez illő token); **nincs Károli-vers** (`LXX.*` hely, vagy nem létező Károli-vers, N-F79b); **nem eldönthető** (a repó adatából nem dönthető el; explicit jelölve, nem kitöltve). A „névhez illő token” szigorú: TIPNR-azonosság, glossz-egyezés, vagy egymást követő tokenek glosszáinak együttes egyenlősége a névalakkal (az M1 szakasz). A számozási eltérés és az adathiány osztály üres.
 
 ### A „nem eldönthető” alapszámok teljes listája (17 alapszám: 2 görög + 15 héber)
 
@@ -58,7 +58,7 @@ Az osztályok: **szövegváltozat** (csak görög: a névhez illő token `Kritik
 - `H1023` (Beth-merhak, héber) — 2Sám 15:17
 - `H1181` (Bamoth-baal, héber) — 4Móz 21:28
 
-(2b) jelölés nélkül csak névcímke-alapú társ van, amelynek glosszája nem egyezik a névalakkal (DT-F93c) — 1 alapszám:
+(2b) jelölés nélkül csak névcímke-alapú társ van, amelynek glosszája nem egyezik a névalakkal (DT164) — 1 alapszám:
 
 - `G3535` (Nineveh, görög) — Luk 11:32
 
@@ -76,24 +76,24 @@ A TIPNR a `Sng.6.12`-re mutat (`Én 6:12`). A `konkordancia/Karoli_1908.tsv`-ben
 
 ## 2. Egyeztetett eltérés
 
-A brief a hatókört „62 token nélküli *görög* alapszám”-ként írta le. Az M0 mérése szerint a 62 alapszám 88 sora nem mind görög: 16 görög alapszám (23 sor; ebből 5 alapszám / 9 sor `LXX.*`, igehely nélkül) és 46 héber (65 sor, a TAHOT-oldalon hiányzó alapszámok). Az egyeztetett (felhasználói, 2026-10-15, chat) hatókör a DT-F93a (iii) szerint **mind a 62 alapszám** (a görög a TAGNT-ből, a héber a TAHOT-ból). Ezzel járó eltérések a briefhez képest:
+A brief a hatókört „62 token nélküli *görög* alapszám”-ként írta le. Az M0 mérése szerint a 62 alapszám 88 sora nem mind görög: 16 görög alapszám (23 sor; ebből 5 alapszám / 9 sor `LXX.*`, igehely nélkül) és 46 héber (65 sor, a TAHOT-oldalon hiányzó alapszámok). Az egyeztetett (felhasználói, 2026-10-15, chat) hatókör a DT162 (iii) szerint **mind a 62 alapszám** (a görög a TAGNT-ből, a héber a TAHOT-ból). Ezzel járó eltérések a briefhez képest:
 
 - az osztálylista a brief négy osztályáról (szövegváltozat / számozási eltérés / adathiány / nem eldönthető) bővült: **alak-/névhasítás**, **nincs Károli-vers**, **fordítási névalak**, **ketiv/qere**; a „számozási eltérés” osztály megmaradt, de üres (0 alapszám);
-- a **héber „szövegváltozat” osztály megszűnt** (DT-F93b): a TAHOT-nak nincs `Kritikai kiadás` mezője, így a brief definíciója héberre nem teljesülhet; a G3 (a TAGNT-oldali Strong-szám és a `Kritikai kiadás` mező megnevezése) csak a görög „szövegváltozat” sorokra vonatkozik;
-- az `ir` mezőből kikerült az `eszkozok/sqlite_epit.py`, az `eszkozok/teszt_sqlite_epit.py` és az `adat/SEMA.md`, mert a DT-F93a (a) szerint a #93 nem ír a `pardes.db`-be (a brief 3. pontjának M2 (a) ága); a G5 emiatt nem alkalmazható;
+- a **héber „szövegváltozat” osztály megszűnt** (DT163): a TAHOT-nak nincs `Kritikai kiadás` mezője, így a brief definíciója héberre nem teljesülhet; a G3 (a TAGNT-oldali Strong-szám és a `Kritikai kiadás` mező megnevezése) csak a görög „szövegváltozat” sorokra vonatkozik;
+- az `ir` mezőből kikerült az `eszkozok/sqlite_epit.py`, az `eszkozok/teszt_sqlite_epit.py` és az `adat/SEMA.md`, mert a DT162 (a) szerint a #93 nem ír a `pardes.db`-be (a brief 3. pontjának M2 (a) ága); a G5 emiatt nem alkalmazható;
 - az `olvas` mezőbe bekerült a `konkordancia/TAHOT_kivonat.tsv` (a héber alapszámok forrása);
 - a névegyeztetés nem csak a TIPNR névcímkén, hanem a token glosszáján is múlik (M1), és a „gyenge társ” szabály mindkét nyelvre egységes.
 - **több tokenre bontott nevek (ELLENOR_F93):** a névegyeztetés a versen egymást követő tokenek glosszáinak szigorú, együttes egyenlőségét is elfogadja a névvel vagy a Névváltozat névalakjával (pl. `Nea`+`Polis` = Neapolis); asszociatív vagy jelentésbeli egyezés nem elég;
 - a **„nincs Károli-vers”** osztály a brief szerinti kizáráshoz igazodva a nem létező Károli-versre mutató sort (H5993, `Én 6:12`) is magában foglalja (N-F79b, DT114); az `olvas` mező ezért a `Karoli_1908.tsv`-vel és a `Karoli_versmegfeleltetes.tsv`-vel bővült;
 - a **proveniencia** `forras` mezője csak a szkript által olvasott forrásokat sorolja (a `pardes.db` táblái és a két Károli-fájl); a `pardes.db` tábláit a TIPNR-, TAGNT- és TAHOT-kivonatból építi az `eszkozok/sqlite_epit.py`, de azokat a #93 szkriptje közvetlenül nem olvassa;
-- **jelölés nélküli görög szövegváltozat (DT-F93c):** a brief szerint a szövegváltozathoz kiadás-jelölés kell a `Névváltozat`-ban; jelölés nélkül akkor lehet szövegváltozat, ha a versen álló token glosszája egyezik a névvel, és a token `Kritikai kiadás` mezője nem tartalmazza a TR-t (így a G2179); nem egyező glosszával „nem eldönthető” (G3535).
+- **jelölés nélküli görög szövegváltozat (DT164):** a brief szerint a szövegváltozathoz kiadás-jelölés kell a `Névváltozat`-ban; jelölés nélkül akkor lehet szövegváltozat, ha a versen álló token glosszája egyezik a névvel, és a token `Kritikai kiadás` mezője nem tartalmazza a TR-t (így a G2179); nem egyező glosszával „nem eldönthető” (G3535).
 
 ## 3. Döntések és nyitott tételek
 
-- **DT-F93a** (🟢, a felhasználó döntése, 2026-10-15, chat): (1) a jelölés csak a `naplok/F93_alapszamok.tsv`-ben és a jelentésben áll; (2) hatókör (iii): mind a 62 alapszám, az osztálylista kiegészítésével.
-- **DT-F93b** (🟢, a felhasználó döntése, 2026-10-15, chat): a héber „szövegváltozat” osztály megszűnik; „fordítási névalak” és „ketiv/qere” osztály.
-- **DT-F93c** (🟢, a felhasználó döntése, 2026-10-15, chat): jelölés nélküli görög szövegváltozat csak egyező glosszájú, a TR-t nem tartalmazó kiadás-mezejű tokennel lehet (G2179); nem egyező glosszával „nem eldönthető” (G3535).
-- **DT-F93d** (🟢, a felhasználó döntése, 2026-10-15, chat): a proveniencia `ts` mezője a `pardes.db` `meta.epites_ts` értéke (az adatállapot időpontja), nem a futásé; a szkript rögzített adatállapotot olvas, és a G4 (bájtazonos futás) ezt kívánja.
+- **DT162** (🟢, a felhasználó döntése, 2026-10-15, chat): (1) a jelölés csak a `naplok/F93_alapszamok.tsv`-ben és a jelentésben áll; (2) hatókör (iii): mind a 62 alapszám, az osztálylista kiegészítésével.
+- **DT163** (🟢, a felhasználó döntése, 2026-10-15, chat): a héber „szövegváltozat” osztály megszűnik; „fordítási névalak” és „ketiv/qere” osztály.
+- **DT164** (🟢, a felhasználó döntése, 2026-10-15, chat): jelölés nélküli görög szövegváltozat csak egyező glosszájú, a TR-t nem tartalmazó kiadás-mezejű tokennel lehet (G2179); nem egyező glosszával „nem eldönthető” (G3535).
+- **DT165** (🟢, a felhasználó döntése, 2026-10-15, chat): a proveniencia `ts` mezője a `pardes.db` `meta.epites_ts` értéke (az adatállapot időpontja), nem a futásé; a szkript rögzített adatállapotot olvas, és a G4 (bájtazonos futás) ezt kívánja.
 - **N-F93a** (helyőrző, `NYITOTT_FELADATOK.md`): a ketiv/qere (LK/LQ/Mss) jelölés jelentése és hiánya a TAHOT-kivonatban; eldöntendő, kell-e a nyers STEPBible TAHOT vagy a TIPNR kiadás-jelmagyarázata a jelöléshez (12 alapszám érintett).
 - **N-F93c** (helyőrző, `NYITOTT_FELADATOK.md`): a TAGNT `Kritikai kiadás` mezőjének „»N” jelölése (pl. `TR»1`); a jelentését a repó nem rögzíti, ezért a G3496 (Neapolis) „nem eldönthető”.
 - **N-F93b** (helyőrző, `NYITOTT_FELADATOK.md`): a `lekerdez.py scan` néma nem-találata a 62 alapszámra (pl. `scan G0300` → `n=0`); eldöntendő, jelezze-e a lekérdezés vagy az olvasói felület (#92) a hiányt a lista alapján. A #93 a `lekerdez.py`-t nem érinti.
@@ -106,7 +106,7 @@ Végleges `DT`/`N` számot ágon nem írtam; a számot a `main`-en a `szamkioszt
 - **G2** 62 alapszám, mindegyik pontosan egy osztályban; 62 listasor, 88 TIPNR-sor.
 - **G3** Minden görög „szövegváltozat” sor megnevezi a TAGNT-oldali Strong-számot és a `Kritikai kiadás` mezőt; minden sor proveniencia-sort hordoz; ahol a repó adata nem dönt, „nem eldönthető”.
 - **G4** Két futás kimenete bájtazonos (a lista sha256-ja: `0c7946c1b40de82e54e684f4292fb369263784f93aaad936770f68819a5ed5a0`).
-- **G5** nem alkalmazható (DT-F93a (a): nincs `pardes.db`-változás).
+- **G5** nem alkalmazható (DT162 (a): nincs `pardes.db`-változás).
 - `python eszkozok/feladatok.py ellenoriz`: 0 hiba. Független ellenőrzés (`fuggetlen-ellenor`), négy kör: `naplok/ELLENOR_F93.md` — 6 eltérés, javítva (F93.13–F93.16); `naplok/ELLENOR_F93_2.md` — 3 eltérés, javítva (F93.18–F93.20); `naplok/ELLENOR_F93_3.md` — 1 eltérés, javítva (ef55c97a); `naplok/ELLENOR_F93_4.md` — 2 nem tartalmi eltérés (elavult meta-sorok a jelentésben; kettős F93.21 előtag), a zárás commitjában rendezve.
 - Megjegyzés: az `F93.21` előtag két commiton áll (`cc7f41db`: a 3. kör jelentése; `ef55c97a`: a kódjavítás). A history nem íródik át, mert az ág már fent van; a `git log --grep="F93.21"` ezért két tételt ad vissza.
 
@@ -174,7 +174,7 @@ Nem eldönthető, mert hiányzó osztály: az `LXX.*` 9 sor (5 alapszám) nem ka
 
 ### 4. Megállás
 
-(A megállás feloldva: DT-F93a és DT-F93b 🟢, 2026-10-15.)
+(A megállás feloldva: DT162 és DT163 🟢, 2026-10-15.)
 
 ## M1 — a lista és az osztályozás szabályai
 
@@ -184,7 +184,7 @@ Nem eldönthető, mert hiányzó osztály: az `LXX.*` 9 sor (5 alapszám) nem ka
 
 **Több tokenre bontott név (3. bizonyíték).** A versen egymást követő tokenek (legfeljebb 5) glosszái (mind a Rövid jelentés, vagy mind az Angol tükörfordítás; a `[..]` és `<..>` betoldások nélkül, írásjel- és kisbetű-különbség nélkül) együtt szigorúan egyenlők a névcímkével vagy a Névváltozat valamelyik névalakjával (pl. `Nea`+`Polis` = Neapolis; `Ben-`+`Hesed` = Ben-hesed; `Shushan-`+`eduth`; `house of`+`Ashtaroth`). Minden tokennek ki kell tennie a névalak egy részét. Az egyetlen tokenes, kisbetűs névalak (pl. `villages`) is csak pontos egyenlőséggel számít.
 
-**A `ts` jelentése.** A lista `proveniencia` mezőjének `ts` értéke a `pardes.db` `meta.epites_ts` értéke, vagyis az adatállapot időpontja, nem a szkript futásáé. Ez tudatos: a G4 (két futás bájtazonos) csak így teljesül, mert a futás ideje minden futásnál más volna; az adatállapot időpontja a lekérdezett adat tényleges keletkezési ideje. Döntés: DT-F93d (🟢, a felhasználó döntése, 2026-10-15, chat).
+**A `ts` jelentése.** A lista `proveniencia` mezőjének `ts` értéke a `pardes.db` `meta.epites_ts` értéke, vagyis az adatállapot időpontja, nem a szkript futásáé. Ez tudatos: a G4 (két futás bájtazonos) csak így teljesül, mert a futás ideje minden futásnál más volna; az adatállapot időpontja a lekérdezett adat tényleges keletkezési ideje. Döntés: DT165 (🟢, a felhasználó döntése, 2026-10-15, chat).
 
 **Vegyes sorú alapszám:** ha egy alapszám több TIPNR-sora versenként eltérő osztályba esik (pl. a H3482, H3159 típusú népnévi alakok), az alapszám „nem eldönthető”, és az indoklás felsorolja a sorok osztályait; csak az azonos osztályú sorok alapszáma kapja azt az osztályt. (A javított futásban nincs ilyen alapszám.)
 
@@ -193,4 +193,4 @@ Nem eldönthető, mert hiányzó osztály: az `LXX.*` 9 sor (5 alapszám) nem ka
 - G2179 (Ephesus, Jel 2:1): G2181 token, `Kritikai kiadás` NA28+NA27+Tyn+SBL+WH+Treg+Byz (TR nélkül) → szövegváltozat, jelölés nélkül is.
 - H3072 (LORD): a korábbi „azonos nevű” állítás hamis volt; az indoklás most azonos *névcímkéről* beszél. A TAHOT a H6664 Rövid jelentését `LORD`-nak adja (Angol tükörfordítás: `[is] righteousness`), tehát a glossz-egyezés a névvel teljesül; a H3068 (`LORD`, `Yahweh`) is társ-token. Az osztály („fordítási névalak”) nem változott. (Az M1 korábbi változatának az a mondata, hogy a H6664 glosszája nem egyezik a névalakkal, téves volt.)
 
-**DT-F93b (a felhasználó döntése, 2026-10-15, chat).** A TAHOT-nak nincs `Kritikai kiadás` mezője, ezért a héber „szövegváltozat” osztály megszűnt. Új osztályok héberre: „fordítási névalak” (csak ESV/KJV/NIV/ASV jelölés, a versen a névhez illő token), „ketiv/qere” (LK/LQ/Mss jelölés, ha a TAHOT a versen ketiv/qere-jelölést hordoz). A TAHOT-kivonat egy sorában sincs ketiv/qere-jelölés (a `TAHOT_TAGNT_README.md` szerint a ketiv/qere-illesztési üres helyőrzőket a kivonat kihagyja), ezért a „ketiv/qere” osztály üres, és az LK/LQ/Mss sorok „nem eldönthető”-k: az LK/LQ jelentését a repó nem rögzíti. A G3 (`Kritikai kiadás` mező) csak a görög „szövegváltozat” sorokra vonatkozik.
+**DT163 (a felhasználó döntése, 2026-10-15, chat).** A TAHOT-nak nincs `Kritikai kiadás` mezője, ezért a héber „szövegváltozat” osztály megszűnt. Új osztályok héberre: „fordítási névalak” (csak ESV/KJV/NIV/ASV jelölés, a versen a névhez illő token), „ketiv/qere” (LK/LQ/Mss jelölés, ha a TAHOT a versen ketiv/qere-jelölést hordoz). A TAHOT-kivonat egy sorában sincs ketiv/qere-jelölés (a `TAHOT_TAGNT_README.md` szerint a ketiv/qere-illesztési üres helyőrzőket a kivonat kihagyja), ezért a „ketiv/qere” osztály üres, és az LK/LQ/Mss sorok „nem eldönthető”-k: az LK/LQ jelentését a repó nem rögzíti. A G3 (`Kritikai kiadás` mező) csak a görög „szövegváltozat” sorokra vonatkozik.

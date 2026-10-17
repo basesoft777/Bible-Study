@@ -11,7 +11,7 @@ ad: a 9 motívum minden előfordulás- és jelöltsorának kulcs-ellenőrzése a
 kovetkezo: "—"
 ag: claude/f108-motivum-ujrascan
 pr: https://github.com/basesoft777/Bible-Study/pull/374
-lezarva_osszegzes: "9 motívum újrascanje a mai TAHOT/TAGNT-on: 259 elofordulasok-sorból 0 kulcs_eltolodott, 0 ÓSZ-hiány (1 ÚSZ hianyzik: ANTROP-001 1Kor 2:15, F108.7); jeloltek.tsv +25 nyitva (köztük TEREMT-001 Jób 41:32); a tág Strongok ~2 400 új helye csak az eltérés-táblában; DT-F108a (a)+(d) → #109, #110"
+lezarva_osszegzes: "9 motívum újrascanje a mai TAHOT/TAGNT-on: 259 elofordulasok-sorból 0 kulcs_eltolodott, 0 ÓSZ-hiány (1 ÚSZ hianyzik: ANTROP-001 1Kor 2:15, F108.7); jeloltek.tsv +25 nyitva (köztük TEREMT-001 Jób 41:32); a tág Strongok ~2 400 új helye csak az eltérés-táblában; DT184 (a)+(d) → #109, #110"
 olvas: [adat/motivumok.tsv, F55_ZSOLTAR_UJRAELLENORZES_BRIEF.md, adat/elofordulasok.tsv, adat/jeloltek.tsv, adat/grammatikai_strongok.tsv, adat/SEMA.md, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv, eszkozok/lekerdez.py, eszkozok/jelolt.py, naplok/F84_jelentes.md, naplok/F85_jelentes.md, naplok/F85_esetlista.tsv, NYITOTT_FELADATOK.md]
 ir: [adat/jeloltek.tsv, naplok/F108_MOTIVUM_UJRASCAN_naplo.md, naplok/F108_ujrascan_elteresek.tsv]
 fugg: [84, 85]
@@ -62,7 +62,7 @@ a `Karoli_versmegfeleltetes.tsv` Ézs 9-hibája (N-F85a); a bible-mcp bármilyen
 2. Kulcs-összevetés (2. hatókör 1.), szkriptből (a CLAUDE.md shell- és TSV-szabályai szerint; `split('\t')`).
 3. Újrascan (2. hatókör 2.), a `lekerdez.py`-jal; az új jelöltek a `jeloltek.tsv`-be (írás előtt sorösszevetés az eredetivel, eltérésnél
    megállás; minta: `eszkozok/igazolas_migracio.py`).
-4. ⛔ Jelentés és javaslat a `DONTESEK.md`-be (`DT-F108a`): az eltolódott kulcsú sorok javítása és az új jelöltek elbírálásának
+4. ⛔ Jelentés és javaslat a `DONTESEK.md`-be (`DT184`): az eltolódott kulcsú sorok javítása és az új jelöltek elbírálásának
    módja (motívumonként a saját menetben, vagy egy közös javító tételben); megállás.
 
 ## 4. Elfogadási feltételek
@@ -74,7 +74,7 @@ a `Karoli_versmegfeleltetes.tsv` Ézs 9-hibája (N-F85a); a bible-mcp bármilyen
 
 ## 5. Döntésnapló
 
-- DT-F108a (2026-10-17, a felhasználó): **(a) + (d)**. Kulcsjavító tétel nem kell (0 eltolódott ÓSZ-kulcs). A 25 `nyitva`
+- DT184 (2026-10-17, a felhasználó): **(a) + (d)**. Kulcsjavító tétel nem kell (0 eltolódott ÓSZ-kulcs). A 25 `nyitva`
   jelölt motívumonként, a saját menetben bírálódik el, a TEREMT-001 Jób 41:32-vel kezdve. A tág gerinc-Strongok új helyeire
   szűrő: az `adat/motivumok.tsv` negatív kritériuma + kollokáció; a szűrőt előbb az ISTENTISZT-001-en próbáljuk ki. A (c)
   (szűretlen ~2 400 sor a `jeloltek.tsv`-be) elvetve.

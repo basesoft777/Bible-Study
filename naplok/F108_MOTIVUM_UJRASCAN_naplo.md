@@ -114,6 +114,6 @@ A lekérdezések proveniencia-sorai: `naplok/F108_lekerdezesek.tsv`. „Új” =
 - `eszkozok/`: nem változott; a szkriptek a scratchpadben maradtak.
 - A bible-mcp-t nem használtam (DT32).
 
-## 5. Nyitott: DT-F108a (a `DONTESEK.md`-ben)
+## 5. Nyitott: DT184 (a `DONTESEK.md`-ben)
 
-A kérdés a `DONTESEK.md` `DT-F108a` tételében áll: (1) a tág gerinc-Strongoknál (kb. 2 400 új találat) kerüljenek-e a helyek a `jeloltek.tsv`-be, vagy marad a mostani szűk szabály; (2) a 25 új `nyitva` jelölt elbírálása (a motívumok saját menetében vagy közös tételben); (3) `kulcs_eltolodott` ÓSZ-sor nincs, tehát kulcsjavító tétel nem kell — csak az ANTROP-001 `1Kor 2:15` tartalmi kérdése marad.
+A kérdés a `DONTESEK.md` `DT184` tételében áll: (1) a tág gerinc-Strongoknál (kb. 2 400 új találat) kerüljenek-e a helyek a `jeloltek.tsv`-be, vagy marad a mostani szűk szabály; (2) a 25 új `nyitva` jelölt elbírálása (a motívumok saját menetében vagy közös tételben); (3) `kulcs_eltolodott` ÓSZ-sor nincs, tehát kulcsjavító tétel nem kell — csak az ANTROP-001 `1Kor 2:15` tartalmi kérdése marad.

@@ -1,4 +1,4 @@
-"""F09 S2.5b (DT-F09c (1)): a H8034 TBESH-sora a lexikon_hivatkozasok.tsv-be, az F6.3-minta szerint.
+"""F09 S2.5b (DT187 (1)): a H8034 TBESH-sora a lexikon_hivatkozasok.tsv-be, az F6.3-minta szerint.
 
 Jelolt-sor nelkul (a jeloltek.tsv kulcsa id + igehely, a szotari szocikknek nincs igehelye),
 a konkordancia/TBESH.txt H8034 sorabol szo szerinti kivonattal; a szkript ellenorzi, hogy a

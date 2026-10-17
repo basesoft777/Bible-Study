@@ -605,7 +605,7 @@ Mózes áldása Józsefen — "a mélység áldásaival alant" (csaknem szó sze
 
 - **2Pét 2:4** (elutasítva, `napló: Tehom_kereszthivatkozas_naplo.md §Tartalmi minősítés minden jelöltre | scope=manual | forras=Tehom_kereszthivatkozas_naplo.md | ts=2026-10-11`): nem lexikai rokona a tehóm/ábüσσος szónak — külön, görög mitológiából kölcsönzött terminus; tartalmilag inkább az "Isten fiai / gibborim-nefilim" motívumhoz kapcsolódik
 - **Jel 21:1** (elutasítva, `napló: Tehom_kereszthivatkozas_naplo.md §Tartalmi minősítés minden jelöltre | scope=manual | forras=Tehom_kereszthivatkozas_naplo.md | ts=2026-10-11`): nem lexikai rokona az ἄβυσσος szócsaládnak — tematikus, nem lexikai párhuzam
-- **Jób 41:32** (nyitva, `scan H8415 | scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H8415 | n=35 | ts=2026-10-17T16:58Z | csatorna=cli`): F108 újrascan: a hely a mai TAHOT/TAGNT-on gerinc-Strongot hordoz, de sem az elofordulasok.tsv-ben, sem a jeloltek.tsv-ben nem szerepelt; elbírálatlan (DT-F108a)
+- **Jób 41:32** (nyitva, `scan H8415 | scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H8415 | n=35 | ts=2026-10-17T16:58Z | csatorna=cli`): F108 újrascan: a hely a mai TAHOT/TAGNT-on gerinc-Strongot hordoz, de sem az elofordulasok.tsv-ben, sem a jeloltek.tsv-ben nem szerepelt; elbírálatlan (DT184)
 
 **Negatív kritérium**: az igehelynek a תְּהוֹם (tehóm) gyököt kell tartalmaznia (ÚSZ-ben az LXX-közvetített ἄβυσσος (abüsszosz) megfelelőjét) — tematikus vízkép önmagában (pl. יָם – jám, "tenger") nem elég
 

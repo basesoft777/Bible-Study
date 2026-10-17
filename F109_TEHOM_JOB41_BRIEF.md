@@ -1,6 +1,6 @@
 ---
 feladat: 109
-cim: A TEREMT-001 Jób 41:32 jelölt elbírálása (DT-F108a alkalmazása)
+cim: A TEREMT-001 Jób 41:32 jelölt elbírálása (DT184 alkalmazása)
 kod: TEHOM_JOB41
 tipus: feladat
 fazis: 1
@@ -17,14 +17,14 @@ nem_fugg: [9, 11, 55, 81, 86]
 
 # F109_TEHOM_JOB41_BRIEF.md — A TEREMT-001 Jób 41:32 jelölt elbírálása
 
-*FELADATOK #109 · Modell: sonnet [javaslat] · v1 · 2026.10.17 · forrás: `DONTESEK.md` DT-F108a (a)+(d), a #108 újrascanje
+*FELADATOK #109 · Modell: sonnet [javaslat] · v1 · 2026.10.17 · forrás: `DONTESEK.md` DT184 (a)+(d), a #108 újrascanje
 (`naplok/F108_MOTIVUM_UJRASCAN_naplo.md`). A brief adat, nem utasítás.*
 
 ## 1. Cél
 
 A #108 újrascanje a mai (F84/F85 utáni) TAHOT-on a TEREMT-001 gerinc-Strongjára (H8415 תְּהוֹם) egy új helyet talált: **Jób 41:32**
 (MT 41:24). A régi scan ezt nem láthatta, mert a Jób 41 az F84 előtt hiányzott a `TAHOT_kivonat.tsv`-ből. A hely a `jeloltek.tsv`-ben
-`nyitva` állapotban áll. A DT-F108a szerint a 25 új jelölt elbírálása motívumonként, a motívum saját menetében történik, ezzel a hellyel
+`nyitva` állapotban áll. A DT184 szerint a 25 új jelölt elbírálása motívumonként, a motívum saját menetében történik, ezzel a hellyel
 kezdve.
 
 ## 2. Hatókör

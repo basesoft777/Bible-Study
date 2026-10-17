@@ -161,8 +161,8 @@ Isten Igéje "elhat a szellem és lélek... megoszlásáig" (μερισμοῦ) 
 ### Kizárt és vizsgált helyek
 
 - **Fil 1:27** (nyitva, `döntési fájl 8. szakasz (migrálva F1.6-ban)`): bekerüljön-e ötödik, korporatív jellegű előfordulásként a pneuma/pszükhé tanulmányba; a study jelenlegi szövege NEM említi — ellenőrizve 2026.09.13
-- **1Pét 1:22** (nyitva, `kollokacio G4151 G5590 | scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=G4151+G5590 | n=6 | ts=2026-10-17T16:58Z | csatorna=cli`): F108 újrascan: a hely a mai TAHOT/TAGNT-on gerinc-Strongot hordoz, de sem az elofordulasok.tsv-ben, sem a jeloltek.tsv-ben nem szerepelt; elbírálatlan (DT-F108a)
-- **Mt 12:18** (nyitva, `kollokacio G4151 G5590 | scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=G4151+G5590 | n=6 | ts=2026-10-17T16:58Z | csatorna=cli`): F108 újrascan: a hely a mai TAHOT/TAGNT-on gerinc-Strongot hordoz, de sem az elofordulasok.tsv-ben, sem a jeloltek.tsv-ben nem szerepelt; elbírálatlan (DT-F108a)
+- **1Pét 1:22** (nyitva, `kollokacio G4151 G5590 | scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=G4151+G5590 | n=6 | ts=2026-10-17T16:58Z | csatorna=cli`): F108 újrascan: a hely a mai TAHOT/TAGNT-on gerinc-Strongot hordoz, de sem az elofordulasok.tsv-ben, sem a jeloltek.tsv-ben nem szerepelt; elbírálatlan (DT184)
+- **Mt 12:18** (nyitva, `kollokacio G4151 G5590 | scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=G4151+G5590 | n=6 | ts=2026-10-17T16:58Z | csatorna=cli`): F108 újrascan: a hely a mai TAHOT/TAGNT-on gerinc-Strongot hordoz, de sem az elofordulasok.tsv-ben, sem a jeloltek.tsv-ben nem szerepelt; elbírálatlan (DT184)
 
 **Negatív kritérium**: az igehelynek a πνεῦμα (pneuma) és ψυχή (pszükhé) szavakat (vagy melléknévi alakjukat) egyazon mondaton belül, megkülönböztető szerepben kell tartalmaznia — puszta "lélek" vagy "szellem" említés önmagában, a másik nélkül, nem elég
 
