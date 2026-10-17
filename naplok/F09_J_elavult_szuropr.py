@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-naplok/F09_J_elavult_szuropr.py -- DT-F09g szúrópróba: 15 véletlen `elavult_adat`-sor (rögzített seed) a
-`render_diff_osztalyoz.py --proba` osztályozásából. Minden mintához megadja, hol él tovább a régi tartalom az
-új (próba) kimenetben (próba-sorszám + részlet), a mechanikus feltétel (`ProbaSzoveg.tovabb_el`) szerint.
-A kézi megítélés a naplok/SZOTAR_S2_elavult_szuropr.md-ben áll.
+naplok/F09_J_elavult_szuropr.py -- DT-F09g szúrópróba (3. javító menet): rétegzett minta rögzített seeddel az
+`elavult_adat` soraiból: 10 TÖRÖLT + 5 HOZZÁADOTT + 5 az ATKULCSOLT_SOROK (F87.3-lábnyom) törölt sorai közül.
+Horgony: PONTOS szövegegyezés (a normalizált sor teljes egyezése a másik oldalon) vagy a kizárólagos pár; igehely-egyezés
+nem horgony. A kézi megítélés a naplok/SZOTAR_S2_elavult_szuropr.md-ben áll.
 
-    python naplok/F09_J_elavult_szuropr.py [--seed 20261017] [--n 15]
+    python naplok/F09_J_elavult_szuropr.py [--seed 20261017]
 """
 
 import argparse
@@ -37,38 +37,43 @@ def olvas(ut):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--seed', type=int, default=20261017)
-    ap.add_argument('--n', type=int, default=15)
     a = ap.parse_args()
-    minden = []   # (fajl, irany, sor)
+    torolt, hozzaadott, atkulcsolt = [], [], []
+    par_regi = {}   # (fájl, régi sor) -> (új sor, kulcs, mód)
+    par_uj = {}     # (fájl, új sor) -> (régi sor, kulcs, mód)
     for f in sorted(os.listdir(PROBA)):
-        if not f.endswith('_TUDOMANYOS.md'):
-            continue
-        eredmeny = R.proba_osztalyoz(f, olvas(os.path.join(ELES, f)), olvas(os.path.join(PROBA, f)))
-        for irany in ('torolt', 'hozzaadott'):
-            for s in eredmeny.get('elavult_adat', {}).get(irany, []):
-                minden.append((f, irany, s))
-    torolt = [x for x in minden if x[1] == 'torolt']
-    print('elavult_adat sorok (a _TUDOMANYOS fájlokban): összesen %d, ebből törölt (régi tartalom) %d, hozzáadott %d'
-          % (len(minden), len(torolt), len(minden) - len(torolt)))
-    print('minta: a TÖRÖLT sorokból (a régi tartalom sorsa a kérdés), seed=%d, n=%d' % (a.seed, a.n))
+        parok = []
+        e = R.proba_osztalyoz(f, olvas(os.path.join(ELES, f)), olvas(os.path.join(PROBA, f)), parok)
+        for mod, regi, uj, kulcs, kat in parok:
+            par_regi.setdefault((f, regi), (uj, kulcs, mod))
+            par_uj.setdefault((f, uj), (regi, kulcs, mod))
+        motiv = f.split('_')[0]
+        for s in e.get('elavult_adat', {}).get('torolt', []):
+            if (motiv, s.strip()) in R.ATKULCSOLT_SOROK:
+                atkulcsolt.append((f, s))
+            else:
+                torolt.append((f, s))
+        for s in e.get('elavult_adat', {}).get('hozzaadott', []):
+            hozzaadott.append((f, s))
+    print('elavult_adat: törölt (nem lábnyom) %d, hozzáadott %d, ATKULCSOLT-lábnyom törölt %d' % (len(torolt), len(hozzaadott), len(atkulcsolt)))
     rnd = random.Random(a.seed)
-    minta = rnd.sample(torolt, a.n)
-    for i, (f, irany, s) in enumerate(minta, 1):
-        eles = olvas(os.path.join(ELES, f)).split('\n')
-        proba = olvas(os.path.join(PROBA, f)).split('\n')
-        sz = R.ProbaSzoveg(proba)
-        ok = sz.tovabb_el(s)
-        eles_sor = [j + 1 for j, x in enumerate(eles) if x == s]
+    minta = [('törölt',) + x for x in rnd.sample(torolt, min(10, len(torolt)))]
+    minta += [('hozzáadott',) + x for x in rnd.sample(hozzaadott, min(5, len(hozzaadott)))]
+    minta += [('ATKULCSOLT',) + x for x in rnd.sample(atkulcsolt, min(5, len(atkulcsolt)))]
+    for i, (tip, f, s) in enumerate(minta, 1):
+        oldal = olvas(os.path.join(PROBA if tip == 'törölt' or tip == 'ATKULCSOLT' else ELES, f)).split('\n')
         n = R._norm(s)
-        talalat = [j for j, x in enumerate(proba) if n and n in R._norm(x)][:2]
-        if not talalat:
-            ige = R._IGEHELY_RE.findall(n)
-            talalat = [j for j, x in enumerate(proba) if ige and ige[0] in R._norm(x)][:2]
-        print('\n%d. %s  éles sor %s' % (i, f, eles_sor[:2]))
-        print('   régi sor : %s' % s[:220])
-        print('   tovább él: %s' % ok)
-        for j in talalat:
-            print('   próba %d : %s' % (j + 1, proba[j][:220]))
+        pontos = [j + 1 for j, x in enumerate(oldal) if R._norm(x) == n]
+        print('\n%d. [%s] %s' % (i, tip, f))
+        print('   sor      : %s' % s.strip()[:230])
+        if tip in ('törölt', 'ATKULCSOLT'):
+            p = par_regi.get((f, s))
+            print('   pár (új) : %s' % (('%s [%s, kulcs=%s]' % (p[0].strip()[:200], p[2], p[1])) if p else 'nincs kizárólagos pár'))
+            print('   pontos egyezés a próbában: %s' % (pontos[:3] or 'nincs'))
+        else:
+            p = par_uj.get((f, s))
+            print('   pár (régi): %s' % (('%s [%s, kulcs=%s]' % (p[0].strip()[:200], p[2], p[1])) if p else 'nincs kizárólagos pár'))
+            print('   pontos egyezés az éles oldalon: %s' % (pontos[:3] or 'nincs'))
 
 
 if __name__ == '__main__':

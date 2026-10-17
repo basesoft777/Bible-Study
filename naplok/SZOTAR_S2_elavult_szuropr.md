@@ -1,27 +1,30 @@
-# SZOTAR S2 (#9) — `elavult_adat` szúrópróba (DT-F09g)
+# SZOTAR S2 (#9) — `elavult_adat` szúrópróba (DT-F09g, 3. javító menet)
 
-*Ág: `claude/f09-szotar-s2` · modell: `claude-sonnet-5-5` · mintavétel: `naplok/F09_J_elavult_szuropr.py` (seed 20261017, n=15) · proveniencia: scope=`generalt_proba/F09_szotar_s2_proba/lexikon/*_TUDOMANYOS.md` vs `lexikon/` | forras=`eszkozok/render_diff_osztalyoz.py` (`proba_osztalyoz`) + `naplok/F09_J_elavult_szuropr.py` | ts=2026-10-17*
+*Ág: `claude/f09-szotar-s2` · modell: `claude-sonnet-5-5` · mintavétel: `naplok/F09_J_elavult_szuropr.py` (seed 20261017) · proveniencia: scope=`generalt_proba/F09_szotar_s2_proba/lexikon/*_TUDOMANYOS.md` vs `lexikon/` | forras=`eszkozok/render_diff_osztalyoz.py` (`proba_osztalyoz`, kizárólagos párosítás) + `naplok/F09_J_elavult_szuropr.py` | ts=2026-10-17*
 
-A `_TUDOMANYOS` fájlokban 371 `elavult_adat`-sor van: 51 törölt (régi tartalom) és 320 hozzáadott. A minta a **törölt** sorokból való (a „hol él tovább a régi tartalom?” kérdés csak ott értelmes); a hozzáadott sorok az új adatréteg sorai. A „mechanikus” oszlop a `ProbaSzoveg.tovabb_el` eredménye (a próba szövegében megvan-e a normalizált sor, vagy a sor minden igehelye): ez gyenge bizonyíték, ezért a kézi megítélés a döntő.
+Alap: a `_TUDOMANYOS` fájlok `elavult_adat` sorai: 41 törölt (az F87.3-lábnyom nélkül), 320 hozzáadott, 27 az `ATKULCSOLT_SOROK` törölt sora (a törzscikk-oldal `elavult_adat` sorai a minta alapjában nincsenek). Rétegzett minta: 10 törölt + 5 hozzáadott + 5 lábnyom-sor. A **horgony pontos szövegegyezés vagy a kizárólagos (teljes kulcsú) pár**; az igehely-egyezés nem horgony. A „pontos egyezés” oszlop: a normalizált sor teljes egyezése a másik oldalon; minden mintánál „nincs”, mert a sorok megváltoztak (különben nem volnának a diffben), ezért a döntő a kizárólagos pár.
 
-| # | Fájl, éles sor | Régi sor (rövidítve) | Mechanikus | Hol él tovább / miért elavult | Ítélet |
+| # | Réteg | Fájl | Sor (rövidítve) | Horgony | Ítélet |
 |---|---|---|---|---|---|
-| 1 | ALVIL-001, 812 | `#### Jób 17:13` (kereszthivatkozás-fejléc) | igehely | A sor az F87.3-mal (98f22fc6, DT-F87b) átkulcsolt `Jób 17:13` → `Jób 17:12` sor jelölt-listájának fejléce. A próbában `#### Jób 17:12` fejléc nincs (az új kulcsra a TSK/Károli-táblában nincs találat); a próba-táblázat a `Jób 17:12`-t a 82. sorban hordozza. | elavult (átkulcsolás), a tartalom nem vész el: a régi kulcs jelölt-listája a téves versre vonatkozott |
-| 2 | ALVIL-001, 69 | `\| [1Móz 42:38] \| a koporsóba — שְׁאֽוֹלָ …` előfordulás-sor | igehely | Ugyanez a sor a próba 69. sorában, csak a módszer-jelző változott (`tartalom-alapú` → `szó-szintű-gépi`, `adat/elofordulasok.tsv` mai értéke). | tovább él (jelző-frissítés) |
-| 3 | ISTENTISZT-001, 70 | `\| [1Móz 12:8] …` | igehely | Próba 69. sor, azonos tartalom, módszer-jelző frissítve. | tovább él |
-| 4 | ALVIL-001, 296 | `*(Jób 17:16: nincs Károli-szöveg)*` | igehely | F87.3: `Jób 17:16` → `Jób 17:15`; a próba 295–296. sorában a `Jób 17:15` mellett ott a Károli-szöveg („Leszáll az majd a sír üregébe…”). A régi jelzés a téves kulcs hiányát mondta. | elavult (átkulcsolás), a tartalom megvan |
-| 5 | MENNY-001, 146 | `*Ez a blokk … 2 elutasított/nyitva maradt jelöltjét fedi …*` | nincs | Sablonmondat a blokk adatából számolt számmal; a próba 146. sora ugyanaz 3-mal (`adat/jeloltek.tsv` MENNY-001: 12 sor, a blokk ebből a kizárt/nyitva maradtakat számolja). | elavult (a szám frissült) |
-| 6 | ALVIL-001, 289 | `<a id="ige-jób-17-13"></a>` | sor | F87.3 átkulcsolás: a próba 289. sora `<a id="ige-jób-17-12">`, a 294.: `ige-jób-17-15`. A régi horgony a téves kulcs volt (a mechanikus „sor” találat egy más helyen álló azonos horgonyra vonatkozik). | elavult (átkulcsolás) |
-| 7 | ISTENTISZT-001, 73 | `\| [1Móz 26:25] …` | igehely | Próba 72. sor, azonos, jelző frissítve. | tovább él |
-| 8 | ISTENTISZT-001, 75 | `\| [2Móz 34:5] …` | igehely | Próba 74. sor, azonos, jelző frissítve. | tovább él |
-| 9 | TEREMT-001, 68 | `\| [1Móz 1:2] \| mélység — תְה֑וֹם …` | igehely | Próba 68. sor, azonos, jelző frissítve. | tovább él |
-| 10 | TEREMT-001, 71 | `\| [1Móz 49:25] …` | igehely | Próba 71. sor, azonos, jelző frissítve. | tovább él |
-| 11 | ISTENTISZT-001, 336 | `Nincs kizárt vagy nyitva maradt jelölt a jeloltek.tsv-ben ehhez a motívumhoz.` | nincs | A próbában a blokk 81 jelöltet számlál (333. sor), tehát a régi „nincs” állítás ma hamis; ez adat-frissülés, nem tartalomvesztés. | elavult |
-| 12 | MENNY-001, 68 | `\| [1Móz 6:2] \| az Istennek fiai — בְנֵי …` | igehely | Próba 68. sor, azonos, jelző frissítve. | tovább él |
-| 13 | ANTROP-001, 137 | `*Ez a blokk … 1 elutasított/nyitva maradt jelöltjét …*` | nincs | A próba 137. sora 3-mal (`adat/jeloltek.tsv` ANTROP-001: 3 elutasított/nyitva sor, mért). | elavult (a szám frissült) |
-| 14 | KIRALY-001, 69 | `\| [2Móz 19:6] \| papok — כֹּהֲנִ֖ים …` | igehely | Próba 69. sor: a glossza `papok birodalma`, a jelző frissítve; az F87.3 (98f22fc6) az `adat/elofordulasok.tsv` `karoli_szo` mezőjét `papok` → `papok birodalma`-ra javította. | elavult (adatjavítás), a sor tovább él |
-| 15 | TEREMT-001, 72 | `\| [2Móz 15:5] \| a mélységbe — תְּהֹמֹ֖ת …` | igehely | Próba 72. sor: `a hullámok` (F87.3: `karoli_szo` `a mélységbe` → `a hullámok`), jelző frissítve. | elavult (adatjavítás), a sor tovább él |
+| 1 | törölt | ISTENTISZT-001 | `\| [1Móz 4:26] … H7121+H8034 … tartalom-alapú[^1] \|` | pár: ugyanaz a sor, kulcs = (sor, elofordulasok, 1Móz 4:26, {H7121,H8034}); a módszer-jelző `tartalom-alapú` → `szó-szintű-gépi` | tovább él (jelző-frissítés, `adat/elofordulasok.tsv` mai értéke) |
+| 2 | törölt | ALVIL-001 | `\| [1Móz 42:38] \| a koporsóba … \|` | pár: azonos sor, kulcs (…, 1Móz 42:38, {H7585}), jelző frissítve | tovább él |
+| 3 | törölt | KIRALY-001 | `*Ez a blokk … motívum 0 elutasított/nyitva maradt jelöltjét fedi …*` | pár: ugyanez a leíró mondat 14-gyel (kulcs: leíró, kizart); a `jeloltek.tsv` KIRALY-001 sorai adják a számot | elavult (a szám frissült) |
+| 4 | törölt | ANTROP-001 | ugyanaz a leíró mondat, 1 | pár: 3-mal; `adat/jeloltek.tsv` ANTROP-001: 3 elutasított/nyitva sor | elavult (a szám frissült) |
+| 5 | törölt | ALVIL-001 | ugyanaz a leíró mondat, 0 | pár: 2-vel | elavult (a szám frissült) |
+| 6 | törölt | MENNY-001 | `\| [1Móz 6:4] \| Az óriások … H5303 … \|` | pár: azonos sor, jelző frissítve | tovább él |
+| 7 | törölt | TEREMT-001 | `\| [1Móz 1:2] \| mélység … H8415 … \|` | pár: azonos sor, jelző frissítve | tovább él |
+| 8 | törölt | TEREMT-001 | `\| [1Móz 7:11] \| a nagy mélység … \|` | pár: azonos sor, jelző frissítve | tovább él |
+| 9 | törölt | ISTENTISZT-001 | `\| [1Móz 26:25] … \|` | pár: azonos sor, jelző frissítve | tovább él |
+| 10 | törölt | TEREMT-001 | `\| [2Móz 15:5] \| a mélységbe … \|` | pár: ugyanaz a sor `a hullámok` glosszával és új jelzővel; F87.3 (98f22fc6): `karoli_szo` `a mélységbe` → `a hullámok` | elavult (adatjavítás), a sor tovább él |
+| 11 | hozzáadott | ISTENTISZT-001 | `- **1Sám 13:13** (elutasítva, …)` | nincs régi pár; `adat/jeloltek.tsv`: ISTENTISZT-001, 1Sám 13:13, elutasítva | új adatsor (az éles oldal régebbi) |
+| 12 | hozzáadott | ISTENTISZT-001 | `- **Róm 2:8** (elutasítva, …)` | `adat/jeloltek.tsv`: Róm 2:8, elutasítva | új adatsor |
+| 13 | hozzáadott | ISTENTISZT-001 | `\| [1Móz 21:33] … ➕ bővülés … szó-szintű-gépi \|` | pár a régi sorral (kulcs: 1Móz 21:33, {H7121,H8034}) | tovább él / jelző-frissítés |
+| 14 | hozzáadott | ISTENTISZT-001 | `- **ApCsel 25:21** (nyitva, …)` | `adat/jeloltek.tsv`: ApCsel 25:21, nyitva | új adatsor |
+| 15 | hozzáadott | ISTENTISZT-001 | `- **Zsid 11:16** (nyitva, …)` | `adat/jeloltek.tsv`: Zsid 11:16, nyitva | új adatsor |
+| 16 | lábnyom | ALVIL-001 (törzs.) | `\| [Préd 9:10](#v-préd-9-10) \| — \| Remez \| közepes … \|` | nincs pár (a régi kulcs megszűnt); a próbában `### Préd 9:12` áll (666. sor) | elavult: F87.3 átkulcsolás (`Préd 9:10` → `9:12`) |
+| 17 | lábnyom | ALVIL-001 (törzs.) | `- **Kulcsszó:** A sírnak — שְׁא֣וֹל (she.'ol)` | nincs pár; a próbában a `Jób 17:12` blokk (293. sor) a javított kulcsot hordozza | elavult: F87.3 (`Jób 17:13` → `17:12`) |
+| 18 | lábnyom | ALVIL-001 (tud.) | `**Préd 9:10**` | nincs pár; `Préd 9:12` az új kulcs | elavult: F87.3 |
+| 19 | lábnyom | ALVIL-001 (törzs.) | `> *(Jób 17:16: nincs Károli-szöveg)*` | nincs pár; a próbában a `Jób 17:15` blokk (305. sor) Károli-szöveggel áll | elavult: F87.3 (`Jób 17:16` → `17:15`) |
+| 20 | lábnyom | ALVIL-001 (törzs.) | `> *A te ruháid mindenkor legyenek fejérek …*` | nincs pár; a Károli 1908 szerint ez a Préd 9:8, nem a Seol-vers; az új kulcs `Préd 9:12` | elavult: F87.3 (a régi idézet téves versé volt) |
 
-**Összegzés:** a 15 mintából 0 olyan sor van, amelynek tartalma sehol nem él tovább és nem igazoltan elavult. A 15-ből 7 sor azonos tartalommal él tovább (jelző-frissítés), 8 sor elavult (átkulcsolás: 1, 4, 6; adatjavítás: 14, 15; sablonmondat-szám/állítás: 5, 11, 13). Az 1., 4. és 6. minta igazolása a mechanikus „igehely” szerint gyenge, a kézi nézés (F87.3-commit, próba-sorok) viszont egyértelmű.
-
-**Figyelem:** a szúrópróba a 371-ből csak a 51 törölt `elavult_adat`-sort fedi. A **nem** `elavult_adat`-ba sorolt, de ugyanebből az okból törölt 14 sor `ismeretlen` (`naplok/SZOTAR_S2_ismeretlen.tsv`): l. `naplok/SZOTAR_S2_zaras.md` 4. pont.
+**Összegzés:** a 20 mintából 0 olyan sor van, amelynek a tartalma sehol nem él tovább és nem igazoltan elavult. 15 sor kizárólagos teljes kulcsú párral, vagy adatrétegbeli (`adat/jeloltek.tsv`) sorral igazolt; az 5 lábnyom-sor nincs párban, a próba átkulcsolt blokkja és az F87.3-commit (98f22fc6) igazolja. A tartalom-megőrzés tehát nem a mechanikus pontos egyezésen, hanem a pár/adatsor-horgonyon áll; ahol nincs pár és nincs lábnyom, a sor `ismeretlen` (l. `naplok/SZOTAR_S2_ismeretlen.tsv`).
