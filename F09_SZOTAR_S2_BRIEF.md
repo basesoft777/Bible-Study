@@ -13,7 +13,7 @@ pr: 381
 lezarva_osszegzes: szótári adatréteg 2. menet a 8 motívum Strongjaira: 26 héber lemma-kiejtés, TBESH/UBS DBH/Mounce+SECE/tW+TWOT/BDB-etimológia/LXX-párok a #78 váz szerep-blokkjaiban, H8034 bekötés, N-F78a javítva, próbarender (8+8) és diff-osztályozás a generalt_proba/F09_szotar_s2_proba/ alá; az éles lexikon/ érintetlen; l. naplok/SZOTAR_S2_zaras.md
 fugg: [5, 6, 23, 78]
 olvas: [adat/forditasok.tsv, adat/terminologia.tsv, adat/kiejtes_kivetelek.tsv, konkordancia/, lexikon/, adat/szotar_szerepek.tsv, ADATVAGYON_TERV.md, MUNKATERV.md]
-ir: [generalt_proba/, adat/lexikon_hivatkozasok.tsv, adat/kiejtes_kivetelek.tsv, adat/szotar_szerepek.tsv, eszkozok/torzscikk_general.py, eszkozok/lexikon_general.py, eszkozok/render_diff_osztalyoz.py, MUNKAMENET.md, NYITOTT_FELADATOK.md, adat/forditasok.tsv, eszkozok/kiejtes.py, eszkozok/teszt_szerepmatrix.py, eszkozok/ellenorzes/]
+ir: [generalt_proba/, adat/lexikon_hivatkozasok.tsv, adat/kiejtes_kivetelek.tsv, adat/szotar_szerepek.tsv, eszkozok/torzscikk_general.py, eszkozok/lexikon_general.py, eszkozok/render_diff_osztalyoz.py, MUNKAMENET.md, NYITOTT_FELADATOK.md, adat/forditasok.tsv, eszkozok/kiejtes.py, eszkozok/teszt_szerepmatrix.py, eszkozok/ellenorzes/, eszkozok/general.py, eszkozok/teszt_render_diff_osztalyoz.py]
 munka: adat
 nem_fugg: [7, 22, 27, 38, 52, 55, 107, 109, 110]
 ---
@@ -38,7 +38,7 @@ A 8 lexikonoldal és a 8 törzscikk renderelése **csak próba** a `generalt_pro
 
 ## 2. Hatókör
 
-*Az `ir` mező utólagos bővítései (2. javító menet, 2026-10-17): `eszkozok/teszt_szerepmatrix.py` (DT-F09i: az átírt invariánsok a mai szerepállapotot követik, tartalmi lazítás nincs); `eszkozok/ellenorzes/` (DT-F09h: az E27 szűk kivétele a kódban opcionálisként jelölt `_nyers/` hivatkozásra).*
+*Az `ir` mező utólagos bővítései (2. javító menet, 2026-10-17): `eszkozok/teszt_szerepmatrix.py` (DT-F09i: az átírt invariánsok a mai szerepállapotot követik, tartalmi lazítás nincs); `eszkozok/ellenorzes/` (DT-F09h: az E27 szűk kivétele a kódban opcionálisként jelölt `_nyers/` hivatkozásra); `eszkozok/general.py` (DT-F09h: a `--helyi-lexicon` kapcsoló, csak a repón kívüli kimenetre); `eszkozok/teszt_render_diff_osztalyoz.py` (DT-F09g: az osztályozó tesztjei).*
 
 **Benne van**
 
