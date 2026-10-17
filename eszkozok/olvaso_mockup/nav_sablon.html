@@ -1,0 +1,482 @@
+<meta charset="utf-8">
+<title>Olvasófelület-mockup</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Frank+Ruhl+Libre:wght@400;500&family=Noto+Serif:wght@400;500&display=swap">
+<style>
+/* Elrendezés: egysoros, ragadós fejléc (morzsa + gyorsugró + fejezetléptető + beállítások), alatta a kánon-sáv; középen a szöveg margó-jelekkel, jobbra a verset követő panel; lent a lépegető sáv az előzményekkel. Arculat: az olvasó token-fájlja (konfig/arculat.json). */
+:root{
+  --bg:#f5f2ea; --panel:#fffdf8; --fg:#1b1a17; --muted:#58554d; --rule:#ddd7c9;
+  --accent:#1f5a49; --accent-soft:#e2eee8; --gold:#8a5a00; --gold-soft:#f7ecd2; --low:#7a5a93;
+  --g-tor:#6b4f2a; --g-tort:#2f5d7c; --g-bolcs:#7a5a93; --g-prof:#8a5a00; --g-kis:#a0702a; --g-ev:#1f5a49; --g-lev:#3c6e8f; --g-apok:#8b3a3a;
+  --f-text:"Source Serif 4","Noto Serif",Georgia,serif;
+  --f-ui:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  --f-he:"Frank Ruhl Libre","SBL Hebrew","Times New Roman",serif;
+  --f-gr:"Noto Serif","SBL Greek",Georgia,serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#151918; --panel:#1d2321; --fg:#e6e9e4; --muted:#9ba49f; --rule:#313936;
+  --accent:#8cc4b1; --accent-soft:#23362f; --gold:#e2b25a; --gold-soft:#3a2f1a; --low:#c3a6d8;
+  --g-tor:#d1a46a; --g-tort:#7fb2d6; --g-bolcs:#c3a6d8; --g-prof:#e2b25a; --g-kis:#e8c487; --g-ev:#8cc4b1; --g-lev:#9cc3e0; --g-apok:#e39a9a; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#151918; --panel:#1d2321; --fg:#e6e9e4; --muted:#9ba49f; --rule:#313936;
+  --accent:#8cc4b1; --accent-soft:#23362f; --gold:#e2b25a; --gold-soft:#3a2f1a; --low:#c3a6d8;
+  --g-tor:#d1a46a; --g-tort:#7fb2d6; --g-bolcs:#c3a6d8; --g-prof:#e2b25a; --g-kis:#e8c487; --g-ev:#8cc4b1; --g-lev:#9cc3e0; --g-apok:#e39a9a; color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-ui);font-size:15px;line-height:1.5;margin:0}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.gut{padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.mono{font-family:var(--f-mono);font-size:.8rem}
+.he{font-family:var(--f-he)} .gr{font-family:var(--f-gr)}
+.eyebrow{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.pill{display:inline-block;font-size:.7rem;padding:0 7px;border-radius:999px;border:1px solid var(--rule);color:var(--muted);vertical-align:1px}
+.pill.m{border-color:var(--low);color:var(--low)} .pill.f{border-color:var(--accent);color:var(--accent)}
+/* magyarázó számok */
+.num{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--gold);color:var(--panel);font-size:.68rem;font-weight:600;font-family:var(--f-ui);flex:none;vertical-align:middle}
+body.nomagy .num{display:none}
+/* fejléc */
+header.top{position:sticky;top:env(safe-area-inset-top, 0px);z-index:20;background:var(--panel);border-bottom:1px solid var(--rule)}
+.sor1{display:flex;align-items:center;gap:10px;padding-block:8px;flex-wrap:wrap}
+.logo{font-family:var(--f-text);font-weight:600;font-size:1.05rem;white-space:nowrap}
+.morzsa{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-family:var(--f-text);font-size:1.15rem;font-weight:600;padding:3px 10px;border-radius:6px;border:1px solid var(--rule)}
+.morzsa:hover{background:var(--accent-soft)}
+.morzsa small{font-family:var(--f-ui);font-size:.75rem;color:var(--muted);font-weight:400}
+.omni{flex:1 1 280px;min-width:0;position:relative}
+.omni input{width:100%;font:inherit;font-size:.92rem;padding:6px 10px 6px 30px;border:1px solid var(--rule);border-radius:8px;background:var(--bg);color:var(--fg)}
+.omni .ik{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:.85rem;pointer-events:none}
+.omni kbd{position:absolute;right:8px;top:50%;transform:translateY(-50%);font-family:var(--f-mono);font-size:.68rem;color:var(--muted);border:1px solid var(--rule);border-radius:4px;padding:0 4px}
+.javaslat{position:absolute;left:0;right:0;top:calc(100% + 4px);background:var(--panel);border:1px solid var(--rule);border-radius:8px;box-shadow:0 8px 24px rgb(0 0 0 / .18);padding:4px;display:grid;gap:1px;z-index:30}
+.jv{all:unset;cursor:pointer;display:grid;grid-template-columns:92px minmax(0,1fr);gap:10px;align-items:baseline;padding:6px 8px;border-radius:5px;font-size:.88rem}
+.jv:hover,.jv.akt{background:var(--accent-soft)}
+.jv .t{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.jv .m{color:var(--muted);font-size:.8rem}
+.lep{display:flex;gap:4px}
+.ib{all:unset;cursor:pointer;display:inline-grid;place-items:center;min-width:32px;height:32px;padding:0 8px;border-radius:6px;border:1px solid var(--rule);font-size:.9rem}
+.ib:hover{background:var(--accent-soft)}
+.ib[aria-expanded="true"]{background:var(--accent-soft);border-color:var(--accent)}
+.menu{position:absolute;right:max(16px, env(safe-area-inset-right, 0px));top:calc(100% - 2px);background:var(--panel);border:1px solid var(--rule);border-radius:8px;box-shadow:0 8px 24px rgb(0 0 0 / .18);padding:12px;display:grid;gap:10px;width:min(320px, calc(100vw - 32px));z-index:30}
+.seg{display:inline-flex;border:1px solid var(--rule);border-radius:6px;overflow:hidden}
+.seg button{all:unset;cursor:pointer;padding:3px 10px;font-size:.82rem}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--panel)}
+/* kánon-sáv */
+.kanon{display:flex;height:16px;gap:1px;padding-block:0 6px;align-items:stretch}
+.kanon button{all:unset;cursor:pointer;flex-grow:1;flex-basis:0;min-width:2px;border-radius:1px;background:color-mix(in srgb, var(--gc) 35%, transparent)}
+.kanon button:hover{background:var(--gc)}
+.kanon button.itt{background:var(--gc);box-shadow:0 0 0 2px var(--fg)}
+.kanon button.sziv{width:1px;flex:none;background:var(--muted);margin-inline:3px;cursor:default}
+/* törzs */
+.fo{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:24px;max-width:1220px;margin:0 auto;padding-block:20px 90px}
+@media (max-width:980px){.fo{grid-template-columns:minmax(0,1fr)}}
+.szoveg{min-width:0;display:grid;gap:14px;align-content:start}
+.fejcim{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px}
+.fejcim h1{font-family:var(--f-text);font-weight:600;font-size:1.7rem;margin:0}
+.info{all:unset;cursor:pointer;font-size:.78rem;color:var(--muted);border-bottom:1px dotted var(--muted)}
+.infodoboz{font-size:.8rem;color:var(--muted);background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:10px 12px;display:grid;gap:4px}
+.szurok{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.8rem;color:var(--muted)}
+.chip{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:5px;padding:2px 9px;border-radius:999px;border:1px solid var(--rule);font-size:.8rem;color:var(--muted)}
+.chip[aria-pressed="true"]{border-color:var(--accent);color:var(--fg);background:var(--accent-soft)}
+.chip i{width:8px;height:8px;border-radius:50%;display:inline-block}
+.olv{font-family:var(--f-text);font-size:1.2rem;line-height:1.85;max-width:68ch}
+.v{display:grid;grid-template-columns:44px minmax(0,1fr);gap:6px;border-radius:6px;scroll-margin-top:120px}
+.v.sel{background:var(--accent-soft)}
+.marg{display:flex;flex-direction:column;align-items:flex-end;gap:2px;padding-top:.55em}
+.mj{all:unset;cursor:pointer;font-family:var(--f-mono);font-size:.62rem;line-height:1;padding:2px 4px;border-radius:3px;white-space:nowrap}
+.mj.kh{color:var(--accent);border:1px solid color-mix(in srgb, var(--accent) 40%, transparent)}
+.mj.mo{color:var(--panel);background:var(--gold)}
+.mj.te{color:var(--low);border:1px solid color-mix(in srgb, var(--low) 40%, transparent)}
+body.ki-kh .mj.kh, body.ki-mo .mj.mo, body.ki-te .mj.te{display:none}
+.vt{padding:0 6px}
+.vsz{all:unset;cursor:pointer;font-family:var(--f-ui);font-size:.62em;font-weight:600;color:var(--accent);vertical-align:.45em;margin-right:4px}
+.w{cursor:pointer;border-radius:3px}
+.w.p{text-decoration:underline dotted color-mix(in srgb, var(--accent) 55%, transparent);text-underline-offset:4px}
+body.ki-par .w.p{text-decoration:none}
+.w:hover{background:var(--gold-soft)}
+.w.on{background:var(--gold-soft);box-shadow:inset 0 -2px 0 var(--gold)}
+.akcio{display:flex;flex-wrap:wrap;gap:6px;padding:4px 6px 8px 6px;font-family:var(--f-ui)}
+.akcio button{all:unset;cursor:pointer;font-size:.78rem;padding:2px 9px;border-radius:5px;border:1px solid var(--rule);background:var(--panel)}
+.akcio button:hover{border-color:var(--accent)}
+/* szó-kártya */
+.kartya{position:absolute;z-index:25;width:min(300px, calc(100vw - 32px));background:var(--panel);border:1px solid var(--rule);border-radius:10px;box-shadow:0 10px 30px rgb(0 0 0 / .22);padding:12px;display:grid;gap:6px;font-size:.86rem}
+.kartya .h{font-family:var(--f-he);font-size:1.7rem;line-height:1.1;direction:rtl;text-align:right}
+.kartya .sor{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:.8rem}
+.kartya a, .linkgomb{all:unset;cursor:pointer;color:var(--accent);text-decoration:underline;font-size:.82rem}
+/* panel */
+aside.panel{position:sticky;top:110px;max-height:calc(100vh - 130px);overflow:auto;background:var(--panel);border:1px solid var(--rule);border-radius:10px;min-width:0}
+@media (max-width:980px){aside.panel{position:static;max-height:none}}
+.fulek{display:flex;border-bottom:1px solid var(--rule);position:sticky;top:0;background:var(--panel)}
+.fulek button{all:unset;cursor:pointer;flex:1;text-align:center;padding:9px 4px;font-size:.82rem;color:var(--muted);border-bottom:2px solid transparent}
+.fulek button[aria-selected="true"]{color:var(--fg);border-color:var(--accent);font-weight:600}
+.fulek .db{font-family:var(--f-mono);font-size:.7rem;color:var(--muted);margin-left:3px}
+.ptart{padding:14px;display:grid;gap:10px}
+.ptart h3{margin:0;font-family:var(--f-text);font-size:1.15rem}
+.kar{font-family:var(--f-text);font-size:1.05rem;line-height:1.7}
+.hsor{direction:rtl;font-family:var(--f-he);font-size:1.3rem;line-height:1.9;display:flex;flex-wrap:wrap;gap:2px 8px}
+.hsor span{cursor:pointer;border-radius:3px;padding:0 2px}
+.hsor span.on{background:var(--gold-soft)}
+.lista{display:grid;gap:4px}
+.lista > div{font-size:.86rem;border-top:1px solid var(--rule);padding-top:4px}
+.forras{font-size:.72rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:6px}
+.kovet{display:flex;align-items:center;gap:6px;font-size:.75rem;color:var(--muted);padding:8px 14px 0}
+/* választó */
+.atfed{position:fixed;inset:0;background:rgb(0 0 0 / .35);z-index:40;display:grid;place-items:start center;padding-top:calc(env(safe-area-inset-top, 0px) + 60px);padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.valaszto{background:var(--panel);border:1px solid var(--rule);border-radius:12px;width:min(880px, 100%);max-height:calc(100vh - 100px);overflow:auto;padding:16px;display:grid;gap:12px}
+.vfej{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.vfej h2{margin:0;font-family:var(--f-text);font-size:1.25rem}
+.mufaj{display:grid;gap:6px}
+.mufaj .eyebrow{display:flex;align-items:center;gap:6px}
+.mufaj .eyebrow i{width:10px;height:10px;border-radius:2px;background:var(--gc)}
+.kracs{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:4px}
+.kg{all:unset;cursor:pointer;text-align:center;padding:7px 2px;border-radius:5px;font-size:.84rem;font-weight:500;border:1px solid color-mix(in srgb, var(--gc) 40%, transparent);background:color-mix(in srgb, var(--gc) 10%, transparent)}
+.kg:hover,.kg:focus-visible{background:color-mix(in srgb, var(--gc) 28%, transparent)}
+.kg.itt{background:var(--gc);color:var(--panel)}
+.fracs{display:grid;grid-template-columns:repeat(auto-fill,minmax(44px,1fr));gap:4px}
+.fg{all:unset;cursor:pointer;text-align:center;padding:8px 0;border-radius:5px;border:1px solid var(--rule);font-family:var(--f-mono);font-size:.85rem}
+.fg:hover{background:var(--accent-soft)} .fg.itt{background:var(--accent);color:var(--panel)}
+/* alsó sáv */
+footer.also{position:fixed;left:0;right:0;bottom:0;z-index:15;background:var(--panel);border-top:1px solid var(--rule);padding-bottom:env(safe-area-inset-bottom, 0px)}
+.asor{display:flex;align-items:center;gap:10px;padding-block:6px;max-width:1220px;margin:0 auto;flex-wrap:wrap}
+.elozm{display:flex;gap:6px;flex-wrap:wrap;align-items:center;font-size:.78rem;color:var(--muted);flex:1;min-width:0}
+.elozm button{all:unset;cursor:pointer;font-family:var(--f-mono);font-size:.75rem;padding:1px 7px;border-radius:4px;border:1px solid var(--rule);color:var(--fg)}
+.billen{font-size:.72rem;color:var(--muted)}
+.billen kbd{font-family:var(--f-mono);border:1px solid var(--rule);border-radius:3px;padding:0 4px}
+@media (max-width:640px){.billen{display:none}}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(env(safe-area-inset-bottom, 0px) + 64px);background:var(--fg);color:var(--bg);padding:8px 14px;border-radius:8px;font-size:.85rem;z-index:50;max-width:calc(100vw - 32px)}
+/* magyarázat-jegyzék */
+.jegyzek{max-width:1220px;margin:0 auto;padding-block:0 100px}
+.jegyzek details{background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:12px 16px}
+.jegyzek summary{cursor:pointer;font-weight:600}
+.jl{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin-top:12px}
+.jl > div{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 10px;font-size:.84rem;align-items:start}
+.jl b{font-weight:600}
+.jl .ih{grid-column:2;font-size:.76rem;color:var(--muted)}
+.jl .ma{grid-column:2;font-size:.76rem;color:var(--muted);border-left:3px solid var(--gold);padding-left:6px}
+</style>
+
+<header class="top">
+  <div class="sor1 gut">
+    <span class="logo">PaRDeS olvasó</span>
+    <button class="morzsa" id="morzsa" aria-haspopup="dialog"><span class="num">1</span><span id="morzsaTxt"></span> <small>▾</small></button>
+    <div class="omni"><span class="num" style="position:absolute;left:-26px;top:7px">2</span><span class="ik">⌕</span>
+      <input id="omni" type="search" autocomplete="off" placeholder="Igehely, Strong-szám, motívum vagy szó…" aria-label="Gyorsugrás és keresés">
+      <kbd>/</kbd>
+      <div class="javaslat" id="javaslat" hidden role="listbox"></div>
+    </div>
+    <div class="lep"><button class="ib" id="elozo" aria-label="Előző fejezet">‹</button><button class="ib" id="kovetkezo" aria-label="Következő fejezet">›</button></div>
+    <button class="ib" id="beall" aria-expanded="false" aria-label="Beállítások"><span class="num" style="margin-right:4px">3</span>⚙</button>
+  </div>
+  <div class="gut"><div class="kanon" id="kanon" aria-label="A kánon könyvei"><span class="num" style="margin-right:6px;align-self:center">4</span></div></div>
+  <div class="menu" id="menu" hidden>
+    <div class="eyebrow">Nézet</div>
+    <div class="seg" id="nezet"><button aria-pressed="true">Olvasás</button><button aria-pressed="false">Interlineáris</button><button aria-pressed="false">Munkaasztal</button></div>
+    <div class="eyebrow">Téma</div>
+    <div class="seg" id="tema"><button aria-pressed="true" data-t="">Rendszer</button><button aria-pressed="false" data-t="light">Világos</button><button aria-pressed="false" data-t="dark">Sötét</button></div>
+    <div class="eyebrow">Hozzáférési szint</div>
+    <div class="seg"><button aria-pressed="false">nyilvános</button><button aria-pressed="false">regisztrált</button><button aria-pressed="true">kutató</button></div>
+    <label style="font-size:.84rem;display:flex;gap:8px;align-items:center" for="magy"><input type="checkbox" id="magy" checked> A mockup magyarázó számai</label>
+    <p style="margin:0;font-size:.75rem;color:var(--muted)">A „Tervező” kapcsoló is ide kerülne, csak a belső kiadásban.</p>
+  </div>
+</header>
+
+<div class="fo gut">
+  <main class="szoveg">
+    <div class="fejcim">
+      <h1 id="cim"></h1>
+      <button class="info" id="infoGomb" aria-expanded="false"><span class="num">5</span> forrás és jelölések</button>
+    </div>
+    <div class="infodoboz" id="infodoboz" hidden>
+      <div>Károli-szöveg <span class="pill f">forrásadat</span> Karoli_1908, közkincs</div>
+      <div>A pontozott aláhúzás: Károli–Strong párosítás <span class="pill m">modell-kimenet</span> Karoli_Strong_parok, minden jog fenntartva</div>
+      <div>Kereszthivatkozás: Karoli_kereszthivatkozasok (Károli-KH) · Témák: Nave (angol címszavak) · Motívum: adat/elofordulasok.tsv</div>
+      <div>32 vers · 228 héber szó-lap · BDB magyarul 141/228</div>
+    </div>
+    <div class="szurok" role="group" aria-label="Jelölések a szövegben"><span class="num">6</span>
+      <button class="chip" aria-pressed="true" data-ki="ki-par"><i style="background:var(--accent)"></i>kapcsolt szavak</button>
+      <button class="chip" aria-pressed="true" data-ki="ki-kh"><i style="background:var(--accent)"></i>kereszthivatkozás</button>
+      <button class="chip" aria-pressed="true" data-ki="ki-mo"><i style="background:var(--gold)"></i>motívum</button>
+      <button class="chip" aria-pressed="false" data-ki="ki-te"><i style="background:var(--low)"></i>témák</button>
+    </div>
+    <div class="olv" id="olv"></div>
+  </main>
+  <aside class="panel" aria-label="A kijelölt vers részletei">
+    <div class="kovet"><span class="num">8</span> a panel a kijelölt verset követi</div>
+    <div class="fulek" role="tablist" id="fulek"></div>
+    <div class="ptart" id="ptart"></div>
+  </aside>
+</div>
+
+<section class="jegyzek gut">
+  <details open>
+    <summary>Mi változik, és honnan jön az ötlet?</summary>
+    <div class="jl" id="jl"></div>
+  </details>
+</section>
+
+<footer class="also">
+  <div class="asor gut">
+    <span class="num">9</span>
+    <div class="elozm" id="elozm"><span>Legutóbb:</span></div>
+    <span class="billen"><kbd>j</kbd>/<kbd>k</kbd> vers · <kbd>[</kbd>/<kbd>]</kbd> fejezet · <kbd>/</kbd> keresés · <kbd>g</kbd> könyvválasztó</span>
+  </div>
+</footer>
+
+<div class="atfed" id="atfed" hidden>
+  <div class="valaszto" role="dialog" aria-modal="true" aria-labelledby="vcim">
+    <div class="vfej"><h2 id="vcim">Könyv kiválasztása</h2><div style="display:flex;gap:8px"><button class="ib" id="vissza" hidden>‹ Könyvek</button><button class="ib" id="bezar" aria-label="Bezárás">✕</button></div></div>
+    <div id="vtart"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast" hidden></div>
+<div class="kartya" id="kartya" hidden></div>
+
+<script>
+const D = __DATA__;
+const $ = id => document.getElementById(id);
+const h = (tag, cls, txt) => { const e = document.createElement(tag); if(cls) e.className = cls; if(txt != null) e.textContent = txt; return e; };
+const MUFAJ = [["Törvény","--g-tor",0,5],["Történeti könyvek","--g-tort",5,17],["Költői és bölcsességi könyvek","--g-bolcs",17,22],["Nagypróféták","--g-prof",22,27],["Kispróféták","--g-kis",27,39],
+  ["Evangéliumok és Apostolok Cselekedetei","--g-ev",39,44],["Pál levelei","--g-lev",44,57],["Általános levelek","--g-lev",57,65],["Jelenések","--g-apok",65,66]];
+const mufajSzin = i => MUFAJ.find(m => i >= m[2] && i < m[3])[1];
+const K = D.konyvek, KI = K.findIndex(k => k[0] === D.konyv);
+let selVers = null, selSzo = null, ful = "vers";
+let toastT;
+function toast(t){ const e = $("toast"); e.textContent = t; e.hidden = false; clearTimeout(toastT); toastT = setTimeout(()=> e.hidden = true, 3200); }
+const nincsBetoltve = hely => toast(`${hely}: a mockupban csak a Jóel 2 szövege van betöltve.`);
+
+$("morzsaTxt").textContent = `${D.konyv} ${D.fej}`;
+$("cim").textContent = `${K[KI][1]} ${D.fej}. fejezet`;
+
+// kánon-sáv
+(() => { const s = $("kanon");
+  K.forEach(([kk, nev, nf], i) => {
+    if(i === 39){ const sz = h("button","sziv"); sz.tabIndex = -1; sz.setAttribute("aria-hidden","true"); s.append(sz); }
+    const b = h("button", i === KI ? "itt" : ""); b.style.setProperty("--gc", `var(${mufajSzin(i)})`); b.style.flexGrow = Math.max(nf, 1);
+    b.title = `${nev} · ${nf} fejezet`; b.setAttribute("aria-label", b.title);
+    b.onclick = () => nyitValaszto(i); s.append(b); });
+})();
+
+// szöveg
+const szoIdx = {}; // igehely -> hu_sorszam -> [strong, biz]
+for(const ih in D.par) D.par[ih].forEach(([hs, st, biz]) => { (szoIdx[ih] = szoIdx[ih] || {})[hs] = (szoIdx[ih][hs] || []).concat([[st, biz]]); });
+function rajzol(){
+  const o = $("olv"); o.innerHTML = "";
+  D.versek.forEach(([ih, vsz, t]) => {
+    const v = h("div","v"+(selVers===ih?" sel":"")); v.id = "v"+vsz;
+    const m = h("div","marg");
+    const kh = D.kh[ih] || [], te = D.nave[ih] || [], mo = D.motv[ih] || [];
+    mo.forEach(([id]) => { const b = h("button","mj mo", id.split("-")[0].slice(0,5)+"…"); b.title = `motívum: ${id}`; b.onclick = e => { e.stopPropagation(); valaszt(ih, "motivum"); }; m.append(b); });
+    if(kh.length){ const b = h("button","mj kh", `↗${kh.length}`); b.title = `${kh.length} kereszthivatkozás`; b.onclick = e => { e.stopPropagation(); valaszt(ih, "kh"); }; m.append(b); }
+    if(te.length){ const b = h("button","mj te", `#${te.length}`); b.title = `${te.length} Nave-téma`; b.onclick = e => { e.stopPropagation(); valaszt(ih, "temak"); }; m.append(b); }
+    const vt = h("div","vt");
+    const n = h("button","vsz", vsz); n.setAttribute("aria-label", `${ih} kijelölése`); n.onclick = () => valaszt(ih); vt.append(n);
+    t.split(/\s+/).forEach((w, i) => {
+      const par = szoIdx[ih] && szoIdx[ih][i+1];
+      const s = h("span","w"+(par?" p":"")+(selSzo && selSzo.ih===ih && selSzo.i===i ? " on":""), w);
+      s.onclick = e => { e.stopPropagation(); szoKattint(ih, i, w, s); };
+      vt.append(s, " ");
+    });
+    if(selVers === ih){
+      const a = h("div","akcio");
+      [["Részletek", ()=>valaszt(ih,"vers")], [`Kereszthivatkozások (${kh.length})`, ()=>valaszt(ih,"kh")], ["Héber és LXX", ()=>valaszt(ih,"vers")],
+       ["Másolás forrással", ()=>masol(ih, t)]].forEach(([c, f]) => { const b = h("button", null, c); b.onclick = e => { e.stopPropagation(); f(); }; a.append(b); });
+      const s0 = h("span","num","7"); s0.style.alignSelf = "center"; a.prepend(s0);
+      vt.append(a);
+    }
+    v.onclick = () => valaszt(ih);
+    v.append(m, vt); o.append(v);
+  });
+}
+function masol(ih, t){
+  const s = `„${t}” (${ih}, Károli 1908) — forrás: Karoli_1908, közkincs`;
+  navigator.clipboard?.writeText(s).then(()=>toast("Kimásolva, a forrássorral együtt."), ()=>toast(s));
+}
+
+// szó-kártya (rámutatás helyett kattintás, hogy telefonon is működjön)
+function morfHu(m){ if(!m) return ""; const sz = {V:"ige",N:"főnév",A:"melléknév",R:"elöljáró",C:"kötőszó",D:"határozószó",T:"partikula",P:"névmás",S:"rag"}[m[0]] || "";
+  const t = m[0]==="V" ? ({q:"Qal",N:"Nifal",p:"Piel",P:"Pual",h:"Hifil",H:"Hofal",t:"Hitpael"}[m[1]]||"") : ""; return [sz, t].filter(Boolean).join(", "); }
+function szoKattint(ih, i, w, el){
+  selSzo = {ih, i}; const par = (szoIdx[ih] || {})[i+1];
+  if(selVers !== ih) selVers = ih;
+  ful = "szo"; rajzol(); panel(); elozmenyhez(ih);
+  const k = $("kartya"); k.innerHTML = "";
+  const cel = document.querySelector(`#v${ih.split(":")[1]} .w:nth-of-type(${i+1})`) || el;
+  if(!par){ k.append(h("div",null,`„${w}”`), h("div","sor","Ehhez a szóhoz nincs Károli–Strong pár.")); }
+  else par.forEach(([st, biz]) => {
+    const tok = (D.heb[ih] || []).find(x => x[1] === st); const sz = D.szotar[st];
+    if(tok) k.append(h("div","h", tok[0]));
+    const s1 = h("div","sor"); s1.append(h("span",null, sz ? sz[1] : ""), h("span","mono", st)); k.append(s1);
+    if(tok) k.append(h("div",null, `${tok[3]}${tok[2] ? " · " + morfHu(tok[2]) : ""}`));
+    if(tok && tok[4]){ const g = h("div","sor"); g.append("LXX:", h("span","gr", tok[4])); k.append(g); }
+    const s2 = h("div","sor"); s2.append(h("span",null, `Károli: „${w}”`)); const p = h("span","pill m", `pár: ${biz}`); s2.append(p); k.append(s2);
+    if(sz){ const a = h("button","linkgomb", `Szó-lap: ${sz[3]} előfordulás →`); a.onclick = () => toast("A szó-lap a konkordancia-mockupban látható (H7121)."); k.append(a); }
+  });
+  const r = cel.getBoundingClientRect();
+  k.hidden = false;
+  const x = Math.min(window.scrollX + r.left, window.scrollX + document.documentElement.clientWidth - k.offsetWidth - 16);
+  k.style.left = Math.max(16, x) + "px"; k.style.top = (window.scrollY + r.bottom + 6) + "px";
+}
+document.addEventListener("click", e => { if(!e.target.closest(".kartya") && !e.target.closest(".w")) $("kartya").hidden = true; });
+
+// panel
+function valaszt(ih, f){
+  selVers = ih; if(f) ful = f; else if(ful === "szo") ful = "vers";
+  if(!f || f !== "szo") selSzo = f === "szo" ? selSzo : null;
+  rajzol(); panel(); elozmenyhez(ih);
+}
+function panel(){
+  const fk = $("fulek"), pt = $("ptart"); fk.innerHTML = ""; pt.innerHTML = "";
+  const ih = selVers;
+  const fulek = [["vers","Vers"],["szo","Szó"],["kh","Kereszthiv.", ih ? (D.kh[ih]||[]).length : 0],["temak","Témák", ih ? (D.nave[ih]||[]).length : 0],["motivum","Motívum", ih ? (D.motv[ih]||[]).length : 0]];
+  fulek.forEach(([k, c, n]) => { const b = h("button", null, c); b.setAttribute("role","tab"); b.setAttribute("aria-selected", ful===k ? "true":"false");
+    if(n) b.append(h("span","db", n)); b.onclick = () => { ful = k; panel(); }; fk.append(b); });
+  if(!ih){ pt.append(h("h3",null,"Kattints egy versre vagy szóra"), h("p",null,"A panel mindig a kijelölt verset mutatja; görgetéskor nem kell visszakeresni.")); return; }
+  const [ , , t] = D.versek.find(v => v[0] === ih);
+  if(ful === "vers"){
+    pt.append(h("h3",null, ih), h("div","kar", t));
+    const hs = h("div","hsor"); (D.heb[ih]||[]).forEach(x => { const s = h("span", null, x[0]); s.title = `${x[1]} · ${x[3]}`; hs.append(s); }); pt.append(h("div","eyebrow","Héber szöveg"), hs);
+    const lx = (D.heb[ih]||[]).map(x=>x[4]).filter(Boolean).join(" ");
+    if(lx){ pt.append(h("div","eyebrow","LXX-megfelelők (Macula, szavanként)")); pt.append(h("div","gr", lx)); }
+    pt.append(h("div","forras","Karoli_1908 · token_macula (CC BY 4.0) · a teljes blokk-készlet (Strong, BDB, SDBH…) a „Szó” fülön és a szó-lapon"));
+  } else if(ful === "szo"){
+    if(!selSzo || selSzo.ih !== ih){ pt.append(h("p",null,"Kattints a vers egy szavára: itt jelenik meg a szó adatlapja, a kártya mellett.")); return; }
+    const w = t.split(/\s+/)[selSzo.i]; const par = (szoIdx[ih]||{})[selSzo.i+1] || [];
+    pt.append(h("h3",null, `„${w}”`));
+    if(!par.length) pt.append(h("p",null,"Nincs Károli–Strong pár ehhez a szóhoz."));
+    par.forEach(([st, biz]) => { const tok = (D.heb[ih]||[]).find(x=>x[1]===st); const sz = D.szotar[st];
+      const d = h("div","lista"); if(tok){ const e = h("div","he", tok[0]); e.style.fontSize="1.6rem"; d.append(e); }
+      d.append(h("div",null, `${st}${sz ? " · " + sz[1] + " · " + sz[2] : ""}`));
+      if(tok) d.append(h("div",null, `igealak: ${morfHu(tok[2]) || tok[2]} · angol glossza: ${tok[3]}`));
+      if(sz) d.append(h("div",null, `${sz[3]} előfordulás az ÓSZ-ben`));
+      d.append(h("div",null, `Károli–Strong pár bizonyossága: ${biz}`)); pt.append(d); });
+    pt.append(h("div","forras","token_par (modell-kimenet) · token_macula · strong_szotar · token_strong"));
+  } else if(ful === "kh"){
+    const l = D.kh[ih] || []; pt.append(h("h3",null, `${ih} — kereszthivatkozások`));
+    if(!l.length) pt.append(h("p",null,"Ehhez a vershez a Károli-kereszthivatkozások között nincs bejegyzés."));
+    const d = h("div","lista"); l.forEach(x => { const r = h("div"); const b = h("button","linkgomb", x.replace(",",":")); b.onclick = () => nincsBetoltve(x.replace(",",":")); r.append(b); d.append(r); }); pt.append(d);
+    pt.append(h("div","forras","konkordancia/Karoli_kereszthivatkozasok.tsv (STEPBible-alak, normalizálva)"));
+  } else if(ful === "temak"){
+    const l = D.nave[ih] || []; pt.append(h("h3",null, `${ih} — Nave-témák`));
+    const d = h("div","lista"); l.forEach(x => d.append(h("div",null, x))); pt.append(d);
+    pt.append(h("div","forras","nave_vers · Nave's Topical Bible (angol címszavak, fordítás nélkül)"));
+  } else if(ful === "motivum"){
+    const l = D.motv[ih] || []; pt.append(h("h3",null, `${ih} — motívumok`));
+    if(!l.length) pt.append(h("p",null,"Ez a vers egyetlen lezárt motívumnak sem előfordulása. (Az üres eredmény is eredmény.)"));
+    l.forEach(([id, c]) => { const d = h("div","lista"); d.append(h("div","mono", id), h("div","kar", c)); const b = h("button","linkgomb","Motívumlap →"); b.onclick = () => toast("A motívumlap a lexikonban; a mockup nem tölti be."); d.append(b); pt.append(d); });
+    pt.append(h("div","forras","adat/elofordulasok.tsv, adat/motivumok.tsv"));
+  }
+}
+
+// előzmények
+const hist = [];
+function elozmenyhez(ih){ const i = hist.indexOf(ih); if(i >= 0) hist.splice(i,1); hist.unshift(ih); hist.length = Math.min(hist.length, 6);
+  const e = $("elozm"); e.innerHTML = ""; e.append(h("span",null,"Legutóbb:"));
+  hist.forEach(x => { const b = h("button", null, x); b.onclick = () => { valaszt(x); document.getElementById("v"+x.split(":")[1]).scrollIntoView({block:"center"}); }; e.append(b); }); }
+
+// könyv- és fejezetválasztó
+function nyitValaszto(fokusz){
+  $("atfed").hidden = false; $("vissza").hidden = true; $("vcim").textContent = "Könyv kiválasztása";
+  const t = $("vtart"); t.innerHTML = "";
+  MUFAJ.forEach(([nev, szin, a, b]) => {
+    const m = h("div","mufaj"); m.style.setProperty("--gc", `var(${szin})`);
+    const e = h("div","eyebrow"); e.append(h("i"), nev); m.append(e);
+    const r = h("div","kracs");
+    for(let i = a; i < b; i++){ const g = h("button","kg"+(i===KI?" itt":""), K[i][0]); g.style.setProperty("--gc", `var(${szin})`); g.title = `${K[i][1]} · ${K[i][2]} fejezet`; g.onclick = () => fejezetek(i); r.append(g); }
+    m.append(r); t.append(m);
+  });
+  if(typeof fokusz === "number") fejezetek(fokusz); else t.querySelector(".kg.itt")?.focus();
+}
+function fejezetek(i){
+  $("vissza").hidden = false; $("vcim").textContent = K[i][1];
+  const t = $("vtart"); t.innerHTML = "";
+  const r = h("div","fracs");
+  for(let f = 1; f <= K[i][2]; f++){ const g = h("button","fg"+(i===KI && f===D.fej ? " itt":""), f);
+    g.onclick = () => { zarValaszto(); if(i===KI && f===D.fej) return; nincsBetoltve(`${K[i][0]} ${f}`); }; r.append(g); }
+  t.append(r); r.querySelector("button")?.focus();
+}
+function zarValaszto(){ $("atfed").hidden = true; $("morzsa").focus(); }
+$("morzsa").onclick = () => nyitValaszto(); $("bezar").onclick = zarValaszto; $("vissza").onclick = () => nyitValaszto();
+$("atfed").onclick = e => { if(e.target === $("atfed")) zarValaszto(); };
+
+// gyorsugró
+const KNEV = K.map(([kk, nev], i) => ({kk, nev, i, n: nev.toLocaleLowerCase("hu"), a: kk.toLocaleLowerCase("hu")}));
+let jvLista = [], jvAkt = 0;
+function javasol(q){
+  const s = q.trim(), l = s.toLocaleLowerCase("hu"), ki = [];
+  const m = s.match(/^(\d?\s*[^\d\s:]+)\s*(\d+)?(?:[:,.\s]\s*(\d+))?$/);
+  if(m){ const b = m[1].replace(/\s+/g,"").toLocaleLowerCase("hu");
+    KNEV.filter(k => k.a.startsWith(b) || k.n.replace(/\s+/g,"").startsWith(b)).slice(0,4).forEach(k => {
+      const hely = `${k.kk}${m[2] ? " " + m[2] : ""}${m[3] ? ":" + m[3] : ""}`;
+      ki.push({t:"igehely", c:hely, m:`${k.nev}${m[2] ? "" : " · " + K[k.i][2] + " fejezet"}`, f:() => ugrik(k.i, +m[2] || null, +m[3] || null)}); }); }
+  const st = s.match(/^([HhGg])\s*0*(\d{1,5})$/);
+  if(st){ const kod = st[1].toUpperCase() + st[2].padStart(4,"0"); const sz = D.szotar[kod];
+    ki.push({t:"Strong-szám", c:kod, m: sz ? `${sz[0]} · ${sz[2]} · ${sz[3]} előfordulás` : "szó-lap", f:() => toast(`${kod}: a szó-lap a konkordancia-mockupban látható.`)}); }
+  D.motivumok.filter(([id, c]) => l.length > 2 && (id.toLowerCase().includes(l) || c.toLocaleLowerCase("hu").includes(l))).slice(0,3).forEach(([id, c]) =>
+    ki.push({t:"motívum", c:id, m:c, f:() => toast(`${id}: a motívumlap a lexikonban; a mockup nem tölti be.`)}));
+  if(l.length > 2 && !st){ const talal = D.versek.filter(v => v[2].toLocaleLowerCase("hu").includes(l));
+    talal.slice(0,3).forEach(v => ki.push({t:"ebben a fejezetben", c:v[0], m:v[2].slice(0,80)+"…", f:() => ugrik(KI, D.fej, v[1])}));
+    if(!ki.some(j => j.t === "igehely")) ki.push({t:"szöveg", c:`„${s}”`, m:"keresés a teljes Károliban (a szerveren még nincs)", f:() => toast("A teljes szöveges keresés a szerver következő kiadásában jönne.")}); }
+  return ki.slice(0,8);
+}
+function ugrik(ki, f, v){
+  zarJavaslat(); $("omni").blur();
+  if(ki !== KI || (f && f !== D.fej)){ nincsBetoltve(`${K[ki][0]}${f ? " " + f : ""}`); return; }
+  if(v){ const ih = `${D.konyv} ${D.fej}:${v}`; valaszt(ih); document.getElementById("v"+v)?.scrollIntoView({block:"center"}); }
+}
+function mutatJavaslat(){
+  const box = $("javaslat"); jvLista = javasol($("omni").value); jvAkt = 0; box.innerHTML = "";
+  if(!jvLista.length){ box.hidden = true; return; }
+  jvLista.forEach((j, i) => { const b = h("button","jv"+(i===0?" akt":"")); b.setAttribute("role","option"); b.append(h("span","t", j.t)); const d = h("span"); d.append(h("b",null,j.c), " ", h("span","m", j.m)); b.append(d); b.onclick = j.f; box.append(b); });
+  box.hidden = false;
+}
+function zarJavaslat(){ $("javaslat").hidden = true; }
+$("omni").addEventListener("input", mutatJavaslat);
+$("omni").addEventListener("focus", () => { if($("omni").value) mutatJavaslat(); });
+$("omni").addEventListener("keydown", e => {
+  const bs = [...$("javaslat").children];
+  if(e.key === "ArrowDown" || e.key === "ArrowUp"){ e.preventDefault(); if(!bs.length) return; jvAkt = (jvAkt + (e.key==="ArrowDown"?1:-1) + bs.length) % bs.length; bs.forEach((b,i)=>b.classList.toggle("akt", i===jvAkt)); }
+  else if(e.key === "Enter"){ e.preventDefault(); jvLista[jvAkt]?.f(); }
+  else if(e.key === "Escape"){ zarJavaslat(); $("omni").blur(); }
+});
+document.addEventListener("click", e => { if(!e.target.closest(".omni")) zarJavaslat(); if(!e.target.closest("#menu") && !e.target.closest("#beall")){ $("menu").hidden = true; $("beall").setAttribute("aria-expanded","false"); } });
+
+// beállítások
+$("beall").onclick = () => { const m = $("menu"); m.hidden = !m.hidden; $("beall").setAttribute("aria-expanded", String(!m.hidden)); };
+document.querySelectorAll("#menu .seg").forEach(sg => sg.querySelectorAll("button").forEach(b => b.onclick = () => {
+  sg.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", String(x===b)));
+  if(sg.id === "tema"){ if(b.dataset.t) document.documentElement.setAttribute("data-theme", b.dataset.t); else document.documentElement.removeAttribute("data-theme"); }
+  if(sg.id === "nezet" && b.textContent !== "Olvasás") toast(`${b.textContent}: ugyanez a fejléc és panel, más szövegoszlop; a mockup az olvasó nézetet mutatja.`);
+}));
+$("magy").onchange = e => document.body.classList.toggle("nomagy", !e.target.checked);
+$("infoGomb").onclick = () => { const d = $("infodoboz"); d.hidden = !d.hidden; $("infoGomb").setAttribute("aria-expanded", String(!d.hidden)); };
+document.querySelectorAll(".szurok .chip").forEach(c => c.onclick = () => { const on = c.getAttribute("aria-pressed") !== "true"; c.setAttribute("aria-pressed", String(on)); document.body.classList.toggle(c.dataset.ki, !on); });
+document.body.classList.add("ki-te");
+
+// fejezetléptetés és billentyűk
+$("elozo").onclick = () => nincsBetoltve(`${D.konyv} ${D.fej-1}`);
+$("kovetkezo").onclick = () => nincsBetoltve(`${D.konyv} ${D.fej+1}`);
+document.addEventListener("keydown", e => {
+  if(e.target.closest("input, select, textarea") || !$("atfed").hidden && e.key !== "Escape") return;
+  if(e.key === "Escape"){ zarValaszto(); $("kartya").hidden = true; return; }
+  if(e.key === "/"){ e.preventDefault(); $("omni").focus(); }
+  else if(e.key === "g"){ nyitValaszto(); }
+  else if(e.key === "j" || e.key === "k"){ const i = D.versek.findIndex(v => v[0] === selVers); const n = Math.max(0, Math.min(D.versek.length-1, i + (e.key==="j"?1:-1) + (i<0 && e.key==="k" ? 1 : 0)));
+    const v = D.versek[i < 0 ? 0 : n]; valaszt(v[0]); document.getElementById("v"+v[1]).scrollIntoView({block:"center"}); }
+  else if(e.key === "[") $("elozo").click(); else if(e.key === "]") $("kovetkezo").click();
+});
+
+// jegyzék
+[["1","Morzsa és könyvválasztó","Olive Tree, YouVersion, Accordance: két lépés, műfajonként színezett könyvrács, majd fejezetrács.","Ma: lenyíló lista és három beviteli mező a kezdőlapon, illetve 66 sornyi könyvlista."],
+ ["2","Egy mező mindenre","Logos „Go” mező, Accordance: igehely, Strong-szám, motívum vagy szó, típus szerinti javaslatokkal; billentyűzettel vezérelhető.","Ma: „Ugrás” mező, csak igehely és Strong-szám; a szöveges keresés még nincs."],
+ ["3","Egy sorba húzott fejléc","YouVersion, ESV: a ritkán használt kapcsolók (szint, téma, nézet, Tervező) egy menübe kerülnek.","Ma: két sor fejléc, hat vezérlőcsoporttal."],
+ ["4","Kánon-sáv","Logos Bible Browser, Accordance: a 66 könyv a fejezetszámával arányos szélességű sávként, műfaj szerinti színnel; jelzi, hol jársz, és egy kattintással ugrik.","Ma: nincs."],
+ ["5","A szöveg kerül előre","Bible Gateway, YouVersion olvasómód: a forrás- és licencsorok, a számlálók egy kinyitható „forrás és jelölések” dobozba kerülnek.","Ma: négy pill, egy útmutató és két forrásblokk a szöveg előtt."],
+ ["6","Jelölések ki- és bekapcsolása","Logos Visual Filters: kapcsolt szavak, kereszthivatkozás, motívum, témák jele a margón; mindegyik külön kapcsolható.","Ma: csak a „Kapcsolt szavak jelölése” kapcsoló."],
+ ["7","Vers-műveletek helyben","YouVersion, Olive Tree: a kijelölt vers alatt rövid műveletsor; a „Másolás forrással” a proveniencia-szabályt az olvasóra is kiterjeszti.","Ma: a vers-kijelölés a jobb panelt tölti, művelet nincs."],
+ ["8","A versnek követő panel, fülekkel","Logos linked panels, Accordance Instant Details, STEPBible: Vers, Szó, Kereszthivatkozás, Témák, Motívum; a szóra kattintva kártya is nyílik.","Ma: két fül (Szó, Vers részletei), a blokkok egymás alatt."],
+ ["9","Előzmények és billentyűk","Logos előzmények, Accordance: a legutóbbi helyek egy kattintásra; j/k vers, [ ] fejezet, / keresés, g könyvválasztó.","Ma: a böngésző Vissza gombja; billentyűparancs nincs."]]
+ .forEach(([n, c, ih, ma]) => { const d = h("div"); d.append(h("span","num",n), h("b",null,c), h("span","ih", ih), h("span","ma", ma)); $("jl").append(d); });
+
+rajzol(); panel();
+</script>

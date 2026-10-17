@@ -1,0 +1,11 @@
+.chip .uj{height:15px;font-size:.55rem;padding:0 4px}
+.kartya.v7{border-color:var(--low)}
+.v7fej{display:flex;gap:8px;align-items:center}
+.v7tip{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--low);font-weight:600}
+.v7szam{font-size:.86rem}
+.v7konyv{display:grid;gap:2px}
+.v7s{display:grid;grid-template-columns:4em minmax(0,1fr) 3em;gap:8px;align-items:center;font-size:.8rem}
+.v7s .tr{height:7px;background:var(--bg);border-radius:2px;position:relative;overflow:hidden}
+.v7s .fi{position:absolute;inset:0 auto 0 0;background:var(--low)}
+.v7s .n{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);text-align:right}
+.v7f{font-size:.68rem;color:var(--muted)}

@@ -1,0 +1,4 @@
+a.szo.nev{color:var(--low);font-weight:600;text-decoration:underline solid var(--low)!important;text-underline-offset:4px}
+a.szo.nev::after{content:"◆";font-size:.45em;vertical-align:.9em;margin-left:1px;color:var(--low)}
+:host(.v7ki) a.szo.nev{color:inherit;font-weight:inherit}
+:host(.v7ki) a.szo.nev::after{content:none}

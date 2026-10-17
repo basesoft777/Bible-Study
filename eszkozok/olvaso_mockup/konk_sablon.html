@@ -1,0 +1,524 @@
+<meta charset="utf-8">
+<title>Olvasói konkordancia-mockup</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Frank+Ruhl+Libre:wght@400;500&family=Noto+Serif:wght@400;500&display=swap">
+<style>
+/* Elrendezés: a szó-lap új szerkezete — fejléc és „egy pillantásra” sáv, alatta szűrő-panelek rácsban, majd a KWIC-konkordancia és a párhuzam-sor. A színek és betűk az olvasó saját arculati token-fájljából (konfig/arculat.json). */
+:root{
+  --bg:#f5f2ea; --panel:#fffdf8; --fg:#1b1a17; --muted:#58554d; --rule:#ddd7c9;
+  --accent:#1f5a49; --accent-soft:#e2eee8; --gold:#8a5a00; --gold-soft:#f7ecd2; --low:#7a5a93;
+  --f-text:"Source Serif 4","Noto Serif",Georgia,serif;
+  --f-ui:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  --f-he:"Frank Ruhl Libre","SBL Hebrew","Times New Roman",serif;
+  --f-gr:"Noto Serif","SBL Greek",Georgia,serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#151918; --panel:#1d2321; --fg:#e6e9e4; --muted:#9ba49f; --rule:#313936;
+  --accent:#8cc4b1; --accent-soft:#23362f; --gold:#e2b25a; --gold-soft:#3a2f1a; --low:#c3a6d8; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#151918; --panel:#1d2321; --fg:#e6e9e4; --muted:#9ba49f; --rule:#313936;
+  --accent:#8cc4b1; --accent-soft:#23362f; --gold:#e2b25a; --gold-soft:#3a2f1a; --low:#c3a6d8; color-scheme:dark }
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-ui);font-size:15px;line-height:1.5;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:24px 48px}
+.wrap{max-width:1200px;margin:0 auto;display:grid;gap:18px}
+h1,h2,h3{margin:0;text-wrap:balance}
+h2{font-family:var(--f-text);font-weight:600;font-size:1.2rem}
+.mono{font-family:var(--f-mono);font-size:.82rem}
+.he{font-family:var(--f-he)} .gr{font-family:var(--f-gr)}
+.eyebrow{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.note{font-size:.84rem;color:var(--muted);margin:0;max-width:78ch}
+.intro{display:grid;gap:6px}
+.intro p{margin:0;max-width:80ch;color:var(--muted)}
+/* keresősáv */
+.kereso{display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:10px 12px}
+.kereso .lbl{font-size:.8rem;color:var(--muted);margin-right:4px}
+.tok{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--accent);background:var(--accent-soft);color:var(--fg);border-radius:6px;padding:3px 8px;font-size:.85rem}
+.tok .x{all:unset;cursor:pointer;color:var(--muted);font-weight:600;padding:0 2px}
+.tok .x:focus-visible{outline:2px solid var(--accent)}
+.tok.off{border-style:dashed;background:transparent;color:var(--muted)}
+.plus{all:unset;cursor:pointer;font-size:.82rem;color:var(--accent);border:1px dashed var(--rule);border-radius:6px;padding:3px 8px}
+.plus:focus-visible{outline:2px solid var(--accent)}
+/* fejléc */
+.fej{background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:18px 20px;display:grid;gap:12px}
+.cim{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px}
+.cim .he{font-size:3rem;line-height:1}
+.cim .alap{font-family:var(--f-text);font-size:1.25rem}
+.pill{display:inline-block;font-size:.72rem;padding:1px 8px;border-radius:999px;border:1px solid var(--rule);color:var(--muted);vertical-align:2px}
+.pill.f{border-color:var(--accent);color:var(--accent)}
+.pill.m{border-color:var(--low);color:var(--low)}
+.pill.g{border-color:var(--gold);color:var(--gold)}
+.attek{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.attek > div{border-top:2px solid var(--rule);padding-top:6px;min-width:0}
+.attek b{display:block;font-family:var(--f-text);font-size:1.35rem;font-weight:600;font-variant-numeric:tabular-nums}
+.attek span{font-size:.78rem;color:var(--muted)}
+/* panelek */
+.racs{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:18px}
+@media (max-width:420px){.racs{grid-template-columns:minmax(0,1fr)}}
+.p{background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:16px;display:grid;gap:10px;align-content:start;min-width:0}
+.p.szeles{grid-column:1/-1}
+.ph{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 10px}
+.ihlet{font-size:.74rem;color:var(--muted);border:1px dashed var(--rule);border-radius:6px;padding:1px 8px}
+.ihlet b{color:var(--fg);font-weight:600}
+.ma{font-size:.78rem;color:var(--muted);border-left:3px solid var(--gold);background:var(--gold-soft);padding:4px 8px;border-radius:0 4px 4px 0}
+.ma b{color:var(--fg);font-weight:600}
+.forras{font-size:.74rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:6px}
+.svgbox{overflow-x:auto}
+svg text{font-family:var(--f-mono);fill:var(--muted)}
+/* vízszintes sávok */
+.bars{display:grid;gap:3px}
+.bar{all:unset;cursor:pointer;display:grid;grid-template-columns:minmax(90px,38%) minmax(0,1fr) 3.2em;gap:8px;align-items:center;font-size:.84rem;padding:2px 4px;border-radius:4px}
+.bar:hover,.bar:focus-visible{background:var(--accent-soft)}
+.bar:focus-visible{outline:2px solid var(--accent)}
+.bar.on{background:var(--accent-soft);box-shadow:inset 3px 0 0 var(--accent)}
+.bar.nul{opacity:.6}
+.bar.nul .l{color:var(--muted)}
+.bar .n{text-align:right;font-family:var(--f-mono);font-size:.78rem;font-variant-numeric:tabular-nums;color:var(--muted)}
+.bar .l{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bar.ket{grid-template-columns:minmax(0,1fr) 30% 3.2em;align-items:start;padding:4px}
+.bar.ket .l{white-space:normal;display:grid;gap:1px}
+.bar.ket .l small{font-size:.74rem;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bar.ket .track{margin-top:5px}
+.bar.al{margin-left:22px;font-size:.8rem}
+.bar .nyil{all:unset;cursor:pointer;color:var(--muted);width:1.1em;display:inline-block;text-align:center}
+.harom{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:24px}
+@media (max-width:760px){.harom{grid-template-columns:minmax(0,1fr)}}
+.hcol{display:grid;gap:6px;align-content:start;min-width:0}
+.kerdes{font-family:var(--f-text);font-size:1.08rem;font-weight:600}
+.track{height:10px;border-radius:2px;background:var(--bg);position:relative;overflow:hidden}
+.fill{position:absolute;inset:0 auto 0 0;background:var(--accent);border-radius:2px}
+.fill2{position:absolute;inset:0 auto 0 0;background:var(--gold);border-radius:2px}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:.76rem;color:var(--muted)}
+.sw{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+/* KWIC */
+.szurok{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.82rem;color:var(--muted)}
+.szurok .tok{font-size:.78rem}
+.szurok .plus{font-size:.76rem}
+.opciok{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;font-size:.82rem;color:var(--muted);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:8px 0}
+.opciok label{display:inline-flex;align-items:center;gap:6px;cursor:pointer}
+.opciok select{font:inherit;color:var(--fg);background:var(--panel);border:1px solid var(--rule);border-radius:5px;padding:2px 4px}
+.opciok input{accent-color:var(--accent)}
+.opciok :focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.kwic{overflow-x:auto}
+table.k{border-collapse:collapse;width:100%;min-width:760px;font-size:.88rem}
+table.k td{padding:5px 6px;border-top:1px solid var(--rule);vertical-align:baseline}
+table.k tr.sor{cursor:pointer}
+table.k tr.sor:hover td{background:var(--accent-soft)}
+table.k tr.sor:focus-visible{outline:2px solid var(--accent)}
+td.ih{font-family:var(--f-mono);font-size:.78rem;white-space:nowrap;color:var(--accent)}
+td.bal{text-align:right;white-space:nowrap;overflow:hidden;max-width:300px;direction:rtl;font-family:var(--f-text)}
+td.bal span{direction:ltr;unicode-bidi:isolate}
+td.kulcs{white-space:nowrap;font-family:var(--f-text);font-weight:600;color:var(--accent);text-align:center}
+td.jobb{white-space:nowrap;overflow:hidden;max-width:300px;font-family:var(--f-text);text-overflow:ellipsis}
+td.al{font-size:.75rem;color:var(--muted);white-space:nowrap}
+td.al .he{font-size:1.05rem;color:var(--fg)}
+.nopar{color:var(--low);font-style:italic;font-weight:400}
+tr.reszl td{background:var(--bg);font-family:var(--f-text);white-space:normal;padding:10px 12px}
+.reszl .rs{display:grid;gap:6px}
+mark{background:var(--gold-soft);color:var(--fg);padding:0 2px;border-radius:3px}
+.tovabb{all:unset;cursor:pointer;color:var(--accent);font-size:.85rem;text-decoration:underline;justify-self:start}
+/* párhuzam */
+.parh{display:grid;gap:10px}
+.psor{display:grid;grid-template-columns:120px minmax(0,1fr);gap:10px;align-items:baseline;border-top:1px solid var(--rule);padding-top:8px}
+.psor .t{font-size:.78rem;color:var(--muted)}
+.psor .t b{display:block;color:var(--fg);font-family:var(--f-mono);font-weight:500}
+.szavak{display:flex;flex-wrap:wrap;gap:4px 6px;font-size:1.05rem}
+.szavak.rtl{direction:rtl;font-size:1.35rem}
+.w{padding:0 3px;border-radius:3px}
+.w.c1{background:color-mix(in srgb, var(--accent) 22%, transparent);box-shadow:inset 0 -2px 0 var(--accent)}
+.w.c2{background:color-mix(in srgb, var(--gold) 22%, transparent);box-shadow:inset 0 -2px 0 var(--gold)}
+.w.c3{background:color-mix(in srgb, var(--low) 22%, transparent);box-shadow:inset 0 -2px 0 var(--low)}
+.w.c4{box-shadow:inset 0 -2px 0 var(--muted)}
+.karoli{font-family:var(--f-text);font-size:.95rem;color:var(--muted);grid-column:2}
+@media (max-width:560px){.psor{grid-template-columns:minmax(0,1fr)} .karoli{grid-column:1}}
+.foot{font-size:.76rem;color:var(--muted)}
+</style>
+
+<div class="wrap">
+  <div class="intro">
+    <div class="eyebrow">Mockup · az olvasói konkordancia szó-lapja, más programok ötleteivel</div>
+    <p>Valós adat a <span class="mono">pardes.db</span>-ből (építve: <span class="mono" id="epites"></span>), a H7121-re. A sárga sávú „ma” megjegyzés mutatja, mit ad most a szerver ugyanerről. A panelek egymást szűrik: kattints egy könyvre, igealakra, Károli-alakra vagy görög megfelelőre, és a konkordancia-lista szűkül. Egy panelen belül több érték is kijelölhető (például Qal és Nifal, vagy több könyv); egy újabb kattintás kiveszi az értéket.</p>
+  </div>
+
+  <div class="kereso" role="search">
+    <span class="lbl">Keresés</span>
+    <span class="tok"><span class="mono">H7121</span> <span class="he">קָרָא</span></span>
+    <span class="tok off" id="nevtok"><span>+ ugyanabban a versben:</span> <span class="mono">H8034</span> <span class="he">שֵׁם</span> <button class="x" id="nevx" aria-label="A H8034 feltétel ki- vagy bekapcsolása">＋</button></span>
+    <span class="ihlet">ihlet: <b>Accordance</b> keresőmező, <b>Logos</b> kollokáció</span>
+  </div>
+
+  <header class="fej">
+    <div class="cim">
+      <span class="mono">H7121</span>
+      <h1 class="he" lang="he">קָרָא</h1>
+      <span class="alap">ige: hívni, kihirdetni, olvasni</span>
+      <span class="pill f">forrásadat</span>
+    </div>
+    <div class="attek" id="attek"></div>
+    <div class="ph"><span class="ihlet">ihlet: <b>Logos</b> Bible Word Study — „egy pillantásra” sáv a 14 blokk elé</span>
+      <span class="ma"><b>Ma:</b> 14 blokk egymás alatt; az első kettő után a BDB, és csak utána jön a használat.</span></div>
+  </header>
+
+  <div class="racs">
+    <section class="p szeles">
+      <div class="ph"><h2>Eloszlás könyvenként</h2><span class="ihlet">ihlet: <b>Accordance</b> — találati grafikon</span></div>
+      <div class="ma"><b>Ma:</b> „733 előfordulás, 37 könyvben.” szövegként.</div>
+      <div class="svgbox"><svg id="dist" viewBox="0 0 700 150" width="100%" style="min-width:600px" role="img" aria-label="Versek száma könyvenként"></svg></div>
+      <div class="legend"><span><i class="sw" style="background:var(--accent)"></i>a szűrésnek megfelelő vers</span><span><i class="sw" style="background:var(--rule)"></i>összes vers a könyvben</span><span>a számok verseket jelentenek, nem tokeneket</span></div>
+      <div class="forras">token_macula + vers · gépi feldolgozás</div>
+    </section>
+
+    <section class="p szeles">
+      <div class="ph"><h2>Mit jelent itt a szó, és ki cselekszik?</h2><span class="ihlet">ihlet: <b>Logos</b> Bible Sense Lexicon — jelentés szerint, nem nyelvtan szerint</span></div>
+      <div class="ma"><b>Ma:</b> a jelentésszerkezet a BDB-blokkban, a nyelvtan („Qal, imperfectum”) a vers-lap csempéin; a kettő nincs összekötve az igehelyekkel.</div>
+      <div class="harom">
+        <div class="hcol">
+          <div class="kerdes">Mit jelent itt?</div>
+          <p class="note">A BDB jelentésszámai szerint. A ▸ jellel kinyithatók az alpontok.</p>
+          <div class="bars" id="f-jel"></div>
+          <div class="forras">BDB, magyar fordítás <span class="pill m">modell-kimenet</span> · a jelentés–igehely kapcsolat gépi (bdb_szelet) · <span id="bdbfed"></span></div>
+        </div>
+        <div class="hcol">
+          <div class="kerdes">Ki cselekszik?</div>
+          <p class="note">Hív valaki, vagy valakit hívnak, neveznek?</p>
+          <div class="bars" id="f-torzs"></div>
+          <div class="kerdes" style="margin-top:10px">Hogyan beszél a szöveg?</div>
+          <p class="note">Elbeszél, kijelent, felszólít, vagy előre néz?</p>
+          <div class="bars" id="f-rag"></div>
+          <div class="forras">token_macula (morf) · gépi feldolgozás · a köznyelvi címke kézi magyarázat (<span class="mono">manual</span>), a nyelvtani név apró betűvel alatta</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="p szeles">
+      <div class="ph"><h2>Kit, mit hív? — a vonzat szerint</h2><span class="ihlet">ihlet: <b>Logos</b> kollokáció, szó-szomszédság szerint</span></div>
+      <div class="ma"><b>Ma:</b> nincs; a vonzat csak a vers-lap csempéin olvasható ki, szavanként.</div>
+      <div class="harom">
+        <div class="hcol">
+          <p class="note">A héber ige jelentését nagyrészt a mellette álló szó dönti el. Ez a bontás mind a 681 versre működik, nem csak arra, amelyet a BDB idéz.</p>
+          <div class="bars" id="f-vz"></div>
+        </div>
+        <div class="hcol">
+          <div class="kerdes">Miért fontos ez?</div>
+          <p class="note" style="color:var(--fg)">Az ISTENTISZT-001 motívum határa éppen két sor között húzódik. A <span class="he">קָרָא בְּשֵׁם</span> („segítségül hívja a nevét”) a motívumhoz tartozik. A <span class="he">נִקְרָא שֵׁם … עַל</span> („a neve hívatik rajta”: hovatartozás) a negatív kritérium szerint kizárt, pedig ugyanaz a két gyök áll benne.</p>
+          <p class="note">Kattints a két sorra egymás után: a lista a két csoportot mutatja (például 1Móz 4:26 és Jer 7:10).</p>
+          <div class="forras">token_macula (lemma, morf, Strong) · gépi szabály: a H7121 utáni legfeljebb 4 szóban az első vonzat, tagmondathatárig; hibás besorolás előfordulhat (például alany az ige és a vonzat között, vagy a <span class="he">בְּשֵׁם</span> „néven szólít” értelemben, 2Móz 31:2) · a köznyelvi címke kézi (<span class="mono">manual</span>)</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="p">
+      <div class="ph"><h2>Hogyan fordítja a Károli?</h2><span class="ihlet">ihlet: <b>Blue Letter Bible</b> — KJV-fordítási szám</span></div>
+      <div class="ma"><b>Ma:</b> táblázat az első 8 alakkal, a bizonyosság összesítve.</div>
+      <div class="bars" id="f-alak"></div>
+      <div class="legend"><span><i class="sw" style="background:var(--gold)"></i>magas bizonyosság</span><span><i class="sw" style="background:var(--accent)"></i>összes pár</span></div>
+      <button class="tovabb" id="alakmind">Mind a <span id="alakn"></span> alak</button>
+      <div class="forras">token_par · <span class="pill m">modell-kimenet</span> · 57 könyv feldolgozva, a többi hiányzik</div>
+    </section>
+
+    <section class="p">
+      <div class="ph"><h2>Görög megfelelő az LXX-ben</h2><span class="ihlet">ihlet: <b>Logos</b>, <b>STEPBible</b> LXX-híd</span></div>
+      <div class="ma"><b>Ma:</b> a „Görög megfelelő (lxx_bridge)” blokk, igehelyhez nem köthető összesítés.</div>
+      <div class="bars" id="f-lxx"></div>
+      <div class="forras">token_macula (lxx_szo, lxx_strong) · forrásadat; üres: a Macula nem párosít</div>
+    </section>
+
+    <section class="p">
+      <div class="ph"><h2>Gyakori társak egy versben</h2><span class="ihlet">ihlet: <b>Logos</b> kollokáció — a 4. kutatási lépés</span></div>
+      <div class="ma"><b>Ma:</b> nincs ilyen blokk; a <span class="mono">strong_parok</span> tábla megvan a db-ben.</div>
+      <div class="bars" id="f-koll"></div>
+      <p class="note">A nyelvtani Strong-számok nélkül. A <span class="mono">H8034</span> sorra kattintva bekapcsol a „név” feltétel; a többinél a mockup még nem szűr.</p>
+      <div class="forras">strong_parok, grammatikai_strongok · gépi feldolgozás</div>
+    </section>
+
+    <section class="p szeles">
+      <div class="ph"><h2>Konkordancia</h2><span class="ihlet">ihlet: <b>BibleWorks</b> / <b>Accordance</b> — KWIC: kulcsszó középen, kontextus két oldalt</span></div>
+      <div class="ma"><b>Ma:</b> nincs előfordulás-lista a szó-lapon; a lábléc szerint a keresés „még nem része ennek a kiadásnak”.</div>
+      <div class="szurok" id="szurok"></div>
+      <div class="opciok" role="group" aria-label="A lista beállításai">
+        <label for="o-rend">Rendezés
+          <select id="o-rend">
+            <option value="kanon">kánoni sorrend</option>
+            <option value="kulcs">kulcsszó (Károli-alak)</option>
+            <option value="jobb">a kulcsszót követő szó</option>
+            <option value="bal">a kulcsszót megelőző szó</option>
+            <option value="alak">igealak (törzs, ragozás)</option>
+            <option value="lxx">görög megfelelő</option>
+          </select></label>
+        <label for="o-ctx">Kontextus
+          <select id="o-ctx"><option value="4">4 szó</option><option value="7" selected>7 szó</option><option value="12">12 szó</option></select></label>
+        <label for="o-heb"><input type="checkbox" id="o-heb" checked> héber alak</label>
+        <label for="o-mor"><input type="checkbox" id="o-mor" checked> igealak</label>
+        <label for="o-lxx"><input type="checkbox" id="o-lxx"> LXX-szó</label>
+        <label for="o-par"><input type="checkbox" id="o-par" checked> pár nélküli versek is</label>
+      </div>
+      <div class="kwic"><table class="k"><tbody id="kwic"></tbody></table></div>
+      <button class="tovabb" id="tobb">Továbbiak</button>
+      <div class="forras">vers (Károli 1908, közkincs) · token_par: a kiemelt szó <span class="pill m">modell-kimenet</span> · token_macula: héber alak, igealak, LXX. <span class="nopar">Dőlt</span>: abban a könyvben még nincs Károli–Strong pár, ezért nincs kiemelés.</div>
+    </section>
+
+    <section class="p szeles">
+      <div class="ph"><h2>Egy hely, négy szöveg: Jóel 2:32</h2><span class="ihlet">ihlet: <b>Bible Hub</b> párhuzamos nézet, <b>Logos</b> „NT use of OT”</span></div>
+      <div class="ma"><b>Ma:</b> a vers-lapon külön a héber és külön az LXX csempe; az újszövetségi idézés nem látszik.</div>
+      <div class="parh" id="parh"></div>
+      <div class="legend" id="parhleg"></div>
+      <div class="forras">token_macula, lxx_token, token_eredeti (TAGNT), vers · a színezés Strong-szám szerint (gépi); a párhuzamot itt kézzel választottam ki, a db-ben nincs ÓSZ→ÚSZ idézet-tábla (<span class="mono">manual</span>)</div>
+    </section>
+  </div>
+
+  <p class="foot">Kivonat: <span class="mono">scope=pardes.db (token_macula, token_par, token_strong, strong_parok, vers, lxx_token, token_eredeti), strong=H7121 | forras=manual (a mockup egyszeri lekérdezése) | ts=2026-10-15</span>. A szerver lapjai nem változtak. <span id="nelkul"></span></p>
+</div>
+
+<script>
+const D = __DATA__;
+const $ = id => document.getElementById(id);
+const h = (tag, cls, txt) => { const e = document.createElement(tag); if(cls) e.className = cls; if(txt != null) e.textContent = txt; return e; };
+const NS = "http://www.w3.org/2000/svg";
+const sv = (tag, a, p) => { const e = document.createElementNS(NS, tag); for(const k in a) e.setAttribute(k, a[k]); if(p) p.appendChild(e); return e; };
+const TORZS = {q:"Qal", N:"Nifal", P:"Pual", p:"Piel", h:"Hifil", H:"Hofal", t:"Hitpael"};
+const RAG = {w:"wayyiqtol (narratív)", p:"perfectum (qatal)", i:"imperfectum (yiqtol)", v:"imperativus", q:"weqatal", c:"infinitivus constructus", a:"infinitivus absolutus", r:"participium, cselekvő", s:"participium, szenvedő", j:"jussivus", h:"cohortativus"};
+// olvasói címkék (kézi magyarázat): első a köznyelvi kérdésre adott válasz, második a nyelvtani név
+const TORZS_OLV = {q:["valaki hív, nevez, kiált","Qal · cselekvő"], N:["valakit hívnak, neveznek; hívatik","Nifal · szenvedő, visszaható"], P:["elhívták, megnevezték","Pual · szenvedő"]};
+const RAG_OLV = {w:["elbeszél: „és hívta …”","wayyiqtol, elbeszélő múlt"], p:["megtörtént tényt közöl: „hívta, nevezte”","perfectum (qatal)"],
+  i:["folyamatban vagy a jövőben: „hív, hívni fog”","imperfectum (yiqtol)"], v:["felszólít: „hívd!, hívjátok!”","imperativus"],
+  q:["előre néz, következményt mond: „és hívni fogja”","weqatal"], c:["magát a cselekvést nevezi meg: „hívni, amikor hív”","infinitivus constructus"],
+  a:["nyomatékosít: „bizony hív”","infinitivus absolutus"], r:["a hívót nevezi meg: „aki hív”","participium, cselekvő"],
+  s:["a hívottat nevezi meg: „a meghívottak”","participium, szenvedő"], j:["óhajt: „hívjon”","jussivus"]};
+const JEL_OLV = {"Qal/1":"kiáltani, hangosan szólni", "Qal/2":"hívni valakit, segítségül hívni", "Qal/3":"kihirdetni, meghirdetni",
+  "Qal/4":"olvasni, felolvasni", "Qal/5":"megidézni, elhívni, kinevezni", "Qal/6":"nevezni, nevet adni",
+  "Niph'al/1":"visszaható használat", "Niph'al/2":"hívatni, neveztetni, felolvastatni"};
+const JEL_AL = {"Qal/2/a":"hívni, szólítani valakit", "Qal/2/b":"segítségért kiáltani", "Qal/2/c":"az Úr nevét segítségül hívni",
+  "Qal/2/d":"Istent hívni (késői használat)", "Qal/3/b":"az Úr nevét hirdetni", "Qal/6/e":"nevet adni valaminek",
+  "Qal/6/f":"néven szólítani", "Niph'al/2/d":"neveztetni, valaminek hívják"};
+const VZ = {bsem:["a nevét hívja: segítségül hív, vagy néven szólít","קָרָא בְּשֵׁם"], sem:["nevet ad, a nevén nevez","קָרָא שֵׁם"],
+  le:["valakinek, valaminek: nevez, hív","קָרָא לְ"], el:["valakihez kiált, szól","קָרָא אֶל"], et:["valakit, valamit: hív, felolvas, kihirdet","קָרָא אֵת"],
+  al:["valami fölött, valaki ellen: kihirdet","קָרָא עַל"], bkol:["hangosan, valakinek a füle hallatára","קָרָא בְּקוֹל / בְּאָזְנֵי"],
+  b:["más בְּ-vonzat: helyen, eszközzel","קָרָא בְּ"], nev_rajta:["a neve hívatik rajta: hovatartozás","נִקְרָא שֵׁם … עַל"],
+  nincs:["közvetlen tárgy, vagy vonzat nélkül","a 4 szós ablakban nincs jelölő"]};
+const lc = s => s.toLocaleLowerCase("hu").replace(/[.,;:!?()„”"']/g, "");
+
+$("epites").textContent = D.epites;
+const R = D.sorok.filter(r => r.r);
+R.forEach(r => { r.w = r.t.split(/\s+/); r.al = new Set(r.p.map(x => lc(x[1]))); r.st = new Set(r.tok.map(t => t.m[1])); r.rg = new Set(r.tok.map(t => t.m[2])); r.gs = new Set(r.tok.map(t => t.gs || "—")); r.jel = new Set((D.bdb.vers[r.r]) || ["—"]); });
+const CS = D.bdb.cs.filter(c => c.n > 0);
+const csCimke = p => { if(p==="—") return "a BDB nem idézi ezt a verset"; const top = p.split("/").slice(0,2).join("/"); const c = CS.find(x=>x.p===top);
+  if(p===top) return JEL_OLV[p] || (c && c.c) || p; const a = c && c.al.find(x=>x.p===p); return (JEL_OLV[top]||top) + " › " + (JEL_AL[p] || (a ? (a.c || a.jel) : p)); };
+
+// görög felirat: a leggyakoribb szóalak Strong-számonként
+const gLabel = {};
+(() => { const c = {}; R.forEach(r => r.tok.forEach(t => { const k = t.gs || "—"; c[k] = c[k] || {}; if(t.g) c[k][t.g] = (c[k][t.g]||0)+1; })); for(const k in c){ const e = Object.entries(c[k]).sort((a,b)=>b[1]-a[1]); gLabel[k] = e.length ? e[0][0] : ""; } })();
+
+// panelen belül több érték is kijelölhető (VAGY), a panelek között ÉS
+const F = {konyv:new Set(), jel:new Set(), vz:new Set(), torzs:new Set(), rag:new Set(), alak:new Set(), gs:new Set(), nev:false};
+const ERT = {konyv:r=>[r.k], jel:r=>[...r.jel], vz:r=>[...new Set(r.v)], torzs:r=>[...r.st], rag:r=>[...r.rg], alak:r=>[...r.al], gs:r=>[...r.gs]};
+function megfelel(r, kiveve){
+  for(const k in ERT){ if(k===kiveve || !F[k].size) continue; if(!ERT[k](r).some(v => F[k].has(v))) return false; }
+  if(kiveve!=="nev" && F.nev && !r.n) return false;
+  return true;
+}
+function valt(kulcs, ertek){ const s = F[kulcs]; s.has(ertek) ? s.delete(ertek) : s.add(ertek); limit = 40; mind(); }
+function torolMind(){ for(const k in ERT) F[k].clear(); F.nev = false; limit = 40; mind(); }
+
+// áttekintés
+function attek(){
+  const sz = R.filter(r => megfelel(r));
+  const tokn = sz.reduce((a,r)=>a+r.tok.length,0);
+  const konyvn = new Set(sz.map(r=>r.k)).size;
+  const q = sz.reduce((a,r)=>a+r.tok.filter(t=>t.m[1]==="q").length,0);
+  const nev = sz.filter(r=>r.n).length;
+  const g = {}; sz.forEach(r=>r.tok.forEach(t=>{ if(t.gs) g[t.gs]=(g[t.gs]||0)+1; }));
+  const fg = Object.entries(g).sort((a,b)=>b[1]-a[1])[0];
+  const box = $("attek"); box.innerHTML = "";
+  [[tokn, "előfordulás (token)"], [sz.length, "vers"], [konyvn, "könyv"], [Math.round(100*q/Math.max(tokn,1))+"%", "cselekvő: valaki hív"], [nev, "versben a שֵׁם is"], [fg ? gLabel[fg[0]] : "—", "leggyakoribb LXX-megfelelő"]]
+    .forEach(([b,s]) => { const d = h("div"); const bb = h("b", null, b); if(s.includes("LXX")) bb.className = "gr"; d.append(bb, h("span", null, s)); box.append(d); });
+}
+
+// eloszlás
+function dist(){
+  const svg = $("dist"); svg.innerHTML = "";
+  const K = D.konyvek, W = 680/K.length, X0 = 14, BASE = 92;
+  const ossz = {}, sz = {};
+  R.forEach(r => { ossz[r.k]=(ossz[r.k]||0)+1; if(megfelel(r,"konyv")) sz[r.k]=(sz[r.k]||0)+1; });
+  const max = Math.max(...Object.values(ossz)), sc = 78/max;
+  [20,40,60,80].forEach(v => { if(v<=max){ sv("line",{x1:X0,x2:X0+680,y1:BASE-v*sc,y2:BASE-v*sc,stroke:"var(--rule)","stroke-width":.5},svg); sv("text",{x:X0-3,y:BASE-v*sc+3,"font-size":7,"text-anchor":"end"},svg).textContent=v; } });
+  const nt = K.findIndex(k => k[0]==="Mt");
+  if(nt>0){ const x = X0+nt*W; sv("line",{x1:x,x2:x,y1:6,y2:BASE+40,stroke:"var(--muted)","stroke-dasharray":"2 3","stroke-width":.7},svg); sv("text",{x:X0,y:8,"font-size":8},svg).textContent="ÓSZ"; sv("text",{x:x+3,y:8,"font-size":8},svg).textContent="ÚSZ"; }
+  sv("line",{x1:X0,x2:X0+680,y1:BASE,y2:BASE,stroke:"var(--muted)","stroke-width":.7},svg);
+  K.forEach(([k],i) => {
+    const o = ossz[k]||0, s = sz[k]||0, x = X0+i*W;
+    const g = sv("g",{style:"cursor:"+(o?"pointer":"default"),opacity:(!F.konyv.size||F.konyv.has(k))?1:.35},svg);
+    sv("rect",{x,y:4,width:W,height:BASE+50,fill:"transparent"},g);
+    if(o) sv("rect",{x:x+1,y:BASE-o*sc,width:W-2,height:o*sc,fill:"var(--rule)"},g);
+    if(s) sv("rect",{x:x+1,y:BASE-s*sc,width:W-2,height:s*sc,fill:"var(--accent)"},g);
+    if(o){ const t = sv("text",{x:x+W/2,y:BASE+8,"font-size":6.5,"text-anchor":"end",transform:`rotate(-60 ${x+W/2} ${BASE+8})`},g); t.textContent=k;
+      sv("title",{},g).textContent = `${k}: ${s} / ${o} vers`; g.addEventListener("click",()=>valt("konyv",k)); }
+  });
+}
+
+// sáv-lista
+function bars(box, tetelek, kulcs, opts={}){
+  box.innerHTML = "";
+  const max = Math.max(...tetelek.map(t=>t.o), 1);
+  tetelek.forEach(t => {
+    const on = F[kulcs] instanceof Set && F[kulcs].has(t.k);
+    const b = h("button","bar"+(on?" on":"")+(t.n===0 && !on?" nul":"")+(t.sub!=null?" ket":"")+(t.al?" al":""));
+    b.setAttribute("aria-pressed", on ? "true" : "false");
+    const l = h("span","l");
+    if(t.sub!=null){ const fo = h("span"); if(t.nyil) fo.append(t.nyil); fo.append(t.l); l.append(fo, h("small",null,t.sub)); }
+    else if(t.cls){ const s = h("span",t.cls,t.l); l.append(s); if(t.l2) l.append(" ", h("span",null,t.l2)); } else l.textContent = t.l;
+    const tr = h("span","track"); const f = h("span","fill"); f.style.width = (100*t.n/max)+"%"; tr.append(f);
+    if(t.m != null){ const f2 = h("span","fill2"); f2.style.width = (100*t.m/max)+"%"; tr.append(f2); }
+    b.append(l, tr, h("span","n", t.n===t.o ? t.n : `${t.n}/${t.o}`));
+    b.title = t.title || "";
+    if(kulcs) b.onclick = () => opts.onclick ? opts.onclick(t) : valt(kulcs, t.k); else b.style.cursor="default";
+    box.append(b);
+  });
+}
+function facet(kulcs, kiv){
+  const o = {}, n = {};
+  R.forEach(r => { const ks = kiv(r); ks.forEach(k => { o[k]=(o[k]||0)+1; if(megfelel(r,kulcs)) n[k]=(n[k]||0)+1; }); });
+  return Object.keys(o).map(k => ({k, o:o[k], n:n[k]||0})).sort((a,b)=>b.o-a.o);
+}
+let alakMind = false;
+const nyitJel = new Set();
+// példa: az első, a többi szűrőnek is megfelelő vers kiemelt Károli-szava
+function pelda(kulcs, k){
+  const jo = r => r.p.length && ERT[kulcs](r).includes(k) && megfelel(r, kulcs);
+  const r = R.find(r => jo(r) && r.tok.length === 1) || R.find(jo);
+  if(!r) return "";
+  const idx = r.p.map(p=>p[0]-1).filter(i=>i>=0 && i<r.w.length).sort((a,b)=>a-b);
+  let b = idx[0]; while(idx.includes(b+1)) b++;
+  return `pl. ${r.r} „${r.w.slice(idx[0], b+1).join(" ").replace(/[.,;:!?]+$/,"")}”`;
+}
+$("bdbfed").textContent = `a ${R.length} versből ${R.filter(r=>!r.jel.has("—")).length}-hez van BDB-idézet; a BDB ${D.bdb.hiv_n} feloldott hivatkozásából ${D.bdb.talal_n} esik H7121-es Károli-versre (a többi: versszámozás-eltérés vagy kiírt alak)`;
+function panelek(){
+  bars($("f-torzs"), facet("torzs", r=>[...r.st]).map(t=>({...t, l:(TORZS_OLV[t.k]||[t.k])[0], sub:[(TORZS_OLV[t.k]||["",""])[1], pelda("torzs",t.k)].filter(Boolean).join(" · ")})), "torzs");
+  bars($("f-rag"), facet("rag", r=>[...r.rg]).map(t=>({...t, l:(RAG_OLV[t.k]||[t.k])[0], sub:[(RAG_OLV[t.k]||["",""])[1], pelda("rag",t.k)].filter(Boolean).join(" · ")})), "rag");
+  bars($("f-vz"), facet("vz", r=>[...new Set(r.v)]).map(t=>({...t, l:(VZ[t.k]||[t.k])[0], sub:[(VZ[t.k]||["",""])[1], pelda("vz",t.k)].filter(Boolean).join(" · ")})), "vz");
+  // jelentés: a BDB sorrendjében, kinyitható alpontokkal
+  const fj = {}; facet("jel", r=>[...r.jel]).forEach(t => fj[t.k] = t);
+  const jt = [];
+  CS.forEach(c => { const t = fj[c.p] || {k:c.p, o:0, n:0};
+    const vanAl = c.al.some(a => fj[a.p]);
+    const nyil = vanAl ? (nyitJel.has(c.p) ? "▾ " : "▸ ") : "";
+    jt.push({...t, l:JEL_OLV[c.p] || c.c, nyil, sub:[`BDB ${c.torzs} ${c.jel}`, pelda("jel",c.p)].filter(Boolean).join(" · ")});
+    if(nyitJel.has(c.p)) c.al.forEach(a => { const ta = fj[a.p]; if(ta) jt.push({...ta, al:true, l:`${a.jel}. ${JEL_AL[a.p] || a.c || "(címke nélkül)"}`, sub:[JEL_AL[a.p] ? "BDB: " + a.c : "", pelda("jel",a.p)].filter(Boolean).join(" · ")}); });
+  });
+  if(fj["—"]) jt.push({...fj["—"], l:"a BDB nem idézi ezt a verset", sub:"versszám-eltérés is lehet az ok"});
+  bars($("f-jel"), jt, "jel", {onclick: t => { const c = CS.find(x=>x.p===t.k);
+    if(c && c.al.some(a=>fj[a.p]) && !nyitJel.has(t.k)){ nyitJel.add(t.k); }
+    // fő- és alpont ugyanabban az ágban nem állhat egyszerre (különben a tágabb nyelné el a szűkebbet)
+    const top = t.k.split("/").slice(0,2).join("/");
+    if(t.k !== top) F.jel.delete(top); else [...F.jel].forEach(v => { if(v.startsWith(top + "/")) F.jel.delete(v); });
+    valt("jel", t.k); }});
+  document.querySelectorAll("#f-jel .bar").forEach((b,i) => { const t = jt[i]; if(!t || !t.nyil) return;
+    const s = b.querySelector(".l span"); const ny = h("span","nyil", t.nyil.trim()); ny.setAttribute("role","button"); ny.title = "alpontok ki/be";
+    ny.onclick = e => { e.stopPropagation(); nyitJel.has(t.k) ? nyitJel.delete(t.k) : nyitJel.add(t.k); panelek(); };
+    s.firstChild.replaceWith(ny, " "); });
+  const al = facet("alak", r=>[...r.al]);
+  $("alakn").textContent = al.length;
+  bars($("f-alak"), al.slice(0, alakMind?al.length:12).map(t=>({...t, l:t.k, m:null})), "alak");
+  bars($("f-lxx"), facet("gs", r=>[...r.gs]).slice(0,9).map(t=>({...t, cls:"gr", l:t.k==="—"?"nincs párosítva":gLabel[t.k], l2:t.k==="—"?"":t.k})), "gs");
+  bars($("f-koll"), D.koll.map(([s,n,szoto,j]) => ({k:s, o:n, n:n, cls:"he", l:szoto, l2:`${s} · ${j.replace(/_/g," ")}`})), "koll", {onclick: t => { if(t.k==="H8034"){ F.nev=!F.nev; limit=40; mind(); } }});
+  document.querySelectorAll("#f-koll .bar").forEach((b,i) => { if(D.koll[i][0]==="H8034"){ b.classList.toggle("on",F.nev); } else b.style.cursor="default"; });
+}
+
+// KWIC
+let limit = 40, nyitott = null;
+function kwic(){
+  const O = {rend:$("o-rend").value, ctx:+$("o-ctx").value, heb:$("o-heb").checked, mor:$("o-mor").checked, lxx:$("o-lxx").checked, par:$("o-par").checked};
+  let sz = R.filter(r=>megfelel(r) && (O.par || r.p.length));
+  const box = $("szurok"); box.innerHTML = "";
+  box.append(h("span",null,`${sz.length} vers`));
+  const nevek = {konyv:"könyv", jel:"jelentés", vz:"vonzat", torzs:"ki cselekszik", rag:"hogyan beszél", alak:"Károli-alak", gs:"LXX"};
+  const cimke = (k,v) => k==="torzs"?(TORZS_OLV[v]||[v])[0]:k==="rag"?(RAG_OLV[v]||[v])[0]:k==="jel"?csCimke(v):k==="vz"?(VZ[v]||[v])[0]:k==="gs"?(gLabel[v]||"nincs párosítva"):v;
+  let van = false;
+  for(const k in ERT) F[k].forEach(v => { van = true;
+    const t = h("span","tok"); t.append(`${nevek[k]}: ${cimke(k,v)}`);
+    const x = h("button","x","×"); x.setAttribute("aria-label",`${nevek[k]}: ${cimke(k,v)} szűrő törlése`); x.onclick=()=>valt(k,v); t.append(x); box.append(t); });
+  if(F.nev){ van = true; const t = h("span","tok"); t.append("+ שֵׁם: H8034 a versben"); const x = h("button","x","×"); x.setAttribute("aria-label","A H8034 feltétel törlése"); x.onclick=()=>{ F.nev=false; mind(); }; t.append(x); box.append(t); }
+  if(van){ const c = h("button","plus","Minden szűrő törlése"); c.onclick = torolMind; box.append(c); }
+  else box.append(h("span",null,"· a panelekben több érték is kijelölhető; egy panelen belül bármelyik egyezhet, a panelek között mindegyiknek kell"));
+  // kulcsszó-tartomány versenként
+  const kw = r => { const idx = r.p.map(p=>p[0]-1).filter(i=>i>=0 && i<r.w.length).sort((a,b)=>a-b);
+    if(!idx.length) return {idx, a:-1, b:-1, tobbi:0};
+    const a = idx[0]; let b = a; while(idx.includes(b+1) || idx.includes(b+2)) b += idx.includes(b+1) ? 1 : 2;
+    return {idx, a, b, tobbi: idx.filter(i => i > b).length}; };
+  const kulcsok = new Map(sz.map(r => [r, kw(r)]));
+  const ZZ = "￿";
+  const rk = {
+    kanon: r => "",
+    kulcs: r => { const k = kulcsok.get(r); return k.a<0 ? ZZ : lc(r.w.slice(k.a,k.b+1).join(" ")); },
+    jobb:  r => { const k = kulcsok.get(r); return k.a<0 ? ZZ : lc(r.w.slice(k.b+1,k.b+4).join(" ")) || ZZ; },
+    bal:   r => { const k = kulcsok.get(r); return k.a<0 ? ZZ : lc(r.w.slice(Math.max(0,k.a-3),k.a).reverse().join(" ")) || ZZ; },
+    alak:  r => (r.tok[0]?.m || "").slice(1,3),
+    lxx:   r => r.tok[0]?.g || ZZ,
+  }[O.rend];
+  if(O.rend !== "kanon") sz = sz.slice().sort((x,y) => rk(x).localeCompare(rk(y), "hu") || x.o - y.o);
+  const tb = $("kwic"); tb.innerHTML = "";
+  sz.slice(0,limit).forEach(r => {
+    const tr = h("tr","sor"); tr.tabIndex = 0;
+    const {idx, a, b, tobbi} = kulcsok.get(r);
+    const ih = h("td","ih",r.r);
+    let bal, kul, jobb;
+    if(a >= 0){
+      bal = h("td","bal"); bal.append(h("span",null,r.w.slice(Math.max(0,a-O.ctx),a).join(" ")));
+      kul = h("td","kulcs", r.w.slice(a,b+1).join(" "));
+      if(tobbi){ const s = h("span","pill", "+ még " + tobbi); s.title = "további párosított szó ebben a versben"; kul.append(" ", s); }
+      jobb = h("td","jobb", r.w.slice(b+1,b+1+O.ctx).join(" "));
+    } else { bal = h("td","bal"); kul = h("td","kulcs nopar","—"); kul.title="nincs Károli–Strong pár"; jobb = h("td","jobb nopar", r.w.slice(0,O.ctx+3).join(" ")+" …"); }
+    tr.append(ih, bal, kul, jobb);
+    if(O.heb || O.mor || O.lxx){
+      const al = h("td","al"); r.tok.forEach((t,i) => { if(i) al.append(" · ");
+        if(O.heb) al.append(h("span","he",t.h), " ");
+        if(O.mor) al.append((TORZS[t.m[1]]||"")+" "+(RAG[t.m[2]]||t.m[2]||"")+" ");
+        if(O.lxx) al.append("→ ", h("span","gr",t.g||"—")); });
+      tr.append(al);
+    }
+    const nyit = () => { nyitott = nyitott===r.r ? null : r.r; kwic(); };
+    tr.onclick = nyit; tr.onkeydown = e => { if(e.key==="Enter"||e.key===" "){ e.preventDefault(); nyit(); } };
+    tb.append(tr);
+    if(nyitott===r.r){
+      const d = h("tr","reszl"), td = h("td"); td.colSpan = tr.children.length; const rs = h("div","rs");
+      const p = h("div"); r.w.forEach((w,i)=>{ if(i) p.append(" "); p.append(idx.includes(i)? Object.assign(h("mark",null,w)) : w); }); rs.append(p);
+      r.tok.forEach(t => { const x = h("div","mono"); x.append(h("span","he",t.h), `  ${TORZS[t.m[1]]||""}, ${RAG[t.m[2]]||t.m[2]||""}  →  LXX: `, h("span","gr", t.g||"—"), t.gs?` (${t.gs})`:""); rs.append(x); });
+      if(r.p.length) rs.append(h("div","note", "Károli–Strong pár: " + r.p.map(p=>`${p[1]} (${p[2]})`).join(", ")));
+      td.append(rs); d.append(td); tb.append(d);
+    }
+  });
+  $("tobb").hidden = sz.length <= limit;
+  $("tobb").textContent = `Továbbiak (még ${Math.max(0,sz.length-limit)})`;
+}
+$("tobb").onclick = () => { limit += 60; kwic(); };
+$("alakmind").onclick = () => { alakMind = !alakMind; $("alakmind").firstChild.textContent = alakMind ? "Csak az első 12 " : "Mind a "; panelek(); };
+$("nevx").onclick = () => { F.nev = !F.nev; limit = 40; mind(); };
+["o-rend","o-ctx","o-heb","o-mor","o-lxx","o-par"].forEach(id => $(id).addEventListener("change", () => { limit = 40; kwic(); }));
+
+function mind(){
+  $("nevtok").classList.toggle("off", !F.nev); $("nevx").textContent = F.nev ? "×" : "＋";
+  attek(); dist(); panelek(); kwic();
+}
+
+// párhuzam
+(() => {
+  const CS = {H7121:"c1",G1941:"c1",H8034:"c2",G3686:"c2",H3068:"c3",G2962:"c3",H4422:"c4",G4982:"c4"};
+  const box = $("parh");
+  const sor = (cim, al, szavak, rtl, karoli) => {
+    const d = h("div","psor"); const t = h("div","t"); t.append(h("b",null,cim), al); d.append(t);
+    const w = h("div","szavak"+(rtl?" rtl he":" gr")); szavak.forEach(([s,st]) => { const sp = h("span","w "+(CS[st]||""), s); sp.title = st||""; w.append(sp); }); d.append(w);
+    if(karoli) d.append(h("div","karoli", karoli)); box.append(d);
+  };
+  sor("Jóel 2:32", "héber (MT)", D.parh.heb.map(x=>[x[0], x[1]]), true, D.parh.karoli["Jóel 2:32"]);
+  sor("Jóel 3:5 LXX", "Septuaginta", D.parh.lxx.map(x=>[x[0], x[1]]), false);
+  ["ApCsel 2:21","Róm 10:13"].forEach(ih => sor(ih, "görög ÚSZ (TAGNT)", (D.parh.usz[ih]||[]).map(x=>[x[0], (x[1]||"").split(/[^GH0-9]/)[0]]), false, D.parh.karoli[ih]));
+  const leg = $("parhleg");
+  [["c1","H7121 ↔ G1941 hívni / ἐπικαλέω"],["c2","H8034 ↔ G3686 név / ὄνομα"],["c3","H3068 ↔ G2962 Úr / κύριος"],["c4","H4422 ↔ G4982 megmenekül / σῴζω"]]
+    .forEach(([c,t]) => { const s = h("span"); s.append(h("span","w "+c,"  "), " "+t); leg.append(s); });
+})();
+
+const ures = D.ures || 0;
+if(ures) $("nelkul").textContent = `${ures} Macula-token igehely nélkül áll a táblában; ezek kimaradtak.`;
+mind();
+</script>
