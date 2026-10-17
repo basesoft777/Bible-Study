@@ -165,19 +165,20 @@ class TestVazIstentiszt(unittest.TestCase):
             self.assertIn('*Hivatkozás:', self._blokk_szerep('gorog', n))
 
     def test_heber_tbesh_nincs_sor_jelolve(self):
-        # adatosítva, de a tokenekhez nincs TBESH-sor: nem néma, jelölt üres blokk
-        # DT83 (lezárva): a TBESH marad a forrás (adatosítva); H7121 mutatója a BDB 2.c (DT-F42a),
-        # H8034 `adatosítva, nincs bekötve` (a #9 köti be); nincs TBESH-szöveg, nincs új adatsor
+        # F09 S2.2/S2.5b: a TBESH marad a forrás (adatosítva); a H7121 mutatója a BDB 2.c (DT-F42a,
+        # a TBESH „részlet” sora nem kerül vissza), a H8034 TBESH-szövege megvan (DT-F09c)
         b = self._blokk_szerep('heber', 1)
-        self.assertEqual(len(UROS_RE.findall(b)), 2)
+        self.assertEqual(len(UROS_RE.findall(b)), 1)
         self.assertTrue(all(a == 'adatosítva, nincs bekötve' for _, a in UROS_RE.findall(b)))
         self.assertRegex(b, r'\*\*H7121\*\* · \*\(üres blokk: a H7121 alapjelentését a BDB 2\.c adja \(DT-F42a\)')
         # a 2. szerep BDB-tartalma változatlan (H7121 2.c és 3., H8034 részlet)
         b2 = self._blokk_szerep('heber', 2)
         for cim in ('##### BDB H7121 — 2.c. jelentés', '##### BDB H7121 — 3. jelentés', '##### BDB H8034 — (részlet)'):
             self.assertIn(cim, b2)
-        self.assertRegex(b, r'\*\*H8034\*\* · \*\(üres blokk: adatosítva, nincs bekötve; a bekötés a #9 dolga')
-        self.assertNotIn('\n> ', b)
+        self.assertIn('##### TBESH H8034 — ', b)
+        self.assertIn('1c) the Name (as designation of God)', b)
+        # a H7121 TBESH „részlet” sora nem került vissza
+        self.assertNotIn('##### TBESH H7121', b)
         self.assertNotIn('meglévő BDB-sor', b)
 
     def test_heber_adatositott_szerep_nem_hamisan_ures(self):
@@ -259,7 +260,8 @@ class TestVazTeremt(unittest.TestCase):
         self.assertEqual(h, [(int(r['sorrend']), r['szerep']) for r in tabla])
         # lexikon_hivatkozasok-sor nincs: az 1. és 2. szerep adatosítva, de nincs sor -> jelölt üres blokk
         self.assertIn('ÜRES-BLOKK: Alapjelentés | adatosítva, nincs bekötve', sz['heber'])
-        self.assertIn('#9', sz['heber'])  # a #9 köti be (a TBESH-t; DT83)
+        self.assertIn('#12b', sz['heber'])  # a TEREMT-002 szótári bekötése a #12b-é (DT-F09c)
+        self.assertNotIn('#9 dolga', sz['heber'])
         self.assertIn('ÜRES-BLOKK: Mélységi szócikk | adatosítva, nincs bekötve', sz['heber'])
         self.assertNotIn('\n> ', sz['heber'])
         # a TWOT és a domén megvan, a tokenhez kötve

@@ -855,9 +855,92 @@ def ures_blokk(szerep, allapot, ok):
             % (szerep, allapot, ok))
 
 
-def _szerep_tartalom(nyelv, n, tokenek_ny, reszek):
+FORDITASRA_VAR = '*(fordításra vár)*'
+NEM_TARGYALJA = '*a forrás nem tárgyalja*'
+
+TBESH_KONSZ_FAJL = 'konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv'
+_tbesh_konsz_cache = None
+
+
+def tbesh_konszolidalt():
+    """alap_strong -> [sor-dict, ...] a helyben élő konszolidált TBESH-táblából (F05 S4, D3, D38;
+    F09 S2.2). A fájl gitignore-olt (F42, DT-F42b): hiányára a `_U.kotelezo` egyértelmű hibát ad."""
+    global _tbesh_konsz_cache
+    if _tbesh_konsz_cache is None:
+        sorok = L.read_tsv_skip_comments(_U.kotelezo(_U.TBESH_KONSZOLIDALT))
+        d = {}
+        for r in sorok:
+            d.setdefault(r['alap_strong'], []).append(r)
+        for lista in d.values():
+            lista.sort(key=lambda r: r['strong'])
+        _tbesh_konsz_cache = d
+    return _tbesh_konsz_cache
+
+
+TBESH_FORRAS_JELZO = {
+    'txt': 'a TBESH.txt szövege',
+    'lexicon': 'a TBESH.lexicon szövege',
+    'egyenlo': 'a TBESH.txt és a TBESH.lexicon szövege (±5% eltérésen belül egyenlő)',
+}
+
+
+def _tbesh_konsz_blokk(r, ctx):
+    """Egy konszolidált TBESH-sor forrásblokkja a #78 renderének mintájára (`_szotar_reszek`)."""
+    bek = ['##### TBESH %s — (konszolidált szócikk)' % r['strong']]
+    if r.get('rovid_glosszak') and r['rovid_glosszak'] != EM_DASH:
+        bek.append('**Röviden:** %s' % r['rovid_glosszak'])
+    bek.append('> %s' % r['teljes_szoveg'])
+    hu = forditas_ehhez('TBESH', r['strong'], r['strong'], 'teljes', 'forditas_hu')
+    bek.append('**🇭🇺** %s' % hu if hu else FORDITASRA_VAR)
+    bek.append('*Forrás: %s (%s)*' % (TBESH_KONSZ_FAJL, TBESH_FORRAS_JELZO.get(r['forras'], r['forras'])))
+    ctx['fl'].setdefault(TBESH_KONSZ_FAJL, set()).add('TBESH')
+    return bek
+
+
+def _token_mutato_blokk(szerep, token, mutato):
+    return ('<!-- ÜRES-BLOKK: %s | adatosítva, nincs bekötve -->\n'
+            '**%s** · *(üres blokk: %s; a hiány nincs kitöltve gyenge vagy asszociatív anyaggal)*'
+            % (szerep, token, mutato))
+
+
+def _tartalom_heber_tbesh(nyelv, n, tokenek_ny, reszek, ctx):
+    """Héber 1. szerep (Alapjelentés): TBESH. Sorrend tokenenként: (1) kijelölt mutató (H7121: BDB 2.c,
+    DT-F42a; a TEREMT-002 tokenjei: #12b, DT-F09c); (2) a `lexikon_hivatkozasok.tsv` TBESH-sora (bekötött
+    szó szerinti kivonat, F6.3-minta, DT-F09c); (3) a konszolidált tábla sorai; (4) `a forrás nem tárgyalja`."""
+    out = []
+    for t in tokenek_ny:
+        mutato = SZEREP_TOKEN_MUTATO.get((nyelv, n, t))
+        if mutato:
+            out.append(_token_mutato_blokk(ctx['szerep'], t, mutato))
+            continue
+        bl = [b for b in reszek[t]['forras_blokkok'] if b[0] == 'TBESH']
+        if bl:
+            for _, bek in bl:
+                out.extend(bek)
+            continue
+        # csak a pontos (betűutótag nélküli) Strong-sor: a H1121a/b stb. STEP-alszócikkek más szavak
+        # (pl. a H1121b Beno, személynév), nem a motívum tokenjének szócikkei (D38)
+        sorok = [r for r in tbesh_konszolidalt().get(t, []) if r['strong'] == t]
+        if not sorok:
+            out.append('**%s** · %s *(TBESH)*' % (t, NEM_TARGYALJA))
+            continue
+        for r in sorok:
+            out.extend(_tbesh_konsz_blokk(r, ctx))
+    return out
+
+
+# Szerepenkénti egyedi építők: (nyelv, sorrend) -> függvény(nyelv, n, tokenek_ny, reszek, ctx) -> bekezdések.
+# A többi szerep az alábbi általános ágakon (SZEREP_SZOTAR / SZEREP_SAJAT) épül.
+SZEREP_EPITO = {
+    ('heber', 1): _tartalom_heber_tbesh,
+}
+
+
+def _szerep_tartalom(nyelv, n, tokenek_ny, reszek, ctx):
     """A szerep kitöltött bekezdései: lista. Üres lista = a szerepnek nincs adata ezekhez a tokenekhez."""
     kulcs = (nyelv, n)
+    if kulcs in SZEREP_EPITO:
+        return SZEREP_EPITO[kulcs](nyelv, n, tokenek_ny, reszek, ctx)
     out = []
     if kulcs in SZEREP_SZOTAR:
         szotar = SZEREP_SZOTAR[kulcs]
@@ -886,9 +969,16 @@ def _szerep_tartalom(nyelv, n, tokenek_ny, reszek):
 
 
 # DT-F78d (lezárva): a TBESH (CC BY 4.0, DT-F33f) a héber 1. szerep forrása marad, `adatosítva`; a DT-F42a csak a
-# H7121 „részlet” sorát váltotta ki BDB-vel. Tokenenkénti mutató az üres blokkon; a többi token a #9-re mutat.
+# H7121 „részlet” sorát váltotta ki BDB-vel. F09 (DT-F09c): a TEREMT-002 két tokenének (H8414, H0922) szótári
+# bekötése a #12b dolga; a render ezeken a helyeken a mutatót adja, adatsort a #9 nem ír.
+# Tokenenkénti mutató az üres blokkon.
+_TEREMT002_MUTATO = 'a TEREMT-002 szótári bekötése a #12b dolga (DT-F09c)'
 SZEREP_TOKEN_MUTATO = {
     ('heber', 1, 'H7121'): 'a H7121 alapjelentését a BDB 2.c adja (DT-F42a)',
+    ('heber', 1, 'H8414'): _TEREMT002_MUTATO,
+    ('heber', 1, 'H0922'): _TEREMT002_MUTATO,
+    ('heber', 2, 'H8414'): _TEREMT002_MUTATO,
+    ('heber', 2, 'H0922'): _TEREMT002_MUTATO,
 }
 
 
@@ -900,18 +990,17 @@ def _token_ures_blokkok(nyelv, n, szerep, tokenek_ny):
     out = []
     for t in tokenek_ny:
         mutato = SZEREP_TOKEN_MUTATO.get(
-            (nyelv, n, t), 'adatosítva, nincs bekötve; a bekötés a #9 dolga')
-        out.append('<!-- ÜRES-BLOKK: %s | adatosítva, nincs bekötve -->\n'
-                   '**%s** · *(üres blokk: %s; a hiány nincs kitöltve gyenge vagy asszociatív anyaggal)*'
-                   % (szerep, t, mutato))
+            (nyelv, n, t), 'adatosítva, nincs bekötve; a bekötés még nem történt meg')
+        out.append(_token_mutato_blokk(szerep, t, mutato))
     return out
 
 
-def _szerep_blokk(nyelv, sor, tokenek_ny, reszek):
+def _szerep_blokk(nyelv, sor, tokenek_ny, reszek, ctx):
     n = int(sor['sorrend'])
     szerep, allapot = sor['szerep'], sor['allapot']
     szakasz = ['#### %d. %s' % (n, szerep)]
-    tart = _szerep_tartalom(nyelv, n, tokenek_ny, reszek)
+    ctx['szerep'] = szerep
+    tart = _szerep_tartalom(nyelv, n, tokenek_ny, reszek, ctx)
     if allapot == 'adatosítva':
         if tart:
             szakasz.extend(tart)
@@ -924,7 +1013,7 @@ def _szerep_blokk(nyelv, sor, tokenek_ny, reszek):
             # DT-F78c 1.: harmadik állapot, mutatóval a #9-re (a bekötés a #9 dolga)
             szakasz.append(ures_blokk(szerep, 'adatosítva, nincs bekötve',
                                       'a szerep adatosítva (a forrásfájl megvan), de a motívum tokenjeihez a '
-                                      '`lexikon_hivatkozasok.tsv`-be nincs bekötve sor; a bekötés a #9 dolga'))
+                                      '`lexikon_hivatkozasok.tsv`-be nincs bekötve sor; a bekötés még nem történt meg'))
     elif not tart and (nyelv, n) in SZEREP_KEZI_2B:
         hiv = SZEREP_KEZI_2B[(nyelv, n)]
         szakasz.append('*Hivatkozás: %s.*' % hiv)
@@ -968,6 +1057,7 @@ def szerep_vaz(tokenek, fajl_licenc_kulcsok, fajl_licenc_kulcsok_tbesg_tbesh):
         if h and all(h[k] == s[k] for k in ('szerep', 'forras', 'allapot')):
             kozos.add(int(s['sorrend']))
 
+    ctx = {'fl': fajl_licenc_kulcsok, 'tbesg_tbesh': fajl_licenc_kulcsok_tbesg_tbesh}
     reszek_szoveg = []
     for nyelv, cim in (('gorog', 'Görög'), ('heber', 'Héber')):
         tok_ny = [t for t in tokenek if t.startswith('G' if nyelv == 'gorog' else 'H')]
@@ -980,13 +1070,13 @@ def szerep_vaz(tokenek, fajl_licenc_kulcsok, fajl_licenc_kulcsok_tbesg_tbesh):
         for s in (g_sorok if nyelv == 'gorog' else h_sorok):
             if int(s['sorrend']) in kozos:
                 continue
-            blokkok.append(_szerep_blokk(nyelv, s, tok_ny, reszek))
+            blokkok.append(_szerep_blokk(nyelv, s, tok_ny, reszek, ctx))
         reszek_szoveg.append('\n\n'.join(blokkok))
     if kozos:
         blokkok = ['### Nyelvfüggetlen szerepek']
         for s in g_sorok:
             if int(s['sorrend']) in kozos:
-                blokkok.append(_szerep_blokk('gorog', s, [], reszek))
+                blokkok.append(_szerep_blokk('gorog', s, [], reszek, ctx))
         reszek_szoveg.append('\n\n'.join(blokkok))
     return '\n\n'.join(reszek_szoveg), van_hiv, tiszt
 
@@ -1403,6 +1493,7 @@ FAJL_TELJES_NEV = {
         'BDB (Brown–Driver–Briggs, A Hebrew and English Lexicon of the Old Testament, 1906)',
     'konkordancia/TBESG.txt': 'TBESG (Tyndale Brief lexicon of Extended Strongs for Greek)',
     'konkordancia/TBESH.txt': 'TBESH (Tyndale Brief lexicon of Extended Strongs for Hebrew)',
+    'konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv': 'TBESH (Tyndale Brief lexicon of Extended Strongs for Hebrew)',
     'konkordancia/Thayer_teljes.tsv': "Thayer (Thayer's Greek-English Lexicon of the New Testament)",
     'konkordancia/UBS_DNTG_jelentesek.tsv': 'UBS (UBS Dictionary of New Testament Greek — Louw–Nida szemantikai domének)',
     'konkordancia/UBS_DNTG_referenciak.tsv': 'UBS (UBS Dictionary of New Testament Greek — Louw–Nida szemantikai domének)',
