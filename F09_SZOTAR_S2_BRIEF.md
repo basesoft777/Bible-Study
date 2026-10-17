@@ -8,7 +8,7 @@ modell: sonnet
 allapot: dontesre_var
 ag: claude/f09-szotar-s2
 ad: az 1. fázis adatai — a 8 motívum Strongjaira szűkítve (DT74 (4)) — az adatrétegben és a generátorokban, a #78 szerepmátrix-vázának blokkjaihoz; a 8 lexikonoldal és a 8 törzscikk renderelése csak próba a generalt_proba/ alá, az éles lexikon/ a #11 1. lépcsője után generálódik (#36 vagy #10) (DT186)
-kovetkezo: "Te: döntés a DT-F09g–j pontokról (DONTESEK.md; DT-F09h: a PR CI-je emiatt bukik), utána független újraellenőrzés és merge a felhasználótól (F9.J1–J6 javító menet kész, 2026-10-17)"
+kovetkezo: "Te: döntés a 14 ismeretlen sorról (naplok/SZOTAR_S2_ismeretlen.tsv, F87.3 átkulcsolás miatti; l. naplok/SZOTAR_S2_zaras.md 4.), utána a javító menet folytatása (DT-F09h–j végrehajtása), független újraellenőrzés és merge a felhasználótól (2. javító menet: DT-F09g végrehajtva, ⛔ az S2.8-nál, 2026-10-17)"
 pr: 381
 lezarva_osszegzes: szótári adatréteg 2. menet a 8 motívum Strongjaira: 26 héber lemma-kiejtés, TBESH/UBS DBH/Mounce+SECE/tW+TWOT/BDB-etimológia/LXX-párok a #78 váz szerep-blokkjaiban, H8034 bekötés, N-F78a javítva, próbarender (8+8) és diff-osztályozás a generalt_proba/F09_szotar_s2_proba/ alá; az éles lexikon/ érintetlen; l. naplok/SZOTAR_S2_zaras.md
 fugg: [5, 6, 23, 78]
@@ -150,7 +150,7 @@ Az F05 K9–K14-ből, a DT186 és a DT74 (4) szerint igazítva.
 | # | Feltétel | F05-előzmény |
 |---|---|---|
 | K9 | Az S2.1 csak 100%-os görög aranykészlet-egyezés után futott; `grep -c KIEJT eszkozok/torzscikk_general.py` = 0; az `adat/kiejtes_kivetelek.tsv` mind a 26 jóváhagyott héber lemmát tartalmazza (a 8 motívum §0-ban mért lemmái + H8414, H0922; DT188) | K9 |
-| K10 | Diff-osztályozó: ismeretlen kategória 0; a kategóriák darabszáma jelentve (`naplok/SZOTAR_S2_diff.tsv`) | K10 |
+| K10 | Diff-osztályozó: ismeretlen kategória 0 (az osztályozónak **nincs tartalék-kategóriája**: amit egyik explicit feltétel sem fed, az `ismeretlen`; DT-F09g); a kategóriák darabszáma jelentve (`naplok/SZOTAR_S2_diff.tsv`). A két kiegészítő kategória feltétele: **`elavult_adat`** — az `elofordulasok`/`kizart`/`kapcsolatok`/`kereszthivatkozasok`/`tartalom`/`jelmagyarazat` blokk sora, amelynek az éles oldal adatrétege régebbi; a *törölt* sorra csak akkor, ha a tartalma a próbában tovább él (normalizált sor vagy minden igehelye megvan), különben `ismeretlen`; **`fordites_jelzo`** — két, azonos normalizált kulcsú sor, amely csak a hiányzó fordítás jelzőjében különbözik. A `szocikkek` törölt sora: váz-sor (fejléc, ÜRES-jelölő) vagy olyan tartalmi sor, amely tovább él, különben `ismeretlen`. Újrafuttatáskor szúrópróba az `elavult_adat` soraiból (`naplok/SZOTAR_S2_elavult_szuropr.md`), és **megállás, ha `ismeretlen` > 0** | K10 |
 | K11 | A lábléc és a kolofon az S11 szerint; a Mounce, az UBS és (ha van) a tW megjelölése szó szerint; az unfoldingWord® védjegy a származékos szövegben nem szerepel — a próbarenderen mérve | K11 |
 | K12 | *(a #70-hez tartozik; ebben a menetben nincs)* | K12 |
 | K13 | `ellenoriz.py` SÉRTÉS 0, kód 0; a **próbarender** 8 törzscikkében `nincs adatosítva` 0 (a `nincs forrás` és a `javaslat` szerep megengedett), Cremer- és Girdlestone-említés 0 (a CI E11 szabálya a `generalt_proba/F09_szotar_s2_proba/`-n mérve); a CI zöld | K13 (a `lexikon/` helyett a próba) |
