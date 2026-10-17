@@ -4,9 +4,9 @@ ALVIL-001_TORZSCIKK.md	licenc	11	0
 ALVIL-001_TORZSCIKK.md	lxx_korpusz	63	63
 ALVIL-001_TORZSCIKK.md	szerep	11	8
 ALVIL-001_TORZSCIKK.md	torzscikk_res	79	80
-ALVIL-001_TUDOMANYOS.md	elavult_adat	20	20
+ALVIL-001_TUDOMANYOS.md	elavult_adat	20	23
 ALVIL-001_TUDOMANYOS.md	fordites_jelzo	8	1
-ALVIL-001_TUDOMANYOS.md	ismeretlen	0	14
+ALVIL-001_TUDOMANYOS.md	ismert_hiba_tsk_versszam	0	11
 ALVIL-001_TUDOMANYOS.md	jeloles	10	10
 ALVIL-001_TUDOMANYOS.md	kiejtes	10	8
 ALVIL-001_TUDOMANYOS.md	licenc	42	14
@@ -137,6 +137,6 @@ TEREMT-001_TUDOMANYOS.md	szerep_vaz	44	9
 TEREMT-001_TUDOMANYOS.md	tbesh	4	0
 TEREMT-001_TUDOMANYOS.md	teologiai	57	0
 TEREMT-001_TUDOMANYOS.md	ubs_dbh	44	0
-# összesítő (hozzáadott + törölt sor): kiejtes=204, tbesh=98, ubs_dbh=522, mounce_sece=143, teologiai=3678, nyelvi_hatter=65, lxx_korpusz=831, licenc=518, szerep=208, szerep_vaz=496, elavult_adat=371, fordites_jelzo=100, jeloles=160, torzscikk_res=678, ismeretlen=14
+# összesítő (hozzáadott + törölt sor): kiejtes=204, tbesh=98, ubs_dbh=522, mounce_sece=143, teologiai=3678, nyelvi_hatter=65, lxx_korpusz=831, licenc=518, szerep=208, szerep_vaz=496, elavult_adat=374, fordites_jelzo=100, ismert_hiba_tsk_versszam=11, jeloles=160, torzscikk_res=678, ismeretlen=0
 # proveniencia: scope=generalt_proba/F09_szotar_s2_proba vs lexikon | forras=eszkozok/render_diff_osztalyoz.py --proba | ts=2026-10-17
 # az éles lexikon/ hash-ellenőrzése (naplok/F09_S0_lexikon_hash.tsv): 16 fájl bájtra változatlan

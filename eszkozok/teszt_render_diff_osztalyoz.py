@@ -172,5 +172,33 @@ class TovabbEl(unittest.TestCase):
         self.assertIsNone(sz.tovabb_el('- TSK: Róm 12:11 (Votes: 35)'))
 
 
+class MegnevezettTablak(unittest.TestCase):
+    """DT-F09g: az F87.3 átkulcsolás és az ismert TSK-versszám hiba csak név szerint felsorolt sorokra érvényes."""
+
+    def test_atkulcsolt_sor_elavult(self):
+        eles = blokk('kereszthivatkozasok', ['- Károli-KH: Jób 1:21'])
+        proba = blokk('kereszthivatkozasok', ['- Károli-KH: 1Móz 3:15'])
+        self.assertEqual(osztaly(eles, proba, 'ALVIL-001_TUDOMANYOS.md')['elavult_adat']['torolt'],
+                         ['- Károli-KH: Jób 1:21'])
+
+    def test_atkulcsolt_sor_mas_motivumban_ismeretlen(self):
+        eles = blokk('kereszthivatkozasok', ['- Károli-KH: Jób 1:21'])
+        proba = blokk('kereszthivatkozasok', ['- Károli-KH: 1Móz 3:15'])
+        self.assertEqual(osztaly(eles, proba, 'TEREMT-001_TUDOMANYOS.md')[R.ISMERETLEN]['torolt'],
+                         ['- Károli-KH: Jób 1:21'])
+
+    def test_ismert_hiba_tsk(self):
+        eles = blokk('kereszthivatkozasok', ['- TSK: Róm 12:11 (Votes: 35)', '- TSK: Róm 8:1 (Votes: 99)'])
+        proba = blokk('kereszthivatkozasok', ['- Károli-KH: 1Móz 3:15'])
+        e = osztaly(eles, proba, 'ALVIL-001_TUDOMANYOS.md')
+        self.assertEqual(e['ismert_hiba_tsk_versszam']['torolt'], ['- TSK: Róm 12:11 (Votes: 35)'])
+        # a táblán kívüli TSK-sor nem kap kivételt
+        self.assertEqual(e[R.ISMERETLEN]['torolt'], ['- TSK: Róm 8:1 (Votes: 99)'])
+
+    def test_tabla_merete(self):
+        self.assertEqual(len(R.ISMERT_HIBA_TSK_VERSSZAM), 11)
+        self.assertEqual(len(R.ATKULCSOLT_SOROK), 3)
+
+
 if __name__ == '__main__':
     unittest.main()

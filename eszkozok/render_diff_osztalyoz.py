@@ -323,7 +323,30 @@ ISMERETLEN = 'ismeretlen'
 
 PROBA_KATEGORIAK = (
     'kiejtes', 'tbesh', 'ubs_dbh', 'mounce_sece', 'teologiai', 'nyelvi_hatter', 'lxx_korpusz', 'licenc',
-    'szerep', 'szerep_vaz', 'elavult_adat', 'fordites_jelzo', 'jeloles', 'tanulmany', 'torzscikk_res')
+    'szerep', 'szerep_vaz', 'elavult_adat', 'fordites_jelzo', 'ismert_hiba_tsk_versszam', 'jeloles', 'tanulmany',
+    'torzscikk_res')
+
+# DT-F09g (felhasználói döntés, 2026-10-17): megnevezett táblák, nem általános szabályok.
+# 1. Az F87.3 (98f22fc6, DT-F87b) átkulcsolása, ALVIL-001: régi kulcs -> új kulcs (a Károli 1908 szövege szerint
+#    a Seol a Préd 9:12-ben és a Jób 17:12-ben áll; a régi kulcs téves volt).
+ATKULCSOLT_KULCS = {'Jób 17:13': 'Jób 17:12', 'Jób 17:16': 'Jób 17:15', 'Préd 9:10': 'Préd 9:12'}
+# A régi kulcs alatt állt, törölt sorok (motívum, sor) -> a régi kulcs: ezek `elavult_adat`.
+ATKULCSOLT_SOROK = {
+    ('ALVIL-001', '*A sírnak mondom: Te vagy az én atyám; a férgeknek pedig: Ti vagytok az én anyám és néném.*'): 'Jób 17:13',
+    ('ALVIL-001', '*A te ruháid mindenkor legyenek fejérek, és az olaj a te fejedről el ne fogyatkozzék.*'): 'Préd 9:10',
+    ('ALVIL-001', '- Károli-KH: Jób 1:21'): 'Jób 17:13',
+}
+# 2. ISMERT HIBA (N-F09g): a TSK-tábla KJV-számozású, a tsk_index() átváltás nélkül Károli-kulccsal keres; a Préd 9:10
+#    alatti 11 TSK-jelölt a KJV 9:10 = Károli 9:12 vershez tartozott, és emiatt veszett el. CSAK ez a 11 sor:
+ISMERT_HIBA_TSK_VERSSZAM = {
+    ('ALVIL-001', '- TSK: Kol 3:23 (Votes: 71)'), ('ALVIL-001', '- TSK: Ef 5:16 (Votes: 35)'),
+    ('ALVIL-001', '- TSK: Róm 12:11 (Votes: 35)'), ('ALVIL-001', '- TSK: Zsolt 6:5 (Votes: 24)'),
+    ('ALVIL-001', '- TSK: 1Kor 9:24 (Votes: 19)'), ('ALVIL-001', '- TSK: Préd 11:6 (Votes: 18)'),
+    ('ALVIL-001', '- TSK: 2Krón 31:20 (Votes: 17)'), ('ALVIL-001', '- TSK: 2Krón 31:21 (Votes: 17)'),
+    ('ALVIL-001', '- TSK: Jer 29:13 (Votes: 17)'), ('ALVIL-001', '- TSK: Mt 6:33 (Votes: 15)'),
+    ('ALVIL-001', '- TSK: Ézs 38:19 (Votes: 15)'),
+}
+
 
 _BLOKK_KEZDET_RE = re.compile(r'<!-- GENERÁLT-KEZDET: general\.py --cel lexikon#[^#]+#(\w+)')
 _SZEREP_FEJ_RE = re.compile(r'^#### (\d+)\. ')
@@ -473,8 +496,12 @@ def _par_kategoria(egyik, masik):
 _ADAT_BLOKKOK = ('elofordulasok', 'kizart', 'kapcsolatok', 'kereszthivatkozasok', 'tartalom', 'jelmagyarazat')
 
 
-def _tudomanyos_kategoria(sor, kontextus, irany, proba=None):
+def _tudomanyos_kategoria(sor, kontextus, irany, proba=None, motivum=None):
     s = sor.strip()
+    if irany == 'torolt' and (motivum, s) in ISMERT_HIBA_TSK_VERSSZAM:
+        return 'ismert_hiba_tsk_versszam'
+    if irany == 'torolt' and ATKULCSOLT_KULCS.get(ATKULCSOLT_SOROK.get((motivum, s))):
+        return 'elavult_adat'  # F87.3 átkulcsolás: a régi kulcs sora
     blokk, nyelv, szerep, rokon = kontextus
     if blokk in ('idezes', 'kolofon'):
         return 'licenc'
@@ -556,7 +583,7 @@ def proba_osztalyoz(fajl_nev, eles_szoveg, proba_szoveg):
                 return pk
         if torzscikk:
             return _torzscikk_kategoria(s, k)
-        return _tudomanyos_kategoria(s, k, irany, proba_sz)
+        return _tudomanyos_kategoria(s, k, irany, proba_sz, fajl_nev.split('_')[0])
 
     for s, k in torolt:
         eredmeny[kategoria(s, k, 'torolt')]['torolt'].append(s)
