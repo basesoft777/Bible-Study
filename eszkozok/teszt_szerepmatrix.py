@@ -448,6 +448,50 @@ class TestTbeshF09(unittest.TestCase):
         self.assertNotIn('##### TBESH H2403b', m)
 
 
+class TestTbeshVerziozottF09(unittest.TestCase):
+    """DT-F09h: a verziózott kimenet csak a TBESH.txt-ből dolgozik; a gitignore-olt _nyers/ fájl hiánya nem hiba."""
+
+    def setUp(self):
+        self._regi = (LG.TBESH_HELYI_LEXICON, LG._tbesh_konsz_cache, LG._tbesh_konsz_mod, LG._U.TBESH_KONSZOLIDALT)
+        LG._tbesh_konsz_cache = None
+
+    def tearDown(self):
+        LG.TBESH_HELYI_LEXICON, LG._tbesh_konsz_cache, LG._tbesh_konsz_mod, LG._U.TBESH_KONSZOLIDALT = self._regi
+
+    def test_hianyzo_nyers_fajl_nem_hiba(self):
+        LG._U.TBESH_KONSZOLIDALT = os.path.join(os.path.dirname(__file__), 'nincs_ilyen_nyers', 'x.tsv')
+        LG.TBESH_HELYI_LEXICON = True   # még helyi kéréssel sem hiba, ha a fájl nincs meg: TBESH.txt-re esik vissza
+        sorok = LG.tbesh_konszolidalt().get('H0127', [])
+        self.assertTrue(sorok)
+        self.assertTrue(all(r['forras'] == 'txt' and r['_fajl'] == 'konkordancia/TBESH.txt' for r in sorok))
+
+    def test_verziozott_mod_txt_forras_es_nincs_lexicon_jelzo(self):
+        LG.TBESH_HELYI_LEXICON = False
+        for r in [x for v in LG.tbesh_konszolidalt().values() for x in v]:
+            self.assertEqual(r['forras'], 'txt')
+        for mid in ('HAMART-001', 'TEREMT-001', 'MENNY-001'):
+            szoveg = _blokk(mid)[0]
+            self.assertNotIn('TBESH.lexicon', szoveg, mid)
+            self.assertNotIn('_nyers', szoveg, mid)
+
+    def test_helyi_lexicon_konszolidalt_tabla(self):
+        if not os.path.isfile(LG._U.TBESH_KONSZOLIDALT):
+            self.skipTest('a gitignore-olt konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv nincs meg (tiszta klón / CI; DT-F09h)')
+        LG.TBESH_HELYI_LEXICON = True
+        sorok = LG.tbesh_konszolidalt().get('H0127', [])
+        self.assertTrue(sorok)
+        self.assertTrue(all(r['_fajl'] == LG.TBESH_KONSZ_FAJL for r in sorok))
+
+    def test_helyi_lexicon_kapcsolo_nem_ir_verziozott_helyre(self):
+        import subprocess
+        gen = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'general.py')
+        for extra in ([], ['--kimenet', os.path.join(os.path.dirname(gen), '..', 'generalt_proba', 'x')]):
+            r = subprocess.run([sys.executable, gen, '--cel', 'lexikon', '--id', 'HAMART-001', '--helyi-lexicon'] + extra,
+                               capture_output=True)
+            self.assertNotEqual(r.returncode, 0, extra)
+            self.assertIn('helyi-lexicon', r.stderr.decode('utf-8', 'replace'))
+
+
 class TestTeologiaiF09(unittest.TestCase):
     """F09 S2.5: tW + TWOT (3. szerep), BDB-etimológia (héber 8.), LXX versszintű párok (héber 6.)."""
 

@@ -336,7 +336,7 @@ ua.
 
 ## 2. Szótári háttér
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#szocikkek | forrás: adat/szotar_szerepek.tsv, konkordancia/BDB_etimologia_kezi_hatarok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TBESH.txt, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva | ts=2026-10-17 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#szocikkek | forrás: adat/szotar_szerepek.tsv, konkordancia/BDB_etimologia_kezi_hatarok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TBESH.txt, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva | ts=2026-10-17 -->
 
 *Ez a blokk a `[ID: HODIT-001]` motívum 3 Strong-tokenjét fedi, szerepenként a szerepmátrix (`szotar_szerepek.tsv`) sorrendjében, nincs jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*
 
@@ -357,25 +357,19 @@ ua.
 
 *(fordításra vár)*
 
-*Forrás: konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv (a TBESH.txt szövege)*
+*Forrás: konkordancia/TBESH.txt (a TBESH.txt szövege)*
 
 ##### TBESH H7496 — (konszolidált szócikk)
 
 **Röviden:** shade
 
-> רְפָאִים [H:N-M] shade 1) ghosts of the dead, shades, spirits
+> ghosts of the dead, shades, spirits
 
 *(fordításra vár)*
 
-*Forrás: konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv (a TBESH.lexicon szövege)*
+*Forrás: konkordancia/TBESH.txt (a TBESH.txt szövege)*
 
-##### TBESH H7497 — (konszolidált szócikk)
-
-> a. רָפָה [N:N-M-T] giant 1) giant, Rephah b. רְפָאִים [N:N--TG] Rephaim 1) giants, Rephaim 1a) old tribe of giants
-
-*(fordításra vár)*
-
-*Forrás: konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv (a TBESH.lexicon szövege)*
+**H7497** · *a forrás nem tárgyalja* *(TBESH)*
 
 #### 2. Mélységi szócikk
 
@@ -801,7 +795,7 @@ A klasszikus lexikográfia (BDB) két külön gyököt tételez fel; az újabb l
 - OSHL (Open Scriptures Hebrew Lexicon) — csak TWOT-szám (`konkordancia/OSHL_lexikalis_index.tsv`, CC BY 4.0)
 - SDBH (Semantic Dictionary of Biblical Hebrew) (`konkordancia/SDBH_domenek.tsv`, CC BY-SA 4.0)
 - SECE (Strong's Exhaustive Concordance, Enhanced) (`konkordancia/SECE_H_teljes.tsv`, közkincs)
-- TBESH (Tyndale Brief lexicon of Extended Strongs for Hebrew) (`konkordancia/TBESH.txt`, `konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv`, CC BY 4.0)
+- TBESH (Tyndale Brief lexicon of Extended Strongs for Hebrew) (`konkordancia/TBESH.txt`, CC BY 4.0)
 - TSK (Treasury of Scripture Knowledge) (`konkordancia/TSK_kereszthivatkozasok.tsv`, CC BY 4.0)
 - UBS (UBS Dictionary of New Testament Greek — Louw–Nida szemantikai domének) (`konkordancia/UBS_DNTG_jelentesek.tsv`, `konkordancia/UBS_DNTG_referenciak.tsv`, CC BY-SA 4.0)
 - UBS DBH (UBS Dictionary of Biblical Hebrew — Semantic Dictionary of Biblical Hebrew) (`konkordancia/UBS_DBH_jelentesek.tsv`, `konkordancia/UBS_DBH_referenciak.tsv`, CC BY-SA 4.0)
@@ -824,7 +818,7 @@ A klasszikus lexikográfia (BDB) két külön gyököt tételez fel; az újabb l
 
 ## Kolofon
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditasok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/szotar_szerepek.tsv, konkordancia/BDB_etimologia_kezi_hatarok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_OS/1-chronicles.tsv, konkordancia/LXX_OS/2-samuel.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/joshua-vaticanus-b.tsv, konkordancia/LXX_OS/numbers.tsv, konkordancia/LXX_OS/proverbs.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva | ts=2026-10-17 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditasok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/szotar_szerepek.tsv, konkordancia/BDB_etimologia_kezi_hatarok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_OS/1-chronicles.tsv, konkordancia/LXX_OS/2-samuel.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/joshua-vaticanus-b.tsv, konkordancia/LXX_OS/numbers.tsv, konkordancia/LXX_OS/proverbs.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva | ts=2026-10-17 -->
 
 *Ez a blokk a `[ID: HODIT-001]` motívum törzsadatait (`motivumok.tsv`) és a lexikon-oldalon ténylegesen felhasznált forrásokat sorolja fel.*
 
@@ -879,7 +873,6 @@ A klasszikus lexikográfia (BDB) két külön gyököt tételez fel; az újabb l
 | `UBS_DBH_referenciak.tsv` | `konkordancia/UBS_DBH_referenciak.tsv` | CC BY-SA 4.0 | szocikkek |
 | `UBS_DNTG_jelentesek.tsv` | `konkordancia/UBS_DNTG_jelentesek.tsv` | CC BY-SA 4.0 | elofordulasok |
 | `UBS_DNTG_referenciak.tsv` | `konkordancia/UBS_DNTG_referenciak.tsv` | CC BY-SA 4.0 | elofordulasok |
-| `TBESH_konszolidalt.tsv` | `konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv` | CC BY 4.0 | szocikkek |
 | `tW_szocikkek.tsv` | `konkordancia/tW_szocikkek.tsv` | CC BY-SA 4.0 | szocikkek |
 
 *lxx-morph, © Seth Kushniryk, CC BY 4.0, github.com/OpenScriptorium/lxx-morph.; Data created by www.STEPBible.org based on work at Tyndale House Cambridge (CC BY 4.0)*

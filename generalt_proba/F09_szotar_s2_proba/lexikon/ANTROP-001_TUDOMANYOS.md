@@ -146,7 +146,7 @@ Isten Igéje "elhat a szellem és lélek... megoszlásáig" (μερισμοῦ) 
 
 ## 2. Szótári háttér
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#szocikkek | forrás: adat/lexikon_hivatkozasok.tsv, adat/szotar_szerepek.tsv, konkordancia/BDB_etimologia_kezi_hatarok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-10-17 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#szocikkek | forrás: adat/lexikon_hivatkozasok.tsv, adat/szotar_szerepek.tsv, konkordancia/BDB_etimologia_kezi_hatarok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-10-17 -->
 
 *Ez a blokk a `[ID: ANTROP-001]` motívum 4 Strong-tokenjét fedi, szerepenként a szerepmátrix (`szotar_szerepek.tsv`) sorrendjében, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*
 
@@ -642,23 +642,17 @@ Isten Igéje "elhat a szellem és lélek... megoszlásáig" (μερισμοῦ) 
 
 #### 1. Alapjelentés
 
-##### TBESH H2416 — (konszolidált szócikk)
-
-> a. חַי [H:A] alive adj 1) living, alive 1a) green (of vegetation) 1b) flowing, fresh (of water) 1c) lively, active (of man) 1d) reviving (of the springtime) b. חַי [H:N-M] kinsfolk 1) kinsfolk c. חַיָּה [H:N-F] living thing 1) living thing, animal 1a) animal 1b) life 1c) appetite 1d) revival, renewal d. חַיָּה [H:N-F] community 1) community e. חַיִּים [H:N-M] life 1) life (abstract emphatic) 1a) life 1b) sustenance, maintenance
-
-*(fordításra vár)*
-
-*Forrás: konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv (a TBESH.lexicon szövege)*
+**H2416** · *a forrás nem tárgyalja* *(TBESH)*
 
 ##### TBESH H5315 — (konszolidált szócikk)
 
 **Röviden:** soul; soul: life; soul: myself; soul: person; soul: animal; soul: appetite; soul: dead; soul: neck
 
-> נֶ֫פֶשׁ [H:N-F] soul 1) soul, self, life, creature, person, appetite, mind, living being, desire, emotion, passion 1a) that which breathes, the breathing substance or being, soul, the inner being of man 1b) living being 1c) living being (with life in the blood) 1d) the man himself, self, person or individual 1e) seat of the appetites 1f) seat of emotions and passions 1g) activity of mind 1g1) dubious 1h) activity of the will 1h1) dubious 1i) activity of the character 1i1) dubious
+> 1) soul, self, life, creature, person, appetite, mind, living being, desire, emotion, passion 1a) that which breathes, the breathing substance or being, soul, the inner being of man 1b) living being 1c) living being (with life in the blood) 1d) the man himself, self, person or individual 1e) seat of the appetites 1f) seat of emotions and passions 1g) activity of mind 1g1) uncertain 1h) activity of the will 1h1) uncertain 1i) activity of the character 1i1) uncertain
 
 *(fordításra vár)*
 
-*Forrás: konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv (a TBESH.txt és a TBESH.lexicon szövege (±5% eltérésen belül egyenlő))*
+*Forrás: konkordancia/TBESH.txt (a TBESH.txt szövege)*
 
 #### 2. Mélységi szócikk
 
@@ -1179,7 +1173,7 @@ A motívumhoz nincs rögzített kapcsolat.
 - SDGNT (Semantic Dictionary of Biblical Greek) (`konkordancia/SDGNT_domenek.tsv`, CC BY-SA 4.0)
 - SECE (Strong's Exhaustive Concordance, Enhanced) (`konkordancia/SECE_G_teljes.tsv`, `konkordancia/SECE_H_teljes.tsv`, közkincs)
 - TBESG (Tyndale Brief lexicon of Extended Strongs for Greek) (`konkordancia/TBESG.txt`, CC BY 4.0)
-- TBESH (Tyndale Brief lexicon of Extended Strongs for Hebrew) (`konkordancia/TBESH.txt`, `konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv`, CC BY 4.0)
+- TBESH (Tyndale Brief lexicon of Extended Strongs for Hebrew) (`konkordancia/TBESH.txt`, CC BY 4.0)
 - TSK (Treasury of Scripture Knowledge) (`konkordancia/TSK_kereszthivatkozasok.tsv`, CC BY 4.0)
 - Thayer (Thayer's Greek-English Lexicon of the New Testament) (`konkordancia/Thayer_teljes.tsv`, közkincs)
 - UBS (UBS Dictionary of New Testament Greek — Louw–Nida szemantikai domének) (`konkordancia/UBS_DNTG_jelentesek.tsv`, `konkordancia/UBS_DNTG_referenciak.tsv`, CC BY-SA 4.0)
@@ -1203,7 +1197,7 @@ A motívumhoz nincs rögzített kapcsolat.
 
 ## Kolofon
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditasok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/motivumok.tsv, adat/szotar_szerepek.tsv, konkordancia/BDB_etimologia_kezi_hatarok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-10-17 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditasok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/motivumok.tsv, adat/szotar_szerepek.tsv, konkordancia/BDB_etimologia_kezi_hatarok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-10-17 -->
 
 *Ez a blokk a `[ID: ANTROP-001]` motívum törzsadatait (`motivumok.tsv`) és a lexikon-oldalon ténylegesen felhasznált forrásokat sorolja fel.*
 
@@ -1254,7 +1248,6 @@ A motívumhoz nincs rögzített kapcsolat.
 | `UBS_DBH_referenciak.tsv` | `konkordancia/UBS_DBH_referenciak.tsv` | CC BY-SA 4.0 | szocikkek |
 | `UBS_DNTG_jelentesek.tsv` | `konkordancia/UBS_DNTG_jelentesek.tsv` | CC BY-SA 4.0 | elofordulasok, szocikkek |
 | `UBS_DNTG_referenciak.tsv` | `konkordancia/UBS_DNTG_referenciak.tsv` | CC BY-SA 4.0 | elofordulasok, szocikkek |
-| `TBESH_konszolidalt.tsv` | `konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv` | CC BY 4.0 | szocikkek |
 | `tW_szocikkek.tsv` | `konkordancia/tW_szocikkek.tsv` | CC BY-SA 4.0 | szocikkek |
 
 *Mounce Concise Greek-English Dictionary, Copyright 1993 All Rights Reserved, www.teknia.com/greek-dictionary*

@@ -647,7 +647,7 @@ az özönvíz-világ elpusztulása és a jelenlegi világ tűzre tartatása — 
 
 ## 2. Szótári háttér
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#szocikkek | forrás: adat/lexikon_hivatkozasok.tsv, adat/szotar_szerepek.tsv, konkordancia/BDB_etimologia_kezi_hatarok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-10-17 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#szocikkek | forrás: adat/lexikon_hivatkozasok.tsv, adat/szotar_szerepek.tsv, konkordancia/BDB_etimologia_kezi_hatarok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-10-17 -->
 
 *Ez a blokk a `[ID: HAMART-001]` motívum 14 Strong-tokenjét fedi, szerepenként a szerepmátrix (`szotar_szerepek.tsv`) sorrendjében, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*
 
@@ -993,73 +993,61 @@ az özönvíz-világ elpusztulása és a jelenlegi világ tűzre tartatása — 
 
 *(fordításra vár)*
 
-*Forrás: konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv (a TBESH.txt szövege)*
+*Forrás: konkordancia/TBESH.txt (a TBESH.txt szövege)*
 
 ##### TBESH H0779 — (konszolidált szócikk)
 
 **Röviden:** to curse
 
-> אָרַר [H:V] to curse 1) to curse 1a) (Qal) 1a1) to curse 1a2) cursed be he (participle used as in curses) 1b) (Niphal) to be cursed, cursed 1c) (Piel) to curse, lay under a curse, put a curse on 1d) (Hophal) to be made a curse, be cursed
+> 1) to curse 1a) (Qal) 1a1) to curse 1a2) cursed be he (participle used as in curses) 1b) (Niphal) to be cursed, cursed 1c)(Piel) to curse, lay under a curse, put a curse on 1d) (Hophal) to be made a curse, be cursed
 
 *(fordításra vár)*
 
-*Forrás: konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv (a TBESH.lexicon szövege)*
+*Forrás: konkordancia/TBESH.txt (a TBESH.txt szövege)*
 
-##### TBESH H2403 — (konszolidált szócikk)
-
-> a. חַטָּאָה [H:N-F] sin 1) sin, sinful thing b. חַטָּאת [H:N-F] sin 1) sin, sin offering 1a) sin 1b) condition of sin, guilt of sin 1c) punishment for sin 1d) sin-offering 1e) purification from sins of ceremonial uncleanness
-
-*(fordításra vár)*
-
-*Forrás: konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv (a TBESH.lexicon szövege)*
+**H2403** · *a forrás nem tárgyalja* *(TBESH)*
 
 ##### TBESH H2555 — (konszolidált szócikk)
 
 **Röviden:** violence
 
-> חָמָס [H:N-M] violence 1) violence, wrong, cruelty, injustice
+> violence, wrong, cruelty, injustice
 
 *(fordításra vár)*
 
-*Forrás: konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv (a TBESH.lexicon szövege)*
+*Forrás: konkordancia/TBESH.txt (a TBESH.txt szövege)*
 
 ##### TBESH H6093 — (konszolidált szócikk)
 
 **Röviden:** toil
 
-> עִצָּבוֹן [H:N-M] toil 1) pain, labour, hardship, sorrow, toil
+> pain, labour, hardship, sorrow, toil
 
 *(fordításra vár)*
 
-*Forrás: konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv (a TBESH.lexicon szövege)*
+*Forrás: konkordancia/TBESH.txt (a TBESH.txt szövege)*
 
 ##### TBESH H6975 — (konszolidált szócikk)
 
 **Röviden:** thorn
 
-> קוֹץ [H:N-M] thorn 1) thorn, thornbush 1a) thornbush 1b) thorn
+> 1) thorn, thornbush 1a) thornbush 1b) thorn
 
 *(fordításra vár)*
 
-*Forrás: konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv (a TBESH.lexicon szövege)*
+*Forrás: konkordancia/TBESH.txt (a TBESH.txt szövege)*
 
 ##### TBESH H7043 — (konszolidált szócikk)
 
 **Röviden:** to lighten
 
-> קָלַל [H:V] to lighten 1) to be slight, be swift, be trifling, be of little account, be light 1a) (Qal) 1a1) to be slight, be abated (of water) 1a2) to be swift 1a3) to be trifling, be of little account 1b) (Niphal) 1b1) to be swift, show oneself swift 1b2) to appear trifling, be too trifling, be insignificant 1b3) to be lightly esteemed 1c) (Piel) 1c1) to make despicable 1c2) to curse 1d) (Pual) to be cursed 1e) (Hiphil) 1e1) to make light, lighten 1e2) to treat with contempt, bring contempt or dishonour 1f) (Pilpel) 1f1) to shake 1f2) to whet 1g) (Hithpalpel) to shake oneself, be moved to and fro
+> 1) to be slight, be swift, be trifling, be of little account, be light 1a) (Qal) 1a1) to be slight, be abated (of water) 1a2) to be swift 1a3) to be trifling, be of little account 1b) (Niphal) 1b1) to be swift, show oneself swift 1b2) to appear trifling, be too trifling, be insignificant 1b3) to be lightly esteemed 1c) (Piel) 1c1) to make despicable 1c2) to curse 1d) (Pual) to be cursed 1e) (Hiphil) 1e1) to make light, lighten 1e2) to treat with contempt, bring contempt or dishonour 1f) (Pilpel) 1f1) to shake 1f2) to whet 1g) (Hithpalpel) to shake oneself, be moved to and fro
 
 *(fordításra vár)*
 
-*Forrás: konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv (a TBESH.txt és a TBESH.lexicon szövege (±5% eltérésen belül egyenlő))*
+*Forrás: konkordancia/TBESH.txt (a TBESH.txt szövege)*
 
-##### TBESH H7451 — (konszolidált szócikk)
-
-> a. רַע [H:A] bad adj 1) bad, evil 1a) bad, disagreeable, malignant 1b) bad, unpleasant, evil (giving pain, unhappiness, misery) 1c) evil, displeasing 1d) bad (of its kind-land, water, etc) 1e) bad (of value) 1f) worse than, worst (comparison) 1g) sad, unhappy 1h) evil (hurtful) 1i) bad, unkind (vicious in disposition) 1j) bad, evil, wicked (ethically) 1j1) in general, of persons, of thoughts 1j2) deeds, actions b. רַע [H:N-M] evil 1) evil, distress, misery, injury, calamity 1a) evil, distress, adversity 1b) evil, injury, wrong 1c) evil (ethical) c. רָעָה [H:N-F] distress 1) evil, misery, distress, injury 1a) evil, misery, distress 1b) evil, injury, wrong 1c) evil (ethical)
-
-*(fordításra vár)*
-
-*Forrás: konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv (a TBESH.lexicon szövege)*
+**H7451** · *a forrás nem tárgyalja* *(TBESH)*
 
 ##### TBESH H7843 — (konszolidált szócikk)
 
@@ -1069,7 +1057,7 @@ az özönvíz-világ elpusztulása és a jelenlegi világ tűzre tartatása — 
 
 *(fordításra vár)*
 
-*Forrás: konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv (a TBESH.txt szövege)*
+*Forrás: konkordancia/TBESH.txt (a TBESH.txt szövege)*
 
 #### 2. Mélységi szócikk
 
@@ -3097,7 +3085,7 @@ Négy, igehely-szintű lexikai lelet került elő, amely önmagában is megáll,
 - SDGNT (Semantic Dictionary of Biblical Greek) (`konkordancia/SDGNT_domenek.tsv`, CC BY-SA 4.0)
 - SECE (Strong's Exhaustive Concordance, Enhanced) (`konkordancia/SECE_G_teljes.tsv`, `konkordancia/SECE_H_teljes.tsv`, közkincs)
 - TBESG (Tyndale Brief lexicon of Extended Strongs for Greek) (`konkordancia/TBESG.txt`, CC BY 4.0)
-- TBESH (Tyndale Brief lexicon of Extended Strongs for Hebrew) (`konkordancia/TBESH.txt`, `konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv`, CC BY 4.0)
+- TBESH (Tyndale Brief lexicon of Extended Strongs for Hebrew) (`konkordancia/TBESH.txt`, CC BY 4.0)
 - TSK (Treasury of Scripture Knowledge) (`konkordancia/TSK_kereszthivatkozasok.tsv`, CC BY 4.0)
 - Thayer (Thayer's Greek-English Lexicon of the New Testament) (`konkordancia/Thayer_teljes.tsv`, közkincs)
 - UBS (UBS Dictionary of New Testament Greek — Louw–Nida szemantikai domének) (`konkordancia/UBS_DNTG_jelentesek.tsv`, `konkordancia/UBS_DNTG_referenciak.tsv`, CC BY-SA 4.0)
@@ -3122,7 +3110,7 @@ Négy, igehely-szintű lexikai lelet került elő, amely önmagában is megáll,
 
 ## Kolofon
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditasok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/szotar_szerepek.tsv, konkordancia/BDB_etimologia_kezi_hatarok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/hosea.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv, konkordancia/LXX_OS/jonah.tsv, konkordancia/LXX_OS/micah.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zephaniah.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-10-17 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditasok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/szotar_szerepek.tsv, konkordancia/BDB_etimologia_kezi_hatarok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/hosea.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv, konkordancia/LXX_OS/jonah.tsv, konkordancia/LXX_OS/micah.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zephaniah.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-10-17 -->
 
 *Ez a blokk a `[ID: HAMART-001]` motívum törzsadatait (`motivumok.tsv`) és a lexikon-oldalon ténylegesen felhasznált forrásokat sorolja fel.*
 
@@ -3184,7 +3172,6 @@ Négy, igehely-szintű lexikai lelet került elő, amely önmagában is megáll,
 | `UBS_DBH_referenciak.tsv` | `konkordancia/UBS_DBH_referenciak.tsv` | CC BY-SA 4.0 | szocikkek |
 | `UBS_DNTG_jelentesek.tsv` | `konkordancia/UBS_DNTG_jelentesek.tsv` | CC BY-SA 4.0 | elofordulasok, szocikkek |
 | `UBS_DNTG_referenciak.tsv` | `konkordancia/UBS_DNTG_referenciak.tsv` | CC BY-SA 4.0 | elofordulasok, szocikkek |
-| `TBESH_konszolidalt.tsv` | `konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv` | CC BY 4.0 | szocikkek |
 | `tW_szocikkek.tsv` | `konkordancia/tW_szocikkek.tsv` | CC BY-SA 4.0 | szocikkek |
 
 *Mounce Concise Greek-English Dictionary, Copyright 1993 All Rights Reserved, www.teknia.com/greek-dictionary*

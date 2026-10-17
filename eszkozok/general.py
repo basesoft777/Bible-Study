@@ -997,6 +997,10 @@ def build_parser():
                          'Nélküle a szkript soha nem ír éles fájlba, csak a '
                          '--kimenet könyvtár alá. Csak a naplo és az index cél '
                          'élesíthető; a study-fájlok nem (brief G7).')
+    p.add_argument('--helyi-lexicon', action='store_true',
+                    help='DT-F09h: a gitignore-olt konszolidált TBESH-tábla (.lexicon-bővítés) használata. '
+                         'CSAK helyi, nem verziózott kimenetbe (a --kimenet kötelező, nem lehet a '
+                         'generalt_proba/ vagy a lexikon/ alatt, és --ir sem használható).')
     p.add_argument('--ellenoriz', action='store_true',
                     help='nem ír; a generált blokkot az ÉLES fájlban álló marker-blokk '
                          'törzsével veti össze, eltérésnél/hiánynál 1-gyel lép ki')
@@ -1062,6 +1066,13 @@ def elesites(cel, path, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek
 
 def main():
     args = build_parser().parse_args()
+    if args.helyi_lexicon:
+        kim = os.path.abspath(args.kimenet)
+        tiltott = [os.path.abspath(os.path.join(ROOT, 'generalt_proba')), os.path.abspath(os.path.join(ROOT, 'lexikon'))]
+        if args.ir or kim in tiltott or any(kim.startswith(x + os.sep) for x in tiltott) or args.kimenet == build_parser().get_default('kimenet'):
+            raise SystemExit('--helyi-lexicon: csak explicit, nem verziózott --kimenet könyvtárba (nem a generalt_proba/ vagy lexikon/ alá, --ir nélkül; DT-F09h)')
+        import lexikon_general as _lg
+        _lg.TBESH_HELYI_LEXICON = True
 
     if args.ir and args.cel not in ELESITHETO and args.cel != 'mind':
         print('FIGYELEM: a(z) %r cél NEM élesíthető (brief G7) -- a kimenet a '

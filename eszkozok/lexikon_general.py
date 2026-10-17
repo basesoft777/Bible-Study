@@ -859,21 +859,49 @@ FORDITASRA_VAR = '*(fordításra vár)*'
 NEM_TARGYALJA = '*a forrás nem tárgyalja*'
 
 TBESH_KONSZ_FAJL = 'konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv'
+TBESH_TXT_FAJL = 'konkordancia/TBESH.txt'
+# DT-F09h: a verziózott kimenet (generalt_proba/, az éles lexikon/) CSAK a verziózott TBESH.txt-ből dolgozik; a
+# gitignore-olt, licenc miatt nem verziózható `.lexicon`-eredetű konszolidált tábla csak helyi, nem verziózott
+# kimenetben használható (general.py --helyi-lexicon). A hiányzó _nyers/ fájl sosem hiba.
+TBESH_HELYI_LEXICON = False
 _tbesh_konsz_cache = None
+_tbesh_konsz_mod = None
+
+
+def _tbesh_txt_sorok():
+    """A TBESH.txt-ből (verziózott) épített sorok: ugyanaz a tisztítás és dedup, mint a konszolidáló
+    importernél (`tbesh_konszolidalt_import.txt_betolt`), `forras` = txt."""
+    import tbesh_konszolidalt_import as TI
+    adat = TI.txt_betolt(_U.kotelezo(_U.TBESH_TXT))
+    sorok = []
+    for strong in sorted(adat, key=lambda s: (int(s[1:5]), s[5:])):
+        a = adat[strong]
+        sorok.append({'strong': strong, 'alap_strong': TI.alap_strong_szamol(strong), 'lemma': a['lemma'],
+                      'atirat': a['atirat'], 'pos_kod': a['pos_kod'], 'rovid_glosszak': a['rovid_glosszak'],
+                      'teljes_szoveg': a['teljes_szoveg'], 'forras': 'txt', '_fajl': TBESH_TXT_FAJL})
+    return sorok
 
 
 def tbesh_konszolidalt():
-    """alap_strong -> [sor-dict, ...] a helyben élő konszolidált TBESH-táblából (F05 S4, D3, D38;
-    F09 S2.2). A fájl gitignore-olt (F42, DT-F42b): hiányára a `_U.kotelezo` egyértelmű hibát ad."""
-    global _tbesh_konsz_cache
-    if _tbesh_konsz_cache is None:
-        sorok = L.read_tsv_skip_comments(_U.kotelezo(_U.TBESH_KONSZOLIDALT))
+    """alap_strong -> [sor-dict, ...]: a TBESH.txt-ből épített sorok (F05 S4, D3, D38; F09 S2.2). Csak a
+    `TBESH_HELYI_LEXICON` bekapcsolásakor és ha a gitignore-olt konszolidált tábla megvan, abból olvas
+    (a .lexicon-bővítéssel); a fájl hiánya sosem hiba (DT-F09h)."""
+    global _tbesh_konsz_cache, _tbesh_konsz_mod
+    helyi = bool(TBESH_HELYI_LEXICON) and os.path.isfile(_U.TBESH_KONSZOLIDALT)
+    if _tbesh_konsz_cache is None or _tbesh_konsz_mod != helyi:
+        if helyi:
+            sorok = L.read_tsv_skip_comments(_U.TBESH_KONSZOLIDALT)
+            for r in sorok:
+                r['_fajl'] = TBESH_KONSZ_FAJL
+        else:
+            sorok = _tbesh_txt_sorok()
         d = {}
         for r in sorok:
             d.setdefault(r['alap_strong'], []).append(r)
         for lista in d.values():
             lista.sort(key=lambda r: r['strong'])
         _tbesh_konsz_cache = d
+        _tbesh_konsz_mod = helyi
     return _tbesh_konsz_cache
 
 
@@ -912,8 +940,9 @@ def _tbesh_konsz_blokk(r, ctx):
     bek.append('> %s' % tbesh_szoveg_dedup(r['teljes_szoveg']))
     hu = forditas_ehhez('TBESH', r['strong'], r['strong'], 'teljes', 'forditas_hu')
     bek.append('**🇭🇺** %s' % hu if hu else FORDITASRA_VAR)
-    bek.append('*Forrás: %s (%s)*' % (TBESH_KONSZ_FAJL, TBESH_FORRAS_JELZO.get(r['forras'], r['forras'])))
-    ctx['fl'].setdefault(TBESH_KONSZ_FAJL, set()).add('TBESH')
+    fajl = r.get('_fajl', TBESH_TXT_FAJL)
+    bek.append('*Forrás: %s (%s)*' % (fajl, TBESH_FORRAS_JELZO.get(r['forras'], r['forras'])))
+    ctx['fl'].setdefault(fajl, set()).add('TBESH')
     return bek
 
 

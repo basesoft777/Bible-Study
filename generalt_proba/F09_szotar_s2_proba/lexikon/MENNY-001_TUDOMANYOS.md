@@ -155,7 +155,7 @@ angyalok, akik "nem tartották meg fejedelemségüket", örök bilincsben — ta
 
 ## 2. Szótári háttér
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#MENNY-001#szocikkek | forrás: adat/szotar_szerepek.tsv, konkordancia/BDB_etimologia_kezi_hatarok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TBESH.txt, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva | ts=2026-10-17 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#MENNY-001#szocikkek | forrás: adat/szotar_szerepek.tsv, konkordancia/BDB_etimologia_kezi_hatarok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TBESH.txt, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva | ts=2026-10-17 -->
 
 *Ez a blokk a `[ID: MENNY-001]` motívum 3 Strong-tokenjét fedi, szerepenként a szerepmátrix (`szotar_szerepek.tsv`) sorrendjében, nincs jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*
 
@@ -172,19 +172,13 @@ angyalok, akik "nem tartották meg fejedelemségüket", örök bilincsben — ta
 
 **Röviden:** God; (LORD)-Elohe; (Gibeath)-elohim
 
-> אֱלֹהִים [H:N-M] God 1) (plural) 1a) rulers, judges 1b) divine ones 1c) angels 1d) gods 2) (plural intensive-singular meaning) 2a) god, goddess 2b) godlike one 2c) works or special possessions of God 2d) the (true) God 2e) God
+> This name means "gods" (plural intensive-singular meaning), "God" Another name of ye.ho.vah (יהוה "LORD" H3068G) | Combined with ye.ho.vah (יהוה "LORD" H3068) | Combined with giv.ah (גִּבְעָה "Gibeath" H1389)
 
 *(fordításra vár)*
 
-*Forrás: konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv (a TBESH.lexicon szövege)*
+*Forrás: konkordancia/TBESH.txt (a TBESH.txt szövege)*
 
-##### TBESH H1121 — (konszolidált szócikk)
-
-> a. בֵּן [H:N-M] son 1) son, grandson, child, member of a group 1a) son, male child 1b) grandson 1c) children (pl. - male and female) 1d) youth, young men (pl.) 1e) young (of animals) 1f) sons (as characterisation, i.e. sons of injustice [for un- righteous men] or sons of God [for angels] 1g) people (of a nation) (pl.) 1h) of lifeless things, i.e. sparks, stars, arrows (fig.) 1i) a member of a guild, order, class b. בְּנוֹ [N:N-M-P] Beno Beno = "his son" n pr m 1) the sons of Jaaziah and the sons of Merari by Jaahziah (his son)
-
-*(fordításra vár)*
-
-*Forrás: konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv (a TBESH.lexicon szövege)*
+**H1121** · *a forrás nem tárgyalja* *(TBESH)*
 
 ##### TBESH H5303 — (konszolidált szócikk)
 
@@ -194,7 +188,7 @@ angyalok, akik "nem tartották meg fejedelemségüket", örök bilincsben — ta
 
 *(fordításra vár)*
 
-*Forrás: konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv (a TBESH.txt szövege)*
+*Forrás: konkordancia/TBESH.txt (a TBESH.txt szövege)*
 
 #### 2. Mélységi szócikk
 
@@ -1577,7 +1571,7 @@ Mt 22:30 ("a feltámadáskor sem nem házasodnak, sem férjhez nem mennek, hanem
 - OSHL (Open Scriptures Hebrew Lexicon) — csak TWOT-szám (`konkordancia/OSHL_lexikalis_index.tsv`, CC BY 4.0)
 - SDBH (Semantic Dictionary of Biblical Hebrew) (`konkordancia/SDBH_domenek.tsv`, CC BY-SA 4.0)
 - SECE (Strong's Exhaustive Concordance, Enhanced) (`konkordancia/SECE_H_teljes.tsv`, közkincs)
-- TBESH (Tyndale Brief lexicon of Extended Strongs for Hebrew) (`konkordancia/TBESH.txt`, `konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv`, CC BY 4.0)
+- TBESH (Tyndale Brief lexicon of Extended Strongs for Hebrew) (`konkordancia/TBESH.txt`, CC BY 4.0)
 - TSK (Treasury of Scripture Knowledge) (`konkordancia/TSK_kereszthivatkozasok.tsv`, CC BY 4.0)
 - UBS (UBS Dictionary of New Testament Greek — Louw–Nida szemantikai domének) (`konkordancia/UBS_DNTG_jelentesek.tsv`, `konkordancia/UBS_DNTG_referenciak.tsv`, CC BY-SA 4.0)
 - UBS DBH (UBS Dictionary of Biblical Hebrew — Semantic Dictionary of Biblical Hebrew) (`konkordancia/UBS_DBH_jelentesek.tsv`, `konkordancia/UBS_DBH_referenciak.tsv`, CC BY-SA 4.0)
@@ -1600,7 +1594,7 @@ Mt 22:30 ("a feltámadáskor sem nem házasodnak, sem férjhez nem mennek, hanem
 
 ## Kolofon
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#MENNY-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditasok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/szotar_szerepek.tsv, konkordancia/BDB_etimologia_kezi_hatarok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/numbers.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva | ts=2026-10-17 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#MENNY-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditasok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/szotar_szerepek.tsv, konkordancia/BDB_etimologia_kezi_hatarok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/numbers.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva | ts=2026-10-17 -->
 
 *Ez a blokk a `[ID: MENNY-001]` motívum törzsadatait (`motivumok.tsv`) és a lexikon-oldalon ténylegesen felhasznált forrásokat sorolja fel.*
 
@@ -1648,7 +1642,6 @@ Mt 22:30 ("a feltámadáskor sem nem házasodnak, sem férjhez nem mennek, hanem
 | `UBS_DBH_referenciak.tsv` | `konkordancia/UBS_DBH_referenciak.tsv` | CC BY-SA 4.0 | szocikkek |
 | `UBS_DNTG_jelentesek.tsv` | `konkordancia/UBS_DNTG_jelentesek.tsv` | CC BY-SA 4.0 | elofordulasok |
 | `UBS_DNTG_referenciak.tsv` | `konkordancia/UBS_DNTG_referenciak.tsv` | CC BY-SA 4.0 | elofordulasok |
-| `TBESH_konszolidalt.tsv` | `konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv` | CC BY 4.0 | szocikkek |
 | `tW_szocikkek.tsv` | `konkordancia/tW_szocikkek.tsv` | CC BY-SA 4.0 | szocikkek |
 
 *lxx-morph, © Seth Kushniryk, CC BY 4.0, github.com/OpenScriptorium/lxx-morph.; Data created by www.STEPBible.org based on work at Tyndale House Cambridge (CC BY 4.0)*
