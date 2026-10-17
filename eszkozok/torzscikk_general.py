@@ -130,9 +130,9 @@ def h2(lines, title):
 def olvaso_forras(szoveg):
     """F09 J3 (ellenőri 6.): az `adat/szotar_szerepek.tsv` `forras` mezője döntéshivatkozást is hordoz
     (a jegyzet az adatban megmarad). Az olvasói törzscikk ezt nem rendereli: a kivezetett szótár
-    megjegyzése (`; a Girdlestone kivezetve, D18`) és a puszta döntésszám (`, D16`, `, D20`) kimarad
-    (K13: Cremer/Girdlestone-említés 0 a törzscikkben)."""
-    szoveg = re.sub(r';\s*a (?:Girdlestone|Cremer) kivezetve, D\d+', '', szoveg)
+    megjegyzése (`; a <szótár> kivezetve, D18`) és a puszta döntésszám (`, D16`, `, D20`) kimarad
+    (K13: a kivezetett szótárak említése 0 a törzscikkben)."""
+    szoveg = re.sub(r';\s*a [A-Z][a-z]+ kivezetve, D\d+', '', szoveg)
     szoveg = re.sub(r', D\d+(?=[;,)])', '', szoveg)
     return szoveg
 
