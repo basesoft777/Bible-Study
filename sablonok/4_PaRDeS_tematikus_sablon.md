@@ -440,7 +440,7 @@ Egy tematikus tanulmány lezárásakor a következő lépések MINDEGYIKE szüks
 - [ ] **13. Verzió-címke** — a study fejlécének és a kapu-címsoroknak a
   címkéje a „Verzió-címke” alszakasz szerint.
 
-**Ha bármelyik pont kimarad, a lezárás nem tekinthető véglegesnek** — az adatréteg, a generált blokkok és a study inkonzisztens állapotba kerülhetnek (pl. az `adat/motivumok.tsv` már `publikálható` státuszt mutat, de a generált blokkok nem lettek újragenerálva, vagy a study új igehelyet állít, amely nincs az `adat/elofordulasok.tsv`-ben).
+**Ha bármelyik pont kimarad, a lezárás nem tekinthető véglegesnek** (kivétel: a 12. pont, amely a DT84 (7) / DT-F23b szerint felfüggesztve, amíg a #11 át nem írja) — az adatréteg, a generált blokkok és a study inkonzisztens állapotba kerülhetnek (pl. az `adat/motivumok.tsv` már `publikálható` státuszt mutat, de a generált blokkok nem lettek újragenerálva, vagy a study új igehelyet állít, amely nincs az `adat/elofordulasok.tsv`-ben).
 
 ---
 
