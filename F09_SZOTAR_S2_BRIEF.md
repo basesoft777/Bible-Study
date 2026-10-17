@@ -5,10 +5,10 @@ kod: SZOTAR S2
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: lezarva
+allapot: dontesre_var
 ag: claude/f09-szotar-s2
 ad: az 1. fázis adatai — a 8 motívum Strongjaira szűkítve (DT74 (4)) — az adatrétegben és a generátorokban, a #78 szerepmátrix-vázának blokkjaihoz; a 8 lexikonoldal és a 8 törzscikk renderelése csak próba a generalt_proba/ alá, az éles lexikon/ a #11 1. lépcsője után generálódik (#36 vagy #10) (DT186)
-kovetkezo: Te: a fuggetlen-ellenor és a PR indítása (orkesztrátor); merge csak a felhasználótól
+kovetkezo: "Te: döntés a DT-F09g–j pontokról (DONTESEK.md; DT-F09h: a PR CI-je emiatt bukik), utána független újraellenőrzés és merge a felhasználótól (F9.J1–J6 javító menet kész, 2026-10-17)"
 pr: 381
 lezarva_osszegzes: szótári adatréteg 2. menet a 8 motívum Strongjaira: 26 héber lemma-kiejtés, TBESH/UBS DBH/Mounce+SECE/tW+TWOT/BDB-etimológia/LXX-párok a #78 váz szerep-blokkjaiban, H8034 bekötés, N-F78a javítva, próbarender (8+8) és diff-osztályozás a generalt_proba/F09_szotar_s2_proba/ alá; az éles lexikon/ érintetlen; l. naplok/SZOTAR_S2_zaras.md
 fugg: [5, 6, 23, 78]
