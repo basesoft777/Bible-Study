@@ -5,7 +5,8 @@ kod: SZOTAR S2
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: nem_indult
+allapot: fut
+ag: claude/f09-szotar-s2
 ad: az 1. fázis adatai — a 8 motívum Strongjaira szűkítve (DT74 (4)) — az adatrétegben és a generátorokban, a #78 szerepmátrix-vázának blokkjaihoz; a 8 lexikonoldal és a 8 törzscikk renderelése csak próba a generalt_proba/ alá, az éles lexikon/ a #11 1. lépcsője után generálódik (#36 vagy #10) (DT-F09b)
 kovetkezo: /kovetkezo (fazis: 1, DT-F09a); az éles lexikon/-t nem írja, a render próba a generalt_proba/ alá (DT-F09b; a D52/DT74 (3) befagyasztás érintetlen); a törzscikkek elavult Cremer-sorát (CI E11) a próbarender mutatja, az éles javítás a #11 1. lépcsője után
 fugg: [5, 6, 23, 78]
