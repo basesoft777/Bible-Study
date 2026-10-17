@@ -833,16 +833,16 @@ SZEREP_SAJAT = {
 }
 # Adatosított szerep, amelynek tartalma másutt jelenik meg: hivatkozás (S4).
 SZEREP_HIVATKOZAS = {
-    ('gorog', 5): 'az adat adatosítva (UBS DNTG glossza, Mounce), de a váz nem rendereli; kézi megjelenítés a 2/b szakaszban, ha van',
     ('gorog', 6): 'l. a 3. szakaszt (LXX-fordítói döntések)',
     ('heber', 6): 'l. a 3. szakaszt (LXX-fordítói döntések)',
     ('gorog', 8): 'a motívum saját tokenjeihez nincs LSJ-sor a `lexikon_hivatkozasok.tsv`-ben; a rokon szavaknál (alább) és a kézi 2/b szakaszban l.',
     ('gorog', 9): 'l. az 1. szakasz táblázatát (UBS-jelentés oszlop; csak újszövetségi sorok)',
 }
-# Nem adatosított szerep, amelynek tartalma kézzel a 2/b szakaszban él: hivatkozás, nem üres blokk (DT-F78c 3., S4).
+# A 7. szerep (SECE) adatosítva (F09 S2.4, DT-F09e); a kézi 2/b szakaszban álló SECE-táblázatok a #70-ig
+# (a 2/b átírása) érintetlenek, ezért a „l. 2/b” mutató kiegészítő sorként marad (DT-F09e).
 SZEREP_KEZI_2B = {
-    ('gorog', 7): 'a szerep nincs adatosítva; a SECE-megfelelők kézzel a 2/b szakaszban állnak (l. 2/b), ha van',
-    ('heber', 7): 'a szerep nincs adatosítva; a SECE-megfelelők kézzel a 2/b szakaszban állnak (l. 2/b), ha van',
+    ('gorog', 7): 'a kézi SECE-táblázatok a 2/b szakaszban a #70-ig változatlanul állnak (l. 2/b), ha van',
+    ('heber', 7): 'a kézi SECE-táblázatok a 2/b szakaszban a #70-ig változatlanul állnak (l. 2/b), ha van',
 }
 ROKON_SZAVAK_CIM = '### Rokon szavak'
 
@@ -1066,12 +1066,137 @@ def _tartalom_heber_dbh_vers(nyelv, n, tokenek_ny, reszek, ctx):
     return [bevezeto, tabla]
 
 
+# --- F09 S2.4: UBS DNTG + Mounce (görög 5. szerep), SECE (7. szerep) --------
+
+UBS_DNTG_JELENTESEK_FAJL = 'konkordancia/UBS_DNTG_jelentesek.tsv'
+UBS_DNTG_REFERENCIAK_FAJL = 'konkordancia/UBS_DNTG_referenciak.tsv'
+MCGED_TSV = os.path.join(KONKORDANCIA, 'MCGED_teljes.tsv')
+MCGED_FAJL = 'konkordancia/MCGED_teljes.tsv'
+SECE_FAJL = {'G': 'konkordancia/SECE_G_teljes.tsv', 'H': 'konkordancia/SECE_H_teljes.tsv'}
+SECE_LICENC_KULCS = {'G': 'SECE_G', 'H': 'SECE_H'}
+
+_dntg_cache = None
+_mcged_cache = None
+_sece_cache = {}
+
+
+def ubs_dntg_adatok():
+    """(jelentések, darabszám) az UBS DNTG-ből a render Strongjaira: jelentések = {strong: {lexid: első sor}},
+    darabszám = {(strong, lexid): hivatkozott helyek száma}. Az UBS DNTG-adatot a `ubs_hozzarendeles.py`
+    olvasója tölti be (nem másolás)."""
+    global _dntg_cache
+    if _dntg_cache is None:
+        jel_sorok = UBS.read_tsv_rows(UBS.JELENTESEK_PATH)
+        ref_sorok = UBS.read_tsv_rows(UBS.REFERENCIAK_PATH)
+        jelentesek = {}
+        for r in jel_sorok:
+            jelentesek.setdefault(r['strong'], {}).setdefault(r['lexid'], r)
+        darab = {}
+        for r in ref_sorok:
+            kulcs = (r['strong'], r['lexid'])
+            darab[kulcs] = darab.get(kulcs, 0) + 1
+        _dntg_cache = (jelentesek, darab)
+    return _dntg_cache
+
+
+def mcged_sor(strong):
+    """A Mounce-szócikk sora (dict) vagy None. A `gk_szam` oszlop a MCGED belső kulcsa (`G5` + a GK-szám)."""
+    global _mcged_cache
+    if _mcged_cache is None:
+        _mcged_cache = {r['strong']: r for r in L.read_tsv_skip_comments(MCGED_TSV)}
+    return _mcged_cache.get(strong)
+
+
+def _dntg_hu(mezo, strong, lexid, entry_kod, angol):
+    hu = forditas_ehhez('UBS_DNTG', strong, lexid, entry_kod, mezo)
+    return hu if hu else '%s %s' % (angol, FORDITASRA_VAR)
+
+
+def _tartalom_gorog_tomor(nyelv, n, tokenek_ny, reszek, ctx):
+    """Görög 5. szerep (Tömör jelentés, előfordulás): az UBS DNTG glosszája és hivatkozás-száma
+    jelentésenként, kiegészítve a Mounce tömör glosszájával (szó szerinti megjelöléssel, a kolofonban)."""
+    jelentesek, darab = ubs_dntg_adatok()
+    out = []
+    for t in tokenek_ny:
+        lex = jelentesek.get(t)
+        sorok = []
+        if lex:
+            ossz = sum(darab.get((t, lexid), 0) for lexid in lex)
+            sorok.append('**%s** · UBS DNTG: %d jelentés, %d hivatkozott hely' % (t, len(lex), ossz))
+            sorok += ['', '| Jelentés (lexid) | Louw–Nida | Glossza | Definíció (rövid) | Hivatkozott helyek |',
+                      '|---|---|---|---|---|']
+            for lexid, r in lex.items():
+                sorok.append('| `%s` | %s | %s | %s | %d |' % (
+                    lexid, r['entry_kod'],
+                    _cella(_dntg_hu('glosszak_hu', t, lexid, r['entry_kod'], r['glosszak'])),
+                    _cella(_dntg_hu('definicio_hu', t, lexid, r['entry_kod'], r['definicio_rovid'])),
+                    darab.get((t, lexid), 0)))
+        else:
+            sorok.append('**%s** · %s *(UBS DNTG)*' % (t, NEM_TARGYALJA))
+        mc = mcged_sor(t)
+        sorok.append('')
+        if mc:
+            hu = forditas_ehhez('MCGED', t, mc['gk_szam'], EM_DASH, 'glosszak_hu')
+            sorok.append('*Mounce (GK %d):* %s' % (int(mc['gk_szam'][2:]), hu if hu else '%s %s' % (mc['glossza'], FORDITASRA_VAR)))
+        else:
+            sorok.append('*Mounce:* %s' % NEM_TARGYALJA)
+        out.append('\n'.join(sorok))
+    ctx['fl'].setdefault(UBS_DNTG_JELENTESEK_FAJL, set()).add('UBS_DNTG')
+    ctx['fl'].setdefault(UBS_DNTG_REFERENCIAK_FAJL, set()).add('UBS_DNTG')
+    ctx['fl'].setdefault(MCGED_FAJL, set()).add('MCGED')
+    return out
+
+
+def sece_megfelelok(strong):
+    """A SECE-szócikk másik nyelvi megfelelő-listája (sorrendtartó, ismétlés nélkül), vagy None:
+    görög szócikkben a `Hebrew:`, héberben a `Greek:` mező. (A `LN:` mező csak keresztellenőrzés az
+    UBS DNTG ellen, a naplok/F09_S2_4_sece_ln_ellenorzes.py végzi, F05 D7.) None: nincs szócikk vagy
+    a mező hiányzik -- a SECE nem tárgyalja."""
+    nyelv = strong[0]
+    if nyelv not in _sece_cache:
+        ut = os.path.join(ROOT, SECE_FAJL[nyelv])
+        _sece_cache[nyelv] = {r['Strong_padded']: r['Teljes_szocikk'] for r in L.read_tsv_skip_comments(ut)}
+    szoveg = _sece_cache[nyelv].get(strong)
+    if not szoveg:
+        return None
+    cimke = 'Hebrew' if nyelv == 'G' else 'Greek'
+    m = re.search(r'\s%s:\s(.*?)\sDerivation:' % cimke, szoveg)
+    if not m:
+        return None
+    lista = []
+    for elem in m.group(1).split(','):
+        elem = elem.strip()
+        if elem and elem not in lista:
+            lista.append(elem)
+    return lista or None
+
+
+def _tartalom_sece(nyelv, n, tokenek_ny, reszek, ctx):
+    """7. szerep (Megfelelők a másik nyelven): a SECE megfelelő-listája. A szó szerinti lista a forrásé;
+    ahol a SECE-szócikknek nincs ilyen mezője, `a forrás nem tárgyalja`."""
+    out = []
+    cimke = 'héber' if nyelv == 'gorog' else 'görög'
+    betu = 'G' if nyelv == 'gorog' else 'H'
+    for t in tokenek_ny:
+        lista = sece_megfelelok(t)
+        if lista:
+            out.append('**%s** · SECE — %s megfelelők (%d): %s' % (t, cimke, len(lista), ', '.join(lista)))
+        else:
+            out.append('**%s** · %s *(SECE: nincs %s megfelelő-lista)*' % (t, NEM_TARGYALJA, cimke))
+    if tokenek_ny:
+        ctx['fl'].setdefault(SECE_FAJL[betu], set()).add(SECE_LICENC_KULCS[betu])
+    return out
+
+
 # Szerepenkénti egyedi építők: (nyelv, sorrend) -> függvény(nyelv, n, tokenek_ny, reszek, ctx) -> bekezdések.
 # A többi szerep az alábbi általános ágakon (SZEREP_SZOTAR / SZEREP_SAJAT) épül.
 SZEREP_EPITO = {
     ('heber', 1): _tartalom_heber_tbesh,
     ('heber', 5): _tartalom_heber_dbh_tomor,
     ('heber', 9): _tartalom_heber_dbh_vers,
+    ('gorog', 5): _tartalom_gorog_tomor,
+    ('gorog', 7): _tartalom_sece,
+    ('heber', 7): _tartalom_sece,
 }
 
 
@@ -1143,6 +1268,8 @@ def _szerep_blokk(nyelv, sor, tokenek_ny, reszek, ctx):
     if allapot == 'adatosítva':
         if tart:
             szakasz.extend(tart)
+            if (nyelv, n) in SZEREP_KEZI_2B:
+                szakasz.append('*Hivatkozás: %s.*' % SZEREP_KEZI_2B[(nyelv, n)])
         elif (nyelv, n) in SZEREP_HIVATKOZAS and (nyelv, n) not in SZEREP_SAJAT:
             hiv = SZEREP_HIVATKOZAS[(nyelv, n)]
             szakasz.append('*Hivatkozás: %s%s*' % (hiv, '' if hiv.endswith('.') else '.'))
@@ -1635,6 +1762,9 @@ FAJL_TELJES_NEV = {
     'konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv': 'TBESH (Tyndale Brief lexicon of Extended Strongs for Hebrew)',
     'konkordancia/Thayer_teljes.tsv': "Thayer (Thayer's Greek-English Lexicon of the New Testament)",
     'konkordancia/UBS_DNTG_jelentesek.tsv': 'UBS (UBS Dictionary of New Testament Greek — Louw–Nida szemantikai domének)',
+    'konkordancia/MCGED_teljes.tsv': 'Mounce (Mounce Concise Greek-English Dictionary)',
+    'konkordancia/SECE_G_teljes.tsv': "SECE (Strong's Exhaustive Concordance, Enhanced)",
+    'konkordancia/SECE_H_teljes.tsv': "SECE (Strong's Exhaustive Concordance, Enhanced)",
     'konkordancia/UBS_DBH_jelentesek.tsv': 'UBS DBH (UBS Dictionary of Biblical Hebrew — Semantic Dictionary of Biblical Hebrew)',
     'konkordancia/UBS_DBH_referenciak.tsv': 'UBS DBH (UBS Dictionary of Biblical Hebrew — Semantic Dictionary of Biblical Hebrew)',
     'konkordancia/UBS_DNTG_referenciak.tsv': 'UBS (UBS Dictionary of New Testament Greek — Louw–Nida szemantikai domének)',
