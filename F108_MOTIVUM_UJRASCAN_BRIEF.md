@@ -6,10 +6,12 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: folyamat
-allapot: fut
+allapot: lezarva
 ad: a 9 motívum minden előfordulás- és jelöltsorának kulcs-ellenőrzése a mai TAHOT-on, a gerinc-Strongok újrascanje, az új találatok a jeloltek.tsv-ben (dontes=nyitva), és mért napló; az elofordulasok.tsv javítása csak jóváhagyott döntés után
-kovetkezo: DT-F108a eldöntve ((a)+(d)); hátra: független ellenőr és PR; az alkalmazás (TEREMT-001 Jób 41:32 elbírálása, az ISTENTISZT-001 szűrő-pilot) külön tétel(ek), /befogad-dal
+kovetkezo: "—"
 ag: claude/f108-motivum-ujrascan
+pr: https://github.com/basesoft777/Bible-Study/pull/374
+lezarva_osszegzes: "9 motívum újrascanje a mai TAHOT/TAGNT-on: 259 elofordulasok-sorból 0 kulcs_eltolodott, 0 ÓSZ-hiány (1 ÚSZ hianyzik: ANTROP-001 1Kor 2:15, F108.7); jeloltek.tsv +25 nyitva (köztük TEREMT-001 Jób 41:32); a tág Strongok ~2 400 új helye csak az eltérés-táblában; DT-F108a (a)+(d) → #109, #110"
 olvas: [adat/motivumok.tsv, F55_ZSOLTAR_UJRAELLENORZES_BRIEF.md, adat/elofordulasok.tsv, adat/jeloltek.tsv, adat/grammatikai_strongok.tsv, adat/SEMA.md, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv, eszkozok/lekerdez.py, eszkozok/jelolt.py, naplok/F84_jelentes.md, naplok/F85_jelentes.md, naplok/F85_esetlista.tsv, NYITOTT_FELADATOK.md]
 ir: [adat/jeloltek.tsv, naplok/F108_MOTIVUM_UJRASCAN_naplo.md, naplok/F108_ujrascan_elteresek.tsv]
 fugg: [84, 85]
