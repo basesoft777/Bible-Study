@@ -136,7 +136,7 @@ előbecslés: a végleges besorolás blokkonként, a #11 leképezési táblájá
 | 4. Kutatási sablon (2) | `forras` vagy `INAKTÍV` | sablon 4 |
 | 5. Alkalmazás (7) | `forras`; a tanítói eredmény a 7. lépés saját fájljába (DT66 (a) 2.) | ha a saját fájl nem létezik: a #11 dönt (a beemelést a DT66 (a) 2. kizárja) |
 | 6. Napló-frissítés + Módszertan + Nyitott kérdések + Minőségi kapu (28) | `adat` (státusz), `archivum` (réteg-tábla, kapu-eredmény: DT84 (8), SEMA 3.10.7 3.), `forras` (tartalmi nyitott kérdés), `archivum` (dátumozott kapu-blokk, önellenőrzés) | 4.4 |
-| kereszthivatkozás-napló (18) | `generalt` (a minősítés a `jeloltek.tsv` 92 sorából: 32 `beépítve`, 60 `elutasítva`; a „független megerősítés” a minősítés-nézetben generált, DT84 (8)), `adat` (ha van a táblában nem álló döntés), `archivum` (nyers találatok, módszertan-próza) | SEMA 3.10.7 2. |
+| kereszthivatkozás-napló (18) | `generalt` (a minősítés a `jeloltek.tsv` 92 sorából: 32 `beépítve`, 60 `elutasítva`; `scope=adat/jeloltek.tsv, id=ISTENTISZT-001, dontes | forras=manual (szkript, split('\t'), a # kezdetű fejsorok nélkül, dontes-számlálás) | ts=2026-10-17`; a „független megerősítés” a minősítés-nézetben generált, DT84 (8)), `adat` (ha van a táblában nem álló döntés), `archivum` (nyers találatok, módszertan-próza) | SEMA 3.10.7 2. |
 | `motivumok/ISTENTISZT-001.md` (8) | `archivum` (a négy archív napló-blokk), `generalt` (fejléc), `forras` (a ⭐-bekezdés és a „Kulcsszavak részletesen” értelmező mondatai) | lekepezes, `szetvalasztando` |
 
 ### 4.4 A „7. Nyitott kérdések” öt tétele (DT66 (a) 4.)
@@ -205,7 +205,7 @@ között** (`eszkozok/nulladiff.sh`, azonos `PARDES_DATUM`), nem a commitolt él
 | `tematikus_lezart/naplok/Bun_kovetkezmenyeinek_gyuruzese_kereszthivatkozas_naplo.md` | 276 sor, 46 blokk, 1 `【NAPLO`; 2 `RÉS-KEZDET` jelölő-előfordulás, 1 rés (`minosites` ×2) |
 | `motivumok/HAMART-001.md` | 23 sor, 7 blokk, 1 `【NAPLO` |
 | `lexikon/HAMART-001_TUDOMANYOS.md` (éles) | 1275 sor, 116 621 bájt, 10 `GENERÁLT-KEZDET`, 3 `【NAPLO`, 52 lábjegyzet-definíció |
-| adat | `elofordulasok` 52, `jeloltek` 222 (`beépítve` 52, `elutasítva` 163, `nyitva` 7; a 2026-10-08-i 52 az F63.5 óta elavult; `scope=adat/*.tsv, id=HAMART-001 | forras=manual (szkript, split('\t')) | ts=2026-10-17`), `kapcsolatok` 0, `res_forras` 7 (`alatamasztas`: `adat`), `auditok` 0; ⭐ csoport 4 |
+| adat | `elofordulasok` 52, `jeloltek` 222 (`beépítve` 52, `elutasítva` 163, `nyitva` 7; a 2026-10-08-i 52 az F63.5 óta elavult; `scope=adat/{jeloltek,elofordulasok,kapcsolatok,res_forras,auditok}.tsv, id=HAMART-001, dontes | forras=manual (szkript, split('\t'), a # kezdetű fejsorok nélkül, dontes-számlálás) | ts=2026-10-17`), `kapcsolatok` 0, `res_forras` 7 (`alatamasztas`: `adat`), `auditok` 0; ⭐ csoport 4 |
 | átfedés a bővítettel (M0) | 3 `bekezdes_masolat` (a 6:11–13 idézet-bekezdések, `genezis/1Moz_6v9-22_bovitett.md`), 11 `rovid_egyezes` |
 
 **A próba:** `eszkozok/nulladiff.sh <a #11 ágának alapja>` a #11 minden generátort érintő
