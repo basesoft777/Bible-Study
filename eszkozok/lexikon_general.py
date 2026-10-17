@@ -35,6 +35,7 @@ import general as G
 import lekerdez as L
 import ubs_hozzarendeles as UBS
 import lxx_os_import as LXXOS
+import kiejtes as KJ
 import utvonalak as _U
 
 ROOT = G.ROOT
@@ -235,7 +236,10 @@ def kiejtes_ehhez(igehely, strong):
     for ige in igehely_lista(igehely):
         r = forras_idx.get((ige, strong))
         if r:
-            return r['Ragozott alak'], r['Kiejtés'], ('TAHOT' if strong.startswith('H') else 'TAGNT')
+            if strong.startswith('G'):
+                # F09 S2.1: görög alak -> magyaros kiejtés; a héber alak STEP-átírása változatlan
+                return r['Ragozott alak'], gorog_magyaros(r['Kiejtés']), 'TAGNT'
+            return r['Ragozott alak'], r['Kiejtés'], 'TAHOT'
     return None
 
 
@@ -272,13 +276,57 @@ def tbesg_tbesh_index():
     return _tbesg_tbesh_cache
 
 
+_kiejtes_tablak_cache = None
+
+
+def _kiejtes_tablak():
+    """(görög szabályok, görög kivételek, héber kivételek) -- egyszer betöltve
+    a kiejtes.py betöltőivel (adat/kiejtes_szabalyok.tsv, adat/kiejtes_kivetelek.tsv)."""
+    global _kiejtes_tablak_cache
+    if _kiejtes_tablak_cache is None:
+        _kiejtes_tablak_cache = (
+            KJ.szabalyok_betolt(),
+            KJ.kivetelek_betolt(nyelv='gorog'),
+            KJ.kivetelek_betolt(nyelv='heber'),
+        )
+    return _kiejtes_tablak_cache
+
+
+def gorog_magyaros(sbl_atiras):
+    """F09 S2.1 (F05 S3): görög SBL-átírás -> magyaros kiejtés (kiejtes.py:
+    szabálytábla + görög kivételek). A héber nem ezen megy át."""
+    szabalyok, gorog_kivetelek, _ = _kiejtes_tablak()
+    return KJ.atir(sbl_atiras, szabalyok, gorog_kivetelek)
+
+
+HEBER_NINCS_KIEJTES_JELZO = '*(nincs jóváhagyott kiejtés; a héber lemma-kiejtést a render nem generálja)*'
+
+
+def heber_lemma_kiejtes(lemma, step_atiras):
+    """A jóváhagyott héber lemma-kiejtés az adat/kiejtes_kivetelek.tsv-ből (F05 S3,
+    D15): előbb a TBESH-lemma NFC alakja, azután a STEP-átírás a kulcs. Gépi héber
+    kiejtés nincs: ha nincs sor, None."""
+    _, _, heber = _kiejtes_tablak()
+    return heber.get(unicodedata.normalize('NFC', lemma)) or heber.get(step_atiras)
+
+
 def lemma_kiejtes(strong):
     """(lemma, kiejtes) vagy None, a TBESG/TBESH-ből, Strong-szám szerint
-    -- pontos egyezés, majd betűutótag nélküli alapalakra visszaesve."""
+    -- pontos egyezés, majd betűutótag nélküli alapalakra visszaesve.
+    F09 S2.1: a kiejtés magyaros -- görögül a kiejtes.py átírása a TBESG-átírásból,
+    héberül a jóváhagyott kivétel-sor; ha ilyen nincs, a STEP-átírás és a jelző
+    (a render héber kiejtést nem generál)."""
     pontos, alap = tbesg_tbesh_index()
-    if strong in pontos:
-        return pontos[strong]
-    return alap.get(strong)
+    nyers = pontos.get(strong) or alap.get(strong)
+    if not nyers:
+        return None
+    lemma, step = nyers
+    if strong.startswith('G'):
+        return lemma, gorog_magyaros(step)
+    hu = heber_lemma_kiejtes(lemma, step)
+    if hu:
+        return lemma, hu
+    return lemma, '%s %s' % (step, HEBER_NINCS_KIEJTES_JELZO)
 
 
 # ---------------------------------------------------------------------------
@@ -440,7 +488,7 @@ def ubs_jelentes_cella(sor_id, igehely, strong_field):
             szoveg = hu
         else:
             angol = definicio_idx.get((strong, lexid)) or glosszak
-            szoveg = '%s *(fordítás függőben)*' % angol
+            szoveg = '%s %s' % (angol, FORDITASRA_VAR)
         jelolt = '' if egyertelmu == 'igen' else ' *(jelölt, nem egyértelmű)*'
         tokenenkent.setdefault(strong, []).append('%s — %s%s' % (entry_kod, szoveg, jelolt))
 
@@ -729,7 +777,7 @@ def _szotar_reszek(strong, szint_eltolas, fajl_licenc_kulcsok, fajl_licenc_kulcs
             if hu:
                 bek.append('**🇭🇺** %s' % hu)
             else:
-                bek.append('*Fordítás függőben.*')
+                bek.append(FORDITASRA_VAR)
             bek.append('*Forrás: %s*' % r['forrasfajl'])
             forras_blokkok.append((r['szotar'], bek))
 
@@ -785,16 +833,16 @@ SZEREP_SAJAT = {
 }
 # Adatosított szerep, amelynek tartalma másutt jelenik meg: hivatkozás (S4).
 SZEREP_HIVATKOZAS = {
-    ('gorog', 5): 'az adat adatosítva (UBS DNTG glossza, Mounce), de a váz nem rendereli; kézi megjelenítés a 2/b szakaszban, ha van',
     ('gorog', 6): 'l. a 3. szakaszt (LXX-fordítói döntések)',
     ('heber', 6): 'l. a 3. szakaszt (LXX-fordítói döntések)',
     ('gorog', 8): 'a motívum saját tokenjeihez nincs LSJ-sor a `lexikon_hivatkozasok.tsv`-ben; a rokon szavaknál (alább) és a kézi 2/b szakaszban l.',
     ('gorog', 9): 'l. az 1. szakasz táblázatát (UBS-jelentés oszlop; csak újszövetségi sorok)',
 }
-# Nem adatosított szerep, amelynek tartalma kézzel a 2/b szakaszban él: hivatkozás, nem üres blokk (DT-F78c 3., S4).
+# A 7. szerep (SECE) adatosítva (F09 S2.4, DT189); a kézi 2/b szakaszban álló SECE-táblázatok a #70-ig
+# (a 2/b átírása) érintetlenek, ezért a „l. 2/b” mutató kiegészítő sorként marad (DT189).
 SZEREP_KEZI_2B = {
-    ('gorog', 7): 'a szerep nincs adatosítva; a SECE-megfelelők kézzel a 2/b szakaszban állnak (l. 2/b), ha van',
-    ('heber', 7): 'a szerep nincs adatosítva; a SECE-megfelelők kézzel a 2/b szakaszban állnak (l. 2/b), ha van',
+    ('gorog', 7): 'a kézi SECE-táblázatok a 2/b szakaszban a #70-ig változatlanul állnak (l. 2/b), ha van',
+    ('heber', 7): 'a kézi SECE-táblázatok a 2/b szakaszban a #70-ig változatlanul állnak (l. 2/b), ha van',
 }
 ROKON_SZAVAK_CIM = '### Rokon szavak'
 
@@ -807,9 +855,588 @@ def ures_blokk(szerep, allapot, ok):
             % (szerep, allapot, ok))
 
 
-def _szerep_tartalom(nyelv, n, tokenek_ny, reszek):
+FORDITASRA_VAR = '*(fordításra vár)*'
+NEM_TARGYALJA = '*a forrás nem tárgyalja*'
+
+TBESH_KONSZ_FAJL = 'konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv'
+_tbesh_konsz_cache = None
+
+
+def tbesh_konszolidalt():
+    """alap_strong -> [sor-dict, ...] a helyben élő konszolidált TBESH-táblából (F05 S4, D3, D38;
+    F09 S2.2). A fájl gitignore-olt (F42, DT-F42b): hiányára a `_U.kotelezo` egyértelmű hibát ad."""
+    global _tbesh_konsz_cache
+    if _tbesh_konsz_cache is None:
+        sorok = L.read_tsv_skip_comments(_U.kotelezo(_U.TBESH_KONSZOLIDALT))
+        d = {}
+        for r in sorok:
+            d.setdefault(r['alap_strong'], []).append(r)
+        for lista in d.values():
+            lista.sort(key=lambda r: r['strong'])
+        _tbesh_konsz_cache = d
+    return _tbesh_konsz_cache
+
+
+TBESH_FORRAS_JELZO = {
+    'txt': 'a TBESH.txt szövege',
+    'lexicon': 'a TBESH.lexicon szövege',
+    'egyenlo': 'a TBESH.txt és a TBESH.lexicon szövege (±5% eltérésen belül egyenlő)',
+}
+
+
+def tbesh_szoveg_dedup(szoveg):
+    """F09 J5 (ellenőri 2. mellékhiba): a TBESH.txt több jelentés-sora (pl. H0127: soil / country / planet)
+    ugyanazt a számozott jelentéslistát ismétli (`: soil 1) ... | : country 1) ... | : planet 1) ...`).
+    Ha minden ` | `-szel elválasztott rész azonos számozott farokkal végződik, a farok egyszer áll,
+    a címkék (`: soil | : country | : planet`) előtte maradnak; egyébként a szöveg változatlan."""
+    reszek = szoveg.split(' | ')
+    if len(reszek) < 2:
+        return szoveg
+    fejek, farkak = [], set()
+    for r_ in reszek:
+        m_ = re.match(r'^(: [^0-9]*?) (1\) .*)$', r_)
+        if not m_:
+            return szoveg
+        fejek.append(m_.group(1))
+        farkak.add(m_.group(2))
+    if len(farkak) != 1:
+        return szoveg
+    return ' | '.join(fejek) + ' ' + farkak.pop()
+
+
+def _tbesh_konsz_blokk(r, ctx):
+    """Egy konszolidált TBESH-sor forrásblokkja a #78 renderének mintájára (`_szotar_reszek`)."""
+    bek = ['##### TBESH %s — (konszolidált szócikk)' % r['strong']]
+    if r.get('rovid_glosszak') and r['rovid_glosszak'] != EM_DASH:
+        bek.append('**Röviden:** %s' % r['rovid_glosszak'])
+    bek.append('> %s' % tbesh_szoveg_dedup(r['teljes_szoveg']))
+    hu = forditas_ehhez('TBESH', r['strong'], r['strong'], 'teljes', 'forditas_hu')
+    bek.append('**🇭🇺** %s' % hu if hu else FORDITASRA_VAR)
+    bek.append('*Forrás: %s (%s)*' % (TBESH_KONSZ_FAJL, TBESH_FORRAS_JELZO.get(r['forras'], r['forras'])))
+    ctx['fl'].setdefault(TBESH_KONSZ_FAJL, set()).add('TBESH')
+    return bek
+
+
+def _token_mutato_blokk(szerep, token, mutato):
+    return ('<!-- ÜRES-BLOKK: %s | adatosítva, nincs bekötve -->\n'
+            '**%s** · *(üres blokk: %s; a hiány nincs kitöltve gyenge vagy asszociatív anyaggal)*'
+            % (szerep, token, mutato))
+
+
+def _tartalom_heber_tbesh(nyelv, n, tokenek_ny, reszek, ctx):
+    """Héber 1. szerep (Alapjelentés): TBESH. Sorrend tokenenként: (1) kijelölt mutató (H7121: BDB 2.c,
+    DT-F42a; a TEREMT-002 tokenjei: #12b, DT187); (2) a `lexikon_hivatkozasok.tsv` TBESH-sora (bekötött
+    szó szerinti kivonat, F6.3-minta, DT187); (3) a konszolidált tábla sorai; (4) `a forrás nem tárgyalja`."""
+    out = []
+    for t in tokenek_ny:
+        mutato = SZEREP_TOKEN_MUTATO.get((nyelv, n, t))
+        if mutato:
+            out.append(_token_mutato_blokk(ctx['szerep'], t, mutato))
+            continue
+        bl = [b for b in reszek[t]['forras_blokkok'] if b[0] == 'TBESH']
+        if bl:
+            for _, bek in bl:
+                out.extend(bek)
+            continue
+        # csak a pontos (betűutótag nélküli) Strong-sor: a H1121a/b stb. STEP-alszócikkek más szavak
+        # (pl. a H1121b Beno, személynév), nem a motívum tokenjének szócikkei (D38)
+        sorok = [r for r in tbesh_konszolidalt().get(t, []) if r['strong'] == t]
+        if not sorok:
+            out.append('**%s** · %s *(TBESH)*' % (t, NEM_TARGYALJA))
+            continue
+        for r in sorok:
+            out.extend(_tbesh_konsz_blokk(r, ctx))
+    return out
+
+
+# --- F09 S2.3: UBS DBH (héber 5. és 9. szerep) -----------------------------
+
+UBS_DBH_JELENTESEK_TSV = os.path.join(KONKORDANCIA, 'UBS_DBH_jelentesek.tsv')
+UBS_DBH_REFERENCIAK_TSV = os.path.join(KONKORDANCIA, 'UBS_DBH_referenciak.tsv')
+UBS_DBH_JELENTESEK_FAJL = 'konkordancia/UBS_DBH_jelentesek.tsv'
+UBS_DBH_REFERENCIAK_FAJL = 'konkordancia/UBS_DBH_referenciak.tsv'
+VERSMEGFELELTETES_TSV = os.path.join(KONKORDANCIA, 'Karoli_versmegfeleltetes.tsv')
+
+_dbh_cache = None
+_versmegf_cache = None
+
+
+def _cella(szoveg):
+    """Markdown-táblacellába szánt szöveg: a `|` jel escape-elve."""
+    return (szoveg or '').replace('|', '\\|')
+
+
+def ubs_dbh_adatok():
+    """(jelentések, hivatkozások, darabszám) az UBS DBH-ból, csak az elofordulasok.tsv héber tokenjeire:
+    jelentések = {strong: {lexid: első sor}} (a domén-duplikátumokból az első, mint az UBS DNTG-nél);
+    hivatkozások = {(strong, igehely_MT): [lexid, ...]}; darabszám = {(strong, lexid): n}."""
+    global _dbh_cache
+    if _dbh_cache is None:
+        _, elo = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
+        kell = set()
+        for r in elo:
+            kell.update(t for t in motivum_strong_tokenek([r]) if t.startswith('H'))
+        jelentesek = {}
+        for r in L.read_tsv_skip_comments(UBS_DBH_JELENTESEK_TSV):
+            if r['strong'] in kell:
+                jelentesek.setdefault(r['strong'], {}).setdefault(r['lexid'], r)
+        hivatkozasok = {}
+        darab = {}
+        for r in L.read_tsv_skip_comments(UBS_DBH_REFERENCIAK_TSV):
+            if r['strong'] in kell:
+                hivatkozasok.setdefault((r['strong'], r['igehely']), []).append(r['lexid'])
+                kulcs = (r['strong'], r['lexid'])
+                darab[kulcs] = darab.get(kulcs, 0) + 1
+        _dbh_cache = (jelentesek, hivatkozasok, darab)
+    return _dbh_cache
+
+
+def karoli_mt_vers(karoli_vers):
+    """(MT-vers, megjegyzés): a Károli-vers MT-számozású megfelelője a `Karoli_versmegfeleltetes.tsv`
+    szerint (az UBS DBH hivatkozásai az MT-számozást követik). (None, ok), ha nincs biztos megfeleltetés
+    -- ilyenkor a vers nem párosítható (nincs találgatás); `ÓSZ-vers`-e a tábla tagsága dönti el."""
+    global _versmegf_cache
+    if _versmegf_cache is None:
+        _versmegf_cache = {r['igehely_karoli']: r for r in L.read_tsv_skip_comments(VERSMEGFELELTETES_TSV)}
+    r = _versmegf_cache.get(karoli_vers)
+    if r is None:
+        return None, 'a Károli-vers nincs a versmegfeleltető táblában'
+    konyv = karoli_vers.rsplit(' ', 1)[0]
+    mt = (r.get('igehely_mt') or '').strip()
+    if mt:
+        if re.match(r'^\d+:\d+$', mt):
+            return '%s %s' % (konyv, mt), ''
+        return None, 'az MT-megfelelő nem egyetlen vers (%s)' % mt
+    if r.get('osztaly') == 'KJV':
+        return karoli_vers, ''
+    return None, 'versszámozás-eltérés (%s), az MT-vers a táblában nincs megadva' % r.get('osztaly')
+
+
+def _dbh_hu(mezo, strong, lexid, angol):
+    """Magyar glossza/definíció a gyorsítótárból (szotar=UBS_DBH, entry_id=lexid, jelentes_szam=—);
+    ha nincs sor: az angol szöveg és a `fordításra vár` jelölés (gépi fordítás nem fut, #7)."""
+    hu = forditas_ehhez('UBS_DBH', strong, lexid, EM_DASH, mezo)
+    return hu if hu else '%s %s' % (angol, FORDITASRA_VAR)
+
+
+def _tartalom_heber_dbh_tomor(nyelv, n, tokenek_ny, reszek, ctx):
+    """Héber 5. szerep (Tömör jelentés, előfordulás): UBS DBH jelentésenként glossza, rövid definíció
+    és a hivatkozott helyek száma (az UBS DNTG-oldal mintájára)."""
+    jelentesek, _hiv, darab = ubs_dbh_adatok()
+    out = []
+    for t in tokenek_ny:
+        lex = jelentesek.get(t)
+        if not lex:
+            out.append('**%s** · %s *(UBS DBH)*' % (t, NEM_TARGYALJA))
+            continue
+        ossz = sum(darab.get((t, lexid), 0) for lexid in lex)
+        sorok = ['**%s** · UBS DBH: %d jelentés, %d hivatkozott hely' % (t, len(lex), ossz), '',
+                 '| Jelentés (lexid) | Glossza | Definíció (rövid) | Hivatkozott helyek |', '|---|---|---|---|']
+        for lexid, r in lex.items():
+            sorok.append('| `%s` | %s | %s | %d |' % (
+                lexid, _cella(_dbh_hu('glosszak_hu', t, lexid, r['glosszak'])),
+                _cella(_dbh_hu('definicio_hu', t, lexid, r['definicio_rovid'])), darab.get((t, lexid), 0)))
+        out.append('\n'.join(sorok))
+    ctx['fl'].setdefault(UBS_DBH_JELENTESEK_FAJL, set()).add('UBS_DBH')
+    ctx['fl'].setdefault(UBS_DBH_REFERENCIAK_FAJL, set()).add('UBS_DBH')
+    return out
+
+
+def _tartalom_heber_dbh_vers(nyelv, n, tokenek_ny, reszek, ctx):
+    """Héber 9. szerep (Versenkénti jelentés): a motívum ÓSZ-i igehelyeinél az UBS DBH jelentése
+    (a Károli-verset az MT-számozásra képezve). Ahol nincs biztos megfeleltetés vagy hivatkozás, az
+    ok áll, nem találgatás. Az ÚSZ-sorok nem tartoznak ide (a görög oldal az 1. szakasz oszlopa)."""
+    jelentesek, hivatkozasok, _darab = ubs_dbh_adatok()
+    sorai = ctx.get('sorai') or []
+    konyv_sorrend = G.konyv_sorrend_betolt()
+    hianyzo = set()
+    rendezett = sorted(sorai, key=lambda s: G.igehely_rendezo_kulcs(s['igehely'], konyv_sorrend, hianyzo))
+    tokenhalmaz = set(tokenek_ny)
+    sorok = []
+    for s in rendezett:
+        sor_tokenek = [t for t in motivum_strong_tokenek([s]) if t in tokenhalmaz]
+        if not sor_tokenek:
+            continue
+        for vers in igehely_lista(s['igehely']):
+            mt, ok = karoli_mt_vers(vers)
+            if mt is None and ok == 'a Károli-vers nincs a versmegfeleltető táblában':
+                continue  # nem ÓSZ-vers (a tábla az ÓSZ-t fedi): az ÚSZ-oldal az 1. szakaszban áll
+            for t in sor_tokenek:
+                if mt is None:
+                    cella, megj = EM_DASH, ok
+                else:
+                    lexidek = sorted(set(hivatkozasok.get((t, mt), [])))
+                    if lexidek:
+                        cella = '; '.join('`%s` — %s' % (lx, _cella(jelentesek[t][lx]['glosszak']))
+                                          for lx in lexidek if lx in jelentesek.get(t, {}))
+                        megj = '' if mt == vers else 'MT: %s' % mt
+                    else:
+                        cella, megj = EM_DASH, 'nincs UBS DBH-hivatkozás erre a Strongra ebben a versben'
+                sorok.append('| %s | %s | %s | %s |' % (vers, t, cella, megj or EM_DASH))
+    ctx['fl'].setdefault(UBS_DBH_JELENTESEK_FAJL, set()).add('UBS_DBH')
+    ctx['fl'].setdefault(UBS_DBH_REFERENCIAK_FAJL, set()).add('UBS_DBH')
+    ctx['fl'].setdefault('konkordancia/Karoli_versmegfeleltetes.tsv', set()).add('Karoli_versmegfeleltetes')
+    if not sorok:
+        return []
+    bevezeto = ('*A héber szó jelentése az ÓSZ-i igehelyeken (UBS DBH, MT-számozás szerint párosítva; a '
+                'glosszák angolul állnak, magyar fordításuk a `forditasok.tsv`-be kerül, ahol van, onnan jön; '
+                'a többi fordításra vár).*')
+    tabla = '\n'.join(['| Igehely (Károli) | Strong | UBS DBH-jelentés (lexid — glossza) | Megjegyzés |',
+                       '|---|---|---|---|'] + sorok)
+    return [bevezeto, tabla]
+
+
+# --- F09 S2.4: UBS DNTG + Mounce (görög 5. szerep), SECE (7. szerep) --------
+
+UBS_DNTG_JELENTESEK_FAJL = 'konkordancia/UBS_DNTG_jelentesek.tsv'
+UBS_DNTG_REFERENCIAK_FAJL = 'konkordancia/UBS_DNTG_referenciak.tsv'
+MCGED_TSV = os.path.join(KONKORDANCIA, 'MCGED_teljes.tsv')
+MCGED_FAJL = 'konkordancia/MCGED_teljes.tsv'
+SECE_FAJL = {'G': 'konkordancia/SECE_G_teljes.tsv', 'H': 'konkordancia/SECE_H_teljes.tsv'}
+SECE_LICENC_KULCS = {'G': 'SECE_G', 'H': 'SECE_H'}
+
+_dntg_cache = None
+_mcged_cache = None
+_sece_cache = {}
+
+
+def ubs_dntg_adatok():
+    """(jelentések, darabszám) az UBS DNTG-ből a render Strongjaira: jelentések = {strong: {lexid: első sor}},
+    darabszám = {(strong, lexid): hivatkozott helyek száma}. Az UBS DNTG-adatot a `ubs_hozzarendeles.py`
+    olvasója tölti be (nem másolás)."""
+    global _dntg_cache
+    if _dntg_cache is None:
+        jel_sorok = UBS.read_tsv_rows(UBS.JELENTESEK_PATH)
+        ref_sorok = UBS.read_tsv_rows(UBS.REFERENCIAK_PATH)
+        jelentesek = {}
+        for r in jel_sorok:
+            jelentesek.setdefault(r['strong'], {}).setdefault(r['lexid'], r)
+        darab = {}
+        for r in ref_sorok:
+            kulcs = (r['strong'], r['lexid'])
+            darab[kulcs] = darab.get(kulcs, 0) + 1
+        _dntg_cache = (jelentesek, darab)
+    return _dntg_cache
+
+
+def mcged_sor(strong):
+    """A Mounce-szócikk sora (dict) vagy None. A `gk_szam` oszlop a MCGED belső kulcsa (`G5` + a GK-szám)."""
+    global _mcged_cache
+    if _mcged_cache is None:
+        _mcged_cache = {r['strong']: r for r in L.read_tsv_skip_comments(MCGED_TSV)}
+    return _mcged_cache.get(strong)
+
+
+def _dntg_hu(mezo, strong, lexid, entry_kod, angol):
+    hu = forditas_ehhez('UBS_DNTG', strong, lexid, entry_kod, mezo)
+    return hu if hu else '%s %s' % (angol, FORDITASRA_VAR)
+
+
+def _tartalom_gorog_tomor(nyelv, n, tokenek_ny, reszek, ctx):
+    """Görög 5. szerep (Tömör jelentés, előfordulás): az UBS DNTG glosszája és hivatkozás-száma
+    jelentésenként, kiegészítve a Mounce tömör glosszájával (szó szerinti megjelöléssel, a kolofonban)."""
+    jelentesek, darab = ubs_dntg_adatok()
+    out = []
+    for t in tokenek_ny:
+        lex = jelentesek.get(t)
+        sorok = []
+        if lex:
+            ossz = sum(darab.get((t, lexid), 0) for lexid in lex)
+            sorok.append('**%s** · UBS DNTG: %d jelentés, %d hivatkozott hely' % (t, len(lex), ossz))
+            sorok += ['', '| Jelentés (lexid) | Louw–Nida | Glossza | Definíció (rövid) | Hivatkozott helyek |',
+                      '|---|---|---|---|---|']
+            for lexid, r in lex.items():
+                sorok.append('| `%s` | %s | %s | %s | %d |' % (
+                    lexid, r['entry_kod'],
+                    _cella(_dntg_hu('glosszak_hu', t, lexid, r['entry_kod'], r['glosszak'])),
+                    _cella(_dntg_hu('definicio_hu', t, lexid, r['entry_kod'], r['definicio_rovid'])),
+                    darab.get((t, lexid), 0)))
+        else:
+            sorok.append('**%s** · %s *(UBS DNTG)*' % (t, NEM_TARGYALJA))
+        mc = mcged_sor(t)
+        sorok.append('')
+        if mc:
+            hu = forditas_ehhez('MCGED', t, mc['gk_szam'], EM_DASH, 'glosszak_hu')
+            sorok.append('*Mounce (GK %d):* %s' % (int(mc['gk_szam'][2:]), hu if hu else '%s %s' % (mc['glossza'], FORDITASRA_VAR)))
+        else:
+            sorok.append('*Mounce:* %s' % NEM_TARGYALJA)
+        out.append('\n'.join(sorok))
+    ctx['fl'].setdefault(UBS_DNTG_JELENTESEK_FAJL, set()).add('UBS_DNTG')
+    ctx['fl'].setdefault(UBS_DNTG_REFERENCIAK_FAJL, set()).add('UBS_DNTG')
+    ctx['fl'].setdefault(MCGED_FAJL, set()).add('MCGED')
+    return out
+
+
+def sece_megfelelok(strong):
+    """A SECE-szócikk másik nyelvi megfelelő-listája (sorrendtartó, ismétlés nélkül), vagy None:
+    görög szócikkben a `Hebrew:`, héberben a `Greek:` mező. (A `LN:` mező csak keresztellenőrzés az
+    UBS DNTG ellen, a naplok/F09_S2_4_sece_ln_ellenorzes.py végzi, F05 D7.) None: nincs szócikk vagy
+    a mező hiányzik -- a SECE nem tárgyalja."""
+    nyelv = strong[0]
+    if nyelv not in _sece_cache:
+        ut = os.path.join(ROOT, SECE_FAJL[nyelv])
+        _sece_cache[nyelv] = {r['Strong_padded']: r['Teljes_szocikk'] for r in L.read_tsv_skip_comments(ut)}
+    szoveg = _sece_cache[nyelv].get(strong)
+    if not szoveg:
+        return None
+    cimke = 'Hebrew' if nyelv == 'G' else 'Greek'
+    m = re.search(r'\s%s:\s(.*?)\sDerivation:' % cimke, szoveg)
+    if not m:
+        return None
+    lista = []
+    for elem in m.group(1).split(','):
+        elem = elem.strip()
+        if elem and elem not in lista:
+            lista.append(elem)
+    return lista or None
+
+
+def _tartalom_sece(nyelv, n, tokenek_ny, reszek, ctx):
+    """7. szerep (Megfelelők a másik nyelven): a SECE megfelelő-listája. A szó szerinti lista a forrásé;
+    ahol a SECE-szócikknek nincs ilyen mezője, `a forrás nem tárgyalja`."""
+    out = []
+    cimke = 'héber' if nyelv == 'gorog' else 'görög'
+    betu = 'G' if nyelv == 'gorog' else 'H'
+    for t in tokenek_ny:
+        lista = sece_megfelelok(t)
+        if lista:
+            out.append('**%s** · SECE — %s megfelelők (%d): %s' % (t, cimke, len(lista), ', '.join(lista)))
+        else:
+            out.append('**%s** · %s *(SECE: nincs %s megfelelő-lista)*' % (t, NEM_TARGYALJA, cimke))
+    if tokenek_ny:
+        ctx['fl'].setdefault(SECE_FAJL[betu], set()).add(SECE_LICENC_KULCS[betu])
+    return out
+
+
+# --- F09 S2.5: tW + TWOT (3. szerep), BDB-etimológia (héber 8.), LXX versszintű párok (héber 6.) ---
+
+TW_TSV = os.path.join(KONKORDANCIA, 'tW_szocikkek.tsv')
+TW_FAJL = 'konkordancia/tW_szocikkek.tsv'
+BDB_ETIM_TSV = os.path.join(KONKORDANCIA, 'BDB_etimologia_kezi_hatarok.tsv')
+BDB_ETIM_FAJL = 'konkordancia/BDB_etimologia_kezi_hatarok.tsv'
+BDB_TELJES_FAJL = 'konkordancia/BDB_teljes_unabridged.tsv'
+LXX_PAROK_TSV = os.path.join(KONKORDANCIA, 'LXX_versszintu_parok.tsv')
+LXX_PAROK_FAJL = 'konkordancia/LXX_versszintu_parok.tsv'
+LXX_PAROK_TOP = 10
+
+_tw_cache = None
+_bdb_etim_cache = None
+_lxx_parok_cache = None
+
+
+def tw_szocikkek():
+    """(sorok, strong -> [sor]) a tW_szocikkek.tsv-ből; a `strong` mező `+`-szal elválasztott lista."""
+    global _tw_cache
+    if _tw_cache is None:
+        sorok = L.read_tsv_skip_comments(TW_TSV)
+        idx = {}
+        for r in sorok:
+            r['strongok'] = [s for s in r['strong'].split('+') if s]
+            for s in r['strongok']:
+                idx.setdefault(s, []).append(r)
+        _tw_cache = (sorok, idx)
+    return _tw_cache
+
+
+def _tw_szoveg_idezetblokk(szoveg):
+    """A tW-szöveg `\\n` jelölései valódi sortörésre, soronként idézőblokkba (a szöveg változatlan; a
+    formázás a módosítás, a kolofon jelzi)."""
+    sorok = szoveg.replace('\\n', '\n').split('\n')
+    return '\n'.join(('> %s' % s).rstrip() for s in sorok)
+
+
+def _tw_cikk_blokk(r, tokenek):
+    kotes = [s for s in r['strongok'] if s in tokenek]
+    hu = forditas_ehhez('tW_szocikkek', r['strongok'][0] if r['strongok'] else EM_DASH, r['tw_id'], EM_DASH, 'forditas_hu')
+    return ('<details>\n<summary>%s — %s (tW; a motívum tokenje: %s)</summary>\n\n%s\n\n%s\n\n</details>'
+            % (r['tw_id'], r['cim'], ', '.join(kotes), _tw_szoveg_idezetblokk(r['szoveg']),
+               '**🇭🇺** %s' % hu if hu else FORDITASRA_VAR))
+
+
+def _tartalom_teologiai(nyelv, n, tokenek_ny, reszek, ctx):
+    """3. szerep (Teológiai szócikk): unfoldingWord Translation Words (mindkét nyelven elfogadva, S0b.2),
+    héberül a TWOT-szám hivatkozásként (D19). A szócikk szövege egyszer áll (szócikkenként), a tokenek
+    sorai rá mutatnak; a Strong-kötés a tW saját `Word Data` listáját követi. Ahol nincs tW-szócikk: `a forrás
+    nem tárgyalja` (D11)."""
+    _sorok, idx = tw_szocikkek()
+    tokenhalmaz = set(tokenek_ny)
+    out = []
+    latott = []
+    for t in tokenek_ny:
+        sorok_t = []
+        if nyelv == 'heber':
+            sorok_t.append('**%s** · %s' % (t, reszek[t]['twot']))
+        cikkek = idx.get(t, [])
+        if cikkek:
+            sorok_t.append('**%s** · tW: %s' % (t, ', '.join('`%s`' % c['tw_id'] for c in cikkek)))
+            for c in cikkek:
+                if c['tw_id'] not in [x['tw_id'] for x in latott]:
+                    latott.append(c)
+        else:
+            sorok_t.append('**%s** · %s *(tW)*' % (t, NEM_TARGYALJA))
+        out.append('\n\n'.join(sorok_t))
+    if latott:
+        out.append('*A tW-szócikkek szövege (angolul; a magyar fordítás a gyorsítótárból, ahol van, különben '
+                   'fordításra vár). A Strong-kötés a tW saját listáján alapul, nem a projekt azonosítása.*')
+        out.extend(_tw_cikk_blokk(c, tokenhalmaz) for c in latott)
+        ctx['fl'].setdefault(TW_FAJL, set()).add('tW_szocikkek')
+    if nyelv == 'heber':
+        ctx['fl'].setdefault('konkordancia/OSHL_lexikalis_index.tsv', set()).add('OSHL')
+    return out
+
+
+def bdb_etimologia():
+    """strong -> sor a BDB_etimologia_kezi_hatarok.tsv-ből."""
+    global _bdb_etim_cache
+    if _bdb_etim_cache is None:
+        _bdb_etim_cache = {r['strong']: r for r in L.read_tsv_skip_comments(BDB_ETIM_TSV)}
+    return _bdb_etim_cache
+
+
+def _tartalom_heber_etimologia(nyelv, n, tokenek_ny, reszek, ctx):
+    """Héber 8. szerep (Nyelvi háttér): a BDB-szócikk feje (etimológia, rokon nyelvi adatok) az
+    elsőként zárójelen kívüli em-dash előtti határig (D41). Csak `gepi` és `jovahagyott` határ
+    (F05 D41); `nem_targyalja`: `a forrás nem tárgyalja`."""
+    idx = bdb_etimologia()
+    out = []
+    for t in tokenek_ny:
+        r = idx.get(t)
+        if r is None or r['allapot'] == 'nem_targyalja':
+            out.append('**%s** · %s *(BDB: a szócikk feje nem ad nyelvi hátteret)*' % (t, NEM_TARGYALJA))
+            continue
+        if r['allapot'] not in ('gepi', 'jovahagyott'):
+            out.append('**%s** · *a BDB-határ állapota %s: nem renderelhető* (F05 D41)' % (t, r['allapot']))
+            continue
+        hu = forditas_ehhez('BDB', t, t, 'nyelvi_hatter', 'forditas_hu')
+        out.append('\n\n'.join([
+            '##### BDB %s — nyelvi háttér (a szócikk feje)' % t,
+            '> %s' % r['nyelvi_hatter'],
+            '**🇭🇺** %s' % hu if hu else FORDITASRA_VAR,
+            '*Forrás: %s (a szócikk: %s); határ: %s*' % (BDB_ETIM_FAJL, BDB_TELJES_FAJL,
+                                                         'gépi' if r['allapot'] == 'gepi' else 'jóváhagyott')]))
+    if tokenek_ny:
+        ctx['fl'].setdefault(BDB_ETIM_FAJL, set()).add('BDB')
+        ctx['fl'].setdefault(BDB_TELJES_FAJL, set()).add('BDB')
+    return out
+
+
+def lxx_versszintu_parok():
+    """heber_strong -> {'versek': {igehely: [gorog_strong,...]}, 'proveniencia': első sor proveniencia-ja}."""
+    global _lxx_parok_cache
+    if _lxx_parok_cache is None:
+        d = {}
+        for r in L.read_tsv_skip_comments(LXX_PAROK_TSV):
+            e = d.setdefault(r['heber_strong'], {'versek': {}, 'proveniencia': r['proveniencia']})
+            gs = e['versek'].setdefault(r['igehely'], [])
+            if r['gorog_strong']:
+                gs.append(r['gorog_strong'])
+        _lxx_parok_cache = d
+    return _lxx_parok_cache
+
+
+def _tartalom_heber_lxx_parok(nyelv, n, tokenek_ny, reszek, ctx):
+    """Héber 6. szerep (LXX-híd): a 3. szakaszra mutató hivatkozás MELLETT, külön sorban a
+    LXX_versszintu_parok.tsv összesítése -- versszintű együtt-előfordulás, NEM szóillesztés és nem
+    LXX-fordítói döntés (F05 S13, D14, D25)."""
+    parok = lxx_versszintu_parok()
+    out = ['*Hivatkozás: %s.*' % SZEREP_HIVATKOZAS[(nyelv, n)],
+           '*Versszintű együtt-előfordulás, nem szóillesztés (a token összes ÓSZ-i helye, a grammatikai '
+           'szavak szűrésével; nem LXX-fordítói döntés):*']
+    for t in tokenek_ny:
+        e = parok.get(t)
+        if not e:
+            out.append('**%s** · %s *(LXX versszintű párok)*' % (t, NEM_TARGYALJA))
+            continue
+        versek = e['versek']
+        parral = {v: gs for v, gs in versek.items() if gs}
+        szamlalo = {}
+        for gs in parral.values():
+            for g in set(gs):
+                szamlalo[g] = szamlalo.get(g, 0) + 1
+        legjobb = sorted(szamlalo.items(), key=lambda x: (-x[1], x[0]))[:LXX_PAROK_TOP]
+        reszek_g = []
+        for g, db in legjobb:
+            lk = lemma_kiejtes(g)
+            reszek_g.append('%s (%s, %s): %d vers' % (lk[0], lk[1], g, db) if lk else '%s: %d vers' % (g, db))
+        out.append('**%s** · %d vers az LXX_OS-ben (ebből %d vers görög tartalmi szóval); leggyakoribb görög '
+                   'társak: %s' % (t, len(versek), len(parral), '; '.join(reszek_g) if reszek_g else EM_DASH))
+    if tokenek_ny:
+        prov = next((parok[t]['proveniencia'] for t in tokenek_ny if t in parok), EM_DASH)
+        prov = re.sub(r' \| heber_strong=H\d{4}', '', prov)
+        out.append('*Proveniencia (a tábla soraiból): %s*' % prov)
+        ctx['fl'].setdefault(LXX_PAROK_FAJL, set()).add('LXX_versszintu_parok')
+    return out
+
+
+def szerep_token_adat_van(nyelv, n, token):
+    """True/False: az `adatosítva` szerep forrásában van-e adat ehhez a tokenhez (a törzscikk
+    lefedettségi mátrixához, F05 D11: `a forrás nem tárgyalja`); None: a szerepre nincs token-szintű
+    szabály (a cella a szerep forrása). Ugyanazokat az adatforrásokat kérdezi, mint a szerep-építők."""
+    k = (nyelv, n)
+    if k == ('heber', 1):
+        return bool([r for r in tbesh_konszolidalt().get(token, []) if r['strong'] == token]) \
+            or any(r['szotar'] == 'TBESH' for r in lexikon_hivatkozasok_ehhez(token))
+    if k in (('gorog', 3), ('heber', 3)):
+        return bool(tw_szocikkek()[1].get(token)) or (nyelv == 'heber' and bool(oshl_twot_ehhez(token)))
+    if k == ('gorog', 5):
+        return bool(ubs_dntg_adatok()[0].get(token)) or mcged_sor(token) is not None
+    if k in (('heber', 5), ('heber', 9)):
+        return bool(ubs_dbh_adatok()[0].get(token))
+    if k in (('gorog', 7), ('heber', 7)):
+        return sece_megfelelok(token) is not None
+    if k == ('heber', 8):
+        r = bdb_etimologia().get(token)
+        return bool(r) and r['allapot'] in ('gepi', 'jovahagyott')
+    if k == ('heber', 6):
+        return token in lxx_versszintu_parok()
+    if k == ('heber', 10):
+        return heber_lemma_kiejtes_van(token)
+    return None
+
+
+def heber_lemma_kiejtes_van(token):
+    lk = tbesg_tbesh_index()
+    nyers = lk[0].get(token) or lk[1].get(token)
+    return bool(nyers) and heber_lemma_kiejtes(nyers[0], nyers[1]) is not None
+
+
+def szerep_lefedettseg_cella(nyelv, sor, token):
+    """A törzscikk lefedettségi mátrixának cellája: forrás-hivatkozás, ha az `adatosítva` szerepnek van
+    adata a tokenhez; `a forrás nem tárgyalja`, ha a forrásban nincs szócikk (D11); H7121 héber 1.:
+    a BDB 2.c mutató (DT-F42a); `javaslat` / `nincs forrás` / `nincs adatosítva`: az állapot maga."""
+    allapot = sor['allapot']
+    if allapot != 'adatosítva':
+        return allapot
+    n = int(sor['sorrend'])
+    if (nyelv, n, token) in SZEREP_TOKEN_MUTATO:
+        return 'BDB 2.c (DT-F42a)' if (nyelv, n, token) == ('heber', 1, 'H7121') else 'bekötés később'
+    van = szerep_token_adat_van(nyelv, n, token)
+    if van is False:
+        return 'a forrás nem tárgyalja'
+    return sor.get('forras', EM_DASH)
+
+
+# Szerepenkénti egyedi építők: (nyelv, sorrend) -> függvény(nyelv, n, tokenek_ny, reszek, ctx) -> bekezdések.
+# A többi szerep az alábbi általános ágakon (SZEREP_SZOTAR / SZEREP_SAJAT) épül.
+SZEREP_EPITO = {
+    ('heber', 1): _tartalom_heber_tbesh,
+    ('gorog', 3): _tartalom_teologiai,
+    ('heber', 3): _tartalom_teologiai,
+    ('heber', 5): _tartalom_heber_dbh_tomor,
+    ('heber', 6): _tartalom_heber_lxx_parok,
+    ('heber', 8): _tartalom_heber_etimologia,
+    ('heber', 9): _tartalom_heber_dbh_vers,
+    ('gorog', 5): _tartalom_gorog_tomor,
+    ('gorog', 7): _tartalom_sece,
+    ('heber', 7): _tartalom_sece,
+}
+
+
+def _szerep_tartalom(nyelv, n, tokenek_ny, reszek, ctx):
     """A szerep kitöltött bekezdései: lista. Üres lista = a szerepnek nincs adata ezekhez a tokenekhez."""
     kulcs = (nyelv, n)
+    if kulcs in SZEREP_EPITO:
+        return SZEREP_EPITO[kulcs](nyelv, n, tokenek_ny, reszek, ctx)
     out = []
     if kulcs in SZEREP_SZOTAR:
         szotar = SZEREP_SZOTAR[kulcs]
@@ -838,9 +1465,16 @@ def _szerep_tartalom(nyelv, n, tokenek_ny, reszek):
 
 
 # DT-F78d (lezárva): a TBESH (CC BY 4.0, DT-F33f) a héber 1. szerep forrása marad, `adatosítva`; a DT-F42a csak a
-# H7121 „részlet” sorát váltotta ki BDB-vel. Tokenenkénti mutató az üres blokkon; a többi token a #9-re mutat.
+# H7121 „részlet” sorát váltotta ki BDB-vel. F09 (DT187): a TEREMT-002 két tokenének (H8414, H0922) szótári
+# bekötése a #12b dolga; a render ezeken a helyeken a mutatót adja, adatsort a #9 nem ír.
+# Tokenenkénti mutató az üres blokkon.
+_TEREMT002_MUTATO = 'a TEREMT-002 szótári bekötése a #12b dolga (DT187)'
 SZEREP_TOKEN_MUTATO = {
     ('heber', 1, 'H7121'): 'a H7121 alapjelentését a BDB 2.c adja (DT-F42a)',
+    ('heber', 1, 'H8414'): _TEREMT002_MUTATO,
+    ('heber', 1, 'H0922'): _TEREMT002_MUTATO,
+    ('heber', 2, 'H8414'): _TEREMT002_MUTATO,
+    ('heber', 2, 'H0922'): _TEREMT002_MUTATO,
 }
 
 
@@ -852,21 +1486,22 @@ def _token_ures_blokkok(nyelv, n, szerep, tokenek_ny):
     out = []
     for t in tokenek_ny:
         mutato = SZEREP_TOKEN_MUTATO.get(
-            (nyelv, n, t), 'adatosítva, nincs bekötve; a bekötés a #9 dolga')
-        out.append('<!-- ÜRES-BLOKK: %s | adatosítva, nincs bekötve -->\n'
-                   '**%s** · *(üres blokk: %s; a hiány nincs kitöltve gyenge vagy asszociatív anyaggal)*'
-                   % (szerep, t, mutato))
+            (nyelv, n, t), 'adatosítva, nincs bekötve; a bekötés még nem történt meg')
+        out.append(_token_mutato_blokk(szerep, t, mutato))
     return out
 
 
-def _szerep_blokk(nyelv, sor, tokenek_ny, reszek):
+def _szerep_blokk(nyelv, sor, tokenek_ny, reszek, ctx):
     n = int(sor['sorrend'])
     szerep, allapot = sor['szerep'], sor['allapot']
     szakasz = ['#### %d. %s' % (n, szerep)]
-    tart = _szerep_tartalom(nyelv, n, tokenek_ny, reszek)
+    ctx['szerep'] = szerep
+    tart = _szerep_tartalom(nyelv, n, tokenek_ny, reszek, ctx)
     if allapot == 'adatosítva':
         if tart:
             szakasz.extend(tart)
+            if (nyelv, n) in SZEREP_KEZI_2B:
+                szakasz.append('*Hivatkozás: %s.*' % SZEREP_KEZI_2B[(nyelv, n)])
         elif (nyelv, n) in SZEREP_HIVATKOZAS and (nyelv, n) not in SZEREP_SAJAT:
             hiv = SZEREP_HIVATKOZAS[(nyelv, n)]
             szakasz.append('*Hivatkozás: %s%s*' % (hiv, '' if hiv.endswith('.') else '.'))
@@ -876,7 +1511,7 @@ def _szerep_blokk(nyelv, sor, tokenek_ny, reszek):
             # DT-F78c 1.: harmadik állapot, mutatóval a #9-re (a bekötés a #9 dolga)
             szakasz.append(ures_blokk(szerep, 'adatosítva, nincs bekötve',
                                       'a szerep adatosítva (a forrásfájl megvan), de a motívum tokenjeihez a '
-                                      '`lexikon_hivatkozasok.tsv`-be nincs bekötve sor; a bekötés a #9 dolga'))
+                                      '`lexikon_hivatkozasok.tsv`-be nincs bekötve sor; a bekötés még nem történt meg'))
     elif not tart and (nyelv, n) in SZEREP_KEZI_2B:
         hiv = SZEREP_KEZI_2B[(nyelv, n)]
         szakasz.append('*Hivatkozás: %s.*' % hiv)
@@ -890,7 +1525,7 @@ def _szerep_blokk(nyelv, sor, tokenek_ny, reszek):
     return '\n\n'.join(szakasz)
 
 
-def szerep_vaz(tokenek, fajl_licenc_kulcsok, fajl_licenc_kulcsok_tbesg_tbesh):
+def szerep_vaz(tokenek, fajl_licenc_kulcsok, fajl_licenc_kulcsok_tbesg_tbesh, sorai=None):
     """A 2. szakasz fő törzse: nyelv szerint (görög, héber), azon belül az
     `adat/szotar_szerepek.tsv` sorrendjében, a nem adatosított szerep explicit
     üres blokkal. Visszaad: (törzs szöveg, van_hivatkozas, tisztazatlan_erintve)."""
@@ -920,6 +1555,7 @@ def szerep_vaz(tokenek, fajl_licenc_kulcsok, fajl_licenc_kulcsok_tbesg_tbesh):
         if h and all(h[k] == s[k] for k in ('szerep', 'forras', 'allapot')):
             kozos.add(int(s['sorrend']))
 
+    ctx = {'fl': fajl_licenc_kulcsok, 'tbesg_tbesh': fajl_licenc_kulcsok_tbesg_tbesh, 'sorai': sorai or []}
     reszek_szoveg = []
     for nyelv, cim in (('gorog', 'Görög'), ('heber', 'Héber')):
         tok_ny = [t for t in tokenek if t.startswith('G' if nyelv == 'gorog' else 'H')]
@@ -932,13 +1568,13 @@ def szerep_vaz(tokenek, fajl_licenc_kulcsok, fajl_licenc_kulcsok_tbesg_tbesh):
         for s in (g_sorok if nyelv == 'gorog' else h_sorok):
             if int(s['sorrend']) in kozos:
                 continue
-            blokkok.append(_szerep_blokk(nyelv, s, tok_ny, reszek))
+            blokkok.append(_szerep_blokk(nyelv, s, tok_ny, reszek, ctx))
         reszek_szoveg.append('\n\n'.join(blokkok))
     if kozos:
         blokkok = ['### Nyelvfüggetlen szerepek']
         for s in g_sorok:
             if int(s['sorrend']) in kozos:
-                blokkok.append(_szerep_blokk('gorog', s, [], reszek))
+                blokkok.append(_szerep_blokk('gorog', s, [], reszek, ctx))
         reszek_szoveg.append('\n\n'.join(blokkok))
     return '\n\n'.join(reszek_szoveg), van_hiv, tiszt
 
@@ -951,7 +1587,7 @@ def blokk_szocikkek(m, tokenek, sorai):
 
     fajl_licenc_kulcsok_tbesg_tbesh = set()
     # F78 (DT-F78b): szerep-sorrendű váz a Strong-szám szerinti helyett.
-    vaz_szov, van_hiv, tiszt = szerep_vaz(tokenek, fajl_licenc_kulcsok, fajl_licenc_kulcsok_tbesg_tbesh)
+    vaz_szov, van_hiv, tiszt = szerep_vaz(tokenek, fajl_licenc_kulcsok, fajl_licenc_kulcsok_tbesg_tbesh, sorai)
     van_hivatkozas_barmelyikhez = van_hivatkozas_barmelyikhez or van_hiv
     tisztazatlan_erintve = tisztazatlan_erintve or tiszt
     reszek.append(vaz_szov)
@@ -1101,7 +1737,7 @@ def gorog_megfelelo_szoveg(r):
     if lk:
         kiejtes = lk[1]
     else:
-        kiejtes = gepi_atiras(r['lemma']) + ' *(gépi átírás)*'
+        kiejtes = gorog_magyaros(gepi_atiras(r['lemma'])) + ' *(gépi átírás)*'
     return '%s (%s, %s%s)' % (r['szoalak'], r['lemma'], kiejtes, ' %s' % strong if strong else '')
 
 
@@ -1180,7 +1816,7 @@ def blokk_lxx(m, sorai, tokenek):
                     if lk:
                         kiejtes = lk[1]
                     else:
-                        kiejtes = gepi_atiras(r.get('gorog_lemma') or '') + ' *(gépi átírás)*'
+                        kiejtes = gorog_magyaros(gepi_atiras(r.get('gorog_lemma') or '')) + ' *(gépi átírás)*'
                     gm = '%s (%s%s)' % (r.get('gorog_lemma') or EM_DASH, kiejtes,
                                          ' %s' % gorog_strong if gorog_strong else '')
                     egyezes_cimke = 'eltérő'
@@ -1355,8 +1991,16 @@ FAJL_TELJES_NEV = {
         'BDB (Brown–Driver–Briggs, A Hebrew and English Lexicon of the Old Testament, 1906)',
     'konkordancia/TBESG.txt': 'TBESG (Tyndale Brief lexicon of Extended Strongs for Greek)',
     'konkordancia/TBESH.txt': 'TBESH (Tyndale Brief lexicon of Extended Strongs for Hebrew)',
+    'konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv': 'TBESH (Tyndale Brief lexicon of Extended Strongs for Hebrew)',
     'konkordancia/Thayer_teljes.tsv': "Thayer (Thayer's Greek-English Lexicon of the New Testament)",
     'konkordancia/UBS_DNTG_jelentesek.tsv': 'UBS (UBS Dictionary of New Testament Greek — Louw–Nida szemantikai domének)',
+    'konkordancia/MCGED_teljes.tsv': 'Mounce (Mounce Concise Greek-English Dictionary)',
+    'konkordancia/tW_szocikkek.tsv': 'tW (Translation Words — unfoldingWord)',
+    'konkordancia/BDB_etimologia_kezi_hatarok.tsv': 'BDB (Brown–Driver–Briggs, A Hebrew and English Lexicon of the Old Testament, 1906)',
+    'konkordancia/SECE_G_teljes.tsv': "SECE (Strong's Exhaustive Concordance, Enhanced)",
+    'konkordancia/SECE_H_teljes.tsv': "SECE (Strong's Exhaustive Concordance, Enhanced)",
+    'konkordancia/UBS_DBH_jelentesek.tsv': 'UBS DBH (UBS Dictionary of Biblical Hebrew — Semantic Dictionary of Biblical Hebrew)',
+    'konkordancia/UBS_DBH_referenciak.tsv': 'UBS DBH (UBS Dictionary of Biblical Hebrew — Semantic Dictionary of Biblical Hebrew)',
     'konkordancia/UBS_DNTG_referenciak.tsv': 'UBS (UBS Dictionary of New Testament Greek — Louw–Nida szemantikai domének)',
     'konkordancia/SDBH_domenek.tsv': 'SDBH (Semantic Dictionary of Biblical Hebrew)',
     'konkordancia/SDGNT_domenek.tsv': 'SDGNT (Semantic Dictionary of Biblical Greek)',
@@ -1365,7 +2009,8 @@ FAJL_TELJES_NEV = {
     'konkordancia/LSJ_teljes.tsv': 'LSJ (Liddell-Scott-Jones, A Greek-English Lexicon)',
 }
 ADATFORRAS_FAJLOK = {'konkordancia/Karoli_1908.tsv', 'konkordancia/Karoli_kereszthivatkozasok.tsv',
-                      'adat/lexikon_hivatkozasok.tsv'}
+                      'adat/lexikon_hivatkozasok.tsv', 'konkordancia/Karoli_versmegfeleltetes.tsv',
+                      'konkordancia/LXX_versszintu_parok.tsv'}
 
 
 def _teljes_nev(fajl):
@@ -1438,6 +2083,41 @@ def blokk_idezes(m, fajl_licenc_blokk_lista):
 # Kolofon (régi 0. Metaadatok + 9. Források és licencek összevonva)
 # ---------------------------------------------------------------------------
 
+# --- F09 S2.7: kötelező forrásmegjelölések (F05 S11) ---
+
+# A TWOT csak szám-hivatkozás (D19): a mű megnevezése kötelező, a szövegét a render nem idézi.
+TWOT_MEGJELOLES = ('TWOT: Theological Wordbook of the Old Testament — csak a szócikk száma áll hivatkozásként '
+                   '(az OSHL-indexből, Open Scriptures Hebrew Bible Project), a mű szövegét a lexikonoldal nem idézi.')
+# unfoldingWord Translation Words (CC BY-SA 4.0): a forrásmegjelölés szó szerint; a származékos szövegből a
+# védjegy elmarad; a módosítást jelezni kell (tW_README.md, a LICENSE.md szó szerinti idézete).
+TW_MEGJELOLES = ('Translation Words (tW), CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/). '
+                 'The original work by unfoldingWord is available from unfoldingword.org/utw. '
+                 'Módosítás: a szócikkek szövegét a lexikonoldal idézőblokkba tördelve közli (a forrás `\\n` '
+                 'sortörés-jelölései valódi sortörésre cserélve), egyébként változatlanul; a magyar fordítás '
+                 '(ahol van) származékos munka, ugyanazon CC BY-SA 4.0 licenc alatt.')
+FAJL_MEGJELOLES_KULCS = {
+    'konkordancia/UBS_DBH_jelentesek.tsv': 'UBS_DBH', 'konkordancia/UBS_DBH_referenciak.tsv': 'UBS_DBH',
+    'konkordancia/UBS_DNTG_jelentesek.tsv': 'UBS_DNTG', 'konkordancia/UBS_DNTG_referenciak.tsv': 'UBS_DNTG',
+    'konkordancia/tW_szocikkek.tsv': 'tW_szocikkek',
+    'konkordancia/OSHL_lexikalis_index.tsv': 'OSHL',
+    'konkordancia/LXX_versszintu_parok.tsv': 'LXX_versszintu_parok',
+    'konkordancia/Karoli_versmegfeleltetes.tsv': 'Karoli_versmegfeleltetes',
+}
+
+
+def kotelezo_megjeloles(kulcs):
+    """A dataset kötelező forrásmegjelölése: az UBS-nél az adat/licencek.tsv `kotelezo_megjeloles` mezője
+    (a ©-mondat szó szerint), a tW-nél és a TWOT-nál a fenti állandó."""
+    if kulcs == 'tW_szocikkek':
+        return TW_MEGJELOLES
+    if kulcs == 'OSHL':
+        return TWOT_MEGJELOLES
+    szoveg = licenc_sor(kulcs).get('kotelezo_megjeloles') or ''
+    if not szoveg:
+        raise SystemExit('HIBA: üres `kotelezo_megjeloles` az adat/licencek.tsv `%s` során' % kulcs)
+    return szoveg
+
+
 def blokk_kolofon(m, fajl_licenc_blokk_lista):
     forras_study_sorok = [s.strip() for s in (m.get('forras_study') or '').split(';') if s.strip()]
     forras_study_cella = '<br>'.join('`%s`' % s for s in forras_study_sorok) if forras_study_sorok else EM_DASH
@@ -1484,6 +2164,11 @@ def blokk_kolofon(m, fajl_licenc_blokk_lista):
         megjelolesek.append('*%s*' % MOUNCE_MEGJELOLES)
     if any(os.path.basename(f) == 'LSJ_teljes.tsv' for f in per_fajl):
         megjelolesek.append('*%s*' % lsj_forrasmegjeloles())
+    # F09 S2.7 (F05 S11): a kötelező forrásmegjelölések szó szerint
+    for kulcs in sorted({FAJL_MEGJELOLES_KULCS[f] for f in per_fajl if f in FAJL_MEGJELOLES_KULCS}):
+        szoveg = '*%s*' % kotelezo_megjeloles(kulcs)
+        if szoveg not in megjelolesek:
+            megjelolesek.append(szoveg)
 
     torzs = '\n'.join(metaadat_sorok) + '\n\n---\n\n' + '\n'.join(forras_sorok)
     if megjelolesek:

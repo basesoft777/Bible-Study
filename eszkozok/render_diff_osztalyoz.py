@@ -284,5 +284,235 @@ def main():
     return 0
 
 
+# ---------------------------------------------------------------------------
+# F09 S2.8: próbarender és az éles lexikon/ összevetése (--proba)
+#
+# A próba (pl. generalt_proba/F09_szotar_s2_proba) és az éles `lexikon/` MULTIHALMAZ-különbsége
+# (a csak áthelyezett, változatlan szövegű sorok nem számítanak változásnak), soronként pontosan
+# egy kategóriába. A kategória a sor TARTALMA és KONTEXTUSA (generált blokk, szerep-fejléc,
+# törzscikk-szakasz) szerint dől el:
+#   az F05 S2.8 kategóriái: kiejtes, tbesh, ubs_dbh, mounce_sece, teologiai, nyelvi_hatter,
+#   lxx_korpusz, licenc, szerep (+ a meglévők közül: tanulmany, jeloles, torzscikk_res);
+#   szerep_vaz (F09 brief S2.8 javaslata): a #78 váza miatti eltérés (az éles oldal még a régi,
+#   Strong-sorrendű 2. szakaszt mutatja), hogy ne fedje el az adatváltozást;
+#   két kiegészítő kategória, hogy minden sor besorolható legyen: elavult_adat (az éles oldal
+#   adatrétege régebbi: előfordulások, kizárt helyek, kapcsolatok, kereszthivatkozások) és
+#   fordites_jelzo (a hiányzó fordítás jelzője egységesült, K13f).
+# Besorolhatatlan sor / ismeretlen kategória, vagy változott éles fájl: kilépési kód 2 (ÁLLJ).
+# ---------------------------------------------------------------------------
+
+import collections
+import hashlib
+
+PROBA_KATEGORIAK = (
+    'kiejtes', 'tbesh', 'ubs_dbh', 'mounce_sece', 'teologiai', 'nyelvi_hatter', 'lxx_korpusz', 'licenc',
+    'szerep', 'szerep_vaz', 'elavult_adat', 'fordites_jelzo', 'jeloles', 'tanulmany', 'torzscikk_res')
+
+_BLOKK_KEZDET_RE = re.compile(r'<!-- GENERÁLT-KEZDET: general\.py --cel lexikon#[^#]+#(\w+)')
+_SZEREP_FEJ_RE = re.compile(r'^#### (\d+)\. ')
+_LATIN_ZAROJEL_RE = re.compile(r"\(([A-Za-zÀ-ɏḀ-ỿ.' \-]+)\)")
+_FORDITAS_JELZO_RE = re.compile(r'\*?\(fordítás függőben\)\*?|\*?\(fordításra vár\)\*?|\*Fordítás függőben\.\*')
+_FEJLEC_JEL_RE = re.compile(r'^#+ ')
+
+# (nyelv, szerep sorszáma) -> kategória a próba-oldali sorokra a 2. szakaszban
+_SZEREP_KATEGORIA = {
+    ('heber', 1): 'tbesh', ('gorog', 3): 'teologiai', ('heber', 3): 'teologiai',
+    ('gorog', 5): 'mounce_sece', ('heber', 5): 'ubs_dbh', ('heber', 9): 'ubs_dbh',
+    ('gorog', 7): 'mounce_sece', ('heber', 7): 'mounce_sece', ('heber', 6): 'lxx_korpusz',
+    ('heber', 8): 'nyelvi_hatter', ('gorog', 10): 'kiejtes', ('heber', 10): 'kiejtes',
+}
+
+
+def _tudomanyos_kontextusok(sorok):
+    """Soronként (blokk, nyelv, szerep sorszáma, rokon-e): a generált blokk és a 2. szakasz kontextusa."""
+    out = []
+    blokk, nyelv, szerep, rokon = None, None, None, False
+    for s in sorok:
+        m = _BLOKK_KEZDET_RE.search(s)
+        if m:
+            blokk, nyelv, szerep, rokon = m.group(1), None, None, False
+        if blokk == 'szocikkek':
+            if s.startswith('### Görög szavak'):
+                nyelv, szerep, rokon = 'gorog', None, False
+            elif s.startswith('### Héber szavak'):
+                nyelv, szerep, rokon = 'heber', None, False
+            elif s.startswith('### Nyelvfüggetlen'):
+                nyelv, szerep, rokon = 'kozos', None, False
+            elif s.startswith('### Rokon szavak'):
+                nyelv, szerep, rokon = None, None, True
+            else:
+                mm = _SZEREP_FEJ_RE.match(s)
+                if mm:
+                    szerep = int(mm.group(1))
+        out.append((blokk, nyelv, szerep, rokon))
+        if s.startswith('<!-- GENERÁLT-VÉGE'):
+            blokk, nyelv, szerep, rokon = None, None, None, False
+    return out
+
+
+def _torzscikk_kontextusok(sorok):
+    cur, out = '', []
+    for s in sorok:
+        if s.startswith('## '):
+            cur = s[3:]
+        out.append(cur)
+    return out
+
+
+def _feleslegek(sorok, kontextusok, sajat, masik):
+    """A multihalmaz-többlet sorai (sor, kontextus), az oldal sorrendjében."""
+    latott, ki = collections.Counter(), []
+    for s, k in zip(sorok, kontextusok):
+        if not s.strip():
+            continue
+        latott[s] += 1
+        if latott[s] <= sajat[s] - masik[s]:
+            ki.append((s, k))
+    return ki
+
+
+def _kulcs(sor):
+    """Normalizált kulcs: a fejléc-# jelek, a latin betűs zárójeles kiejtés és a fordítás-jelző nélkül."""
+    s = _FORDITAS_JELZO_RE.sub('(F)', _FEJLEC_JEL_RE.sub('', sor.strip()))
+    return _LATIN_ZAROJEL_RE.sub('(K)', s)
+
+
+def _par_kategoria(egyik, masik):
+    """Két, azonos normalizált kulcsú sor eltérésének oka."""
+    a, b = _FEJLEC_JEL_RE.sub('', egyik.strip()), _FEJLEC_JEL_RE.sub('', masik.strip())
+    if a == b:
+        return 'szerep_vaz'  # csak a fejléc mélysége
+    if _FORDITAS_JELZO_RE.sub('(F)', a) == _FORDITAS_JELZO_RE.sub('(F)', b):
+        return 'fordites_jelzo'
+    return 'kiejtes'
+
+
+def _tudomanyos_kategoria(sor, kontextus, irany):
+    s = sor.strip()
+    blokk, nyelv, szerep, rokon = kontextus
+    if blokk in ('idezes', 'kolofon'):
+        return 'licenc'
+    if blokk == 'lxx':
+        return 'lxx_korpusz'
+    if blokk in ('elofordulasok', 'kizart', 'kapcsolatok', 'kereszthivatkozasok', 'tartalom', 'jelmagyarazat'):
+        return 'elavult_adat'
+    if blokk == 'szocikkek':
+        if irany == 'torolt':
+            return 'szerep_vaz'  # az éles oldal régi, Strong-sorrendű 2. szakasza
+        if s.startswith('### ') or _SZEREP_FEJ_RE.match(s) or s.startswith('<!-- ÜRES-') \
+                or s.startswith('*(üres blokk') or s.startswith('*Hivatkozás') or rokon:
+            return 'szerep_vaz'
+        return _SZEREP_KATEGORIA.get((nyelv, szerep), 'szerep_vaz')
+    return 'tanulmany'  # a 7 kézi rés törzse (forrása: tanulmány/napló), a meglévő szabály szerint
+
+
+def _torzscikk_kategoria(sor, szakasz):
+    if sor.strip().startswith('| **Fő szavak**'):
+        return 'kiejtes'
+    if szakasz.startswith('5. Szótári'):
+        return 'szerep'
+    if szakasz.startswith('Források és licenc'):
+        return 'licenc'
+    if szakasz.startswith('4. LXX'):
+        return 'lxx_korpusz'
+    return 'torzscikk_res'
+
+
+def proba_osztalyoz(fajl_nev, eles_szoveg, proba_szoveg):
+    """{kategória: {'hozzaadott': [sor], 'torolt': [sor]}} a multihalmaz-különbségre."""
+    eles = eles_szoveg.replace('\r\n', '\n').split('\n')
+    proba = proba_szoveg.replace('\r\n', '\n').split('\n')
+    ce, cp = collections.Counter(eles), collections.Counter(proba)
+    torzscikk = fajl_nev.endswith('_TORZSCIKK.md')
+    if torzscikk:
+        ke, kp = _torzscikk_kontextusok(eles), _torzscikk_kontextusok(proba)
+    else:
+        ke, kp = _tudomanyos_kontextusok(eles), _tudomanyos_kontextusok(proba)
+    torolt = _feleslegek(eles, ke, ce, cp)
+    hozzaadott = _feleslegek(proba, kp, cp, ce)
+
+    # párosítás: azonos normalizált kulcs => csak kiejtés / jelző / fejléc-mélység változott
+    par = collections.defaultdict(list)       # kulcs -> hozzáadott sorok
+    par_t = collections.defaultdict(list)     # kulcs -> törölt sorok
+    for s, _k in hozzaadott:
+        par[_kulcs(s)].append(s)
+    for s, _k in torolt:
+        par_t[_kulcs(s)].append(s)
+    eredmeny = collections.defaultdict(lambda: {'hozzaadott': [], 'torolt': []})
+
+    def kategoria(s, k, irany):
+        if s.strip().startswith('<!-- GENERÁLT'):
+            return 'jeloles'
+        partner = (par if irany == 'torolt' else par_t).get(_kulcs(s))
+        if partner:
+            return _par_kategoria(s, partner[0])
+        if torzscikk:
+            return _torzscikk_kategoria(s, k)
+        return _tudomanyos_kategoria(s, k, irany)
+
+    for s, k in torolt:
+        eredmeny[kategoria(s, k, 'torolt')]['torolt'].append(s)
+    for s, k in hozzaadott:
+        eredmeny[kategoria(s, k, 'hozzaadott')]['hozzaadott'].append(s)
+    return eredmeny
+
+
+def _sha256(ut):
+    with open(ut, 'rb') as f:
+        return hashlib.sha256(f.read()).hexdigest()
+
+
+def proba_main(argv):
+    import argparse
+    p = argparse.ArgumentParser(description='F09 S2.8: próbarender vs. éles lexikon/ diff-osztályozás')
+    p.add_argument('--proba', required=True, help='a próba gyökere (alatta lexikon/*.md)')
+    p.add_argument('--eles', default=LEXIKON_DIR, help='az éles lexikon/ könyvtár')
+    p.add_argument('--tsv', default=os.path.join(ROOT, 'naplok', 'SZOTAR_S2_diff.tsv'))
+    p.add_argument('--hash', default=os.path.join(ROOT, 'naplok', 'F09_S0_lexikon_hash.tsv'),
+                   help='az éles lexikon/ S0-ban mért hash-ei (változatlansági ellenőrzés)')
+    a = p.parse_args(argv)
+    proba_lex = os.path.join(a.proba, 'lexikon')
+    fajlok = sorted(f for f in os.listdir(proba_lex) if f.endswith('.md'))
+    sorok = ['fajl\tkategoria\thozzaadott\ttorolt']
+    osszes = collections.Counter()
+    ismeretlen = False
+    for f in fajlok:
+        with io.open(os.path.join(a.eles, f), encoding='utf-8', newline='') as fh:
+            eles = fh.read()
+        with io.open(os.path.join(proba_lex, f), encoding='utf-8', newline='') as fh:
+            proba = fh.read()
+        eredmeny = proba_osztalyoz(f, eles, proba)
+        for kat in sorted(eredmeny):
+            h, t = len(eredmeny[kat]['hozzaadott']), len(eredmeny[kat]['torolt'])
+            sorok.append('\t'.join([f, kat, str(h), str(t)]))
+            osszes[kat] += h + t
+            if kat not in PROBA_KATEGORIAK:
+                ismeretlen = True
+                print('ISMERETLEN KATEGÓRIA: %s %s' % (f, kat), file=sys.stderr)
+    sorok.append('# összesítő (hozzáadott + törölt sor): ' + ', '.join(
+        '%s=%d' % (k, osszes[k]) for k in PROBA_KATEGORIAK if osszes[k]))
+    sorok.append('# proveniencia: scope=%s vs %s | forras=eszkozok/render_diff_osztalyoz.py --proba | ts=%s'
+                 % (os.path.relpath(a.proba, ROOT).replace(os.sep, '/'),
+                    os.path.relpath(a.eles, ROOT).replace(os.sep, '/'), os.environ.get('PARDES_DATUM', '')))
+    # az éles lexikon/ bájtra változatlan-e (S0.2/7 hash-ei)
+    valtozott = []
+    with io.open(a.hash, encoding='utf-8') as fh:
+        for sor in fh.read().split('\n'):
+            m = sor.split('\t')
+            if len(m) == 2 and _sha256(os.path.join(a.eles, m[0])) != m[1]:
+                valtozott.append(m[0])
+    sorok.append('# az éles lexikon/ hash-ellenőrzése (naplok/F09_S0_lexikon_hash.tsv): %s'
+                 % ('VÁLTOZOTT: ' + ', '.join(valtozott) if valtozott else '16 fájl bájtra változatlan'))
+    with io.open(a.tsv, 'w', encoding='utf-8', newline='\n') as fh:
+        fh.write('\n'.join(sorok) + '\n')
+    print('\n'.join(sorok))
+    if valtozott:
+        print('ÁLLJ: az éles lexikon/ fájlja változott: %s' % ', '.join(valtozott), file=sys.stderr)
+        return 2
+    return 2 if ismeretlen else 0
+
+
 if __name__ == '__main__':
+    if '--proba' in sys.argv:
+        sys.exit(proba_main(sys.argv[1:]))
     sys.exit(main())

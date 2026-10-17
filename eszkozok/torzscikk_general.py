@@ -13,14 +13,10 @@ szakasz a pilot régi szerepkör-mátrixa helyett a G6 szerepmátrixot
 (G7); a régi 5. szakasz és a lábléc (D12/G7: a ténylegesen használt
 forrásokra szűkítve) az egyetlen pont, ahol a pilot-diff megengedett (K9).
 
-A kiejtés-transzliteráció (SBL-stílus -> magyaros, pl. epikaleō -> epikaleó)
-NEM a RENDER tárgya (l. CLAUDE.md/RENDER_BRIEF.md "Nincs benne" -- a
-`kiejtes.py` a F05_SZOTAR_BRIEF.md dolga); a pilot KIEJT táblája ISMÉRT,
-ISTENTISZT-001-specifikus javításokat tartalmazott -- ez itt megmarad
-(a K9 pilot-diff ezekre a szavakra épp emiatt nem térhet el), de a többi
-motívum egyéb szavaira NEM terjed ki: azok nyers (SBL-stílusú) alakban
-jelennek meg, amíg a F05_SZOTAR_BRIEF kiejtes.py-ja nem old meg egy általános
-átírást.
+A kiejtés (SBL-átírás -> magyaros) nem ebben a modulban dől el: a görög
+átírást a `kiejtes.py` (szabálytábla + kivételek), a héber lemma-kiejtést az
+`adat/kiejtes_kivetelek.tsv` adja, a lexikonoldalon keresztül (F09 S2.1; a pilot
+kódbeli kivétel-táblája megszűnt, F05 D15). Ez a modul a lexikonoldalból olvas.
 
 TSV-olvasás kizárólag split('\\t') / '\\t'.join() (CLAUDE.md).
 
@@ -44,19 +40,6 @@ import general as G
 import lexikon_general as LG
 
 ROOT = G.ROOT
-
-# ISTENTISZT-001-specifikus, ismert SBL->magyaros kiejtés-javítások (a pilot
-# öröksége, l. a modul docstringje). Új szó esetén nincs csere.
-KIEJT = {'epikaleō': 'epikaleó', 'kaleō': 'kaleó', 'boaō': 'boaó',
-         'qa.ra': 'kárá', 'shem': 'sém'}
-
-
-def kiejt(s):
-    for k, v in KIEJT.items():
-        if k in s:
-            s = s.replace(k, v)
-    return s
-
 
 def cells(row):
     return [c.strip() for c in row.strip().strip('|').split('|')]
@@ -142,6 +125,16 @@ def idx(lines, pred, start=0):
 
 def h2(lines, title):
     return idx(lines, lambda s: s.startswith('## ') and s[3:].startswith(title))
+
+
+def olvaso_forras(szoveg):
+    """F09 J3 (ellenőri 6.): az `adat/szotar_szerepek.tsv` `forras` mezője döntéshivatkozást is hordoz
+    (a jegyzet az adatban megmarad). Az olvasói törzscikk ezt nem rendereli: a kivezetett szótár
+    megjegyzése (`; a <szótár> kivezetve, D18`) és a puszta döntésszám (`, D16`, `, D20`) kimarad
+    (K13: a kivezetett szótárak említése 0 a törzscikkben)."""
+    szoveg = re.sub(r';\s*a [A-Z][a-z]+ kivezetve, D\d+', '', szoveg)
+    szoveg = re.sub(r', D\d+(?=[;,)])', '', szoveg)
+    return szoveg
 
 
 def torzscikk_szoveg(m, lex_szoveg, model):
@@ -251,7 +244,7 @@ def torzscikk_szoveg(m, lex_szoveg, model):
         lk = LG.lemma_kiejtes(token)
         if lk:
             lemma_nfc = unicodedata.normalize('NFC', lk[0])
-            fo_szavak.append('%s (%s, %s)' % (lemma_nfc, kiejt(lk[1]), token))
+            fo_szavak.append('%s (%s, %s)' % (lemma_nfc, lk[1], token))
         else:
             fo_szavak.append(token)
     if fo_szavak:
@@ -304,7 +297,7 @@ def torzscikk_szoveg(m, lex_szoveg, model):
             w('- **UBS-jelentés:** %s' % e['ubs'])
         if r in lxx:
             c = lxx[r]
-            w('- **LXX:** %s — %s — %s' % (c[1], kiejt(c[3]), c[4]))
+            w('- **LXX:** %s — %s — %s' % (c[1], c[3], c[4]))
         ki = [k for k in kap if k[0] == r]
         be = [k for k in kap if k[1] == r]
         if ki or be:
@@ -350,7 +343,7 @@ def torzscikk_szoveg(m, lex_szoveg, model):
     if lxx:
         w('| Igehely (Károli) | LXX-igehely | Héber kulcsszó | Görög megfelelő | Egyezés |'); w('|---|---|---|---|---|')
         for c in lxx.values():
-            w('| [%s](#%s) | %s | %s | %s | %s |' % (c[0], anchor(c[0]), c[1], c[2], kiejt(c[3]), c[4]))
+            w('| [%s](#%s) | %s | %s | %s | %s |' % (c[0], anchor(c[0]), c[1], c[2], c[3], c[4]))
         w('')
         if lxx_ossz:
             w(lxx_ossz.replace(', kutatói azonosítás függőben=0, szamozas_elteres=0', '')); w('')
@@ -367,12 +360,13 @@ def torzscikk_szoveg(m, lex_szoveg, model):
     for szerep in szerep_sorrend:
         gr = gorog_szerepek[szerep]
         hr = heber_szerepek.get(szerep, {})
-        w('| %s | %s | %s |' % (szerep, gr.get('forras', '—'), hr.get('forras', '—')))
+        w('| %s | %s | %s |' % (szerep, olvaso_forras(gr.get('forras', '—')), olvaso_forras(hr.get('forras', '—'))))
     w('')
 
     w('### Lefedettség szavanként'); w('')
-    w('A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b '
-      'résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).'); w('')
+    w('A cella értéke: forrás-hivatkozás (a szerep adatosítva és a szónak van szócikke a forrásban), '
+      '`a forrás nem tárgyalja` (a forrásban nincs szócikk a szóhoz; F05 D11), `nincs forrás` (D27) vagy '
+      '`javaslat` (a szerep még csak javaslat; RENDER_BRIEF.md G7).'); w('')
     fejlec_cellak = ['Szó'] + szerep_sorrend
     w('| ' + ' | '.join(fejlec_cellak) + ' |')
     w('|' + '---|' * len(fejlec_cellak))
@@ -381,13 +375,8 @@ def torzscikk_szoveg(m, lex_szoveg, model):
         szerepek = gorog_szerepek if nyelv == 'gorog' else heber_szerepek
         sor = [token]
         for szerep in szerep_sorrend:
-            r = szerepek.get(szerep, {})
-            if r.get('allapot') == 'adatosítva':
-                sor.append(r.get('forras', '—'))
-            elif m['id'] == 'ISTENTISZT-001' and szerep == 'Megfelelők a másik nyelven':
-                sor.append('kézi (2/b)')
-            else:
-                sor.append('nincs adatosítva')
+            sor.append(olvaso_forras(LG.szerep_lefedettseg_cella(nyelv, szerepek[szerep], token))
+                       if szerep in szerepek else '—')
         w('| ' + ' | '.join(sor) + ' |')
     w('')
 
@@ -428,6 +417,12 @@ def torzscikk_szoveg(m, lex_szoveg, model):
             w('%s — %s' % (nev, lic.group(1) if lic else ''))
     w('- Károli Gáspár fordítása (1908) és a Károli-kereszthivatkozások — közkincs')
     w('')
+    # F09 J1 (K11, ellenőri 3.): a kötelező forrásmegjelölések (UBS, Mounce, tW, TWOT, LXX...) szó szerint,
+    # ugyanazzal a szöveggel, mint a lexikonoldal kolofonjában -- onnan átvéve, nem újraírva.
+    for s_ in block(i_kol, len(L)):
+        if (s_.startswith('*') and s_.endswith('*') and len(s_) > 2
+                and not s_.startswith('*Ez a blokk')):
+            w(s_); w('')
 
     SZAKASZ_MAP = [
         ('ezért a 2. szakasz generált része nem ad hozzá szócikket; LXX-beli szerepét a 3. szakasz mutatja',
@@ -469,6 +464,12 @@ def run(args, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek):
             continue
 
         lex_path = os.path.join(G.ROOT, 'lexikon', '%s_TUDOMANYOS.md' % m['id'])
+        if not (args.ir or args.ellenoriz):
+            # N-F78a (F09 S2.8): a próba-törzscikk a kimeneti könyvtár lexikonoldalából olvas, ha van --
+            # különben az éles (a #11 előtt befagyasztott) oldalra épülne, és a két próbafájl ellentmondana.
+            proba_lex = os.path.join(args.kimenet, 'lexikon', '%s_TUDOMANYOS.md' % m['id'])
+            if os.path.exists(proba_lex):
+                lex_path = proba_lex
         if not os.path.exists(lex_path):
             print('  %s: nincs lexikonoldal (%s) -- kihagyva' % (m['id'], lex_path), file=sys.stderr)
             continue
@@ -495,8 +496,9 @@ def run(args, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek):
         os.makedirs(kimenet_gyoker, exist_ok=True)
         with io.open(cel_ut, 'w', encoding='utf-8', newline='\n') as f:
             f.write(torzscikk_tartalom)
-        print('  %s: %s (%d bájt) -- igehely=%d (%d ÓSZ), kapcsolat=%d, lxx_sor=%d, kereszthivatkozas=%d'
+        print('  %s: %s (%d bájt) -- igehely=%d (%d ÓSZ), kapcsolat=%d, lxx_sor=%d, kereszthivatkozas=%d '
+              '-- lexikonoldal: %s'
               % (m['id'], os.path.relpath(cel_ut, ROOT), os.path.getsize(cel_ut),
                  stat['igehely'], stat['igehely_osz'], stat['kapcsolat'], stat['lxx_sor'],
-                 stat['kereszthivatkozas_talalat']))
+                 stat['kereszthivatkozas_talalat'], os.path.relpath(lex_path, ROOT)))
     return 0

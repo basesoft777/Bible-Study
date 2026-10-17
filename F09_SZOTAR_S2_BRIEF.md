@@ -5,9 +5,12 @@ kod: SZOTAR S2
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: nem_indult
+allapot: dontesre_var
+ag: claude/f09-szotar-s2
 ad: az 1. fázis adatai — a 8 motívum Strongjaira szűkítve (DT74 (4)) — az adatrétegben és a generátorokban, a #78 szerepmátrix-vázának blokkjaihoz; a 8 lexikonoldal és a 8 törzscikk renderelése csak próba a generalt_proba/ alá, az éles lexikon/ a #11 1. lépcsője után generálódik (#36 vagy #10) (DT186)
-kovetkezo: /kovetkezo (fazis: 1, DT185); az éles lexikon/-t nem írja, a render próba a generalt_proba/ alá (DT186; a D52/DT74 (3) befagyasztás érintetlen); a törzscikkek elavult Cremer-sorát (CI E11) a próbarender mutatja, az éles javítás a #11 1. lépcsője után
+kovetkezo: "Te: döntés a DT-F09g–j pontokról (DONTESEK.md; DT-F09h: a PR CI-je emiatt bukik), utána független újraellenőrzés és merge a felhasználótól (F9.J1–J6 javító menet kész, 2026-10-17)"
+pr: 381
+lezarva_osszegzes: szótári adatréteg 2. menet a 8 motívum Strongjaira: 26 héber lemma-kiejtés, TBESH/UBS DBH/Mounce+SECE/tW+TWOT/BDB-etimológia/LXX-párok a #78 váz szerep-blokkjaiban, H8034 bekötés, N-F78a javítva, próbarender (8+8) és diff-osztályozás a generalt_proba/F09_szotar_s2_proba/ alá; az éles lexikon/ érintetlen; l. naplok/SZOTAR_S2_zaras.md
 fugg: [5, 6, 23, 78]
 olvas: [adat/forditasok.tsv, adat/terminologia.tsv, adat/kiejtes_kivetelek.tsv, konkordancia/, lexikon/, adat/szotar_szerepek.tsv, ADATVAGYON_TERV.md, MUNKATERV.md]
 ir: [generalt_proba/, adat/lexikon_hivatkozasok.tsv, adat/kiejtes_kivetelek.tsv, adat/szotar_szerepek.tsv, eszkozok/torzscikk_general.py, eszkozok/lexikon_general.py, eszkozok/render_diff_osztalyoz.py, MUNKAMENET.md, NYITOTT_FELADATOK.md, adat/forditasok.tsv, eszkozok/kiejtes.py]
@@ -17,7 +20,7 @@ nem_fugg: [7, 22, 27, 38, 52, 55, 107, 109, 110]
 
 # F09_SZOTAR_S2_BRIEF.md — Szótári adatréteg, 2. menet
 
-*FELADATOK #9 · Modell: sonnet · v2 · 2026.10.17 · döntés: DT74 (3)–(4), D52, D34, DT185–e · előzmény: `F05_SZOTAR_BRIEF.md` 2. menet (S2.1–S2.9, K9–K14), `F78_SZEREPMATRIX_VAZ_BRIEF.md`, `naplok/F78_meres.md` 9–14.*
+*FELADATOK #9 · Modell: sonnet · v2 · 2026.10.17 · döntés: DT74 (3)–(4), D52, D34, DT185–DT189 · előzmény: `F05_SZOTAR_BRIEF.md` 2. menet (S2.1–S2.9, K9–K14), `F78_SZEREPMATRIX_VAZ_BRIEF.md`, `naplok/F78_meres.md` 9–14.*
 
 A v1 csonk volt: a lépéseket az `F05_SZOTAR_BRIEF.md` 2. menetére bízta. Az a menet a DT74 (4) és a DT186 előtt készült, ezért három ponton nem hajtható végre úgy, ahogy le van írva:
 
@@ -25,7 +28,7 @@ A v1 csonk volt: a lépéseket az `F05_SZOTAR_BRIEF.md` 2. menetére bízta. Az 
 - a hatókört nem szűkíti a 8 motívum Strongjaira (DT74 (4)), és nem a #78 szerepmátrix-vázának blokkjait tölti, mert a váz akkor még nem létezett;
 - az **S2.6** azóta leválasztott feladat (#70, felhasználói döntés, 2026.10.06).
 
-Ez a brief az S2.1–S2.9-et ehhez igazítva veszi át. A befogadáskor nyitott három pontot a felhasználó eldöntötte (DT187–e, 2026-10-17); a megmaradt „[javaslat]” jelölésű pontok végrehajtási részletek, a végrehajtó a zárójelentésben jelzi, melyik változatot követte.
+Ez a brief az S2.1–S2.9-et ehhez igazítva veszi át. A befogadáskor nyitott három pontot a felhasználó eldöntötte (DT187–DT189, 2026-10-17); a megmaradt „[javaslat]” jelölésű pontok végrehajtási részletek, a végrehajtó a zárójelentésben jelzi, melyik változatot követte.
 
 ## 1. Cél
 
@@ -166,4 +169,4 @@ Az F05 K9–K14-ből, a DT186 és a DT74 (4) szerint igazítva.
 - **DT188** — mind a 26 héber lemma a `kiejtes_kivetelek.tsv`-be — **eldöntve** (2026-10-17).
 - **DT189** — a 2/b 3 kézi glosszája a #70/#11-ben; a 7. szerep SECE-adatot kap, a „l. 2/b” mutató kiegészítő sor — **eldöntve** (2026-10-17).
 
-*A `DT185`–`e` helyőrző; végleges számot a `szamkiosztas` Action ad merge után.*
+*A DT185–DT189 végleges szám (a `szamkiosztas` Action adta, a `DT-F09a–e` helyőrzőkből). A javító menet (F9.J1–J6) ellenőri eltérései nyomán a `DT-F09g–j` új helyőrző a `DONTESEK.md`-ben; a végleges számot a `szamkiosztas` adja merge után.*
