@@ -63,6 +63,13 @@ def main():
     for szo, k in sorted(kontext):
         print('   - %s | %s | %s' % (szo, k, egyedi[(szo, k)][0]['hely']))
     print('5. maradék (egyedi - kontextusfüggő): %d' % (len(egyedi) - len(kontext)))
+    # a K9 / DT-F09j mért számai: 50 nyers -> 30 egyedi -> 4 kontextusfüggő -> 26 marad
+    assert len(nyers) == 50, len(nyers)
+    assert len(egyedi) == 30, len(egyedi)
+    assert len(a) == 26, len(a)
+    assert len(kontext) == 4, len(kontext)
+    assert len(egyedi) - len(kontext) == 26
+    print('assert OK: 50 / 30 / 4 / 26')
     print('proveniencia: scope=naplok/SZOTAR_kiejtes_tesztkeszlet_tiszta.tsv (nyelv=gorog, besorolas=arany) + '
           'naplok/SZOTAR_S1_kiejtes_arany_sbl.tsv | forras=naplok/F09_J_k9_egyedites.py | ts=2026-10-17')
 
