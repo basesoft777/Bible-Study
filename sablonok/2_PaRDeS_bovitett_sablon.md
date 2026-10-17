@@ -247,6 +247,8 @@ forrás-hivatkozási fegyelem"). Ez nem redundáns a kereszthivatkozás-
 naplóval (ami a 4. pont felfedező keresésének teljes nyers anyagát
 tartalmazza) — ez a 2/a-2/f lexikai audit saját, tömör összegzése.
 
+> ⏸ **Felfüggesztve (DT84 (7), DT-F23b, 2026-10-17):** az alábbi kézi visszaírási szabály nem alkalmazandó: kézi másolás egyik irányban sincs. Új, igehely-szintű lelet adatrésze a `adat/jeloltek.tsv`-n át, döntéssel kerül az adatrétegbe; a lezárt tematikus tanulmány szövegébe nem kerül. A szabály teljes átírása a #11-ben (`sablonok/9_PaRDeS_motivum_forras_sablon.md` 7. pont).
+
 **Tartalmi visszaírás lezárt tematikus tanulmányba:** ha a fenti
 technikasor önmagában is megálló, igehely-szintű lexikai vagy
 exegetikai leletet hoz elő (pl. Origin-lánc-eredmény, LXX-

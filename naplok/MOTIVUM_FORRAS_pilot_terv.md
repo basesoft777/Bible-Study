@@ -1,12 +1,14 @@
 # MOTIVUM_FORRAS — pilot-terv: a #12 és a #11 1. lépcsőjének bemenetei
 
-*FELADATOK #23 · `F23_MOTIVUM_FORRAS_BRIEF.md` M1/4 · 2026.10.08 · ág: `claude/f23-m1-forrassablon` · döntések: D34, D38, DT28, DT66, DT74 (1)–(3), DT78 (22)*
+*FELADATOK #23 · `F23_MOTIVUM_FORRAS_BRIEF.md` M1/4 · 2026.10.08 · ág: `claude/f23-m1-forrassablon` · döntések: D34, D38, DT28, DT66, DT74 (1)–(3), DT78 (22), DT84*
+*A DT84 átvezetése (🟢, felhasználó, 2026-10-12): 2026.10.17, ág: `claude/f23-dt84-atvezetes`.*
 
 Ez a fájl a #11 (MIGRACIO) briefjének közvetlen bemenete, és a #12 (TEREMT-002) pilotjáé.
-Nem dönt: ahol értelmezés kell, `javaslat` jelölést visel, és a `DONTESEK.md` DT84 tétele
-dönt róla. Minden szám futtatott parancsból jön; a proveniencia-sor a mérés mellett áll.
-A szabályok helye: `sablonok/9_PaRDeS_motivum_forras_sablon.md` (v0, tervezet), `adat/SEMA.md`
-3.10, `naplok/MOTIVUM_FORRAS_ci_terv.md` (E28, E29).
+A v0 `javaslat`-jelöléseiről a `DONTESEK.md` DT84 tétele döntött; a döntések itt átvezetve
+állnak, összefoglalójuk a 8. szakaszban. Minden szám futtatott parancsból jön; a
+proveniencia-sor a mérés mellett áll. A szabályok helye:
+`sablonok/9_PaRDeS_motivum_forras_sablon.md` (v0.1, tervezet), `adat/SEMA.md` 3.10,
+`naplok/MOTIVUM_FORRAS_ci_terv.md` (E28, E29).
 
 ## 1. A két pilot és a sorrend
 
@@ -15,27 +17,26 @@ A szabályok helye: `sablonok/9_PaRDeS_motivum_forras_sablon.md` (v0, tervezet),
 | fajta | **natív**: nincs régi tanulmány, a forrás eleve `motivumok/TEREMT-002.md` (DT68 (1)) | **örökölt**: a motívumadat ma a prózában (is) áll, a migráció szétválasztás (DT28) |
 | mit mér | a forrásból renderelés útját (ma nincs: #64 mérés 1. szakasz, „Renderút nincs”) és a sablon jelölőit | a szétválasztást, a nulla-/elfogadott-diffet az aranymintához, a visszaírás-számlálót |
 | aranyminta / referencia | a #64 próza-próbája + a #78 második mintája (`generalt_proba/TEREMT-002_szotari_proba/`) | a #78 váza (`generalt_proba/F78_szerepmatrix_proba/`); kontroll: HAMART-001 (4. szakasz) |
-| kimenete | a forrássablon véglegesítése (a `v0` → `v1`) | a migrált ISTENTISZT-001; a befagyasztás oldása (DT74 (3)) |
+| kimenete | a forrássablon véglegesítése (a `v0.1` → `v1`) | a migrált ISTENTISZT-001; a befagyasztás oldása (DT74 (3)) |
 
-**Sorrend-eltérés, amelyet a #11 briefje elé kell tenni.** A sablon fejléce szerint „a #12 pilotja
-véglegesíti”, a `F12_TEREMT002_PROZA_BRIEF.md` fejléce viszont `fugg: [11]`, tehát a #11 1.
-lépcsője a `v0` tervezeten futna. *[javaslat: DT84 (13) — (a) a #11 1. lépcsője a `v0`-n fut,
-és a #12 a két pilot tapasztalatával véglegesít; vagy (b) a #12 sablon-véglegesítő része (a
-renderút és a jelölők) a #11 elé kerül, a `fugg` megfordul. Javaslat: (a), mert a #12 natív
-motívuma a szétválasztást nem méri, a sablon pedig mindkét esetre szól.]*
+**Sorrend (DT84 (13)).** A sablon fejléce szerint „a #12 pilotja véglegesíti”, a
+`F12_TEREMT002_PROZA_BRIEF.md` fejléce viszont `fugg: [11]`. A döntés: **a #11 1. lépcsője a
+tervezeten (v0.1) fut, és a #12 a két pilot tapasztalatával véglegesít**; a `fugg` nem fordul
+meg. Indok: a #12 natív motívuma a szétválasztást nem méri, a sablon pedig mindkét esetre szól.
 
 ## 2. Közös bemenetek (mindkét pilot)
 
-1. **Forrássablon v0** és a 9. pontjának javaslatai (DT84 (1)–(8)).
+1. **Forrássablon v0.1** és a 9. pontjában összefoglalt döntések (DT84 (1)–(8), (10), (13)).
 2. **SEMA 3.10**: a szintek, a jelölőpár, a kinyerés jelölőnként.
 3. **A generátor két új képessége** (egyik sincs még meg; a #64 mérés 1. szakasza szerint a
    `general.py` a `motivumok/[ID].md`-ből ma semmit nem olvas):
    - a forrás olvasása szintszűréssel (`olvasoi` / `apparatus` / `belso`), a sablon 4. pontjának
      szakaszlistája mint engedélyezőlista (SEMA 3.10.4);
-   - a kinyerés: `JELÖLT` → `jeloltek.tsv`, proveniencia-lábjegyzet → `auditok.tsv`, `ADAT-HIV` /
-     `ADAT-ÉRTÉK` ellenőrzés, kinyerési jelentés (SEMA 3.10.5).
-   Ezek a #11 (vagy a #12, DT84 (13) szerint) implementációs lépései; az E28/E29 implementációja
-   külön ágon, előttük (D6).
+   - a kinyerés: `JELÖLT` → `jeloltek.tsv`, `ADAT-HIV` / `ADAT-ÉRTÉK` ellenőrzés, kinyerési
+     jelentés (SEMA 3.10.5). A proveniencia-lábjegyzetből nincs kinyerés: csak hivatkozás, az
+     audit-sort a fő szál rögzíti (DT84 (2), SEMA 2.9).
+   Ezek a #11 implementációs lépései (DT84 (13)); az E28/E29 implementációja külön ágon,
+   előttük (D6).
 4. **A mérce** (DT68 (2), DT74 (5)): L1–L7 + a DT2 két rés-szabálya, a szótári részen a #78 váza;
    a forrásra a sablon 8. pontja szerint, a renderre a lexikonoldal-sablon kapuja szerint.
 5. **Az arany-készlet eszköze:** `eszkozok/nulladiff.sh` (A/B: két commit generált kimenete, külön
@@ -56,7 +57,7 @@ motívuma a szétválasztást nem méri, a sablon pedig mindkét esetre szól.]*
 | szótári rész | a #78 második mintája: `generalt_proba/TEREMT-002_szotari_proba/TEREMT-002_2_SZOTARI_HATTER.md`; a héber 1–2. szerep `adatosítva, nincs bekötve` (a #9 köti be), `lexikon_hivatkozasok` 0 sor |
 
 **Mit kell tudnia a #12-nek:**
-1. **Jelölő-átírás a v0 alakra:** a 6 `<!-- SZINT: x -->` → `SZINT-KEZDET`/`SZINT-VÉGE` pár, a
+1. **Jelölő-átírás a v0.1 alakra:** a 6 `<!-- SZINT: x -->` → `SZINT-KEZDET`/`SZINT-VÉGE` pár, a
    szakasz alapszintjénél jelölő nélkül (sablon 2. pont); az `INAKTÍV` és az `ADAT-NÉZET` alakja
    változatlan. A számlálás a #64 módszerével (sor eleji jelölő) ismételhető.
 2. **`res_forras.tsv`:** 7 sor kell (`id=TEREMT-002`, a hét rés), `forras=tanulmany` helyett a
@@ -94,10 +95,13 @@ A tematikus tanulmány szakaszonként (blokk / `【NAPLO`): Kivonat 7/1 · 0. Fo
 38/4 · 3. PaRDeS 32/5 · 4. Kutatási sablon 2/0 · 5. Alkalmazás 7/0 · 6. Napló-frissítés (+Módszertan,
 Nyitott kérdések, Minőségi kapu) 28/5 · fejléc 1/0.
 
-**Az adatréteg ma** (`split('\t')`, `id=ISTENTISZT-001`): `elofordulasok` 32, `jeloltek` 32,
-`kapcsolatok` 25, `res_forras` 7, `auditok` 0 sor; `statusz` `publikálható`, ⭐ csoport 5.
+**Az adatréteg ma** (`split('\t')`, `id=ISTENTISZT-001`): `elofordulasok` 32, `jeloltek` 92
+(ebből `beépítve` 32, `elutasítva` 60), `kapcsolatok` 25, `res_forras` 7, `auditok` 0 sor;
+`statusz` `publikálható`, ⭐ csoport 5 (`scope=adat/{jeloltek,elofordulasok,kapcsolatok,res_forras,auditok}.tsv, id=ISTENTISZT-001 | forras=manual (szkript, split('\t'), a # kezdetű fejsorok nélkül) | ts=2026-10-17`; a 2026-10-08-i mérés „`jeloltek` 32” értéke azóta elavult: az F63.5 (`a0c3cd95`, 2026-10-11) 244 sort fűzött a `jeloltek.tsv`-hez; ELLENOR_F23_3 4.).
 Az `auditok` 0 sora azt jelenti, hogy a módszertani réteg-tábla (Módszertan, „8 ellenőrzési
-réteg”) ma csak prózában él: ha `adat`-ba megy, sor- és séma-kérdés (SEMA 3.10.7 3.).
+réteg”) ma csak prózában él. A DT84 (8) szerint a régi réteg-tábla és kapu-eredmény
+`archivum`, a Módszertan-nézet a meglévő audit-sorokból generálódik (SEMA 3.10.7 3.); az
+ISTENTISZT-001-nél ez 0 sor, tehát a nézet explicit üres (CLAUDE.md 3. szabály), nem pótolt.
 
 ### 4.2 Az aranyminta
 
@@ -124,20 +128,21 @@ előbecslés: a végleges besorolás blokkonként, a #11 leképezési táblájá
 |---|---|---|
 | Kivonat (7) | `forras` | sablon K, `RÉS: kivonat`; a `【NAPLO` `forras`/`belso` |
 | fejléc verzió-sora (1) | `adat` + `archivum` | `motivumok.tsv` `statusz_verzio`; a verziótörténet archívum |
-| 0. Forrás-összegyűjtés (3) | `archivum` (folyamat-nyom) | ha van benne `auditok`-sorrá tehető lekérdezés-nyom: `adat` |
+| 0. Forrás-összegyűjtés (3) | `archivum` (folyamat-nyom) | `auditok`-sor a prózából nem keletkezik (DT84 (2), SEMA 2.9); a benne álló jelölt a `JELÖLT` jelölőn át a `jeloltek.tsv`-be |
 | 1. Előfordulások (15) | `generalt` (a tábla: 32 sor már az adatban) + `forras`/`belso` (P1–P7, `【NAPLO`) | `ADAT-NÉZET` `--cel study` |
-| 1/b. Kapcsolatok (7) | `generalt` (a tábla: 25 sor már a `kapcsolatok.tsv`-ben); az Alátámasztás `adat` vagy `forras` | séma-kérdés: SEMA 3.10.7 1. |
+| 1/b. Kapcsolatok (7) | `generalt` (a tábla: 25 sor már a `kapcsolatok.tsv`-ben); az Alátámasztás `adat` (`kapcsolatok.tsv` új `indoklas` oszlopa, DT84 (8)) | SEMA 3.10.7 1.; az oszlop felvételének helye: DT-F23c |
 | 2. Eredeti nyelvi összevetés (38) | `forras` (értelmezés, Miért fontos) + `adat` (2/b szótári kivonat → `lexikon_hivatkozasok.tsv`) | sablon 2, 2.M; a 2/b blokk megszűnik |
 | 3. PaRDeS (32) | `forras` | sablon 3, `RÉS: ertelmezes` |
 | 4. Kutatási sablon (2) | `forras` vagy `INAKTÍV` | sablon 4 |
 | 5. Alkalmazás (7) | `forras`; a tanítói eredmény a 7. lépés saját fájljába (DT66 (a) 2.) | ha a saját fájl nem létezik: a #11 dönt (a beemelést a DT66 (a) 2. kizárja) |
-| 6. Napló-frissítés + Módszertan + Nyitott kérdések + Minőségi kapu (28) | `adat` (státusz), `adat`/`archivum` (réteg-tábla, kapu-eredmény: SEMA 3.10.7 3.), `forras` (tartalmi nyitott kérdés), `archivum` (dátumozott kapu-blokk, önellenőrzés) | 4.4 |
-| kereszthivatkozás-napló (18) | `generalt` (a minősítés a `jeloltek.tsv` 32 sorából), `adat` (ha van a táblában nem álló döntés), `archivum` (nyers találatok, módszertan-próza) | séma-kérdés: SEMA 3.10.7 2. |
+| 6. Napló-frissítés + Módszertan + Nyitott kérdések + Minőségi kapu (28) | `adat` (státusz), `archivum` (réteg-tábla, kapu-eredmény: DT84 (8), SEMA 3.10.7 3.), `forras` (tartalmi nyitott kérdés), `archivum` (dátumozott kapu-blokk, önellenőrzés) | 4.4 |
+| kereszthivatkozás-napló (18) | `generalt` (a minősítés a `jeloltek.tsv` 92 sorából: 32 `beépítve`, 60 `elutasítva`; `scope=adat/jeloltek.tsv, id=ISTENTISZT-001, dontes | forras=manual (szkript, split('\t'), a # kezdetű fejsorok nélkül, dontes-számlálás) | ts=2026-10-17`; a „független megerősítés” a minősítés-nézetben generált, DT84 (8)), `adat` (ha van a táblában nem álló döntés), `archivum` (nyers találatok, módszertan-próza) | SEMA 3.10.7 2. |
 | `motivumok/ISTENTISZT-001.md` (8) | `archivum` (a négy archív napló-blokk), `generalt` (fejléc), `forras` (a ⭐-bekezdés és a „Kulcsszavak részletesen” értelmező mondatai) | lekepezes, `szetvalasztando` |
 
 ### 4.4 A „7. Nyitott kérdések” öt tétele (DT66 (a) 4.)
 
-A sablon 4. pontjának tételenkénti szabálya alkalmazva (*[javaslat: DT84 (5)]*):
+A sablon 4. pontjának tételenkénti szabálya alkalmazva; a szabály és az öt tétel alábbi
+besorolása elfogadva (DT84 (5)):
 
 | # | Tétel (rövidítve) | Jelleg | Kategória |
 |---|---|---|---|
@@ -153,9 +158,12 @@ Az M0 átfedés-mérése (`naplok/MOTIVUM_FORRAS_atfedes.tsv`, 8 szavas n-gram) 
 3 `reszleges`, 15 `rovid_egyezes` és 22 `sablonformula` párt ad; a három `reszleges` pár a
 tanulmány 1. sorára (a címsorra) esik, a `genezis/1Moz_12v1-20_bovitett.md` (1 pár) és a
 `genezis/1Moz_13v1-18_bovitett.md` (2 pár) felé. A `genezis/` a #11-ben sem
-íródik ezen a pilot-terven belül; a #11 dönti el soronként: a visszamutató link `generalt`
-(`elofordulasok.tsv` `felmerult_tanulmany`), a visszaírt lelet szövege `archivum`, vagy törlés, ha
-a forrásban megvan (DT66 (a) 5.).
+íródik ezen a pilot-terven belül. A DT84 (7) szerint a „Tartalmi visszaírás” szabály mindkét
+irányban megszűnik / átalakul (sablon 7. pont): a visszamutató link `generalt`, a visszaírt
+lelet szövege `archivum`, vagy törlés, ha a forrásban megvan (DT66 (a) 5.); a #11 soronként
+sorolja be. A link forrása, az `elofordulasok.tsv` `felmerult_tanulmany` mezője ma erre nem
+alkalmas (259 sorból 197 üres, a többi vegyes fájlnév és szabad szöveg; `scope=adat/elofordulasok.tsv, felmerult_tanulmany | forras=manual (szkript, split('\t')) | ts=2026-10-12`, az N-F23a mérése); a normalizálásáról a
+#11 briefje dönt (N-F23a).
 
 ## 5. A diff-kategóriák
 
@@ -170,7 +178,7 @@ A migráció kimenetét két összevetés méri, mindkettő `eszkozok/nulladiff.
 | **N0** | **nulla-diff** | a generált blokkok (1., 1/a, 1/b, 2. szerepmátrix, 3., 4. tábla, 5. tábla, 8., Kolofon) bájtra azonosak, kivéve a D2-t | **a teljes generált kimenet** (lexikonoldal, `naplo`, `index`, `nyitott`, `study`) bájtra azonos | nincs `--csere` |
 | D1 | dátum (`ts=`, `Generálva:`) | — | — | nem diff: a `PARDES_DATUM` megszünteti |
 | D2 | forrás-útvonal | a lap fejléce (`rések: tematikus_lezart/…` → `motivumok/ISTENTISZT-001.md`), a `res_forras.tsv` `tanulmany`-útja, a Kolofon „Forrás-study” cellája | nem lehet | `--csere`, előre felsorolt literálokkal; a darabszám a jelentésben |
-| D3 | `belso`-kihagyás | a lapon ma álló 14 `【NAPLO` kimarad, ha a lexikonoldal `apparatus` nézet (*[javaslat: DT84 (10)]*); mindegyiknek a forrásban `belso` blokként kell állnia | nem lehet | blokkonként igazolva: a kimaradt szöveg a `motivumok/ISTENTISZT-001.md`-ben megvan |
+| D3 | `belso`-kihagyás | a lapon ma álló 14 `【NAPLO` kimarad: a lexikonoldal kiadható `apparatus` nézet, a DT-F86a szerint prémium (DT84 (10)). Mindegyik egyenként kap ítéletet (DT84 (10) (ii)): a folyamat-nyom (dátum, ki/mikor, forrás elérhetősége) a forrásban `belso` blokként áll; az állítás megbízhatóságát érintő módszertani figyelmeztetés (pl. a lap 474., 919., 1180. sora) a forrásban apparátus-szövegként újraíródik (Minősítés / Módszertan / Nyitott kérdések), és a leképezési táblában külön, indokolt sort kap | nem lehet | blokkonként igazolva: a `belso` szöveg a `motivumok/ISTENTISZT-001.md`-ben megvan; az apparátusba emelt figyelmeztetés a diffben látható, és a leképezési tábla sora indokolja |
 | D4 | adatból generált rés | a `minosites`, `2b` (és ha a séma engedi, `alatamasztas`, `modszertan`-tábla) próza helyett adatból renderel | nem lehet | soronként: a régi rés minden igehely + döntés + indoklás eleme megvan a táblában, vagy a leképezési tábla `archivum`-nak jelöli |
 | D5 | archivált egység | a leképezési táblában `archivum`-ként jelölt egység eltűnik a nézetből | nem lehet | a leképezési tábla sora a forrás |
 | D6 | megszűnt kimenet | a `lexikon/ISTENTISZT-001_TORZSCIKK.md` (D34, N-F78a) | — | a fájl törlése a #11 dolga |
@@ -184,9 +192,10 @@ helye változik), új `ÜRES-BLOKK` vagy eltűnt szerep a 2. szakaszban.
 
 **Szerepe az 1. lépcsőben:** kontroll. A HAMART-001 az 1. lépcsőben nem migrál; a #11 generátor-
 változásai (forrásolvasás, szintszűrés, kinyerés) a még nem migrált motívum kimenetét nem
-érinthetik. *[javaslat: DT84 (9) — a „nulla-diff referencia” így értve: A/B a generátor két
-állapota között, nem a commitolt éles fájlhoz; az éles `lexikon/HAMART-001_TUDOMANYOS.md` a #78
-előtti 2. szakaszt viseli, a mai generátor attól eltér, és befagyasztott (DT74 (3)).]*
+érinthetik. A „nulla-diff referencia” jelentése (DT84 (9)): **A/B a generátor két állapota
+között** (`eszkozok/nulladiff.sh`, azonos `PARDES_DATUM`), nem a commitolt éles fájlhoz; az éles
+`lexikon/HAMART-001_TUDOMANYOS.md` a #78 előtti 2. szakaszt viseli, a mai generátor attól eltér,
+és befagyasztott (DT74 (3)).
 
 **Bemenetek** (`scope=a fájlok + adat/*.tsv, id=HAMART-001 | forras=manual (szkript, split('\t')) | ts=2026-10-08`):
 
@@ -196,7 +205,7 @@ előtti 2. szakaszt viseli, a mai generátor attól eltér, és befagyasztott (D
 | `tematikus_lezart/naplok/Bun_kovetkezmenyeinek_gyuruzese_kereszthivatkozas_naplo.md` | 276 sor, 46 blokk, 1 `【NAPLO`; 2 `RÉS-KEZDET` jelölő-előfordulás, 1 rés (`minosites` ×2) |
 | `motivumok/HAMART-001.md` | 23 sor, 7 blokk, 1 `【NAPLO` |
 | `lexikon/HAMART-001_TUDOMANYOS.md` (éles) | 1275 sor, 116 621 bájt, 10 `GENERÁLT-KEZDET`, 3 `【NAPLO`, 52 lábjegyzet-definíció |
-| adat | `elofordulasok` 52, `jeloltek` 52, `kapcsolatok` 0, `res_forras` 7 (`alatamasztas`: `adat`), `auditok` 0; ⭐ csoport 4 |
+| adat | `elofordulasok` 52, `jeloltek` 222 (`beépítve` 52, `elutasítva` 163, `nyitva` 7; a 2026-10-08-i 52 az F63.5 óta elavult; `scope=adat/{jeloltek,elofordulasok,kapcsolatok,res_forras,auditok}.tsv, id=HAMART-001, dontes | forras=manual (szkript, split('\t'), a # kezdetű fejsorok nélkül, dontes-számlálás) | ts=2026-10-17`), `kapcsolatok` 0, `res_forras` 7 (`alatamasztas`: `adat`), `auditok` 0; ⭐ csoport 4 |
 | átfedés a bővítettel (M0) | 3 `bekezdes_masolat` (a 6:11–13 idézet-bekezdések, `genezis/1Moz_6v9-22_bovitett.md`), 11 `rovid_egyezes` |
 
 **A próba:** `eszkozok/nulladiff.sh <a #11 ágának alapja>` a #11 minden generátort érintő
@@ -217,12 +226,13 @@ A régi tanulmány minden egysége **pontosan egy** célrétegbe kerül:
 | `adat` | a prózában álló motívumadat, amely ma nincs a táblában | a `jeloltek.tsv`-n át, döntéssel (SEMA 3/2, 3.10.5); nem igehely-kulcsú adatnál a döntéssel írt adatút (SEMA 3.10.7 4.) | a sor `manual` provenienciával létezik; a próza nem tartalmazza tovább |
 | `forras` | értelmező próza (és a `【NAPLO`, `belso` szinten) | `motivumok/ISTENTISZT-001.md`, a sablon 4. pontja szerinti szakaszba | a szöveg bájtra átkerül (a helye változhat, a szövege nem) |
 | `generalt` | ma a forrásban áll, de adatból újraállítható | nem kézi a migráció után; a nézetben a generátor írja | a nézetben a generált változat megvan (N0 vagy D4) |
-| `archivum` | sem adat, sem forrás: megőrzött, de nem forrás | archív hely (*[javaslat: DT84 (12) — pl. a régi fájl változatlanul, `ARCHÍV` fejléccel egy archív könyvtárban, vagy git-történet + címke]*) | a leképezési táblában jelölve; a nézetből eltűnik (D5) |
+| `archivum` | sem adat, sem forrás: megőrzött, de nem forrás | a régi fájl változatlanul, archív fejléccel, archív könyvtárban (DT84 (12): olvasható marad, és nem forrás; a könyvtár nevét a #11 briefje adja) | a leképezési táblában jelölve; a nézetből eltűnik (D5) |
 
 **Az egység.** Alapesetben a blokk (üres sorral határolt egység; 4.1: 166 db). A **vegyes blokk**
 (adat és értelmezés egy bekezdésben: a lekepezes 19 `szetvalasztando` sora ilyen szakaszokat
 jelöl) előbb részegységekre bomlik (mondat, táblasor vagy táblacella), és minden részegység kap
-egy kategóriát. *[javaslat: DT84 (11)]*
+egy kategóriát (DT84 (11): a blokkszintű, domináns tartalom szerinti besorolás két rétegben
+hagyná az adatot).
 
 ### 7.2 A leképezési tábla (a #11 kimenete)
 
@@ -233,6 +243,12 @@ olvasással, oszlopok:
 `sor_tol` · `sor_ig` · `kategoria` (`adat` / `forras` / `generalt` / `archivum`) · `cel` (adat:
 `tábla` + kulcs; forras: sablon-szakasz + szint; generalt: `general.py --cel …`; archivum: hely) ·
 `indoklas` · `forras_parancs`.
+
+**A `【NAPLO】` egységek** (DT84 (10) (ii)) egyenként kapnak sort: a folyamat-nyom `forras`,
+`belso` szinten; az apparátusba emelt módszertani figyelmeztetés `forras`, a `cel` mezőben a
+Minősítés / Módszertan / Nyitott kérdések szakasszal és `apparatus` szinttel, az `indoklas`
+mezőben azzal, miért érinti az állítás megbízhatóságát. Az ilyen sor a D3 diffben látható
+eltérés, nem rejtett átírás.
 
 ### 7.3 Sikerfeltételek
 
@@ -271,9 +287,24 @@ olvasással, oszlopok:
 
 A jelentés: a három szám (megengedett, visszaírás, nem besorolt) és a visszaírás-sorok listája.
 
-## 8. A DT-F23a-ba gyűjtött pontok ebből a fájlból
+## 8. A DT84 döntései ebben a fájlban (🟢, felhasználó, 2026-10-12)
 
-(9) HAMART-001 nulla-diff mint A/B kontroll (6.) · (10) a lexikonoldal `apparatus` nyilvános nézet,
-a `【NAPLO` kimarad (5., D3) · (11) vegyes blokk részegységekre bontása (7.1) · (12) az archívum helye
-(7.1) · (13) a #11/#12 sorrend és a `v0` sablon (1.) · és a sablonból: (5) a Nyitott kérdések
-tételenkénti szabálya, itt az öt tételre alkalmazva (4.4).
+A pontokat az M1 a DT-F23a helyőrzőn gyűjtötte; a végleges szám DT84. Mind a javaslat szerint (a):
+
+- **(5)** a Nyitott kérdések tételenkénti szabálya és az öt tétel besorolása elfogadva (4.4).
+- **(7)** a „Tartalmi visszaírás” szabály megszűnik (tematikus v10), a tükörpárja (tanulmány-sablon
+  v18) átalakul; a visszaírt lelet a #11-ben `archivum` vagy törlés; a link-mező: N-F23a (4.5).
+- **(8)** Alátámasztás: új `indoklas` oszlop; megerősítés generált; módszertan/kapu `archivum` (4.1, 4.3).
+- **(9)** HAMART-001: A/B a generátor két állapota között (6.).
+- **(10)** a lexikonoldal kiadható `apparatus` nézet (a DT-F86a szerint prémium); a `【NAPLO`
+  kimarad, egyenkénti ítélettel: folyamat-nyom `belso`, módszertani figyelmeztetés
+  apparátus-szövegként, külön indokolt sorral (5. D3, 7.2). Mért kiindulás az összes éles lapon:
+  36 `【NAPLO`-sor (`naplok/MOTIVUM_FORRAS_ci_terv.md` 2. szakasz). Közös build-szűrő a #86-tal:
+  N-F23b; a repó nyilvánossága: N-F23c.
+- **(11)** a vegyes blokk részegységekre bomlik (7.1).
+- **(12)** az archívum: a régi fájl változatlanul, archív fejléccel, archív könyvtárban (7.1).
+- **(13)** a #11 1. lépcsője a tervezeten fut, a #12 a két pilot tapasztalatával véglegesít (1.).
+
+Ami a DT84-en kívül maradt: a `2_PaRDeS_bovitett_sablon.md` (v18) és a
+`4_PaRDeS_tematikus_sablon.md` (v10) szövegének tényleges módosítása — ideje és helye:
+`DONTESEK.md` DT-F23b.

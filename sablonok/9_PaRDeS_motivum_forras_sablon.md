@@ -1,8 +1,10 @@
 # 9. PaRDeS motívum-forrás sablon (`motivumok/[ID].md`)
 
-**Állapot: tervezet, a #12 pilotja véglegesíti.**
+**Állapot: tervezet, a #12 pilotja véglegesíti** (a #11 1. lépcsőjének tapasztalatával együtt, DT84 (13)).
 
-*v0 — 2026.10.08 (F23 M1/1, `F23_MOTIVUM_FORRAS_BRIEF.md`). Döntések: D34 (B út: motívumonként egy kézi forrás), D36 (három mélységi szint, a `belso` buildkor kimarad), D37 + DT66 (c) (aktiválás), DT28 (egyirányúság), DT66 (a)–(b) (szakasz-besorolás, `naplok/MOTIVUM_FORRAS_lekepezes.tsv`), DT68 (1)–(2) (a próza helye, a mérce), DT74 (1), (5) (a #78 váza mint aranyminta), DT76 (9) (13–14. szerep). Bemenet: a #64 mérése (`naplok/TEREMT002_PROZA_PROBA_meres.md` 3. szakasz), a #78 mérése (`naplok/F78_meres.md`). A `javaslat` jelölésű pontokról a `DONTESEK.md` DT84 tétele dönt; amíg nem dőlt el, a pont nem kötelező.*
+*v0.1 — 2026.10.17 (F23, a DT84 átvezetése: a `javaslat`-jelölések feloldva a felhasználó 2026-10-12-i döntése szerint, (1)–(13) a; a (7) kiegészítése a bővített sablon v18 tükörszabályára, a (10) kiegészítése a „kiadható `apparatus` nézet” megnevezésre és a `【NAPLO】` egyenkénti ítéletére. Változatlanul tervezet.)*
+
+*v0 — 2026.10.08 (F23 M1/1, `F23_MOTIVUM_FORRAS_BRIEF.md`). Döntések: D34 (B út: motívumonként egy kézi forrás), D36 (három mélységi szint, a `belso` buildkor kimarad), D37 + DT66 (c) (aktiválás), DT28 (egyirányúság), DT66 (a)–(b) (szakasz-besorolás, `naplok/MOTIVUM_FORRAS_lekepezes.tsv`), DT68 (1)–(2) (a próza helye, a mérce), DT74 (1), (5) (a #78 váza mint aranyminta), DT76 (9) (13–14. szerep). Bemenet: a #64 mérése (`naplok/TEREMT002_PROZA_PROBA_meres.md` 3. szakasz), a #78 mérése (`naplok/F78_meres.md`). A v0 `javaslat` jelölésű pontjairól a `DONTESEK.md` DT84 tétele döntött (🟢, 2026-10-12); az eredményt a 9. pont foglalja össze.*
 
 **Kimenet nyelve:** magyar
 
@@ -18,8 +20,10 @@ A forrásból generált nézetek (kimenet, kézzel nem szerkeszthetők):
 |---|---|---|
 | motívumcikk (a tematikus tanulmány utódja) | `apparatus` | a forrás összes aktív szakasza + az `ADAT-NÉZET` helyére generált táblák |
 | lexikonoldal (`lexikon/[ID]_TUDOMANYOS.md`) | `apparatus` | a lexikonoldal-sablon (`6_…`) szakaszai; a kézi rések a forrás `RÉS` jelölői közül |
-| olvasói nézet (a törzscikk utódja, #25/#76) | `olvasoi` | csak az `olvasoi` blokkok és a nyilvános generált táblák |
-| szerkesztői nézet | `belso` | minden, a `【NAPLO】` blokkokkal együtt; nem nyilvános |
+| olvasói nézet (a törzscikk utódja, #25/#76) | `olvasoi` | csak az `olvasoi` blokkok és az olvasói szintű generált táblák |
+| szerkesztői nézet | `belso` | minden, a `【NAPLO】` blokkokkal együtt; nem kiadható |
+
+**Kiadható nézet** az `olvasoi` és az `apparatus` szintű: a motívumcikk és a lexikonoldal **kiadható `apparatus` nézet (a DT-F86a szerint prémium)**, a `belso` réteg buildkor kimarad belőlük, az E29 rájuk is fut (DT84 (10)). A licenc szerinti szűrés nyitott: a #86 DT-F86c pontja (BY-SA-eredetű blokk zárt rétegben ne álljon) ma *javaslat*, nem döntés, ez a sablon nem épít rá. A közös build-idejű szűrő: N-F23b.
 
 A törzscikk (`8_PaRDeS_torzscikk_sablon.md`) a #11-ben megszűnik (D34); csak-törzscikk tartalom nincs (`naplok/MOTIVUM_FORRAS_torzscikk_egyedi.tsv`).
 
@@ -37,8 +41,8 @@ A forrás a (b) réteg. Az adat két irányban mozog, és csak ebben a kettőben
 Három szint: `olvasoi` ⊂ `apparatus` ⊂ `belso` (a nézet a saját szintjét és az alatta lévőket mutatja: az `apparatus` nézet az `olvasoi` blokkokat is). A szabály teljes leírása: `adat/SEMA.md` 3.10.
 
 - **A szakasz alapszintje** a 4. pont táblázatában áll; ehhez a forrásban jelölő nem kell.
-- **Eltérés** a szakaszon belül blokkszintű jelölőpárral: `<!-- SZINT-KEZDET: belso -->` … `<!-- SZINT-VÉGE: belso -->`. A pár csak mélyebb szintre válthat (pl. `olvasoi` szakaszon belül `apparatus` vagy `belso` blokk), és nem nyúlhat át `##` címsoron. *[javaslat: a jelölő alakja és a hatókör-szabály, DT84 (1); a #64 ideiglenes `<!-- SZINT: x -->` alakja a következő jelölőig tartott, és a hatóköre nem volt kimondva (#64 mérés 3. szakasz, 2. tanulság).]*
-- **A `【NAPLO: …】` mindig `belso`,** bármilyen szintű szakaszban áll (DT66 (a) 1. kivétel). Jelölő nem kell hozzá: a `【NAPLO` maga a jelölő.
+- **Eltérés** a szakaszon belül blokkszintű jelölőpárral: `<!-- SZINT-KEZDET: belso -->` … `<!-- SZINT-VÉGE: belso -->`. A pár csak mélyebb szintre válthat (pl. `olvasoi` szakaszon belül `apparatus` vagy `belso` blokk), és nem nyúlhat át `##` címsoron (DT84 (1): a hatókör így gépileg ellenőrizhető). A #64 ideiglenes, egyjelölős `<!-- SZINT: x -->` alakja (a következő jelölőig tartott, kimondott hatókör nélkül; #64 mérés 3. szakasz, 2. tanulság) nem használható.
+- **A `【NAPLO: …】` mindig `belso`,** bármilyen szintű szakaszban áll (DT66 (a) 1. kivétel). Jelölő nem kell hozzá: a `【NAPLO` maga a jelölő. Ezért a `【NAPLO】` csak folyamat-nyomot hordozhat (dátum, ki/mikor, forrás elérhetősége). Az állítás megbízhatóságát érintő módszertani figyelmeztetés nem `【NAPLO】`: apparátus-szöveg a Minősítés, a Módszertan vagy a Nyitott kérdések helyén. Az örökölt lapok `【NAPLO】`-jait a #11 szétválasztása egyenként ítéli meg (DT84 (10) (ii); pilot-terv 5. és 8. szakasz).
 
 ## 3. Aktiválás
 
@@ -50,7 +54,7 @@ A szakasz aktiválási feltétele a 4. pont táblázatában áll. Inaktív szaka
 
 A második ág a DT66 (c) „van lezárt tematikus forrás” feltételének B-beli alakja: a migráció után a lezártság a `statusz` mezőben áll, nem egy `tematikus_lezart/` fájl létezésében. A küszöb a tanulmány *indítására* szól, nem a meglévő szakaszokra; a `fo_elofordulas` adatot nem bővítjük (DT66 (c)). *Mért állapot (2026.10.08):* a 9 motívumból 8 `publikálható` (köztük a küszöb alatti KIRALY-001, MENNY-001, HODIT-001: 1-1 csoport), a TEREMT-002 `feldolgozás alatt`, 3 csoporttal; mind a kilenc aktív (`scope=adat/motivumok.tsv+adat/elofordulasok.tsv | forras=manual (szkript, split('\t')) | ts=2026-10-08`).
 
-**Értelmezői aktiválás.** A „⚠️ Vitatott pontok” és a „4. Kapcsolódás a kutatási sablonhoz” feltétele értelmezői ítélet, gépi feltétel nélkül (#64 mérés 5. szakasz, 1–2. pont). Az inaktív állapot ilyenkor a „nincs adat” tényt rögzíti, nem a „nincs vonatkozás” tényt; az `INAKTÍV` sor ezt kimondja. *[javaslat: DT84 (6)]*
+**Értelmezői aktiválás.** A „⚠️ Vitatott pontok” és a „4. Kapcsolódás a kutatási sablonhoz” feltétele értelmezői ítélet, gépi feltétel nélkül (#64 mérés 5. szakasz, 1–2. pont). Az inaktív állapot ilyenkor a „nincs adat” tényt rögzíti, nem a „nincs vonatkozás” tényt; az `INAKTÍV` sor indoka kötelező, és ezt kimondja (DT84 (6)).
 
 ## 4. Szakaszok, sorrendben
 
@@ -60,8 +64,8 @@ Oszlopok: **réteg** = a szakasz célrétege a B szerkezetben (`naplok/MOTIVUM_F
 |---|---|---|---|---|---|
 | F | Forrásréteg-fejléc | `generalt` (cím, ID a `motivumok.tsv`-ből) | `belso` | mindig | `<!-- FORRÁSRÉTEG … -->`; a fejléc-proveniencia `【NAPLO】` (DT66 (a) 3.) |
 | K | Kivonat | `kezi_forras` | `olvasoi` | mindig | `RÉS: kivonat` |
-| 0 | Forrás-összegyűjtés a meglévő anyagból | `adat` (folyamat-nyom → `auditok.tsv` / `jeloltek.tsv` `forras_kereses`) | `belso` | feltételes: örökölt motívum, van előzményanyag | natívnál `INAKTÍV`; örököltnél `ADAT-NÉZET` |
-| 1.P | Friss keresés, P1–P7 | `adat` (proveniencia → `auditok.tsv`, jelölt → `jeloltek.tsv`); a P2 indoklása `kezi_forras` | `belso` | mindig | a P2 próza; a P1, P3–P6 eredménye proveniencia-lábjegyzettel |
+| 0 | Forrás-összegyűjtés a meglévő anyagból | `adat` (a jelölt → `jeloltek.tsv` `forras_kereses`, a `JELÖLT` jelölőn át; `auditok.tsv`-sor a prózából nem keletkezik, az audit-sort a lekérdezést futtató fő szál rögzíti: DT84 (2), SEMA 2.9; a régi folyamat-nyom próza `archivum`) | `belso` | feltételes: örökölt motívum, van előzményanyag | natívnál `INAKTÍV`; örököltnél `ADAT-NÉZET` |
+| 1.P | Friss keresés, P1–P7 | `adat` (a jelölt → `jeloltek.tsv` a `JELÖLT` jelölőn át; a lekérdezés audit-sorát a futtató fő szál rögzíti, SEMA 2.9, a lábjegyzetből nincs kinyerés: DT84 (2)); a P2 indoklása `kezi_forras` | `belso` | mindig | a P2 próza; a P1, P3–P6 eredménye proveniencia-lábjegyzettel |
 | 1.T | Előfordulások — 7 oszlopos tábla | `adat` (`elofordulasok.tsv`, a `jeloltek.tsv`-n át) | `apparatus` | mindig | `ADAT-NÉZET` (`--cel study`) |
 | 1.L | Logikai kötőszó szerinti bontás | `kezi_forras` | `apparatus` (a tudatos kihagyás jelölése `belso`) | feltételes: van igehely-tartományú előfordulás-sor | próza vagy `INAKTÍV` |
 | 2 | Eredeti nyelvi összevetés | `kezi_forras` (a szótári idézet `adat`: `lexikon_hivatkozasok.tsv`) | `apparatus` | mindig | próza + `ADAT-HIV` a szótári sorra |
@@ -75,16 +79,16 @@ Oszlopok: **réteg** = a szakasz célrétege a B szerkezetben (`naplok/MOTIVUM_F
 | 5 | Alkalmazás és tanítványság | `kezi_forras` | `olvasoi` | tematikus (3. pont) | próza |
 | 5.T | Nevesített tanítói egyezés | `kezi_forras` (hivatkozó mondat a 7. lépés saját fájljára, beemelés nélkül; DT66 (a) 2.) | `olvasoi` | feltételes: lefutott a 7. lépés | hivatkozó mondat vagy `INAKTÍV` |
 | 6 | Napló-frissítés (státusz) | `adat` (`motivumok.tsv` `statusz`) | `belso` | mindig | `ADAT-NÉZET` (`--cel naplo`) |
-| 7.K | Kereszthivatkozások + Minősítés | `adat` (`jeloltek.tsv` `dontes` + `indoklas`, SEMA 2.4) | `apparatus` | mindig | `ADAT-NÉZET`; a kétpontos modellbe nem férő tárgyalás kézi próza |
-| 7.A | Kapcsolatok + Alátámasztás | `adat` (`kapcsolatok.tsv`; az indoklás oszlopa séma-kérdés) | `apparatus` | feltételes: van `kapcsolatok.tsv` sor | `ADAT-NÉZET`; a kétpontos modellbe nem férő eset kézi próza |
-| 7.M | Módszertan — ellenőrzési rétegek | `adat` (`auditok.tsv`) | `belso` | mindig | `ADAT-NÉZET` |
+| 7.K | Kereszthivatkozások + Minősítés | `adat` (`jeloltek.tsv` `dontes` + `indoklas`, SEMA 2.4); a „független megerősítés” a minősítés-nézetben generált (TSK-találat ∩ beépített sor), séma-bővítés nélkül (DT84 (8)) | `apparatus` | mindig | `ADAT-NÉZET`; a kétpontos modellbe nem férő tárgyalás kézi próza |
+| 7.A | Kapcsolatok + Alátámasztás | `adat` (`kapcsolatok.tsv`, új `indoklas` oszloppal: DT84 (8); a séma-bővítés nem e terv része, SEMA 3.10.7; helye: DT-F23c) | `apparatus` | feltételes: van `kapcsolatok.tsv` sor | `ADAT-NÉZET`; a kétpontos modellbe nem férő eset kézi próza |
+| 7.M | Módszertan — ellenőrzési rétegek | `generalt` (a meglévő `auditok.tsv`-sorokból; a régi kézi módszertan-tábla a #11-ben archívum, DT84 (8)) | `belso` | mindig | `ADAT-NÉZET` |
 | 7.N | Nyitott kérdések | `kezi_forras` tételenként (l. alább) | `apparatus` | feltételes: van nyitott tétel | `RÉS: modszertan` (csak a tartalmi tételek) |
-| 7.Q | Minőségi kapu, verzió-címke | `adat` (`motivumok.tsv` `sablon_verzio`; a kapu-eredmény helye séma-kérdés) | `belso` | mindig | `ADAT-NÉZET` |
+| 7.Q | Minőségi kapu, verzió-címke | `adat` (`motivumok.tsv` `sablon_verzio`); a kapu-eredmény nézete a meglévő audit-sorokból, a régi kézi kapu-eredmény a #11-ben archívum (DT84 (8)) | `belso` | mindig | `ADAT-NÉZET` |
 | P | Proveniencia-sorok | `kezi_forras` (a lábjegyzetek gyűjtőhelye) | `belso` | mindig, ha van lábjegyzet | lábjegyzet-definíciók |
 
-**A 7.N tételenkénti besorolása** (DT66 (a) 4.; a lekepezes `7. Nyitott kérdések` sora): a *tartalmi* nyitott kérdés (értelmezési, exegetikai) `kezi_forras`, `apparatus`, a 7.N-ben marad; a *séma-korlát* (a tábla nem tudja ábrázolni) és az *adatállapot* (forrás hiányzik, bekötés hiányzik) nem a motívum érvelése: N-tétel a `NYITOTT_FELADATOK.md`-ben (a `/befogad` útján), a forrásban legfeljebb `【NAPLO】` mutató; a *lezárt* tétel (áthúzott) a migrációban archívum. *[javaslat: DT84 (5); az ISTENTISZT-001 öt tételére alkalmazva: pilot-terv 4.4]*
+**A 7.N tételenkénti besorolása** (DT66 (a) 4.; a lekepezes `7. Nyitott kérdések` sora): a *tartalmi* nyitott kérdés (értelmezési, exegetikai) `kezi_forras`, `apparatus`, a 7.N-ben marad; a *séma-korlát* (a tábla nem tudja ábrázolni) és az *adatállapot* (forrás hiányzik, bekötés hiányzik) nem a motívum érvelése: N-tétel a `NYITOTT_FELADATOK.md`-ben (a `/befogad` útján), a forrásban legfeljebb `【NAPLO】` mutató; a *lezárt* tétel (áthúzott) a migrációban archívum (DT84 (5); az ISTENTISZT-001 öt tételére alkalmazva: pilot-terv 4.4).
 
-**Két új szakasz a tematikus sablonhoz képest** (#64 mérés 3. szakasz, 4. tanulság: a tematikus sablonból hiányzott): a **7.N Nyitott kérdések** (a lexikonoldal `modszertan` résének kézi része) és a **P Proveniencia-sorok** (lábjegyzet-alak, az ISTENTISZT-001 és a TEREMT-002 mintája). *[javaslat: DT84 (4)]*
+**Két új szakasz a tematikus sablonhoz képest** (#64 mérés 3. szakasz, 4. tanulság: a tematikus sablonból hiányzott; felvéve: DT84 (4)): a **7.N Nyitott kérdések** (a lexikonoldal `modszertan` résének kézi része) és a **P Proveniencia-sorok** (lábjegyzet-alak, az ISTENTISZT-001 és a TEREMT-002 mintája).
 
 **Ami nem szakasz** (`sablonszabaly`, DT66 (b)): a „Mikor használandó”, a terminológiai és formai szabályok, a konfliktuskezelés, a Lezárási checklist, a licenc, a fájlnév-konvenció, a lexikonoldal Minőségi kapuja (a CI veszi át: `naplok/MOTIVUM_FORRAS_ci_terv.md`), a megszűnt kimenetek (OLVASHATÓ, KÉT fájl, törzscikk). Ezek a 6–8. pontba kerültek, vagy megszűnnek.
 
@@ -140,11 +144,11 @@ Minden jelölő HTML-megjegyzés, saját sorban (kivéve a `【NAPLO】` és a l
 | Rés | `<!-- RÉS-KEZDET: [rés] -->` … `<!-- RÉS-VÉGE: [rés] -->` | szerkezeti | semmit; a törzs a lexikonoldal résébe kerül (a `res_forras.tsv` `tanulmany` mezője a `motivumok/[ID].md`-re mutat) | — |
 | Adat-nézet | `<!-- ADAT-NÉZET: [szakasz] \| forrás: [tábla (mezők)] \| cél: [general.py --cel …] \| SZINT: [szint] -->` | szerkezeti | semmit; a nézetben ide kerül a generált tábla | — |
 | Jelölt | `<!-- JELÖLT: [igehely] \| gerinc: [gerinc_elem] \| [rövid indoklás] -->` | kinyerő | egy jelölt-sort, `dontes=nyitva` értékkel (a jelölő nem dönthet) | `adat/jeloltek.tsv` (nem közvetlenül az `elofordulasok.tsv`: SEMA 3/2) |
-| Proveniencia-lábjegyzet | `[^kulcs]: proveniencia: [a lekerdez.py sora szó szerint]` | szerkezeti (hivatkozás) | semmit; az audit-sort a lekérdezést futtató fő szál rögzíti (SEMA 2.9). *[javaslat: DT84 (2) — közvetlen audit-kinyerés a lábjegyzetből; ütközik a SEMA 3/9-cel]* | — |
+| Proveniencia-lábjegyzet | `[^kulcs]: proveniencia: [a lekerdez.py sora szó szerint]` | szerkezeti (hivatkozás) | semmit; az audit-sort a lekérdezést futtató fő szál rögzíti (SEMA 2.9). Audit-kinyerés a lábjegyzetből nincs (DT84 (2)): a lábjegyzet a fő szál által már rögzített nyom másolata, nem új adat; a SEMA 3/9 és 2.9 változatlan | — |
 | Adat-hivatkozás | `<!-- ADAT-HIV: [tábla] \| [kulcs] -->` | ellenőrző | semmit; ellenőrzi, hogy a sor létezik; hiánynál kinyerési jelentés-sor | — (a hiányzó sort a #9 / a döntéssel írt adatút pótolja) |
 | Adatból számolt érték | `[érték]<!-- ADAT-ÉRTÉK: [tábla] \| [kifejezés] -->` | ellenőrző | semmit; ha a prózában álló érték eltér a táblából számolttól, hiba | — |
 
-**Nem igehely-kulcsú adat a prózában** (szótári idézet, LXX-megfelelő, kapcsolat-indoklás, kapu-eredmény): a `jeloltek.tsv` kulcsa `id` + `igehely`, ezért ezekre jelölt-sor nem írható (`naplok/F78_meres.md` 12. szakasz, 2. pont). A tervezet az `ADAT-HIV` utat adja: a próza a meglévő sorra hivatkozik; ha a sor hiányzik, a generátor kinyerési jelentésben jelzi, és a sort döntéssel, `forras=manual` provenienciával a megfelelő adatút írja. *[javaslat: DT84 (3) — kinyerési jelentés vagy új jelölt-tábla]*
+**Nem igehely-kulcsú adat a prózában** (szótári idézet, LXX-megfelelő, kapcsolat-indoklás, kapu-eredmény): a `jeloltek.tsv` kulcsa `id` + `igehely`, ezért ezekre jelölt-sor nem írható (`naplok/F78_meres.md` 12. szakasz, 2. pont). Az út az `ADAT-HIV` (DT84 (3)): a próza a meglévő sorra hivatkozik; ha a sor hiányzik, a generátor kinyerési jelentésben jelzi, és a sort döntéssel, `forras=manual` provenienciával a megfelelő meglévő adatút írja. Új jelölt-tábla nem igehely-kulcsú adatra nincs; a kérdés a #9 adatosítás tapasztalata után nyitható újra.
 
 **Generált jelölők a forrásban tilosak** (1. pont): `GENERÁLT-KEZDET`, `GENERÁLT-VÉGE`, `GENERÁLT:`, `ÜRES-BLOKK`, `ÜRES-NYELV`.
 
@@ -170,10 +174,18 @@ A `4_PaRDeS_tematikus_sablon.md` v16 (a v17 a P2 domén-mondatát pontosította,
 | Utólagos bővítés: adat- és naplóréteg ugyanabban a PR-ben | **változatlan** az (a) pontban; a (b) „Kulcsszavak részletesen” kézi frissítése megszűnik (generált) |
 | Verzió-címke tanúsítás, nem dátum (v16, F5.2) | **adat**: `motivumok.tsv` `sablon_verzio`; a forrásban nem ismétlődik |
 | Minőségi kapu Q1–Q7 | **a forrás kapuja a 8. pont**; a Q2 és a Q7 forrás-oldali nyoma az adatrétegben ellenőrizhető (E4, SEMA 3.8) |
-| Lezárási checklist 1. (`/mnt/user-data/outputs/`), 12. (visszahivatkozás a bővítettbe) | **megszűnik / generált**: a visszamutató link az `elofordulasok.tsv` `felmerult_tanulmany` mezőjéből (DT66 (a) 5.) |
-| „Tartalmi visszaírás bővített tanulmányokba” (v10) | **nem fér bele:** a lelet kézi bemásolása egy másik kézi forrásba második igazságforrást hoz létre (D34: hivatkozás másolás helyett). *[javaslat: DT84 (7) — a szabály megszűnik; a mutató generált; a már visszaírt leletek sorsa a #11-ben: archívum vagy törlés, DT66 (a) 5.]* |
+| Lezárási checklist 1. (`/mnt/user-data/outputs/`), 12. (visszahivatkozás a bővítettbe) | **megszűnik / generált**: a visszamutató link az `elofordulasok.tsv` `felmerult_tanulmany` mezőjéből (DT66 (a) 5.); a mező ma erre nem alkalmas (vegyes fájlnév és szabad szöveg), a normalizálásáról a #11 briefje dönt (N-F23a) |
+| „Tartalmi visszaírás bővített tanulmányokba” (v10) | **megszűnik** (DT84 (7)): a lelet kézi bemásolása egy másik kézi forrásba második igazságforrást hoz létre (D34: hivatkozás másolás helyett; DT28). A visszamutató link generált (fenti sor, N-F23a); a már visszaírt lelet a #11-ben archívum vagy törlés (DT66 (a) 5.) |
 | Terminológia: „Szent Szellem”, igehely-forma (`1Thessz 5:23`), SZPA csak rövid idézet | **változatlan** |
 | Konfliktuskezelés: ütközésnél rákérdezés | **változatlan** |
+
+**A tükörpár: a tanulmány (bővített) sablon v18 „Tartalmi visszaírás lezárt tematikus tanulmányba” szabálya** (`2_PaRDeS_bovitett_sablon.md` 7. pont) **átalakul** (DT84 (7) kiegészítése). A B-beli alakja:
+
+1. A tanulmányban felmerült, igehely-szintű lelet **adatrésze** a `jeloltek.tsv`-n át, döntéssel kerül az adatrétegbe (SEMA 3/2, 3/9; `manual` provenienciával), nem a motívum forrásának szövegébe.
+2. Ha a motívumról **értelmezés** is születik, az saját szöveggel a `motivumok/[ID].md`-be kerül (a motívum egyetlen kézi forrása); a tanulmányban csak hivatkozás áll rá.
+3. **Kézi másolás egyik irányban sincs:** sem a tanulmányból a motívum-forrásba, sem vissza; a túloldali mutató generált (a fenti sor, N-F23a).
+
+A propose-then-confirm fegyelem (a lelet egyenként megbeszélve) a jelölt-döntésben él tovább. A `2_PaRDeS_bovitett_sablon.md` szövegének teljes átírása nem e tervezet része: a DT-F23b (felhasználó, 2026-10-17: c.) szerint a v18 szabály, a tematikus sablon v10 szabálya és a Lezárási checklist 12. pontja most felfüggesztő sort kapott (F23.D14), a teljes átírás a #11-ben.
 
 ## 8. Minőségi kapu (a forrásra)
 
@@ -188,17 +200,20 @@ A mérce: a lexikonoldal-sablon Minőségi kapuja **L1–L7** + a **DT2 két ré
 - **DT2/1** minden rés kitöltött vagy explicit hiányjelölésű; **DT2/2** az adatból generált rész `adat`-forrás-jelölésű (`ADAT-NÉZET`).
 - **Szótári rész:** a generált nézet 2. szakasza a 5. pont szerint; kitöltetlen szerep explicit üres blokk.
 
-A nézetekre vonatkozó két gépi ellenőrzés (bájtazonosság, nulla `belso` a nyilvános kimenetben): `naplok/MOTIVUM_FORRAS_ci_terv.md` (E28, E29).
+A nézetekre vonatkozó két gépi ellenőrzés (bájtazonosság, nulla `belso` a kiadható kimenetben): `naplok/MOTIVUM_FORRAS_ci_terv.md` (E28, E29).
 
-## 9. Nyitott pontok (`javaslat`, DT84)
+## 9. A v0 nyitott pontjai — eldöntve (DT84, 🟢, felhasználó, 2026-10-12)
 
-1. A szintjelölő alakja és hatókör-szabálya (2. pont).
-2. A proveniencia-lábjegyzetből közvetlen `auditok.tsv`-kinyerés legyen-e (ütközik a SEMA 3/9-cel), és ha igen, honnan jön a `lepes` (6. pont).
-3. A nem igehely-kulcsú adat kinyerési útja (6. pont).
-4. A két új szakasz: 7.N Nyitott kérdések, P Proveniencia-sorok (4. pont).
-5. A Nyitott kérdések tételenkénti besorolási szabálya (4. pont, 7.N).
-6. Az értelmezői aktiválás (Vitatott pontok, 4. pont) rögzítése (3. pont).
-7. A „Tartalmi visszaírás” szabály megszűnése (7. pont).
-8. A séma-kérdések: Alátámasztás, Minősítés, Módszertan / kapu-eredmény helye (4. pont 7.K, 7.A, 7.M, 7.Q; `adat/SEMA.md` 3.10.7).
+A zárójeles szám a DT84 pontjának száma (DT84 (1)–(8), (10)); a DT84 (9), (11)–(13) a pilot-tervben áll.
 
-A sablon a #12 pilotja után válik véglegessé; addig a `v0` tervezet.
+- **(1) Szintjelölő:** `SZINT-KEZDET` / `SZINT-VÉGE` pár, alapszint jelölő nélkül, csak mélyebb szint felé, `##`-en át nem (2. pont).
+- **(2) Proveniencia-lábjegyzet:** csak hivatkozás, audit-kinyerés nincs; az audit-sort a fő szál rögzíti (SEMA 2.9); a SEMA 3/9 változatlan (6. pont).
+- **(3) Nem igehely-kulcsú adat:** `ADAT-HIV` + kinyerési jelentés; a hiányzó sort a meglévő adatút írja döntéssel, `forras=manual` provenienciával; új jelölt-tábla nincs (6. pont).
+- **(4) Két új szakasz** (7.N, P) felvéve (4. pont).
+- **(5) A 7.N tételenkénti besorolása** és az ISTENTISZT-001 öt tételének besorolása elfogadva (4. pont; pilot-terv 4.4).
+- **(6) Értelmezői aktiválás:** értelmezői döntés, az `INAKTÍV` indoka kötelező, és a „nincs adat” tényt rögzíti (3. pont).
+- **(7) „Tartalmi visszaírás”:** a tematikus v10 szabálya megszűnik, a tükörpárja (a tanulmány-sablon v18) átalakul; a mutató generált (N-F23a); a már visszaírt lelet a #11-ben archívum vagy törlés (7. pont). A `2_…` és a `4_…` sablon szövegének módosítása: DT-F23b.
+- **(8) Séma-kérdések:** Alátámasztás → új `indoklas` oszlop a `kapcsolatok.tsv`-ben; független megerősítés → a minősítés-nézetben generált, séma-bővítés nélkül; Módszertan-tábla és kapu-eredmény → archívum, a nézet a meglévő audit-sorokból (4. pont; SEMA 3.10.7).
+- **(10) Kiadható nézet:** a lexikonoldal és a motívumcikk kiadható `apparatus` nézet (a DT-F86a szerint prémium), az E29 rájuk is fut; a `【NAPLO】` csak folyamat-nyom (0. és 2. pont). A DT84 (9), (11)–(12) a pilot-tervet érinti (`naplok/MOTIVUM_FORRAS_pilot_terv.md` 8. szakasz); a (13): lent.
+
+A sablon a pilotok után válik véglegessé (DT84 (13): a #11 1. lépcsője a v0.1-en fut, a #12 a két pilot tapasztalatával véglegesít); addig tervezet.

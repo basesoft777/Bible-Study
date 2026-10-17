@@ -1,6 +1,7 @@
 # MOTIVUM_FORRAS — CI-terv: E28 és E29 (leírás)
 
 *FELADATOK #23 · `F23_MOTIVUM_FORRAS_BRIEF.md` M1/3 · 2026.10.08 · ág: `claude/f23-m1-forrassablon`*
+*A DT84 átvezetése (🟢, felhasználó, 2026-10-12): 2026.10.17, ág: `claude/f23-dt84-atvezetes` — a (10) szerint a „nyilvános” helyett „kiadható” nézet; az E29 hatóköre eldöntve.*
 
 **Csak leírás.** Az implementáció külön ágon megy (D6), a #11 előtt. Ez a fájl a két szabály
 szerződését rögzíti: mit vizsgál, mire, milyen szinten, és mi a bukás. Kapcsolódó szabályok:
@@ -68,20 +69,21 @@ arra. A `general.py --ellenoriz` csak a marker-blokk törzsét veti össze (a ma
 szakaszt nem); a forrásból generált nézetnek nincs kézi szakasza, ezért ott a teljes fájl
 az összevetés tárgya.
 
-## 2. E29 — a nyilvános kimenetben nulla `belso` jelölés és nulla `【NAPLO`
+## 2. E29 — a kiadható kimenetben nulla `belso` jelölés és nulla `【NAPLO`
 
-**Mit véd:** a D36 build-kihagyását (SEMA 3.10.4): a `belso` blokk a nyilvános nézetből
+**Mit véd:** a D36 build-kihagyását (SEMA 3.10.4): a `belso` blokk a kiadható nézetből
 kimarad, nem elrejtődik. Előképe a törzscikk-sablon „Ellenőrzés” bekezdése (`GENERÁLT` 0,
 `【NAPLO` 0, `proveniencia:` 0, …).
 
-**Hatókör (fájlok):** a nyilvános nézetek — az `olvasoi` és az `apparatus` mélységű kimenetek:
-a migrált motívumok `lexikon/[ID]_TUDOMANYOS.md` lapja és motívumcikke, valamint az olvasói
-build (#25/#76) kimenete, amikor elkészül. **Nem** hatókör: a `belso` (szerkesztői) nézet, a
+**Hatókör (fájlok):** a kiadható nézetek — az `olvasoi` és az `apparatus` mélységű kimenetek:
+a migrált motívumok `lexikon/[ID]_TUDOMANYOS.md` lapja és motívumcikke (**kiadható `apparatus`
+nézet, a DT-F86a szerint prémium**: DT84 (10)), valamint az olvasói build (#25/#76) kimenete,
+amikor elkészül. **Nem** hatókör: a `belso` (szerkesztői) nézet, a
 `motivumok/*.md` forrás (ott a `【NAPLO` kötelező hely), a `naplok/`, a `generalt_proba/`.
 
 **Mit keres (mind nulla kell legyen):**
 
-| Minta | Miért tilos a nyilvános kimenetben |
+| Minta | Miért tilos a kiadható kimenetben |
 |---|---|
 | `【NAPLO` | mindig `belso` (SEMA 3.10.3) |
 | `SZINT-KEZDET: belso`, `SZINT-VÉGE: belso`, és a #64 ideiglenes `SZINT: belso` alakja (`ADAT-NÉZET` jelölőben is) | `belso` blokk jelölője: ha a jelölő kijutott, a blokk is |
@@ -89,7 +91,7 @@ build (#25/#76) kimenete, amikor elkészül. **Nem** hatókör: a `belso` (szerk
 | `INAKTÍV:`, `JELÖLT:`, `ADAT-HIV:`, `ADAT-ÉRTÉK:`, `FORRÁSRÉTEG` | csak-forrásbeli jelölő |
 | az `olvasoi` nézetben ezen felül: `GENERÁLT-KEZDET`, `GENERÁLT-VÉGE`, `RÉS-KEZDET`, `RÉS-VÉGE`, `proveniencia:` | az olvasói nézet a jelölőket és a proveniencia-sorokat sem viszi (törzscikk-sablon „Amit a törzscikk kihagy”) |
 
-**Hogyan:** szöveges keresés a hatókör fájljain (kódkerítésen belül is: a nyilvános kimenetben
+**Hogyan:** szöveges keresés a hatókör fájljain (kódkerítésen belül is: a kiadható kimenetben
 kódblokkban sem állhat `【NAPLO`). A minta-lista egy konstans a szabálykódban, a SEMA 3.10.4
 jelölő-listájával egyezően; ha a SEMA bővül, a konstans is (az E25 mintájára hivatkozva).
 
@@ -105,10 +107,26 @@ piros; (d) ugyanez a `motivumok/*.md` forrásban: nem fut (nem hatókör).
 `lexikon/HAMART-001_TUDOMANYOS.md` 3 `【NAPLO`-t tartalmaz; a #78 próbalapja
 (`generalt_proba/F78_szerepmatrix_proba/lexikon/ISTENTISZT-001_TUDOMANYOS.md`) szintén 14-et
 (`scope=a három fájl | forras=manual (szkript, „【NAPLO” előfordulás-számlálás) | ts=2026-10-08`).
-A mai lapok tehát az E29-en elbuknának; ezért fut a szabály csak a migrált motívumokon (az E28
-engedélyezőlistáján), és ezért elfogadott diff-kategória a migrációban a `belso`-kihagyás
-(pilot-terv 5. szakasz, D3). *[javaslat: DT84 (10) — a lexikonoldal `apparatus` mélységű
-nyilvános nézet-e; ha igen, a 14 + 3 `【NAPLO` a migrált lapról kimarad.]*
+Az összes éles lapon 36 `【NAPLO`-sor áll: ISTENTISZT-001 14, KIRALY-001 11, ALVIL-001 4,
+HAMART-001 3, HODIT-001 3, MENNY-001 1, ANTROP-001 és TEREMT-001 0
+(`scope=lexikon/*_TUDOMANYOS.md | forras=manual (grep -c "【NAPLO") | ts=2026-10-17`; egyezik a
+DT84 2026-10-12-i mérésével). A mai lapok tehát az E29-en elbuknának; ezért fut a szabály csak a
+migrált motívumokon (az E28 engedélyezőlistáján), és ezért elfogadott diff-kategória a
+migrációban a `belso`-kihagyás (pilot-terv 5. szakasz, D3).
+
+**A lexikonoldal hatókörben van (DT84 (10)):** a lap kiadható `apparatus` nézet, ezért a migrált
+lapról minden `【NAPLO` kikerül. A kikerülés két úton történhet, és az E29 mindkettőnél nullát
+lát: a folyamat-nyom (dátum, ki/mikor, forrás elérhetősége) a `belso` rétegben marad, a
+kiadható nézetből kimarad; az állítás megbízhatóságát érintő módszertani figyelmeztetés a
+forrásban apparátus-szövegként újraíródik (Minősítés / Módszertan / Nyitott kérdések),
+`【NAPLO` jelölő nélkül. A kettő közti ítélet a #11 szétválasztásáé, egyenként (pilot-terv 8.
+szakasz); az E29 csak az eredményt nézi.
+
+**Közös szűrő a #86-tal (N-F23b):** a D36 build-kihagyása és a #86 freemium/prémium-kizárása
+ugyanaz a build-idejű szabály; az E29 implementációja a #86 feed-építőjével közös szint-szűrőre
+épüljön, ne kettőre. A licenc szerinti kizárás nem az E29 mintája: a #86 DT-F86c pontja
+(BY-SA-eredetű blokk zárt rétegben ne álljon) ma *javaslat*, nem döntés, ez a terv nem épít
+rá; a szűrő tervezése a #86 3.1 és a #11 dolga.
 
 ## 3. Ami a két szabályon kívül marad (a #11 briefjének)
 
