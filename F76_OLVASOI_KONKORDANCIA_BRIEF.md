@@ -13,7 +13,7 @@ kovetkezo: "Folytatás: M3 (keresés), új ágon a main-ről; az M2b kész és m
 olvas: [ADATVAGYON_TERV.md, MUNKATERV.md, adat/szotar_szerepek.tsv, adat/SEMA.md, adat/licencek.tsv, "eszkozok/olvaso_pilot/*", eszkozok/sqlite_epit.py, naplok/OLVASOI_PILOT_ertekeles.md, naplok/SQLITE_EPIT_meres.md, DONTESEK.md]
 ir: [eszkozok/olvaso_szerver/, naplok/OLVASOI_KONKORDANCIA_M0.md, naplok/OLVASOI_KONKORDANCIA_meres.md, naplok/OLVASOI_KONKORDANCIA_zaras.md, naplok/OLVASOI_KONKORDANCIA_pilot_osszevetes.md, naplok/ELLENOR_F76_M2b.md, naplok/ELLENOR_F76_M2b_3.md, naplok/ELLENOR_F76_M2b_4.md]
 fugg: [44, 79, 92, 95, 97, 98]
-nem_fugg: [52, 93]
+nem_fugg: [9, 11, 52, 93]
 ---
 
 # Olvasói konkordancia motívum nélkül — kutatói felület a `pardes.db`-ből, előbb helyben (WSL), három váltható nézettel (OLVASOI_KONKORDANCIA)

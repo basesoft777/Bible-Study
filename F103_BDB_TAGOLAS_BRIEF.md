@@ -12,7 +12,7 @@ kovetkezo: Indítható a fugg szerint (a #76 és a #102 után); a terminológia-
 olvas: [eszkozok/olvaso_pilot/bdb_szelet_m0.py, adat/bdb_aranyminta.tsv, adat/forditasok.tsv, konkordancia/BDB_teljes_unabridged.tsv, naplok/BDB_SZELETELO_M0.md, F38_BDB_FORDITAS_BRIEF.md]
 ir: [eszkozok/olvaso_szerver/bdb_szelet.py, eszkozok/olvaso_szerver/teszt_bdb_vers_jelentes.py, adat/bdb_vers_jelentes.tsv, adat/SEMA.md]
 fugg: [99, 76, 102]
-nem_fugg: [27, 38]
+nem_fugg: [9, 11, 27, 38]
 ---
 
 # F<nn>_BDB_TAGOLAS_BRIEF.md — BDB jelentésen belüli tagolás és terminológia

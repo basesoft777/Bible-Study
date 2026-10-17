@@ -3,17 +3,17 @@ feladat: 9
 cim: Szótári adatréteg, 2. menet
 kod: SZOTAR S2
 tipus: feladat
-fazis: 2
+fazis: 1
 modell: sonnet
 allapot: nem_indult
-ad: az 1. fázis adatai — a 8 motívum Strongjaira szűkítve (DT74 (4)) — megjelennek a 8 lexikonoldalon a #78 szerepmátrix-vázának blokkjaiban és a 8 törzscikkben; a törzscikk utoljára itt generálódik (D34)
-kovetkezo: Ez javítja a törzscikkek elavult Cremer-sorát is (a CI E11 szabálya jelzi). Nyitott, a brief megírásakor dől el: a #9 éles lexikon/-írása a #11 előtt vs. a befagyasztás (D52, DT74 (3))
+ad: az 1. fázis adatai — a 8 motívum Strongjaira szűkítve (DT74 (4)) — az adatrétegben és a generátorokban, a #78 szerepmátrix-vázának blokkjaihoz; a 8 lexikonoldal és a 8 törzscikk renderelése csak próba a generalt_proba/ alá, az éles lexikon/ a #11 1. lépcsője után generálódik (#36 vagy #10) (DT-F09b)
+kovetkezo: /kovetkezo (fazis: 1, DT-F09a); az éles lexikon/-t nem írja, a render próba a generalt_proba/ alá (DT-F09b; a D52/DT74 (3) befagyasztás érintetlen); a törzscikkek elavult Cremer-sorát (CI E11) a próbarender mutatja, az éles javítás a #11 1. lépcsője után
 fugg: [5, 6, 23, 78]
 olvas: [adat/forditasok.tsv, adat/terminologia.tsv, adat/kiejtes_kivetelek.tsv, konkordancia/, lexikon/, adat/szotar_szerepek.tsv, ADATVAGYON_TERV.md, MUNKATERV.md]
-ir: [lexikon/, adat/kiejtes_kivetelek.tsv, adat/szotar_szerepek.tsv, eszkozok/torzscikk_general.py, eszkozok/lexikon_general.py, eszkozok/render_diff_osztalyoz.py, MUNKAMENET.md, NYITOTT_FELADATOK.md, adat/forditasok.tsv, eszkozok/kiejtes.py]
+ir: [generalt_proba/, adat/kiejtes_kivetelek.tsv, adat/szotar_szerepek.tsv, eszkozok/torzscikk_general.py, eszkozok/lexikon_general.py, eszkozok/render_diff_osztalyoz.py, MUNKAMENET.md, NYITOTT_FELADATOK.md, adat/forditasok.tsv, eszkozok/kiejtes.py]
 munka: adat
 forras: F05_SZOTAR_BRIEF.md#2. menet — kimenet-változtató
-nem_fugg: [7, 22, 38]
+nem_fugg: [7, 22, 27, 38, 52, 55, 107, 109, 110]
 ---
 
 # F09_SZOTAR_S2_BRIEF — csonk
