@@ -932,9 +932,25 @@ def tbesh_szoveg_dedup(szoveg):
     return ' | '.join(fejek) + ' ' + farkak.pop()
 
 
+SZEMELYNEV_POS_RE = re.compile(r'^N:.*-P$')
+
+
+def tbesh_sorok_tokenhez(token):
+    """A TBESH.txt sorai egy tokenhez (DT-F09h kiegészítés, F05 D38). Ha van pontos (betűutótag nélküli) sor,
+    csak az; különben a betűutótagos alszócikkek (H2403a, H2403b …) a személynevek (`N:…-P` morfológia)
+    kizárásával. (A TAHOT bővített Strong szerinti szűkítés nem érhető el: a TAHOT_kivonat.tsv Strong-oszlopa
+    betűutótag nélküli.) Az alszócikk-sorok a blokkban jelöltek."""
+    sorok = tbesh_konszolidalt().get(token, [])
+    pontos = [r for r in sorok if r['strong'] == token]
+    if pontos:
+        return pontos
+    return [r for r in sorok if not SZEMELYNEV_POS_RE.match(r.get('pos_kod', ''))]
+
+
 def _tbesh_konsz_blokk(r, ctx):
     """Egy konszolidált TBESH-sor forrásblokkja a #78 renderének mintájára (`_szotar_reszek`)."""
-    bek = ['##### TBESH %s — (konszolidált szócikk)' % r['strong']]
+    alszo = r['strong'] != r['alap_strong']
+    bek = ['##### TBESH %s — (konszolidált szócikk%s)' % (r['strong'], '; alszócikk: %s' % r['strong'] if alszo else '')]
     if r.get('rovid_glosszak') and r['rovid_glosszak'] != EM_DASH:
         bek.append('**Röviden:** %s' % r['rovid_glosszak'])
     bek.append('> %s' % tbesh_szoveg_dedup(r['teljes_szoveg']))
@@ -969,7 +985,7 @@ def _tartalom_heber_tbesh(nyelv, n, tokenek_ny, reszek, ctx):
             continue
         # csak a pontos (betűutótag nélküli) Strong-sor: a H1121a/b stb. STEP-alszócikkek más szavak
         # (pl. a H1121b Beno, személynév), nem a motívum tokenjének szócikkei (D38)
-        sorok = [r for r in tbesh_konszolidalt().get(t, []) if r['strong'] == t]
+        sorok = tbesh_sorok_tokenhez(t)
         if not sorok:
             out.append('**%s** · %s *(TBESH)*' % (t, NEM_TARGYALJA))
             continue
@@ -1403,7 +1419,7 @@ def szerep_token_adat_van(nyelv, n, token):
     szabály (a cella a szerep forrása). Ugyanazokat az adatforrásokat kérdezi, mint a szerep-építők."""
     k = (nyelv, n)
     if k == ('heber', 1):
-        return bool([r for r in tbesh_konszolidalt().get(token, []) if r['strong'] == token]) \
+        return bool(tbesh_sorok_tokenhez(token)) \
             or any(r['szotar'] == 'TBESH' for r in lexikon_hivatkozasok_ehhez(token))
     if k in (('gorog', 3), ('heber', 3)):
         return bool(tw_szocikkek()[1].get(token)) or (nyelv == 'heber' and bool(oshl_twot_ehhez(token)))

@@ -178,7 +178,15 @@ angyalok, akik "nem tartották meg fejedelemségüket", örök bilincsben — ta
 
 *Forrás: konkordancia/TBESH.txt (a TBESH.txt szövege)*
 
-**H1121** · *a forrás nem tárgyalja* *(TBESH)*
+##### TBESH H1121a — (konszolidált szócikk; alszócikk: H1121a)
+
+**Röviden:** son: child; son: descendant/people; son: young animal; son: type of; son; son: warrior; son: aged
+
+> : child/son | : descendant, people, tribe, nation A sub-meaning of ben (בֵּן ": child" H1121) § : child/son | : calf/lamb/young(ANIMAL) A sub-meaning of ben (בֵּן ": child" H1121) § : descendant | : rebel/son(Belial) A sub-meaning of ben (בֵּן ": child" H1121) § : people/men/nation/tribe | : [inheriting]son/heir A sub-meaning of ben (בֵּן ": child" H1121) | : warrior/son(strong) A sub-meaning of ben (בֵּן ": child" H1121) | : age[son_of](YEARS) A sub-meaning of ben (בֵּן ": child" H1121)
+
+*(fordításra vár)*
+
+*Forrás: konkordancia/TBESH.txt (a TBESH.txt szövege)*
 
 ##### TBESH H5303 — (konszolidált szócikk)
 

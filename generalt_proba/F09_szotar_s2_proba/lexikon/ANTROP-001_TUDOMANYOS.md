@@ -642,7 +642,55 @@ Isten Igéje "elhat a szellem és lélek... megoszlásáig" (μερισμοῦ) 
 
 #### 1. Alapjelentés
 
-**H2416** · *a forrás nem tárgyalja* *(TBESH)*
+##### TBESH H2416a — (konszolidált szócikk; alszócikk: H2416a)
+
+**Röviden:** alive
+
+> adj 1) living, alive 1a) green (of vegetation) 1b) flowing, fresh (of water) 1c) lively, active (of man) 1d) reviving (of the springtime) Aramaic equivalent: chay (חַי "living" H2417)
+
+*(fordításra vár)*
+
+*Forrás: konkordancia/TBESH.txt (a TBESH.txt szövege)*
+
+##### TBESH H2416b — (konszolidált szócikk; alszócikk: H2416b)
+
+**Röviden:** kinsfolk
+
+> kinsfolk
+
+*(fordításra vár)*
+
+*Forrás: konkordancia/TBESH.txt (a TBESH.txt szövege)*
+
+##### TBESH H2416c — (konszolidált szócikk; alszócikk: H2416c)
+
+**Röviden:** living thing
+
+> 1) living thing, animal 1a) animal 1b) life 1c) appetite 1d) revival, renewal Aramaic equivalent: che.va (חֵיוָא "beast" H2423)
+
+*(fordításra vár)*
+
+*Forrás: konkordancia/TBESH.txt (a TBESH.txt szövege)*
+
+##### TBESH H2416d — (konszolidált szócikk; alszócikk: H2416d)
+
+**Röviden:** community
+
+> community
+
+*(fordításra vár)*
+
+*Forrás: konkordancia/TBESH.txt (a TBESH.txt szövege)*
+
+##### TBESH H2416e — (konszolidált szócikk; alszócikk: H2416e)
+
+**Röviden:** life
+
+> 1) life (abstract emphatic) 1a) life 1b) sustenance, maintenance
+
+*(fordításra vár)*
+
+*Forrás: konkordancia/TBESH.txt (a TBESH.txt szövege)*
 
 ##### TBESH H5315 — (konszolidált szócikk)
 

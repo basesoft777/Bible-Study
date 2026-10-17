@@ -1005,7 +1005,25 @@ az özönvíz-világ elpusztulása és a jelenlegi világ tűzre tartatása — 
 
 *Forrás: konkordancia/TBESH.txt (a TBESH.txt szövege)*
 
-**H2403** · *a forrás nem tárgyalja* *(TBESH)*
+##### TBESH H2403a — (konszolidált szócikk; alszócikk: H2403a)
+
+**Röviden:** sin
+
+> sin, sinful thing
+
+*(fordításra vár)*
+
+*Forrás: konkordancia/TBESH.txt (a TBESH.txt szövege)*
+
+##### TBESH H2403b — (konszolidált szócikk; alszócikk: H2403b)
+
+**Röviden:** sin; sin: sin offering; sin: punishment
+
+> : sin | : sin_offering | : punishment/purification 1) sin, sin offering 1a) sin 1b) condition of sin, guilt of sin 1c) punishment for sin 1d) sin-offering 1e) purification from sins of ceremonial uncleanness
+
+*(fordításra vár)*
+
+*Forrás: konkordancia/TBESH.txt (a TBESH.txt szövege)*
 
 ##### TBESH H2555 — (konszolidált szócikk)
 
@@ -1047,7 +1065,35 @@ az özönvíz-világ elpusztulása és a jelenlegi világ tűzre tartatása — 
 
 *Forrás: konkordancia/TBESH.txt (a TBESH.txt szövege)*
 
-**H7451** · *a forrás nem tárgyalja* *(TBESH)*
+##### TBESH H7451a — (konszolidált szócikk; alszócikk: H7451a)
+
+**Röviden:** bad: harmful; bad: evil
+
+> : harmful adj | : evil adj 1) bad, evil 1a) bad, disagreeable, malignant 1b) bad, unpleasant, evil (giving pain, unhappiness, misery) 1c) evil, displeasing 1d) bad (of its kind-land, water, etc) 1e) bad (of value) 1f) worse than, worst (comparison) 1g) sad, unhappy 1h) evil (hurtful) 1i) bad, unkind (vicious in disposition) 1j) bad, evil, wicked (ethically) 1j1) in general, of persons, of thoughts 1j2) deeds, actions
+
+*(fordításra vár)*
+
+*Forrás: konkordancia/TBESH.txt (a TBESH.txt szövege)*
+
+##### TBESH H7451b — (konszolidált szócikk; alszócikk: H7451b)
+
+**Röviden:** bad: evil
+
+> 1) evil, distress, misery, injury, calamity 1a) evil, distress, adversity 1b) evil, injury, wrong 1c) evil (ethical)
+
+*(fordításra vár)*
+
+*Forrás: konkordancia/TBESH.txt (a TBESH.txt szövege)*
+
+##### TBESH H7451c — (konszolidált szócikk; alszócikk: H7451c)
+
+**Röviden:** distress: harm; distress: evil
+
+> : harm 1) evil, misery, distress, injury 1a) evil, misery, distress 1b) evil, injury, wrong 1c) evil (ethical)
+
+*(fordításra vár)*
+
+*Forrás: konkordancia/TBESH.txt (a TBESH.txt szövege)*
 
 ##### TBESH H7843 — (konszolidált szócikk)
 

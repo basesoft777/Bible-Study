@@ -443,9 +443,27 @@ class TestTbeshF09(unittest.TestCase):
         heber = _szakaszok(szoveg)['heber']
         m = re.search(r'^#### 1\. .*?(?=^#### |\Z)', heber, re.M | re.S).group(0)
         self.assertIn('##### TBESH H0127 — (konszolidált szócikk)', m)
-        # betűutótagos alszócikk (pl. H2403a/b) nem azonos a tokennel (D38)
-        self.assertNotIn('##### TBESH H2403a', m)
-        self.assertNotIn('##### TBESH H2403b', m)
+        # DT-F09h kiegészítés: a betűutótagos alszócikk (H2403a/b) jelölten a blokkba kerül (D38)
+        self.assertIn('##### TBESH H2403a — (konszolidált szócikk; alszócikk: H2403a)', m)
+        self.assertIn('##### TBESH H2403b — (konszolidált szócikk; alszócikk: H2403b)', m)
+
+    def test_alszocikk_bekerul_szemelynev_kimarad_hianyzo_nem_targyalja(self):
+        # H2403: a/b alszócikk (közszó) bekerül
+        self.assertEqual([r['strong'] for r in LG.tbesh_sorok_tokenhez('H2403')], ['H2403a', 'H2403b'])
+        # H1121: a H1121a (ben, közszó) bekerül, a H1121b (Beno, személynév, N:N-M-P) kimarad
+        self.assertEqual([r['strong'] for r in LG.tbesh_sorok_tokenhez('H1121')], ['H1121a'])
+        m = _blokk('MENNY-001')[0]
+        self.assertIn('alszócikk: H1121a', m)
+        self.assertNotIn('H1121b', m)
+        # az öt érintett token egyikénél sincs hamis „nem tárgyalja” a TBESH-nél
+        for tok in ('H2403', 'H7451', 'H1121', 'H2416', 'H7497'):
+            self.assertTrue(LG.tbesh_sorok_tokenhez(tok), tok)
+            self.assertTrue(LG.szerep_token_adat_van('heber', 1, tok), tok)
+        # ténylegesen hiányzó token: marad a „nem tárgyalja”
+        self.assertEqual(LG.tbesh_sorok_tokenhez('H9998'), [])
+        ctx = {'fl': {}, 'szerep': 'Alapjelentés'}
+        out = LG._tartalom_heber_tbesh('heber', 1, ['H9998'], {'H9998': {'forras_blokkok': []}}, ctx)
+        self.assertEqual(out, ['**H9998** · %s *(TBESH)*' % LG.NEM_TARGYALJA])
 
 
 class TestTbeshVerziozottF09(unittest.TestCase):
