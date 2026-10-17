@@ -406,6 +406,12 @@ def torzscikk_szoveg(m, lex_szoveg, model):
             w('%s — %s' % (nev, lic.group(1) if lic else ''))
     w('- Károli Gáspár fordítása (1908) és a Károli-kereszthivatkozások — közkincs')
     w('')
+    # F09 J1 (K11, ellenőri 3.): a kötelező forrásmegjelölések (UBS, Mounce, tW, TWOT, LXX...) szó szerint,
+    # ugyanazzal a szöveggel, mint a lexikonoldal kolofonjában -- onnan átvéve, nem újraírva.
+    for s_ in block(i_kol, len(L)):
+        if (s_.startswith('*') and s_.endswith('*') and len(s_) > 2
+                and not s_.startswith('*Ez a blokk')):
+            w(s_); w('')
 
     SZAKASZ_MAP = [
         ('ezért a 2. szakasz generált része nem ad hozzá szócikket; LXX-beli szerepét a 3. szakasz mutatja',
