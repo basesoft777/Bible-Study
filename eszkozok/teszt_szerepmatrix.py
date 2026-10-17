@@ -381,6 +381,41 @@ class TestSeceMounceF09(unittest.TestCase):
         self.assertIn('| hívni; nevezni |', b)
 
 
+class TestLabjegyzetF09(unittest.TestCase):
+    """F09 S2.7 / K11: kötelező forrásmegjelölések a kolofonban, szó szerint."""
+
+    @classmethod
+    def setUpClass(cls):
+        _, mot = G.tsv_beolvas(G.MOTIVUMOK_TSV)
+        _, elo = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
+        m = next(x for x in mot if x['id'] == 'ISTENTISZT-001')
+        sorai = G.elofordulasok_id_szerint(elo)['ISTENTISZT-001']
+        blokkok, _ = LG.render_lexikon_egy_id(m, sorai, G.konyv_sorrend_betolt(), set())
+        cls.kolofon = blokkok['kolofon']
+        cls.idezes = blokkok['idezes']
+
+    def test_ubs_mondatok_szo_szerint(self):
+        self.assertIn('(UBS Dictionary of Biblical Hebrew © United Bible Societies, 2023.  Adapted from '
+                      'Semantic Dictionary of Biblical Hebrew © 2000-2023 United Bible Societies.)', self.kolofon)
+        self.assertIn('(UBS Dictionary of New Testament Greek, © United Bible Societies, 2023.', self.kolofon)
+
+    def test_mounce_twot_tw(self):
+        self.assertIn('Mounce Concise Greek-English Dictionary, Copyright 1993 All Rights Reserved, '
+                      'www.teknia.com/greek-dictionary', self.kolofon)
+        self.assertIn('TWOT: Theological Wordbook of the Old Testament — csak a szócikk száma', self.kolofon)
+        self.assertIn('The original work by unfoldingWord is available from unfoldingword.org/utw', self.kolofon)
+        self.assertIn('Módosítás:', self.kolofon)  # a módosítás jelezve
+        self.assertIn('CC BY-SA 4.0', self.kolofon)
+
+    def test_unfoldingword_vedjegy_nem_szerepel(self):
+        self.assertNotIn('®', self.kolofon)
+        self.assertNotIn('®', self.idezes)
+        self.assertNotIn('unfoldingWord®', _blokk('ISTENTISZT-001')[0])
+
+    def test_lxx_parok_forrasmegjeloles(self):
+        self.assertIn('lxx-morph, © Seth Kushniryk, CC BY 4.0', self.kolofon)
+
+
 class TestTbeshF09(unittest.TestCase):
     """F09 S2.2 / S2.5b: a héber 1. szerep (TBESH) és a H8034 bekötése (DT-F09c)."""
 

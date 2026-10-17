@@ -2015,6 +2015,41 @@ def blokk_idezes(m, fajl_licenc_blokk_lista):
 # Kolofon (régi 0. Metaadatok + 9. Források és licencek összevonva)
 # ---------------------------------------------------------------------------
 
+# --- F09 S2.7: kötelező forrásmegjelölések (F05 S11) ---
+
+# A TWOT csak szám-hivatkozás (D19): a mű megnevezése kötelező, a szövegét a render nem idézi.
+TWOT_MEGJELOLES = ('TWOT: Theological Wordbook of the Old Testament — csak a szócikk száma áll hivatkozásként '
+                   '(az OSHL-indexből, Open Scriptures Hebrew Bible Project), a mű szövegét a lexikonoldal nem idézi.')
+# unfoldingWord Translation Words (CC BY-SA 4.0): a forrásmegjelölés szó szerint; a származékos szövegből a
+# védjegy elmarad; a módosítást jelezni kell (tW_README.md, a LICENSE.md szó szerinti idézete).
+TW_MEGJELOLES = ('Translation Words (tW), CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/). '
+                 'The original work by unfoldingWord is available from unfoldingword.org/utw. '
+                 'Módosítás: a szócikkek szövegét a lexikonoldal idézőblokkba tördelve közli (a forrás `\\n` '
+                 'sortörés-jelölései valódi sortörésre cserélve), egyébként változatlanul; a magyar fordítás '
+                 '(ahol van) származékos munka, ugyanazon CC BY-SA 4.0 licenc alatt.')
+FAJL_MEGJELOLES_KULCS = {
+    'konkordancia/UBS_DBH_jelentesek.tsv': 'UBS_DBH', 'konkordancia/UBS_DBH_referenciak.tsv': 'UBS_DBH',
+    'konkordancia/UBS_DNTG_jelentesek.tsv': 'UBS_DNTG', 'konkordancia/UBS_DNTG_referenciak.tsv': 'UBS_DNTG',
+    'konkordancia/tW_szocikkek.tsv': 'tW_szocikkek',
+    'konkordancia/OSHL_lexikalis_index.tsv': 'OSHL',
+    'konkordancia/LXX_versszintu_parok.tsv': 'LXX_versszintu_parok',
+    'konkordancia/Karoli_versmegfeleltetes.tsv': 'Karoli_versmegfeleltetes',
+}
+
+
+def kotelezo_megjeloles(kulcs):
+    """A dataset kötelező forrásmegjelölése: az UBS-nél az adat/licencek.tsv `kotelezo_megjeloles` mezője
+    (a ©-mondat szó szerint), a tW-nél és a TWOT-nál a fenti állandó."""
+    if kulcs == 'tW_szocikkek':
+        return TW_MEGJELOLES
+    if kulcs == 'OSHL':
+        return TWOT_MEGJELOLES
+    szoveg = licenc_sor(kulcs).get('kotelezo_megjeloles') or ''
+    if not szoveg:
+        raise SystemExit('HIBA: üres `kotelezo_megjeloles` az adat/licencek.tsv `%s` során' % kulcs)
+    return szoveg
+
+
 def blokk_kolofon(m, fajl_licenc_blokk_lista):
     forras_study_sorok = [s.strip() for s in (m.get('forras_study') or '').split(';') if s.strip()]
     forras_study_cella = '<br>'.join('`%s`' % s for s in forras_study_sorok) if forras_study_sorok else EM_DASH
@@ -2061,6 +2096,11 @@ def blokk_kolofon(m, fajl_licenc_blokk_lista):
         megjelolesek.append('*%s*' % MOUNCE_MEGJELOLES)
     if any(os.path.basename(f) == 'LSJ_teljes.tsv' for f in per_fajl):
         megjelolesek.append('*%s*' % lsj_forrasmegjeloles())
+    # F09 S2.7 (F05 S11): a kötelező forrásmegjelölések szó szerint
+    for kulcs in sorted({FAJL_MEGJELOLES_KULCS[f] for f in per_fajl if f in FAJL_MEGJELOLES_KULCS}):
+        szoveg = '*%s*' % kotelezo_megjeloles(kulcs)
+        if szoveg not in megjelolesek:
+            megjelolesek.append(szoveg)
 
     torzs = '\n'.join(metaadat_sorok) + '\n\n---\n\n' + '\n'.join(forras_sorok)
     if megjelolesek:
