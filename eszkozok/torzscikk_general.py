@@ -354,8 +354,9 @@ def torzscikk_szoveg(m, lex_szoveg, model):
     w('')
 
     w('### Lefedettség szavanként'); w('')
-    w('A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b '
-      'résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).'); w('')
+    w('A cella értéke: forrás-hivatkozás (a szerep adatosítva és a szónak van szócikke a forrásban), '
+      '`a forrás nem tárgyalja` (a forrásban nincs szócikk a szóhoz; F05 D11), `nincs forrás` (D27) vagy '
+      '`javaslat` (a szerep még csak javaslat; RENDER_BRIEF.md G7).'); w('')
     fejlec_cellak = ['Szó'] + szerep_sorrend
     w('| ' + ' | '.join(fejlec_cellak) + ' |')
     w('|' + '---|' * len(fejlec_cellak))
@@ -364,13 +365,7 @@ def torzscikk_szoveg(m, lex_szoveg, model):
         szerepek = gorog_szerepek if nyelv == 'gorog' else heber_szerepek
         sor = [token]
         for szerep in szerep_sorrend:
-            r = szerepek.get(szerep, {})
-            if r.get('allapot') == 'adatosítva':
-                sor.append(r.get('forras', '—'))
-            elif m['id'] == 'ISTENTISZT-001' and szerep == 'Megfelelők a másik nyelven':
-                sor.append('kézi (2/b)')
-            else:
-                sor.append('nincs adatosítva')
+            sor.append(LG.szerep_lefedettseg_cella(nyelv, szerepek[szerep], token) if szerep in szerepek else '—')
         w('| ' + ' | '.join(sor) + ' |')
     w('')
 
@@ -452,6 +447,12 @@ def run(args, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek):
             continue
 
         lex_path = os.path.join(G.ROOT, 'lexikon', '%s_TUDOMANYOS.md' % m['id'])
+        if not (args.ir or args.ellenoriz):
+            # N-F78a (F09 S2.8): a próba-törzscikk a kimeneti könyvtár lexikonoldalából olvas, ha van --
+            # különben az éles (a #11 előtt befagyasztott) oldalra épülne, és a két próbafájl ellentmondana.
+            proba_lex = os.path.join(args.kimenet, 'lexikon', '%s_TUDOMANYOS.md' % m['id'])
+            if os.path.exists(proba_lex):
+                lex_path = proba_lex
         if not os.path.exists(lex_path):
             print('  %s: nincs lexikonoldal (%s) -- kihagyva' % (m['id'], lex_path), file=sys.stderr)
             continue
@@ -478,8 +479,9 @@ def run(args, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek):
         os.makedirs(kimenet_gyoker, exist_ok=True)
         with io.open(cel_ut, 'w', encoding='utf-8', newline='\n') as f:
             f.write(torzscikk_tartalom)
-        print('  %s: %s (%d bájt) -- igehely=%d (%d ÓSZ), kapcsolat=%d, lxx_sor=%d, kereszthivatkozas=%d'
+        print('  %s: %s (%d bájt) -- igehely=%d (%d ÓSZ), kapcsolat=%d, lxx_sor=%d, kereszthivatkozas=%d '
+              '-- lexikonoldal: %s'
               % (m['id'], os.path.relpath(cel_ut, ROOT), os.path.getsize(cel_ut),
                  stat['igehely'], stat['igehely_osz'], stat['kapcsolat'], stat['lxx_sor'],
-                 stat['kereszthivatkozas_talalat']))
+                 stat['kereszthivatkozas_talalat'], os.path.relpath(lex_path, ROOT)))
     return 0

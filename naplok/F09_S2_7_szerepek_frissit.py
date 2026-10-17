@@ -22,17 +22,16 @@ TSV = os.path.join(ROOT, 'adat', 'szotar_szerepek.tsv')
 
 # (nyelv, sorrend) -> (uj forras vagy None = valtozatlan, uj allapot)
 CEL = {
-    ('gorog', 3): (None, 'adatosítva'),
+    ('gorog', 3): ('unfoldingWord Translation Words (tW, CC BY-SA 4.0; konkordancia/tW_szocikkek.tsv, S14, D20)', 'adatosítva'),
     ('gorog', 7): (None, 'adatosítva'),
     ('gorog', 10): ('kiejtes.py szabálytábla + adat/kiejtes_kivetelek.tsv (görög kivételek); a görög alak és lemma magyaros átírása', 'adatosítva'),
-    ('heber', 3): (None, 'adatosítva'),
+    ('heber', 3): ('unfoldingWord Translation Words (tW, CC BY-SA 4.0; konkordancia/tW_szocikkek.tsv, S14, D20); TWOT-szám hivatkozásként (D19)', 'adatosítva'),
     ('heber', 5): (None, 'adatosítva'),
     ('heber', 7): (None, 'adatosítva'),
     ('heber', 8): (None, 'adatosítva'),
     ('heber', 9): ('UBS DBH versenkénti jelentés (az ÓSZ-i igehelyek MT-számozás szerint párosítva, konkordancia/Karoli_versmegfeleltetes.tsv); '
-                   'BSB angol szószintű híd (konkordancia/BSB_Strongs.tsv, F16; csak a 36 importált ÓSZ-könyv, ÚSZ szándékosan nincs, a görög réteg a Macula (#87)) '
-                   'és KJV angol szószintű híd (konkordancia/KJV_Strongs_teljes.tsv, F19, javaslat-állapotú; az eBible-ASV forráshibás, nincs a repóban, l. DT19/ELLENOR_F19): '
-                   'a render ma csak az UBS DBH-t tölti (F09 S2.3), a BSB/KJV híd nincs renderelve', 'adatosítva'),
+                   'BSB angol szószintű híd (konkordancia/BSB_Strongs.tsv, F16) és KJV angol szószintű híd (konkordancia/KJV_Strongs_teljes.tsv, F19, javaslat-állapotú): '
+                   'a render ma csak az UBS DBH-t tölti (F09 S2.3)', 'adatosítva'),
     ('heber', 10): (None, 'adatosítva'),
 }
 

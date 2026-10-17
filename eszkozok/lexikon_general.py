@@ -1348,6 +1348,54 @@ def _tartalom_heber_lxx_parok(nyelv, n, tokenek_ny, reszek, ctx):
     return out
 
 
+def szerep_token_adat_van(nyelv, n, token):
+    """True/False: az `adatosítva` szerep forrásában van-e adat ehhez a tokenhez (a törzscikk
+    lefedettségi mátrixához, F05 D11: `a forrás nem tárgyalja`); None: a szerepre nincs token-szintű
+    szabály (a cella a szerep forrása). Ugyanazokat az adatforrásokat kérdezi, mint a szerep-építők."""
+    k = (nyelv, n)
+    if k == ('heber', 1):
+        return bool([r for r in tbesh_konszolidalt().get(token, []) if r['strong'] == token]) \
+            or any(r['szotar'] == 'TBESH' for r in lexikon_hivatkozasok_ehhez(token))
+    if k in (('gorog', 3), ('heber', 3)):
+        return bool(tw_szocikkek()[1].get(token)) or (nyelv == 'heber' and bool(oshl_twot_ehhez(token)))
+    if k == ('gorog', 5):
+        return bool(ubs_dntg_adatok()[0].get(token)) or mcged_sor(token) is not None
+    if k in (('heber', 5), ('heber', 9)):
+        return bool(ubs_dbh_adatok()[0].get(token))
+    if k in (('gorog', 7), ('heber', 7)):
+        return sece_megfelelok(token) is not None
+    if k == ('heber', 8):
+        r = bdb_etimologia().get(token)
+        return bool(r) and r['allapot'] in ('gepi', 'jovahagyott')
+    if k == ('heber', 6):
+        return token in lxx_versszintu_parok()
+    if k == ('heber', 10):
+        return heber_lemma_kiejtes_van(token)
+    return None
+
+
+def heber_lemma_kiejtes_van(token):
+    lk = tbesg_tbesh_index()
+    nyers = lk[0].get(token) or lk[1].get(token)
+    return bool(nyers) and heber_lemma_kiejtes(nyers[0], nyers[1]) is not None
+
+
+def szerep_lefedettseg_cella(nyelv, sor, token):
+    """A törzscikk lefedettségi mátrixának cellája: forrás-hivatkozás, ha az `adatosítva` szerepnek van
+    adata a tokenhez; `a forrás nem tárgyalja`, ha a forrásban nincs szócikk (D11); H7121 héber 1.:
+    a BDB 2.c mutató (DT-F42a); `javaslat` / `nincs forrás` / `nincs adatosítva`: az állapot maga."""
+    allapot = sor['allapot']
+    if allapot != 'adatosítva':
+        return allapot
+    n = int(sor['sorrend'])
+    if (nyelv, n, token) in SZEREP_TOKEN_MUTATO:
+        return 'BDB 2.c (DT-F42a)' if (nyelv, n, token) == ('heber', 1, 'H7121') else 'bekötés később'
+    van = szerep_token_adat_van(nyelv, n, token)
+    if van is False:
+        return 'a forrás nem tárgyalja'
+    return sor.get('forras', EM_DASH)
+
+
 # Szerepenkénti egyedi építők: (nyelv, sorrend) -> függvény(nyelv, n, tokenek_ny, reszek, ctx) -> bekezdések.
 # A többi szerep az alábbi általános ágakon (SZEREP_SZOTAR / SZEREP_SAJAT) épül.
 SZEREP_EPITO = {
