@@ -127,6 +127,16 @@ def h2(lines, title):
     return idx(lines, lambda s: s.startswith('## ') and s[3:].startswith(title))
 
 
+def olvaso_forras(szoveg):
+    """F09 J3 (ellenőri 6.): az `adat/szotar_szerepek.tsv` `forras` mezője döntéshivatkozást is hordoz
+    (a jegyzet az adatban megmarad). Az olvasói törzscikk ezt nem rendereli: a kivezetett szótár
+    megjegyzése (`; a Girdlestone kivezetve, D18`) és a puszta döntésszám (`, D16`, `, D20`) kimarad
+    (K13: Cremer/Girdlestone-említés 0 a törzscikkben)."""
+    szoveg = re.sub(r';\s*a (?:Girdlestone|Cremer) kivezetve, D\d+', '', szoveg)
+    szoveg = re.sub(r', D\d+(?=[;,)])', '', szoveg)
+    return szoveg
+
+
 def torzscikk_szoveg(m, lex_szoveg, model):
     L = lex_szoveg.split('\n')
 
@@ -350,7 +360,7 @@ def torzscikk_szoveg(m, lex_szoveg, model):
     for szerep in szerep_sorrend:
         gr = gorog_szerepek[szerep]
         hr = heber_szerepek.get(szerep, {})
-        w('| %s | %s | %s |' % (szerep, gr.get('forras', '—'), hr.get('forras', '—')))
+        w('| %s | %s | %s |' % (szerep, olvaso_forras(gr.get('forras', '—')), olvaso_forras(hr.get('forras', '—'))))
     w('')
 
     w('### Lefedettség szavanként'); w('')
@@ -365,7 +375,8 @@ def torzscikk_szoveg(m, lex_szoveg, model):
         szerepek = gorog_szerepek if nyelv == 'gorog' else heber_szerepek
         sor = [token]
         for szerep in szerep_sorrend:
-            sor.append(LG.szerep_lefedettseg_cella(nyelv, szerepek[szerep], token) if szerep in szerepek else '—')
+            sor.append(olvaso_forras(LG.szerep_lefedettseg_cella(nyelv, szerepek[szerep], token))
+                       if szerep in szerepek else '—')
         w('| ' + ' | '.join(sor) + ' |')
     w('')
 
