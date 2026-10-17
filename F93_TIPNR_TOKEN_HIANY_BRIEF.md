@@ -9,7 +9,7 @@ modell: sonnet
 allapot: lezarva
 ag: claude/f93-tipnr-token-hiany
 pr: https://github.com/basesoft777/Bible-Study/pull/355
-lezarva_osszegzes: "A TIPNR 62 token nélküli alapszáma (88 sor; 16 görög, 46 héber) mind osztályozva, 17 nem eldönthető; a jelölés a naplok/F93_alapszamok.tsv-ben és a jelentésben áll (DT-F93a–d, N-F93a–c); az osztálylista bővülését a jelentés Egyeztetett eltérés szakasza rögzíti."
+lezarva_osszegzes: "A TIPNR 62 token nélküli alapszáma (88 sor; 16 görög, 46 héber) mind osztályozva, 17 nem eldönthető; a jelölés a naplok/F93_alapszamok.tsv-ben és a jelentésben áll (DT162–d, N-F93a–c); az osztálylista bővülését a jelentés Egyeztetett eltérés szakasza rögzíti."
 ad: a 62 alapszám (88 TIPNR-sor) mindegyike osztályozva (szövegváltozat / számozási eltérés / adathiány / nem eldönthető), forrásmegjelöléssel naplózva; az eredmény jelölés, nem javítás
 kovetkezo: "—"
 fugg: [88]
@@ -59,7 +59,7 @@ sem a TIPNR, sem a TAGNT nem módosul, és token sem keletkezik.
   `igehely` (a TIPNR-sor(ok)), `osztaly`, `tagnt_strong_a_versen`, `tagnt_kiadas`, `indoklas`,
   `proveniencia` (`scope=… | forras=… | ts=…`). TSV-írás `'\t'.join()`-nal, nem `csv`-vel.
 - Összesítő a `naplok/F93_jelentes.md`-ben: osztályonkénti darabszám, a nem eldönthetők listája.
-- A jelölés a DT-F93a döntése szerint (3. pont, ⛔).
+- A jelölés a DT162 döntése szerint (3. pont, ⛔).
 
 **Nincs benne**
 
@@ -80,7 +80,7 @@ sem a TIPNR, sem a TAGNT nem módosul, és token sem keletkezik.
 - **M1 — a szkript és a lista** (külön commit): `eszkozok/f93_tipnr_token_hiany.py` (UTF-8 őr az
   importok után, TSV `split('\t')`), a `naplok/F93_alapszamok.tsv` megírása; két futás
   bájtazonos.
-- **M2 — a jelölés** (külön commit) a DT-F93a szerint:
+- **M2 — a jelölés** (külön commit) a DT162 szerint:
   - (a) csak a lista és a jelentés — nincs kódváltozás, az `ir`-ből a `sqlite_epit.py`,
     `teszt_sqlite_epit.py` és `adat/SEMA.md` kimarad;
   - (b) új ok a `pardes.db` `normalizalas_jelentes`-ében (`token nélküli alapszám: <osztály>`),
@@ -107,7 +107,7 @@ sem a TIPNR, sem a TAGNT nem módosul, és token sem keletkezik.
 
 | Tétel | Kérdés | Javaslat | Állapot |
 |---|---|---|---|
-| DT-F93a | Hol áll a jelölés: (a) csak `naplok/F93_alapszamok.tsv` + jelentés, vagy (b) a `pardes.db` `normalizalas_jelentes`-ében is? | (a), ha a `nem eldönthető` osztály üres vagy kicsi; (b), ha az olvasói felületnek (#92) kell a lekérdezéskor | 🟢 eldöntve: (a), a hatókör (iii) — mind a 62 alapszám (görög TAGNT, héber TAHOT), az osztályok + „alak-/névhasítás”, „nincs Károli-vers” (a felhasználó döntése, 2026-10-15, chat) |
-| DT-F93b | A héber „szövegváltozat” osztály sorsa (a TAHOT-nak nincs Kritikai kiadás mezője) | (i) megszűnik: „fordítási névalak” (csak ESV/KJV/NIV/ASV) és „ketiv/qere” (LK/LQ/Mss, csak ha a TAHOT jelöli, különben „nem eldönthető”) | 🟢 eldöntve: (i) (a felhasználó döntése, 2026-10-15, chat); a G3 csak a görög „szövegváltozat” sorokra vonatkozik |
-| DT-F93c | Jelölés nélküli görög szövegváltozat (G2179, G3535) | (i) csak egyező glosszájú tokennel, amelynek `Kritikai kiadás` mezője nem tartalmazza a TR-t; különben „nem eldönthető” | 🟢 eldöntve: (i) (a felhasználó döntése, 2026-10-15, chat) |
-| DT-F93d | A proveniencia `ts` mezője | (i) a `pardes.db` `meta.epites_ts` értéke (adatállapot), nem a futásé; a G4 miatt | 🟢 eldöntve: (i) (a felhasználó döntése, 2026-10-15, chat) |
+| DT162 | Hol áll a jelölés: (a) csak `naplok/F93_alapszamok.tsv` + jelentés, vagy (b) a `pardes.db` `normalizalas_jelentes`-ében is? | (a), ha a `nem eldönthető` osztály üres vagy kicsi; (b), ha az olvasói felületnek (#92) kell a lekérdezéskor | 🟢 eldöntve: (a), a hatókör (iii) — mind a 62 alapszám (görög TAGNT, héber TAHOT), az osztályok + „alak-/névhasítás”, „nincs Károli-vers” (a felhasználó döntése, 2026-10-15, chat) |
+| DT163 | A héber „szövegváltozat” osztály sorsa (a TAHOT-nak nincs Kritikai kiadás mezője) | (i) megszűnik: „fordítási névalak” (csak ESV/KJV/NIV/ASV) és „ketiv/qere” (LK/LQ/Mss, csak ha a TAHOT jelöli, különben „nem eldönthető”) | 🟢 eldöntve: (i) (a felhasználó döntése, 2026-10-15, chat); a G3 csak a görög „szövegváltozat” sorokra vonatkozik |
+| DT164 | Jelölés nélküli görög szövegváltozat (G2179, G3535) | (i) csak egyező glosszájú tokennel, amelynek `Kritikai kiadás` mezője nem tartalmazza a TR-t; különben „nem eldönthető” | 🟢 eldöntve: (i) (a felhasználó döntése, 2026-10-15, chat) |
+| DT165 | A proveniencia `ts` mezője | (i) a `pardes.db` `meta.epites_ts` értéke (adatállapot), nem a futásé; a G4 miatt | 🟢 eldöntve: (i) (a felhasználó döntése, 2026-10-15, chat) |

@@ -69,7 +69,7 @@ Két egymás utáni kattintás sorosítva fut (zárfájl `~/pardes/.indit.zar`, 
 PARDES_DB=/út/pardes.db python eszkozok/olvaso_szerver/alkalmazas.py --port 8765
 # éles jellegű
 PARDES_DB=/út/pardes.db ./telepit.sh ellenorzes && PARDES_DB=/út/pardes.db ./telepit.sh indit
-# tesztek: EGYETLEN belépési pont (#100, DT-F100a (c)); Windowsról és WSL-ből is, a WSL venv-jét és a WSL-natív ~/pardes/pardes.db-t választja
+# tesztek: EGYETLEN belépési pont (#100, DT160 (c)); Windowsról és WSL-ből is, a WSL venv-jét és a WSL-natív ~/pardes/pardes.db-t választja
 python eszkozok/teszt_futtat.py            # mind (a lassú teszt_szintek.py-val); --gyors: nélküle; --fajl teszt_tervezo: egy fájl; --reszletes
 # egy fájl kézzel (WSL venv): PARDES_DB=$HOME/pardes/pardes.db python eszkozok/olvaso_szerver/teszt_tervezo.py
 ```

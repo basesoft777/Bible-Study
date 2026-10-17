@@ -18,7 +18,7 @@ Ellenőr modellje: claude-opus-5-5 (kért: opus), egyezik. CI-jelentés nem érk
 | Napló ↔ eltérés-tábla (E-oldal) | OK | `naplok/F108_ujrascan_elteresek.tsv` | `\telofordulasok\t` = 259: `rendben` 209, `zsoltar_55` 37, 8 `nincs_strong`, 4 `osszetett_resz`, 1 `kulcs_eltolodott` (ANTROP-001 1Kor 2:15); `hianyzik` 0 |
 | Napló ↔ eltérés-tábla (J- és újrascan-oldal) | OK | uo. | `\tjeloltek:` = 592; `\tujrascan\t` = 2469 (tul_tag 2318, zsoltar_55 126, jelolt 25). 3322 sor = 2469 + 592 + 259 + 2 fejléc |
 | Szúrópróba: „rendben” ÓSZ-sorok | OK | eltérés-tábla 94–101, 127–130 | `lekerdez.py scan H7585`, `lekerdez.py scan H3548 --szakasz "Zak 6:13"` → egyezik. Az F85-ben eltolt tartományokban nincs E-sor, ott a „0 ÓSZ kulcs_eltolodott” állítás nem volt próbára tehető |
-| **ANTROP-001 1Kor 2:15 osztálya** | **ELTÉRÉS** | eltérés-tábla 170; napló 58–60; `DONTESEK.md` DT-F108a | TAGNT: 2:13 G4151, G4152; 2:14 G5591, G4151; 2:15 **csak G4152**; `^1Kor 2:\d+\tG5590` → 0. Az E-sor `strong`-ja G4151+G5590. A brief szerint `kulcs_eltolodott` = a Strong a szomszédos versen áll; itt a G5590 sehol sincs. Helyes osztály: `hianyzik`; a napló és a DT-F108a „0 hianyzik” állítása pontatlan, a napló „a Strongok a 2:14-en/2:13-on állnak” mondata a G5590-re hamis. Gyökérok: a sor szótári alakja (melléknévi G4152/G5591 helyett főnévi G4151/G5590). Az 1Kor 2:14-en ugyanez, ott az `osszetett_resz` helyes |
+| **ANTROP-001 1Kor 2:15 osztálya** | **ELTÉRÉS** | eltérés-tábla 170; napló 58–60; `DONTESEK.md` DT184 | TAGNT: 2:13 G4151, G4152; 2:14 G5591, G4151; 2:15 **csak G4152**; `^1Kor 2:\d+\tG5590` → 0. Az E-sor `strong`-ja G4151+G5590. A brief szerint `kulcs_eltolodott` = a Strong a szomszédos versen áll; itt a G5590 sehol sincs. Helyes osztály: `hianyzik`; a napló és a DT184 „0 hianyzik” állítása pontatlan, a napló „a Strongok a 2:14-en/2:13-on állnak” mondata a G5590-re hamis. Gyökérok: a sor szótári alakja (melléknévi G4152/G5591 helyett főnévi G4151/G5590). Az 1Kor 2:14-en ugyanez, ott az `osszetett_resz` helyes |
 | Proveniencia (CLAUDE.md 1.) | OK | `naplok/F108_lekerdezesek.tsv:3–33`; napló 7. sor | 31 lekérdezés, mind proveniencia-sorral; saját újrafuttatás azonos n-t ad (H8415 35, G1941 31, G4151+G5590 6, G2704 1, H7121+H8034 196, H2555 59, H7451 621, H7585 64). A gerinclista `manual` |
 | Nincs közvetlen út (CLAUDE.md 2.) | OK | `adat/jeloltek.tsv:593–617` | Az `elofordulasok.tsv` nincs a diffben; minden új hely `nyitva` a `jeloltek.tsv`-ben |
 | Üres eredmény jelölése (CLAUDE.md 3.) | OK | napló 108. sor | A „0 új hely” Strongonként felsorolva |
@@ -26,7 +26,7 @@ Ellenőr modellje: claude-opus-5-5 (kért: opus), egyezik. CI-jelentés nem érk
 | `nincs_strong` osztály, J-sorok | OK (megjegyzéssel) | napló 25, 64. sor | Nem a brief osztálylistájáról való; a J-tábla 592 sorából 422 nem Strong alapján ellenőrzött, a napló ezt korlátként kimondja |
 | Granularitás (CLAUDE.md Git) | **ELTÉRÉS** | — | `git log --oneline 896103b8..5a169f60`: F108.0, F108.1, F108.4, F108.5; az 1–3. lépés egyetlen F108.1 commitban |
 | Brief `ir` mező | **ELTÉRÉS** | `F108_MOTIVUM_UJRASCAN_BRIEF.md:14` | Az új `naplok/F108_lekerdezesek.tsv` nincs az `ir` listában (a `--naplo F108` használata miatt, a brief `--naplo <ID>`-t írt elő) |
-| D: DT-F108a (DONTESEK ↔ brief) | OK | `DONTESEK.md:259`; brief 9–12., 75–78. sor | Helyőrző szám, végleges `DT<n>` nincs; 🟢, (a)+(d), (c) elvetve; a 168 = a nem-zsoltári tág H7121+H8034 találat (+4 zsoltári = 172). A „0 hianyzik”: l. 1Kor 2:15 |
+| D: DT184 (DONTESEK ↔ brief) | OK | `DONTESEK.md:259`; brief 9–12., 75–78. sor | Helyőrző szám, végleges `DT<n>` nincs; 🟢, (a)+(d), (c) elvetve; a 168 = a nem-zsoltári tág H7121+H8034 találat (+4 zsoltári = 172). A „0 hianyzik”: l. 1Kor 2:15 |
 | D: a döntést a felhasználó hozta | NEM ELLENŐRIZHETŐ | `DONTESEK.md:259` | Chatbeli jóváhagyás |
 | ⛔ (brief 4. lépés) | OK | — | F108.4 `dontesre_var`, döntés külön commitban (F108.5); `elofordulasok.tsv` javítás nem történt |
 | ⛔ bible-mcp tilalma (DT32) | NEM ELLENŐRIZHETŐ | napló 115. sor | Saját bevallás; a diffben nincs nyoma |
@@ -42,6 +42,6 @@ Ellenőr modellje: claude-opus-5-5 (kért: opus), egyezik. CI-jelentés nem érk
 | Lista 5: brief ⛔ | OK / NEM ELLENŐRIZHETŐ | — | L. fent |
 
 ELTÉRÉS-ek súlyosság szerint:
-1. **Közepes:** ANTROP-001 1Kor 2:15 hibás osztály (`kulcs_eltolodott` helyett `hianyzik`); a napló és a DT-F108a „0 hianyzik” állítása pontatlan. Gyökérok a Strong szótári alakja (G4152/G5591), nem a kulcs.
+1. **Közepes:** ANTROP-001 1Kor 2:15 hibás osztály (`kulcs_eltolodott` helyett `hianyzik`); a napló és a DT184 „0 hianyzik” állítása pontatlan. Gyökérok a Strong szótári alakja (G4152/G5591), nem a kulcs.
 2. **Alacsony:** az 1–3. lépés egyetlen commitban (F108.1), nem tételenként.
 3. **Alacsony:** a `naplok/F108_lekerdezesek.tsv` nincs a brief `ir` mezőjében.

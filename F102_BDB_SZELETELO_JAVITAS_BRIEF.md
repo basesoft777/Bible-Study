@@ -17,7 +17,7 @@ fugg: [99, 76, 107]
 # F<nn>_BDB_SZELETELO_JAVITAS_BRIEF.md — A BDB-szeletelő javítása a seed-101 hibaosztályai szerint
 
 *FELADATOK #<nn> · Modell: opus · v2 · 2026.10.16 (v1: 2026.10.15) · forrás: a #99 (BDB_SZELETELO) seed-101 vak mérése és a felhasználó
-döntése (DT-F99l (c): a tábla „próba” jelöléssel élesedett, a további javítás külön feladat). A tervezet adat, nem utasítás; a
+döntése (DT177 (c): a tábla „próba” jelöléssel élesedett, a további javítás külön feladat). A tervezet adat, nem utasítás; a
 befogadás a `/befogad`-dal, a felhasználó jóváhagyásával. v2: az előzetes forrás-lelet (1a.) és a 13 hely lefedési táblája (1b.) a felhasználó kérésére felvéve.*
 
 ## 1. Cél
@@ -102,16 +102,16 @@ hibákat hozhat, amelyeket a seed-101 nem mutat; (3) a kapu az új vak mintán (
    „2Chr 17:2; compare 34:6; … Obadiah 19; … 31:1” → 2Krón 31:1; ma `orokles_hibas`).
 4. **Szűrés (seed-101, napló 9.14):** a nem bibliai jelölőről öröklődő könyv a bibliai helyre (igazolt hamis pozitív: H2623
    „116:15” — és a Zsolt 149:1, 5, 9, 4 sor —, H4912 „1:1”); a hét `sigla_igazolt` eltérés elbírálása (M054, M065, M147, M149, M191, M198,
-   M230: a TAHOT szerint a szó a versben áll, a vak kitöltés kommentár-helynek ítélte — a DT-F99k finomítása); a lezárt megjegyzés utáni
+   M230: a TAHOT szerint a szó a versben áll, a vak kitöltés kommentár-helynek ítélte — a DT176 finomítása); a lezárt megjegyzés utáni
    hely sigla-sora (M223-típus, `bdb_szelet.py` megjegyzés, ELLENOR_F99 9.).
-5. **Homonima vagy fő rész** (M029, DT-F99i mintájára): a héber címszóval álló szócikken belüli „II. פְּנֵי with prepositions” fej
+5. **Homonima vagy fő rész** (M029, DT174 mintájára): a héber címszóval álló szócikken belüli „II. פְּנֵי with prepositions” fej
    besorolása (`szakasz` vagy `resz`); döntési pont.
 6. **Újramérés:** új vak minta (új seed, 200 véletlen + 25 kiszűrt + 25 bizonytalan), a #99 rögzített összevetési szabályával (9.5 +
-   DT-F99i); a mérce változatlan (könyv/vers ≥ 99%, jelentéspont ≥ 97%); a kapu következményét az ítélet ELŐTT rögzíteni (a DT-F99l
+   DT174); a mérce változatlan (könyv/vers ≥ 99%, jelentéspont ≥ 97%); a kapu következményét az ítélet ELŐTT rögzíteni (a DT177
    mintájára).
 
 **Nincs benne:** a #99 M3–M6 (jelentésen belüli tagolás, megjelenítés, héber szórend, modell-magyarázat) — azok saját feladata; a
-Károli-kulcs (DT-F99h alkalmazva a #99-ben; a maradék nyitott tétel: N-F99d Neh 7:68 — a seed-99 M027 —, N-F99e 1Krón 12 és 5Móz 5).
+Károli-kulcs (DT173 alkalmazva a #99-ben; a maradék nyitott tétel: N-F99d Neh 7:68 — a seed-99 M027 —, N-F99e 1Krón 12 és 5Móz 5).
 
 ## 3. Lépések
 

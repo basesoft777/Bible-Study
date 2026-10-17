@@ -394,7 +394,7 @@ Egy tematikus tanulmány lezárásakor a következő lépések MINDEGYIKE szüks
 - [ ] **9. `motivumlog/PaRDeS_motivumok_CHANGELOG.md` frissítve** — a lezárás tényének és fő eredményeinek rögzítése (a szokásos, felhasználói jóváhagyással előzetesen egyeztetett szöveggel)
 - [ ] **10. GitHub-feltöltésre emlékeztetés** — jelezve a felhasználónak, hogy a frissített motívumlog és index GitHubra is felkerülhet (`GitHub_feltoltesi_workflow.md` szerint)
 - [ ] **11. STEPBible-ellenőrzés dokumentálva** — a tanulmányban és a naplóban rögzítve, hogy a lezáráshoz milyen Strong-számokra, milyen keresési paraméterekkel (versen belüli / szomszédos vers, teljes ÚSZ/ÓSZ vagy csak egy könyv) futott le az ellenőrzés, és mikor. Formátum: 🔍 STEPBible-ellenőrizve: [Strong-számok] [keresési mód], [forrás: TAGNT/TAHOT], [dátum] — a `lekerdez.py` proveniencia-soraival (l. P1–P6)
-- [ ] **12. Érintett bővített tanulmányok visszahivatkozása** — ⏸ *Felfüggesztve (DT84 (7), DT-F23b, 2026-10-17): kézi visszahivatkozás / másolás a bővített tanulmányokba nem készül; a visszamutató link generált lesz (N-F23a), a pont teljes átírása a #11-ben.* — minden,
+- [ ] **12. Érintett bővített tanulmányok visszahivatkozása** — ⏸ *Felfüggesztve (DT84 (7), DT182, 2026-10-17): kézi visszahivatkozás / másolás a bővített tanulmányokba nem készül; a visszamutató link generált lesz (N-F23a), a pont teljes átírása a #11-ben.* — minden,
   a tematikus study 1. pontjának (kereszthivatkozási táblázat) saját,
   katalogizált előfordulás-listájában szereplő igehelyhez tartozó,
   meglévő bővített study 4. pontjában (Kapcsolódó igehelyek / 🔗-blokk)
@@ -440,13 +440,13 @@ Egy tematikus tanulmány lezárásakor a következő lépések MINDEGYIKE szüks
 - [ ] **13. Verzió-címke** — a study fejlécének és a kapu-címsoroknak a
   címkéje a „Verzió-címke” alszakasz szerint.
 
-**Ha bármelyik pont kimarad, a lezárás nem tekinthető véglegesnek** (kivétel: a 12. pont, amely a DT84 (7) / DT-F23b szerint felfüggesztve, amíg a #11 át nem írja) — az adatréteg, a generált blokkok és a study inkonzisztens állapotba kerülhetnek (pl. az `adat/motivumok.tsv` már `publikálható` státuszt mutat, de a generált blokkok nem lettek újragenerálva, vagy a study új igehelyet állít, amely nincs az `adat/elofordulasok.tsv`-ben).
+**Ha bármelyik pont kimarad, a lezárás nem tekinthető véglegesnek** (kivétel: a 12. pont, amely a DT84 (7) / DT182 szerint felfüggesztve, amíg a #11 át nem írja) — az adatréteg, a generált blokkok és a study inkonzisztens állapotba kerülhetnek (pl. az `adat/motivumok.tsv` már `publikálható` státuszt mutat, de a generált blokkok nem lettek újragenerálva, vagy a study új igehelyet állít, amely nincs az `adat/elofordulasok.tsv`-ben).
 
 ---
 
 ### Tartalmi visszaírás bővített tanulmányokba
 
-> ⏸ **Felfüggesztve (DT84 (7), DT-F23b, 2026-10-17):** az alábbi kézi visszaírási szabály nem alkalmazandó: kézi másolás egyik irányban sincs. Új, igehely-szintű lelet adatrésze a `adat/jeloltek.tsv`-n át, döntéssel kerül az adatrétegbe; a bővített tanulmány szövegébe nem kerül. A szabály a B szerkezetben megszűnik; a teljes átírás a #11-ben (`sablonok/9_PaRDeS_motivum_forras_sablon.md` 7. pont).
+> ⏸ **Felfüggesztve (DT84 (7), DT182, 2026-10-17):** az alábbi kézi visszaírási szabály nem alkalmazandó: kézi másolás egyik irányban sincs. Új, igehely-szintű lelet adatrésze a `adat/jeloltek.tsv`-n át, döntéssel kerül az adatrétegbe; a bővített tanulmány szövegébe nem kerül. A szabály a B szerkezetben megszűnik; a teljes átírás a #11-ben (`sablonok/9_PaRDeS_motivum_forras_sablon.md` 7. pont).
 
 A 12. ponttól (mutató) függetlenül, külön eldöntendő minden esetben: ha a
 tematikus study elkészítése — vagy egy későbbi, már lezárt tematikus

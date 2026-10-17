@@ -7,8 +7,8 @@ ELTÉRÉS: 5 tétel (mind javítva az F100.9 commitban)
 | pont | eredmény | indok |
 |---|---|---|
 | modell | OK | ellenőr: `claude-opus-5-5` (kért: `opus`); a végrehajtó naplója `claude-sonnet-5-5` |
-| DT-F100a (c) | OK | `teszt_futtat.py` a (c) változatot valósítja meg; 🟢 a DONTESEK-ben |
-| DT-F100b | OK (megjegyzés) | az ütemezett feladat nem jött létre; a tennivaló csak a DONTESEK-ben élt → a brief M2.2 lépésébe felvéve |
+| DT160 (c) | OK | `teszt_futtat.py` a (c) változatot valósítja meg; 🟢 a DONTESEK-ben |
+| DT161 | OK (megjegyzés) | az ütemezett feladat nem jött létre; a tennivaló csak a DONTESEK-ben élt → a brief M2.2 lépésébe felvéve |
 | 5/1 kétszeri kattintás | OK (gépi); parancsikonnal nem ellenőrizhető | `flock`-os soros indítás; M2.2 a felhasználóé |
 | 5/2 ≤5 mp újraindulás | OK (napló szerint) | 1,0–1,1 mp, legrosszabb 3,3 mp |
 | 5/3 szinkron | OK | kulcs: `meta.epites_ts` (nem mtime); `cp` → ideiglenes név → `mv -f` (atomi) |

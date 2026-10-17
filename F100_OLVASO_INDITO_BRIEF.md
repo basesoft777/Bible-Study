@@ -9,7 +9,7 @@ munka: folyamat
 allapot: lezarva
 ag: claude/olvaso-indito
 ad: egy közös indító-szkript, amelyet a három asztali parancsikon hív: leállítja a régi példányt, a WSL-beli pardes.db-t a Windows-oldalihoz igazítja (csak eltérésnél másol), és kódváltozáskor magától újrainduló szervert indít; a lap láblécében ág, kódverzió és adatbázis, figyelmeztetéssel, ha valami nem friss; a tesztek egyetlen belépési pontról, natív fájlokból futnak
-kovetkezo: merge (M2.2 és DT-F100b kész; a .bat tartalék ág törölhető)
+kovetkezo: merge (M2.2 és DT161 kész; a .bat tartalék ág törölhető)
 olvas: [eszkozok/olvaso_szerver/README.md, eszkozok/olvaso_szerver/frissesseg.py, eszkozok/olvaso_szerver/manifest_pardes_db.tsv, eszkozok/olvaso_szerver/pyproject.toml]
 ir: [eszkozok/olvaso_szerver/indit.sh, eszkozok/olvaso_szerver/allapot.py, eszkozok/olvaso_szerver/alkalmazas.py, eszkozok/olvaso_szerver/oldalak.py, eszkozok/olvaso_szerver/sablonok/alap.html, eszkozok/olvaso_szerver/teszt_indito.py, eszkozok/olvaso_szerver/README.md, eszkozok/teszt_futtat.py, CLAUDE.md, .gitattributes, naplok/OLVASO_INDITO_M0_felmeres.md, naplok/OLVASO_INDITO_M1_merés.md, naplok/OLVASO_INDITO_M2_gepi_proba.md, naplok/ELLENOR_F100.md, DONTESEK.md, naplok/OLVASO_INDITO_zaras.md]
 pr: https://github.com/basesoft777/Bible-Study/pull/351
@@ -49,12 +49,12 @@ Ami még nincs megoldva (2026-10-14/15-ei esetek):
   - `alkalmazas.py`: `--ujratolt` kapcsoló (Werkzeug-újratöltő **`stat` módban**: a `/mnt/c`-n az inotify nem működik); a figyelt fájlok: a szerver `.py` fájljai, a `sablonok/`, a `konfig/`, a pilot `bdb_szelet.py`-ja.
   - Lábléc (`sablonok/alap.html`): ág, rövid commit-hash, a `pardes.db` `epites_ts`-e, kiadás; figyelmeztető sor, ha az ág nem `main`, vagy a WSL-másolat régebbi.
   - A három asztali parancsikon átírása: egy-egy sor, amely az `indit.sh`-t hívja (a felhasználó asztalán, a repón kívül).
-  - `eszkozok/teszt_futtat.py`: a tesztek belépési pontja; a környezetet magától választja (DT-F100a), a `PARDES_DB`-t a natív példányra állítja; a CLAUDE.md „Shell” szakaszába egy sor.
+  - `eszkozok/teszt_futtat.py`: a tesztek belépési pontja; a környezetet magától választja (DT160), a `PARDES_DB`-t a natív példányra állítja; a CLAUDE.md „Shell” szakaszába egy sor.
   - `teszt_indito.py`: az `indit.sh` szinkron-döntésének és a lábléc-figyelmeztetésnek a tesztje (ideiglenes adatbázisokkal).
 - **Nincs benne:**
   - az éles (gunicorn) üzemeltetés és a hosting;
   - a `pardes.db` újraépítése (az a `sqlite_epit.py` dolga);
-  - automatikus indítás bejelentkezéskor (DT-F100b dönt róla).
+  - automatikus indítás bejelentkezéskor (DT161 dönt róla).
 
 ## 4. Lépések
 
@@ -62,18 +62,18 @@ Ami még nincs megoldva (2026-10-14/15-ei esetek):
 
 1. A három parancsikon mai tartalma, a `~/pardes` állapota (git-klón, venv, `pardes.db`, hiányzó `konkordancia/`), a Windows-oldali `pardes.db` `epites_ts`-e; mérés: a `meta` tábla olvasásának ideje a `/mnt/c`-n.
 2. A Werkzeug `stat`-újratöltő mérése a `/mnt/c`-n (hány fájlt figyel, mennyi CPU-t visz el üresjáratban).
-3. ⛔ **DT-F100a:** a tesztkörnyezet: (a) Windows-os Python 3.12 venv (`uv`-vel; telepítés a felhasználó jóváhagyásával), a tesztek teljesen natívan; (b) a WSL venv-je, `PARDES_DB` a natív példányra, a `konkordancia/` a `~/pardes`-be szinkronizálva; (c) a WSL venv-je, `PARDES_DB` a natív példányra, a `konkordancia/`-t olvasó tesztek a `/mnt/c`-ről (lassú, de nincs másolat). **DT-F100b:** induljon-e a 8765-ös (belső) szerver magától bejelentkezéskor (Windows ütemezett feladat; tartós beállítás, a felhasználó jóváhagyásával). Megállás.
+3. ⛔ **DT160:** a tesztkörnyezet: (a) Windows-os Python 3.12 venv (`uv`-vel; telepítés a felhasználó jóváhagyásával), a tesztek teljesen natívan; (b) a WSL venv-je, `PARDES_DB` a natív példányra, a `konkordancia/` a `~/pardes`-be szinkronizálva; (c) a WSL venv-je, `PARDES_DB` a natív példányra, a `konkordancia/`-t olvasó tesztek a `/mnt/c`-ről (lassú, de nincs másolat). **DT161:** induljon-e a 8765-ös (belső) szerver magától bejelentkezéskor (Windows ütemezett feladat; tartós beállítás, a felhasználó jóváhagyásával). Megállás.
 
 ### M1 — indító, újratöltés, lábléc
 
 1. `indit.sh`, `--ujratolt`, lábléc; `teszt_indito.py`.
 2. A parancsikonok átírása az `indit.sh`-ra.
-3. `teszt_futtat.py` a DT-F100a szerint; a CLAUDE.md sora; README.
+3. `teszt_futtat.py` a DT160 szerint; a CLAUDE.md sora; README.
 
 ### M2 — próba ⛔
 
 1. Gépi próba: indítás → kódfájl módosítása (`touch`) → az újraindulás a naplóban; a Windows-oldali `pardes.db` `epites_ts`-ének eltérése → másolás az indításkor; ágváltás → a lábléc figyelmeztet.
-2. ⛔ A felhasználó kipróbálja a három parancsikont — **feltétele: a merge, és hogy a fő checkout a `main`-en álljon** (addig a parancsikonok tartalék ága fut). Ezután, a felhasználó külön jóváhagyásával (DT-F100b): a 8765-ös (belső) példány ütemezett feladata bejelentkezéskorra. Megállás; zárónapló.
+2. ⛔ A felhasználó kipróbálja a három parancsikont — **feltétele: a merge, és hogy a fő checkout a `main`-en álljon** (addig a parancsikonok tartalék ága fut). Ezután, a felhasználó külön jóváhagyásával (DT161): a 8765-ös (belső) példány ütemezett feladata bejelentkezéskorra. Megállás; zárónapló.
 
 ## 5. Elfogadási feltételek
 
@@ -81,10 +81,10 @@ Ami még nincs megoldva (2026-10-14/15-ei esetek):
 - Egy `.py` vagy sablonfájl módosítása után a futó szerver legfeljebb 5 másodpercen belül az új kóddal válaszol (a lábléc commit-hashe vagy a módosított fájl hatása mutatja).
 - Ha a Windows-oldali `pardes.db` újabb, az indításkor a másolat frissül; ha azonos, nincs másolás (a napló kiírja, melyik történt). A másolás közben a régi példány ép marad (ideiglenes név + átnevezés).
 - A lábléc mindhárom kiadásban mutatja az ágat, a commitot és az adatbázis építési idejét; nem `main` ágon és régi adatbázisnál figyelmeztet.
-- `teszt_futtat.py`-vel a négy tesztfájl (`teszt_olvaso_szerver.py`, `teszt_szintek.py` és a további kettő) együtt a DT-F100a (c) szerinti környezetben együtt 5 percen (300 mp) belül lefut (az M1 mérése: 274,6 mp a hat fájlra; referencia: `teszt_olvaso_szerver.py` 118–124 mp, `teszt_szintek.py` #98-nál 19 perc párhuzamos futás mellett); a teszt induláskor kiírja, melyik adatbázist nyitotta meg, és figyelmeztet, ha az a `/mnt/c` alatt van.
+- `teszt_futtat.py`-vel a négy tesztfájl (`teszt_olvaso_szerver.py`, `teszt_szintek.py` és a további kettő) együtt a DT160 (c) szerinti környezetben együtt 5 percen (300 mp) belül lefut (az M1 mérése: 274,6 mp a hat fájlra; referencia: `teszt_olvaso_szerver.py` 118–124 mp, `teszt_szintek.py` #98-nál 19 perc párhuzamos futás mellett); a teszt induláskor kiírja, melyik adatbázist nyitotta meg, és figyelmeztet, ha az a `/mnt/c` alatt van.
 - A meglévő tesztek zöldek; a #98 regiszter-őre zöld (a lábléc új elemei regisztrálva vagy indokolva kizárva).
 
 ## 6. Döntésnapló
 
-- **DT-F100a** (M0): a tesztkörnyezet — (a) Windows-os 3.12 venv `uv`-vel / (b) WSL venv + `konkordancia/` szinkron / (c) WSL venv, `konkordancia/` a `/mnt/c`-ről.
-- **DT-F100b** (M0): automatikus indítás bejelentkezéskor (ütemezett feladat) — igen / nem.
+- **DT160** (M0): a tesztkörnyezet — (a) Windows-os 3.12 venv `uv`-vel / (b) WSL venv + `konkordancia/` szinkron / (c) WSL venv, `konkordancia/` a `/mnt/c`-ről.
+- **DT161** (M0): automatikus indítás bejelentkezéskor (ütemezett feladat) — igen / nem.

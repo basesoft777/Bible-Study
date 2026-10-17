@@ -20,19 +20,19 @@ hivatkozás helye). A felhasználó utasítása (2026-10-15): javítás előtt m
 
 **Kapu (a felhasználó 3. pontja):** a jelentéspontban 15 szeletelő-hiba marad (M076-ot forrásbeli OCR-ként külön is lehet sorolni: akkor
 14) — **több mint 6**, tehát a mérce a seed-100-on **nem teljesült**: javítás, újragenerálás, újramérés seed 101-gyel, változatlan
-mércével és szabályokkal (a jóváhagyás után). A három kulcs-ellentmondásból kettő a két római szint esete (DT-F99i), egy a szócikk végi
+mércével és szabályokkal (a jóváhagyás után). A három kulcs-ellentmondásból kettő a két római szint esete (DT174), egy a szócikk végi
 „— Note.” helye.
 
 ## 2. Jelentéspont — 18 eltérés
 
 | azon | Strong | kulcs | kitöltés | forrásidézet (a hely környezete) | ítélet | ok |
 |---|---|---|---|---|---|---|
-| M019 | H5704 עַד | `I -/3` | `III I/3` | „H5704. ad III. עַד … I. preposition 1. of space … 3 Of degree, … Exod 9:7 עַדאֶֿחָד” | **kulcs-ellentmondás** | két római szint: a címszó homonima-száma (III.) és a szócikk fő tagolása (I. preposition); a mai kulcs egy szakasz-mezőt ismer (DT-F99i). A kulcs `I -/3`-a és a kitöltés is helyes a maga szintjén |
+| M019 | H5704 עַד | `I -/3` | `III I/3` | „H5704. ad III. עַד … I. preposition 1. of space … 3 Of degree, … Exod 9:7 עַדאֶֿחָד” | **kulcs-ellentmondás** | két római szint: a címszó homonima-száma (III.) és a szócikk fő tagolása (I. preposition); a mai kulcs egy szakasz-mezőt ismer (DT174). A kulcs `I -/3`-a és a kitöltés is helyes a maga szintjén |
 | M037 | H8438 תּוֺלָע | `I -/2` | `-/2` (a második címszó alatt) | „… token of luxury Lam 4:5. תּוֺלַ֫עַת תּוֺלֵעָה,_40 noun feminine worm; — … 2 elsewhere (P) specif + שָׁנִי … Lev 14:4, 6, 49, 51” | **szeletelő-hiba** | jelöletlen második címszó két alakkal és vesszővel („תּוֺלַ֫עַת תּוֺלֵעָה,_40 noun”) — a `JELOLETLEN` nem ismeri fel |
 | M052 | H7832 שָׂחַק | `fej` | `Qal/1/a` | „— QalPerfect3masculine singular … — 1. a. laugh at … Hab 1:10; Job 5:22” | **szeletelő-hiba** | OCR-ben tapadt törzsnév („QalPerfect”): a Qal nem törzsfejléc, a jelentések a fejbe esnek |
 | M065 | H7704 שָׂדֶה | `-/4/f` | `-/1/f` | „… Psa 98:7). שָׂדֶה_318 noun masculine^Lev 27:24 id. … — 1 open field, country: a. … f. open country … Lev 25:31” | **szeletelő-hiba** | a második címszó héber prezentációs alakkal (U+FB2B „שׂ”) áll; a `JELOLETLEN`/`CIM` karakterosztálya ezt nem fedi, a שָׂדַי szakasz 4. pontja alá kerül |
 | M076 | H2022 הַר | `-/1/k` | `-/1/m` | „k. as scene of massacre … 1 as places of illicit worship … masculine in various combinations … Deut 32:22” | **szeletelő-hiba** (forrásbeli OCR) | az „l.” „1”-ként, az „m.” „masculine”-ként áll a forrásban; a kitöltő a nyomtatott betűrendet adja. Forrás-OCR-ként is sorolható |
-| M078 | H6213 עָשָׂה | `II Qal/2` | `I Qal/2` | „asah I. עָשָׂה … II. 1. make … 2 produce, yield … hippop. producing fat Job 15:27” | **kulcs-ellentmondás** | két római szint: címszó I., fő tagolás II.; a kulcs a tagolást, a kitöltés a címszót írta (DT-F99i) |
+| M078 | H6213 עָשָׂה | `II Qal/2` | `I Qal/2` | „asah I. עָשָׂה … II. 1. make … 2 produce, yield … hippop. producing fat Job 15:27” | **kulcs-ellentmondás** | két római szint: címszó I., fő tagolás II.; a kulcs a tagolást, a kitöltés a címszót írta (DT174) |
 | M098 | H9005 לְ | `-/6` | `-/5/g/(c)` | „… 29:5 a. 6 b; compare Ezra 6:7 (Aramaic), 7:28. f. … g. marking the aim … (c) more distinctly on behalf of … Judg 1:1; 20:18” | **szeletelő-hiba** | hamis jelölő: a „29:5 a. 6 b” versrész-hivatkozás „6”-ja jelentés-sorszámnak számít |
 | M100 | H9003 בְּ | `-/2` | `I I/2` | „I. בְּ, preposition in … I. In: 1 strictly … 2 of presence in the midst … Deut 7:14; 15:4, 7; 18:10 … II. Denoting proximity … III. 1. With” | **szeletelő-hiba** | a fejléc nem bontódik (a címszó és a homonima-szám hiányzik), és az I.–V. fő tagolás nem ismert fel |
 | M105 | H0905 בַּד | `III -/1/b` | `II -/1/b` | „H905. bad II, III. בַּד see below I, II. בדד. II. בָּ֑ד בַּד, noun masculine separation … b. with suffix … Isa 44:24” | **szeletelő-hiba** | a fejléc az utaló csonk („III. בַּד see below”) számát veszi; a valódi címszó a „II. בָּ֑ד בַּד, noun” (két héber alak, a `CIM` nem ismeri fel) |

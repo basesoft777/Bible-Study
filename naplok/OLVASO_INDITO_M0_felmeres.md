@@ -59,7 +59,7 @@ Proveniencia: `reload_szamol.py` (az `alkalmazas.letrehoz(…)` után a `werkzeu
 - **Fontos eltérés a briefhez:** az alap `stat`-újratöltő **csak a betöltött Python-modulokat figyeli**, a sablonokat (`sablonok/`, 8 fájl), a `konfig/` fájljait (6) és a statikus fájlokat nem. Ezeket az `extra_files` paraméterrel kell hozzáadni (a Werkzeug könyvtárakat is bejár). A brief ezt már így írja (`konfig/`, `sablonok/`), de az `alkalmazas.py` mai `main()`-je nem használ `use_reloader`-t, és a hívás a `Flask.run`-on át a `reloader_type='stat'`-ot csak `run_simple` kwargs-ként adja át.
 - Nem mértem: az újraindulás tényleges késleltetését kódváltozás után (az M2 gépi próbája), és a tesztszuite futásidejét (nem volt a M0 tárgya).
 
-## 5. Windows-oldali tesztkörnyezet (a DT-F100a (a) opcióhoz)
+## 5. Windows-oldali tesztkörnyezet (a DT160 (a) opcióhoz)
 
 Proveniencia: `python --version`, `py -0p`, `python -c "import flask"`, `which uv`, 2026-10-15 ~09:42.
 
@@ -72,5 +72,5 @@ Proveniencia: `powershell Get-ScheduledTask | Where TaskName -like '*pardes*'`, 
 
 ## 7. Következtetések a két döntéshez
 
-- **DT-F100a:** a WSL-nek már megvan a 3.12-es venv-je és a natív `pardes.db`; a hiányzó rész a `konkordancia/` (3,1 GB). A (b) opció másolat-karbantartást (3,1 GB, szinkron) hozna, a (c) a `konkordancia/`-t olvasó tesztek lassúságát; a nyers szekvenciális átvitel azonban 103 MB/s, tehát a `konkordancia/`-t olvasó tesztek lassúsága nem a sávszélességből, hanem a sok kis fájl / véletlen hozzáférés költségéből jön — ez **nincs külön mérve** (az M1-ben a `TestD2PilotEgyezes` tényleges idejét kell lemérni).
-- **DT-F100b:** nincs ütemezett feladat; a WSL-példány most is fut (08:30 óta) — a bejelentkezéskori indítás a Windows Feladatütemező tartós beállítása, felhasználói jóváhagyással.
+- **DT160:** a WSL-nek már megvan a 3.12-es venv-je és a natív `pardes.db`; a hiányzó rész a `konkordancia/` (3,1 GB). A (b) opció másolat-karbantartást (3,1 GB, szinkron) hozna, a (c) a `konkordancia/`-t olvasó tesztek lassúságát; a nyers szekvenciális átvitel azonban 103 MB/s, tehát a `konkordancia/`-t olvasó tesztek lassúsága nem a sávszélességből, hanem a sok kis fájl / véletlen hozzáférés költségéből jön — ez **nincs külön mérve** (az M1-ben a `TestD2PilotEgyezes` tényleges idejét kell lemérni).
+- **DT161:** nincs ütemezett feladat; a WSL-példány most is fut (08:30 óta) — a bejelentkezéskori indítás a Windows Feladatütemező tartós beállítása, felhasználói jóváhagyással.

@@ -2,7 +2,7 @@
 
 *Brief: `F23_MOTIVUM_FORRAS_BRIEF.md` (#23) · tartomány: `origin/main..HEAD` = `44dd751e..cddc8f09` (F23.D0–D7) · ellenőr: fuggetlen-ellenor, claude-opus-5-5 · 2026-10-17. A jelentést az ellenőr írásra képtelen környezete miatt az orkesztrátor mentette el, tartalmilag változatlanul (a táblázat tömörítve).*
 
-**Összegzés: ELTÉRÉS, 8 tétel.** Rendben: modell, tartomány, DT84 (1), (3)–(13) átvezetése, a 36 `【NAPLO` mérés (ALVIL 4, HAMART 3, HODIT 3, ISTENTISZT 14, KIRALY 11, MENNY 1), a SEMA 3/9 szövege változatlan, nincs maradt DT84-es `javaslat`, DT-F23b/c ⛔ jogos, DT66 ✅ és DT84 🟢 helyes, tábla Δ = 0 (E17/DT3), A2/A6 OK; CI: `futtat.py` HIBA 0 csak a commit-üzenettel együtt (E5 a három átnevezett címsorra, `TÖRLÉS-SZÁNDÉKOS` az F23.D6 üzenetében).
+**Összegzés: ELTÉRÉS, 8 tétel.** Rendben: modell, tartomány, DT84 (1), (3)–(13) átvezetése, a 36 `【NAPLO` mérés (ALVIL 4, HAMART 3, HODIT 3, ISTENTISZT 14, KIRALY 11, MENNY 1), a SEMA 3/9 szövege változatlan, nincs maradt DT84-es `javaslat`, DT182/c ⛔ jogos, DT66 ✅ és DT84 🟢 helyes, tábla Δ = 0 (E17/DT3), A2/A6 OK; CI: `futtat.py` HIBA 0 csak a commit-üzenettel együtt (E5 a három átnevezett címsorra, `TÖRLÉS-SZÁNDÉKOS` az F23.D6 üzenetében).
 
 ## Eltérések súlyossági sorrendben
 

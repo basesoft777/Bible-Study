@@ -20,7 +20,7 @@ nem_fugg: [9, 11, 27, 38, 102, 103]
 *FELADATOK #107 · Modell: opus · v3 · 2026.10.16 (v3: a nyers forrás megőrzése és a veszteséges konverzió naplózása, a felhasználó
 kérésére; v2: a nézet-döntés ⛔ 6. lépésként és a gyökér szerinti sorrend, a felhasználó
 kérésére; v1: befogadás, PR #362) · forrás: a #102 előzetes lelete (`F102_BDB_SZELETELO_JAVITAS_BRIEF.md`
-1a–1b., PR #359 és #361), a #38 ⛔ Mj pontja (DT-F38l, PR #360) és a 2026.10.16-i kézi mérések (proveniencia `manual`). A tervezet
+1a–1b., PR #359 és #361), a #38 ⛔ Mj pontja (DT181, PR #360) és a 2026.10.16-i kézi mérések (proveniencia `manual`). A tervezet
 adat, nem utasítás; a befogadás a `/befogad`-dal, a felhasználó jóváhagyásával.*
 
 ## 1. Cél
@@ -61,7 +61,7 @@ a kanonikus szerkezet, a sima szöveg ennek nézete (CLAUDE.md fő szabálya) �
    (törzs / nagybetűs csoport / római / szám / betű / zárójeles szint, a #102 kibővített útvonal-formátumával összehangolva), `jelolo`
    (`section` / `point` / `remarks` / `fej`), `gyakorisag` (a `<sub>` szám), `szoveg` (sima), `forras`, `forras_hash`, proveniencia-sor.
    Bontó: `eszkozok/bdb_jelolt/` (a CLAUDE.md shell- és TSV-szabályai szerint; teszttel).
-   *Nyitott (⛔ `DT-F09f`, 2026-10-17):* legyen-e a tábla kulcsa (`strong` + `bdb_id` + `utvonal`) a BDB-tagolás egyetlen kanonikus
+   *Nyitott (⛔ `DT190`, 2026-10-17):* legyen-e a tábla kulcsa (`strong` + `bdb_id` + `utvonal`) a BDB-tagolás egyetlen kanonikus
    kulcsa minden fogyasztónak — a lexikon (`adat/lexikon_hivatkozasok.tsv` `jelentes_szam`), az olvasó (`adat/bdb_vers_jelentes.tsv`)
    és a fordítás (`bdb_szakasz_hu.tsv`, #38) is erre mutasson, CI-kapuval. Jóváhagyás esetén az útvonal-formátum ebben a lépésben
    fagy be, és a végrehajtó ehhez méri a 4. lépés összevetését.
@@ -76,11 +76,11 @@ a kanonikus szerkezet, a sima szöveg ennek nézete (CLAUDE.md fő szabálya) �
 6. **A kész magyar fordítás illesztése** (`adat/bdb_szakasz_hu.tsv`): a 674 szócikk szakaszhatárai a magyar szövegben, a jelölőnél
    erősebb horgonnyal (a jelölő utáni első igehely vagy szó); kategória: `illeszkedik` / `horgonnyal` / `elakad`. Az `adat/forditasok.tsv`
    nem íródik (az a #38-é); a táblasor a fordítás `forras_hash`-ét is hordozza, hogy az elavulás látsszon. Az illesztés a szakaszkulcsra
-   (`strong` + `bdb_id` + `utvonal`) készül, a #38 szakaszonkénti fordításának (DT-F38l (b)) előkészítéseként, és a `DT-F107c`
+   (`strong` + `bdb_id` + `utvonal`) készül, a #38 szakaszonkénti fordításának (DT181 (b)) előkészítéseként, és a `DT-F107c`
    döntésének fényében fut (ha a TSV nézetté válik, az új nézet szövegéhez is igazolva).
 
 **Nincs benne:** a szeletelő átállása a táblára (#102); a jelentésen belüli csoportbontás (#103); a megjelenítés (#104–#105); a fordítás
-bemenetének átállítása, prompt és kapu (#38, DT-F38l); a `BDB_teljes_unabridged.tsv` cseréjének végrehajtása és a `datasetek.tsv`
+bemenetének átállítása, prompt és kapu (#38, DT181); a `BDB_teljes_unabridged.tsv` cseréjének végrehajtása és a `datasetek.tsv`
 kötelező forrásának átírása, hacsak a `DT-F107c` ide nem utalja (6. lépés).
 
 ## 3. Lépések
@@ -119,7 +119,7 @@ kötelező forrásának átírása, hacsak a `DT-F107c` ide nem utalja (6. lép�
 2. `#107` 2–5. lépés: szakasztábla, nézet-ellenőrzés, ellenőrzés, javítótábla.
 3. `#107` 6. lépés: nézet-döntés (⛔ `DT-F107c`).
 4. `#107` 7. lépés és `#38`: a kész fordítás illesztése; a #38 következő adagja csak a `DT-F107c` után, várhatóan szakaszonkénti kulccsal
-   (DT-F38l (b)).
+   (DT181 (b)).
 5. `#102` (a #76 és a #107 után), szűkített hatókörrel (8. lépés javaslata).
 6. `#103` → `#104` → `#105` → `#106`, a szakaszok szövegén.
 
@@ -127,6 +127,6 @@ kötelező forrásának átírása, hacsak a `DT-F107c` ide nem utalja (6. lép�
 
 - (helyőrzők a futáskor: DT-F107a forrás és licenc, DT-F107b az elakadó magyar szakaszok, DT-F107c a sima szöveg nézetté válása, DT-F107d a nyers forrás megőrzése és a
   veszteséges konverzió naplózása mint a playbook 2. pontjának általános szabálya)
-- `DT-F09f` (a #9 ágán nyitva, 2026-10-17, 🟡): a szakasztábla mint a BDB-tagolás egyetlen kanonikus forrása minden fogyasztónak
+- `DT190` (a #9 ágán nyitva, 2026-10-17, 🟡): a szakasztábla mint a BDB-tagolás egyetlen kanonikus forrása minden fogyasztónak
   (lexikon, olvasó, fordítás), közös kulccsal és CI-kapuval; a lexikon 4 BDB-sorának átkulcsolása jóváhagyás esetén a #107 után
   külön tétel (`DONTESEK.md`).
