@@ -6,7 +6,7 @@ tipus: feladat
 fazis: 1
 modell: opus
 allapot: fut
-ag: claude/f23-m1-forrassablon
+ag: claude/f23-dt84-atvezetes
 pr: https://github.com/basesoft777/Bible-Study/pull/258
 ad: a B szerkezet terve mérésekkel: szakasz-leképezés, forrássablon-tervezet, szintjelölés a SEMA-ban, CI-szabályok leírása; renderelés és fájlmozgatás nélkül
 kovetkezo: "Folytatás: a DT84 átvezetése (eldöntve 2026-10-12, 🟢: (1)–(13) a, a (7) és a (10) kiegészítve; N-F23a–c) a sablon v0-ba, a SEMA 3.10-be, a ci-tervbe és a pilot-tervbe (a `javaslat`-jelölések feloldása), új ágon; utána a #11 briefje a pilot-terv alapján"
