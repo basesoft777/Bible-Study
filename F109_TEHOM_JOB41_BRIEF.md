@@ -12,7 +12,7 @@ kovetkezo: /kovetkezo
 olvas: [adat/motivumok.tsv, adat/jeloltek.tsv, adat/elofordulasok.tsv, adat/SEMA.md, konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_1908.tsv, tematikus_lezart/Tehom_tematikus.md, naplok/F108_MOTIVUM_UJRASCAN_naplo.md, eszkozok/lekerdez.py, eszkozok/jelolt.py]
 ir: [adat/jeloltek.tsv, adat/elofordulasok.tsv]
 fugg: []
-nem_fugg: [55, 81, 86]
+nem_fugg: [9, 11, 55, 81, 86]
 ---
 
 # F109_TEHOM_JOB41_BRIEF.md — A TEREMT-001 Jób 41:32 jelölt elbírálása

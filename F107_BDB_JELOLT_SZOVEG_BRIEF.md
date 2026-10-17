@@ -12,7 +12,7 @@ kovetkezo: Indítható (a #99 kész; a #76-tól nem függ): az 1. lépéssel
 olvas: [konkordancia/lexikonok_nyers/BDB.lexicon, konkordancia/lexikonok_nyers/README.md, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/BDB_teljes_unabridged_README.md, konkordancia/_convert_bdb.py, adat/forditasok.tsv, eszkozok/forditas_kapuk.py, adat/bdb_aranyminta.tsv, adat/bdb_vers_jelentes.tsv, adat/bdb_igehely_javitas.tsv, naplok/BDB_SZELETELO_M2_seed101_iteletek.md, F102_BDB_SZELETELO_JAVITAS_BRIEF.md, F38_BDB_FORDITAS_BRIEF.md, adat/SEMA.md, adat/datasetek.tsv, adat/licencek.tsv, Rendszerfejlesztesi_playbook.md]
 ir: [eszkozok/bdb_jelolt/, adat/bdb_szakaszok.tsv, adat/bdb_szakasz_hu.tsv, adat/bdb_forras_javitas.tsv, adat/SEMA.md, adat/datasetek.tsv, naplok/F107_BDB_JELOLT_SZOVEG_naplo.md, konkordancia/lexikonok_nyers/, konkordancia/BDB_teljes_unabridged_README.md, Rendszerfejlesztesi_playbook.md]
 fugg: [99]
-nem_fugg: [27, 38, 102, 103]
+nem_fugg: [9, 11, 27, 38, 102, 103]
 ---
 
 # F107_BDB_JELOLT_SZOVEG_BRIEF.md — A BDB jelölt szövegrétege

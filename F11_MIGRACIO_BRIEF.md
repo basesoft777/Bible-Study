@@ -3,7 +3,7 @@ feladat: 11
 cim: Migráció: egy forrásból renderelés
 kod: MIGRACIO
 tipus: feladat
-fazis: 2
+fazis: 1
 modell: opus
 allapot: nem_indult
 munka: ertelmezo
@@ -12,6 +12,7 @@ kovetkezo: S1 (a `kapcsolatok.tsv` `indoklas` oszlopa: SEMA 2.3, fejléc, üres 
 olvas: [tematikus_lezart/ISTENTISZT-001*, tematikus_lezart/naplok/ISTENTISZT-001*, ADATVAGYON_TERV.md, MUNKATERV.md, ATALAKITASI_TERV.md.md, adat/szotar_szerepek.tsv, adat/SEMA.md, naplok/MOTIVUM_FORRAS_pilot_terv.md, naplok/MOTIVUM_FORRAS_ci_terv.md, naplok/MOTIVUM_FORRAS_lekepezes.tsv, naplok/MOTIVUM_FORRAS_M0.py, naplok/F23_zaras.md, F23_MOTIVUM_FORRAS_BRIEF.md, sablonok/9_PaRDeS_motivum_forras_sablon.md, tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md, tematikus_lezart/naplok/Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md, generalt_proba/F78_szerepmatrix_proba/, eszkozok/nulladiff.sh, eszkozok/general.py]
 ir: [adat/SEMA.md, adat/kapcsolatok.tsv, adat/jeloltek.tsv, adat/lexikon_hivatkozasok.tsv, adat/res_forras.tsv, adat/auditok.tsv, eszkozok/betolt.py, eszkozok/ellenoriz.py, eszkozok/f3_1_betoltes.py, eszkozok/sqlite_epit.py, eszkozok/general.py, eszkozok/lexikon_general.py, eszkozok/torzscikk_general.py, motivumok/ISTENTISZT-001.md, lexikon/ISTENTISZT-001_TUDOMANYOS.md, lexikon/ISTENTISZT-001_TORZSCIKK.md, tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md, tematikus_lezart/naplok/Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md, sablonok/2_PaRDeS_bovitett_sablon.md, sablonok/4_PaRDeS_tematikus_sablon.md, sablonok/9_PaRDeS_motivum_forras_sablon.md, naplok/F11_szetvalasztas_ISTENTISZT-001.tsv, naplok/F11_zaras.md, naplok/ELLENOR_F11_S.md, naplok/ELLENOR_F11_M.md]
 fugg: [9, 23]
+nem_fugg: [27, 38, 52, 55, 107, 109, 110]
 ---
 
 # F11_MIGRACIO_BRIEF.md — Migráció: egy forrásból renderelés
