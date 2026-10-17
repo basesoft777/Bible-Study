@@ -37,8 +37,31 @@ if raw is None:
     raise SystemExit('nincs H8034 sor a TBESH.txt-ben')
 tiszta = re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', raw)).strip()
 szoveg_en = tiszta
-assert szoveg_en in tiszta
 print('forras (TBESH.txt, HTML-tol megtisztitva):', szoveg_en)
+
+# 1b. VALODI osszevetes (J5, ellenori 5.): a TBESH.txt 10842. sora (sorszam szerint, fuggetlenul
+# a fenti keresestol) szoveg-mezeje, megtisztitva, egyezzen a kivonattal; es -- ha a sor mar
+# benne van a lexikon_hivatkozasok.tsv-ben -- az ott tarolt szoveg_en is egyezzen vele.
+SORSZAM = 10842
+sor_10842 = None
+with io.open(TBESH_TXT, encoding='utf-8') as f:
+    for n, sor_ in enumerate(f, 1):
+        if n == SORSZAM:
+            sor_10842 = sor_.rstrip('\r\n')
+            break
+if sor_10842 is None:
+    raise SystemExit('a TBESH.txt-nek nincs %d. sora' % SORSZAM)
+m_ = sor_10842.split('\t')
+assert m_[0] == 'H8034', 'a %d. sor nem a H8034: %r' % (SORSZAM, m_[0])
+tiszta_10842 = re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', m_[-1])).strip()
+assert tiszta_10842 == szoveg_en, 'a kivonat nem egyezik a TBESH.txt %d. sorával' % SORSZAM
+print('TBESH.txt %d. sora == kivonat: igaz' % SORSZAM)
+with io.open(HIV, encoding='utf-8', newline='') as f:
+    for l_ in f.read().split('\n'):
+        c_ = l_.split('\t')
+        if c_[:4] == ['H8034', 'TBESH', 'H8034', 'teljes']:
+            assert c_[4] == tiszta_10842, 'a tabla szoveg_en nem egyezik a TBESH.txt %d. sorával' % SORSZAM
+            print('lexikon_hivatkozasok.tsv H8034/TBESH sor szoveg_en == TBESH.txt %d. sora: igaz' % SORSZAM)
 
 # 2. keresztellenorzes a konszolidalt tablaval (ha megvan)
 if os.path.isfile(KONSZ):
@@ -62,7 +85,11 @@ with io.open(HIV, encoding='utf-8', newline='') as f:
 assert '\r' not in regi
 for l in regi.split('\n'):
     m = l.split('\t')
-    assert not (len(m) >= 4 and m[:4] == ['H8034', 'TBESH', 'H8034', 'teljes']), 'mar van ilyen sor'
+    if len(m) >= 4 and m[:4] == ['H8034', 'TBESH', 'H8034', 'teljes']:
+        if '--ir' in sys.argv:
+            raise SystemExit('mar van ilyen sor -- nem irok ujra')
+        print('a sor mar a tablaban van; az ellenorzes fent lefutott, nincs ujrairas')
+        sys.exit(0)
 uj = regi if regi.endswith('\n') else regi + '\n'
 uj += '\t'.join(sor[k] for k in HEADER) + '\n'
 assert uj.startswith(regi)
