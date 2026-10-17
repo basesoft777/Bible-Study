@@ -1,6 +1,6 @@
 # F23 zárás — a DT84 átvezetése (#23 MOTIVUM_FORRAS)
 
-*2026.10.17 · ág: `claude/f23-dt84-atvezetes` · modell: claude-opus-5-5 · állapot: `fut`; döntésre vár: DT-F23b, DT-F23c (🟡). Független ellenőrzés: `naplok/ELLENOR_F23_3.md` (ELTÉRÉS, 8 tétel), javítva: F23.D9–D11; újraellenőrzés: `naplok/ELLENOR_F23_4.md` (ELTÉRÉS, 1 alacsony tétel: a D11 említése, javítva).*
+*2026.10.17 · ág: `claude/f23-dt84-atvezetes` · modell: claude-opus-5-5 · állapot: `fut`; DT-F23b (c.) és DT-F23c (a.) eldöntve 🟢 (felhasználó, 2026-10-17), alkalmazva: F23.D14; a két élő sablon (`2_`, `4_`) a diffbe került, ezért új független ellenőrzés kell. Független ellenőrzés: `naplok/ELLENOR_F23_3.md` (ELTÉRÉS, 8 tétel), javítva: F23.D9–D11; újraellenőrzés: `naplok/ELLENOR_F23_4.md` (ELTÉRÉS, 1 alacsony tétel: a D11 említése, javítva).*
 
 - A négy tervfájl `javaslat`-jelölései a DT84 (1)–(13) a szerint feloldva: `sablonok/9_PaRDeS_motivum_forras_sablon.md` (v0.1; F23.D1), `adat/SEMA.md` 3.10 (F23.D2), `naplok/MOTIVUM_FORRAS_ci_terv.md` (F23.D3), `naplok/MOTIVUM_FORRAS_pilot_terv.md` (F23.D4). A 9. pont / 8. szakasz összefoglalja a döntéseket.
 - (7) kiegészítés: a tanulmány-sablon v18 tükörszabályának B-beli alakja a forrássablon 7. pontjában; a `2_…` és a `4_…` élő sablon szövegét a menet nem írta: mikor és hol — DT-F23b.
@@ -12,8 +12,8 @@
 
 ## Folytatási pont (DT84 után)
 
-1. A DT-F23b és a DT-F23c döntése (felhasználó).
-2. A #11 briefjének megírása a pilot-terv alapján: külön lépés (a #11 saját briefje, `allapot: brief_kell`; nincs a #23 `ir` mezőjében).
+1. Új független ellenőrzés (a diff az F23.D14 óta két élő sablont is érint: felfüggesztő sorok a `2_` v18 és a `4_` v10 szabálya, valamint a `4_` Lezárási checklist 12. pontja elé/mellé; verziószám nem emelkedett).
+2. A #11 briefjének megírása a pilot-terv alapján: külön lépés (a #11 saját briefje, `allapot: brief_kell`; nincs a #23 `ir` mezőjében). A DT-F23c szerint a #11 első tétele önálló séma-tétel: a `kapcsolatok.tsv` `indoklas` oszlopa (SEMA 2.3, fejléc, üres értékek, eszközök), saját commitokkal és független ellenőrzéssel, a migráció előtt.
 
 ---
 
