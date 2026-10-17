@@ -8,7 +8,7 @@ modell: sonnet
 allapot: dontesre_var
 ag: claude/f09-szotar-s2
 ad: az 1. fázis adatai — a 8 motívum Strongjaira szűkítve (DT74 (4)) — az adatrétegben és a generátorokban, a #78 szerepmátrix-vázának blokkjaihoz; a 8 lexikonoldal és a 8 törzscikk renderelése csak próba a generalt_proba/ alá, az éles lexikon/ a #11 1. lépcsője után generálódik (#36 vagy #10) (DT186)
-kovetkezo: "Te: döntés a 14 ismeretlen sorról (naplok/SZOTAR_S2_ismeretlen.tsv, F87.3 átkulcsolás miatti; l. naplok/SZOTAR_S2_zaras.md 4.), utána a javító menet folytatása (DT-F09h–j végrehajtása), független újraellenőrzés és merge a felhasználótól (2. javító menet: DT-F09g végrehajtva, ⛔ az S2.8-nál, 2026-10-17)"
+kovetkezo: "Te: független újraellenőrzés (a 2. javító menet: DT-F09g–j végrehajtva, ismeretlen 0, N-F09g nyitva, 2026-10-17), utána merge a felhasználótól"
 pr: 381
 lezarva_osszegzes: szótári adatréteg 2. menet a 8 motívum Strongjaira: 26 héber lemma-kiejtés, TBESH/UBS DBH/Mounce+SECE/tW+TWOT/BDB-etimológia/LXX-párok a #78 váz szerep-blokkjaiban, H8034 bekötés, N-F78a javítva, próbarender (8+8) és diff-osztályozás a generalt_proba/F09_szotar_s2_proba/ alá; az éles lexikon/ érintetlen; l. naplok/SZOTAR_S2_zaras.md
 fugg: [5, 6, 23, 78]
