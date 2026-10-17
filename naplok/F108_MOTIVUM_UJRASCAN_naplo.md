@@ -36,7 +36,7 @@ Módszer: a sor `strong`-ja (összetettnél minden tag) a mai `TAHOT_kivonat.tsv
 | ALVIL-001 | J | 74 | 0 | 0 | 0 | 0 | 15 | 59 |
 | MENNY-001 | E | 9 | 6 | 0 | 0 | 0 | 0 | 3 |
 | MENNY-001 | J | 12 | 0 | 0 | 0 | 0 | 0 | 12 |
-| ANTROP-001 | E | 8 | 4 | 1 | 0 | 3 | 0 | 0 |
+| ANTROP-001 | E | 8 | 4 | 0 | 1 | 3 | 0 | 0 |
 | ANTROP-001 | J | 9 | 0 | 0 | 0 | 0 | 0 | 9 |
 | HODIT-001 | E | 33 | 32 | 0 | 0 | 0 | 1 | 0 |
 | HODIT-001 | J | 51 | 0 | 0 | 0 | 0 | 5 | 46 |
@@ -44,20 +44,20 @@ Módszer: a sor `strong`-ja (összetettnél minden tag) a mai `TAHOT_kivonat.tsv
 | HAMART-001 | J | 222 | 70 | 0 | 0 | 0 | 17 | 135 |
 | TEREMT-002 | E | 3 | 3 | 0 | 0 | 0 | 0 | 0 |
 | TEREMT-002 | J | 66 | 18 | 0 | 0 | 0 | 4 | 44 |
-| **ÖSSZESEN** | E | 259 | 209 | 1 | 0 | 4 | 37 | 8 |
+| **ÖSSZESEN** | E | 259 | 209 | 0 | 1 | 4 | 37 | 8 |
 | **ÖSSZESEN** | J | 592 | 95 | 0 | 0 | 0 | 75 | 422 |
 
 Egyéb osztály: nincs.
 
-**Eredmény:** az `elofordulasok.tsv` 259 sorából **egyetlen sem `kulcs_eltolodott` ÓSZ-sor és egyetlen sem `hianyzik`** (az F85.6-os átkulcsolás és az F87.3 utáni állapotban az ÓSZ-sorok Strongjai a mai TAHOT-on a helyükön állnak). Az eltérések mind ÚSZ-oldaliak és tartalmi természetűek (nem kulcshibák):
+**Eredmény:** az `elofordulasok.tsv` 259 sorából **egyetlen sem `kulcs_eltolodott`, és egyetlen ÓSZ-sor sem `hianyzik`** (egy ÚSZ-sor `hianyzik`: ANTROP-001 `1Kor 2:15`; javítva F108.7, `naplok/ELLENOR_F108.md` 1.) (az F85.6-os átkulcsolás és az F87.3 utáni állapotban az ÓSZ-sorok Strongjai a mai TAHOT-on a helyükön állnak). Az eltérések mind ÚSZ-oldaliak és tartalmi természetűek (nem kulcshibák):
 
 - KIRALY-001 `Zsid 7:1-28` (G5010+G0813+G0282): **osszetett_resz** — jelen: G5010+G0282
 - ANTROP-001 `Luk 1:46` (G4151+G5590): **osszetett_resz** — jelen: G5590
 - ANTROP-001 `Luk 1:47` (G4151+G5590): **osszetett_resz** — jelen: G4151
 - ANTROP-001 `1Kor 2:14` (G4151+G5590): **osszetett_resz** — jelen: G4151
-- ANTROP-001 `1Kor 2:15` (G4151+G5590): **kulcs_eltolodott** — szomszed: 1Kor 2:14,1Kor 2:13
+- ANTROP-001 `1Kor 2:15` (G4151+G5590): **hianyzik** — jelen: G4152 (melléknév)
 
-(Az ANTROP-001 `1Kor 2:15`-nél a Strongok a 2:14-en/2:13-on állnak, nem a 2:15-ön; ez nem F85-típusú kulcsolás-hiba — a TAGNT-kulcs szerves ÚSZ-kulcs —, hanem tartalmi kérdés: a sor a 2:14–15 párhuzam része. A KIRALY-001 `Zsid 7:1-28` összetett Strongjából a G0813 hiányzik a tartományon. Mindkettő a motívum saját menetében bírálandó el, nem kulcsjavítás.)
+(Az ANTROP-001 `1Kor 2:15`-ön a G4151 és a G5590 nem áll, csak a G4152 πνευματικός; a G5590 az 1Kor 2-ben sehol nincs (a 2:14-en a G5591 ψυχικός és a G4151, a 2:13-on a G4151 és a G4152). Ez nem F85-típusú kulcsolás-hiba — a TAGNT-kulcs szerves ÚSZ-kulcs —, hanem a sor szótári alakjának kérdése: a melléknévi G4152/G5591 helyén a főnévi G4151/G5590 áll. Az eredeti `kulcs_eltolodott` osztály tévesen azt állította, hogy a Strongok a 2:14-en/2:13-on állnak; F108.7 javította, `naplok/ELLENOR_F108.md` 1. A KIRALY-001 `Zsid 7:1-28` összetett Strongjából a G0813 hiányzik a tartományon. Mindkettő a motívum saját menetében bírálandó el, nem kulcsjavítás.)
 
 A `nincs_strong` E-sorok (8): HAMART-001 5 (tematikus: hivatkozás), MENNY-001 3 (Júd 1:6, 1:14-15, 2Pét 2:4-5: apokrif/formula-hivatkozás). Nincs Strongjuk, így a kulcs nem ellenőrizhető; nem hiba.
 
