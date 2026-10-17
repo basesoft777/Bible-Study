@@ -330,8 +330,33 @@ PROBA_KATEGORIAK = (
 # 1. Az F87.3 (98f22fc6, DT-F87b) átkulcsolása, ALVIL-001: régi kulcs -> új kulcs (a Károli 1908 szövege szerint
 #    a Seol a Préd 9:12-ben és a Jób 17:12-ben áll; a régi kulcs téves volt).
 ATKULCSOLT_KULCS = {'Jób 17:13': 'Jób 17:12', 'Jób 17:16': 'Jób 17:15', 'Préd 9:10': 'Préd 9:12'}
-# A régi kulcs alatt állt, törölt sorok (motívum, sor) -> a régi kulcs: ezek `elavult_adat`.
+# A régi kulcs alatt állt, törölt sorok (motívum, sor) -> a régi kulcs: ezek `elavult_adat`. NÉV SZERINTI lista (3. javító menet:
+# az ALVIL-001 három régi kulcsának összes sora a tudományos és a törzscikk-oldalon), csak törölt irány, csak ALVIL-001.
 ATKULCSOLT_SOROK = {
+    ('ALVIL-001', '| [Jób 17:13](#v-jób-17-13) | — | Remez | magas · tartalom-alapú |'): 'Jób 17:13',
+    ('ALVIL-001', '| [Jób 17:16](#v-jób-17-16) | — | Remez | közepes · tartalom-alapú |'): 'Jób 17:16',
+    ('ALVIL-001', '| [Préd 9:10](#v-préd-9-10) | — | Remez | közepes · tartalom-alapú |'): 'Préd 9:10',
+    ('ALVIL-001', '### Jób 17:13'): 'Jób 17:13',
+    ('ALVIL-001', '> *A sírnak mondom: Te vagy az én atyám; a férgeknek pedig: Ti vagytok az én anyám és néném.*'): 'Jób 17:13',
+    ('ALVIL-001', "- **Kulcsszó:** A sírnak — שְׁא֣וֹל (she.'ol)"): 'Jób 17:13',
+    ('ALVIL-001', '- **Károli-kereszthivatkozás:** Jób 1:21'): 'Jób 17:13',
+    ('ALVIL-001', '### Jób 17:16'): 'Jób 17:16',
+    ('ALVIL-001', '> *(Jób 17:16: nincs Károli-szöveg)*'): 'Jób 17:16',
+    ('ALVIL-001', '### Préd 9:10'): 'Préd 9:10',
+    ('ALVIL-001', '> *A te ruháid mindenkor legyenek fejérek, és az olaj a te fejedről el ne fogyatkozzék.*'): 'Préd 9:10',
+    ('ALVIL-001', '- **LXX:** Préd(LXX) 9:8 — — — kutatói azonosítás függőben'): 'Préd 9:10',
+    ('ALVIL-001', "| [Jób 17:13](#v-jób-17-13) | — | שְׁא֣וֹל (she.'ol) | — | szamozas_elteres |"): 'Jób 17:13',
+    ('ALVIL-001', "| [Jób 17:16](#v-jób-17-16) | — | שְׁאֹ֣ל (she.'Ol) | — | szamozas_elteres |"): 'Jób 17:16',
+    ('ALVIL-001', "| [Préd 9:10](#v-préd-9-10) | Préd(LXX) 9:8 | שְׁא֕וֹל (sh.'ol) | — | kutatói azonosítás függőben |"): 'Préd 9:10',
+    ('ALVIL-001', "| [Jób 17:13](#ige-jób-17-13) | A sírnak — שְׁא֣וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^15] |"): 'Jób 17:13',
+    ('ALVIL-001', "| [Jób 17:16](#ige-jób-17-16) | a sír üregébe — שְׁאֹ֣ל (she.'Ol) | — | Remez | H7585 | — | — *(ÓSZ)* | közepes · tartalom-alapú[^16] |"): 'Jób 17:16',
+    ('ALVIL-001', "| [Préd 9:10](#ige-préd-9-10) | a Seolban — שְׁא֕וֹל (sh.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | közepes · tartalom-alapú[^44] |"): 'Préd 9:10',
+    ('ALVIL-001', '**Jób 17:13**'): 'Jób 17:13',
+    ('ALVIL-001', '**Jób 17:16**'): 'Jób 17:16',
+    ('ALVIL-001', '*(Jób 17:16: nincs Károli-szöveg)*'): 'Jób 17:16',
+    ('ALVIL-001', '**Préd 9:10**'): 'Préd 9:10',
+    ('ALVIL-001', '#### Jób 17:13'): 'Jób 17:13',
+    ('ALVIL-001', '#### Préd 9:10'): 'Préd 9:10',
     ('ALVIL-001', '*A sírnak mondom: Te vagy az én atyám; a férgeknek pedig: Ti vagytok az én anyám és néném.*'): 'Jób 17:13',
     ('ALVIL-001', '*A te ruháid mindenkor legyenek fejérek, és az olaj a te fejedről el ne fogyatkozzék.*'): 'Préd 9:10',
     ('ALVIL-001', '- Károli-KH: Jób 1:21'): 'Jób 17:13',
@@ -535,7 +560,8 @@ def _tudomanyos_kategoria(sor, kontextus, irany, proba=None, motivum=None):
         if blokk == 'szocikkek':
             return 'szerep_vaz'
         if blokk in _ADAT_BLOKKOK:
-            return 'elavult_adat'
+            # törölt sablonmondat adatblokkban csak ellenőrzött csere (párosítás / valódi tartalom) után elszámolt
+            return ISMERETLEN if irany == 'torolt' else 'elavult_adat'
     if blokk in _ADAT_BLOKKOK:
         # az éles oldal adatrétege régebbi; törölt sor csak akkor elavult, ha a tartalma tovább él
         if irany == 'torolt' and proba is not None and proba.tovabb_el(s) is None:
@@ -562,6 +588,8 @@ def _torzscikk_kategoria(sor, szakasz, irany='hozzaadott', proba=None, motivum=N
     s = sor.strip()
     if irany == 'torolt' and (motivum, s) in ISMERT_HIBA_TSK_VERSSZAM:
         return 'ismert_hiba_tsk_versszam'
+    if irany == 'torolt' and ATKULCSOLT_KULCS.get(ATKULCSOLT_SOROK.get((motivum, s))):
+        return 'elavult_adat'  # F87.3 átkulcsolás: a régi kulcs sora
     kat = _torzscikk_kat(sor, szakasz)
     if irany == 'torolt' and kat != ISMERETLEN and proba is not None and proba.tovabb_el(s) is None:
         return ISMERETLEN   # a törölt sor tartalma sehol nem él tovább
@@ -582,47 +610,231 @@ def _torzscikk_kat(sor, szakasz):
     return ISMERETLEN
 
 
-def proba_osztalyoz(fajl_nev, eles_szoveg, proba_szoveg):
-    """{kategória: {'hozzaadott': [sor], 'torolt': [sor]}} a multihalmaz-különbségre."""
+_FEJ_SOR_RE = re.compile(r'^#{3,6} ')
+_META_RE = re.compile(r'^- Generálva: \d{4}-\d{2}-\d{2}\s*$')
+_CAND_RE = re.compile(r'^- (TSK|Károli-KH): (.+?)(?: \(Votes: \d+\))?$')
+_ITEM_RE = re.compile(r'^- \*\*([^*]+):\*\*\s*(.*)$')
+_LXXIGE_RE = re.compile(r'(?:[1-5]\s?)?[A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]{1,9}(?:\(LXX\))?\.? \d{1,3}:\d{1,3}')
+_STRONG_RE = re.compile(r'\b[HG]\d{4}\b')
+_LINK_RE = re.compile(r'\[([^\]]*)\]\([^)]*\)')
+
+
+def _fejek(sorok):
+    """Soronként a legközelebbi megelőző (3–6 szintű) fejléc a generált blokkon / `##` szakaszon belül."""
+    cur, out = '', []
+    for s in sorok:
+        if s.startswith('## ') or s.startswith('<!-- GENERÁLT-KEZDET'):
+            cur = ''
+        if _FEJ_SOR_RE.match(s):
+            cur = s.strip()
+        out.append(cur)
+    return out
+
+
+def _cellak(sor):
+    return [c.strip() for c in re.split(r'(?<!\\)\|', sor.strip().strip('|'))]
+
+
+def teljes_kulcs(sor, szakasz, fej):
+    """DT-F09g (3. javító menet): a sor TELJES kulcsa a párosításhoz: forráscímke + igehely + célpont/Strong, a
+    szakasz (blokk + alszakasz) mellett. Csak az igehely egyezése NEM elég. None, ha a sorhoz nincs kulcs."""
+    s = sor.strip()
+    m = _CAND_RE.match(s)
+    if m:
+        return ('jelolt', szakasz, m.group(1), fej, m.group(2).strip())
+    if s.startswith('|'):
+        c = _cellak(s)
+        if not c or not c[0]:
+            return None
+        c0 = re.sub(r'\s+', ' ', _LINK_RE.sub(r'\1', c[0]).replace('`', '').replace('**', '')).strip()
+        if not c0 or set(c0) <= set('-: '):
+            return None
+        return ('sor', szakasz, c0, frozenset(_STRONG_RE.findall(s)))
+    m = _ITEM_RE.match(s)
+    if m:
+        return ('tetel', szakasz, m.group(1), fej, frozenset(_LXXIGE_RE.findall(m.group(2))),
+                frozenset(_STRONG_RE.findall(s)))
+    if _LEIRO_RE.match(s):
+        return ('leiro', szakasz)
+    if s.startswith('*Összesítés:'):
+        return ('osszesites', szakasz)
+    if s.startswith('A cella értéke:'):
+        return ('jelmagyarazat', szakasz)
+    return None
+
+
+def _jeloles_kulonbseg(a, b):
+    """Csak jelölés (kiemelés, táblaszegély, fejléc-jel, idézőjel) különbözik."""
+    def tiszta(x):
+        return re.sub(r'[\s*_#>|\\`]', '', x)
+    return tiszta(a) == tiszta(b)
+
+
+def _kiejtes_kulonbseg(a, b):
+    """Csak latin betűs átírás-/kiejtés-tokenek különböznek, héber/görög írásjegyes sorban."""
+    if not _SCRIPT_RE.search(a + b):
+        return False
+    ta, tb = a.split(), b.split()
+    sm = difflib.SequenceMatcher(a=ta, b=tb, autojunk=False)
+    elteres = False
+    for tag, i1, i2, j1, j2 in sm.get_opcodes():
+        if tag == 'equal':
+            continue
+        elteres = True
+        for tok in ta[i1:i2] + tb[j1:j2]:
+            if not re.match(r"^[\(\[]?[A-Za-zÀ-ɏḀ-ỿ.'\-,;]+[\)\]]?$", tok):
+                return False
+    return elteres
+
+
+def _akcio_sect(torzscikk, k):
+    return k if torzscikk else (k[0] or '')
+
+
+def proba_osztalyoz(fajl_nev, eles_szoveg, proba_szoveg, parok=None):
+    """{kategória: {'hozzaadott': [sor], 'torolt': [sor]}} a multihalmaz-különbségre.
+
+    Sorrend (DT-F09g, 3. javító menet): (0) megnevezett táblák és metaadat; (1) kizárólagos párosítás azonos
+    szakaszban a normalizált kulccsal (kiejtés / jelző / fejléc-mélység); (2) kizárólagos párosítás a TELJES kulccsal
+    (`teljes_kulcs`); (3) üres-állapot mondat ellenőrzött cseréje valódi tartalomra; (4) a többi sor a blokkja szerint,
+    a törölt sor a `tovabb_el` próbával; ami így sem fér sehova: `ismeretlen` (tartalék nincs)."""
     eles = eles_szoveg.replace('\r\n', '\n').split('\n')
     proba = proba_szoveg.replace('\r\n', '\n').split('\n')
     ce, cp = collections.Counter(eles), collections.Counter(proba)
     torzscikk = fajl_nev.endswith('_TORZSCIKK.md')
+    motivum = fajl_nev.split('_')[0]
     if torzscikk:
         ke, kp = _torzscikk_kontextusok(eles), _torzscikk_kontextusok(proba)
     else:
         ke, kp = _tudomanyos_kontextusok(eles), _tudomanyos_kontextusok(proba)
-    torolt = _feleslegek(eles, ke, ce, cp)
-    hozzaadott = _feleslegek(proba, kp, cp, ce)
+    fe, fp = _fejek(eles), _fejek(proba)
+
+    def feleslegek(sorok, kont, fej, sajat, masik):
+        latott, ki = collections.Counter(), []
+        for s, k, f in zip(sorok, kont, fej):
+            if not s.strip():
+                continue
+            latott[s] += 1
+            if latott[s] <= sajat[s] - masik[s]:
+                ki.append((s, k, f))
+        return ki
+
+    torolt = feleslegek(eles, ke, fe, ce, cp)
+    hozzaadott = feleslegek(proba, kp, fp, cp, ce)
     proba_sz = ProbaSzoveg(proba)
-
-    # párosítás: azonos normalizált kulcs => csak kiejtés / jelző / fejléc-mélység változott
-    par = collections.defaultdict(list)       # kulcs -> hozzáadott sorok
-    par_t = collections.defaultdict(list)     # kulcs -> törölt sorok
-    for s, _k in hozzaadott:
-        par[_kulcs(s)].append(s)
-    for s, _k in torolt:
-        par_t[_kulcs(s)].append(s)
     eredmeny = collections.defaultdict(lambda: {'hozzaadott': [], 'torolt': []})
+    kat_t, kat_h = {}, {}          # index -> kategória
+    hasznalt_h = set()
 
-    def kategoria(s, k, irany):
-        if s.strip().startswith('<!-- GENERÁLT'):
-            return 'jeloles'
-        partner = (par if irany == 'torolt' else par_t).get(_kulcs(s))
-        if partner:
-            pk = _par_kategoria(s, partner[0])
-            if pk is not None:
-                return pk
-        # azonos normalizált kulcsú partner: a sor tartalma a partnerben él tovább, a túlélés-próba felesleges
-        pv = None if partner else proba_sz
+    def sajat_kat(s, k, irany, tovabb=True):
+        """A sor besorolása a blokkja / szakasza szerint (a megnevezett táblák és a túlélés-próba nélkül is)."""
         if torzscikk:
-            return _torzscikk_kategoria(s, k, irany, pv, fajl_nev.split('_')[0])
-        return _tudomanyos_kategoria(s, k, irany, pv, fajl_nev.split('_')[0])
+            return _torzscikk_kategoria(s, k, irany, proba_sz if tovabb else None, motivum)
+        return _tudomanyos_kategoria(s, k, irany, proba_sz if tovabb else None, motivum)
 
-    for s, k in torolt:
-        eredmeny[kategoria(s, k, 'torolt')]['torolt'].append(s)
-    for s, k in hozzaadott:
-        eredmeny[kategoria(s, k, 'hozzaadott')]['hozzaadott'].append(s)
+    # (0) metaadat
+    for idx, (s, k, f) in enumerate(torolt):
+        if _META_RE.match(s.strip()) or s.strip().startswith('<!-- GENERÁLT'):
+            kat_t[idx] = 'jeloles'
+    for idx, (s, k, f) in enumerate(hozzaadott):
+        if _META_RE.match(s.strip()) or s.strip().startswith('<!-- GENERÁLT'):
+            kat_h[idx] = 'jeloles'
+    # (0) megnevezett táblák (F87.3-lábnyom, ismert TSK-hiba): nem párosítjuk
+    nevesitett = set()
+    for idx, (s, k, f) in enumerate(torolt):
+        if idx in kat_t:
+            continue
+        if (motivum, s.strip()) in ISMERT_HIBA_TSK_VERSSZAM or (motivum, s.strip()) in ATKULCSOLT_SOROK:
+            nevesitett.add(idx)
+
+    # (1) kizárólagos párosítás a normalizált kulccsal, azonos szakaszban
+    hmap = collections.defaultdict(list)
+    for j, (s, k, f) in enumerate(hozzaadott):
+        if j not in kat_h:
+            hmap[(_akcio_sect(torzscikk, k), _kulcs(s))].append(j)
+    for idx, (s, k, f) in enumerate(torolt):
+        if idx in kat_t or idx in nevesitett:
+            continue
+        lst = [j for j in hmap.get((_akcio_sect(torzscikk, k), _kulcs(s)), []) if j not in hasznalt_h]
+        if not lst:
+            continue
+        j = lst[0]
+        hasznalt_h.add(j)
+        pk = _par_kategoria(s, hozzaadott[j][0])
+        if pk is None:   # a szerkezeti / jelző / kiejtés-feltétel nem illik: a sor saját blokkja szerint, túlélés-próba nélkül
+            kat_t[idx] = sajat_kat(s, k, 'torolt', tovabb=False)
+            kat_h[j] = sajat_kat(hozzaadott[j][0], hozzaadott[j][1], 'hozzaadott', tovabb=False)
+        else:
+            kat_t[idx] = kat_h[j] = pk
+        if parok is not None:
+            parok.append(('normalizált kulcs', s, hozzaadott[j][0], _kulcs(s), kat_t[idx]))
+
+    # (2) kizárólagos párosítás a TELJES kulccsal
+    hk = collections.defaultdict(list)
+    for j, (s, k, f) in enumerate(hozzaadott):
+        if j in hasznalt_h or j in kat_h:
+            continue
+        kk = teljes_kulcs(s, _akcio_sect(torzscikk, k), f)
+        if kk is not None:
+            hk[kk].append(j)
+    for idx, (s, k, f) in enumerate(torolt):
+        if idx in kat_t or idx in nevesitett:
+            continue
+        kk = teljes_kulcs(s, _akcio_sect(torzscikk, k), f)
+        if kk is None:
+            continue
+        lst = [j for j in hk.get(kk, []) if j not in hasznalt_h]
+        if not lst:
+            continue
+        j = lst[0]
+        hasznalt_h.add(j)
+        uj_sor, uj_k = hozzaadott[j][0], hozzaadott[j][1]
+        if _kiejtes_kulonbseg(s, uj_sor):
+            kat = 'kiejtes'
+        elif _jeloles_kulonbseg(s, uj_sor):
+            kat = 'jeloles'
+        else:
+            kat = sajat_kat(uj_sor, uj_k, 'hozzaadott', tovabb=False)
+        kat_t[idx] = kat_h[j] = kat
+        if parok is not None:
+            parok.append(('teljes kulcs', s, uj_sor, kk, kat))
+
+    # (3) üres-állapot mondat ellenőrzött cseréje: ugyanabban a szakaszban (blokk + alszakasz) valódi tartalom áll
+    for idx, (s, k, f) in enumerate(torolt):
+        if idx in kat_t or idx in nevesitett or not _URES_ALLAPOT_RE.match(s.strip()):
+            continue
+        if not torzscikk and k[0] == 'szocikkek':
+            continue   # a szocikkek váz-sorait a blokk-szabály kezeli
+        for j, (hs, hk_, hf) in enumerate(hozzaadott):
+            if hf != f or _akcio_sect(torzscikk, hk_) != _akcio_sect(torzscikk, k):
+                continue
+            if _URES_ALLAPOT_RE.match(hs.strip()) or _LEIRO_RE.match(hs.strip()) or _FEJ_SOR_RE.match(hs):
+                continue
+            kat_t[idx] = sajat_kat(hs, hk_, 'hozzaadott', tovabb=False)
+            break
+
+    # (4) a többi: saját besorolás (a törölt sorra túlélés-próbával); a megnevezett táblák a saját kategóriájukba
+    for idx, (s, k, f) in enumerate(torolt):
+        if idx in kat_t:
+            continue
+        if torzscikk:
+            kat_t[idx] = _torzscikk_kategoria(s, k, 'torolt', proba_sz, motivum)
+        else:
+            kat_t[idx] = _tudomanyos_kategoria(s, k, 'torolt', proba_sz, motivum)
+    for j, (s, k, f) in enumerate(hozzaadott):
+        if j in kat_h:
+            continue
+        if s.strip().startswith('<!-- GENERÁLT'):
+            kat_h[j] = 'jeloles'
+        else:
+            kat_h[j] = sajat_kat(s, k, 'hozzaadott', tovabb=False)
+    for idx, (s, k, f) in enumerate(torolt):
+        kat = kat_t[idx]
+        if s.strip().startswith('<!-- GENERÁLT') and kat == ISMERETLEN:
+            kat = 'jeloles'
+        eredmeny[kat]['torolt'].append(s)
+    for j, (s, k, f) in enumerate(hozzaadott):
+        eredmeny[kat_h[j]]['hozzaadott'].append(s)
     return eredmeny
 
 

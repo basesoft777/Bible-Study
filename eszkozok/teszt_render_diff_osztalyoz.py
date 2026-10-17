@@ -221,7 +221,69 @@ class MegnevezettTablak(unittest.TestCase):
 
     def test_tabla_merete(self):
         self.assertEqual(len(R.ISMERT_HIBA_TSK_VERSSZAM), 13)
-        self.assertEqual(len(R.ATKULCSOLT_SOROK), 3)
+        # az F87.3-lábnyom név szerinti, csak ALVIL-001 (3. javító menet)
+        self.assertEqual(len(R.ATKULCSOLT_SOROK), 27)
+        self.assertTrue(all(m == 'ALVIL-001' for m, _ in R.ATKULCSOLT_SOROK))
+        self.assertTrue(set(R.ATKULCSOLT_SOROK.values()) <= set(R.ATKULCSOLT_KULCS))
+
+
+class Parositas(unittest.TestCase):
+    """DT-F09g (3. javító menet): kulcs szerinti, kizárólagos párosítás -- teljes kulcs, nem csak igehely."""
+
+    def test_par_nelkuli_torles_ismeretlen_marad(self):
+        eles = blokk('kereszthivatkozasok', ['#### Préd 9:10', '- TSK: Ézs 38:18 (Votes: 15)'])
+        proba = blokk('kereszthivatkozasok', ['#### Préd 9:12', '- Károli-KH: 1Móz 3:15'])
+        e = osztaly(eles, proba, 'TESZT-001_TUDOMANYOS.md')
+        self.assertIn('- TSK: Ézs 38:18 (Votes: 15)', e[R.ISMERETLEN]['torolt'])
+
+    def test_csak_igehelyre_egyezo_nem_par(self):
+        # az Ézs 38:18 az új oldalon másik címkével (Károli-KH) és másik fejléc alatt áll: nem pár
+        eles = blokk('kereszthivatkozasok', ['#### Préd 9:10', '- TSK: Ézs 38:18 (Votes: 15)'])
+        proba = blokk('kereszthivatkozasok', ['#### Préd 9:12', '- Károli-KH: Ézs 38:18'])
+        e = osztaly(eles, proba, 'TESZT-001_TUDOMANYOS.md')
+        self.assertIn('- TSK: Ézs 38:18 (Votes: 15)', e[R.ISMERETLEN]['torolt'])
+        self.assertNotIn('- Károli-KH: Ézs 38:18', e.get('elavult_adat', {}).get('torolt', []))
+
+    def test_teljes_kulcs_egyezes_par(self):
+        # azonos címke + fejléc + célpont, csak a szavazatszám változott: pár
+        eles = blokk('kereszthivatkozasok', ['#### Préd 9:12', '- TSK: Ézs 38:18 (Votes: 15)'])
+        proba = blokk('kereszthivatkozasok', ['#### Préd 9:12', '- TSK: Ézs 38:18 (Votes: 16)'])
+        e = osztaly(eles, proba, 'TESZT-001_TUDOMANYOS.md')
+        self.assertNotIn(R.ISMERETLEN, e)
+        self.assertEqual(e['elavult_adat']['torolt'], ['- TSK: Ézs 38:18 (Votes: 15)'])
+
+    def test_egy_hozzaadott_nem_ket_torles_parja(self):
+        eles = blokk('elofordulasok', ['| [Jób 1:1](#a) | első | H0001 |', '| [Jób 1:1](#a) | második | H0001 |'])
+        proba = blokk('elofordulasok', ['| [Jób 1:1](#a) | új | H0001 |'])
+        e = osztaly(eles, proba, 'TESZT-001_TUDOMANYOS.md')
+        self.assertEqual(len(e['elavult_adat']['torolt']) + len(e.get(R.ISMERETLEN, {}).get('torolt', [])), 2)
+        # a második törlésnek nincs párja és nem él tovább kizárólagos párként -> a tovabb_el dönt (cimke_igehely)
+        self.assertEqual(sum(len(v['torolt']) for v in e.values()), 2)
+        par_db = len(e['elavult_adat']['hozzaadott'])
+        self.assertEqual(par_db, 1)
+
+    def test_kiejtes_par(self):
+        eles = blokk('lxx', ['| [Zsolt 16:10](#v) | Zsolt(LXX) 15:10 | שְׁאוֹל | ᾅδην (ᾅδης, Hadēs G0086) | egyező |'])
+        proba = blokk('lxx', ['| [Zsolt 16:10](#v) | Zsolt(LXX) 15:10 | שְׁאוֹל | ᾅδην (ᾅδης, Hadész G0086) | egyező |'])
+        self.assertEqual(set(osztaly(eles, proba)), {'kiejtes'})
+
+    def test_allapotvaltas_szerep(self):
+        eles = '## 5. Szótári háttér — szerepek és lefedettség\n| H7585 | TBESH | nincs adatosítva |\n'
+        proba = '## 5. Szótári háttér — szerepek és lefedettség\n| H7585 | TBESH | UBS DBH |\n'
+        e = osztaly(eles, proba, 'TESZT-001_TORZSCIKK.md')
+        self.assertEqual(set(e), {'szerep'})
+
+    def test_metaadat_jeloles(self):
+        e = osztaly(blokk('idezes', ['- Generálva: 2026-09-26']), blokk('idezes', ['- Generálva: 2026-10-17']))
+        self.assertEqual(set(e), {'jeloles'})
+
+    def test_ures_allapot_ellenorzott_csere(self):
+        eles = blokk('kizart', ['Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumhoz.'])
+        proba = blokk('kizart', ['- **Jer 4:23** (elutasítva, valami)'])
+        self.assertEqual(set(osztaly(eles, proba)), {'elavult_adat'})
+        # üres-állapot mondat valódi tartalom nélkül nem számít cserének
+        proba2 = blokk('kizart', [])
+        self.assertIn(R.ISMERETLEN, osztaly(eles, proba2))
 
 
 if __name__ == '__main__':
