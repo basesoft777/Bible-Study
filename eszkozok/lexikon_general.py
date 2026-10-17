@@ -35,6 +35,7 @@ import general as G
 import lekerdez as L
 import ubs_hozzarendeles as UBS
 import lxx_os_import as LXXOS
+import kiejtes as KJ
 import utvonalak as _U
 
 ROOT = G.ROOT
@@ -235,7 +236,10 @@ def kiejtes_ehhez(igehely, strong):
     for ige in igehely_lista(igehely):
         r = forras_idx.get((ige, strong))
         if r:
-            return r['Ragozott alak'], r['Kiejtés'], ('TAHOT' if strong.startswith('H') else 'TAGNT')
+            if strong.startswith('G'):
+                # F09 S2.1: görög alak -> magyaros kiejtés; a héber alak STEP-átírása változatlan
+                return r['Ragozott alak'], gorog_magyaros(r['Kiejtés']), 'TAGNT'
+            return r['Ragozott alak'], r['Kiejtés'], 'TAHOT'
     return None
 
 
@@ -272,13 +276,57 @@ def tbesg_tbesh_index():
     return _tbesg_tbesh_cache
 
 
+_kiejtes_tablak_cache = None
+
+
+def _kiejtes_tablak():
+    """(görög szabályok, görög kivételek, héber kivételek) -- egyszer betöltve
+    a kiejtes.py betöltőivel (adat/kiejtes_szabalyok.tsv, adat/kiejtes_kivetelek.tsv)."""
+    global _kiejtes_tablak_cache
+    if _kiejtes_tablak_cache is None:
+        _kiejtes_tablak_cache = (
+            KJ.szabalyok_betolt(),
+            KJ.kivetelek_betolt(nyelv='gorog'),
+            KJ.kivetelek_betolt(nyelv='heber'),
+        )
+    return _kiejtes_tablak_cache
+
+
+def gorog_magyaros(sbl_atiras):
+    """F09 S2.1 (F05 S3): görög SBL-átírás -> magyaros kiejtés (kiejtes.py:
+    szabálytábla + görög kivételek). A héber nem ezen megy át."""
+    szabalyok, gorog_kivetelek, _ = _kiejtes_tablak()
+    return KJ.atir(sbl_atiras, szabalyok, gorog_kivetelek)
+
+
+HEBER_NINCS_KIEJTES_JELZO = '*(nincs jóváhagyott kiejtés; a héber lemma-kiejtést a render nem generálja)*'
+
+
+def heber_lemma_kiejtes(lemma, step_atiras):
+    """A jóváhagyott héber lemma-kiejtés az adat/kiejtes_kivetelek.tsv-ből (F05 S3,
+    D15): előbb a TBESH-lemma NFC alakja, azután a STEP-átírás a kulcs. Gépi héber
+    kiejtés nincs: ha nincs sor, None."""
+    _, _, heber = _kiejtes_tablak()
+    return heber.get(unicodedata.normalize('NFC', lemma)) or heber.get(step_atiras)
+
+
 def lemma_kiejtes(strong):
     """(lemma, kiejtes) vagy None, a TBESG/TBESH-ből, Strong-szám szerint
-    -- pontos egyezés, majd betűutótag nélküli alapalakra visszaesve."""
+    -- pontos egyezés, majd betűutótag nélküli alapalakra visszaesve.
+    F09 S2.1: a kiejtés magyaros -- görögül a kiejtes.py átírása a TBESG-átírásból,
+    héberül a jóváhagyott kivétel-sor; ha ilyen nincs, a STEP-átírás és a jelző
+    (a render héber kiejtést nem generál)."""
     pontos, alap = tbesg_tbesh_index()
-    if strong in pontos:
-        return pontos[strong]
-    return alap.get(strong)
+    nyers = pontos.get(strong) or alap.get(strong)
+    if not nyers:
+        return None
+    lemma, step = nyers
+    if strong.startswith('G'):
+        return lemma, gorog_magyaros(step)
+    hu = heber_lemma_kiejtes(lemma, step)
+    if hu:
+        return lemma, hu
+    return lemma, '%s %s' % (step, HEBER_NINCS_KIEJTES_JELZO)
 
 
 # ---------------------------------------------------------------------------
@@ -1101,7 +1149,7 @@ def gorog_megfelelo_szoveg(r):
     if lk:
         kiejtes = lk[1]
     else:
-        kiejtes = gepi_atiras(r['lemma']) + ' *(gépi átírás)*'
+        kiejtes = gorog_magyaros(gepi_atiras(r['lemma'])) + ' *(gépi átírás)*'
     return '%s (%s, %s%s)' % (r['szoalak'], r['lemma'], kiejtes, ' %s' % strong if strong else '')
 
 
@@ -1180,7 +1228,7 @@ def blokk_lxx(m, sorai, tokenek):
                     if lk:
                         kiejtes = lk[1]
                     else:
-                        kiejtes = gepi_atiras(r.get('gorog_lemma') or '') + ' *(gépi átírás)*'
+                        kiejtes = gorog_magyaros(gepi_atiras(r.get('gorog_lemma') or '')) + ' *(gépi átírás)*'
                     gm = '%s (%s%s)' % (r.get('gorog_lemma') or EM_DASH, kiejtes,
                                          ' %s' % gorog_strong if gorog_strong else '')
                     egyezes_cimke = 'eltérő'

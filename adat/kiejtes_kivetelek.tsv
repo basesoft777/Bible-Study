@@ -1,11 +1,36 @@
 # Kiejtes-kivetelek (S3, D15). Kulcs: nyelv + alak. Séma: adat/SEMA.md 2.17
-# Gorogul: felulirja/kiegesziti a kiejtes.py szabalytabla-alapu atirasat (a
-# torzscikk_general.py kodbeli KIEJT tablajanak 5 induló sora, S1.2). A
-# kodbeli tabla itt meg valtozatlan marad (nulla-diff), az S2.1-ben szunik meg.
-# Heberul: a render nem general -- lemma-kiejtes kizarolag innen jon (S3).
+# Gorogul: felulirja/kiegesziti a kiejtes.py szabalytabla-alapu atirasat
+# (a torzscikk_general.py kodbeli KIEJT tablajat F09 S2.1 kivaltotta, F05 D15).
+# Heberul: a render nem general -- lemma-kiejtes kizarolag innen jon (S3). A kulcs
+# a TBESH-lemma NFC alakja (F09 S2.1); a ket KIEJT-migracios sor (qa.ra, shem)
+# STEP-atiras kulcsot tart, a lookup elobb a lemmat, azutan a STEP-atirast keresi.
 nyelv	alak	kiejtes	megjegyzes
 gorog	epikaleō	epikaleó	KIEJT-migracio (torzscikk_general.py, ISTENTISZT-001)
 gorog	kaleō	kaleó	KIEJT-migracio (torzscikk_general.py, ISTENTISZT-001)
 gorog	boaō	boaó	KIEJT-migracio (torzscikk_general.py, ISTENTISZT-001)
 heber	qa.ra	kárá	KIEJT-migracio (torzscikk_general.py, ISTENTISZT-001)
 heber	shem	sém	KIEJT-migracio (torzscikk_general.py, ISTENTISZT-001)
+heber	אֲדָמָה	adámá	F05 S1.7 jelölt (naplok/SZOTAR_S1_heber_jeloltek.tsv), jóváhagyva 2026.09.29 (D34-D37), H0127; kulcs: TBESH-lemma; manual
+heber	אֱלֹהִים	elóhím	F05 S1.7 jelölt (naplok/SZOTAR_S1_heber_jeloltek.tsv), jóváhagyva 2026.09.29 (D34-D37), H0430; kulcs: TBESH-lemma; manual
+heber	אָרַר	árar	F05 S1.7 jelölt (naplok/SZOTAR_S1_heber_jeloltek.tsv), jóváhagyva 2026.09.29 (D34-D37), H0779; kulcs: TBESH-lemma; manual
+heber	בֹּהוּ	bóhú	F05 S1.7 jelölt (naplok/SZOTAR_S1_heber_jeloltek.tsv), jóváhagyva 2026.09.29 (D34-D37), H0922; kulcs: TBESH-lemma; manual
+heber	בֵּן	bén	F05 S1.7 jelölt (naplok/SZOTAR_S1_heber_jeloltek.tsv), jóváhagyva 2026.09.29 (D34-D37), H1121; kulcs: TBESH-lemma; manual
+heber	חַטָּאָה	chattáá	F05 S1.7 jelölt (naplok/SZOTAR_S1_heber_jeloltek.tsv), jóváhagyva 2026.09.29 (D34-D37), H2403; kulcs: TBESH-lemma; manual
+heber	חַי	chaj	F05 S1.7 jelölt (naplok/SZOTAR_S1_heber_jeloltek.tsv), jóváhagyva 2026.09.29 (D34-D37), H2416; kulcs: TBESH-lemma; manual
+heber	חָמָס	hámás	F05 D36 kézi kivétel (hámás), jóváhagyva 2026.09.29, H2555; kulcs: TBESH-lemma; manual
+heber	כֹּהֵן	kóhén	F05 S1.7 jelölt (naplok/SZOTAR_S1_heber_jeloltek.tsv), jóváhagyva 2026.09.29 (D34-D37), H3548; kulcs: TBESH-lemma; manual
+heber	כִּסֵּא	kissé	F05 S1.7 jelölt (naplok/SZOTAR_S1_heber_jeloltek.tsv), jóváhagyva 2026.09.29 (D34-D37), H3678; kulcs: TBESH-lemma; manual
+heber	מַמְלָכָה	mamláchá	F05 S1.7 jelölt (naplok/SZOTAR_S1_heber_jeloltek.tsv), jóváhagyva 2026.09.29 (D34-D37), H4467; kulcs: TBESH-lemma; manual
+heber	נְפִלִים	nefilím	F05 S1.7 jelölt (naplok/SZOTAR_S1_heber_jeloltek.tsv), jóváhagyva 2026.09.29 (D34-D37), H5303; kulcs: TBESH-lemma; manual
+heber	נֶ֫פֶשׁ	nefes	F05 S1.7 jelölt (naplok/SZOTAR_S1_heber_jeloltek.tsv), jóváhagyva 2026.09.29 (D34-D37), H5315; kulcs: TBESH-lemma; manual
+heber	עִצָּבוֹן	iccávón	F05 S1.7 jelölt (naplok/SZOTAR_S1_heber_jeloltek.tsv), jóváhagyva 2026.09.29 (D34-D37), H6093; kulcs: TBESH-lemma; manual
+heber	קוֹץ	kóc	F05 S1.7 jelölt (naplok/SZOTAR_S1_heber_jeloltek.tsv), jóváhagyva 2026.09.29 (D34-D37), H6975; kulcs: TBESH-lemma; manual
+heber	קָלַל	kálal	F05 S1.7 jelölt (naplok/SZOTAR_S1_heber_jeloltek.tsv), jóváhagyva 2026.09.29 (D34-D37), H7043; kulcs: TBESH-lemma; manual
+heber	רַע	ra	F05 S1.7 jelölt (naplok/SZOTAR_S1_heber_jeloltek.tsv), jóváhagyva 2026.09.29 (D34-D37), H7451; kulcs: TBESH-lemma; manual
+heber	רְפָאִים	refáím	F05 S1.7 jelölt (naplok/SZOTAR_S1_heber_jeloltek.tsv), jóváhagyva 2026.09.29 (D34-D37), H7496; kulcs: TBESH-lemma; manual
+heber	רָפָה	ráfá	F05 S1.7 jelölt (naplok/SZOTAR_S1_heber_jeloltek.tsv), jóváhagyva 2026.09.29 (D34-D37), H7497; kulcs: TBESH-lemma; manual
+heber	שְׁאוֹל	seól	F05 S1.7 jelölt (naplok/SZOTAR_S1_heber_jeloltek.tsv), jóváhagyva 2026.09.29 (D34-D37), H7585; kulcs: TBESH-lemma; manual
+heber	שָׁחַת	sáchat	F05 S1.7 jelölt (naplok/SZOTAR_S1_heber_jeloltek.tsv), jóváhagyva 2026.09.29 (D34-D37), H7843; kulcs: TBESH-lemma; manual
+heber	שָׁלֵם	sálém	F05 S1.7 jelölt (naplok/SZOTAR_S1_heber_jeloltek.tsv), jóváhagyva 2026.09.29 (D34-D37), H8004; kulcs: TBESH-lemma; manual
+heber	תֹּ֫הוּ	tóhú	F05 S1.7 jelölt (naplok/SZOTAR_S1_heber_jeloltek.tsv), jóváhagyva 2026.09.29 (D34-D37), H8414; kulcs: TBESH-lemma; manual
+heber	תְּהוֹם	tehóm	F05 S1.7 jelölt (naplok/SZOTAR_S1_heber_jeloltek.tsv), jóváhagyva 2026.09.29 (D34-D37), H8415; kulcs: TBESH-lemma; manual

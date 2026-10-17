@@ -212,7 +212,7 @@ class TestVazIstentiszt(unittest.TestCase):
         self.assertIn('**TWOT:** 2063', self._blokk_szerep('heber', 3))
         self.assertIn('**Szemantikai domén:**', self._blokk_szerep('gorog', 4))
         self.assertIn('**Szemantikai domén:**', self._blokk_szerep('heber', 4))
-        self.assertIn(unicodedata.normalize('NFC', 'ἐπικαλέω (epikaleō)'),
+        self.assertIn(unicodedata.normalize('NFC', 'ἐπικαλέω (epikaleó)'),
                       unicodedata.normalize('NFC', self._blokk_szerep('gorog', 10)))
         # a Strong-fejléc nem marad a fő törzsben (a rokon szavakon kívül)
         for kulcs in ('gorog', 'heber', 'kozos'):
@@ -228,7 +228,7 @@ class TestVazIstentiszt(unittest.TestCase):
 
     def test_rokon_szavak_szerkezete_valtozatlan(self):
         r = unicodedata.normalize('NFC', self.sz['rokon'])
-        self.assertIn(unicodedata.normalize('NFC', '#### G0994 — βοάω (boaō)'), r)
+        self.assertIn(unicodedata.normalize('NFC', '#### G0994 — βοάω (boaó)'), r)
         self.assertIn('**TWOT:** —', r)
         self.assertIn('**Szemantikai domén:**', r)
         self.assertIn('##### LSJ G2564 — (részlet)', r)
@@ -280,6 +280,56 @@ class TestVazTeremt(unittest.TestCase):
             fl, tb = {'adat/lexikon_hivatkozasok.tsv': set()}, set()
             with self.assertRaises(ValueError):
                 LG.szerep_vaz(['H7121'], fl, tb)
+
+
+class TestKiejtesF09(unittest.TestCase):
+    """F09 S2.1 (K9): a 26 jóváhagyott héber lemma-kiejtés a kivételtáblában, a kódbeli KIEJT megszűnt."""
+
+    def _kivetelek(self):
+        sorok = []
+        with io.open(os.path.join(G.ADAT, 'kiejtes_kivetelek.tsv'), encoding='utf-8') as f:
+            for sor in f.read().split('\n'):
+                if sor and not sor.startswith('#') and not sor.startswith('nyelv\t'):
+                    sorok.append(sor.split('\t'))
+        return sorok
+
+    def test_26_heber_3_gorog_sor_egyedi_kulcs(self):
+        sorok = self._kivetelek()
+        self.assertEqual(sum(1 for r in sorok if r[0] == 'heber'), 26)
+        self.assertEqual(sum(1 for r in sorok if r[0] == 'gorog'), 3)
+        kulcsok = [(r[0], r[1]) for r in sorok]
+        self.assertEqual(len(kulcsok), len(set(kulcsok)))
+
+    def test_minden_jovahagyott_jelolt_ugyanazt_adja_vissza(self):
+        jel = os.path.join(ROOT, 'naplok', 'SZOTAR_S1_heber_jeloltek.tsv')
+        n = 0
+        with io.open(jel, encoding='utf-8') as f:
+            for sor in f.read().split('\n'):
+                if not sor or sor.startswith('#') or sor.startswith('strong\t'):
+                    continue
+                m = sor.split('\t')
+                lk = LG.lemma_kiejtes(m[0])
+                self.assertIsNotNone(lk, m[0])
+                self.assertEqual(lk[1], m[4], m[0])
+                n += 1
+        self.assertEqual(n, 26)
+
+    def test_kodbeli_kiejt_tabla_megszunt(self):
+        with io.open(os.path.join(ROOT, 'eszkozok', 'torzscikk_general.py'), encoding='utf-8') as f:
+            self.assertEqual(f.read().count('KIEJT'), 0)
+
+    def test_gorog_lemma_es_alak_magyaros(self):
+        self.assertEqual(LG.lemma_kiejtes('G1941')[1], 'epikaleó')
+        self.assertEqual(LG.gorog_magyaros('epikalesētai'), 'epikaleszétai')
+        talalat = LG.kiejtes_ehhez('ApCsel 9:14', 'G1941')
+        self.assertEqual(talalat[1], 'epikalúmenúsz')
+        # héber alak: a STEP-átírás változatlan
+        self.assertEqual(LG.kiejtes_ehhez('1Móz 4:26', 'H7121')[1], "k.Ro'")
+
+    def test_heber_kiejtes_ket_azonos_step_atirasu_lemma(self):
+        # H7496 és H7497 STEP-átírása azonos (ra.pah), a lemma-kulcs különbözteti meg
+        self.assertEqual(LG.lemma_kiejtes('H7496')[1], 'refáím')
+        self.assertEqual(LG.lemma_kiejtes('H7497')[1], 'ráfá')
 
 
 if __name__ == '__main__':

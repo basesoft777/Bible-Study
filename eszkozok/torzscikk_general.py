@@ -13,14 +13,10 @@ szakasz a pilot régi szerepkör-mátrixa helyett a G6 szerepmátrixot
 (G7); a régi 5. szakasz és a lábléc (D12/G7: a ténylegesen használt
 forrásokra szűkítve) az egyetlen pont, ahol a pilot-diff megengedett (K9).
 
-A kiejtés-transzliteráció (SBL-stílus -> magyaros, pl. epikaleō -> epikaleó)
-NEM a RENDER tárgya (l. CLAUDE.md/RENDER_BRIEF.md "Nincs benne" -- a
-`kiejtes.py` a F05_SZOTAR_BRIEF.md dolga); a pilot KIEJT táblája ISMÉRT,
-ISTENTISZT-001-specifikus javításokat tartalmazott -- ez itt megmarad
-(a K9 pilot-diff ezekre a szavakra épp emiatt nem térhet el), de a többi
-motívum egyéb szavaira NEM terjed ki: azok nyers (SBL-stílusú) alakban
-jelennek meg, amíg a F05_SZOTAR_BRIEF kiejtes.py-ja nem old meg egy általános
-átírást.
+A kiejtés (SBL-átírás -> magyaros) nem ebben a modulban dől el: a görög
+átírást a `kiejtes.py` (szabálytábla + kivételek), a héber lemma-kiejtést az
+`adat/kiejtes_kivetelek.tsv` adja, a lexikonoldalon keresztül (F09 S2.1; a pilot
+kódbeli kivétel-táblája megszűnt, F05 D15). Ez a modul a lexikonoldalból olvas.
 
 TSV-olvasás kizárólag split('\\t') / '\\t'.join() (CLAUDE.md).
 
@@ -44,19 +40,6 @@ import general as G
 import lexikon_general as LG
 
 ROOT = G.ROOT
-
-# ISTENTISZT-001-specifikus, ismert SBL->magyaros kiejtés-javítások (a pilot
-# öröksége, l. a modul docstringje). Új szó esetén nincs csere.
-KIEJT = {'epikaleō': 'epikaleó', 'kaleō': 'kaleó', 'boaō': 'boaó',
-         'qa.ra': 'kárá', 'shem': 'sém'}
-
-
-def kiejt(s):
-    for k, v in KIEJT.items():
-        if k in s:
-            s = s.replace(k, v)
-    return s
-
 
 def cells(row):
     return [c.strip() for c in row.strip().strip('|').split('|')]
@@ -251,7 +234,7 @@ def torzscikk_szoveg(m, lex_szoveg, model):
         lk = LG.lemma_kiejtes(token)
         if lk:
             lemma_nfc = unicodedata.normalize('NFC', lk[0])
-            fo_szavak.append('%s (%s, %s)' % (lemma_nfc, kiejt(lk[1]), token))
+            fo_szavak.append('%s (%s, %s)' % (lemma_nfc, lk[1], token))
         else:
             fo_szavak.append(token)
     if fo_szavak:
@@ -304,7 +287,7 @@ def torzscikk_szoveg(m, lex_szoveg, model):
             w('- **UBS-jelentés:** %s' % e['ubs'])
         if r in lxx:
             c = lxx[r]
-            w('- **LXX:** %s — %s — %s' % (c[1], kiejt(c[3]), c[4]))
+            w('- **LXX:** %s — %s — %s' % (c[1], c[3], c[4]))
         ki = [k for k in kap if k[0] == r]
         be = [k for k in kap if k[1] == r]
         if ki or be:
@@ -350,7 +333,7 @@ def torzscikk_szoveg(m, lex_szoveg, model):
     if lxx:
         w('| Igehely (Károli) | LXX-igehely | Héber kulcsszó | Görög megfelelő | Egyezés |'); w('|---|---|---|---|---|')
         for c in lxx.values():
-            w('| [%s](#%s) | %s | %s | %s | %s |' % (c[0], anchor(c[0]), c[1], c[2], kiejt(c[3]), c[4]))
+            w('| [%s](#%s) | %s | %s | %s | %s |' % (c[0], anchor(c[0]), c[1], c[2], c[3], c[4]))
         w('')
         if lxx_ossz:
             w(lxx_ossz.replace(', kutatói azonosítás függőben=0, szamozas_elteres=0', '')); w('')
