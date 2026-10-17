@@ -7,7 +7,7 @@ fazis: 1
 modell: opus
 allapot: fut
 ag: claude/f23-dt84-atvezetes
-pr:
+pr: https://github.com/basesoft777/Bible-Study/pull/370
 ad: a B szerkezet terve mérésekkel: szakasz-leképezés, forrássablon-tervezet, szintjelölés a SEMA-ban, CI-szabályok leírása; renderelés és fájlmozgatás nélkül
 kovetkezo: "Folytatás: a DT84 átvezetve (sablon v0.1, SEMA 3.10, ci-terv, pilot-terv; ág claude/f23-dt84-atvezetes); a DT-F23b (a 2_/4_ sablon visszaírási szabályának szövege: mikor, hol) és a DT-F23c (a kapcsolatok.tsv indoklas oszlopának végrehajtója) döntésre vár; utána a #11 briefje a pilot-terv alapján (külön lépés: a #11 saját briefje, nem e brief ir-je)"
 olvas: [sablonok/, tematikus_lezart/, motivumok/, lexikon/, genezis/, adat/SEMA.md, adat/res_forras.tsv, adat/szotar_szerepek.tsv, eszkozok/general.py, CLAUDE.md, ATALAKITASI_TERV.md.md, ADATVAGYON_TERV.md, MUNKATERV.md, naplok/TEREMT002_PROZA_PROBA_meres.md]
