@@ -1311,8 +1311,9 @@ Zárt értékkészlet: `olvasoi` | `apparatus` | `belso` (D36).
 A nézet mélysége kumulatív: az `apparatus` nézet az `olvasoi` blokkokat is mutatja, a
 `belso` mindent. Kiadható nézet csak `olvasoi` vagy `apparatus` mélységű lehet; a
 motívumcikk és a lexikonoldal **kiadható `apparatus` nézet (a DT-F86a szerint prémium)**,
-a `belso` réteg belőlük is kimarad (DT84 (10)). A licenc szerinti szűrés (BY-SA-eredetű
-blokk zárt rétegben nem állhat, DT-F86c) és a közös build-idejű szűrő: N-F23b.
+a `belso` réteg belőlük is kimarad (DT84 (10)). A licenc szerinti szűrés nyitott: a #86
+DT-F86c pontja (BY-SA-eredetű blokk zárt rétegben ne álljon) ma *javaslat*, nem döntés;
+ez az alfejezet nem épít rá. A közös build-idejű szűrő: N-F23b.
 
 #### 3.10.2 A jelölés blokkszintű, gépileg olvasható
 
@@ -1424,6 +1425,11 @@ azzal a megjegyzéssel, hogy új oszlopot kérhet. A DT84 döntése:
    12. szakasz 2. pont). Az út az `ADAT-HIV` ellenőrző jelölő és a kinyerési jelentés
    (3.10.5); a hiányzó sort döntéssel, `forras=manual` provenienciával a meglévő adatút
    írja. Új jelölt-tábla nincs; a kérdés a #9 adatosítás tapasztalata után nyitható újra.
+   *Viszony a 3/9-hez:* ez az út nem kinyerés a 3/9 értelmében, ezért nem kivétel alóla.
+   Az `ADAT-HIV` ellenőrző jelölő (3.10.5 táblázat): a generátor belőle semmit nem ír, csak
+   a sor hiányát jelenti. A hiányzó sort nem a forrásból kinyert szöveg tölti, hanem a
+   meglévő adatút a saját döntésével. A 3/9 „csak a `jeloltek.tsv`-n át” szabálya a
+   forrásból kinyert sorra szól; ilyen sor itt nem keletkezik.
 
 ---
 

@@ -124,8 +124,9 @@ szakasz); az E29 csak az eredményt nézi.
 
 **Közös szűrő a #86-tal (N-F23b):** a D36 build-kihagyása és a #86 freemium/prémium-kizárása
 ugyanaz a build-idejű szabály; az E29 implementációja a #86 feed-építőjével közös szint-szűrőre
-épüljön, ne kettőre. A licenc szerinti kizárás (BY-SA-eredetű blokk zárt rétegben nem állhat,
-DT-F86c) nem az E29 mintája; a szűrő tervezése a #86 3.1 és a #11 dolga.
+épüljön, ne kettőre. A licenc szerinti kizárás nem az E29 mintája: a #86 DT-F86c pontja
+(BY-SA-eredetű blokk zárt rétegben ne álljon) ma *javaslat*, nem döntés, ez a terv nem épít
+rá; a szűrő tervezése a #86 3.1 és a #11 dolga.
 
 ## 3. Ami a két szabályon kívül marad (a #11 briefjének)
 

@@ -7,7 +7,7 @@ fazis: 1
 modell: opus
 allapot: fut
 ag: claude/f23-dt84-atvezetes
-pr: https://github.com/basesoft777/Bible-Study/pull/258
+pr:
 ad: a B szerkezet terve mérésekkel: szakasz-leképezés, forrássablon-tervezet, szintjelölés a SEMA-ban, CI-szabályok leírása; renderelés és fájlmozgatás nélkül
 kovetkezo: "Folytatás: a DT84 átvezetve (sablon v0.1, SEMA 3.10, ci-terv, pilot-terv; ág claude/f23-dt84-atvezetes); a DT-F23b (a 2_/4_ sablon visszaírási szabályának szövege: mikor, hol) és a DT-F23c (a kapcsolatok.tsv indoklas oszlopának végrehajtója) döntésre vár; utána a #11 briefje a pilot-terv alapján (külön lépés: a #11 saját briefje, nem e brief ir-je)"
 olvas: [sablonok/, tematikus_lezart/, motivumok/, lexikon/, genezis/, adat/SEMA.md, adat/res_forras.tsv, adat/szotar_szerepek.tsv, eszkozok/general.py, CLAUDE.md, ATALAKITASI_TERV.md.md, ADATVAGYON_TERV.md, MUNKATERV.md, naplok/TEREMT002_PROZA_PROBA_meres.md]
@@ -118,3 +118,4 @@ Minden számot a menetben ténylegesen futtatott parancs kimenetéből vegyél. 
 | v1.8 | 2026.10.08 | M1 javítókör az ELLENOR_F23_M1 2–4. tétele szerint: a SEMA 3.10.5 és a sablon 6. pontja a 3/9-hez igazodik (kinyerés csak a `jeloltek.tsv`-n át, a proveniencia-lábjegyzet hivatkozás; a közvetlen `auditok.tsv`-út `javaslat`, DT84 (2) bővítve); a pilot-terv HAMART-001 RÉS-számai (jelölő-előfordulás / rés / `res_forras`-sor) és a 4.1 proveniencia-hatóköre pontosítva; a fejléc verziósora (v1.5) a verziónaplóhoz igazítva | ELLENOR_F23_M1; az orkesztrátor javítóköre (a felhasználó által jóváhagyott menet része); tartalmi döntés nincs, a hatókör nem bővül |
 | v1.9 | 2026.10.12 | DT84 eldöntve (🟢): fejléc `allapot: fut`, `kovetkezo` `Folytatás:` (az átvezetés); N-F23a–c a `NYITOTT_FELADATOK.md`-ben | a felhasználó döntése a chatben (2026.10.12) |
 | v1.10 | 2026.10.17 | a DT84 átvezetése (F23.D0–D5, ág `claude/f23-dt84-atvezetes`): a négy tervfájl `javaslat`-jelölései feloldva; a DT84-en kívül maradt két kérdés: DT-F23b, DT-F23c (🟡); a DT66 ✅; fejléc `ag`, `kovetkezo`; az `ir` nem bővül (a 2_/4_ sablon szövege a DT-F23b-től függ) | DT84 (felhasználó, 2026-10-12); a futtatás jóváhagyása (orkesztrátor, „mehet”) |
+| v1.11 | 2026.10.17 | javítókör az ELLENOR_F23_3 1–8. tétele szerint (F23.D9–D10): a DT-F86c függő *javaslat*-hivatkozás; a maradék próza→`auditok.tsv` utak a DT84 (2) szerint; a `lekepezes.tsv` 5 során jelölt DT84-eltérés; az ISTENTISZT-001 és a HAMART-001 `jeloltek` száma friss méréssel; SEMA 3.10.7 4. ↔ 3/9 összekötő mondat; a `pr` mező üres (a mergelt #258 helyett); a sablon 9. pont jelölése; `git diff --stat` a zárásban | ELLENOR_F23_3; az orkesztrátor javítóköre; tartalmi döntés nincs |
