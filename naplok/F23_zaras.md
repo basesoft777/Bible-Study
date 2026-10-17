@@ -7,6 +7,7 @@
 - (10): „kiadható `apparatus` nézet (a DT-F86a szerint prémium)”; a `【NAPLO】` egyenkénti ítélete. Mért kiindulás: 36 `【NAPLO`-sor az éles lapokon (`grep -c`, ts=2026-10-17; egyezik a DT84-gyel).
 - Független ellenőrzés: `naplok/ELLENOR_F23_3.md` (ELTÉRÉS, 8; javítva D9–D11), `_4.md` (ELTÉRÉS, 1 alacsony; javítva), `_5.md` (ELTÉRÉS, 5; javítva D15). A D15 utáni újraellenőrzés jelentése a repóban nincs; a lezárás a felhasználó döntése.
 - Ellenőrzés (#370): `feladatok.py ellenoriz` 0 hiba; `ellenorzes/futtat.py` diff-módban HIBA 0. K4: tartalmi fájl (`tematikus_lezart/`, `motivumok/`, `lexikon/`, `genezis/`, `general.py`, `adat/*.tsv`) nem változott.
+- Ellenőrzés (F23.Z): `feladatok.py ellenoriz` 128 brief, 0 hiba; `ellenorzes/futtat.py` diff-módban, a commit-üzenetekkel: HIBA 0 (az E5 a „Folytatási pont” címsor cseréjét a Z2 jelölésével fogadja).
 - Nyitott tételek gazdája (`NYITOTT_FELADATOK.md`): N-F23a → #11 (DT-F11b, a T3 előtt); N-F23b → #86 (3.1) és az E29 implementációja; N-F23c → gazda nincs (a #11 kizárja, a #86 briefje nem veszi fel).
 
 ## Átadás a #11-nek
