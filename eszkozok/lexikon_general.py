@@ -764,7 +764,10 @@ def _szotar_reszek(strong, szint_eltolas, fajl_licenc_kulcsok, fajl_licenc_kulcs
     forras_blokkok = []
     van_hivatkozas = False
     tisztazatlan_erintve = False
-    hiv_sorok = lexikon_hivatkozasok_ehhez(strong)
+    # F11 R: a szerephez nem rendelt (KIEGESZITO_SZOTARAK) sorokat a 2b rés
+    # rendereli (adatres_2b), a szerepmátrix nem.
+    hiv_sorok = [r for r in lexikon_hivatkozasok_ehhez(strong)
+                 if r['szotar'] not in KIEGESZITO_SZOTARAK]
     if hiv_sorok:
         van_hivatkozas = True
         for r in hiv_sorok:
@@ -817,7 +820,8 @@ def rokon_szavak_strongok(sorai, tokenek):
                 gs = (r.get('gorog_strong') or '').strip()
                 if gs and STRONG_TOKEN_RE.match(gs) and gs not in tokenek:
                     strongok.add(gs)
-    return sorted(s for s in strongok if lexikon_hivatkozasok_ehhez(s))
+    return sorted(s for s in strongok
+                  if any(r['szotar'] not in KIEGESZITO_SZOTARAK for r in lexikon_hivatkozasok_ehhez(s)))
 
 
 # --- F78: szerep-sorrendű váz (DT-F78a B változat, DT-F78b szűkített hatókör) ---
@@ -2306,7 +2310,14 @@ def _tanulmany_szoveg(relativ_ut):
     if relativ_ut not in _tanulmany_szoveg_cache:
         path = os.path.join(ROOT, relativ_ut)
         with io.open(path, encoding='utf-8', newline='') as f:
-            _tanulmany_szoveg_cache[relativ_ut] = f.read().replace('\r\n', '\n')
+            szoveg = f.read().replace('\r\n', '\n')
+        # F11 R: a kézi forrás (`motivumok/[ID].md`, sablon 9) a lexikonoldalra
+        # `apparatus` nézetként kerül (DT84 (10), SEMA 3.10.4): a `belso` szint
+        # és a `【NAPLO】` kimarad, a RÉS-jelölők maradnak. A tematikus
+        # tanulmány és a napló (a nem migrált motívumok) változatlanul.
+        if relativ_ut.replace('\\', '/').startswith('motivumok/'):
+            szoveg = G.forras_nezet(szoveg, 'apparatus')[0]
+        _tanulmany_szoveg_cache[relativ_ut] = szoveg
     return _tanulmany_szoveg_cache[relativ_ut]
 
 
@@ -2335,22 +2346,183 @@ def res_tanulmany_torzs(relativ_ut, res):
     return '\n\n'.join(torzsek)
 
 
-def res_torzs(m, res, sor):
+def res_torzs(m, res, sor, sorai=None):
     """A rés törzse a `forras` mező szerint -- 'tanulmany': a tanulmány/napló
     jelölői közötti szöveg (a `tanulmany` oszlop ilyenkor útvonal); 'adat':
     a `tanulmany` oszlop maga a generátor saját, adatból vezetett mondata
     (G16) -- a res_forras.tsv-be előre rögzítve, motívumonként eltérő
-    indoklással (l. KIRALY-001, N19); 'lap' erre a függvényre sosem hívódik
-    (l. res_blokkok_alkalmaz)."""
+    indoklással (l. KIRALY-001, N19); ha a `tanulmany` mező üres, a rés
+    törzsét az ADAT_RES_RENDEREK renderelője írja az adattáblákból (F11 R,
+    DT-F11e); 'lap' erre a függvényre sosem hívódik (l. res_blokkok_alkalmaz).
+    A `sorai` a motívum előfordulás-sorai; None esetén az elofordulasok.tsv-ből."""
     forras = sor['forras']
     if forras == 'tanulmany':
         return res_tanulmany_torzs(sor['tanulmany'], res)
     if forras == 'adat':
         mondat = sor.get('tanulmany')
-        if not mondat:
+        if mondat:
+            return mondat
+        if res not in ADAT_RES_RENDEREK:
             raise ValueError('nincs adat-alapú render szabály: %s / %s' % (m['id'], res))
-        return mondat
+        if sorai is None:
+            sorai = _elofordulas_sorai(m['id'])
+        return ADAT_RES_RENDEREK[res](m['id'], sorai)
     raise ValueError('ismeretlen forras: %r (%s / %s)' % (forras, m['id'], res))
+
+
+# ---------------------------------------------------------------------------
+# F11 R (DT-F11e): a három adatrés renderelője -- `forras=adat`, üres
+# `tanulmany` mező. A tiszta függvények (adatres_*) a sorokat paraméterként
+# kapják (tesztelhetők); az _adatres_* burkolók az élő táblákat töltik be.
+# Üres adatnál a rés kimondott hiánymondatot kap (CLAUDE.md 3. szabály).
+# ---------------------------------------------------------------------------
+
+# A 2/b-be tartozó, szerephez nem rendelt szótárak (SEMA 2.5 `szotar`): a
+# szerepmátrix (2.S) ezeket nem rendereli, a 2b rés igen (sablon 9 5. pont).
+KIEGESZITO_SZOTARAK = ('SECE_G', 'SECE_H', 'MCGED')
+
+ALATAMASZTAS_NINCS_KAPCSOLAT = 'A motívumhoz nincs rögzített kapcsolat.'
+JELOLT_KERESZTHIV_ELOTAGOK = ('TSK', 'Károli-KH')
+
+
+def _elofordulas_sorai(motivum_id):
+    _, sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
+    return [s for s in sorok if s['id'] == motivum_id]
+
+
+def _kapcsolat_par(r):
+    return '%s → %s' % (r['forras_igehely'], r['cel_igehely'])
+
+
+def adatres_alatamasztas(motivum_id, kapcsolat_sorok):
+    """Az Alátámasztás rés a `kapcsolatok.tsv` `indoklas` mezőjéből (SEMA 2.3,
+    3.10.7 1.): az azonos indoklású sorok egy táblasorba kerülnek (a fájl
+    sorrendjében, az első előfordulás helyén); az indoklás nélküli sorok
+    felsorolva, hiányként."""
+    sajat = [r for r in kapcsolat_sorok if r['id'] == motivum_id]
+    if not sajat:
+        return ALATAMASZTAS_NINCS_KAPCSOLAT
+    csoportok = []
+    index = {}
+    nelkul = []
+    for r in sajat:
+        indoklas = (r.get('indoklas') or '').strip()
+        if not indoklas:
+            nelkul.append(_kapcsolat_par(r))
+            continue
+        if indoklas not in index:
+            index[indoklas] = len(csoportok)
+            csoportok.append((indoklas, []))
+        csoportok[index[indoklas]][1].append(_kapcsolat_par(r))
+    sorok = ['*Generált a `kapcsolatok.tsv` `indoklas` mezőjéből: soronként miért ez a funkció-címke, '
+             'miért ez a bizonyossági szint.*', '']
+    if csoportok:
+        sorok += ['| Kapcsolat | Alátámasztás |', '|---|---|']
+        for indoklas, parok in csoportok:
+            sorok.append('| %s | %s |' % (_cella('; '.join(parok)), _cella(indoklas)))
+    else:
+        sorok.append('A motívum %d kapcsolat-sorának egyikéhez sincs rögzített indoklás a '
+                     '`kapcsolatok.tsv`-ben.' % len(sajat))
+    if nelkul and csoportok:
+        sorok += ['', '*Rögzített indoklás nélküli kapcsolat-sor (%d): %s.*' % (len(nelkul), '; '.join(nelkul))]
+    return '\n'.join(sorok)
+
+
+def adatres_2b(tokenek, hiv_sorok):
+    """A 2/b rés a `lexikon_hivatkozasok.tsv` szerephez nem rendelt
+    (KIEGESZITO_SZOTARAK) soraiból, a motívum Strong-tokenjeire: a sor
+    szó szerinti kivonata (`szoveg_en`) és forrásfájlja; a fordítás, ha az
+    `adat/forditasok.tsv`-ben áll."""
+    sorok_ehhez = []
+    for t in tokenek:
+        sajat = [r for r in hiv_sorok if r['strong'] == t and r['szotar'] in KIEGESZITO_SZOTARAK]
+        sorok_ehhez += sorted(sajat, key=lambda r: (r['szotar'], r['jelentes_szam']))
+    if not sorok_ehhez:
+        return ('*Nincs a szerepmátrixon (2. szakasz) túli kiegészítő szótári sor a '
+                '`lexikon_hivatkozasok.tsv`-ben ehhez a motívumhoz.*')
+    out = ['*Generált a `lexikon_hivatkozasok.tsv`-ből: a szerepmátrixon (2. szakasz) túli szótári sorok '
+           '(%s).*' % ', '.join(KIEGESZITO_SZOTARAK)]
+    for r in sorok_ehhez:
+        bek = ['**%s %s — %s**' % (r['szotar'], r['strong'], _jsz_cimke(r['jelentes_szam'])),
+               '> %s' % r['szoveg_en']]
+        hu = forditas_ehhez(r['szotar'], r['strong'], r['entry_id'], r['jelentes_szam'], 'forditas_hu')
+        if hu:
+            bek.append('**🇭🇺** %s' % hu)
+        bek.append('*Forrás: %s*' % r['forrasfajl'])
+        out.append('\n\n'.join(bek))
+    return '\n\n'.join(out)
+
+
+def adatres_minosites(motivum_id, elof_igehelyek, jelolt_sorok, tsk_idx, kh_idx):
+    """A Minősítés rés (SEMA 3.10.7 2.): (1) a független megerősítés -- a
+    motívum előfordulás-igehelyeiről induló TSK (Votes ≥ 15) és Károli-KH
+    találat, amelynek célja is a motívum előfordulás-igehelye; (2) a
+    kereszthivatkozásból minősített jelöltek a `jeloltek.tsv`-ből
+    (`forras_kereses` TSK / Károli-KH előtaggal), döntéssel és indoklással.
+    `tsk_idx`: {igehely: [TSK-sor]}, `kh_idx`: {STEP-igehely: [KH-sor]}."""
+    halmaz = set(elof_igehelyek)
+    parok = []
+    lattuk = set()
+    for a in elof_igehelyek:
+        if '-' in a:
+            continue
+        talalatok = [('TSK (Votes %s)' % r['Votes'], r) for r in tsk_idx.get(a, []) if int(r['Votes']) >= 15]
+        try:
+            step = L.to_step(a)
+        except ValueError:
+            step = None
+        if step is not None:
+            talalatok += [('Károli-KH', r) for r in kh_idx.get(step, [])]
+        for cimke, r in talalatok:
+            b = karoli_colon(r['Kapcsolódó igehely magyar megjelenítése'])
+            kulcs = (a, b, cimke)
+            if b in halmaz and b != a and kulcs not in lattuk:
+                lattuk.add(kulcs)
+                parok.append('- %s → %s — %s' % (a, b, cimke))
+    out = ['*Generált: a független megerősítés a TSK (Votes ≥ 15) és a Károli-KH találatainak metszete a '
+           'motívum előfordulás-igehelyeivel; a minősített jelöltek a `jeloltek.tsv`-ből (`forras_kereses`: '
+           'TSK / Károli-KH).*']
+    if parok:
+        out.append('**Független megerősítés** (%d pár):\n\n%s' % (len(parok), '\n'.join(parok)))
+    else:
+        out.append('**Független megerősítés:** nincs olyan TSK- (Votes ≥ 15) vagy Károli-KH-találat, amely a '
+                   'motívum két előfordulás-igehelyét kötné össze.')
+    jeloltek = [j for j in jelolt_sorok if j['id'] == motivum_id
+                and (j.get('forras_kereses') or '').startswith(JELOLT_KERESZTHIV_ELOTAGOK)]
+    if jeloltek:
+        szam = {}
+        for j in jeloltek:
+            szam[j['dontes']] = szam.get(j['dontes'], 0) + 1
+        osszeg = ', '.join('%s %d' % (d, szam[d]) for d in ('beépítve', 'elutasítva', 'nyitva') if d in szam)
+        tabla = ['**Kereszthivatkozásból minősített jelöltek** (%d sor; %s):' % (len(jeloltek), osszeg), '',
+                 '| Igehely | Döntés | Forrás-keresés | Indoklás |', '|---|---|---|---|']
+        for j in jeloltek:
+            tabla.append('| %s | %s | %s | %s |' % (j['igehely'], j['dontes'], _cella(j['forras_kereses']),
+                                                     _cella(j.get('indoklas') or EM_DASH)))
+        out.append('\n'.join(tabla))
+    else:
+        out.append('**Kereszthivatkozásból minősített jelölt:** nincs a `jeloltek.tsv`-ben ehhez a motívumhoz.')
+    return '\n\n'.join(out)
+
+
+def _adatres_alatamasztas(motivum_id, sorai):
+    return adatres_alatamasztas(motivum_id, kapcsolatok_sorok())
+
+
+def _adatres_2b(motivum_id, sorai):
+    return adatres_2b(motivum_strong_tokenek(sorai), lexikon_hivatkozasok_sorok())
+
+
+def _adatres_minosites(motivum_id, sorai):
+    return adatres_minosites(motivum_id, [s['igehely'] for s in sorai], jeloltek_sorok(),
+                             tsk_index(), kh_index())
+
+
+ADAT_RES_RENDEREK = {
+    'alatamasztas': _adatres_alatamasztas,
+    '2b': _adatres_2b,
+    'minosites': _adatres_minosites,
+}
 
 
 # G11: a 2/b fejléc egységesítése a 2. menetben -- a meglévő lexikonoldalak
@@ -2466,7 +2638,7 @@ def modell_epit(m, sorai, konyv_sorrend, hianyzo_konyvek, lexikon_szoveg=None):
             torzs = (res_torzs_lapbol(lexikon_szoveg, m, res)
                      if lexikon_szoveg is not None else None)
         else:
-            torzs = res_torzs(m, res, sor)
+            torzs = res_torzs(m, res, sor, sorai)
         resek[res] = {'fejlec': sor['fejlec'], 'forras': sor['forras'], 'torzs': torzs}
 
     return {
