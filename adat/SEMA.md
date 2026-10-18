@@ -1321,6 +1321,10 @@ ez az alfejezet nem épít rá. A közös build-idejű szűrő: N-F23b.
 - **Alapszint:** minden szakasz alapszintje a forrássablon 4. pontjának táblázatában áll;
   a forrásban ehhez jelölő nem kell. Ismeretlen (a táblázatban nem szereplő) szakasz
   szintje `belso` (zárt alapérték, l. 3.10.4).
+- **Szakasz-felismerés** (DT-F11d (a), 2026-10-18): a szakasz a `##` címsor, és a címsor
+  eleje azonosítja (`Kivonat`, `0.`–`7.`, `Proveniencia-sorok`); a `###` alcím a szakasz
+  szintjét örökli, kivéve az 1. szakasz „P1–P7” alcímét (1.P, `belso`); az első `##`
+  előtti rész `belso`. A részletes szabály és a P-lépés-figyelmeztetés: forrássablon 4. pont.
 - **Eltérés:** jelölőpár, a meglévő `RÉS-KEZDET` / `GENERÁLT-KEZDET` mintájára, saját sorban:
 
   ```
@@ -1376,9 +1380,9 @@ generátor a forrásba nem ír**. Más táblába a kinyerés közvetlenül nem �
 
 | Jelölő (forrássablon 6. pont) | Tábla | Kulcs | Mit ír | Proveniencia | Ütközés (a kulcs már létezik) |
 |---|---|---|---|---|---|
-| `<!-- JELÖLT: [igehely] \| gerinc: [gerinc_elem] \| [indoklás] -->` | `jeloltek.tsv` (2.4) | `id` + `igehely` | `dontes=nyitva`, `indoklas` = a jelölő indoklása, `datum` = a kinyerés napja | a `forras_kereses` mezőben: `scope=manual \| forras=motivumok/[ID].md#[szakasz] \| ts=[DATUM]` (1.5) | nem ír; a kinyerési jelentés jelzi, hogy a jelölt már minősítve van |
+| `<!-- JELÖLT: [igehely] \| gerinc: [gerinc_elem] \| [indoklás] -->` | `jeloltek.tsv` (2.4) | `id` + `igehely` | `dontes=nyitva`, `indoklas` = `gerinc: [gerinc_elem] — [a jelölő indoklása]` (DT-F11d (d): a gerinc séma-bővítés nélkül megmarad az előléptetéshez), `datum` = a kinyerés napja | a `forras_kereses` mezőben: `scope=manual \| forras=motivumok/[ID].md#[szakasz] \| ts=[DATUM]` (1.5); a `[szakasz]` a `##` címsor szövege | nem ír; a kinyerési jelentés jelzi, hogy a jelölt már minősítve van |
 | proveniencia-lábjegyzet (bármely `scope`) | — (hivatkozás) | — | semmit: a lábjegyzet a próza állításának forrás-hivatkozása; az audit-sort a 2.9 szerint a lekérdezést futtató fő szál rögzíti, nem a kinyerés | — | — |
-| `ADAT-HIV`, `ADAT-ÉRTÉK` | — (ellenőrző) | a jelölőben megadott | semmit; hiány vagy eltérés a kinyerési jelentésbe | — | — |
+| `ADAT-HIV`, `ADAT-ÉRTÉK` | — (ellenőrző) | a jelölőben megadott: `ADAT-HIV` — `mező=érték; …` a tábla teljes kulcsával (a 2. szakasz „Kulcs:” sorai), pontosan egy egyező sor; `ADAT-ÉRTÉK` — zárt készlet: `count([szűrő])`, `count_distinct([mező]; [szűrő])`, a szűrő ugyanilyen `mező=érték; …` alakú, az érték egész szám, karakterre egyezik (DT-F11d (b), (c); forrássablon 6. pont) | semmit; hiány vagy eltérés a kinyerési jelentésbe, a futás megáll | — | — |
 | szerkezeti jelölők (`FORRÁSRÉTEG`, `SZINT-*`, `【NAPLO】`, `INAKTÍV`, `RÉS-*`, `ADAT-NÉZET`) | — | — | semmit | — | — |
 
 - **Előléptetés:** a jelölt-sorból az `elofordulasok.tsv` sora csak döntéssel
