@@ -1,0 +1,17 @@
+.chip .uj{height:15px;font-size:.55rem;padding:0 4px}
+.v8sav{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.fo.v8szeles{grid-template-columns:minmax(0,1fr)}
+.fo.v8szeles aside.panel{display:none}
+.v8{overflow-x:auto;background:var(--panel);border:1px solid var(--rule);border-radius:10px}
+.v8t{border-collapse:collapse;width:100%;min-width:760px}
+.v8t th{position:sticky;top:0;background:var(--panel);text-align:left;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:8px 10px;border-bottom:1px solid var(--rule)}
+.v8t td{vertical-align:top;padding:8px 10px;border-top:1px solid var(--rule);font-size:.92rem;line-height:1.55}
+.v8t tbody tr{cursor:pointer}
+.v8t tbody tr:hover td{background:var(--accent-soft)}
+.v8t tbody tr.sel td{background:var(--accent-soft)}
+.v8t td.ih{font-family:var(--f-mono);font-size:.76rem;color:var(--accent);white-space:nowrap}
+.v8t td.c-karoli{font-family:var(--f-text);font-size:1rem}
+.v8t td.c-heber{font-family:var(--f-he);font-size:1.25rem;text-align:right}
+.v8t td.c-lxx{font-family:"Noto Serif",Georgia,serif}
+.v8t .ures{color:var(--muted)}
+.v8f{font-size:.72rem;color:var(--muted);padding:8px 10px;margin:0}
