@@ -587,6 +587,140 @@ Strong) jelölőtípus szerint: betű a–i 296, szám 259, törzsnév 52, betű
 
 Javaslat: `DT-F107b` (`DONTESEK.md`).
 
+### 7.1 A DT-F107b alkalmazása: a magyar jelölő-felismerés bővítése (F107.38) és a maradék elakadó Strongok (N-F107b)
+
+A felhasználó (chat, az orkesztrátoron át, 2026-10-18): „DT-F107b (d), majd (c) — előbb a magyar jelölő-felismerés bővítése (betű j-től,
+kérdőjel utáni szám, ragozott törzsnév) teszttel és újramérés; a maradék elakadó Strong a #38 következő adagjában szakaszonként
+újrafordítva; kézi illesztés nincs.”
+
+**A bővítés** (`hu_illeszt.py`; a kapu, `eszkozok/forditas_kapuk.py` érintetlen, nincs az `ir` mezőben): (1) törzsnév **mindkét oldalon**
+a bontó törzslistájából (a szeletelőével azonos), a forrás alakjában (`` ` `` ' ʿ ‘ ’), a magyaros alakokkal (Nifal, Hifil, Hofal, Hitpael) és a
+magyar raggal, kötőjellel is; kulcs a kanonikus név. Ok (mérve a magyar szövegeken): a kapu mintája a „Hithpa`el”-t (78 előfordulás) nem
+fogja, az arámi törzseket (Pa`el 29, Pe`al 28, Haph`el 15, Aph`el 15) egyáltalán nem; a ragozott alakokat („Hiph`ilben”, „Qal-ban”) a kapu is
+fogta. (2) betű j-től, csak tagolásjel után (szövegközben rövidítés: „l. ott”); a szám utáni „k.” nem jelölő („632 k.”). (3) a kérdőjel utáni
+szám („+? 1 Gerár”, H0040). Teszt (valós adatból): pozitív — H0040 „+? 1 Gerár”, H5674 „17:3. j. elmenni”, H0559 „Hithpa`el”, H5414 „Pe`al”,
+H6213 „Pa`el”; negatív — „a 2 fiú”, „b) pont”, H5869 „, l. a kommentárokat”, H3117 „632 k.)”, „a q. jelű”, „papok”, „puszta”, „pap”,
+„Pentateuchusban” (a rövid „Pi”/„Pu” tő nem jelölő). `teszt_bont.py` 45 teszt, OK; a tábla `--ellenoriz`-zel bájtra azonos; az
+`adat/forditasok.tsv` és a `konkordancia/BDB_teljes_unabridged.tsv` változatlan (`git diff --quiet`).
+
+| mérés | illeszkedik | horgonnyal | elakad | tagolatlan / jelölő nélküli |
+|---|---|---|---|---|
+| Strong-szint, horgonnyal — F107.34 | 385 | 105 | 101 | 83 |
+| **Strong-szint, horgonnyal — F107.38** | **409** | **85** | **98** | **82** |
+| Strong-szint, a kapu szigorú `_illeszt`-jével (a kapu regexei; a kiinduló 355 / — / 230 / 89 módszere) | 380 | — | 200 | 94 (változatlan) |
+| soronként — F107.34 | 6 210 | 271 | 618 | 2 565 |
+| **soronként — F107.38** | **6 395** | **202** | **606** | **2 461** |
+
+`scope=F107 7.1 | forras=python eszkozok/bdb_jelolt/hu_illeszt.py --ts 2026-10-18 (F107.38, e285d4b6) | ts=2026-10-18`
+
+A maradék elakadás főként nem a felismerés hiánya: a mohó, sorrendtartó illesztésben egy korábbi hivatkozás-előfordulás (pl. „(vö. Hiph`il
+lent)”) vagy egy túlfutó jelölő elviszi a kurzort (mintavétel: H3254, H7323, H1980). A DT-F107b (c) szerint ezek nem kapnak kézi
+illesztést.
+
+**A maradék elakadó Strongok — átadandó tétel a #38-nak (N-F107b): 98 Strong, 606 sor** (jelölőtípus: betű 287, szám 252, törzs 63, római 4).
+A kulcs a szakasztábla `strong` + `sorszam`-a (`adat/bdb_szakaszok.tsv`, `adat/bdb_szakasz_hu.tsv`).
+
+| Strong | elakadt sor | elakadt szakaszok (`sorszam`:`utvonal` (jelölőtípus)) |
+|---|---|---|
+| H0068 | 8 | 6:-/3/- (szám); 7:-/4/- (szám); 8:-/5/- (szám); 9:-/6/- (szám); 10:-/7/- (szám); 11:-/8/- (szám); 12:-/9/- (szám); 15:-/1/- (szám) |
+| H0157 | 1 | 4:Qal/-/n (betű) |
+| H0259 | 9 | 5:-/3/- (szám); 6:-/4/- (szám); 7:-/5/- (szám); 8:-/6/- (szám); 9:-/7/- (szám); 10:-/8/- (szám); 11:-/8/a (betű); 12:-/8/b (betű); 15:-/1/- (szám) |
+| H0352 | 2 | 4:-/2/- (szám); 5:-/3/- (szám) |
+| H0410 | 1 | 9:-/5/- (szám) |
+| H0539 | 1 | 11:Qal/4/- (szám) |
+| H0637 | 1 | 6:-/1/- (szám) |
+| H0702 | 1 | 10:-/2/a (betű) |
+| H0834 | 34 | 16:-/5/- (szám); 17:-/6/- (szám); 18:-/7/- (szám); 19:-/7/a (betű); 20:-/7/b (betű); 21:-/7/c (betű); 22:-/8/- (szám); 24:-/8/a (betű); 25:-/8/b (betű); 26:-/8/c (betű); 27:-/8/d (betű); 28:-/8/e (betű); 29:-/8/f (betű); 37:-/-/b (betű); 39:-/-/d (betű); 42:-/-/b (betű); 43:-/-/c (betű); 45:-/1/- (szám); 46:-/1/a (betű); 47:-/1/b (betű); 48:-/1/c (betű); 49:-/1/d (betű); 50:-/1/e (betű); 51:-/2/- (szám); 52:-/3/- (szám); 56:-/2/- (szám); 58:-/3/- (szám); 60:-/3/a (betű); 61:-/3/b (betű); 62:-/4/- (szám); 63:-/4/a (betű); 64:-/4/b (betű); 65:-/4/c (betű); 66:-/4/d (betű) |
+| H0995 | 17 | 20:Qal/4/- (szám); 21:Niph'al/-/- (törzs); 23:Hiph'il/-/- (törzs); 29:Hiph'il/3/a (betű); 30:Hiph'il/3/b (betű); 31:Hiph'il/3/c (betű); 32:Hiph'il/3/d (betű); 33:Hiph'il/3/e (betű); 34:Hithpa'el/-/- (törzs); 35:Hithpa'el/1/- (szám); 36:Hithpa'el/1/a (betű); 37:Hithpa'el/1/b (betű); 38:Hithpa'el/1/c (betű); 39:Hithpa'el/1/d (betű); 40:Hithpa'el/1/e (betű); 41:Hithpa'el/1/f (betű); 42:Hithpa'el/2/- (szám) |
+| H1004 | 14 | 12:-/3/- (szám); 13:-/4/- (szám); 14:-/5/- (szám); 15:-/5/a (betű); 16:-/5/b (betű); 17:-/5/c (betű); 18:-/5/d (betű); 19:-/5/e (betű); 20:-/6/- (szám); 21:-/7/- (szám); 22:-/8/- (szám); 23:-/8/a (betű); 24:-/8/b (betű); 28:-/1/- (szám) |
+| H1129 | 15 | 6:Qal/1/i (betű); 9:Qal/1/d (betű); 10:Qal/1/e (betű); 11:Qal/1/f (betű); 12:Qal/1/g (betű); 13:Qal/1/h (betű); 14:Qal/1/i (betű); 15:Qal/2/- (szám); 17:Qal/2/b (betű); 18:Niph'al/-/- (törzs); 19:Niph'al/1/a (szám); 20:Niph'al/1/b (betű); 21:Niph'al/2/a (szám); 22:Niph'al/2/b (betű); 23:Niph'al/2/c (betű) |
+| H1197 | 10 | 9:Pi'el/1/- (szám); 10:Pi'el/2/- (szám); 11:Pi'el/3/- (szám); 12:Pu'al/-/- (törzs); 14:Hiph'il/1/- (szám); 15:Hiph'il/2/- (szám); 16:Hiph'il/3/- (szám); 18:Qal/-/- (törzs); 19:Niph'al/-/- (törzs); 21:Hiph'il/-/- (törzs) |
+| H1242 | 1 | 10:-/1/d (betű) |
+| H1288 | 7 | 30:Pu'al/2/a (betű); 31:Pu'al/2/b (betű); 33:Pu'al/4/- (szám); 34:Hiph'il/-/- (törzs); 35:Hithpa'el/-/- (törzs); 39:-/2/- (szám); 40:Pa'el/-/- (törzs) |
+| H1320 | 1 | 10:-/6/- (szám) |
+| H1419 | 7 | 4:-/2/- (szám); 5:-/3/- (szám); 6:-/4/- (szám); 7:-/5/- (szám); 8:-/6/- (szám); 9:-/6/a (betű); 10:-/6/b (betű) |
+| H1568 | 1 | 22:-/6/- (szám) |
+| H1870 | 6 | 6:-/3/- (szám); 7:-/4/- (szám); 12:-/5/- (szám); 13:-/6/a (szám); 14:-/6/b (betű); 15:-/6/c (betű) |
+| H1875 | 11 | 7:Qal/2/a (betű); 8:Qal/2/b (betű); 10:Qal/3/a (betű); 11:Qal/3/b (betű); 12:Qal/4/a (szám); 13:Qal/4/b (betű); 14:Qal/5/- (szám); 15:Qal/6/- (szám); 16:Qal/7/- (szám); 18:Niph'al/1/- (szám); 19:Niph'al/2/- (szám) |
+| H1980 | 40 | 27:Qal/5/d (betű); 28:Qal/5/e (betű); 29:Qal/-/- (római); 30:Qal/1/- (szám); 31:Qal/2/- (szám); 32:Qal/2/- (szám); 35:Qal/3/- (szám); 36:Qal/3/a (betű); 37:Qal/3/b (betű); 38:Qal/3/c (betű); 39:Qal/3/d (betű); 40:Qal/3/e (betű); 41:Qal/4/- (szám); 42:Niph'al/-/- (törzs); 43:Pi'el/-/- (törzs); 44:Pi'el/1/- (szám); 45:Hithpa'el/-/- (törzs); 46:Hithpa'el/2/- (szám); 48:Hithpa'el/3/- (szám); 49:Hithpa'el/4/- (szám); 50:Hithpa'el/-/- (törzs); 51:Hithpa'el/1/- (szám); 52:Hithpa'el/1/a (betű); 53:Hithpa'el/1/b (betű); 55:Hithpa'el/2/- (szám); 56:Hiph'il/-/- (törzs); 57:Qal/-/- (törzs); 58:Qal/1/- (szám); 59:Qal/1/a (betű); 60:Qal/1/b (betű); 61:Qal/1/c (betű); 62:Qal/1/d (betű); 63:Qal/1/e (betű); 64:Qal/2/- (szám); 65:Qal/3/- (szám); 66:Qal/3/a (betű); 67:Qal/3/b (betű); 68:Qal/4/- (szám); 70:-/5/a (szám); 71:-/5/b (betű) |
+| H1984 | 1 | 23:Pu'al/1/- (szám) |
+| H2091 | 1 | 11:-/9/- (szám) |
+| H2220 | 1 | 7:-/2/- (szám) |
+| H2388 | 11 | 41:Pi'el/5/- (szám); 42:Pi'el/6/- (szám); 43:Pi'el/6/a (betű); 44:Pi'el/6/b (betű); 45:Pi'el/6/c (betű); 46:Pi'el/6/c (betű); 47:Pi'el/6/d (betű); 48:Hithpa'el/-/- (törzs); 49:Hithpa'el/1/- (szám); 50:Hithpa'el/2/- (szám); 51:Hithpa'el/3/- (szám) |
+| H2396 | 1 | 6:-/1/- (szám) |
+| H2398 | 7 | 10:Pi'el/-/- (törzs); 14:Pi'el/4/- (szám); 15:Hiph'il/-/- (törzs); 18:Hiph'il/3/- (szám); 19:Hithpa'el/-/- (törzs); 20:Hithpa'el/1/- (szám); 21:Hithpa'el/2/- (szám) |
+| H2416 | 4 | 14:-/1/a (betű); 19:-/4/- (szám); 26:-/3/- (szám); 28:-/1/- (szám) |
+| H2451 | 1 | 7:-/5/- (szám) |
+| H2470 | 1 | 23:Pi'el/1/- (szám) |
+| H2506 | 2 | 8:-/2/- (szám); 14:-/3/- (szám) |
+| H2568 | 1 | 11:-/2/- (szám) |
+| H2572 | 2 | 9:-/3/- (szám); 12:-/4/- (szám) |
+| H2617 | 13 | 10:-/1/- (szám); 11:-/1/a (betű); 12:-/1/b (betű); 13:-/1/c (betű); 14:-/1/d (betű); 15:-/1/e (betű); 16:-/2/- (szám); 17:-/3/- (szám); 18:-/3/a (betű); 19:-/3/b (betű); 20:-/3/c (betű); 21:-/3/d (betű); 22:-/4/- (szám) |
+| H3027 | 25 | 10:-/3/- (szám); 11:-/3/a (betű); 12:-/3/b (betű); 13:-/3/c (betű); 14:-/3/d (betű); 15:-/3/e (betű); 16:-/4/- (szám); 17:-/4/a (betű); 18:-/4/b (betű); 19:-/4/c (betű); 20:-/4/d (betű); 21:-/4/e (betű); 22:-/4/f (betű); 23:-/4/g (betű); 24:-/5/- (szám); 26:-/5/b (betű); 27:-/5/c (betű); 28:-/5/d (betű); 29:-/5/e (betű); 30:-/5/f (betű); 31:-/5/g (betű); 32:-/5/i (betű); 33:-/5/h (betű); 34:-/5/i (betű); 35:-/5/g (betű) |
+| H3068 | 10 | 6:-/-/- (római); 7:-/1/- (római); 12:-/1/e (betű); 13:-/1/f (betű); 14:-/1/g (betű); 15:-/1/h (betű); 16:-/2/- (szám); 18:-/2/b (betű); 19:-/2/c (betű); 20:-/2/d (betű) |
+| H3083 | 8 | 3:-/1/- (szám); 4:-/2/- (szám); 5:-/3/- (szám); 6:-/2/- (szám); 7:-/4/- (szám); 8:-/5/- (szám); 9:-/6/- (szám); 22:-/2/- (szám) |
+| H3092 | 1 | 4:-/5/- (szám) |
+| H3117 | 23 | 13:-/3/f (betű); 17:-/3/- (szám); 18:-/2/- (szám); 19:-/4/- (szám); 20:-/4/a (betű); 21:-/4/b (betű); 22:-/4/c (betű); 23:-/5/- (szám); 24:-/5/a (betű); 26:-/5/c (betű); 27:-/6/- (szám); 28:-/6/a (betű); 29:-/5/- (szám); 30:-/5/b (betű); 31:-/5/c (betű); 33:-/7/- (szám); 34:-/7/a (betű); 36:-/7/c (betű); 37:-/7/d (betű); 38:-/7/e (betű); 40:-/7/g (betű); 43:-/7/h (betű); 45:-/7/i (betű) |
+| H3254 | 1 | 7:Hiph'il/-/- (törzs) |
+| H3384 | 8 | 10:Qal/1/- (szám); 11:Qal/2/- (szám); 12:Qal/3/- (szám); 14:Niph'al/-/- (törzs); 15:Hiph'il/-/- (törzs); 16:Hiph'il/1/- (szám); 17:Hiph'il/2/- (szám); 18:Hiph'il/3/- (szám) |
+| H3423 | 3 | 10:Niph'al/-/- (törzs); 11:Pi'el/-/- (törzs); 19:Hiph'il/5/- (szám) |
+| H3588 | 1 | 28:-/2/- (szám) |
+| H3603 | 3 | 6:-/1/- (szám); 7:-/2/- (szám); 8:-/3/- (szám) |
+| H3605 | 4 | 6:-/1/c (betű); 12:-/2/a (betű); 14:-/2/b (betű); 17:-/2/- (szám) |
+| H3644 | 2 | 5:-/2/- (szám); 8:-/2/- (szám) |
+| H3722 | 2 | 15:Pi'el/3/e (betű); 16:Pu'al/-/- (törzs) |
+| H3742 | 1 | 9:-/5/- (szám) |
+| H3772 | 11 | 16:Niph'al/2/- (szám); 19:Pu'al/-/- (törzs); 20:Pu'al/1/- (szám); 21:Pu'al/2/- (szám); 22:Hiph'il/-/- (törzs); 23:Hiph'il/1/- (szám); 24:Hiph'il/2/- (szám); 25:Hiph'il/2/a (betű); 26:Hiph'il/2/b (betű); 27:Hiph'il/2/c (betű); 28:Hiph'il/3/- (szám) |
+| H3789 | 5 | 10:Qal/4/- (szám); 11:Niph'al/-/- (törzs); 13:Niph'al/2/- (szám); 14:Pi'el/-/- (törzs); 16:Pe'al/-/- (törzs) |
+| H3808 | 1 | 9:-/2/- (szám) |
+| H3881 | 5 | 5:-/3/- (szám); 6:-/1/- (szám); 12:-/2/a (betű); 13:-/2/b (betű); 14:-/2/c (betű) |
+| H3947 | 4 | 34:Pu'al/4/- (szám); 35:Hoph'al/-/- (törzs); 36:Hoph'al/1/- (szám); 37:Hoph'al/2/- (szám) |
+| H3967 | 1 | 10:-/2/- (szám) |
+| H4217 | 1 | 4:-/2/- (szám) |
+| H4264 | 2 | 4:-/1/- (szám); 7:-/2/- (szám) |
+| H4480 | 29 | 7:-/2/- (szám); 11:-/2/c (betű); 12:-/2/d (betű); 13:-/2/e (betű); 16:-/2/f (betű); 18:-/3/- (szám); 20:-/3/a (betű); 21:-/3/b (betű); 22:-/4/- (szám); 23:-/4/a (betű); 24:-/4/b (betű); 25:-/4/c (betű); 26:-/5/- (szám); 27:-/5/a (betű); 28:-/5/b (betű); 29:-/5/c (betű); 30:-/5/d (betű); 31:-/6/- (szám); 32:-/6/a (betű); 35:-/6/c (betű); 36:-/6/d (betű); 37:-/7/- (szám); 38:-/7/a (betű); 39:-/7/b (betű); 40:-/7/c (betű); 42:-/8/- (szám); 46:-/9/- (szám); 47:-/9/a (betű); 48:-/9/b (betű) |
+| H4605 | 1 | 9:-/2/- (szám) |
+| H4639 | 1 | 6:-/2/a (szám) |
+| H4672 | 24 | 23:Niph'al/-/- (törzs); 24:Niph'al/2/- (szám); 25:Niph'al/2/- (szám); 26:Niph'al/1/a (szám); 27:Niph'al/1/b (betű); 28:Niph'al/1/c (betű); 29:Niph'al/1/d (betű); 30:Niph'al/1/e (betű); 31:Niph'al/1/f (betű); 32:Niph'al/1/g (betű); 33:Niph'al/1/h (betű); 34:Niph'al/1/i (betű); 35:Niph'al/2/- (szám); 36:Niph'al/2/a (betű); 37:Niph'al/2/b (betű); 38:Niph'al/2/c (betű); 39:Niph'al/2/d (betű); 40:Niph'al/2/e (betű); 41:Niph'al/2/f (betű); 42:Niph'al/3/- (szám); 43:Hiph'il/-/- (törzs); 44:Hiph'il/1/- (szám); 45:Hiph'il/2/- (szám); 46:Hiph'il/3/- (szám) |
+| H4940 | 1 | 11:-/3/- (szám) |
+| H5127 | 4 | 7:Qal/4/- (szám); 10:Hiph'il/-/- (törzs); 12:Hiph'il/1/- (szám); 13:Hiph'il/2/- (szám) |
+| H5307 | 3 | 18:Qal/7/- (szám); 36:Pil'el/-/- (törzs); 38:Pe'al/-/- (törzs) |
+| H5315 | 2 | 3:-/1/- (szám); 22:-/6/- (szám) |
+| H5324 | 5 | 12:Hiph'il/-/- (törzs); 13:Hiph'il/1/- (szám); 14:Hiph'il/2/- (szám); 16:Qal/-/- (törzs); 17:Qal/4/- (szám) |
+| H5674 | 56 | 8:Qal/1/c (betű); 9:Qal/1/d (betű); 10:Qal/1/e (betű); 11:Qal/1/f (betű); 12:Qal/1/g (betű); 13:Qal/1/h (betű); 14:Qal/1/i (betű); 15:Qal/1/j (betű); 16:Qal/2/- (szám); 17:Qal/3/- (szám); 18:Qal/3/a (betű); 19:Qal/3/b (betű); 20:Qal/3/c (betű); 21:Qal/3/d (betű); 22:Qal/3/e (betű); 23:Qal/4/a (szám); 24:Qal/4/b (betű); 25:Qal/4/c (betű); 26:Qal/4/d (betű); 27:Qal/4/e (betű); 28:Qal/5/- (szám); 29:Qal/5/a (betű); 31:Qal/5/b (betű); 32:Qal/5/c (betű); 33:Qal/5/d (betű); 34:Qal/5/e (betű); 35:Qal/5/f (betű); 36:Qal/5/g (betű); 37:Qal/5/h (betű); 38:Qal/5/i (betű); 39:Qal/6/- (szám); 40:Qal/6/a (betű); 41:Qal/6/b (betű); 42:Qal/6/c (betű); 43:Qal/6/d (betű); 44:Qal/6/e (betű); 45:Qal/6/f (betű); 47:Niph'al/-/- (törzs); 48:Pi'el/1/- (törzs); 49:Pi'el/2/- (szám); 50:Hithpa'el/-/- (törzs); 51:Hiph'il/-/- (törzs); 52:Hiph'il/1/- (szám); 53:Hiph'il/1/a (betű); 54:Hiph'il/1/b (betű); 55:Hiph'il/1/c (betű); 56:Hiph'il/1/d (betű); 57:Hiph'il/2/a (szám); 58:Hiph'il/2/b (betű); 59:Hiph'il/3/a (szám); 60:Hiph'il/3/b (betű); 61:Hiph'il/3/c (betű); 62:Hiph'il/3/d (betű); 63:Hiph'il/4/- (szám); 67:-/1/- (szám); 68:-/2/a (szám) |
+| H5797 | 1 | 15:-/5/- (szám) |
+| H5869 | 2 | 16:-/1/k (betű); 21:-/1/o (betű) |
+| H5971 | 16 | 6:-/2/a (betű); 7:-/2/b (betű); 8:-/2/c (betű); 9:-/2/d (betű); 10:-/3/- (szám); 11:-/4/- (szám); 12:-/5/- (szám); 13:-/5/a (betű); 14:-/5/b (betű); 16:-/5/c (betű); 17:-/5/d (betű); 18:-/5/e (betű); 19:-/5/f (betű); 20:-/5/g (betű); 21:-/5/h (betű); 22:-/5/i (betű) |
+| H6086 | 2 | 3:-/1/- (szám); 7:-/2/- (szám) |
+| H6213 | 1 | 37:Niph'al/2/- (szám) |
+| H6240 | 2 | 24:-/6/- (szám); 30:-/8/- (szám) |
+| H6242 | 7 | 12:-/2/a (betű); 14:-/2/c (betű); 15:-/2/d (betű); 16:-/2/e (betű); 17:fej (római); 18:-/1/- (szám); 19:-/2/a (szám) |
+| H6588 | 1 | 5:-/3/- (szám) |
+| H6942 | 16 | 21:Pi'el/3/a (betű); 26:Pi'el/4/c (betű); 27:Pi'el/4/d (betű); 28:Pu'al/-/- (törzs); 29:Hiph'il/-/- (törzs); 30:Hiph'il/1/- (szám); 31:Hiph'il/1/a (betű); 32:Hiph'il/1/b (betű); 33:Hiph'il/1/c (betű); 34:Hiph'il/2/- (szám); 35:Hiph'il/3/- (szám); 36:Hithpa'el/-/- (törzs); 37:Hithpa'el/1/- (szám); 38:Hithpa'el/2/- (szám); 39:Hithpa'el/3/- (szám); 40:Hithpa'el/4/- (szám) |
+| H7122 | 1 | 6:Niph'al/-/- (törzs) |
+| H7200 | 4 | 13:Qal/6/- (szám); 55:Hiph'il/2/a (betű); 56:Hiph'il/2/b (betű); 57:Hiph'il/2/c (betű) |
+| H7218 | 1 | 7:-/3/- (szám) |
+| H7227 | 8 | 3:-/1/- (szám); 8:-/1/e (betű); 9:-/1/f (betű); 10:-/1/g (betű); 11:-/2/- (szám); 12:-/2/a (betű); 13:-/2/b (betű); 14:-/2/c (betű) |
+| H7323 | 3 | 8:Qal/2/a (betű); 9:Qal/2/b (betű); 11:Hiph'il/-/- (törzs) |
+| H7626 | 1 | 9:-/2/- (szám) |
+| H7651 | 1 | 14:-/5/- (szám) |
+| H7657 | 3 | 11:-/3/a (betű); 12:-/3/b (betű); 13:-/3/c (betű) |
+| H7673 | 3 | 13:Hiph'il/3/- (szám); 14:Hiph'il/4/- (szám); 16:Hiph'il/5/- (szám) |
+| H7725 | 6 | 52:Hiph'il/2/e (betű); 53:Hiph'il/2/f (betű); 54:Hiph'il/2/g (betű); 65:Hiph'il/9/- (szám); 67:-/10/- (szám); 68:-/11/- (szám) |
+| H7896 | 2 | 9:Qal/4/- (szám); 10:Hoph'al/-/- (törzs) |
+| H7901 | 8 | 5:Qal/-/- (törzs); 6:Qal/1/- (szám); 15:Qal/4/a (szám); 16:Qal/4/b (betű); 17:Qal/4/c (betű); 18:Qal/5/- (szám); 19:Pu'al/-/- (törzs); 20:Pu'al/-/- (törzs) |
+| H7969 | 1 | 9:-/2/- (szám) |
+| H7971 | 17 | 21:Niph'al/-/- (törzs); 22:Pi'el/-/- (törzs); 24:Pi'el/1/a (betű); 25:Pi'el/1/b (betű); 26:Pi'el/1/c (betű); 27:Pi'el/1/d (betű); 28:Pi'el/1/e (betű); 29:Pi'el/2/a (szám); 30:Pi'el/2/b (betű); 31:Pi'el/2/c (betű); 32:Pi'el/2/d (betű); 34:Pi'el/4/- (szám); 36:Pi'el/5/- (szám); 37:Pi'el/6/- (szám); 38:Pi'el/7/- (szám); 39:Pu'al/-/- (törzs); 40:Hiph'il/-/- (törzs) |
+| H7993 | 4 | 11:Hiph'il/2/a (betű); 12:Hiph'il/2/b (betű); 13:Hiph'il/2/c (betű); 16:Hoph'al/-/- (törzs) |
+| H8064 | 1 | 10:-/4/- (szám) |
+| H8074 | 4 | 14:Hiph'il/-/- (törzs); 16:Hiph'il/2/a (törzs); 17:Hiph'il/2/b (betű); 18:Hoph'al/-/- (törzs) |
+| H8083 | 1 | 8:-/2/- (szám) |
+| H8130 | 3 | 10:Niph'al/-/- (törzs); 11:Pi'el/-/- (törzs); 12:Pi'el/1/- (szám) |
+| H8337 | 1 | 8:-/2/- (szám) |
+| H8415 | 1 | 8:-/4/- (szám) |
+| H8672 | 1 | 9:-/2/- (szám) |
+| H9008 | 1 | 9:-/2/- (szám) |
+
 ## Átadandó tételek (a #107 nem veszi fel; a `/befogad` dolga)
 
 - **A TSV cseréje és az olvasók átállása** (DT-F107c (d)): a `konkordancia/BDB_teljes_unabridged.tsv` helyett a `nezet_general.py` nézete;
@@ -595,4 +729,5 @@ Javaslat: `DT-F107b` (`DONTESEK.md`).
 - **A 8. lépés** (a #102 és a #38 briefjébe a tábla elérhetősége és a mért számok): a döntés után az orkesztrátor egyezteti (a két brief nincs
   az `ir` mezőben).
 - **N-F107a** (a kész fordítások pe/mem-érintettsége) — nyitva, `NYITOTT_FELADATOK.md`.
+- **N-F107b** (a #38 következő adagjában szakaszonként újrafordítandó 98 Strong, a lista: 7.1) — nyitva, `NYITOTT_FELADATOK.md`; a #38 briefjéhez a #107 nem nyúl.
 - **`.gitattributes`** (`konkordancia/lexikonok_nyers/DictBDB.json -text`) — javaslat, nem írva.
