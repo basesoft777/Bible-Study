@@ -324,6 +324,8 @@ A motívum közvetlenül érinti a pünkösdi/karizmatikus hangsúlyt a "segíts
 2. *Milyen konkrét lépést, döntést vagy szokásváltozást von maga után?* Ábrahám és Izsák mintája szerint: a segítségül hívás nem egyszeri esemény, hanem tudatosan felkeresett/fenntartott gyakorlat — érdemes "saját Beérsebát" (állandó imádati pontot/szokást) kialakítani.
 3. *Milyen érzelmi/lelki ellenállás merülhet fel?* A Bábel-mintázat (saját név felmagasztalása) folyamatos kísértés az önerőből való megfelelésre; Derek Prince szabadulás-tanítása szerint pedig gyakori ellenállás a szégyen/kudarc érzése, amely visszatartja az embert a segítségül hívástól — a szöveg ezzel szemben azt mutatja, hogy pontosan ez (a függőség beismerése) a helyes válasz.
 
+## 6. Napló-frissítés
+
 <!-- ADAT-NÉZET: 6. Napló-frissítés (státusz) | forrás: adat/motivumok.tsv (statusz, statusz_verzio, statusz_datum) | cél: general.py --cel naplo | SZINT: belso -->
 
 ## 7. Módszertan és nyitott kérdések
