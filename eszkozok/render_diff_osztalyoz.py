@@ -473,7 +473,7 @@ FELHASZNALO_DARAB = {
     ('TEREMT-001_TORZSCIKK.md', 'A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).'): 1,
 }
 # 2. TSK-KULCSJAVÍTÁS (F114, N-F09g, DT-F114c (a), Felhasználó 2026-10-18): az éles lexikon a TSK KJV-kulcsú / KJV-célú sorait hordozza;
-#    a tsk_kulcs átváltóval ezek a sorok helyesen más Károli-kulcson / -célon állnak. CSAK ez a 43 név szerinti törölt sor
+#    a tsk_kulcs átváltóval ezek a sorok helyesen más Károli-kulcson / -célon állnak. CSAK ez a 46 név szerinti törölt sor (DT-F114e: +3 HAMART-001 sor az Ézs 3:10–11 céloldali kivétele miatt)
 #    (2 az N-F09g-ből: a Zsolt 6:5 -> 6:6 cél, + 41 régi TSK-sor; mérés: naplok/F114_proba_ismeretlen.tsv):
 TSK_KULCS_JAVITAS_SOROK = {
     ('ALVIL-001', '- TSK: Zsolt 6:5 (Votes: 24)'),
@@ -519,6 +519,9 @@ TSK_KULCS_JAVITAS_SOROK = {
     ('TEREMT-001', '- TSK: Ruth 2:12 (Votes: 16)'),
     ('TEREMT-001', '- TSK: Zsolt 91:4 (Votes: 16)'),
     ('TEREMT-001', '- TSK: 1Ján 3:1 (Votes: 15)'),
+    ('HAMART-001', '- **TSK-kereszthivatkozás** (szavazatszám): Jak 1:15 (58), Róm 2:6 (33), Róm 2:10 (33), Ézs 3:10 (27), Ézs 3:11 (27), Róm 6:16 (24), Zsid 11:4 (23), 4Móz 32:23 (21), Róm 12:1 (19), Róm 7:8 (17), Róm 7:9 (17), Mal 1:13 (17), Péld 21:27 (16), Mal 1:10 (15)'),
+    ('HAMART-001', '- TSK: Ézs 3:10 (Votes: 27)'),
+    ('HAMART-001', '- TSK: Ézs 3:11 (Votes: 27)'),
 }
 
 

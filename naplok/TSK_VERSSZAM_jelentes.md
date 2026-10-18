@@ -82,3 +82,7 @@ Frissített mérés (felmérő E. és F. rész):
 ## F114.20 — harmadik javító menet
 
 `NINCS_PAR_KIVETEL` bővítve: Ézs 3:1–26, Jón 2:2–10, 1Sám 24:1–22 (az 1Kir 22:46–49 mellé; scope=manual); negatív teszt `test_kivetel_fejezetek_nincs_par` (Ézs 3:1, Jón 2:9, 1Sám 24:2 és a határelemek; a Jón 2:1, 1Sám 23:28, Ézs 4:2, 1Sám 20:43 változatlan). Friss mérés: E 21 247 kulcs, forráseltérés 0; B 0/0; nincs-pár 331/4 925 és 342/4 296; F elveszett pár 31 213. A korábbi (275/4 245, 286/3 475, 21 306) számok felülírva.
+
+## F114.21 — DT-F114e (a) (Felhasználó, 2026-10-18)
+
+A `TSK_KULCS_JAVITAS_SOROK` 43 → 46 név szerinti sor (+ HAMART-001: `- TSK: Ézs 3:10 (Votes: 27)`, `- TSK: Ézs 3:11 (Votes: 27)` és a törzscikk összevont TSK-sora; az Ézs 3:1–26 kivétel céloldali hatása). A negatív teszt ép (listán kívüli TSK-sor `ismeretlen`). Próba-osztályozás: `tsk_kulcs_javitas=46`, `ismeretlen=0`, kilépési kód 0; `teszt_render_diff_osztalyoz` 74 OK, `teszt_tsk_kulcs` 14 OK. Napló: `naplok/F114_proba_diff.tsv`, `naplok/F114_proba_ismeretlen.tsv`.

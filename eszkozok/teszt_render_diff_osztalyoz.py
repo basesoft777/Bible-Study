@@ -232,7 +232,7 @@ class MegnevezettTablak(unittest.TestCase):
         self.assertEqual(e[R.ISMERETLEN]['torolt'], ['- TSK: Zsolt 6:5 (Votes: 24)'])
 
     def test_tabla_merete(self):
-        self.assertEqual(len(R.TSK_KULCS_JAVITAS_SOROK), 43)
+        self.assertEqual(len(R.TSK_KULCS_JAVITAS_SOROK), 46)
         # az F87.3-lábnyom név szerinti, csak ALVIL-001 (3. javító menet)
         self.assertEqual(len(R.ATKULCSOLT_SOROK), 27)
         self.assertTrue(all(m == 'ALVIL-001' for m, _ in R.ATKULCSOLT_SOROK))
