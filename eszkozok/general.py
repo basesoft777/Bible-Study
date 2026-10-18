@@ -1982,6 +1982,12 @@ def main():
                 fejl = fejlec_stampel('naplok --id %s' % m['id'], ['adat/jeloltek.tsv'])
                 tartalom = fejl + '\n\n' + blk + '\n'
                 celfajlnev = ID_NAPLO_TERKEP.get(m['id'])
+                if celfajlnev and not os.path.exists(os.path.join(NAPLOK_DIR, celfajlnev)) \
+                        and os.path.exists(os.path.join(ROOT, 'archivum', m['id'], celfajlnev)):
+                    # F11 M3 (DT-F11a): a migrált motívum régi naplója archívum
+                    # (archivum/[ID]/); a generált napló nem a régi néven áll,
+                    # hanem a térkép nélküli motívumok _GENERALT nevén.
+                    celfajlnev = None
                 if celfajlnev:
                     relativ = os.path.join('tematikus_lezart', 'naplok', celfajlnev)
                     forras_ut = os.path.join(NAPLOK_DIR, celfajlnev)

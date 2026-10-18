@@ -6,9 +6,12 @@ tipus: feladat
 fazis: folyamat
 munka: adat
 modell: opus
-allapot: nem_indult
+allapot: lezarva
+ag: claude/f118-kjv-szoveg
 ad: a teljes KJV-szöveg új konkordancia-táblája (KJV_teljes_szoveg, a menet hozza létre) versenként a teljes KJV-szöveggel (eBible, Public Domain), a `KJV_Strongs_teljes.tsv`-vel mért vershalmaz- és szóegyezéssel, dataset- és licencsorral; a Károli melletti megjelenítés helye eldöntve, a megjelenítési brief tervezete a `beerkezo/`-ben
-kovetkezo: a /kovetkezo indítja; ⛔ M0 (forrás, licenc, importáló), ⛔ M1 (minta), ⛔ M4 (a megjelenítés helye)
+kovetkezo: "lezárva; Te: a PR #407 merge-e; utána /befogad: beerkezo/KJV_SZOVEG_MEGJELENITES_BRIEF_TERVEZET.md"
+pr: https://github.com/basesoft777/Bible-Study/pull/407
+lezarva_osszegzes: "konkordancia/KJV_teljes_szoveg.tsv: 31 218 sor (31 102 vers + 116 felirat), az új eBible-zipből (00532b6d…); M-a S ⊆ T, M-b 0 megmagyarázatlan, M-c 0 üres; licenc kozkincs (DT210); a megjelenítés külön feladat (DT214, beerkezo/-tervezet); zárójelentés: naplok/KJV_SZOVEG_zaras.md"
 olvas: [konkordancia/KJV_Strongs_teljes.tsv, naplok/F19_hianyok.tsv, eszkozok/f19_ebible_import.py, konkordancia/Konyv_normalizalo_tabla.tsv, adat/datasetek.tsv, adat/licencek.tsv, adat/SEMA.md, Rendszerfejlesztesi_playbook.md]
 ir: [eszkozok/kjv_szoveg_import.py, eszkozok/teszt_kjv_szoveg_import.py, konkordancia/KJV_teljes_szoveg.tsv, adat/datasetek.tsv, adat/licencek.tsv, adat/SEMA.md, beerkezo/KJV_SZOVEG_MEGJELENITES_BRIEF_TERVEZET.md]
 fugg: []
@@ -35,7 +38,7 @@ A cél:
 ## 2. Hatókör
 
 **Benne van:**
-- az importáló (`eszkozok/kjv_szoveg_import.py`, vagy az `f19_ebible_import.py` bővítése: ⛔ M0, DT-F118b) és tesztje;
+- az importáló (`eszkozok/kjv_szoveg_import.py`, vagy az `f19_ebible_import.py` bővítése: ⛔ M0, DT211) és tesztje;
 - a `konkordancia/KJV_teljes_szoveg.tsv` generálása (`# GENERÁLT:` fejléccel, kézzel nem szerkeszthető);
 - a mérés (4. pont) és a mérési napló (`naplok/KJV_SZOVEG_meres.md`);
 - a `datasetek.tsv` (study-típusonként), a `licencek.tsv` új sora és a `SEMA.md` dataset-leírása;
@@ -74,10 +77,10 @@ Minden lépés külön commit (`F118.0:`, `F118.1:` …), munkaág `claude/f118-
    `Igehely` (STEP-alak, `Gen.1.1`, KJV-számozás, a zsoltárfelirat verse `0` — mint a `KJV_Strongs_teljes.tsv`-ben, így a kettő kulcsa közvetlenül illeszthető) · `Szöveg` (tiszta olvasószöveg, írásjelekkel, jelölők nélkül) · `Szöveg_jelolt` (a dőlt betoldások `[…]` között; további jelölés csak az 1. pont döntése szerint).
    Fejlécsorok: `# GENERÁLT: eszkozok/kjv_szoveg_import.py — kézzel nem szerkesztendő.`, proveniencia (`scope=KJV teljes (66 kanonikus könyv, angol számozás) | forras=…eng-kjv_usfm.zip sha256=… | ts=…`), licencsor, `# ÁLLAPOT:` sor a mérés eredményével.
    A STEP-alak miatt a táblát a `konkordancia/Konyv_normalizalo_tabla.tsv` konvertálja a magyar igehelyformára (CLAUDE.md, „Igehely-formátum”); a `SEMA.md` és a `datasetek.tsv` ezt kiírja.
-3. **⛔ Döntés (DT-F118b): saját importáló vagy az `f19_ebible_import.py` bővítése.**
+3. **⛔ Döntés (DT211): saját importáló vagy az `f19_ebible_import.py` bővítése.**
    - (a) **saját importáló** `eszkozok/kjv_szoveg_import.py`: a könyvlistát és ha megfelel, a vers-szétvágást az `f19_ebible_import`-ból importálja (kódmásolás nélkül), a szövegtisztítást viszont maga végzi az 1. pont szerint; a `KJV_Strongs_teljes.tsv` és az F19-generátor érintetlen. *Javaslat ez,* mert az F19-generátor kimenete mért és befagyasztott (`# ÁLLAPOT:` sor, `F19_hianyok.tsv`), a #48 pedig írja az `f19_ebible_import.py`-t (fejléc-hivatkozások).
    - (b) **az `f19_ebible_import.py` bővül** egy második kimenettel: egy forrásolvasás, egy generátor; de a bővítés után a `KJV_Strongs_teljes.tsv`-nek és az `F19_hianyok.tsv`-nek bájtra azonosan kell újragenerálódnia (igazolandó), az `F19` futtatása a luvlylavnder-klónt és az ASV-zipet is kéri, és ütközik a #48 `ir` listájával.
-4. **⛔ Döntés (DT-F118a): licenc** — az 5. pont kérdései.
+4. **⛔ Döntés (DT210): licenc** — az 5. pont kérdései.
 
 A terv `naplok/KJV_SZOVEG_M0.md`-be kerül. ⛔ Jóváhagyás.
 
@@ -96,16 +99,16 @@ A felhasználó letölti a zip-et egy repón kívüli mappába; a menet ellenőr
 
 ### M3 — dataset-szabályok (playbook 2. pont)
 
-- `adat/licencek.tsv`: új sor `KJV_teljes_szoveg` néven, a DT-F118a szerint; a szó szerinti licencidézet a copr.htm-ből (a KJV_Strongs_teljes sor idézete újrahasználható, a lekérés dátumával; ha a menet újra lekéri, új dátummal).
+- `adat/licencek.tsv`: új sor `KJV_teljes_szoveg` néven, a DT210 szerint; a szó szerinti licencidézet a copr.htm-ből (a KJV_Strongs_teljes sor idézete újrahasználható, a lekérés dátumával; ha a menet újra lekéri, új dátummal).
 - `adat/datasetek.tsv`: study-típusonként (`bovitett`, `tematikus`, `melyelemzes`, `lexikon_oldal`) a sor; a `kotelezoseg` javasolt értéke `ajanlott` (párhuzamos szöveg, nem lexikai forrás), a `megjegyzes`-ben: KJV-számozás, STEP-alakú `Igehely`, a `Konyv_normalizalo_tabla.tsv` konverziója, a Strong-címkék **nincsenek** benne (azok a `KJV_Strongs_teljes.tsv`-ben).
 - `adat/SEMA.md`: a dataset leírása a `KJV_Strongs_teljes` mellé (a 2. táblák szakaszban), a két KJV-tábla viszonyával.
 - A TSV-k olvasása `split('\t')`, írása `'\t'.join()`; táblát író lépés írás előtt összeveti a sorokat az eredetivel, eltérésnél megáll (CLAUDE.md).
 
-### M4 — ⛔ a megjelenítés helye (DT-F118c) és a megjelenítési brief tervezete
+### M4 — ⛔ a megjelenítés helye (DT214) és a megjelenítési brief tervezete
 
 A megjelenítés a #76 olvasó-szerverében (`eszkozok/olvaso_szerver/`, `pardes.db`) a vers-lapon mutatja a KJV-szöveget a Károli mellett. **A #117 merge-e előtt nem indulhat**, mert a Károli-vers ↔ KJV-vers párosítás forrása a `Karoli_versmegfeleltetes.tsv`, amelyet a #117 javít. A #76 M3 jelenleg fut, és az `eszkozok/olvaso_szerver/` a #76 `ir` listájában áll.
 
-⛔ Döntés (DT-F118c):
+⛔ Döntés (DT214):
 - (a) **a #76 része**: a #76 briefje új mérföldkövet kap (pl. „M3b — párhuzamos KJV-szöveg”), a #76 saját menete írja be; a #76 `fugg` listája kiegészül a 117-tel és a 118-cal;
 - (b) **külön feladat**: a menet megírja a `beerkezo/KJV_SZOVEG_MEGJELENITES_BRIEF_TERVEZET.md` tervezetet, a `/befogad` fogadja be, `fugg: [117, 118]`, az `ir` listájában `eszkozok/sqlite_epit.py` és `eszkozok/olvaso_szerver/` — így a #76-tal egyszerre nem fut, a sorrendet a `fuggesek` adja. *Javaslat ez,* mert a #76 M3 futása közben a #76 briefjét más menet nem módosíthatja, és a #11 M3 is írja a `sqlite_epit.py`-t.
 
@@ -113,7 +116,7 @@ Mindkét esetben a tervezet (vagy a #76-mérföldkő) tartalma legalább:
 - **`pardes.db`:** új tábla (javaslat: `kjv_szoveg`: `igehely` Károli-kulcs, `kjv_igehely`, `szoveg`, `szoveg_jelolt`, `mod`), a `sqlite_epit.py` meglévő `_kjv` betöltőjének mintájára (`Karoli_versmegfeleltetes.tsv` `igehely_kjv` → Károli-vers); a `SZARMAZTATOTT_LICENC` sora; az `azonos_feltetelezett` tartalék csak ott, ahol a javított tábla nem ad párt, és jelölve;
 - **egy Károli-vers – több KJV-vers** (és fordítva, versösszevonás, `f22/versosszevonas.tsv`, eltolt fejezetek): minden párosított KJV-vers a saját KJV-versszámával jelenik meg; a Károli-vers nélküli KJV-vers (pl. „nincs pár”) nem vész el némán, hanem a jelentésben számolva;
 - **blokk:** új vers-blokk (pl. `vers.kjv_szoveg`, jelleg `forras`, licencsor a `licencek.tsv`-ből), az Olvasópult nézetben a Károli-szöveg mellett párhuzamos hasábként; a meglévő `vers.kjv` szavankénti blokk (Strong-címkés, GPL-jelölésű) változatlan marad;
-- **kiadási kapcsoló:** a DT-F118a szerint; ha a szövegréteg közkincs, a nyilvános kiadásban is megmarad, a `vers.kjv` szavankénti blokk viszont a DT124 szerint továbbra is kimarad;
+- **kiadási kapcsoló:** a DT210 szerint; ha a szövegréteg közkincs, a nyilvános kiadásban is megmarad, a `vers.kjv` szavankénti blokk viszont a DT124 szerint továbbra is kimarad;
 - **mérés:** a `pardes.db` újraépítése a WSL-natív `~/pardes/pardes.db`-n, a tesztek a `python eszkozok/teszt_futtat.py` hívással; a vers-lap vizuális összevetése a #60 pilottal (a látvány mércéje), nem csak számokkal.
 
 ## 5. Licenc és a DT126
@@ -130,12 +133,12 @@ Mindkét esetben a tervezet (vagy a #76-mérföldkő) tartalma legalább:
 - a **DT126-ot viszont nem oldja meg**: a `KJV_Strongs_teljes.tsv` sorsa (kivezetés, maradás, elhagyás) ugyanaz a kérdés marad. Az új dataset a DT126 bemenete: ha a DT126 az 1. vagy a 3. opciót választja, a teljes KJV-szöveg a nyilvános kiadásban is megjeleníthető marad, a szavankénti Strong-blokk nélkül (az angol szavankénti blokkot a BSB, CC0, adja);
 - nyitott: az eBible tiszta szövegében van-e a CrossWire-nek olyan saját hozzájárulása (szövegjavítás, írásmód), amelyre a GPL-nyilatkozat kiterjedhet. A repó adata ezt nem mondja ki; üresen marad, és explicit jelölendő.
 
-**⛔ Döntés (DT-F118a), az M0-ban:**
+**⛔ Döntés (DT210), az M0-ban:**
 1. a `KJV_teljes_szoveg` sor `kozkincs` (kor + eBible-nyilatkozat), `tisztazott`, `kereskedelmi` feltételesen (UK Korona-szabadalom), `share_alike` nem; a GPL-kérdés a címkerétegnél (DT126) marad;
 2. a sor `tisztazatlan`, amíg a szövegréteg CrossWire-hozzájárulása nem tisztázott (pl. egy független PD-kiadással való versenkénti összevetés, vagy a CrossWire/eBible kifejezett nyilatkozata); a megjelenítés addig csak a belső kiadásban;
 3. más.
 
-A döntés a `DONTESEK.md`-be kerül helyőrzővel (DT-F118a), utána megállás.
+A döntés a `DONTESEK.md`-be kerül helyőrzővel (DT210), utána megállás.
 
 ## 6. Elfogadási feltételek
 
@@ -143,21 +146,21 @@ A döntés a `DONTESEK.md`-be kerül helyőrzővel (DT-F118a), utána megállás
 - **E2.** M-a: S ⊆ T, a T ∖ S azonos az `F19_hianyok.tsv` címke nélküli verseivel; 31 102 kanonikus vers.
 - **E3.** M-b: minden Strong-címkézett szó megtalálható a teljes szövegben; megmagyarázatlan eltérés 0.
 - **E4.** M-c: üres szövegmező 0 (vagy indokolt lista); a jelölőleltár minden jelölőjének bánásmódja dokumentált és tesztelt.
-- **E5.** `licencek.tsv`, `datasetek.tsv`, `SEMA.md` frissítve a DT-F118a szerint; `python eszkozok/feladatok.py ellenoriz` 0.
+- **E5.** `licencek.tsv`, `datasetek.tsv`, `SEMA.md` frissítve a DT210 szerint; `python eszkozok/feladatok.py ellenoriz` 0.
 - **E6.** A `KJV_Strongs_teljes.tsv`, a `F19_hianyok.tsv`, a #117, a #107, a #76 és a #11 M3 fájljai érintetlenek (`git diff --stat` a zárásban).
-- **E7.** A DT-F118c eldöntve; (b) esetén a megjelenítési brief tervezete a `beerkezo/`-ben, `fugg: [117, 118]`-cal.
+- **E7.** A DT214 eldöntve; (b) esetén a megjelenítési brief tervezete a `beerkezo/`-ben, `fugg: [117, 118]`-cal.
 - **E8.** Független ellenőrzés (`fuggetlen-ellenor`) a zárás előtt.
 
 ## 7. Döntésnapló
 
 | Helyőrző | Kérdés | Hol |
 |---|---|---|
-| DT-F118a | a `KJV_teljes_szoveg` licencállapota; viszony a DT126-hoz | M0, 5. pont |
-| DT-F118b | saját importáló vagy az `f19_ebible_import.py` bővítése | M0 3. |
-| DT-F118c | a megjelenítés helye: a #76 része vagy külön feladat | M4 |
+| DT210 | a `KJV_teljes_szoveg` licencállapota; viszony a DT126-hoz | M0, 5. pont |
+| DT211 | saját importáló vagy az `f19_ebible_import.py` bővítése | M0 3. |
+| DT214 | a megjelenítés helye: a #76 része vagy külön feladat | M4 |
 
 ## 8. Kapcsolódás
 
 #19 (F19, KJV_Strongs_teljes), #48 (a régi KJV-fájlok kivezetése; írja az `f19_ebible_import.py`-t), #60 (pilot), #76 (olvasói konkordancia; M7: DT126), #117 (versmegfeleltetés; az N-tétele a teljes szövegen való utólagos ellenőrzésről e datasetre épül), DT124, DT126, DT-F42d, D7.
 
-**A fejléc `nem_fugg` mezőjének oka:** a levezetett függés a #38-tól (`Konyv_normalizalo_tabla.tsv`), a #48-tól (`f19_ebible_import.py`) és a #107-től (`Rendszerfejlesztesi_playbook.md`) csak olvasott fájlon át jön; az import ezeknek a mai állapotát olvassa, a változásuk a kimenetet nem érinti (a könyvtábla 66 könyves listája és a playbook 2. pontja stabil). Ha a DT-F118b a (b) opciót választja, a #48 függése valós: a `nem_fugg`-ból a 48 kikerül.
+**A fejléc `nem_fugg` mezőjének oka:** a levezetett függés a #38-tól (`Konyv_normalizalo_tabla.tsv`), a #48-tól (`f19_ebible_import.py`) és a #107-től (`Rendszerfejlesztesi_playbook.md`) csak olvasott fájlon át jön; az import ezeknek a mai állapotát olvassa, a változásuk a kimenetet nem érinti (a könyvtábla 66 könyves listája és a playbook 2. pontja stabil). Ha a DT211 a (b) opciót választja, a #48 függése valós: a `nem_fugg`-ból a 48 kikerül.
