@@ -1862,19 +1862,26 @@ def _e28_indul(fajlok):
 
 
 def _e28_commitolt(relut):
-    """A fájl commitolt (HEAD-beli) tartalma, LF-re normalizálva -- az
-    összevetés alapja a blob, nem a munkafa-fájl (core.autocrlf, CI-terv 1.
-    szakasz 3. pont). Ha a git nem érhető el vagy a fájl nincs a HEAD-ben
-    (helyi, nem commitolt futás), a munkafa-fájl a tartalék; None, ha az sincs."""
+    """A fájl commitolt (HEAD-beli) blobja, a `git show` nyers bájtjaiból UTF-8-cal
+    dekódolva, sorvég-konverzió NÉLKÜL: az összevetés bájtra megy, a sorvégnek is
+    egyeznie kell (CI-terv 1. szakasz 3. pont). Ha a git nem érhető el vagy a fájl
+    nincs a HEAD-ben (helyi, nem commitolt futás), a munkafa-fájl a tartalék: ott a
+    sorvég LF-re normalizált (a core.autocrlf miatt), ezért az nem blob-összevetés,
+    és a jelentés megjegyzése jelzi; None, ha a fájl az sincs."""
     try:
         nyers = subprocess.run(['git', 'show', 'HEAD:' + relut], cwd=ROOT,
                                capture_output=True, check=True).stdout
+        return nyers.decode('utf-8')
     except (subprocess.CalledProcessError, OSError):
         try:
             with open(os.path.join(ROOT, *relut.split('/')), 'rb') as f:
                 nyers = f.read()
         except OSError:
             return None
+    jegyzet = ('E28: tartalék, nem blob-összevetés (a HEAD-ben nincs meg a fájl vagy a git nem '
+               'érhető el): munkafa-fájl, LF-re normalizálva: %s' % relut)
+    if jegyzet not in E28_JEGYZETEK:
+        E28_JEGYZETEK.append(jegyzet)
     return _lf(nyers.decode('utf-8'))
 
 
@@ -1974,7 +1981,7 @@ def e28_generalt_nezet_egyezes(fajlok):
                 continue
             torzs, kezdo = talalat
             G = _general_modul()
-            generalt = _lf(G.blokk_torzs(blk, cel_kulcs))
+            generalt = G.blokk_torzs(blk, cel_kulcs)
             el = _e28_elso_elteres(torzs, generalt)
             if el:
                 i, sa, sb = el
@@ -2012,7 +2019,7 @@ def e28_generalt_nezet_egyezes(fajlok):
                      % (kod, hibakimenet.strip()[-200:]))
                 continue
             with open(ut, 'rb') as f:
-                generalt = _lf(f.read().decode('utf-8'))
+                generalt = f.read().decode('utf-8')
         finally:
             shutil.rmtree(tmp, ignore_errors=True)
         el = _e28_elso_elteres(commitolt, generalt)

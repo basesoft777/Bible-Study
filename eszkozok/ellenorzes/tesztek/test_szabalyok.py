@@ -1093,6 +1093,16 @@ def _lista_sor(fajl=_LAP, melyseg='apparatus', az='ZZTESZT-001', cel='lexikon'):
     return '%s\t%s\t%s\t%s\tF116-teszt\t2026-10-18\n' % (az, fajl, cel, melyseg)
 
 
+def _ir_nyers(gyoker, relut, tartalom):
+    """Mint a _ir, de a sorvegek valtozatlanok (Windowson sem lesz CRLF az LF-bol):
+    az E28 a blob bajtjait veti ossze."""
+    teljes = os.path.join(gyoker, relut)
+    os.makedirs(os.path.dirname(teljes) or gyoker, exist_ok=True)
+    with open(teljes, 'w', encoding='utf-8', newline='') as f:
+        f.write(tartalom)
+    return relut.replace(os.sep, '/')
+
+
 def _lista_ir(gy, *sorok):
     _ir(gy, 'eszkozok/ellenorzes/e28_migralt_nezetek.tsv', _lista(*sorok))
 
@@ -1132,7 +1142,7 @@ class E28Teszt(unittest.TestCase):
         def blob(relut):
             try:
                 with open(os.path.join(gy, *relut.split('/')), encoding='utf-8', newline='') as f:
-                    return f.read().replace('\r\n', '\n')
+                    return f.read()    # nyers: a blob sorvegei is szamitanak
             except OSError:
                 return None
 
@@ -1148,7 +1158,7 @@ class E28Teszt(unittest.TestCase):
         _ir(gy, 'motivumok/ZZTESZT-001.md', forras)
         _lista_ir(gy, _lista_sor())
         # a commitolt nezet = a generator kimenete a nezet sajat datumara
-        _ir(gy, _LAP, self._render(gy, '2026-10-01'))
+        _ir_nyers(gy, _LAP, self._render(gy, '2026-10-01'))
 
     def test_pozitiv_valtozatlan_forrasbol_generalt_nezet_zold(self):
         with _IdeiglenesGyoker() as gy:
@@ -1159,14 +1169,14 @@ class E28Teszt(unittest.TestCase):
     def test_pozitiv_marker_blokk_zold(self):
         with _IdeiglenesGyoker() as gy:
             self._fixture(gy)
-            _ir(gy, 'naplo.md', 'kezi sor\n' + _MARKER_BLOKK.replace('ts=2026-10-18', 'ts=2026-09-15') + '\nkezi vege\n')
+            _ir_nyers(gy, 'naplo.md', 'kezi sor\n' + _MARKER_BLOKK.replace('ts=2026-10-18', 'ts=2026-09-15') + '\nkezi vege\n')
             self.assertEqual(self._futtat(gy, marker_celok=[('naplo', 'naplo.md')]), [])
 
     def test_negativ_a_kezzel_irt_szo_piros(self):
         with _IdeiglenesGyoker() as gy:
             self._fixture(gy)
             szoveg = open(os.path.join(gy, _LAP), encoding='utf-8').read()
-            _ir(gy, _LAP, szoveg.replace('Olvasoi bekezdes.', 'Olvasoi KEZZEL bekezdes.'))
+            _ir_nyers(gy, _LAP, szoveg.replace('Olvasoi bekezdes.', 'Olvasoi KEZZEL bekezdes.'))
             t = self._futtat(gy)
             self.assertEqual(len(t), 1)
             self.assertEqual((t[0].szabaly, t[0].szint, t[0].fajl), ('E28', 'HIBA', _LAP))
@@ -1192,7 +1202,7 @@ class E28Teszt(unittest.TestCase):
         with _IdeiglenesGyoker() as gy:
             self._fixture(gy)
             kezi = _MARKER_BLOKK.replace('Ketto.', 'Ketto KEZZEL ATIRVA.')
-            _ir(gy, 'naplo.md', 'kezi sor\n' + kezi + '\n')
+            _ir_nyers(gy, 'naplo.md', 'kezi sor\n' + kezi + '\n')
             t = self._futtat(gy, marker_celok=[('naplo', 'naplo.md')])
             self.assertEqual(len(t), 1)
             self.assertEqual((t[0].fajl, t[0].szint), ('naplo.md', 'HIBA'))
@@ -1203,7 +1213,7 @@ class E28Teszt(unittest.TestCase):
     def test_negativ_marker_par_hianyzik(self):
         with _IdeiglenesGyoker() as gy:
             self._fixture(gy)
-            _ir(gy, 'naplo.md', 'csak kezi sor\n')
+            _ir_nyers(gy, 'naplo.md', 'csak kezi sor\n')
             t = self._futtat(gy, marker_celok=[('naplo', 'naplo.md')])
             self.assertEqual(len(t), 1)
             self.assertIn('hiányzik', t[0].reszlet)
@@ -1224,23 +1234,48 @@ class E28Teszt(unittest.TestCase):
     def test_nem_indul_erintetlen_fajlokkal(self):
         with _IdeiglenesGyoker() as gy:
             self._fixture(gy)
-            _ir(gy, _LAP, 'tetszoleges, a generatortol eltero tartalom\n')
+            _ir_nyers(gy, _LAP, 'tetszoleges, a generatortol eltero tartalom\n')
             self.assertEqual(self._futtat(gy, fajlok=['README.md']), [])
             self.assertIn('nem futott', SZ.E28_JEGYZETEK[0])
 
     def test_indul_adat_tsv_valtozassal(self):
         with _IdeiglenesGyoker() as gy:
             self._fixture(gy)
-            _ir(gy, _LAP, 'tetszoleges, GENERÁLT ts=2026-10-01 jelolovel, de mas tartalom\n')
+            _ir_nyers(gy, _LAP, 'tetszoleges, GENERÁLT ts=2026-10-01 jelolovel, de mas tartalom\n')
             self.assertEqual(len(self._futtat(gy, fajlok=['adat/jeloltek.tsv'])), 1)
 
     def test_negativ_generalt_jelolo_nelkuli_nezet(self):
         with _IdeiglenesGyoker() as gy:
             self._fixture(gy)
-            _ir(gy, _LAP, 'kezi fajl jelolo nelkul\n')
+            _ir_nyers(gy, _LAP, 'kezi fajl jelolo nelkul\n')
             t = self._futtat(gy)
             self.assertEqual(len(t), 1)
             self.assertIn('nincs GENERÁLT jelölő', t[0].reszlet)
+
+    def test_negativ_crlf_blob_lf_generalt_kimenettel_piros(self):
+        # CI-terv 1. szakasz 3. pont: a sorvegnek is egyeznie kell (nincs normalizalas)
+        with _IdeiglenesGyoker() as gy:
+            self._fixture(gy)
+            _ir_nyers(gy, _LAP, self._render(gy, '2026-10-01').replace('\n', '\r\n'))
+            t = self._futtat(gy)
+            self.assertEqual([x.szabaly for x in t], ['E28'])
+            self.assertEqual(t[0].sor, 1)
+            self.assertIn('\\r', t[0].reszlet)     # a repr-ben latszik a CR
+
+    def test_negativ_crlf_marker_blokk_piros(self):
+        with _IdeiglenesGyoker() as gy:
+            self._fixture(gy)
+            _ir_nyers(gy, 'naplo.md', ('kezi\n' + _MARKER_BLOKK + '\n').replace('\n', '\r\n'))
+            t = self._futtat(gy, marker_celok=[('naplo', 'naplo.md')])
+            self.assertEqual(len(t), 1)
+            self.assertEqual(t[0].szint, 'HIBA')
+
+    def test_munkafa_tartalek_lf_es_jelzi_hogy_nem_blob(self):
+        with _IdeiglenesGyoker() as gy:
+            _ir_nyers(gy, 'x.md', 'a\r\nb\r\n')
+            del SZ.E28_JEGYZETEK[:]
+            self.assertEqual(SZ._e28_commitolt('x.md'), 'a\nb\n')
+            self.assertTrue(any('nem blob-összevetés' in j for j in SZ.E28_JEGYZETEK))
 
     def test_szint_fajlszintu_hiba(self):
         self.assertEqual(SZ.SZINT['E28'], 'HIBA')
