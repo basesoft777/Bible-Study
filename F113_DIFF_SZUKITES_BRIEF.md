@@ -8,7 +8,7 @@ modell: opus
 allapot: lezarva
 ag: claude/diff-szukites
 ad: a render_diff_osztalyoz.py minden ismert fajtája a változás fajtája szerint dönt, nem a blokk szerint (öt szűkítés, mindegyikhez negatív teszt); a mai próbán az S2.8 0 ismeretlen + 44 felhasznalo_elfogadva; az N-F09i lezárva
-kovetkezo: merge a felhasználótól; utána az N-F09i lezárása külön tételben (DIFF_SZUKITES_zaras.md)
+kovetkezo: nincs; a #392 a main-en, az N-F09i lezárva (F113.Z, NYITOTT_FELADATOK.md); a maradék blokk szerinti ágak: N-F113a
 munka: folyamat
 olvas: [eszkozok/render_diff_osztalyoz.py, eszkozok/teszt_render_diff_osztalyoz.py, naplok/ELLENOR_SZOTAR_S2_negyedik.md, naplok/SZOTAR_S2_zaras.md, F09_SZOTAR_S2_BRIEF.md, naplok/SZOTAR_S2_diff.tsv, naplok/SZOTAR_S2_ismeretlen.tsv, naplok/SZOTAR_S2_parositas_minta.md, adat/szotar_szerepek.tsv, adat/licencek.tsv, adat/kiejtes_kivetelek.tsv, eszkozok/kiejtes.py, generalt_proba/F09_szotar_s2_proba/, lexikon/]
 ir: [eszkozok/render_diff_osztalyoz.py, eszkozok/teszt_render_diff_osztalyoz.py]
