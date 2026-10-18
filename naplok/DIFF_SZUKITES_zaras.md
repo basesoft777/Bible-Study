@@ -27,3 +27,5 @@ A brief öt helyén kívüli blokk szerinti ágak (`_torzscikk_kat`, a `_mezo_ka
 - Nyitva marad: a 3 `kézi (2/b)` sor egész soros elfogadása a 7. oszlopon kívül más cellacseréket is lefed (H7121: `TBESH` → `BDB 2.c (DT-F42a)`), a felhasználó tisztázására vár.
 
 **N-F09i:** a felhasználó döntése szerint (5d) a menet nem zárja le, csak itt jelzi. A lezárás külön tétel, a merge után.
+
+**A 2. ellenőri eltérés tisztázása (felhasználó, chat, 2026-10-18):** „A 3 sor egész soros elfogadása elfogadható (a többi cellacsere a cellaszabályon is átmenne).” Nincs további kódváltozás.
