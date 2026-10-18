@@ -11,6 +11,7 @@ Modell: claude-sonnet-5-5 (a brief `sonnet` mezőjével egyezik). Ág: `claude/f
 - E1: a száraz próba célpontja a brief 3.2/4 pontjában szereplő `naplok/ELLENOR_F9.md` helyett `naplok/ELLENOR_F115.md` (az F9 jelentés nem létezik, a `claude/f09-szotar-s2` PR-ja, #381, mergelt). A brief 2. pont „Nincs benne” f09-szotar-s2 sora elavult. A próba írás nélkül futott; az F115 fájljait/ágát nem módosítottam.
 - E2: D2 (korlát 2 kör) a felhasználó 2026-10-18-i jóváhagyásával; a korlátnál a maradék tételesen a `kovetkezo` mezőbe kerül (`elteres.md` 6. lépés).
 - E3 (ELLENOR_F111 5.): a brief törzse is változott a fejlécen túl: a D2 sor átírva (E2 kiegészítéssel) és új E1 sor a döntésnaplóban. Mindkettő a felhasználó 2026-10-18-i döntésének rögzítése; az `ir`-en kívüli (brief-törzs) írás ezért egyeztetett eltérés.
+- E4 (ELLENOR_F111_2 ÚJ-6, tartalmi, utólag nem javítható): az F111.6 egy commitban kezelte a négy tételt (ELLENOR_F111 1., 2., 4., 5.), ellentétben az `elteres.md` 4. lépésének tételenkénti szabályával. A felhasználó elfogadta; a 2. javítókör tételenként commitol (F111.11–F111.16).
 
 ## Száraz próba: az `ELLENOR_F115.md` (ELTÉRÉS: 7 tétel) besorolási javaslata (kör: 1 / 2, javaslat, javítás nem történt)
 *A cím a próba eredeti tárgyát őrzi (CI E5); a tényleges eredmény: az `/elteres` 1. lépése az `ELLENOR_F115.md`-re megáll, a javaslat nem a parancs kimenete.*
