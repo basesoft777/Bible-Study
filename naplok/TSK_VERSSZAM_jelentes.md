@@ -23,7 +23,9 @@ Az öt fogyasztó (`lexikon_general.tsk_index`, `lekerdez.cmd_tsk`, `nem_vizsgal
 | nincs-pár forrás-KJV-kulcs (ÓSZ, a sor kimarad) | 345 kulcs, 4 976 sor |
 | nincs-pár cél-KJV-vers (ÓSZ, a sor kimarad) | 359 vers, 4 378 előfordulás |
 
-A nincs-pár kulcsok tételes listája: `python eszkozok/tsk_versszam_felmeres.py` E. rész (a kulcs- és darabszám-lista teljes kimenete, a stdout-on 80 tételig). A nincs-pár kulcsok a KJV-nek olyan versei, amelyeknek a Károliban nincs azonos tartalmú párja (pl. 1Sám 17:12–31, 2Móz 35–36, 1Kir 6:12–14 számozás-eltérései, `Karoli_versmegfeleltetes.tsv`: üres KJV-oszlop / hiányzó KJV-pár). Ezeket az átváltó explicit „nincs pár”-ként kezeli; a sor kimarad (nem csendes azonosság).
+**Javítás (F114.10, a független ellenőri jelentés alapján, `naplok/ELLENOR_TSK_VERSSZAM.md`):** az előző változat hamisan állította, hogy a nincs-pár kulcsok (pl. 1Sám 17:12–31) olyan KJV-versek, amelyeknek a Károliban nincs azonos tartalmú párja. A valós ok más: a `Karoli_versmegfeleltetes.tsv` ezekben a sorokban az `igehely_kjv` mezőt **üresen** hagyja (LXX-hiány, `MT|szamlalas`; 161 üres KJV-sor: MT|szamlalas 86, MT|lxx_os_etalon_f91 66, KEZI|kezi_identitas_javitas 8, KJV|lxx_os_etalon_f91 1), a KJV-vers és a Károli-vers viszont létezik és azonos. A modul ezt „nincs pár”-nak vette, ami regresszió a main-hez képest. A 0/0 mérés (E3) a megfeleltetésből számolja a „helyes” halmazt, tehát körkörös: ezt a hibát nem foghatta meg. A nem körkörös mérés a felmérő F. része és `naplok/F114_elveszett_sorok.tsv`; a döntés DT-F114d.
+
+A nincs-pár kulcsok tételes listája: `python eszkozok/tsk_versszam_felmeres.py` E. rész (stdout-on 80 tételig), valamint `naplok/F114_elveszett_sorok.tsv` (a régi logika által elért kulcsok).
 
 A felmérő mérése közben két mérőhibát javítottam (a szkript a javítás után 0/0-t mér): az ÚSZ-célok a „helyes” halmazban azonosságot kapnak, a Votes-küszöb 0 esetén a negatív Votes-sorok (pl. `-14`) is bent vannak.
 

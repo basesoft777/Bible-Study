@@ -25,6 +25,14 @@ A mért eltérés (naplok/F114_USZ_meres.md): 5 csak-KJV vers (1Kor 3:23, 2Kor
 12:18, Luk 6:41, Luk 17:36, Mk 9:43), valamint a nem mért tartalmi eltolódás
 (pl. Jel 12:18/13:1). A TSK ÚSZ-oldala nem ellenőrzött; a lezárás N-F114a.
 
+ISMERT KORLÁTOK (F114.10, naplok/ELLENOR_TSK_VERSSZAM.md):
+  * Körkörösség: az átváltó és a felmérő „helyes” halmaza ugyanabból a táblából jön, ezért a
+    0/0 mérés a tábla hibáit nem fogja meg. A nem körkörös mérés: tsk_versszam_felmeres.py F. rész.
+  * Üres `igehely_kjv` (161 sor; LXX-hiány vagy kézi identitás): jelenleg „nincs pár”, ami a
+    main-hez képest elveszett TSK-sorokat jelent (pl. 1Sám 17:12–31) — DT-F114d.
+  * A megfeleltetésben nem szereplő Károli-versek (pl. 2Móz 35–36) szintén „nincs pár”.
+  * Ismert táblahiba (N-F41a): Jón 2:1 — a Károli 2:1 a KJV 1:17-nek felel meg, a tábla KJV 2:1-et ad.
+
 A TSK-tartomány-igehelyek kibontása nem része ennek a modulnak (N-F114b).
 
 TSV-olvasás `split('\t')`-tel (CLAUDE.md), a `csv` modul nélkül.
