@@ -1,0 +1,81 @@
+{% extends "alap.html" %}
+{% block tartalom %}
+<h1>Keresés</h1>
+<form class="valaszto" action="/kereses" method="get" role="search">
+  <label>Keresett kifejezés
+    <input type="text" name="q" value="{{ urlap.q|default('') }}" maxlength="100" autocomplete="off" placeholder="H0216 · világosság · a föld · בראשית ברא">
+  </label>
+  <label>Típus
+    <select name="tipus">
+      {% for kod, nev in tipusok %}<option value="{{ kod }}"{% if kod == urlap.tipus|default('auto') %} selected{% endif %}>{{ nev }}</option>{% endfor %}
+    </select>
+  </label>
+  <label>Magyar szó módja
+    <select name="mod">
+      {% for kod, nev in modok %}<option value="{{ kod }}"{% if kod == urlap.mod|default('szoto') %} selected{% endif %}>{{ nev }}</option>{% endfor %}
+    </select>
+  </label>
+  <button type="submit">Keresés</button>
+</form>
+<details class="utmutato">
+  <summary>Mit és hogyan keres?</summary>
+  <ol>
+    <li><b>Strong-szám</b> (pl. <code>H0216</code>, <code>G3056</code>; legfeljebb három, szóközzel: a versek, amelyekben mind előfordul). A versek a TAHOT/TAGNT Strong-címkéiből jönnek; a magyar szavak kiemelése a Károli–Strong párosításból (modell-kimenet).</li>
+    <li><b>Magyar szó.</b> <i>Pontos alak</i>: a szóalak kis- és nagybetűtől függetlenül. <i>Szótári alak</i> (az alap): a pontos alak, és ha a beírt szó szótári alak (régi vagy mai helyesírással, pl. <i>föld</i>, <i>amely</i>), minden Károli-alakja. <i>Strong-ág</i>: ehhez a találatok nem nyelvtani Strong-számaival párosított minden magyar szó (sok találat, lassabb). A szótári alakos keresés nem teljes körű: a különírt vonatkozó névmás (<i>a melyet</i>) és a hátravetett igekötő (<i>vettettek el</i>) nem jön elő (N-F94f, N-F94d).</li>
+    <li><b>Magyar frázis</b>: 2–4 egymást követő szó egy versen belül, pontos alakban (a kötőjel szóhatár).</li>
+    <li><b>Héber frázis</b>: 1–4 szó, pontozással vagy anélkül; az előtagok (ו ה ב כ ל מ ש) külön is, egybeírva is megadhatók.</li>
+    <li>A magyar szó- és frázis-keresés a Károli–Strong szótokeneken fut; ezekben a könyvekben nincs szótoken, ott nem talál: {{ token_nelkuli|join(', ') }}.</li>
+  </ol>
+</details>
+{% if hiba %}
+<p class="ures" role="alert">{{ hiba }}</p>
+{% endif %}
+{% if k %}
+<h2>{{ tipus_nev }}: {% if k.tipus == 'heber' %}<span class="heb" lang="he" dir="rtl">{{ k.szoveg }}</span>{% else %}{{ k.szoveg }}{% endif %}</h2>
+{% if zart %}
+<p class="ures" role="alert">Ez a keresési mód a jelenlegi hozzáférési szinten nem érhető el.</p>
+{% else %}
+{{ jegy }}
+<div class="cimkek">
+  <span class="cimke">{{ t.versek|length }} vers</span>
+  {% if t.elofordulas %}<span class="cimke">{{ t.elofordulas }} előfordulás</span>{% endif %}
+  {% if k.tipus == 'szo' %}<span class="cimke">mód: {{ mod_nev }}</span>{% endif %}
+</div>
+{% if k.tipus == 'szo' %}
+<p class="megj">Mód:
+  {% for m, nev in modok %}{% if m == k.mod %}<b>{{ nev }}</b>{% else %}<a href="{{ mod_url[m] }}">{{ nev }}</a>{% endif %}{% if not loop.last %} · {% endif %}{% endfor %}
+</p>
+{% if t.info.javaslat %}<p class="megj">A(z) „{{ k.szoveg }}” alak szótári alakja: <a href="/kereses?szo={{ t.info.javaslat|urlencode }}">{{ t.info.javaslat }}</a> (keresés a szótári alakra).</p>{% endif %}
+<p class="megj">Pontos alakként (kis/nagybetű nélkül): {{ t.info.pontos_db }} előfordulás.{% if k.mod != 'pontos' %} Szótári alakként („{{ t.info.kereso_alak }}”): {% if t.info.szotari_alakok_szama %}{{ t.info.szotari_alakok_szama }} Károli-alak ({{ t.info.kereso_mezok|join(', ') }} mező), ebből {{ t.info.szoto_db }} további előfordulás{% else %}nincs ilyen szótári alak, csak a pontos alak{% endif %}.{% endif %}{% if t.info.strong_ag_db is defined %} Strong-ág: {{ t.info.strong_ag_db }} további előfordulás.{% endif %}</p>
+{% if t.info.alakok %}
+<details class="utmutato"><summary>A szótári alak talált Károli-alakjai ({{ t.info.alakok|length }})</summary>
+<p class="megj">{% for a, n in t.info.alakok %}{{ a }} {{ n }}{% if not loop.last %} · {% endif %}{% endfor %}</p>
+</details>
+{% endif %}
+{% if t.info.strongok %}
+<p class="megj">Ez az alak a párosításban (modell-kimenet): {% for s, n in t.info.strongok %}<a href="/kereses?strong={{ s }}">{{ s }}</a> {{ n }}{% if not loop.last %} · {% endif %}{% endfor %}</p>
+{% endif %}
+{% if t.info.strong_ag %}
+<p class="megj">Strong-ág ((c) mód, a nyelvtani Strong-számok nélkül): {% for s, n in t.info.strong_ag[:20] %}<a href="/szo/{{ s }}">{{ s }}</a> {{ n }}{% if not loop.last %} · {% endif %}{% endfor %}{% if t.info.strong_ag|length > 20 %} · … (összesen {{ t.info.strong_ag|length }}){% endif %}</p>
+{% endif %}
+{% endif %}
+{% if k.tipus == 'strong' %}
+<p class="megj">{% for s in k.szavak %}<a href="/szo/{{ s }}">{{ s }} szó-lapja</a>{% if t.info.strong_alakok[s] %} — Károli-alakok a párosításban (modell-kimenet): {% for a, n in t.info.strong_alakok[s] %}{{ a }} {{ n }}{% if not loop.last %} · {% endif %}{% endfor %}{% endif %}{% if not loop.last %}<br>{% endif %}{% endfor %}</p>
+{% endif %}
+{% for f in t.figyelmeztetes %}<p class="megj" role="note">{{ f }}</p>{% endfor %}
+{% if k.tipus in ('szo', 'frazis') %}
+<p class="megj">Nem keresett könyvek (nincs magyar szótoken): {{ token_nelkuli|join(', ') }}.</p>
+{% endif %}
+{% if not t.versek %}
+<p class="ures">Nincs találat. {% if k.tipus in ('szo', 'frazis') %}A keresés a pontos szótokenekre megy; próbáld más alakkal vagy a szótári alakkal.{% endif %}</p>
+{% else %}
+<ol class="talalatok" start="{{ sorszam_tol }}">
+  {% for s in sorok %}
+  <li class="talalat"><a href="{{ s.url }}">{{ s.ig }}</a>{% for h in s.heb %} <span class="heb" lang="he" dir="rtl">{{ h }}</span>{% endfor %} {{ s.html }}{% if s.token_nelkul and k.tipus == 'strong' %} <span class="megj">(szótoken nélkül: kiemelés nincs)</span>{% endif %}</li>
+  {% endfor %}
+</ol>
+<p class="lapozo">{% if elso_url %}<a href="{{ elso_url }}">← az első oldal</a>{% endif %}{% if elso_url and kovetkezo_url %} · {% endif %}{% if kovetkezo_url %}<a href="{{ kovetkezo_url }}">a következő {{ 50 }} vers →</a>{% endif %}</p>
+{% endif %}
+{% endif %}
+{% endif %}
+{% endblock %}

@@ -1297,3 +1297,34 @@ def szoveg_jegy_html(kozos, nezet):
         '<div class="szoveg-jegy"><p><b>Károli-szöveg</b> %s<br><span class="forras">%s</span></p>'
         '<p><b>%s</b> Károli–Strong párosítás %s<br><span class="forras">%s</span></p></div>') % (
             jelleg_cimkek(SZOVEG_FORRAS.jelleg), forras_sor(SZOVEG_FORRAS, kozos), par, jelleg_cimkek(SZOVEG_PAR.jelleg), forras_sor(SZOVEG_PAR, kozos))
+
+
+# a keresés (M3) találatlistáinak jelölése: jelleg-címke, forrás- és licencsor (a regiszterből, mint a blokkoké). A lapon nem blokkként
+# jelennek meg, hanem a találatlista fölött; az azonosítójuk a hozzáférési konfigban szintet kaphat (`hozzaferes.toml`, `[blokk]`).
+# A (c) mód Strong-ága és a találatok kiemelése a `token_par` párosításán át a `vers.par` blokk láthatóságát követi (kereses.py).
+KERESES = {
+    'strong': B('kereses.strong', 'kereses', 'Strong-szám', ('forras', 'modell'), ('token_strong', 'vers', 'token_par'), None, None,
+                'a versek a TAHOT/TAGNT Strong-címkéiből; a magyar szavak kiemelése a Károli–Strong párosításból (modell-kimenet)'),
+    'szo': B('kereses.szo', 'kereses', 'magyar szó', ('gepi', 'modell'),
+             ('token_karoli', 'vers', 'szotari_kereso', 'szotari_alak', 'szotari_token_kotojeles', 'token_par'), None, None,
+             'a szótokenek gépi bontás; a szótári alak gépi szabály és részben modell-javaslat (DT130 (13)); a Strong-lista és a (c) mód a párosításból (modell-kimenet)'),
+    'frazis': B('kereses.frazis', 'kereses', 'magyar frázis', 'gepi', ('token_karoli', 'vers'), None, None,
+                'egymást követő szótokenek egy Károli-versen belül'),
+    'heber': B('kereses.heber', 'kereses', 'héber frázis', ('gepi', 'modell'), ('token_karoli', 'vers', 'token_par'), None, None,
+               'a héber tokenek mássalhangzós alakja (TAHOT); a magyar szavak kiemelése a párosításból (modell-kimenet)'),
+}
+KERESES_ID = {b.id: b for b in KERESES.values()}
+
+
+def ismert_azonositok():
+    """A hozzáférési konfigban megengedett azonosítók: a blokkok és a keresési módok."""
+    return set(BLOKK_ID) | set(KERESES_ID)
+
+
+def kereses_jegy_html(b, kozos):
+    """A találatlista jelleg- és forrássora (a blokkok szabálya: hiányzó licencsor hiba)."""
+    html = Markup('<div class="szoveg-jegy"><p><b>Találatlista (%s)</b> %s <span class="megj">%s</span><br><span class="forras">%s</span></p></div>') % (
+        b.cim, jelleg_cimkek(b.jelleg), b.jelleg_megj, forras_sor(b, kozos))
+    if 'class="jelleg ' not in html or 'class="forras"' not in html:
+        raise BlokkHiba('hiányzó jelleg-címke vagy forrássor: %s' % b.id)
+    return html
