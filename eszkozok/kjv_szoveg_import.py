@@ -17,7 +17,8 @@ DT-F118d (d) -- a zip a repon kivul marad; a hash a fejlecben.
 Szabalyok (naplok/KJV_SZOVEG_M0.md 2. es 4. pont):
   Igehely       STEP-alak (Gen.1.1), KJV-szamozas, a zsoltarfelirat (\\d) verse 0
   Szöveg        olvasoszoveg: jelolo, lab-jegyzet es pilcrow nelkul; \\w -> a szo; \\add, \\nd, \\wj, \\tl -> a szoveg
-  Szöveg_jelolt mint a Szöveg, de \\add -> [..], es a pilcrow (¶) megmarad
+  Szöveg_jelolt mint a Szöveg, de \\add -> [..], \\wj -> ‹..› (DT-F118e (4); versenkent zarva), es a pilcrow (¶) megmarad;
+                az 1Jn 2:23 forrasbeli „[but]”-ja a forras szerint marad (DT-F118e (3))
   Elotte        a vers elotti \\s1 cimsor (Zsolt 119 akrosztichon), olvasoszovegkent
   Utoirat       a konyv utolso verse utani \\s1 (pali utoiratok), olvasoszovegkent
 A leltaron kivuli jelolo hibat dob (nem nemán esik ki). TSV-iras: '\\t'.join, csv modul nelkul.
@@ -48,6 +49,7 @@ E = f19.E
 VART_SHA256 = '00532b6db1825cb78fd34de2097fc280ce03ee22ef0bdac5243ef4beaca4d447'  # DT-F118 egyeztetett elteres: a 2026-10-17-i csomag
 FORRAS_URL = 'https://ebible.org/Scriptures/eng-kjv_usfm.zip'
 PILCROW = '¶'
+WJ_NYIT, WJ_ZAR = '‹', '›'  # ‹ › -- a \wj jelolese a Szöveg_jelolt-ban (DT-F118e (4))
 
 # a leltar (naplok/KJV_SZOVEG_M0_jelolok.tsv) jeloloi, bánásmód szerint
 FEJLEC_JELOLOK = {'id', 'h', 'toc1', 'toc2', 'toc3', 'mt1', 'mt2'}      # az elso \c elott: kimarad
@@ -77,6 +79,8 @@ def tisztit(nyers, jelolt=False, szamlalo=None):
             if jelolt:
                 return ']' if zaro else '['
             return ''
+        if nev == 'wj' and jelolt:  # DT-F118e (4): Jezus szavai a Szöveg_jelolt-ban ‹…›
+            return WJ_ZAR if zaro else WJ_NYIT
         if nev in KARAKTER_JELOLOK:
             sz[nev] += 0 if zaro else 1
             return ''
@@ -93,8 +97,28 @@ def tisztit(nyers, jelolt=False, szamlalo=None):
             t = t.replace(PILCROW, ' ')
     t = re.sub(r'\s+', ' ', t).strip()
     if jelolt:
-        t = t.replace('[ ', '[').replace(' ]', ']')
+        t = t.replace('[ ', '[').replace(' ]', ']').replace(WJ_NYIT + ' ', WJ_NYIT).replace(' ' + WJ_ZAR, WJ_ZAR)
+        t = wj_lezar(t, sz)
     return t
+
+
+def wj_lezar(t, sz):
+    """Minden vers onalloan zart ‹…›-et kap: a versen atnyulo \\wj (nyitas az elozo versben, vagy zaras a kovetkezoben)
+    a vers elejen/vegen lezarodik. A forrasban (2026-10-17-i csomag) ilyen vers nincs (naplok/KJV_SZOVEG_meres.md);
+    a ‹ › jel a forrasszovegben nem fordul elo, ezert a jeloles egyertelmu."""
+    melyseg = 0
+    elol = 0
+    for ch in t:
+        if ch == WJ_NYIT:
+            melyseg += 1
+        elif ch == WJ_ZAR:
+            if melyseg == 0:
+                elol += 1
+            else:
+                melyseg -= 1
+    if elol or melyseg:
+        sz['wj_atnyulo_lezaras'] += elol + melyseg
+    return WJ_NYIT * elol + t + WJ_ZAR * melyseg
 
 
 def parse_konyv(szoveg, szamlalo=None):
@@ -197,6 +221,7 @@ def olvas(zippath, konyvek=None, szamlalo=None):
 def sorok(adat, konyvek, szamlalo=None):
     """-> [(Igehely, Szöveg, Szöveg_jelolt, Elotte, Utoirat)] kanonikus sorrendben (fejezet, vers szerint)"""
     sz = szamlalo if szamlalo is not None else collections.Counter()
+    jsz = collections.Counter()  # a Szöveg_jelolt tisztitasanak szamlaloi (csak a ‹…›-lezaras szamit)
     kiser = collections.Counter()  # az Elotte/Utoirat tisztitasanak szamlaloi (ott a \\add-jeloles is elvesz)
     out = []
     for step, _ in konyvek:
@@ -204,9 +229,10 @@ def sorok(adat, konyvek, szamlalo=None):
             rec = adat[step][(f, v)]
             out.append(('%s.%d.%d' % (step, f, v),
                         tisztit(rec['nyers'], False, sz),
-                        tisztit(rec['nyers'], True, collections.Counter()),
+                        tisztit(rec['nyers'], True, jsz),
                         tisztit(rec['elotte'], False, kiser) if rec['elotte'] else '',
                         tisztit(rec['utoirat'], False, kiser) if rec['utoirat'] else ''))
+    sz['wj_atnyulo_lezaras'] += jsz['wj_atnyulo_lezaras']
     for k, n in kiser.items():
         sz[k] += n
         sz['kiser_' + k] += n
@@ -217,17 +243,23 @@ def sha256(p):
     return hashlib.sha256(open(p, 'rb').read()).hexdigest()
 
 
+ALLAPOT = '# ÁLLAPOT: importált, javaslat — az M2 mérése előtt (naplok/KJV_SZOVEG_meres.md).'
+
+
 def fejlecsorok(zsha, ts, sz):
     vesz = ('a Strong-címke (\\w strong=) %d; lábjegyzet (\\f) %d; bekezdés/költői tagolás \\p %d, \\q1 %d, \\b %d; '
-            '\\nd %d, \\wj %d, \\tl %d jelölés (a szöveg marad); a Szöveg-ből a ¶ %d (a Szöveg_jelolt megőrzi) és a \\add-jelölés %d '
-            '(a Szöveg_jelolt-ban [..]; ebből az Elotte/Utoirat-ban %d, ott a jelölés elvész); könyvfejléc-sor (\\id \\h \\toc \\mt) %d' % (
-                sz['w'], sz['labjegyzet'], sz['p'], sz['q1'], sz['b'], sz['nd'], sz['wj'], sz['tl'], sz['pilcrow'], sz['add'],
-                sz['kiser_add'], sz['fejlec_sor']))
+            '\\nd %d, \\tl %d jelölés (a szöveg marad); a Szöveg-ből a \\wj %d (a Szöveg_jelolt-ban ‹…›), a ¶ %d (a Szöveg_jelolt megőrzi) '
+            'és a \\add-jelölés %d (a Szöveg_jelolt-ban [..]; ebből az Elotte/Utoirat-ban %d, ott a jelölés elvész); '
+            'könyvfejléc-sor (\\id \\h \\toc \\mt) %d; versen átnyúló ‹…› lezárása %d. '
+            'Nem veszteség, de jelölendő: az 1Jn 2:23 forrásbeli „[but]” szögletes zárójele a forrás szerint marad (a Szöveg-ben is), '
+            'a Szöveg_jelolt-ban ezért egymásba ágyazott: „[[but] … also]” (DT-F118e (3))' % (
+                sz['w'], sz['labjegyzet'], sz['p'], sz['q1'], sz['b'], sz['nd'], sz['tl'], sz['wj'], sz['pilcrow'], sz['add'],
+                sz['kiser_add'], sz['fejlec_sor'], sz['wj_atnyulo_lezaras']))
     return ['# GENERÁLT: eszkozok/kjv_szoveg_import.py — kézzel nem szerkesztendő.',
             '# proveniencia: scope=KJV teljes (66 kanonikus könyv, angol számozás) | forras=%s sha256=%s | ts=%s' % (FORRAS_URL, zsha, ts),
             '# licenc: közkincs (KJV; eBible copr.htm: „Public Domain”, „You may copy the King James Version of the Holy Bible freely.”); '
             'kereskedelmi: feltételesen (UK Korona-szabadalom); share_alike: nem; Strong-címkét nem tartalmaz (DT-F118a; a címkeréteg: KJV_Strongs_teljes.tsv, DT126)',
-            '# ÁLLAPOT: importált, javaslat — az M2 mérése előtt (naplok/KJV_SZOVEG_meres.md).',
+            ALLAPOT,
             '# veszteség (DT-F107d (2); mit dob el az importáló): ' + vesz]
 
 

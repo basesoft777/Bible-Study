@@ -109,7 +109,7 @@ def main():
             hibak['zarojel_ures_vagy_szokoz'] += 1
         if K.PILCROW in r[1]:
             hibak['pilcrow_a_Szovegben'] += 1
-        if re.sub(r'[\[\]' + K.PILCROW + r']', '', r[2]).split() != r[1].split():
+        if re.sub(r'[\[\]' + K.PILCROW + K.WJ_NYIT + K.WJ_ZAR + r']', '', r[2]).split() != r[1].split():
             hibak['Szoveg_es_jelolt_szavai_elternek'] += 1
     out.append('**Épség a teljes, memóriabeli kimeneten** (a tábla nem íródott a `konkordancia/`-ba):')
     out.append('')
@@ -117,7 +117,7 @@ def main():
         len(rs), sum(1 for r in rs if not r[1]), sum(1 for r in rs if r[3]), sum(1 for r in rs if r[4]), sz['vershid'], sz['vers_folytatas_sor'], len(anom)))
     out.append('- a versek halmaza azonos a `f19.parse_usfm`-éval: %s (saját %d, F19 %d)' % (sajat == f19v, len(sajat), len(f19v)))
     out.append('- formai hibák (backslash, szóköz írásjel előtt, dupla szóköz, páratlan/üres `[ ]`, ¶ a `Szöveg`-ben, a két szövegmező szavai eltérnek): %s' % (dict(hibak) or 0))
-    out.append('- veszteség-számlálók: ' + ', '.join('%s=%d' % (k, sz[k]) for k in ('w', 'labjegyzet', 'p', 'q1', 'b', 'nd', 'wj', 'tl', 'pilcrow', 'add', 'kiser_add', 'fejlec_sor')))
+    out.append('- veszteség-számlálók: ' + ', '.join('%s=%d' % (k, sz[k]) for k in ('w', 'labjegyzet', 'p', 'q1', 'b', 'nd', 'wj', 'tl', 'pilcrow', 'add', 'kiser_add', 'fejlec_sor', 'wj_atnyulo_lezaras')))
     with open(a.ki, 'w', encoding='utf-8', newline='\n') as fh:
         fh.write('\n'.join(out) + '\n')
     print('\n'.join(out[-6:]))

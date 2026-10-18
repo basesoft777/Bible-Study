@@ -1,5 +1,7 @@
 # KJV_SZOVEG M1 — kis minta (#118, `F118_KJV_SZOVEG_BRIEF.md` 4. pont, M1)
 
+**Jóváhagyva (DT-F118e, felhasználó, 2026-10-18):** „a minta jóváhagyva; 1. Elotte/Utoirat marad; 2. olvasós alakban; 3. az 1Jn 2:23 a forrás szerint, veszteségnaplóban említve; 4. a \wj a Szöveg_jelolt-ban ‹…› jelöléssel; 5. a feliratok 0. versként. Mehet az M2.” A 3. pont mintája a döntés szerinti, `‹…›`-es `\wj`-jelöléssel újragenerálva (F118.11); a minta-versek elvárt értékei az `eszkozok/teszt_kjv_szoveg_import.py`-ban rögzítve.
+
 **Egyeztetett eltérés: új csomag (sha256 `00532b6db1825cb78fd34de2097fc280ce03ee22ef0bdac5243ef4beaca4d447`, 2026-10-17).** A döntések (felhasználó, 2026-10-18): DT-F118a 1., DT-F118b (a), DT-F118d (d) második példánnyal (`DONTESEK.md`). Előzmény: `naplok/KJV_SZOVEG_M0.md`.
 
 Az importáló az `eszkozok/kjv_szoveg_import.py`, a mintát a `naplok/KJV_SZOVEG_M1_minta.py` állítja elő (`python -I`, a zip kibontás nélkül, `zipfile`-lal). A teljes tábla **nem** került a `konkordancia/`-ba, mert az az M2. A próbafutás a scratchpadbe ment, a repón kívülre. Az egységtesztek az `eszkozok/teszt_kjv_szoveg_import.py`-ban vannak (19 teszt, szintetikus USFM-en, OK). A minta-versek rögzített elvárt értékei a ⛔ jóváhagyás után kerülnek a tesztbe.
@@ -19,15 +21,15 @@ Az importáló az `eszkozok/kjv_szoveg_import.py`, a mintát a `naplok/KJV_SZOVE
 
 1. **Az `Elotte`/`Utoirat` oszlop** marad-e (javaslat: igen), vagy a 36 `\s1`-sor kimaradjon, és csak a veszteségnapló számolja?
 2. **Az `Elotte`/`Utoirat` olvasószöveg-alakú.** A 14 utóiratban 7 `\add` áll (pl. „\add and sent\add*”), ezek jelölése ott elvész, és a `# veszteség:` fejlécsor ezt külön számolja. Alternatíva: a két oszlop a jelölt alakot hordozza (`[and sent]`). Javaslat: maradjon az olvasószöveg.
-3. **Az 1Jn 2:23 szó szerinti szögletes zárójele** (a minta utolsó verse). Itt a forrás maga írja a „[but]” szót egy `\add`-on belül (a KJV hagyományos írásmódja). A `Szöveg`-ben ezért egy `[but]` áll, a `Szöveg_jelolt`-ban pedig egymásba ágyazott zárójel: `[[but] he that … also]`. A 66 kanonikus könyvben ez az egyetlen szó szerinti `[`/`]` (a zip többi részében még 6 ilyen sor van az apokrifokban és 17 az előszóban). Opciók: (a) a `[…]` konvenció marad, az 1Jn 2:23 dokumentált kivétel (a tesztben rögzítve); (b) az `\add` a `Szöveg_jelolt`-ban más jelet kap (pl. `⸤…⸥` vagy `{…}`), amely a forrásban nem fordul elő. Javaslat: (a), mert egyetlen vers, és a forrás hű.
-4. **`\wj` (Jézus szavai, 2 038)**: a jelölés mindkét szövegmezőből kimarad (M0, 2. pont). A három címke nélküli vers közül a Mk 9:43 és a Lk 6:41 teljes egészében `\wj`, `\w`-címke nélkül, ezért címke nélküliek. A ⛔ kérheti, hogy a `Szöveg_jelolt` jelölje (pl. `‹…›`). Javaslat: maradjon jelöletlen.
+3. **Az 1Jn 2:23 szó szerinti szögletes zárójele** (a minta utolsó verse). Itt a forrás maga írja a „[but]” szót egy `\add`-on belül (a KJV hagyományos írásmódja). A `Szöveg`-ben ezért egy `[but]` áll, a `Szöveg_jelolt`-ban pedig egymásba ágyazott zárójel: `[[but] he that … also]`. A 66 kanonikus könyvben ez az egyetlen szó szerinti `[`/`]` (a zip többi részében még 6 ilyen sor van az apokrifokban és 17 az előszóban). Opciók: (a) a `[…]` konvenció marad, az 1Jn 2:23 dokumentált kivétel (a tesztben rögzítve); (b) az `\add` a `Szöveg_jelolt`-ban más jelet kap (pl. `⸤…⸥` vagy `{…}`), amely a forrásban nem fordul elő. Javaslat: (a), mert egyetlen vers, és a forrás hű. **Döntés: a forrás szerint, a veszteségnaplóban említve.**
+4. **`\wj` (Jézus szavai, 2 038)**: a jelölés mindkét szövegmezőből kimarad (M0, 2. pont). A három címke nélküli vers közül a Mk 9:43 és a Lk 6:41 teljes egészében `\wj`, `\w`-címke nélkül, ezért címke nélküliek. A ⛔ kérheti, hogy a `Szöveg_jelolt` jelölje (pl. `‹…›`). Javaslat: maradjon jelöletlen. **Döntés (DT-F118e (4)): a `Szöveg_jelolt`-ban `‹…›`**; minden vers önállóan zárt jelölést kap (versen átnyúló `\wj` a forrásban nincs, a lezárás számlálója 0).
 5. **A zsoltárfelirat 0. versként** saját sort kap (`Psa.3.0`), mint a `KJV_Strongs_teljes.tsv`-ben. Javaslat: így marad.
 
 ## 3. A minta (a brief M1-listája, plusz egy páli utóirat és az 1Jn 2:23)
 
 Mindegyik versnél mind a négy szövegmező, alatta a vers nyers USFM-szövege a forrásból (lábjegyzettel és a vers utáni tagoló- és `\s1`-sorokkal).
 
-<!-- proveniencia: scope=KJV_SZOVEG M1 minta (16 vers) + épség a teljes, memóriabeli kimeneten | forras=kjv.zip sha256=00532b6db1825cb78fd34de2097fc280ce03ee22ef0bdac5243ef4beaca4d447 | ts=2026-10-18T15:34:13Z -->
+<!-- proveniencia: scope=KJV_SZOVEG M1 minta (16 vers) + épség a teljes, memóriabeli kimeneten | forras=kjv.zip sha256=00532b6db1825cb78fd34de2097fc280ce03ee22ef0bdac5243ef4beaca4d447 | ts=2026-10-18T15:43:13Z -->
 
 #### `Gen.1.1`
 
@@ -206,7 +208,7 @@ Nyers USFM:
 | mező | érték |
 |---|---|
 | `Szöveg` | And if thy hand offend thee, cut it off: it is better for thee to enter into life maimed, than having two hands to go into hell, into the fire that never shall be quenched: |
-| `Szöveg_jelolt` | And if thy hand offend thee, cut it off: it is better for thee to enter into life maimed, than having two hands to go into hell, into the fire that never shall be quenched: |
+| `Szöveg_jelolt` | ‹And if thy hand offend thee, cut it off: it is better for thee to enter into life maimed, than having two hands to go into hell, into the fire that never shall be quenched:› |
 | `Elotte` | *(üres)* |
 | `Utoirat` | *(üres)* |
 
@@ -221,7 +223,7 @@ Nyers USFM:
 | mező | érték |
 |---|---|
 | `Szöveg` | And why beholdest thou the mote that is in thy brother’s eye, but perceivest not the beam that is in thine own eye? |
-| `Szöveg_jelolt` | And why beholdest thou the mote that is in thy brother’s eye, but perceivest not the beam that is in thine own eye? |
+| `Szöveg_jelolt` | ‹And why beholdest thou the mote that is in thy brother’s eye, but perceivest not the beam that is in thine own eye?› |
 | `Elotte` | *(üres)* |
 | `Utoirat` | *(üres)* |
 
@@ -236,7 +238,7 @@ Nyers USFM:
 | mező | érték |
 |---|---|
 | `Szöveg` | Two men shall be in the field; the one shall be taken, and the other left. |
-| `Szöveg_jelolt` | Two [men] shall be in the field; the one shall be taken, and the other left. |
+| `Szöveg_jelolt` | ‹Two [men] shall be in the field; the one shall be taken, and the other left.› |
 | `Elotte` | *(üres)* |
 | `Utoirat` | *(üres)* |
 
@@ -282,7 +284,7 @@ Nyers USFM:
 - sorok: 31218; üres `Szöveg`: 0; `Elotte`: 22; `Utoirat`: 14; vershíd: 0; folytatás-sor: 0; parse-anomália: 0
 - a versek halmaza azonos a `f19.parse_usfm`-éval: True (saját 31218, F19 31218)
 - formai hibák (backslash, szóköz írásjel előtt, dupla szóköz, páratlan/üres `[ ]`, ¶ a `Szöveg`-ben, a két szövegmező szavai eltérnek): {'Szoveg_es_jelolt_szavai_elternek': 1}
-- veszteség-számlálók: w=349308, labjegyzet=6959, p=4635, q1=2461, b=209, nd=6892, wj=2038, tl=22, pilcrow=2970, add=21510, kiser_add=7, fejlec_sor=398
+- veszteség-számlálók: w=349308, labjegyzet=6959, p=4635, q1=2461, b=209, nd=6892, wj=2038, tl=22, pilcrow=2970, add=21510, kiser_add=7, fejlec_sor=398, wj_atnyulo_lezaras=0
 
 ## 4. Megjegyzés a mintához
 
