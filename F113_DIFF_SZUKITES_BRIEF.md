@@ -14,7 +14,7 @@ olvas: [eszkozok/render_diff_osztalyoz.py, eszkozok/teszt_render_diff_osztalyoz.
 ir: [eszkozok/render_diff_osztalyoz.py, eszkozok/teszt_render_diff_osztalyoz.py]
 fugg: [9]
 pr: #392
-lezarva_osszegzes: "mind az öt ismert fajta a változás fajtája szerint dönt (DT-F113a/b); 73 teszt, a negatív tesztek a régi kódon elbuknak; a próbán 0 ismeretlen + 55 felhasznalo_elfogadva (44 + 11 név szerinti, DT-F113b); a blokk szerinti maradék ágak: N-F113a"
+lezarva_osszegzes: "mind az öt ismert fajta a változás fajtája szerint dönt (DT195/b); 73 teszt, a negatív tesztek a régi kódon elbuknak; a próbán 0 ismeretlen + 55 felhasznalo_elfogadva (44 + 11 név szerinti, DT196); a blokk szerinti maradék ágak: N-F113a"
 ---
 
 # F113_DIFF_SZUKITES_BRIEF.md — A diff-osztályozó blokk szerint döntő fajtáinak szűkítése
@@ -61,7 +61,7 @@ A sorszámok a `main` `9b16603a` állapotán igazolva (2026-10-18); a menet elej
    - nem magyar szó: az ajánlott, adatalapú próba, hogy az új oldal megegyezik a cella héber/görög szavának kiejtésével (görög: `eszkozok/kiejtes.py`; héber: `adat/kiejtes_kivetelek.tsv`), a régi oldal pedig vagy ugyanennek a szónak egy korábbi átírása (SBL-diakritika: `ā ē ī ō ū ḥ ṭ ṣ š ś ʾ ʿ ə`, vagy a próbán mért régi→új párok alakja), vagy a sor egy másik mezőjében álló átírással azonos. Ha az adatalapú próba nem valósítható meg, a végrehajtó a karakter-alapú változatot választja, és a zárójelentésben megnevezi, melyiket követte és miért.
    Negatív tesztek: `כֹּהֵן (pap)` → `כֹּהֵן (király)` `ismeretlen` az (1) lépés nem-None ágán **és** a cellánkénti ágon; görög cellában `ἀβύσσου (mélység)` → `ἀβύσσου (szakadék)` `ismeretlen`. Pozitív tesztek (éles esetek, `naplok/SZOTAR_S2_parositas_minta.md`): `ἐπικαλέσηται (epikalesētai)` → `(epikaleszétai)` és `ἀβύσσου (abussou)` → `(abüsszú)` továbbra is `kiejtes`.
 6. **Mérés a módosítás után:** `python eszkozok/render_diff_osztalyoz.py --proba generalt_proba/F09_szotar_s2_proba --tsv naplok/DIFF_SZUKITES_diff.tsv` (az esetleges `ismeretlen` sorok: `naplok/DIFF_SZUKITES_ismeretlen.tsv`); a teljes tesztkészlet (`python eszkozok/teszt_render_diff_osztalyoz.py`) zöld; az éles `lexikon/` 16 fájlja bájtra változatlan (a kód hash-ellenőrzése, `naplok/F09_S0_lexikon_hash.tsv`). A kimenet proveniencia-sora: `scope=generalt_proba/F09_szotar_s2_proba vs lexikon | forras=eszkozok/render_diff_osztalyoz.py --proba | ts=…`.
-7. **⛔ Ha új `ismeretlen` jelenik meg:** a menet megáll, és a sorokat tételesen (fájl, sor, a régi és az új mező, melyik szűkítés fogta meg) a felhasználó elé teszi. **Új szabályt, új kategóriát vagy új elfogadott sort a menet nem ír**; a döntés a felhasználóé (`DONTESEK.md`-tétel helyőrzővel: `DT-F113a`, …).
+7. **⛔ Ha új `ismeretlen` jelenik meg:** a menet megáll, és a sorokat tételesen (fájl, sor, a régi és az új mező, melyik szűkítés fogta meg) a felhasználó elé teszi. **Új szabályt, új kategóriát vagy új elfogadott sort a menet nem ír**; a döntés a felhasználóé (`DONTESEK.md`-tétel helyőrzővel: `DT195`, …).
 8. **⛔ Független ellenőrzés** (`fuggetlen-ellenor`, `naplok/ELLENOR_DIFF_SZUKITES.md`) a base..head diffen: mind az öt szűkítés a változás fajtája szerint dönt-e; a negatív tesztek valóban a szűkített ágat érik-e (nem egy korábbi feltétel fogja meg őket); van-e még blokk vagy szakasz szerint elfogadó ág a `_mezo_kat`-ban és a `_par_kategoria`-ban.
 9. **Lezárás:** `NYITOTT_FELADATOK.md` N-F09i (vagy a számkiosztás adta végleges N-szám) lezárva, a mérés hivatkozásával; zárójelentés `naplok/DIFF_SZUKITES_zaras.md` (mi változott helyenként, a tesztek száma, a mérés, a választott változat az 5. lépésben); brief-fejléc `allapot`, `lezarva_osszegzes`. PR-cím `[ELLENŐRZŐ]`; push és merge csak a felhasználótól.
 
@@ -81,4 +81,4 @@ Commit tételenként (`F113.0:`, `F113.1:` …), UTF-8 fájlból.
 ## 5. Döntésnapló
 
 - **A brief írásakor (2026-10-18):** a kapura támaszkodó következő feladat a #36 (LEXIKON_UJRAGEN, M1 diff-elemzés: „minden eltérés oka megnevezve … váratlan eltérés → megállás”), és a #10 (LEXIKON_LEZARAS), mert a DT186 szerint az éles `lexikon/`-t a #11 1. lépcsője után a #36 vagy a #10 generálja. A #11 a `nulladiff.sh`-t használja (M4), nem ezt az osztályozót. A #113 a befogadáskor a #36 és a #10 `fugg` mezőjébe került (felhasználó, 2026-10-18, chat).
-- Új döntés a menet közben helyőrzővel: `DT-F113a`, `DT-F113b` …; új nyitott tétel: `N-F113a` ….
+- Új döntés a menet közben helyőrzővel: `DT195`, `DT196` …; új nyitott tétel: `N-F113a` ….
