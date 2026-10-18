@@ -1719,10 +1719,6 @@ kérdést tesz fel ugyanarról a szövegről:
   ténylegesen levezethető a szövegből, nem szabad, hogy találgatás
   vagy allegorizálás legyen.
 
-Nem új esemény, hanem tudatos visszatérés: a hűtlenség (egyiptomi kitérő) helyéről az imádat helyére.
-
-az egyetlen genezisi hely, ahol a formula önmagában teológiai kijelentést is hordoz Isten természetéről.
-
 **Peshat:** a genezisi öt előfordulás (4:26, 12:8, 13:4, 21:33, 26:25)
 egyetlen, folytonos gyakorlatot ír le: a hívő ember Isten nevének
 invokálásával fejezi ki függőségét és hódolatát — jellemzően egy
@@ -1731,6 +1727,9 @@ konkrét, helyhez kötött kultikus jelhez kapcsolva (oltárépítés 12:8,
 egyszeri esemény, hanem nemzedékeken át öröklődő szokás (Ábrahám →
 Izsák), amely konkrét földrajzi pontokhoz kötődik (Bétel-Ai,
 Beérseba).
+
+- **1Móz 13:4** — Nem új esemény, hanem tudatos visszatérés: a hűtlenség (egyiptomi kitérő) helyéről az imádat helyére.
+- **1Móz 21:33** — az egyetlen genezisi hely, ahol a formula önmagában teológiai kijelentést is hordoz Isten természetéről.
 
 **Remez:** a minta a Séthita vonaltól a pátriárkákon át húzódik
 tovább, a próféták nyilvános, versengő kontextusán (1Kir 18) és a
