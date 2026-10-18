@@ -595,6 +595,37 @@ class Integracio(unittest.TestCase):
             self.assertEqual((k, mx), (n, n), (ig, st))
         self.assertGreater(int(self._meta_dict()['token_macula:ketertelmu_vers_strong_csoport']), 0)
 
+    def test_f115_macula_chi_xi_javitas(self):
+        """F115 / DT-F115a: a Macula `greek` chi<->xi hibája az importban javítva; a forrásalak és a Rahlfs-minőségjelölés megmarad."""
+        csere = str.maketrans({'χ': 'ξ', 'ξ': 'χ', 'Χ': 'Ξ', 'Ξ': 'Χ'})
+        # (1) 1Móz 1:1 bereshit: a forrás ἀρξῇ, a javított ἀρχῇ; a minősítés a DB-ben mért érték
+        sor = self.con.execute("SELECT lxx_szo, lxx_szo_forras, lxx_szo_rahlfs FROM token_macula "
+                               "WHERE igehely='1Móz 1:1' AND szo LIKE 'בְּרֵאשִׁית%'").fetchall()
+        self.assertTrue(sor)
+        self.assertEqual(sor[0][0], 'ἀρχῇ')
+        self.assertEqual(sor[0][1], 'ἀρξῇ')
+        self.assertIn(sor[0][2], ('rahlfs_igazolt',) + tuple(
+            r[0] for r in self.con.execute("SELECT DISTINCT lxx_szo_rahlfs FROM token_macula WHERE lxx_szo_rahlfs LIKE 'nem_igazolt:%'")))
+        self.assertNotEqual(sor[0][2], '')
+        # (2) jelölten üres mező nincs
+        self.assertEqual(self.con.execute("SELECT COUNT(*) FROM token_macula WHERE COALESCE(lxx_szo_forras,'')!='' "
+                                          "AND COALESCE(lxx_szo,'')=''").fetchone()[0], 0)
+        # (3) chi/xi-mentes sorban a minősítés üres és lxx_szo = lxx_szo_forras
+        ures = 0
+        for szo, forras, rahlfs in self.con.execute("SELECT lxx_szo, lxx_szo_forras, lxx_szo_rahlfs FROM token_macula "
+                                                    "WHERE COALESCE(lxx_szo_forras,'')!=''"):
+            van = any(c in 'χξΧΞ' for c in forras)
+            if not van:
+                self.assertEqual((szo, rahlfs or ''), (forras, ''))
+            else:
+                # (4) chi/xi-s sorban lxx_szo = a forrás chi<->xi cseréje, és van minősítés
+                self.assertEqual(szo, forras.translate(csere))
+                self.assertTrue(rahlfs)
+                ures += 1
+        self.assertGreater(ures, 0)
+        m = self._meta_dict()
+        self.assertEqual(sum(int(v) for k, v in m.items() if k.startswith('token_macula:lxx_szo_rahlfs:')), ures)
+
     def test_f92_magyar_szo_index(self):
         self.assertEqual(S.szo_kis('Kép,'), 'kép')
         self.assertEqual(S.szo_kis('Isten-s'), 'istens')
