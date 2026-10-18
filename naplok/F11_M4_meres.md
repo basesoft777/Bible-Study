@@ -106,3 +106,33 @@ Ideiglenes, memóriabeli engedélyezőlista-sorral (`id=ISTENTISZT-001`, `fajl=l
 A D3 („többsoros 【NAPLO】 folytatása”, 5 sor), a D4 (2b, minosites, alatamasztas) és a D5 (ertelmezes 6, modszertan 41) eltérései a pilot-terv 5. szakasza szerint elfogadott kategóriák; a soronkénti lista a `naplok/F11_M4_osztalyozas.tsv`-ben.
 
 **Az M4 itt megáll.** Az M5 nem indult; push és PR nem történt; merge csak zöld M4 után (DT-F11f).
+
+## 8. Újramérés a DT-F11h után (2026-10-18)
+
+*A felhasználó döntése (DT-F11h): „Á1 A/B-mérés (alap↔migrált); Á2 új kategória; Á3 D2-bővítés; Á4–Á5 elfogadva; Á6 a 7.4 (e) pontja; Á7 a generátor javítása; Á8 a 6 dátumsor belso szintre; Á9 az M7-é. Utána újramérés, megállás.” Átvezetve: F11.M4.1 (DT-F11h), F11.M4.2 (pilot-terv 5. szakasz: A/B a blokkokra, D2 a Kolofon napló-cellájával, D7 „adat-egység az adatrétegben”, D8 „táblával indokolt áthelyezés”, L5 → M7; 7.4 (e) részegység-kivágás), F11.M4.3 (Á7: `_generalt_fejlec_alkalmaz`, CRLF-es munkapéldányon a fejléc utáni `\r` is levágva, 2 teszt, az éles lap újragenerálva). Fej: `5dfb7f6d`; alap: `89b30c2e`.*
+
+**Mérési környezet.** A `nulladiff.sh` és az alap-render **LF-es checkouttal** fut (`GIT_CONFIG_*`: `core.autocrlf=false`), mint a CI-ben. Az Á7 javítása előtt a Windows-os, CRLF-es ideiglenes worktree-ben a javítatlan alap minden lap fejléce után egy plusz üres sort hagyott; ezt a CRLF-módú nulladiff az Á7 után minden lapon eltérésként mutatta (HAMART-001-en is), LF-módban az eltérés nincs. Az M3 alatti N0-futások CRLF-módban, az Á7 előtt futottak, ezért ott a hatás nem jelentkezett.
+
+| pont | eredmény | mérés |
+|---|---|---|
+| (a) blokkok, A/B (alap-render ↔ migrált render, `PARDES_DATUM=2026-10-08`) | **zöld** | 9 blokk N0; `kizart`: 12 sor, mind D7 (a T20/2 és T22/3 10 jelölt-sora + a blokk sorszáma 81 → 91); `kolofon` N0 a bővített D2-vel. D2 csere: 3 literál, 1-1 találat mindkét oldalon. |
+| (a) rések (aranyminta ↔ migrált render) | **zöld** | `kivonat` N0; `2b` D3 4, D4 60; `minosites` D4 122; `alatamasztas` D3 1, D4 30; `ertelmezes` D3 5, D5 6, D8 3 (M5/6, M7/6, M7/8); `miert_fontos` D8 16 (T46, T49, T61, T62, T68); `modszertan` D3 6 (ebből 2 apparátus-újraírás), D5 41. **ÁLLJ-sor: 0.** Soronként: `naplok/F11_M4_osztalyozas_ujra.tsv`. |
+| (b) HAMART-001 N0 | **zöld** | LF-módú `nulladiff.sh origin/main 2026-10-18`: eltér csak a két ISTENTISZT-001 lexikonfájl. Mind a hat cél (`lexikon`, `naplo`, `index`, `nyitott`, `study`, `naplok`) alap ↔ fej, LF-es worktree-kben: HAMART-001-et érintő eltérés 0. |
+| (c) visszaírás-számláló (7.4, (e)-vel) | **zöld** | 430 hozzáadott sor: áthelyezés 264, üres/címsor 131, jelölő 25, új kötőszöveg 7, (e) részegység-kivágás 3; **visszaírás 0, nem besorolt 0**. |
+| (d) nincs egység két rétegben | **zöld** | lefedettség: 0 hiba (97 forras bent, 114 nem-forras kint); n-gram: 7 közös a 68 új adatcellával, mind a D-minta szakkifejezése (`נִקְרָא...עַל (nikrá … al)`), prózai egyezés 0. |
+| (e) L1, DT2 | zöld | változatlanul (5. szakasz). |
+| (e) L2 | **nyitott — Á8 pontosítást kér** | 6 dátumos forrássor a kiadható nézetben; l. lent. |
+| (e) L5 | M7 (DT-F11h Á9) | várt nem-teljesülés. |
+| (f) E28 / E29 | **zöld** | ideiglenes listasorral: E28 0 találat (az Á7 után), E29 0. |
+
+**Az Á8 végrehajtása pontosítást kér.** A `SZINT-KEZDET`/`SZINT-VÉGE` pár blokkszintű (DT84 (1)), a hat dátumos sor pedig hat blokkban áll (a forrás 188–190., 215–220., 259., 367., 395–404. és 431. sora; együtt kb. 260 szó). A blokkok `belso`-ba tétele ezeket egészében levenné a kiadható lapról, köztük:
+- a 367. sor megbízhatósági figyelmeztetését („⚠ ELTÉRÉS: a táblázat „15 emberi-invokációs eset” száma …”), amely a DT84 (10) (ii) szerint apparátus-szöveg;
+- a 7.N 5. tartalmi nyitott kérdését (431., UBS-besorolás);
+- két értelmező bekezdést (Lexikai kiegészítés, Remez-szint; Róm 10:12) és a D-minta scan-bekezdését;
+- a 3.U alcímét (259.).
+
+Két végrehajtási mód:
+- **(a) csak a dátum kerül `belso` szintre:** a dátum-részletek (pl. „(2026.09.22)”, „2026.09.06-i … 2026.09.09-i”, „2026.09.08-i”) inline `【NAPLO: …】` jelölőbe kerülnek (karakterszinten vágódik ki, SEMA 3.10.3), a mondatok a lapon maradnak; a forras egységek bájtjai csak a dátum helyén változnak, a leképezési táblában rögzítve. **Javasolt.**
+- **(b) a hat blokk egészében `belso`:** `SZINT-KEZDET: belso` pár a hat blokk körül; a fenti tartalom eltűnik a lapról (D3 jellegű, de a 367. sor a DT84 (10) (ii)-vel ütközik).
+
+**Eredmény: az M4 (a)–(d), (f) zöld, az (e) L2 az Á8 pontosításáig nyitott, az L5 az M7-é.** Az M5 nem indult; push és PR nem történt; merge csak zöld M4 után (DT-F11f).
