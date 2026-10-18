@@ -42,18 +42,19 @@ from kozos import (
 # diff-alapu, E16 fajl-letezes, E4 motivum-szintu audit-allapot).
 # E20 (F37): a hianyzo kotelezo szakasz a tanulmany egeszere vonatkozik, nem
 # egy sorra -- a modositott tanulmanyfajlon mindig piros (F37 T3 "Futasi mod").
-FAJLSZINTU_SZABALYOK = {'E4', 'E5', 'E6', 'E7', 'E16', 'E19', 'E20', 'E25', 'E26', 'E27'}
+FAJLSZINTU_SZABALYOK = {'E4', 'E5', 'E6', 'E7', 'E16', 'E19', 'E20', 'E25', 'E26', 'E27',
+                        'E28', 'E29'}
 
 # Adattablan futo szabalyok: --teljes modban a futtat.py a ['__TELJES__']
 # jelzot adja nekik (az md-fajlok listaja helyett), kulonben nem futnanak.
-HATOKOR_SZABALYOK = {'E3', 'E19', 'E25'}
+HATOKOR_SZABALYOK = {'E3', 'E19', 'E25', 'E28', 'E29'}
 
 SZINT = {
     'E2': 'HIBA', 'E3': 'HIBA', 'E4': 'HIBA', 'E5': 'HIBA', 'E6': 'HIBA',
     'E7': 'HIBA', 'E8': 'HIBA', 'E9': 'HIBA', 'E10': 'HIBA', 'E11': 'HIBA',
     'E12': 'FIGYELMEZTETES', 'E13': 'FIGYELMEZTETES', 'E14': 'FIGYELMEZTETES',
     'E15': 'FIGYELMEZTETES', 'E16': 'HIBA', 'E19': 'HIBA', 'E20': 'HIBA',
-    'E25': 'FIGYELMEZTETES', 'E26': 'HIBA', 'E27': 'HIBA',
+    'E25': 'FIGYELMEZTETES', 'E26': 'HIBA', 'E27': 'HIBA', 'E28': 'HIBA', 'E29': 'HIBA',
 }
 # F37 (E21 -> E13): tanulmanyfajlon az E13 HIBA (a fuggveny talalatonkent
 # allitja be; a futtat.py a talalat sajat szintjet veszi alapul).
@@ -1795,3 +1796,233 @@ def e27_hivatkozas(base_ref=None, head_ref=None, esemeny=''):
                           'az `olvas` mezőben hivatkozott fájl nem létezik: `%s`, és egyetlen nem lezárt feladat `ir` mezője sem fedi.' % ut,
                           kozvetlen=True)
     return talalatok
+
+
+# ---------------------------------------------------------------------------
+# A migrált nézetek engedélyezőlistája (E28, E29) -- F116 (FELADATOK #116),
+# naplok/MOTIVUM_FORRAS_ci_terv.md 1. és 2. szakasz
+# ---------------------------------------------------------------------------
+# A lista kezdetben üres (D2): a #11 veszi fel a sort ugyanabban a commitban,
+# amelyben a migrált lap először a forrásból generálódik. Oszlopok: id, fajl
+# (a generált nézet repó-relatív útja), cel (a general.py célja), melyseg
+# (apparatus | olvasoi), feladat, datum. Olvasás: kozos.dict_sorok_sorszammal
+# (split('\t')), a `csv` modul tilos (CLAUDE.md "TSV-olvasás").
+
+E28_LISTA = 'eszkozok/ellenorzes/e28_migralt_nezetek.tsv'
+E28_MELYSEGEK = ('apparatus', 'olvasoi')
+
+
+def _migralt_lista():
+    """[(fajl_sorszam, {oszlop: ertek}), ...] -- a lista sorai (a fejlécen
+    kívül); hiányzó lista-fájl esetén üres."""
+    ut = os.path.join(ROOT, *E28_LISTA.split('/'))
+    if not os.path.exists(ut):
+        return []
+    return [(n, d) for n, d in dict_sorok_sorszammal(ut) if d.get('fajl', '').strip()]
+
+
+def _lf(szoveg):
+    return szoveg.replace('\r\n', '\n')
+
+
+# --------------------------------------------------------------------------
+# E28 -- a generált nézet bájtra egyezik az adat- és forrásrétegből újragenerálttal
+# --------------------------------------------------------------------------
+
+# A meglévő három marker-blokkos cél (general.py ELESITHETO: naplo, index, nyitott).
+E28_MARKER_CELOK = (
+    ('naplo', 'motivumlog/PaRDeS_motivumok.md'),
+    ('index', 'Lezart_tematikus_tanulmanyok_index.md'),
+    ('nyitott', 'NYITOTT_FELADATOK.md'),
+)
+# A szabály akkor fut PR-en, ha a változott fájlok között van ezek valamelyike
+# (fnmatch; a `*` a `/`-t is fedi), vagy a hatókör valamely generált fájlja.
+E28_INDITO_MINTAK = (
+    'adat/*.tsv', 'motivumok/*.md', 'eszkozok/*general*.py',
+    'sablonok/9_*.md', E28_LISTA,
+)
+# A futtat.py jelentése ezeket az egy-soros megjegyzéseket írja az E28 alá
+# (pl. "E28: 0 migrált nézet"); minden futás elején újra épül.
+E28_JEGYZETEK = []
+
+_E28_TS = re.compile(r'GENERÁLT[^\n]*?\bts=(\d{4}-\d{2}-\d{2})')
+
+
+def _e28_indul(fajlok):
+    if '__TELJES__' in fajlok:
+        return True
+    import fnmatch
+    hatokor = {f for _, f in E28_MARKER_CELOK}
+    hatokor.update(d['fajl'].strip() for _, d in _migralt_lista())
+    for f in fajlok:
+        f = f.replace('\\', '/')
+        if f in hatokor or any(fnmatch.fnmatch(f, m) for m in E28_INDITO_MINTAK):
+            return True
+    return False
+
+
+def _e28_commitolt(relut):
+    """A fájl commitolt (HEAD-beli) tartalma, LF-re normalizálva -- az
+    összevetés alapja a blob, nem a munkafa-fájl (core.autocrlf, CI-terv 1.
+    szakasz 3. pont). Ha a git nem érhető el vagy a fájl nincs a HEAD-ben
+    (helyi, nem commitolt futás), a munkafa-fájl a tartalék; None, ha az sincs."""
+    try:
+        nyers = subprocess.run(['git', 'show', 'HEAD:' + relut], cwd=ROOT,
+                               capture_output=True, check=True).stdout
+    except (subprocess.CalledProcessError, OSError):
+        try:
+            with open(os.path.join(ROOT, *relut.split('/')), 'rb') as f:
+                nyers = f.read()
+        except OSError:
+            return None
+    return _lf(nyers.decode('utf-8'))
+
+
+def _e28_general_futtat(cel, azonosito, datum, kimenet):
+    """A general.py alfolyamatként, a repón kívüli `kimenet` könyvtárba;
+    (kilépési kód, stderr). A generátor logikája nem duplikálódik."""
+    env = dict(os.environ, PARDES_DATUM=datum, PYTHONIOENCODING='utf-8')
+    p = subprocess.run(
+        [sys.executable, os.path.join(ROOT, 'eszkozok', 'general.py'),
+         '--cel', cel, '--id', azonosito, '--kimenet', kimenet],
+        cwd=ROOT, env=env, capture_output=True)
+    return p.returncode, p.stderr.decode('utf-8', errors='replace')
+
+
+def _e28_generalt_blokkok(cel):
+    """[(cel_kulcs, blokk_szoveg)] a general.py saját függvényeivel (a
+    `--ellenoriz` útja: blokk_lista_eles); a marker-pár keresése és a törzs
+    levágása is a general.py-é (marker_par_keres, blokk_torzs)."""
+    eszkozok = os.path.join(ROOT, 'eszkozok')
+    if eszkozok not in sys.path:
+        sys.path.insert(0, eszkozok)
+    import general as G
+    _, motivumok = G.tsv_beolvas(G.MOTIVUMOK_TSV)
+    _, elofordulasok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
+    blokkok, _hianyzo = G.blokk_lista_eles(
+        cel, motivumok, elofordulasok, G.konyv_sorrend_betolt(), set())
+    return blokkok
+
+
+def _e28_marker_torzs(szoveg, cel_kulcs):
+    """(torzs, torzs_kezdo_sor_szama) vagy None, ha a marker-pár nincs meg."""
+    eszkozok = os.path.join(ROOT, 'eszkozok')
+    if eszkozok not in sys.path:
+        sys.path.insert(0, eszkozok)
+    import general as G
+    talalat = G.marker_par_keres(szoveg, cel_kulcs)
+    if not talalat:
+        return None
+    _, tk, tv, _ = talalat
+    return szoveg[tk:tv], szoveg[:tk].count('\n') + 1
+
+
+def _e28_elso_elteres(a_szoveg, b_szoveg):
+    """(index, a_sor, b_sor) az első eltérő sorra (0-alapú index), None ha egyezik."""
+    a, b = a_szoveg.split('\n'), b_szoveg.split('\n')
+    for i in range(max(len(a), len(b))):
+        sa = a[i] if i < len(a) else None
+        sb = b[i] if i < len(b) else None
+        if sa != sb:
+            return i, sa, sb
+    return None
+
+
+def _e28_sor_szoveg(sor):
+    return '(nincs sor)' if sor is None else repr(sor[:160])
+
+
+def e28_generalt_nezet_egyezes(fajlok):
+    """E28: a generált nézet bájtra egyezik azzal, amit a generátor a commit
+    adat- és forrásrétegéből előállít (CI-terv 1. szakasz). Két ág: (1) a három
+    marker-blokkos cél törzs-összevetése (general.py függvényein át);
+    (2) a migrált nézetek (engedélyezőlista) újragenerálása a repón kívüli
+    ideiglenes könyvtárba, PARDES_DATUM = a commitolt fájl első GENERÁLT
+    jelölőjének ts= dátuma, majd összevetés a commitolt blobbal (LF-normalizálva).
+    Elfogadott eltérés nincs; fájlszintű HIBA."""
+    import shutil
+    import tempfile
+    del E28_JEGYZETEK[:]
+    talalatok = []
+    if not _e28_indul(fajlok):
+        E28_JEGYZETEK.append('E28: nem futott (nincs érintett fájl a változások között)')
+        return talalatok
+
+    def hiba(relut, sor, reszlet):
+        talalatok.append(Talalat('E28', SZINT['E28'], relut, sor, reszlet))
+
+    # (1) marker-blokkok
+    for cel, relut in E28_MARKER_CELOK:
+        szoveg = _e28_commitolt(relut)
+        if szoveg is None:
+            hiba(relut, 0, 'a marker-blokkos cél fájlja nem található')
+            continue
+        try:
+            blokkok = _e28_generalt_blokkok(cel)
+        except Exception as e:   # a generátor hibája a CI-ban nem lehet csendes
+            hiba(relut, 0, 'a general.py --cel %s nem futott le: %s: %s'
+                 % (cel, type(e).__name__, e))
+            continue
+        javit = 'python eszkozok/general.py --cel %s --ir' % cel
+        for cel_kulcs, blk in blokkok:
+            talalat = _e28_marker_torzs(szoveg, cel_kulcs)
+            if talalat is None:
+                hiba(relut, 0, '%s: a marker-pár hiányzik. Javítás: %s' % (cel_kulcs, javit))
+                continue
+            torzs, kezdo = talalat
+            eszkozok = os.path.join(ROOT, 'eszkozok')
+            if eszkozok not in sys.path:
+                sys.path.insert(0, eszkozok)
+            import general as G
+            generalt = _lf(G.blokk_torzs(blk, cel_kulcs))
+            el = _e28_elso_elteres(torzs, generalt)
+            if el:
+                i, sa, sb = el
+                hiba(relut, kezdo + i,
+                     '%s: a commitolt blokk eltér az újragenerálttól (törzs %d. sora). '
+                     'commitolt: %s | generált: %s. Javítás: %s'
+                     % (cel_kulcs, i + 1, _e28_sor_szoveg(sa), _e28_sor_szoveg(sb), javit))
+
+    # (2) migrált nézetek
+    lista = _migralt_lista()
+    if not lista:
+        E28_JEGYZETEK.append('E28: 0 migrált nézet')
+    else:
+        E28_JEGYZETEK.append('E28: %d migrált nézet' % len(lista))
+    for sorszam, d in lista:
+        relut = d['fajl'].strip()
+        cel, azonosito = d.get('cel', '').strip(), d.get('id', '').strip()
+        commitolt = _e28_commitolt(relut)
+        if commitolt is None:
+            hiba(relut, 0, 'a lista %d. sora: a migrált nézet fájlja nem található' % sorszam)
+            continue
+        m = _E28_TS.search(commitolt)
+        if not m:
+            hiba(relut, 0, 'nincs GENERÁLT jelölő ts= dátummal: a PARDES_DATUM nem állapítható meg '
+                 '(a nézetet a generátor állítja elő, kézi fájl nem kerülhet a listára)')
+            continue
+        datum = m.group(1)
+        javit = 'python eszkozok/general.py --cel %s --id %s --ir' % (cel, azonosito)
+        tmp = tempfile.mkdtemp(prefix='e28_')
+        try:
+            kod, hibakimenet = _e28_general_futtat(cel, azonosito, datum, tmp)
+            ut = os.path.join(tmp, *relut.split('/'))
+            if kod != 0 or not os.path.exists(ut):
+                hiba(relut, 0, 'a generátor nem állította elő a nézetet (kilépési kód %s): %s'
+                     % (kod, hibakimenet.strip()[-200:]))
+                continue
+            with open(ut, 'rb') as f:
+                generalt = _lf(f.read().decode('utf-8'))
+        finally:
+            shutil.rmtree(tmp, ignore_errors=True)
+        el = _e28_elso_elteres(commitolt, generalt)
+        if el:
+            i, sa, sb = el
+            hiba(relut, i + 1,
+                 'a commitolt nézet eltér az újragenerálttól (PARDES_DATUM=%s). '
+                 'commitolt: %s | generált: %s. Javítás: %s'
+                 % (datum, _e28_sor_szoveg(sa), _e28_sor_szoveg(sb), javit))
+    return talalatok
+
+
+SZABALYOK_FUGGVENYEI['E28'] = e28_generalt_nezet_egyezes
