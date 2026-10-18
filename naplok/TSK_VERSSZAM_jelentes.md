@@ -16,14 +16,18 @@ Az öt fogyasztó (`lexikon_general.tsk_index`, `lekerdez.cmd_tsk`, `nem_vizsgal
 
 | Mérés | Érték |
 |---|---|
-| A. fogyasztói úton olvasott ÓSZ Károli-kulcs | 21 234; KJV-forrása nem a megfeleltetés szerinti: **0** |
+| A. fogyasztói úton olvasott ÓSZ Károli-kulcs | 21 306; KJV-forrása nem a megfeleltetés szerinti: **0** |
 | B. `elofordulasok.tsv` ÓSZ-versei (megfeleltetéssel) | 224 vers |
 | B. minden Votes | rossz versről **0**, elmarad **0** |
 | B. Votes ≥ 15 | rossz versről **0**, elmarad **0** |
-| nincs-pár forrás-KJV-kulcs (ÓSZ, a sor kimarad) | 345 kulcs, 4 976 sor |
-| nincs-pár cél-KJV-vers (ÓSZ, a sor kimarad) | 359 vers, 4 378 előfordulás |
+| nincs-pár forrás-KJV-kulcs (ÓSZ, a sor kimarad) | 275 kulcs, 4 245 sor |
+| nincs-pár cél-KJV-vers (ÓSZ, a sor kimarad) | 286 vers, 3 475 előfordulás |
 
-**Javítás (F114.10, a független ellenőri jelentés alapján, `naplok/ELLENOR_TSK_VERSSZAM.md`):** az előző változat hamisan állította, hogy a nincs-pár kulcsok (pl. 1Sám 17:12–31) olyan KJV-versek, amelyeknek a Károliban nincs azonos tartalmú párja. A valós ok más: a `Karoli_versmegfeleltetes.tsv` ezekben a sorokban az `igehely_kjv` mezőt **üresen** hagyja (LXX-hiány, `MT|szamlalas`; 161 üres KJV-sor: MT|szamlalas 86, MT|lxx_os_etalon_f91 66, KEZI|kezi_identitas_javitas 8, KJV|lxx_os_etalon_f91 1), a KJV-vers és a Károli-vers viszont létezik és azonos. A modul ezt „nincs pár”-nak vette, ami regresszió a main-hez képest. A 0/0 mérés (E3) a megfeleltetésből számolja a „helyes” halmazt, tehát körkörös: ezt a hibát nem foghatta meg. A nem körkörös mérés a felmérő F. része és `naplok/F114_elveszett_sorok.tsv`; a döntés DT-F114d.
+**Javítás (F114.10–F114.17, a független ellenőri jelentések alapján, `naplok/ELLENOR_TSK_VERSSZAM.md`):** az első változat hamisan állította, hogy a nincs-pár kulcsok olyan KJV-versek, amelyeknek a Károliban nincs azonos tartalmú párja. A valós ok oszloponként más. A táblázat számai a DT-F114d és az 1Kir 22:46–49 kivétel utáni állapotot mutatják; a korábbi (345/4 976, 359/4 378, 21 234) számok felülírva.
+
+A `Karoli_versmegfeleltetes.tsv` 161 üres `igehely_kjv` sorából **csak az `MT|szamlalas` 86 sorra** igaz, hogy a KJV-vers létezik és azonos számú (LXX-hiány); ezekre a `tsk_kulcs` az `igehely_mt`-t veszi KJV-kulcsnak (DT-F114d (b)), **az 1Kir 22:46–49 kivételével**, ahol a Károli-tartalom a KJV 22:45–48 (scope=manual „nincs pár” kivétel). A többi üres sor nem azonos számú: a 66 `MT|lxx_os_etalon_f91` sor zsoltárfelirat (az MT-szám nem KJV-szám), a `KJV|lxx_os_etalon_f91` 1 sor (Zsolt 13:1) felirat; a `KEZI|kezi_identitas_javitas` 8 sor (Jób 39:34–38, Préd 9:21–23) pedig **táblahiba**: a KJV-pár létezik (Jób 40:1–5, Préd 10:1–3), a tábla nem rögzíti.
+
+A megmaradó „nincs pár” veszteség oka (felmérő F. rész, `naplok/F114_elveszett_sorok.tsv`, `ok` oszlop, a KJV-kulcs szerint): `tabla_lyuk_fejezet` (a Károli-fejezetnek nincs sora a táblában; 235 forráskulcs / 3 653 sor, 243 célvers / 2 360 előfordulás), `tablahiba_kjv_par_letezik` (12 forráskulcs / 198 sor: Dán 4:1–3, Jób 40:1, 2, 4, 5, Préd 10:1–3, Préd 2:26, Zsolt 13:6; 13 célvers / 188 előfordulás), `kivetel_nincs_par_1Kir_22_46_49` (3 forráskulcs / 34 sor, 4 célvers / 27 előfordulás). Összesen forrás 250 kulcs / 3 885 sor, cél 260 vers / 2 575 előfordulás. A régi logikához képest elveszett pár 30 079, újonnan elért 25 062.
 
 A nincs-pár kulcsok tételes listája: `python eszkozok/tsk_versszam_felmeres.py` E. rész (stdout-on 80 tételig), valamint `naplok/F114_elveszett_sorok.tsv` (a régi logika által elért kulcsok).
 
@@ -62,7 +66,7 @@ Az `ISMERT_HIBA_TSK_VERSSZAM` / `ismert_hiba_tsk_versszam` helyett `TSK_KULCS_JA
 Újrafuttatott próba-osztályozás (`--proba`, kilépési kód 0): `tsk_kulcs_javitas=43`, `ismeretlen=0`. Napló: `naplok/F114_proba_diff.tsv`, `naplok/F114_proba_ismeretlen.tsv` (az utóbbi most csak a korábban elfogadott `felhasznalo_elfogadva` sorokat tartalmazza).
 `proveniencia: scope=%TEMP%/f114p vs lexikon | forras=eszkozok/render_diff_osztalyoz.py --proba | ts=2026-10-18`
 
-## F114.14 — DT-F114d (b): MT-tartalék csak az `MT|szamlalas` sorokra (Felhasználó, 2026-10-18)
+## F114.14 — DT-F114d (b): MT-tartalék csak az `MT|szamlalas` sorokra (Felhasználó, 2026-10-18) *(az itt idézett mérési számokat az E3 fenti, frissebb táblázata és az F114.17 felülírja)*
 
 A `tsk_kulcs` az `osztaly=MT`, `forras=szamlalas`, üres `igehely_kjv` sorokra (86 sor) az `igehely_mt`-t veszi KJV-kulcsnak. Más üres-KJV sor és a táblában sor nélküli Károli-vers (`nincs_sor`) „nincs pár” marad (indok: a Károli 1908-ban a Hós 13 15, a Hós 14 10, az Én 6 10 versből áll, a KJV-ben 16, 9, 13; a számegyezés hibás párt adna). Teszt: `teszt_tsk_kulcs.py` 12 teszt, OK (pozitív: 1Sám 17:12, Jer 33:15; negatív: Hós 14:2, Zsolt 18:1, Jób 39:34, Préd 9:21, Zsolt 13:1).
 Frissített mérés (felmérő E. és F. rész):
@@ -70,3 +74,7 @@ Frissített mérés (felmérő E. és F. rész):
 - F (nem körkörös, a main régi logikájához képest, ÓSZ): régen elért pár 232 697, most 227 736; elveszett pár 30 027, újonnan elért 25 066. Elveszett forrássor 3 851 sor / 247 kulcs: `nincs_sor` 3 653 / 235, `KEZI|kezi` 169 / 10, `KEZI|kezi_tobbforrasu_osszevonas` 26 / 1, `KJV|lxx_os_etalon_f91` 3 / 1 (az utóbbi három valódi eltolódás). Elveszett célelőfordulás 2 548 / 256 vers: `nincs_sor` 2 360 / 243, `KEZI|kezi` 147 / 11, `KEZI|kezi_tobbforrasu_osszevonas` 33 / 1, `KJV|lxx_os_etalon_f91` 8 / 1. Tételes: `naplok/F114_elveszett_sorok.tsv` (506 sor); a `nincs_sor` fejezetek az N-F54a bővítésében.
 - `lekerdez.py tsk "1Sám 17:12"`: 16 sor; `tsk "Jer 23:5"`: eléri a Jer 33,14 és 33,16 célokat.
 `proveniencia: scope=TSK ÓSZ-sorai | forras=TSK_kereszthivatkozasok.tsv+Karoli_1908.tsv+Karoli_versmegfeleltetes.tsv (tsk_kulcs) | n=232697 | ts=2026-10-18`
+
+## F114.17 — második javító menet
+
+`tsk_kulcs.NINCS_PAR_KIVETEL` (scope=manual): 1Kir 22:46–49 „nincs pár”; negatív teszt `test_1kir_22_kivetel_nincs_par`. Az `F114_elveszett_sorok.tsv` `ok` oszlopa a KJV-kulcs szerint címkéz (nem a kulcsot Károli-kulcsként kikeresve). Az ismert táblahibák gyűjtése: N-F54a bővítése.
