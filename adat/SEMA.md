@@ -1268,19 +1268,20 @@ találatból nem lehet közvetlenül study-sor (CLAUDE.md 2. szabály).
 | `bdb_id` | az illesztett BDB-szócikk (`BDB<n>`, a `BDB.lexicon` kulcsa); **üres**, ha a Strong illesztése `reszleges` / `sikertelen` / `csonk` (DT-F107e (a): explicit hiány, nem kitöltés) |
 | `sorszam` | a bekezdés sorszáma a Strong-elemben (1-től; az 1. a cím) |
 | `alszocikk` | a szócikken belüli jelöletlen alcímszó (`<p style="sub1">`, amely nem új BDB-szócikk) sorszáma; `0`: a fő címszó |
-| `resz` | a római számos fő tagolás (`I`, `II` …; aranyminta 2.28 `resz`, DT174); a szócikk-eleji római szám **nem** `resz`, hanem homonimaszám (`jel`) |
+| `szakasz` | a homonima-szakasz római száma (`I`, `II` …; aranyminta 2.28 `szakasz`): a szócikk-eleji római fej, és ha a szócikk első római feje `I.`, és előtte nem volt szám-, betű- vagy törzsfej, a további római fejek is (DT-F107g (a) (2), H6440); üres, ha nincs |
+| `resz` | a római számos fő tagolás (`I`, `II` …; aranyminta 2.28 `resz`, DT174): a szócikkön belüli római fej, ha nem homonima-szakasz (l. `szakasz`; pl. H3068, H8478) |
 | `utvonal` | `<törzs>[.<nagybetű>]/<szám>/<betű>[/<zárójeles>]`, a hiányzó szint `-` (pl. `-/1/-`, `Qal/2/a`, `Hiph'il.A/1/a`); a törzsnév a szeletelő alakjában (`Pi'el`); különleges érték: `cim`, `fej` (a szócikk első bekezdése, és a fej utáni, jelölő nélküli bekezdés). Az alap a 2.28–2.29 formátuma, a #102 két bővítésével (nagybetűs csoport, zárójeles/görög szint). **Nincs kanonikus kulcsként befagyasztva** (DT190 🟡) |
 | `jelolo` | `cim` \| `fej` \| `point` (félkövér szerkezeti fejjel nyíló bekezdés) \| `bekezdes` (fej nélküli bekezdés a szócikk belsejében: az útvonal az előzőé) \| `alcimszo` \| `section` / `remarks` (a lexikon osztálya; elsőbbséget kap a `point` előtt, az útvonal és a `jel` ilyenkor is a fejet írja le) |
 | `jel` | a bekezdés elején álló félkövér fej a forrás alakjában (`1`, `2. a.`, `Hiph`il A.`, `II.`); üres, ha nincs |
 | `gyakorisag` | a bekezdés `<sub>` számai vesszővel, a forrás sorrendjében (a gyakoriságszám; a `_convert_bdb.py` ezt `_N` alakban a szövegbe írta) |
 | `szoveg` | a bekezdés sima szövege a `jel` után, a `_convert_bdb.py` tisztításával, egy eltéréssel: a `<sub>` kimarad. **A nyers JSON szövege, javítás nélkül** (a `bdb_forras_javitas.tsv` javításai NEM alkalmazódnak; l. lent) |
 | `illesztes` | a Strong illesztési kategóriája (a `bont.py` docstringje): `egyezik` (az első bekezdés szócikk-kezdet, és minden szegmens szólefedése mindkét irányban ≥ 0,90) \| `szocikk_resze` (a JSON-szegmens ≥ 0,90-re a szócikkben, de a szócikk más Strongok részét is hordozza; `bdb_id` kitöltve) \| `reszleges` \| `sikertelen` \| `csonk` (a JSON-elem csak a cím folytatása) |
-| `forras` | `DictBDB.json:<JSON-kulcs>#<blokkindex>` |
+| `forras` | `DictBDB.json:<JSON-kulcs>#<blokkindex>`; a blokk a bontó blokkja: a bekezdésen belüli (és a bekezdés végi) valódi félkövér fej új blokkot nyit (DT-F107g (a) (3)), ezért egy JSON-bekezdés több blokk is lehet |
 | `forras_hash` | a bekezdés nyers HTML-jének SHA-256-ja, 16 jegy (az elavulás jele) |
 | `proveniencia` | `scope=<Strong> \| forras=bdb_jelolt/bont.py (fejléc) \| ts=<nap>`; a bemenetek és a kód hash-e a `# forras:` fejlécsorban (a 2.29 mintája) |
 
 Kulcs: `strong` + `sorszam` (egyedi; a `strong` + `bdb_id` + `utvonal` a jelöletlen bekezdések miatt nem egyedi — a DT190 kulcsához ez döntendő).
-Állapot (F107.15, 2026-10-18): 36 491 sor; illesztés: `egyezik` 7 920, `szocikk_resze` 26, `reszleges` 94, `sikertelen` 15, `csonk` 35 Strong
+Állapot (F107.22, 2026-10-18): 36 621 sor; illesztés: `egyezik` 7 916, `szocikk_resze` 30, `reszleges` 94, `sikertelen` 15, `csonk` 35 Strong. A fej-felismerés szabályai (DT-F107g (a)): a fejet közvetlenül „)”, „,”, „;”, „]” követi → hivatkozás, nem fej; a homonima-szakasz (`szakasz`); a bekezdésen belüli fej (előtte „.”, „—”, „:”, „;” vagy „,”, utána nem „)”, „,”, „;”, „.”, „]”, törzsnév után nem szám; a bekezdés végén csak ha a következő blokk fejjel nyit); a szóköz nélküli kombinált fej („1.a.”) két token (`naplok/F107_BDB_JELOLT_SZOVEG_naplo.md` 2.3, 4.5).
 (`naplok/F107_BDB_JELOLT_SZOVEG_naplo.md` 2.3).
 
 **A `szoveg` és a javítótábla viszonya — JAVASLAT, nem döntés:** a tábla a nyers szöveget hordozza, a javítás külön táblában áll
@@ -1301,18 +1302,17 @@ a héber alakok NFD-ben. Olvasás `split('\t')`.
 | Oszlop | Jelentés |
 |---|---|
 | `strong`, `sorszam`, `bdb_id` | a 2.30 sora (kulcs) és illesztett szócikke |
-| `hiba` | a hibaosztály: `pe_mem` |
-| `szo_sorszam` | a héber szó sorszáma a `szoveg` mezőben (1-től, NFD után a `[֐-׿]+` szavak között) |
-| `elofordulas` | a dagesses mem sorszáma a szón belül (1-től) |
-| `forras_alak` | a szó a JSON-ban (NFD) |
-| `javitott_alak` | a javított szó (NFD); csak `javitva` sorban |
-| `allapot` | `javitva` (a pe-s alak — egy vagy a szó minden dagesses memjét cserélve — az illesztett szócikk héber szavai között áll, a mem-es nem) \| `valodi_mem` (a mem-es alak áll a szócikkben: nem hiba) \| `jelolt_marad` (egyik sem igazolt, vagy a sornak nincs `bdb_id`-je: nincs javítás) |
+| `hiba` | a hibaosztály: `pe_mem` (generált) \| `jelolo_hianyzik` (a szerkezeti jelölő a nyers forrásban hiányzik: pl. a „Qal” sima szöveg) \| `hamis_jelolo` (a nyers forrás fejében téves elem áll: pl. „Niph`al 6.”, „2. g.”) |
+| `szo_sorszam` | `pe_mem`: a héber szó sorszáma a `szoveg` mezőben (1-től, NFD után a `[\u0590-\u05ff]+` szavak között); kézi sorban üres |
+| `elofordulas` | `pe_mem`: a dagesses mem sorszáma a szón belül (1-től); kézi sorban üres |
+| `forras_alak` | `pe_mem`: a szó a JSON-ban (NFD); kézi sorban a nyers JSON rövid részlete |
+| `javitott_alak` | `pe_mem`: a javított szó (NFD), csak `javitva` sorban; kézi sorban a várt szerkezet (útvonal, pl. `Qal/1`) |
+| `allapot` | `javitva` (a pe-s alak — egy vagy a szó minden dagesses memjét cserélve — az illesztett szócikk héber szavai között áll, a mem-es nem) \| `valodi_mem` (a mem-es alak áll a szócikkben: nem hiba) \| `jelolt_marad` (egyik sem igazolt, vagy a sornak nincs `bdb_id`-je: nincs javítás) \| `kezi` (DT-F107g (b): kézi sor egy szerkezeti forráshibáról, amely a `DictBDB.json`-ban ÉS a `BDB.lexicon`-ban is igazolt; a sor a forrás-hibát rögzíti, a táblát nem írja át) |
 | `indok` | a döntés oka, magyarul |
-| `proveniencia` | `scope=<Strong> \| forras=bdb_jelolt/forras_javit.py (fejléc) \| ts=<nap>` |
+| `proveniencia` | `pe_mem`: `scope=<Strong> \| forras=bdb_jelolt/forras_javit.py (fejléc) \| ts=<nap>`; kézi sor: `manual` (a forrás és az indok az `indok` mezőben; a kézi tételek a `forras_javit.py` `KEZI` listájában, a `sorszam` horgony szerint keresve) |
 
-Összevetés: NFD, kantilláció (U+0591–U+05AF), meteg, paszek, szof pászuk és U+200E nélkül, U+05BA = U+05B9. Állapot (F107.16, 2026-10-18):
-6 781 sor; `javitva` 3 823 (1 428 Strong), `valodi_mem` 2 402, `jelolt_marad` 556 (ebből 112 `bdb_id` nélküli sorban). A kész
-fordítások érintettsége: N-F107a.
+Összevetés: NFD, kantilláció (U+0591–U+05AF), meteg, paszek, szof pászuk és U+200E nélkül, U+05BA = U+05B9. Állapot (F107.23, 2026-10-18):
+6 788 sor: `pe_mem` 6 781 (`javitva` 3 823 (1 428 Strong), `valodi_mem` 2 402, `jelolt_marad` 556, ebből 112 `bdb_id` nélküli sorban) + `kezi` 7 (F107.23). A kész fordítások érintettsége: N-F107a.
 
 ---
 
