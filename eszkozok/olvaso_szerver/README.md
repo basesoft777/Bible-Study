@@ -1,4 +1,4 @@
-# Olvasói szerver (#76 OLVASOI_KONKORDANCIA, M2)
+# Olvasói szerver (#76 OLVASOI_KONKORDANCIA, M2–M3)
 
 Szerveroldali Flask-alkalmazás, amely a `pardes.db`-ből (csak olvasásra) állítja elő a Károli-bibliaszöveg lapjait, három váltható nézettel. Terv: `naplok/OLVASOI_KONKORDANCIA_M0.md`; zárónapló: ugyanott 4.4, és `naplok/OLVASOI_KONKORDANCIA_zaras.md`.
 
@@ -10,6 +10,7 @@ Szerveroldali Flask-alkalmazás, amely a `pardes.db`-ből (csak olvasásra) áll
 | `oldalak.py` | a lapelőállítás (HTML-szöveg), **nem függ a Flasktól**; a statikus export erre épül |
 | `blokkok.py` | a blokk-regiszter (46 azonosító: az M2 40-e a pilot 39 mért adatblokkjára + az M2b 6 új blokkja a pilot kirajzolt készletéhez), jelleg-címke, forrás- és licencsor |
 | `lekerdezesek.py` | az összes SQL, paraméterezve (N-F76c) |
+| `kereses.py` | a keresés (M3): a bemenet értelmezése és normalizálása, a négy ág (Strong, magyar szó három móddal, magyar frázis, héber frázis), a héber előtag-toleráns illesztés, a kulcsos lapozás, a kiemelés; Flask és SQL nélkül |
 | `adatbazis.py` | csak olvasó kapcsolat, `set_authorizer` a kiadás szerint kizárt táblákra |
 | `hozzaferes.py` | hozzáférési szintek a `konfig/hozzaferes.toml`-ból |
 | `gyorsitotar.py` | korlátos LRU a kész lapokra |
@@ -26,13 +27,14 @@ Szerveroldali Flask-alkalmazás, amely a `pardes.db`-ből (csak olvasásra) áll
 | `allapot.py` | az indító és a lábléc állapota (#100): szinkron-döntés (`meta.epites_ts`), ág és commit (fájlolvasással, `git` nélkül), lábléc-figyelmeztetések; stdlib |
 | `teszt_indito.py` | az indító tesztjei (#100): szinkron-döntés, git-olvasás, lábléc, `indit.sh` ideiglenes adatbázisokkal |
 | `teszt_olvaso_szerver.py` | tesztek (unittest) |
+| `teszt_kereses.py` | a keresés tesztjei (M3): értelmezés, független lekérdezéssel összevetett találatok, vershatár, üres eredmény, lapozás, SQL-injekció, XSS, a fejléc mezője minden nézetben, kiadás (authorizer-napló), hozzáférési szint |
 | `teszt_arculat.py` | a token-fájl, a token-blokk és az `/arculat.css` tesztjei (#98 M1) |
 | `teszt_tervezo.py` | a tervező mód tesztjei (#98 M2): regiszter, regiszter-őr, szabálytérkép, értékszűrés, a végpont biztonsága kiadásonként, atomi írás, ETag, szinkron-kimenet, a szelektorok a valódi lapokon |
 | `teszt_pilot_aranymintaval.py` | a kirajzolt blokk-készlet összevetése a #60 pilot aranymintájával (írásjeles szöveg, számlálók, szócsempék, „Ebben a versben”, Nave, blokk-címek); a döntések (DT148–i) tesztjei, az Interlineáris csempék |
 
 ## Útvonalak
 
-`/` kezdőlap · `/<könyv>` · `/<könyv>/<fejezet>` · `/<könyv>/<fejezet>/<vers>` · `/szo/<H0216|G1504>` · `/nezet/<olvaso|interlinearis|munkaasztal>?vissza=` · `/ugras?q=` · `/r/szo/<strong>`, `/r/vers/…` (töredékek) · `/arculat.css?v=<hash>` (a token-blokk) · `/statusz` · `/robots.txt`. A könyvkód ASCII-sített (`1Moz`). `.db`/`.tsv` nincs kiszolgálva.
+`/` kezdőlap · `/<könyv>` · `/<könyv>/<fejezet>` · `/<könyv>/<fejezet>/<vers>` · `/szo/<H0216|G1504>` · `/kereses?q=…` (`tipus`, `mod`) vagy `?strong=` · `?szo=` (`mod=pontos|szoto|szoto_strong`) · `?frazis=` · `?heber=` (`tol`: lapozás) · `/nezet/<olvaso|interlinearis|munkaasztal>?vissza=` · `/ugras?q=` · `/r/szo/<strong>`, `/r/vers/…` (töredékek) · `/arculat.css?v=<hash>` (a token-blokk) · `/statusz` · `/robots.txt`. A könyvkód ASCII-sített (`1Moz`). `.db`/`.tsv` nincs kiszolgálva.
 
 Csak a `belso` kiadásban (más kiadásban 404): `/tervezo/tervezo.js`, `/tervezo/tervezo.css`, `/tervezo/terkep.json` (a regiszter és a szabálytérkép), `/tervezo/kod` (egyszeri kód, csak helyi kérésre), `POST /tervezo/mentes`, `POST /tervezo/visszaallit`.
 
@@ -45,6 +47,16 @@ A `belso` kiadásban a fejlécben, a szintváltó mellett a **Tervező** kapcsol
 **A mentés feltételei:** csak `belso` kiadás; csak helyi kérés (a forrás 127.0.0.1/::1, nincs `X-Forwarded-For`/`Forwarded`/`X-Real-IP` fejléc, a `Host` és az `Origin` helyi); csak `POST`; egyszeri kód a `GET /tervezo/kod`-ról (`X-Tervezo-Kod` fejléc); csak a regiszterben valamely elemhez rendelt token, érvényes értékkel (szín: `#rgb`, `#rrggbb`, `rgb()`, `hsl()`; betűméret px 8–64, rem/em 0.5–4; térköz px 0–128, rem/em 0–8 (DT158); lekerekítés px 0–999; sorköz 1.0–2.4); a betűcsalád nem írható. Hiba: 403 (helyi kérés/kód), 400 (érték; a lemezes token-fájlban nem létező token is), 415 (nem JSON), 500 (a lemezes token-fájl nem érvényes, külön üzenettel); a fájl ilyenkor változatlan. A token létezését a mentés a lemezes fájl szerint vizsgálja, mert arra ír. A CSP nem lazul (`script-src 'self'`, `style-src 'self'`). Fordított proxy mögött a feltétel csak akkor tartja távol a távoli kérést, ha a proxy továbbító fejlécet ad (`X-Forwarded-For`/`Forwarded`/`X-Real-IP`) vagy a külső `Host`-ot továbbítja: így a Caddy alapbeállítása. Az nginx alapbeállítása (`proxy_pass http://127.0.0.1:8000`, `proxy_set_header` nélkül) egyiket sem teszi: a kérés loopbackről, továbbító fejléc nélkül és `Host: 127.0.0.1:8000`-rel érkezik, így egy távoli, `Origin`/`Sec-Fetch-Site` nélküli kérés (pl. `curl`) átmegy a feltételen (a `GET /tervezo/kod` kódot ad, a `POST /tervezo/mentes` ír). A `belso` kiadást ezért proxy mögé csak továbbító fejlécet adó konfigurációval szabad tenni; a kérdés nyitott (DT159, a proxy-választás: N-F76d; az ellenőri napló: `naplok/ELLENOR_TERVEZO_MOD.md`). több workerrel futtatva a mentés csak az egyik worker arculatát töltené újra, ezért a tervező mód az egy workeres fejlesztői vagy gunicorn-indításhoz való.
 
 **Regiszter-őr:** új CSS-osztály csak regisztrálva (`[[elem]]`) vagy indokkal kizárva (`[kizart]`) kerülhet a felületre: `python regiszter_or.py` (és a `teszt_tervezo.py`). Az őr a sablonok `class="…"` attribútumait, a `blokkok.py`/`oldalak.py` `class="…"`-literáljait és a kliens `classList.add/toggle/remove` literál-argumentumait olvassa; a nem olvasható alak (egyszeres idézőjeles vagy idézőjel nélküli `class=`, összefűzéssel le nem zárt attribútum, a Jinja-kifejezés nem literál ága, `className =`, nem literál `classList`-argumentum) hiba, nem marad ki némán. Nem olvassa a tervező saját panelének osztályait (`tz-…`, a `tervezo.css`-ből) és a csak a stíluslapban szereplő osztályokat. **Szinkron:** `python arculat_szinkron.py --kimenet /tmp/tokens.json --alap <a design system mostani tokens.json-ja>`.
+
+## Keresés (M3)
+
+A fejléc mezője (minden nézetben; Ctrl+K) és a `/kereses` lap. A `q` mező a típust a bemenetből ismeri fel: igehely → ugrás; Strong-szám (legfeljebb három: a versek, amelyekben mind előfordul); héber betű → héber frázis; egy magyar szó → szó; több → frázis (2–4 szó). Az állandó cím a típusos alak (`/kereses?szo=föld`).
+
+- **Magyar szó:** `pontos` (a szóalak, kis/nagybetű nélkül, a `szo_kis` szabálya); `szoto` — az alap (DT146/2): a pontos alak ∪ a szótári alak minden Károli-alakja (`szotari_kereso`, a kötőjeles alakok darabjaival); `szoto_strong` — a (c) mód: ehhez a találatok nem nyelvtani Strong-számaival párosított minden magyar szó. A lap kiírja, mit talált és hogyan (alakok, mezők, Strong-ág). Ismert korlát: N-F94f, N-F94d (a súgó jelzi).
+- **Frázis:** a `token_karoli` egymást követő tokenjei egy Károli-versen belül (DT146/3, M0 E4); a héber frázisnál a beírt szó 1–4 egymást követő token összefűzése (a TAHOT az előtagokat külön tartja).
+- **Lefedettség:** a magyar szó- és frázis-keresés a Károli–Strong szótokeneken fut; a 9 párosítatlan ÚSZ-könyvben (Mt, Mk, Luk, Ján, ApCsel, Róm, 1–2Kor, Jel) nincs szótoken, ott nem talál (a lap kiírja). A Strong-keresés ott is talál, kiemelés nélkül.
+- **Biztonság:** a bemenet csak a `kereses.ertelmez` normalizálásán át, paraméterként jut az SQL-be (az SQL a `lekerdezesek.py`-ban); a kimenet escape-elt; érvénytelen bemenet: 400, magyarázó üzenettel. A hozzáférési konfigban a `kereses.strong|szo|frazis|heber` azonosító szintet kaphat (zárt módban a lekérdezés nem fut); a (c) mód és a párosításos kiemelés a `vers.par` blokk láthatóságát követi.
+- **Lapozás:** kulcsos (`tol` = `vers.sorrend`), 50 vers oldalanként. Mért idők: `naplok/OLVASOI_KONKORDANCIA_M3.md`.
 
 ## Indítás egy kattintással (#100)
 

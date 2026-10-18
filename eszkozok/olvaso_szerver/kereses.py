@@ -169,7 +169,7 @@ def _rendez(igehelyek, sorrend):
     return sorted((sorrend[ig], ig) for ig in igehelyek if ig in sorrend)
 
 
-def strong_kereses(con, k, sorrend):
+def strong_kereses(con, k, sorrend, par_lathato=True):
     halmaz, db = None, 0
     alakok, ismeretlen = {}, []
     for s in k.szavak:
@@ -178,7 +178,7 @@ def strong_kereses(con, k, sorrend):
         ig_set = q.kereses_strong_versek(con, s)
         db += q.kereses_strong_db(con, s)
         halmaz = ig_set if halmaz is None else (halmaz & ig_set)
-        alakok[s] = q.kereses_strong_alakok(con, s)
+        alakok[s] = q.kereses_strong_alakok(con, s) if par_lathato else []          # a párosítás adata csak látható `vers.par` mellett
     t = Talalatok(_rendez(halmaz or set(), sorrend), elofordulas=db if len(k.szavak) == 1 else 0)
     t.info['strong_alakok'] = alakok
     if ismeretlen:
@@ -331,7 +331,7 @@ def keres(con, k, sorrend, par_lathato=True):
     """A teljes találathalmaz. `sorrend`: {igehely: sorrend} (`lekerdezesek.vers_sorrendek`, egyszer betöltve); `par_lathato`: a `vers.par`
     blokk (a Károli–Strong párosítás) látszik-e a kérés szintjén."""
     if k.tipus == 'strong':
-        return strong_kereses(con, k, sorrend)
+        return strong_kereses(con, k, sorrend, par_lathato)
     if k.tipus == 'szo':
         return szo_kereses(con, k, sorrend, strong_ag=par_lathato)
     if k.tipus == 'frazis':
