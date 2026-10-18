@@ -136,3 +136,35 @@ Két végrehajtási mód:
 - **(b) a hat blokk egészében `belso`:** `SZINT-KEZDET: belso` pár a hat blokk körül; a fenti tartalom eltűnik a lapról (D3 jellegű, de a 367. sor a DT84 (10) (ii)-vel ütközik).
 
 **Eredmény: az M4 (a)–(d), (f) zöld, az (e) L2 az Á8 pontosításáig nyitott, az L5 az M7-é.** Az M5 nem indult; push és PR nem történt; merge csak zöld M4 után (DT-F11f).
+
+## 9. Az Á8 végrehajtása és az M4 (e) újramérése (2026-10-18)
+
+*A felhasználó pontosítása (DT-F11h, Á8): „Á8 pontosítás (a) — csak a dátum-részletek kerüljenek inline 【NAPLO: …】 jelölőbe, a mondatok a lapon maradnak, a leképezési táblában rögzítve; utána az M4 (e) újramérése, megállás.” Végrehajtva: F11.M4.5 (`4a6fc763`).*
+
+**A hat hely** (`motivumok/ISTENTISZT-001.md`; a kivágás utáni alakot a `general.naplo_kivag` ellenőrizte):
+
+| leképezési tábla | régi részlet | a forrásban | a lapon (apparatus) |
+|---|---|---|---|
+| T84 | `**Lexikai kiegészítés (2026.09.22) — Remez-szint:**` | `kiegészítés【NAPLO: 2026.09.22】 — Remez-szint` | `**Lexikai kiegészítés — Remez-szint:**` |
+| T87 | `**3. A Róm 10:12 (2026.09.22-én felvéve).**` | `10:12【NAPLO: 2026.09.22-én felvéve】.` | `**3. A Róm 10:12.**` |
+| T95 | `*(kézi, 2026.09.22)*` (a 3.U alcíme) | `*(kézi)*【NAPLO: 2026.09.22】` | `*(kézi)*` |
+| T123 | `a pilot 2026.09.06-i, a 2026.09.09-i 7-soros` | `a pilot【NAPLO: 2026.09.06-i】, a【NAPLO: 2026.09.09-i】 7-soros` | `a pilot, a 7-soros` |
+| T130 | `…tematikus.md\`, 2026.09.08-i` | `…tematikus.md\`,【NAPLO: 2026.09.08-i】` | `…tematikus.md\`,` |
+| T135/5 | `5. **UBS-besorolás (2026.09.22)** —` | `**UBS-besorolás**【NAPLO: 2026.09.22】 —` | `5. **UBS-besorolás** —` |
+
+A hat sor `cel` mezője a leképezési táblában: „Á8 (DT-F11h): a dátum-részlet inline 【NAPLO: …】-ban (belso szint), a mondat a lapon marad”.
+
+**Mérések a `4a6fc763`-on:**
+
+| pont | eredmény | mérés |
+|---|---|---|
+| (e) L2 | **zöld** | az `apparatus` nézetben (a GENERÁLT-fejlécen kívül) dátumot tartalmazó sor: **0**; 【NAPLO】: 0 |
+| (e) L1, DT2 | zöld | változatlanul; „Kézzel írandó” helyőrző a lapon 0 |
+| (e) L3–L4, L6–L7 | öröklött | a próza a dátumokon kívül bájtra változatlan |
+| (e) L5 | M7 (Á9) | várt |
+| (a) kontroll | zöld | blokkok A/B: 9 N0, `kizart` D7 (12); rések: 0 ÁLLJ — a hat dátumhely D3 („Á8: dátum-részlet belso”: 6 régi alak −, 5 új alak +, a 6. új alak részszövegként D8) — `naplok/F11_M4_osztalyozas_ujra.tsv` (frissítve) |
+| (c) kontroll | zöld | 430 hozzáadott sor, mind megengedett (áthelyezés 259, üres/címsor 131, jelölő 25, új kötőszöveg 7, (e) részegység-kivágás 3, (d) Á8 dátum-jelölés 5); visszaírás 0, nem besorolt 0 |
+| (d) kontroll | zöld | lefedettség 0 hiba (az Á8-as hat egység a megengedett cserével); n-gram változatlan |
+| N0, CI, `ellenoriz` | zöld | LF-módú nulladiff: csak a két ISTENTISZT-001 lexikonfájl; CI: csak az E16 (PR-cím); `ellenoriz.py` 0 SÉRTÉS; `feladatok.py` 0 hiba; E28 0, E29 0 (ideiglenes listasorral) |
+
+**Az M4 eredménye: zöld** — (a)–(f) a pilot-terv 5. szakaszának (DT-F11h-val bővített) kategóriái szerint; az L5 az M7 feladata. Az M5 nem indult; push és PR nem történt. A merge feltétele (DT-F11f, zöld M4) a mérés szerint teljesül; a merge a felhasználó döntése.
