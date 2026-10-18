@@ -22,7 +22,7 @@ proveniencia: scope=Hós 14+Én 6+Dán 3+Jón 2 (64 Károli-vers) | forras=Karol
   - A Dán 3:31–33 = KJV 4:1–3, ami összhangban áll a táblában már meglévő Dán 4:1 = KJV 4:4 sorral.
   - A Jón 2 a tábla mai identitás-sorait (D osztály) egy verssel eltolja.
 
-## 2. A jelek viselkedése (a DT-F117b alapja)
+## 2. A jelek viselkedése (a DT205 alapja)
 
 - **A versenkénti szövegjel önmagában nem dönt.** A szomszéd-margó (a választott pár `s_szoveg`-e mínusz a ±1 eltolt KJV-versé) 7 helyes páron negatív, 16-on 0,05 alatt. Egy versszintű küszöb a 64 helyes párból ennyit jelölne bizonytalannak:
   - 20-at `s_szoveg ≥ 0,50` és `margó ≥ 0,05` mellett;

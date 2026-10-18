@@ -96,7 +96,7 @@ Ideiglenes, memóriabeli engedélyezőlista-sorral (`id=ISTENTISZT-001`, `fajl=l
 | Á1 | az aranyminta mind a 10 generált blokkban eltér (2–531 sor) | (a), 1. szakasz | az aranyminta 2026-10-08 óta elavult: a migráció előtti alap ugyanígy eltér tőle; nem a #11 hatása | a blokkok N0-mérése A/B a migráció előtti alap és a fej renderje között (a HAMART-001 mintájára, DT84 (9)); az aranyminta a rések mércéje marad; vagy az aranyminta blokkjainak újraalapozása az alap renderére |
 | Á2 | `kizart` blokk: +10 jelölt-sor, a fejléc 81 → 91 | (a), alap ↔ migrált | az M3.1 adat-egységei (T20/2, T22/3) a `jeloltek.tsv`-ben; a D2–D6 nem nevez ilyen kategóriát | új, elfogadott kategória: „adat-egység az adatrétegben” (a leképezési tábla `adat` sora a forrás) |
 | Á3 | `kolofon` blokk: a napló-cella | (a), alap ↔ migrált | az ELLENOR_F11_M 7/3 javítása (F11.M3.8) | a D2 (forrás-útvonal) bővítése ezzel a literállal |
-| Á4 | rés `ertelmezes`: 3 új sor | (a) | a régi forrásréteg forras egységei a 3. szakaszban: M5/6 (⚠️ Vitatott pont, 3.V), M7/6 és M7/8 (DT-F11g (2) horgonnyal) — a leképezési tábla szerint „a lapot módosítja” | a leképezési tábla sora mint forrás elfogadva (D5 mintájára „D3/D5-szerű, táblával indokolt”), vagy archívum |
+| Á4 | rés `ertelmezes`: 3 új sor | (a) | a régi forrásréteg forras egységei a 3. szakaszban: M5/6 (⚠️ Vitatott pont, 3.V), M7/6 és M7/8 (DT218 (2) horgonnyal) — a leképezési tábla szerint „a lapot módosítja” | a leképezési tábla sora mint forrás elfogadva (D5 mintájára „D3/D5-szerű, táblával indokolt”), vagy archívum |
 | Á5 | rés `miert_fontos`: 16 áthelyezett sor | (a) | a régi 2/b kísérő mondatai (T46, T49, T61, T62, T68) a sablon 9 5. pontja szerint a Miért fontos résbe kerültek; a szöveg bájtra azonos, a helye változott | áthelyezés mint elfogadott eltérés (a pilot-terv 5. „a próza bájtra átkerül, csak a helye változik”) |
 | Á6 | visszaírás-számláló: formálisan 2, nem besorolt 1 | (c) | részegység-vágott forras sorok (T20/1, T22/1, T14/1); a 7.4 definíciója a vágást nem nevezi | a 7.4 kiegészítése: „(e) a régi forrás egy sorából a leképezési tábla részegysége szerinti kivágással álló sor” — megengedett |
 | Á7 | E28 HIBA a lap 3. során | (f) | a fejléc utáni két üres sor (helyben frissítés ↔ új fájl) | az E28-listára vétel (M5) előtt a lap új fájlként generálva, vagy a `_generalt_fejlec_alkalmaz` egységesítése (generátor-tétel) |
@@ -105,11 +105,11 @@ Ideiglenes, memóriabeli engedélyezőlista-sorral (`id=ISTENTISZT-001`, `fajl=l
 
 A D3 („többsoros 【NAPLO】 folytatása”, 5 sor), a D4 (2b, minosites, alatamasztas) és a D5 (ertelmezes 6, modszertan 41) eltérései a pilot-terv 5. szakasza szerint elfogadott kategóriák; a soronkénti lista a `naplok/F11_M4_osztalyozas.tsv`-ben.
 
-**Az M4 itt megáll.** Az M5 nem indult; push és PR nem történt; merge csak zöld M4 után (DT-F11f).
+**Az M4 itt megáll.** Az M5 nem indult; push és PR nem történt; merge csak zöld M4 után (DT217).
 
-## 8. Újramérés a DT-F11h után (2026-10-18)
+## 8. Újramérés a DT219 után (2026-10-18)
 
-*A felhasználó döntése (DT-F11h): „Á1 A/B-mérés (alap↔migrált); Á2 új kategória; Á3 D2-bővítés; Á4–Á5 elfogadva; Á6 a 7.4 (e) pontja; Á7 a generátor javítása; Á8 a 6 dátumsor belso szintre; Á9 az M7-é. Utána újramérés, megállás.” Átvezetve: F11.M4.1 (DT-F11h), F11.M4.2 (pilot-terv 5. szakasz: A/B a blokkokra, D2 a Kolofon napló-cellájával, D7 „adat-egység az adatrétegben”, D8 „táblával indokolt áthelyezés”, L5 → M7; 7.4 (e) részegység-kivágás), F11.M4.3 (Á7: `_generalt_fejlec_alkalmaz`, CRLF-es munkapéldányon a fejléc utáni `\r` is levágva, 2 teszt, az éles lap újragenerálva). Fej: `5dfb7f6d`; alap: `89b30c2e`.*
+*A felhasználó döntése (DT219): „Á1 A/B-mérés (alap↔migrált); Á2 új kategória; Á3 D2-bővítés; Á4–Á5 elfogadva; Á6 a 7.4 (e) pontja; Á7 a generátor javítása; Á8 a 6 dátumsor belso szintre; Á9 az M7-é. Utána újramérés, megállás.” Átvezetve: F11.M4.1 (DT219), F11.M4.2 (pilot-terv 5. szakasz: A/B a blokkokra, D2 a Kolofon napló-cellájával, D7 „adat-egység az adatrétegben”, D8 „táblával indokolt áthelyezés”, L5 → M7; 7.4 (e) részegység-kivágás), F11.M4.3 (Á7: `_generalt_fejlec_alkalmaz`, CRLF-es munkapéldányon a fejléc utáni `\r` is levágva, 2 teszt, az éles lap újragenerálva). Fej: `5dfb7f6d`; alap: `89b30c2e`.*
 
 **Mérési környezet.** A `nulladiff.sh` és az alap-render **LF-es checkouttal** fut (`GIT_CONFIG_*`: `core.autocrlf=false`), mint a CI-ben. Az Á7 javítása előtt a Windows-os, CRLF-es ideiglenes worktree-ben a javítatlan alap minden lap fejléce után egy plusz üres sort hagyott; ezt a CRLF-módú nulladiff az Á7 után minden lapon eltérésként mutatta (HAMART-001-en is), LF-módban az eltérés nincs. Az M3 alatti N0-futások CRLF-módban, az Á7 előtt futottak, ezért ott a hatás nem jelentkezett.
 
@@ -122,7 +122,7 @@ A D3 („többsoros 【NAPLO】 folytatása”, 5 sor), a D4 (2b, minosites, ala
 | (d) nincs egység két rétegben | **zöld** | lefedettség: 0 hiba (97 forras bent, 114 nem-forras kint); n-gram: 7 közös a 68 új adatcellával, mind a D-minta szakkifejezése (`נִקְרָא...עַל (nikrá … al)`), prózai egyezés 0. |
 | (e) L1, DT2 | zöld | változatlanul (5. szakasz). |
 | (e) L2 | **nyitott — Á8 pontosítást kér** | 6 dátumos forrássor a kiadható nézetben; l. lent. |
-| (e) L5 | M7 (DT-F11h Á9) | várt nem-teljesülés. |
+| (e) L5 | M7 (DT219 Á9) | várt nem-teljesülés. |
 | (f) E28 / E29 | **zöld** | ideiglenes listasorral: E28 0 találat (az Á7 után), E29 0. |
 
 **Az Á8 végrehajtása pontosítást kér.** A `SZINT-KEZDET`/`SZINT-VÉGE` pár blokkszintű (DT84 (1)), a hat dátumos sor pedig hat blokkban áll (a forrás 188–190., 215–220., 259., 367., 395–404. és 431. sora; együtt kb. 260 szó). A blokkok `belso`-ba tétele ezeket egészében levenné a kiadható lapról, köztük:
@@ -135,11 +135,11 @@ Két végrehajtási mód:
 - **(a) csak a dátum kerül `belso` szintre:** a dátum-részletek (pl. „(2026.09.22)”, „2026.09.06-i … 2026.09.09-i”, „2026.09.08-i”) inline `【NAPLO: …】` jelölőbe kerülnek (karakterszinten vágódik ki, SEMA 3.10.3), a mondatok a lapon maradnak; a forras egységek bájtjai csak a dátum helyén változnak, a leképezési táblában rögzítve. **Javasolt.**
 - **(b) a hat blokk egészében `belso`:** `SZINT-KEZDET: belso` pár a hat blokk körül; a fenti tartalom eltűnik a lapról (D3 jellegű, de a 367. sor a DT84 (10) (ii)-vel ütközik).
 
-**Eredmény: az M4 (a)–(d), (f) zöld, az (e) L2 az Á8 pontosításáig nyitott, az L5 az M7-é.** Az M5 nem indult; push és PR nem történt; merge csak zöld M4 után (DT-F11f).
+**Eredmény: az M4 (a)–(d), (f) zöld, az (e) L2 az Á8 pontosításáig nyitott, az L5 az M7-é.** Az M5 nem indult; push és PR nem történt; merge csak zöld M4 után (DT217).
 
 ## 9. Az Á8 végrehajtása és az M4 (e) újramérése (2026-10-18)
 
-*A felhasználó pontosítása (DT-F11h, Á8): „Á8 pontosítás (a) — csak a dátum-részletek kerüljenek inline 【NAPLO: …】 jelölőbe, a mondatok a lapon maradnak, a leképezési táblában rögzítve; utána az M4 (e) újramérése, megállás.” Végrehajtva: F11.M4.5 (`4a6fc763`).*
+*A felhasználó pontosítása (DT219, Á8): „Á8 pontosítás (a) — csak a dátum-részletek kerüljenek inline 【NAPLO: …】 jelölőbe, a mondatok a lapon maradnak, a leképezési táblában rögzítve; utána az M4 (e) újramérése, megállás.” Végrehajtva: F11.M4.5 (`4a6fc763`).*
 
 **A hat hely** (`motivumok/ISTENTISZT-001.md`; a kivágás utáni alakot a `general.naplo_kivag` ellenőrizte):
 
@@ -152,7 +152,7 @@ Két végrehajtási mód:
 | T130 | `…tematikus.md\`, 2026.09.08-i` | `…tematikus.md\`,【NAPLO: 2026.09.08-i】` | `…tematikus.md\`,` |
 | T135/5 | `5. **UBS-besorolás (2026.09.22)** —` | `**UBS-besorolás**【NAPLO: 2026.09.22】 —` | `5. **UBS-besorolás** —` |
 
-A hat sor `cel` mezője a leképezési táblában: „Á8 (DT-F11h): a dátum-részlet inline 【NAPLO: …】-ban (belso szint), a mondat a lapon marad”.
+A hat sor `cel` mezője a leképezési táblában: „Á8 (DT219): a dátum-részlet inline 【NAPLO: …】-ban (belso szint), a mondat a lapon marad”.
 
 **Mérések a `4a6fc763`-on:**
 
@@ -167,4 +167,4 @@ A hat sor `cel` mezője a leképezési táblában: „Á8 (DT-F11h): a dátum-r�
 | (d) kontroll | zöld | lefedettség 0 hiba (az Á8-as hat egység a megengedett cserével); n-gram változatlan |
 | N0, CI, `ellenoriz` | zöld | LF-módú nulladiff: csak a két ISTENTISZT-001 lexikonfájl; CI: csak az E16 (PR-cím); `ellenoriz.py` 0 SÉRTÉS; `feladatok.py` 0 hiba; E28 0, E29 0 (ideiglenes listasorral) |
 
-**Az M4 eredménye: zöld** — (a)–(f) a pilot-terv 5. szakaszának (DT-F11h-val bővített) kategóriái szerint; az L5 az M7 feladata. Az M5 nem indult; push és PR nem történt. A merge feltétele (DT-F11f, zöld M4) a mérés szerint teljesül; a merge a felhasználó döntése.
+**Az M4 eredménye: zöld** — (a)–(f) a pilot-terv 5. szakaszának (DT-F11h-val bővített) kategóriái szerint; az L5 az M7 feladata. Az M5 nem indult; push és PR nem történt. A merge feltétele (DT217, zöld M4) a mérés szerint teljesül; a merge a felhasználó döntése.

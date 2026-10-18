@@ -1,7 +1,7 @@
 # F117 4.2–4.3 kézi ítélet: a Károli 1908 és a KJV szövegének versenkénti elolvasása után, a versmegfeleltető tábla nélkül
 # proveniencia: scope=manual (az A–D′ célhalmaz, 346 Károli-vers) | forras=Karoli_1908.tsv + KJV_Strongs_teljes.tsv (eszkozok/versmegf_szoveg_osszevet.py --teljes --szoveg --csak-cel kiírása) | modell=claude-opus-5-5 | n=346 | ts=2026-10-18
 # az itelet_kjv a tartalmilag megfelelő KJV-vers(ek); ahol a Károli-vers két KJV-verset fog át, mindkettő (`;`); ahol két Károli-vers egy KJV-versre esik, mindkét sor ugyanazt a KJV-verset kapja (a tábla-szabály döntés tárgya, l. naplok/F117_bizonytalan.md)
-# döntés: a 8 bizonytalan pár (naplok/F117_bizonytalan.md 2. pont) a DT-F117c szerint, a sor megjegyzésében „döntés:” jelöléssel; a javító bemenetbe az Ézs 64:1-hez a 64:1 kerül (az itelet_kjv a tartalmi átfogást mutatja)
+# döntés: a 8 bizonytalan pár (naplok/F117_bizonytalan.md 2. pont) a DT206 szerint, a sor megjegyzésében „döntés:” jelöléssel; a javító bemenetbe az Ézs 64:1-hez a 64:1 kerül (az itelet_kjv a tartalmi átfogást mutatja)
 # ellenorizendo: a versfélen, mondathatáron (összevonás-szomszéd) vagy fejezetváltón múló ítéletek; a KJV-oldalt csak a Strong-címkézett szavakból olvastam (teljes KJV-szöveg nincs a repóban), ezért ezek a teljes KJV-szövegen újraellenőrizendők (N-F117c); n=28
 igehely_karoli	itelet_kjv	megjegyzes	ellenorizendo
 2Móz 35:1	35:1	Mózes összegyűjti a gyülekezetet = KJV 35:1; a 35:1–35 végig azonos számú	
@@ -110,7 +110,7 @@ Dán 3:30	3:30	Sidrák, Misák, Abednégó előléptetése = KJV 3:30
 Dán 3:31	4:1	Nabukodonozor levele a népeknek, „Békességetek bőséges legyen” = KJV 4:1	fejezetvalto: Károli Dán 3:31 → KJV 4:1
 Dán 3:32	4:2	jelek és csudák, a felséges Isten = KJV 4:2	fejezetvalto: Károli Dán 3:32 → KJV 4:2
 Dán 3:33	4:3	országa örökkévaló ország = KJV 4:3	fejezetvalto: Károli Dán 3:33 → KJV 4:3
-Hós 2:1	2:2	„Pereljetek anyátokkal” = KJV 2:2 (Plead with your mother); a KJV 2:1 („Ammi … Ruhamah”) a Károli Hós 1:11 végén áll · döntés: DT-F117c (1): a kézi ítélet; a gépi eltérés oka: a csak szöveg-jelű igazítás 2:1;2:2-t ad, mert a Károli Hós 1:11 a KJV 2:1-et is magában foglalja	osszevonas_szomszed: a KJV 2:1 a Károli Hós 1:11 végén (mondathatár)
+Hós 2:1	2:2	„Pereljetek anyátokkal” = KJV 2:2 (Plead with your mother); a KJV 2:1 („Ammi … Ruhamah”) a Károli Hós 1:11 végén áll · döntés: DT206 (1): a kézi ítélet; a gépi eltérés oka: a csak szöveg-jelű igazítás 2:1;2:2-t ad, mert a Károli Hós 1:11 a KJV 2:1-et is magában foglalja	osszevonas_szomszed: a KJV 2:1 a Károli Hós 1:11 végén (mondathatár)
 Hós 2:2	2:3	tartalmilag egyezik (kézi olvasás)	
 Hós 2:3	2:4	tartalmilag egyezik (kézi olvasás)	
 Hós 2:4	2:5	tartalmilag egyezik (kézi olvasás)	
@@ -157,9 +157,9 @@ Hós 14:7	14:6	tartalmilag egyezik
 Hós 14:8	14:7	tartalmilag egyezik	
 Hós 14:9	14:8	Efraim, bálványok, cziprusfa = KJV 14:8	
 Hós 14:10	14:9	a bölcs, az Úr útai = KJV 14:9 (a fejezet utolsó verse)	
-Jób 17:1	17:2	„csúfot űznek … szemem virraszt” = KJV 17:2 (mockers, eye); a KJV 17:1 („breath corrupt … graves”) a Károli Jób 16:22 második fele · döntés: DT-F117c (1): a kézi ítélet; a gépi eltérés oka: a csak szöveg-jelű igazítás 17:1-et ad, mert a Károli Jób 16:22 a KJV 17:1-et is magában foglalja	osszevonas_szomszed: a KJV 17:1 a Károli Jób 16:22 második fele (mondathatár)
-Jób 17:2	17:3	„Kezest … ki csap velem kezet” = KJV 17:3 (surety, strike hands) · döntés: DT-F117c (1): a kézi ítélet; a gépi eltérés oka: a csak szöveg-jelű igazítás egy verssel elcsúszik (17:2), l. Jób 17:1	
-Jób 17:3	17:4	„szívöket elzártad az értelem elől” = KJV 17:4 (hid their heart from understanding) · döntés: DT-F117c (1): a kézi ítélet; a gépi eltérés oka: a csak szöveg-jelű igazítás 17:3;17:4-et ad, l. Jób 17:1	
+Jób 17:1	17:2	„csúfot űznek … szemem virraszt” = KJV 17:2 (mockers, eye); a KJV 17:1 („breath corrupt … graves”) a Károli Jób 16:22 második fele · döntés: DT206 (1): a kézi ítélet; a gépi eltérés oka: a csak szöveg-jelű igazítás 17:1-et ad, mert a Károli Jób 16:22 a KJV 17:1-et is magában foglalja	osszevonas_szomszed: a KJV 17:1 a Károli Jób 16:22 második fele (mondathatár)
+Jób 17:2	17:3	„Kezest … ki csap velem kezet” = KJV 17:3 (surety, strike hands) · döntés: DT206 (1): a kézi ítélet; a gépi eltérés oka: a csak szöveg-jelű igazítás egy verssel elcsúszik (17:2), l. Jób 17:1	
+Jób 17:3	17:4	„szívöket elzártad az értelem elől” = KJV 17:4 (hid their heart from understanding) · döntés: DT206 (1): a kézi ítélet; a gépi eltérés oka: a csak szöveg-jelű igazítás 17:3;17:4-et ad, l. Jób 17:1	
 Jób 17:4	17:5	tartalmilag egyezik (kézi olvasás)	
 Jób 17:5	17:6	tartalmilag egyezik (kézi olvasás)	
 Jób 17:6	17:7	tartalmilag egyezik (kézi olvasás)	
@@ -257,7 +257,7 @@ Péld 12:27	12:28	„Az igazságnak útjában van élet” = KJV 12:28
 Ézs 4:4	4:4	tartalmilag egyezik (kézi olvasás)	
 Ézs 4:5	4:5	tartalmilag egyezik (kézi olvasás)	
 Ézs 4:6	4:6	tartalmilag egyezik (kézi olvasás)	
-Ézs 64:1	64:1;64:2	a Károli-vers két KJV-verset fog át: „megszakasztanád az egeket … hegyek elolvadnának” = KJV 64:1, „mint a tűz … a vizet a tűz felforralja; hogy nevedet ellenségidnek” = KJV 64:2 · döntés: DT-F117c (2): a pár 64:1 (F91-szabály: az első KJV-vers); a KJV 64:2 visszairányú párja: N-F117b	versfel: a Károli-vers a KJV 64:1–2-t fogja át (mondathatár a versen belül)
+Ézs 64:1	64:1;64:2	a Károli-vers két KJV-verset fog át: „megszakasztanád az egeket … hegyek elolvadnának” = KJV 64:1, „mint a tűz … a vizet a tűz felforralja; hogy nevedet ellenségidnek” = KJV 64:2 · döntés: DT206 (2): a pár 64:1 (F91-szabály: az első KJV-vers); a KJV 64:2 visszairányú párja: N-F117b	versfel: a Károli-vers a KJV 64:1–2-t fogja át (mondathatár a versen belül)
 Ézs 64:2	64:3	„rettenetes dolgokat, a miket nem vártunk” = KJV 64:3; a 64:n = KJV 64:n+1 végig	osszevonas_szomszed: az előző Károli-vers (64:1) két KJV-verset fog át
 Ézs 64:3	64:4	tartalmilag egyezik (kézi olvasás)	
 Ézs 64:4	64:5	tartalmilag egyezik (kézi olvasás)	
@@ -276,8 +276,8 @@ Jób 39:35	40:2	pert kezd a Mindenhatóval = KJV 40:2	fejezetvalto: Károli Jób
 Jób 39:36	40:3	„szóla Jób az Úrnak” = KJV 40:3	fejezetvalto: Károli Jób 39:36 → KJV 40:3
 Jób 39:37	40:4	kezemet a szájamra teszem = KJV 40:4	fejezetvalto: Károli Jób 39:37 → KJV 40:4
 Jób 39:38	40:5	egyszer szóltam, kétszer = KJV 40:5; a Károli Jób 40:1 = KJV 40:6	fejezetvalto: Károli Jób 39:38 → KJV 40:5
-1Kir 22:43	22:43	„jára Asának … útjában” = KJV 22:43 első fele; a KJV 22:43 két Károli-versre oszlik (22:43–44) · döntés: DT-F117c (3) (a): a KJV 22:43 mindkét Károli-versé (22:43–44)	versfel: a KJV 22:43 első fele
-1Kir 22:44	22:43	„a magaslatokat nem rombolták le … tömjénezett” = KJV 22:43 második fele (nevertheless the high places) · döntés: DT-F117c (3) (a): a KJV 22:43 mindkét Károli-versé (22:43–44)	versfel: a KJV 22:43 második fele
+1Kir 22:43	22:43	„jára Asának … útjában” = KJV 22:43 első fele; a KJV 22:43 két Károli-versre oszlik (22:43–44) · döntés: DT206 (3) (a): a KJV 22:43 mindkét Károli-versé (22:43–44)	versfel: a KJV 22:43 első fele
+1Kir 22:44	22:43	„a magaslatokat nem rombolták le … tömjénezett” = KJV 22:43 második fele (nevertheless the high places) · döntés: DT206 (3) (a): a KJV 22:43 mindkét Károli-versé (22:43–44)	versfel: a KJV 22:43 második fele
 1Kir 22:45	22:44	„békességben élt Josafát az Izráel királyával” = KJV 22:44	
 1Kir 22:46	22:45	Josafát egyéb dolgai, krónika = KJV 22:45	
 1Kir 22:47	22:46	férfi paráznák kiűzése = KJV 22:46 (sodomites)	
@@ -349,4 +349,4 @@ Jón 2:11	2:10	az Úr szól a halnak, kiveti Jónást = KJV 2:10 (a fejezet utol
 1Sám 24:21	24:20	tartalmilag egyezik (kézi olvasás)	
 1Sám 24:22	24:21	tartalmilag egyezik (kézi olvasás)	
 1Sám 24:23	24:22	Dávid megesküvék, Saul haza = KJV 24:22 (a fejezet vége)	
-1Sám 20:43	20:42	„Felkele ezután és elméne. Jonathán pedig bement a városba.” = KJV 20:42 második fele (and he arose and departed); a KJV 20:42 két Károli-versre oszlik (20:42–43) · döntés: DT-F117c (3) (a): a KJV 20:42 mindkét Károli-versé (20:42–43)	versfel: a KJV 20:42 második fele
+1Sám 20:43	20:42	„Felkele ezután és elméne. Jonathán pedig bement a városba.” = KJV 20:42 második fele (and he arose and departed); a KJV 20:42 két Károli-versre oszlik (20:42–43) · döntés: DT206 (3) (a): a KJV 20:42 mindkét Károli-versé (20:42–43)	versfel: a KJV 20:42 második fele

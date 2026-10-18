@@ -6,7 +6,7 @@
 
 proveniencia: scope=A–D′ (346 Károli-vers) + teljes ÓSZ (M3) + elofordulasok.tsv (M5) | forras=TSK_kereszthivatkozasok.tsv + naplok/F117_itelet.tsv (referencia) + Karoli_versmegfeleltetes.tsv (új) + `git show 89b30c2e:konkordancia/Karoli_versmegfeleltetes.tsv` (régi, sha256 edd6b457…b562) és az F114-es NINCS_PAR_KIVETEL | eszkoz=`python eszkozok/tsk_versszam_felmeres.py --kimenet <repón kívül> --regi-tabla <régi tábla>` | ts=2026-10-18
 
-**A referencia** a versenkénti kézi ítélet (`naplok/F117_itelet.tsv`; összevont versnél az első KJV-vers, DT-F117c (2)), nem a tábla. A javító bemenet ebből készült, ezért a (ii) = (iii) azt igazolja, hogy a lánc (bemenet → KK4 → `tsk_kulcs`) a referenciát szállítja. A referencia helyességét a kézi ítélet hordozza, a korláttal együtt (N-F117c).
+**A referencia** a versenkénti kézi ítélet (`naplok/F117_itelet.tsv`; összevont versnél az első KJV-vers, DT206 (2)), nem a tábla. A javító bemenet ebből készült, ezért a (ii) = (iii) azt igazolja, hogy a lánc (bemenet → KK4 → `tsk_kulcs`) a referenciát szállítja. A referencia helyességét a kézi ítélet hordozza, a korláttal együtt (N-F117c).
 
 | Mérés | Osztály | Vers | (i) régi | (ii) új | (iii) referencia | (ii) ≠ (iii) |
 |---|---|---|---|---|---|---|
@@ -70,7 +70,7 @@ A `Karoli_versmegfeleltetes.tsv`-t olvasó eszközök (`grep -rl Karoli_versmegf
 
 `git ls-tree -r <ref> -- adat konkordancia`: a 305 egyéb `*.tsv` (a `Karoli_versmegfeleltetes.tsv` és a `_javitas.tsv` nélkül; az `LXX_OS/` is benne van) (blob, útvonal) listájának sha256-ja az alapcommiton (89b30c2e) és a HEAD-en egyaránt `eb706190034459ea3c31fd37c1e6c8f12987b862e7ce9f08f2e02806328d89ca`. A `git diff --name-only 89b30c2e -- adat/ konkordancia/` csak a `Karoli_versmegfeleltetes.tsv`-t, a `Karoli_versmegfeleltetes_javitas.tsv`-t és a `README.md`-t mutatja.
 
-## 4. Az F117.5 őr (DT-F117f (a)) és a tesztek
+## 4. Az F117.5 őr (DT209 (a)) és a tesztek
 
 - **Őr:** `eszkozok/sqlite_epit.py` `kezi_mt_or()`, a `_bsb_szamozas()` elején hívva. Ha a versmegfeleltető táblában `KEZI` osztályú sor kitöltött `igehely_mt`-t hordoz, `VersmegfKeziMt` hibával leáll: kiírja a sorok számát és az első öt példát, és hivatkozik az N-F117a-ra. A valós táblán 174 sor, első példák: 1Sám 20:43, 2Móz 35:36, 2Móz 36:1, 36:10, 36:11. Az `sqlite_epit.py` és a tesztfájl írása egyeztetett eltérés: a brief `ir` mezőjén kívül esik, a felhasználó kérése.
 - **Teszt:** `eszkozok/teszt_sqlite_epit.py` `KeziMtOr`, fixtúrával, 2 teszt, mindkettő zöld (`cd eszkozok && python -m unittest -v teszt_sqlite_epit.KeziMtOr`):
@@ -81,5 +81,5 @@ A `Karoli_versmegfeleltetes.tsv`-t olvasó eszközök (`grep -rl Karoli_versmegf
   - **ERROR: `FeliratHalmaz.test_a_felirat_versnek_nincs_terkep_erteke_a_db_ben`.** Ugyanez az ok.
   - **FAIL: `Pozitiv.test_mai_adat_zold`.** A main-en is fennálló „15. kapcsolatok.tsv” jelentéssor (`naplok/F117_javitas_jelentes.md` 4. pont), nem az őr okozza.
   - A két ERROR a felhasználó feltétele szerint ⛔: nem gyengítettem és nem kerültem meg. Feloldásuk az N-F117a (a `_bsb_szamozas` javítása), vagy a felhasználó döntése.
-- **Kimondott kihagyás (Felhasználó, 2026-10-18; DT-F117f kiegészítés):** az `Integracio` osztály és a `FeliratHalmaz.test_a_felirat_versnek_nincs_terkep_erteke_a_db_ben` `unittest.skip`-et kapott, indoklással: „N-F117a: … az N-F117a javításakor visszaveendő”. Újrafuttatás (`python eszkozok/teszt_sqlite_epit.py -v`): 72 teszt, **0 ERROR**, 35 skip, 1 FAIL. A FAIL a main-en is meglévő `test_mai_adat_zold`.
+- **Kimondott kihagyás (Felhasználó, 2026-10-18; DT209 kiegészítés):** az `Integracio` osztály és a `FeliratHalmaz.test_a_felirat_versnek_nincs_terkep_erteke_a_db_ben` `unittest.skip`-et kapott, indoklással: „N-F117a: … az N-F117a javításakor visszaveendő”. Újrafuttatás (`python eszkozok/teszt_sqlite_epit.py -v`): 72 teszt, **0 ERROR**, 35 skip, 1 FAIL. A FAIL a main-en is meglévő `test_mai_adat_zold`.
 - **F117.8 (6) — szűkítés:** a feltétel nélküli `@unittest.skip` helyett feltételes kihagyás. A `kezi_mt_or_kihagy()` a valós táblán meghívja az őrt; csak `VersmegfKeziMt` esetén `SkipTest` / `skipTest`, okkal. Az `Integracio` 34 tesztje mind a közös `setUpClass`-építésen áll (két `S.main(--mod minta)` a valós `ROOT`-ból), ezért leválasztani nem lehet. A unittest a setUpClass-skipet egy skipként számolja. A `KeziMtOr` már nem nyel el minden kivételt: az őr utáni `FileNotFoundError`-t várja, a `BSB_Strongs.tsv` fájlnévvel. Futás: `python eszkozok/teszt_sqlite_epit.py -v`: 38 teszt, 2 skip (Integracio setUpClass + FeliratHalmaz), 1 FAIL (`test_mai_adat_zold`, a main-en is), 0 ERROR.

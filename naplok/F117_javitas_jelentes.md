@@ -6,8 +6,8 @@ proveniencia: scope=konkordancia/Karoli_versmegfeleltetes.tsv (teljes ÓSZ) | fo
 
 ## 1. Bemenet és szabály
 
-- **Javító bemenet:** `konkordancia/Karoli_versmegfeleltetes_javitas.tsv`, 346 sor. Összeállította a `naplok/F117_javitas_bemenet_general.py` a kézi ítéletből (`naplok/F117_itelet.tsv`), az MT-levezetésből (`naplok/F117_mt_levezetes.tsv`) és a DT-F117a–e döntésekből.
-- **Osztályok** (DT-F117e (c)):
+- **Javító bemenet:** `konkordancia/Karoli_versmegfeleltetes_javitas.tsv`, 346 sor. Összeállította a `naplok/F117_javitas_bemenet_general.py` a kézi ítéletből (`naplok/F117_itelet.tsv`), az MT-levezetésből (`naplok/F117_mt_levezetes.tsv`) és a DT204–e döntésekből.
+- **Osztályok** (DT208 (c)):
 
   | Osztály | Sor | Mikor | `igehely_mt` |
   |---|---|---|---|
@@ -67,14 +67,14 @@ A két száraz futás bájtra azonos (`cmp`), és az éles tábla azonos velük.
   - Sértés nincs (0).
 - **`eszkozok/teszt_tsk_kulcs.py`:** 14 tesztből 6 bukik. Ez a javítás várt következménye; a brief szerint a 4.5 (F117.4) írja át ezeket:
   - `test_1kir_22_kivetel_nincs_par`, `test_kivetel_fejezetek_nincs_par`, `test_kjv_vers_karoli_par_nelkul` (Hós 2:23), `test_mt_tartalek_negativ` (Hós 14:2) és `test_karoli_sorok` (Hós 2:23 → 2:22): a régi „nincs pár” állapotot rögzítik.
-  - `test_egy_a_tobbhoz`: a táblát kölcsönösen egyértelműnek feltételezi. A DT-F117c (3) (a) ezt szándékosan feloldja: a KJV 1Kir 22:43 és az 1Sám 20:42 két-két Károli-versre mutat.
+  - `test_egy_a_tobbhoz`: a táblát kölcsönösen egyértelműnek feltételezi. A DT206 (3) (a) ezt szándékosan feloldja: a KJV 1Kir 22:43 és az 1Sám 20:42 két-két Károli-versre mutat.
 
 ## 5. Váratlan leletek és feljegyzések
 
 1. **Öt további tábla-lyuk az A–D′ halmazon kívül.** A Préd 9:1–2 és a Jób 39:1–3 Károli-versnek nincs sora a táblában. A szöveg-összevetés szerint ezek a KJV Préd 8:16–17 és Jób 38:39–41 versei (`naplok/F117_szoveg_osszevetes.tsv`, kontextus-sorok). A célfejezetek többi 132 kontextusverse egyezik a táblával. A halmazon kívül ezeket nem pótoltam; új tételt kell nyitni róluk.
 2. **Az Ézs 64:1 MT-értéke számra egyezik a KJV-párral** (64:1, `KJV` osztály). Tartalmilag azonban a Károli 64:1 = MT 63:19b + 64:1 = KJV 64:1–2. Ez a versfél-korlát esete (N-F117c).
 3. **A 4.6-ban kifejezetten ellenőrizni kell**, hogyan kezelik a fogyasztók a `KEZI` + kitöltött `igehely_mt` kombinációt: `f17/macula_kk.py`, `fj2/bsb_import.py` (MT-maximum, „a KJV-osztály soraiból nem”), `sqlite_epit.py` (`mt_kk`), `olvaso_pilot/bdb_szelet_m0.py`, `olvaso_szerver/bdb_vers_jelentes.py`, `lexikon_general.py`.
-4. **Egyeztetett eltérés:** a `konkordancia/README.md` írása a brief `ir` mezőjén kívül esik; a felhasználó kérése (DT-F117e). Az `adat/SEMA.md` nem változott.
+4. **Egyeztetett eltérés:** a `konkordancia/README.md` írása a brief `ir` mezőjén kívül esik; a felhasználó kérése (DT208). Az `adat/SEMA.md` nem változott.
 
 ## 6. Licenc és forrás (E7; a zárójelentés ebből veszi át)
 
