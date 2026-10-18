@@ -61,3 +61,28 @@ Ellenőr: `fuggetlen-ellenor` subagent, claude-opus-5-5 (kért: `opus`, egyezik)
 1. A DT-F114d tényalapja és az elveszett-sorok napló osztályozása hamis (24 kulcs rossz kulcson címkézve; Préd 9:21–23 / Jób 39:34–38 / Dán 3:31–33 KJV-párja létezik). A felhasználó a (b)-t részben ezen a premisszán választotta.
 2. Az MT/szamlalas-tartalék az 1Kir 22:46–49-en eltolt párt ad (nem regresszió); rokon `tvtms` táblahibák nyitott tétel nélkül.
 3. A jelentés E3 túláltalánosít, a táblázata elavult számokat mutat.
+
+---
+
+# Harmadik ellenőrzés — origin/main (be85d5de)..HEAD (7b845d8e); a második javító menet: 2253319a..HEAD
+
+Ellenőr: `fuggetlen-ellenor` subagent, claude-opus-5-5 (kért: `opus`, egyezik). *Az orkesztrátor írta ki az ellenőr jelentéséből.*
+
+| pont | eredmény | indok |
+|---|---|---|
+| `ok` oszlop (`F114_elveszett_sorok.tsv`) | OK | 510 sor: `tabla_lyuk_fejezet` 478, `tablahiba_kjv_par_letezik` 25 (12 forráskulcs / 198 sor; 13 célvers / 188), `kivetel_nincs_par_1Kir_22_46_49` 7; Károli-szöveggel mintavételezve (Préd 9:21 = KJV 10:1, Jób 39:34 = KJV 40:1, Dán 3:31 = KJV 4:1, Hós 14:2 = KJV 14:1) |
+| DT-F114d helyesbítés | OK | jelölt szakasz; az idézet és a (b) indoka bájtra azonos |
+| `NINCS_PAR_KIVETEL` | OK | 1Kir 22:46–49, scope=manual, negatív teszt; `tsk "1Kir 22:46"` n=0. Megjegyzés: az 1Kir 22:45 (Károli = KJV 22:44) eltolt, a teszt pozitív esetként rögzíti (N-F54a alatt ismert) |
+| 1Kir 22:54, Jón 2:11, Ézs 3:27 MT-tartaléka | OK (ártalmatlan) | a KJV-vers nem létezik, a TSK-ban 0 sor; a kár a szomszédos `tvtms` sorokon van (nem regresszió) |
+| E3 számok | OK | 21 306; 275/4 245; a régiek jelölten felülírva. A céloldali +29 / +27 különbség NEM ELLENŐRIZHETŐ |
+| E1 — azonosság-állítás | **ELTÉRÉS** | `TSK_VERSSZAM_jelentes.md:28`, N-F54a (3), `tsk_kulcs.py:41-42`: a „86 MT/szamlalas sor létező, azonos számú KJV-vers” még hamis az 1Kir 22:54, Jón 2:11, Ézs 3:27, 1Sám 20:43, 1Sám 24:23 sorra (a KJV-vers nem létezik); a „eltolt párt kap” állítás téves (0 TSK-sor) |
+| E2 — N-F54a teljessége | **ELTÉRÉS** | az Ézs 3:1–26 (Károli 3:1 = KJV 2:22), Jón 2:2–10 (Károli 2:9 = KJV 2:8), 1Sám 24:1–22 (Károli 24:2 = KJV 24:1) egészében eltolt azonosságot kap; a lista csak a szomszédokat nevezi meg, az 1Sám 24 és 20:43 hiányzik |
+| E3 — oszlopnév | **ELTÉRÉS** (enyhe) | `azonos_szovegu_karoli_vers_tablasora` valójában az azonos *számú* Károli-vers táblasora; a 099456fe címe „Károli-kulcs”, a címkézés KJV-kulcs szerinti |
+| Írási halmaz, TSK, jeloltek 7 sor, Δ, render_diff, CI (`futtat.py` exit 0), DT-F114a/b/c, A2, A6 | OK | — |
+| Tesztek | NEM ELLENŐRIZHETŐ | parancskörön kívül; kódolvasás alapján összhangban |
+
+## ÖSSZEGZÉS — ELTÉRÉS: 3 tétel (dokumentációs/hatóköri; adatot nem ront, nem regresszió)
+
+1. E1: a szűkített azonosság-állítás még 5 sorra hamis; az „eltolt pár” állítás téves.
+2. E2: az N-F54a nem gyűjti az Ézs 3, Jón 2:2–10, 1Sám 24 teljes eltolódását és az 1Sám 20:43-at.
+3. E3: félrevezető oszlopnév és commit-cím.
