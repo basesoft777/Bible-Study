@@ -7,8 +7,8 @@
    "eszkozok/feladatterkep_kartyak.tsv"
   ],
   "belyeg": {
-   "datum": "2026-10-17",
-   "commit": "44fa0b1b"
+   "datum": "2026-10-18",
+   "commit": "dedd7a19"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -62,7 +62,7 @@
   {
    "kulcs": "stop",
    "cimke": "Megállt, rád vár",
-   "db": 4
+   "db": 5
   },
   {
    "kulcs": "run",
@@ -72,7 +72,7 @@
   {
    "kulcs": "ready",
    "cimke": "Indítható most",
-   "db": 9
+   "db": 8
   },
   {
    "kulcs": "wait",
@@ -103,7 +103,7 @@
    "szam": 9,
    "kod": "SZOTAR S2",
    "cim": "Szótári adatréteg, 2. menet",
-   "most": "/kovetkezo (fazis: 1, DT185); az éles lexikon/-t nem írja, a render próba a generalt_proba/ alá (DT186; a D52/DT74 (3) befagyasztás érintetlen); a törzscikkek elavult Cremer-sorát (CI E11) a próbarender mutatja, az éles javítás a #11 1. lépcsője után",
+   "most": "PR-cím [ELLENŐRZŐ], push, merge (felhasználó)",
    "felbemaradt": false,
    "parhuzamos": true
   },
@@ -210,7 +210,7 @@
     },
     {
      "szoveg": "#9",
-     "allapot": "ready"
+     "allapot": "stop"
     },
     {
      "szoveg": "#11",
@@ -251,9 +251,9 @@
    "kod": "SZOTAR S2",
    "cim": "Szótári adatréteg, 2. menet",
    "fazis": "1",
-   "allapot": "ready",
-   "brief_allapot": "nem_indult",
-   "most": "/kovetkezo (fazis: 1, DT185); az éles lexikon/-t nem írja, a render próba a generalt_proba/ alá (DT186; a D52/DT74 (3) befagyasztás érintetlen); a törzscikkek elavult Cremer-sorát (CI E11) a próbarender mutatja, az éles javítás a #11 1. lépcsője után",
+   "allapot": "stop",
+   "brief_allapot": "dontesre_var",
+   "most": "PR-cím [ELLENŐRZŐ], push, merge (felhasználó)",
    "fugg": "#5 (kész), #6 (kész), #23 (kész), #78 (kész)",
    "tervezett": false,
    "reszletes": "Az 1. fázis új szótári adatai (fordítások, LXX, források) megjelennek a 8 lexikonoldalon és a törzscikkekben; a törzscikk utoljára itt generálódik. A #23 tervére és a #38 fordításaira vár.",
@@ -286,7 +286,7 @@
    "allapot": "wait",
    "brief_allapot": "nem_indult",
    "most": "S1 (a `kapcsolatok.tsv` `indoklas` oszlopa: SEMA 2.3, fejléc, üres értékek), majd S2 (olvasó/író eszközök), S3 független ellenőrzés ⛔ — a migráció előtt",
-   "fugg": "#9, #23 (kész)",
+   "fugg": "#9*, #23 (kész)",
    "tervezett": false,
    "reszletes": "Minden motívum egyetlen kézi forrásból renderelődik (D34); a törzscikk, a 8. sablon és egy régi CI-szabály kivezetésre kerül. Első lépcső az ISTENTISZT-001, utána a többi hat.",
    "roviden": "Átállás arra, hogy minden motívumnak egy forrása legyen.",
@@ -896,7 +896,7 @@
    "TERV_BEFOGAD"
   ]
  },
- "terkep": "flowchart LR\n  classDef stop fill:#d93025,stroke:#8c1d18,color:#ffffff,stroke-width:2px\n  classDef run fill:#1e8e3e,stroke:#0d5226,color:#ffffff,stroke-width:2px\n  classDef ready fill:#1a73e8,stroke:#0b3d91,color:#ffffff,stroke-width:2px\n  classDef wait fill:#f9ab00,stroke:#a86f00,color:#2b1d00,stroke-width:2px\n  classDef plan fill:#8e44ad,stroke:#5b2470,color:#ffffff,stroke-width:2px,stroke-dasharray:6 3\n  classDef idle fill:#80868b,stroke:#4a4f54,color:#ffffff\n  classDef dt fill:#ff6d00,stroke:#a34500,color:#ffffff,stroke-width:2px\n\n  P_MCP_BUROK[\"MCP_BUROK\"]:::plan\n  P_SZPA_AUDIT[\"SZPA_AUDIT\"]:::plan\n  P_TERV_BEFOGAD[\"TERV_BEFOGAD\"]:::plan\n  T10[\"#10 LEXIKON_LEZARAS\"]:::idle\n  T101[\"#101 ADATBAZIS_FRISSITES\"]:::idle\n  T102[\"#102 BDB_SZELETELO_JAVITAS\"]:::wait\n  T103[\"#103 BDB_TAGOLAS\"]:::wait\n  T104[\"#104 BDB_MEGJELENITES\"]:::wait\n  T105[\"#105 BDB_SZOREND\"]:::wait\n  T106[\"#106 BDB_MAGYARAZAT\"]:::wait\n  T107[\"#107 BDB_JELOLT_SZOVEG\"]:::ready\n  T109[\"#109 TEHOM_JOB41\"]:::ready\n  T11[\"#11 MIGRACIO\"]:::wait\n  T110[\"#110 SZURO_PILOT_ISTENTISZT\"]:::ready\n  T111[\"#111 ELTERES\"]:::ready\n  T112[\"#112 COMMIT_EKEZET\"]:::ready\n  T12[\"#12 TEREMT-002 3. lépés…\"]:::idle\n  T13[\"#13 1Móz 17-től a…\"]:::idle\n  T22[\"#22 Károli–Strong párosítás…\"]:::stop\n  T25[\"#25 OLVASOI_HTML\"]:::idle\n  T27[\"#27 FP3\"]:::idle\n  T36[\"#36 LEXIKON_UJRAGEN\"]:::wait\n  T38[\"#38 BDB_FORDITAS\"]:::wait\n  T48[\"#48 KJV_REGI_KIVEZETES\"]:::wait\n  T50[\"#50 CI_JAVITO_KOR\"]:::ready\n  T52[\"#52 TERV_SZINKRON\"]:::stop\n  T55[\"#55 ZSOLTAR_UJRAELLENORZES\"]:::stop\n  T59[\"#59 SZOSZEDET\"]:::ready\n  T67[\"#67 BDB_JAVITAS_KAPU\"]:::idle\n  T69[\"#69 SEMA_DATASET_SZAM\"]:::idle\n  T7[\"#7 Thayer teljes magyar…\"]:::idle\n  T70[\"#70 SZOTAR_S26\"]:::wait\n  T74[\"#74 TANULMANY_JAVITAS_GEPI\"]:::idle\n  T75[\"#75 TANULMANY_JAVITAS\"]:::idle\n  T76[\"#76 OLVASOI_KONKORDANCIA\"]:::ready\n  T81[\"#81 KAROLI_UJJLENYOMAT\"]:::idle\n  T86[\"#86 ELOFIZETES_FEED\"]:::stop\n  T9[\"#9 SZOTAR S2\"]:::ready\n  T96[\"#96 KAROLI_MODERN\"]:::idle\n  D_DT_F38i{{\"DT-F38i\"}}:::dt\n  D_DT_M1{{\"DT-M1\"}}:::dt\n  D_DT_M3{{\"DT-M3\"}}:::dt\n  D_DT_M4{{\"DT-M4\"}}:::dt\n  D_DT_M5{{\"DT-M5\"}}:::dt\n  D_DT_M6{{\"DT-M6\"}}:::dt\n  D_DT_M7{{\"DT-M7\"}}:::dt\n  D_DT_M8{{\"DT-M8\"}}:::dt\n  D_DT127{{\"DT127\"}}:::dt\n  D_DT128{{\"DT128\"}}:::dt\n  D_DT129{{\"DT129\"}}:::dt\n  D_DT146{{\"DT146\"}}:::dt\n  D_DT147{{\"DT147\"}}:::dt\n  D_DT148{{\"DT148\"}}:::dt\n  D_DT149{{\"DT149\"}}:::dt\n  D_DT150{{\"DT150\"}}:::dt\n  D_DT151{{\"DT151\"}}:::dt\n  D_DT152{{\"DT152\"}}:::dt\n  D_DT181{{\"DT181\"}}:::dt\n  D_DT190{{\"DT190\"}}:::dt\n  D_DT2{{\"DT2\"}}:::dt\n  D_DT28{{\"DT28\"}}:::dt\n  D_DT52{{\"DT52\"}}:::dt\n  D_DT56{{\"DT56\"}}:::dt\n  D_DT57{{\"DT57\"}}:::dt\n  D_DT71{{\"DT71\"}}:::dt\n  D_DT74{{\"DT74\"}}:::dt\n  D_DT75{{\"DT75\"}}:::dt\n  D_DT77{{\"DT77\"}}:::dt\n  D_DT78{{\"DT78\"}}:::dt\n  D_DT90{{\"DT90\"}}:::dt\n\n  P_MCP_BUROK --> D_DT_M3\n  P_MCP_BUROK --> D_DT_M5\n  P_MCP_BUROK --> D_DT_M7\n  P_SZPA_AUDIT --> D_DT77\n  P_TERV_BEFOGAD --> D_DT_M8\n  T10 --> D_DT2\n  T10 --> D_DT74\n  T10 --> T11\n  T10 --> T52\n  T10 --> T9\n  T102 --> T107\n  T102 --> T76\n  T103 --> T102\n  T103 --> T76\n  T104 --> T102\n  T104 --> T103\n  T104 --> T76\n  T105 --> T102\n  T105 --> T103\n  T105 --> T104\n  T105 --> T76\n  T106 --> T102\n  T106 --> T103\n  T106 --> T104\n  T106 --> T105\n  T106 --> T76\n  T107 --> D_DT190\n  T11 --> D_DT74\n  T11 --> T9\n  T12 --> D_DT74\n  T12 --> T11\n  T13 --> T10\n  T22 --> D_DT56\n  T22 --> D_DT57\n  T22 --> D_DT71\n  T25 --> T11\n  T25 --> T12\n  T27 --> T9\n  T36 --> D_DT28\n  T36 --> D_DT74\n  T36 --> T11\n  T36 --> T27\n  T36 --> T38\n  T36 --> T52\n  T36 --> T9\n  T38 --> D_DT181\n  T38 --> D_DT52\n  T38 --> D_DT56\n  T38 --> D_DT_F38i\n  T38 --> T107\n  T48 --> T22\n  T52 --> D_DT78\n  T52 --> D_DT90\n  T55 --> D_DT74\n  T55 --> T109\n  T55 --> T11\n  T55 --> T110\n  T67 --> T27\n  T67 --> T7\n  T67 --> T9\n  T70 --> D_DT74\n  T70 --> T11\n  T70 --> T55\n  T70 --> T9\n  T74 --> T11\n  T75 --> T74\n  T76 --> D_DT127\n  T76 --> D_DT128\n  T76 --> D_DT129\n  T76 --> D_DT146\n  T76 --> D_DT147\n  T76 --> D_DT148\n  T76 --> D_DT149\n  T76 --> D_DT150\n  T76 --> D_DT151\n  T76 --> D_DT152\n  T76 --> D_DT75\n  T76 --> D_DT_M1\n  T76 --> D_DT_M4\n  T76 --> D_DT_M6\n  T81 --> T109\n  T86 --> T109\n  T86 --> T11\n  T86 --> T110\n  T86 --> T27\n  T86 --> T38\n  T86 --> T52\n  T86 --> T7\n  T86 --> T76\n  T86 --> T9\n  T9 --> D_DT190\n  T9 --> D_DT28\n  T9 --> D_DT74",
+ "terkep": "flowchart LR\n  classDef stop fill:#d93025,stroke:#8c1d18,color:#ffffff,stroke-width:2px\n  classDef run fill:#1e8e3e,stroke:#0d5226,color:#ffffff,stroke-width:2px\n  classDef ready fill:#1a73e8,stroke:#0b3d91,color:#ffffff,stroke-width:2px\n  classDef wait fill:#f9ab00,stroke:#a86f00,color:#2b1d00,stroke-width:2px\n  classDef plan fill:#8e44ad,stroke:#5b2470,color:#ffffff,stroke-width:2px,stroke-dasharray:6 3\n  classDef idle fill:#80868b,stroke:#4a4f54,color:#ffffff\n  classDef dt fill:#ff6d00,stroke:#a34500,color:#ffffff,stroke-width:2px\n\n  P_MCP_BUROK[\"MCP_BUROK\"]:::plan\n  P_SZPA_AUDIT[\"SZPA_AUDIT\"]:::plan\n  P_TERV_BEFOGAD[\"TERV_BEFOGAD\"]:::plan\n  T10[\"#10 LEXIKON_LEZARAS\"]:::idle\n  T101[\"#101 ADATBAZIS_FRISSITES\"]:::idle\n  T102[\"#102 BDB_SZELETELO_JAVITAS\"]:::wait\n  T103[\"#103 BDB_TAGOLAS\"]:::wait\n  T104[\"#104 BDB_MEGJELENITES\"]:::wait\n  T105[\"#105 BDB_SZOREND\"]:::wait\n  T106[\"#106 BDB_MAGYARAZAT\"]:::wait\n  T107[\"#107 BDB_JELOLT_SZOVEG\"]:::ready\n  T109[\"#109 TEHOM_JOB41\"]:::ready\n  T11[\"#11 MIGRACIO\"]:::wait\n  T110[\"#110 SZURO_PILOT_ISTENTISZT\"]:::ready\n  T111[\"#111 ELTERES\"]:::ready\n  T112[\"#112 COMMIT_EKEZET\"]:::ready\n  T12[\"#12 TEREMT-002 3. lépés…\"]:::idle\n  T13[\"#13 1Móz 17-től a…\"]:::idle\n  T22[\"#22 Károli–Strong párosítás…\"]:::stop\n  T25[\"#25 OLVASOI_HTML\"]:::idle\n  T27[\"#27 FP3\"]:::idle\n  T36[\"#36 LEXIKON_UJRAGEN\"]:::wait\n  T38[\"#38 BDB_FORDITAS\"]:::wait\n  T48[\"#48 KJV_REGI_KIVEZETES\"]:::wait\n  T50[\"#50 CI_JAVITO_KOR\"]:::ready\n  T52[\"#52 TERV_SZINKRON\"]:::stop\n  T55[\"#55 ZSOLTAR_UJRAELLENORZES\"]:::stop\n  T59[\"#59 SZOSZEDET\"]:::ready\n  T67[\"#67 BDB_JAVITAS_KAPU\"]:::idle\n  T69[\"#69 SEMA_DATASET_SZAM\"]:::idle\n  T7[\"#7 Thayer teljes magyar…\"]:::idle\n  T70[\"#70 SZOTAR_S26\"]:::wait\n  T74[\"#74 TANULMANY_JAVITAS_GEPI\"]:::idle\n  T75[\"#75 TANULMANY_JAVITAS\"]:::idle\n  T76[\"#76 OLVASOI_KONKORDANCIA\"]:::ready\n  T81[\"#81 KAROLI_UJJLENYOMAT\"]:::idle\n  T86[\"#86 ELOFIZETES_FEED\"]:::stop\n  T9[\"#9 SZOTAR S2\"]:::stop\n  T96[\"#96 KAROLI_MODERN\"]:::idle\n  D_DT_F38i{{\"DT-F38i\"}}:::dt\n  D_DT_M1{{\"DT-M1\"}}:::dt\n  D_DT_M3{{\"DT-M3\"}}:::dt\n  D_DT_M4{{\"DT-M4\"}}:::dt\n  D_DT_M5{{\"DT-M5\"}}:::dt\n  D_DT_M6{{\"DT-M6\"}}:::dt\n  D_DT_M7{{\"DT-M7\"}}:::dt\n  D_DT_M8{{\"DT-M8\"}}:::dt\n  D_DT127{{\"DT127\"}}:::dt\n  D_DT128{{\"DT128\"}}:::dt\n  D_DT129{{\"DT129\"}}:::dt\n  D_DT146{{\"DT146\"}}:::dt\n  D_DT147{{\"DT147\"}}:::dt\n  D_DT148{{\"DT148\"}}:::dt\n  D_DT149{{\"DT149\"}}:::dt\n  D_DT150{{\"DT150\"}}:::dt\n  D_DT151{{\"DT151\"}}:::dt\n  D_DT152{{\"DT152\"}}:::dt\n  D_DT181{{\"DT181\"}}:::dt\n  D_DT190{{\"DT190\"}}:::dt\n  D_DT193{{\"DT193\"}}:::dt\n  D_DT2{{\"DT2\"}}:::dt\n  D_DT28{{\"DT28\"}}:::dt\n  D_DT52{{\"DT52\"}}:::dt\n  D_DT56{{\"DT56\"}}:::dt\n  D_DT57{{\"DT57\"}}:::dt\n  D_DT71{{\"DT71\"}}:::dt\n  D_DT74{{\"DT74\"}}:::dt\n  D_DT75{{\"DT75\"}}:::dt\n  D_DT77{{\"DT77\"}}:::dt\n  D_DT78{{\"DT78\"}}:::dt\n  D_DT90{{\"DT90\"}}:::dt\n\n  P_MCP_BUROK --> D_DT_M3\n  P_MCP_BUROK --> D_DT_M5\n  P_MCP_BUROK --> D_DT_M7\n  P_SZPA_AUDIT --> D_DT77\n  P_TERV_BEFOGAD --> D_DT_M8\n  T10 --> D_DT2\n  T10 --> D_DT74\n  T10 --> T11\n  T10 --> T52\n  T10 --> T9\n  T102 --> T107\n  T102 --> T76\n  T103 --> T102\n  T103 --> T76\n  T104 --> T102\n  T104 --> T103\n  T104 --> T76\n  T105 --> T102\n  T105 --> T103\n  T105 --> T104\n  T105 --> T76\n  T106 --> T102\n  T106 --> T103\n  T106 --> T104\n  T106 --> T105\n  T106 --> T76\n  T107 --> D_DT190\n  T11 --> D_DT74\n  T11 --> T9\n  T12 --> D_DT74\n  T12 --> T11\n  T13 --> T10\n  T22 --> D_DT56\n  T22 --> D_DT57\n  T22 --> D_DT71\n  T25 --> T11\n  T25 --> T12\n  T27 --> T9\n  T36 --> D_DT28\n  T36 --> D_DT74\n  T36 --> T11\n  T36 --> T27\n  T36 --> T38\n  T36 --> T52\n  T36 --> T9\n  T38 --> D_DT181\n  T38 --> D_DT52\n  T38 --> D_DT56\n  T38 --> D_DT_F38i\n  T38 --> T107\n  T48 --> T22\n  T52 --> D_DT78\n  T52 --> D_DT90\n  T55 --> D_DT74\n  T55 --> T109\n  T55 --> T11\n  T55 --> T110\n  T67 --> T27\n  T67 --> T7\n  T67 --> T9\n  T70 --> D_DT74\n  T70 --> T11\n  T70 --> T55\n  T70 --> T9\n  T74 --> T11\n  T75 --> T74\n  T76 --> D_DT127\n  T76 --> D_DT128\n  T76 --> D_DT129\n  T76 --> D_DT146\n  T76 --> D_DT147\n  T76 --> D_DT148\n  T76 --> D_DT149\n  T76 --> D_DT150\n  T76 --> D_DT151\n  T76 --> D_DT152\n  T76 --> D_DT75\n  T76 --> D_DT_M1\n  T76 --> D_DT_M4\n  T76 --> D_DT_M6\n  T81 --> T109\n  T86 --> T109\n  T86 --> T11\n  T86 --> T110\n  T86 --> T27\n  T86 --> T38\n  T86 --> T52\n  T86 --> T7\n  T86 --> T76\n  T86 --> T9\n  T9 --> D_DT190\n  T9 --> D_DT193\n  T9 --> D_DT28\n  T9 --> D_DT74",
  "dontesek": {
   "nyitott": [
    {
@@ -2251,6 +2251,16 @@
      "🟢"
     ],
     "sor": 259
+   },
+   {
+    "id": "DT193",
+    "feladat": "#9 SZOTAR S2 (K13c: `teszt_szerepmatrix.py` az `ir` mezőn kívül)",
+    "kerdes": "Az `eszkozok/teszt_szerepmatrix.py` nincs a brief `ir` mezőjében, de módosult (`git diff origin/main HEAD`: +262/−17 sor), és ez a K13c kapuja. Megszűnt vagy átírt elvárások: az „5., 6., 8., 9.: hivatkozás (S4)” ciklus (`for n in (5, 6, 8, 9)`); az „adatosítva, de a tokenekhez nincs TBESH-sor” ág; a DT83-as H8034-elvárás (`len(UROS_RE.findall(b)) == 2` és az „üres blokk: adatosítva, nincs bekötve; a bekötés a #9 dolga” regex); a `heber 1` blokkban az `assertNotIn('\\n> ', b)`; az „idézőblokk csak a forrás-szerepekben” ellenőrzés (`forras = set(LG.SZEREP_SZOTAR)`); az `ἐπικαλέω (epikaleō)` és a `#### G0994 — βοάω (boaō)` assertek; a „nem adatosított szerep alatt nincs idézőblokk” ciklus (görög 3, 7, héber 5, 8, 9); `assertIn('#9', sz['heber'])` és `assertNotIn('\\n> ', sz['heber'])`. A 7d4a7a78 (DT-F09f, Opus) `ir`-en kívüli, de nettó diffje a main-hez képest 0. *(forrás: `naplok/ELLENOR_SZOTAR_S2.md` 4. eltérés, `naplok/SZOTAR_S2_zaras.md` 5.; `git diff origin/main HEAD -- eszkozok/teszt_szerepmatrix.py` 2026-10-17; proveniencia: manual)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 268
    }
   ],
   "javasolt": [],
@@ -2288,6 +2298,42 @@
      "🟢"
     ],
     "sor": 165,
+    "oszlopszam": 10,
+    "fejlec_oszlopszam": 8
+   },
+   {
+    "id": "DT191",
+    "feladat": "#9 SZOTAR S2 (S2.8 ⛔, K10: a diff-osztályozó tartalékai)",
+    "kerdes": "`eszkozok/render_diff_osztalyoz.py` (`proba_osztalyoz`, `_tudomanyos_kategoria`, `_par_kategoria`, `_torzscikk_kategoria`): minden ág tartaléka egy `PROBA_KATEGORIAK`-on belüli kategória (`.get(…, 'szerep_vaz')`, `return 'tanulmany'`, `return 'torzscikk_res'`, az `_par_kategoria` alapból `'kiejtes'`), ezért az `ismeretlen = True` ág nem érhető el; az „ismeretlen kategória 0” tautológia, az S2.8 ⛔ feltétele nem tud teljesülni. A `szocikkek` blokk minden törölt sora feltétel nélkül `szerep_vaz`-ba kerül, így az adatvesztés ott nem látszana. A végrehajtó két saját kategóriát vezetett be (`elavult_adat` 385 sor, `fordites_jelzo` 100 sor; `naplok/SZOTAR_S2_diff.tsv`, `naplok/SZOTAR_S2_zaras.md` 4–5.). *(forrás: `naplok/ELLENOR_SZOTAR_S2.md` 1. eltérés, `F09_SZOTAR_S2_BRIEF.md` S2.8 ⛔, K10; proveniencia: manual)*",
+    "allapot": "ellenorizendo",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 266,
+    "oszlopszam": 23,
+    "fejlec_oszlopszam": 8
+   },
+   {
+    "id": "DT192",
+    "feladat": "#9 SZOTAR S2 (N-F09d: a TBESH-konszolidált gitignore-függés)",
+    "kerdes": "A `lexikon_general.py` (`TBESH_KONSZ_FAJL`, `tbesh_konszolidalt()`) a gitignore-olt `konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv`-t olvassa (`.gitignore` 16. sor: `konkordancia/_nyers/`). Tiszta klónon vagy CI-ben 17 próbablokk (14 „a TBESH.lexicon szövege”, 3 „TBESH.txt és .lexicon”) és a `TestTbeshF09.test_konszolidalt…` nem reprodukálható; a PR CI-je (`ellenorzes`) emiatt bukik: E27 HIBA, „a hivatkozott fájl/könyvtár nem létezik: `konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv`”. A DT-F42b „nincs kódolvasója” előfeltevése megszűnt. A fájl licencok miatt került a `_nyers/` alá (DT-F33a / DT-F42e, Online Bible-záradék), ezért a verziózott kivonat licencütközés. Mérés (scope=`konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv`, a 8 motívum 24 H-tokenje \\| forras=`lexikon_general.tbesh_konszolidalt()` \\| ts=2026-10-17): 38 sor, ebből `txt` 16, `egyenlo` 2, `lexicon` 20. *(forrás: `naplok/ELLENOR_SZOTAR_S2.md` 2. eltérés, `NYITOTT_FELADATOK.md` N-F09d, DT-F33a, DT-F33f, DT-F42b, DT-F42e; proveniencia: manual)*",
+    "allapot": "ellenorizendo",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 267,
+    "oszlopszam": 10,
+    "fejlec_oszlopszam": 8
+   },
+   {
+    "id": "DT194",
+    "feladat": "#9 SZOTAR S2 (K9: a görög aranykészlet 50 helyett 26 pár)",
+    "kerdes": "A brief (K9, S0.2/5) és az F05 D23 szerint az aranykészlet 50 pár, kapu 100%. A végrehajtó 26 gépileg tesztelhető párra szűkítette (a 30 egyedi pár közül 4 kontextusfüggő; `naplok/F09_S0_kiindulas.md` 5. szakasz, 43. sor), saját döntéssel; a `kiejtes.py --ellenoriz` 26/26. Az ellenőr a 26/26-ot nem tudta ellenőrizni (parancskörén kívül). *(forrás: `naplok/ELLENOR_SZOTAR_S2.md` 7. eltérés, `naplok/F09_S0_kiindulas.md` 5.; proveniencia: manual)*",
+    "allapot": "ellenorizendo",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 269,
     "oszlopszam": 10,
     "fejlec_oszlopszam": 8
    }

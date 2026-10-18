@@ -1,4 +1,4 @@
-# SZOTAR S2 (#9) — párosítás szúrópróba (DT-F09g, 4. javító menet)
+# SZOTAR S2 (#9) — párosítás szúrópróba (DT191, 4. javító menet)
 
 *Mintavétel: `naplok/F09_J_parositas_minta.py` (seed 20261017, n=15) a kizárólagos párosítás (`render_diff_osztalyoz.proba_osztalyoz`) összes párjából (724 pár, a csak fejléc-mélységűek nélkül). Proveniencia: scope=`generalt_proba/F09_szotar_s2_proba/lexikon` vs `lexikon/` | forras=`eszkozok/render_diff_osztalyoz.py` | ts=2026-10-17*
 

@@ -1,4 +1,4 @@
-# SZOTAR S2 (#9) — `elavult_adat` szúrópróba (DT-F09g, 3. javító menet)
+# SZOTAR S2 (#9) — `elavult_adat` szúrópróba (DT191, 3. javító menet)
 
 *Ág: `claude/f09-szotar-s2` · modell: `claude-sonnet-5-5` · mintavétel: `naplok/F09_J_elavult_szuropr.py` (seed 20261017) · proveniencia: scope=`generalt_proba/F09_szotar_s2_proba/lexikon/*_TUDOMANYOS.md` vs `lexikon/` | forras=`eszkozok/render_diff_osztalyoz.py` (`proba_osztalyoz`, kizárólagos párosítás) + `naplok/F09_J_elavult_szuropr.py` | ts=2026-10-17*
 
