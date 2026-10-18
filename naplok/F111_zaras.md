@@ -12,7 +12,8 @@ Modell: claude-sonnet-5-5 (a brief `sonnet` mezőjével egyezik). Ág: `claude/f
 - E2: D2 (korlát 2 kör) a felhasználó 2026-10-18-i jóváhagyásával; a korlátnál a maradék tételesen a `kovetkezo` mezőbe kerül (`elteres.md` 6. lépés).
 - E3 (ELLENOR_F111 5.): a brief törzse is változott a fejlécen túl: a D2 sor átírva (E2 kiegészítéssel) és új E1 sor a döntésnaplóban. Mindkettő a felhasználó 2026-10-18-i döntésének rögzítése; az `ir`-en kívüli (brief-törzs) írás ezért egyeztetett eltérés.
 
-## Száraz próba: az `/elteres` 1. lépése az `ELLENOR_F115.md`-re (a próba eredménye)
+## Száraz próba: az `ELLENOR_F115.md` (ELTÉRÉS: 7 tétel) besorolási javaslata (kör: 1 / 2, javaslat, javítás nem történt)
+*A cím a próba eredeti tárgyát őrzi (CI E5); a tényleges eredmény: az `/elteres` 1. lépése az `ELLENOR_F115.md`-re megáll, a javaslat nem a parancs kimenete.*
 Eredmény: **a parancs jelez és megáll, nem sorol be.** Az F115 ág PR-ja mergelt: `gh pr list --head claude/f115-macula-chi-xi --state all` → #402, `MERGED` (2026-10-18T13:58Z); `git log origin/main --grep='#402'` → `19b9841b Merge pull request #402`. Az 1. lépés szerint új ág kell a main-ből. Az F115-ön ráadásul már lezajlott javítókör is (F115.8, F115.9: a 6., 7., és az 1. tételt kezelte). A korábbi 7 tételes besorolás ezért **nem a parancs kimenete**; a próba egyszerre azt is igazolja, hogy a mergelt-PR szabály működik.
 
 Szemléltető, nem a parancs kimenete: ha az ág nem volna mergelt, a 2. lépés javaslata (kör: 1 / 2)
