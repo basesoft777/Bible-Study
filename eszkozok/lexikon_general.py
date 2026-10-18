@@ -2381,7 +2381,7 @@ def res_torzs(m, res, sor, sorai=None):
             raise ValueError('nincs adat-alapú render szabály: %s / %s' % (m['id'], res))
         if sorai is None:
             sorai = _elofordulas_sorai(m['id'])
-        return ADAT_RES_RENDEREK[res](m['id'], sorai)
+        return adatres_keret(m['id'], res, ADAT_RES_RENDEREK[res](m['id'], sorai))
     raise ValueError('ismeretlen forras: %r (%s / %s)' % (forras, m['id'], res))
 
 
@@ -2533,6 +2533,26 @@ def _adatres_minosites(motivum_id, sorai):
                              tsk_index(), kh_index())
 
 
+# A generált rés forrásai (a GENERÁLT-RÉS jelölő és a proveniencia-sor
+# `forras=` mezője; CLAUDE.md 1. szabály).
+ADAT_RES_FORRASAI = {
+    'alatamasztas': ('adat/kapcsolatok.tsv',),
+    '2b': ('adat/lexikon_hivatkozasok.tsv',),
+    'minosites': ('adat/jeloltek.tsv', 'adat/elofordulasok.tsv',
+                  'konkordancia/TSK_kereszthivatkozasok.tsv', 'konkordancia/Karoli_kereszthivatkozasok.tsv'),
+}
+
+
+def adatres_keret(motivum_id, res, torzs):
+    """A generált rés kerete (ELLENOR_F11_M 7. szakasz 4.): elöl gépi
+    GENERÁLT-RÉS jelölő, a végén a proveniencia-sor (`scope=… | forras=… |
+    ts=…`, a ts a general.TS: PARDES_DATUM vagy a mai nap)."""
+    forrasok = ', '.join(ADAT_RES_FORRASAI[res])
+    return ('<!-- GENERÁLT-RÉS: %s | general.py --cel lexikon | forrás: %s -->\n\n%s\n\n'
+            '*Proveniencia: `scope=id:%s | forras=%s | ts=%s`*'
+            % (res, forrasok, torzs, motivum_id, '+'.join(ADAT_RES_FORRASAI[res]), G.TS))
+
+
 ADAT_RES_RENDEREK = {
     'alatamasztas': _adatres_alatamasztas,
     '2b': _adatres_2b,
@@ -2553,10 +2573,19 @@ def _boundary_index(fajl_szoveg, needle, search_from, res):
     try:
         return fajl_szoveg.index(needle, search_from), needle
     except ValueError:
-        legacy = _LEGACY_FEJLEC.get(res)
-        if legacy is not None and legacy != needle:
-            return fajl_szoveg.index(legacy, search_from), legacy
-        raise
+        pass
+    # F11 M3 javítókör: a generált rés fejléce `*(generált)*`; a meglévő lap
+    # és a VAZ_SABLON még a `*(kézi)*` alakot hordozza.
+    kezi = needle.replace('*(generált)*', '*(kézi)*')
+    if kezi != needle:
+        try:
+            return fajl_szoveg.index(kezi, search_from), kezi
+        except ValueError:
+            pass
+    legacy = _LEGACY_FEJLEC.get(res)
+    if legacy is not None and legacy != needle:
+        return fajl_szoveg.index(legacy, search_from), legacy
+    raise ValueError('a rés-fejléc nem található: %r' % needle)
 
 
 def res_blokkok_alkalmaz(fajl_szoveg, m):

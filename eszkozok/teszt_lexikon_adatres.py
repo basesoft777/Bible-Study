@@ -121,7 +121,18 @@ class ResTorzsAdatAg(unittest.TestCase):
             ki = LG.res_torzs({'id': 'PROBA-001'}, '2b', {'forras': 'adat', 'tanulmany': ''}, [{}, {}])
         finally:
             LG.ADAT_RES_RENDEREK['2b'] = eredeti
-        self.assertEqual(ki, 'RENDER PROBA-001 2')
+        self.assertIn('\n\nRENDER PROBA-001 2\n\n', ki)
+        self.assertTrue(ki.startswith('<!-- GENERÁLT-RÉS: 2b | general.py --cel lexikon | forrás: '
+                                      'adat/lexikon_hivatkozasok.tsv -->'))
+        self.assertTrue(ki.endswith('*Proveniencia: `scope=id:PROBA-001 | forras=adat/lexikon_hivatkozasok.tsv '
+                                    '| ts=%s`*' % LG.G.TS))
+
+    def test_hatarkereses_kezi_tartalek(self):
+        szoveg = 'x\n### Minősítés *(kézi)*\n\ny\n'
+        i, talalt = LG._boundary_index(szoveg, '### Minősítés *(generált)*', 0, 'minosites')
+        self.assertEqual((i, talalt), (2, '### Minősítés *(kézi)*'))
+        with self.assertRaises(ValueError):
+            LG._boundary_index(szoveg, '### Alátámasztás *(generált)*', 0, 'alatamasztas')
 
     def test_renderelo_nelkuli_res_hiba(self):
         with self.assertRaises(ValueError):

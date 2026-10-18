@@ -8,10 +8,10 @@ KIRALY-001	alatamasztas	### Alátámasztás *(kézi)*	adat	Az egyes kapcsolatok 
 KIRALY-001	ertelmezes	## 6. Értelmezés *(kézi)*	tanulmany	tematikus_lezart/Melkizedek_tematikus.md
 KIRALY-001	modszertan	## 7. Módszertan és nyitott kérdések *(kézi)*	tanulmany	tematikus_lezart/Melkizedek_tematikus.md
 ISTENTISZT-001	kivonat	## Kivonat *(kézi)*	tanulmany	motivumok/ISTENTISZT-001.md
-ISTENTISZT-001	2b	### 2/b. Kiegészítő szótári adatok *(kézi)*	adat	
+ISTENTISZT-001	2b	### 2/b. Kiegészítő szótári adatok *(generált)*	adat	
 ISTENTISZT-001	miert_fontos	### Miért fontos ez a lelet *(kézi)*	tanulmany	motivumok/ISTENTISZT-001.md
-ISTENTISZT-001	minosites	### Minősítés *(kézi)*	adat	
-ISTENTISZT-001	alatamasztas	### Alátámasztás *(kézi)*	adat	
+ISTENTISZT-001	minosites	### Minősítés *(generált)*	adat	
+ISTENTISZT-001	alatamasztas	### Alátámasztás *(generált)*	adat	
 ISTENTISZT-001	ertelmezes	## 6. Értelmezés *(kézi)*	tanulmany	motivumok/ISTENTISZT-001.md
 ISTENTISZT-001	modszertan	## 7. Módszertan és nyitott kérdések *(kézi)*	tanulmany	motivumok/ISTENTISZT-001.md
 TEREMT-001	kivonat	## Kivonat *(kézi)*	tanulmany	tematikus_lezart/Tehom_tematikus.md
