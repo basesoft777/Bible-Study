@@ -1270,6 +1270,17 @@ class E28Teszt(unittest.TestCase):
             self.assertEqual(len(t), 1)
             self.assertEqual(t[0].szint, 'HIBA')
 
+    def test_negativ_nyito_marker_zaro_nelkul_hibatalalat_nem_kivetel(self):
+        with _IdeiglenesGyoker() as gy:
+            self._fixture(gy)
+            _ir_nyers(gy, 'naplo.md', 'kezi\n<!-- GENERÁLT-KEZDET: general.py --cel naplo#teszt | forrás: x | ts=2026-09-15 -->\ntorzs\n')
+            t = self._futtat(gy, marker_celok=[('naplo', 'naplo.md')])
+            self.assertEqual(len(t), 1)
+            self.assertEqual((t[0].szabaly, t[0].szint, t[0].fajl), ('E28', 'HIBA', 'naplo.md'))
+            self.assertIn('naplo#teszt', t[0].reszlet)
+            self.assertIn('záró pár nélkül', t[0].reszlet)
+            self.assertIn('python eszkozok/general.py --cel naplo --ir', t[0].reszlet)
+
     def test_munkafa_tartalek_lf_es_jelzi_hogy_nem_blob(self):
         with _IdeiglenesGyoker() as gy:
             _ir_nyers(gy, 'x.md', 'a\r\nb\r\n')

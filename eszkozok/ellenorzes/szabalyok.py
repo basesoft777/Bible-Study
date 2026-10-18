@@ -1975,7 +1975,12 @@ def e28_generalt_nezet_egyezes(fajlok):
             continue
         javit = 'python eszkozok/general.py --cel %s --ir' % cel
         for cel_kulcs, blk in blokkok:
-            talalat = _e28_marker_torzs(szoveg, cel_kulcs)
+            try:
+                talalat = _e28_marker_torzs(szoveg, cel_kulcs)
+            except ValueError as e:   # nyitó marker záró pár nélkül (general.marker_par_keres)
+                hiba(relut, 0, '%s: %s. Javítás: %s (a hiányzó záró markert a kézi szakaszon kívül '
+                     'pótolni kell, majd újragenerálni)' % (cel_kulcs, e, javit))
+                continue
             if talalat is None:
                 hiba(relut, 0, '%s: a marker-pár hiányzik. Javítás: %s' % (cel_kulcs, javit))
                 continue
