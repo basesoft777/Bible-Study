@@ -505,7 +505,7 @@ def main():
 
     def ok_osztaly(k, kat, ures):
         """A veszteség OKA (a KJV-kulcs szerint; a kat az azonos számú Károli-vers táblasora, csak a régi elérés leírása).
-        nincs_sor: a Károli-fejezetnek nincs sora a táblában; kivetel: az 1Kir 22:46–49 scope=manual "nincs pár";
+        nincs_sor: a Károli-fejezetnek nincs sora a táblában; kivetel_nincs_par_1Kir_22 / _Ezs_3 / _Jon_2 / _1Sam_24: a scope=manual "nincs pár" kivételek (1Kir 22:46–49, Ézs 3:1–26, Jón 2:2–10, 1Sám 24:1–22);
         egyéb: a KJV-vers létezik, de a tábla nem rögzíti a Károli-párját (táblahiba, pl. Préd 10:1–3 = Károli 9:21–23)."""
         if kat == 'nincs_sor':
             return 'tabla_lyuk_fejezet'

@@ -55,4 +55,4 @@ TEREMT-001_TUDOMANYOS.md	torolt	*Ez a blokk a `[ID: TEREMT-001]` motívum 2 Stro
 TEREMT-001_TUDOMANYOS.md	torolt	- `adat/forditas_ubs.tsv` (projekt-adat)	forditas_ubs_forras_elavult	
 TEREMT-001_TUDOMANYOS.md	torolt	| `forditas_ubs.tsv` | `adat/forditas_ubs.tsv` | projekt-adat | elofordulasok |	forditas_ubs_forras_elavult	
 # felhasznaloi_besorolas: a felhasználó (chat) által név szerint elfogadott sorok (FELHASZNALO_ELFOGADOTT; 2026-10-17: 32 sor, 2026-10-18: 12 sor, DT-F113b: 11 sor); az üres besorolású sor `ismeretlen`, a felhasználó elé kerül. Elfogadott csoportok: bdb_formatumvaltozas=2, f87_glossza_javitas=4, forditas_ubs_forras_elavult=14, jelmagyarazat_mondat=8, joshua_forrasvaltas=2, kezi_2b_lefedettseg_sece=3, kutatoi_azonositas_feloldodott=3, leiro_mondat_bovult=8, lsj_licencverzio_valtas=1, szamozas_elteres_fuggobe_valt=6, szamozas_elteres_helyorzo_feloldodott=4
-# proveniencia: scope=../../../../../AppData/Local/Temp/f114p vs lexikon | forras=eszkozok/render_diff_osztalyoz.py --proba | ts=
+# proveniencia: scope=../../../../../AppData/Local/Temp/f114p vs lexikon | forras=eszkozok/render_diff_osztalyoz.py --proba | ts=2026-10-18

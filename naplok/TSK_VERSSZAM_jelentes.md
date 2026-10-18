@@ -18,12 +18,12 @@ Az öt fogyasztó (`lexikon_general.tsk_index`, `lekerdez.cmd_tsk`, `nem_vizsgal
 |---|---|
 | A. fogyasztói úton olvasott ÓSZ Károli-kulcs | 21 247; KJV-forrása nem a megfeleltetés szerinti: **0** |
 | B. `elofordulasok.tsv` ÓSZ-versei (megfeleltetéssel) | 224 vers |
-| B. minden Votes | rossz versről **0**, elmarad **0** |
-| B. Votes ≥ 15 | rossz versről **0**, elmarad **0** |
+| B. minden Votes | rossz versről **0**, elmarad **0** *(a kivétel-verseken körkörös: a kivételekkel bővített megfeleltetéshez mér; l. alább, Kimondott korlát)* |
+| B. Votes ≥ 15 | rossz versről **0**, elmarad **0** *(ugyanez a megjegyzés)* |
 | nincs-pár forrás-KJV-kulcs (ÓSZ, a sor kimarad) | 331 kulcs, 4 925 sor |
 | nincs-pár cél-KJV-vers (ÓSZ, a sor kimarad) | 342 vers, 4 296 előfordulás |
 
-**Javítás (F114.10–F114.17, a független ellenőri jelentések alapján, `naplok/ELLENOR_TSK_VERSSZAM.md`):** az első változat hamisan állította, hogy a nincs-pár kulcsok olyan KJV-versek, amelyeknek a Károliban nincs azonos tartalmú párja. A valós ok oszloponként más. A táblázat számai a DT-F114d és az 1Kir 22:46–49 kivétel utáni állapotot mutatják; a korábbi (345/4 976, 359/4 378, 21 234) számok felülírva.
+**Javítás (F114.10–F114.17, a független ellenőri jelentések alapján, `naplok/ELLENOR_TSK_VERSSZAM.md`):** az első változat hamisan állította, hogy a nincs-pár kulcsok olyan KJV-versek, amelyeknek a Károliban nincs azonos tartalmú párja. A valós ok oszloponként más. A táblázat számai a DT-F114d és mind a négy kivétel (1Kir 22:46–49, Ézs 3:1–26, Jón 2:2–10, 1Sám 24:1–22) utáni állapotot mutatják; a korábbi (345/4 976, 359/4 378, 21 234, majd 275/4 245, 286/3 475, 21 306) számok felülírva.
 
 A `Karoli_versmegfeleltetes.tsv` 161 üres `igehely_kjv` sorából **csak az `MT|szamlalas` 86 sorra** igaz, hogy a KJV-vers a Károli-verssel azonos számú (LXX-hiány); ezekre a `tsk_kulcs` az `igehely_mt`-t veszi KJV-kulcsnak (DT-F114d (b)). **Ez sem mind létező vers:** az 1Kir 22:54, Jón 2:11, Ézs 3:27, 1Sám 20:43 és 1Sám 24:23 KJV-verse nem létezik, ezért 0 TSK-sort kapnak (ártalmatlan; nem „eltolt pár”). A kár a szomszédos sorokon volt: a Károli 1Kir 22:46–49 (= KJV 22:45–48), Ézs 3:1–26 (Károli 3:1 = KJV 2:22), Jón 2:2–10 (Károli 2:9 = KJV 2:8) és 1Sám 24:1–22 (Károli 24:2 = KJV 24:1) eltolt tartalmú párt kapna (MT-tartalékkal vagy tvtms-azonossággal), ezért ezek scope=manual „nincs pár” kivételek (`tsk_kulcs.NINCS_PAR_KIVETEL`, a tábla értékétől függetlenül). Ismert maradék, döntés nélkül nem bővítjük: az 1Kir 22:45 Károli-szövege a KJV 22:44-nek felel meg (a teszt pozitívként rögzíti). A többi üres sor nem azonos számú: a 66 `MT|lxx_os_etalon_f91` sor zsoltárfelirat, a `KJV|lxx_os_etalon_f91` 1 sor (Zsolt 13:1) felirat; a `KEZI|kezi_identitas_javitas` 8 sor (Jób 39:34–38, Préd 9:21–23) **táblahiba**: a KJV-pár létezik (Jób 40:1–5, Préd 10:1–3), a tábla nem rögzíti.
 
@@ -86,3 +86,12 @@ Frissített mérés (felmérő E. és F. rész):
 ## F114.21 — DT-F114e (a) (Felhasználó, 2026-10-18)
 
 A `TSK_KULCS_JAVITAS_SOROK` 43 → 46 név szerinti sor (+ HAMART-001: `- TSK: Ézs 3:10 (Votes: 27)`, `- TSK: Ézs 3:11 (Votes: 27)` és a törzscikk összevont TSK-sora; az Ézs 3:1–26 kivétel céloldali hatása). A negatív teszt ép (listán kívüli TSK-sor `ismeretlen`). Próba-osztályozás: `tsk_kulcs_javitas=46`, `ismeretlen=0`, kilépési kód 0; `teszt_render_diff_osztalyoz` 74 OK, `teszt_tsk_kulcs` 14 OK. Napló: `naplok/F114_proba_diff.tsv`, `naplok/F114_proba_ismeretlen.tsv`.
+
+## F114.23 — negyedik javító menet: kimondott korlát és a TEREMT-001 −1/−1
+
+**Kimondott korlát (Felhasználó, 2026-10-18): a Jón 2:2–10 kivétel két motívum-előfordulást TSK nélkül hagy.** Az `adat/elofordulasok.tsv`-ben az ALVIL-001 `Jón 2:3` és a TEREMT-001 `Jón 2:6` a kivétel (Károli 2:2–10 „nincs pár”) miatt nem kap TSK-sort, holott a helyes KJV-pár létezik (Károli 2:3 = KJV 2:2, Károli 2:6 = KJV 2:5). A main-hez képest ez nem regresszió (a main az azonos számú KJV-verset adta, amely eltolt tartalom volt). A B mérés „0 elmaradó” eredménye a kivétel-verseken körkörös: a felmérő a kivételekkel bővített megfeleltetéshez mér, ezért ezt a hiányt nem fogja meg. A javítás a tábla pótlása (N-F54a), majd a kivétel kivezetése. Rögzítve: DT-F114d (kiegészítés), N-F54a.
+
+**A TEREMT-001 −1/−1 magyarázata** (`naplok/F114_proba_diff.tsv`: `TEREMT-001_TORZSCIKK.md` `torzscikk_res` 19→18, `TEREMT-001_TUDOMANYOS.md` `elavult_adat` 12→11). Mérés: két próba (a 7b845d8e és a mai állapot kódjával) `lexikon/` kimenetének `diff`-je a TEREMT-001 két fájljában pontosan ennyi:
+- `TEREMT-001_TUDOMANYOS.md`: a `#### Zsolt 42:8` alatti `- TSK: Jón 2:3 (Votes: 15)` sor megszűnt, és a blokk összesítő mondatában a találatszám 42 → 41 (ez a mondat sorváltozása a `elavult_adat` számlálóban).
+- `TEREMT-001_TORZSCIKK.md`: a `- **TSK-kereszthivatkozás** (szavazatszám): Jón 2:3 (15)` sor megszűnt (`torzscikk_res` −1).
+Ok: a Zsolt 42:8 TSK-célja a KJV `Jón 2:3`; az előző állapot a tábla tvtms-azonosságával Károli `Jón 2:3`-ra képezte (eltolt tartalom: a Károli 2:3 = KJV 2:2), a Jón 2:2–10 kivétellel ez most „nincs pár”. A helyes Károli-cél a `Jón 2:4` lenne (a KJV 2:3 = Károli 2:4), ezt a kivétel szintén elveszti, tehát a megszűnt sor valódi, de ugyanazon ismert táblahiba (N-F54a) miatt pótlás nélküli veszteség. Más sor nem változott a két fájlban.

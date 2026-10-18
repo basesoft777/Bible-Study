@@ -165,5 +165,5 @@ TEREMT-001_TUDOMANYOS.md	teologiai	58	0
 TEREMT-001_TUDOMANYOS.md	tsk_kulcs_javitas	0	4
 TEREMT-001_TUDOMANYOS.md	ubs_dbh	44	0
 # összesítő (hozzáadott + törölt sor): kiejtes=848, tbesh=147, ubs_dbh=522, mounce_sece=143, teologiai=3727, nyelvi_hatter=79, lxx_korpusz=360, licenc=462, szerep=197, szerep_vaz=488, elavult_adat=416, fordites_jelzo=24, tsk_kulcs_javitas=46, felhasznalo_elfogadva=55, jeloles=176, torzscikk_res=488, ismeretlen=0
-# proveniencia: scope=../../../../../AppData/Local/Temp/f114p vs lexikon | forras=eszkozok/render_diff_osztalyoz.py --proba | ts=
+# proveniencia: scope=../../../../../AppData/Local/Temp/f114p vs lexikon | forras=eszkozok/render_diff_osztalyoz.py --proba | ts=2026-10-18
 # az éles lexikon/ hash-ellenőrzése (naplok/F09_S0_lexikon_hash.tsv): 16 fájl bájtra változatlan

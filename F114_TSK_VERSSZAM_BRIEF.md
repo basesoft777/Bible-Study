@@ -9,7 +9,7 @@ modell: sonnet
 allapot: fut
 ag: claude/tsk-versszam
 ad: a TSK forrás- és célkulcsa mind az öt fogyasztóban egy közös átváltón át Károli-versszámon áll (a dataset érintetlen); a felmérőszkript az ÓSZ-en 0 rossz és 0 elmaradó sort mér, az N-F09g lezárható
-kovetkezo: újraellenőrzés (fuggetlen-ellenor) a DT-F114e alkalmazása után, majd zárás
+kovetkezo: zárás (az orkesztrátor), a negyedik javító menet után
 olvas: [konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/TSK_kereszthivatkozasok_README.md, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/Karoli_1908.tsv, eszkozok/lexikon_general.py, eszkozok/lekerdez.py, eszkozok/nem_vizsgalt.py, eszkozok/sqlite_epit.py, eszkozok/olvaso_pilot/adat.py, eszkozok/tsk_versszam_felmeres.py, eszkozok/render_diff_osztalyoz.py, eszkozok/teszt_render_diff_osztalyoz.py, naplok/TSK_VERSSZAM_felmeres.md, adat/elofordulasok.tsv, adat/jeloltek.tsv, adat/SEMA.md, lexikon/ALVIL-001_TUDOMANYOS.md, lexikon/ALVIL-001_TORZSCIKK.md, lexikon/TEREMT-001_TUDOMANYOS.md]
 ir: [eszkozok/tsk_kulcs.py, eszkozok/teszt_tsk_kulcs.py, eszkozok/lexikon_general.py, eszkozok/lekerdez.py, eszkozok/nem_vizsgalt.py, eszkozok/sqlite_epit.py, eszkozok/olvaso_pilot/adat.py, eszkozok/tsk_versszam_felmeres.py, eszkozok/render_diff_osztalyoz.py, eszkozok/teszt_render_diff_osztalyoz.py, konkordancia/TSK_kereszthivatkozasok_README.md, adat/jeloltek.tsv]
 fugg: []
