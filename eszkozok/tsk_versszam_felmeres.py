@@ -11,14 +11,18 @@ kerülnek. A szkript megméri:
      KJV-kulcs, és ezeknél hány TSK-jelölt kerül ma rossz versre / marad el
      (minden Votes-érték és a generátor Votes >= 15 küszöbe szerint is);
   C. az `adat/jeloltek.tsv` TSK-eredetű sorain: hány sor igehelye vagy forrásverse
-     esik eltérő számozású versre, és milyen döntéssel.
+     esik eltérő számozású versre, és milyen döntéssel;
+  G. (F117.5) nem körkörös mérés az F117 javítására: a referencia a versenkénti szöveg-összevetés
+     (naplok/F117_itelet.tsv), nem a tábla; M1 forrás-, M2 céloldal az A–D′ versein (régi / új / referencia),
+     M3 a teljes ÓSZ-en (az A–D′-n kívül 0 eltérés), M5 az elofordulasok.tsv A–D′ versein. A régi tábla:
+     --regi-tabla (pl. `git show 89b30c2e:konkordancia/Karoli_versmegfeleltetes.tsv`); nélküle a G. rész kimarad.
 
 A megfeleltetés forrása: `konkordancia/Karoli_versmegfeleltetes.tsv` (csak ÓSZ; az ÚSZ-t
 a tábla nem fedi, ott azonosság feltételezve — ezt a jelentés jelöli).
 
 Kimenet: stdout-összegzés + részletes TSV a megadott könyvtárba (alapértelmezés: a
 repón kívüli ideiglenes könyvtár). Használat:
-    python eszkozok/tsk_versszam_felmeres.py [--kimenet DIR]
+    python eszkozok/tsk_versszam_felmeres.py [--kimenet DIR] [--regi-tabla FÁJL]
 """
 import argparse
 import datetime
@@ -32,9 +36,7 @@ if hasattr(sys.stdout, 'reconfigure'):
 if hasattr(sys.stderr, 'reconfigure'):
     sys.stderr.reconfigure(encoding='utf-8')
 
-TKE_KIVETEL = frozenset(  # = tsk_kulcs.NINCS_PAR_KIVETEL (scope=manual)
-    ['1Kir 22:%d' % v for v in range(46, 50)] + ['Ézs 3:%d' % v for v in range(1, 27)]
-    + ['Jón 2:%d' % v for v in range(2, 11)] + ['1Sám 24:%d' % v for v in range(1, 23)])
+TKE_KIVETEL = frozenset()  # = tsk_kulcs.NINCS_PAR_KIVETEL (F117.4: üres; az F114-es lista: TKE_KIVETEL_F114, G. rész)
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 KONK = os.path.join(REPO, 'konkordancia')
 ADAT = os.path.join(REPO, 'adat')
@@ -94,10 +96,140 @@ def kibont(ige):
     return ki
 
 
+# --- G. Nem körkörös mérés az F117 javítására (F117.5, brief 5. szakasz M1–M5) --------------------------
+# Referencia: a versenkénti szöveg-összevetés kézi ítélete (naplok/F117_itelet.tsv; az összevont versnél az első
+# KJV-vers, DT-F117c (2)), NEM a megfeleltető tábla. A "régi" állapot a #114 utáni main: a --regi-tabla
+# (pl. `git show 89b30c2e:konkordancia/Karoli_versmegfeleltetes.tsv`) és az F114-es NINCS_PAR_KIVETEL.
+TKE_KIVETEL_F114 = frozenset(
+    ['1Kir 22:%d' % v for v in range(46, 50)] + ['Ézs 3:%d' % v for v in range(1, 27)]
+    + ['Jón 2:%d' % v for v in range(2, 11)] + ['1Sám 24:%d' % v for v in range(1, 23)])
+
+
+def k2j_tablabol(path, kivetel):
+    """A tsk_kulcs._betolt() szabálya egy tetszőleges táblára: -> (k2j, j2k)."""
+    k2j, j2k = {}, {}
+    for r in tsv(path):
+        kk = r['igehely_karoli']
+        b = konyv_cv(kk)
+        if not b:
+            continue
+        kj = r['igehely_kjv'].strip()
+        if kk in kivetel:
+            k2j[kk] = ''
+            continue
+        if not kj and r['osztaly'] == 'MT' and r['forras'] == 'szamlalas' and r['igehely_mt'].strip():
+            kj = r['igehely_mt'].strip()
+        k2j[kk] = ('%s %s' % (b[0], kj)) if kj else ''
+        if kj:
+            j2k.setdefault(k2j[kk], []).append(kk)
+    return k2j, j2k
+
+
+def g_resz(regi_tabla, kimenet, ts):
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import tsk_kulcs as TKE
+    ref = {}
+    oszt = {}
+    for r in tsv(os.path.join(REPO, 'naplok', 'F117_itelet.tsv')):
+        k = r['igehely_karoli']
+        ref[k] = '%s %s' % (konyv_cv(k)[0], r['itelet_kjv'].split(';')[0])
+    for r in tsv(os.path.join(REPO, 'naplok', 'F117_szoveg_osszevetes.tsv')):
+        if r['osztaly'] != 'kontextus':
+            oszt[r['igehely_karoli']] = r['osztaly']
+    assert len(ref) == 346 and set(ref) == set(oszt)
+    ref_inv = {}
+    for k, j in ref.items():
+        ref_inv.setdefault(j, []).append(k)
+    rk2j, rj2k = k2j_tablabol(regi_tabla, TKE_KIVETEL_F114)
+    TKE._betolt()
+    nk2j, nj2k = TKE._K2J, TKE._J2K
+    tsk = tsv(os.path.join(KONK, 'TSK_kereszthivatkozasok.tsv'))
+    forras_db = {}
+    for r in tsk:
+        forras_db[r['Igehely']] = forras_db.get(r['Igehely'], 0) + 1
+    cel_db = {}
+    for r in tsk:
+        for c in kibont(r['Kapcsolódó igehely']) or []:
+            cel_db[c] = cel_db.get(c, 0) + 1
+
+    # M1 — forrásoldal, M2 — céloldal, versenként
+    sorok = []
+    m1 = {}
+    m2 = {}
+    for k in sorted(ref):
+        o = oszt[k]
+        i_ = forras_db.get(rk2j.get(k) or '', 0)
+        ii = forras_db.get(nk2j.get(k) or '', 0)
+        iii = forras_db.get(ref[k], 0)
+        c_i = sum(n for c, n in cel_db.items() if k in rj2k.get(c, []))
+        c_ii = sum(n for c, n in cel_db.items() if k in nj2k.get(c, []))
+        c_iii = sum(cel_db.get(c, 0) for c in [ref[k]])
+        sorok.append((k, o, ref[k], rk2j.get(k, '(nincs sor)') or '(nincs pár)', nk2j.get(k, '') or '(nincs pár)',
+                      i_, ii, iii, c_i, c_ii, c_iii))
+        for d, a_, b_, c_ in ((m1, i_, ii, iii), (m2, c_i, c_ii, c_iii)):
+            x = d.setdefault(o, [0, 0, 0, 0, 0])
+            x[0] += 1
+            x[1] += a_
+            x[2] += b_
+            x[3] += c_
+            x[4] += int(b_ != c_)
+    print()
+    print('# G. Nem körkörös mérés az F117 javítására (referencia: naplok/F117_itelet.tsv; régi: %s + F114-kivétel)'
+          % os.path.basename(regi_tabla))
+    for nev, d in (('M1 forrás', m1), ('M2 cél', m2)):
+        ossz = [0, 0, 0, 0, 0]
+        for o in ['A', 'C', 'B', 'D', 'D′']:
+            x = d.get(o, [0, 0, 0, 0, 0])
+            print('  %s | %-2s | vers %3d | (i) régi %5d | (ii) új %5d | (iii) referencia %5d | (ii)≠(iii) vers: %d'
+                  % (nev, o, x[0], x[1], x[2], x[3], x[4]))
+            ossz = [p + q for p, q in zip(ossz, x)]
+        print('  %s | össz | vers %3d | (i) régi %5d | (ii) új %5d | (iii) referencia %5d | (ii)≠(iii) vers: %d'
+              % (nev, ossz[0], ossz[1], ossz[2], ossz[3], ossz[4]))
+    elt = [s for s in sorok if s[6] != s[7] or s[9] != s[10]]
+    print('  (ii)≠(iii) tételesen: %s' % ('; '.join('%s: M1 %d/%d, M2 %d/%d' % (s[0], s[6], s[7], s[9], s[10]) for s in elt) or 'nincs'))
+    print('proveniencia: scope=A–D′ (346 Károli-vers) | forras=TSK_kereszthivatkozasok.tsv+naplok/F117_itelet.tsv (referencia)'
+          '+Karoli_versmegfeleltetes.tsv (új; régi: --regi-tabla) | n=346 | ts=%s' % ts)
+
+    # M3 — mellékhatás a teljes ÓSZ-en
+    kulcsok = set(rk2j) | set(nk2j)
+    k_elt = [k for k in sorted(kulcsok) if rk2j.get(k, None) != nk2j.get(k, None)]
+    k_kivul = [k for k in k_elt if k not in ref]
+    j_kulcsok = set(rj2k) | set(nj2k)
+    j_elt = [j for j in sorted(j_kulcsok) if sorted(rj2k.get(j, [])) != sorted(nj2k.get(j, []))]
+    j_kivul = [j for j in j_elt if not (set(rj2k.get(j, [])) | set(nj2k.get(j, []))) & set(ref)]
+    print('M3 | Károli→KJV eltérés: %d kulcs, ebből az A–D′-n kívül: %d %s' % (len(k_elt), len(k_kivul), k_kivul[:20]))
+    print('M3 | KJV→Károli eltérés: %d KJV-kulcs, ebből egyetlen A–D′ verset sem érint: %d %s' % (len(j_elt), len(j_kivul), j_kivul[:20]))
+    print('proveniencia: scope=teljes ÓSZ (Károli-kulcs: %d, KJV-kulcs: %d) | forras=Karoli_versmegfeleltetes.tsv régi/új | n=%d | ts=%s'
+          % (len(kulcsok), len(j_kulcsok), len(kulcsok), ts))
+
+    # M5 — elofordulasok.tsv
+    elof = tsv(os.path.join(ADAT, 'elofordulasok.tsv'))
+    m5 = []
+    for r in elof:
+        versek = kibont(r['igehely']) or []
+        for v in versek:
+            if v in ref:
+                m5.append((r['id'], r['igehely'], v, forras_db.get(rk2j.get(v) or '', 0),
+                           forras_db.get(nk2j.get(v) or '', 0), forras_db.get(ref[v], 0)))
+    print('M5 | elofordulasok.tsv A–D′ versei: %d (sor, vers) — régi / új / referencia TSK-forrássor:' % len(m5))
+    for x in m5:
+        print('    %s\t%s\t%s\t%d / %d / %d' % x)
+    print('proveniencia: scope=elofordulasok.tsv A–D′ versei | forras=elofordulasok.tsv+TSK_kereszthivatkozasok.tsv+naplok/F117_itelet.tsv | n=%d | ts=%s'
+          % (len(m5), ts))
+    with open(os.path.join(kimenet, 'G_f117_m1_m2.tsv'), 'w', encoding='utf-8', newline='\n') as fh:
+        fh.write('# F117.5 G. rész M1/M2 versenként; proveniencia: scope=A–D′ | forras=TSK+naplok/F117_itelet.tsv | n=346 | ts=%s\n' % ts)
+        fh.write('\t'.join(['igehely_karoli', 'osztaly', 'ref_kjv', 'regi_kjv', 'uj_kjv', 'm1_regi', 'm1_uj', 'm1_ref',
+                            'm2_regi', 'm2_uj', 'm2_ref']) + '\n')
+        for s in sorok:
+            fh.write('\t'.join(str(x) for x in s) + '\n')
+    return elt, k_kivul, j_kivul
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--kimenet', default=os.path.join(tempfile.gettempdir(), 'tsk_versszam_felmeres'))
     ap.add_argument('--elveszett', default=None, help='F. rész: az elveszett/új forrás- és célkulcsok tételes TSV-je (alapból a --kimenet alatt)')
+    ap.add_argument('--regi-tabla', default=None, help='G. rész: a javítás előtti Karoli_versmegfeleltetes.tsv (a #114 utáni main)')
     a = ap.parse_args()
     os.makedirs(a.kimenet, exist_ok=True)
     ts = datetime.date.today().isoformat()
@@ -540,6 +672,9 @@ def main():
         for oldal, d in (('forras', f_forras), ('cel', f_cel)):
             for k in sorted(d):
                 fh.write('\t'.join([oldal, k, str(d[k][0]), ok_osztaly(k, d[k][1], d[k][2]), d[k][1]]) + '\n')
+
+    if a.regi_tabla:
+        g_resz(a.regi_tabla, a.kimenet, ts)
 
     # részletes kimenet
     with open(os.path.join(a.kimenet, 'B_elofordulas_versek.tsv'), 'w', encoding='utf-8', newline='\n') as f:

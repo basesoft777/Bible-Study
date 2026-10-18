@@ -63,11 +63,18 @@ import f91_versmegf_javit
 # A javito rogzitett ts=2026-10-14 erteke a SZABALY datuma (az F91 A1-javitas idobelyege), nem a futase.
 sorok = f91_versmegf_javit.javit(sorok)
 
+# F117 (DT-F117a–e): az A–D′ osztályú táblahibák javítása a verziózott kézi bemenetből
+# (konkordancia/Karoli_versmegfeleltetes_javitas.tsv). A szabály egy helyen él: eszkozok/versmegf_javitas.py
+# (felülír + pótol, halmaz-őrrel: a bemeneten kívüli sor nem változhat). Az F91 UTÁN fut.
+import versmegf_javitas
+sorok = versmegf_javitas.javit(sorok)
+
 # LF sorvég minden platformon (a .gitattributes is *.tsv eol=lf)
 with open(out_path, "w", encoding="utf-8", newline="\n") as out:
     out.write("\n".join(sorok) + "\n")
 
-print(f"Vegleges tabla: {len(final_rows)} adatsor -> {out_path}")
+print(f"Tervezetbol valasztott: {len(final_rows)} adatsor; a vegleges tablaban: "
+      f"{sum(1 for s in sorok if s and not s.startswith('#')) - 1} adatsor -> {out_path}")
 print(f"Osszevont/duplikalt-feloldott sorok: {len(osszevont)}")
 for o in osszevont:
     print(" ", o)

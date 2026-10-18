@@ -170,19 +170,23 @@ alkalmas (259 sorból 197 üres, a többi vegyes fájlnév és szabad szöveg; `
 A migráció kimenetét két összevetés méri, mindkettő `eszkozok/nulladiff.sh`-val (A/B, azonos
 `PARDES_DATUM`):
 
-- **ISTENTISZT-001:** az aranyminta (4.2) ↔ a migrált forrásból generált lexikonoldal;
+- **ISTENTISZT-001:** az aranyminta (4.2) ↔ a migrált forrásból generált lexikonoldal — a **rések** mércéje; a **generált blokkok** N0-ja A/B a #11 ágának alapja (a migráció előtti render) ↔ a feje között, azonos `PARDES_DATUM`-mal (DT84 (9) mintájára; DT219 Á1: az aranyminta blokkjai a 2026-10-08-i befagyasztás óta elavultak, `naplok/F11_M4_meres.md` 1. szakasz);
 - **HAMART-001** (kontroll, 6. szakasz): a #11 ágának alapja ↔ a feje, a még nem migrált motívumon.
 
 | Kód | Kategória | ISTENTISZT-001 | HAMART-001 | Hogyan engedi át a kapu |
 |---|---|---|---|---|
 | **N0** | **nulla-diff** | a generált blokkok (1., 1/a, 1/b, 2. szerepmátrix, 3., 4. tábla, 5. tábla, 8., Kolofon) bájtra azonosak, kivéve a D2-t | **a teljes generált kimenet** (lexikonoldal, `naplo`, `index`, `nyitott`, `study`) bájtra azonos | nincs `--csere` |
 | D1 | dátum (`ts=`, `Generálva:`) | — | — | nem diff: a `PARDES_DATUM` megszünteti |
-| D2 | forrás-útvonal | a lap fejléce (`rések: tematikus_lezart/…` → `motivumok/ISTENTISZT-001.md`), a `res_forras.tsv` `tanulmany`-útja, a Kolofon „Forrás-study” cellája | nem lehet | `--csere`, előre felsorolt literálokkal; a darabszám a jelentésben |
+| D2 | forrás-útvonal | a lap fejléce (`rések: tematikus_lezart/…` → `motivumok/ISTENTISZT-001.md`), a `res_forras.tsv` `tanulmany`-útja, a Kolofon „Forrás-study” cellája, a Kolofon „Kereszthivatkozás-napló” cellája (`tematikus_lezart/naplok/Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md` → „generált (`adat/jeloltek.tsv`); a régi napló archívum: `archivum/ISTENTISZT-001/…`”, DT219 Á3) | nem lehet | `--csere`, előre felsorolt literálokkal; a darabszám a jelentésben |
 | D3 | `belso`-kihagyás | a lapon ma álló 14 `【NAPLO` kimarad: a lexikonoldal kiadható `apparatus` nézet, a DT-F86a szerint prémium (DT84 (10)). Mindegyik egyenként kap ítéletet (DT84 (10) (ii)): a folyamat-nyom (dátum, ki/mikor, forrás elérhetősége) a forrásban `belso` blokként áll; az állítás megbízhatóságát érintő módszertani figyelmeztetés (pl. a lap 474., 919., 1180. sora) a forrásban apparátus-szövegként újraíródik (Minősítés / Módszertan / Nyitott kérdések), és a leképezési táblában külön, indokolt sort kap | nem lehet | blokkonként igazolva: a `belso` szöveg a `motivumok/ISTENTISZT-001.md`-ben megvan; az apparátusba emelt figyelmeztetés a diffben látható, és a leképezési tábla sora indokolja |
 | D4 | adatból generált rés | a `minosites`, `2b` (és ha a séma engedi, `alatamasztas`, `modszertan`-tábla) próza helyett adatból renderel | nem lehet | soronként: a régi rés minden igehely + döntés + indoklás eleme megvan a táblában, vagy a leképezési tábla `archivum`-nak jelöli |
 | D5 | archivált egység | a leképezési táblában `archivum`-ként jelölt egység eltűnik a nézetből | nem lehet | a leképezési tábla sora a forrás |
 | D6 | megszűnt kimenet | a `lexikon/ISTENTISZT-001_TORZSCIKK.md` (D34, N-F78a) | — | a fájl törlése a #11 dolga |
+| D7 | adat-egység az adatrétegben | a leképezési tábla `adat` sora szerint az adatrétegbe került sor megjelenik a generált blokkban (pl. a `kizart` blokk új jelölt-sorai) | nem lehet | soronként: a blokk új sora a leképezési tábla `adat` sorából keletkezett adatsor nézete (DT219 Á2) |
+| D8 | táblával indokolt áthelyezés | `forras` egység bájtra azonos szövege új helyen áll a lapon (más résben vagy a régi forrásrétegből a rés-törzsbe), a leképezési tábla `cel` mezője szerint (pl. a régi 2/b kísérő mondatai a Miért fontos résben, a régi forrásréteg részegységei az Értelmezésben) | nem lehet | soronként: a szöveg bájtra a régi forrásban, a helye a leképezési tábla sora (DT219 Á4–Á5) |
 | — | **minden más eltérés** | **ÁLLJ** | **ÁLLJ** | — |
+
+*Az L5 (nevesített tanítói szakasz hivatkozásként) az M7 feladata; az M4 mérésében várt nem-teljesülés (DT219 Á9).*
 
 Nem elfogadott (ÁLLJ) például: szakaszsorrend- vagy címváltozás a lexikonoldalon (a `VAZ_SABLON`
 kötött), szövegváltozás egy `forras` egység rés-törzsében (a próza bájtra átkerül, csak a
@@ -275,7 +279,7 @@ eltérés, nem rejtett átírás.
    szó szerint megvan (áthelyezés); vagy (b) forrás-csak jelölő-sor (`SZINT-*`, `INAKTÍV`,
    `ADAT-NÉZET`, `JELÖLT`, `ADAT-HIV`, `ADAT-ÉRTÉK`, `RÉS-*`, `FORRÁSRÉTEG`); vagy (c) üres sor
    vagy sablon-címsor; vagy (d) új kötőszöveg, amely a leképezési táblában `forras` sorként,
-   indoklással szerepel.
+   indoklással szerepel; vagy (e) részegység-kivágás: a sor a régi forrás egy sorából a leképezési tábla részegysége szerinti kivágással áll elő (a kivágott rész más rétegbe került; a megmaradó szöveg a régi sor részszövegeinek sorrendtartó egymásutánja; DT219 Á6).
 2. **Visszaírás (+1)** minden más hozzáadott sor, amelynek szövege (8 szavas n-gram, vagy rövid
    sornál teljes egyezés) az alap-commit `adat/*.tsv` celláiban vagy generált nézeteiben
    (`lexikon/`, a `motivumlog/` generált blokkjai, `generalt_proba/F78_szerepmatrix_proba/`)

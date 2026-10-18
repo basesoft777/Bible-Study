@@ -549,14 +549,22 @@ def e8_igehely_format(fajlok):
 
 SENSE_MINTA = re.compile(r'\bsense\b', re.IGNORECASE)
 
+# F11 M3 (DT-F11a, DT-F11f (2)): az archivum/ alatti fajl a regi fajl
+# ARCHÍV fejlecu, bajtra valtozatlan peldanya -- nem forras, nem
+# szerkesztendo, tehat a szovegere szolo E9 nem fut ra.
+ARCHIV_KONYVTAR = 'archivum/'
+
 
 def e9_angol_sense(fajlok):
     """F37 (E23): tanulmanyfajlon a D11 blockquote-kizaras nem ervenyes -- ott
     a blockquote a 🔗 kereszthivatkozas-blokk (Karoli-idezet + magyar
-    magyarazo sor), nem angol forrasszoveg. Az idezojeles szoveg ott is kizart."""
+    magyarazo sor), nem angol forrasszoveg. Az idezojeles szoveg ott is kizart.
+    Az archivum/ alatti fajl kimarad (ARCHIV_KONYVTAR)."""
     talalatok = []
     for relut in fajlok:
         if not relut.endswith('.md'):
+            continue
+        if relut.replace('\\', '/').startswith(ARCHIV_KONYVTAR):
             continue
         try:
             sorok = md_olvasas(repo_ut(relut))

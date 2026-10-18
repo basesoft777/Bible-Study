@@ -6,9 +6,12 @@ tipus: feladat
 fazis: folyamat
 munka: adat
 modell: opus
-allapot: nem_indult
+allapot: lezarva
+ag: claude/f117-versmegf-javitas
+pr: https://github.com/basesoft777/Bible-Study/pull/409
 ad: a `Karoli_versmegfeleltetes.tsv` a #114 által mért táblahibák nélkül generálódik (13 fejezet pótolva, a KEZI-, Dán 3- és eltolt párok szöveg-összevetéssel javítva); a `tsk_kulcs.NINCS_PAR_KIVETEL` üres, a Jón 2:3 (ALVIL-001) és Jón 2:6 (TEREMT-001) TSK-sorai visszatérnek
-kovetkezo: a /kovetkezo indítja
+kovetkezo: Te: a PR átnézése és a merge
+lezarva_osszegzes: a Károli↔KJV tábla 346 A–D′ verse szöveg-összevetéssel javítva (264 pótolt, 82 felülírt, a halmazon kívül 0 változás, KK4 bájtra determinisztikus); verziózott javító bemenet + halmaz-őrös modul; tsk_kulcs-kivétellista üres; elért TSK-forrássor 96 → 4 774 (= referencia); Jón 2:3 és Jón 2:6 TSK-sorai visszatértek; nyitva: N-F117a (bsb_import/sqlite_epit, addig a pardes.db nem építhető), N-F117b–d
 olvas: [konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/Karoli_1908.tsv, konkordancia/KJV_Strongs_teljes.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TSK_kereszthivatkozasok.tsv, naplok/KAROLI_KK1b_kulcstabla_tervezet.tsv, naplok/KAROLI_KK1b_kulcstabla_general.py, eszkozok/f91_versmegf_javit.py, eszkozok/lxx_os_import.py, eszkozok/tsk_versszam_felmeres.py, naplok/TSK_VERSSZAM_zaras.md, naplok/TSK_VERSSZAM_jelentes.md, naplok/F114_elveszett_sorok.tsv, naplok/ELLENOR_TSK_VERSSZAM.md, naplok/LXX_OS_LEFEDETTSEG_M0.md, adat/elofordulasok.tsv, adat/SEMA.md, adat/datasetek.tsv, Rendszerfejlesztesi_playbook.md]
 ir: [naplok/KAROLI_KK4_tabla_veglegesit.py, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/Karoli_versmegfeleltetes_javitas.tsv, eszkozok/versmegf_javitas.py, eszkozok/teszt_versmegf_javitas.py, eszkozok/versmegf_szoveg_osszevet.py, eszkozok/tsk_kulcs.py, eszkozok/teszt_tsk_kulcs.py, eszkozok/tsk_versszam_felmeres.py]
 fugg: []
@@ -75,10 +78,10 @@ A javítás tehát a 2–3. lépés mintáját követi: **verziózott kézi beme
 ## 4. Lépések (⛔ a kötelező megállások)
 
 0. **Modell-ellenőrzés** (CLAUDE.md): a tényleges modellnév kiírása és összevetése a fejléc `modell` mezőjével; eltérésnél megállás. Előtte a meglévő ág/worktree keresése a feladathoz. Az #11 M2 párhuzamosan futhat: a `general.py`-hoz, a `motivumok/`-hoz és a `sablonok/9_*`-hoz ez a feladat nem nyúl.
-1. ⛔ **A javítás helye.** Lehetőségek: **(a)** új, verziózott kézi bemenet (`konkordancia/Karoli_versmegfeleltetes_javitas.tsv`) + alkalmazó modul (`eszkozok/versmegf_javitas.py`), a KK4 az F91 után importálja; a javítás sorai felülírják vagy pótolják a tervezet sorait, `forras=szoveg_osszevetes_f117` értékkel; **(b)** a javító sorok közvetlenül a `naplok/KAROLI_KK1b_kulcstabla_tervezet.tsv`-be (ez generált tervezet, ezért nem javasolt); **(c)** más. Szempont: egy szabály egy helyen éljen (F91-minta), és a tábla minden sora visszavezethető legyen a forrására. Tétel a `DONTESEK.md`-be (`DT-F117a`), megállás.
-2. **F117.1 — szöveg-összevetés, kis minta** (`Rendszerfejlesztesi_playbook.md` 3. pont): az összevető szkript a 13 hiányzó fejezetből háromra (javaslat: Hós 14, Én 6, Dán 3) és a D-osztály egy fejezetére (Jón 2). ⛔ **A minta bemutatása** (versenként: Károli-szöveg eleje, javasolt KJV-vers, jelek), megállás a felhasználó jóváhagyásáig. A jelek küszöbe és a „nincs pár” szabálya itt dől el (`DT-F117b`).
+1. ⛔ **A javítás helye.** Lehetőségek: **(a)** új, verziózott kézi bemenet (`konkordancia/Karoli_versmegfeleltetes_javitas.tsv`) + alkalmazó modul (`eszkozok/versmegf_javitas.py`), a KK4 az F91 után importálja; a javítás sorai felülírják vagy pótolják a tervezet sorait, `forras=szoveg_osszevetes_f117` értékkel; **(b)** a javító sorok közvetlenül a `naplok/KAROLI_KK1b_kulcstabla_tervezet.tsv`-be (ez generált tervezet, ezért nem javasolt); **(c)** más. Szempont: egy szabály egy helyen éljen (F91-minta), és a tábla minden sora visszavezethető legyen a forrására. Tétel a `DONTESEK.md`-be (`DT204`), megállás.
+2. **F117.1 — szöveg-összevetés, kis minta** (`Rendszerfejlesztesi_playbook.md` 3. pont): az összevető szkript a 13 hiányzó fejezetből háromra (javaslat: Hós 14, Én 6, Dán 3) és a D-osztály egy fejezetére (Jón 2). ⛔ **A minta bemutatása** (versenként: Károli-szöveg eleje, javasolt KJV-vers, jelek), megállás a felhasználó jóváhagyásáig. A jelek küszöbe és a „nincs pár” szabálya itt dől el (`DT205`).
 3. **F117.2 — teljes összevetés** az A–D′ osztály minden versére. Bizonytalan párnál (a jelek ellentmondanak, vagy két KJV-vers egyformán illik) **nem** dönt automatikusan: `bizonytalan` jelölés, tételes lista (playbook 4. pont). Ha bizonytalan sor van: ⛔ megállás, tételes listával.
-4. **F117.3 — a javító bemenet és a modul** a DT-F117a szerint, egységteszttel (legalább: egy pótolt fejezet, egy KEZI-pár, a Dán 3:31, egy D-osztályú eltolás, egy D′-szomszéd, egy változatlan sor). A KK4 újrafuttatása → `Karoli_versmegfeleltetes.tsv`. Írás előtti sor-összevetés az eredetivel (`eszkozok/igazolas_migracio.py` minta): a változott, hozzáadott és törölt sorok száma osztályonként a jelentésbe; az A–D′ halmazon kívül **egyetlen sor sem változhat** — ha mégis, megállás.
+4. **F117.3 — a javító bemenet és a modul** a DT204 szerint, egységteszttel (legalább: egy pótolt fejezet, egy KEZI-pár, a Dán 3:31, egy D-osztályú eltolás, egy D′-szomszéd, egy változatlan sor). A KK4 újrafuttatása → `Karoli_versmegfeleltetes.tsv`. Írás előtti sor-összevetés az eredetivel (`eszkozok/igazolas_migracio.py` minta): a változott, hozzáadott és törölt sorok száma osztályonként a jelentésbe; az A–D′ halmazon kívül **egyetlen sor sem változhat** — ha mégis, megállás.
 5. **F117.4 — `tsk_kulcs` kivezetés**: a `NINCS_PAR_KIVETEL` kiürítése, a tesztek átírása, a docstring frissítése; a `teszt_tsk_kulcs.py` zöld.
 6. **F117.5 — mérés** (5. szakasz) és a fogyasztói hatás: a táblát olvasó eszközök listája (`grep Karoli_versmegfeleltetes eszkozok/`), és mindegyikre: olvas-e A–D′ osztályú verset. Ahol az újrafuttatás egy `adat/*.tsv`-t vagy `konkordancia/*.tsv`-t változtatna, azt **nem** futtatja, csak N-tételbe (`N-F117a`, …) írja.
 7. **F117.6 — próbagenerálás** a repón kívülre (`--kimenet`): ALVIL-001 és TEREMT-001; összevetés a #114 utáni állapottal (`naplok/TSK_VERSSZAM_jelentes.md`).
@@ -110,7 +113,7 @@ Minden mérés proveniencia-sorral (`scope=… | forras=… | n=… | ts=…`); 
 
 ## 7. Döntésnapló
 
-- **DT-F117a:** a javítás helye (4.1 ⛔).
-- **DT-F117b:** a szöveg-összevetés küszöbe és a „nincs pár” szabálya a minta alapján (4.2 ⛔).
+- **DT204:** a javítás helye (4.1 ⛔).
+- **DT205:** a szöveg-összevetés küszöbe és a „nincs pár” szabálya a minta alapján (4.2 ⛔).
 - **N-F117a, …:** a táblát olvasó fogyasztók szükséges újragenerálása (4.6), ha van.
 - Kapcsolódó: **N-F54a** (TSK-oldali része ezzel zárul), **N-F41a** (Jón 2:1), **DT200** (a kivétellista ezzel kivezetődik), **N-F114a**, **N-F114b** (nem érinti).
