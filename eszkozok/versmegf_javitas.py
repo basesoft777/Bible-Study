@@ -9,8 +9,10 @@ A `javit(sorok)`:
     a tábla `forras` mezője `szoveg_osszevetes_f117`, a `megjegyzes` a bemenetéből jön (benne a felülírt sor régi értéke);
   * a sorokat a KK4 rendezése szerint (az `igehely_karoli` karakterlánc-sorrendje) illeszti be;
   * a fejlécbe F91-mintájú jegyzetsort tesz (a szabály rögzített dátumával; idempotens);
-  * HALMAZ-ŐR: a bemenet kulcsain kívül minden adatsor bájtra azonos marad, sor nem törlődik, az új kulcsok mind a
-    bemenetből jönnek; különben AssertionError (megállás, a tábla nem íródik ki).
+  * HALMAZ-ŐR (`halmaz_or`, F117.8 (8)): a KÉSZ kimeneti sorokat függetlenül újraolvassa és a bemeneti táblával veti
+    össze: a javító kulcsokon kívül minden adatsor bájtra azonos, sor nem törlődik, idegen kulcs nem jelenik meg, a
+    nem-F117 fejlécsorok és az oszlopfej változatlan; eltérésnél HalmazOrHiba (megállás, a tábla nem íródik ki);
+  * üres sor a tábla belsejében: kimondott hiba (UresSorHiba); a záró üres sor (a fájlvégi sorvég) megengedett.
 A bemenet ellenőrzése (`betolt`): 7 oszlop; egyedi kulcs; `forras` = szoveg_osszevetes_f117; osztály-szabály (DT-F117b, DT-F117e):
   KJV: igehely_kjv = Károli-szám, igehely_mt üres; MT: igehely_mt = Károli-szám ≠ igehely_kjv; KEZI: igehely_kjv ≠ Károli-szám,
   kitöltött igehely_mt ≠ Károli-szám (új kombináció, DT-F117e); `;`-os KJV-érték nincs (DT-F91c).
@@ -37,6 +39,61 @@ TS = '2026-10-18'
 JEGYZET_ELO = '# F117 javítás'
 FEJ = ['igehely_karoli', 'igehely_kjv', 'igehely_mt', 'osztaly', 'forras', 'megjegyzes']
 _VERS = re.compile(r'^(.+) (\d+:\d+)$')
+
+
+class HalmazOrHiba(AssertionError):
+    """A javító bemenet kulcsain kívüli változás (F117.8 (8))."""
+
+
+class UresSorHiba(AssertionError):
+    """Üres sor a tábla belsejében (F117.8 (8))."""
+
+
+def _bont(lines):
+    """-> (nem-F117 fejlécsorok, oszlopfej, {kulcs: sor}); kettős kulcsnál és belső üres sornál hiba."""
+    sorok = list(lines)
+    while sorok and sorok[-1] == '':
+        sorok.pop()                      # a fájlvégi sorvég (záró üres sor) megengedett
+    fej, oszlop, adat = [], None, {}
+    for i, ln in enumerate(sorok):
+        if ln == '':
+            raise UresSorHiba('üres sor a tábla belsejében (%d. sor)' % (i + 1))
+        if ln.startswith('#'):
+            if not ln.startswith(JEGYZET_ELO):
+                fej.append(ln)
+            continue
+        if oszlop is None:
+            oszlop = ln
+            continue
+        k = ln.split('\t')[0]
+        if k in adat:
+            raise HalmazOrHiba('kettős kulcs: %s' % k)
+        adat[k] = ln
+    return fej, oszlop, adat
+
+
+def halmaz_or(be_sorok, ki_sorok, jav_kulcsok):
+    """A valódi halmaz-őr: a kimenet (ki_sorok) a bemenethez (be_sorok) képest csak a jav_kulcsok soraiban térhet el."""
+    bf, bo, ba = _bont(be_sorok)
+    kf, ko, ka = _bont(ki_sorok)
+    jav = set(jav_kulcsok)
+    if bf != kf:
+        raise HalmazOrHiba('a nem-F117 fejlécsorok változtak')
+    if bo != ko:
+        raise HalmazOrHiba('az oszlopfej változott: %r -> %r' % (bo, ko))
+    torolt = [k for k in ba if k not in ka]
+    if torolt:
+        raise HalmazOrHiba('sor törlődött: %s' % torolt[:5])
+    idegen = [k for k in ka if k not in ba and k not in jav]
+    if idegen:
+        raise HalmazOrHiba('a javító bemeneten kívüli új kulcs: %s' % idegen[:5])
+    valt = [k for k in ba if k not in jav and ka[k] != ba[k]]
+    if valt:
+        raise HalmazOrHiba('a javító bemeneten kívüli sor változott: %s' % valt[:5])
+    hiany = [k for k in jav if k not in ka]
+    if hiany:
+        raise HalmazOrHiba('a javító bemenet sora hiányzik a kimenetből: %s' % hiany[:5])
+    return len(ka)
 
 
 def betolt(path=JAVITAS):
@@ -77,21 +134,9 @@ def betolt(path=JAVITAS):
 def javit(lines, javitas=None, ts=TS, naplo=print):
     """A tábla sorai (sorvég nélkül) -> az új sorok listája. Halmaz-őrrel."""
     jav = betolt() if javitas is None else javitas
-    fejsorok, adat, egyeb = [], [], []
-    fejlec_idx = None
-    for i, ln in enumerate(lines):
-        if ln.startswith('#'):
-            if not ln.startswith(JEGYZET_ELO):
-                fejsorok.append(ln)
-            continue
-        if fejlec_idx is None and ln:
-            assert ln.split('\t') == FEJ, 'a tábla fejléce: %r' % ln
-            fejlec_idx = i
-            continue
-        if ln == '':
-            egyeb.append(i)
-            continue
-        adat.append(ln)
+    fejsorok, oszlop, _ = _bont(lines)     # belső üres sor: UresSorHiba (nem hagyjuk el szó nélkül)
+    assert oszlop is not None and oszlop.split('\t') == FEJ, 'a tábla fejléce: %r' % oszlop
+    adat = [ln for ln in lines if ln and not ln.startswith('#') and ln != oszlop]
     regi = {}
     for ln in adat:
         k = ln.split('\t')[0]
@@ -111,15 +156,6 @@ def javit(lines, javitas=None, ts=TS, naplo=print):
         uj[k] = sor
     uj_adat = [uj[k] for k in sorted(uj)]
 
-    # HALMAZ-ŐR
-    for k, ln in regi.items():
-        if k not in jav:
-            assert uj[k] == ln, 'halmaz-őr: a javító bemeneten kívüli sor változott: %s' % k
-    assert set(regi) <= set(uj), 'halmaz-őr: sor törlődött'
-    assert set(uj) - set(regi) <= set(jav), 'halmaz-őr: a bemeneten kívüli új kulcs'
-    kivul = [k for k in sorted(regi) if k not in jav]
-    assert [uj[k] for k in kivul] == [regi[k] for k in kivul]
-
     db = Counter(v[2] for v in jav.values())
     jegyzet = (JEGYZET_ELO + ' (DT-F117a–e): az A–D′ osztályú táblahibák javítása a verziózott kézi bemenetből '
                '(konkordancia/Karoli_versmegfeleltetes_javitas.tsv, %d sor: KJV %d, MT %d, KEZI %d); a Károli↔KJV pár a '
@@ -128,6 +164,7 @@ def javit(lines, javitas=None, ts=TS, naplo=print):
                'eltér a KJV-től és az MT-től is; forras=%s | forras=eszkozok/versmegf_javitas.py | ts=%s (a szabály dátuma, nem a futásé)'
                % (len(jav), db['KJV'], db['MT'], db['KEZI'], FORRAS, ts))
     ki = fejsorok + [jegyzet, '\t'.join(FEJ)] + uj_adat
+    halmaz_or(lines, ki, jav.keys())       # a valódi halmaz-őr a kész kimeneten (F117.8 (8))
     naplo('F117 javítás: felülír %d, pótol %d, változatlan %d | tábla: %d -> %d adatsor' % (
         stat['felulir'], stat['potol'], stat['valtozatlan'], len(regi), len(uj_adat)))
     pv = [l for l in uj_adat if ';' in l.split('\t')[1]]

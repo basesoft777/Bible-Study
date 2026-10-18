@@ -55,6 +55,31 @@ class Szintetikus(unittest.TestCase):
         uj = V.javit(self.ALAP, javitas=self.JAV, naplo=_csendes)
         self.assertEqual(V.javit(uj, javitas=self.JAV, naplo=_csendes), uj)
 
+    def test_halmaz_or_negativ_kivul_valtozott(self):
+        # F117.8 (8): a halmazon kívüli változás a valódi őrön elbukik
+        uj = V.javit(self.ALAP, javitas=self.JAV, naplo=_csendes)
+        rossz = [l.replace('Jón 1:1\t1:1\t', 'Jón 1:1\t1:2\t') if l.startswith('Jón 1:1\t') else l for l in uj]
+        self.assertNotEqual(rossz, uj)
+        with self.assertRaises(V.HalmazOrHiba):
+            V.halmaz_or(self.ALAP, rossz, self.JAV.keys())
+        V.halmaz_or(self.ALAP, uj, self.JAV.keys())   # a helyes kimenet átmegy
+
+    def test_halmaz_or_negativ_torles_idegen_fejlec(self):
+        uj = V.javit(self.ALAP, javitas=self.JAV, naplo=_csendes)
+        with self.assertRaises(V.HalmazOrHiba):      # törölt halmazon kívüli sor
+            V.halmaz_or(self.ALAP, [l for l in uj if not l.startswith('Jón 2:2\t')], self.JAV.keys())
+        with self.assertRaises(V.HalmazOrHiba):      # idegen új kulcs
+            V.halmaz_or(self.ALAP, uj + ['Jón 3:1\t3:1\t\tKJV\tszamlalas\t'], self.JAV.keys())
+        with self.assertRaises(V.HalmazOrHiba):      # megváltozott (nem-F117) fejlécsor
+            V.halmaz_or(self.ALAP, ['# GENERÁLT: más'] + uj[1:], self.JAV.keys())
+
+    def test_belso_ures_sor_hiba(self):
+        rossz = self.ALAP[:3] + [''] + self.ALAP[3:]
+        with self.assertRaises(V.UresSorHiba):
+            V.javit(rossz, javitas=self.JAV, naplo=_csendes)
+        # a záró üres sor (fájlvégi sorvég) megengedett
+        V.javit(self.ALAP + [''], javitas=self.JAV, naplo=_csendes)
+
     def test_rendezetlen_tabla_megall(self):
         rossz = self.ALAP[:2] + [self.ALAP[3], self.ALAP[2]]
         with self.assertRaises(AssertionError):
