@@ -83,7 +83,7 @@ Csatolt brief szabálya: a sessionhöz csatolt brief nem befogadandó és nem fu
    Csomagnál minden feladat a saját ágán, a saját zárójelentésében kap folytatási pontot.
 9. ELLENŐRZÉS: futtasd a `fuggetlen-ellenor` subagentet; jelentése: `naplok/ELLENOR_<feladat>.md`.
    Csomagnál feladatonként külön, a saját worktree-jében; az ellenőrök párhuzamosan futhatnak.
-   Ha a jelentés első sora `ELTÉRÉS`, a menet a zárás (10. lépés) előtt megáll: a brief fejléce `allapot: megallt`, `kovetkezo: Te: /elteres <feladat>`; a javítókör külön sessionben fut.
+   Ha a jelentés első sora `ELTÉRÉS`, a menet a zárás (10. lépés) előtt megáll: a brief fejléce `allapot: megallt`, `kovetkezo: Te: /elteres <feladat>` (ha a mezőben már áll `[elteres_kor k/2]` jelölő, az megmarad: `Te: [elteres_kor k/2] /elteres <feladat>`); a javítókör külön sessionben fut.
 10. ZÁRÁS (CLAUDE.md menetzárás): zárójelentés `naplok/<feladat>_zaras.md` (≤20 sor),
     a saját brief fejlécében `allapot: lezarva`, `pr` és `lezarva_osszegzes` kitöltve (a `FELADATOK.md`-t nem
     szerkeszted), push, draft PR a main-be.
