@@ -167,6 +167,42 @@ class KeziForrasApparatusNezet(unittest.TestCase):
         self.assertIn('Belső mondat.', ki)
 
 
+class KolofonNaploCella(unittest.TestCase):
+    """F11 M3 javítókör (ELLENOR_F11_M 7. szakasz 3.): a migrált motívum
+    Kolofonja nem a megszűnt `tematikus_lezart/naplok/` útra mutat."""
+
+    def setUp(self):
+        import tempfile
+        self.tmp = tempfile.mkdtemp(prefix='teszt_kolofon_')
+        for rel in ('tematikus_lezart/naplok/Elo_naplo.md', 'archivum/MIGR-001/Regi_naplo.md'):
+            ut = os.path.join(self.tmp, *rel.split('/'))
+            os.makedirs(os.path.dirname(ut), exist_ok=True)
+            open(ut, 'w', encoding='utf-8').close()
+        self.regi = (LG.ROOT, dict(LG.G.ID_NAPLO_TERKEP))
+        LG.ROOT = self.tmp
+        LG.G.ID_NAPLO_TERKEP.update({'ELO-001': 'Elo_naplo.md', 'MIGR-001': 'Regi_naplo.md',
+                                     'HIANY-001': 'Nincs_naplo.md'})
+
+    def tearDown(self):
+        import shutil
+        LG.ROOT = self.regi[0]
+        LG.G.ID_NAPLO_TERKEP.clear()
+        LG.G.ID_NAPLO_TERKEP.update(self.regi[1])
+        shutil.rmtree(self.tmp, ignore_errors=True)
+
+    def test_elo_naplo_valtozatlan(self):
+        self.assertEqual(LG.kolofon_naplo_cella('ELO-001'), '`tematikus_lezart/naplok/Elo_naplo.md`')
+
+    def test_migralt_archivum(self):
+        ki = LG.kolofon_naplo_cella('MIGR-001')
+        self.assertIn('`archivum/MIGR-001/Regi_naplo.md`', ki)
+        self.assertNotIn('tematikus_lezart', ki)
+
+    def test_nincs_sehol_es_nincs_terkep(self):
+        self.assertEqual(LG.kolofon_naplo_cella('HIANY-001'), LG.EM_DASH)
+        self.assertEqual(LG.kolofon_naplo_cella('NINCS-001'), LG.EM_DASH)
+
+
 class Szerepmatrix(unittest.TestCase):
     def test_kiegeszito_szotar_nem_szerepblokk(self):
         eredeti = LG.lexikon_hivatkozasok_ehhez

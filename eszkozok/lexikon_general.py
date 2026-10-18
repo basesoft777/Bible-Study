@@ -2181,12 +2181,27 @@ def kotelezo_megjeloles(kulcs):
     return szoveg
 
 
+def kolofon_naplo_cella(motivum_id):
+    """A Kolofon „Kereszthivatkozás-napló” cellája. A nem migrált motívumnál
+    a `tematikus_lezart/naplok/` alatti napló; a migrált motívumnál (F11 M3,
+    DT-F11a) a régi napló az `archivum/[ID]/` alatt áll, a minősítés pedig a
+    `jeloltek.tsv`-ből generált -- a cella ezt mondja ki, nem a megszűnt utat."""
+    naplo_fajlnev = G.ID_NAPLO_TERKEP.get(motivum_id)
+    if not naplo_fajlnev:
+        return EM_DASH
+    if os.path.exists(os.path.join(ROOT, 'tematikus_lezart', 'naplok', naplo_fajlnev)):
+        return '`tematikus_lezart/naplok/%s`' % naplo_fajlnev
+    archiv = 'archivum/%s/%s' % (motivum_id, naplo_fajlnev)
+    if os.path.exists(os.path.join(ROOT, *archiv.split('/'))):
+        return ('generált (`adat/jeloltek.tsv`); a régi napló archívum: `%s`' % archiv)
+    return EM_DASH
+
+
 def blokk_kolofon(m, fajl_licenc_blokk_lista):
     forras_study_sorok = [s.strip() for s in (m.get('forras_study') or '').split(';') if s.strip()]
     forras_study_cella = '<br>'.join('`%s`' % s for s in forras_study_sorok) if forras_study_sorok else EM_DASH
 
-    naplo_fajlnev = G.ID_NAPLO_TERKEP.get(m['id'])
-    naplo_cella = '`tematikus_lezart/naplok/%s`' % naplo_fajlnev if naplo_fajlnev else EM_DASH
+    naplo_cella = kolofon_naplo_cella(m['id'])
     statusz_cella = '%s (`%s`, %s)' % (m['statusz'], m.get('statusz_verzio', ''), m.get('statusz_datum', ''))
 
     metaadat_sorok = [

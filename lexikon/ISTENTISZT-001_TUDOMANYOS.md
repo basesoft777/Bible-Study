@@ -1984,7 +1984,7 @@ megnevezett/invokált fél áll szemben); a D inkább egy ötödik dimenzió
 | Negatív kritérium | az igehelynek a קָרָא (kárá) + בְּ (be) (aktív, invokáló szerkezet: "[valaki] hívja segítségül [Isten nevét]") mintát kell mutatnia — a passzív נִקְרָא...עַל (nikrá … al) szerkezet (birtoklás/hovatartozás kifejezése, nem invokáció) kizárja a besorolást, még akkor is, ha ugyanazt a két gyököt használja (l. D-minta, 2Sám 6:2, Jer 7:10-14, 5Móz 28:10, ÚSZ-párja Zsid 11:16) |
 | Fölérendelt fogalom | istentisztelet/imádság általában (bármely invokációs forma, a קָרָא בְשֵׁם (kárá besém) formulán kívül) |
 | Forrás-study | `motivumok/ISTENTISZT-001.md`<br>`motivumlog/lexikon_pilot/ISTENTISZT-001_TUDOMANYOS.md` |
-| Kereszthivatkozás-napló | `tematikus_lezart/naplok/Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md` |
+| Kereszthivatkozás-napló | generált (`adat/jeloltek.tsv`); a régi napló archívum: `archivum/ISTENTISZT-001/Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md` |
 | Sablon-megfelelőség | v12 |
 
 ---
