@@ -302,3 +302,70 @@ A `tsv_utolagos` összesen 247 = az 1.1-ben mért 247 eltérő TSV-sor. **Követ
 táblából generált nézet lenne, a 247 utólag javított sor javításai elvesznének, hacsak a javítótábla nem veszi át őket (F34, F46).
 
 `scope=F107 3. lépés, nézet ↔ BDB_teljes_unabridged.tsv (8 099 sor) | forras=python eszkozok/bdb_jelolt/nezet_ellenoriz.py | ts=2026-10-18`
+
+## 4. lépés — ellenőrzés (MEGÁLLT a ⛔ osztályozási pontnál)
+
+Eszköz: `eszkozok/bdb_jelolt/szerkezet_osszevet.py` (csak olvas). Útvonal-normalizálás az összevetéshez: a nagybetűs csoport és a
+zárójeles szint elhagyva, a záró `-` szintek levágva; a szeletelő `tagolatlan`-ja és a tábla `cim`/`fej`-e = `fej`; a kombinált fej
+(„1. a.”) a jelentés és az alpont csomópontját is megnyitja; az aranyminta `-/a` alakja (SEMA 2.28: jelentés nélküli alpont) = a tábla
+`-/-/a`-ja. A tábla nem változott.
+
+### 4.1 Aranyminta (`adat/bdb_aranyminta.tsv`, 32 szócikk)
+
+A `torzs` / `jelentes` / `alpont` csomópontok (425; a `csoport` 184 és a `szakasz` 16 szintet a tábla nem bontja, a csoport a #103-é):
+**egyezik 328 (77,2%)**; a 2 számozatlan jelentés nélkül 328 / 423 (77,5%). **A javasolt mérce (≥ 99%) nem teljesül.**
+
+| Strong | hiányzó csomópont | ok (megnézve) | javasolt osztály |
+|---|---|---|---|
+| H6440 | 44 | a fej utáni „I.”, „II.” homonima-szakasz a táblában `resz` lett (a 2.28 `szakasz`-a); egy fej „7. 2. a.” (a „7.” a megelőző szöveg vége) | `tabla_hiba` (szakasz-római ↔ fő tagolás) + `forras_hiba` („7.”) |
+| H7121 | 27 | a JSON a „(compare Pu`al)” közepén bekezdést tör; az új bekezdés elején álló félkövér „Pu`al” törzsfejnek számít, a Qal hátralevő része a Pu'al alá kerül | `tabla_hiba` (hamis fej: a fej után „)”, „,”, „;”) |
+| H3615 | 7 | hamis „2” fej a ragozási sorban („2 ); masculine plural …”) | `tabla_hiba` (mint fent) |
+| H0559 | 5 | a „Qal” név hiányzik, az „1” sima szöveg („263</sup>.1<i>Say</i>”, a nyers JSON-ban igazolva) | `forras_hiba` |
+| H0834 | 5 | a héber alcímszavas szakaszok (בַּאֲשֶׁר, מֵאֲשֶׁר, שֶׁ) alpontjai | nem vizsgált |
+| H4900, H1242, H0430 | 2 + 2 + 2 | — | nem vizsgált |
+| H3176 | 2 | számozatlan jelentés (`Hiph'il/-1`, `-2`): jelölő nélkül a táblában nem bontható | `tabla_hiba` (korlát) |
+| H2939 | 1 | `Pa'el` törzs | nem vizsgált |
+
+### 4.2 Seed-101 (a #99 13 szeletelő-hibájának helye)
+
+**7 / 13 egyezik** (M028, M031, M043, M146, M203, M236, M238 — a #102 1b. „igen” eseteiből 7; köztük a gyakoriságszámos jelölő, a
+törzsfejléc „Hiph`il A./B.”, a fő tagolás „II.” és a jelöletlen alcímszó).
+
+| hely | tábla | várt | ok | javasolt osztály |
+|---|---|---|---|---|
+| M102 H0559 | `fej` | `Qal/1` | az „1” sima szöveg a JSON-ban, a „Qal” név hiányzik (igazolva) | `forras_hiba` |
+| M117 H0539 | `Qal/3` | `Niph'al/4` | nem vizsgált (a #102 1b. szerint „1.carried” szóköz nélkül) | nem vizsgált |
+| M130 H8478 | (a horgony átnyúlik a bekezdéshatáron) | `II -/2/a` | a Hab 3:16 a 8. sorban, `II -/-/-`; az „1” nem félkövér | `forras_hiba` (az „1”) — nem igazolt |
+| M140 H7626 | `-/2` | `-/1/a` | a fej összefoglalója („1 rod … 2 tribe”) félkövér pontokként jelenik meg, a „1.a.” fej nem félkövér | `tabla_hiba` + `forras_hiba` |
+| M162 H3318 | `-/1/a` | `Qal/1/a` | a „Qal” név a forrásban hiányzik (a #102 1b. szerint mindkét formázásban) | `forras_hiba` |
+| M243 H1129 | `Qal/-/i` | `Qal/1/i` | „— <i>build</i>, <b>1</b> (literal) </p><p><b>a.</b>”: a félkövér „1” a bekezdés közepén áll (igazolva) | `tabla_hiba` (bekezdésen belüli fej) |
+
+### 4.3 Korpusz: a tábla ↔ a mai szeletelő (`adat/bdb_vers_jelentes.tsv`)
+
+A szeletelő minden nem szűrt hivatkozása (a `nyers` alak a tábla szövegében, Strongonként sorrendben keresve): **159 804, ebből
+egyezik 131 126 (82,1%)**.
+
+| osztály | darab | minta |
+|---|---|---|
+| `egyezik` | 131 126 | — |
+| `jelentes_elter` | 9 900 | H0068 1Chr 29:2: szeletelő `-/2`, tábla `-/3` (a „below 3 )” hamis fej, l. 3.) |
+| `torzs_elter` | 8 131 | H0502 Job 15:5: szeletelő `Qal`, tábla `Pi'el`; H0539 Prov 11:13: szeletelő `Niph'al`, tábla `Qal/4/b` |
+| `szeletelo_fej_tabla_tagolt` | 2 903 | H0053 1Kin 15:2: szeletelő `tagolatlan`, tábla `-/1` (a tábla jelölőt lát, a szeletelő nem) |
+| `alpont_elter` | 2 372 | H0157 Deut 10:18: szeletelő `Qal`, tábla `Qal/-/n` |
+| `csak_resz` | 1 948 | H0905 Job 18:13: azonos út, a tábla `resz` III |
+| `nem_talalt` | 1 769 | a hivatkozás a TSV-ben utólag javított (F34/F46, l. 3.), a nyers JSON-ban más: H0040 „Psa 34:1” ↔ „Gen 34:1” |
+| `tabla_fej_szeletelo_tagolt` | 1 655 | H0058 1Sam 6:18: szeletelő `-/1`, tábla `fej` |
+
+(Kihagyva: 528 szűrt sor, 284 sor a tábla nélküli 9 Strongon.) A korpusz-eltérések soronkénti osztályozása (`tabla_hiba` /
+`szeletelo_hiba` / `forras_hiba` / `szoveg_konverzio`) nincs elvégezve; a lista az eszközzel újragenerálható
+(`--korpusz --lista N`).
+
+`scope=F107 4. lépés: aranyminta (425 csomópont), seed-101 (13), korpusz (159 804 hivatkozás) | forras=python eszkozok/bdb_jelolt/szerkezet_osszevet.py --arany --seed101 --korpusz | ts=2026-10-18`
+
+### 4.4 A megállás oka és a javaslat
+
+A ⛔ pont a brief szerint az eltérés-lista osztályozásának jóváhagyása. A mérés szerint a tábla három **szabályszerű** `tabla_hiba`-
+osztályt hordoz, amelyek a nyers jelölőből javíthatók: (1) **hamis fej** a JSON bekezdéstörése után (a fejet közvetlenül „)”, „,”, „;”
+követi: H7121, H3615, H0068); (2) a **fej utáni homonima-római** (`I.`, `II.`) `resz` helyett szakasz (H6440); (3) a **bekezdés
+közepén álló félkövér fej** (M243). A `forras_hiba`-osztály (hiányzó „Qal” név, nem félkövér „1”, „7. 2. a.”) a forrás jelölőjéből nem
+javítható, csak a javítótáblával (5. lépés). Javaslat: `DT-F107g` (`DONTESEK.md`).
