@@ -1,5 +1,5 @@
 # GENERÁLT: eszkozok/bdb_jelolt/forras_javit.py --ts 2026-10-18 — kézzel nem szerkesztendő (F107, DT-F107f (a); séma: adat/SEMA.md, bdb_forras_javitas.tsv). A héber alakok NFD-ben.
-# forras: adat/bdb_szakaszok.tsv@0c68c98307f5 + konkordancia/lexikonok_nyers/BDB.lexicon@c998a70b432f (csak igazolás) + kód@9ca3f1aaca59
+# forras: adat/bdb_szakaszok.tsv@495d1c81cfc0 + konkordancia/lexikonok_nyers/BDB.lexicon@c998a70b432f (csak igazolás) + kód@9ca3f1aaca59
 strong	sorszam	bdb_id	hiba	szo_sorszam	elofordulas	forras_alak	javitott_alak	allapot	indok	proveniencia
 H0001	3	BDB17	pe_mem	5	1	לָֽרִמָּה		valodi_mem	a dagesses mem-es alak a BDB17 szócikkben áll: nem hiba	scope=H0001 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0001	3	BDB17	pe_mem	7	1	אִמִּי		valodi_mem	a dagesses mem-es alak a BDB17 szócikkben áll: nem hiba	scope=H0001 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18

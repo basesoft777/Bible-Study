@@ -298,6 +298,57 @@ def gyakorisag_kivesz(maradek_html, van_fej):
 
 # ---------------------------------------------------------------- lexikon
 
+LEX_BLOKKNYITO = re.compile(r'(?:<div class="(?:point|section|remarks)">|<p>|<br\s*/?>|</div>|</p>|<hr\s*/?>)(?:\s|&emsp;)*$')
+
+
+def fej_kulcs(tokenek):
+    """A fej összevetési kulcsa: (szint, érték pont nélkül) sorozat."""
+    return tuple((sz, v.rstrip('.')) for sz, v in tokenek)
+
+
+def lexikon_fejek(torzs_html):
+    """DT-F107h (a): a lexikon-szócikk félkövér fejei — (kulcs, a szövegen belül áll-e, az utána álló szöveg ujjlenyomata).
+    A lexikon itt csak szerkezeti metaadat (DT-F107a (i)): hol nyit blokkot a fej, szöveget nem ad."""
+    ki = []
+    for m in re.finditer(r'<b>(.*?)</b>', torzs_html, re.S):
+        tok, rest = fej_bont('<b>' + html.unescape(re.sub(r'<[^>]+>', '', m.group(1))).strip() + '</b>')
+        if not tok or sima(rest):
+            continue
+        elotte_html = torzs_html[max(0, m.start() - 80):m.start()]
+        belso = not LEX_BLOKKNYITO.search(elotte_html)
+        # a fej előtti utolsó szó a lexikonban (a hivatkozó szó: „pointed as <b>Niph`al</b>”, „compare <b>Qal</b>”)
+        elozo = re.findall(r'[A-Za-z]+', html.unescape(re.sub(r'<[^>]+>', ' ', elotte_html)))
+        hivatkozo = belso and bool(elozo) and elozo[-1].lower() in HIVATKOZO_SZO \
+            and re.search(r'[A-Za-z]\s*$', html.unescape(re.sub(r'<[^>]+>', ' ', elotte_html))) is not None
+        ki.append((fej_kulcs(tok), hivatkozo, ujjlenyomat(torzs_html[m.end():m.end() + 600], True)[:8]))
+    return ki
+
+
+# a lexikonban a fej előtt közvetlenül álló hivatkozó szavak (DT-F107h (a) szűkítése, F107.29: a „szövegen belül” jel
+# önmagában a valódi törzsfejeket is elvetette — „— <b>Qal</b> Perfect” —, l. napló 4.8)
+HIVATKOZO_SZO = {'as', 'see', 'compare', 'cf', 'read', 'like', 'than', 'under', 'also'}
+
+
+def lexikon_szerint_hivatkozas(szocikk_adat, tokenek, maradek_html):
+    """DT-F107h (a): a JSON blokk eleji feje hivatkozás, ha a lexikon ugyanazon szócikkében ugyanez a fej (ugyanazzal a
+    követő szöveggel) a szövegen belül áll (előtte nincs <div class="point|section|remarks">, <p>, <br>). Ha a lexikonban nincs
+    megfelelő hely (a követő szöveg kezdete < 0,6 hasonló), nincs bizonyíték: a fej marad. (H6440 „pointed as </p><p><b>Niph`al</b>
+    to avoid”; a lexikonban „pointed as <b>Niph`al</b> to avoid”.)"""
+    kulcs = fej_kulcs(tokenek)
+    fp = ujjlenyomat(maradek_html, False)[:8]
+    if len(fp) < 3:
+        return False
+    legjobb = None
+    for k, belso, lfp in szocikk_adat.get('fejek', ()):
+        if k != kulcs:
+            continue
+        p = eleje_hasonlo(fp, lfp)
+        # holtversenyben a blokkot nyitó (valódi fej) előfordulás nyer (F107.29: H0430 „3”)
+        if p >= 0.6 and (legjobb is None or (p, not belso) > legjobb[:2]):
+            legjobb = (p, not belso, belso)
+    return bool(legjobb and legjobb[2])
+
+
 def lexikon_beolvas():
     con = sqlite3.connect('file:' + LEX_UT.replace('\\', '/') + '?mode=ro', uri=True)
     szocikk = {}
@@ -310,7 +361,7 @@ def lexikon_beolvas():
         for m in re.finditer(r'<div class="(section|remarks)">', torzs):
             blokkok.append((m.group(1), ujjlenyomat(torzs[m.end():m.end() + 1500], True)[:8]))
         fp = ujjlenyomat(torzs, True)
-        szocikk[t] = {'id': t, 'cimkek': cimkek, 'fp': fp, 'blokkok': blokkok}
+        szocikk[t] = {'id': t, 'cimkek': cimkek, 'fp': fp, 'blokkok': blokkok, 'fejek': lexikon_fejek(torzs)}
     con.close()
     index = collections.defaultdict(list)
     for e in szocikk.values():
@@ -458,6 +509,16 @@ def strong_sorok(strong_pad, strong_eredeti, blokkok, hozz, kategoria, szocikk, 
             if tokenek and not fej_valodi(tokenek, maradek):
                 # DT-F107g (a) (1): hamis fej (hivatkozás a bekezdéstörés után) — a szöveg része, nem jelölő
                 tokenek, maradek = [], bh
+            if (tokenek and kiir_bdb and bdb and not szocikk_eleje
+                    and lexikon_szerint_hivatkozas(szocikk[bdb], tokenek, maradek)):
+                # DT-F107h (a): a lexikonban ugyanez a fej a szövegen belül áll — hivatkozás a JSON bekezdéstörése után
+                tokenek, maradek = [], bh
+            # DT-F107h (a): a fejsorbeli törzsnév („<b>verb Pa`el</b>”, H2939) a szócikk törzsállapota a fej után
+            fejsor_torzs = None
+            if szocikk_eleje or sub1:
+                m_t = re.search(r'<b>\s*verb\s+(' + TORZS + r')\.?\s*</b>', bh)
+                if m_t:
+                    fejsor_torzs = TORZS_KANON.get(m_t.group(1), m_t.group(1)).replace('`', "'")
             gy = ','.join(gyakorisag_kivesz(bh, bool(tokenek)))
             if tokenek and szocikk_eleje and all(sz == 'romai' for sz, _ in tokenek):
                 # a szócikk-eleji római szám a homonima száma (aranyminta 2.28 `szakasz`), nem fő tagolás
@@ -520,6 +581,8 @@ def strong_sorok(strong_pad, strong_eredeti, blokkok, hozz, kategoria, szocikk, 
                       kategoria, 'DictBDB.json:%s#%d' % (strong_eredeti, i),
                       hashlib.sha256(bh.encode('utf-8')).hexdigest()[:16],
                       'scope=%s | forras=bdb_jelolt/bont.py (fejléc) | ts=%s' % (strong_pad, ts)])
+        if i and fejsor_torzs and ut == 'fej':
+            allapot['torzs'] = fejsor_torzs
     return sorok
 
 

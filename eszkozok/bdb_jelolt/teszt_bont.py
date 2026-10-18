@@ -89,6 +89,19 @@ class Egyseg(unittest.TestCase):
         self.assertEqual(len(bont.kozepfej_bont('Lev 26:16; — <b>1</b> ', '<b>a.</b> complete')), 2)
         self.assertEqual(len(bont.kozepfej_bont('Lev 26:16; — <b>1</b> ', 'complete')), 1)
 
+    def test_lexikon_szerint_hivatkozas(self):
+        # DT-F107h (a): a lexikonban a fej szövegen belül, hivatkozó szó után — hivatkozás; blokkot nyitó előfordulás — fej
+        lex = bont.lexikon_fejek('the verb was originally <b>Qal</b>, afterwards pointed as <b>Niph`al</b> to avoid the '
+                                 'expression see the face</p><div class="point"><b>Niph`al</b> Perfect be seen gone away')
+        tok, mar = bont.fej_bont('<b>Niph`al</b> to avoid the expression see the face')
+        self.assertTrue(bont.lexikon_szerint_hivatkozas({'fejek': lex}, tok, mar))
+        tok, mar = bont.fej_bont('<b>Niph`al</b> Perfect be seen gone away')
+        self.assertFalse(bont.lexikon_szerint_hivatkozas({'fejek': lex}, tok, mar))
+        # „— <b>Qal</b> Perfect”: szövegen belül, de nem hivatkozó szó után — fej (a szűkítés oka, F107.29)
+        lex = bont.lexikon_fejek('verb gather (food) — <b>Qal</b> Perfect of ant Prov 6:8')
+        tok, mar = bont.fej_bont('<b>Qal</b> Perfect of ant Prov 6:8')
+        self.assertFalse(bont.lexikon_szerint_hivatkozas({'fejek': lex}, tok, mar))
+
     def test_cimfolytatas(self):
         self.assertEqual(bont.cimfolytatas_nelkul(['or', 'shettayim', 'h:x', 'noun']), ['h:x', 'noun'])
         self.assertEqual(bont.cimfolytatas_nelkul(['noun', 'masculine']), ['noun', 'masculine'])
@@ -153,6 +166,14 @@ class Tabla(unittest.TestCase):
     def test_bekezdesen_beluli_fej_a_tablaban(self):
         self.assertIn('Qal/1/i', [x['utvonal'] for x in self.st['H1129']])        # M243
         self.assertIn("Pi'el/1/a", [x['utvonal'] for x in self.st['H3615']])      # bekezdés végi fej
+
+    def test_negyedik_szabaly_a_tablaban(self):
+        # DT-F107h (a): a H6440 II. szakaszában a hamis „Niph`al” után a 4–8. jelentés a szakaszé; a H0430 „3” fej marad
+        h = [x['utvonal'] for x in self.st['H6440'] if x['szakasz'] == 'II']
+        self.assertIn('-/4/a', h)
+        self.assertIn('-/8/b', h)
+        self.assertNotIn("Niph'al/4/a", h)
+        self.assertIn('-/3/-', [x['utvonal'] for x in self.st['H0430']])
 
     def test_proveniencia(self):
         for s in self.sorok[:2000]:
