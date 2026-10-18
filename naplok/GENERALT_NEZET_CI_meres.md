@@ -86,3 +86,16 @@ Az M0 egyetlen pontja sem tér el a brief feltevésétől (számok szabadok; gen
 nem platformfüggő a kimenetben; mindkét eltérés oka újragenerálás nélküli adatváltozás). A 2. lépés ⛔
 nem aktiválódik. A 3. lépés (újragenerálás) a felhasználói kikötés szerint commit nélkül áll meg
 a diff bemutatásánál (lásd 2. szakasz).
+
+## 2. A 3. lépés: a két blokk újragenerálása (`F116.3`)
+
+`scope=general.py --cel naplo --ir; --cel nyitott --ir; git diff --numstat | forras=manual (CLI-futtatás, scratch-szkripttel igazolva) | ts=2026-10-18`
+
+A felhasználó jóváhagyása a commit előtt megvolt („a #116-nak az F116.3 commit jóváhagyva”, az orkesztrátoron át).
+A diff: `NYITOTT_FELADATOK.md` +56/−23 (79 diff-sor), `motivumlog/PaRDeS_motivumok.md` +2/−2 (4 diff-sor);
+minden diff-sor visszavezetve commitolt adatváltozásra (1.3 szakasz: `98f22fc6`; `a0c3cd95`, `4f85d54c`, `b5e60b5c`).
+Igazolás a commitolt blobbal szemben: a GENERÁLT-KEZDET/VÉGE közötti törzseken kívül minden bájtra azonos
+(kézi szakaszok), a VÉGE-markerek azonosak, a kezdő markersorok `ts=` értéke is azonos maradt:
+a generátor a meglévő marker-pár `ts=` értékét nem írja át (`2026-09-15` maradt), tehát a brief 3. lépésének
+„`ts=` változik” várakozása nem teljesült, de a G5 feltételét ez nem sérti (csak törzs változott).
+Utána a három cél `--ellenoriz`-e zöld (naplo 4/4, index, nyitott).
