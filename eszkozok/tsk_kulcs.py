@@ -158,3 +158,15 @@ def karoli_index(sorok):
     for o in karoli_sorok(sorok):
         idx.setdefault(o['Igehely'], []).append(o)
     return idx
+
+
+def forras_sorok(sorok, karoli_versek, nincs_par=None):
+    """A megadott Károli-forrásversek (str vagy halmaz) TSK-sorai Károli-kulcsra váltva."""
+    if isinstance(karoli_versek, str):
+        karoli_versek = {karoli_versek.strip()}
+    karoli_versek = set(karoli_versek)
+    kjv = {karoli_to_kjv(v) for v in karoli_versek}
+    kjv.discard(None)
+    for o in karoli_sorok((r for r in sorok if r['Igehely'] in kjv), nincs_par):
+        if o['Igehely'] in karoli_versek:
+            yield o
