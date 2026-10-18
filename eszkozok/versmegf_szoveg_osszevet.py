@@ -57,6 +57,28 @@ ALAP_KIMENET = os.path.join(ROOT, 'naplok', 'F117_szoveg_osszevetes.tsv')
 ALAP_ITELET = os.path.join(ROOT, 'naplok', 'F117_itelet.tsv')
 MINTA = ['Hós 14', 'Én 6', 'Dán 3', 'Jón 2']
 
+# Az F117 A–D′ célhalmaza (brief 1. táblázat): fejezet -> {vers: osztály}; None = a fejezet minden verse
+A_FEJEZETEK = ['2Móz 35', '2Móz 36', 'Dán 3', 'Hós 2', 'Hós 13', 'Hós 14', 'Jób 17', 'Jób 37', 'Péld 12', 'Én 5',
+               'Én 6', 'Ézs 4', 'Ézs 64']
+CEL = {fj: None for fj in A_FEJEZETEK}
+CEL['Préd 9'] = {v: 'B' for v in (21, 22, 23)}
+CEL['Jób 39'] = {v: 'B' for v in range(34, 39)}
+CEL['1Kir 22'] = dict([(v, 'D') for v in (46, 47, 48, 49, 54)] + [(v, "D′") for v in (43, 44, 45, 50, 51, 52, 53)])
+CEL['Ézs 3'] = 'D'
+CEL['Jón 2'] = 'D'
+CEL['1Sám 24'] = 'D'
+CEL['1Sám 20'] = {43: 'D'}
+
+
+def cel_osztaly(fj, v):
+    """-> az A–D′ osztály, vagy '' (a fejezet nem célvers-e, csak kontextus)."""
+    c = CEL.get(fj, '')
+    if c is None:
+        return 'C' if (fj == 'Dán 3' and v >= 31) else 'A'
+    if isinstance(c, str):
+        return c
+    return c.get(v, '')
+
 # igazítási súlyok és büntetések (a 4.2 mintán rögzítve; a küszöb a DT-F117b tárgya)
 W_NEV, W_SZAM, W_HOSSZ = 0.45, 0.15, 0.40
 W_TAHOT = 0.40          # a 'teljes' igazításban: (1 - W_TAHOT) * szoveg + W_TAHOT * tahot
@@ -371,6 +393,7 @@ def igazit(kv, jv, arany_med, gram, mod):
     jj = max(range(m + 1), key=lambda x: dp[n][x])
     i = n
     par = [None] * n
+    kihagy = []          # az igazítás belsejében kihagyott (árva) KJV-versek indexei
     while i > 0:
         op = bt[i][jj][0]
         if op == '11':
@@ -387,28 +410,46 @@ def igazit(kv, jv, arany_med, gram, mod):
             par[i - 1] = ((), 'nincs_par')
             i -= 1
         elif op == '01':
+            kihagy.append(jj - 1)
             jj -= 1
         else:
             break
-    return par
+    return par, sorted(kihagy)
 
 
-def fejezet_osszevet(konyv, c, hu2st, gram):
+def fejezet_osszevet(konyv, c, hu2st, gram, blokk=False):
+    """Egy Károli-fejezet igazítása. blokk=True: a Károli c-1..c+1 fejezetei együtt, a KJV c-2..c+2 ablakára
+    (a szomszéd fejezetekkel közös, hézag- és átfedésmentes lefedés ellenőrzéséhez); az eredmény a c fejezet sorai.
+    -> (eredmény, arány, árva KJV-versek [(kulcs, előtte álló Károli-vers, utána álló Károli-vers)])"""
     st = hu2st[konyv]
-    kar = kar_fejezet(konyv, c)
-    if not kar:
+    kar_fej = [cc for cc in ((c - 1, c, c + 1) if blokk else (c,)) if cc >= 1]
+    kar = []
+    for cc in kar_fej:
+        kar += [(cc, v, t) for v, t in kar_fejezet(konyv, cc)]
+    if not any(cc == c for cc, _, _ in kar):
         raise SystemExit('nincs Károli-szöveg: %s %d' % (konyv, c))
-    fej = {c - 1, c, c + 1}
+    kar_fej = sorted({cc for cc, _, _ in kar})
+    fej = set(range(min(kar_fej) - 1, max(kar_fej) + 2))
     kjv = kjv_ablak(st, fej)
-    tahot = tahot_strongok(konyv, {c})
-    kv = [kar_vers(konyv, c, v, t, tahot) for v, t in kar]
+    tahot = tahot_strongok(konyv, set(kar_fej))
+    kv_all = [kar_vers(konyv, cc, v, t, tahot) for cc, v, t in kar]
     jv = [kjv_vers(cc, vv, sz, sg) for cc, vv, sz, sg in kjv]
-    # hosszarány-medián: a Károli-fejezet szószáma / a KJV ugyanazon számú fejezetének szószáma
-    kar_ossz = sum(x.hossz for x in kv)
-    kjv_c = [x for x in jv if x.kulcs.startswith('%d:' % c)]
+    # hosszarány-medián: a Károli-fejezet(ek) szószáma / a KJV ugyanazon számú fejezete(i)nek szószáma
+    kar_ossz = sum(x.hossz for x in kv_all)
+    kjv_c = [x for x in jv if int(x.kulcs.split(':')[0]) in kar_fej]
     arany_med = kar_ossz / max(1, sum(x.hossz for x in kjv_c))
-    p_sz = igazit(kv, jv, arany_med, gram, 'szoveg')
-    p_te = igazit(kv, jv, arany_med, gram, 'teljes')
+    p_sz, _ = igazit(kv_all, jv, arany_med, gram, 'szoveg')
+    p_te, kihagy = igazit(kv_all, jv, arany_med, gram, 'teljes')
+    # árva KJV-versek: az igazítás belsejében kihagyott KJV-versek, a két szomszéd Károli-verssel
+    arva = []
+    for x in kihagy:
+        elotte = [kv_all[i].kulcs for i in range(len(kv_all)) if p_te[i][0] and max(p_te[i][0]) < x]
+        utana = [kv_all[i].kulcs for i in range(len(kv_all)) if p_te[i][0] and min(p_te[i][0]) > x]
+        arva.append((jv[x].kulcs, elotte[-1] if elotte else '-', utana[0] if utana else '-'))
+    sel = [i for i, (cc, _, _) in enumerate(kar) if cc == c]
+    kv = [kv_all[i] for i in sel]
+    p_sz = [p_sz[i] for i in sel]
+    p_te = [p_te[i] for i in sel]
     eredmeny = []
     for i, k in enumerate(kv):
         idx_sz, lep_sz = p_sz[i]
@@ -437,7 +478,7 @@ def fejezet_osszevet(konyv, c, hu2st, gram):
         else:
             ok = 'ELTÉR: szoveg=%s, teljes=%s' % (jav_sz or '-', jav_te or '-')
         eredmeny.append((k, jav_te, jav_sz, jl, masodik, ok, [jv[x] for x in idx_te]))
-    return eredmeny, arany_med
+    return eredmeny, arany_med, arva
 
 
 def itelet_betolt(path):
@@ -451,67 +492,98 @@ def itelet_betolt(path):
     return out
 
 
+def eltolas_tipus(karoli_kulcs, kjv):
+    """azonos_szam / eltolt (fejezeten belül) / fejezetvalto / nincs_par."""
+    if not kjv:
+        return 'nincs_par'
+    c, v = karoli_kulcs.rsplit(' ', 1)[1].split(':')
+    kc, kv_ = kjv.split(';')[0].split(':')
+    if kc != c:
+        return 'fejezetvalto'
+    return 'azonos_szam' if kv_ == v else 'eltolt'
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--fejezet', action='append', default=[])
     ap.add_argument('--minta', action='store_true')
+    ap.add_argument('--teljes', action='store_true',
+                    help='az A–D′ célhalmaz minden fejezete, blokk-igazítással (a szomszéd fejezetekkel együtt)')
     ap.add_argument('--kimenet', default=ALAP_KIMENET)
     ap.add_argument('--itelet', default=ALAP_ITELET)
     ap.add_argument('--szoveg', action='store_true', help='a két szöveg kiírása olvasáshoz; fájlt nem ír')
+    ap.add_argument('--csak-cel', action='store_true', help='--szoveg mellett csak a célversek')
+    ap.add_argument('--blokk', action='store_true', help='blokk-igazítás --fejezet mellett is')
     a = ap.parse_args()
-    fejezetek = (MINTA if a.minta else []) + a.fejezet
+    fejezetek = (MINTA if a.minta else []) + (list(CEL) if a.teljes else []) + a.fejezet
     if not fejezetek:
-        ap.error('--minta vagy --fejezet kell')
+        ap.error('--minta, --teljes vagy --fejezet kell')
     hu2st = konyv_tabla()
     gram = gram_strongok()
     itelet = itelet_betolt(a.itelet)
     ts = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%MZ')
     ki = []
+    arva_ossz = []
     for fj in fejezetek:
         m = re.match(r'^(.+) (\d+)$', fj)
         konyv, c = m.group(1), int(m.group(2))
-        eredm, arany = fejezet_osszevet(konyv, c, hu2st, gram)
+        eredm, arany, arva = fejezet_osszevet(konyv, c, hu2st, gram, blokk=(a.teljes or a.blokk))
+        for x in arva:
+            arva_ossz.append((fj,) + x)
         if a.szoveg:
-            print('=== %s (szószám-arány medián %.2f) ===' % (fj, arany))
+            print('=== %s (szószám-arány medián %.2f; árva KJV a blokkban: %s) ===' % (
+                fj, arany, ', '.join('%s [%s | %s]' % x for x in arva) or '-'))
             for k, jt, js, jl, mas, ok, jvs in eredm:
-                print('%s → %s | %s' % (k.kulcs, jt or '-', ok))
+                v = int(k.kulcs.rsplit(':', 1)[1])
+                osz = cel_osztaly(fj, v)
+                if a.csak_cel and not osz:
+                    continue
+                print('%s [%s] → %s | %s | %s' % (k.kulcs, osz or 'kontextus', jt or '-', ok, mas))
                 print('   K: %s' % k.szoveg)
                 for j in jvs:
                     print('   J %s: %s' % (j.kulcs, j.szoveg))
             continue
         for k, jt, js, jl, mas, ok, jvs in eredm:
+            v = int(k.kulcs.rsplit(':', 1)[1])
+            osz = cel_osztaly(fj, v)
             it, it_megj = itelet.get(k.kulcs, ('', ''))
             if it == '':
                 elt = ''
             else:
                 elt = 'egyezik' if it == jt else 'ELTÉR'
-            sor = [k.kulcs, jt, js,
+            sor = [k.kulcs, osz or 'kontextus', jt, js, eltolas_tipus(k.kulcs, jt),
                    '%.2f' % jl['nev'] if jl else '', '%.2f' % jl['szam'] if jl else '',
                    '%.2f' % jl['r'] if jl else '', str(jl['eu']) if jl else '',
                    '%.2f' % jl['tahot'] if jl else '', '%.2f' % jl['szoveg'] if jl else '',
                    mas, ok, it, elt, it_megj,
-                   'scope=gepi:%s | forras=eszkozok/versmegf_szoveg_osszevet.py | ts=%s%s' % (
-                       fj, ts, (' ; itelet: scope=manual | forras=%s' % os.path.relpath(a.itelet, ROOT).replace('\\', '/')) if it else '')]
+                   'scope=gepi:%s%s | forras=eszkozok/versmegf_szoveg_osszevet.py | ts=%s%s' % (
+                       fj, ' (blokk)' if a.teljes else '', ts,
+                       (' ; itelet: scope=manual | forras=%s' % os.path.relpath(a.itelet, ROOT).replace('\\', '/')) if it else '')]
             assert not any('\t' in x or '\n' in x for x in sor)
             ki.append('\t'.join(sor))
     if a.szoveg:
         return
+    n_cel = sum(1 for s in ki if s.split('\t')[1] != 'kontextus')
     fejlec = [
-        '# F117 4.2: Károli 1908 ↔ KJV versenkénti szöveg-összevetés (a Karoli_versmegfeleltetes.tsv olvasása nélkül)',
+        '# F117 4.2–4.3: Károli 1908 ↔ KJV versenkénti szöveg-összevetés (a Karoli_versmegfeleltetes.tsv olvasása nélkül)',
         '# proveniencia: scope=%s | forras=Karoli_1908.tsv+KJV_Strongs_teljes.tsv+TAHOT_kivonat.tsv '
-        '(eszkozok/versmegf_szoveg_osszevet.py) | n=%d | ts=%s' % ('+'.join(fejezetek), len(ki), ts),
-        '# jelek: nev/szam [0..1] (mindkét oldal üres: 0,5); hossz_r = szószám-arány / fejezet-medián (1 = átlagos); '
+        '(eszkozok/versmegf_szoveg_osszevet.py%s) | n=%d (célvers: %d) | ts=%s' % (
+            '+'.join(fejezetek), ' --teljes' if a.teljes else '', len(ki), n_cel, ts),
+        '# jelek: nev/szam [0..1] (mindkét oldal üres: 0,5); hossz_r = szószám-arány / medián (1 = átlagos); '
         'elso_utolso 0–2; tahot = Strong-Jaccard (NEM független jel); s_szoveg = %.2f*nev + %.2f*szam + %.2f*hossz' % (
             W_NEV, W_SZAM, W_HOSSZ),
-        '# kjv_teljes = igazítás szöveg+TAHOT-jellel; kjv_szoveg = igazítás csak szöveg-jellel; itelet = kézi (modell-) '
-        'ítélet a két szöveg elolvasása után; eltérés = az itelet és a kjv_teljes viszonya',
-        '\t'.join(['igehely_karoli', 'kjv_teljes', 'kjv_szoveg', 'nev', 'szam', 'hossz_r', 'elso_utolso', 'tahot',
-                   's_szoveg', 'masodik_legjobb', 'dontesi_ok', 'itelet', 'elteres', 'itelet_megjegyzes',
-                   'proveniencia']),
+        '# kjv_teljes = igazítás szöveg+TAHOT-jellel; kjv_szoveg = igazítás csak szöveg-jellel; osztaly = A–D′ célvers '
+        'vagy kontextus (a célfejezet nem célverse); itelet = kézi ítélet a két szöveg elolvasása után; '
+        'eltérés = az itelet és a kjv_teljes viszonya',
+        '# árva KJV-vers (az igazítás belsejében kihagyva; blokk: [előtte | utána álló Károli-vers]): %s' % (
+            '; '.join('%s: %s [%s | %s]' % x for x in arva_ossz) or 'nincs'),
+        '\t'.join(['igehely_karoli', 'osztaly', 'kjv_teljes', 'kjv_szoveg', 'eltolas', 'nev', 'szam', 'hossz_r',
+                   'elso_utolso', 'tahot', 's_szoveg', 'masodik_legjobb', 'dontesi_ok', 'itelet', 'elteres',
+                   'itelet_megjegyzes', 'proveniencia']),
     ]
     with open(a.kimenet, 'w', encoding='utf-8', newline='\n') as f:
         f.write('\n'.join(fejlec + ki) + '\n')
-    print('írva: %s (%d sor)' % (a.kimenet, len(ki)))
+    print('írva: %s (%d sor, célvers %d; árva KJV: %d)' % (a.kimenet, len(ki), n_cel, len(arva_ossz)))
 
 
 if __name__ == '__main__':
