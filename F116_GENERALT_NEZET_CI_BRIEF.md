@@ -6,10 +6,10 @@ tipus: feladat
 fazis: 1
 munka: folyamat
 modell: sonnet
-allapot: fut
+allapot: megallt
 ag: claude/f116-generalt-nezet-ci
 ad: E28 (a generált nézet bájtra egyezik a commit adat- és forrásrétegéből újragenerálttal) és E29 (a kiadható kimenetben nulla `belso` jelölés és nulla `【NAPLO`) a CI-ban, pozitív és negatív tesztekkel, a migrált nézetek engedélyezőlistájával (kezdetben üres); a mai main-en 0 HIBA, méréssel igazolva
-kovetkezo: a brief végrehajtása a `/kovetkezo`-val; a #11 M2 lépése előtt le kell zárulnia (D6, `F11_MIGRACIO_BRIEF.md` M2)
+kovetkezo: "Te: a push és a draft PR (`[ELLENŐRZŐ]` előtaggal) jóváhagyása; a munka és a független ellenőrzés kész (`naplok/GENERALT_NEZET_CI_zaras.md`, `naplok/ELLENOR_F116.md`); utána `allapot: lezarva`, `pr`, `lezarva_osszegzes`"
 olvas: [naplok/MOTIVUM_FORRAS_ci_terv.md, naplok/MOTIVUM_FORRAS_pilot_terv.md, adat/SEMA.md, sablonok/9_PaRDeS_motivum_forras_sablon.md, F11_MIGRACIO_BRIEF.md, eszkozok/ellenorzes/, .github/workflows/ellenorzes.yml, eszkozok/general.py, eszkozok/lexikon_general.py, eszkozok/nulladiff.sh, Lezart_tematikus_tanulmanyok_index.md, lexikon/]
 ir: [eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/futtat.py, eszkozok/ellenorzes/e28_migralt_nezetek.tsv, eszkozok/ellenorzes/tesztek/, .github/workflows/ellenorzes.yml, motivumlog/PaRDeS_motivumok.md, naplok/GENERALT_NEZET_CI_meres.md, naplok/ELLENOR_F116.md]
 fugg: []
