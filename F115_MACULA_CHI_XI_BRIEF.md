@@ -5,7 +5,8 @@ kod: MACULA CHI XI
 tipus: feladat
 fazis: folyamat
 modell: sonnet
-allapot: nem_indult
+allapot: fut
+ag: claude/f115-macula-chi-xi
 ad: a `Macula_heber_*.tsv` `gorog_lxx` és a `token_macula.lxx_szo` χ↔ξ-hibája az importban javítva (teljes csere az érintett sorokban), soronkénti Rahlfs-minőségjelöléssel és a forrásalak megőrzésével; a vers-lap Macula-táblázata a javított alakot mutatja
 kovetkezo: Te: a futtatás a `/kovetkezo`-val, helyi gépen (pinelt Macula-klónok, WSL-natív pardes.db)
 munka: adat
