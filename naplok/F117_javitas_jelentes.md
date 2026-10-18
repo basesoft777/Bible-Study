@@ -75,3 +75,23 @@ A két száraz futás bájtra azonos (`cmp`), és az éles tábla azonos velük.
 2. **Az Ézs 64:1 MT-értéke számra egyezik a KJV-párral** (64:1, `KJV` osztály). Tartalmilag azonban a Károli 64:1 = MT 63:19b + 64:1 = KJV 64:1–2. Ez a versfél-korlát esete (N-F117c).
 3. **A 4.6-ban kifejezetten ellenőrizni kell**, hogyan kezelik a fogyasztók a `KEZI` + kitöltött `igehely_mt` kombinációt: `f17/macula_kk.py`, `fj2/bsb_import.py` (MT-maximum, „a KJV-osztály soraiból nem”), `sqlite_epit.py` (`mt_kk`), `olvaso_pilot/bdb_szelet_m0.py`, `olvaso_szerver/bdb_vers_jelentes.py`, `lexikon_general.py`.
 4. **Egyeztetett eltérés:** a `konkordancia/README.md` írása a brief `ir` mezőjén kívül esik; a felhasználó kérése (DT-F117e). Az `adat/SEMA.md` nem változott.
+
+## 6. Licenc és forrás (E7; a zárójelentés ebből veszi át)
+
+Szó szerint az `adat/licencek.tsv`-ből (scope=adat/licencek.tsv | forras=manual leltár, F24/F33 | ts=2026-10-18 olvasva). Nem emlékezetből; a `adat/datasetek.tsv` állapota mindegyiknél `elerheto`.
+
+| Dataset | Licenc (`adat/licencek.tsv`) | Szerepe az F117-ben |
+|---|---|---|
+| `Karoli_1908` | „közkincs (a mű kora miatt; DT-F33e) — tisztázatlan (közkincs (a HunKar hunkar.conf állítása); MIT (scrollmapper, a repóra))” | szöveg-összevetés, Károli-oldal |
+| `KJV_Strongs_teljes` | „tisztázatlan (a Strong-címkék); az alapszöveg: Public Domain (eBible); az Egyesült Királyságban nyomtatásra Crown-letters patent” | szöveg-összevetés, KJV-oldal (csak a Strong-címkés szavak, N-F117c) |
+| `TAHOT` | „CC BY 4.0” (STEPBible-Data) | kiegészítő jel; MT-levezetés, Károli-oldal |
+| `Macula_heber` | „CC BY 4.0 © Biblica, Inc” (macula-hebrew @ 47db250b) | MT-levezetés, MT-oldal (`ref` oszlop) |
+| `LXX_OS` / `verse_pairs.jsonl` | „CC BY 4.0 (lxx-morph adat …)” (lxx-morph @ c91f6b1e) | változatlan forrás: a KK1b-tervezet bemenete, sha256 3a91c571… (KK4 fejléc) |
+| `TSK` | „CC BY (az OpenBible.info licenc-oldala szerint …); a mű maga közkincs” | mérés (M1–M5), próbagenerálás |
+| `Karoli_versmegfeleltetes` | „minden jog fenntartva (a saját rész, projekt_adat …) + CC BY 4.0 (verse_pairs …) + Károli (közkincs) + TAHOT (CC BY 4.0)” | a javított tábla |
+
+**Eltérés a brief E7 szövegétől:** a brief a Károli 1908-at és a KJV-t „Public Domain”-nek írja. A leltár pontosabb:
+- a Károli közkincs a mű kora miatt, de a forrás-nyilatkozat tisztázatlan;
+- a KJV alapszövege Public Domain, a Strong-címkék licence viszont tisztázatlan.
+
+**Javaslat:** a `Karoli_versmegfeleltetes` licencsora nem említi, hogy az F117-ben a Macula (CC BY 4.0) is forrás lett (az `igehely_mt` levezetése). Ennek pótlása `adat/licencek.tsv`-írás volna, ami nem az F117 köre (E6: az `adat/` változatlan). A zárójelentés javasolja.
