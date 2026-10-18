@@ -86,3 +86,30 @@ Ellenőr: `fuggetlen-ellenor` subagent, claude-opus-5-5 (kért: `opus`, egyezik)
 1. E1: a szűkített azonosság-állítás még 5 sorra hamis; az „eltolt pár” állítás téves.
 2. E2: az N-F54a nem gyűjti az Ézs 3, Jón 2:2–10, 1Sám 24 teljes eltolódását és az 1Sám 20:43-at.
 3. E3: félrevezető oszlopnév és commit-cím.
+
+---
+
+# Negyedik ellenőrzés — origin/main (be85d5de)..HEAD (a7ebd9f9); a javító menetek: 2ddb7f98..HEAD
+
+Ellenőr: `fuggetlen-ellenor` subagent, claude-opus-5-5 (kért: `opus`, egyezik). *Az orkesztrátor írta ki az ellenőr jelentéséből.*
+
+| pont | eredmény | indok |
+|---|---|---|
+| 3. ellenőrzés E1–E3 | OK | az 5 nem létező KJV-vers 0 TSK-sor, nincs „eltolt pár”; N-F54a: Ézs 3, Jón 2:2–10, 1Sám 24, 1Sám 20:43, 1Kir 22:45 maradék; oszlopnév `azonos_szamu_…`; commit-cím helyesbítve |
+| `NINCS_PAR_KIVETEL` | OK | 1Kir 22:46–49, Ézs 3:1–26, Jón 2:2–10, 1Sám 24:1–22, scope=manual; `lekerdez.py karoli`-val a határok igazolva; `tsk` a kivételekre n=0; szomszédok épek; a felmérő tükörkonstansa karakterre azonos |
+| DT-F114d kiegészítés, DT-F114e | OK | jelölt, idézettel. Mellékes: a DT-F114e „Probléma” cellájában a megálláskori „Lista nem bővítve” áll |
+| render_diff lista 46 | OK | az új 3 sor név szerint (`:522-524`); `karoli "Ézs 3:11"` = KJV 3:10 |
+| számok konzisztenciája | OK | `F114_elveszett_sorok.tsv` 622 = 478 + 25 + 119; egyezik a jelentéssel és az N-F54a-val |
+| **motívum-adat a kivételeken** | **ELTÉRÉS** | `adat/elofordulasok.tsv:74,145`: TEREMT-001 Jón 2:6 és ALVIL-001 Jón 2:3 a kivétel miatt TSK nélkül marad, holott a helyes KJV-pár (2:5, 2:2) létezik; ezt sem a jelentés, sem a DT-F114d, sem az N-F54a nem mondja ki; a B „elmarad 0” a kivétel-verseken körkörös; a `F114_proba_diff.tsv:150,152` TEREMT-001 −1/−1 változása megmagyarázatlan. A main-hez képest nem regresszió. |
+| jelentés `:26` | ELTÉRÉS (enyhe) | elavult állapotleírás |
+| felmérő `:508` docstring | ELTÉRÉS (enyhe) | csak az 1Kir 22-kivételt említi |
+| `F114_proba_diff.tsv:167` | ELTÉRÉS (enyhe, korábbi) | a proveniencia `ts=` üres |
+| írási halmaz, jeloltek 7 sor, Δ, CI (`futtat.py` exit 0), ⛔-sorrend | OK | — |
+| tesztek, felmérő-összesítők | NEM ELLENŐRIZHETŐ | parancskörön kívül |
+
+## ÖSSZEGZÉS — ELTÉRÉS: 4 tétel
+
+1. (közepes) A Jón 2:2–10 kivétel két motívum-előfordulást (ALVIL-001 Jón 2:3, TEREMT-001 Jón 2:6) TSK nélkül hagy; kimondatlan, a B mérés itt körkörös.
+2. (enyhe) jelentés `:26` elavult.
+3. (enyhe) felmérő `:508` docstring hiányos.
+4. (enyhe) `F114_proba_diff.tsv:167` üres `ts=`.
