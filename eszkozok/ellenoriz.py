@@ -738,6 +738,22 @@ def szabaly14_kiejtes_terminologia(adat_dir):
     return Sor(cim, 'JELENTÉS', megjegyzes='; '.join(megjegyzesek))
 
 
+KAPCSOLATOK_FEJLEC = ['forras_igehely', 'cel_igehely', 'id', 'tipus', 'funkcio',
+                      'bizonyossag', 'pardes_szint', 'indoklas']
+
+
+def szabaly15_kapcsolatok_fejlec(adat_dir):
+    """#11 S2 (DT183, SEMA.md 2.3): a kapcsolatok.tsv fejlece pontosan a
+    SEMA 2.3 mezolistaja, az `indoklas` az utolso oszlop. Az `indoklas`
+    szabad szoveg, nem kotelezo (ures ertek megengedett); a soronkenti
+    oszlopszamot a G.tsv_beolvas mar kikenyszeriti."""
+    cim = '15. kapcsolatok.tsv fejléc (SEMA 2.3)'
+    fejlec, _ = G.tsv_beolvas(os.path.join(adat_dir, 'kapcsolatok.tsv'))
+    if fejlec != KAPCSOLATOK_FEJLEC:
+        return Sor(cim, 'SÉRTÉS', 1, ['fejléc eltérő: %r (várt: %r)' % (fejlec, KAPCSOLATOK_FEJLEC)])
+    return Sor(cim, 'RENDBEN')
+
+
 # ---------------------------------------------------------------------------
 # Q1 / Q7 -- --study
 # ---------------------------------------------------------------------------
@@ -874,6 +890,7 @@ def main():
         tabla_sorok.append(szabaly12_lap_szamlalo(args.adat))
         tabla_sorok.append(szabaly13_forditasi_gyorsitotar(args.adat))
         tabla_sorok.append(szabaly14_kiejtes_terminologia(args.adat))
+        tabla_sorok.append(szabaly15_kapcsolatok_fejlec(args.adat))
     except Exception as exc:
         print('HIBA: %s' % exc, file=sys.stderr)
         sys.exit(2)
