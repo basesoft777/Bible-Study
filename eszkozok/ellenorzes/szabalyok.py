@@ -2026,3 +2026,52 @@ def e28_generalt_nezet_egyezes(fajlok):
 
 
 SZABALYOK_FUGGVENYEI['E28'] = e28_generalt_nezet_egyezes
+
+
+# --------------------------------------------------------------------------
+# E29 -- a kiadható kimenetben nulla `belso` jelölés és nulla `【NAPLO`
+# --------------------------------------------------------------------------
+# Csak a kimenetet ellenőrzi (N-F23b, D5): nem szűr, és nem hívja a generátort.
+# A minta-lista forrása a SEMA 3.10.4 jelölő-listája (build-kihagyás: `belso`,
+# `SZINT-*`, `INAKTÍV`, `JELÖLT`, `ADAT-HIV`, `ADAT-ÉRTÉK`, `FORRÁSRÉTEG`) és a
+# 3.10.3 (`【NAPLO】` mindig belső); ha a SEMA bővül, ez a konstans is bővül.
+E29_MINTAK = (
+    '【NAPLO', '【NAPLÓ',                  # mindig belso (SEMA 3.10.3)
+    'SZINT-KEZDET', 'SZINT-VÉGE',        # a belso jelölői is, bármely értékkel
+    'SZINT: belso',                       # a #64 ideiglenes egyjelölős alakja (ADAT-NÉZET)
+    'INAKTÍV:', 'JELÖLT:', 'ADAT-HIV:', 'ADAT-ÉRTÉK:', 'FORRÁSRÉTEG',
+)
+# Az `olvasoi` nézet ezen felül a jelölőket és a proveniencia-sorokat sem viszi.
+E29_OLVASOI_TOVABBI = (
+    'GENERÁLT-KEZDET', 'GENERÁLT-VÉGE', 'RÉS-KEZDET', 'RÉS-VÉGE', 'proveniencia:',
+)
+
+
+def e29_kiadhato_kimenet_tisztasaga(fajlok):
+    """E29: a lista minden `fajl`-ján szöveges keresés (kódkerítésen belül is) a
+    mélység szerinti mintákra; bármely találat HIBA (fájlszintű, D6). A `fajlok`
+    paramétert nem használja: minden PR-en és --teljes módban fut."""
+    talalatok = []
+    for sorszam, d in _migralt_lista():
+        relut = d['fajl'].strip()
+        melyseg = d.get('melyseg', '').strip()
+        if melyseg not in E28_MELYSEGEK:
+            talalatok.append(Talalat('E29', SZINT['E29'], E28_LISTA, sorszam,
+                                     'ismeretlen melyseg: %r (apparatus | olvasoi)' % melyseg))
+            continue
+        mintak = E29_MINTAK + (E29_OLVASOI_TOVABBI if melyseg == 'olvasoi' else ())
+        try:
+            with open(os.path.join(ROOT, *relut.split('/')), 'r', encoding='utf-8') as f:
+                sorok = _lf(f.read()).split('\n')
+        except (IOError, OSError):
+            talalatok.append(Talalat('E29', SZINT['E29'], relut, 0,
+                                     'a lista %d. sorában megnevezett fájl nem olvasható' % sorszam))
+            continue
+        for i, sor in enumerate(sorok, start=1):
+            for minta in mintak:
+                if minta in sor:
+                    talalatok.append(Talalat('E29', SZINT['E29'], relut, i, 'minta: %s' % minta))
+    return talalatok
+
+
+SZABALYOK_FUGGVENYEI['E29'] = e29_kiadhato_kimenet_tisztasaga
