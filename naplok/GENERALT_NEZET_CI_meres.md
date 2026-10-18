@@ -134,11 +134,13 @@ E29 nem importál generátort és nem olvas `motivumok/` forrást. A G6 grep (`i
 
 ## 4. Döntésnapló és eltérések a CI-tervtől
 
-- **E1.** Az összevetés alapja a commitolt blob (`git show HEAD:<út>`, LF-normalizálva); a `git` hiánya vagy
-  a HEAD-ben nem szereplő fájl esetén tartalék a munkafa-fájl (helyi futás). A marker-blokkos ágon ez a
-  blob; a generált oldal a `general.py` saját függvényeiből jön (`blokk_lista_eles`, `marker_par_keres`,
-  `blokk_torzs`), a generátor logikája nem duplikálódik. (A `general.py --ellenoriz` a munkafát méri;
-  a CI friss checkoutján a kettő azonos, az E28 a blobot méri, ahogy a CI-terv 1. szakasz 3. pontja kéri.)
+- **E1.** (javítva az F116.11-ben, a független ellenőr 1. eltérése nyomán) Az összevetés alapja a commitolt blob
+  nyers bájtjai (`git show HEAD:<út>`, UTF-8 dekódolás, **sorvég-konverzió és normalizálás nélkül**): a sorvégnek is
+  egyeznie kell, ahogy a CI-terv 1. szakasz 3. pontja és a brief 5. lépése kéri; a generált oldal is nyers. A korábbi
+  változat (F116.5) mindkét oldalt LF-re normalizálta, ez eltért a CI-tervtől. Tartalék (a `git` hiánya vagy a
+  HEAD-ben nem szereplő fájl, helyi futás): a munkafa-fájl LF-re normalizálva, és a jelentés megjegyzése jelzi, hogy
+  ez nem blob-összevetés. A generált blokk a `general.py` saját függvényeiből jön (`blokk_lista_eles`,
+  `marker_par_keres`, `blokk_torzs`), a generátor logikája nem duplikálódik.
 - **E2.** A migrált ágon a generátor alfolyamatként fut (`--cel <cel> --id <id> --kimenet <tmp>`), a repón kívüli
   ideiglenes könyvtárba. A tesztben a generátor-hívás, a blob és a marker-blokkok forrása helyettesíthető
   (`_e28_general_futtat`, `_e28_commitolt`, `_e28_generalt_blokkok`); az éles generátor útját a 3.2 próba igazolja.
@@ -150,7 +152,24 @@ E29 nem importál generátort és nem olvas `motivumok/` forrást. A G6 grep (`i
 - **E5.** Mind az E28, mind az E29 a `HATOKOR_SZABALYOK` közé került (a `--teljes` módban a `['__TELJES__']`
   jelzőt kapják, ahogy az E3/E19/E25), és a `FAJLSZINTU_SZABALYOK` közé (D6). Az E28 PR-en csak a brief szerinti
   érintett fájloknál indul (`_e28_indul`); az E29 minden futásban fut.
-- **E6.** Ellentmondás a CI-tervvel és a briefekkel: nincs. Generátor-módosításra nem volt szükség.
+- **E6.** Ellentmondás a CI-tervvel: az F116.5 sorvég-normalizálása volt az (lásd E1, javítva); más nincs.
+  Generátor-módosításra nem volt szükség, a nyers összevetés a mai main-en nem fordít pirosra semmit.
 - **E7.** Tudnivaló a #11-nek (D7 szerint a felhasználó vezeti át): a lista sorának felvételekor a PR `[ELLENŐRZŐ]`
   előtagot kap (D3, E16); a workflow Python 3.11-et használ, az itteni mérés 3.14-gyel futott (a kód nem használ
   3.12+ nyelvi elemet, de a CI-futás ezt csak a PR-en igazolja).
+
+## 5. Javítókör (F116.11, F116.12; a független ellenőr, `naplok/ELLENOR_F116.md`, `db57480d`)
+
+`scope=test_szabalyok.py, test_tanulmany.py, futtat.py --teljes, general.py --ellenoriz ×3, feladatok.py ellenoriz | forras=manual (CLI-futtatás a munkaágon, F116.12 = 1570bf60) | ts=2026-10-18`
+
+- **F116.11 (sorvég, közepes):** az E28 a commitolt blob nyers bájtjait veti össze a generált kimenettel; a `_lf()`
+  normalizálás az E28 összevetéséből kikerült (az E29 sorokra bontásához marad). Új tesztek: CRLF-es commitolt nézet
+  LF-es generált kimenettel piros; CRLF-es marker-blokk piros; a munkafa-tartalék LF-et ad és jelzi, hogy nem
+  blob-összevetés. A tesztfixture-ök sorvég-hűen íródnak (`_ir_nyers`), így Windowson sem lesz CRLF az LF-ből.
+  A nyers összevetés a mai main-en nem fordít pirosra semmit (E28 üres listával 0 találat; a három marker-blob tisztán LF).
+- **F116.12 (robusztusság, alacsony):** a záró marker nélküli nyitó marker `general.marker_par_keres`-féle
+  `ValueError`-ját az E28 elfogja: HIBA-találat (fájl, cél-kulcs, a hiba szövege, javító parancs), a futtató és a
+  többi szabály fut tovább. Teszt: `test_negativ_nyito_marker_zaro_nelkul_hibatalalat_nem_kivetel`.
+- **Mérés:** `test_szabalyok.py` 141 OK, `test_tanulmany.py` OK; `futtat.py --teljes`: E28 0 találat („E28: 0 migrált
+  nézet”), E29 0 találat, kilépés 0; a három `general.py --cel … --ellenoriz` zöld (naplo 4/4, index, nyitott);
+  `python eszkozok/feladatok.py ellenoriz`: 136 brief, 0 hiba, 0 figyelmeztetés.
