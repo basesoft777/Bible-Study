@@ -5,10 +5,10 @@ kod: DIFF_SZUKITES
 tipus: feladat
 fazis: 2
 modell: opus
-allapot: dontesre_var
+allapot: fut
 ag: claude/diff-szukites
 ad: a render_diff_osztalyoz.py minden ismert fajtája a változás fajtája szerint dönt, nem a blokk szerint (öt szűkítés, mindegyikhez negatív teszt); a mai próbán az S2.8 0 ismeretlen + 44 felhasznalo_elfogadva; az N-F09i lezárva
-kovetkezo: "Te: döntés a DT-F113a–d tételekről (a 2. lépés ⛔: a szűkítés a próbán 246 új ismeretlen sort adna, naplok/DIFF_SZUKITES_szimulacio.tsv); utána folytatás a 2. lépéstől, a 26dbcac5-re építve"
+kovetkezo: a 2. lépéstől a DT-F113a döntése szerint (a), (b), (c), (d)
 munka: folyamat
 olvas: [eszkozok/render_diff_osztalyoz.py, eszkozok/teszt_render_diff_osztalyoz.py, naplok/ELLENOR_SZOTAR_S2_negyedik.md, naplok/SZOTAR_S2_zaras.md, F09_SZOTAR_S2_BRIEF.md, naplok/SZOTAR_S2_diff.tsv, naplok/SZOTAR_S2_ismeretlen.tsv, naplok/SZOTAR_S2_parositas_minta.md, adat/szotar_szerepek.tsv, adat/licencek.tsv, adat/kiejtes_kivetelek.tsv, eszkozok/kiejtes.py, generalt_proba/F09_szotar_s2_proba/, lexikon/]
 ir: [eszkozok/render_diff_osztalyoz.py, eszkozok/teszt_render_diff_osztalyoz.py]
