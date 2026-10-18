@@ -74,6 +74,13 @@ class Kiegeszito2b(unittest.TestCase):
         self.assertNotIn('G9999', ki)
         self.assertLess(ki.index('G1941'), ki.index('H7121'))
 
+    def test_rokon_szavak_tokenjei(self):
+        tok = LG.adatres_2b_tokenek(['G1941', 'H7121'], ['G0994', 'G1941', 'G2564'])
+        self.assertEqual(tok, ['G1941', 'H7121', 'G0994', 'G2564'])
+        ki = LG.adatres_2b(tok, [hiv('G2564', 'SECE_G'), hiv('G0994', 'SECE_G'), hiv('G1941', 'SECE_G')])
+        self.assertLess(ki.index('G1941'), ki.index('G0994'))
+        self.assertLess(ki.index('G0994'), ki.index('G2564'))
+
     def test_ures(self):
         ki = LG.adatres_2b(['G1941'], [hiv('G1941', 'BDB', jsz='1')])
         self.assertTrue(ki.startswith('*Nincs a szerepmátrixon'))

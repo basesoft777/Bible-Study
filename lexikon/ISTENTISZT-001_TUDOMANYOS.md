@@ -1223,6 +1223,18 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 *Forrás: konkordancia/SECE_H_teljes.tsv*
 
+**SECE_G G0994 — (részlet)**
+
+> LN: 33.81 GK: G1066 Hebrew: אָמַר, הָגָה, הָמָה, זָעַק, זַעַק, כָּנָה, נָהַם, נָהַק, נָשָׂא, פָּצַח, צָהַל, צָוַח, צָעַק, צָרַח, קָרָא, רוּעַ, רָעַם, שָׁאַג, שָׁבַע, שָׁעָה
+
+*Forrás: konkordancia/SECE_G_teljes.tsv*
+
+**SECE_G G2564 — (részlet)**
+
+> LN: 33.129, 33.131, 33.307, 33.312, 33.315 GK: G2813 Hebrew: אָמַר, בֹּוא, דָבַר, הָיָה, זָכַר, זָעַק, לָקַח, עֲלַל, קָרָא, רוּם, שֵׁם
+
+*Forrás: konkordancia/SECE_G_teljes.tsv*
+
 *Proveniencia: `scope=id:ISTENTISZT-001 | forras=adat/lexikon_hivatkozasok.tsv | ts=2026-10-18`*
 
 ### Miért fontos ez a lelet *(kézi)*

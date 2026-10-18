@@ -2445,7 +2445,8 @@ def adatres_alatamasztas(motivum_id, kapcsolat_sorok):
 
 def adatres_2b(tokenek, hiv_sorok):
     """A 2/b rés a `lexikon_hivatkozasok.tsv` szerephez nem rendelt
-    (KIEGESZITO_SZOTARAK) soraiból, a motívum Strong-tokenjeire: a sor
+    (KIEGESZITO_SZOTARAK) soraiból, a kapott Strong-tokenekre (a motívum saját
+    tokenjei + a rokon szavak, adatres_2b_tokenek): a sor
     szó szerinti kivonata (`szoveg_en`) és forrásfájlja; a fordítás, ha az
     `adat/forditasok.tsv`-ben áll."""
     sorok_ehhez = []
@@ -2524,8 +2525,17 @@ def _adatres_alatamasztas(motivum_id, sorai):
     return adatres_alatamasztas(motivum_id, kapcsolatok_sorok())
 
 
+def adatres_2b_tokenek(tokenek, rokon):
+    """A 2b rés Strong-tokenjei (DT-F11g (1)): a motívum saját tokenjei, utána
+    a szerepmátrix „Rokon szavak” tokenjei (rokon_szavak_strongok), ismétlés
+    nélkül -- így a lapon tárgyalt rokon igék kiegészítő sorai is megjelennek."""
+    return list(tokenek) + [t for t in rokon if t not in tokenek]
+
+
 def _adatres_2b(motivum_id, sorai):
-    return adatres_2b(motivum_strong_tokenek(sorai), lexikon_hivatkozasok_sorok())
+    tokenek = motivum_strong_tokenek(sorai)
+    return adatres_2b(adatres_2b_tokenek(tokenek, rokon_szavak_strongok(sorai, tokenek)),
+                      lexikon_hivatkozasok_sorok())
 
 
 def _adatres_minosites(motivum_id, sorai):
