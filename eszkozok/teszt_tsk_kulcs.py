@@ -50,6 +50,13 @@ class KulcsTeszt(unittest.TestCase):
         for v in ('Jób 39:34', 'Préd 9:21', 'Zsolt 13:1'):
             self.assertIsNone(T.karoli_to_kjv(v), v)
 
+    def test_1kir_22_kivetel_nincs_par(self):
+        # scope=manual kivétel: az MT-tartalék itt eltolt párt adna
+        for v in (46, 47, 48, 49):
+            self.assertIsNone(T.karoli_to_kjv('1Kir 22:%d' % v), v)
+            self.assertEqual(T.kjv_to_karoli('1Kir 22:%d' % v), [], v)
+        self.assertEqual(T.karoli_to_kjv('1Kir 22:45'), '1Kir 22:45')
+
     def test_azonos_vers(self):
         self.assertEqual(T.karoli_to_kjv('1Móz 1:1'), '1Móz 1:1')
         self.assertEqual(T.kjv_to_karoli('1Móz 1:1'), ['1Móz 1:1'])

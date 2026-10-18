@@ -1,506 +1,513 @@
 # F114.10: a TSK ÓSZ-forrás- és célkulcsai, amelyeket a main régi logikája (KJV-kulcs = Károli-kulcs) elért, az új tsk_kulcs viszont "nincs pár"-nak vesz
-# proveniencia: scope=TSK ÓSZ | forras=TSK_kereszthivatkozasok.tsv+Karoli_1908.tsv+Karoli_versmegfeleltetes.tsv (eszkozok/tsk_versszam_felmeres.py F. rész) | n=503 | ts=2026-10-18
-oldal	kjv_kulcs	sorok	megfeleltetes_osztaly_forras	igehely_kjv
-forras	2Móz 35:1	9	nincs_sor	
-forras	2Móz 35:10	4	nincs_sor	
-forras	2Móz 35:11	6	nincs_sor	
-forras	2Móz 35:12	9	nincs_sor	
-forras	2Móz 35:13	6	nincs_sor	
-forras	2Móz 35:14	7	nincs_sor	
-forras	2Móz 35:15	11	nincs_sor	
-forras	2Móz 35:16	6	nincs_sor	
-forras	2Móz 35:17	5	nincs_sor	
-forras	2Móz 35:18	1	nincs_sor	
-forras	2Móz 35:19	8	nincs_sor	
-forras	2Móz 35:2	18	nincs_sor	
-forras	2Móz 35:21	28	nincs_sor	
-forras	2Móz 35:22	17	nincs_sor	
-forras	2Móz 35:23	5	nincs_sor	
-forras	2Móz 35:24	1	nincs_sor	
-forras	2Móz 35:25	16	nincs_sor	
-forras	2Móz 35:26	3	nincs_sor	
-forras	2Móz 35:27	3	nincs_sor	
-forras	2Móz 35:28	3	nincs_sor	
-forras	2Móz 35:29	24	nincs_sor	
-forras	2Móz 35:3	5	nincs_sor	
-forras	2Móz 35:30	9	nincs_sor	
-forras	2Móz 35:31	10	nincs_sor	
-forras	2Móz 35:34	12	nincs_sor	
-forras	2Móz 35:35	22	nincs_sor	
-forras	2Móz 35:4	2	nincs_sor	
-forras	2Móz 35:5	9	nincs_sor	
-forras	2Móz 35:6	9	nincs_sor	
-forras	2Móz 35:8	5	nincs_sor	
-forras	2Móz 35:9	6	nincs_sor	
-forras	2Móz 36:1	17	nincs_sor	
-forras	2Móz 36:10	15	nincs_sor	
-forras	2Móz 36:11	1	nincs_sor	
-forras	2Móz 36:12	2	nincs_sor	
-forras	2Móz 36:13	5	nincs_sor	
-forras	2Móz 36:14	2	nincs_sor	
-forras	2Móz 36:19	1	nincs_sor	
-forras	2Móz 36:2	13	nincs_sor	
-forras	2Móz 36:20	8	nincs_sor	
-forras	2Móz 36:27	2	nincs_sor	
-forras	2Móz 36:29	17	nincs_sor	
-forras	2Móz 36:3	9	nincs_sor	
-forras	2Móz 36:30	1	nincs_sor	
-forras	2Móz 36:31	4	nincs_sor	
-forras	2Móz 36:32	1	nincs_sor	
-forras	2Móz 36:35	6	nincs_sor	
-forras	2Móz 36:36	1	nincs_sor	
-forras	2Móz 36:37	3	nincs_sor	
-forras	2Móz 36:4	4	nincs_sor	
-forras	2Móz 36:5	9	nincs_sor	
-forras	2Móz 36:7	1	nincs_sor	
-forras	2Móz 36:8	13	nincs_sor	
-forras	Dán 3:1	31	nincs_sor	
-forras	Dán 3:10	34	nincs_sor	
-forras	Dán 3:12	9	nincs_sor	
-forras	Dán 3:13	17	nincs_sor	
-forras	Dán 3:14	6	nincs_sor	
-forras	Dán 3:15	31	nincs_sor	
-forras	Dán 3:16	2	nincs_sor	
-forras	Dán 3:17	32	nincs_sor	
-forras	Dán 3:18	24	nincs_sor	
-forras	Dán 3:19	31	nincs_sor	
-forras	Dán 3:2	12	nincs_sor	
-forras	Dán 3:20	5	nincs_sor	
-forras	Dán 3:22	10	nincs_sor	
-forras	Dán 3:23	15	nincs_sor	
-forras	Dán 3:24	18	nincs_sor	
-forras	Dán 3:25	16	nincs_sor	
-forras	Dán 3:26	17	nincs_sor	
-forras	Dán 3:27	19	nincs_sor	
-forras	Dán 3:28	55	nincs_sor	
-forras	Dán 3:29	10	nincs_sor	
-forras	Dán 3:3	13	nincs_sor	
-forras	Dán 3:30	7	nincs_sor	
-forras	Dán 3:4	10	nincs_sor	
-forras	Dán 3:5	3	nincs_sor	
-forras	Dán 3:6	21	nincs_sor	
-forras	Dán 3:7	9	nincs_sor	
-forras	Dán 3:8	15	nincs_sor	
-forras	Dán 3:9	7	nincs_sor	
-forras	Dán 4:1	16	KEZI|kezi	van
-forras	Dán 4:2	11	KEZI|kezi	van
-forras	Dán 4:3	32	KEZI|kezi	van
-forras	Hós 13:1	25	nincs_sor	
-forras	Hós 13:10	28	nincs_sor	
-forras	Hós 13:11	20	nincs_sor	
-forras	Hós 13:12	5	nincs_sor	
-forras	Hós 13:13	22	nincs_sor	
-forras	Hós 13:14	29	nincs_sor	
-forras	Hós 13:15	20	nincs_sor	
-forras	Hós 13:2	31	nincs_sor	
-forras	Hós 13:3	9	nincs_sor	
-forras	Hós 13:4	13	nincs_sor	
-forras	Hós 13:5	13	nincs_sor	
-forras	Hós 13:6	17	nincs_sor	
-forras	Hós 13:7	7	nincs_sor	
-forras	Hós 13:8	9	nincs_sor	
-forras	Hós 13:9	24	nincs_sor	
-forras	Hós 14:1	23	nincs_sor	
-forras	Hós 14:2	39	nincs_sor	
-forras	Hós 14:3	38	nincs_sor	
-forras	Hós 14:4	27	nincs_sor	
-forras	Hós 14:5	22	nincs_sor	
-forras	Hós 14:6	21	nincs_sor	
-forras	Hós 14:7	17	nincs_sor	
-forras	Hós 14:8	29	nincs_sor	
-forras	Hós 14:9	52	nincs_sor	
-forras	Hós 2:1	16	nincs_sor	
-forras	Hós 2:10	17	nincs_sor	
-forras	Hós 2:11	20	nincs_sor	
-forras	Hós 2:12	12	nincs_sor	
-forras	Hós 2:13	45	nincs_sor	
-forras	Hós 2:14	52	nincs_sor	
-forras	Hós 2:15	29	nincs_sor	
-forras	Hós 2:16	8	nincs_sor	
-forras	Hós 2:17	5	nincs_sor	
-forras	Hós 2:18	27	nincs_sor	
-forras	Hós 2:19	35	nincs_sor	
-forras	Hós 2:2	20	nincs_sor	
-forras	Hós 2:20	19	nincs_sor	
-forras	Hós 2:21	8	nincs_sor	
-forras	Hós 2:22	4	nincs_sor	
-forras	Hós 2:3	30	nincs_sor	
-forras	Hós 2:4	14	nincs_sor	
-forras	Hós 2:5	41	nincs_sor	
-forras	Hós 2:6	7	nincs_sor	
-forras	Hós 2:7	47	nincs_sor	
-forras	Hós 2:8	29	nincs_sor	
-forras	Hós 2:9	19	nincs_sor	
-forras	Jób 17:1	10	nincs_sor	
-forras	Jób 17:10	9	nincs_sor	
-forras	Jób 17:11	14	nincs_sor	
-forras	Jób 17:12	7	nincs_sor	
-forras	Jób 17:13	11	nincs_sor	
-forras	Jób 17:14	17	nincs_sor	
-forras	Jób 17:15	5	nincs_sor	
-forras	Jób 17:2	12	nincs_sor	
-forras	Jób 17:3	11	nincs_sor	
-forras	Jób 17:4	8	nincs_sor	
-forras	Jób 17:5	12	nincs_sor	
-forras	Jób 17:6	5	nincs_sor	
-forras	Jób 17:7	8	nincs_sor	
-forras	Jób 17:8	8	nincs_sor	
-forras	Jób 17:9	20	nincs_sor	
-forras	Jób 37:1	14	nincs_sor	
-forras	Jób 37:10	5	nincs_sor	
-forras	Jób 37:11	5	nincs_sor	
-forras	Jób 37:12	10	nincs_sor	
-forras	Jób 37:13	15	nincs_sor	
-forras	Jób 37:14	11	nincs_sor	
-forras	Jób 37:15	11	nincs_sor	
-forras	Jób 37:16	12	nincs_sor	
-forras	Jób 37:17	4	nincs_sor	
-forras	Jób 37:18	13	nincs_sor	
-forras	Jób 37:19	16	nincs_sor	
-forras	Jób 37:2	9	nincs_sor	
-forras	Jób 37:20	6	nincs_sor	
-forras	Jób 37:21	3	nincs_sor	
-forras	Jób 37:22	20	nincs_sor	
-forras	Jób 37:23	35	nincs_sor	
-forras	Jób 37:3	6	nincs_sor	
-forras	Jób 37:4	8	nincs_sor	
-forras	Jób 37:5	13	nincs_sor	
-forras	Jób 37:6	15	nincs_sor	
-forras	Jób 37:7	12	nincs_sor	
-forras	Jób 37:8	2	nincs_sor	
-forras	Jób 37:9	5	nincs_sor	
-forras	Jób 40:1	2	KEZI|kezi	van
-forras	Jób 40:2	40	KEZI|kezi	van
-forras	Jób 40:4	34	KEZI|kezi	van
-forras	Jób 40:5	10	KEZI|kezi	van
-forras	Préd 10:1	10	KEZI|kezi	van
-forras	Préd 10:2	9	KEZI|kezi	van
-forras	Préd 10:3	5	KEZI|kezi	van
-forras	Préd 2:26	26	KEZI|kezi_tobbforrasu_osszevonas	van
-forras	Péld 12:1	17	nincs_sor	
-forras	Péld 12:10	15	nincs_sor	
-forras	Péld 12:11	26	nincs_sor	
-forras	Péld 12:12	22	nincs_sor	
-forras	Péld 12:13	18	nincs_sor	
-forras	Péld 12:14	14	nincs_sor	
-forras	Péld 12:15	18	nincs_sor	
-forras	Péld 12:16	11	nincs_sor	
-forras	Péld 12:17	13	nincs_sor	
-forras	Péld 12:18	17	nincs_sor	
-forras	Péld 12:19	9	nincs_sor	
-forras	Péld 12:2	10	nincs_sor	
-forras	Péld 12:20	16	nincs_sor	
-forras	Péld 12:21	12	nincs_sor	
-forras	Péld 12:22	12	nincs_sor	
-forras	Péld 12:23	8	nincs_sor	
-forras	Péld 12:24	17	nincs_sor	
-forras	Péld 12:25	20	nincs_sor	
-forras	Péld 12:26	18	nincs_sor	
-forras	Péld 12:27	6	nincs_sor	
-forras	Péld 12:3	15	nincs_sor	
-forras	Péld 12:4	13	nincs_sor	
-forras	Péld 12:5	20	nincs_sor	
-forras	Péld 12:6	16	nincs_sor	
-forras	Péld 12:7	27	nincs_sor	
-forras	Péld 12:8	23	nincs_sor	
-forras	Péld 12:9	2	nincs_sor	
-forras	Zsolt 13:6	3	KJV|lxx_os_etalon_f91	van
-forras	Én 5:1	50	nincs_sor	
-forras	Én 5:10	14	nincs_sor	
-forras	Én 5:11	8	nincs_sor	
-forras	Én 5:12	3	nincs_sor	
-forras	Én 5:13	15	nincs_sor	
-forras	Én 5:14	14	nincs_sor	
-forras	Én 5:15	15	nincs_sor	
-forras	Én 5:16	23	nincs_sor	
-forras	Én 5:2	43	nincs_sor	
-forras	Én 5:3	9	nincs_sor	
-forras	Én 5:4	13	nincs_sor	
-forras	Én 5:5	11	nincs_sor	
-forras	Én 5:6	36	nincs_sor	
-forras	Én 5:7	33	nincs_sor	
-forras	Én 5:8	16	nincs_sor	
-forras	Én 5:9	13	nincs_sor	
-forras	Én 6:1	17	nincs_sor	
-forras	Én 6:10	23	nincs_sor	
-forras	Én 6:2	25	nincs_sor	
-forras	Én 6:3	5	nincs_sor	
-forras	Én 6:4	24	nincs_sor	
-forras	Én 6:5	8	nincs_sor	
-forras	Én 6:6	3	nincs_sor	
-forras	Én 6:7	1	nincs_sor	
-forras	Én 6:8	6	nincs_sor	
-forras	Én 6:9	17	nincs_sor	
-forras	Ézs 4:1	12	nincs_sor	
-forras	Ézs 4:2	43	nincs_sor	
-forras	Ézs 4:3	25	nincs_sor	
-forras	Ézs 4:4	32	nincs_sor	
-forras	Ézs 4:5	29	nincs_sor	
-forras	Ézs 4:6	16	nincs_sor	
-forras	Ézs 64:1	27	nincs_sor	
-forras	Ézs 64:10	19	nincs_sor	
-forras	Ézs 64:11	21	nincs_sor	
-forras	Ézs 64:2	42	nincs_sor	
-forras	Ézs 64:3	18	nincs_sor	
-forras	Ézs 64:4	36	nincs_sor	
-forras	Ézs 64:5	27	nincs_sor	
-forras	Ézs 64:6	38	nincs_sor	
-forras	Ézs 64:7	23	nincs_sor	
-forras	Ézs 64:8	20	nincs_sor	
-forras	Ézs 64:9	21	nincs_sor	
-cel	2Móz 35:1	1	nincs_sor	
-cel	2Móz 35:10	6	nincs_sor	
-cel	2Móz 35:11	5	nincs_sor	
-cel	2Móz 35:12	2	nincs_sor	
-cel	2Móz 35:13	3	nincs_sor	
-cel	2Móz 35:14	2	nincs_sor	
-cel	2Móz 35:15	1	nincs_sor	
-cel	2Móz 35:16	1	nincs_sor	
-cel	2Móz 35:17	1	nincs_sor	
-cel	2Móz 35:18	5	nincs_sor	
-cel	2Móz 35:19	5	nincs_sor	
-cel	2Móz 35:2	15	nincs_sor	
-cel	2Móz 35:20	2	nincs_sor	
-cel	2Móz 35:21	6	nincs_sor	
-cel	2Móz 35:22	9	nincs_sor	
-cel	2Móz 35:23	3	nincs_sor	
-cel	2Móz 35:24	1	nincs_sor	
-cel	2Móz 35:25	8	nincs_sor	
-cel	2Móz 35:26	5	nincs_sor	
-cel	2Móz 35:27	2	nincs_sor	
-cel	2Móz 35:28	1	nincs_sor	
-cel	2Móz 35:29	9	nincs_sor	
-cel	2Móz 35:3	9	nincs_sor	
-cel	2Móz 35:30	6	nincs_sor	
-cel	2Móz 35:31	2	nincs_sor	
-cel	2Móz 35:32	1	nincs_sor	
-cel	2Móz 35:34	2	nincs_sor	
-cel	2Móz 35:35	8	nincs_sor	
-cel	2Móz 35:4	3	nincs_sor	
-cel	2Móz 35:5	9	nincs_sor	
-cel	2Móz 35:6	4	nincs_sor	
-cel	2Móz 35:7	1	nincs_sor	
-cel	2Móz 35:8	3	nincs_sor	
-cel	2Móz 35:9	3	nincs_sor	
-cel	2Móz 36:1	9	nincs_sor	
-cel	2Móz 36:10	1	nincs_sor	
-cel	2Móz 36:11	1	nincs_sor	
-cel	2Móz 36:12	1	nincs_sor	
-cel	2Móz 36:13	1	nincs_sor	
-cel	2Móz 36:14	1	nincs_sor	
-cel	2Móz 36:17	2	nincs_sor	
-cel	2Móz 36:18	3	nincs_sor	
-cel	2Móz 36:19	4	nincs_sor	
-cel	2Móz 36:2	7	nincs_sor	
-cel	2Móz 36:20	4	nincs_sor	
-cel	2Móz 36:22	1	nincs_sor	
-cel	2Móz 36:24	2	nincs_sor	
-cel	2Móz 36:26	1	nincs_sor	
-cel	2Móz 36:29	1	nincs_sor	
-cel	2Móz 36:3	7	nincs_sor	
-cel	2Móz 36:30	1	nincs_sor	
-cel	2Móz 36:31	1	nincs_sor	
-cel	2Móz 36:33	1	nincs_sor	
-cel	2Móz 36:34	4	nincs_sor	
-cel	2Móz 36:35	6	nincs_sor	
-cel	2Móz 36:36	5	nincs_sor	
-cel	2Móz 36:37	5	nincs_sor	
-cel	2Móz 36:4	4	nincs_sor	
-cel	2Móz 36:5	3	nincs_sor	
-cel	2Móz 36:6	2	nincs_sor	
-cel	2Móz 36:8	12	nincs_sor	
-cel	Dán 3:1	12	nincs_sor	
-cel	Dán 3:10	3	nincs_sor	
-cel	Dán 3:11	2	nincs_sor	
-cel	Dán 3:12	9	nincs_sor	
-cel	Dán 3:13	7	nincs_sor	
-cel	Dán 3:14	1	nincs_sor	
-cel	Dán 3:15	37	nincs_sor	
-cel	Dán 3:16	11	nincs_sor	
-cel	Dán 3:17	18	nincs_sor	
-cel	Dán 3:18	17	nincs_sor	
-cel	Dán 3:19	22	nincs_sor	
-cel	Dán 3:2	6	nincs_sor	
-cel	Dán 3:20	5	nincs_sor	
-cel	Dán 3:21	5	nincs_sor	
-cel	Dán 3:22	6	nincs_sor	
-cel	Dán 3:23	3	nincs_sor	
-cel	Dán 3:24	1	nincs_sor	
-cel	Dán 3:25	11	nincs_sor	
-cel	Dán 3:26	8	nincs_sor	
-cel	Dán 3:27	7	nincs_sor	
-cel	Dán 3:28	23	nincs_sor	
-cel	Dán 3:29	28	nincs_sor	
-cel	Dán 3:3	4	nincs_sor	
-cel	Dán 3:30	7	nincs_sor	
-cel	Dán 3:4	7	nincs_sor	
-cel	Dán 3:5	9	nincs_sor	
-cel	Dán 3:6	6	nincs_sor	
-cel	Dán 3:7	12	nincs_sor	
-cel	Dán 3:8	5	nincs_sor	
-cel	Dán 3:9	9	nincs_sor	
-cel	Dán 4:1	18	KEZI|kezi	van
-cel	Dán 4:2	13	KEZI|kezi	van
-cel	Dán 4:3	27	KEZI|kezi	van
-cel	Hós 13:1	10	nincs_sor	
-cel	Hós 13:10	9	nincs_sor	
-cel	Hós 13:11	16	nincs_sor	
-cel	Hós 13:12	3	nincs_sor	
-cel	Hós 13:13	8	nincs_sor	
-cel	Hós 13:14	13	nincs_sor	
-cel	Hós 13:15	23	nincs_sor	
-cel	Hós 13:2	21	nincs_sor	
-cel	Hós 13:3	21	nincs_sor	
-cel	Hós 13:4	15	nincs_sor	
-cel	Hós 13:5	7	nincs_sor	
-cel	Hós 13:6	22	nincs_sor	
-cel	Hós 13:7	14	nincs_sor	
-cel	Hós 13:8	24	nincs_sor	
-cel	Hós 13:9	10	nincs_sor	
-cel	Hós 14:1	51	nincs_sor	
-cel	Hós 14:2	28	nincs_sor	
-cel	Hós 14:3	46	nincs_sor	
-cel	Hós 14:4	31	nincs_sor	
-cel	Hós 14:5	25	nincs_sor	
-cel	Hós 14:6	11	nincs_sor	
-cel	Hós 14:7	16	nincs_sor	
-cel	Hós 14:8	28	nincs_sor	
-cel	Hós 14:9	29	nincs_sor	
-cel	Hós 2:1	1	nincs_sor	
-cel	Hós 2:10	15	nincs_sor	
-cel	Hós 2:11	12	nincs_sor	
-cel	Hós 2:12	9	nincs_sor	
-cel	Hós 2:13	28	nincs_sor	
-cel	Hós 2:14	17	nincs_sor	
-cel	Hós 2:15	18	nincs_sor	
-cel	Hós 2:16	4	nincs_sor	
-cel	Hós 2:17	12	nincs_sor	
-cel	Hós 2:18	29	nincs_sor	
-cel	Hós 2:19	11	nincs_sor	
-cel	Hós 2:2	18	nincs_sor	
-cel	Hós 2:20	15	nincs_sor	
-cel	Hós 2:21	12	nincs_sor	
-cel	Hós 2:22	8	nincs_sor	
-cel	Hós 2:3	20	nincs_sor	
-cel	Hós 2:4	5	nincs_sor	
-cel	Hós 2:5	21	nincs_sor	
-cel	Hós 2:6	13	nincs_sor	
-cel	Hós 2:7	13	nincs_sor	
-cel	Hós 2:8	22	nincs_sor	
-cel	Hós 2:9	13	nincs_sor	
-cel	Jób 17:1	8	nincs_sor	
-cel	Jób 17:10	6	nincs_sor	
-cel	Jób 17:11	8	nincs_sor	
-cel	Jób 17:12	2	nincs_sor	
-cel	Jób 17:13	10	nincs_sor	
-cel	Jób 17:14	13	nincs_sor	
-cel	Jób 17:15	5	nincs_sor	
-cel	Jób 17:2	7	nincs_sor	
-cel	Jób 17:3	5	nincs_sor	
-cel	Jób 17:4	6	nincs_sor	
-cel	Jób 17:5	6	nincs_sor	
-cel	Jób 17:6	6	nincs_sor	
-cel	Jób 17:7	5	nincs_sor	
-cel	Jób 17:8	3	nincs_sor	
-cel	Jób 17:9	16	nincs_sor	
-cel	Jób 37:1	9	nincs_sor	
-cel	Jób 37:10	5	nincs_sor	
-cel	Jób 37:11	13	nincs_sor	
-cel	Jób 37:12	3	nincs_sor	
-cel	Jób 37:13	8	nincs_sor	
-cel	Jób 37:14	4	nincs_sor	
-cel	Jób 37:15	1	nincs_sor	
-cel	Jób 37:16	4	nincs_sor	
-cel	Jób 37:17	2	nincs_sor	
-cel	Jób 37:18	6	nincs_sor	
-cel	Jób 37:19	4	nincs_sor	
-cel	Jób 37:2	12	nincs_sor	
-cel	Jób 37:20	4	nincs_sor	
-cel	Jób 37:22	8	nincs_sor	
-cel	Jób 37:23	16	nincs_sor	
-cel	Jób 37:3	5	nincs_sor	
-cel	Jób 37:4	2	nincs_sor	
-cel	Jób 37:5	15	nincs_sor	
-cel	Jób 37:6	7	nincs_sor	
-cel	Jób 37:7	4	nincs_sor	
-cel	Jób 37:8	2	nincs_sor	
-cel	Jób 37:9	6	nincs_sor	
-cel	Jób 40:1	3	KEZI|kezi	van
-cel	Jób 40:2	12	KEZI|kezi	van
-cel	Jób 40:3	2	KEZI|kezi	van
-cel	Jób 40:4	30	KEZI|kezi	van
-cel	Jób 40:5	22	KEZI|kezi	van
-cel	Préd 10:1	7	KEZI|kezi	van
-cel	Préd 10:2	4	KEZI|kezi	van
-cel	Préd 10:3	9	KEZI|kezi	van
-cel	Préd 2:26	33	KEZI|kezi_tobbforrasu_osszevonas	van
-cel	Péld 12:1	15	nincs_sor	
-cel	Péld 12:10	12	nincs_sor	
-cel	Péld 12:11	12	nincs_sor	
-cel	Péld 12:12	5	nincs_sor	
-cel	Péld 12:13	17	nincs_sor	
-cel	Péld 12:14	7	nincs_sor	
-cel	Péld 12:15	7	nincs_sor	
-cel	Péld 12:16	9	nincs_sor	
-cel	Péld 12:17	6	nincs_sor	
-cel	Péld 12:18	24	nincs_sor	
-cel	Péld 12:19	17	nincs_sor	
-cel	Péld 12:2	10	nincs_sor	
-cel	Péld 12:20	4	nincs_sor	
-cel	Péld 12:21	3	nincs_sor	
-cel	Péld 12:22	11	nincs_sor	
-cel	Péld 12:23	7	nincs_sor	
-cel	Péld 12:24	7	nincs_sor	
-cel	Péld 12:25	4	nincs_sor	
-cel	Péld 12:26	6	nincs_sor	
-cel	Péld 12:27	5	nincs_sor	
-cel	Péld 12:3	3	nincs_sor	
-cel	Péld 12:4	9	nincs_sor	
-cel	Péld 12:5	5	nincs_sor	
-cel	Péld 12:6	5	nincs_sor	
-cel	Péld 12:7	7	nincs_sor	
-cel	Péld 12:9	1	nincs_sor	
-cel	Zsolt 13:6	8	KJV|lxx_os_etalon_f91	van
-cel	Én 5:1	30	nincs_sor	
-cel	Én 5:10	8	nincs_sor	
-cel	Én 5:11	4	nincs_sor	
-cel	Én 5:12	2	nincs_sor	
-cel	Én 5:13	10	nincs_sor	
-cel	Én 5:14	6	nincs_sor	
-cel	Én 5:15	3	nincs_sor	
-cel	Én 5:16	17	nincs_sor	
-cel	Én 5:2	19	nincs_sor	
-cel	Én 5:3	1	nincs_sor	
-cel	Én 5:4	2	nincs_sor	
-cel	Én 5:5	7	nincs_sor	
-cel	Én 5:6	4	nincs_sor	
-cel	Én 5:7	7	nincs_sor	
-cel	Én 5:8	17	nincs_sor	
-cel	Én 5:9	8	nincs_sor	
-cel	Én 6:1	4	nincs_sor	
-cel	Én 6:10	10	nincs_sor	
-cel	Én 6:2	11	nincs_sor	
-cel	Én 6:3	8	nincs_sor	
-cel	Én 6:4	11	nincs_sor	
-cel	Én 6:5	4	nincs_sor	
-cel	Én 6:6	2	nincs_sor	
-cel	Én 6:7	4	nincs_sor	
-cel	Én 6:8	7	nincs_sor	
-cel	Én 6:9	14	nincs_sor	
-cel	Ézs 4:1	12	nincs_sor	
-cel	Ézs 4:2	28	nincs_sor	
-cel	Ézs 4:3	13	nincs_sor	
-cel	Ézs 4:4	17	nincs_sor	
-cel	Ézs 4:5	25	nincs_sor	
-cel	Ézs 4:6	21	nincs_sor	
-cel	Ézs 64:1	31	nincs_sor	
-cel	Ézs 64:10	23	nincs_sor	
-cel	Ézs 64:11	26	nincs_sor	
-cel	Ézs 64:2	17	nincs_sor	
-cel	Ézs 64:3	17	nincs_sor	
-cel	Ézs 64:4	8	nincs_sor	
-cel	Ézs 64:5	15	nincs_sor	
-cel	Ézs 64:6	30	nincs_sor	
-cel	Ézs 64:7	21	nincs_sor	
-cel	Ézs 64:8	21	nincs_sor	
-cel	Ézs 64:9	19	nincs_sor	
+# proveniencia: scope=TSK ÓSZ | forras=TSK_kereszthivatkozasok.tsv+Karoli_1908.tsv+Karoli_versmegfeleltetes.tsv (eszkozok/tsk_versszam_felmeres.py F. rész) | n=510 | ts=2026-10-18
+oldal	kjv_kulcs	sorok	ok	azonos_szovegu_karoli_vers_tablasora
+forras	1Kir 22:46	10	kivetel_nincs_par_1Kir_22_46_49	MT|szamlalas
+forras	1Kir 22:47	9	kivetel_nincs_par_1Kir_22_46_49	MT|szamlalas
+forras	1Kir 22:48	15	kivetel_nincs_par_1Kir_22_46_49	MT|szamlalas
+forras	2Móz 35:1	9	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 35:10	4	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 35:11	6	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 35:12	9	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 35:13	6	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 35:14	7	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 35:15	11	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 35:16	6	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 35:17	5	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 35:18	1	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 35:19	8	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 35:2	18	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 35:21	28	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 35:22	17	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 35:23	5	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 35:24	1	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 35:25	16	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 35:26	3	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 35:27	3	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 35:28	3	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 35:29	24	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 35:3	5	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 35:30	9	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 35:31	10	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 35:34	12	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 35:35	22	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 35:4	2	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 35:5	9	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 35:6	9	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 35:8	5	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 35:9	6	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 36:1	17	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 36:10	15	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 36:11	1	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 36:12	2	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 36:13	5	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 36:14	2	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 36:19	1	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 36:2	13	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 36:20	8	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 36:27	2	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 36:29	17	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 36:3	9	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 36:30	1	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 36:31	4	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 36:32	1	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 36:35	6	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 36:36	1	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 36:37	3	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 36:4	4	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 36:5	9	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 36:7	1	tabla_lyuk_fejezet	nincs_sor
+forras	2Móz 36:8	13	tabla_lyuk_fejezet	nincs_sor
+forras	Dán 3:1	31	tabla_lyuk_fejezet	nincs_sor
+forras	Dán 3:10	34	tabla_lyuk_fejezet	nincs_sor
+forras	Dán 3:12	9	tabla_lyuk_fejezet	nincs_sor
+forras	Dán 3:13	17	tabla_lyuk_fejezet	nincs_sor
+forras	Dán 3:14	6	tabla_lyuk_fejezet	nincs_sor
+forras	Dán 3:15	31	tabla_lyuk_fejezet	nincs_sor
+forras	Dán 3:16	2	tabla_lyuk_fejezet	nincs_sor
+forras	Dán 3:17	32	tabla_lyuk_fejezet	nincs_sor
+forras	Dán 3:18	24	tabla_lyuk_fejezet	nincs_sor
+forras	Dán 3:19	31	tabla_lyuk_fejezet	nincs_sor
+forras	Dán 3:2	12	tabla_lyuk_fejezet	nincs_sor
+forras	Dán 3:20	5	tabla_lyuk_fejezet	nincs_sor
+forras	Dán 3:22	10	tabla_lyuk_fejezet	nincs_sor
+forras	Dán 3:23	15	tabla_lyuk_fejezet	nincs_sor
+forras	Dán 3:24	18	tabla_lyuk_fejezet	nincs_sor
+forras	Dán 3:25	16	tabla_lyuk_fejezet	nincs_sor
+forras	Dán 3:26	17	tabla_lyuk_fejezet	nincs_sor
+forras	Dán 3:27	19	tabla_lyuk_fejezet	nincs_sor
+forras	Dán 3:28	55	tabla_lyuk_fejezet	nincs_sor
+forras	Dán 3:29	10	tabla_lyuk_fejezet	nincs_sor
+forras	Dán 3:3	13	tabla_lyuk_fejezet	nincs_sor
+forras	Dán 3:30	7	tabla_lyuk_fejezet	nincs_sor
+forras	Dán 3:4	10	tabla_lyuk_fejezet	nincs_sor
+forras	Dán 3:5	3	tabla_lyuk_fejezet	nincs_sor
+forras	Dán 3:6	21	tabla_lyuk_fejezet	nincs_sor
+forras	Dán 3:7	9	tabla_lyuk_fejezet	nincs_sor
+forras	Dán 3:8	15	tabla_lyuk_fejezet	nincs_sor
+forras	Dán 3:9	7	tabla_lyuk_fejezet	nincs_sor
+forras	Dán 4:1	16	tablahiba_kjv_par_letezik	KEZI|kezi
+forras	Dán 4:2	11	tablahiba_kjv_par_letezik	KEZI|kezi
+forras	Dán 4:3	32	tablahiba_kjv_par_letezik	KEZI|kezi
+forras	Hós 13:1	25	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 13:10	28	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 13:11	20	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 13:12	5	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 13:13	22	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 13:14	29	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 13:15	20	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 13:2	31	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 13:3	9	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 13:4	13	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 13:5	13	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 13:6	17	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 13:7	7	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 13:8	9	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 13:9	24	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 14:1	23	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 14:2	39	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 14:3	38	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 14:4	27	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 14:5	22	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 14:6	21	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 14:7	17	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 14:8	29	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 14:9	52	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 2:1	16	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 2:10	17	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 2:11	20	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 2:12	12	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 2:13	45	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 2:14	52	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 2:15	29	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 2:16	8	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 2:17	5	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 2:18	27	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 2:19	35	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 2:2	20	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 2:20	19	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 2:21	8	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 2:22	4	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 2:3	30	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 2:4	14	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 2:5	41	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 2:6	7	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 2:7	47	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 2:8	29	tabla_lyuk_fejezet	nincs_sor
+forras	Hós 2:9	19	tabla_lyuk_fejezet	nincs_sor
+forras	Jób 17:1	10	tabla_lyuk_fejezet	nincs_sor
+forras	Jób 17:10	9	tabla_lyuk_fejezet	nincs_sor
+forras	Jób 17:11	14	tabla_lyuk_fejezet	nincs_sor
+forras	Jób 17:12	7	tabla_lyuk_fejezet	nincs_sor
+forras	Jób 17:13	11	tabla_lyuk_fejezet	nincs_sor
+forras	Jób 17:14	17	tabla_lyuk_fejezet	nincs_sor
+forras	Jób 17:15	5	tabla_lyuk_fejezet	nincs_sor
+forras	Jób 17:2	12	tabla_lyuk_fejezet	nincs_sor
+forras	Jób 17:3	11	tabla_lyuk_fejezet	nincs_sor
+forras	Jób 17:4	8	tabla_lyuk_fejezet	nincs_sor
+forras	Jób 17:5	12	tabla_lyuk_fejezet	nincs_sor
+forras	Jób 17:6	5	tabla_lyuk_fejezet	nincs_sor
+forras	Jób 17:7	8	tabla_lyuk_fejezet	nincs_sor
+forras	Jób 17:8	8	tabla_lyuk_fejezet	nincs_sor
+forras	Jób 17:9	20	tabla_lyuk_fejezet	nincs_sor
+forras	Jób 37:1	14	tabla_lyuk_fejezet	nincs_sor
+forras	Jób 37:10	5	tabla_lyuk_fejezet	nincs_sor
+forras	Jób 37:11	5	tabla_lyuk_fejezet	nincs_sor
+forras	Jób 37:12	10	tabla_lyuk_fejezet	nincs_sor
+forras	Jób 37:13	15	tabla_lyuk_fejezet	nincs_sor
+forras	Jób 37:14	11	tabla_lyuk_fejezet	nincs_sor
+forras	Jób 37:15	11	tabla_lyuk_fejezet	nincs_sor
+forras	Jób 37:16	12	tabla_lyuk_fejezet	nincs_sor
+forras	Jób 37:17	4	tabla_lyuk_fejezet	nincs_sor
+forras	Jób 37:18	13	tabla_lyuk_fejezet	nincs_sor
+forras	Jób 37:19	16	tabla_lyuk_fejezet	nincs_sor
+forras	Jób 37:2	9	tabla_lyuk_fejezet	nincs_sor
+forras	Jób 37:20	6	tabla_lyuk_fejezet	nincs_sor
+forras	Jób 37:21	3	tabla_lyuk_fejezet	nincs_sor
+forras	Jób 37:22	20	tabla_lyuk_fejezet	nincs_sor
+forras	Jób 37:23	35	tabla_lyuk_fejezet	nincs_sor
+forras	Jób 37:3	6	tabla_lyuk_fejezet	nincs_sor
+forras	Jób 37:4	8	tabla_lyuk_fejezet	nincs_sor
+forras	Jób 37:5	13	tabla_lyuk_fejezet	nincs_sor
+forras	Jób 37:6	15	tabla_lyuk_fejezet	nincs_sor
+forras	Jób 37:7	12	tabla_lyuk_fejezet	nincs_sor
+forras	Jób 37:8	2	tabla_lyuk_fejezet	nincs_sor
+forras	Jób 37:9	5	tabla_lyuk_fejezet	nincs_sor
+forras	Jób 40:1	2	tablahiba_kjv_par_letezik	KEZI|kezi
+forras	Jób 40:2	40	tablahiba_kjv_par_letezik	KEZI|kezi
+forras	Jób 40:4	34	tablahiba_kjv_par_letezik	KEZI|kezi
+forras	Jób 40:5	10	tablahiba_kjv_par_letezik	KEZI|kezi
+forras	Préd 10:1	10	tablahiba_kjv_par_letezik	KEZI|kezi
+forras	Préd 10:2	9	tablahiba_kjv_par_letezik	KEZI|kezi
+forras	Préd 10:3	5	tablahiba_kjv_par_letezik	KEZI|kezi
+forras	Préd 2:26	26	tablahiba_kjv_par_letezik	KEZI|kezi_tobbforrasu_osszevonas
+forras	Péld 12:1	17	tabla_lyuk_fejezet	nincs_sor
+forras	Péld 12:10	15	tabla_lyuk_fejezet	nincs_sor
+forras	Péld 12:11	26	tabla_lyuk_fejezet	nincs_sor
+forras	Péld 12:12	22	tabla_lyuk_fejezet	nincs_sor
+forras	Péld 12:13	18	tabla_lyuk_fejezet	nincs_sor
+forras	Péld 12:14	14	tabla_lyuk_fejezet	nincs_sor
+forras	Péld 12:15	18	tabla_lyuk_fejezet	nincs_sor
+forras	Péld 12:16	11	tabla_lyuk_fejezet	nincs_sor
+forras	Péld 12:17	13	tabla_lyuk_fejezet	nincs_sor
+forras	Péld 12:18	17	tabla_lyuk_fejezet	nincs_sor
+forras	Péld 12:19	9	tabla_lyuk_fejezet	nincs_sor
+forras	Péld 12:2	10	tabla_lyuk_fejezet	nincs_sor
+forras	Péld 12:20	16	tabla_lyuk_fejezet	nincs_sor
+forras	Péld 12:21	12	tabla_lyuk_fejezet	nincs_sor
+forras	Péld 12:22	12	tabla_lyuk_fejezet	nincs_sor
+forras	Péld 12:23	8	tabla_lyuk_fejezet	nincs_sor
+forras	Péld 12:24	17	tabla_lyuk_fejezet	nincs_sor
+forras	Péld 12:25	20	tabla_lyuk_fejezet	nincs_sor
+forras	Péld 12:26	18	tabla_lyuk_fejezet	nincs_sor
+forras	Péld 12:27	6	tabla_lyuk_fejezet	nincs_sor
+forras	Péld 12:3	15	tabla_lyuk_fejezet	nincs_sor
+forras	Péld 12:4	13	tabla_lyuk_fejezet	nincs_sor
+forras	Péld 12:5	20	tabla_lyuk_fejezet	nincs_sor
+forras	Péld 12:6	16	tabla_lyuk_fejezet	nincs_sor
+forras	Péld 12:7	27	tabla_lyuk_fejezet	nincs_sor
+forras	Péld 12:8	23	tabla_lyuk_fejezet	nincs_sor
+forras	Péld 12:9	2	tabla_lyuk_fejezet	nincs_sor
+forras	Zsolt 13:6	3	tablahiba_kjv_par_letezik	KJV|lxx_os_etalon_f91
+forras	Én 5:1	50	tabla_lyuk_fejezet	nincs_sor
+forras	Én 5:10	14	tabla_lyuk_fejezet	nincs_sor
+forras	Én 5:11	8	tabla_lyuk_fejezet	nincs_sor
+forras	Én 5:12	3	tabla_lyuk_fejezet	nincs_sor
+forras	Én 5:13	15	tabla_lyuk_fejezet	nincs_sor
+forras	Én 5:14	14	tabla_lyuk_fejezet	nincs_sor
+forras	Én 5:15	15	tabla_lyuk_fejezet	nincs_sor
+forras	Én 5:16	23	tabla_lyuk_fejezet	nincs_sor
+forras	Én 5:2	43	tabla_lyuk_fejezet	nincs_sor
+forras	Én 5:3	9	tabla_lyuk_fejezet	nincs_sor
+forras	Én 5:4	13	tabla_lyuk_fejezet	nincs_sor
+forras	Én 5:5	11	tabla_lyuk_fejezet	nincs_sor
+forras	Én 5:6	36	tabla_lyuk_fejezet	nincs_sor
+forras	Én 5:7	33	tabla_lyuk_fejezet	nincs_sor
+forras	Én 5:8	16	tabla_lyuk_fejezet	nincs_sor
+forras	Én 5:9	13	tabla_lyuk_fejezet	nincs_sor
+forras	Én 6:1	17	tabla_lyuk_fejezet	nincs_sor
+forras	Én 6:10	23	tabla_lyuk_fejezet	nincs_sor
+forras	Én 6:2	25	tabla_lyuk_fejezet	nincs_sor
+forras	Én 6:3	5	tabla_lyuk_fejezet	nincs_sor
+forras	Én 6:4	24	tabla_lyuk_fejezet	nincs_sor
+forras	Én 6:5	8	tabla_lyuk_fejezet	nincs_sor
+forras	Én 6:6	3	tabla_lyuk_fejezet	nincs_sor
+forras	Én 6:7	1	tabla_lyuk_fejezet	nincs_sor
+forras	Én 6:8	6	tabla_lyuk_fejezet	nincs_sor
+forras	Én 6:9	17	tabla_lyuk_fejezet	nincs_sor
+forras	Ézs 4:1	12	tabla_lyuk_fejezet	nincs_sor
+forras	Ézs 4:2	43	tabla_lyuk_fejezet	nincs_sor
+forras	Ézs 4:3	25	tabla_lyuk_fejezet	nincs_sor
+forras	Ézs 4:4	32	tabla_lyuk_fejezet	nincs_sor
+forras	Ézs 4:5	29	tabla_lyuk_fejezet	nincs_sor
+forras	Ézs 4:6	16	tabla_lyuk_fejezet	nincs_sor
+forras	Ézs 64:1	27	tabla_lyuk_fejezet	nincs_sor
+forras	Ézs 64:10	19	tabla_lyuk_fejezet	nincs_sor
+forras	Ézs 64:11	21	tabla_lyuk_fejezet	nincs_sor
+forras	Ézs 64:2	42	tabla_lyuk_fejezet	nincs_sor
+forras	Ézs 64:3	18	tabla_lyuk_fejezet	nincs_sor
+forras	Ézs 64:4	36	tabla_lyuk_fejezet	nincs_sor
+forras	Ézs 64:5	27	tabla_lyuk_fejezet	nincs_sor
+forras	Ézs 64:6	38	tabla_lyuk_fejezet	nincs_sor
+forras	Ézs 64:7	23	tabla_lyuk_fejezet	nincs_sor
+forras	Ézs 64:8	20	tabla_lyuk_fejezet	nincs_sor
+forras	Ézs 64:9	21	tabla_lyuk_fejezet	nincs_sor
+cel	1Kir 22:46	4	kivetel_nincs_par_1Kir_22_46_49	MT|szamlalas
+cel	1Kir 22:47	6	kivetel_nincs_par_1Kir_22_46_49	MT|szamlalas
+cel	1Kir 22:48	14	kivetel_nincs_par_1Kir_22_46_49	MT|szamlalas
+cel	1Kir 22:49	3	kivetel_nincs_par_1Kir_22_46_49	MT|szamlalas
+cel	2Móz 35:1	1	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 35:10	6	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 35:11	5	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 35:12	2	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 35:13	3	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 35:14	2	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 35:15	1	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 35:16	1	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 35:17	1	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 35:18	5	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 35:19	5	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 35:2	15	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 35:20	2	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 35:21	6	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 35:22	9	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 35:23	3	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 35:24	1	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 35:25	8	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 35:26	5	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 35:27	2	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 35:28	1	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 35:29	9	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 35:3	9	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 35:30	6	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 35:31	2	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 35:32	1	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 35:34	2	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 35:35	8	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 35:4	3	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 35:5	9	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 35:6	4	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 35:7	1	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 35:8	3	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 35:9	3	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 36:1	9	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 36:10	1	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 36:11	1	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 36:12	1	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 36:13	1	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 36:14	1	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 36:17	2	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 36:18	3	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 36:19	4	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 36:2	7	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 36:20	4	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 36:22	1	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 36:24	2	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 36:26	1	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 36:29	1	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 36:3	7	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 36:30	1	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 36:31	1	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 36:33	1	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 36:34	4	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 36:35	6	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 36:36	5	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 36:37	5	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 36:4	4	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 36:5	3	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 36:6	2	tabla_lyuk_fejezet	nincs_sor
+cel	2Móz 36:8	12	tabla_lyuk_fejezet	nincs_sor
+cel	Dán 3:1	12	tabla_lyuk_fejezet	nincs_sor
+cel	Dán 3:10	3	tabla_lyuk_fejezet	nincs_sor
+cel	Dán 3:11	2	tabla_lyuk_fejezet	nincs_sor
+cel	Dán 3:12	9	tabla_lyuk_fejezet	nincs_sor
+cel	Dán 3:13	7	tabla_lyuk_fejezet	nincs_sor
+cel	Dán 3:14	1	tabla_lyuk_fejezet	nincs_sor
+cel	Dán 3:15	37	tabla_lyuk_fejezet	nincs_sor
+cel	Dán 3:16	11	tabla_lyuk_fejezet	nincs_sor
+cel	Dán 3:17	18	tabla_lyuk_fejezet	nincs_sor
+cel	Dán 3:18	17	tabla_lyuk_fejezet	nincs_sor
+cel	Dán 3:19	22	tabla_lyuk_fejezet	nincs_sor
+cel	Dán 3:2	6	tabla_lyuk_fejezet	nincs_sor
+cel	Dán 3:20	5	tabla_lyuk_fejezet	nincs_sor
+cel	Dán 3:21	5	tabla_lyuk_fejezet	nincs_sor
+cel	Dán 3:22	6	tabla_lyuk_fejezet	nincs_sor
+cel	Dán 3:23	3	tabla_lyuk_fejezet	nincs_sor
+cel	Dán 3:24	1	tabla_lyuk_fejezet	nincs_sor
+cel	Dán 3:25	11	tabla_lyuk_fejezet	nincs_sor
+cel	Dán 3:26	8	tabla_lyuk_fejezet	nincs_sor
+cel	Dán 3:27	7	tabla_lyuk_fejezet	nincs_sor
+cel	Dán 3:28	23	tabla_lyuk_fejezet	nincs_sor
+cel	Dán 3:29	28	tabla_lyuk_fejezet	nincs_sor
+cel	Dán 3:3	4	tabla_lyuk_fejezet	nincs_sor
+cel	Dán 3:30	7	tabla_lyuk_fejezet	nincs_sor
+cel	Dán 3:4	7	tabla_lyuk_fejezet	nincs_sor
+cel	Dán 3:5	9	tabla_lyuk_fejezet	nincs_sor
+cel	Dán 3:6	6	tabla_lyuk_fejezet	nincs_sor
+cel	Dán 3:7	12	tabla_lyuk_fejezet	nincs_sor
+cel	Dán 3:8	5	tabla_lyuk_fejezet	nincs_sor
+cel	Dán 3:9	9	tabla_lyuk_fejezet	nincs_sor
+cel	Dán 4:1	18	tablahiba_kjv_par_letezik	KEZI|kezi
+cel	Dán 4:2	13	tablahiba_kjv_par_letezik	KEZI|kezi
+cel	Dán 4:3	27	tablahiba_kjv_par_letezik	KEZI|kezi
+cel	Hós 13:1	10	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 13:10	9	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 13:11	16	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 13:12	3	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 13:13	8	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 13:14	13	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 13:15	23	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 13:2	21	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 13:3	21	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 13:4	15	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 13:5	7	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 13:6	22	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 13:7	14	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 13:8	24	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 13:9	10	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 14:1	51	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 14:2	28	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 14:3	46	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 14:4	31	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 14:5	25	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 14:6	11	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 14:7	16	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 14:8	28	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 14:9	29	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 2:1	1	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 2:10	15	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 2:11	12	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 2:12	9	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 2:13	28	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 2:14	17	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 2:15	18	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 2:16	4	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 2:17	12	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 2:18	29	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 2:19	11	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 2:2	18	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 2:20	15	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 2:21	12	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 2:22	8	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 2:3	20	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 2:4	5	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 2:5	21	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 2:6	13	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 2:7	13	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 2:8	22	tabla_lyuk_fejezet	nincs_sor
+cel	Hós 2:9	13	tabla_lyuk_fejezet	nincs_sor
+cel	Jób 17:1	8	tabla_lyuk_fejezet	nincs_sor
+cel	Jób 17:10	6	tabla_lyuk_fejezet	nincs_sor
+cel	Jób 17:11	8	tabla_lyuk_fejezet	nincs_sor
+cel	Jób 17:12	2	tabla_lyuk_fejezet	nincs_sor
+cel	Jób 17:13	10	tabla_lyuk_fejezet	nincs_sor
+cel	Jób 17:14	13	tabla_lyuk_fejezet	nincs_sor
+cel	Jób 17:15	5	tabla_lyuk_fejezet	nincs_sor
+cel	Jób 17:2	7	tabla_lyuk_fejezet	nincs_sor
+cel	Jób 17:3	5	tabla_lyuk_fejezet	nincs_sor
+cel	Jób 17:4	6	tabla_lyuk_fejezet	nincs_sor
+cel	Jób 17:5	6	tabla_lyuk_fejezet	nincs_sor
+cel	Jób 17:6	6	tabla_lyuk_fejezet	nincs_sor
+cel	Jób 17:7	5	tabla_lyuk_fejezet	nincs_sor
+cel	Jób 17:8	3	tabla_lyuk_fejezet	nincs_sor
+cel	Jób 17:9	16	tabla_lyuk_fejezet	nincs_sor
+cel	Jób 37:1	9	tabla_lyuk_fejezet	nincs_sor
+cel	Jób 37:10	5	tabla_lyuk_fejezet	nincs_sor
+cel	Jób 37:11	13	tabla_lyuk_fejezet	nincs_sor
+cel	Jób 37:12	3	tabla_lyuk_fejezet	nincs_sor
+cel	Jób 37:13	8	tabla_lyuk_fejezet	nincs_sor
+cel	Jób 37:14	4	tabla_lyuk_fejezet	nincs_sor
+cel	Jób 37:15	1	tabla_lyuk_fejezet	nincs_sor
+cel	Jób 37:16	4	tabla_lyuk_fejezet	nincs_sor
+cel	Jób 37:17	2	tabla_lyuk_fejezet	nincs_sor
+cel	Jób 37:18	6	tabla_lyuk_fejezet	nincs_sor
+cel	Jób 37:19	4	tabla_lyuk_fejezet	nincs_sor
+cel	Jób 37:2	12	tabla_lyuk_fejezet	nincs_sor
+cel	Jób 37:20	4	tabla_lyuk_fejezet	nincs_sor
+cel	Jób 37:22	8	tabla_lyuk_fejezet	nincs_sor
+cel	Jób 37:23	16	tabla_lyuk_fejezet	nincs_sor
+cel	Jób 37:3	5	tabla_lyuk_fejezet	nincs_sor
+cel	Jób 37:4	2	tabla_lyuk_fejezet	nincs_sor
+cel	Jób 37:5	15	tabla_lyuk_fejezet	nincs_sor
+cel	Jób 37:6	7	tabla_lyuk_fejezet	nincs_sor
+cel	Jób 37:7	4	tabla_lyuk_fejezet	nincs_sor
+cel	Jób 37:8	2	tabla_lyuk_fejezet	nincs_sor
+cel	Jób 37:9	6	tabla_lyuk_fejezet	nincs_sor
+cel	Jób 40:1	3	tablahiba_kjv_par_letezik	KEZI|kezi
+cel	Jób 40:2	12	tablahiba_kjv_par_letezik	KEZI|kezi
+cel	Jób 40:3	2	tablahiba_kjv_par_letezik	KEZI|kezi
+cel	Jób 40:4	30	tablahiba_kjv_par_letezik	KEZI|kezi
+cel	Jób 40:5	22	tablahiba_kjv_par_letezik	KEZI|kezi
+cel	Préd 10:1	7	tablahiba_kjv_par_letezik	KEZI|kezi
+cel	Préd 10:2	4	tablahiba_kjv_par_letezik	KEZI|kezi
+cel	Préd 10:3	9	tablahiba_kjv_par_letezik	KEZI|kezi
+cel	Préd 2:26	33	tablahiba_kjv_par_letezik	KEZI|kezi_tobbforrasu_osszevonas
+cel	Péld 12:1	15	tabla_lyuk_fejezet	nincs_sor
+cel	Péld 12:10	12	tabla_lyuk_fejezet	nincs_sor
+cel	Péld 12:11	12	tabla_lyuk_fejezet	nincs_sor
+cel	Péld 12:12	5	tabla_lyuk_fejezet	nincs_sor
+cel	Péld 12:13	17	tabla_lyuk_fejezet	nincs_sor
+cel	Péld 12:14	7	tabla_lyuk_fejezet	nincs_sor
+cel	Péld 12:15	7	tabla_lyuk_fejezet	nincs_sor
+cel	Péld 12:16	9	tabla_lyuk_fejezet	nincs_sor
+cel	Péld 12:17	6	tabla_lyuk_fejezet	nincs_sor
+cel	Péld 12:18	24	tabla_lyuk_fejezet	nincs_sor
+cel	Péld 12:19	17	tabla_lyuk_fejezet	nincs_sor
+cel	Péld 12:2	10	tabla_lyuk_fejezet	nincs_sor
+cel	Péld 12:20	4	tabla_lyuk_fejezet	nincs_sor
+cel	Péld 12:21	3	tabla_lyuk_fejezet	nincs_sor
+cel	Péld 12:22	11	tabla_lyuk_fejezet	nincs_sor
+cel	Péld 12:23	7	tabla_lyuk_fejezet	nincs_sor
+cel	Péld 12:24	7	tabla_lyuk_fejezet	nincs_sor
+cel	Péld 12:25	4	tabla_lyuk_fejezet	nincs_sor
+cel	Péld 12:26	6	tabla_lyuk_fejezet	nincs_sor
+cel	Péld 12:27	5	tabla_lyuk_fejezet	nincs_sor
+cel	Péld 12:3	3	tabla_lyuk_fejezet	nincs_sor
+cel	Péld 12:4	9	tabla_lyuk_fejezet	nincs_sor
+cel	Péld 12:5	5	tabla_lyuk_fejezet	nincs_sor
+cel	Péld 12:6	5	tabla_lyuk_fejezet	nincs_sor
+cel	Péld 12:7	7	tabla_lyuk_fejezet	nincs_sor
+cel	Péld 12:9	1	tabla_lyuk_fejezet	nincs_sor
+cel	Zsolt 13:6	8	tablahiba_kjv_par_letezik	KJV|lxx_os_etalon_f91
+cel	Én 5:1	30	tabla_lyuk_fejezet	nincs_sor
+cel	Én 5:10	8	tabla_lyuk_fejezet	nincs_sor
+cel	Én 5:11	4	tabla_lyuk_fejezet	nincs_sor
+cel	Én 5:12	2	tabla_lyuk_fejezet	nincs_sor
+cel	Én 5:13	10	tabla_lyuk_fejezet	nincs_sor
+cel	Én 5:14	6	tabla_lyuk_fejezet	nincs_sor
+cel	Én 5:15	3	tabla_lyuk_fejezet	nincs_sor
+cel	Én 5:16	17	tabla_lyuk_fejezet	nincs_sor
+cel	Én 5:2	19	tabla_lyuk_fejezet	nincs_sor
+cel	Én 5:3	1	tabla_lyuk_fejezet	nincs_sor
+cel	Én 5:4	2	tabla_lyuk_fejezet	nincs_sor
+cel	Én 5:5	7	tabla_lyuk_fejezet	nincs_sor
+cel	Én 5:6	4	tabla_lyuk_fejezet	nincs_sor
+cel	Én 5:7	7	tabla_lyuk_fejezet	nincs_sor
+cel	Én 5:8	17	tabla_lyuk_fejezet	nincs_sor
+cel	Én 5:9	8	tabla_lyuk_fejezet	nincs_sor
+cel	Én 6:1	4	tabla_lyuk_fejezet	nincs_sor
+cel	Én 6:10	10	tabla_lyuk_fejezet	nincs_sor
+cel	Én 6:2	11	tabla_lyuk_fejezet	nincs_sor
+cel	Én 6:3	8	tabla_lyuk_fejezet	nincs_sor
+cel	Én 6:4	11	tabla_lyuk_fejezet	nincs_sor
+cel	Én 6:5	4	tabla_lyuk_fejezet	nincs_sor
+cel	Én 6:6	2	tabla_lyuk_fejezet	nincs_sor
+cel	Én 6:7	4	tabla_lyuk_fejezet	nincs_sor
+cel	Én 6:8	7	tabla_lyuk_fejezet	nincs_sor
+cel	Én 6:9	14	tabla_lyuk_fejezet	nincs_sor
+cel	Ézs 4:1	12	tabla_lyuk_fejezet	nincs_sor
+cel	Ézs 4:2	28	tabla_lyuk_fejezet	nincs_sor
+cel	Ézs 4:3	13	tabla_lyuk_fejezet	nincs_sor
+cel	Ézs 4:4	17	tabla_lyuk_fejezet	nincs_sor
+cel	Ézs 4:5	25	tabla_lyuk_fejezet	nincs_sor
+cel	Ézs 4:6	21	tabla_lyuk_fejezet	nincs_sor
+cel	Ézs 64:1	31	tabla_lyuk_fejezet	nincs_sor
+cel	Ézs 64:10	23	tabla_lyuk_fejezet	nincs_sor
+cel	Ézs 64:11	26	tabla_lyuk_fejezet	nincs_sor
+cel	Ézs 64:2	17	tabla_lyuk_fejezet	nincs_sor
+cel	Ézs 64:3	17	tabla_lyuk_fejezet	nincs_sor
+cel	Ézs 64:4	8	tabla_lyuk_fejezet	nincs_sor
+cel	Ézs 64:5	15	tabla_lyuk_fejezet	nincs_sor
+cel	Ézs 64:6	30	tabla_lyuk_fejezet	nincs_sor
+cel	Ézs 64:7	21	tabla_lyuk_fejezet	nincs_sor
+cel	Ézs 64:8	21	tabla_lyuk_fejezet	nincs_sor
+cel	Ézs 64:9	19	tabla_lyuk_fejezet	nincs_sor
