@@ -6,10 +6,10 @@ tipus: feladat
 fazis: folyamat
 munka: folyamat
 modell: sonnet
-allapot: megallt
+allapot: fut
 ag: claude/f111-elteres
 ad: `/elteres` parancs, amely egy `ELTÉRÉS: <n> tétel` jelentést egyeztetett besorolással, a brief modelljén futó javítással és korlátozott számú újraellenőrzéssel zár le
-kovetkezo: "Te: /elteres 111 — ELLENOR_F111, 5 tétel: 1. G6 próba-hűség (az F115 PR-ja mergelt, a próbának meg kellett volna állnia); 2. zárás-állapot (lezarva az ellenőrzés előtt); 3. G4 a k kör/tételszám kétértelmű, korlát utáni újraindítás nem áll meg; 4. G6 besorolás (2. és 3. tétel hatokoron_kivul); 5. brief-törzs változott (D2, E1)"
+kovetkezo: "Folytatás: [elteres_kor 1/2] a javítókör kész, újraellenőrzés: naplok/ELLENOR_F111_2.md"
 olvas: [.claude/commands/kovetkezo.md, .claude/commands/befogad.md, .claude/agents/, MUNKAMENET.md, BRIEF_SABLON.md]
 ir: [.claude/commands/elteres.md, .claude/commands/kovetkezo.md]
 fugg: []
