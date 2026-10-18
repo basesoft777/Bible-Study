@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-futtat.py -- CI.0/CI.2: az E2-E19 ellenorzesek kozos futtatoja
+futtat.py -- CI.0/CI.2: az E2-E29 ellenorzesek kozos futtatoja
 (F02_CI_ELLENORZES_BRIEF.md). Az E1-et (SEMA 1-12, Q1, Q7) NEM ez futtatja --
 azt a meglevo `eszkozok/ellenoriz.py --study FILE` adja, kulon hivassal
 (l. .github/workflows/ellenorzes.yml).
@@ -21,7 +21,7 @@ kilepesi kod --teljes modban mindig 0.
 D8 (--valtozott + --diff-alap/--diff-fej modban): a HIBA csak a diff altal
 HOZZAADOTT/MODOSITOTT sorokra vonatkozik -- egy szabaly regi (a PR altal
 nem erintett) talalata csak JELENTES. Kivetel a SZ.FAJLSZINTU_SZABALYOK
-(E4, E5, E6, E7, E16, E19, E20, E25, E26, E27): ezeknel a talalat nem egy konkret uj sorhoz kotheto,
+(E4, E5, E6, E7, E16, E19, E20, E25, E26, E27, E28, E29): ezeknel a talalat nem egy konkret uj sorhoz kotheto,
 tehat mindig a sajat szintjukon jelentkeznek. Ha --diff-alap/--diff-fej
 hianyzik --valtozott modban is, a regi (D8 elotti) viselkedes ervenyesul:
 a talalat fajlszinten a sajat szintjen jelentkezik -- ezt CI.2 mindig
@@ -128,6 +128,10 @@ def jelentes_szoveg(eredmeny, teljes, minta_db=3, esemeny=''):
         sorok.append('## %s (%s)' % (nev, ', '.join(cim_reszek)))
         if nev == 'E16' and esemeny == 'push':
             sorok.append('- %s' % E16_PUSH_MEGJEGYZES)
+        if nev == 'E28':
+            # F116: a futás egy-soros megjegyzései (pl. "E28: 0 migrált nézet")
+            for jegyzet in SZ.E28_JEGYZETEK:
+                sorok.append('- %s' % jegyzet)
         for t in talalatok[:minta_db]:
             sorok.append('- `%s` `%s:%s` -- %s' % (t.szint, t.fajl, t.sor, t.reszlet))
         if len(talalatok) > minta_db:
