@@ -165,7 +165,8 @@ E29 nem importál generátort és nem olvas `motivumok/` forrást. A G6 grep (`i
 - **F116.11 (sorvég, közepes):** az E28 a commitolt blob nyers bájtjait veti össze a generált kimenettel; a `_lf()`
   normalizálás az E28 összevetéséből kikerült (az E29 sorokra bontásához marad). Új tesztek: CRLF-es commitolt nézet
   LF-es generált kimenettel piros; CRLF-es marker-blokk piros; a munkafa-tartalék LF-et ad és jelzi, hogy nem
-  blob-összevetés. A tesztfixture-ök sorvég-hűen íródnak (`_ir_nyers`), így Windowson sem lesz CRLF az LF-ből.
+  blob-összevetés. **Megjegyzés (a második javítókör, F116.14):** ez a három teszt a `_e28_commitolt`-ot mockolja
+  (CRLF-es fixture-t ad vissza), ezért a `_e28_commitolt` blob-ága (a `git show` nyers visszaadása) nem volt tesztelve. A tesztfixture-ök sorvég-hűen íródnak (`_ir_nyers`), így Windowson sem lesz CRLF az LF-ből.
   A nyers összevetés a mai main-en nem fordít pirosra semmit (E28 üres listával 0 találat; a három marker-blob tisztán LF).
 - **F116.12 (robusztusság, alacsony):** a záró marker nélküli nyitó marker `general.marker_par_keres`-féle
   `ValueError`-ját az E28 elfogja: HIBA-találat (fájl, cél-kulcs, a hiba szövege, javító parancs), a futtató és a
@@ -173,3 +174,19 @@ E29 nem importál generátort és nem olvas `motivumok/` forrást. A G6 grep (`i
 - **Mérés:** `test_szabalyok.py` 141 OK, `test_tanulmany.py` OK; `futtat.py --teljes`: E28 0 találat („E28: 0 migrált
   nézet”), E29 0 találat, kilépés 0; a három `general.py --cel … --ellenoriz` zöld (naplo 4/4, index, nyitott);
   `python eszkozok/feladatok.py ellenoriz`: 136 brief, 0 hiba, 0 figyelmeztetés.
+
+## 6. Második javítókör (F116.14)
+
+`scope=test_szabalyok.py; a db57480d-s szabalyok.py ideiglenes visszaállítása commit nélkül | forras=manual (CLI-futtatás) | ts=2026-10-18`
+
+- **Tesztlefedettség:** új teszt, `E28Teszt.test_valodi_blob_ag_nyers_bajtokat_ad_nem_mockolt_commitolt`: a
+  `_e28_commitolt` **nincs mockolva**; a `subprocess.run` (a `git show`) CRLF-es bájtokat ad vissza (commitolt
+  CRLF-blob). A teszt ellenőrzi, hogy a visszaadott szöveg megőrzi a CR-t (`_e28_commitolt` == a nyers dekódolt
+  bájtok), és hogy az E28 piros (1 találat, a CR látszik a jelentésben); a generátor-hívás és a marker-cél helyettesített.
+- **Igazolás, hogy a teszt a régi kódon bukik:** a `db57480d`-s `szabalyok.py` ideiglenes visszaállításával (commit
+  nélkül, utána visszacserélve) a `test_szabalyok.py` 142 tesztjéből 3 bukik: az új
+  `test_valodi_blob_ag_nyers_bajtokat_ad_nem_mockolt_commitolt` (FAIL: a régi `_lf()` eltávolítja a CR-t),
+  a `test_munkafa_tartalek_lf_es_jelzi_hogy_nem_blob` (FAIL) és a
+  `test_negativ_nyito_marker_zaro_nelkul_hibatalalat_nem_kivetel` (ERROR: kezeletlen `ValueError`). A javított
+  kódon mind a 142 zöld.
+- **Docstring:** az `e28_generalt_nezet_egyezes` docstringje („LF-normalizálva”) a nyers bájt-összevetésre igazítva.

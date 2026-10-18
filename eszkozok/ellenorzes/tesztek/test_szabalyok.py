@@ -18,6 +18,7 @@ vagy
 
 import os
 import shutil
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -1280,6 +1281,38 @@ class E28Teszt(unittest.TestCase):
             self.assertIn('naplo#teszt', t[0].reszlet)
             self.assertIn('záró pár nélkül', t[0].reszlet)
             self.assertIn('python eszkozok/general.py --cel naplo --ir', t[0].reszlet)
+
+    def test_valodi_blob_ag_nyers_bajtokat_ad_nem_mockolt_commitolt(self):
+        # A `_e28_commitolt` NINCS mockolva: a `git show` kimenetet a subprocess.run
+        # helyettesiti CRLF-es bajtokkal (commitolt CRLF-blob). A blob-agnak meg kell
+        # orznie a CR-t, es az E28 piros (a generalt kimenet LF-es).
+        from unittest import mock
+        with _IdeiglenesGyoker() as gy:
+            self._fixture(gy)
+            crlf_blob = self._render(gy, '2026-10-01').replace('\n', '\r\n').encode('utf-8')
+            hivasok = []
+
+            def hamis_run(args, **kw):
+                hivasok.append(args)
+                self.assertEqual(args[:2], ['git', 'show'])
+                return subprocess.CompletedProcess(args, 0, stdout=crlf_blob, stderr=b'')
+
+            def hamis_generator(cel, azonosito, datum, kimenet):
+                ut = os.path.join(kimenet, *_LAP.split('/'))
+                os.makedirs(os.path.dirname(ut), exist_ok=True)
+                with open(ut, 'w', encoding='utf-8', newline='') as f:
+                    f.write(self._render(gy, datum))
+                return 0, ''
+
+            with mock.patch.object(SZ.subprocess, 'run', hamis_run):
+                self.assertEqual(SZ._e28_commitolt(_LAP), crlf_blob.decode('utf-8'))
+                self.assertIn('\r\n', SZ._e28_commitolt(_LAP))
+                with mock.patch.object(SZ, '_e28_general_futtat', hamis_generator), \
+                        mock.patch.object(SZ, 'E28_MARKER_CELOK', ()):
+                    t = SZ.e28_generalt_nezet_egyezes(['__TELJES__'])
+            self.assertTrue(hivasok)
+            self.assertEqual([x.szabaly for x in t], ['E28'])
+            self.assertIn('\\r', t[0].reszlet)
 
     def test_munkafa_tartalek_lf_es_jelzi_hogy_nem_blob(self):
         with _IdeiglenesGyoker() as gy:

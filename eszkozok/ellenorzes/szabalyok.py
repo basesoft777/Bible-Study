@@ -1948,7 +1948,8 @@ def e28_generalt_nezet_egyezes(fajlok):
     marker-blokkos cél törzs-összevetése (general.py függvényein át);
     (2) a migrált nézetek (engedélyezőlista) újragenerálása a repón kívüli
     ideiglenes könyvtárba, PARDES_DATUM = a commitolt fájl első GENERÁLT
-    jelölőjének ts= dátuma, majd összevetés a commitolt blobbal (LF-normalizálva).
+    jelölőjének ts= dátuma, majd bájt-összevetés a commitolt blob nyers bájtjaival (a sorvég is
+    számít; csak a git nélküli munkafa-tartalék normalizál, és azt jelzi).
     Elfogadott eltérés nincs; fájlszintű HIBA."""
     import shutil
     import tempfile
