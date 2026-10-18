@@ -371,7 +371,7 @@ class CellankentiOsszevetes(unittest.TestCase):
     def test_elfogadott_sorok_szamolasa_nem_dict_ertekek(self):
         # SORokat számolunk (kulcsonkénti elvárt darabszám), nem a dict kulcsait/értékeit
         self.assertEqual(set(R.FELHASZNALO_DARAB), set(R.FELHASZNALO_ELFOGADOTT))
-        self.assertEqual(sum(R.FELHASZNALO_DARAB.values()), 44)
+        self.assertEqual(sum(R.FELHASZNALO_DARAB.values()), 55)   # 32 + 12 + 11 (DT-F113b)
         import collections
         sor_db = collections.Counter()
         for k, n in R.FELHASZNALO_DARAB.items():
@@ -380,7 +380,32 @@ class CellankentiOsszevetes(unittest.TestCase):
             'forditas_ubs_forras_elavult': 14, 'joshua_forrasvaltas': 2, 'bdb_formatumvaltozas': 2,
             'lsj_licencverzio_valtas': 1, 'szamozas_elteres_fuggobe_valt': 6,
             'szamozas_elteres_helyorzo_feloldodott': 4, 'kutatoi_azonositas_feloldodott': 3,
-            'leiro_mondat_bovult': 8, 'f87_glossza_javitas': 4})
+            'leiro_mondat_bovult': 8, 'f87_glossza_javitas': 4,
+            'jelmagyarazat_mondat': 8, 'kezi_2b_lefedettseg_sece': 3})
+
+    def test_dt_f113b_elfogadott_sorok(self):
+        # DT-F113b (2): a 8 jelmagyarázat-mondat (fájlonként 1) és a 3 `kézi (2/b)` lefedettségsor (ISTENTISZT-001)
+        jm = [k for k, v in R.FELHASZNALO_ELFOGADOTT.items() if v == 'jelmagyarazat_mondat']
+        kz = [k for k, v in R.FELHASZNALO_ELFOGADOTT.items() if v == 'kezi_2b_lefedettseg_sece']
+        self.assertEqual(len(jm), 8)
+        self.assertTrue(all(f.endswith('_TORZSCIKK.md') and s.startswith('A cella értéke:') for f, s in jm))
+        self.assertEqual(sorted(s.split(' | ')[0] for f, s in kz), ['| G1941', '| H7121', '| H8034'])
+        self.assertTrue(all(f == 'ISTENTISZT-001_TORZSCIKK.md' and 'kézi (2/b)' in s for f, s in kz))
+        self.assertTrue(all(R.FELHASZNALO_DARAB[k] == 1 for k in jm + kz))
+
+    def test_dt_f113b_darabszamon_felul_es_mas_fajlban_ismeretlen(self):
+        (f, sor), = [k for k, v in R.FELHASZNALO_ELFOGADOTT.items()
+                     if v == 'jelmagyarazat_mondat' and k[0] == 'ALVIL-001_TORZSCIKK.md']
+        szak = '## 5. Szótári háttér — szerepek és lefedettség\n'
+        e = osztaly(szak + sor + '\n' + sor + '\n', szak, f)
+        self.assertEqual(e['felhasznalo_elfogadva']['torolt'], [sor])
+        self.assertEqual(e[R.ISMERETLEN]['torolt'], [sor])           # a darabszámon felüli azonos sor
+        e2 = osztaly(szak + sor + '\n', szak, 'LISTAN-KIVUL-001_TORZSCIKK.md')
+        self.assertNotIn('felhasznalo_elfogadva', e2)
+        self.assertIn(R.ISMERETLEN, e2)
+        # hozzáadott irányban nem érvényes: a sor megjelenése nem elfogadott
+        e3 = osztaly(szak, szak + sor + '\n', f)
+        self.assertNotIn('felhasznalo_elfogadva', e3)
 
     def test_darabszamon_felul_azonos_sor_ismeretlen(self):
         sor = '- LSJ (Liddell-Scott-Jones, A Greek-English Lexicon) — CC BY-SA 3.0'
@@ -422,8 +447,8 @@ class Szukites113(unittest.TestCase):
         self.assertEqual(set(e), {R.ISMERETLEN})
 
     def test_szerep_regi_matrix_forras_mai_renderelt_forras(self):
-        # a #9 előtti mátrix (0d7e9dec) forrása -> a mai forrás renderelt alakja, ugyanabban a szerep-cellában
-        regi = R.REGI_SZEREPMATRIX_0D7E9DEC[('gorog', 3)][1]
+        # az éles lexikont renderelő mátrix (d9b80b37, DT-F113b) forrása -> a mai forrás renderelt alakja, ugyanabban a cellában
+        regi = R.REGI_SZEREPMATRIX_D9B80B37[('gorog', 3)][1]
         uj = R._olvaso_forras(mai_forras('gorog', 3))
         self.assertNotEqual(regi, uj)
         e = osztaly(torzs5('| Teológiai szócikk | %s | x |' % regi), torzs5('| Teológiai szócikk | %s | x |' % uj),
@@ -431,10 +456,17 @@ class Szukites113(unittest.TestCase):
         self.assertEqual(set(e), {'szerep'})
 
     def test_szerep_regi_tablan_kivuli_nev_ismeretlen(self):
-        # a rögzített régi táblában nem szereplő név (pl. Cremer (1895)) nem számol el, akkor sem, ha az új oldal helyes
+        # a rögzített régi táblában nem szereplő név nem számol el, akkor sem, ha az új oldal helyes
         uj = R._olvaso_forras(mai_forras('gorog', 3))
-        self.assertEqual(R._mezo_kat('Cremer (1895)', uj, 'szerep', '5. Szótári háttér', 'Teológiai szócikk', 1),
+        self.assertEqual(R._mezo_kat('Kittel (1933)', uj, 'szerep', '5. Szótári háttér', 'Teológiai szócikk', 1),
                          R.ISMERETLEN)
+
+    def test_hamart_eles_szerep_eset(self):
+        # a HAMART-001 éles esete (DT-F113b): Cremer (1895) -> a mai tW-forrás renderelt alakja: szerep
+        uj = R._olvaso_forras(mai_forras('gorog', 3))
+        e = osztaly(torzs5('| Teológiai szócikk | Cremer (1895) | x |'), torzs5('| Teológiai szócikk | %s | x |' % uj),
+                    'HAMART-001_TORZSCIKK.md')
+        self.assertEqual(set(e), {'szerep'})
 
     def test_ubs_dntg_mounce(self):
         # DT-F113a: `UBS DNTG` -> `Mounce` csak akkor szerep, ha mindkettő a mátrix forrásneve ÉS a cella szerepéhez
@@ -444,10 +476,10 @@ class Szukites113(unittest.TestCase):
         b = mai_forras('gorog', 5)          # UBS DNTG glossza + ...; Mounce kiegészítő: mátrix-forrásnév, az 5. szerepé
         self._nem_korabbi_ag(a, b)
         self.assertEqual(R._mezo_kat(a, b, 'szerep', sz, 'Versenkénti jelentés', 1), R.ISMERETLEN)
-        self.assertEqual(R._mezo_kat(R.REGI_SZEREPMATRIX_0D7E9DEC[('gorog', 9)][1], 'Mounce', 'szerep', sz,
+        self.assertEqual(R._mezo_kat(R.REGI_SZEREPMATRIX_D9B80B37[('gorog', 9)][1], 'Mounce', 'szerep', sz,
                                      'Versenkénti jelentés', 1), R.ISMERETLEN)
         # a cella saját szerepének régi -> mai (renderelt) forrása viszont szerep (a 3. szerepnél a kettő eltér)
-        self.assertEqual(R._mezo_kat(R.REGI_SZEREPMATRIX_0D7E9DEC[('gorog', 3)][1],
+        self.assertEqual(R._mezo_kat(R.REGI_SZEREPMATRIX_D9B80B37[('gorog', 3)][1],
                                      R._olvaso_forras(mai_forras('gorog', 3)), 'szerep', sz, 'Teológiai szócikk', 1),
                          'szerep')
 
@@ -573,9 +605,11 @@ class Szukites113(unittest.TestCase):
         self.assertFalse(R._atirasnak_tunik(''))
 
     def test_regi_matrix_kivonat(self):
-        # a 0d7e9dec-mátrix rögzített kivonata: 26 sor, (nyelv, sorrend) -> (szerep, forrás, állapot)
-        self.assertEqual(len(R.REGI_SZEREPMATRIX_0D7E9DEC), 26)
-        self.assertEqual(R.REGI_SZEREPMATRIX_0D7E9DEC[('heber', 1)], ('Alapjelentés', 'TBESH', 'adatosítva'))
+        # a d9b80b37-mátrix (blob bce21db8, DT-F113b) rögzített kivonata: 20 sor, unió nélkül
+        self.assertEqual(len(R.REGI_SZEREPMATRIX_D9B80B37), 20)
+        self.assertEqual(R.REGI_SZEREPMATRIX_D9B80B37[('gorog', 3)][1], 'Cremer (1895)')
+        self.assertNotIn(('gorog', 12), R.REGI_SZEREPMATRIX_D9B80B37)
+        self.assertEqual(R.REGI_SZEREPMATRIX_D9B80B37[('heber', 1)], ('Alapjelentés', 'TBESH', 'adatosítva'))
 
 
 if __name__ == '__main__':

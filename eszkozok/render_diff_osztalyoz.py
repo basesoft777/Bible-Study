@@ -365,7 +365,8 @@ ATKULCSOLT_SOROK = {
 # DT-F09g (felhasználó, 2026-10-17, chat): a 32 elfogadott `ismeretlen` sor NÉV SZERINT (fájl + pontos sorszöveg), csak törölt irány.
 # Csoportok: forditas_ubs_forras_elavult 14 · joshua_forrasvaltas 2 · bdb_formatumvaltozas 2 · lsj_licencverzio_valtas 1 ·
 # szamozas_elteres_fuggobe_valt 6 (kutatói azonosítás függőben lett) · szamozas_elteres_helyorzo_feloldodott 4 (tartalomra oldódott) ·
-# kutatoi_azonositas_feloldodott 3 · (2026-10-18) leiro_mondat_bovult 8 · f87_glossza_javitas 4. Általános szabály nincs.
+# kutatoi_azonositas_feloldodott 3 · (2026-10-18) leiro_mondat_bovult 8 · f87_glossza_javitas 4 · (DT-F113b) jelmagyarazat_mondat 8 ·
+# kezi_2b_lefedettseg_sece 3. Általános szabály nincs.
 FELHASZNALO_ELFOGADOTT = {
     ('ALVIL-001_TUDOMANYOS.md', '- `adat/forditas_ubs.tsv` (projekt-adat)'): 'forditas_ubs_forras_elavult',
     ('ALVIL-001_TUDOMANYOS.md', '| `forditas_ubs.tsv` | `adat/forditas_ubs.tsv` | projekt-adat | elofordulasok |'): 'forditas_ubs_forras_elavult',
@@ -405,9 +406,21 @@ FELHASZNALO_ELFOGADOTT = {
     ('TEREMT-001_TORZSCIKK.md', '- **Kulcsszó:** a mélységbe — תְּהֹמֹ֖ת (te.ho.Mot)'): 'f87_glossza_javitas',
     ('TEREMT-001_TUDOMANYOS.md', '| [2Móz 15:5](#ige-2móz-15-5) | a mélységbe — תְּהֹמֹ֖ת (te.ho.Mot) | — | Remez | H8415 | — | — *(ÓSZ)* | magas · tartalom-alapú[^5] |'): 'f87_glossza_javitas',
     ('TEREMT-001_TUDOMANYOS.md', '*Ez a blokk a `[ID: TEREMT-001]` motívum 2 Strong-tokenjét fedi, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*'): 'leiro_mondat_bovult',
+    # felhasználó, 2026-10-18 (DT-F113b (2), #113): a szűkítés után a régi mátrixból sem igazolható 11 törölt sor -- a 3 `kézi (2/b)` lefedettségsor (ISTENTISZT-001) és a 8 jelmagyarázat-mondat
+    ('ALVIL-001_TORZSCIKK.md', 'A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).'): 'jelmagyarazat_mondat',
+    ('ANTROP-001_TORZSCIKK.md', 'A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).'): 'jelmagyarazat_mondat',
+    ('HAMART-001_TORZSCIKK.md', 'A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).'): 'jelmagyarazat_mondat',
+    ('HODIT-001_TORZSCIKK.md', 'A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).'): 'jelmagyarazat_mondat',
+    ('ISTENTISZT-001_TORZSCIKK.md', 'A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).'): 'jelmagyarazat_mondat',
+    ('ISTENTISZT-001_TORZSCIKK.md', '| G1941 | TBESG | Thayer | nincs adatosítva | UBS DNTG (Louw–Nida) | UBS DNTG glossza + referencia-szám; Mounce kiegészítő | az ÚSZ-szó LXX-háttere: mely héber szavakat ad vissza, mely versekben (lekerdez.py lxx-hid, LXX_OS) | kézi (2/b) | LSJ, ha releváns | UBS DNTG (szópozícióig) | nincs adatosítva |'): 'kezi_2b_lefedettseg_sece',
+    ('ISTENTISZT-001_TORZSCIKK.md', '| H7121 | TBESH | BDB | nincs adatosítva | UBS DBH (SDBH) | nincs adatosítva | LXX-fordítói döntés versenként: mely görög szó adja vissza (LXX_OS + adat/lxx_dontesek.tsv; a lexikonoldal 3. szakasza) | kézi (2/b) | nincs adatosítva | nincs adatosítva | nincs adatosítva |'): 'kezi_2b_lefedettseg_sece',
+    ('ISTENTISZT-001_TORZSCIKK.md', '| H8034 | TBESH | BDB | nincs adatosítva | UBS DBH (SDBH) | nincs adatosítva | LXX-fordítói döntés versenként: mely görög szó adja vissza (LXX_OS + adat/lxx_dontesek.tsv; a lexikonoldal 3. szakasza) | kézi (2/b) | nincs adatosítva | nincs adatosítva | nincs adatosítva |'): 'kezi_2b_lefedettseg_sece',
+    ('KIRALY-001_TORZSCIKK.md', 'A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).'): 'jelmagyarazat_mondat',
+    ('MENNY-001_TORZSCIKK.md', 'A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).'): 'jelmagyarazat_mondat',
+    ('TEREMT-001_TORZSCIKK.md', 'A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).'): 'jelmagyarazat_mondat',
 }
 # Az elfogadott sorok ELVÁRT darabszáma kulcsonként (4. ellenőrzés 3. eltérése): fájlonként és kulcsonként legfeljebb ennyi
-# törölt sort fogad el az osztályozó, a többlet `ismeretlen`. Az összeg 44 = 32 + 12.
+# törölt sort fogad el az osztályozó, a többlet `ismeretlen`. Az összeg 55 = 32 + 12 + 11 (DT-F113b).
 FELHASZNALO_DARAB = {
     ('ALVIL-001_TUDOMANYOS.md', '*Ez a blokk a `[ID: ALVIL-001]` motívum 2 Strong-tokenjét fedi, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*'): 1,
     ('ALVIL-001_TUDOMANYOS.md', '- `adat/forditas_ubs.tsv` (projekt-adat)'): 1,
@@ -446,6 +459,18 @@ FELHASZNALO_DARAB = {
     ('TEREMT-001_TUDOMANYOS.md', '*Ez a blokk a `[ID: TEREMT-001]` motívum 2 Strong-tokenjét fedi, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*'): 1,
     ('TEREMT-001_TUDOMANYOS.md', '- `adat/forditas_ubs.tsv` (projekt-adat)'): 1,
     ('TEREMT-001_TUDOMANYOS.md', '| `forditas_ubs.tsv` | `adat/forditas_ubs.tsv` | projekt-adat | elofordulasok |'): 1,
+    # felhasználó, 2026-10-18 (DT-F113b (2), #113): a szűkítés után a régi mátrixból sem igazolható 11 törölt sor -- a 3 `kézi (2/b)` lefedettségsor (ISTENTISZT-001) és a 8 jelmagyarázat-mondat
+    ('ALVIL-001_TORZSCIKK.md', 'A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).'): 1,
+    ('ANTROP-001_TORZSCIKK.md', 'A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).'): 1,
+    ('HAMART-001_TORZSCIKK.md', 'A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).'): 1,
+    ('HODIT-001_TORZSCIKK.md', 'A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).'): 1,
+    ('ISTENTISZT-001_TORZSCIKK.md', 'A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).'): 1,
+    ('ISTENTISZT-001_TORZSCIKK.md', '| G1941 | TBESG | Thayer | nincs adatosítva | UBS DNTG (Louw–Nida) | UBS DNTG glossza + referencia-szám; Mounce kiegészítő | az ÚSZ-szó LXX-háttere: mely héber szavakat ad vissza, mely versekben (lekerdez.py lxx-hid, LXX_OS) | kézi (2/b) | LSJ, ha releváns | UBS DNTG (szópozícióig) | nincs adatosítva |'): 1,
+    ('ISTENTISZT-001_TORZSCIKK.md', '| H7121 | TBESH | BDB | nincs adatosítva | UBS DBH (SDBH) | nincs adatosítva | LXX-fordítói döntés versenként: mely görög szó adja vissza (LXX_OS + adat/lxx_dontesek.tsv; a lexikonoldal 3. szakasza) | kézi (2/b) | nincs adatosítva | nincs adatosítva | nincs adatosítva |'): 1,
+    ('ISTENTISZT-001_TORZSCIKK.md', '| H8034 | TBESH | BDB | nincs adatosítva | UBS DBH (SDBH) | nincs adatosítva | LXX-fordítói döntés versenként: mely görög szó adja vissza (LXX_OS + adat/lxx_dontesek.tsv; a lexikonoldal 3. szakasza) | kézi (2/b) | nincs adatosítva | nincs adatosítva | nincs adatosítva |'): 1,
+    ('KIRALY-001_TORZSCIKK.md', 'A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).'): 1,
+    ('MENNY-001_TORZSCIKK.md', 'A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).'): 1,
+    ('TEREMT-001_TORZSCIKK.md', 'A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).'): 1,
 }
 # 2. ISMERT HIBA (N-F09g): a TSK-tábla KJV-számozású, a tsk_index() átváltás nélkül Károli-kulccsal keres; a Préd 9:10
 #    alatti 12 TSK-jelölt a KJV 9:10 = Károli 9:12 vershez tartozott, és emiatt veszett el. CSAK ez a 13 sor (12 TSK-jelölt a tudományos oldalon + a törzscikk-oldal összevont sora):
@@ -939,35 +964,30 @@ def _bovult_lista(a, b):
     return len(rb) > len(ra) and all(t in rb for t in ra)
 
 
-# #113 (1. hely, DT-F113a (a)): a #9 előtti szerepmátrix (`git show 0d7e9dec:adat/szotar_szerepek.tsv`) egyszeri,
-# rögzített kivonata: (nyelv, sorrend) -> (szerep, forrás, állapot). A kód futás közben NEM olvassa a git-történetet.
-REGI_SZEREPMATRIX_0D7E9DEC = {
+# #113 (1. hely, DT-F113a (a), DT-F113b (1)): az éles lexikon/ 8 törzscikkét renderelő szerepmátrix
+# (`git show d9b80b37:adat/szotar_szerepek.tsv`, blob bce21db8) egyszeri, rögzített kivonata, unió nélkül:
+# (nyelv, sorrend) -> (szerep, forrás, állapot). A kód futás közben NEM olvassa a git-történetet.
+REGI_SZEREPMATRIX_D9B80B37 = {
     ('gorog', 1): ('Alapjelentés', 'TBESG', 'adatosítva'),
     ('gorog', 2): ('Mélységi szócikk', 'Thayer', 'adatosítva'),
-    ('gorog', 3): ('Teológiai szócikk', 'unfoldingWord Translation Words (tW, CC BY-SA 4.0; konkordancia/tW_szocikkek.tsv, S14, D20, D16)', 'nincs adatosítva'),
+    ('gorog', 3): ('Teológiai szócikk', 'Cremer (1895)', 'nincs adatosítva'),
     ('gorog', 4): ('Jelentésszerkezet, szemantikai mező', 'UBS DNTG (Louw–Nida)', 'adatosítva'),
     ('gorog', 5): ('Tömör jelentés, előfordulás', 'UBS DNTG glossza + referencia-szám; Mounce kiegészítő', 'adatosítva'),
     ('gorog', 6): ('LXX-híd', 'az ÚSZ-szó LXX-háttere: mely héber szavakat ad vissza, mely versekben (lekerdez.py lxx-hid, LXX_OS)', 'adatosítva'),
     ('gorog', 7): ('Megfelelők a másik nyelven', 'SECE (héber)', 'nincs adatosítva'),
     ('gorog', 8): ('Nyelvi háttér', 'LSJ, ha releváns', 'adatosítva'),
-    ('gorog', 9): ('Versenkénti jelentés', 'UBS DNTG (szópozícióig); KJV angol szószintű híd (konkordancia/KJV_Strongs_teljes.tsv, F19, javaslat-állapotú; az eBible-ASV forráshibás, nincs a repóban, l. DT19/ELLENOR_F19)', 'adatosítva'),
+    ('gorog', 9): ('Versenkénti jelentés', 'UBS DNTG (szópozícióig)', 'adatosítva'),
     ('gorog', 10): ('Kiejtés (magyaros)', 'kiejtes.py szabálytábla', 'nincs adatosítva'),
     ('heber', 1): ('Alapjelentés', 'TBESH', 'adatosítva'),
     ('heber', 2): ('Mélységi szócikk', 'BDB', 'adatosítva'),
-    ('heber', 3): ('Teológiai szócikk', 'unfoldingWord Translation Words (tW, CC BY-SA 4.0; konkordancia/tW_szocikkek.tsv, S14, D20; a Girdlestone kivezetve, D18); TWOT-szám hivatkozásként (D19)', 'nincs adatosítva'),
+    ('heber', 3): ('Teológiai szócikk', 'Girdlestone (1897) + Cremer héber mutatója; TWOT-szám hivatkozásként', 'nincs adatosítva'),
     ('heber', 4): ('Jelentésszerkezet, szemantikai mező', 'UBS DBH (SDBH)', 'adatosítva'),
     ('heber', 5): ('Tömör jelentés, előfordulás', 'UBS DBH glossza + referencia-szám', 'nincs adatosítva'),
     ('heber', 6): ('LXX-híd', 'LXX-fordítói döntés versenként: mely görög szó adja vissza (LXX_OS + adat/lxx_dontesek.tsv; a lexikonoldal 3. szakasza)', 'adatosítva'),
     ('heber', 7): ('Megfelelők a másik nyelven', 'SECE (görög)', 'nincs adatosítva'),
     ('heber', 8): ('Nyelvi háttér', 'BDB etimológia', 'nincs adatosítva'),
-    ('heber', 9): ('Versenkénti jelentés', 'UBS DBH; BSB angol szószintű híd (konkordancia/BSB_Strongs.tsv, F16; csak a 36 importált ÓSZ-könyv, ÚSZ szándékosan nincs, a görög réteg a Macula (#87)); KJV angol szószintű híd, teljes Biblia (konkordancia/KJV_Strongs_teljes.tsv, F19, javaslat-állapotú; az eBible-ASV forráshibás, nincs a repóban, l. DT19/ELLENOR_F19)', 'nincs adatosítva'),
+    ('heber', 9): ('Versenkénti jelentés', 'UBS DBH', 'nincs adatosítva'),
     ('heber', 10): ('Kiejtés (magyaros)', 'lemma: kiejtes_kivetelek.tsv (kézi, OSHL-alapú jelöltekből); alak: STEP-átírás, változatlanul', 'nincs adatosítva'),
-    ('gorog', 12): ('Tematikus index (témák és igehely-hivatkozások)', "Nave's Topical Bible (1897, közkincs a basokant README szerint; konkordancia/Nave_basokant.tsv, F18, javaslat-állapotú, l. naplok/F18_import_naplo.md); nyelvfüggetlen tematikus index, csak jelölt (adat/jeloltek.tsv)", 'javaslat'),
-    ('heber', 12): ('Tematikus index (témák és igehely-hivatkozások)', "Nave's Topical Bible (1897, közkincs a basokant README szerint; konkordancia/Nave_basokant.tsv, F18, javaslat-állapotú, l. naplok/F18_import_naplo.md); nyelvfüggetlen tematikus index, csak jelölt (adat/jeloltek.tsv)", 'javaslat'),
-    ('gorog', 13): ('Károli-megfelelők (+ SZPA)', 'Károli-szóalakok gyakorisággal és példaversekkel (adat/karoli_strong/szavak_<könyv>.tsv, #22; a 12.1 lekérés 1–2. pontja); SZPA konkordáns alternatíva külön mezőként ([SZPA-B/V/F], 10. szakasz B üzemmód); nyelvfüggetlen szerep, a 12. mintájára; javaslat-állapotú, amíg a #22 nem teljes (DT-M4, DT76 (9), ADATVAGYON_TERV 18.5)', 'javaslat'),
-    ('heber', 13): ('Károli-megfelelők (+ SZPA)', 'Károli-szóalakok gyakorisággal és példaversekkel (adat/karoli_strong/szavak_<könyv>.tsv, #22; a 12.1 lekérés 1–2. pontja); SZPA konkordáns alternatíva külön mezőként ([SZPA-B/V/F], 10. szakasz B üzemmód); nyelvfüggetlen szerep, a 12. mintájára; javaslat-állapotú, amíg a #22 nem teljes (DT-M4, DT76 (9), ADATVAGYON_TERV 18.5)', 'javaslat'),
-    ('gorog', 14): ('Rejtett / hamis párhuzam', 'A 13. szerepből származtatott két lekérdezés: ugyanaz a Strong más magyar szóval (rejtett párhuzam), ugyanaz a magyar szó más Strong mögött (hamis párhuzam); nem új forrás, külön blokk a szó-lap ⚠-blokkja (DT-M4, DT76 (9), ADATVAGYON_TERV 18.5); nyelvfüggetlen szerep', 'javaslat'),
-    ('heber', 14): ('Rejtett / hamis párhuzam', 'A 13. szerepből származtatott két lekérdezés: ugyanaz a Strong más magyar szóval (rejtett párhuzam), ugyanaz a magyar szó más Strong mögött (hamis párhuzam); nem új forrás, külön blokk a szó-lap ⚠-blokkja (DT-M4, DT76 (9), ADATVAGYON_TERV 18.5); nyelvfüggetlen szerep', 'javaslat'),
 }
 _TOKEN_RE = re.compile(r'^[HG]\d{4}[a-z]?$')
 _matrix_cache = []
@@ -996,7 +1016,7 @@ def _szerep_csere(a, b, sor_kulcs, oszlop):
     """Az `5. Szótári` szakasz egy cellájának cseréje szerep-változás-e (DT-F113a (a)):
       szerep-táblasor (`| <szerep> | <görög forrás> | <héber forrás> |`): az új érték a cella szerepének MAI
         forrása vagy annak renderelt alakja (`olvaso_forras`), a régi érték ugyanennek a szerepnek a forrása a régi
-        mátrixban (`REGI_SZEREPMATRIX_0D7E9DEC`) vagy a maiban;
+        mátrixban (`REGI_SZEREPMATRIX_D9B80B37`) vagy a maiban;
       lefedettség-sor (`| <token> | ... |`, az oszlopok a mai görög szerepsorrendben): az új érték a renderfüggvény
         (`szerep_lefedettseg_cella`) értéke a cellára, a régi a szerep régi forrása vagy állapota.
     Minden más csere: nem szerep-változás (`ismeretlen`). Ez zárja ki pl. a `UBS DNTG` -> `Mounce` cserét egy
@@ -1017,7 +1037,7 @@ def _szerep_csere(a, b, sor_kulcs, oszlop):
     sor = next((r for r in mai if r[0] == nyelv and r[2] == szerep), None)
     if sor is None:
         return False
-    regi = next((v for (ny, _n), v in REGI_SZEREPMATRIX_0D7E9DEC.items() if ny == nyelv and v[0] == szerep), None)
+    regi = next((v for (ny, _n), v in REGI_SZEREPMATRIX_D9B80B37.items() if ny == nyelv and v[0] == szerep), None)
     if _TOKEN_RE.match(sor_kulcs):
         vart = _olvaso_forras(LG.szerep_lefedettseg_cella(
             nyelv, {'sorrend': str(sor[1]), 'szerep': sor[2], 'forras': sor[3], 'allapot': sor[4]}, sor_kulcs))
@@ -1297,7 +1317,7 @@ def proba_main(argv):
         fh.write('\n'.join(sorok) + '\n')
     if ismeretlen or elfogadott_db:
         ism_ut = os.path.splitext(a.tsv)[0].replace('_diff', '') + '_ismeretlen.tsv'
-        ismeretlen_sorok.append('# felhasznaloi_besorolas: a felhasználó (chat) által név szerint elfogadott sorok (FELHASZNALO_ELFOGADOTT; 2026-10-17: 32 sor, 2026-10-18: 12 sor); az üres besorolású sor `ismeretlen`, a felhasználó elé kerül. Elfogadott csoportok: %s' % ', '.join('%s=%d' % kv for kv in sorted(elfogadott_db.items())))
+        ismeretlen_sorok.append('# felhasznaloi_besorolas: a felhasználó (chat) által név szerint elfogadott sorok (FELHASZNALO_ELFOGADOTT; 2026-10-17: 32 sor, 2026-10-18: 12 sor, DT-F113b: 11 sor); az üres besorolású sor `ismeretlen`, a felhasználó elé kerül. Elfogadott csoportok: %s' % ', '.join('%s=%d' % kv for kv in sorted(elfogadott_db.items())))
         ismeretlen_sorok.append('# proveniencia: scope=%s vs %s | forras=eszkozok/render_diff_osztalyoz.py --proba | ts=%s' % (os.path.relpath(a.proba, ROOT).replace(os.sep, '/'), os.path.relpath(a.eles, ROOT).replace(os.sep, '/'), os.environ.get('PARDES_DATUM', '')))
         with io.open(ism_ut, 'w', encoding='utf-8', newline='\n') as fh:
             fh.write('\n'.join(ismeretlen_sorok) + '\n')
