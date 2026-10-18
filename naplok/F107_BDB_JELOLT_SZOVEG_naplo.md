@@ -161,3 +161,79 @@ a felhasználó döntése (2026-10-18, az orkesztrátoron át) alapján felvéve
 (a JSON hash-e, blobja és helye), írás előtt soronkénti összevetéssel. **Nyitott javaslat (nem írva):** egy
 `.gitattributes`-sor (`konkordancia/lexikonok_nyers/DictBDB.json -text`) a munkafa bájtazonosságát is
 megőrizné; a `.gitattributes` nincs az `ir` mezőben.
+
+## 2. lépés — szakasztábla és bontó (MEGÁLLT a STOP-feltételnél)
+
+Eszköz: `eszkozok/bdb_jelolt/bont.py` (F107.8–F107.9). A tábla (`adat/bdb_szakaszok.tsv`), a SEMA-szakasz, a
+`datasetek.tsv`-sor és a teszt **nem készült el**: a felhasználó STOP-feltétele (a Strongonkénti szócikk-illesztés a
+Strongok >1%-ánál nem sikerül) teljesült, l. 2.3.
+
+### 2.1 A bontás terve (a bont.py docstringje szerint)
+
+- Egység: a JSON Strong-elemének egy bekezdése (`<p>`, `<p style="sub1">` (572 db, az alcímszó jelölője), vagy
+  bekezdésen kívüli szövegdarab); a 0. a cím (`H40. Abimelek`). 8 090 Strong → 36 491 sor (a `--meres` szerint).
+- Szöveg: a JSON-ból, a `_convert_bdb.py` tisztításával, egy eltéréssel: a `<sub>` a `gyakorisag` oszlopba kerül, nem
+  `_N` lesz. A fej (szám, betű, római, igetörzs, nagybetű, zárójeles) a `jel` oszlopba kerül, a `szoveg` a fej utáni
+  szöveg.
+- `bdb_id`, szócikkhatár, `section`/`remarks`: a `BDB.lexicon`-ból, illesztéssel; a lexikon szöveget nem ad
+  (DT-F107a (i)).
+- **Útvonal (nem befagyasztott, DT190 🟡):** `<törzs>[.<nagybetű>]/<szám>/<betű>[/<zárójeles>]`, a hiányzó szint `-`,
+  a törzsnév a szeletelő alakjában (`Pi'el`); a római fő tagolás külön `resz` oszlopban, az alcímszó sorszáma külön
+  `alszocikk` oszlopban; `cim`, `fej` különleges értékek. Az alap a #99 aranymintájának és a `bdb_vers_jelentes.tsv`-nek
+  a formátuma (SEMA 2.28–2.29), a #102 két bővítésével (nagybetűs csoport, zárójeles/görög szint) összehangolva.
+  Kanonikus kulcsként **nincs befagyasztva**; a `strong`+`bdb_id`+`utvonal` egyedisége sem ellenőrzött (a
+  jelöletlen bekezdések miatt nem is egyedi; a tényleges sorkulcs a `strong`+`sorszam`).
+
+### 2.2 Lelet: a `DictBDB.json` héber szövegében nincs dagesses pe
+
+| | `DictBDB.json` (minden héber szó kétszer: `ref0 entry=` + szöveg) | `BDB.lexicon` `BDB…` sorai | `BDB_teljes_unabridged.tsv` |
+|---|---|---|---|
+| mem + dagesh | 13 562 | 2 705 | 6 788 |
+| pe + dagesh | **0** | 4 106 | 7 (az F57/F72 lexikonból pótolt soraiban) |
+| pe dagesh nélkül | 12 988 | 6 506 | — |
+
+`scope=F107 pe/mem karakterszám (NFD, a betűt követő pontozójelek között dagesh) | forras=scratchpad pe_mem.py + a TSV-re egy soros számlálás; DictBDB.json@5d826c58, BDB.lexicon@c998a70b | ts=2026-10-18`
+
+A JSON fele (13 562 / 2 ≈ 6 781) egyezik a lexikon dagesses mem + dagesses pe összegével (2 705 + 4 106 = 6 811).
+Példák az illesztésből: H6620 JSON „מֶּ֫תֶן” ↔ lexikon „פֶּתֶן”; H6499 „מַּר” ↔ „פַּר”; H6597 „מִּתְאֹם” ↔ „פִּתְאֹם”.
+**A dagesses pe a JSON-ban dagesses memként áll, és a TSV ezt örökölte**; a 674 kész magyar fordítás héber
+idézetei a TSV-ből jönnek, ezért valószínűleg ugyanígy érintettek (ezt ez a lépés nem mérte). A repóban erről nincs
+korábbi feljegyzés (`grep` „dages”: a DONTESEK.md-ben, a BDB-naplókban és a README-kben nincs találat). Javaslat:
+`DT-F107f`.
+
+### 2.3 A Strongonkénti szócikk-illesztés (STOP)
+
+Sikerfeltétel, a mérés előtt rögzítve (a `bont.py` docstringje): (a) az első tartalmi bekezdés szócikk-kezdethez
+illeszkedik, és (b) minden szegmens szavainak lefedése a hozzárendelt lexikon-szócikkel mindkét irányban ≥ 0,90.
+A bontót a mérés közben elvi okokból javítottam (F107.9): NFD-normalizálás, sorrendfüggetlen kezdet-összevetés, a
+cím-átírás folytatása, a számozott fejű bekezdés nem nyit szócikket, pe = mem az ujjlenyomatban (2.2), a római
+homonimaszám nem token. Ezek a szöveget nem érintik. Két utólag bevezetett kategória: `csonk` (a JSON-elem a cím
+folytatása, legfeljebb 8 token, pl. H381 „ish-chayil”, H358 „Elon Beth Chanan”) és `szocikk_resze` (a JSON-szegmens
+≥ 0,90-re benne van a szócikkben, de a szócikk más Strongok alá eső részeket is tartalmaz). **A STOP a szigorú
+feltétel szerint dől el.**
+
+| futás | egyezik | reszleges | sikertelen | csonk | szocikk_resze | nem egyező |
+|---|---|---|---|---|---|---|
+| első (sorrendfüggő, NFD nélkül) | 4 405 | 2 490 | 1 195 | — | — | 45,55% |
+| NFD + latin lefedés | 7 205 | 367 | 518 | — | — | 10,94% |
+| + szimmetrikus, csonk, szocikk_resze | 7 546 | 252 | 224 | 44 | 24 | 6,72% |
+| + címfolytatás, indexkorlát | 7 640 | 158 | 146 | 45 | 101 | 5,56% |
+| **+ pe = mem, római token nélkül (F107.9)** | **7 869** | **139** | **16** | **35** | **31** | **2,73%** (csonk nélkül 2,30%; csonk és szocikk_resze nélkül 1,92%) |
+
+`scope=F107 2. lépés, Strongonkénti illesztés, 8 090 JSON-Strong | forras=python eszkozok/bdb_jelolt/bont.py --meres (F107.9, 27ab3fb4) | ts=2026-10-18`
+
+A maradék (F107.9):
+- `reszleges` 139: a legrosszabb szegmens JSON-lefedése 0,8–0,9 sávban 71 (kis szövegeltérés: pl. H558 a JSON-ban a
+  könyvnév kiírva („Kings”, „Chronicles”), a lexikonban `<ref>`-ben); 0,5–0,8 sávban 23; < 0,5 sávban 45 (hiányzó
+  szócikkhatár: a JSON-szegmens egy további szócikket is tartalmaz, pl. H3: a BDB9264 arámi szócikket, mert a lexikonban
+  a szócikk eleje előtt az arámi rész bevezetője áll); 20 Strongnak több szegmense van.
+- `sikertelen` 16: H307 H390 H820 H890 H3216 H3222 H3823 H4330 H4538 H4548 H4866 H5351 H5446 H5654 …
+- `csonk` 35, `szocikk_resze` 31.
+
+**Nem kitöltve:** a nem egyező Strongok bekezdései a tervben `bdb_id` nélkül (üres, a kategória az `illesztes`
+oszlopban) kerülnének a táblába; ezt a döntés előtt nem írtam ki. Javaslat: `DT-F107e`.
+
+### 2.4 Ami nem készült el (a döntésig)
+
+`adat/bdb_szakaszok.tsv`, a teszt (`eszkozok/bdb_jelolt/teszt_bont.py`), az `adat/SEMA.md` új szakasza, az
+`adat/datasetek.tsv` sora; a 3–4. lépés.
