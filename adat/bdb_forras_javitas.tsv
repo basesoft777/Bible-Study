@@ -1,5 +1,5 @@
 # GENERÁLT: eszkozok/bdb_jelolt/forras_javit.py --ts 2026-10-18 — kézzel nem szerkesztendő (F107, DT-F107f (a); séma: adat/SEMA.md, bdb_forras_javitas.tsv). A héber alakok NFD-ben.
-# forras: adat/bdb_szakaszok.tsv@bde28a4585e7 + konkordancia/lexikonok_nyers/BDB.lexicon@c998a70b432f (csak igazolás) + kód@79a8f443f896
+# forras: adat/bdb_szakaszok.tsv@0c68c98307f5 + konkordancia/lexikonok_nyers/BDB.lexicon@c998a70b432f (csak igazolás) + kód@9ca3f1aaca59
 strong	sorszam	bdb_id	hiba	szo_sorszam	elofordulas	forras_alak	javitott_alak	allapot	indok	proveniencia
 H0001	3	BDB17	pe_mem	5	1	לָֽרִמָּה		valodi_mem	a dagesses mem-es alak a BDB17 szócikkben áll: nem hiba	scope=H0001 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0001	3	BDB17	pe_mem	7	1	אִמִּי		valodi_mem	a dagesses mem-es alak a BDB17 szócikkben áll: nem hiba	scope=H0001 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -16,8 +16,8 @@ H0055	3	BDB49	pe_mem	2	1	הִתִהַמֵּךְ	הִתִהַפֵּךְ	javitva	a
 H0060	2	BDB51	pe_mem	8	1	מִסְמַּד	מִסְפַּד	javitva	a pe-s alak a BDB51 szócikkben áll, a mem-es nem	scope=H0060 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0060	2	BDB51	pe_mem	26	1	מִסְמֵּד	מִסְפֵּד	javitva	a pe-s alak a BDB51 szócikkben áll, a mem-es nem	scope=H0060 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0068	5	BDB58	pe_mem	10	1	מִּנָּה	פִּנָּה	javitva	a pe-s alak a BDB58 szócikkben áll, a mem-es nem	scope=H0068 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H0068	5	BDB58	pe_mem	23	1	סַמִּיר	סַפִּיר	javitva	a pe-s alak a BDB58 szócikkben áll, a mem-es nem	scope=H0068 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H0068	7	BDB58	pe_mem	3	1	הַמֶּלֶח		valodi_mem	a dagesses mem-es alak a BDB58 szócikkben áll: nem hiba	scope=H0068 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H0068	6	BDB58	pe_mem	8	1	סַמִּיר	סַפִּיר	javitva	a pe-s alak a BDB58 szócikkben áll, a mem-es nem	scope=H0068 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H0068	8	BDB58	pe_mem	3	1	הַמֶּלֶח		valodi_mem	a dagesses mem-es alak a BDB58 szócikkben áll: nem hiba	scope=H0068 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0076	2	BDB970	pe_mem	7	1	מֹּרֵחַ	פֹּרֵחַ	javitva	a pe-s alak a BDB970 szócikkben áll, a mem-es nem	scope=H0076 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0098	2	BDB89	pe_mem	3	1	אֲגַמִּים		valodi_mem	a dagesses mem-es alak a BDB89 szócikkben áll: nem hiba	scope=H0098 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0100	4	BDB91	pe_mem	1	1	כִּמָּה	כִּפָּה	javitva	a pe-s alak a BDB91 szócikkben áll, a mem-es nem	scope=H0100 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -153,11 +153,11 @@ H0459	2	BDB9303	pe_mem	17	1	אֲחַדְֵַּרְמְּנַיָּא	אֲחַד�
 H0463	3	BDB446	pe_mem	1	1	עַמִּיאֵל		valodi_mem	a dagesses mem-es alak a BDB446 szócikkben áll: nem hiba	scope=H0463 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0467	2	BDB450	pe_mem	3	1	מַּלְטִיאֵל	פַּלְטִיאֵל	javitva	a pe-s alak a BDB450 szócikkben áll, a mem-es nem	scope=H0467 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0467	3	BDB450	pe_mem	1	1	אֶלְמָּ֑לֶט	אֶלְפָּ֑לֶט	javitva	a pe-s alak a BDB450 szócikkben áll, a mem-es nem	scope=H0467 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H0481	3	BDB491	pe_mem	8	1	אֶפְתַּחמִּֿי	אֶפְתַּחפִּֿי	javitva	a pe-s alak a BDB491 szócikkben áll, a mem-es nem	scope=H0481 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H0481	3	BDB491	pe_mem	18	1	מִּיךָ	פִּיךָ	javitva	a pe-s alak a BDB491 szócikkben áll, a mem-es nem	scope=H0481 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H0481	3	BDB491	pe_mem	19	1	יִמָּתַח	יִפָּתַח	javitva	a pe-s alak a BDB491 szócikkben áll, a mem-es nem	scope=H0481 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H0481	3	BDB491	pe_mem	23	1	מִּי	פִּי	javitva	a pe-s alak a BDB491 szócikkben áll, a mem-es nem	scope=H0481 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H0481	4	BDB491	pe_mem	1	1	אֲלֻמִּים		valodi_mem	a dagesses mem-es alak a BDB491 szócikkben áll: nem hiba	scope=H0481 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H0481	4	BDB491	pe_mem	4	1	אֶפְתַּחמִּֿי	אֶפְתַּחפִּֿי	javitva	a pe-s alak a BDB491 szócikkben áll, a mem-es nem	scope=H0481 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H0481	4	BDB491	pe_mem	14	1	מִּיךָ	פִּיךָ	javitva	a pe-s alak a BDB491 szócikkben áll, a mem-es nem	scope=H0481 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H0481	4	BDB491	pe_mem	15	1	יִמָּתַח	יִפָּתַח	javitva	a pe-s alak a BDB491 szócikkben áll, a mem-es nem	scope=H0481 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H0481	4	BDB491	pe_mem	19	1	מִּי	פִּי	javitva	a pe-s alak a BDB491 szócikkben áll, a mem-es nem	scope=H0481 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H0481	5	BDB491	pe_mem	1	1	אֲלֻמִּים		valodi_mem	a dagesses mem-es alak a BDB491 szócikkben áll: nem hiba	scope=H0481 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0483	2	BDB494	pe_mem	7	1	מֶּה	פֶּה	javitva	a pe-s alak a BDB494 szócikkben áll, a mem-es nem	scope=H0483 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0485	2	BDB492	pe_mem	1	1	אֲלֻמָּה		valodi_mem	a dagesses mem-es alak a BDB492 szócikkben áll: nem hiba	scope=H0485 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0485	2	BDB492	pe_mem	2	1	אֲלֻמָּתִי		valodi_mem	a dagesses mem-es alak a BDB492 szócikkben áll: nem hiba	scope=H0485 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -266,7 +266,7 @@ H0622	3	BDB627	pe_mem	12	1	אִסְמִּי	אִסְפִּי	javitva	a pe-s alak
 H0622	3	BDB627	pe_mem	17	1	אָסְמְּךָ	אָסְפְּךָ	javitva	a pe-s alak a BDB627 szócikkben áll, a mem-es nem	scope=H0622 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0622	3	BDB627	pe_mem	18	1	אָסְמְּכֶם	אָסְפְּכֶם	javitva	a pe-s alak a BDB627 szócikkben áll, a mem-es nem	scope=H0622 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0622	9	BDB627	pe_mem	9	1	שָׁמָּה		valodi_mem	a dagesses mem-es alak a BDB627 szócikkben áll: nem hiba	scope=H0622 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H0622	10	BDB627	pe_mem	2	1	אֶלעַֿמָּיו		valodi_mem	a dagesses mem-es alak a BDB627 szócikkben áll: nem hiba	scope=H0622 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H0622	11	BDB627	pe_mem	2	1	אֶלעַֿמָּיו		valodi_mem	a dagesses mem-es alak a BDB627 szócikkben áll: nem hiba	scope=H0622 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0623	4	BDB629	pe_mem	3	1	הַמְּשֹׁרֲרִים		valodi_mem	a dagesses mem-es alak a BDB629 szócikkben áll: nem hiba	scope=H0623 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0623	4	BDB629	pe_mem	8	1	עַליְֿדֵיהַמֶּלֶךְ		valodi_mem	a dagesses mem-es alak a BDB629 szócikkben áll: nem hiba	scope=H0623 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0623	4	BDB629	pe_mem	12	1	הַמְּשֹׁרֲרִים		valodi_mem	a dagesses mem-es alak a BDB629 szócikkben áll: nem hiba	scope=H0623 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -297,7 +297,7 @@ H0645	3	BDB659	pe_mem	2	1	מֹּה	פֹּה	javitva	a pe-s alak a BDB659 szócik
 H0645	3	BDB659	pe_mem	3	1	מּוֺ	פּוֺ	javitva	a pe-s alak a BDB659 szócikkben áll, a mem-es nem	scope=H0645 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0645	3	BDB659	pe_mem	5	1	מּוֺן	פּוֺן	javitva	a pe-s alak a BDB659 szócikkben áll, a mem-es nem	scope=H0645 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0645	4	BDB659	pe_mem	9	1	וּבַמֶּה		valodi_mem	a dagesses mem-es alak a BDB659 szócikkben áll: nem hiba	scope=H0645 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H0646	6	BDB652	pe_mem	3	1	מֶּסֶל	פֶּסֶל	javitva	a pe-s alak a BDB652 szócikkben áll, a mem-es nem	scope=H0646 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H0646	11	BDB652	pe_mem	3	1	מֶּסֶל	פֶּסֶל	javitva	a pe-s alak a BDB652 szócikkben áll, a mem-es nem	scope=H0646 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0648	2	BDB665	pe_mem	2	1	אֲמִּילֹת	אֲפִּילֹת	javitva	a pe-s alak a BDB665 szócikkben áll, a mem-es nem	scope=H0648 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0649	2	BDB602	pe_mem	1	1	אַמַּיִם	אַפַּיִם	javitva	a pe-s alak a BDB602 szócikkben áll, a mem-es nem	scope=H0649 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0654	3	BDB6662	pe_mem	1	1	מַּלְמֹנִי	פַּלְמֹנִי	javitva	a pe-s alak a BDB6662 szócikkben áll, a mem-es nem	scope=H0654 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -392,22 +392,22 @@ H0829	3	BDB831	pe_mem	1	1	אַשְׁמַּתּוֺת	אַשְׁפַּתּוֺת	
 H0829	3	BDB831	pe_mem	2	1	אַשְׁמֹּת	אַשְׁפֹּת	javitva	a pe-s alak a BDB831 szócikkben áll, a mem-es nem	scope=H0829 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0830	2	BDB8948	pe_mem	1	1	אַשְׁמֹּת	אַשְׁפֹּת	javitva	a pe-s alak a BDB8948 szócikkben áll, a mem-es nem	scope=H0830 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0830	2	BDB8948	pe_mem	5	1	הָאַשְׁמֹּת	הָאַשְׁפֹּת	javitva	a pe-s alak a BDB8948 szócikkben áll, a mem-es nem	scope=H0830 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H0834	8	BDB844	pe_mem	3	1	שָֽׁמָּה		valodi_mem	a dagesses mem-es alak a BDB844 szócikkben áll: nem hiba	scope=H0834 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H0834	8	BDB844	pe_mem	7	1	עִמּוֺ		valodi_mem	a dagesses mem-es alak a BDB844 szócikkben áll: nem hiba	scope=H0834 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H0834	8	BDB844	pe_mem	23	1	הֵ֑מָּה		valodi_mem	a dagesses mem-es alak a BDB844 szócikkben áll: nem hiba	scope=H0834 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H0834	8	BDB844	pe_mem	28	1	הֵמָּה		valodi_mem	a dagesses mem-es alak a BDB844 szócikkben áll: nem hiba	scope=H0834 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H0834	12	BDB844	pe_mem	13	1	בַּמָּקוֺם		valodi_mem	a dagesses mem-es alak a BDB844 szócikkben áll: nem hiba	scope=H0834 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H0834	16	BDB844	pe_mem	11	1	אֲשֶׁריִֿמָּצֵא		valodi_mem	a dagesses mem-es alak a BDB844 szócikkben áll: nem hiba	scope=H0834 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H0834	19	BDB844	pe_mem	9	1	הַמִּרְדָּה	הַפִּרְדָּה	javitva	a pe-s alak a BDB844 szócikkben áll, a mem-es nem	scope=H0834 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H0834	19	BDB844	pe_mem	12	1	הַמִּשְׁנֶה		valodi_mem	a dagesses mem-es alak a BDB844 szócikkben áll: nem hiba	scope=H0834 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H0834	19	BDB844	pe_mem	19	1	אֶתכְּֿנַףהַֿמְּעִיל		valodi_mem	a dagesses mem-es alak a BDB844 szócikkben áll: nem hiba	scope=H0834 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H0834	20	BDB844	pe_mem	17	1	הַמֶּלֶךְ		valodi_mem	a dagesses mem-es alak a BDB844 szócikkben áll: nem hiba	scope=H0834 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H0834	25	BDB844	pe_mem	11	1	לָמָּה		valodi_mem	a dagesses mem-es alak a BDB844 szócikkben áll: nem hiba	scope=H0834 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H0834	25	BDB844	pe_mem	13	1	לָמָּה		valodi_mem	a dagesses mem-es alak a BDB844 szócikkben áll: nem hiba	scope=H0834 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H0834	28	BDB844	pe_mem	6	1	מִמְּנֵי	מִפְּנֵי	javitva	a pe-s alak a BDB844 szócikkben áll, a mem-es nem	scope=H0834 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H0834	56	BDB8356	pe_mem	21	1	כָּלעֻֿמַּת		valodi_mem	a dagesses mem-es alak a BDB8356 szócikkben áll: nem hiba	scope=H0834 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H0834	9	BDB844	pe_mem	3	1	שָֽׁמָּה		valodi_mem	a dagesses mem-es alak a BDB844 szócikkben áll: nem hiba	scope=H0834 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H0834	9	BDB844	pe_mem	7	1	עִמּוֺ		valodi_mem	a dagesses mem-es alak a BDB844 szócikkben áll: nem hiba	scope=H0834 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H0834	9	BDB844	pe_mem	23	1	הֵ֑מָּה		valodi_mem	a dagesses mem-es alak a BDB844 szócikkben áll: nem hiba	scope=H0834 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H0834	9	BDB844	pe_mem	28	1	הֵמָּה		valodi_mem	a dagesses mem-es alak a BDB844 szócikkben áll: nem hiba	scope=H0834 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H0834	13	BDB844	pe_mem	13	1	בַּמָּקוֺם		valodi_mem	a dagesses mem-es alak a BDB844 szócikkben áll: nem hiba	scope=H0834 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H0834	17	BDB844	pe_mem	11	1	אֲשֶׁריִֿמָּצֵא		valodi_mem	a dagesses mem-es alak a BDB844 szócikkben áll: nem hiba	scope=H0834 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H0834	20	BDB844	pe_mem	9	1	הַמִּרְדָּה	הַפִּרְדָּה	javitva	a pe-s alak a BDB844 szócikkben áll, a mem-es nem	scope=H0834 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H0834	20	BDB844	pe_mem	12	1	הַמִּשְׁנֶה		valodi_mem	a dagesses mem-es alak a BDB844 szócikkben áll: nem hiba	scope=H0834 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H0834	20	BDB844	pe_mem	19	1	אֶתכְּֿנַףהַֿמְּעִיל		valodi_mem	a dagesses mem-es alak a BDB844 szócikkben áll: nem hiba	scope=H0834 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H0834	21	BDB844	pe_mem	17	1	הַמֶּלֶךְ		valodi_mem	a dagesses mem-es alak a BDB844 szócikkben áll: nem hiba	scope=H0834 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H0834	26	BDB844	pe_mem	11	1	לָמָּה		valodi_mem	a dagesses mem-es alak a BDB844 szócikkben áll: nem hiba	scope=H0834 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H0834	26	BDB844	pe_mem	13	1	לָמָּה		valodi_mem	a dagesses mem-es alak a BDB844 szócikkben áll: nem hiba	scope=H0834 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H0834	29	BDB844	pe_mem	6	1	מִמְּנֵי	מִפְּנֵי	javitva	a pe-s alak a BDB844 szócikkben áll, a mem-es nem	scope=H0834 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H0834	60	BDB8356	pe_mem	20	1	כָּלעֻֿמַּת		valodi_mem	a dagesses mem-es alak a BDB8356 szócikkben áll: nem hiba	scope=H0834 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0853	8	BDB853	pe_mem	1	1	מַהְמֵּכָה	מַהְפֵּכָה	javitva	a pe-s alak a BDB853 szócikkben áll, a mem-es nem	scope=H0853 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H0853	10	BDB853	pe_mem	5	1	הַמַּשָּׂא		valodi_mem	a dagesses mem-es alak a BDB853 szócikkben áll: nem hiba	scope=H0853 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H0853	13	BDB853	pe_mem	5	1	הַמַּשָּׂא		valodi_mem	a dagesses mem-es alak a BDB853 szócikkben áll: nem hiba	scope=H0853 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0854	5	BDB854	pe_mem	10	1	מּ	פּ	javitva	a pe-s alak a BDB854 szócikkben áll, a mem-es nem	scope=H0854 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0854	7	BDB854	pe_mem	1	1	מּ	פּ	javitva	a pe-s alak a BDB854 szócikkben áll, a mem-es nem	scope=H0854 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0854	7	BDB854	pe_mem	2	1	׳אֶתמְּֿנֵי		jelolt_marad	egyik alak sincs a BDB854 szócikk héber szavai között	scope=H0854 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -426,7 +426,7 @@ H0854	15	BDB854	pe_mem	1	1	מַּרְעֹה	פַּרְעֹה	javitva	a pe-s alak
 H0854	15	BDB854	pe_mem	7	1	הַמֶּלֶךְ		valodi_mem	a dagesses mem-es alak a BDB854 szócikkben áll: nem hiba	scope=H0854 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0854	16	BDB854	pe_mem	2	1	הַמֶּלֶךְ		valodi_mem	a dagesses mem-es alak a BDB854 szócikkben áll: nem hiba	scope=H0854 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0854	16	BDB854	pe_mem	28	1	מִמֶּנִּי		valodi_mem	a dagesses mem-es alak a BDB854 szócikkben áll: nem hiba	scope=H0854 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H0854	16	BDB854	pe_mem	36	1	מֵעִמָּנוּ		valodi_mem	a dagesses mem-es alak a BDB854 szócikkben áll: nem hiba	scope=H0854 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H0854	17	BDB854	pe_mem	7	1	מֵעִמָּנוּ		valodi_mem	a dagesses mem-es alak a BDB854 szócikkben áll: nem hiba	scope=H0854 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0859	3	BDB614	pe_mem	7	1	סַמֵּר	סַפֵּר	javitva	a pe-s alak a BDB614 szócikkben áll, a mem-es nem	scope=H0859 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0865	10	BDB9188	pe_mem	2	1	עַמִּי		valodi_mem	a dagesses mem-es alak a BDB9188 szócikkben áll: nem hiba	scope=H0865 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0865	10	BDB9188	pe_mem	4	1	לְעַמִּי		valodi_mem	a dagesses mem-es alak a BDB9188 szócikkben áll: nem hiba	scope=H0865 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -440,7 +440,7 @@ H0905	12	BDB913	pe_mem	4	1	הַעִמָּדִי		valodi_mem	a dagesses mem-es al
 H0909	2	BDB912	pe_mem	5	1	מֶּרֶא	פֶּרֶא	javitva	a pe-s alak a BDB912 szócikkben áll, a mem-es nem	scope=H0909 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0914	4	BDB919	pe_mem	4	1	מָּרֹכֶת	פָּרֹכֶת	javitva	a pe-s alak a BDB919 szócikkben áll, a mem-es nem	scope=H0914 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0914	5	BDB919	pe_mem	12	1	לְטַמֵּא		valodi_mem	a dagesses mem-es alak a BDB919 szócikkben áll: nem hiba	scope=H0914 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H0914	12	BDB919	pe_mem	4	1	מֵעַמֵּי		valodi_mem	a dagesses mem-es alak a BDB919 szócikkben áll: nem hiba	scope=H0914 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H0914	13	BDB919	pe_mem	4	1	מֵעַמֵּי		valodi_mem	a dagesses mem-es alak a BDB919 szócikkben áll: nem hiba	scope=H0914 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0926	4	BDB933	pe_mem	2	1	וַיִּרְמּוּ	וַיִּרְפּוּ	javitva	a pe-s alak a BDB933 szócikkben áll, a mem-es nem	scope=H0926 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0926	5	BDB933	pe_mem	3	1	מִמָּנָיו	מִפָּנָיו	javitva	a pe-s alak a BDB933 szócikkben áll, a mem-es nem	scope=H0926 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0926	7	BDB933	pe_mem	2	1	מַּחַד	פַּחַד	javitva	a pe-s alak a BDB933 szócikkben áll, a mem-es nem	scope=H0926 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -466,20 +466,20 @@ H0990	5	BDB1028	pe_mem	3	1	יַמִּים		valodi_mem	a dagesses mem-es alak a B
 H0990	7	BDB1028	pe_mem	12	1	׳מְּרִי		jelolt_marad	egyik alak sincs a BDB1028 szócikk héber szavai között	scope=H0990 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0990	7	BDB1028	pe_mem	34	1	מְּרִי	פְּרִי	javitva	a pe-s alak a BDB1028 szócikkben áll, a mem-es nem	scope=H0990 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0990	7	BDB1028	pe_mem	42	1	נִמִּי		valodi_mem	a dagesses mem-es alak a BDB1028 szócikkben áll: nem hiba	scope=H0990 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1004	3	BDB1045	pe_mem	59	1	הַמֶּלֶךְ		valodi_mem	a dagesses mem-es alak a BDB1045 szócikkben áll: nem hiba	scope=H1004 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1004	4	BDB1045	pe_mem	2	1	הַמַּלְכוּת		valodi_mem	a dagesses mem-es alak a BDB1045 szócikkben áll: nem hiba	scope=H1004 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1004	4	BDB1045	pe_mem	22	1	הַמַּהְמֶּכֶת		jelolt_marad	egyik alak sincs a BDB1045 szócikk héber szavai között	scope=H1004 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1004	4	BDB1045	pe_mem	22	2	הַמַּהְמֶּכֶת	הַמַּהְפֶּכֶת	javitva	a pe-s alak a BDB1045 szócikkben áll, a mem-es nem	scope=H1004 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1004	4	BDB1045	pe_mem	29	1	הַמְּקֻדּוֺת	הַפְּקֻדּוֺת	javitva	a pe-s alak a BDB1045 szócikkben áll, a mem-es nem	scope=H1004 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1004	4	BDB1045	pe_mem	101	1	רִמּוֺן		valodi_mem	a dagesses mem-es alak a BDB1045 szócikkben áll: nem hiba	scope=H1004 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1004	4	BDB1045	pe_mem	126	1	הַכַּמֹּרֶת	הַכַּפֹּרֶת	javitva	a pe-s alak a BDB1045 szócikkben áll, a mem-es nem	scope=H1004 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1004	5	BDB1045	pe_mem	11	1	צִמּוֺר	צִפּוֺר	javitva	a pe-s alak a BDB1045 szócikkben áll, a mem-es nem	scope=H1004 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1004	13	BDB1045	pe_mem	6	1	מִשְׁמְּחוֺת	מִשְׁפְּחוֺת	javitva	a pe-s alak a BDB1045 szócikkben áll, a mem-es nem	scope=H1004 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1004	16	BDB1045	pe_mem	27	1	הַמֶּ֑רִי		valodi_mem	a dagesses mem-es alak a BDB1045 szócikkben áll: nem hiba	scope=H1004 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1004	19	BDB1045	pe_mem	4	1	מִןהַֿמִּלּוֺא		valodi_mem	a dagesses mem-es alak a BDB1045 szócikkben áll: nem hiba	scope=H1004 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1004	22	BDB1045	pe_mem	5	1	לַמָּרֹכֶת	לַפָּרֹכֶת	javitva	a pe-s alak a BDB1045 szócikkben áll, a mem-es nem	scope=H1004 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1004	22	BDB1045	pe_mem	7	1	לַמָּרֹכֶת	לַפָּרֹכֶת	javitva	a pe-s alak a BDB1045 szócikkben áll, a mem-es nem	scope=H1004 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1004	22	BDB1045	pe_mem	9	1	הַמִּזִבֵּחַ		valodi_mem	a dagesses mem-es alak a BDB1045 szócikkben áll: nem hiba	scope=H1004 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1004	4	BDB1045	pe_mem	59	1	הַמֶּלֶךְ		valodi_mem	a dagesses mem-es alak a BDB1045 szócikkben áll: nem hiba	scope=H1004 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1004	5	BDB1045	pe_mem	2	1	הַמַּלְכוּת		valodi_mem	a dagesses mem-es alak a BDB1045 szócikkben áll: nem hiba	scope=H1004 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1004	5	BDB1045	pe_mem	22	1	הַמַּהְמֶּכֶת		jelolt_marad	egyik alak sincs a BDB1045 szócikk héber szavai között	scope=H1004 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1004	5	BDB1045	pe_mem	22	2	הַמַּהְמֶּכֶת	הַמַּהְפֶּכֶת	javitva	a pe-s alak a BDB1045 szócikkben áll, a mem-es nem	scope=H1004 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1004	5	BDB1045	pe_mem	29	1	הַמְּקֻדּוֺת	הַפְּקֻדּוֺת	javitva	a pe-s alak a BDB1045 szócikkben áll, a mem-es nem	scope=H1004 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1004	5	BDB1045	pe_mem	101	1	רִמּוֺן		valodi_mem	a dagesses mem-es alak a BDB1045 szócikkben áll: nem hiba	scope=H1004 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1004	5	BDB1045	pe_mem	126	1	הַכַּמֹּרֶת	הַכַּפֹּרֶת	javitva	a pe-s alak a BDB1045 szócikkben áll, a mem-es nem	scope=H1004 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1004	6	BDB1045	pe_mem	11	1	צִמּוֺר	צִפּוֺר	javitva	a pe-s alak a BDB1045 szócikkben áll, a mem-es nem	scope=H1004 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1004	15	BDB1045	pe_mem	6	1	מִשְׁמְּחוֺת	מִשְׁפְּחוֺת	javitva	a pe-s alak a BDB1045 szócikkben áll, a mem-es nem	scope=H1004 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1004	18	BDB1045	pe_mem	27	1	הַמֶּ֑רִי		valodi_mem	a dagesses mem-es alak a BDB1045 szócikkben áll: nem hiba	scope=H1004 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1004	21	BDB1045	pe_mem	4	1	מִןהַֿמִּלּוֺא		valodi_mem	a dagesses mem-es alak a BDB1045 szócikkben áll: nem hiba	scope=H1004 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1004	24	BDB1045	pe_mem	5	1	לַמָּרֹכֶת	לַפָּרֹכֶת	javitva	a pe-s alak a BDB1045 szócikkben áll, a mem-es nem	scope=H1004 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1004	24	BDB1045	pe_mem	7	1	לַמָּרֹכֶת	לַפָּרֹכֶת	javitva	a pe-s alak a BDB1045 szócikkben áll, a mem-es nem	scope=H1004 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1004	24	BDB1045	pe_mem	9	1	הַמִּזִבֵּחַ		valodi_mem	a dagesses mem-es alak a BDB1045 szócikkben áll: nem hiba	scope=H1004 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1023	2	BDB1073	pe_mem	1	1	הַמֶּרְחָק		valodi_mem	a dagesses mem-es alak a BDB1073 szócikkben áll: nem hiba	scope=H1023 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1024	2	BDB1074	pe_mem	3	1	הַֿמַּרְכָּבֹת׳בּ		jelolt_marad	egyik alak sincs a BDB1074 szócikk héber szavai között	scope=H1024 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1038	2	BDB1072	pe_mem	13	1	הַמַּעֲכָה		valodi_mem	a dagesses mem-es alak a BDB1072 szócikkben áll: nem hiba	scope=H1038 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -522,7 +522,7 @@ H1121	21	BDB1160	pe_mem	9	1	מַּר	פַּר	javitva	a pe-s alak a BDB1160 szó
 H1121	21	BDB1160	pe_mem	12	1	מָּרִים	פָּרִים	javitva	a pe-s alak a BDB1160 szócikkben áll, a mem-es nem	scope=H1121 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1121	21	BDB1160	pe_mem	18	1	הָרַמָּכִים		valodi_mem	a dagesses mem-es alak a BDB1160 szócikkben áll: nem hiba	scope=H1121 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1129	3	BDB1184	pe_mem	25	1	מֹּנִים	פֹּנִים	javitva	a pe-s alak a BDB1184 szócikkben áll, a mem-es nem	scope=H1129 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1129	21	BDB1184	pe_mem	1	1	מִמֶּגָּה		valodi_mem	a dagesses mem-es alak a BDB1184 szócikkben áll: nem hiba	scope=H1129 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1129	23	BDB1184	pe_mem	1	1	מִמֶּגָּה		valodi_mem	a dagesses mem-es alak a BDB1184 szócikkben áll: nem hiba	scope=H1129 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1151	2	BDB1173	pe_mem	1	1	בֶּןעַֿמִּי		valodi_mem	a dagesses mem-es alak a BDB1173 szócikkben áll: nem hiba	scope=H1151 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1151	2	BDB1173	pe_mem	2	1	בְּנֵיעַֿמּוֺן		valodi_mem	a dagesses mem-es alak a BDB1173 szócikkben áll: nem hiba	scope=H1151 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1151	2	BDB1173	pe_mem	3	1	עַמּוֺן		valodi_mem	a dagesses mem-es alak a BDB1173 szócikkben áll: nem hiba	scope=H1151 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -531,7 +531,7 @@ H1157	8	BDB1206	pe_mem	1	1	הִתְמַּלֵּל	הִתְפַּלֵּל	javitva
 H1157	8	BDB1206	pe_mem	3	1	כִּמֶּר	כִּפֶּר	javitva	a pe-s alak a BDB1206 szócikkben áll, a mem-es nem	scope=H1157 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1157	8	BDB1206	pe_mem	23	1	׳מִמַּעַל		jelolt_marad	egyik alak sincs a BDB1206 szócikk héber szavai között	scope=H1157 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1157	8	BDB1206	pe_mem	24	1	לְצַמָּתֵךְ		valodi_mem	a dagesses mem-es alak a BDB1206 szócikkben áll: nem hiba	scope=H1157 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1158	4	BDB1207	pe_mem	2	1	נֶחְמְּשׂוּ	נֶחְפְּשׂוּ	javitva	a pe-s alak a BDB1207 szócikkben áll, a mem-es nem	scope=H1158 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1158	6	BDB1207	pe_mem	2	1	נֶחְמְּשׂוּ	נֶחְפְּשׂוּ	javitva	a pe-s alak a BDB1207 szócikkben áll, a mem-es nem	scope=H1158 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1187	2	BDB1220	pe_mem	1	1	מְּעוֺר	פְּעוֺר	javitva	a pe-s alak a BDB1220 szócikkben áll, a mem-es nem	scope=H1187 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1187	2	BDB1220	pe_mem	3	1	מְּעוֺר	פְּעוֺר	javitva	a pe-s alak a BDB1220 szócikkben áll, a mem-es nem	scope=H1187 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1188	2	BDB1221	pe_mem	1	1	מְּרָצִים	פְּרָצִים	javitva	a pe-s alak a BDB1221 szócikkben áll, a mem-es nem	scope=H1188 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -552,7 +552,7 @@ H1241	4	BDB1291	pe_mem	23	1	מָּרִים	פָּרִים	javitva	a pe-s alak a 
 H1241	6	BDB1291	pe_mem	5	1	מָּרִים	פָּרִים	javitva	a pe-s alak a BDB1291 szócikkben áll, a mem-es nem	scope=H1241 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1241	6	BDB1291	pe_mem	9	1	מְּקָעִים	פְּקָעִים	javitva	a pe-s alak a BDB1291 szócikkben áll, a mem-es nem	scope=H1241 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1242	8	BDB1293	pe_mem	18	1	אַלְמַּיִם	אַלְפַּיִם	javitva	a pe-s alak a BDB1293 szócikkben áll, a mem-es nem	scope=H1242 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1242	12	BDB1293	pe_mem	10	1	מִמָּֽחֳרָת		valodi_mem	a dagesses mem-es alak a BDB1293 szócikkben áll: nem hiba	scope=H1242 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1242	13	BDB1293	pe_mem	10	1	מִמָּֽחֳרָת		valodi_mem	a dagesses mem-es alak a BDB1293 szócikkben áll: nem hiba	scope=H1242 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1245	16	BDB1296	pe_mem	1	1	מְּנֵי	פְּנֵי	javitva	a pe-s alak a BDB1296 szócikkben áll, a mem-es nem	scope=H1245 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1270	2	BDB1318	pe_mem	3	1	מַּדְזֶל	פַּדְזֶל	javitva	a pe-s alak a BDB1318 szócikkben áll, a mem-es nem	scope=H1270 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1270	9	BDB1318	pe_mem	10	1	עַמּוּד		valodi_mem	a dagesses mem-es alak a BDB1318 szócikkben áll: nem hiba	scope=H1270 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -564,7 +564,7 @@ H1310	6	BDB1371	pe_mem	7	1	בַּמַּיִם		valodi_mem	a dagesses mem-es alak
 H1316	2	BDB1376	pe_mem	17	1	מָּרִים	פָּרִים	javitva	a pe-s alak a BDB1376 szócikkben áll, a mem-es nem	scope=H1316 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1316	2	BDB1376	pe_mem	29	1	מָּרִים	פָּרִים	javitva	a pe-s alak a BDB1376 szócikkben áll, a mem-es nem	scope=H1316 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1316	2	BDB1376	pe_mem	34	1	׳מָּרוֺת		jelolt_marad	egyik alak sincs a BDB1376 szócikk héber szavai között	scope=H1316 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1320	7	BDB1368	pe_mem	13	1	מִשְׁמָּחָה	מִשְׁפָּחָה	javitva	a pe-s alak a BDB1368 szócikkben áll, a mem-es nem	scope=H1320 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1320	8	BDB1368	pe_mem	13	1	מִשְׁמָּחָה	מִשְׁפָּחָה	javitva	a pe-s alak a BDB1368 szócikkben áll, a mem-es nem	scope=H1320 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1322	3	BDB983	pe_mem	6	1	מָּנִים	פָּנִים	javitva	a pe-s alak a BDB983 szócikkben áll, a mem-es nem	scope=H1322 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1323	3	BDB1179	pe_mem	5	1	הַמְּטַנָּה	הַפְּטַנָּה	javitva	a pe-s alak a BDB1179 szócikkben áll, a mem-es nem	scope=H1323 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1323	3	BDB1179	pe_mem	13	1	מֶּלֶךְ		valodi_mem	a dagesses mem-es alak a BDB1179 szócikkben áll: nem hiba	scope=H1323 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -638,7 +638,7 @@ H1580	7	BDB1679	pe_mem	5	1	לָמָּה		valodi_mem	a dagesses mem-es alak a BDB
 H1584	4	BDB1692	pe_mem	1	1	מָּסַס	פָּסַס	javitva	a pe-s alak a BDB1692 szócikkben áll, a mem-es nem	scope=H1584 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1588	2	BDB1703	pe_mem	24	1	הַמֶּלֶךְ		valodi_mem	a dagesses mem-es alak a BDB1703 szócikkben áll: nem hiba	scope=H1588 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1593	2	BDB1704	pe_mem	12	1	מַּרְדֵּס	פַּרְדֵּס	javitva	a pe-s alak a BDB1704 szócikkben áll, a mem-es nem	scope=H1593 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1595	4	BDB1700	pe_mem	8	1	הַמֶּלֶךְ		valodi_mem	a dagesses mem-es alak a BDB1700 szócikkben áll: nem hiba	scope=H1595 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1595	6	BDB1700	pe_mem	5	1	הַמֶּלֶךְ		valodi_mem	a dagesses mem-es alak a BDB1700 szócikkben áll: nem hiba	scope=H1595 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1610	2	BDB1725	pe_mem	3	1	גַּמּוֺ	גַּפּוֺ	javitva	a pe-s alak a BDB1725 szócikkben áll, a mem-es nem	scope=H1610 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1610	2	BDB1725	pe_mem	4	1	גַּמֵּי	גַּפֵּי	javitva	a pe-s alak a BDB1725 szócikkben áll, a mem-es nem	scope=H1610 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1610	3	BDB1725	pe_mem	1	1	בְּגַמּוֺ	בְּגַפּוֺ	javitva	a pe-s alak a BDB1725 szócikkben áll, a mem-es nem	scope=H1610 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -689,8 +689,8 @@ H1748	8	BDB1884	pe_mem	1	1	דּוּמֶּ֫שֶׂק		valodi_mem	a dagesses mem-e
 H1748	8	BDB1884	pe_mem	2	1	דַּמֶּשֶׂק		valodi_mem	a dagesses mem-es alak a BDB1884 szócikkben áll: nem hiba	scope=H1748 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1752	6	BDB9431	pe_mem	4	1	צִמֲּרֵי	צִפֲּרֵי	javitva	a pe-s alak a BDB9431 szócikkben áll, a mem-es nem	scope=H1752 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1760	3	BDB1901	pe_mem	9	1	לִנְמֹּל	לִנְפֹּל	javitva	a pe-s alak a BDB1901 szócikkben áll, a mem-es nem	scope=H1760 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1768	4	BDB9440	pe_mem	28	1	תַּמָּה		valodi_mem	a dagesses mem-es alak a BDB9440 szócikkben áll: nem hiba	scope=H1768 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1768	4	BDB9440	pe_mem	52	1	יִמֵּל	יִפֵּל	javitva	a pe-s alak a BDB9440 szócikkben áll, a mem-es nem	scope=H1768 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1768	5	BDB9440	pe_mem	20	1	תַּמָּה		valodi_mem	a dagesses mem-es alak a BDB9440 szócikkben áll: nem hiba	scope=H1768 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1768	6	BDB9440	pe_mem	9	1	יִמֵּל	יִפֵּל	javitva	a pe-s alak a BDB9440 szócikkben áll, a mem-es nem	scope=H1768 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1777	5	BDB1915	pe_mem	6	1	לְאֻמִּים		valodi_mem	a dagesses mem-es alak a BDB1915 szócikkben áll: nem hiba	scope=H1777 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1777	9	BDB1915	pe_mem	1	1	עַמּוֺ		valodi_mem	a dagesses mem-es alak a BDB1915 szócikkben áll: nem hiba	scope=H1777 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1777	10	BDB1915	pe_mem	1	1	מִשְׁמָּט	מִשְׁפָּט	javitva	a pe-s alak a BDB1915 szócikkben áll, a mem-es nem	scope=H1777 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -854,9 +854,9 @@ H1961	27	BDB2145	pe_mem	1	1	עֲרוּמִּים		valodi_mem	a dagesses mem-es a
 H1961	28	BDB2145	pe_mem	17	1	וְהַמַּיִם		valodi_mem	a dagesses mem-es alak a BDB2145 szócikkben áll: nem hiba	scope=H1961 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1961	30	BDB2145	pe_mem	4	1	עִמָּדִי		valodi_mem	a dagesses mem-es alak a BDB2145 szócikkben áll: nem hiba	scope=H1961 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1961	31	BDB2145	pe_mem	6	1	מִמַּחֲנַיִם		valodi_mem	a dagesses mem-es alak a BDB2145 szócikkben áll: nem hiba	scope=H1961 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1961	32	BDB2145	pe_mem	6	1	בַּמֶּרְכָּבָה		valodi_mem	a dagesses mem-es alak a BDB2145 szócikkben áll: nem hiba	scope=H1961 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1961	32	BDB2145	pe_mem	9	1	וְהַמֶּלֶךְ		valodi_mem	a dagesses mem-es alak a BDB2145 szócikkben áll: nem hiba	scope=H1961 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1961	35	BDB2145	pe_mem	22	1	הַמֶּלֶץ		valodi_mem	a dagesses mem-es alak a BDB2145 szócikkben áll: nem hiba	scope=H1961 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1961	33	BDB2145	pe_mem	6	1	בַּמֶּרְכָּבָה		valodi_mem	a dagesses mem-es alak a BDB2145 szócikkben áll: nem hiba	scope=H1961 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1961	33	BDB2145	pe_mem	9	1	וְהַמֶּלֶךְ		valodi_mem	a dagesses mem-es alak a BDB2145 szócikkben áll: nem hiba	scope=H1961 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1961	36	BDB2145	pe_mem	22	1	הַמֶּלֶץ		valodi_mem	a dagesses mem-es alak a BDB2145 szócikkben áll: nem hiba	scope=H1961 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1964	3	BDB2148	pe_mem	19	1	הַמֶּלֶךְ		valodi_mem	a dagesses mem-es alak a BDB2148 szócikkben áll: nem hiba	scope=H1964 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1964	5	BDB2148	pe_mem	7	1	מֶּתַח	פֶּתַח	javitva	a pe-s alak a BDB2148 szócikkben áll, a mem-es nem	scope=H1964 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1964	6	BDB2148	pe_mem	7	1	עַלמְּֿנֵי	עַלפְּֿנֵי	javitva	a pe-s alak a BDB2148 szócikkben áll, a mem-es nem	scope=H1964 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -869,62 +869,62 @@ H1973	7	BDB2156	pe_mem	10	1	מִמְּךָ		valodi_mem	a dagesses mem-es alak a 
 H1973	7	BDB2156	pe_mem	12	1	מִמְּךָ		valodi_mem	a dagesses mem-es alak a BDB2156 szócikkben áll: nem hiba	scope=H1973 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1975	2	BDB2158	pe_mem	13	1	אֶתהַֿמְּלִשְׁתִּי	אֶתהַֿפְּלִשְׁתִּי	javitva	a pe-s alak a BDB2158 szócikkben áll, a mem-es nem	scope=H1975 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1975	2	BDB2158	pe_mem	20	1	הַשּׁוּנַמִּית		valodi_mem	a dagesses mem-es alak a BDB2158 szócikkben áll: nem hiba	scope=H1975 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	12	BDB2162	pe_mem	7	1	לַמַּיִם		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	13	BDB2162	pe_mem	1	1	כָּלהַֿמִּדְבָּר		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	13	BDB2162	pe_mem	20	1	בַּמִּדְבָּר		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	13	BDB2162	pe_mem	22	1	בַּמִּדְבָּר		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	13	BDB2162	pe_mem	62	1	מַּדֶּ֫נָת	פַּדֶּ֫נָת	javitva	a pe-s alak a BDB2162 szócikkben áll, a mem-es nem	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	13	BDB2162	pe_mem	69	1	שָׁ֫מָּה		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	13	BDB2162	pe_mem	73	1	הַמָּקוֺם		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	13	BDB2162	pe_mem	77	1	בַּמִּשְׁמָּט		jelolt_marad	egyik alak sincs a BDB2162 szócikk héber szavai között	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	13	BDB2162	pe_mem	77	2	בַּמִּשְׁמָּט	בַּמִּשְׁפָּט	javitva	a pe-s alak a BDB2162 szócikkben áll, a mem-es nem	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	13	BDB2162	pe_mem	89	1	שָׁ֫מָּה		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	13	BDB2162	pe_mem	113	1	לַמִּלְחָמָה		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	13	BDB2162	pe_mem	135	1	בַּכְּלִמָּה		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	13	BDB2162	pe_mem	137	1	בַּמִּלְתָמָה		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	14	BDB2162	pe_mem	3	1	מָּנַי	פָּנַי	javitva	a pe-s alak a BDB2162 szócikkben áll, a mem-es nem	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	14	BDB2162	pe_mem	12	1	מְּנֵי	פְּנֵי	javitva	a pe-s alak a BDB2162 szócikkben áll, a mem-es nem	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	14	BDB2162	pe_mem	56	1	לְתֻמָּם		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	14	BDB2162	pe_mem	62	1	בְּעַמֶּ֑ךָ		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	15	BDB2162	pe_mem	10	1	עִמָּנוּ		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	15	BDB2162	pe_mem	27	1	הַמָּ֑יִם		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	15	BDB2162	pe_mem	28	1	עַלמְּֿנֵי	עַלפְּֿנֵי	javitva	a pe-s alak a BDB2162 szócikkben áll, a mem-es nem	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	15	BDB2162	pe_mem	55	1	לַמִּזְבֵּ֑חַוַיֵּלְכוּ		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	15	BDB2162	pe_mem	57	1	הַמַּיִם		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	15	BDB2162	pe_mem	74	1	לַמִּידִים	לַפִּידִים	javitva	a pe-s alak a BDB2162 szócikkben áll, a mem-es nem	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	15	BDB2162	pe_mem	75	1	מִמִּיו	מִפִּיו	javitva	a pe-s alak a BDB2162 szócikkben áll, a mem-es nem	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	15	BDB2162	pe_mem	84	1	בְּכָלהַֿמְּדִינוֺת		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	15	BDB2162	pe_mem	90	1	מִּיהֶם	פִּיהֶם	javitva	a pe-s alak a BDB2162 szócikkben áll, a mem-es nem	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	15	BDB2162	pe_mem	111	1	מֶּ֑רִי	פֶּ֑רִי	javitva	a pe-s alak a BDB2162 szócikkben áll, a mem-es nem	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	18	BDB2162	pe_mem	2	1	עִמָּךְ		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	18	BDB2162	pe_mem	13	1	אֶתמְּֿנֵי	אֶתפְּֿנֵי	javitva	a pe-s alak a BDB2162 szócikkben áll, a mem-es nem	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	19	BDB2162	pe_mem	72	1	הַמַּיִם		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	19	BDB2162	pe_mem	82	1	וְהַמַּיִם		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	20	BDB2162	pe_mem	4	1	הַמְּלִשְׁתִּי	הַפְּלִשְׁתִּי	javitva	a pe-s alak a BDB2162 szócikkben áll, a mem-es nem	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	26	BDB2162	pe_mem	1	1	וַיִּמָּלֵט		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	29	BDB2162	pe_mem	17	1	שָׁ֑מָּה		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	34	BDB2162	pe_mem	27	1	מִשְׁמָּטִים	מִשְׁפָּטִים	javitva	a pe-s alak a BDB2162 szócikkben áll, a mem-es nem	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	34	BDB2162	pe_mem	34	1	מֶּה	פֶּה	javitva	a pe-s alak a BDB2162 szócikkben áll, a mem-es nem	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	35	BDB2162	pe_mem	12	1	עִמִּי		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	35	BDB2162	pe_mem	17	1	עִמָּכֶם		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	36	BDB2162	pe_mem	7	1	מִמְּנֵי	מִפְּנֵי	javitva	a pe-s alak a BDB2162 szócikkben áll, a mem-es nem	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	38	BDB2162	pe_mem	1	1	בְּתֻמִּי		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	39	BDB2162	pe_mem	1	1	מִמְּנֵי	מִפְּנֵי	javitva	a pe-s alak a BDB2162 szócikkben áll, a mem-es nem	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	39	BDB2162	pe_mem	3	1	בַכְּלִמָּה		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	45	BDB2162	pe_mem	4	1	מָּנֶיךָ	פָּנֶיךָ	javitva	a pe-s alak a BDB2162 szócikkben áll, a mem-es nem	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	46	BDB2162	pe_mem	4	1	מִמְּקוֺם		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	47	BDB2162	pe_mem	18	1	מִמֶּנִּי		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	50	BDB2162	pe_mem	6	1	הַמֶּלָךְ		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	50	BDB2162	pe_mem	28	1	הַמִּתְהַלְּכִים		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	51	BDB2162	pe_mem	7	1	לָמָּה		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	51	BDB2162	pe_mem	8	1	לִמְּנֵי	לִפְּנֵי	javitva	a pe-s alak a BDB2162 szócikkben áll, a mem-es nem	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	51	BDB2162	pe_mem	43	1	בְּתֻמּוֺ		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	56	BDB2162	pe_mem	2	1	בַּמִּדְבָּר		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	58	BDB2162	pe_mem	4	1	הַמֶּלֶךְ		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	58	BDB2162	pe_mem	8	1	הַמִּדְבָּר		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	59	BDB2162	pe_mem	5	1	שָׁ֫מָּה		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	62	BDB2162	pe_mem	3	1	אֶתחֶֿרְמָּתִי	אֶתחֶֿרְפָּתִי	javitva	a pe-s alak a BDB2162 szócikkben áll, a mem-es nem	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H1980	66	BDB2162	pe_mem	2	1	עַמִּי		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	13	BDB2162	pe_mem	7	1	לַמַּיִם		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	14	BDB2162	pe_mem	1	1	כָּלהַֿמִּדְבָּר		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	14	BDB2162	pe_mem	20	1	בַּמִּדְבָּר		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	14	BDB2162	pe_mem	22	1	בַּמִּדְבָּר		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	14	BDB2162	pe_mem	62	1	מַּדֶּ֫נָת	פַּדֶּ֫נָת	javitva	a pe-s alak a BDB2162 szócikkben áll, a mem-es nem	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	14	BDB2162	pe_mem	69	1	שָׁ֫מָּה		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	14	BDB2162	pe_mem	73	1	הַמָּקוֺם		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	14	BDB2162	pe_mem	77	1	בַּמִּשְׁמָּט		jelolt_marad	egyik alak sincs a BDB2162 szócikk héber szavai között	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	14	BDB2162	pe_mem	77	2	בַּמִּשְׁמָּט	בַּמִּשְׁפָּט	javitva	a pe-s alak a BDB2162 szócikkben áll, a mem-es nem	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	14	BDB2162	pe_mem	89	1	שָׁ֫מָּה		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	14	BDB2162	pe_mem	113	1	לַמִּלְחָמָה		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	14	BDB2162	pe_mem	135	1	בַּכְּלִמָּה		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	14	BDB2162	pe_mem	137	1	בַּמִּלְתָמָה		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	15	BDB2162	pe_mem	3	1	מָּנַי	פָּנַי	javitva	a pe-s alak a BDB2162 szócikkben áll, a mem-es nem	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	15	BDB2162	pe_mem	12	1	מְּנֵי	פְּנֵי	javitva	a pe-s alak a BDB2162 szócikkben áll, a mem-es nem	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	15	BDB2162	pe_mem	56	1	לְתֻמָּם		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	15	BDB2162	pe_mem	62	1	בְּעַמֶּ֑ךָ		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	16	BDB2162	pe_mem	10	1	עִמָּנוּ		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	17	BDB2162	pe_mem	2	1	הַמָּ֑יִם		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	17	BDB2162	pe_mem	3	1	עַלמְּֿנֵי	עַלפְּֿנֵי	javitva	a pe-s alak a BDB2162 szócikkben áll, a mem-es nem	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	17	BDB2162	pe_mem	30	1	לַמִּזְבֵּ֑חַוַיֵּלְכוּ		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	17	BDB2162	pe_mem	32	1	הַמַּיִם		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	17	BDB2162	pe_mem	49	1	לַמִּידִים	לַפִּידִים	javitva	a pe-s alak a BDB2162 szócikkben áll, a mem-es nem	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	17	BDB2162	pe_mem	50	1	מִמִּיו	מִפִּיו	javitva	a pe-s alak a BDB2162 szócikkben áll, a mem-es nem	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	17	BDB2162	pe_mem	59	1	בְּכָלהַֿמְּדִינוֺת		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	17	BDB2162	pe_mem	65	1	מִּיהֶם	פִּיהֶם	javitva	a pe-s alak a BDB2162 szócikkben áll, a mem-es nem	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	17	BDB2162	pe_mem	86	1	מֶּ֑רִי	פֶּ֑רִי	javitva	a pe-s alak a BDB2162 szócikkben áll, a mem-es nem	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	20	BDB2162	pe_mem	2	1	עִמָּךְ		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	20	BDB2162	pe_mem	13	1	אֶתמְּֿנֵי	אֶתפְּֿנֵי	javitva	a pe-s alak a BDB2162 szócikkben áll, a mem-es nem	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	21	BDB2162	pe_mem	72	1	הַמַּיִם		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	21	BDB2162	pe_mem	82	1	וְהַמַּיִם		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	22	BDB2162	pe_mem	4	1	הַמְּלִשְׁתִּי	הַפְּלִשְׁתִּי	javitva	a pe-s alak a BDB2162 szócikkben áll, a mem-es nem	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	28	BDB2162	pe_mem	1	1	וַיִּמָּלֵט		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	31	BDB2162	pe_mem	17	1	שָׁ֑מָּה		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	36	BDB2162	pe_mem	27	1	מִשְׁמָּטִים	מִשְׁפָּטִים	javitva	a pe-s alak a BDB2162 szócikkben áll, a mem-es nem	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	36	BDB2162	pe_mem	34	1	מֶּה	פֶּה	javitva	a pe-s alak a BDB2162 szócikkben áll, a mem-es nem	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	37	BDB2162	pe_mem	12	1	עִמִּי		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	37	BDB2162	pe_mem	17	1	עִמָּכֶם		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	38	BDB2162	pe_mem	7	1	מִמְּנֵי	מִפְּנֵי	javitva	a pe-s alak a BDB2162 szócikkben áll, a mem-es nem	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	40	BDB2162	pe_mem	1	1	בְּתֻמִּי		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	41	BDB2162	pe_mem	1	1	מִמְּנֵי	מִפְּנֵי	javitva	a pe-s alak a BDB2162 szócikkben áll, a mem-es nem	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	41	BDB2162	pe_mem	3	1	בַכְּלִמָּה		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	47	BDB2162	pe_mem	4	1	מָּנֶיךָ	פָּנֶיךָ	javitva	a pe-s alak a BDB2162 szócikkben áll, a mem-es nem	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	48	BDB2162	pe_mem	4	1	מִמְּקוֺם		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	49	BDB2162	pe_mem	18	1	מִמֶּנִּי		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	53	BDB2162	pe_mem	6	1	הַמֶּלָךְ		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	53	BDB2162	pe_mem	28	1	הַמִּתְהַלְּכִים		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	54	BDB2162	pe_mem	7	1	לָמָּה		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	55	BDB2162	pe_mem	1	1	לִמְּנֵי	לִפְּנֵי	javitva	a pe-s alak a BDB2162 szócikkben áll, a mem-es nem	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	55	BDB2162	pe_mem	36	1	בְּתֻמּוֺ		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	60	BDB2162	pe_mem	2	1	בַּמִּדְבָּר		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	62	BDB2162	pe_mem	4	1	הַמֶּלֶךְ		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	62	BDB2162	pe_mem	8	1	הַמִּדְבָּר		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	63	BDB2162	pe_mem	5	1	שָׁ֫מָּה		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	66	BDB2162	pe_mem	3	1	אֶתחֶֿרְמָּתִי	אֶתחֶֿרְפָּתִי	javitva	a pe-s alak a BDB2162 szócikkben áll, a mem-es nem	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H1980	70	BDB2162	pe_mem	2	1	עַמִּי		valodi_mem	a dagesses mem-es alak a BDB2162 szócikkben áll: nem hiba	scope=H1980 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1984	7	BDB2170	pe_mem	7	1	מֹּעֲלֵי	פֹּעֲלֵי	javitva	a pe-s alak a BDB2170 szócikkben áll, a mem-es nem	scope=H1984 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1984	9	BDB2170	pe_mem	1	1	אֶלמַּֿרְעֹה	אֶלפַּֿרְעֹה	javitva	a pe-s alak a BDB2170 szócikkben áll, a mem-es nem	scope=H1984 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H1984	9	BDB2170	pe_mem	4	1	אֶתהַֿמֶּלָךְ		valodi_mem	a dagesses mem-es alak a BDB2170 szócikkben áll: nem hiba	scope=H1984 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -988,22 +988,22 @@ H2013	2	BDB2210	pe_mem	10	1	מִמְּנֵי	מִפְּנֵי	javitva	a pe-s ala
 H2013	2	BDB2210	pe_mem	12	1	מִמָּנָיו	מִפָּנָיו	javitva	a pe-s alak a BDB2210 szócikkben áll, a mem-es nem	scope=H2013 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H2014	2	BDB6542	pe_mem	4	1	מֻּגוֺת	פֻּגוֺת	javitva	a pe-s alak a BDB6542 szócikkben áll, a mem-es nem	scope=H2014 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H2015	3	BDB2211	pe_mem	9	1	אֶהְמֹּךְ	אֶהְפֹּךְ	javitva	a pe-s alak a BDB2211 szócikkben áll, a mem-es nem	scope=H2015 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2015	4	BDB2211	pe_mem	3	1	עַלמָּֿנֶיהָ	עַלפָּֿנֶיהָ	javitva	a pe-s alak a BDB2211 szócikkben áll, a mem-es nem	scope=H2015 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2015	4	BDB2211	pe_mem	9	1	אֶלעַֿמִּים		valodi_mem	a dagesses mem-es alak a BDB2211 szócikkben áll: nem hiba	scope=H2015 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2015	5	BDB2211	pe_mem	2	1	׳מַהְמֵּכַת		jelolt_marad	egyik alak sincs a BDB2211 szócikk héber szavai között	scope=H2015 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2015	5	BDB2211	pe_mem	4	1	מַהְמֵּכָה	מַהְפֵּכָה	javitva	a pe-s alak a BDB2211 szócikkben áll, a mem-es nem	scope=H2015 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2015	5	BDB2211	pe_mem	13	1	כְּמַהְמֵּכַת	כְּמַהְפֵּכַת	javitva	a pe-s alak a BDB2211 szócikkben áll, a mem-es nem	scope=H2015 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2015	10	BDB2211	pe_mem	1	1	נֶהְמַּךְ	נֶהְפַּךְ	javitva	a pe-s alak a BDB2211 szócikkben áll, a mem-es nem	scope=H2015 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2015	10	BDB2211	pe_mem	2	1	נֶהְמָּ֑ךְ	נֶהְפָּ֑ךְ	javitva	a pe-s alak a BDB2211 szócikkben áll, a mem-es nem	scope=H2015 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2015	10	BDB2211	pe_mem	3	1	וְנֶהְמַּךְ	וְנֶהְפַּךְ	javitva	a pe-s alak a BDB2211 szócikkben áll, a mem-es nem	scope=H2015 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2015	10	BDB2211	pe_mem	5	1	נֶהְמְּכוּ	נֶהְפְּכוּ	javitva	a pe-s alak a BDB2211 szócikkben áll, a mem-es nem	scope=H2015 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2015	10	BDB2211	pe_mem	13	1	נֶהְמָּךְ	נֶהְפָּךְ	javitva	a pe-s alak a BDB2211 szócikkben áll, a mem-es nem	scope=H2015 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2015	10	BDB2211	pe_mem	14	1	נֶהְמָּ֑כֶת	נֶהְפָּ֑כֶת	javitva	a pe-s alak a BDB2211 szócikkben áll, a mem-es nem	scope=H2015 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2015	14	BDB2211	pe_mem	2	1	נֶהְמָּךְ	נֶהְפָּךְ	javitva	a pe-s alak a BDB2211 szócikkben áll, a mem-es nem	scope=H2015 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2015	20	BDB2211	pe_mem	1	1	תִּתְהַמֵּךְ	תִּתְהַפֵּךְ	javitva	a pe-s alak a BDB2211 szócikkben áll, a mem-es nem	scope=H2015 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2015	20	BDB2211	pe_mem	2	1	מִתְהַמֵּךְ	מִתְהַפֵּךְ	javitva	a pe-s alak a BDB2211 szócikkben áll, a mem-es nem	scope=H2015 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2015	20	BDB2211	pe_mem	3	1	מִתְהַמֶּכֶת	מִתְהַפֶּכֶת	javitva	a pe-s alak a BDB2211 szócikkben áll, a mem-es nem	scope=H2015 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2015	23	BDB2211	pe_mem	3	1	הָהְמַּךְ	הָהְפַּךְ	javitva	a pe-s alak a BDB2211 szócikkben áll, a mem-es nem	scope=H2015 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2015	5	BDB2211	pe_mem	3	1	עַלמָּֿנֶיהָ	עַלפָּֿנֶיהָ	javitva	a pe-s alak a BDB2211 szócikkben áll, a mem-es nem	scope=H2015 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2015	5	BDB2211	pe_mem	9	1	אֶלעַֿמִּים		valodi_mem	a dagesses mem-es alak a BDB2211 szócikkben áll: nem hiba	scope=H2015 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2015	6	BDB2211	pe_mem	2	1	׳מַהְמֵּכַת		jelolt_marad	egyik alak sincs a BDB2211 szócikk héber szavai között	scope=H2015 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2015	6	BDB2211	pe_mem	4	1	מַהְמֵּכָה	מַהְפֵּכָה	javitva	a pe-s alak a BDB2211 szócikkben áll, a mem-es nem	scope=H2015 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2015	6	BDB2211	pe_mem	13	1	כְּמַהְמֵּכַת	כְּמַהְפֵּכַת	javitva	a pe-s alak a BDB2211 szócikkben áll, a mem-es nem	scope=H2015 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2015	11	BDB2211	pe_mem	1	1	נֶהְמַּךְ	נֶהְפַּךְ	javitva	a pe-s alak a BDB2211 szócikkben áll, a mem-es nem	scope=H2015 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2015	11	BDB2211	pe_mem	2	1	נֶהְמָּ֑ךְ	נֶהְפָּ֑ךְ	javitva	a pe-s alak a BDB2211 szócikkben áll, a mem-es nem	scope=H2015 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2015	11	BDB2211	pe_mem	3	1	וְנֶהְמַּךְ	וְנֶהְפַּךְ	javitva	a pe-s alak a BDB2211 szócikkben áll, a mem-es nem	scope=H2015 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2015	11	BDB2211	pe_mem	5	1	נֶהְמְּכוּ	נֶהְפְּכוּ	javitva	a pe-s alak a BDB2211 szócikkben áll, a mem-es nem	scope=H2015 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2015	11	BDB2211	pe_mem	13	1	נֶהְמָּךְ	נֶהְפָּךְ	javitva	a pe-s alak a BDB2211 szócikkben áll, a mem-es nem	scope=H2015 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2015	11	BDB2211	pe_mem	14	1	נֶהְמָּ֑כֶת	נֶהְפָּ֑כֶת	javitva	a pe-s alak a BDB2211 szócikkben áll, a mem-es nem	scope=H2015 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2015	15	BDB2211	pe_mem	2	1	נֶהְמָּךְ	נֶהְפָּךְ	javitva	a pe-s alak a BDB2211 szócikkben áll, a mem-es nem	scope=H2015 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2015	22	BDB2211	pe_mem	1	1	תִּתְהַמֵּךְ	תִּתְהַפֵּךְ	javitva	a pe-s alak a BDB2211 szócikkben áll, a mem-es nem	scope=H2015 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2015	22	BDB2211	pe_mem	2	1	מִתְהַמֵּךְ	מִתְהַפֵּךְ	javitva	a pe-s alak a BDB2211 szócikkben áll, a mem-es nem	scope=H2015 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2015	22	BDB2211	pe_mem	3	1	מִתְהַמֶּכֶת	מִתְהַפֶּכֶת	javitva	a pe-s alak a BDB2211 szócikkben áll, a mem-es nem	scope=H2015 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2015	25	BDB2211	pe_mem	3	1	הָהְמַּךְ	הָהְפַּךְ	javitva	a pe-s alak a BDB2211 szócikkben áll, a mem-es nem	scope=H2015 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H2018	2	BDB2213	pe_mem	2	1	מַהְמֵּכָה	מַהְפֵּכָה	javitva	a pe-s alak a BDB2213 szócikkben áll, a mem-es nem	scope=H2018 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H2019	2	BDB2214	pe_mem	1	1	הֲפַכְמַּךְ	הֲפַכְפַּךְ	javitva	a pe-s alak a BDB2214 szócikkben áll, a mem-es nem	scope=H2019 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H2019	2	BDB2214	pe_mem	5	1	הֲפַכְמַּךְ	הֲפַכְפַּךְ	javitva	a pe-s alak a BDB2214 szócikkben áll, a mem-es nem	scope=H2019 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -1056,7 +1056,7 @@ H2091	25	BDB2294	pe_mem	3	1	וְעַלהַֿתִּמֹּרוֺת		valodi_mem	a d
 H2094	3	BDB2297	pe_mem	4	1	וְהַמַּשְׂכִּלִים		valodi_mem	a dagesses mem-es alak a BDB2297 szócikkben áll: nem hiba	scope=H2094 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H2094	6	BDB2299	pe_mem	13	1	מִמֶּנִּי	מִפֶּנִּי	javitva	a pe-s alak a BDB2299 szócikkben áll, a mem-es nem	scope=H2094 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H2094	7	BDB2299	pe_mem	11	1	׳מִשְׁמְּטֵי		jelolt_marad	egyik alak sincs a BDB2299 szócikk héber szavai között	scope=H2094 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2098	4	BDB2292	pe_mem	12	1	מִמְּנֵי	מִפְּנֵי	javitva	a pe-s alak a BDB2292 szócikkben áll, a mem-es nem	scope=H2098 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2098	6	BDB2292	pe_mem	12	1	מִמְּנֵי	מִפְּנֵי	javitva	a pe-s alak a BDB2292 szócikkben áll, a mem-es nem	scope=H2098 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H2102	7	BDB2337	pe_mem	4	1	אֶתרְֿמָּם	אֶתרְֿפָּם	javitva	a pe-s alak a BDB2337 szócikkben áll, a mem-es nem	scope=H2102 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H2104	2	BDB2315	pe_mem	3	1	זַמְזֻמִּים		valodi_mem	a dagesses mem-es alak a BDB2315 szócikkben áll: nem hiba	scope=H2104 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H2106	2	BDB2304	pe_mem	4	1	מִּנָּה	פִּנָּה	javitva	a pe-s alak a BDB2304 szócikkben áll, a mem-es nem	scope=H2106 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -1109,26 +1109,26 @@ H2163	3	BDB2385	pe_mem	3	1	מְזֻמָּנִים		valodi_mem	a dagesses mem-es 
 H2163	3	BDB2385	pe_mem	6	1	מְזֻמָּנוֺת		valodi_mem	a dagesses mem-es alak a BDB2385 szócikkben áll: nem hiba	scope=H2163 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H2164	2	BDB9491	pe_mem	2	1	הִזְדַּמִּנְתּוּן		valodi_mem	a dagesses mem-es alak a BDB9491 szócikkben áll: nem hiba	scope=H2164 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H2167	3	BDB2387	pe_mem	2	1	זַמֵּר		valodi_mem	a dagesses mem-es alak a BDB2387 szócikkben áll: nem hiba	scope=H2167 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2167	3	BDB2387	pe_mem	3	1	יְזַמֶּרְךָ		valodi_mem	a dagesses mem-es alak a BDB2387 szócikkben áll: nem hiba	scope=H2167 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2167	3	BDB2387	pe_mem	4	1	אֲזַמֵּר		valodi_mem	a dagesses mem-es alak a BDB2387 szócikkben áll: nem hiba	scope=H2167 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2167	3	BDB2387	pe_mem	6	1	אֲזַמְּרָה		valodi_mem	a dagesses mem-es alak a BDB2387 szócikkben áll: nem hiba	scope=H2167 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2167	3	BDB2387	pe_mem	7	1	אֲזַמֵּ֑רָה		valodi_mem	a dagesses mem-es alak a BDB2387 szócikkben áll: nem hiba	scope=H2167 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2167	3	BDB2387	pe_mem	8	1	אֲזַמֶּרְךָ		valodi_mem	a dagesses mem-es alak a BDB2387 szócikkben áll: nem hiba	scope=H2167 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2167	3	BDB2387	pe_mem	9	1	אֲזַמְּרֶ֑ךָּ		valodi_mem	a dagesses mem-es alak a BDB2387 szócikkben áll: nem hiba	scope=H2167 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2167	3	BDB2387	pe_mem	10	1	יְזַמְּרוּ		valodi_mem	a dagesses mem-es alak a BDB2387 szócikkben áll: nem hiba	scope=H2167 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2167	3	BDB2387	pe_mem	11	1	וִיזַמְּרוּ		valodi_mem	a dagesses mem-es alak a BDB2387 szócikkben áll: nem hiba	scope=H2167 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2167	3	BDB2387	pe_mem	12	1	נְזַמְּרָה		valodi_mem	a dagesses mem-es alak a BDB2387 szócikkben áll: nem hiba	scope=H2167 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2167	3	BDB2387	pe_mem	13	1	זַמְּרוּ		valodi_mem	a dagesses mem-es alak a BDB2387 szócikkben áll: nem hiba	scope=H2167 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2167	3	BDB2387	pe_mem	14	1	זַמֵּ֑רוּ		valodi_mem	a dagesses mem-es alak a BDB2387 szócikkben áll: nem hiba	scope=H2167 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2167	3	BDB2387	pe_mem	15	1	לְזַמֵּר		valodi_mem	a dagesses mem-es alak a BDB2387 szócikkben áll: nem hiba	scope=H2167 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2167	3	BDB2387	pe_mem	16	1	זַמְּרָה		valodi_mem	a dagesses mem-es alak a BDB2387 szócikkben áll: nem hiba	scope=H2167 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2167	4	BDB2387	pe_mem	32	1	מִּצְחוּ	פִּצְחוּ	javitva	a pe-s alak a BDB2387 szócikkben áll, a mem-es nem	scope=H2167 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2167	5	BDB2387	pe_mem	1	1	זַמְּרוּלֿוֺ		valodi_mem	a dagesses mem-es alak a BDB2387 szócikkben áll: nem hiba	scope=H2167 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2167	4	BDB2387	pe_mem	1	1	יְזַמֶּרְךָ		valodi_mem	a dagesses mem-es alak a BDB2387 szócikkben áll: nem hiba	scope=H2167 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2167	4	BDB2387	pe_mem	2	1	אֲזַמֵּר		valodi_mem	a dagesses mem-es alak a BDB2387 szócikkben áll: nem hiba	scope=H2167 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2167	4	BDB2387	pe_mem	4	1	אֲזַמְּרָה		valodi_mem	a dagesses mem-es alak a BDB2387 szócikkben áll: nem hiba	scope=H2167 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2167	4	BDB2387	pe_mem	5	1	אֲזַמֵּ֑רָה		valodi_mem	a dagesses mem-es alak a BDB2387 szócikkben áll: nem hiba	scope=H2167 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2167	4	BDB2387	pe_mem	6	1	אֲזַמֶּרְךָ		valodi_mem	a dagesses mem-es alak a BDB2387 szócikkben áll: nem hiba	scope=H2167 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2167	4	BDB2387	pe_mem	7	1	אֲזַמְּרֶ֑ךָּ		valodi_mem	a dagesses mem-es alak a BDB2387 szócikkben áll: nem hiba	scope=H2167 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2167	4	BDB2387	pe_mem	8	1	יְזַמְּרוּ		valodi_mem	a dagesses mem-es alak a BDB2387 szócikkben áll: nem hiba	scope=H2167 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2167	4	BDB2387	pe_mem	9	1	וִיזַמְּרוּ		valodi_mem	a dagesses mem-es alak a BDB2387 szócikkben áll: nem hiba	scope=H2167 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2167	4	BDB2387	pe_mem	10	1	נְזַמְּרָה		valodi_mem	a dagesses mem-es alak a BDB2387 szócikkben áll: nem hiba	scope=H2167 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2167	4	BDB2387	pe_mem	11	1	זַמְּרוּ		valodi_mem	a dagesses mem-es alak a BDB2387 szócikkben áll: nem hiba	scope=H2167 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2167	4	BDB2387	pe_mem	12	1	זַמֵּ֑רוּ		valodi_mem	a dagesses mem-es alak a BDB2387 szócikkben áll: nem hiba	scope=H2167 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2167	4	BDB2387	pe_mem	13	1	לְזַמֵּר		valodi_mem	a dagesses mem-es alak a BDB2387 szócikkben áll: nem hiba	scope=H2167 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2167	4	BDB2387	pe_mem	14	1	זַמְּרָה		valodi_mem	a dagesses mem-es alak a BDB2387 szócikkben áll: nem hiba	scope=H2167 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2167	5	BDB2387	pe_mem	32	1	מִּצְחוּ	פִּצְחוּ	javitva	a pe-s alak a BDB2387 szócikkben áll, a mem-es nem	scope=H2167 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2167	6	BDB2387	pe_mem	1	1	זַמְּרוּלֿוֺ		valodi_mem	a dagesses mem-es alak a BDB2387 szócikkben áll: nem hiba	scope=H2167 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H2171	2	BDB9493	pe_mem	1	1	זַמָּר		valodi_mem	a dagesses mem-es alak a BDB9493 szócikkben áll: nem hiba	scope=H2171 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H2171	2	BDB9493	pe_mem	2	1	זַמָּרַיָא		valodi_mem	a dagesses mem-es alak a BDB9493 szócikkben áll: nem hiba	scope=H2171 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H2180	4	BDB2405	pe_mem	4	1	כִּמָּה	כִּפָּה	javitva	a pe-s alak a BDB2405 szócikkben áll, a mem-es nem	scope=H2180 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H2188	2	BDB3508	pe_mem	7	1	אַמֶּיךָ	אַפֶּיךָ	javitva	a pe-s alak a BDB3508 szócikkben áll, a mem-es nem	scope=H2188 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2194	5	BDB2417	pe_mem	2	1	מָּנִים	פָּנִים	javitva	a pe-s alak a BDB2417 szócikkben áll, a mem-es nem	scope=H2194 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2194	6	BDB2417	pe_mem	2	1	מָּנִים	פָּנִים	javitva	a pe-s alak a BDB2417 szócikkben áll, a mem-es nem	scope=H2194 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H2196	3	BDB2419	pe_mem	3	1	זַעְמּוֺ	זַעְפּוֺ	javitva	a pe-s alak a BDB2419 szócikkben áll, a mem-es nem	scope=H2196 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H2197	2	BDB2420	pe_mem	3	1	זַעְמּוֺ	זַעְפּוֺ	javitva	a pe-s alak a BDB2420 szócikkben áll, a mem-es nem	scope=H2197 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H2197	3	BDB2420	pe_mem	5	1	עִמּוֺ		valodi_mem	a dagesses mem-es alak a BDB2420 szócikkben áll: nem hiba	scope=H2197 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -1143,18 +1143,18 @@ H2220	8	BDB2472	pe_mem	4	1	וַתְּאַמֵּץ		valodi_mem	a dagesses mem-es 
 H2220	9	BDB2472	pe_mem	6	1	יִשְׁמֹּ֑טוּ	יִשְׁפֹּ֑טוּ	javitva	a pe-s alak a BDB2472 szócikkben áll, a mem-es nem	scope=H2220 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H2220	9	BDB2472	pe_mem	7	1	עַמִּים		valodi_mem	a dagesses mem-es alak a BDB2472 szócikkben áll: nem hiba	scope=H2220 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H2232	11	BDB2463	pe_mem	5	1	בָּעַמִּים		valodi_mem	a dagesses mem-es alak a BDB2463 szócikkben áll: nem hiba	scope=H2232 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2233	3	BDB2464	pe_mem	7	1	וְרִמּוֺן		valodi_mem	a dagesses mem-es alak a BDB2464 szócikkben áll: nem hiba	scope=H2233 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2233	7	BDB2464	pe_mem	4	1	אֲלֻמֹּת		valodi_mem	a dagesses mem-es alak a BDB2464 szócikkben áll: nem hiba	scope=H2233 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2233	9	BDB2464	pe_mem	7	1	מְּרִיעֵֿץ	פְּרִיעֵֿץ	javitva	a pe-s alak a BDB2464 szócikkben áll, a mem-es nem	scope=H2233 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2233	9	BDB2464	pe_mem	14	1	בַּמְּגוּרָה		valodi_mem	a dagesses mem-es alak a BDB2464 szócikkben áll: nem hiba	scope=H2233 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2233	9	BDB2464	pe_mem	17	1	רִמּוֺן		valodi_mem	a dagesses mem-es alak a BDB2464 szócikkben áll: nem hiba	scope=H2233 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2233	10	BDB2464	pe_mem	8	1	הַגֶּמֶּן	הַגֶּפֶּן	javitva	a pe-s alak a BDB2464 szócikkben áll, a mem-es nem	scope=H2233 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2233	17	BDB2464	pe_mem	2	1	הַמֶּלֶךְ		valodi_mem	a dagesses mem-es alak a BDB2464 szócikkben áll: nem hiba	scope=H2233 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2233	17	BDB2464	pe_mem	4	1	הַמַּמְלָכָה		valodi_mem	a dagesses mem-es alak a BDB2464 szócikkben áll: nem hiba	scope=H2233 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2233	17	BDB2464	pe_mem	6	1	הַמְּלוּכָה		valodi_mem	a dagesses mem-es alak a BDB2464 szócikkben áll: nem hiba	scope=H2233 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2233	18	BDB2464	pe_mem	2	1	עַמְּךָ		valodi_mem	a dagesses mem-es alak a BDB2464 szócikkben áll: nem hiba	scope=H2233 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2233	19	BDB2464	pe_mem	11	1	וּמִמִּי	וּמִפִּי	javitva	a pe-s alak a BDB2464 szócikkben áll, a mem-es nem	scope=H2233 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2233	19	BDB2464	pe_mem	13	1	מִמִּי	מִפִּי	javitva	a pe-s alak a BDB2464 szócikkben áll, a mem-es nem	scope=H2233 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2233	4	BDB2464	pe_mem	7	1	וְרִמּוֺן		valodi_mem	a dagesses mem-es alak a BDB2464 szócikkben áll: nem hiba	scope=H2233 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2233	8	BDB2464	pe_mem	4	1	אֲלֻמֹּת		valodi_mem	a dagesses mem-es alak a BDB2464 szócikkben áll: nem hiba	scope=H2233 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2233	10	BDB2464	pe_mem	7	1	מְּרִיעֵֿץ	פְּרִיעֵֿץ	javitva	a pe-s alak a BDB2464 szócikkben áll, a mem-es nem	scope=H2233 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2233	10	BDB2464	pe_mem	14	1	בַּמְּגוּרָה		valodi_mem	a dagesses mem-es alak a BDB2464 szócikkben áll: nem hiba	scope=H2233 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2233	10	BDB2464	pe_mem	17	1	רִמּוֺן		valodi_mem	a dagesses mem-es alak a BDB2464 szócikkben áll: nem hiba	scope=H2233 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2233	11	BDB2464	pe_mem	8	1	הַגֶּמֶּן	הַגֶּפֶּן	javitva	a pe-s alak a BDB2464 szócikkben áll, a mem-es nem	scope=H2233 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2233	18	BDB2464	pe_mem	2	1	הַמֶּלֶךְ		valodi_mem	a dagesses mem-es alak a BDB2464 szócikkben áll: nem hiba	scope=H2233 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2233	18	BDB2464	pe_mem	4	1	הַמַּמְלָכָה		valodi_mem	a dagesses mem-es alak a BDB2464 szócikkben áll: nem hiba	scope=H2233 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2233	18	BDB2464	pe_mem	6	1	הַמְּלוּכָה		valodi_mem	a dagesses mem-es alak a BDB2464 szócikkben áll: nem hiba	scope=H2233 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2233	19	BDB2464	pe_mem	2	1	עַמְּךָ		valodi_mem	a dagesses mem-es alak a BDB2464 szócikkben áll: nem hiba	scope=H2233 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2233	20	BDB2464	pe_mem	11	1	וּמִמִּי	וּמִפִּי	javitva	a pe-s alak a BDB2464 szócikkben áll, a mem-es nem	scope=H2233 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2233	20	BDB2464	pe_mem	13	1	מִמִּי	מִפִּי	javitva	a pe-s alak a BDB2464 szócikkben áll, a mem-es nem	scope=H2233 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H2239	2	BDB2480	pe_mem	8	1	אַמָּה		valodi_mem	a dagesses mem-es alak a BDB2480 szócikkben áll: nem hiba	scope=H2239 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H2244	4	BDB2485	pe_mem	11	1	לָ֫מָּה		valodi_mem	a dagesses mem-es alak a BDB2485 szócikkben áll: nem hiba	scope=H2244 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H2245	3	BDB2488	pe_mem	1	1	עַמִּים		valodi_mem	a dagesses mem-es alak a BDB2488 szócikkben áll: nem hiba	scope=H2245 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -1185,9 +1185,9 @@ H2319	4	BDB2578	pe_mem	6	1	עִמָּדִי		valodi_mem	a dagesses mem-es alak a
 H2320	5	BDB2579	pe_mem	10	1	׳מִסְמַּרחֿ		jelolt_marad	egyik alak sincs a BDB2579 szócikk héber szavai között	scope=H2320 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H2324	3	BDB9512	pe_mem	1	1	מִּשְׁרָא	פִּשְׁרָא	javitva	a pe-s alak a BDB9512 szócikkben áll, a mem-es nem	scope=H2324 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H2325	4	BDB2583	pe_mem	1	1	לַמֶּ֑לֶךְ		valodi_mem	a dagesses mem-es alak a BDB2583 szócikkben áll: nem hiba	scope=H2325 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2336	4	BDB2603	pe_mem	5	1	קִמּוֺשׁ		valodi_mem	a dagesses mem-es alak a BDB2603 szócikkben áll: nem hiba	scope=H2336 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2336	4	BDB2603	pe_mem	7	1	קִמּוֺשׁ		valodi_mem	a dagesses mem-es alak a BDB2603 szócikkben áll: nem hiba	scope=H2336 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2336	4	BDB2603	pe_mem	22	1	בְּאַמּוֺ	בְּאַפּוֺ	javitva	a pe-s alak a BDB2603 szócikkben áll, a mem-es nem	scope=H2336 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2336	5	BDB2603	pe_mem	1	1	קִמּוֺשׁ		valodi_mem	a dagesses mem-es alak a BDB2603 szócikkben áll: nem hiba	scope=H2336 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2336	5	BDB2603	pe_mem	3	1	קִמּוֺשׁ		valodi_mem	a dagesses mem-es alak a BDB2603 szócikkben áll: nem hiba	scope=H2336 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2336	7	BDB2603	pe_mem	2	1	בְּאַמּוֺ	בְּאַפּוֺ	javitva	a pe-s alak a BDB2603 szócikkben áll, a mem-es nem	scope=H2336 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H2339	4	BDB2606	pe_mem	2	1	הַמְּשֻׁלָּשׁ		valodi_mem	a dagesses mem-es alak a BDB2606 szócikkben áll: nem hiba	scope=H2339 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H2342	5	BDB2608	pe_mem	1	1	בַּמְּחֹלוֺת		valodi_mem	a dagesses mem-es alak a BDB2608 szócikkben áll: nem hiba	scope=H2342 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H2342	8	BDB2608	pe_mem	3	1	מַּחַד	פַּחַד	javitva	a pe-s alak a BDB2608 szócikkben áll, a mem-es nem	scope=H2342 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -1317,7 +1317,7 @@ H2568	8	BDB2900	pe_mem	5	1	אַמּוֺת		valodi_mem	a dagesses mem-es alak a B
 H2568	9	BDB2900	pe_mem	1	1	חַמְּלָכִים		valodi_mem	a dagesses mem-es alak a BDB2900 szócikkben áll: nem hiba	scope=H2568 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H2569	2	BDB2901	pe_mem	5	1	לְחַמֵּשׁ		valodi_mem	a dagesses mem-es alak a BDB2901 szócikkben áll: nem hiba	scope=H2569 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H2572	2	BDB2903	pe_mem	5	1	חמּשׁה		valodi_mem	a dagesses mem-es alak a BDB2903 szócikkben áll: nem hiba	scope=H2572 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H2572	6	BDB2903	pe_mem	2	1	בָּאַמָּה		valodi_mem	a dagesses mem-es alak a BDB2903 szócikkben áll: nem hiba	scope=H2572 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H2572	7	BDB2903	pe_mem	2	1	בָּאַמָּה		valodi_mem	a dagesses mem-es alak a BDB2903 szócikkben áll: nem hiba	scope=H2572 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H2574	2	BDB2911	pe_mem	15	1	דַּמֶּשֶׂק		valodi_mem	a dagesses mem-es alak a BDB2911 szócikkben áll: nem hiba	scope=H2574 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H2574	2	BDB2911	pe_mem	25	1	׳אֶתדַּֿמֶּשֶׂק		jelolt_marad	egyik alak sincs a BDB2911 szócikk héber szavai között	scope=H2574 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H2575	2	BDB2868	pe_mem	1	1	חַמַּת		valodi_mem	a dagesses mem-es alak a BDB2868 szócikkben áll: nem hiba	scope=H2575 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -1611,9 +1611,9 @@ H3123	2	BDB3499	pe_mem	15	1	מּוֺתָה	פּוֺתָה	javitva	a pe-s alak a 
 H3148	3	BDB3859	pe_mem	7	1	מֵהֵמָּה		valodi_mem	a dagesses mem-es alak a BDB3859 szócikkben áll: nem hiba	scope=H3148 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3148	3	BDB3859	pe_mem	15	1	מִמֶּנִּי		valodi_mem	a dagesses mem-es alak a BDB3859 szócikkben áll: nem hiba	scope=H3148 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3156	4	BDB2458	pe_mem	1	1	הַמָּקִיד	הַפָּקִיד	javitva	a pe-s alak a BDB2458 szócikkben áll, a mem-es nem	scope=H3156 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H3162	5	BDB3511	pe_mem	5	1	נִשְׁמַּט	נִשְׁפַּט	javitva	a pe-s alak a BDB3511 szócikkben áll, a mem-es nem	scope=H3162 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H3162	5	BDB3511	pe_mem	18	1	וַיִּמְּלוּ	וַיִּפְּלוּ	javitva	a pe-s alak a BDB3511 szócikkben áll, a mem-es nem	scope=H3162 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H3162	6	BDB3511	pe_mem	8	1	הֵמָּה		valodi_mem	a dagesses mem-es alak a BDB3511 szócikkben áll: nem hiba	scope=H3162 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H3162	6	BDB3511	pe_mem	5	1	נִשְׁמַּט	נִשְׁפַּט	javitva	a pe-s alak a BDB3511 szócikkben áll, a mem-es nem	scope=H3162 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H3162	6	BDB3511	pe_mem	18	1	וַיִּמְּלוּ	וַיִּפְּלוּ	javitva	a pe-s alak a BDB3511 szócikkben áll, a mem-es nem	scope=H3162 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H3162	7	BDB3511	pe_mem	8	1	הֵמָּה		valodi_mem	a dagesses mem-es alak a BDB3511 szócikkben áll: nem hiba	scope=H3162 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3187	2	BDB3527	pe_mem	5	1	הַמִּתְיִחֲשִׂים		valodi_mem	a dagesses mem-es alak a BDB3527 szócikkben áll: nem hiba	scope=H3187 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3187	2	BDB3527	pe_mem	19	1	הֵמָּה		valodi_mem	a dagesses mem-es alak a BDB3527 szócikkben áll: nem hiba	scope=H3187 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3187	2	BDB3527	pe_mem	22	1	הַמִּתְיַחֲשִׂים		valodi_mem	a dagesses mem-es alak a BDB3527 szócikkben áll: nem hiba	scope=H3187 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -1649,8 +1649,8 @@ H3245	11	BDB3589	pe_mem	17	1	מְחֻמָּשׂ	מְחֻפָּשׂ	javitva	a pe-
 H3246	2	BDB3590	pe_mem	2	1	הַמַּעֲלָה		valodi_mem	a dagesses mem-es alak a BDB3590 szócikkben áll: nem hiba	scope=H3246 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3254	3	BDB3599	pe_mem	8	1	לִסְמּוֺת	לִסְפּוֺת	javitva	a pe-s alak a BDB3599 szócikkben áll, a mem-es nem	scope=H3254 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3254	7	BDB3599	pe_mem	16	1	אַסְמֶּה	אַסְפֶּה	javitva	a pe-s alak a BDB3599 szócikkben áll, a mem-es nem	scope=H3254 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H3282	11	BDB6202	pe_mem	11	1	טִמֵּאתָ		valodi_mem	a dagesses mem-es alak a BDB6202 szócikkben áll: nem hiba	scope=H3282 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H3282	12	BDB6202	pe_mem	4	1	בְּמִשְׁמָּטַי	בְּמִשְׁפָּטַי	javitva	a pe-s alak a BDB6202 szócikkben áll, a mem-es nem	scope=H3282 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H3282	12	BDB6202	pe_mem	11	1	טִמֵּאתָ		valodi_mem	a dagesses mem-es alak a BDB6202 szócikkben áll: nem hiba	scope=H3282 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H3282	13	BDB6202	pe_mem	4	1	בְּמִשְׁמָּטַי	בְּמִשְׁפָּטַי	javitva	a pe-s alak a BDB6202 szócikkben áll, a mem-es nem	scope=H3282 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3283	2	BDB3628	pe_mem	3	1	בַּמִּדְבָּר		valodi_mem	a dagesses mem-es alak a BDB3628 szócikkben áll: nem hiba	scope=H3283 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3289	3	BDB3636	pe_mem	47	1	מֶּלֶא	פֶּלֶא	javitva	a pe-s alak a BDB3636 szócikkben áll, a mem-es nem	scope=H3289 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3293	2	BDB3642	pe_mem	5	1	עַלמְּֿנֵּי	עַלפְּֿנֵּי	javitva	a pe-s alak a BDB3642 szócikkben áll, a mem-es nem	scope=H3293 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -1681,10 +1681,10 @@ H3318	13	BDB3658	pe_mem	1	1	הַמַּרְשְׁדֹ֫נָה	הַפַּרְשְ�
 H3318	13	BDB3658	pe_mem	6	1	מֶּרֶץ	פֶּרֶץ	javitva	a pe-s alak a BDB3658 szócikkben áll, a mem-es nem	scope=H3318 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3318	13	BDB3658	pe_mem	13	1	מִןהַֿמָּקוֺם		valodi_mem	a dagesses mem-es alak a BDB3658 szócikkben áll: nem hiba	scope=H3318 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3318	15	BDB3658	pe_mem	12	1	אֶלהַֿמַּעֲרָכָה		valodi_mem	a dagesses mem-es alak a BDB3658 szócikkben áll: nem hiba	scope=H3318 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H3318	43	BDB3658	pe_mem	11	1	מִשְׁמָּט	מִשְׁפָּט	javitva	a pe-s alak a BDB3658 szócikkben áll, a mem-es nem	scope=H3318 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H3318	44	BDB3658	pe_mem	5	1	הַמּוּצָאִים		valodi_mem	a dagesses mem-es alak a BDB3658 szócikkben áll: nem hiba	scope=H3318 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H3318	44	BDB3658	pe_mem	6	1	אֶלהַֿיָּ֫מָּה		valodi_mem	a dagesses mem-es alak a BDB3658 szócikkben áll: nem hiba	scope=H3318 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H3318	44	BDB3658	pe_mem	8	1	אֶלהַֿמַּיִם		valodi_mem	a dagesses mem-es alak a BDB3658 szócikkben áll: nem hiba	scope=H3318 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H3318	44	BDB3658	pe_mem	11	1	מִשְׁמָּט	מִשְׁפָּט	javitva	a pe-s alak a BDB3658 szócikkben áll, a mem-es nem	scope=H3318 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H3318	45	BDB3658	pe_mem	5	1	הַמּוּצָאִים		valodi_mem	a dagesses mem-es alak a BDB3658 szócikkben áll: nem hiba	scope=H3318 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H3318	45	BDB3658	pe_mem	6	1	אֶלהַֿיָּ֫מָּה		valodi_mem	a dagesses mem-es alak a BDB3658 szócikkben áll: nem hiba	scope=H3318 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H3318	45	BDB3658	pe_mem	8	1	אֶלהַֿמַּיִם		valodi_mem	a dagesses mem-es alak a BDB3658 szócikkben áll: nem hiba	scope=H3318 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3320	9	BDB3665	pe_mem	17	1	עִמְּךָ		valodi_mem	a dagesses mem-es alak a BDB3665 szócikkben áll: nem hiba	scope=H3320 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3322	3	BDB3666	pe_mem	24	1	עֲרֻמָּה		valodi_mem	a dagesses mem-es alak a BDB3666 szócikkben áll: nem hiba	scope=H3322 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3326	2	BDB3668	pe_mem	9	1	רִמַּדְתִּי	רִפַּדְתִּי	javitva	a pe-s alak a BDB3668 szócikkben áll, a mem-es nem	scope=H3326 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -1769,10 +1769,10 @@ H3478	12	BDB9596	pe_mem	10	1	׳עַמָּא		jelolt_marad	egyik alak sincs a BDB
 H3485	4	BDB3772	pe_mem	4	1	׳מִשְׁמְּחוֺת		jelolt_marad	egyik alak sincs a BDB3772 szócikk héber szavai között	scope=H3485 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3495	2	BDB3845	pe_mem	2	1	הַמּוֺאָבִי		valodi_mem	a dagesses mem-es alak a BDB3845 szócikkben áll: nem hiba	scope=H3495 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3498	4	BDB3850	pe_mem	15	1	לְאִמּוֺ		valodi_mem	a dagesses mem-es alak a BDB3850 szócikkben áll: nem hiba	scope=H3498 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H3499	3	BDB3852	pe_mem	9	1	הַמְּלֵטָה	הַפְּלֵטָה	javitva	a pe-s alak a BDB3852 szócikkben áll, a mem-es nem	scope=H3499 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H3499	4	BDB3852	pe_mem	9	1	הַמְּלֵטָה	הַפְּלֵטָה	javitva	a pe-s alak a BDB3852 szócikkben áll, a mem-es nem	scope=H3499 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3513	4	BDB3882	pe_mem	7	1	אַכְמִּי	אַכְפִּי	javitva	a pe-s alak a BDB3882 szócikkben áll, a mem-es nem	scope=H3513 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3513	4	BDB3882	pe_mem	8	1	כַּמִּי	כַּפִּי	javitva	a pe-s alak a BDB3882 szócikkben áll, a mem-es nem	scope=H3513 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H3513	11	BDB3882	pe_mem	2	1	עַלמְּֿנֵי	עַלפְּֿנֵי	javitva	a pe-s alak a BDB3882 szócikkben áll, a mem-es nem	scope=H3513 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H3513	12	BDB3882	pe_mem	2	1	עַלמְּֿנֵי	עַלפְּֿנֵי	javitva	a pe-s alak a BDB3882 szócikkben áll, a mem-es nem	scope=H3513 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3518	3	BDB3890	pe_mem	16	1	כַּמִּשְׁתָּה	כַּפִּשְׁתָּה	javitva	a pe-s alak a BDB3890 szócikkben áll, a mem-es nem	scope=H3518 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3518	4	BDB3890	pe_mem	13	1	מִּשְׁתָּה	פִּשְׁתָּה	javitva	a pe-s alak a BDB3890 szócikkben áll, a mem-es nem	scope=H3518 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3519	9	BDB3887	pe_mem	5	1	כְּלִמָּה		valodi_mem	a dagesses mem-es alak a BDB3887 szócikkben áll: nem hiba	scope=H3519 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -1826,8 +1826,8 @@ H3611	4	BDB4013	pe_mem	4	1	הַמֵּת		valodi_mem	a dagesses mem-es alak a BDB
 H3615	9	BDB4019	pe_mem	27	1	הַמֶּלֶךְ		valodi_mem	a dagesses mem-es alak a BDB4019 szócikkben áll: nem hiba	scope=H3615 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3615	9	BDB4019	pe_mem	30	1	הַמּ		valodi_mem	a dagesses mem-es alak a BDB4019 szócikkben áll: nem hiba	scope=H3615 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3615	10	BDB4019	pe_mem	27	1	נַמֵּץ	נַפֵּץ	javitva	a pe-s alak a BDB4019 szócikkben áll, a mem-es nem	scope=H3615 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H3615	13	BDB4019	pe_mem	1	1	הַמֶּשַׁע	הַפֶּשַׁע	javitva	a pe-s alak a BDB4019 szócikkben áll, a mem-es nem	scope=H3615 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H3615	17	BDB4019	pe_mem	3	1	אַמִּי	אַפִּי	javitva	a pe-s alak a BDB4019 szócikkben áll, a mem-es nem	scope=H3615 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H3615	14	BDB4019	pe_mem	1	1	הַמֶּשַׁע	הַפֶּשַׁע	javitva	a pe-s alak a BDB4019 szócikkben áll, a mem-es nem	scope=H3615 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H3615	18	BDB4019	pe_mem	3	1	אַמִּי	אַפִּי	javitva	a pe-s alak a BDB4019 szócikkben áll, a mem-es nem	scope=H3615 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3627	3	BDB4028	pe_mem	11	1	כְּלִימָּֿ֑ז	כְּלִיפָּֿ֑ז	javitva	a pe-s alak a BDB4028 szócikkben áll, a mem-es nem	scope=H3627 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3627	5	BDB4028	pe_mem	14	1	מַמָּצוֺ	מַפָּצוֺ	javitva	a pe-s alak a BDB4028 szócikkben áll, a mem-es nem	scope=H3627 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3627	10	BDB4028	pe_mem	1	1	הַמִּשְׁכָּן		valodi_mem	a dagesses mem-es alak a BDB4028 szócikkben áll: nem hiba	scope=H3627 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -1855,7 +1855,7 @@ H3639	4	BDB4047	pe_mem	43	1	כְּלִמָּתָם		valodi_mem	a dagesses mem-es
 H3640	2	BDB4048	pe_mem	1	1	כְּלִמּוּת		valodi_mem	a dagesses mem-es alak a BDB4048 szócikkben áll: nem hiba	scope=H3640 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3640	2	BDB4048	pe_mem	3	1	וּכְלִמּוּת		valodi_mem	a dagesses mem-es alak a BDB4048 szócikkben áll: nem hiba	scope=H3640 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3640	2	BDB4048	pe_mem	5	1	הֶרְמַּת	הֶרְפַּת	javitva	a pe-s alak a BDB4048 szócikkben áll, a mem-es nem	scope=H3640 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H3643	5	BDB4054	pe_mem	1	1	כַּמָּה		valodi_mem	a dagesses mem-es alak a BDB4054 szócikkben áll: nem hiba	scope=H3643 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H3643	6	BDB4054	pe_mem	1	1	כַּמָּה		valodi_mem	a dagesses mem-es alak a BDB4054 szócikkben áll: nem hiba	scope=H3643 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3644	6	BDB3872	pe_mem	28	1	אֲסַמְּרָה	אֲסַפְּרָה	javitva	a pe-s alak a BDB3872 szócikkben áll, a mem-es nem	scope=H3644 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3646	2	BDB4062	pe_mem	1	1	כַּמֹּן		valodi_mem	a dagesses mem-es alak a BDB4062 szócikkben áll: nem hiba	scope=H3646 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3646	2	BDB4062	pe_mem	2	1	כַּמּוֺנָא		valodi_mem	a dagesses mem-es alak a BDB4062 szócikkben áll: nem hiba	scope=H3646 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -1875,9 +1875,9 @@ H3664	5	BDB4089	pe_mem	2	1	כְּהִתְכַּנֵּסוְהַמַּסֵּכָ�
 H3664	5	BDB4089	pe_mem	3	1	הַמַּצָּע		valodi_mem	a dagesses mem-es alak a BDB4089 szócikkben áll: nem hiba	scope=H3664 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3665	4	BDB4091	pe_mem	4	1	מִמְּנֵי	מִפְּנֵי	javitva	a pe-s alak a BDB4091 szócikkben áll, a mem-es nem	scope=H3665 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3665	5	BDB4091	pe_mem	2	1	מִמְּנֵי	מִפְּנֵי	javitva	a pe-s alak a BDB4091 szócikkben áll, a mem-es nem	scope=H3665 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H3667	6	BDB4093	pe_mem	2	1	מְּלִשְׁתִּים	פְּלִשְׁתִּים	javitva	a pe-s alak a BDB4093 szócikkben áll, a mem-es nem	scope=H3667 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H3669	5	BDB4095	pe_mem	6	1	׳מִשְׁמְּחוֺת		jelolt_marad	egyik alak sincs a BDB4095 szócikk héber szavai között	scope=H3669 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H3669	5	BDB4095	pe_mem	15	1	הַמְּרִזִּי	הַפְּרִזִּי	javitva	a pe-s alak a BDB4095 szócikkben áll, a mem-es nem	scope=H3669 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H3667	7	BDB4093	pe_mem	2	1	מְּלִשְׁתִּים	פְּלִשְׁתִּים	javitva	a pe-s alak a BDB4093 szócikkben áll, a mem-es nem	scope=H3667 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H3669	6	BDB4095	pe_mem	6	1	׳מִשְׁמְּחוֺת		jelolt_marad	egyik alak sincs a BDB4095 szócikk héber szavai között	scope=H3669 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H3669	6	BDB4095	pe_mem	15	1	הַמְּרִזִּי	הַפְּרִזִּי	javitva	a pe-s alak a BDB4095 szócikkben áll, a mem-es nem	scope=H3669 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3671	4	BDB4099	pe_mem	5	1	צִמּוֺר	צִפּוֺר	javitva	a pe-s alak a BDB4099 szócikkben áll, a mem-es nem	scope=H3671 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3671	4	BDB4099	pe_mem	9	1	צִמּוֺר	צִפּוֺר	javitva	a pe-s alak a BDB4099 szócikkben áll, a mem-es nem	scope=H3671 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3671	4	BDB4099	pe_mem	11	1	צִמּוֺר	צִפּוֺר	javitva	a pe-s alak a BDB4099 szócikkben áll, a mem-es nem	scope=H3671 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -2047,10 +2047,10 @@ H3808	8	BDB4266	pe_mem	53	1	לֹאהֵֿמָּה		valodi_mem	a dagesses mem-es a
 H3808	13	BDB4266	pe_mem	29	1	עַמְּךָ		valodi_mem	a dagesses mem-es alak a BDB4266 szócikkben áll: nem hiba	scope=H3808 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3808	13	BDB4266	pe_mem	34	1	לֹאעַֿמִּי		valodi_mem	a dagesses mem-es alak a BDB4266 szócikkben áll: nem hiba	scope=H3808 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3808	13	BDB4266	pe_mem	46	1	הַמַּרְבֶּה		valodi_mem	a dagesses mem-es alak a BDB4266 szócikkben áll: nem hiba	scope=H3808 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H3808	16	BDB4266	pe_mem	14	1	חַמָּה		valodi_mem	a dagesses mem-es alak a BDB4266 szócikkben áll: nem hiba	scope=H3808 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H3808	16	BDB4266	pe_mem	29	1	בְּכַמָּֽי׃	בְּכַפָּֽי׃	javitva	a pe-s alak a BDB4266 szócikkben áll, a mem-es nem	scope=H3808 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H3808	17	BDB4266	pe_mem	10	1	עַמּוֺן		valodi_mem	a dagesses mem-es alak a BDB4266 szócikkben áll: nem hiba	scope=H3808 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H3808	17	BDB4266	pe_mem	21	1	הֵמָּה		valodi_mem	a dagesses mem-es alak a BDB4266 szócikkben áll: nem hiba	scope=H3808 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H3808	17	BDB4266	pe_mem	14	1	חַמָּה		valodi_mem	a dagesses mem-es alak a BDB4266 szócikkben áll: nem hiba	scope=H3808 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H3808	17	BDB4266	pe_mem	29	1	בְּכַמָּֽי׃	בְּכַפָּֽי׃	javitva	a pe-s alak a BDB4266 szócikkben áll, a mem-es nem	scope=H3808 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H3808	18	BDB4266	pe_mem	10	1	עַמּוֺן		valodi_mem	a dagesses mem-es alak a BDB4266 szócikkben áll: nem hiba	scope=H3808 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H3808	18	BDB4266	pe_mem	21	1	הֵמָּה		valodi_mem	a dagesses mem-es alak a BDB4266 szócikkben áll: nem hiba	scope=H3808 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3810	2	BDB4267	pe_mem	13	1	מִמַּחֲנַיִם		valodi_mem	a dagesses mem-es alak a BDB4267 szócikkben áll: nem hiba	scope=H3810 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3811	4	BDB4273	pe_mem	6	1	לְהִתְמַּלֵּל	לְהִתְפַּלֵּל	javitva	a pe-s alak a BDB4273 szócikkben áll, a mem-es nem	scope=H3811 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H3813	3	BDB4276	pe_mem	2	1	׳וְהַמֶּלֶךְ		jelolt_marad	egyik alak sincs a BDB4276 szócikk héber szavai között	scope=H3813 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -2249,19 +2249,19 @@ H4100	2	BDB4522	pe_mem	3	1	מַּ		valodi_mem	a dagesses mem-es alak a BDB4522 s
 H4100	9	BDB4522	pe_mem	15	1	מֹּרַשׁ	פֹּרַשׁ	javitva	a pe-s alak a BDB4522 szócikkben áll, a mem-es nem	scope=H4100 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H4100	13	BDB4522	pe_mem	14	1	לְסַמֵּר	לְסַפֵּר	javitva	a pe-s alak a BDB4522 szócikkben áll, a mem-es nem	scope=H4100 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H4100	19	BDB4522	pe_mem	2	1	הַמָּקוֺם		valodi_mem	a dagesses mem-es alak a BDB4522 szócikkben áll: nem hiba	scope=H4100 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H4100	22	BDB4522	pe_mem	1	1	בַּמָּה		valodi_mem	a dagesses mem-es alak a BDB4522 szócikkben áll: nem hiba	scope=H4100 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H4100	22	BDB4522	pe_mem	2	1	בַּמֶּה		valodi_mem	a dagesses mem-es alak a BDB4522 szócikkben áll: nem hiba	scope=H4100 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H4100	22	BDB4522	pe_mem	7	1	וּבַמֶּה		valodi_mem	a dagesses mem-es alak a BDB4522 szócikkben áll: nem hiba	scope=H4100 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H4100	24	BDB4522	pe_mem	1	1	כַּמֶּה		valodi_mem	a dagesses mem-es alak a BDB4522 szócikkben áll: nem hiba	scope=H4100 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H4100	24	BDB4522	pe_mem	2	1	כַּמָּה		valodi_mem	a dagesses mem-es alak a BDB4522 szócikkben áll: nem hiba	scope=H4100 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H4100	24	BDB4522	pe_mem	5	1	׳כַּמָּה		jelolt_marad	egyik alak sincs a BDB4522 szócikk héber szavai között	scope=H4100 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H4100	24	BDB4522	pe_mem	7	1	כַּמֶּה		valodi_mem	a dagesses mem-es alak a BDB4522 szócikkben áll: nem hiba	scope=H4100 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H4100	24	BDB4522	pe_mem	9	1	כַּמָּה		valodi_mem	a dagesses mem-es alak a BDB4522 szócikkben áll: nem hiba	scope=H4100 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H4100	24	BDB4522	pe_mem	11	1	כַמֶּה		valodi_mem	a dagesses mem-es alak a BDB4522 szócikkben áll: nem hiba	scope=H4100 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H4100	25	BDB4522	pe_mem	1	1	כַּמָּה		valodi_mem	a dagesses mem-es alak a BDB4522 szócikkben áll: nem hiba	scope=H4100 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H4100	26	BDB4522	pe_mem	2	1	לָ֫מָּה		valodi_mem	a dagesses mem-es alak a BDB4522 szócikkben áll: nem hiba	scope=H4100 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H4100	26	BDB4522	pe_mem	9	1	לָ֫מָּה		valodi_mem	a dagesses mem-es alak a BDB4522 szócikkben áll: nem hiba	scope=H4100 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H4100	26	BDB4522	pe_mem	58	1	לָמָּה		valodi_mem	a dagesses mem-es alak a BDB4522 szócikkben áll: nem hiba	scope=H4100 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H4100	23	BDB4522	pe_mem	1	1	בַּמָּה		valodi_mem	a dagesses mem-es alak a BDB4522 szócikkben áll: nem hiba	scope=H4100 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H4100	23	BDB4522	pe_mem	2	1	בַּמֶּה		valodi_mem	a dagesses mem-es alak a BDB4522 szócikkben áll: nem hiba	scope=H4100 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H4100	23	BDB4522	pe_mem	7	1	וּבַמֶּה		valodi_mem	a dagesses mem-es alak a BDB4522 szócikkben áll: nem hiba	scope=H4100 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H4100	25	BDB4522	pe_mem	1	1	כַּמֶּה		valodi_mem	a dagesses mem-es alak a BDB4522 szócikkben áll: nem hiba	scope=H4100 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H4100	25	BDB4522	pe_mem	2	1	כַּמָּה		valodi_mem	a dagesses mem-es alak a BDB4522 szócikkben áll: nem hiba	scope=H4100 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H4100	25	BDB4522	pe_mem	5	1	׳כַּמָּה		jelolt_marad	egyik alak sincs a BDB4522 szócikk héber szavai között	scope=H4100 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H4100	25	BDB4522	pe_mem	7	1	כַּמֶּה		valodi_mem	a dagesses mem-es alak a BDB4522 szócikkben áll: nem hiba	scope=H4100 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H4100	25	BDB4522	pe_mem	9	1	כַּמָּה		valodi_mem	a dagesses mem-es alak a BDB4522 szócikkben áll: nem hiba	scope=H4100 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H4100	25	BDB4522	pe_mem	11	1	כַמֶּה		valodi_mem	a dagesses mem-es alak a BDB4522 szócikkben áll: nem hiba	scope=H4100 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H4100	26	BDB4522	pe_mem	1	1	כַּמָּה		valodi_mem	a dagesses mem-es alak a BDB4522 szócikkben áll: nem hiba	scope=H4100 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H4100	27	BDB4522	pe_mem	2	1	לָ֫מָּה		valodi_mem	a dagesses mem-es alak a BDB4522 szócikkben áll: nem hiba	scope=H4100 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H4100	27	BDB4522	pe_mem	9	1	לָ֫מָּה		valodi_mem	a dagesses mem-es alak a BDB4522 szócikkben áll: nem hiba	scope=H4100 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H4100	27	BDB4522	pe_mem	58	1	לָמָּה		valodi_mem	a dagesses mem-es alak a BDB4522 szócikkben áll: nem hiba	scope=H4100 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H4107	3	BDB4524	pe_mem	1	1	בַּמָּ֑יִם		valodi_mem	a dagesses mem-es alak a BDB4524 szócikkben áll: nem hiba	scope=H4107 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H4107	8	BDB4524	pe_mem	1	1	מַהְמֵּכָה	מַהְפֵּכָה	javitva	a pe-s alak a BDB4524 szócikkben áll, a mem-es nem	scope=H4107 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H4107	8	BDB4524	pe_mem	2	1	מַהְמֶּ֫כֶת	מַהְפֶּ֫כֶת	javitva	a pe-s alak a BDB4524 szócikkben áll, a mem-es nem	scope=H4107 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -2288,14 +2288,14 @@ H4135	4	BDB4547	pe_mem	11	1	הִמֹּל		valodi_mem	a dagesses mem-es alak a BD
 H4135	4	BDB4547	pe_mem	12	1	הִמֹּ֫לוֺ		valodi_mem	a dagesses mem-es alak a BDB4547 szócikkben áll: nem hiba	scope=H4135 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H4135	4	BDB4547	pe_mem	13	1	נִמֹּלִים		valodi_mem	a dagesses mem-es alak a BDB4547 szócikkben áll: nem hiba	scope=H4135 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H4135	4	BDB4547	pe_mem	17	1	׳הִמֹּלוּ		jelolt_marad	egyik alak sincs a BDB4547 szócikk héber szavai között	scope=H4135 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H4136	8	BDB4546	pe_mem	10	1	מְּנֵי	פְּנֵי	javitva	a pe-s alak a BDB4546 szócikkben áll, a mem-es nem	scope=H4136 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H4136	9	BDB4546	pe_mem	1	1	מִמּוּל		valodi_mem	a dagesses mem-es alak a BDB4546 szócikkben áll: nem hiba	scope=H4136 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H4136	10	BDB4546	pe_mem	1	1	עָרְמּוֺ	עָרְפּוֺ	javitva	a pe-s alak a BDB4546 szócikkben áll, a mem-es nem	scope=H4136 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H4136	10	BDB4546	pe_mem	2	1	מִמּוּל		valodi_mem	a dagesses mem-es alak a BDB4546 szócikkben áll: nem hiba	scope=H4136 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H4136	10	BDB4546	pe_mem	3	1	מִמֻּלִי		valodi_mem	a dagesses mem-es alak a BDB4546 szócikkben áll: nem hiba	scope=H4136 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H4136	10	BDB4546	pe_mem	11	1	מִמּוּל		valodi_mem	a dagesses mem-es alak a BDB4546 szócikkben áll: nem hiba	scope=H4136 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H4136	10	BDB4546	pe_mem	12	1	מָּנָיו	פָּנָיו	javitva	a pe-s alak a BDB4546 szócikkben áll, a mem-es nem	scope=H4136 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H4136	10	BDB4546	pe_mem	13	1	מִמּוּל		valodi_mem	a dagesses mem-es alak a BDB4546 szócikkben áll: nem hiba	scope=H4136 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H4136	9	BDB4546	pe_mem	10	1	מְּנֵי	פְּנֵי	javitva	a pe-s alak a BDB4546 szócikkben áll, a mem-es nem	scope=H4136 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H4136	10	BDB4546	pe_mem	1	1	מִמּוּל		valodi_mem	a dagesses mem-es alak a BDB4546 szócikkben áll: nem hiba	scope=H4136 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H4136	11	BDB4546	pe_mem	1	1	עָרְמּוֺ	עָרְפּוֺ	javitva	a pe-s alak a BDB4546 szócikkben áll, a mem-es nem	scope=H4136 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H4136	11	BDB4546	pe_mem	2	1	מִמּוּל		valodi_mem	a dagesses mem-es alak a BDB4546 szócikkben áll: nem hiba	scope=H4136 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H4136	11	BDB4546	pe_mem	3	1	מִמֻּלִי		valodi_mem	a dagesses mem-es alak a BDB4546 szócikkben áll: nem hiba	scope=H4136 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H4136	11	BDB4546	pe_mem	11	1	מִמּוּל		valodi_mem	a dagesses mem-es alak a BDB4546 szócikkben áll: nem hiba	scope=H4136 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H4136	11	BDB4546	pe_mem	12	1	מָּנָיו	פָּנָיו	javitva	a pe-s alak a BDB4546 szócikkben áll, a mem-es nem	scope=H4136 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H4136	11	BDB4546	pe_mem	13	1	מִמּוּל		valodi_mem	a dagesses mem-es alak a BDB4546 szócikkben áll: nem hiba	scope=H4136 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H4148	2	BDB3604	pe_mem	15	1	בְּלִמָּתִי		valodi_mem	a dagesses mem-es alak a BDB3604 szócikkben áll: nem hiba	scope=H4148 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H4148	4	BDB3604	pe_mem	9	1	לַמּ		valodi_mem	a dagesses mem-es alak a BDB3604 szócikkben áll: nem hiba	scope=H4148 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H4152	2	BDB3610	pe_mem	2	1	הַמּ		valodi_mem	a dagesses mem-es alak a BDB3610 szócikkben áll: nem hiba	scope=H4152 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -2958,9 +2958,9 @@ H4751	6	BDB4831	pe_mem	18	1	מַרהַֿמָּוֶת		valodi_mem	a dagesses mem-
 H4751	6	BDB4831	pe_mem	19	1	מַרמִֿמָּוֶת		valodi_mem	a dagesses mem-es alak a BDB4831 szócikkben áll: nem hiba	scope=H4751 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H4753	2	BDB4832	pe_mem	11	1	הַרהַֿמּוֺר		valodi_mem	a dagesses mem-es alak a BDB4832 szócikkben áll: nem hiba	scope=H4753 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H4753	2	BDB4832	pe_mem	15	1	הַמּוֺר		valodi_mem	a dagesses mem-es alak a BDB4832 szócikkben áll: nem hiba	scope=H4753 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H4758	4	BDB7668	pe_mem	21	1	׳מִמּ		jelolt_marad	egyik alak sincs a BDB7668 szócikk héber szavai között	scope=H4758 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H4758	4	BDB7668	pe_mem	23	1	מִמָּתְנָיו		valodi_mem	a dagesses mem-es alak a BDB7668 szócikkben áll: nem hiba	scope=H4758 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H4758	8	BDB7668	pe_mem	6	1	׳בַּמּ		jelolt_marad	egyik alak sincs a BDB7668 szócikk héber szavai között	scope=H4758 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H4758	5	BDB7668	pe_mem	21	1	׳מִמּ		jelolt_marad	egyik alak sincs a BDB7668 szócikk héber szavai között	scope=H4758 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H4758	5	BDB7668	pe_mem	23	1	מִמָּתְנָיו		valodi_mem	a dagesses mem-es alak a BDB7668 szócikkben áll: nem hiba	scope=H4758 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H4758	9	BDB7668	pe_mem	6	1	׳בַּמּ		jelolt_marad	egyik alak sincs a BDB7668 szócikk héber szavai között	scope=H4758 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H4761	2	BDB7686	pe_mem	4	1	מִמְּרַאֲשֹׁתָיו		valodi_mem	a dagesses mem-es alak a BDB7686 szócikkben áll: nem hiba	scope=H4761 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H4769	2	BDB7730	pe_mem	4	1	שַׁמָּה		valodi_mem	a dagesses mem-es alak a BDB7730 szócikkben áll: nem hiba	scope=H4769 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H4774	2	BDB7760	pe_mem	2	1	הַמּ		valodi_mem	a dagesses mem-es alak a BDB7760 szócikkben áll: nem hiba	scope=H4774 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -3145,7 +3145,7 @@ H5002	3	BDB4915	pe_mem	12	1	מֶּשַׁע	פֶּשַׁע	javitva	a pe-s alak a 
 H5002	5	BDB4915	pe_mem	26	1	׳הַמֶּלֶךְ		jelolt_marad	egyik alak sincs a BDB4915 szócikk héber szavai között	scope=H5002 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H5015	7	BDB4933	pe_mem	2	1	מִּסְגָּה	פִּסְגָּה	javitva	a pe-s alak a BDB4933 szócikkben áll, a mem-es nem	scope=H5015 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H5019	2	BDB4936	pe_mem	22	1	׳הַמֶּלֶךְ		jelolt_marad	egyik alak sincs a BDB4936 szócikk héber szavai között	scope=H5019 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H5027	5	BDB4942	pe_mem	3	1	מָּנָה	פָּנָה	javitva	a pe-s alak a BDB4942 szócikkben áll, a mem-es nem	scope=H5027 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H5027	6	BDB4942	pe_mem	3	1	מָּנָה	פָּנָה	javitva	a pe-s alak a BDB4942 szócikkben áll, a mem-es nem	scope=H5027 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H5034	3	BDB4950	pe_mem	2	1	זַמּוֺתָ		valodi_mem	a dagesses mem-es alak a BDB4950 szócikkben áll: nem hiba	scope=H5034 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H5034	7	BDB4955	pe_mem	5	1	יִמּוֺל	יִפּוֺל	javitva	a pe-s alak a BDB4955 szócikkben áll, a mem-es nem	scope=H5034 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H5034	8	BDB4955	pe_mem	24	1	יִמָּ֑לוּ		valodi_mem	a dagesses mem-es alak a BDB4955 szócikkben áll: nem hiba	scope=H5034 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -3424,17 +3424,17 @@ H5414	56	BDB5441	pe_mem	4	1	בַּמְּרוֺ		valodi_mem	a dagesses mem-es ala
 H5419	2	BDB2217	pe_mem	1	1	תַּהְמֻּכָה	תַּהְפֻּכָה	javitva	a pe-s alak a BDB2217 szócikkben áll, a mem-es nem	scope=H5419 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H5419	2	BDB2217	pe_mem	2	1	תַּהְמֻּכוֺת	תַּהְפֻּכוֺת	javitva	a pe-s alak a BDB2217 szócikkben áll, a mem-es nem	scope=H5419 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H5419	2	BDB2217	pe_mem	4	1	׳מִּי		jelolt_marad	egyik alak sincs a BDB2217 szócikk héber szavai között	scope=H5419 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H5422	8	BDB5458	pe_mem	2	1	מִמְּנֵי	מִפְּנֵי	javitva	a pe-s alak a BDB5458 szócikkben áll, a mem-es nem	scope=H5422 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H5422	8	BDB5458	pe_mem	5	1	מִמֶּנּוּ		valodi_mem	a dagesses mem-es alak a BDB5458 szócikkben áll: nem hiba	scope=H5422 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H5422	9	BDB5458	pe_mem	7	1	הַחַמָּנִים		valodi_mem	a dagesses mem-es alak a BDB5458 szócikkben áll: nem hiba	scope=H5422 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H5422	9	BDB5458	pe_mem	2	1	מִמְּנֵי	מִפְּנֵי	javitva	a pe-s alak a BDB5458 szócikkben áll, a mem-es nem	scope=H5422 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H5422	9	BDB5458	pe_mem	5	1	מִמֶּנּוּ		valodi_mem	a dagesses mem-es alak a BDB5458 szócikkben áll: nem hiba	scope=H5422 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H5422	10	BDB5458	pe_mem	7	1	הַחַמָּנִים		valodi_mem	a dagesses mem-es alak a BDB5458 szócikkben áll: nem hiba	scope=H5422 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H5423	9	BDB5459	pe_mem	4	1	זִמֹּת		valodi_mem	a dagesses mem-es alak a BDB5459 szócikkben áll: nem hiba	scope=H5423 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H5423	12	BDB5459	pe_mem	6	1	מַּתֵּחַ	פַּתֵּחַ	javitva	a pe-s alak a BDB5459 szócikkben áll, a mem-es nem	scope=H5423 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H5425	3	BDB5461	pe_mem	1	1	מִמְּקוֺמוֺ		valodi_mem	a dagesses mem-es alak a BDB5461 szócikkben áll: nem hiba	scope=H5425 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H5425	8	BDB5462	pe_mem	2	1	מַּתֵּחַ	פַּתֵּחַ	javitva	a pe-s alak a BDB5462 szócikkben áll, a mem-es nem	scope=H5425 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H5437	5	BDB5475	pe_mem	27	1	הַמְּלוּכָה		valodi_mem	a dagesses mem-es alak a BDB5475 szócikkben áll: nem hiba	scope=H5437 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H5437	16	BDB5475	pe_mem	2	1	אֶתמְּֿנֵי	אֶתפְּֿנֵי	javitva	a pe-s alak a BDB5475 szócikkben áll, a mem-es nem	scope=H5437 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H5439	7	BDB5477	pe_mem	5	1	הַמִּזְבֵּחַ		valodi_mem	a dagesses mem-es alak a BDB5477 szócikkben áll: nem hiba	scope=H5439 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H5439	9	BDB5477	pe_mem	8	1	לְעַמּוֺ		valodi_mem	a dagesses mem-es alak a BDB5477 szócikkben áll: nem hiba	scope=H5439 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H5439	8	BDB5477	pe_mem	5	1	הַמִּזְבֵּחַ		valodi_mem	a dagesses mem-es alak a BDB5477 szócikkben áll: nem hiba	scope=H5439 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H5439	10	BDB5477	pe_mem	8	1	לְעַמּוֺ		valodi_mem	a dagesses mem-es alak a BDB5477 szócikkben áll: nem hiba	scope=H5439 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H5456	3	BDB5494	pe_mem	4	1	יִתְמַּלֵּל	יִתְפַּלֵּל	javitva	a pe-s alak a BDB5494 szócikkben áll, a mem-es nem	scope=H5456 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H5461	3	BDB5497	pe_mem	1	1	מַּחוֺת	פַּחוֺת	javitva	a pe-s alak a BDB5497 szócikkben áll, a mem-es nem	scope=H5461 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H5461	3	BDB5497	pe_mem	2	1	מַּחוֺת	פַּחוֺת	javitva	a pe-s alak a BDB5497 szócikkben áll, a mem-es nem	scope=H5461 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -3771,37 +3771,37 @@ H5971	4	BDB6144	pe_mem	4	1	לְאֻמִּים		valodi_mem	a dagesses mem-es alak
 H5971	4	BDB6144	pe_mem	5	1	עַמִּים		valodi_mem	a dagesses mem-es alak a BDB6144 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H5971	4	BDB6144	pe_mem	9	1	עַמִּי		valodi_mem	a dagesses mem-es alak a BDB6144 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H5971	4	BDB6144	pe_mem	17	1	עַמִּי		valodi_mem	a dagesses mem-es alak a BDB6144 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H5971	6	BDB6144	pe_mem	1	1	עַמּוֺ		valodi_mem	a dagesses mem-es alak a BDB6144 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H5971	8	BDB6144	pe_mem	6	1	הַמִּלְחָמָה		valodi_mem	a dagesses mem-es alak a BDB6144 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H5971	12	BDB6144	pe_mem	1	1	עַמְּךָ		valodi_mem	a dagesses mem-es alak a BDB6144 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H5971	12	BDB6144	pe_mem	2	1	עַמִּי		valodi_mem	a dagesses mem-es alak a BDB6144 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H5971	12	BDB6144	pe_mem	3	1	עַמָּהּ		valodi_mem	a dagesses mem-es alak a BDB6144 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H5971	12	BDB6144	pe_mem	4	1	עַמּוֺ		valodi_mem	a dagesses mem-es alak a BDB6144 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H5971	15	BDB6144	pe_mem	7	1	עַמֵּי		valodi_mem	a dagesses mem-es alak a BDB6144 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H5971	16	BDB6144	pe_mem	2	1	עַמֵּי		valodi_mem	a dagesses mem-es alak a BDB6144 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H5971	16	BDB6144	pe_mem	4	1	עַמֵּי		valodi_mem	a dagesses mem-es alak a BDB6144 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H5971	17	BDB6144	pe_mem	1	1	עַמִּים		valodi_mem	a dagesses mem-es alak a BDB6144 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H5971	17	BDB6144	pe_mem	2	1	מִשְׁמְּחוֺת	מִשְׁפְּחוֺת	javitva	a pe-s alak a BDB6144 szócikkben áll, a mem-es nem	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H5971	18	BDB6144	pe_mem	1	1	בַּתעַֿמִּי		valodi_mem	a dagesses mem-es alak a BDB6144 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H5971	18	BDB6144	pe_mem	3	1	בַּתעַֿמִּי		valodi_mem	a dagesses mem-es alak a BDB6144 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H5971	21	BDB6144	pe_mem	8	1	עַמֵּי		valodi_mem	a dagesses mem-es alak a BDB6144 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H5971	22	BDB6147	pe_mem	5	1	עַמִּי		valodi_mem	a dagesses mem-es alak a BDB6147 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H5971	22	BDB6147	pe_mem	6	1	בֶּןעַֿמִּי		valodi_mem	a dagesses mem-es alak a BDB6147 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H5971	22	BDB6147	pe_mem	7	1	עַמֶּיךָ		valodi_mem	a dagesses mem-es alak a BDB6147 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H5971	22	BDB6147	pe_mem	8	1	עַמְּךָ		valodi_mem	a dagesses mem-es alak a BDB6147 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H5971	22	BDB6147	pe_mem	10	1	עַמָּיו		valodi_mem	a dagesses mem-es alak a BDB6147 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H5971	22	BDB6147	pe_mem	11	1	עַמֶּיהָ		valodi_mem	a dagesses mem-es alak a BDB6147 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H5971	22	BDB6147	pe_mem	12	1	עַמֶּי		valodi_mem	a dagesses mem-es alak a BDB6147 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H5971	22	BDB6147	pe_mem	13	1	עַמִּי		valodi_mem	a dagesses mem-es alak a BDB6147 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H5971	22	BDB6147	pe_mem	15	1	אֶלעַֿמָּיו		valodi_mem	a dagesses mem-es alak a BDB6147 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H5971	22	BDB6147	pe_mem	17	1	מֵעַמֶּיהָ		valodi_mem	a dagesses mem-es alak a BDB6147 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H5971	22	BDB6147	pe_mem	20	1	עַמֶּיהָ		valodi_mem	a dagesses mem-es alak a BDB6147 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H5971	22	BDB6147	pe_mem	24	1	מֵעַמָּיו		valodi_mem	a dagesses mem-es alak a BDB6147 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H5971	22	BDB6147	pe_mem	28	1	עַמּוֺ		valodi_mem	a dagesses mem-es alak a BDB6147 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H5971	22	BDB6147	pe_mem	30	1	בְּעַמֶּ֑ךָ		valodi_mem	a dagesses mem-es alak a BDB6147 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H5971	22	BDB6147	pe_mem	32	1	בֶּןעַֿמִּי		valodi_mem	a dagesses mem-es alak a BDB6147 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H5971	23	BDB9776	pe_mem	5	1	עַמָּה		valodi_mem	a dagesses mem-es alak a BDB9776 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H5971	23	BDB9776	pe_mem	6	1	עַמָּא		valodi_mem	a dagesses mem-es alak a BDB9776 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H5971	7	BDB6144	pe_mem	1	1	עַמּוֺ		valodi_mem	a dagesses mem-es alak a BDB6144 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H5971	9	BDB6144	pe_mem	6	1	הַמִּלְחָמָה		valodi_mem	a dagesses mem-es alak a BDB6144 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H5971	13	BDB6144	pe_mem	1	1	עַמְּךָ		valodi_mem	a dagesses mem-es alak a BDB6144 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H5971	13	BDB6144	pe_mem	2	1	עַמִּי		valodi_mem	a dagesses mem-es alak a BDB6144 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H5971	13	BDB6144	pe_mem	3	1	עַמָּהּ		valodi_mem	a dagesses mem-es alak a BDB6144 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H5971	13	BDB6144	pe_mem	4	1	עַמּוֺ		valodi_mem	a dagesses mem-es alak a BDB6144 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H5971	16	BDB6144	pe_mem	7	1	עַמֵּי		valodi_mem	a dagesses mem-es alak a BDB6144 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H5971	17	BDB6144	pe_mem	2	1	עַמֵּי		valodi_mem	a dagesses mem-es alak a BDB6144 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H5971	17	BDB6144	pe_mem	4	1	עַמֵּי		valodi_mem	a dagesses mem-es alak a BDB6144 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H5971	18	BDB6144	pe_mem	1	1	עַמִּים		valodi_mem	a dagesses mem-es alak a BDB6144 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H5971	18	BDB6144	pe_mem	2	1	מִשְׁמְּחוֺת	מִשְׁפְּחוֺת	javitva	a pe-s alak a BDB6144 szócikkben áll, a mem-es nem	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H5971	19	BDB6144	pe_mem	1	1	בַּתעַֿמִּי		valodi_mem	a dagesses mem-es alak a BDB6144 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H5971	19	BDB6144	pe_mem	3	1	בַּתעַֿמִּי		valodi_mem	a dagesses mem-es alak a BDB6144 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H5971	22	BDB6144	pe_mem	8	1	עַמֵּי		valodi_mem	a dagesses mem-es alak a BDB6144 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H5971	23	BDB6147	pe_mem	5	1	עַמִּי		valodi_mem	a dagesses mem-es alak a BDB6147 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H5971	23	BDB6147	pe_mem	6	1	בֶּןעַֿמִּי		valodi_mem	a dagesses mem-es alak a BDB6147 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H5971	23	BDB6147	pe_mem	7	1	עַמֶּיךָ		valodi_mem	a dagesses mem-es alak a BDB6147 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H5971	23	BDB6147	pe_mem	8	1	עַמְּךָ		valodi_mem	a dagesses mem-es alak a BDB6147 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H5971	23	BDB6147	pe_mem	10	1	עַמָּיו		valodi_mem	a dagesses mem-es alak a BDB6147 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H5971	23	BDB6147	pe_mem	11	1	עַמֶּיהָ		valodi_mem	a dagesses mem-es alak a BDB6147 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H5971	23	BDB6147	pe_mem	12	1	עַמֶּי		valodi_mem	a dagesses mem-es alak a BDB6147 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H5971	23	BDB6147	pe_mem	13	1	עַמִּי		valodi_mem	a dagesses mem-es alak a BDB6147 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H5971	23	BDB6147	pe_mem	15	1	אֶלעַֿמָּיו		valodi_mem	a dagesses mem-es alak a BDB6147 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H5971	23	BDB6147	pe_mem	17	1	מֵעַמֶּיהָ		valodi_mem	a dagesses mem-es alak a BDB6147 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H5971	23	BDB6147	pe_mem	20	1	עַמֶּיהָ		valodi_mem	a dagesses mem-es alak a BDB6147 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H5971	23	BDB6147	pe_mem	24	1	מֵעַמָּיו		valodi_mem	a dagesses mem-es alak a BDB6147 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H5971	23	BDB6147	pe_mem	28	1	עַמּוֺ		valodi_mem	a dagesses mem-es alak a BDB6147 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H5971	23	BDB6147	pe_mem	30	1	בְּעַמֶּ֑ךָ		valodi_mem	a dagesses mem-es alak a BDB6147 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H5971	23	BDB6147	pe_mem	32	1	בֶּןעַֿמִּי		valodi_mem	a dagesses mem-es alak a BDB6147 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H5971	24	BDB9776	pe_mem	5	1	עַמָּה		valodi_mem	a dagesses mem-es alak a BDB9776 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H5971	24	BDB9776	pe_mem	6	1	עַמָּא		valodi_mem	a dagesses mem-es alak a BDB9776 szócikkben áll: nem hiba	scope=H5971 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H5973	2	BDB6145	pe_mem	4	1	עִמִּי		valodi_mem	a dagesses mem-es alak a BDB6145 szócikkben áll: nem hiba	scope=H5973 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H5973	2	BDB6145	pe_mem	5	1	עִמָּדִי		valodi_mem	a dagesses mem-es alak a BDB6145 szócikkben áll: nem hiba	scope=H5973 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H5973	2	BDB6145	pe_mem	9	1	עִמְּךָ		valodi_mem	a dagesses mem-es alak a BDB6145 szócikkben áll: nem hiba	scope=H5973 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -3997,9 +3997,9 @@ H6229	2	BDB6438	pe_mem	5	1	עִמּוֺ		valodi_mem	a dagesses mem-es alak a BDB
 H6231	7	BDB6455	pe_mem	1	1	הַמְּעֻשָּׁקָה		valodi_mem	a dagesses mem-es alak a BDB6455 szócikkben áll: nem hiba	scope=H6231 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H6235	6	BDB6441	pe_mem	2	1	בָּאַמָּה		valodi_mem	a dagesses mem-es alak a BDB6441 szócikkben áll: nem hiba	scope=H6235 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H6240	35	BDB6442	pe_mem	6	1	אַמָּךְ		valodi_mem	a dagesses mem-es alak a BDB6442 szócikkben áll: nem hiba	scope=H6240 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H6242	4	BDB6445	pe_mem	1	1	אַמָּה		valodi_mem	a dagesses mem-es alak a BDB6445 szócikkben áll: nem hiba	scope=H6242 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H6242	9	BDB6445	pe_mem	1	1	בָּאַמָּה		valodi_mem	a dagesses mem-es alak a BDB6445 szócikkben áll: nem hiba	scope=H6242 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H6242	11	BDB6445	pe_mem	2	1	בָּאַמָּה		valodi_mem	a dagesses mem-es alak a BDB6445 szócikkben áll: nem hiba	scope=H6242 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H6242	5	BDB6445	pe_mem	1	1	אַמָּה		valodi_mem	a dagesses mem-es alak a BDB6445 szócikkben áll: nem hiba	scope=H6242 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H6242	10	BDB6445	pe_mem	1	1	בָּאַמָּה		valodi_mem	a dagesses mem-es alak a BDB6445 szócikkben áll: nem hiba	scope=H6242 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H6242	12	BDB6445	pe_mem	2	1	בָּאַמָּה		valodi_mem	a dagesses mem-es alak a BDB6445 szócikkben áll: nem hiba	scope=H6242 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H6256	6	BDB6197	pe_mem	21	1	אַמְּךָ	אַפְּךָ	javitva	a pe-s alak a BDB6197 szócikkben áll, a mem-es nem	scope=H6256 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H6256	6	BDB6197	pe_mem	23	1	מָּנְיךָ	פָּנְיךָ	javitva	a pe-s alak a BDB6197 szócikkben áll, a mem-es nem	scope=H6256 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H6256	11	BDB6197	pe_mem	5	1	מְּקֻדָּתָם	פְּקֻדָּתָם	javitva	a pe-s alak a BDB6197 szócikkben áll, a mem-es nem	scope=H6256 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -4627,10 +4627,10 @@ H6437	3	BDB6679	pe_mem	2	1	מָּנִיתָ	פָּנִיתָ	javitva	a pe-s alak
 H6437	3	BDB6679	pe_mem	8	1	מְּנֵה	פְּנֵה	javitva	a pe-s alak a BDB6679 szócikkben áll, a mem-es nem	scope=H6437 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H6437	3	BDB6679	pe_mem	9	1	מָּנֹה	פָּנֹה	javitva	a pe-s alak a BDB6679 szócikkben áll, a mem-es nem	scope=H6437 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H6437	3	BDB6679	pe_mem	11	1	מֹּנֶה	פֹּנֶה	javitva	a pe-s alak a BDB6679 szócikkben áll, a mem-es nem	scope=H6437 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H6437	4	BDB6679	pe_mem	7	1	הַמָּקוֺם		valodi_mem	a dagesses mem-es alak a BDB6679 szócikkben áll: nem hiba	scope=H6437 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H6437	13	BDB6679	pe_mem	2	1	מַּנָּה	פַּנָּה	javitva	a pe-s alak a BDB6679 szócikkben áll, a mem-es nem	scope=H6437 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H6437	14	BDB6679	pe_mem	1	1	מִּנָּה	פִּנָּה	javitva	a pe-s alak a BDB6679 szócikkben áll, a mem-es nem	scope=H6437 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H6437	14	BDB6679	pe_mem	2	1	מַּנּוּ	פַּנּוּ	javitva	a pe-s alak a BDB6679 szócikkben áll, a mem-es nem	scope=H6437 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H6437	5	BDB6679	pe_mem	7	1	הַמָּקוֺם		valodi_mem	a dagesses mem-es alak a BDB6679 szócikkben áll: nem hiba	scope=H6437 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H6437	14	BDB6679	pe_mem	2	1	מַּנָּה	פַּנָּה	javitva	a pe-s alak a BDB6679 szócikkben áll, a mem-es nem	scope=H6437 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H6437	15	BDB6679	pe_mem	1	1	מִּנָּה	פִּנָּה	javitva	a pe-s alak a BDB6679 szócikkben áll, a mem-es nem	scope=H6437 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H6437	15	BDB6679	pe_mem	2	1	מַּנּוּ	פַּנּוּ	javitva	a pe-s alak a BDB6679 szócikkben áll, a mem-es nem	scope=H6437 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H6439	2	BDB6684	pe_mem	1	1	מְּנוּאֵל	פְּנוּאֵל	javitva	a pe-s alak a BDB6684 szócikkben áll, a mem-es nem	scope=H6439 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H6439	3	BDB6684	pe_mem	1	1	מְּנִיאֵל	פְּנִיאֵל	javitva	a pe-s alak a BDB6684 szócikkben áll, a mem-es nem	scope=H6439 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H6440	2	BDB6680	pe_mem	1	1	מָּנֶה	פָּנֶה	javitva	a pe-s alak a BDB6680 szócikkben áll, a mem-es nem	scope=H6440 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -5661,10 +5661,10 @@ H6913	2	BDB7292	pe_mem	18	1	אִמִּ		valodi_mem	a dagesses mem-es alak a BDB7
 H6913	2	BDB7292	pe_mem	35	1	מָּתוּחַ	פָּתוּחַ	javitva	a pe-s alak a BDB7292 szócikkben áll, a mem-es nem	scope=H6913 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H6916	4	BDB7299	pe_mem	1	1	בְּאַמִּי	בְּאַפִּי	javitva	a pe-s alak a BDB7299 szócikkben áll, a mem-es nem	scope=H6916 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H6921	3	BDB7309	pe_mem	8	1	מְגַמָּה		valodi_mem	a dagesses mem-es alak a BDB7309 szócikkben áll: nem hiba	scope=H6921 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H6921	4	BDB7309	pe_mem	6	1	׳מְּאַת		jelolt_marad	egyik alak sincs a BDB7309 szócikk héber szavai között	scope=H6921 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H6921	4	BDB7309	pe_mem	10	1	׳מִמּ		jelolt_marad	egyik alak sincs a BDB7309 szócikk héber szavai között	scope=H6921 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H6921	4	BDB7309	pe_mem	14	1	יָמָּה		valodi_mem	a dagesses mem-es alak a BDB7309 szócikkben áll: nem hiba	scope=H6921 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H6921	5	BDB7309	pe_mem	7	1	מְּאַת	פְּאַת	javitva	a pe-s alak a BDB7309 szócikkben áll, a mem-es nem	scope=H6921 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H6921	5	BDB7309	pe_mem	6	1	׳מְּאַת		jelolt_marad	egyik alak sincs a BDB7309 szócikk héber szavai között	scope=H6921 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H6921	5	BDB7309	pe_mem	10	1	׳מִמּ		jelolt_marad	egyik alak sincs a BDB7309 szócikk héber szavai között	scope=H6921 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H6921	5	BDB7309	pe_mem	14	1	יָמָּה		valodi_mem	a dagesses mem-es alak a BDB7309 szócikkben áll: nem hiba	scope=H6921 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H6921	6	BDB7309	pe_mem	7	1	מְּאַת	פְּאַת	javitva	a pe-s alak a BDB7309 szócikkben áll, a mem-es nem	scope=H6921 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H6923	3	BDB7304	pe_mem	1	1	מָּנָיו	פָּנָיו	javitva	a pe-s alak a BDB7304 szócikkben áll, a mem-es nem	scope=H6923 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H6923	4	BDB7304	pe_mem	4	1	מָּנָיו	פָּנָיו	javitva	a pe-s alak a BDB7304 szócikkben áll, a mem-es nem	scope=H6923 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H6924	14	BDB7305	pe_mem	1	1	מְּאַת	פְּאַת	javitva	a pe-s alak a BDB7305 szócikkben áll, a mem-es nem	scope=H6924 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -5806,10 +5806,10 @@ H7200	10	BDB7656	pe_mem	5	1	בַּמָּה		valodi_mem	a dagesses mem-es alak a 
 H7200	10	BDB7656	pe_mem	6	1	כַּמָּה		valodi_mem	a dagesses mem-es alak a BDB7656 szócikkben áll: nem hiba	scope=H7200 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H7200	16	BDB7656	pe_mem	6	1	מִמֶּנִּי		valodi_mem	a dagesses mem-es alak a BDB7656 szócikkben áll: nem hiba	scope=H7200 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H7200	26	BDB7656	pe_mem	1	1	מֶּן	פֶּן	javitva	a pe-s alak a BDB7656 szócikkben áll, a mem-es nem	scope=H7200 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H7200	37	BDB7656	pe_mem	5	1	אֶלמְּֿנֵי	אֶלפְּֿנֵי	javitva	a pe-s alak a BDB7656 szócikkben áll, a mem-es nem	scope=H7200 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H7200	37	BDB7656	pe_mem	7	1	מְּנֵי	פְּנֵי	javitva	a pe-s alak a BDB7656 szócikkben áll, a mem-es nem	scope=H7200 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H7200	38	BDB7656	pe_mem	1	1	מָּנֶה	פָּנֶה	javitva	a pe-s alak a BDB7656 szócikkben áll, a mem-es nem	scope=H7200 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H7200	48	BDB7656	pe_mem	2	1	לָ֫מָּה		valodi_mem	a dagesses mem-es alak a BDB7656 szócikkben áll: nem hiba	scope=H7200 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H7200	38	BDB7656	pe_mem	5	1	אֶלמְּֿנֵי	אֶלפְּֿנֵי	javitva	a pe-s alak a BDB7656 szócikkben áll, a mem-es nem	scope=H7200 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H7200	38	BDB7656	pe_mem	7	1	מְּנֵי	פְּנֵי	javitva	a pe-s alak a BDB7656 szócikkben áll, a mem-es nem	scope=H7200 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H7200	39	BDB7656	pe_mem	1	1	מָּנֶה	פָּנֶה	javitva	a pe-s alak a BDB7656 szócikkben áll, a mem-es nem	scope=H7200 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H7200	49	BDB7656	pe_mem	2	1	לָ֫מָּה		valodi_mem	a dagesses mem-es alak a BDB7656 szócikkben áll: nem hiba	scope=H7200 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H7203	3	BDB7659	pe_mem	4	1	מְּלִילִיָּת	פְּלִילִיָּת	javitva	a pe-s alak a BDB7659 szócikkben áll, a mem-es nem	scope=H7203 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H7203	3	BDB7659	pe_mem	5	1	מָּקוּ	פָּקוּ	javitva	a pe-s alak a BDB7659 szócikkben áll, a mem-es nem	scope=H7203 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H7214	2	BDB7674	pe_mem	22	1	מָּרִים	פָּרִים	javitva	a pe-s alak a BDB7674 szócikkben áll, a mem-es nem	scope=H7214 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -6036,7 +6036,7 @@ H7531	2	BDB8084	pe_mem	5	1	רִעצמָּה	רִעצפָּה	javitva	a pe-s alak
 H7531	3	BDB8087	pe_mem	1	1	רִצְמָּה	רִצְפָּה	javitva	a pe-s alak a BDB8087 szócikkben áll, a mem-es nem	scope=H7531 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H7532	2	BDB8089	pe_mem	1	1	רִצְמָּה	רִצְפָּה	javitva	a pe-s alak a BDB8089 szócikkben áll, a mem-es nem	scope=H7532 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H7532	3	BDB8089	pe_mem	2	1	רִצְמָּה	רִצְפָּה	javitva	a pe-s alak a BDB8089 szócikkben áll, a mem-es nem	scope=H7532 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H7533	6	BDB8090	pe_mem	1	1	מִשְׁמָּט	מִשְׁפָּט	javitva	a pe-s alak a BDB8090 szócikkben áll, a mem-es nem	scope=H7533 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H7533	7	BDB8090	pe_mem	1	1	מִשְׁמָּט	מִשְׁפָּט	javitva	a pe-s alak a BDB8090 szócikkben áll, a mem-es nem	scope=H7533 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H7534	4	BDB8113	pe_mem	1	1	מִמֶּךָּ		valodi_mem	a dagesses mem-es alak a BDB8113 szócikkben áll: nem hiba	scope=H7534 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H7534	4	BDB8113	pe_mem	14	1	הַמָּוֶת		valodi_mem	a dagesses mem-es alak a BDB8113 szócikkben áll: nem hiba	scope=H7534 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H7534	4	BDB8113	pe_mem	28	1	וָאִמָּֽלְטָה		valodi_mem	a dagesses mem-es alak a BDB8113 szócikkben áll: nem hiba	scope=H7534 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -6186,7 +6186,7 @@ H7896	9	BDB8650	pe_mem	12	1	מָּנִים	פָּנִים	javitva	a pe-s alak a 
 H7901	13	BDB8655	pe_mem	2	1	שָׁ֫מָּהׅ		valodi_mem	a dagesses mem-es alak a BDB8655 szócikkben áll: nem hiba	scope=H7901 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H7901	21	BDB8655	pe_mem	8	1	בַּמִּשְׁכָּב		valodi_mem	a dagesses mem-es alak a BDB8655 szócikkben áll: nem hiba	scope=H7901 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H7902	4	BDB8656	pe_mem	4	1	מִמֶּנּוּ		valodi_mem	a dagesses mem-es alak a BDB8656 szócikkben áll: nem hiba	scope=H7902 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H7911	5	BDB8660	pe_mem	6	1	הַמַּעֲשֶׂה		valodi_mem	a dagesses mem-es alak a BDB8660 szócikkben áll: nem hiba	scope=H7911 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H7911	6	BDB8660	pe_mem	6	1	הַמַּעֲשֶׂה		valodi_mem	a dagesses mem-es alak a BDB8660 szócikkben áll: nem hiba	scope=H7911 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H7919	8	BDB8239	pe_mem	8	1	׳הַמַּשְׂכִּילִים		jelolt_marad	egyik alak sincs a BDB8239 szócikk héber szavai között	scope=H7919 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H7921	4	BDB8663	pe_mem	6	1	אִמֶּ֑ךָ		valodi_mem	a dagesses mem-es alak a BDB8663 szócikkben áll: nem hiba	scope=H7921 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H7925	2	BDB8674	pe_mem	18	1	אֶלהַֿמָּקוֺם		valodi_mem	a dagesses mem-es alak a BDB8674 szócikkben áll: nem hiba	scope=H7925 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -6396,19 +6396,19 @@ H8206	3	BDB8988	pe_mem	1	1	שֻׁמִּים	שֻׁפִּים	javitva	a pe-s alak
 H8208	3	BDB8994	pe_mem	1	1	אֶשְׁמָּר	אֶשְׁפָּר	javitva	a pe-s alak a BDB8994 szócikkben áll, a mem-es nem	scope=H8208 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H8209	2	BDB9982	pe_mem	1	1	שַׁמִּיר	שַׁפִּיר	javitva	a pe-s alak a BDB9982 szócikkben áll, a mem-es nem	scope=H8209 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H8210	3	BDB8962	pe_mem	4	1	תִּשְׁמְּכֶנּוּ	תִּשְׁפְּכֶנּוּ	javitva	a pe-s alak a BDB8962 szócikkben áll, a mem-es nem	scope=H8210 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H8210	4	BDB8962	pe_mem	4	1	עַלמְּֿנֵי	עַלפְּֿנֵי	javitva	a pe-s alak a BDB8962 szócikkben áll, a mem-es nem	scope=H8210 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H8210	6	BDB8962	pe_mem	2	1	כַּמַּיִם		valodi_mem	a dagesses mem-es alak a BDB8962 szócikkben áll: nem hiba	scope=H8210 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H8210	8	BDB8962	pe_mem	3	1	כַּמַּיִם		valodi_mem	a dagesses mem-es alak a BDB8962 szócikkben áll: nem hiba	scope=H8210 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H8210	8	BDB8962	pe_mem	15	1	אַמּוֺ	אַפּוֺ	javitva	a pe-s alak a BDB8962 szócikkben áll, a mem-es nem	scope=H8210 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H8210	9	BDB8962	pe_mem	2	1	כַּמַּיִם		valodi_mem	a dagesses mem-es alak a BDB8962 szócikkben áll: nem hiba	scope=H8210 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H8210	9	BDB8962	pe_mem	16	1	וַתִּשְׁמְּכִי	וַתִּשְׁפְּכִי	javitva	a pe-s alak a BDB8962 szócikkben áll, a mem-es nem	scope=H8210 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H8210	10	BDB8962	pe_mem	1	1	נִשְׁמַּח	נִשְׁפַּח	javitva	a pe-s alak a BDB8962 szócikkben áll, a mem-es nem	scope=H8210 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H8210	11	BDB8962	pe_mem	1	1	וְשֻׁמַּח	וְשֻׁפַּח	javitva	a pe-s alak a BDB8962 szócikkben áll, a mem-es nem	scope=H8210 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H8210	11	BDB8962	pe_mem	3	1	שֻׁמַּח	שֻׁפַּח	javitva	a pe-s alak a BDB8962 szócikkben áll, a mem-es nem	scope=H8210 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H8210	11	BDB8962	pe_mem	4	1	שֻׁמְּכָה	שֻׁפְּכָה	javitva	a pe-s alak a BDB8962 szócikkben áll, a mem-es nem	scope=H8210 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H8210	11	BDB8962	pe_mem	5	1	שֻׁמְּכוּ	שֻׁפְּכוּ	javitva	a pe-s alak a BDB8962 szócikkben áll, a mem-es nem	scope=H8210 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H8210	12	BDB8962	pe_mem	5	1	תִּשְׁתַּמֶּכְנָה	תִּשְׁתַּפֶּכְנָה	javitva	a pe-s alak a BDB8962 szócikkben áll, a mem-es nem	scope=H8210 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H8210	12	BDB8962	pe_mem	6	1	אִמֹּתָם		valodi_mem	a dagesses mem-es alak a BDB8962 szócikkben áll: nem hiba	scope=H8210 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H8210	5	BDB8962	pe_mem	4	1	עַלמְּֿנֵי	עַלפְּֿנֵי	javitva	a pe-s alak a BDB8962 szócikkben áll, a mem-es nem	scope=H8210 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H8210	7	BDB8962	pe_mem	2	1	כַּמַּיִם		valodi_mem	a dagesses mem-es alak a BDB8962 szócikkben áll: nem hiba	scope=H8210 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H8210	9	BDB8962	pe_mem	3	1	כַּמַּיִם		valodi_mem	a dagesses mem-es alak a BDB8962 szócikkben áll: nem hiba	scope=H8210 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H8210	9	BDB8962	pe_mem	15	1	אַמּוֺ	אַפּוֺ	javitva	a pe-s alak a BDB8962 szócikkben áll, a mem-es nem	scope=H8210 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H8210	10	BDB8962	pe_mem	2	1	כַּמַּיִם		valodi_mem	a dagesses mem-es alak a BDB8962 szócikkben áll: nem hiba	scope=H8210 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H8210	10	BDB8962	pe_mem	16	1	וַתִּשְׁמְּכִי	וַתִּשְׁפְּכִי	javitva	a pe-s alak a BDB8962 szócikkben áll, a mem-es nem	scope=H8210 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H8210	11	BDB8962	pe_mem	1	1	נִשְׁמַּח	נִשְׁפַּח	javitva	a pe-s alak a BDB8962 szócikkben áll, a mem-es nem	scope=H8210 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H8210	12	BDB8962	pe_mem	1	1	וְשֻׁמַּח	וְשֻׁפַּח	javitva	a pe-s alak a BDB8962 szócikkben áll, a mem-es nem	scope=H8210 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H8210	12	BDB8962	pe_mem	3	1	שֻׁמַּח	שֻׁפַּח	javitva	a pe-s alak a BDB8962 szócikkben áll, a mem-es nem	scope=H8210 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H8210	12	BDB8962	pe_mem	4	1	שֻׁמְּכָה	שֻׁפְּכָה	javitva	a pe-s alak a BDB8962 szócikkben áll, a mem-es nem	scope=H8210 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H8210	12	BDB8962	pe_mem	5	1	שֻׁמְּכוּ	שֻׁפְּכוּ	javitva	a pe-s alak a BDB8962 szócikkben áll, a mem-es nem	scope=H8210 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H8210	13	BDB8962	pe_mem	5	1	תִּשְׁתַּמֶּכְנָה	תִּשְׁתַּפֶּכְנָה	javitva	a pe-s alak a BDB8962 szócikkben áll, a mem-es nem	scope=H8210 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H8210	13	BDB8962	pe_mem	6	1	אִמֹּתָם		valodi_mem	a dagesses mem-es alak a BDB8962 szócikkben áll: nem hiba	scope=H8210 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H8212	2	BDB8964	pe_mem	4	1	מְּצוּעַדַּֿכָּה	פְּצוּעַדַּֿכָּה	javitva	a pe-s alak a BDB8964 szócikkben áll, a mem-es nem	scope=H8212 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H8213	3	BDB8965	pe_mem	3	1	וַיִּשְׁמַּל	וַיִּשְׁפַּל	javitva	a pe-s alak a BDB8965 szócikkben áll, a mem-es nem	scope=H8213 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H8213	3	BDB8965	pe_mem	4	1	תִּשְׁמַּלְנָה	תִּשְׁפַּלְנָה	javitva	a pe-s alak a BDB8965 szócikkben áll, a mem-es nem	scope=H8213 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -6534,15 +6534,15 @@ H8469	5	BDB2955	pe_mem	16	1	מַמִּילִים	מַפִּילִים	javitva	a 
 H8470	3	BDB9200	pe_mem	5	1	עַמּוּד		valodi_mem	a dagesses mem-es alak a BDB9200 szócikkben áll: nem hiba	scope=H8470 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H8471	2	BDB9133	pe_mem	1	1	תַּחְמַּנְחֵס	תַּחְפַּנְחֵס	javitva	a pe-s alak a BDB9133 szócikkben áll, a mem-es nem	scope=H8471 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H8472	2	BDB9134	pe_mem	1	1	תַּחְמְּנֵיס	תַּחְפְּנֵיס	javitva	a pe-s alak a BDB9134 szócikkben áll, a mem-es nem	scope=H8472 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H8478	10	BDB9138	pe_mem	4	1	הַמִּסְגָּה	הַפִּסְגָּה	javitva	a pe-s alak a BDB9138 szócikkben áll, a mem-es nem	scope=H8478 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H8478	13	BDB9138	pe_mem	7	1	מַּרְעֹה	פַּרְעֹה	javitva	a pe-s alak a BDB9138 szócikkben áll, a mem-es nem	scope=H8478 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H8478	17	BDB9138	pe_mem	30	1	׳לָ֫מּה		jelolt_marad	egyik alak sincs a BDB9138 szócikk héber szavai között	scope=H8478 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H8478	26	BDB9138	pe_mem	8	1	מִמְּתַּן	מִפְּתַּן	javitva	a pe-s alak a BDB9138 szócikkben áll, a mem-es nem	scope=H8478 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H8478	26	BDB9138	pe_mem	9	1	מִּתַּחְתֶּיךָ		valodi_mem	a dagesses mem-es alak a BDB9138 szócikkben áll: nem hiba	scope=H8478 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H8478	26	BDB9138	pe_mem	12	1	לָ֫מָּה		valodi_mem	a dagesses mem-es alak a BDB9138 szócikkben áll: nem hiba	scope=H8478 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H8478	30	BDB9138	pe_mem	4	1	׳מִמַּעַל		jelolt_marad	egyik alak sincs a BDB9138 szócikk héber szavai között	scope=H8478 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H8478	30	BDB9138	pe_mem	8	1	׳הַמַּיִם		jelolt_marad	egyik alak sincs a BDB9138 szócikk héber szavai között	scope=H8478 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H8478	30	BDB9138	pe_mem	11	1	הַמַּיִם		valodi_mem	a dagesses mem-es alak a BDB9138 szócikkben áll: nem hiba	scope=H8478 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H8478	11	BDB9138	pe_mem	4	1	הַמִּסְגָּה	הַפִּסְגָּה	javitva	a pe-s alak a BDB9138 szócikkben áll, a mem-es nem	scope=H8478 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H8478	14	BDB9138	pe_mem	7	1	מַּרְעֹה	פַּרְעֹה	javitva	a pe-s alak a BDB9138 szócikkben áll, a mem-es nem	scope=H8478 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H8478	18	BDB9138	pe_mem	30	1	׳לָ֫מּה		jelolt_marad	egyik alak sincs a BDB9138 szócikk héber szavai között	scope=H8478 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H8478	28	BDB9138	pe_mem	8	1	מִמְּתַּן	מִפְּתַּן	javitva	a pe-s alak a BDB9138 szócikkben áll, a mem-es nem	scope=H8478 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H8478	28	BDB9138	pe_mem	9	1	מִּתַּחְתֶּיךָ		valodi_mem	a dagesses mem-es alak a BDB9138 szócikkben áll: nem hiba	scope=H8478 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H8478	28	BDB9138	pe_mem	12	1	לָ֫מָּה		valodi_mem	a dagesses mem-es alak a BDB9138 szócikkben áll: nem hiba	scope=H8478 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H8478	32	BDB9138	pe_mem	4	1	׳מִמַּעַל		jelolt_marad	egyik alak sincs a BDB9138 szócikk héber szavai között	scope=H8478 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H8478	32	BDB9138	pe_mem	8	1	׳הַמַּיִם		jelolt_marad	egyik alak sincs a BDB9138 szócikk héber szavai között	scope=H8478 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H8478	32	BDB9138	pe_mem	11	1	הַמַּיִם		valodi_mem	a dagesses mem-es alak a BDB9138 szócikkben áll: nem hiba	scope=H8478 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H8482	2	BDB9140	pe_mem	15	1	כְּמֶּלַח	כְּפֶּלַח	javitva	a pe-s alak a BDB9140 szócikkben áll, a mem-es nem	scope=H8482 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H8482	2	BDB9140	pe_mem	32	1	לַמָּקוֺם		valodi_mem	a dagesses mem-es alak a BDB9140 szócikkben áll: nem hiba	scope=H8482 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H8486	4	BDB3578	pe_mem	4	1	מְּאַת	פְּאַת	javitva	a pe-s alak a BDB3578 szócikkben áll, a mem-es nem	scope=H8486 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -6656,8 +6656,8 @@ H8639	2	BDB7772	pe_mem	7	1	׳וַיַמֵּל		jelolt_marad	egyik alak sincs a B
 H8641	7	BDB7820	pe_mem	7	1	הַמָּוֶת		valodi_mem	a dagesses mem-es alak a BDB7820 szócikkben áll: nem hiba	scope=H8641 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H8655	3	BDB9254	pe_mem	7	1	מֶּסֶל	פֶּסֶל	javitva	a pe-s alak a BDB9254 szócikkben áll, a mem-es nem	scope=H8655 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H8667	2		pe_mem	4	1	מִּקָּדוֺן		jelolt_marad	a sornak nincs bdb_id-je (illesztes=reszleges): nincs igazoló szócikk	scope=H8667 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H8672	6	BDB9261	pe_mem	1	1	אַמּוֺת		valodi_mem	a dagesses mem-es alak a BDB9261 szócikkben áll: nem hiba	scope=H8672 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
-H8672	6	BDB9261	pe_mem	12	1	מָּרִים	פָּרִים	javitva	a pe-s alak a BDB9261 szócikkben áll, a mem-es nem	scope=H8672 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H8672	7	BDB9261	pe_mem	1	1	אַמּוֺת		valodi_mem	a dagesses mem-es alak a BDB9261 szócikkben áll: nem hiba	scope=H8672 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H8672	7	BDB9261	pe_mem	12	1	מָּרִים	פָּרִים	javitva	a pe-s alak a BDB9261 szócikkben áll, a mem-es nem	scope=H8672 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H8673	2	BDB9263	pe_mem	3	1	אַמָּה		valodi_mem	a dagesses mem-es alak a BDB9263 szócikkben áll: nem hiba	scope=H8673 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H9003	4	BDB871	pe_mem	15	1	בָּהֵ֫מָּה		valodi_mem	a dagesses mem-es alak a BDB871 szócikkben áll: nem hiba	scope=H9003 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H9003	7	BDB871	pe_mem	7	1	עִמָּ֑ח		valodi_mem	a dagesses mem-es alak a BDB871 szócikkben áll: nem hiba	scope=H9003 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -6782,3 +6782,10 @@ H9009	18	BDB2035	pe_mem	21	1	הַמִּתְמָּֽרְצִים		jelolt_marad	eg
 H9009	18	BDB2035	pe_mem	21	2	הַמִּתְמָּֽרְצִים	הַמִּתְפָּֽרְצִים	javitva	a pe-s alak a BDB2035 szócikkben áll, a mem-es nem	scope=H9009 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H9009	18	BDB2035	pe_mem	27	1	לַמְּסִלָּה		valodi_mem	a dagesses mem-es alak a BDB2035 szócikkben áll: nem hiba	scope=H9009 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H9009	19	BDB2035	pe_mem	4	1	מִּי	פִּי	javitva	a pe-s alak a BDB2035 szócikkben áll, a mem-es nem	scope=H9009 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
+H0559	2	BDB557	jelolo_hianyzik			— Qal <i>Perfect</i> ׳א Gen 3:1	Qal	kezi	a „Qal” törzsnév sima szöveg (nem félkövér) a DictBDB.json-ban és a BDB.lexicon-ban is; a törzsszint ezért a táblában nem nyílik meg (aranyminta: Qal, Qal/1–4; seed-101 M102)	manual
+H0559	2	BDB557	jelolo_hianyzik			April, 1887, 263</sup>.1<i>Say</i>	Qal/1	kezi	az „1” a DictBDB.json-ban sima szöveg a lapszám után; a BDB.lexicon ugyanitt jelöl: <div class="section"><p>1. Say (a JSON hibája, a lexikon igazolja; seed-101 M102)	manual
+H0539	8	BDB527	jelolo_hianyzik			see אֵמֻן. Niph`al נֶאֱמַן Prov 11:13	Niph'al	kezi	a „Niph`al” törzsnév sima szöveg mindkét forrásban (seed-101 M117)	manual
+H0539	8	BDB527	jelolo_hianyzik			Deut 28:59. 1.<i>carried</i>	Niph'al/1	kezi	az „1.” jelöletlen mindkét forrásban (a lexikonban „28:59. 1. carried”, a 2. pont már <div class="point">) (seed-101 M117)	manual
+H3318	3	BDB3658	jelolo_hianyzik			— </p><p><b>1</b> <i>go</i> or <i>come out</i>	Qal/1	kezi	a „Qal” törzsnév az első törzs előtt mindkét forrásban hiányzik (lexikon: „— <div class="point"><b>1.</b> go or come out”) (seed-101 M162)	manual
+H4900	13	BDB4868	hamis_jelolo			compare </p><p><b>Niph`al 6.</b> <i>trail</i>	Qal/6	kezi	a „compare Niph`al” hivatkozás törzsneve a 6. jelentés félkövér fejébe olvadt mindkét forrásban (lexikon: „compare </div><div class="point"><b>Niph`al 6.</b>”); a 6–7. jelentés a Qal-é (aranyminta: Qal/6, Qal/7)	manual
+H1242	11	BDB1293	hamis_jelolo			<b>d.</b> above, &amp; below </p><p><b>2. g.</b>	-/1/g	kezi	a „2.” a g. alpont fejében téves mindkét forrásban (lexikon: <div class="point"><b>2. g.</b>); a g–h alpont az 1. jelentésé, a 2. jelentés később következik („morrow, next day”) (aranyminta: -/1/g, -/1/h)	manual

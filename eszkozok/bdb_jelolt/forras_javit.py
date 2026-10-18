@@ -130,7 +130,48 @@ def general(ts):
                 stat[allapot] += 1
                 ki.append([r['strong'], r['sorszam'], r['bdb_id'], 'pe_mem', str(si), str(ei), szo, jav, allapot, indok,
                            prov % (r['strong'], ts)])
+    ki.extend(kezi_sorok(stat))
     return ki, stat
+
+
+# DT-F107g (b), felhasználó, 2026-10-18: a szerkezeti forráshibák (a jelölő a nyers forrásban hiányzik vagy hamis), mindegyik a
+# DictBDB.json-ban ÉS a BDB.lexicon-ban igazolva (naplok/F107_BDB_JELOLT_SZOVEG_naplo.md 4.6). Kézi sorok: `allapot=kezi`,
+# proveniencia `manual`. A `sorszam` a szakasztábla azon sora, amelynek `jel`+`szoveg`-e a horgonyt tartalmazza (az első);
+# a `forras_alak` a nyers JSON rövid részlete, a `javitott_alak` a várt szerkezet (útvonal).
+# (strong, horgony, hiba, forras_alak, javitott_alak, indok)
+KEZI = [
+    ('H0559', 'Qal Perfect', 'jelolo_hianyzik', '— Qal <i>Perfect</i> ׳א Gen 3:1', 'Qal',
+     'a „Qal” törzsnév sima szöveg (nem félkövér) a DictBDB.json-ban és a BDB.lexicon-ban is; a törzsszint ezért a táblában '
+     'nem nyílik meg (aranyminta: Qal, Qal/1–4; seed-101 M102)'),
+    ('H0559', 'Say (subject God', 'jelolo_hianyzik', 'April, 1887, 263</sup>.1<i>Say</i>', 'Qal/1',
+     'az „1” a DictBDB.json-ban sima szöveg a lapszám után; a BDB.lexicon ugyanitt jelöl: <div class="section"><p>1. Say '
+     '(a JSON hibája, a lexikon igazolja; seed-101 M102)'),
+    ('H0539', 'as abstract noun see', 'jelolo_hianyzik', 'see אֵמֻן. Niph`al נֶאֱמַן Prov 11:13', "Niph'al",
+     'a „Niph`al” törzsnév sima szöveg mindkét forrásban (seed-101 M117)'),
+    ('H0539', 'carried by a nurse', 'jelolo_hianyzik', 'Deut 28:59. 1.<i>carried</i>', "Niph'al/1",
+     'az „1.” jelöletlen mindkét forrásban (a lexikonban „28:59. 1. carried”, a 2. pont már <div class="point">) (seed-101 M117)'),
+    ('H3318', 'go or come out or forth', 'jelolo_hianyzik', '— </p><p><b>1</b> <i>go</i> or <i>come out</i>', 'Qal/1',
+     'a „Qal” törzsnév az első törzs előtt mindkét forrásban hiányzik (lexikon: „— <div class="point"><b>1.</b> go or come '
+     'out”) (seed-101 M162)'),
+    ('H4900', 'trail seed', 'hamis_jelolo', 'compare </p><p><b>Niph`al 6.</b> <i>trail</i>', 'Qal/6',
+     'a „compare Niph`al” hivatkozás törzsneve a 6. jelentés félkövér fejébe olvadt mindkét forrásban (lexikon: '
+     '„compare </div><div class="point"><b>Niph`al 6.</b>”); a 6–7. jelentés a Qal-é (aranyminta: Qal/6, Qal/7)'),
+    ('H1242', 'figurative of bright joy', 'hamis_jelolo', '<b>d.</b> above, &amp; below </p><p><b>2. g.</b>', '-/1/g',
+     'a „2.” a g. alpont fejében téves mindkét forrásban (lexikon: <div class="point"><b>2. g.</b>); a g–h alpont az 1. '
+     'jelentésé, a 2. jelentés később következik („morrow, next day”) (aranyminta: -/1/g, -/1/h)'),
+]
+
+
+def kezi_sorok(stat):
+    sorok = tabla_sorok()
+    ki = []
+    for st, horgony, hiba, forras_alak, javitott, indok in KEZI:
+        r = next((x for x in sorok if x['strong'] == st and horgony in (x['jel'] + ' ' + x['szoveg'])), None)
+        if r is None:
+            raise SystemExit('HIBA: a kézi sor horgonya nem található: %s %r' % (st, horgony))
+        stat['kezi'] += 1
+        ki.append([st, r['sorszam'], r['bdb_id'], hiba, '', '', forras_alak, javitott, 'kezi', indok, 'manual'])
+    return ki
 
 
 def fajl_szoveg(sorok, ts):
@@ -148,7 +189,7 @@ def main():
     ap.add_argument('--ellenoriz', action='store_true')
     a = ap.parse_args()
     sorok, stat = general(a.ts)
-    print('pe_mem sor: %d; %s; érintett Strong (javitva): %d' % (
+    print('sor: %d (pe_mem + kezi); %s; érintett Strong (javitva): %d' % (
         len(sorok), dict(stat), len(set(s[0] for s in sorok if s[8] == 'javitva'))))
     if a.meres:
         return 0

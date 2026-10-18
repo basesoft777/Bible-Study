@@ -51,6 +51,16 @@ SEED101 = [
 ]
 
 
+# DT-F107g (b): a nyers forrásban (DictBDB.json ÉS BDB.lexicon) igazolt forráshibás csomópontok — külön számolva; mindegyiknek
+# kézi sora van az adat/bdb_forras_javitas.tsv-ben (forras_javit.py KEZI; naplok/F107_BDB_JELOLT_SZOVEG_naplo.md 4.6)
+FORRAS_HIBA_ARANY = {
+    ('H0559', 'Qal'), ('H0559', 'Qal/1'), ('H0559', 'Qal/2'), ('H0559', 'Qal/3'), ('H0559', 'Qal/4'),   # „Qal” jelöletlen; „1” (JSON)
+    ('H4900', 'Qal/6'), ('H4900', 'Qal/7'),                                                            # „Niph`al 6.” hamis fej
+    ('H1242', '-/1/g'), ('H1242', '-/1/h'),                                                            # „2. g.” téves „2.”
+}
+FORRAS_HIBA_SEED = {'M102', 'M117', 'M162'}
+
+
 def norm(ut):
     if ut in ('cim', 'fej', 'tagolatlan', ''):
         return 'fej'
@@ -107,6 +117,9 @@ def arany(tab, lista):
     nsz = sum(v for (k, e), v in stat.items() if k != 'szamozatlan')
     esz = sum(v for (k, e), v in stat.items() if k != 'szamozatlan' and e == 'egyezik')
     print('  a számozatlan jelentés (`-1`, `-2`; a táblában fej nélkül nem bontható) nélkül: %d / %d (%.1f%%)' % (esz, nsz, 100.0 * esz / max(1, nsz)))
+    fh = sum(1 for e in elter if (e[0], e[3]) in FORRAS_HIBA_ARANY)
+    print('  a forras_hiba csomópontok (%d, mind hiányzó) nélkül: %d / %d (%.1f%%)' % (
+        fh, egy, ossz - fh, 100.0 * egy / max(1, ossz - fh)))
     for e in elter[:lista]:
         print('  hiányzik: %s szakasz=%s resz=%s %s (%s, jel %s)' % e)
 
@@ -130,7 +143,8 @@ def seed101(tab):
         print('  %s %s: tábla resz=%s %s (sor %s, %s) | várt resz=%s %s → %s' % (
             hely, st, talalt['resz'] or '-', talalt['utvonal'], talalt['sorszam'], talalt['illesztes'], vresz or '-', vut,
             'EGYEZIK' if ok else 'ELTÉR'))
-    print('SEED101: %d / %d egyezik' % (jo, len(SEED101)))
+    print('SEED101: %d / %d egyezik; a forras_hiba helyek (%s) nélkül: %d / %d' % (
+        jo, len(SEED101), ', '.join(sorted(FORRAS_HIBA_SEED)), jo, len(SEED101) - len(FORRAS_HIBA_SEED)))
 
 
 def korpusz(tab, lista):
