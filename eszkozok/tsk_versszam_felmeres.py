@@ -381,6 +381,61 @@ def main():
     print('proveniencia: scope=TSK ÚSZ-forrású és ÚSZ-célú sorai | forras=TSK_kereszthivatkozasok.tsv+KJV_Strongs_teljes.tsv+Karoli_1908.tsv | n=%d | ts=%s'
           % (len(tsk_usz), ts))
 
+    # --- E. elfogadási mérés a javított átváltón át (F114.4) ---------------------------
+    # A fogyasztói út: lexikon_general.tsk_index() (tsk_kulcs.karoli_index). A "helyes" halmaz
+    # e szkript saját, független megfeleltetéséből (k2j / j2k) számolt.
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import lexikon_general as LGE
+    import tsk_kulcs as TKE
+    fogy = LGE.tsk_index()
+    # E1: Károli-kulcsú sorok eredeti KJV-forrása egyezik-e a független k2j-vel
+    e_kulcs_ossz = e_kulcs_rossz = 0
+    for kk, sorok_k in fogy.items():
+        if konyv_cv(kk) and konyv_cv(kk)[0] in osz_konyvek:
+            e_kulcs_ossz += 1
+            if any(o['KJV Igehely'] != k2j.get(kk) for o in sorok_k):
+                e_kulcs_rossz += 1
+    # E2: nincs-pár tételesen (forrás- és célkulcs, ÓSZ)
+    np_forras = {}
+    np_cel = {}
+    for r in tsk:
+        b = konyv_cv(r['Igehely'])
+        if b and b[0] in osz_konyvek and not j2k.get(r['Igehely']):
+            np_forras[r['Igehely']] = np_forras.get(r['Igehely'], 0) + 1
+        for v in kibont(r['Kapcsolódó igehely']) or []:
+            bv = konyv_cv(v)
+            if bv and bv[0] in osz_konyvek and not j2k.get(v):
+                np_cel[v] = np_cel.get(v, 0) + 1
+    # E3: B-rész az elofordulasok.tsv ÓSZ-versein, minden Votes és >= 15
+    b_rossz = {0: 0, KUSZOB: 0}
+    b_elmarad = {0: 0, KUSZOB: 0}
+    b_vers = 0
+    for v in sorted(vers_motivum):
+        if konyv_cv(v)[0] not in osz_konyvek or v not in k2j:
+            continue
+        b_vers += 1
+        kj = k2j[v]
+        for kusz in (0, KUSZOB):
+            helyes = set()
+            for c, x in tsk_halmaz(kj, kusz or None).items():
+                helyes.update(kjv_to_karoli(c))
+            kap = {o['Kapcsolódó igehely'] for o in fogy.get(v, []) if kusz == 0 or int(o['Votes']) >= kusz}
+            b_rossz[kusz] += len(kap - helyes)
+            b_elmarad[kusz] += len(helyes - kap)
+    print()
+    print('# E. Elfogadási mérés a javított átváltón át (lexikon_general.tsk_index -> tsk_kulcs)')
+    print('A. fogyasztói úton olvasott ÓSZ Károli-kulcs: %d; ebből a KJV-forrás nem a megfeleltetés szerinti: %d'
+          % (e_kulcs_ossz, e_kulcs_rossz))
+    print('nincs-pár forrás-KJV-kulcs (ÓSZ, a sor kimarad): %d kulcs, %d sor' % (len(np_forras), sum(np_forras.values())))
+    print('  tételesen: %s' % '; '.join('%s (%d)' % kv for kv in sorted(np_forras.items())[:80]))
+    print('nincs-pár cél-KJV-vers (ÓSZ, a sor kimarad): %d vers, %d előfordulás' % (len(np_cel), sum(np_cel.values())))
+    print('  tételesen: %s' % '; '.join('%s (%d)' % kv for kv in sorted(np_cel.items())[:80]))
+    print('B. elofordulasok.tsv ÓSZ-versei (megfeleltetéssel): %d vers' % b_vers)
+    print('  minden Votes: rossz versről %d, elmarad %d' % (b_rossz[0], b_elmarad[0]))
+    print('  Votes>=%d: rossz versről %d, elmarad %d' % (KUSZOB, b_rossz[KUSZOB], b_elmarad[KUSZOB]))
+    print('proveniencia: scope=TSK-teljes ÓSZ + elofordulasok.tsv ÓSZ-versei | forras=TSK_kereszthivatkozasok.tsv+Karoli_versmegfeleltetes.tsv (tsk_kulcs) | n=%d | ts=%s'
+          % (len(tsk), ts))
+
     # részletes kimenet
     with open(os.path.join(a.kimenet, 'B_elofordulas_versek.tsv'), 'w', encoding='utf-8', newline='\n') as f:
         mezok = list(reszlet[0].keys()) if reszlet else []
