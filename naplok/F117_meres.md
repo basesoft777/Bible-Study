@@ -81,3 +81,4 @@ A `Karoli_versmegfeleltetes.tsv`-t olvasó eszközök (`grep -rl Karoli_versmegf
   - **ERROR: `FeliratHalmaz.test_a_felirat_versnek_nincs_terkep_erteke_a_db_ben`.** Ugyanez az ok.
   - **FAIL: `Pozitiv.test_mai_adat_zold`.** A main-en is fennálló „15. kapcsolatok.tsv” jelentéssor (`naplok/F117_javitas_jelentes.md` 4. pont), nem az őr okozza.
   - A két ERROR a felhasználó feltétele szerint ⛔: nem gyengítettem és nem kerültem meg. Feloldásuk az N-F117a (a `_bsb_szamozas` javítása), vagy a felhasználó döntése.
+- **Kimondott kihagyás (Felhasználó, 2026-10-18; DT-F117f kiegészítés):** az `Integracio` osztály és a `FeliratHalmaz.test_a_felirat_versnek_nincs_terkep_erteke_a_db_ben` `unittest.skip`-et kapott, indoklással: „N-F117a: … az N-F117a javításakor visszaveendő”. Újrafuttatás (`python eszkozok/teszt_sqlite_epit.py -v`): 72 teszt, **0 ERROR**, 35 skip, 1 FAIL. A FAIL a main-en is meglévő `test_mai_adat_zold`.
