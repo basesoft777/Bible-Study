@@ -1878,6 +1878,15 @@ def _e28_commitolt(relut):
     return _lf(nyers.decode('utf-8'))
 
 
+def _general_modul():
+    """A general.py modul (a kód mellől, nem a -- tesztben átállított -- ROOT-ból)."""
+    eszkozok = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    if eszkozok not in sys.path:
+        sys.path.insert(0, eszkozok)
+    import general
+    return general
+
+
 def _e28_general_futtat(cel, azonosito, datum, kimenet):
     """A general.py alfolyamatként, a repón kívüli `kimenet` könyvtárba;
     (kilépési kód, stderr). A generátor logikája nem duplikálódik."""
@@ -1893,10 +1902,7 @@ def _e28_generalt_blokkok(cel):
     """[(cel_kulcs, blokk_szoveg)] a general.py saját függvényeivel (a
     `--ellenoriz` útja: blokk_lista_eles); a marker-pár keresése és a törzs
     levágása is a general.py-é (marker_par_keres, blokk_torzs)."""
-    eszkozok = os.path.join(ROOT, 'eszkozok')
-    if eszkozok not in sys.path:
-        sys.path.insert(0, eszkozok)
-    import general as G
+    G = _general_modul()
     _, motivumok = G.tsv_beolvas(G.MOTIVUMOK_TSV)
     _, elofordulasok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
     blokkok, _hianyzo = G.blokk_lista_eles(
@@ -1906,10 +1912,7 @@ def _e28_generalt_blokkok(cel):
 
 def _e28_marker_torzs(szoveg, cel_kulcs):
     """(torzs, torzs_kezdo_sor_szama) vagy None, ha a marker-pár nincs meg."""
-    eszkozok = os.path.join(ROOT, 'eszkozok')
-    if eszkozok not in sys.path:
-        sys.path.insert(0, eszkozok)
-    import general as G
+    G = _general_modul()
     talalat = G.marker_par_keres(szoveg, cel_kulcs)
     if not talalat:
         return None
@@ -1970,10 +1973,7 @@ def e28_generalt_nezet_egyezes(fajlok):
                 hiba(relut, 0, '%s: a marker-pár hiányzik. Javítás: %s' % (cel_kulcs, javit))
                 continue
             torzs, kezdo = talalat
-            eszkozok = os.path.join(ROOT, 'eszkozok')
-            if eszkozok not in sys.path:
-                sys.path.insert(0, eszkozok)
-            import general as G
+            G = _general_modul()
             generalt = _lf(G.blokk_torzs(blk, cel_kulcs))
             el = _e28_elso_elteres(torzs, generalt)
             if el:
