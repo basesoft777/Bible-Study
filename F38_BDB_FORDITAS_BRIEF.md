@@ -108,6 +108,29 @@ Minél több adag készül el addig, annál drágább az utólagos illesztés va
 
 **Döntés (`DONTESEK.md` DT181):** l. ott az opciókat. A döntésig a következő adag nem indul.
 
+## Átadás a #107-ből (2026.10.18)
+
+*A #107 (BDB_JELOLT_SZOVEG) 8. lépése; a felhasználó döntése szerint (2026-10-18) egyeztetett eltérésként a #107 írja ezt a szakaszt —
+csak a törzset, a fejlécet nem. Forrás: `naplok/F107_BDB_JELOLT_SZOVEG_naplo.md` 6.1, 7., 7.1.*
+
+- **A kész fordítás szakaszhatárai:** `adat/bdb_szakasz_hu.tsv` (SEMA 2.32) — a 674 lefordított Strong 9 664 szakasza a szakasztábla
+  (`adat/bdb_szakaszok.tsv`, SEMA 2.30) soraihoz illesztve; **szakaszkulcs: `strong` + `sorszam`** (a `bdb_id` + `utvonal` mellette; az
+  útvonal-formátum nincs befagyasztva, DT190 🟡). A táblasor a fordítás `forras_hash`-ét is hordozza. Az `adat/forditasok.tsv`-t a #107 nem
+  írta.
+- **Mért számok** (Strong-szint, horgonnyal): illeszkedik **409**, horgonnyal **85**, elakad **98**, tagolatlan **82** (a 2026-10-16-i
+  kiinduló, a kapu szigorú módszerével: 355 / — / 230 / 89; ugyanazzal a módszerrel a szakasztáblán ma 380 / — / 200 / 94). Soronként:
+  illeszkedik 6 395, horgonnyal 202, elakad 606, jelölő nélküli 2 461.
+- **DT-F107b (felhasználó, 2026-10-18):** „(d), majd (c)” — a magyar jelölő-felismerés bővítése megtörtént; **kézi illesztés nincs**; a
+  maradék elakadó Strong a #38 **következő adagjában szakaszonként újrafordítandó**.
+- **N-F107b:** a 98 Strong (606 elakadt szakasz) tételes listája: `naplok/F107_BDB_JELOLT_SZOVEG_naplo.md` **7.1** (Strong, `sorszam`:`utvonal`,
+  jelölőtípus); `NYITOTT_FELADATOK.md` N-F107b.
+- **DT-F107c (d) (felhasználó, 2026-10-18):** a `konkordancia/BDB_teljes_unabridged.tsv` **változatlan**; a 674 fordítás `forras_hash`-e addig a
+  változatlan TSV-hez kötődik; a TSV cseréje a táblából generált nézetre (`eszkozok/bdb_jelolt/nezet_general.py`) és az olvasók átállása
+  **külön, `/befogad`-dal felvett feladat** (a nézettel a fordítássorok 446–546 `forras_hash`-e változna).
+- **N-F107a (pe/mem):** a `DictBDB.json` és belőle a TSV a dagesses pét dagesses memként írja; a 678 BDB-fordítássorban 2 782 dagesses mem,
+  0 dagesses pe; a javítás a `adat/bdb_forras_javitas.tsv` `pe_mem` sorai (3 823 `javitva`) — a szakaszonkénti újrafordítás bemenete a
+  javított nézet lehet (döntés a #38-ban / a TSV-csere feladatában).
+
 ## Megállási pont (minden adag végén)
 
 1. Az adag fordításai az `emeles.py rogzit` útján az `adat/forditasok.tsv`-be kerülnek, `allapot=sonnet` (~~`opus`~~ — a DT-F38e szerint), `modell` a tényleges modellnév (kötelező, nincs alapérték).
