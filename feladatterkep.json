@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-10-18",
-   "commit": "f6367528"
+   "commit": "6eb6e431"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -253,7 +253,7 @@
    "fazis": "1",
    "allapot": "stop",
    "brief_allapot": "megallt",
-   "most": "Te: az M1 (leképezési tábla) jóváhagyva és a main-en (PR #393, 2026-10-18); az M2 (generátor-képességek) a #116 (E28/E29, D6) merge-e után, külön jóváhagyással indul",
+   "most": "Te: az M2 (generátor-képességek) kész a claude/f11-m2 ágon; az M3 (szétválasztás) a DT-F11a eldöntése és külön jóváhagyás után indul",
    "fugg": "#9 (kész), #23 (kész), #116 (kész)",
    "tervezett": false,
    "reszletes": "Minden motívum egyetlen kézi forrásból renderelődik (D34); a törzscikk, a 8. sablon és egy régi CI-szabály kivezetésre kerül. Első lépcső az ISTENTISZT-001, utána a többi hat.",
@@ -2415,6 +2415,6 @@
     "fejlec_oszlopszam": 8
    }
   ],
-  "kesz_db": 117
+  "kesz_db": 118
  }
 }

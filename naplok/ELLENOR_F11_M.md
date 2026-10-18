@@ -16,7 +16,7 @@ Brief: `F11_MIGRACIO_BRIEF.md` · tartomány: `c74677aa..c0b3bd6b` (`claude/f11-
 | szintszűrés | OK (statikusan) | `general.py:1104-1256` | A `belso` szint kimarad az `olvasoi` és az `apparatus` nézetből. Hibát ad: a párosítatlan vagy ellentmondó `SZINT-*` pár, a `##`-en átnyúló pár és a régi `<!-- SZINT: x -->` alak. Ismeretlen `##` → `belso`. |
 | soron belüli jelölő | **ELTÉRÉS (enyhe) → javítva** | `general.py` `FORRAS_CSAK_JELOLO_SOR` | Csak a sor eleji csak-forrásbeli jelölő esett ki. A soron belüli jelölő hiba nélkül átjutott a `--cel forras` nézetébe, ez ütközik a SEMA 3.10.4-gyel. Javítás: e67f352f (F11.M2.5), l. 2. szakasz. |
 | kinyerés | OK (statikusan) | `general.py:1352-1476, 1561-1590` | Csak `--ir`-rel és hibátlan futásnál ír. `split('\t')`/`'\t'.join()`, `csv` nélkül. Írás előtt és után összevet, eltérésnél visszaállít. `dontes=nyitva`, `manual`. A lábjegyzetet nem olvassa, audit-sort nem ír (DT84 (2)). Az ADAT-HIV/ADAT-ÉRTÉK a DT-F11d-ig szándékosan hibát ad. UTF-8 wrapper: `general.py:71-74`. |
-| DT-F11d | OK | `DONTESEK.md:272` | Helyőrző, végleges szám nélkül. 8 oszlop, 🟡, a Döntés oszlopban „—”. Nem dönt. |
+| DT202 | OK | `DONTESEK.md:272` | Helyőrző, végleges szám nélkül. 8 oszlop, 🟡, a Döntés oszlopban „—”. Nem dönt. |
 | #114 átfedés | OK | — | A `lexikon_general.py`, a `sqlite_epit.py` és a `jeloltek.tsv` nem változott. Közös fájl csak a `DONTESEK.md`, ahol a két ág ugyanazon a helyen fűz hozzá, ezért triviális merge-konfliktus várható. |
 | CI | OK | — | `futtat.py --valtozott … --diff-alap c74677aa` → rc=0, a változott fájlokra 0 találat. `futtat.py --teljes` → rc=0, E28=0, E29=0. |
 | A1–A6 | OK / nem releváns | — | Minden állítás forrással áll. Tanulmány és nevesített tanító nincs a diffben. |
@@ -33,7 +33,7 @@ A végrehajtó a commitüzenetekben rögzítette a saját méréseit. Ezek a 2. 
 
 ## 3. Ítélet
 
-**Zöld a javítás után.** Az egyetlen eltérés javítva (e67f352f). A javítás nem kapott újabb független ellenőrt; a mérései (N0, E28/E29, `ellenoriz`) az orkesztrátor futtatásában zöldek. Az M2 nincs kész: az `ADAT-HIV`/`ADAT-ÉRTÉK` ellenőrzés a DT-F11d döntésére vár (brief `allapot: dontesre_var`). Az M6 ezt a naplót bővíti.
+**Zöld a javítás után.** Az egyetlen eltérés javítva (e67f352f). A javítás nem kapott újabb független ellenőrt; a mérései (N0, E28/E29, `ellenoriz`) az orkesztrátor futtatásában zöldek. Az M2 nincs kész: az `ADAT-HIV`/`ADAT-ÉRTÉK` ellenőrzés a DT202 döntésére vár (brief `allapot: dontesre_var`). Az M6 ezt a naplót bővíti.
 
 *Utólag: a DT-F11d-t a felhasználó 2026-10-18-án eldöntötte (mind a négy alpontban az (a) változat). Az M2 befejezését a 4–6. szakasz rögzíti.*
 
@@ -59,7 +59,7 @@ Brief: `F11_MIGRACIO_BRIEF.md` · tartomány: `origin/main..HEAD`, a merge-bázi
 | (c) zárt készlet | ELTÉRÉS (enyhe) | `general.py:1344` | A mohó `.*` miatt a `count(…)+count(…)` nem „ismeretlen függvény” hibát ad, hanem 0 találatos szűrőt. |
 | (d) gerinc-alak | OK | `general.py:1507-1547` | `gerinc: X — …`, a szakasz-mutató a `##` címsor. |
 | sablon 9 ↔ SEMA ↔ kód | OK, a fenti 3 pont kivételével | sablon `:91,150-155`; SEMA `:1324-1327,1383-1385` | Régebbi, nem e diffből eredő ellentmondás: a SEMA 1. táblája (`:21`) és a 2.5 (`:349`) mást ad a `lexikon_hivatkozasok` kulcsára. |
-| DT-F11d sor | OK; a forrás oszlop ELTÉRÉS (enyhe) | `DONTESEK.md:277` | Helyőrző, 8 oszlop, ✅ az alkalmazó commitokkal. A „(a #12 véglegesítésekor)” zárójel ellentmond a ✅-nak. |
+| DT202 sor | OK; a forrás oszlop ELTÉRÉS (enyhe) | `DONTESEK.md:277` | Helyőrző, 8 oszlop, ✅ az alkalmazó commitokkal. A „(a #12 véglegesítésekor)” zárójel ellentmond a ✅-nak. |
 | felhasználói idézetek | NEM ELLENŐRIZHETŐ | — | A chat a repóból nem érhető el. |
 | merge-feloldás | OK | `DONTESEK.md:274-276` | `DONTESEK.md`: 1 sor beszúrva, törlés nincs. A DT197–201 bájtra egyezik a main-nel. |
 | brief fejléc | OK; a `pr` ELTÉRÉS (enyhe) | brief `:8,12,13` | `megallt`, a `kovetkezo` „Te:” kezdetű és a tényeknek megfelel. A `pr: #393` a mergelt M1-PR-re mutat. |
@@ -75,7 +75,7 @@ Brief: `F11_MIGRACIO_BRIEF.md` · tartomány: `origin/main..HEAD`, a merge-bázi
 | (c) egész érték (közepes) | A szám előtt nem állhat számjegy, betű, `.`, `,` vagy `-`. A `2.5`, `1,5`, `-4` és `P4` mostantól hiba. | 080e39dd F11.M2.11 |
 | kulcslista (enyhe) | A kulcsokat a kód a SEMA 2. szakaszának „Kulcs:” soraiból vezeti le, 21 táblára. A felsorolt hétből hat kapott kulcsot; a `karoli_variancia.tsv`-nek a SEMA 2.24-ben nincs „Kulcs:” sora, ezért arra az `ADAT-HIV` továbbra is hibát ad. | 080e39dd F11.M2.11 |
 | zárt készlet (enyhe) | Az argumentumban nem lehet zárójel. A `count(…)+count(…)` „ismeretlen kifejezés” hibát ad. | 080e39dd F11.M2.11 |
-| DT-F11d forrás oszlop (enyhe) | A tény került a helyére: sablon 9 v0.2 (4. és 6. pont), SEMA 3.10.2 és 3.10.5. | c473c19a F11.M2.12 |
+| DT202 forrás oszlop (enyhe) | A tény került a helyére: sablon 9 v0.2 (4. és 6. pont), SEMA 3.10.2 és 3.10.5. | c473c19a F11.M2.12 |
 | brief `pr` (enyhe) | `pr: —` (a `feladatok.py` ezt a mezőt nem ellenőrzi). | c473c19a F11.M2.12 |
 
 A végrehajtó a tesztjeit a scratchpadben, a repón kívül futtatta: a `teszt_ellenorzo` 22 negatív esettel, valamint a `teszt_kinyeres` és a `teszt_forras` zöld.
