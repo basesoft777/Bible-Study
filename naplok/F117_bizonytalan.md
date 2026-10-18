@@ -15,7 +15,7 @@ proveniencia: scope=az A–D′ célhalmaz (346 Károli-vers, 20 fejezet, blokk-
 | D′ (1Kir 22:43–45, 50–53) | 7 | 7 | 1 (22:43) | 6 | 0 | 0 | 2 (1Kir 22:43–44) |
 | **Összesen** | **346** | **346** | **104** | **223** | **19** | **0** | **8** |
 
-- **Ítélet:** mind a 346 célversnél elolvastam a Károli-szöveget és a KJV-verset (a KJV Strong-címkézett szavait). Az ítélet minden versen a teljes (szöveg + TAHOT) igazítás párja, eltérés nincs. Két KJV-vers egyformán illő esete nincs.
+- **Ítélet:** mind a 346 célversnél elolvastam a Károli-szöveget és a KJV-verset (a KJV Strong-címkézett szavait). **Korlát:** a KJV-oldalon az „elolvasás” a `KJV_Strongs_teljes.tsv` Strong-címkézett szavainak olvasását jelenti (az `f19_ebible_import.py` csak a Strong-címkés szavakat vette át, teljes KJV-szöveg nincs a repóban), az ítélet ott kulcsszavakra épül (l. 5. pont). Az ítélet minden versen a teljes (szöveg + TAHOT) igazítás párja, eltérés nincs. Két KJV-vers egyformán illő esete nincs.
 - **Árva KJV-vers:** nincs, egyik blokkban sem.
 - **„Nincs pár”:** egyetlen célversnél sincs.
 - **A brief 1. táblázatának várt párjai** mind teljesülnek:
@@ -70,3 +70,15 @@ A célfejezetek nem célversei közül a Préd 9:1–20 (= KJV 8:16–9:18) és 
    - **(a) javasolt:** mindkét Károli-vers ugyanazt a KJV-verset kapja, `megjegyzes`: „KJV 22:43 két Károli-versben (22:43–44)”. A `tsk_kulcs` KJV→Károli iránya listát ad (`j2k`), ezért a KJV-vers mindkét Károli-versre visszamutat. A meglévő tábla is ismer egy KJV-versre eső több Károli-sort (a Préd 2:26 összevonási sora).
    - **(b)** Csak az első Károli-vers kapja a párt, a második „nincs pár” (a 1Kir 22:44 és az 1Sám 20:43 TSK nélkül marad).
    - **(c)** Csak a második kapja.
+
+## 5. Korlát: a KJV-oldal csak Strong-címkézett szavakból — újraellenőrizendő ítéletek
+
+A `konkordancia/KJV_Strongs_teljes.tsv` csak a Strong-címkézett szavakat tartalmazza (az `f19_ebible_import.py` szándékosan csak a `\w …|strong` szavakat vette át); teljes KJV-szöveg nincs a repóban. A kézi ítélet a KJV-oldalon ezért kulcsszavakra épült. Ahol az ítélet versfélen, mondathatáron vagy fejezetváltón múlik, a teljes KJV-szövegen újra kell ellenőrizni (N-F117c; a sorok jelölése: `naplok/F117_itelet.tsv` `ellenorizendo` oszlop). Összesen **28** ítélet:
+
+| Jelölés | Darab | Károli-versek |
+|---|---|---|
+| versfél (2-1 / 1-2 lépés) | 4 | Ézs 64:1, 1Kir 22:43, 1Kir 22:44, 1Sám 20:43 |
+| összevonás-szomszéd (a KJV-vers az előző Károli-vers második fele) | 5 | Hós 2:1, Jób 17:1, Jób 37:1, Péld 12:1, Ézs 64:2 |
+| fejezetváltó pár | 19 | 2Móz 35:36, Dán 3:31, Dán 3:32, Dán 3:33, Hós 14:1, Én 5:17, Én 5:18, Én 5:19, Préd 9:21, Préd 9:22, Préd 9:23, Jób 39:34, Jób 39:35, Jób 39:36, Jób 39:37, Jób 39:38, Ézs 3:1, Jón 2:1, 1Sám 24:1 |
+
+A célhalmazon kívüli összevonás-versek (Hós 1:11, Jób 16:22, Péld 11:31, Jób 36:33) nem célversek, ezért az ítélet-fájlban nincs sorruk; a rajtuk múló ítélet a célhalmaz első versénél van jelölve (összevonás-szomszéd). A 2–4. bizonytalan pár (Jób 17:2–3) párja a Jób 17:1-étől függ, külön nincs jelölve.
