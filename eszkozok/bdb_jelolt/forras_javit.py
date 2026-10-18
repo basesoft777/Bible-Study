@@ -291,6 +291,15 @@ KEZI = [
     ('H1242', 'figurative of bright joy', 'hamis_jelolo', '<b>d.</b> above, &amp; below </p><p><b>2. g.</b>', '-/1/g',
      'a „2.” a g. alpont fejében téves mindkét forrásban (lexikon: <div class="point"><b>2. g.</b>); a g–h alpont az 1. '
      'jelentésé, a 2. jelentés később következik („morrow, next day”) (aranyminta: -/1/g, -/1/h)'),
+    # F107 javítókör (ELLENOR_F107 szúrópróba, 2026-10-18): mindkettő a DictBDB.json-ban ÉS a BDB.lexicon-ban igazolva
+    ('H6440', '= presence, person', 'hamis_jelolo', '— See further below </p><p><b>7. 2. a.</b> = <i>presence, person</i>', '-/2/a',
+     'a „See further below 7” hivatkozás „7.”-e a 2. jelentés a. alpontjának félkövér fejébe olvadt mindkét forrásban (lexikon: '
+     '„See further below </div><div class="point"><b>7. 2. a.</b>”); az útvonal (-/2/a, I. szakasz) helyes, a „7.” a fejben hamis'),
+    ('H6440', '(a) in the face of, mostly', 'hamis_jelolo', 'see II. אֵת <b>4a. 3.</b> בִּפְנֵי: <i>(a) in the face of</i>', '-/3',
+     'a „see II. אֵת 4a” hivatkozás „4a.”-ja a II. szakasz 3. jelentésének (בִּפְנֵי) fejébe olvadt mindkét forrásban (lexikon: '
+     '„see II. אֵת </div><div class="point"><b>4 a. 3.</b> בִּפְנֵי”); a JSON-ban a fej a bekezdés közepén, héber szó után áll, ezért a '
+     'tábla nem nyit szakaszt: a II/3 csomópont hiányzik (aranyminta: II -/3; a szakaszt figyelmen kívül hagyó összevető ezt az I/3-mal '
+     'fedte, l. napló, Javítókör)'),
 ]
 
 
