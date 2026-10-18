@@ -195,7 +195,8 @@ Strongok >1%-ánál nem sikerül) teljesült, l. 2.3.
 `scope=F107 pe/mem karakterszám (NFD, a betűt követő pontozójelek között dagesh) | forras=scratchpad pe_mem.py + a TSV-re egy soros számlálás; DictBDB.json@5d826c58, BDB.lexicon@c998a70b | ts=2026-10-18`
 
 A JSON fele (13 562 / 2 ≈ 6 781) egyezik a lexikon dagesses mem + dagesses pe összegével (2 705 + 4 106 = 6 811).
-Példák az illesztésből: H6620 JSON „מֶּ֫תֶן” ↔ lexikon „פֶּתֶן”; H6499 „מַּר” ↔ „פַּר”; H6597 „מִּתְאֹם” ↔ „פִּתְאֹם”.
+Példák az illesztésből (mássalhangzó-váz, ahogy az ujjlenyomat mutatta): H6620 JSON מתנ ↔ lexikon פתנ; H6499
+מר ↔ פר; H6597 מתאמ ↔ פתאמ; H6574 מרשדנה ↔ פרשדנה.
 **A dagesses pe a JSON-ban dagesses memként áll, és a TSV ezt örökölte**; a 674 kész magyar fordítás héber
 idézetei a TSV-ből jönnek, ezért valószínűleg ugyanígy érintettek (ezt ez a lépés nem mérte). A repóban erről nincs
 korábbi feljegyzés (`grep` „dages”: a DONTESEK.md-ben, a BDB-naplókban és a README-kben nincs találat). Javaslat:
