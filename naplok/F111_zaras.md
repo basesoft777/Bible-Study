@@ -5,7 +5,8 @@ Modell: claude-sonnet-5-5 (a brief `sonnet` mezőjével egyezik). Ág: `claude/f
 - Korábbi javítókörök átnézése (F23.D8–Z5, F93.12–F93.23, F99.32–F99.46, F108.6–7): minden valódi tétel besorolható; ⛔ (`DT-F111a`) nem kellett. Határeset: az F108 „commit-granularitás” tétele (már megtörtént, utólag nem javítható): az `elteres.md` 2. lépése `tartalmi`-nak sorolja.
 - Megállapított gyakorlat, amit a parancs egységesít: körszám korlát nélkül (F23: 5, F93: 3 újraellenőrzés), `_ujra` név (F99), külön vagy összevont jelentés-rögzítés, hatókörön kívüli lelet csak az F99-nél ment a `beerkezo/`-ba.
 - G7: `python eszkozok/feladatok.py ellenoriz` → 0 hiba (a javítókör végén újra mérve).
-- Lezárás: az `allapot: lezarva`, a `pr` és a `lezarva_osszegzes` csak a független újraellenőrzés `TISZTA` jelentése után kerül a fejlécbe (ELLENOR_F111_2 után); addig a brief `megallt`/`fut`.
+- 2. javítókör (ELLENOR_F111_2, 6 tétel, F111.11–F111.16, tételenként külön commit): ÚJ-1 `hatokoron_kivul` mércéje a `BRIEF_SABLON.md` koordinációs-fájl kivételeivel; ÚJ-2 a körjelölő nem vész el (a javítókör végén `megallt` + `Te:`, a `kovetkezo.md` 9. lépésének egy mondata megtartja a jelölőt); ÚJ-3 függő újraellenőrzés felismerése; ÚJ-4 pontos mergelt-PR egyezés; ÚJ-5 a címsor visszaállítva (E5 = 0); ÚJ-6 E4 alatt. A javítókör kész, a 3. újraellenőrzés (`ELLENOR_F111_3`) következik; a korlát 2.
+- Lezárás: az `allapot: lezarva`, a `pr` és a `lezarva_osszegzes` csak a független újraellenőrzés `TISZTA` jelentése után kerül a fejlécbe (ELLENOR_F111_3 után); addig a brief `megallt`/`fut`.
 
 ## Egyeztetett eltérés
 - E1: a száraz próba célpontja a brief 3.2/4 pontjában szereplő `naplok/ELLENOR_F9.md` helyett `naplok/ELLENOR_F115.md` (az F9 jelentés nem létezik, a `claude/f09-szotar-s2` PR-ja, #381, mergelt). A brief 2. pont „Nincs benne” f09-szotar-s2 sora elavult. A próba írás nélkül futott; az F115 fájljait/ágát nem módosítottam.
@@ -34,3 +35,4 @@ A jelölő a `Te:` / `Folytatás:` után áll (`feladatok.py` `startswith` vizsg
 - (a) `kovetkezo: "Te: [elteres_kor 2/2] ELLENOR_F111_2 …"` + utolsó jelentés `ELTÉRÉS`: 1. lépés: PR nem mergelt → jelentés ELTÉRÉS → `k = 2` = korlát → új kör nélkül megáll, nem sorol, nem egyeztet; 6. lépés szerinti tételes maradék.
 - (b) `kovetkezo: "Folytatás: [elteres_kor 1/2] …"` + `ELTÉRÉS`: `k = 1 < 2` → mostani kör 2 → 2. lépés (besorolás), 3. lépés fejléce `kör: 2 / 2`.
 - (c) jelölő nélkül: `k = 0` → 1. kör, `kör: 1 / 2`.
+- (d) `kovetkezo: "Te: [elteres_kor 2/2] /elteres 111 — újraellenőrzés függ: naplok/ELLENOR_F111_3.md"`, `allapot: megallt`, a fájl hiányzik: 1. lépés: PR nem mergelt → függő újraellenőrzés felismerve → nem javít, a betelt korlát sem állítja meg → az újraellenőrzés indul (5. lépés). Eredmény `TISZTA` → zárás; `ELTÉRÉS` és `k = 2` → 6. lépés, megállás tételes maradékkal az új jelentésből. A `/kovetkezo` nem veszi FOLYTATAS-jelöltnek (`megallt`, nem `fut` + `Folytatás:`), a 9. lépése pedig megtartja a jelölőt.
