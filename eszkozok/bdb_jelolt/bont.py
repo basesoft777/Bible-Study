@@ -61,7 +61,8 @@ FEJ_TOKEN = re.compile(
     r'(?P<romai>(?:VIII|VII|VI|IV|IX|III|II|V|X|I)\.)(?=\s|$)'
     r'|(?P<torzs>(?:' + TORZS + r'))\.?(?=\s|$)'
     r'|(?P<nagy>[A-H]\.)(?=\s|$)'
-    r'|(?P<szam>\d{1,2}\.?)(?=\s|$)'
+    # a szóköz nélküli kombinált fej („1.a.”, H7626) is két token (F107.22: a tokenizáló hibája volt)
+    r'|(?P<szam>\d{1,2}\.?)(?=\s|$|[a-z]\.)'
     r'|(?P<betu>[a-z]\.)(?=\s|$)'
     r'|(?P<zaro>\((?:\d{1,2}|[a-z]|[α-ω])\))(?=\s|$)')
 
@@ -76,7 +77,7 @@ TOROL = {
     'zaro': (),
 }
 
-FEJLEC = ['strong', 'bdb_id', 'sorszam', 'alszocikk', 'resz', 'utvonal', 'jelolo', 'jel', 'gyakorisag', 'szoveg',
+FEJLEC = ['strong', 'bdb_id', 'sorszam', 'alszocikk', 'szakasz', 'resz', 'utvonal', 'jelolo', 'jel', 'gyakorisag', 'szoveg',
           'illesztes', 'forras', 'forras_hash', 'proveniencia']
 
 # Az illesztési ujjlenyomatban a pe (és a pe sofit) a memmel egy vázbetű: a DictBDB.json a dagesses pét dagesses
@@ -205,7 +206,60 @@ def json_blokkok(defhtml):
     darab = belso[poz:]
     if darab.strip() and sima(darab):
         ki.append((darab, sub1))
-    return ki
+    # DT-F107g (a) (3): a bekezdés közepén álló valódi félkövér fej új blokkot nyit
+    bontott = []
+    for k, (darab, s1) in enumerate(ki):
+        kovetkezo = ki[k + 1][0] if k + 1 < len(ki) else ''
+        for i, resz in enumerate(kozepfej_bont(darab, kovetkezo)):
+            bontott.append((resz, s1 if i == 0 else False))
+    return bontott
+
+
+HAMIS_FEJ_UTAN = (')', ',', ';', ']')
+KOZEPFEJ_ELOTT = ('.', '—', ':', ';', ',')
+
+
+def fej_valodi(tokenek, maradek_html):
+    """DT-F107g (a) (1): a fej után közvetlenül „)”, „,”, „;”, „]” álló félkövér nem fej, hanem hivatkozás, amelyet a JSON
+    bekezdéstörése vitt bekezdés elejére (H7121 „(compare Pu`al)”, H3615 „2 );”, H0068 „below 3 );”)."""
+    return bool(tokenek) and not sima(maradek_html).startswith(HAMIS_FEJ_UTAN)
+
+
+def kozepfej_bont(blokk_html, kovetkezo_html=''):
+    """DT-F107g (a) (3): a blokk szétvágása a bekezdés közepén álló valódi félkövér fejeknél (M243 H1129 „— build, <b>1</b>
+    (literal)”). Valódi, ha a félkövér tartalma csupa fej-token; előtte (a sima szövegben) „.”, „—”, „:”, „;” vagy „,” áll; utána
+    nem „)”, „,”, „;”, „.”, „]” áll; és törzsnév után nem szám áll (hivatkozás: „compare Qal 42:10, Pi`el 38:7”). A bekezdés
+    VÉGÉN álló fej (utána semmi) akkor valódi, ha a következő blokk fejjel nyit (H3615 „— <b>1</b> </p><p><b>a.</b>”; a
+    BDB.lexicon ugyanitt „<b>1.</b> <br> <b>a.</b>”)."""
+    _, maradek = fej_bont(blokk_html)
+    kezd = len(blokk_html) - len(maradek)
+    vagasok = []
+    for m in re.finditer(r'<b>(.*?)</b>', blokk_html, re.S):
+        if m.start() <= kezd:
+            continue
+        tartalom = html.unescape(re.sub(r'<[^>]+>', '', m.group(1))).strip()
+        tok, rest = fej_bont('<b>' + tartalom + '</b>')
+        if not tok or sima(rest):
+            continue
+        elotte = sima(blokk_html[:m.start()])
+        utana = sima(blokk_html[m.end():])
+        if not elotte.endswith(KOZEPFEJ_ELOTT) or utana.startswith(HAMIS_FEJ_UTAN + ('.',)):
+            continue
+        if not utana:
+            ktok, kmar = fej_bont(kovetkezo_html)
+            if not fej_valodi(ktok, kmar):
+                continue
+        if tok[-1][0] == 'torzs' and re.match(r'\d', utana):
+            continue
+        vagasok.append(m.start())
+    if not vagasok:
+        return [blokk_html]
+    reszek, elozo = [], 0
+    for v in vagasok:
+        reszek.append(blokk_html[elozo:v])
+        elozo = v
+    reszek.append(blokk_html[elozo:])
+    return [r for r in reszek if sima(r)]
 
 
 def fej_bont(blokk_html):
@@ -325,8 +379,8 @@ def strong_illeszt(strong_eredeti, blokkok, szocikk, index, cimke_szerint):
     hasznalt = {aktualis}
     hozz[0] = hozz[1] = aktualis
     for i in range(2, len(blokkok)):
-        tokenek, _ = fej_bont(blokkok[i][0])
-        if any(sz != 'romai' for sz, _ in tokenek):
+        tokenek, mar = fej_bont(blokkok[i][0])
+        if fej_valodi(tokenek, mar) and any(sz != 'romai' for sz, _ in tokenek):
             # számozott / betűs / törzs-fejű bekezdés nem nyit új szócikket
             hozz[i] = aktualis
             continue
@@ -377,6 +431,7 @@ def strong_sorok(strong_pad, strong_eredeti, blokkok, hozz, kategoria, szocikk, 
     sorok = []
     allapot = dict.fromkeys(MINDEN_SZINT, '')
     alsz = 0
+    szakasz, szakasz_mod, volt_fej = '', None, False
     kiir_bdb = kategoria not in BDB_NELKUL
     section_jel = {}
     if kiir_bdb:
@@ -391,24 +446,39 @@ def strong_sorok(strong_pad, strong_eredeti, blokkok, hozz, kategoria, szocikk, 
         if szocikk_eleje:
             allapot = dict.fromkeys(MINDEN_SZINT, '')
             alsz = 0
+            szakasz, szakasz_mod, volt_fej = '', None, False
         if i == 0:
             jelolo, jel, gy, szoveg, ut = 'cim', '', '', sima(bh), 'cim'
         else:
             if sub1 and not szocikk_eleje:
                 alsz += 1
                 allapot = dict.fromkeys(MINDEN_SZINT, '')
+                szakasz, szakasz_mod, volt_fej = '', None, False
             tokenek, maradek = fej_bont(bh)
+            if tokenek and not fej_valodi(tokenek, maradek):
+                # DT-F107g (a) (1): hamis fej (hivatkozás a bekezdéstörés után) — a szöveg része, nem jelölő
+                tokenek, maradek = [], bh
             gy = ','.join(gyakorisag_kivesz(bh, bool(tokenek)))
             if tokenek and szocikk_eleje and all(sz == 'romai' for sz, _ in tokenek):
                 # a szócikk-eleji római szám a homonima száma (aranyminta 2.28 `szakasz`), nem fő tagolás
                 jelolo, jel, szoveg, ut = 'fej', ' '.join(x for _, x in tokenek), sima(maradek), 'fej'
+                szakasz = tokenek[-1][1].rstrip('.')
             elif tokenek:
                 for szint, szov in tokenek:
                     if szint == 'romai':
-                        for x in ('nagy', 'szam', 'betu', 'zaro'):
-                            allapot[x] = ''
-                        allapot['resz'] = szov.rstrip('.')
+                        if szakasz_mod is None:
+                            # DT-F107g (a) (2): ha a szócikk első római feje „I.”, és előtte nem volt szám-, betű- vagy
+                            # törzsfej, a római fejek homonima-szakaszok (H6440), különben fő tagolás (`resz`; H3068, H8478)
+                            szakasz_mod = szov == 'I.' and not volt_fej
+                        if szakasz_mod:
+                            allapot = dict.fromkeys(MINDEN_SZINT, '')
+                            szakasz = szov.rstrip('.')
+                        else:
+                            for x in ('nagy', 'szam', 'betu', 'zaro'):
+                                allapot[x] = ''
+                            allapot['resz'] = szov.rstrip('.')
                     else:
+                        volt_fej = True
                         for x in TOROL[szint]:
                             allapot[x] = ''
                         if szint == 'torzs':
@@ -424,6 +494,8 @@ def strong_sorok(strong_pad, strong_eredeti, blokkok, hozz, kategoria, szocikk, 
                 jel = ' '.join(s for _, s in tokenek)
                 szoveg = sima(maradek)
                 ut = utvonal(allapot)
+                if ut == '-/-/-' and not allapot['resz']:
+                    ut = 'fej'      # csak homonima-szakasz fej (pl. „II.”), jelentésszint nélkül
             else:
                 jel = ''
                 szoveg = sima(bh)
@@ -443,7 +515,8 @@ def strong_sorok(strong_pad, strong_eredeti, blokkok, hozz, kategoria, szocikk, 
                         break
         if i == 0:
             ut = 'cim'
-        sorok.append([strong_pad, bdb if kiir_bdb else '', str(i + 1), str(alsz), allapot['resz'] if i else '', ut, jelolo, jel, gy, szoveg,
+        sorok.append([strong_pad, bdb if kiir_bdb else '', str(i + 1), str(alsz), szakasz if i else '',
+                      allapot['resz'] if i else '', ut, jelolo, jel, gy, szoveg,
                       kategoria, 'DictBDB.json:%s#%d' % (strong_eredeti, i),
                       hashlib.sha256(bh.encode('utf-8')).hexdigest()[:16],
                       'scope=%s | forras=bdb_jelolt/bont.py (fejléc) | ts=%s' % (strong_pad, ts)])
@@ -497,7 +570,7 @@ def main():
     sorok, stat, reszlet = general(a.ts)
     ossz = sum(stat.values())
     print('Strong: %d; %s; nem egyező arány: %.2f%% (a csonk nélkül: %.2f%%)' % (ossz, dict(stat), 100.0 * (ossz - stat['egyezik']) / max(1, ossz), 100.0 * (ossz - stat['egyezik'] - stat['csonk']) / max(1, ossz)))
-    print('sor: %d; jelolo: %s' % (len(sorok), dict(collections.Counter(s[6] for s in sorok))))
+    print('sor: %d; jelolo: %s' % (len(sorok), dict(collections.Counter(s[FEJLEC.index('jelolo')] for s in sorok))))
     for k, (kat, r) in list(sorted(reszlet.items()))[:a.lista]:
         print('  %s %s %s' % (k, kat, r[:160]))
     if a.meres:

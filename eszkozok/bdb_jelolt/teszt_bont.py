@@ -65,6 +65,30 @@ class Egyseg(unittest.TestCase):
         # a JSON dagesses mem-je és a lexikon dagesses pe-je ugyanazt a vázat adja (csak illesztéshez)
         self.assertEqual(bont.heber_vaz('\u05de\u05bc\u05b7\u05e8'), bont.heber_vaz('\u05e4\u05bc\u05b7\u05e8'))
 
+    def test_kombinalt_fej_szokoz_nelkul(self):
+        # F107.22: a „1.a.” két token (H7626)
+        tok, mar = bont.fej_bont('<b>1.a.</b> rod, staff')
+        self.assertEqual(tok, [('szam', '1.'), ('betu', 'a.')])
+
+    def test_hamis_fej_bekezdestores_utan(self):
+        # DT-F107g (a) (1): a fej után „)”, „,”, „;”, „]” — hivatkozás, nem fej (H7121, H3615, H0068)
+        for h in ('<b>Pu`al</b>); with name of Baal', '<b>3</b> ); marble', '<b>Qal</b>, afterwards'):
+            tok, mar = bont.fej_bont(h)
+            self.assertFalse(bont.fej_valodi(tok, mar), h)
+        tok, mar = bont.fej_bont('<b>2</b> tribe; — absolute')
+        self.assertTrue(bont.fej_valodi(tok, mar))
+
+    def test_bekezdesen_beluli_fej(self):
+        # DT-F107g (a) (3): M243 H1129, és a hivatkozás nem vág
+        r = bont.kozepfej_bont('— <i>build</i>, <b>1</b> (literal) with')
+        self.assertEqual(len(r), 2)
+        self.assertTrue(r[1].startswith('<b>1</b>'))
+        self.assertEqual(len(bont.kozepfej_bont('Gen 1:1 (see <b>2</b>); x')), 1)
+        self.assertEqual(len(bont.kozepfej_bont('compare Qal 42:10, <b>Pi`el</b> 38:7')), 1)
+        # bekezdés végi fej: csak ha a következő blokk fejjel nyit (H3615)
+        self.assertEqual(len(bont.kozepfej_bont('Lev 26:16; — <b>1</b> ', '<b>a.</b> complete')), 2)
+        self.assertEqual(len(bont.kozepfej_bont('Lev 26:16; — <b>1</b> ', 'complete')), 1)
+
     def test_cimfolytatas(self):
         self.assertEqual(bont.cimfolytatas_nelkul(['or', 'shettayim', 'h:x', 'noun']), ['h:x', 'noun'])
         self.assertEqual(bont.cimfolytatas_nelkul(['noun', 'masculine']), ['noun', 'masculine'])
@@ -113,6 +137,23 @@ class Tabla(unittest.TestCase):
     def test_h5117_torzs_nagybetu(self):
         self.assertIn("Hiph'il.A/1/a", [x['utvonal'] for x in self.st['H5117']])
 
+    def test_homonima_szakasz(self):
+        # DT-F107g (a) (2): a H6440 „I.”, „II.” szakasz (resz üres); a H3068 (M203) és a H8478 (M130) római feje fő tagolás
+        h = self.st['H6440']
+        self.assertEqual(set(x['szakasz'] for x in h if x['sorszam'] not in ('1', '2', '3')), {'I', 'II'})
+        self.assertEqual(set(x['resz'] for x in h), {''})
+        self.assertIn('II', [x['resz'] for x in self.st['H3068']])
+        self.assertIn('II', [x['resz'] for x in self.st['H8478']])
+
+    def test_hamis_fej_a_tablaban(self):
+        # H7121: a „(compare Pu`al)” nem törzsfej; a Qal 3. jelentése a Qal alatt
+        self.assertIn('Qal/3/a', [x['utvonal'] for x in self.st['H7121']])
+        self.assertNotIn('Pu\'al/-/d', [x['utvonal'] for x in self.st['H7121']])
+
+    def test_bekezdesen_beluli_fej_a_tablaban(self):
+        self.assertIn('Qal/1/i', [x['utvonal'] for x in self.st['H1129']])        # M243
+        self.assertIn("Pi'el/1/a", [x['utvonal'] for x in self.st['H3615']])      # bekezdés végi fej
+
     def test_proveniencia(self):
         for s in self.sorok[:2000]:
             self.assertTrue(s['proveniencia'].startswith('scope=%s | forras=' % s['strong']))
@@ -140,9 +181,19 @@ class Javitas(unittest.TestCase):
     def test_norm_kantillacio_nelkul(self):
         self.assertEqual(self.fj.norm('מָ֑ר'), 'מָר')
 
+    def test_kezi_sorok(self):
+        k = [s for s in self.sorok if s['allapot'] == 'kezi']
+        self.assertEqual(len(k), len(self.fj.KEZI))
+        for s in k:
+            self.assertEqual(s['proveniencia'], 'manual')
+            self.assertIn(s['hiba'], ('jelolo_hianyzik', 'hamis_jelolo'))
+            self.assertTrue(s['indok'] and s['forras_alak'] and s['javitott_alak'])
+
     def test_allapotok(self):
-        self.assertEqual(set(s['allapot'] for s in self.sorok), {'javitva', 'valodi_mem', 'jelolt_marad'})
+        self.assertEqual(set(s['allapot'] for s in self.sorok), {'javitva', 'valodi_mem', 'jelolt_marad', 'kezi'})
         for s in self.sorok:
+            if s['allapot'] == 'kezi':
+                continue
             self.assertEqual(bool(s['javitott_alak']), s['allapot'] == 'javitva')
             if s['allapot'] == 'javitva':
                 # a forrás (JSON) alakban nincs dagesses pe (DT-F107f)
