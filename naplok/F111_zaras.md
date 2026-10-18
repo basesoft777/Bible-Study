@@ -26,3 +26,9 @@ Szemléltető, nem a parancs kimenete: ha az ág nem volna mergelt, a 2. lépés
 | 6 | Teszt (1) megengedő `assertIn` | mechanikus | a mért érték a DB-ből adott |
 | 7 | `Macula_gorog.tsv` csak `ts` változott | mechanikus | a fájl visszaállítása |
 Összesen: 3 mechanikus, 2 tartalmi, 2 hatókörön kívüli, 0 téves.
+
+## Körszámláló száraz próbája (írás nélkül; `kovetkezo` mező `[elteres_kor k/2]` jelölője, ELLENOR_F111 3.)
+A jelölő a `Te:` / `Folytatás:` után áll (`feladatok.py` `startswith` vizsgálat); új fejlécmező nincs (az `elteres_kor` mező `ellenoriz`-en „ismeretlen kulcs” hibát adna, ezért a felhasználó a `kovetkezo`-szöveges megoldást választotta, `feladatok.py` érintetlen).
+- (a) `kovetkezo: "Te: [elteres_kor 2/2] ELLENOR_F111_2 …"` + utolsó jelentés `ELTÉRÉS`: 1. lépés: PR nem mergelt → jelentés ELTÉRÉS → `k = 2` = korlát → új kör nélkül megáll, nem sorol, nem egyeztet; 6. lépés szerinti tételes maradék.
+- (b) `kovetkezo: "Folytatás: [elteres_kor 1/2] …"` + `ELTÉRÉS`: `k = 1 < 2` → mostani kör 2 → 2. lépés (besorolás), 3. lépés fejléce `kör: 2 / 2`.
+- (c) jelölő nélkül: `k = 0` → 1. kör, `kör: 1 / 2`.
