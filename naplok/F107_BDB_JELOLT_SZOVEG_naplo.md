@@ -535,3 +535,64 @@ F73, F99); 29 Python-fájl az `eszkozok/` alatt (köztük `lexikon_general.py`, 
 
 **(4) A csere helye:** a fenti olvasók (köztük két, ennek a feladatnak tiltott fájl) és a 446–546 elavuló fordítás miatt a csere nem
 fér el ebben a feladatban tiltott-fájl-érintés nélkül. Javaslat: `DT-F107c` (`DONTESEK.md`).
+
+### 6.1 A DT-F107c alkalmazása: a nézet-generátor és a 247 sor hivatkozás-javítása (F107.33)
+
+A felhasználó (chat, 2026-10-18): „DT-F107c: (d) — ebben a feladatban csak a nézet-generátor és a 247 sor F34/F46-javításának átvétele
+a javítótáblába; a TSV cseréje és az olvasók átállása külön, /befogad-dal felvett feladat; a 674 fordítás forras_hash-e addig a
+változatlan TSV-hez kötődik. Folytasd a 7. lépéssel.”
+
+**A javítótábla `hivatkozas` osztálya** (`forras_javit.py`): a TSV és a nyers JSON (a `_convert_bdb.py` szerint) szóköz szerinti tokenjeinek
+eltérő szakaszai — 412 sor, mind `javitva`, mind megtalálta a helyét a táblában. A forrásjavítás azonosítása az **új** hivatkozás kulcsával
+(Strong, a könyvnév első 3 betűje, fejezet:vers; csak fejezet:vers változásnál a könyvnév az előző token): **F34 159** (`naplok/F34_M2_csere.tsv`
+JAVIT — pontosan a 159 JAVIT-sor), **F46 250** (`naplok/BDB_KONYVFELOLDAS_csere.tsv` / `_kezi.tsv`), **F46.6 3** — H5973, H7588, H9005
+„Phoenician” → „Pharaoh”: a csere-naplókban nem szerepel, a git-történet igazolja (`git log -G Pharaoh -- konkordancia/BDB_teljes_unabridged.tsv`:
+`6400b5a7` „F46.6: gépi csere a DT-F46 szerint”).
+
+**A nézet-generátor** (`eszkozok/bdb_jelolt/nezet_general.py`): a tábla sorai (`jel` + `szoveg`) + a `hivatkozas` javítások (+ `--pe-mem`: a
+pe/mem `javitva` sorok, a forrás alakjában — a U+FB3E prezentációs formát is); a kimenet a `--ki` útvonalra (a repón kívül; a brief `ir`
+mezője nem ad neki helyet), a `BDB_teljes_unabridged.tsv` változatlan. Bájtos összevetés a TSV-vel (whitespace-normalizálva):
+
+| nézet | azonos | sub | szokoz | forras_html | pe_mem | nincs_a_nezetben | egyéb |
+|---|---|---|---|---|---|---|---|
+| a hivatkozás-javítással (412 alkalmazva) | 7 419 | 564 | 102 | 5 | — | 9 | **0** |
+| + pe/mem (3 823 alkalmazva, 0 sikertelen) | 6 264 | 321 | 76 | 5 | 1 424 | 9 | **0** |
+
+A `tsv_utolagos` osztály eltűnt (a 3. lépésben 247): a 247 sor javítása a nézetben megvan. A megmaradt eltérés csak a jóváhagyott
+osztályokban: `sub` (a TSV `_N`-je), `szokoz` (a fej utáni forrás-szóköz), `forras_html` (a JSON hibás HTML-je, 5 Strong), `pe_mem` (a
+DT-F107f javítása), `nincs_a_nezetben` (F57/F72, 9). Teszt: `teszt_bont.py` (`Nezet` osztály), OK.
+
+`scope=F107 6.1 | forras=python eszkozok/bdb_jelolt/nezet_general.py --osszevet [--pe-mem] --ki <scratchpad>; forras_javit.py | ts=2026-10-18`
+
+## 7. lépés — a kész magyar fordítás illesztése (⛔ DT-F107b)
+
+Eszköz: `eszkozok/bdb_jelolt/hu_illeszt.py` → `adat/bdb_szakasz_hu.tsv` (SEMA 2.32). Bemenet: a szakasztábla és az `adat/forditasok.tsv`
+BDB-sorai (csak olvasva; Strongonként az utolsó nem üres `forditas_hu`); a magyar oldali jelölő- és törzsnév-felismerés a tagolás-kapué
+(`eszkozok/forditas_kapuk.py`, importálva). Módszer: a sor fej-jelölői (szám, betű, római, zárójeles, törzsnév) sorrendtartó, mohó
+illesztése; ha a jelölő nem illeszkedik, horgony: a sor első fejezet:verse a magyarban az előző és a következő illesztett szakasz között, a
+szakasz a sor saját jelölőjének ott álló utolsó előfordulásától (pl. H0040 „+? 1 Gerár királya”: a kapu regexe a kérdőjel után nem ismeri
+fel az „1”-et, a horgony igen).
+
+| mérés | illeszkedik | tagolatlan | horgonnyal | elakad |
+|---|---|---|---|---|
+| kiinduló (2026-10-16, `manual`, a lexikon jelölt tagolásán) | 355 | 89 | — | 230 |
+| Strong-szint, a kapu szigorú `_illeszt`-jével a szakasztáblán | **380** | **94** | — | **200** |
+| Strong-szint, horgonnyal | **385** | **83** | **105** | **101** |
+
+Soronként (9 664 sor, 674 Strong): `illeszkedik` 6 210, `horgonnyal` 271, `elakad` 618, `jelolo_nelkul` 2 565. Az `elakad` 618 sor (101
+Strong) jelölőtípus szerint: betű a–i 296, szám 259, törzsnév 52, betű j-től 7 (a kapu betű-regexe csak a–i), római/egyéb 4. Az
+`adat/forditasok.tsv` nem íródott (git: változatlan). Teszt: `teszt_bont.py` (`HuIlleszt`), 43 teszt összesen, OK.
+
+`scope=F107 7. lépés, 674 Strong | forras=python eszkozok/bdb_jelolt/hu_illeszt.py --ts 2026-10-18 (F107.34, f845b16d) | ts=2026-10-18`
+
+Javaslat: `DT-F107b` (`DONTESEK.md`).
+
+## Átadandó tételek (a #107 nem veszi fel; a `/befogad` dolga)
+
+- **A TSV cseréje és az olvasók átállása** (DT-F107c (d)): a `konkordancia/BDB_teljes_unabridged.tsv` helyett a `nezet_general.py` nézete;
+  az olvasók: `adat/datasetek.tsv` 4 sor (+4 megjegyzés), 16 brief `olvas` mezője, 29 Python-fájl (l. 6. (3)); a 674 fordítás `forras_hash`-e
+  (V1: 446, V2: 546 sor változna) és a `_N`/szóköz technikai eltérés kezelése.
+- **A 8. lépés** (a #102 és a #38 briefjébe a tábla elérhetősége és a mért számok): a döntés után az orkesztrátor egyezteti (a két brief nincs
+  az `ir` mezőben).
+- **N-F107a** (a kész fordítások pe/mem-érintettsége) — nyitva, `NYITOTT_FELADATOK.md`.
+- **`.gitattributes`** (`konkordancia/lexikonok_nyers/DictBDB.json -text`) — javaslat, nem írva.
