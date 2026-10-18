@@ -26,8 +26,9 @@ A mért eltérés (naplok/F114_USZ_meres.md): 5 csak-KJV vers (1Kor 3:23, 2Kor
 (pl. Jel 12:18/13:1). A TSK ÚSZ-oldala nem ellenőrzött; a lezárás N-F114a.
 
 ÜRES igehely_kjv (DT-F114d (b), Felhasználó 2026-10-18): az `osztaly=MT` és `forras=szamlalas` sorokra
-(86 sor, LXX-hiány) a KJV-kulcs az `igehely_mt` (MT-tartalék), az 1Kir 22:46–49 kivételével
-(NINCS_PAR_KIVETEL, scope=manual: ott a Károli-tartalom a KJV 22:45–48, az MT-szám eltolt párt adna). Minden más üres-KJV sor, és minden
+(86 sor, LXX-hiány) a KJV-kulcs az `igehely_mt` (MT-tartalék), a NINCS_PAR_KIVETEL
+versek kivételével (scope=manual, l. fent: 1Kir 22:46–49, Ézs 3:1–26, Jón 2:2–10, 1Sám 24:1–22 — a tábla ott
+eltolt tartalmú párt adna, ezért a tábla értékétől függetlenül „nincs pár”). Minden más üres-KJV sor, és minden
 Károli-vers, amelynek nincs sora a táblában (`nincs_sor`; pl. Hós 13–14, Én 6, 2Móz 35–36), "nincs pár"
 marad: a számegyezés ott hibás párt adna (Károli Hós 14 = 10 vers, KJV = 9). A tábla pótlása: N-F54a.
 
@@ -38,10 +39,11 @@ ISMERT KORLÁTOK (F114.10, naplok/ELLENOR_TSK_VERSSZAM.md):
     Károli-versek „nincs pár”-ok: a main-hez képest elveszett TSK-sorok, tételesen:
     naplok/F114_elveszett_sorok.tsv.
   * Ismert táblahibák (N-F41a, N-F54a bővítés): Jón 2:1 — a Károli 2:1 a KJV 1:17-nek felel meg, a tábla
-    KJV 2:1-et ad; Károli 1Kir 22:54 (= KJV 22:53), Jón 2:11 (= KJV 2:10), Ézs 3:27 (= KJV 3:26) az MT-tartalékkal
-    eltolt párt kap; a szomszédos tvtms-sorok (1Kir 22:43–45, 50–53; Jón 2:10; Ézs 3:26) azonosságot adnak
-    eltolt tartalomra; a KJV-pár létezik, de a tábla nem rögzíti: Károli Préd 9:21–23 = KJV 10:1–3, Jób 39:34–38 =
-    KJV 40:1–5, Dán 3:31–33 = KJV 4:1–3 (ezek a KJV-versek „nincs pár”-ok), a Préd 2:26 és a Zsolt 13:6 Károli-összevonás.
+    KJV 2:1-et ad; az 1Kir 22:54, Jón 2:11, Ézs 3:27, 1Sám 20:43, 1Sám 24:23 MT|szamlalas sorok KJV-verse NEM
+    létezik, ezért 0 TSK-sort kapnak (ártalmatlan); a kár a szomszédos sorokon volt (ezek most a kivétellistán);
+    a tvtms-szomszédok (1Kir 22:43–45, 50–53) azonosságot adnak eltolt tartalomra; a KJV-pár létezik, de a tábla
+    nem rögzíti: Károli Préd 9:21–23 = KJV 10:1–3, Jób 39:34–38 = KJV 40:1–5, Dán 3:31–33 = KJV 4:1–3 (ezek a
+    KJV-versek „nincs pár”-ok); a Préd 2:26 és a Zsolt 13:6 Károli-összevonás.
 
 A TSK-tartomány-igehelyek kibontása nem része ennek a modulnak (N-F114b).
 
@@ -64,10 +66,16 @@ _K2J = None      # Károli-vers -> KJV-vers ('' = nincs KJV-pár)
 _J2K = None      # KJV-vers -> [Károli-versek]
 _KONYVEK = None  # a megfeleltetés által fedett (ÓSZ) könyvek
 
-# Explicit "nincs pár" kivételek az MT-tartalék alól (scope=manual, F114, Felhasználó 2026-10-18):
-# 1Kir 22:46–49 — a Károli-tartalom a KJV 22:45–48 (pl. Károli 22:46 = Josafát egyéb dolgai), tehát az
-# MT-szám (22:46–49) eltolt KJV-párt adna. Ismert táblahiba, N-F54a.
-NINCS_PAR_KIVETEL = frozenset('1Kir 22:%d' % v for v in (46, 47, 48, 49))
+# Explicit "nincs pár" kivételek (scope=manual, F114, Felhasználó 2026-10-18): a KÁROLI-versek, amelyekre a
+# megfeleltetés-tábla (MT-tartalék vagy tvtms-azonosság) eltolt tartalmú KJV-párt adna; a tábla hibás, javítása N-F54a.
+#   1Kir 22:46–49 — a Károli-tartalom a KJV 22:45–48 (pl. Károli 22:46 = Josafát egyéb dolgai);
+#   Ézs 3:1–26    — Károli 3:1 = KJV 2:22 (a fejezethatár eltolt);
+#   Jón 2:2–10    — Károli 2:9 = KJV 2:8 (a Károli 2:1 = KJV 1:17, N-F41a);
+#   1Sám 24:1–22  — Károli 24:2 = KJV 24:1.
+# Ismert maradék (nem kivétel, döntés nélkül nem bővítjük): 1Kir 22:45 Károli-szövege a KJV 22:44-nek felel meg.
+NINCS_PAR_KIVETEL = frozenset(
+    ['1Kir 22:%d' % v for v in range(46, 50)] + ['Ézs 3:%d' % v for v in range(1, 27)]
+    + ['Jón 2:%d' % v for v in range(2, 11)] + ['1Sám 24:%d' % v for v in range(1, 23)])
 
 
 def _betolt():
@@ -91,10 +99,13 @@ def _betolt():
         konyv = b.group(1)
         konyvek.add(konyv)
         kj = m[ij].strip()
+        if kk in NINCS_PAR_KIVETEL:
+            k2j[kk] = ''   # explicit "nincs pár" (scope=manual), a tábla értékétől függetlenül
+            continue
         # DT-F114d (b): MT-tartalék KIZÁRÓLAG az osztaly=MT, forras=szamlalas sorokra, ahol az
         # igehely_kjv üres (LXX-hiány; a KJV-vers létezik, számozása az MT-vel azonos).
         # Más üres-KJV sor (MT|lxx_os_etalon_f91 felirat, KEZI, KJV|lxx felirat) "nincs pár" marad.
-        if not kj and m[io_] == 'MT' and m[ifo] == 'szamlalas' and m[im].strip() and kk not in NINCS_PAR_KIVETEL:
+        if not kj and m[io_] == 'MT' and m[ifo] == 'szamlalas' and m[im].strip():
             kj = m[im].strip()
         if kj:
             kj = '%s %s' % (konyv, kj)

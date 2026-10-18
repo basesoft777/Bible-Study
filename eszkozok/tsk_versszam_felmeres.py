@@ -32,7 +32,9 @@ if hasattr(sys.stdout, 'reconfigure'):
 if hasattr(sys.stderr, 'reconfigure'):
     sys.stderr.reconfigure(encoding='utf-8')
 
-TKE_KIVETEL = frozenset('1Kir 22:%d' % v for v in (46, 47, 48, 49))  # = tsk_kulcs.NINCS_PAR_KIVETEL (scope=manual)
+TKE_KIVETEL = frozenset(  # = tsk_kulcs.NINCS_PAR_KIVETEL (scope=manual)
+    ['1Kir 22:%d' % v for v in range(46, 50)] + ['Ézs 3:%d' % v for v in range(1, 27)]
+    + ['Jón 2:%d' % v for v in range(2, 11)] + ['1Sám 24:%d' % v for v in range(1, 23)])
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 KONK = os.path.join(REPO, 'konkordancia')
 ADAT = os.path.join(REPO, 'adat')
@@ -107,6 +109,8 @@ def main():
         kk = r['igehely_karoli']
         b = konyv_cv(kk)
         kj = r['igehely_kjv'].strip()
+        if kk in TKE_KIVETEL:
+            kj = ''   # scope=manual "nincs pár" kivétel
         # DT-F114d (b): MT-tartalék csak az MT|szamlalas sorokra, ahol az igehely_kjv üres
         if not kj and r['osztaly'] == 'MT' and r['forras'] == 'szamlalas' and r['igehely_mt'].strip() and kk not in TKE_KIVETEL:
             kj = r['igehely_mt'].strip()
@@ -500,13 +504,13 @@ def main():
     f_uj_pair = len(new_pairs - old_pairs)
 
     def ok_osztaly(k, kat, ures):
-        """A veszteség OKA (a KJV-kulcs szerint; a kat az azonos szövegű Károli-vers táblasora, csak a régi elérés leírása).
+        """A veszteség OKA (a KJV-kulcs szerint; a kat az azonos számú Károli-vers táblasora, csak a régi elérés leírása).
         nincs_sor: a Károli-fejezetnek nincs sora a táblában; kivetel: az 1Kir 22:46–49 scope=manual "nincs pár";
         egyéb: a KJV-vers létezik, de a tábla nem rögzíti a Károli-párját (táblahiba, pl. Préd 10:1–3 = Károli 9:21–23)."""
         if kat == 'nincs_sor':
             return 'tabla_lyuk_fejezet'
         if k in TKE_KIVETEL:
-            return 'kivetel_nincs_par_1Kir_22_46_49'
+            return 'kivetel_nincs_par_' + {'1Kir': '1Kir_22', 'Ézs': 'Ezs_3', 'Jón': 'Jon_2', '1Sám': '1Sam_24'}[k.split(' ')[0]]
         return 'tablahiba_kjv_par_letezik'
 
     def osszegez(d):
@@ -522,17 +526,17 @@ def main():
     print('Régen elért, most nem elért pár: %d; újonnan elért pár: %d' % (f_lost_pair, f_uj_pair))
     print('Elveszett forrássor (a KJV-kulcs létező Károli-vers, de nincs Károli-párja): %d sor, %d kulcs' % (f_osszes_forras, len(f_forras)))
     for (ok, kat), (nk, ns) in sorted(osszegez(f_forras).items()):
-        print('  forrás | ok=%s | (azonos szövegű Károli-vers táblasora: %s) | %d kulcs, %d sor' % (ok, kat, nk, ns))
+        print('  forrás | ok=%s | (azonos számú Károli-vers táblasora: %s) | %d kulcs, %d sor' % (ok, kat, nk, ns))
     print('Elveszett célelőfordulás (a cél KJV-vers létező Károli-vers, de nincs Károli-párja): %d, %d vers' % (f_osszes_cel, len(f_cel)))
     for (ok, kat), (nk, ns) in sorted(osszegez(f_cel).items()):
-        print('  cél | ok=%s | (azonos szövegű Károli-vers táblasora: %s) | %d vers, %d előfordulás' % (ok, kat, nk, ns))
+        print('  cél | ok=%s | (azonos számú Károli-vers táblasora: %s) | %d vers, %d előfordulás' % (ok, kat, nk, ns))
     print('proveniencia: scope=TSK ÓSZ-sorai, régi (identitás) vs. új (tsk_kulcs) elérés | forras=TSK_kereszthivatkozasok.tsv+Karoli_1908.tsv+Karoli_versmegfeleltetes.tsv | n=%d | ts=%s'
           % (len(old_pairs), ts))
     ut = a.elveszett or os.path.join(a.kimenet, 'elveszett_sorok.tsv')
     with open(ut, 'w', encoding='utf-8', newline='\n') as fh:
         fh.write('# F114.10: a TSK ÓSZ-forrás- és célkulcsai, amelyeket a main régi logikája (KJV-kulcs = Károli-kulcs) elért, az új tsk_kulcs viszont "nincs pár"-nak vesz\n')
         fh.write('# proveniencia: scope=TSK ÓSZ | forras=TSK_kereszthivatkozasok.tsv+Karoli_1908.tsv+Karoli_versmegfeleltetes.tsv (eszkozok/tsk_versszam_felmeres.py F. rész) | n=%d | ts=%s\n' % (len(f_forras) + len(f_cel), ts))
-        fh.write('\t'.join(['oldal', 'kjv_kulcs', 'sorok', 'ok', 'azonos_szovegu_karoli_vers_tablasora']) + '\n')
+        fh.write('\t'.join(['oldal', 'kjv_kulcs', 'sorok', 'ok', 'azonos_szamu_karoli_vers_tablasora']) + '\n')
         for oldal, d in (('forras', f_forras), ('cel', f_cel)):
             for k in sorted(d):
                 fh.write('\t'.join([oldal, k, str(d[k][0]), ok_osztaly(k, d[k][1], d[k][2]), d[k][1]]) + '\n')

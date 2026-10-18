@@ -44,15 +44,17 @@ ANTROP-001_TUDOMANYOS.md	teologiai	518	0
 ANTROP-001_TUDOMANYOS.md	tsk_kulcs_javitas	0	5
 ANTROP-001_TUDOMANYOS.md	ubs_dbh	34	0
 HAMART-001_TORZSCIKK.md	felhasznalo_elfogadva	0	2
+HAMART-001_TORZSCIKK.md	ismeretlen	0	1
 HAMART-001_TORZSCIKK.md	kiejtes	38	38
 HAMART-001_TORZSCIKK.md	licenc	11	0
 HAMART-001_TORZSCIKK.md	lxx_korpusz	29	29
 HAMART-001_TORZSCIKK.md	szerep	23	19
-HAMART-001_TORZSCIKK.md	torzscikk_res	201	26
+HAMART-001_TORZSCIKK.md	torzscikk_res	202	26
 HAMART-001_TORZSCIKK.md	tsk_kulcs_javitas	0	4
 HAMART-001_TUDOMANYOS.md	elavult_adat	177	4
 HAMART-001_TUDOMANYOS.md	felhasznalo_elfogadva	0	3
 HAMART-001_TUDOMANYOS.md	fordites_jelzo	5	5
+HAMART-001_TUDOMANYOS.md	ismeretlen	0	2
 HAMART-001_TUDOMANYOS.md	jeloles	11	11
 HAMART-001_TUDOMANYOS.md	kiejtes	44	30
 HAMART-001_TUDOMANYOS.md	licenc	39	10
@@ -147,9 +149,9 @@ TEREMT-001_TORZSCIKK.md	kiejtes	58	58
 TEREMT-001_TORZSCIKK.md	licenc	11	0
 TEREMT-001_TORZSCIKK.md	lxx_korpusz	9	9
 TEREMT-001_TORZSCIKK.md	szerep	11	7
-TEREMT-001_TORZSCIKK.md	torzscikk_res	19	11
+TEREMT-001_TORZSCIKK.md	torzscikk_res	18	11
 TEREMT-001_TORZSCIKK.md	tsk_kulcs_javitas	0	1
-TEREMT-001_TUDOMANYOS.md	elavult_adat	12	8
+TEREMT-001_TUDOMANYOS.md	elavult_adat	11	8
 TEREMT-001_TUDOMANYOS.md	felhasznalo_elfogadva	0	4
 TEREMT-001_TUDOMANYOS.md	fordites_jelzo	1	1
 TEREMT-001_TUDOMANYOS.md	jeloles	11	11
@@ -164,6 +166,6 @@ TEREMT-001_TUDOMANYOS.md	tbesh	5	0
 TEREMT-001_TUDOMANYOS.md	teologiai	58	0
 TEREMT-001_TUDOMANYOS.md	tsk_kulcs_javitas	0	4
 TEREMT-001_TUDOMANYOS.md	ubs_dbh	44	0
-# összesítő (hozzáadott + törölt sor): kiejtes=848, tbesh=147, ubs_dbh=522, mounce_sece=143, teologiai=3727, nyelvi_hatter=79, lxx_korpusz=360, licenc=462, szerep=197, szerep_vaz=488, elavult_adat=417, fordites_jelzo=24, tsk_kulcs_javitas=43, felhasznalo_elfogadva=55, jeloles=176, torzscikk_res=488, ismeretlen=0
+# összesítő (hozzáadott + törölt sor): kiejtes=848, tbesh=147, ubs_dbh=522, mounce_sece=143, teologiai=3727, nyelvi_hatter=79, lxx_korpusz=360, licenc=462, szerep=197, szerep_vaz=488, elavult_adat=416, fordites_jelzo=24, tsk_kulcs_javitas=43, felhasznalo_elfogadva=55, jeloles=176, torzscikk_res=488, ismeretlen=3
 # proveniencia: scope=../../../../../AppData/Local/Temp/f114p vs lexikon | forras=eszkozok/render_diff_osztalyoz.py --proba | ts=
 # az éles lexikon/ hash-ellenőrzése (naplok/F09_S0_lexikon_hash.tsv): 16 fájl bájtra változatlan

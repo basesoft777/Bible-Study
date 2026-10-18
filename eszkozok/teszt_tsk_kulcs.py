@@ -57,6 +57,17 @@ class KulcsTeszt(unittest.TestCase):
             self.assertEqual(T.kjv_to_karoli('1Kir 22:%d' % v), [], v)
         self.assertEqual(T.karoli_to_kjv('1Kir 22:45'), '1Kir 22:45')
 
+    def test_kivetel_fejezetek_nincs_par(self):
+        # scope=manual kivételek: Ézs 3:1–26, Jón 2:2–10, 1Sám 24:1–22 (a tvtms/MT-azonosság eltolt tartalmat adna)
+        for v in ('Ézs 3:1', 'Ézs 3:26', 'Jón 2:2', 'Jón 2:9', 'Jón 2:10', '1Sám 24:1', '1Sám 24:2', '1Sám 24:22'):
+            self.assertIsNone(T.karoli_to_kjv(v), v)
+            self.assertEqual(T.kjv_to_karoli(v), [], v)
+        # a határon kívüli szomszédok nem változnak
+        self.assertEqual(T.karoli_to_kjv('Jón 2:1'), 'Jón 2:1')
+        self.assertEqual(T.karoli_to_kjv('1Sám 23:28'), '1Sám 23:28')
+        self.assertIsNone(T.karoli_to_kjv('Ézs 4:2'))   # táblasor nélküli (N-F54a), a kivétel nem érinti
+        self.assertEqual(T.karoli_to_kjv('1Sám 20:43'), '1Sám 20:43')  # MT-tartalék (KJV-vers nem létezik, 0 TSK-sor)
+
     def test_azonos_vers(self):
         self.assertEqual(T.karoli_to_kjv('1Móz 1:1'), '1Móz 1:1')
         self.assertEqual(T.kjv_to_karoli('1Móz 1:1'), ['1Móz 1:1'])

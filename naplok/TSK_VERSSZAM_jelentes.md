@@ -16,18 +16,18 @@ Az öt fogyasztó (`lexikon_general.tsk_index`, `lekerdez.cmd_tsk`, `nem_vizsgal
 
 | Mérés | Érték |
 |---|---|
-| A. fogyasztói úton olvasott ÓSZ Károli-kulcs | 21 306; KJV-forrása nem a megfeleltetés szerinti: **0** |
+| A. fogyasztói úton olvasott ÓSZ Károli-kulcs | 21 247; KJV-forrása nem a megfeleltetés szerinti: **0** |
 | B. `elofordulasok.tsv` ÓSZ-versei (megfeleltetéssel) | 224 vers |
 | B. minden Votes | rossz versről **0**, elmarad **0** |
 | B. Votes ≥ 15 | rossz versről **0**, elmarad **0** |
-| nincs-pár forrás-KJV-kulcs (ÓSZ, a sor kimarad) | 275 kulcs, 4 245 sor |
-| nincs-pár cél-KJV-vers (ÓSZ, a sor kimarad) | 286 vers, 3 475 előfordulás |
+| nincs-pár forrás-KJV-kulcs (ÓSZ, a sor kimarad) | 331 kulcs, 4 925 sor |
+| nincs-pár cél-KJV-vers (ÓSZ, a sor kimarad) | 342 vers, 4 296 előfordulás |
 
 **Javítás (F114.10–F114.17, a független ellenőri jelentések alapján, `naplok/ELLENOR_TSK_VERSSZAM.md`):** az első változat hamisan állította, hogy a nincs-pár kulcsok olyan KJV-versek, amelyeknek a Károliban nincs azonos tartalmú párja. A valós ok oszloponként más. A táblázat számai a DT-F114d és az 1Kir 22:46–49 kivétel utáni állapotot mutatják; a korábbi (345/4 976, 359/4 378, 21 234) számok felülírva.
 
-A `Karoli_versmegfeleltetes.tsv` 161 üres `igehely_kjv` sorából **csak az `MT|szamlalas` 86 sorra** igaz, hogy a KJV-vers létezik és azonos számú (LXX-hiány); ezekre a `tsk_kulcs` az `igehely_mt`-t veszi KJV-kulcsnak (DT-F114d (b)), **az 1Kir 22:46–49 kivételével**, ahol a Károli-tartalom a KJV 22:45–48 (scope=manual „nincs pár” kivétel). A többi üres sor nem azonos számú: a 66 `MT|lxx_os_etalon_f91` sor zsoltárfelirat (az MT-szám nem KJV-szám), a `KJV|lxx_os_etalon_f91` 1 sor (Zsolt 13:1) felirat; a `KEZI|kezi_identitas_javitas` 8 sor (Jób 39:34–38, Préd 9:21–23) pedig **táblahiba**: a KJV-pár létezik (Jób 40:1–5, Préd 10:1–3), a tábla nem rögzíti.
+A `Karoli_versmegfeleltetes.tsv` 161 üres `igehely_kjv` sorából **csak az `MT|szamlalas` 86 sorra** igaz, hogy a KJV-vers a Károli-verssel azonos számú (LXX-hiány); ezekre a `tsk_kulcs` az `igehely_mt`-t veszi KJV-kulcsnak (DT-F114d (b)). **Ez sem mind létező vers:** az 1Kir 22:54, Jón 2:11, Ézs 3:27, 1Sám 20:43 és 1Sám 24:23 KJV-verse nem létezik, ezért 0 TSK-sort kapnak (ártalmatlan; nem „eltolt pár”). A kár a szomszédos sorokon volt: a Károli 1Kir 22:46–49 (= KJV 22:45–48), Ézs 3:1–26 (Károli 3:1 = KJV 2:22), Jón 2:2–10 (Károli 2:9 = KJV 2:8) és 1Sám 24:1–22 (Károli 24:2 = KJV 24:1) eltolt tartalmú párt kapna (MT-tartalékkal vagy tvtms-azonossággal), ezért ezek scope=manual „nincs pár” kivételek (`tsk_kulcs.NINCS_PAR_KIVETEL`, a tábla értékétől függetlenül). Ismert maradék, döntés nélkül nem bővítjük: az 1Kir 22:45 Károli-szövege a KJV 22:44-nek felel meg (a teszt pozitívként rögzíti). A többi üres sor nem azonos számú: a 66 `MT|lxx_os_etalon_f91` sor zsoltárfelirat, a `KJV|lxx_os_etalon_f91` 1 sor (Zsolt 13:1) felirat; a `KEZI|kezi_identitas_javitas` 8 sor (Jób 39:34–38, Préd 9:21–23) **táblahiba**: a KJV-pár létezik (Jób 40:1–5, Préd 10:1–3), a tábla nem rögzíti.
 
-A megmaradó „nincs pár” veszteség oka (felmérő F. rész, `naplok/F114_elveszett_sorok.tsv`, `ok` oszlop, a KJV-kulcs szerint): `tabla_lyuk_fejezet` (a Károli-fejezetnek nincs sora a táblában; 235 forráskulcs / 3 653 sor, 243 célvers / 2 360 előfordulás), `tablahiba_kjv_par_letezik` (12 forráskulcs / 198 sor: Dán 4:1–3, Jób 40:1, 2, 4, 5, Préd 10:1–3, Préd 2:26, Zsolt 13:6; 13 célvers / 188 előfordulás), `kivetel_nincs_par_1Kir_22_46_49` (3 forráskulcs / 34 sor, 4 célvers / 27 előfordulás). Összesen forrás 250 kulcs / 3 885 sor, cél 260 vers / 2 575 előfordulás. A régi logikához képest elveszett pár 30 079, újonnan elért 25 062.
+A megmaradó „nincs pár” veszteség oka (felmérő F. rész, `naplok/F114_elveszett_sorok.tsv`, `ok` oszlop, a KJV-kulcs szerint; az 5. oszlop az azonos *számú* Károli-vers táblasora, csak a régi elérés leírása; a 099456fe commit-címe „Károli-kulcs” pontatlan, a címkézés a KJV-kulcs szerinti): `tabla_lyuk_fejezet` (235 forráskulcs / 3 653 sor, 243 célvers / 2 360 előfordulás), `tablahiba_kjv_par_letezik` (12 forráskulcs / 198 sor; 13 célvers / 188 előfordulás: Dán 4:1–3, Jób 40:1, 2, 4, 5, Préd 10:1–3, Préd 2:26, Zsolt 13:6), kivételek: `kivetel_nincs_par_1Kir_22` (3 kulcs / 34 sor; 4 vers / 27 elő.), `kivetel_nincs_par_Ezs_3` (25 / 344; 25 / 366), `kivetel_nincs_par_Jon_2` (9 / 153; 9 / 117), `kivetel_nincs_par_1Sam_24` (22 / 183; 22 / 236). Összesen forrás 306 kulcs / 4 565 sor, cél 316 vers / 3 294 előfordulás. A régi logikához képest elveszett pár 31 213, újonnan elért 24 936.
 
 A nincs-pár kulcsok tételes listája: `python eszkozok/tsk_versszam_felmeres.py` E. rész (stdout-on 80 tételig), valamint `naplok/F114_elveszett_sorok.tsv` (a régi logika által elért kulcsok).
 
@@ -78,3 +78,7 @@ Frissített mérés (felmérő E. és F. rész):
 ## F114.17 — második javító menet
 
 `tsk_kulcs.NINCS_PAR_KIVETEL` (scope=manual): 1Kir 22:46–49 „nincs pár”; negatív teszt `test_1kir_22_kivetel_nincs_par`. Az `F114_elveszett_sorok.tsv` `ok` oszlopa a KJV-kulcs szerint címkéz (nem a kulcsot Károli-kulcsként kikeresve). Az ismert táblahibák gyűjtése: N-F54a bővítése.
+
+## F114.20 — harmadik javító menet
+
+`NINCS_PAR_KIVETEL` bővítve: Ézs 3:1–26, Jón 2:2–10, 1Sám 24:1–22 (az 1Kir 22:46–49 mellé; scope=manual); negatív teszt `test_kivetel_fejezetek_nincs_par` (Ézs 3:1, Jón 2:9, 1Sám 24:2 és a határelemek; a Jón 2:1, 1Sám 23:28, Ézs 4:2, 1Sám 20:43 változatlan). Friss mérés: E 21 247 kulcs, forráseltérés 0; B 0/0; nincs-pár 331/4 925 és 342/4 296; F elveszett pár 31 213. A korábbi (275/4 245, 286/3 475, 21 306) számok felülírva.
