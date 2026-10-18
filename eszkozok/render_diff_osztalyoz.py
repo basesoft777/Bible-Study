@@ -1021,22 +1021,32 @@ def _szerep_csere(a, b, sor_kulcs, oszlop):
         (`szerep_lefedettseg_cella`) értéke a cellára, a régi a szerep régi forrása vagy állapota.
     Minden más csere: nem szerep-változás (`ismeretlen`). Ez zárja ki pl. a `UBS DNTG` -> `Mounce` cserét egy
     olyan cellában, amelynek szerepéhez a mátrix nem a Mounce-ot rendeli."""
-    if sor_kulcs is None or oszlop is None or oszlop < 1:
+    cella = _szerep_cella(sor_kulcs, oszlop)
+    if cella is None:
         return False
+    vart, regi_ok = cella
+    return b == vart and a in regi_ok
+
+
+def _szerep_cella(sor_kulcs, oszlop):
+    """Az `5. Szótári` szakasz azonosított cellájának (várt mai érték, elfogadható régi értékek) párja, vagy None,
+    ha a cella nem azonosítható (nem szerep-tábla- vagy lefedettség-sor, ismeretlen szerep)."""
+    if sor_kulcs is None or oszlop is None or oszlop < 1:
+        return None
     mai = _mai_matrix()
     gorog = sorted((r for r in mai if r[0] == 'gorog'), key=lambda r: r[1])
     if _TOKEN_RE.match(sor_kulcs):
         if oszlop > len(gorog):
-            return False
+            return None
         nyelv = 'gorog' if sor_kulcs.startswith('G') else 'heber'
         szerep = gorog[oszlop - 1][2]
     elif oszlop in (1, 2):
         nyelv, szerep = ('gorog', 'heber')[oszlop - 1], sor_kulcs
     else:
-        return False
+        return None
     sor = next((r for r in mai if r[0] == nyelv and r[2] == szerep), None)
     if sor is None:
-        return False
+        return None
     regi = next((v for (ny, _n), v in REGI_SZEREPMATRIX_D9B80B37.items() if ny == nyelv and v[0] == szerep), None)
     if _TOKEN_RE.match(sor_kulcs):
         vart = _olvaso_forras(LG.szerep_lefedettseg_cella(
@@ -1045,7 +1055,20 @@ def _szerep_csere(a, b, sor_kulcs, oszlop):
     else:
         vart = _olvaso_forras(sor[3])
         regi_ok = ({regi[1]} if regi else set()) | {sor[3], vart}
-    return b == vart and a in regi_ok
+    return vart, regi_ok
+
+
+_SZEREP_ALLAPOTJELZOK = ('nincs adatosítva', 'nincs forrás', 'a forrás nem tárgyalja')
+
+
+def _szerep_uj_igazolt(b, sor_kulcs, oszlop):
+    """#113 1. hely (ellenőri 1. eltérés): helyőrző / `nincs adatosítva` régi oldal után az új oldal csak akkor
+    szerep, ha az azonosított cellában a várt mai érték (a szerep mai forrása / renderelt alakja, lefedettség-sorban
+    a `szerep_lefedettseg_cella` értéke), vagy állapotjelző (a mai mátrix `allapot` értékei és a fenti jelzők)."""
+    cella = _szerep_cella(sor_kulcs, oszlop)
+    if cella is None:
+        return False
+    return b == cella[0] or b in _SZEREP_ALLAPOTJELZOK or b in set(r[4] for r in _mai_matrix())
 
 
 def _mezo_kat(a, b, alap, szakasz, sor_kulcs=None, oszlop=None):
@@ -1057,6 +1080,8 @@ def _mezo_kat(a, b, alap, szakasz, sor_kulcs=None, oszlop=None):
     if a not in _HELYORZO and b in _HELYORZO:
         return ISMERETLEN                       # a mező tartalma eltűnt (állapot -> helyőrző is, #113 4. hely)
     if a in _HELYORZO or a == 'nincs adatosítva':
+        if szakasz.startswith('5. Szótári'):    # #113 1. hely: az új oldal is igazolandó (ellenőri 1. eltérés)
+            return 'szerep' if _szerep_uj_igazolt(b, sor_kulcs, oszlop) else ISMERETLEN
         return alap                             # helyőrző / `nincs adatosítva` -> tartalom vagy állapot
     if a in _LXX_ALLAPOT or b in _LXX_ALLAPOT:
         return alap if _lxx_allapot_elore(a, b) else ISMERETLEN   # #113 4. hely: csak előre lépő állapot

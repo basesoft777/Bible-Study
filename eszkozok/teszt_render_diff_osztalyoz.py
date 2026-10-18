@@ -275,10 +275,17 @@ class Parositas(unittest.TestCase):
         self.assertEqual(set(osztaly(eles, proba)), {'kiejtes'})
 
     def test_allapotvaltas_szerep(self):
-        eles = '## 5. Szótári háttér — szerepek és lefedettség\n| H7585 | TBESH | nincs adatosítva |\n'
-        proba = '## 5. Szótári háttér — szerepek és lefedettség\n| H7585 | TBESH | UBS DBH |\n'
-        e = osztaly(eles, proba, 'TESZT-001_TORZSCIKK.md')
+        # mai éles eset (HAMART-001_TORZSCIKK, G1311, Teológiai szócikk): `nincs adatosítva` -> a mai forrás: szerep
+        tw = 'unfoldingWord Translation Words (tW, CC BY-SA 4.0; konkordancia/tW_szocikkek.tsv, S14)'
+        eles = '## 5. Szótári háttér — szerepek és lefedettség\n| G1311 | TBESG | Thayer | nincs adatosítva |\n'
+        proba = '## 5. Szótári háttér — szerepek és lefedettség\n| G1311 | TBESG | Thayer | %s |\n' % tw
+        e = osztaly(eles, proba, 'HAMART-001_TORZSCIKK.md')
         self.assertEqual(set(e), {'szerep'})
+        # #113 (ellenőri 1. eltérés): a cella szerepéhez nem tartozó forrás nem igazolt -- H7585 Mélységi szócikk
+        # cellájában az `UBS DBH` nem a mai forrás (BDB) és nem a renderfüggvény értéke: ismeretlen
+        e2 = osztaly('## 5. Szótári háttér — szerepek és lefedettség\n| H7585 | TBESH | nincs adatosítva |\n',
+                     '## 5. Szótári háttér — szerepek és lefedettség\n| H7585 | TBESH | UBS DBH |\n', 'TESZT-001_TORZSCIKK.md')
+        self.assertEqual(set(e2), {R.ISMERETLEN})
 
     def test_metaadat_jeloles(self):
         e = osztaly(blokk('idezes', ['- Generálva: 2026-09-26']), blokk('idezes', ['- Generálva: 2026-10-17']))
@@ -460,6 +467,30 @@ class Szukites113(unittest.TestCase):
         uj = R._olvaso_forras(mai_forras('gorog', 3))
         self.assertEqual(R._mezo_kat('Kittel (1933)', uj, 'szerep', '5. Szótári háttér', 'Teológiai szócikk', 1),
                          R.ISMERETLEN)
+
+    def test_nincs_adatositva_szabad_mondat_ismeretlen(self):
+        # ellenőri 1. eltérés: az 5. Szótári szakaszban a `nincs adatosítva` / helyőrző -> BÁRMI nem szerep
+        mondat = 'egy szabad magyar mondat a cellában'
+        for regi in ('nincs adatosítva', '—'):
+            e = osztaly(torzs5('| G1311 | TBESG | Thayer | %s |' % regi), torzs5('| G1311 | TBESG | Thayer | %s |' % mondat),
+                        'HAMART-001_TORZSCIKK.md')
+            self.assertEqual(set(e), {R.ISMERETLEN}, regi)
+            e2 = osztaly(torzs5('| Teológiai szócikk | %s | x |' % regi), torzs5('| Teológiai szócikk | %s | x |' % mondat),
+                         'TESZT-001_TORZSCIKK.md')
+            self.assertEqual(set(e2), {R.ISMERETLEN}, regi)
+        # nem azonosítható cella (nem tábla-sor) sem igazolt
+        self.assertEqual(R._mezo_kat('nincs adatosítva', mondat, 'szerep', '5. Szótári háttér'), R.ISMERETLEN)
+
+    def test_nincs_adatositva_allapotjelzo_szerep(self):
+        # mai éles eset (KIRALY-001_TORZSCIKK, G0282, Teológiai szócikk): `nincs adatosítva` -> `a forrás nem tárgyalja`
+        e = osztaly(torzs5('| G0282 | TBESG | Thayer | nincs adatosítva |'),
+                    torzs5('| G0282 | TBESG | Thayer | a forrás nem tárgyalja |'), 'KIRALY-001_TORZSCIKK.md')
+        self.assertEqual(set(e), {'szerep'})
+
+    def test_helyorzo_mas_szakaszban_valtozatlan(self):
+        # más szakaszban a helyőrző -> tartalom viselkedése nem változott
+        self.assertEqual(R._mezo_kat('—', 'egy szabad magyar mondat', 'lxx_korpusz', 'lxx'), 'lxx_korpusz')
+        self.assertEqual(R._mezo_kat('nincs adatosítva', 'bármi', 'torzscikk_res', '2. Kapcsolatok'), 'torzscikk_res')
 
     def test_hamart_eles_szerep_eset(self):
         # a HAMART-001 éles esete (DT-F113b): Cremer (1895) -> a mai tW-forrás renderelt alakja: szerep
