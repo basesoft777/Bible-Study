@@ -1334,10 +1334,7 @@ fejléc. Olvasás `split('\t')`.
 | `forditas_forras_hash` | a fordítássor `forras_hash`-e (a TSV `Teljes_szocikk` SHA-1-e a fordításkor): az elavulás jele (DT-F107c (d): addig a változatlan TSV-hez kötött) |
 | `proveniencia` | `scope=<Strong> \| forras=bdb_jelolt/hu_illeszt.py (fejléc) \| ts=<nap>` |
 
-Állapot (F107.34, 2026-10-18): 674 Strong, 9 664 sor; soronként `illeszkedik` 6 210, `horgonnyal` 271, `elakad` 618, `jelolo_nelkul` 2 565.
-Strong-szinten a kapu szigorú illesztőjével (`forditas_kapuk._illeszt`, mint a 2026-10-16-i kiinduló 355 / 89 / 230): `illeszkedik` 380,
-`tagolatlan` 94, `elakad` 200; horgonnyal kiegészítve: `illeszkedik` 385, `horgonnyal` 105, `elakad` 101, `tagolatlan` 83. Az `elakad`
-szakaszok sorsa: DT-F107b.
+Állapot (F107.38, 2026-10-18; DT-F107b (d): a magyar jelölő-felismerés bővítése az illesztőben — törzsnév mindkét oldalon a bontó törzslistájából, a forrás alakjában, a magyaros alakokkal és a raggal, kulcs a kanonikus név (`Hithpa'el`, `Pe'al`); betű j-től csak tagolásjel után, a szám utáni „k.” nem; a kérdőjel utáni szám): 674 Strong, 9 664 sor; soronként `illeszkedik` 6 395, `horgonnyal` 202, `elakad` 606, `jelolo_nelkul` 2 461 (F107.34: 6 210 / 271 / 618 / 2 565). Strong-szinten a kapu szigorú illesztőjével (a kapu regexei, mint a kiinduló mérés) változatlanul `illeszkedik` 380, `tagolatlan` 94, `elakad` 200 (kiinduló: 355 / 89 / 230); horgonnyal kiegészítve `illeszkedik` 409, `horgonnyal` 85, `elakad` 98, `tagolatlan` 82 (F107.34: 385 / 105 / 101 / 83). A maradék `elakad` Strongok a #38 következő adagjában szakaszonként újrafordítandók (DT-F107b (c); lista: N-F107b, `naplok/F107_BDB_JELOLT_SZOVEG_naplo.md` 7.1); kézi illesztés nincs.
 ---
 
 ## 3. Integritási szabályok

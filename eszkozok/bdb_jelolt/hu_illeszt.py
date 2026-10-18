@@ -64,6 +64,33 @@ def kod_hash():
         return hashlib.sha256(f.read().replace(b'\r\n', b'\n')).hexdigest()
 
 
+# ---------------------------------------------------------------- DT-F107b (d), felhasználó, 2026-10-18: a magyar jelölő-felismerés
+# bővítése (a kapu regexei érintetlenek — a forditas_kapuk.py nincs a brief `ir` mezőjében —, a bővítés itt, az illesztőben):
+#  (1) törzsnév MINDKÉT oldalon a bontó törzslistájából (a szeletelőével azonos), a forrás alakjában (` ' ʿ ‘ ’), a magyaros alakokkal
+#      (Nifal, Hifil, Hofal, Hitpael) és a magyar raggal (kötőjellel is): a kapu `Hithp(?:a(?:el|...))?` mintája a „Hithpa`el”-t nem fogja,
+#      az arámi törzseket (Pe`al, Pa`el, Haph`el, Aph`el …) egyáltalán nem; kulcs: a kanonikus név (`Hithpa'el`);
+#  (2) betű j-től: csak tagolásjel után („. ”, „; ”, „: ”, „— ”, „) ” vagy a szöveg elején), mert szövegközben rövidítés („l. ott”,
+#      „vö.”); a „k.” szám után nem jelölő („632 k.” = és a következő);
+#  (3) a kérdőjel utáni szám („+? 1 Gerár”, H0040).
+_APO = "[`'ʿ‘’]"
+_MAGYAROS = {'Nifal': "Niph'al", 'Hifil': "Hiph'il", 'Hofal': "Hoph'al", 'Hitpael': "Hithpa'el"}
+_TORZS_NEVEK = sorted(set(bont.TORZS.split('|')), key=len, reverse=True)
+_RAG = sorted(set(kapu._TORZS_RAG_HOSSZU + kapu._TORZS_RAG_ROVID), key=len, reverse=True)
+TORZS_HU = re.compile(
+    r'(?<![A-Za-zÀ-ž])(' + '|'.join(re.escape(n).replace('`', _APO) for n in _TORZS_NEVEK) + '|' + '|'.join(_MAGYAROS) + r')'
+    r'(?:-?(?:' + '|'.join(_RAG) + r'))?(?![A-Za-zÀ-ž])')
+BETU_J = re.compile(r'(?:(?<=^)|(?<=[.;:—)] ))([j-z])\.(?=\s)')
+KERDO_SZAM = re.compile(r'(?<=\? )(\d{1,2})(?= [^\W\d_])')
+
+
+def torzs_kulcs(nev):
+    """A törzsnév kanonikus kulcsa (a forrás és a magyar oldalon azonos): `Hithpa'el`, `Qal`, `Pe'al`."""
+    nev = re.sub(_APO, "'", nev)
+    if nev in _MAGYAROS:
+        return _MAGYAROS[nev]
+    return bont.TORZS_KANON.get(nev.replace("'", '`'), nev)
+
+
 def forras_jelolok(jel):
     """A sor `jel`-ének illeszthető jelölői, sorrendben: '1', 'a', 'II', '(1)', 'T:Qal'."""
     if not jel:
@@ -80,21 +107,22 @@ def forras_jelolok(jel):
         elif sz == 'zaro':
             ki.append(v)
         elif sz == 'torzs':
-            t = kapu.torzs_sorozat(v.rstrip('.'))
-            if t:
-                ki.append('T:' + t[0])
+            ki.append('T:' + torzs_kulcs(v.rstrip('.')))
     return ki
 
 
 def magyar_jelolok(hu):
     """A magyar szöveg jelölői pozícióval (a tagolás-kapu jelei + a törzsnevek)."""
     ki = list(kapu.jelolok_pozicioval(hu, False))
-    for m in kapu.TORZS_MINTA.finditer(hu):
-        tov, rag = m.group(1), m.group(2)
-        if rag and tov in kapu._TORZS_ROVID_TOVEK and rag not in kapu._TORZS_RAG_HOSSZU:
+    for m in TORZS_HU.finditer(hu):
+        ki.append((m.start(), 'T:' + torzs_kulcs(m.group(1))))
+    for m in BETU_J.finditer(hu):
+        if m.group(1) == 'k' and re.search(r'\d\s?$', hu[max(0, m.start() - 3):m.start()]):
             continue
-        ki.append((m.start(), 'T:' + kapu._TORZS_MAGYAROS.get(tov, tov)[:4]))
-    return sorted(ki)
+        ki.append((m.start(), m.group(1)))
+    for m in KERDO_SZAM.finditer(hu):
+        ki.append((m.start(), m.group(1)))
+    return sorted(set(ki))
 
 
 def forditasok():

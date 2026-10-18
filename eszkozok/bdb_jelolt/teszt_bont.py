@@ -284,17 +284,46 @@ class HuIlleszt(unittest.TestCase):
 
     def test_forras_jelolok(self):
         self.assertEqual(self.hi.forras_jelolok('2. a.'), ['2', 'a'])
-        self.assertEqual(self.hi.forras_jelolok('Hiph`il'), ['T:Hiph'])
+        self.assertEqual(self.hi.forras_jelolok('Hiph`il'), ["T:Hiph'il"])      # DT-F107b (d): kanonikus törzskulcs
         self.assertEqual(self.hi.forras_jelolok('II.'), ['II'])
+
+    def _jelek(self, hu):
+        return [j for _, j in self.hi.magyar_jelolok(hu)]
+
+    def test_bovites_pozitiv(self):
+        # DT-F107b (d): valós adatból — H0040, H5674, H0559, H6213/H5414
+        self.assertIn('1', self._jelek('Gen 20:18 +? 1 Gerár királya 1Móz 20:2'))
+        self.assertIn('j', self._jelek('használatban Zsolt 17:3. j. elmenni mellette'))
+        self.assertIn("T:Hithpa'el", self._jelek('innen a lenti Hithpa`el, אָמִיר'))
+        self.assertIn("T:Hithpa'el", self._jelek('a Hithpa`elben és a Hitpael-ben'))
+        self.assertIn("T:Pe'al", self._jelek('6, 9 és máshol); — Pe`al imperfectum'))
+        self.assertIn("T:Pa'el", self._jelek('עַסִּי ᵑ7 Pa`el összezúzni'))
+        self.assertEqual(self.hi.forras_jelolok('Hithpa`el'), ["T:Hithpa'el"])
+        self.assertEqual(self.hi.torzs_kulcs('Hitpael'), self.hi.torzs_kulcs('Hithpa`el'))
+
+    def test_bovites_negativ(self):
+        # a szövegközi betű vagy szám nem jelölő
+        self.assertNotIn('2', self._jelek('és a 2 fiú elment'))
+        self.assertNotIn('b', self._jelek('lásd a b) pontot'))
+        self.assertNotIn('l', self._jelek('(de olv. עֲוֺנָמוֺ, l. a kommentárokat)'))       # H5869: „l.” = lásd
+        self.assertNotIn('k', self._jelek('Ba^ZMG 1887, 632 k.) — יוֺם'))                 # H3117: „k.” = és a következő
+        self.assertNotIn('q', self._jelek('a q. jelű kézirat'))                          # nem tagolásjel után
+        for szo in ('papok királysága', 'puszta proszthetikus', 'pap (késői héber', 'Pentateuchusban'):
+            self.assertFalse([j for j in self._jelek(szo) if j.startswith('T:')], szo)
 
     def test_illesztes_es_horgony(self):
         sorok = [{'jelolo': 'fej', 'jel': '', 'szoveg': 'x'},
                  {'jelolo': 'point', 'jel': '1', 'szoveg': 'king of Gerar Gen 20:2'},
                  {'jelolo': 'point', 'jel': '2', 'szoveg': 'king of Gath'}]
+        # a bővítés után a kérdőjel utáni szám jelölő (H0040)
         hu = 'fej szöveg +? 1 Gerár királya 1Móz 20:2. 2 Gát királya'
         e, szigoru, horgonyos = self.hi.strong_illeszt(sorok, hu)
+        self.assertEqual([x[0] for x in e], ['jelolo_nelkul', 'illeszkedik', 'illeszkedik'])
+        # felismerhetetlen jelölő (a szám a szóhoz tapad) — horgony a fejezet:versen, a saját jelölőnél kezdve
+        hu = 'fej szöveg, + 1 Gerár királya 1Móz 20:2. 2 Gát királya'
+        e, szigoru, horgonyos = self.hi.strong_illeszt(sorok, hu)
         self.assertEqual([x[0] for x in e], ['jelolo_nelkul', 'horgonnyal', 'illeszkedik'])
-        self.assertEqual(hu[e[1][2]:].split(' ')[0], '1')      # a horgonyolt szakasz a saját jelölőjénél kezdődik
+        self.assertEqual(hu[e[1][2]:].split(' ')[0], '1')
         self.assertEqual(horgonyos, 'horgonnyal')
 
     def test_kategoriak_es_hash(self):
