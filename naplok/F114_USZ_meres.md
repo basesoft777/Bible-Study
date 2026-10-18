@@ -1,4 +1,4 @@
-# F114 — az ÚSZ-oldal mérése (3.1, a DT-F114b döntés előkészítése)
+# F114 — az ÚSZ-oldal mérése (3.1, a DT197 döntés előkészítése)
 
 *2026-10-18 · modell: claude-sonnet-5-5 · ág: `claude/tsk-versszam` · mérőszkript: `eszkozok/tsk_versszam_felmeres.py` (új D. rész)*
 
@@ -28,4 +28,4 @@ A két halmaz azonos méretű (7 954), az eltérés 5 hely, tehát az ÚSZ-ön a
 
 ## Döntés
 
-DT-F114b (`DONTESEK.md`): (a) ÚSZ-megfeleltetés elkészítése a dataset-szabályok szerint az itt mért 8+ helyre, vagy (b) kimondott korlát: az átváltó az ÚSZ-ön azonosságot ad, N-F114a nyitott tétel. A döntés előtt az F114.1-et nem kezdem el.
+DT197 (`DONTESEK.md`): (a) ÚSZ-megfeleltetés elkészítése a dataset-szabályok szerint az itt mért 8+ helyre, vagy (b) kimondott korlát: az átváltó az ÚSZ-ön azonosságot ad, N-F114a nyitott tétel. A döntés előtt az F114.1-et nem kezdem el.

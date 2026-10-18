@@ -5,10 +5,10 @@
 1. **Eredmény.** Új közös átváltó: `eszkozok/tsk_kulcs.py` (KJV↔Károli, explicit „nincs pár”, egységtesztekkel). Mind az öt fogyasztó ezen át olvas: `lexikon_general`, `lekerdez`, `nem_vizsgalt`, `sqlite_epit`, `olvaso_pilot/adat`. A `TSK_kereszthivatkozasok.tsv` érintetlen.
 2. **Mérés** (`naplok/TSK_VERSSZAM_jelentes.md`): az ÓSZ-en 0 rossz és 0 elmaradó sor. A kivétel-verseken ez körkörös, mert a kivétellel bővített megfeleltetéshez mér. Nem körkörös veszteségmérés a main-hez képest: `naplok/F114_elveszett_sorok.tsv`, osztályonként.
 3. **Döntések** (helyőrzők, 🟢):
-   - DT-F114a: 7 HAMART-001-jelölt átkulcsolva (`jeloltek.tsv` 7 sor).
-   - DT-F114b: az ÚSZ-en kimondott korlát (N-F114a).
-   - DT-F114c és DT-F114e: `tsk_kulcs_javitas` kategória, 46 név szerinti sor.
-   - DT-F114d: MT-tartalék csak az `MT|szamlalas` osztályra. „Nincs pár” kivétel: 1Kir 22:46–49, Ézs 3:1–26, Jón 2:2–10, 1Sám 24:1–22.
+   - DT199: 7 HAMART-001-jelölt átkulcsolva (`jeloltek.tsv` 7 sor).
+   - DT197: az ÚSZ-en kimondott korlát (N-F114a).
+   - DT198 és DT201: `tsk_kulcs_javitas` kategória, 46 név szerinti sor.
+   - DT200: MT-tartalék csak az `MT|szamlalas` osztályra. „Nincs pár” kivétel: 1Kir 22:46–49, Ézs 3:1–26, Jón 2:2–10, 1Sám 24:1–22.
 4. **Nyitott maradék, kimondott korlátként:**
    - N-F54a: táblahibák és tábla-lyukak.
    - Az ALVIL-001 Jón 2:3 és a TEREMT-001 Jón 2:6 TSK nélkül marad.

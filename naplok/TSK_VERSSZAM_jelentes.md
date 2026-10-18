@@ -2,7 +2,7 @@
 
 *2026-10-18 · modell: claude-sonnet-5-5 · ág: `claude/tsk-versszam` · alap: `origin/main` be85d5de · mérőszkript: `eszkozok/tsk_versszam_felmeres.py` (E. rész)*
 
-Az öt fogyasztó (`lexikon_general.tsk_index`, `lekerdez.cmd_tsk`, `nem_vizsgalt.tsk_kor`, `sqlite_epit._kereszthivatkozasok`, `olvaso_pilot/adat.py`) a `eszkozok/tsk_kulcs.py` átváltón át olvassa a TSK-t: forrás- és célkulcs Károli-versszámon áll. Az ÚSZ-en az átváltó azonosságot ad (DT-F114b (b), N-F114a).
+Az öt fogyasztó (`lexikon_general.tsk_index`, `lekerdez.cmd_tsk`, `nem_vizsgalt.tsk_kor`, `sqlite_epit._kereszthivatkozasok`, `olvaso_pilot/adat.py`) a `eszkozok/tsk_kulcs.py` átváltón át olvassa a TSK-t: forrás- és célkulcs Károli-versszámon áll. Az ÚSZ-en az átváltó azonosságot ad (DT197 (b), N-F114a).
 
 ## E1 — a nyers mező nem olvasható megkerüléssel
 
@@ -23,9 +23,9 @@ Az öt fogyasztó (`lexikon_general.tsk_index`, `lekerdez.cmd_tsk`, `nem_vizsgal
 | nincs-pár forrás-KJV-kulcs (ÓSZ, a sor kimarad) | 331 kulcs, 4 925 sor |
 | nincs-pár cél-KJV-vers (ÓSZ, a sor kimarad) | 342 vers, 4 296 előfordulás |
 
-**Javítás (F114.10–F114.17, a független ellenőri jelentések alapján, `naplok/ELLENOR_TSK_VERSSZAM.md`):** az első változat hamisan állította, hogy a nincs-pár kulcsok olyan KJV-versek, amelyeknek a Károliban nincs azonos tartalmú párja. A valós ok oszloponként más. A táblázat számai a DT-F114d és mind a négy kivétel (1Kir 22:46–49, Ézs 3:1–26, Jón 2:2–10, 1Sám 24:1–22) utáni állapotot mutatják; a korábbi (345/4 976, 359/4 378, 21 234, majd 275/4 245, 286/3 475, 21 306) számok felülírva.
+**Javítás (F114.10–F114.17, a független ellenőri jelentések alapján, `naplok/ELLENOR_TSK_VERSSZAM.md`):** az első változat hamisan állította, hogy a nincs-pár kulcsok olyan KJV-versek, amelyeknek a Károliban nincs azonos tartalmú párja. A valós ok oszloponként más. A táblázat számai a DT200 és mind a négy kivétel (1Kir 22:46–49, Ézs 3:1–26, Jón 2:2–10, 1Sám 24:1–22) utáni állapotot mutatják; a korábbi (345/4 976, 359/4 378, 21 234, majd 275/4 245, 286/3 475, 21 306) számok felülírva.
 
-A `Karoli_versmegfeleltetes.tsv` 161 üres `igehely_kjv` sorából **csak az `MT|szamlalas` 86 sorra** igaz, hogy a KJV-vers a Károli-verssel azonos számú (LXX-hiány); ezekre a `tsk_kulcs` az `igehely_mt`-t veszi KJV-kulcsnak (DT-F114d (b)). **Ez sem mind létező vers:** az 1Kir 22:54, Jón 2:11, Ézs 3:27, 1Sám 20:43 és 1Sám 24:23 KJV-verse nem létezik, ezért 0 TSK-sort kapnak (ártalmatlan; nem „eltolt pár”). A kár a szomszédos sorokon volt: a Károli 1Kir 22:46–49 (= KJV 22:45–48), Ézs 3:1–26 (Károli 3:1 = KJV 2:22), Jón 2:2–10 (Károli 2:9 = KJV 2:8) és 1Sám 24:1–22 (Károli 24:2 = KJV 24:1) eltolt tartalmú párt kapna (MT-tartalékkal vagy tvtms-azonossággal), ezért ezek scope=manual „nincs pár” kivételek (`tsk_kulcs.NINCS_PAR_KIVETEL`, a tábla értékétől függetlenül). Ismert maradék, döntés nélkül nem bővítjük: az 1Kir 22:45 Károli-szövege a KJV 22:44-nek felel meg (a teszt pozitívként rögzíti). A többi üres sor nem azonos számú: a 66 `MT|lxx_os_etalon_f91` sor zsoltárfelirat, a `KJV|lxx_os_etalon_f91` 1 sor (Zsolt 13:1) felirat; a `KEZI|kezi_identitas_javitas` 8 sor (Jób 39:34–38, Préd 9:21–23) **táblahiba**: a KJV-pár létezik (Jób 40:1–5, Préd 10:1–3), a tábla nem rögzíti.
+A `Karoli_versmegfeleltetes.tsv` 161 üres `igehely_kjv` sorából **csak az `MT|szamlalas` 86 sorra** igaz, hogy a KJV-vers a Károli-verssel azonos számú (LXX-hiány); ezekre a `tsk_kulcs` az `igehely_mt`-t veszi KJV-kulcsnak (DT200 (b)). **Ez sem mind létező vers:** az 1Kir 22:54, Jón 2:11, Ézs 3:27, 1Sám 20:43 és 1Sám 24:23 KJV-verse nem létezik, ezért 0 TSK-sort kapnak (ártalmatlan; nem „eltolt pár”). A kár a szomszédos sorokon volt: a Károli 1Kir 22:46–49 (= KJV 22:45–48), Ézs 3:1–26 (Károli 3:1 = KJV 2:22), Jón 2:2–10 (Károli 2:9 = KJV 2:8) és 1Sám 24:1–22 (Károli 24:2 = KJV 24:1) eltolt tartalmú párt kapna (MT-tartalékkal vagy tvtms-azonossággal), ezért ezek scope=manual „nincs pár” kivételek (`tsk_kulcs.NINCS_PAR_KIVETEL`, a tábla értékétől függetlenül). Ismert maradék, döntés nélkül nem bővítjük: az 1Kir 22:45 Károli-szövege a KJV 22:44-nek felel meg (a teszt pozitívként rögzíti). A többi üres sor nem azonos számú: a 66 `MT|lxx_os_etalon_f91` sor zsoltárfelirat, a `KJV|lxx_os_etalon_f91` 1 sor (Zsolt 13:1) felirat; a `KEZI|kezi_identitas_javitas` 8 sor (Jób 39:34–38, Préd 9:21–23) **táblahiba**: a KJV-pár létezik (Jób 40:1–5, Préd 10:1–3), a tábla nem rögzíti.
 
 A megmaradó „nincs pár” veszteség oka (felmérő F. rész, `naplok/F114_elveszett_sorok.tsv`, `ok` oszlop, a KJV-kulcs szerint; az 5. oszlop az azonos *számú* Károli-vers táblasora, csak a régi elérés leírása; a 099456fe commit-címe „Károli-kulcs” pontatlan, a címkézés a KJV-kulcs szerinti): `tabla_lyuk_fejezet` (235 forráskulcs / 3 653 sor, 243 célvers / 2 360 előfordulás), `tablahiba_kjv_par_letezik` (12 forráskulcs / 198 sor; 13 célvers / 188 előfordulás: Dán 4:1–3, Jób 40:1, 2, 4, 5, Préd 10:1–3, Préd 2:26, Zsolt 13:6), kivételek: `kivetel_nincs_par_1Kir_22` (3 kulcs / 34 sor; 4 vers / 27 elő.), `kivetel_nincs_par_Ezs_3` (25 / 344; 25 / 366), `kivetel_nincs_par_Jon_2` (9 / 153; 9 / 117), `kivetel_nincs_par_1Sam_24` (22 / 183; 22 / 236). Összesen forrás 306 kulcs / 4 565 sor, cél 316 vers / 3 294 előfordulás. A régi logikához képest elveszett pár 31 213, újonnan elért 24 936.
 
@@ -38,7 +38,7 @@ A felmérő mérése közben két mérőhibát javítottam (a szkript a javítá
 ## E4 — próbagenerálás (a repón kívülre: `%TEMP%/f114p`)
 
 `python eszkozok/general.py --cel lexikon --kimenet <TEMP>` + `--cel torzscikk`:
-- ALVIL-001 `#### Préd 9:12` alatt a 12 TSK-sor: Kol 3:23 (Votes 71) az első, majd Ef 5:16, Róm 12:11, **Zsolt 6:6** (24), 1Kor 9:24, Préd 11:6, 2Krón 31:20, 31:21, Jer 29:13, Mt 6:33, Ézs 38:18, Ézs 38:19. A N-F09g-listában a „Zsolt 6:5” a TSK **KJV**-célja volt; Károli-kulccsal Zsolt 6:6 (a Károli 6:6 = KJV 6:5). Ez a céloldali javítás helyes, de a lista egy sora emiatt nem azonos (l. alább, DT-F114c).
+- ALVIL-001 `#### Préd 9:12` alatt a 12 TSK-sor: Kol 3:23 (Votes 71) az első, majd Ef 5:16, Róm 12:11, **Zsolt 6:6** (24), 1Kor 9:24, Préd 11:6, 2Krón 31:20, 31:21, Jer 29:13, Mt 6:33, Ézs 38:18, Ézs 38:19. A N-F09g-listában a „Zsolt 6:5” a TSK **KJV**-célja volt; Károli-kulccsal Zsolt 6:6 (a Károli 6:6 = KJV 6:5). Ez a céloldali javítás helyes, de a lista egy sora emiatt nem azonos (l. alább, DT198).
 - ALVIL-001 `#### Zsolt 18:6` alatt nincs Zsolt 50:15 (`grep -c "Zsolt 50:15"` = 0).
 - TEREMT-001 `#### Zsolt 36:7` alatt nincs Ruth 2:12 (`grep -c "Ruth 2:12"` = 0).
 
@@ -57,16 +57,16 @@ A felmérő mérése közben két mérőhibát javítottam (a szkript a javítá
 
 ## Az N-F09g kivezetés (3.6) — megállás
 
-A `render_diff_osztalyoz.py --proba` a friss próbán (`%TEMP%/f114p`): `ismert_hiba_tsk_versszam` = 2 sor még törölt: a tudományos oldal `- TSK: Zsolt 6:5 (Votes: 24)` és a törzscikk összevont sora (ugyanezen jelölttel). Ok: az éles lexikon a KJV-célt (Zsolt 6:5) hordozza, az átváltóval a helyes Károli-cél Zsolt 6:6. A brief szerint ilyenkor megállás (DT-F114c).
+A `render_diff_osztalyoz.py --proba` a friss próbán (`%TEMP%/f114p`): `ismert_hiba_tsk_versszam` = 2 sor még törölt: a tudományos oldal `- TSK: Zsolt 6:5 (Votes: 24)` és a törzscikk összevont sora (ugyanezen jelölttel). Ok: az éles lexikon a KJV-célt (Zsolt 6:5) hordozza, az átváltóval a helyes Károli-cél Zsolt 6:6. A brief szerint ilyenkor megállás (DT198).
 Ugyanezen a próbán az `ismeretlen` kategória 41 sorú, mind TSK-sor, az éles lexikon régi (KJV-kulcsú / KJV-célú) TSK-sora, amelyet az átváltás kiegészít vagy kivesz (pl. ALVIL-001 Zsolt 18:6 alatt Zsolt 50:15, 49:15 → 49:16; ANTROP/HAMART/ISTENTISZT/TEREMT/MENNY TSK-sorai). Ezek a #36/#10 éles újragenerálásakor a diff-osztályozóban `ismeretlen`-ként állnának meg.
 
-## F114.5 — DT-F114c (a): `tsk_kulcs_javitas` (Felhasználó, 2026-10-18)
+## F114.5 — DT198 (a): `tsk_kulcs_javitas` (Felhasználó, 2026-10-18)
 
 Az `ISMERT_HIBA_TSK_VERSSZAM` / `ismert_hiba_tsk_versszam` helyett `TSK_KULCS_JAVITAS_SOROK` / `tsk_kulcs_javitas`: 43 név szerinti törölt sor (2 az N-F09g-ből + 41 régi TSK-sor). Negatív teszt: a listán kívüli TSK-sor (és a lista sora más motívumban) `ismeretlen` marad. `teszt_render_diff_osztalyoz.py`: 74 teszt, OK.
 Újrafuttatott próba-osztályozás (`--proba`, kilépési kód 0): `tsk_kulcs_javitas=43`, `ismeretlen=0`. Napló: `naplok/F114_proba_diff.tsv`, `naplok/F114_proba_ismeretlen.tsv` (az utóbbi most csak a korábban elfogadott `felhasznalo_elfogadva` sorokat tartalmazza).
 `proveniencia: scope=%TEMP%/f114p vs lexikon | forras=eszkozok/render_diff_osztalyoz.py --proba | ts=2026-10-18`
 
-## F114.14 — DT-F114d (b): MT-tartalék csak az `MT|szamlalas` sorokra (Felhasználó, 2026-10-18) *(az itt idézett mérési számokat az E3 fenti, frissebb táblázata és az F114.17 felülírja)*
+## F114.14 — DT200 (b): MT-tartalék csak az `MT|szamlalas` sorokra (Felhasználó, 2026-10-18) *(az itt idézett mérési számokat az E3 fenti, frissebb táblázata és az F114.17 felülírja)*
 
 A `tsk_kulcs` az `osztaly=MT`, `forras=szamlalas`, üres `igehely_kjv` sorokra (86 sor) az `igehely_mt`-t veszi KJV-kulcsnak. Más üres-KJV sor és a táblában sor nélküli Károli-vers (`nincs_sor`) „nincs pár” marad (indok: a Károli 1908-ban a Hós 13 15, a Hós 14 10, az Én 6 10 versből áll, a KJV-ben 16, 9, 13; a számegyezés hibás párt adna). Teszt: `teszt_tsk_kulcs.py` 12 teszt, OK (pozitív: 1Sám 17:12, Jer 33:15; negatív: Hós 14:2, Zsolt 18:1, Jób 39:34, Préd 9:21, Zsolt 13:1).
 Frissített mérés (felmérő E. és F. rész):
@@ -83,13 +83,13 @@ Frissített mérés (felmérő E. és F. rész):
 
 `NINCS_PAR_KIVETEL` bővítve: Ézs 3:1–26, Jón 2:2–10, 1Sám 24:1–22 (az 1Kir 22:46–49 mellé; scope=manual); negatív teszt `test_kivetel_fejezetek_nincs_par` (Ézs 3:1, Jón 2:9, 1Sám 24:2 és a határelemek; a Jón 2:1, 1Sám 23:28, Ézs 4:2, 1Sám 20:43 változatlan). Friss mérés: E 21 247 kulcs, forráseltérés 0; B 0/0; nincs-pár 331/4 925 és 342/4 296; F elveszett pár 31 213. A korábbi (275/4 245, 286/3 475, 21 306) számok felülírva.
 
-## F114.21 — DT-F114e (a) (Felhasználó, 2026-10-18)
+## F114.21 — DT201 (a) (Felhasználó, 2026-10-18)
 
 A `TSK_KULCS_JAVITAS_SOROK` 43 → 46 név szerinti sor (+ HAMART-001: `- TSK: Ézs 3:10 (Votes: 27)`, `- TSK: Ézs 3:11 (Votes: 27)` és a törzscikk összevont TSK-sora; az Ézs 3:1–26 kivétel céloldali hatása). A negatív teszt ép (listán kívüli TSK-sor `ismeretlen`). Próba-osztályozás: `tsk_kulcs_javitas=46`, `ismeretlen=0`, kilépési kód 0; `teszt_render_diff_osztalyoz` 74 OK, `teszt_tsk_kulcs` 14 OK. Napló: `naplok/F114_proba_diff.tsv`, `naplok/F114_proba_ismeretlen.tsv`.
 
 ## F114.23 — negyedik javító menet: kimondott korlát és a TEREMT-001 −1/−1
 
-**Kimondott korlát (Felhasználó, 2026-10-18): a Jón 2:2–10 kivétel két motívum-előfordulást TSK nélkül hagy.** Az `adat/elofordulasok.tsv`-ben az ALVIL-001 `Jón 2:3` és a TEREMT-001 `Jón 2:6` a kivétel (Károli 2:2–10 „nincs pár”) miatt nem kap TSK-sort, holott a helyes KJV-pár létezik (Károli 2:3 = KJV 2:2, Károli 2:6 = KJV 2:5). A main-hez képest ez nem regresszió (a main az azonos számú KJV-verset adta, amely eltolt tartalom volt). A B mérés „0 elmaradó” eredménye a kivétel-verseken körkörös: a felmérő a kivételekkel bővített megfeleltetéshez mér, ezért ezt a hiányt nem fogja meg. A javítás a tábla pótlása (N-F54a), majd a kivétel kivezetése. Rögzítve: DT-F114d (kiegészítés), N-F54a.
+**Kimondott korlát (Felhasználó, 2026-10-18): a Jón 2:2–10 kivétel két motívum-előfordulást TSK nélkül hagy.** Az `adat/elofordulasok.tsv`-ben az ALVIL-001 `Jón 2:3` és a TEREMT-001 `Jón 2:6` a kivétel (Károli 2:2–10 „nincs pár”) miatt nem kap TSK-sort, holott a helyes KJV-pár létezik (Károli 2:3 = KJV 2:2, Károli 2:6 = KJV 2:5). A main-hez képest ez nem regresszió (a main az azonos számú KJV-verset adta, amely eltolt tartalom volt). A B mérés „0 elmaradó” eredménye a kivétel-verseken körkörös: a felmérő a kivételekkel bővített megfeleltetéshez mér, ezért ezt a hiányt nem fogja meg. A javítás a tábla pótlása (N-F54a), majd a kivétel kivezetése. Rögzítve: DT200 (kiegészítés), N-F54a.
 
 **A TEREMT-001 −1/−1 magyarázata** (`naplok/F114_proba_diff.tsv`: `TEREMT-001_TORZSCIKK.md` `torzscikk_res` 19→18, `TEREMT-001_TUDOMANYOS.md` `elavult_adat` 12→11). Mérés: két próba (a 7b845d8e és a mai állapot kódjával) `lexikon/` kimenetének `diff`-je a TEREMT-001 két fájljában pontosan ennyi:
 - `TEREMT-001_TUDOMANYOS.md`: a `#### Zsolt 42:8` alatti `- TSK: Jón 2:3 (Votes: 15)` sor megszűnt, és a blokk összesítő mondatában a találatszám 42 → 41 (ez a mondat sorváltozása a `elavult_adat` számlálóban).

@@ -12,10 +12,10 @@ Ellenőr: `fuggetlen-ellenor` subagent, modell: claude-opus-5-5 (kért: `opus`, 
 | Brief fejléc | ELTÉRÉS (enyhe) | `F114_TSK_VERSSZAM_BRIEF.md:12` | A `kovetkezo` mező elavult (az F114.8 lefutott). |
 | E1 (öt fogyasztó) | OK | a diff 5 fájlja | mind a `tsk_kulcs`-on át olvas; a sqlite `minta` ága egyenértékű. Mellékes: `olvaso_pilot/adat.py:552` proveniencia-sora nem nevezi meg a versmegfeleltetést. |
 | E2 / TSK érintetlen | OK | — | `git diff --numstat origin/main..HEAD -- konkordancia/TSK_kereszthivatkozasok.tsv`: üres. |
-| E6 / DT-F114b ÚSZ | OK | `tsk_kulcs.py:21-26`, README, N-F114a | a korlát mindenütt kimondva; teszt: `test_usz_azonossag_kimondott_korlat`. |
-| E7 / DT-F114a | OK | `adat/jeloltek.tsv` | numstat 7/7, csak `igehely` és `indoklas` vége; ütközés nincs; mind a 7 pár egyezik a megfeleltetéssel. |
-| DT-F114c / render_diff | OK | `render_diff_osztalyoz.py:478-522` | 43 elem; a negatív teszt a listán kívüli `Róm 8:1`-et és a más motívumbeli `Zsolt 6:5`-öt `ismeretlen`-nek méri; a DT191 többi ága érintetlen. |
-| DONTESEK | OK | DT-F114a/b/c | helyőrzők, 🟢, felhasználói idézettel. |
+| E6 / DT197 ÚSZ | OK | `tsk_kulcs.py:21-26`, README, N-F114a | a korlát mindenütt kimondva; teszt: `test_usz_azonossag_kimondott_korlat`. |
+| E7 / DT199 | OK | `adat/jeloltek.tsv` | numstat 7/7, csak `igehely` és `indoklas` vége; ütközés nincs; mind a 7 pár egyezik a megfeleltetéssel. |
+| DT198 / render_diff | OK | `render_diff_osztalyoz.py:478-522` | 43 elem; a negatív teszt a listán kívüli `Róm 8:1`-et és a más motívumbeli `Zsolt 6:5`-öt `ismeretlen`-nek méri; a DT191 többi ága érintetlen. |
+| DONTESEK | OK | DT199/b/c | helyőrzők, 🟢, felhasználói idézettel. |
 | A2 | OK | N-F09g, N-F114a | `tsk "Préd 9:12"` → Kol 3,23 Votes=71 első; `tsk "Zsolt 18:6"` → nincs Zsolt 50,15; `tsk "Zsolt 16:10"` → Zsolt 49,16. |
 | A3–A5 | NEM ALKALMAZHATÓ | — | nincs tanulmány, Remez/Sod, tanító a diffben. |
 | A6 / E12–E15 | OK | — | `futtat.py`: 0 találat. |
@@ -45,10 +45,10 @@ Ellenőr: `fuggetlen-ellenor` subagent, claude-opus-5-5 (kért: `opus`, egyezik)
 | F. rész nem körkörös | OK, korláttal | a régi elérés a `Karoli_1908.tsv`-ből; helyes halmazt nem számol, hibás új párt nem fog meg (a docstring kimondja) |
 | `F114_elveszett_sorok.tsv` osztály-oszlopa | **ELTÉRÉS** | a `kategoria(src)` a KJV-kulcsot Károli-kulcsként keresi ki (`felmeres.py:156-158,185`); 24 KJV-kulcs (195 forrás-, 155 célsor) rossz okkal címkézve. A „Jób 39:34–38, Préd 9:21–23: a KJV-ben nincs ilyen vers” hamis: Károli Préd 9:21–23 = KJV 10:1–3, Jób 39:34–38 = KJV 40:1–5, Dán 3:31–33 = KJV 4:1–3; Préd 2:26, Zsolt 13:6 Károli-összevonásban. Ezeknek van Károli-otthonuk, mégis elvesznek. |
 | Előző 2. (Jón 2:1 a docstringben) | OK | `tsk_kulcs.py:90` |
-| Előző 3. (jelentés E3) | **ELTÉRÉS** (részben javult) | az új mondat mind a 161 üres-KJV sorra azonosságot állít (a 66 feliratsorra, a 8 KEZI-re, az 1Kir 22:46–49-re hamis); az E3 táblázat (`:19,23,24`) a DT-F114d előtti számokat mutatja jelölés nélkül (friss: 21 309; 272/4 211; 282/3 446) |
+| Előző 3. (jelentés E3) | **ELTÉRÉS** (részben javult) | az új mondat mind a 161 üres-KJV sorra azonosságot állít (a 66 feliratsorra, a 8 KEZI-re, az 1Kir 22:46–49-re hamis); az E3 táblázat (`:19,23,24`) a DT200 előtti számokat mutatja jelölés nélkül (friss: 21 309; 272/4 211; 282/3 446) |
 | Előző 4. (N-F114b) | OK | `NYITOTT_FELADATOK.md:134` |
 | Előző 5. (brief fejléc) | OK | — |
-| DT-F114d | OK formailag | 🟢, idézet, Hós 13/14, Én 6 indok igazolva; a tényalapban a fenti két hamis premissza áll |
+| DT200 | OK formailag | 🟢, idézet, Hós 13/14, Én 6 indok igazolva; a tényalapban a fenti két hamis premissza áll |
 | N-F54a bővítés | OK | 13 fejezet, 235/3 653 forrás, 243/2 360 cél |
 | Írási halmaz, TSK érintetlen, jeloltek 7 sor, render_diff 43 + negatív teszt | OK | — |
 | Tesztek | OK | `teszt_tsk_kulcs.py` 12 OK; `teszt_render_diff_osztalyoz.py` 74 OK |
@@ -58,7 +58,7 @@ Ellenőr: `fuggetlen-ellenor` subagent, claude-opus-5-5 (kért: `opus`, egyezik)
 
 ## ÖSSZEGZÉS — ELTÉRÉS: 3 tétel
 
-1. A DT-F114d tényalapja és az elveszett-sorok napló osztályozása hamis (24 kulcs rossz kulcson címkézve; Préd 9:21–23 / Jób 39:34–38 / Dán 3:31–33 KJV-párja létezik). A felhasználó a (b)-t részben ezen a premisszán választotta.
+1. A DT200 tényalapja és az elveszett-sorok napló osztályozása hamis (24 kulcs rossz kulcson címkézve; Préd 9:21–23 / Jób 39:34–38 / Dán 3:31–33 KJV-párja létezik). A felhasználó a (b)-t részben ezen a premisszán választotta.
 2. Az MT/szamlalas-tartalék az 1Kir 22:46–49-en eltolt párt ad (nem regresszió); rokon `tvtms` táblahibák nyitott tétel nélkül.
 3. A jelentés E3 túláltalánosít, a táblázata elavult számokat mutat.
 
@@ -71,14 +71,14 @@ Ellenőr: `fuggetlen-ellenor` subagent, claude-opus-5-5 (kért: `opus`, egyezik)
 | pont | eredmény | indok |
 |---|---|---|
 | `ok` oszlop (`F114_elveszett_sorok.tsv`) | OK | 510 sor: `tabla_lyuk_fejezet` 478, `tablahiba_kjv_par_letezik` 25 (12 forráskulcs / 198 sor; 13 célvers / 188), `kivetel_nincs_par_1Kir_22_46_49` 7; Károli-szöveggel mintavételezve (Préd 9:21 = KJV 10:1, Jób 39:34 = KJV 40:1, Dán 3:31 = KJV 4:1, Hós 14:2 = KJV 14:1) |
-| DT-F114d helyesbítés | OK | jelölt szakasz; az idézet és a (b) indoka bájtra azonos |
+| DT200 helyesbítés | OK | jelölt szakasz; az idézet és a (b) indoka bájtra azonos |
 | `NINCS_PAR_KIVETEL` | OK | 1Kir 22:46–49, scope=manual, negatív teszt; `tsk "1Kir 22:46"` n=0. Megjegyzés: az 1Kir 22:45 (Károli = KJV 22:44) eltolt, a teszt pozitív esetként rögzíti (N-F54a alatt ismert) |
 | 1Kir 22:54, Jón 2:11, Ézs 3:27 MT-tartaléka | OK (ártalmatlan) | a KJV-vers nem létezik, a TSK-ban 0 sor; a kár a szomszédos `tvtms` sorokon van (nem regresszió) |
 | E3 számok | OK | 21 306; 275/4 245; a régiek jelölten felülírva. A céloldali +29 / +27 különbség NEM ELLENŐRIZHETŐ |
 | E1 — azonosság-állítás | **ELTÉRÉS** | `TSK_VERSSZAM_jelentes.md:28`, N-F54a (3), `tsk_kulcs.py:41-42`: a „86 MT/szamlalas sor létező, azonos számú KJV-vers” még hamis az 1Kir 22:54, Jón 2:11, Ézs 3:27, 1Sám 20:43, 1Sám 24:23 sorra (a KJV-vers nem létezik); a „eltolt párt kap” állítás téves (0 TSK-sor) |
 | E2 — N-F54a teljessége | **ELTÉRÉS** | az Ézs 3:1–26 (Károli 3:1 = KJV 2:22), Jón 2:2–10 (Károli 2:9 = KJV 2:8), 1Sám 24:1–22 (Károli 24:2 = KJV 24:1) egészében eltolt azonosságot kap; a lista csak a szomszédokat nevezi meg, az 1Sám 24 és 20:43 hiányzik |
 | E3 — oszlopnév | **ELTÉRÉS** (enyhe) | `azonos_szovegu_karoli_vers_tablasora` valójában az azonos *számú* Károli-vers táblasora; a 099456fe címe „Károli-kulcs”, a címkézés KJV-kulcs szerinti |
-| Írási halmaz, TSK, jeloltek 7 sor, Δ, render_diff, CI (`futtat.py` exit 0), DT-F114a/b/c, A2, A6 | OK | — |
+| Írási halmaz, TSK, jeloltek 7 sor, Δ, render_diff, CI (`futtat.py` exit 0), DT199/b/c, A2, A6 | OK | — |
 | Tesztek | NEM ELLENŐRIZHETŐ | parancskörön kívül; kódolvasás alapján összhangban |
 
 ## ÖSSZEGZÉS — ELTÉRÉS: 3 tétel (dokumentációs/hatóköri; adatot nem ront, nem regresszió)
@@ -97,10 +97,10 @@ Ellenőr: `fuggetlen-ellenor` subagent, claude-opus-5-5 (kért: `opus`, egyezik)
 |---|---|---|
 | 3. ellenőrzés E1–E3 | OK | az 5 nem létező KJV-vers 0 TSK-sor, nincs „eltolt pár”; N-F54a: Ézs 3, Jón 2:2–10, 1Sám 24, 1Sám 20:43, 1Kir 22:45 maradék; oszlopnév `azonos_szamu_…`; commit-cím helyesbítve |
 | `NINCS_PAR_KIVETEL` | OK | 1Kir 22:46–49, Ézs 3:1–26, Jón 2:2–10, 1Sám 24:1–22, scope=manual; `lekerdez.py karoli`-val a határok igazolva; `tsk` a kivételekre n=0; szomszédok épek; a felmérő tükörkonstansa karakterre azonos |
-| DT-F114d kiegészítés, DT-F114e | OK | jelölt, idézettel. Mellékes: a DT-F114e „Probléma” cellájában a megálláskori „Lista nem bővítve” áll |
+| DT200 kiegészítés, DT201 | OK | jelölt, idézettel. Mellékes: a DT201 „Probléma” cellájában a megálláskori „Lista nem bővítve” áll |
 | render_diff lista 46 | OK | az új 3 sor név szerint (`:522-524`); `karoli "Ézs 3:11"` = KJV 3:10 |
 | számok konzisztenciája | OK | `F114_elveszett_sorok.tsv` 622 = 478 + 25 + 119; egyezik a jelentéssel és az N-F54a-val |
-| **motívum-adat a kivételeken** | **ELTÉRÉS** | `adat/elofordulasok.tsv:74,145`: TEREMT-001 Jón 2:6 és ALVIL-001 Jón 2:3 a kivétel miatt TSK nélkül marad, holott a helyes KJV-pár (2:5, 2:2) létezik; ezt sem a jelentés, sem a DT-F114d, sem az N-F54a nem mondja ki; a B „elmarad 0” a kivétel-verseken körkörös; a `F114_proba_diff.tsv:150,152` TEREMT-001 −1/−1 változása megmagyarázatlan. A main-hez képest nem regresszió. |
+| **motívum-adat a kivételeken** | **ELTÉRÉS** | `adat/elofordulasok.tsv:74,145`: TEREMT-001 Jón 2:6 és ALVIL-001 Jón 2:3 a kivétel miatt TSK nélkül marad, holott a helyes KJV-pár (2:5, 2:2) létezik; ezt sem a jelentés, sem a DT200, sem az N-F54a nem mondja ki; a B „elmarad 0” a kivétel-verseken körkörös; a `F114_proba_diff.tsv:150,152` TEREMT-001 −1/−1 változása megmagyarázatlan. A main-hez képest nem regresszió. |
 | jelentés `:26` | ELTÉRÉS (enyhe) | elavult állapotleírás |
 | felmérő `:508` docstring | ELTÉRÉS (enyhe) | csak az 1Kir 22-kivételt említi |
 | `F114_proba_diff.tsv:167` | ELTÉRÉS (enyhe, korábbi) | a proveniencia `ts=` üres |
