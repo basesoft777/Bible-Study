@@ -91,6 +91,7 @@ A szerver a WSL-ben (8771-es port, a munkafából) és a beépített böngésző
 ## 6. Nyitott
 
 - **DT-F76j** (🟢, a felhasználó döntése, 2026-10-18): ismert korlát, a 9 hely a README-ben és a súgóban; a javítás az N-F76k (az építő tárolja a belső MT-vershatárt).
+- **N-F76b, N-F76c — el van halasztva, nem az M3 része** (a felhasználó döntése, 2026-10-18; az ellenőr 3. ELTÉRÉSE). A Playwright link- és keresési próba és a Semgrep CI-lépés nem készült: a `.github/` nincs a brief `ir` mezőjében, és a CI-ben nincs `pardes.db`. Az M3 pótléka unittest (`teszt_kereses.py`: injekció, XSS, a találati linkek, ismert kérdés, forrássor; a „nincs SQL a `kereses.py`-ban” szabály). **Javaslat (nem döntés):** az N-F76b link- és keresési próbája helyi `test_client`-es bejárásként az M4-ben (az M0 7. szakasz tesztterve szerint), a Playwright-os CI-változat és az N-F76c Semgrep-lépése külön CI-feladatként a `/befogad` útján. Sor: `NYITOTT_FELADATOK.md` (N-F76b, N-F76c).
 - A magyar keresés a 9 párosítatlan ÚSZ-könyvben nem talál (ismert, F95; a lap jelzi). Pótlása (pl. a `vers.karoli_szoveg` szavaira épülő tartalék) új adatút volna, nem M3-tétel.
 - A K5 a leggyakoribb szavakon a határon / fölötte (4. szakasz): az M4 méri korláttal.
 - A `teszt_bdb_vers_jelentes.py` `test_bajtra_azonos` a main-en (89b30c2e) is piros, az M3-tól független: a generált `adat/bdb_vers_jelentes.tsv` fejlécében a `szamkiosztas` a „DT-F99n”-t „DT179”-re cserélte, a `bdb_vers_jelentes.py` még „DT-F99n”-t ír. Nem nyúltam hozzá (`adat/bdb_*` tiltott).
