@@ -1,11 +1,11 @@
 fajl	kategoria	hozzaadott	torolt
 ALVIL-001_TORZSCIKK.md	elavult_adat	0	15
-ALVIL-001_TORZSCIKK.md	ismeretlen	4	4
+ALVIL-001_TORZSCIKK.md	felhasznalo_elfogadva	0	1
 ALVIL-001_TORZSCIKK.md	ismert_hiba_tsk_versszam	0	1
 ALVIL-001_TORZSCIKK.md	kiejtes	117	117
 ALVIL-001_TORZSCIKK.md	licenc	11	0
 ALVIL-001_TORZSCIKK.md	lxx_korpusz	9	6
-ALVIL-001_TORZSCIKK.md	szerep	7	4
+ALVIL-001_TORZSCIKK.md	szerep	11	7
 ALVIL-001_TORZSCIKK.md	torzscikk_res	25	13
 ALVIL-001_TUDOMANYOS.md	elavult_adat	20	22
 ALVIL-001_TUDOMANYOS.md	felhasznalo_elfogadva	0	3
@@ -22,10 +22,10 @@ ALVIL-001_TUDOMANYOS.md	szerep_vaz	44	8
 ALVIL-001_TUDOMANYOS.md	tbesh	5	0
 ALVIL-001_TUDOMANYOS.md	teologiai	240	0
 ALVIL-001_TUDOMANYOS.md	ubs_dbh	70	0
-ANTROP-001_TORZSCIKK.md	ismeretlen	5	5
+ANTROP-001_TORZSCIKK.md	felhasznalo_elfogadva	0	1
 ANTROP-001_TORZSCIKK.md	kiejtes	8	8
 ANTROP-001_TORZSCIKK.md	licenc	11	0
-ANTROP-001_TORZSCIKK.md	szerep	8	5
+ANTROP-001_TORZSCIKK.md	szerep	13	9
 ANTROP-001_TORZSCIKK.md	torzscikk_res	3	1
 ANTROP-001_TUDOMANYOS.md	elavult_adat	4	2
 ANTROP-001_TUDOMANYOS.md	felhasznalo_elfogadva	0	3
@@ -41,12 +41,11 @@ ANTROP-001_TUDOMANYOS.md	szerep_vaz	45	16
 ANTROP-001_TUDOMANYOS.md	tbesh	30	0
 ANTROP-001_TUDOMANYOS.md	teologiai	518	0
 ANTROP-001_TUDOMANYOS.md	ubs_dbh	34	0
-HAMART-001_TORZSCIKK.md	felhasznalo_elfogadva	0	1
-HAMART-001_TORZSCIKK.md	ismeretlen	8	8
+HAMART-001_TORZSCIKK.md	felhasznalo_elfogadva	0	2
 HAMART-001_TORZSCIKK.md	kiejtes	38	38
 HAMART-001_TORZSCIKK.md	licenc	11	0
 HAMART-001_TORZSCIKK.md	lxx_korpusz	29	29
-HAMART-001_TORZSCIKK.md	szerep	15	12
+HAMART-001_TORZSCIKK.md	szerep	23	19
 HAMART-001_TORZSCIKK.md	torzscikk_res	197	26
 HAMART-001_TUDOMANYOS.md	elavult_adat	172	2
 HAMART-001_TUDOMANYOS.md	felhasznalo_elfogadva	0	3
@@ -62,12 +61,11 @@ HAMART-001_TUDOMANYOS.md	szerep_vaz	48	56
 HAMART-001_TUDOMANYOS.md	tbesh	59	0
 HAMART-001_TUDOMANYOS.md	teologiai	1159	0
 HAMART-001_TUDOMANYOS.md	ubs_dbh	145	0
-HODIT-001_TORZSCIKK.md	felhasznalo_elfogadva	0	6
-HODIT-001_TORZSCIKK.md	ismeretlen	3	3
+HODIT-001_TORZSCIKK.md	felhasznalo_elfogadva	0	7
 HODIT-001_TORZSCIKK.md	kiejtes	1	1
 HODIT-001_TORZSCIKK.md	licenc	9	0
 HODIT-001_TORZSCIKK.md	lxx_korpusz	24	24
-HODIT-001_TORZSCIKK.md	szerep	9	6
+HODIT-001_TORZSCIKK.md	szerep	12	8
 HODIT-001_TORZSCIKK.md	torzscikk_res	26	19
 HODIT-001_TUDOMANYOS.md	elavult_adat	4	3
 HODIT-001_TUDOMANYOS.md	felhasznalo_elfogadva	0	5
@@ -81,11 +79,10 @@ HODIT-001_TUDOMANYOS.md	szerep_vaz	29	12
 HODIT-001_TUDOMANYOS.md	tbesh	11	0
 HODIT-001_TUDOMANYOS.md	teologiai	31	0
 HODIT-001_TUDOMANYOS.md	ubs_dbh	55	0
-ISTENTISZT-001_TORZSCIKK.md	felhasznalo_elfogadva	0	1
-ISTENTISZT-001_TORZSCIKK.md	ismeretlen	6	6
+ISTENTISZT-001_TORZSCIKK.md	felhasznalo_elfogadva	0	5
 ISTENTISZT-001_TORZSCIKK.md	kiejtes	10	10
 ISTENTISZT-001_TORZSCIKK.md	licenc	12	0
-ISTENTISZT-001_TORZSCIKK.md	szerep	6	3
+ISTENTISZT-001_TORZSCIKK.md	szerep	12	5
 ISTENTISZT-001_TORZSCIKK.md	torzscikk_res	88	8
 ISTENTISZT-001_TUDOMANYOS.md	elavult_adat	89	9
 ISTENTISZT-001_TUDOMANYOS.md	felhasznalo_elfogadva	0	2
@@ -99,12 +96,11 @@ ISTENTISZT-001_TUDOMANYOS.md	szerep_vaz	46	15
 ISTENTISZT-001_TUDOMANYOS.md	tbesh	5	0
 ISTENTISZT-001_TUDOMANYOS.md	teologiai	396	0
 ISTENTISZT-001_TUDOMANYOS.md	ubs_dbh	80	0
-KIRALY-001_TORZSCIKK.md	felhasznalo_elfogadva	0	2
-KIRALY-001_TORZSCIKK.md	ismeretlen	6	6
+KIRALY-001_TORZSCIKK.md	felhasznalo_elfogadva	0	3
 KIRALY-001_TORZSCIKK.md	kiejtes	4	4
 KIRALY-001_TORZSCIKK.md	licenc	10	0
 KIRALY-001_TORZSCIKK.md	lxx_korpusz	5	5
-KIRALY-001_TORZSCIKK.md	szerep	10	7
+KIRALY-001_TORZSCIKK.md	szerep	16	12
 KIRALY-001_TORZSCIKK.md	torzscikk_res	20	5
 KIRALY-001_TUDOMANYOS.md	elavult_adat	17	3
 KIRALY-001_TUDOMANYOS.md	felhasznalo_elfogadva	0	5
@@ -120,12 +116,11 @@ KIRALY-001_TUDOMANYOS.md	szerep_vaz	48	28
 KIRALY-001_TUDOMANYOS.md	tbesh	17	0
 KIRALY-001_TUDOMANYOS.md	teologiai	366	0
 KIRALY-001_TUDOMANYOS.md	ubs_dbh	44	0
-MENNY-001_TORZSCIKK.md	felhasznalo_elfogadva	0	1
-MENNY-001_TORZSCIKK.md	ismeretlen	3	3
+MENNY-001_TORZSCIKK.md	felhasznalo_elfogadva	0	2
 MENNY-001_TORZSCIKK.md	kiejtes	1	1
 MENNY-001_TORZSCIKK.md	licenc	9	0
 MENNY-001_TORZSCIKK.md	lxx_korpusz	6	6
-MENNY-001_TORZSCIKK.md	szerep	9	6
+MENNY-001_TORZSCIKK.md	szerep	12	8
 MENNY-001_TORZSCIKK.md	torzscikk_res	8	6
 MENNY-001_TUDOMANYOS.md	elavult_adat	4	3
 MENNY-001_TUDOMANYOS.md	felhasznalo_elfogadva	0	3
@@ -139,12 +134,11 @@ MENNY-001_TUDOMANYOS.md	szerep_vaz	29	12
 MENNY-001_TUDOMANYOS.md	tbesh	15	0
 MENNY-001_TUDOMANYOS.md	teologiai	959	0
 MENNY-001_TUDOMANYOS.md	ubs_dbh	50	0
-TEREMT-001_TORZSCIKK.md	felhasznalo_elfogadva	0	5
-TEREMT-001_TORZSCIKK.md	ismeretlen	4	4
+TEREMT-001_TORZSCIKK.md	felhasznalo_elfogadva	0	6
 TEREMT-001_TORZSCIKK.md	kiejtes	58	58
 TEREMT-001_TORZSCIKK.md	licenc	11	0
 TEREMT-001_TORZSCIKK.md	lxx_korpusz	9	9
-TEREMT-001_TORZSCIKK.md	szerep	7	4
+TEREMT-001_TORZSCIKK.md	szerep	11	7
 TEREMT-001_TORZSCIKK.md	torzscikk_res	18	11
 TEREMT-001_TUDOMANYOS.md	elavult_adat	10	7
 TEREMT-001_TUDOMANYOS.md	felhasznalo_elfogadva	0	4
@@ -160,6 +154,6 @@ TEREMT-001_TUDOMANYOS.md	szerep_vaz	44	8
 TEREMT-001_TUDOMANYOS.md	tbesh	5	0
 TEREMT-001_TUDOMANYOS.md	teologiai	58	0
 TEREMT-001_TUDOMANYOS.md	ubs_dbh	44	0
-# összesítő (hozzáadott + törölt sor): kiejtes=848, tbesh=147, ubs_dbh=522, mounce_sece=143, teologiai=3727, nyelvi_hatter=79, lxx_korpusz=360, licenc=462, szerep=130, szerep_vaz=488, elavult_adat=386, fordites_jelzo=24, ismert_hiba_tsk_versszam=13, felhasznalo_elfogadva=44, jeloles=176, torzscikk_res=474, ismeretlen=78
+# összesítő (hozzáadott + törölt sor): kiejtes=848, tbesh=147, ubs_dbh=522, mounce_sece=143, teologiai=3727, nyelvi_hatter=79, lxx_korpusz=360, licenc=462, szerep=197, szerep_vaz=488, elavult_adat=386, fordites_jelzo=24, ismert_hiba_tsk_versszam=13, felhasznalo_elfogadva=55, jeloles=176, torzscikk_res=474, ismeretlen=0
 # proveniencia: scope=generalt_proba/F09_szotar_s2_proba vs lexikon | forras=eszkozok/render_diff_osztalyoz.py --proba | ts=2026-10-18
 # az éles lexikon/ hash-ellenőrzése (naplok/F09_S0_lexikon_hash.tsv): 16 fájl bájtra változatlan
