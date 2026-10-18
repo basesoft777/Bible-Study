@@ -11,7 +11,7 @@ ad: a lexikon/[ID]_TUDOMANYOS.md és _TORZSCIKK.md fájlok a jelenlegi adatból 
 kovetkezo: befagyasztva a #11 1. lépcsőjéig (DT74 (3): a régi forrásréteg és az éles lexikon nem bővül a régi szerkezet szerint); utána: M0 szárazfutás ideiglenes könyvtárba (a repón kívülre); ⛔ az éles fájlok felülírása előtt
 olvas: [lexikon/, naplok/F89_M0_felmeres.md, adat/licencek.tsv, eszkozok/lexikon_general.py, RENDER_BRIEF.md, adat/forditasok.tsv, adat/res_forras.tsv, ATALAKITASI_TERV.md.md]
 ir: [lexikon/, generalt_proba/]
-fugg: [28, 34, 35]
+fugg: [28, 34, 35, 113]
 nem_fugg: [7]
 ---
 
