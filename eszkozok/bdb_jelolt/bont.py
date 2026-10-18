@@ -306,7 +306,15 @@ def strong_illeszt(strong_eredeti, blokkok, szocikk, index, cimke_szerint):
         fps[1] = cimfolytatas_nelkul(fps[1])
     if len(blokkok) < 2:
         return hozz, 'sikertelen', 'nincs tartalmi blokk'
-    elso = kezdet_jeloltek(fps[1], szocikk, index, sajat)
+
+    def kezdo_fp(i):
+        # kettévágott szócikk-kezdet (F107, DT-F107e (b)): a címszó egy rövid blokkban (< 4 token), a szöveg a
+        # következőben (pl. H108 „I. אוה” + „1Arabic …”, H176 „אוֺ , , ),” + „conjunction or”): együtt mérjük
+        if len(fps[i]) < 4 and i + 1 < len(fps):
+            return fps[i] + fps[i + 1]
+        return fps[i]
+
+    elso = kezdet_jeloltek(kezdo_fp(1), szocikk, index, sajat)
     if not elso:
         tartalom = sum(len(f) for f in fps[1:])
         if tartalom < 8:
@@ -322,7 +330,8 @@ def strong_illeszt(strong_eredeti, blokkok, szocikk, index, cimke_szerint):
             # számozott / betűs / törzs-fejű bekezdés nem nyit új szócikket
             hozz[i] = aktualis
             continue
-        uj = [x for x in kezdet_jeloltek(fps[i], szocikk, index, sajat) if x[1] not in hasznalt and x[0] >= 0.85]
+        # a későbbi szócikk-kezdet küszöbe azonos az elsőével (ILL_KUSZOB; F107.14: a 0,85 a H1817 BDB1943-at elvétette)
+        uj = [x for x in kezdet_jeloltek(kezdo_fp(i), szocikk, index, sajat) if x[1] not in hasznalt]
         if uj:
             aktualis = uj[0][1]
             hasznalt.add(aktualis)
