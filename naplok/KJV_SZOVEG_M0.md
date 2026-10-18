@@ -25,7 +25,7 @@
 
 **Következtetés.** Az új csomag a Strong-réteg tekintetében azonos a #19-es forrással: az F19-generátor belőle bájtra a `KJV_Strongs_teljes.tsv`-t adja. Az eltérés csak a csomagolásé (új zip, 2026-10-17-es bejegyzésdátumok). Eltéréslista ezért nem készült (`naplok/KJV_SZOVEG_M0_strong_elteres.tsv` nincs). A nem Strong-címkés szövegrészt (névelők, `\add`, írásjelek, lábjegyzetek) a #19-es zip hiányában nem lehet a régi csomaggal összevetni. A #19-es tábla ezeket nem tartalmazza, ezért ez a mérés nem terjed ki rájuk.
 
-*Mellékes következmény:* mivel az `1bab5d4d…` zip nincs meg sehol, az új zip lett a #19-tábla egyetlen meglévő, bájtra visszaigazolt nyers forrása (l. DT-F118d).
+*Mellékes következmény:* mivel az `1bab5d4d…` zip nincs meg sehol, az új zip lett a #19-tábla egyetlen meglévő, bájtra visszaigazolt nyers forrása (l. DT212).
 
 ## 2. USFM-jelölőleltár (66 kanonikus könyv) és bánásmód
 
@@ -40,7 +40,7 @@ A darabszámok a nyitó jelölőket számolják (a zárók száma minden párosn
 | `\d` | 116 (mind Zsoltárok) | zsoltárfelirat | **külön kezelendő**: saját sor, a vers `0` (mint a `KJV_Strongs_teljes.tsv`-ben) | a felirat szövege | a felirat jelölt alakja | nincs |
 | `\s1` | 36 | vers nélküli sor | **külön kezelendő** (3. pont): 22 a Zsolt 119 akrosztichon-fejléce, 14 páli utóirat (Róm 16:27 … Zsid 13:25) | nem kerül a versszövegbe | nem kerül a versszövegbe | nincs, ha a 4. pont `Elotte`/`Utoirat` oszlopa elfogadott, különben a 36 sor |
 | `\tl` | 22 | csak a Zsolt 119 `\s1`-ben (`א ALEPH.`) | a `\s1`-gyel együtt | — | — | a `\tl` jelölés (a héber betű és a név szövegként megmarad) |
-| `\w … \w*`, `\+w … \+w*` | 313 813 + 35 495 = 349 308; attribútum mindig csak `strong` | szöveg | **szöveg marad**, a jelölő és a `strong=` attribútum kimarad | a szó | a szó | a Strong-címke: szándékosan, mert a `KJV_Strongs_teljes.tsv`-ben megvan, és a DT124/DT126 miatt ide nem kerül (DT-F118a) |
+| `\w … \w*`, `\+w … \+w*` | 313 813 + 35 495 = 349 308; attribútum mindig csak `strong` | szöveg | **szöveg marad**, a jelölő és a `strong=` attribútum kimarad | a szó | a szó | a Strong-címke: szándékosan, mert a `KJV_Strongs_teljes.tsv`-ben megvan, és a DT124/DT126 miatt ide nem kerül (DT210) |
 | `\add … \add*`, `\+add` | 20 887 + 623 | szöveg | **jelölve marad** (dőlt betoldás) | a szöveg, jelölő nélkül | `[…]` között | `Szöveg`: a betoldás-jelölés (a `Szöveg_jelolt` megőrzi) |
 | `\nd … \nd*`, `\+nd` | 6 876 + 16 (+ 65 lábjegyzetben) | szöveg (Isten neve, a forrásban már „LORD” nagybetűvel) | **szöveg marad**, a jelölő kimarad | a szöveg | a szöveg | a `\nd` jelölés (a nagybetűs írásmód megmarad) |
 | `\wj … \wj*` | 2 038 | szöveg (Jézus szavai) | **szöveg marad**, a jelölő kimarad *(a ⛔ dönthet úgy, hogy a `Szöveg_jelolt` jelölje, pl. `‹…›`)* | a szöveg | a szöveg | a „vörös betűs” jelölés |
@@ -66,7 +66,7 @@ Az `f19_ebible_import.parse_usfm` a vers nélküli sor szövegét az aktuális v
 
 Az új importálónak ezért a `\s1`-et külön kell kezelnie (4. pont), nem az F19 vershez fűző logikájával.
 
-**Az F19 `szoveg` mezője olvasószövegnek sem alkalmas** (ez a DT-F118b bemenete): a záró jelölőt szóközre cseréli, ezért 4 305 versben szóköz áll az írásjel előtt (pl. 1Krón 2:42: „Jerahmeel were , Mesha”, `\add were\add*,`-ből). A pilcrow 2 970 versben benne marad, a `\add`-jelölés elvész, és a 35 `\s1`-sor a versszövegbe kerül.
+**Az F19 `szoveg` mezője olvasószövegnek sem alkalmas** (ez a DT211 bemenete): a záró jelölőt szóközre cseréli, ezért 4 305 versben szóköz áll az írásjel előtt (pl. 1Krón 2:42: „Jerahmeel were , Mesha”, `\add were\add*,`-ből). A pilcrow 2 970 versben benne marad, a `\add`-jelölés elvész, és a 35 `\s1`-sor a versszövegbe kerül.
 
 ## 4. Táblaforma-javaslat (a ⛔ dönt)
 
@@ -82,19 +82,19 @@ Az új importálónak ezért a `\s1`-et külön kell kezelnie (4. pont), nem az 
 
 *Alternatíva az `Elotte`/`Utoirat` helyett:* a 36 `\s1`-sor kimarad, a veszteségnaplóban darabszámmal. A versszövegbe fűzés semmiképp sem jó, mert az F19-hiba ismétlése lenne.
 
-Fejlécsorok (a brief szerint): `# GENERÁLT: eszkozok/kjv_szoveg_import.py — kézzel nem szerkesztendő.`; `# proveniencia: scope=KJV teljes (66 kanonikus könyv, angol számozás) | forras=https://ebible.org/Scriptures/eng-kjv_usfm.zip sha256=00532b6d…d447 | ts=…`; `# licenc: …` (a DT-F118a szerint); `# ÁLLAPOT: …` (az M2 mérése); és új sorként `# veszteség: …`, a 2. pont kimaradó jelölőinek darabszámával (DT-F107d (2)).
+Fejlécsorok (a brief szerint): `# GENERÁLT: eszkozok/kjv_szoveg_import.py — kézzel nem szerkesztendő.`; `# proveniencia: scope=KJV teljes (66 kanonikus könyv, angol számozás) | forras=https://ebible.org/Scriptures/eng-kjv_usfm.zip sha256=00532b6d…d447 | ts=…`; `# licenc: …` (a DT210 szerint); `# ÁLLAPOT: …` (az M2 mérése); és új sorként `# veszteség: …`, a 2. pont kimaradó jelölőinek darabszámával (DT-F107d (2)).
 
 Az M2 elvárásai a mért alapon: **T ∖ S pontosan a 3 címke nélküli kanonikus vers** (a 116 zsoltárfelirat mind címkés, tehát nem tartozik a T ∖ S-be; a brief M-a pontjának „címke nélküli 0. versek” része üres halmaz). Üres `Szöveg`: 0 várható (az F19-tisztítás után is 0).
 
-## 5. Döntési tételek (⛔, `DONTESEK.md`: DT-F118a, DT-F118b, DT-F118d)
+## 5. Döntési tételek (⛔, `DONTESEK.md`: DT210, DT211, DT212)
 
-### DT-F118b — saját importáló vagy az F19 bővítése
+### DT211 — saját importáló vagy az F19 bővítése
 
 - **(a) saját importáló** `eszkozok/kjv_szoveg_import.py`. Az `f19_ebible_import`-ból importálja a `lista_konyvek`-et és a `RE_FN` / `RE_V` mintát, kódmásolás nélkül. A vers-szétvágást és a szövegtisztítást viszont maga végzi, mert az F19 `parse_usfm` a kettőt egy ciklusban keveri, és a vershez fűzés éppen a hibás rész (3. pont). A teszt rögzíti, hogy a saját versek halmaza azonos a `f19.parse_usfm` verseinek halmazával (31 218), így a kulcs-kompatibilitás géppel igazolt. A `KJV_Strongs_teljes.tsv` és az F19-generátor érintetlen marad.
 - **(b) az `f19_ebible_import.py` bővül** egy második kimenettel. Ehhez a `parse_usfm`-et át kell írni (`\s1`, szóközök, `\add`). Utána igazolni kell, hogy a `KJV_Strongs_teljes.tsv` és az `F19_hianyok.tsv` bájtra azonos marad. Az F19 futtatása a luvlylavnder-klónt és az ASV-zipet is kéri. Ütközik a #48 `ir` listájával, és a `nem_fugg`-ból a 48 kikerül.
 - **Javaslat: (a).** A mérés szerint az F19-parse a vershalmaz és a Strong-réteg referenciája (bájtra reprodukálható), a szövegtisztítása viszont alkalmatlan, tehát a jó részét importálni kell, a hibás részét nem.
 
-### DT-F118a — a `KJV_teljes_szoveg` licence; viszony a DT126-hoz
+### DT210 — a `KJV_teljes_szoveg` licence; viszony a DT126-hoz
 
 A repó adata szerint (`adat/licencek.tsv` KJV_Strongs_teljes sor; a mostani zip `copr.htm`-je ugyanazt a négy mondatot tartalmazza, az oldal dátuma 2026-09-26) az eBible a KJV-t „Public Domain”-nek nyilvánítja. A CrossWire `kjv.conf` a szöveg alapjogát a Koronának tulajdonítja, a GPL-nyilatkozata pedig a CrossWire „this effort”-jára (jelölés, Strong-adat) vonatkozik. Az új dataset Strong-címkét és `\w`-attribútumot nem tartalmaz.
 
@@ -103,7 +103,7 @@ A repó adata szerint (`adat/licencek.tsv` KJV_Strongs_teljes sor; a mostani zip
 - **3.** más.
 - **Javaslat: 1.** A dataset a GPL-lel érintett réteget (címke, jelölés) nem hordozza, a szöveg kora és az eBible nyilatkozata adott. A nyitott kérdés (a CrossWire szövegszintű hozzájárulása) a repó adatából nem dönthető el. Ez üresen marad, és a licencsor megjegyzésében explicit jelölendő; nem töltjük ki. A DT126-ot ez **nem oldja meg**, csak a bemenete. A nyilvános kiadás előtti jogi átnézés (DT124, DT-M6) változatlan. Értelmezés, nem jogi vélemény.
 
-### DT-F118d — a nyers zip helye (DT-F107d és a brief 3. pontja)
+### DT212 — a nyers zip helye (DT-F107d és a brief 3. pontja)
 
 **A feszültség.** A DT-F107d (a felhasználó elfogadta 2026-10-18-án; egyelőre csak a `claude/f107-bdb-jelolt-szoveg` ágon, a `Rendszerfejlesztesi_playbook.md` 2. pontjában) szerint a nyers forrás SHA-256-tal megőrzendő, **a repóban, hacsak a méret vagy a licenc nem engedi**. A brief 3. pontja szerint viszont „a zip nem kerül a repóba”. Mért adatok:
 
@@ -123,4 +123,4 @@ Opciók:
 
 - A brief 3. pontjának „várt mérete” (31 102 kanonikus vers, 31 099 címkés, 3 címke nélküli, + 0. versek) az új csomagon pontosan teljesül; a 0. versek száma 116.
 - A `\s1`-es páli utóiratok és a Zsolt 119 fejlécei a `KJV_Strongs_teljes.tsv`-t nem érintik (a címke nélküli szöveg nem került bele), az új datasetet viszont igen. Ezért kell a `\s1` külön kezelése.
-- A DT-F107d még nincs a main-en. Ha a #107 nem mergelődik, a DT-F118d tárgytalanná válik, és a brief 3. pontja marad érvényben.
+- A DT-F107d még nincs a main-en. Ha a #107 nem mergelődik, a DT212 tárgytalanná válik, és a brief 3. pontja marad érvényben.

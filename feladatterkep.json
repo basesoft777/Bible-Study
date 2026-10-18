@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-10-18",
-   "commit": "aca9fb53"
+   "commit": "b3651664"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -261,7 +261,7 @@
    "fazis": "1",
    "allapot": "stop",
    "brief_allapot": "megallt",
-   "most": "Te: az M2 (generátor-képességek) kész a claude/f11-m2 ágon; az M3 (szétválasztás) a DT-F11a eldöntése és külön jóváhagyás után indul",
+   "most": "Te: az M4 zöld a claude/f11-m3b ágon (naplok/F11_M4_meres.md 8–9. szakasz; az L5 az M7-é); a merge feltétele (DT217) a mérés szerint teljesül — push, PR ([ELLENŐRZŐ] előtaggal, E16) és merge a felhasználó döntése; utána az M5 (a törzscikk törlése, E28-listára vétel) külön jóváhagyással",
    "fugg": "#9 (kész), #23 (kész), #116 (kész)",
    "tervezett": false,
    "reszletes": "Minden motívum egyetlen kézi forrásból renderelődik (D34); a törzscikk, a 8. sablon és egy régi CI-szabály kivezetésre kerül. Első lépcső az ISTENTISZT-001, utána a többi hat.",
@@ -502,7 +502,7 @@
    "allapot": "wait",
    "brief_allapot": "nem_indult",
    "most": "befagyasztva a #11 1. lépcsőjéig (DT74 (3): a régi forrásréteg és az éles lexikon nem bővül a régi szerkezet szerint); a #9 után, a közös fájl miatt a #55 után; a Strong-szerinti alszakaszok a #78 vázához igazítandók",
-   "fugg": "#9 (kész), #11*, #55*",
+   "fugg": "#9 (kész), #11*",
    "tervezett": false,
    "reszletes": "",
    "roviden": "",
@@ -566,7 +566,7 @@
    "allapot": "idle",
    "brief_allapot": "brief_kell",
    "most": "brief írása a #65 lezárása után (a variancia-térképre ül)",
-   "fugg": "#65 (kész), #109*",
+   "fugg": "#11*, #65 (kész), #109*",
    "tervezett": false,
    "reszletes": "",
    "roviden": "",
@@ -890,7 +890,7 @@
    "TERV_BEFOGAD"
   ]
  },
- "terkep": "flowchart LR\n  classDef stop fill:#d93025,stroke:#8c1d18,color:#ffffff,stroke-width:2px\n  classDef run fill:#1e8e3e,stroke:#0d5226,color:#ffffff,stroke-width:2px\n  classDef ready fill:#1a73e8,stroke:#0b3d91,color:#ffffff,stroke-width:2px\n  classDef wait fill:#f9ab00,stroke:#a86f00,color:#2b1d00,stroke-width:2px\n  classDef plan fill:#8e44ad,stroke:#5b2470,color:#ffffff,stroke-width:2px,stroke-dasharray:6 3\n  classDef idle fill:#80868b,stroke:#4a4f54,color:#ffffff\n  classDef dt fill:#ff6d00,stroke:#a34500,color:#ffffff,stroke-width:2px\n\n  P_MCP_BUROK[\"MCP_BUROK\"]:::plan\n  P_SZPA_AUDIT[\"SZPA_AUDIT\"]:::plan\n  P_TERV_BEFOGAD[\"TERV_BEFOGAD\"]:::plan\n  T10[\"#10 LEXIKON_LEZARAS\"]:::idle\n  T101[\"#101 ADATBAZIS_FRISSITES\"]:::idle\n  T102[\"#102 BDB_SZELETELO_JAVITAS\"]:::wait\n  T103[\"#103 BDB_TAGOLAS\"]:::wait\n  T104[\"#104 BDB_MEGJELENITES\"]:::wait\n  T105[\"#105 BDB_SZOREND\"]:::wait\n  T106[\"#106 BDB_MAGYARAZAT\"]:::wait\n  T107[\"#107 BDB_JELOLT_SZOVEG\"]:::wait\n  T109[\"#109 TEHOM_JOB41\"]:::ready\n  T11[\"#11 MIGRACIO\"]:::stop\n  T110[\"#110 SZURO_PILOT_ISTENTISZT\"]:::ready\n  T111[\"#111 ELTERES\"]:::ready\n  T112[\"#112 COMMIT_EKEZET\"]:::ready\n  T119[\"#119 BDB_HEADER_DT\"]:::ready\n  T12[\"#12 TEREMT-002 3. lépés…\"]:::idle\n  T13[\"#13 1Móz 17-től a…\"]:::idle\n  T22[\"#22 Károli–Strong párosítás…\"]:::stop\n  T25[\"#25 OLVASOI_HTML\"]:::idle\n  T27[\"#27 FP3\"]:::idle\n  T36[\"#36 LEXIKON_UJRAGEN\"]:::wait\n  T38[\"#38 BDB_FORDITAS\"]:::wait\n  T48[\"#48 KJV_REGI_KIVEZETES\"]:::wait\n  T50[\"#50 CI_JAVITO_KOR\"]:::ready\n  T52[\"#52 TERV_SZINKRON\"]:::stop\n  T55[\"#55 ZSOLTAR_UJRAELLENORZES\"]:::stop\n  T59[\"#59 SZOSZEDET\"]:::ready\n  T67[\"#67 BDB_JAVITAS_KAPU\"]:::idle\n  T69[\"#69 SEMA_DATASET_SZAM\"]:::idle\n  T7[\"#7 Thayer teljes magyar…\"]:::idle\n  T70[\"#70 SZOTAR_S26\"]:::wait\n  T74[\"#74 TANULMANY_JAVITAS_GEPI\"]:::idle\n  T75[\"#75 TANULMANY_JAVITAS\"]:::idle\n  T76[\"#76 OLVASOI_KONKORDANCIA\"]:::ready\n  T81[\"#81 KAROLI_UJJLENYOMAT\"]:::idle\n  T86[\"#86 ELOFIZETES_FEED\"]:::stop\n  T96[\"#96 KAROLI_MODERN\"]:::idle\n  D_DT_F38i{{\"DT-F38i\"}}:::dt\n  D_DT_M1{{\"DT-M1\"}}:::dt\n  D_DT_M3{{\"DT-M3\"}}:::dt\n  D_DT_M4{{\"DT-M4\"}}:::dt\n  D_DT_M5{{\"DT-M5\"}}:::dt\n  D_DT_M6{{\"DT-M6\"}}:::dt\n  D_DT_M7{{\"DT-M7\"}}:::dt\n  D_DT_M8{{\"DT-M8\"}}:::dt\n  D_DT127{{\"DT127\"}}:::dt\n  D_DT128{{\"DT128\"}}:::dt\n  D_DT129{{\"DT129\"}}:::dt\n  D_DT146{{\"DT146\"}}:::dt\n  D_DT147{{\"DT147\"}}:::dt\n  D_DT148{{\"DT148\"}}:::dt\n  D_DT149{{\"DT149\"}}:::dt\n  D_DT150{{\"DT150\"}}:::dt\n  D_DT151{{\"DT151\"}}:::dt\n  D_DT152{{\"DT152\"}}:::dt\n  D_DT181{{\"DT181\"}}:::dt\n  D_DT190{{\"DT190\"}}:::dt\n  D_DT2{{\"DT2\"}}:::dt\n  D_DT28{{\"DT28\"}}:::dt\n  D_DT52{{\"DT52\"}}:::dt\n  D_DT56{{\"DT56\"}}:::dt\n  D_DT57{{\"DT57\"}}:::dt\n  D_DT71{{\"DT71\"}}:::dt\n  D_DT74{{\"DT74\"}}:::dt\n  D_DT75{{\"DT75\"}}:::dt\n  D_DT77{{\"DT77\"}}:::dt\n  D_DT78{{\"DT78\"}}:::dt\n  D_DT90{{\"DT90\"}}:::dt\n\n  P_MCP_BUROK --> D_DT_M3\n  P_MCP_BUROK --> D_DT_M5\n  P_MCP_BUROK --> D_DT_M7\n  P_SZPA_AUDIT --> D_DT77\n  P_TERV_BEFOGAD --> D_DT_M8\n  T10 --> D_DT2\n  T10 --> D_DT74\n  T10 --> T11\n  T10 --> T52\n  T102 --> T107\n  T102 --> T119\n  T102 --> T76\n  T103 --> T102\n  T103 --> T119\n  T103 --> T76\n  T104 --> T102\n  T104 --> T103\n  T104 --> T119\n  T104 --> T76\n  T105 --> T102\n  T105 --> T103\n  T105 --> T104\n  T105 --> T119\n  T105 --> T76\n  T106 --> T102\n  T106 --> T103\n  T106 --> T104\n  T106 --> T105\n  T106 --> T119\n  T106 --> T76\n  T107 --> D_DT190\n  T107 --> T119\n  T11 --> D_DT74\n  T12 --> D_DT74\n  T12 --> T11\n  T13 --> T10\n  T22 --> D_DT56\n  T22 --> D_DT57\n  T22 --> D_DT71\n  T25 --> T11\n  T25 --> T12\n  T36 --> D_DT28\n  T36 --> D_DT74\n  T36 --> T11\n  T36 --> T27\n  T36 --> T38\n  T36 --> T52\n  T38 --> D_DT181\n  T38 --> D_DT52\n  T38 --> D_DT56\n  T38 --> D_DT_F38i\n  T38 --> T107\n  T48 --> T22\n  T52 --> D_DT78\n  T52 --> D_DT90\n  T55 --> D_DT74\n  T55 --> T109\n  T55 --> T11\n  T55 --> T110\n  T67 --> T27\n  T67 --> T7\n  T70 --> D_DT74\n  T70 --> T11\n  T70 --> T55\n  T74 --> T11\n  T75 --> T74\n  T76 --> D_DT127\n  T76 --> D_DT128\n  T76 --> D_DT129\n  T76 --> D_DT146\n  T76 --> D_DT147\n  T76 --> D_DT148\n  T76 --> D_DT149\n  T76 --> D_DT150\n  T76 --> D_DT151\n  T76 --> D_DT152\n  T76 --> D_DT75\n  T76 --> D_DT_M1\n  T76 --> D_DT_M4\n  T76 --> D_DT_M6\n  T81 --> T109\n  T86 --> T109\n  T86 --> T11\n  T86 --> T110\n  T86 --> T27\n  T86 --> T38\n  T86 --> T52\n  T86 --> T7\n  T86 --> T76",
+ "terkep": "flowchart LR\n  classDef stop fill:#d93025,stroke:#8c1d18,color:#ffffff,stroke-width:2px\n  classDef run fill:#1e8e3e,stroke:#0d5226,color:#ffffff,stroke-width:2px\n  classDef ready fill:#1a73e8,stroke:#0b3d91,color:#ffffff,stroke-width:2px\n  classDef wait fill:#f9ab00,stroke:#a86f00,color:#2b1d00,stroke-width:2px\n  classDef plan fill:#8e44ad,stroke:#5b2470,color:#ffffff,stroke-width:2px,stroke-dasharray:6 3\n  classDef idle fill:#80868b,stroke:#4a4f54,color:#ffffff\n  classDef dt fill:#ff6d00,stroke:#a34500,color:#ffffff,stroke-width:2px\n\n  P_MCP_BUROK[\"MCP_BUROK\"]:::plan\n  P_SZPA_AUDIT[\"SZPA_AUDIT\"]:::plan\n  P_TERV_BEFOGAD[\"TERV_BEFOGAD\"]:::plan\n  T10[\"#10 LEXIKON_LEZARAS\"]:::idle\n  T101[\"#101 ADATBAZIS_FRISSITES\"]:::idle\n  T102[\"#102 BDB_SZELETELO_JAVITAS\"]:::wait\n  T103[\"#103 BDB_TAGOLAS\"]:::wait\n  T104[\"#104 BDB_MEGJELENITES\"]:::wait\n  T105[\"#105 BDB_SZOREND\"]:::wait\n  T106[\"#106 BDB_MAGYARAZAT\"]:::wait\n  T107[\"#107 BDB_JELOLT_SZOVEG\"]:::wait\n  T109[\"#109 TEHOM_JOB41\"]:::ready\n  T11[\"#11 MIGRACIO\"]:::stop\n  T110[\"#110 SZURO_PILOT_ISTENTISZT\"]:::ready\n  T111[\"#111 ELTERES\"]:::ready\n  T112[\"#112 COMMIT_EKEZET\"]:::ready\n  T119[\"#119 BDB_HEADER_DT\"]:::ready\n  T12[\"#12 TEREMT-002 3. lépés…\"]:::idle\n  T13[\"#13 1Móz 17-től a…\"]:::idle\n  T22[\"#22 Károli–Strong párosítás…\"]:::stop\n  T25[\"#25 OLVASOI_HTML\"]:::idle\n  T27[\"#27 FP3\"]:::idle\n  T36[\"#36 LEXIKON_UJRAGEN\"]:::wait\n  T38[\"#38 BDB_FORDITAS\"]:::wait\n  T48[\"#48 KJV_REGI_KIVEZETES\"]:::wait\n  T50[\"#50 CI_JAVITO_KOR\"]:::ready\n  T52[\"#52 TERV_SZINKRON\"]:::stop\n  T55[\"#55 ZSOLTAR_UJRAELLENORZES\"]:::stop\n  T59[\"#59 SZOSZEDET\"]:::ready\n  T67[\"#67 BDB_JAVITAS_KAPU\"]:::idle\n  T69[\"#69 SEMA_DATASET_SZAM\"]:::idle\n  T7[\"#7 Thayer teljes magyar…\"]:::idle\n  T70[\"#70 SZOTAR_S26\"]:::wait\n  T74[\"#74 TANULMANY_JAVITAS_GEPI\"]:::idle\n  T75[\"#75 TANULMANY_JAVITAS\"]:::idle\n  T76[\"#76 OLVASOI_KONKORDANCIA\"]:::ready\n  T81[\"#81 KAROLI_UJJLENYOMAT\"]:::idle\n  T86[\"#86 ELOFIZETES_FEED\"]:::stop\n  T96[\"#96 KAROLI_MODERN\"]:::idle\n  D_DT_F38i{{\"DT-F38i\"}}:::dt\n  D_DT_M1{{\"DT-M1\"}}:::dt\n  D_DT_M3{{\"DT-M3\"}}:::dt\n  D_DT_M4{{\"DT-M4\"}}:::dt\n  D_DT_M5{{\"DT-M5\"}}:::dt\n  D_DT_M6{{\"DT-M6\"}}:::dt\n  D_DT_M7{{\"DT-M7\"}}:::dt\n  D_DT_M8{{\"DT-M8\"}}:::dt\n  D_DT127{{\"DT127\"}}:::dt\n  D_DT128{{\"DT128\"}}:::dt\n  D_DT129{{\"DT129\"}}:::dt\n  D_DT146{{\"DT146\"}}:::dt\n  D_DT147{{\"DT147\"}}:::dt\n  D_DT148{{\"DT148\"}}:::dt\n  D_DT149{{\"DT149\"}}:::dt\n  D_DT150{{\"DT150\"}}:::dt\n  D_DT151{{\"DT151\"}}:::dt\n  D_DT152{{\"DT152\"}}:::dt\n  D_DT181{{\"DT181\"}}:::dt\n  D_DT190{{\"DT190\"}}:::dt\n  D_DT2{{\"DT2\"}}:::dt\n  D_DT215{{\"DT215\"}}:::dt\n  D_DT216{{\"DT216\"}}:::dt\n  D_DT217{{\"DT217\"}}:::dt\n  D_DT218{{\"DT218\"}}:::dt\n  D_DT219{{\"DT219\"}}:::dt\n  D_DT28{{\"DT28\"}}:::dt\n  D_DT52{{\"DT52\"}}:::dt\n  D_DT56{{\"DT56\"}}:::dt\n  D_DT57{{\"DT57\"}}:::dt\n  D_DT71{{\"DT71\"}}:::dt\n  D_DT74{{\"DT74\"}}:::dt\n  D_DT75{{\"DT75\"}}:::dt\n  D_DT77{{\"DT77\"}}:::dt\n  D_DT78{{\"DT78\"}}:::dt\n  D_DT90{{\"DT90\"}}:::dt\n\n  P_MCP_BUROK --> D_DT_M3\n  P_MCP_BUROK --> D_DT_M5\n  P_MCP_BUROK --> D_DT_M7\n  P_SZPA_AUDIT --> D_DT77\n  P_TERV_BEFOGAD --> D_DT_M8\n  T10 --> D_DT2\n  T10 --> D_DT74\n  T10 --> T11\n  T10 --> T52\n  T102 --> T107\n  T102 --> T119\n  T102 --> T76\n  T103 --> T102\n  T103 --> T119\n  T103 --> T76\n  T104 --> T102\n  T104 --> T103\n  T104 --> T119\n  T104 --> T76\n  T105 --> T102\n  T105 --> T103\n  T105 --> T104\n  T105 --> T119\n  T105 --> T76\n  T106 --> T102\n  T106 --> T103\n  T106 --> T104\n  T106 --> T105\n  T106 --> T119\n  T106 --> T76\n  T107 --> D_DT190\n  T107 --> T119\n  T11 --> D_DT215\n  T11 --> D_DT216\n  T11 --> D_DT217\n  T11 --> D_DT218\n  T11 --> D_DT219\n  T11 --> D_DT74\n  T12 --> D_DT74\n  T12 --> T11\n  T13 --> T10\n  T22 --> D_DT56\n  T22 --> D_DT57\n  T22 --> D_DT71\n  T25 --> T11\n  T25 --> T12\n  T36 --> D_DT28\n  T36 --> D_DT74\n  T36 --> T11\n  T36 --> T27\n  T36 --> T38\n  T36 --> T52\n  T38 --> D_DT181\n  T38 --> D_DT52\n  T38 --> D_DT56\n  T38 --> D_DT_F38i\n  T38 --> T107\n  T48 --> T22\n  T52 --> D_DT78\n  T52 --> D_DT90\n  T55 --> D_DT74\n  T55 --> T109\n  T55 --> T11\n  T55 --> T110\n  T67 --> T27\n  T67 --> T7\n  T70 --> D_DT74\n  T70 --> T11\n  T74 --> T11\n  T75 --> T74\n  T76 --> D_DT127\n  T76 --> D_DT128\n  T76 --> D_DT129\n  T76 --> D_DT146\n  T76 --> D_DT147\n  T76 --> D_DT148\n  T76 --> D_DT149\n  T76 --> D_DT150\n  T76 --> D_DT151\n  T76 --> D_DT152\n  T76 --> D_DT75\n  T76 --> D_DT_M1\n  T76 --> D_DT_M4\n  T76 --> D_DT_M6\n  T81 --> T109\n  T81 --> T11\n  T86 --> T109\n  T86 --> T11\n  T86 --> T110\n  T86 --> T27\n  T86 --> T38\n  T86 --> T52\n  T86 --> T7\n  T86 --> T76",
  "dontesek": {
   "nyitott": [
    {
@@ -2317,7 +2317,7 @@
     "sor": 278
    },
    {
-    "id": "DT-F118a",
+    "id": "DT210",
     "feladat": "#118 KJV_SZOVEG (M0 ⛔: a `KJV_teljes_szoveg` licence; viszony a DT126-hoz)",
     "kerdes": "Milyen licencállapotot kapjon az új `konkordancia/KJV_teljes_szoveg.tsv` (csak szöveg, Strong-címke és `\\w`-attribútum nélkül) az `adat/licencek.tsv`-ben? A repó adata: az eBible „Public Domain” és „You may copy the King James Version of the Holy Bible freely.” (copr.htm; a 2026-10-17-i zipben is szó szerint, az oldal dátuma 2026-09-26); a CrossWire `kjv.conf` a szöveg alapjogát a Koronának tulajdonítja, a GPL-nyilatkozata a „this effort”-ra (jelölés, Strong-adat) vonatkozik; a DT124 a címkeréteget GPL-nek tekinti, a DT126 nyitott. Nyitott és a repó adatából el nem dönthető: van-e a CrossWire-nek szövegszintű hozzájárulása (szövegjavítás, írásmód). *(forrás: `naplok/KJV_SZOVEG_M0.md` 5. pont; `F118_KJV_SZOVEG_BRIEF.md` 5. pont)*",
     "allapot": "alkalmazasra_var",
@@ -2327,7 +2327,7 @@
     "sor": 285
    },
    {
-    "id": "DT-F118b",
+    "id": "DT211",
     "feladat": "#118 KJV_SZOVEG (M0 ⛔: az importáló)",
     "kerdes": "Saját importáló (`eszkozok/kjv_szoveg_import.py`) készüljön, vagy az `eszkozok/f19_ebible_import.py` bővüljön második kimenettel? Mért alap (`naplok/KJV_SZOVEG_M0.md` 1–3. pont): az F19-parse az új csomagból bájtra a `KJV_Strongs_teljes.tsv`-t adja (a vershalmaz és a Strong-réteg referenciája), a `szoveg` mezője viszont olvasószövegnek alkalmatlan: 4 305 versben szóköz áll az írásjel előtt (a záró jelölő helyén), 2 970 versben benne marad a `¶`, a `\\add`-jelölés elvész, és a 36 `\\s1`-sorból 35-öt a versszövegbe fűz (Zsolt 119 akrosztichon-fejlécei, 14 páli utóirat). *(proveniencia: `naplok/KJV_SZOVEG_M0_meres.py`, kjv.zip sha256=00532b6d…d447, ts=2026-10-18T15:23:34Z)*",
     "allapot": "alkalmazasra_var",
@@ -2337,7 +2337,7 @@
     "sor": 286
    },
    {
-    "id": "DT-F118d",
+    "id": "DT212",
     "feladat": "#118 KJV_SZOVEG (M0 ⛔: a nyers zip helye; DT-F107d és a brief 3. pontja)",
     "kerdes": "A DT-F107d (a felhasználó elfogadta 2026-10-18-án; egyelőre a `claude/f107-bdb-jelolt-szoveg` ágon) szerint a nyers forrás SHA-256-tal megőrzendő, a repóban, hacsak a méret vagy a licenc nem engedi; a brief 3. pontja szerint a zip nem kerül a repóba. Hova kerüljön a `kjv.zip` (sha256 `00532b6d…d447`, 2 766 294 bájt)? Mért adatok: a méret nem akadály (a repóban van a 84 MB-os `BDB.lexicon`); a zip a teljes Strong-címkeréteget hordozza (349 308 `strong=`), amelyet a DT124 GPL-nek tekint, a playbook 2. pontja szerint GPL publikus repóba nem építendő be, és a DT126 nyitott; a #19-es `1bab5d4d…` csomag már nem kapható meg, ezért ez a zip a #19-tábla egyetlen meglévő, bájtra visszaigazolt nyers forrása is, egyetlen példányban (a felhasználó asztalán). *(forrás: `naplok/KJV_SZOVEG_M0.md` 1. és 5. pont)*",
     "allapot": "alkalmazasra_var",
@@ -2347,7 +2347,7 @@
     "sor": 287
    },
    {
-    "id": "DT-F118e",
+    "id": "DT213",
     "feladat": "#118 KJV_SZOVEG (M1 ⛔: a minta és a táblaforma)",
     "kerdes": "Jóváhagyható-e a minta, és hogyan döntsön a menet az öt táblaforma-kérdésben: (1) az `Elotte`/`Utoirat` oszlop (22 Zsolt 119-fejléc, 14 páli utóirat), (2) a két oszlop alakja, (3) az 1Jn 2:23 szó szerinti „[but]”-ja a `[…]` jelöléssel, (4) a `\\wj` jelölése a `Szöveg_jelolt`-ban, (5) a zsoltárfelirat mint 0. vers? *(forrás: `naplok/KJV_SZOVEG_M1_minta.md` 2. pont)*",
     "allapot": "alkalmazasra_var",
@@ -2357,7 +2357,7 @@
     "sor": 288
    },
    {
-    "id": "DT-F118c",
+    "id": "DT214",
     "feladat": "#118 KJV_SZOVEG (M4 ⛔: a Károli melletti megjelenítés helye)",
     "kerdes": "Hol készüljön a `konkordancia/KJV_teljes_szoveg.tsv` (M2 kész, M3 kész, állapot `importált, elfogadva`) párhuzamos megjelenítése az olvasóban (`eszkozok/olvaso_szerver/`, `pardes.db`, vers-lap, Olvasópult), a Károli mellett? Kötöttségek (brief M4): a Károli-vers ↔ KJV-vers párosítás forrása a `Karoli_versmegfeleltetes.tsv`, amelyet a #117 javít, ezért a #117 merge-e előtt nem indulhat. A #117 ma `nem_indult` a main-en, de a `claude/f117-versmegf-javitas` ág létezik. A #76 `fut` (az M2b mergelve, következik az M3), az `ir` listájában `eszkozok/olvaso_szerver/`. A #11 M3 a `sqlite_epit.py`-t írja. *(forrás: `F118_KJV_SZOVEG_BRIEF.md` 4. pont M4; `F76_OLVASOI_KONKORDANCIA_BRIEF.md` és `F117_VERSMEGF_JAVITAS_BRIEF.md` fejléce, 2026-10-18)*",
     "allapot": "alkalmazasra_var",
@@ -2365,6 +2365,56 @@
      "🟢"
     ],
     "sor": 289
+   },
+   {
+    "id": "DT215",
+    "feladat": "#11 MIGRACIO (M3 előtt: az `archivum` kategória könyvtára és fejléce, DT84 (12))",
+    "kerdes": "Az M3 a leképezési tábla (`naplok/F11_szetvalasztas_ISTENTISZT-001.tsv`) `archivum` egységeit a régi fájlok változatlan, archív fejlécű példányában őrzi meg (pilot-terv 7.1, DT84 (12)). Mi a könyvtár neve és szerkezete, mi a fejléc alakja, és milyen néven áll a régi forrásréteg, amelynek helyén az új kézi forrás (`motivumok/ISTENTISZT-001.md`) áll? Két gépi kényszer: az `eszkozok/ellenorzes/szabalyok.py` minden `naplok` nevű mappát bejár, és beolvassa a `*kereszthivatkozas_naplo.md` fájlokat; az E27 alapnév szerint is feloldja a hivatkozást, ezért az archív fájlnév nem ütközhet élő fájléval. *(forrás: `F11_MIGRACIO_BRIEF.md` M3 és 5. szakasz; `naplok/MOTIVUM_FORRAS_pilot_terv.md` 7.1, 8. (12))*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 290
+   },
+   {
+    "id": "DT216",
+    "feladat": "#11 MIGRACIO (az M3 előtt: a három adatrés renderelője)",
+    "kerdes": "Az M3 a leképezési tábla szerint az `alatamasztas`, a `2b` és a `minosites` rés jelölőit nem viszi át az új kézi forrásba (`generalt`); a `res_forras.tsv` soraik `forras=adat`-ra váltanak. A `lexikon_general.py` azonban `forras=adat` esetén ma csak a `tanulmany` mezőben rögzített mondatot írja ki (G16); a `kapcsolatok.indoklas`, a `lexikon_hivatkozasok` és a `jeloltek` táblából nem renderel (az M2 ezt nem építette meg). Melyik úton menjen az M3? *(forrás: `F11_MIGRACIO_BRIEF.md` M3; `eszkozok/lexikon_general.py` `res_torzs`; `naplok/MOTIVUM_FORRAS_pilot_terv.md` 5. D4)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 291
+   },
+   {
+    "id": "DT217",
+    "feladat": "#11 MIGRACIO (M3.3, a végrehajtás közben feltárt négy pont)",
+    "kerdes": "(1) Az `ellenoriz.py` 11. szabálya SÉRTÉS-t ad: az éles, befagyasztott (DT74 (3)) `lexikon/ISTENTISZT-001_TUDOMANYOS.md` rései már nem egyeznek a `res_forras.tsv` szerinti forrással. (2) Az E9 HIBA-t ad az `archivum/ISTENTISZT-001/` két archív példányának változatlan régi szövegére. (3) A leképezési tábla T29/13 sorának jóváhagyott célsora (`Jóel 2:32 → Róm 10:14`) nem létezik a `kapcsolatok.tsv`-ben, a cella saját kulcsa (`Róm 10:13 → Róm 10:14`) igen (az M1 mérési hibája). (4) A T29/4 premisszája téves: a `Jóel 2:32 → ApCsel 2:21` és a `Jóel 2:32 → Róm 10:13` sor létezik, a cella („mindkét NT-kapcsolatnál”) ezekre is szól. *(forrás: `F11_MIGRACIO_BRIEF.md` M3; `naplok/F11_szetvalasztas_ISTENTISZT-001.tsv` T29/4, T29/13)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 292
+   },
+   {
+    "id": "DT218",
+    "feladat": "#11 MIGRACIO (az M3 javítóköre, ELLENOR_F11_M 7. szakasz 1–2.)",
+    "kerdes": "(1) A 2b rés renderelője csak a motívum saját Strong-tokenjeire mutatja a kiegészítő szótári sorokat; a G2564 (καλέω) és a G0994 (βοάω) SECE-sora (rokon szavak) holt adat, a lapon maradt próza pedig „mindhárom ige” SECE-listájára hivatkozik. (2) A régi forrásréteg 24/6 és 25/8 részegysége horgony nélkül áll az Értelmezésben, az igehely megnevezése nélkül. *(forrás: `naplok/ELLENOR_F11_M.md` 7. szakasz)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 293
+   },
+   {
+    "id": "DT219",
+    "feladat": "#11 MIGRACIO (az M4 ÁLLJ-tételei, `naplok/F11_M4_meres.md` 7. szakasz)",
+    "kerdes": "Az M4 (a)–(f) mérés ÁLLJ-t adott, kilenc tétellel (Á1–Á9): az aranyminta blokkjai 2026-10-08 óta elavultak; a migráció saját, D2–D6-on kívüli eltérései (kizart +10 jelölt, Kolofon napló-cella, 3 új Értelmezés-sor, 16 áthelyezett Miért fontos-sor); a visszaírás-számláló részegység-vágásai; E28 fejléc-üressor; L2 dátumos forrássorok; L5. *(forrás: `naplok/F11_M4_meres.md` 7. szakasz)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 294
    }
   ],
   "javasolt": [],

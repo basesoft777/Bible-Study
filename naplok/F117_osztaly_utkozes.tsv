@@ -1,4 +1,4 @@
-# F117.3: osztály-ütközés (DT-F117b ↔ a mai tábla konvenciója) a 346 javított soron
+# F117.3: osztály-ütközés (DT205 ↔ a mai tábla konvenciója) a 346 javított soron
 # proveniencia: scope=A–D′ (346) | forras=naplok/F117_mt_levezetes.tsv + konkordancia/Karoli_versmegfeleltetes.tsv (konvenció) | eszkoz=naplok/F117_osztaly_utkozes.py | n=346 | ts=2026-10-18
 igehely_karoli	kjv	mt	osztaly_dt_f117b	osztaly_konvencio	kategoria	mt_eq_kjv
 1Kir 22:43	22:43	22:43	KJV	KJV (mt üres)	K=KJV=MT	igen

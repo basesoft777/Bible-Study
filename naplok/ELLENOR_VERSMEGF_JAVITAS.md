@@ -25,12 +25,12 @@ ELTÉRÉS: 8 tétel. Ítélet: eltérésekkel; merge előtt 1 hiba javítandó.
 4. **Figyelmeztetés — az E7 licenc-megnevezése hiányzik.** Grep `Public Domain|CC BY|licenc` a `naplok/F117_*` fájlokon: 0 találat. A README új szakasza sem nevez meg licencet. Csak a változatlan táblafejléc (`:2`) említi a CC BY 4.0-t. A zárójelentésben pótolandó.
 
 5. **Megjegyzés — a mintanapló számai nem reprodukálhatók.** A `F117_minta.md` és a `F117_minta_kuszob.py` a `naplok/F117_szoveg_osszevetes.tsv`-re hivatkozik, ezt azonban a teljes futás felülírta (n=483).
-   - A DT-F117b mintaszámai (20/13/8 a 64-ből; min. 0,57) a HEAD-ről nem jönnek ki újra, csak a 33abc45a-ról.
+   - A DT205 mintaszámai (20/13/8 a 64-ből; min. 0,57) a HEAD-ről nem jönnek ki újra, csak a 33abc45a-ról.
    - Ezt a commitot egyik fájl sem rögzíti.
 
 6. **Megjegyzés — a „két skip” egy egész osztályt fed.** A `@unittest.skip` a teljes `Integracio` osztályon áll; a végrehajtó mérése szerint ez 35 skip (`F117_meres.md:84`). Dokumentált és jóváhagyott, de nagyobb, mint amit a „két teszt” sugall. A `KeziMtOr.test_kezi_ures_mt_mt_es_kjv_nem_all_le` minden kivételt elnyel (`except Exception: pass`).
 
-7. **Megjegyzés — a DT-F117a–f sorok állapota elavult.** Mind a hat sor „🟢 eldöntve, alkalmazásra vár”, holott alkalmazva vannak. Az a, c, d, e, f döntések „az orkesztrátor közvetítésével” kerültek be; közvetlen felhasználói megfogalmazás csak a b-nél van (a279b9fb). A felhasználói jóváhagyás NEM ELLENŐRIZHETŐ.
+7. **Megjegyzés — a DT204–f sorok állapota elavult.** Mind a hat sor „🟢 eldöntve, alkalmazásra vár”, holott alkalmazva vannak. Az a, c, d, e, f döntések „az orkesztrátor közvetítésével” kerültek be; közvetlen felhasználói megfogalmazás csak a b-nél van (a279b9fb). A felhasználói jóváhagyás NEM ELLENŐRIZHETŐ.
 
 8. **Megjegyzés — a modul halmaz-őre tautologikus.** A `versmegf_javitas.javit()` (103–121. sor) őre nem bukhat el, mert az `uj` a `regi`-ből és a `jav`-ból épül. Negatív teszt nincs rá, és az üres sorokat szó nélkül elhagyja. A „0 sor változott a halmazon kívül” tényleges bizonyítéka a git-diff (l. lent).
 
@@ -65,7 +65,7 @@ ELTÉRÉS: 8 tétel. Ítélet: eltérésekkel; merge előtt 1 hiba javítandó.
   - `sqlite_epit.py`: csak a `VersmegfKeziMt` osztály, a `kezi_mt_or()` és egyetlen hívás (+20 sor).
   - `teszt_sqlite_epit.py`: csak a `KeziMtOr` és a 2 skip (+40 sor).
   - A README- és a NYITOTT-változás egyeztetett eltérés.
-- **Helyőrzők:** a DT-F117a–f helyőrzők, 8 cellásak, a cellán belüli `|` escapelve. Az N-F117a/b/c helyőrző, és valóban nyitott.
+- **Helyőrzők:** a DT204–f helyőrzők, 8 cellásak, a cellán belüli `|` escapelve. Az N-F117a/b/c helyőrző, és valóban nyitott.
 - **⛔ pontok:** mindegyik külön megállás-commit, a döntés utána jön.
 - **Proveniencia:** a javító TSV fejléce és mind a 346 sora tartalmaz `scope=…` mezőt (assert kényszeríti).
 
@@ -98,7 +98,7 @@ A két, az ellenőr számára nem ellenőrizhető pontot az orkesztrátor lefutt
 | 4 licenc | megszűnt | a 7 licenc-cella egyezik az `adat/licencek.tsv`-vel |
 | 5 minta-forrás | megszűnt | a napló kimondja a `33abc45a` forrást; a fájl ott jött létre |
 | 6 skip | **fennáll, részben (kis súlyú)** | a `KeziMtOr` már csak a várt `FileNotFoundError`-t fogadja; a skip feltételes (csak `VersmegfKeziMt`), de a közös `setUpClass` miatt mind a 34 `Integracio`-teszt kimarad (35 teszt nem fut). A „technikailag nem szűkíthető” túlzó: táblamásolaton (a `Negativ` osztály `modosit()`-mintájára, a 174 sor `igehely_mt`-je kiürítve) szűkíthető volna, módosított adaton. A döntés („a skip a két tesztre szűkítve”) szó szerint nem teljesül — felhasználói jóváhagyás kell |
-| 7 DT-F117a–f | megszűnt | mind `✅ alkalmazva`, 8 cella, „a szülő sessionön át érkezett” |
+| 7 DT204–f | megszűnt | mind `✅ alkalmazva`, 8 cella, „a szülő sessionön át érkezett” |
 | 8 halmaz-őr | megszűnt | a `halmaz_or()` a kimenetet függetlenül újraolvassa, hat ága elbukhat; a negatív tesztek valódi halmazon kívüli változást visznek be. Maradék: a hiányzó-javítósor- és az oszlopfej-ágra nincs negatív teszt |
 | 9 (új) datasetek-állítás | **új, kis súlyú** | a `F117_javitas_jelentes.md:81` szerint mind a 7 dataset `elerheto`; a `KJV_Strongs_teljes`-nek és a `Karoli_versmegfeleltetes`-nek nincs saját sora |
 | tiltott fájlok | OK | a javítókör nem érintette a #11 fájljait, az `adat/`-ot, a `FELADATOK.md`-t, a `sqlite_epit.py`-t |
@@ -108,6 +108,6 @@ A két, az ellenőr számára nem ellenőrizhető pontot az orkesztrátor lefutt
 - **Tesztek** (az ellenőr számára nem futtathatók): `teszt_tsk_kulcs.py` OK, `teszt_versmegf_javitas.py` OK (19), `teszt_sqlite_epit.py` FAILED (failures=1, skipped=2) — az egyetlen FAIL a main-en is fennálló `Pozitiv.test_mai_adat_zold`, ERROR nincs. `scope=unittest | forras=eszkozok/teszt_*.py | ts=2026-10-18`
 - **E1:** a KK4 a refaktorált `versmegf_javitas`-sal kétszer, a repón kívülre futtatva `6890db3c…` — bájtra azonos a commitolt táblával. `scope=kk4_ketszeri_futas | n=2 | ts=2026-10-18`
 - **3. pont:** `F117_javitas_bemenet_general.py --kimenet <scratchpad>/jav.tsv` → sha256 `d7534fa6…`, azonos a commitolt javító-TSV-vel.
-- **5. pont:** `git show 33abc45a:naplok/F117_szoveg_osszevetes.tsv` + `F117_minta_kuszob.py` → 20 / 13 / 8 a 64-ből, TAHOT-Jaccard min 0,57: egyezik a DT-F117b mintaszámaival.
+- **5. pont:** `git show 33abc45a:naplok/F117_szoveg_osszevetes.tsv` + `F117_minta_kuszob.py` → 20 / 13 / 8 a 64-ből, TAHOT-Jaccard min 0,57: egyezik a DT205 mintaszámaival.
 - **9. pont:** javítva a `naplok/F117_javitas_jelentes.md` licencszakaszában (F117.9).
 - **6. pont:** nyitott; a zárójelentés felhasználói jóváhagyásra váró eltérésként rögzíti.

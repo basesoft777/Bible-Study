@@ -33,7 +33,7 @@ Tartomány: `ca52ee58..0d9f1b89` (a `ca52ee58` = `origin/main`; a `0d9f1b89` = `
 | Ellenőrzőlista 5: ⛔ pontok | OK | `F11_MIGRACIO_BRIEF.md:12, 48, 52` | Az S3 ⛔ előtt a végrehajtó megállt (`kovetkezo: S3 ⛔ …, utána M1`). M-tételhez tartozó fájl (`naplok/F11_szetvalasztas_*`, `motivumok/ISTENTISZT-001.md`, sablonok) nincs a diffben. |
 | Brief 4. szakasz 1. pont | NEM ELLENŐRIZHETŐ (S3 maga) | — | A feltétel az S3 zöld eredménye, ezt e jelentés dönti el. Lásd az első sort. |
 | Brief 4. szakasz 6. pont (S-re) | NEM ELLENŐRIZHETŐ | — | A `feladatok.py` futtatása a megengedett körön kívül esik. Az E27 HIBA-mentes. |
-| Brief D-pontok (DT-F11a/b/c) | OK (nem esedékes) | `F11_MIGRACIO_BRIEF.md:78-80` | Az M3, a T3 és az M6 előtt esedékesek, az S-tétel nem érinti őket. A diff nem hoz helyőrzőt. |
+| Brief D-pontok (DT215/b/c) | OK (nem esedékes) | `F11_MIGRACIO_BRIEF.md:78-80` | Az M3, a T3 és az M6 előtt esedékesek, az S-tétel nem érinti őket. A diff nem hoz helyőrzőt. |
 | A1–A6 | nem alkalmazható | — | A diff értelmező prózát, tanulmányt, NYITOTT_FELADATOK-ot vagy nevesített tanítót nem érint. |
 | Tanulmány-ellenőrzés (F37 T4) | nem alkalmazható | — | A diffben nincs `*_bovitett.md` vagy `*_tanulmany.md`. |
 

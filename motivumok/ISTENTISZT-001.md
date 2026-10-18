@@ -1,6 +1,6 @@
 <!-- FORRÁSRÉTEG (F4 G2) — kézzel írt, szabadon szerkeszthető. NEM generált fájl. -->
 
-【NAPLO: F11 M3, 2026-10-18 — a forrás a régi tematikus tanulmány (`tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md`), kereszthivatkozás-napló és forrásréteg szétválasztásával készült, a `naplok/F11_szetvalasztas_ISTENTISZT-001.tsv` leképezési tábla szerint (DT28, DT84 (11)); a `forras` egységek bájtra azonosan, a régi fájlok változatlanul az `archivum/ISTENTISZT-001/` alatt (DT-F11a).】
+【NAPLO: F11 M3, 2026-10-18 — a forrás a régi tematikus tanulmány (`tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md`), kereszthivatkozás-napló és forrásréteg szétválasztásával készült, a `naplok/F11_szetvalasztas_ISTENTISZT-001.tsv` leképezési tábla szerint (DT28, DT84 (11)); a `forras` egységek bájtra azonosan, a régi fájlok változatlanul az `archivum/ISTENTISZT-001/` alatt (DT215).】
 
 ## Kivonat
 

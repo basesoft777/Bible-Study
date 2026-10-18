@@ -27,7 +27,7 @@ proveniencia: scope=az A–D′ célhalmaz (346 Károli-vers, 20 fejezet, blokk-
   - Dán 3:31 = KJV 4:1;
   - 1Kir 22:46–49 = KJV 22:45–48, 1Kir 22:45 = KJV 22:44.
 
-## 2. A bizonytalan párok (a DT-F117b (a) szerint: gépi eltérés, vagy 1-2 / 2-1 lépés)
+## 2. A bizonytalan párok (a DT205 (a) szerint: gépi eltérés, vagy 1-2 / 2-1 lépés)
 
 | # | Károli-vers (szöveg eleje) | Teljes igazítás | Szöveg-igazítás | Ok | Kézi ítélet |
 |---|---|---|---|---|---|

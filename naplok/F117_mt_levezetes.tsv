@@ -1,4 +1,4 @@
-# F117.3 (DT-F117d (c)): az igehely_mt levezetése az A–D′ célhalmaz 346 Károli-versére (a Karoli_versmegfeleltetes.tsv és a Macula `karoli` oszlopa nélkül)
+# F117.3 (DT207 (c)): az igehely_mt levezetése az A–D′ célhalmaz 346 Károli-versére (a Karoli_versmegfeleltetes.tsv és a Macula `karoli` oszlopa nélkül)
 # proveniencia: scope=A–D′ (346 Károli-vers, 20 fejezet, blokk: Károli c-1..c+1 ↔ MT c-2..c+2) | forras=TAHOT_kivonat.tsv + Macula_heber_*.tsv (ref) + KJV_Strongs_teljes.tsv (versszám) + naplok/F117_itelet.tsv (KJV-pár) + naplok/KAROLI_KK1b_kulcstabla_tervezet.tsv (összevetés) | eszkoz=naplok/F117_mt_levezet.py | n=346 | ts=2026-10-18T15:03Z
 # ismert MT≠KJV fejezetek (a Macula-MT és a KJV versszáma eltér; adatból számolva): 1Kir: 4,5,22; 1Sám: 21,23,24; 2Móz: 7,8,21,22; Dán: 3,4,5,6; Hós: 1,2,11,12,13,14; Jób: 40,41; Jón: 1,2; Préd: 4,5; Péld: ; Én: 6,7; Ézs: 8,9,64
 # árva MT-vers a blokkokban: nincs

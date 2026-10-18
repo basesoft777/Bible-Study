@@ -1,6 +1,6 @@
 # KJV_SZOVEG M2 — mérés (#118, `F118_KJV_SZOVEG_BRIEF.md` 4. pont, M2.2)
 
-**Egyeztetett eltérés: új csomag (sha256 `00532b6db1825cb78fd34de2097fc280ce03ee22ef0bdac5243ef4beaca4d447`, 2026-10-17).** A döntések: DT-F118a 1., DT-F118b (a), DT-F118d (d), DT-F118e (a minta és a táblaforma; a `\wj` a `Szöveg_jelolt`-ban `‹…›`).
+**Egyeztetett eltérés: új csomag (sha256 `00532b6db1825cb78fd34de2097fc280ce03ee22ef0bdac5243ef4beaca4d447`, 2026-10-17).** A döntések: DT210 1., DT211 (a), DT212 (d), DT213 (a minta és a táblaforma; a `\wj` a `Szöveg_jelolt`-ban `‹…›`).
 
 *proveniencia: scope=KJV_SZOVEG M2 mérés (M-a, M-b, M-c, F19-kérdés) | forras=konkordancia/KJV_teljes_szoveg.tsv sha256=f385295b957ba35cd99351b3ff500fc7d8e4c963fd854581f46b0eff2befe5ce + konkordancia/KJV_Strongs_teljes.tsv + naplok/F19_hianyok.tsv + kjv.zip sha256=00532b6db1825cb78fd34de2097fc280ce03ee22ef0bdac5243ef4beaca4d447 | ts=2026-10-18T15:47:52Z*
 
@@ -16,7 +16,7 @@ Mérőkód: `naplok/KJV_SZOVEG_meres.py` (`python -I`). Nem a generátorban van:
 | **M-b** szóegyezés | minden Strong-címkés szó megtalálható, megmagyarázatlan eltérés 0 | 362 399 szóelem: 362 315 pontos, 76 összetett szó, 8 szótöredék-címke; **megmagyarázatlan: 0** | ✔ |
 | **M-c** üres `Szöveg` | 0 | 0 (üres `Szöveg_jelolt` is 0) | ✔ |
 | M-c vershidak | — | 0 (a nyers forrásban sincs `\v n-m`) | ✔ |
-| M-c formai | — | backslash, szóköz az írásjel előtt, dupla szóköz, páratlan `[ ]` vagy `‹ ›`: 0. A `Szöveg` és a `Szöveg_jelolt` szavai egy versben térnek el: 1Jn 2:23, a forrás szerint (DT-F118e (3), lent) | ✔ |
+| M-c formai | — | backslash, szóköz az írásjel előtt, dupla szóköz, páratlan `[ ]` vagy `‹ ›`: 0. A `Szöveg` és a `Szöveg_jelolt` szavai egy versben térnek el: 1Jn 2:23, a forrás szerint (DT213 (3), lent) | ✔ |
 | M-c kimaradt jelölők | az M0 leltára szerint | a tábla veszteség-sora és a nyers forrás független számolása mind a 9 tételben egyezik (táblázat lent) | ✔ |
 | `Elotte` / `Utoirat` | 22 / 14 | 22 (Zsolt 119:1, 9, … 169) / 14 (Róm 16:27, 1Kor 16:24, 2Kor 13:14, Gal 6:18, Ef 6:24, Fil 4:23, Kol 4:18, 1Thessz 5:28, 2Thessz 3:18, 1Tim 6:21, 2Tim 4:22, Tit 3:15, Filem 25, Zsid 13:25) | ✔ |
 | jelölt sorok | — | `‹…›` 2 028 vers; `[…]` 14 263 vers; `¶` 2 970 vers (`Szöveg_jelolt`) | — |
@@ -40,17 +40,17 @@ A tábla `# veszteség:` fejlécsora hordozza, a generátor számolja. A mérés
 
 | Elem | A tábla veszteség-sora | Nyers forrás | Hová lesz |
 |---|---|---|---|
-| Strong-címke (`\w … strong=`) | 349 308 | 349 308 | kimarad (a `KJV_Strongs_teljes.tsv`-ben van; DT-F118a, DT126) |
+| Strong-címke (`\w … strong=`) | 349 308 | 349 308 | kimarad (a `KJV_Strongs_teljes.tsv`-ben van; DT210, DT126) |
 | lábjegyzet (`\f … \f*`) | 6 959 | 6 959 | kimarad (KJV-széljegyzetek) |
 | `\p` / `\q1` / `\b` | 4 635 / 2 461 / 209 | ugyanaz | kimarad (bekezdés- és költői tagolás) |
 | `\nd` | 6 892 | 6 892 | a jelölés kimarad, a szöveg („LORD”) marad |
 | `\tl` | 22 | 22 | a jelölés kimarad (csak az `Elotte`-ben, Zsolt 119) |
 | `\wj` | 2 038 | 2 038 | a `Szöveg`-ből kimarad; a `Szöveg_jelolt`-ban `‹…›` (2 028 vers); versen átnyúló lezárás 0 |
-| `\add` | 21 510 | 21 510 | a `Szöveg`-ből kimarad; a `Szöveg_jelolt`-ban `[…]`; ebből 7 az utóiratokban, ott a jelölés elvész (DT-F118e (2)) |
+| `\add` | 21 510 | 21 510 | a `Szöveg`-ből kimarad; a `Szöveg_jelolt`-ban `[…]`; ebből 7 az utóiratokban, ott a jelölés elvész (DT213 (2)) |
 | `¶` | 2 970 | — (karakter) | a `Szöveg`-ből kimarad, a `Szöveg_jelolt` megőrzi |
 | könyvfejléc-sor (`\id \h \toc1-3 \mt1 \mt2`) | 398 | 66 × 6 + 2 | kimarad |
 
-**1Jn 2:23 (DT-F118e (3), nem veszteség, de jelölendő):** a forrásban a vers második fele egyetlen `\add`, és benne szó szerint „[but]” áll. Ez a forrás szerint marad: a `Szöveg`-ben „… the Father: [but] he that acknowledgeth …”, a `Szöveg_jelolt`-ban egymásba ágyazva „[[but] he that acknowledgeth the Son hath the Father also]”. A 66 kanonikus könyvben ez az egyetlen szó szerinti szögletes zárójel. A tábla veszteség-sora is említi, a teszt rögzíti.
+**1Jn 2:23 (DT213 (3), nem veszteség, de jelölendő):** a forrásban a vers második fele egyetlen `\add`, és benne szó szerint „[but]” áll. Ez a forrás szerint marad: a `Szöveg`-ben „… the Father: [but] he that acknowledgeth …”, a `Szöveg_jelolt`-ban egymásba ágyazva „[[but] he that acknowledgeth the Son hath the Father also]”. A 66 kanonikus könyvben ez az egyetlen szó szerinti szögletes zárójel. A tábla veszteség-sora is említi, a teszt rögzíti.
 
 ## F19-mellékkérdés: érinti-e a `KJV_Strongs_teljes.tsv`-t a `\s1`-hiba?
 
@@ -69,7 +69,7 @@ A tábla `# ÁLLAPOT:` sora: `importált, javaslat`, a fenti mérés összefogla
 ## M3 — dataset-szabályok (F118.15–F118.16)
 
 - A tábla `# ÁLLAPOT:` sora: `importált, elfogadva (felhasználó, 2026-10-18)`. Újragenerálás után a nem `#` kezdetű sorok (oszlopfejléc + 31 218 adatsor) bájtra azonosak az előzővel (sha256 `4d939e42…`), és csak az ÁLLAPOT-fejlécsor változott.
-- `adat/licencek.tsv`: új `KJV_teljes_szoveg` sor (DT-F118a 1.). Állapot `kozkincs` a DT-F33d (a)–(c) szerint: kor, sha256-tal azonosított kiadás, és a kiadó szó szerinti PD-nyilatkozata a zip `copr.htm`-jéből. `kereskedelmi=feltetelesen`, `share_alike=nem`, címke `közkincs`. A CrossWire szövegszintű hozzájárulásának kérdése nyitott, kitöltés nélkül.
+- `adat/licencek.tsv`: új `KJV_teljes_szoveg` sor (DT210 1.). Állapot `kozkincs` a DT-F33d (a)–(c) szerint: kor, sha256-tal azonosított kiadás, és a kiadó szó szerinti PD-nyilatkozata a zip `copr.htm`-jéből. `kereskedelmi=feltetelesen`, `share_alike=nem`, címke `közkincs`. A CrossWire szövegszintű hozzájárulásának kérdése nyitott, kitöltés nélkül.
 - `adat/datasetek.tsv`: négy sor (`bovitett`, `tematikus`, `melyelemzes`, `lexikon_oldal`), `ajanlott`, `elerheto`.
 - `adat/SEMA.md` 2.6: a dataset leírása a `KJV_Strongs_teljes` mellett. **Ez a bekezdés tölti be a DT-F107d dataset-README szerepét**: a szabály még nincs a main-en, és a brief `ir` listájában nincs README, ezért új README-fájl nem készült. Benne a nyers zip (elsődleges hely, sha256, méret; **a második példány helye: megadandó**, a felhasználó adja meg), az újrafuttatás és a veszteségnapló.
 - Mindhárom fájlba csak hozzáfűzés történt (a #107 párhuzamosan írja őket). Írás előtt összevetettem: az eredeti sorok bájtra változatlanok. Az `eszkozok/ellenoriz.py` kimenete változatlan, a `general.py --cel lexikon --ellenoriz` 0.

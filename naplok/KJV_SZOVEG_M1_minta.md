@@ -1,8 +1,8 @@
 # KJV_SZOVEG M1 — kis minta (#118, `F118_KJV_SZOVEG_BRIEF.md` 4. pont, M1)
 
-**Jóváhagyva (DT-F118e, felhasználó, 2026-10-18):** „a minta jóváhagyva; 1. Elotte/Utoirat marad; 2. olvasós alakban; 3. az 1Jn 2:23 a forrás szerint, veszteségnaplóban említve; 4. a \wj a Szöveg_jelolt-ban ‹…› jelöléssel; 5. a feliratok 0. versként. Mehet az M2.” A 3. pont mintája a döntés szerinti, `‹…›`-es `\wj`-jelöléssel újragenerálva (F118.11); a minta-versek elvárt értékei az `eszkozok/teszt_kjv_szoveg_import.py`-ban rögzítve.
+**Jóváhagyva (DT213, felhasználó, 2026-10-18):** „a minta jóváhagyva; 1. Elotte/Utoirat marad; 2. olvasós alakban; 3. az 1Jn 2:23 a forrás szerint, veszteségnaplóban említve; 4. a \wj a Szöveg_jelolt-ban ‹…› jelöléssel; 5. a feliratok 0. versként. Mehet az M2.” A 3. pont mintája a döntés szerinti, `‹…›`-es `\wj`-jelöléssel újragenerálva (F118.11); a minta-versek elvárt értékei az `eszkozok/teszt_kjv_szoveg_import.py`-ban rögzítve.
 
-**Egyeztetett eltérés: új csomag (sha256 `00532b6db1825cb78fd34de2097fc280ce03ee22ef0bdac5243ef4beaca4d447`, 2026-10-17).** A döntések (felhasználó, 2026-10-18): DT-F118a 1., DT-F118b (a), DT-F118d (d) második példánnyal (`DONTESEK.md`). Előzmény: `naplok/KJV_SZOVEG_M0.md`.
+**Egyeztetett eltérés: új csomag (sha256 `00532b6db1825cb78fd34de2097fc280ce03ee22ef0bdac5243ef4beaca4d447`, 2026-10-17).** A döntések (felhasználó, 2026-10-18): DT210 1., DT211 (a), DT212 (d) második példánnyal (`DONTESEK.md`). Előzmény: `naplok/KJV_SZOVEG_M0.md`.
 
 Az importáló az `eszkozok/kjv_szoveg_import.py`, a mintát a `naplok/KJV_SZOVEG_M1_minta.py` állítja elő (`python -I`, a zip kibontás nélkül, `zipfile`-lal). A teljes tábla **nem** került a `konkordancia/`-ba, mert az az M2. A próbafutás a scratchpadbe ment, a repón kívülre. Az egységtesztek az `eszkozok/teszt_kjv_szoveg_import.py`-ban vannak (19 teszt, szintetikus USFM-en, OK). A minta-versek rögzített elvárt értékei a ⛔ jóváhagyás után kerülnek a tesztbe.
 
@@ -22,7 +22,7 @@ Az importáló az `eszkozok/kjv_szoveg_import.py`, a mintát a `naplok/KJV_SZOVE
 1. **Az `Elotte`/`Utoirat` oszlop** marad-e (javaslat: igen), vagy a 36 `\s1`-sor kimaradjon, és csak a veszteségnapló számolja?
 2. **Az `Elotte`/`Utoirat` olvasószöveg-alakú.** A 14 utóiratban 7 `\add` áll (pl. „\add and sent\add*”), ezek jelölése ott elvész, és a `# veszteség:` fejlécsor ezt külön számolja. Alternatíva: a két oszlop a jelölt alakot hordozza (`[and sent]`). Javaslat: maradjon az olvasószöveg.
 3. **Az 1Jn 2:23 szó szerinti szögletes zárójele** (a minta utolsó verse). Itt a forrás maga írja a „[but]” szót egy `\add`-on belül (a KJV hagyományos írásmódja). A `Szöveg`-ben ezért egy `[but]` áll, a `Szöveg_jelolt`-ban pedig egymásba ágyazott zárójel: `[[but] he that … also]`. A 66 kanonikus könyvben ez az egyetlen szó szerinti `[`/`]` (a zip többi részében még 6 ilyen sor van az apokrifokban és 17 az előszóban). Opciók: (a) a `[…]` konvenció marad, az 1Jn 2:23 dokumentált kivétel (a tesztben rögzítve); (b) az `\add` a `Szöveg_jelolt`-ban más jelet kap (pl. `⸤…⸥` vagy `{…}`), amely a forrásban nem fordul elő. Javaslat: (a), mert egyetlen vers, és a forrás hű. **Döntés: a forrás szerint, a veszteségnaplóban említve.**
-4. **`\wj` (Jézus szavai, 2 038)**: a jelölés mindkét szövegmezőből kimarad (M0, 2. pont). A három címke nélküli vers közül a Mk 9:43 és a Lk 6:41 teljes egészében `\wj`, `\w`-címke nélkül, ezért címke nélküliek. A ⛔ kérheti, hogy a `Szöveg_jelolt` jelölje (pl. `‹…›`). Javaslat: maradjon jelöletlen. **Döntés (DT-F118e (4)): a `Szöveg_jelolt`-ban `‹…›`**; minden vers önállóan zárt jelölést kap (versen átnyúló `\wj` a forrásban nincs, a lezárás számlálója 0).
+4. **`\wj` (Jézus szavai, 2 038)**: a jelölés mindkét szövegmezőből kimarad (M0, 2. pont). A három címke nélküli vers közül a Mk 9:43 és a Lk 6:41 teljes egészében `\wj`, `\w`-címke nélkül, ezért címke nélküliek. A ⛔ kérheti, hogy a `Szöveg_jelolt` jelölje (pl. `‹…›`). Javaslat: maradjon jelöletlen. **Döntés (DT213 (4)): a `Szöveg_jelolt`-ban `‹…›`**; minden vers önállóan zárt jelölést kap (versen átnyúló `\wj` a forrásban nincs, a lezárás számlálója 0).
 5. **A zsoltárfelirat 0. versként** saját sort kap (`Psa.3.0`), mint a `KJV_Strongs_teljes.tsv`-ben. Javaslat: így marad.
 
 ## 3. A minta (a brief M1-listája, plusz egy páli utóirat és az 1Jn 2:23)
@@ -291,7 +291,7 @@ Nyers USFM:
 - Az 1Jn 2:23 nyers sora a kódblokkban teljes hosszában áll. A vers második fele egyetlen `\add`, benne `\+w` szavakkal.
 - A minta nem fed le minden jelölőt. A `\b`, a `\p` és a `\f` a teljes kimeneten számolva van (épség, fent), a jelölőnkénti egységtesztek a tesztfájlban vannak.
 
-## 5. DT-F118d (d): a második példány — a felhasználó teendője
+## 5. DT212 (d): a második példány — a felhasználó teendője
 
 A menet a második példányt nem hozta létre, és nem másolta sehová (az orkesztrátor utasítása szerint). Ami kell hozzá:
 
@@ -303,4 +303,4 @@ A menet a második példányt nem hozta létre, és nem másolta sehová (az ork
 | forrás | https://ebible.org/Scriptures/eng-kjv_usfm.zip (a zip bejegyzései 2026-10-17-esek; az eBible gördülő kiadású, ez a csomag később nem tölthető le újra) |
 | javasolt hely | a repón kívül, egy második, a felhasználó által megnevezett helyen; lehetőleg más meghajtón vagy mentésben, mint az asztal (az M0-terv csak a „második példány a felhasználó által megnevezett helyen” elvet rögzítette, konkrét helyet nem). Javasolt fájlnév: `eng-kjv_usfm_2026-10-17.zip` |
 | ellenőrzés a másolás után | PowerShellben: `Get-FileHash <a másolat útvonala> -Algorithm SHA256`, az eredménynek a fenti hash-nek kell lennie |
-| ezután | a felhasználó megadja a helyet; az M3 a dataset leírásába (`adat/SEMA.md`, l. DT-F118d egyeztetendő pont) a hash-sel együtt beírja mindkét helyet |
+| ezután | a felhasználó megadja a helyet; az M3 a dataset leírásába (`adat/SEMA.md`, l. DT212 egyeztetendő pont) a hash-sel együtt beírja mindkét helyet |
