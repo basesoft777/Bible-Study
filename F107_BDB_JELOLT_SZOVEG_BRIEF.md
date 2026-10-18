@@ -6,10 +6,10 @@ tipus: feladat
 fazis: 1
 modell: opus
 munka: folyamat
-allapot: dontesre_var
+allapot: fut
 ag: claude/f107-bdb-jelolt-szoveg
 ad: az adat/bdb_szakaszok.tsv (a BDB minden szócikke szakaszokra bontva a nyers forrás jelölőiből, útvonallal), a forráshibák javítótáblája, a kész magyar fordítás szakaszhatár-illesztése (adat/bdb_szakasz_hu.tsv), és mért összevetés a mai szeletelővel; a szeletelő átállása a #102-é, a fordítás bemenete a #38-é
-kovetkezo: Te: DT-F107g döntése (a 4. lépés ⛔: az eltérés-lista osztályozása és a mérce; aranyminta 77,2%, seed-101 7/13, korpusz 82,1%), DONTESEK.md; utána a bontó tabla_hiba-javítása és újramérés, majd az 5. lépés
+kovetkezo: Fut a DT-F107g (a)+(b): a három tabla_hiba-osztály javítása a bontóban, újramérés (aranyminta, seed-101, korpusz; forras_hiba nélkül és teljes mércével), a forras_hiba csomópontok igazolása és kézi sorai a javítótáblában; utána az 5–6. lépés (⛔ DT-F107c), vagy a mérce nem teljesülése esetén újra a 4. lépés ⛔
 olvas: [konkordancia/lexikonok_nyers/BDB.lexicon, konkordancia/lexikonok_nyers/README.md, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/BDB_teljes_unabridged_README.md, konkordancia/_convert_bdb.py, adat/forditasok.tsv, eszkozok/forditas_kapuk.py, adat/bdb_aranyminta.tsv, adat/bdb_vers_jelentes.tsv, adat/bdb_igehely_javitas.tsv, naplok/BDB_SZELETELO_M2_seed101_iteletek.md, F102_BDB_SZELETELO_JAVITAS_BRIEF.md, F38_BDB_FORDITAS_BRIEF.md, adat/SEMA.md, adat/datasetek.tsv, adat/licencek.tsv, Rendszerfejlesztesi_playbook.md]
 ir: [eszkozok/bdb_jelolt/, adat/bdb_szakaszok.tsv, adat/bdb_szakasz_hu.tsv, adat/bdb_forras_javitas.tsv, adat/SEMA.md, adat/datasetek.tsv, naplok/F107_BDB_JELOLT_SZOVEG_naplo.md, konkordancia/lexikonok_nyers/, konkordancia/BDB_teljes_unabridged_README.md, Rendszerfejlesztesi_playbook.md, adat/licencek.tsv]
 fugg: [99]
