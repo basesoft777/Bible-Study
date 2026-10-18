@@ -729,5 +729,62 @@ A kulcs a szakasztábla `strong` + `sorszam`-a (`adat/bdb_szakaszok.tsv`, `adat/
 - **A 8. lépés** (a #102 és a #38 briefjébe a tábla elérhetősége és a mért számok): a döntés után az orkesztrátor egyezteti (a két brief nincs
   az `ir` mezőben).
 - **N-F107a** (a kész fordítások pe/mem-érintettsége) — nyitva, `NYITOTT_FELADATOK.md`.
-- **N-F107b** (a #38 következő adagjában szakaszonként újrafordítandó 98 Strong, a lista: 7.1) — nyitva, `NYITOTT_FELADATOK.md`; a #38 briefjéhez a #107 nem nyúl.
+- **N-F107b** (a #38 következő adagjában szakaszonként újrafordítandó 98 Strong, a lista: 7.1) — nyitva, `NYITOTT_FELADATOK.md`; a #38
+  briefjének törzsébe a 8. lépés átadása beírta (l. 8.).
 - **`.gitattributes`** (`konkordancia/lexikonok_nyers/DictBDB.json -text`) — javaslat, nem írva.
+
+## 8. lépés — átadás a #102 és a #38 briefjébe (F107.41–F107.43)
+
+A felhasználó (chat, 2026-10-18): „8. lépés: egyeztetett eltérésként az F102 és F38 brief törzse (fejléc nem) bekerül az ir mezőbe; az
+átadás oda íródik (tábla elérhetősége, mért számok, N-F107b lista, a #102 hatókör-szűkítési javaslata), utána független ellenőrzés és zárás.”
+
+**Egyeztetett eltérés:** az `F102_BDB_SZELETELO_JAVITAS_BRIEF.md` és az `F38_BDB_FORDITAS_BRIEF.md` felkerült a #107 `ir` mezőjére (F107.41) —
+**csak a törzsük** íródik, a fejlécük nem (a beszúró szkript a második `---`-ig bájtra összeveti a fejlécet). `python eszkozok/feladatok.py
+ellenoriz`: 137 brief, 0 hiba, 0 figyelmeztetés (előtte és utána is); `fuggesek`: a #107-tel nincs `KIZAR`; új `FUGGES`: a #27, a #67 és a
+#103 olvassa az F38 briefet (állapotuk `nem_indult` / `brief_kell`); **a #38 `allapot: fut`** — a briefje törzsének írása merge-kor ütközhet
+a #38 saját menetével (jelezve).
+
+- **F102** (F107.42): „## 1c. Átadás a #107-ből (2026.10.18)” a 2. Hatókör előtt — a tábla, a javítótábla és az eszközök elérhetősége (DT190 🟡: a
+  kulcs nincs befagyasztva), mindkét mérce (aranyminta 96,7% / 98,8%, seed-101 9 / 13 / 9 / 10, korpusz 85,4%), a seed-101 helyenként, és a
+  hatókör-szűkítés **javaslatként** (megszűnő: zárójeles / gyakoriságszámos jelölő, törzsfejléc, fő tagolás, alcímszó, laza jelölő,
+  fej-összefoglaló, útvonal-formátum; forrásban hibás → javítótábla: M102, M117, M162; marad: igehely → szakasz, öröklés, sigla-szűrés,
+  M130, a korpusz-eltérések osztályozása, új vak mérés), a `/befogad`-dal jóváhagyandó.
+- **F38** (F107.43): „## Átadás a #107-ből (2026.10.18)” a Megállási pont előtt — `adat/bdb_szakasz_hu.tsv` és a szakaszkulcs, 409 / 85 / 98 / 82,
+  a DT-F107b döntés, az N-F107b lista helye (98 Strong, 606 szakasz, 7.1), a DT-F107c (d) (a `forras_hash` a változatlan TSV-hez kötött, a
+  csere külön feladat), az N-F107a (pe/mem).
+
+## Zárás-előkészítő összefoglaló (a független ellenőrzéshez; a zárójelentés és a `lezarva` állapot nem íródott)
+
+**Döntések** (`DONTESEK.md`, helyőrzővel, mind 🟢):
+
+| tétel | lényeg | alkalmazás |
+|---|---|---|
+| DT-F107a | (c) hibrid forrás (szöveg a `DictBDB.json`-ból, `bdb_id`/szócikkhatár/`section`/`remarks` a `BDB.lexicon`-ból, csak metaadat) + (i) licenc (a JSON közkincs; a lexikon tisztázatlan) + (x) a JSON a repóban | F107.5–.7 |
+| DT-F107d | (a) a playbook 2. pontja: a nyers forrás megőrzése, a veszteséges konverzió naplózása (CI-kapu nélkül) | F107.6 |
+| DT-F107e | (b), majd (a): a 0,5 alatti illesztési kör, utána a tábla a nem egyező Strongok `bdb_id`-je nélkül | F107.14–.15 |
+| DT-F107f | (a) a pe/mem javítótábla; N-F107a | F107.13, .16 |
+| DT-F107g | (a)+(b) a három `tabla_hiba`-osztály; a `forras_hiba` csomópontok igazolva, kézi sorral | F107.22–.25 |
+| DT-F107h | (a) a negyedik szabály (lexikon-metaadat), feltétel: a korpusz és a seed-101 nem romlik | F107.29 |
+| DT-F107c | (d) a nézet-generátor és a 247 sor F34/F46-javítása itt; a TSV cseréje és az olvasók átállása külön feladat | F107.33 |
+| DT-F107b | (d), majd (c): a magyar jelölő-felismerés bővítése; a maradék 98 Strong a #38-ban újrafordítva (N-F107b) | F107.38–.39 |
+| 8. lépés | egyeztetett eltérés: a két brief törzse az `ir`-ben, az átadás oda íródott | F107.41–.43 |
+
+**Egyeztetett eltérések a brieftől:** az `adat/licencek.tsv` az `ir`-ben (csak a `BDB` sor 3. mezője, F107.7); az `F102_…` és az `F38_…`
+brief törzse az `ir`-ben (8. lépés); a szakasztábla oszlopai a brief listáján túl `alszocikk`, `szakasz`, `resz`, `jel`, `illesztes`;
+a `adat/bdb_szakasz_hu.tsv` mellé nem készült külön datasetek-sor (a brief nem írta elő).
+
+**Tudnivalók a független ellenőrzéshez:**
+- **A 4. szabály első változata elvetve** (4.8): a „lexikonban szövegen belül” jel önmagában rontott (korpusz 78,4%, seed-101 8 / 13; a
+  feltétel szerint nem commitolva); a commitolt változat a hivatkozó szóra szűkít.
+- **A mérce:** az aranyminta a `forras_hiba` nélkül **98,8%** (411 / 416), a javasolt ≥ 99% egy csomóponttal nem teljesül (maradék: H3176 2
+  számozatlan jelentés, H0834 2 értelmezési eltérés, H2939 1 fejsorbeli törzsnév); az orkesztrátor a feltétel teljesülése miatt a munkát
+  folytattatta.
+- **A tokenizáló-hiba** („1.a.”) javítása a DT-F107g három osztályán kívül esett (4.5, jelezve).
+- **A H0157 bontó-maradvány:** egy elakadt sor (`Qal/-/n`) valószínűleg a bontó hamis „n.” feje (a „n.” rövidítés) — nem javítva.
+- **A H7626 „145:”** nincs a javítótáblában (a hiba-volta nincs eldöntve).
+- **A `.gitattributes`-javaslat** (`DictBDB.json -text`): nem írva (nincs az `ir`-ben); a hash a git-objektumra vonatkozik.
+- **SEMA-ütközés lehetősége:** a #107 csak a saját 2.30–2.32 szakaszát írta; a #11 M3 is írhatja az `adat/SEMA.md`-t.
+- **A #38 fut:** a briefje törzsébe írt átadás merge-kor ütközhet.
+- **Nyitott tételek:** N-F107a, N-F107b; átadandó: a TSV cseréje és az olvasók átállása (`/befogad`).
+
+`scope=F107 zárás-előkészítés | forras=a napló 1–8. szakasza, git log F107.0–F107.43, python eszkozok/feladatok.py ellenoriz / fuggesek | ts=2026-10-18`
