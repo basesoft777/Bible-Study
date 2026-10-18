@@ -50,10 +50,10 @@ adja (`1d28a840…dfa5`), tehát a mai letöltés tartalma a konverzió bemenet�
 **Megőrzés (DT-F107a (x), 2026-10-18).** A nyers JSON a repóban: `konkordancia/lexikonok_nyers/DictBDB.json`,
 SHA-256 `5d826c580a4dd06f54a53d1e19b5e8c354aab0180e200849e3148b89f370e33d`, git blob
 `9d6011ea9e3c61833be7a905d6d18e2363aaf37c` (ez azonos az `adat/licencek.tsv` `BDB` sorában a 2026-09-02-i
-letöltésre rögzített blobbal), 24 726 362 bájt, LF-sorvég. **A hash az LF-es bájtokra (a git-objektumra)
-vonatkozik:** a repó `core.autocrlf=true`-val megy, és a `.json`-ra nincs `.gitattributes`-szabály, ezért
-egy Windows-checkout a munkafában CRLF-re írhatja; az ellenőrzés:
-`git cat-file blob HEAD:konkordancia/lexikonok_nyers/DictBDB.json | sha256sum`. A mérések alapja a nyers
+letöltésre rögzített blobbal), 24 726 362 bájt, LF-sorvég. **A munkafa is bájtra ez:** a `.gitattributes`
+`konkordancia/lexikonok_nyers/*.json -text` szabálya (F107 javítókör, 2026-10-18) kizárja a sorvég-konverziót a repó
+`core.autocrlf=true` beállítása mellett is (friss checkouton ellenőrizve: SHA-256 `5d826c58…e33d`, 0 CR); a git-objektum
+ellenőrzése: `git cat-file blob HEAD:konkordancia/lexikonok_nyers/DictBDB.json | sha256sum`. A mérések alapja a nyers
 forrás, nem a TSV (playbook 2. pont, DT-F107d). A #107 szakasztáblája (`adat/bdb_szakaszok.tsv`) a szöveget
 és a bekezdés-tagolást ebből veszi; a `BDB.lexicon`-ból csak azonosítót és szerkezeti metaadatot
 (`bdb_id`, szócikkhatár, `section`/`remarks` osztály), szöveget nem (DT-F107a (c), (i)).
