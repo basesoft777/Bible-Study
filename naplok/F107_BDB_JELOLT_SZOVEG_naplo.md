@@ -237,4 +237,68 @@ oszlopban) kerülnének a táblába; ezt a döntés előtt nem írtam ki. Javasl
 ### 2.4 Ami nem készült el (a döntésig)
 
 `adat/bdb_szakaszok.tsv`, a teszt (`eszkozok/bdb_jelolt/teszt_bont.py`), az `adat/SEMA.md` új szakasza, az
-`adat/datasetek.tsv` sora; a 3–4. lépés.
+`adat/datasetek.tsv` sora; a 3–4. lépés. *(Elkészült a DT-F107e döntése után, l. 2.5.)*
+
+### 2.5 A DT-F107e és DT-F107f alkalmazása (2026-10-18)
+
+A felhasználó (chat, az orkesztrátoron át): „DT-F107e: (b), majd (a). DT-F107f: (a); a 674 kész fordítás héber idézeteinek
+pe/mem-érintettségére most nyiss N-tételt.” (F107.12; N-F107a: F107.13.)
+
+**(b) a 0,5 alatti sáv köre (F107.14).** A 45 Strong két mechanizmusa: (1) kettévágott szócikk-kezdet — a címszó egy rövid
+blokkban, a szöveg a következő `sub1` blokkban (H108 „I. אוה” + „1Arabic …”, H176 „אוֺ , , ),” + „conjunction or”, H1055); a 4
+tokennél rövidebb blokkot a következővel együtt mérjük; (2) elmaradt szócikkhatár a szigorúbb 0,85-ös küszöb miatt (H1817 → BDB1943);
+a későbbi szócikk-kezdet küszöbe azonos az elsőével (0,80). A számozott fejű bekezdés továbbra sem nyit szócikket, és a
+szegmenslefedés (≥ 0,90 mindkét irányban) őrzi a hamis határt.
+
+| futás | egyezik | reszleges | sikertelen | csonk | szocikk_resze | nem egyező |
+|---|---|---|---|---|---|---|
+| F107.9 (a STOP) | 7 869 | 139 | 16 | 35 | 31 | 2,73% |
+| **F107.14 (a 0,5 alatti kör)** | **7 920** | **94** | **15** | **35** | **26** | **2,10%** (csonk nélkül 1,67%) |
+
+A `reszleges` 94 sávjai: 0,8–0,9: 75; 0,5–0,8: 8; < 0,5: 11 (45-ből). A küszöb (1%, szigorú) változatlan; a DT-F107e szerint a
+tábla az (a) szerint kiíródik.
+
+`scope=F107 2. lépés, Strongonkénti illesztés | forras=python eszkozok/bdb_jelolt/bont.py --meres (F107.14, 76f5b153) | ts=2026-10-18`
+
+**(a) a tábla (F107.15).** `adat/bdb_szakaszok.tsv`: 36 491 sor, 8 090 Strong; `jelolo`: cim 8 090, fej 10 028, point 15 611,
+bekezdes 2 194, alcimszo 308, section 254, remarks 6. A `reszleges` / `sikertelen` / `csonk` 144 Strong sorai `bdb_id` és
+`section`/`remarks` nélkül, az `illesztes` oszlopban jelölve. Hiány: a TSV 9 JSON-kulcs nélküli sora (F57: H0747, H4123, H4725;
+F72: H1753, H3367, H3848, H6433, H7560, H8065) nincs a táblában (a szövegük a lexikonból jött; DT-F107a (i)). Teszt:
+`eszkozok/bdb_jelolt/teszt_bont.py`, 24 teszt, OK (benne a két `--ellenoriz` bájtos determinizmus). SEMA 2.30–2.31, `datasetek.tsv`
+`BDB_szakaszok` (F107.17).
+
+**Megfigyelés a 4. lépéshez (H7626):** a „145:” a nyers JSON-ban a szövegben áll (`<b>2</b> 145:tribe`), tehát nem konverziós
+maradvány; ugyanitt a szócikk-fej összefoglalója („1 rod … 2 tribe”) félkövér pontokként jelenik meg, a „1.a.” fej nem félkövér, ezért az
+útvonal elcsúszik (`-/2/b` a `-/1/b` helyett). *(Értelmezés, nem mérés: a „145” a „tribe” jelentés gyakoriságszáma lehet `<sub>` nélkül.)*
+
+**DT-F107f (a), a javítótábla (F107.16).** `adat/bdb_forras_javitas.tsv`: 6 781 sor (a tábla szövegének minden dagesses memje);
+`javitva` 3 823 (1 428 Strong), `valodi_mem` 2 402, `jelolt_marad` 556 (ebből 112 `bdb_id` nélküli sorban, 444 ahol egyik alak
+sincs a szócikkben). Szúrópróba: מִשְׁמַּט → מִשְׁפַּט (H2835), יִמֹּל → יִפֹּל (H5307), אַמִּי → אַפִּי (H7626); `valodi_mem`: לָרִמָּה, קִמּוֺשׁ.
+A tábla szövege a nyers JSON-é; a javított nézet a DT-F107c-é (SEMA 2.30, javaslatként jelölve).
+
+`scope=F107 5. lépés, pe/mem | forras=python eszkozok/bdb_jelolt/forras_javit.py --ts 2026-10-18 | ts=2026-10-18`
+
+**A `.gitattributes` javaslata (nem írva, nincs az `ir` mezőben):** `konkordancia/lexikonok_nyers/DictBDB.json -text`, hogy a
+munkafa is bájtra a hash-elt alakot tartsa (l. 1.8).
+
+## 3. lépés — nézet-ellenőrzés
+
+Eszköz: `eszkozok/bdb_jelolt/nezet_ellenoriz.py` (csak olvas). A nézet Strongonként: a tábla sorainak `jel` + `szoveg` mezője egy
+szóközzel összefűzve, whitespace-normalizálva; a javítótábla javításai nem alkalmazódnak. Összevetés a `BDB_teljes_unabridged.tsv`-vel
+és a JSON újrakonvertált alakjával.
+
+| osztály | Strong | ok |
+|---|---|---|
+| `azonos` | 7 097 | — |
+| `sub` | 444 | csak a `<sub>` (a TSV `_N`-je; a táblában a `gyakorisag` oszlop): `szoveg_konverzio` |
+| `tsv_utolagos` | 206 | a TSV utólag javított sora (F34 ψ, F46 könyvfeloldás), a nézet a nyers JSON-t adja: pl. H0040 TSV „Psa 34:1” ↔ JSON „Gen 34:1”; H0026 „1Sam 25:18” ↔ „2Sam 25:18” |
+| `tsv_utolagos+szokoz` | 41 | mint fent, és szóköz-eltérés is |
+| `szokoz` | 297 | csak szóköz: a táblában a fej és a szöveg közötti forrás-szóköz nincs rögzítve (tapadt fej: „a.-1”, „Pi`el3masculine”, „1Arabic”; vagy hamis fej a bekezdéshatár után: „below 3);” → `3 )`) |
+| `forras_html` | 5 | a JSON hibás HTML-je (töredékes `<a href=…>`, `<e …>` tag, benne `<p>`): a bekezdés-bontás nyers jelölést enged a szövegbe (H1980, H3117, H4639, H4714, H8104; 6 sor) |
+| `nincs_a_tablaban` | 9 | a TSV F57/F72 sorai (JSON-kulcs nélkül) |
+| `egyeb` (ismeretlen ok) | **0** | — |
+
+A `tsv_utolagos` összesen 247 = az 1.1-ben mért 247 eltérő TSV-sor. **Következmény a 6. lépéshez (DT-F107c):** ha a sima szöveg a
+táblából generált nézet lenne, a 247 utólag javított sor javításai elvesznének, hacsak a javítótábla nem veszi át őket (F34, F46).
+
+`scope=F107 3. lépés, nézet ↔ BDB_teljes_unabridged.tsv (8 099 sor) | forras=python eszkozok/bdb_jelolt/nezet_ellenoriz.py | ts=2026-10-18`
