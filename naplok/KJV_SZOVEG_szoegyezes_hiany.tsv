@@ -1,0 +1,87 @@
+# proveniencia: scope=KJV_SZOVEG M-b (a KJV_Strongs_teljes.tsv Angol szó-elemei a KJV_teljes_szoveg.tsv Szöveg-tokenjeiben) | forras=KJV_teljes_szoveg.tsv sha256=f385295b957ba35cd99351b3ff500fc7d8e4c963fd854581f46b0eff2befe5ce | ts=2026-10-18T15:47:52Z
+# ok: osszetett_szo = több címkés rész egy írott szóban (token); szoreszlet = a címke csak a szó elejét fedi; nincs_a_szovegben / sorrend = megmagyarázatlan
+Igehely	Szósorszám	Strong-szám	Angol szó	szóelem	ok	token_a_szövegben
+Mat.11.6	4	G3739	who	who	osszetett_szo	whosoever
+Mat.11.6	5	G1437	soever	soever	osszetett_szo	whosoever
+Mat.11.20	5	G3739	where	where	osszetett_szo	wherein
+Mat.11.20	6	G1722	in	in	osszetett_szo	wherein
+Mat.11.27	20	G3739	to whom	whom	osszetett_szo	whomsoever
+Mat.11.27	21	G1437	soever	soever	osszetett_szo	whomsoever
+Mat.12.4	9	G4286	shew	shew	osszetett_szo	shewbread
+Mat.12.4	10	G740	bread	bread	osszetett_szo	shewbread
+Mat.12.32	11	G3739	who	who	osszetett_szo	whosoever
+Mat.12.32	12	G302	soever	soever	osszetett_szo	whosoever
+Mat.12.50	2	G3748	who	who	osszetett_szo	whosoever
+Mat.12.50	3	G302	soever	soever	osszetett_szo	whosoever
+Mat.25.6	2	G3319	mid	mid	osszetett_szo	midnight
+Mat.25.6	3	G3571	night	night	osszetett_szo	midnight
+Mat.26.53	3	G1410	I can	can	osszetett_szo	cannot
+Mat.26.53	4	G3756	not	not	osszetett_szo	cannot
+Mrk.2.19	19	G1410	they can	can	osszetett_szo	cannot
+Mrk.2.19	20	G3756	not	not	osszetett_szo	cannot
+Mrk.4.24	16	G4369	shall more be give	give	szoreszlet	given
+Mrk.7.18	18	G1410	can	can	osszetett_szo	cannot
+Mrk.7.18	19	G3756	not	not	osszetett_szo	cannot
+Mrk.10.15	15	G846	there	there	osszetett_szo	therein
+Mrk.10.15	16	G1519	in	in	osszetett_szo	therein
+Luk.7.44	25	G1144	with tear	tear	szoreszlet	tears
+Luk.8.25	9	G5399	afrai	afrai	szoreszlet	afraid
+Luk.11.7	20	G1410	I can	can	osszetett_szo	cannot
+Luk.11.7	21	G3756	not	not	osszetett_szo	cannot
+Jhn.3.3	14	G1410	can	can	osszetett_szo	cannot
+Jhn.3.3	15	G3756	not	not	osszetett_szo	cannot
+Jhn.3.5	14	G1410	he can	can	osszetett_szo	cannot
+Jhn.3.5	15	G3756	not	not	osszetett_szo	cannot
+Jhn.10.35	12	G1410	can	can	osszetett_szo	cannot
+Jhn.10.35	13	G3756	not	not	osszetett_szo	cannot
+Jhn.13.20	5	G3588	He tha	tha	szoreszlet	that
+Act.1.12	13	G4521	day	day	osszetett_szo	day's
+Act.1.12	14	G2192	s	s	osszetett_szo	day's
+Act.7.49	7	G4228	foot	foot	osszetett_szo	footstool
+Act.7.49	8	G5286	stool	stool	osszetett_szo	footstool
+Gal.6.8	13	G3588	tha	tha	szoreszlet	that
+Eph.6.12	14	G4314	agains	agains	szoreszlet	against
+Php.1.18	14	G5129	there	there	osszetett_szo	therein
+Php.1.18	15	G1722	in	in	osszetett_szo	therein
+Php.2.2	6	G846	like	like	osszetett_szo	likeminded
+Php.2.2	7	G5426	minded	minded	osszetett_szo	likeminded
+Php.3.16	2	G3739	where	where	osszetett_szo	whereto
+Php.3.16	3	G1519	to	to	osszetett_szo	whereto
+Php.4.10	13	G3739	where	where	osszetett_szo	wherein
+Php.4.10	14	G1909	in	in	osszetett_szo	wherein
+Col.2.7	13	G846	there	there	osszetett_szo	therein
+Col.2.7	14	G1722	in	in	osszetett_szo	therein
+Col.2.12	5	G3739	where	where	osszetett_szo	wherein
+Col.2.12	6	G1722	in	in	osszetett_szo	wherein
+1Th.2.6	14	G922	burden	burden	osszetett_szo	burdensome
+1Th.2.6	15	G1722	some	some	osszetett_szo	burdensome
+1Ti.6.4	10	G3739	where	where	osszetett_szo	whereof
+1Ti.6.4	11	G1537	of	of	osszetett_szo	whereof
+1Ti.6.7	9	G3761	no	no	osszetett_szo	nothing
+1Ti.6.7	10	G5100	thing	thing	osszetett_szo	nothing
+Heb.3.3	9	G2596	in	in	szoreszlet	inasmuch
+Heb.4.6	6	G846	there	there	osszetett_szo	therein
+Heb.4.6	7	G1519	in	in	osszetett_szo	therein
+Heb.4.15	5	G1410	can	can	osszetett_szo	cannot
+Heb.4.15	6	G3361	not	not	osszetett_szo	cannot
+Heb.4.16	4	G3954	bold	bold	osszetett_szo	boldly
+Heb.4.16	5	G3326	ly	ly	osszetett_szo	boldly
+Heb.5.3	3	G3778	here	here	osszetett_szo	hereof
+Heb.5.3	4	G1223	of	of	osszetett_szo	hereof
+Heb.7.20	2	G2596	in	in	szoreszlet	inasmuch
+Heb.9.2	6	G3739	where	where	osszetett_szo	wherein
+Heb.9.2	7	G1722	in	in	osszetett_szo	wherein
+Heb.9.4	11	G3739	where	where	osszetett_szo	wherein
+Heb.9.4	12	G1722	in	in	osszetett_szo	wherein
+Heb.10.29	13	G3739	where	where	osszetett_szo	wherewith
+Heb.10.29	14	G1722	with	with	osszetett_szo	wherewith
+Heb.11.37	10	G122	goat	goat	osszetett_szo	goatskins
+Heb.11.37	11	G1192	skins	skins	osszetett_szo	goatskins
+Heb.12.11	19	G846	there	there	osszetett_szo	thereby
+Heb.12.11	20	G1223	by	by	osszetett_szo	thereby
+Heb.12.15	16	G3778	there	there	osszetett_szo	thereby
+Heb.12.15	17	G1223	by	by	osszetett_szo	thereby
+Heb.13.2	6	G3778	there	there	osszetett_szo	thereby
+Heb.13.2	7	G1223	by	by	osszetett_szo	thereby
+Heb.13.10	3	G3739	where	where	osszetett_szo	whereof
+Heb.13.10	4	G1537	of	of	osszetett_szo	whereof
