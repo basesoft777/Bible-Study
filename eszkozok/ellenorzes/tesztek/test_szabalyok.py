@@ -18,6 +18,7 @@ vagy
 
 import os
 import shutil
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -1075,6 +1076,316 @@ class E27Teszt(unittest.TestCase):
         # a repo tenyleges allapota: lefut, minden talalat E27
         t = SZ.e27_hivatkozas()
         self.assertTrue(all(x.szabaly == 'E27' for x in t))
+
+
+# ---------------------------------------------------------------------------
+# E28, E29 (F116 -- naplok/MOTIVUM_FORRAS_ci_terv.md 1. es 2. szakasz)
+# ---------------------------------------------------------------------------
+
+_LISTA_FEJ = 'id\tfajl\tcel\tmelyseg\tfeladat\tdatum\n'
+_LAP = 'lexikon/ZZTESZT-001_TUDOMANYOS.md'
+
+
+def _lista(*sorok):
+    return _LISTA_FEJ + ''.join(sorok)
+
+
+def _lista_sor(fajl=_LAP, melyseg='apparatus', az='ZZTESZT-001', cel='lexikon'):
+    return '%s\t%s\t%s\t%s\tF116-teszt\t2026-10-18\n' % (az, fajl, cel, melyseg)
+
+
+def _ir_nyers(gyoker, relut, tartalom):
+    """Mint a _ir, de a sorvegek valtozatlanok (Windowson sem lesz CRLF az LF-bol):
+    az E28 a blob bajtjait veti ossze."""
+    teljes = os.path.join(gyoker, relut)
+    os.makedirs(os.path.dirname(teljes) or gyoker, exist_ok=True)
+    with open(teljes, 'w', encoding='utf-8', newline='') as f:
+        f.write(tartalom)
+    return relut.replace(os.sep, '/')
+
+
+def _lista_ir(gy, *sorok):
+    _ir(gy, 'eszkozok/ellenorzes/e28_migralt_nezetek.tsv', _lista(*sorok))
+
+
+_MARKER_BLOKK = (
+    '<!-- GENERÁLT-KEZDET: general.py --cel naplo#teszt | forrás: x | ts=2026-10-18 -->\n'
+    '\nEgy.\nKetto.\n\n<!-- GENERÁLT-VÉGE: naplo#teszt -->'
+)
+
+
+def _hamis_blokkok(cel):
+    return [('naplo#teszt', _MARKER_BLOKK)]
+
+
+class E28Teszt(unittest.TestCase):
+    """E28: a generalt nezet bajtra egyezik az ujragenerálttal. A generator-hivas
+    (`_e28_general_futtat`), a commitolt blob (`_e28_commitolt`) és a marker-blokkok
+    forrása (`_e28_generalt_blokkok`) a teszt idejére helyettesítve: a fixture ideiglenes
+    gyökérben áll, az éles repón nem fut generátor."""
+
+    GEN_FEJ = '<!-- GENERÁLT: general.py --cel lexikon | ts=%s -->\n'
+
+    def _render(self, gy, datum):
+        """A "generator": a nezet az adat- es a forrasretegbol (fixture) all elo."""
+        adat = open(os.path.join(gy, 'adat', 'elofordulasok.tsv'), encoding='utf-8').read()
+        forras = open(os.path.join(gy, 'motivumok', 'ZZTESZT-001.md'), encoding='utf-8').read()
+        return (self.GEN_FEJ % datum) + '## 2. Adat\n' + adat + '## 3. Olvasoi\n' + forras
+
+    def _futtat(self, gy, fajlok=('__TELJES__',), marker_celok=()):
+        def hamis_generator(cel, azonosito, datum, kimenet):
+            ut = os.path.join(kimenet, *_LAP.split('/'))
+            os.makedirs(os.path.dirname(ut), exist_ok=True)
+            with open(ut, 'w', encoding='utf-8', newline='') as f:
+                f.write(self._render(gy, datum))
+            return 0, ''
+
+        def blob(relut):
+            try:
+                with open(os.path.join(gy, *relut.split('/')), encoding='utf-8', newline='') as f:
+                    return f.read()    # nyers: a blob sorvegei is szamitanak
+            except OSError:
+                return None
+
+        from unittest import mock
+        with mock.patch.object(SZ, '_e28_general_futtat', hamis_generator), \
+                mock.patch.object(SZ, '_e28_commitolt', blob), \
+                mock.patch.object(SZ, 'E28_MARKER_CELOK', tuple(marker_celok)), \
+                mock.patch.object(SZ, '_e28_generalt_blokkok', _hamis_blokkok):
+            return SZ.e28_generalt_nezet_egyezes(list(fajlok))
+
+    def _fixture(self, gy, elof='ZZTESZT-001\t1Móz 1:1\tkapcsolodas: x\n', forras='Olvasoi bekezdes.\n'):
+        _ir(gy, 'adat/elofordulasok.tsv', elof)
+        _ir(gy, 'motivumok/ZZTESZT-001.md', forras)
+        _lista_ir(gy, _lista_sor())
+        # a commitolt nezet = a generator kimenete a nezet sajat datumara
+        _ir_nyers(gy, _LAP, self._render(gy, '2026-10-01'))
+
+    def test_pozitiv_valtozatlan_forrasbol_generalt_nezet_zold(self):
+        with _IdeiglenesGyoker() as gy:
+            self._fixture(gy)
+            self.assertEqual(self._futtat(gy), [])
+            self.assertIn('E28: 1 migrált nézet', SZ.E28_JEGYZETEK)
+
+    def test_pozitiv_marker_blokk_zold(self):
+        with _IdeiglenesGyoker() as gy:
+            self._fixture(gy)
+            _ir_nyers(gy, 'naplo.md', 'kezi sor\n' + _MARKER_BLOKK.replace('ts=2026-10-18', 'ts=2026-09-15') + '\nkezi vege\n')
+            self.assertEqual(self._futtat(gy, marker_celok=[('naplo', 'naplo.md')]), [])
+
+    def test_negativ_a_kezzel_irt_szo_piros(self):
+        with _IdeiglenesGyoker() as gy:
+            self._fixture(gy)
+            szoveg = open(os.path.join(gy, _LAP), encoding='utf-8').read()
+            _ir_nyers(gy, _LAP, szoveg.replace('Olvasoi bekezdes.', 'Olvasoi KEZZEL bekezdes.'))
+            t = self._futtat(gy)
+            self.assertEqual(len(t), 1)
+            self.assertEqual((t[0].szabaly, t[0].szint, t[0].fajl), ('E28', 'HIBA', _LAP))
+            self.assertIn('Javítás: python eszkozok/general.py --cel lexikon --id ZZTESZT-001 --ir', t[0].reszlet)
+            self.assertGreater(t[0].sor, 0)
+
+    def test_negativ_adat_valtozik_a_nezet_nem(self):
+        with _IdeiglenesGyoker() as gy:
+            self._fixture(gy)
+            _ir(gy, 'adat/elofordulasok.tsv', 'ZZTESZT-001\t1Móz 1:1\tkapcsolodas: MODOSITOTT\n')
+            t = self._futtat(gy)
+            self.assertEqual([x.szabaly for x in t], ['E28'])
+            self.assertIn('MODOSITOTT', t[0].reszlet)
+
+    def test_negativ_forras_olvasoi_bekezdese_valtozik_a_nezet_nem(self):
+        with _IdeiglenesGyoker() as gy:
+            self._fixture(gy)
+            _ir(gy, 'motivumok/ZZTESZT-001.md', 'Uj olvasoi bekezdes.\n')
+            t = self._futtat(gy)
+            self.assertEqual([x.szabaly for x in t], ['E28'])
+
+    def test_negativ_marker_blokk_torzsenek_kezi_atirasa_piros(self):
+        with _IdeiglenesGyoker() as gy:
+            self._fixture(gy)
+            kezi = _MARKER_BLOKK.replace('Ketto.', 'Ketto KEZZEL ATIRVA.')
+            _ir_nyers(gy, 'naplo.md', 'kezi sor\n' + kezi + '\n')
+            t = self._futtat(gy, marker_celok=[('naplo', 'naplo.md')])
+            self.assertEqual(len(t), 1)
+            self.assertEqual((t[0].fajl, t[0].szint), ('naplo.md', 'HIBA'))
+            self.assertIn('naplo#teszt', t[0].reszlet)
+            self.assertIn('python eszkozok/general.py --cel naplo --ir', t[0].reszlet)
+            self.assertEqual(t[0].sor, 5)      # a torzs 4. sora = a fajl 5. sora
+
+    def test_negativ_marker_par_hianyzik(self):
+        with _IdeiglenesGyoker() as gy:
+            self._fixture(gy)
+            _ir_nyers(gy, 'naplo.md', 'csak kezi sor\n')
+            t = self._futtat(gy, marker_celok=[('naplo', 'naplo.md')])
+            self.assertEqual(len(t), 1)
+            self.assertIn('hiányzik', t[0].reszlet)
+
+    def test_a_nem_listan_levo_befagyasztott_lap_nem_fut(self):
+        with _IdeiglenesGyoker() as gy:
+            self._fixture(gy)
+            # a befagyasztott lap tartalma eltér mindentől, de nincs a listán
+            _ir(gy, 'lexikon/MASIK-001_TUDOMANYOS.md', 'kezzel irt, befagyasztott lap, 【NAPLO: x】\n')
+            self.assertEqual(self._futtat(gy), [])
+
+    def test_ures_lista_nulla_nezet(self):
+        with _IdeiglenesGyoker() as gy:
+            _ir(gy, 'eszkozok/ellenorzes/e28_migralt_nezetek.tsv', _lista())
+            self.assertEqual(self._futtat(gy), [])
+            self.assertEqual(SZ.E28_JEGYZETEK, ['E28: 0 migrált nézet'])
+
+    def test_nem_indul_erintetlen_fajlokkal(self):
+        with _IdeiglenesGyoker() as gy:
+            self._fixture(gy)
+            _ir_nyers(gy, _LAP, 'tetszoleges, a generatortol eltero tartalom\n')
+            self.assertEqual(self._futtat(gy, fajlok=['README.md']), [])
+            self.assertIn('nem futott', SZ.E28_JEGYZETEK[0])
+
+    def test_indul_adat_tsv_valtozassal(self):
+        with _IdeiglenesGyoker() as gy:
+            self._fixture(gy)
+            _ir_nyers(gy, _LAP, 'tetszoleges, GENERÁLT ts=2026-10-01 jelolovel, de mas tartalom\n')
+            self.assertEqual(len(self._futtat(gy, fajlok=['adat/jeloltek.tsv'])), 1)
+
+    def test_negativ_generalt_jelolo_nelkuli_nezet(self):
+        with _IdeiglenesGyoker() as gy:
+            self._fixture(gy)
+            _ir_nyers(gy, _LAP, 'kezi fajl jelolo nelkul\n')
+            t = self._futtat(gy)
+            self.assertEqual(len(t), 1)
+            self.assertIn('nincs GENERÁLT jelölő', t[0].reszlet)
+
+    def test_negativ_crlf_blob_lf_generalt_kimenettel_piros(self):
+        # CI-terv 1. szakasz 3. pont: a sorvegnek is egyeznie kell (nincs normalizalas)
+        with _IdeiglenesGyoker() as gy:
+            self._fixture(gy)
+            _ir_nyers(gy, _LAP, self._render(gy, '2026-10-01').replace('\n', '\r\n'))
+            t = self._futtat(gy)
+            self.assertEqual([x.szabaly for x in t], ['E28'])
+            self.assertEqual(t[0].sor, 1)
+            self.assertIn('\\r', t[0].reszlet)     # a repr-ben latszik a CR
+
+    def test_negativ_crlf_marker_blokk_piros(self):
+        with _IdeiglenesGyoker() as gy:
+            self._fixture(gy)
+            _ir_nyers(gy, 'naplo.md', ('kezi\n' + _MARKER_BLOKK + '\n').replace('\n', '\r\n'))
+            t = self._futtat(gy, marker_celok=[('naplo', 'naplo.md')])
+            self.assertEqual(len(t), 1)
+            self.assertEqual(t[0].szint, 'HIBA')
+
+    def test_negativ_nyito_marker_zaro_nelkul_hibatalalat_nem_kivetel(self):
+        with _IdeiglenesGyoker() as gy:
+            self._fixture(gy)
+            _ir_nyers(gy, 'naplo.md', 'kezi\n<!-- GENERÁLT-KEZDET: general.py --cel naplo#teszt | forrás: x | ts=2026-09-15 -->\ntorzs\n')
+            t = self._futtat(gy, marker_celok=[('naplo', 'naplo.md')])
+            self.assertEqual(len(t), 1)
+            self.assertEqual((t[0].szabaly, t[0].szint, t[0].fajl), ('E28', 'HIBA', 'naplo.md'))
+            self.assertIn('naplo#teszt', t[0].reszlet)
+            self.assertIn('záró pár nélkül', t[0].reszlet)
+            self.assertIn('python eszkozok/general.py --cel naplo --ir', t[0].reszlet)
+
+    def test_valodi_blob_ag_nyers_bajtokat_ad_nem_mockolt_commitolt(self):
+        # A `_e28_commitolt` NINCS mockolva: a `git show` kimenetet a subprocess.run
+        # helyettesiti CRLF-es bajtokkal (commitolt CRLF-blob). A blob-agnak meg kell
+        # orznie a CR-t, es az E28 piros (a generalt kimenet LF-es).
+        from unittest import mock
+        with _IdeiglenesGyoker() as gy:
+            self._fixture(gy)
+            crlf_blob = self._render(gy, '2026-10-01').replace('\n', '\r\n').encode('utf-8')
+            hivasok = []
+
+            def hamis_run(args, **kw):
+                hivasok.append(args)
+                self.assertEqual(args[:2], ['git', 'show'])
+                return subprocess.CompletedProcess(args, 0, stdout=crlf_blob, stderr=b'')
+
+            def hamis_generator(cel, azonosito, datum, kimenet):
+                ut = os.path.join(kimenet, *_LAP.split('/'))
+                os.makedirs(os.path.dirname(ut), exist_ok=True)
+                with open(ut, 'w', encoding='utf-8', newline='') as f:
+                    f.write(self._render(gy, datum))
+                return 0, ''
+
+            with mock.patch.object(SZ.subprocess, 'run', hamis_run):
+                self.assertEqual(SZ._e28_commitolt(_LAP), crlf_blob.decode('utf-8'))
+                self.assertIn('\r\n', SZ._e28_commitolt(_LAP))
+                with mock.patch.object(SZ, '_e28_general_futtat', hamis_generator), \
+                        mock.patch.object(SZ, 'E28_MARKER_CELOK', ()):
+                    t = SZ.e28_generalt_nezet_egyezes(['__TELJES__'])
+            self.assertTrue(hivasok)
+            self.assertEqual([x.szabaly for x in t], ['E28'])
+            self.assertIn('\\r', t[0].reszlet)
+
+    def test_munkafa_tartalek_lf_es_jelzi_hogy_nem_blob(self):
+        with _IdeiglenesGyoker() as gy:
+            _ir_nyers(gy, 'x.md', 'a\r\nb\r\n')
+            del SZ.E28_JEGYZETEK[:]
+            self.assertEqual(SZ._e28_commitolt('x.md'), 'a\nb\n')
+            self.assertTrue(any('nem blob-összevetés' in j for j in SZ.E28_JEGYZETEK))
+
+    def test_szint_fajlszintu_hiba(self):
+        self.assertEqual(SZ.SZINT['E28'], 'HIBA')
+        self.assertIn('E28', SZ.FAJLSZINTU_SZABALYOK)
+        self.assertIn('E28', SZ.SZABALYOK_FUGGVENYEI)
+
+
+class E29Teszt(unittest.TestCase):
+    """E29: a kiadhato kimenetben nulla `belso` jeloles es nulla 【NAPLO."""
+
+    def _fut(self, tartalom, melyseg='apparatus', extra=None):
+        with _IdeiglenesGyoker() as gy:
+            _lista_ir(gy, _lista_sor(melyseg=melyseg))
+            _ir(gy, _LAP, tartalom)
+            for relut, szoveg in (extra or {}).items():
+                _ir(gy, relut, szoveg)
+            return SZ.e29_kiadhato_kimenet_tisztasaga(['__TELJES__'])
+
+    def test_pozitiv_apparatus_nezet_naplo_nelkul_zold(self):
+        self.assertEqual(self._fut('# Lap\n\nApparatus szoveg, proveniencia: scope=x.\n'), [])
+
+    def test_negativ_naplo_a_lapon_piros(self):
+        t = self._fut('# Lap\n\nSzoveg 【NAPLO: folyamat-nyom】\n')
+        self.assertEqual([(x.szabaly, x.szint, x.fajl, x.sor) for x in t], [('E29', 'HIBA', _LAP, 3)])
+        self.assertIn('【NAPLO', t[0].reszlet)
+
+    def test_negativ_naplo_kodkeritesen_belul_is(self):
+        t = self._fut('```\n【NAPLO: kodblokkban】\n```\n')
+        self.assertEqual(len(t), 1)
+        self.assertEqual(t[0].sor, 2)
+
+    def test_negativ_belso_szintjelolo_piros(self):
+        t = self._fut('# Lap\n<!-- SZINT-KEZDET: belso -->\nbelso\n<!-- SZINT-VÉGE: belso -->\n')
+        self.assertEqual([x.sor for x in t], [2, 4])
+
+    def test_negativ_inaktiv_jelolo_piros(self):
+        t = self._fut('# Lap\n<!-- INAKTÍV: nincs adat -->\n')
+        self.assertEqual(len(t), 1)
+        self.assertIn('INAKTÍV:', t[0].reszlet)
+
+    def test_negativ_olvasoi_melysegben_proveniencia_piros_apparatusban_nem(self):
+        sor = '# Lap\nAllitas. proveniencia: scope=x | forras=y | ts=z\n<!-- RÉS-KEZDET: kivonat -->\n'
+        t = self._fut(sor, melyseg='olvasoi')
+        self.assertEqual(sorted(x.reszlet for x in t),
+                         ['minta: RÉS-KEZDET', 'minta: proveniencia:'])
+        self.assertEqual(self._fut(sor, melyseg='apparatus'), [])
+
+    def test_a_motivumok_forras_nem_hatokor(self):
+        # a forrasban a 【NAPLO kotelezo hely; a lista csak a lexikon-lapot nevezi meg
+        t = self._fut('# tiszta lap\n', extra={'motivumok/ZZTESZT-001.md': '【NAPLO: forrasban szabad】\n'})
+        self.assertEqual(t, [])
+
+    def test_ismeretlen_melyseg_hiba(self):
+        t = self._fut('# tiszta lap\n', melyseg='belso')
+        self.assertEqual(len(t), 1)
+        self.assertIn('ismeretlen melyseg', t[0].reszlet)
+
+    def test_ures_lista_nulla_talalat(self):
+        with _IdeiglenesGyoker() as gy:
+            _ir(gy, 'eszkozok/ellenorzes/e28_migralt_nezetek.tsv', _lista())
+            self.assertEqual(SZ.e29_kiadhato_kimenet_tisztasaga(['__TELJES__']), [])
+
+    def test_szint_fajlszintu_hiba(self):
+        self.assertEqual(SZ.SZINT['E29'], 'HIBA')
+        self.assertIn('E29', SZ.FAJLSZINTU_SZABALYOK)
+        self.assertIn('E29', SZ.SZABALYOK_FUGGVENYEI)
 
 
 if __name__ == '__main__':
