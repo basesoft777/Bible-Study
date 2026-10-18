@@ -62,6 +62,17 @@ def modosit(gyoker, fajl, fn):
         f.write('\n'.join(ki) + '\n')
 
 
+def kezi_mt_or_kihagy():
+    """F117.8 (6) (DT-F117f (a)): ha a VALÓS versmegfeleltető táblán az sqlite_epit KEZI+igehely_mt-őre leállítana,
+    -> a kihagyás oka (str), különben None. Csak a VersmegfKeziMt-et kezeli; az N-F117a javításával magától megszűnik."""
+    sorok = G.tsv_beolvas(os.path.join(ROOT, 'konkordancia', 'Karoli_versmegfeleltetes.tsv'))[1]
+    try:
+        S.kezi_mt_or(sorok)
+    except S.VersmegfKeziMt as e:
+        return 'N-F117a: az sqlite_epit KEZI+igehely_mt-őre (DT-F117f) a valós táblán leállít; az N-F117a javításakor visszaveendő [%s]' % str(e)[:120]
+    return None
+
+
 def sertett_szabalyok(sertesek):
     return sorted(s.cim.split('.')[0] for s in sertesek)
 
@@ -252,12 +263,10 @@ class KeziMtOr(unittest.TestCase):
         g = self._gyoker(['Préd 9:20\t9:18\t\tKEZI\tkezi\traw=9:18', 'Jón 2:3\t2:2\t2:3\tMT\tszoveg_osszevetes_f117\t-',
                           '1Móz 1:1\t1:1\t\tKJV\tszamlalas\t'])
         ep = S.Epito(g, os.path.join(g, 'y.db'), 'minta')
-        try:
+        # az őr átengedi; utána a fixtúrából hiányzó BSB-forrás (és csak az) állítja meg az építést
+        with self.assertRaises(FileNotFoundError) as cm:
             ep._bsb_szamozas()
-        except S.VersmegfKeziMt:
-            self.fail('az őr KEZI üres mt / MT / KJV soron nem állhat le')
-        except Exception:
-            pass   # az őr után a fixtúrából hiányzó BSB-forrás miatti hiba nem az őr tárgya
+        self.assertIn('BSB_Strongs.tsv', str(cm.exception.filename))
 
 
 class Normalizalas(unittest.TestCase):
@@ -316,12 +325,16 @@ class TipnrUtotag(unittest.TestCase):
             SU.strong_normalizal('H5838z')
 
 
-@unittest.skip('N-F117a: az sqlite_epit KEZI+igehely_mt-őre (DT-F117f) a valós táblán leállít; az N-F117a javításakor visszaveendő')
 class Integracio(unittest.TestCase):
     """A kis minta ketszeri epitese (G2), tablaszintu licenc (G4, F89), normalizalas, idezojelek."""
 
     @classmethod
     def setUpClass(cls):
+        # F117.8 (6): a közös építés a valós táblán fut; ha az őr (DT-F117f) leállítaná, az egész osztály kihagyva,
+        # kimondott okkal -- csak ebben a helyzetben (az N-F117a javításával magától visszaáll)
+        ok = kezi_mt_or_kihagy()
+        if ok:
+            raise unittest.SkipTest(ok)
         cls.tmp = tempfile.mkdtemp()
         cls.a = os.path.join(cls.tmp, 'a.db')
         cls.b = os.path.join(cls.tmp, 'b.db')
@@ -777,8 +790,10 @@ class FeliratHalmaz(unittest.TestCase):
              and r['megjegyzes'].startswith('felirat')}
         self.assertEqual(a, set(ZFH.felirat_versek()))
 
-    @unittest.skip('N-F117a: az sqlite_epit KEZI+igehely_mt-őre (DT-F117f) a valós táblán leállít; az N-F117a javításakor visszaveendő')
     def test_a_felirat_versnek_nincs_terkep_erteke_a_db_ben(self):
+        ok = kezi_mt_or_kihagy()   # F117.8 (6): csak az őr (DT-F117f) helyzetében kihagyva, kimondott okkal
+        if ok:
+            self.skipTest(ok)
         import zsolt_felirat_halmaz as ZFH
         tmp = tempfile.mkdtemp()
         try:
