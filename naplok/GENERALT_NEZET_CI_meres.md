@@ -99,3 +99,58 @@ Igazolás a commitolt blobbal szemben: a GENERÁLT-KEZDET/VÉGE közötti törzs
 a generátor a meglévő marker-pár `ts=` értékét nem írja át (`2026-09-15` maradt), tehát a brief 3. lépésének
 „`ts=` változik” várakozása nem teljesült, de a G5 feltételét ez nem sérti (csak törzs változott).
 Utána a három cél `--ellenoriz`-e zöld (naplo 4/4, index, nyitott).
+
+## 3. Mérés a kész kóddal (8. lépés)
+
+`scope=futtat.py --teljes; futtat.py --valtozott (HIBA-szint); ideiglenes lista ISTENTISZT-001-gyel; test_szabalyok.py; feladatok.py ellenoriz; grep | forras=manual (CLI-futtatás a munkaágon, F116.8 = 49491587) | ts=2026-10-18`
+
+**3.1 `python eszkozok/ellenorzes/futtat.py --teljes`** (üres lista; ~10 s): `## E28 (0 talalat)` + a
+jelentés-megjegyzés „E28: 0 migrált nézet”; `## E29 (0 talalat)`; kilépési kód 0. A három marker-cél
+`general.py --ellenoriz`-e zöld (naplo 4/4, index, nyitott). A `--teljes` mód a futtat.py meglévő szabálya
+szerint minden találatot JELENTES-re minősít (kilépés mindig 0), ezért a HIBA-szintet a 3.2 külön méri.
+
+**3.2 Próba ideiglenes listával, commit nélkül** (a lista egyetlen sora: `ISTENTISZT-001`,
+`lexikon/ISTENTISZT-001_TUDOMANYOS.md`, `lexikon`, `apparatus`; a próba után `git checkout` az üres
+listára, a munkafa tiszta):
+- **E29: 14 `【NAPLO` sor** (474., 481., 485. … sor; minden találat a `【NAPLO` minta). Egyezik a CI-terv 2.
+  szakaszának mért kiindulásával (14).
+- **E28: 1 eltérés**, a generátor élesen fut a migrált úton (alfolyamat, `PARDES_DATUM=2026-10-05` = a
+  commitolt fájl első GENERÁLT jelölőjének `ts=` dátuma, ideiglenes kimeneti könyvtár). Az újragenerált és a
+  commitolt blob közt 931 diff-sor van (a CR-mentesített, LF-normalizált összevetésben); az első eltérés a 3.
+  sorban (egy üres sor a generált fejléc után), többek közt a #78 óta eltérő 2. szakasz sorai is.
+  Ez egyezik a brief várakozásával (a lap a #78 óta eltér az újragenerálttól).
+- `--valtozott … --diff-alap HEAD --diff-fej HEAD` móddal a két szabály szintje **HIBA** (E28: 1, E29: 14),
+  kilépési kód 1: a fájlszintű szint nem esik a D8 diff-leminősítés alá. A lista ezért üres addig, amíg a #11 a
+  migrált lappal együtt fel nem veszi a sort.
+
+**3.3 Tesztek és ellenőrzők:** `test_szabalyok.py` 137 teszt OK (köztük `E28Teszt` 13, `E29Teszt` 10),
+`test_tanulmany.py` 32 teszt OK; `python eszkozok/feladatok.py ellenoriz`: 136 brief, 0 hiba, 0 figyelmeztetés.
+
+**3.4 G4 (grep):** az E29-szakasz (`szabalyok.py` 2032–2077. sor, a `# E29 --` fejlécsortól a regisztrációs
+sorig) a `import `, `general`, `motivumok/`, `lexikon_general`, `subprocess` mintákra **0 találat**: az
+E29 nem importál generátort és nem olvas `motivumok/` forrást. A G6 grep (`import csv`, `csv.`) a
+`szabalyok.py`-ban 0 találat; a TSV-t `kozos.dict_sorok_sorszammal` olvassa (`split('\t')`). A G7: a
+`szabalyok.py` és a `test_szabalyok.py` a meglévő stdout/stderr-wrappert viseli.
+
+## 4. Döntésnapló és eltérések a CI-tervtől
+
+- **E1.** Az összevetés alapja a commitolt blob (`git show HEAD:<út>`, LF-normalizálva); a `git` hiánya vagy
+  a HEAD-ben nem szereplő fájl esetén tartalék a munkafa-fájl (helyi futás). A marker-blokkos ágon ez a
+  blob; a generált oldal a `general.py` saját függvényeiből jön (`blokk_lista_eles`, `marker_par_keres`,
+  `blokk_torzs`), a generátor logikája nem duplikálódik. (A `general.py --ellenoriz` a munkafát méri;
+  a CI friss checkoutján a kettő azonos, az E28 a blobot méri, ahogy a CI-terv 1. szakasz 3. pontja kéri.)
+- **E2.** A migrált ágon a generátor alfolyamatként fut (`--cel <cel> --id <id> --kimenet <tmp>`), a repón kívüli
+  ideiglenes könyvtárba. A tesztben a generátor-hívás, a blob és a marker-blokkok forrása helyettesíthető
+  (`_e28_general_futtat`, `_e28_commitolt`, `_e28_generalt_blokkok`); az éles generátor útját a 3.2 próba igazolja.
+- **E3.** A jelentés az E28 alatt egy-soros megjegyzést ír („E28: 0 migrált nézet”, „E28: nem futott …”); ehhez
+  a `futtat.py` `jelentes_szoveg`-e egy `E28_JEGYZETEK` listát olvas (az E16 push-megjegyzés mintájára).
+- **E4.** Az E29 mintakészlete a CI-terv 2. szakaszán felül tartalmazza a `【NAPLÓ` (ékezetes) alakot is (az E2
+  mindkét alakot ismeri), és a `SZINT: belso` ideiglenes alakot; a `SZINT-KEZDET`/`SZINT-VÉGE` bármely értékkel
+  tiltott (a `belso` jelölőinek részhalmaza). Ismeretlen `melyseg` HIBA az E29 alatt.
+- **E5.** Mind az E28, mind az E29 a `HATOKOR_SZABALYOK` közé került (a `--teljes` módban a `['__TELJES__']`
+  jelzőt kapják, ahogy az E3/E19/E25), és a `FAJLSZINTU_SZABALYOK` közé (D6). Az E28 PR-en csak a brief szerinti
+  érintett fájloknál indul (`_e28_indul`); az E29 minden futásban fut.
+- **E6.** Ellentmondás a CI-tervvel és a briefekkel: nincs. Generátor-módosításra nem volt szükség.
+- **E7.** Tudnivaló a #11-nek (D7 szerint a felhasználó vezeti át): a lista sorának felvételekor a PR `[ELLENŐRZŐ]`
+  előtagot kap (D3, E16); a workflow Python 3.11-et használ, az itteni mérés 3.14-gyel futott (a kód nem használ
+  3.12+ nyelvi elemet, de a CI-futás ezt csak a PR-en igazolja).
