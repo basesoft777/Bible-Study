@@ -329,6 +329,58 @@ def main():
             el = [v for v in versek if v in elter_karoli]
             print('  %s\t%s\teltérő vers: %s' % (r['id'], r['igehely'], ';'.join(el) or '—'))
 
+    # --- D. ÚSZ-oldal (F114, 3.1): vershalmaz-összevetés KJV <-> Károli 1908 ----------
+    norm = {}
+    for r in tsv(os.path.join(KONK, 'Konyv_normalizalo_tabla.tsv')):
+        norm[r['STEPBible-rövidítés']] = r['Magyar rövidítés']
+    # a normalizáló tábla Lam -> 'JSir', a Károli-fájlokban viszont a Siralmak 'Sir' (ÓSZ, a megfeleltetés fedi)
+    usz_konyvek = {m for m in norm.values() if m not in osz_konyvek and m != 'JSir'}
+    kar_usz = set()
+    with open(os.path.join(KONK, 'Karoli_1908.tsv'), encoding='utf-8') as f:
+        for s in f:
+            ige = s.split('	', 1)[0]
+            b = konyv_cv(ige)
+            if b and b[0] in usz_konyvek:
+                kar_usz.add(ige)
+    kjv_usz = set()
+    with open(os.path.join(KONK, 'KJV_Strongs_teljes.tsv'), encoding='utf-8') as f:
+        for s in f:
+            if s.startswith('#'):
+                continue
+            kulcs = s.split('	', 1)[0]
+            p3 = kulcs.split('.')
+            if len(p3) == 3 and p3[0] in norm and norm[p3[0]] in usz_konyvek:
+                kjv_usz.add('%s %s:%s' % (norm[p3[0]], p3[1], p3[2]))
+    csak_kjv = sorted(kjv_usz - kar_usz)
+    csak_kar = sorted(kar_usz - kjv_usz)
+    tsk_usz = [r for r in tsk if konyv_cv(r['Igehely']) and konyv_cv(r['Igehely'])[0] in usz_konyvek]
+    forras_kulcs = {r['Igehely'] for r in tsk_usz}
+    forras_elter = sorted(k for k in forras_kulcs if k in (set(csak_kjv) | set(csak_kar)))
+    forras_elter_sor = sum(1 for r in tsk_usz if r['Igehely'] in forras_elter)
+    cel_elter_sor = 0
+    cel_elter_kulcs = set()
+    for r in tsk:
+        cel = kibont(r['Kapcsolódó igehely']) or []
+        rossz = [v for v in cel if konyv_cv(v) and konyv_cv(v)[0] in usz_konyvek
+                 and (v in csak_kjv or v in csak_kar)]
+        if rossz:
+            cel_elter_sor += 1
+            cel_elter_kulcs.update(rossz)
+    print()
+    print('# D. ÚSZ-oldal: vershalmaz-összevetés (KJV_Strongs_teljes <-> Karoli_1908)')
+    print('ÚSZ-könyv: %d; ÚSZ-vers KJV: %d, Károli: %d' % (len(usz_konyvek), len(kjv_usz), len(kar_usz)))
+    print('csak a KJV-ben van: %d; csak a Károliban van: %d' % (len(csak_kjv), len(csak_kar)))
+    print('  csak KJV: %s' % ', '.join(csak_kjv[:60]))
+    print('  csak Károli: %s' % ', '.join(csak_kar[:60]))
+    print('TSK ÚSZ-forrású sor: %d (%d egyedi kulcs); eltérő vershalmazú forráskulcs: %d (%d sor)'
+          % (len(tsk_usz), len(forras_kulcs), len(forras_elter), forras_elter_sor))
+    print('  forráskulcsok: %s' % ', '.join(forras_elter))
+    print('TSK-sor, amelynek ÚSZ-célverse eltérő vershalmazú: %d sor (%d egyedi célvers)' % (cel_elter_sor, len(cel_elter_kulcs)))
+    print('  célversek: %s' % ', '.join(sorted(cel_elter_kulcs)))
+    print('Korlát: a vershalmaz-összevetés csak a létező/hiányzó verseket fogja; az azonos versszámú, de más tartalmú (átrendezett) verset nem.')
+    print('proveniencia: scope=TSK ÚSZ-forrású és ÚSZ-célú sorai | forras=TSK_kereszthivatkozasok.tsv+KJV_Strongs_teljes.tsv+Karoli_1908.tsv | n=%d | ts=%s'
+          % (len(tsk_usz), ts))
+
     # részletes kimenet
     with open(os.path.join(a.kimenet, 'B_elofordulas_versek.tsv'), 'w', encoding='utf-8', newline='\n') as f:
         mezok = list(reszlet[0].keys()) if reszlet else []
