@@ -65,3 +65,11 @@ Az `f19_ebible_import.parse_usfm` a Zsolt 119 21 akrosztichon-fejlécét az elő
 ## Állapot
 
 A tábla `# ÁLLAPOT:` sora: `importált, javaslat`, a fenti mérés összefoglalójával. A felhasználó elfogadása után következik az M3 (`licencek.tsv`, `datasetek.tsv`, `SEMA.md`); ezt ez a menet nem kezdte el.
+
+## M3 — dataset-szabályok (F118.15–F118.16)
+
+- A tábla `# ÁLLAPOT:` sora: `importált, elfogadva (felhasználó, 2026-10-18)`. Újragenerálás után a nem `#` kezdetű sorok (oszlopfejléc + 31 218 adatsor) bájtra azonosak az előzővel (sha256 `4d939e42…`), és csak az ÁLLAPOT-fejlécsor változott.
+- `adat/licencek.tsv`: új `KJV_teljes_szoveg` sor (DT-F118a 1.). Állapot `kozkincs` a DT-F33d (a)–(c) szerint: kor, sha256-tal azonosított kiadás, és a kiadó szó szerinti PD-nyilatkozata a zip `copr.htm`-jéből. `kereskedelmi=feltetelesen`, `share_alike=nem`, címke `közkincs`. A CrossWire szövegszintű hozzájárulásának kérdése nyitott, kitöltés nélkül.
+- `adat/datasetek.tsv`: négy sor (`bovitett`, `tematikus`, `melyelemzes`, `lexikon_oldal`), `ajanlott`, `elerheto`.
+- `adat/SEMA.md` 2.6: a dataset leírása a `KJV_Strongs_teljes` mellett. **Ez a bekezdés tölti be a DT-F107d dataset-README szerepét**: a szabály még nincs a main-en, és a brief `ir` listájában nincs README, ezért új README-fájl nem készült. Benne a nyers zip (elsődleges hely, sha256, méret; **a második példány helye: megadandó**, a felhasználó adja meg), az újrafuttatás és a veszteségnapló.
+- Mindhárom fájlba csak hozzáfűzés történt (a #107 párhuzamosan írja őket). Írás előtt összevetettem: az eredeti sorok bájtra változatlanok. Az `eszkozok/ellenoriz.py` kimenete változatlan, a `general.py --cel lexikon --ellenoriz` 0.
