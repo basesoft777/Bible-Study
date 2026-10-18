@@ -61,3 +61,12 @@ Ugyanezen a próbán az `ismeretlen` kategória 41 sorú, mind TSK-sor, az éles
 Az `ISMERT_HIBA_TSK_VERSSZAM` / `ismert_hiba_tsk_versszam` helyett `TSK_KULCS_JAVITAS_SOROK` / `tsk_kulcs_javitas`: 43 név szerinti törölt sor (2 az N-F09g-ből + 41 régi TSK-sor). Negatív teszt: a listán kívüli TSK-sor (és a lista sora más motívumban) `ismeretlen` marad. `teszt_render_diff_osztalyoz.py`: 74 teszt, OK.
 Újrafuttatott próba-osztályozás (`--proba`, kilépési kód 0): `tsk_kulcs_javitas=43`, `ismeretlen=0`. Napló: `naplok/F114_proba_diff.tsv`, `naplok/F114_proba_ismeretlen.tsv` (az utóbbi most csak a korábban elfogadott `felhasznalo_elfogadva` sorokat tartalmazza).
 `proveniencia: scope=%TEMP%/f114p vs lexikon | forras=eszkozok/render_diff_osztalyoz.py --proba | ts=2026-10-18`
+
+## F114.14 — DT-F114d (b): MT-tartalék csak az `MT|szamlalas` sorokra (Felhasználó, 2026-10-18)
+
+A `tsk_kulcs` az `osztaly=MT`, `forras=szamlalas`, üres `igehely_kjv` sorokra (86 sor) az `igehely_mt`-t veszi KJV-kulcsnak. Más üres-KJV sor és a táblában sor nélküli Károli-vers (`nincs_sor`) „nincs pár” marad (indok: a Károli 1908-ban a Hós 13 15, a Hós 14 10, az Én 6 10 versből áll, a KJV-ben 16, 9, 13; a számegyezés hibás párt adna). Teszt: `teszt_tsk_kulcs.py` 12 teszt, OK (pozitív: 1Sám 17:12, Jer 33:15; negatív: Hós 14:2, Zsolt 18:1, Jób 39:34, Préd 9:21, Zsolt 13:1).
+Frissített mérés (felmérő E. és F. rész):
+- E: fogyasztói kulcs 21 309, KJV-forrás eltérés 0; B-rész (224 vers) rossz 0 / elmarad 0 (minden Votes és ≥ 15); nincs-pár forrás 272 kulcs / 4 211 sor, cél 282 vers / 3 446 előfordulás.
+- F (nem körkörös, a main régi logikájához képest, ÓSZ): régen elért pár 232 697, most 227 736; elveszett pár 30 027, újonnan elért 25 066. Elveszett forrássor 3 851 sor / 247 kulcs: `nincs_sor` 3 653 / 235, `KEZI|kezi` 169 / 10, `KEZI|kezi_tobbforrasu_osszevonas` 26 / 1, `KJV|lxx_os_etalon_f91` 3 / 1 (az utóbbi három valódi eltolódás). Elveszett célelőfordulás 2 548 / 256 vers: `nincs_sor` 2 360 / 243, `KEZI|kezi` 147 / 11, `KEZI|kezi_tobbforrasu_osszevonas` 33 / 1, `KJV|lxx_os_etalon_f91` 8 / 1. Tételes: `naplok/F114_elveszett_sorok.tsv` (506 sor); a `nincs_sor` fejezetek az N-F54a bővítésében.
+- `lekerdez.py tsk "1Sám 17:12"`: 16 sor; `tsk "Jer 23:5"`: eléri a Jer 33,14 és 33,16 célokat.
+`proveniencia: scope=TSK ÓSZ-sorai | forras=TSK_kereszthivatkozasok.tsv+Karoli_1908.tsv+Karoli_versmegfeleltetes.tsv (tsk_kulcs) | n=232697 | ts=2026-10-18`

@@ -1,49 +1,6 @@
 # F114.10: a TSK ÓSZ-forrás- és célkulcsai, amelyeket a main régi logikája (KJV-kulcs = Károli-kulcs) elért, az új tsk_kulcs viszont "nincs pár"-nak vesz
-# proveniencia: scope=TSK ÓSZ | forras=TSK_kereszthivatkozasok.tsv+Karoli_1908.tsv+Karoli_versmegfeleltetes.tsv (eszkozok/tsk_versszam_felmeres.py F. rész) | n=653 | ts=2026-10-18
+# proveniencia: scope=TSK ÓSZ | forras=TSK_kereszthivatkozasok.tsv+Karoli_1908.tsv+Karoli_versmegfeleltetes.tsv (eszkozok/tsk_versszam_felmeres.py F. rész) | n=503 | ts=2026-10-18
 oldal	kjv_kulcs	sorok	megfeleltetes_osztaly_forras	igehely_kjv
-forras	1Kir 22:46	10	MT|szamlalas	ures
-forras	1Kir 22:47	9	MT|szamlalas	ures
-forras	1Kir 22:48	15	MT|szamlalas	ures
-forras	1Kir 6:12	17	MT|szamlalas	ures
-forras	1Kir 6:13	18	MT|szamlalas	ures
-forras	1Kir 6:14	4	MT|szamlalas	ures
-forras	1Kir 6:18	1	MT|szamlalas	ures
-forras	1Kir 6:37	2	MT|szamlalas	ures
-forras	1Kir 6:38	11	MT|szamlalas	ures
-forras	1Sám 17:12	16	MT|szamlalas	ures
-forras	1Sám 17:13	7	MT|szamlalas	ures
-forras	1Sám 17:14	2	MT|szamlalas	ures
-forras	1Sám 17:15	3	MT|szamlalas	ures
-forras	1Sám 17:16	2	MT|szamlalas	ures
-forras	1Sám 17:17	5	MT|szamlalas	ures
-forras	1Sám 17:18	7	MT|szamlalas	ures
-forras	1Sám 17:20	6	MT|szamlalas	ures
-forras	1Sám 17:22	7	MT|szamlalas	ures
-forras	1Sám 17:23	2	MT|szamlalas	ures
-forras	1Sám 17:24	8	MT|szamlalas	ures
-forras	1Sám 17:25	10	MT|szamlalas	ures
-forras	1Sám 17:26	17	MT|szamlalas	ures
-forras	1Sám 17:27	1	MT|szamlalas	ures
-forras	1Sám 17:28	13	MT|szamlalas	ures
-forras	1Sám 17:29	5	MT|szamlalas	ures
-forras	1Sám 17:30	2	MT|szamlalas	ures
-forras	1Sám 17:31	1	MT|szamlalas	ures
-forras	1Sám 17:50	6	MT|szamlalas	ures
-forras	1Sám 17:55	3	MT|szamlalas	ures
-forras	1Sám 17:57	1	MT|szamlalas	ures
-forras	1Sám 17:58	3	MT|szamlalas	ures
-forras	1Sám 18:1	14	MT|szamlalas	ures
-forras	1Sám 18:10	18	MT|szamlalas	ures
-forras	1Sám 18:11	10	MT|szamlalas	ures
-forras	1Sám 18:17	14	MT|szamlalas	ures
-forras	1Sám 18:18	8	MT|szamlalas	ures
-forras	1Sám 18:19	3	MT|szamlalas	ures
-forras	1Sám 18:2	3	MT|szamlalas	ures
-forras	1Sám 18:3	7	MT|szamlalas	ures
-forras	1Sám 18:30	12	MT|szamlalas	ures
-forras	1Sám 18:4	8	MT|szamlalas	ures
-forras	1Sám 18:5	13	MT|szamlalas	ures
-forras	1Sám 23:12	9	MT|szamlalas	ures
 forras	2Móz 35:1	9	nincs_sor	
 forras	2Móz 35:10	4	nincs_sor	
 forras	2Móz 35:11	6	nincs_sor	
@@ -97,7 +54,6 @@ forras	2Móz 36:4	4	nincs_sor
 forras	2Móz 36:5	9	nincs_sor	
 forras	2Móz 36:7	1	nincs_sor	
 forras	2Móz 36:8	13	nincs_sor	
-forras	4Móz 6:27	24	MT|szamlalas	ures
 forras	Dán 3:1	31	nincs_sor	
 forras	Dán 3:10	34	nincs_sor	
 forras	Dán 3:12	9	nincs_sor	
@@ -175,20 +131,6 @@ forras	Hós 2:6	7	nincs_sor
 forras	Hós 2:7	47	nincs_sor	
 forras	Hós 2:8	29	nincs_sor	
 forras	Hós 2:9	19	nincs_sor	
-forras	Jer 33:14	42	MT|szamlalas	ures
-forras	Jer 33:15	28	MT|szamlalas	ures
-forras	Jer 33:16	17	MT|szamlalas	ures
-forras	Jer 33:17	14	MT|szamlalas	ures
-forras	Jer 33:18	16	MT|szamlalas	ures
-forras	Jer 33:20	10	MT|szamlalas	ures
-forras	Jer 33:21	18	MT|szamlalas	ures
-forras	Jer 33:22	20	MT|szamlalas	ures
-forras	Jer 33:24	25	MT|szamlalas	ures
-forras	Jer 33:25	9	MT|szamlalas	ures
-forras	Jer 33:26	14	MT|szamlalas	ures
-forras	Jer 48:45	7	MT|szamlalas	ures
-forras	Jer 48:46	6	MT|szamlalas	ures
-forras	Jer 48:47	20	MT|szamlalas	ures
 forras	Jób 17:1	10	nincs_sor	
 forras	Jób 17:10	9	nincs_sor	
 forras	Jób 17:11	14	nincs_sor	
@@ -231,17 +173,6 @@ forras	Jób 40:1	2	KEZI|kezi	van
 forras	Jób 40:2	40	KEZI|kezi	van
 forras	Jób 40:4	34	KEZI|kezi	van
 forras	Jób 40:5	10	KEZI|kezi	van
-forras	Józs 10:15	2	MT|szamlalas	ures
-forras	Józs 10:43	3	MT|szamlalas	ures
-forras	Józs 13:33	6	MT|szamlalas	ures
-forras	Józs 8:13	2	MT|szamlalas	ures
-forras	Józs 8:26	3	MT|szamlalas	ures
-forras	Józs 8:30	6	MT|szamlalas	ures
-forras	Józs 8:31	18	MT|szamlalas	ures
-forras	Józs 8:32	3	MT|szamlalas	ures
-forras	Józs 8:33	24	MT|szamlalas	ures
-forras	Józs 8:34	15	MT|szamlalas	ures
-forras	Józs 8:35	11	MT|szamlalas	ures
 forras	Préd 10:1	10	KEZI|kezi	van
 forras	Préd 10:2	9	KEZI|kezi	van
 forras	Préd 10:3	5	KEZI|kezi	van
@@ -273,8 +204,6 @@ forras	Péld 12:6	16	nincs_sor
 forras	Péld 12:7	27	nincs_sor	
 forras	Péld 12:8	23	nincs_sor	
 forras	Péld 12:9	2	nincs_sor	
-forras	Péld 18:23	15	MT|szamlalas	ures
-forras	Péld 18:24	21	MT|szamlalas	ures
 forras	Zsolt 13:6	3	KJV|lxx_os_etalon_f91	van
 forras	Én 5:1	50	nincs_sor	
 forras	Én 5:10	14	nincs_sor	
@@ -308,8 +237,6 @@ forras	Ézs 4:3	25	nincs_sor
 forras	Ézs 4:4	32	nincs_sor	
 forras	Ézs 4:5	29	nincs_sor	
 forras	Ézs 4:6	16	nincs_sor	
-forras	Ézs 56:12	24	MT|szamlalas	ures
-forras	Ézs 63:19	9	MT|szamlalas	ures
 forras	Ézs 64:1	27	nincs_sor	
 forras	Ézs 64:10	19	nincs_sor	
 forras	Ézs 64:11	21	nincs_sor	
@@ -321,53 +248,6 @@ forras	Ézs 64:6	38	nincs_sor
 forras	Ézs 64:7	23	nincs_sor	
 forras	Ézs 64:8	20	nincs_sor	
 forras	Ézs 64:9	21	nincs_sor	
-cel	1Kir 22:46	4	MT|szamlalas	ures
-cel	1Kir 22:47	6	MT|szamlalas	ures
-cel	1Kir 22:48	14	MT|szamlalas	ures
-cel	1Kir 22:49	3	MT|szamlalas	ures
-cel	1Kir 6:12	12	MT|szamlalas	ures
-cel	1Kir 6:13	10	MT|szamlalas	ures
-cel	1Kir 6:14	2	MT|szamlalas	ures
-cel	1Kir 6:18	8	MT|szamlalas	ures
-cel	1Kir 6:37	3	MT|szamlalas	ures
-cel	1Kir 6:38	5	MT|szamlalas	ures
-cel	1Sám 17:12	9	MT|szamlalas	ures
-cel	1Sám 17:13	6	MT|szamlalas	ures
-cel	1Sám 17:14	1	MT|szamlalas	ures
-cel	1Sám 17:15	8	MT|szamlalas	ures
-cel	1Sám 17:16	1	MT|szamlalas	ures
-cel	1Sám 17:17	4	MT|szamlalas	ures
-cel	1Sám 17:18	9	MT|szamlalas	ures
-cel	1Sám 17:19	1	MT|szamlalas	ures
-cel	1Sám 17:20	6	MT|szamlalas	ures
-cel	1Sám 17:21	2	MT|szamlalas	ures
-cel	1Sám 17:22	9	MT|szamlalas	ures
-cel	1Sám 17:23	2	MT|szamlalas	ures
-cel	1Sám 17:24	1	MT|szamlalas	ures
-cel	1Sám 17:25	13	MT|szamlalas	ures
-cel	1Sám 17:26	33	MT|szamlalas	ures
-cel	1Sám 17:27	1	MT|szamlalas	ures
-cel	1Sám 17:28	13	MT|szamlalas	ures
-cel	1Sám 17:29	6	MT|szamlalas	ures
-cel	1Sám 17:30	1	MT|szamlalas	ures
-cel	1Sám 17:41	2	MT|szamlalas	ures
-cel	1Sám 17:50	13	MT|szamlalas	ures
-cel	1Sám 17:55	11	MT|szamlalas	ures
-cel	1Sám 17:56	1	MT|szamlalas	ures
-cel	1Sám 17:57	1	MT|szamlalas	ures
-cel	1Sám 17:58	7	MT|szamlalas	ures
-cel	1Sám 18:1	14	MT|szamlalas	ures
-cel	1Sám 18:10	13	MT|szamlalas	ures
-cel	1Sám 18:11	13	MT|szamlalas	ures
-cel	1Sám 18:17	14	MT|szamlalas	ures
-cel	1Sám 18:18	6	MT|szamlalas	ures
-cel	1Sám 18:19	1	MT|szamlalas	ures
-cel	1Sám 18:2	1	MT|szamlalas	ures
-cel	1Sám 18:3	17	MT|szamlalas	ures
-cel	1Sám 18:30	8	MT|szamlalas	ures
-cel	1Sám 18:4	8	MT|szamlalas	ures
-cel	1Sám 18:5	8	MT|szamlalas	ures
-cel	1Sám 23:12	19	MT|szamlalas	ures
 cel	2Móz 35:1	1	nincs_sor	
 cel	2Móz 35:10	6	nincs_sor	
 cel	2Móz 35:11	5	nincs_sor	
@@ -429,7 +309,6 @@ cel	2Móz 36:4	4	nincs_sor
 cel	2Móz 36:5	3	nincs_sor	
 cel	2Móz 36:6	2	nincs_sor	
 cel	2Móz 36:8	12	nincs_sor	
-cel	4Móz 6:27	19	MT|szamlalas	ures
 cel	Dán 3:1	12	nincs_sor	
 cel	Dán 3:10	3	nincs_sor	
 cel	Dán 3:11	2	nincs_sor	
@@ -509,20 +388,6 @@ cel	Hós 2:6	13	nincs_sor
 cel	Hós 2:7	13	nincs_sor	
 cel	Hós 2:8	22	nincs_sor	
 cel	Hós 2:9	13	nincs_sor	
-cel	Jer 33:14	7	MT|szamlalas	ures
-cel	Jer 33:15	31	MT|szamlalas	ures
-cel	Jer 33:16	31	MT|szamlalas	ures
-cel	Jer 33:17	12	MT|szamlalas	ures
-cel	Jer 33:18	6	MT|szamlalas	ures
-cel	Jer 33:20	28	MT|szamlalas	ures
-cel	Jer 33:21	19	MT|szamlalas	ures
-cel	Jer 33:22	21	MT|szamlalas	ures
-cel	Jer 33:24	31	MT|szamlalas	ures
-cel	Jer 33:25	12	MT|szamlalas	ures
-cel	Jer 33:26	59	MT|szamlalas	ures
-cel	Jer 48:45	8	MT|szamlalas	ures
-cel	Jer 48:46	7	MT|szamlalas	ures
-cel	Jer 48:47	19	MT|szamlalas	ures
 cel	Jób 17:1	8	nincs_sor	
 cel	Jób 17:10	6	nincs_sor	
 cel	Jób 17:11	8	nincs_sor	
@@ -565,17 +430,6 @@ cel	Jób 40:2	12	KEZI|kezi	van
 cel	Jób 40:3	2	KEZI|kezi	van
 cel	Jób 40:4	30	KEZI|kezi	van
 cel	Jób 40:5	22	KEZI|kezi	van
-cel	Józs 10:15	1	MT|szamlalas	ures
-cel	Józs 10:43	9	MT|szamlalas	ures
-cel	Józs 13:33	9	MT|szamlalas	ures
-cel	Józs 8:13	1	MT|szamlalas	ures
-cel	Józs 8:26	2	MT|szamlalas	ures
-cel	Józs 8:30	4	MT|szamlalas	ures
-cel	Józs 8:31	4	MT|szamlalas	ures
-cel	Józs 8:32	2	MT|szamlalas	ures
-cel	Józs 8:33	7	MT|szamlalas	ures
-cel	Józs 8:34	2	MT|szamlalas	ures
-cel	Józs 8:35	6	MT|szamlalas	ures
 cel	Préd 10:1	7	KEZI|kezi	van
 cel	Préd 10:2	4	KEZI|kezi	van
 cel	Préd 10:3	9	KEZI|kezi	van
@@ -606,8 +460,6 @@ cel	Péld 12:5	5	nincs_sor
 cel	Péld 12:6	5	nincs_sor	
 cel	Péld 12:7	7	nincs_sor	
 cel	Péld 12:9	1	nincs_sor	
-cel	Péld 18:23	7	MT|szamlalas	ures
-cel	Péld 18:24	17	MT|szamlalas	ures
 cel	Zsolt 13:6	8	KJV|lxx_os_etalon_f91	van
 cel	Én 5:1	30	nincs_sor	
 cel	Én 5:10	8	nincs_sor	
@@ -641,8 +493,6 @@ cel	Ézs 4:3	13	nincs_sor
 cel	Ézs 4:4	17	nincs_sor	
 cel	Ézs 4:5	25	nincs_sor	
 cel	Ézs 4:6	21	nincs_sor	
-cel	Ézs 56:12	30	MT|szamlalas	ures
-cel	Ézs 63:19	21	MT|szamlalas	ures
 cel	Ézs 64:1	31	nincs_sor	
 cel	Ézs 64:10	23	nincs_sor	
 cel	Ézs 64:11	26	nincs_sor	

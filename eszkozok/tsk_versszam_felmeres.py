@@ -106,6 +106,9 @@ def main():
         kk = r['igehely_karoli']
         b = konyv_cv(kk)
         kj = r['igehely_kjv'].strip()
+        # DT-F114d (b): MT-tartalék csak az MT|szamlalas sorokra, ahol az igehely_kjv üres
+        if not kj and r['osztaly'] == 'MT' and r['forras'] == 'szamlalas' and r['igehely_mt'].strip():
+            kj = r['igehely_mt'].strip()
         k2j[kk] = ('%s %s' % (b[0], kj)) if kj else ''
         k2j_osztaly[kk] = '%s/%s/%s' % (r['osztaly'], r['forras'], r['megjegyzes'])
     j2k = {}
@@ -476,18 +479,18 @@ def main():
                 continue
             if src in kar_osz and c in kar_osz:
                 old_pairs.add((src, c))
-            for ks in kjv_to_karoli(src):
-                for kc in kjv_to_karoli(c):
+            for ks in TKE.kjv_to_karoli(src):
+                for kc in TKE.kjv_to_karoli(c):
                     new_pairs.add((ks, kc))
         # forrásoldal: régen elérte (a kulcs létező Károli-vers), most nincs Károli-pár
-        if src in kar_osz and not kjv_to_karoli(src):
+        if src in kar_osz and not TKE.kjv_to_karoli(src):
             kat, ures = kategoria(src)
             d = f_forras.setdefault(src, [0, kat, ures])
             d[0] += 1
             f_osszes_forras += 1
         for c in cels:
             bc = konyv_cv(c)
-            if bc and bc[0] in osz_konyvek and c in kar_osz and not kjv_to_karoli(c):
+            if bc and bc[0] in osz_konyvek and c in kar_osz and not TKE.kjv_to_karoli(c):
                 kat, ures = kategoria(c)
                 d = f_cel.setdefault(c, [0, kat, ures])
                 d[0] += 1
