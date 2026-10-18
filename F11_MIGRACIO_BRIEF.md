@@ -5,7 +5,8 @@ kod: MIGRACIO
 tipus: feladat
 fazis: 1
 modell: opus
-allapot: nem_indult
+allapot: fut
+ag: claude/f11-migracio
 munka: ertelmezo
 ad: az `indoklas` oszlop felvéve a `kapcsolatok.tsv`-be (önálló séma-tétel), az ISTENTISZT-001 egyetlen kézi forrásból renderel (szétválasztással, leképezési táblával, N0/D2–D6 diffmérce szerint), a két élő sablon (2_ v18, 4_ v10) visszaírási szabálya teljesen átírva; a 2. lépcső (a többi 6 motívum) külön jóváhagyással
 kovetkezo: S1 (a `kapcsolatok.tsv` `indoklas` oszlopa: SEMA 2.3, fejléc, üres értékek), majd S2 (olvasó/író eszközök), S3 független ellenőrzés ⛔ — a migráció előtt
