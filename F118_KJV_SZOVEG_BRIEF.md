@@ -6,7 +6,8 @@ tipus: feladat
 fazis: folyamat
 munka: adat
 modell: opus
-allapot: nem_indult
+allapot: fut
+ag: claude/f118-kjv-szoveg
 ad: a `konkordancia/KJV_teljes_szoveg.tsv` versenként a teljes KJV-szöveggel (eBible, Public Domain), a `KJV_Strongs_teljes.tsv`-vel mért vershalmaz- és szóegyezéssel, dataset- és licencsorral; a Károli melletti megjelenítés helye eldöntve, a megjelenítési brief tervezete a `beerkezo/`-ben
 kovetkezo: a /kovetkezo indítja; ⛔ M0 (forrás, licenc, importáló), ⛔ M1 (minta), ⛔ M4 (a megjelenítés helye)
 olvas: [konkordancia/KJV_Strongs_teljes.tsv, naplok/F19_hianyok.tsv, eszkozok/f19_ebible_import.py, konkordancia/Konyv_normalizalo_tabla.tsv, adat/datasetek.tsv, adat/licencek.tsv, adat/SEMA.md, Rendszerfejlesztesi_playbook.md]
