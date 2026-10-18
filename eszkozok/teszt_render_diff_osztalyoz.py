@@ -365,6 +365,28 @@ class CellankentiOsszevetes(unittest.TestCase):
         self.assertEqual(db['leiro_mondat_bovult'], 8)
         self.assertEqual(db['f87_glossza_javitas'], 4)
 
+    def test_elfogadott_sorok_szamolasa_nem_dict_ertekek(self):
+        # SORokat számolunk (kulcsonkénti elvárt darabszám), nem a dict kulcsait/értékeit
+        self.assertEqual(set(R.FELHASZNALO_DARAB), set(R.FELHASZNALO_ELFOGADOTT))
+        self.assertEqual(sum(R.FELHASZNALO_DARAB.values()), 44)
+        import collections
+        sor_db = collections.Counter()
+        for k, n in R.FELHASZNALO_DARAB.items():
+            sor_db[R.FELHASZNALO_ELFOGADOTT[k]] += n
+        self.assertEqual(dict(sor_db), {
+            'forditas_ubs_forras_elavult': 14, 'joshua_forrasvaltas': 2, 'bdb_formatumvaltozas': 2,
+            'lsj_licencverzio_valtas': 1, 'szamozas_elteres_fuggobe_valt': 6,
+            'szamozas_elteres_helyorzo_feloldodott': 4, 'kutatoi_azonositas_feloldodott': 3,
+            'leiro_mondat_bovult': 8, 'f87_glossza_javitas': 4})
+
+    def test_darabszamon_felul_azonos_sor_ismeretlen(self):
+        sor = '- LSJ (Liddell-Scott-Jones, A Greek-English Lexicon) — CC BY-SA 3.0'
+        self.assertEqual(R.FELHASZNALO_DARAB[('ISTENTISZT-001_TORZSCIKK.md', sor)], 1)
+        eles = '## Források és licenc\n' + sor + '\n' + sor + '\n'
+        e = osztaly(eles, '## Források és licenc\n', 'ISTENTISZT-001_TORZSCIKK.md')
+        self.assertEqual(e['felhasznalo_elfogadva']['torolt'], [sor])
+        self.assertEqual(e[R.ISMERETLEN]['torolt'], [sor])
+
 
 if __name__ == '__main__':
     unittest.main()

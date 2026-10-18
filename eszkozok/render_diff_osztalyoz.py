@@ -405,6 +405,47 @@ FELHASZNALO_ELFOGADOTT = {
     ('TEREMT-001_TUDOMANYOS.md', '| [2Móz 15:5](#ige-2móz-15-5) | a mélységbe — תְּהֹמֹ֖ת (te.ho.Mot) | — | Remez | H8415 | — | — *(ÓSZ)* | magas · tartalom-alapú[^5] |'): 'f87_glossza_javitas',
     ('TEREMT-001_TUDOMANYOS.md', '*Ez a blokk a `[ID: TEREMT-001]` motívum 2 Strong-tokenjét fedi, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*'): 'leiro_mondat_bovult',
 }
+# Az elfogadott sorok ELVÁRT darabszáma kulcsonként (4. ellenőrzés 3. eltérése): fájlonként és kulcsonként legfeljebb ennyi
+# törölt sort fogad el az osztályozó, a többlet `ismeretlen`. Az összeg 44 = 32 + 12.
+FELHASZNALO_DARAB = {
+    ('ALVIL-001_TUDOMANYOS.md', '*Ez a blokk a `[ID: ALVIL-001]` motívum 2 Strong-tokenjét fedi, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*'): 1,
+    ('ALVIL-001_TUDOMANYOS.md', '- `adat/forditas_ubs.tsv` (projekt-adat)'): 1,
+    ('ALVIL-001_TUDOMANYOS.md', '| `forditas_ubs.tsv` | `adat/forditas_ubs.tsv` | projekt-adat | elofordulasok |'): 1,
+    ('ANTROP-001_TUDOMANYOS.md', '*Ez a blokk a `[ID: ANTROP-001]` motívum 4 Strong-tokenjét fedi, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*'): 1,
+    ('ANTROP-001_TUDOMANYOS.md', '- `adat/forditas_ubs.tsv` (projekt-adat)'): 1,
+    ('ANTROP-001_TUDOMANYOS.md', '| `forditas_ubs.tsv` | `adat/forditas_ubs.tsv` | projekt-adat | elofordulasok |'): 1,
+    ('HAMART-001_TORZSCIKK.md', '- **LXX:** Zsolt(LXX) 73:20 — — — kutatói azonosítás függőben'): 1,
+    ('HAMART-001_TUDOMANYOS.md', '*Ez a blokk a `[ID: HAMART-001]` motívum 14 Strong-tokenjét fedi, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*'): 1,
+    ('HAMART-001_TUDOMANYOS.md', '- `adat/forditas_ubs.tsv` (projekt-adat)'): 1,
+    ('HAMART-001_TUDOMANYOS.md', '| `forditas_ubs.tsv` | `adat/forditas_ubs.tsv` | projekt-adat | elofordulasok |'): 1,
+    ('HODIT-001_TORZSCIKK.md', '- **LXX:** — — — — szamozas_elteres'): 5,
+    ('HODIT-001_TORZSCIKK.md', '- **LXX:** Zsolt(LXX) 87:11 — — — kutatói azonosítás függőben'): 1,
+    ('HODIT-001_TUDOMANYOS.md', '*Ez a blokk a `[ID: HODIT-001]` motívum 3 Strong-tokenjét fedi, nincs jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*'): 1,
+    ('HODIT-001_TUDOMANYOS.md', '- LXX (Septuaginta — lxx-morph + GreekWordList szövegkorpusz) (`konkordancia/LXX_OS/1-chronicles.tsv`, `konkordancia/LXX_OS/2-samuel.tsv`, `konkordancia/LXX_OS/deuteronomy.tsv`, `konkordancia/LXX_OS/genesis.tsv`, `konkordancia/LXX_OS/isaiah.tsv`, `konkordancia/LXX_OS/job-lxx.tsv`, `konkordancia/LXX_OS/joshua.tsv`, `konkordancia/LXX_OS/numbers.tsv`, `konkordancia/LXX_OS/proverbs.tsv`, `konkordancia/LXX_OS/psalms-lxx.tsv`, CC BY 4.0)'): 1,
+    ('HODIT-001_TUDOMANYOS.md', '- `adat/forditas_ubs.tsv` (projekt-adat)'): 1,
+    ('HODIT-001_TUDOMANYOS.md', '| `forditas_ubs.tsv` | `adat/forditas_ubs.tsv` | projekt-adat | elofordulasok |'): 1,
+    ('HODIT-001_TUDOMANYOS.md', '| `joshua.tsv` | `konkordancia/LXX_OS/joshua.tsv` | CC BY 4.0 | lxx |'): 1,
+    ('ISTENTISZT-001_TORZSCIKK.md', '- LSJ (Liddell-Scott-Jones, A Greek-English Lexicon) — CC BY-SA 3.0'): 1,
+    ('ISTENTISZT-001_TUDOMANYOS.md', '*Ez a blokk a `[ID: ISTENTISZT-001]` motívum 3 Strong-tokenjét fedi, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*'): 1,
+    ('ISTENTISZT-001_TUDOMANYOS.md', '- BDB (Brown–Driver–Briggs, A Hebrew and English Lexicon of the Old Testament, 1906) (`konkordancia/BDB_teljes_unabridged.tsv`, közkincs)'): 1,
+    ('KIRALY-001_TORZSCIKK.md', '- **Kulcsszó:** papok — כֹּהֲנִ֖ים (ko.ha.Nim); מַמְלֶ֥כֶת (mam.Le.khet)'): 1,
+    ('KIRALY-001_TORZSCIKK.md', '- **LXX:** Zsolt(LXX) 75:3 — — — kutatói azonosítás függőben'): 1,
+    ('KIRALY-001_TUDOMANYOS.md', '| [2Móz 19:6](#ige-2móz-19-6) | papok — כֹּהֲנִ֖ים (ko.ha.Nim); מַמְלֶ֥כֶת (mam.Le.khet) | egyéni → kollektív szintre emelve | Remez | H3548+H4467 | BDB H3548 1 — egyszerre papok és királyok a nemzetekhez való viszonyukban | — *(ÓSZ)* | magas · tartalom-alapú[^2] |'): 1,
+    ('KIRALY-001_TUDOMANYOS.md', '*Ez a blokk a `[ID: KIRALY-001]` motívum 7 Strong-tokenjét fedi, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*'): 1,
+    ('KIRALY-001_TUDOMANYOS.md', '- BDB (Brown–Driver–Briggs, A Hebrew and English Lexicon of the Old Testament, 1906) (`konkordancia/BDB_teljes_unabridged.tsv`, közkincs)'): 1,
+    ('KIRALY-001_TUDOMANYOS.md', '- `adat/forditas_ubs.tsv` (projekt-adat)'): 1,
+    ('KIRALY-001_TUDOMANYOS.md', '| `forditas_ubs.tsv` | `adat/forditas_ubs.tsv` | projekt-adat | elofordulasok |'): 1,
+    ('MENNY-001_TORZSCIKK.md', '- **LXX:** — — — — szamozas_elteres'): 1,
+    ('MENNY-001_TUDOMANYOS.md', '*Ez a blokk a `[ID: MENNY-001]` motívum 3 Strong-tokenjét fedi, nincs jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*'): 1,
+    ('MENNY-001_TUDOMANYOS.md', '- `adat/forditas_ubs.tsv` (projekt-adat)'): 1,
+    ('MENNY-001_TUDOMANYOS.md', '| `forditas_ubs.tsv` | `adat/forditas_ubs.tsv` | projekt-adat | elofordulasok |'): 1,
+    ('TEREMT-001_TORZSCIKK.md', '- **Kulcsszó:** a mélységbe — תְּהֹמֹ֖ת (te.ho.Mot)'): 1,
+    ('TEREMT-001_TORZSCIKK.md', '- **LXX:** — — — — szamozas_elteres'): 4,
+    ('TEREMT-001_TUDOMANYOS.md', '| [2Móz 15:5](#ige-2móz-15-5) | a mélységbe — תְּהֹמֹ֖ת (te.ho.Mot) | — | Remez | H8415 | — | — *(ÓSZ)* | magas · tartalom-alapú[^5] |'): 1,
+    ('TEREMT-001_TUDOMANYOS.md', '*Ez a blokk a `[ID: TEREMT-001]` motívum 2 Strong-tokenjét fedi, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*'): 1,
+    ('TEREMT-001_TUDOMANYOS.md', '- `adat/forditas_ubs.tsv` (projekt-adat)'): 1,
+    ('TEREMT-001_TUDOMANYOS.md', '| `forditas_ubs.tsv` | `adat/forditas_ubs.tsv` | projekt-adat | elofordulasok |'): 1,
+}
 # 2. ISMERT HIBA (N-F09g): a TSK-tábla KJV-számozású, a tsk_index() átváltás nélkül Károli-kulccsal keres; a Préd 9:10
 #    alatti 12 TSK-jelölt a KJV 9:10 = Károli 9:12 vershez tartozott, és emiatt veszett el. CSAK ez a 13 sor (12 TSK-jelölt a tudományos oldalon + a törzscikk-oldal összevont sora):
 ISMERT_HIBA_TSK_VERSSZAM = {
@@ -860,9 +901,12 @@ def proba_osztalyoz(fajl_nev, eles_szoveg, proba_szoveg, parok=None):
         if _META_RE.match(s.strip()) or s.strip().startswith('<!-- GENERÁLT'):
             kat_h[idx] = 'jeloles'
     # (0) a felhasználó által név szerint elfogadott sorok (csak törölt irány)
+    elfogadva_db = collections.Counter()
     for idx, (s, k, f) in enumerate(torolt):
-        if idx not in kat_t and (fajl_nev, s.strip()) in FELHASZNALO_ELFOGADOTT:
-            kat_t[idx] = 'felhasznalo_elfogadva'
+        kulcs_ = (fajl_nev, s.strip())
+        if idx not in kat_t and kulcs_ in FELHASZNALO_ELFOGADOTT and elfogadva_db[kulcs_] < FELHASZNALO_DARAB[kulcs_]:
+            elfogadva_db[kulcs_] += 1
+            kat_t[idx] = 'felhasznalo_elfogadva'   # a darabszámon felüli azonos sor nem elfogadott
     # (0) megnevezett táblák (F87.3-lábnyom, ismert TSK-hiba): nem párosítjuk
     nevesitett = set()
     for idx, (s, k, f) in enumerate(torolt):
@@ -1025,7 +1069,7 @@ def proba_main(argv):
         fh.write('\n'.join(sorok) + '\n')
     if ismeretlen or elfogadott_db:
         ism_ut = os.path.splitext(a.tsv)[0].replace('_diff', '') + '_ismeretlen.tsv'
-        ismeretlen_sorok.append('# felhasznaloi_besorolas: a felhasználó (2026-10-17, chat) által név szerint elfogadott sorok (FELHASZNALO_ELFOGADOTT); az üres besorolású sor `ismeretlen`, a felhasználó elé kerül. Elfogadott csoportok: %s' % ', '.join('%s=%d' % kv for kv in sorted(elfogadott_db.items())))
+        ismeretlen_sorok.append('# felhasznaloi_besorolas: a felhasználó (chat) által név szerint elfogadott sorok (FELHASZNALO_ELFOGADOTT; 2026-10-17: 32 sor, 2026-10-18: 12 sor); az üres besorolású sor `ismeretlen`, a felhasználó elé kerül. Elfogadott csoportok: %s' % ', '.join('%s=%d' % kv for kv in sorted(elfogadott_db.items())))
         ismeretlen_sorok.append('# proveniencia: scope=%s vs %s | forras=eszkozok/render_diff_osztalyoz.py --proba | ts=%s' % (os.path.relpath(a.proba, ROOT).replace(os.sep, '/'), os.path.relpath(a.eles, ROOT).replace(os.sep, '/'), os.environ.get('PARDES_DATUM', '')))
         with io.open(ism_ut, 'w', encoding='utf-8', newline='\n') as fh:
             fh.write('\n'.join(ismeretlen_sorok) + '\n')
