@@ -88,7 +88,7 @@ A szerver a WSL-ben (8771-es port, a munkafából) és a beépített böngésző
 
 ## 6. Nyitott
 
-- **DT-F76j** (🟡): a héber frázis belső vershatára a 9 versösszevonásos Károli-versben (3. szakasz).
+- **DT-F76j** (🟢, a felhasználó döntése, 2026-10-18): ismert korlát, a 9 hely a README-ben és a súgóban; a javítás az N-F76k (az építő tárolja a belső MT-vershatárt).
 - A magyar keresés a 9 párosítatlan ÚSZ-könyvben nem talál (ismert, F95; a lap jelzi). Pótlása (pl. a `vers.karoli_szoveg` szavaira épülő tartalék) új adatút volna, nem M3-tétel.
 - A K5 a leggyakoribb szavakon a határon / fölötte (4. szakasz): az M4 méri korláttal.
 - A `teszt_bdb_vers_jelentes.py` `test_bajtra_azonos` a main-en (89b30c2e) is piros, az M3-tól független: a generált `adat/bdb_vers_jelentes.tsv` fejlécében a `szamkiosztas` a „DT-F99n”-t „DT179”-re cserélte, a `bdb_vers_jelentes.py` még „DT-F99n”-t ír. Nem nyúltam hozzá (`adat/bdb_*` tiltott).
