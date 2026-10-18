@@ -63,7 +63,7 @@ def main():
         minden.extend((f,) + p for p in parok if p[1].strip() != p[2].strip())
     rnd = random.Random(a.seed)
     minta = rnd.sample(minden, a.n)
-    sor = ['# SZOTAR S2 (#9) — párosítás szúrópróba (DT-F09g, 3. javító menet)', '',
+    sor = ['# SZOTAR S2 (#9) — párosítás szúrópróba (DT-F09g, 4. javító menet)', '',
            '*Mintavétel: `naplok/F09_J_parositas_minta.py` (seed %d, n=%d) a kizárólagos párosítás (`render_diff_osztalyoz.proba_osztalyoz`) '
            'összes párjából (%d pár, a csak fejléc-mélységűek nélkül). Proveniencia: scope=`generalt_proba/F09_szotar_s2_proba/lexikon` vs `lexikon/` '
            '| forras=`eszkozok/render_diff_osztalyoz.py` | ts=2026-10-17*' % (a.seed, a.n, len(minden)), '',
