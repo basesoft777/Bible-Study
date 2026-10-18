@@ -1,0 +1,4 @@
+.v2pop{position:absolute;z-index:26;width:min(380px, calc(100vw - 32px));background:var(--panel);border:1px solid var(--accent);border-radius:10px;box-shadow:0 10px 30px rgb(0 0 0 / .22);padding:12px;display:grid;gap:6px}
+.v2fej{display:flex;gap:8px;align-items:center;font-family:var(--f-mono);font-size:.85rem}
+.v2sz{font-family:var(--f-text);font-size:1.02rem;line-height:1.6}
+.v2f{font-size:.72rem;color:var(--muted)}

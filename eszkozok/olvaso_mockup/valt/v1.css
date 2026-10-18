@@ -1,0 +1,7 @@
+.v1info{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:8px 10px;border:1px solid var(--gold);background:var(--gold-soft);border-radius:8px;font-size:.86rem}
+.v1info .heb{font-size:1.2rem}
+.v1info .ib{height:28px;font-size:.8rem}
+.v1sav{position:fixed;right:max(4px, env(safe-area-inset-right, 0px));top:120px;bottom:60px;width:14px;border-radius:7px;background:var(--rule);z-index:14}
+.v1jel{all:unset;cursor:pointer;position:absolute;left:1px;width:12px;height:5px;border-radius:2px;background:var(--gold)}
+.v1jel:hover{background:var(--fg)}
+.v1cim{position:absolute;bottom:-18px;right:0;font-size:.62rem;color:var(--muted);white-space:nowrap}

@@ -1,0 +1,3 @@
+.szoveg-oszlop{font-size:var(--v4-meret, var(--fs-karoli-folyo))!important;line-height:var(--v4-sorkoz, var(--lh-karoli-folyo))!important;font-family:var(--v4-betu, var(--font-text))!important;max-width:var(--v4-szel, 60ch)!important}
+:host(.v4-vszamki) .versszam{display:none}
+:host(.v4-sor) .folyo .vers{display:block;margin:0 0 .45em}

@@ -1,0 +1,7 @@
+.ilhe,.ilgl{display:none}
+:host(.il-be) .szoveg-oszlop{max-width:none}
+:host(.il-be) .il{display:inline-flex;flex-direction:column;align-items:center;vertical-align:top;margin:0 3px 10px;line-height:1.25}
+:host(.il-be) .il .ilhe{display:block;font-family:var(--font-he, serif);font-size:1.05em;color:var(--fg);direction:rtl}
+:host(.il-be) .il .ilgl{display:block;font-family:var(--font-ui, sans-serif);font-size:.55em;color:var(--muted);max-width:9em;text-align:center;white-space:normal}
+:host(.il-be) .versszam{vertical-align:top}
+:host(.il-be) .mj{vertical-align:top}

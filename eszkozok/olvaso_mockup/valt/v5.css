@@ -1,0 +1,17 @@
+.v5{background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:10px 14px}
+.v5 summary{cursor:pointer;font-family:var(--f-text);font-size:1.05rem;display:flex;gap:8px;align-items:center}
+.v5racs{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-top:12px}
+.v5k{display:grid;gap:6px;align-content:start;min-width:0}
+.v5k h3{margin:0;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.v5t{display:grid;gap:2px}
+.v5s{all:unset;display:grid;grid-template-columns:minmax(0,1fr) 60px 2.2em;gap:8px;align-items:center;font-size:.84rem;padding:2px 4px;border-radius:4px}
+button.v5s{cursor:pointer}
+button.v5s:hover{background:var(--accent-soft)}
+.v5s .l{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.v5s .l small{color:var(--muted)}
+.v5s .heb{font-size:1.1rem}
+.v5s .tr{height:8px;background:var(--bg);border-radius:2px;position:relative;overflow:hidden}
+.v5s .fi{position:absolute;inset:0 auto 0 0;background:var(--accent);border-radius:2px}
+.v5s .n{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
+.v5f{font-size:.68rem;color:var(--muted);border-top:1px solid var(--rule);padding-top:4px}
+.v5 .ures{margin:0;font-size:.82rem;color:var(--muted)}
