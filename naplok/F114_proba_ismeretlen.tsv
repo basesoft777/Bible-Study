@@ -1,46 +1,17 @@
 fajl	irany	sor	felhasznaloi_besorolas	uj_sor_a_parbol
 ALVIL-001_TORZSCIKK.md	torolt	A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).	jelmagyarazat_mondat	
-ALVIL-001_TORZSCIKK.md	torolt	- **TSK-kereszthivatkozás** (szavazatszám): ApCsel 2:27 (51), ApCsel 2:31 (51), ApCsel 13:35 (31), ApCsel 13:38 (31), Zsolt 49:15 (23), Jel 1:18 (18)		
-ALVIL-001_TORZSCIKK.md	torolt	- **TSK-kereszthivatkozás** (szavazatszám): Zsolt 50:15 (26), 2Sám 22:7 (21), Zsolt 34:15 (20), Zsolt 130:1 (18), Zsolt 130:2 (18), Zsolt 120:1 (15)		
-ALVIL-001_TORZSCIKK.md	torolt	- **TSK-kereszthivatkozás** (szavazatszám): Ézs 25:8 (15)		
-ALVIL-001_TORZSCIKK.md	torolt	- **TSK-kereszthivatkozás** (szavazatszám): Róm 6:9 (33), Zsid 7:25 (22), Róm 14:8 (20), Róm 14:9 (20), Zsolt 68:20 (19), Jel 3:7 (16), Ézs 22:22 (15)		
 ALVIL-001_TUDOMANYOS.md	torolt	*Ez a blokk a `[ID: ALVIL-001]` motívum 2 Strong-tokenjét fedi, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*	leiro_mondat_bovult	
 ALVIL-001_TUDOMANYOS.md	torolt	- `adat/forditas_ubs.tsv` (projekt-adat)	forditas_ubs_forras_elavult	
 ALVIL-001_TUDOMANYOS.md	torolt	| `forditas_ubs.tsv` | `adat/forditas_ubs.tsv` | projekt-adat | elofordulasok |	forditas_ubs_forras_elavult	
-ALVIL-001_TUDOMANYOS.md	torolt	- TSK: Zsolt 49:15 (Votes: 23)		
-ALVIL-001_TUDOMANYOS.md	torolt	- TSK: Zsolt 50:15 (Votes: 26)		
-ALVIL-001_TUDOMANYOS.md	torolt	- TSK: 2Sám 22:7 (Votes: 21)		
-ALVIL-001_TUDOMANYOS.md	torolt	- TSK: Zsolt 34:15 (Votes: 20)		
-ALVIL-001_TUDOMANYOS.md	torolt	- TSK: Zsolt 130:1 (Votes: 18)		
-ALVIL-001_TUDOMANYOS.md	torolt	- TSK: Zsolt 130:2 (Votes: 18)		
-ALVIL-001_TUDOMANYOS.md	torolt	- TSK: Zsolt 120:1 (Votes: 15)		
-ALVIL-001_TUDOMANYOS.md	torolt	- TSK: Ézs 25:8 (Votes: 15)		
-ALVIL-001_TUDOMANYOS.md	torolt	- TSK: Zsolt 68:20 (Votes: 19)		
 ANTROP-001_TORZSCIKK.md	torolt	A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).	jelmagyarazat_mondat	
-ANTROP-001_TORZSCIKK.md	torolt	- **TSK-kereszthivatkozás** (szavazatszám): 1Kor 15:45 (38), Jób 33:4 (38), Préd 12:7 (36), Ézs 64:8 (30), ApCsel 17:25 (25), 1Kor 15:47 (20), 1Móz 3:19 (19), Jób 27:3 (18), 1Móz 7:22 (15)		
-ANTROP-001_TORZSCIKK.md	torolt	- **TSK-kereszthivatkozás** (szavazatszám): 1Sám 2:1 (26), 1Sám 2:10 (26), Zsolt 34:2 (18), Zsolt 34:3 (18)		
-ANTROP-001_TORZSCIKK.md	torolt	- **TSK-kereszthivatkozás** (szavazatszám): Jer 23:29 (179), Ézs 55:11 (165), Ef 6:17 (101), Zsolt 119:130 (99), 1Pét 1:23 (77), Ézs 49:2 (76), Jel 1:16 (61), 1Thessz 2:13 (55), Jer 17:10 (53), Róm 1:16 (48), Zsolt 149:6 (41), Jel 19:15 (39), Ef 5:13 (36), 2Kor 10:4 (35), 2Kor 10:5 (35), Luk 8:11 (35), Zsolt 139:2 (32), 1Pét 2:4 (30), 1Pét 2:5 (30), Ján 6:51 (30), Ézs 11:4 (28), Jel 19:21 (27), Jel 2:16 (27), ApCsel 4:31 (26), 1Kor 14:24 (26), 1Kor 14:25 (26), Zsolt 45:3 (26), Zsid 13:7 (25), ApCsel 2:37 (24), Jel 2:23 (23), Jel 20:4 (22), 2Kor 4:2 (22), Péld 5:4 (22), 1Thessz 5:23 (22), Jak 1:18 (18), Préd 12:11 (16), 2Kor 2:17 (15)		
 ANTROP-001_TUDOMANYOS.md	torolt	*Ez a blokk a `[ID: ANTROP-001]` motívum 4 Strong-tokenjét fedi, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*	leiro_mondat_bovult	
 ANTROP-001_TUDOMANYOS.md	torolt	- `adat/forditas_ubs.tsv` (projekt-adat)	forditas_ubs_forras_elavult	
 ANTROP-001_TUDOMANYOS.md	torolt	| `forditas_ubs.tsv` | `adat/forditas_ubs.tsv` | projekt-adat | elofordulasok |	forditas_ubs_forras_elavult	
-ANTROP-001_TUDOMANYOS.md	torolt	- TSK: Préd 12:7 (Votes: 36)		
-ANTROP-001_TUDOMANYOS.md	torolt	- TSK: Ézs 64:8 (Votes: 30)		
-ANTROP-001_TUDOMANYOS.md	torolt	- TSK: Zsolt 34:2 (Votes: 18)		
-ANTROP-001_TUDOMANYOS.md	torolt	- TSK: Zsolt 45:3 (Votes: 26)		
-ANTROP-001_TUDOMANYOS.md	torolt	- TSK: Préd 12:11 (Votes: 16)		
 HAMART-001_TORZSCIKK.md	torolt	- **LXX:** Zsolt(LXX) 73:20 — — — kutatói azonosítás függőben	kutatoi_azonositas_feloldodott	
 HAMART-001_TORZSCIKK.md	torolt	A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).	jelmagyarazat_mondat	
-HAMART-001_TORZSCIKK.md	torolt	- **TSK-kereszthivatkozás** (szavazatszám): Préd 12:7 (25), Jób 34:15 (17)		
-HAMART-001_TORZSCIKK.md	torolt	- **TSK-kereszthivatkozás** (szavazatszám): Mt 15:19 (43), Róm 1:28 (33), Róm 1:31 (33), Mk 7:21 (30), Mk 7:23 (30), Jer 4:14 (26), Ef 2:1 (25), Ef 2:3 (25), Jer 17:9 (25), Préd 9:3 (21), Préd 7:29 (20), 1Móz 8:21 (18), Zsolt 53:2 (16), Tit 3:3 (15)		
-HAMART-001_TORZSCIKK.md	torolt	- **TSK-kereszthivatkozás** (szavazatszám): Zsolt 10:4 (35), Zsolt 53:1 (21), Róm 3:10 (16), Róm 3:12 (16)		
-HAMART-001_TORZSCIKK.md	torolt	- **TSK-kereszthivatkozás** (szavazatszám): Zsolt 118:8 (53), Zsolt 118:9 (53), Zsolt 146:3 (40), Zsolt 146:4 (40), Ézs 2:22 (29), 2Krón 32:8 (23), Ézs 31:1 (17), Ézs 31:9 (17), Ézs 30:1 (15), Ézs 30:7 (15)		
 HAMART-001_TUDOMANYOS.md	torolt	*Ez a blokk a `[ID: HAMART-001]` motívum 14 Strong-tokenjét fedi, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*	leiro_mondat_bovult	
 HAMART-001_TUDOMANYOS.md	torolt	- `adat/forditas_ubs.tsv` (projekt-adat)	forditas_ubs_forras_elavult	
 HAMART-001_TUDOMANYOS.md	torolt	| `forditas_ubs.tsv` | `adat/forditas_ubs.tsv` | projekt-adat | elofordulasok |	forditas_ubs_forras_elavult	
-HAMART-001_TUDOMANYOS.md	torolt	- TSK: Préd 12:7 (Votes: 25)		
-HAMART-001_TUDOMANYOS.md	torolt	- TSK: Préd 9:3 (Votes: 21)		
-HAMART-001_TUDOMANYOS.md	torolt	- TSK: Zsolt 53:1 (Votes: 21)		
-HAMART-001_TUDOMANYOS.md	torolt	- TSK: Ézs 2:22 (Votes: 29)		
 HODIT-001_TORZSCIKK.md	torolt	- **LXX:** — — — — szamozas_elteres	szamozas_elteres_fuggobe_valt	
 HODIT-001_TORZSCIKK.md	torolt	- **LXX:** — — — — szamozas_elteres	szamozas_elteres_fuggobe_valt	
 HODIT-001_TORZSCIKK.md	torolt	- **LXX:** — — — — szamozas_elteres	szamozas_elteres_fuggobe_valt	
@@ -58,13 +29,8 @@ ISTENTISZT-001_TORZSCIKK.md	torolt	| G1941 | TBESG | Thayer | nincs adatosítva 
 ISTENTISZT-001_TORZSCIKK.md	torolt	| H7121 | TBESH | BDB | nincs adatosítva | UBS DBH (SDBH) | nincs adatosítva | LXX-fordítói döntés versenként: mely görög szó adja vissza (LXX_OS + adat/lxx_dontesek.tsv; a lexikonoldal 3. szakasza) | kézi (2/b) | nincs adatosítva | nincs adatosítva | nincs adatosítva |	kezi_2b_lefedettseg_sece	
 ISTENTISZT-001_TORZSCIKK.md	torolt	| H8034 | TBESH | BDB | nincs adatosítva | UBS DBH (SDBH) | nincs adatosítva | LXX-fordítói döntés versenként: mely görög szó adja vissza (LXX_OS + adat/lxx_dontesek.tsv; a lexikonoldal 3. szakasza) | kézi (2/b) | nincs adatosítva | nincs adatosítva | nincs adatosítva |	kezi_2b_lefedettseg_sece	
 ISTENTISZT-001_TORZSCIKK.md	torolt	- LSJ (Liddell-Scott-Jones, A Greek-English Lexicon) — CC BY-SA 3.0	lsj_licencverzio_valtas	
-ISTENTISZT-001_TORZSCIKK.md	torolt	- **TSK-kereszthivatkozás** (szavazatszám): Zsolt 50:15 (130), Jer 29:11 (113), Jer 29:12 (113), ApCsel 2:21 (83), Ézs 65:23 (69), Ézs 65:24 (69), Ézs 48:10 (66), 1Pét 1:6 (60), 1Pét 1:7 (60), Zsolt 34:15 (59), Zsolt 34:19 (59), Zsolt 91:15 (58), Jel 21:7 (42), 1Pét 4:12 (42), Jer 30:22 (41), Ézs 43:2 (38), Jak 1:12 (37), 5Móz 26:17 (30), 5Móz 26:19 (30), Zsolt 66:10 (28), Zsolt 66:12 (28), Hós 2:21 (27), Hós 2:23 (27), Zak 10:6 (25), Mal 3:2 (24), Mal 3:3 (24), Zsid 8:10 (22), Jób 23:10 (22), Zak 8:8 (19), Ézs 58:9 (19), Mt 22:29 (19), Mt 22:32 (19), Jer 31:33 (19), 3Móz 26:12 (19), Róm 10:12 (18), Róm 10:14 (18), Péld 17:3 (16), Zak 12:10 (16), Zsolt 144:15 (16), Jel 21:3 (16), Jel 21:4 (16), 1Kor 3:11 (15), 1Kor 3:13 (15), Ez 37:27 (15), Jóel 2:32 (15), Ez 36:28 (15)		
 ISTENTISZT-001_TUDOMANYOS.md	torolt	*Ez a blokk a `[ID: ISTENTISZT-001]` motívum 3 Strong-tokenjét fedi, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*	leiro_mondat_bovult	
 ISTENTISZT-001_TUDOMANYOS.md	torolt	- BDB (Brown–Driver–Briggs, A Hebrew and English Lexicon of the Old Testament, 1906) (`konkordancia/BDB_teljes_unabridged.tsv`, közkincs)	bdb_formatumvaltozas	
-ISTENTISZT-001_TUDOMANYOS.md	torolt	- TSK: Zsolt 34:15 (Votes: 59)		
-ISTENTISZT-001_TUDOMANYOS.md	torolt	- TSK: Zsolt 34:19 (Votes: 59)		
-ISTENTISZT-001_TUDOMANYOS.md	torolt	- TSK: Hós 2:21 (Votes: 27)		
-ISTENTISZT-001_TUDOMANYOS.md	torolt	- TSK: Hós 2:23 (Votes: 27)		
 KIRALY-001_TORZSCIKK.md	torolt	- **Kulcsszó:** papok — כֹּהֲנִ֖ים (ko.ha.Nim); מַמְלֶ֥כֶת (mam.Le.khet)	f87_glossza_javitas	
 KIRALY-001_TORZSCIKK.md	torolt	- **LXX:** Zsolt(LXX) 75:3 — — — kutatói azonosítás függőben	kutatoi_azonositas_feloldodott	
 KIRALY-001_TORZSCIKK.md	torolt	A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).	jelmagyarazat_mondat	
@@ -75,25 +41,18 @@ KIRALY-001_TUDOMANYOS.md	torolt	- `adat/forditas_ubs.tsv` (projekt-adat)	fordita
 KIRALY-001_TUDOMANYOS.md	torolt	| `forditas_ubs.tsv` | `adat/forditas_ubs.tsv` | projekt-adat | elofordulasok |	forditas_ubs_forras_elavult	
 MENNY-001_TORZSCIKK.md	torolt	- **LXX:** — — — — szamozas_elteres	szamozas_elteres_fuggobe_valt	
 MENNY-001_TORZSCIKK.md	torolt	A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).	jelmagyarazat_mondat	
-MENNY-001_TORZSCIKK.md	torolt	- **TSK-kereszthivatkozás** (szavazatszám): 4Móz 13:33 (22), 2Sám 21:15 (15), 2Sám 21:22 (15)		
 MENNY-001_TUDOMANYOS.md	torolt	*Ez a blokk a `[ID: MENNY-001]` motívum 3 Strong-tokenjét fedi, nincs jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*	leiro_mondat_bovult	
 MENNY-001_TUDOMANYOS.md	torolt	- `adat/forditas_ubs.tsv` (projekt-adat)	forditas_ubs_forras_elavult	
 MENNY-001_TUDOMANYOS.md	torolt	| `forditas_ubs.tsv` | `adat/forditas_ubs.tsv` | projekt-adat | elofordulasok |	forditas_ubs_forras_elavult	
-MENNY-001_TUDOMANYOS.md	torolt	- TSK: 4Móz 13:33 (Votes: 22)		
 TEREMT-001_TORZSCIKK.md	torolt	- **Kulcsszó:** a mélységbe — תְּהֹמֹ֖ת (te.ho.Mot)	f87_glossza_javitas	
 TEREMT-001_TORZSCIKK.md	torolt	- **LXX:** — — — — szamozas_elteres	szamozas_elteres_helyorzo_feloldodott	
 TEREMT-001_TORZSCIKK.md	torolt	- **LXX:** — — — — szamozas_elteres	szamozas_elteres_helyorzo_feloldodott	
 TEREMT-001_TORZSCIKK.md	torolt	- **LXX:** — — — — szamozas_elteres	szamozas_elteres_helyorzo_feloldodott	
 TEREMT-001_TORZSCIKK.md	torolt	- **LXX:** — — — — szamozas_elteres	szamozas_elteres_helyorzo_feloldodott	
 TEREMT-001_TORZSCIKK.md	torolt	A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).	jelmagyarazat_mondat	
-TEREMT-001_TORZSCIKK.md	torolt	- **TSK-kereszthivatkozás** (szavazatszám): Zsolt 86:5 (18), Ruth 2:12 (16), Zsolt 91:4 (16), 1Ján 3:1 (15)		
 TEREMT-001_TUDOMANYOS.md	torolt	| [2Móz 15:5](#ige-2móz-15-5) | a mélységbe — תְּהֹמֹ֖ת (te.ho.Mot) | — | Remez | H8415 | — | — *(ÓSZ)* | magas · tartalom-alapú[^5] |	f87_glossza_javitas	
 TEREMT-001_TUDOMANYOS.md	torolt	*Ez a blokk a `[ID: TEREMT-001]` motívum 2 Strong-tokenjét fedi, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*	leiro_mondat_bovult	
 TEREMT-001_TUDOMANYOS.md	torolt	- `adat/forditas_ubs.tsv` (projekt-adat)	forditas_ubs_forras_elavult	
 TEREMT-001_TUDOMANYOS.md	torolt	| `forditas_ubs.tsv` | `adat/forditas_ubs.tsv` | projekt-adat | elofordulasok |	forditas_ubs_forras_elavult	
-TEREMT-001_TUDOMANYOS.md	torolt	- TSK: Zsolt 86:5 (Votes: 18)		
-TEREMT-001_TUDOMANYOS.md	torolt	- TSK: Ruth 2:12 (Votes: 16)		
-TEREMT-001_TUDOMANYOS.md	torolt	- TSK: Zsolt 91:4 (Votes: 16)		
-TEREMT-001_TUDOMANYOS.md	torolt	- TSK: 1Ján 3:1 (Votes: 15)		
 # felhasznaloi_besorolas: a felhasználó (chat) által név szerint elfogadott sorok (FELHASZNALO_ELFOGADOTT; 2026-10-17: 32 sor, 2026-10-18: 12 sor, DT-F113b: 11 sor); az üres besorolású sor `ismeretlen`, a felhasználó elé kerül. Elfogadott csoportok: bdb_formatumvaltozas=2, f87_glossza_javitas=4, forditas_ubs_forras_elavult=14, jelmagyarazat_mondat=8, joshua_forrasvaltas=2, kezi_2b_lefedettseg_sece=3, kutatoi_azonositas_feloldodott=3, leiro_mondat_bovult=8, lsj_licencverzio_valtas=1, szamozas_elteres_fuggobe_valt=6, szamozas_elteres_helyorzo_feloldodott=4
 # proveniencia: scope=../../../../../AppData/Local/Temp/f114p vs lexikon | forras=eszkozok/render_diff_osztalyoz.py --proba | ts=

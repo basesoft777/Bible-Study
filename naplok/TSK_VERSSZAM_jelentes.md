@@ -53,3 +53,9 @@ A felmérő mérése közben két mérőhibát javítottam (a szkript a javítá
 
 A `render_diff_osztalyoz.py --proba` a friss próbán (`%TEMP%/f114p`): `ismert_hiba_tsk_versszam` = 2 sor még törölt: a tudományos oldal `- TSK: Zsolt 6:5 (Votes: 24)` és a törzscikk összevont sora (ugyanezen jelölttel). Ok: az éles lexikon a KJV-célt (Zsolt 6:5) hordozza, az átváltóval a helyes Károli-cél Zsolt 6:6. A brief szerint ilyenkor megállás (DT-F114c).
 Ugyanezen a próbán az `ismeretlen` kategória 41 sorú, mind TSK-sor, az éles lexikon régi (KJV-kulcsú / KJV-célú) TSK-sora, amelyet az átváltás kiegészít vagy kivesz (pl. ALVIL-001 Zsolt 18:6 alatt Zsolt 50:15, 49:15 → 49:16; ANTROP/HAMART/ISTENTISZT/TEREMT/MENNY TSK-sorai). Ezek a #36/#10 éles újragenerálásakor a diff-osztályozóban `ismeretlen`-ként állnának meg.
+
+## F114.5 — DT-F114c (a): `tsk_kulcs_javitas` (Felhasználó, 2026-10-18)
+
+Az `ISMERT_HIBA_TSK_VERSSZAM` / `ismert_hiba_tsk_versszam` helyett `TSK_KULCS_JAVITAS_SOROK` / `tsk_kulcs_javitas`: 43 név szerinti törölt sor (2 az N-F09g-ből + 41 régi TSK-sor). Negatív teszt: a listán kívüli TSK-sor (és a lista sora más motívumban) `ismeretlen` marad. `teszt_render_diff_osztalyoz.py`: 74 teszt, OK.
+Újrafuttatott próba-osztályozás (`--proba`, kilépési kód 0): `tsk_kulcs_javitas=43`, `ismeretlen=0`. Napló: `naplok/F114_proba_diff.tsv`, `naplok/F114_proba_ismeretlen.tsv` (az utóbbi most csak a korábban elfogadott `felhasznalo_elfogadva` sorokat tartalmazza).
+`proveniencia: scope=%TEMP%/f114p vs lexikon | forras=eszkozok/render_diff_osztalyoz.py --proba | ts=2026-10-18`

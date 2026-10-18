@@ -217,16 +217,22 @@ class MegnevezettTablak(unittest.TestCase):
         self.assertEqual(osztaly(eles, proba, 'TEREMT-001_TUDOMANYOS.md')[R.ISMERETLEN]['torolt'],
                          ['- Károli-KH: Jób 1:21'])
 
-    def test_ismert_hiba_tsk(self):
-        eles = blokk('kereszthivatkozasok', ['- TSK: Róm 12:11 (Votes: 35)', '- TSK: Róm 8:1 (Votes: 99)'])
+    def test_tsk_kulcs_javitas(self):
+        eles = blokk('kereszthivatkozasok', ['- TSK: Zsolt 6:5 (Votes: 24)', '- TSK: Róm 8:1 (Votes: 99)'])
         proba = blokk('kereszthivatkozasok', ['- Károli-KH: 1Móz 3:15'])
         e = osztaly(eles, proba, 'ALVIL-001_TUDOMANYOS.md')
-        self.assertEqual(e['ismert_hiba_tsk_versszam']['torolt'], ['- TSK: Róm 12:11 (Votes: 35)'])
-        # a táblán kívüli TSK-sor nem kap kivételt
+        self.assertEqual(e['tsk_kulcs_javitas']['torolt'], ['- TSK: Zsolt 6:5 (Votes: 24)'])
+        # NEGATÍV: a listán kívüli TSK-sor ismeretlen marad
         self.assertEqual(e[R.ISMERETLEN]['torolt'], ['- TSK: Róm 8:1 (Votes: 99)'])
 
+    def test_tsk_kulcs_javitas_mas_motivumban_ismeretlen(self):
+        eles = blokk('kereszthivatkozasok', ['- TSK: Zsolt 6:5 (Votes: 24)'])
+        proba = blokk('kereszthivatkozasok', ['- Károli-KH: 1Móz 3:15'])
+        e = osztaly(eles, proba, 'TEREMT-001_TUDOMANYOS.md')
+        self.assertEqual(e[R.ISMERETLEN]['torolt'], ['- TSK: Zsolt 6:5 (Votes: 24)'])
+
     def test_tabla_merete(self):
-        self.assertEqual(len(R.ISMERT_HIBA_TSK_VERSSZAM), 13)
+        self.assertEqual(len(R.TSK_KULCS_JAVITAS_SOROK), 43)
         # az F87.3-lábnyom név szerinti, csak ALVIL-001 (3. javító menet)
         self.assertEqual(len(R.ATKULCSOLT_SOROK), 27)
         self.assertTrue(all(m == 'ALVIL-001' for m, _ in R.ATKULCSOLT_SOROK))
