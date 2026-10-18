@@ -5,7 +5,7 @@ kod: VERSMEGF_JAVITAS
 tipus: feladat
 fazis: folyamat
 munka: adat
-modell: sonnet
+modell: opus
 allapot: nem_indult
 ad: a `Karoli_versmegfeleltetes.tsv` a #114 által mért táblahibák nélkül generálódik (13 fejezet pótolva, a KEZI-, Dán 3- és eltolt párok szöveg-összevetéssel javítva); a `tsk_kulcs.NINCS_PAR_KIVETEL` üres, a Jón 2:3 (ALVIL-001) és Jón 2:6 (TEREMT-001) TSK-sorai visszatérnek
 kovetkezo: a /kovetkezo indítja
@@ -16,7 +16,7 @@ nem_fugg: [107, 109]
 ---
 # F117_VERSMEGF_JAVITAS_BRIEF.md — A Károli↔KJV versmegfeleltetés táblahibáinak javítása
 
-*FELADATOK #117 · Modell: sonnet · v1 · 2026.10.18 · előzmény: N-F54a (F54, bővítve a #114-ben), DT200 (a #114 TSK_VERSSZAM, PR #398), `naplok/TSK_VERSSZAM_zaras.md`*
+*FELADATOK #117 · Modell: opus (a versenkénti magyar–angol szöveg-összevetés ítéletet igényel; felhasználói döntés, 2026-10-18) · v1.1 · 2026.10.18 · előzmény: N-F54a (F54, bővítve a #114-ben), DT200 (a #114 TSK_VERSSZAM, PR #398), `naplok/TSK_VERSSZAM_zaras.md`*
 
 ## 1. Cél
 
