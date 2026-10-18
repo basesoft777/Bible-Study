@@ -1,0 +1,83 @@
+# proveniencia: scope=KJV_SZOVEG M0 (66 kanonikus könyv; fájllista: a teljes zip) | forras=kjv.zip sha256=00532b6db1825cb78fd34de2097fc280ce03ee22ef0bdac5243ef4beaca4d447 (2766294 bájt) + konkordancia/KJV_Strongs_teljes.tsv | ts=2026-10-18T15:23:34Z
+A1 fajllista: bejegyzes=84; kanonikus=66; apokrif=14 (1ES 1MA 2ES 2MA BAR BEL ESG JDT MAN S3Y SIR SUS TOB WIS); egyeb_usfm=FRT; nem_usfm=copr.htm keys.asc latin.css
+A1 hianyzo kanonikus konyv: 0
+A1 bejegyzes-datumok: {(2026, 10, 17, 18, 21, 50): 18, (2026, 10, 17, 18, 21, 52): 63, (2026, 10, 17, 18, 32, 20): 3}
+A1b copr.htm tartalmazza: Public Domain -> True
+A1b copr.htm tartalmazza: You may copy the King James Version of the Holy Bible freely -> True
+A1b copr.htm tartalmazza: This royal decree has no effect outside of the UK, where thi -> True
+A1b copr.htm tartalmazza: courtesy of the Crosswire Bible Society and eBible.org -> True
+A1b copr.htm datum-sor: 2026-09-26
+A2 F06-meres (fj2/kjv_asv.usfm_meres): konyv=81 vers=36822 vers_strongos=31099 strong_cimke=349308; kanoni66: konyv=66 vers=31102 vers_strongos=31099
+A2 F06 2026-09-29 (naplok/F06_kjv_asv.tsv): konyv=81 vers=36822 vers_strongos=31099 strong_cimke=349308; kanoni66: konyv=66 vers=31102 vers_strongos=31099
+B1 uj csomag F19-parse: kanonikus versek (v>0)=31102, ebbol cimkes=31099, cimke nelkuli=3 (Luk.6.41 Luk.17.36 Mrk.9.43); 0. versek=116, ebbol cimkes=116; vershidak=0; parse-anomalia=0
+B1 ures szoveg (F19-tisztitas utan): 0 
+B1b F19-szoveg: szokoz irasjel elott=4305 vers (pl. 1Ch.2.3: ¶ The sons of Judah; Er, and Onan, and Shelah: which three were born unto him of the daugh | 1Ch.2.42: ¶ Now the sons of Caleb the brother of Jerahmeel were , Mesha his firstborn, which was the); pilcrow-t tartalmaz=2970 vers
+B1c F19-szoveg Psa.119.8: I will keep thy statutes: O forsake me not utterly. ב BETH.
+B1c F19-szoveg Rom.16.27: To God only wise, be glory through Jesus Christ for ever. Amen. Written to the Romans from Corinthus, and sent by Phebe servant of the church at Cenchrea.
+B1c F19-szoveg Gen.1.2: And the earth was without form, and void; and darkness was upon the face of the deep. And the Spirit of God moved upon the face of the waters.
+B2 versek: |S| (tabla)=31215 (v>0: 31099, v=0: 116); |T_cimkes|=31215; |T_osszes|=31218
+B2 S - T_osszes=0; T_cimkes - S=0; S - T_cimkes=0; T_osszes - S=3 (v>0: Luk.6.41 Luk.17.36 Mrk.9.43; v=0: 0)
+B3 Strong-cimkek: tabla=349308; uj=349308
+B3 versenkenti cimkeszam elter: 0 vers
+B3 (vers, szosorszam, Strong) egyezes: kozos=349308; csak_tabla=0; csak_uj=0
+B4 (vers, szosorszam, Strong, Angol szo) egyezes: kozos=349308; csak_tabla=0; csak_uj=0
+B4 sorrend is azonos (lista-egyenloseg): True
+B5 kulcs-Strongok (uj): H430=2605 H776=2504 H1=1212 H3068=6518 G746=58 G2316=1359
+B5 kulcs-Strongok (tabla fejlece): H430=2605 H776=2504 H1=1212 H3068=6518 G746=58 G2316=1359
+B6 ir_teljes(uj csomag, a tabla fejlecsoraival) == KJV_Strongs_teljes.tsv bajtra: True (sha256 uj=5a7891145401aa62, tabla=5a7891145401aa62)
+C1 jelolok (jelolo, nyito/zaro, kontextus, beagyazott) -> db:
+    w	nyito	szoveg	 313813
+    w	zaro	szoveg	 313813
+    w	nyito	szoveg	beagyazott 35495
+    w	zaro	szoveg	beagyazott 35495
+    v	nyito	szoveg	 31102
+    add	nyito	szoveg	 20887
+    add	zaro	szoveg	 20887
+    f	nyito	labjegyzet	 6959
+    f	zaro	labjegyzet	 6959
+    fr	nyito	labjegyzet	 6959
+    ft	nyito	labjegyzet	 6959
+    nd	nyito	szoveg	 6876
+    nd	zaro	szoveg	 6876
+    p	nyito	szoveg	 4635
+    q1	nyito	szoveg	 2461
+    wj	nyito	szoveg	 2038
+    wj	zaro	szoveg	 2038
+    c	nyito	szoveg	 1189
+    add	nyito	szoveg	beagyazott 623
+    add	zaro	szoveg	beagyazott 623
+    b	nyito	szoveg	 209
+    d	nyito	szoveg	 116
+    h	nyito	fejlec	 66
+    id	nyito	fejlec	 66
+    mt1	nyito	fejlec	 66
+    toc1	nyito	fejlec	 66
+    toc2	nyito	fejlec	 66
+    toc3	nyito	fejlec	 66
+    nd	nyito	labjegyzet	beagyazott 65
+    nd	zaro	labjegyzet	beagyazott 65
+    s1	nyito	szoveg	 36
+    tl	nyito	szoveg	 22
+    tl	zaro	szoveg	 22
+    nd	nyito	szoveg	beagyazott 16
+    nd	zaro	szoveg	beagyazott 16
+    mt2	nyito	fejlec	 2
+C2 \w attributum-kulcsok: {('strong',): 349308}
+C3 egyeb: {'labjegyzet_tobbsoros': 0, 'nem_ascii:U+00C6': 3, 'nem_ascii:U+00E6': 93, 'nem_ascii:U+05D0': 1, 'nem_ascii:U+05D1': 1, 'nem_ascii:U+05D2': 1, 'nem_ascii:U+05D3': 1, 'nem_ascii:U+05D4': 1, 'nem_ascii:U+05D5': 1, 'nem_ascii:U+05D6': 1, 'nem_ascii:U+05D7': 1, 'nem_ascii:U+05D8': 1, 'nem_ascii:U+05D9': 1, 'nem_ascii:U+05DB': 1, 'nem_ascii:U+05DC': 1, 'nem_ascii:U+05DE': 1, 'nem_ascii:U+05E0': 1, 'nem_ascii:U+05E1': 1, 'nem_ascii:U+05E2': 1, 'nem_ascii:U+05E4': 1, 'nem_ascii:U+05E6': 1, 'nem_ascii:U+05E7': 1, 'nem_ascii:U+05E8': 1, 'nem_ascii:U+05E9': 1, 'nem_ascii:U+05EA': 1, 'nem_ascii:U+2014': 1, 'nem_ascii:U+2019': 1997, 'pilcrow': 2970, 'w_tobbszavas': 9328}
+C4 vers nelkuli szoveghordozo sorok: 152; (elso jelolo, F19-sors) -> db: {('d', '0. vers'): 116, ('s1', 'eldobna'): 1, ('s1', 'elozo vershez fuzne'): 35}
+C5 Zsolt 119: 22 fejlec-sor; eldobna=1; elozo vershez fuzne=21 (pl. 119:8 <- ב BETH.; 119:16 <- ג GIMEL.)
+C6 egyeb (nem \d, nem Zsolt 119) vers nelkuli sorok: 14
+    ('Rom', 16, 27, 's1', 'Written to the Romans from Corinthus, and sent by Phebe servant of the church at Cenchrea.', '\\s1 Written to the Romans from Corinthus, \\add and sent\\add* by Phebe servant of the church at Cenchrea.')
+    ('1Co', 16, 24, 's1', 'The first epistle to the Corinthians was written from Philippi by Stephanas, and Fortunatus, and Achaicus, and Timotheus.', '\\s1 The first \\add epistle\\add* to the Corinthians was written from Philippi by Stephanas, and Fortunatus, and Achaicus,')
+    ('2Co', 13, 14, 's1', 'The second epistle to the Corinthians was written from Philippi, a city of Macedonia, by Titus and Lucas.', '\\s1 The second \\add epistle\\add* to the Corinthians was written from Philippi, \\add a city\\add* of Macedonia, by Titus a')
+    ('Gal', 6, 18, 's1', 'Unto the Galatians written from Rome.', '\\s1 Unto the Galatians written from Rome.')
+    ('Eph', 6, 24, 's1', 'Written from Rome unto the Ephesians by Tychicus.', '\\s1 Written from Rome unto the Ephesians by Tychicus.')
+    ('Php', 4, 23, 's1', 'It was written to the Philippians from Rome by Epaphroditus.', '\\s1 It was written to the Philippians from Rome by Epaphroditus.')
+    ('Col', 4, 18, 's1', 'Written from Rome to the Colossians by Tychicus and Onesimus.', '\\s1 Written from Rome to the Colossians by Tychicus and Onesimus.')
+    ('1Th', 5, 28, 's1', 'The first epistle unto the Thessalonians was written from Athens.', '\\s1 The first \\add epistle\\add* unto the Thessalonians was written from Athens.')
+    ('2Th', 3, 18, 's1', 'The second epistle to the Thessalonians was written from Athens.', '\\s1 The second \\add epistle\\add* to the Thessalonians was written from Athens.')
+    ('1Ti', 6, 21, 's1', 'The first to Timothy was written from Laodicea, which is the chiefest city of Phrygia Pacatiana.', '\\s1 The first to Timothy was written from Laodicea, which is the chiefest city of Phrygia Pacatiana.')
+    ('2Ti', 4, 22, 's1', 'The second epistle unto Timotheus, ordained the first bishop of the church of the Ephesians, was written from Rome, when Paul was brought before Nero the second time.', '\\s1 The second \\add epistle\\add* unto Timotheus, ordained the first bishop of the church of the Ephesians, was written f')
+    ('Tit', 3, 15, 's1', 'It was written to Titus, ordained the first bishop of the church of the Cretians, from Nicopolis of Macedonia.', '\\s1 It was written to Titus, ordained the first bishop of the church of the Cretians, from Nicopolis of Macedonia.')
+    ('Phm', 1, 25, 's1', 'Written from Rome to Philemon, by Onesimus, a servant.', '\\s1 Written from Rome to Philemon, by Onesimus, a servant.')
+    ('Heb', 13, 25, 's1', 'Written to the Hebrews from Italy by Timothy.', '\\s1 Written to the Hebrews from Italy by Timothy.')
