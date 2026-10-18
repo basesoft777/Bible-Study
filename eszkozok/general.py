@@ -1069,6 +1069,10 @@ FORRAS_CSAK_JELOLO_SOR = (
     re.compile(r'^<!-- ADAT-HIV:'),
     re.compile(r'^<!-- FORRÁSRÉTEG'),
 )
+# A sajat soros jelolok nyitoi: soron belul allva ForrasHiba (a sorszuro csak a
+# sor eleji jelolot ejti ki; a soron beluli kijutna a kiadhato nezetbe).
+SAJAT_SORU_JELOLOK = ('<!-- INAKTÍV:', '<!-- JELÖLT:', '<!-- ADAT-HIV:', '<!-- FORRÁSRÉTEG',
+                      '<!-- RÉS-KEZDET:', '<!-- RÉS-VÉGE:', '<!-- ADAT-NÉZET:')
 OLVASOI_CSAK_JELOLO_SOR = (
     re.compile(r'^<!-- RÉS-(KEZDET|VÉGE):'),
 )
@@ -1166,6 +1170,10 @@ def forras_elemez(szoveg):
             hibak.append('%d. sor: SZINT-jelölő nem a saját sorában vagy hibás alakban '
                          '(gépi alak: ^<!-- SZINT-(KEZDET|VÉGE): (olvasoi|apparatus|belso) -->$)'
                          % i)
+        for nyito in SAJAT_SORU_JELOLOK:
+            if nyito in sor and not (sor.startswith(nyito) and sor.endswith('-->')):
+                hibak.append('%d. sor: a %s jelölő nem a saját sorában áll; a kiadható nézetből '
+                             'így nem hagyható ki (SEMA 3.10.4)' % (i, nyito.strip('<!- ')))
 
         szint = kornyezet
         if _ADAT_NEZET.match(sor):
