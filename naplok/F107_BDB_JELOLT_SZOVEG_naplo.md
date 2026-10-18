@@ -369,3 +369,80 @@ osztályt hordoz, amelyek a nyers jelölőből javíthatók: (1) **hamis fej** a
 követi: H7121, H3615, H0068); (2) a **fej utáni homonima-római** (`I.`, `II.`) `resz` helyett szakasz (H6440); (3) a **bekezdés
 közepén álló félkövér fej** (M243). A `forras_hiba`-osztály (hiányzó „Qal” név, nem félkövér „1”, „7. 2. a.”) a forrás jelölőjéből nem
 javítható, csak a javítótáblával (5. lépés). Javaslat: `DT-F107g` (`DONTESEK.md`).
+
+### 4.5 A DT-F107g alkalmazása: a három `tabla_hiba`-osztály (F107.22)
+
+A felhasználó (chat, az orkesztrátoron át, 2026-10-18): „DT-F107g (a)+(b) — a három tabla_hiba osztály szabályos javítása,
+újramérés; a forras_hiba csomópontok külön számolva, de mindegyik a nyers forrásban igazolva, tételesen, kézi sorral a
+javítótáblába; a jelentés mindkét számot mutassa.”
+
+1. **Hamis fej a JSON bekezdéstörése után** (`fej_valodi`): a fejet közvetlenül „)”, „,”, „;”, „]” követi → a félkövér hivatkozás, nem
+   fej (a blokk `bekezdes`, a szám a szövegben marad). H7121 „(compare <b>Pu`al</b>); with name”, H3615 „2 );”, H0068 „below 3 );”.
+2. **Homonima-szakasz** (új `szakasz` oszlop): ha a szócikk első római feje „I.”, és előtte nem volt szám-, betű- vagy törzsfej, a
+   római fejek homonima-szakaszok (`szakasz`), nem `resz`; különben fő tagolás (`resz`; H3068 M203, H8478 M130 változatlan). H6440.
+3. **Bekezdésen belüli félkövér fej** (`kozepfej_bont`): a 697 bekezdés közepi, csupa fej-tokenből álló félkövérből 126 felel meg (előtte
+   „.”, „—”, „:”, „;”, „,”; utána nem „)”, „,”, „;”, „.”, „]”; törzsnév után nem szám — „compare Qal 42:10, Pi`el 38:7”); a többi 571 főleg
+   hivatkozás („(see 2)”, „(= Qal 4)”). Mintavétel (25 elfogadott, seed 7): 24 valódi fej, 1 hivatkozás („[Pi`el] 38:7”), ezért került be a
+   törzsnév-utáni-szám kizárás. A **bekezdés végi** fej (utána semmi) akkor valódi, ha a következő blokk fejjel nyit (H3615 „— <b>1</b>
+   </p><p><b>a.</b>”; a `BDB.lexicon` ugyanitt „<b>1.</b> <br> <b>a.</b>”).
+4. **A tokenizáló hibája (a jóváhagyott három osztályon kívül, jelzem):** a szóköz nélküli kombinált fejet („<b>1.a.</b>”, H7626 — mindkét
+   forrásban félkövér bekezdésfej) a tokenizáló nem bontotta; javítva, két token.
+
+Teszt: `teszt_bont.py` 31 teszt (az 1–4. mindegyikére egység- és táblateszt), OK. A tábla `--ellenoriz`-zel bájtra determinisztikus.
+
+**Változás a régi (F107.15) táblához képest:** 36 491 → 36 621 sor (Δ +130); 366 érintett Strong: csak útvonal 239; sorszám + útvonal +
+`resz` + illesztés 90 (a blokk-kettéválás miatt); útvonal + `resz` 16; egyéb mező (szöveg/jel) 15; útvonal + illesztés 6. A `szakasz`
+oszlop 345 sorban (18 Strong) kitöltött. Az illesztés: `egyezik` 7 916 (7 920), `szocikk_resze` 30 (26), a többi változatlan
+(nem egyező 2,15%). A 3. lépés nézet-ellenőrzése újrafuttatva: `azonos` 7 237 (7 097), `sub` 506, `tsv_utolagos` 237 + 10, `szokoz` 95
+(297), `forras_html` 5, `nincs_a_tablaban` 9, ismeretlen okú 0.
+
+`scope=F107 4.5, régi ↔ új tábla és nézet | forras=tabla_diff (scratchpad), python eszkozok/bdb_jelolt/nezet_ellenoriz.py | ts=2026-10-18`
+
+### 4.6 A `forras_hiba` csomópontok — igazolás a nyers forrásban (DictBDB.json ÉS BDB.lexicon)
+
+Minden tétel a két nyers fájl idézett részletével igazolva (az idézet rövidített; a JSON a `<ref0>`/`<font>`/`<a>` burok nélkül); mindegyiknek
+kézi sora van az `adat/bdb_forras_javitas.tsv`-ben (`allapot=kezi`, `manual`; `forras_javit.py` `KEZI`).
+
+| # | Strong | csomópont (érintett) | hiba | DictBDB.json | BDB.lexicon |
+|---|---|---|---|---|---|
+| 1 | H0559 | `Qal` (+ `Qal/2–4`; arany 4, seed M102) | `jelolo_hianyzik`: a „Qal” sima szöveg | „— Qal <i>Perfect</i> ׳א Gen 3:1” | „— Qal Perfect ׳א Gen 3:1” (nincs `<b>`) |
+| 2 | H0559 | `Qal/1` (arany 1, seed M102) | `jelolo_hianyzik` a JSON-ban: az „1” a lapszám után | „April, 1887, 263</sup>.1<i>Say</i>” | „263</sup>.</p><div class="section"><p>1. Say” (a lexikon jelöl) |
+| 3 | H0539 | `Niph'al` (seed M117) | `jelolo_hianyzik`: a „Niph`al” sima szöveg | „see אֵמֻן. Niph`al נֶאֱמַן Prov 11:13” | ugyanígy, `<b>` nélkül |
+| 4 | H0539 | `Niph'al/1` (seed M117) | `jelolo_hianyzik`: az „1.” jelöletlen | „Deut 28:59. 1.<i>carried</i>” | „Deut 28:59. 1. carried by a nurse” (a 2. már `<div class="point"><b>2.</b>`) |
+| 5 | H3318 | `Qal/1` (seed M162) | `jelolo_hianyzik`: a „Qal” név az első törzs előtt hiányzik | „&#8212; </p><p><b>1</b> <i>go</i> or <i>come out</i>” | „— <div class="point"><b>1.</b> go or come out” |
+| 6 | H4900 | `Qal/6`, `Qal/7` (arany 2) | `hamis_jelolo`: a „compare Niph`al” törzsneve a 6. fejbe olvadt | „compare </p><p><b>Niph`al 6.</b> <i>trail</i> seed” | „compare </div><div class="point"><b>Niph`al 6.</b> trail seed” |
+| 7 | H1242 | `-/1/g`, `-/1/h` (arany 2) | `hamis_jelolo`: téves „2.” a g. alpont fejében (a 2. jelentés később: „morrow, next day”) | „<b>d.</b> above, &amp; below </p><p><b>2. g.</b>” | „<b>d.</b> above, &amp; below </div><div class="point"><b>2. g.</b>” |
+
+**7 tétel; aranyminta-csomópont 9 (H0559 5, H4900 2, H1242 2), seed-101 hely 3 (M102, M117, M162).**
+
+**Átsorolva (nem igazolható forráshibaként, jelzem):**
+- H2939 `Pa'el` (arany 1): mindkét forrásban „<b>verb Pa`el</b>” — a törzsnév a fejsor félkövér szófaj-elemében áll; ez a forrás szokása,
+  nem hibája → `tabla_hiba` (korlát: fejsorbeli törzsnév).
+- H0834 `-/a` (arany 2): a lexikonban „<b>4.</b> compounds: <br> <b>a.</b> בְּשֶּׁ, i. q. בַּאֲשֶׁר” — a forrás alpontként tagol, az aranyminta
+  az összetett alakot szakasznak veszi → értelmezési eltérés, nem forráshiba.
+- M130 (H8478): a Hab 3:16 első előfordulása a „II.” bevezetőjében áll (mindkét forrásban), a seed-101 várt helye (`II -/2/a`) a
+  forrásból nem azonosítható egyértelműen → helyazonosítás, nem forráshiba.
+- H6440 (arany 17): l. 4.7 — `tabla_hiba`, a lexikon igazolja.
+
+### 4.7 Újramérés (F107.23) — mindkét mérce
+
+| mérce | teljes | a `forras_hiba` csomópontok / helyek nélkül |
+|---|---|---|
+| aranyminta (425 törzs/jelentés/alpont) | **394 / 425 (92,7%)** (F107.19: 77,2%) | **394 / 416 (94,7%)** |
+| seed-101 (13 hely) | **9 / 13** (F107.19: 7) | **9 / 10** |
+| korpusz a mai szeletelővel (159 804) | **134 150 (83,9%)** (F107.19: 82,1%) | — (a korpuszon a forráshiba soronként nincs osztályozva) |
+
+`scope=F107 4.7 | forras=python eszkozok/bdb_jelolt/szerkezet_osszevet.py --arany --seed101 --korpusz (F107.23, 59937a3f) | ts=2026-10-18`
+
+**A mérce (a `forras_hiba` nélkül ≥ 99% az aranymintán) nem teljesül: 94,7%.** A maradék 22 hiányzó, nem forráshibás csomópont:
+
+| Strong | csomópont | ok | osztály |
+|---|---|---|---|
+| H6440 | 17 (`II` szakasz `-/4/a` … `-/8/b`) | a JSON a mondat közepén tör bekezdést: „(God, with יראה pointed as </p><p><b>Niph`al</b>, see …” és „originally </p><p><b>Qal</b>, afterwards pointed as </p><p><b>Niph`al</b> to avoid …”; a `BDB.lexicon`-ban ugyanez a szövegen belül, `<b>` bekezdés nélkül („pointed as <b>Niph`al</b> to avoid”). A második „Niph`al” után szöveg áll, ezért az (1) szabály nem fogja; a szakasz többi része a hamis Niph'al alá kerül | `tabla_hiba` (hamis fej mondatközi bekezdéstörés után) |
+| H3176 | 2 (`Hiph'il/-1`, `-2`) | számozatlan jelentés: jelölő nélkül nem bontható | `tabla_hiba` (korlát) |
+| H0834 | 2 | l. 4.6 | értelmezési eltérés |
+| H2939 | 1 (`Pa'el`) | l. 4.6 | `tabla_hiba` (korlát: fejsorbeli törzsnév) |
+
+**Becslés (számítás a fenti számokból, nem mérés):** ha a H6440 17 csomópontja helyreállna, 411 / 416 (98,8%) lenne; a H2939-cel 412 /
+416 (99,0%). A hamis fej megkülönböztetéséhez a JSON-ból a megelőző blokk végződése nem elég (a betűre végződő előzmény utáni 366 törzsfej
+többsége valódi, pl. „— only || Qal Perfect”); a `BDB.lexicon` szerkezeti metaadata (ott a fej nyit-e blokkot) igen. Javaslat: `DT-F107h`.
