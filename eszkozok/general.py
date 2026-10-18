@@ -31,6 +31,18 @@ CLI:
                                [--ir]               # csak ezzel ir eles fajlba
                                [--ellenoriz]         # nem ir; diffel, 1-gyel lep ki eltéresnel
 
+F11 M2 (FELADATOK #11) ket celja a kezi forrasra (`motivumok/[ID].md`, sablon 9):
+    python eszkozok/general.py --cel forras --id ID [--melyseg olvasoi|apparatus|belso]
+                               [--forras-fajl UT] [--kimenet DIR]
+        -- a forras nezetei szintszuressel (SEMA 3.10.1-3.10.4), a
+           --kimenet/motivumok_nezet/ ala;
+    python eszkozok/general.py --cel kinyeres --id ID [--forras-fajl UT]
+                               [--jeloltek-fajl UT] [--kimenet DIR] [--ir]
+        -- kinyeres (SEMA 3.10.5): JELÖLT -> jelolt-sor, ADAT-HIV / ADAT-ÉRTÉK
+           ellenorzes, kinyeresi jelentes a --kimenet/kinyeres/ ala; a
+           jeloltek-tablaba csak --ir mellett, hiba nelkuli futasban ir.
+A 'mind' cel ezt a kettot nem futtatja.
+
 --ir nelkul a szkript SOHA nem ir eles fajlba -- csak a --kimenet konyvtar
 ala. Elesitheto cel harom van (ELESITHETO): naplo, index, nyitott. A naplok es
 a study cel a briefek G7 tetele szerint ebben a fazisban NEM elesitheto --
@@ -1276,6 +1288,308 @@ def forras_nezetek_ir(args, motivum_id, melysegek):
     return 0
 
 
+# ---------------------------------------------------------------------------
+# F11 M2 -- kinyeres a kezi forrasbol: (b) -> (a), SEMA 3.10.5, DT84 (2), (3)
+# ---------------------------------------------------------------------------
+#
+# A kinyeres CSAK jelolt-sort ir, a `jeloltek.tsv`-be, `manual`
+# provenienciaval, `dontes=nyitva` ertekkel (a jelolo nem donthet); a
+# jelolt-sorrol ember dont (SEMA 3/2). Mas tablaba a kinyeres nem ir, a
+# forrasba sem (SEMA 3.10.6). A proveniencia-labjegyzetbol NINCS kinyeres:
+# az audit-sort a lekerdezest futtato fo szal rogziti (DT84 (2), SEMA 2.9) --
+# ezert ez a kod a labjegyzetet nem is olvassa.
+#
+# Jelolonkent:
+#   - `<!-- JELÖLT: [igehely] | gerinc: [gerinc_elem] | [indoklas] -->`
+#     (sajat sorban): egy jelolt-sor; kulcs id + igehely; ha a kulcs mar
+#     letezik, NEM ir, a jelentes jelzi a meglevo dontest;
+#   - `ADAT-HIV`, `ADAT-ÉRTÉK`: ellenorzo jelolok; semmit nem irnak. A
+#     `[kulcs]` es a `[kifejezes]` gepi alakjat a sablon 9 6. pontja nem
+#     rogziti (DT-F11d (b), (c)), ezert ma minden ilyen jelolo "nem
+#     ellenorizheto" sort kap, es HIBA-nak szamit: a futas megall, tablat
+#     nem ir (SEMA 3.10.5: elteresnel a futas megall). A tabla letezeset
+#     ettol fuggetlenul ellenorzi.
+#
+# A kinyeresi jelentes generalt, (c) retegbeli kimenet (--kimenet/kinyeres/
+# [ID]_kinyeresi_jelentes.md). Tablat csak --ir mellett ir, es csak akkor,
+# ha a futasban nincs hiba; iras elott es utan a meglevo sorokat bajtra
+# osszeveti (minta: eszkozok/igazolas_migracio.py), elteresnel visszaall.
+
+_JELOLT_SOR = re.compile(r'^<!-- JELÖLT: (.*) -->$')
+_ADAT_HIV_SOR = re.compile(r'^<!-- ADAT-HIV: (.*) -->$')
+_ADAT_ERTEK = re.compile(r'<!-- ADAT-ÉRTÉK: (.*?) -->')
+_IGEHELY = re.compile(r'^(\d?[^\d\s]+) (\d+):(\d+)(?:-(\d+)(?::(\d+))?)?$')
+
+
+def datum_iso_bol(ts):
+    """'2026-10-18' -> '2026.10.18' (SEMA 1.3 DATUM)."""
+    m = re.match(r'^(\d{4})-(\d{2})-(\d{2})', ts)
+    if not m:
+        raise ValueError('a dátum nem ÉÉÉÉ-HH-NN alakú: %r' % ts)
+    return '%s.%s.%s' % m.groups()
+
+
+def igehely_ellenoriz(igehely, konyv_sorrend):
+    """None, ha az igehely kanonikus alakú (SEMA 1.1) es a konyv a normalizalo
+    tablaban van; kulonben a hiba szovege."""
+    m = _IGEHELY.match(igehely)
+    if not m:
+        return 'az igehely nem kanonikus alakú (SEMA 1.1, pl. `1Móz 3:16`): %r' % igehely
+    if m.group(1) not in konyv_sorrend:
+        return 'a könyv nincs a normalizáló táblában (K13): %r' % m.group(1)
+    return None
+
+
+def _adat_tabla_ut(tabla):
+    t = tabla.strip()
+    if t.startswith('adat/'):
+        t = t[len('adat/'):]
+    if not t or '/' in t or '\\' in t or '..' in t or not t.endswith('.tsv'):
+        return None
+    return os.path.join(ADAT, t)
+
+
+def kinyeres_elemez(szoveg, motivum_id, meglevo_jeloltek, konyv_sorrend, datum):
+    """A forras kinyero es ellenorzo jeloloinek feldolgozasa; nem ir semmit.
+
+    Visszaad: dict -- uj_sorok (a jeloltek.tsv mezoneveivel), utkozesek,
+    ismetlesek, ellenorzo (ADAT-HIV/ADAT-ÉRTÉK sorok allapottal), hibak,
+    figyelmeztetesek."""
+    eredmeny = {'uj_sorok': [], 'utkozesek': [], 'ismetlesek': [], 'ellenorzo': [],
+                'hibak': [], 'figyelmeztetesek': []}
+    try:
+        sorok, figy = forras_elemez(szoveg)
+    except ForrasHiba as e:
+        eredmeny['hibak'].extend('a forrás szerkezeti hibája: %s' % h for h in str(e).split('\n'))
+        return eredmeny
+    eredmeny['figyelmeztetesek'].extend(figy)
+    meglevo = {(j['id'], j['igehely']): j for j in meglevo_jeloltek}
+    latott = {}
+    for s in sorok:
+        sor, i = s['sor'], s['szam']
+        szakasz = s['szakasz_cim'] or 'F'
+        m = _JELOLT_SOR.match(sor)
+        if m:
+            reszek = [r.strip() for r in m.group(1).split(' | ')]
+            if len(reszek) < 3 or not reszek[1].startswith('gerinc:'):
+                eredmeny['hibak'].append('%d. sor: hibás JELÖLT-jelölő (alak: <!-- JELÖLT: '
+                                         '[igehely] | gerinc: [gerinc_elem] | [indoklás] -->): %s'
+                                         % (i, sor))
+                continue
+            igehely = reszek[0]
+            gerinc = reszek[1][len('gerinc:'):].strip()
+            indoklas = ' | '.join(reszek[2:]).strip()
+            hiba = igehely_ellenoriz(igehely, konyv_sorrend)
+            if hiba:
+                eredmeny['hibak'].append('%d. sor: %s' % (i, hiba))
+                continue
+            if not gerinc:
+                eredmeny['hibak'].append('%d. sor: a JELÖLT gerinc-eleme üres (CLAUDE.md: '
+                                         'minden sornak meg kell neveznie a gerinc-elemét)' % i)
+                continue
+            if not indoklas:
+                eredmeny['hibak'].append('%d. sor: a JELÖLT indoklása üres (SEMA 2.4: '
+                                         'az indoklas kötelező)' % i)
+                continue
+            if '\t' in indoklas or '\t' in gerinc or '\t' in szakasz:
+                eredmeny['hibak'].append('%d. sor: tabulátor a jelölőben (TSV-mezőbe nem írható)' % i)
+                continue
+            kulcs = (motivum_id, igehely)
+            if kulcs in latott:
+                eredmeny['ismetlesek'].append({'sor': i, 'igehely': igehely, 'elso_sor': latott[kulcs]})
+                continue
+            latott[kulcs] = i
+            if kulcs in meglevo:
+                eredmeny['utkozesek'].append({'sor': i, 'igehely': igehely, 'gerinc': gerinc,
+                                              'dontes': meglevo[kulcs].get('dontes', '')})
+                continue
+            eredmeny['uj_sorok'].append({
+                'id': motivum_id,
+                'igehely': igehely,
+                'forras_kereses': 'scope=manual | forras=motivumok/%s.md#%s | ts=%s'
+                                  % (motivum_id, szakasz, datum),
+                'dontes': 'nyitva',
+                'indoklas': indoklas,
+                'karoli_szo': '',
+                'azonositas_modja': '',
+                'megbizhatosag': '',
+                'datum': datum,
+                '_sor': i,
+                '_gerinc': gerinc,
+            })
+            continue
+        if 'JELÖLT:' in sor:
+            eredmeny['hibak'].append('%d. sor: JELÖLT-jelölő nem a saját sorában: %s' % (i, sor))
+            continue
+        ellenorzendo = []
+        mh = _ADAT_HIV_SOR.match(sor)
+        if mh:
+            ellenorzendo.append(('ADAT-HIV', mh.group(1)))
+        elif 'ADAT-HIV:' in sor:
+            eredmeny['hibak'].append('%d. sor: ADAT-HIV-jelölő nem a saját sorában: %s' % (i, sor))
+        for me in _ADAT_ERTEK.finditer(sor):
+            ellenorzendo.append(('ADAT-ÉRTÉK', me.group(1)))
+        for fajta, torzs in ellenorzendo:
+            reszek = [r.strip() for r in torzs.split(' | ', 1)]
+            tabla = reszek[0]
+            masodik = reszek[1] if len(reszek) > 1 else ''
+            ut = _adat_tabla_ut(tabla)
+            if ut is None or not os.path.exists(ut):
+                allapot = 'HIBA: a tábla nem létezik az adat/ alatt: %r' % tabla
+            else:
+                allapot = ('nem ellenőrizhető: a %s alakja nincs eldöntve (DT-F11d (%s))'
+                           % ('[kulcs]' if fajta == 'ADAT-HIV' else '[kifejezés]',
+                              'b' if fajta == 'ADAT-HIV' else 'c'))
+            eredmeny['ellenorzo'].append({'sor': i, 'fajta': fajta, 'tabla': tabla,
+                                          'masodik': masodik, 'allapot': allapot})
+            eredmeny['hibak'].append('%d. sor: %s %s' % (i, fajta, allapot))
+    return eredmeny
+
+
+def jeloltek_hozzafuz(ut, uj_sorok):
+    """Az uj jelolt-sorok hozzafuzese a jeloltek-tablahoz, split('\\t')/
+    '\\t'.join(); iras elott es utan a meglevo bajtok osszevetese. Visszaad:
+    (kod, uzenet)."""
+    with io.open(ut, 'rb') as f:
+        eredeti = f.read()
+    if eredeti and not eredeti.endswith(b'\n'):
+        return 1, 'a tábla utolsó sora nem sorvéggel zárul -- nem írok bele: %s' % ut
+    sorveg = b'\r\n' if b'\r\n' in eredeti else b'\n'
+    fejlec, regi_sorok = tsv_beolvas(ut)
+    kotelezo = ('id', 'igehely', 'forras_kereses', 'dontes', 'indoklas', 'datum')
+    hianyzik = [k for k in kotelezo if k not in fejlec]
+    if hianyzik:
+        return 1, 'a tábla fejlécéből hiányzik: %s' % ', '.join(hianyzik)
+    uj_bajtok = b''.join(
+        '\t'.join(s.get(o, '') for o in fejlec).encode('utf-8') + sorveg for s in uj_sorok)
+    with io.open(ut, 'wb') as f:
+        f.write(eredeti + uj_bajtok)
+    with io.open(ut, 'rb') as f:
+        utana = f.read()
+    _, utana_sorok = tsv_beolvas(ut)
+    if (not utana.startswith(eredeti) or len(utana_sorok) != len(regi_sorok) + len(uj_sorok)
+            or utana_sorok[:len(regi_sorok)] != regi_sorok):
+        with io.open(ut, 'wb') as f:
+            f.write(eredeti)
+        return 1, 'az írás utáni összevetés eltért -- a tábla visszaállítva: %s' % ut
+    return 0, '%d jelölt-sor hozzáfűzve (a meglévő %d sor bájtra változatlan): %s' % (
+        len(uj_sorok), len(regi_sorok), ut)
+
+
+def _md_cella(ertek):
+    return (ertek or '—').replace('|', '\\|').replace('\n', ' ')
+
+
+def kinyeresi_jelentes(motivum_id, eredmeny, irt):
+    """A kinyeresi jelentes markdown-szovege (generalt, (c) reteg)."""
+    sor = []
+    sor.append(fejlec_stampel('kinyeres --id %s' % motivum_id,
+                              ['motivumok/%s.md' % motivum_id, 'adat/jeloltek.tsv']))
+    sor.append('')
+    sor.append('# Kinyerési jelentés — `%s`' % motivum_id)
+    sor.append('')
+    sor.append('*A forrás (`motivumok/%s.md`) kinyerő és ellenőrző jelölőinek feldolgozása '
+               '(SEMA 3.10.5). A kinyerés csak jelölt-sort ír a `jeloltek.tsv`-be, '
+               '`dontes=nyitva` értékkel; a sorról ember dönt (SEMA 3/2). A '
+               'proveniencia-lábjegyzetből nincs kinyerés (DT84 (2)).*' % motivum_id)
+    sor.append('')
+    sor.append('| | db |')
+    sor.append('|---|---|')
+    sor.append('| új jelölt-sor | %d |' % len(eredmeny['uj_sorok']))
+    sor.append('| ütközés (a kulcs már létezik, nem írva) | %d |' % len(eredmeny['utkozesek']))
+    sor.append('| ismétlődő JELÖLT a forrásban | %d |' % len(eredmeny['ismetlesek']))
+    sor.append('| ADAT-HIV / ADAT-ÉRTÉK jelölő | %d |' % len(eredmeny['ellenorzo']))
+    sor.append('| hiba | %d |' % len(eredmeny['hibak']))
+    sor.append('')
+    if eredmeny['hibak']:
+        allapot = 'a futás megállt (hiba), tábla nem íródott'
+    elif irt:
+        allapot = 'az új jelölt-sorok a táblába íródtak (`--ir`)'
+    else:
+        allapot = 'javaslat: a tábla nem íródott (`--ir` nélkül)'
+    sor.append('**Állapot:** %s.' % allapot)
+    sor.append('')
+    sor.append('## Új jelölt-sorok')
+    sor.append('')
+    if eredmeny['uj_sorok']:
+        sor.append('| forrás-sor | igehely | gerinc (a jelölőből) | forras_kereses | indoklas |')
+        sor.append('|---|---|---|---|---|')
+        for s in eredmeny['uj_sorok']:
+            sor.append('| %d | %s | %s | `%s` | %s |' % (
+                s['_sor'], s['igehely'], _md_cella(s['_gerinc']), s['forras_kereses'],
+                _md_cella(s['indoklas'])))
+        sor.append('')
+        sor.append('*A gerinc-elem a `jeloltek.tsv` sémájában nem mező (SEMA 2.4); a jelentés '
+                   'csak megjeleníti (DT-F11d (d)).*')
+    else:
+        sor.append('*(nincs)*')
+    sor.append('')
+    sor.append('## Ütközések és ismétlések')
+    sor.append('')
+    if eredmeny['utkozesek'] or eredmeny['ismetlesek']:
+        for u in eredmeny['utkozesek']:
+            sor.append('- %d. sor: `%s` már a táblában (`dontes=%s`): a jelölt már minősítve van, '
+                       'nem írva.' % (u['sor'], u['igehely'], u['dontes']))
+        for u in eredmeny['ismetlesek']:
+            sor.append('- %d. sor: `%s` ismétlődik (első: %d. sor), egyszer számítva.'
+                       % (u['sor'], u['igehely'], u['elso_sor']))
+    else:
+        sor.append('*(nincs)*')
+    sor.append('')
+    sor.append('## ADAT-HIV és ADAT-ÉRTÉK')
+    sor.append('')
+    if eredmeny['ellenorzo']:
+        sor.append('| forrás-sor | jelölő | tábla | kulcs / kifejezés | állapot |')
+        sor.append('|---|---|---|---|---|')
+        for e in eredmeny['ellenorzo']:
+            sor.append('| %d | %s | %s | %s | %s |' % (
+                e['sor'], e['fajta'], _md_cella(e['tabla']), _md_cella(e['masodik']),
+                _md_cella(e['allapot'])))
+    else:
+        sor.append('*(nincs)*')
+    sor.append('')
+    sor.append('## Hibák')
+    sor.append('')
+    sor.extend(['- %s' % h for h in eredmeny['hibak']] or ['*(nincs)*'])
+    sor.append('')
+    sor.append('## Figyelmeztetések')
+    sor.append('')
+    sor.extend(['- %s' % f for f in eredmeny['figyelmeztetesek']] or ['*(nincs)*'])
+    return '\n'.join(sor) + '\n'
+
+
+def kinyeres_futtat(args, motivum_id, motivumok, konyv_sorrend):
+    """A --cel kinyeres. Kilepesi kod: 0 rendben, 1 hiba (nincs tablairas)."""
+    ut = forras_ut(motivum_id, args.forras_fajl)
+    if motivum_id not in {m['id'] for m in motivumok}:
+        print('  HIBA: a(z) %s nincs az adat/motivumok.tsv-ben (SEMA 3/1)' % motivum_id,
+              file=sys.stderr)
+        return 1
+    if not os.path.exists(ut):
+        print('  HIBA: a forrás nem létezik: %s' % ut, file=sys.stderr)
+        return 1
+    jeloltek_ut = args.jeloltek_fajl or JELOLTEK_TSV
+    szoveg = io.open(ut, encoding='utf-8', newline='').read()
+    _, jeloltek = tsv_beolvas(jeloltek_ut)
+    eredmeny = kinyeres_elemez(szoveg, motivum_id, jeloltek, konyv_sorrend, datum_iso_bol(TS))
+    kod = 1 if eredmeny['hibak'] else 0
+    irt = False
+    if args.ir and not kod and eredmeny['uj_sorok'] and not args.ellenoriz:
+        kod, uzenet = jeloltek_hozzafuz(jeloltek_ut, eredmeny['uj_sorok'])
+        print('  %s' % uzenet, file=sys.stderr if kod else sys.stdout)
+        irt = not kod
+    elif args.ir and kod:
+        print('  --ir: a futásban hiba van, a tábla NEM íródik.', file=sys.stderr)
+    print('  kinyerés: %d új jelölt-sor, %d ütközés, %d ismétlés, %d ellenőrző jelölő, %d hiba'
+          % (len(eredmeny['uj_sorok']), len(eredmeny['utkozesek']), len(eredmeny['ismetlesek']),
+             len(eredmeny['ellenorzo']), len(eredmeny['hibak'])))
+    for h in eredmeny['hibak']:
+        print('    HIBA: %s' % h, file=sys.stderr)
+    kimenet_ir(args, os.path.join('kinyeres', '%s_kinyeresi_jelentes.md' % motivum_id),
+               kinyeresi_jelentes(motivum_id, eredmeny, irt), ut)
+    return kod
+
+
 def build_parser():
     p = argparse.ArgumentParser(
         prog='general.py',
@@ -1283,7 +1597,7 @@ def build_parser():
     )
     p.add_argument('--cel', required=True,
                     choices=['naplo', 'index', 'naplok', 'study', 'nyitott', 'lexikon',
-                             'torzscikk', 'forras', 'mind'])
+                             'torzscikk', 'forras', 'kinyeres', 'mind'])
     p.add_argument('--id', help='egyetlen motívum-ID-re szűkítés (opcionális)')
     p.add_argument('--kimenet', default=os.path.join(ROOT, 'generalt_proba'),
                     help='alapértelmezés: generalt_proba/')
@@ -1300,8 +1614,11 @@ def build_parser():
                     help='F11 M2, --cel forras: a nézet mélysége (olvasoi | apparatus | belso); '
                          'alapértelmezés: mind a három')
     p.add_argument('--forras-fajl',
-                    help='F11 M2, --cel forras: a motivumok/[ID].md helyett ezt a fájlt olvassa '
-                         '(próbához, repón kívüli ideiglenes fájllal)')
+                    help='F11 M2, --cel forras / kinyeres: a motivumok/[ID].md helyett ezt a '
+                         'fájlt olvassa (próbához, repón kívüli ideiglenes fájllal)')
+    p.add_argument('--jeloltek-fajl',
+                    help='F11 M2, --cel kinyeres: az adat/jeloltek.tsv helyett ebbe a táblába '
+                         'ír --ir mellett (próbához, repón kívüli másolattal)')
     p.add_argument('--ellenoriz', action='store_true',
                     help='nem ír; a generált blokkot az ÉLES fájlban álló marker-blokk '
                          'törzsével veti össze, eltérésnél/hiánynál 1-gyel lép ki')
@@ -1381,7 +1698,7 @@ def main():
         import lexikon_general as _lg
         _lg.TBESH_HELYI_LEXICON = True
 
-    if args.ir and args.cel not in ELESITHETO and args.cel != 'mind':
+    if args.ir and args.cel not in ELESITHETO and args.cel not in ('mind', 'kinyeres'):
         print('FIGYELEM: a(z) %r cél NEM élesíthető (brief G7) -- a kimenet a '
               '--kimenet könyvtár alá megy.' % args.cel, file=sys.stderr)
 
@@ -1416,6 +1733,16 @@ def main():
             if args.ellenoriz:
                 print('  --ellenoriz: a(z) %r cél nem élesíthető, nincs mihez mérni -- PIROS.' % cel)
                 vegso_kod = max(vegso_kod, 1)
+            continue
+
+        if cel == 'kinyeres':
+            # F11 M2: --ir mellett a jelölt-sorokat a jeloltek-táblába fűzi
+            # (SEMA 3.10.5); --ir nélkül csak a kinyerési jelentés készül.
+            if not args.id:
+                print('  HIBA: a --cel kinyeres --id-t kér.', file=sys.stderr)
+                vegso_kod = max(vegso_kod, 2)
+                continue
+            vegso_kod = max(vegso_kod, kinyeres_futtat(args, args.id, motivumok, konyv_sorrend))
             continue
 
         if cel in ELESITHETO and cel not in ('lexikon', 'torzscikk') and (args.ir or args.ellenoriz):
