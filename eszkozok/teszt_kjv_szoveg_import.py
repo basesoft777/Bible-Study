@@ -238,6 +238,40 @@ class JovahagyottMintaZipbol(unittest.TestCase):
                 self.assertEqual(rs[ih][1:], elvart)
 
 
+class IrasElottiOsszevetes(unittest.TestCase):
+    """Az importáló írás előtt összeveti a meglévő táblát az újjal (CLAUDE.md, TSV-olvasás; ELLENOR_KJV_SZOVEG ELTÉRÉS)."""
+
+    def tabla(self, ts='2026-10-18', allapot='# ÁLLAPOT: x', sorok=('Gen.1.1\tIn the beginning\tIn the beginning\t\t',)):
+        return '\n'.join(['# GENERÁLT: eszkozok/kjv_szoveg_import.py — kézzel nem szerkesztendő.',
+                          '# proveniencia: scope=s | forras=f sha256=ab | ts=' + ts, allapot,
+                          'Igehely\tSzöveg\tSzöveg_jelolt\tElotte\tUtoirat'] + list(sorok)) + '\n'
+
+    def test_uj_tabla(self):
+        self.assertEqual(K.iras_dontes(None, self.tabla())[0], 'ir')
+
+    def test_csak_a_ts_mas_a_meglevo_marad(self):
+        self.assertEqual(K.iras_dontes(self.tabla(), self.tabla(ts='2026-10-19'))[0], 'valtozatlan')
+        self.assertEqual(K.iras_dontes(self.tabla(), self.tabla())[0], 'valtozatlan')
+
+    def test_adatsor_elteres_megall(self):
+        uj = self.tabla(sorok=('Gen.1.1\tIn the beginning God\tIn the beginning God\t\t',))
+        with self.assertRaises(K.AdatElteres):
+            K.iras_dontes(self.tabla(), uj)
+        with self.assertRaises(SystemExit):
+            K.iras_dontes(self.tabla(), self.tabla(sorok=()))
+
+    def test_felulir_kapcsoloval(self):
+        uj = self.tabla(sorok=('Gen.1.1\tmas\tmas\t\t',))
+        dontes, uzenet = K.iras_dontes(self.tabla(), uj, felulir=True)
+        self.assertEqual(dontes, 'ir')
+        self.assertIn('--felulir', uzenet)
+
+    def test_fejlec_valtozas_ts_nelkul_ir(self):
+        dontes, uzenet = K.iras_dontes(self.tabla(), self.tabla(allapot='# ÁLLAPOT: elfogadva'))
+        self.assertEqual(dontes, 'ir')
+        self.assertIn('adatsorok bájtra azonosak', uzenet)
+
+
 class Fejlec(unittest.TestCase):
     def test_fejlecsorok(self):
         f = K.fejlecsorok('ab' * 32, '2026-10-18', collections.Counter(w=3))

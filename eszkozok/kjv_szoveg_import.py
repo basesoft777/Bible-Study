@@ -267,10 +267,50 @@ def fejlecsorok(zsha, ts, sz):
             '# veszteség (DT-F107d (2); mit dob el az importáló): ' + vesz]
 
 
+class AdatElteres(SystemExit):
+    pass
+
+
+RE_TS = re.compile(r'(\| ts=)\S+')
+
+
+def _bont(tartalom):
+    """-> (fejlecsorok, adatsorok): a '#' kezdetu sorok es a tobbi (oszlopfejlec + adatsorok), sorrendben."""
+    sorok = tartalom.split('\n')
+    if sorok and sorok[-1] == '':
+        sorok = sorok[:-1]
+    return [s for s in sorok if s.startswith('#')], [s for s in sorok if not s.startswith('#')]
+
+
+def iras_dontes(regi, uj, felulir=False):
+    """Iras elotti osszevetes (CLAUDE.md, TSV-olvasas; minta: eszkozok/igazolas_migracio.py).
+    regi: a meglevo tabla tartalma (None, ha nincs), uj: az uj tartalom.
+    -> ('ir', uzenet) vagy ('valtozatlan', uzenet); eltero adatsornal AdatElteres, hacsak felulir=True.
+    Az adatsorok (oszlopfejlec + versek) bajtra osszevetve; a fejlecsorok a proveniencia ts-e nelkul
+    (a ts naponta valtozik): ha csak a ts ter el, a meglevo fajl marad (stabil tartalom)."""
+    if regi is None:
+        return 'ir', 'új tábla'
+    rf, ra = _bont(regi)
+    uf, ua = _bont(uj)
+    if ra != ua:
+        elter = [i for i, (x, y) in enumerate(zip(ra, ua)) if x != y]
+        leiras = 'adatsor eltér: régi %d, új %d sor; az első eltérő sorindexek: %s' % (len(ra), len(ua), elter[:5])
+        if not felulir:
+            raise AdatElteres('⛔ ' + leiras + ' -- a meglévő tábla nem íródik felül; szándékos felülírás: --felulir')
+        return 'ir', 'felülírás (--felulir): ' + leiras
+    fej_elter = [i for i, (x, y) in enumerate(zip(rf, uf)) if RE_TS.sub(r'\1', x) != RE_TS.sub(r'\1', y)]
+    if len(rf) != len(uf):
+        fej_elter.append('sorszam')
+    if not fej_elter:
+        return 'valtozatlan', 'az adatsorok bájtra azonosak, a fejléc csak a ts-ben tér el (vagy abban sem): a meglévő tábla marad'
+    return 'ir', 'az adatsorok bájtra azonosak; a fejlécsorok közül eltér: %s (a ts-en kívül)' % fej_elter
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--munka', required=True)
     ap.add_argument('--kimenet', default=os.path.join(REPO, 'konkordancia', 'KJV_teljes_szoveg.tsv'))
+    ap.add_argument('--felulir', action='store_true', help='eltérő adatsorok esetén is felülírja a meglévő táblát (szándékos felülírás)')
     a = ap.parse_args()
     zp = os.path.join(a.munka, 'kjv.zip')
     zsha = sha256(zp)
@@ -287,8 +327,13 @@ def main():
     ts = datetime.date.today().isoformat()
     fej = fejlecsorok(zsha, ts, sz)
     sor = fej + ['\t'.join(['Igehely', 'Szöveg', 'Szöveg_jelolt', 'Elotte', 'Utoirat'])] + ['\t'.join(r) for r in rs]
-    with open(a.kimenet, 'w', encoding='utf-8', newline='\n') as fh:
-        fh.write('\n'.join(sor) + '\n')
+    uj = '\n'.join(sor) + '\n'
+    regi = open(a.kimenet, 'rb').read().decode('utf-8') if os.path.exists(a.kimenet) else None
+    dontes, uzenet = iras_dontes(regi, uj, a.felulir)
+    print('összevetés:', uzenet)
+    if dontes == 'ir':
+        with open(a.kimenet, 'w', encoding='utf-8', newline='\n') as fh:
+            fh.write(uj)
     print('sorok=%d; ures Szöveg=%d; Elotte=%d; Utoirat=%d; vershid=%d; folytatas-sor=%d' % (
         len(rs), sum(1 for r in rs if not r[1]), sum(1 for r in rs if r[3]), sum(1 for r in rs if r[4]), sz['vershid'], sz['vers_folytatas_sor']))
     print('kimenet:', a.kimenet)

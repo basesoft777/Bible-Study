@@ -4,7 +4,7 @@
 
 *proveniencia: scope=KJV_SZOVEG M2 mérés (M-a, M-b, M-c, F19-kérdés) | forras=konkordancia/KJV_teljes_szoveg.tsv sha256=f385295b957ba35cd99351b3ff500fc7d8e4c963fd854581f46b0eff2befe5ce + konkordancia/KJV_Strongs_teljes.tsv + naplok/F19_hianyok.tsv + kjv.zip sha256=00532b6db1825cb78fd34de2097fc280ce03ee22ef0bdac5243ef4beaca4d447 | ts=2026-10-18T15:47:52Z*
 
-Mérőkód: `naplok/KJV_SZOVEG_meres.py` (`python -I`). Nem a generátorban van: a táblákat `split('\t')`-tel olvassa, a nyers zipet közvetlenül, a jelölőszámokat a generátortól függetlenül számolja. A futás kimenete: `naplok/KJV_SZOVEG_meres_kimenet.txt`. A tábla: `konkordancia/KJV_teljes_szoveg.tsv`, 31 218 sor, 8 717 061 bájt. A generátort újrafuttatva **bájtra azonos** táblát kaptam (sha256 `f385295b…`).
+Mérőkód: `naplok/KJV_SZOVEG_meres.py` (`python -I`). Nem a generátorban van: a táblákat `split('\t')`-tel olvassa, a nyers zipet közvetlenül, a jelölőszámokat a generátortól függetlenül számolja. A futás kimenete: `naplok/KJV_SZOVEG_meres_kimenet.txt`. A tábla: `konkordancia/KJV_teljes_szoveg.tsv`, 31 218 sor, 8 717 061 bájt. A generátort újrafuttatva **bájtra azonos** táblát kaptam (sha256 `f385295b…`). *Pontosítás (F118.22, az ELLENOR_KJV_SZOVEG ELTÉRÉSE nyomán):* a bájtazonosság az **adatsorokra** (az oszlopfejléc és a 31 218 versor) mindig áll. A fejlécsorokra csak aznap, mert a proveniencia-sor `ts`-e a futás napja. Az importáló ezért írás előtt összeveti a meglévő táblát az újjal (`iras_dontes`): eltérő adatsornál megáll, és felülírni csak a `--felulir` kapcsolóval lehet. Ha csak a `ts` tér el, a meglévő tábla változatlanul marad.
 
 ## Eredmény
 
