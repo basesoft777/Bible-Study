@@ -81,6 +81,21 @@ tartalmaz. Ez KÉTSZER is előfordult a projektben (scrollmapper KJV-JSON, getbi
 API) — mindkét esetben csak a nyers kimenet tényleges ellenőrzése derítette ki.
 **Szabály: soha ne higgy a fájlnévnek/leírásnak ellenőrzés nélkül.**
 
+**Két további szabály a nyers forrásról** *(DT-F107d, 2026-10-18; a tanulság: a BDB 2026.09.02-i
+importja (`142ad625`) a `_convert_bdb.py`-ban eldobta a szócikkek tagolását, a nyers `DictBDB.json` sem a
+repóba, sem hash-sel a naplóba nem került, és a veszteség csak hat hét múlva, a szeletelő és a fordítás
+hibáin át követődött vissza; `konkordancia/BDB_teljes_unabridged_README.md`, „Szerkezetvesztés a
+konverzióban”)*:
+
+1. **Nyers forrás megőrzése.** Minden import nyers forrása SHA-256-tal és forrásazonosítóval (URL,
+   forrásrepó-commit, letöltés dátuma) rögzített helyen marad meg: a repóban, vagy ha a méret vagy a licenc
+   nem engedi, a dataset README-jében rögzített helyen, hash-sel. Nem elég a származtatott alak. A
+   konverziós szkript a repóban van, és a nyers forrásból újrafuttatva **bájtra** a származtatott alakot
+   adja; ha nem, az eltérés oka a README-ben áll.
+2. **Veszteséges konverzió naplózása.** Ha a konverzió szerkezetet (jelölést, tagolást, azonosítót) dob el,
+   az döntés, nem technikai részlet: a dataset README-jében naplózva, mit dob el, miért, és melyik szkript.
+   Minden mérés alapja a nyers forrás, nem a származtatott alak.
+
 ---
 
 ## 3. KIS MINTA validálása — mielőtt a teljes adatra lefuttatnánk
