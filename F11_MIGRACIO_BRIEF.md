@@ -5,11 +5,11 @@ kod: MIGRACIO
 tipus: feladat
 fazis: 1
 modell: opus
-allapot: megallt
-ag: claude/f11-migracio
+allapot: fut
+ag: claude/f11-m2
 munka: ertelmezo
 ad: az `indoklas` oszlop felvéve a `kapcsolatok.tsv`-be (önálló séma-tétel), az ISTENTISZT-001 egyetlen kézi forrásból renderel (szétválasztással, leképezési táblával, N0/D2–D6 diffmérce szerint), a két élő sablon (2_ v18, 4_ v10) visszaírási szabálya teljesen átírva; a 2. lépcső (a többi 6 motívum) külön jóváhagyással
-kovetkezo: Te: az M1 (leképezési tábla) jóváhagyva és a main-en (PR #393, 2026-10-18); az M2 (generátor-képességek) a #116 (E28/E29, D6) merge-e után, külön jóváhagyással indul
+kovetkezo: M2 (generátor-képességek: a forrás olvasása szintszűréssel, kinyerés, kinyerési jelentés) fut a claude/f11-m2 ágon; az M3 nem indul (DT-F11a, külön jóváhagyás)
 pr: #393
 olvas: [tematikus_lezart/ISTENTISZT-001*, tematikus_lezart/naplok/ISTENTISZT-001*, ADATVAGYON_TERV.md, MUNKATERV.md, ATALAKITASI_TERV.md.md, adat/szotar_szerepek.tsv, adat/SEMA.md, naplok/MOTIVUM_FORRAS_pilot_terv.md, naplok/MOTIVUM_FORRAS_ci_terv.md, naplok/MOTIVUM_FORRAS_lekepezes.tsv, naplok/MOTIVUM_FORRAS_M0.py, naplok/F23_zaras.md, F23_MOTIVUM_FORRAS_BRIEF.md, sablonok/9_PaRDeS_motivum_forras_sablon.md, tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md, tematikus_lezart/naplok/Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md, generalt_proba/F78_szerepmatrix_proba/, eszkozok/nulladiff.sh, eszkozok/general.py]
 ir: [adat/SEMA.md, adat/kapcsolatok.tsv, adat/jeloltek.tsv, adat/lexikon_hivatkozasok.tsv, adat/res_forras.tsv, adat/auditok.tsv, eszkozok/betolt.py, eszkozok/ellenoriz.py, eszkozok/f3_1_betoltes.py, eszkozok/sqlite_epit.py, eszkozok/general.py, eszkozok/lexikon_general.py, eszkozok/torzscikk_general.py, motivumok/ISTENTISZT-001.md, lexikon/ISTENTISZT-001_TUDOMANYOS.md, lexikon/ISTENTISZT-001_TORZSCIKK.md, tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md, tematikus_lezart/naplok/Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md, sablonok/2_PaRDeS_bovitett_sablon.md, sablonok/4_PaRDeS_tematikus_sablon.md, sablonok/9_PaRDeS_motivum_forras_sablon.md, naplok/F11_szetvalasztas_ISTENTISZT-001.tsv, naplok/F11_zaras.md, naplok/ELLENOR_F11_S.md, naplok/ELLENOR_F11_M.md, eszkozok/ellenorzes/e28_migralt_nezetek.tsv]
