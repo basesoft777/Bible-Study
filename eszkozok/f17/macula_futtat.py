@@ -46,6 +46,9 @@ def strong_szam(x):
 
 
 def fut(args):
+    # --kimenet (F115.1): az irasi utak atiranyitasa (konkordancia/ es naplok/ almappa); alapertelmezes: a repo
+    ki_konk = os.path.join(args.kimenet, 'konkordancia') if args.kimenet else K.KONK
+    ki_naplok = os.path.join(args.kimenet, 'naplok') if args.kimenet else os.path.join(K.REPO, 'naplok')
     usfm_mag, usfm_step, mag_usfm, kanoni = K.konyvtablak()
     szotar = M.szotar_strongok()
     karoli_v = K.karoli_versek()
@@ -122,7 +125,7 @@ def fut(args):
     fejl = M.fejlec_sorok(M.HEBER_URL, 'commit ' + hsha, 'CC BY 4.0 (Biblica, Inc); l. naplok/F17_import_naplo.md',
                           PARANCS, 'sorok: morfema-szint (lowfat <w>); ref = Macula (MT/WLC) szamozas; '
                           'karoli = KK-alapu Karoli-vers(ek), ;-vel elvalasztva')
-    heber_fajlok = M.tsv_ir_konyvenkent(K.KONK, fejl, M.HEBER_OSZLOP, heber)
+    heber_fajlok = M.tsv_ir_konyvenkent(ki_konk, fejl, M.HEBER_OSZLOP, heber)
     stat['heber'] = {'sorok': len(heber), 'fajlok': dict(heber_fajlok), 'lowfat_w': len(lista), 'commit': hsha, 'allapot': dict(allapot_db),
                      'strong_illesztes': dict(sill_db), 'macula_versek': len(versek_macula),
                      'macula_versek_karolival': sum(1 for k in versek_macula if inv.get(k)),
@@ -130,7 +133,7 @@ def fut(args):
                      'karoli_versek_kk_nelkul': kk_nelkuli,
                      'konyvkod_elteres': konyv_elteres, 'ref_hiba': hiba_ref}
 
-    M.tsv_ir(os.path.join(K.REPO, 'naplok', 'F17_kezi_fejezetek.tsv'),
+    M.tsv_ir(os.path.join(ki_naplok, 'F17_kezi_fejezetek.tsv'),
              ['GENERÁLT: eszkozok/f17/macula_futtat.py — kézzel nem szerkesztendő.',
               'proveniencia: scope=a KK KEZI-osztalyu sorai altal erintett KJV-fejezetek | forras=konkordancia/Karoli_versmegfeleltetes.tsv, naplok/KAROLI_KK1b_fejezetosztaly.tsv (kjv_max), Macula heber (MT-versszam) | ts=%s' % M.ma(),
               'az igazolt_mt_vers_db / nem_igazolt_mt_vers_db az MT-CELVERSEKET szamolja (egy Karoli-vers tobb MT-verset is kaphat: Pred 2:26 = MT 2:25+2:26, ezert 250 igazolt MT-vers vs. 249 igazolt kk_kjv Karoli-vers); a kezi_sor_db a KEZI-sorok szama fejezetenkent',
@@ -215,11 +218,11 @@ def fut(args):
     fejl = M.fejlec_sorok(M.GOROG_URL, 'commit ' + gsha, 'CC BY 4.0 (Biblica, Inc); l. naplok/F17_import_naplo.md',
                           PARANCS, 'sorok: szo-szint; kiadas = N1904 (Nestle 1904) | SBLGNT; ref = Macula; '
                           'karoli = Karoli-vers (ÚSZ: azonos szamozas, 8 verzifikacios kivetellel)')
-    M.tsv_ir(os.path.join(K.KONK, 'Macula_gorog.tsv'), fejl, M.GOROG_OSZLOP, gorog)
+    M.tsv_ir(os.path.join(ki_konk, 'Macula_gorog.tsv'), fejl, M.GOROG_OSZLOP, gorog)
 
     # ---------- illesztetlen ----------
     ill_oszlop = ['tipus', 'nyelv', 'igehely_macula', 'igehely_karoli', 'strong', 'sorok', 'ok', 'pelda', 'allapot']
-    M.tsv_ir(os.path.join(K.REPO, 'naplok', 'F17_illesztetlen.tsv'),
+    M.tsv_ir(os.path.join(ki_naplok, 'F17_illesztetlen.tsv'),
              ['GENERÁLT: eszkozok/f17/macula_futtat.py — kézzel nem szerkesztendő.',
               'proveniencia: scope=Macula heber+gorog import illesztetlen elemei | forras=%s ; %s | ts=%s' % (
                   M.HEBER_URL, M.GOROG_URL, M.ma()),
@@ -286,7 +289,7 @@ def fut(args):
             kulonbseg += 1
         ki87.append([motivum, igehely, mtv, mod, kulcsszo, munka_strong, allapot, azon, hszo, glemma, gstrong, r06,
                      'igen' if r06 == allapot else 'nem', megj])
-    M.tsv_ir(os.path.join(K.REPO, 'naplok', 'F17_87_hely.tsv'),
+    M.tsv_ir(os.path.join(ki_naplok, 'F17_87_hely.tsv'),
              ['GENERÁLT: eszkozok/f17/macula_futtat.py — kézzel nem szerkesztendő.',
               'proveniencia: scope=87 fuggo LXX-hely (naplok/FORRAS_FJ1_lxx_jeloltek.tsv) | forras=%s@%s | ts=%s' % (
                   M.HEBER_URL, hsha, M.ma()),
@@ -296,7 +299,8 @@ def fut(args):
               'azonositas', 'macula_heber_szo', 'macula_gorog', 'macula_gorog_strong', 'f06_allapot', 'egyezik_f06',
               'megjegyzes'], ki87)
     stat['hely87'] = {'sorok': len(ki87), 'allapot': dict(all87), 'f06_eltero_sor': kulonbseg}
-    with open(os.path.join(K.REPO, 'naplok', 'F17_import_stat.json'), 'w', encoding='utf-8', newline='\n') as f:
+    os.makedirs(ki_naplok, exist_ok=True)
+    with open(os.path.join(ki_naplok, 'F17_import_stat.json'), 'w', encoding='utf-8', newline='\n') as f:
         json.dump(stat, f, ensure_ascii=False, indent=1, sort_keys=True)
         f.write('\n')
     return stat
@@ -306,6 +310,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--heber', required=True)
     ap.add_argument('--gorog', required=True)
+    ap.add_argument('--kimenet', help='ideiglenes kimeneti gyoker (konkordancia/ es naplok/ almappaval); alapertelmezes: a repo')
     args = ap.parse_args()
     stat = fut(args)
     print(json.dumps(stat, ensure_ascii=False, indent=1, sort_keys=True))
