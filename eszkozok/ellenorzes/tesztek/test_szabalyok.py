@@ -247,6 +247,22 @@ class E9Teszt(unittest.TestCase):
             talalatok = SZ.e9_angol_sense([rel])
             self.assertEqual(talalatok, [])
 
+    # F11 M3 (DT-F11f (2)): az archivum/ kivétel csak az archívumra szól.
+    ARCHIV_SOR = '<!-- ARCHÍV: x.md @ 0 · F11 M3 · 2026-10-18 · nem forrás -->\nBDB sense 3, nem sense 2.c.\n'
+
+    def test_negativ_archivum_kizarva(self):
+        with _IdeiglenesGyoker() as gy:
+            rel = _ir(gy, 'archivum/PROBA-001/Proba_tematikus.md', self.ARCHIV_SOR)
+            talalatok = SZ.e9_angol_sense([rel])
+            self.assertEqual(talalatok, [])
+
+    def test_pozitiv_ugyanaz_tematikus_alatt_hiba(self):
+        with _IdeiglenesGyoker() as gy:
+            rel = _ir(gy, 'tematikus_lezart/Proba_tematikus.md', self.ARCHIV_SOR)
+            talalatok = SZ.e9_angol_sense([rel])
+            self.assertEqual(len(talalatok), 1)
+            self.assertEqual(talalatok[0].szint, 'HIBA')
+
 
 class E10Teszt(unittest.TestCase):
     """D17: E10 hatokore adat/ es lexikon/ -- a gyoker brief-/tervfajlok

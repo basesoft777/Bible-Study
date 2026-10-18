@@ -6,9 +6,12 @@ tipus: feladat
 fazis: folyamat
 munka: adat
 modell: opus
-allapot: nem_indult
-ad: a `konkordancia/KJV_teljes_szoveg.tsv` versenként a teljes KJV-szöveggel (eBible, Public Domain), a `KJV_Strongs_teljes.tsv`-vel mért vershalmaz- és szóegyezéssel, dataset- és licencsorral; a Károli melletti megjelenítés helye eldöntve, a megjelenítési brief tervezete a `beerkezo/`-ben
-kovetkezo: a /kovetkezo indítja; ⛔ M0 (forrás, licenc, importáló), ⛔ M1 (minta), ⛔ M4 (a megjelenítés helye)
+allapot: lezarva
+ag: claude/f118-kjv-szoveg
+ad: a teljes KJV-szöveg új konkordancia-táblája (KJV_teljes_szoveg, a menet hozza létre) versenként a teljes KJV-szöveggel (eBible, Public Domain), a `KJV_Strongs_teljes.tsv`-vel mért vershalmaz- és szóegyezéssel, dataset- és licencsorral; a Károli melletti megjelenítés helye eldöntve, a megjelenítési brief tervezete a `beerkezo/`-ben
+kovetkezo: "lezárva; Te: a PR #407 merge-e; utána /befogad: beerkezo/KJV_SZOVEG_MEGJELENITES_BRIEF_TERVEZET.md"
+pr: https://github.com/basesoft777/Bible-Study/pull/407
+lezarva_osszegzes: "konkordancia/KJV_teljes_szoveg.tsv: 31 218 sor (31 102 vers + 116 felirat), az új eBible-zipből (00532b6d…); M-a S ⊆ T, M-b 0 megmagyarázatlan, M-c 0 üres; licenc kozkincs (DT-F118a); a megjelenítés külön feladat (DT-F118c, beerkezo/-tervezet); zárójelentés: naplok/KJV_SZOVEG_zaras.md"
 olvas: [konkordancia/KJV_Strongs_teljes.tsv, naplok/F19_hianyok.tsv, eszkozok/f19_ebible_import.py, konkordancia/Konyv_normalizalo_tabla.tsv, adat/datasetek.tsv, adat/licencek.tsv, adat/SEMA.md, Rendszerfejlesztesi_playbook.md]
 ir: [eszkozok/kjv_szoveg_import.py, eszkozok/teszt_kjv_szoveg_import.py, konkordancia/KJV_teljes_szoveg.tsv, adat/datasetek.tsv, adat/licencek.tsv, adat/SEMA.md, beerkezo/KJV_SZOVEG_MEGJELENITES_BRIEF_TERVEZET.md]
 fugg: []

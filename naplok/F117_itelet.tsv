@@ -1,0 +1,352 @@
+# F117 4.2–4.3 kézi ítélet: a Károli 1908 és a KJV szövegének versenkénti elolvasása után, a versmegfeleltető tábla nélkül
+# proveniencia: scope=manual (az A–D′ célhalmaz, 346 Károli-vers) | forras=Karoli_1908.tsv + KJV_Strongs_teljes.tsv (eszkozok/versmegf_szoveg_osszevet.py --teljes --szoveg --csak-cel kiírása) | modell=claude-opus-5-5 | n=346 | ts=2026-10-18
+# az itelet_kjv a tartalmilag megfelelő KJV-vers(ek); ahol a Károli-vers két KJV-verset fog át, mindkettő (`;`); ahol két Károli-vers egy KJV-versre esik, mindkét sor ugyanazt a KJV-verset kapja (a tábla-szabály döntés tárgya, l. naplok/F117_bizonytalan.md)
+# döntés: a 8 bizonytalan pár (naplok/F117_bizonytalan.md 2. pont) a DT-F117c szerint, a sor megjegyzésében „döntés:” jelöléssel; a javító bemenetbe az Ézs 64:1-hez a 64:1 kerül (az itelet_kjv a tartalmi átfogást mutatja)
+# ellenorizendo: a versfélen, mondathatáron (összevonás-szomszéd) vagy fejezetváltón múló ítéletek; a KJV-oldalt csak a Strong-címkézett szavakból olvastam (teljes KJV-szöveg nincs a repóban), ezért ezek a teljes KJV-szövegen újraellenőrizendők (N-F117c); n=28
+igehely_karoli	itelet_kjv	megjegyzes	ellenorizendo
+2Móz 35:1	35:1	Mózes összegyűjti a gyülekezetet = KJV 35:1; a 35:1–35 végig azonos számú	
+2Móz 35:2	35:2	tartalmilag egyezik (kézi olvasás)	
+2Móz 35:3	35:3	tartalmilag egyezik (kézi olvasás)	
+2Móz 35:4	35:4	tartalmilag egyezik (kézi olvasás)	
+2Móz 35:5	35:5	tartalmilag egyezik (kézi olvasás)	
+2Móz 35:6	35:6	tartalmilag egyezik (kézi olvasás)	
+2Móz 35:7	35:7	tartalmilag egyezik (kézi olvasás)	
+2Móz 35:8	35:8	tartalmilag egyezik (kézi olvasás)	
+2Móz 35:9	35:9	tartalmilag egyezik (kézi olvasás)	
+2Móz 35:10	35:10	tartalmilag egyezik (kézi olvasás)	
+2Móz 35:11	35:11	tartalmilag egyezik (kézi olvasás)	
+2Móz 35:12	35:12	tartalmilag egyezik (kézi olvasás)	
+2Móz 35:13	35:13	tartalmilag egyezik (kézi olvasás)	
+2Móz 35:14	35:14	tartalmilag egyezik (kézi olvasás)	
+2Móz 35:15	35:15	tartalmilag egyezik (kézi olvasás)	
+2Móz 35:16	35:16	tartalmilag egyezik (kézi olvasás)	
+2Móz 35:17	35:17	tartalmilag egyezik (kézi olvasás)	
+2Móz 35:18	35:18	tartalmilag egyezik (kézi olvasás)	
+2Móz 35:19	35:19	tartalmilag egyezik (kézi olvasás)	
+2Móz 35:20	35:20	tartalmilag egyezik (kézi olvasás)	
+2Móz 35:21	35:21	tartalmilag egyezik (kézi olvasás)	
+2Móz 35:22	35:22	tartalmilag egyezik (kézi olvasás)	
+2Móz 35:23	35:23	tartalmilag egyezik (kézi olvasás)	
+2Móz 35:24	35:24	tartalmilag egyezik (kézi olvasás)	
+2Móz 35:25	35:25	tartalmilag egyezik (kézi olvasás)	
+2Móz 35:26	35:26	tartalmilag egyezik (kézi olvasás)	
+2Móz 35:27	35:27	tartalmilag egyezik (kézi olvasás)	
+2Móz 35:28	35:28	tartalmilag egyezik (kézi olvasás)	
+2Móz 35:29	35:29	tartalmilag egyezik (kézi olvasás)	
+2Móz 35:30	35:30	tartalmilag egyezik (kézi olvasás)	
+2Móz 35:31	35:31	tartalmilag egyezik (kézi olvasás)	
+2Móz 35:32	35:32	tartalmilag egyezik (kézi olvasás)	
+2Móz 35:33	35:33	tartalmilag egyezik (kézi olvasás)	
+2Móz 35:34	35:34	tartalmilag egyezik (kézi olvasás)	
+2Móz 35:35	35:35	Bezaleel és Aholiab bölcsessége = KJV 35:35 (a KJV 35. fejezet utolsó verse)	
+2Móz 35:36	36:1	„Bésaléel és Aholiáb … csinálják meg” = KJV 36:1 (fejezetváltó)	fejezetvalto: Károli 2Móz 35:36 → KJV 36:1
+2Móz 36:1	36:2	Mózes elhívja Bésaléelt = KJV 36:2; a 36:n = KJV 36:n+1 végig	
+2Móz 36:2	36:3	tartalmilag egyezik (kézi olvasás)	
+2Móz 36:3	36:4	tartalmilag egyezik (kézi olvasás)	
+2Móz 36:4	36:5	tartalmilag egyezik (kézi olvasás)	
+2Móz 36:5	36:6	tartalmilag egyezik (kézi olvasás)	
+2Móz 36:6	36:7	tartalmilag egyezik (kézi olvasás)	
+2Móz 36:7	36:8	tartalmilag egyezik (kézi olvasás)	
+2Móz 36:8	36:9	tartalmilag egyezik (kézi olvasás)	
+2Móz 36:9	36:10	tartalmilag egyezik (kézi olvasás)	
+2Móz 36:10	36:11	tartalmilag egyezik (kézi olvasás)	
+2Móz 36:11	36:12	tartalmilag egyezik (kézi olvasás)	
+2Móz 36:12	36:13	tartalmilag egyezik (kézi olvasás)	
+2Móz 36:13	36:14	tartalmilag egyezik (kézi olvasás)	
+2Móz 36:14	36:15	tartalmilag egyezik (kézi olvasás)	
+2Móz 36:15	36:16	tartalmilag egyezik (kézi olvasás)	
+2Móz 36:16	36:17	tartalmilag egyezik (kézi olvasás)	
+2Móz 36:17	36:18	tartalmilag egyezik (kézi olvasás)	
+2Móz 36:18	36:19	tartalmilag egyezik (kézi olvasás)	
+2Móz 36:19	36:20	tartalmilag egyezik (kézi olvasás)	
+2Móz 36:20	36:21	tartalmilag egyezik (kézi olvasás)	
+2Móz 36:21	36:22	tartalmilag egyezik (kézi olvasás)	
+2Móz 36:22	36:23	tartalmilag egyezik (kézi olvasás)	
+2Móz 36:23	36:24	tartalmilag egyezik (kézi olvasás)	
+2Móz 36:24	36:25	tartalmilag egyezik (kézi olvasás)	
+2Móz 36:25	36:26	tartalmilag egyezik (kézi olvasás)	
+2Móz 36:26	36:27	tartalmilag egyezik (kézi olvasás)	
+2Móz 36:27	36:28	tartalmilag egyezik (kézi olvasás)	
+2Móz 36:28	36:29	tartalmilag egyezik (kézi olvasás)	
+2Móz 36:29	36:30	tartalmilag egyezik (kézi olvasás)	
+2Móz 36:30	36:31	tartalmilag egyezik (kézi olvasás)	
+2Móz 36:31	36:32	tartalmilag egyezik (kézi olvasás)	
+2Móz 36:32	36:33	tartalmilag egyezik (kézi olvasás)	
+2Móz 36:33	36:34	tartalmilag egyezik (kézi olvasás)	
+2Móz 36:34	36:35	tartalmilag egyezik (kézi olvasás)	
+2Móz 36:35	36:36	tartalmilag egyezik (kézi olvasás)	
+2Móz 36:36	36:37	tartalmilag egyezik (kézi olvasás)	
+2Móz 36:37	36:38	öt oszlop, rézlábak = KJV 36:38 (a fejezet vége)	
+Dán 3:1	3:1	arany állókép, hatvan sing, Dura = KJV 3:1; a 3:1–30 végig azonos számú	
+Dán 3:2	3:2	tartalmilag egyezik	
+Dán 3:3	3:3	tartalmilag egyezik	
+Dán 3:4	3:4	tartalmilag egyezik	
+Dán 3:5	3:5	tartalmilag egyezik	
+Dán 3:6	3:6	tartalmilag egyezik	
+Dán 3:7	3:7	tartalmilag egyezik	
+Dán 3:8	3:8	tartalmilag egyezik	
+Dán 3:9	3:9	tartalmilag egyezik	
+Dán 3:10	3:10	tartalmilag egyezik	
+Dán 3:11	3:11	tartalmilag egyezik	
+Dán 3:12	3:12	tartalmilag egyezik	
+Dán 3:13	3:13	tartalmilag egyezik	
+Dán 3:14	3:14	tartalmilag egyezik	
+Dán 3:15	3:15	tartalmilag egyezik	
+Dán 3:16	3:16	tartalmilag egyezik	
+Dán 3:17	3:17	tartalmilag egyezik	
+Dán 3:18	3:18	tartalmilag egyezik	
+Dán 3:19	3:19	tartalmilag egyezik	
+Dán 3:20	3:20	tartalmilag egyezik	
+Dán 3:21	3:21	tartalmilag egyezik	
+Dán 3:22	3:22	tartalmilag egyezik	
+Dán 3:23	3:23	tartalmilag egyezik	
+Dán 3:24	3:24	tartalmilag egyezik	
+Dán 3:25	3:25	tartalmilag egyezik	
+Dán 3:26	3:26	tartalmilag egyezik	
+Dán 3:27	3:27	tartalmilag egyezik	
+Dán 3:28	3:28	tartalmilag egyezik	
+Dán 3:29	3:29	tartalmilag egyezik	
+Dán 3:30	3:30	Sidrák, Misák, Abednégó előléptetése = KJV 3:30	
+Dán 3:31	4:1	Nabukodonozor levele a népeknek, „Békességetek bőséges legyen” = KJV 4:1	fejezetvalto: Károli Dán 3:31 → KJV 4:1
+Dán 3:32	4:2	jelek és csudák, a felséges Isten = KJV 4:2	fejezetvalto: Károli Dán 3:32 → KJV 4:2
+Dán 3:33	4:3	országa örökkévaló ország = KJV 4:3	fejezetvalto: Károli Dán 3:33 → KJV 4:3
+Hós 2:1	2:2	„Pereljetek anyátokkal” = KJV 2:2 (Plead with your mother); a KJV 2:1 („Ammi … Ruhamah”) a Károli Hós 1:11 végén áll · döntés: DT-F117c (1): a kézi ítélet; a gépi eltérés oka: a csak szöveg-jelű igazítás 2:1;2:2-t ad, mert a Károli Hós 1:11 a KJV 2:1-et is magában foglalja	osszevonas_szomszed: a KJV 2:1 a Károli Hós 1:11 végén (mondathatár)
+Hós 2:2	2:3	tartalmilag egyezik (kézi olvasás)	
+Hós 2:3	2:4	tartalmilag egyezik (kézi olvasás)	
+Hós 2:4	2:5	tartalmilag egyezik (kézi olvasás)	
+Hós 2:5	2:6	tartalmilag egyezik (kézi olvasás)	
+Hós 2:6	2:7	tartalmilag egyezik (kézi olvasás)	
+Hós 2:7	2:8	tartalmilag egyezik (kézi olvasás)	
+Hós 2:8	2:9	tartalmilag egyezik (kézi olvasás)	
+Hós 2:9	2:10	tartalmilag egyezik (kézi olvasás)	
+Hós 2:10	2:11	tartalmilag egyezik (kézi olvasás)	
+Hós 2:11	2:12	tartalmilag egyezik (kézi olvasás)	
+Hós 2:12	2:13	tartalmilag egyezik (kézi olvasás)	
+Hós 2:13	2:14	tartalmilag egyezik (kézi olvasás)	
+Hós 2:14	2:15	tartalmilag egyezik (kézi olvasás)	
+Hós 2:15	2:16	tartalmilag egyezik (kézi olvasás)	
+Hós 2:16	2:17	tartalmilag egyezik (kézi olvasás)	
+Hós 2:17	2:18	tartalmilag egyezik (kézi olvasás)	
+Hós 2:18	2:19	tartalmilag egyezik (kézi olvasás)	
+Hós 2:19	2:20	tartalmilag egyezik (kézi olvasás)	
+Hós 2:20	2:21	tartalmilag egyezik (kézi olvasás)	
+Hós 2:21	2:22	tartalmilag egyezik (kézi olvasás)	
+Hós 2:22	2:23	Ló-Rukhámá, Ló-Ammi = KJV 2:23 (a fejezet vége)	
+Hós 13:1	13:1	Efraim, Baál = KJV 13:1; a 13:1–15 azonos számú, a KJV 13:16 a Károli 14:1	
+Hós 13:2	13:2	tartalmilag egyezik (kézi olvasás)	
+Hós 13:3	13:3	tartalmilag egyezik (kézi olvasás)	
+Hós 13:4	13:4	tartalmilag egyezik (kézi olvasás)	
+Hós 13:5	13:5	tartalmilag egyezik (kézi olvasás)	
+Hós 13:6	13:6	tartalmilag egyezik (kézi olvasás)	
+Hós 13:7	13:7	tartalmilag egyezik (kézi olvasás)	
+Hós 13:8	13:8	tartalmilag egyezik (kézi olvasás)	
+Hós 13:9	13:9	tartalmilag egyezik (kézi olvasás)	
+Hós 13:10	13:10	tartalmilag egyezik (kézi olvasás)	
+Hós 13:11	13:11	tartalmilag egyezik (kézi olvasás)	
+Hós 13:12	13:12	tartalmilag egyezik (kézi olvasás)	
+Hós 13:13	13:13	tartalmilag egyezik (kézi olvasás)	
+Hós 13:14	13:14	tartalmilag egyezik (kézi olvasás)	
+Hós 13:15	13:15	tartalmilag egyezik (kézi olvasás)	
+Hós 14:1	13:16	Samaria lakol, csecsemők, terhes asszonyok = KJV 13:16; a Károli Hós 13 tehát 15 vers (KJV 13:1–15)	fejezetvalto: Károli Hós 14:1 → KJV 13:16
+Hós 14:2	14:1	„Térj vissza Izráel az Úrhoz” = KJV 14:1 (Israel, return)	
+Hós 14:3	14:2	tartalmilag egyezik	
+Hós 14:4	14:3	Assiria, ló, árva = KJV 14:3 (Asshur, horses, fatherless)	
+Hós 14:5	14:4	tartalmilag egyezik	
+Hós 14:6	14:5	tartalmilag egyezik	
+Hós 14:7	14:6	tartalmilag egyezik	
+Hós 14:8	14:7	tartalmilag egyezik	
+Hós 14:9	14:8	Efraim, bálványok, cziprusfa = KJV 14:8	
+Hós 14:10	14:9	a bölcs, az Úr útai = KJV 14:9 (a fejezet utolsó verse)	
+Jób 17:1	17:2	„csúfot űznek … szemem virraszt” = KJV 17:2 (mockers, eye); a KJV 17:1 („breath corrupt … graves”) a Károli Jób 16:22 második fele · döntés: DT-F117c (1): a kézi ítélet; a gépi eltérés oka: a csak szöveg-jelű igazítás 17:1-et ad, mert a Károli Jób 16:22 a KJV 17:1-et is magában foglalja	osszevonas_szomszed: a KJV 17:1 a Károli Jób 16:22 második fele (mondathatár)
+Jób 17:2	17:3	„Kezest … ki csap velem kezet” = KJV 17:3 (surety, strike hands) · döntés: DT-F117c (1): a kézi ítélet; a gépi eltérés oka: a csak szöveg-jelű igazítás egy verssel elcsúszik (17:2), l. Jób 17:1	
+Jób 17:3	17:4	„szívöket elzártad az értelem elől” = KJV 17:4 (hid their heart from understanding) · döntés: DT-F117c (1): a kézi ítélet; a gépi eltérés oka: a csak szöveg-jelű igazítás 17:3;17:4-et ad, l. Jób 17:1	
+Jób 17:4	17:5	tartalmilag egyezik (kézi olvasás)	
+Jób 17:5	17:6	tartalmilag egyezik (kézi olvasás)	
+Jób 17:6	17:7	tartalmilag egyezik (kézi olvasás)	
+Jób 17:7	17:8	tartalmilag egyezik (kézi olvasás)	
+Jób 17:8	17:9	tartalmilag egyezik (kézi olvasás)	
+Jób 17:9	17:10	tartalmilag egyezik (kézi olvasás)	
+Jób 17:10	17:11	tartalmilag egyezik (kézi olvasás)	
+Jób 17:11	17:12	tartalmilag egyezik (kézi olvasás)	
+Jób 17:12	17:13	tartalmilag egyezik (kézi olvasás)	
+Jób 17:13	17:14	tartalmilag egyezik (kézi olvasás)	
+Jób 17:14	17:15	tartalmilag egyezik (kézi olvasás)	
+Jób 17:15	17:16	„a sír üregébe … a porban” = KJV 17:16 (bars of the pit, dust)	
+Jób 37:1	37:2	„Halljátok … hangjának dörgését” = KJV 37:2; a KJV 37:1 („my heart trembleth”) a Károli Jób 36:33 második fele	osszevonas_szomszed: a KJV 37:1 a Károli Jób 36:33 második fele (mondathatár)
+Jób 37:2	37:3	tartalmilag egyezik (kézi olvasás)	
+Jób 37:3	37:4	tartalmilag egyezik (kézi olvasás)	
+Jób 37:4	37:5	tartalmilag egyezik (kézi olvasás)	
+Jób 37:5	37:6	tartalmilag egyezik (kézi olvasás)	
+Jób 37:6	37:7	tartalmilag egyezik (kézi olvasás)	
+Jób 37:7	37:8	tartalmilag egyezik (kézi olvasás)	
+Jób 37:8	37:9	tartalmilag egyezik (kézi olvasás)	
+Jób 37:9	37:10	tartalmilag egyezik (kézi olvasás)	
+Jób 37:10	37:11	tartalmilag egyezik (kézi olvasás)	
+Jób 37:11	37:12	tartalmilag egyezik (kézi olvasás)	
+Jób 37:12	37:13	tartalmilag egyezik (kézi olvasás)	
+Jób 37:13	37:14	tartalmilag egyezik (kézi olvasás)	
+Jób 37:14	37:15	tartalmilag egyezik (kézi olvasás)	
+Jób 37:15	37:16	tartalmilag egyezik (kézi olvasás)	
+Jób 37:16	37:17	tartalmilag egyezik (kézi olvasás)	
+Jób 37:17	37:18	tartalmilag egyezik (kézi olvasás)	
+Jób 37:18	37:19	tartalmilag egyezik (kézi olvasás)	
+Jób 37:19	37:20	tartalmilag egyezik (kézi olvasás)	
+Jób 37:20	37:21	tartalmilag egyezik (kézi olvasás)	
+Jób 37:21	37:22	tartalmilag egyezik (kézi olvasás)	
+Jób 37:22	37:23	tartalmilag egyezik (kézi olvasás)	
+Jób 37:23	37:24	„rettegjék őt az emberek” = KJV 37:24 (a fejezet vége)	
+Péld 12:1	12:2	„A jó ember jóakaratot nyer az Úrtól” = KJV 12:2; a KJV 12:1 („Whoso loveth instruction”) a Károli Péld 11:31 második fele	osszevonas_szomszed: a KJV 12:1 a Károli Péld 11:31 második fele (mondathatár)
+Péld 12:2	12:3	tartalmilag egyezik (kézi olvasás)	
+Péld 12:3	12:4	tartalmilag egyezik (kézi olvasás)	
+Péld 12:4	12:5	tartalmilag egyezik (kézi olvasás)	
+Péld 12:5	12:6	tartalmilag egyezik (kézi olvasás)	
+Péld 12:6	12:7	tartalmilag egyezik (kézi olvasás)	
+Péld 12:7	12:8	tartalmilag egyezik (kézi olvasás)	
+Péld 12:8	12:9	tartalmilag egyezik (kézi olvasás)	
+Péld 12:9	12:10	tartalmilag egyezik (kézi olvasás)	
+Péld 12:10	12:11	tartalmilag egyezik (kézi olvasás)	
+Péld 12:11	12:12	tartalmilag egyezik (kézi olvasás)	
+Péld 12:12	12:13	tartalmilag egyezik (kézi olvasás)	
+Péld 12:13	12:14	tartalmilag egyezik (kézi olvasás)	
+Péld 12:14	12:15	tartalmilag egyezik (kézi olvasás)	
+Péld 12:15	12:16	tartalmilag egyezik (kézi olvasás)	
+Péld 12:16	12:17	tartalmilag egyezik (kézi olvasás)	
+Péld 12:17	12:18	tartalmilag egyezik (kézi olvasás)	
+Péld 12:18	12:19	tartalmilag egyezik (kézi olvasás)	
+Péld 12:19	12:20	tartalmilag egyezik (kézi olvasás)	
+Péld 12:20	12:21	tartalmilag egyezik (kézi olvasás)	
+Péld 12:21	12:22	tartalmilag egyezik (kézi olvasás)	
+Péld 12:22	12:23	tartalmilag egyezik (kézi olvasás)	
+Péld 12:23	12:24	tartalmilag egyezik (kézi olvasás)	
+Péld 12:24	12:25	tartalmilag egyezik (kézi olvasás)	
+Péld 12:25	12:26	tartalmilag egyezik (kézi olvasás)	
+Péld 12:26	12:27	tartalmilag egyezik (kézi olvasás)	
+Péld 12:27	12:28	„Az igazságnak útjában van élet” = KJV 12:28	
+Én 5:1	5:1	kert, mirha, lépesméz = KJV 5:1; az Én 5:1–16 azonos számú	
+Én 5:2	5:2	tartalmilag egyezik (kézi olvasás)	
+Én 5:3	5:3	tartalmilag egyezik (kézi olvasás)	
+Én 5:4	5:4	tartalmilag egyezik (kézi olvasás)	
+Én 5:5	5:5	tartalmilag egyezik (kézi olvasás)	
+Én 5:6	5:6	tartalmilag egyezik (kézi olvasás)	
+Én 5:7	5:7	tartalmilag egyezik (kézi olvasás)	
+Én 5:8	5:8	tartalmilag egyezik (kézi olvasás)	
+Én 5:9	5:9	tartalmilag egyezik (kézi olvasás)	
+Én 5:10	5:10	tartalmilag egyezik (kézi olvasás)	
+Én 5:11	5:11	tartalmilag egyezik (kézi olvasás)	
+Én 5:12	5:12	tartalmilag egyezik (kézi olvasás)	
+Én 5:13	5:13	tartalmilag egyezik (kézi olvasás)	
+Én 5:14	5:14	tartalmilag egyezik (kézi olvasás)	
+Én 5:15	5:15	tartalmilag egyezik (kézi olvasás)	
+Én 5:16	5:16	tartalmilag egyezik (kézi olvasás)	
+Én 5:17	6:1	„Hová ment a te szerelmesed” = KJV 6:1 (fejezetváltó)	fejezetvalto: Károli Én 5:17 → KJV 6:1
+Én 5:18	6:2	kertjébe ment, liliomok = KJV 6:2	fejezetvalto: Károli Én 5:18 → KJV 6:2
+Én 5:19	6:3	„Én az én szerelmesemé vagyok” = KJV 6:3	fejezetvalto: Károli Én 5:19 → KJV 6:3
+Én 6:1	6:4	Tirsa, Jeruzsálem, zászlós tábor = KJV 6:4; a KJV 6:1–3 a Károli Én 5:17–19-re esik (nem a minta része)	
+Én 6:2	6:5	tartalmilag egyezik	
+Én 6:3	6:6	tartalmilag egyezik	
+Én 6:4	6:7	tartalmilag egyezik	
+Én 6:5	6:8	hatvan királyné, nyolcvan ágyas = KJV 6:8 (threescore, fourscore)	
+Én 6:6	6:9	tartalmilag egyezik	
+Én 6:7	6:10	tartalmilag egyezik	
+Én 6:8	6:11	tartalmilag egyezik	
+Én 6:9	6:12	„nemes népemnek díszhintajába” = KJV 6:12 (chariots of Amminadib)	
+Én 6:10	6:13	Sulamit, Machanaim-körtánc = KJV 6:13 (Shulamite, two armies); a KJV 6:13 az MT 7:1	
+Ézs 4:1	4:1	hét asszony egy férfit = KJV 4:1; az Ézs 4 végig azonos számú	
+Ézs 4:2	4:2	tartalmilag egyezik (kézi olvasás)	
+Ézs 4:3	4:3	tartalmilag egyezik (kézi olvasás)	
+Ézs 4:4	4:4	tartalmilag egyezik (kézi olvasás)	
+Ézs 4:5	4:5	tartalmilag egyezik (kézi olvasás)	
+Ézs 4:6	4:6	tartalmilag egyezik (kézi olvasás)	
+Ézs 64:1	64:1;64:2	a Károli-vers két KJV-verset fog át: „megszakasztanád az egeket … hegyek elolvadnának” = KJV 64:1, „mint a tűz … a vizet a tűz felforralja; hogy nevedet ellenségidnek” = KJV 64:2 · döntés: DT-F117c (2): a pár 64:1 (F91-szabály: az első KJV-vers); a KJV 64:2 visszairányú párja: N-F117b	versfel: a Károli-vers a KJV 64:1–2-t fogja át (mondathatár a versen belül)
+Ézs 64:2	64:3	„rettenetes dolgokat, a miket nem vártunk” = KJV 64:3; a 64:n = KJV 64:n+1 végig	osszevonas_szomszed: az előző Károli-vers (64:1) két KJV-verset fog át
+Ézs 64:3	64:4	tartalmilag egyezik (kézi olvasás)	
+Ézs 64:4	64:5	tartalmilag egyezik (kézi olvasás)	
+Ézs 64:5	64:6	tartalmilag egyezik (kézi olvasás)	
+Ézs 64:6	64:7	tartalmilag egyezik (kézi olvasás)	
+Ézs 64:7	64:8	tartalmilag egyezik (kézi olvasás)	
+Ézs 64:8	64:9	tartalmilag egyezik (kézi olvasás)	
+Ézs 64:9	64:10	tartalmilag egyezik (kézi olvasás)	
+Ézs 64:10	64:11	tartalmilag egyezik (kézi olvasás)	
+Ézs 64:11	64:12	„megtartóztatod-é magad” = KJV 64:12 (a fejezet vége)	
+Préd 9:21	10:1	megholt legyek, patikárius kenete = KJV 10:1 (Dead flies, apothecary)	fejezetvalto: Károli Préd 9:21 → KJV 10:1
+Préd 9:22	10:2	a bölcs szíve jobbkezénél = KJV 10:2	fejezetvalto: Károli Préd 9:22 → KJV 10:2
+Préd 9:23	10:3	a bolond az úton jár = KJV 10:3	fejezetvalto: Károli Préd 9:23 → KJV 10:3
+Jób 39:34	40:1	„Szóla továbbá az Úr Jóbnak” = KJV 40:1	fejezetvalto: Károli Jób 39:34 → KJV 40:1
+Jób 39:35	40:2	pert kezd a Mindenhatóval = KJV 40:2	fejezetvalto: Károli Jób 39:35 → KJV 40:2
+Jób 39:36	40:3	„szóla Jób az Úrnak” = KJV 40:3	fejezetvalto: Károli Jób 39:36 → KJV 40:3
+Jób 39:37	40:4	kezemet a szájamra teszem = KJV 40:4	fejezetvalto: Károli Jób 39:37 → KJV 40:4
+Jób 39:38	40:5	egyszer szóltam, kétszer = KJV 40:5; a Károli Jób 40:1 = KJV 40:6	fejezetvalto: Károli Jób 39:38 → KJV 40:5
+1Kir 22:43	22:43	„jára Asának … útjában” = KJV 22:43 első fele; a KJV 22:43 két Károli-versre oszlik (22:43–44) · döntés: DT-F117c (3) (a): a KJV 22:43 mindkét Károli-versé (22:43–44)	versfel: a KJV 22:43 első fele
+1Kir 22:44	22:43	„a magaslatokat nem rombolták le … tömjénezett” = KJV 22:43 második fele (nevertheless the high places) · döntés: DT-F117c (3) (a): a KJV 22:43 mindkét Károli-versé (22:43–44)	versfel: a KJV 22:43 második fele
+1Kir 22:45	22:44	„békességben élt Josafát az Izráel királyával” = KJV 22:44	
+1Kir 22:46	22:45	Josafát egyéb dolgai, krónika = KJV 22:45	
+1Kir 22:47	22:46	férfi paráznák kiűzése = KJV 22:46 (sodomites)	
+1Kir 22:48	22:47	Edomban helyettes király = KJV 22:47	
+1Kir 22:49	22:48	Társis-hajók, Ofir, Esiongáber = KJV 22:48	
+1Kir 22:50	22:49	Akházia ajánlata a hajókra = KJV 22:49	
+1Kir 22:51	22:50	Josafát halála, Jórám = KJV 22:50	
+1Kir 22:52	22:51	Akházia uralkodása, tizenhetedik év = KJV 22:51	
+1Kir 22:53	22:52	gonoszul cselekedék, Jeroboám = KJV 22:52	
+1Kir 22:54	22:53	Baál szolgálata = KJV 22:53 (a fejezet vége)	
+Ézs 3:1	2:22	„szünjetek meg hát az emberben bízni … lehellet van orrában” = KJV 2:22 (fejezetváltó)	fejezetvalto: Károli Ézs 3:1 → KJV 2:22
+Ézs 3:2	3:1	az Úr elveszi a támaszt = KJV 3:1; a 3:n = KJV 3:n-1 végig	
+Ézs 3:3	3:2	tartalmilag egyezik (kézi olvasás)	
+Ézs 3:4	3:3	tartalmilag egyezik (kézi olvasás)	
+Ézs 3:5	3:4	tartalmilag egyezik (kézi olvasás)	
+Ézs 3:6	3:5	tartalmilag egyezik (kézi olvasás)	
+Ézs 3:7	3:6	tartalmilag egyezik (kézi olvasás)	
+Ézs 3:8	3:7	tartalmilag egyezik (kézi olvasás)	
+Ézs 3:9	3:8	tartalmilag egyezik (kézi olvasás)	
+Ézs 3:10	3:9	tartalmilag egyezik (kézi olvasás)	
+Ézs 3:11	3:10	tartalmilag egyezik (kézi olvasás)	
+Ézs 3:12	3:11	tartalmilag egyezik (kézi olvasás)	
+Ézs 3:13	3:12	tartalmilag egyezik (kézi olvasás)	
+Ézs 3:14	3:13	tartalmilag egyezik (kézi olvasás)	
+Ézs 3:15	3:14	tartalmilag egyezik (kézi olvasás)	
+Ézs 3:16	3:15	tartalmilag egyezik (kézi olvasás)	
+Ézs 3:17	3:16	tartalmilag egyezik (kézi olvasás)	
+Ézs 3:18	3:17	tartalmilag egyezik (kézi olvasás)	
+Ézs 3:19	3:18	tartalmilag egyezik (kézi olvasás)	
+Ézs 3:20	3:19	tartalmilag egyezik (kézi olvasás)	
+Ézs 3:21	3:20	tartalmilag egyezik (kézi olvasás)	
+Ézs 3:22	3:21	tartalmilag egyezik (kézi olvasás)	
+Ézs 3:23	3:22	tartalmilag egyezik (kézi olvasás)	
+Ézs 3:24	3:23	tartalmilag egyezik (kézi olvasás)	
+Ézs 3:25	3:24	tartalmilag egyezik (kézi olvasás)	
+Ézs 3:26	3:25	tartalmilag egyezik (kézi olvasás)	
+Ézs 3:27	3:26	sírnak és gyászolnak kapui = KJV 3:26 (a fejezet vége)	
+Jón 2:1	1:17	nagy hal, három nap és három éjjel = KJV 1:17 (N-F41a)	fejezetvalto: Károli Jón 2:1 → KJV 1:17
+Jón 2:2	2:1	Jónás imádkozik a hal gyomrából = KJV 2:1	
+Jón 2:3	2:2	nyomorúságomban kiálték, a Seol torka = KJV 2:2 (belly of hell; ALVIL-001)	
+Jón 2:4	2:3	tartalmilag egyezik	
+Jón 2:5	2:4	tartalmilag egyezik	
+Jón 2:6	2:5	vizek lelkemig, hinár a fejemen = KJV 2:5 (weeds; TEREMT-001)	
+Jón 2:7	2:6	tartalmilag egyezik	
+Jón 2:8	2:7	tartalmilag egyezik	
+Jón 2:9	2:8	tartalmilag egyezik	
+Jón 2:10	2:9	tartalmilag egyezik	
+Jón 2:11	2:10	az Úr szól a halnak, kiveti Jónást = KJV 2:10 (a fejezet utolsó verse)	
+1Sám 24:1	23:29	Engedi erősségei = KJV 23:29 (fejezetváltó)	fejezetvalto: Károli 1Sám 24:1 → KJV 23:29
+1Sám 24:2	24:1	Saul visszatér a filiszteusoktól, Engedi pusztája = KJV 24:1	
+1Sám 24:3	24:2	tartalmilag egyezik (kézi olvasás)	
+1Sám 24:4	24:3	tartalmilag egyezik (kézi olvasás)	
+1Sám 24:5	24:4	tartalmilag egyezik (kézi olvasás)	
+1Sám 24:6	24:5	tartalmilag egyezik (kézi olvasás)	
+1Sám 24:7	24:6	tartalmilag egyezik (kézi olvasás)	
+1Sám 24:8	24:7	tartalmilag egyezik (kézi olvasás)	
+1Sám 24:9	24:8	tartalmilag egyezik (kézi olvasás)	
+1Sám 24:10	24:9	tartalmilag egyezik (kézi olvasás)	
+1Sám 24:11	24:10	tartalmilag egyezik (kézi olvasás)	
+1Sám 24:12	24:11	tartalmilag egyezik (kézi olvasás)	
+1Sám 24:13	24:12	tartalmilag egyezik (kézi olvasás)	
+1Sám 24:14	24:13	tartalmilag egyezik (kézi olvasás)	
+1Sám 24:15	24:14	tartalmilag egyezik (kézi olvasás)	
+1Sám 24:16	24:15	tartalmilag egyezik (kézi olvasás)	
+1Sám 24:17	24:16	tartalmilag egyezik (kézi olvasás)	
+1Sám 24:18	24:17	tartalmilag egyezik (kézi olvasás)	
+1Sám 24:19	24:18	tartalmilag egyezik (kézi olvasás)	
+1Sám 24:20	24:19	tartalmilag egyezik (kézi olvasás)	
+1Sám 24:21	24:20	tartalmilag egyezik (kézi olvasás)	
+1Sám 24:22	24:21	tartalmilag egyezik (kézi olvasás)	
+1Sám 24:23	24:22	Dávid megesküvék, Saul haza = KJV 24:22 (a fejezet vége)	
+1Sám 20:43	20:42	„Felkele ezután és elméne. Jonathán pedig bement a városba.” = KJV 20:42 második fele (and he arose and departed); a KJV 20:42 két Károli-versre oszlik (20:42–43) · döntés: DT-F117c (3) (a): a KJV 20:42 mindkét Károli-versé (20:42–43)	versfel: a KJV 20:42 második fele

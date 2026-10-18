@@ -64,6 +64,17 @@ a Jób 40 korábbi +5-ös eltolása és a többi fejezethatár-/fejezeten belül
 (`f22/versosszevonas.tsv`); a fájlsorrend nem Károli-sorrend (áthelyezett blokkok), kulcs szerint olvass. Részletek, módszer és igazolás: `TAHOT_TAGNT_README.md` („Versszintű Károli-kulcs”),
 `naplok/F85_jelentes.md`, `naplok/F85_igazolas.md`.
 
+## `Karoli_versmegfeleltetes.tsv` — Károli↔KJV(↔MT) verskulcs; az `osztaly` és az `igehely_mt` jelentése (F117, DT-F117e)
+
+Generált tábla (`naplok/KAROLI_KK4_tabla_veglegesit.py`; kézzel nem szerkesztendő). Az `osztaly` és az `igehely_mt` együtt olvasandó:
+
+- `KJV`: a Károli-vers száma a KJV-szám (`igehely_kjv`); az `igehely_mt` üres.
+- `MT`: a Károli-vers száma az MT-szám (`igehely_mt` = a Károli-szám); az `igehely_kjv` ettől eltérhet.
+- `KEZI`: kézi pár; az `igehely_mt` hagyományosan üres.
+- **Új kombináció (F117, DT-F117e):** `KEZI` **kitöltött** `igehely_mt`-vel = a Károli-szám eltér a KJV-től **és** az MT-től is; az `igehely_kjv` a versenkénti szöveg-összevetésből (`naplok/F117_itelet.tsv`), az `igehely_mt` a TAHOT↔Macula-MT levezetésből (`naplok/F117_mt_levezetes.tsv`) jön, `forras=szoveg_osszevetes_f117`. Ilyen sor 174 van (pl. Hós 2, Ézs 3, Jób 17, Én 5:17–6:10). Aki eddig a `KEZI` sorban üres `igehely_mt`-t feltételezett, a kitöltött értéket használja elsőbbséggel (a fogyasztók ellenőrzése: F117 4.6).
+
+A javított sorok verziózott kézi bemenete a `Karoli_versmegfeleltetes_javitas.tsv` (346 sor, soronkénti proveniencia), az alkalmazó modul az `eszkozok/versmegf_javitas.py` (halmaz-őrrel). Ismert korlát: a KJV-oldalt a szöveg-összevetés csak a Strong-címkézett szavakból olvasta (`KJV_Strongs_teljes.tsv`); a versfélen, mondathatáron vagy fejezetváltón múló 28 ítélet a teljes KJV-szövegen újraellenőrizendő (N-F117c).
+
 ## Forrás
 
 - **KJV_Strongs minta-URL:** `https://studybible.info/KJV_Strongs/{Könyv}%20{N}` (pl. `Proverbs%20{N}`, `Genesis%20{N}`)

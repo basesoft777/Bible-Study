@@ -14,6 +14,7 @@ name: feladatok-frissites
 on:
   push:
     branches: [main]
+  workflow_dispatch:   # kézi újragenerálás, ha egy frissítés elakadt (N-F118a, 2026-10-18)
 
 permissions:
   contents: read

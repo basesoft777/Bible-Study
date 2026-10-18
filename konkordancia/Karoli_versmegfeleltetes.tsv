@@ -3,6 +3,7 @@
 # sha256(verse_pairs.jsonl)=3a91c571f1f32545f78397a256fdfa5124bcbcbc42902411a8a93209dcb2e985
 # proveniencia: forras=KAROLI_KULCS_BRIEF.md KK4 (2. menet) | ts=2026-09-25
 # F91 javítás (DT-F91a, A1; DT-F91c): a feliratos zsoltárok (63) igehely_kjv oszlopa az LXX_OS Károli-kulcsú etalonból; felirat-versek (v <= d) üres KJV, megjegyzés "felirat"; ahol egy Károli-versben több KJV-vers áll (Zsolt 13:6), az első KJV-vers, `;`-os érték nincs; forras=lxx_os_etalon_f91 | forras=eszkozok/f91_versmegf_javit.py | ts=2026-10-14 (a szabály dátuma, nem a futásé)
+# F117 javítás (DT-F117a–e): az A–D′ osztályú táblahibák javítása a verziózott kézi bemenetből (konkordancia/Karoli_versmegfeleltetes_javitas.tsv, 346 sor: KJV 104, MT 68, KEZI 174); a Károli↔KJV pár a versenkénti szöveg-összevetésből (naplok/F117_itelet.tsv), az igehely_mt a TAHOT↔Macula-MT levezetésből (naplok/F117_mt_levezetes.tsv); ÚJ KOMBINÁCIÓ (DT-F117e): osztaly=KEZI kitöltött igehely_mt-vel = a Károli-szám eltér a KJV-től és az MT-től is; forras=szoveg_osszevetes_f117 | forras=eszkozok/versmegf_javitas.py | ts=2026-10-18 (a szabály dátuma, nem a futásé)
 igehely_karoli	igehely_kjv	igehely_mt	osztaly	forras	megjegyzes
 1Kir 10:1	10:1		KJV	szamlalas	
 1Kir 10:10	10:10		KJV	szamlalas	
@@ -495,19 +496,19 @@ igehely_karoli	igehely_kjv	igehely_mt	osztaly	forras	megjegyzes
 1Kir 22:40	22:40	22:40	MT	tvtms	
 1Kir 22:41	22:41	22:41	MT	tvtms	
 1Kir 22:42	22:42	22:42	MT	tvtms	
-1Kir 22:43	22:43	22:43	MT	tvtms	
-1Kir 22:44	22:44	22:44	MT	tvtms	
-1Kir 22:45	22:45	22:45	MT	tvtms	
-1Kir 22:46		22:46	MT	szamlalas	
-1Kir 22:47		22:47	MT	szamlalas	
-1Kir 22:48		22:48	MT	szamlalas	
-1Kir 22:49		22:49	MT	szamlalas	
+1Kir 22:43	22:43		KJV	szoveg_osszevetes_f117	elozo: 22:43|22:43|MT|tvtms| · KJV 22:43 két Károli-versben (22:43–44; DT-F117c (3) (a)) · újraellenőrizendő a teljes KJV-szövegen (N-F117c)
+1Kir 22:44	22:43	22:44	MT	szoveg_osszevetes_f117	elozo: 22:44|22:44|MT|tvtms| · KJV 22:43 két Károli-versben (22:43–44; DT-F117c (3) (a)) · újraellenőrizendő a teljes KJV-szövegen (N-F117c)
+1Kir 22:45	22:44	22:45	MT	szoveg_osszevetes_f117	elozo: 22:45|22:45|MT|tvtms|
+1Kir 22:46	22:45	22:46	MT	szoveg_osszevetes_f117	elozo: |22:46|MT|szamlalas|
+1Kir 22:47	22:46	22:47	MT	szoveg_osszevetes_f117	elozo: |22:47|MT|szamlalas|
+1Kir 22:48	22:47	22:48	MT	szoveg_osszevetes_f117	elozo: |22:48|MT|szamlalas|
+1Kir 22:49	22:48	22:49	MT	szoveg_osszevetes_f117	elozo: |22:49|MT|szamlalas|
 1Kir 22:5	22:5	22:5	MT	tvtms	
-1Kir 22:50	22:50	22:50	MT	tvtms	
-1Kir 22:51	22:51	22:51	MT	tvtms	
-1Kir 22:52	22:52	22:52	MT	tvtms	
-1Kir 22:53	22:53	22:53	MT	tvtms	
-1Kir 22:54		22:54	MT	szamlalas	
+1Kir 22:50	22:49	22:50	MT	szoveg_osszevetes_f117	elozo: 22:50|22:50|MT|tvtms|
+1Kir 22:51	22:50	22:51	MT	szoveg_osszevetes_f117	elozo: 22:51|22:51|MT|tvtms|
+1Kir 22:52	22:51	22:52	MT	szoveg_osszevetes_f117	elozo: 22:52|22:52|MT|tvtms|
+1Kir 22:53	22:52	22:53	MT	szoveg_osszevetes_f117	elozo: 22:53|22:53|MT|tvtms|
+1Kir 22:54	22:53	22:54	MT	szoveg_osszevetes_f117	elozo: |22:54|MT|szamlalas|
 1Kir 22:6	22:6	22:6	MT	tvtms	
 1Kir 22:7	22:7	22:7	MT	tvtms	
 1Kir 22:8	22:8	22:8	MT	tvtms	
@@ -3673,7 +3674,7 @@ igehely_karoli	igehely_kjv	igehely_mt	osztaly	forras	megjegyzes
 1Sám 20:40	20:40	20:40	MT	tvtms	
 1Sám 20:41	20:41	20:41	MT	tvtms	
 1Sám 20:42	20:42	20:42	MT	tvtms	
-1Sám 20:43		20:43	MT	szamlalas	
+1Sám 20:43	20:42	21:1	KEZI	szoveg_osszevetes_f117	elozo: |20:43|MT|szamlalas| · KJV 20:42 két Károli-versben (20:42–43; DT-F117c (3) (a)) · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT · újraellenőrizendő a teljes KJV-szövegen (N-F117c)
 1Sám 20:5	20:5	20:5	MT	tvtms	
 1Sám 20:6	20:6	20:6	MT	tvtms	
 1Sám 20:7	20:7	20:7	MT	tvtms	
@@ -3745,29 +3746,29 @@ igehely_karoli	igehely_kjv	igehely_mt	osztaly	forras	megjegyzes
 1Sám 23:7	23:7	23:7	MT	tvtms	
 1Sám 23:8	23:8	23:8	MT	tvtms	
 1Sám 23:9	23:9	23:9	MT	tvtms	
-1Sám 24:1	24:1	24:1	MT	tvtms	
-1Sám 24:10	24:10	24:10	MT	tvtms	
-1Sám 24:11	24:11	24:11	MT	tvtms	
-1Sám 24:12	24:12	24:12	MT	tvtms	
-1Sám 24:13	24:13	24:13	MT	tvtms	
-1Sám 24:14	24:14	24:14	MT	tvtms	
-1Sám 24:15	24:15	24:15	MT	tvtms	
-1Sám 24:16	24:16	24:16	MT	tvtms	
-1Sám 24:17	24:17	24:17	MT	tvtms	
-1Sám 24:18	24:18	24:18	MT	tvtms	
-1Sám 24:19	24:19	24:19	MT	tvtms	
-1Sám 24:2	24:2	24:2	MT	tvtms	
-1Sám 24:20	24:20	24:20	MT	tvtms	
-1Sám 24:21	24:21	24:21	MT	tvtms	
-1Sám 24:22	24:22	24:22	MT	tvtms	
-1Sám 24:23		24:23	MT	szamlalas	
-1Sám 24:3	24:3	24:3	MT	tvtms	
-1Sám 24:4	24:4	24:4	MT	tvtms	
-1Sám 24:5	24:5	24:5	MT	tvtms	
-1Sám 24:6	24:6	24:6	MT	tvtms	
-1Sám 24:7	24:7	24:7	MT	tvtms	
-1Sám 24:8	24:8	24:8	MT	tvtms	
-1Sám 24:9	24:9	24:9	MT	tvtms	
+1Sám 24:1	23:29	24:1	MT	szoveg_osszevetes_f117	elozo: 24:1|24:1|MT|tvtms| · újraellenőrizendő a teljes KJV-szövegen (N-F117c)
+1Sám 24:10	24:9	24:10	MT	szoveg_osszevetes_f117	elozo: 24:10|24:10|MT|tvtms|
+1Sám 24:11	24:10	24:11	MT	szoveg_osszevetes_f117	elozo: 24:11|24:11|MT|tvtms|
+1Sám 24:12	24:11	24:12	MT	szoveg_osszevetes_f117	elozo: 24:12|24:12|MT|tvtms|
+1Sám 24:13	24:12	24:13	MT	szoveg_osszevetes_f117	elozo: 24:13|24:13|MT|tvtms|
+1Sám 24:14	24:13	24:14	MT	szoveg_osszevetes_f117	elozo: 24:14|24:14|MT|tvtms|
+1Sám 24:15	24:14	24:15	MT	szoveg_osszevetes_f117	elozo: 24:15|24:15|MT|tvtms|
+1Sám 24:16	24:15	24:16	MT	szoveg_osszevetes_f117	elozo: 24:16|24:16|MT|tvtms|
+1Sám 24:17	24:16	24:17	MT	szoveg_osszevetes_f117	elozo: 24:17|24:17|MT|tvtms|
+1Sám 24:18	24:17	24:18	MT	szoveg_osszevetes_f117	elozo: 24:18|24:18|MT|tvtms|
+1Sám 24:19	24:18	24:19	MT	szoveg_osszevetes_f117	elozo: 24:19|24:19|MT|tvtms|
+1Sám 24:2	24:1	24:2	MT	szoveg_osszevetes_f117	elozo: 24:2|24:2|MT|tvtms|
+1Sám 24:20	24:19	24:20	MT	szoveg_osszevetes_f117	elozo: 24:20|24:20|MT|tvtms|
+1Sám 24:21	24:20	24:21	MT	szoveg_osszevetes_f117	elozo: 24:21|24:21|MT|tvtms|
+1Sám 24:22	24:21	24:22	MT	szoveg_osszevetes_f117	elozo: 24:22|24:22|MT|tvtms|
+1Sám 24:23	24:22	24:23	MT	szoveg_osszevetes_f117	elozo: |24:23|MT|szamlalas|
+1Sám 24:3	24:2	24:3	MT	szoveg_osszevetes_f117	elozo: 24:3|24:3|MT|tvtms|
+1Sám 24:4	24:3	24:4	MT	szoveg_osszevetes_f117	elozo: 24:4|24:4|MT|tvtms|
+1Sám 24:5	24:4	24:5	MT	szoveg_osszevetes_f117	elozo: 24:5|24:5|MT|tvtms|
+1Sám 24:6	24:5	24:6	MT	szoveg_osszevetes_f117	elozo: 24:6|24:6|MT|tvtms|
+1Sám 24:7	24:6	24:7	MT	szoveg_osszevetes_f117	elozo: 24:7|24:7|MT|tvtms|
+1Sám 24:8	24:7	24:8	MT	szoveg_osszevetes_f117	elozo: 24:8|24:8|MT|tvtms|
+1Sám 24:9	24:8	24:9	MT	szoveg_osszevetes_f117	elozo: 24:9|24:9|MT|tvtms|
 1Sám 25:1	25:1		KJV	szamlalas	
 1Sám 25:10	25:10		KJV	szamlalas	
 1Sám 25:11	25:11		KJV	szamlalas	
@@ -6449,6 +6450,79 @@ igehely_karoli	igehely_kjv	igehely_mt	osztaly	forras	megjegyzes
 2Móz 34:7	34:7		KJV	szamlalas	
 2Móz 34:8	34:8		KJV	szamlalas	
 2Móz 34:9	34:9		KJV	szamlalas	
+2Móz 35:1	35:1		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+2Móz 35:10	35:10		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+2Móz 35:11	35:11		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+2Móz 35:12	35:12		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+2Móz 35:13	35:13		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+2Móz 35:14	35:14		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+2Móz 35:15	35:15		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+2Móz 35:16	35:16		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+2Móz 35:17	35:17		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+2Móz 35:18	35:18		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+2Móz 35:19	35:19		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+2Móz 35:2	35:2		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+2Móz 35:20	35:20		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+2Móz 35:21	35:21		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+2Móz 35:22	35:22		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+2Móz 35:23	35:23		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+2Móz 35:24	35:24		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+2Móz 35:25	35:25		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+2Móz 35:26	35:26		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+2Móz 35:27	35:27		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+2Móz 35:28	35:28		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+2Móz 35:29	35:29		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+2Móz 35:3	35:3		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+2Móz 35:30	35:30		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+2Móz 35:31	35:31		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+2Móz 35:32	35:32		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+2Móz 35:33	35:33		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+2Móz 35:34	35:34		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+2Móz 35:35	35:35		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+2Móz 35:36	36:1	36:1	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT · újraellenőrizendő a teljes KJV-szövegen (N-F117c)
+2Móz 35:4	35:4		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+2Móz 35:5	35:5		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+2Móz 35:6	35:6		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+2Móz 35:7	35:7		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+2Móz 35:8	35:8		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+2Móz 35:9	35:9		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+2Móz 36:1	36:2	36:2	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+2Móz 36:10	36:11	36:11	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+2Móz 36:11	36:12	36:12	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+2Móz 36:12	36:13	36:13	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+2Móz 36:13	36:14	36:14	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+2Móz 36:14	36:15	36:15	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+2Móz 36:15	36:16	36:16	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+2Móz 36:16	36:17	36:17	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+2Móz 36:17	36:18	36:18	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+2Móz 36:18	36:19	36:19	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+2Móz 36:19	36:20	36:20	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+2Móz 36:2	36:3	36:3	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+2Móz 36:20	36:21	36:21	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+2Móz 36:21	36:22	36:22	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+2Móz 36:22	36:23	36:23	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+2Móz 36:23	36:24	36:24	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+2Móz 36:24	36:25	36:25	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+2Móz 36:25	36:26	36:26	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+2Móz 36:26	36:27	36:27	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+2Móz 36:27	36:28	36:28	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+2Móz 36:28	36:29	36:29	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+2Móz 36:29	36:30	36:30	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+2Móz 36:3	36:4	36:4	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+2Móz 36:30	36:31	36:31	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+2Móz 36:31	36:32	36:32	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+2Móz 36:32	36:33	36:33	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+2Móz 36:33	36:34	36:34	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+2Móz 36:34	36:35	36:35	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+2Móz 36:35	36:36	36:36	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+2Móz 36:36	36:37	36:37	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+2Móz 36:37	36:38	36:38	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+2Móz 36:4	36:5	36:5	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+2Móz 36:5	36:6	36:6	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+2Móz 36:6	36:7	36:7	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+2Móz 36:7	36:8	36:8	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+2Móz 36:8	36:9	36:9	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+2Móz 36:9	36:10	36:10	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
 2Móz 37:1	37:1		KJV	szamlalas	
 2Móz 37:10	37:10		KJV	szamlalas	
 2Móz 37:11	37:11		KJV	szamlalas	
@@ -11375,6 +11449,39 @@ Dán 2:6	2:6		KJV	szamlalas
 Dán 2:7	2:7		KJV	szamlalas	
 Dán 2:8	2:8		KJV	szamlalas	
 Dán 2:9	2:9		KJV	szamlalas	
+Dán 3:1	3:1		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Dán 3:10	3:10		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Dán 3:11	3:11		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Dán 3:12	3:12		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Dán 3:13	3:13		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Dán 3:14	3:14		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Dán 3:15	3:15		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Dán 3:16	3:16		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Dán 3:17	3:17		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Dán 3:18	3:18		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Dán 3:19	3:19		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Dán 3:2	3:2		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Dán 3:20	3:20		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Dán 3:21	3:21		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Dán 3:22	3:22		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Dán 3:23	3:23		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Dán 3:24	3:24		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Dán 3:25	3:25		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Dán 3:26	3:26		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Dán 3:27	3:27		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Dán 3:28	3:28		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Dán 3:29	3:29		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Dán 3:3	3:3		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Dán 3:30	3:30		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Dán 3:31	4:1	3:31	MT	szoveg_osszevetes_f117	potolt: nincs_sor · újraellenőrizendő a teljes KJV-szövegen (N-F117c)
+Dán 3:32	4:2	3:32	MT	szoveg_osszevetes_f117	potolt: nincs_sor · újraellenőrizendő a teljes KJV-szövegen (N-F117c)
+Dán 3:33	4:3	3:33	MT	szoveg_osszevetes_f117	potolt: nincs_sor · újraellenőrizendő a teljes KJV-szövegen (N-F117c)
+Dán 3:4	3:4		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Dán 3:5	3:5		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Dán 3:6	3:6		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Dán 3:7	3:7		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Dán 3:8	3:8		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Dán 3:9	3:9		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
 Dán 4:1	4:4		KEZI	kezi	raw=4:4
 Dán 4:10	4:13		KEZI	kezi	raw=4:13
 Dán 4:11	4:14		KEZI	kezi	raw=4:14
@@ -13404,6 +13511,31 @@ Hós 12:6	12:6		KJV	szamlalas
 Hós 12:7	12:7		KJV	szamlalas	
 Hós 12:8	12:8		KJV	szamlalas	
 Hós 12:9	12:9		KJV	szamlalas	
+Hós 13:1	13:1		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Hós 13:10	13:10		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Hós 13:11	13:11		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Hós 13:12	13:12		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Hós 13:13	13:13		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Hós 13:14	13:14		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Hós 13:15	13:15		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Hós 13:2	13:2		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Hós 13:3	13:3		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Hós 13:4	13:4		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Hós 13:5	13:5		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Hós 13:6	13:6		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Hós 13:7	13:7		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Hós 13:8	13:8		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Hós 13:9	13:9		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Hós 14:1	13:16	14:1	MT	szoveg_osszevetes_f117	potolt: nincs_sor · újraellenőrizendő a teljes KJV-szövegen (N-F117c)
+Hós 14:10	14:9	14:10	MT	szoveg_osszevetes_f117	potolt: nincs_sor
+Hós 14:2	14:1	14:2	MT	szoveg_osszevetes_f117	potolt: nincs_sor
+Hós 14:3	14:2	14:3	MT	szoveg_osszevetes_f117	potolt: nincs_sor
+Hós 14:4	14:3	14:4	MT	szoveg_osszevetes_f117	potolt: nincs_sor
+Hós 14:5	14:4	14:5	MT	szoveg_osszevetes_f117	potolt: nincs_sor
+Hós 14:6	14:5	14:6	MT	szoveg_osszevetes_f117	potolt: nincs_sor
+Hós 14:7	14:6	14:7	MT	szoveg_osszevetes_f117	potolt: nincs_sor
+Hós 14:8	14:7	14:8	MT	szoveg_osszevetes_f117	potolt: nincs_sor
+Hós 14:9	14:8	14:9	MT	szoveg_osszevetes_f117	potolt: nincs_sor
 Hós 1:1	1:1		KJV	szamlalas	
 Hós 1:10	1:10		KJV	szamlalas	
 Hós 1:11	1:11		KJV	szamlalas	
@@ -13415,6 +13547,28 @@ Hós 1:6	1:6		KJV	szamlalas
 Hós 1:7	1:7		KJV	szamlalas	
 Hós 1:8	1:8		KJV	szamlalas	
 Hós 1:9	1:9		KJV	szamlalas	
+Hós 2:1	2:2	2:4	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · a csak szöveg-jelű igazítás eltért (DT-F117c (1)); a KJV 2:1 a Károli Hós 1:11-ben (N-F117b) · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT · újraellenőrizendő a teljes KJV-szövegen (N-F117c)
+Hós 2:10	2:11	2:13	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Hós 2:11	2:12	2:14	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Hós 2:12	2:13	2:15	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Hós 2:13	2:14	2:16	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Hós 2:14	2:15	2:17	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Hós 2:15	2:16	2:18	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Hós 2:16	2:17	2:19	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Hós 2:17	2:18	2:20	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Hós 2:18	2:19	2:21	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Hós 2:19	2:20	2:22	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Hós 2:2	2:3	2:5	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Hós 2:20	2:21	2:23	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Hós 2:21	2:22	2:24	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Hós 2:22	2:23	2:25	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Hós 2:3	2:4	2:6	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Hós 2:4	2:5	2:7	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Hós 2:5	2:6	2:8	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Hós 2:6	2:7	2:9	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Hós 2:7	2:8	2:10	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Hós 2:8	2:9	2:11	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Hós 2:9	2:10	2:12	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
 Hós 3:1	3:1		KJV	szamlalas	
 Hós 3:2	3:2		KJV	szamlalas	
 Hós 3:3	3:3		KJV	szamlalas	
@@ -15050,6 +15204,21 @@ Jób 16:6	16:6		KJV	szamlalas
 Jób 16:7	16:7		KJV	szamlalas	
 Jób 16:8	16:8		KJV	szamlalas	
 Jób 16:9	16:9		KJV	szamlalas	
+Jób 17:1	17:2	17:2	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · a csak szöveg-jelű igazítás eltért (DT-F117c (1)); a KJV 17:1 a Károli Jób 16:22-ben (N-F117b) · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT · újraellenőrizendő a teljes KJV-szövegen (N-F117c)
+Jób 17:10	17:11	17:11	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Jób 17:11	17:12	17:12	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Jób 17:12	17:13	17:13	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Jób 17:13	17:14	17:14	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Jób 17:14	17:15	17:15	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Jób 17:15	17:16	17:16	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Jób 17:2	17:3	17:3	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · a csak szöveg-jelű igazítás eltért (DT-F117c (1)) · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Jób 17:3	17:4	17:4	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · a csak szöveg-jelű igazítás eltért (DT-F117c (1)) · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Jób 17:4	17:5	17:5	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Jób 17:5	17:6	17:6	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Jób 17:6	17:7	17:7	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Jób 17:7	17:8	17:8	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Jób 17:8	17:9	17:9	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Jób 17:9	17:10	17:10	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
 Jób 18:1	18:1		KJV	szamlalas	
 Jób 18:10	18:10		KJV	szamlalas	
 Jób 18:11	18:11		KJV	szamlalas	
@@ -15578,6 +15747,29 @@ Jób 36:6	36:6		KJV	szamlalas
 Jób 36:7	36:7		KJV	szamlalas	
 Jób 36:8	36:8		KJV	szamlalas	
 Jób 36:9	36:9		KJV	szamlalas	
+Jób 37:1	37:2	37:2	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT · újraellenőrizendő a teljes KJV-szövegen (N-F117c)
+Jób 37:10	37:11	37:11	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Jób 37:11	37:12	37:12	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Jób 37:12	37:13	37:13	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Jób 37:13	37:14	37:14	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Jób 37:14	37:15	37:15	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Jób 37:15	37:16	37:16	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Jób 37:16	37:17	37:17	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Jób 37:17	37:18	37:18	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Jób 37:18	37:19	37:19	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Jób 37:19	37:20	37:20	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Jób 37:2	37:3	37:3	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Jób 37:20	37:21	37:21	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Jób 37:21	37:22	37:22	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Jób 37:22	37:23	37:23	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Jób 37:23	37:24	37:24	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Jób 37:3	37:4	37:4	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Jób 37:4	37:5	37:5	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Jób 37:5	37:6	37:6	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Jób 37:6	37:7	37:7	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Jób 37:7	37:8	37:8	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Jób 37:8	37:9	37:9	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Jób 37:9	37:10	37:10	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
 Jób 38:1	38:1		KEZI	kezi_identitas_javitas	raw=38:1
 Jób 38:10	38:10		KEZI	kezi_identitas_javitas	raw=38:10
 Jób 38:11	38:11		KEZI	kezi_identitas_javitas	raw=38:11
@@ -15640,11 +15832,11 @@ Jób 39:30	39:27		KEZI	kezi	raw=39:27
 Jób 39:31	39:28		KEZI	kezi	raw=39:28
 Jób 39:32	39:29		KEZI	kezi	raw=39:29
 Jób 39:33	39:30		KEZI	kezi	raw=39:30
-Jób 39:34			KEZI	kezi_identitas_javitas	raw=39:34
-Jób 39:35			KEZI	kezi_identitas_javitas	raw=39:35
-Jób 39:36			KEZI	kezi_identitas_javitas	raw=39:36
-Jób 39:37			KEZI	kezi_identitas_javitas	raw=39:37
-Jób 39:38			KEZI	kezi_identitas_javitas	raw=39:38
+Jób 39:34	40:1	40:1	KEZI	szoveg_osszevetes_f117	elozo: ||KEZI|kezi_identitas_javitas|raw=39:34 · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT · újraellenőrizendő a teljes KJV-szövegen (N-F117c)
+Jób 39:35	40:2	40:2	KEZI	szoveg_osszevetes_f117	elozo: ||KEZI|kezi_identitas_javitas|raw=39:35 · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT · újraellenőrizendő a teljes KJV-szövegen (N-F117c)
+Jób 39:36	40:3	40:3	KEZI	szoveg_osszevetes_f117	elozo: ||KEZI|kezi_identitas_javitas|raw=39:36 · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT · újraellenőrizendő a teljes KJV-szövegen (N-F117c)
+Jób 39:37	40:4	40:4	KEZI	szoveg_osszevetes_f117	elozo: ||KEZI|kezi_identitas_javitas|raw=39:37 · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT · újraellenőrizendő a teljes KJV-szövegen (N-F117c)
+Jób 39:38	40:5	40:5	KEZI	szoveg_osszevetes_f117	elozo: ||KEZI|kezi_identitas_javitas|raw=39:38 · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT · újraellenőrizendő a teljes KJV-szövegen (N-F117c)
 Jób 39:4	39:1		KEZI	kezi	raw=39:1
 Jób 39:5	39:2		KEZI	kezi	raw=39:2
 Jób 39:6	39:3		KEZI	kezi	raw=39:3
@@ -15992,17 +16184,17 @@ Jón 1:6	1:6	1:6	MT	tvtms
 Jón 1:7	1:7	1:7	MT	tvtms	
 Jón 1:8	1:8	1:8	MT	tvtms	
 Jón 1:9	1:9	1:9	MT	tvtms	
-Jón 2:1	2:1	2:1	MT	tvtms	
-Jón 2:10	2:10	2:10	MT	tvtms	
-Jón 2:11		2:11	MT	szamlalas	
-Jón 2:2	2:2	2:2	MT	tvtms	
-Jón 2:3	2:3	2:3	MT	tvtms	
-Jón 2:4	2:4	2:4	MT	tvtms	
-Jón 2:5	2:5	2:5	MT	tvtms	
-Jón 2:6	2:6	2:6	MT	tvtms	
-Jón 2:7	2:7	2:7	MT	tvtms	
-Jón 2:8	2:8	2:8	MT	tvtms	
-Jón 2:9	2:9	2:9	MT	tvtms	
+Jón 2:1	1:17	2:1	MT	szoveg_osszevetes_f117	elozo: 2:1|2:1|MT|tvtms| · újraellenőrizendő a teljes KJV-szövegen (N-F117c)
+Jón 2:10	2:9	2:10	MT	szoveg_osszevetes_f117	elozo: 2:10|2:10|MT|tvtms|
+Jón 2:11	2:10	2:11	MT	szoveg_osszevetes_f117	elozo: |2:11|MT|szamlalas|
+Jón 2:2	2:1	2:2	MT	szoveg_osszevetes_f117	elozo: 2:2|2:2|MT|tvtms|
+Jón 2:3	2:2	2:3	MT	szoveg_osszevetes_f117	elozo: 2:3|2:3|MT|tvtms|
+Jón 2:4	2:3	2:4	MT	szoveg_osszevetes_f117	elozo: 2:4|2:4|MT|tvtms|
+Jón 2:5	2:4	2:5	MT	szoveg_osszevetes_f117	elozo: 2:5|2:5|MT|tvtms|
+Jón 2:6	2:5	2:6	MT	szoveg_osszevetes_f117	elozo: 2:6|2:6|MT|tvtms|
+Jón 2:7	2:6	2:7	MT	szoveg_osszevetes_f117	elozo: 2:7|2:7|MT|tvtms|
+Jón 2:8	2:7	2:8	MT	szoveg_osszevetes_f117	elozo: 2:8|2:8|MT|tvtms|
+Jón 2:9	2:8	2:9	MT	szoveg_osszevetes_f117	elozo: 2:9|2:9|MT|tvtms|
 Jón 3:1	3:1		KJV	szamlalas	
 Jón 3:10	3:10		KJV	szamlalas	
 Jón 3:2	3:2		KJV	szamlalas	
@@ -17501,9 +17693,9 @@ Préd 9:17	9:15		KEZI	kezi	raw=9:15
 Préd 9:18	9:16		KEZI	kezi	raw=9:16
 Préd 9:19	9:17		KEZI	kezi	raw=9:17
 Préd 9:20	9:18		KEZI	kezi	raw=9:18
-Préd 9:21			KEZI	kezi_identitas_javitas	raw=9:21
-Préd 9:22			KEZI	kezi_identitas_javitas	raw=9:22
-Préd 9:23			KEZI	kezi_identitas_javitas	raw=9:23
+Préd 9:21	10:1	10:1	KEZI	szoveg_osszevetes_f117	elozo: ||KEZI|kezi_identitas_javitas|raw=9:21 · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT · újraellenőrizendő a teljes KJV-szövegen (N-F117c)
+Préd 9:22	10:2	10:2	KEZI	szoveg_osszevetes_f117	elozo: ||KEZI|kezi_identitas_javitas|raw=9:22 · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT · újraellenőrizendő a teljes KJV-szövegen (N-F117c)
+Préd 9:23	10:3	10:3	KEZI	szoveg_osszevetes_f117	elozo: ||KEZI|kezi_identitas_javitas|raw=9:23 · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT · újraellenőrizendő a teljes KJV-szövegen (N-F117c)
 Préd 9:3	9:1		KEZI	kezi	raw=9:1
 Préd 9:4	9:2		KEZI	kezi	raw=9:2
 Préd 9:5	9:3		KEZI	kezi	raw=9:3
@@ -17574,6 +17766,33 @@ Péld 11:6	11:6		KJV	szamlalas
 Péld 11:7	11:7		KJV	szamlalas	
 Péld 11:8	11:8		KJV	szamlalas	
 Péld 11:9	11:9		KJV	szamlalas	
+Péld 12:1	12:2	12:2	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT · újraellenőrizendő a teljes KJV-szövegen (N-F117c)
+Péld 12:10	12:11	12:11	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Péld 12:11	12:12	12:12	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Péld 12:12	12:13	12:13	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Péld 12:13	12:14	12:14	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Péld 12:14	12:15	12:15	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Péld 12:15	12:16	12:16	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Péld 12:16	12:17	12:17	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Péld 12:17	12:18	12:18	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Péld 12:18	12:19	12:19	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Péld 12:19	12:20	12:20	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Péld 12:2	12:3	12:3	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Péld 12:20	12:21	12:21	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Péld 12:21	12:22	12:22	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Péld 12:22	12:23	12:23	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Péld 12:23	12:24	12:24	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Péld 12:24	12:25	12:25	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Péld 12:25	12:26	12:26	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Péld 12:26	12:27	12:27	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Péld 12:27	12:28	12:28	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Péld 12:3	12:4	12:4	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Péld 12:4	12:5	12:5	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Péld 12:5	12:6	12:6	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Péld 12:6	12:7	12:7	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Péld 12:7	12:8	12:8	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Péld 12:8	12:9	12:9	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Péld 12:9	12:10	12:10	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
 Péld 13:1	13:1		KJV	szamlalas	
 Péld 13:10	13:10		KJV	szamlalas	
 Péld 13:11	13:11		KJV	szamlalas	
@@ -21635,6 +21854,35 @@ Zsolt 9:9	9:8	9:9	MT	lxx_os_etalon_f91
 Én 4:7	4:7		KJV	szamlalas	
 Én 4:8	4:8		KJV	szamlalas	
 Én 4:9	4:9		KJV	szamlalas	
+Én 5:1	5:1		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Én 5:10	5:10		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Én 5:11	5:11		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Én 5:12	5:12		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Én 5:13	5:13		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Én 5:14	5:14		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Én 5:15	5:15		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Én 5:16	5:16		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Én 5:17	6:1	6:1	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT · újraellenőrizendő a teljes KJV-szövegen (N-F117c)
+Én 5:18	6:2	6:2	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT · újraellenőrizendő a teljes KJV-szövegen (N-F117c)
+Én 5:19	6:3	6:3	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT · újraellenőrizendő a teljes KJV-szövegen (N-F117c)
+Én 5:2	5:2		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Én 5:3	5:3		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Én 5:4	5:4		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Én 5:5	5:5		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Én 5:6	5:6		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Én 5:7	5:7		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Én 5:8	5:8		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Én 5:9	5:9		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Én 6:1	6:4	6:4	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Én 6:10	6:13	7:1	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Én 6:2	6:5	6:5	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Én 6:3	6:6	6:6	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Én 6:4	6:7	6:7	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Én 6:5	6:8	6:8	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Én 6:6	6:9	6:9	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Én 6:7	6:10	6:10	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Én 6:8	6:11	6:11	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Én 6:9	6:12	6:12	KEZI	szoveg_osszevetes_f117	potolt: nincs_sor · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
 Én 7:1	7:1		KJV	szamlalas	
 Én 7:10	7:10		KJV	szamlalas	
 Én 7:11	7:11		KJV	szamlalas	
@@ -22284,33 +22532,33 @@ Zsolt 9:9	9:8	9:9	MT	lxx_os_etalon_f91
 Ézs 39:6	39:6		KJV	szamlalas	
 Ézs 39:7	39:7		KJV	szamlalas	
 Ézs 39:8	39:8		KJV	szamlalas	
-Ézs 3:1	3:1	3:1	MT	tvtms	
-Ézs 3:10	3:10	3:10	MT	tvtms	
-Ézs 3:11	3:11	3:11	MT	tvtms	
-Ézs 3:12	3:12	3:12	MT	tvtms	
-Ézs 3:13	3:13	3:13	MT	tvtms	
-Ézs 3:14	3:14	3:14	MT	tvtms	
-Ézs 3:15	3:15	3:15	MT	tvtms	
-Ézs 3:16	3:16	3:16	MT	tvtms	
-Ézs 3:17	3:17	3:17	MT	tvtms	
-Ézs 3:18	3:18	3:18	MT	tvtms	
-Ézs 3:19	3:19	3:19	MT	tvtms	
-Ézs 3:2	3:2	3:2	MT	tvtms	
-Ézs 3:20	3:20	3:20	MT	tvtms	
-Ézs 3:21	3:21	3:21	MT	tvtms	
-Ézs 3:22	3:22	3:22	MT	tvtms	
-Ézs 3:23	3:23	3:23	MT	tvtms	
-Ézs 3:24	3:24	3:24	MT	tvtms	
-Ézs 3:25	3:25	3:25	MT	tvtms	
-Ézs 3:26	3:26	3:26	MT	tvtms	
-Ézs 3:27		3:27	MT	szamlalas	
-Ézs 3:3	3:3	3:3	MT	tvtms	
-Ézs 3:4	3:4	3:4	MT	tvtms	
-Ézs 3:5	3:5	3:5	MT	tvtms	
-Ézs 3:6	3:6	3:6	MT	tvtms	
-Ézs 3:7	3:7	3:7	MT	tvtms	
-Ézs 3:8	3:8	3:8	MT	tvtms	
-Ézs 3:9	3:9	3:9	MT	tvtms	
+Ézs 3:1	2:22	2:22	KEZI	szoveg_osszevetes_f117	elozo: 3:1|3:1|MT|tvtms| · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT · újraellenőrizendő a teljes KJV-szövegen (N-F117c)
+Ézs 3:10	3:9	3:9	KEZI	szoveg_osszevetes_f117	elozo: 3:10|3:10|MT|tvtms| · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Ézs 3:11	3:10	3:10	KEZI	szoveg_osszevetes_f117	elozo: 3:11|3:11|MT|tvtms| · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Ézs 3:12	3:11	3:11	KEZI	szoveg_osszevetes_f117	elozo: 3:12|3:12|MT|tvtms| · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Ézs 3:13	3:12	3:12	KEZI	szoveg_osszevetes_f117	elozo: 3:13|3:13|MT|tvtms| · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Ézs 3:14	3:13	3:13	KEZI	szoveg_osszevetes_f117	elozo: 3:14|3:14|MT|tvtms| · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Ézs 3:15	3:14	3:14	KEZI	szoveg_osszevetes_f117	elozo: 3:15|3:15|MT|tvtms| · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Ézs 3:16	3:15	3:15	KEZI	szoveg_osszevetes_f117	elozo: 3:16|3:16|MT|tvtms| · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Ézs 3:17	3:16	3:16	KEZI	szoveg_osszevetes_f117	elozo: 3:17|3:17|MT|tvtms| · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Ézs 3:18	3:17	3:17	KEZI	szoveg_osszevetes_f117	elozo: 3:18|3:18|MT|tvtms| · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Ézs 3:19	3:18	3:18	KEZI	szoveg_osszevetes_f117	elozo: 3:19|3:19|MT|tvtms| · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Ézs 3:2	3:1	3:1	KEZI	szoveg_osszevetes_f117	elozo: 3:2|3:2|MT|tvtms| · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Ézs 3:20	3:19	3:19	KEZI	szoveg_osszevetes_f117	elozo: 3:20|3:20|MT|tvtms| · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Ézs 3:21	3:20	3:20	KEZI	szoveg_osszevetes_f117	elozo: 3:21|3:21|MT|tvtms| · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Ézs 3:22	3:21	3:21	KEZI	szoveg_osszevetes_f117	elozo: 3:22|3:22|MT|tvtms| · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Ézs 3:23	3:22	3:22	KEZI	szoveg_osszevetes_f117	elozo: 3:23|3:23|MT|tvtms| · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Ézs 3:24	3:23	3:23	KEZI	szoveg_osszevetes_f117	elozo: 3:24|3:24|MT|tvtms| · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Ézs 3:25	3:24	3:24	KEZI	szoveg_osszevetes_f117	elozo: 3:25|3:25|MT|tvtms| · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Ézs 3:26	3:25	3:25	KEZI	szoveg_osszevetes_f117	elozo: 3:26|3:26|MT|tvtms| · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Ézs 3:27	3:26	3:26	KEZI	szoveg_osszevetes_f117	elozo: |3:27|MT|szamlalas| · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Ézs 3:3	3:2	3:2	KEZI	szoveg_osszevetes_f117	elozo: 3:3|3:3|MT|tvtms| · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Ézs 3:4	3:3	3:3	KEZI	szoveg_osszevetes_f117	elozo: 3:4|3:4|MT|tvtms| · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Ézs 3:5	3:4	3:4	KEZI	szoveg_osszevetes_f117	elozo: 3:5|3:5|MT|tvtms| · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Ézs 3:6	3:5	3:5	KEZI	szoveg_osszevetes_f117	elozo: 3:6|3:6|MT|tvtms| · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Ézs 3:7	3:6	3:6	KEZI	szoveg_osszevetes_f117	elozo: 3:7|3:7|MT|tvtms| · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Ézs 3:8	3:7	3:7	KEZI	szoveg_osszevetes_f117	elozo: 3:8|3:8|MT|tvtms| · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
+Ézs 3:9	3:8	3:8	KEZI	szoveg_osszevetes_f117	elozo: 3:9|3:9|MT|tvtms| · KEZI + igehely_mt (DT-F117e): Károli ≠ KJV és ≠ MT
 Ézs 40:1	40:1		KJV	szamlalas	
 Ézs 40:10	40:10		KJV	szamlalas	
 Ézs 40:11	40:11		KJV	szamlalas	
@@ -22553,6 +22801,12 @@ Zsolt 9:9	9:8	9:9	MT	lxx_os_etalon_f91
 Ézs 49:7	49:7		KJV	szamlalas	
 Ézs 49:8	49:8		KJV	szamlalas	
 Ézs 49:9	49:9		KJV	szamlalas	
+Ézs 4:1	4:1		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Ézs 4:2	4:2		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Ézs 4:3	4:3		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Ézs 4:4	4:4		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Ézs 4:5	4:5		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
+Ézs 4:6	4:6		KJV	szoveg_osszevetes_f117	potolt: nincs_sor
 Ézs 50:1	50:1		KJV	szamlalas	
 Ézs 50:10	50:10		KJV	szamlalas	
 Ézs 50:11	50:11		KJV	szamlalas	
@@ -22806,6 +23060,17 @@ Zsolt 9:9	9:8	9:9	MT	lxx_os_etalon_f91
 Ézs 63:7	63:7	63:7	MT	tvtms	
 Ézs 63:8	63:8	63:8	MT	tvtms	
 Ézs 63:9	63:9	63:9	MT	tvtms	
+Ézs 64:1	64:1		KJV	szoveg_osszevetes_f117	potolt: nincs_sor · KJV 64:1–2 egy Károli-versben (F91-szabály: az első KJV-vers a pár; DT-F117c (2); a KJV 64:2 visszairánya: N-F117b) · újraellenőrizendő a teljes KJV-szövegen (N-F117c)
+Ézs 64:10	64:11	64:10	MT	szoveg_osszevetes_f117	potolt: nincs_sor
+Ézs 64:11	64:12	64:11	MT	szoveg_osszevetes_f117	potolt: nincs_sor
+Ézs 64:2	64:3	64:2	MT	szoveg_osszevetes_f117	potolt: nincs_sor · újraellenőrizendő a teljes KJV-szövegen (N-F117c)
+Ézs 64:3	64:4	64:3	MT	szoveg_osszevetes_f117	potolt: nincs_sor
+Ézs 64:4	64:5	64:4	MT	szoveg_osszevetes_f117	potolt: nincs_sor
+Ézs 64:5	64:6	64:5	MT	szoveg_osszevetes_f117	potolt: nincs_sor
+Ézs 64:6	64:7	64:6	MT	szoveg_osszevetes_f117	potolt: nincs_sor
+Ézs 64:7	64:8	64:7	MT	szoveg_osszevetes_f117	potolt: nincs_sor
+Ézs 64:8	64:9	64:8	MT	szoveg_osszevetes_f117	potolt: nincs_sor
+Ézs 64:9	64:10	64:9	MT	szoveg_osszevetes_f117	potolt: nincs_sor
 Ézs 65:1	65:1		KJV	szamlalas	
 Ézs 65:10	65:10		KJV	szamlalas	
 Ézs 65:11	65:11		KJV	szamlalas	
