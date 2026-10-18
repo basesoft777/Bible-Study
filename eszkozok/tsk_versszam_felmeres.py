@@ -94,6 +94,7 @@ def kibont(ige):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--kimenet', default=os.path.join(tempfile.gettempdir(), 'tsk_versszam_felmeres'))
+    ap.add_argument('--elveszett', default=None, help='F. rész: az elveszett/új forrás- és célkulcsok tételes TSV-je (alapból a --kimenet alatt)')
     a = ap.parse_args()
     os.makedirs(a.kimenet, exist_ok=True)
     ts = datetime.date.today().isoformat()
@@ -435,6 +436,92 @@ def main():
     print('  Votes>=%d: rossz versről %d, elmarad %d' % (KUSZOB, b_rossz[KUSZOB], b_elmarad[KUSZOB]))
     print('proveniencia: scope=TSK-teljes ÓSZ + elofordulasok.tsv ÓSZ-versei | forras=TSK_kereszthivatkozasok.tsv+Karoli_versmegfeleltetes.tsv (tsk_kulcs) | n=%d | ts=%s'
           % (len(tsk), ts))
+
+    # --- F. Nem körkörös mérés: a main régi logikájához (KJV-kulcs = Károli-kulcs) képest (F114.10) ----
+    # A régi logika (origin/main: lexikon_general.tsk_index, lekerdez.cmd_tsk, ...) a TSK-sort a
+    # KJV-kulcs szövegével azonos Károli-versen érte el. Az új átváltó csak akkor, ha a
+    # Karoli_versmegfeleltetes.tsv-nek van KJV-párja. Itt a "régi elérés" a Karoli_1908.tsv
+    # vershalmazából jön (nem a megfeleltetésből): egy KJV-kulcs akkor volt elérve, ha a szövege
+    # létező Károli-vers. Az elveszett sorokat a megfeleltetés osztaly|forras kategóriája szerint bontjuk;
+    # az üres igehely_kjv + létező azonos szövegű Károli-vers a gyanús (LXX-hiányos) csoport.
+    kar_osz = set()
+    with open(os.path.join(KONK, 'Karoli_1908.tsv'), encoding='utf-8') as f:
+        for sor in f:
+            ige = sor.split('	', 1)[0]
+            b = konyv_cv(ige)
+            if b and b[0] in osz_konyvek:
+                kar_osz.add(ige)
+
+    def kategoria(v):
+        """A Károli-vers v megfeleltetés-sorának osztaly|forras kategóriája és az igehely_kjv üressége."""
+        return (k2j_osztaly_ures.get(v) or ('nincs_sor', ''))
+
+    k2j_osztaly_ures = {}
+    for r in tsv(os.path.join(KONK, 'Karoli_versmegfeleltetes.tsv')):
+        k2j_osztaly_ures[r['igehely_karoli']] = ('%s|%s' % (r['osztaly'], r['forras']), 'ures' if not r['igehely_kjv'].strip() else 'van')
+    f_forras = {}   # KJV forráskulcs -> [sorok, oszt|forras, ures?]
+    f_cel = {}
+    f_osszes_forras = f_osszes_cel = f_uj_pair = f_lost_pair = 0
+    old_pairs = set()
+    new_pairs = set()
+    for r in tsk:
+        b = konyv_cv(r['Igehely'])
+        if not (b and b[0] in osz_konyvek):
+            continue
+        src = r['Igehely']
+        cels = kibont(r['Kapcsolódó igehely']) or []
+        for c in cels:
+            bc = konyv_cv(c)
+            if not bc or bc[0] not in osz_konyvek:
+                continue
+            if src in kar_osz and c in kar_osz:
+                old_pairs.add((src, c))
+            for ks in kjv_to_karoli(src):
+                for kc in kjv_to_karoli(c):
+                    new_pairs.add((ks, kc))
+        # forrásoldal: régen elérte (a kulcs létező Károli-vers), most nincs Károli-pár
+        if src in kar_osz and not kjv_to_karoli(src):
+            kat, ures = kategoria(src)
+            d = f_forras.setdefault(src, [0, kat, ures])
+            d[0] += 1
+            f_osszes_forras += 1
+        for c in cels:
+            bc = konyv_cv(c)
+            if bc and bc[0] in osz_konyvek and c in kar_osz and not kjv_to_karoli(c):
+                kat, ures = kategoria(c)
+                d = f_cel.setdefault(c, [0, kat, ures])
+                d[0] += 1
+                f_osszes_cel += 1
+    f_lost_pair = len(old_pairs - new_pairs)
+    f_uj_pair = len(new_pairs - old_pairs)
+
+    def osszegez(d):
+        o = {}
+        for k, (n, kat, ures) in d.items():
+            x = o.setdefault((kat, ures), [0, 0])
+            x[0] += 1
+            x[1] += n
+        return o
+    print()
+    print('# F. Nem körkörös mérés: az átváltó vs. a main régi logikája (KJV-kulcs = Károli-kulcs; ÓSZ)')
+    print('Régen elért (forrás, cél) pár (mindkettő létező Károli-vers): %d; új átváltóval: %d' % (len(old_pairs), len(new_pairs)))
+    print('Régen elért, most nem elért pár: %d; újonnan elért pár: %d' % (f_lost_pair, f_uj_pair))
+    print('Elveszett forrássor (a KJV-kulcs létező Károli-vers, de nincs Károli-párja): %d sor, %d kulcs' % (f_osszes_forras, len(f_forras)))
+    for (kat, ures), (nk, ns) in sorted(osszegez(f_forras).items()):
+        print('  forrás | %s | igehely_kjv %s | %d kulcs, %d sor' % (kat, ures, nk, ns))
+    print('Elveszett célelőfordulás (a cél KJV-vers létező Károli-vers, de nincs Károli-párja): %d, %d vers' % (f_osszes_cel, len(f_cel)))
+    for (kat, ures), (nk, ns) in sorted(osszegez(f_cel).items()):
+        print('  cél | %s | igehely_kjv %s | %d vers, %d előfordulás' % (kat, ures, nk, ns))
+    print('proveniencia: scope=TSK ÓSZ-sorai, régi (identitás) vs. új (tsk_kulcs) elérés | forras=TSK_kereszthivatkozasok.tsv+Karoli_1908.tsv+Karoli_versmegfeleltetes.tsv | n=%d | ts=%s'
+          % (len(old_pairs), ts))
+    ut = a.elveszett or os.path.join(a.kimenet, 'elveszett_sorok.tsv')
+    with open(ut, 'w', encoding='utf-8', newline='\n') as fh:
+        fh.write('# F114.10: a TSK ÓSZ-forrás- és célkulcsai, amelyeket a main régi logikája (KJV-kulcs = Károli-kulcs) elért, az új tsk_kulcs viszont "nincs pár"-nak vesz\n')
+        fh.write('# proveniencia: scope=TSK ÓSZ | forras=TSK_kereszthivatkozasok.tsv+Karoli_1908.tsv+Karoli_versmegfeleltetes.tsv (eszkozok/tsk_versszam_felmeres.py F. rész) | n=%d | ts=%s\n' % (len(f_forras) + len(f_cel), ts))
+        fh.write('\t'.join(['oldal', 'kjv_kulcs', 'sorok', 'megfeleltetes_osztaly_forras', 'igehely_kjv']) + '\n')
+        for oldal, d in (('forras', f_forras), ('cel', f_cel)):
+            for k in sorted(d):
+                fh.write('\t'.join([oldal, k, str(d[k][0]), d[k][1], d[k][2]]) + '\n')
 
     # részletes kimenet
     with open(os.path.join(a.kimenet, 'B_elofordulas_versek.tsv'), 'w', encoding='utf-8', newline='\n') as f:
