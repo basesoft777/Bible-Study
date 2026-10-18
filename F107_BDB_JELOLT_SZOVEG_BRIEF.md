@@ -6,10 +6,10 @@ tipus: feladat
 fazis: 1
 modell: opus
 munka: folyamat
-allapot: dontesre_var
+allapot: fut
 ag: claude/f107-bdb-jelolt-szoveg
 ad: az adat/bdb_szakaszok.tsv (a BDB minden szócikke szakaszokra bontva a nyers forrás jelölőiből, útvonallal), a forráshibák javítótáblája, a kész magyar fordítás szakaszhatár-illesztése (adat/bdb_szakasz_hu.tsv), és mért összevetés a mai szeletelővel; a szeletelő átállása a #102-é, a fordítás bemenete a #38-é
-kovetkezo: Te: DT-F107e (a 2. lépés STOP-ja: a Strongonkénti szócikk-illesztés 2,73%-nál nem egyezik, küszöb 1%) és DT-F107f (a DictBDB.json dagesses pe-hibája) döntése, DONTESEK.md; utána a 2. lépés folytatása (tábla, teszt, SEMA, datasetek.tsv)
+kovetkezo: Fut a 2. lépés folytatása (DT-F107e (b) a 0,5 alatti sávra, majd (a) a tábla kiírása; DT-F107f (a) javítótábla); utána a 3. lépés és a 4. lépés ⛔ osztályozási pontja
 olvas: [konkordancia/lexikonok_nyers/BDB.lexicon, konkordancia/lexikonok_nyers/README.md, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/BDB_teljes_unabridged_README.md, konkordancia/_convert_bdb.py, adat/forditasok.tsv, eszkozok/forditas_kapuk.py, adat/bdb_aranyminta.tsv, adat/bdb_vers_jelentes.tsv, adat/bdb_igehely_javitas.tsv, naplok/BDB_SZELETELO_M2_seed101_iteletek.md, F102_BDB_SZELETELO_JAVITAS_BRIEF.md, F38_BDB_FORDITAS_BRIEF.md, adat/SEMA.md, adat/datasetek.tsv, adat/licencek.tsv, Rendszerfejlesztesi_playbook.md]
 ir: [eszkozok/bdb_jelolt/, adat/bdb_szakaszok.tsv, adat/bdb_szakasz_hu.tsv, adat/bdb_forras_javitas.tsv, adat/SEMA.md, adat/datasetek.tsv, naplok/F107_BDB_JELOLT_SZOVEG_naplo.md, konkordancia/lexikonok_nyers/, konkordancia/BDB_teljes_unabridged_README.md, Rendszerfejlesztesi_playbook.md, adat/licencek.tsv]
 fugg: [99]
