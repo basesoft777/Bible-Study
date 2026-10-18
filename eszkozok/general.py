@@ -981,6 +981,301 @@ def blokkok_ellenoriz(path, blokkok):
     return eredmeny
 
 
+# ---------------------------------------------------------------------------
+# F11 M2 -- a kezi forras (`motivumok/[ID].md`, sablon 9) olvasasa
+# szintszuressel (SEMA 3.10.1--3.10.4, DT84 (1), (10))
+# ---------------------------------------------------------------------------
+#
+# Harom szint, kumulativ melyseggel: olvasoi < apparatus < belso. A nezet a
+# sajat szintjet es az alatta levoket mutatja. A szint soronkent szamolodik:
+#
+#   - a szakasz ALAPSZINTJE a sablon 9 4. pontjanak tablazatabol jon
+#     (FORRAS_SZAKASZOK); a forrasban ehhez jelolo nem kell. A szakasz a `##`
+#     cimsor; a `###` alcimsor a szakasz alapszintjet orokli, kiveve a
+#     FORRAS_ALSZAKASZOK-ban felsorolt sort (1.P: a P1--P7 levezetes `belso`);
+#   - ISMERETLEN `##` szakasz (a listan nem szereplo cimsor, pl. az orokolt
+#     archiv szakaszok) szintje `belso` -- zart alapertek, nem nyitott
+#     (SEMA 3.10.2, 3.10.4); a forras-jelentes figyelmeztetesben felsorolja;
+#   - az elso `##` elotti resz (cim, FORRÁSRÉTEG-fejlec) a sablon F sora: `belso`;
+#   - eltérés csak `<!-- SZINT-KEZDET: x -->` ... `<!-- SZINT-VÉGE: x -->`
+#     parral, csak melyebb szint fele, `##`-en at nem; parositatlan vagy
+#     ellentmondo jelolo HIBA (SEMA 3.10.2), nem csendes kihagyas;
+#   - az `ADAT-NÉZET` jelolo szintje a sajat `SZINT:` mezoje (ha melyebb a
+#     kornyezetenel), kulonben a kornyezete;
+#   - a `【NAPLO: ...】` mindig `belso` (SEMA 3.10.3): karakterszinten vagodik
+#     ki (tobb soros is lehet), es a csak belole allo sor eltunik.
+#
+# A cimsor-felismeres konvencioja (a `##` cimsor eleje: `Kivonat`, `0.`-`7.`,
+# `Proveniencia-sorok`; a #64 proza-probajanak, `motivumok/TEREMT-002.md`,
+# alakja) a sablon 9-ben nincs kimondva: megerositendo, l. DT-F11d (a).
+#
+# A kiadhato nezet (olvasoi, apparatus) build-kihagyassal keszul (SEMA
+# 3.10.4): a `belso` blokk szovege nem kerul a kimenetbe, es a csak-forrasbeli
+# jelolok (`SZINT-*`, `INAKTÍV`, `JELÖLT`, `ADAT-HIV`, `ADAT-ÉRTÉK`,
+# `FORRÁSRÉTEG`) sem; az `olvasoi` nezet ezen felul a `RÉS-*` jeloloket sem
+# viszi (ci-terv E29). A `belso` (szerkesztoi) nezet maga a forras,
+# valtozatlanul. A generator a forrasba SOHA nem ir (SEMA 3.10.6).
+
+SZINTEK = ('olvasoi', 'apparatus', 'belso')
+SZINT_RANG = {s: i for i, s in enumerate(SZINTEK)}
+
+# (sablon-kulcs, a '## ' utani szoveg elejere illesztett regex, alapszint) --
+# sablon 9, 4. pont. A tobb sorbol allo csoportok (1: 1.P/1.T/1.L; 2: 2/2.S/
+# 2/b/2.M; 3: 3/3.V/3.U; 5: 5/5.T; 7: 7.K/7.A/7.M/7.N/7.Q) alapszintje a
+# csoport kezi prozat hordozo soraie; a `belso` alsoraik vagy ADAT-NÉZET-ek
+# (sajat SZINT: mezovel: 7.M, 7.Q), vagy a FORRAS_ALSZAKASZOK-ban allnak (1.P).
+FORRAS_SZAKASZOK = (
+    ('K', r'Kivonat(\s|$)', 'olvasoi'),
+    ('0', r'0\.\s', 'belso'),
+    ('1', r'1\.\s', 'apparatus'),
+    ('2', r'2\.\s', 'apparatus'),
+    ('3', r'3\.\s', 'olvasoi'),
+    ('4', r'4\.\s', 'apparatus'),
+    ('5', r'5\.\s', 'olvasoi'),
+    ('6', r'6\.\s', 'belso'),
+    ('7', r'7\.\s', 'apparatus'),
+    ('P', r'Proveniencia-sorok(\s|$)', 'belso'),
+)
+# (csoport-kulcs, alszakasz-kulcs, a '### ' utani szovegre illesztett regex, alapszint)
+FORRAS_ALSZAKASZOK = (
+    ('1', '1.P', r'.*P1[–-]P7', 'belso'),
+)
+
+_SZINT_PAR = re.compile(r'^<!-- SZINT-(KEZDET|VÉGE): (\S+) -->$')
+_SZINT_REGI = re.compile(r'^<!-- SZINT: (\S+) -->$')
+_ADAT_NEZET = re.compile(r'^<!-- ADAT-NÉZET:.*-->$')
+_ADAT_NEZET_SZINT = re.compile(r'\|\s*SZINT:\s*(\S+?)\s*-->$')
+_ADAT_ERTEK_INLINE = re.compile(r'<!-- ADAT-ÉRTÉK:.*?-->')
+# A forrasban tilos generalt jelolok (SEMA 3.10.6): visszairas-gyanu.
+GENERALT_JELOLOK_FORRASBAN = ('GENERÁLT-KEZDET', 'GENERÁLT-VÉGE', 'GENERÁLT:',
+                              'ÜRES-BLOKK', 'ÜRES-NYELV')
+# A kiadhato nezetbol mindig kimarado, sajat soros, csak-forrasbeli jelolok.
+FORRAS_CSAK_JELOLO_SOR = (
+    re.compile(r'^<!-- SZINT-(KEZDET|VÉGE):'),
+    re.compile(r'^<!-- INAKTÍV:'),
+    re.compile(r'^<!-- JELÖLT:'),
+    re.compile(r'^<!-- ADAT-HIV:'),
+    re.compile(r'^<!-- FORRÁSRÉTEG'),
+)
+OLVASOI_CSAK_JELOLO_SOR = (
+    re.compile(r'^<!-- RÉS-(KEZDET|VÉGE):'),
+)
+
+
+class ForrasHiba(ValueError):
+    """A forras szerkezeti hibaja (parositatlan/ellentmondo SZINT-jelolo, a
+    #64 ideiglenes alakja, generalt jelolo a forrasban): a generator megall."""
+
+
+def forras_szakasz_felismer(cim_szoveg):
+    """(sablon-kulcs, alapszint) a `## ` utani cimszovegre; ismeretlennel
+    (None, 'belso') -- zart alapertek (SEMA 3.10.2)."""
+    for kulcs, minta, szint in FORRAS_SZAKASZOK:
+        if re.match(minta, cim_szoveg):
+            return kulcs, szint
+    return None, 'belso'
+
+
+def forras_alszakasz_felismer(csoport, cim_szoveg):
+    """(alszakasz-kulcs, alapszint) vagy (None, None), ha a `###` alcimsor a
+    csoport alapszintjet orokli."""
+    for csop, kulcs, minta, szint in FORRAS_ALSZAKASZOK:
+        if csop == csoport and re.match(minta, cim_szoveg):
+            return kulcs, szint
+    return None, None
+
+
+def _melyebb(a, b):
+    return a if SZINT_RANG[a] >= SZINT_RANG[b] else b
+
+
+def forras_elemez(szoveg):
+    """A forras soronkenti elemzese.
+
+    Visszaad: (sorok, figyelmeztetesek), ahol sorok = [{'sor': str, 'szam': int,
+    'szint': str, 'szakasz': str|None, 'szakasz_cim': str|None}], a szoveg
+    LF-re normalizalt sorai. Szerkezeti hibanal ForrasHiba-t dob, az osszes
+    talalt hibaval (sorszammal) egyutt."""
+    sorok = szoveg.replace('\r\n', '\n').split('\n')
+    hibak, figyelmeztetesek = [], []
+    eredmeny = []
+    szakasz_kulcs, szakasz_cim, alap = 'F', None, 'belso'
+    alszakasz_szint = None
+    verem = []   # [(szint, nyito_sorszam)]
+    for i, sor in enumerate(sorok, start=1):
+        for jelolo in GENERALT_JELOLOK_FORRASBAN:
+            if jelolo in sor:
+                hibak.append('%d. sor: generált jelölő a forrásban (%s) -- visszaírás-gyanú '
+                             '(SEMA 3.10.6)' % (i, jelolo))
+        if sor.startswith('## '):
+            for szint, nyito in verem:
+                hibak.append('%d. sor: a %d. sor SZINT-KEZDET: %s jelölőpárja nem zárult a '
+                             '`##` címsor előtt (SEMA 3.10.2)' % (i, nyito, szint))
+            verem = []
+            szakasz_cim = sor[3:].strip()
+            szakasz_kulcs, alap = forras_szakasz_felismer(szakasz_cim)
+            alszakasz_szint = None
+            if szakasz_kulcs is None:
+                figyelmeztetesek.append('%d. sor: ismeretlen szakasz, szintje belso (zárt '
+                                        'alapérték, SEMA 3.10.2): %s' % (i, sor))
+        elif sor.startswith('### '):
+            _, alszakasz_szint = forras_alszakasz_felismer(szakasz_kulcs, sor[4:].strip())
+        kornyezet = alszakasz_szint or alap
+        if verem:
+            kornyezet = _melyebb(verem[-1][0], kornyezet)
+
+        m = _SZINT_PAR.match(sor)
+        if m:
+            fajta, ertek = m.groups()
+            if ertek not in SZINT_RANG:
+                hibak.append('%d. sor: ismeretlen szint: %r (olvasoi | apparatus | belso)'
+                             % (i, ertek))
+            elif fajta == 'KEZDET':
+                if SZINT_RANG[ertek] < SZINT_RANG[kornyezet]:
+                    hibak.append('%d. sor: SZINT-KEZDET: %s sekélyebb a környezeténél (%s); '
+                                 'csak mélyebb szint felé lehet váltani (SEMA 3.10.2)'
+                                 % (i, ertek, kornyezet))
+                verem.append((ertek, i))
+                kornyezet = _melyebb(ertek, kornyezet)
+            else:
+                if not verem:
+                    hibak.append('%d. sor: SZINT-VÉGE: %s nyitó pár nélkül' % (i, ertek))
+                elif verem[-1][0] != ertek:
+                    hibak.append('%d. sor: SZINT-VÉGE: %s, de a %d. sor SZINT-KEZDET: %s '
+                                 'jelölője a nyitott (ellentmondó pár)'
+                                 % (i, ertek, verem[-1][1], verem[-1][0]))
+                    verem.pop()
+                else:
+                    verem.pop()
+        elif _SZINT_REGI.match(sor):
+            hibak.append('%d. sor: a #64 ideiglenes egyjelölős `<!-- SZINT: x -->` alakja nem '
+                         'használható; jelölőpár kell (SEMA 3.10.2, DT84 (1))' % i)
+        elif 'SZINT-KEZDET' in sor or 'SZINT-VÉGE' in sor:
+            hibak.append('%d. sor: SZINT-jelölő nem a saját sorában vagy hibás alakban '
+                         '(gépi alak: ^<!-- SZINT-(KEZDET|VÉGE): (olvasoi|apparatus|belso) -->$)'
+                         % i)
+
+        szint = kornyezet
+        if _ADAT_NEZET.match(sor):
+            mn = _ADAT_NEZET_SZINT.search(sor)
+            if mn:
+                if mn.group(1) not in SZINT_RANG:
+                    hibak.append('%d. sor: ADAT-NÉZET ismeretlen SZINT: mezővel: %r'
+                                 % (i, mn.group(1)))
+                else:
+                    szint = _melyebb(mn.group(1), kornyezet)
+        eredmeny.append({'sor': sor, 'szam': i, 'szint': szint,
+                         'szakasz': szakasz_kulcs, 'szakasz_cim': szakasz_cim})
+    for szint, nyito in verem:
+        hibak.append('a fájl végén nyitva maradt a %d. sor SZINT-KEZDET: %s jelölőpárja'
+                     % (nyito, szint))
+    if hibak:
+        raise ForrasHiba('\n'.join(hibak))
+    return eredmeny, figyelmeztetesek
+
+
+def naplo_kivag(szoveg):
+    """A `【NAPLO ...】` / `【NAPLÓ ...】` blokkok kivagasa karakterszinten (tobb
+    soros is lehet; a beagyazott 【】 part szamolja). Visszaad: (szoveg, db)."""
+    ki, i, db = [], 0, 0
+    while True:
+        j = min([k for k in (szoveg.find('【NAPLO', i), szoveg.find('【NAPLÓ', i)) if k >= 0]
+                or [-1])
+        if j < 0:
+            ki.append(szoveg[i:])
+            break
+        ki.append(szoveg[i:j])
+        melyseg, k = 0, j
+        while k < len(szoveg):
+            if szoveg[k] == '【':
+                melyseg += 1
+            elif szoveg[k] == '】':
+                melyseg -= 1
+                if melyseg == 0:
+                    break
+            k += 1
+        if k >= len(szoveg):
+            raise ForrasHiba('lezáratlan 【NAPLO blokk (a %d. karaktertől)' % j)
+        db += 1
+        i = k + 1
+    return ''.join(ki), db
+
+
+def forras_nezet(szoveg, melyseg):
+    """A forras `melyseg` szintu nezete (SEMA 3.10.4): (szoveg, statisztika).
+
+    A `belso` nezet a forras maga, valtozatlanul. Az `olvasoi` es az
+    `apparatus` nezet build-kihagyassal: a melyebb szintu sor kimarad, a
+    csak-forrasbeli jelolo-sor kimarad, a `【NAPLO】` kivagodik, az
+    `ADAT-ÉRTÉK` jelolo kimarad (az erteke marad); az ures sorok sorozata
+    egyetlen ures sorra rovidul."""
+    if melyseg not in SZINT_RANG:
+        raise ValueError('ismeretlen mélység: %r' % melyseg)
+    sorok, figyelmeztetesek = forras_elemez(szoveg)
+    stat = {'sor_be': len(sorok), 'kihagyott_szint': 0, 'kihagyott_jelolo': 0,
+            'naplo': 0, 'figyelmeztetesek': figyelmeztetesek}
+    if melyseg == 'belso':
+        stat['sor_ki'] = len(sorok)
+        return szoveg.replace('\r\n', '\n'), stat
+    jelolo_mintak = FORRAS_CSAK_JELOLO_SOR + (
+        OLVASOI_CSAK_JELOLO_SOR if melyseg == 'olvasoi' else ())
+    megtartott = []
+    for s in sorok:
+        if SZINT_RANG[s['szint']] > SZINT_RANG[melyseg]:
+            stat['kihagyott_szint'] += 1
+            continue
+        if any(m.match(s['sor']) for m in jelolo_mintak):
+            stat['kihagyott_jelolo'] += 1
+            continue
+        megtartott.append(_ADAT_ERTEK_INLINE.sub('', s['sor']))
+    szoveg_ki, stat['naplo'] = naplo_kivag('\n'.join(megtartott))
+    vegso, ures_elotte = [], True
+    for sor in szoveg_ki.split('\n'):
+        if not sor.strip():
+            if not ures_elotte:
+                vegso.append('')
+            ures_elotte = True
+            continue
+        vegso.append(sor)
+        ures_elotte = False
+    while vegso and vegso[-1] == '':
+        vegso.pop()
+    stat['sor_ki'] = len(vegso)
+    return '\n'.join(vegso) + '\n', stat
+
+
+def forras_ut(motivum_id, forras_fajl=None):
+    return forras_fajl or os.path.join(MOTIVUMOK_DIR, '%s.md' % motivum_id)
+
+
+def forras_nezetek_ir(args, motivum_id, melysegek):
+    """A --cel forras: a nezetek a --kimenet/motivumok_nezet/ ala. Kilepesi kod."""
+    ut = forras_ut(motivum_id, args.forras_fajl)
+    if not os.path.exists(ut):
+        print('  HIBA: a forrás nem létezik: %s' % ut, file=sys.stderr)
+        return 1
+    szoveg = io.open(ut, encoding='utf-8', newline='').read()
+    rel_forras = 'motivumok/%s.md' % motivum_id
+    for melyseg in melysegek:
+        try:
+            nezet, stat = forras_nezet(szoveg, melyseg)
+        except ForrasHiba as e:
+            print('  HIBA (%s): a forrás szerkezeti hibája, nézet nem készül:\n    %s'
+                  % (rel_forras, str(e).replace('\n', '\n    ')), file=sys.stderr)
+            return 1
+        fejl = fejlec_stampel('forras --id %s --melyseg %s' % (motivum_id, melyseg),
+                              [rel_forras])
+        print('  %s nézet: %d sor be, %d ki; szint miatt kihagyva %d, jelölő-sor %d, '
+              '【NAPLO】 %d' % (melyseg, stat['sor_be'], stat['sor_ki'],
+                               stat['kihagyott_szint'], stat['kihagyott_jelolo'],
+                               stat['naplo']))
+        for f in stat['figyelmeztetesek']:
+            print('    figyelmeztetés: %s' % f)
+        kimenet_ir(args, os.path.join('motivumok_nezet', '%s_%s.md' % (motivum_id, melyseg)),
+                   fejl + '\n\n' + nezet, ut)
+    return 0
+
+
 def build_parser():
     p = argparse.ArgumentParser(
         prog='general.py',
@@ -988,7 +1283,7 @@ def build_parser():
     )
     p.add_argument('--cel', required=True,
                     choices=['naplo', 'index', 'naplok', 'study', 'nyitott', 'lexikon',
-                             'torzscikk', 'mind'])
+                             'torzscikk', 'forras', 'mind'])
     p.add_argument('--id', help='egyetlen motívum-ID-re szűkítés (opcionális)')
     p.add_argument('--kimenet', default=os.path.join(ROOT, 'generalt_proba'),
                     help='alapértelmezés: generalt_proba/')
@@ -1001,6 +1296,12 @@ def build_parser():
                     help='DT-F09h: a gitignore-olt konszolidált TBESH-tábla (.lexicon-bővítés) használata. '
                          'CSAK helyi, nem verziózott kimenetbe (a --kimenet kötelező, nem lehet a '
                          'generalt_proba/ vagy a lexikon/ alatt, és --ir sem használható).')
+    p.add_argument('--melyseg', choices=list(SZINTEK) + ['mind'], default='mind',
+                    help='F11 M2, --cel forras: a nézet mélysége (olvasoi | apparatus | belso); '
+                         'alapértelmezés: mind a három')
+    p.add_argument('--forras-fajl',
+                    help='F11 M2, --cel forras: a motivumok/[ID].md helyett ezt a fájlt olvassa '
+                         '(próbához, repón kívüli ideiglenes fájllal)')
     p.add_argument('--ellenoriz', action='store_true',
                     help='nem ír; a generált blokkot az ÉLES fájlban álló marker-blokk '
                          'törzsével veti össze, eltérésnél/hiánynál 1-gyel lép ki')
@@ -1104,6 +1405,18 @@ def main():
         naplo_szoveg = szoveg_beolvas(NAPLO_MD)
 
         print('--- cél: %s ---' % cel)
+
+        if cel == 'forras':
+            if not args.id:
+                print('  HIBA: a --cel forras --id-t kér.', file=sys.stderr)
+                vegso_kod = max(vegso_kod, 2)
+                continue
+            melysegek = list(SZINTEK) if args.melyseg == 'mind' else [args.melyseg]
+            vegso_kod = max(vegso_kod, forras_nezetek_ir(args, args.id, melysegek))
+            if args.ellenoriz:
+                print('  --ellenoriz: a(z) %r cél nem élesíthető, nincs mihez mérni -- PIROS.' % cel)
+                vegso_kod = max(vegso_kod, 1)
+            continue
 
         if cel in ELESITHETO and cel not in ('lexikon', 'torzscikk') and (args.ir or args.ellenoriz):
             path = CEL_FAJL[cel]
