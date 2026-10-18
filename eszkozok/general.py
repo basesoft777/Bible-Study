@@ -1322,12 +1322,15 @@ def forras_nezetek_ir(args, motivum_id, melysegek):
 #     letezik, NEM ir, a jelentes jelzi a meglevo dontest; az `indoklas`
 #     `gerinc: [gerinc_elem] — [indoklas]` alaku, a `forras_kereses`
 #     szakasz-mutatoja a `##` cimsor szovege (DT-F11d (d));
-#   - `ADAT-HIV`, `ADAT-ÉRTÉK`: ellenorzo jelolok; semmit nem irnak. A
-#     `[kulcs]` es a `[kifejezes]` gepi alakjat a sablon 9 6. pontja nem
-#     rogziti (DT-F11d (b), (c)), ezert ma minden ilyen jelolo "nem
-#     ellenorizheto" sort kap, es HIBA-nak szamit: a futas megall, tablat
-#     nem ir (SEMA 3.10.5: elteresnel a futas megall). A tabla letezeset
-#     ettol fuggetlenul ellenorzi.
+#   - `ADAT-HIV: [tabla] | mezo=ertek; ...` (DT-F11d (b)): ellenorzo, semmit
+#     nem ir; a tabla SEMA-kulcsanak (SEMA_KULCSOK) minden mezoje kell, mas
+#     nem; pontosan egy sornak kell egyeznie (karakterre);
+#   - `[ertek]<!-- ADAT-ÉRTÉK: [tabla] | count(szuro) -->` vagy
+#     `count_distinct(mezo; szuro)` (DT-F11d (c)): zart kifejezes-keszlet,
+#     kodfuttatas nincs; a szuro az ADAT-HIV `mezo=ertek; ...` alakja (legalabb
+#     egy feltetel, a mezonek a tablaban leteznie kell); a count_distinct az
+#     ures erteket nem szamolja; az ertek egesz szam, karakterre egyezik.
+#   Barmely elteres HIBA: a futas megall, tablat nem ir (SEMA 3.10.5).
 #
 # A kinyeresi jelentes generalt, (c) retegbeli kimenet (--kimenet/kinyeres/
 # [ID]_kinyeresi_jelentes.md). Tablat csak --ir mellett ir, es csak akkor,
@@ -1337,6 +1340,30 @@ def forras_nezetek_ir(args, motivum_id, melysegek):
 _JELOLT_SOR = re.compile(r'^<!-- JELÖLT: (.*) -->$')
 _ADAT_HIV_SOR = re.compile(r'^<!-- ADAT-HIV: (.*) -->$')
 _ADAT_ERTEK = re.compile(r'<!-- ADAT-ÉRTÉK: (.*?) -->')
+_ERTEK_ELOTTE = re.compile(r'(\d+)$')
+_KIFEJEZES = re.compile(r'^(count|count_distinct)\((.*)\)$')
+
+# A tablak SEMA-kulcsa (adat/SEMA.md 2. szakasz, a "Kulcs:" sorok; a
+# motivumok.tsv kulcsa az `id`). Kulcs nelkuli tabla (pl. auditok.tsv, SEMA
+# 2.9) nincs a listan: ADAT-HIV nem mutathat ra. Ha a SEMA kulcsa valtozik,
+# ez is valtozik.
+SEMA_KULCSOK = {
+    'motivumok.tsv': ('id',),
+    'elofordulasok.tsv': ('id', 'igehely'),
+    'kapcsolatok.tsv': ('forras_igehely', 'cel_igehely', 'id'),
+    'jeloltek.tsv': ('id', 'igehely'),
+    'lexikon_hivatkozasok.tsv': ('szotar', 'strong', 'entry_id', 'jelentes_szam'),
+    'datasetek.tsv': ('study_tipus', 'dataset'),
+    'grammatikai_strongok.tsv': ('strong',),
+    'kulcsszavak.tsv': ('tanulmany', 'igehely', 'strong'),
+    'lxx_dontesek.tsv': ('id',),
+    'res_forras.tsv': ('id', 'res'),
+    'szotar_szerepek.tsv': ('nyelv', 'sorrend'),
+    'forditasok.tsv': ('szotar', 'strong', 'entry_id', 'jelentes_szam', 'mezo'),
+    'terminologia.tsv': ('angol', 'verzio'),
+    'licencek.tsv': ('dataset',),
+    'bdb_karoli.tsv': ('strong', 'tipus', 'karoli_alak'),
+}
 _IGEHELY = re.compile(r'^(\d?[^\d\s]+) (\d+):(\d+)(?:-(\d+)(?::(\d+))?)?$')
 
 
@@ -1359,16 +1386,96 @@ def igehely_ellenoriz(igehely, konyv_sorrend):
     return None
 
 
-def _adat_tabla_ut(tabla):
+def _adat_tabla_nev(tabla):
     t = tabla.strip()
     if t.startswith('adat/'):
         t = t[len('adat/'):]
     if not t or '/' in t or '\\' in t or '..' in t or not t.endswith('.tsv'):
         return None
-    return os.path.join(ADAT, t)
+    return t
 
 
-def kinyeres_elemez(szoveg, motivum_id, meglevo_jeloltek, konyv_sorrend, datum):
+def mezo_ertek_parok(szoveg):
+    """'mezo=ertek; mezo=ertek' -> [(mezo, ertek)]; hibas alaknal ValueError."""
+    parok = []
+    for tag in szoveg.split(';'):
+        tag = tag.strip()
+        if not tag:
+            raise ValueError('üres tag a mező=érték listában')
+        if '=' not in tag:
+            raise ValueError('a %r tag nem mező=érték alakú' % tag)
+        mezo, ertek = tag.split('=', 1)
+        mezo, ertek = mezo.strip(), ertek.strip()
+        if not re.match(r'^[a-z_]+$', mezo):
+            raise ValueError('érvénytelen mezőnév: %r' % mezo)
+        if any(m == mezo for m, _ in parok):
+            raise ValueError('a %r mező kétszer szerepel' % mezo)
+        parok.append((mezo, ertek))
+    return parok
+
+
+def _szur(fejlec, sorok, parok):
+    ismeretlen = [m for m, _ in parok if m not in fejlec]
+    if ismeretlen:
+        raise ValueError('a táblában nincs ilyen mező: %s' % ', '.join(ismeretlen))
+    return [r for r in sorok if all(r.get(m) == e for m, e in parok)]
+
+
+def adat_hiv_ellenoriz(tabla_nev, kulcs_szoveg, betolt):
+    """None, ha pontosan egy sor egyezik a teljes SEMA-kulccsal; kulonben a
+    hiba szovege. `betolt(tabla_nev)` -> (fejlec, sorok)."""
+    kulcs = SEMA_KULCSOK.get(tabla_nev)
+    if kulcs is None:
+        return 'a táblának nincs SEMA-kulcsa a listán (SEMA_KULCSOK): %r' % tabla_nev
+    try:
+        parok = mezo_ertek_parok(kulcs_szoveg)
+    except ValueError as e:
+        return 'rossz kulcs-alak: %s' % e
+    fejlec, sorok = betolt(tabla_nev)
+    elirt = [m for m, _ in parok if m not in fejlec]
+    if elirt:
+        return 'a táblában nincs ilyen mező (elírt mezőnév?): %s' % ', '.join(elirt)
+    megadott = [m for m, _ in parok]
+    hianyzik = [m for m in kulcs if m not in megadott]
+    folos = [m for m in megadott if m not in kulcs]
+    if hianyzik or folos:
+        return ('nem a teljes SEMA-kulcs (%s): %s%s' % (
+            ' + '.join(kulcs),
+            ('hiányzik: %s' % ', '.join(hianyzik)) if hianyzik else '',
+            ('%skulcson kívüli: %s' % ('; ' if hianyzik else '', ', '.join(folos))) if folos else ''))
+    n = len(_szur(fejlec, sorok, parok))
+    if n != 1:
+        return '%d egyező sor (pontosan egy kell)' % n
+    return None
+
+
+def adat_ertek_szamol(tabla_nev, kifejezes, betolt):
+    """(ertek, None) vagy (None, hiba). Zart keszlet: count(szuro),
+    count_distinct(mezo; szuro); kodfuttatas nincs."""
+    m = _KIFEJEZES.match(kifejezes.strip())
+    if not m:
+        return None, ('ismeretlen kifejezés (zárt készlet: count(szűrő), '
+                      'count_distinct(mező; szűrő)): %r' % kifejezes)
+    fuggveny, arg = m.groups()
+    fejlec, sorok = betolt(tabla_nev)
+    try:
+        if fuggveny == 'count':
+            parok = mezo_ertek_parok(arg)
+            return len(_szur(fejlec, sorok, parok)), None
+        if ';' not in arg:
+            return None, 'a count_distinct alakja: count_distinct(mező; szűrő)'
+        mezo, szuro = arg.split(';', 1)
+        mezo = mezo.strip()
+        if mezo not in fejlec:
+            return None, 'rossz szűrő: a táblában nincs ilyen mező: %s' % mezo
+        talalt = _szur(fejlec, sorok, mezo_ertek_parok(szuro))
+        return len({r[mezo] for r in talalt if r.get(mezo, '').strip()}), None
+    except ValueError as e:
+        return None, 'rossz szűrő: %s' % e
+
+
+def kinyeres_elemez(szoveg, motivum_id, meglevo_jeloltek, konyv_sorrend, datum,
+                    adat_konyvtar=None):
     """A forras kinyero es ellenorzo jeloloinek feldolgozasa; nem ir semmit.
 
     Visszaad: dict -- uj_sorok (a jeloltek.tsv mezoneveivel), utkozesek,
@@ -1384,6 +1491,13 @@ def kinyeres_elemez(szoveg, motivum_id, meglevo_jeloltek, konyv_sorrend, datum):
     eredmeny['figyelmeztetesek'].extend(figy)
     meglevo = {(j['id'], j['igehely']): j for j in meglevo_jeloltek}
     latott = {}
+    adat_dir = adat_konyvtar or ADAT
+    tabla_cache = {}
+
+    def betolt(nev):
+        if nev not in tabla_cache:
+            tabla_cache[nev] = tsv_beolvas(os.path.join(adat_dir, nev))
+        return tabla_cache[nev]
     for s in sorok:
         sor, i = s['sor'], s['szam']
         szakasz = s['szakasz_cim'] or 'F'
@@ -1445,25 +1559,39 @@ def kinyeres_elemez(szoveg, motivum_id, meglevo_jeloltek, konyv_sorrend, datum):
         ellenorzendo = []
         mh = _ADAT_HIV_SOR.match(sor)
         if mh:
-            ellenorzendo.append(('ADAT-HIV', mh.group(1)))
+            ellenorzendo.append(('ADAT-HIV', mh.group(1), None))
         elif 'ADAT-HIV:' in sor:
             eredmeny['hibak'].append('%d. sor: ADAT-HIV-jelölő nem a saját sorában: %s' % (i, sor))
         for me in _ADAT_ERTEK.finditer(sor):
-            ellenorzendo.append(('ADAT-ÉRTÉK', me.group(1)))
-        for fajta, torzs in ellenorzendo:
+            mv = _ERTEK_ELOTTE.search(sor[:me.start()])
+            ellenorzendo.append(('ADAT-ÉRTÉK', me.group(1), mv.group(1) if mv else None))
+        for fajta, torzs, proza_ertek in ellenorzendo:
             reszek = [r.strip() for r in torzs.split(' | ', 1)]
             tabla = reszek[0]
             masodik = reszek[1] if len(reszek) > 1 else ''
-            ut = _adat_tabla_ut(tabla)
-            if ut is None or not os.path.exists(ut):
-                allapot = 'HIBA: a tábla nem létezik az adat/ alatt: %r' % tabla
+            nev = _adat_tabla_nev(tabla)
+            hiba = None
+            if nev is None or not os.path.exists(os.path.join(adat_dir, nev)):
+                hiba = 'a tábla nem létezik az adat/ alatt: %r' % tabla
+            elif not masodik:
+                hiba = 'hiányzik a %s (alak: [tábla] | …)' % (
+                    'kulcs' if fajta == 'ADAT-HIV' else 'kifejezés')
+            elif fajta == 'ADAT-HIV':
+                hiba = adat_hiv_ellenoriz(nev, masodik, betolt)
             else:
-                allapot = ('nem ellenőrizhető: a %s alakja nincs eldöntve (DT-F11d (%s))'
-                           % ('[kulcs]' if fajta == 'ADAT-HIV' else '[kifejezés]',
-                              'b' if fajta == 'ADAT-HIV' else 'c'))
+                ertek, hiba = adat_ertek_szamol(nev, masodik, betolt)
+                if hiba is None:
+                    if proza_ertek is None:
+                        hiba = ('a jelölő előtt nincs egész szám (az érték közvetlenül a '
+                                'jelölő előtt áll, szóköz nélkül); számolt: %d' % ertek)
+                    elif proza_ertek != str(ertek):
+                        hiba = 'eltérő érték: a prózában %s, a táblából számolt %d' % (
+                            proza_ertek, ertek)
+            allapot = 'rendben' if hiba is None else 'HIBA: %s' % hiba
             eredmeny['ellenorzo'].append({'sor': i, 'fajta': fajta, 'tabla': tabla,
                                           'masodik': masodik, 'allapot': allapot})
-            eredmeny['hibak'].append('%d. sor: %s %s' % (i, fajta, allapot))
+            if hiba is not None:
+                eredmeny['hibak'].append('%d. sor: %s %s' % (i, fajta, hiba))
     return eredmeny
 
 
