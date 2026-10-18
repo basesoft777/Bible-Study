@@ -8,7 +8,7 @@ modell: sonnet
 allapot: fut
 ag: claude/f115-macula-chi-xi
 ad: a `Macula_heber_*.tsv` `gorog_lxx` és a `token_macula.lxx_szo` χ↔ξ-hibája az importban javítva (teljes csere az érintett sorokban), soronkénti Rahlfs-minőségjelöléssel és a forrásalak megőrzésével; a vers-lap Macula-táblázata a javított alakot mutatja
-kovetkezo: Te: a futtatás a `/kovetkezo`-val, helyi gépen (pinelt Macula-klónok, WSL-natív pardes.db)
+kovetkezo: Orkesztrátor: fuggetlen-ellenor a base..head diffen (3.7), majd a felhasználó dönt a mergeről; a zárás (lezarva) az ellenőrzés után
 munka: adat
 helyi_gep: igen
 olvas: [konkordancia/Macula_heber_*.tsv, konkordancia/LXX_OS/, naplok/MACULA_CHI_XI_felmeres.md, naplok/F17_import_naplo.md, eszkozok/f17/, eszkozok/macula_chi_xi_felmeres.py, eszkozok/sqlite_epit.py, eszkozok/olvaso_szerver/, eszkozok/olvaso_pilot/, adat/SEMA.md]
