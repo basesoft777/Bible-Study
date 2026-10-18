@@ -2,22 +2,27 @@
 
 Modell: claude-sonnet-5-5 (a brief `sonnet` mezőjével egyezik). Ág: `claude/f111-elteres`. Push, PR, merge nem történt.
 - Elkészült: `.claude/commands/elteres.md` (a 3.1 mind a hét lépése, SOHA-lista, `teves` csak saját lekérdezéssel, `munka: ertelmezo` → csak a brief modelljének végrehajtója, korlát 2 kör, a korlátnál megállás); `kovetkezo.md` 9. lépése egyetlen új mondat (G5).
-- Korábbi javítókörök átnézése (F23.D8–Z5, F93.12–F93.23, F99.32–F99.46, F108.6–7): minden valódi tétel besorolható; ⛔ (`DT-F111a`) nem kellett. Egy határeset: az F108 „commit-granularitás” tétele (már megtörtént, utólag nem javítható): az `elteres.md` 2. lépése `tartalmi`-nak sorolja (döntés az elfogadásról), ezt a szöveg kimondja.
+- Korábbi javítókörök átnézése (F23.D8–Z5, F93.12–F93.23, F99.32–F99.46, F108.6–7): minden valódi tétel besorolható; ⛔ (`DT-F111a`) nem kellett. Határeset: az F108 „commit-granularitás” tétele (már megtörtént, utólag nem javítható): az `elteres.md` 2. lépése `tartalmi`-nak sorolja.
 - Megállapított gyakorlat, amit a parancs egységesít: körszám korlát nélkül (F23: 5, F93: 3 újraellenőrzés), `_ujra` név (F99), külön vagy összevont jelentés-rögzítés, hatókörön kívüli lelet csak az F99-nél ment a `beerkezo/`-ba.
-- G7: `python eszkozok/feladatok.py ellenoriz` → 138 brief, 0 hiba.
+- G7: `python eszkozok/feladatok.py ellenoriz` → 0 hiba (a javítókör végén újra mérve).
+- Lezárás: az `allapot: lezarva`, a `pr` és a `lezarva_osszegzes` csak a független újraellenőrzés `TISZTA` jelentése után kerül a fejlécbe (ELLENOR_F111_2 után); addig a brief `megallt`/`fut`.
 
 ## Egyeztetett eltérés
-- E1: a száraz próba célpontja a brief 3.2/4 pontjában szereplő `naplok/ELLENOR_F9.md` helyett `naplok/ELLENOR_F115.md` (az F9 jelentés nem létezik, a `claude/f09-szotar-s2` PR-ja, #381, már mergelt). A brief 2. pont „Nincs benne” f09-szotar-s2 sora ezért elavult. A próba írás nélkül, az F115-höz tartozó fájlt/ágat nem módosítottam; a G6 ennek megfelelően értendő.
-- E2: D2 (korlát 2 kör) eldöntve a felhasználó 2026-10-18-i jóváhagyásával; a korlát elérésekor a megmaradt tételek tételesen (jelentés + tételszám + egy szavas kategória) kerülnek a brief `kovetkezo` mezőjébe (`elteres.md` 6. lépés).
+- E1: a száraz próba célpontja a brief 3.2/4 pontjában szereplő `naplok/ELLENOR_F9.md` helyett `naplok/ELLENOR_F115.md` (az F9 jelentés nem létezik, a `claude/f09-szotar-s2` PR-ja, #381, mergelt). A brief 2. pont „Nincs benne” f09-szotar-s2 sora elavult. A próba írás nélkül futott; az F115 fájljait/ágát nem módosítottam.
+- E2: D2 (korlát 2 kör) a felhasználó 2026-10-18-i jóváhagyásával; a korlátnál a maradék tételesen a `kovetkezo` mezőbe kerül (`elteres.md` 6. lépés).
+- E3 (ELLENOR_F111 5.): a brief törzse is változott a fejlécen túl: a D2 sor átírva (E2 kiegészítéssel) és új E1 sor a döntésnaplóban. Mindkettő a felhasználó 2026-10-18-i döntésének rögzítése; az `ir`-en kívüli (brief-törzs) írás ezért egyeztetett eltérés.
 
-## Száraz próba: az `ELLENOR_F115.md` (ELTÉRÉS: 7 tétel) besorolási javaslata (kör: 1 / 2, javaslat, javítás nem történt)
+## Száraz próba: az `/elteres` 1. lépése az `ELLENOR_F115.md`-re (a próba eredménye)
+Eredmény: **a parancs jelez és megáll, nem sorol be.** Az F115 ág PR-ja mergelt: `gh pr list --head claude/f115-macula-chi-xi --state all` → #402, `MERGED` (2026-10-18T13:58Z); `git log origin/main --grep='#402'` → `19b9841b Merge pull request #402`. Az 1. lépés szerint új ág kell a main-ből. Az F115-ön ráadásul már lezajlott javítókör is (F115.8, F115.9: a 6., 7., és az 1. tételt kezelte). A korábbi 7 tételes besorolás ezért **nem a parancs kimenete**; a próba egyszerre azt is igazolja, hogy a mergelt-PR szabály működik.
+
+Szemléltető, nem a parancs kimenete: ha az ág nem volna mergelt, a 2. lépés javaslata (kör: 1 / 2)
 | # | tétel | kategória | indok |
 |---|---|---|---|
-| 1 | G7: `teszt_bdb_vers_jelentes.test_bajtra_azonos` bukik | tartalmi | a hash-eltérés okai részben nem e tétel (DT-F99n/DT179); döntés: külön tétel vagy ir-bővítés |
-| 2 | G8: nincs olvasó-teszt a jelölőre | mechanikus | a teszt megírható; a kézi böngészős ellenőrzés a felhasználóé (jelezni) |
-| 3 | CI E27: ágnévre hivatkozás (`NYITOTT_FELADATOK.md:144`) | mechanikus | hivatkozás/push-sorrend javítása, nincs értelmezés |
-| 4 | N57 félrevezető címke | mechanikus | a rés a Macula `karoli` oszlopában van (mért); a címke pontosítása |
-| 5 | `strong_elteres` 714/1029 üres LXX_OS-Strong | tartalmi | a jelentés szerint a felhasználó dönt (címke vagy osztály) |
-| 6 | Teszt (1) megengedő `assertIn` | mechanikus | a mért érték (`rahlfs_igazolt`) a DB-ből adott |
-| 7 | `Macula_gorog.tsv` csak `ts` változott | mechanikus | a fájl visszaállítása; teves nem (a diff a jelentés szerint igazolt) |
-Összesen: 5 mechanikus, 2 tartalmi, 0 hatókörön kívüli, 0 téves (téves lekérdezés nélkül nem javasolható).
+| 1 | G7: `teszt_bdb_vers_jelentes.test_bajtra_azonos` bukik | tartalmi | a hash-eltérés okai részben nem e tétel (DT-F99n/DT179) |
+| 2 | G8: nincs olvasó-teszt a jelölőre | hatokoron_kivul | az `eszkozok/olvaso_szerver/teszt_*` nincs az F115 `ir`-jében |
+| 3 | CI E27: ágnévre hivatkozás (`NYITOTT_FELADATOK.md:144`) | hatokoron_kivul | a `NYITOTT_FELADATOK.md` nincs az F115 `ir`-jében |
+| 4 | N57 félrevezető címke | mechanikus | a rés a Macula `karoli` oszlopában van (mért) |
+| 5 | `strong_elteres` 714/1029 üres LXX_OS-Strong | tartalmi | a jelentés szerint a felhasználó dönt |
+| 6 | Teszt (1) megengedő `assertIn` | mechanikus | a mért érték a DB-ből adott |
+| 7 | `Macula_gorog.tsv` csak `ts` változott | mechanikus | a fájl visszaállítása |
+Összesen: 3 mechanikus, 2 tartalmi, 2 hatókörön kívüli, 0 téves.
