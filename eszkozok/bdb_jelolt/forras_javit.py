@@ -131,7 +131,139 @@ def general(ts):
                 ki.append([r['strong'], r['sorszam'], r['bdb_id'], 'pe_mem', str(si), str(ei), szo, jav, allapot, indok,
                            prov % (r['strong'], ts)])
     ki.extend(kezi_sorok(stat))
+    ki.extend(hivatkozas_sorok(stat, ts))
     return ki, stat
+
+
+# ---------------------------------------------------------------- hivatkozas (DT-F107c (d), felhasználó, 2026-10-18)
+# A BDB_teljes_unabridged.tsv 247 sorát a #34 (ψ, naplok/F34_M2_csere.tsv) és a #46 (könyvfeloldás,
+# naplok/BDB_KONYVFELOLDAS_csere.tsv és _kezi.tsv) utólag javította. Ezek a javítások a nyers JSON-ban nincsenek; hogy a táblából
+# generált nézet ne lépjen vissza, a javítótábla átveszi őket: a TSV és a JSON (a _convert_bdb.py szerint újrakonvertálva) szóköz
+# szerinti tokenjeinek eltérő szakaszai (difflib), soronként egy. `elofordulas` = a `forras_alak` hányadik egész-token előfordulása
+# a Strong nézet-szövegében (a jel + szoveg sorok egy szóközzel); `sorszam` = a táblasor, amelyben ez az előfordulás áll.
+F34_CSERE = os.path.join(GYOKER, 'naplok', 'F34_M2_csere.tsv')
+F46_CSERE = os.path.join(GYOKER, 'naplok', 'BDB_KONYVFELOLDAS_csere.tsv')
+F46_KEZI = os.path.join(GYOKER, 'naplok', 'BDB_KONYVFELOLDAS_kezi.tsv')
+TSV = os.path.join(GYOKER, 'konkordancia', 'BDB_teljes_unabridged.tsv')
+
+
+def _ws(t):
+    return re.sub(r'\s+', ' ', t).strip()
+
+
+def _tsv_olvas(ut):
+    with open(ut, encoding='utf-8', newline='') as f:
+        sorok = [s for s in f.read().split('\n') if s and not s.startswith('#')]
+    fej = sorok[0].split('\t')
+    return [dict(zip(fej, s.split('\t'))) for s in sorok[1:]]
+
+
+# A csere-naplókban nem szereplő, a git-történettel igazolt TSV-javítások (git log -G Pharaoh -- konkordancia/BDB_teljes_unabridged.tsv:
+# a három sort a 6400b5a7 „F46.6: gépi csere a DT-F46 szerint” írta át; ellenőrizve 2026-10-18)
+GIT_FORRAS = {
+    (st, 'Phoenician', 'Pharaoh'): 'F46.6 (git 6400b5a7, gépi csere; a csere-naplóban nem szerepel)'
+    for st in ('H5973', 'H7588', 'H9005')
+}
+
+
+def ref_kulcs(ref):
+    """Hivatkozás-kulcs: (a könyvnév első 3 betűje kisbetűvel, a számelőtaggal; fejezet:vers) — „1Ki 50:1” = „1Kin 50:1”."""
+    m = re.search(r'([1-3]?)\s*([A-Za-z]+)\.?\s+(\d+:\d+)', ref)
+    if not m:
+        return None
+    return (m.group(1) + m.group(2)[:3].lower(), m.group(3))
+
+
+def forrasjavitas_index():
+    """(strong, az ÚJ hivatkozás kulcsa) → a javítás forrása (F34 / F46 csere / F46 kézi)."""
+    idx = {}
+    for d in _tsv_olvas(F34_CSERE):
+        k = ref_kulcs(d.get('uj', ''))
+        if d.get('dontes') == 'JAVIT' and k:
+            idx.setdefault((d['szocikk_id'], k), 'F34 (naplok/F34_M2_csere.tsv, JAVIT)')
+    for ut, nev in ((F46_CSERE, 'F46 (naplok/BDB_KONYVFELOLDAS_csere.tsv)'), (F46_KEZI, 'F46 (naplok/BDB_KONYVFELOLDAS_kezi.tsv)')):
+        for d in _tsv_olvas(ut):
+            k = ref_kulcs(d.get('javasolt_forras_alak', ''))
+            if k:
+                idx.setdefault((d['strong'], k), nev)
+    return idx
+
+
+def token_elofordulas(szoveg, token):
+    """Az egész-token (szóközzel határolt) előfordulások kezdőpozíciói."""
+    return [m.start() for m in re.finditer(r'(?<!\S)' + re.escape(token) + r'(?!\S)', szoveg)]
+
+
+def strong_nezet(sorok):
+    """A Strong nézet-szövege (jel + szoveg, egy szóközzel) és a sorhatárok."""
+    darabok, hatar, p = [], [], 0
+    for x in sorok:
+        t = ' '.join(y for y in (x['jel'], x['szoveg']) if y)
+        if not t:
+            continue
+        if darabok:
+            p += 1
+        hatar.append((p, p + len(t), x))
+        darabok.append(t)
+        p += len(t)
+    return ' '.join(darabok), hatar
+
+
+def hivatkozas_sorok(stat, ts):
+    import json
+    sys.path.insert(0, ITT)
+    import bont
+    import forras_osszevetes
+    import difflib
+    with open(TSV, encoding='utf-8', newline='') as f:
+        tsv = {s.split('\t')[0]: s.split('\t')[2] for s in f.read().split('\n')[1:] if s}
+    with open(bont.JSON_UT, encoding='utf-8') as f:
+        ujra = {}
+        for item in json.load(f):
+            m = re.match(r'^H(\d+)', item.get('top', ''))
+            if m:
+                ujra['H%04d' % int(m.group(1)) + item['top'][len(m.group(0)):]] = forras_osszevetes.strip_html_142ad625(item['def'])
+    tabla = collections.OrderedDict()
+    for r in tabla_sorok():
+        tabla.setdefault(r['strong'], []).append(r)
+    idx = forrasjavitas_index()
+    ki = []
+    for st in tabla:
+        if st not in tsv or st not in ujra or _ws(tsv[st]) == _ws(ujra[st]):
+            continue
+        a, b = _ws(ujra[st]).split(' '), _ws(tsv[st]).split(' ')
+        nezet, hatar = strong_nezet(tabla[st])
+        for op, i1, i2, j1, j2 in difflib.SequenceMatcher(None, a, b, autojunk=False).get_opcodes():
+            if op == 'equal':
+                continue
+            x, y = ' '.join(a[i1:i2]), ' '.join(b[j1:j2])
+            # hányadik előfordulás a JSON-szövegben (a nézetben ugyanannyiadik)
+            elotte = ' '.join(a[:i1])
+            k = len(token_elofordulas(elotte + ' ' + x, x)) if x else 0
+            poz = token_elofordulas(nezet, x) if x else []
+            sor = next((h[2] for h in hatar if poz and len(poz) >= k and h[0] <= poz[k - 1] < h[1]), None)
+            # az új hivatkozás: ha a szakasz csak könyvnév, a fejezet:vers a TSV következő tokenje
+            if not re.search(r'\d+:\d+', y):
+                uj_ref = y + ' ' + (b[j2] if j2 < len(b) else '')
+            elif not re.search(r'[A-Za-z]{2,}\.?\s+\d+:\d+', y) and j1 > 0:
+                uj_ref = b[j1 - 1] + ' ' + y          # csak fejezet:vers változott: a könyvnév az előző token
+            else:
+                uj_ref = y
+            forras = idx.get((st, ref_kulcs(uj_ref))) or GIT_FORRAS.get((st, x, y))
+            if sor is None:
+                allapot, indok = 'jelolt_marad', 'a forrás-alak a tábla nézet-szövegében nem található (%d. előfordulás)' % k
+                stat['hivatkozas_jelolt_marad'] += 1
+            else:
+                allapot = 'javitva'
+                indok = 'a TSV utólagos hivatkozás-javítása (a nyers JSON-ban nincs): %s' % (forras or 'a forrásjavítás-naplóban nem azonosított')
+                stat['hivatkozas_javitva'] += 1
+                if not forras:
+                    stat['hivatkozas_forras_nem_azonositott'] += 1
+            ki.append([st, sor['sorszam'] if sor else '', sor['bdb_id'] if sor else '', 'hivatkozas', '', str(k), x, y,
+                       allapot, indok,
+                       'scope=%s | forras=bdb_jelolt/forras_javit.py (fejléc): BDB_teljes_unabridged.tsv ↔ DictBDB.json, %s | ts=%s'
+                       % (st, (forras or 'F34/F46').split(' ')[0], ts)])
+    return ki
 
 
 # DT-F107g (b), felhasználó, 2026-10-18: a szerkezeti forráshibák (a jelölő a nyers forrásban hiányzik vagy hamis), mindegyik a

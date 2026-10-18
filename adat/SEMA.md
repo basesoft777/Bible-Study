@@ -1302,17 +1302,17 @@ a héber alakok NFD-ben. Olvasás `split('\t')`.
 | Oszlop | Jelentés |
 |---|---|
 | `strong`, `sorszam`, `bdb_id` | a 2.30 sora (kulcs) és illesztett szócikke |
-| `hiba` | a hibaosztály: `pe_mem` (generált) \| `jelolo_hianyzik` (a szerkezeti jelölő a nyers forrásban hiányzik: pl. a „Qal” sima szöveg) \| `hamis_jelolo` (a nyers forrás fejében téves elem áll: pl. „Niph`al 6.”, „2. g.”) |
+| `hiba` | a hibaosztály: `pe_mem` (generált) \| `hivatkozas` (generált; DT-F107c (d): a `BDB_teljes_unabridged.tsv` utólagos F34/F46 hivatkozás-javítása, amely a nyers JSON-ban nincs — a TSV és a JSON (`_convert_bdb.py` szerint) szóköz szerinti tokenjeinek eltérő szakasza) \| `jelolo_hianyzik` (a szerkezeti jelölő a nyers forrásban hiányzik: pl. a „Qal” sima szöveg) \| `hamis_jelolo` (a nyers forrás fejében téves elem áll: pl. „Niph`al 6.”, „2. g.”) |
 | `szo_sorszam` | `pe_mem`: a héber szó sorszáma a `szoveg` mezőben (1-től, NFD után a `[\u0590-\u05ff]+` szavak között); kézi sorban üres |
-| `elofordulas` | `pe_mem`: a dagesses mem sorszáma a szón belül (1-től); kézi sorban üres |
-| `forras_alak` | `pe_mem`: a szó a JSON-ban (NFD); kézi sorban a nyers JSON rövid részlete |
-| `javitott_alak` | `pe_mem`: a javított szó (NFD), csak `javitva` sorban; kézi sorban a várt szerkezet (útvonal, pl. `Qal/1`) |
+| `elofordulas` | `pe_mem`: a dagesses mem sorszáma a szón belül (1-től); `hivatkozas`: a `forras_alak` hányadik egész-token előfordulása a Strong nézet-szövegében (a sorok `jel` + `szoveg`-e egy szóközzel; a `sorszam` az a táblasor, amelyben áll); kézi sorban üres |
+| `forras_alak` | `pe_mem`: a szó a JSON-ban (NFD); `hivatkozas`: a JSON-szakasz (pl. `Gen`, `Numbers 34:43;`); kézi sorban a nyers JSON rövid részlete |
+| `javitott_alak` | `pe_mem`: a javított szó (NFD), csak `javitva` sorban; `hivatkozas`: a TSV-szakasz (pl. `Psa`, `Num 33:43;`); kézi sorban a várt szerkezet (útvonal, pl. `Qal/1`) |
 | `allapot` | `javitva` (a pe-s alak — egy vagy a szó minden dagesses memjét cserélve — az illesztett szócikk héber szavai között áll, a mem-es nem) \| `valodi_mem` (a mem-es alak áll a szócikkben: nem hiba) \| `jelolt_marad` (egyik sem igazolt, vagy a sornak nincs `bdb_id`-je: nincs javítás) \| `kezi` (DT-F107g (b): kézi sor egy szerkezeti forráshibáról, amely a `DictBDB.json`-ban ÉS a `BDB.lexicon`-ban is igazolt; a sor a forrás-hibát rögzíti, a táblát nem írja át) |
 | `indok` | a döntés oka, magyarul |
-| `proveniencia` | `pe_mem`: `scope=<Strong> \| forras=bdb_jelolt/forras_javit.py (fejléc) \| ts=<nap>`; kézi sor: `manual` (a forrás és az indok az `indok` mezőben; a kézi tételek a `forras_javit.py` `KEZI` listájában, a `sorszam` horgony szerint keresve) |
+| `proveniencia` | generált sor: `scope=<Strong> \| forras=bdb_jelolt/forras_javit.py (fejléc)[…] \| ts=<nap>` (a `hivatkozas` sorban a forrásjavítás is: F34 / F46 / F46.6); kézi sor: `manual` (a forrás és az indok az `indok` mezőben; a kézi tételek a `forras_javit.py` `KEZI` listájában, a `sorszam` horgony szerint keresve) |
 
 Összevetés: NFD, kantilláció (U+0591–U+05AF), meteg, paszek, szof pászuk és U+200E nélkül, U+05BA = U+05B9. Állapot (F107.23, 2026-10-18):
-6 788 sor: `pe_mem` 6 781 (`javitva` 3 823 (1 428 Strong), `valodi_mem` 2 402, `jelolt_marad` 556, ebből 112 `bdb_id` nélküli sorban) + `kezi` 7 (F107.23). A kész fordítások érintettsége: N-F107a.
+7 200 sor (F107.33): `pe_mem` 6 781 (`javitva` 3 823 (1 428 Strong), `valodi_mem` 2 402, `jelolt_marad` 556, ebből 112 `bdb_id` nélküli sorban) + `kezi` 7 + `hivatkozas` 412 (mind `javitva`; forrás: F34 159 — `naplok/F34_M2_csere.tsv` JAVIT —, F46 250 — `naplok/BDB_KONYVFELOLDAS_csere.tsv` / `_kezi.tsv` —, F46.6 3 — git `6400b5a7`, „Phoenician” → „Pharaoh”, a csere-naplóban nem szerepel). A kész fordítások érintettsége: N-F107a. A sima szöveges nézetet a `eszkozok/bdb_jelolt/nezet_general.py` állítja elő (`--pe-mem` a pe/mem javítással is); a kimenet nem a repóba és nem a `BDB_teljes_unabridged.tsv`-be íródik (DT-F107c (d)).
 
 ---
 

@@ -216,7 +216,7 @@ class Javitas(unittest.TestCase):
             if s['allapot'] == 'kezi':
                 continue
             self.assertEqual(bool(s['javitott_alak']), s['allapot'] == 'javitva')
-            if s['allapot'] == 'javitva':
+            if s['allapot'] == 'javitva' and s['hiba'] == 'pe_mem':
                 # a forrás (JSON) alakban nincs dagesses pe (DT-F107f)
                 self.assertNotRegex(self.fj.norm(s['forras_alak']), 'פ[ְ-ׇ]*ּ')
                 self.assertTrue(s['bdb_id'])
@@ -225,6 +225,49 @@ class Javitas(unittest.TestCase):
         self.assertTrue(any(s['strong'] == 'H2835' and s['allapot'] == 'javitva'
                             and self.fj.norm(s['javitott_alak']) == self.fj.norm('מִשְׁפַּט')
                             for s in self.sorok))
+
+
+class Nezet(unittest.TestCase):
+    """nezet_general.py és a hivatkozas-sorok (DT-F107c (d))."""
+
+    @classmethod
+    def setUpClass(cls):
+        import nezet_general
+        cls.ng = nezet_general
+
+    def test_mem_csere_ket_alakban(self):
+        self.assertEqual(self.ng.mem_csere_szoban('מַּר', 1), 'פַּר')
+        self.assertEqual(self.ng.mem_csere_szoban('מַּר', 1), 'פַּר')
+        self.assertIsNone(self.ng.mem_csere_szoban('מַר', 1))
+
+    def test_tobb_mem_egy_szoban(self):
+        szo = 'מִּמָּ'
+        uj, hiba = self.ng.pe_mem_sorban('x ' + szo, [{'szo_sorszam': '1', 'elofordulas': '1'},
+                                                     {'szo_sorszam': '1', 'elofordulas': '2'}])
+        self.assertEqual(hiba, 0)
+        self.assertEqual(uj, 'x פִּפָּ')
+
+    def test_token_elofordulas_egesz_token(self):
+        import forras_javit
+        self.assertEqual(len(forras_javit.token_elofordulas('Gen 1:1; Genesis Gen 2:2', 'Gen')), 2)
+
+    def test_hivatkozas_sorok(self):
+        import forras_javit
+        with open(forras_javit.KI_UT, encoding='utf-8', newline='') as f:
+            s = f.read().split('\n')
+        fej = s[2].split('\t')
+        h = [dict(zip(fej, x.split('\t'))) for x in s[3:] if x and x.split('\t')[3] == 'hivatkozas']
+        self.assertTrue(h)
+        for d in h:
+            self.assertEqual(d['allapot'], 'javitva')
+            self.assertRegex(d['indok'], r'F34|F46')
+            self.assertTrue(d['sorszam'])
+
+    def test_nezet_csak_jovahagyott_elteres(self):
+        nezet, tab, stat = self.ng.general(False)
+        self.assertEqual(stat['hivatkozas_sikertelen'], 0)
+        s, _ = self.ng.osszevet(nezet, tab, False)
+        self.assertEqual(set(s) - {'azonos', 'sub', 'szokoz', 'forras_html', 'nincs_a_nezetben'}, set())
 
 
 class Determinizmus(unittest.TestCase):
