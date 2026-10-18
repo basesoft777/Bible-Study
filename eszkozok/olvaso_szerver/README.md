@@ -26,6 +26,7 @@ Szerveroldali Flask-alkalmazás, amely a `pardes.db`-ből (csak olvasásra) áll
 | `indit.sh` | a közös indító (#100): régi példány leállítása, adatbázis-szinkron, szerver újratöltővel; a három asztali parancsikon ezt hívja |
 | `allapot.py` | az indító és a lábléc állapota (#100): szinkron-döntés (`meta.epites_ts`), ág és commit (fájlolvasással, `git` nélkül), lábléc-figyelmeztetések; stdlib |
 | `teszt_indito.py` | az indító tesztjei (#100): szinkron-döntés, git-olvasás, lábléc, `indit.sh` ideiglenes adatbázisokkal |
+| `m4_meres.py` | az M4 lapidő-mérése a VPS-t utánzó korláttal (`systemd-run --scope`: 1 vCPU, 2 GB, csere nélkül; gunicorn a `gunicorn_conf.py` szerint), a korlát igazolásával, hideg/meleg/LRU idővel; rootként fut a WSL-ben (`drop_caches`), a repóba nem ír. Eredmény: `naplok/OLVASOI_KONKORDANCIA_meres.md` |
 | `teszt_olvaso_szerver.py` | tesztek (unittest) |
 | `teszt_kereses.py` | a keresés tesztjei (M3): értelmezés, független lekérdezéssel összevetett találatok, vershatár, üres eredmény, lapozás, SQL-injekció, XSS, a fejléc mezője minden nézetben, kiadás (authorizer-napló), hozzáférési szint |
 | `teszt_arculat.py` | a token-fájl, a token-blokk és az `/arculat.css` tesztjei (#98 M1) |
