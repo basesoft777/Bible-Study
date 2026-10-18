@@ -1,0 +1,155 @@
+# proveniencia: scope=KJV_SZOVEG M0 (66 kanonikus könyv; fájllista: a teljes zip) | forras=kjv.zip sha256=00532b6db1825cb78fd34de2097fc280ce03ee22ef0bdac5243ef4beaca4d447 (2766294 bájt) + konkordancia/KJV_Strongs_teljes.tsv | ts=2026-10-18T15:23:34Z
+# a \c utani, \v elotti (vagy \v nelkuli) szoveghordozo sorok; f19_vers = az F19 parse_usfm aktualis verse, amelyhez a szoveg hozzafuzodne (ures: eldobna)
+konyv	fejezet	f19_vers	elso_jelolo	tiszta_szoveg	nyers_sor
+Psa	3	0	d	A Psalm of David, when he fled from Absalom his son.	\d A \w Psalm|strong="H4210"\w* of \w David|strong="H1732"\w*, when he \w fled|strong="H1272"\w* \w from|strong="H6440"\
+Psa	4	0	d	To the chief Musician on Neginoth, A Psalm of David.	\d To the chief \w Musician|strong="H5329"\w* on \w Neginoth|strong="H5058"\w*, A \w Psalm|strong="H4210"\w* of \w David
+Psa	5	0	d	To the chief Musician upon Nehiloth, A Psalm of David.	\d To the chief \w Musician|strong="H5329"\w* upon \w Nehiloth|strong="H5155"\w*, A \w Psalm|strong="H4210"\w* of \w Dav
+Psa	6	0	d	To the chief Musician on Neginoth upon Sheminith, A Psalm of David.	\d To the chief \w Musician|strong="H5329"\w* on \w Neginoth|strong="H5058"\w* upon \w Sheminith|strong="H8067"\w*, A \w
+Psa	7	0	d	Shiggaion of David, which he sang unto the LORD , concerning the words of Cush the Benjamite.	\d \w Shiggaion|strong="H7692"\w* of \w David|strong="H1732"\w*, which he \w sang|strong="H7891"\w* unto the \nd \+w LOR
+Psa	8	0	d	To the chief Musician upon Gittith, A Psalm of David.	\d To the chief \w Musician|strong="H5329"\w* upon \w Gittith|strong="H1665"\w*, A \w Psalm|strong="H4210"\w* of \w Davi
+Psa	9	0	d	To the chief Musician upon Muthlabben, A Psalm of David.	\d To the chief \w Musician|strong="H5329"\w* upon \w Muthlabben|strong="H4192"\w*, A \w Psalm|strong="H4210"\w* of \w D
+Psa	11	0	d	To the chief Musician, A Psalm of David.	\d To the chief \w Musician|strong="H5329"\w*, \add A Psalm\add* of \w David|strong="H1732"\w*.
+Psa	12	0	d	To the chief Musician upon Sheminith, A Psalm of David.	\d To the chief \w Musician|strong="H5329"\w* upon \w Sheminith|strong="H8067"\w*, A \w Psalm|strong="H4210"\w* of \w Da
+Psa	13	0	d	To the chief Musician, A Psalm of David.	\d To the chief \w Musician|strong="H5329"\w*, A \w Psalm|strong="H4210"\w* of \w David|strong="H1732"\w*.
+Psa	14	0	d	To the chief Musician, A Psalm of David.	\d To the chief \w Musician|strong="H5329"\w*, \add A Psalm\add* of \w David|strong="H1732"\w*.
+Psa	15	0	d	A Psalm of David.	\d A \w Psalm|strong="H4210"\w* of \w David|strong="H1732"\w*.
+Psa	16	0	d	Michtam of David.	\d \w Michtam|strong="H4387"\w* of \w David|strong="H1732"\w*.
+Psa	17	0	d	A Prayer of David.	\d A \w Prayer|strong="H8605"\w* of \w David|strong="H1732"\w*.
+Psa	18	0	d	To the chief Musician, A Psalm of David, the servant of the LORD , who spake unto the LORD the words of this song in the day that the LORD delivered him from the hand of all his enemies, and from the hand of Saul: And he said,	\d To the chief \w Musician|strong="H5329"\w*, \add A Psalm\add* of \w David|strong="H1732"\w*, the \w servant|strong="H
+Psa	19	0	d	To the chief Musician, A Psalm of David.	\d To the chief \w Musician|strong="H5329"\w*, A \w Psalm|strong="H4210"\w* of \w David|strong="H1732"\w*.
+Psa	20	0	d	To the chief Musician, A Psalm of David.	\d To the chief \w Musician|strong="H5329"\w*, A \w Psalm|strong="H4210"\w* of \w David|strong="H1732"\w*.
+Psa	21	0	d	To the chief Musician, A Psalm of David.	\d To the chief \w Musician|strong="H5329"\w*, A \w Psalm|strong="H4210"\w* of \w David|strong="H1732"\w*.
+Psa	22	0	d	To the chief Musician upon Aijeleth Shahar, A Psalm of David.	\d To the chief \w Musician|strong="H5329"\w* upon \w Aijeleth|strong="H0365"\w* \w Shahar|strong="H7837"\w*, A \w Psalm
+Psa	23	0	d	A Psalm of David.	\d A \w Psalm|strong="H4210"\w* of \w David|strong="H1732"\w*.
+Psa	24	0	d	A Psalm of David.	\d A \w Psalm|strong="H4210"\w* of \w David|strong="H1732"\w*.
+Psa	25	0	d	A Psalm of David.	\d \add A Psalm\add* of \w David|strong="H1732"\w*.
+Psa	26	0	d	A Psalm of David.	\d \add A Psalm\add* of \w David|strong="H1732"\w*.
+Psa	27	0	d	A Psalm of David.	\d \add A Psalm\add* of \w David|strong="H1732"\w*.
+Psa	28	0	d	A Psalm of David.	\d \add A Psalm\add* of \w David|strong="H1732"\w*.
+Psa	29	0	d	A Psalm of David.	\d A \w Psalm|strong="H4210"\w* of \w David|strong="H1732"\w*.
+Psa	30	0	d	A Psalm and Song at the dedication of the house of David.	\d A \w Psalm|strong="H4210"\w* \add and\add* \w Song|strong="H7892"\w* \add at\add* the \w dedication|strong="H2598"\w*
+Psa	31	0	d	To the chief Musician, A Psalm of David.	\d To the chief \w Musician|strong="H5329"\w*, A \w Psalm|strong="H4210"\w* of \w David|strong="H1732"\w*.
+Psa	32	0	d	A Psalm of David, Maschil.	\d \add A Psalm\add* of \w David|strong="H1732"\w*, \w Maschil|strong="H4905"\w*.
+Psa	34	0	d	A Psalm of David, when he changed his behaviour before Abimelech; who drove him away, and he departed.	\d \add A Psalm\add* of \w David|strong="H1732"\w*, when he \w changed|strong="H8138"\w* his \w behaviour|strong="H2940"
+Psa	35	0	d	A Psalm of David.	\d \add A Psalm\add* of \w David|strong="H1732"\w*.
+Psa	36	0	d	To the chief Musician, A Psalm of David the servant of the LORD .	\d To the chief \w Musician|strong="H5329"\w*, \add A Psalm\add* of \w David|strong="H1732"\w* the \w servant|strong="H5
+Psa	37	0	d	A Psalm of David.	\d \add A Psalm\add* of \w David|strong="H1732"\w*.
+Psa	38	0	d	A Psalm of David, to bring to remembrance.	\d A \w Psalm|strong="H4210"\w* of \w David|strong="H1732"\w*, to bring to \w remembrance|strong="H2142"\w*.
+Psa	39	0	d	To the chief Musician, even to Jeduthun, A Psalm of David.	\d To the chief \w Musician|strong="H5329"\w*, \add even\add* to \w Jeduthun|strong="H3038"\w*, A \w Psalm|strong="H4210
+Psa	40	0	d	To the chief Musician, A Psalm of David.	\d To the chief \w Musician|strong="H5329"\w*, A \w Psalm|strong="H4210"\w* of \w David|strong="H1732"\w*.
+Psa	41	0	d	To the chief Musician, A Psalm of David.	\d To the chief \w Musician|strong="H5329"\w*, A \w Psalm|strong="H4210"\w* of \w David|strong="H1732"\w*.
+Psa	42	0	d	To the chief Musician, Maschil, for the sons of Korah.	\d To the chief \w Musician|strong="H5329"\w*, \w Maschil|strong="H4905"\w*, for the \w sons|strong="H1121"\w* of \w Kor
+Psa	44	0	d	To the chief Musician for the sons of Korah, Maschil.	\d To the chief \w Musician|strong="H5329"\w* for the \w sons|strong="H1121"\w* of \w Korah|strong="H7141"\w*, \w Maschi
+Psa	45	0	d	To the chief Musician upon Shoshannim, for the sons of Korah, Maschil, A Song of loves.	\d To the chief \w Musician|strong="H5329"\w* upon \w Shoshannim|strong="H7799"\w*, for the \w sons|strong="H1121"\w* of
+Psa	46	0	d	To the chief Musician for the sons of Korah, A Song upon Alamoth.	\d To the chief \w Musician|strong="H5329"\w* for the \w sons|strong="H1121"\w* of \w Korah|strong="H7141"\w*, A \w Song
+Psa	47	0	d	To the chief Musician, A Psalm for the sons of Korah.	\d To the chief \w Musician|strong="H5329"\w*, A \w Psalm|strong="H4210"\w* for the \w sons|strong="H1121"\w* of \w Kora
+Psa	48	0	d	A Song and Psalm for the sons of Korah.	\d A \w Song|strong="H7892"\w* \add and\add* \w Psalm|strong="H4210"\w* for the \w sons|strong="H1121"\w* of \w Korah|st
+Psa	49	0	d	To the chief Musician, A Psalm for the sons of Korah.	\d To the chief \w Musician|strong="H5329"\w*, A \w Psalm|strong="H4210"\w* for the \w sons|strong="H1121"\w* of \w Kora
+Psa	50	0	d	A Psalm of Asaph.	\d A \w Psalm|strong="H4210"\w* of \w Asaph|strong="H0623"\w*.
+Psa	51	0	d	To the chief Musician, A Psalm of David, when Nathan the prophet came unto him, after he had gone in to Bath-sheba.	\d To the chief \w Musician|strong="H5329"\w*, A \w Psalm|strong="H4210"\w* of \w David|strong="H1732"\w*, when \w Natha
+Psa	52	0	d	To the chief Musician, Maschil, A Psalm of David, when Doeg the Edomite came and told Saul, and said unto him, David is come to the house of Ahimelech.	\d To the chief \w Musician|strong="H5329"\w*, \w Maschil|strong="H4905"\w*, \add A Psalm\add* of \w David|strong="H1732
+Psa	53	0	d	To the chief Musician upon Mahalath, Maschil, A Psalm of David.	\d To the chief \w Musician|strong="H5329"\w* upon \w Mahalath|strong="H4257"\w*, \w Maschil|strong="H4905"\w*, \add A P
+Psa	54	0	d	To the chief Musician on Neginoth, Maschil, A Psalm of David, when the Ziphims came and said to Saul, Doth not David hide himself with us?	\d To the chief \w Musician|strong="H5329"\w* on \w Neginoth|strong="H5058"\w*, \w Maschil|strong="H4905"\w*, \add A Psa
+Psa	55	0	d	To the chief Musician on Neginoth, Maschil, A Psalm of David.	\d To the chief \w Musician|strong="H5329"\w* on \w Neginoth|strong="H5058"\w*, \w Maschil|strong="H4905"\w*, \add A Psa
+Psa	56	0	d	To the chief Musician upon Jonath-elem-rechokim, Michtam of David, when the Philistines took him in Gath.	\d To the chief \w Musician|strong="H5329"\w* upon \w Jonath-elem-rechokim|strong="H3128"\w*, \w Michtam|strong="H4387"\
+Psa	57	0	d	To the chief Musician, Al-taschith, Michtam of David, when he fled from Saul in the cave.	\d To the chief \w Musician|strong="H5329"\w*, \w Al-taschith|strong="H0516"\w*, \w Michtam|strong="H4387"\w* of \w Davi
+Psa	58	0	d	To the chief Musician, Al-taschith, Michtam of David.	\d To the chief \w Musician|strong="H5329"\w*, \w Al-taschith|strong="H0516"\w*, \w Michtam|strong="H4387"\w* of \w Davi
+Psa	59	0	d	To the chief Musician, Al-taschith, Michtam of David; when Saul sent, and they watched the house to kill him.	\d To the chief \w Musician|strong="H5329"\w*, \w Al-taschith|strong="H0516"\w*, \w Michtam|strong="H4387"\w* of \w Davi
+Psa	60	0	d	To the chief Musician upon Shushan-eduth, Michtam of David, to teach; when he strove with Aram-naharaim and with Aram-zobah, when Joab returned, and smote of Edom in the valley of salt twelve thousand.	\d To the chief \w Musician|strong="H5329"\w* upon \w Shushan-eduth|strong="H7802"\w*, \w Michtam|strong="H4387"\w* of \
+Psa	61	0	d	To the chief Musician upon Neginah, A Psalm of David.	\d To the chief \w Musician|strong="H5329"\w* upon \w Neginah|strong="H5058"\w*, \add A Psalm\add* of \w David|strong="H
+Psa	62	0	d	To the chief Musician, to Jeduthun, A Psalm of David.	\d To the chief \w Musician|strong="H5329"\w*, to \w Jeduthun|strong="H3038"\w*, A \w Psalm|strong="H4210"\w* of \w Davi
+Psa	63	0	d	A Psalm of David, when he was in the wilderness of Judah.	\d A \w Psalm|strong="H4210"\w* of \w David|strong="H1732"\w*, when he was in the \w wilderness|strong="H4057"\w* of \w 
+Psa	64	0	d	To the chief Musician, A Psalm of David.	\d To the chief \w Musician|strong="H5329"\w*, A \w Psalm|strong="H4210"\w* of \w David|strong="H1732"\w*.
+Psa	65	0	d	To the chief Musician, A Psalm and Song of David.	\d To the chief \w Musician|strong="H5329"\w*, A \w Psalm|strong="H4210"\w* \add and\add* \w Song|strong="H7892"\w* of \
+Psa	66	0	d	To the chief Musician, A Song or Psalm.	\d To the chief \w Musician|strong="H5329"\w*, A \w Song|strong="H7892"\w* \add or\add* \w Psalm|strong="H4210"\w*.
+Psa	67	0	d	To the chief Musician on Neginoth, A Psalm or Song.	\d To the chief \w Musician|strong="H5329"\w* on \w Neginoth|strong="H5058"\w*, A \w Psalm|strong="H4210"\w* \add or\add
+Psa	68	0	d	To the chief Musician, A Psalm or Song of David.	\d To the chief \w Musician|strong="H5329"\w*, A \w Psalm|strong="H4210"\w* \add or\add* \w Song|strong="H7892"\w* of \w
+Psa	69	0	d	To the chief Musician upon Shoshannim, A Psalm of David.	\d To the chief \w Musician|strong="H5329"\w* upon \w Shoshannim|strong="H7799"\w*, \add A Psalm\add* of \w David|strong
+Psa	70	0	d	To the chief Musician, A Psalm of David, to bring to remembrance.	\d To the chief \w Musician|strong="H5329"\w*, \add A Psalm\add* of \w David|strong="H1732"\w*, to bring to \w remembran
+Psa	72	0	d	A Psalm for Solomon.	\d \add A Psalm\add* for \w Solomon|strong="H8010"\w*.
+Psa	73	0	d	A Psalm of Asaph.	\d A \w Psalm|strong="H4210"\w* of \w Asaph|strong="H0623"\w*.
+Psa	74	0	d	Maschil of Asaph.	\d \w Maschil|strong="H4905"\w* of \w Asaph|strong="H0623"\w*.
+Psa	75	0	d	To the chief Musician, Al-taschith, A Psalm or Song of Asaph.	\d To the chief \w Musician|strong="H5329"\w*, \w Al-taschith|strong="H0516"\w*, A \w Psalm|strong="H4210"\w* \add or\ad
+Psa	76	0	d	To the chief Musician on Neginoth, A Psalm or Song of Asaph.	\d To the chief \w Musician|strong="H5329"\w* on \w Neginoth|strong="H5058"\w*, A \w Psalm|strong="H4210"\w* \add or\add
+Psa	77	0	d	To the chief Musician, to Jeduthun, A Psalm of Asaph.	\d To the chief \w Musician|strong="H5329"\w*, to \w Jeduthun|strong="H3038"\w*, A \w Psalm|strong="H4210"\w* of \w Asap
+Psa	78	0	d	Maschil of Asaph.	\d \w Maschil|strong="H4905"\w* of \w Asaph|strong="H0623"\w*.
+Psa	79	0	d	A Psalm of Asaph.	\d A \w Psalm|strong="H4210"\w* of \w Asaph|strong="H0623"\w*.
+Psa	80	0	d	To the chief Musician upon Shoshannim-eduth, A Psalm of Asaph.	\d To the chief \w Musician|strong="H5329"\w* upon \w Shoshannim-eduth|strong="H7802"\w*, A \w Psalm|strong="H4210"\w* o
+Psa	81	0	d	To the chief Musician upon Gittith, A Psalm of Asaph.	\d To the chief \w Musician|strong="H5329"\w* upon \w Gittith|strong="H1665"\w*, \add A Psalm\add* of \w Asaph|strong="H
+Psa	82	0	d	A Psalm of Asaph.	\d A \w Psalm|strong="H4210"\w* of \w Asaph|strong="H0623"\w*.
+Psa	83	0	d	A Song or Psalm of Asaph.	\d A \w Song|strong="H7892"\w* \add or\add* \w Psalm|strong="H4210"\w* of \w Asaph|strong="H0623"\w*.
+Psa	84	0	d	To the chief Musician upon Gittith, A Psalm for the sons of Korah.	\d To the chief \w Musician|strong="H5329"\w* upon \w Gittith|strong="H1665"\w*, A \w Psalm|strong="H4210"\w* for the \w
+Psa	85	0	d	To the chief Musician, A Psalm for the sons of Korah.	\d To the chief \w Musician|strong="H5329"\w*, A \w Psalm|strong="H4210"\w* for the \w sons|strong="H1121"\w* of \w Kora
+Psa	86	0	d	A Prayer of David.	\d A \w Prayer|strong="H8605"\w* of \w David|strong="H1732"\w*.
+Psa	87	0	d	A Psalm or Song for the sons of Korah.	\d A \w Psalm|strong="H4210"\w* \add or\add* \w Song|strong="H7892"\w* for the \w sons|strong="H1121"\w* of \w Korah|str
+Psa	88	0	d	A Song or Psalm for the sons of Korah, to the chief Musician upon Mahalath Leannoth, Maschil of Heman the Ezrahite.	\d A \w Song|strong="H7892"\w* \add or\add* \w Psalm|strong="H4210"\w* for the \w sons|strong="H1121"\w* of \w Korah|str
+Psa	89	0	d	Maschil of Ethan the Ezrahite.	\d \w Maschil|strong="H4905"\w* of \w Ethan|strong="H0387"\w* the \w Ezrahite|strong="H0250"\w*.
+Psa	90	0	d	A Prayer of Moses the man of God.	\d A \w Prayer|strong="H8605"\w* of \w Moses|strong="H4872"\w* the \w man|strong="H0376"\w* of \w God|strong="H0430"\w*.
+Psa	92	0	d	A Psalm or Song for the sabbath day.	\d A \w Psalm|strong="H4210"\w* \add or\add* \w Song|strong="H7892"\w* for the \w sabbath|strong="H7676"\w* \w day|stron
+Psa	98	0	d	A Psalm.	\d A \w Psalm|strong="H4210"\w*.
+Psa	100	0	d	A Psalm of praise.	\d A \w Psalm|strong="H4210"\w* of \w praise|strong="H8426"\w*.
+Psa	101	0	d	A Psalm of David.	\d A \w Psalm|strong="H4210"\w* of \w David|strong="H1732"\w*.
+Psa	102	0	d	A Prayer of the afflicted, when he is overwhelmed, and poureth out his complaint before the LORD .	\d A \w Prayer|strong="H8605"\w* of the \w afflicted|strong="H6041"\w*, when he is \w overwhelmed|strong="H5848"\w*, and
+Psa	103	0	d	A Psalm of David.	\d \add A Psalm\add* of \w David|strong="H1732"\w*.
+Psa	108	0	d	A Song or Psalm of David.	\d A \w Song|strong="H7892"\w* \add or\add* \w Psalm|strong="H4210"\w* of \w David|strong="H1732"\w*.
+Psa	109	0	d	To the chief Musician, A Psalm of David.	\d To the chief \w Musician|strong="H5329"\w*, A \w Psalm|strong="H4210"\w* of \w David|strong="H1732"\w*.
+Psa	110	0	d	A Psalm of David.	\d A \w Psalm|strong="H4210"\w* of \w David|strong="H1732"\w*.
+Psa	119		s1	א ALEPH.	\s1 \tl  א ALEPH.\tl*
+Psa	119	8	s1	ב BETH.	\s1 \tl  ב BETH.\tl*
+Psa	119	16	s1	ג GIMEL.	\s1 \tl  ג GIMEL.\tl*
+Psa	119	24	s1	ד DALETH.	\s1 \tl  ד DALETH.\tl*
+Psa	119	32	s1	ה HE.	\s1 \tl  ה HE.\tl*
+Psa	119	40	s1	ו VAU.	\s1 \tl  ו VAU.\tl*
+Psa	119	48	s1	ז ZAIN.	\s1 \tl  ז ZAIN.\tl*
+Psa	119	56	s1	ח CHETH.	\s1 \tl  ח CHETH.\tl*
+Psa	119	64	s1	ט TETH.	\s1 \tl  ט TETH.\tl*
+Psa	119	72	s1	י JOD.	\s1 \tl  י JOD.\tl*
+Psa	119	80	s1	כ CAPH.	\s1 \tl  כ CAPH.\tl*
+Psa	119	88	s1	ל LAMED.	\s1 \tl  ל LAMED.\tl*
+Psa	119	96	s1	מ MEM.	\s1 \tl  מ MEM.\tl*
+Psa	119	104	s1	נ NUN.	\s1 \tl  נ NUN.\tl*
+Psa	119	112	s1	ס SAMECH.	\s1 \tl  ס SAMECH.\tl*
+Psa	119	120	s1	ע AIN.	\s1 \tl  ע AIN.\tl*
+Psa	119	128	s1	פ PE.	\s1 \tl  פ PE.\tl*
+Psa	119	136	s1	צ TZADDI.	\s1 \tl  צ TZADDI.\tl*
+Psa	119	144	s1	ק KOPH.	\s1 \tl  ק KOPH.\tl*
+Psa	119	152	s1	ר RESH.	\s1 \tl  ר RESH.\tl*
+Psa	119	160	s1	ש SCHIN.	\s1 \tl  ש SCHIN.\tl*
+Psa	119	168	s1	ת TAU.	\s1 \tl  ת TAU.\tl*
+Psa	120	0	d	A Song of degrees.	\d A \w Song|strong="H7892"\w* of \w degrees|strong="H4609"\w*.
+Psa	121	0	d	A Song of degrees.	\d A \w Song|strong="H7892"\w* of \w degrees|strong="H4609"\w*.
+Psa	122	0	d	A Song of degrees of David.	\d A \w Song|strong="H7892"\w* of \w degrees|strong="H4609"\w* of \w David|strong="H1732"\w*.
+Psa	123	0	d	A Song of degrees.	\d A \w Song|strong="H7892"\w* of \w degrees|strong="H4609"\w*.
+Psa	124	0	d	A Song of degrees of David.	\d A \w Song|strong="H7892"\w* of \w degrees|strong="H4609"\w* of \w David|strong="H1732"\w*.
+Psa	125	0	d	A Song of degrees.	\d A \w Song|strong="H7892"\w* of \w degrees|strong="H4609"\w*.
+Psa	126	0	d	A Song of degrees.	\d A \w Song|strong="H7892"\w* of \w degrees|strong="H4609"\w*.
+Psa	127	0	d	A Song of degrees for Solomon.	\d A \w Song|strong="H7892"\w* of \w degrees|strong="H4609"\w* for \w Solomon|strong="H8010"\w*.
+Psa	128	0	d	A Song of degrees.	\d A \w Song|strong="H7892"\w* of \w degrees|strong="H4609"\w*.
+Psa	129	0	d	A Song of degrees.	\d A \w Song|strong="H7892"\w* of \w degrees|strong="H4609"\w*.
+Psa	130	0	d	A Song of degrees.	\d A \w Song|strong="H7892"\w* of \w degrees|strong="H4609"\w*.
+Psa	131	0	d	A Song of degrees of David.	\d A \w Song|strong="H7892"\w* of \w degrees|strong="H4609"\w* of \w David|strong="H1732"\w*.
+Psa	132	0	d	A Song of degrees.	\d A \w Song|strong="H7892"\w* of \w degrees|strong="H4609"\w*.
+Psa	133	0	d	A Song of degrees of David.	\d A \w Song|strong="H7892"\w* of \w degrees|strong="H4609"\w* of \w David|strong="H1732"\w*.
+Psa	134	0	d	A Song of degrees.	\d A \w Song|strong="H7892"\w* of \w degrees|strong="H4609"\w*.
+Psa	138	0	d	A Psalm of David.	\d \add A Psalm\add* of \w David|strong="H1732"\w*.
+Psa	139	0	d	To the chief Musician, A Psalm of David.	\d To the chief \w Musician|strong="H5329"\w*, A \w Psalm|strong="H4210"\w* of \w David|strong="H1732"\w*.
+Psa	140	0	d	To the chief Musician, A Psalm of David.	\d To the chief \w Musician|strong="H5329"\w*, A \w Psalm|strong="H4210"\w* of \w David|strong="H1732"\w*.
+Psa	141	0	d	A Psalm of David.	\d A \w Psalm|strong="H4210"\w* of \w David|strong="H1732"\w*.
+Psa	142	0	d	Maschil of David; A Prayer when he was in the cave.	\d \w Maschil|strong="H4905"\w* of \w David|strong="H1732"\w*; A \w Prayer|strong="H8605"\w* when he was in the \w cave|
+Psa	143	0	d	A Psalm of David.	\d A \w Psalm|strong="H4210"\w* of \w David|strong="H1732"\w*.
+Psa	144	0	d	A Psalm of David.	\d \add A Psalm\add* of \w David|strong="H1732"\w*.
+Psa	145	0	d	David’s Psalm of praise.	\d \w David’s|strong="H1732"\w* \add Psalm\add* of \w praise|strong="H8416"\w*.
+Rom	16	27	s1	Written to the Romans from Corinthus, and sent by Phebe servant of the church at Cenchrea.	\s1 Written to the Romans from Corinthus, \add and sent\add* by Phebe servant of the church at Cenchrea.
+1Co	16	24	s1	The first epistle to the Corinthians was written from Philippi by Stephanas, and Fortunatus, and Achaicus, and Timotheus.	\s1 The first \add epistle\add* to the Corinthians was written from Philippi by Stephanas, and Fortunatus, and Achaicus,
+2Co	13	14	s1	The second epistle to the Corinthians was written from Philippi, a city of Macedonia, by Titus and Lucas.	\s1 The second \add epistle\add* to the Corinthians was written from Philippi, \add a city\add* of Macedonia, by Titus a
+Gal	6	18	s1	Unto the Galatians written from Rome.	\s1 Unto the Galatians written from Rome.
+Eph	6	24	s1	Written from Rome unto the Ephesians by Tychicus.	\s1 Written from Rome unto the Ephesians by Tychicus.
+Php	4	23	s1	It was written to the Philippians from Rome by Epaphroditus.	\s1 It was written to the Philippians from Rome by Epaphroditus.
+Col	4	18	s1	Written from Rome to the Colossians by Tychicus and Onesimus.	\s1 Written from Rome to the Colossians by Tychicus and Onesimus.
+1Th	5	28	s1	The first epistle unto the Thessalonians was written from Athens.	\s1 The first \add epistle\add* unto the Thessalonians was written from Athens.
+2Th	3	18	s1	The second epistle to the Thessalonians was written from Athens.	\s1 The second \add epistle\add* to the Thessalonians was written from Athens.
+1Ti	6	21	s1	The first to Timothy was written from Laodicea, which is the chiefest city of Phrygia Pacatiana.	\s1 The first to Timothy was written from Laodicea, which is the chiefest city of Phrygia Pacatiana.
+2Ti	4	22	s1	The second epistle unto Timotheus, ordained the first bishop of the church of the Ephesians, was written from Rome, when Paul was brought before Nero the second time.	\s1 The second \add epistle\add* unto Timotheus, ordained the first bishop of the church of the Ephesians, was written f
+Tit	3	15	s1	It was written to Titus, ordained the first bishop of the church of the Cretians, from Nicopolis of Macedonia.	\s1 It was written to Titus, ordained the first bishop of the church of the Cretians, from Nicopolis of Macedonia.
+Phm	1	25	s1	Written from Rome to Philemon, by Onesimus, a servant.	\s1 Written from Rome to Philemon, by Onesimus, a servant.
+Heb	13	25	s1	Written to the Hebrews from Italy by Timothy.	\s1 Written to the Hebrews from Italy by Timothy.
