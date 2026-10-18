@@ -1,0 +1,17 @@
+# proveniencia: scope=KJV_SZOVEG M2 mérés (M-a, M-b, M-c, F19-kérdés) | forras=konkordancia/KJV_teljes_szoveg.tsv sha256=f385295b957ba35cd99351b3ff500fc7d8e4c963fd854581f46b0eff2befe5ce + konkordancia/KJV_Strongs_teljes.tsv + naplok/F19_hianyok.tsv + kjv.zip sha256=00532b6db1825cb78fd34de2097fc280ce03ee22ef0bdac5243ef4beaca4d447 | ts=2026-10-18T15:47:52Z
+fejléc: ['Igehely', 'Szöveg', 'Szöveg_jelolt', 'Elotte', 'Utoirat'] | fejlécsorok: 5 | első sor GENERÁLT: True
+M-a: |T|=31218 (v>0: 31102, v=0: 116); |S|=31215; S ⊆ T: True; |S - T|=0
+M-a: T - S = ['Luk.6.41', 'Luk.17.36', 'Mrk.9.43']; F19_hianyok KJV címke nélküli = ['Luk.6.41', 'Luk.17.36', 'Mrk.9.43']; azonos: True
+M-a: a sorok kanonikus sorrendben (könyv, fejezet, vers): True; könyvek: 66
+M-b: szóelem 362399; osztályok: {'pontos': 362315, 'osszetett_szo': 76, 'szoreszlet': 8}; megmagyarázatlan: 0
+M-c: üres Szöveg: 0 []; üres Szöveg_jelolt: 0
+M-c: versek könyvenként: Gen=1533 Exo=1213 Lev=859 Num=1288 Deu=959 Jos=658 Jdg=618 Rut=85 1Sa=810 2Sa=695 1Ki=816 2Ki=719 1Ch=942 2Ch=822 Ezr=280 Neh=406 Est=167 Job=1070 Psa=2577 Pro=915 Ecc=222 Sng=117 Isa=1292 Jer=1364 Lam=154 Ezk=1273 Dan=357 Hos=197 Jol=73 Amo=146 Oba=21 Jon=48 Mic=105 Nam=47 Hab=56 Zep=53 Hag=38 Zec=211 Mal=55 Mat=1071 Mrk=678 Luk=1151 Jhn=879 Act=1007 Rom=433 1Co=437 2Co=257 Gal=149 Eph=155 Php=104 Col=95 1Th=89 2Th=47 1Ti=113 2Ti=83 Tit=46 Phm=25 Heb=303 Jas=108 1Pe=105 2Pe=61 1Jn=105 2Jn=13 3Jn=14 Jud=25 Rev=404
+M-c: formai ellenőrzés: {'Szoveg_jelolt_szavai_elternek:1Jn.2.23': 1}
+M-c: Elotte nem üres: Psa.119.1 Psa.119.9 Psa.119.17 Psa.119.25 Psa.119.33 Psa.119.41 Psa.119.49 Psa.119.57 Psa.119.65 Psa.119.73 Psa.119.81 Psa.119.89 Psa.119.97 Psa.119.105 Psa.119.113 Psa.119.121 Psa.119.129 Psa.119.137 Psa.119.145 Psa.119.153 Psa.119.161 Psa.119.169; Utoirat nem üres: Rom.16.27 1Co.16.24 2Co.13.14 Gal.6.18 Eph.6.24 Php.4.23 Col.4.18 1Th.5.28 2Th.3.18 1Ti.6.21 2Ti.4.22 Tit.3.15 Phm.1.25 Heb.13.25
+M-c: ‹…› sorok: 2028; [..] sorok: 14263; ¶ sorok (Szöveg_jelolt): 2970
+M-c: vershíd (\v n-m) a nyers forrásban: 0
+M-c: veszteség-sor (generátor) vs nyers jelölőszám (független): strong==349308/349308 f=6959/6959 p=4635/4635 q1=2461/2461 b=209/209 nd=6892/6892 tl=22/22 wj=2038/2038 add=21510/21510
+M-c: ‹…› lezárás (versen átnyúló \wj): 0
+F19: \s1-sor a 66 kanonikus könyvben: 36; strong= bennük: 0
+F19: az érintett 35 vers (Zsolt 119:8, 16 … 168 és a 14 utóiratos vers) táblabeli szavai: 244, ebből a versszövegben nem illeszkedő: 0
+reprodukálhatóság: újragenerálva bájtra azonos: True (f385295b957ba35c)

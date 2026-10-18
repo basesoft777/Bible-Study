@@ -1,0 +1,39 @@
+# proveniencia: scope=KJV_SZOVEG M0 (66 kanonikus könyv; fájllista: a teljes zip) | forras=kjv.zip sha256=00532b6db1825cb78fd34de2097fc280ce03ee22ef0bdac5243ef4beaca4d447 (2766294 bájt) + konkordancia/KJV_Strongs_teljes.tsv | ts=2026-10-18T15:23:34Z
+# kontextus: fejlec = az elso \c elott; labjegyzet = \f…\f* kozott; kereszthiv = \x…\x* kozott; szoveg = minden mas. beagyazott = \+jelolo
+jelolo	nyito_zaro	kontextus	beagyazott	db
+w	nyito	szoveg		313813
+w	zaro	szoveg		313813
+w	nyito	szoveg	beagyazott	35495
+w	zaro	szoveg	beagyazott	35495
+v	nyito	szoveg		31102
+add	nyito	szoveg		20887
+add	zaro	szoveg		20887
+f	nyito	labjegyzet		6959
+f	zaro	labjegyzet		6959
+fr	nyito	labjegyzet		6959
+ft	nyito	labjegyzet		6959
+nd	nyito	szoveg		6876
+nd	zaro	szoveg		6876
+p	nyito	szoveg		4635
+q1	nyito	szoveg		2461
+wj	nyito	szoveg		2038
+wj	zaro	szoveg		2038
+c	nyito	szoveg		1189
+add	nyito	szoveg	beagyazott	623
+add	zaro	szoveg	beagyazott	623
+b	nyito	szoveg		209
+d	nyito	szoveg		116
+h	nyito	fejlec		66
+id	nyito	fejlec		66
+mt1	nyito	fejlec		66
+toc1	nyito	fejlec		66
+toc2	nyito	fejlec		66
+toc3	nyito	fejlec		66
+nd	nyito	labjegyzet	beagyazott	65
+nd	zaro	labjegyzet	beagyazott	65
+s1	nyito	szoveg		36
+tl	nyito	szoveg		22
+tl	zaro	szoveg		22
+nd	nyito	szoveg	beagyazott	16
+nd	zaro	szoveg	beagyazott	16
+mt2	nyito	fejlec		2
