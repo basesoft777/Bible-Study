@@ -368,23 +368,29 @@ def utvonal(allapot):
     return u
 
 
+# DT-F107e (a), felhasználó, 2026-10-18: a nem egyező Strong sorai a JSON szövegével és tagolásával, de bdb_id és
+# section/remarks nélkül (explicit hiány; a kategória az `illesztes` oszlopban). A szocikk_resze bdb_id-je kitöltve.
+BDB_NELKUL = {'reszleges', 'sikertelen', 'csonk'}
+
+
 def strong_sorok(strong_pad, strong_eredeti, blokkok, hozz, kategoria, szocikk, ts):
     sorok = []
     allapot = dict.fromkeys(MINDEN_SZINT, '')
-    elozo_bdb, alsz = None, 0
+    alsz = 0
+    kiir_bdb = kategoria not in BDB_NELKUL
     section_jel = {}
-    for b in set(hozz):
-        if b:
-            section_jel[b] = list(szocikk[b]['blokkok'])
+    if kiir_bdb:
+        for b in set(hozz):
+            if b:
+                section_jel[b] = list(szocikk[b]['blokkok'])
     for i, (bh, sub1) in enumerate(blokkok):
         bdb = hozz[i]
-        if bdb != elozo_bdb:
+        # szócikk eleje: az első tartalmi blokk, vagy ahol az illesztett szócikk váltott (a belső szegmentálás a
+        # tagolás-állapotot akkor is nullázza, ha a bdb_id nem íródik ki)
+        szocikk_eleje = i == 1 or (i > 1 and hozz[i] != hozz[i - 1])
+        if szocikk_eleje:
             allapot = dict.fromkeys(MINDEN_SZINT, '')
             alsz = 0
-            elozo_bdb = bdb
-            szocikk_eleje = True
-        else:
-            szocikk_eleje = False
         if i == 0:
             jelolo, jel, gy, szoveg, ut = 'cim', '', '', sima(bh), 'cim'
         else:
@@ -393,7 +399,10 @@ def strong_sorok(strong_pad, strong_eredeti, blokkok, hozz, kategoria, szocikk, 
                 allapot = dict.fromkeys(MINDEN_SZINT, '')
             tokenek, maradek = fej_bont(bh)
             gy = ','.join(gyakorisag_kivesz(bh, bool(tokenek)))
-            if tokenek:
+            if tokenek and szocikk_eleje and all(sz == 'romai' for sz, _ in tokenek):
+                # a szócikk-eleji római szám a homonima száma (aranyminta 2.28 `szakasz`), nem fő tagolás
+                jelolo, jel, szoveg, ut = 'fej', ' '.join(x for _, x in tokenek), sima(maradek), 'fej'
+            elif tokenek:
                 for szint, szov in tokenek:
                     if szint == 'romai':
                         for x in ('nagy', 'szam', 'betu', 'zaro'):
@@ -434,7 +443,7 @@ def strong_sorok(strong_pad, strong_eredeti, blokkok, hozz, kategoria, szocikk, 
                         break
         if i == 0:
             ut = 'cim'
-        sorok.append([strong_pad, bdb, str(i + 1), str(alsz), allapot['resz'] if i else '', ut, jelolo, jel, gy, szoveg,
+        sorok.append([strong_pad, bdb if kiir_bdb else '', str(i + 1), str(alsz), allapot['resz'] if i else '', ut, jelolo, jel, gy, szoveg,
                       kategoria, 'DictBDB.json:%s#%d' % (strong_eredeti, i),
                       hashlib.sha256(bh.encode('utf-8')).hexdigest()[:16],
                       'scope=%s | forras=bdb_jelolt/bont.py (fejléc) | ts=%s' % (strong_pad, ts)])

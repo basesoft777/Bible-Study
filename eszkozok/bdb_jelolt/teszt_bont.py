@@ -1,0 +1,132 @@
+#!/usr/bin/env python
+"""A BDB szakasztábla bontójának tesztjei (F107, eszkozok/bdb_jelolt/bont.py).
+
+Futtatás: python eszkozok/bdb_jelolt/teszt_bont.py   (a táblás és a determinizmus-teszt a kiírt
+adat/bdb_szakaszok.tsv-t olvassa; a determinizmus-teszt kb. fél perc, a --ellenoriz módot hívja).
+"""
+import os
+import subprocess
+import sys
+import unittest
+
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+if hasattr(sys.stderr, 'reconfigure'):
+    sys.stderr.reconfigure(encoding='utf-8')
+
+ITT = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, ITT)
+import bont  # noqa: E402
+
+GYOKER = os.path.dirname(os.path.dirname(ITT))
+TABLA = os.path.join(GYOKER, 'adat', 'bdb_szakaszok.tsv')
+
+
+def tabla():
+    with open(TABLA, encoding='utf-8', newline='') as f:
+        sorok = f.read().split('\n')
+    fej = sorok[2].split('\t')
+    return fej, [dict(zip(fej, s.split('\t'))) for s in sorok[3:] if s]
+
+
+class Egyseg(unittest.TestCase):
+    def test_blokkok_sub1_es_kivul(self):
+        b = bont.json_blokkok('<div><p><b>H1. x</b></p><p> a</p>kint<p style="sub1">al</p></div>')
+        self.assertEqual([(bont.sima(h), s) for h, s in b], [('H1. x', False), ('a', False), ('kint', False), ('al', True)])
+
+    def test_fej_tobb_szint(self):
+        tok, mar = bont.fej_bont('<b>2. a.</b> march')
+        self.assertEqual(tok, [('szam', '2.'), ('betu', 'a.')])
+        self.assertEqual(bont.sima(mar), 'march')
+
+    def test_fej_torzs_nagybetu(self):
+        tok, _ = bont.fej_bont('<b>Hiph`il A.</b> Perfect')
+        self.assertEqual(tok, [('torzs', 'Hiph`il'), ('nagy', 'A.')])
+
+    def test_fej_maradek_a_szovegbe(self):
+        tok, mar = bont.fej_bont('<b>1. proper name</b>, of a location')
+        self.assertEqual(tok, [('szam', '1.')])
+        self.assertEqual(bont.sima(mar), 'proper name, of a location')
+
+    def test_glossza_nem_fej(self):
+        tok, _ = bont.fej_bont('<b>king of Gerar</b> Gen 20:2')
+        self.assertEqual(tok, [])
+
+    def test_sima_sub_kimarad_sup_marad(self):
+        self.assertEqual(bont.sima('<b>2</b><sub>46</sub> x CIS<sup>iv</sup>'), '2 x CIS^iv')
+        self.assertEqual(bont.gyakorisag_kivesz('<b>2</b><sub>46</sub> x', True), ['46'])
+
+    def test_kezdet_szorend_fuggetlen(self):
+        a = ['h:\u05d3\u05e8\u05db\u05de\u05d5\u05e0', 'h:\u05d0\u05d3\u05e8', 'prosthetic', 'noun']
+        b = ['h:\u05d0\u05d3\u05e8', 'h:\u05d3\u05e8\u05db\u05de\u05d5\u05e0', 'prosthetic', 'noun']
+        self.assertEqual(bont.eleje_hasonlo(a, b), 1.0)
+
+    def test_pe_mem_egy_vaz(self):
+        # a JSON dagesses mem-je és a lexikon dagesses pe-je ugyanazt a vázat adja (csak illesztéshez)
+        self.assertEqual(bont.heber_vaz('\u05de\u05bc\u05b7\u05e8'), bont.heber_vaz('\u05e4\u05bc\u05b7\u05e8'))
+
+    def test_cimfolytatas(self):
+        self.assertEqual(bont.cimfolytatas_nelkul(['or', 'shettayim', 'h:x', 'noun']), ['h:x', 'noun'])
+        self.assertEqual(bont.cimfolytatas_nelkul(['noun', 'masculine']), ['noun', 'masculine'])
+
+
+class Tabla(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.fej, cls.sorok = tabla()
+        cls.st = {}
+        for s in cls.sorok:
+            cls.st.setdefault(s['strong'], []).append(s)
+
+    def test_fejlec(self):
+        self.assertEqual(self.fej, bont.FEJLEC)
+
+    def test_minden_json_strong(self):
+        self.assertEqual(len(self.st), 8090)
+
+    def test_strong_sorszam_egyedi(self):
+        kulcs = [(s['strong'], s['sorszam']) for s in self.sorok]
+        self.assertEqual(len(kulcs), len(set(kulcs)))
+
+    def test_nem_egyezo_bdb_nelkul(self):
+        for s in self.sorok:
+            if s['illesztes'] in bont.BDB_NELKUL:
+                self.assertEqual(s['bdb_id'], '', s['strong'])
+                self.assertNotIn(s['jelolo'], ('section', 'remarks'), s['strong'])
+            else:
+                self.assertTrue(s['bdb_id'].startswith('BDB'), s['strong'])
+
+    def test_h0040_tagolas(self):
+        ut = [(s['utvonal'], s['jelolo'], s['jel']) for s in self.st['H0040']][:5]
+        self.assertEqual(ut, [('cim', 'cim', ''), ('fej', 'fej', ''), ('-/1/-', 'point', '1'), ('-/2/-', 'point', '2'),
+                              ('-/3/-', 'point', '3')])
+
+    def test_h8057_gyakorisag(self):
+        s = [x for x in self.st['H8057'] if x['utvonal'] == '-/2/-'][0]
+        self.assertEqual((s['jel'], s['gyakorisag']), ('2', '46'))
+        self.assertTrue(s['szoveg'].startswith('(especially Psalms'))
+
+    def test_h7626_forrashiba_marad(self):
+        # a „145:” a nyers JSON-ban is a szövegben áll (forráshiba): a tábla nem javítja
+        self.assertTrue(any(x['szoveg'].startswith('145:tribe') for x in self.st['H7626']))
+
+    def test_h5117_torzs_nagybetu(self):
+        self.assertIn("Hiph'il.A/1/a", [x['utvonal'] for x in self.st['H5117']])
+
+    def test_proveniencia(self):
+        for s in self.sorok[:2000]:
+            self.assertTrue(s['proveniencia'].startswith('scope=%s | forras=' % s['strong']))
+            self.assertIn('| ts=', s['proveniencia'])
+
+
+class Determinizmus(unittest.TestCase):
+    def test_ellenoriz(self):
+        with open(TABLA, encoding='utf-8') as f:
+            ts = f.readline().split('--ts ')[1].split(' ')[0]
+        r = subprocess.run([sys.executable, os.path.join(ITT, 'bont.py'), '--ts', ts, '--ellenoriz', '--lista', '0'],
+                           capture_output=True, text=True, encoding='utf-8')
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+
+
+if __name__ == '__main__':
+    unittest.main(verbosity=1)
