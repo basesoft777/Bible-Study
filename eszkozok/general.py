@@ -1985,6 +1985,10 @@ def main():
                 if celfajlnev:
                     relativ = os.path.join('tematikus_lezart', 'naplok', celfajlnev)
                     forras_ut = os.path.join(NAPLOK_DIR, celfajlnev)
+                    if not os.path.exists(forras_ut):
+                        # F11 M3: a migrált motívum régi naplója archívumban
+                        # (archivum/[ID]/); a sorvég-mérés a naplóból.
+                        forras_ut = NAPLO_MD
                 else:
                     relativ = os.path.join('tematikus_lezart', 'naplok',
                                              '%s_kereszthivatkozas_naplo_GENERALT.md' % m['id'])

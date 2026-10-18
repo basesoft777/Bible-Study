@@ -1,3 +1,4 @@
+<!-- ARCHÍV: tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md @ aa59df2b · F11 M3 · 2026-10-18 · nem forrás, nem szerkesztendő -->
 # Tematikus PaRDeS tanulmány — "Segítségül hívni az Úr nevét" (קָרָא בְשֵׁם יְהוָה, *kará beshém Adonáj*)
 
 ## Kivonat
