@@ -32,11 +32,11 @@ ELTÉRÉS: 7 tétel
 | G7 „alapon is bukik” (bdb_vers_jelentes) | NEM ELLENŐRIZHETŐ (részben igazolva) | `eszkozok/olvaso_szerver/bdb_vers_jelentes.py:55,233,268-270` | Az alapot nem futtattam (checkout nélkül). Az állított ok jelen van, és független a difftől: a kód `DT-F99n`-t ír (5 hely), a tábla 2. sora `DT179`-et (Grep). Egyik fájl sem változott a tartományban (`git diff --stat 49dd711e..HEAD -- adat/bdb_vers_jelentes.tsv eszkozok/olvaso_szerver/bdb_vers_jelentes.py`: üres). A `szamkiosztas` commit (`0d7e9dec`) a táblát átszámozta, a kódot nem. A hosszkülönbség 24 karakter, ennek egy része nem magyarázható csak a fejléccel, ezt nem bontottam. |
 | G7 `teszt_sqlite_epit` (`test_mai_adat_zold`, új F115-teszt) és 4 pilot-teszt | NEM ELLENŐRIZHETŐ | – | Ezek nem a `teszt_futtat.py` körébe tartoznak; a szerepem csak azzal futtat tesztet. Sem az alapon, sem a fejen nem futtattam őket. |
 | G8 a táblázat javított alakja és a jelölő | ELTÉRÉS | `naplok/MACULA_CHI_XI_zaras.md:10` | DB-szinten igazolva (`db.py`): 1Móz 1:1 ἀρχῇ (forrás ἀρξῇ, `rahlfs_igazolt`); 1Móz 2:7 χοῦν (ξοῦν, `strong_elteres`), ψυχὴν (`rahlfs_igazolt`); 4Móz 1:8 ισσαχαρ (ισσαξαρ, `csak_kisbetu`). **Hiány:** a G8 „kézzel és teszttel” feltételéből nincs commitolt olvasó-teszt a jelölőre (Grep `nem igazolt|lxx_rahlfs` az `eszkozok/olvaso_szerver/teszt_*`-ban: 0), és a zárónapló szerint a kézi vizuális ellenőrzés hiányzik. A HTML-t nem rendereltem. |
-| D: DT-F115a | OK | `DONTESEK.md:277` | `git diff`: helyőrző (`DT-F115a`), tartalma a brief 5. szerinti; végleges DT-szám nincs. Az állapot („alkalmazásra vár”) a menet után elavult, de ez nem hiba. |
-| D: N-F115a | OK | `NYITOTT_FELADATOK.md:151` | Javaslatként felvéve, upstream megszólalás nem történt. |
-| D: N-F115b / A2 | ELTÉRÉS | `NYITOTT_FELADATOK.md:152` | `python ell3.py`: az Én és a Préd érintett sorainál nem az LXX_OS-ben van rés, hanem a **Macula `karoli` oszlopa üres** (Én 5–7: 292+29+19 sor, Préd 4–5: 26+409 sor, ebből χ/ξ-s 29 és 21), az LXX_OS-ben 117 Én- és 221 Préd-Károli-kulcs van. A „LXX_OS Károli-kulcsrés” címke ezért félrevezető (a briefből öröklődött). A 158/40 zárójeles szám az összes könyvre vonatkozik, nem csak az Én/Préd-re. |
-| A1 memória vs. lekérdezés | OK | `naplok/F17_import_naplo.md:264`, `naplok/MACULA_CHI_XI_zaras.md:3` | A számállítások mellett van proveniencia-sor; minden szám egyezik a saját lekérdezésemmel (G5, DB). A N-F115b értelmezését l. fent. |
-| A2 nyitott tételek | OK (a N-F115b kivételével) | `NYITOTT_FELADATOK.md:144` | A χ/ξ tétel „LEZÁRVA … ellenőrzés és merge függőben” jelöléssel áll; a javítás a fejen igazoltan megvan (G2–G6). |
+| D: DT203 | OK | `DONTESEK.md:277` | `git diff`: helyőrző (`DT203`), tartalma a brief 5. szerinti; végleges DT-szám nincs. Az állapot („alkalmazásra vár”) a menet után elavult, de ez nem hiba. |
+| D: N56 | OK | `NYITOTT_FELADATOK.md:151` | Javaslatként felvéve, upstream megszólalás nem történt. |
+| D: N57 / A2 | ELTÉRÉS | `NYITOTT_FELADATOK.md:152` | `python ell3.py`: az Én és a Préd érintett sorainál nem az LXX_OS-ben van rés, hanem a **Macula `karoli` oszlopa üres** (Én 5–7: 292+29+19 sor, Préd 4–5: 26+409 sor, ebből χ/ξ-s 29 és 21), az LXX_OS-ben 117 Én- és 221 Préd-Károli-kulcs van. A „LXX_OS Károli-kulcsrés” címke ezért félrevezető (a briefből öröklődött). A 158/40 zárójeles szám az összes könyvre vonatkozik, nem csak az Én/Préd-re. |
+| A1 memória vs. lekérdezés | OK | `naplok/F17_import_naplo.md:264`, `naplok/MACULA_CHI_XI_zaras.md:3` | A számállítások mellett van proveniencia-sor; minden szám egyezik a saját lekérdezésemmel (G5, DB). A N57 értelmezését l. fent. |
+| A2 nyitott tételek | OK (a N57 kivételével) | `NYITOTT_FELADATOK.md:144` | A χ/ξ tétel „LEZÁRVA … ellenőrzés és merge függőben” jelöléssel áll; a javítás a fejen igazoltan megvan (G2–G6). |
 | A3 tematikus vs. lexikai párhuzam | OK (tárgytalan) | – | A diffben nincs párhuzam-címkézés. |
 | A4 Remez/Sod | OK (tárgytalan) | – | Nincs tanulmány a diffben. |
 | A5 nevesített tanító | OK (tárgytalan) | – | Nincs tanító-hivatkozás a diffben. |
@@ -54,7 +54,7 @@ ELTÉRÉS: 7 tétel
 1. **G7:** a `teszt_futtat.py` nem zöld. A `teszt_bdb_vers_jelentes.test_bajtra_azonos` bukik, egyik oka e tétel (az `adat/bdb_vers_jelentes.tsv` Macula-hash-e elavult), a tábla újragenerálása nincs az `ir`-ben. Döntés kell: külön tétel, vagy `ir`-bővítés.
 2. **G8:** nincs commitolt olvasó-teszt a jelölőre, és a kézi (böngészős) ellenőrzés hiányzik. Az adat a DB-ben helyes.
 3. **CI E27 HIBA:** `NYITOTT_FELADATOK.md:144` ágnévre hivatkozik, amely a távoli repóban nem létezik.
-4. **N-F115b:** félrevezető címke. A rés a Macula `karoli` oszlopában van (Én 5–7, Préd 4–5), nem az LXX_OS-ben.
+4. **N57:** félrevezető címke. A rés a Macula `karoli` oszlopában van (Én 5–7, Préd 4–5), nem az LXX_OS-ben.
 5. **`strong_elteres`:** 714 / 1 029 sorban az LXX_OS Strongja üres, nem eltérő, így az olvasó igazolt alakot jelöl „nem igazolt”-nak.
 6. **Teszt (1):** megengedő `assertIn`, nem a mért értékre rögzít.
 7. **`Macula_gorog.tsv`:** csak `ts` változott, a fájl nincs az `ir`-ben.

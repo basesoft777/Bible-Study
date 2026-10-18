@@ -259,7 +259,7 @@ Eltérés a várttól: nem volt (a 336-os köztes futás a Sir/JSir hiba követk
 
 **Külön tételek (helyőrző, az F30 szerint):** `N-F17a` (a többi `EGYIK_SEM` fejezet kézi feloldása, DT7 c), `N-F17b` (a Macula héber funkció-kódjainak leképezése a STEP 9000-es sávjára, DT7 b, alacsony prioritás), `N-F35a` (az alias törlése a #35 lezárása után).
 
-## F115 — a héber LXX-szóalak χ↔ξ javítása (2026.10.18, `claude/f115-macula-chi-xi`, DT-F115a)
+## F115 — a héber LXX-szóalak χ↔ξ javítása (2026.10.18, `claude/f115-macula-chi-xi`, DT203)
 
 *Proveniencia: scope=Macula-újragenerálás a pinelt klónokból | forras=Clear-Bible/macula-hebrew@47db250b…, Clear-Bible/macula-greek@8423afe4… (sekély, sparse fetch a repón kívülre), konkordancia/LXX_OS/*.tsv | ts=2026-10-18*
 

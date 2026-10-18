@@ -155,7 +155,7 @@ A szótári előfordulás **nem helyigazolás**. A javító brief szerint ezek a
 
 ## 5. Megjegyzések a javításhoz
 
-> **Utólagos döntés (2026-10-18, a felhasználó):** teljes χ↔ξ csere minden érintett sorban; a Rahlfs-igazolás soronkénti minőségjelölés (a B változat osztályai), nem feltétel; jelölten üres mező nem keletkezik. Az alábbi három pont (a feltételes szabály v1-es érvelése) ezzel történeti; az érvényes szabály: `F115_MACULA_CHI_XI_BRIEF.md` v2, `DT-F115a`.
+> **Utólagos döntés (2026-10-18, a felhasználó):** teljes χ↔ξ csere minden érintett sorban; a Rahlfs-igazolás soronkénti minőségjelölés (a B változat osztályai), nem feltétel; jelölten üres mező nem keletkezik. Az alábbi három pont (a feltételes szabály v1-es érvelése) ezzel történeti; az érvényes szabály: `F115_MACULA_CHI_XI_BRIEF.md` v2, `DT203`.
 
 - A javítás illesztési kulcsa a Károli-vers, mert pozíció-mutató nincs. 0 kétértelmű sor mellett ez elegendő. A brief mégis előírja a kétértelműség-őrt.
 - A B változat (Strong-egyezés) 1 029 sort vesztene el úgy, hogy közben egyetlen hibát sem szűrne ki. A javasolt szabály ezért az A változat.
