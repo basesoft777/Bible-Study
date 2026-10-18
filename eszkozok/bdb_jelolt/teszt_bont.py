@@ -270,6 +270,53 @@ class Nezet(unittest.TestCase):
         self.assertEqual(set(s) - {'azonos', 'sub', 'szokoz', 'forras_html', 'nincs_a_nezetben'}, set())
 
 
+class HuIlleszt(unittest.TestCase):
+    """hu_illeszt.py és az adat/bdb_szakasz_hu.tsv (7. lépés)."""
+
+    @classmethod
+    def setUpClass(cls):
+        import hu_illeszt
+        cls.hi = hu_illeszt
+        with open(hu_illeszt.KI_UT, encoding='utf-8', newline='') as f:
+            s = f.read().split('\n')
+        fej = s[2].split('\t')
+        cls.sorok = [dict(zip(fej, x.split('\t'))) for x in s[3:] if x]
+
+    def test_forras_jelolok(self):
+        self.assertEqual(self.hi.forras_jelolok('2. a.'), ['2', 'a'])
+        self.assertEqual(self.hi.forras_jelolok('Hiph`il'), ['T:Hiph'])
+        self.assertEqual(self.hi.forras_jelolok('II.'), ['II'])
+
+    def test_illesztes_es_horgony(self):
+        sorok = [{'jelolo': 'fej', 'jel': '', 'szoveg': 'x'},
+                 {'jelolo': 'point', 'jel': '1', 'szoveg': 'king of Gerar Gen 20:2'},
+                 {'jelolo': 'point', 'jel': '2', 'szoveg': 'king of Gath'}]
+        hu = 'fej szöveg +? 1 Gerár királya 1Móz 20:2. 2 Gát királya'
+        e, szigoru, horgonyos = self.hi.strong_illeszt(sorok, hu)
+        self.assertEqual([x[0] for x in e], ['jelolo_nelkul', 'horgonnyal', 'illeszkedik'])
+        self.assertEqual(hu[e[1][2]:].split(' ')[0], '1')      # a horgonyolt szakasz a saját jelölőjénél kezdődik
+        self.assertEqual(horgonyos, 'horgonnyal')
+
+    def test_kategoriak_es_hash(self):
+        self.assertEqual(set(x['kategoria'] for x in self.sorok), {'illeszkedik', 'horgonnyal', 'elakad', 'jelolo_nelkul'})
+        for x in self.sorok:
+            self.assertRegex(x['forditas_forras_hash'], r'^[0-9a-f]{40}$')
+            self.assertEqual(bool(x['szoveg_hu']) or x['hu_kezdet'] == '' or x['hu_hossz'] == '0', True)
+        self.assertEqual(len(set(x['strong'] for x in self.sorok)), 674)
+
+    def test_h0040(self):
+        h = {x['sorszam']: x for x in self.sorok if x['strong'] == 'H0040'}
+        self.assertTrue(h['3']['szoveg_hu'].startswith('1 Gerár'))
+        self.assertEqual(h['4']['kategoria'], 'illeszkedik')
+
+    def test_ellenoriz(self):
+        with open(self.hi.KI_UT, encoding='utf-8') as f:
+            ts = f.readline().split('--ts ')[1].split(' ')[0]
+        r = subprocess.run([sys.executable, os.path.join(ITT, 'hu_illeszt.py'), '--ts', ts, '--ellenoriz'],
+                           capture_output=True, text=True, encoding='utf-8')
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+
+
 class Determinizmus(unittest.TestCase):
     def test_ellenoriz(self):
         with open(TABLA, encoding='utf-8') as f:

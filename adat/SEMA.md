@@ -1314,6 +1314,30 @@ a héber alakok NFD-ben. Olvasás `split('\t')`.
 Összevetés: NFD, kantilláció (U+0591–U+05AF), meteg, paszek, szof pászuk és U+200E nélkül, U+05BA = U+05B9. Állapot (F107.23, 2026-10-18):
 7 200 sor (F107.33): `pe_mem` 6 781 (`javitva` 3 823 (1 428 Strong), `valodi_mem` 2 402, `jelolt_marad` 556, ebből 112 `bdb_id` nélküli sorban) + `kezi` 7 + `hivatkozas` 412 (mind `javitva`; forrás: F34 159 — `naplok/F34_M2_csere.tsv` JAVIT —, F46 250 — `naplok/BDB_KONYVFELOLDAS_csere.tsv` / `_kezi.tsv` —, F46.6 3 — git `6400b5a7`, „Phoenician” → „Pharaoh”, a csere-naplóban nem szerepel). A kész fordítások érintettsége: N-F107a. A sima szöveges nézetet a `eszkozok/bdb_jelolt/nezet_general.py` állítja elő (`--pe-mem` a pe/mem javítással is); a kimenet nem a repóba és nem a `BDB_teljes_unabridged.tsv`-be íródik (DT-F107c (d)).
 
+
+
+### 2.32 `bdb_szakasz_hu.tsv` — a kész magyar BDB-fordítás illesztése a szakaszokhoz (F107, FELADATOK #107, 7. lépés)
+
+**Generált** (`python eszkozok/bdb_jelolt/hu_illeszt.py --ts <nap>`; kézzel nem szerkeszthető; `--ellenoriz`; teszt: `teszt_bont.py`). A kész
+magyar BDB-fordítás (`adat/forditasok.tsv` BDB-sorai közül Strongonként az utolsó nem üres `forditas_hu`; **a fájl nem íródik**, az a #38-é)
+szakaszhatárai a szakasztábla (2.30) soraihoz illesztve, a #38 szakaszonkénti fordításának (DT181 (b)) előkészítéseként. Soronként a
+szakasztábla egy sora (csak a lefordított Strongok). Első két sor `# GENERÁLT` / `# forras` (a bemenetek és a kód hash-e), a harmadik a
+fejléc. Olvasás `split('\t')`.
+
+| Oszlop | Jelentés |
+|---|---|
+| `strong`, `sorszam`, `bdb_id`, `szakasz`, `resz`, `utvonal`, `jel` | a 2.30 sora (kulcs: `strong` + `sorszam`) |
+| `kategoria` | `illeszkedik` (a sor összes fej-jelölője — szám, betű, római, zárójeles, törzsnév — sorrendben megvan a magyarban) \| `horgonnyal` (a jelölő nem illeszkedett, de a sor szövegének első fejezet:verse a magyarban az előző és a következő illesztett szakasz között megvan; a szakasz a sor saját jelölőjének ott álló utolsó előfordulásától, ennek híján a megelőző mondathatártól indul) \| `elakad` (egyik sem: a sor magyar szövege az előző szakaszban van) \| `jelolo_nelkul` (a sornak nincs fej-jelölője: cím, fej, fej nélküli bekezdés, alcímszó — az előző szakaszban halad; a fej a magyar szöveg elejét kapja) |
+| `horgony` | `illeszkedik`: a jelölők (pl. `2 a`, `T:Qal`); `horgonnyal`: a fejezet:vers; különben üres |
+| `hu_kezdet`, `hu_hossz` | a szakasz kezdete és hossza a `forditas_hu`-ban (karakter); üres, ha a sornak nincs saját szakasza |
+| `szoveg_hu` | a magyar szakasz (a sor horgonyától a következő horgonyig, a széleken szóköz nélkül); üres, ha nincs saját szakasza |
+| `forditas_forras_hash` | a fordítássor `forras_hash`-e (a TSV `Teljes_szocikk` SHA-1-e a fordításkor): az elavulás jele (DT-F107c (d): addig a változatlan TSV-hez kötött) |
+| `proveniencia` | `scope=<Strong> \| forras=bdb_jelolt/hu_illeszt.py (fejléc) \| ts=<nap>` |
+
+Állapot (F107.34, 2026-10-18): 674 Strong, 9 664 sor; soronként `illeszkedik` 6 210, `horgonnyal` 271, `elakad` 618, `jelolo_nelkul` 2 565.
+Strong-szinten a kapu szigorú illesztőjével (`forditas_kapuk._illeszt`, mint a 2026-10-16-i kiinduló 355 / 89 / 230): `illeszkedik` 380,
+`tagolatlan` 94, `elakad` 200; horgonnyal kiegészítve: `illeszkedik` 385, `horgonnyal` 105, `elakad` 101, `tagolatlan` 83. Az `elakad`
+szakaszok sorsa: DT-F107b.
 ---
 
 ## 3. Integritási szabályok
