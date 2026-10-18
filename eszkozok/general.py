@@ -1019,7 +1019,9 @@ def blokkok_ellenoriz(path, blokkok):
 #
 # A cimsor-felismeres konvencioja (a `##` cimsor eleje: `Kivonat`, `0.`-`7.`,
 # `Proveniencia-sorok`; a #64 proza-probajanak, `motivumok/TEREMT-002.md`,
-# alakja) a sablon 9-ben nincs kimondva: megerositendo, l. DT-F11d (a).
+# alakja) a DT-F11d (a) dontese (2026-10-18), a sablon 9 4. pontjaban rogzitve;
+# ugyanott a P-lepes-figyelmeztetes: az 1. szakasz P-lepest (P1-P7) emlito,
+# nem `belso` szintu `###` alcimere a generator figyelmeztet.
 #
 # A kiadhato nezet (olvasoi, apparatus) build-kihagyassal keszul (SEMA
 # 3.10.4): a `belso` blokk szovege nem kerul a kimenetbe, es a csak-forrasbeli
@@ -1055,6 +1057,7 @@ FORRAS_ALSZAKASZOK = (
 
 _SZINT_PAR = re.compile(r'^<!-- SZINT-(KEZDET|VÉGE): (\S+) -->$')
 _SZINT_REGI = re.compile(r'^<!-- SZINT: (\S+) -->$')
+_P_LEPES = re.compile(r'\bP[1-7]\b')
 _ADAT_NEZET = re.compile(r'^<!-- ADAT-NÉZET:.*-->$')
 _ADAT_NEZET_SZINT = re.compile(r'\|\s*SZINT:\s*(\S+?)\s*-->$')
 _ADAT_ERTEK_INLINE = re.compile(r'<!-- ADAT-ÉRTÉK:.*?-->')
@@ -1184,6 +1187,12 @@ def forras_elemez(szoveg):
                                  % (i, mn.group(1)))
                 else:
                     szint = _melyebb(mn.group(1), kornyezet)
+        if (szakasz_kulcs == '1' and sor.startswith('### ') and _P_LEPES.search(sor)
+                and szint != 'belso'):
+            figyelmeztetesek.append(
+                '%d. sor: P-lépést említő alcím az 1. szakaszban, %s szinten: a P-levezetés '
+                'így a kiadható nézetbe kerül (nem a „P1–P7” alcím, és nem SZINT-KEZDET: belso '
+                'pár áll előtte; sablon 9 4. pont, DT-F11d (a)): %s' % (i, szint, sor))
         eredmeny.append({'sor': sor, 'szam': i, 'szint': szint,
                          'szakasz': szakasz_kulcs, 'szakasz_cim': szakasz_cim})
     for szint, nyito in verem:
@@ -1310,7 +1319,9 @@ def forras_nezetek_ir(args, motivum_id, melysegek):
 # Jelolonkent:
 #   - `<!-- JELÖLT: [igehely] | gerinc: [gerinc_elem] | [indoklas] -->`
 #     (sajat sorban): egy jelolt-sor; kulcs id + igehely; ha a kulcs mar
-#     letezik, NEM ir, a jelentes jelzi a meglevo dontest;
+#     letezik, NEM ir, a jelentes jelzi a meglevo dontest; az `indoklas`
+#     `gerinc: [gerinc_elem] — [indoklas]` alaku, a `forras_kereses`
+#     szakasz-mutatoja a `##` cimsor szovege (DT-F11d (d));
 #   - `ADAT-HIV`, `ADAT-ÉRTÉK`: ellenorzo jelolok; semmit nem irnak. A
 #     `[kulcs]` es a `[kifejezes]` gepi alakjat a sablon 9 6. pontja nem
 #     rogziti (DT-F11d (b), (c)), ezert ma minden ilyen jelolo "nem
@@ -1417,7 +1428,9 @@ def kinyeres_elemez(szoveg, motivum_id, meglevo_jeloltek, konyv_sorrend, datum):
                 'forras_kereses': 'scope=manual | forras=motivumok/%s.md#%s | ts=%s'
                                   % (motivum_id, szakasz, datum),
                 'dontes': 'nyitva',
-                'indoklas': indoklas,
+                # DT-F11d (d): a gerinc az indoklas elejen (a jeloltek.tsv-ben
+                # nincs gerinc-mezo, SEMA 2.4; az elolepteteshez kell).
+                'indoklas': 'gerinc: %s — %s' % (gerinc, indoklas),
                 'karoli_szo': '',
                 'azonositas_modja': '',
                 'megbizhatosag': '',
@@ -1527,8 +1540,8 @@ def kinyeresi_jelentes(motivum_id, eredmeny, irt):
                 s['_sor'], s['igehely'], _md_cella(s['_gerinc']), s['forras_kereses'],
                 _md_cella(s['indoklas'])))
         sor.append('')
-        sor.append('*A gerinc-elem a `jeloltek.tsv` sémájában nem mező (SEMA 2.4); a jelentés '
-                   'csak megjeleníti (DT-F11d (d)).*')
+        sor.append('*A gerinc-elem a `jeloltek.tsv` sémájában nem mező (SEMA 2.4): az `indoklas` '
+                   'elején áll, `gerinc: X — …` alakban (DT-F11d (d)).*')
     else:
         sor.append('*(nincs)*')
     sor.append('')
