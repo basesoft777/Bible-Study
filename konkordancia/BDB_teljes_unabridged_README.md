@@ -25,6 +25,32 @@ oszlop a repó zero-padded konvencióját követi (4 számjegyre kitöltve, pl. 
 `H1` → `H0001`), homográf-toldalékkal együtt (pl. `H90a` → `H0090a`) — konzisztens a
 `Strong_szotar.tsv` és a `TAHOT_kivonat.tsv`/`TAGNT_kivonat.tsv` konvenciójával.
 
+## Szerkezetvesztés a konverzióban (utólagos naplózás, F107)
+
+*Utólag, 2026.10.18-án naplózva (F107, 1. lépés; mérés: `naplok/F107_BDB_JELOLT_SZOVEG_naplo.md` 1.1 és
+1.6; eszköz: `eszkozok/bdb_jelolt/forras_osszevetes.py`). A 2026.09.02-i import (`142ad625`) idején ez nem
+volt döntésként rögzítve.*
+
+**Mit dob el a `_convert_bdb.py`.** A `strip_html()` a `DictBDB.json` HTML-jéből a szócikk tagolását
+dobja el: a `<p>` bekezdéshatárt (36 110; szóköz lesz belőle, ezért a jelentéspont, az alpont és az
+igetörzs blokkjának határa a TSV-ben nem ismerhető fel), a `<b>` félkövért (46 108; a „1”, „a.” fej sima
+szövegként marad), az `<i>` dőltet (51 525); a `<sub>` gyakoriságszámot (739) `_N`, a `<sup>`-ot (14 167)
+`^…` alakra írja. A JSON nem került a repóba, csak a TSV.
+
+**Miért.** A konverzió célja egy kereshető sima szöveg volt (egyszeri segédszkript); a tagolás
+megőrzése nem volt követelmény. A veszteség következménye a szeletelő heurisztikája (#99, #102) és a
+magyar fordítás konverziós maradványa („N_M”, #38, DT181).
+
+**A nyers forrás azonosítása.** A 2026.09.02-i JSON hash-e nem került naplóba. A 2026.10.18-i letöltés
+(a forrásrepó `6e8326c6884f8ef1399c7a365d660da9bb9e2d01` commitja, ugyanaz, mint az `adat/licencek.tsv`
+`BDB` sorában) SHA-256-ja `5d826c580a4dd06f54a53d1e19b5e8c354aab0180e200849e3148b89f370e33d`
+(24 726 362 bájt); a `_convert_bdb.py` eljárása erre változatlanul alkalmazva bájtra a K7-es eredeti TSV-t
+adja (`1d28a840…dfa5`), tehát a mai letöltés tartalma a konverzió bemenetével azonos.
+
+**Megőrzés.** A nyers JSON megőrzésének helye (repó vagy rögzített külső hely) döntésre vár (`DT-F107a`,
+`DT-F107d`, `DONTESEK.md`); addig a JSON csak a fenti URL-en, commiton és hash-sel azonosítható. A mérések
+alapja a nyers forrás, nem a TSV.
+
 ## Kimenet
 
 **`BDB_teljes_unabridged.tsv`** (8090 sor + fejléc az eredeti konverzióban; F57 óta 8093, l. „Pótlás”; 3 oszlop):
