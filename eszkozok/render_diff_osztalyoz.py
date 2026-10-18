@@ -364,7 +364,7 @@ ATKULCSOLT_SOROK = {
 # DT-F09g (felhasználó, 2026-10-17, chat): a 32 elfogadott `ismeretlen` sor NÉV SZERINT (fájl + pontos sorszöveg), csak törölt irány.
 # Csoportok: forditas_ubs_forras_elavult 14 · joshua_forrasvaltas 2 · bdb_formatumvaltozas 2 · lsj_licencverzio_valtas 1 ·
 # szamozas_elteres_fuggobe_valt 6 (kutatói azonosítás függőben lett) · szamozas_elteres_helyorzo_feloldodott 4 (tartalomra oldódott) ·
-# kutatoi_azonositas_feloldodott 3. Általános szabály nincs.
+# kutatoi_azonositas_feloldodott 3 · (2026-10-18) leiro_mondat_bovult 8 · f87_glossza_javitas 4. Általános szabály nincs.
 FELHASZNALO_ELFOGADOTT = {
     ('ALVIL-001_TUDOMANYOS.md', '- `adat/forditas_ubs.tsv` (projekt-adat)'): 'forditas_ubs_forras_elavult',
     ('ALVIL-001_TUDOMANYOS.md', '| `forditas_ubs.tsv` | `adat/forditas_ubs.tsv` | projekt-adat | elofordulasok |'): 'forditas_ubs_forras_elavult',
@@ -391,6 +391,19 @@ FELHASZNALO_ELFOGADOTT = {
     ('TEREMT-001_TORZSCIKK.md', '- **LXX:** — — — — szamozas_elteres'): 'szamozas_elteres_helyorzo_feloldodott',
     ('TEREMT-001_TUDOMANYOS.md', '- `adat/forditas_ubs.tsv` (projekt-adat)'): 'forditas_ubs_forras_elavult',
     ('TEREMT-001_TUDOMANYOS.md', '| `forditas_ubs.tsv` | `adat/forditas_ubs.tsv` | projekt-adat | elofordulasok |'): 'forditas_ubs_forras_elavult',
+    # felhasználó, 2026-10-18 (chat): a cellánkénti összevetés utáni 12 pár törölt sora (8 leíró mondat bővült; 4 glossza az F87.3 adatjavítása)
+    ('ALVIL-001_TUDOMANYOS.md', '*Ez a blokk a `[ID: ALVIL-001]` motívum 2 Strong-tokenjét fedi, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*'): 'leiro_mondat_bovult',
+    ('ANTROP-001_TUDOMANYOS.md', '*Ez a blokk a `[ID: ANTROP-001]` motívum 4 Strong-tokenjét fedi, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*'): 'leiro_mondat_bovult',
+    ('HAMART-001_TUDOMANYOS.md', '*Ez a blokk a `[ID: HAMART-001]` motívum 14 Strong-tokenjét fedi, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*'): 'leiro_mondat_bovult',
+    ('HODIT-001_TUDOMANYOS.md', '*Ez a blokk a `[ID: HODIT-001]` motívum 3 Strong-tokenjét fedi, nincs jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*'): 'leiro_mondat_bovult',
+    ('ISTENTISZT-001_TUDOMANYOS.md', '*Ez a blokk a `[ID: ISTENTISZT-001]` motívum 3 Strong-tokenjét fedi, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*'): 'leiro_mondat_bovult',
+    ('KIRALY-001_TORZSCIKK.md', '- **Kulcsszó:** papok — כֹּהֲנִ֖ים (ko.ha.Nim); מַמְלֶ֥כֶת (mam.Le.khet)'): 'f87_glossza_javitas',
+    ('KIRALY-001_TUDOMANYOS.md', '| [2Móz 19:6](#ige-2móz-19-6) | papok — כֹּהֲנִ֖ים (ko.ha.Nim); מַמְלֶ֥כֶת (mam.Le.khet) | egyéni → kollektív szintre emelve | Remez | H3548+H4467 | BDB H3548 1 — egyszerre papok és királyok a nemzetekhez való viszonyukban | — *(ÓSZ)* | magas · tartalom-alapú[^2] |'): 'f87_glossza_javitas',
+    ('KIRALY-001_TUDOMANYOS.md', '*Ez a blokk a `[ID: KIRALY-001]` motívum 7 Strong-tokenjét fedi, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*'): 'leiro_mondat_bovult',
+    ('MENNY-001_TUDOMANYOS.md', '*Ez a blokk a `[ID: MENNY-001]` motívum 3 Strong-tokenjét fedi, nincs jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*'): 'leiro_mondat_bovult',
+    ('TEREMT-001_TORZSCIKK.md', '- **Kulcsszó:** a mélységbe — תְּהֹמֹ֖ת (te.ho.Mot)'): 'f87_glossza_javitas',
+    ('TEREMT-001_TUDOMANYOS.md', '| [2Móz 15:5](#ige-2móz-15-5) | a mélységbe — תְּהֹמֹ֖ת (te.ho.Mot) | — | Remez | H8415 | — | — *(ÓSZ)* | magas · tartalom-alapú[^5] |'): 'f87_glossza_javitas',
+    ('TEREMT-001_TUDOMANYOS.md', '*Ez a blokk a `[ID: TEREMT-001]` motívum 2 Strong-tokenjét fedi, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*'): 'leiro_mondat_bovult',
 }
 # 2. ISMERT HIBA (N-F09g): a TSK-tábla KJV-számozású, a tsk_index() átváltás nélkül Károli-kulccsal keres; a Préd 9:10
 #    alatti 12 TSK-jelölt a KJV 9:10 = Károli 9:12 vershez tartozott, és emiatt veszett el. CSAK ez a 13 sor (12 TSK-jelölt a tudományos oldalon + a törzscikk-oldal összevont sora):

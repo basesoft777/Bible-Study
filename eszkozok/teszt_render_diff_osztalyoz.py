@@ -347,6 +347,24 @@ class CellankentiOsszevetes(unittest.TestCase):
         self.assertEqual(db['joshua_forrasvaltas'], 2)
         self.assertEqual(db['kutatoi_azonositas_feloldodott'], 3)
 
+    def test_leiro_valtozas_listan_kivul_ismeretlen(self):
+        # a listán szereplő (ALVIL-001) leíró-bővülés elfogadott; ugyanaz a változás egy listán kívüli motívumnál ismeretlen
+        regi = '*Ez a blokk a `[ID: %s]` motívum 2 Strong-tokenjét fedi, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*'
+        uj = ('*Ez a blokk a `[ID: %s]` motívum 2 Strong-tokenjét fedi, szerepenként a szerepmátrix (`szotar_szerepek.tsv`) '
+              'sorrendjében, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*')
+        e = osztaly(blokk('szocikkek', [regi % 'ALVIL-001']), blokk('szocikkek', [uj % 'ALVIL-001']), 'ALVIL-001_TUDOMANYOS.md')
+        self.assertEqual(e['felhasznalo_elfogadva']['torolt'], [regi % 'ALVIL-001'])
+        self.assertNotIn(R.ISMERETLEN, e)
+        e2 = osztaly(blokk('szocikkek', [regi % 'LISTAN-KIVUL-001']), blokk('szocikkek', [uj % 'LISTAN-KIVUL-001']),
+                     'LISTAN-KIVUL-001_TUDOMANYOS.md')
+        self.assertIn(R.ISMERETLEN, e2)
+
+    def test_12_par_csoportjai(self):
+        import collections
+        db = collections.Counter(R.FELHASZNALO_ELFOGADOTT.values())
+        self.assertEqual(db['leiro_mondat_bovult'], 8)
+        self.assertEqual(db['f87_glossza_javitas'], 4)
+
 
 if __name__ == '__main__':
     unittest.main()
