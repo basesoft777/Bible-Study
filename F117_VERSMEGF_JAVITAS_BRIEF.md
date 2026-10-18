@@ -6,10 +6,10 @@ tipus: feladat
 fazis: folyamat
 munka: adat
 modell: opus
-allapot: megallt
+allapot: fut
 ag: claude/f117-versmegf-javitas
 ad: a `Karoli_versmegfeleltetes.tsv` a #114 által mért táblahibák nélkül generálódik (13 fejezet pótolva, a KEZI-, Dán 3- és eltolt párok szöveg-összevetéssel javítva); a `tsk_kulcs.NINCS_PAR_KIVETEL` üres, a Jón 2:3 (ALVIL-001) és Jón 2:6 (TEREMT-001) TSK-sorai visszatérnek
-kovetkezo: Te: jóváhagyás az F117.4-hez (tsk_kulcs-kivezetés)
+kovetkezo: Folytatás: F117.4 — tsk_kulcs-kivezetés, utána F117.5–F117.6
 olvas: [konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/Karoli_1908.tsv, konkordancia/KJV_Strongs_teljes.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TSK_kereszthivatkozasok.tsv, naplok/KAROLI_KK1b_kulcstabla_tervezet.tsv, naplok/KAROLI_KK1b_kulcstabla_general.py, eszkozok/f91_versmegf_javit.py, eszkozok/lxx_os_import.py, eszkozok/tsk_versszam_felmeres.py, naplok/TSK_VERSSZAM_zaras.md, naplok/TSK_VERSSZAM_jelentes.md, naplok/F114_elveszett_sorok.tsv, naplok/ELLENOR_TSK_VERSSZAM.md, naplok/LXX_OS_LEFEDETTSEG_M0.md, adat/elofordulasok.tsv, adat/SEMA.md, adat/datasetek.tsv, Rendszerfejlesztesi_playbook.md]
 ir: [naplok/KAROLI_KK4_tabla_veglegesit.py, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/Karoli_versmegfeleltetes_javitas.tsv, eszkozok/versmegf_javitas.py, eszkozok/teszt_versmegf_javitas.py, eszkozok/versmegf_szoveg_osszevet.py, eszkozok/tsk_kulcs.py, eszkozok/teszt_tsk_kulcs.py, eszkozok/tsk_versszam_felmeres.py]
 fugg: []

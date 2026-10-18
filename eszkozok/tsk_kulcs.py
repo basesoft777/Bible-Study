@@ -16,7 +16,10 @@ Visszatérési konvenciók ("nincs pár" explicit, soha nem csendes azonosság):
                          egy KJV-vers több Károli-versre is mehet.
   * Egy Károli-vers több KJV-versből áll (összevont vers): csak az első
     KJV-vers a pár (a tábla szabálya, F91); a többi KJV-vers TSK-ja nem kerül
-    a Károli-versre.
+    a Károli-versre (N-F117b, l. az ISMERT KORLÁTOK-at).
+  * Két Károli-vers egy KJV-versen (DT-F117c (3) (a)): mindkét Károli-vers
+    ugyanazt a KJV-verset kapja; a kjv_to_karoli() mindkettőt adja (1Kir 22:43–44
+    = KJV 22:43; 1Sám 20:42–43 = KJV 20:42).
 
 ÚSZ — KIMONDOTT KORLÁT (DT-F114b (b), N-F114a): a megfeleltetés-tábla csak az
 ÓSZ-t fedi. Az ÚSZ-könyvekre az átváltó AZONOSSÁGOT ad (KJV-vers = Károli-vers).
@@ -26,24 +29,24 @@ A mért eltérés (naplok/F114_USZ_meres.md): 5 csak-KJV vers (1Kor 3:23, 2Kor
 (pl. Jel 12:18/13:1). A TSK ÚSZ-oldala nem ellenőrzött; a lezárás N-F114a.
 
 ÜRES igehely_kjv (DT-F114d (b), Felhasználó 2026-10-18): az `osztaly=MT` és `forras=szamlalas` sorokra
-(86 sor, LXX-hiány) a KJV-kulcs az `igehely_mt` (MT-tartalék), a NINCS_PAR_KIVETEL
-versek kivételével (scope=manual, l. fent: 1Kir 22:46–49, Ézs 3:1–26, Jón 2:2–10, 1Sám 24:1–22 — a tábla ott
-eltolt tartalmú párt adna, ezért a tábla értékétől függetlenül „nincs pár”). Minden más üres-KJV sor, és minden
-Károli-vers, amelynek nincs sora a táblában (`nincs_sor`; pl. Hós 13–14, Én 6, 2Móz 35–36), "nincs pár"
-marad: a számegyezés ott hibás párt adna (Károli Hós 14 = 10 vers, KJV = 9). A tábla pótlása: N-F54a.
+(LXX-hiány) a KJV-kulcs az `igehely_mt` (MT-tartalék). Minden más üres-KJV sor, és minden Károli-vers, amelynek
+nincs sora a táblában (`nincs_sor`), "nincs pár" marad: a számegyezés hibás párt adhatna.
+F117 (DT-F117a–e): a tábla A–D′ osztályú hibái (13 hiányzó fejezet, a KEZI-, Dán 3- és eltolt párok) a
+`konkordancia/Karoli_versmegfeleltetes_javitas.tsv` szerint javítva (versenkénti szöveg-összevetés,
+naplok/F117_itelet.tsv), ezért a NINCS_PAR_KIVETEL (F114, DT200) üres: a kivétel oka megszűnt.
 
-ISMERT KORLÁTOK (F114.10, naplok/ELLENOR_TSK_VERSSZAM.md):
-  * Körkörösség: az átváltó és a felmérő „helyes” halmaza ugyanabból a táblából jön, ezért a
-    0/0 mérés a tábla hibáit nem fogja meg. A nem körkörös mérés: tsk_versszam_felmeres.py F. rész.
-  * Az MT|szamlalas kivételével az üres `igehely_kjv` (75 sor) és a táblában nem szereplő
-    Károli-versek „nincs pár”-ok: a main-hez képest elveszett TSK-sorok, tételesen:
-    naplok/F114_elveszett_sorok.tsv.
-  * Ismert táblahibák (N-F41a, N-F54a bővítés): Jón 2:1 — a Károli 2:1 a KJV 1:17-nek felel meg, a tábla
-    KJV 2:1-et ad; az 1Kir 22:54, Jón 2:11, Ézs 3:27, 1Sám 20:43, 1Sám 24:23 MT|szamlalas sorok KJV-verse NEM
-    létezik, ezért 0 TSK-sort kapnak (ártalmatlan); a kár a szomszédos sorokon volt (ezek most a kivétellistán);
-    a tvtms-szomszédok (1Kir 22:43–45, 50–53) azonosságot adnak eltolt tartalomra; a KJV-pár létezik, de a tábla
-    nem rögzíti: Károli Préd 9:21–23 = KJV 10:1–3, Jób 39:34–38 = KJV 40:1–5, Dán 3:31–33 = KJV 4:1–3 (ezek a
-    KJV-versek „nincs pár”-ok); a Préd 2:26 és a Zsolt 13:6 Károli-összevonás.
+ISMERT KORLÁTOK (F114.10, naplok/ELLENOR_TSK_VERSSZAM.md; F117):
+  * Körkörösség: az átváltó és a tábla-alapú „helyes” halmaz ugyanabból a táblából jön. A nem körkörös
+    mérés referenciája a versenkénti szöveg-összevetés (naplok/F117_itelet.tsv): tsk_versszam_felmeres.py G. rész.
+  * Egy-a-többhöz (DT-F117c (3) (a)): a KJV 1Kir 22:43 két Károli-versre (22:43, 22:44), a KJV 1Sám 20:42 két
+    Károli-versre (20:42, 20:43) mutat; a TSK-sor mindkét Károli-versre rákerül (a KJV-vers mindkét felét fedi).
+  * Visszairányú veszteség (N-F117b): ahol a Károli-vers két KJV-verset von össze (Hós 1:11, Jób 16:22,
+    Péld 11:31, Jób 36:33, Ézs 64:1, és a régi Préd 2:26, Zsolt 13:6), a második KJV-vers (pl. KJV Hós 2:1,
+    Jób 17:1, Péld 12:1, Jób 37:1, Ézs 64:2) kjv_to_karoli()-ja üres: a TSK-sorai elvesznek.
+  * Versfél-korlát (N-F117c): a szöveg-összevetés a KJV-oldalt csak a Strong-címkézett szavakból olvasta; a
+    versfélen, mondathatáron vagy fejezetváltón múló 28 pár a teljes KJV-szövegen újraellenőrizendő.
+  * Tábla-lyuk az F117 halmazán kívül: a Préd 9:1–2 és a Jób 39:1–3 Károli-versnek nincs sora (nincs pár);
+    l. naplok/F117_javitas_jelentes.md 5. pont.
 
 A TSK-tartomány-igehelyek kibontása nem része ennek a modulnak (N-F114b).
 
@@ -66,16 +69,10 @@ _K2J = None      # Károli-vers -> KJV-vers ('' = nincs KJV-pár)
 _J2K = None      # KJV-vers -> [Károli-versek]
 _KONYVEK = None  # a megfeleltetés által fedett (ÓSZ) könyvek
 
-# Explicit "nincs pár" kivételek (scope=manual, F114, Felhasználó 2026-10-18): a KÁROLI-versek, amelyekre a
-# megfeleltetés-tábla (MT-tartalék vagy tvtms-azonosság) eltolt tartalmú KJV-párt adna; a tábla hibás, javítása N-F54a.
-#   1Kir 22:46–49 — a Károli-tartalom a KJV 22:45–48 (pl. Károli 22:46 = Josafát egyéb dolgai);
-#   Ézs 3:1–26    — Károli 3:1 = KJV 2:22 (a fejezethatár eltolt);
-#   Jón 2:2–10    — Károli 2:9 = KJV 2:8 (a Károli 2:1 = KJV 1:17, N-F41a);
-#   1Sám 24:1–22  — Károli 24:2 = KJV 24:1.
-# Ismert maradék (nem kivétel, döntés nélkül nem bővítjük): 1Kir 22:45 Károli-szövege a KJV 22:44-nek felel meg.
-NINCS_PAR_KIVETEL = frozenset(
-    ['1Kir 22:%d' % v for v in range(46, 50)] + ['Ézs 3:%d' % v for v in range(1, 27)]
-    + ['Jón 2:%d' % v for v in range(2, 11)] + ['1Sám 24:%d' % v for v in range(1, 23)])
+# Explicit "nincs pár" kivételek (scope=manual). Az F114 (DT200) kivételei (1Kir 22:46–49, Ézs 3:1–26,
+# Jón 2:2–10, 1Sám 24:1–22) az F117-ben megszűntek: a tábla ott a versenkénti szöveg-összevetés szerinti párt
+# adja (DT-F117a–e, konkordancia/Karoli_versmegfeleltetes_javitas.tsv). Új kivétel csak döntéssel kerülhet ide.
+NINCS_PAR_KIVETEL = frozenset()
 
 
 def _betolt():
