@@ -7,7 +7,9 @@ if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-P = os.path.join(ROOT, 'naplok', 'F117_szoveg_osszevetes.tsv')
+# A mintaszámok (naplok/F117_minta.md, DT-F117b) a 33abc45a állapotú F117_szoveg_osszevetes.tsv-ből jönnek; reprodukálás:
+#   git show 33abc45a:naplok/F117_szoveg_osszevetes.tsv > minta.tsv && python naplok/F117_minta_kuszob.py minta.tsv
+P = sys.argv[1] if len(sys.argv) > 1 else os.path.join(ROOT, 'naplok', 'F117_szoveg_osszevetes.tsv')
 
 with open(P, encoding='utf-8') as f:
     adat = [s.rstrip('\n').split('\t') for s in f if not s.startswith('#')]

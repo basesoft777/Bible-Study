@@ -4,6 +4,8 @@
 
 proveniencia: scope=Hós 14+Én 6+Dán 3+Jón 2 (64 Károli-vers) | forras=Karoli_1908.tsv + KJV_Strongs_teljes.tsv + TAHOT_kivonat.tsv (eszkozok/versmegf_szoveg_osszevet.py --minta; a Karoli_versmegfeleltetes.tsv olvasása nélkül) | kimenet=naplok/F117_szoveg_osszevetes.tsv | itelet=naplok/F117_itelet.tsv (scope=manual, modell=claude-opus-5-5) | szamlalas=naplok/F117_minta_kuszob.py | ts=2026-10-18
 
+**Forrás-állapot (F117.8 (5)):** a napló minden száma a `33abc45a` commit állapotú `naplok/F117_szoveg_osszevetes.tsv`-ből jön (a 64 soros minta). A fájlt a teljes futás (4.3) azóta 483 sorra bővítette, ezért a mai fájlból a számok nem jönnek ki újra. Reprodukálás: `git show 33abc45a:naplok/F117_szoveg_osszevetes.tsv > minta.tsv`, majd `python naplok/F117_minta_kuszob.py minta.tsv` (2026-10-18 újrafuttatva: ugyanazok a számok).
+
 ## 1. Eredmény
 
 | Fejezet | Károli-vers | Javasolt KJV | Fő horgony | Ítélet |
