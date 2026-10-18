@@ -5,8 +5,8 @@ kod: MIGRACIO
 tipus: feladat
 fazis: 1
 modell: opus
-allapot: megallt
-ag: claude/f11-m2
+allapot: fut
+ag: claude/f11-m3b
 munka: ertelmezo
 ad: az `indoklas` oszlop felvéve a `kapcsolatok.tsv`-be (önálló séma-tétel), az ISTENTISZT-001 egyetlen kézi forrásból renderel (szétválasztással, leképezési táblával, N0/D2–D6 diffmérce szerint), a két élő sablon (2_ v18, 4_ v10) visszaírási szabálya teljesen átírva; a 2. lépcső (a többi 6 motívum) külön jóváhagyással
 kovetkezo: Te: az M2 (generátor-képességek) kész a claude/f11-m2 ágon; az M3 (szétválasztás) a DT-F11a eldöntése és külön jóváhagyás után indul
@@ -76,7 +76,7 @@ Két további kötelezettség (felhasználói döntések, 2026-10-17):
 
 ## 5. Döntésnapló (helyőrzők; végleges számot a `szamkiosztas` Action ad)
 
-- **DT-F11a** — az `archivum` kategória könyvtárának neve és fejléc-alakja (DT84 (12)). *Eldöntendő az M3 előtt.*
+- **DT-F11a** — az `archivum` kategória könyvtárának neve és fejléc-alakja (DT84 (12)). *Eldöntve (felhasználó, 2026-10-18): (a) `archivum/<ID>/` lapos mappa, `naplok` almappa nélkül; a régi forrásréteg `<ID>_forrasreteg_regi.md` néven; első sor `<!-- ARCHÍV: eredeti út @ commit · F11 M3 · dátum · nem forrás, nem szerkesztendő -->`, alatta bájtra változatlan tartalom.*
 - **DT-F11b** — az N-F23a: a generált visszamutató link forrása (normalizált hivatkozás-mező az `elofordulasok.tsv`-ben, vagy más). *Eldöntendő a T3 előtt.*
 - **DT-F11c** — a 2. lépcső (6 motívum) ütemezése: ugyanebben a feladatban, vagy külön briefben. *Eldöntendő az M6 után.*
 - **DT202** — az M2 gépi alakjai (a `DONTESEK.md` DT202 tétele): (a) a forrás szakasz-felismerése, (b) az `ADAT-HIV` `[kulcs]`, (c) az `ADAT-ÉRTÉK` `[kifejezés]` alakja, (d) a `JELÖLT` gerinc-elemének helye és a szakasz-mutató. *Eldöntve (felhasználó, 2026-10-18): mind a négy alpontban (a), az (a)-hoz P-lépés-figyelmeztetéssel; átvezetve: sablon 9 (v0.2) 4. és 6. pont, SEMA 3.10.2 és 3.10.5, `eszkozok/general.py` (F11.M2.7–M2.9).*
