@@ -78,7 +78,7 @@ A két száraz futás bájtra azonos (`cmp`), és az éles tábla azonos velük.
 
 ## 6. Licenc és forrás (E7; a zárójelentés ebből veszi át)
 
-Szó szerint az `adat/licencek.tsv`-ből (scope=adat/licencek.tsv | forras=manual leltár, F24/F33 | ts=2026-10-18 olvasva). Nem emlékezetből; a `adat/datasetek.tsv` állapota mindegyiknél `elerheto`.
+Szó szerint az `adat/licencek.tsv`-ből (scope=adat/licencek.tsv | forras=manual leltár, F24/F33 | ts=2026-10-18 olvasva). Nem emlékezetből. Az `adat/datasetek.tsv` szerint `elerheto` a Karoli_1908, a TAHOT, a TSK, a Macula_heber és az LXX_OS; a `KJV_Strongs_teljes`-nek nincs saját sora (csak a `KJV_ASV_Strongs` megjegyzésében szerepel), a `Karoli_versmegfeleltetes` nincs a táblában (javítva az újraellenőrzés 9. pontja szerint).
 
 | Dataset | Licenc (`adat/licencek.tsv`) | Szerepe az F117-ben |
 |---|---|---|

@@ -85,3 +85,29 @@ A két, az ellenőr számára nem ellenőrizhető pontot az orkesztrátor lefutt
 
 - **E1, bájtazonosság:** `KK4_KIMENET=<scratchpad>/kk4_{1,2}.tsv python naplok/KAROLI_KK4_tabla_veglegesit.py` kétszer, a repón kívülre: mindkét kimenet sha256-ja `6890db3c…`, és egyezik a repóbeli `konkordancia/Karoli_versmegfeleltetes.tsv`-vel. `scope=kk4_ketszeri_futas | forras=naplok/KAROLI_KK4_tabla_veglegesit.py | n=2 | ts=2026-10-18`
 - **Tesztek:** `python eszkozok/teszt_tsk_kulcs.py` → 15/15 OK; `python eszkozok/teszt_versmegf_javitas.py` → 16/16 OK. `scope=unittest | forras=eszkozok/teszt_tsk_kulcs.py, eszkozok/teszt_versmegf_javitas.py | n=31 | ts=2026-10-18`
+
+## Újraellenőrzés (2153f4ff..942006ae)
+
+*A `fuggetlen-ellenor` subagent második jelentése (modell: `claude-opus-5-5`, kért: `opus`), az orkesztrátor írta be; a fájlírást a futtatási környezet nem engedte az ellenőrnek. Ítélet: **eltérésekkel** (2 kis súlyú); a merge előtti hiba (E27) megszűnt.*
+
+| pont | eredmény | indok (az ellenőr saját lekérdezése) |
+|---|---|---|
+| 1 E27 | megszűnt | `futtat.py --diff-alap 89b30c2e --diff-fej HEAD`: E27 0 HIBA (40 JELENTES, a base-en is), minden szakasz 0 HIBA |
+| 2 tábla-lyuk | megszűnt | N-F117d megvan (`NYITOTT_FELADATOK.md:138`); a tábla a javítókörben nem változott; a Préd 9:1–2 / Jób 39:1–3 sor nélkül, 38 TSK-sor (`scope=range:Jób 39:1 \| forras=TSK_kereszthivatkozasok.tsv+Karoli_versmegfeleltetes.tsv \| n=0 \| ts=2026-10-18T18:07Z`) |
+| 3 bemenet-generátor | megszűnt | `git show 89b30c2e:…` olvasás, `--felulir`-őr |
+| 4 licenc | megszűnt | a 7 licenc-cella egyezik az `adat/licencek.tsv`-vel |
+| 5 minta-forrás | megszűnt | a napló kimondja a `33abc45a` forrást; a fájl ott jött létre |
+| 6 skip | **fennáll, részben (kis súlyú)** | a `KeziMtOr` már csak a várt `FileNotFoundError`-t fogadja; a skip feltételes (csak `VersmegfKeziMt`), de a közös `setUpClass` miatt mind a 34 `Integracio`-teszt kimarad (35 teszt nem fut). A „technikailag nem szűkíthető” túlzó: táblamásolaton (a `Negativ` osztály `modosit()`-mintájára, a 174 sor `igehely_mt`-je kiürítve) szűkíthető volna, módosított adaton. A döntés („a skip a két tesztre szűkítve”) szó szerint nem teljesül — felhasználói jóváhagyás kell |
+| 7 DT-F117a–f | megszűnt | mind `✅ alkalmazva`, 8 cella, „a szülő sessionön át érkezett” |
+| 8 halmaz-őr | megszűnt | a `halmaz_or()` a kimenetet függetlenül újraolvassa, hat ága elbukhat; a negatív tesztek valódi halmazon kívüli változást visznek be. Maradék: a hiányzó-javítósor- és az oszlopfej-ágra nincs negatív teszt |
+| 9 (új) datasetek-állítás | **új, kis súlyú** | a `F117_javitas_jelentes.md:81` szerint mind a 7 dataset `elerheto`; a `KJV_Strongs_teljes`-nek és a `Karoli_versmegfeleltetes`-nek nincs saját sora |
+| tiltott fájlok | OK | a javítókör nem érintette a #11 fájljait, az `adat/`-ot, a `FELADATOK.md`-t, a `sqlite_epit.py`-t |
+
+### Az orkesztrátor kiegészítése az újraellenőrzéshez (942006ae HEAD)
+
+- **Tesztek** (az ellenőr számára nem futtathatók): `teszt_tsk_kulcs.py` OK, `teszt_versmegf_javitas.py` OK (19), `teszt_sqlite_epit.py` FAILED (failures=1, skipped=2) — az egyetlen FAIL a main-en is fennálló `Pozitiv.test_mai_adat_zold`, ERROR nincs. `scope=unittest | forras=eszkozok/teszt_*.py | ts=2026-10-18`
+- **E1:** a KK4 a refaktorált `versmegf_javitas`-sal kétszer, a repón kívülre futtatva `6890db3c…` — bájtra azonos a commitolt táblával. `scope=kk4_ketszeri_futas | n=2 | ts=2026-10-18`
+- **3. pont:** `F117_javitas_bemenet_general.py --kimenet <scratchpad>/jav.tsv` → sha256 `d7534fa6…`, azonos a commitolt javító-TSV-vel.
+- **5. pont:** `git show 33abc45a:naplok/F117_szoveg_osszevetes.tsv` + `F117_minta_kuszob.py` → 20 / 13 / 8 a 64-ből, TAHOT-Jaccard min 0,57: egyezik a DT-F117b mintaszámaival.
+- **9. pont:** javítva a `naplok/F117_javitas_jelentes.md` licencszakaszában (F117.9).
+- **6. pont:** nyitott; a zárójelentés felhasználói jóváhagyásra váró eltérésként rögzíti.
