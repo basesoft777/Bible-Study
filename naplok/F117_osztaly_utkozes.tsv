@@ -1,0 +1,349 @@
+# F117.3: osztály-ütközés (DT-F117b ↔ a mai tábla konvenciója) a 346 javított soron
+# proveniencia: scope=A–D′ (346) | forras=naplok/F117_mt_levezetes.tsv + konkordancia/Karoli_versmegfeleltetes.tsv (konvenció) | eszkoz=naplok/F117_osztaly_utkozes.py | n=346 | ts=2026-10-18
+igehely_karoli	kjv	mt	osztaly_dt_f117b	osztaly_konvencio	kategoria	mt_eq_kjv
+1Kir 22:43	22:43	22:43	KJV	KJV (mt üres)	K=KJV=MT	igen
+1Kir 22:44	22:43	22:44	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+1Kir 22:45	22:44	22:45	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+1Kir 22:46	22:45	22:46	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+1Kir 22:47	22:46	22:47	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+1Kir 22:48	22:47	22:48	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+1Kir 22:49	22:48	22:49	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+1Kir 22:50	22:49	22:50	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+1Kir 22:51	22:50	22:51	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+1Kir 22:52	22:51	22:52	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+1Kir 22:53	22:52	22:53	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+1Kir 22:54	22:53	22:54	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+1Sám 20:43	20:42	21:1	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	nem
+1Sám 24:1	23:29	24:1	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+1Sám 24:2	24:1	24:2	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+1Sám 24:3	24:2	24:3	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+1Sám 24:4	24:3	24:4	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+1Sám 24:5	24:4	24:5	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+1Sám 24:6	24:5	24:6	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+1Sám 24:7	24:6	24:7	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+1Sám 24:8	24:7	24:8	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+1Sám 24:9	24:8	24:9	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+1Sám 24:10	24:9	24:10	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+1Sám 24:11	24:10	24:11	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+1Sám 24:12	24:11	24:12	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+1Sám 24:13	24:12	24:13	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+1Sám 24:14	24:13	24:14	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+1Sám 24:15	24:14	24:15	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+1Sám 24:16	24:15	24:16	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+1Sám 24:17	24:16	24:17	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+1Sám 24:18	24:17	24:18	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+1Sám 24:19	24:18	24:19	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+1Sám 24:20	24:19	24:20	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+1Sám 24:21	24:20	24:21	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+1Sám 24:22	24:21	24:22	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+1Sám 24:23	24:22	24:23	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+2Móz 35:1	35:1	35:1	KJV	KJV (mt üres)	K=KJV=MT	igen
+2Móz 35:2	35:2	35:2	KJV	KJV (mt üres)	K=KJV=MT	igen
+2Móz 35:3	35:3	35:3	KJV	KJV (mt üres)	K=KJV=MT	igen
+2Móz 35:4	35:4	35:4	KJV	KJV (mt üres)	K=KJV=MT	igen
+2Móz 35:5	35:5	35:5	KJV	KJV (mt üres)	K=KJV=MT	igen
+2Móz 35:6	35:6	35:6	KJV	KJV (mt üres)	K=KJV=MT	igen
+2Móz 35:7	35:7	35:7	KJV	KJV (mt üres)	K=KJV=MT	igen
+2Móz 35:8	35:8	35:8	KJV	KJV (mt üres)	K=KJV=MT	igen
+2Móz 35:9	35:9	35:9	KJV	KJV (mt üres)	K=KJV=MT	igen
+2Móz 35:10	35:10	35:10	KJV	KJV (mt üres)	K=KJV=MT	igen
+2Móz 35:11	35:11	35:11	KJV	KJV (mt üres)	K=KJV=MT	igen
+2Móz 35:12	35:12	35:12	KJV	KJV (mt üres)	K=KJV=MT	igen
+2Móz 35:13	35:13	35:13	KJV	KJV (mt üres)	K=KJV=MT	igen
+2Móz 35:14	35:14	35:14	KJV	KJV (mt üres)	K=KJV=MT	igen
+2Móz 35:15	35:15	35:15	KJV	KJV (mt üres)	K=KJV=MT	igen
+2Móz 35:16	35:16	35:16	KJV	KJV (mt üres)	K=KJV=MT	igen
+2Móz 35:17	35:17	35:17	KJV	KJV (mt üres)	K=KJV=MT	igen
+2Móz 35:18	35:18	35:18	KJV	KJV (mt üres)	K=KJV=MT	igen
+2Móz 35:19	35:19	35:19	KJV	KJV (mt üres)	K=KJV=MT	igen
+2Móz 35:20	35:20	35:20	KJV	KJV (mt üres)	K=KJV=MT	igen
+2Móz 35:21	35:21	35:21	KJV	KJV (mt üres)	K=KJV=MT	igen
+2Móz 35:22	35:22	35:22	KJV	KJV (mt üres)	K=KJV=MT	igen
+2Móz 35:23	35:23	35:23	KJV	KJV (mt üres)	K=KJV=MT	igen
+2Móz 35:24	35:24	35:24	KJV	KJV (mt üres)	K=KJV=MT	igen
+2Móz 35:25	35:25	35:25	KJV	KJV (mt üres)	K=KJV=MT	igen
+2Móz 35:26	35:26	35:26	KJV	KJV (mt üres)	K=KJV=MT	igen
+2Móz 35:27	35:27	35:27	KJV	KJV (mt üres)	K=KJV=MT	igen
+2Móz 35:28	35:28	35:28	KJV	KJV (mt üres)	K=KJV=MT	igen
+2Móz 35:29	35:29	35:29	KJV	KJV (mt üres)	K=KJV=MT	igen
+2Móz 35:30	35:30	35:30	KJV	KJV (mt üres)	K=KJV=MT	igen
+2Móz 35:31	35:31	35:31	KJV	KJV (mt üres)	K=KJV=MT	igen
+2Móz 35:32	35:32	35:32	KJV	KJV (mt üres)	K=KJV=MT	igen
+2Móz 35:33	35:33	35:33	KJV	KJV (mt üres)	K=KJV=MT	igen
+2Móz 35:34	35:34	35:34	KJV	KJV (mt üres)	K=KJV=MT	igen
+2Móz 35:35	35:35	35:35	KJV	KJV (mt üres)	K=KJV=MT	igen
+2Móz 35:36	36:1	36:1	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+2Móz 36:1	36:2	36:2	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+2Móz 36:2	36:3	36:3	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+2Móz 36:3	36:4	36:4	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+2Móz 36:4	36:5	36:5	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+2Móz 36:5	36:6	36:6	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+2Móz 36:6	36:7	36:7	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+2Móz 36:7	36:8	36:8	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+2Móz 36:8	36:9	36:9	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+2Móz 36:9	36:10	36:10	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+2Móz 36:10	36:11	36:11	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+2Móz 36:11	36:12	36:12	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+2Móz 36:12	36:13	36:13	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+2Móz 36:13	36:14	36:14	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+2Móz 36:14	36:15	36:15	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+2Móz 36:15	36:16	36:16	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+2Móz 36:16	36:17	36:17	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+2Móz 36:17	36:18	36:18	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+2Móz 36:18	36:19	36:19	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+2Móz 36:19	36:20	36:20	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+2Móz 36:20	36:21	36:21	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+2Móz 36:21	36:22	36:22	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+2Móz 36:22	36:23	36:23	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+2Móz 36:23	36:24	36:24	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+2Móz 36:24	36:25	36:25	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+2Móz 36:25	36:26	36:26	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+2Móz 36:26	36:27	36:27	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+2Móz 36:27	36:28	36:28	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+2Móz 36:28	36:29	36:29	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+2Móz 36:29	36:30	36:30	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+2Móz 36:30	36:31	36:31	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+2Móz 36:31	36:32	36:32	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+2Móz 36:32	36:33	36:33	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+2Móz 36:33	36:34	36:34	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+2Móz 36:34	36:35	36:35	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+2Móz 36:35	36:36	36:36	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+2Móz 36:36	36:37	36:37	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+2Móz 36:37	36:38	36:38	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Dán 3:1	3:1	3:1	KJV	KJV (mt üres)	K=KJV=MT	igen
+Dán 3:2	3:2	3:2	KJV	KJV (mt üres)	K=KJV=MT	igen
+Dán 3:3	3:3	3:3	KJV	KJV (mt üres)	K=KJV=MT	igen
+Dán 3:4	3:4	3:4	KJV	KJV (mt üres)	K=KJV=MT	igen
+Dán 3:5	3:5	3:5	KJV	KJV (mt üres)	K=KJV=MT	igen
+Dán 3:6	3:6	3:6	KJV	KJV (mt üres)	K=KJV=MT	igen
+Dán 3:7	3:7	3:7	KJV	KJV (mt üres)	K=KJV=MT	igen
+Dán 3:8	3:8	3:8	KJV	KJV (mt üres)	K=KJV=MT	igen
+Dán 3:9	3:9	3:9	KJV	KJV (mt üres)	K=KJV=MT	igen
+Dán 3:10	3:10	3:10	KJV	KJV (mt üres)	K=KJV=MT	igen
+Dán 3:11	3:11	3:11	KJV	KJV (mt üres)	K=KJV=MT	igen
+Dán 3:12	3:12	3:12	KJV	KJV (mt üres)	K=KJV=MT	igen
+Dán 3:13	3:13	3:13	KJV	KJV (mt üres)	K=KJV=MT	igen
+Dán 3:14	3:14	3:14	KJV	KJV (mt üres)	K=KJV=MT	igen
+Dán 3:15	3:15	3:15	KJV	KJV (mt üres)	K=KJV=MT	igen
+Dán 3:16	3:16	3:16	KJV	KJV (mt üres)	K=KJV=MT	igen
+Dán 3:17	3:17	3:17	KJV	KJV (mt üres)	K=KJV=MT	igen
+Dán 3:18	3:18	3:18	KJV	KJV (mt üres)	K=KJV=MT	igen
+Dán 3:19	3:19	3:19	KJV	KJV (mt üres)	K=KJV=MT	igen
+Dán 3:20	3:20	3:20	KJV	KJV (mt üres)	K=KJV=MT	igen
+Dán 3:21	3:21	3:21	KJV	KJV (mt üres)	K=KJV=MT	igen
+Dán 3:22	3:22	3:22	KJV	KJV (mt üres)	K=KJV=MT	igen
+Dán 3:23	3:23	3:23	KJV	KJV (mt üres)	K=KJV=MT	igen
+Dán 3:24	3:24	3:24	KJV	KJV (mt üres)	K=KJV=MT	igen
+Dán 3:25	3:25	3:25	KJV	KJV (mt üres)	K=KJV=MT	igen
+Dán 3:26	3:26	3:26	KJV	KJV (mt üres)	K=KJV=MT	igen
+Dán 3:27	3:27	3:27	KJV	KJV (mt üres)	K=KJV=MT	igen
+Dán 3:28	3:28	3:28	KJV	KJV (mt üres)	K=KJV=MT	igen
+Dán 3:29	3:29	3:29	KJV	KJV (mt üres)	K=KJV=MT	igen
+Dán 3:30	3:30	3:30	KJV	KJV (mt üres)	K=KJV=MT	igen
+Dán 3:31	4:1	3:31	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+Dán 3:32	4:2	3:32	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+Dán 3:33	4:3	3:33	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+Hós 2:1	2:2	2:4	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	nem
+Hós 2:2	2:3	2:5	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	nem
+Hós 2:3	2:4	2:6	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	nem
+Hós 2:4	2:5	2:7	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	nem
+Hós 2:5	2:6	2:8	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	nem
+Hós 2:6	2:7	2:9	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	nem
+Hós 2:7	2:8	2:10	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	nem
+Hós 2:8	2:9	2:11	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	nem
+Hós 2:9	2:10	2:12	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	nem
+Hós 2:10	2:11	2:13	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	nem
+Hós 2:11	2:12	2:14	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	nem
+Hós 2:12	2:13	2:15	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	nem
+Hós 2:13	2:14	2:16	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	nem
+Hós 2:14	2:15	2:17	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	nem
+Hós 2:15	2:16	2:18	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	nem
+Hós 2:16	2:17	2:19	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	nem
+Hós 2:17	2:18	2:20	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	nem
+Hós 2:18	2:19	2:21	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	nem
+Hós 2:19	2:20	2:22	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	nem
+Hós 2:20	2:21	2:23	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	nem
+Hós 2:21	2:22	2:24	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	nem
+Hós 2:22	2:23	2:25	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	nem
+Hós 13:1	13:1	13:1	KJV	KJV (mt üres)	K=KJV=MT	igen
+Hós 13:2	13:2	13:2	KJV	KJV (mt üres)	K=KJV=MT	igen
+Hós 13:3	13:3	13:3	KJV	KJV (mt üres)	K=KJV=MT	igen
+Hós 13:4	13:4	13:4	KJV	KJV (mt üres)	K=KJV=MT	igen
+Hós 13:5	13:5	13:5	KJV	KJV (mt üres)	K=KJV=MT	igen
+Hós 13:6	13:6	13:6	KJV	KJV (mt üres)	K=KJV=MT	igen
+Hós 13:7	13:7	13:7	KJV	KJV (mt üres)	K=KJV=MT	igen
+Hós 13:8	13:8	13:8	KJV	KJV (mt üres)	K=KJV=MT	igen
+Hós 13:9	13:9	13:9	KJV	KJV (mt üres)	K=KJV=MT	igen
+Hós 13:10	13:10	13:10	KJV	KJV (mt üres)	K=KJV=MT	igen
+Hós 13:11	13:11	13:11	KJV	KJV (mt üres)	K=KJV=MT	igen
+Hós 13:12	13:12	13:12	KJV	KJV (mt üres)	K=KJV=MT	igen
+Hós 13:13	13:13	13:13	KJV	KJV (mt üres)	K=KJV=MT	igen
+Hós 13:14	13:14	13:14	KJV	KJV (mt üres)	K=KJV=MT	igen
+Hós 13:15	13:15	13:15	KJV	KJV (mt üres)	K=KJV=MT	igen
+Hós 14:1	13:16	14:1	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+Hós 14:2	14:1	14:2	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+Hós 14:3	14:2	14:3	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+Hós 14:4	14:3	14:4	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+Hós 14:5	14:4	14:5	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+Hós 14:6	14:5	14:6	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+Hós 14:7	14:6	14:7	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+Hós 14:8	14:7	14:8	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+Hós 14:9	14:8	14:9	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+Hós 14:10	14:9	14:10	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+Jób 17:1	17:2	17:2	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 17:2	17:3	17:3	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 17:3	17:4	17:4	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 17:4	17:5	17:5	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 17:5	17:6	17:6	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 17:6	17:7	17:7	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 17:7	17:8	17:8	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 17:8	17:9	17:9	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 17:9	17:10	17:10	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 17:10	17:11	17:11	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 17:11	17:12	17:12	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 17:12	17:13	17:13	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 17:13	17:14	17:14	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 17:14	17:15	17:15	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 17:15	17:16	17:16	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 37:1	37:2	37:2	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 37:2	37:3	37:3	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 37:3	37:4	37:4	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 37:4	37:5	37:5	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 37:5	37:6	37:6	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 37:6	37:7	37:7	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 37:7	37:8	37:8	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 37:8	37:9	37:9	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 37:9	37:10	37:10	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 37:10	37:11	37:11	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 37:11	37:12	37:12	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 37:12	37:13	37:13	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 37:13	37:14	37:14	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 37:14	37:15	37:15	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 37:15	37:16	37:16	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 37:16	37:17	37:17	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 37:17	37:18	37:18	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 37:18	37:19	37:19	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 37:19	37:20	37:20	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 37:20	37:21	37:21	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 37:21	37:22	37:22	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 37:22	37:23	37:23	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 37:23	37:24	37:24	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 39:34	40:1	40:1	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 39:35	40:2	40:2	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 39:36	40:3	40:3	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 39:37	40:4	40:4	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jób 39:38	40:5	40:5	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Jón 2:1	1:17	2:1	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+Jón 2:2	2:1	2:2	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+Jón 2:3	2:2	2:3	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+Jón 2:4	2:3	2:4	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+Jón 2:5	2:4	2:5	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+Jón 2:6	2:5	2:6	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+Jón 2:7	2:6	2:7	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+Jón 2:8	2:7	2:8	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+Jón 2:9	2:8	2:9	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+Jón 2:10	2:9	2:10	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+Jón 2:11	2:10	2:11	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+Préd 9:21	10:1	10:1	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Préd 9:22	10:2	10:2	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Préd 9:23	10:3	10:3	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Péld 12:1	12:2	12:2	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Péld 12:2	12:3	12:3	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Péld 12:3	12:4	12:4	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Péld 12:4	12:5	12:5	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Péld 12:5	12:6	12:6	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Péld 12:6	12:7	12:7	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Péld 12:7	12:8	12:8	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Péld 12:8	12:9	12:9	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Péld 12:9	12:10	12:10	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Péld 12:10	12:11	12:11	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Péld 12:11	12:12	12:12	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Péld 12:12	12:13	12:13	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Péld 12:13	12:14	12:14	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Péld 12:14	12:15	12:15	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Péld 12:15	12:16	12:16	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Péld 12:16	12:17	12:17	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Péld 12:17	12:18	12:18	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Péld 12:18	12:19	12:19	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Péld 12:19	12:20	12:20	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Péld 12:20	12:21	12:21	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Péld 12:21	12:22	12:22	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Péld 12:22	12:23	12:23	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Péld 12:23	12:24	12:24	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Péld 12:24	12:25	12:25	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Péld 12:25	12:26	12:26	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Péld 12:26	12:27	12:27	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Péld 12:27	12:28	12:28	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Én 5:1	5:1	5:1	KJV	KJV (mt üres)	K=KJV=MT	igen
+Én 5:2	5:2	5:2	KJV	KJV (mt üres)	K=KJV=MT	igen
+Én 5:3	5:3	5:3	KJV	KJV (mt üres)	K=KJV=MT	igen
+Én 5:4	5:4	5:4	KJV	KJV (mt üres)	K=KJV=MT	igen
+Én 5:5	5:5	5:5	KJV	KJV (mt üres)	K=KJV=MT	igen
+Én 5:6	5:6	5:6	KJV	KJV (mt üres)	K=KJV=MT	igen
+Én 5:7	5:7	5:7	KJV	KJV (mt üres)	K=KJV=MT	igen
+Én 5:8	5:8	5:8	KJV	KJV (mt üres)	K=KJV=MT	igen
+Én 5:9	5:9	5:9	KJV	KJV (mt üres)	K=KJV=MT	igen
+Én 5:10	5:10	5:10	KJV	KJV (mt üres)	K=KJV=MT	igen
+Én 5:11	5:11	5:11	KJV	KJV (mt üres)	K=KJV=MT	igen
+Én 5:12	5:12	5:12	KJV	KJV (mt üres)	K=KJV=MT	igen
+Én 5:13	5:13	5:13	KJV	KJV (mt üres)	K=KJV=MT	igen
+Én 5:14	5:14	5:14	KJV	KJV (mt üres)	K=KJV=MT	igen
+Én 5:15	5:15	5:15	KJV	KJV (mt üres)	K=KJV=MT	igen
+Én 5:16	5:16	5:16	KJV	KJV (mt üres)	K=KJV=MT	igen
+Én 5:17	6:1	6:1	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Én 5:18	6:2	6:2	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Én 5:19	6:3	6:3	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Én 6:1	6:4	6:4	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Én 6:2	6:5	6:5	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Én 6:3	6:6	6:6	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Én 6:4	6:7	6:7	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Én 6:5	6:8	6:8	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Én 6:6	6:9	6:9	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Én 6:7	6:10	6:10	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Én 6:8	6:11	6:11	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Én 6:9	6:12	6:12	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Én 6:10	6:13	7:1	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	nem
+Ézs 3:1	2:22	2:22	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Ézs 3:2	3:1	3:1	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Ézs 3:3	3:2	3:2	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Ézs 3:4	3:3	3:3	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Ézs 3:5	3:4	3:4	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Ézs 3:6	3:5	3:5	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Ézs 3:7	3:6	3:6	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Ézs 3:8	3:7	3:7	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Ézs 3:9	3:8	3:8	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Ézs 3:10	3:9	3:9	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Ézs 3:11	3:10	3:10	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Ézs 3:12	3:11	3:11	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Ézs 3:13	3:12	3:12	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Ézs 3:14	3:13	3:13	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Ézs 3:15	3:14	3:14	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Ézs 3:16	3:15	3:15	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Ézs 3:17	3:16	3:16	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Ézs 3:18	3:17	3:17	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Ézs 3:19	3:18	3:18	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Ézs 3:20	3:19	3:19	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Ézs 3:21	3:20	3:20	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Ézs 3:22	3:21	3:21	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Ézs 3:23	3:22	3:22	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Ézs 3:24	3:23	3:23	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Ézs 3:25	3:24	3:24	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Ézs 3:26	3:25	3:25	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Ézs 3:27	3:26	3:26	KEZI	nincs mintája (KEZI: mt üres)	K≠KJV,K≠MT	igen
+Ézs 4:1	4:1	4:1	KJV	KJV (mt üres)	K=KJV=MT	igen
+Ézs 4:2	4:2	4:2	KJV	KJV (mt üres)	K=KJV=MT	igen
+Ézs 4:3	4:3	4:3	KJV	KJV (mt üres)	K=KJV=MT	igen
+Ézs 4:4	4:4	4:4	KJV	KJV (mt üres)	K=KJV=MT	igen
+Ézs 4:5	4:5	4:5	KJV	KJV (mt üres)	K=KJV=MT	igen
+Ézs 4:6	4:6	4:6	KJV	KJV (mt üres)	K=KJV=MT	igen
+Ézs 64:1	64:1	64:1	KJV	KJV (mt üres)	K=KJV=MT	igen
+Ézs 64:2	64:3	64:2	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+Ézs 64:3	64:4	64:3	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+Ézs 64:4	64:5	64:4	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+Ézs 64:5	64:6	64:5	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+Ézs 64:6	64:7	64:6	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+Ézs 64:7	64:8	64:7	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+Ézs 64:8	64:9	64:8	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+Ézs 64:9	64:10	64:9	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+Ézs 64:10	64:11	64:10	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
+Ézs 64:11	64:12	64:11	KEZI	MT (mt = Károli-szám)	K=MT≠KJV	nem
