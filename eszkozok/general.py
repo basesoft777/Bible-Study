@@ -1340,30 +1340,50 @@ def forras_nezetek_ir(args, motivum_id, melysegek):
 _JELOLT_SOR = re.compile(r'^<!-- JELÖLT: (.*) -->$')
 _ADAT_HIV_SOR = re.compile(r'^<!-- ADAT-HIV: (.*) -->$')
 _ADAT_ERTEK = re.compile(r'<!-- ADAT-ÉRTÉK: (.*?) -->')
-_ERTEK_ELOTTE = re.compile(r'(\d+)$')
-_KIFEJEZES = re.compile(r'^(count|count_distinct)\((.*)\)$')
+# Az ADAT-ÉRTÉK erteke: a jelolo elotti, nemnegativ egesz szam. Elotte nem
+# allhat szamjegy, betu, `_`, `.`, `,` vagy `-` (kulonben pl. `2.5`, `-3`,
+# `P3` vegerol a szamjegysor "rendben" lenne): sablon 9 6. pont.
+_ERTEK_ELOTTE = re.compile(r'(?<![\w.,\-])(\d+)$')
+_ERTEK_VEGE_SZAM = re.compile(r'\d+$')
+# Zart keszlet; az argumentumban zarojel nem allhat (a `count(...)+count(...)`
+# igy ismeretlen kifejezes, nem csonkolt szuro).
+_KIFEJEZES = re.compile(r'^(count|count_distinct)\(([^()]*)\)$')
 
-# A tablak SEMA-kulcsa (adat/SEMA.md 2. szakasz, a "Kulcs:" sorok; a
-# motivumok.tsv kulcsa az `id`). Kulcs nelkuli tabla (pl. auditok.tsv, SEMA
-# 2.9) nincs a listan: ADAT-HIV nem mutathat ra. Ha a SEMA kulcsa valtozik,
-# ez is valtozik.
-SEMA_KULCSOK = {
-    'motivumok.tsv': ('id',),
-    'elofordulasok.tsv': ('id', 'igehely'),
-    'kapcsolatok.tsv': ('forras_igehely', 'cel_igehely', 'id'),
-    'jeloltek.tsv': ('id', 'igehely'),
-    'lexikon_hivatkozasok.tsv': ('szotar', 'strong', 'entry_id', 'jelentes_szam'),
-    'datasetek.tsv': ('study_tipus', 'dataset'),
-    'grammatikai_strongok.tsv': ('strong',),
-    'kulcsszavak.tsv': ('tanulmany', 'igehely', 'strong'),
-    'lxx_dontesek.tsv': ('id',),
-    'res_forras.tsv': ('id', 'res'),
-    'szotar_szerepek.tsv': ('nyelv', 'sorrend'),
-    'forditasok.tsv': ('szotar', 'strong', 'entry_id', 'jelentes_szam', 'mezo'),
-    'terminologia.tsv': ('angol', 'verzio'),
-    'licencek.tsv': ('dataset',),
-    'bdb_karoli.tsv': ('strong', 'tipus', 'karoli_alak'),
-}
+# A tablak SEMA-kulcsa: az adat/SEMA.md 2. szakaszanak "Kulcs:" soraibol
+# levezetve (sema_kulcsok()), nem kezzel tartott listabol. A `### 2.x` cimsor
+# elso backtickes `*.tsv` neve a tabla; a cimsor alatti elso `Kulcs:` sor a
+# `mezo` + `mezo` lista. Kulcs nelkuli tabla (pl. auditok.tsv: "Kulcs
+# **nincs**", SEMA 2.9) nem kap kulcsot: ADAT-HIV nem mutathat ra.
+# KULCS_KIEGESZITES: a SEMA tablaja, amelynek kulcsa nem `Kulcs:` sorban,
+# hanem a 3/1 szabalyban all (motivumok.id).
+SEMA_MD = os.path.join(ADAT, 'SEMA.md')
+KULCS_KIEGESZITES = {'motivumok.tsv': ('id',)}
+_SEMA_TABLA_CIM = re.compile(r'^### 2\.\d+ `([a-z_]+\.tsv)`')
+_SEMA_KULCS_SOR = re.compile(r'^Kulcs: ((?:`[a-z_]+` \+ )*`[a-z_]+`)')
+_SEMA_KULCSOK_CACHE = {}
+
+
+def sema_kulcsok(sema_ut=None):
+    """{tabla.tsv: (kulcsmezok)} az adat/SEMA.md 2. szakaszabol (+ KULCS_KIEGESZITES)."""
+    ut = sema_ut or SEMA_MD
+    if ut in _SEMA_KULCSOK_CACHE:
+        return _SEMA_KULCSOK_CACHE[ut]
+    eredmeny = dict(KULCS_KIEGESZITES)
+    tabla = None
+    with io.open(ut, encoding='utf-8') as f:
+        for sor in f.read().replace('\r\n', '\n').split('\n'):
+            if sor.startswith('#'):
+                m = _SEMA_TABLA_CIM.match(sor)
+                tabla = m.group(1) if m else None
+                continue
+            m = _SEMA_KULCS_SOR.match(sor)
+            if m and tabla and tabla not in eredmeny:
+                eredmeny[tabla] = tuple(re.findall(r'`([a-z_]+)`', m.group(1)))
+                tabla = None
+    _SEMA_KULCSOK_CACHE[ut] = eredmeny
+    return eredmeny
+
+
 _IGEHELY = re.compile(r'^(\d?[^\d\s]+) (\d+):(\d+)(?:-(\d+)(?::(\d+))?)?$')
 
 
@@ -1424,9 +1444,9 @@ def _szur(fejlec, sorok, parok):
 def adat_hiv_ellenoriz(tabla_nev, kulcs_szoveg, betolt):
     """None, ha pontosan egy sor egyezik a teljes SEMA-kulccsal; kulonben a
     hiba szovege. `betolt(tabla_nev)` -> (fejlec, sorok)."""
-    kulcs = SEMA_KULCSOK.get(tabla_nev)
+    kulcs = sema_kulcsok().get(tabla_nev)
     if kulcs is None:
-        return 'a táblának nincs SEMA-kulcsa a listán (SEMA_KULCSOK): %r' % tabla_nev
+        return 'a táblának nincs SEMA-kulcsa (adat/SEMA.md 2. szakasz, Kulcs: sor): %r' % tabla_nev
     try:
         parok = mezo_ertek_parok(kulcs_szoveg)
     except ValueError as e:
@@ -1563,8 +1583,15 @@ def kinyeres_elemez(szoveg, motivum_id, meglevo_jeloltek, konyv_sorrend, datum,
         elif 'ADAT-HIV:' in sor:
             eredmeny['hibak'].append('%d. sor: ADAT-HIV-jelölő nem a saját sorában: %s' % (i, sor))
         for me in _ADAT_ERTEK.finditer(sor):
-            mv = _ERTEK_ELOTTE.search(sor[:me.start()])
-            ellenorzendo.append(('ADAT-ÉRTÉK', me.group(1), mv.group(1) if mv else None))
+            elotte = sor[:me.start()]
+            mv = _ERTEK_ELOTTE.search(elotte)
+            if mv:
+                proza = mv.group(1)
+            elif _ERTEK_VEGE_SZAM.search(elotte):
+                proza = False   # szamjegyre vegzodik, de nem nemnegativ egesz (2.5, -3, P3)
+            else:
+                proza = None
+            ellenorzendo.append(('ADAT-ÉRTÉK', me.group(1), proza))
         for fajta, torzs, proza_ertek in ellenorzendo:
             reszek = [r.strip() for r in torzs.split(' | ', 1)]
             tabla = reszek[0]
@@ -1581,7 +1608,11 @@ def kinyeres_elemez(szoveg, motivum_id, meglevo_jeloltek, konyv_sorrend, datum,
             else:
                 ertek, hiba = adat_ertek_szamol(nev, masodik, betolt)
                 if hiba is None:
-                    if proza_ertek is None:
+                    if proza_ertek is False:
+                        hiba = ('a jelölő előtti érték nem nemnegatív egész szám (előtte '
+                                'számjegy, betű, `.`, `,` vagy `-` áll; sablon 9 6. pont); '
+                                'számolt: %d' % ertek)
+                    elif proza_ertek is None:
                         hiba = ('a jelölő előtt nincs egész szám (az érték közvetlenül a '
                                 'jelölő előtt áll, szóköz nélkül); számolt: %d' % ertek)
                     elif proza_ertek != str(ertek):
