@@ -49,7 +49,9 @@ class KulcsTeszt(unittest.TestCase):
 
     def test_mt_tartalek_negativ(self):
         T._betolt()
-        # nincs_sor: az F117 halmazán kívüli tábla-lyuk (naplok/F117_javitas_jelentes.md 5. pont) -> nincs pár
+        # nincs_sor: az F117 halmazán kívüli tábla-lyuk (naplok/F117_javitas_jelentes.md 5. pont) -> nincs pár.
+        # FIGYELEM: ez a MAI, hiányos állapot (N-F117d: Károli Préd 9:1 = KJV Préd 8:16, Jób 39:1 = KJV Jób 38:39);
+        # a pótláskor az elvárás megfordítandó (az N-F117d javításakor).
         self.assertIsNone(T.karoli_to_kjv('Préd 9:1'))
         self.assertIsNone(T.karoli_to_kjv('Jób 39:1'))
         # MT|lxx_os_etalon_f91 felirat: nincs KJV-pár, az MT-szám nem lesz KJV-kulcs
