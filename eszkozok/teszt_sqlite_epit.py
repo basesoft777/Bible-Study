@@ -604,9 +604,7 @@ class Integracio(unittest.TestCase):
         self.assertTrue(sor)
         self.assertEqual(sor[0][0], 'ἀρχῇ')
         self.assertEqual(sor[0][1], 'ἀρξῇ')
-        self.assertIn(sor[0][2], ('rahlfs_igazolt',) + tuple(
-            r[0] for r in self.con.execute("SELECT DISTINCT lxx_szo_rahlfs FROM token_macula WHERE lxx_szo_rahlfs LIKE 'nem_igazolt:%'")))
-        self.assertNotEqual(sor[0][2], '')
+        self.assertEqual(sor[0][2], 'rahlfs_igazolt')  # a DB-ben mért érték (F115, 2026-10-18)
         # (2) jelölten üres mező nincs
         self.assertEqual(self.con.execute("SELECT COUNT(*) FROM token_macula WHERE COALESCE(lxx_szo_forras,'')!='' "
                                           "AND COALESCE(lxx_szo,'')=''").fetchone()[0], 0)
