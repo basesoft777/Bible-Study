@@ -6,13 +6,15 @@ tipus: feladat
 fazis: folyamat
 munka: folyamat
 modell: sonnet
-allapot: fut
+allapot: lezarva
 ag: claude/f111-elteres
 ad: `/elteres` parancs, amely egy `ELTÉRÉS: <n> tétel` jelentést egyeztetett besorolással, a brief modelljén futó javítással és korlátozott számú újraellenőrzéssel zár le
-kovetkezo: a brief végrehajtása a `/kovetkezo`-val
+kovetkezo: nincs; a PR-t a felhasználó kéri
 olvas: [.claude/commands/kovetkezo.md, .claude/commands/befogad.md, .claude/agents/, MUNKAMENET.md, BRIEF_SABLON.md]
 ir: [.claude/commands/elteres.md, .claude/commands/kovetkezo.md]
 fugg: []
+pr: 
+lezarva_osszegzes: `/elteres` parancs (7 lépés, korlát 2 kör, tételes maradék) és egyetlen mondat a `kovetkezo.md` 9. lépésében; száraz próba az ELLENOR_F115 7 tételén; zárójelentés: naplok/F111_zaras.md
 ---
 # F111_ELTERES_PARANCS_BRIEF.md — javítókör-parancs a független ellenőr ELTÉRÉS-jelentéséhez
 
@@ -86,6 +88,7 @@ A parancs fejléce: `description`, `model: sonnet`, `argument-hint: "<feladatsz�
 ## 5. Döntésnapló
 
 - D1: a parancs neve `/elteres` (ékezet nélkül, a `befogad`, `dontes` mintájára).
-- D2: [javaslat] a javítókörök korlátja **2** (a második újraellenőrzés után megállás). Indok: az F23 öt köre és az F93 négy köre után a későbbi körök jellemzően a javítókör saját hibáit találták; a felhasználó a befogadáskor átírhatja.
+- D2: [eldöntve, a felhasználó 2026-10-18-i jóváhagyásával; kiegészítés: a korlát elérésekor a maradék tételek tételesen a `kovetkezo` mezőbe kerülnek] a javítókörök korlátja **2** (a második újraellenőrzés után megállás). Indok: az F23 öt köre és az F93 négy köre után a későbbi körök jellemzően a javítókör saját hibáit találták; a felhasználó a befogadáskor átírhatja.
 - D3: a javítókör a feladat ágán fut, új ág nélkül; a `/kovetkezo` 9. lépése ELTÉRÉS-nél megáll, a javítás külön sessionben fut (egy session = egy feladat).
 - D4: a `teves` választ külön fájl hordozza, a független ellenőr jelentése érintetlen marad.
+- E1 (egyeztetett eltérés, 2026-10-18): a száraz próba célpontja a `naplok/ELLENOR_F115.md` az `ELLENOR_F9.md` helyett (az nem létezik; a `claude/f09-szotar-s2` PR-ja mergelt, ezért a 2. pont f09-szotar-s2 sora elavult).
