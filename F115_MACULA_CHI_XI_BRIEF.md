@@ -5,13 +5,16 @@ kod: MACULA CHI XI
 tipus: feladat
 fazis: folyamat
 modell: sonnet
-allapot: nem_indult
+allapot: lezarva
+ag: claude/f115-macula-chi-xi
 ad: a `Macula_heber_*.tsv` `gorog_lxx` és a `token_macula.lxx_szo` χ↔ξ-hibája az importban javítva (teljes csere az érintett sorokban), soronkénti Rahlfs-minőségjelöléssel és a forrásalak megőrzésével; a vers-lap Macula-táblázata a javított alakot mutatja
-kovetkezo: Te: a futtatás a `/kovetkezo`-val, helyi gépen (pinelt Macula-klónok, WSL-natív pardes.db)
+kovetkezo: Te: a PR átnézése és a merge
 munka: adat
 helyi_gep: igen
 olvas: [konkordancia/Macula_heber_*.tsv, konkordancia/LXX_OS/, naplok/MACULA_CHI_XI_felmeres.md, naplok/F17_import_naplo.md, eszkozok/f17/, eszkozok/macula_chi_xi_felmeres.py, eszkozok/sqlite_epit.py, eszkozok/olvaso_szerver/, eszkozok/olvaso_pilot/, adat/SEMA.md]
-ir: ["konkordancia/Macula_heber_*.tsv", naplok/F17_87_hely.tsv, naplok/F17_illesztetlen.tsv, eszkozok/f17/macula_import.py, eszkozok/f17/macula_futtat.py, eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, eszkozok/olvaso_szerver/lekerdezesek.py, eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_pilot/teszt_olvaso_pilot.py, eszkozok/macula_chi_xi_felmeres.py, adat/SEMA.md]
+pr: https://github.com/basesoft777/Bible-Study/pull/402
+lezarva_osszegzes: χ↔ξ teljes csere az importban (19 876 sor), forrásalak és Rahlfs-jelölés új oszlopban, osztályszámok pontosan a felmérés szerint; token_macula két új oszlop, olvasó-jelölő; ellenőrzés: naplok/ELLENOR_F115.md; zárójelentés: naplok/MACULA_CHI_XI_zaras.md
+ir: ["konkordancia/Macula_heber_*.tsv", naplok/F17_87_hely.tsv, naplok/F17_illesztetlen.tsv, eszkozok/f17/macula_import.py, eszkozok/f17/macula_futtat.py, eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, eszkozok/olvaso_szerver/lekerdezesek.py, eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_pilot/teszt_olvaso_pilot.py, eszkozok/macula_chi_xi_felmeres.py, adat/SEMA.md, adat/bdb_vers_jelentes.tsv]
 fugg: []
 nem_fugg: [11, 101, 114]
 ---

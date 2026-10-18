@@ -234,9 +234,9 @@ def heber_d2(con, ig):
 def macula(con, ig):
     """A Macula-sorok dict-ként (a pilot `macula` mezői + xml_id az arámi/héber nyelvhez)."""
     return [{'xml_id': x, 'szo': a, 'lemma': b, 'strong': hnorm(c) if c else None, 'morf': d, 'szofaj': e, 'gloss': f,
-             'lxx': g, 'lxx_strong': hnorm(h) if h else None}
-            for x, a, b, c, d, e, f, g, h in con.execute(
-                'SELECT xml_id, szo, lemma, strong_nyers, morf, szofaj, gloss, lxx_szo, lxx_strong FROM token_macula WHERE igehely=? ORDER BY rowid', (ig,))]
+             'lxx': g, 'lxx_strong': hnorm(h) if h else None, 'lxx_forras': i or '', 'lxx_rahlfs': j or ''}
+            for x, a, b, c, d, e, f, g, h, i, j in con.execute(
+                'SELECT xml_id, szo, lemma, strong_nyers, morf, szofaj, gloss, lxx_szo, lxx_strong, lxx_szo_forras, lxx_szo_rahlfs FROM token_macula WHERE igehely=? ORDER BY rowid', (ig,))]
 
 
 def morf_kulcs(con):

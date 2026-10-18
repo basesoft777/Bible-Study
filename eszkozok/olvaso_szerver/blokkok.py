@@ -224,8 +224,19 @@ def _r_macula_morf(d, K):
     return _tabla(['Szó', 'Lemma', 'Strong', 'Morfológiai kód', 'Szófaj', 'Gloss'], sorok)
 
 
+def _macula_gor_cella(m):
+    """A javított görög alak (F115, DT-F115a); ahol a Rahlfs-minősítés nem `rahlfs_igazolt` (és nem üres), jelölő áll mellette
+    (`title`: az osztály és a forrásalak)."""
+    cella = _gor(m['lxx'])
+    r = m.get('lxx_rahlfs') or ''
+    if r and r != 'rahlfs_igazolt':
+        cim = '%s; forrásalak (upstream): %s' % (r, m.get('lxx_forras') or '')
+        cella += Markup(' <sup title="%s">nem igazolt</sup>') % cim
+    return cella
+
+
 def _r_macula_gorog(d, K):
-    sorok = [[_heb(m['szo']), m['gloss'] or '', _gor(m['lxx']), strong_link(K, m['lxx_strong']) if m['lxx_strong'] else ''] for m in d if m['lxx'] or m['lxx_strong']]
+    sorok = [[_heb(m['szo']), m['gloss'] or '', _macula_gor_cella(m), strong_link(K, m['lxx_strong']) if m['lxx_strong'] else ''] for m in d if m['lxx'] or m['lxx_strong']]
     return _tabla(['Héber szó', 'Gloss', 'Görög (Macula)', 'Görög Strong'], sorok) if sorok else None
 
 

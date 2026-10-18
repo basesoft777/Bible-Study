@@ -87,7 +87,7 @@ class GorogSzoalak(unittest.TestCase):
         m = w['macula']
         self.assertEqual(m['lxx'], 'ἀρχῇ')
         self.assertEqual(m['lxx_forras'], 'LXX_OS')
-        self.assertEqual(m['lxx_macula'], 'ἀρξῇ')       # a Macula szóalakja χ/ξ-hibás
+        self.assertEqual(m['lxx_macula'], 'ἀρχῇ')       # F115: a Macula szóalakja az importban javítva (a forrás χ/ξ-hibás volt: ἀρξῇ)
 
 
 class BdbBontas(unittest.TestCase):
