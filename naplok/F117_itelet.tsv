@@ -1,0 +1,67 @@
+# F117 4.2 kézi ítélet: a Károli 1908 és a KJV szövegének versenkénti elolvasása után, a versmegfeleltető tábla nélkül
+# proveniencia: scope=manual (Hós 14, Én 6, Dán 3, Jón 2) | forras=Karoli_1908.tsv + KJV_Strongs_teljes.tsv (eszkozok/versmegf_szoveg_osszevet.py --szoveg kiírása) | modell=claude-opus-5-5 | n=64 | ts=2026-10-18
+igehely_karoli	itelet_kjv	megjegyzes
+Hós 14:1	13:16	Samaria lakol, csecsemők, terhes asszonyok = KJV 13:16; a Károli Hós 13 tehát 15 vers (KJV 13:1–15)
+Hós 14:2	14:1	„Térj vissza Izráel az Úrhoz” = KJV 14:1 (Israel, return)
+Hós 14:3	14:2	tartalmilag egyezik
+Hós 14:4	14:3	Assiria, ló, árva = KJV 14:3 (Asshur, horses, fatherless)
+Hós 14:5	14:4	tartalmilag egyezik
+Hós 14:6	14:5	tartalmilag egyezik
+Hós 14:7	14:6	tartalmilag egyezik
+Hós 14:8	14:7	tartalmilag egyezik
+Hós 14:9	14:8	Efraim, bálványok, cziprusfa = KJV 14:8
+Hós 14:10	14:9	a bölcs, az Úr útai = KJV 14:9 (a fejezet utolsó verse)
+Én 6:1	6:4	Tirsa, Jeruzsálem, zászlós tábor = KJV 6:4; a KJV 6:1–3 a Károli Én 5:17–19-re esik (nem a minta része)
+Én 6:2	6:5	tartalmilag egyezik
+Én 6:3	6:6	tartalmilag egyezik
+Én 6:4	6:7	tartalmilag egyezik
+Én 6:5	6:8	hatvan királyné, nyolcvan ágyas = KJV 6:8 (threescore, fourscore)
+Én 6:6	6:9	tartalmilag egyezik
+Én 6:7	6:10	tartalmilag egyezik
+Én 6:8	6:11	tartalmilag egyezik
+Én 6:9	6:12	„nemes népemnek díszhintajába” = KJV 6:12 (chariots of Amminadib)
+Én 6:10	6:13	Sulamit, Machanaim-körtánc = KJV 6:13 (Shulamite, two armies); a KJV 6:13 az MT 7:1
+Dán 3:1	3:1	arany állókép, hatvan sing, Dura = KJV 3:1; a 3:1–30 végig azonos számú
+Dán 3:2	3:2	tartalmilag egyezik
+Dán 3:3	3:3	tartalmilag egyezik
+Dán 3:4	3:4	tartalmilag egyezik
+Dán 3:5	3:5	tartalmilag egyezik
+Dán 3:6	3:6	tartalmilag egyezik
+Dán 3:7	3:7	tartalmilag egyezik
+Dán 3:8	3:8	tartalmilag egyezik
+Dán 3:9	3:9	tartalmilag egyezik
+Dán 3:10	3:10	tartalmilag egyezik
+Dán 3:11	3:11	tartalmilag egyezik
+Dán 3:12	3:12	tartalmilag egyezik
+Dán 3:13	3:13	tartalmilag egyezik
+Dán 3:14	3:14	tartalmilag egyezik
+Dán 3:15	3:15	tartalmilag egyezik
+Dán 3:16	3:16	tartalmilag egyezik
+Dán 3:17	3:17	tartalmilag egyezik
+Dán 3:18	3:18	tartalmilag egyezik
+Dán 3:19	3:19	tartalmilag egyezik
+Dán 3:20	3:20	tartalmilag egyezik
+Dán 3:21	3:21	tartalmilag egyezik
+Dán 3:22	3:22	tartalmilag egyezik
+Dán 3:23	3:23	tartalmilag egyezik
+Dán 3:24	3:24	tartalmilag egyezik
+Dán 3:25	3:25	tartalmilag egyezik
+Dán 3:26	3:26	tartalmilag egyezik
+Dán 3:27	3:27	tartalmilag egyezik
+Dán 3:28	3:28	tartalmilag egyezik
+Dán 3:29	3:29	tartalmilag egyezik
+Dán 3:30	3:30	Sidrák, Misák, Abednégó előléptetése = KJV 3:30
+Dán 3:31	4:1	Nabukodonozor levele a népeknek, „Békességetek bőséges legyen” = KJV 4:1
+Dán 3:32	4:2	jelek és csudák, a felséges Isten = KJV 4:2
+Dán 3:33	4:3	országa örökkévaló ország = KJV 4:3
+Jón 2:1	1:17	nagy hal, három nap és három éjjel = KJV 1:17 (N-F41a)
+Jón 2:2	2:1	Jónás imádkozik a hal gyomrából = KJV 2:1
+Jón 2:3	2:2	nyomorúságomban kiálték, a Seol torka = KJV 2:2 (belly of hell; ALVIL-001)
+Jón 2:4	2:3	tartalmilag egyezik
+Jón 2:5	2:4	tartalmilag egyezik
+Jón 2:6	2:5	vizek lelkemig, hinár a fejemen = KJV 2:5 (weeds; TEREMT-001)
+Jón 2:7	2:6	tartalmilag egyezik
+Jón 2:8	2:7	tartalmilag egyezik
+Jón 2:9	2:8	tartalmilag egyezik
+Jón 2:10	2:9	tartalmilag egyezik
+Jón 2:11	2:10	az Úr szól a halnak, kiveti Jónást = KJV 2:10 (a fejezet utolsó verse)
