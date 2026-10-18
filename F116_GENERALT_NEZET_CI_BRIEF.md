@@ -6,10 +6,12 @@ tipus: feladat
 fazis: 1
 munka: folyamat
 modell: sonnet
-allapot: megallt
+allapot: lezarva
 ag: claude/f116-generalt-nezet-ci
 ad: E28 (a generált nézet bájtra egyezik a commit adat- és forrásrétegéből újragenerálttal) és E29 (a kiadható kimenetben nulla `belso` jelölés és nulla `【NAPLO`) a CI-ban, pozitív és negatív tesztekkel, a migrált nézetek engedélyezőlistájával (kezdetben üres); a mai main-en 0 HIBA, méréssel igazolva
-kovetkezo: "Te: a push és a draft PR (`[ELLENŐRZŐ]` előtaggal) jóváhagyása; a munka és a független ellenőrzés kész (`naplok/GENERALT_NEZET_CI_zaras.md`, `naplok/ELLENOR_F116.md`); utána `allapot: lezarva`, `pr`, `lezarva_osszegzes`"
+kovetkezo: a #11 M2 indítható a merge után (D6); a #11 fejlécére javaslat: D7
+pr: #395
+lezarva_osszegzes: "Az E28 (bájt- és sorvég-egyezés a commitolt blobbal, marker-blokkok és migrált nézetek) és az E29 (nincs belso, nincs 【NAPLO) a CI-ban, HIBA szinten, üres engedélyezőlistával; a két eltérő marker-blokk újragenerálva (jóváhagyással); futtat.py --teljes 0 találat, 142 teszt OK; ellenőr: két javítókör után nyitott eltérés nincs."
 olvas: [naplok/MOTIVUM_FORRAS_ci_terv.md, naplok/MOTIVUM_FORRAS_pilot_terv.md, adat/SEMA.md, sablonok/9_PaRDeS_motivum_forras_sablon.md, F11_MIGRACIO_BRIEF.md, eszkozok/ellenorzes/, .github/workflows/ellenorzes.yml, eszkozok/general.py, eszkozok/lexikon_general.py, eszkozok/nulladiff.sh, Lezart_tematikus_tanulmanyok_index.md, lexikon/]
 ir: [eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/futtat.py, eszkozok/ellenorzes/e28_migralt_nezetek.tsv, eszkozok/ellenorzes/tesztek/, .github/workflows/ellenorzes.yml, motivumlog/PaRDeS_motivumok.md, naplok/GENERALT_NEZET_CI_meres.md, naplok/ELLENOR_F116.md]
 fugg: []
