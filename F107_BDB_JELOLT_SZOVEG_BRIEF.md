@@ -6,9 +6,10 @@ tipus: feladat
 fazis: 1
 modell: opus
 munka: folyamat
-allapot: nem_indult
+allapot: fut
+ag: claude/f107-bdb-jelolt-szoveg
 ad: az adat/bdb_szakaszok.tsv (a BDB minden szócikke szakaszokra bontva a nyers forrás jelölőiből, útvonallal), a forráshibák javítótáblája, a kész magyar fordítás szakaszhatár-illesztése (adat/bdb_szakasz_hu.tsv), és mért összevetés a mai szeletelővel; a szeletelő átállása a #102-é, a fordítás bemenete a #38-é
-kovetkezo: Indítható (a #99 kész; a #76-tól nem függ): az 1. lépéssel
+kovetkezo: Fut az 1. lépés (forrásválasztás, lefedettség, nyers forrás megőrzése); utána ⛔ DT-F107a és DT-F107d
 olvas: [konkordancia/lexikonok_nyers/BDB.lexicon, konkordancia/lexikonok_nyers/README.md, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/BDB_teljes_unabridged_README.md, konkordancia/_convert_bdb.py, adat/forditasok.tsv, eszkozok/forditas_kapuk.py, adat/bdb_aranyminta.tsv, adat/bdb_vers_jelentes.tsv, adat/bdb_igehely_javitas.tsv, naplok/BDB_SZELETELO_M2_seed101_iteletek.md, F102_BDB_SZELETELO_JAVITAS_BRIEF.md, F38_BDB_FORDITAS_BRIEF.md, adat/SEMA.md, adat/datasetek.tsv, adat/licencek.tsv, Rendszerfejlesztesi_playbook.md]
 ir: [eszkozok/bdb_jelolt/, adat/bdb_szakaszok.tsv, adat/bdb_szakasz_hu.tsv, adat/bdb_forras_javitas.tsv, adat/SEMA.md, adat/datasetek.tsv, naplok/F107_BDB_JELOLT_SZOVEG_naplo.md, konkordancia/lexikonok_nyers/, konkordancia/BDB_teljes_unabridged_README.md, Rendszerfejlesztesi_playbook.md]
 fugg: [99]
