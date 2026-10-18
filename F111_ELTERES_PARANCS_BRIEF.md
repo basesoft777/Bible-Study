@@ -9,7 +9,7 @@ modell: sonnet
 allapot: megallt
 ag: claude/f111-elteres
 ad: `/elteres` parancs, amely egy `ELTÉRÉS: <n> tétel` jelentést egyeztetett besorolással, a brief modelljén futó javítással és korlátozott számú újraellenőrzéssel zár le
-kovetkezo: "Te: [elteres_kor 1/2] /elteres 111 — ELLENOR_F111_2, 6 tétel: ÚJ-1 hatokoron_kivul vs BRIEF_SABLON:54 (közepes); ÚJ-2 jelölővesztés a /kovetkezo 9. lépésén (közepes); ÚJ-3 függő újraellenőrzés újraindításkor (alacsony-közepes); ÚJ-4 --grep #pr előtag-egyezés (alacsony); ÚJ-5 CI E5 címsor (alacsony); ÚJ-6 F111.6 commit-összevonás (alacsony, tartalmi)"
+kovetkezo: "Te: [elteres_kor 2/2] /elteres 111 — újraellenőrzés függ: naplok/ELLENOR_F111_3.md"
 olvas: [.claude/commands/kovetkezo.md, .claude/commands/befogad.md, .claude/agents/, MUNKAMENET.md, BRIEF_SABLON.md]
 ir: [.claude/commands/elteres.md, .claude/commands/kovetkezo.md]
 fugg: []
