@@ -185,7 +185,7 @@ ez megerősíti a motívum valódiságát: Pál és Péter nem véletlenül
 fogalmaznak úgy, mint a Genezis, hanem tudatosan ugyanazt a régi
 mintát viszik tovább, csak már görögül.
 
-**Lexikai kiegészítés (2026.09.22) — Remez-szint:** a lexikon-oldal
+**Lexikai kiegészítés【NAPLO: 2026.09.22】 — Remez-szint:** a lexikon-oldal
 adatrétege (1-4. szakasz) három olyan leletet hozott, amely a fenti
 Remez-ívet pontosítja.
 
@@ -212,7 +212,7 @@ külön, ötödikként azt az esetet, amikor a szó a héber
 „hívni" jelentésről van szó, hanem arról a szűk kategóriáról,
 amelyet maga a szótár köt a héber formulához.
 
-**3. A Róm 10:12 (2026.09.22-én felvéve).** A 10:13-as Jóel-idézetet
+**3. A Róm 10:12【NAPLO: 2026.09.22-én felvéve】.** A 10:13-as Jóel-idézetet
 egy olyan mondat vezeti be, amely ugyanezt az igét használja, és a
 segítségül hívók körét zsidóra és görögre egyaránt kiterjeszti. Az
 egyetemes ígéret tehát nem a 13. versnél kezdődik: a 12. vers már
@@ -256,7 +256,7 @@ a vitát nem hallgatja el)*
 
 ⚠️ Vitatott pont: 1Móz 4:26 értelmezése — a többségi olvasat (Wenham, Hamilton, Cassuto) pozitív istentiszteleti kezdetként érti, míg Rashi és a targumim egy ága a בְּ שֵׁם formulát a *chalal* ("profanizálni") gyökkel köti össze, a bálványimádás kezdeteként olvasva a verset; a projekt a többségi olvasatot követi, a vitát dokumentálja.
 
-### Új felismerés — a D-minta görög folytatása *(kézi, 2026.09.22)*
+### Új felismerés — a D-minta görög folytatása *(kézi)*【NAPLO: 2026.09.22】
 
 A tematikus study a D-mintát (נִקְרָא...עַל, nikrá … al — „valakinek
 a nevét hívják valakire", a birtoklás és a hovatartozás kifejezése)
@@ -364,7 +364,7 @@ elkülönülő teológiai aktust fejez ki:
 | **B** | Isten | saját neve | 2Móz 33:19, 34:5 | "be nem sorolható" — l. 1. pont |
 | **C** | Isten | ember neve | Ézs 43:1, 44:5, 45:3 | ❌ elutasítva, "hamis pozitív" |
 
-⚠ ELTÉRÉS: a táblázat „15 emberi-invokációs eset" száma a pilot 2026.09.06-i, a 2026.09.09-i 7-soros bővítés előtti állapotára vonatkozik; a jelenlegi „Előfordulások" tábla 31 igehelyet tartalmaz, az emberi-invokációs esetek száma rajta nem mért.
+⚠ ELTÉRÉS: a táblázat „15 emberi-invokációs eset" száma a pilot【NAPLO: 2026.09.06-i】, a【NAPLO: 2026.09.09-i】 7-soros bővítés előtti állapotára vonatkozik; a jelenlegi „Előfordulások" tábla 31 igehelyet tartalmaz, az emberi-invokációs esetek száma rajta nem mért.
 
 **Miért fontos ez:** a "B" eset eddig elszigetelt anomáliaként szerepelt
 a study-ban ("nem sorolható be a meglévő funkciók egyikébe sem"). A
@@ -393,7 +393,7 @@ belül) a KAPCSOLATOK-réteg új **Variáns** kategóriájába tartozik.】
 ##### D — negyedik minta: נִקְרָא...עַל (nikrá … al; birtoklás/hovatartozás), kizárva
 
 A H7121+H8034 kombinált teljes-előfordulás scan
-(`tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md`, 2026.09.08-i
+(`tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md`,【NAPLO: 2026.09.08-i】
 v2-bővítés) egy negyedik, nyelvtanilag élesen elkülönülő szerkezetet is
 felszínre hozott: **נִקְרָא...עַל** (*nikrá...al*, "[egy név] hivatik ...
 felette/rajta") — passzív nifal ige + עַל (al) elöljárószó, szemben a fő
@@ -428,7 +428,7 @@ tévesen ne sorolja be a motívumba.】
 
 【NAPLO: F11 M3, 2026-10-18 — séma-korlát (a régi 7. pont 2. tétele): a kétpontos KAPCSOLATOK-séma nem ábrázolja az egy versen belüli kontrasztot (1Kir 18:24); N-tétel: N-F11c (a `NYITOTT_FELADATOK.md`-be a `/befogad` útján); az eredeti szöveg: `archivum/ISTENTISZT-001/`.】
 
-5. **UBS-besorolás (2026.09.22)** — az UBS Greek New Testament Dictionary az ApCsel 9:14 ἐπικαλουμένους (epikalúmenúsz) alakját nem a 33.176-os „segítségül hívni" jelentéshez sorolja, hanem a 11.28-hoz („Isten népéhez tartozni", szó szerint: „akire valakinek a nevét hívják"), és a 11.28 megjegyzése ezt a verset a hagyományos értelmezéstől eltérőként kifejezetten megnevezi; az 1Pét 1:17 hozzárendelése kettős (33.131 és 33.176). Mindkettő a 6. Értelmezés feldolgozandó kérdése; a lexikon-adat (1. szakasz, UBS-oszlop) a forrás besorolását mutatja.
+5. **UBS-besorolás**【NAPLO: 2026.09.22】 — az UBS Greek New Testament Dictionary az ApCsel 9:14 ἐπικαλουμένους (epikalúmenúsz) alakját nem a 33.176-os „segítségül hívni" jelentéshez sorolja, hanem a 11.28-hoz („Isten népéhez tartozni", szó szerint: „akire valakinek a nevét hívják"), és a 11.28 megjegyzése ezt a verset a hagyományos értelmezéstől eltérőként kifejezetten megnevezi; az 1Pét 1:17 hozzárendelése kettős (33.131 és 33.176). Mindkettő a 6. Értelmezés feldolgozandó kérdése; a lexikon-adat (1. szakasz, UBS-oszlop) a forrás besorolását mutatja.
 
 <!-- RÉS-VÉGE: modszertan -->
 
