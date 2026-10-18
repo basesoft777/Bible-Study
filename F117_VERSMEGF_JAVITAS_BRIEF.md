@@ -8,6 +8,7 @@ munka: adat
 modell: opus
 allapot: lezarva
 ag: claude/f117-versmegf-javitas
+pr: https://github.com/basesoft777/Bible-Study/pull/409
 ad: a `Karoli_versmegfeleltetes.tsv` a #114 által mért táblahibák nélkül generálódik (13 fejezet pótolva, a KEZI-, Dán 3- és eltolt párok szöveg-összevetéssel javítva); a `tsk_kulcs.NINCS_PAR_KIVETEL` üres, a Jón 2:3 (ALVIL-001) és Jón 2:6 (TEREMT-001) TSK-sorai visszatérnek
 kovetkezo: Te: a PR átnézése és a merge
 lezarva_osszegzes: a Károli↔KJV tábla 346 A–D′ verse szöveg-összevetéssel javítva (264 pótolt, 82 felülírt, a halmazon kívül 0 változás, KK4 bájtra determinisztikus); verziózott javító bemenet + halmaz-őrös modul; tsk_kulcs-kivétellista üres; elért TSK-forrássor 96 → 4 774 (= referencia); Jón 2:3 és Jón 2:6 TSK-sorai visszatértek; nyitva: N-F117a (bsb_import/sqlite_epit, addig a pardes.db nem építhető), N-F117b–d
