@@ -9,9 +9,9 @@ munka: adat
 allapot: megallt
 ag: claude/olvasoi-konkordancia-m3
 ad: kutatói olvasói felület helyben (WSL): bibliaszöveg-kezdőlap könyv–fejezet–vers választóval, három váltható nézet (Olvasópult, Interlineáris, Munkaasztal), a #60 pilot teljes blokk-készlete a pardes.db-ből szerveroldali lapelőállítással, keresés (Strong, magyar szó és frázis, héber frázis), hozzáférési szintek konfigurációból, kiadási kapcsoló, telepítő szkript; mérés a VPS-t utánzó korlátokkal
-kovetkezo: "Te: az M3 (keresés) és a javítókör (F76.50–F76.53, az ellenőr 4 tétele) kész a claude/olvasoi-konkordancia-m3 ágon (naplok/OLVASOI_KONKORDANCIA_M3.md); újraellenőrzésre vár (fuggetlen-ellenor, a 4f117ffd..HEAD diffen), utána jóváhagyás és M4 (mérés); ⛔ M5, ⛔ M6, ⛔ M7"
+kovetkezo: "Te: az M3 (keresés) és a javítókör (F76.50–F76.53, az ellenőr 4 tétele) kész a claude/olvasoi-konkordancia-m3 ágon (naplok/OLVASOI_KONKORDANCIA_M3.md); az újraellenőrzés (naplok/ELLENOR_F76_M3_2.md) a 4 tételt lezárta, 1 új alacsony tétel nyitva (a Préd 2:26 tokensorrendje: hol rögzüljön); utána jóváhagyás és M4 (mérés); ⛔ M5, ⛔ M6, ⛔ M7"
 olvas: [ADATVAGYON_TERV.md, MUNKATERV.md, adat/szotar_szerepek.tsv, adat/SEMA.md, adat/licencek.tsv, "eszkozok/olvaso_pilot/*", eszkozok/sqlite_epit.py, naplok/OLVASOI_PILOT_ertekeles.md, naplok/SQLITE_EPIT_meres.md, DONTESEK.md]
-ir: [eszkozok/olvaso_szerver/, naplok/OLVASOI_KONKORDANCIA_M0.md, naplok/OLVASOI_KONKORDANCIA_meres.md, naplok/OLVASOI_KONKORDANCIA_zaras.md, naplok/OLVASOI_KONKORDANCIA_pilot_osszevetes.md, naplok/ELLENOR_F76_M2b.md, naplok/ELLENOR_F76_M2b_3.md, naplok/ELLENOR_F76_M2b_4.md, naplok/OLVASOI_KONKORDANCIA_M3.md, naplok/ELLENOR_F76_M3.md]
+ir: [eszkozok/olvaso_szerver/, naplok/OLVASOI_KONKORDANCIA_M0.md, naplok/OLVASOI_KONKORDANCIA_meres.md, naplok/OLVASOI_KONKORDANCIA_zaras.md, naplok/OLVASOI_KONKORDANCIA_pilot_osszevetes.md, naplok/ELLENOR_F76_M2b.md, naplok/ELLENOR_F76_M2b_3.md, naplok/ELLENOR_F76_M2b_4.md, naplok/OLVASOI_KONKORDANCIA_M3.md, naplok/ELLENOR_F76_M3.md, naplok/ELLENOR_F76_M3_2.md]
 fugg: [44, 79, 92, 95, 97, 98]
 nem_fugg: [9, 11, 52, 93]
 ---
