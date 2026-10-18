@@ -5,7 +5,8 @@ kod: DIFF_SZUKITES
 tipus: feladat
 fazis: 2
 modell: opus
-allapot: nem_indult
+allapot: fut
+ag: claude/diff-szukites
 ad: a render_diff_osztalyoz.py minden ismert fajtája a változás fajtája szerint dönt, nem a blokk szerint (öt szűkítés, mindegyikhez negatív teszt); a mai próbán az S2.8 0 ismeretlen + 44 felhasznalo_elfogadva; az N-F09i lezárva
 kovetkezo: /kovetkezo — kötelezően az előtt a feladat előtt, amely a render_diff_osztalyoz.py kapujára támaszkodik (#36 M1 diff-elemzés, #10; N-F09i)
 munka: folyamat
