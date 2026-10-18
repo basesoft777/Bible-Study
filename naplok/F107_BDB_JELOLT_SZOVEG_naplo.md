@@ -446,3 +446,92 @@ kézi sora van az `adat/bdb_forras_javitas.tsv`-ben (`allapot=kezi`, `manual`; `
 **Becslés (számítás a fenti számokból, nem mérés):** ha a H6440 17 csomópontja helyreállna, 411 / 416 (98,8%) lenne; a H2939-cel 412 /
 416 (99,0%). A hamis fej megkülönböztetéséhez a JSON-ból a megelőző blokk végződése nem elég (a betűre végződő előzmény utáni 366 törzsfej
 többsége valódi, pl. „— only || Qal Perfect”); a `BDB.lexicon` szerkezeti metaadata (ott a fej nyit-e blokkot) igen. Javaslat: `DT-F107h`.
+
+### 4.8 A DT-F107h alkalmazása: a negyedik `tabla_hiba`-szabály (F107.29)
+
+A felhasználó (chat, az orkesztrátoron át, 2026-10-18): „#107: a DT-F107h, a szakasztábla negyedik szabálya.” — az (a) változat, a
+jóváhagyott feltétellel: a korpusz (83,9%) és a seed-101 (9 / 13, 9 / 10) nem romolhat; ha romlik, megállás.
+
+**Első változat (elvetve):** a JSON blokk eleji feje hivatkozás, ha a `BDB.lexicon` ugyanazon szócikkében ugyanez a fej (ugyanazzal a
+követő szöveggel) a szövegen belül áll. Mérés: aranyminta 350 / 425 (82,4%), seed-101 **8 / 13**, korpusz **78,4%** — **romlott** (a
+törzs-csomópont 48 → 19): a lexikon a valódi törzsfejeket is gyakran a szövegen belül írja („— <b>Qal</b> Perfect”). A feltétel szerint
+ez nem maradhatott; a tábla nem került commitba ebben az állapotban.
+
+**A szabály (szűkítve, commitolva):** hivatkozás, ha a lexikonban a fej a szövegen belül áll, **és** közvetlenül előtte hivatkozó szó áll
+(`as`, `see`, `compare`, `cf`, `read`, `like`, `than`, `under`, `also`; H6440 „pointed as <b>Niph`al</b>”); holtversenyben (azonos
+hasonlóság) a blokkot nyitó előfordulás nyer (H0430 „3”: a holtverseny nélkül a valódi fej is hivatkozássá vált); ha a lexikonban nincs
+megfelelő hely (a követő szöveg kezdete < 0,6 hasonló), a fej marad. A lexikon csak szerkezeti metaadat, a szöveg a JSON-é. **Fejsorbeli
+törzsnév:** a fej-bekezdés `<b>verb <törzs></b>` eleme a szócikk törzsállapota a fej után (H2939 — ott a fejsoron kívül nincs több sor,
+így a mérésben nem hat; a szabály a többsoros szócikkekben érvényesül).
+
+Teszt: `teszt_bont.py` 33 (új: a lexikon-szabály egységtesztje — a hivatkozó szó utáni, a blokkot nyitó és a szövegen belüli, de nem
+hivatkozó szó utáni eset —, és a H6440/H0430 táblateszt), OK; `--ellenoriz` bájtra azonos.
+
+**Változás az F107.22-es táblához képest:** 36 621 sor (Δ 0); 95 érintett Strong (útvonal 90, egyéb mező 3, `resz` 1, útvonal + `resz` 1);
+`jelolo`: point 15 410 → 15 337, bekezdes 2 517 → 2 589. A nézet-ellenőrzés: `azonos` 7 239, `sub` 507, `tsv_utolagos` 237 + 10, `szokoz`
+92, `forras_html` 5, `nincs_a_tablaban` 9, ismeretlen okú 0.
+
+| mérce | F107.19 | F107.23 (DT-F107g) | **F107.29 (DT-F107h)** |
+|---|---|---|---|
+| aranyminta, teljes | 328 / 425 (77,2%) | 394 / 425 (92,7%) | **411 / 425 (96,7%)** |
+| aranyminta, a `forras_hiba` nélkül | — | 394 / 416 (94,7%) | **411 / 416 (98,8%)** |
+| seed-101, teljes | 7 / 13 | 9 / 13 | **9 / 13** (nem romlott) |
+| seed-101, a `forras_hiba` nélkül | — | 9 / 10 | **9 / 10** (nem romlott) |
+| korpusz a mai szeletelővel | 82,1% | 83,9% | **136 538 / 159 804 (85,4%)** (nem romlott) |
+
+`scope=F107 4.8 | forras=python eszkozok/bdb_jelolt/szerkezet_osszevet.py --arany --seed101 --korpusz (F107.29, 5aba58c9); nezet_ellenoriz.py | ts=2026-10-18`
+
+**A maradék 5 nem forráshibás aranyminta-csomópont:** H3176 2 (számozatlan jelentés, korlát), H0834 2 (értelmezési eltérés), H2939 1
+(fejsorbeli törzsnév, a szócikknek nincs további sora). **A ≥ 99%-os mérce (a `forras_hiba` nélkül) egy csomóponttal nem teljesül:
+98,8%.** A felhasználó feltétele (korpusz, seed-101 nem romlik) teljesül; az orkesztrátor utasítása szerint a munka az 5–6. lépéssel
+folytatódik, a 98,8% itt jelezve.
+
+## 5. lépés — a forráshibák javítótáblája (állapot és a 247 utólag javított TSV-sor felmérése)
+
+`adat/bdb_forras_javitas.tsv` (F107.29): 6 788 sor — `pe_mem` 6 781 (`javitva` 3 823 / 1 428 Strong, `valodi_mem` 2 402, `jelolt_marad`
+556) + `kezi` 7 (a 4.6 tételei). A H7626 „145:” nem kapott sort (a nyers JSON-ban és a lexikonban is a szövegben áll, nincs eldöntve, hogy
+hiba-e; *értelmezés:* gyakoriságszám lehet `<sub>` nélkül).
+
+**A 247 `tsv_utolagos` Strong (mérés, döntés nélkül):** a `BDB_teljes_unabridged.tsv` ezeken a sorokon a nyers JSON-tól 412 szakaszban tér
+el (szóközre bontott tokenek, `difflib`):
+
+| osztály | szakasz | minta |
+|---|---|---|
+| könyvnév-csere `→ Psa` (F34, ψ) | 165 | H0040 «Gen» → «Psa»; H0430 «Job» → «Psa» |
+| könyvnév-csere, egyéb (F46) | 141 | H0026 «2Sam» → «1Sam»; H0056 «1Sam» → «Isa» |
+| kiírt könyvnév + szám (F46) | 92 | H0088 «Numbers 34:43;» → «Num 33:43;»; H0205 «Isaiah 55:17;» → «Isa 55:7;» |
+| szám-csere (F46) | 14 | H0995 «28:33» → «28:23» |
+
+Mind a 412 hivatkozás-javítás (könyv vagy fejezet:vers), a dokumentált F34/F46 javításokkal egyező jellegű. A táblából generált nézetbe
+ezek csak akkor kerülnek át, ha a javítótábla egy új hibaosztályként (pl. `hivatkozas`, forrás: `naplok/F34_M2_csere.tsv`,
+`naplok/F46_*`) átveszi őket — ez a DT-F107c része.
+
+`scope=F107 5. lépés, tsv_utolagos | forras=python eszkozok/bdb_jelolt/nezet_hatas.py --utolagos | ts=2026-10-18`
+
+## 6. lépés — a nézet-döntés mérései (⛔ DT-F107c)
+
+Eszköz: `eszkozok/bdb_jelolt/nezet_hatas.py` (csak olvas).
+
+**(1) A 3. lépés eltérés-listája (F107.29):** `azonos` 7 239, `sub` 507, `tsv_utolagos` 237 (+10 szóközzel), `szokoz` 92, `forras_html` 5,
+`nincs_a_tablaban` 9 (F57/F72), ismeretlen okú 0.
+
+**(2) A kész fordítások `forras_hash`-e** (`adat/forditasok.tsv` BDB-sorai; a `forras_hash` a TSV `Teljes_szocikk` SHA-1-e, `eszkozok/emeles.py`
+`forras_hash`, `eszkozok/fordit.py`): 678 sor, 674 Strong; ma 674 egyezik, 4 már elavult.
+
+| nézet | a `forras_hash` változna | változatlan |
+|---|---|---|
+| V1: a tábla nyers nézete (`jel` + `szoveg`, a `<sub>` nélkül) | 446 sor | 232 |
+| V2: V1 + a pe/mem `javitva` javítás | 546 sor | 132 |
+
+A fordítássorok közül 93 a 247 `tsv_utolagos` Strongé (ezeknél a V1/V2 a TSV hivatkozás-javítását is visszavonná, ha a javítótábla nem
+veszi át). A V1 változásának nagy része technikai (a `_N` gyakoriságszám és a fej utáni szóköz), nem tartalmi.
+
+**(3) A TSV olvasói:** `adat/datasetek.tsv` 4 sor fájlként (`BDB`, `mindig`, mind a négy study-típus) + 4 sor a megjegyzésben
+(`OSHL_BDB_igehelyek`, ellenőrző szerep); 16 brief `olvas` mezője (F102, F103, F105, F106, F107, F28, F34, F38, F46, F56, F57, F60, F66, F72,
+F73, F99); 29 Python-fájl az `eszkozok/` alatt (köztük `lexikon_general.py`, `sqlite_epit.py`, `olvaso_szerver/bdb_vers_jelentes.py`,
+`emeles.py`, `bdb_adatblokk.py`, `ellenoriz.py` — a `lexikon_general.py` és az `olvaso_szerver/` ennek a feladatnak tiltott fájlja).
+
+`scope=F107 6. lépés | forras=python eszkozok/bdb_jelolt/nezet_hatas.py --utolagos --forditas --olvasok | ts=2026-10-18`
+
+**(4) A csere helye:** a fenti olvasók (köztük két, ennek a feladatnak tiltott fájl) és a 446–546 elavuló fordítás miatt a csere nem
+fér el ebben a feladatban tiltott-fájl-érintés nélkül. Javaslat: `DT-F107c` (`DONTESEK.md`).
