@@ -79,6 +79,10 @@ TOROL = {
 FEJLEC = ['strong', 'bdb_id', 'sorszam', 'alszocikk', 'resz', 'utvonal', 'jelolo', 'jel', 'gyakorisag', 'szoveg',
           'illesztes', 'forras', 'forras_hash', 'proveniencia']
 
+# Az illesztési ujjlenyomatban a pe (és a pe sofit) a memmel egy vázbetű: a DictBDB.json a dagesses pét dagesses
+# memként írja (0 dagesses pe, l. naplok/F107_BDB_JELOLT_SZOVEG_naplo.md 2.2); a SZÖVEG ezt nem javítja (DT-F107f).
+PE_MEM = {'פ': 'מ', 'ף': 'מ'}
+ROMAI_TOKEN = {'ii', 'iii', 'iv', 'vi', 'vii', 'viii', 'ix'}
 VEGSO = {'ך': 'כ', 'ם': 'מ', 'ן': 'נ', 'ף': 'פ', 'ץ': 'צ'}
 
 ILL_KUSZOB = 0.80     # bekezdés-eleje ↔ szócikk-eleje (az első K token)
@@ -123,7 +127,7 @@ def sima(htmltxt):
 
 def heber_vaz(szo):
     s = ''.join(c for c in unicodedata.normalize('NFD', szo) if 'א' <= c <= 'ת')
-    return ''.join(VEGSO.get(c, c) for c in s)
+    return ''.join(PE_MEM.get(VEGSO.get(c, c), VEGSO.get(c, c)) for c in s)
 
 
 def ujjlenyomat(htmltxt, lexikon):
@@ -143,7 +147,9 @@ def ujjlenyomat(htmltxt, lexikon):
             if v:
                 ki.append('h:' + v)
         else:
-            ki.append(w.lower())
+            w = w.lower()
+            if w not in ROMAI_TOKEN:
+                ki.append(w)
     return ki
 
 
@@ -270,7 +276,9 @@ def kezdet_jeloltek(fp, szocikk, index, sajat):
     """A bekezdés-eleje (fp) lehetséges szócikk-kezdetei: (pontszám, bdb_id), csökkenő sorrendben."""
     jel = set(sajat)
     for tok in set(fp[:3]):
-        jel |= set(index.get(tok, []))
+        lista = index.get(tok, [])
+        if len(lista) <= 300:      # a nagyon gyakori kezdő token (pl. „noun”) nem jelöltképző
+            jel |= set(lista)
     ki = []
     for b in jel:
         e = szocikk[b]
@@ -280,11 +288,22 @@ def kezdet_jeloltek(fp, szocikk, index, sajat):
     return sorted(ki, reverse=True)
 
 
+def cimfolytatas_nelkul(fp):
+    """Az első tartalmi blokk elején a cím átírásának folytatása állhat (pl. H3512 „<b>H3512. ka</b>” + „ah [כָּאָה]
+    verb”, H8147 „or shettayim …”): az első héber token előtti legfeljebb 6 latin token nem része a szócikk-kezdetnek."""
+    for i, t in enumerate(fp[:7]):
+        if t.startswith('h:'):
+            return fp[i:] if 0 < i <= 6 else fp
+    return fp
+
+
 def strong_illeszt(strong_eredeti, blokkok, szocikk, index, cimke_szerint):
     """bdb_id blokkonként (a 0. a cím); (hozzarendeles, kategoria, reszletek)."""
     sajat = cimke_szerint.get(strong_eredeti, [])
     fps = [ujjlenyomat(b, False) for b, _ in blokkok]
     hozz = [''] * len(blokkok)
+    if len(fps) > 1:
+        fps[1] = cimfolytatas_nelkul(fps[1])
     if len(blokkok) < 2:
         return hozz, 'sikertelen', 'nincs tartalmi blokk'
     elso = kezdet_jeloltek(fps[1], szocikk, index, sajat)
