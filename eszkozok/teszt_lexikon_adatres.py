@@ -221,6 +221,24 @@ class KolofonNaploCella(unittest.TestCase):
         self.assertEqual(LG.kolofon_naplo_cella('NINCS-001'), LG.EM_DASH)
 
 
+class GeneraltFejlec(unittest.TestCase):
+    """F11 M4 (DT-F11h Á7): a helyben frissített lap fejléce után CRLF-es
+    munkapéldányon is pontosan egy üres sor áll, mint az új fájlnál."""
+
+    def test_crlf_es_lf_azonos(self):
+        m = {'id': 'PROBA-001', 'forras_study': 'motivumok/PROBA-001.md'}
+        fej = LG._generalt_fejlec_sor(m)
+        lf = LG._generalt_fejlec_alkalmaz(fej + '\n\n# Cím\n', m)
+        crlf = LG._generalt_fejlec_alkalmaz(fej + '\r\n\r\n\r\n# Cím\r\n', m)
+        self.assertEqual(lf, fej + '\n\n# Cím\n')
+        self.assertEqual(crlf.replace('\r\n', '\n'), lf)
+
+    def test_fejlec_nelkuli_szoveg(self):
+        m = {'id': 'PROBA-001', 'forras_study': ''}
+        ki = LG._generalt_fejlec_alkalmaz('# Cím\n', m)
+        self.assertTrue(ki.endswith('\n\n# Cím\n'))
+
+
 class Szerepmatrix(unittest.TestCase):
     def test_kiegeszito_szotar_nem_szerepblokk(self):
         eredeti = LG.lexikon_hivatkozasok_ehhez

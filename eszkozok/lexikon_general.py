@@ -2851,7 +2851,10 @@ def _generalt_fejlec_alkalmaz(szoveg, m):
     fejlec = _generalt_fejlec_sor(m)
     if szoveg.startswith('<!-- GENERÁLT: general.py --cel lexikon'):
         sor_vege = szoveg.index('\n')
-        marad = szoveg[sor_vege + 1:].lstrip('\n')
+        # F11 M4 (DT-F11h Á7): CRLF-es munkapéldányon a fejléc utáni üres
+        # sorok '\r'-t is hordoznak; csak a '\n' levágása egy plusz üres sort
+        # hagyott (a helyben frissített lap ≠ az új fájlként generált).
+        marad = szoveg[sor_vege + 1:].lstrip('\r\n')
         return fejlec + '\n\n' + marad
     return fejlec + '\n\n' + szoveg
 

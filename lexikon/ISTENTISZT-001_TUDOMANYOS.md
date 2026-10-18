@@ -1,7 +1,5 @@
 <!-- GENERÁLT: general.py --cel lexikon | rések: motivumok/ISTENTISZT-001.md;motivumlog/lexikon_pilot/ISTENTISZT-001_TUDOMANYOS.md -->
 
-
-
 # 📖 ISTENTISZT-001 — Segítségül hívni az Úr nevét
 
 ## Kivonat *(kézi)*
