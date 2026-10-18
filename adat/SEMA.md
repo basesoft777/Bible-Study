@@ -302,6 +302,7 @@ Kulcs: `forras_igehely` + `cel_igehely` + `id`.
 | `funkcio` | szabad szöveg | | |
 | `bizonyossag` | zárt | ✔ | `magas` \| `közepes` \| `alacsony`. Küszöb alatti sor a `jeloltek.tsv`-ben marad. |
 | `pardes_szint` | `PARDES_SZINT` | | |
+| `indoklas` | szabad szöveg | | A sor funkció- és bizonyosság-indoklása: a lexikonoldal Alátámasztás-résének soronkénti adata (3.10.7 1., DT84 (8) a). Az utolsó oszlop; a meglévő sorokon üres (#11 S1, DT183). Üres érték: nincs rögzített indoklás, nem negatív lelet. |
 
 > **Ismert névütközés, nem oldódott meg** — a `motivumlog/lexikon_pilot/Motivum_kapcsolatok_PILOT.tsv`
 > „Típus" oszlopa egy **másik tengely** (`LEXIKAI`/`NARRATÍV`/`STRUKTURÁLIS`/`TEMATIKUS`),
@@ -1409,7 +1410,8 @@ azzal a megjegyzéssel, hogy új oszlopot kérhet. A DT84 döntése:
    a soronkénti funkció-/bizonyosság-indoklásnak nincs oszlopa (2.3: `funkcio` van,
    indoklás nincs). Az oszlop felvétele (a 2.3 bővítése és a tábla) nem ennek a tervnek
    a része (a #23 adattáblát nem ír); hogy melyik lépés és mikor végzi, arról a
-   `DONTESEK.md` DT183 tétele dönt.
+   `DONTESEK.md` DT183 tétele dönt. *Átvezetve (#11 S1, DT183 a):* a 2.3 `indoklas`
+   mezője és a tábla fejléce felvéve, a meglévő sorokon üres értékkel.
 2. **Minősítés → `jeloltek.tsv`, a „független megerősítés” generált** (DT84 (8) a): az
    „új találat” és a „nem releváns” a `dontes` (`beépítve` / `nyitva` / `elutasítva`) és
    az `indoklas` mezőbe képezhető, a kereszthivatkozás forrás-verse a `forras_kereses`

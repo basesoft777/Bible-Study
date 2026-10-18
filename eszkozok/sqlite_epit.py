@@ -233,6 +233,7 @@ def integritas(adat_dir):
         E.szabaly10_v22_tablak(adat_dir),
         E.szabaly11_res_forras_egyezes(adat_dir),
         E.szabaly13_forditasi_gyorsitotar(adat_dir),
+        E.szabaly15_kapcsolatok_fejlec(adat_dir),   # #11 S2: az `indoklas` oszlop (SEMA 2.3)
     ]
     sertesek = [s for s in sorok if s.verdict.split(' ', 1)[0] == 'SÉRTÉS']
     return sorok, sertesek

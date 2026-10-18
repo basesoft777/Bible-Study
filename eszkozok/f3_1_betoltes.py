@@ -364,7 +364,9 @@ def main():
         ("Sof 3:9", "Zak 13:9", "ISTENTISZT-001", "Párhuzam", "azonos szereposztás, kétirányú megerősítéssel kiegészítve", "magas", "Remez"),
     ]
 
-    kapcsolatok_rows = kiraly_kapcsolatok + istentiszt_kapcsolatok
+    # #11 S2 (DT183): a kapcsolatok.tsv 8. oszlopa az `indoklas` (SEMA 2.3);
+    # az F3.1 sorai ures indoklassal mennek, igy egy ujrafutas sem tol el oszlopot.
+    kapcsolatok_rows = [r + ("",) for r in kiraly_kapcsolatok + istentiszt_kapcsolatok]
 
     # ---------------------------------------------------------------------
     # 5. Hossz-ellenorzes MINDEN sorra, MIELOTT barmit is irnank -- igy egy
@@ -380,7 +382,7 @@ def main():
     for _r in jeloltek_rows:
         assert len(_r) == 9, ("jeloltek sor hossza nem 9: %r" % (_r,))
     for _r in kapcsolatok_rows:
-        assert len(_r) == 7, ("kapcsolatok sor hossza nem 7: %r" % (_r,))
+        assert len(_r) == 8, ("kapcsolatok sor hossza nem 8: %r" % (_r,))
 
     # Kulcs-egyedisegi ellenorzes (id + igehely) az elofordulasok.tsv-hez.
     elof_all = kiraly_rows + istentiszt_rows
