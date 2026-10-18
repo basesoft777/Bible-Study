@@ -997,6 +997,10 @@ def build_parser():
                          'Nélküle a szkript soha nem ír éles fájlba, csak a '
                          '--kimenet könyvtár alá. Csak a naplo és az index cél '
                          'élesíthető; a study-fájlok nem (brief G7).')
+    p.add_argument('--helyi-lexicon', action='store_true',
+                    help='DT-F09h: a gitignore-olt konszolidált TBESH-tábla (.lexicon-bővítés) használata. '
+                         'CSAK helyi, nem verziózott kimenetbe (a --kimenet kötelező, nem lehet a '
+                         'generalt_proba/ vagy a lexikon/ alatt, és --ir sem használható).')
     p.add_argument('--ellenoriz', action='store_true',
                     help='nem ír; a generált blokkot az ÉLES fájlban álló marker-blokk '
                          'törzsével veti össze, eltérésnél/hiánynál 1-gyel lép ki')
@@ -1060,8 +1064,21 @@ def elesites(cel, path, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek
                      % (max_iteracio, cel))
 
 
+def helyi_kimenet_engedett(kimenet, gyoker=None):
+    """DT-F09h: a `--helyi-lexicon` kimenete csak a repón kívül lehet. Az útvonalat `realpath` + `normcase` után
+    vetjük össze a repó gyökerével (Windows alatt a kis-/nagybetű és a szimbolikus út nem kerülheti meg)."""
+    rp = os.path.normcase(os.path.realpath(kimenet))
+    rr = os.path.normcase(os.path.realpath(gyoker or ROOT))
+    return rp != rr and not rp.startswith(rr.rstrip(os.sep) + os.sep)
+
+
 def main():
     args = build_parser().parse_args()
+    if args.helyi_lexicon:
+        if args.ir or not helyi_kimenet_engedett(args.kimenet):
+            raise SystemExit('--helyi-lexicon: csak a repón KÍVÜLI --kimenet könyvtárba, --ir nélkül (a repó alatti utak, a gyökér is, tiltottak; DT-F09h)')
+        import lexikon_general as _lg
+        _lg.TBESH_HELYI_LEXICON = True
 
     if args.ir and args.cel not in ELESITHETO and args.cel != 'mind':
         print('FIGYELEM: a(z) %r cél NEM élesíthető (brief G7) -- a kimenet a '

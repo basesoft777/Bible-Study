@@ -5,19 +5,22 @@ kod: SZOTAR S2
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: nem_indult
+allapot: dontesre_var
+ag: claude/f09-szotar-s2
 ad: az 1. fázis adatai — a 8 motívum Strongjaira szűkítve (DT74 (4)) — az adatrétegben és a generátorokban, a #78 szerepmátrix-vázának blokkjaihoz; a 8 lexikonoldal és a 8 törzscikk renderelése csak próba a generalt_proba/ alá, az éles lexikon/ a #11 1. lépcsője után generálódik (#36 vagy #10) (DT186)
-kovetkezo: /kovetkezo (fazis: 1, DT185); az éles lexikon/-t nem írja, a render próba a generalt_proba/ alá (DT186; a D52/DT74 (3) befagyasztás érintetlen); a törzscikkek elavult Cremer-sorát (CI E11) a próbarender mutatja, az éles javítás a #11 1. lépcsője után
+kovetkezo: "PR-cím [ELLENŐRZŐ], push, merge (felhasználó)"
+pr: 381
+lezarva_osszegzes: szótári adatréteg 2. menet a 8 motívum Strongjaira: 26 héber lemma-kiejtés, TBESH/UBS DBH/Mounce+SECE/tW+TWOT/BDB-etimológia/LXX-párok a #78 váz szerep-blokkjaiban, H8034 bekötés, N-F78a javítva, próbarender (8+8) és diff-osztályozás a generalt_proba/F09_szotar_s2_proba/ alá; az éles lexikon/ érintetlen; l. naplok/SZOTAR_S2_zaras.md
 fugg: [5, 6, 23, 78]
 olvas: [adat/forditasok.tsv, adat/terminologia.tsv, adat/kiejtes_kivetelek.tsv, konkordancia/, lexikon/, adat/szotar_szerepek.tsv, ADATVAGYON_TERV.md, MUNKATERV.md]
-ir: [generalt_proba/, adat/lexikon_hivatkozasok.tsv, adat/kiejtes_kivetelek.tsv, adat/szotar_szerepek.tsv, eszkozok/torzscikk_general.py, eszkozok/lexikon_general.py, eszkozok/render_diff_osztalyoz.py, MUNKAMENET.md, NYITOTT_FELADATOK.md, adat/forditasok.tsv, eszkozok/kiejtes.py]
+ir: [generalt_proba/, adat/lexikon_hivatkozasok.tsv, adat/kiejtes_kivetelek.tsv, adat/szotar_szerepek.tsv, eszkozok/torzscikk_general.py, eszkozok/lexikon_general.py, eszkozok/render_diff_osztalyoz.py, MUNKAMENET.md, NYITOTT_FELADATOK.md, adat/forditasok.tsv, eszkozok/kiejtes.py, eszkozok/teszt_szerepmatrix.py, eszkozok/ellenorzes/, eszkozok/general.py, eszkozok/teszt_render_diff_osztalyoz.py]
 munka: adat
 nem_fugg: [7, 22, 27, 38, 52, 55, 107, 109, 110]
 ---
 
 # F09_SZOTAR_S2_BRIEF.md — Szótári adatréteg, 2. menet
 
-*FELADATOK #9 · Modell: sonnet · v2 · 2026.10.17 · döntés: DT74 (3)–(4), D52, D34, DT185–e · előzmény: `F05_SZOTAR_BRIEF.md` 2. menet (S2.1–S2.9, K9–K14), `F78_SZEREPMATRIX_VAZ_BRIEF.md`, `naplok/F78_meres.md` 9–14.*
+*FELADATOK #9 · Modell: sonnet · v2 · 2026.10.17 · döntés: DT74 (3)–(4), D52, D34, DT185–DT189 · előzmény: `F05_SZOTAR_BRIEF.md` 2. menet (S2.1–S2.9, K9–K14), `F78_SZEREPMATRIX_VAZ_BRIEF.md`, `naplok/F78_meres.md` 9–14.*
 
 A v1 csonk volt: a lépéseket az `F05_SZOTAR_BRIEF.md` 2. menetére bízta. Az a menet a DT74 (4) és a DT186 előtt készült, ezért három ponton nem hajtható végre úgy, ahogy le van írva:
 
@@ -25,7 +28,7 @@ A v1 csonk volt: a lépéseket az `F05_SZOTAR_BRIEF.md` 2. menetére bízta. Az 
 - a hatókört nem szűkíti a 8 motívum Strongjaira (DT74 (4)), és nem a #78 szerepmátrix-vázának blokkjait tölti, mert a váz akkor még nem létezett;
 - az **S2.6** azóta leválasztott feladat (#70, felhasználói döntés, 2026.10.06).
 
-Ez a brief az S2.1–S2.9-et ehhez igazítva veszi át. A befogadáskor nyitott három pontot a felhasználó eldöntötte (DT187–e, 2026-10-17); a megmaradt „[javaslat]” jelölésű pontok végrehajtási részletek, a végrehajtó a zárójelentésben jelzi, melyik változatot követte.
+Ez a brief az S2.1–S2.9-et ehhez igazítva veszi át. A befogadáskor nyitott három pontot a felhasználó eldöntötte (DT187–DT189, 2026-10-17); a megmaradt „[javaslat]” jelölésű pontok végrehajtási részletek, a végrehajtó a zárójelentésben jelzi, melyik változatot követte.
 
 ## 1. Cél
 
@@ -34,6 +37,8 @@ A szerepmátrix (`adat/szotar_szerepek.tsv`) `nincs adatosítva` szerepeit a 8 l
 A 8 lexikonoldal és a 8 törzscikk renderelése **csak próba** a `generalt_proba/` alá, diff-osztályozással az éles állapothoz képest. Az éles `lexikon/` nem változik; a #11 1. lépcsője után a #36 vagy a #10 generálja (DT186). A D34 mondata („a törzscikk utoljára itt generálódik”) ezzel a #9 próbarenderére módosul (DT186 indoklása).
 
 ## 2. Hatókör
+
+*Az `ir` mező utólagos bővítései (2. javító menet, 2026-10-17): `eszkozok/teszt_szerepmatrix.py` (DT-F09i: az átírt invariánsok a mai szerepállapotot követik, tartalmi lazítás nincs); `eszkozok/ellenorzes/` (DT-F09h: az E27 szűk kivétele a kódban opcionálisként jelölt `_nyers/` hivatkozásra); `eszkozok/general.py` (DT-F09h: a `--helyi-lexicon` kapcsoló, csak a repón kívüli kimenetre); `eszkozok/teszt_render_diff_osztalyoz.py` (DT-F09g: az osztályozó tesztjei).*
 
 **Benne van**
 
@@ -145,7 +150,7 @@ Az F05 K9–K14-ből, a DT186 és a DT74 (4) szerint igazítva.
 | # | Feltétel | F05-előzmény |
 |---|---|---|
 | K9 | Az S2.1 csak 100%-os görög aranykészlet-egyezés után futott; `grep -c KIEJT eszkozok/torzscikk_general.py` = 0; az `adat/kiejtes_kivetelek.tsv` mind a 26 jóváhagyott héber lemmát tartalmazza (a 8 motívum §0-ban mért lemmái + H8414, H0922; DT188) | K9 |
-| K10 | Diff-osztályozó: ismeretlen kategória 0; a kategóriák darabszáma jelentve (`naplok/SZOTAR_S2_diff.tsv`) | K10 |
+| K10 | Diff-osztályozó: az osztályozónak **nincs tartalék-kategóriája**: amit egyik explicit feltétel sem fed, az `ismeretlen` (DT-F09g); `ismeretlen` 0 a felhasználói elfogadás után (`naplok/SZOTAR_S2_ismeretlen.tsv`: minden sor `felhasznaloi_besorolas`-sal); a kategóriák darabszáma jelentve (`naplok/SZOTAR_S2_diff.tsv`). Egy törölt sor elszámolt: (a) **megnevezett táblákban** — `ATKULCSOLT_SOROK` (F87.3-lábnyom, 27 sor, csak ALVIL-001, `elavult_adat`), `ISMERT_HIBA_TSK_VERSSZAM` (13 sor: 12 TSK-jelölt + a törzscikk összevont TSK-sora, `ismert_hiba_tsk_versszam`, N-F09g), `FELHASZNALO_ELFOGADOTT` (44 = 32 + 12 elfogadott sor, `felhasznalo_elfogadva`, csak törölt irány; a 12: 8 leíró mondat bővülése, 4 F87.3-glosszajavítás); (b) kizárólagos párja van ugyanabban a szakaszban (normalizált vagy TELJES kulcs: forráscímke + igehely + célpont/Strong; csak igehelyre nincs pár), és a pár **cellánkénti összevetésén** minden eltérő mező ismert fajta (átírás/kiejtés, módszer- vagy állapotjelző, helyőrző → tartalom, szám, licenc-szöveg, fájlnév/forrás, szerep-állapot) — tartalom eltűnése vagy ismeretlen fajta: `ismeretlen`; a sor kategóriája a legkockázatosabb mezőé; (c) üres-állapot mondatot ellenőrzötten valódi tartalom vált fel ugyanabban a szakaszban; (d) a `tovabb_el` próba (jelölt-sor + forráscímke együtt; az igehely önmagában nem elég) — ugyanez a feltétel a törzscikk, az `idezes`/`kolofon` → `licenc` és az `lxx` → `lxx_korpusz` törlésekre. A két kiegészítő kategória: **`elavult_adat`** (adatblokk sora, amelynek az éles oldal adatrétege régebbi) és **`fordites_jelzo`** (csak a fordítás-jelzőben különbözik). Újrafuttatáskor szúrópróba az `elavult_adat` soraiból, és **megállás, ha `ismeretlen` > 0 a felhasználói elfogadáson kívül** **Kimondott korlát:** a cellánkénti kapu néhány ismert fajtája a BLOKK szerint dönt (`_mezo_kat`: `5. Szótári` szakasz bármely cellacseréje `szerep`, `idezes`/`kolofon` bármely cseréje `licenc`, a csak számjegyben eltérő cella elfogadott, az LXX-állapot bármire cserélhető; az (1) lépés nem-None ága: írásjegyes sorban a zárójeles rész cseréje `kiejtes`, magyar szót is enged). A négy független ellenőrzés word-diff szúrópróbái (kb. 120 sor) elnyelt veszteséget nem találtak (`manual`, a mostani adatra, nem kódgarancia); szűkítés: N-F09i; részletek és sorszámok: `naplok/SZOTAR_S2_zaras.md` 4b. | K10 |
 | K11 | A lábléc és a kolofon az S11 szerint; a Mounce, az UBS és (ha van) a tW megjelölése szó szerint; az unfoldingWord® védjegy a származékos szövegben nem szerepel — a próbarenderen mérve | K11 |
 | K12 | *(a #70-hez tartozik; ebben a menetben nincs)* | K12 |
 | K13 | `ellenoriz.py` SÉRTÉS 0, kód 0; a **próbarender** 8 törzscikkében `nincs adatosítva` 0 (a `nincs forrás` és a `javaslat` szerep megengedett), Cremer- és Girdlestone-említés 0 (a CI E11 szabálya a `generalt_proba/F09_szotar_s2_proba/`-n mérve); a CI zöld | K13 (a `lexikon/` helyett a próba) |
@@ -166,4 +171,4 @@ Az F05 K9–K14-ből, a DT186 és a DT74 (4) szerint igazítva.
 - **DT188** — mind a 26 héber lemma a `kiejtes_kivetelek.tsv`-be — **eldöntve** (2026-10-17).
 - **DT189** — a 2/b 3 kézi glosszája a #70/#11-ben; a 7. szerep SECE-adatot kap, a „l. 2/b” mutató kiegészítő sor — **eldöntve** (2026-10-17).
 
-*A `DT185`–`e` helyőrző; végleges számot a `szamkiosztas` Action ad merge után.*
+*A DT185–DT189 végleges szám (a `szamkiosztas` Action adta, a `DT-F09a–e` helyőrzőkből). A javító menet (F9.J1–J6) ellenőri eltérései nyomán a `DT-F09g–j` új helyőrző a `DONTESEK.md`-ben; a végleges számot a `szamkiosztas` adja merge után.*

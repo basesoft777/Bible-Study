@@ -793,6 +793,20 @@ class E27Teszt(unittest.TestCase):
             sys.argv = eredeti_argv
             FU.ROOT = eredeti_root
 
+    # --- DT-F09h: szűk kivétel a gitignore-olt _nyers/ hivatkozásra ------
+
+    def test_nyers_hivatkozas_jelolo_nelkul_hiba(self):
+        t = self._fut(self._gen(nyitott='`konkordancia/_nyers/x/y.tsv`'))
+        self.assertTrue([x for x in t if x.szint == 'HIBA' and '_nyers/x/y.tsv' in x.reszlet], t)
+
+    def test_nyers_hivatkozas_opcionalis_jelolovel_engedett(self):
+        t = self._fut(self._gen(nyitott='`konkordancia/_nyers/x/y.tsv` (opcionális, DT-F09h)'))
+        self.assertFalse([x for x in t if '_nyers/x/y.tsv' in x.reszlet], t)
+
+    def test_jelolo_nem_nyers_hivatkozast_nem_ment(self):
+        t = self._fut(self._gen(nyitott='`adat/nincs_ilyen.tsv` (opcionális, DT-F09h)'))
+        self.assertTrue([x for x in t if x.szint == 'HIBA' and 'nincs_ilyen.tsv' in x.reszlet], t)
+
     # --- jo eset, "csak chatben" ---------------------------------------
 
     def test_jo_feladatkovetes_figyelmeztetes_a_keszben_es_a_kilepes_0(self):

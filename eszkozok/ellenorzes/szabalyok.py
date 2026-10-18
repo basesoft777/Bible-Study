@@ -1420,6 +1420,11 @@ E27_BACKTICK = re.compile(r'`([^`\n]+)`')
 E27_AG = re.compile(r'(?<![A-Za-z0-9_./-])claude/[A-Za-z0-9._/-]*[A-Za-z0-9_]')
 E27_HEXA = re.compile(r'(?<![A-Za-z0-9_./-])[0-9a-f]{7,40}(?![A-Za-z0-9_])')
 E27_CSAK_CHATBEN = 'csak chatben'
+# DT-F09h: szűk kivétel -- a gitignore-olt `konkordancia/_nyers/` alatti hivatkozás csak akkor engedett, ha
+# ugyanabban a sorban ott a jelölő (a hivatkozott fájl opcionális, a kód hiányában is működik). Általános
+# `_nyers/` kivétel nincs: a jelöletlen hivatkozás továbbra is HIBA.
+E27_OPCIONALIS_NYERS_ELOTAG = 'konkordancia/_nyers/'
+E27_OPCIONALIS_JELOLO = '(opcionális, DT-F09h)'
 E27_KIZART_KONYVTAR = ('.git', 'beerkezo', 'node_modules', 'konkordancia', '__pycache__')
 
 
@@ -1530,6 +1535,11 @@ def _e27_alapnevek():
             nevek.update(fajlok)
     _E27_ALAPNEVEK[kulcs] = nevek
     return nevek
+
+
+def _e27_opcionalis_nyers(relut, sor):
+    """True, ha a hivatkozás a gitignore-olt `_nyers/` alá mutat, és a sor jelöli az opcionalitást (DT-F09h)."""
+    return relut.startswith(E27_OPCIONALIS_NYERS_ELOTAG) and E27_OPCIONALIS_JELOLO in sor
 
 
 def _e27_van_ut(relut):
@@ -1706,7 +1716,7 @@ def e27_hivatkozas(base_ref=None, head_ref=None, esemeny=''):
                     jelez('HIBA', relut, sorszam,
                           'a hivatkozott `%s` a PR-ban %s; frissítsd a mutatót ugyanabban a commitban.' % (ut, st),
                           kozvetlen=True)
-                elif not csak_chatben and not _e27_van_ut(ut):
+                elif not csak_chatben and not _e27_opcionalis_nyers(ut, sor) and not _e27_van_ut(ut):
                     uzenet = 'a hivatkozott fájl/könyvtár nem létezik: `%s`.' % ut
                     if nyitott_sor:      # DT-F40a (a): mindig HIBA, diff-hatokor nelkul
                         jelez('HIBA', relut, sorszam, uzenet + forras, kozvetlen=True)
