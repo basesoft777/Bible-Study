@@ -231,7 +231,7 @@ def _macula_gor_cella(m):
     r = m.get('lxx_rahlfs') or ''
     if r and r != 'rahlfs_igazolt':
         cim = '%s; forrásalak (upstream): %s' % (r, m.get('lxx_forras') or '')
-        cella += Markup(' <sup class="macula-nem-igazolt" title="%s">nem igazolt</sup>') % cim
+        cella += Markup(' <sup title="%s">nem igazolt</sup>') % cim
     return cella
 
 

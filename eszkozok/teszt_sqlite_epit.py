@@ -600,7 +600,7 @@ class Integracio(unittest.TestCase):
         csere = str.maketrans({'χ': 'ξ', 'ξ': 'χ', 'Χ': 'Ξ', 'Ξ': 'Χ'})
         # (1) 1Móz 1:1 bereshit: a forrás ἀρξῇ, a javított ἀρχῇ; a minősítés a DB-ben mért érték
         sor = self.con.execute("SELECT lxx_szo, lxx_szo_forras, lxx_szo_rahlfs FROM token_macula "
-                               "WHERE igehely='1Móz 1:1' AND szo LIKE 'בְּרֵאשִׁית%'").fetchall()
+                               "WHERE igehely='1Móz 1:1' AND strong='H7225'").fetchall()
         self.assertTrue(sor)
         self.assertEqual(sor[0][0], 'ἀρχῇ')
         self.assertEqual(sor[0][1], 'ἀρξῇ')
