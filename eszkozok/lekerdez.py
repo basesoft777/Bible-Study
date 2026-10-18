@@ -34,6 +34,7 @@ KONK = ROOT / "konkordancia"
 ADAT = ROOT / "adat"
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import tsk_kulcs  # noqa: E402  (F114: a TSK KJV-kulcsa -> Károli)
 from strong_util import strong_normalizal  # noqa: E402  (F62: az egyetlen Strong-normalizáló)
 
 
@@ -527,17 +528,26 @@ def cmd_lxx_hid(args):
 
 
 def cmd_tsk(args):
-    """A5 — TSK-kereszthivatkozások lekérdezése egy igehelyre."""
+    """A5 — TSK-kereszthivatkozások lekérdezése egy (Károli-)igehelyre.
+
+    A TSK KJV-kulcsú; a kulcsot (forrás és cél) a tsk_kulcs átváltó váltja
+    Károli-versszámra (F114). ÚSZ: azonosság (kimondott korlát, N-F114a)."""
     igehely = args.igehely.strip()
-    rows = load_tsk()
-    hits = [r for r in rows if r["Igehely"] == scope_adat_igehely(igehely)]
+    adat_igehely = scope_adat_igehely(igehely)
+    nincs_par = []
+    hits = list(tsk_kulcs.forras_sorok(load_tsk(), adat_igehely, nincs_par))
     hits.sort(key=lambda r: -int(r["Votes"]))
 
-    print(f"# TSK {igehely} — {len(hits)} kapcsolódó igehely")
+    print(f"# TSK {igehely} — {len(hits)} kapcsolódó igehely (Károli-kulcs)")
+    if tsk_kulcs.karoli_to_kjv(adat_igehely) is None:
+        print("# nincs KJV-pár: a vers (pl. zsoltárfelirat) nem kap TSK-t")
     for r in hits:
-        print(f"{r['Kapcsolódó igehely magyar megjelenítése']}\tVotes={r['Votes']}")
+        print(f"{r['Kapcsolódó igehely magyar megjelenítése']}	Votes={r['Votes']}")
+    if nincs_par:
+        print(f"# {len(nincs_par)} sor kimarad: a célvers Károli-párja nincs (tsk_kulcs)")
 
-    prov = f"scope=range:{igehely} | forras=TSK_kereszthivatkozasok.tsv | n={len(hits)} | ts={ts()}"
+    prov = (f"scope=range:{igehely} | forras=TSK_kereszthivatkozasok.tsv+Karoli_versmegfeleltetes.tsv "
+            f"(tsk_kulcs, KJV->Károli) | n={len(hits)} | ts={ts()}")
     print(f"proveniencia: {prov}")
 
 

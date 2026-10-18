@@ -33,6 +33,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import general as G
 import lekerdez as L
+import tsk_kulcs as TK
 import ubs_hozzarendeles as UBS
 import lxx_os_import as LXXOS
 import kiejtes as KJ
@@ -1916,10 +1917,9 @@ _kh_by_step = None
 def tsk_index():
     global _tsk_by_igehely
     if _tsk_by_igehely is None:
-        idx = {}
-        for r in L.load_tsk():
-            idx.setdefault(r['Igehely'], []).append(r)
-        _tsk_by_igehely = idx
+        # F114: a TSK KJV-kulcsú; a kulcsot (forrás és cél) a tsk_kulcs váltja Károli-versszámra.
+        # A tartomány-igehelyre (N-F114b) ez az index sem keres.
+        _tsk_by_igehely = TK.karoli_index(L.load_tsk())
     return _tsk_by_igehely
 
 
