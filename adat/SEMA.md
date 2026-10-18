@@ -1281,22 +1281,22 @@ találatból nem lehet közvetlenül study-sor (CLAUDE.md 2. szabály).
 | `proveniencia` | `scope=<Strong> \| forras=bdb_jelolt/bont.py (fejléc) \| ts=<nap>`; a bemenetek és a kód hash-e a `# forras:` fejlécsorban (a 2.29 mintája) |
 
 Kulcs: `strong` + `sorszam` (egyedi; a `strong` + `bdb_id` + `utvonal` a jelöletlen bekezdések miatt nem egyedi — a DT190 kulcsához ez döntendő).
-Állapot (F107.22, 2026-10-18): 36 621 sor; illesztés: `egyezik` 7 916, `szocikk_resze` 30, `reszleges` 94, `sikertelen` 15, `csonk` 35 Strong. A fej-felismerés szabályai (DT-F107g (a)): a fejet közvetlenül „)”, „,”, „;”, „]” követi → hivatkozás, nem fej; a homonima-szakasz (`szakasz`); a bekezdésen belüli fej (előtte „.”, „—”, „:”, „;” vagy „,”, utána nem „)”, „,”, „;”, „.”, „]”, törzsnév után nem szám; a bekezdés végén csak ha a következő blokk fejjel nyit); a szóköz nélküli kombinált fej („1.a.”) két token (`naplok/F107_BDB_JELOLT_SZOVEG_naplo.md` 2.3, 4.5).
-(`naplok/F107_BDB_JELOLT_SZOVEG_naplo.md` 2.3).
+Állapot (F107.29, 2026-10-18): 36 621 sor; illesztés: `egyezik` 7 916, `szocikk_resze` 30, `reszleges` 94, `sikertelen` 15, `csonk` 35 Strong. A fej-felismerés szabályai (DT-F107g (a)): a fejet közvetlenül „)”, „,”, „;”, „]” követi → hivatkozás, nem fej; a homonima-szakasz (`szakasz`); a bekezdésen belüli fej (előtte „.”, „—”, „:”, „;” vagy „,”, utána nem „)”, „,”, „;”, „.”, „]”, törzsnév után nem szám; a bekezdés végén csak ha a következő blokk fejjel nyit); a szóköz nélküli kombinált fej („1.a.”) két token A negyedik szabály (DT-F107h (a), F107.29): a JSON blokk eleji feje hivatkozás, ha a `BDB.lexicon` ugyanazon szócikkében ugyanez a fej a szövegen belül, hivatkozó szó után áll; a fejsorbeli törzsnév („verb Pa`el”) a törzsállapot. Mérés (F107.29): aranyminta 411 / 425 (96,7%), a `forras_hiba` nélkül 411 / 416 (98,8%, elfogadva: DT-F107i; a maradék: N-F107c), seed-101 9 / 13 (9 / 10), korpusz 85,4% (`naplok/F107_BDB_JELOLT_SZOVEG_naplo.md` 2.3, 4.5, 4.8).
 
-**A `szoveg` és a javítótábla viszonya — JAVASLAT, nem döntés:** a tábla a nyers szöveget hordozza, a javítás külön táblában áll
-(`bdb_forras_javitas.tsv`, 2.31), a `strong` + `sorszam` + `szo_sorszam` + `elofordulas` kulccsal. Javasolt szabály: a javított szöveg
-**nézet** (a tábla + a `javitva` sorok), a táblát magát a javítás nem írja át; hogy a sima szöveg (`BDB_teljes_unabridged.tsv`) és a #38 fordítás
-bemenete a javított nézet legyen-e, az a DT-F107c (6. lépés) döntése.
+**A `szoveg` és a javítótábla viszonya (DT-F107c (d), felhasználó, 2026-10-18):** a tábla a nyers szöveget hordozza, a javítás külön
+táblában áll (`bdb_forras_javitas.tsv`, 2.31), a `strong` + `sorszam` (+ `szo_sorszam` / `elofordulas`) kulccsal; a javított szöveg **nézet**
+(`eszkozok/bdb_jelolt/nezet_general.py`: a tábla + a `javitva` sorok), a táblát a javítás nem írja át. A `BDB_teljes_unabridged.tsv` változatlan;
+a cseréje a nézetre és az olvasók átállása külön, `/befogad`-dal felvett feladat.
 
 
 ### 2.31 `bdb_forras_javitas.tsv` — a BDB forráshibáinak javítótáblája (F107, FELADATOK #107, DT-F107f)
 
 **Generált** (`python eszkozok/bdb_jelolt/forras_javit.py --ts <nap>`; kézzel nem szerkeszthető; `--ellenoriz`; teszt:
 `teszt_bont.py`). A nyers forrásban (`DictBDB.json`) is hibás helyek javítása **a nyers fájl és a szakasztábla érintése nélkül** (a
-`bdb_igehely_javitas.tsv`, 2.23 mintájára). Ma egy hibaosztály: **`pe_mem`** — a `DictBDB.json` a dagesses pét dagesses memként írja
-(0 dagesses pe; `naplok/F107_BDB_JELOLT_SZOVEG_naplo.md` 2.2). A 2.30 `szoveg` mezőjének minden dagesses memje egy sor. A javított alak
-**szabályból** jön (a mem → pe csere), a `BDB.lexicon` csak igazol (DT-F107a (i)). Első két sor `# GENERÁLT` / `# forras`, a harmadik a fejléc;
+`bdb_igehely_javitas.tsv`, 2.23 mintájára). Négy hibaosztály (`hiba`): **`pe_mem`** — a `DictBDB.json` a dagesses pét dagesses memként írja
+(0 dagesses pe; `naplok/F107_BDB_JELOLT_SZOVEG_naplo.md` 2.2); a 2.30 `szoveg` mezőjének minden dagesses memje egy sor, a javított alak
+**szabályból** jön (a mem → pe csere), a `BDB.lexicon` csak igazol (DT-F107a (i)); **`hivatkozas`** — a TSV F34/F46 hivatkozás-javításai
+(DT-F107c (d)); **`jelolo_hianyzik`** és **`hamis_jelolo`** — kézi sorok a mindkét nyers forrásban igazolt szerkezeti forráshibákról (DT-F107g (b)). Első két sor `# GENERÁLT` / `# forras`, a harmadik a fejléc;
 a héber alakok NFD-ben. Olvasás `split('\t')`.
 
 | Oszlop | Jelentés |
@@ -1311,8 +1311,8 @@ a héber alakok NFD-ben. Olvasás `split('\t')`.
 | `indok` | a döntés oka, magyarul |
 | `proveniencia` | generált sor: `scope=<Strong> \| forras=bdb_jelolt/forras_javit.py (fejléc)[…] \| ts=<nap>` (a `hivatkozas` sorban a forrásjavítás is: F34 / F46 / F46.6); kézi sor: `manual` (a forrás és az indok az `indok` mezőben; a kézi tételek a `forras_javit.py` `KEZI` listájában, a `sorszam` horgony szerint keresve) |
 
-Összevetés: NFD, kantilláció (U+0591–U+05AF), meteg, paszek, szof pászuk és U+200E nélkül, U+05BA = U+05B9. Állapot (F107.23, 2026-10-18):
-7 200 sor (F107.33): `pe_mem` 6 781 (`javitva` 3 823 (1 428 Strong), `valodi_mem` 2 402, `jelolt_marad` 556, ebből 112 `bdb_id` nélküli sorban) + `kezi` 7 + `hivatkozas` 412 (mind `javitva`; forrás: F34 159 — `naplok/F34_M2_csere.tsv` JAVIT —, F46 250 — `naplok/BDB_KONYVFELOLDAS_csere.tsv` / `_kezi.tsv` —, F46.6 3 — git `6400b5a7`, „Phoenician” → „Pharaoh”, a csere-naplóban nem szerepel). A kész fordítások érintettsége: N-F107a. A sima szöveges nézetet a `eszkozok/bdb_jelolt/nezet_general.py` állítja elő (`--pe-mem` a pe/mem javítással is); a kimenet nem a repóba és nem a `BDB_teljes_unabridged.tsv`-be íródik (DT-F107c (d)).
+Összevetés: NFD, kantilláció (U+0591–U+05AF), meteg, paszek, szof pászuk és U+200E nélkül, U+05BA = U+05B9. Állapot (F107.49, 2026-10-18):
+7 202 sor: `pe_mem` 6 781 (`javitva` 3 823 (1 428 Strong), `valodi_mem` 2 402, `jelolt_marad` 556, ebből 112 `bdb_id` nélküli sorban) + `kezi` 9 (H0559 2, H0539 2, H3318, H4900, H1242, H6440 2) + `hivatkozas` 412 (mind `javitva`; forrás: F34 159 — `naplok/F34_M2_csere.tsv` JAVIT —, F46 250 — `naplok/BDB_KONYVFELOLDAS_csere.tsv` / `_kezi.tsv` —, F46.6 3 — git `6400b5a7`, „Phoenician” → „Pharaoh”, a csere-naplóban nem szerepel). A kész fordítások érintettsége: N-F107a. A sima szöveges nézetet a `eszkozok/bdb_jelolt/nezet_general.py` állítja elő (`--pe-mem` a pe/mem javítással is); a kimenet nem a repóba és nem a `BDB_teljes_unabridged.tsv`-be íródik (DT-F107c (d)).
 
 
 
