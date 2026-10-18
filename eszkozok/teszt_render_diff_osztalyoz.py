@@ -59,8 +59,8 @@ class IsmeretlenElerheto(unittest.TestCase):
 
     def test_torzscikk_ismert_szakasz(self):
         # hozzáadott sor, vagy olyan törölt sor, amelynek jelölt-sora (címke + igehely) a próbában megvan
-        eles = '## 2. Kapcsolatok\n| [Jób 1:1](#v) | régi |\n'
-        proba = '## 2. Kapcsolatok\n| [Jób 1:1](#v) | új |\nújabb sor\n'
+        eles = '## 2. Kapcsolatok\n| [Jób 1:1](#v) | magas · tartalom-alapú |\n'
+        proba = '## 2. Kapcsolatok\n| [Jób 1:1](#v) | magas · szó-szintű-gépi |\nújabb sor\n'
         eredmeny = osztaly(eles, proba, 'TESZT-001_TORZSCIKK.md')
         self.assertEqual(set(eredmeny), {'torzscikk_res'})
 
@@ -76,10 +76,13 @@ class IsmeretlenElerheto(unittest.TestCase):
             proba = blokk(blokk_nev, ['teljesen más'])
             e = osztaly(eles, proba)
             self.assertEqual(e[R.ISMERETLEN]['torolt'], ['| Jób 1:1 | régi sor |'], blokk_nev)
-            # ha a jelölt-sor (címke + igehely) megvan a próbában, besorolt
-            proba2 = blokk(blokk_nev, ['| Jób 1:1 | új sor |'])
-            e2 = osztaly(eles, proba2)
-            self.assertNotIn(R.ISMERETLEN, e2, blokk_nev)
+        # licenc-blokkban a licenc-szöveg cseréje (cellánként) licenc
+        for blokk_nev in ('idezes', 'kolofon'):
+            e2 = osztaly(blokk(blokk_nev, ['| Jób 1:1 | régi sor |']), blokk(blokk_nev, ['| Jób 1:1 | új sor |']))
+            self.assertEqual(set(e2), {'licenc'}, blokk_nev)
+        # az lxx blokkban az állapot-csere (egyező -> eltérő) lxx_korpusz
+        e3 = osztaly(blokk('lxx', ['| Jób 1:1 | egyező |']), blokk('lxx', ['| Jób 1:1 | eltérő |']))
+        self.assertEqual(set(e3), {'lxx_korpusz'})
 
     def test_par_magyarazat_nelkul_ismeretlen(self):
         # azonos normalizált kulcs, latin zárójel-eltérés, de nincs héber/görög írásjegy és nincs blokk-kategória
@@ -138,8 +141,8 @@ class SzocikkekTorlesek(unittest.TestCase):
 
 class ElavultAdat(unittest.TestCase):
     def test_torolt_adatsor_tovabb_el_elavult(self):
-        eles = blokk('elofordulasok', ['| [1Móz 44:31](#ige-1móz-44-31) | a koporsóba — régi | Remez |'])
-        proba = blokk('elofordulasok', ['| [1Móz 44:31](#ige-1móz-44-31) | a koporsóba — új | Remez |'])
+        eles = blokk('elofordulasok', ['| [1Móz 44:31](#ige-1móz-44-31) | a koporsóba | magas · tartalom-alapú[^2] |'])
+        proba = blokk('elofordulasok', ['| [1Móz 44:31](#ige-1móz-44-31) | a koporsóba | magas · szó-szintű-gépi[^2] |'])
         eredmeny = osztaly(eles, proba)
         self.assertIn('elavult_adat', eredmeny)
         self.assertNotIn(R.ISMERETLEN, eredmeny)
@@ -256,11 +259,12 @@ class Parositas(unittest.TestCase):
         eles = blokk('elofordulasok', ['| [Jób 1:1](#a) | első | H0001 |', '| [Jób 1:1](#a) | második | H0001 |'])
         proba = blokk('elofordulasok', ['| [Jób 1:1](#a) | új | H0001 |'])
         e = osztaly(eles, proba, 'TESZT-001_TUDOMANYOS.md')
-        self.assertEqual(len(e['elavult_adat']['torolt']) + len(e.get(R.ISMERETLEN, {}).get('torolt', [])), 2)
-        # a második törlésnek nincs párja és nem él tovább kizárólagos párként -> a tovabb_el dönt (cimke_igehely)
+        # cellánkénti összevetés: az `első` -> `új` tartalomcsere ismeretlen fajta -> a pár `ismeretlen`
+        self.assertEqual(e[R.ISMERETLEN]['torolt'], ['| [Jób 1:1](#a) | első | H0001 |'])
+        # a hozzáadott sor egyetlen törlés párja: csak 1 ismeretlen hozzáadott sor
+        self.assertEqual(e[R.ISMERETLEN]['hozzaadott'], ['| [Jób 1:1](#a) | új | H0001 |'])
+        # a második törlésnek nincs (szabad) párja: a tovabb_el dönt, nem a pár
         self.assertEqual(sum(len(v['torolt']) for v in e.values()), 2)
-        par_db = len(e['elavult_adat']['hozzaadott'])
-        self.assertEqual(par_db, 1)
 
     def test_kiejtes_par(self):
         eles = blokk('lxx', ['| [Zsolt 16:10](#v) | Zsolt(LXX) 15:10 | שְׁאוֹל | ᾅδην (ᾅδης, Hadēs G0086) | egyező |'])
@@ -284,6 +288,64 @@ class Parositas(unittest.TestCase):
         # üres-állapot mondat valódi tartalom nélkül nem számít cserének
         proba2 = blokk('kizart', [])
         self.assertIn(R.ISMERETLEN, osztaly(eles, proba2))
+
+
+class CellankentiOsszevetes(unittest.TestCase):
+    """DT-F09g (4. javító menet): pár esetén a nem kulcs cellák minden eltérése ismert fajta kell legyen."""
+
+    def test_tartalom_eltunik_ismeretlen(self):
+        e = osztaly(blokk('elofordulasok', ['| [Jób 1:1](#a) | ᾅδου | H0001 |']),
+                    blokk('elofordulasok', ['| [Jób 1:1](#a) | — | H0001 |']))
+        self.assertEqual(e[R.ISMERETLEN]['torolt'], ['| [Jób 1:1](#a) | ᾅδου | H0001 |'])
+
+    def test_helyorzo_tartalom(self):
+        e = osztaly(blokk('lxx', ['| Jób 1:1 | — | G0001 |']), blokk('lxx', ['| Jób 1:1 | ᾅδου | G0001 |']))
+        self.assertEqual(set(e), {'lxx_korpusz'})
+
+    def test_hades_hadesz_kiejtes(self):
+        e = osztaly(blokk('lxx', ['| Jób 1:1 | ᾅδου (ᾅδης, Hadēs G0001) | G0001 |']),
+                    blokk('lxx', ['| Jób 1:1 | ᾅδου (ᾅδης, Hadész G0001) | G0001 |']))
+        self.assertEqual(set(e), {'kiejtes'})
+
+    def test_modszer_jelzo(self):
+        e = osztaly(blokk('elofordulasok', ['| [Jób 1:1](#a) | x | magas · tartalom-alapú[^1] |']),
+                    blokk('elofordulasok', ['| [Jób 1:1](#a) | x | magas · szó-szintű-gépi[^1] |']))
+        self.assertEqual(set(e), {'elavult_adat'})
+
+    def test_ket_cella_egyik_ismeretlen(self):
+        # az 1. cella helyőrző -> tartalom (ismert), a 2. cella magyar szöveg cseréje (ismeretlen) -> a sor ismeretlen
+        e = osztaly(blokk('lxx', ['| Jób 1:1 | — | régi | G0001 |']), blokk('lxx', ['| Jób 1:1 | ᾅδου | új | G0001 |']))
+        self.assertEqual(set(e), {R.ISMERETLEN})
+
+    def test_uj_mezo_hozzafuzese_nem_veszteseg(self):
+        e = osztaly('## 5. Szótári háttér — szerepek és lefedettség\n| H7585 | TBESH | UBS |\n',
+                    '## 5. Szótári háttér — szerepek és lefedettség\n| H7585 | TBESH | UBS | javaslat |\n',
+                    'TESZT-001_TORZSCIKK.md')
+        self.assertNotIn(R.ISMERETLEN, e)
+
+    def test_mezo_eltunese_ismeretlen(self):
+        e = osztaly('## 5. Szótári háttér — szerepek és lefedettség\n| H7585 | TBESH | UBS | javaslat |\n',
+                    '## 5. Szótári háttér — szerepek és lefedettség\n| H7585 | TBESH | UBS |\n',
+                    'TESZT-001_TORZSCIKK.md')
+        self.assertIn(R.ISMERETLEN, e)
+
+    def test_felhasznalo_elfogadva_nev_szerint(self):
+        sor = '- LSJ (Liddell-Scott-Jones, A Greek-English Lexicon) — CC BY-SA 3.0'
+        eles = '## Források és licenc\n' + sor + '\n'
+        proba = '## Források és licenc\n'
+        e = osztaly(eles, proba, 'ISTENTISZT-001_TORZSCIKK.md')
+        self.assertEqual(e['felhasznalo_elfogadva']['torolt'], [sor])
+        # más fájlban ugyanez a sor nincs felsorolva: ismeretlen; hozzáadott irányban sem érvényes
+        e2 = osztaly(eles, proba, 'KIRALY-001_TORZSCIKK.md')
+        self.assertIn(R.ISMERETLEN, e2)
+
+    def test_32_elfogadott_csoportok(self):
+        import collections
+        db = collections.Counter(R.FELHASZNALO_ELFOGADOTT.values())
+        self.assertEqual(db['lsj_licencverzio_valtas'], 1)
+        self.assertEqual(db['bdb_formatumvaltozas'], 2)
+        self.assertEqual(db['joshua_forrasvaltas'], 2)
+        self.assertEqual(db['kutatoi_azonositas_feloldodott'], 3)
 
 
 if __name__ == '__main__':
