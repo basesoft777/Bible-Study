@@ -55,6 +55,7 @@ import general as G
 import nave_bontas as NB  # noqa: E402
 import zsolt_felirat_halmaz as ZFH  # noqa: E402
 import ellenoriz as E  # noqa: E402
+import tsk_kulcs as TK  # noqa: E402
 from strong_util import strong_normalizal  # noqa: E402
 
 
@@ -678,9 +679,14 @@ class Epito(object):
     # -- TSK, Karoli-KH, TIPNR ---------------------------------------------------
     def _kereszthivatkozasok(self):
         tsk = []
-        for r in G.tsv_beolvas(os.path.join(self.konk, 'TSK_kereszthivatkozasok.tsv'))[1]:
-            if self._benne(r['Igehely']):
-                tsk.append((r['Igehely'], r['Kapcsolódó igehely'], int(r['Votes'])))
+        # F114: a TSK KJV-kulcsú; forrás és cél a tsk_kulcs átváltón át Károli-versszámra váltva
+        tsk_nyers = G.tsv_beolvas(os.path.join(self.konk, 'TSK_kereszthivatkozasok.tsv'))[1]
+        if self.minta is None:
+            tsk_karoli = TK.karoli_sorok(tsk_nyers)
+        else:
+            tsk_karoli = TK.forras_sorok(tsk_nyers, self.minta)
+        for r in tsk_karoli:
+            tsk.append((r['Igehely'], r['Kapcsolódó igehely'], int(r['Votes'])))
         self.tabla('tsk', [('igehely', 'TEXT'), ('cel_igehely', 'TEXT'), ('votes', 'INTEGER')],
                    tsk, SZARMAZTATOTT_LICENC['tsk'], ['igehely', 'cel_igehely'])
         kh = []

@@ -45,6 +45,7 @@ if hasattr(sys.stderr, 'reconfigure'):
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import lekerdez as L  # noqa: E402
+import tsk_kulcs as TK  # noqa: E402
 
 ROOT = os.path.dirname(HERE)
 ADAT = os.path.join(ROOT, 'adat')
@@ -448,11 +449,11 @@ def tsk_kor(mid):
     for v in ismert:
         kiindulo.add(v)
     cel = {}
-    for r in L.load_tsk():
-        if r['Igehely'] in kiindulo:
-            for v in kibont(r['Kapcsolódó igehely']):
-                cel.setdefault(v, []).append(int(r['Votes']))
-    prov = ('scope=TSK-teljes | forras=TSK_kereszthivatkozasok.tsv | kiindulo_vers=%d | n=%d | ts=%s' %
+    # F114: a TSK KJV-kulcsú; forrás és cél a tsk_kulcs átváltón át Károli-versszámra váltva
+    for r in TK.forras_sorok(L.load_tsk(), kiindulo):
+        for v in kibont(r['Kapcsolódó igehely']):
+            cel.setdefault(v, []).append(int(r['Votes']))
+    prov = ('scope=TSK-teljes | forras=TSK_kereszthivatkozasok.tsv+Karoli_versmegfeleltetes.tsv (tsk_kulcs) | kiindulo_vers=%d | n=%d | ts=%s' %
             (len(kiindulo), len(cel), L.ts()))
     return cel, prov
 
