@@ -119,11 +119,54 @@ class Tabla(unittest.TestCase):
             self.assertIn('| ts=', s['proveniencia'])
 
 
+class Javitas(unittest.TestCase):
+    """adat/bdb_forras_javitas.tsv (forras_javit.py, DT-F107f (a))."""
+
+    @classmethod
+    def setUpClass(cls):
+        import forras_javit
+        cls.fj = forras_javit
+        with open(forras_javit.KI_UT, encoding='utf-8', newline='') as f:
+            sorok = f.read().split('\n')
+        fej = sorok[2].split('\t')
+        cls.sorok = [dict(zip(fej, s.split('\t'))) for s in sorok[3:] if s]
+
+    def test_mem_dagesh_hely_es_csere(self):
+        szo = 'מַּר'                      # mem + dagesh + patah + resh
+        self.assertEqual(self.fj.mem_dagesh_helyek(szo), [0])
+        self.assertEqual(self.fj.cserel(szo, [0])[0], 'פ')
+        self.assertEqual(self.fj.mem_dagesh_helyek('מַר'), [])
+
+    def test_norm_kantillacio_nelkul(self):
+        self.assertEqual(self.fj.norm('מָ֑ר'), 'מָר')
+
+    def test_allapotok(self):
+        self.assertEqual(set(s['allapot'] for s in self.sorok), {'javitva', 'valodi_mem', 'jelolt_marad'})
+        for s in self.sorok:
+            self.assertEqual(bool(s['javitott_alak']), s['allapot'] == 'javitva')
+            if s['allapot'] == 'javitva':
+                # a forrás (JSON) alakban nincs dagesses pe (DT-F107f)
+                self.assertNotRegex(self.fj.norm(s['forras_alak']), 'פ[ְ-ׇ]*ּ')
+                self.assertTrue(s['bdb_id'])
+
+    def test_minta_mishpat(self):
+        self.assertTrue(any(s['strong'] == 'H2835' and s['allapot'] == 'javitva'
+                            and self.fj.norm(s['javitott_alak']) == self.fj.norm('מִשְׁפַּט')
+                            for s in self.sorok))
+
+
 class Determinizmus(unittest.TestCase):
     def test_ellenoriz(self):
         with open(TABLA, encoding='utf-8') as f:
             ts = f.readline().split('--ts ')[1].split(' ')[0]
         r = subprocess.run([sys.executable, os.path.join(ITT, 'bont.py'), '--ts', ts, '--ellenoriz', '--lista', '0'],
+                           capture_output=True, text=True, encoding='utf-8')
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+
+    def test_javitas_ellenoriz(self):
+        with open(os.path.join(GYOKER, 'adat', 'bdb_forras_javitas.tsv'), encoding='utf-8') as f:
+            ts = f.readline().split('--ts ')[1].split(' ')[0]
+        r = subprocess.run([sys.executable, os.path.join(ITT, 'forras_javit.py'), '--ts', ts, '--ellenoriz'],
                            capture_output=True, text=True, encoding='utf-8')
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
 
