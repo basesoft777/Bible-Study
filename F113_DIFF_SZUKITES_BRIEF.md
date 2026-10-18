@@ -13,7 +13,7 @@ munka: folyamat
 olvas: [eszkozok/render_diff_osztalyoz.py, eszkozok/teszt_render_diff_osztalyoz.py, naplok/ELLENOR_SZOTAR_S2_negyedik.md, naplok/SZOTAR_S2_zaras.md, F09_SZOTAR_S2_BRIEF.md, naplok/SZOTAR_S2_diff.tsv, naplok/SZOTAR_S2_ismeretlen.tsv, naplok/SZOTAR_S2_parositas_minta.md, adat/szotar_szerepek.tsv, adat/licencek.tsv, adat/kiejtes_kivetelek.tsv, eszkozok/kiejtes.py, generalt_proba/F09_szotar_s2_proba/, lexikon/]
 ir: [eszkozok/render_diff_osztalyoz.py, eszkozok/teszt_render_diff_osztalyoz.py]
 fugg: [9]
-pr: 
+pr: #392
 lezarva_osszegzes: "mind az öt ismert fajta a változás fajtája szerint dönt (DT-F113a/b); 73 teszt, a negatív tesztek a régi kódon elbuknak; a próbán 0 ismeretlen + 55 felhasznalo_elfogadva (44 + 11 név szerinti, DT-F113b); a blokk szerinti maradék ágak: N-F113a"
 ---
 
