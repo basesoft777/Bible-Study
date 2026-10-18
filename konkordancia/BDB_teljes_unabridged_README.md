@@ -47,9 +47,16 @@ magyar fordítás konverziós maradványa („N_M”, #38, DT181).
 (24 726 362 bájt); a `_convert_bdb.py` eljárása erre változatlanul alkalmazva bájtra a K7-es eredeti TSV-t
 adja (`1d28a840…dfa5`), tehát a mai letöltés tartalma a konverzió bemenetével azonos.
 
-**Megőrzés.** A nyers JSON megőrzésének helye (repó vagy rögzített külső hely) döntésre vár (`DT-F107a`,
-`DT-F107d`, `DONTESEK.md`); addig a JSON csak a fenti URL-en, commiton és hash-sel azonosítható. A mérések
-alapja a nyers forrás, nem a TSV.
+**Megőrzés (DT-F107a (x), 2026-10-18).** A nyers JSON a repóban: `konkordancia/lexikonok_nyers/DictBDB.json`,
+SHA-256 `5d826c580a4dd06f54a53d1e19b5e8c354aab0180e200849e3148b89f370e33d`, git blob
+`9d6011ea9e3c61833be7a905d6d18e2363aaf37c` (ez azonos az `adat/licencek.tsv` `BDB` sorában a 2026-09-02-i
+letöltésre rögzített blobbal), 24 726 362 bájt, LF-sorvég. **A hash az LF-es bájtokra (a git-objektumra)
+vonatkozik:** a repó `core.autocrlf=true`-val megy, és a `.json`-ra nincs `.gitattributes`-szabály, ezért
+egy Windows-checkout a munkafában CRLF-re írhatja; az ellenőrzés:
+`git cat-file blob HEAD:konkordancia/lexikonok_nyers/DictBDB.json | sha256sum`. A mérések alapja a nyers
+forrás, nem a TSV (playbook 2. pont, DT-F107d). A #107 szakasztáblája (`adat/bdb_szakaszok.tsv`) a szöveget
+és a bekezdés-tagolást ebből veszi; a `BDB.lexicon`-ból csak azonosítót és szerkezeti metaadatot
+(`bdb_id`, szócikkhatár, `section`/`remarks` osztály), szöveget nem (DT-F107a (c), (i)).
 
 ## Kimenet
 

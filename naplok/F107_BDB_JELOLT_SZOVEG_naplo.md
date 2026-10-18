@@ -138,3 +138,26 @@ A JSON a repóba nem került, csak a veszteséges TSV; a szerkezet ezért 2026.0
 - `DT-F107d` — a playbook 2. pontjának kiegészítése (nyers forrás megőrzése; veszteséges konverzió naplózása).
 
 A megállás után a 2. lépés csak a két döntés után indul.
+
+### 1.8 Döntés és alkalmazás (2026-10-18)
+
+A felhasználó (chat, az orkesztrátoron át): „a #107 DT-F107a: (c) hibrid + (i) licenc + (x) a JSON a repóba;
+DT-F107d: (a), a két szabály a playbook 2. pontjába, CI-kapu nélkül.”
+
+- F107.5: a két `DONTESEK.md`-sor 🟢 (helyőrzővel).
+- F107.6: `Rendszerfejlesztesi_playbook.md` 2. pont, a két szabály (CI-kapu nélkül).
+- F107.7: `konkordancia/lexikonok_nyers/DictBDB.json` a repóban; a munkafa-fájl és a git-objektum SHA-256-ja is
+  `5d826c58…e33d`; a git blob `9d6011ea9e3c61833be7a905d6d18e2363aaf37c` **azonos** az `adat/licencek.tsv`
+  `BDB` sorában a 2026-09-02-i letöltésre rögzített blobbal (független megerősítése az 1.1 K7-reprodukciónak).
+  A fájl LF-es; `core.autocrlf=true` mellett egy Windows-checkout CRLF-re írhatja a munkafában, ezért a hash
+  a git-objektumra vonatkozik (a README-kben rögzítve). Repószintű méretkorlát vagy LFS-szabály nincs
+  (`.gitattributes`: csak `*.tsv`, `.claude/agents/*.md`, `*.sh`; a CI méretkorlátja csak a `naplok/F06_*`-ra
+  vonatkozik), ütközés nincs.
+
+`scope=DictBDB.json a repóban | forras=sha256sum + git hash-object + git cat-file blob | ts=2026-10-18`
+
+**Egyeztetett eltérés.** Az `adat/licencek.tsv` nem volt a brief `ir` mezőjében; a DT-F107a (i) alkalmazásához
+a felhasználó döntése (2026-10-18, az orkesztrátoron át) alapján felvéve. Csak a `BDB` sor 3. mezője változott
+(a JSON hash-e, blobja és helye), írás előtt soronkénti összevetéssel. **Nyitott javaslat (nem írva):** egy
+`.gitattributes`-sor (`konkordancia/lexikonok_nyers/DictBDB.json -text`) a munkafa bájtazonosságát is
+megőrizné; a `.gitattributes` nincs az `ir` mezőben.
