@@ -8,7 +8,13 @@ Nem függ a Flasktól, és SQL-t nem tartalmaz (az SQL a `lekerdezesek.py`-ban �
   ((c) mód, DT146/2 kapcsoló) = a `szoto` ∪ a találatok nem nyelvtani Strong-számaival párosított minden magyar szó (F95 M0 6. szakasz).
 - **Magyar frázis** (`frazis=…`, 2–4 szó): egymást követő szótokenek egy Károli-versen belül (`token_karoli`, DT146/3).
 - **Héber frázis** (`heber=…`, 1–4 szó): a `token_karoli` héber oldalának mássalhangzós alakja (`szo_kis`), az előtag-tokenek
-  (ו ה ב כ ל מ ש, a TAHOT külön tokenként tartja őket) toleranciájával: a beírt szó egyezhet 1–4 egymást követő token összefűzésével.
+  (ו ה ב כ ל מ ש, a TAHOT külön tokenként tartja őket) toleranciájával. Mit talál: beírt szavanként egy TAHOT-tokent (*יהוה*), vagy
+  elöl legfeljebb három előtag-betűt + egy tokent (*בראשית* = ב + ראשית, *ובארץ* = ו + ב + ארץ); a „mag” (a szó maga, vagy az
+  előtag-betűk utáni rész) mindig egyetlen token (`heber_magok`). Mit nem talál: a névmási szuffixumos vagy más, nem előtag-betűs
+  tokenhatárt tartalmazó egybeírt alakot (*זרעו*, *למינו*), mert a TAHOT a szuffixumot is külön tokenként tartja (1Móz 1:11:
+  זרע | ו, ל | מינ | ו); ilyen alak csak ott talál, ahol a TAHOT egy tokenként tartja. Ilyenkor tokenenként, szóközzel kell keresni
+  (*זרע ו*, *ל מינ ו* vagy *למינ ו*), a tő betűit szóvégi alak nélkül, ahogy a tokenben állnak (*מינ*, nem *מין*). A keresés ezen
+  a ponton szándékosan nem bővül (a felhasználó döntése, 2026-10-18).
 
 A `q=` mező a típust a bemenetből ismeri fel (igehely → ugrás; Strong-szám; héber betű → héber frázis; egy magyar szó → szó;
 több → frázis). A magyar szó- és frázis-keresés a Károli–Strong szótokeneken fut: a 9 párosítatlan újszövetségi könyvben nincs
@@ -258,7 +264,8 @@ def frazis_kereses(con, k, sorrend):
 
 def heber_magok(szo):
     """A beírt héber szó lehetséges „magjai”: a szó maga, és az elöl leválasztható előtag-betűk (legfeljebb három) utáni rész.
-    A TAHOT az előtagot külön tokenként tartja, így a szó utolsó tokenje a mag."""
+    A TAHOT az előtagot külön tokenként tartja, így a szó utolsó tokenje a mag. A szuffixumot nem választja le: a szuffixumos
+    egybeírt alak magja nem token, ezért nem talál (dokumentált korlát; tokenenként, szóközzel kell keresni, l. a modul docstringjét)."""
     ki = [szo]
     for i in range(1, min(MAX_ELOTAG, len(szo) - 1) + 1):
         if all(c in ELOTAG for c in szo[:i]):
@@ -268,7 +275,8 @@ def heber_magok(szo):
 
 def heber_illeszt(tokenek, szavak):
     """`tokenek`: [(sorszam, szo_kis, szo)] egy vers héber tokenjei sorszám szerint; `szavak`: a beírt szavak (`szo_kis`).
-    Minden beírt szó 1–4 egymást követő token összefűzésével egyezik (az előtagok külön tokenek). Visszaad: a találatok listája,
+    Minden beírt szó 1–4 egymást követő token összefűzésével egyezik (az előtagok külön tokenek); a jelölt verseket viszont a
+    `heber_kereses` a magok (`heber_magok`) szerint szűri, így a gyakorlatban: előtag-betűk + egy token. Visszaad: a találatok listája,
     mindegyik a szócsoportok sorszám-listája ([[sorszam, ...], ...]). A vers határán nem lép át (versenként hívják)."""
     ki = []
     n = len(tokenek)

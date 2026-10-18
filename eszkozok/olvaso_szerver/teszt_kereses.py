@@ -89,6 +89,13 @@ class TestErtelmezes(unittest.TestCase):
         self.assertEqual(kereses.heber_illeszt(tok, ['ברא', 'בראשית']), [])
         self.assertEqual(kereses.heber_illeszt(tok, ['אלהים', 'ב']), [])            # a vers végén nem lép tovább
 
+    def test_heber_magok_szuffixum_korlat(self):
+        """F76.50, a dokumentált korlát: a mag az előtag-betűk utáni rész; a szuffixumot nem választja le."""
+        self.assertEqual(kereses.heber_magok('ובארץ'), ['ובארץ', 'בארץ', 'ארץ'])     # előtag + szó: a mag egy token (ארץ)
+        self.assertEqual(kereses.heber_magok('זרעו'), ['זרעו'])                       # szuffixumos: nincs leválasztás
+        self.assertEqual(kereses.heber_magok('למינו'), ['למינו', 'מינו', 'ינו'])      # elöl a ל (és a מ is előtag-betű) leválik, a ו szuffixum nem
+        self.assertNotIn('מינ', kereses.heber_magok('למינו'))
+
     def test_kiemeles_escape(self):
         h = kereses.kiemelt_vers('<script>x</script> és világosság.', [(1, 'script'), (2, 'x'), (3, 'script'), (4, 'és'), (5, 'világosság')], {5})
         self.assertNotIn('<script>', h)
@@ -211,6 +218,34 @@ class TestKeresesAdat(unittest.TestCase):
         egy = kereses.keres(self.con, self.k(heber='יהוה'), self.sorrend)
         self.assertEqual(egy.elofordulas, self.con.execute("SELECT COUNT(*) FROM token_karoli WHERE oldal='er' AND szo_kis='יהוה'").fetchone()[0])
 
+    def test_heber_elotag_es_szuffixum(self):
+        """F76.50 (a súgó szerint): előtag + szó talál; a szuffixumos egybeírt alak nem (a TAHOT a szuffixumot külön tokenként tartja);
+        tokenenként, szóközzel bontva talál, a tő szóvégi alak nélkül."""
+        def igek(s):
+            return [ig for _, ig in kereses.keres(self.con, self.k(heber=s), self.sorrend).versek]
+        tok = [r[0] for r in self.con.execute("SELECT szo_kis FROM token_karoli WHERE oldal='er' AND igehely='1Móz 1:11' ORDER BY sorszam")]
+        self.assertIn(['זרע', 'ו'], [tok[i:i + 2] for i in range(len(tok))])          # független: a szuffixum külön token
+        self.assertIn(['ל', 'מינ', 'ו'], [tok[i:i + 3] for i in range(len(tok))])
+        # előtag + szó (egybeírva és bontva) ugyanazt adja; a vers a független lekérdezésből
+        vart = {r[0] for r in self.con.execute("SELECT DISTINCT a.igehely FROM token_karoli a JOIN token_karoli b ON b.igehely=a.igehely "
+                                               "AND b.oldal='er' AND b.sorszam=a.sorszam+1 AND b.szo_kis='בארץ' WHERE a.oldal='er' AND a.szo_kis='ו'")}
+        vart |= {r[0] for r in self.con.execute("SELECT DISTINCT a.igehely FROM token_karoli a JOIN token_karoli b ON b.igehely=a.igehely "
+                                                "AND b.oldal='er' AND b.sorszam=a.sorszam+1 AND b.szo_kis='ארץ' JOIN token_karoli c "
+                                                "ON c.igehely=a.igehely AND c.oldal='er' AND c.sorszam=a.sorszam-1 AND c.szo_kis='ו' "
+                                                "WHERE a.oldal='er' AND a.szo_kis='ב'")}
+        vart |= {r[0] for r in self.con.execute("SELECT DISTINCT igehely FROM token_karoli WHERE oldal='er' AND szo_kis='ובארץ'")}
+        self.assertTrue(vart)
+        self.assertEqual(set(igek('ובארץ')), vart)
+        self.assertEqual(set(igek('ו ב ארץ')), vart)
+        # a dokumentált korlát: a szuffixumos egybeírt alak az 1Móz 1:11-et nem adja
+        self.assertNotIn('1Móz 1:11', igek('זרעו'))
+        self.assertEqual(igek('למינו'), [])
+        # a súgó szerinti bontás talál
+        for s in ('זרע ו', 'ל מינ ו', 'למינ ו'):
+            with self.subTest(bemenet=s):
+                self.assertIn('1Móz 1:11', igek(s))
+        self.assertEqual(igek('ל מין ו'), [])                                        # szóvégi alakkal (ן) nem: a súgó ezt is kiírja
+
     def test_ures_eredmeny(self):
         for args in ({'szo': 'xyzqw'}, {'frazis': 'xyzqw világosság'}, {'heber': 'שששששש'}, {'strong': 'H8999'}):
             with self.subTest(args=args):
@@ -329,6 +364,17 @@ class TestKeresesLap(unittest.TestCase):
         g = self.get('/kereses?strong=G3056').get_data(as_text=True)
         self.assertIn('Mt 5:37', talalat_igehelyek(g))                                # a Strong-keresés a párosítatlan könyvekben is talál,
         self.assertIn('szótoken nélkül: kiemelés nincs', g)                            # de kiemelés nélkül, és ezt kiírja
+
+    def test_sugo_heber_korlat(self):
+        """F76.50: a súgó kimondja, mit tud a héber keresés (előtag + szó) és mit nem (szuffixumos egybeírt alak), és hogyan kell bontani."""
+        h = self.get('/kereses').get_data(as_text=True)
+        for resz in ('előtag + szót', 'Nem talál', 'névmási szuffixumos', 'זרעו', 'למינו', 'szóközzel', 'זרע ו', 'ל מינ ו', 'szóvégi alak nélkül'):
+            with self.subTest(resz=resz):
+                self.assertIn(resz, h)
+        with open(os.path.join(D, 'README.md'), encoding='utf-8') as f:
+            readme = f.read()
+        for resz in ('**Nem talál**', 'זרעו', 'זרע ו', 'ל מינ ו'):
+            self.assertIn(resz, readme)
 
     def test_szo_panel_linkje(self):
         self.assertIn('/kereses?strong=H0216', self.get('/r/szo/H0216').get_data(as_text=True))
