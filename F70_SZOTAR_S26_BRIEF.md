@@ -24,3 +24,4 @@ A #9-ből leválasztva (2026.10.06, felhasználói döntés): a tematikus tanulm
 - **Mit ad, ha kész:** az ISTENTISZT-001 2/b rése csak prózát tartalmaz; a jelentőség-bekezdések a `miert_fontos` alatt
 - **Függés:** #9 (az S12 az S6, a Mounce/SECE lexikonba kerülése után jön); a #55 ugyanezt a tanulmányt írja, a sorrend a számból következik
 - **Forrás:** `F05_SZOTAR_BRIEF.md#S2.6`
+- **Csatolt tétel (N-F09h, `NYITOTT_FELADATOK.md`; felhasználó, 2026-10-18):** a 2/b rés forrássora (`tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md:232`) az LSJ-t CC BY-SA 3.0-val jelöli, a döntött érték 4.0 (`adat/licencek.tsv:12`, N9 / DT-F42g). Ez a menet a sort a `licencek.tsv`-hez igazítja, és a rést újragenerálja. A `konkordancia/lexikonok_nyers/README.md:18` 3.0-ja (a Wong-modul forrásoldala szerint) az `ir`-en kívül esik: ha a menet ezt is rendezi, előbb a felhasználó bővítse az `ir`-t.
