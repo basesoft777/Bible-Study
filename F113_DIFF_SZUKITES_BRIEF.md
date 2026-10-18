@@ -5,13 +5,16 @@ kod: DIFF_SZUKITES
 tipus: feladat
 fazis: 2
 modell: opus
-allapot: nem_indult
+allapot: lezarva
+ag: claude/diff-szukites
 ad: a render_diff_osztalyoz.py minden ismert fajtája a változás fajtája szerint dönt, nem a blokk szerint (öt szűkítés, mindegyikhez negatív teszt); a mai próbán az S2.8 0 ismeretlen + 44 felhasznalo_elfogadva; az N-F09i lezárva
-kovetkezo: /kovetkezo — kötelezően az előtt a feladat előtt, amely a render_diff_osztalyoz.py kapujára támaszkodik (#36 M1 diff-elemzés, #10; N-F09i)
+kovetkezo: merge a felhasználótól; utána az N-F09i lezárása külön tételben (DIFF_SZUKITES_zaras.md)
 munka: folyamat
 olvas: [eszkozok/render_diff_osztalyoz.py, eszkozok/teszt_render_diff_osztalyoz.py, naplok/ELLENOR_SZOTAR_S2_negyedik.md, naplok/SZOTAR_S2_zaras.md, F09_SZOTAR_S2_BRIEF.md, naplok/SZOTAR_S2_diff.tsv, naplok/SZOTAR_S2_ismeretlen.tsv, naplok/SZOTAR_S2_parositas_minta.md, adat/szotar_szerepek.tsv, adat/licencek.tsv, adat/kiejtes_kivetelek.tsv, eszkozok/kiejtes.py, generalt_proba/F09_szotar_s2_proba/, lexikon/]
 ir: [eszkozok/render_diff_osztalyoz.py, eszkozok/teszt_render_diff_osztalyoz.py]
 fugg: [9]
+pr: #392
+lezarva_osszegzes: "mind az öt ismert fajta a változás fajtája szerint dönt (DT-F113a/b); 73 teszt, a negatív tesztek a régi kódon elbuknak; a próbán 0 ismeretlen + 55 felhasznalo_elfogadva (44 + 11 név szerinti, DT-F113b); a blokk szerinti maradék ágak: N-F113a"
 ---
 
 # F113_DIFF_SZUKITES_BRIEF.md — A diff-osztályozó blokk szerint döntő fajtáinak szűkítése
