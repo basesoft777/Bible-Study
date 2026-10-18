@@ -8,7 +8,7 @@ munka: adat
 modell: opus
 allapot: lezarva
 ag: claude/f118-kjv-szoveg
-ad: a `konkordancia/KJV_teljes_szoveg.tsv` versenként a teljes KJV-szöveggel (eBible, Public Domain), a `KJV_Strongs_teljes.tsv`-vel mért vershalmaz- és szóegyezéssel, dataset- és licencsorral; a Károli melletti megjelenítés helye eldöntve, a megjelenítési brief tervezete a `beerkezo/`-ben
+ad: a teljes KJV-szöveg új konkordancia-táblája (KJV_teljes_szoveg, a menet hozza létre) versenként a teljes KJV-szöveggel (eBible, Public Domain), a `KJV_Strongs_teljes.tsv`-vel mért vershalmaz- és szóegyezéssel, dataset- és licencsorral; a Károli melletti megjelenítés helye eldöntve, a megjelenítési brief tervezete a `beerkezo/`-ben
 kovetkezo: "lezárva; Te: push/PR kérésre és merge; utána /befogad: beerkezo/KJV_SZOVEG_MEGJELENITES_BRIEF_TERVEZET.md"
 pr: push/PR kérésre
 lezarva_osszegzes: "konkordancia/KJV_teljes_szoveg.tsv: 31 218 sor (31 102 vers + 116 felirat), az új eBible-zipből (00532b6d…); M-a S ⊆ T, M-b 0 megmagyarázatlan, M-c 0 üres; licenc kozkincs (DT-F118a); a megjelenítés külön feladat (DT-F118c, beerkezo/-tervezet); zárójelentés: naplok/KJV_SZOVEG_zaras.md"
