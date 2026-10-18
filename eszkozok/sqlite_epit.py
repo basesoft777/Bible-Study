@@ -995,7 +995,7 @@ class Epito(object):
                         poz = szam[(ig, st)]
                     sorok.append([r['xml_id'], ig, int(m.group(1)) if m else None, r['kk_mod'], r['allapot'],
                                   r['szo'], r['lemma'], st, r['strong'], poz, None, r['morf'], r['szofaj'],
-                                  r['gloss'], r['gorog_lxx'], lst])
+                                  r['gloss'], r['gorog_lxx'], lst, r['gorog_lxx_forras'], r['gorog_lxx_rahlfs']])
             # kétértelmű vers+Strong illesztés (DT-F92a 6.): ugyanaz a Strong egy versben többször
             ketert_csoport = sum(1 for v in szam.values() if v > 1)
             ketert_token = sum(v for v in szam.values() if v > 1)
@@ -1009,9 +1009,16 @@ class Epito(object):
                         ('allapot', 'TEXT'), ('szo', 'TEXT'), ('lemma', 'TEXT'), ('strong', 'TEXT'),
                         ('strong_nyers', 'TEXT'), ('strong_poz', 'INTEGER'), ('strong_n', 'INTEGER'),
                         ('morf', 'TEXT'), ('szofaj', 'TEXT'), ('gloss', 'TEXT'), ('lxx_szo', 'TEXT'),
-                        ('lxx_strong', 'TEXT')],
+                        ('lxx_strong', 'TEXT'), ('lxx_szo_forras', 'TEXT'), ('lxx_szo_rahlfs', 'TEXT')],
                        sorok, SZARMAZTATOTT_LICENC['token_macula'], ['igehely, sorszam', 'strong', 'xml_id'])
             meta.append(('token_macula:forras_sor', str(db_nyers)))
+            # F115 / DT-F115a: a gorog_lxx chi<->xi javitasanak Rahlfs-minosegjelolese (osztalyonkent darab; a minta-epiteskor a mintara)
+            rahlfs_db = {}
+            for x in sorok:
+                if x[17]:
+                    rahlfs_db[x[17]] = rahlfs_db.get(x[17], 0) + 1
+            for k in sorted(rahlfs_db):
+                meta.append(('token_macula:lxx_szo_rahlfs:%s' % k, str(rahlfs_db[k])))
             meta.append(('token_macula:ketertelmu_vers_strong_csoport', str(ketert_csoport)))
             meta.append(('token_macula:ketertelmu_vers_strong_token', str(ketert_token)))
             self.norm_jelentes[('token_macula', 'azonos Strong egy versben többször',

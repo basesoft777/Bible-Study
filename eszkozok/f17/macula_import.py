@@ -21,10 +21,12 @@ Futtatas: python eszkozok/f17/macula_import.py --heber <klon> --gorog <klon>
 """
 
 import argparse
+import glob
 import os
 import re
 import subprocess
 import sys
+import unicodedata
 import xml.etree.ElementTree as ET
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
@@ -44,7 +46,8 @@ HEBER_URL = 'https://github.com/Clear-Bible/macula-hebrew'
 GOROG_URL = 'https://github.com/Clear-Bible/macula-greek'
 
 HEBER_OSZLOP = ['xml_id', 'ref', 'karoli', 'kk_mod', 'allapot', 'szo', 'lemma', 'strong', 'strong_x',
-                'strong_illesztes', 'morf', 'szofaj', 'gloss', 'gorog_lxx', 'gorog_strong']
+                'strong_illesztes', 'morf', 'szofaj', 'gloss', 'gorog_lxx', 'gorog_strong',
+                'gorog_lxx_forras', 'gorog_lxx_rahlfs']
 GOROG_OSZLOP = ['kiadas', 'xml_id', 'ref', 'karoli', 'kk_mod', 'allapot', 'szo', 'lemma', 'strong',
                 'strong_x', 'strong_illesztes', 'morf', 'szofaj', 'gloss', 'english']
 
@@ -154,6 +157,112 @@ def gorog_sorok(ut):
     fej, sorok = K.tsv_olvas(ut)
     ix = {n: i for i, n in enumerate(fej)}
     return ix, sorok
+
+
+# ---------------------------------------------------------------------------------------------
+# F115 / DT-F115a: a Macula heber `greek` attributumaban a chi es a xi fel van cserelve (forras-oldali hiba).
+# A javitas teljes csere (chi<->xi, Chi<->Xi) minden erintett szoban; a Rahlfs-LXX (LXX_OS) igazolasa
+# soronkenti minosegjeloles (gorog_lxx_rahlfs), nem feltetel. A felmeres: naplok/MACULA_CHI_XI_felmeres.md.
+CHI_XI_CSERE = str.maketrans({'χ': 'ξ', 'ξ': 'χ', 'Χ': 'Ξ', 'Ξ': 'Χ'})
+CHI_XI = frozenset('χξΧΞ')
+
+
+def _nfc(s):
+    return unicodedata.normalize('NFC', s or '')
+
+
+def _ekezettelen(s):
+    s = unicodedata.normalize('NFD', s or '')
+    return unicodedata.normalize('NFC', ''.join(c for c in s if unicodedata.category(c) != 'Mn')).lower()
+
+
+def _strong_norm(s):
+    s = (s or '').strip().upper().lstrip('G')
+    try:
+        return str(int(s))
+    except ValueError:
+        return s
+
+
+def lxx_os_index():
+    """igehely_karoli -> [(szoalak NFC, strong_norm)] a konkordancia/LXX_OS/*.tsv minden szovegformajabol
+    (csak az igehely_karoli, szoalak, strong oszlopot tartalmazo fajlok); split('\\t'), nem csv."""
+    ix = defaultdict(list)
+    for ut in sorted(glob.glob(os.path.join(K.KONK, 'LXX_OS', '*.tsv'))):
+        fej = None
+        with open(ut, encoding='utf-8') as f:
+            for sor in f:
+                sor = sor.rstrip('\n').rstrip('\r')
+                if not sor or sor.startswith('#'):
+                    continue
+                m = sor.split('\t')
+                if fej is None:
+                    if not {'igehely_karoli', 'szoalak', 'strong'} <= set(m):
+                        break
+                    fej = m
+                    i_k, i_sz, i_st = m.index('igehely_karoli'), m.index('szoalak'), m.index('strong')
+                    continue
+                if len(m) <= max(i_k, i_sz, i_st) or not m[i_k]:
+                    continue
+                ix[m[i_k]].append((_nfc(m[i_sz]), _strong_norm(m[i_st])))
+    return ix
+
+
+def _szo_osztaly(eredeti, csere, strong, tokenek):
+    """Egy chi/xi-s szo osztalya a Karoli-vers LXX_OS-tokenjein (a felmero B valtozata: a Strong is egyezik ugyanazon a tokenen,
+    ha a Macula-sornak van gorog_strongja). Visszaad: (osztaly, diagnosztika)."""
+    def van(alak):
+        return [t for t in tokenek if t[0] == alak and (not strong or t[1] == strong)]
+    he, hc = van(eredeti), van(csere)
+    if hc and not he:
+        return 'rahlfs_igazolt', ''
+    if he and not hc:
+        return 'nem_igazolt:eredeti_igazolt', ''
+    if he and hc:
+        return 'nem_igazolt:ketertelmu', ''
+    alakok = {t[0] for t in tokenek}
+
+    def oldal(fn):
+        c, e = any(fn(a) == fn(csere) for a in alakok), any(fn(a) == fn(eredeti) for a in alakok)
+        return '(mindketto)' if c and e else '(csere)' if c else '(eredeti)' if e else None
+    if eredeti in alakok or csere in alakok:
+        return 'nem_igazolt:strong_elteres', oldal(lambda x: x)
+    o = oldal(str.lower)
+    if o:
+        return 'nem_igazolt:csak_kisbetu', o
+    o = oldal(_ekezettelen)
+    if o:
+        return 'nem_igazolt:csak_ekezet', o
+    return 'nem_igazolt:nincs_egyezes', ''
+
+
+def lxx_chi_xi_javit(greek, gorog_strong, karoli_kulcsok, ix, ellenorzo=None):
+    """(gorog_lxx, gorog_lxx_rahlfs). Nincs chi/xi: (greek, '') -- erintetlen, jeloles nelkul.
+    Van: gorog_lxx = greek chi<->xi cserevel (mindig, feltetel nelkul); gorog_lxx_rahlfs = rahlfs_igazolt | nem_igazolt:<ok>.
+    A tobb chi/xi-s szavas sor: ha mind igazolt -> rahlfs_igazolt, kulonben az elso nem igazolt szo osztalya.
+    ellenorzo (Counter, opcionalis): szavankenti osztalyok es diagnosztika (eredeti_igazolt / ketertelmu = a megallas kivaltoi)."""
+    if not greek or not (set(greek) & CHI_XI):
+        return greek, ''
+    javitott = greek.translate(CHI_XI_CSERE)
+    karoli_kulcsok = [k for k in karoli_kulcsok if k]
+    if not karoli_kulcsok:
+        return javitott, 'nem_igazolt:nincs_karoli'
+    tokenek = [t for k in karoli_kulcsok for t in ix.get(k, [])]
+    if not tokenek:
+        return javitott, 'nem_igazolt:nincs_lxx_vers'
+    strong = _strong_norm(gorog_strong)
+    elso_rossz = ''
+    for w in _nfc(greek).strip().split():
+        if not (set(w) & CHI_XI):
+            continue
+        o, diag = _szo_osztaly(w, w.translate(CHI_XI_CSERE), strong, tokenek)
+        if ellenorzo is not None:
+            ellenorzo['szo:' + o] += 1
+            if diag:
+                ellenorzo['diag:' + o + diag] += 1
+        if o != 'rahlfs_igazolt' and not elso_rossz:
+            elso_rossz = o
+    return javitott, elso_rossz or 'rahlfs_igazolt'
 
 
 def alap_alak(s):

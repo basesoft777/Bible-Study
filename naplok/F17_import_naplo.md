@@ -258,3 +258,70 @@ Eltérés a várttól: nem volt (a 336-os köztes futás a Sir/JSir hiba követk
 **Ismert korlát (a Dán 3–4 kötése):** a kötés folyamatos identitás (Károli x:y = MT x:y); a végpontok ellenőrizve: Károli Dán 3:31–33 = MT 3:31–33, 4:1 = MT 4:1, 4:34 = MT 4:34, a versszám 33 (Dán 3), illetve 34 (Dán 4) mindkét oldalon. A közbülső versek szövegét versenként nem vetettem össze; mivel a számozás mindkét végponton és a versszámban egyezik, a közbülső versek nem csúszhatnak.
 
 **Külön tételek (helyőrző, az F30 szerint):** `N-F17a` (a többi `EGYIK_SEM` fejezet kézi feloldása, DT7 c), `N-F17b` (a Macula héber funkció-kódjainak leképezése a STEP 9000-es sávjára, DT7 b, alacsony prioritás), `N-F35a` (az alias törlése a #35 lezárása után).
+
+## F115 — a héber LXX-szóalak χ↔ξ javítása (2026.10.18, `claude/f115-macula-chi-xi`, DT203)
+
+*Proveniencia: scope=Macula-újragenerálás a pinelt klónokból | forras=Clear-Bible/macula-hebrew@47db250b…, Clear-Bible/macula-greek@8423afe4… (sekély, sparse fetch a repón kívülre), konkordancia/LXX_OS/*.tsv | ts=2026-10-18*
+
+- **Hiba:** a `greek` attribútumban a χ és a ξ fel van cserélve (forrásoldali). **Javítás:** az import minden χ/ξ-t tartalmazó értékben felcseréli a két betűt (`χ↔ξ`, `Χ↔Ξ`), feltétel nélkül (`macula_import.lxx_chi_xi_javit`). Új oszlopok a `Macula_heber_*.tsv` végén: `gorog_lxx_forras` (az upstream érték változatlanul), `gorog_lxx_rahlfs` (üres a χ/ξ-mentes sorban; különben `rahlfs_igazolt` vagy `nem_igazolt:<ok>`; a Károli-vers LXX_OS-tokenjein, szóalak NFC + Strong).
+- **Reprodukálhatóság (⛔0):** a változatlan import a pinelt klónokról ideiglenes `--kimenet`-re: a 39 héber fájl, a `Macula_gorog.tsv`, az `F17_illesztetlen.tsv`, az `F17_87_hely.tsv`, az `F17_kezi_fejezetek.tsv` és az `F17_import_stat.json` a `ts=` fejlécsorok kivételével bájtra azonos (0 eltérés).
+- **Mérés (⛔1):** érintett sor 19 876, a várttal azonos osztályszámokkal; `eredeti_igazolt` 0, `ketertelmu` 0.
+
+| `gorog_lxx_rahlfs` | darab |
+|---|---:|
+| `rahlfs_igazolt` | 16 468 |
+| `nem_igazolt:strong_elteres` | 1 029 |
+| `nem_igazolt:csak_kisbetu` | 2 004 |
+| `nem_igazolt:csak_ekezet` | 30 |
+| `nem_igazolt:nincs_egyezes` | 147 |
+| `nem_igazolt:nincs_karoli` | 158 |
+| `nem_igazolt:nincs_lxx_vers` | 40 |
+
+Könyvenként (USFM-kód):
+
+| könyv (USFM) | érintett | igazolt | strong_elteres | csak_kisbetu | csak_ekezet | nincs_egyezes | nincs_karoli | nincs_lxx_vers |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| 1CH | 817 | 513 | 39 | 262 | 0 | 3 | 0 | 0 |
+| 1KI | 784 | 586 | 55 | 115 | 0 | 8 | 0 | 20 |
+| 1SA | 718 | 608 | 40 | 69 | 0 | 1 | 0 | 0 |
+| 2CH | 961 | 749 | 92 | 118 | 0 | 2 | 0 | 0 |
+| 2KI | 758 | 563 | 51 | 144 | 0 | 0 | 0 | 0 |
+| 2SA | 661 | 503 | 31 | 127 | 0 | 0 | 0 | 0 |
+| AMO | 144 | 132 | 11 | 1 | 0 | 0 | 0 | 0 |
+| DAN | 336 | 245 | 15 | 58 | 0 | 18 | 0 | 0 |
+| DEU | 815 | 728 | 54 | 29 | 0 | 4 | 0 | 0 |
+| ECC | 156 | 100 | 9 | 0 | 25 | 1 | 21 | 0 |
+| EST | 190 | 119 | 10 | 56 | 0 | 2 | 1 | 2 |
+| EXO | 1104 | 936 | 92 | 27 | 1 | 3 | 34 | 11 |
+| EZK | 1207 | 1109 | 62 | 32 | 0 | 4 | 0 | 0 |
+| EZR | 234 | 185 | 14 | 35 | 0 | 0 | 0 | 0 |
+| GEN | 1141 | 795 | 53 | 290 | 0 | 2 | 0 | 1 |
+| HAB | 76 | 74 | 1 | 1 | 0 | 0 | 0 | 0 |
+| HAG | 35 | 34 | 1 | 0 | 0 | 0 | 0 | 0 |
+| HOS | 150 | 115 | 4 | 3 | 0 | 13 | 15 | 0 |
+| ISA | 1080 | 953 | 37 | 31 | 3 | 45 | 7 | 4 |
+| JDG | 760 | 601 | 33 | 126 | 0 | 0 | 0 | 0 |
+| JER | 1219 | 1061 | 40 | 114 | 0 | 3 | 0 | 1 |
+| JOB | 596 | 557 | 27 | 7 | 0 | 0 | 5 | 0 |
+| JOL | 91 | 89 | 2 | 0 | 0 | 0 | 0 | 0 |
+| JON | 46 | 44 | 1 | 0 | 0 | 1 | 0 | 0 |
+| JOS | 496 | 327 | 30 | 134 | 0 | 4 | 0 | 1 |
+| LAM | 147 | 131 | 2 | 0 | 0 | 14 | 0 | 0 |
+| LEV | 802 | 776 | 23 | 3 | 0 | 0 | 0 | 0 |
+| MAL | 63 | 60 | 2 | 1 | 0 | 0 | 0 | 0 |
+| MIC | 113 | 100 | 9 | 3 | 0 | 1 | 0 | 0 |
+| NAM | 47 | 42 | 5 | 0 | 0 | 0 | 0 | 0 |
+| NEH | 370 | 305 | 4 | 61 | 0 | 0 | 0 | 0 |
+| NUM | 1078 | 879 | 50 | 120 | 0 | 3 | 26 | 0 |
+| OBA | 22 | 20 | 1 | 1 | 0 | 0 | 0 | 0 |
+| PRO | 480 | 450 | 11 | 1 | 1 | 2 | 15 | 0 |
+| PSA | 1724 | 1606 | 96 | 11 | 0 | 8 | 3 | 0 |
+| RUT | 76 | 65 | 1 | 9 | 0 | 1 | 0 | 0 |
+| SNG | 93 | 59 | 2 | 0 | 0 | 3 | 29 | 0 |
+| ZEC | 238 | 207 | 17 | 12 | 0 | 0 | 2 | 0 |
+| ZEP | 48 | 42 | 2 | 3 | 0 | 1 | 0 | 0 |
+| **össz.** | 19876 | 16468 | 1029 | 2004 | 30 | 147 | 158 | 40 |
+
+- **Diff-őr** (`split('\t')`): a 39 fájlban csak a `gorog_lxx` oszlop változott, és csak χ/ξ-s sorban, pontosan a χ↔ξ csere szerint; a két új oszlop hozzáadódott; minden más oszlop 0 diff; a `Macula_gorog.tsv`, az `F17_illesztetlen.tsv`, az `F17_kezi_fejezetek.tsv` és az `F17_import_stat.json` 0 diff. Az `F17_87_hely.tsv` egyetlen sora változott (`ἐχαλεῖψαι` → `ἐξαλεῖψαι`, a `macula_gorog` oszlop).
+- **Felmérő újrafuttatása a javított táblán** (`eszkozok/macula_chi_xi_felmeres.py`, kapcsoló nélkül): a szkript „eredeti” szava most a javított alak: `igazolt_eredeti` (A) 17 497, `igazolt_csere` 0, ahogy várt; B: 16 468 / 1 029 / 2 004 / 30 / 147 / 158 / 40.
+- Az `eszkozok/f17/macula_futtat.py` új `--kimenet` kapcsolója (ideiglenes kimeneti gyökér) az alapértelmezett viselkedést nem változtatja.

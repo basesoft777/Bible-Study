@@ -5,13 +5,16 @@ kod: MACULA CHI XI
 tipus: feladat
 fazis: folyamat
 modell: sonnet
-allapot: nem_indult
+allapot: lezarva
+ag: claude/f115-macula-chi-xi
 ad: a `Macula_heber_*.tsv` `gorog_lxx` és a `token_macula.lxx_szo` χ↔ξ-hibája az importban javítva (teljes csere az érintett sorokban), soronkénti Rahlfs-minőségjelöléssel és a forrásalak megőrzésével; a vers-lap Macula-táblázata a javított alakot mutatja
-kovetkezo: Te: a futtatás a `/kovetkezo`-val, helyi gépen (pinelt Macula-klónok, WSL-natív pardes.db)
+kovetkezo: Te: a PR átnézése és a merge
 munka: adat
 helyi_gep: igen
 olvas: [konkordancia/Macula_heber_*.tsv, konkordancia/LXX_OS/, naplok/MACULA_CHI_XI_felmeres.md, naplok/F17_import_naplo.md, eszkozok/f17/, eszkozok/macula_chi_xi_felmeres.py, eszkozok/sqlite_epit.py, eszkozok/olvaso_szerver/, eszkozok/olvaso_pilot/, adat/SEMA.md]
-ir: ["konkordancia/Macula_heber_*.tsv", naplok/F17_87_hely.tsv, naplok/F17_illesztetlen.tsv, eszkozok/f17/macula_import.py, eszkozok/f17/macula_futtat.py, eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, eszkozok/olvaso_szerver/lekerdezesek.py, eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_pilot/teszt_olvaso_pilot.py, eszkozok/macula_chi_xi_felmeres.py, adat/SEMA.md]
+pr: https://github.com/basesoft777/Bible-Study/pull/402
+lezarva_osszegzes: χ↔ξ teljes csere az importban (19 876 sor), forrásalak és Rahlfs-jelölés új oszlopban, osztályszámok pontosan a felmérés szerint; token_macula két új oszlop, olvasó-jelölő; ellenőrzés: naplok/ELLENOR_F115.md; zárójelentés: naplok/MACULA_CHI_XI_zaras.md
+ir: ["konkordancia/Macula_heber_*.tsv", naplok/F17_87_hely.tsv, naplok/F17_illesztetlen.tsv, eszkozok/f17/macula_import.py, eszkozok/f17/macula_futtat.py, eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, eszkozok/olvaso_szerver/lekerdezesek.py, eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_pilot/teszt_olvaso_pilot.py, eszkozok/macula_chi_xi_felmeres.py, adat/SEMA.md, adat/bdb_vers_jelentes.tsv]
 fugg: []
 nem_fugg: [11, 101, 114]
 ---
@@ -31,7 +34,7 @@ A Clear-Bible/macula-hebrew@47db250b `greek` attribútumában a χ és a ξ fel 
 **Benne van:** `eszkozok/f17/macula_import.py` (a javító és osztályozó függvény, LXX_OS-index), `eszkozok/f17/macula_futtat.py` (hívás, új oszlopok, fejléc), a 39 `konkordancia/Macula_heber_*.tsv` újragenerálása, a `naplok/F17_87_hely.tsv` / `naplok/F17_illesztetlen.tsv` (ha a futtató írja és változnak), `eszkozok/sqlite_epit.py` (`token_macula` két új oszlop), `eszkozok/olvaso_szerver/lekerdezesek.py` `macula()` és `blokkok.py` `_r_macula_gorog` (javított alak + jelölő), `adat/SEMA.md`, a tesztek (3.6), a `pardes.db` újraépítése és az olvasó-tesztek.
 
 **Nincs benne:**
-- **Upstream jelzés a Clear-Bible-nek** (GitHub issue) — nyilvános megszólalás, csak a felhasználó dönthet róla; javaslatként a zárónaplóba kerül (N-F115a).
+- **Upstream jelzés a Clear-Bible-nek** (GitHub issue) — nyilvános megszólalás, csak a felhasználó dönthet róla; javaslatként a zárónaplóba kerül (N56).
 - A `Macula_gorog.tsv` (ÚSZ) — nem érintett; a futtató újraírja, a diffje 0 legyen.
 - A χ/ξ-t nem tartalmazó, mégis Rahlfs-eltérő sorok (a kontrollban a χ/ξ-mentes sorok 8,9%-a: kis-/nagybetű, szövegforma, versszám) — nem e hiba, nem kapnak jelölést.
 - A `naplok/F08_bemenet.txt` 3 hibás alakja (történeti napló); az `adat/lxx_dontesek.tsv` (Strongon/lemmán dolgozik); a lexikon (a `blokk_lxx` LXX_OS-ből olvas); a `blokkok.py:425-442` csempe-heurisztikájának átírása.
@@ -65,7 +68,7 @@ A Clear-Bible/macula-hebrew@47db250b `greek` attribútumában a χ és a ξ fel 
   - `gorog_lxx_forras` — az upstream `greek` attribútum változatlanul, **minden** sorban;
   - `gorog_lxx_rahlfs` — üres (χ/ξ-mentes, érintetlen sor) vagy a fenti minőségjelölés.
 - **`gorog_lxx`** = a javított érték (χ/ξ-mentes sorban az upstream érték). Jelölten üres mező nem keletkezik: ahol a `gorog_lxx_forras` nem üres, ott a `gorog_lxx` sem.
-- A fejlécbe egy sor a szabályról (`DT-F115a`, `naplok/MACULA_CHI_XI_felmeres.md`); a `naplok/F17_import_naplo.md`-be egy szakasz a javítás számaival. A `F17_87_hely.tsv` (a `macula_futtat.py:103,289` a nyers `greek`-et írja) ugyanazzal a függvénnyel a javított értéket kapja.
+- A fejlécbe egy sor a szabályról (`DT203`, `naplok/MACULA_CHI_XI_felmeres.md`); a `naplok/F17_import_naplo.md`-be egy szakasz a javítás számaival. A `F17_87_hely.tsv` (a `macula_futtat.py:103,289` a nyers `greek`-et írja) ugyanazzal a függvénnyel a javított értéket kapja.
 
 ### 3.3 Mérés és ⛔1 (ellenőrzés)
 - Futtatás az ideiglenes kimenetre; osztályonként és könyvenként számold a `gorog_lxx_rahlfs` értékeit.
@@ -107,8 +110,8 @@ A Clear-Bible/macula-hebrew@47db250b `greek` attribútumában a χ és a ξ fel 
 
 ### 3.7 Zárás
 - `naplok/MACULA_CHI_XI_zaras.md`: a számok osztályonként és könyvenként, a ⛔1-ellenőrzés eredménye, a diff-őr és a tesztkimenet.
-- `NYITOTT_FELADATOK.md`: a „2026.10.05 χ/ξ” tétel LEZÁRVA; marad két javaslat: N-F115a (upstream jelzés), N-F115b (LXX_OS kulcsrés Én/Préd).
-- `DONTESEK.md`: `DT-F115a` (a javítási szabály, l. 5.).
+- `NYITOTT_FELADATOK.md`: a „2026.10.05 χ/ξ” tétel LEZÁRVA; marad két javaslat: N56 (upstream jelzés), N57 (LXX_OS kulcsrés Én/Préd).
+- `DONTESEK.md`: `DT203` (a javítási szabály, l. 5.).
 - Független ellenőr (`fuggetlen-ellenor`) a base..head diffen, saját lekérdezéssel: legalább 20 véletlen `rahlfs_igazolt` és 10 `nem_igazolt:*` sor összevetése az LXX_OS-szel és a forrásalakkal.
 - Merge csak a felhasználótól.
 
@@ -127,6 +130,6 @@ A Clear-Bible/macula-hebrew@47db250b `greek` attribútumában a χ és a ξ fel 
 
 | Azonosító | Tárgy | Állapot |
 |---|---|---|
-| DT-F115a | A javítási szabály: teljes χ↔ξ (Χ↔Ξ) csere minden χ/ξ-s `gorog_lxx` sorban, az import-lépésben; a forrásalak a `gorog_lxx_forras` oszlopban; a Rahlfs-igazolás soronkénti minőségjelölés (`gorog_lxx_rahlfs`: `rahlfs_igazolt` / `nem_igazolt:<ok>`), nem feltétel; jelölten üres mező nem keletkezik; megállás, ha a Rahlfs bárhol az eredeti alakot igazolja, kétértelmű sor jelenik meg, vagy az osztályszámok ±1%-nál jobban eltérnek a felméréstől. Indok: 19 876 érintett sorból 0-ban igazolja a Rahlfs az eredeti alakot, 0 kétértelmű (`naplok/MACULA_CHI_XI_felmeres.md`). | a felhasználó döntötte el (2026-10-18); a menet rögzíti a `DONTESEK.md`-ben |
-| N-F115a | Upstream jelzés a Clear-Bible/macula-hebrew-nak a `greek` attribútum χ↔ξ cseréjéről | javaslat; a felhasználó dönt (nyilvános megszólalás) |
-| N-F115b | LXX_OS Károli-kulcsrés: 29 Én- és 21 Préd-sornak nincs Károli-kulcsa vagy LXX_OS-verse (napló 5. szakasz) | külön tétel, ha a felhasználó kéri |
+| DT203 | A javítási szabály: teljes χ↔ξ (Χ↔Ξ) csere minden χ/ξ-s `gorog_lxx` sorban, az import-lépésben; a forrásalak a `gorog_lxx_forras` oszlopban; a Rahlfs-igazolás soronkénti minőségjelölés (`gorog_lxx_rahlfs`: `rahlfs_igazolt` / `nem_igazolt:<ok>`), nem feltétel; jelölten üres mező nem keletkezik; megállás, ha a Rahlfs bárhol az eredeti alakot igazolja, kétértelmű sor jelenik meg, vagy az osztályszámok ±1%-nál jobban eltérnek a felméréstől. Indok: 19 876 érintett sorból 0-ban igazolja a Rahlfs az eredeti alakot, 0 kétértelmű (`naplok/MACULA_CHI_XI_felmeres.md`). | a felhasználó döntötte el (2026-10-18); a menet rögzíti a `DONTESEK.md`-ben |
+| N56 | Upstream jelzés a Clear-Bible/macula-hebrew-nak a `greek` attribútum χ↔ξ cseréjéről | javaslat; a felhasználó dönt (nyilvános megszólalás) |
+| N57 | LXX_OS Károli-kulcsrés: 29 Én- és 21 Préd-sornak nincs Károli-kulcsa vagy LXX_OS-verse (napló 5. szakasz) | külön tétel, ha a felhasználó kéri |
