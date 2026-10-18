@@ -174,6 +174,25 @@ class LicencHiany(Exception):
     pass
 
 
+class VersmegfKeziMt(Exception):
+    """F117.5 (DT-F117f (a)): a versmegfeleltető táblában KEZI osztályú sor kitöltött igehely_mt-vel áll."""
+    pass
+
+
+def kezi_mt_or(vm_sorok):
+    """F117.5 őr (DT-F117f (a), N-F117a): a `_bsb_szamozas` az igehely_mt-t úgy olvassa, mintha a kitöltött érték a
+    Károli-szám volna (MT osztály), és máshol azonosságot vesz; a DT-F117e (c) óta a KEZI osztályú sor kitöltött
+    igehely_mt-je a valódi MT-szám (Károli ≠ KJV és ≠ MT), ezért a leképezés ütközne (mért: 6 Károli-vers két
+    BSB MT-versen). A javításig (N-F117a) az építés itt érthető hibával leáll; nem kerülhető meg."""
+    hibas = [r['igehely_karoli'] for r in vm_sorok
+             if (r.get('osztaly') or '').strip() == 'KEZI' and (r.get('igehely_mt') or '').strip()]
+    if hibas:
+        raise VersmegfKeziMt(
+            'a konkordancia/Karoli_versmegfeleltetes.tsv %d KEZI osztályú sora kitöltött igehely_mt-t hordoz '
+            '(pl. %s); a sqlite_epit BSB-számozása (_bsb_szamozas) ezt még nem kezeli: az építés leáll. '
+            'Javítás: NYITOTT_FELADATOK.md N-F117a (DT-F117f (a)).' % (len(hibas), ', '.join(hibas[:5])))
+
+
 def szo_kis(s):
     """F92 (v1.1): a magyar szo kisbetus, normalizalt alakja a kereshetosegre: NFC, kisbetu, minden
     nem-betu/szamjegy karakter (Karoli-irasjel, kotojel, aposztrof) nelkul. A kereso oldalon
@@ -737,6 +756,7 @@ class Epito(object):
     # -- BSB + szamozas ------------------------------------------------------------
     def _bsb_szamozas(self):
         vm = G.tsv_beolvas(os.path.join(self.konk, 'Karoli_versmegfeleltetes.tsv'))[1]
+        kezi_mt_or(vm)   # F117.5 őr (DT-F117f (a)): KEZI + kitöltött igehely_mt -> leáll (N-F117a)
         mt_kk = {}
         for r in vm:
             if r['igehely_mt']:
