@@ -6,15 +6,15 @@ tipus: feladat
 fazis: folyamat
 munka: folyamat
 modell: sonnet
-allapot: lezarva
+allapot: megallt
 ag: claude/f111-elteres
 ad: `/elteres` parancs, amely egy `ELTÉRÉS: <n> tétel` jelentést egyeztetett besorolással, a brief modelljén futó javítással és korlátozott számú újraellenőrzéssel zár le
-kovetkezo: nincs; a PR-t a felhasználó kéri
+kovetkezo: "Te: /elteres 111 — ELLENOR_F111, 5 tétel: 1. G6 próba-hűség (az F115 PR-ja mergelt, a próbának meg kellett volna állnia); 2. zárás-állapot (lezarva az ellenőrzés előtt); 3. G4 a k kör/tételszám kétértelmű, korlát utáni újraindítás nem áll meg; 4. G6 besorolás (2. és 3. tétel hatokoron_kivul); 5. brief-törzs változott (D2, E1)"
 olvas: [.claude/commands/kovetkezo.md, .claude/commands/befogad.md, .claude/agents/, MUNKAMENET.md, BRIEF_SABLON.md]
 ir: [.claude/commands/elteres.md, .claude/commands/kovetkezo.md]
 fugg: []
 pr: 
-lezarva_osszegzes: `/elteres` parancs (7 lépés, korlát 2 kör, tételes maradék) és egyetlen mondat a `kovetkezo.md` 9. lépésében; száraz próba az ELLENOR_F115 7 tételén; zárójelentés: naplok/F111_zaras.md
+lezarva_osszegzes: 
 ---
 # F111_ELTERES_PARANCS_BRIEF.md — javítókör-parancs a független ellenőr ELTÉRÉS-jelentéséhez
 
