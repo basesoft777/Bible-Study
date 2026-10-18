@@ -243,7 +243,11 @@ def sha256(p):
     return hashlib.sha256(open(p, 'rb').read()).hexdigest()
 
 
-ALLAPOT = '# ÁLLAPOT: importált, javaslat — az M2 mérése előtt (naplok/KJV_SZOVEG_meres.md).'
+ALLAPOT = ('# ÁLLAPOT: importált, javaslat. Mérés (manual, mért 2026-10-18, naplok/KJV_SZOVEG_meres.py; nem a generátor számolja; naplok/KJV_SZOVEG_meres.md): '
+           'M-a: a KJV_Strongs_teljes.tsv versei ⊆ e tábla versei, a különbség pontosan a 3 címke nélküli vers (Mk 9:43, Lk 6:41, Lk 17:36; naplok/F19_hianyok.tsv); '
+           '31 102 kanonikus vers + 116 zsoltárfelirat (0. vers). M-b: 362 399 Strong-szóelem, megmagyarázatlan eltérés 0 '
+           '(76 összetett szó, pl. where+in = wherein, és 8 szótöredék-címke, pl. afrai|…+d: naplok/KJV_SZOVEG_szoegyezes_hiany.tsv). '
+           'M-c: üres Szöveg 0, vershíd 0, a veszteség-sor számai a nyers jelölőszámokkal egyeznek.')
 
 
 def fejlecsorok(zsha, ts, sz):
