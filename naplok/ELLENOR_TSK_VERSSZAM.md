@@ -30,3 +30,34 @@ Ellenőr: `fuggetlen-ellenor` subagent, modell: claude-opus-5-5 (kért: `opus`, 
 3. A jelentés hamis tényállítása az 1Sám 17:12–31-ről (A1).
 4. Az N-F114b nincs megnyitva.
 5. A brief `kovetkezo` mezője elavult.
+
+---
+
+# Újraellenőrzés — origin/main (be85d5de)..HEAD (6a47fe96); a javító menet: 95035cd8..HEAD
+
+Ellenőr: `fuggetlen-ellenor` subagent, claude-opus-5-5 (kért: `opus`, egyezik). *Az orkesztrátor írta ki az ellenőr jelentéséből; a táblasorokat (1Kir 22:45–49, Jób 39:34–38, Préd 9:21–23) a `Karoli_versmegfeleltetes.tsv`-n megerősítette (scope=a felsorolt kulcsok | forras=grep | ts=2026-10-18).*
+
+| pont | eredmény | indok |
+|---|---|---|
+| Előző 1. kód (MT-tartalék csak MT/szamlalas, 86 sor) | OK | `tsk_kulcs.py:84-88`; `tsk "1Sám 17:12"` n=16; `tsk "Jer 23:5"` eléri a Jer 33,14/16-ot (1 sor kimarad: Ézs 4:2, tábla-lyuk, a (b) szerint) |
+| Előző 1. negatív esetek | OK | Hós 14:2, Zsolt 18:1, Jób 39:34, Préd 9:21, Zsolt 13:1: „nincs KJV-pár” |
+| Előző 1. az MT/szamlalas-tartalék tartalmi helyessége | **ELTÉRÉS** | az 1Kir 22:46–49-en a Károli-tartalom a KJV 22:45–48 (`karoli "1Kir 22:46"` = Josafát egyéb dolgai), az MT-tartalék eltolt TSK-párt ad (22:46 → a paráznák-hivatkozások). A main identitása ugyanezt adta (nem regresszió), de a „86 sor azonos számú” premissza hamis, teszt nincs rá. Rokon, nyitott tétel nélküli táblahibák: Károli 1Kir 22:54 = KJV 22:53, Jón 2:11 = KJV 2:10, Ézs 3:27 = KJV 3:26; a szomszédos `tvtms` sorok (1Kir 22:43–45, 50–53; Jón 2:10; Ézs 3:26) azonosságot adnak eltolt tartalomra. |
+| F. rész nem körkörös | OK, korláttal | a régi elérés a `Karoli_1908.tsv`-ből; helyes halmazt nem számol, hibás új párt nem fog meg (a docstring kimondja) |
+| `F114_elveszett_sorok.tsv` osztály-oszlopa | **ELTÉRÉS** | a `kategoria(src)` a KJV-kulcsot Károli-kulcsként keresi ki (`felmeres.py:156-158,185`); 24 KJV-kulcs (195 forrás-, 155 célsor) rossz okkal címkézve. A „Jób 39:34–38, Préd 9:21–23: a KJV-ben nincs ilyen vers” hamis: Károli Préd 9:21–23 = KJV 10:1–3, Jób 39:34–38 = KJV 40:1–5, Dán 3:31–33 = KJV 4:1–3; Préd 2:26, Zsolt 13:6 Károli-összevonásban. Ezeknek van Károli-otthonuk, mégis elvesznek. |
+| Előző 2. (Jón 2:1 a docstringben) | OK | `tsk_kulcs.py:90` |
+| Előző 3. (jelentés E3) | **ELTÉRÉS** (részben javult) | az új mondat mind a 161 üres-KJV sorra azonosságot állít (a 66 feliratsorra, a 8 KEZI-re, az 1Kir 22:46–49-re hamis); az E3 táblázat (`:19,23,24`) a DT-F114d előtti számokat mutatja jelölés nélkül (friss: 21 309; 272/4 211; 282/3 446) |
+| Előző 4. (N-F114b) | OK | `NYITOTT_FELADATOK.md:134` |
+| Előző 5. (brief fejléc) | OK | — |
+| DT-F114d | OK formailag | 🟢, idézet, Hós 13/14, Én 6 indok igazolva; a tényalapban a fenti két hamis premissza áll |
+| N-F54a bővítés | OK | 13 fejezet, 235/3 653 forrás, 243/2 360 cél |
+| Írási halmaz, TSK érintetlen, jeloltek 7 sor, render_diff 43 + negatív teszt | OK | — |
+| Tesztek | OK | `teszt_tsk_kulcs.py` 12 OK; `teszt_render_diff_osztalyoz.py` 74 OK |
+| CI | OK | `futtat.py` exit 0; E25/E27 találatok a diffen kívül |
+| A1 | ELTÉRÉS | l. fent |
+| A3–A5 | NEM ALKALMAZHATÓ | — |
+
+## ÖSSZEGZÉS — ELTÉRÉS: 3 tétel
+
+1. A DT-F114d tényalapja és az elveszett-sorok napló osztályozása hamis (24 kulcs rossz kulcson címkézve; Préd 9:21–23 / Jób 39:34–38 / Dán 3:31–33 KJV-párja létezik). A felhasználó a (b)-t részben ezen a premisszán választotta.
+2. Az MT/szamlalas-tartalék az 1Kir 22:46–49-en eltolt párt ad (nem regresszió); rokon `tvtms` táblahibák nyitott tétel nélkül.
+3. A jelentés E3 túláltalánosít, a táblázata elavult számokat mutat.
