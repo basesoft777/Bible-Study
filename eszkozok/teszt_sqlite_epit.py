@@ -222,6 +222,44 @@ class Negativ(unittest.TestCase):
             shutil.rmtree(tmp, ignore_errors=True)
 
 
+class KeziMtOr(unittest.TestCase):
+    """F117.5 (DT-F117f (a)): KEZI osztályú sor kitöltött igehely_mt-vel -> az építés leáll (N-F117a)."""
+    FEJ = 'igehely_karoli\tigehely_kjv\tigehely_mt\tosztaly\tforras\tmegjegyzes'
+
+    def _gyoker(self, sorok):
+        tmp = tempfile.mkdtemp()
+        self.addCleanup(shutil.rmtree, tmp, True)
+        os.makedirs(os.path.join(tmp, 'konkordancia'))
+        with open(os.path.join(tmp, 'konkordancia', 'Karoli_versmegfeleltetes.tsv'), 'w', encoding='utf-8', newline='\n') as f:
+            f.write('# teszt-fixtúra\n' + self.FEJ + '\n' + '\n'.join(sorok) + '\n')
+        return tmp
+
+    def test_kezi_kitoltott_mt_leall(self):
+        g = self._gyoker(['Hós 2:1\t2:2\t2:4\tKEZI\tszoveg_osszevetes_f117\t-',
+                          '1Móz 1:1\t1:1\t\tKJV\tszamlalas\t'])
+        ep = S.Epito(g, os.path.join(g, 'x.db'), 'minta')
+        with self.assertRaises(S.VersmegfKeziMt) as cm:
+            ep._bsb_szamozas()
+        self.assertIn('1 KEZI', str(cm.exception))
+        self.assertIn('Hós 2:1', str(cm.exception))
+        self.assertIn('N-F117a', str(cm.exception))
+
+    def test_kezi_ures_mt_mt_es_kjv_nem_all_le(self):
+        sorok = [{'igehely_karoli': 'Préd 9:20', 'igehely_kjv': '9:18', 'igehely_mt': '', 'osztaly': 'KEZI'},
+                 {'igehely_karoli': 'Jón 2:3', 'igehely_kjv': '2:2', 'igehely_mt': '2:3', 'osztaly': 'MT'},
+                 {'igehely_karoli': '1Móz 1:1', 'igehely_kjv': '1:1', 'igehely_mt': '', 'osztaly': 'KJV'}]
+        S.kezi_mt_or(sorok)   # nem dob
+        g = self._gyoker(['Préd 9:20\t9:18\t\tKEZI\tkezi\traw=9:18', 'Jón 2:3\t2:2\t2:3\tMT\tszoveg_osszevetes_f117\t-',
+                          '1Móz 1:1\t1:1\t\tKJV\tszamlalas\t'])
+        ep = S.Epito(g, os.path.join(g, 'y.db'), 'minta')
+        try:
+            ep._bsb_szamozas()
+        except S.VersmegfKeziMt:
+            self.fail('az őr KEZI üres mt / MT / KJV soron nem állhat le')
+        except Exception:
+            pass   # az őr után a fixtúrából hiányzó BSB-forrás miatti hiba nem az őr tárgya
+
+
 class Normalizalas(unittest.TestCase):
     @classmethod
     def setUpClass(cls):

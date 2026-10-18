@@ -69,3 +69,15 @@ A `Karoli_versmegfeleltetes.tsv`-t olvasó eszközök (`grep -rl Karoli_versmegf
 ## 3. E6 — a többi adat bájtra változatlan
 
 `git ls-tree -r <ref> -- adat konkordancia`: a 305 egyéb `*.tsv` (a `Karoli_versmegfeleltetes.tsv` és a `_javitas.tsv` nélkül; az `LXX_OS/` is benne van) (blob, útvonal) listájának sha256-ja az alapcommiton (89b30c2e) és a HEAD-en egyaránt `eb706190034459ea3c31fd37c1e6c8f12987b862e7ce9f08f2e02806328d89ca`. A `git diff --name-only 89b30c2e -- adat/ konkordancia/` csak a `Karoli_versmegfeleltetes.tsv`-t, a `Karoli_versmegfeleltetes_javitas.tsv`-t és a `README.md`-t mutatja.
+
+## 4. Az F117.5 őr (DT-F117f (a)) és a tesztek
+
+- **Őr:** `eszkozok/sqlite_epit.py` `kezi_mt_or()`, a `_bsb_szamozas()` elején hívva. Ha a versmegfeleltető táblában `KEZI` osztályú sor kitöltött `igehely_mt`-t hordoz, `VersmegfKeziMt` hibával leáll: kiírja a sorok számát és az első öt példát, és hivatkozik az N-F117a-ra. A valós táblán 174 sor, első példák: 1Sám 20:43, 2Móz 35:36, 2Móz 36:1, 36:10, 36:11. Az `sqlite_epit.py` és a tesztfájl írása egyeztetett eltérés: a brief `ir` mezőjén kívül esik, a felhasználó kérése.
+- **Teszt:** `eszkozok/teszt_sqlite_epit.py` `KeziMtOr`, fixtúrával, 2 teszt, mindkettő zöld (`cd eszkozok && python -m unittest -v teszt_sqlite_epit.KeziMtOr`):
+  - a `KEZI` + mt sor leállít;
+  - a `KEZI` üres mt-vel, az `MT` és a `KJV` sor nem állít le.
+- **A teljes tesztfájl** (`python eszkozok/teszt_sqlite_epit.py`; ezek nem olvasó-szerver tesztek, a `teszt_futtat.py` nem futtatja őket): 38 teszt futott, 1 FAIL és 2 ERROR.
+  - **ERROR: `Integracio.setUpClass`.** A valós repóadatból épít (`Epito(ROOT, …, 'minta')`), és az őr leállítja. Emiatt az összes integrációs teszt kimarad (korábban 70 teszt futott).
+  - **ERROR: `FeliratHalmaz.test_a_felirat_versnek_nincs_terkep_erteke_a_db_ben`.** Ugyanez az ok.
+  - **FAIL: `Pozitiv.test_mai_adat_zold`.** A main-en is fennálló „15. kapcsolatok.tsv” jelentéssor (`naplok/F117_javitas_jelentes.md` 4. pont), nem az őr okozza.
+  - A két ERROR a felhasználó feltétele szerint ⛔: nem gyengítettem és nem kerültem meg. Feloldásuk az N-F117a (a `_bsb_szamozas` javítása), vagy a felhasználó döntése.
