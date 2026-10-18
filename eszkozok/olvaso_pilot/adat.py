@@ -17,6 +17,8 @@ from collections import Counter, defaultdict
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from bdb_szelet import szeletel, alap_jelentes  # noqa: E402
 from bovites import MorfKulcs, bovit  # noqa: E402
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+import tsk_kulcs  # noqa: E402
 
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
@@ -166,9 +168,12 @@ for r in sorok('adat/kulso/lxx_bridge.tsv'):
 
 # --- kereszthivatkozások
 tsk = defaultdict(list)
-for r in sorok('konkordancia/TSK_kereszthivatkozasok.tsv'):
-    if len(r) > 3 and r[0] in VERSEK:
-        tsk[r[0]].append((int(r[3]) if r[3].lstrip('-').isdigit() else 0, r[2]))
+# F114: a TSK KJV-kulcsú; forrás és cél a tsk_kulcs átváltón át Károli-versszámra váltva
+_TSK_FEJ = ['Igehely', 'Kapcsolódó igehely', 'Kapcsolódó igehely magyar megjelenítése', 'Votes']
+_tsk_nyers = (dict(zip(_TSK_FEJ, r)) for r in sorok('konkordancia/TSK_kereszthivatkozasok.tsv') if len(r) > 3)
+for r in tsk_kulcs.forras_sorok(_tsk_nyers, set(VERSEK)):
+    tsk[r['Igehely']].append((int(r['Votes']) if r['Votes'].lstrip('-').isdigit() else 0,
+                              r['Kapcsolódó igehely magyar megjelenítése']))
 kh = defaultdict(list)
 STEP_HU = step_tabla()
 for r in sorok('konkordancia/Karoli_kereszthivatkozasok.tsv'):

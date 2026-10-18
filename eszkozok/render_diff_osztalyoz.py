@@ -324,7 +324,7 @@ ISMERETLEN = 'ismeretlen'
 
 PROBA_KATEGORIAK = (
     'kiejtes', 'tbesh', 'ubs_dbh', 'mounce_sece', 'teologiai', 'nyelvi_hatter', 'lxx_korpusz', 'licenc',
-    'szerep', 'szerep_vaz', 'elavult_adat', 'fordites_jelzo', 'ismert_hiba_tsk_versszam', 'felhasznalo_elfogadva', 'jeloles', 'tanulmany',
+    'szerep', 'szerep_vaz', 'elavult_adat', 'fordites_jelzo', 'tsk_kulcs_javitas', 'felhasznalo_elfogadva', 'jeloles', 'tanulmany',
     'torzscikk_res')
 
 # DT-F09g (felhasználói döntés, 2026-10-17): megnevezett táblák, nem általános szabályok.
@@ -472,17 +472,56 @@ FELHASZNALO_DARAB = {
     ('MENNY-001_TORZSCIKK.md', 'A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).'): 1,
     ('TEREMT-001_TORZSCIKK.md', 'A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).'): 1,
 }
-# 2. ISMERT HIBA (N-F09g): a TSK-tábla KJV-számozású, a tsk_index() átváltás nélkül Károli-kulccsal keres; a Préd 9:10
-#    alatti 12 TSK-jelölt a KJV 9:10 = Károli 9:12 vershez tartozott, és emiatt veszett el. CSAK ez a 13 sor (12 TSK-jelölt a tudományos oldalon + a törzscikk-oldal összevont sora):
-ISMERT_HIBA_TSK_VERSSZAM = {
-    ('ALVIL-001', '- TSK: Kol 3:23 (Votes: 71)'), ('ALVIL-001', '- TSK: Ef 5:16 (Votes: 35)'),
-    ('ALVIL-001', '- TSK: Róm 12:11 (Votes: 35)'), ('ALVIL-001', '- TSK: Zsolt 6:5 (Votes: 24)'),
-    ('ALVIL-001', '- TSK: 1Kor 9:24 (Votes: 19)'), ('ALVIL-001', '- TSK: Préd 11:6 (Votes: 18)'),
-    ('ALVIL-001', '- TSK: 2Krón 31:20 (Votes: 17)'), ('ALVIL-001', '- TSK: 2Krón 31:21 (Votes: 17)'),
-    ('ALVIL-001', '- TSK: Jer 29:13 (Votes: 17)'), ('ALVIL-001', '- TSK: Mt 6:33 (Votes: 15)'),
-    ('ALVIL-001', '- TSK: Ézs 38:19 (Votes: 15)'), ('ALVIL-001', '- TSK: Ézs 38:18 (Votes: 15)'),
-    # a törzscikk-oldal ugyanezen 12 jelöltje egy sorban (lexikon/ALVIL-001_TORZSCIKK.md:676)
+# 2. TSK-KULCSJAVÍTÁS (F114, N-F09g, DT-F114c (a), Felhasználó 2026-10-18): az éles lexikon a TSK KJV-kulcsú / KJV-célú sorait hordozza;
+#    a tsk_kulcs átváltóval ezek a sorok helyesen más Károli-kulcson / -célon állnak. CSAK ez a 46 név szerinti törölt sor (DT-F114e: +3 HAMART-001 sor az Ézs 3:10–11 céloldali kivétele miatt)
+#    (2 az N-F09g-ből: a Zsolt 6:5 -> 6:6 cél, + 41 régi TSK-sor; mérés: naplok/F114_proba_ismeretlen.tsv):
+TSK_KULCS_JAVITAS_SOROK = {
+    ('ALVIL-001', '- TSK: Zsolt 6:5 (Votes: 24)'),
     ('ALVIL-001', '- **TSK-kereszthivatkozás** (szavazatszám): Kol 3:23 (71), Ef 5:16 (35), Róm 12:11 (35), Zsolt 6:5 (24), 1Kor 9:24 (19), Préd 11:6 (18), 2Krón 31:20 (17), 2Krón 31:21 (17), Jer 29:13 (17), Mt 6:33 (15), Ézs 38:18 (15), Ézs 38:19 (15)'),
+    ('ALVIL-001', '- **TSK-kereszthivatkozás** (szavazatszám): ApCsel 2:27 (51), ApCsel 2:31 (51), ApCsel 13:35 (31), ApCsel 13:38 (31), Zsolt 49:15 (23), Jel 1:18 (18)'),
+    ('ALVIL-001', '- **TSK-kereszthivatkozás** (szavazatszám): Zsolt 50:15 (26), 2Sám 22:7 (21), Zsolt 34:15 (20), Zsolt 130:1 (18), Zsolt 130:2 (18), Zsolt 120:1 (15)'),
+    ('ALVIL-001', '- **TSK-kereszthivatkozás** (szavazatszám): Ézs 25:8 (15)'),
+    ('ALVIL-001', '- **TSK-kereszthivatkozás** (szavazatszám): Róm 6:9 (33), Zsid 7:25 (22), Róm 14:8 (20), Róm 14:9 (20), Zsolt 68:20 (19), Jel 3:7 (16), Ézs 22:22 (15)'),
+    ('ALVIL-001', '- TSK: Zsolt 49:15 (Votes: 23)'),
+    ('ALVIL-001', '- TSK: Zsolt 50:15 (Votes: 26)'),
+    ('ALVIL-001', '- TSK: 2Sám 22:7 (Votes: 21)'),
+    ('ALVIL-001', '- TSK: Zsolt 34:15 (Votes: 20)'),
+    ('ALVIL-001', '- TSK: Zsolt 130:1 (Votes: 18)'),
+    ('ALVIL-001', '- TSK: Zsolt 130:2 (Votes: 18)'),
+    ('ALVIL-001', '- TSK: Zsolt 120:1 (Votes: 15)'),
+    ('ALVIL-001', '- TSK: Ézs 25:8 (Votes: 15)'),
+    ('ALVIL-001', '- TSK: Zsolt 68:20 (Votes: 19)'),
+    ('ANTROP-001', '- **TSK-kereszthivatkozás** (szavazatszám): 1Kor 15:45 (38), Jób 33:4 (38), Préd 12:7 (36), Ézs 64:8 (30), ApCsel 17:25 (25), 1Kor 15:47 (20), 1Móz 3:19 (19), Jób 27:3 (18), 1Móz 7:22 (15)'),
+    ('ANTROP-001', '- **TSK-kereszthivatkozás** (szavazatszám): 1Sám 2:1 (26), 1Sám 2:10 (26), Zsolt 34:2 (18), Zsolt 34:3 (18)'),
+    ('ANTROP-001', '- **TSK-kereszthivatkozás** (szavazatszám): Jer 23:29 (179), Ézs 55:11 (165), Ef 6:17 (101), Zsolt 119:130 (99), 1Pét 1:23 (77), Ézs 49:2 (76), Jel 1:16 (61), 1Thessz 2:13 (55), Jer 17:10 (53), Róm 1:16 (48), Zsolt 149:6 (41), Jel 19:15 (39), Ef 5:13 (36), 2Kor 10:4 (35), 2Kor 10:5 (35), Luk 8:11 (35), Zsolt 139:2 (32), 1Pét 2:4 (30), 1Pét 2:5 (30), Ján 6:51 (30), Ézs 11:4 (28), Jel 19:21 (27), Jel 2:16 (27), ApCsel 4:31 (26), 1Kor 14:24 (26), 1Kor 14:25 (26), Zsolt 45:3 (26), Zsid 13:7 (25), ApCsel 2:37 (24), Jel 2:23 (23), Jel 20:4 (22), 2Kor 4:2 (22), Péld 5:4 (22), 1Thessz 5:23 (22), Jak 1:18 (18), Préd 12:11 (16), 2Kor 2:17 (15)'),
+    ('ANTROP-001', '- TSK: Préd 12:7 (Votes: 36)'),
+    ('ANTROP-001', '- TSK: Ézs 64:8 (Votes: 30)'),
+    ('ANTROP-001', '- TSK: Zsolt 34:2 (Votes: 18)'),
+    ('ANTROP-001', '- TSK: Zsolt 45:3 (Votes: 26)'),
+    ('ANTROP-001', '- TSK: Préd 12:11 (Votes: 16)'),
+    ('HAMART-001', '- **TSK-kereszthivatkozás** (szavazatszám): Préd 12:7 (25), Jób 34:15 (17)'),
+    ('HAMART-001', '- **TSK-kereszthivatkozás** (szavazatszám): Mt 15:19 (43), Róm 1:28 (33), Róm 1:31 (33), Mk 7:21 (30), Mk 7:23 (30), Jer 4:14 (26), Ef 2:1 (25), Ef 2:3 (25), Jer 17:9 (25), Préd 9:3 (21), Préd 7:29 (20), 1Móz 8:21 (18), Zsolt 53:2 (16), Tit 3:3 (15)'),
+    ('HAMART-001', '- **TSK-kereszthivatkozás** (szavazatszám): Zsolt 10:4 (35), Zsolt 53:1 (21), Róm 3:10 (16), Róm 3:12 (16)'),
+    ('HAMART-001', '- **TSK-kereszthivatkozás** (szavazatszám): Zsolt 118:8 (53), Zsolt 118:9 (53), Zsolt 146:3 (40), Zsolt 146:4 (40), Ézs 2:22 (29), 2Krón 32:8 (23), Ézs 31:1 (17), Ézs 31:9 (17), Ézs 30:1 (15), Ézs 30:7 (15)'),
+    ('HAMART-001', '- TSK: Préd 12:7 (Votes: 25)'),
+    ('HAMART-001', '- TSK: Préd 9:3 (Votes: 21)'),
+    ('HAMART-001', '- TSK: Zsolt 53:1 (Votes: 21)'),
+    ('HAMART-001', '- TSK: Ézs 2:22 (Votes: 29)'),
+    ('ISTENTISZT-001', '- **TSK-kereszthivatkozás** (szavazatszám): Zsolt 50:15 (130), Jer 29:11 (113), Jer 29:12 (113), ApCsel 2:21 (83), Ézs 65:23 (69), Ézs 65:24 (69), Ézs 48:10 (66), 1Pét 1:6 (60), 1Pét 1:7 (60), Zsolt 34:15 (59), Zsolt 34:19 (59), Zsolt 91:15 (58), Jel 21:7 (42), 1Pét 4:12 (42), Jer 30:22 (41), Ézs 43:2 (38), Jak 1:12 (37), 5Móz 26:17 (30), 5Móz 26:19 (30), Zsolt 66:10 (28), Zsolt 66:12 (28), Hós 2:21 (27), Hós 2:23 (27), Zak 10:6 (25), Mal 3:2 (24), Mal 3:3 (24), Zsid 8:10 (22), Jób 23:10 (22), Zak 8:8 (19), Ézs 58:9 (19), Mt 22:29 (19), Mt 22:32 (19), Jer 31:33 (19), 3Móz 26:12 (19), Róm 10:12 (18), Róm 10:14 (18), Péld 17:3 (16), Zak 12:10 (16), Zsolt 144:15 (16), Jel 21:3 (16), Jel 21:4 (16), 1Kor 3:11 (15), 1Kor 3:13 (15), Ez 37:27 (15), Jóel 2:32 (15), Ez 36:28 (15)'),
+    ('ISTENTISZT-001', '- TSK: Zsolt 34:15 (Votes: 59)'),
+    ('ISTENTISZT-001', '- TSK: Zsolt 34:19 (Votes: 59)'),
+    ('ISTENTISZT-001', '- TSK: Hós 2:21 (Votes: 27)'),
+    ('ISTENTISZT-001', '- TSK: Hós 2:23 (Votes: 27)'),
+    ('MENNY-001', '- **TSK-kereszthivatkozás** (szavazatszám): 4Móz 13:33 (22), 2Sám 21:15 (15), 2Sám 21:22 (15)'),
+    ('MENNY-001', '- TSK: 4Móz 13:33 (Votes: 22)'),
+    ('TEREMT-001', '- **TSK-kereszthivatkozás** (szavazatszám): Zsolt 86:5 (18), Ruth 2:12 (16), Zsolt 91:4 (16), 1Ján 3:1 (15)'),
+    ('TEREMT-001', '- TSK: Zsolt 86:5 (Votes: 18)'),
+    ('TEREMT-001', '- TSK: Ruth 2:12 (Votes: 16)'),
+    ('TEREMT-001', '- TSK: Zsolt 91:4 (Votes: 16)'),
+    ('TEREMT-001', '- TSK: 1Ján 3:1 (Votes: 15)'),
+    ('HAMART-001', '- **TSK-kereszthivatkozás** (szavazatszám): Jak 1:15 (58), Róm 2:6 (33), Róm 2:10 (33), Ézs 3:10 (27), Ézs 3:11 (27), Róm 6:16 (24), Zsid 11:4 (23), 4Móz 32:23 (21), Róm 12:1 (19), Róm 7:8 (17), Róm 7:9 (17), Mal 1:13 (17), Péld 21:27 (16), Mal 1:10 (15)'),
+    ('HAMART-001', '- TSK: Ézs 3:10 (Votes: 27)'),
+    ('HAMART-001', '- TSK: Ézs 3:11 (Votes: 27)'),
 }
 
 
@@ -656,8 +695,8 @@ _ADAT_BLOKKOK = ('elofordulasok', 'kizart', 'kapcsolatok', 'kereszthivatkozasok'
 
 def _tudomanyos_kategoria(sor, kontextus, irany, proba=None, motivum=None):
     s = sor.strip()
-    if irany == 'torolt' and (motivum, s) in ISMERT_HIBA_TSK_VERSSZAM:
-        return 'ismert_hiba_tsk_versszam'
+    if irany == 'torolt' and (motivum, s) in TSK_KULCS_JAVITAS_SOROK:
+        return 'tsk_kulcs_javitas'
     if irany == 'torolt' and ATKULCSOLT_KULCS.get(ATKULCSOLT_SOROK.get((motivum, s))):
         return 'elavult_adat'  # F87.3 átkulcsolás: a régi kulcs sora
     blokk, nyelv, szerep, rokon = kontextus
@@ -698,8 +737,8 @@ def _tudomanyos_kategoria(sor, kontextus, irany, proba=None, motivum=None):
 
 def _torzscikk_kategoria(sor, szakasz, irany='hozzaadott', proba=None, motivum=None):
     s = sor.strip()
-    if irany == 'torolt' and (motivum, s) in ISMERT_HIBA_TSK_VERSSZAM:
-        return 'ismert_hiba_tsk_versszam'
+    if irany == 'torolt' and (motivum, s) in TSK_KULCS_JAVITAS_SOROK:
+        return 'tsk_kulcs_javitas'
     if irany == 'torolt' and ATKULCSOLT_KULCS.get(ATKULCSOLT_SOROK.get((motivum, s))):
         return 'elavult_adat'  # F87.3 átkulcsolás: a régi kulcs sora
     kat = _torzscikk_kat(sor, szakasz)
@@ -842,7 +881,7 @@ def _kiejtes_kulonbseg(a, b):
 # DT-F09g (4. javító menet): cellánkénti összevetés. A sor kategóriája az eltérő mezők kategóriáiból adódik; a
 # legkockázatosabb nyer (a sorrend: elöl a legkockázatosabb).
 KOCKAZAT_SORREND = (ISMERETLEN, 'szerep', 'licenc', 'lxx_korpusz', 'elavult_adat', 'tbesh', 'ubs_dbh', 'mounce_sece',
-                    'teologiai', 'nyelvi_hatter', 'ismert_hiba_tsk_versszam', 'felhasznalo_elfogadva', 'fordites_jelzo',
+                    'teologiai', 'nyelvi_hatter', 'tsk_kulcs_javitas', 'felhasznalo_elfogadva', 'fordites_jelzo',
                     'kiejtes', 'jeloles', 'szerep_vaz', 'torzscikk_res', 'tanulmany')
 _HELYORZO = ('', '—', '-', '–')
 _LXX_ALLAPOT = ('egyező', 'eltérő', 'LXX-minusz', 'kutatói azonosítás függőben', 'szamozas_elteres')
@@ -1185,7 +1224,7 @@ def proba_osztalyoz(fajl_nev, eles_szoveg, proba_szoveg, parok=None):
     for idx, (s, k, f) in enumerate(torolt):
         if idx in kat_t:
             continue
-        if (motivum, s.strip()) in ISMERT_HIBA_TSK_VERSSZAM or (motivum, s.strip()) in ATKULCSOLT_SOROK:
+        if (motivum, s.strip()) in TSK_KULCS_JAVITAS_SOROK or (motivum, s.strip()) in ATKULCSOLT_SOROK:
             nevesitett.add(idx)
 
     # (1) kizárólagos párosítás a normalizált kulccsal, azonos szakaszban

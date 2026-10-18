@@ -150,3 +150,22 @@ a Károli-specifikus forrás szűkebb (32 408 sor), de közvetlenül a magyar ha
 származik; a TSK jóval szélesebb (432 949 sor) és szavazat-súlyozott, de angol nyelvű
 köztes hagyományból. Melyik mikor megbízhatóbb, illetve hogyan egészítik ki egymást —
 tényleges összevetéssel eldöntendő, jövőbeli kérdés, nem ennek a feladatnak a része.
+
+## Kulcsolás: KJV-versszám, magyar könyvnévvel (F114)
+
+**A fájl mindkét kulcsa (`Igehely` és `Kapcsolódó igehely`) KJV-számozású**, a könyvnév
+viszont magyar. A projekt többi adata Károli-kulcsú; a kettő a Zsoltárokban (feliratok),
+a Prédikátorban, a 4Móz 13-ban, a Jóelben, a Malakiásban, a Hóseásban, a Jób 39–41-ben és
+másutt eltér (`Karoli_versmegfeleltetes.tsv`). Ezért a dataset **nem olvasható
+Károli-kulcsként**: minden fogyasztó az `eszkozok/tsk_kulcs.py` átváltón át olvassa
+(forrás- és célkulcs egyaránt). A fájl **KJV-kulcsú marad, bájtra változatlan**; az átváltás
+olvasáskor történik. Az átváltó explicit „nincs pár” értéket ad (pl. zsoltárfelirat, vagy
+a KJV olyan verse, amelynek nincs Károli-megfelelője); az ilyen sor kimarad, nem kap csendes
+azonosságot. Mért hatás: `naplok/TSK_VERSSZAM_felmeres.md`, `naplok/TSK_VERSSZAM_jelentes.md`.
+
+**Kimondott korlát (DT-F114b (b), N-F114a): az ÚSZ-ön az átváltó azonosságot ad**, mert a
+versmegfeleltetés-tábla csak az ÓSZ-t fedi. Mért eltérés (`naplok/F114_USZ_meres.md`): 5 csak-KJV
+vers (1Kor 3:23, 2Kor 13:14, ApCsel 19:41, Róm 3:31, Róm 8:39), 5 csak-Károli vers (3Ján 1:15,
+Jel 12:18, Luk 6:41, Luk 17:36, Mk 9:43), valamint nem mért tartalmi eltolódás (pl. Jel 12:18/13:1).
+A TSK ÚSZ-oldala nem ellenőrzött; a lezárás az N-F114a (ÚSZ-megfeleltetés).
+Szintén nyitott (N-F114b): a tartomány-igehelyre (pl. `1Móz 14:18-20`) a lexikon TSK-indexe nem keres.
