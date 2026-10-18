@@ -20,12 +20,12 @@ Szemléltető, nem a parancs kimenete: ha az ág nem volna mergelt, a 2. lépés
 |---|---|---|---|
 | 1 | G7: `teszt_bdb_vers_jelentes.test_bajtra_azonos` bukik | tartalmi | a hash-eltérés okai részben nem e tétel (DT-F99n/DT179) |
 | 2 | G8: nincs olvasó-teszt a jelölőre | hatokoron_kivul | az `eszkozok/olvaso_szerver/teszt_*` nincs az F115 `ir`-jében |
-| 3 | CI E27: ágnévre hivatkozás (`NYITOTT_FELADATOK.md:144`) | hatokoron_kivul | a `NYITOTT_FELADATOK.md` nincs az F115 `ir`-jében |
+| 3 | CI E27: ágnévre hivatkozás (`NYITOTT_FELADATOK.md:144`) | mechanikus | a `NYITOTT_FELADATOK.md` közös koordinációs fájl (`BRIEF_SABLON.md` kivétele), az `ir`-be nem kell; a hivatkozás javítása egyértelmű |
 | 4 | N57 félrevezető címke | mechanikus | a rés a Macula `karoli` oszlopában van (mért) |
 | 5 | `strong_elteres` 714/1029 üres LXX_OS-Strong | tartalmi | a jelentés szerint a felhasználó dönt |
 | 6 | Teszt (1) megengedő `assertIn` | mechanikus | a mért érték a DB-ből adott |
 | 7 | `Macula_gorog.tsv` csak `ts` változott | mechanikus | a fájl visszaállítása |
-Összesen: 3 mechanikus, 2 tartalmi, 2 hatókörön kívüli, 0 téves.
+Összesen: 4 mechanikus, 2 tartalmi, 1 hatókörön kívüli, 0 téves.
 
 ## Körszámláló száraz próbája (írás nélkül; `kovetkezo` mező `[elteres_kor k/2]` jelölője, ELLENOR_F111 3.)
 A jelölő a `Te:` / `Folytatás:` után áll (`feladatok.py` `startswith` vizsgálat); új fejlécmező nincs (az `elteres_kor` mező `ellenoriz`-en „ismeretlen kulcs” hibát adna, ezért a felhasználó a `kovetkezo`-szöveges megoldást választotta, `feladatok.py` érintetlen).
