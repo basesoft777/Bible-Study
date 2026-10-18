@@ -51,6 +51,8 @@ def fut(args):
     ki_naplok = os.path.join(args.kimenet, 'naplok') if args.kimenet else os.path.join(K.REPO, 'naplok')
     usfm_mag, usfm_step, mag_usfm, kanoni = K.konyvtablak()
     szotar = M.szotar_strongok()
+    lxx_ix = M.lxx_os_index()
+    chi_xi_stat = {'osztaly': Counter(), 'konyv': defaultdict(Counter), 'ellenorzo': Counter(), 'erintett': 0}
     karoli_v = K.karoli_versek()
     illesztetlen = []
 
@@ -99,11 +101,18 @@ def fut(args):
             strong_pelda.setdefault(kulcs, (a['ref'], a['_szoveg'], a.get('gloss', '')))
         allapot_db[allapot.split(':')[0]] += 1
         gs = M.strong_ertek(a.get('greekstrong', ''), 'G')[0]
+        gl_forras = a.get('greek', '')
+        gl, gl_rahlfs = M.lxx_chi_xi_javit(gl_forras, gs, [k for k in karoli.split(';') if k], lxx_ix,
+                                           chi_xi_stat['ellenorzo'])
+        if gl_rahlfs:
+            chi_xi_stat['erintett'] += 1
+            chi_xi_stat['osztaly'][gl_rahlfs] += 1
+            chi_xi_stat['konyv'][usfm][gl_rahlfs] += 1
         heber.append([a['xml_id'], a['ref'], karoli, mod, allapot, a['_szoveg'], a.get('lemma', ''), strong,
                       a.get('strongnumberx', ''), sill, a.get('morph', ''), a.get('pos', ''), a.get('gloss', ''),
-                      a.get('greek', ''), gs])
+                      gl, gs, gl_forras, gl_rahlfs])
         szavak_vers[mtk].append((strong_szam(a.get('strongnumberx', '')), a['_szoveg'],
-                                 a.get('greek', ''), a.get('greekstrong', '')))
+                                 gl, a.get('greekstrong', '')))
     for kulcs, db in sorted(versek_macula.items()):
         if not inv.get(kulcs):
             illesztetlen.append(('macula_vers_nincs_karoli', 'heber', '%s %d:%d' % kulcs, '', '', db,
@@ -124,7 +133,10 @@ def fut(args):
                 kk_nelkuli += 1
     fejl = M.fejlec_sorok(M.HEBER_URL, 'commit ' + hsha, 'CC BY 4.0 (Biblica, Inc); l. naplok/F17_import_naplo.md',
                           PARANCS, 'sorok: morfema-szint (lowfat <w>); ref = Macula (MT/WLC) szamozas; '
-                          'karoli = KK-alapu Karoli-vers(ek), ;-vel elvalasztva')
+                          'karoli = KK-alapu Karoli-vers(ek), ;-vel elvalasztva; '
+                          'gorog_lxx = az upstream `greek` chi<->xi cserevel javitva (DT-F115a, naplok/MACULA_CHI_XI_felmeres.md), '
+                          'gorog_lxx_forras = az upstream ertek valtozatlanul, '
+                          'gorog_lxx_rahlfs = rahlfs_igazolt | nem_igazolt:<ok> (chi/xi-mentes sorban ures)')
     heber_fajlok = M.tsv_ir_konyvenkent(ki_konk, fejl, M.HEBER_OSZLOP, heber)
     stat['heber'] = {'sorok': len(heber), 'fajlok': dict(heber_fajlok), 'lowfat_w': len(lista), 'commit': hsha, 'allapot': dict(allapot_db),
                      'strong_illesztes': dict(sill_db), 'macula_versek': len(versek_macula),
@@ -303,6 +315,7 @@ def fut(args):
     with open(os.path.join(ki_naplok, 'F17_import_stat.json'), 'w', encoding='utf-8', newline='\n') as f:
         json.dump(stat, f, ensure_ascii=False, indent=1, sort_keys=True)
         f.write('\n')
+    fut.chi_xi = chi_xi_stat
     return stat
 
 
@@ -314,6 +327,11 @@ def main():
     args = ap.parse_args()
     stat = fut(args)
     print(json.dumps(stat, ensure_ascii=False, indent=1, sort_keys=True))
+    cx = fut.chi_xi
+    print('CHI_XI_STAT ' + json.dumps({'erintett': cx['erintett'], 'osztaly': dict(cx['osztaly']),
+                                       'ellenorzo': dict(cx['ellenorzo']),
+                                       'konyv': {k: dict(v) for k, v in cx['konyv'].items()}},
+                                      ensure_ascii=False, sort_keys=True))
 
 
 if __name__ == '__main__':
