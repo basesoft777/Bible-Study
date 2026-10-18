@@ -34,6 +34,22 @@ class KulcsTeszt(unittest.TestCase):
         kj = [v for v in T._K2J.values() if v]
         self.assertEqual(len(kj), len(set(kj)))
 
+    def test_mt_tartalek_szamlalas(self):
+        # DT-F114d (b): MT|szamlalas, üres igehely_kjv -> az igehely_mt a KJV-kulcs
+        self.assertEqual(T.karoli_to_kjv('1Sám 17:12'), '1Sám 17:12')
+        self.assertEqual(T.kjv_to_karoli('1Sám 17:12'), ['1Sám 17:12'])
+        self.assertEqual(T.kjv_to_karoli('Jer 33:15'), ['Jer 33:15'])
+
+    def test_mt_tartalek_negativ(self):
+        T._betolt()
+        # nincs_sor (a Károli-versnek nincs sora a táblában): nincs pár
+        self.assertEqual(T.kjv_to_karoli('Hós 14:2'), [])
+        # MT|lxx_os_etalon_f91 felirat: nincs KJV-pár, az MT-szám nem lesz KJV-kulcs
+        self.assertIsNone(T.karoli_to_kjv('Zsolt 18:1'))
+        # KEZI|kezi_identitas_javitas és KJV|lxx_os_etalon_f91 (felirat): nincs pár
+        for v in ('Jób 39:34', 'Préd 9:21', 'Zsolt 13:1'):
+            self.assertIsNone(T.karoli_to_kjv(v), v)
+
     def test_azonos_vers(self):
         self.assertEqual(T.karoli_to_kjv('1Móz 1:1'), '1Móz 1:1')
         self.assertEqual(T.kjv_to_karoli('1Móz 1:1'), ['1Móz 1:1'])

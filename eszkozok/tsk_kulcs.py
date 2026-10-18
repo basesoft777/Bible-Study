@@ -25,12 +25,17 @@ A mért eltérés (naplok/F114_USZ_meres.md): 5 csak-KJV vers (1Kor 3:23, 2Kor
 12:18, Luk 6:41, Luk 17:36, Mk 9:43), valamint a nem mért tartalmi eltolódás
 (pl. Jel 12:18/13:1). A TSK ÚSZ-oldala nem ellenőrzött; a lezárás N-F114a.
 
+ÜRES igehely_kjv (DT-F114d (b), Felhasználó 2026-10-18): az `osztaly=MT` és `forras=szamlalas` sorokra
+(86 sor, LXX-hiány) a KJV-kulcs az `igehely_mt` (MT-tartalék). Minden más üres-KJV sor, és minden
+Károli-vers, amelynek nincs sora a táblában (`nincs_sor`; pl. Hós 13–14, Én 6, 2Móz 35–36), "nincs pár"
+marad: a számegyezés ott hibás párt adna (Károli Hós 14 = 10 vers, KJV = 9). A tábla pótlása: N-F54a.
+
 ISMERT KORLÁTOK (F114.10, naplok/ELLENOR_TSK_VERSSZAM.md):
   * Körkörösség: az átváltó és a felmérő „helyes” halmaza ugyanabból a táblából jön, ezért a
     0/0 mérés a tábla hibáit nem fogja meg. A nem körkörös mérés: tsk_versszam_felmeres.py F. rész.
-  * Üres `igehely_kjv` (161 sor; LXX-hiány vagy kézi identitás): jelenleg „nincs pár”, ami a
-    main-hez képest elveszett TSK-sorokat jelent (pl. 1Sám 17:12–31) — DT-F114d.
-  * A megfeleltetésben nem szereplő Károli-versek (pl. 2Móz 35–36) szintén „nincs pár”.
+  * Az MT|szamlalas kivételével az üres `igehely_kjv` (75 sor) és a táblában nem szereplő
+    Károli-versek „nincs pár”-ok: a main-hez képest elveszett TSK-sorok, tételesen:
+    naplok/F114_elveszett_sorok.tsv.
   * Ismert táblahiba (N-F41a): Jón 2:1 — a Károli 2:1 a KJV 1:17-nek felel meg, a tábla KJV 2:1-et ad.
 
 A TSK-tartomány-igehelyek kibontása nem része ennek a modulnak (N-F114b).
@@ -64,6 +69,7 @@ def _betolt():
         sorok = [s.rstrip('\n').rstrip('\r') for s in f if not s.startswith('#')]
     fej = sorok[0].split('\t')
     ik, ij = fej.index('igehely_karoli'), fej.index('igehely_kjv')
+    im, io_, ifo = fej.index('igehely_mt'), fej.index('osztaly'), fej.index('forras')
     for s in sorok[1:]:
         if not s:
             continue
@@ -75,6 +81,11 @@ def _betolt():
         konyv = b.group(1)
         konyvek.add(konyv)
         kj = m[ij].strip()
+        # DT-F114d (b): MT-tartalék KIZÁRÓLAG az osztaly=MT, forras=szamlalas sorokra, ahol az
+        # igehely_kjv üres (LXX-hiány; a KJV-vers létezik, számozása az MT-vel azonos).
+        # Más üres-KJV sor (MT|lxx_os_etalon_f91 felirat, KEZI, KJV|lxx felirat) "nincs pár" marad.
+        if not kj and m[io_] == 'MT' and m[ifo] == 'szamlalas' and m[im].strip():
+            kj = m[im].strip()
         if kj:
             kj = '%s %s' % (konyv, kj)
             k2j[kk] = kj

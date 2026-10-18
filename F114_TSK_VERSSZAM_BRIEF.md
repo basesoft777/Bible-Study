@@ -6,7 +6,7 @@ tipus: feladat
 fazis: folyamat
 munka: adat
 modell: sonnet
-allapot: dontesre_var
+allapot: fut
 ag: claude/tsk-versszam
 ad: a TSK forrás- és célkulcsa mind az öt fogyasztóban egy közös átváltón át Károli-versszámon áll (a dataset érintetlen); a felmérőszkript az ÓSZ-en 0 rossz és 0 elmaradó sort mér, az N-F09g lezárható
 kovetkezo: Te: DT-F114d (az üres igehely_kjv szabálya: (a) MT-tartalék mindkét MT-osztályra, (b) csak MT|szamlalas, (c) igazolt KJV-vers esetén, (d) korlát); utána tsk_kulcs.py javítás és újraellenőrzés
