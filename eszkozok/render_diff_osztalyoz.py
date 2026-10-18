@@ -35,6 +35,7 @@ import os
 import re
 import subprocess
 import sys
+import unicodedata
 
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
@@ -364,7 +365,8 @@ ATKULCSOLT_SOROK = {
 # DT-F09g (felhasználó, 2026-10-17, chat): a 32 elfogadott `ismeretlen` sor NÉV SZERINT (fájl + pontos sorszöveg), csak törölt irány.
 # Csoportok: forditas_ubs_forras_elavult 14 · joshua_forrasvaltas 2 · bdb_formatumvaltozas 2 · lsj_licencverzio_valtas 1 ·
 # szamozas_elteres_fuggobe_valt 6 (kutatói azonosítás függőben lett) · szamozas_elteres_helyorzo_feloldodott 4 (tartalomra oldódott) ·
-# kutatoi_azonositas_feloldodott 3 · (2026-10-18) leiro_mondat_bovult 8 · f87_glossza_javitas 4. Általános szabály nincs.
+# kutatoi_azonositas_feloldodott 3 · (2026-10-18) leiro_mondat_bovult 8 · f87_glossza_javitas 4 · (DT-F113b) jelmagyarazat_mondat 8 ·
+# kezi_2b_lefedettseg_sece 3. Általános szabály nincs.
 FELHASZNALO_ELFOGADOTT = {
     ('ALVIL-001_TUDOMANYOS.md', '- `adat/forditas_ubs.tsv` (projekt-adat)'): 'forditas_ubs_forras_elavult',
     ('ALVIL-001_TUDOMANYOS.md', '| `forditas_ubs.tsv` | `adat/forditas_ubs.tsv` | projekt-adat | elofordulasok |'): 'forditas_ubs_forras_elavult',
@@ -404,9 +406,21 @@ FELHASZNALO_ELFOGADOTT = {
     ('TEREMT-001_TORZSCIKK.md', '- **Kulcsszó:** a mélységbe — תְּהֹמֹ֖ת (te.ho.Mot)'): 'f87_glossza_javitas',
     ('TEREMT-001_TUDOMANYOS.md', '| [2Móz 15:5](#ige-2móz-15-5) | a mélységbe — תְּהֹמֹ֖ת (te.ho.Mot) | — | Remez | H8415 | — | — *(ÓSZ)* | magas · tartalom-alapú[^5] |'): 'f87_glossza_javitas',
     ('TEREMT-001_TUDOMANYOS.md', '*Ez a blokk a `[ID: TEREMT-001]` motívum 2 Strong-tokenjét fedi, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*'): 'leiro_mondat_bovult',
+    # felhasználó, 2026-10-18 (DT-F113b (2), #113): a szűkítés után a régi mátrixból sem igazolható 11 törölt sor -- a 3 `kézi (2/b)` lefedettségsor (ISTENTISZT-001) és a 8 jelmagyarázat-mondat
+    ('ALVIL-001_TORZSCIKK.md', 'A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).'): 'jelmagyarazat_mondat',
+    ('ANTROP-001_TORZSCIKK.md', 'A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).'): 'jelmagyarazat_mondat',
+    ('HAMART-001_TORZSCIKK.md', 'A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).'): 'jelmagyarazat_mondat',
+    ('HODIT-001_TORZSCIKK.md', 'A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).'): 'jelmagyarazat_mondat',
+    ('ISTENTISZT-001_TORZSCIKK.md', 'A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).'): 'jelmagyarazat_mondat',
+    ('ISTENTISZT-001_TORZSCIKK.md', '| G1941 | TBESG | Thayer | nincs adatosítva | UBS DNTG (Louw–Nida) | UBS DNTG glossza + referencia-szám; Mounce kiegészítő | az ÚSZ-szó LXX-háttere: mely héber szavakat ad vissza, mely versekben (lekerdez.py lxx-hid, LXX_OS) | kézi (2/b) | LSJ, ha releváns | UBS DNTG (szópozícióig) | nincs adatosítva |'): 'kezi_2b_lefedettseg_sece',
+    ('ISTENTISZT-001_TORZSCIKK.md', '| H7121 | TBESH | BDB | nincs adatosítva | UBS DBH (SDBH) | nincs adatosítva | LXX-fordítói döntés versenként: mely görög szó adja vissza (LXX_OS + adat/lxx_dontesek.tsv; a lexikonoldal 3. szakasza) | kézi (2/b) | nincs adatosítva | nincs adatosítva | nincs adatosítva |'): 'kezi_2b_lefedettseg_sece',
+    ('ISTENTISZT-001_TORZSCIKK.md', '| H8034 | TBESH | BDB | nincs adatosítva | UBS DBH (SDBH) | nincs adatosítva | LXX-fordítói döntés versenként: mely görög szó adja vissza (LXX_OS + adat/lxx_dontesek.tsv; a lexikonoldal 3. szakasza) | kézi (2/b) | nincs adatosítva | nincs adatosítva | nincs adatosítva |'): 'kezi_2b_lefedettseg_sece',
+    ('KIRALY-001_TORZSCIKK.md', 'A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).'): 'jelmagyarazat_mondat',
+    ('MENNY-001_TORZSCIKK.md', 'A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).'): 'jelmagyarazat_mondat',
+    ('TEREMT-001_TORZSCIKK.md', 'A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).'): 'jelmagyarazat_mondat',
 }
 # Az elfogadott sorok ELVÁRT darabszáma kulcsonként (4. ellenőrzés 3. eltérése): fájlonként és kulcsonként legfeljebb ennyi
-# törölt sort fogad el az osztályozó, a többlet `ismeretlen`. Az összeg 44 = 32 + 12.
+# törölt sort fogad el az osztályozó, a többlet `ismeretlen`. Az összeg 55 = 32 + 12 + 11 (DT-F113b).
 FELHASZNALO_DARAB = {
     ('ALVIL-001_TUDOMANYOS.md', '*Ez a blokk a `[ID: ALVIL-001]` motívum 2 Strong-tokenjét fedi, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*'): 1,
     ('ALVIL-001_TUDOMANYOS.md', '- `adat/forditas_ubs.tsv` (projekt-adat)'): 1,
@@ -445,6 +459,18 @@ FELHASZNALO_DARAB = {
     ('TEREMT-001_TUDOMANYOS.md', '*Ez a blokk a `[ID: TEREMT-001]` motívum 2 Strong-tokenjét fedi, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*'): 1,
     ('TEREMT-001_TUDOMANYOS.md', '- `adat/forditas_ubs.tsv` (projekt-adat)'): 1,
     ('TEREMT-001_TUDOMANYOS.md', '| `forditas_ubs.tsv` | `adat/forditas_ubs.tsv` | projekt-adat | elofordulasok |'): 1,
+    # felhasználó, 2026-10-18 (DT-F113b (2), #113): a szűkítés után a régi mátrixból sem igazolható 11 törölt sor -- a 3 `kézi (2/b)` lefedettségsor (ISTENTISZT-001) és a 8 jelmagyarázat-mondat
+    ('ALVIL-001_TORZSCIKK.md', 'A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).'): 1,
+    ('ANTROP-001_TORZSCIKK.md', 'A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).'): 1,
+    ('HAMART-001_TORZSCIKK.md', 'A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).'): 1,
+    ('HODIT-001_TORZSCIKK.md', 'A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).'): 1,
+    ('ISTENTISZT-001_TORZSCIKK.md', 'A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).'): 1,
+    ('ISTENTISZT-001_TORZSCIKK.md', '| G1941 | TBESG | Thayer | nincs adatosítva | UBS DNTG (Louw–Nida) | UBS DNTG glossza + referencia-szám; Mounce kiegészítő | az ÚSZ-szó LXX-háttere: mely héber szavakat ad vissza, mely versekben (lekerdez.py lxx-hid, LXX_OS) | kézi (2/b) | LSJ, ha releváns | UBS DNTG (szópozícióig) | nincs adatosítva |'): 1,
+    ('ISTENTISZT-001_TORZSCIKK.md', '| H7121 | TBESH | BDB | nincs adatosítva | UBS DBH (SDBH) | nincs adatosítva | LXX-fordítói döntés versenként: mely görög szó adja vissza (LXX_OS + adat/lxx_dontesek.tsv; a lexikonoldal 3. szakasza) | kézi (2/b) | nincs adatosítva | nincs adatosítva | nincs adatosítva |'): 1,
+    ('ISTENTISZT-001_TORZSCIKK.md', '| H8034 | TBESH | BDB | nincs adatosítva | UBS DBH (SDBH) | nincs adatosítva | LXX-fordítói döntés versenként: mely görög szó adja vissza (LXX_OS + adat/lxx_dontesek.tsv; a lexikonoldal 3. szakasza) | kézi (2/b) | nincs adatosítva | nincs adatosítva | nincs adatosítva |'): 1,
+    ('KIRALY-001_TORZSCIKK.md', 'A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).'): 1,
+    ('MENNY-001_TORZSCIKK.md', 'A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).'): 1,
+    ('TEREMT-001_TORZSCIKK.md', 'A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (a 2/b résben kézzel rögzítve), vagy `nincs adatosítva` (RENDER_BRIEF.md G7).'): 1,
 }
 # 2. ISMERT HIBA (N-F09g): a TSK-tábla KJV-számozású, a tsk_index() átváltás nélkül Károli-kulccsal keres; a Préd 9:10
 #    alatti 12 TSK-jelölt a KJV 9:10 = Károli 9:12 vershez tartozott, és emiatt veszett el. CSAK ez a 13 sor (12 TSK-jelölt a tudományos oldalon + a törzscikk-oldal összevont sora):
@@ -618,8 +644,9 @@ def _par_kategoria(egyik, masik):
         return 'szerep_vaz'  # csak a fejléc mélysége
     if _FORDITAS_JELZO_RE.sub('(F)', a) == _FORDITAS_JELZO_RE.sub('(F)', b):
         return 'fordites_jelzo'
-    ga, gb = _LATIN_ZAROJEL_RE.findall(a), _LATIN_ZAROJEL_RE.findall(b)
-    if ga != gb and _SCRIPT_RE.search(a + b):
+    # #113 (5. hely): a zárójeles rész cseréje csak akkor kiejtés, ha a változás maga átírás (adatalapú próba,
+    # `_kiejtes_kulonbseg`); ugyanaz a függvény, mint a cellánkénti ágon. Különben None: cellánkénti összevetés.
+    if _kiejtes_kulonbseg(a, b):
         return 'kiejtes'
     return None
 
@@ -755,18 +782,61 @@ def _jeloles_kulonbseg(a, b):
     return tiszta(a) == tiszta(b)
 
 
+# #113 (5. hely): adatalapú átírás-próba. A zárójeles csere csak akkor kiejtés, ha mindkét oldal latin átírási
+# karakterkészletű, ÉS az új oldal ugyanannak a szónak a mai kiejtése: görögül a `kiejtes.atir()` a régi (SBL-)
+# átírásból, héberül az `adat/kiejtes_kivetelek.tsv` héber lemma-kiejtése a mező valamelyik héber szavára.
+_ATIRAS_KESZLET_RE = re.compile(r"^[A-Za-zÀ-ɏḀ-ỿʾʿ.' \-]+$")
+_STRONG_UTOTAG_RE = re.compile(r',?\s*[HG]\d{4}[a-z]?\s*$')
+_HEBER_SZO_RE = re.compile('[֐-׿]+')
+_kiejtes_cache = {}
+
+
+def _kiejtes_adat():
+    """(görög szabályok, görög kivételek, héber lemma-kiejtések) -- a kiejtes.py betöltőivel, egyszer."""
+    if not _kiejtes_cache:
+        import kiejtes as KJ
+        _kiejtes_cache['k'] = (KJ, KJ.szabalyok_betolt(), KJ.kivetelek_betolt(), KJ.kivetelek_betolt(nyelv='heber'))
+    return _kiejtes_cache['k']
+
+
+def _atirasnak_tunik(x):
+    """Latin átírási karakterkészlet (betű, ékezet, SBL-diakritika, pont, aposztróf, kötőjel, szóköz)."""
+    return bool(x) and bool(_ATIRAS_KESZLET_RE.match(x))
+
+
+def _atiras_par(x, y, mezo):
+    """Egy eltérő zárójeles pár (x régi, y új) átírás-csere-e: a lemma / Strong-utótag azonos, csak az átírás
+    (a vesszővel tagolt utolsó tag) változott, és az új átírás a régi mai kiejtése (adatalapú próba)."""
+    sx, sy = _STRONG_UTOTAG_RE.search(x), _STRONG_UTOTAG_RE.search(y)
+    if (sx.group(0).strip(' ,') if sx else '') != (sy.group(0).strip(' ,') if sy else ''):
+        return False
+    tx = x[:sx.start()] if sx else x
+    ty = y[:sy.start()] if sy else y
+    px, py = tx.rsplit(', ', 1), ty.rsplit(', ', 1)
+    if len(px) != len(py) or (len(px) == 2 and px[0] != py[0]):
+        return False
+    regi, uj = px[-1].strip(), py[-1].strip()
+    if regi == uj or not (_atirasnak_tunik(regi) and _atirasnak_tunik(uj)):
+        return False
+    KJ, szab, kiv, kiv_h = _kiejtes_adat()
+    if KJ.atir(regi, szab, kiv) == uj:
+        return True
+    return any(kiv_h.get(unicodedata.normalize('NFC', w)) == uj for w in _HEBER_SZO_RE.findall(mezo))
+
+
 def _kiejtes_kulonbseg(a, b):
     """Csak a zárójelezett latin betűs átírás / kiejtés különbözik, héber/görög írásjegyes mezőben: a zárójelen
-    kívüli szöveg (pl. a magyar glossza) azonos."""
+    kívüli szöveg (pl. a magyar glossza) azonos, és minden eltérő zárójeles pár adatalapúan igazolt átírás-csere
+    (#113, 5. hely: magyar szó cseréje -- `(pap)` -> `(király)` -- nem az)."""
     if not _SCRIPT_RE.search(a + b):
         return False
     kivul = lambda x: re.sub(r'\s+', ' ', re.sub(r'\([^()]*\)', '()', x)).strip()
     if kivul(a) != kivul(b):
         return False
     ga, gb = re.findall(r'\(([^()]*)\)', a), re.findall(r'\(([^()]*)\)', b)
-    if ga == gb:
+    if ga == gb or len(ga) != len(gb):
         return False
-    return all(re.match(r"^[^֐-׿]*$", x) for x in ga + gb)
+    return all(_atiras_par(x, y, a) for x, y in zip(ga, gb) if x != y)
 
 
 # DT-F09g (4. javító menet): cellánkénti összevetés. A sor kategóriája az eltérő mezők kategóriáiból adódik; a
@@ -800,38 +870,239 @@ def _mezok(fajta, sor):
 
 
 def _kanon(x):
+    """Módszerjelző, fordítás-jelző és lábjegyzet normalizálása. Az LXX-állapotszavakat NEM olvasztja össze
+    (#113, 4. hely): az állapotváltás iránya a `_lxx_allapot_kat`-ban dől el."""
     x = _FORDITAS_JELZO_RE.sub('(F)', x)
     x = _LABJEGYZET_RE.sub('', x)
     x = re.sub(r'tartalom-alapú|szó-szintű-gépi', 'MODSZER', x)
-    for a in _LXX_ALLAPOT:
-        x = x.replace(a, 'ALLAPOT')
     return x.strip()
 
 
-def _mezo_kat(a, b, alap, szakasz):
+# #113 (4. hely, DT-F113a (b)): az LXX-állapot iránya. Csak a helyőrző / függő vagy számozási állapot -> előrébb
+# lévő állapot fogadható el (pl. `kutatói azonosítás függőben` -> `eltérő`, `szamozas_elteres` -> `kutatói azonosítás
+# függőben`); azonos fokú állapotok cseréje (`egyező` <-> `eltérő`), visszalépés és állapot -> helyőrző: `ismeretlen`.
+_LXX_ALLAPOT_FOK = {'szamozas_elteres': 0, 'kutatói azonosítás függőben': 1, 'egyező': 2, 'eltérő': 2, 'LXX-minusz': 2}
+
+
+def _lxx_allapot_elore(a, b):
+    return a in _LXX_ALLAPOT_FOK and b in _LXX_ALLAPOT_FOK and _LXX_ALLAPOT_FOK[b] > _LXX_ALLAPOT_FOK[a]
+
+
+# #113 (3. hely, DT-F113a (d)): csak a darabszám-, szavazatszám- és sorszám-jellegű szám frissülése elfogadott.
+# A megváltozott számjegy-futam környezete (előtte / utána) egyike: `=N`, `Votes: N`, `(N)`, `N <főnév>`, a
+# szerep-fejléc `#### N.` sorszáma, vagy önálló szám a mezőben. Igehely (`N:N`), jelentésszám (`2.c`, `BDB N`,
+# `LSJ N`) és minden más számcsere nem ismert fajta.
+_SZAM_ELO_OK_RE = re.compile(r'(?:=\s*|Votes:\s*)$')
+_SZAM_FONEV_RE = re.compile(r'^ [a-záéíóöőúüű]')
+
+
+def _darabszam_frissules(a, b):
+    ta, tb = re.split(r'(\d+)', a), re.split(r'(\d+)', b)
+    if len(ta) != len(tb):
+        return False
+    for k in range(1, len(ta), 2):
+        if ta[k] == tb[k]:
+            continue
+        elo, uto = ta[k - 1], ta[k + 1]
+        if elo.endswith(':') or uto.startswith(':') or re.match(r'^\.[a-z]', uto) \
+                or re.search(r'(?:BDB|LSJ)\s*$', elo):
+            return False                         # igehely / verzifikáció / jelentésszám
+        if elo == '' and uto == '':
+            continue                             # önálló szám a mezőben
+        if _SZAM_ELO_OK_RE.search(elo) or (elo.endswith('(') and uto.startswith(')')):
+            continue                             # `=N`, `Votes: N`, `(N)`
+        if _SZAM_FONEV_RE.match(uto) and (elo == '' or elo[-1] in ' ('):
+            continue                             # `N <főnév>` (darabszám)
+        if re.match(r'^#{3,6} $', elo) and uto.startswith('. '):
+            continue                             # a szerep-fejléc `#### N.` sorszáma
+        return False
+    return True
+
+
+# #113 (2. hely, DT-F113a (c)): a licenc-blokkban csak licencszöveg / licencjelző cseréje, vagy bővült lista
+# (az új listaérték a régi minden tételét tartalmazza) elszámolt. A licencértékek az `adat/licencek.tsv` `licenc`
+# oszlopából (a teljes érték és a ` (`, ` — `, `;` előtti vezető része), a licencjelzők az alábbi mintából.
+_LICENC_JELZO_RE = re.compile(r'^(?:projekt-adat|minden jog fenntartva|CC0(?: \d\.\d)?|CC BY(?:-SA|-NC|-ND)*(?: \d\.\d)?)$')
+_licenc_cache = []
+
+
+def _licenc_ertekek():
+    if not _licenc_cache:
+        ertekek = set()
+        with io.open(os.path.join(ROOT, 'adat', 'licencek.tsv'), encoding='utf-8') as fh:
+            sorok = [s for s in fh.read().split('\n') if s and not s.startswith('#')]
+        fej = sorok[0].split('\t')
+        i = fej.index('licenc')
+        for s in sorok[1:]:
+            m = s.split('\t')
+            if len(m) > i and m[i].strip():
+                v = m[i].strip()
+                ertekek.add(v)
+                ertekek.add(re.split(r' \(| — |;', v)[0].strip())
+        _licenc_cache.append(ertekek)
+    return _licenc_cache[0]
+
+
+def _licencnek_tunik(x):
+    x = x.strip()
+    return bool(x) and (bool(_LICENC_JELZO_RE.match(x)) or x in _licenc_ertekek())
+
+
+def _licenc_csere(a, b):
+    if _licencnek_tunik(a) and _licencnek_tunik(b):
+        return True
+    kivul = lambda x: re.sub(r'\s+', ' ', re.sub(r'\([^()]*\)', '()', x)).strip()
+    ga, gb = re.findall(r'\(([^()]*)\)', a), re.findall(r'\(([^()]*)\)', b)
+    if kivul(a) == kivul(b) and len(ga) == len(gb) and ga != gb:
+        return all(_licencnek_tunik(x) and _licencnek_tunik(y) for x, y in zip(ga, gb) if x != y)
+    return False
+
+
+def _bovult_lista(a, b):
+    ra = [t.strip() for t in a.split(',') if t.strip()]
+    rb = [t.strip() for t in b.split(',') if t.strip()]
+    return len(rb) > len(ra) and all(t in rb for t in ra)
+
+
+# #113 (1. hely, DT-F113a (a), DT-F113b (1)): az éles lexikon/ 8 törzscikkét renderelő szerepmátrix
+# (`git show d9b80b37:adat/szotar_szerepek.tsv`, blob bce21db8) egyszeri, rögzített kivonata, unió nélkül:
+# (nyelv, sorrend) -> (szerep, forrás, állapot). A kód futás közben NEM olvassa a git-történetet.
+REGI_SZEREPMATRIX_D9B80B37 = {
+    ('gorog', 1): ('Alapjelentés', 'TBESG', 'adatosítva'),
+    ('gorog', 2): ('Mélységi szócikk', 'Thayer', 'adatosítva'),
+    ('gorog', 3): ('Teológiai szócikk', 'Cremer (1895)', 'nincs adatosítva'),
+    ('gorog', 4): ('Jelentésszerkezet, szemantikai mező', 'UBS DNTG (Louw–Nida)', 'adatosítva'),
+    ('gorog', 5): ('Tömör jelentés, előfordulás', 'UBS DNTG glossza + referencia-szám; Mounce kiegészítő', 'adatosítva'),
+    ('gorog', 6): ('LXX-híd', 'az ÚSZ-szó LXX-háttere: mely héber szavakat ad vissza, mely versekben (lekerdez.py lxx-hid, LXX_OS)', 'adatosítva'),
+    ('gorog', 7): ('Megfelelők a másik nyelven', 'SECE (héber)', 'nincs adatosítva'),
+    ('gorog', 8): ('Nyelvi háttér', 'LSJ, ha releváns', 'adatosítva'),
+    ('gorog', 9): ('Versenkénti jelentés', 'UBS DNTG (szópozícióig)', 'adatosítva'),
+    ('gorog', 10): ('Kiejtés (magyaros)', 'kiejtes.py szabálytábla', 'nincs adatosítva'),
+    ('heber', 1): ('Alapjelentés', 'TBESH', 'adatosítva'),
+    ('heber', 2): ('Mélységi szócikk', 'BDB', 'adatosítva'),
+    ('heber', 3): ('Teológiai szócikk', 'Girdlestone (1897) + Cremer héber mutatója; TWOT-szám hivatkozásként', 'nincs adatosítva'),
+    ('heber', 4): ('Jelentésszerkezet, szemantikai mező', 'UBS DBH (SDBH)', 'adatosítva'),
+    ('heber', 5): ('Tömör jelentés, előfordulás', 'UBS DBH glossza + referencia-szám', 'nincs adatosítva'),
+    ('heber', 6): ('LXX-híd', 'LXX-fordítói döntés versenként: mely görög szó adja vissza (LXX_OS + adat/lxx_dontesek.tsv; a lexikonoldal 3. szakasza)', 'adatosítva'),
+    ('heber', 7): ('Megfelelők a másik nyelven', 'SECE (görög)', 'nincs adatosítva'),
+    ('heber', 8): ('Nyelvi háttér', 'BDB etimológia', 'nincs adatosítva'),
+    ('heber', 9): ('Versenkénti jelentés', 'UBS DBH', 'nincs adatosítva'),
+    ('heber', 10): ('Kiejtés (magyaros)', 'lemma: kiejtes_kivetelek.tsv (kézi, OSHL-alapú jelöltekből); alak: STEP-átírás, változatlanul', 'nincs adatosítva'),
+}
+_TOKEN_RE = re.compile(r'^[HG]\d{4}[a-z]?$')
+_matrix_cache = []
+
+
+def _mai_matrix():
+    """[(nyelv, sorrend, szerep, forrás, állapot)] -- a mai `adat/szotar_szerepek.tsv` (split('\\t'))."""
+    if not _matrix_cache:
+        out = []
+        with io.open(os.path.join(ROOT, 'adat', 'szotar_szerepek.tsv'), encoding='utf-8') as fh:
+            for s in fh.read().split('\n'):
+                if not s or s.startswith('#') or s.startswith('nyelv\t'):
+                    continue
+                m = s.split('\t')
+                out.append((m[0], int(m[1]), m[2], m[3], m[4]))
+        _matrix_cache.append(out)
+    return _matrix_cache[0]
+
+
+def _olvaso_forras(x):
+    import torzscikk_general as TG
+    return TG.olvaso_forras(x)
+
+
+def _szerep_csere(a, b, sor_kulcs, oszlop):
+    """Az `5. Szótári` szakasz egy cellájának cseréje szerep-változás-e (DT-F113a (a)):
+      szerep-táblasor (`| <szerep> | <görög forrás> | <héber forrás> |`): az új érték a cella szerepének MAI
+        forrása vagy annak renderelt alakja (`olvaso_forras`), a régi érték ugyanennek a szerepnek a forrása a régi
+        mátrixban (`REGI_SZEREPMATRIX_D9B80B37`) vagy a maiban;
+      lefedettség-sor (`| <token> | ... |`, az oszlopok a mai görög szerepsorrendben): az új érték a renderfüggvény
+        (`szerep_lefedettseg_cella`) értéke a cellára, a régi a szerep régi forrása vagy állapota.
+    Minden más csere: nem szerep-változás (`ismeretlen`). Ez zárja ki pl. a `UBS DNTG` -> `Mounce` cserét egy
+    olyan cellában, amelynek szerepéhez a mátrix nem a Mounce-ot rendeli."""
+    cella = _szerep_cella(sor_kulcs, oszlop)
+    if cella is None:
+        return False
+    vart, regi_ok = cella
+    return b == vart and a in regi_ok
+
+
+def _szerep_cella(sor_kulcs, oszlop):
+    """Az `5. Szótári` szakasz azonosított cellájának (várt mai érték, elfogadható régi értékek) párja, vagy None,
+    ha a cella nem azonosítható (nem szerep-tábla- vagy lefedettség-sor, ismeretlen szerep)."""
+    if sor_kulcs is None or oszlop is None or oszlop < 1:
+        return None
+    mai = _mai_matrix()
+    gorog = sorted((r for r in mai if r[0] == 'gorog'), key=lambda r: r[1])
+    if _TOKEN_RE.match(sor_kulcs):
+        if oszlop > len(gorog):
+            return None
+        nyelv = 'gorog' if sor_kulcs.startswith('G') else 'heber'
+        szerep = gorog[oszlop - 1][2]
+    elif oszlop in (1, 2):
+        nyelv, szerep = ('gorog', 'heber')[oszlop - 1], sor_kulcs
+    else:
+        return None
+    sor = next((r for r in mai if r[0] == nyelv and r[2] == szerep), None)
+    if sor is None:
+        return None
+    regi = next((v for (ny, _n), v in REGI_SZEREPMATRIX_D9B80B37.items() if ny == nyelv and v[0] == szerep), None)
+    if _TOKEN_RE.match(sor_kulcs):
+        vart = _olvaso_forras(LG.szerep_lefedettseg_cella(
+            nyelv, {'sorrend': str(sor[1]), 'szerep': sor[2], 'forras': sor[3], 'allapot': sor[4]}, sor_kulcs))
+        regi_ok = {regi[1], regi[2]} if regi else set()
+    else:
+        vart = _olvaso_forras(sor[3])
+        regi_ok = ({regi[1]} if regi else set()) | {sor[3], vart}
+    return vart, regi_ok
+
+
+_SZEREP_ALLAPOTJELZOK = ('nincs adatosítva', 'nincs forrás', 'a forrás nem tárgyalja')
+
+
+def _szerep_uj_igazolt(b, sor_kulcs, oszlop):
+    """#113 1. hely (ellenőri 1. eltérés): helyőrző / `nincs adatosítva` régi oldal után az új oldal csak akkor
+    szerep, ha az azonosított cellában a várt mai érték (a szerep mai forrása / renderelt alakja, lefedettség-sorban
+    a `szerep_lefedettseg_cella` értéke), vagy állapotjelző (a mai mátrix `allapot` értékei és a fenti jelzők)."""
+    cella = _szerep_cella(sor_kulcs, oszlop)
+    if cella is None:
+        return False
+    return b == cella[0] or b in _SZEREP_ALLAPOTJELZOK or b in set(r[4] for r in _mai_matrix())
+
+
+def _mezo_kat(a, b, alap, szakasz, sor_kulcs=None, oszlop=None):
     """Egy eltérő mezőpár kategóriája az ismert változásfajták alapján; tartalom eltűnése vagy ismeretlen fajta:
-    `ismeretlen`. `alap`: az új sor blokk szerinti kategóriája (maga is lehet `ismeretlen`)."""
+    `ismeretlen`. `alap`: az új sor blokk szerinti kategóriája (maga is lehet `ismeretlen`); a kategória NEVÉT
+    adhatja, az elfogadást nem (#113): minden elfogadó ág a régi -> új érték viszonyán múlik.
+    `sor_kulcs`, `oszlop`: táblasornál az első cella és a mező sorszáma (a szerep-cella azonosításához)."""
     a, b = a.strip(), b.strip()
-    if a not in _HELYORZO and a not in _LXX_ALLAPOT and b in _HELYORZO:
-        return ISMERETLEN                       # a mező tartalma eltűnt
-    if a in _HELYORZO or a in _LXX_ALLAPOT or a == 'nincs adatosítva':
-        return alap                             # helyőrző / állapot -> tartalom vagy állapot
+    if a not in _HELYORZO and b in _HELYORZO:
+        return ISMERETLEN                       # a mező tartalma eltűnt (állapot -> helyőrző is, #113 4. hely)
+    if a in _HELYORZO or a == 'nincs adatosítva':
+        if szakasz.startswith('5. Szótári'):    # #113 1. hely: az új oldal is igazolandó (ellenőri 1. eltérés)
+            return 'szerep' if _szerep_uj_igazolt(b, sor_kulcs, oszlop) else ISMERETLEN
+        return alap                             # helyőrző / `nincs adatosítva` -> tartalom vagy állapot
+    if a in _LXX_ALLAPOT or b in _LXX_ALLAPOT:
+        return alap if _lxx_allapot_elore(a, b) else ISMERETLEN   # #113 4. hely: csak előre lépő állapot
     if _kiejtes_kulonbseg(a, b):
-        return 'kiejtes'                        # átírás / kiejtés
+        return 'kiejtes'                        # átírás / kiejtés (adatalapú próba, #113 5. hely)
     if _jeloles_kulonbseg(a, b):
         return 'jeloles'
     ca, cb = _kanon(a), _kanon(b)
-    if ca == cb:                                # módszer- / állapotjelző, fordítás-jelző, lábjegyzet
+    if ca == cb:                                # módszerjelző, fordítás-jelző, lábjegyzet
         return 'fordites_jelzo' if (_FORDITAS_JELZO_RE.search(a) or _FORDITAS_JELZO_RE.search(b)) else alap
     if re.sub(r'\d+', '#', a) == re.sub(r'\d+', '#', b):
-        return alap                             # csak szám (darabszám, szavazat, sorszám) frissült
+        return alap if _darabszam_frissules(a, b) else ISMERETLEN  # #113 3. hely: csak darab-/szavazat-/sorszám
     if alap == 'licenc':
-        return 'licenc'                         # licenc-szöveg / fájlnév / forrás a licenc-blokkban
+        # #113 2. hely: licencszöveg / -jelző cseréje vagy bővült lista; más csere a licenc-blokkban sem ismert
+        return 'licenc' if (_licenc_csere(a, b) or _bovult_lista(a, b)) else ISMERETLEN
     azon = r'^[A-Za-z0-9_./\-]*[._/][A-Za-z0-9_./\-]*$'   # fájlnév / forrás-azonosító (. _ vagy / van benne)
     if re.match(azon, a) and re.match(azon, b):
-        return alap                             # fájlnév / forrás-azonosító cseréje
+        return alap                             # fájlnév / forrás-azonosító cseréje (N-F113a: a #113-on kívül)
     if szakasz.startswith('5. Szótári'):
-        return 'szerep'                         # a szerepmátrix forrás-hivatkozása / állapota
+        # #113 1. hely: csak a szerepmátrix szerinti forrás- / állapotváltás (cellára azonosítva)
+        return 'szerep' if _szerep_csere(a, b, sor_kulcs, oszlop) else ISMERETLEN
     return ISMERETLEN
 
 
@@ -840,7 +1111,9 @@ def par_mezo_kategoria(regi, uj, fajta, alap, szakasz):
     fa, fb = _mezok(fajta, regi), _mezok(fajta, uj)
     if len(fb) < len(fa):
         return ISMERETLEN                       # mező(k) eltűntek
-    kats = [_mezo_kat(x, y, alap, szakasz) for x, y in zip(fa, fb) if x.strip() != y.strip()]
+    sor_kulcs = fa[0].strip() if fajta == 'sor' and fa else None
+    kats = [_mezo_kat(x, y, alap, szakasz, sor_kulcs, i if fajta == 'sor' else None)
+            for i, (x, y) in enumerate(zip(fa, fb)) if x.strip() != y.strip()]
     if len(fb) > len(fa):
         kats.append(alap)                       # új (hozzáfűzött) mezők: nem veszteség
     if not kats:
@@ -1069,7 +1342,7 @@ def proba_main(argv):
         fh.write('\n'.join(sorok) + '\n')
     if ismeretlen or elfogadott_db:
         ism_ut = os.path.splitext(a.tsv)[0].replace('_diff', '') + '_ismeretlen.tsv'
-        ismeretlen_sorok.append('# felhasznaloi_besorolas: a felhasználó (chat) által név szerint elfogadott sorok (FELHASZNALO_ELFOGADOTT; 2026-10-17: 32 sor, 2026-10-18: 12 sor); az üres besorolású sor `ismeretlen`, a felhasználó elé kerül. Elfogadott csoportok: %s' % ', '.join('%s=%d' % kv for kv in sorted(elfogadott_db.items())))
+        ismeretlen_sorok.append('# felhasznaloi_besorolas: a felhasználó (chat) által név szerint elfogadott sorok (FELHASZNALO_ELFOGADOTT; 2026-10-17: 32 sor, 2026-10-18: 12 sor, DT-F113b: 11 sor); az üres besorolású sor `ismeretlen`, a felhasználó elé kerül. Elfogadott csoportok: %s' % ', '.join('%s=%d' % kv for kv in sorted(elfogadott_db.items())))
         ismeretlen_sorok.append('# proveniencia: scope=%s vs %s | forras=eszkozok/render_diff_osztalyoz.py --proba | ts=%s' % (os.path.relpath(a.proba, ROOT).replace(os.sep, '/'), os.path.relpath(a.eles, ROOT).replace(os.sep, '/'), os.environ.get('PARDES_DATUM', '')))
         with io.open(ism_ut, 'w', encoding='utf-8', newline='\n') as fh:
             fh.write('\n'.join(ismeretlen_sorok) + '\n')

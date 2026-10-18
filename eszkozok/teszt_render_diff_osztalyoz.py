@@ -76,13 +76,13 @@ class IsmeretlenElerheto(unittest.TestCase):
             proba = blokk(blokk_nev, ['teljesen más'])
             e = osztaly(eles, proba)
             self.assertEqual(e[R.ISMERETLEN]['torolt'], ['| Jób 1:1 | régi sor |'], blokk_nev)
-        # licenc-blokkban a licenc-szöveg cseréje (cellánként) licenc
+        # #113 (2. hely): a licenc-blokkban a NEM licenc-szöveg cseréje nem licenc, hanem ismeretlen
         for blokk_nev in ('idezes', 'kolofon'):
             e2 = osztaly(blokk(blokk_nev, ['| Jób 1:1 | régi sor |']), blokk(blokk_nev, ['| Jób 1:1 | új sor |']))
-            self.assertEqual(set(e2), {'licenc'}, blokk_nev)
-        # az lxx blokkban az állapot-csere (egyező -> eltérő) lxx_korpusz
+            self.assertEqual(set(e2), {R.ISMERETLEN}, blokk_nev)
+        # #113 (4. hely): az lxx blokkban az azonos fokú állapot-csere (egyező -> eltérő) ismeretlen
         e3 = osztaly(blokk('lxx', ['| Jób 1:1 | egyező |']), blokk('lxx', ['| Jób 1:1 | eltérő |']))
-        self.assertEqual(set(e3), {'lxx_korpusz'})
+        self.assertEqual(set(e3), {R.ISMERETLEN})
 
     def test_par_magyarazat_nelkul_ismeretlen(self):
         # azonos normalizált kulcs, latin zárójel-eltérés, de nincs héber/görög írásjegy és nincs blokk-kategória
@@ -173,9 +173,12 @@ class ForditasJelzoEsKiejtes(unittest.TestCase):
                          {'hozzaadott': ['*(fordításra vár)*'], 'torolt': ['*(fordítás függőben)*']})
 
     def test_kiejtes_heber_irassal(self):
-        eles = blokk('szocikkek', ['**H7585** · שְׁאוֹל (seol)'])
-        proba = blokk('szocikkek', ['**H7585** · שְׁאוֹל (she.ol)'])
+        # #113 (5. hely): az új átírás a héber lemma mai kiejtése (adat/kiejtes_kivetelek.tsv: שְׁאוֹל -> seól)
+        eles = blokk('szocikkek', ['**H7585** · שְׁאוֹל (she.ol)'])
+        proba = blokk('szocikkek', ['**H7585** · שְׁאוֹל (seól)'])
         self.assertEqual(set(osztaly(eles, proba)), {'kiejtes'})
+        # a fordított irányt (az új oldal nem a mai kiejtés) az adat nem igazolja: nem kiejtés
+        self.assertNotIn('kiejtes', osztaly(proba, eles))
 
     def test_licenc_blokk_pár_nem_kiejtes(self):
         # latin zárójeles eltérés héber/görög írásjegy nélkül, licenc-blokkban: licenc (nem kiejtés)
@@ -272,10 +275,17 @@ class Parositas(unittest.TestCase):
         self.assertEqual(set(osztaly(eles, proba)), {'kiejtes'})
 
     def test_allapotvaltas_szerep(self):
-        eles = '## 5. Szótári háttér — szerepek és lefedettség\n| H7585 | TBESH | nincs adatosítva |\n'
-        proba = '## 5. Szótári háttér — szerepek és lefedettség\n| H7585 | TBESH | UBS DBH |\n'
-        e = osztaly(eles, proba, 'TESZT-001_TORZSCIKK.md')
+        # mai éles eset (HAMART-001_TORZSCIKK, G1311, Teológiai szócikk): `nincs adatosítva` -> a mai forrás: szerep
+        tw = 'unfoldingWord Translation Words (tW, CC BY-SA 4.0; konkordancia/tW_szocikkek.tsv, S14)'
+        eles = '## 5. Szótári háttér — szerepek és lefedettség\n| G1311 | TBESG | Thayer | nincs adatosítva |\n'
+        proba = '## 5. Szótári háttér — szerepek és lefedettség\n| G1311 | TBESG | Thayer | %s |\n' % tw
+        e = osztaly(eles, proba, 'HAMART-001_TORZSCIKK.md')
         self.assertEqual(set(e), {'szerep'})
+        # #113 (ellenőri 1. eltérés): a cella szerepéhez nem tartozó forrás nem igazolt -- H7585 Mélységi szócikk
+        # cellájában az `UBS DBH` nem a mai forrás (BDB) és nem a renderfüggvény értéke: ismeretlen
+        e2 = osztaly('## 5. Szótári háttér — szerepek és lefedettség\n| H7585 | TBESH | nincs adatosítva |\n',
+                     '## 5. Szótári háttér — szerepek és lefedettség\n| H7585 | TBESH | UBS DBH |\n', 'TESZT-001_TORZSCIKK.md')
+        self.assertEqual(set(e2), {R.ISMERETLEN})
 
     def test_metaadat_jeloles(self):
         e = osztaly(blokk('idezes', ['- Generálva: 2026-09-26']), blokk('idezes', ['- Generálva: 2026-10-17']))
@@ -368,7 +378,7 @@ class CellankentiOsszevetes(unittest.TestCase):
     def test_elfogadott_sorok_szamolasa_nem_dict_ertekek(self):
         # SORokat számolunk (kulcsonkénti elvárt darabszám), nem a dict kulcsait/értékeit
         self.assertEqual(set(R.FELHASZNALO_DARAB), set(R.FELHASZNALO_ELFOGADOTT))
-        self.assertEqual(sum(R.FELHASZNALO_DARAB.values()), 44)
+        self.assertEqual(sum(R.FELHASZNALO_DARAB.values()), 55)   # 32 + 12 + 11 (DT-F113b)
         import collections
         sor_db = collections.Counter()
         for k, n in R.FELHASZNALO_DARAB.items():
@@ -377,7 +387,32 @@ class CellankentiOsszevetes(unittest.TestCase):
             'forditas_ubs_forras_elavult': 14, 'joshua_forrasvaltas': 2, 'bdb_formatumvaltozas': 2,
             'lsj_licencverzio_valtas': 1, 'szamozas_elteres_fuggobe_valt': 6,
             'szamozas_elteres_helyorzo_feloldodott': 4, 'kutatoi_azonositas_feloldodott': 3,
-            'leiro_mondat_bovult': 8, 'f87_glossza_javitas': 4})
+            'leiro_mondat_bovult': 8, 'f87_glossza_javitas': 4,
+            'jelmagyarazat_mondat': 8, 'kezi_2b_lefedettseg_sece': 3})
+
+    def test_dt_f113b_elfogadott_sorok(self):
+        # DT-F113b (2): a 8 jelmagyarázat-mondat (fájlonként 1) és a 3 `kézi (2/b)` lefedettségsor (ISTENTISZT-001)
+        jm = [k for k, v in R.FELHASZNALO_ELFOGADOTT.items() if v == 'jelmagyarazat_mondat']
+        kz = [k for k, v in R.FELHASZNALO_ELFOGADOTT.items() if v == 'kezi_2b_lefedettseg_sece']
+        self.assertEqual(len(jm), 8)
+        self.assertTrue(all(f.endswith('_TORZSCIKK.md') and s.startswith('A cella értéke:') for f, s in jm))
+        self.assertEqual(sorted(s.split(' | ')[0] for f, s in kz), ['| G1941', '| H7121', '| H8034'])
+        self.assertTrue(all(f == 'ISTENTISZT-001_TORZSCIKK.md' and 'kézi (2/b)' in s for f, s in kz))
+        self.assertTrue(all(R.FELHASZNALO_DARAB[k] == 1 for k in jm + kz))
+
+    def test_dt_f113b_darabszamon_felul_es_mas_fajlban_ismeretlen(self):
+        (f, sor), = [k for k, v in R.FELHASZNALO_ELFOGADOTT.items()
+                     if v == 'jelmagyarazat_mondat' and k[0] == 'ALVIL-001_TORZSCIKK.md']
+        szak = '## 5. Szótári háttér — szerepek és lefedettség\n'
+        e = osztaly(szak + sor + '\n' + sor + '\n', szak, f)
+        self.assertEqual(e['felhasznalo_elfogadva']['torolt'], [sor])
+        self.assertEqual(e[R.ISMERETLEN]['torolt'], [sor])           # a darabszámon felüli azonos sor
+        e2 = osztaly(szak + sor + '\n', szak, 'LISTAN-KIVUL-001_TORZSCIKK.md')
+        self.assertNotIn('felhasznalo_elfogadva', e2)
+        self.assertIn(R.ISMERETLEN, e2)
+        # hozzáadott irányban nem érvényes: a sor megjelenése nem elfogadott
+        e3 = osztaly(szak, szak + sor + '\n', f)
+        self.assertNotIn('felhasznalo_elfogadva', e3)
 
     def test_darabszamon_felul_azonos_sor_ismeretlen(self):
         sor = '- LSJ (Liddell-Scott-Jones, A Greek-English Lexicon) — CC BY-SA 3.0'
@@ -386,6 +421,226 @@ class CellankentiOsszevetes(unittest.TestCase):
         e = osztaly(eles, '## Források és licenc\n', 'ISTENTISZT-001_TORZSCIKK.md')
         self.assertEqual(e['felhasznalo_elfogadva']['torolt'], [sor])
         self.assertEqual(e[R.ISMERETLEN]['torolt'], [sor])
+
+
+SZOTARI = '## 5. Szótári háttér — szerepek és lefedettség\n'
+
+
+def torzs5(*sorok):
+    return SZOTARI + '\n'.join(sorok) + '\n'
+
+
+def mai_forras(nyelv, sorrend):
+    return next(r[3] for r in R._mai_matrix() if r[0] == nyelv and r[1] == sorrend)
+
+
+class Szukites113(unittest.TestCase):
+    """#113 (DT-F113a): minden ismert fajta a változás fajtája szerint dönt, nem a blokk szerint. Mindegyik
+    negatív teszt a szűkített ágat éri: a korábbi feltételek (helyőrző, kiejtés, jelölés, kanon) nem fogják meg."""
+
+    def _nem_korabbi_ag(self, a, b):
+        self.assertNotIn(a.strip(), R._HELYORZO)
+        self.assertFalse(R._kiejtes_kulonbseg(a, b))
+        self.assertFalse(R._jeloles_kulonbseg(a, b))
+        self.assertNotEqual(R._kanon(a), R._kanon(b))
+
+    # --- 1. hely: szerep ---
+    def test_szerep_szabad_mondat_ismeretlen(self):
+        a, b = 'egy szabad magyar mondat a cellában', 'egy másik, szintén szabad mondat'
+        self._nem_korabbi_ag(a, b)
+        self.assertEqual(R._mezo_kat(a, b, 'szerep', '5. Szótári háttér', 'Teológiai szócikk', 1), R.ISMERETLEN)
+        e = osztaly(torzs5('| Teológiai szócikk | %s | x |' % a), torzs5('| Teológiai szócikk | %s | x |' % b),
+                    'TESZT-001_TORZSCIKK.md')
+        self.assertEqual(set(e), {R.ISMERETLEN})
+
+    def test_szerep_regi_matrix_forras_mai_renderelt_forras(self):
+        # az éles lexikont renderelő mátrix (d9b80b37, DT-F113b) forrása -> a mai forrás renderelt alakja, ugyanabban a cellában
+        regi = R.REGI_SZEREPMATRIX_D9B80B37[('gorog', 3)][1]
+        uj = R._olvaso_forras(mai_forras('gorog', 3))
+        self.assertNotEqual(regi, uj)
+        e = osztaly(torzs5('| Teológiai szócikk | %s | x |' % regi), torzs5('| Teológiai szócikk | %s | x |' % uj),
+                    'TESZT-001_TORZSCIKK.md')
+        self.assertEqual(set(e), {'szerep'})
+
+    def test_szerep_regi_tablan_kivuli_nev_ismeretlen(self):
+        # a rögzített régi táblában nem szereplő név nem számol el, akkor sem, ha az új oldal helyes
+        uj = R._olvaso_forras(mai_forras('gorog', 3))
+        self.assertEqual(R._mezo_kat('Kittel (1933)', uj, 'szerep', '5. Szótári háttér', 'Teológiai szócikk', 1),
+                         R.ISMERETLEN)
+
+    def test_nincs_adatositva_szabad_mondat_ismeretlen(self):
+        # ellenőri 1. eltérés: az 5. Szótári szakaszban a `nincs adatosítva` / helyőrző -> BÁRMI nem szerep
+        mondat = 'egy szabad magyar mondat a cellában'
+        for regi in ('nincs adatosítva', '—'):
+            e = osztaly(torzs5('| G1311 | TBESG | Thayer | %s |' % regi), torzs5('| G1311 | TBESG | Thayer | %s |' % mondat),
+                        'HAMART-001_TORZSCIKK.md')
+            self.assertEqual(set(e), {R.ISMERETLEN}, regi)
+            e2 = osztaly(torzs5('| Teológiai szócikk | %s | x |' % regi), torzs5('| Teológiai szócikk | %s | x |' % mondat),
+                         'TESZT-001_TORZSCIKK.md')
+            self.assertEqual(set(e2), {R.ISMERETLEN}, regi)
+        # nem azonosítható cella (nem tábla-sor) sem igazolt
+        self.assertEqual(R._mezo_kat('nincs adatosítva', mondat, 'szerep', '5. Szótári háttér'), R.ISMERETLEN)
+
+    def test_nincs_adatositva_allapotjelzo_szerep(self):
+        # mai éles eset (KIRALY-001_TORZSCIKK, G0282, Teológiai szócikk): `nincs adatosítva` -> `a forrás nem tárgyalja`
+        e = osztaly(torzs5('| G0282 | TBESG | Thayer | nincs adatosítva |'),
+                    torzs5('| G0282 | TBESG | Thayer | a forrás nem tárgyalja |'), 'KIRALY-001_TORZSCIKK.md')
+        self.assertEqual(set(e), {'szerep'})
+
+    def test_helyorzo_mas_szakaszban_valtozatlan(self):
+        # más szakaszban a helyőrző -> tartalom viselkedése nem változott
+        self.assertEqual(R._mezo_kat('—', 'egy szabad magyar mondat', 'lxx_korpusz', 'lxx'), 'lxx_korpusz')
+        self.assertEqual(R._mezo_kat('nincs adatosítva', 'bármi', 'torzscikk_res', '2. Kapcsolatok'), 'torzscikk_res')
+
+    def test_hamart_eles_szerep_eset(self):
+        # a HAMART-001 éles esete (DT-F113b): Cremer (1895) -> a mai tW-forrás renderelt alakja: szerep
+        uj = R._olvaso_forras(mai_forras('gorog', 3))
+        e = osztaly(torzs5('| Teológiai szócikk | Cremer (1895) | x |'), torzs5('| Teológiai szócikk | %s | x |' % uj),
+                    'HAMART-001_TORZSCIKK.md')
+        self.assertEqual(set(e), {'szerep'})
+
+    def test_ubs_dntg_mounce(self):
+        # DT-F113a: `UBS DNTG` -> `Mounce` csak akkor szerep, ha mindkettő a mátrix forrásneve ÉS a cella szerepéhez
+        # a mátrix ténylegesen ezt a cserét rendeli. A 9. (Versenkénti jelentés) görög cellában nem: ismeretlen.
+        sz = '5. Szótári háttér'
+        a = mai_forras('gorog', 4)          # UBS DNTG (Louw–Nida): mátrix-forrásnév, de a 4. szerepé
+        b = mai_forras('gorog', 5)          # UBS DNTG glossza + ...; Mounce kiegészítő: mátrix-forrásnév, az 5. szerepé
+        self._nem_korabbi_ag(a, b)
+        self.assertEqual(R._mezo_kat(a, b, 'szerep', sz, 'Versenkénti jelentés', 1), R.ISMERETLEN)
+        self.assertEqual(R._mezo_kat(R.REGI_SZEREPMATRIX_D9B80B37[('gorog', 9)][1], 'Mounce', 'szerep', sz,
+                                     'Versenkénti jelentés', 1), R.ISMERETLEN)
+        # a cella saját szerepének régi -> mai (renderelt) forrása viszont szerep (a 3. szerepnél a kettő eltér)
+        self.assertEqual(R._mezo_kat(R.REGI_SZEREPMATRIX_D9B80B37[('gorog', 3)][1],
+                                     R._olvaso_forras(mai_forras('gorog', 3)), 'szerep', sz, 'Teológiai szócikk', 1),
+                         'szerep')
+
+    def test_lefedettseg_cella_renderfuggveny(self):
+        # lefedettség-cella: az új érték a renderfüggvény (szerep_lefedettseg_cella) értéke: H7121 héber 1. = BDB 2.c
+        e = osztaly(torzs5('| H7121 | TBESH | BDB |'), torzs5('| H7121 | BDB 2.c (DT-F42a) | BDB |'),
+                    'TESZT-001_TORZSCIKK.md')
+        self.assertEqual(set(e), {'szerep'})
+        # ugyanez a csere egy másik tokennél nem a renderfüggvény értéke: ismeretlen
+        self.assertEqual(R._mezo_kat('TBESH', 'BDB 2.c (DT-F42a)', 'szerep', '5. Szótári háttér', 'H9999', 1),
+                         R.ISMERETLEN)
+
+    def test_jelmagyarazat_mondat_csere_ismeretlen(self):
+        # a jelmagyarázat-mondat szabad szöveg: nincs cellája a mátrixban, a cseréje nem szerep-változás
+        regi = 'A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` vagy `nincs adatosítva`.'
+        uj = 'A cella értéke: forrás-hivatkozás, `a forrás nem tárgyalja`, `nincs forrás` vagy `javaslat`.'
+        e = osztaly(torzs5(regi), torzs5(uj), 'TESZT-001_TORZSCIKK.md')
+        self.assertIn(R.ISMERETLEN, e)
+
+    # --- 2. hely: licenc ---
+    def test_licenc_jelzo_csere(self):
+        self.assertEqual(R._mezo_kat('- `adat/x.tsv` (projekt-adat)', '- `adat/x.tsv` (minden jog fenntartva)',
+                                     'licenc', 'idezes'), 'licenc')
+        self.assertEqual(R._mezo_kat('projekt-adat', 'minden jog fenntartva', 'licenc', 'kolofon'), 'licenc')
+
+    def test_licenc_nem_licencszoveg_ismeretlen(self):
+        self._nem_korabbi_ag('régi sor', 'új sor')
+        self.assertEqual(R._mezo_kat('régi sor', 'új sor', 'licenc', 'idezes'), R.ISMERETLEN)
+        # licencjelző -> nem licenc szöveg is ismeretlen
+        self.assertEqual(R._mezo_kat('projekt-adat', 'valami más', 'licenc', 'kolofon'), R.ISMERETLEN)
+
+    def test_licenc_bovult_lista(self):
+        regi = '| `x.tsv` | `adat/x.tsv` | minden jog fenntartva | elofordulasok |'
+        uj = '| `x.tsv` | `adat/x.tsv` | minden jog fenntartva | elofordulasok, szocikkek |'
+        self.assertEqual(set(osztaly(blokk('kolofon', [regi]), blokk('kolofon', [uj]))), {'licenc'})
+
+    def test_licenc_lista_tetel_kiesik_ismeretlen(self):
+        self.assertEqual(R._mezo_kat('elofordulasok, szocikkek', 'szocikkek, kapcsolatok', 'licenc', 'kolofon'),
+                         R.ISMERETLEN)
+        regi = '| `x.tsv` | `adat/x.tsv` | minden jog fenntartva | elofordulasok, szocikkek |'
+        uj = '| `x.tsv` | `adat/x.tsv` | minden jog fenntartva | szocikkek, kapcsolatok |'
+        self.assertEqual(set(osztaly(blokk('kolofon', [regi]), blokk('kolofon', [uj]))), {R.ISMERETLEN})
+
+    def test_licenc_ertekek_adatbol(self):
+        # az adat/licencek.tsv `licenc` oszlopából: pl. `CC BY-SA 4.0` (SDBH), `közkincs` (vezető rész)
+        self.assertIn('CC BY-SA 4.0', R._licenc_ertekek())
+        self.assertIn('közkincs', R._licenc_ertekek())
+
+    # --- 3. hely: szám ---
+    def test_szam_igehely_ismeretlen(self):
+        for a, b in (('Zsolt(LXX) 87:11', 'Zsolt(LXX) 87:12'), ('1Móz 3:16', '1Móz 3:17'), ('BDB 2.c', 'BDB 3.c')):
+            self._nem_korabbi_ag(a, b)
+            self.assertEqual(R._mezo_kat(a, b, 'lxx_korpusz', 'lxx'), R.ISMERETLEN, a)
+        e = osztaly(blokk('lxx', ['| [Jób 1:1](#a) | Zsolt(LXX) 87:11 | G0001 |']),
+                    blokk('lxx', ['| [Jób 1:1](#a) | Zsolt(LXX) 87:12 | G0001 |']))
+        self.assertEqual(set(e), {R.ISMERETLEN})
+
+    def test_szam_darabszam_elfogadott(self):
+        self.assertTrue(R._darabszam_frissules('- TSK: Mt 6:33 (Votes: 15)', '- TSK: Mt 6:33 (Votes: 17)'))
+        self.assertTrue(R._darabszam_frissules('*Összesítés: egyező=54, eltérő=0.*', '*Összesítés: egyező=57, eltérő=3.*'))
+        self.assertTrue(R._darabszam_frissules('Kol 3:23 (71)', 'Kol 3:23 (72)'))
+        self.assertTrue(R._darabszam_frissules('motívum 0 elutasított jelöltjét', 'motívum 2 elutasított jelöltjét'))
+        self.assertTrue(R._darabszam_frissules('12', '14'))
+        e = osztaly(blokk('kereszthivatkozasok', ['#### Préd 9:12', '- TSK: Ézs 38:18 (Votes: 15)']),
+                    blokk('kereszthivatkozasok', ['#### Préd 9:12', '- TSK: Ézs 38:18 (Votes: 17)']))
+        self.assertNotIn(R.ISMERETLEN, e)
+        e2 = osztaly(blokk('lxx', ['*Összesítés: egyező=54, eltérő=0.*']), blokk('lxx', ['*Összesítés: egyező=57, eltérő=3.*']))
+        self.assertNotIn(R.ISMERETLEN, e2)
+
+    # --- 4. hely: LXX-állapot ---
+    def test_lxx_azonos_fok_es_visszalepes_ismeretlen(self):
+        for a, b in (('egyező', 'eltérő'), ('eltérő', 'egyező'), ('eltérő', 'kutatói azonosítás függőben'),
+                     ('kutatói azonosítás függőben', 'szamozas_elteres')):
+            self.assertEqual(R._mezo_kat(a, b, 'lxx_korpusz', 'lxx'), R.ISMERETLEN, (a, b))
+            e = osztaly(blokk('lxx', ['| Jób 1:1 | %s |' % a]), blokk('lxx', ['| Jób 1:1 | %s |' % b]))
+            self.assertEqual(set(e), {R.ISMERETLEN}, (a, b))
+
+    def test_lxx_allapot_helyorzo_ismeretlen(self):
+        self.assertEqual(R._mezo_kat('egyező', '—', 'lxx_korpusz', 'lxx'), R.ISMERETLEN)
+        e = osztaly(blokk('lxx', ['| Jób 1:1 | egyező |']), blokk('lxx', ['| Jób 1:1 | — |']))
+        self.assertIn(R.ISMERETLEN, e)
+
+    def test_lxx_elore_lepes_elfogadott(self):
+        for a, b in (('kutatói azonosítás függőben', 'eltérő'), ('szamozas_elteres', 'kutatói azonosítás függőben'),
+                     ('—', 'egyező')):
+            e = osztaly(blokk('lxx', ['| Jób 1:1 | %s |' % a]), blokk('lxx', ['| Jób 1:1 | %s |' % b]))
+            self.assertEqual(set(e), {'lxx_korpusz'}, (a, b))
+
+    def test_kanon_nem_olvasztja_az_allapotot(self):
+        self.assertNotEqual(R._kanon('egyező'), R._kanon('eltérő'))
+        self.assertEqual(R._kanon('magas · tartalom-alapú[^1]'), R._kanon('magas · szó-szintű-gépi[^1]'))
+
+    # --- 5. hely: zárójeles átírás ---
+    def test_kiejtes_magyar_szo_ismeretlen_par_agon(self):
+        # az (1) lépés nem-None ága: a normalizált kulccsal párosított sor
+        regi, uj = '**H3548** · כֹּהֵן (pap)', '**H3548** · כֹּהֵן (király)'
+        self.assertEqual(R._kulcs(regi), R._kulcs(uj))          # az (1) lépésben párosul
+        self.assertIsNone(R._par_kategoria(regi, uj))            # a szűkített (1) ág nem fogadja el
+        e = osztaly(blokk('szocikkek', ['### Héber szavak: H3548', '#### 2. Mélységi szócikk', regi]),
+                    blokk('szocikkek', ['### Héber szavak: H3548', '#### 2. Mélységi szócikk', uj]))
+        self.assertEqual(set(e), {R.ISMERETLEN})
+
+    def test_kiejtes_magyar_szo_ismeretlen_cella_agon(self):
+        self.assertFalse(R._kiejtes_kulonbseg('כֹּהֵן (pap)', 'כֹּהֵן (király)'))
+        self.assertEqual(R._mezo_kat('כֹּהֵן (pap)', 'כֹּהֵן (király)', 'lxx_korpusz', 'lxx'), R.ISMERETLEN)
+        self.assertEqual(R._mezo_kat('ἀβύσσου (mélység)', 'ἀβύσσου (szakadék)', 'lxx_korpusz', 'lxx'), R.ISMERETLEN)
+        e = osztaly(blokk('lxx', ['| Jób 1:1 | ἀβύσσου (mélység) | G0012 |']),
+                    blokk('lxx', ['| Jób 1:1 | ἀβύσσου (szakadék) | G0012 |']))
+        self.assertEqual(set(e), {R.ISMERETLEN})
+
+    def test_kiejtes_eles_esetek(self):
+        for a, b in (('ἐπικαλέσηται (epikalesētai)', 'ἐπικαλέσηται (epikaleszétai)'),
+                     ('ἀβύσσου (abussou)', 'ἀβύσσου (abüsszú)'),
+                     ('ᾅδου (ᾅδης, Hadēs G0086)', 'ᾅδου (ᾅδης, Hadész G0086)')):
+            self.assertTrue(R._kiejtes_kulonbseg(a, b), a)
+            self.assertEqual(R._par_kategoria(a, b), 'kiejtes', a)
+            self.assertEqual(R._mezo_kat(a, b, 'lxx_korpusz', 'lxx'), 'kiejtes', a)
+
+    def test_atirasnak_tunik(self):
+        self.assertTrue(R._atirasnak_tunik('epikalesētai'))
+        self.assertTrue(R._atirasnak_tunik("she.'ol"))
+        self.assertFalse(R._atirasnak_tunik('ᾅδης'))
+        self.assertFalse(R._atirasnak_tunik(''))
+
+    def test_regi_matrix_kivonat(self):
+        # a d9b80b37-mátrix (blob bce21db8, DT-F113b) rögzített kivonata: 20 sor, unió nélkül
+        self.assertEqual(len(R.REGI_SZEREPMATRIX_D9B80B37), 20)
+        self.assertEqual(R.REGI_SZEREPMATRIX_D9B80B37[('gorog', 3)][1], 'Cremer (1895)')
+        self.assertNotIn(('gorog', 12), R.REGI_SZEREPMATRIX_D9B80B37)
+        self.assertEqual(R.REGI_SZEREPMATRIX_D9B80B37[('heber', 1)], ('Alapjelentés', 'TBESH', 'adatosítva'))
 
 
 if __name__ == '__main__':

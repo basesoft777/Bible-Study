@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-10-18",
-   "commit": "e73b19b1"
+   "commit": "42ae2150"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -72,7 +72,7 @@
   {
    "kulcs": "ready",
    "cimke": "Indítható most",
-   "db": 8
+   "db": 7
   },
   {
    "kulcs": "wait",
@@ -238,7 +238,7 @@
    "allapot": "idle",
    "brief_allapot": "brief_kell",
    "most": "brief írása az L1–L7 + DT2 + #78-váz mércéjével (DT68 (2), DT74 (5); az N18, N19 nyitva marad, nem blokkol). Az L-feltételek törzscikkre vonatkozó pontjai kikerülnek (D34). Előfeltétel: a #8 négy nyitott sora (LD008, LD009, LD058, LD064) eldöntve",
-   "fugg": "#8 (kész), #9 (kész), #11, #52*, #113",
+   "fugg": "#8 (kész), #9 (kész), #11, #52*, #113 (kész)",
    "tervezett": false,
    "reszletes": "A 8 lexikonoldal mérhető feltételek (L1–L7) szerinti lezárása. Briefet még nem kapott; előtte el kell döntened az L6 és L7 feltételt (DT2), és meg kell lennie a #9-nek és a #11-nek.",
    "roviden": "A 8 kész lexikonoldal hivatalos lezárása.",
@@ -253,7 +253,7 @@
    "fazis": "1",
    "allapot": "stop",
    "brief_allapot": "megallt",
-   "most": "Te: S3 ⛔ kész — ELTÉRÉS 2 tétellel, kódjavítás nélkül (naplok/ELLENOR_F11_S.md: a PR-cím [ELLENŐRZŐ] előtagot kér, E16; a d05e52ef üzenete az olvaso_mockup/kinyer.py-ról tévesen állít); a jóváhagyásod kell az M1 (leképezési tábla) indításához",
+   "most": "Te: M1 tábla jóváhagyva (2026-10-18); az M2 (generátor-képességek; az E28/E29 előtte külön ágon, D6) indításához jóváhagyás kell",
    "fugg": "#9 (kész), #23 (kész)",
    "tervezett": false,
    "reszletes": "Minden motívum egyetlen kézi forrásból renderelődik (D34); a törzscikk, a 8. sablon és egy régi CI-szabály kivezetésre kerül. Első lépcső az ISTENTISZT-001, utána a többi hat.",
@@ -350,7 +350,7 @@
    "allapot": "wait",
    "brief_allapot": "nem_indult",
    "most": "befagyasztva a #11 1. lépcsőjéig (DT74 (3): a régi forrásréteg és az éles lexikon nem bővül a régi szerkezet szerint); utána: M0 szárazfutás ideiglenes könyvtárba (a repón kívülre); ⛔ az éles fájlok felülírása előtt",
-   "fugg": "#11*, #27*, #28 (kész), #34 (kész), #35 (kész), #38*, #52*, #113, #114*",
+   "fugg": "#11*, #27*, #28 (kész), #34 (kész), #35 (kész), #38*, #52*, #113 (kész), #114*",
    "tervezett": false,
    "reszletes": "A lexikon tudományos oldalai és törzscikkei a mai adatból újragenerálódnak (új fordítások, javított igehelyek, Szent Szellem-szöveg); előbb próbafutás a repón kívül, az éles fájlok felülírása előtt megáll.",
    "roviden": "A lexikonoldalak frissítése a legújabb adatokkal.",
@@ -774,22 +774,6 @@
    "leiras_hiany": true
   },
   {
-   "kulcs": "DIFF_SZUKITES",
-   "szam": 113,
-   "kod": "DIFF_SZUKITES",
-   "cim": "A diff-osztályozó blokk szerint döntő fajtáinak szűkítése a változás fajtája szerint",
-   "fazis": "2",
-   "allapot": "ready",
-   "brief_allapot": "nem_indult",
-   "most": "/kovetkezo — kötelezően az előtt a feladat előtt, amely a render_diff_osztalyoz.py kapujára támaszkodik (#36 M1 diff-elemzés, #10; N-F09i)",
-   "fugg": "#9 (kész)",
-   "tervezett": false,
-   "reszletes": "",
-   "roviden": "",
-   "leiras_forras": null,
-   "leiras_hiany": true
-  },
-  {
    "kulcs": "TSK_VERSSZAM",
    "szam": 114,
    "kod": "TSK_VERSSZAM",
@@ -910,13 +894,12 @@
    "SZURO_PILOT_ISTENTISZT",
    "ELTERES",
    "COMMIT_EKEZET",
-   "DIFF_SZUKITES",
    "TSK_VERSSZAM",
    "MACULA CHI XI",
    "TERV_BEFOGAD"
   ]
  },
- "terkep": "flowchart LR\n  classDef stop fill:#d93025,stroke:#8c1d18,color:#ffffff,stroke-width:2px\n  classDef run fill:#1e8e3e,stroke:#0d5226,color:#ffffff,stroke-width:2px\n  classDef ready fill:#1a73e8,stroke:#0b3d91,color:#ffffff,stroke-width:2px\n  classDef wait fill:#f9ab00,stroke:#a86f00,color:#2b1d00,stroke-width:2px\n  classDef plan fill:#8e44ad,stroke:#5b2470,color:#ffffff,stroke-width:2px,stroke-dasharray:6 3\n  classDef idle fill:#80868b,stroke:#4a4f54,color:#ffffff\n  classDef dt fill:#ff6d00,stroke:#a34500,color:#ffffff,stroke-width:2px\n\n  P_MCP_BUROK[\"MCP_BUROK\"]:::plan\n  P_SZPA_AUDIT[\"SZPA_AUDIT\"]:::plan\n  P_TERV_BEFOGAD[\"TERV_BEFOGAD\"]:::plan\n  T10[\"#10 LEXIKON_LEZARAS\"]:::idle\n  T101[\"#101 ADATBAZIS_FRISSITES\"]:::idle\n  T102[\"#102 BDB_SZELETELO_JAVITAS\"]:::wait\n  T103[\"#103 BDB_TAGOLAS\"]:::wait\n  T104[\"#104 BDB_MEGJELENITES\"]:::wait\n  T105[\"#105 BDB_SZOREND\"]:::wait\n  T106[\"#106 BDB_MAGYARAZAT\"]:::wait\n  T107[\"#107 BDB_JELOLT_SZOVEG\"]:::ready\n  T109[\"#109 TEHOM_JOB41\"]:::ready\n  T11[\"#11 MIGRACIO\"]:::stop\n  T110[\"#110 SZURO_PILOT_ISTENTISZT\"]:::ready\n  T111[\"#111 ELTERES\"]:::ready\n  T112[\"#112 COMMIT_EKEZET\"]:::ready\n  T113[\"#113 DIFF_SZUKITES\"]:::ready\n  T114[\"#114 TSK_VERSSZAM\"]:::wait\n  T115[\"#115 MACULA CHI XI\"]:::stop\n  T12[\"#12 TEREMT-002 3. lépés…\"]:::idle\n  T13[\"#13 1Móz 17-től a…\"]:::idle\n  T22[\"#22 Károli–Strong párosítás…\"]:::stop\n  T25[\"#25 OLVASOI_HTML\"]:::idle\n  T27[\"#27 FP3\"]:::idle\n  T36[\"#36 LEXIKON_UJRAGEN\"]:::wait\n  T38[\"#38 BDB_FORDITAS\"]:::wait\n  T48[\"#48 KJV_REGI_KIVEZETES\"]:::wait\n  T50[\"#50 CI_JAVITO_KOR\"]:::ready\n  T52[\"#52 TERV_SZINKRON\"]:::stop\n  T55[\"#55 ZSOLTAR_UJRAELLENORZES\"]:::stop\n  T59[\"#59 SZOSZEDET\"]:::ready\n  T67[\"#67 BDB_JAVITAS_KAPU\"]:::idle\n  T69[\"#69 SEMA_DATASET_SZAM\"]:::idle\n  T7[\"#7 Thayer teljes magyar…\"]:::idle\n  T70[\"#70 SZOTAR_S26\"]:::wait\n  T74[\"#74 TANULMANY_JAVITAS_GEPI\"]:::idle\n  T75[\"#75 TANULMANY_JAVITAS\"]:::idle\n  T76[\"#76 OLVASOI_KONKORDANCIA\"]:::wait\n  T81[\"#81 KAROLI_UJJLENYOMAT\"]:::idle\n  T86[\"#86 ELOFIZETES_FEED\"]:::stop\n  T96[\"#96 KAROLI_MODERN\"]:::idle\n  D_DT_F38i{{\"DT-F38i\"}}:::dt\n  D_DT_M1{{\"DT-M1\"}}:::dt\n  D_DT_M3{{\"DT-M3\"}}:::dt\n  D_DT_M4{{\"DT-M4\"}}:::dt\n  D_DT_M5{{\"DT-M5\"}}:::dt\n  D_DT_M6{{\"DT-M6\"}}:::dt\n  D_DT_M7{{\"DT-M7\"}}:::dt\n  D_DT_M8{{\"DT-M8\"}}:::dt\n  D_DT127{{\"DT127\"}}:::dt\n  D_DT128{{\"DT128\"}}:::dt\n  D_DT129{{\"DT129\"}}:::dt\n  D_DT146{{\"DT146\"}}:::dt\n  D_DT147{{\"DT147\"}}:::dt\n  D_DT148{{\"DT148\"}}:::dt\n  D_DT149{{\"DT149\"}}:::dt\n  D_DT150{{\"DT150\"}}:::dt\n  D_DT151{{\"DT151\"}}:::dt\n  D_DT152{{\"DT152\"}}:::dt\n  D_DT181{{\"DT181\"}}:::dt\n  D_DT190{{\"DT190\"}}:::dt\n  D_DT2{{\"DT2\"}}:::dt\n  D_DT28{{\"DT28\"}}:::dt\n  D_DT52{{\"DT52\"}}:::dt\n  D_DT56{{\"DT56\"}}:::dt\n  D_DT57{{\"DT57\"}}:::dt\n  D_DT71{{\"DT71\"}}:::dt\n  D_DT74{{\"DT74\"}}:::dt\n  D_DT75{{\"DT75\"}}:::dt\n  D_DT77{{\"DT77\"}}:::dt\n  D_DT78{{\"DT78\"}}:::dt\n  D_DT90{{\"DT90\"}}:::dt\n\n  P_MCP_BUROK --> D_DT_M3\n  P_MCP_BUROK --> D_DT_M5\n  P_MCP_BUROK --> D_DT_M7\n  P_SZPA_AUDIT --> D_DT77\n  P_TERV_BEFOGAD --> D_DT_M8\n  T10 --> D_DT2\n  T10 --> D_DT74\n  T10 --> T11\n  T10 --> T113\n  T10 --> T52\n  T102 --> T107\n  T102 --> T76\n  T103 --> T102\n  T103 --> T76\n  T104 --> T102\n  T104 --> T103\n  T104 --> T76\n  T105 --> T102\n  T105 --> T103\n  T105 --> T104\n  T105 --> T76\n  T106 --> T102\n  T106 --> T103\n  T106 --> T104\n  T106 --> T105\n  T106 --> T76\n  T107 --> D_DT190\n  T11 --> D_DT74\n  T114 --> T115\n  T12 --> D_DT74\n  T12 --> T11\n  T13 --> T10\n  T22 --> D_DT56\n  T22 --> D_DT57\n  T22 --> D_DT71\n  T25 --> T11\n  T25 --> T12\n  T36 --> D_DT28\n  T36 --> D_DT74\n  T36 --> T11\n  T36 --> T113\n  T36 --> T114\n  T36 --> T27\n  T36 --> T38\n  T36 --> T52\n  T38 --> D_DT181\n  T38 --> D_DT52\n  T38 --> D_DT56\n  T38 --> D_DT_F38i\n  T38 --> T107\n  T48 --> T22\n  T52 --> D_DT78\n  T52 --> D_DT90\n  T55 --> D_DT74\n  T55 --> T109\n  T55 --> T11\n  T55 --> T110\n  T55 --> T114\n  T67 --> T27\n  T67 --> T7\n  T70 --> D_DT74\n  T70 --> T11\n  T70 --> T55\n  T74 --> T11\n  T75 --> T74\n  T76 --> D_DT127\n  T76 --> D_DT128\n  T76 --> D_DT129\n  T76 --> D_DT146\n  T76 --> D_DT147\n  T76 --> D_DT148\n  T76 --> D_DT149\n  T76 --> D_DT150\n  T76 --> D_DT151\n  T76 --> D_DT152\n  T76 --> D_DT75\n  T76 --> D_DT_M1\n  T76 --> D_DT_M4\n  T76 --> D_DT_M6\n  T76 --> T114\n  T76 --> T115\n  T81 --> T109\n  T81 --> T114\n  T86 --> T109\n  T86 --> T11\n  T86 --> T110\n  T86 --> T114\n  T86 --> T27\n  T86 --> T38\n  T86 --> T52\n  T86 --> T7\n  T86 --> T76",
+ "terkep": "flowchart LR\n  classDef stop fill:#d93025,stroke:#8c1d18,color:#ffffff,stroke-width:2px\n  classDef run fill:#1e8e3e,stroke:#0d5226,color:#ffffff,stroke-width:2px\n  classDef ready fill:#1a73e8,stroke:#0b3d91,color:#ffffff,stroke-width:2px\n  classDef wait fill:#f9ab00,stroke:#a86f00,color:#2b1d00,stroke-width:2px\n  classDef plan fill:#8e44ad,stroke:#5b2470,color:#ffffff,stroke-width:2px,stroke-dasharray:6 3\n  classDef idle fill:#80868b,stroke:#4a4f54,color:#ffffff\n  classDef dt fill:#ff6d00,stroke:#a34500,color:#ffffff,stroke-width:2px\n\n  P_MCP_BUROK[\"MCP_BUROK\"]:::plan\n  P_SZPA_AUDIT[\"SZPA_AUDIT\"]:::plan\n  P_TERV_BEFOGAD[\"TERV_BEFOGAD\"]:::plan\n  T10[\"#10 LEXIKON_LEZARAS\"]:::idle\n  T101[\"#101 ADATBAZIS_FRISSITES\"]:::idle\n  T102[\"#102 BDB_SZELETELO_JAVITAS\"]:::wait\n  T103[\"#103 BDB_TAGOLAS\"]:::wait\n  T104[\"#104 BDB_MEGJELENITES\"]:::wait\n  T105[\"#105 BDB_SZOREND\"]:::wait\n  T106[\"#106 BDB_MAGYARAZAT\"]:::wait\n  T107[\"#107 BDB_JELOLT_SZOVEG\"]:::ready\n  T109[\"#109 TEHOM_JOB41\"]:::ready\n  T11[\"#11 MIGRACIO\"]:::stop\n  T110[\"#110 SZURO_PILOT_ISTENTISZT\"]:::ready\n  T111[\"#111 ELTERES\"]:::ready\n  T112[\"#112 COMMIT_EKEZET\"]:::ready\n  T114[\"#114 TSK_VERSSZAM\"]:::wait\n  T115[\"#115 MACULA CHI XI\"]:::stop\n  T12[\"#12 TEREMT-002 3. lépés…\"]:::idle\n  T13[\"#13 1Móz 17-től a…\"]:::idle\n  T22[\"#22 Károli–Strong párosítás…\"]:::stop\n  T25[\"#25 OLVASOI_HTML\"]:::idle\n  T27[\"#27 FP3\"]:::idle\n  T36[\"#36 LEXIKON_UJRAGEN\"]:::wait\n  T38[\"#38 BDB_FORDITAS\"]:::wait\n  T48[\"#48 KJV_REGI_KIVEZETES\"]:::wait\n  T50[\"#50 CI_JAVITO_KOR\"]:::ready\n  T52[\"#52 TERV_SZINKRON\"]:::stop\n  T55[\"#55 ZSOLTAR_UJRAELLENORZES\"]:::stop\n  T59[\"#59 SZOSZEDET\"]:::ready\n  T67[\"#67 BDB_JAVITAS_KAPU\"]:::idle\n  T69[\"#69 SEMA_DATASET_SZAM\"]:::idle\n  T7[\"#7 Thayer teljes magyar…\"]:::idle\n  T70[\"#70 SZOTAR_S26\"]:::wait\n  T74[\"#74 TANULMANY_JAVITAS_GEPI\"]:::idle\n  T75[\"#75 TANULMANY_JAVITAS\"]:::idle\n  T76[\"#76 OLVASOI_KONKORDANCIA\"]:::wait\n  T81[\"#81 KAROLI_UJJLENYOMAT\"]:::idle\n  T86[\"#86 ELOFIZETES_FEED\"]:::stop\n  T96[\"#96 KAROLI_MODERN\"]:::idle\n  D_DT_F38i{{\"DT-F38i\"}}:::dt\n  D_DT_M1{{\"DT-M1\"}}:::dt\n  D_DT_M3{{\"DT-M3\"}}:::dt\n  D_DT_M4{{\"DT-M4\"}}:::dt\n  D_DT_M5{{\"DT-M5\"}}:::dt\n  D_DT_M6{{\"DT-M6\"}}:::dt\n  D_DT_M7{{\"DT-M7\"}}:::dt\n  D_DT_M8{{\"DT-M8\"}}:::dt\n  D_DT127{{\"DT127\"}}:::dt\n  D_DT128{{\"DT128\"}}:::dt\n  D_DT129{{\"DT129\"}}:::dt\n  D_DT146{{\"DT146\"}}:::dt\n  D_DT147{{\"DT147\"}}:::dt\n  D_DT148{{\"DT148\"}}:::dt\n  D_DT149{{\"DT149\"}}:::dt\n  D_DT150{{\"DT150\"}}:::dt\n  D_DT151{{\"DT151\"}}:::dt\n  D_DT152{{\"DT152\"}}:::dt\n  D_DT181{{\"DT181\"}}:::dt\n  D_DT190{{\"DT190\"}}:::dt\n  D_DT2{{\"DT2\"}}:::dt\n  D_DT28{{\"DT28\"}}:::dt\n  D_DT52{{\"DT52\"}}:::dt\n  D_DT56{{\"DT56\"}}:::dt\n  D_DT57{{\"DT57\"}}:::dt\n  D_DT71{{\"DT71\"}}:::dt\n  D_DT74{{\"DT74\"}}:::dt\n  D_DT75{{\"DT75\"}}:::dt\n  D_DT77{{\"DT77\"}}:::dt\n  D_DT78{{\"DT78\"}}:::dt\n  D_DT90{{\"DT90\"}}:::dt\n\n  P_MCP_BUROK --> D_DT_M3\n  P_MCP_BUROK --> D_DT_M5\n  P_MCP_BUROK --> D_DT_M7\n  P_SZPA_AUDIT --> D_DT77\n  P_TERV_BEFOGAD --> D_DT_M8\n  T10 --> D_DT2\n  T10 --> D_DT74\n  T10 --> T11\n  T10 --> T52\n  T102 --> T107\n  T102 --> T76\n  T103 --> T102\n  T103 --> T76\n  T104 --> T102\n  T104 --> T103\n  T104 --> T76\n  T105 --> T102\n  T105 --> T103\n  T105 --> T104\n  T105 --> T76\n  T106 --> T102\n  T106 --> T103\n  T106 --> T104\n  T106 --> T105\n  T106 --> T76\n  T107 --> D_DT190\n  T11 --> D_DT74\n  T114 --> T115\n  T12 --> D_DT74\n  T12 --> T11\n  T13 --> T10\n  T22 --> D_DT56\n  T22 --> D_DT57\n  T22 --> D_DT71\n  T25 --> T11\n  T25 --> T12\n  T36 --> D_DT28\n  T36 --> D_DT74\n  T36 --> T11\n  T36 --> T114\n  T36 --> T27\n  T36 --> T38\n  T36 --> T52\n  T38 --> D_DT181\n  T38 --> D_DT52\n  T38 --> D_DT56\n  T38 --> D_DT_F38i\n  T38 --> T107\n  T48 --> T22\n  T52 --> D_DT78\n  T52 --> D_DT90\n  T55 --> D_DT74\n  T55 --> T109\n  T55 --> T11\n  T55 --> T110\n  T55 --> T114\n  T67 --> T27\n  T67 --> T7\n  T70 --> D_DT74\n  T70 --> T11\n  T70 --> T55\n  T74 --> T11\n  T75 --> T74\n  T76 --> D_DT127\n  T76 --> D_DT128\n  T76 --> D_DT129\n  T76 --> D_DT146\n  T76 --> D_DT147\n  T76 --> D_DT148\n  T76 --> D_DT149\n  T76 --> D_DT150\n  T76 --> D_DT151\n  T76 --> D_DT152\n  T76 --> D_DT75\n  T76 --> D_DT_M1\n  T76 --> D_DT_M4\n  T76 --> D_DT_M6\n  T76 --> T114\n  T76 --> T115\n  T81 --> T109\n  T81 --> T114\n  T86 --> T109\n  T86 --> T11\n  T86 --> T110\n  T86 --> T114\n  T86 --> T27\n  T86 --> T38\n  T86 --> T52\n  T86 --> T7\n  T86 --> T76",
  "dontesek": {
   "nyitott": [
    {
@@ -2281,6 +2264,16 @@
      "🟢"
     ],
     "sor": 268
+   },
+   {
+    "id": "DT195",
+    "feladat": "#113 DIFF_SZUKITES (2. lépés ⛔: a szűkítés a mai próbán nem tartható)",
+    "kerdes": "A kiinduló mérés rendben (0 `ismeretlen`, 44 `felhasznalo_elfogadva`, a kategóriák darabra egyeznek a `naplok/SZOTAR_S2_diff.tsv`-vel). A HAMART-001 éles szerep-esete („Cremer (1895)” → „unfoldingWord …”) nem tartható a mátrixból: a Cremer csak az `adat/szotar_szerepek.tsv` első változatában (`d9b80b37`) volt forrásnév, az `f2fd3556` (D16) óta nincs benne, és a renderelt forrásnevek (`torzscikk_general.olvaso_forras`) között sincs. A repó kódján kívüli szimuláció szerint az 1–4. szűkítés a brief szó szerinti olvasatában 246 új `ismeretlen` sort adna (141 mező; tételesen: a napló): (a) szerep 66 mező, mind a 8 `_TORZSCIKK.md`-ben (régi mátrix-/rendernevek: Cremer, Girdlestone + Cremer, UBS DNTG, UBS DBH, „kiejtes.py szabálytábla”, „kézi (2/b)”, TBESH → `BDB 2.c (DT-F42a)` / `csak tulajdonnév-alszócikk: …` lefedettség-cellák, a jelmagyarázat-mondat cseréje); (b) LXX-állapot 63 mező (HODIT, MENNY, ALVIL): 51 „kutatói azonosítás függőben” → „eltérő”, 12 „szamozas_elteres” → „kutatói azonosítás függőben”, egyik sincs a `FELHASZNALO_ELFOGADOTT`-ban (a brief feltevése nem teljesül); (c) licenc 12 kolofon-cella (`elofordulasok` → `elofordulasok, szocikkek`, 6 `_TUDOMANYOS.md`): felhasználási cella, nem licencszöveg; (d) szám a „darabszám” tág olvasatában (`=N`, `Votes: N`, `(N)`, `N <főnév>`) 0 sor, a brief szó szerinti listájában („… db / … sor / … előfordulás”) 9 leíró mondat („0 elutasított … jelöltjét” → „2 …”) bukna. Az 5. szűkítés (kiejtés) adatalapú változata (görög: `kiejtes.atir`; héber: `adat/kiejtes_kivetelek.tsv`) mind a 432 mai átírás-eltérést átengedi, 0 új sor, a `(pap)` → `(király)` alakot elutasítja. Mellékmegfigyelés (a briefen kívül, csak jelezve): a `_torzscikk_kat` és a `_mezo_kat` fájlazonosító-ága (`azon`, 17 mező, „LXX_OS” → „adat/lxx_dontesek.tsv”) is blokk szerint dönt.",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 270
    }
   ],
   "javasolt": [],
@@ -2354,6 +2347,18 @@
      "🟢"
     ],
     "sor": 269,
+    "oszlopszam": 10,
+    "fejlec_oszlopszam": 8
+   },
+   {
+    "id": "DT196",
+    "feladat": "#113 DIFF_SZUKITES (7. lépés ⛔: 78 `ismeretlen` a szűkítés után)",
+    "kerdes": "A DT195 szerint mind az öt szűkítés elkészült (`ff78d661`; 67 teszt, mutációs ellenőrzéssel: a negatív tesztek a régi osztályozón mind elbuknak). A záró mérésen (`naplok/DIFF_SZUKITES_diff.tsv`) a licenc-, szám-, LXX- és kiejtés-szűkítés 0 új `ismeretlen`-t ad; 78 sor (39 pár) marad, mind a törzscikkek `5. Szótári` szakaszában (`naplok/DIFF_SZUKITES_ismeretlen.tsv`). Ok: a DT195 (a) a `0d7e9dec`-es mátrixot nevezte meg, de az éles `lexikon/` a `1e57742a` (2026-09-23) idején érvényes mátrixból (`d9b80b37`-es blob) renderelt; a régi nevek abban állnak (ellenőrizve: „Cremer” a `d9b80b37`-ben 2, a `0d7e9dec:adat/szotar_szerepek.tsv`-ben 0 előfordulás). Tételesen: „Teológiai szócikk” 1–2. oszlop (`Cremer (1895)`, `Girdlestone (1897) + Cremer héber mutatója; TWOT-szám hivatkozásként` → tW…) 8+8; „Versenkénti jelentés” 1–2. oszlop (`UBS DNTG (szópozícióig)`, `UBS DBH` → a hosszú alak) 8+8; lefedettség-sorok 9. oszlop (`UBS DNTG (szópozícióig)` → hosszú alak) 13 cella; lefedettség-sorok 7. oszlop `kézi (2/b)` → `SECE (görög)`/`SECE (héber)` 3 cella (ISTENTISZT G1941, H7121, H8034; egyik mátrixban sincs, régi render-állapot); a jelmagyarázat-mondat („A cella értéke: …”) cseréje 8 sor (a mondat a renderer kódjában literál, adatból nem igazolható). Szimuláció: a `d9b80b37`-tel bővített régi táblával 11 pár (22 sor) maradna: a 8 jelmagyarázat-mondat és a 3 `kézi (2/b)` cella.",
+    "allapot": "ellenorizendo",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 271,
     "oszlopszam": 10,
     "fejlec_oszlopszam": 8
    }
