@@ -1,3 +1,4 @@
+<!-- ARCHÍV: tematikus_lezart/naplok/Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md @ 82f5c869 · F11 M3 · 2026-10-18 · nem forrás, nem szerkesztendő -->
 # Kereszthivatkozás-napló — "Segítségül hívni az Úr nevét"
 
 *Létrehozva: 2026.09.05, retroaktívan, a v12 sablon 1. pontjának
