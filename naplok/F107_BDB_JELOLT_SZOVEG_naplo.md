@@ -788,3 +788,31 @@ a `adat/bdb_szakasz_hu.tsv` mellé nem készült külön datasetek-sor (a brief 
 - **Nyitott tételek:** N-F107a, N-F107b; átadandó: a TSV cseréje és az olvasók átállása (`/befogad`).
 
 `scope=F107 zárás-előkészítés | forras=a napló 1–8. szakasza, git log F107.0–F107.43, python eszkozok/feladatok.py ellenoriz / fuggesek | ts=2026-10-18`
+
+## Javítókör (a független ellenőrzés után: `naplok/ELLENOR_F107.md`, ELTÉRÉS: 6 tétel, F107.46 `f0af1148`)
+
+A felhasználó (chat, az orkesztrátoron át, 2026-10-18): „a 98,8% elfogadva (a maradék 5 csomópont N-tételben, tételesen); javítókör mind a 6
+tételre, közte .gitattributes: konkordancia/lexikonok_nyers/*.json -text; utána rebase a main-re és zárás.”
+
+| # | ELTÉRÉS (ELLENOR_F107) | elvégzett lépés |
+|---|---|---|
+| 1 | a ≥ 99%-os aranyminta-mérce nem teljesül (98,8%), felhasználói döntés nélkül | **DT-F107i** 🟢 (F107.47): a 98,8% (411 / 416, `forras_hiba` nélkül) elfogadva; a maradék 5 csomópont tételesen az **N-F107c**-ben (F107.50): H3176 `Hiph'il/-1`, `Hiph'il/-2`; H0834 `בַּאֲשֶׁר` `-/a`, `מֵאֲשֶׁר` `-/a`; H2939 `Pa'el` |
+| 2 | reprodukálhatóság: CRLF-es checkouton a `bont.py` a munkafa-hash miatt leáll | `.gitattributes`: `konkordancia/lexikonok_nyers/*.json -text` (F107.48). **Egyeztetett `ir`-eltérés:** a `.gitattributes` a brief `ir` mezőjébe került (a felhasználó döntésére). Igazolás: a munkafa törlése és friss checkout után a `DictBDB.json` SHA-256-ja `5d826c580a4dd06f54a53d1e19b5e8c354aab0180e200849e3148b89f370e33d`, 0 CR; a `git add --renormalize` a fájlra a blobot nem változtatja (`9d6011ea…` marad); a `bont.py --ellenoriz` bájtra azonos. A `BDB_teljes_unabridged_README.md` megőrzés-bekezdése frissítve |
+| 3 | merge-kockázat (`DONTESEK.md`, `datasetek.tsv`, `NYITOTT_FELADATOK.md` a fájl végén; a main hivatkozik a `DT-F107d` helyőrzőre; a #38 fut) | az orkesztrátor oldja meg a rebase-nél; a #107 ebben a körben nem rebase-elt |
+| 4 | az N-F107b szövege elavult | frissítve (F107.50): az átadás az F38 brief törzsében megtörtént (F107.43) |
+| 5 | a H7626 „145:” nincs a javítótáblában | megvizsgálva a nyers forrásban: `DictBDB.json` „<b>2</b> 145:tribe (synonym…”, `BDB.lexicon` „<b>2.</b> 145:tribe (synonym…” — mindkettőben jelölés nélkül; hogy gyakoriságszám-e (`<sub>` nélkül, vö. H8057 „2<sub>46</sub>”) vagy hiba, a forrásból **nem dönthető el** → nem kitöltve, tételként az **N-F107c**-ben, indoklással |
+| 6 | kozmetikai elavulás (`datasetek.tsv`, SEMA 2.30/2.31) | F107.51: a `datasetek.tsv` 4 `BDB_szakaszok` sorában a mért szám (soronkénti összevetéssel, csak a 7. mező); SEMA 2.30: a megkettőzött forrássor törölve, az állapot F107.29, a szöveg ↔ javítótábla viszonya a DT-F107c (d) szerint; SEMA 2.31: a négy hibaosztály, az állapotcímke F107.49 |
+
+**A szúrópróba-megjegyzés (ELLENOR_F107, „H6440 II. -/3” és „7. 2. a.”):**
+- **„7. 2. a.”** (H6440, 10. sor): mindkét nyers forrásban „See further below </p><p><b>7. 2. a.</b>” (lexikon: „See further below
+  </div><div class="point"><b>7. 2. a.</b>”) — a hivatkozás „7.”-e a fejbe olvadt: **`forras_hiba` (`hamis_jelolo`), kézi sor** a
+  javítótáblában (F107.49); az útvonal (`-/2/a`, I. szakasz) helyes.
+- **H6440 II. `-/3`**: mindkét nyers forrásban „see II. אֵת <b>4a. 3.</b> בִּפְנֵי” (lexikon: „<div class="point"><b>4 a. 3.</b> בִּפְנֵי”) — a
+  „see II. אֵת 4a” hivatkozás a 3. jelentés fejébe olvadt; a JSON-ban a fej a bekezdés közepén, héber szó után áll, ezért a tábla nem nyit
+  szakaszt, a II/3 csomópont hiányzik: **`forras_hiba` (`hamis_jelolo`), kézi sor** (F107.49). **Mérési korlát:** a `szerkezet_osszevet.py`
+  aranyminta-összevetése a `szakasz` oszlopot nem nézi, így ezt a hiányt az I. szakasz `-/3`-a fedte (a 411 / 425 ebben az értelemben egy
+  csomóponttal optimista); az N-F107c rögzíti.
+
+A javítótábla: 7 202 sor (`kezi` 9). Teszt: `teszt_bont.py` 45, OK; `python eszkozok/feladatok.py ellenoriz`: l. a commit-üzenetet (F107.52).
+
+`scope=F107 javítókör | forras=naplok/ELLENOR_F107.md; nyers_nez (DictBDB.json, BDB.lexicon); sha256sum, git ls-files -s, git add --renormalize, bont.py --ellenoriz | ts=2026-10-18`
