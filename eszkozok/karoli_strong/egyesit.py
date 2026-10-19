@@ -325,8 +325,8 @@ def proveniencia_sor(konyv, gyoker=None):
     u = utak(konyv, gyoker)
     csak_sonnet = not os.path.exists(u['c'])
     forras = ['f22/valaszok/sonnet/%s.jsonl' % n] + ([] if csak_sonnet else ['f22/valaszok/c/%s.jsonl' % n])
-    if os.path.exists(u['sonnet_javito']) or os.path.exists(u['c_javito']):
-        forras += ['f22/valaszok/sonnet/%s_javito.jsonl' % n, 'f22/valaszok/c/%s_javito.jsonl' % n]
+    forras += [e for k, e in (('sonnet_javito', 'f22/valaszok/sonnet/%s_javito.jsonl' % n),
+                              ('c_javito', 'f22/valaszok/c/%s_javito.jsonl' % n)) if os.path.exists(u[k])]
     if any(tokenek.igehely_bont(r[0] or r[1])[0] == konyv for r in tokenek.versmegfeleltetes()):
         forras.append('f22/versmegfeleltetes.tsv')
     if os.path.exists(tokenek.VERSMEGF_KEZI) and any(

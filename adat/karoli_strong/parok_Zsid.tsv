@@ -1,4 +1,4 @@
-# proveniencia: scope=manual | forras=f22/valaszok/sonnet/Zsid.jsonl, f22/valaszok/sonnet/Zsid_javito.jsonl, f22/valaszok/c/Zsid_javito.jsonl, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; az API (Batch)-futásnak nincs lekérdezés-időbélyege) | modell-kimenet, javaslat: nem lekérdezés-eredmény; minden link `alacsony` (egy modell, nincs egyezés); a strong a TAGNT-ből, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py
+# proveniencia: scope=manual | forras=f22/valaszok/sonnet/Zsid.jsonl, f22/valaszok/sonnet/Zsid_javito.jsonl, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; az API (Batch)-futásnak nincs lekérdezés-időbélyege) | modell-kimenet, javaslat: nem lekérdezés-eredmény; minden link `alacsony` (egy modell, nincs egyezés); a strong a TAGNT-ből, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py
 vers	hu_sorszam	hu_szo	er_sorszam	er_szo	strong	bizonyossag	forras
 Zsid 1:1	1	Minekutána	7	λαλήσας	G2980	alacsony	S
 Zsid 1:1	3	Isten	6	θεὸς	G2316	alacsony	S

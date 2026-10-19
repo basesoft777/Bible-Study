@@ -1,4 +1,4 @@
-# proveniencia: scope=manual | forras=f22/valaszok/sonnet/Kol.jsonl, f22/valaszok/sonnet/Kol_javito.jsonl, f22/valaszok/c/Kol_javito.jsonl, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; az API (Batch)-futásnak nincs lekérdezés-időbélyege) | modell-kimenet, javaslat: nem lekérdezés-eredmény; minden link `alacsony` (egy modell, nincs egyezés); a strong a TAGNT-ből, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py
+# proveniencia: scope=manual | forras=f22/valaszok/sonnet/Kol.jsonl, f22/valaszok/sonnet/Kol_javito.jsonl, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; az API (Batch)-futásnak nincs lekérdezés-időbélyege) | modell-kimenet, javaslat: nem lekérdezés-eredmény; minden link `alacsony` (egy modell, nincs egyezés); a strong a TAGNT-ből, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py
 vers	oldal	sorszam	szo	allapot	partner_sorszam	strong	bizonyossag	forras
 Kol 1:1	hu	1	Pál	parositva	1	G3972	alacsony	S
 Kol 1:1	hu	2	Jézus	parositva	4	G2424	alacsony	S
