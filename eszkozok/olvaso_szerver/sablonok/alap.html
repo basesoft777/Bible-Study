@@ -17,9 +17,9 @@
 <body class="nezet-{{ nezet }}">
 <header class="fejlec">
   <a class="logo" href="/">PaRDeS olvasó</a>
-  <form class="ugras" action="/ugras" method="get" role="search">
-    <input type="text" name="q" placeholder="1Móz 1:4 vagy H0216 (Ctrl+K)" aria-label="Ugrás igehelyre vagy Strong-számra" maxlength="60" autocomplete="off">
-    <button type="submit">Ugrás</button>
+  <form class="ugras" action="/kereses" method="get" role="search">
+    <input type="text" name="q" placeholder="1Móz 1:4 · H0216 · világosság · a föld (Ctrl+K)" aria-label="Keresés (Strong-szám, magyar szó vagy frázis, héber frázis) vagy ugrás igehelyre" maxlength="100" autocomplete="off">
+    <button type="submit">Keresés</button>
   </form>
   <nav class="nezetvalto" aria-label="Nézet">
     {% for kod, nev in nezetek %}
@@ -46,7 +46,7 @@
 </main>
 <footer class="labjegyzet">
   Kiadás: <b>{{ kiadas }}</b>{% if lablec %} · ág: <b>{{ lablec.ag }}</b> · commit: <code>{{ lablec.commit }}</code>{% endif %} · adatbázis építve: {{ epites_ts }} · Az adatok a repó TSV-táblázataiból generált <code>pardes.db</code>-ből jönnek; a blokkok és a szövegoszlop jelleg- és forrássorral.
-  A keresés (Strong-szám, magyar szó, frázis) még nem része ennek a kiadásnak.
+  Keresés (Strong-szám, magyar szó és frázis, héber frázis): a fejléc mezője (Ctrl+K) vagy a <a href="/kereses">keresőlap</a>.
   {% if lablec and lablec.figyelmeztetesek %}
   {% for f in lablec.figyelmeztetesek %}
   <div role="alert"><mark>Figyelem:</mark> {{ f }}</div>

@@ -214,3 +214,9 @@ h1 { font: 600 var(--fs-oldalcim)/var(--lh-oldalcim) var(--font-text); text-wrap
 [lang="he"], .he, .heb { font-feature-settings: "kern", "liga", "ccmp", "mark", "mkmk"; }
 .st, code { font-variant-numeric: tabular-nums slashed-zero; }
 @media (max-width: 640px) { .szoveg-oszlop { font-size: var(--fs-karoli-folyo-mobil); line-height: var(--lh-karoli-folyo-mobil); } }
+/* M3: a keresőlap találatlistája (a többi elem a meglévő osztályokat használja: valaszto, utmutato, cimkek, szoveg-jegy, ures, megj, lapozo) */
+.talalatok { padding-left: 2.6em; margin: 8px 0; display: grid; gap: var(--space-blokkkoz); max-width: 90ch; }
+.talalat { font: var(--fs-karoli-panel)/var(--lh-karoli-panel) var(--font-text); }
+.talalat > a:first-child { font-weight: 600; margin-right: 4px; white-space: nowrap; }
+.talalat mark { background: var(--accent-soft); color: inherit; border-radius: var(--radius-kiemeles); padding: 0 1px; }
+.talalat .heb { margin-right: 4px; }

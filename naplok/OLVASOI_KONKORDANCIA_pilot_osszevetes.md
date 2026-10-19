@@ -169,3 +169,59 @@ Blokkszám: 46 azonosító (az M2 40-e + 6). A szócsempe-blokkok mellett a táb
 Az Interlineáris csempe tartalmánál az „angol tükörfordítás” (a pilot csempéjének `gl` mezője) áll a „rövid jelentés” helyett: a pilot mintáját követtem; ha a TAHOT rövid jelentése kell, egyetlen mező cseréje.
 
 **Tesztfutás, végrehajtói futás, nem független ellenőri (F76.30):** `scope=eszkozok/olvaso_szerver/teszt_pilot_aranymintaval.py (22 teszt, mind zöld, expectedFailure már nincs) és teszt_olvaso_szerver.py (65 teszt, köztük a D2-egyezés, az egyetlen eltérés a DT147) | forras=unittest, Python 3.12.3, pardes WSL-disztribúció, ugyanaz a parancs mint fent, a pardes.db epites_ts=2026-10-14T09:35:00Z | ts=2026-10-14`. Eredmény: **OK** mindkét fájlra (72 s és 9 s). A regiszter 48 azonosítós.
+
+## 8. M4: vizuális összevetés a beépített böngészőben (2026-10-18)
+
+*Végrehajtói összevetés (`claude-opus-5-5`), nem független ellenőri. Ág: `claude/olvasoi-konkordancia-m3`, HEAD `7e4b6c5c` + a munkafa (a szerver kódja nem változott).*
+
+`scope=pilot: 1Móz 1–25 és Zsolt 22 oldal (adat.py + epit.py, 2026-10-18, a repón kívül: a session scratchpadja, kiszolgálva http://127.0.0.1:8783), a kirajzolt DOM szövege (h2/h3 + a panel innerText); szerver: a munkafa Flask-szervere (alkalmazas.py --port 8782 --kiadas belso, WSL pardes, PARDES_DB=~/pardes/pardes.db), ugyanazok a lapok mindhárom nézetben: /1Moz/1/1, /1Moz/1/1?szo=H0430 (Munkaasztal), /Zsolt/22/2, /szo/H0430, /szo/G2316, /kereses?szo=világosság | forras=pardes.db meta.epites_ts=2026-10-18T12:18:16Z; a pilot a konkordancia/ TSV-iből | ts=2026-10-18T18:25Z`
+
+A beépített böngésző képernyőképe a lapok egy részén időtúllépéssel elmaradt (a panel nem rajzolt); ezeken az összevetés a DOM szövegéből készült, nem képből. Jelölés: a 2. szakaszé (megvan / forma / tartalom / hiányzik). Az „ÚJ” sor az M2b óta nem volt naplózva.
+
+### 8.1 Vers-panel (1Móz 1:1 és Zsolt 22:2, Olvasópult)
+
+| Blokk | Pilot | Szerver | Állapot |
+|---|---|---|---|
+| Héber szöveg (csempék) | 11 / 16 szó: héber, átírás, tükör, Strong, magyar alaktan, LXX-megfelelő („LXX: —” az אֵת-nél, a שַׁאֲגָתִ-nál) | ugyanaz, szóra azonos | megvan |
+| Septuaginta (csempék) | szóalak + Strong; magyarázat: „arany: nincs ÚSZ-Strong” | ugyanazok a szavak és Strong-számok; magyarázat: „„nincs Strong””, arany jelölés helyett | forma (kicsi) |
+| Versszámozás | egy blokk a panel élén: Károli / MT / LXX / KJV / KJV-kulcs + „a számozás egyezik / eltér” | két táblázat a panel közepén („LXX-versszám”, „Versszámozás (MT / KJV)”), az egyezés-mondat nélkül; a Zsolt 22:2-n többlet sor: „térkép (KJV-kulcs) Psa.21:1-2 \| Psa.21:2” | forma (V1, ismert) |
+| TSK | 6 hivatkozás, „Ján 1,1” alak | 15 + szavazatszám, „Ján 1:1”; az első 6 azonos sorrendben mindkét versen (68 / 26 összesen mindkét oldalon) | forma (V5, ismert) |
+| **Károli-kereszthivatkozások** | „1Móz 2,4-5” (tartomány) | „1Móz 2:4” — **a tartomány vége elmarad** | **ÚJ, tartalom.** A `kh` táblában 8 974 sorban `cel_ig ≠ cel_tol`; a `blokkok._r_kh` csak a `cel_tol`-t rajzolja (`for a, b in d` → `ig_link(K, a)`). A D2 nem fogja meg, mert csak a darabszámot veti össze. Mechanikus javítás (N-F76l). |
+| Angol szó (BSB, KJV) | csempék | ugyanazok a csempék; a Zsolt 22:2-n a BSB mindkét oldalon üres | megvan |
+| Témák (Nave) | lista + „Fejezet-szintű hivatkozások (2) / (8)” | ugyanazok a tételek táblázatban, jelleg-oszloppal | forma |
+| **Tulajdonnevek (TIPNR)** | Zsolt 22:2: egy sor (LORD · God · H0410) | **ugyanaz a sor kétszer** (a versben kétszer áll H0410); az 1Móz 1:1-en egy sor, azonos | **ÚJ, forma (ismétlődő sor).** Mechanikus (N-F76l). |
+| Motívumadat / Igehely-kapcsolatok / LXX-döntések | „Nincs sor erre a vershez: a forrás … nem ad adatot.” | „Nincs adat (üres eredmény, nem negatív lelet).” | forma |
+| LXX versszintű együttelőfordulás | 1Móz 1:1: „1 héber szó, 5 pár”, H0430 → G0746, G1093, G2316, G3772, G4160 | azonos | megvan |
+| LXX többlet és számozási eltérés | „nincs sor” (a pilot a TSV-t olvassa) | „Az adat még nincs a DB-ben (N-F76j)” | forma (DT-F76h (c), ismert) |
+| Blokksorrend, többlet | a TSK és a Károli-KH a Septuaginta után | a TSK, a Károli-KH és az UBS a panel végén; többlet táblázatok (Károli–Strong, Eredeti szavak, Macula, héber–görög párosítás, LXX_OS, igealak-feloldás, UBS-jelentés) | forma (ismert, 2. és 7. szakasz) |
+
+### 8.2 Héber szó-lap (H0430, 1Móz 1:1 kontextusban, Munkaasztal)
+
+| Blokk | Pilot | Szerver | Állapot |
+|---|---|---|---|
+| Szó adatai | אֱלֹהִים · H0430 · 'E.lo.Him · főnév, hímnemű · Alapjelentés: LORD · 3 számláló-csempe: 2603 előfordulás, 35 könyv, 2624 Károli-pár (356 magas) | fejléc: ugyanaz (Alapjelentés: LORD); a számok (2603, 35; 2624/356) két blokkban, szövegként | forma (számok azonosak) |
+| Ebben a versben | Károli itt „Isten”; alak + Ncmpa magyarul; LXX θεὸς · G2316; UBS: Names of Deities | azonos | megvan |
+| Így fordítja Károli | 8 alak (isten 777 … istenének 87), „57 feldolgozott könyv” | azonos | megvan |
+| BDB apparátusokra bontva | „Lefordítva · claude-opus-5-5, 2026.10.01”, Címszó / Alapjelentés / Nyelvi háttér / Jelentésszerkezet („81 hely” …) | ugyanaz a szöveg; többlet: a jelentésszerkezet vázlata elöl („1 többes számú jelentésben 81 hivatkozás …”) és a mért pontosság mondata (92,0%) | forma (többlet) |
+| Görög megfelelő, SDBH, SECE, OSHL, TBESH, tW | megvan | megvan; többlet: BDB angol, BDB magyar (nyers), Rokon szavak (OSHL), Nyelvtani szűrés | megvan (többlet ismert) |
+
+### 8.3 Görög szó-lap (G2316)
+
+| Blokk | Pilot | Szerver | Állapot |
+|---|---|---|---|
+| Szó adatai (görög) | θεός · G2316 · theos · **főnév** · Alapjelentés God · 3 számláló: 1346 / 1173 vers / **5 héber szó mögötte** | fejléc „theos · God”; szófaj, „Alapjelentés” címke és az „5 héber szó” számláló nincs; 1346 / 1173 az ÚSZ-blokkban | tartalom részben (N-F76h G1, ismert, nem pótolt) |
+| Héber háttér | 5 sor | 10 sor (az első 5 azonos: H0430 2153, H3068 223, H0410 142, H0426 38, H3069 31) | megvan (többlet) |
+| Az Újszövetségben | 5 vers + soronként UBS DNTG | ugyanaz az 5 vers; az UBS DNTG külön blokkban | forma (G4, ismert) |
+| SDGNT | domének | ugyanazok; a cím mellett továbbra is „üres eredmény nem negatív lelet”, pedig a blokk tartalmas | forma (N-F76h G6, ismert) |
+| TBESG, Thayer, UBS DNTG, LSJ, MCGED, SECE, tW | megvan | megvan | megvan |
+
+### 8.4 Nézetek és keresőlap
+
+- A blokkok száma nézetenként azonos (`[data-blokk]`): /1Moz/1/1 és /Zsolt/22/2: 23–23–23; /szo/H0430: 14–14–14; /szo/G2316: 11–11–11 (Olvasópult–Interlineáris–Munkaasztal), minden válasz 200.
+- **Interlineáris:** a szó-csempék (magyar szó, alatta a párosított eredeti, átírás, tükörfordítás, Strong) a pilot héber csempéinek tartalmát hordozzák; a párosítatlan magyar szó „–” (pl. „az”). Megfigyelés: a `/Zsolt/22/2` lapon a 2. vers `kijelolt`, de a lap nem görget oda (`scrollY=0`); hosszú fejezetben a kijelölt vers nem látszik betöltéskor. Nem pilot-eltérés (a pilotnak nincs interlineáris nézete); az M5-ben nézendő.
+- **Munkaasztal:** verslista, szöveg, szó-lap és vers részletei egyszerre; a tartalom az Olvasópultéval azonos.
+- **Keresőlap** (`/kereses?szo=világosság`, a pilotnak nincs keresője): mindhárom nézetben 200, 50 találat az első oldalon, 54 kiemelés, azonos első találat (1Móz 1:3); a fejléc „92 vers · 100 előfordulás · mód: pontos alak + szótári alak (alap)”.
+
+### 8.5 Összegzés
+
+Az M2b óta ismert eltérések (V1, V5, G1, G4, G6, a blokksorrend, a többlet táblázatok) változatlanok. **Két új, mechanikus eltérés:** a Károli-kereszthivatkozás tartományának vége elmarad (tartalom; 8 974 `kh`-sor érintett), és a TIPNR-sor ismétlődik, ha a Strong-szám a versben többször áll (forma). Mindkettő a #76 `ir` mezőjén belül javítható (`blokkok.py`), döntés nélkül; az M4 mérő feladat, ezért nem javítottam: N-F76l.
