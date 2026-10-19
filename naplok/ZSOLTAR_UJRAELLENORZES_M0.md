@@ -67,7 +67,7 @@ A régi `tematikus_lezart/Segitsegul_hivni_az_Urat_*.md` két fájl már nem lé
 **(d) A hatókörön kívül, csak jelölve:**
 - A `Konnyu_ellenorzes_4_lezart_tanulmany.md` (28–29., 47–48., 197., 228., 321. sor) a Zsolt 42:8-at és 88:11-et „NEM ELLENŐRIZHETŐ — KONKORDANCIA-RÉS” jelöléssel viszi. Ez a régi TAHOT-hiányra utal, nem LXX-állítás. A TAHOT ma fejezetszinten teljes (F85), tehát az állítás elavult. Lehetséges új feladat a `/befogad` útján.
 - A szülő session háttér-szövege a „TAHOT F85 előtti kulcsairól” beszél. A brief tárgya viszont a régi **LXX**-kivonat. Az F85 átkulcsolása a Zsoltárok Károli–Strong táblapárját nem változtatta (`naplok/F85_jelentes.md` 192. sor: a régi és az új pipeline a Zsoltárokra azonos). Egyetlen `bizonytalan` zsoltársor maradt: Zsolt 77:11 (39. sor). TAHOT-irányú bővítést ezért nem javaslok.
-- A generált oldalak (`lexikon/HAMART-001_*`: Zsolt 53:2 / LXX 52:2, `LXX_OS`) már a helyes adatot mutatják. A #36-ra várnak, a #55 nem írja őket.
+- A generált oldalak (`lexikon/HAMART-001_*`) LXX-táblasora (Zsolt 53:2 / LXX 52:2, `LXX_OS`) már a helyes adatot mutatja. A `modszertan` rés másolata (TUDOMANYOS 1144., TORZSCIKK 1059. sor) viszont jelölés nélkül nevezi meg a régi kivonatot (l. a 7. pontot). A #36-ra várnak, a #55 nem írja őket. *(Pontosítva: ELLENOR 2. eltérés, F55.11.)*
 
 ## 6. A ⛔ döntései és az M1 (2026-10-19)
 
@@ -75,6 +75,11 @@ A régi `tematikus_lezart/Segitsegul_hivni_az_Urat_*.md` két fájl már nem lé
 
 **M1 ítéletek** (`naplok/ZSOLTAR_UJRAELLENORZES_helyek.tsv`, `itelet_M1` oszlop): **módosul 4** (Z01, Z02: javítva, F55.5; Z04, Z05: audit-nyom, az új sor az M2-ben), **megáll 2** (Z03: jelölve, F55.5; Z06: nem írva), **visszavonandó 0**, nem érintett 9 csoport. Minősítés-, jelölt- vagy ★-változás nincs, `DONTESEK.md`-tétel ezért nem kell.
 
-**Hátra:** az M2 (az `adat/auditok.tsv` új `lxx-hid` sorai: Zsolt 80:6, 80:7 `--naplo TEREMT-002 --lepes B4`; Zsolt 14:1, 53:2 `--naplo HAMART-001`) a PR #420 merge-e után; utána az M3.
+**Hátra (az F55.9 előtti állapot; az M2 azóta kész, l. a 7. pontot):** az M2 (az `adat/auditok.tsv` új `lxx-hid` sorai: Zsolt 80:6, 80:7 `--naplo TEREMT-002 --lepes B4`; Zsolt 14:1, 53:2 `--naplo HAMART-001`) a PR #420 merge-e után; utána az M3.
 
 *F55.8 (2026-10-19): a Bun-tanulmány F55-jelölése a `modszertan` rés elé került (a 6. pont címe alá), mert a résen belül az E1 11. szabálya (rés-forrás egyezés) a #36 újragenerálásáig bukott. A tartalom változatlan.*
+
+## 7. Az M2 és a független ellenőrzés (2026-10-19)
+
+- **M2 (F55.9):** két új `lxx-hid` audit-sor (`TEREMT-002 B4`, Zsolt 80:6 n=11, 80:7 n=13, `LXX_OS`), a PR #420 merge-e után; a 225 meglévő sor bájtra azonos. A HAMART-001 futásai nem kerültek a táblába: a motívumnak nincs auditsora, és az első sor a teljes lefedésig SÉRTÉST ad (DT103, SEMA 2.9). Ez eltér a DT-F55c szövegétől, döntésre vár.
+- **Független ellenőrzés:** `naplok/ELLENOR_ZSOLTAR_UJRAELLENORZES.md`, ELTÉRÉS 6. Mechanikusan javítva (F55.11): 4. (N-F55a: Jóel 3:5/2:32), 5. (fejléc, „Hátra”), 6. (Z03 sorszám 281 → 283), és a 2. tételből az 5(d) állítás pontosítása. Tartalmi, döntésre vár: 1. (HAMART-001 audit-sorok vs. DT103), 2. (a jelölés a rés előtt, ezért a #36 renderébe nem kerül át), 3. (Z02/Z03 forrás-megnevezése: történeti név + jelölés, nem csere).

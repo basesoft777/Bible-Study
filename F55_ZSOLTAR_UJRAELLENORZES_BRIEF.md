@@ -9,7 +9,7 @@ munka: ertelmezo
 allapot: fut
 ag: claude/f55-zsoltar
 ad: minden kézi forrásbeli állítás, amely a régi LXX_kivonat eltolt vagy hiányzó zsoltárversére épült, felmérve, és soronként ítélettel (megáll / módosul / visszavonandó) a helyes vers LXX_OS-szövege alapján; a módosuló állítások a forrásrétegben javítva, az új lxx-hid futások az auditok.tsv-ben naplózva
-kovetkezo: "Te: ⛔ az M2 előtt (DT-F55c): az M0 és az M1 kész (DT-F55a–c; módosul 4, megáll 2, visszavonandó 0; a két Bun-fájl javítva, F55.5); az M2 (az adat/auditok.tsv új lxx-hid sorai) a #11 PR #420 merge-e után indul, utána M3 (zárónapló, fuggetlen-ellenor)."
+kovetkezo: "Te: ⛔ a független ellenőrzés után (naplok/ELLENOR_ZSOLTAR_UJRAELLENORZES.md, ELTÉRÉS 6; a mechanikus 4–6. javítva, F55.11): három tartalmi döntés vár (M0 7. pont): (1) HAMART-001 audit-sorok vs. DT103, (2) az F55-jelölés helye a modszertan résen kívül vagy belül (#36), (3) a Z02/Z03 forrás-megnevezése. M0, M1, M2 kész; utána újraellenőrzés, M3 zárás."
 olvas: ["konkordancia/LXX_OS/*.tsv", konkordancia/Karoli_1908.tsv, naplok/FORRASKIVEZETES_M5_M7.md, naplok/FORRASKIVEZETES_M5_eltereslista.tsv, adat/jeloltek.tsv, tematikus_lezart/, genezis/, ujszovetseg/, melyelemzesek/, motivumok/, motivumlog/, naplok/T1_TEREMT002_auditok_munkalap.tsv, naplok/LXX_OS_LEFEDETTSEG_M0.md]
 ir: [adat/auditok.tsv, tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md, tematikus_lezart/naplok/Bun_kovetkezmenyeinek_gyuruzese_kereszthivatkozas_naplo.md, "naplok/ZSOLTAR_UJRAELLENORZES_*"]
 fugg: [42, 54]
