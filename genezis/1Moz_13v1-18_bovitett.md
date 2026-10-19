@@ -116,7 +116,7 @@ A "szemek felemelése" kettős iránya — Lót önmagára néző vágyakozása 
 
 > 🔗 *Ismétlődő motívum korábbi tanulmányodból:* 1Móz 4:26 — **"akkor kezdték segítségül hívni az Úr nevét."** (kulcsszó: segítségül hívás — héberül *kará*)
 >
-> 📎 Bővebben, önálló tematikus feldolgozásban: `Segitsegul_hivni_az_Urat_tematikus.md` (Segítségül hívni az Úr nevét) — a 13:4-ben dokumentált "visszatérés ugyanahhoz az oltárhoz" mintázatot (⭐ küszöb) ez a tanulmány a teljes kánoni ívbe helyezve tárgyalja.
+> 📎 Bővebben, a motívum kézi forrásában: `motivumok/ISTENTISZT-001.md`, „3. A PaRDeS keretrendszer — a motívum egészére alkalmazva” szakasz (Segítségül hívni az Úr nevét) — a 13:4-ben dokumentált "visszatérés ugyanahhoz az oltárhoz" mintázatot (⭐ küszöb) ez a szakasz a teljes kánoni ívbe helyezve tárgyalja.
 
 A minta most zárul össze: Énós nemzedéke (4:26, az első előfordulás) → Ábrám első alkalommal Bétel-Ai között (12:8) → Ábrám **visszatérve** ugyanoda, másodszor (13:4). A motívum immár nemcsak egy kegyes szokás ismétlődése, hanem Ábrám életében egy konkrét *hely*hez kötött, tudatosan felkeresett imádati pont — a bűnbeesés (egyiptomi hazugság) utáni visszatérés jele.
 
