@@ -1,4 +1,4 @@
-# proveniencia: scope=manual | forras=f22/valaszok/sonnet/1Tim.jsonl, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; az API (Batch)-futásnak nincs lekérdezés-időbélyege) | modell-kimenet, javaslat: nem lekérdezés-eredmény; minden link `alacsony` (egy modell, nincs egyezés); a strong a TAGNT-ből, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py
+# proveniencia: scope=manual | forras=f22/valaszok/sonnet/1Tim.jsonl, f22/valaszok/sonnet/1Tim_javito.jsonl, f22/valaszok/c/1Tim_javito.jsonl, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; az API (Batch)-futásnak nincs lekérdezés-időbélyege) | modell-kimenet, javaslat: nem lekérdezés-eredmény; minden link `alacsony` (egy modell, nincs egyezés); a strong a TAGNT-ből, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py
 vers	oldal	sorszam	szo	allapot	partner_sorszam	strong	bizonyossag	forras
 1Tim 1:1	hu	1	Pál	parositva	1	G3972	alacsony	S
 1Tim 1:1	hu	2	Jézus	parositva	5	G2424	alacsony	S
@@ -3391,21 +3391,38 @@ vers	oldal	sorszam	szo	allapot	partner_sorszam	strong	bizonyossag	forras
 1Tim 6:20	er	12	τῆς	forditatlan		G3588	alacsony	S
 1Tim 6:20	er	13	ψευδωνύμου	parositva	17,18	G5581	alacsony	S
 1Tim 6:20	er	14	γνώσεως,	parositva	19	G1108	alacsony	S
-1Tim 6:21	hu	1	A	fuggoben			kezi	
-1Tim 6:21	hu	2	melylyel	fuggoben			kezi	
-1Tim 6:21	hu	3	némelyek	fuggoben			kezi	
-1Tim 6:21	hu	4	kevélykedvén	fuggoben			kezi	
-1Tim 6:21	hu	5	a	fuggoben			kezi	
-1Tim 6:21	hu	6	hit	fuggoben			kezi	
-1Tim 6:21	hu	7	mellől	fuggoben			kezi	
-1Tim 6:21	hu	8	eltévelyedtek	fuggoben			kezi	
-1Tim 6:21	hu	9	Kegyelem	fuggoben			kezi	
-1Tim 6:21	hu	10	veled	fuggoben			kezi	
-1Tim 6:21	hu	11	Ámen	fuggoben			kezi	
-1Tim 6:21	er	1	ἥν	fuggoben		G3739	kezi	
-1Tim 6:21	er	2	τινες	fuggoben		G5100	kezi	
-1Tim 6:21	er	3	ἐπαγγελλόμενοι	fuggoben		G1861	kezi	
-1Tim 6:21	er	4	περὶ	fuggoben		G4012	kezi	
-1Tim 6:21	er	5	τὴν	fuggoben		G3588	kezi	
-1Tim 6:21	er	6	πίστιν	fuggoben		G4102	kezi	
-1Tim 6:21	er	7	ἠστόχησαν.¶	fuggoben		G0795	kezi	
+1Tim 6:21	hu	1	A	parositva	1	G3739	alacsony	S
+1Tim 6:21	hu	2	melylyel	parositva	1	G3739	alacsony	S
+1Tim 6:21	hu	3	némelyek	parositva	2	G5100	alacsony	S
+1Tim 6:21	hu	4	kevélykedvén	parositva	3	G1861	alacsony	S
+1Tim 6:21	hu	5	a	betoldas			alacsony	S
+1Tim 6:21	hu	6	hit	parositva	6	G4102	alacsony	S
+1Tim 6:21	hu	7	mellől	parositva	4	G4012	alacsony	S
+1Tim 6:21	hu	8	eltévelyedtek	parositva	7	G0795	alacsony	S
+1Tim 6:21	hu	9	Kegyelem	parositva	9	G5485	alacsony	S
+1Tim 6:21	hu	10	veled	parositva	10	G3326	alacsony	S
+1Tim 6:21	hu	11	Ámen	parositva	12	G0281	alacsony	S
+1Tim 6:21	er	1	ἥν	parositva	1,2	G3739	alacsony	S
+1Tim 6:21	er	2	τινες	parositva	3	G5100	alacsony	S
+1Tim 6:21	er	3	ἐπαγγελλόμενοι	parositva	4	G1861	alacsony	S
+1Tim 6:21	er	4	περὶ	parositva	7	G4012	alacsony	S
+1Tim 6:21	er	5	τὴν	forditatlan		G3588	alacsony	S
+1Tim 6:21	er	6	πίστιν	parositva	6	G4102	alacsony	S
+1Tim 6:21	er	7	ἠστόχησαν.¶	parositva	8	G0795	alacsony	S
+1Tim 6:21	er	8	Ἡ	forditatlan		G3588	alacsony	S
+1Tim 6:21	er	9	χάρις	parositva	9	G5485	alacsony	S
+1Tim 6:21	er	10	μεθ᾽	parositva	10	G3326	alacsony	S
+1Tim 6:21	er	11	ὑμῶν	forditatlan		G4771	alacsony	S
+1Tim 6:21	er	12	ἀμήν.	parositva	11	G0281	alacsony	S
+1Tim 6:21	er	13	πρός	forditatlan		G4314	alacsony	S
+1Tim 6:21	er	14	Τιμόθεον	forditatlan		G5095	alacsony	S
+1Tim 6:21	er	15	πρώτη	forditatlan		G4413	alacsony	S
+1Tim 6:21	er	16	ἐγράφη	forditatlan		G1125	alacsony	S
+1Tim 6:21	er	17	ἀπό	forditatlan		G0575	alacsony	S
+1Tim 6:21	er	18	Λαοδικείας	forditatlan		G2993	alacsony	S
+1Tim 6:21	er	19	ἥτις	forditatlan		G3748	alacsony	S
+1Tim 6:21	er	20	ἐστίν	forditatlan		G1510	alacsony	S
+1Tim 6:21	er	21	μητρόπολις	forditatlan		G3390	alacsony	S
+1Tim 6:21	er	22	φρυγίας	forditatlan		G5435	alacsony	S
+1Tim 6:21	er	23	τῆς	forditatlan		G3588	alacsony	S
+1Tim 6:21	er	24	Πακατιανῆς.¶	forditatlan		G3818	alacsony	S

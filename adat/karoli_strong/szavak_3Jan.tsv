@@ -1,4 +1,4 @@
-# proveniencia: scope=manual | forras=f22/valaszok/sonnet/3Jan.jsonl, f22/versmegfeleltetes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; az API (Batch)-futásnak nincs lekérdezés-időbélyege) | modell-kimenet, javaslat: nem lekérdezés-eredmény; minden link `alacsony` (egy modell, nincs egyezés); a strong a TAGNT-ből, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py
+# proveniencia: scope=manual | forras=f22/valaszok/sonnet/3Jan.jsonl, f22/valaszok/sonnet/3Jan_javito.jsonl, f22/valaszok/c/3Jan_javito.jsonl, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; az API (Batch)-futásnak nincs lekérdezés-időbélyege) | modell-kimenet, javaslat: nem lekérdezés-eredmény; minden link `alacsony` (egy modell, nincs egyezés); a strong a TAGNT-ből, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py
 vers	oldal	sorszam	szo	allapot	partner_sorszam	strong	bizonyossag	forras
 3Ján 1:1	hu	1	A	betoldas			alacsony	S
 3Ján 1:1	hu	2	presbiter	parositva	2	G4245	alacsony	S
@@ -447,15 +447,26 @@ vers	oldal	sorszam	szo	allapot	partner_sorszam	strong	bizonyossag	forras
 3Ján 1:14	er	8	πρὸς	parositva	8	G4314	alacsony	S
 3Ján 1:14	er	9	στόμα	parositva	9	G4750	alacsony	S
 3Ján 1:14	er	10	λαλήσομεν.	parositva	10	G2980	alacsony	S
-3Ján 1:15	hu	1	Békesség	fuggoben			kezi	
-3Ján 1:15	hu	2	néked	fuggoben			kezi	
-3Ján 1:15	hu	3	Köszöntenek	fuggoben			kezi	
-3Ján 1:15	hu	4	téged	fuggoben			kezi	
-3Ján 1:15	hu	5	a	fuggoben			kezi	
-3Ján 1:15	hu	6	te	fuggoben			kezi	
-3Ján 1:15	hu	7	barátaid	fuggoben			kezi	
-3Ján 1:15	hu	8	Köszöntsd	fuggoben			kezi	
-3Ján 1:15	hu	9	a	fuggoben			kezi	
-3Ján 1:15	hu	10	barátainkat	fuggoben			kezi	
-3Ján 1:15	hu	11	név	fuggoben			kezi	
-3Ján 1:15	hu	12	szerint	fuggoben			kezi	
+3Ján 1:15	hu	1	Békesség	parositva	1	G1515	alacsony	S
+3Ján 1:15	hu	2	néked	parositva	2	G4771	alacsony	S
+3Ján 1:15	hu	3	Köszöntenek	parositva	3	G0782	alacsony	S
+3Ján 1:15	hu	4	téged	parositva	4	G4771	alacsony	S
+3Ján 1:15	hu	5	a	betoldas			alacsony	S
+3Ján 1:15	hu	6	te	betoldas			alacsony	S
+3Ján 1:15	hu	7	barátaid	parositva	6	G5384	alacsony	S
+3Ján 1:15	hu	8	Köszöntsd	parositva	7	G0782	alacsony	S
+3Ján 1:15	hu	9	a	betoldas			alacsony	S
+3Ján 1:15	hu	10	barátainkat	parositva	9	G5384	alacsony	S
+3Ján 1:15	hu	11	név	parositva	11	G3686	alacsony	S
+3Ján 1:15	hu	12	szerint	parositva	10	G2596	alacsony	S
+3Ján 1:15	er	1	εἰρήνη	parositva	1	G1515	alacsony	S
+3Ján 1:15	er	2	σοι.	parositva	2	G4771	alacsony	S
+3Ján 1:15	er	3	ἀσπάζονταί	parositva	3	G0782	alacsony	S
+3Ján 1:15	er	4	σε	parositva	4	G4771	alacsony	S
+3Ján 1:15	er	5	οἱ	forditatlan		G3588	alacsony	S
+3Ján 1:15	er	6	φίλοι.	parositva	7	G5384	alacsony	S
+3Ján 1:15	er	7	ἀσπάζου	parositva	8	G0782	alacsony	S
+3Ján 1:15	er	8	τοὺς	forditatlan		G3588	alacsony	S
+3Ján 1:15	er	9	φίλους	parositva	10	G5384	alacsony	S
+3Ján 1:15	er	10	κατ᾽	parositva	12	G2596	alacsony	S
+3Ján 1:15	er	11	ὄνομα.¶	parositva	11	G3686	alacsony	S

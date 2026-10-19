@@ -1,4 +1,4 @@
-# proveniencia: scope=manual | forras=f22/valaszok/sonnet/1Jan.jsonl, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; az API (Batch)-futásnak nincs lekérdezés-időbélyege) | modell-kimenet, javaslat: nem lekérdezés-eredmény; minden link `alacsony` (egy modell, nincs egyezés); a strong a TAGNT-ből, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py
+# proveniencia: scope=manual | forras=f22/valaszok/sonnet/1Jan.jsonl, f22/valaszok/sonnet/1Jan_javito.jsonl, f22/valaszok/c/1Jan_javito.jsonl, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; az API (Batch)-futásnak nincs lekérdezés-időbélyege) | modell-kimenet, javaslat: nem lekérdezés-eredmény; minden link `alacsony` (egy modell, nincs egyezés); a strong a TAGNT-ből, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py
 vers	oldal	sorszam	szo	allapot	partner_sorszam	strong	bizonyossag	forras
 1Ján 1:1	hu	1	A	parositva	1	G3739	alacsony	S
 1Ján 1:1	hu	2	mi	parositva	1	G3739	alacsony	S
@@ -851,99 +851,106 @@ vers	oldal	sorszam	szo	allapot	partner_sorszam	strong	bizonyossag	forras
 1Ján 2:12	er	10	τὸ	forditatlan		G3588	alacsony	S
 1Ján 2:12	er	11	ὄνομα	parositva	11	G3686	alacsony	S
 1Ján 2:12	er	12	αὐτοῦ.	parositva	10,11	G0846	alacsony	S
-1Ján 2:13	hu	1	Írok	fuggoben			kezi	
-1Ján 2:13	hu	2	néktek	fuggoben			kezi	
-1Ján 2:13	hu	3	atyák	fuggoben			kezi	
-1Ján 2:13	hu	4	mert	fuggoben			kezi	
-1Ján 2:13	hu	5	megismertétek	fuggoben			kezi	
-1Ján 2:13	hu	6	azt	fuggoben			kezi	
-1Ján 2:13	hu	7	a	fuggoben			kezi	
-1Ján 2:13	hu	8	ki	fuggoben			kezi	
-1Ján 2:13	hu	9	kezdettől	fuggoben			kezi	
-1Ján 2:13	hu	10	fogva	fuggoben			kezi	
-1Ján 2:13	hu	11	van	fuggoben			kezi	
-1Ján 2:13	hu	12	Írok	fuggoben			kezi	
-1Ján 2:13	hu	13	néktek	fuggoben			kezi	
-1Ján 2:13	hu	14	ifjak	fuggoben			kezi	
-1Ján 2:13	hu	15	mert	fuggoben			kezi	
-1Ján 2:13	hu	16	meggyőztétek	fuggoben			kezi	
-1Ján 2:13	hu	17	a	fuggoben			kezi	
-1Ján 2:13	hu	18	gonoszt	fuggoben			kezi	
-1Ján 2:13	hu	19	Írok	fuggoben			kezi	
-1Ján 2:13	hu	20	néktek	fuggoben			kezi	
-1Ján 2:13	hu	21	fiacskák	fuggoben			kezi	
-1Ján 2:13	hu	22	mert	fuggoben			kezi	
-1Ján 2:13	hu	23	megismertétek	fuggoben			kezi	
-1Ján 2:13	hu	24	az	fuggoben			kezi	
-1Ján 2:13	hu	25	Atyát	fuggoben			kezi	
-1Ján 2:13	er	1	γράφω	fuggoben		G1125	kezi	
-1Ján 2:13	er	2	ὑμῖν,	fuggoben		G4771	kezi	
-1Ján 2:13	er	3	πατέρες,	fuggoben		G3962	kezi	
-1Ján 2:13	er	4	ὅτι	fuggoben		G3754	kezi	
-1Ján 2:13	er	5	ἐγνώκατε	fuggoben		G1097	kezi	
-1Ján 2:13	er	6	τὸν	fuggoben		G3588	kezi	
-1Ján 2:13	er	7	ἀπ᾽	fuggoben		G0575	kezi	
-1Ján 2:13	er	8	ἀρχῆς.	fuggoben		G0746	kezi	
-1Ján 2:13	er	9	γράφω	fuggoben		G1125	kezi	
-1Ján 2:13	er	10	ὑμῖν,	fuggoben		G4771	kezi	
-1Ján 2:13	er	11	νεανίσκοι,	fuggoben		G3495	kezi	
-1Ján 2:13	er	12	ὅτι	fuggoben		G3754	kezi	
-1Ján 2:13	er	13	νενικήκατε	fuggoben		G3528	kezi	
-1Ján 2:13	er	14	τὸν	fuggoben		G3588	kezi	
-1Ján 2:13	er	15	πονηρόν.¶	fuggoben		G4190	kezi	
-1Ján 2:14	hu	1	Írtam	fuggoben			kezi	
-1Ján 2:14	hu	2	néktek	fuggoben			kezi	
-1Ján 2:14	hu	3	atyák	fuggoben			kezi	
-1Ján 2:14	hu	4	mert	fuggoben			kezi	
-1Ján 2:14	hu	5	megismertétek	fuggoben			kezi	
-1Ján 2:14	hu	6	azt	fuggoben			kezi	
-1Ján 2:14	hu	7	a	fuggoben			kezi	
-1Ján 2:14	hu	8	ki	fuggoben			kezi	
-1Ján 2:14	hu	9	kezdettől	fuggoben			kezi	
-1Ján 2:14	hu	10	fogva	fuggoben			kezi	
-1Ján 2:14	hu	11	van	fuggoben			kezi	
-1Ján 2:14	hu	12	Írtam	fuggoben			kezi	
-1Ján 2:14	hu	13	néktek	fuggoben			kezi	
-1Ján 2:14	hu	14	ifjak	fuggoben			kezi	
-1Ján 2:14	hu	15	mert	fuggoben			kezi	
-1Ján 2:14	hu	16	erősek	fuggoben			kezi	
-1Ján 2:14	hu	17	vagytok	fuggoben			kezi	
-1Ján 2:14	hu	18	és	fuggoben			kezi	
-1Ján 2:14	hu	19	az	fuggoben			kezi	
-1Ján 2:14	hu	20	Isten	fuggoben			kezi	
-1Ján 2:14	hu	21	ígéje	fuggoben			kezi	
-1Ján 2:14	hu	22	megmarad	fuggoben			kezi	
-1Ján 2:14	hu	23	bennetek	fuggoben			kezi	
-1Ján 2:14	hu	24	és	fuggoben			kezi	
-1Ján 2:14	hu	25	meggyőztétek	fuggoben			kezi	
-1Ján 2:14	hu	26	a	fuggoben			kezi	
-1Ján 2:14	hu	27	gonoszt	fuggoben			kezi	
-1Ján 2:14	er	1	ἔγραψα	fuggoben		G1125	kezi	
-1Ján 2:14	er	2	ὑμῖν,	fuggoben		G4771	kezi	
-1Ján 2:14	er	3	πατέρες,	fuggoben		G3962	kezi	
-1Ján 2:14	er	4	ὅτι	fuggoben		G3754	kezi	
-1Ján 2:14	er	5	ἐγνώκατε	fuggoben		G1097	kezi	
-1Ján 2:14	er	6	τὸν	fuggoben		G3588	kezi	
-1Ján 2:14	er	7	ἀπ᾽	fuggoben		G0575	kezi	
-1Ján 2:14	er	8	ἀρχῆς.	fuggoben		G0746	kezi	
-1Ján 2:14	er	9	ἔγραψα	fuggoben		G1125	kezi	
-1Ján 2:14	er	10	ὑμῖν,	fuggoben		G4771	kezi	
-1Ján 2:14	er	11	νεανίσκοι,	fuggoben		G3495	kezi	
-1Ján 2:14	er	12	ὅτι	fuggoben		G3754	kezi	
-1Ján 2:14	er	13	ἰσχυροί	fuggoben		G2478	kezi	
-1Ján 2:14	er	14	ἐστε	fuggoben		G1510	kezi	
-1Ján 2:14	er	15	καὶ	fuggoben		G2532	kezi	
-1Ján 2:14	er	16	ὁ	fuggoben		G3588	kezi	
-1Ján 2:14	er	17	λόγος	fuggoben		G3056	kezi	
-1Ján 2:14	er	18	τοῦ	fuggoben		G3588	kezi	
-1Ján 2:14	er	19	θεοῦ	fuggoben		G2316	kezi	
-1Ján 2:14	er	20	ἐν	fuggoben		G1722	kezi	
-1Ján 2:14	er	21	ὑμῖν	fuggoben		G4771	kezi	
-1Ján 2:14	er	22	μένει	fuggoben		G3306	kezi	
-1Ján 2:14	er	23	καὶ	fuggoben		G2532	kezi	
-1Ján 2:14	er	24	νενικήκατε	fuggoben		G3528	kezi	
-1Ján 2:14	er	25	τὸν	fuggoben		G3588	kezi	
-1Ján 2:14	er	26	πονηρόν.¶	fuggoben		G4190	kezi	
+1Ján 2:13	hu	1	Írok	parositva	1	G1125	alacsony	S
+1Ján 2:13	hu	2	néktek	parositva	2	G4771	alacsony	S
+1Ján 2:13	hu	3	atyák	parositva	3	G3962	alacsony	S
+1Ján 2:13	hu	4	mert	parositva	4	G3754	alacsony	S
+1Ján 2:13	hu	5	megismertétek	parositva	5	G1097	alacsony	S
+1Ján 2:13	hu	6	azt	parositva	6	G3588	alacsony	S
+1Ján 2:13	hu	7	a	betoldas			alacsony	S
+1Ján 2:13	hu	8	ki	parositva	6	G3588	alacsony	S
+1Ján 2:13	hu	9	kezdettől	parositva	7,8	G0575+G0746	alacsony	S
+1Ján 2:13	hu	10	fogva	parositva	7,8	G0575+G0746	alacsony	S
+1Ján 2:13	hu	11	van	parositva	6	G3588	alacsony	S
+1Ján 2:13	hu	12	Írok	parositva	9	G1125	alacsony	S
+1Ján 2:13	hu	13	néktek	parositva	10	G4771	alacsony	S
+1Ján 2:13	hu	14	ifjak	parositva	11	G3495	alacsony	S
+1Ján 2:13	hu	15	mert	parositva	12	G3754	alacsony	S
+1Ján 2:13	hu	16	meggyőztétek	parositva	13	G3528	alacsony	S
+1Ján 2:13	hu	17	a	betoldas			alacsony	S
+1Ján 2:13	hu	18	gonoszt	parositva	14,15	G3588+G4190	alacsony	S
+1Ján 2:13	hu	19	Írok	parositva	16	G1125	alacsony	S
+1Ján 2:13	hu	20	néktek	parositva	17	G4771	alacsony	S
+1Ján 2:13	hu	21	fiacskák	parositva	18	G3813	alacsony	S
+1Ján 2:13	hu	22	mert	parositva	19	G3754	alacsony	S
+1Ján 2:13	hu	23	megismertétek	parositva	20	G1097	alacsony	S
+1Ján 2:13	hu	24	az	betoldas			alacsony	S
+1Ján 2:13	hu	25	Atyát	parositva	21,22	G3588+G3962	alacsony	S
+1Ján 2:13	er	1	γράφω	parositva	1	G1125	alacsony	S
+1Ján 2:13	er	2	ὑμῖν,	parositva	2	G4771	alacsony	S
+1Ján 2:13	er	3	πατέρες,	parositva	3	G3962	alacsony	S
+1Ján 2:13	er	4	ὅτι	parositva	4	G3754	alacsony	S
+1Ján 2:13	er	5	ἐγνώκατε	parositva	5	G1097	alacsony	S
+1Ján 2:13	er	6	τὸν	parositva	6,8,11	G3588	alacsony	S
+1Ján 2:13	er	7	ἀπ᾽	parositva	9,10	G0575	alacsony	S
+1Ján 2:13	er	8	ἀρχῆς.	parositva	9,10	G0746	alacsony	S
+1Ján 2:13	er	9	γράφω	parositva	12	G1125	alacsony	S
+1Ján 2:13	er	10	ὑμῖν,	parositva	13	G4771	alacsony	S
+1Ján 2:13	er	11	νεανίσκοι,	parositva	14	G3495	alacsony	S
+1Ján 2:13	er	12	ὅτι	parositva	15	G3754	alacsony	S
+1Ján 2:13	er	13	νενικήκατε	parositva	16	G3528	alacsony	S
+1Ján 2:13	er	14	τὸν	parositva	18	G3588	alacsony	S
+1Ján 2:13	er	15	πονηρόν.¶	parositva	18	G4190	alacsony	S
+1Ján 2:13	er	16	Ἔγραψα	parositva	19	G1125	alacsony	S
+1Ján 2:13	er	17	ὑμῖν,	parositva	20	G4771	alacsony	S
+1Ján 2:13	er	18	παιδία,	parositva	21	G3813	alacsony	S
+1Ján 2:13	er	19	ὅτι	parositva	22	G3754	alacsony	S
+1Ján 2:13	er	20	ἐγνώκατε	parositva	23	G1097	alacsony	S
+1Ján 2:13	er	21	τὸν	parositva	25	G3588	alacsony	S
+1Ján 2:13	er	22	πατέρα.	parositva	25	G3962	alacsony	S
+1Ján 2:14	hu	1	Írtam	parositva	1	G1125	alacsony	S
+1Ján 2:14	hu	2	néktek	parositva	2	G4771	alacsony	S
+1Ján 2:14	hu	3	atyák	parositva	3	G3962	alacsony	S
+1Ján 2:14	hu	4	mert	parositva	4	G3754	alacsony	S
+1Ján 2:14	hu	5	megismertétek	parositva	5	G1097	alacsony	S
+1Ján 2:14	hu	6	azt	parositva	6	G3588	alacsony	S
+1Ján 2:14	hu	7	a	parositva	6	G3588	alacsony	S
+1Ján 2:14	hu	8	ki	parositva	6	G3588	alacsony	S
+1Ján 2:14	hu	9	kezdettől	parositva	7,8	G0575+G0746	alacsony	S
+1Ján 2:14	hu	10	fogva	parositva	7,8	G0575+G0746	alacsony	S
+1Ján 2:14	hu	11	van	betoldas			alacsony	S
+1Ján 2:14	hu	12	Írtam	parositva	9	G1125	alacsony	S
+1Ján 2:14	hu	13	néktek	parositva	10	G4771	alacsony	S
+1Ján 2:14	hu	14	ifjak	parositva	11	G3495	alacsony	S
+1Ján 2:14	hu	15	mert	parositva	12	G3754	alacsony	S
+1Ján 2:14	hu	16	erősek	parositva	13	G2478	alacsony	S
+1Ján 2:14	hu	17	vagytok	parositva	14	G1510	alacsony	S
+1Ján 2:14	hu	18	és	parositva	15	G2532	alacsony	S
+1Ján 2:14	hu	19	az	betoldas			alacsony	S
+1Ján 2:14	hu	20	Isten	parositva	19	G2316	alacsony	S
+1Ján 2:14	hu	21	ígéje	parositva	17	G3056	alacsony	S
+1Ján 2:14	hu	22	megmarad	parositva	22	G3306	alacsony	S
+1Ján 2:14	hu	23	bennetek	parositva	20,21	G1722+G4771	alacsony	S
+1Ján 2:14	hu	24	és	parositva	23	G2532	alacsony	S
+1Ján 2:14	hu	25	meggyőztétek	parositva	24	G3528	alacsony	S
+1Ján 2:14	hu	26	a	betoldas			alacsony	S
+1Ján 2:14	hu	27	gonoszt	parositva	26	G4190	alacsony	S
+1Ján 2:14	er	1	ἔγραψα	parositva	1	G1125	alacsony	S
+1Ján 2:14	er	2	ὑμῖν,	parositva	2	G4771	alacsony	S
+1Ján 2:14	er	3	πατέρες,	parositva	3	G3962	alacsony	S
+1Ján 2:14	er	4	ὅτι	parositva	4	G3754	alacsony	S
+1Ján 2:14	er	5	ἐγνώκατε	parositva	5	G1097	alacsony	S
+1Ján 2:14	er	6	τὸν	parositva	6,7,8	G3588	alacsony	S
+1Ján 2:14	er	7	ἀπ᾽	parositva	9,10	G0575	alacsony	S
+1Ján 2:14	er	8	ἀρχῆς.	parositva	9,10	G0746	alacsony	S
+1Ján 2:14	er	9	ἔγραψα	parositva	12	G1125	alacsony	S
+1Ján 2:14	er	10	ὑμῖν,	parositva	13	G4771	alacsony	S
+1Ján 2:14	er	11	νεανίσκοι,	parositva	14	G3495	alacsony	S
+1Ján 2:14	er	12	ὅτι	parositva	15	G3754	alacsony	S
+1Ján 2:14	er	13	ἰσχυροί	parositva	16	G2478	alacsony	S
+1Ján 2:14	er	14	ἐστε	parositva	17	G1510	alacsony	S
+1Ján 2:14	er	15	καὶ	parositva	18	G2532	alacsony	S
+1Ján 2:14	er	16	ὁ	forditatlan		G3588	alacsony	S
+1Ján 2:14	er	17	λόγος	parositva	21	G3056	alacsony	S
+1Ján 2:14	er	18	τοῦ	forditatlan		G3588	alacsony	S
+1Ján 2:14	er	19	θεοῦ	parositva	20	G2316	alacsony	S
+1Ján 2:14	er	20	ἐν	parositva	23	G1722	alacsony	S
+1Ján 2:14	er	21	ὑμῖν	parositva	23	G4771	alacsony	S
+1Ján 2:14	er	22	μένει	parositva	22	G3306	alacsony	S
+1Ján 2:14	er	23	καὶ	parositva	24	G2532	alacsony	S
+1Ján 2:14	er	24	νενικήκατε	parositva	25	G3528	alacsony	S
+1Ján 2:14	er	25	τὸν	forditatlan		G3588	alacsony	S
+1Ján 2:14	er	26	πονηρόν.¶	parositva	27	G4190	alacsony	S
 1Ján 2:15	hu	1	Ne	parositva	1	G3361	alacsony	S
 1Ján 2:15	hu	2	szeressétek	parositva	2	G0025	alacsony	S
 1Ján 2:15	hu	3	a	betoldas			alacsony	S

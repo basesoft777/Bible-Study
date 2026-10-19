@@ -1,4 +1,4 @@
-# proveniencia: scope=manual | forras=f22/valaszok/sonnet/Fil.jsonl, f22/versmegfeleltetes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; az API (Batch)-futásnak nincs lekérdezés-időbélyege) | modell-kimenet, javaslat: nem lekérdezés-eredmény; minden link `alacsony` (egy modell, nincs egyezés); a strong a TAGNT-ből, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py
+# proveniencia: scope=manual | forras=f22/valaszok/sonnet/Fil.jsonl, f22/valaszok/sonnet/Fil_javito.jsonl, f22/valaszok/c/Fil_javito.jsonl, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; az API (Batch)-futásnak nincs lekérdezés-időbélyege) | modell-kimenet, javaslat: nem lekérdezés-eredmény; minden link `alacsony` (egy modell, nincs egyezés); a strong a TAGNT-ből, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py
 vers	oldal	sorszam	szo	allapot	partner_sorszam	strong	bizonyossag	forras
 Fil 1:1	hu	1	Pál	parositva	1	G3972	alacsony	S
 Fil 1:1	hu	2	és	parositva	2	G2532	alacsony	S
@@ -482,31 +482,57 @@ Fil 1:15	er	12	εὐδοκίαν	parositva	9	G2107	alacsony	S
 Fil 1:15	er	13	τὸν	forditatlan		G3588	alacsony	S
 Fil 1:15	er	14	Χριστὸν	parositva	13	G5547	alacsony	S
 Fil 1:15	er	15	κηρύσσουσιν.	parositva	11	G2784	alacsony	S
-Fil 1:16	hu	1	Némelyek	fuggoben			kezi	
-Fil 1:16	hu	2	versengésből	fuggoben			kezi	
-Fil 1:16	hu	3	prédikálják	fuggoben			kezi	
-Fil 1:16	hu	4	a	fuggoben			kezi	
-Fil 1:16	hu	5	Krisztust	fuggoben			kezi	
-Fil 1:16	hu	6	nem	fuggoben			kezi	
-Fil 1:16	hu	7	tiszta	fuggoben			kezi	
-Fil 1:16	hu	8	lélekkel	fuggoben			kezi	
-Fil 1:16	hu	9	azt	fuggoben			kezi	
-Fil 1:16	hu	10	hivén	fuggoben			kezi	
-Fil 1:16	hu	11	hogy	fuggoben			kezi	
-Fil 1:16	hu	12	fogságom	fuggoben			kezi	
-Fil 1:16	hu	13	nyomorúságait	fuggoben			kezi	
-Fil 1:16	hu	14	így	fuggoben			kezi	
-Fil 1:16	hu	15	megnevelik	fuggoben			kezi	
-Fil 1:17	hu	1	De	fuggoben			kezi	
-Fil 1:17	hu	2	mások	fuggoben			kezi	
-Fil 1:17	hu	3	szeretetből	fuggoben			kezi	
-Fil 1:17	hu	4	tudván	fuggoben			kezi	
-Fil 1:17	hu	5	hogy	fuggoben			kezi	
-Fil 1:17	hu	6	én	fuggoben			kezi	
-Fil 1:17	hu	7	az	fuggoben			kezi	
-Fil 1:17	hu	8	evangyéliomnak	fuggoben			kezi	
-Fil 1:17	hu	9	oltalmazására	fuggoben			kezi	
-Fil 1:17	hu	10	rendeltettem	fuggoben			kezi	
+Fil 1:16	hu	1	Némelyek	parositva	1	G3588	alacsony	S
+Fil 1:16	hu	2	versengésből	parositva	3,4	G1537+G2052	alacsony	S
+Fil 1:16	hu	3	prédikálják	parositva	7	G2605	alacsony	S
+Fil 1:16	hu	4	a	betoldas			alacsony	S
+Fil 1:16	hu	5	Krisztust	parositva	6	G5547	alacsony	S
+Fil 1:16	hu	6	nem	parositva	8	G3756	alacsony	S
+Fil 1:16	hu	7	tiszta	parositva	9	G0055	alacsony	S
+Fil 1:16	hu	8	lélekkel	betoldas			alacsony	S
+Fil 1:16	hu	9	azt	betoldas			alacsony	S
+Fil 1:16	hu	10	hivén	parositva	10	G3633	alacsony	S
+Fil 1:16	hu	11	hogy	betoldas			alacsony	S
+Fil 1:16	hu	12	fogságom	parositva	14,15	G1199+G3165	alacsony	S
+Fil 1:16	hu	13	nyomorúságait	parositva	11	G2347	alacsony	S
+Fil 1:16	hu	14	így	betoldas			alacsony	S
+Fil 1:16	hu	15	megnevelik	betoldas			alacsony	S
+Fil 1:16	er	1	οἱ	parositva	1	G3588	alacsony	S
+Fil 1:16	er	2	δὲ	forditatlan		G1161	alacsony	S
+Fil 1:16	er	3	ἐξ	parositva	2	G1537	alacsony	S
+Fil 1:16	er	4	ἐριθείας	parositva	2	G2052	alacsony	S
+Fil 1:16	er	5	τὸν	forditatlan		G3588	alacsony	S
+Fil 1:16	er	6	Χριστὸν	parositva	5	G5547	alacsony	S
+Fil 1:16	er	7	καταγγέλλουσιν	parositva	3	G2605	alacsony	S
+Fil 1:16	er	8	οὐχ	parositva	6	G3756	alacsony	S
+Fil 1:16	er	9	ἁγνῶς	parositva	7	G0055	alacsony	S
+Fil 1:16	er	10	οἰόμενοι	parositva	10	G3633	alacsony	S
+Fil 1:16	er	11	θλῖψιν	parositva	13	G2347	alacsony	S
+Fil 1:16	er	12	ἐγείρειν	forditatlan		G1453	alacsony	S
+Fil 1:16	er	13	τοῖς	forditatlan		G3588	alacsony	S
+Fil 1:16	er	14	δεσμοῖς	parositva	12	G1199	alacsony	S
+Fil 1:16	er	15	μου.	parositva	12	G3165	alacsony	S
+Fil 1:17	hu	1	De	parositva	2	G3303	alacsony	S
+Fil 1:17	hu	2	mások	parositva	1	G3588	alacsony	S
+Fil 1:17	hu	3	szeretetből	parositva	3,4	G1537+G0026	alacsony	S
+Fil 1:17	hu	4	tudván	parositva	5	G6063	alacsony	S
+Fil 1:17	hu	5	hogy	parositva	6	G3754	alacsony	S
+Fil 1:17	hu	6	én	betoldas			alacsony	S
+Fil 1:17	hu	7	az	betoldas			alacsony	S
+Fil 1:17	hu	8	evangyéliomnak	parositva	9,10	G3588+G2098	alacsony	S
+Fil 1:17	hu	9	oltalmazására	parositva	7,8	G1519+G0627	alacsony	S
+Fil 1:17	hu	10	rendeltettem	parositva	11	G2749	alacsony	S
+Fil 1:17	er	1	οἱ	parositva	2	G3588	alacsony	S
+Fil 1:17	er	2	μὲν	parositva	1	G3303	alacsony	S
+Fil 1:17	er	3	ἐξ	parositva	3	G1537	alacsony	S
+Fil 1:17	er	4	ἀγάπης	parositva	3	G0026	alacsony	S
+Fil 1:17	er	5	εἰδότες	parositva	4	G6063	alacsony	S
+Fil 1:17	er	6	ὅτι	parositva	5	G3754	alacsony	S
+Fil 1:17	er	7	εἰς	parositva	9	G1519	alacsony	S
+Fil 1:17	er	8	ἀπολογίαν	parositva	9	G0627	alacsony	S
+Fil 1:17	er	9	τοῦ	parositva	8	G3588	alacsony	S
+Fil 1:17	er	10	εὐαγγελίου	parositva	8	G2098	alacsony	S
+Fil 1:17	er	11	κεῖμαι·	parositva	10	G2749	alacsony	S
 Fil 1:18	hu	1	Mert	parositva	2	G1063	alacsony	S
 Fil 1:18	hu	2	mit	parositva	1	G5101	alacsony	S
 Fil 1:18	hu	3	mondjak	betoldas			alacsony	S
@@ -1153,52 +1179,57 @@ Fil 2:6	er	9	τὸ	parositva	10	G3588	alacsony	S
 Fil 2:6	er	10	εἶναι	parositva	11	G1511	alacsony	S
 Fil 2:6	er	11	ἴσα	parositva	15	G2470	alacsony	S
 Fil 2:6	er	12	θεῷ,	parositva	14	G2316	alacsony	S
-Fil 2:7	hu	1	Hanem	fuggoben			kezi	
-Fil 2:7	hu	2	önmagát	fuggoben			kezi	
-Fil 2:7	hu	3	megüresíté	fuggoben			kezi	
-Fil 2:7	hu	4	szolgai	fuggoben			kezi	
-Fil 2:7	hu	5	formát	fuggoben			kezi	
-Fil 2:7	hu	6	vévén	fuggoben			kezi	
-Fil 2:7	hu	7	föl	fuggoben			kezi	
-Fil 2:7	hu	8	emberekhez	fuggoben			kezi	
-Fil 2:7	hu	9	hasonlóvá	fuggoben			kezi	
-Fil 2:7	hu	10	lévén	fuggoben			kezi	
-Fil 2:7	er	1	ἀλλ᾽	fuggoben		G0235	kezi	
-Fil 2:7	er	2	ἑαυτὸν	fuggoben		G1438	kezi	
-Fil 2:7	er	3	ἐκένωσεν	fuggoben		G2758	kezi	
-Fil 2:7	er	4	μορφὴν	fuggoben		G3444	kezi	
-Fil 2:7	er	5	δούλου	fuggoben		G1401	kezi	
-Fil 2:7	er	6	λαβών,	fuggoben		G2983	kezi	
-Fil 2:7	er	7	ἐν	fuggoben		G1722	kezi	
-Fil 2:7	er	8	ὁμοιώματι	fuggoben		G3667	kezi	
-Fil 2:7	er	9	ἀνθρώπων	fuggoben		G0444	kezi	
-Fil 2:7	er	10	γενόμενος,	fuggoben		G1096	kezi	
-Fil 2:8	hu	1	És	fuggoben			kezi	
-Fil 2:8	hu	2	mikor	fuggoben			kezi	
-Fil 2:8	hu	3	olyan	fuggoben			kezi	
-Fil 2:8	hu	4	állapotban	fuggoben			kezi	
-Fil 2:8	hu	5	találtatott	fuggoben			kezi	
-Fil 2:8	hu	6	mint	fuggoben			kezi	
-Fil 2:8	hu	7	ember	fuggoben			kezi	
-Fil 2:8	hu	8	megalázta	fuggoben			kezi	
-Fil 2:8	hu	9	magát	fuggoben			kezi	
-Fil 2:8	hu	10	engedelmes	fuggoben			kezi	
-Fil 2:8	hu	11	lévén	fuggoben			kezi	
-Fil 2:8	hu	12	halálig	fuggoben			kezi	
-Fil 2:8	hu	13	még	fuggoben			kezi	
-Fil 2:8	hu	14	pedig	fuggoben			kezi	
-Fil 2:8	hu	15	a	fuggoben			kezi	
-Fil 2:8	hu	16	keresztfának	fuggoben			kezi	
-Fil 2:8	hu	17	haláláig	fuggoben			kezi	
-Fil 2:8	er	1	ἐταπείνωσεν	fuggoben		G5013	kezi	
-Fil 2:8	er	2	ἑαυτὸν	fuggoben		G1438	kezi	
-Fil 2:8	er	3	γενόμενος	fuggoben		G1096	kezi	
-Fil 2:8	er	4	ὑπήκοος	fuggoben		G5255	kezi	
-Fil 2:8	er	5	μέχρι	fuggoben		G3360	kezi	
-Fil 2:8	er	6	θανάτου,	fuggoben		G2288	kezi	
-Fil 2:8	er	7	θανάτου	fuggoben		G2288	kezi	
-Fil 2:8	er	8	δὲ	fuggoben		G1161	kezi	
-Fil 2:8	er	9	σταυροῦ·	fuggoben		G4716	kezi	
+Fil 2:7	hu	1	Hanem	parositva	1	G0235	alacsony	S
+Fil 2:7	hu	2	önmagát	parositva	2	G1438	alacsony	S
+Fil 2:7	hu	3	megüresíté	parositva	3	G2758	alacsony	S
+Fil 2:7	hu	4	szolgai	parositva	5	G1401	alacsony	S
+Fil 2:7	hu	5	formát	parositva	4	G3444	alacsony	S
+Fil 2:7	hu	6	vévén	parositva	6	G2983	alacsony	S
+Fil 2:7	hu	7	föl	parositva	6	G2983	alacsony	S
+Fil 2:7	hu	8	emberekhez	parositva	9	G0444	alacsony	S
+Fil 2:7	hu	9	hasonlóvá	parositva	7,8	G1722+G3667	alacsony	S
+Fil 2:7	hu	10	lévén	parositva	10	G1096	alacsony	S
+Fil 2:7	er	1	ἀλλ᾽	parositva	1	G0235	alacsony	S
+Fil 2:7	er	2	ἑαυτὸν	parositva	2	G1438	alacsony	S
+Fil 2:7	er	3	ἐκένωσεν	parositva	3	G2758	alacsony	S
+Fil 2:7	er	4	μορφὴν	parositva	5	G3444	alacsony	S
+Fil 2:7	er	5	δούλου	parositva	4	G1401	alacsony	S
+Fil 2:7	er	6	λαβών,	parositva	6,7	G2983	alacsony	S
+Fil 2:7	er	7	ἐν	parositva	9	G1722	alacsony	S
+Fil 2:7	er	8	ὁμοιώματι	parositva	9	G3667	alacsony	S
+Fil 2:7	er	9	ἀνθρώπων	parositva	8	G0444	alacsony	S
+Fil 2:7	er	10	γενόμενος,	parositva	10	G1096	alacsony	S
+Fil 2:8	hu	1	És	parositva	1	G2532	alacsony	S
+Fil 2:8	hu	2	mikor	betoldas			alacsony	S
+Fil 2:8	hu	3	olyan	betoldas			alacsony	S
+Fil 2:8	hu	4	állapotban	parositva	2	G4976	alacsony	S
+Fil 2:8	hu	5	találtatott	parositva	3	G2147	alacsony	S
+Fil 2:8	hu	6	mint	parositva	4	G5613	alacsony	S
+Fil 2:8	hu	7	ember	parositva	5	G0444	alacsony	S
+Fil 2:8	hu	8	megalázta	parositva	6	G5013	alacsony	S
+Fil 2:8	hu	9	magát	parositva	7	G1438	alacsony	S
+Fil 2:8	hu	10	engedelmes	parositva	9	G5255	alacsony	S
+Fil 2:8	hu	11	lévén	parositva	8	G1096	alacsony	S
+Fil 2:8	hu	12	halálig	parositva	10,11	G3360+G2288	alacsony	S
+Fil 2:8	hu	13	még	betoldas			alacsony	S
+Fil 2:8	hu	14	pedig	parositva	13	G1161	alacsony	S
+Fil 2:8	hu	15	a	betoldas			alacsony	S
+Fil 2:8	hu	16	keresztfának	parositva	14	G4716	alacsony	S
+Fil 2:8	hu	17	haláláig	parositva	12	G2288	alacsony	S
+Fil 2:8	er	1	καὶ	parositva	1	G2532	alacsony	S
+Fil 2:8	er	2	σχήματι	parositva	4	G4976	alacsony	S
+Fil 2:8	er	3	εὑρεθεὶς	parositva	5	G2147	alacsony	S
+Fil 2:8	er	4	ὡς	parositva	6	G5613	alacsony	S
+Fil 2:8	er	5	ἄνθρωπος	parositva	7	G0444	alacsony	S
+Fil 2:8	er	6	ἐταπείνωσεν	parositva	8	G5013	alacsony	S
+Fil 2:8	er	7	ἑαυτὸν	parositva	9	G1438	alacsony	S
+Fil 2:8	er	8	γενόμενος	parositva	11	G1096	alacsony	S
+Fil 2:8	er	9	ὑπήκοος	parositva	10	G5255	alacsony	S
+Fil 2:8	er	10	μέχρι	parositva	12	G3360	alacsony	S
+Fil 2:8	er	11	θανάτου,	parositva	12	G2288	alacsony	S
+Fil 2:8	er	12	θανάτου	parositva	17	G2288	alacsony	S
+Fil 2:8	er	13	δὲ	parositva	14	G1161	alacsony	S
+Fil 2:8	er	14	σταυροῦ·	parositva	16	G4716	alacsony	S
 Fil 2:9	hu	1	Annakokáért	parositva	1	G1352	alacsony	S
 Fil 2:9	hu	2	az	betoldas			alacsony	S
 Fil 2:9	hu	3	Isten	parositva	4	G2316	alacsony	S

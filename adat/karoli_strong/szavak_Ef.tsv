@@ -1,4 +1,4 @@
-# proveniencia: scope=manual | forras=f22/valaszok/sonnet/Ef.jsonl, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; az API (Batch)-futásnak nincs lekérdezés-időbélyege) | modell-kimenet, javaslat: nem lekérdezés-eredmény; minden link `alacsony` (egy modell, nincs egyezés); a strong a TAGNT-ből, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py
+# proveniencia: scope=manual | forras=f22/valaszok/sonnet/Ef.jsonl, f22/valaszok/sonnet/Ef_javito.jsonl, f22/valaszok/c/Ef_javito.jsonl, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; az API (Batch)-futásnak nincs lekérdezés-időbélyege) | modell-kimenet, javaslat: nem lekérdezés-eredmény; minden link `alacsony` (egy modell, nincs egyezés); a strong a TAGNT-ből, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py
 vers	oldal	sorszam	szo	allapot	partner_sorszam	strong	bizonyossag	forras
 Ef 1:1	hu	1	Pál	parositva	1	G3972	alacsony	S
 Ef 1:1	hu	2	Jézus	parositva	4	G2424	alacsony	S
@@ -280,90 +280,92 @@ Ef 1:9	er	12	ἣν	parositva	12	G3739	alacsony	S
 Ef 1:9	er	13	προέθετο	parositva	13,14	G4388	alacsony	S
 Ef 1:9	er	14	ἐν	parositva	15	G1722	alacsony	S
 Ef 1:9	er	15	αὐτῷ	parositva	15	G0846	alacsony	S
-Ef 1:10	hu	1	Az	fuggoben			kezi	
-Ef 1:10	hu	2	idők	fuggoben			kezi	
-Ef 1:10	hu	3	teljességének	fuggoben			kezi	
-Ef 1:10	hu	4	rendjére	fuggoben			kezi	
-Ef 1:10	hu	5	nézve	fuggoben			kezi	
-Ef 1:10	hu	6	hogy	fuggoben			kezi	
-Ef 1:10	hu	7	ismét	fuggoben			kezi	
-Ef 1:10	hu	8	egybeszerkeszt	fuggoben			kezi	
-Ef 1:10	hu	9	magának	fuggoben			kezi	
-Ef 1:10	hu	10	mindeneket	fuggoben			kezi	
-Ef 1:10	hu	11	a	fuggoben			kezi	
-Ef 1:10	hu	12	Krisztusban	fuggoben			kezi	
-Ef 1:10	hu	13	mind	fuggoben			kezi	
-Ef 1:10	hu	14	a	fuggoben			kezi	
-Ef 1:10	hu	15	melyek	fuggoben			kezi	
-Ef 1:10	hu	16	a	fuggoben			kezi	
-Ef 1:10	hu	17	mennyekben	fuggoben			kezi	
-Ef 1:10	hu	18	vannak	fuggoben			kezi	
-Ef 1:10	hu	19	mind	fuggoben			kezi	
-Ef 1:10	hu	20	a	fuggoben			kezi	
-Ef 1:10	hu	21	melyek	fuggoben			kezi	
-Ef 1:10	hu	22	e	fuggoben			kezi	
-Ef 1:10	hu	23	földön	fuggoben			kezi	
-Ef 1:10	hu	24	vannak	fuggoben			kezi	
-Ef 1:10	er	1	εἰς	fuggoben		G1519	kezi	
-Ef 1:10	er	2	οἰκονομίαν	fuggoben		G3622	kezi	
-Ef 1:10	er	3	τοῦ	fuggoben		G3588	kezi	
-Ef 1:10	er	4	πληρώματος	fuggoben		G4138	kezi	
-Ef 1:10	er	5	τῶν	fuggoben		G3588	kezi	
-Ef 1:10	er	6	καιρῶν,	fuggoben		G2540	kezi	
-Ef 1:10	er	7	ἀνακεφαλαιώσασθαι	fuggoben		G0346	kezi	
-Ef 1:10	er	8	τὰ	fuggoben		G3588	kezi	
-Ef 1:10	er	9	πάντα	fuggoben		G3956	kezi	
-Ef 1:10	er	10	ἐν	fuggoben		G1722	kezi	
-Ef 1:10	er	11	τῷ	fuggoben		G3588	kezi	
-Ef 1:10	er	12	Χριστῷ,	fuggoben		G5547	kezi	
-Ef 1:10	er	13	τὰ	fuggoben		G3588	kezi	
-Ef 1:10	er	14	τε	fuggoben		G5037	kezi	
-Ef 1:10	er	15	ἐπὶ	fuggoben		G1909	kezi	
-Ef 1:10	er	16	τοῖς	fuggoben		G3588	kezi	
-Ef 1:10	er	17	οὐρανοῖς	fuggoben		G3772	kezi	
-Ef 1:10	er	18	καὶ	fuggoben		G2532	kezi	
-Ef 1:10	er	19	τὰ	fuggoben		G3588	kezi	
-Ef 1:10	er	20	ἐπὶ	fuggoben		G1909	kezi	
-Ef 1:10	er	21	τῆς	fuggoben		G3588	kezi	
-Ef 1:10	er	22	γῆς,	fuggoben		G1093	kezi	
-Ef 1:11	hu	1	Ő	fuggoben			kezi	
-Ef 1:11	hu	2	benne	fuggoben			kezi	
-Ef 1:11	hu	3	a	fuggoben			kezi	
-Ef 1:11	hu	4	kiben	fuggoben			kezi	
-Ef 1:11	hu	5	vettük	fuggoben			kezi	
-Ef 1:11	hu	6	is	fuggoben			kezi	
-Ef 1:11	hu	7	az	fuggoben			kezi	
-Ef 1:11	hu	8	örökséget	fuggoben			kezi	
-Ef 1:11	hu	9	eleve	fuggoben			kezi	
-Ef 1:11	hu	10	elrendeltetvén	fuggoben			kezi	
-Ef 1:11	hu	11	annak	fuggoben			kezi	
-Ef 1:11	hu	12	eleveelvégzése	fuggoben			kezi	
-Ef 1:11	hu	13	szerint	fuggoben			kezi	
-Ef 1:11	hu	14	a	fuggoben			kezi	
-Ef 1:11	hu	15	ki	fuggoben			kezi	
-Ef 1:11	hu	16	mindent	fuggoben			kezi	
-Ef 1:11	hu	17	az	fuggoben			kezi	
-Ef 1:11	hu	18	ő	fuggoben			kezi	
-Ef 1:11	hu	19	akaratjának	fuggoben			kezi	
-Ef 1:11	hu	20	tanácsából	fuggoben			kezi	
-Ef 1:11	hu	21	cselekszik	fuggoben			kezi	
-Ef 1:11	er	1	ἐν	fuggoben		G1722	kezi	
-Ef 1:11	er	2	ᾧ	fuggoben		G3739	kezi	
-Ef 1:11	er	3	καὶ	fuggoben		G2532	kezi	
-Ef 1:11	er	4	ἐκληρώθημεν	fuggoben		G2820	kezi	
-Ef 1:11	er	5	προορισθέντες	fuggoben		G4309	kezi	
-Ef 1:11	er	6	κατὰ	fuggoben		G2596	kezi	
-Ef 1:11	er	7	πρόθεσιν	fuggoben		G4286	kezi	
-Ef 1:11	er	8	τοῦ	fuggoben		G3588	kezi	
-Ef 1:11	er	9	τὰ	fuggoben		G3588	kezi	
-Ef 1:11	er	10	πάντα	fuggoben		G3956	kezi	
-Ef 1:11	er	11	ἐνεργοῦντος	fuggoben		G1754	kezi	
-Ef 1:11	er	12	κατὰ	fuggoben		G2596	kezi	
-Ef 1:11	er	13	τὴν	fuggoben		G3588	kezi	
-Ef 1:11	er	14	βουλὴν	fuggoben		G1012	kezi	
-Ef 1:11	er	15	τοῦ	fuggoben		G3588	kezi	
-Ef 1:11	er	16	θελήματος	fuggoben		G2307	kezi	
-Ef 1:11	er	17	αὐτοῦ	fuggoben		G0846	kezi	
+Ef 1:10	hu	1	Az	betoldas			alacsony	S
+Ef 1:10	hu	2	idők	parositva	6	G2540	alacsony	S
+Ef 1:10	hu	3	teljességének	parositva	4	G4138	alacsony	S
+Ef 1:10	hu	4	rendjére	parositva	1,2	G1519+G3622	alacsony	S
+Ef 1:10	hu	5	nézve	betoldas			alacsony	S
+Ef 1:10	hu	6	hogy	betoldas			alacsony	S
+Ef 1:10	hu	7	ismét	parositva	7	G0346	alacsony	S
+Ef 1:10	hu	8	egybeszerkeszt	parositva	7	G0346	alacsony	S
+Ef 1:10	hu	9	magának	betoldas			alacsony	S
+Ef 1:10	hu	10	mindeneket	parositva	9	G3956	alacsony	S
+Ef 1:10	hu	11	a	betoldas			alacsony	S
+Ef 1:10	hu	12	Krisztusban	parositva	10,12	G1722+G5547	alacsony	S
+Ef 1:10	hu	13	mind	parositva	14	G5037	alacsony	S
+Ef 1:10	hu	14	a	parositva	13	G3588	alacsony	S
+Ef 1:10	hu	15	melyek	parositva	13	G3588	alacsony	S
+Ef 1:10	hu	16	a	betoldas			alacsony	S
+Ef 1:10	hu	17	mennyekben	parositva	16,17	G3588+G3772	alacsony	S
+Ef 1:10	hu	18	vannak	betoldas			alacsony	S
+Ef 1:10	hu	19	mind	parositva	18	G2532	alacsony	S
+Ef 1:10	hu	20	a	parositva	19	G3588	alacsony	S
+Ef 1:10	hu	21	melyek	parositva	19	G3588	alacsony	S
+Ef 1:10	hu	22	e	parositva	21	G3588	alacsony	S
+Ef 1:10	hu	23	földön	parositva	20,22	G1909+G1093	alacsony	S
+Ef 1:10	hu	24	vannak	betoldas			alacsony	S
+Ef 1:10	er	1	εἰς	parositva	4	G1519	alacsony	S
+Ef 1:10	er	2	οἰκονομίαν	parositva	4	G3622	alacsony	S
+Ef 1:10	er	3	τοῦ	forditatlan		G3588	alacsony	S
+Ef 1:10	er	4	πληρώματος	parositva	3	G4138	alacsony	S
+Ef 1:10	er	5	τῶν	forditatlan		G3588	alacsony	S
+Ef 1:10	er	6	καιρῶν,	parositva	2	G2540	alacsony	S
+Ef 1:10	er	7	ἀνακεφαλαιώσασθαι	parositva	7,8	G0346	alacsony	S
+Ef 1:10	er	8	τὰ	forditatlan		G3588	alacsony	S
+Ef 1:10	er	9	πάντα	parositva	10	G3956	alacsony	S
+Ef 1:10	er	10	ἐν	parositva	12	G1722	alacsony	S
+Ef 1:10	er	11	τῷ	forditatlan		G3588	alacsony	S
+Ef 1:10	er	12	Χριστῷ,	parositva	12	G5547	alacsony	S
+Ef 1:10	er	13	τὰ	parositva	14,15	G3588	alacsony	S
+Ef 1:10	er	14	τε	parositva	13	G5037	alacsony	S
+Ef 1:10	er	15	ἐπὶ	forditatlan		G1909	alacsony	S
+Ef 1:10	er	16	τοῖς	parositva	17	G3588	alacsony	S
+Ef 1:10	er	17	οὐρανοῖς	parositva	17	G3772	alacsony	S
+Ef 1:10	er	18	καὶ	parositva	19	G2532	alacsony	S
+Ef 1:10	er	19	τὰ	parositva	20,21	G3588	alacsony	S
+Ef 1:10	er	20	ἐπὶ	parositva	23	G1909	alacsony	S
+Ef 1:10	er	21	τῆς	parositva	22	G3588	alacsony	S
+Ef 1:10	er	22	γῆς,	parositva	23	G1093	alacsony	S
+Ef 1:11	hu	1	Ő	parositva	2	G0846	alacsony	S
+Ef 1:11	hu	2	benne	parositva	1	G1722	alacsony	S
+Ef 1:11	hu	3	a	parositva	4	G3739	alacsony	S
+Ef 1:11	hu	4	kiben	parositva	3,4	G1722+G3739	alacsony	S
+Ef 1:11	hu	5	vettük	parositva	6	G2820	alacsony	S
+Ef 1:11	hu	6	is	parositva	5	G2532	alacsony	S
+Ef 1:11	hu	7	az	betoldas			alacsony	S
+Ef 1:11	hu	8	örökséget	parositva	6	G2820	alacsony	S
+Ef 1:11	hu	9	eleve	parositva	7	G4309	alacsony	S
+Ef 1:11	hu	10	elrendeltetvén	parositva	7	G4309	alacsony	S
+Ef 1:11	hu	11	annak	parositva	10	G3588	alacsony	S
+Ef 1:11	hu	12	eleveelvégzése	parositva	9	G4286	alacsony	S
+Ef 1:11	hu	13	szerint	parositva	8	G2596	alacsony	S
+Ef 1:11	hu	14	a	parositva	10	G3588	alacsony	S
+Ef 1:11	hu	15	ki	parositva	10	G3588	alacsony	S
+Ef 1:11	hu	16	mindent	parositva	12	G3956	alacsony	S
+Ef 1:11	hu	17	az	betoldas			alacsony	S
+Ef 1:11	hu	18	ő	parositva	19	G0846	alacsony	S
+Ef 1:11	hu	19	akaratjának	parositva	18,19	G2307+G0846	alacsony	S
+Ef 1:11	hu	20	tanácsából	parositva	14,16	G2596+G1012	alacsony	S
+Ef 1:11	hu	21	cselekszik	parositva	13	G1754	alacsony	S
+Ef 1:11	er	1	ἐν	parositva	2	G1722	alacsony	S
+Ef 1:11	er	2	αὐτῷ,	parositva	1	G0846	alacsony	S
+Ef 1:11	er	3	ἐν	parositva	4	G1722	alacsony	S
+Ef 1:11	er	4	ᾧ	parositva	3,4	G3739	alacsony	S
+Ef 1:11	er	5	καὶ	parositva	6	G2532	alacsony	S
+Ef 1:11	er	6	ἐκληρώθημεν	parositva	5,8	G2820	alacsony	S
+Ef 1:11	er	7	προορισθέντες	parositva	9,10	G4309	alacsony	S
+Ef 1:11	er	8	κατὰ	parositva	13	G2596	alacsony	S
+Ef 1:11	er	9	πρόθεσιν	parositva	12	G4286	alacsony	S
+Ef 1:11	er	10	τοῦ	parositva	11,14,15	G3588	alacsony	S
+Ef 1:11	er	11	τὰ	forditatlan		G3588	alacsony	S
+Ef 1:11	er	12	πάντα	parositva	16	G3956	alacsony	S
+Ef 1:11	er	13	ἐνεργοῦντος	parositva	21	G1754	alacsony	S
+Ef 1:11	er	14	κατὰ	parositva	20	G2596	alacsony	S
+Ef 1:11	er	15	τὴν	forditatlan		G3588	alacsony	S
+Ef 1:11	er	16	βουλὴν	parositva	20	G1012	alacsony	S
+Ef 1:11	er	17	τοῦ	forditatlan		G3588	alacsony	S
+Ef 1:11	er	18	θελήματος	parositva	19	G2307	alacsony	S
+Ef 1:11	er	19	αὐτοῦ	parositva	18,19	G0846	alacsony	S
 Ef 1:12	hu	1	Hogy	parositva	1	G1519	alacsony	S
 Ef 1:12	hu	2	legyünk	parositva	3	G1511	alacsony	S
 Ef 1:12	hu	3	mi	parositva	4	G3165	alacsony	S
@@ -1244,81 +1246,87 @@ Ef 2:13	er	14	τῷ	forditatlan		G3588	alacsony	S
 Ef 2:13	er	15	αἵματι	parositva	15	G0129	alacsony	S
 Ef 2:13	er	16	τοῦ	forditatlan		G3588	alacsony	S
 Ef 2:13	er	17	Χριστοῦ.	parositva	14	G5547	alacsony	S
-Ef 2:14	hu	1	Mert	fuggoben			kezi	
-Ef 2:14	hu	2	Ő	fuggoben			kezi	
-Ef 2:14	hu	3	a	fuggoben			kezi	
-Ef 2:14	hu	4	mi	fuggoben			kezi	
-Ef 2:14	hu	5	békességünk	fuggoben			kezi	
-Ef 2:14	hu	6	ki	fuggoben			kezi	
-Ef 2:14	hu	7	egygyé	fuggoben			kezi	
-Ef 2:14	hu	8	tette	fuggoben			kezi	
-Ef 2:14	hu	9	mind	fuggoben			kezi	
-Ef 2:14	hu	10	a	fuggoben			kezi	
-Ef 2:14	hu	11	két	fuggoben			kezi	
-Ef 2:14	hu	12	nemzetséget	fuggoben			kezi	
-Ef 2:14	hu	13	és	fuggoben			kezi	
-Ef 2:14	hu	14	lerontotta	fuggoben			kezi	
-Ef 2:14	hu	15	a	fuggoben			kezi	
-Ef 2:14	hu	16	közbevetett	fuggoben			kezi	
-Ef 2:14	hu	17	választófalat	fuggoben			kezi	
-Ef 2:14	er	1	αὐτὸς	fuggoben		G0846	kezi	
-Ef 2:14	er	2	γάρ	fuggoben		G1063	kezi	
-Ef 2:14	er	3	ἐστιν	fuggoben		G1510	kezi	
-Ef 2:14	er	4	ἡ	fuggoben		G3588	kezi	
-Ef 2:14	er	5	εἰρήνη	fuggoben		G1515	kezi	
-Ef 2:14	er	6	ἡμῶν,	fuggoben		G3165	kezi	
-Ef 2:14	er	7	ὁ	fuggoben		G3588	kezi	
-Ef 2:14	er	8	ποιήσας	fuggoben		G4160	kezi	
-Ef 2:14	er	9	τὰ	fuggoben		G3588	kezi	
-Ef 2:14	er	10	ἀμφότερα	fuggoben		G0297	kezi	
-Ef 2:14	er	11	ἓν	fuggoben		G1520	kezi	
-Ef 2:14	er	12	καὶ	fuggoben		G2532	kezi	
-Ef 2:14	er	13	τὸ	fuggoben		G3588	kezi	
-Ef 2:14	er	14	μεσότοιχον	fuggoben		G3320	kezi	
-Ef 2:14	er	15	τοῦ	fuggoben		G3588	kezi	
-Ef 2:14	er	16	φραγμοῦ	fuggoben		G5418	kezi	
-Ef 2:14	er	17	λύσας,	fuggoben		G3089	kezi	
-Ef 2:15	hu	1	Az	fuggoben			kezi	
-Ef 2:15	hu	2	ellenségeskedést	fuggoben			kezi	
-Ef 2:15	hu	3	az	fuggoben			kezi	
-Ef 2:15	hu	4	Ő	fuggoben			kezi	
-Ef 2:15	hu	5	testében	fuggoben			kezi	
-Ef 2:15	hu	6	a	fuggoben			kezi	
-Ef 2:15	hu	7	parancsolatoknak	fuggoben			kezi	
-Ef 2:15	hu	8	tételekben	fuggoben			kezi	
-Ef 2:15	hu	9	való	fuggoben			kezi	
-Ef 2:15	hu	10	törvényét	fuggoben			kezi	
-Ef 2:15	hu	11	eltörölvén	fuggoben			kezi	
-Ef 2:15	hu	12	hogy	fuggoben			kezi	
-Ef 2:15	hu	13	ama	fuggoben			kezi	
-Ef 2:15	hu	14	kettőt	fuggoben			kezi	
-Ef 2:15	hu	15	egy	fuggoben			kezi	
-Ef 2:15	hu	16	új	fuggoben			kezi	
-Ef 2:15	hu	17	emberré	fuggoben			kezi	
-Ef 2:15	hu	18	teremtse	fuggoben			kezi	
-Ef 2:15	hu	19	Ő	fuggoben			kezi	
-Ef 2:15	hu	20	magában	fuggoben			kezi	
-Ef 2:15	hu	21	békességet	fuggoben			kezi	
-Ef 2:15	hu	22	szerezvén	fuggoben			kezi	
-Ef 2:15	er	1	τὸν	fuggoben		G3588	kezi	
-Ef 2:15	er	2	νόμον	fuggoben		G3551	kezi	
-Ef 2:15	er	3	τῶν	fuggoben		G3588	kezi	
-Ef 2:15	er	4	ἐντολῶν	fuggoben		G1785	kezi	
-Ef 2:15	er	5	ἐν	fuggoben		G1722	kezi	
-Ef 2:15	er	6	δόγμασιν	fuggoben		G1378	kezi	
-Ef 2:15	er	7	καταργήσας,	fuggoben		G2673	kezi	
-Ef 2:15	er	8	ἵνα	fuggoben		G2443	kezi	
-Ef 2:15	er	9	τοὺς	fuggoben		G3588	kezi	
-Ef 2:15	er	10	δύο	fuggoben		G1417	kezi	
-Ef 2:15	er	11	κτίσῃ	fuggoben		G2936	kezi	
-Ef 2:15	er	12	ἐν	fuggoben		G1722	kezi	
-Ef 2:15	er	13	αὐτῷ	fuggoben		G0846	kezi	
-Ef 2:15	er	14	εἰς	fuggoben		G1519	kezi	
-Ef 2:15	er	15	ἕνα	fuggoben		G1520	kezi	
-Ef 2:15	er	16	καινὸν	fuggoben		G2537	kezi	
-Ef 2:15	er	17	ἄνθρωπον	fuggoben		G0444	kezi	
-Ef 2:15	er	18	ποιῶν	fuggoben		G4160	kezi	
-Ef 2:15	er	19	εἰρήνην,	fuggoben		G1515	kezi	
+Ef 2:14	hu	1	Mert	parositva	2	G1063	alacsony	S
+Ef 2:14	hu	2	Ő	parositva	1,3	G0846+G1510	alacsony	S
+Ef 2:14	hu	3	a	betoldas			alacsony	S
+Ef 2:14	hu	4	mi	parositva	6	G3165	alacsony	S
+Ef 2:14	hu	5	békességünk	parositva	5,6	G1515+G3165	alacsony	S
+Ef 2:14	hu	6	ki	parositva	7	G3588	alacsony	S
+Ef 2:14	hu	7	egygyé	parositva	11	G1520	alacsony	S
+Ef 2:14	hu	8	tette	parositva	8	G4160	alacsony	S
+Ef 2:14	hu	9	mind	parositva	10	G0297	alacsony	S
+Ef 2:14	hu	10	a	betoldas			alacsony	S
+Ef 2:14	hu	11	két	parositva	10	G0297	alacsony	S
+Ef 2:14	hu	12	nemzetséget	parositva	10	G0297	alacsony	S
+Ef 2:14	hu	13	és	parositva	12	G2532	alacsony	S
+Ef 2:14	hu	14	lerontotta	parositva	17	G3089	alacsony	S
+Ef 2:14	hu	15	a	betoldas			alacsony	S
+Ef 2:14	hu	16	közbevetett	parositva	14	G3320	alacsony	S
+Ef 2:14	hu	17	választófalat	parositva	14,16	G3320+G5418	alacsony	S
+Ef 2:14	er	1	αὐτὸς	parositva	2	G0846	alacsony	S
+Ef 2:14	er	2	γάρ	parositva	1	G1063	alacsony	S
+Ef 2:14	er	3	ἐστιν	parositva	2	G1510	alacsony	S
+Ef 2:14	er	4	ἡ	forditatlan		G3588	alacsony	S
+Ef 2:14	er	5	εἰρήνη	parositva	5	G1515	alacsony	S
+Ef 2:14	er	6	ἡμῶν,	parositva	4,5	G3165	alacsony	S
+Ef 2:14	er	7	ὁ	parositva	6	G3588	alacsony	S
+Ef 2:14	er	8	ποιήσας	parositva	8	G4160	alacsony	S
+Ef 2:14	er	9	τὰ	forditatlan		G3588	alacsony	S
+Ef 2:14	er	10	ἀμφότερα	parositva	9,11,12	G0297	alacsony	S
+Ef 2:14	er	11	ἓν	parositva	7	G1520	alacsony	S
+Ef 2:14	er	12	καὶ	parositva	13	G2532	alacsony	S
+Ef 2:14	er	13	τὸ	forditatlan		G3588	alacsony	S
+Ef 2:14	er	14	μεσότοιχον	parositva	16,17	G3320	alacsony	S
+Ef 2:14	er	15	τοῦ	forditatlan		G3588	alacsony	S
+Ef 2:14	er	16	φραγμοῦ	parositva	17	G5418	alacsony	S
+Ef 2:14	er	17	λύσας,	parositva	14	G3089	alacsony	S
+Ef 2:15	hu	1	Az	betoldas			alacsony	S
+Ef 2:15	hu	2	ellenségeskedést	parositva	2	G2189	alacsony	S
+Ef 2:15	hu	3	az	betoldas			alacsony	S
+Ef 2:15	hu	4	Ő	parositva	6	G0846	alacsony	S
+Ef 2:15	hu	5	testében	parositva	3,5,6	G1722+G4561+G0846	alacsony	S
+Ef 2:15	hu	6	a	betoldas			alacsony	S
+Ef 2:15	hu	7	parancsolatoknak	parositva	10	G1785	alacsony	S
+Ef 2:15	hu	8	tételekben	parositva	11,12	G1722+G1378	alacsony	S
+Ef 2:15	hu	9	való	betoldas			alacsony	S
+Ef 2:15	hu	10	törvényét	parositva	8	G3551	alacsony	S
+Ef 2:15	hu	11	eltörölvén	parositva	13	G2673	alacsony	S
+Ef 2:15	hu	12	hogy	parositva	14	G2443	alacsony	S
+Ef 2:15	hu	13	ama	parositva	15	G3588	alacsony	S
+Ef 2:15	hu	14	kettőt	parositva	16	G1417	alacsony	S
+Ef 2:15	hu	15	egy	parositva	21	G1520	alacsony	S
+Ef 2:15	hu	16	új	parositva	22	G2537	alacsony	S
+Ef 2:15	hu	17	emberré	parositva	20,23	G1519+G0444	alacsony	S
+Ef 2:15	hu	18	teremtse	parositva	17	G2936	alacsony	S
+Ef 2:15	hu	19	Ő	betoldas			alacsony	S
+Ef 2:15	hu	20	magában	parositva	18	G1722	alacsony	S
+Ef 2:15	hu	21	békességet	parositva	25	G1515	alacsony	S
+Ef 2:15	hu	22	szerezvén	parositva	24	G4160	alacsony	S
+Ef 2:15	er	1	τὴν	forditatlan		G3588	alacsony	S
+Ef 2:15	er	2	ἔχθραν	parositva	2	G2189	alacsony	S
+Ef 2:15	er	3	ἐν	parositva	5	G1722	alacsony	S
+Ef 2:15	er	4	τῇ	forditatlan		G3588	alacsony	S
+Ef 2:15	er	5	σαρκὶ	parositva	5	G4561	alacsony	S
+Ef 2:15	er	6	αὐτοῦ,	parositva	4,5	G0846	alacsony	S
+Ef 2:15	er	7	τὸν	forditatlan		G3588	alacsony	S
+Ef 2:15	er	8	νόμον	parositva	10	G3551	alacsony	S
+Ef 2:15	er	9	τῶν	forditatlan		G3588	alacsony	S
+Ef 2:15	er	10	ἐντολῶν	parositva	7	G1785	alacsony	S
+Ef 2:15	er	11	ἐν	parositva	8	G1722	alacsony	S
+Ef 2:15	er	12	δόγμασιν	parositva	8	G1378	alacsony	S
+Ef 2:15	er	13	καταργήσας,	parositva	11	G2673	alacsony	S
+Ef 2:15	er	14	ἵνα	parositva	12	G2443	alacsony	S
+Ef 2:15	er	15	τοὺς	parositva	13	G3588	alacsony	S
+Ef 2:15	er	16	δύο	parositva	14	G1417	alacsony	S
+Ef 2:15	er	17	κτίσῃ	parositva	18	G2936	alacsony	S
+Ef 2:15	er	18	ἐν	parositva	20	G1722	alacsony	S
+Ef 2:15	er	19	αὐτῷ	forditatlan		G0846	alacsony	S
+Ef 2:15	er	20	εἰς	parositva	17	G1519	alacsony	S
+Ef 2:15	er	21	ἕνα	parositva	15	G1520	alacsony	S
+Ef 2:15	er	22	καινὸν	parositva	16	G2537	alacsony	S
+Ef 2:15	er	23	ἄνθρωπον	parositva	17	G0444	alacsony	S
+Ef 2:15	er	24	ποιῶν	parositva	22	G4160	alacsony	S
+Ef 2:15	er	25	εἰρήνην,	parositva	21	G1515	alacsony	S
 Ef 2:16	hu	1	És	parositva	1	G2532	alacsony	S
 Ef 2:16	hu	2	hogy	betoldas			alacsony	S
 Ef 2:16	hu	3	megbékéltesse	parositva	2	G0604	alacsony	S
@@ -3480,61 +3488,67 @@ Ef 5:12	er	7	αἰσχρόν	parositva	7	G0150	alacsony	S
 Ef 5:12	er	8	ἐστιν	parositva	8	G1510	alacsony	S
 Ef 5:12	er	9	καὶ	parositva	11	G2532	alacsony	S
 Ef 5:12	er	10	λέγειν.	parositva	10	G3004	alacsony	S
-Ef 5:13	hu	1	Mindezek	fuggoben			kezi	
-Ef 5:13	hu	2	pedig	fuggoben			kezi	
-Ef 5:13	hu	3	megfeddetvén	fuggoben			kezi	
-Ef 5:13	hu	4	a	fuggoben			kezi	
-Ef 5:13	hu	5	világosság	fuggoben			kezi	
-Ef 5:13	hu	6	által	fuggoben			kezi	
-Ef 5:13	hu	7	napvilágra	fuggoben			kezi	
-Ef 5:13	hu	8	jőnek	fuggoben			kezi	
-Ef 5:13	hu	9	mert	fuggoben			kezi	
-Ef 5:13	hu	10	minden	fuggoben			kezi	
-Ef 5:13	hu	11	a	fuggoben			kezi	
-Ef 5:13	hu	12	mi	fuggoben			kezi	
-Ef 5:13	hu	13	napvilágra	fuggoben			kezi	
-Ef 5:13	hu	14	jő	fuggoben			kezi	
-Ef 5:13	hu	15	világosság	fuggoben			kezi	
-Ef 5:13	er	1	τὰ	fuggoben		G3588	kezi	
-Ef 5:13	er	2	δὲ	fuggoben		G1161	kezi	
-Ef 5:13	er	3	πάντα	fuggoben		G3956	kezi	
-Ef 5:13	er	4	ἐλεγχόμενα	fuggoben		G1651	kezi	
-Ef 5:13	er	5	ὑπὸ	fuggoben		G5259	kezi	
-Ef 5:13	er	6	τοῦ	fuggoben		G3588	kezi	
-Ef 5:13	er	7	φωτὸς	fuggoben		G5457	kezi	
-Ef 5:13	er	8	φανεροῦται·	fuggoben		G5319	kezi	
-Ef 5:14	hu	1	Annakokáért	fuggoben			kezi	
-Ef 5:14	hu	2	mondja	fuggoben			kezi	
-Ef 5:14	hu	3	Serkenj	fuggoben			kezi	
-Ef 5:14	hu	4	föl	fuggoben			kezi	
-Ef 5:14	hu	5	a	fuggoben			kezi	
-Ef 5:14	hu	6	ki	fuggoben			kezi	
-Ef 5:14	hu	7	aluszol	fuggoben			kezi	
-Ef 5:14	hu	8	és	fuggoben			kezi	
-Ef 5:14	hu	9	támadj	fuggoben			kezi	
-Ef 5:14	hu	10	fel	fuggoben			kezi	
-Ef 5:14	hu	11	a	fuggoben			kezi	
-Ef 5:14	hu	12	halálból	fuggoben			kezi	
-Ef 5:14	hu	13	és	fuggoben			kezi	
-Ef 5:14	hu	14	felragyogott	fuggoben			kezi	
-Ef 5:14	hu	15	tenéked	fuggoben			kezi	
-Ef 5:14	hu	16	a	fuggoben			kezi	
-Ef 5:14	hu	17	Krisztus	fuggoben			kezi	
-Ef 5:14	er	1	διὸ	fuggoben		G1352	kezi	
-Ef 5:14	er	2	λέγει·	fuggoben		G3004	kezi	
-Ef 5:14	er	3	ἔγειρε	fuggoben		G1453	kezi	
-Ef 5:14	er	4	ὁ	fuggoben		G3588	kezi	
-Ef 5:14	er	5	καθεύδων	fuggoben		G2518	kezi	
-Ef 5:14	er	6	καὶ	fuggoben		G2532	kezi	
-Ef 5:14	er	7	ἀνάστα	fuggoben		G0450	kezi	
-Ef 5:14	er	8	ἐκ	fuggoben		G1537	kezi	
-Ef 5:14	er	9	τῶν	fuggoben		G3588	kezi	
-Ef 5:14	er	10	νεκρῶν,	fuggoben		G3498	kezi	
-Ef 5:14	er	11	καὶ	fuggoben		G2532	kezi	
-Ef 5:14	er	12	ἐπιφαύσει	fuggoben		G2017	kezi	
-Ef 5:14	er	13	σοι	fuggoben		G4771	kezi	
-Ef 5:14	er	14	ὁ	fuggoben		G3588	kezi	
-Ef 5:14	er	15	Χριστός.¶	fuggoben		G5547	kezi	
+Ef 5:13	hu	1	Mindezek	parositva	3	G3956	alacsony	S
+Ef 5:13	hu	2	pedig	parositva	2	G1161	alacsony	S
+Ef 5:13	hu	3	megfeddetvén	parositva	4	G1651	alacsony	S
+Ef 5:13	hu	4	a	betoldas			alacsony	S
+Ef 5:13	hu	5	világosság	parositva	6,7	G3588+G5457	alacsony	S
+Ef 5:13	hu	6	által	parositva	5	G5259	alacsony	S
+Ef 5:13	hu	7	napvilágra	parositva	8	G5319	alacsony	S
+Ef 5:13	hu	8	jőnek	parositva	8	G5319	alacsony	S
+Ef 5:13	hu	9	mert	parositva	10	G1063	alacsony	S
+Ef 5:13	hu	10	minden	parositva	9	G3956	alacsony	S
+Ef 5:13	hu	11	a	betoldas			alacsony	S
+Ef 5:13	hu	12	mi	parositva	11	G3588	alacsony	S
+Ef 5:13	hu	13	napvilágra	parositva	12	G5319	alacsony	S
+Ef 5:13	hu	14	jő	parositva	12	G5319	alacsony	S
+Ef 5:13	hu	15	világosság	parositva	13,14	G5457+G1510	alacsony	S
+Ef 5:13	er	1	τὰ	forditatlan		G3588	alacsony	S
+Ef 5:13	er	2	δὲ	parositva	2	G1161	alacsony	S
+Ef 5:13	er	3	πάντα	parositva	1	G3956	alacsony	S
+Ef 5:13	er	4	ἐλεγχόμενα	parositva	3	G1651	alacsony	S
+Ef 5:13	er	5	ὑπὸ	parositva	6	G5259	alacsony	S
+Ef 5:13	er	6	τοῦ	parositva	5	G3588	alacsony	S
+Ef 5:13	er	7	φωτὸς	parositva	5	G5457	alacsony	S
+Ef 5:13	er	8	φανεροῦται·	parositva	7,8	G5319	alacsony	S
+Ef 5:13	er	9	πᾶν	parositva	10	G3956	alacsony	S
+Ef 5:13	er	10	γὰρ	parositva	9	G1063	alacsony	S
+Ef 5:13	er	11	τὸ	parositva	12	G3588	alacsony	S
+Ef 5:13	er	12	φανερούμενον	parositva	13,14	G5319	alacsony	S
+Ef 5:13	er	13	φῶς	parositva	15	G5457	alacsony	S
+Ef 5:13	er	14	ἐστιν·	parositva	15	G1510	alacsony	S
+Ef 5:14	hu	1	Annakokáért	parositva	1	G1352	alacsony	S
+Ef 5:14	hu	2	mondja	parositva	2	G3004	alacsony	S
+Ef 5:14	hu	3	Serkenj	betoldas			alacsony	S
+Ef 5:14	hu	4	föl	betoldas			alacsony	S
+Ef 5:14	hu	5	a	parositva	4	G3588	alacsony	S
+Ef 5:14	hu	6	ki	parositva	4	G3588	alacsony	S
+Ef 5:14	hu	7	aluszol	parositva	5	G2518	alacsony	S
+Ef 5:14	hu	8	és	parositva	6	G2532	alacsony	S
+Ef 5:14	hu	9	támadj	parositva	7	G0450	alacsony	S
+Ef 5:14	hu	10	fel	parositva	7	G0450	alacsony	S
+Ef 5:14	hu	11	a	betoldas			alacsony	S
+Ef 5:14	hu	12	halálból	parositva	8,10	G1537+G3498	alacsony	S
+Ef 5:14	hu	13	és	parositva	11	G2532	alacsony	S
+Ef 5:14	hu	14	felragyogott	parositva	12	G2017	alacsony	S
+Ef 5:14	hu	15	tenéked	parositva	13	G4771	alacsony	S
+Ef 5:14	hu	16	a	betoldas			alacsony	S
+Ef 5:14	hu	17	Krisztus	parositva	15	G5547	alacsony	S
+Ef 5:14	er	1	διὸ	parositva	1	G1352	alacsony	S
+Ef 5:14	er	2	λέγει·	parositva	2	G3004	alacsony	S
+Ef 5:14	er	3	ἔγειρε	forditatlan		G1453	alacsony	S
+Ef 5:14	er	4	ὁ	parositva	5,6	G3588	alacsony	S
+Ef 5:14	er	5	καθεύδων	parositva	7	G2518	alacsony	S
+Ef 5:14	er	6	καὶ	parositva	8	G2532	alacsony	S
+Ef 5:14	er	7	ἀνάστα	parositva	9,10	G0450	alacsony	S
+Ef 5:14	er	8	ἐκ	parositva	12	G1537	alacsony	S
+Ef 5:14	er	9	τῶν	forditatlan		G3588	alacsony	S
+Ef 5:14	er	10	νεκρῶν,	parositva	12	G3498	alacsony	S
+Ef 5:14	er	11	καὶ	parositva	13	G2532	alacsony	S
+Ef 5:14	er	12	ἐπιφαύσει	parositva	14	G2017	alacsony	S
+Ef 5:14	er	13	σοι	parositva	15	G4771	alacsony	S
+Ef 5:14	er	14	ὁ	forditatlan		G3588	alacsony	S
+Ef 5:14	er	15	Χριστός.¶	parositva	17	G5547	alacsony	S
 Ef 5:15	hu	1	Meglássátok	parositva	1	G0991	alacsony	S
 Ef 5:15	hu	2	annakokáért	parositva	2	G3767	alacsony	S
 Ef 5:15	hu	3	hogy	parositva	4	G4459	alacsony	S

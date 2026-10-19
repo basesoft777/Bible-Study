@@ -1,4 +1,4 @@
-# proveniencia: scope=manual | forras=f22/valaszok/sonnet/Zsid.jsonl, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; az API (Batch)-futásnak nincs lekérdezés-időbélyege) | modell-kimenet, javaslat: nem lekérdezés-eredmény; minden link `alacsony` (egy modell, nincs egyezés); a strong a TAGNT-ből, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py
+# proveniencia: scope=manual | forras=f22/valaszok/sonnet/Zsid.jsonl, f22/valaszok/sonnet/Zsid_javito.jsonl, f22/valaszok/c/Zsid_javito.jsonl, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; az API (Batch)-futásnak nincs lekérdezés-időbélyege) | modell-kimenet, javaslat: nem lekérdezés-eredmény; minden link `alacsony` (egy modell, nincs egyezés); a strong a TAGNT-ből, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py
 vers	oldal	sorszam	szo	allapot	partner_sorszam	strong	bizonyossag	forras
 Zsid 1:1	hu	1	Minekutána	parositva	7	G2980	alacsony	S
 Zsid 1:1	hu	2	az	betoldas			alacsony	S
@@ -1426,72 +1426,74 @@ Zsid 3:8	er	14	πειρασμοῦ	parositva	11	G3986	alacsony	S
 Zsid 3:8	er	15	ἐν	parositva	15	G1722	alacsony	S
 Zsid 3:8	er	16	τῇ	forditatlan		G3588	alacsony	S
 Zsid 3:8	er	17	ἐρήμῳ,	parositva	15	G2048	alacsony	S
-Zsid 3:9	hu	1	A	fuggoben			kezi	
-Zsid 3:9	hu	2	hol	fuggoben			kezi	
-Zsid 3:9	hu	3	a	fuggoben			kezi	
-Zsid 3:9	hu	4	ti	fuggoben			kezi	
-Zsid 3:9	hu	5	atyáitok	fuggoben			kezi	
-Zsid 3:9	hu	6	próbára	fuggoben			kezi	
-Zsid 3:9	hu	7	tevéssel	fuggoben			kezi	
-Zsid 3:9	hu	8	megkísértének	fuggoben			kezi	
-Zsid 3:9	hu	9	engem	fuggoben			kezi	
-Zsid 3:9	hu	10	és	fuggoben			kezi	
-Zsid 3:9	hu	11	látták	fuggoben			kezi	
-Zsid 3:9	hu	12	az	fuggoben			kezi	
-Zsid 3:9	hu	13	én	fuggoben			kezi	
-Zsid 3:9	hu	14	cselekedeteimet	fuggoben			kezi	
-Zsid 3:9	hu	15	negyven	fuggoben			kezi	
-Zsid 3:9	hu	16	esztendeig	fuggoben			kezi	
-Zsid 3:9	er	1	οὗ	fuggoben		G3757	kezi	
-Zsid 3:9	er	2	ἐπείρασαν	fuggoben		G3985	kezi	
-Zsid 3:9	er	3	με	fuggoben		G3165	kezi	
-Zsid 3:9	er	4	οἱ	fuggoben		G3588	kezi	
-Zsid 3:9	er	5	πατέρες	fuggoben		G3962	kezi	
-Zsid 3:9	er	6	ὑμῶν	fuggoben		G4771	kezi	
-Zsid 3:9	er	7	ἐν	fuggoben		G1722	kezi	
-Zsid 3:9	er	8	δοκιμασίᾳ	fuggoben		G6020	kezi	
-Zsid 3:9	er	9	με	fuggoben		G3165	kezi	
-Zsid 3:9	er	10	καὶ	fuggoben		G2532	kezi	
-Zsid 3:9	er	11	εἶδον	fuggoben		G1492	kezi	
-Zsid 3:9	er	12	τὰ	fuggoben		G3588	kezi	
-Zsid 3:9	er	13	ἔργα	fuggoben		G2041	kezi	
-Zsid 3:9	er	14	μου	fuggoben		G3165	kezi	
-Zsid 3:10	hu	1	Azért	fuggoben			kezi	
-Zsid 3:10	hu	2	megharagudtam	fuggoben			kezi	
-Zsid 3:10	hu	3	arra	fuggoben			kezi	
-Zsid 3:10	hu	4	a	fuggoben			kezi	
-Zsid 3:10	hu	5	nemzetségre	fuggoben			kezi	
-Zsid 3:10	hu	6	és	fuggoben			kezi	
-Zsid 3:10	hu	7	mondám	fuggoben			kezi	
-Zsid 3:10	hu	8	mindig	fuggoben			kezi	
-Zsid 3:10	hu	9	tévelyegnek	fuggoben			kezi	
-Zsid 3:10	hu	10	szivökben	fuggoben			kezi	
-Zsid 3:10	hu	11	ők	fuggoben			kezi	
-Zsid 3:10	hu	12	pedig	fuggoben			kezi	
-Zsid 3:10	hu	13	nem	fuggoben			kezi	
-Zsid 3:10	hu	14	ismerték	fuggoben			kezi	
-Zsid 3:10	hu	15	meg	fuggoben			kezi	
-Zsid 3:10	hu	16	az	fuggoben			kezi	
-Zsid 3:10	hu	17	én	fuggoben			kezi	
-Zsid 3:10	hu	18	útaimat	fuggoben			kezi	
-Zsid 3:10	er	1	διὸ	fuggoben		G1352	kezi	
-Zsid 3:10	er	2	προσώχθισα	fuggoben		G4360	kezi	
-Zsid 3:10	er	3	τῇ	fuggoben		G3588	kezi	
-Zsid 3:10	er	4	γενεᾷ	fuggoben		G1074	kezi	
-Zsid 3:10	er	5	ταύτῃ	fuggoben		G3778	kezi	
-Zsid 3:10	er	6	καὶ	fuggoben		G2532	kezi	
-Zsid 3:10	er	7	εἶπον·	fuggoben		G2036	kezi	
-Zsid 3:10	er	8	ἀεὶ	fuggoben		G0104	kezi	
-Zsid 3:10	er	9	πλανῶνται	fuggoben		G4105	kezi	
-Zsid 3:10	er	10	τῇ	fuggoben		G3588	kezi	
-Zsid 3:10	er	11	καρδίᾳ·	fuggoben		G2588	kezi	
-Zsid 3:10	er	12	αὐτοὶ	fuggoben		G0846	kezi	
-Zsid 3:10	er	13	δὲ	fuggoben		G1161	kezi	
-Zsid 3:10	er	14	οὐκ	fuggoben		G3756	kezi	
-Zsid 3:10	er	15	ἔγνωσαν	fuggoben		G1097	kezi	
-Zsid 3:10	er	16	τὰς	fuggoben		G3588	kezi	
-Zsid 3:10	er	17	ὁδούς	fuggoben		G3598	kezi	
-Zsid 3:10	er	18	μου·	fuggoben		G3165	kezi	
+Zsid 3:9	hu	1	A	parositva	1	G3757	alacsony	S
+Zsid 3:9	hu	2	hol	parositva	1	G3757	alacsony	S
+Zsid 3:9	hu	3	a	betoldas			alacsony	S
+Zsid 3:9	hu	4	ti	parositva	6	G4771	alacsony	S
+Zsid 3:9	hu	5	atyáitok	parositva	5,6	G3962+G4771	alacsony	S
+Zsid 3:9	hu	6	próbára	betoldas			alacsony	S
+Zsid 3:9	hu	7	tevéssel	betoldas			alacsony	S
+Zsid 3:9	hu	8	megkísértének	parositva	2	G3985	alacsony	S
+Zsid 3:9	hu	9	engem	parositva	3,9	G3165	alacsony	S
+Zsid 3:9	hu	10	és	parositva	10	G2532	alacsony	S
+Zsid 3:9	hu	11	látták	parositva	11	G1492	alacsony	S
+Zsid 3:9	hu	12	az	betoldas			alacsony	S
+Zsid 3:9	hu	13	én	parositva	14	G3165	alacsony	S
+Zsid 3:9	hu	14	cselekedeteimet	parositva	13,14	G2041+G3165	alacsony	S
+Zsid 3:9	hu	15	negyven	parositva	15	G5062	alacsony	S
+Zsid 3:9	hu	16	esztendeig	parositva	16	G2094	alacsony	S
+Zsid 3:9	er	1	οὗ	parositva	1,2	G3757	alacsony	S
+Zsid 3:9	er	2	ἐπείρασαν	parositva	8	G3985	alacsony	S
+Zsid 3:9	er	3	με	parositva	9	G3165	alacsony	S
+Zsid 3:9	er	4	οἱ	forditatlan		G3588	alacsony	S
+Zsid 3:9	er	5	πατέρες	parositva	5	G3962	alacsony	S
+Zsid 3:9	er	6	ὑμῶν	parositva	4,5	G4771	alacsony	S
+Zsid 3:9	er	7	ἐν	forditatlan		G1722	alacsony	S
+Zsid 3:9	er	8	δοκιμασίᾳ	forditatlan		G6020	alacsony	S
+Zsid 3:9	er	9	με	parositva	9	G3165	alacsony	S
+Zsid 3:9	er	10	καὶ	parositva	10	G2532	alacsony	S
+Zsid 3:9	er	11	εἶδον	parositva	11	G1492	alacsony	S
+Zsid 3:9	er	12	τὰ	forditatlan		G3588	alacsony	S
+Zsid 3:9	er	13	ἔργα	parositva	14	G2041	alacsony	S
+Zsid 3:9	er	14	μου	parositva	13,14	G3165	alacsony	S
+Zsid 3:9	er	15	τεσσεράκοντα	parositva	15	G5062	alacsony	S
+Zsid 3:9	er	16	ἔτη·	parositva	16	G2094	alacsony	S
+Zsid 3:10	hu	1	Azért	parositva	1	G1352	alacsony	S
+Zsid 3:10	hu	2	megharagudtam	parositva	2	G4360	alacsony	S
+Zsid 3:10	hu	3	arra	parositva	3	G3588	alacsony	S
+Zsid 3:10	hu	4	a	betoldas			alacsony	S
+Zsid 3:10	hu	5	nemzetségre	parositva	4	G1074	alacsony	S
+Zsid 3:10	hu	6	és	parositva	6	G2532	alacsony	S
+Zsid 3:10	hu	7	mondám	parositva	7	G2036	alacsony	S
+Zsid 3:10	hu	8	mindig	parositva	8	G0104	alacsony	S
+Zsid 3:10	hu	9	tévelyegnek	parositva	9	G4105	alacsony	S
+Zsid 3:10	hu	10	szivökben	parositva	10,11	G3588+G2588	alacsony	S
+Zsid 3:10	hu	11	ők	parositva	12	G0846	alacsony	S
+Zsid 3:10	hu	12	pedig	parositva	13	G1161	alacsony	S
+Zsid 3:10	hu	13	nem	parositva	14	G3756	alacsony	S
+Zsid 3:10	hu	14	ismerték	parositva	15	G1097	alacsony	S
+Zsid 3:10	hu	15	meg	parositva	15	G1097	alacsony	S
+Zsid 3:10	hu	16	az	betoldas			alacsony	S
+Zsid 3:10	hu	17	én	parositva	18	G3165	alacsony	S
+Zsid 3:10	hu	18	útaimat	parositva	17,18	G3598+G3165	alacsony	S
+Zsid 3:10	er	1	διὸ	parositva	1	G1352	alacsony	S
+Zsid 3:10	er	2	προσώχθισα	parositva	2	G4360	alacsony	S
+Zsid 3:10	er	3	τῇ	parositva	3	G3588	alacsony	S
+Zsid 3:10	er	4	γενεᾷ	parositva	5	G1074	alacsony	S
+Zsid 3:10	er	5	ταύτῃ	forditatlan		G3778	alacsony	S
+Zsid 3:10	er	6	καὶ	parositva	6	G2532	alacsony	S
+Zsid 3:10	er	7	εἶπον·	parositva	7	G2036	alacsony	S
+Zsid 3:10	er	8	ἀεὶ	parositva	8	G0104	alacsony	S
+Zsid 3:10	er	9	πλανῶνται	parositva	9	G4105	alacsony	S
+Zsid 3:10	er	10	τῇ	parositva	10	G3588	alacsony	S
+Zsid 3:10	er	11	καρδίᾳ·	parositva	10	G2588	alacsony	S
+Zsid 3:10	er	12	αὐτοὶ	parositva	11	G0846	alacsony	S
+Zsid 3:10	er	13	δὲ	parositva	12	G1161	alacsony	S
+Zsid 3:10	er	14	οὐκ	parositva	13	G3756	alacsony	S
+Zsid 3:10	er	15	ἔγνωσαν	parositva	14,15	G1097	alacsony	S
+Zsid 3:10	er	16	τὰς	forditatlan		G3588	alacsony	S
+Zsid 3:10	er	17	ὁδούς	parositva	18	G3598	alacsony	S
+Zsid 3:10	er	18	μου·	parositva	17,18	G3165	alacsony	S
 Zsid 3:11	hu	1	Úgy	parositva	1	G5613	alacsony	S
 Zsid 3:11	hu	2	hogy	parositva	1	G5613	alacsony	S
 Zsid 3:11	hu	3	megesküdtem	parositva	2	G3660	alacsony	S
@@ -4066,72 +4068,80 @@ Zsid 7:19	er	11	ἧς	parositva	13,14	G3739	alacsony	S
 Zsid 7:19	er	12	ἐγγίζομεν	parositva	16	G1448	alacsony	S
 Zsid 7:19	er	13	τῷ	forditatlan		G3588	alacsony	S
 Zsid 7:19	er	14	θεῷ.	parositva	18	G2316	alacsony	S
-Zsid 7:20	hu	1	És	fuggoben			kezi	
-Zsid 7:20	hu	2	a	fuggoben			kezi	
-Zsid 7:20	hu	3	mennyiben	fuggoben			kezi	
-Zsid 7:20	hu	4	nem	fuggoben			kezi	
-Zsid 7:20	hu	5	esküvés	fuggoben			kezi	
-Zsid 7:20	hu	6	nélkül	fuggoben			kezi	
-Zsid 7:20	hu	7	való	fuggoben			kezi	
-Zsid 7:20	hu	8	mert	fuggoben			kezi	
-Zsid 7:20	hu	9	amazok	fuggoben			kezi	
-Zsid 7:20	hu	10	esküvés	fuggoben			kezi	
-Zsid 7:20	hu	11	nélkül	fuggoben			kezi	
-Zsid 7:20	hu	12	lettek	fuggoben			kezi	
-Zsid 7:20	hu	13	papokká	fuggoben			kezi	
-Zsid 7:20	er	1	καὶ	fuggoben		G2532	kezi	
-Zsid 7:20	er	2	καθ᾽	fuggoben		G2596	kezi	
-Zsid 7:20	er	3	ὅσον	fuggoben		G3745	kezi	
-Zsid 7:20	er	4	οὐ	fuggoben		G3756	kezi	
-Zsid 7:20	er	5	χωρὶς	fuggoben		G5565	kezi	
-Zsid 7:20	er	6	ὁρκωμοσίας.	fuggoben		G3728	kezi	
-Zsid 7:21	hu	1	De	fuggoben			kezi	
-Zsid 7:21	hu	2	ez	fuggoben			kezi	
-Zsid 7:21	hu	3	esküvéssel	fuggoben			kezi	
-Zsid 7:21	hu	4	az	fuggoben			kezi	
-Zsid 7:21	hu	5	által	fuggoben			kezi	
-Zsid 7:21	hu	6	a	fuggoben			kezi	
-Zsid 7:21	hu	7	ki	fuggoben			kezi	
-Zsid 7:21	hu	8	azt	fuggoben			kezi	
-Zsid 7:21	hu	9	mondá	fuggoben			kezi	
-Zsid 7:21	hu	10	néki	fuggoben			kezi	
-Zsid 7:21	hu	11	Megesküdött	fuggoben			kezi	
-Zsid 7:21	hu	12	az	fuggoben			kezi	
-Zsid 7:21	hu	13	Úr	fuggoben			kezi	
-Zsid 7:21	hu	14	és	fuggoben			kezi	
-Zsid 7:21	hu	15	nem	fuggoben			kezi	
-Zsid 7:21	hu	16	bánja	fuggoben			kezi	
-Zsid 7:21	hu	17	meg	fuggoben			kezi	
-Zsid 7:21	hu	18	te	fuggoben			kezi	
-Zsid 7:21	hu	19	pap	fuggoben			kezi	
-Zsid 7:21	hu	20	vagy	fuggoben			kezi	
-Zsid 7:21	hu	21	örökké	fuggoben			kezi	
-Zsid 7:21	hu	22	Melkisédek	fuggoben			kezi	
-Zsid 7:21	hu	23	rendje	fuggoben			kezi	
-Zsid 7:21	hu	24	szerint	fuggoben			kezi	
-Zsid 7:21	er	1	ὁ	fuggoben		G3588	kezi	
-Zsid 7:21	er	2	δὲ	fuggoben		G1161	kezi	
-Zsid 7:21	er	3	μετὰ	fuggoben		G3326	kezi	
-Zsid 7:21	er	4	ὁρκωμοσίας	fuggoben		G3728	kezi	
-Zsid 7:21	er	5	διὰ	fuggoben		G1223	kezi	
-Zsid 7:21	er	6	τοῦ	fuggoben		G3588	kezi	
-Zsid 7:21	er	7	λέγοντος	fuggoben		G3004	kezi	
-Zsid 7:21	er	8	πρὸς	fuggoben		G4314	kezi	
-Zsid 7:21	er	9	αὐτόν·	fuggoben		G0846	kezi	
-Zsid 7:21	er	10	ὤμοσεν	fuggoben		G3660	kezi	
-Zsid 7:21	er	11	κύριος	fuggoben		G2962	kezi	
-Zsid 7:21	er	12	καὶ	fuggoben		G2532	kezi	
-Zsid 7:21	er	13	οὐ	fuggoben		G3756	kezi	
-Zsid 7:21	er	14	μεταμεληθήσεται·	fuggoben		G3338	kezi	
-Zsid 7:21	er	15	σὺ	fuggoben		G4771	kezi	
-Zsid 7:21	er	16	ἱερεὺς	fuggoben		G2409	kezi	
-Zsid 7:21	er	17	εἰς	fuggoben		G1519	kezi	
-Zsid 7:21	er	18	τὸν	fuggoben		G3588	kezi	
-Zsid 7:21	er	19	αἰῶνα	fuggoben		G0165	kezi	
-Zsid 7:21	er	20	κατὰ	fuggoben		G2596	kezi	
-Zsid 7:21	er	21	τὴν	fuggoben		G3588	kezi	
-Zsid 7:21	er	22	τάξιν	fuggoben		G5010	kezi	
-Zsid 7:21	er	23	Μελχισεδέκ·	fuggoben		G3198	kezi	
+Zsid 7:20	hu	1	És	parositva	1	G2532	alacsony	S
+Zsid 7:20	hu	2	a	betoldas			alacsony	S
+Zsid 7:20	hu	3	mennyiben	parositva	2,3	G2596+G3745	alacsony	S
+Zsid 7:20	hu	4	nem	parositva	4	G3756	alacsony	S
+Zsid 7:20	hu	5	esküvés	parositva	6	G3728	alacsony	S
+Zsid 7:20	hu	6	nélkül	parositva	5	G5565	alacsony	S
+Zsid 7:20	hu	7	való	betoldas			alacsony	S
+Zsid 7:20	hu	8	mert	parositva	9	G1063	alacsony	S
+Zsid 7:20	hu	9	amazok	parositva	7,8	G3588+G3303	alacsony	S
+Zsid 7:20	hu	10	esküvés	parositva	11	G3728	alacsony	S
+Zsid 7:20	hu	11	nélkül	parositva	10	G5565	alacsony	S
+Zsid 7:20	hu	12	lettek	parositva	12,14	G1510+G1096	alacsony	S
+Zsid 7:20	hu	13	papokká	parositva	13	G2409	alacsony	S
+Zsid 7:20	er	1	καὶ	parositva	1	G2532	alacsony	S
+Zsid 7:20	er	2	καθ᾽	parositva	3	G2596	alacsony	S
+Zsid 7:20	er	3	ὅσον	parositva	3	G3745	alacsony	S
+Zsid 7:20	er	4	οὐ	parositva	4	G3756	alacsony	S
+Zsid 7:20	er	5	χωρὶς	parositva	6	G5565	alacsony	S
+Zsid 7:20	er	6	ὁρκωμοσίας.	parositva	5	G3728	alacsony	S
+Zsid 7:20	er	7	οἱ	parositva	9	G3588	alacsony	S
+Zsid 7:20	er	8	μὲν	parositva	9	G3303	alacsony	S
+Zsid 7:20	er	9	γὰρ	parositva	8	G1063	alacsony	S
+Zsid 7:20	er	10	χωρὶς	parositva	11	G5565	alacsony	S
+Zsid 7:20	er	11	ὁρκωμοσίας	parositva	10	G3728	alacsony	S
+Zsid 7:20	er	12	εἰσὶν	parositva	12	G1510	alacsony	S
+Zsid 7:20	er	13	ἱερεῖς	parositva	13	G2409	alacsony	S
+Zsid 7:20	er	14	γεγονότες,	parositva	12	G1096	alacsony	S
+Zsid 7:21	hu	1	De	parositva	2	G1161	alacsony	S
+Zsid 7:21	hu	2	ez	parositva	1	G3588	alacsony	S
+Zsid 7:21	hu	3	esküvéssel	parositva	3,4	G3326+G3728	alacsony	S
+Zsid 7:21	hu	4	az	parositva	5	G1223	alacsony	S
+Zsid 7:21	hu	5	által	parositva	5	G1223	alacsony	S
+Zsid 7:21	hu	6	a	parositva	6	G3588	alacsony	S
+Zsid 7:21	hu	7	ki	parositva	6	G3588	alacsony	S
+Zsid 7:21	hu	8	azt	betoldas			alacsony	S
+Zsid 7:21	hu	9	mondá	parositva	7	G3004	alacsony	S
+Zsid 7:21	hu	10	néki	parositva	8,9	G4314+G0846	alacsony	S
+Zsid 7:21	hu	11	Megesküdött	parositva	10	G3660	alacsony	S
+Zsid 7:21	hu	12	az	betoldas			alacsony	S
+Zsid 7:21	hu	13	Úr	parositva	11	G2962	alacsony	S
+Zsid 7:21	hu	14	és	parositva	12	G2532	alacsony	S
+Zsid 7:21	hu	15	nem	parositva	13	G3756	alacsony	S
+Zsid 7:21	hu	16	bánja	parositva	14	G3338	alacsony	S
+Zsid 7:21	hu	17	meg	parositva	14	G3338	alacsony	S
+Zsid 7:21	hu	18	te	parositva	15	G4771	alacsony	S
+Zsid 7:21	hu	19	pap	parositva	16	G2409	alacsony	S
+Zsid 7:21	hu	20	vagy	betoldas			alacsony	S
+Zsid 7:21	hu	21	örökké	parositva	17,18,19	G1519+G3588+G0165	alacsony	S
+Zsid 7:21	hu	22	Melkisédek	parositva	23	G3198	alacsony	S
+Zsid 7:21	hu	23	rendje	parositva	22	G5010	alacsony	S
+Zsid 7:21	hu	24	szerint	parositva	20	G2596	alacsony	S
+Zsid 7:21	er	1	ὁ	parositva	2	G3588	alacsony	S
+Zsid 7:21	er	2	δὲ	parositva	1	G1161	alacsony	S
+Zsid 7:21	er	3	μετὰ	parositva	3	G3326	alacsony	S
+Zsid 7:21	er	4	ὁρκωμοσίας	parositva	3	G3728	alacsony	S
+Zsid 7:21	er	5	διὰ	parositva	4,5	G1223	alacsony	S
+Zsid 7:21	er	6	τοῦ	parositva	6,7	G3588	alacsony	S
+Zsid 7:21	er	7	λέγοντος	parositva	9	G3004	alacsony	S
+Zsid 7:21	er	8	πρὸς	parositva	10	G4314	alacsony	S
+Zsid 7:21	er	9	αὐτόν·	parositva	10	G0846	alacsony	S
+Zsid 7:21	er	10	ὤμοσεν	parositva	11	G3660	alacsony	S
+Zsid 7:21	er	11	κύριος	parositva	13	G2962	alacsony	S
+Zsid 7:21	er	12	καὶ	parositva	14	G2532	alacsony	S
+Zsid 7:21	er	13	οὐ	parositva	15	G3756	alacsony	S
+Zsid 7:21	er	14	μεταμεληθήσεται·	parositva	16,17	G3338	alacsony	S
+Zsid 7:21	er	15	σὺ	parositva	18	G4771	alacsony	S
+Zsid 7:21	er	16	ἱερεὺς	parositva	19	G2409	alacsony	S
+Zsid 7:21	er	17	εἰς	parositva	21	G1519	alacsony	S
+Zsid 7:21	er	18	τὸν	parositva	21	G3588	alacsony	S
+Zsid 7:21	er	19	αἰῶνα	parositva	21	G0165	alacsony	S
+Zsid 7:21	er	20	κατὰ	parositva	24	G2596	alacsony	S
+Zsid 7:21	er	21	τὴν	forditatlan		G3588	alacsony	S
+Zsid 7:21	er	22	τάξιν	parositva	23	G5010	alacsony	S
+Zsid 7:21	er	23	Μελχισεδέκ·	parositva	22	G3198	alacsony	S
 Zsid 7:22	hu	1	Annyiban	parositva	1,2	G2596+G5118	alacsony	S
 Zsid 7:22	hu	2	jobb	parositva	4	G2908	alacsony	S
 Zsid 7:22	hu	3	szövetségnek	parositva	5	G1242	alacsony	S
@@ -9188,70 +9198,71 @@ Zsid 12:21	er	9	ἔκφοβός	parositva	11	G1630	alacsony	S
 Zsid 12:21	er	10	εἰμι	parositva	11	G1510	alacsony	S
 Zsid 12:21	er	11	καὶ	parositva	12	G2532	alacsony	S
 Zsid 12:21	er	12	ἔντρομος·	parositva	13	G1790	alacsony	S
-Zsid 12:22	hu	1	Hanem	fuggoben			kezi	
-Zsid 12:22	hu	2	járultatok	fuggoben			kezi	
-Zsid 12:22	hu	3	Sion	fuggoben			kezi	
-Zsid 12:22	hu	4	hegyéhez	fuggoben			kezi	
-Zsid 12:22	hu	5	és	fuggoben			kezi	
-Zsid 12:22	hu	6	az	fuggoben			kezi	
-Zsid 12:22	hu	7	élő	fuggoben			kezi	
-Zsid 12:22	hu	8	Istennek	fuggoben			kezi	
-Zsid 12:22	hu	9	városához	fuggoben			kezi	
-Zsid 12:22	hu	10	a	fuggoben			kezi	
-Zsid 12:22	hu	11	mennyei	fuggoben			kezi	
-Zsid 12:22	hu	12	Jeruzsálemhez	fuggoben			kezi	
-Zsid 12:22	hu	13	és	fuggoben			kezi	
-Zsid 12:22	hu	14	az	fuggoben			kezi	
-Zsid 12:22	hu	15	angyalok	fuggoben			kezi	
-Zsid 12:22	hu	16	ezreihez	fuggoben			kezi	
-Zsid 12:22	er	1	ἀλλὰ	fuggoben		G0235	kezi	
-Zsid 12:22	er	2	προσεληλύθατε	fuggoben		G4334	kezi	
-Zsid 12:22	er	3	Σιὼν	fuggoben		G4622	kezi	
-Zsid 12:22	er	4	ὄρει	fuggoben		G3735	kezi	
-Zsid 12:22	er	5	καὶ	fuggoben		G2532	kezi	
-Zsid 12:22	er	6	πόλει	fuggoben		G4172	kezi	
-Zsid 12:22	er	7	θεοῦ	fuggoben		G2316	kezi	
-Zsid 12:22	er	8	ζῶντος,	fuggoben		G2198	kezi	
-Zsid 12:22	er	9	Ἰερουσαλὴμ	fuggoben		G2419	kezi	
-Zsid 12:22	er	10	ἐπουρανίῳ	fuggoben		G2032	kezi	
-Zsid 12:22	er	11	καὶ	fuggoben		G2532	kezi	
-Zsid 12:22	er	12	μυριάσιν	fuggoben		G3461	kezi	
-Zsid 12:22	er	13	ἀγγέλων	fuggoben		G0032	kezi	
-Zsid 12:23	hu	1	Az	fuggoben			kezi	
-Zsid 12:23	hu	2	elsőszülöttek	fuggoben			kezi	
-Zsid 12:23	hu	3	seregéhez	fuggoben			kezi	
-Zsid 12:23	hu	4	és	fuggoben			kezi	
-Zsid 12:23	hu	5	egyházához	fuggoben			kezi	
-Zsid 12:23	hu	6	a	fuggoben			kezi	
-Zsid 12:23	hu	7	kik	fuggoben			kezi	
-Zsid 12:23	hu	8	be	fuggoben			kezi	
-Zsid 12:23	hu	9	vannak	fuggoben			kezi	
-Zsid 12:23	hu	10	írva	fuggoben			kezi	
-Zsid 12:23	hu	11	a	fuggoben			kezi	
-Zsid 12:23	hu	12	mennyekben	fuggoben			kezi	
-Zsid 12:23	hu	13	és	fuggoben			kezi	
-Zsid 12:23	hu	14	mindenek	fuggoben			kezi	
-Zsid 12:23	hu	15	bírájához	fuggoben			kezi	
-Zsid 12:23	hu	16	Istenhez	fuggoben			kezi	
-Zsid 12:23	hu	17	és	fuggoben			kezi	
-Zsid 12:23	hu	18	a	fuggoben			kezi	
-Zsid 12:23	hu	19	tökéletes	fuggoben			kezi	
-Zsid 12:23	hu	20	igazak	fuggoben			kezi	
-Zsid 12:23	hu	21	lelkeihez	fuggoben			kezi	
-Zsid 12:23	er	1	καὶ	fuggoben		G2532	kezi	
-Zsid 12:23	er	2	ἐκκλησίᾳ	fuggoben		G1577	kezi	
-Zsid 12:23	er	3	πρωτοτόκων	fuggoben		G4416	kezi	
-Zsid 12:23	er	4	ἀπογεγραμμένων	fuggoben		G0583	kezi	
-Zsid 12:23	er	5	ἐν	fuggoben		G1722	kezi	
-Zsid 12:23	er	6	οὐρανοῖς	fuggoben		G3772	kezi	
-Zsid 12:23	er	7	καὶ	fuggoben		G2532	kezi	
-Zsid 12:23	er	8	κριτῇ	fuggoben		G2923	kezi	
-Zsid 12:23	er	9	θεῷ	fuggoben		G2316	kezi	
-Zsid 12:23	er	10	πάντων	fuggoben		G3956	kezi	
-Zsid 12:23	er	11	καὶ	fuggoben		G2532	kezi	
-Zsid 12:23	er	12	πνεύμασιν	fuggoben		G4151	kezi	
-Zsid 12:23	er	13	δικαίων	fuggoben		G1342	kezi	
-Zsid 12:23	er	14	τετελειωμένων	fuggoben		G5048	kezi	
+Zsid 12:22	hu	1	Hanem	parositva	1	G0235	alacsony	S
+Zsid 12:22	hu	2	járultatok	parositva	2	G4334	alacsony	S
+Zsid 12:22	hu	3	Sion	parositva	3	G4622	alacsony	S
+Zsid 12:22	hu	4	hegyéhez	parositva	4	G3735	alacsony	S
+Zsid 12:22	hu	5	és	parositva	5	G2532	alacsony	S
+Zsid 12:22	hu	6	az	betoldas			alacsony	S
+Zsid 12:22	hu	7	élő	parositva	8	G2198	alacsony	S
+Zsid 12:22	hu	8	Istennek	parositva	7	G2316	alacsony	S
+Zsid 12:22	hu	9	városához	parositva	6	G4172	alacsony	S
+Zsid 12:22	hu	10	a	betoldas			alacsony	S
+Zsid 12:22	hu	11	mennyei	parositva	10	G2032	alacsony	S
+Zsid 12:22	hu	12	Jeruzsálemhez	parositva	9	G2419	alacsony	S
+Zsid 12:22	hu	13	és	parositva	11	G2532	alacsony	S
+Zsid 12:22	hu	14	az	betoldas			alacsony	S
+Zsid 12:22	hu	15	angyalok	parositva	13	G0032	alacsony	S
+Zsid 12:22	hu	16	ezreihez	parositva	12	G3461	alacsony	S
+Zsid 12:22	er	1	ἀλλὰ	parositva	1	G0235	alacsony	S
+Zsid 12:22	er	2	προσεληλύθατε	parositva	2	G4334	alacsony	S
+Zsid 12:22	er	3	Σιὼν	parositva	3	G4622	alacsony	S
+Zsid 12:22	er	4	ὄρει	parositva	4	G3735	alacsony	S
+Zsid 12:22	er	5	καὶ	parositva	5	G2532	alacsony	S
+Zsid 12:22	er	6	πόλει	parositva	9	G4172	alacsony	S
+Zsid 12:22	er	7	θεοῦ	parositva	8	G2316	alacsony	S
+Zsid 12:22	er	8	ζῶντος,	parositva	7	G2198	alacsony	S
+Zsid 12:22	er	9	Ἰερουσαλὴμ	parositva	12	G2419	alacsony	S
+Zsid 12:22	er	10	ἐπουρανίῳ	parositva	11	G2032	alacsony	S
+Zsid 12:22	er	11	καὶ	parositva	13	G2532	alacsony	S
+Zsid 12:22	er	12	μυριάσιν	parositva	16	G3461	alacsony	S
+Zsid 12:22	er	13	ἀγγέλων	parositva	15	G0032	alacsony	S
+Zsid 12:23	hu	1	Az	betoldas			alacsony	S
+Zsid 12:23	hu	2	elsőszülöttek	parositva	4	G4416	alacsony	S
+Zsid 12:23	hu	3	seregéhez	parositva	1	G3831	alacsony	S
+Zsid 12:23	hu	4	és	parositva	2	G2532	alacsony	S
+Zsid 12:23	hu	5	egyházához	parositva	3	G1577	alacsony	S
+Zsid 12:23	hu	6	a	betoldas			alacsony	S
+Zsid 12:23	hu	7	kik	betoldas			alacsony	S
+Zsid 12:23	hu	8	be	parositva	5	G0583	alacsony	S
+Zsid 12:23	hu	9	vannak	parositva	5	G0583	alacsony	S
+Zsid 12:23	hu	10	írva	parositva	5	G0583	alacsony	S
+Zsid 12:23	hu	11	a	betoldas			alacsony	S
+Zsid 12:23	hu	12	mennyekben	parositva	6,7	G1722+G3772	alacsony	S
+Zsid 12:23	hu	13	és	parositva	8	G2532	alacsony	S
+Zsid 12:23	hu	14	mindenek	parositva	11	G3956	alacsony	S
+Zsid 12:23	hu	15	bírájához	parositva	9	G2923	alacsony	S
+Zsid 12:23	hu	16	Istenhez	parositva	10	G2316	alacsony	S
+Zsid 12:23	hu	17	és	parositva	12	G2532	alacsony	S
+Zsid 12:23	hu	18	a	betoldas			alacsony	S
+Zsid 12:23	hu	19	tökéletes	parositva	15	G5048	alacsony	S
+Zsid 12:23	hu	20	igazak	parositva	14	G1342	alacsony	S
+Zsid 12:23	hu	21	lelkeihez	parositva	13	G4151	alacsony	S
+Zsid 12:23	er	1	πανηγύρει	parositva	3	G3831	alacsony	S
+Zsid 12:23	er	2	καὶ	parositva	4	G2532	alacsony	S
+Zsid 12:23	er	3	ἐκκλησίᾳ	parositva	5	G1577	alacsony	S
+Zsid 12:23	er	4	πρωτοτόκων	parositva	2	G4416	alacsony	S
+Zsid 12:23	er	5	ἀπογεγραμμένων	parositva	8,9,10	G0583	alacsony	S
+Zsid 12:23	er	6	ἐν	parositva	12	G1722	alacsony	S
+Zsid 12:23	er	7	οὐρανοῖς	parositva	12	G3772	alacsony	S
+Zsid 12:23	er	8	καὶ	parositva	13	G2532	alacsony	S
+Zsid 12:23	er	9	κριτῇ	parositva	15	G2923	alacsony	S
+Zsid 12:23	er	10	θεῷ	parositva	16	G2316	alacsony	S
+Zsid 12:23	er	11	πάντων	parositva	14	G3956	alacsony	S
+Zsid 12:23	er	12	καὶ	parositva	17	G2532	alacsony	S
+Zsid 12:23	er	13	πνεύμασιν	parositva	21	G4151	alacsony	S
+Zsid 12:23	er	14	δικαίων	parositva	20	G1342	alacsony	S
+Zsid 12:23	er	15	τετελειωμένων	parositva	19	G5048	alacsony	S
 Zsid 12:24	hu	1	És	parositva	1	G2532	alacsony	S
 Zsid 12:24	hu	2	az	betoldas			alacsony	S
 Zsid 12:24	hu	3	újszövetség	parositva	2,3	G1242+G3501	alacsony	S
