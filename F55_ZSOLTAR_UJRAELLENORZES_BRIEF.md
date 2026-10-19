@@ -6,10 +6,12 @@ tipus: feladat
 fazis: 1
 modell: opus
 munka: ertelmezo
-allapot: fut
+allapot: lezarva
+pr: 424
+lezarva_osszegzes: "M0: 32 szűrt hely, 15 csoport; M1: módosul 4, megáll 2, visszavonandó 0; a HAMART-001 Bun-naplója javítva (Zsolt 53:1 → 53:2 / LXX 52:2), a tanulmány jelölve; M2: +2 TEREMT-002 lxx-hid audit-sor; DT-F55a–f; nyitott: N-F55a–d; független ellenőr 2 kör (6 + 3 eltérés, javítva vagy döntve); zárás: naplok/ZSOLTAR_UJRAELLENORZES_zaras.md"
 ag: claude/f55-zsoltar
 ad: minden kézi forrásbeli állítás, amely a régi LXX_kivonat eltolt vagy hiányzó zsoltárversére épült, felmérve, és soronként ítélettel (megáll / módosul / visszavonandó) a helyes vers LXX_OS-szövege alapján; a módosuló állítások a forrásrétegben javítva, az új lxx-hid futások az auditok.tsv-ben naplózva
-kovetkezo: "Te: ⛔ a 2. ellenőrzési kör után (naplok/ELLENOR_ZSOLTAR_UJRAELLENORZES_2.md, ELTÉRÉS 3; a 2. és 3. javítva, F55.14): az 1. tartalmi: a DT-F55d tényindoka téves (a HAMART-001 retroaktív ID, az első auditsor nem ad SÉRTÉST; ellenoriz.py RETROAKTIV_IDK), döntés kell (M0 8. pont). M0–M2 kész, DT-F55a–f; utána M3 zárás."
+kovetkezo: "Te: a PR #424 merge-e a te döntésed; nyitott: N-F55a–d."
 olvas: ["konkordancia/LXX_OS/*.tsv", konkordancia/Karoli_1908.tsv, naplok/FORRASKIVEZETES_M5_M7.md, naplok/FORRASKIVEZETES_M5_eltereslista.tsv, adat/jeloltek.tsv, tematikus_lezart/, genezis/, ujszovetseg/, melyelemzesek/, motivumok/, motivumlog/, naplok/T1_TEREMT002_auditok_munkalap.tsv, naplok/LXX_OS_LEFEDETTSEG_M0.md]
 ir: [adat/auditok.tsv, tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md, tematikus_lezart/naplok/Bun_kovetkezmenyeinek_gyuruzese_kereszthivatkozas_naplo.md, "naplok/ZSOLTAR_UJRAELLENORZES_*"]
 fugg: [42, 54]
@@ -109,3 +111,4 @@ Indoklás a helyes vers `LXX_OS`-sorával és proveniencia-sorral. **Hiányt nem
 | v1 | 2026-10-19 | A befagyasztás (DT74 (3)) feloldva: a #11 1. lépcsője a main-en (PR #417). | felhasználó, 2026-10-19 |
 | v1 | 2026-10-19 | M0 ⛔: (a) az `ir`-ből kikerül a két archivált Segitsegul-út (DT-F55a); (b) csere `【NAPLO: … javítva, F55】` jelöléssel, a régi versszám látható marad (DT-F55b); (c) az M2 audit-sorai a PR #420 merge-e után (DT-F55c). | orkesztrátor, a felhasználó felhatalmazásával |
 | v1 | 2026-10-19 | Az ellenőr 1. körének tartalmi eltérései: a HAMART-001 audit-sorai most nem kerülnek be (DT-F55d, N-F55b); az F55-jelölés a rés előtt marad, a rés forrásneve a 2. lépcsős migrációban (DT-F55e, N-F55c); a Z02/Z03 történeti forrásnév + „53:1 sort nézték” jelölés (DT-F55f). | orkesztrátor, a felhasználó felhatalmazásával |
+| v1 | 2026-10-19 | A 2. ellenőrzési kör 1. eltérése: a DT-F55d döntése marad, az indoka a SEMA 2.9 commit-szabályára (DT103) pontosítva; a HAMART-001 retroaktív ID, csak KÉZI jelentést kapna. Lezárva (M3). | orkesztrátor, a felhasználó felhatalmazásával |
