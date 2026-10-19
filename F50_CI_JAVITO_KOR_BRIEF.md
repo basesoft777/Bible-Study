@@ -14,7 +14,7 @@ ir: [.claude/commands/befogad.md, .claude/commands/kovetkezo.md, naplok/CI_JAVIT
 fugg: []
 helyi_gep: nem
 pr: 423
-lezarva_osszegzes: a /befogad és a /kovetkezo záró lépése push után egyszer olvassa a CI-t, a saját PR formai hibáját legfeljebb két körben javítja, mást jelent (DT-F50a); a maradék szöveges ELLENOR_F50_3 eltérés elfogadva; PR #423 (draft), zárójelentés naplok/CI_JAVITO_KOR_zaras.md
+lezarva_osszegzes: a /befogad és a /kovetkezo záró lépése push után egyszer olvassa a CI-t, a saját PR formai hibáját legfeljebb két körben javítja, mást jelent (DT252); a maradék szöveges ELLENOR_F50_3 eltérés elfogadva; PR #423 (draft), zárójelentés naplok/CI_JAVITO_KOR_zaras.md
 ---
 
 # Fnn_CI_JAVITO_KOR_BRIEF.md — Korlátozott javító kör a CI hibáira

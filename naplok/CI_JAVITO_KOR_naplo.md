@@ -14,7 +14,7 @@
 
 ## 1. Szöveg (F50.2)
 
-A 3.1–3.7 szabályok szövege a DT-F50a jóváhagyása után (🟢, felhasználó, 2026-10-19, (a)) bekerült az F50.2 commitban a `.claude/commands/befogad.md` 5. lépésébe (a 3.7 is) és a `.claude/commands/kovetkezo.md` 10. lépésébe (CI-javító kör). A javítható és a nem javítható lista a briefben és a `DONTESEK.md` DT-F50a tételében áll; a próba (2. szakasz) besorolása ezekre épül. Ciklikus lekérdezés és időzítés nincs; az Auto-fix a `ccd_pr` dolga marad.
+A 3.1–3.7 szabályok szövege a DT252 jóváhagyása után (🟢, felhasználó, 2026-10-19, (a)) bekerült az F50.2 commitban a `.claude/commands/befogad.md` 5. lépésébe (a 3.7 is) és a `.claude/commands/kovetkezo.md` 10. lépésébe (CI-javító kör). A javítható és a nem javítható lista a briefben és a `DONTESEK.md` DT252 tételében áll; a próba (2. szakasz) besorolása ezekre épül. Ciklikus lekérdezés és időzítés nincs; az Auto-fix a `ccd_pr` dolga marad.
 
 ## 2. Próba (csak olvas) — az #158-as eset visszajátszása
 
@@ -42,7 +42,7 @@ A dokumentált eset eredeti hibája nem a `KOR` volt (a befogadó session így t
 
 ## 3. Állapot a jóváhagyás után
 
-A szabályszöveg bekerült a parancsfájlokba (l. 1. szakasz); a `befogad.md` és a `kovetkezo.md` a megnevezett lépéseken kívül változatlan. Igazolás: `git diff origin/main..HEAD -- .claude/commands` (`scope=git diff | forras=helyi repó | ts=2026-10-19`): `befogad.md` egy hunk (`@@ -26,5 +26,6 @@`, az 5. lépés), `kovetkezo.md` egy hunk (`@@ -88,7 +88,8 @@`, a 10. lépés: a CI-javító kör sora és az F50.4 sorrend-javítása); más lépés nem érintett. Tétel: `DONTESEK.md` DT-F50a.
+A szabályszöveg bekerült a parancsfájlokba (l. 1. szakasz); a `befogad.md` és a `kovetkezo.md` a megnevezett lépéseken kívül változatlan. Igazolás: `git diff origin/main..HEAD -- .claude/commands` (`scope=git diff | forras=helyi repó | ts=2026-10-19`): `befogad.md` egy hunk (`@@ -26,5 +26,6 @@`, az 5. lépés), `kovetkezo.md` egy hunk (`@@ -88,7 +88,8 @@`, a 10. lépés: a CI-javító kör sora és az F50.4 sorrend-javítása); más lépés nem érintett. Tétel: `DONTESEK.md` DT252.
 
 ## 4. Ellenőrzés
 
