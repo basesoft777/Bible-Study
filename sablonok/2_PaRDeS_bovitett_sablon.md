@@ -1,6 +1,6 @@
 # 2. Tanulmány sablon (PaRDeS) — teljes, részletes verzió
 
-*v21 — 2026.10.19 (F11 T1, DT84 (7), DT182: a 7. pont v18-as „Tartalmi visszaírás lezárt tematikus tanulmányba” szabálya — 2026.10.17 óta felfüggesztve — teljesen átírva: a tanulmányban felmerült lelet adatrésze az `adat/jeloltek.tsv`-n át, döntéssel kerül az adatrétegbe; az értelmezés saját szöveggel a `motivumok/[ID].md`-be; a túloldalon csak (generált) hivatkozás áll; kézi másolás egyik irányban sincs. A „Korlát” bekezdés a tematikus sablon v18-ához igazítva.)*
+*v21 — 2026.10.19 (F11 T1, DT84 (7), DT182: a 7. pont v18-as „Tartalmi visszaírás lezárt tematikus tanulmányba” szabálya — 2026.10.17 óta felfüggesztve — teljesen átírva: a tanulmányban felmerült lelet adatrésze az `adat/jeloltek.tsv`-n át, döntéssel kerül az adatrétegbe; az értelmezés saját szöveggel a `motivumok/[ID].md`-be; a túloldalon csak (generált) hivatkozás áll; kézi másolás egyik irányban sincs. A „Korlát” bekezdés a tematikus sablon v18-ához igazítva. A 7. pont 4. alpontja pontosítva [ELLENOR_F11_NMT 3.]: a `Lezart_tematikus_tanulmanyok_index.md`-nek csak a generált blokkja nem szerkesztendő kézzel, a „Megjegyzések” szakasza kézi, ID-hez kötve [D12].)*
 
 *v20 — 2026.10.07 (Átnevezés: a „Bővített PaRDeS sablon” neve mostantól „Tanulmány sablon”, a bővített tanulmányé „tanulmány” [DT-F37-1, #37 T1]; alap tanulmány nem készül, az alap sablon elavult. A fájlnév a hivatkozások miatt változatlan. Tartalmi változás nincs.)*
 
@@ -273,8 +273,10 @@ mezőjén (`publikálható` / `véglegesített`) és a
    amíg a mező linkgenerálásra nem alkalmas (N-F23a), mutató nem készül,
    és kézzel sem pótolandó.
 4. A lezárt tematikus tanulmány szövege és fejléc-changelogja nem íródik
-   át; a `Lezart_tematikus_tanulmanyok_index.md` generált (`general.py
-   --cel index`), kézzel nem szerkesztendő.
+   át. A `Lezart_tematikus_tanulmanyok_index.md` generált blokkja
+   (`general.py --cel index`) kézzel nem szerkesztendő; a fájl
+   „Megjegyzések” szakasza a generált blokkon kívül áll, kézi, és
+   ID-hez kötve (D12) frissíthető.
 
 **Korlát:** ez nem indít újra egy teljes tematikus re-auditot — csak azt
 a konkrét adatpontot viszi az adatrétegbe, ami a tanulmányban ténylegesen
