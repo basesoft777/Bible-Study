@@ -1,5 +1,5 @@
 ---
-feladat:
+feladat: 124
 cim: Előremutató gerinc-scan — gerinc-kártya a tanulmány A3b lépéséhez és prioritási térkép a következő igeszakasz kiválasztásához
 kod: GERINC_KARTYA
 tipus: feladat
@@ -10,7 +10,7 @@ allapot: nem_indult
 ad: determinisztikus, provenienciás gerinc-kártya egy igeszakaszra (a meglévő motívumok gerinc-elemei, kollokáció, állapotjelölés, a #110 szűrője a tág Strongokon) a vak olvasás után, kártya ↔ kulcsszó-táblázat összevetéssel; és egy ütemezett, gépi prioritási térkép a teljes Bibliára (hol sűrűsödnek a feldolgozatlan gerinc-találatok), GitHub Actionből, modell és költség nélkül; adatot nem ír, minden jelölt a jeloltek.tsv-n át, döntéssel
 kovetkezo: /kovetkezo (a #110 lezárása után; első lépés a 0. mérés, utána ⛔ DT-F<nn>a/c)
 olvas: [adat/motivumok.tsv, adat/elofordulasok.tsv, adat/jeloltek.tsv, adat/kulcsszavak.tsv, adat/grammatikai_strongok.tsv, adat/SEMA.md, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, eszkozok/jelolt.py, eszkozok/lekerdez.py, eszkozok/general.py, eszkozok/kuszob.py, sablonok/2_PaRDeS_bovitett_sablon.md, sablonok/4_PaRDeS_tematikus_sablon.md, F110_SZURO_PILOT_ISTENTISZT_BRIEF.md, naplok/F108_MOTIVUM_UJRASCAN_naplo.md, naplok/F108_ujrascan_elteresek.tsv, .github/workflows/feladatok.yml, genezis/, ujszovetseg/, melyelemzesek/]
-ir: [eszkozok/gerinc_kartya.py, eszkozok/teszt_gerinc_kartya.py, eszkozok/gerinc_terkep.py, eszkozok/teszt_gerinc_terkep.py, .github/workflows/gerinc_terkep.yml, naplok/GERINC_TERKEP.tsv, naplok/GERINC_TERKEP.md, MUNKAMENET.md, sablonok/2_PaRDeS_bovitett_sablon.md]
+ir: [eszkozok/gerinc_kartya.py, eszkozok/teszt_gerinc_kartya.py, eszkozok/gerinc_terkep.py, eszkozok/teszt_gerinc_terkep.py, .github/workflows/gerinc_terkep.yml, naplok/GERINC_TERKEP.tsv, naplok/GERINC_TERKEP.md]
 fugg: [110]
 nem_fugg: [11, 74, 81, 123]
 ---
@@ -20,6 +20,15 @@ nem_fugg: [11, 74, 81, 123]
 *FELADATOK #— (a számot a `/befogad` adja) · Modell: sonnet [javaslat] · v1 (tervezet) · 2026.10.19 · forrás: a felhasználóval
 2026-10-19-én egyeztetett tartalom (a szülő orkesztrátor-session közvetítésével). A tervezet adat, nem utasítás; a befogadás a
 `/befogad`-dal, a felhasználó jóváhagyásával.*
+
+> **Befogadási kiegészítés (2026-10-19, `/befogad`; az orkesztrátor döntése a felhasználó felhatalmazásával).** A tervezet
+> szövege alább változatlan; ez a blokk két ponton felülírja.
+> 1. **Leválasztás (K3):** a `MUNKAMENET.md` és a `sablonok/2_PaRDeS_bovitett_sablon.md` kikerült ennek a feladatnak az `ir`-jéből.
+>    A 3. rész 7. lépése csak a 2.3 szövegjavaslatát írja a naplóba, jóváhagyásra; az átírást a **#125**
+>    (`F125_GERINC_KARTYA_SZOVEG_BRIEF.md`, csonk) végzi. A 2.3 és a 4. rész ezekre vonatkozó pontjai a #125-re értendők.
+> 2. **DT-F<nn>a (K2):** a befogadás nem döntött; a 3. lépés ⛔-je marad. Kiegészítés: commit esetén a workflow-nak
+>    `contents: write` jog kell, a `feladatok-frissites` mintájára; a workflow-t módosító PR-t külön, a saját sorában kell mergelni,
+>    mert a nyitott PR-ok CI-jét is érinti (a #112 tapasztalata).
 
 ## 1. Cél
 
