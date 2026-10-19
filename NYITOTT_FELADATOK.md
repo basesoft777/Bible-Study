@@ -746,7 +746,7 @@ A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá
 
 <!-- GENERÁLT-KEZDET: general.py --cel nyitott | forrás: adat/jeloltek.tsv, adat/motivumok.tsv, adat/elofordulasok.tsv | ts=2026-09-15 -->
 
-*Ez a blokk a `jeloltek.tsv` 50 nyitott (`dontes=nyitva`) sorát fedi 7 motívum-ID-ről, és a `motivumok.tsv` 9 státusz-sorát. A 259 beépítve és 318 elutasítva döntésű jelölt nem tartozik ide. A fájl minden más szakasza kézi, a marker-blokkon kívül marad.*
+*Ez a blokk a `jeloltek.tsv` 49 nyitott (`dontes=nyitva`) sorát fedi 6 motívum-ID-ről, és a `motivumok.tsv` 9 státusz-sorát. A 260 beépítve és 318 elutasítva döntésű jelölt nem tartozik ide. A fájl minden más szakasza kézi, a marker-blokkon kívül marad.*
 
 ### Nyitott jelöltek (`adat/jeloltek.tsv`, `dontes=nyitva`)
 
@@ -801,7 +801,6 @@ A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá
 | 47 | `[ID: KIRALY-001]` | 1Pét 2:9 | TSK 2Móz 19:6 ↔ 1Pét 2:9 (22); napló: Melkizedek_tematikus_kereszthivatkozas_naplo.md §Tartalmi minősítés \| scope=manual \| forras=Melkizedek_tematikus_kereszthivatkozas_naplo.md \| ts=2026-10-11 | a napló szerint beépítve (2026.09.09, retroaktív pótlás; szó szerinti LXX-idézés, G0934+G2406), de a jeloltek.tsv-ben és az elofordulasok.tsv-ben nincs sor; nincs dokumentált döntés a hiányról; elbírálás: N-F63a | 2026.10.11 |
 | 48 | `[ID: MENNY-001]` | Mt 24:38 | Károli-KH (forrás-vers: 1Móz 6:2) | tartalmilag nem az 'Isten fiai kiléte' kérdéshez, hanem az eszkatológiai-ítéleti 'mint Noé napjaiban' analógiához tartozik; eldöntendő: (a) jegyzet valamelyik study-ba, (b) önálló motívum, (c) figyelmen kívül — FELHASZNÁLÓI DÖNTÉS | 2026.09.13 |
 | 49 | `[ID: MENNY-001]` | Luk 17:27 | Károli-KH (forrás-vers: 1Móz 6:2) | tartalmilag nem az 'Isten fiai kiléte' kérdéshez, hanem az eszkatológiai-ítéleti 'mint Noé napjaiban' analógiához tartozik; eldöntendő: (a) jegyzet valamelyik study-ba, (b) önálló motívum, (c) figyelmen kívül — FELHASZNÁLÓI DÖNTÉS | 2026.09.13 |
-| 50 | `[ID: TEREMT-001]` | Jób 41:32 | scan H8415 \| scope=TAHOT-teljes \| forras=TAHOT_kivonat.tsv \| strong=H8415 \| n=35 \| ts=2026-10-17T16:58Z \| csatorna=cli | F108 újrascan: a hely a mai TAHOT/TAGNT-on gerinc-Strongot hordoz, de sem az elofordulasok.tsv-ben, sem a jeloltek.tsv-ben nem szerepelt; elbírálatlan (DT184) | 2026.10.17 |
 
 ### Motívum-státuszok (`adat/motivumok.tsv`)
 
@@ -814,7 +813,7 @@ A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá
 | Segítségül hívni az Úr nevét `[ID: ISTENTISZT-001]` | publikálható | v3 | 2026.09.22 | 5 fő / 32 sor | 21 | motivumok/ISTENTISZT-001.md;motivumlog/lexikon_pilot/ISTENTISZT-001_TUDOMANYOS.md |
 | Melkizedek — király-pap rendje, kenyér és bor `[ID: KIRALY-001]` | publikálható | v2 | 2026.09.10 | 1 fő / 9 sor | 1 | tematikus_lezart/Melkizedek_tematikus.md |
 | Isten fiai — Nefilim — Gibborim motívum-komplexum `[ID: MENNY-001]` | publikálható | v4 | 2026.09.10 | 1 fő / 9 sor | 2 | tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md |
-| Tehóm (תְּהוֹם) — Abüsszosz (ἄβυσσος): a mélység motívuma `[ID: TEREMT-001]` | publikálható | v4 | 2026.09.10 | 5 fő / 41 sor | 1 | tematikus_lezart/Tehom_tematikus.md |
+| Tehóm (תְּהוֹם) — Abüsszosz (ἄβυσσος): a mélység motívuma `[ID: TEREMT-001]` | publikálható | v4 | 2026.09.10 | 5 fő / 42 sor | 0 | tematikus_lezart/Tehom_tematikus.md |
 | Tohu va-vohu (תֹהוּ וָבֹהוּ) — a föld kietlen és puszta állapota a teremtéskor és az ítéletkor `[ID: TEREMT-002]` | feldolgozás alatt | v1 | 2026.09.25 | 3 fő / 3 sor | 0 | — |
 
 <!-- GENERÁLT-VÉGE: nyitott -->
