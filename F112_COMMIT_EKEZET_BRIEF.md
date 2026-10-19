@@ -7,6 +7,7 @@ fazis: folyamat
 munka: folyamat
 modell: sonnet
 allapot: lezarva
+pr: 427
 lezarva_osszegzes: E30 FIGYELMEZTETÉS szinten bekötve (DT-F112a, szűk kizárólista, mért 84%), 154 teszt zöld, ELLENOR_F112 ELTÉRÉS 7 mechanikus tétel javítva; zárójelentés naplok/COMMIT_EKEZET_zaras.md
 ag: claude/f112-commit-ekezet
 ad: E30 CI-szabály, amely a PR `base..head` commit-üzeneteiben figyelmeztet az ékezet nélkül írt magyar szavakra, mért hamis-pozitív aránnyal
