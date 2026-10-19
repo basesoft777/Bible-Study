@@ -1,6 +1,6 @@
 # Lezárt tematikus tanulmányok — index
 
-*Ez a fájl a PaRDeS-projekt minden ✅ LEZÁRVA státuszú, önálló tematikus tanulmányát listázza egy helyen, hogy chat-szálakon átívelően is könnyen visszakereshetők legyenek. Forrás: `PaRDeS_motivumok.md (GitHub-repóban verziószám nélkül; Claude Projects-en belül a mindenkori legfrissebb vXX fájl, jelenleg v55)` (a mindenkori legfrissebb motívumlog-verzió az egyetlen hiteles forrás — ez az index abból generálódik, és minden újabb lezáráskor frissítendő.)*
+*Ez a fájl a PaRDeS-projekt minden ✅ LEZÁRVA státuszú, önálló tematikus tanulmányát listázza egy helyen, hogy chat-szálakon átívelően is könnyen visszakereshetők legyenek. Forrás: `PaRDeS_motivumok.md (GitHub-repóban verziószám nélkül; Claude Projects-en belül a mindenkori legfrissebb vXX fájl, jelenleg v55)` (a mindenkori legfrissebb motívumlog-verzió az egyetlen hiteles forrás — ez az index abból generálódik. A táblázat a generált blokkban áll (`python eszkozok/general.py --cel index`), kézzel nem szerkesztendő; a kézi rész a generált blokkon kívüli szakaszok: a „Megjegyzések” (ID-hez kötve, D12) és a „Lezárt mélyelemzések”.)*
 
 *Utolsó frissítés: 2026.09.13 (F0.1/F0.4) — új tétel: `[ID: HAMART-001]` (Bűn következményeinek gyűrűzése, az opus-ág mergelve); a táblázat sorszámozása folyamatosra javítva (a törölt Tehóm-kiterjesztés miatt korábban hiányzó #2 pótolva — minden alábbi sor eggyel feljebb csúszott: a korábbi #3→2, #4→3, #5→4, #6→5, #7→6, #8→7, #9→8). **A bekezdés utolsó mondatában álló számok magának a 2026.09.13-i kézi átszámozásnak a leírásához tartoznak, nem sorokra mutató hivatkozások** — a `#` oszlop azóta puszta vizuális számláló, amely minden ID-felvételkor átszámozódik (D12), ezért minden tartalmi hivatkozás `[ID: …]` alakú. Korábban: 2026.09.10, a v55 motívumlog alapján — Melkizedek frissítve a 2026.09.08-09-i bővítéssel (2Móz 19:6, Zak 6:13, 1Pét 2:9); Segítségül hívni frissítve a 2026.09.08-i bővítéssel (Zak 13:9, hat ÚSZ igehely, D-minta kizárása); Hádész/seól önálló fájlba kiszervezve (`Hadesz_Seol_tematikus.md`), előfordulás-szám 4→6 korrigálva.*
 
@@ -75,7 +75,7 @@ Ha a következetes névadás fennáll, önmagában a projekt fájllistájának �
 
 ## Karbantartási szabály
 
-Minden alkalommal, amikor egy motívum eléri a ✅ LEZÁRVA státuszt (akár tematikus sablon szerint, akár mélyelemzésként), ez a táblázat frissítendő **ezzel egy időben**, a motívumlog hét szekciójának frissítésével együtt — ne csak utólag, külön lépésben.
+Minden alkalommal, amikor egy motívum eléri a ✅ LEZÁRVA státuszt (akár tematikus sablon szerint, akár mélyelemzésként), a fenti generált táblázat a `python eszkozok/general.py --cel index` futtatásával frissül **ezzel egy időben** (kézzel nem szerkesztendő), a kézi rész pedig — a „Megjegyzések” sora (ID-hez kötve, D12), mélyelemzésnél a „Lezárt mélyelemzések” sora — ugyanekkor, a motívumlog hét szekciójának frissítésével együtt íródik — ne csak utólag, külön lépésben.
 
 **Elsődleges ellenőrzési módszer** — mindig a legfrissebb motívumlog-verzión:
 ```
