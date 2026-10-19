@@ -405,9 +405,9 @@ Egy tematikus tanulmány lezárásakor a következő lépések MINDEGYIKE szüks
 
 ---
 
-### Tartalmi visszaírás bővített tanulmányokba *(megszűnt, l. DT84 (7))*
+### Tartalmi visszaírás bővített tanulmányokba
 
-A v10-ben bevezetett szabály — a tematikus oldalon felmerült,
+*Megszűnt, l. DT84 (7).* A v10-ben bevezetett szabály — a tematikus oldalon felmerült,
 igehely-szintű lelet kézi beírása a bővített study szövegébe — a v18-tól
 megszűnt (DT84 (7), DT182): a lelet kézi bemásolása egy másik kézi
 forrásba második igazságforrást hozna létre (D34: hivatkozás másolás
