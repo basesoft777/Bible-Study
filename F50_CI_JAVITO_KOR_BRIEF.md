@@ -5,13 +5,16 @@ kod: CI_JAVITO_KOR
 tipus: feladat
 fazis: folyamat
 modell: sonnet
-allapot: nem_indult
+allapot: lezarva
+ag: claude/f50-ci-javito-kor
 ad: a /befogad és a /kovetkezo záró lépése push után elolvassa a CI-t; ha a hiba a saját PR tartalmából jön (fejléc-mező, fájlnév, formai hiba), legfeljebb két körben javítja új commitban; minden mást (CI-szabály, másik feladat, függési kör, tartalmi döntés) nem javít, hanem jelent
-kovetkezo: "nem futhat a #45 (MODELL_ELLENORZES) mellett, mert mindkettő a .claude/commands/kovetkezo.md-t írja (kizárás, D4)"
+kovetkezo: "lezárva; a maradék szöveges ELLENOR_F50_3 eltérés elfogadva (2026-10-19); merge a felhasználótól"
 olvas: [.claude/commands/befogad.md, .claude/commands/kovetkezo.md, CLAUDE.md, MUNKAMENET.md, DONTESEK.md, eszkozok/feladatok.py, .github/workflows/]
 ir: [.claude/commands/befogad.md, .claude/commands/kovetkezo.md, naplok/CI_JAVITO_KOR_naplo.md]
 fugg: []
 helyi_gep: nem
+pr: 423
+lezarva_osszegzes: a /befogad és a /kovetkezo záró lépése push után egyszer olvassa a CI-t, a saját PR formai hibáját legfeljebb két körben javítja, mást jelent (DT-F50a); a maradék szöveges ELLENOR_F50_3 eltérés elfogadva; PR #423 (draft), zárójelentés naplok/CI_JAVITO_KOR_zaras.md
 ---
 
 # Fnn_CI_JAVITO_KOR_BRIEF.md — Korlátozott javító kör a CI hibáira
