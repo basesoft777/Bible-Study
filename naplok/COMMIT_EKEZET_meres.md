@@ -8,10 +8,10 @@
 - Szókészlet: a kézi commitok üzenetében legalább 3-szor előforduló ékezetes szó ékezetlen alakja (a szókészlet így a projekt saját nyelvéből áll; nem külső szótár).
 - Kihagyott részek: kódrész (`` `…` ``), fájlút/fájlnév, azonosító (`DT-F09a`, `F112`, `ISTENTISZT-001`), `Co-Authored-By:` sor; kötőjel-, perjel-, aláhúzás-, pont-, `=`-szomszédos tokenek.
 - Kizárási lista: `eszkozok/ellenorzes/e30_ascii_alakok.tsv` (alak, ok, forrás).
-- Újrafuttatás (repó gyökeréből, `origin/main` frissen):
+- Újrafuttatás (repó gyökeréből; a korpusz a `1a6a6eef` commitig tart, az `origin/main` azóta mozog, ezért a fej rögzített). Az M0b 50 soros listája a `c668bb36` commit kizárási fájljával reprodukálható (`git show c668bb36:eszkozok/ellenorzes/e30_ascii_alakok.tsv`):
 
 ```
-python -c "import sys; sys.path.insert(0,'eszkozok/ellenorzes'); import szabalyok as S; S.e30_meres()"
+python -c "import sys; sys.path.insert(0,'eszkozok/ellenorzes'); import szabalyok as S; S.e30_meres('', '1a6a6eef')"
 ```
 
 A minta: `random.Random(112).shuffle`, az első 50 találat. A találat = (üzenet, ékezetlen alak) pár.
@@ -27,7 +27,7 @@ jelolt uzenet: 659, jelolt talalat: 3416
 30 leggyakoribb: konyv=46, ket=41, kezi=34, nelkul=32, valodi=31, forras=29, javitas=28, naplo=25, korabban=25, forditatlan=24, korabbi=24, frissitve=23, ellenorzes=22, utan=22, javitva=21, kulon=21, belso=20, generalt=20, regi=20, ures=20, talalat=19, fajl=19, felhasznalo=19, sajat=19, elott=19, jeloltek=18, indoklas=18, jelentes=18, tisztazatlan=17, javit=16
 ```
 
-**Minta pontossága: 41 / 50 = 82%** (9 hamis pozitív).
+**Minta pontossága: 42 / 50 = 84%** (8 hamis pozitív; a 16. sor `kiegeszitve` valódi hiba, a független ellenőr javította).
 
 | # | commit | jelölt -> javaslat | sor | besorolás |
 |---|---|---|---|---|
@@ -46,7 +46,7 @@ jelolt uzenet: 659, jelolt talalat: 3416
 | 13 | `5f2068e6` | kerult -> került | mert csak az 1Moz 14:18 (15) es a Zak 6:13 (9) talalat kerult | valódi hiba |
 | 14 | `c482ea05` | szakaszaban -> szakaszában | 1. szakaszaban. | valódi hiba |
 | 15 | `032a767b` | hibas -> hibás | tul-jelzes, nem hibas adat, csak pontatlanabb kategorizalas. | valódi hiba |
-| 16 | `5e94c9d4` | kiegeszitve -> kiegészítve | adat/SEMA.md: a 2.14 tabla kiegeszitve a megjegyzes mezovel; a 2.10 | hamis pozitív |
+| 16 | `5e94c9d4` | kiegeszitve -> kiegészítve | adat/SEMA.md: a 2.14 tabla kiegeszitve a megjegyzes mezovel; a 2.10 | valódi hiba |
 | 17 | `c136e924` | felhasznalo -> felhasználó | felhasznalo dontese kovetkezik. | valódi hiba |
 | 18 | `e6697673` | kovetkezmenye -> következménye | hogy egy eddig fel nem tart osszeolvadt Karoli-vers (Ezs 3:26) kovetkezmenye, | valódi hiba |
 | 19 | `23616837` | terkep -> térkép | A KK igehely_mt oszlopa az irányadó, a terkep EGYIK_SEM sorai nem használtak; | hamis pozitív |
@@ -95,7 +95,7 @@ jelolt uzenet: 626, jelolt talalat: 3303
 30 leggyakoribb: konyv=46, ket=41, kezi=34, nelkul=32, valodi=31, javitas=28, naplo=25, korabban=25, forditatlan=24, korabbi=24, frissitve=23, ellenorzes=22, utan=22, javitva=21, kulon=21, belso=20, generalt=20, regi=20, ures=20, talalat=19, fajl=19, felhasznalo=19, sajat=19, elott=19, jeloltek=18, indoklas=18, jelentes=18, tisztazatlan=17, javit=16, szabaly=16
 ```
 
-**Minta pontossága: 44 / 50 = 88%** (6 hamis pozitív).
+**Minta pontossága: 45 / 50 = 90%** (5 hamis pozitív; a 35. sor `kiegeszitve` valódi hiba, a független ellenőr javította).
 
 | # | commit | jelölt -> javaslat | sor | besorolás |
 |---|---|---|---|---|
@@ -133,7 +133,7 @@ jelolt uzenet: 626, jelolt talalat: 3303
 | 32 | `58739182` | all -> áll | nevezovel all (80,8% = 97/120, a HIBA nelkuli 85,1%-ot is feltuntetve), | valódi hiba |
 | 33 | `c8a8d0b8` | indoklas -> indoklás | (napló + rövid hivatkozás a jeloltek.tsv indoklas végén). | hamis pozitív |
 | 34 | `ff86defd` | jovobeli -> jövőbeli | README-kent rogzitve jovobeli tobb-szavas formulak kereseshez. | valódi hiba |
-| 35 | `5e94c9d4` | kiegeszitve -> kiegészítve | adat/SEMA.md: a 2.14 tabla kiegeszitve a megjegyzes mezovel; a 2.10 | hamis pozitív |
+| 35 | `5e94c9d4` | kiegeszitve -> kiegészítve | adat/SEMA.md: a 2.14 tabla kiegeszitve a megjegyzes mezovel; a 2.10 | valódi hiba |
 | 36 | `b83f9f26` | visszairas -> visszaírás | visszairas). | valódi hiba |
 | 37 | `ea6b62dd` | ertekek -> értékek | betu-utotagos Gorog/Heber/Latin ertekek TULNYOMO tobbsege (~99%) | valódi hiba |
 | 38 | `084365be` | tenylegesen -> ténylegesen | tenylegesen barmelyik fajlra alkalmazta -- ez buktatta a KARBANTARTAS | valódi hiba |
@@ -160,17 +160,18 @@ A bővített lista a közönséges szavak mezőneveit is kizárja (`forras`, `ci
 
 | | jelölt üzenet | jelölt találat | minta (50) | pontosság |
 |---|---|---|---|---|
-| M0a | 659 | 3416 | 41 valódi / 9 hamis | 82% |
-| M0b | 626 | 3303 | 44 valódi / 6 hamis | 88% |
+| M0a | 659 | 3416 | 42 valódi / 8 hamis | 84% |
+| M0b | 626 | 3303 | 45 valódi / 5 hamis | 90% |
 
 - Az 50 elemes minta 95%-os konfidencia-intervalluma kb. ±9–10 százalékpont, tehát a valódi pontosság 75–95% közé esik. HIBA-szinthez ez kevés.
 - A jelölt üzenetek aránya (kb. 19%) magas: a repó commitjainak ötöde ékezetlen. A ma mergelt történeten az E30 emiatt csak PR `base..head`-re futhat (G4).
 
 ## 6. Megvalósítás (DT-F112a: 3. változat, 2026-10-19)
 
-- Kizárólista: **a szűk (M0a) lista**, 21 sor — az orkesztrátor döntése (DT-F112a): az M0b bővítés (82% -> 88%) mintára illeszkedik és valódi hibát nyel el (`forras`, `cim`, `kod`), ezért nem kerül be. Az M0b szakasz tájékoztató.
+- Kizárólista: **a szűk (M0a) lista**, 21 sor — az orkesztrátor döntése (DT-F112a): az M0b bővítés (84% -> 90%) mintára illeszkedik és valódi hibát nyel el (`forras`, `cim`, `kod`), ezért nem kerül be. Az M0b szakasz tájékoztató.
 - Szint: FIGYELMEZTETÉS (`SZINT['E30']`), `FAJLSZINTU_SZABALYOK` tagja; a CI nem pirosodik.
 - Hatókör: csak a PR `base..head` kézi, nem-merge commitjai; `push` eseménynél és `--teljes` módban nem fut (G4). A szókészlet az alap (`base`) commitjaiból épül, a PR saját commitjai nem szólnak bele.
 - Találat-részlet: rövid hash (`fajl` mező), `` `ékezetlen` -> `ékezetes` ``. Kézi futtatásnál (`--commit-uzenet-fajl`, base/head nélkül) a hash `-`.
 - Kézi próba (repón kívüli ideiglenes fájl: `F9.9: ket konyv javitas, a forras naplo es allapot: fut`): 5 találat (`ket`, `konyv`, `javitas`, `forras`, `naplo`); az `allapot` a kizárási lista miatt nem jelöl, a `forras` jelöl (5 találat a `naplo`-val). A saját ág commitjain: 0 találat.
 - Az újraértékelés (HIBA-szint) 20 PR után: a PR-ok jelölési aránya és a javítások száma alapján, külön döntés.
+- Ismert korlát: a szabály csak kisbetűs tokent néz (`[a-z]{3,}`), ezért a mondat- vagy üzenetkezdő nagybetűs (`Javitas: …`) és a csupa nagybetűs ékezetlen szót nem jelzi. Ez szándékos (D3: inkább kihagy; a tulajdonnevek és rövidítések elkülönítése nélkül a hamis pozitív arány nőne); a hiány a 20 PR utáni újraértékelés (N-F112a) tárgya.

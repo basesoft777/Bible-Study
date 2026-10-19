@@ -6,12 +6,13 @@ tipus: feladat
 fazis: folyamat
 munka: folyamat
 modell: sonnet
-allapot: fut
+allapot: lezarva
+lezarva_osszegzes: E30 FIGYELMEZTETÉS szinten bekötve (DT-F112a, szűk kizárólista, mért 84%), 154 teszt zöld, ELLENOR_F112 ELTÉRÉS 7 mechanikus tétel javítva; zárójelentés naplok/COMMIT_EKEZET_zaras.md
 ag: claude/f112-commit-ekezet
 ad: E30 CI-szabály, amely a PR `base..head` commit-üzeneteiben figyelmeztet az ékezet nélkül írt magyar szavakra, mért hamis-pozitív aránnyal
 kovetkezo: az E30 20 PR utáni újraértékelése (N-F112a: jelölési arány, javítások száma, új 50 elemes minta; HIBA-szint és kizárólista-bővítés külön döntés)
 olvas: [eszkozok/ellenorzes/, .github/workflows/ellenorzes.yml, BRIEF_SABLON.md, adat/SEMA.md, GitHub_feltoltesi_workflow.md]
-ir: [eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/futtat.py, eszkozok/ellenorzes/e30_ascii_alakok.tsv, eszkozok/ellenorzes/tesztek/, naplok/COMMIT_EKEZET_meres.md]
+ir: [eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/futtat.py, eszkozok/ellenorzes/e30_ascii_alakok.tsv, eszkozok/ellenorzes/tesztek/, naplok/COMMIT_EKEZET_meres.md, .github/workflows/ellenorzes.yml]
 fugg: []
 ---
 # F112_COMMIT_EKEZET_BRIEF.md — CI-szabály: ékezet nélküli magyar szavak a commit-üzenetekben (E30)
