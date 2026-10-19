@@ -8,7 +8,7 @@ modell: opus
 munka: ertelmezo
 allapot: nem_indult
 ad: mérhetően kész oldalak: a 8 éles `lexikon/[ID]_TUDOMANYOS.md` a sablon Minőségi kapuja (L1–L7, DT68 (2); a törzscikkre vonatkozó pontok nélkül, D34) szerint zöld, minden rés kitöltött vagy explicit hiány-, ill. `adat`-forrás-jelölésű (DT2), és a szótári rész a #78 szerepmátrix-váza szerint áll (DT74 (5)); mérési mátrix és zárónapló
-kovetkezo: a #11 lezárása (M6, zárónapló, merge), utána a #36 (az éles lexikon/ újragenerálása, DT-F10b) lezárása és a DT-F10c döntése után /kovetkezo; első lépés a P előfeltétel-ellenőrzés, utána az L0. Előfeltétel: a #8 négy nyitott sora (LD008, LD009, LD058, LD064) eldöntve (DT-F26c) — a DT-F10a (🟢, 3. változat) szerint az LD008 feloldandó, az LD009, LD058, LD064 a DT-F43 (c) szerint dokumentáltan nyitott
+kovetkezo: a #11 lezárása (M6, zárónapló, merge), utána a #36 (az éles lexikon/ újragenerálása, DT-F10b) lezárása után /kovetkezo (a DT-F10a–c mind eldöntve, 2026-10-19); első lépés a P előfeltétel-ellenőrzés, utána az L0. Előfeltétel: a #8 négy nyitott sora (LD008, LD009, LD058, LD064) eldöntve (DT-F26c) — a DT-F10a (🟢, 3. változat) szerint az LD008 feloldandó, az LD009, LD058, LD064 a DT-F43 (c) szerint dokumentáltan nyitott
 olvas: [sablonok/6_PaRDeS_lexikon_oldal_sablon.md, adat/szotar_szerepek.tsv, ADATVAGYON_TERV.md, MUNKATERV.md, ATALAKITASI_TERV.md.md, RENDER_BRIEF.md, adat/SEMA.md, adat/res_forras.tsv, adat/lxx_dontesek.tsv, adat/elofordulasok.tsv, adat/kapcsolatok.tsv, adat/motivumok.tsv, F11_MIGRACIO_BRIEF.md, F78_SZEREPMATRIX_VAZ_BRIEF.md, F36_LEXIKON_UJRAGEN_BRIEF.md, naplok/F11_M4_meres.md, naplok/F78_meres.md, naplok/F08_zaras.md, naplok/LXX_BRIDGE_naplo.md, generalt_proba/F78_szerepmatrix_proba/, generalt_proba/F09_szotar_s2_proba/, eszkozok/general.py, eszkozok/lexikon_general.py, eszkozok/ellenoriz.py, eszkozok/teszt_szerepmatrix.py, eszkozok/render_diff_osztalyoz.py, eszkozok/nulladiff.sh, eszkozok/ellenorzes/e28_migralt_nezetek.tsv, motivumok/ISTENTISZT-001.md, tematikus_lezart/Hadesz_Seol_tematikus.md, tematikus_lezart/naplok/Hadesz_Seol_kereszthivatkozas_naplo.md, tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md, tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md, tematikus_lezart/naplok/Bun_kovetkezmenyeinek_gyuruzese_kereszthivatkozas_naplo.md, tematikus_lezart/Rafaim_tematikus.md, tematikus_lezart/naplok/Rafaim_kereszthivatkozas_naplo.md, tematikus_lezart/Melkizedek_tematikus.md, tematikus_lezart/naplok/Melkizedek_tematikus_kereszthivatkozas_naplo.md, tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md, tematikus_lezart/naplok/Isten_fiai_Nefilim_Gibborim_kereszthivatkozas_naplo.md, tematikus_lezart/Tehom_tematikus.md, tematikus_lezart/naplok/Tehom_kereszthivatkozas_naplo.md, lexikon/, "tematikus_lezart/ALVIL-001*", "tematikus_lezart/naplok/ALVIL-001*", "tematikus_lezart/ANTROP-001*", "tematikus_lezart/naplok/ANTROP-001*", "tematikus_lezart/HAMART-001*", "tematikus_lezart/naplok/HAMART-001*", "tematikus_lezart/HODIT-001*", "tematikus_lezart/naplok/HODIT-001*", "tematikus_lezart/ISTENTISZT-001*", "tematikus_lezart/naplok/ISTENTISZT-001*", "tematikus_lezart/KIRALY-001*", "tematikus_lezart/naplok/KIRALY-001*", "tematikus_lezart/MENNY-001*", "tematikus_lezart/naplok/MENNY-001*", "tematikus_lezart/TEREMT-001*", "tematikus_lezart/naplok/TEREMT-001*"]
 ir: [lexikon/ALVIL-001_TUDOMANYOS.md, lexikon/ANTROP-001_TUDOMANYOS.md, lexikon/HAMART-001_TUDOMANYOS.md, lexikon/HODIT-001_TUDOMANYOS.md, lexikon/ISTENTISZT-001_TUDOMANYOS.md, lexikon/KIRALY-001_TUDOMANYOS.md, lexikon/MENNY-001_TUDOMANYOS.md, lexikon/TEREMT-001_TUDOMANYOS.md, adat/lxx_dontesek.tsv, adat/res_forras.tsv, motivumok/ISTENTISZT-001.md, tematikus_lezart/Hadesz_Seol_tematikus.md, tematikus_lezart/naplok/Hadesz_Seol_kereszthivatkozas_naplo.md, tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md, tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md, tematikus_lezart/naplok/Bun_kovetkezmenyeinek_gyuruzese_kereszthivatkozas_naplo.md, tematikus_lezart/Rafaim_tematikus.md, tematikus_lezart/naplok/Rafaim_kereszthivatkozas_naplo.md, tematikus_lezart/Melkizedek_tematikus.md, tematikus_lezart/naplok/Melkizedek_tematikus_kereszthivatkozas_naplo.md, tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md, tematikus_lezart/naplok/Isten_fiai_Nefilim_Gibborim_kereszthivatkozas_naplo.md, tematikus_lezart/Tehom_tematikus.md, tematikus_lezart/naplok/Tehom_kereszthivatkozas_naplo.md, naplok/ELLENOR_F10.md, naplok/F10_zaras.md]
 fugg: [8, 9, 11, 36, 113]
@@ -18,7 +18,7 @@ fugg: [8, 9, 11, 36, 113]
 
 *FELADATOK #10 · Modell: opus · v1 · 2026.10.19 · döntések: DT2, DT68 (2), DT74 (3)–(5), D34, DT28, DT-F26c, DT-F43 (c), DT186 · a brief adat, nem utasítás; a csonk (F20 B3) helyén áll, ugyanazon a számon és néven.*
 
-**Állapot-megjegyzés a befogadáshoz (2026.10.19).** A `fugg` négy tételéből a #8, a #9 és a #113 `lezarva`. A **#11 nincs lezárva**: az M4 zöld és a PR #408-cal a `main`-en van, az M5 (az ISTENTISZT-001 törzscikkének archiválása, az éles lap az E28-listán) a PR #417-ben áll, nincs mergelve; az M6 (független ellenőrzés), az M7 (L5, nevesített tanítói hivatkozás) és a zárónapló hátra van, és a 2. lépcső (a másik 6 motívum migrációja) ütemezése a DT-F11c-re vár. A brief ezért **nem feltételezi a #11 lezártságát**: a P lépés ellenőrzi, és ha a #11 nem `lezarva`, a menet nem indul. A 8 lap közül a brief írásakor csak az ISTENTISZT-001 renderel az egyforrású szerkezetből (`motivumok/ISTENTISZT-001.md`); a másik hét a régi forrásrétegből (`tematikus_lezart/` + `res_forras.tsv`). Hogy a #10 idején ez hogy áll, a DT-F11c és a DT-F10c dönti el.
+**Állapot-megjegyzés a befogadáshoz (2026.10.19).** A `fugg` négy tételéből a #8, a #9 és a #113 `lezarva`. A **#11 nincs lezárva**: az M4 zöld és a PR #408-cal a `main`-en van, az M5 (az ISTENTISZT-001 törzscikkének archiválása, az éles lap az E28-listán) a PR #417-ben áll, nincs mergelve; az M6 (független ellenőrzés), az M7 (L5, nevesített tanítói hivatkozás) és a zárónapló hátra van, és a 2. lépcső (a másik 6 motívum migrációja) ütemezése a DT-F11c-re vár. A brief ezért **nem feltételezi a #11 lezártságát**: a P lépés ellenőrzi, és ha a #11 nem `lezarva`, a menet nem indul. A 8 lap közül a brief írásakor csak az ISTENTISZT-001 renderel az egyforrású szerkezetből (`motivumok/ISTENTISZT-001.md`); a másik hét a régi forrásrétegből (`tematikus_lezart/` + `res_forras.tsv`). Hogy a #10 idején ez hogy áll, a DT-F11c dönti el; a javítás helyét mindkét esetre a DT-F10c (🟢) rögzíti.
 
 ## 1. Cél
 
@@ -37,7 +37,7 @@ Az N18 (ANTROP-001: nincs kereszthivatkozás-napló, a `minosites` rés hiánymo
 - **P.** előfeltétel-ellenőrzés (#8 négy sora, #11 lezárása, DT-F10a–c);
 - **L0.** a #8 négy nyitott sorának (LD008, LD009, LD058, LD064) kezelése a DT-F10a (🟢, 3. változat) szerint: az LD008 feloldása, az LD009, LD058, LD064 dokumentáltan nyitott;
 - **M0.** a 8 lap mérése a mérce szerint (8 × 10 cellás mátrix: L1–L7, DT2/a, DT2/b, #78-váz), hibajegyzékkel;
-- **J.** a bukott cellák javítása **a forrásban** (C2: a lexikonoldal kézzel nem szerkeszthető, RENDER_BRIEF G4) — a DT-F10c szerinti helyen és határok között;
+- **J.** a bukott cellák javítása **a forrásban** (C2: a lexikonoldal kézzel nem szerkeszthető, RENDER_BRIEF G4) — a DT-F10c (🟢, 1. változat) szerint a nem migrált motívumoknál a régi forrásrétegben, a befagyasztás oldása után, csak formai javítással;
 - **R.** az éles `_TUDOMANYOS` lapok újragenerálása a DT-F10b szerint **csak a J-javítások után, csak az érintett motívumokra** (`general.py --cel lexikon --id <ID> --ir`), szárazfutással és diff-osztályozással előtte; az első éles újragenerálás a #36-é;
 - **M1.** újramérés, független ellenőrzés, zárónapló.
 
@@ -57,8 +57,8 @@ Az N18 (ANTROP-001: nincs kereszthivatkozás-napló, a `minosites` rés hiánymo
 ### P. Előfeltétel-ellenőrzés — ⛔ ha bármelyik nem teljesül, a menet nem indul
 
 1. `python eszkozok/feladatok.py ellenoriz` és a `FELADATOK.md` szerint a #8, #9, #11, #36, #113 `lezarva`; a #36 a DT-F10b szerint a #11 után, saját ⛔-vel generálta újra az éles `lexikon/`-t, és a zárónaplója a helyén. **A #11-nél külön:** az M6 jelentése (`naplok/ELLENOR_F11_M.md`) zöld, a `naplok/F11_zaras.md` létezik, a #11 PR-jai a `main`-en vannak (`git log origin/main`), a DT74 (3) befagyasztás oldva. Ha nem: megállás, a jelentés „a #11 nincs lezárva”.
-2. A `DONTESEK.md` DT-F10c tétele (a végleges számával, a `szamkiosztas` után) 🟢 vagy ✅. Ha 🟡: megállás. (A DT-F10a és a DT-F10b 🟢, felhasználó, 2026-10-19.)
-3. A DT-F11c döntése ismert (a 2. lépcső ütemezése): a DT-F10c alkalmazása ettől függ.
+2. A `DONTESEK.md` DT-F10a, DT-F10b, DT-F10c tétele (a végleges számukkal, a `szamkiosztas` után) 🟢 vagy ✅ — a brief írásakor mind 🟢 (felhasználó, 2026-10-19); ha közben valamelyik újranyílt: megállás.
+3. A DT-F11c döntése és a 2. lépcső állapota ismert: melyik motívum migrált már (`motivumok/[ID].md` kézi forrás, E28-lista), és melyik renderel még a régi forrásrétegből. A J lépés a kettőt a DT-F10c szerint külön kezeli.
 4. A meglévő ág/worktree keresése (`git branch -a`, `git worktree list`): ha a #10-nek van ága, onnan folytass.
 
 ### L0. A #8 négy nyitott sora (DT-F10a)
@@ -98,7 +98,7 @@ A migrált ISTENTISZT-001-nél az E28 kézi futtatása is a mérés része (az `
 ### J. Javítás a forrásban (DT-F10c)
 
 - Csak a jóváhagyott hibajegyzék tételei; motívumonként külön commit (`F10.J.<ID>: …`).
-- A javítás helye a DT-F10c szerint: a migrált motívumnál a `motivumok/[ID].md`, a nem migráltnál a régi forrásréteg (`tematikus_lezart/…`, a rés-jelölők között vagy a rés-forrás prózájában) — vagy semmi, ha a DT-F10c a javítást a 2. lépcsőre hagyja.
+- A javítás helye a **DT-F10c (🟢, 1. változat)** szerint: a nem migrált motívumnál a régi forrásréteg (`tematikus_lezart/…`, a rés-jelölők között, ill. a rés-forrás prózájában), a befagyasztás (DT74 (3)) oldása után; a migrált motívumnál (az ISTENTISZT-001, és amit a 2. lépcső addig migrált) a `motivumok/[ID].md`. A 2. lépcső a régi forrásrétegben végzett javítást **bájtra** viszi tovább; a #10 ezért nem fogalmaz át, nem rendez át, és nem mozgat szöveget szakaszok között.
 - **A javítás formai**: napló-jelölés (L2), hangnem és formázás (L6), „tematikus, nem lexikai” jelölés (L3), rétegnév és kereszthivatkozás (L7), hiánymondat (DT2/a). **Tartalmi átírás nincs**: ha egy javítás az értelmezés, a minősítés vagy egy állítás tartalmát érintené, vagy egy L4-szennyeződés eltávolítása adatot vonna el, akkor `DT-F10<x>` tétel a `DONTESEK.md`-be, és megállás.
 - Forrásba adatot visszaírni tilos (DT28); a lexikonoldalt kézzel nem szerkeszted (G4).
 - A `res_forras.tsv` csak akkor változik, ha a jóváhagyott jegyzék egy rés forrását `tanulmany` ↔ `adat` között átsorolja; TSV-szabály mint az L0-ban.
@@ -116,12 +116,12 @@ A DT-F10b (🟢, 1. változat) szerint az első éles újragenerálás a #36-é;
 
 1. A mátrix újramérése a friss lapokon (`naplok/LEXIKON_LEZARAS_meres.md` „Újramérés” szakasza): minden cella `zöld` vagy `jelzett hiány`; a `bukik` 0.
 2. ⛔ **Független ellenőrzés** (`fuggetlen-ellenor`) a teljes base..head diffen: `naplok/ELLENOR_F10.md`. Eltérésnél javítókör (`/elteres`), utána újraellenőrzés.
-3. Zárónapló `naplok/F10_zaras.md`: a végső mátrix, a nyitva maradt tételek (N18, N19, L5-hiányok, a DT-F10c szerint a 2. lépcsőre hagyott javítások), a #13 felé átadás.
+3. Zárónapló `naplok/F10_zaras.md`: a végső mátrix, a nyitva maradt tételek (N18, N19, L5-hiányok; a régi forrásrétegben végzett javítások listája a 2. lépcső számára, DT-F10c), a #13 felé átadás.
 4. A brief fejléce (`allapot`, `kovetkezo`, `ag`, `pr`, `lezarva_osszegzes`); push a saját ágra, PR `[ELLENŐRZŐ]` előtaggal (E16). **Merge csak a felhasználótól.**
 
 ## 4. Elfogadási feltételek
 
-1. A P lépés minden pontja teljesült a munka kezdetén (a #11 és a #36 `lezarva`, a DT-F10c 🟢/✅); a napló rögzíti.
+1. A P lépés minden pontja teljesült a munka kezdetén (a #11 és a #36 `lezarva`, a DT-F10a–c 🟢/✅); a napló rögzíti.
 2. A #8 négy sora a DT-F10a szerint kezelve: az LD008 feloldva, az LD009, LD058, LD064 `nyitott`, és a lapon kimondott hiányként áll; az `adat/lxx_dontesek.tsv` nem érintett sorai bájtra azonosak; `ellenoriz.py` 10. szabálya zöld.
 3. A végső mátrixban mind a 8 lapon az **L1, L2, L3, L4, L6, L7, DT2/a, DT2/b, #78** cella `zöld`; az **L5** `zöld` vagy a 7. szakaszban jelzett hiány; az N18 és az N19 `jelzett hiány`. (A sablon szerint L1, L2, L3, L4, L6 vagy L7 bukásával lap nem commitolható.)
 4. Az L1 mérése a `_TUDOMANYOS` 13 szakaszára szól; törzscikk-pont a mércében nincs (D34).
@@ -143,10 +143,9 @@ A DT-F10b (🟢, 1. változat) szerint az első éles újragenerálás a #36-é;
 - **DT-F10a (🟢, felhasználó, 2026-10-19)** — a 3. változat: az LD008 feloldása, az LD009, LD058, LD064 a DT-F43 (c) szerint dokumentáltan nyitott (alkalmazás: L0).
 - **DT186 (b)** — az éles `lexikon/` a #11 1. lépcsője után generálódik, „#36 vagy #10”: DT-F10b.
 - **DT-F10b (🟢, felhasználó, 2026-10-19)** — az 1. változat: a #36 előbb (a #11 után, saját ⛔-vel), a #10 a #36 eredményén mér, és csak a J-javítások után generál újra; a #10 `fugg` listája megkapja a 36-ot (alkalmazás: fejléc, P, M0, R).
+- **DT-F10c (🟢, felhasználó, 2026-10-19)** — az 1. változat: a javítás a régi forrásrétegben (rés-jelölők között, ill. a rés-forrás prózájában), a befagyasztás oldása után, csak formai javítással; a 2. lépcső ezt bájtra viszi tovább (alkalmazás: P/3, J).
 
-**Nyitott (a `DONTESEK.md`-ben, a P/2 előfeltétele):**
-
-- **DT-F10c** — a bukott L-cella javításának helye a nem migrált motívumoknál (régi forrásréteg a befagyasztás oldása után, vagy a 2. lépcső új forrása).
+**Nyitott döntés a brief írásakor nincs**; a futás közben felmerülő tartalmi kérdés `DT-F10<x>` helyőrzővel kerül a `DONTESEK.md`-be (L0, J).
 
 ## 6. Nyitott kérdések (nem blokkolnak; a zárónaplóba vagy `/befogad` útján a `NYITOTT_FELADATOK.md`-be)
 
