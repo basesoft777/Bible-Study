@@ -8,7 +8,7 @@
 |---|---|
 | **K1 (D2)** | 1Móz 1–25: 21 991 összevetés, Zsolt 22: 3 022 összevetés; **az egyetlen eltérő blokk-csoport a `gorog_szo:usz_elofordulas`** (27 + 11 görög szó-lap), mind a dokumentált „+” Strong-lánc okkal (DT147). Más eltérés nincs. |
 | **K5 vers-lap** | 1 vCPU / 2 GB korláttal, meleg OS-gyorsítótárral a teljes vers-lap (Olvasópult, a fejezet szövegével és a vers-panellel) **medián 217 ms, p95 310 ms**; a vers-panel töredéke (`/r/vers/…`) 126 / 312 ms. A pilot 93 ms-a a D3 lekérdezés-készlet ideje (nem teljes lap); ugyanez a készlet ezen az adatbázison korlát nélkül 38,8 ms (1Móz 1–25) és 24,9 ms (Zsolt 22). **Hideg** (üres OS-gyorsítótár) a vers-lap **medián 4,8 s, p95 8,9 s**. |
-| **K5 magyar szó < 100 ms** | Meleg mediánnal **nem teljesül** a leggyakoribb szavakon: *és* alapmódban 152 ms (p95 162), pontos módban 97 ms (p95 118, a határon); a (c) mód *föld* 158 ms, *ki* 531 ms. A többi magyar szó 8–61 ms. **Hideg** gyorsítótárral minden magyar keresés 100 ms fölött van (219–2 098 ms). → **DT-F76k** (döntés, megállás). |
+| **K5 magyar szó < 100 ms** | Meleg mediánnal **nem teljesül** a leggyakoribb szavakon: *és* alapmódban 152 ms (p95 162), pontos módban 97 ms (p95 118, a határon); a (c) mód *föld* 158 ms, *ki* 531 ms. A többi magyar szó 8–61 ms. **Hideg** gyorsítótárral minden magyar keresés 100 ms fölött van (219–2 098 ms). → **DT221** (döntés, megállás). |
 | **K6 tesztek** | a teljes futás (a lassú `teszt_szintek.py`-jal): 9 fájlból 7 zöld; **2 piros**: `teszt_bdb_vers_jelentes.py` (a main-ről örökölt, ismert hiba, #119), `teszt_olvaso_szerver.py` (a saját `m4_meres.py` első változata sértette a „SQL csak a `lekerdezesek.py`-ban” szabályt; javítva, újrafuttatva: l. 5. szakasz). |
 
 ## 1. Gép és környezet
@@ -166,7 +166,7 @@ A blokkonkénti vizuális összevetés a `naplok/OLVASOI_KONKORDANCIA_pilot_ossz
 
 ## 8. Nyitott (döntés, megállás)
 
-- **DT-F76k** (`DONTESEK.md`): a K5 nem teljesül (a magyar szóra keresés a leggyakoribb szavakon és a (c) módban 100 ms fölött, hideg gyorsítótárral minden lap és keresés másodperces), és a vers-lap 1 vCPU-n a pilot 93 ms-ának kb. 2,3-szorosa. Opciók és javaslat ott.
+- **DT221** (`DONTESEK.md`): a K5 nem teljesül (a magyar szóra keresés a leggyakoribb szavakon és a (c) módban 100 ms fölött, hideg gyorsítótárral minden lap és keresés másodperces), és a vers-lap 1 vCPU-n a pilot 93 ms-ának kb. 2,3-szorosa. Opciók és javaslat ott.
 - **N-F76l**, **N-F76m** (`NYITOTT_FELADATOK.md`).
 - A hideg idő a WSL2 virtuális lemezén mért; a VPS-en (M6) újramérendő.
 

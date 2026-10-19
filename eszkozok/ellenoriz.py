@@ -30,6 +30,7 @@ Kilepesi kod: 0 = rendben, 1 = szabalysertes, 2 = hiba.
 import argparse
 import hashlib
 import os
+import re
 import sys
 
 if hasattr(sys.stdout, 'reconfigure'):
@@ -526,6 +527,41 @@ def szabaly10_v22_tablak(adat_dir):
 # 11-12. RENDER_BRIEF.md R1.6: rés-forrás egyezés + lap-számláló
 # ---------------------------------------------------------------------------
 
+# DT-F11i (hibajavítás, nem lazítás): a generált adatrés proveniencia-sora
+# a generálás napját hordozza (`ts=`, general.TS). Az elvárt szöveget ezért
+# a lapon álló ts-sel kell előállítani -- a mai nappal a generálás utáni
+# naptól minden helyes rés SÉRTÉS lenne. A ts-en kívüli minden eltérés
+# (a rés tartalma, a forrás-lista, a scope) továbbra is SÉRTÉS. Ha a résben
+# nincs proveniencia-ts, a viselkedés a régi (general.TS).
+_RES_PROV_TS_RE = re.compile(
+    r'^\*Proveniencia: `scope=id:(\S+) \| forras=[^`]* \| ts=(\d{4}-\d{2}-\d{2})`\*$',
+    re.MULTILINE)
+
+
+def res_lap_ts(tenyleges, motivum_id):
+    """A rés-törzs utolsó, a motívumra szóló proveniencia-sorának ts-e, vagy None."""
+    ts = None
+    for m in _RES_PROV_TS_RE.finditer(tenyleges or ''):
+        if m.group(1) == motivum_id:
+            ts = m.group(2)
+    return ts
+
+
+def res_elvart_es_tenyleges(LG, lex_szoveg, motivum_id, res, r):
+    """(elvárt, tényleges) rés-törzs -- az elvárt a lapon álló ts-sel
+    generálva (DT-F11i), ha a résben van ilyen; különben general.TS-sel."""
+    tenyleges = LG.res_torzs_lapbol(lex_szoveg, {'id': motivum_id}, res)
+    ts = res_lap_ts(tenyleges, motivum_id)
+    eredeti_ts = LG.G.TS
+    if ts is not None:
+        LG.G.TS = ts
+    try:
+        elvart = LG.res_torzs({'id': motivum_id}, res, r)
+    finally:
+        LG.G.TS = eredeti_ts
+    return elvart, tenyleges
+
+
 def szabaly11_res_forras_egyezes(adat_dir):
     """G4: SÉRTÉS, ha egy `tanulmany`/`adat` forrású rés a lexikonoldalon
     eltér a `res_forras.tsv` + a tanulmány/napló szerint elvárttól -- azaz
@@ -561,8 +597,7 @@ def szabaly11_res_forras_egyezes(adat_dir):
             hibas.append('%s / %s -- nincs lexikonoldal' % (motivum_id, res))
             continue
         try:
-            elvart = LG.res_torzs({'id': motivum_id}, res, r)
-            tenyleges = LG.res_torzs_lapbol(lex_szoveg, {'id': motivum_id}, res)
+            elvart, tenyleges = res_elvart_es_tenyleges(LG, lex_szoveg, motivum_id, res, r)
         except Exception as exc:
             hibas.append('%s / %s -- hiba: %s' % (motivum_id, res, exc))
             continue
