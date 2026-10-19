@@ -1,7 +1,3 @@
 # F22 (N-F22c, 2026.10.12): a modell-válaszoktól függetlenül kezi állapotú Károli-versek (egyesit.py kezi_felulir);
 # ok: a nyers TAGNT [..]/{..} jelölésű sorai a TAGNT_kivonat.tsv-ből kimaradtak (naplok/F22_TAGNT_zarojeles_sorok.md).
 igehely	ok
-Kol 1:11	N-F22c: a nyers TAGNT `Col.1.11{1.12}` sorai (2 szó) a kivonatból kimaradtak; a vers a NRSV-kulcs szerint érintett, a görög szöveg részleges lehet; a Károli-kulcs a kivonat javítása után dől el (a felhasználó döntése, 2026.10.12)
-Kol 1:12	N-F22c: a nyers TAGNT `Col.1.11{1.12}` sorai (2 szó) a kivonatból kimaradtak; a vers a egyéb-kulcs szerint érintett, a görög szöveg részleges lehet; a Károli-kulcs a kivonat javítása után dől el (a felhasználó döntése, 2026.10.12)
-Kol 1:22	N-F22c: a nyers TAGNT `Col.1.22[1.21]` sorai (3 szó) a kivonatból kimaradtak; a vers a NRSV-kulcs szerint érintett, a görög szöveg részleges lehet; a Károli-kulcs a kivonat javítása után dől el (a felhasználó döntése, 2026.10.12)
-Kol 1:21	N-F22c: a nyers TAGNT `Col.1.22[1.21]` sorai (3 szó) a kivonatból kimaradtak; a vers a KJV-kulcs szerint érintett, a görög szöveg részleges lehet; a Károli-kulcs a kivonat javítása után dől el (a felhasználó döntése, 2026.10.12)

@@ -1,4 +1,4 @@
-# proveniencia: scope=manual | forras=f22/valaszok/sonnet/2Thessz.jsonl, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; az API (Batch)-futásnak nincs lekérdezés-időbélyege) | modell-kimenet, javaslat: nem lekérdezés-eredmény; minden link `alacsony` (egy modell, nincs egyezés); a strong a TAGNT-ből, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py
+# proveniencia: scope=manual | forras=f22/valaszok/sonnet/2Thessz.jsonl, f22/valaszok/sonnet/2Thessz_javito.jsonl, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; az API (Batch)-futásnak nincs lekérdezés-időbélyege) | modell-kimenet, javaslat: nem lekérdezés-eredmény; minden link `alacsony` (egy modell, nincs egyezés); a strong a TAGNT-ből, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py
 vers	hu_sorszam	hu_szo	er_sorszam	er_szo	strong	bizonyossag	forras
 2Thessz 1:1	1	Pál	1	Παῦλος	G3972	alacsony	S
 2Thessz 1:1	2	és	2	καὶ	G2532	alacsony	S
@@ -104,6 +104,45 @@ vers	hu_sorszam	hu_szo	er_sorszam	er_szo	strong	bizonyossag	forras
 2Thessz 1:6	11	azoknak	6	τοῖς	G3588	alacsony	S
 2Thessz 1:6	14	titeket	8	ὑμᾶς	G4771	alacsony	S
 2Thessz 1:6	15	szorongatnak	7	θλίβουσιν	G2346	alacsony	S
+2Thessz 1:7	1	Néktek	2	ὑμῖν	G4771	alacsony	S
+2Thessz 1:7	2	pedig	1	καὶ	G2532	alacsony	S
+2Thessz 1:7	5	szorongattattok	4	θλιβομένοις	G2346	alacsony	S
+2Thessz 1:7	6	nyugodalommal	5	ἄνεσιν	G0425	alacsony	S
+2Thessz 1:7	7	mivelünk	6	μεθ᾽	G3326	alacsony	S
+2Thessz 1:7	7	mivelünk	7	ἡμῶν	G3165	alacsony	S
+2Thessz 1:7	8	együtt	6	μεθ᾽	G3326	alacsony	S
+2Thessz 1:7	10	mikor	8	ἐν	G1722	alacsony	S
+2Thessz 1:7	10	mikor	9	τῇ	G3588	alacsony	S
+2Thessz 1:7	11	megjelenik	10	ἀποκαλύψει	G0602	alacsony	S
+2Thessz 1:7	13	Úr	12	κυρίου	G2962	alacsony	S
+2Thessz 1:7	14	Jézus	13	Ἰησοῦ	G2424	alacsony	S
+2Thessz 1:7	16	égből	14	ἀπ᾽	G0575	alacsony	S
+2Thessz 1:7	16	égből	15	οὐρανοῦ	G3772	alacsony	S
+2Thessz 1:7	18	ő	19	αὐτοῦ	G0846	alacsony	S
+2Thessz 1:7	19	hatalmának	18	δυνάμεως	G1411	alacsony	S
+2Thessz 1:7	19	hatalmának	19	αὐτοῦ	G0846	alacsony	S
+2Thessz 1:7	20	angyalaival	16	μετ᾽	G3326	alacsony	S
+2Thessz 1:7	20	angyalaival	17	ἀγγέλων	G0032	alacsony	S
+2Thessz 1:8	1	Tűznek	1	ἐν	G1722	alacsony	S
+2Thessz 1:8	1	Tűznek	2	πυρὶ	G4442	alacsony	S
+2Thessz 1:8	2	lángjában	3	φλογός,	G5395	alacsony	S
+2Thessz 1:8	3	ki	4	διδόντος	G1325	alacsony	S
+2Thessz 1:8	4	bosszút	5	ἐκδίκησιν	G1557	alacsony	S
+2Thessz 1:8	5	áll	4	διδόντος	G1325	alacsony	S
+2Thessz 1:8	6	azokon	6	τοῖς	G3588	alacsony	S
+2Thessz 1:8	8	kik	6	τοῖς	G3588	alacsony	S
+2Thessz 1:8	9	nem	7	μὴ	G3361	alacsony	S
+2Thessz 1:8	10	ismerik	8	εἰδόσιν	G6063	alacsony	S
+2Thessz 1:8	12	Istent	9	θεὸν	G2316	alacsony	S
+2Thessz 1:8	13	és	10	καὶ	G2532	alacsony	S
+2Thessz 1:8	15	kik	11	τοῖς	G3588	alacsony	S
+2Thessz 1:8	16	nem	12	μὴ	G3361	alacsony	S
+2Thessz 1:8	17	engedelmeskednek	13	ὑπακούουσιν	G5219	alacsony	S
+2Thessz 1:8	19	mi	18	ἡμῶν	G3165	alacsony	S
+2Thessz 1:8	20	Urunk	17	κυρίου	G2962	alacsony	S
+2Thessz 1:8	21	Jézus	19	Ἰησοῦ	G2424	alacsony	S
+2Thessz 1:8	22	Krisztus	20	Χριστοῦ·	G5547	alacsony	S
+2Thessz 1:8	23	evangyéliomának	15	εὐαγγελίῳ	G2098	alacsony	S
 2Thessz 1:9	1	A	1	οἵτινες	G3748	alacsony	S
 2Thessz 1:9	2	kik	1	οἵτινες	G3748	alacsony	S
 2Thessz 1:9	3	meg	3	τίσουσιν,	G5099	alacsony	S

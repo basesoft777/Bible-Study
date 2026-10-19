@@ -1,9 +1,3 @@
 # F22 (N-F22c, 2026.10.12): a modell-válaszoktól függetlenül kezi állapotú Károli-versek (egyesit.py kezi_felulir);
 # ok: a nyers TAGNT [..]/{..} jelölésű sorai a TAGNT_kivonat.tsv-ből kimaradtak (naplok/F22_TAGNT_zarojeles_sorok.md).
 igehely	ok
-Ef 1:10	N-F22c: a nyers TAGNT `Eph.1.10{1.11}` sorai (2 szó) a kivonatból kimaradtak; a vers a NRSV-kulcs szerint érintett, a görög szöveg részleges lehet; a Károli-kulcs a kivonat javítása után dől el (a felhasználó döntése, 2026.10.12)
-Ef 1:11	N-F22c: a nyers TAGNT `Eph.1.10{1.11}` sorai (2 szó) a kivonatból kimaradtak; a vers a egyéb-kulcs szerint érintett, a görög szöveg részleges lehet; a Károli-kulcs a kivonat javítása után dől el (a felhasználó döntése, 2026.10.12)
-Ef 2:14	N-F22c: a nyers TAGNT `Eph.2.14[2.15]` sorai (6 szó) a kivonatból kimaradtak; a vers a NRSV-kulcs szerint érintett, a görög szöveg részleges lehet; a Károli-kulcs a kivonat javítása után dől el (a felhasználó döntése, 2026.10.12)
-Ef 2:15	N-F22c: a nyers TAGNT `Eph.2.14[2.15]` sorai (6 szó) a kivonatból kimaradtak; a vers a KJV-kulcs szerint érintett, a görög szöveg részleges lehet; a Károli-kulcs a kivonat javítása után dől el (a felhasználó döntése, 2026.10.12)
-Ef 5:14	N-F22c: a nyers TAGNT `Eph.5.14[5.13]` sorai (6 szó) a kivonatból kimaradtak; a vers a NRSV-kulcs szerint érintett, a görög szöveg részleges lehet; a Károli-kulcs a kivonat javítása után dől el (a felhasználó döntése, 2026.10.12)
-Ef 5:13	N-F22c: a nyers TAGNT `Eph.5.14[5.13]` sorai (6 szó) a kivonatból kimaradtak; a vers a KJV-kulcs szerint érintett, a görög szöveg részleges lehet; a Károli-kulcs a kivonat javítása után dől el (a felhasználó döntése, 2026.10.12)

@@ -1,4 +1,4 @@
-# proveniencia: scope=manual | forras=f22/valaszok/sonnet/Gal.jsonl, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; az API (Batch)-futásnak nincs lekérdezés-időbélyege) | modell-kimenet, javaslat: nem lekérdezés-eredmény; minden link `alacsony` (egy modell, nincs egyezés); a strong a TAGNT-ből, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py
+# proveniencia: scope=manual | forras=f22/valaszok/sonnet/Gal.jsonl, f22/valaszok/sonnet/Gal_javito.jsonl, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; az API (Batch)-futásnak nincs lekérdezés-időbélyege) | modell-kimenet, javaslat: nem lekérdezés-eredmény; minden link `alacsony` (egy modell, nincs egyezés); a strong a TAGNT-ből, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py
 vers	oldal	sorszam	szo	allapot	partner_sorszam	strong	bizonyossag	forras
 Gal 1:1	hu	1	Pál	parositva	1	G3972	alacsony	S
 Gal 1:1	hu	2	apostol	parositva	2	G0652	alacsony	S
@@ -1403,93 +1403,95 @@ Gal 2:18	er	7	οἰκοδομῶ,	parositva	8	G3618	alacsony	S
 Gal 2:18	er	8	παραβάτην	parositva	11	G3848	alacsony	S
 Gal 2:18	er	9	ἐμαυτὸν	parositva	9	G1473	alacsony	S
 Gal 2:18	er	10	συνιστάνω·	parositva	10	G4921	alacsony	S
-Gal 2:19	hu	1	Mert	fuggoben			kezi	
-Gal 2:19	hu	2	én	fuggoben			kezi	
-Gal 2:19	hu	3	a	fuggoben			kezi	
-Gal 2:19	hu	4	törvény	fuggoben			kezi	
-Gal 2:19	hu	5	által	fuggoben			kezi	
-Gal 2:19	hu	6	meghaltam	fuggoben			kezi	
-Gal 2:19	hu	7	a	fuggoben			kezi	
-Gal 2:19	hu	8	törvénynek	fuggoben			kezi	
-Gal 2:19	hu	9	hogy	fuggoben			kezi	
-Gal 2:19	hu	10	Istennek	fuggoben			kezi	
-Gal 2:19	hu	11	éljek	fuggoben			kezi	
-Gal 2:19	er	1	ἐγὼ	fuggoben		G1473	kezi	
-Gal 2:19	er	2	γὰρ	fuggoben		G1063	kezi	
-Gal 2:19	er	3	διὰ	fuggoben		G1223	kezi	
-Gal 2:19	er	4	νόμου	fuggoben		G3551	kezi	
-Gal 2:19	er	5	νόμῳ	fuggoben		G3551	kezi	
-Gal 2:19	er	6	ἀπέθανον,	fuggoben		G0599	kezi	
-Gal 2:19	er	7	ἵνα	fuggoben		G2443	kezi	
-Gal 2:19	er	8	θεῷ	fuggoben		G2316	kezi	
-Gal 2:19	er	9	ζήσω.	fuggoben		G2198	kezi	
-Gal 2:20	hu	1	Krisztussal	fuggoben			kezi	
-Gal 2:20	hu	2	együtt	fuggoben			kezi	
-Gal 2:20	hu	3	megfeszíttettem	fuggoben			kezi	
-Gal 2:20	hu	4	Élek	fuggoben			kezi	
-Gal 2:20	hu	5	pedig	fuggoben			kezi	
-Gal 2:20	hu	6	többé	fuggoben			kezi	
-Gal 2:20	hu	7	nem	fuggoben			kezi	
-Gal 2:20	hu	8	én	fuggoben			kezi	
-Gal 2:20	hu	9	hanem	fuggoben			kezi	
-Gal 2:20	hu	10	él	fuggoben			kezi	
-Gal 2:20	hu	11	bennem	fuggoben			kezi	
-Gal 2:20	hu	12	a	fuggoben			kezi	
-Gal 2:20	hu	13	Krisztus	fuggoben			kezi	
-Gal 2:20	hu	14	a	fuggoben			kezi	
-Gal 2:20	hu	15	mely	fuggoben			kezi	
-Gal 2:20	hu	16	életet	fuggoben			kezi	
-Gal 2:20	hu	17	pedig	fuggoben			kezi	
-Gal 2:20	hu	18	most	fuggoben			kezi	
-Gal 2:20	hu	19	testben	fuggoben			kezi	
-Gal 2:20	hu	20	élek	fuggoben			kezi	
-Gal 2:20	hu	21	az	fuggoben			kezi	
-Gal 2:20	hu	22	Isten	fuggoben			kezi	
-Gal 2:20	hu	23	Fiában	fuggoben			kezi	
-Gal 2:20	hu	24	való	fuggoben			kezi	
-Gal 2:20	hu	25	hitben	fuggoben			kezi	
-Gal 2:20	hu	26	élem	fuggoben			kezi	
-Gal 2:20	hu	27	a	fuggoben			kezi	
-Gal 2:20	hu	28	ki	fuggoben			kezi	
-Gal 2:20	hu	29	szeretett	fuggoben			kezi	
-Gal 2:20	hu	30	engem	fuggoben			kezi	
-Gal 2:20	hu	31	és	fuggoben			kezi	
-Gal 2:20	hu	32	önmagát	fuggoben			kezi	
-Gal 2:20	hu	33	adta	fuggoben			kezi	
-Gal 2:20	hu	34	érettem	fuggoben			kezi	
-Gal 2:20	er	1	ζῶ	fuggoben		G2198	kezi	
-Gal 2:20	er	2	δὲ	fuggoben		G1161	kezi	
-Gal 2:20	er	3	οὐκέτι	fuggoben		G2089+G3756	kezi	
-Gal 2:20	er	4	ἐγώ,	fuggoben		G1473	kezi	
-Gal 2:20	er	5	ζῇ	fuggoben		G2198	kezi	
-Gal 2:20	er	6	δὲ	fuggoben		G1161	kezi	
-Gal 2:20	er	7	ἐν	fuggoben		G1722	kezi	
-Gal 2:20	er	8	ἐμοὶ	fuggoben		G1473	kezi	
-Gal 2:20	er	9	Χριστός·	fuggoben		G5547	kezi	
-Gal 2:20	er	10	ὃ	fuggoben		G3739	kezi	
-Gal 2:20	er	11	δὲ	fuggoben		G1161	kezi	
-Gal 2:20	er	12	νῦν	fuggoben		G3568	kezi	
-Gal 2:20	er	13	ζῶ	fuggoben		G2198	kezi	
-Gal 2:20	er	14	ἐν	fuggoben		G1722	kezi	
-Gal 2:20	er	15	σαρκί,	fuggoben		G4561	kezi	
-Gal 2:20	er	16	ἐν	fuggoben		G1722	kezi	
-Gal 2:20	er	17	πίστει	fuggoben		G4102	kezi	
-Gal 2:20	er	18	ζῶ	fuggoben		G2198	kezi	
-Gal 2:20	er	19	τῇ	fuggoben		G3588	kezi	
-Gal 2:20	er	20	τοῦ	fuggoben		G3588	kezi	
-Gal 2:20	er	21	υἱοῦ	fuggoben		G5207	kezi	
-Gal 2:20	er	22	τοῦ	fuggoben		G3588	kezi	
-Gal 2:20	er	23	θεοῦ	fuggoben		G2316	kezi	
-Gal 2:20	er	24	καὶ	fuggoben		G2532	kezi	
-Gal 2:20	er	25	Χριστοῦ	fuggoben		G5547	kezi	
-Gal 2:20	er	26	τοῦ	fuggoben		G3588	kezi	
-Gal 2:20	er	27	ἀγαπήσαντός	fuggoben		G0025	kezi	
-Gal 2:20	er	28	με	fuggoben		G3165	kezi	
-Gal 2:20	er	29	καὶ	fuggoben		G2532	kezi	
-Gal 2:20	er	30	παραδόντος	fuggoben		G3860	kezi	
-Gal 2:20	er	31	ἑαυτὸν	fuggoben		G1438	kezi	
-Gal 2:20	er	32	ὑπὲρ	fuggoben		G5228	kezi	
-Gal 2:20	er	33	ἐμοῦ.	fuggoben		G1473	kezi	
+Gal 2:19	hu	1	Mert	parositva	2	G1063	alacsony	S
+Gal 2:19	hu	2	én	parositva	1	G1473	alacsony	S
+Gal 2:19	hu	3	a	betoldas			alacsony	S
+Gal 2:19	hu	4	törvény	parositva	4	G3551	alacsony	S
+Gal 2:19	hu	5	által	parositva	3	G1223	alacsony	S
+Gal 2:19	hu	6	meghaltam	parositva	6	G0599	alacsony	S
+Gal 2:19	hu	7	a	betoldas			alacsony	S
+Gal 2:19	hu	8	törvénynek	parositva	5	G3551	alacsony	S
+Gal 2:19	hu	9	hogy	parositva	7	G2443	alacsony	S
+Gal 2:19	hu	10	Istennek	parositva	8	G2316	alacsony	S
+Gal 2:19	hu	11	éljek	parositva	9	G2198	alacsony	S
+Gal 2:19	er	1	ἐγὼ	parositva	2	G1473	alacsony	S
+Gal 2:19	er	2	γὰρ	parositva	1	G1063	alacsony	S
+Gal 2:19	er	3	διὰ	parositva	5	G1223	alacsony	S
+Gal 2:19	er	4	νόμου	parositva	4	G3551	alacsony	S
+Gal 2:19	er	5	νόμῳ	parositva	8	G3551	alacsony	S
+Gal 2:19	er	6	ἀπέθανον,	parositva	6	G0599	alacsony	S
+Gal 2:19	er	7	ἵνα	parositva	9	G2443	alacsony	S
+Gal 2:19	er	8	θεῷ	parositva	10	G2316	alacsony	S
+Gal 2:19	er	9	ζήσω.	parositva	11	G2198	alacsony	S
+Gal 2:20	hu	1	Krisztussal	parositva	1	G5547	alacsony	S
+Gal 2:20	hu	2	együtt	parositva	2	G4957	alacsony	S
+Gal 2:20	hu	3	megfeszíttettem	parositva	2	G4957	alacsony	S
+Gal 2:20	hu	4	Élek	parositva	3	G2198	alacsony	S
+Gal 2:20	hu	5	pedig	parositva	4	G1161	alacsony	S
+Gal 2:20	hu	6	többé	parositva	5	G2089+G3756	alacsony	S
+Gal 2:20	hu	7	nem	parositva	5	G2089+G3756	alacsony	S
+Gal 2:20	hu	8	én	parositva	6	G1473	alacsony	S
+Gal 2:20	hu	9	hanem	parositva	8	G1161	alacsony	S
+Gal 2:20	hu	10	él	parositva	7	G2198	alacsony	S
+Gal 2:20	hu	11	bennem	parositva	9,10	G1722+G1473	alacsony	S
+Gal 2:20	hu	12	a	betoldas			alacsony	S
+Gal 2:20	hu	13	Krisztus	parositva	11	G5547	alacsony	S
+Gal 2:20	hu	14	a	parositva	12	G3739	alacsony	S
+Gal 2:20	hu	15	mely	parositva	12	G3739	alacsony	S
+Gal 2:20	hu	16	életet	betoldas			alacsony	S
+Gal 2:20	hu	17	pedig	parositva	13	G1161	alacsony	S
+Gal 2:20	hu	18	most	parositva	14	G3568	alacsony	S
+Gal 2:20	hu	19	testben	parositva	16,17	G1722+G4561	alacsony	S
+Gal 2:20	hu	20	élek	parositva	15	G2198	alacsony	S
+Gal 2:20	hu	21	az	betoldas			alacsony	S
+Gal 2:20	hu	22	Isten	parositva	25	G2316	alacsony	S
+Gal 2:20	hu	23	Fiában	parositva	23	G5207	alacsony	S
+Gal 2:20	hu	24	való	parositva	21	G3588	alacsony	S
+Gal 2:20	hu	25	hitben	parositva	18,19	G1722+G4102	alacsony	S
+Gal 2:20	hu	26	élem	parositva	20	G2198	alacsony	S
+Gal 2:20	hu	27	a	parositva	28	G3588	alacsony	S
+Gal 2:20	hu	28	ki	parositva	28	G3588	alacsony	S
+Gal 2:20	hu	29	szeretett	parositva	29	G0025	alacsony	S
+Gal 2:20	hu	30	engem	parositva	30	G3165	alacsony	S
+Gal 2:20	hu	31	és	parositva	31	G2532	alacsony	S
+Gal 2:20	hu	32	önmagát	parositva	33	G1438	alacsony	S
+Gal 2:20	hu	33	adta	parositva	32	G3860	alacsony	S
+Gal 2:20	hu	34	érettem	parositva	34,35	G5228+G1473	alacsony	S
+Gal 2:20	er	1	Χριστῷ	parositva	1	G5547	alacsony	S
+Gal 2:20	er	2	συνεσταύρωμαι·	parositva	2,3	G4957	alacsony	S
+Gal 2:20	er	3	ζῶ	parositva	4	G2198	alacsony	S
+Gal 2:20	er	4	δὲ	parositva	5	G1161	alacsony	S
+Gal 2:20	er	5	οὐκέτι	parositva	6,7	G2089+G3756	alacsony	S
+Gal 2:20	er	6	ἐγώ,	parositva	8	G1473	alacsony	S
+Gal 2:20	er	7	ζῇ	parositva	10	G2198	alacsony	S
+Gal 2:20	er	8	δὲ	parositva	9	G1161	alacsony	S
+Gal 2:20	er	9	ἐν	parositva	11	G1722	alacsony	S
+Gal 2:20	er	10	ἐμοὶ	parositva	11	G1473	alacsony	S
+Gal 2:20	er	11	Χριστός·	parositva	13	G5547	alacsony	S
+Gal 2:20	er	12	ὃ	parositva	14,15	G3739	alacsony	S
+Gal 2:20	er	13	δὲ	parositva	17	G1161	alacsony	S
+Gal 2:20	er	14	νῦν	parositva	18	G3568	alacsony	S
+Gal 2:20	er	15	ζῶ	parositva	20	G2198	alacsony	S
+Gal 2:20	er	16	ἐν	parositva	19	G1722	alacsony	S
+Gal 2:20	er	17	σαρκί,	parositva	19	G4561	alacsony	S
+Gal 2:20	er	18	ἐν	parositva	25	G1722	alacsony	S
+Gal 2:20	er	19	πίστει	parositva	25	G4102	alacsony	S
+Gal 2:20	er	20	ζῶ	parositva	26	G2198	alacsony	S
+Gal 2:20	er	21	τῇ	parositva	24	G3588	alacsony	S
+Gal 2:20	er	22	τοῦ	forditatlan		G3588	alacsony	S
+Gal 2:20	er	23	υἱοῦ	parositva	23	G5207	alacsony	S
+Gal 2:20	er	24	τοῦ	forditatlan		G3588	alacsony	S
+Gal 2:20	er	25	θεοῦ	parositva	22	G2316	alacsony	S
+Gal 2:20	er	26	καὶ	forditatlan		G2532	alacsony	S
+Gal 2:20	er	27	Χριστοῦ	forditatlan		G5547	alacsony	S
+Gal 2:20	er	28	τοῦ	parositva	27,28	G3588	alacsony	S
+Gal 2:20	er	29	ἀγαπήσαντός	parositva	29	G0025	alacsony	S
+Gal 2:20	er	30	με	parositva	30	G3165	alacsony	S
+Gal 2:20	er	31	καὶ	parositva	31	G2532	alacsony	S
+Gal 2:20	er	32	παραδόντος	parositva	33	G3860	alacsony	S
+Gal 2:20	er	33	ἑαυτὸν	parositva	32	G1438	alacsony	S
+Gal 2:20	er	34	ὑπὲρ	parositva	34	G5228	alacsony	S
+Gal 2:20	er	35	ἐμοῦ.	parositva	34	G1473	alacsony	S
 Gal 2:21	hu	1	Nem	parositva	1	G3756	alacsony	S
 Gal 2:21	hu	2	törlöm	parositva	2	G0114	alacsony	S
 Gal 2:21	hu	3	el	parositva	2	G0114	alacsony	S
