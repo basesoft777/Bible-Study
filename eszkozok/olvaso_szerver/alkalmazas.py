@@ -26,6 +26,7 @@ import adatbazis
 import allapot as allapot_modul
 import arculat as arculat_modul
 import hozzaferes as hozz_modul
+import kereses as kereses_modul
 import lekerdezesek
 import oldalak
 import tervezo as tervezo_modul
@@ -219,10 +220,35 @@ def letrehoz(db_ut=None, kiadas=None, konfig_dir=None, hozzaferes=None):
             q = '%s %s%s' % (request.args.get('konyv', ''), request.args.get('fej', '1') or '1', (':' + request.args['vers']) if request.args.get('vers') else '')
         cel = oldalak.ugras_celpont(gyar.kozos, q)
         if not cel:
-            return hiba(404, 'Nem értelmezhető cél. Adj meg igehelyet (pl. 1Móz 1:4) vagy Strong-számot (pl. H0216). A keresés még nem része ennek a kiadásnak.')
+            return hiba(404, 'Nem értelmezhető cél. Adj meg igehelyet (pl. 1Móz 1:4) vagy Strong-számot (pl. H0216); szóra és frázisra a /kereses lap keres.')
         r = redirect(cel, 302)
         r.headers['Cache-Control'] = 'no-store'
         return r
+
+    @app.get('/kereses')
+    def kereses():
+        """A keresés (M3): `?q=` (+ `tipus`, `mod`) vagy a típusos állandó alak (`?strong=`, `?szo=` + `mod`, `?frazis=`, `?heber=`), `tol`: lapozás.
+        Igehelyre (pl. `1Móz 1:4`) a `q` ugrik. A paraméterek csak a `kereses.ertelmez` normalizálásán át jutnak a lekérdezésbe (paraméterként)."""
+        ut = request.full_path.rstrip('?') if request.query_string else request.path
+        urlap = {'q': request.args.get('q') or next((request.args.get(t) for t in kereses_modul.TIPUSOK if request.args.get(t)), ''),
+                 'tipus': next((t for t in kereses_modul.TIPUSOK if request.args.get(t)), request.args.get('tipus') or 'auto'),
+                 'mod': request.args.get('mod') or kereses_modul.ALAP_MOD}
+        try:
+            k = kereses_modul.ertelmez(request.args, gyar.kozos)
+        except kereses_modul.KeresesHiba as ex:
+            html = gyar.kereses_lap(None, nezet_kerese(), szint_kerese(), ut, hiba=str(ex), urlap=urlap)
+            r = make_response(html, 400)
+            r.headers['Content-Type'] = 'text/html; charset=utf-8'
+            r.headers['Cache-Control'] = 'no-store'
+            return r
+        if isinstance(k, tuple):
+            r = redirect(k[1], 302)
+            r.headers['Cache-Control'] = 'no-store'
+            return r
+        kulcs = {'urlap': tuple(sorted(urlap.items()))}
+        if k is not None:
+            kulcs.update({'tipus': k.tipus, 'szavak': tuple(k.szavak), 'szoveg': k.szoveg, 'mod': k.mod, 'tol': k.tol})
+        return kiszolgal(kulcs, lambda nezet, szint: gyar.kereses_lap(k, nezet, szint, ut, urlap=urlap))
 
     @app.get('/statusz')
     def statusz():

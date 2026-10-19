@@ -583,3 +583,141 @@ def ubs_dntg(con, g):
     jel = con.execute('SELECT lexid, domen, definicio_rovid, glosszak FROM ubs_dntg_jelentesek WHERE strong=? ORDER BY lexid', (g,)).fetchall()
     ref = con.execute('SELECT lexid, igehely FROM ubs_dntg_referenciak WHERE strong=? ORDER BY lexid, rowid LIMIT 40', (g,)).fetchall()
     return jel, ref
+
+
+# ---------------------------------------------------------------------------------------------------------------------
+# keresés (M3, M0 3.6): a lekérdezések paraméteresek; a frázis-sablonok szövege CSAK a szavak számától (2–4) függ, a bemenettől nem.
+# A keresés logikája (normalizálás, illesztés, lapozás) a `kereses.py`-ban áll; itt csak SQL van.
+# ---------------------------------------------------------------------------------------------------------------------
+def vers_adatok(con, igehelyek):
+    """{igehely: (sorrend, karoli_szoveg)}"""
+    return {ig: (s, t) for ig, s, t in _in(con, 'SELECT igehely, sorrend, karoli_szoveg FROM vers WHERE igehely IN ', '', igehelyek)}
+
+
+def hu_tokenek_versekre(con, igehelyek):
+    """{igehely: [(sorszam, szo), ...]} sorszám szerint (a találati sor kiemeléséhez)."""
+    ki = defaultdict(list)
+    for ig, sz, szo in _in(con, "SELECT igehely, sorszam, szo FROM token_karoli WHERE oldal='hu' AND igehely IN ", '', igehelyek):
+        ki[ig].append((sz, szo))
+    for v in ki.values():
+        v.sort()
+    return ki
+
+
+def er_tokenek_versekre(con, igehelyek):
+    """{igehely: [(sorszam, szo_kis, szo), ...]} sorszám szerint (a héber frázis illesztéséhez)."""
+    ki = defaultdict(list)
+    for ig, sz, kis, szo in _in(con, "SELECT igehely, sorszam, szo_kis, szo FROM token_karoli WHERE oldal='er' AND igehely IN ", '', igehelyek):
+        ki[ig].append((sz, kis or '', szo))
+    for v in ki.values():
+        v.sort()
+    return ki
+
+
+def par_versekre(con, igehelyek):
+    """[(igehely, hu_sorszam, er_sorszam, strong)] a versek Károli–Strong párjai (a kiemeléshez)."""
+    return _in(con, 'SELECT igehely, hu_sorszam, er_sorszam, strong FROM token_par WHERE igehely IN ', '', igehelyek)
+
+
+def vers_sorrendek(con):
+    """{igehely: sorrend} a teljes `vers` táblára (egyszer töltődik be; a keresés ezzel rendez, a tokenenkénti `vers`-illesztés helyett)."""
+    return {ig: s for ig, s in con.execute('SELECT igehely, sorrend FROM vers')}
+
+
+def kereses_strong_versek(con, s):
+    """{igehely} a versek, amelyekben a Strong-szám előfordul (TAHOT/TAGNT, `token_strong`)."""
+    return {r[0] for r in con.execute('SELECT DISTINCT igehely FROM token_strong WHERE strong=?', (s,))}
+
+
+def kereses_strong_db(con, s):
+    return con.execute('SELECT COUNT(*) FROM token_strong WHERE strong=?', (s,)).fetchone()[0]
+
+
+def kereses_strong_alakok(con, s, n=12):
+    """[(hu_szo_kis, db)] a Strong-számhoz párosított Károli-alakok (modell-kimenet: `token_par`), a leggyakoribbak."""
+    return con.execute('SELECT hu_szo_kis, COUNT(*) FROM token_par WHERE strong=? GROUP BY hu_szo_kis ORDER BY 2 DESC, 1 LIMIT ?', (s, n)).fetchall()
+
+
+def kereses_hu_szo_kis(con, kis):
+    """[(igehely, sorszam)] a magyar tokenek, amelyek `szo_kis`-e a megadott (pontos alak, kis/nagybetű-független); fedő index (`ix_token_karoli_2`)."""
+    return con.execute("SELECT igehely, sorszam FROM token_karoli WHERE szo_kis=? AND oldal='hu'", (kis,)).fetchall()
+
+
+def kereses_hu_alakok(con, alakok):
+    """[(igehely, sorszam, szo)] a magyar tokenek, amelyek `szo`-ja (pontosan, kis/nagybetű-érzékenyen) a listában van (F95 kulcs)."""
+    return _in(con, "SELECT igehely, sorszam, szo FROM token_karoli WHERE oldal='hu' AND szo IN ", '', alakok)
+
+
+def kereses_kotojeles(con, alakok):
+    """[(igehely, sorszam, alak)] a kötőjeles alakok darab-tokenjei (`szotari_token_kotojeles`, F95)."""
+    return _in(con, 'SELECT igehely, sorszam, alak FROM szotari_token_kotojeles WHERE alak IN ', '', alakok)
+
+
+def szotari_kereso(con, keresoalak):
+    """[(alak, mezok)] a keresőalakhoz (NFC kisbetűs szótári/mai/alapige/további alak) tartozó Károli-alakok."""
+    return con.execute('SELECT alak, mezok FROM szotari_kereso WHERE keresoalak=? ORDER BY alak', (keresoalak,)).fetchall()
+
+
+def szotari_alak_alakra(con, alak):
+    """(szotari_alak, szotari_alak_mai) az alakra (pontos, kis/nagybetű-érzékeny), vagy None."""
+    return con.execute('SELECT szotari_alak, szotari_alak_mai FROM szotari_alak WHERE alak=?', (alak,)).fetchone()
+
+
+def kereses_szo_strongjai(con, kis, n=12):
+    """[(strong, db)] a magyar alak (`hu_szo_kis`) párosított Strong-számai (ADATVAGYON 4. szakasz 2. pont; modell-kimenet)."""
+    return con.execute('SELECT strong, COUNT(*) FROM token_par WHERE hu_szo_kis=? GROUP BY strong ORDER BY 2 DESC, 1 LIMIT ?', (kis, n)).fetchall()
+
+
+def kereses_tokenek_strongjai(con, tokenek):
+    """Counter{strong: db}: a megadott (igehely, hu_sorszam) tokenek `token_par`-beli Strong-számai, a nyelvtaniak (`grammatikai_strongok`)
+    nélkül (a (c) mód Strong-ága, F95 M0 6. szakasz). A tokeneket versenként kérdezi le."""
+    versek = defaultdict(set)
+    for ig, sz in tokenek:
+        versek[ig].add(sz)
+    nyt = {r[0] for r in con.execute('SELECT strong FROM grammatikai_strongok')}
+    c = Counter()
+    for ig, hs, st in _in(con, 'SELECT igehely, hu_sorszam, strong FROM token_par WHERE igehely IN ', '', list(versek)):
+        if hs in versek[ig] and st not in nyt:
+            c[st] += 1
+    return c
+
+
+def kereses_par_strong_tokenek(con, strongok):
+    """[(igehely, hu_sorszam)] a magyar tokenek, amelyek a `token_par`-ban a Strong-számok egyikével párosítottak."""
+    return _in(con, 'SELECT igehely, hu_sorszam FROM token_par WHERE strong IN ', '', strongok)
+
+
+def _frazis_sql(n):
+    """Az n szavas (2–4) önillesztés szövege: a `token_karoli` egymást követő `sorszam`-ú, azonos `igehely`-ű és `oldal`-ú tokenjei.
+    A szöveg csak n-től függ (fix sablon); a szavak paraméterek."""
+    alias = 'abcd'[:n]
+    sql = 'SELECT a.igehely, a.sorszam FROM token_karoli a'
+    for i in range(1, n):
+        x = alias[i]
+        sql += ' JOIN token_karoli %s ON %s.szo_kis=? AND %s.igehely=a.igehely AND %s.oldal=a.oldal AND %s.sorszam=a.sorszam+%d' % (x, x, x, x, x, i)
+    return sql + ' WHERE a.szo_kis=? AND a.oldal=?'
+
+
+FRAZIS_SQL = {n: _frazis_sql(n) for n in (2, 3, 4)}
+
+
+def kereses_frazis(con, szavak, oldal='hu'):
+    """[(igehely, elso_sorszam)] a 2–4 szavas frázis (pontos `szo_kis` egyezés, egymást követő szavak egy versen belül)."""
+    if len(szavak) not in FRAZIS_SQL or oldal not in ('hu', 'er'):
+        raise ValueError('a frázis 2–4 szó')
+    return con.execute(FRAZIS_SQL[len(szavak)], tuple(szavak[1:]) + (szavak[0], oldal)).fetchall()
+
+
+def kereses_er_db(con, kisek):
+    """A héber tokenek száma, amelyek `szo_kis`-e a listában van (a legritkább frázisszó kiválasztásához)."""
+    return sum(r[0] for r in _in(con, "SELECT COUNT(*) FROM token_karoli WHERE oldal='er' AND szo_kis IN ", '', kisek))
+
+
+def kereses_er_versek(con, kisek):
+    """{igehely} a versek, amelyekben a héber `szo_kis` a listában van."""
+    return {r[0] for r in _in(con, "SELECT DISTINCT igehely FROM token_karoli WHERE oldal='er' AND szo_kis IN ", '', kisek)}
+
+
+def kereses_er_tokenek(con, kis):
+    """[(igehely, sorszam)] a héber tokenek, amelyek `szo_kis`-e a megadott (fedő index, `ix_token_karoli_2`)."""
+    return con.execute("SELECT igehely, sorszam FROM token_karoli WHERE szo_kis=? AND oldal='er' ORDER BY igehely, sorszam", (kis,)).fetchall()
