@@ -8,7 +8,7 @@ modell: sonnet
 allapot: megallt
 ag: claude/f50-ci-javito-kor
 ad: a /befogad és a /kovetkezo záró lépése push után elolvassa a CI-t; ha a hiba a saját PR tartalmából jön (fejléc-mező, fájlnév, formai hiba), legfeljebb két körben javítja új commitban; minden mást (CI-szabály, másik feladat, függési kör, tartalmi döntés) nem javít, hanem jelent
-kovetkezo: "Te: [elteres_kor 2/2] /elteres 50 — újraellenőrzés függ: naplok/ELLENOR_F50_3.md"
+kovetkezo: "Te: [elteres_kor 2/2] ELLENOR_F50_3 1. mechanikus (napló :57 a találatok jellege pontatlan), a feladatok.py ellenoriz a headre újrafuttatandó"
 olvas: [.claude/commands/befogad.md, .claude/commands/kovetkezo.md, CLAUDE.md, MUNKAMENET.md, DONTESEK.md, eszkozok/feladatok.py, .github/workflows/]
 ir: [.claude/commands/befogad.md, .claude/commands/kovetkezo.md, naplok/CI_JAVITO_KOR_naplo.md]
 fugg: []
