@@ -2,6 +2,8 @@
 
 **Állapot: tervezet, a #12 pilotja véglegesíti** (a #11 1. lépcsőjének tapasztalatával együtt, DT84 (13)).
 
+*v0.3 — 2026.10.19 (F11 T1–T2: a 7. pont záró mondata az átírás tényéhez igazítva — a `2_` v21 és a `4_` v18 a B-beli alakot hordozza. Szabály nem változott; változatlanul tervezet.)*
+
 *v0.2 — 2026.10.18 (F11 M2, DT202: mind a négy alpont (a), felhasználó, 2026-10-18): a szakasz-felismerés (4. pont), az `ADAT-HIV` kulcs- és az `ADAT-ÉRTÉK` kifejezés-alakja, a `JELÖLT` gerinc-helye (6. pont); a generátor (`eszkozok/general.py` `--cel forras`, `--cel kinyeres`) ezeket valósítja meg. Változatlanul tervezet.)*
 
 *v0.1 — 2026.10.17 (F23, a DT84 átvezetése: a `javaslat`-jelölések feloldva a felhasználó 2026-10-12-i döntése szerint, (1)–(13) a; a (7) kiegészítése a bővített sablon v18 tükörszabályára, a (10) kiegészítése a „kiadható `apparatus` nézet” megnevezésre és a `【NAPLO】` egyenkénti ítéletére. Változatlanul tervezet.)*
@@ -194,7 +196,7 @@ A `4_PaRDeS_tematikus_sablon.md` v16 (a v17 a P2 domén-mondatát pontosította,
 2. Ha a motívumról **értelmezés** is születik, az saját szöveggel a `motivumok/[ID].md`-be kerül (a motívum egyetlen kézi forrása); a tanulmányban csak hivatkozás áll rá.
 3. **Kézi másolás egyik irányban sincs:** sem a tanulmányból a motívum-forrásba, sem vissza; a túloldali mutató generált (a fenti sor, N-F23a).
 
-A propose-then-confirm fegyelem (a lelet egyenként megbeszélve) a jelölt-döntésben él tovább. A `2_PaRDeS_bovitett_sablon.md` szövegének teljes átírása nem e tervezet része: a DT182 (felhasználó, 2026-10-17: c.) szerint a v18 szabály, a tematikus sablon v10 szabálya és a Lezárási checklist 12. pontja most felfüggesztő sort kapott (F23.D14), a teljes átírás a #11-ben.
+A propose-then-confirm fegyelem (a lelet egyenként megbeszélve) a jelölt-döntésben él tovább. A `2_PaRDeS_bovitett_sablon.md` szövegének teljes átírása nem e tervezet része: a DT182 (felhasználó, 2026-10-17: c.) szerint a v18 szabály, a tematikus sablon v10 szabálya és a Lezárási checklist 12. pontja előbb felfüggesztő sort kapott (F23.D14), a teljes átírás a #11-ben készült el (F11 T1–T2, 2026-10-19: `2_PaRDeS_bovitett_sablon.md` v21, `4_PaRDeS_tematikus_sablon.md` v18).
 
 ## 8. Minőségi kapu (a forrásra)
 

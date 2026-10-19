@@ -1,5 +1,7 @@
 # 4. PaRDeS tematikus (motívum-alapú) sablon — teljes, részletes verzió
 
+*v18 — 2026.10.19 (F11 T2, DT84 (7), DT182: a v10-ben bevezetett, 2026.10.17 óta felfüggesztett „Tartalmi visszaírás bővített tanulmányokba” alszakasz megszűnt — a helyén a megszűnés ténye és a B-beli út áll: a lelet adatrésze az `adat/jeloltek.tsv`-n át, döntéssel; az értelmezés a motívum kézi forrásában; a túloldalon csak generált link. A Lezárási checklist 12. pontja [kézi visszahivatkozás a bővített study-kba] megszűnt, a visszamutató link generált nézet [N-F23a]; a checklist záró mondatának 12. pontra vonatkozó kivétele ennek megfelelően átírva. Visszamenőleg a már visszaírt leletek besorolása nem e verzió része.)*
+
 *v17 — 2026.09.16 (SDBH.6: a P2 domén-mondata állapotfüggetlenné vált — az SDBH/SDGNT import után a `domen` a `datasetek.tsv` állapota szerint ad eredményt; a domén támasz, nem a mező-hipotézis helyettesítője. Tartalmi követelmény nem változott; a „v16 szerint” címkék érvényesek maradnak.)*
 
 *v16 — 2026.09.15 (F5.1: az 1. pont táblázatának mind a hét oszlopa
@@ -63,7 +65,8 @@ talál egy olyan versen, aminek van saját bővített study-ja, az a lelet —
 propose-then-confirm fegyelemmel, egyenként megbeszélve — magába a bővített
 study szövegébe is bekerül, nem csak a tematikusba]. Eddig a kapcsolat csak
 egyirányú volt [bővítettből a tematikusba gyűjtött]; ez a kiegészítés ezt
-mindkét irányban zárja.)*
+mindkét irányban zárja. A v18-ban mindkettő megszűnt: a 12. pont és a
+visszaírási szabály, l. ott.)*
 *v9 — 2026.09.03 (Az 1. pont táblázatában a „BDB sense-utalás" egyetlen
 oszlop 3 külön oszlopra bontva — BDB-entry-id, Sense-szám,
 Jelentés-szöveg — a `Bibliai_Motivumlexikon_tervezesi_naplo.md` 6.
@@ -394,79 +397,35 @@ Egy tematikus tanulmány lezárásakor a következő lépések MINDEGYIKE szüks
 - [ ] **9. `motivumlog/PaRDeS_motivumok_CHANGELOG.md` frissítve** — a lezárás tényének és fő eredményeinek rögzítése (a szokásos, felhasználói jóváhagyással előzetesen egyeztetett szöveggel)
 - [ ] **10. GitHub-feltöltésre emlékeztetés** — jelezve a felhasználónak, hogy a frissített motívumlog és index GitHubra is felkerülhet (`GitHub_feltoltesi_workflow.md` szerint)
 - [ ] **11. STEPBible-ellenőrzés dokumentálva** — a tanulmányban és a naplóban rögzítve, hogy a lezáráshoz milyen Strong-számokra, milyen keresési paraméterekkel (versen belüli / szomszédos vers, teljes ÚSZ/ÓSZ vagy csak egy könyv) futott le az ellenőrzés, és mikor. Formátum: 🔍 STEPBible-ellenőrizve: [Strong-számok] [keresési mód], [forrás: TAGNT/TAHOT], [dátum] — a `lekerdez.py` proveniencia-soraival (l. P1–P6)
-- [ ] **12. Érintett bővített tanulmányok visszahivatkozása** — ⏸ *Felfüggesztve (DT84 (7), DT182, 2026-10-17): kézi visszahivatkozás / másolás a bővített tanulmányokba nem készül; a visszamutató link generált lesz (N-F23a), a pont teljes átírása a #11-ben.* — minden,
-  a tematikus study 1. pontjának (kereszthivatkozási táblázat) saját,
-  katalogizált előfordulás-listájában szereplő igehelyhez tartozó,
-  meglévő bővített study 4. pontjában (Kapcsolódó igehelyek / 🔗-blokk)
-  egy rövid jegyzet beszúrva: „📎 Bővebben, önálló tematikus
-  feldolgozásban: `[Motívum]_tematikus.md` ([a tematikus study saját
-  fejléc-címéből vett motívumnév-felsorolás] — [egy rövid, max.
-  egymondatos kontextus-jegyzet arról, mire vonatkozik a linkelt tanulmány lelete,
-  az adott igehely szempontjából])". Ha egy adott bővített
-  study 🔗-blokkja nem tartalmazza explicit a motívumot (csak a
-  szövegtörzsben szerepel), a jegyzet a study végére, egy „Kapcsolódó
-  tematikus tanulmány" mini-szakaszként kerül be.
-
-  **Fontos korlátozás:** ez NEM egy teljes szövegkeresés a motívum
-  kulcsszavára az összes bővített study-ban — kizárólag a tematikus
-  study saját, már ellenőrzött táblázatában szereplő igehelyek
-  számítanak. Olyan bővített study, amiben a motívum szava/kifejezése
-  csak véletlenül, a tematikus audit által nem dokumentált módon
-  fordul elő, NEM kap visszahivatkozást — ez a fegyelem ugyanaz, ami a
-  2/f-küszöbnél (≤5 igehely, valódi lelet) is érvényes: nem vihető be
-  zaj a rendszerbe egy túl tág értelmezéssel.
-
-  A zárójeles motívumnév-felsorolás forrása mindig a tematikus study
-  saját fejléc-címe, nem a motívumnapló rövidített bejegyzés-neve —
-  komplexum-motívumoknál (pl. „Isten fiai — Nefilim — Gibborim")
-  mindegyik réteg megnevezve.
-
-  A kontextus-jegyzet nem tartalmi visszaírás: nem visz be új tényt vagy leletet a
-  bővített study-ba, csak megnevezi, mire vonatkozik a linkelt
-  tanulmány — ezért nem igényli a „Tartalmi visszaírás" alszakasz
-  propose-then-confirm/audit-fegyelmét. Ha a kontextus-jegyzet megfogalmazásához
-  olyan tényt kellene state-elni, ami maga is új igehely-szintű lelet
-  (nem csak a linkelt study tartalmának egy mondatos összefoglalása),
-  az már a „Tartalmi visszaírás" hatálya alá tartozik, és külön
-  kezelendő.
-
-  A beszúrás után a motívum „Kulcsszavak részletesen” bejegyzésének
-  végére egy új sor kerül: „**Visszahivatkozott bővített study-k:**
-  `[fájlnév1]`, `[fájlnév2]`, ..." — felsorolva minden ténylegesen
-  frissített bővített fájlt. Ha egyetlen érintett igehelynek sincs
-  saját bővített study-ja, a sor helyett: „Visszahivatkozott bővített
-  study-k: nincs (nincs átfedő bővített tanulmány)."
-
+- [ ] **12.** *(megszűnt — DT84 (7), DT182: a bővített tanulmányokba kézi visszahivatkozás vagy másolás nem készül, és a „Kulcsszavak részletesen” bejegyzés „Visszahivatkozott bővített study-k” sora sem íródik. A visszamutató link generált nézet, az `adat/elofordulasok.tsv` `felmerult_tanulmany` mezőjéből (DT66 (a) 5.); amíg a mező linkgenerálásra nem alkalmas (N-F23a), link nem készül, és kézzel sem pótolandó.)*
 - [ ] **13. Verzió-címke** — a study fejlécének és a kapu-címsoroknak a
   címkéje a „Verzió-címke” alszakasz szerint.
 
-**Ha bármelyik pont kimarad, a lezárás nem tekinthető véglegesnek** (kivétel: a 12. pont, amely a DT84 (7) / DT182 szerint felfüggesztve, amíg a #11 át nem írja) — az adatréteg, a generált blokkok és a study inkonzisztens állapotba kerülhetnek (pl. az `adat/motivumok.tsv` már `publikálható` státuszt mutat, de a generált blokkok nem lettek újragenerálva, vagy a study új igehelyet állít, amely nincs az `adat/elofordulasok.tsv`-ben).
+**Ha bármelyik pont kimarad, a lezárás nem tekinthető véglegesnek** (a megszűnt pontok nem számítanak) — az adatréteg, a generált blokkok és a study inkonzisztens állapotba kerülhetnek (pl. az `adat/motivumok.tsv` már `publikálható` státuszt mutat, de a generált blokkok nem lettek újragenerálva, vagy a study új igehelyet állít, amely nincs az `adat/elofordulasok.tsv`-ben).
 
 ---
 
-### Tartalmi visszaírás bővített tanulmányokba
+### Tartalmi visszaírás bővített tanulmányokba *(megszűnt, l. DT84 (7))*
 
-> ⏸ **Felfüggesztve (DT84 (7), DT182, 2026-10-17):** az alábbi kézi visszaírási szabály nem alkalmazandó: kézi másolás egyik irányban sincs. Új, igehely-szintű lelet adatrésze a `adat/jeloltek.tsv`-n át, döntéssel kerül az adatrétegbe; a bővített tanulmány szövegébe nem kerül. A szabály a B szerkezetben megszűnik; a teljes átírás a #11-ben (`sablonok/9_PaRDeS_motivum_forras_sablon.md` 7. pont).
+A v10-ben bevezetett szabály — a tematikus oldalon felmerült,
+igehely-szintű lelet kézi beírása a bővített study szövegébe — a v18-tól
+megszűnt (DT84 (7), DT182): a lelet kézi bemásolása egy másik kézi
+forrásba második igazságforrást hozna létre (D34: hivatkozás másolás
+helyett; DT28). Ha a tematikus munka vagy egy retroaktív audit
+önmagában is megálló, igehely-szintű lexikai vagy exegetikai leletet hoz
+elő egy olyan versen, amelynek saját bővített study-ja van:
 
-A 12. ponttól (mutató) függetlenül, külön eldöntendő minden esetben: ha a
-tematikus study elkészítése — vagy egy későbbi, már lezárt tematikus
-tanulmányra irányuló retroaktív audit — **önmagában is megálló, igehely-
-szintű lexikai vagy exegetikai leletet** hoz elő (pl. új BDB-sense,
-Origin-lánc-eredmény, LXX-kereszthivatkozás) egy olyan versen, aminek
-saját bővített study-ja van, ez a lelet:
+1. a lelet **adatrésze** az `adat/jeloltek.tsv`-n át, döntéssel és
+   indoklással, `manual` provenienciával kerül az adatrétegbe — egyenként
+   megbeszélve: a propose-then-confirm fegyelem a jelölt-döntésben él
+   tovább;
+2. az **értelmezés** a motívum kézi forrásában áll (a migrált motívumnál
+   `motivumok/[ID].md`, `sablonok/9_PaRDeS_motivum_forras_sablon.md`);
+3. a bővített study szövege és fejléc-changelogja nem íródik át; a
+   visszamutató link generált (12. pont).
 
-1. **Egyenként megbeszélve**, mielőtt bármi fájlba kerülne (a szokásos
-   propose-then-confirm fegyelem).
-2. Ha jóváhagyott: bekerül a bővített study saját, releváns szakaszába
-   (jellemzően a kulcsszó-táblázatba vagy az érintett PaRDeS-szintbe) —
-   NEM a teljes tematikus tartalom átmásolásával, csak a konkrét,
-   igehely-szintű tény beépítésével.
-3. A bővített study fejléc-changelogja is frissül, jelezve a forrást
-   (pl. "a [Motívum]_tematikus.md auditja során felmerült lelet alapján").
-
-**Korlát:** ez nem helyettesíti a bővített study saját, önálló 2/a-2/f
-auditját — csak azokat a konkrét adatpontokat viszi át, amik a tematikus
-oldalon ténylegesen előkerültek.
+Ugyanezt mondja a tanulmány sablon (`2_PaRDeS_bovitett_sablon.md` v21)
+7. pontja a másik irányból.
 
 ---
 
