@@ -1899,3 +1899,11 @@ ts	futas	koteg	probalkozas	modell	gondolkodas_mod	igehely_db	kjv	bemenet_token	k
 2026-10-19T14:23:10+00:00	api_termeles/high/Kol_javito	1	1	claude-sonnet-5-5	adaptive,effort=high	2	nem	5629	620		0.008729	batch_ar_szamolt	2	1		end_turn	84f12ca7aafb	95.923753	nem
 2026-10-19T14:25:56+00:00	api_termeles/high/Kol_javito	1	2	claude-sonnet-5-5	adaptive,effort=high	2	nem	6431	1532		0.014091	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	95.937844	igen
 2026-10-19T14:55:15+00:00	api_termeles/high/Fil_javito	1	1	claude-sonnet-5-5	adaptive,effort=high	3	nem	5904	389		0.007849	batch_ar_szamolt	3	1		end_turn	84f12ca7aafb	95.945693	nem
+2026-10-19T15:17:00+00:00	api_termeles/high/Fil_javito	1	2	claude-sonnet-5-5	adaptive,effort=high	3	nem	6524	2223		0.017639	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	95.963332	igen
+2026-10-19T15:19:13+00:00	api_termeles/high/1Pet_javito	1	1	claude-sonnet-5-5	adaptive,effort=high	1	nem	5464	489		0.007909	batch_ar_szamolt	1	1		end_turn	84f12ca7aafb	95.971241	nem
+2026-10-19T15:22:29+00:00	api_termeles/high/1Pet_javito	1	2	claude-sonnet-5-5	adaptive,effort=high	1	nem	6088	1580		0.013988	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	95.985229	igen
+2026-10-19T15:24:39+00:00	api_termeles/high/1Jan_javito	1	1	claude-sonnet-5-5	adaptive,effort=high	1	nem	5353	207		0.006388	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	95.991617	igen
+2026-10-19T15:27:55+00:00	api_termeles/high/1Tim_javito	1	1	claude-sonnet-5-5	adaptive,effort=high	1	nem	5291	140		0.005991	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	95.997608	igen
+2026-10-19T15:31:05+00:00	api_termeles/high/Gal_javito	1	1	claude-sonnet-5-5	adaptive,effort=high	1	nem	5611	1507		0.013146	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	96.010754	igen
+2026-10-19T15:34:16+00:00	api_termeles/high/Ef_javito	1	1	claude-sonnet-5-5	adaptive,effort=high	3	nem	6289	3302		0.022799	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	96.033553	igen
+2026-10-19T15:37:31+00:00	api_termeles/high/Zsid_javito	1	1	claude-sonnet-5-5	adaptive,effort=high	3	nem	6020	2880		0.020420	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	96.053973	igen
