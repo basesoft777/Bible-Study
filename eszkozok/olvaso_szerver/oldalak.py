@@ -17,9 +17,10 @@ from markupsafe import Markup, escape
 import adatbazis
 import arculat as arculat_modul
 import blokkok
+import kereses as kereses_modul
 import lekerdezesek as q
 
-SABLON_VERZIO = 'm2-1'
+SABLON_VERZIO = 'm3-1'
 NEZETEK = ('olvaso', 'interlinearis', 'munkaasztal')
 NEZET_NEVEK = {'olvaso': 'Olvasópult', 'interlinearis': 'Interlineáris', 'munkaasztal': 'Munkaasztal'}
 ALAP_NEZET = 'olvaso'
@@ -76,6 +77,7 @@ class Kozos:
         self.nyelvtani = q.nyelvtani_strongok(con)
         self.karoli_strong_konyvek = q.karoli_strong_konyvek(con)       # a Károli–Strong párosítású könyvek (fejléc-számláló, szó-lap jelzés)
         self.meta = q.meta(con)
+        self.vers_sorrend = q.vers_sorrendek(con)                      # {igehely: sorrend}: a keresés rendezése (M3)
         self.fejezet_szam = {}
         for kk, _, _, _ in self.konyvek:
             self.fejezet_szam[kk] = q.fejezetek(con, kk)
@@ -133,10 +135,12 @@ class OldalGyar:
         self.jinja = Environment(loader=FileSystemLoader(sablon_dir), autoescape=select_autoescape(['html']),
                                  trim_blocks=True, lstrip_blocks=True)
         # a regisztert egyszer ellenőrzi: minden tábla licencsora megvan (hiány indulási hiba)
-        for b in blokkok.REGISZTER + [blokkok.SZOVEG_FORRAS, blokkok.SZOVEG_PAR]:
+        for b in blokkok.REGISZTER + [blokkok.SZOVEG_FORRAS, blokkok.SZOVEG_PAR] + list(blokkok.KERESES.values()):
             blokkok.forras_sor(b, self.kozos)
-        # elgépelt blokk-azonosító a hozzáférési konfigban indulási hiba (ne maradjon csendben nyitva)
-        self.hozz.ellenoriz_blokkok(blokkok.BLOKK_ID)
+        # elgépelt blokk-azonosító a hozzáférési konfigban indulási hiba (ne maradjon csendben nyitva); a keresési módok azonosítói is ismertek
+        self.hozz.ellenoriz_blokkok(blokkok.ismert_azonositok())
+        # a magyar szótokenek nélküli könyvek (a 9 párosítatlan ÚSZ-könyv): a magyar keresés ott nem talál, a keresőlap kiírja
+        self.token_nelkuli_konyvek = [kk for kk, sl, _, _ in self.kozos.konyvek if sl not in set(self.kozos.karoli_strong_konyvek)]
 
     # -- belső ---------------------------------------------------------------------------------------------------------
     def _latszik(self, blokk_id, szint):
@@ -321,6 +325,32 @@ class OldalGyar:
         s, fej, torzs, alapjel = self.szo_torzs(strong, szint)
         return self._render('szo.html', strong=s, lemma=fej[0], atiras=fej[1], jelentes=fej[2], alapjel=alapjel, blokkok=torzs, gorog=s[0] == 'G', nezet=nezet, ut=ut, szint=szint,
                             cim=s)
+
+    # -- keresés (M3) ----------------------------------------------------------------------------------------------------
+    def kereses_lap(self, kerdes, nezet, szint, ut, hiba=None, urlap=None):
+        """A keresőlap: űrlap, és ha van `kerdes` (kereses.Kerdes), a találatlista lapozva. `hiba`: érvénytelen bemenet üzenete;
+        `urlap`: az űrlap kitöltése ({'q', 'tipus', 'mod'}). A keresési mód a hozzáférési szint szerint zárható (a `kereses.*`
+        azonosító, `hozzaferes.toml`): zárt módban a lekérdezés nem fut."""
+        szint = self.hozz.szint() if szint is None else szint
+        ctx = dict(nezet=nezet, ut=ut, szint=szint, cim='Keresés', hiba=hiba, tipusok=list(kereses_modul.TIPUS_NEVEK.items()),
+                   modok=list(kereses_modul.MOD_NEVEK.items()), token_nelkuli=self.token_nelkuli_konyvek, urlap=urlap or {}, k=None)
+        if kerdes is None:
+            return self._render('kereses.html', **ctx)
+        b = blokkok.KERESES[kerdes.tipus]
+        ctx.update(k=kerdes, tipus_nev=kereses_modul.TIPUS_NEVEK[kerdes.tipus], mod_nev=kereses_modul.MOD_NEVEK.get(kerdes.mod), cim='Keresés: %s' % kerdes.szoveg)
+        if not self.hozz.lathato(b.id, szint):
+            ctx['zart'] = True
+            return self._render('kereses.html', **ctx)
+        con = self.con()
+        par_ok = self._latszik('vers.par', szint)
+        t = kereses_modul.keres(con, kerdes, self.kozos.vers_sorrend, par_lathato=par_ok)
+        oldal, kov = kereses_modul.lap(t, kerdes.tol)
+        ctx.update(t=t, sorok=kereses_modul.lap_sorai(con, self.kozos, t, oldal, kerdes, par_lathato=par_ok), jegy=blokkok.kereses_jegy_html(b, self.kozos),
+                   kovetkezo_url=kereses_modul.kereses_url(kerdes, kov) if kov is not None else None,
+                   elso_url=kereses_modul.kereses_url(kerdes) if kerdes.tol >= 0 else None,
+                   sorszam_tol=sum(1 for v in t.versek if v[0] <= kerdes.tol) + 1, par_ok=par_ok,
+                   mod_url={m: kereses_modul.kereses_url(kereses_modul.Kerdes(kerdes.tipus, kerdes.szoveg, kerdes.szavak, m)) for m in kereses_modul.MODOK})
+        return self._render('kereses.html', **ctx)
 
     def hiba_lap(self, kod, uzenet, nezet, ut, szint=None):
         return self._render('hiba.html', kod=kod, uzenet=uzenet, nezet=nezet, ut=ut, szint=szint, cim='Hiba')

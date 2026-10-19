@@ -1014,6 +1014,9 @@ nincs-jeloles = "állapot-osztály a szövegoszlopon (az olvaso.js adja, a „je
 nezet-olvaso = "a body nézet-horga; CSS-szabály nincs rá"
 nezet-interlinearis = "a body nézet-horga; CSS-szabály nincs rá"
 nezet-munkaasztal = "a body nézet-horga; CSS-szabály nincs rá"
+# a keresőlap (M3) tárolói: a megjelenésük a meglévő tokenekből (betű: fs-karoli-panel, lh-karoli-panel; köz: space-blokkkoz; kiemelés: accent-soft, radius-kiemeles), a tartalékon át állíthatók
+talalatok = "a keresőlap találatlistájának tárolója (számozott lista, rács); a köz a blokkköz (space-blokkkoz) tokenje"
+talalat = "egy találat (igehely + Károli-vers, a talált szavak <mark>-kal); a betű a Károli-panel (fs-karoli-panel, lh-karoli-panel), a kiemelés az accent-soft tokenje"
 # űrlap és a tervező mód saját vezérlője
 ugras = "a gyorsugrás űrlap: böngésző-alapértelmezett mező, token nélkül"
 tervezo-kapcsolo = "a tervező mód saját kapcsolója (csak belso kiadás); a megjelenése a tervezo.css-ből, nem az arculatból (a tervező nem állítja önmagát)"
