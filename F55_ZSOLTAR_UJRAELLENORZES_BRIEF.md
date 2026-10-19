@@ -9,7 +9,7 @@ munka: ertelmezo
 allapot: fut
 ag: claude/f55-zsoltar
 ad: minden kézi forrásbeli állítás, amely a régi LXX_kivonat eltolt vagy hiányzó zsoltárversére épült, felmérve, és soronként ítélettel (megáll / módosul / visszavonandó) a helyes vers LXX_OS-szövege alapján; a módosuló állítások a forrásrétegben javítva, az új lxx-hid futások az auditok.tsv-ben naplózva
-kovetkezo: "Én: M0 felmérés (csak olvas), utána ⛔ (a) hatókör/`ir`, (b) javítási forma. A befagyasztás (DT74 (3)) feloldva: a #11 1. lépcsője a main-en (PR #417, 2026-10-19); a feloldást a felhasználó 2026-10-19-én jóváhagyta."
+kovetkezo: "Te: ⛔ az M0 után (naplok/ZSOLTAR_UJRAELLENORZES_M0.md 5. pont): (a) hatókör és `ir` (javaslat: a két archivált Segitsegul-út ki), (b) javítási forma (javaslat: csere 【NAPLO: … javítva, F55】 jelöléssel), (c) az adat/auditok.tsv írása a #11 PR #420 merge-e után (javaslat); utána M1. A befagyasztás (DT74 (3)) feloldva: PR #417, a felhasználó jóváhagyta 2026-10-19-én."
 olvas: ["konkordancia/LXX_OS/*.tsv", konkordancia/Karoli_1908.tsv, naplok/FORRASKIVEZETES_M5_M7.md, naplok/FORRASKIVEZETES_M5_eltereslista.tsv, adat/jeloltek.tsv, tematikus_lezart/, genezis/, ujszovetseg/, melyelemzesek/, motivumok/, motivumlog/, naplok/T1_TEREMT002_auditok_munkalap.tsv, naplok/LXX_OS_LEFEDETTSEG_M0.md]
 ir: [adat/auditok.tsv, tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md, tematikus_lezart/naplok/Bun_kovetkezmenyeinek_gyuruzese_kereszthivatkozas_naplo.md, tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md, tematikus_lezart/naplok/Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md]
 fugg: [42, 54]
