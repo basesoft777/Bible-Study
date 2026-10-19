@@ -9,7 +9,7 @@ modell: sonnet
 allapot: fut
 ag: claude/f112-commit-ekezet
 ad: E30 CI-szabály, amely a PR `base..head` commit-üzeneteiben figyelmeztet az ékezet nélkül írt magyar szavakra, mért hamis-pozitív aránnyal
-kovetkezo: a brief végrehajtása a `/kovetkezo`-val
+kovetkezo: az E30 20 PR utáni újraértékelése (N-F112a: jelölési arány, javítások száma, új 50 elemes minta; HIBA-szint és kizárólista-bővítés külön döntés)
 olvas: [eszkozok/ellenorzes/, .github/workflows/ellenorzes.yml, BRIEF_SABLON.md, adat/SEMA.md, GitHub_feltoltesi_workflow.md]
 ir: [eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/futtat.py, eszkozok/ellenorzes/e30_ascii_alakok.tsv, eszkozok/ellenorzes/tesztek/, naplok/COMMIT_EKEZET_meres.md]
 fugg: []
