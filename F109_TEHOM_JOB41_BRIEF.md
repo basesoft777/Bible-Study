@@ -6,7 +6,9 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: fut
+allapot: lezarva
+pr: 426
+lezarva_osszegzes: Jób 41:32 beépítve (H8415 szó szerint, közepes), +1 elofordulasok-sor; ELTÉRÉS: E28 és megbízhatóság javítva, tanulmány-számok (35→36) elfogadott eltérés, N-F109a; PR #426 (draft), zárójelentés naplok/TEHOM_JOB41_zaras.md
 ag: claude/f109-tehom-job41
 ad: a jeloltek.tsv Jób 41:32 (H8415) nyitva sora döntést és indoklást kap a TEREMT-001 negatív kritériuma szerint; elfogadásnál új elofordulasok.tsv-sor gerinc_elem-mel és proveniencia-sorral
 kovetkezo: /kovetkezo
