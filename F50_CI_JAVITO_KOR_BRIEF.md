@@ -5,7 +5,8 @@ kod: CI_JAVITO_KOR
 tipus: feladat
 fazis: folyamat
 modell: sonnet
-allapot: nem_indult
+allapot: fut
+ag: claude/f50-ci-javito-kor
 ad: a /befogad és a /kovetkezo záró lépése push után elolvassa a CI-t; ha a hiba a saját PR tartalmából jön (fejléc-mező, fájlnév, formai hiba), legfeljebb két körben javítja új commitban; minden mást (CI-szabály, másik feladat, függési kör, tartalmi döntés) nem javít, hanem jelent
 kovetkezo: "nem futhat a #45 (MODELL_ELLENORZES) mellett, mert mindkettő a .claude/commands/kovetkezo.md-t írja (kizárás, D4)"
 olvas: [.claude/commands/befogad.md, .claude/commands/kovetkezo.md, CLAUDE.md, MUNKAMENET.md, DONTESEK.md, eszkozok/feladatok.py, .github/workflows/]
