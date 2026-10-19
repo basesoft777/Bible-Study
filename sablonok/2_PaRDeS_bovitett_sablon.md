@@ -1,5 +1,7 @@
 # 2. Tanulmány sablon (PaRDeS) — teljes, részletes verzió
 
+*v21 — 2026.10.19 (F11 T1, DT84 (7), DT182: a 7. pont v18-as „Tartalmi visszaírás lezárt tematikus tanulmányba” szabálya — 2026.10.17 óta felfüggesztve — teljesen átírva: a tanulmányban felmerült lelet adatrésze az `adat/jeloltek.tsv`-n át, döntéssel kerül az adatrétegbe; az értelmezés saját szöveggel a `motivumok/[ID].md`-be; a túloldalon csak (generált) hivatkozás áll; kézi másolás egyik irányban sincs. A „Korlát” bekezdés a tematikus sablon v18-ához igazítva.)*
+
 *v20 — 2026.10.07 (Átnevezés: a „Bővített PaRDeS sablon” neve mostantól „Tanulmány sablon”, a bővített tanulmányé „tanulmány” [DT-F37-1, #37 T1]; alap tanulmány nem készül, az alap sablon elavult. A fájlnév a hivatkozások miatt változatlan. Tartalmi változás nincs.)*
 
 *v19 — 2026.09.09 (Új, kötelező "Logikai kötőszó szerinti bontás"
@@ -13,7 +15,8 @@ ha a bővített study saját 2/a-2/f auditja igehely-szintű leletet talál
 egy már lezárt tematikus tanulmány témájában, az a lelet — propose-
 then-confirm fegyelemmel — a lezárt tematikus study szövegébe is
 bekerül, nem csak a bővítettébe. Eddig ez a kapcsolat csak egyirányú
-volt [3/c terv, retroaktív auditból felmerült hiány].)*
+volt [3/c terv, retroaktív auditból felmerült hiány]. A v21-ben
+átírva: kézi visszaírás nincs, l. ott.)*
 *v17 — 2026.09.03 (A "2/a-2/e technikasor" hivatkozások "2/a-2/f"-re
 frissítve a 4. és 7. pontban, a protokoll v5-ös új 2/f lépésének
 [rögzült szópár együttes-előfordulás] megfelelően)*
@@ -247,33 +250,38 @@ forrás-hivatkozási fegyelem"). Ez nem redundáns a kereszthivatkozás-
 naplóval (ami a 4. pont felfedező keresésének teljes nyers anyagát
 tartalmazza) — ez a 2/a-2/f lexikai audit saját, tömör összegzése.
 
-> ⏸ **Felfüggesztve (DT84 (7), DT182, 2026-10-17):** az alábbi kézi visszaírási szabály nem alkalmazandó: kézi másolás egyik irányban sincs. Új, igehely-szintű lelet adatrésze a `adat/jeloltek.tsv`-n át, döntéssel kerül az adatrétegbe; a lezárt tematikus tanulmány szövegébe nem kerül. A szabály teljes átírása a #11-ben (`sablonok/9_PaRDeS_motivum_forras_sablon.md` 7. pont).
-
-**Tartalmi visszaírás lezárt tematikus tanulmányba:** ha a fenti
-technikasor önmagában is megálló, igehely-szintű lexikai vagy
-exegetikai leletet hoz elő (pl. Origin-lánc-eredmény, LXX-
-kereszthivatkozás, rögzült szópár-előfordulás) egy olyan motívumhoz,
-aminek **már van lezárt** (`✅ LEZÁRVA`) tematikus tanulmánya —
-ellenőrizve `Lezart_tematikus_tanulmanyok_index.md` és/vagy
-`grep "✅.*LEZÁRVA"` a motívumnaplón — ez a lelet:
-1. **Egyenként megbeszélve**, mielőtt bármi fájlba kerülne (a szokásos
-   propose-then-confirm fegyelem).
-2. Ha jóváhagyott: bekerül a lezárt tematikus study saját, releváns
-   szakaszába (jellemzően az 1. pont kereszthivatkozási táblázatába) —
-   NEM a bővített study tartalmának átmásolásával, csak a konkrét,
-   igehely-szintű tény beépítésével.
-3. A tematikus study fejléc-changelogja frissül, jelezve a forrást
-   (pl. "a `[study].md` retroaktív 2/a-2/f auditja során felmerült
-   lelet alapján").
-4. A `Lezart_tematikus_tanulmanyok_index.md` érintett sorának
-   "Megjegyzés" oszlopa frissül, ha a lelet érdemben bővíti a korábbi
-   lezárás hatókörét.
+**Lelet egy már feldolgozott motívumhoz — adat a jelöltsoron, értelmezés
+a motívum forrásában (DT84 (7), DT182):** ha a fenti technikasor
+önmagában is megálló, igehely-szintű lexikai vagy exegetikai leletet hoz
+elő (pl. Origin-lánc-eredmény, LXX-kereszthivatkozás, rögzült
+szópár-előfordulás) egy olyan motívumhoz, amelynek **már van lezárt**
+tematikus feldolgozása — ellenőrizve az `adat/motivumok.tsv` `statusz`
+mezőjén (`publikálható` / `véglegesített`) és a
+`Lezart_tematikus_tanulmanyok_index.md`-n —, ez a lelet:
+1. **Adatrésze** az `adat/jeloltek.tsv`-n át, döntéssel és indoklással,
+   `manual` provenienciával kerül az adatrétegbe (`adat/SEMA.md` 3/2,
+   3/9) — **egyenként megbeszélve**, mielőtt bármi fájlba kerülne: a
+   propose-then-confirm fegyelem a jelölt-döntésben él tovább. A motívum
+   forrásának szövegébe nem kerül.
+2. Ha a motívumról **értelmezés** is születik, az saját szöveggel a
+   `motivumok/[ID].md`-be kerül (a motívum egyetlen kézi forrása,
+   `sablonok/9_PaRDeS_motivum_forras_sablon.md`); a tanulmányban csak
+   hivatkozás áll rá.
+3. **Kézi másolás egyik irányban sincs:** sem a tanulmányból a motívum
+   forrásába, sem vissza. A túloldali mutató generált nézet (az
+   `adat/elofordulasok.tsv` `felmerult_tanulmany` mezőjéből, DT66 (a) 5.);
+   amíg a mező linkgenerálásra nem alkalmas (N-F23a), mutató nem készül,
+   és kézzel sem pótolandó.
+4. A lezárt tematikus tanulmány szövege és fejléc-changelogja nem íródik
+   át; a `Lezart_tematikus_tanulmanyok_index.md` generált (`general.py
+   --cel index`), kézzel nem szerkesztendő.
 
 **Korlát:** ez nem indít újra egy teljes tematikus re-auditot — csak azt
-a konkrét adatpontot viszi át, ami a bővített oldalon ténylegesen
-előkerült. Ez a tematikus sablon (v10) "Tartalmi visszaírás bővített
-tanulmányokba" szabályának tükör-párja — a két sablon mostantól
-szimmetrikus mindkét irányban.
+a konkrét adatpontot viszi az adatrétegbe, ami a tanulmányban ténylegesen
+előkerült. A tematikus sablon (v18) ennek a párját hordozza: a
+„Tartalmi visszaírás bővített tanulmányokba” szabály ott megszűnt, és a
+két sablon mindkét irányban ugyanazt mondja — hivatkozás, nem másolás
+(D34, DT28).
 
 **Forrás-hivatkozási fegyelem (kötelező minden sorban):** minden fenti
 cellánál explicit jelölve, honnan jött az adat — közvetlenül a saját
