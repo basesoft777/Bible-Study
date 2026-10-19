@@ -1,5 +1,5 @@
 ---
-feladat:
+feladat: 122
 cim: A teljes KJV-szöveg párhuzamos megjelenítése a Károli mellett az olvasóban (KJV_MEGJELENITES)
 kod: KJV_MEGJELENITES
 tipus: feladat
@@ -12,7 +12,7 @@ ad: a pardes.db új kjv_szoveg táblája (Károli-kulcs, KJV-vers, Szöveg, Szö
 kovetkezo: indítás csak a #117 és a #118 merge-e és az N-F117a (a pardes.db építőjének őre) javítása után; ⛔ M0 (terv, a kiadási kapcsoló), ⛔ M2 (a felhasználó kipróbálja)
 olvas: [konkordancia/KJV_teljes_szoveg.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, f22/versosszevonas.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, adat/licencek.tsv, adat/SEMA.md, eszkozok/sqlite_epit.py, eszkozok/olvaso_szerver/]
 ir: [eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, eszkozok/olvaso_szerver/]
-fugg: [117, 118]
+fugg: [117, 118, 120]
 ---
 # KJV_MEGJELENITES_BRIEF.md — a teljes KJV-szöveg párhuzamos megjelenítése a Károli mellett
 
