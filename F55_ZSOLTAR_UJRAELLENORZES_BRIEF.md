@@ -6,11 +6,14 @@ tipus: feladat
 fazis: 1
 modell: opus
 munka: ertelmezo
-allapot: nem_indult
+allapot: lezarva
+pr: 424
+lezarva_osszegzes: "M0: 32 szűrt hely, 15 csoport; M1: módosul 4, megáll 2, visszavonandó 0; a HAMART-001 Bun-naplója javítva (Zsolt 53:1 → 53:2 / LXX 52:2), a tanulmány jelölve; M2: +2 TEREMT-002 lxx-hid audit-sor; DT255–f; nyitott: N-F55a–d; független ellenőr 2 kör (6 + 3 eltérés, javítva vagy döntve); zárás: naplok/ZSOLTAR_UJRAELLENORZES_zaras.md"
+ag: claude/f55-zsoltar
 ad: minden kézi forrásbeli állítás, amely a régi LXX_kivonat eltolt vagy hiányzó zsoltárversére épült, felmérve, és soronként ítélettel (megáll / módosul / visszavonandó) a helyes vers LXX_OS-szövege alapján; a módosuló állítások a forrásrétegben javítva, az új lxx-hid futások az auditok.tsv-ben naplózva
-kovetkezo: Te: befagyasztva a #11 1. lépcsőjéig (DT74 (3): a régi forrásréteg és az éles lexikon nem bővül a régi szerkezet szerint); a feloldás után /kovetkezo; ⛔ az M0 felmérés után
+kovetkezo: "Te: a PR #424 merge-e a te döntésed; nyitott: N-F55a–d."
 olvas: ["konkordancia/LXX_OS/*.tsv", konkordancia/Karoli_1908.tsv, naplok/FORRASKIVEZETES_M5_M7.md, naplok/FORRASKIVEZETES_M5_eltereslista.tsv, adat/jeloltek.tsv, tematikus_lezart/, genezis/, ujszovetseg/, melyelemzesek/, motivumok/, motivumlog/, naplok/T1_TEREMT002_auditok_munkalap.tsv, naplok/LXX_OS_LEFEDETTSEG_M0.md]
-ir: [adat/auditok.tsv, tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md, tematikus_lezart/naplok/Bun_kovetkezmenyeinek_gyuruzese_kereszthivatkozas_naplo.md, tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md, tematikus_lezart/naplok/Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md]
+ir: [adat/auditok.tsv, tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md, tematikus_lezart/naplok/Bun_kovetkezmenyeinek_gyuruzese_kereszthivatkozas_naplo.md, "naplok/ZSOLTAR_UJRAELLENORZES_*"]
 fugg: [42, 54]
 ---
 
@@ -105,3 +108,7 @@ Indoklás a helyes vers `LXX_OS`-sorával és proveniencia-sorral. **Hiányt nem
 | v1 | 2026-10-05 | Függ a #54-től: a zsoltár-feliratok kulcsolása ott javulhat, az ítélet a javított `LXX_OS`-en áll. | levezetett függés (`konkordancia/LXX_OS/*.tsv`) |
 | v1 | 2026-10-05 | A hatókör a teljes kézi forrásréteg, nem csak a #42-ben talált öt hely; a T1-munkalap és a pilot-példányok nem módosulnak. | befogadási előfelmérés |
 | v1 | 2026-10-05 | Jelölt-, minősítés- és ★-változás nem a feladat döntése: ⛔ és `DONTESEK.md`. | CLAUDE.md, KONTEXTUS K1 |
+| v1 | 2026-10-19 | A befagyasztás (DT74 (3)) feloldva: a #11 1. lépcsője a main-en (PR #417). | felhasználó, 2026-10-19 |
+| v1 | 2026-10-19 | M0 ⛔: (a) az `ir`-ből kikerül a két archivált Segitsegul-út (DT255); (b) csere `【NAPLO: … javítva, F55】` jelöléssel, a régi versszám látható marad (DT256); (c) az M2 audit-sorai a PR #420 merge-e után (DT257). | orkesztrátor, a felhasználó felhatalmazásával |
+| v1 | 2026-10-19 | Az ellenőr 1. körének tartalmi eltérései: a HAMART-001 audit-sorai most nem kerülnek be (DT258, N-F55b); az F55-jelölés a rés előtt marad, a rés forrásneve a 2. lépcsős migrációban (DT259, N-F55c); a Z02/Z03 történeti forrásnév + „53:1 sort nézték” jelölés (DT260). | orkesztrátor, a felhasználó felhatalmazásával |
+| v1 | 2026-10-19 | A 2. ellenőrzési kör 1. eltérése: a DT258 döntése marad, az indoka a SEMA 2.9 commit-szabályára (DT103) pontosítva; a HAMART-001 retroaktív ID, csak KÉZI jelentést kapna. Lezárva (M3). | orkesztrátor, a felhasználó felhatalmazásával |
