@@ -5,10 +5,10 @@ cim: "Károli–Strong párosítás könyvenként (1–2Móz: Sonnet + Gemini; a
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: fut
+allapot: megallt
 ag: claude/f22-2kor
 ad: "Az 1Mózes minden Károli-szavához az eredeti szó és a Strong-szám, bizonyossági jelöléssel (magas = a két modell egyezik)"
-kovetkezo: "Fut a 2Kor-menet (2026.10.19, a felhasználó jóváhagyása; DT60): a B csomag (Gal, Ef, Zsid) a main-ben (PR #311, `naplok/ELLENOR_F22_USZ_B.md`); az F90 a TAGNT-kivonatot pótolta (2Kor 13:13 33 sor), a 2Kor visszatartásának oka megszűnt. Lépések: (1) fejléc, (2) 2Kor versbeosztás ⛔ száraz próba és a felhasználó jóváhagyása a `tokenek.VERSBEOSZTAS_JOVAHAGYOTT` bővítése előtt, majd párosítás, (3) az N-F22c részleges verseinek újrapárosítása az A/B könyvekben; futó összeg 94,5049 USD, plafon 104,36 USD (9,86 USD maradt). A C csomag (Róm, 1Kor, Jel) nem része a menetnek, külön jóváhagyás."
+kovetkezo: "Te: (1) a 2Kor versbeosztás-jóváhagyása (⛔; a kulcstáblázat: a Károli- és a TAGNT-kulcsok azonosak, 256/256 vers, 13 fejezet, 4 547 eredeti token, ebből 103 `[nem TR]`; a 2Kor 13:13 az F90 óta megvan, a detektor tiszta; `f22/minta_2Kor.tsv` újraépítve, 26 köteg) a `tokenek.VERSBEOSZTAS_JOVAHAGYOTT` bővítése előtt; (2) a `PARDES_API_KEY` beállítása a sessionben (a Message Batches API-hoz; a futtatás nélküle nem indul). Utána fut: a 2Kor (kb. 1,4 USD) és az N-F22c újrapárosítás (21 vers, 11 javító minta, kb. 0,15 USD; `naplok/F22_N-F22c_ujraparositas.md`). Futó összeg 94,5049 USD, plafon 104,36 USD. A C csomag nem része a menetnek."
 fugg: [21]
 nem_fugg: [48]
 olvas: [f21p/prompt_v3.md, f21p/prompt_v3.sha256, eszkozok/karoli_strong/tokenek.py, eszkozok/karoli_strong/kapu.py, eszkozok/karoli_strong/futtat.py, konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_Strong_kivonat.tsv, f21p/regi_arany_hibas.tsv, naplok/F21P_jelentes.md, konkordancia/TAGNT_kivonat.tsv, f22/versmegfeleltetes.tsv]
