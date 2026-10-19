@@ -1,5 +1,7 @@
 # F22_N-F22c_ujraparositas.md — az F90 által pótolt TAGNT-sorok miatt újrapárosítandó versek (az ÚSZ A/B csomag és a 22.8 próba)
 
+*Proveniencia: scope=11 ÚSZ-könyv, 36 vers (21 újrapárosított + 15 kényszerkivezetett) | forras=`adat/karoli_strong/{parok,szavak}_<könyv>.tsv` (git `9f4fc06` ↔ `c0d1070`), `f22/api_termeles/futasnaplo.tsv`, `f22_nf22c_minta.py --lista` (szkriptkimenetek, split('\t')) | ts=2026-10-19.*
+
 *Keletkezett: 2026.10.19, `claude/f22-2kor`. A számok szkriptkimenetből jönnek: `python eszkozok/karoli_strong/f22_nf22c_minta.py --lista`. Állapot: **lefutott és egyesítve** (2026.10.19; l. a 4–6. szakasz).*
 
 ## 1. Besorolás (mért)
@@ -51,7 +53,7 @@ Sonnet (`claude-sonnet-5-5`), Message Batches API, `effort=high`, `prompt_v3` v�
 
 1. A 36 vers közül 33 sora törölve az `f22/kezi_versek_<könyv>.tsv`-ekből (10 fájl); a további 3 (3Ján 1:15, Fil 1:16, Fil 1:17) eredeti szöveg nélküli volt, kényszer alatt nem állt. Az `egyesit.py` az átnézési listákból (`naplok/F22_<könyv>_atnezes.tsv`) is kivette a 36 verset.
 2. `egyesit.py --konyv <könyv>` mind a 11 könyvre, majd `--ellenoriz`: mindegyik „rendben”.
-3. **Összevetés** (CLAUDE.md TSV-szabály: `split('\t')`, a régi a git `HEAD~1` verziója): a `parok_<könyv>.tsv` és a `szavak_<könyv>.tsv` versenkénti összevetése, 11 könyv × 2 tábla. **Csak a 36 célvers változott, kívüle egyetlen vers sorai sem** (versenként összevetve a sorok sorrendje és tartalma). A versek száma a `parok` táblákban nőtt (a 36 vers eddig link nélküli, `kezi` volt), a `szavak` táblákban változatlan.
+3. **Összevetés** (CLAUDE.md TSV-szabály: `split('\t')`, a régi a git `HEAD~1` verziója): a `parok_<könyv>.tsv` és a `szavak_<könyv>.tsv` versenkénti összevetése, 11 könyv × 2 tábla. **Csak a 36 célvers változott, kívüle egyetlen vers sorai sem** (versenként összevetve a sorok sorrendje és tartalma). A versek száma a `parok` táblákban nőtt (a 36 vers eddig link nélküli, `kezi` volt), a `szavak` táblákban változatlan; a `szavak` *sorainak* száma nőtt (l. a 7. szakasz).
 
 ## 6. Eredmény versenként
 
@@ -98,3 +100,23 @@ A 36 vers mindegyike eddig link nélkül állt (`kezi`, `fuggoben`); most mindeg
 
 *Megjegyzés:* a kényszerkivezetett 15 vers a régi, teljes görög szöveggel kapott modellválaszból épül (az eredeti szövegük nem változott); az újrapárosított 21 vers az F90 utáni teljes tokenlistával kapott új választ. A `nem_tr_lista.py` újrafutott (`adat/karoli_strong/nem_tr_parositott.tsv`, 45 sor). Az A/B könyvek `F22_<könyv>_jelentes.md` fájljainak számait ez a napló korrigálja: a 36 vers `kezi`/`fuggoben` jelölése megszűnt.
 
+## 7. Sorszám-változás (E17/DT3) és magyarázata
+
+A `parok` +617 sor a 36 vers új linkjeinek összege (a napló 6. táblája versenként bontja). A `szavak` +120 sora az F90 által pótolt, korábban hiányzó eredeti tokenek: az újrapárosított versek eredeti tokenlistája teljes lett (a kényszerkivezetett 15 versé nem változott, ott a Δ 0), a 3Ján 1:15 és a Fil 1:16–17 eddig eredeti nélküli volt (a korábban csak Károli-szavas sorokhoz most eredeti sorok jönnek). A Δ könyvenként (`git` `9f4fc06` → `c0d1070`, adatsorok, fejléc nélkül):
+
+| könyv | `parok` sorok Δ | `szavak` sorok Δ |
+|---|---|---|
+| 3Jan | +9 | +11 |
+| 2Thessz | +39 | +3 |
+| 1Thessz | +101 | +14 |
+| Kol | +57 | +5 |
+| Fil | +47 | +31 |
+| 1Pet | +46 | +5 |
+| 1Jan | +53 | +7 |
+| 1Tim | +10 | +17 |
+| Gal | +44 | +2 |
+| Ef | +109 | +14 |
+| Zsid | +102 | +11 |
+| **összesen** | **+617** | **+120** |
+
+A független ellenőr a Fil 1:16–17 (TAGNT 37 sor = a `szavak_Fil.tsv` 11 + 26 eredeti sora), a 3Ján 1:15 és az 1Tim 6:21 (24 = 24) számát külön megerősítette (`naplok/ELLENOR_F22_2KOR.md`). Az E17 a `futtat.py`-ban nincs megvalósítva; ez a szakasz a kézi bontás.
