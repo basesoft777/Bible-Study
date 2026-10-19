@@ -1915,7 +1915,7 @@ tagja.
 ##### D — negyedik minta: נִקְרָא...עַל (nikrá … al; birtoklás/hovatartozás), kizárva
 
 A H7121+H8034 kombinált teljes-előfordulás scan
-(`tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md`,
+(`archivum/ISTENTISZT-001/Segitsegul_hivni_az_Urat_tematikus.md`,
 v2-bővítés) egy negyedik, nyelvtanilag élesen elkülönülő szerkezetet is
 felszínre hozott: **נִקְרָא...עַל** (*nikrá...al*, "[egy név] hivatik ...
 felette/rajta") — passzív nifal ige + עַל (al) elöljárószó, szemben a fő
