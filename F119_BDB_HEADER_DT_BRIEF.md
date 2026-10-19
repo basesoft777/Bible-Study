@@ -6,7 +6,8 @@ tipus: feladat
 fazis: 1
 munka: adat
 modell: sonnet
-allapot: nem_indult
+allapot: fut
+ag: claude/f119-bdb-header-dt
 ad: az `adat/bdb_vers_jelentes.tsv` újragenerálva a javított generátorral (csak a 2. sor / a kód-hash változik), a `teszt_bdb_vers_jelentes.Ujrageneralas.test_bajtra_azonos` zöld a `python eszkozok/teszt_futtat.py` teljes futásán, más teszt eredménye nem változik
 kovetkezo: a /kovetkezo indítja
 olvas: [eszkozok/olvaso_szerver/bdb_vers_jelentes.py, eszkozok/olvaso_szerver/teszt_bdb_vers_jelentes.py, eszkozok/szamkiosztas.py, naplok/ELLENOR_F115.md, adat/SEMA.md]
