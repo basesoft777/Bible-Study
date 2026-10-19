@@ -1,4 +1,4 @@
-# proveniencia: scope=manual | forras=f22/valaszok/sonnet/Fil.jsonl, f22/versmegfeleltetes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; az API (Batch)-futásnak nincs lekérdezés-időbélyege) | modell-kimenet, javaslat: nem lekérdezés-eredmény; minden link `alacsony` (egy modell, nincs egyezés); a strong a TAGNT-ből, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py
+# proveniencia: scope=manual | forras=f22/valaszok/sonnet/Fil.jsonl, f22/valaszok/sonnet/Fil_javito.jsonl, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; az API (Batch)-futásnak nincs lekérdezés-időbélyege) | modell-kimenet, javaslat: nem lekérdezés-eredmény; minden link `alacsony` (egy modell, nincs egyezés); a strong a TAGNT-ből, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py
 vers	hu_sorszam	hu_szo	er_sorszam	er_szo	strong	bizonyossag	forras
 Fil 1:1	1	Pál	1	Παῦλος	G3972	alacsony	S
 Fil 1:1	2	és	2	καὶ	G2532	alacsony	S
@@ -243,6 +243,28 @@ Fil 1:15	9	jóakaratból	12	εὐδοκίαν	G2107	alacsony	S
 Fil 1:15	10	is	10	καὶ	G2532	alacsony	S
 Fil 1:15	11	hirdetik	15	κηρύσσουσιν.	G2784	alacsony	S
 Fil 1:15	13	Krisztust	14	Χριστὸν	G5547	alacsony	S
+Fil 1:16	1	Némelyek	1	οἱ	G3588	alacsony	S
+Fil 1:16	2	versengésből	3	ἐξ	G1537	alacsony	S
+Fil 1:16	2	versengésből	4	ἐριθείας	G2052	alacsony	S
+Fil 1:16	3	prédikálják	7	καταγγέλλουσιν	G2605	alacsony	S
+Fil 1:16	5	Krisztust	6	Χριστὸν	G5547	alacsony	S
+Fil 1:16	6	nem	8	οὐχ	G3756	alacsony	S
+Fil 1:16	7	tiszta	9	ἁγνῶς	G0055	alacsony	S
+Fil 1:16	10	hivén	10	οἰόμενοι	G3633	alacsony	S
+Fil 1:16	12	fogságom	14	δεσμοῖς	G1199	alacsony	S
+Fil 1:16	12	fogságom	15	μου.	G3165	alacsony	S
+Fil 1:16	13	nyomorúságait	11	θλῖψιν	G2347	alacsony	S
+Fil 1:17	1	De	2	μὲν	G3303	alacsony	S
+Fil 1:17	2	mások	1	οἱ	G3588	alacsony	S
+Fil 1:17	3	szeretetből	3	ἐξ	G1537	alacsony	S
+Fil 1:17	3	szeretetből	4	ἀγάπης	G0026	alacsony	S
+Fil 1:17	4	tudván	5	εἰδότες	G6063	alacsony	S
+Fil 1:17	5	hogy	6	ὅτι	G3754	alacsony	S
+Fil 1:17	8	evangyéliomnak	9	τοῦ	G3588	alacsony	S
+Fil 1:17	8	evangyéliomnak	10	εὐαγγελίου	G2098	alacsony	S
+Fil 1:17	9	oltalmazására	7	εἰς	G1519	alacsony	S
+Fil 1:17	9	oltalmazására	8	ἀπολογίαν	G0627	alacsony	S
+Fil 1:17	10	rendeltettem	11	κεῖμαι·	G2749	alacsony	S
 Fil 1:18	1	Mert	2	γάρ;	G1063	alacsony	S
 Fil 1:18	2	mit	1	τί	G5101	alacsony	S
 Fil 1:18	4	csakhogy	3	πλὴν	G4133	alacsony	S
@@ -553,6 +575,31 @@ Fil 2:6	10	azt	9	τὸ	G3588	alacsony	S
 Fil 2:6	11	hogy	10	εἶναι	G1511	alacsony	S
 Fil 2:6	14	Istennel	12	θεῷ,	G2316	alacsony	S
 Fil 2:6	15	egyenlő	11	ἴσα	G2470	alacsony	S
+Fil 2:7	1	Hanem	1	ἀλλ᾽	G0235	alacsony	S
+Fil 2:7	2	önmagát	2	ἑαυτὸν	G1438	alacsony	S
+Fil 2:7	3	megüresíté	3	ἐκένωσεν	G2758	alacsony	S
+Fil 2:7	4	szolgai	5	δούλου	G1401	alacsony	S
+Fil 2:7	5	formát	4	μορφὴν	G3444	alacsony	S
+Fil 2:7	6	vévén	6	λαβών,	G2983	alacsony	S
+Fil 2:7	7	föl	6	λαβών,	G2983	alacsony	S
+Fil 2:7	8	emberekhez	9	ἀνθρώπων	G0444	alacsony	S
+Fil 2:7	9	hasonlóvá	7	ἐν	G1722	alacsony	S
+Fil 2:7	9	hasonlóvá	8	ὁμοιώματι	G3667	alacsony	S
+Fil 2:7	10	lévén	10	γενόμενος,	G1096	alacsony	S
+Fil 2:8	1	És	1	καὶ	G2532	alacsony	S
+Fil 2:8	4	állapotban	2	σχήματι	G4976	alacsony	S
+Fil 2:8	5	találtatott	3	εὑρεθεὶς	G2147	alacsony	S
+Fil 2:8	6	mint	4	ὡς	G5613	alacsony	S
+Fil 2:8	7	ember	5	ἄνθρωπος	G0444	alacsony	S
+Fil 2:8	8	megalázta	6	ἐταπείνωσεν	G5013	alacsony	S
+Fil 2:8	9	magát	7	ἑαυτὸν	G1438	alacsony	S
+Fil 2:8	10	engedelmes	9	ὑπήκοος	G5255	alacsony	S
+Fil 2:8	11	lévén	8	γενόμενος	G1096	alacsony	S
+Fil 2:8	12	halálig	10	μέχρι	G3360	alacsony	S
+Fil 2:8	12	halálig	11	θανάτου,	G2288	alacsony	S
+Fil 2:8	14	pedig	13	δὲ	G1161	alacsony	S
+Fil 2:8	16	keresztfának	14	σταυροῦ·	G4716	alacsony	S
+Fil 2:8	17	haláláig	12	θανάτου	G2288	alacsony	S
 Fil 2:9	1	Annakokáért	1	διὸ	G1352	alacsony	S
 Fil 2:9	3	Isten	4	θεὸς	G2316	alacsony	S
 Fil 2:9	4	is	2	καὶ	G2532	alacsony	S

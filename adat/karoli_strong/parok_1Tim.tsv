@@ -1,4 +1,4 @@
-# proveniencia: scope=manual | forras=f22/valaszok/sonnet/1Tim.jsonl, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; az API (Batch)-futásnak nincs lekérdezés-időbélyege) | modell-kimenet, javaslat: nem lekérdezés-eredmény; minden link `alacsony` (egy modell, nincs egyezés); a strong a TAGNT-ből, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py
+# proveniencia: scope=manual | forras=f22/valaszok/sonnet/1Tim.jsonl, f22/valaszok/sonnet/1Tim_javito.jsonl, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; az API (Batch)-futásnak nincs lekérdezés-időbélyege) | modell-kimenet, javaslat: nem lekérdezés-eredmény; minden link `alacsony` (egy modell, nincs egyezés); a strong a TAGNT-ből, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py
 vers	hu_sorszam	hu_szo	er_sorszam	er_szo	strong	bizonyossag	forras
 1Tim 1:1	1	Pál	1	Παῦλος	G3972	alacsony	S
 1Tim 1:1	2	Jézus	5	Ἰησοῦ	G2424	alacsony	S
@@ -1636,3 +1636,13 @@ vers	hu_sorszam	hu_szo	er_sorszam	er_szo	strong	bizonyossag	forras
 1Tim 6:20	18	nevű	13	ψευδωνύμου	G5581	alacsony	S
 1Tim 6:20	19	ismeretnek	14	γνώσεως,	G1108	alacsony	S
 1Tim 6:20	20	ellenvetéseitől	11	ἀντιθέσεις	G0477	alacsony	S
+1Tim 6:21	1	A	1	ἥν	G3739	alacsony	S
+1Tim 6:21	2	melylyel	1	ἥν	G3739	alacsony	S
+1Tim 6:21	3	némelyek	2	τινες	G5100	alacsony	S
+1Tim 6:21	4	kevélykedvén	3	ἐπαγγελλόμενοι	G1861	alacsony	S
+1Tim 6:21	6	hit	6	πίστιν	G4102	alacsony	S
+1Tim 6:21	7	mellől	4	περὶ	G4012	alacsony	S
+1Tim 6:21	8	eltévelyedtek	7	ἠστόχησαν.¶	G0795	alacsony	S
+1Tim 6:21	9	Kegyelem	9	χάρις	G5485	alacsony	S
+1Tim 6:21	10	veled	10	μεθ᾽	G3326	alacsony	S
+1Tim 6:21	11	Ámen	12	ἀμήν.	G0281	alacsony	S

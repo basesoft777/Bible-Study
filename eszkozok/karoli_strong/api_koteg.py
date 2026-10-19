@@ -64,13 +64,15 @@ NAPLO_FEJLEC = ['ts', 'futas', 'koteg', 'probalkozas', 'modell', 'gondolkodas_mo
                 'kapuhiba_db', 'http_kiserlet', 'idotartam_mp', 'finish_reason', 'prompt_sha256_12',
                 'futo_osszeg_usd', 'ok']
 BATCH_FEJLEC = ['ts', 'batch_id', 'cimke', 'kor', 'kerelmek_db']
-CID = re.compile(r'^(?P<konyv>[A-Za-z0-9]+)-k(?P<koteg>\d+)-(?P<effort>[a-z]+)-p(?P<proba>\d)$')
+CID = re.compile(r'^(?P<konyv>[A-Za-z0-9_]+)-k(?P<koteg>\d+)-(?P<effort>[a-z]+)-p(?P<proba>\d)$')
 
 
 # ---------- kis segédek ----------
 
 def konyv_nev(ascii_konyv):
     """'Ezs' -> 'Ézs' (a Konyv_normalizalo_tabla magyar rövidítései szerint); ismeretlenre változatlan."""
+    if ascii_konyv.endswith('_javito'):   # a javító menet mintája (F22.10, N-F22c): '<könyv>_javito'
+        return konyv_nev(ascii_konyv[:-len('_javito')]) + '_javito'
     f = os.path.join(tokenek.ROOT, 'konkordancia', 'Konyv_normalizalo_tabla.tsv')
     with open(f, encoding='utf-8') as h:
         for sor in h:
