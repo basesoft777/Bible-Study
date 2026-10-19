@@ -11,7 +11,7 @@ ag: claude/f109-tehom-job41
 ad: a jeloltek.tsv Jób 41:32 (H8415) nyitva sora döntést és indoklást kap a TEREMT-001 negatív kritériuma szerint; elfogadásnál új elofordulasok.tsv-sor gerinc_elem-mel és proveniencia-sorral
 kovetkezo: /kovetkezo
 olvas: [adat/motivumok.tsv, adat/jeloltek.tsv, adat/elofordulasok.tsv, adat/SEMA.md, konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_1908.tsv, tematikus_lezart/Tehom_tematikus.md, naplok/F108_MOTIVUM_UJRASCAN_naplo.md, eszkozok/lekerdez.py, eszkozok/jelolt.py]
-ir: [adat/jeloltek.tsv, adat/elofordulasok.tsv]
+ir: [adat/jeloltek.tsv, adat/elofordulasok.tsv, NYITOTT_FELADATOK.md, motivumlog/PaRDeS_motivumok.md, Lezart_tematikus_tanulmanyok_index.md]
 fugg: []
 nem_fugg: [9, 11, 55, 81, 86]
 ---
