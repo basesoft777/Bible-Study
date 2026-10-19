@@ -5,8 +5,8 @@ kod: MIGRACIO
 tipus: feladat
 fazis: 1
 modell: opus
-allapot: megallt
-ag: claude/f11-m5
+allapot: fut
+ag: claude/f11-folytatas
 munka: ertelmezo
 ad: az `indoklas` oszlop felvéve a `kapcsolatok.tsv`-be (önálló séma-tétel), az ISTENTISZT-001 egyetlen kézi forrásból renderel (szétválasztással, leképezési táblával, N0/D2–D6 diffmérce szerint), a két élő sablon (2_ v18, 4_ v10) visszaírási szabálya teljesen átírva; a 2. lépcső (a többi 6 motívum) külön jóváhagyással
 kovetkezo: "Te: [elteres_kor 1/2] az 1. lépcső (S, R, M1–M6) zárva, zárónapló: naplok/F11_zaras.md (ELLENOR_F11_M_2 TISZTA); hátra: a PR #417 merge-e a te döntésed; az M7 külön kérésre; a DT-F11c (a 2. lépcső ütemezése) eldöntendő; a T1–T3 (a T3 előtt a DT-F11b) nyitott"
