@@ -70,4 +70,15 @@
 - **A lexikon újragenerálása (F11.T3.17):** a 393. sor a `modszertan` résbe renderel, ezért a forrásjavítás kötelező következményeként `PARDES_DATUM=2026-10-18 python eszkozok/general.py --cel lexikon --id ISTENTISZT-001 --ir` (a DT243 mintája); `git diff --numstat`: `lexikon/ISTENTISZT-001_TUDOMANYOS.md 1 1` — pontosan az az egy sor. Utána `bash eszkozok/nulladiff.sh HEAD 2026-10-18` → exit 0. *Proveniencia: scope=lexikon/ISTENTISZT-001_TUDOMANYOS.md | forras=eszkozok/general.py --cel lexikon @22fb04b3 | ts=2026-10-19.*
 - **Futtatások (HEAD `22fb04b3`):** `python eszkozok/ellenorzes/tesztek/test_szabalyok.py` → 165 teszt OK; `python eszkozok/ellenoriz.py` → RENDBEN 13, SÉRTÉS 0; `python eszkozok/ellenorzes/futtat.py --valtozott $(git diff --name-only e628946e..HEAD) --diff-alap e628946e --diff-fej HEAD --commit-uzenet-fajl <üzenetek> --pr-cim "[ELLENŐRZŐ] …"` → exit 0, 0 HIBA; `python eszkozok/feladatok.py ellenoriz` → 143 brief, 0 hiba.
 - **T3 javítókör 2/2 (ELLENOR_F11_T3_2: ELTÉRÉS 4, mind mechanikus, tételenként külön commit):** 1. F11.T3.20 (a brief T3 „Végrehajtva” bekezdése), 2. F11.T3.21 (a T3/3 besorolási indoklás), 3. F11.T3.22 (a brief hatókör-mondata), 4. F11.T3.23 (a halott-út állítás a :3 sori NAPLO kivételével); F11.T3.24: a T3.6 naplósorának felülírás-jelölése és a DT-F11p kimenetele.
-- **Hátra:** az újraellenőrzés (`naplok/ELLENOR_F11_T3_3.md`); a #11 zárása; a merge a felhasználóé. Nyitva marad, nem a #11 része: N-F11f (a generált nézetbeli visszamutató link a `forras_tanulmany`-ból).
+- **ELLENOR_F11_T3_3:** 3 mechanikus tétel, a korlát után javítva (commit `5d1c4451`), a maradék ELTÉRÉS-t az orkesztrátor elfogadta a felhasználó felhatalmazásával (DT-F11q, 2026-10-19).
+- **Hátra:** a merge a felhasználóé.
+
+## Zárás (2026-10-19)
+
+*ág: `claude/f11-sema-t3` · PR #430 · modell: claude-opus-5-5 · a DT-F11q szerint TISZTA jelentés nélkül (a /kovetkezo 9. lépésének „megallt, Te: /elteres” ágát a döntés váltja ki).*
+
+- **Kész:** az 1. lépcső (ISTENTISZT-001 egy forrásból, PR #417); N-F11e; M7 (DT-F11l b); T1–T2 (a két sablon); a DT250 séma-tétele (`forras_tanulmany`, E31); T3 (DT-F11o, DT-F11p).
+- **Ellenőrzési sorozatok:** NMT (3 jelentés, a maradék a felhasználóé: NMT_3 1.), M7 (3), S2 (3, DT-F11n), T3 (3, DT-F11q).
+- **Átadva:** a 2. lépcső a #123-nak (`F123_MIGRACIO2_BRIEF.md`, DT251).
+- **Nyitva, nem a #11-ben:** N-F11a (a MCGED licence), N-F11b, N-F11c (KAPCSOLATOK-séma korlátai), N-F11d (két tétel azonos helyőrzővel a `NYITOTT_FELADATOK.md`-ben), N-F11f (a generált nézetbeli visszamutató link), az ELLENOR_F11_NMT_3 1. tétele (az index :3 kézi-rész felsorolása; a felhasználóé).
+- **Tanulság (DT-F11n, ELLENOR_F11_T3_2–3):** a javítókör tételenként commitol, és a javítás végén kereszt-grep kell a rokon helyekre („függ”, „változatlan”, „igaz”, a régi célnév) — a két maradék-kör ebből adódott. Nyitva marad, nem a #11 része: N-F11f (a generált nézetbeli visszamutató link a `forras_tanulmany`-ból).
