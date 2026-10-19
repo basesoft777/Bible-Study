@@ -5,10 +5,10 @@ kod: CI_JAVITO_KOR
 tipus: feladat
 fazis: folyamat
 modell: sonnet
-allapot: fut
+allapot: megallt
 ag: claude/f50-ci-javito-kor
 ad: a /befogad és a /kovetkezo záró lépése push után elolvassa a CI-t; ha a hiba a saját PR tartalmából jön (fejléc-mező, fájlnév, formai hiba), legfeljebb két körben javítja új commitban; minden mást (CI-szabály, másik feladat, függési kör, tartalmi döntés) nem javít, hanem jelent
-kovetkezo: "DT-F50a jóváhagyva (a); a szabályszöveg a parancsfájlokba, ellenőrzés, zárás"
+kovetkezo: "Te: /elteres 50"
 olvas: [.claude/commands/befogad.md, .claude/commands/kovetkezo.md, CLAUDE.md, MUNKAMENET.md, DONTESEK.md, eszkozok/feladatok.py, .github/workflows/]
 ir: [.claude/commands/befogad.md, .claude/commands/kovetkezo.md, naplok/CI_JAVITO_KOR_naplo.md]
 fugg: []
