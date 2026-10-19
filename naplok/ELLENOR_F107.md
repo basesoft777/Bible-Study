@@ -10,17 +10,17 @@ ELTÉRÉS: 6 tétel
 | pont | eredmény | fájl:sor | parancs / indok |
 |---|---|---|---|
 | 0 modell | OK | — | Az ellenőr modellje `claude-opus-5-5`, a kért `opus`: egyezik. A napló fejléce („Futtatta: claude-opus-5-5”, `naplok/F107_BDB_JELOLT_SZOVEG_naplo.md:3`) tényleges modellnevet ír. Az új táblákban nincs `modell` oszlop. Hogy a végrehajtó valóban ez a modell volt-e, nem igazolható. |
-| D DT-F107a (forrás, licenc, megőrzés) | OK | `DONTESEK.md`, `konkordancia/lexikonok_nyers/DictBDB.json` | `git diff --raw --abbrev=40 base head -- konkordancia/lexikonok_nyers/DictBDB.json` → `A`, blob `9d6011ea9e3c61833be7a905d6d18e2363aaf37c`, egyezik a `licencek.tsv` BDB-sorában az F33 óta rögzített blobbal. A hibrid forrást a tábla fejléce mutatja: `DictBDB.json@5d826c580a4d` + `BDB.lexicon@c998a70b432f`. |
-| D DT-F107a: SHA-256 | NEM ELLENŐRIZHETŐ | `licencek.tsv:7`, a két README, `bont.py:51` | Az `5d826c58…e33d` mind a négy helyen azonos (diff alapján); a SHA-256 a megengedett parancsokkal nem számolható. A blob-SHA-1 egyezése tartalmi azonosságot mutat. |
-| D DT-F107d (playbook) | OK | `Rendszerfejlesztesi_playbook.md:84-97` | F107.5 (döntés 🟢) után F107.6 (playbook); CI-kapu nincs, a döntés szerint. |
-| D DT-F107e (`bdb_id` nélküli sor) | OK | `adat/bdb_szakaszok.tsv` | `sorszam=1`: 8 090 Strong; `egyezik` 7 916; `reszleges\|sikertelen\|csonk` 144. Üres `bdb_id` egyező vagy `szocikk_resze` sorban: 0; `BDB…` azonosító nem egyező sorban: 0. A hiány explicit, nincs kitöltve. |
-| D DT-F107f (pe/mem) | OK | `adat/bdb_forras_javitas.tsv` | 7 200 sor; `pe_mem … javitva` 3 823; `hivatkozas` 412; `kezi` 7, mind `manual` (6785–6791. sor). |
-| D DT-F107g/h (4. lépés ⛔) | OK | `DONTESEK.md`, napló 4.5–4.8 | Mindkét kör megállt (F107.20, F107.26: `dontesre_var`), döntés után folytatódott. A 4. szabály elvetett első változata nem került commitba. |
-| 4. lépés: ≥ 99%-os mérce | ELTÉRÉS | napló `:485-487`, `:779-781` | Aranyminta `forras_hiba` nélkül 411/416 = 98,8%. A `DONTESEK.md`-ben nincs felhasználói döntés a 99% alatti elfogadásról; a DT-F107h feltétele csak a „ne romoljon” volt. |
-| D DT-F107c (6. lépés ⛔) | OK | — | `git diff --stat base head -- konkordancia/BDB_teljes_unabridged.tsv adat/forditasok.tsv konkordancia/lexikonok_nyers/BDB.lexicon eszkozok/forditas_kapuk.py` → üres. |
-| D DT-F107b (7. lépés ⛔) | OK | `adat/bdb_szakasz_hu.tsv` | 674 Strong; soronként `illeszkedik` 6 395, `horgonnyal` 202, `elakad` 606, egyezik a SEMA 2.32 és az F38-átadás számaival. A Strong-szintű 409/85/98/82 saját lekérdezéssel NEM ELLENŐRIZHETŐ. |
+| D DT225 (forrás, licenc, megőrzés) | OK | `DONTESEK.md`, `konkordancia/lexikonok_nyers/DictBDB.json` | `git diff --raw --abbrev=40 base head -- konkordancia/lexikonok_nyers/DictBDB.json` → `A`, blob `9d6011ea9e3c61833be7a905d6d18e2363aaf37c`, egyezik a `licencek.tsv` BDB-sorában az F33 óta rögzített blobbal. A hibrid forrást a tábla fejléce mutatja: `DictBDB.json@5d826c580a4d` + `BDB.lexicon@c998a70b432f`. |
+| D DT225: SHA-256 | NEM ELLENŐRIZHETŐ | `licencek.tsv:7`, a két README, `bont.py:51` | Az `5d826c58…e33d` mind a négy helyen azonos (diff alapján); a SHA-256 a megengedett parancsokkal nem számolható. A blob-SHA-1 egyezése tartalmi azonosságot mutat. |
+| D DT226 (playbook) | OK | `Rendszerfejlesztesi_playbook.md:84-97` | F107.5 (döntés 🟢) után F107.6 (playbook); CI-kapu nincs, a döntés szerint. |
+| D DT227 (`bdb_id` nélküli sor) | OK | `adat/bdb_szakaszok.tsv` | `sorszam=1`: 8 090 Strong; `egyezik` 7 916; `reszleges\|sikertelen\|csonk` 144. Üres `bdb_id` egyező vagy `szocikk_resze` sorban: 0; `BDB…` azonosító nem egyező sorban: 0. A hiány explicit, nincs kitöltve. |
+| D DT228 (pe/mem) | OK | `adat/bdb_forras_javitas.tsv` | 7 200 sor; `pe_mem … javitva` 3 823; `hivatkozas` 412; `kezi` 7, mind `manual` (6785–6791. sor). |
+| D DT229/h (4. lépés ⛔) | OK | `DONTESEK.md`, napló 4.5–4.8 | Mindkét kör megállt (F107.20, F107.26: `dontesre_var`), döntés után folytatódott. A 4. szabály elvetett első változata nem került commitba. |
+| 4. lépés: ≥ 99%-os mérce | ELTÉRÉS | napló `:485-487`, `:779-781` | Aranyminta `forras_hiba` nélkül 411/416 = 98,8%. A `DONTESEK.md`-ben nincs felhasználói döntés a 99% alatti elfogadásról; a DT230 feltétele csak a „ne romoljon” volt. |
+| D DT231 (6. lépés ⛔) | OK | — | `git diff --stat base head -- konkordancia/BDB_teljes_unabridged.tsv adat/forditasok.tsv konkordancia/lexikonok_nyers/BDB.lexicon eszkozok/forditas_kapuk.py` → üres. |
+| D DT232 (7. lépés ⛔) | OK | `adat/bdb_szakasz_hu.tsv` | 674 Strong; soronként `illeszkedik` 6 395, `horgonnyal` 202, `elakad` 606, egyezik a SEMA 2.32 és az F38-átadás számaival. A Strong-szintű 409/85/98/82 saját lekérdezéssel NEM ELLENŐRIZHETŐ. |
 | D DT190 | OK | SEMA 2.30, `datasetek.tsv`, F102/F38 átadás | `DONTESEK.md:265` 🟡; mindenütt „nincs befagyasztva”. |
-| végleges DT/N szám | OK | — | Csak a meglévő DT174, DT181, DT190; az új tételek helyőrzősek (DT-F107a–h, N-F107a/b). |
+| végleges DT/N szám | OK | — | Csak a meglévő DT174, DT181, DT190; az új tételek helyőrzősek (DT225–h, N-F107a/b). |
 | `ir` mező / F102–F38 fejléc | OK | — | Minden fájl az `ir`-ben, ill. a `DONTESEK.md`/`NYITOTT_FELADATOK.md` saját soraiban. Bővítés: F107.7 (`licencek.tsv`), F107.41 (F102, F38). Az F102/F38 diffje csak törzsbeszúrás, a fejléc nem változott. |
 | `licencek.tsv` | OK | `adat/licencek.tsv:7` | numstat 1/1; csak a BDB-sor 3. mezője bővült. |
 | TSV-írás / wrapper | OK | `eszkozok/bdb_jelolt/*.py` | `import csv\|csv\.` → 0. A `reconfigure` blokk mind a 9 fájlban az importok után. Írás `'\t'.join`, `newline='\n'`. |
@@ -43,13 +43,13 @@ ELTÉRÉS: 6 tétel
 | CL3 nulla-diff hatóköre | OK | — | `forditasok.tsv`, `BDB_teljes_unabridged.tsv`, `BDB.lexicon`, `forditas_kapuk.py`, `_convert_bdb.py` változatlan; a generált táblák bájtos reprodukálhatóságára nem terjed ki. |
 | CL4 sorszám-Δ (E17/DT3) | OK | — | `bdb_szakaszok` +36 621, `bdb_forras_javitas` +7 200, `bdb_szakasz_hu` +9 664 (mind új, kategóriás bontással: SEMA 2.30–2.32); `datasetek` +4; `licencek` 0 (1/1). |
 | CL5 ⛔ pontok | OK | — | 1. lépés: F107.3 → .4 → .5, playbook csak utána; 4.: .20/.26; 6.: .31 → .32; 7.: .36 → .37. A döntések az orkesztrátoron át érkeztek; a felhasználói eredet NEM ELLENŐRIZHETŐ. |
-| merge-kockázat | ELTÉRÉS | — | A main a base óta 149 committal előrébb. `DONTESEK.md` és `datasetek.tsv`: mindkét ág a fájl végére ír → szöveges ütközés. `NYITOTT_FELADATOK.md`: ütközhet. Nem ütközik: `licencek.tsv`, F102, SEMA. A main SEMA-ja (KJV, F118) hivatkozik a `DT-F107d` helyőrzőre — a `szamkiosztas`-nak azt is követnie kell. A #38 `fut`, az F38 törzse később ütközhet. |
+| merge-kockázat | ELTÉRÉS | — | A main a base óta 149 committal előrébb. `DONTESEK.md` és `datasetek.tsv`: mindkét ág a fájl végére ír → szöveges ütközés. `NYITOTT_FELADATOK.md`: ütközhet. Nem ütközik: `licencek.tsv`, F102, SEMA. A main SEMA-ja (KJV, F118) hivatkozik a `DT226` helyőrzőre — a `szamkiosztas`-nak azt is követnie kell. A #38 `fut`, az F38 törzse később ütközhet. |
 
 **Az ELTÉRÉS-ek súlyossági sorrendben:**
 
 1. A ≥ 99%-os aranyminta-mérce nem teljesül (98,8%), és az elfogadásáról nincs felhasználói döntés a `DONTESEK.md`-ben.
 2. Reprodukálhatóság: CRLF-es checkouton a `bont.py` a munkafa-hash miatt leáll; `.gitattributes`-szabály nincs.
-3. Merge-kockázat: biztos szöveges ütközés a `DONTESEK.md`-ben és a `datasetek.tsv`-ben; a main hivatkozik a `DT-F107d` helyőrzőre.
+3. Merge-kockázat: biztos szöveges ütközés a `DONTESEK.md`-ben és a `datasetek.tsv`-ben; a main hivatkozik a `DT226` helyőrzőre.
 4. Az N-F107b szövege elavult.
 5. A brief 5. lépésének H7626 „145:” példája hiányzik a javítótáblából (jelezve).
 6. Kozmetikai elavulás a `datasetek.tsv` szövegében és a SEMA 2.30/2.31 állapotsoraiban.

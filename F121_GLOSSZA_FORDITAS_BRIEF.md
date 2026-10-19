@@ -120,29 +120,29 @@ A fordítás minden adagja ezt a négy eszközt használja. Ezek nélkül adag n
 
 A G1941/H7121 „nevezni” eset nem egyszeri javítás, hanem az alábbi elvek első alkalmazása
 (M0 0. pont). Az elvek a gyorsítótár minden szótárára érvényesek, nem csak e feladat öt
-forrására. Helyőrzőjük az 5. szakaszban: DT-F121e–i. Amíg a felhasználó nem hagyja jóvá
+forrására. Helyőrzőjük az 5. szakaszban: DT238–i. Amíg a felhasználó nem hagyja jóvá
 őket, az M1 nem indul.
 
-**Jóváhagyva:** a felhasználó 2026-10-19-én mind az öt elvet elfogadta; a DT-F121e–i a `DONTESEK.md`-ben 🟢.
+**Jóváhagyva:** a felhasználó 2026-10-19-én mind az öt elvet elfogadta; a DT238–i a `DONTESEK.md`-ben 🟢.
 
-1. **Nyelvközi egységesség (DT-F121e).** Ugyanaz a fogalom a héber és a görög szócikkekben
+1. **Nyelvközi egységesség (DT238).** Ugyanaz a fogalom a héber és a görög szócikkekben
    (BDB, Thayer/TBESG, tW, UBS DBH/DNTG, Mounce stb.) ugyanazt a magyar szót kapja. A párokat a
    meglévő kapcsolatok adják: a SECE héber↔görög megfelelő-listái (`SECE_G/H_teljes.tsv`), az
    LXX versszintű párok (`LXX_versszintu_parok.tsv`) és a Strong-megfelelések. Ha egy fogalomnak
    valamelyik oldalon már van elfogadott magyar alakja, a másik oldal azt örökli: az adatblokk
    (2a/3) a pár másik oldalának elfogadott alakjait is felsorolja, forrással.
-2. **Rangsor eltérő fordításnál (DT-F121f):** (a) a terminológiai szójegyzék `kapu=igen`
+2. **Rangsor eltérő fordításnál (DT239):** (a) a terminológiai szójegyzék `kapu=igen`
    sora; (b) a Károli szóhasználata az adott Strongra (adatblokk); (c) a már elfogadott
    BDB-fordítás; (d) a szótár saját szövege. Ha két szint ellentmond egymásnak, a fordítás nem
    dönt magától: a sor kézi ítéletre áll meg (`…_bukottak.tsv`, `rangsor` ok, a jelöltek
    felsorolásával, szintenként).
-3. **A szójegyzék építése folyamat (DT-F121g).** Minden adag előtt gépi lépés fut
+3. **A szójegyzék építése folyamat (DT240).** Minden adag előtt gépi lépés fut
    (`glossza_forditas.py szojegyzek`). Kigyűjti a gyorsítótárból, mely angol kulcskifejezések
    kaptak már magyar alakot, és hol van több versengő alak. Kimenet:
    `naplok/F121_GLOSSZA_FORDITAS_szojegyzek_javaslat.tsv` (angol kulcs, magyar alakok
    gyakorisággal, sorhivatkozások, javasolt sor). A `terminologia.tsv`-be csak a felhasználó
    által jóváhagyott sor kerül. A gépi lépés javasol, nem ír.
-4. **A tiltott fordulatok listája általános (DT-F121h).** Nem egy szóhoz kötött: tükörfordítások
+4. **A tiltott fordulatok listája általános (DT241).** Nem egy szóhoz kötött: tükörfordítások
    és hamis barátok gyűjtőhelye. Új elemet a javítások hoznak. A tétel **értelemhez kötött
    mintát** tartalmaz, nem puszta szót. Mérés (2026-10-18, `adat/forditasok.tsv`): a „melléknév”
    szóalak 93 sorban áll, nyelvtani értelemben (BDB/Thayer „melléknév”, „melléknévvel” stb.),
@@ -150,7 +150,7 @@ forrására. Helyőrzőjük az 5. szakaszban: DT-F121e–i. Amíg a felhasznál�
    adni”) csak a két G1941 sorban fordul elő, 4 helyen. A kapu tehát csak az igei mintát
    fogja meg (pl. `melléknéven nevez\w*`, `melléknevet ad\w*`). A tábla sémája ennek
    megfelelően: `minta` (regex), `ertelem`, `helyette`, `indoklas`, `forras_javitas`, `verzio`.
-5. **Visszamenőleges érvény (DT-F121i).** Az elvek a meglévő kézi és gépi fordításokra is
+5. **Visszamenőleges érvény (DT242).** Az elvek a meglévő kézi és gépi fordításokra is
    vonatkoznak, de **automatikus javítás nincs**. Az M0 felméri, hány sort érint, és
    tételes javaslatot ad (`naplok/F121_GLOSSZA_FORDITAS_visszamenoleges.tsv`: sor-kulcs,
    elv, mai alak, javasolt alak, rangsor-indoklás). A javítást a felhasználó soronként vagy
@@ -217,8 +217,8 @@ forrására. Helyőrzőjük az 5. szakaszban: DT-F121e–i. Amíg a felhasznál�
        szójegyzék szerint kell átírni, a javasolt alakkal a naplóban.
      - **TBESG G1941 `1`:** „hívni, nevezni, melléknevet adni” → „hívni, nevezni, más néven is
        nevezni”.
-   - Ez a 2b. szakasz elveinek első alkalmazása (DT-F121e: a görög oldal a H7121 elfogadott
-     alakját örökli; DT-F121h: az első tiltott minta).
+   - Ez a 2b. szakasz elveinek első alkalmazása (DT238: a görög oldal a H7121 elfogadott
+     alakját örökli; DT241: az első tiltott minta).
    - Háttér: a 2026-09-26-i fordítási pilot (`naplok/FORDITAS_P3_kimenet.tsv`) modelljei „nevet
      adni / elnevezni / megnevezni” alakot adtak, a „melléknév” csak a kézi sorban szerepel.
    - Az írás előtt az eszköz a táblát összeveti az eredetivel: csak a megnevezett sorok
@@ -249,7 +249,7 @@ forrására. Helyőrzőjük az 5. szakaszban: DT-F121e–i. Amíg a felhasznál�
    adatrétegbe csak döntéssel, kinyerésként mozog adat; itt nem kinyerés történik).
 6. Visszamenőleges felmérés (2b/5): `…_visszamenoleges.tsv`, csak javaslat.
 7. Az első szójegyzék-javaslat (2b/3) a teljes gyorsítótárból.
-8. **⛔ Megállás:** D1–D4 döntés, a DT-F121e–i elvek, a v4 tervezete és a visszamenőleges
+8. **⛔ Megállás:** D1–D4 döntés, a DT238–i elvek, a v4 tervezete és a visszamenőleges
    javaslatok jóváhagyása (ez utóbbi tételesen; ami nincs jóváhagyva, változatlan marad). Commit-pontok:
    `F121.0` (a „nevezni” tétel), `F121.1` (lista), `F121.2` (feloldó + 13. szabály + teszt),
    `F121.3` (SEMA, a tiltott-fordulat tábla szakasza is), `F121.4` (kapuk CLI + `14_tiltott`
@@ -299,15 +299,15 @@ rangsor-ütközés (2b/2) soronként áll meg, nem adagonként.
 
 | Azonosító | Kérdés | Opciók | Javaslat |
 |---|---|---|---|
-| D1 (DT-F121a) | A CC BY-SA forrásból (tW, UBS DBH, UBS DNTG) készült fordítás licence. A projekt saját rétege „minden jog fenntartva” (DT116), a fordítás viszont a SA-forrás átdolgozása. | 1. a `licencek.tsv` új sora: a `forditasok.tsv` sorainak licence a `szotar` forrásáé, a SA-forrásból készült sor CC BY-SA 4.0, a projekt_adat nem terjed ki rá · 2. a `forditasok.tsv` új `licenc` oszlopa · 3. a SA-forrás nem fordítható | 1. A meglévő 40 UBS DNTG `kezi` sor már ilyen, és séma-változást nem igényel. |
-| D2 (DT-F121b) | Mounce (MCGED, 13 egység, 3 867 karakter): nem kereskedelmi, „All Rights Reserved”, a licencsor szerint „a nyilvános nézetből kimarad”. | 1. kimarad, a jelölés a lapon marad · 2. fordítás nem kereskedelmi jelöléssel | 1., amíg a #36 a Mounce-blokk nyilvánosságáról nem dönt. |
-| D3 (DT-F121c) | A TBESH `forras_hash`-e mire készüljön? A lap a `tbesh_szoveg_dedup` utáni szöveget mutatja. | 1. a lapon látható (dedup) szövegre, a 13. szabály ugyanazzal a függvénnyel számol · 2. a nyers `TBESH.txt` mezőre | 1. Az fordítódik, amit az olvasó lát. |
-| D4 (DT-F121d) | A tW-szócikkek (174 000 karakter, a munka 85%-a) teljes fordítása vagy csak a `Definition` része? | 1. teljes · 2. csak a definíció, a többi angol marad (a jelölés részlegesként marad) | 1. A lap a teljes szöveget mutatja, és részleges jelölés ma nincs a generátorban. |
-| DT-F121e | Nyelvközi egységesség (2b/1) | 1. elfogad · 2. elvet | 1. |
-| DT-F121f | Rangsor: szójegyzék > Károli > elfogadott BDB > a szótár szövege; ütközésnél kézi ítélet (2b/2) | 1. elfogad · 2. más sorrend | 1. |
-| DT-F121g | Szójegyzék-építés minden adag előtt, gépi javaslat, kézi jóváhagyás (2b/3) | 1. elfogad · 2. csak az M0-ban egyszer | 1. |
-| DT-F121h | Általános, értelemhez kötött (regex) tiltott-fordulat tábla (2b/4) | 1. elfogad · 2. szóhoz kötött lista | 1. A puszta „melléknév” 93 helyes nyelvtani sort fogna meg. |
-| DT-F121i | Visszamenőleges érvény: felmérés és tételes javaslat, automatikus javítás nélkül (2b/5) | 1. elfogad · 2. csak előre érvényes | 1. |
+| D1 (DT234) | A CC BY-SA forrásból (tW, UBS DBH, UBS DNTG) készült fordítás licence. A projekt saját rétege „minden jog fenntartva” (DT116), a fordítás viszont a SA-forrás átdolgozása. | 1. a `licencek.tsv` új sora: a `forditasok.tsv` sorainak licence a `szotar` forrásáé, a SA-forrásból készült sor CC BY-SA 4.0, a projekt_adat nem terjed ki rá · 2. a `forditasok.tsv` új `licenc` oszlopa · 3. a SA-forrás nem fordítható | 1. A meglévő 40 UBS DNTG `kezi` sor már ilyen, és séma-változást nem igényel. |
+| D2 (DT235) | Mounce (MCGED, 13 egység, 3 867 karakter): nem kereskedelmi, „All Rights Reserved”, a licencsor szerint „a nyilvános nézetből kimarad”. | 1. kimarad, a jelölés a lapon marad · 2. fordítás nem kereskedelmi jelöléssel | 1., amíg a #36 a Mounce-blokk nyilvánosságáról nem dönt. |
+| D3 (DT236) | A TBESH `forras_hash`-e mire készüljön? A lap a `tbesh_szoveg_dedup` utáni szöveget mutatja. | 1. a lapon látható (dedup) szövegre, a 13. szabály ugyanazzal a függvénnyel számol · 2. a nyers `TBESH.txt` mezőre | 1. Az fordítódik, amit az olvasó lát. |
+| D4 (DT237) | A tW-szócikkek (174 000 karakter, a munka 85%-a) teljes fordítása vagy csak a `Definition` része? | 1. teljes · 2. csak a definíció, a többi angol marad (a jelölés részlegesként marad) | 1. A lap a teljes szöveget mutatja, és részleges jelölés ma nincs a generátorban. |
+| DT238 | Nyelvközi egységesség (2b/1) | 1. elfogad · 2. elvet | 1. |
+| DT239 | Rangsor: szójegyzék > Károli > elfogadott BDB > a szótár szövege; ütközésnél kézi ítélet (2b/2) | 1. elfogad · 2. más sorrend | 1. |
+| DT240 | Szójegyzék-építés minden adag előtt, gépi javaslat, kézi jóváhagyás (2b/3) | 1. elfogad · 2. csak az M0-ban egyszer | 1. |
+| DT241 | Általános, értelemhez kötött (regex) tiltott-fordulat tábla (2b/4) | 1. elfogad · 2. szóhoz kötött lista | 1. A puszta „melléknév” 93 helyes nyelvtani sort fogna meg. |
+| DT242 | Visszamenőleges érvény: felmérés és tételes javaslat, automatikus javítás nélkül (2b/5) | 1. elfogad · 2. csak előre érvényes | 1. |
 | N-F121a | A BDB-nyelvi háttér (18 Strong) magyarja a meglévő teljes fordítás feje. A kivágás a #107 szakaszhatár-illesztésére épül, a renderbe kötés generátor-feladat. | – | külön feladat a #107 után |
 | N-F121b | A héber 9. szerep DBH-táblája a glosszát `forditas_ehhez` nélkül, angolul rendereli. A #121 fordításai után ez a tábla is magyarulhatna. | – | generátor-feladat, a #36 előtt vagy vele |
 
@@ -344,7 +344,7 @@ miatt nem futhatnak egyszerre).
 | E4 | Minden új sor: `terminologia_verzio=v4`, `modell` = a tényleges modellnév, `allapot` a SEMA szerint. |
 | E5 | Egy sor sem `szotar=BDB` (#28/#38). Kivétel nincs; a meglévő sorok közül csak a két G1941 kézi sor (Thayer, TBESG) változik, az `F121.0` szerint. |
 | E8 | A `14_tiltott` kapu az új sorokban 0 találatot hagy rögzítve; a G1941 két sorában „melléknév” nem marad. |
-| E10 | A DT-F121e–i jóváhagyása előtt nincs M1; a jóvá nem hagyott visszamenőleges javaslat egyetlen sort sem változtat. |
+| E10 | A DT238–i jóváhagyása előtt nincs M1; a jóvá nem hagyott visszamenőleges javaslat egyetlen sort sem változtat. |
 | E11 | Minden adag előtt a szójegyzék-gyűjtő lefutott, a kimenete a naplóban. |
 | E9 | Minden adag adatblokkja tartalmazza a Strongok Károli-alakjait és az idézett versek Károli-szövegét, proveniencia-sorral. |
 | E6 | Kapuk: minden rögzített sor átment a gátló kapukon; a bukottak a `…_bukottak.tsv`-ben, okkal. |

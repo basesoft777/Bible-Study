@@ -79,7 +79,7 @@ A repó `scope=… | forras=… | ts=…` formátuma kibővíthető további kul
 - A SEMA 1.5 szerint a proveniencia-sor a lekérdezés saját kimenete, „szó szerint, szerkesztés nélkül”. Példa: `scope=OT-full | forras=TAHOT_kivonat.tsv | strong=H6093 | n=3 | ts=2026-09-11T14:22Z`. Kötelező kulcsok: `scope`, `forras`, `ts`. A `scope` megengedett értékei: `OT-full | NT-full | OT+NT-full | LXX-39 | range:<…> | manual`. — `adat/SEMA.md` 92–110. sor
 - A repóban már van precedens kód- és bemenet-hash rögzítésére: a `bdb_vers_jelentes.tsv` proveniencia-szabálya rögzíti a kódfájlok (LF-normalizált) hash-ét és minden bemenet hash-ét. — `adat/SEMA.md` 1247. sor
 - A licencleltár `tisztazott` mércéje: szó szerinti idézet, URL, GitHubnál commit-hash és lekérési dátum. — `adat/licencek.tsv` fejléc-komment (F33)
-- A brief szövege szerint a 2026-10-16-i lecke: a nyers forrást SHA-256-tal kell megőrizni, és minden szerkezetvesztő konverzió naplózott döntés (DT-F107d). — `F107_BDB_JELOLT_SZOVEG_BRIEF.md` (a hívó összefoglalója és a git log `fddf9a45` alapján; a fájlt nem nyitottam meg)
+- A brief szövege szerint a 2026-10-16-i lecke: a nyers forrást SHA-256-tal kell megőrizni, és minden szerkezetvesztő konverzió naplózott döntés (DT226). — `F107_BDB_JELOLT_SZOVEG_BRIEF.md` (a hívó összefoglalója és a git log `fddf9a45` alapján; a fájlt nem nyitottam meg)
 - A bible-mcp verziót nem ad vissza (l. 1. pont), de a kiadás eszközének SHA-256-ja a GitHub API-ból lekérhető (`digest`). — [GitHub release](https://github.com/nirajagarwal/bible-mcp/releases/tag/v0.14.1)
 - A repó egy briefben már rögzített MCP-használatot `manual` provenienciával: „Proveniencia: `manual` (kézi `grep` a két fájlon és három `word_study`-lekérdezés a bible-mcp szerveren, 2026.10.16; nem …”. — `F102_BDB_SZELETELO_JAVITAS_BRIEF.md` 31. sor
 
@@ -91,7 +91,7 @@ A repó `scope=… | forras=… | ts=…` formátuma kibővíthető további kul
   - `args`: rendezett kulcsú, szóköz nélküli JSON. Így az újrafuttatás bájtra azonos hívást ad.
   - `szerver=…@<verzió>?`: a kérdőjel jelzi, hogy a verzió *nem a szervertől jött*, hanem a GitHub `server.json`-ból. A CLAUDE.md 1. szabálya szerint nem igazolt értéket nem szabad igazoltnak feltüntetni.
   - `corpus_fp`: a `corpus_info` válaszának hash-e, a hívással azonos munkamenetben. Olcsó változásérzékelő.
-  - `valasz_sha256`: a nyers válasz hash-e. A nyers választ fájlban kell megőrizni (pl. `naplok/mcp_nyers/<ts>_<eszköz>.json`), a DT-F107d mintájára. Hash nyers szöveg nélkül nem ellenőrizhető újra.
+  - `valasz_sha256`: a nyers válasz hash-e. A nyers választ fájlban kell megőrizni (pl. `naplok/mcp_nyers/<ts>_<eszköz>.json`), a DT226 mintájára. Hash nyers szöveg nélkül nem ellenőrizhető újra.
   - A `scope`-ban ne szerepeljen `OT-full`: az MCP-válasz `limit`-tel vágott, tehát nem teljes scan. A `range:` vagy egy új `mcp-minta` érték a helyes. Az utóbbi új `scope`-érték lenne, és SEMA-módosítást igényelne (DT-F<nn>).
 - Az újraellenőrzés két szintű:
   - **gyenge:** ugyanaz az `args` ma más `valasz_sha256`-ot ad, tehát a szerver változott;

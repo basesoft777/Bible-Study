@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-10-19",
-   "commit": "6fb3ab14"
+   "commit": "10dd3c69"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -72,12 +72,12 @@
   {
    "kulcs": "ready",
    "cimke": "Indítható most",
-   "db": 7
+   "db": 8
   },
   {
    "kulcs": "wait",
    "cimke": "Függésre vár",
-   "db": 11
+   "db": 9
   },
   {
    "kulcs": "plan",
@@ -91,6 +91,14 @@
   }
  ],
  "sor": [
+  {
+   "szam": 38,
+   "kod": "BDB_FORDITAS",
+   "cim": "A teljes BDB héber szótár magyar fordítása, megállási pontokkal",
+   "most": "Folytatás: a 7. adag (sorrend 649–) a claude/f38-adag7 ágon, a #72 és a #73 kész, a sorrend újragenerálva (N51, DT52 (a), PR #236); a 9. adag előtt a #67 kapuja (DT55: a 9. adag menete fugg: 67-et tesz); a 8. adagtól minden adag előtt a Károli-lefedettség mérése, indulás csak ≥85%-nál (DT56, naplok/BDB_FORDITAS_karoli_lefedettseg.py)",
+   "felbemaradt": true,
+   "parhuzamos": true
+  },
   {
    "szam": 109,
    "kod": "TEHOM_JOB41",
@@ -363,10 +371,10 @@
    "kod": "BDB_FORDITAS",
    "cim": "A teljes BDB héber szótár magyar fordítása, megállási pontokkal",
    "fazis": "1",
-   "allapot": "wait",
+   "allapot": "ready",
    "brief_allapot": "fut",
    "most": "Folytatás: a 7. adag (sorrend 649–) a claude/f38-adag7 ágon, a #72 és a #73 kész, a sorrend újragenerálva (N51, DT52 (a), PR #236); a 9. adag előtt a #67 kapuja (DT55: a 9. adag menete fugg: 67-et tesz); a 8. adagtól minden adag előtt a Károli-lefedettség mérése, indulás csak ≥85%-nál (DT56, naplok/BDB_FORDITAS_karoli_lefedettseg.py)",
-   "fugg": "#34 (kész), #56 (kész), #72 (kész), #73 (kész), #107",
+   "fugg": "#34 (kész), #56 (kész), #72 (kész), #73 (kész), #107 (kész)",
    "tervezett": false,
    "reszletes": "A BDB, a legrészletesebb héber szótár mind a 8 090 szócikke magyarra fordul, gyakorisági sorrendben, adagonként, gépi minőségkapukkal. Öt adag (406 szócikk) kész; a hatodik a DT-F38i döntésre vár.",
    "roviden": "A nagy héber szótár magyarítása — most egy igen/nemre vár, hogy mehet-e tovább.",
@@ -622,7 +630,7 @@
    "allapot": "wait",
    "brief_allapot": "nem_indult",
    "most": "Indítható a fugg szerint (a #76 után): az 1. lépéssel",
-   "fugg": "#76, #99 (kész), #107*, #119",
+   "fugg": "#76, #99 (kész), #107 (kész), #119",
    "tervezett": false,
    "reszletes": "",
    "roviden": "",
@@ -687,22 +695,6 @@
    "brief_allapot": "nem_indult",
    "most": "Indítható a fugg szerint (a #105 után); a DT169 a próba költségmérése után dől el",
    "fugg": "#76, #99 (kész), #102*, #103*, #104, #105, #119*",
-   "tervezett": false,
-   "reszletes": "",
-   "roviden": "",
-   "leiras_forras": null,
-   "leiras_hiany": true
-  },
-  {
-   "kulcs": "BDB_JELOLT_SZOVEG",
-   "szam": 107,
-   "kod": "BDB_JELOLT_SZOVEG",
-   "cim": "A BDB jelölt szövegrétege — szakasztábla a nyers forrás tagolás-jelölőiből, és a kész magyar fordítás illesztése",
-   "fazis": "1",
-   "allapot": "wait",
-   "brief_allapot": "nem_indult",
-   "most": "Indítható (a #99 kész; a #76-tól nem függ): az 1. lépéssel",
-   "fugg": "#99 (kész), #119*",
    "tervezett": false,
    "reszletes": "",
    "roviden": "",
@@ -905,7 +897,6 @@
    "BDB_MEGJELENITES",
    "BDB_SZOREND",
    "BDB_MAGYARAZAT",
-   "BDB_JELOLT_SZOVEG",
    "TEHOM_JOB41",
    "SZURO_PILOT_ISTENTISZT",
    "ELTERES",
@@ -916,7 +907,7 @@
    "TERV_BEFOGAD"
   ]
  },
- "terkep": "flowchart LR\n  classDef stop fill:#d93025,stroke:#8c1d18,color:#ffffff,stroke-width:2px\n  classDef run fill:#1e8e3e,stroke:#0d5226,color:#ffffff,stroke-width:2px\n  classDef ready fill:#1a73e8,stroke:#0b3d91,color:#ffffff,stroke-width:2px\n  classDef wait fill:#f9ab00,stroke:#a86f00,color:#2b1d00,stroke-width:2px\n  classDef plan fill:#8e44ad,stroke:#5b2470,color:#ffffff,stroke-width:2px,stroke-dasharray:6 3\n  classDef idle fill:#80868b,stroke:#4a4f54,color:#ffffff\n  classDef dt fill:#ff6d00,stroke:#a34500,color:#ffffff,stroke-width:2px\n\n  P_MCP_BUROK[\"MCP_BUROK\"]:::plan\n  P_SZPA_AUDIT[\"SZPA_AUDIT\"]:::plan\n  P_TERV_BEFOGAD[\"TERV_BEFOGAD\"]:::plan\n  T10[\"#10 LEXIKON_LEZARAS\"]:::idle\n  T101[\"#101 ADATBAZIS_FRISSITES\"]:::idle\n  T102[\"#102 BDB_SZELETELO_JAVITAS\"]:::wait\n  T103[\"#103 BDB_TAGOLAS\"]:::wait\n  T104[\"#104 BDB_MEGJELENITES\"]:::wait\n  T105[\"#105 BDB_SZOREND\"]:::wait\n  T106[\"#106 BDB_MAGYARAZAT\"]:::wait\n  T107[\"#107 BDB_JELOLT_SZOVEG\"]:::wait\n  T109[\"#109 TEHOM_JOB41\"]:::ready\n  T11[\"#11 MIGRACIO\"]:::stop\n  T110[\"#110 SZURO_PILOT_ISTENTISZT\"]:::ready\n  T111[\"#111 ELTERES\"]:::stop\n  T112[\"#112 COMMIT_EKEZET\"]:::ready\n  T119[\"#119 BDB_HEADER_DT\"]:::ready\n  T12[\"#12 TEREMT-002 3. lépés…\"]:::idle\n  T120[\"#120 BSB_SQLITE_KEZI_MT\"]:::ready\n  T121[\"#121 GLOSSZA_FORDITAS\"]:::wait\n  T13[\"#13 1Móz 17-től a…\"]:::idle\n  T22[\"#22 Károli–Strong párosítás…\"]:::stop\n  T25[\"#25 OLVASOI_HTML\"]:::idle\n  T27[\"#27 FP3\"]:::idle\n  T36[\"#36 LEXIKON_UJRAGEN\"]:::wait\n  T38[\"#38 BDB_FORDITAS\"]:::wait\n  T48[\"#48 KJV_REGI_KIVEZETES\"]:::wait\n  T50[\"#50 CI_JAVITO_KOR\"]:::ready\n  T52[\"#52 TERV_SZINKRON\"]:::stop\n  T55[\"#55 ZSOLTAR_UJRAELLENORZES\"]:::stop\n  T59[\"#59 SZOSZEDET\"]:::ready\n  T67[\"#67 BDB_JAVITAS_KAPU\"]:::idle\n  T69[\"#69 SEMA_DATASET_SZAM\"]:::idle\n  T7[\"#7 Thayer teljes magyar…\"]:::idle\n  T70[\"#70 SZOTAR_S26\"]:::wait\n  T74[\"#74 TANULMANY_JAVITAS_GEPI\"]:::idle\n  T75[\"#75 TANULMANY_JAVITAS\"]:::idle\n  T76[\"#76 OLVASOI_KONKORDANCIA\"]:::stop\n  T81[\"#81 KAROLI_UJJLENYOMAT\"]:::idle\n  T86[\"#86 ELOFIZETES_FEED\"]:::stop\n  T96[\"#96 KAROLI_MODERN\"]:::idle\n  D_DT_F121a{{\"DT-F121a\"}}:::dt\n  D_DT_F121b{{\"DT-F121b\"}}:::dt\n  D_DT_F121c{{\"DT-F121c\"}}:::dt\n  D_DT_F121d{{\"DT-F121d\"}}:::dt\n  D_DT_F121e{{\"DT-F121e\"}}:::dt\n  D_DT_F121f{{\"DT-F121f\"}}:::dt\n  D_DT_F121g{{\"DT-F121g\"}}:::dt\n  D_DT_F121h{{\"DT-F121h\"}}:::dt\n  D_DT_F121i{{\"DT-F121i\"}}:::dt\n  D_DT_F38i{{\"DT-F38i\"}}:::dt\n  D_DT_M1{{\"DT-M1\"}}:::dt\n  D_DT_M3{{\"DT-M3\"}}:::dt\n  D_DT_M4{{\"DT-M4\"}}:::dt\n  D_DT_M5{{\"DT-M5\"}}:::dt\n  D_DT_M6{{\"DT-M6\"}}:::dt\n  D_DT_M7{{\"DT-M7\"}}:::dt\n  D_DT_M8{{\"DT-M8\"}}:::dt\n  D_DT127{{\"DT127\"}}:::dt\n  D_DT128{{\"DT128\"}}:::dt\n  D_DT129{{\"DT129\"}}:::dt\n  D_DT146{{\"DT146\"}}:::dt\n  D_DT147{{\"DT147\"}}:::dt\n  D_DT148{{\"DT148\"}}:::dt\n  D_DT149{{\"DT149\"}}:::dt\n  D_DT150{{\"DT150\"}}:::dt\n  D_DT151{{\"DT151\"}}:::dt\n  D_DT152{{\"DT152\"}}:::dt\n  D_DT181{{\"DT181\"}}:::dt\n  D_DT190{{\"DT190\"}}:::dt\n  D_DT2{{\"DT2\"}}:::dt\n  D_DT215{{\"DT215\"}}:::dt\n  D_DT216{{\"DT216\"}}:::dt\n  D_DT217{{\"DT217\"}}:::dt\n  D_DT218{{\"DT218\"}}:::dt\n  D_DT219{{\"DT219\"}}:::dt\n  D_DT221{{\"DT221\"}}:::dt\n  D_DT28{{\"DT28\"}}:::dt\n  D_DT52{{\"DT52\"}}:::dt\n  D_DT56{{\"DT56\"}}:::dt\n  D_DT57{{\"DT57\"}}:::dt\n  D_DT71{{\"DT71\"}}:::dt\n  D_DT74{{\"DT74\"}}:::dt\n  D_DT75{{\"DT75\"}}:::dt\n  D_DT77{{\"DT77\"}}:::dt\n  D_DT78{{\"DT78\"}}:::dt\n  D_DT90{{\"DT90\"}}:::dt\n\n  P_MCP_BUROK --> D_DT_M3\n  P_MCP_BUROK --> D_DT_M5\n  P_MCP_BUROK --> D_DT_M7\n  P_SZPA_AUDIT --> D_DT77\n  P_TERV_BEFOGAD --> D_DT_M8\n  T10 --> D_DT2\n  T10 --> D_DT74\n  T10 --> T11\n  T10 --> T52\n  T102 --> T107\n  T102 --> T119\n  T102 --> T76\n  T103 --> T102\n  T103 --> T119\n  T103 --> T76\n  T104 --> T102\n  T104 --> T103\n  T104 --> T119\n  T104 --> T76\n  T105 --> T102\n  T105 --> T103\n  T105 --> T104\n  T105 --> T119\n  T105 --> T76\n  T106 --> T102\n  T106 --> T103\n  T106 --> T104\n  T106 --> T105\n  T106 --> T119\n  T106 --> T76\n  T107 --> D_DT190\n  T107 --> T119\n  T11 --> D_DT215\n  T11 --> D_DT216\n  T11 --> D_DT217\n  T11 --> D_DT218\n  T11 --> D_DT219\n  T11 --> D_DT74\n  T12 --> D_DT74\n  T12 --> T11\n  T121 --> D_DT_F121a\n  T121 --> D_DT_F121b\n  T121 --> D_DT_F121c\n  T121 --> D_DT_F121d\n  T121 --> D_DT_F121e\n  T121 --> D_DT_F121f\n  T121 --> D_DT_F121g\n  T121 --> D_DT_F121h\n  T121 --> D_DT_F121i\n  T121 --> T11\n  T13 --> T10\n  T22 --> D_DT56\n  T22 --> D_DT57\n  T22 --> D_DT71\n  T25 --> T11\n  T25 --> T12\n  T36 --> D_DT28\n  T36 --> D_DT74\n  T36 --> T11\n  T36 --> T121\n  T36 --> T27\n  T36 --> T38\n  T36 --> T52\n  T38 --> D_DT181\n  T38 --> D_DT52\n  T38 --> D_DT56\n  T38 --> D_DT_F38i\n  T38 --> T107\n  T48 --> T22\n  T52 --> D_DT78\n  T52 --> D_DT90\n  T55 --> D_DT74\n  T55 --> T109\n  T55 --> T11\n  T55 --> T110\n  T67 --> T27\n  T67 --> T7\n  T70 --> D_DT74\n  T70 --> T11\n  T74 --> T11\n  T75 --> T74\n  T76 --> D_DT127\n  T76 --> D_DT128\n  T76 --> D_DT129\n  T76 --> D_DT146\n  T76 --> D_DT147\n  T76 --> D_DT148\n  T76 --> D_DT149\n  T76 --> D_DT150\n  T76 --> D_DT151\n  T76 --> D_DT152\n  T76 --> D_DT221\n  T76 --> D_DT75\n  T76 --> D_DT_M1\n  T76 --> D_DT_M4\n  T76 --> D_DT_M6\n  T76 --> T120\n  T81 --> T109\n  T81 --> T11\n  T86 --> T109\n  T86 --> T11\n  T86 --> T110\n  T86 --> T121\n  T86 --> T27\n  T86 --> T38\n  T86 --> T52\n  T86 --> T7\n  T86 --> T76",
+ "terkep": "flowchart LR\n  classDef stop fill:#d93025,stroke:#8c1d18,color:#ffffff,stroke-width:2px\n  classDef run fill:#1e8e3e,stroke:#0d5226,color:#ffffff,stroke-width:2px\n  classDef ready fill:#1a73e8,stroke:#0b3d91,color:#ffffff,stroke-width:2px\n  classDef wait fill:#f9ab00,stroke:#a86f00,color:#2b1d00,stroke-width:2px\n  classDef plan fill:#8e44ad,stroke:#5b2470,color:#ffffff,stroke-width:2px,stroke-dasharray:6 3\n  classDef idle fill:#80868b,stroke:#4a4f54,color:#ffffff\n  classDef dt fill:#ff6d00,stroke:#a34500,color:#ffffff,stroke-width:2px\n\n  P_MCP_BUROK[\"MCP_BUROK\"]:::plan\n  P_SZPA_AUDIT[\"SZPA_AUDIT\"]:::plan\n  P_TERV_BEFOGAD[\"TERV_BEFOGAD\"]:::plan\n  T10[\"#10 LEXIKON_LEZARAS\"]:::idle\n  T101[\"#101 ADATBAZIS_FRISSITES\"]:::idle\n  T102[\"#102 BDB_SZELETELO_JAVITAS\"]:::wait\n  T103[\"#103 BDB_TAGOLAS\"]:::wait\n  T104[\"#104 BDB_MEGJELENITES\"]:::wait\n  T105[\"#105 BDB_SZOREND\"]:::wait\n  T106[\"#106 BDB_MAGYARAZAT\"]:::wait\n  T109[\"#109 TEHOM_JOB41\"]:::ready\n  T11[\"#11 MIGRACIO\"]:::stop\n  T110[\"#110 SZURO_PILOT_ISTENTISZT\"]:::ready\n  T111[\"#111 ELTERES\"]:::stop\n  T112[\"#112 COMMIT_EKEZET\"]:::ready\n  T119[\"#119 BDB_HEADER_DT\"]:::ready\n  T12[\"#12 TEREMT-002 3. lépés…\"]:::idle\n  T120[\"#120 BSB_SQLITE_KEZI_MT\"]:::ready\n  T121[\"#121 GLOSSZA_FORDITAS\"]:::wait\n  T13[\"#13 1Móz 17-től a…\"]:::idle\n  T22[\"#22 Károli–Strong párosítás…\"]:::stop\n  T25[\"#25 OLVASOI_HTML\"]:::idle\n  T27[\"#27 FP3\"]:::idle\n  T36[\"#36 LEXIKON_UJRAGEN\"]:::wait\n  T38[\"#38 BDB_FORDITAS\"]:::ready\n  T48[\"#48 KJV_REGI_KIVEZETES\"]:::wait\n  T50[\"#50 CI_JAVITO_KOR\"]:::ready\n  T52[\"#52 TERV_SZINKRON\"]:::stop\n  T55[\"#55 ZSOLTAR_UJRAELLENORZES\"]:::stop\n  T59[\"#59 SZOSZEDET\"]:::ready\n  T67[\"#67 BDB_JAVITAS_KAPU\"]:::idle\n  T69[\"#69 SEMA_DATASET_SZAM\"]:::idle\n  T7[\"#7 Thayer teljes magyar…\"]:::idle\n  T70[\"#70 SZOTAR_S26\"]:::wait\n  T74[\"#74 TANULMANY_JAVITAS_GEPI\"]:::idle\n  T75[\"#75 TANULMANY_JAVITAS\"]:::idle\n  T76[\"#76 OLVASOI_KONKORDANCIA\"]:::stop\n  T81[\"#81 KAROLI_UJJLENYOMAT\"]:::idle\n  T86[\"#86 ELOFIZETES_FEED\"]:::stop\n  T96[\"#96 KAROLI_MODERN\"]:::idle\n  D_DT_F38i{{\"DT-F38i\"}}:::dt\n  D_DT_M1{{\"DT-M1\"}}:::dt\n  D_DT_M3{{\"DT-M3\"}}:::dt\n  D_DT_M4{{\"DT-M4\"}}:::dt\n  D_DT_M5{{\"DT-M5\"}}:::dt\n  D_DT_M6{{\"DT-M6\"}}:::dt\n  D_DT_M7{{\"DT-M7\"}}:::dt\n  D_DT_M8{{\"DT-M8\"}}:::dt\n  D_DT127{{\"DT127\"}}:::dt\n  D_DT128{{\"DT128\"}}:::dt\n  D_DT129{{\"DT129\"}}:::dt\n  D_DT146{{\"DT146\"}}:::dt\n  D_DT147{{\"DT147\"}}:::dt\n  D_DT148{{\"DT148\"}}:::dt\n  D_DT149{{\"DT149\"}}:::dt\n  D_DT150{{\"DT150\"}}:::dt\n  D_DT151{{\"DT151\"}}:::dt\n  D_DT152{{\"DT152\"}}:::dt\n  D_DT181{{\"DT181\"}}:::dt\n  D_DT2{{\"DT2\"}}:::dt\n  D_DT215{{\"DT215\"}}:::dt\n  D_DT216{{\"DT216\"}}:::dt\n  D_DT217{{\"DT217\"}}:::dt\n  D_DT218{{\"DT218\"}}:::dt\n  D_DT219{{\"DT219\"}}:::dt\n  D_DT221{{\"DT221\"}}:::dt\n  D_DT224{{\"DT224\"}}:::dt\n  D_DT234{{\"DT234\"}}:::dt\n  D_DT235{{\"DT235\"}}:::dt\n  D_DT236{{\"DT236\"}}:::dt\n  D_DT237{{\"DT237\"}}:::dt\n  D_DT238{{\"DT238\"}}:::dt\n  D_DT239{{\"DT239\"}}:::dt\n  D_DT240{{\"DT240\"}}:::dt\n  D_DT241{{\"DT241\"}}:::dt\n  D_DT242{{\"DT242\"}}:::dt\n  D_DT28{{\"DT28\"}}:::dt\n  D_DT52{{\"DT52\"}}:::dt\n  D_DT56{{\"DT56\"}}:::dt\n  D_DT57{{\"DT57\"}}:::dt\n  D_DT71{{\"DT71\"}}:::dt\n  D_DT74{{\"DT74\"}}:::dt\n  D_DT75{{\"DT75\"}}:::dt\n  D_DT77{{\"DT77\"}}:::dt\n  D_DT78{{\"DT78\"}}:::dt\n  D_DT90{{\"DT90\"}}:::dt\n\n  P_MCP_BUROK --> D_DT_M3\n  P_MCP_BUROK --> D_DT_M5\n  P_MCP_BUROK --> D_DT_M7\n  P_SZPA_AUDIT --> D_DT77\n  P_TERV_BEFOGAD --> D_DT_M8\n  T10 --> D_DT2\n  T10 --> D_DT74\n  T10 --> T11\n  T10 --> T52\n  T102 --> T119\n  T102 --> T76\n  T103 --> T102\n  T103 --> T119\n  T103 --> T76\n  T104 --> T102\n  T104 --> T103\n  T104 --> T119\n  T104 --> T76\n  T105 --> T102\n  T105 --> T103\n  T105 --> T104\n  T105 --> T119\n  T105 --> T76\n  T106 --> T102\n  T106 --> T103\n  T106 --> T104\n  T106 --> T105\n  T106 --> T119\n  T106 --> T76\n  T11 --> D_DT215\n  T11 --> D_DT216\n  T11 --> D_DT217\n  T11 --> D_DT218\n  T11 --> D_DT219\n  T11 --> D_DT74\n  T12 --> D_DT74\n  T12 --> T11\n  T121 --> D_DT234\n  T121 --> D_DT235\n  T121 --> D_DT236\n  T121 --> D_DT237\n  T121 --> D_DT238\n  T121 --> D_DT239\n  T121 --> D_DT240\n  T121 --> D_DT241\n  T121 --> D_DT242\n  T121 --> T11\n  T13 --> T10\n  T22 --> D_DT56\n  T22 --> D_DT57\n  T22 --> D_DT71\n  T25 --> T11\n  T25 --> T12\n  T36 --> D_DT28\n  T36 --> D_DT74\n  T36 --> T11\n  T36 --> T121\n  T36 --> T27\n  T36 --> T38\n  T36 --> T52\n  T38 --> D_DT181\n  T38 --> D_DT52\n  T38 --> D_DT56\n  T38 --> D_DT_F38i\n  T48 --> T22\n  T52 --> D_DT78\n  T52 --> D_DT90\n  T55 --> D_DT74\n  T55 --> T109\n  T55 --> T11\n  T55 --> T110\n  T67 --> T27\n  T67 --> T7\n  T70 --> D_DT74\n  T70 --> T11\n  T74 --> T11\n  T75 --> T74\n  T76 --> D_DT127\n  T76 --> D_DT128\n  T76 --> D_DT129\n  T76 --> D_DT146\n  T76 --> D_DT147\n  T76 --> D_DT148\n  T76 --> D_DT149\n  T76 --> D_DT150\n  T76 --> D_DT151\n  T76 --> D_DT152\n  T76 --> D_DT221\n  T76 --> D_DT224\n  T76 --> D_DT75\n  T76 --> D_DT_M1\n  T76 --> D_DT_M4\n  T76 --> D_DT_M6\n  T76 --> T120\n  T81 --> T109\n  T81 --> T11\n  T86 --> T109\n  T86 --> T11\n  T86 --> T110\n  T86 --> T121\n  T86 --> T27\n  T86 --> T38\n  T86 --> T52\n  T86 --> T7\n  T86 --> T76",
  "dontesek": {
   "nyitott": [
    {
@@ -990,44 +981,44 @@
     "sor": 265
    },
    {
-    "id": "DT-F121a",
+    "id": "DT234",
     "feladat": "#121 GLOSSZA_FORDITAS (M0 ⛔, D1)",
     "kerdes": "A CC BY-SA forrásból (tW, UBS DBH, UBS DNTG) készült fordítás licence; a projekt saját rétege „minden jog fenntartva” (DT116). *(forrás: a brief 5. szakasza)*",
     "allapot": "nyitott",
     "jelek": [
      "🟡"
     ],
-    "sor": 298
+    "sor": 309
    },
    {
-    "id": "DT-F121b",
+    "id": "DT235",
     "feladat": "#121 GLOSSZA_FORDITAS (M0 ⛔, D2)",
     "kerdes": "Mounce (MCGED, 13 egység): nem kereskedelmi, „All Rights Reserved”; fordítódjon-e? *(forrás: a brief 5. szakasza, `adat/licencek.tsv` MCGED-sor)*",
     "allapot": "nyitott",
     "jelek": [
      "🟡"
     ],
-    "sor": 299
+    "sor": 310
    },
    {
-    "id": "DT-F121c",
+    "id": "DT236",
     "feladat": "#121 GLOSSZA_FORDITAS (M0 ⛔, D3)",
     "kerdes": "A TBESH `forras_hash` forrásszövege: a lapon látható (dedup) vagy a nyers `TBESH.txt` mező? *(forrás: a brief 5. szakasza)*",
     "allapot": "nyitott",
     "jelek": [
      "🟡"
     ],
-    "sor": 300
+    "sor": 311
    },
    {
-    "id": "DT-F121d",
+    "id": "DT237",
     "feladat": "#121 GLOSSZA_FORDITAS (M0 ⛔, D4)",
     "kerdes": "A tW-szócikkek (≈174 000 karakter) teljes fordítása vagy csak a `Definition` része? *(forrás: a brief 5. szakasza)*",
     "allapot": "nyitott",
     "jelek": [
      "🟡"
     ],
-    "sor": 301
+    "sor": 312
    }
   ],
   "alkalmazasra_var": [
@@ -2404,8 +2395,8 @@
    },
    {
     "id": "DT212",
-    "feladat": "#118 KJV_SZOVEG (M0 ⛔: a nyers zip helye; DT-F107d és a brief 3. pontja)",
-    "kerdes": "A DT-F107d (a felhasználó elfogadta 2026-10-18-án; egyelőre a `claude/f107-bdb-jelolt-szoveg` ágon) szerint a nyers forrás SHA-256-tal megőrzendő, a repóban, hacsak a méret vagy a licenc nem engedi; a brief 3. pontja szerint a zip nem kerül a repóba. Hova kerüljön a `kjv.zip` (sha256 `00532b6d…d447`, 2 766 294 bájt)? Mért adatok: a méret nem akadály (a repóban van a 84 MB-os `BDB.lexicon`); a zip a teljes Strong-címkeréteget hordozza (349 308 `strong=`), amelyet a DT124 GPL-nek tekint, a playbook 2. pontja szerint GPL publikus repóba nem építendő be, és a DT126 nyitott; a #19-es `1bab5d4d…` csomag már nem kapható meg, ezért ez a zip a #19-tábla egyetlen meglévő, bájtra visszaigazolt nyers forrása is, egyetlen példányban (a felhasználó asztalán). *(forrás: `naplok/KJV_SZOVEG_M0.md` 1. és 5. pont)*",
+    "feladat": "#118 KJV_SZOVEG (M0 ⛔: a nyers zip helye; DT226 és a brief 3. pontja)",
+    "kerdes": "A DT226 (a felhasználó elfogadta 2026-10-18-án; egyelőre a `claude/f107-bdb-jelolt-szoveg` ágon) szerint a nyers forrás SHA-256-tal megőrzendő, a repóban, hacsak a méret vagy a licenc nem engedi; a brief 3. pontja szerint a zip nem kerül a repóba. Hova kerüljön a `kjv.zip` (sha256 `00532b6d…d447`, 2 766 294 bájt)? Mért adatok: a méret nem akadály (a repóban van a 84 MB-os `BDB.lexicon`); a zip a teljes Strong-címkeréteget hordozza (349 308 `strong=`), amelyet a DT124 GPL-nek tekint, a playbook 2. pontja szerint GPL publikus repóba nem építendő be, és a DT126 nyitott; a #19-es `1bab5d4d…` csomag már nem kapható meg, ezért ez a zip a #19-tábla egyetlen meglévő, bájtra visszaigazolt nyers forrása is, egyetlen példányban (a felhasználó asztalán). *(forrás: `naplok/KJV_SZOVEG_M0.md` 1. és 5. pont)*",
     "allapot": "alkalmazasra_var",
     "jelek": [
      "🟢"
@@ -2493,9 +2484,39 @@
     "sor": 296
    },
    {
-    "id": "DT-F121e",
-    "feladat": "#121 GLOSSZA_FORDITAS (fordítási elv 1)",
-    "kerdes": "Nyelvközi egységesség: ugyanaz a fogalom a héber és a görög szócikkekben (BDB, Thayer/TBESG, tW, UBS DBH/DNTG, Mounce) ugyanazt a magyar szót kapja; a párokat a SECE héber↔görög listái, az LXX-párok és a Strong-megfelelések adják; az elfogadott alakot a másik oldal örökli. *(forrás: a brief 2b/1; a G1941/H7121 „nevezni” eset)*",
+    "id": "DT224",
+    "feladat": "#76 OLVASOI_KONKORDANCIA (M4: a K5 a VPS-t utánzó korláttal nem teljesül)",
+    "kerdes": "Az M4 mérése (1 vCPU / 2 GB, `systemd-run --scope AllowedCPUs=0 CPUQuota=100% MemoryMax=2G`, gunicorn gthread 1×4, `naplok/OLVASOI_KONKORDANCIA_meres.md` 4. szakasz): (1) magyar szóra keresés < 100 ms (#92 K5): meleg OS-gyorsítótárral a ritka és közepes szavak 8–61 ms, de a leggyakoribb szón nem teljesül: *és* alapmódban 152 ms (p95 162), pontos módban 97 ms (p95 118); a (c) mód *föld* 158 ms, *ki* 531 ms. Hideg gyorsítótárral (üres OS-lapgyorsítótár) minden magyar keresés 219–2 098 ms. (2) vers-lap a pilot 93 ms-ához mérve: a teljes vers-lap (a fejezet + a 23 blokkos vers-panel) meleg medián 217 ms, p95 310 ms (a vers-panel töredéke 126 / 312 ms); a pilot 93 ms-a csak a D3 lekérdezés-készlet ideje, ugyanez ma korlát nélkül 38,8 ms. Hideg gyorsítótárral a vers-lap 4,8 s (p95 8,9 s): a lap ~120–130 MB-ot olvas szétszórtan a 970 MB-os fájlból (WSL2 virtuális lemez, ≈ 30 MB/s). A szó-lap meleg 12–16 ms, hideg 1–2,5 s. A 2 GB-os korlát mellett a teljes adatbázis elfér az OS-gyorsítótárban, tehát a hideg idő az indulás utáni első kérésekre jellemző. A számok Windows-WSL2-n mértek, tájékoztatók (DT146/5); a mérvadó az M6.",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 299
+   },
+   {
+    "id": "DT225",
+    "feladat": "#107 BDB_JELOLT_SZOVEG (1. lépés ⛔: forrás, licenc, a nyers forrás megőrzése)",
+    "kerdes": "Melyik nyers forrásból bontson a szakasztábla (`adat/bdb_szakaszok.tsv`), mi a licenc-státusz, és hol marad meg a nyers forrás? Mért alap (`naplok/F107_BDB_JELOLT_SZOVEG_naplo.md` 1.1–1.5): a `DictBDB.json` mai letöltése (forrásrepó `6e8326c`, sha256 `5d826c58…e33d`) a `_convert_bdb.py`-val bájtra a K7-es TSV-t adja, tehát a TSV és a 674 kész fordítás `forras_hash`-e ennek a származéka. A két forrás ugyanaz az átirat (Morton); a számozott és betűs jelentéspont mindkettőben ~94–98%-ban blokk elején áll; az igetörzs- és római fej a JSON-ban 97,1% / 89,8%, a lexikonban 39,4% / 36,7%. Csak a `BDB.lexicon`-ban van BDB-azonosító, `section`/`remarks` osztály és szócikkhatár (a JSON egy Strong-eleme több szócikket fűz össze, határ nélkül); a lexikon hivatkozásai más alakúak (`<ref>`, `Ps`, `1Kgs`). Lefedettség: a `BDB.lexicon` a TSV 8 099 Strongjából 8 095-öt fed (hiány: H747, H4123, H4725 címke nélküli szócikkek, BDB754/2246/7372; H1296 csonk, szócikk nélkül). Licenc (`adat/licencek.tsv`): `BDB` „közkincs (a mű kora miatt; DT-F33g) — tisztázatlan”, a forrásrepó README-je a pinelt commiton: „Public domain document”; `lexikonok_nyers` „tisztázatlan” (a fájlban nincs licenc-jelzés, a forrásoldal másodkézből). *(proveniencia: `eszkozok/bdb_jelolt/forras_osszevetes.py --minta 300 --seed 107`, ts=2026-10-18T14:42:17Z)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 300
+   },
+   {
+    "id": "DT226",
+    "feladat": "#107 BDB_JELOLT_SZOVEG (1. lépés ⛔: a playbook 2. pontjának kiegészítése)",
+    "kerdes": "Kerüljön-e a `Rendszerfejlesztesi_playbook.md` 2. pontjába (forrás-azonosítás és licenc) két általános szabály? A tanulság: a BDB 2026.09.02-i importja (`142ad625`) a `_convert_bdb.py`-ban eldobta a szócikkek tagolását (`<p>` 36 110, `<b>` 46 108, `<sub>` → `_N` 739), a nyers JSON nem került a repóba, és a hash-e sem; a veszteség a szeletelő heurisztikájában (#99, #102) és a fordítás maradványaiban (DT181) jelent meg, és csak 2026.10.16-án követődött vissza (utólagos naplózás: `konkordancia/BDB_teljes_unabridged_README.md`, F107.2). *(forrás: `F107_BDB_JELOLT_SZOVEG_BRIEF.md` 2. hatókör 1.; `naplok/F107_BDB_JELOLT_SZOVEG_naplo.md` 1.6)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 301
+   },
+   {
+    "id": "DT227",
+    "feladat": "#107 BDB_JELOLT_SZOVEG (2. lépés STOP: a Strongonkénti szócikk-illesztés >1%-nál nem sikerül)",
+    "kerdes": "A hibrid bontó (DT225 (c)) a JSON bekezdéseit a `BDB.lexicon` szócikkeihez illeszti (`bdb_id`, szócikkhatár, `section`/`remarks`). A felhasználó STOP-feltétele: a Strongok >1%-ánál sikertelen illesztés. Mért (előre rögzített, szigorú feltétel: az első bekezdés szócikk-kezdet ÉS minden szegmens szólefedése mindkét irányban ≥ 0,90): 7 869 / 8 090 egyezik, 221 nem (2,73%): `reszleges` 139 (a JSON-lefedés 0,8–0,9: 71, kis szövegeltérés, pl. kiírt könyvnév; 0,5–0,8: 23; < 0,5: 45, hiányzó szócikkhatár, pl. H3 + BDB9264), `sikertelen` 16, `csonk` 35 (a JSON-elem csak a cím folytatása, pl. H381 „ish-chayil”), `szocikk_resze` 31 (a JSON-szegmens benne van a szócikkben, de a szócikk más Strongok részét is hordozza). Csonk nélkül 2,30%, csonk és szocikk_resze nélkül 1,92%. A tábla még nincs kiírva. *(proveniencia: `python eszkozok/bdb_jelolt/bont.py --meres`, F107.9 `27ab3fb4`, ts=2026-10-18; `naplok/F107_BDB_JELOLT_SZOVEG_naplo.md` 2.3)*",
     "allapot": "alkalmazasra_var",
     "jelek": [
      "🟢"
@@ -2503,9 +2524,9 @@
     "sor": 302
    },
    {
-    "id": "DT-F121f",
-    "feladat": "#121 GLOSSZA_FORDITAS (fordítási elv 2)",
-    "kerdes": "Rangsor eltérő fordításnál: (a) szójegyzék `kapu=igen` sora · (b) a Károli szóhasználata a Strongra (adatblokk) · (c) az elfogadott BDB-fordítás · (d) a szótár saját szövege; ellentmondásnál kézi ítélet a jelöltek felsorolásával. *(forrás: a brief 2b/2)*",
+    "id": "DT228",
+    "feladat": "#107 BDB_JELOLT_SZOVEG (2. lépés: a `DictBDB.json` dagesses pe-hibája)",
+    "kerdes": "A `DictBDB.json` héber szövegében nincs dagesses pe (0), a `BDB.lexicon` `BDB…` soraiban 4 106; a JSON dagesses memjeinek fele (13 562 / 2, mert a JSON minden héber szót kétszer hordoz) ≈ a lexikon dagesses mem + dagesses pe összege (2 705 + 4 106). A dagesses pe tehát dagesses memként áll (pl. H6620 מתנ ↔ פתנ, H6499 מר ↔ פר). A `BDB_teljes_unabridged.tsv` ezt örökölte (6 788 dagesses mem, 7 dagesses pe, utóbbi az F57/F72 lexikonból pótolt soraiban); a 674 kész fordítás héber idézetei valószínűleg érintettek (nem mérve). A repóban nincs korábbi feljegyzés. A DT225 szerint a szöveg a JSON-ból jön. *(proveniencia: karakterszámlálás NFD-ben, ts=2026-10-18; `naplok/F107_BDB_JELOLT_SZOVEG_naplo.md` 2.2)*",
     "allapot": "alkalmazasra_var",
     "jelek": [
      "🟢"
@@ -2513,9 +2534,9 @@
     "sor": 303
    },
    {
-    "id": "DT-F121g",
-    "feladat": "#121 GLOSSZA_FORDITAS (fordítási elv 3)",
-    "kerdes": "Szójegyzék-építés folyamatként: minden adag előtt gépi gyűjtés a gyorsítótárból (kapott magyar alakok, versengő alakok), javaslatsor a `terminologia.tsv`-be, felhasználói jóváhagyással. *(forrás: a brief 2b/3)*",
+    "id": "DT229",
+    "feladat": "#107 BDB_JELOLT_SZOVEG (4. lépés ⛔: az eltérés-lista osztályozása és a mérce)",
+    "kerdes": "A szakasztábla (`adat/bdb_szakaszok.tsv`) szerkezeti ellenőrzése (`eszkozok/bdb_jelolt/szerkezet_osszevet.py`): aranyminta 328 / 425 csomópont (77,2%) — a brief mérce-javaslata (≥ 99%) nem teljesül; a hiány 10 szócikkben tömörül (H6440 44, H7121 27, H3615 7, H0834 5, H0559 5, …). Seed-101: 7 / 13 (M028, M031, M043, M146, M203, M236, M238 egyezik). Korpusz a mai szeletelővel: 131 126 / 159 804 (82,1%); eltérés: jelentés 9 900, törzs 8 131, a szeletelő `tagolatlan`/a tábla tagolt 2 903, alpont 2 372, csak `resz` 1 948, a hivatkozás nem található 1 769 (a TSV F34/F46-javításai), a tábla `fej`/a szeletelő tagolt 1 655. Megnézett okok: (1) hamis fej a JSON bekezdéstörése után, a fejet közvetlenül „)”, „,”, „;” követi (H7121 „(compare Pu`al)”, H3615, H0068) — `tabla_hiba`; (2) a fej utáni homonima-római (`I.`, `II.`) `resz` lett szakasz helyett (H6440) — `tabla_hiba`; (3) bekezdés közepén álló félkövér fej (M243 H1129) — `tabla_hiba`; (4) a forrásban hiányzó jelölő: „Qal” név (H0559, M162), nem félkövér „1” („263</sup>.1<i>Say</i>”), „7. 2. a.” — `forras_hiba`. A korpusz-eltérések soronkénti osztályozása nincs elvégezve. *(proveniencia: `szerkezet_osszevet.py --arany --seed101 --korpusz`, F107.19 `5a8fcd52`, ts=2026-10-18; `naplok/F107_BDB_JELOLT_SZOVEG_naplo.md` 4.)*",
     "allapot": "alkalmazasra_var",
     "jelek": [
      "🟢"
@@ -2523,9 +2544,9 @@
     "sor": 304
    },
    {
-    "id": "DT-F121h",
-    "feladat": "#121 GLOSSZA_FORDITAS (fordítási elv 4)",
-    "kerdes": "A tiltott fordulatok listája általános (tükörfordítás, hamis barát), értelemhez kötött mintával; új elemet a javítások hoznak. A puszta „melléknév” 93 helyes nyelvtani sort fogna meg; igei értelemben csak a két G1941 sorban áll (4 hely). *(forrás: a brief 2b/4; mérés `adat/forditasok.tsv`, 2026-10-18)*",
+    "id": "DT230",
+    "feladat": "#107 BDB_JELOLT_SZOVEG (4. lépés ⛔, második kör: a mérce a DT229 után sem teljesül)",
+    "kerdes": "A DT229 (a)+(b) alkalmazva (F107.22–F107.24): a három `tabla_hiba`-osztály javítva (hamis fej „)”/„,”/„;”/„]” előtt; homonima-szakasz, új `szakasz` oszlop; bekezdésen belüli és bekezdés végi fej), mellette a tokenizáló hibája („1.a.”); a tábla 36 621 sor (Δ +130, 366 Strong). 7 `forras_hiba`-tétel, mindegyik a DictBDB.json-ban ÉS a BDB.lexicon-ban igazolva, kézi sorral a javítótáblában (H0559 Qal + „1”, H0539 Niph`al + „1.”, H3318 Qal, H4900 „Niph`al 6.”, H1242 „2. g.”); átsorolva (nem forráshiba): H2939 (fejsorbeli „verb Pa`el”), H0834 (értelmezési), M130 (helyazonosítás). Mérés — teljes / a `forras_hiba` nélkül: aranyminta 394 / 425 (92,7%) / 394 / 416 (94,7%); seed-101 9 / 13 / 9 / 10; korpusz a szeletelővel 83,9%. A mérce (≥ 99%, `forras_hiba` nélkül) nem teljesül. A maradék 22 csomópont: H6440 17 (hamis „Niph`al” fej mondatközi JSON-bekezdéstörés után — „pointed as </p><p><b>Niph`al</b> to avoid”; a lexikonban ugyanez szövegen belüli `<b>`, blokk nélkül), H3176 2 (számozatlan jelentés), H0834 2 (értelmezési), H2939 1. *(proveniencia: `szerkezet_osszevet.py --arany --seed101 --korpusz`, F107.23 `59937a3f`, ts=2026-10-18; `naplok/F107_BDB_JELOLT_SZOVEG_naplo.md` 4.5–4.7)*",
     "allapot": "alkalmazasra_var",
     "jelek": [
      "🟢"
@@ -2533,14 +2554,84 @@
     "sor": 305
    },
    {
-    "id": "DT-F121i",
+    "id": "DT231",
+    "feladat": "#107 BDB_JELOLT_SZOVEG (6. lépés ⛔: nézet-döntés)",
+    "kerdes": "Váljon-e a `konkordancia/BDB_teljes_unabridged.tsv` a szakasztáblából (`adat/bdb_szakaszok.tsv`) és a javítótáblából (`adat/bdb_forras_javitas.tsv`) generált nézetté? Mért alap (`naplok/F107_BDB_JELOLT_SZOVEG_naplo.md` 4.8, 5., 6.): (1) a 3. lépés eltérés-listája: `azonos` 7 239, `sub` 507 (a TSV `_N`-je), `tsv_utolagos` 247 (a TSV utólagos F34/F46 javításai: 412 hivatkozás-szakasz — 165 ψ → Psa, 141 egyéb könyvnév, 92 kiírt könyvnév + szám, 14 szám), `szokoz` 92, `forras_html` 5, `nincs_a_tablaban` 9 (F57/F72), ismeretlen okú 0; (2) a kész fordítások (`adat/forditasok.tsv`, 678 BDB-sor, 674 Strong; ma 674 `forras_hash` egyezik): a tábla nyers nézetével 446 sor `forras_hash`-e változna, a pe/mem-javított nézettel 546 (93 sor a `tsv_utolagos` Strongoké); a V1 változásának nagy része technikai (`_N`, szóköz); (3) a TSV olvasói: `datasetek.tsv` 4 sor (`BDB`, `mindig`) + 4 megjegyzés, 16 brief `olvas` mezője, 29 Python-fájl (köztük a `lexikon_general.py` és az `olvaso_szerver/bdb_vers_jelentes.py`, ennek a feladatnak tiltott fájljai); (4) a szerkezet a táblán: aranyminta 411 / 425 (96,7%), a `forras_hiba` nélkül 411 / 416 (98,8%), seed-101 9 / 13 (9 / 10), korpusz 85,4%. *(proveniencia: `nezet_hatas.py --utolagos --forditas --olvasok`, `nezet_ellenoriz.py`, `szerkezet_osszevet.py`, F107.29 `5aba58c9`, ts=2026-10-18)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 306
+   },
+   {
+    "id": "DT232",
+    "feladat": "#107 BDB_JELOLT_SZOVEG (7. lépés ⛔: az elakadó magyar szakaszok sorsa)",
+    "kerdes": "A kész magyar BDB-fordítás (674 Strong, `adat/forditasok.tsv`, változatlan) illesztése a szakasztáblához (`adat/bdb_szakasz_hu.tsv`, SEMA 2.32). Strong-szinten a kapu szigorú illesztőjével 380 illeszkedik / 94 tagolatlan / 200 elakad (kiinduló, 2026-10-16: 355 / 89 / 230); horgonnyal (a sor első fejezet:verse a magyarban, a saját jelölőjétől) 385 illeszkedik / 105 horgonnyal / 101 elakad / 83 tagolatlan. Soronként: 6 210 illeszkedik, 271 horgonnyal, 618 elakad (101 Strong; jelölőtípus: betű a–i 296, szám 259, törzsnév 52, betű j-től 7 — a kapu betű-regexe csak a–i —, római/egyéb 4), 2 565 jelölő nélküli. Az elakadt sor magyar szövege az előző illesztett szakaszban van (nem veszett el, csak nincs saját határa). *(proveniencia: `python eszkozok/bdb_jelolt/hu_illeszt.py --ts 2026-10-18`, F107.34 `f845b16d`; `naplok/F107_BDB_JELOLT_SZOVEG_naplo.md` 7.)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 307
+   },
+   {
+    "id": "DT233",
+    "feladat": "#107 BDB_JELOLT_SZOVEG (javítókör, `naplok/ELLENOR_F107.md` 1. ELTÉRÉS: a ≥ 99%-os aranyminta-mérce)",
+    "kerdes": "A szakasztábla aranyminta-mérése a `forras_hiba` csomópontok nélkül 411 / 416 (98,8%), a javasolt ≥ 99% egy csomóponttal nem teljesül (teljes: 411 / 425, 96,7%); a maradék 5 csomópont: H3176 2 (számozatlan jelentés), H0834 2 (értelmezési eltérés), H2939 1 (fejsorbeli törzsnév). A független ellenőr szerint az elfogadásról nem volt felhasználói döntés. *(proveniencia: `szerkezet_osszevet.py --arany`, F107.29 `5aba58c9`; `naplok/F107_BDB_JELOLT_SZOVEG_naplo.md` 4.8)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 308
+   },
+   {
+    "id": "DT238",
+    "feladat": "#121 GLOSSZA_FORDITAS (fordítási elv 1)",
+    "kerdes": "Nyelvközi egységesség: ugyanaz a fogalom a héber és a görög szócikkekben (BDB, Thayer/TBESG, tW, UBS DBH/DNTG, Mounce) ugyanazt a magyar szót kapja; a párokat a SECE héber↔görög listái, az LXX-párok és a Strong-megfelelések adják; az elfogadott alakot a másik oldal örökli. *(forrás: a brief 2b/1; a G1941/H7121 „nevezni” eset)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 313
+   },
+   {
+    "id": "DT239",
+    "feladat": "#121 GLOSSZA_FORDITAS (fordítási elv 2)",
+    "kerdes": "Rangsor eltérő fordításnál: (a) szójegyzék `kapu=igen` sora · (b) a Károli szóhasználata a Strongra (adatblokk) · (c) az elfogadott BDB-fordítás · (d) a szótár saját szövege; ellentmondásnál kézi ítélet a jelöltek felsorolásával. *(forrás: a brief 2b/2)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 314
+   },
+   {
+    "id": "DT240",
+    "feladat": "#121 GLOSSZA_FORDITAS (fordítási elv 3)",
+    "kerdes": "Szójegyzék-építés folyamatként: minden adag előtt gépi gyűjtés a gyorsítótárból (kapott magyar alakok, versengő alakok), javaslatsor a `terminologia.tsv`-be, felhasználói jóváhagyással. *(forrás: a brief 2b/3)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 315
+   },
+   {
+    "id": "DT241",
+    "feladat": "#121 GLOSSZA_FORDITAS (fordítási elv 4)",
+    "kerdes": "A tiltott fordulatok listája általános (tükörfordítás, hamis barát), értelemhez kötött mintával; új elemet a javítások hoznak. A puszta „melléknév” 93 helyes nyelvtani sort fogna meg; igei értelemben csak a két G1941 sorban áll (4 hely). *(forrás: a brief 2b/4; mérés `adat/forditasok.tsv`, 2026-10-18)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 316
+   },
+   {
+    "id": "DT242",
     "feladat": "#121 GLOSSZA_FORDITAS (fordítási elv 5)",
     "kerdes": "Visszamenőleges érvény: az elvek a meglévő kézi és gépi fordításokra is vonatkoznak; felmérés és tételes javaslat, automatikus javítás nélkül; BDB-sort érintő javaslat a #38-nak megy. *(forrás: a brief 2b/5)*",
     "allapot": "alkalmazasra_var",
     "jelek": [
      "🟢"
     ],
-    "sor": 306
+    "sor": 317
    }
   ],
   "javasolt": [],
@@ -2650,6 +2741,18 @@
      "🟢"
     ],
     "sor": 295,
+    "oszlopszam": 10,
+    "fejlec_oszlopszam": 8
+   },
+   {
+    "id": "DT223",
+    "feladat": "#76 OLVASOI_KONKORDANCIA (M3: a héber frázis vershatára a versösszevonásos Károli-versekben)",
+    "kerdes": "Az M3 a vershatárt igazolta (M0 3.6, DT146/3): a frázis-keresés a Károli-vers határán nem lép át (teszt: 1Móz 1:1",
+    "allapot": "ellenorizendo",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 298,
     "oszlopszam": 10,
     "fejlec_oszlopszam": 8
    }

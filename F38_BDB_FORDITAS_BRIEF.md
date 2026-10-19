@@ -120,11 +120,11 @@ csak a törzset, a fejlécet nem. Forrás: `naplok/F107_BDB_JELOLT_SZOVEG_naplo.
 - **Mért számok** (Strong-szint, horgonnyal): illeszkedik **409**, horgonnyal **85**, elakad **98**, tagolatlan **82** (a 2026-10-16-i
   kiinduló, a kapu szigorú módszerével: 355 / — / 230 / 89; ugyanazzal a módszerrel a szakasztáblán ma 380 / — / 200 / 94). Soronként:
   illeszkedik 6 395, horgonnyal 202, elakad 606, jelölő nélküli 2 461.
-- **DT-F107b (felhasználó, 2026-10-18):** „(d), majd (c)” — a magyar jelölő-felismerés bővítése megtörtént; **kézi illesztés nincs**; a
+- **DT232 (felhasználó, 2026-10-18):** „(d), majd (c)” — a magyar jelölő-felismerés bővítése megtörtént; **kézi illesztés nincs**; a
   maradék elakadó Strong a #38 **következő adagjában szakaszonként újrafordítandó**.
 - **N-F107b:** a 98 Strong (606 elakadt szakasz) tételes listája: `naplok/F107_BDB_JELOLT_SZOVEG_naplo.md` **7.1** (Strong, `sorszam`:`utvonal`,
   jelölőtípus); `NYITOTT_FELADATOK.md` N-F107b.
-- **DT-F107c (d) (felhasználó, 2026-10-18):** a `konkordancia/BDB_teljes_unabridged.tsv` **változatlan**; a 674 fordítás `forras_hash`-e addig a
+- **DT231 (d) (felhasználó, 2026-10-18):** a `konkordancia/BDB_teljes_unabridged.tsv` **változatlan**; a 674 fordítás `forras_hash`-e addig a
   változatlan TSV-hez kötődik; a TSV cseréje a táblából generált nézetre (`eszkozok/bdb_jelolt/nezet_general.py`) és az olvasók átállása
   **külön, `/befogad`-dal felvett feladat** (a nézettel a fordítássorok 446–546 `forras_hash`-e változna).
 - **N-F107a (pe/mem):** a `DictBDB.json` és belőle a TSV a dagesses pét dagesses memként írja; a 678 BDB-fordítássorban 2 782 dagesses mem,

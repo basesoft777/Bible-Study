@@ -134,15 +134,15 @@ A JSON a repóba nem került, csak a veszteséges TSV; a szerkezet ezért 2026.0
 
 ### 1.7 Javaslatok (⛔, `DONTESEK.md`)
 
-- `DT-F107a` — melyik forrásból bont a tábla, és a licenc-státusz.
-- `DT-F107d` — a playbook 2. pontjának kiegészítése (nyers forrás megőrzése; veszteséges konverzió naplózása).
+- `DT225` — melyik forrásból bont a tábla, és a licenc-státusz.
+- `DT226` — a playbook 2. pontjának kiegészítése (nyers forrás megőrzése; veszteséges konverzió naplózása).
 
 A megállás után a 2. lépés csak a két döntés után indul.
 
 ### 1.8 Döntés és alkalmazás (2026-10-18)
 
-A felhasználó (chat, az orkesztrátoron át): „a #107 DT-F107a: (c) hibrid + (i) licenc + (x) a JSON a repóba;
-DT-F107d: (a), a két szabály a playbook 2. pontjába, CI-kapu nélkül.”
+A felhasználó (chat, az orkesztrátoron át): „a #107 DT225: (c) hibrid + (i) licenc + (x) a JSON a repóba;
+DT226: (a), a két szabály a playbook 2. pontjába, CI-kapu nélkül.”
 
 - F107.5: a két `DONTESEK.md`-sor 🟢 (helyőrzővel).
 - F107.6: `Rendszerfejlesztesi_playbook.md` 2. pont, a két szabály (CI-kapu nélkül).
@@ -156,7 +156,7 @@ DT-F107d: (a), a két szabály a playbook 2. pontjába, CI-kapu nélkül.”
 
 `scope=DictBDB.json a repóban | forras=sha256sum + git hash-object + git cat-file blob | ts=2026-10-18`
 
-**Egyeztetett eltérés.** Az `adat/licencek.tsv` nem volt a brief `ir` mezőjében; a DT-F107a (i) alkalmazásához
+**Egyeztetett eltérés.** Az `adat/licencek.tsv` nem volt a brief `ir` mezőjében; a DT225 (i) alkalmazásához
 a felhasználó döntése (2026-10-18, az orkesztrátoron át) alapján felvéve. Csak a `BDB` sor 3. mezője változott
 (a JSON hash-e, blobja és helye), írás előtt soronkénti összevetéssel. **Nyitott javaslat (nem írva):** egy
 `.gitattributes`-sor (`konkordancia/lexikonok_nyers/DictBDB.json -text`) a munkafa bájtazonosságát is
@@ -176,7 +176,7 @@ Strongok >1%-ánál nem sikerül) teljesült, l. 2.3.
   `_N` lesz. A fej (szám, betű, római, igetörzs, nagybetű, zárójeles) a `jel` oszlopba kerül, a `szoveg` a fej utáni
   szöveg.
 - `bdb_id`, szócikkhatár, `section`/`remarks`: a `BDB.lexicon`-ból, illesztéssel; a lexikon szöveget nem ad
-  (DT-F107a (i)).
+  (DT225 (i)).
 - **Útvonal (nem befagyasztott, DT190 🟡):** `<törzs>[.<nagybetű>]/<szám>/<betű>[/<zárójeles>]`, a hiányzó szint `-`,
   a törzsnév a szeletelő alakjában (`Pi'el`); a római fő tagolás külön `resz` oszlopban, az alcímszó sorszáma külön
   `alszocikk` oszlopban; `cim`, `fej` különleges értékek. Az alap a #99 aranymintájának és a `bdb_vers_jelentes.tsv`-nek
@@ -200,7 +200,7 @@ Példák az illesztésből (mássalhangzó-váz, ahogy az ujjlenyomat mutatta): 
 **A dagesses pe a JSON-ban dagesses memként áll, és a TSV ezt örökölte**; a 674 kész magyar fordítás héber
 idézetei a TSV-ből jönnek, ezért valószínűleg ugyanígy érintettek (ezt ez a lépés nem mérte). A repóban erről nincs
 korábbi feljegyzés (`grep` „dages”: a DONTESEK.md-ben, a BDB-naplókban és a README-kben nincs találat). Javaslat:
-`DT-F107f`.
+`DT228`.
 
 ### 2.3 A Strongonkénti szócikk-illesztés (STOP)
 
@@ -232,16 +232,16 @@ A maradék (F107.9):
 - `csonk` 35, `szocikk_resze` 31.
 
 **Nem kitöltve:** a nem egyező Strongok bekezdései a tervben `bdb_id` nélkül (üres, a kategória az `illesztes`
-oszlopban) kerülnének a táblába; ezt a döntés előtt nem írtam ki. Javaslat: `DT-F107e`.
+oszlopban) kerülnének a táblába; ezt a döntés előtt nem írtam ki. Javaslat: `DT227`.
 
 ### 2.4 Ami nem készült el (a döntésig)
 
 `adat/bdb_szakaszok.tsv`, a teszt (`eszkozok/bdb_jelolt/teszt_bont.py`), az `adat/SEMA.md` új szakasza, az
-`adat/datasetek.tsv` sora; a 3–4. lépés. *(Elkészült a DT-F107e döntése után, l. 2.5.)*
+`adat/datasetek.tsv` sora; a 3–4. lépés. *(Elkészült a DT227 döntése után, l. 2.5.)*
 
-### 2.5 A DT-F107e és DT-F107f alkalmazása (2026-10-18)
+### 2.5 A DT227 és DT228 alkalmazása (2026-10-18)
 
-A felhasználó (chat, az orkesztrátoron át): „DT-F107e: (b), majd (a). DT-F107f: (a); a 674 kész fordítás héber idézeteinek
+A felhasználó (chat, az orkesztrátoron át): „DT227: (b), majd (a). DT228: (a); a 674 kész fordítás héber idézeteinek
 pe/mem-érintettségére most nyiss N-tételt.” (F107.12; N-F107a: F107.13.)
 
 **(b) a 0,5 alatti sáv köre (F107.14).** A 45 Strong két mechanizmusa: (1) kettévágott szócikk-kezdet — a címszó egy rövid
@@ -255,7 +255,7 @@ szegmenslefedés (≥ 0,90 mindkét irányban) őrzi a hamis határt.
 | F107.9 (a STOP) | 7 869 | 139 | 16 | 35 | 31 | 2,73% |
 | **F107.14 (a 0,5 alatti kör)** | **7 920** | **94** | **15** | **35** | **26** | **2,10%** (csonk nélkül 1,67%) |
 
-A `reszleges` 94 sávjai: 0,8–0,9: 75; 0,5–0,8: 8; < 0,5: 11 (45-ből). A küszöb (1%, szigorú) változatlan; a DT-F107e szerint a
+A `reszleges` 94 sávjai: 0,8–0,9: 75; 0,5–0,8: 8; < 0,5: 11 (45-ből). A küszöb (1%, szigorú) változatlan; a DT227 szerint a
 tábla az (a) szerint kiíródik.
 
 `scope=F107 2. lépés, Strongonkénti illesztés | forras=python eszkozok/bdb_jelolt/bont.py --meres (F107.14, 76f5b153) | ts=2026-10-18`
@@ -263,7 +263,7 @@ tábla az (a) szerint kiíródik.
 **(a) a tábla (F107.15).** `adat/bdb_szakaszok.tsv`: 36 491 sor, 8 090 Strong; `jelolo`: cim 8 090, fej 10 028, point 15 611,
 bekezdes 2 194, alcimszo 308, section 254, remarks 6. A `reszleges` / `sikertelen` / `csonk` 144 Strong sorai `bdb_id` és
 `section`/`remarks` nélkül, az `illesztes` oszlopban jelölve. Hiány: a TSV 9 JSON-kulcs nélküli sora (F57: H0747, H4123, H4725;
-F72: H1753, H3367, H3848, H6433, H7560, H8065) nincs a táblában (a szövegük a lexikonból jött; DT-F107a (i)). Teszt:
+F72: H1753, H3367, H3848, H6433, H7560, H8065) nincs a táblában (a szövegük a lexikonból jött; DT225 (i)). Teszt:
 `eszkozok/bdb_jelolt/teszt_bont.py`, 24 teszt, OK (benne a két `--ellenoriz` bájtos determinizmus). SEMA 2.30–2.31, `datasetek.tsv`
 `BDB_szakaszok` (F107.17).
 
@@ -271,7 +271,7 @@ F72: H1753, H3367, H3848, H6433, H7560, H8065) nincs a táblában (a szövegük 
 maradvány; ugyanitt a szócikk-fej összefoglalója („1 rod … 2 tribe”) félkövér pontokként jelenik meg, a „1.a.” fej nem félkövér, ezért az
 útvonal elcsúszik (`-/2/b` a `-/1/b` helyett). *(Értelmezés, nem mérés: a „145” a „tribe” jelentés gyakoriságszáma lehet `<sub>` nélkül.)*
 
-**DT-F107f (a), a javítótábla (F107.16).** `adat/bdb_forras_javitas.tsv`: 6 781 sor (a tábla szövegének minden dagesses memje);
+**DT228 (a), a javítótábla (F107.16).** `adat/bdb_forras_javitas.tsv`: 6 781 sor (a tábla szövegének minden dagesses memje);
 `javitva` 3 823 (1 428 Strong), `valodi_mem` 2 402, `jelolt_marad` 556 (ebből 112 `bdb_id` nélküli sorban, 444 ahol egyik alak
 sincs a szócikkben). Szúrópróba: מִשְׁמַּט → מִשְׁפַּט (H2835), יִמֹּל → יִפֹּל (H5307), אַמִּי → אַפִּי (H7626); `valodi_mem`: לָרִמָּה, קִמּוֺשׁ.
 A tábla szövege a nyers JSON-é; a javított nézet a DT-F107c-é (SEMA 2.30, javaslatként jelölve).
@@ -298,7 +298,7 @@ szóközzel összefűzve, whitespace-normalizálva; a javítótábla javításai
 | `nincs_a_tablaban` | 9 | a TSV F57/F72 sorai (JSON-kulcs nélkül) |
 | `egyeb` (ismeretlen ok) | **0** | — |
 
-A `tsv_utolagos` összesen 247 = az 1.1-ben mért 247 eltérő TSV-sor. **Következmény a 6. lépéshez (DT-F107c):** ha a sima szöveg a
+A `tsv_utolagos` összesen 247 = az 1.1-ben mért 247 eltérő TSV-sor. **Következmény a 6. lépéshez (DT231):** ha a sima szöveg a
 táblából generált nézet lenne, a 247 utólag javított sor javításai elvesznének, hacsak a javítótábla nem veszi át őket (F34, F46).
 
 `scope=F107 3. lépés, nézet ↔ BDB_teljes_unabridged.tsv (8 099 sor) | forras=python eszkozok/bdb_jelolt/nezet_ellenoriz.py | ts=2026-10-18`
@@ -368,11 +368,11 @@ A ⛔ pont a brief szerint az eltérés-lista osztályozásának jóváhagyása.
 osztályt hordoz, amelyek a nyers jelölőből javíthatók: (1) **hamis fej** a JSON bekezdéstörése után (a fejet közvetlenül „)”, „,”, „;”
 követi: H7121, H3615, H0068); (2) a **fej utáni homonima-római** (`I.`, `II.`) `resz` helyett szakasz (H6440); (3) a **bekezdés
 közepén álló félkövér fej** (M243). A `forras_hiba`-osztály (hiányzó „Qal” név, nem félkövér „1”, „7. 2. a.”) a forrás jelölőjéből nem
-javítható, csak a javítótáblával (5. lépés). Javaslat: `DT-F107g` (`DONTESEK.md`).
+javítható, csak a javítótáblával (5. lépés). Javaslat: `DT229` (`DONTESEK.md`).
 
-### 4.5 A DT-F107g alkalmazása: a három `tabla_hiba`-osztály (F107.22)
+### 4.5 A DT229 alkalmazása: a három `tabla_hiba`-osztály (F107.22)
 
-A felhasználó (chat, az orkesztrátoron át, 2026-10-18): „DT-F107g (a)+(b) — a három tabla_hiba osztály szabályos javítása,
+A felhasználó (chat, az orkesztrátoron át, 2026-10-18): „DT229 (a)+(b) — a három tabla_hiba osztály szabályos javítása,
 újramérés; a forras_hiba csomópontok külön számolva, de mindegyik a nyers forrásban igazolva, tételesen, kézi sorral a
 javítótáblába; a jelentés mindkét számot mutassa.”
 
@@ -445,11 +445,11 @@ kézi sora van az `adat/bdb_forras_javitas.tsv`-ben (`allapot=kezi`, `manual`; `
 
 **Becslés (számítás a fenti számokból, nem mérés):** ha a H6440 17 csomópontja helyreállna, 411 / 416 (98,8%) lenne; a H2939-cel 412 /
 416 (99,0%). A hamis fej megkülönböztetéséhez a JSON-ból a megelőző blokk végződése nem elég (a betűre végződő előzmény utáni 366 törzsfej
-többsége valódi, pl. „— only || Qal Perfect”); a `BDB.lexicon` szerkezeti metaadata (ott a fej nyit-e blokkot) igen. Javaslat: `DT-F107h`.
+többsége valódi, pl. „— only || Qal Perfect”); a `BDB.lexicon` szerkezeti metaadata (ott a fej nyit-e blokkot) igen. Javaslat: `DT230`.
 
-### 4.8 A DT-F107h alkalmazása: a negyedik `tabla_hiba`-szabály (F107.29)
+### 4.8 A DT230 alkalmazása: a negyedik `tabla_hiba`-szabály (F107.29)
 
-A felhasználó (chat, az orkesztrátoron át, 2026-10-18): „#107: a DT-F107h, a szakasztábla negyedik szabálya.” — az (a) változat, a
+A felhasználó (chat, az orkesztrátoron át, 2026-10-18): „#107: a DT230, a szakasztábla negyedik szabálya.” — az (a) változat, a
 jóváhagyott feltétellel: a korpusz (83,9%) és a seed-101 (9 / 13, 9 / 10) nem romolhat; ha romlik, megállás.
 
 **Első változat (elvetve):** a JSON blokk eleji feje hivatkozás, ha a `BDB.lexicon` ugyanazon szócikkében ugyanez a fej (ugyanazzal a
@@ -471,7 +471,7 @@ hivatkozó szó utáni eset —, és a H6440/H0430 táblateszt), OK; `--ellenori
 `jelolo`: point 15 410 → 15 337, bekezdes 2 517 → 2 589. A nézet-ellenőrzés: `azonos` 7 239, `sub` 507, `tsv_utolagos` 237 + 10, `szokoz`
 92, `forras_html` 5, `nincs_a_tablaban` 9, ismeretlen okú 0.
 
-| mérce | F107.19 | F107.23 (DT-F107g) | **F107.29 (DT-F107h)** |
+| mérce | F107.19 | F107.23 (DT229) | **F107.29 (DT230)** |
 |---|---|---|---|
 | aranyminta, teljes | 328 / 425 (77,2%) | 394 / 425 (92,7%) | **411 / 425 (96,7%)** |
 | aranyminta, a `forras_hiba` nélkül | — | 394 / 416 (94,7%) | **411 / 416 (98,8%)** |
@@ -504,11 +504,11 @@ el (szóközre bontott tokenek, `difflib`):
 
 Mind a 412 hivatkozás-javítás (könyv vagy fejezet:vers), a dokumentált F34/F46 javításokkal egyező jellegű. A táblából generált nézetbe
 ezek csak akkor kerülnek át, ha a javítótábla egy új hibaosztályként (pl. `hivatkozas`, forrás: `naplok/F34_M2_csere.tsv`,
-`naplok/F46_*`) átveszi őket — ez a DT-F107c része.
+`naplok/F46_*`) átveszi őket — ez a DT231 része.
 
 `scope=F107 5. lépés, tsv_utolagos | forras=python eszkozok/bdb_jelolt/nezet_hatas.py --utolagos | ts=2026-10-18`
 
-## 6. lépés — a nézet-döntés mérései (⛔ DT-F107c)
+## 6. lépés — a nézet-döntés mérései (⛔ DT231)
 
 Eszköz: `eszkozok/bdb_jelolt/nezet_hatas.py` (csak olvas).
 
@@ -534,11 +534,11 @@ F73, F99); 29 Python-fájl az `eszkozok/` alatt (köztük `lexikon_general.py`, 
 `scope=F107 6. lépés | forras=python eszkozok/bdb_jelolt/nezet_hatas.py --utolagos --forditas --olvasok | ts=2026-10-18`
 
 **(4) A csere helye:** a fenti olvasók (köztük két, ennek a feladatnak tiltott fájl) és a 446–546 elavuló fordítás miatt a csere nem
-fér el ebben a feladatban tiltott-fájl-érintés nélkül. Javaslat: `DT-F107c` (`DONTESEK.md`).
+fér el ebben a feladatban tiltott-fájl-érintés nélkül. Javaslat: `DT231` (`DONTESEK.md`).
 
-### 6.1 A DT-F107c alkalmazása: a nézet-generátor és a 247 sor hivatkozás-javítása (F107.33)
+### 6.1 A DT231 alkalmazása: a nézet-generátor és a 247 sor hivatkozás-javítása (F107.33)
 
-A felhasználó (chat, 2026-10-18): „DT-F107c: (d) — ebben a feladatban csak a nézet-generátor és a 247 sor F34/F46-javításának átvétele
+A felhasználó (chat, 2026-10-18): „DT231: (d) — ebben a feladatban csak a nézet-generátor és a 247 sor F34/F46-javításának átvétele
 a javítótáblába; a TSV cseréje és az olvasók átállása külön, /befogad-dal felvett feladat; a 674 fordítás forras_hash-e addig a
 változatlan TSV-hez kötődik. Folytasd a 7. lépéssel.”
 
@@ -560,11 +560,11 @@ mezője nem ad neki helyet), a `BDB_teljes_unabridged.tsv` változatlan. Bájtos
 
 A `tsv_utolagos` osztály eltűnt (a 3. lépésben 247): a 247 sor javítása a nézetben megvan. A megmaradt eltérés csak a jóváhagyott
 osztályokban: `sub` (a TSV `_N`-je), `szokoz` (a fej utáni forrás-szóköz), `forras_html` (a JSON hibás HTML-je, 5 Strong), `pe_mem` (a
-DT-F107f javítása), `nincs_a_nezetben` (F57/F72, 9). Teszt: `teszt_bont.py` (`Nezet` osztály), OK.
+DT228 javítása), `nincs_a_nezetben` (F57/F72, 9). Teszt: `teszt_bont.py` (`Nezet` osztály), OK.
 
 `scope=F107 6.1 | forras=python eszkozok/bdb_jelolt/nezet_general.py --osszevet [--pe-mem] --ki <scratchpad>; forras_javit.py | ts=2026-10-18`
 
-## 7. lépés — a kész magyar fordítás illesztése (⛔ DT-F107b)
+## 7. lépés — a kész magyar fordítás illesztése (⛔ DT232)
 
 Eszköz: `eszkozok/bdb_jelolt/hu_illeszt.py` → `adat/bdb_szakasz_hu.tsv` (SEMA 2.32). Bemenet: a szakasztábla és az `adat/forditasok.tsv`
 BDB-sorai (csak olvasva; Strongonként az utolsó nem üres `forditas_hu`); a magyar oldali jelölő- és törzsnév-felismerés a tagolás-kapué
@@ -585,11 +585,11 @@ Strong) jelölőtípus szerint: betű a–i 296, szám 259, törzsnév 52, betű
 
 `scope=F107 7. lépés, 674 Strong | forras=python eszkozok/bdb_jelolt/hu_illeszt.py --ts 2026-10-18 (F107.34, f845b16d) | ts=2026-10-18`
 
-Javaslat: `DT-F107b` (`DONTESEK.md`).
+Javaslat: `DT232` (`DONTESEK.md`).
 
-### 7.1 A DT-F107b alkalmazása: a magyar jelölő-felismerés bővítése (F107.38) és a maradék elakadó Strongok (N-F107b)
+### 7.1 A DT232 alkalmazása: a magyar jelölő-felismerés bővítése (F107.38) és a maradék elakadó Strongok (N-F107b)
 
-A felhasználó (chat, az orkesztrátoron át, 2026-10-18): „DT-F107b (d), majd (c) — előbb a magyar jelölő-felismerés bővítése (betű j-től,
+A felhasználó (chat, az orkesztrátoron át, 2026-10-18): „DT232 (d), majd (c) — előbb a magyar jelölő-felismerés bővítése (betű j-től,
 kérdőjel utáni szám, ragozott törzsnév) teszttel és újramérés; a maradék elakadó Strong a #38 következő adagjában szakaszonként
 újrafordítva; kézi illesztés nincs.”
 
@@ -614,7 +614,7 @@ H6213 „Pa`el”; negatív — „a 2 fiú”, „b) pont”, H5869 „, l. a k
 `scope=F107 7.1 | forras=python eszkozok/bdb_jelolt/hu_illeszt.py --ts 2026-10-18 (F107.38, e285d4b6) | ts=2026-10-18`
 
 A maradék elakadás főként nem a felismerés hiánya: a mohó, sorrendtartó illesztésben egy korábbi hivatkozás-előfordulás (pl. „(vö. Hiph`il
-lent)”) vagy egy túlfutó jelölő elviszi a kurzort (mintavétel: H3254, H7323, H1980). A DT-F107b (c) szerint ezek nem kapnak kézi
+lent)”) vagy egy túlfutó jelölő elviszi a kurzort (mintavétel: H3254, H7323, H1980). A DT232 (c) szerint ezek nem kapnak kézi
 illesztést.
 
 **A maradék elakadó Strongok — átadandó tétel a #38-nak (N-F107b): 98 Strong, 606 sor** (jelölőtípus: betű 287, szám 252, törzs 63, római 4).
@@ -723,7 +723,7 @@ A kulcs a szakasztábla `strong` + `sorszam`-a (`adat/bdb_szakaszok.tsv`, `adat/
 
 ## Átadandó tételek (a #107 nem veszi fel; a `/befogad` dolga)
 
-- **A TSV cseréje és az olvasók átállása** (DT-F107c (d)): a `konkordancia/BDB_teljes_unabridged.tsv` helyett a `nezet_general.py` nézete;
+- **A TSV cseréje és az olvasók átállása** (DT231 (d)): a `konkordancia/BDB_teljes_unabridged.tsv` helyett a `nezet_general.py` nézete;
   az olvasók: `adat/datasetek.tsv` 4 sor (+4 megjegyzés), 16 brief `olvas` mezője, 29 Python-fájl (l. 6. (3)); a 674 fordítás `forras_hash`-e
   (V1: 446, V2: 546 sor változna) és a `_N`/szóköz technikai eltérés kezelése.
 - **A 8. lépés** (a #102 és a #38 briefjébe a tábla elérhetősége és a mért számok): a döntés után az orkesztrátor egyezteti (a két brief nincs
@@ -750,7 +750,7 @@ a #38 saját menetével (jelezve).
   fej-összefoglaló, útvonal-formátum; forrásban hibás → javítótábla: M102, M117, M162; marad: igehely → szakasz, öröklés, sigla-szűrés,
   M130, a korpusz-eltérések osztályozása, új vak mérés), a `/befogad`-dal jóváhagyandó.
 - **F38** (F107.43): „## Átadás a #107-ből (2026.10.18)” a Megállási pont előtt — `adat/bdb_szakasz_hu.tsv` és a szakaszkulcs, 409 / 85 / 98 / 82,
-  a DT-F107b döntés, az N-F107b lista helye (98 Strong, 606 szakasz, 7.1), a DT-F107c (d) (a `forras_hash` a változatlan TSV-hez kötött, a
+  a DT232 döntés, az N-F107b lista helye (98 Strong, 606 szakasz, 7.1), a DT231 (d) (a `forras_hash` a változatlan TSV-hez kötött, a
   csere külön feladat), az N-F107a (pe/mem).
 
 ## Zárás-előkészítő összefoglaló (a független ellenőrzéshez; a zárójelentés és a `lezarva` állapot nem íródott)
@@ -759,14 +759,14 @@ a #38 saját menetével (jelezve).
 
 | tétel | lényeg | alkalmazás |
 |---|---|---|
-| DT-F107a | (c) hibrid forrás (szöveg a `DictBDB.json`-ból, `bdb_id`/szócikkhatár/`section`/`remarks` a `BDB.lexicon`-ból, csak metaadat) + (i) licenc (a JSON közkincs; a lexikon tisztázatlan) + (x) a JSON a repóban | F107.5–.7 |
-| DT-F107d | (a) a playbook 2. pontja: a nyers forrás megőrzése, a veszteséges konverzió naplózása (CI-kapu nélkül) | F107.6 |
-| DT-F107e | (b), majd (a): a 0,5 alatti illesztési kör, utána a tábla a nem egyező Strongok `bdb_id`-je nélkül | F107.14–.15 |
-| DT-F107f | (a) a pe/mem javítótábla; N-F107a | F107.13, .16 |
-| DT-F107g | (a)+(b) a három `tabla_hiba`-osztály; a `forras_hiba` csomópontok igazolva, kézi sorral | F107.22–.25 |
-| DT-F107h | (a) a negyedik szabály (lexikon-metaadat), feltétel: a korpusz és a seed-101 nem romlik | F107.29 |
-| DT-F107c | (d) a nézet-generátor és a 247 sor F34/F46-javítása itt; a TSV cseréje és az olvasók átállása külön feladat | F107.33 |
-| DT-F107b | (d), majd (c): a magyar jelölő-felismerés bővítése; a maradék 98 Strong a #38-ban újrafordítva (N-F107b) | F107.38–.39 |
+| DT225 | (c) hibrid forrás (szöveg a `DictBDB.json`-ból, `bdb_id`/szócikkhatár/`section`/`remarks` a `BDB.lexicon`-ból, csak metaadat) + (i) licenc (a JSON közkincs; a lexikon tisztázatlan) + (x) a JSON a repóban | F107.5–.7 |
+| DT226 | (a) a playbook 2. pontja: a nyers forrás megőrzése, a veszteséges konverzió naplózása (CI-kapu nélkül) | F107.6 |
+| DT227 | (b), majd (a): a 0,5 alatti illesztési kör, utána a tábla a nem egyező Strongok `bdb_id`-je nélkül | F107.14–.15 |
+| DT228 | (a) a pe/mem javítótábla; N-F107a | F107.13, .16 |
+| DT229 | (a)+(b) a három `tabla_hiba`-osztály; a `forras_hiba` csomópontok igazolva, kézi sorral | F107.22–.25 |
+| DT230 | (a) a negyedik szabály (lexikon-metaadat), feltétel: a korpusz és a seed-101 nem romlik | F107.29 |
+| DT231 | (d) a nézet-generátor és a 247 sor F34/F46-javítása itt; a TSV cseréje és az olvasók átállása külön feladat | F107.33 |
+| DT232 | (d), majd (c): a magyar jelölő-felismerés bővítése; a maradék 98 Strong a #38-ban újrafordítva (N-F107b) | F107.38–.39 |
 | 8. lépés | egyeztetett eltérés: a két brief törzse az `ir`-ben, az átadás oda íródott | F107.41–.43 |
 
 **Egyeztetett eltérések a brieftől:** az `adat/licencek.tsv` az `ir`-ben (csak a `BDB` sor 3. mezője, F107.7); az `F102_…` és az `F38_…`
@@ -779,7 +779,7 @@ a `adat/bdb_szakasz_hu.tsv` mellé nem készült külön datasetek-sor (a brief 
 - **A mérce:** az aranyminta a `forras_hiba` nélkül **98,8%** (411 / 416), a javasolt ≥ 99% egy csomóponttal nem teljesül (maradék: H3176 2
   számozatlan jelentés, H0834 2 értelmezési eltérés, H2939 1 fejsorbeli törzsnév); az orkesztrátor a feltétel teljesülése miatt a munkát
   folytattatta.
-- **A tokenizáló-hiba** („1.a.”) javítása a DT-F107g három osztályán kívül esett (4.5, jelezve).
+- **A tokenizáló-hiba** („1.a.”) javítása a DT229 három osztályán kívül esett (4.5, jelezve).
 - **A H0157 bontó-maradvány:** egy elakadt sor (`Qal/-/n`) valószínűleg a bontó hamis „n.” feje (a „n.” rövidítés) — nem javítva.
 - **A H7626 „145:”** nincs a javítótáblában (a hiba-volta nincs eldöntve).
 - **A `.gitattributes`-javaslat** (`DictBDB.json -text`): nem írva (nincs az `ir`-ben); a hash a git-objektumra vonatkozik.
@@ -796,12 +796,12 @@ tételre, közte .gitattributes: konkordancia/lexikonok_nyers/*.json -text; utá
 
 | # | ELTÉRÉS (ELLENOR_F107) | elvégzett lépés |
 |---|---|---|
-| 1 | a ≥ 99%-os aranyminta-mérce nem teljesül (98,8%), felhasználói döntés nélkül | **DT-F107i** 🟢 (F107.47): a 98,8% (411 / 416, `forras_hiba` nélkül) elfogadva; a maradék 5 csomópont tételesen az **N-F107c**-ben (F107.50): H3176 `Hiph'il/-1`, `Hiph'il/-2`; H0834 `בַּאֲשֶׁר` `-/a`, `מֵאֲשֶׁר` `-/a`; H2939 `Pa'el` |
+| 1 | a ≥ 99%-os aranyminta-mérce nem teljesül (98,8%), felhasználói döntés nélkül | **DT233** 🟢 (F107.47): a 98,8% (411 / 416, `forras_hiba` nélkül) elfogadva; a maradék 5 csomópont tételesen az **N-F107c**-ben (F107.50): H3176 `Hiph'il/-1`, `Hiph'il/-2`; H0834 `בַּאֲשֶׁר` `-/a`, `מֵאֲשֶׁר` `-/a`; H2939 `Pa'el` |
 | 2 | reprodukálhatóság: CRLF-es checkouton a `bont.py` a munkafa-hash miatt leáll | `.gitattributes`: `konkordancia/lexikonok_nyers/*.json -text` (F107.48). **Egyeztetett `ir`-eltérés:** a `.gitattributes` a brief `ir` mezőjébe került (a felhasználó döntésére). Igazolás: a munkafa törlése és friss checkout után a `DictBDB.json` SHA-256-ja `5d826c580a4dd06f54a53d1e19b5e8c354aab0180e200849e3148b89f370e33d`, 0 CR; a `git add --renormalize` a fájlra a blobot nem változtatja (`9d6011ea…` marad); a `bont.py --ellenoriz` bájtra azonos. A `BDB_teljes_unabridged_README.md` megőrzés-bekezdése frissítve |
-| 3 | merge-kockázat (`DONTESEK.md`, `datasetek.tsv`, `NYITOTT_FELADATOK.md` a fájl végén; a main hivatkozik a `DT-F107d` helyőrzőre; a #38 fut) | az orkesztrátor oldja meg a rebase-nél; a #107 ebben a körben nem rebase-elt |
+| 3 | merge-kockázat (`DONTESEK.md`, `datasetek.tsv`, `NYITOTT_FELADATOK.md` a fájl végén; a main hivatkozik a `DT226` helyőrzőre; a #38 fut) | az orkesztrátor oldja meg a rebase-nél; a #107 ebben a körben nem rebase-elt |
 | 4 | az N-F107b szövege elavult | frissítve (F107.50): az átadás az F38 brief törzsében megtörtént (F107.43) |
 | 5 | a H7626 „145:” nincs a javítótáblában | megvizsgálva a nyers forrásban: `DictBDB.json` „<b>2</b> 145:tribe (synonym…”, `BDB.lexicon` „<b>2.</b> 145:tribe (synonym…” — mindkettőben jelölés nélkül; hogy gyakoriságszám-e (`<sub>` nélkül, vö. H8057 „2<sub>46</sub>”) vagy hiba, a forrásból **nem dönthető el** → nem kitöltve, tételként az **N-F107c**-ben, indoklással |
-| 6 | kozmetikai elavulás (`datasetek.tsv`, SEMA 2.30/2.31) | F107.51: a `datasetek.tsv` 4 `BDB_szakaszok` sorában a mért szám (soronkénti összevetéssel, csak a 7. mező); SEMA 2.30: a megkettőzött forrássor törölve, az állapot F107.29, a szöveg ↔ javítótábla viszonya a DT-F107c (d) szerint; SEMA 2.31: a négy hibaosztály, az állapotcímke F107.49 |
+| 6 | kozmetikai elavulás (`datasetek.tsv`, SEMA 2.30/2.31) | F107.51: a `datasetek.tsv` 4 `BDB_szakaszok` sorában a mért szám (soronkénti összevetéssel, csak a 7. mező); SEMA 2.30: a megkettőzött forrássor törölve, az állapot F107.29, a szöveg ↔ javítótábla viszonya a DT231 (d) szerint; SEMA 2.31: a négy hibaosztály, az állapotcímke F107.49 |
 
 **A szúrópróba-megjegyzés (ELLENOR_F107, „H6440 II. -/3” és „7. 2. a.”):**
 - **„7. 2. a.”** (H6440, 10. sor): mindkét nyers forrásban „See further below </p><p><b>7. 2. a.</b>” (lexikon: „See further below

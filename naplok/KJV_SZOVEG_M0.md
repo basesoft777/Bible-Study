@@ -29,7 +29,7 @@
 
 ## 2. USFM-jelölőleltár (66 kanonikus könyv) és bánásmód
 
-A darabszámok a nyitó jelölőket számolják (a zárók száma minden párosnál azonos). A „beágyazott” a `\+jelölő` alakot jelenti. Teljes tábla: `naplok/KJV_SZOVEG_M0_jelolok.tsv`. A „veszteség” oszlop azt mondja meg, mit dob el az importáló. A DT-F107d (2) szerint ezt a dataset leírásában naplózni kell, és az M-c mérés számolja.
+A darabszámok a nyitó jelölőket számolják (a zárók száma minden párosnál azonos). A „beágyazott” a `\+jelölő` alakot jelenti. Teljes tábla: `naplok/KJV_SZOVEG_M0_jelolok.tsv`. A „veszteség” oszlop azt mondja meg, mit dob el az importáló. A DT226 (2) szerint ezt a dataset leírásában naplózni kell, és az M-c mérés számolja.
 
 | Jelölő | db | Kontextus | Bánásmód | `Szöveg` | `Szöveg_jelolt` | Veszteség (mit dob el, naplózandó) |
 |---|---|---|---|---|---|---|
@@ -82,7 +82,7 @@ Az új importálónak ezért a `\s1`-et külön kell kezelnie (4. pont), nem az 
 
 *Alternatíva az `Elotte`/`Utoirat` helyett:* a 36 `\s1`-sor kimarad, a veszteségnaplóban darabszámmal. A versszövegbe fűzés semmiképp sem jó, mert az F19-hiba ismétlése lenne.
 
-Fejlécsorok (a brief szerint): `# GENERÁLT: eszkozok/kjv_szoveg_import.py — kézzel nem szerkesztendő.`; `# proveniencia: scope=KJV teljes (66 kanonikus könyv, angol számozás) | forras=https://ebible.org/Scriptures/eng-kjv_usfm.zip sha256=00532b6d…d447 | ts=…`; `# licenc: …` (a DT210 szerint); `# ÁLLAPOT: …` (az M2 mérése); és új sorként `# veszteség: …`, a 2. pont kimaradó jelölőinek darabszámával (DT-F107d (2)).
+Fejlécsorok (a brief szerint): `# GENERÁLT: eszkozok/kjv_szoveg_import.py — kézzel nem szerkesztendő.`; `# proveniencia: scope=KJV teljes (66 kanonikus könyv, angol számozás) | forras=https://ebible.org/Scriptures/eng-kjv_usfm.zip sha256=00532b6d…d447 | ts=…`; `# licenc: …` (a DT210 szerint); `# ÁLLAPOT: …` (az M2 mérése); és új sorként `# veszteség: …`, a 2. pont kimaradó jelölőinek darabszámával (DT226 (2)).
 
 Az M2 elvárásai a mért alapon: **T ∖ S pontosan a 3 címke nélküli kanonikus vers** (a 116 zsoltárfelirat mind címkés, tehát nem tartozik a T ∖ S-be; a brief M-a pontjának „címke nélküli 0. versek” része üres halmaz). Üres `Szöveg`: 0 várható (az F19-tisztítás után is 0).
 
@@ -103,24 +103,24 @@ A repó adata szerint (`adat/licencek.tsv` KJV_Strongs_teljes sor; a mostani zip
 - **3.** más.
 - **Javaslat: 1.** A dataset a GPL-lel érintett réteget (címke, jelölés) nem hordozza, a szöveg kora és az eBible nyilatkozata adott. A nyitott kérdés (a CrossWire szövegszintű hozzájárulása) a repó adatából nem dönthető el. Ez üresen marad, és a licencsor megjegyzésében explicit jelölendő; nem töltjük ki. A DT126-ot ez **nem oldja meg**, csak a bemenete. A nyilvános kiadás előtti jogi átnézés (DT124, DT-M6) változatlan. Értelmezés, nem jogi vélemény.
 
-### DT212 — a nyers zip helye (DT-F107d és a brief 3. pontja)
+### DT212 — a nyers zip helye (DT226 és a brief 3. pontja)
 
-**A feszültség.** A DT-F107d (a felhasználó elfogadta 2026-10-18-án; egyelőre csak a `claude/f107-bdb-jelolt-szoveg` ágon, a `Rendszerfejlesztesi_playbook.md` 2. pontjában) szerint a nyers forrás SHA-256-tal megőrzendő, **a repóban, hacsak a méret vagy a licenc nem engedi**. A brief 3. pontja szerint viszont „a zip nem kerül a repóba”. Mért adatok:
+**A feszültség.** A DT226 (a felhasználó elfogadta 2026-10-18-án; egyelőre csak a `claude/f107-bdb-jelolt-szoveg` ágon, a `Rendszerfejlesztesi_playbook.md` 2. pontjában) szerint a nyers forrás SHA-256-tal megőrzendő, **a repóban, hacsak a méret vagy a licenc nem engedi**. A brief 3. pontja szerint viszont „a zip nem kerül a repóba”. Mért adatok:
 
-- **Méret:** 2 766 294 bájt. Ez nem akadály: a repóban már ott van a 84 MB-os `konkordancia/lexikonok_nyers/BDB.lexicon`, és a DT-F107a a 24,7 MB-os `DictBDB.json`-t is a repóba tette.
+- **Méret:** 2 766 294 bájt. Ez nem akadály: a repóban már ott van a 84 MB-os `konkordancia/lexikonok_nyers/BDB.lexicon`, és a DT225 a 24,7 MB-os `DictBDB.json`-t is a repóba tette.
 - **Licenc:** a zip a teljes Strong-címkeréteget tartalmazza (349 308 `strong=` attribútum), amelyet a DT124 GPL-nek tekint. A playbook 2. pontja szerint GPL-forrás publikus repóba nem építendő be, és a DT126 (a `KJV_Strongs_teljes.tsv` sorsa) 🟡 nyitott. A licenc tehát a DT126 eldöntéséig nem engedi.
 - **Kockázat:** az eBible gördülő kiadással dolgozik. A #19-es `1bab5d4d…` csomag már nem kapható meg, ezért a mostani zip az egyetlen meglévő, bájtra visszaigazolt nyers forrása a #19-táblának is (1. pont). Egyetlen példánya van, a felhasználó asztalán.
 - Gitignore-olt minta létezik: `konkordancia/_nyers/` (cremer, `konkordancia/README.md` 140. sor). Worktree-ben a gitignore-olt fájl nem látszik, ezért az importáló a `--munka` útvonalat kapja.
 
 Opciók:
 - **(a)** a zip a repóba (pl. `konkordancia/forras/eng-kjv_usfm_2026-10-17.zip`), a hash a dataset-leírásban. Teljesíti a DT-F107d-t, de a GPL-címkeréteget a publikus repóba teszi, és ezzel elébe megy a DT126-nak. A brief 3. pontja módosulna.
-- **(b)** a zip a repón kívül marad (a brief szerint). A hash, az URL, a letöltés dátuma, a fájllista és a hely a dataset leírásába kerül (a DT-F107d „ha a licenc nem engedi” ága), a táblafejlécbe pedig a hash. Kiegészítés: második példány egy, a felhasználó által megnevezett helyen.
+- **(b)** a zip a repón kívül marad (a brief szerint). A hash, az URL, a letöltés dátuma, a fájllista és a hely a dataset leírásába kerül (a DT226 „ha a licenc nem engedi” ága), a táblafejlécbe pedig a hash. Kiegészítés: második példány egy, a felhasználó által megnevezett helyen.
 - **(c)** gitignore-olt helyi másolat `konkordancia/_nyers/kjv/` alatt (a cremer mintája), a hash a dataset-leírásban. Licencszempontból a (b)-vel azonos, a hely egységes, de nem verziózott, és a worktree-k nem látják.
 - **(d)** most (b), és a DT126 dönt: ha a DT126 a 2. opciót választja (a GPL-címkeréteg marad a nyilvános repóban), a zip is bekerülhet (a); ha az 1. vagy a 3. opciót, kint marad.
-- **Javaslat: (d)**, a (b) második példányával. A DT-F107d (2) (a veszteség naplózása) a 2. pont veszteség-oszlopával és a tábla `# veszteség:` fejlécsorával teljesül. *Egyeztetendő:* a DT-F107d „a dataset README-je” helyet ír elő. A brief `ir` listájában nincs dataset-README (`konkordancia/KJV_teljes_szoveg_README.md`), csak a `SEMA.md`. Vagy az `ir` bővül, vagy a `SEMA.md` dataset-leírása tölti be ezt a szerepet.
+- **Javaslat: (d)**, a (b) második példányával. A DT226 (2) (a veszteség naplózása) a 2. pont veszteség-oszlopával és a tábla `# veszteség:` fejlécsorával teljesül. *Egyeztetendő:* a DT226 „a dataset README-je” helyet ír elő. A brief `ir` listájában nincs dataset-README (`konkordancia/KJV_teljes_szoveg_README.md`), csak a `SEMA.md`. Vagy az `ir` bővül, vagy a `SEMA.md` dataset-leírása tölti be ezt a szerepet.
 
 ## 6. Egyéb megfigyelések
 
 - A brief 3. pontjának „várt mérete” (31 102 kanonikus vers, 31 099 címkés, 3 címke nélküli, + 0. versek) az új csomagon pontosan teljesül; a 0. versek száma 116.
 - A `\s1`-es páli utóiratok és a Zsolt 119 fejlécei a `KJV_Strongs_teljes.tsv`-t nem érintik (a címke nélküli szöveg nem került bele), az új datasetet viszont igen. Ezért kell a `\s1` külön kezelése.
-- A DT-F107d még nincs a main-en. Ha a #107 nem mergelődik, a DT212 tárgytalanná válik, és a brief 3. pontja marad érvényben.
+- A DT226 még nincs a main-en. Ha a #107 nem mergelődik, a DT212 tárgytalanná válik, és a brief 3. pontja marad érvényben.

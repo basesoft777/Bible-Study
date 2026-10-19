@@ -94,7 +94,7 @@ csak a törzset, a fejlécet nem. Forrás: `naplok/F107_BDB_JELOLT_SZOVEG_naplo.
 
 **Elérhető (a #107 ágán, merge után a main-en):**
 - `adat/bdb_szakaszok.tsv` (SEMA 2.30) — a BDB minden szócikke (a `DictBDB.json` 8 090 Strongja) szakaszokra bontva a nyers forrás
-  jelölőiből (DT-F107a (c) hibrid: a szöveg és a tagolás a JSON-ból, a `bdb_id`, a szócikkhatár és a `section`/`remarks` a `BDB.lexicon`-ból,
+  jelölőiből (DT225 (c) hibrid: a szöveg és a tagolás a JSON-ból, a `bdb_id`, a szócikkhatár és a `section`/`remarks` a `BDB.lexicon`-ból,
   csak metaadatként); oszlopok: `strong`, `bdb_id`, `sorszam`, `alszocikk`, `szakasz`, `resz`, `utvonal`, `jelolo`, `jel`, `gyakorisag`,
   `szoveg`, `illesztes`, …; kulcs `strong` + `sorszam`.
 - `adat/bdb_forras_javitas.tsv` (SEMA 2.31) — a forráshibák javítótáblája: `pe_mem` (a JSON dagesses pe → mem hibája, 3 823 `javitva`),
