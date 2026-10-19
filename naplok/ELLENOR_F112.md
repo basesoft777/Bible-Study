@@ -12,7 +12,7 @@
 | G2 besorolás | ELTÉRÉS | a `kiegeszitve` valódi hiba (M0a 16., M0b 35.): helyes pontosság 84% / 90% |
 | G3 szint a döntés szerint | OK | `SZINT['E30']='FIGYELMEZTETES'` |
 | G3/D2 a döntés forrása | ELTÉRÉS | az F112.3 „Felhasználó”, az F112.4 „Orkesztrátor, a felhasználó felhatalmazásával” szöveget ír |
-| DT-F112a állapotjel | ELTÉRÉS | 🟢 jel mellett „Megvalósítva” szöveg állt |
+| DT253 állapotjel | ELTÉRÉS | 🟢 jel mellett „Megvalósítva” szöveg állt |
 | G4 csak PR | OK | push → 0 találat; PR-módban találatok; `--teljes` → `[]` |
 | G5 ok és forrás | OK | 21 adatsor, mind 3 mezős, zárt `ok`-készlet |
 | G6 nincs csv | OK | 0 találat az `eszkozok/ellenorzes`-ben |
@@ -25,7 +25,7 @@
 ## Kezelés (F112.5)
 
 1. **G2 újrafuttathatóság** — a napló parancsa a `1a6a6eef` fejre van rögzítve (`e30_meres('', '1a6a6eef')`); az M0b lista a `c668bb36` fájljából reprodukálható (a napló kimondja).
-2. **Besorolás** — a `kiegeszitve` két sora „valódi hiba”; a pontosság 84% / 90%; a napló, a DT-F112a és a `N-F112a` számai frissítve. A szintdöntést ez nem érinti.
+2. **Besorolás** — a `kiegeszitve` két sora „valódi hiba”; a pontosság 84% / 90%; a napló, a DT253 és a `N-F112a` számai frissítve. A szintdöntést ez nem érinti.
 3. **Döntés forrása** — a végállapot egységes (orkesztrátor, a felhasználó felhatalmazásával, 2026-10-19; a szülő session üzenete szerint). Az F112.3 „Felhasználó” szövegét az F112.4 felülírta; a történet két állapota nem hiba, a végleges sor az irányadó.
 4. **Állapotjel** — a 🟢 marad (az orkesztrátor kérte), a szöveg „Alkalmazásra vár: a PR merge-e”-re javítva.
 5. **Nagybetűs szó** — dokumentált korlát a naplóban (szándékos, D3), az újraértékelés (N-F112a) tárgya.

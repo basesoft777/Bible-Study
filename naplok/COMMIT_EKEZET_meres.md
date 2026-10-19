@@ -166,9 +166,9 @@ A bővített lista a közönséges szavak mezőneveit is kizárja (`forras`, `ci
 - Az 50 elemes minta 95%-os konfidencia-intervalluma kb. ±9–10 százalékpont, tehát a valódi pontosság 75–95% közé esik. HIBA-szinthez ez kevés.
 - A jelölt üzenetek aránya (kb. 19%) magas: a repó commitjainak ötöde ékezetlen. A ma mergelt történeten az E30 emiatt csak PR `base..head`-re futhat (G4).
 
-## 6. Megvalósítás (DT-F112a: 3. változat, 2026-10-19)
+## 6. Megvalósítás (DT253: 3. változat, 2026-10-19)
 
-- Kizárólista: **a szűk (M0a) lista**, 21 sor — az orkesztrátor döntése (DT-F112a): az M0b bővítés (84% -> 90%) mintára illeszkedik és valódi hibát nyel el (`forras`, `cim`, `kod`), ezért nem kerül be. Az M0b szakasz tájékoztató.
+- Kizárólista: **a szűk (M0a) lista**, 21 sor — az orkesztrátor döntése (DT253): az M0b bővítés (84% -> 90%) mintára illeszkedik és valódi hibát nyel el (`forras`, `cim`, `kod`), ezért nem kerül be. Az M0b szakasz tájékoztató.
 - Szint: FIGYELMEZTETÉS (`SZINT['E30']`), `FAJLSZINTU_SZABALYOK` tagja; a CI nem pirosodik.
 - Hatókör: csak a PR `base..head` kézi, nem-merge commitjai; `push` eseménynél és `--teljes` módban nem fut (G4). A szókészlet az alap (`base`) commitjaiból épül, a PR saját commitjai nem szólnak bele.
 - Találat-részlet: rövid hash (`fajl` mező), `` `ékezetlen` -> `ékezetes` ``. Kézi futtatásnál (`--commit-uzenet-fajl`, base/head nélkül) a hash `-`.
