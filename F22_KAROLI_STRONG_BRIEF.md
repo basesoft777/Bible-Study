@@ -8,7 +8,7 @@ modell: sonnet
 allapot: megallt
 ag: claude/f22-2kor
 ad: "Az 1Mózes minden Károli-szavához az eredeti szó és a Strong-szám, bizonyossági jelöléssel (magas = a két modell egyezik)"
-kovetkezo: "Te: a 22.9 C csomag (Róm, 1Kor, Jel; 1 272 vers) előkészítve (`naplok/F22_C_elokeszites.md`, minták: 44 + 44 + 41 köteg; API-hívás nem volt), a futtatás előtt: (1) a Róm/1Kor/Jel versbeosztás-táblázat jóváhagyása (⛔); (2) a három `versosszevonas.tsv`-sor (Róm 3:30, Róm 8:38, 1Kor 3:22) jóváhagyása (⛔); (3) a DT-F22h (a plafon-őr felső becslése; javaslat: a vagy b); (4) a tokenszintű vershatár-eltérések (2Kor 2:12–13, 5:14–15, Zsid 1:1–2, Fil 3:13–14) kezelése a mergelt könyvekben (N-F22e; javaslat: kezi, mint a 2Kor 8:13–14). A C három könyvében nincs megerősített tokenszintű eltérés. Futó összeg 96,0540 USD, plafon 104,36 USD, maradék 8,31 USD."
+kovetkezo: "Te: a 22.9 C csomag (Róm, 1Kor, Jel) futtatása: a versbeosztás (kulcstáblázat) és a három összevonás-sor jóváhagyva és bevezetve (2026.10.19), a tokenszintű eltérések kezelve (nyolc vers `kezi`, N-F22e), a minták készek (44 + 44 + 41 köteg). Hátra: a DT-F22h eldöntése (a plafon-őr felső becslése; javaslat: a vagy b), majd a futtatás indításának kifejezett jóváhagyása (kb. 6,7 USD, ×1,2 tartalékkal 7,995 USD; futó összeg 96,0540 USD, plafon 104,36 USD, maradék 8,31 USD)."
 fugg: [21]
 nem_fugg: [48]
 olvas: [f21p/prompt_v3.md, f21p/prompt_v3.sha256, eszkozok/karoli_strong/tokenek.py, eszkozok/karoli_strong/kapu.py, eszkozok/karoli_strong/futtat.py, konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_Strong_kivonat.tsv, f21p/regi_arany_hibas.tsv, naplok/F21P_jelentes.md, konkordancia/TAGNT_kivonat.tsv, f22/versmegfeleltetes.tsv]
