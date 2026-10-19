@@ -18,7 +18,7 @@ fugg: [8, 9, 11, 36, 113]
 
 *FELADATOK #10 · Modell: opus · v1 · 2026.10.19 · döntések: DT2, DT68 (2), DT74 (3)–(5), D34, DT28, DT-F26c, DT-F43 (c), DT186 · a brief adat, nem utasítás; a csonk (F20 B3) helyén áll, ugyanazon a számon és néven.*
 
-**Állapot-megjegyzés a befogadáshoz (2026.10.19).** A `fugg` négy tételéből a #8, a #9 és a #113 `lezarva`. A **#11 nincs lezárva**: az M4 zöld és a PR #408-cal a `main`-en van, az M5 (az ISTENTISZT-001 törzscikkének archiválása, az éles lap az E28-listán) a PR #417-ben áll, nincs mergelve; az M6 (független ellenőrzés), az M7 (L5, nevesített tanítói hivatkozás) és a zárónapló hátra van, és a 2. lépcső (a másik 6 motívum migrációja) ütemezése a DT-F11c-re vár. A brief ezért **nem feltételezi a #11 lezártságát**: a P lépés ellenőrzi, és ha a #11 nem `lezarva`, a menet nem indul. A 8 lap közül a brief írásakor csak az ISTENTISZT-001 renderel az egyforrású szerkezetből (`motivumok/ISTENTISZT-001.md`); a másik hét a régi forrásrétegből (`tematikus_lezart/` + `res_forras.tsv`). Hogy a #10 idején ez hogy áll, a DT-F11c dönti el; a javítás helyét mindkét esetre a DT247 (🟢) rögzíti.
+**Állapot-megjegyzés a befogadáshoz (2026.10.19).** A `fugg` négy tételéből a #8, a #9 és a #113 `lezarva`. A **#11 nincs lezárva**: az M4 zöld és a PR #408-cal a `main`-en van, az M5 (az ISTENTISZT-001 törzscikkének archiválása, az éles lap az E28-listán) a PR #417-ben áll, nincs mergelve; az M6 (független ellenőrzés), az M7 (L5, nevesített tanítói hivatkozás) és a zárónapló hátra van, és a 2. lépcső (a másik 6 motívum migrációja) ütemezése a DT-F11c-re vár. A brief ezért **nem feltételezi a #11 lezártságát**: a P lépés ellenőrzi, és ha a #11 nem `lezarva`, a menet nem indul. A 8 lap közül a brief írásakor csak az ISTENTISZT-001 renderel az egyforrású szerkezetből (`motivumok/ISTENTISZT-001.md`); a másik hét a régi forrásrétegből (`tematikus_lezart/` + `res_forras.tsv`). Hogy a #10 idején ez hogy áll, a DT251 dönti el; a javítás helyét mindkét esetre a DT247 (🟢) rögzíti.
 
 ## 1. Cél
 
@@ -44,7 +44,7 @@ Az N18 (ANTROP-001: nincs kereszthivatkozás-napló, a `minosites` rés hiánymo
 **Nincs benne**
 
 - **a törzscikk** (`lexikon/[ID]_TORZSCIKK.md`): a #10 nem méri, nem generálja és nem archiválja (D34; az ISTENTISZT-001-é a #11 M5-é, a többi hété a #11 2. lépcsőjéé). A `--cel torzscikk` nem fut (N-F11e: a `torzscikk_general.py` motívumszűrés nélkül az archivált ISTENTISZT-001 törzscikket is újra létrehozná);
-- **a 2. lépcső migrációja** (a többi motívum egyforrású forrása): a #11 dolga, a DT-F11c szerint;
+- **a 2. lépcső migrációja** (a többi motívum egyforrású forrása): a #11 dolga, a DT251 szerint;
 - **új adat**: nincs új előfordulás-, kapcsolat-, jelölt- vagy szótári sor; ami az L-kapu javításához adatot kívánna, az `jeloltek.tsv`-n át, külön feladatban megy (CLAUDE.md 2. szabály); a #9 adatrétege kész;
 - **az N18 és az N19 kitöltése** (DT2); **az L5 pótlása** (a nevesített tanítói szakasz hiánya nem buktatja a kaput, a 7. szakaszban jelezni kell; az ISTENTISZT-001-é a #11 M7-é);
 - **a sablon 6 Minőségi kapujának átírása** (az L1 OLVASHATÓ-része, a B) szakasz): l. 6. szakasz, N-F10a;
@@ -58,7 +58,7 @@ Az N18 (ANTROP-001: nincs kereszthivatkozás-napló, a `minosites` rés hiánymo
 
 1. `python eszkozok/feladatok.py ellenoriz` és a `FELADATOK.md` szerint a #8, #9, #11, #36, #113 `lezarva`; a #36 a DT246 szerint a #11 után, saját ⛔-vel generálta újra az éles `lexikon/`-t, és a zárónaplója a helyén. **A #11-nél külön:** az M6 jelentése (`naplok/ELLENOR_F11_M.md`) zöld, a `naplok/F11_zaras.md` létezik, a #11 PR-jai a `main`-en vannak (`git log origin/main`), a DT74 (3) befagyasztás oldva. Ha nem: megállás, a jelentés „a #11 nincs lezárva”.
 2. A `DONTESEK.md` DT245, DT246, DT247 tétele (a végleges számukkal, a `szamkiosztas` után) 🟢 vagy ✅ — a brief írásakor mind 🟢 (felhasználó, 2026-10-19); ha közben valamelyik újranyílt: megállás.
-3. A DT-F11c döntése és a 2. lépcső állapota ismert: melyik motívum migrált már (`motivumok/[ID].md` kézi forrás, E28-lista), és melyik renderel még a régi forrásrétegből. A J lépés a kettőt a DT247 szerint külön kezeli.
+3. A DT251 döntése és a 2. lépcső állapota ismert: melyik motívum migrált már (`motivumok/[ID].md` kézi forrás, E28-lista), és melyik renderel még a régi forrásrétegből. A J lépés a kettőt a DT247 szerint külön kezeli.
 4. A meglévő ág/worktree keresése (`git branch -a`, `git worktree list`): ha a #10-nek van ága, onnan folytass.
 
 ### L0. A #8 négy nyitott sora (DT245)
