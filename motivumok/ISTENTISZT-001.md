@@ -311,7 +311,7 @@ A motívum közvetlenül érinti a pünkösdi/karizmatikus hangsúlyt a "segíts
 
 A nevesített tanítói egyezés-keresés (7. lépés, B9) eredménye a saját fájljában áll: `motivumok/naplok/ISTENTISZT-001_tanitoi_kereses.md` (DT66 (a) 2., DT88 (a)).
 
-【NAPLO: F11 M7, 2026-10-19 — a korábban itt álló, a régi tematikus tanulmányból bájtra átvitt tanítói eredmény (leképezési tábla T106–T109) szétválasztással (DT28, DT-F11l b) a fenti fájlba került, ott bájtra azonosan; a fájl fejlécének `Dátum` és `Modell` mezője `manual`.】
+【NAPLO: F11 M7, 2026-10-19 — a korábban itt álló, a régi tematikus tanulmányból bájtra átvitt tanítói eredmény (leképezési tábla T106–T109) szétválasztással (DT28, DT249 b) a fenti fájlba került, ott bájtra azonosan; a fájl fejlécének `Dátum` és `Modell` mezője `manual`.】
 
 **Alkalmazási kérdések** *(a tanulmány saját Peshat/Remez/Drash/Sod rétegeiből, kiegészítve a saját fájlban nevesített tanítói forrásokkal: Hagin ✅ erős/közvetlen, Derek Prince ⚠️ részleges/beágyazott)*:
 

@@ -1,4 +1,4 @@
-<!-- FORRÁSRÉTEG — kézzel írt B9-fájl (a 7. lépés saját fájlja, DT66 (a) 2.), szétválasztással készült (DT28, DT-F11l b). NEM generált fájl. -->
+<!-- FORRÁSRÉTEG — kézzel írt B9-fájl (a 7. lépés saját fájlja, DT66 (a) 2.), szétválasztással készült (DT28, DT249 b). NEM generált fájl. -->
 
 # PaRDeS — Nevesített tanítói keresés: ISTENTISZT-001
 
@@ -17,7 +17,7 @@
 
 ## Eredet
 
-Ez a fájl **nem a 7. sablon szerinti menet terméke**: nincs „1. Kiinduló motívum-kivonat”, és a tanítói forrásokhoz nincs forrás-URL. A lenti szöveg **szétválasztással** (DT28, DT-F11l b) került ide a `motivumok/ISTENTISZT-001.md` 5. pontjából (a leképezési tábla T106–T109 blokkja, `naplok/F11_szetvalasztas_ISTENTISZT-001.tsv`); a forrásba a migráció (F11 M3) bájtra hozta át a régi tematikus tanulmány 5. pontjából (archív példány: `archivum/ISTENTISZT-001/Segitsegul_hivni_az_Urat_tematikus.md`). A négy blokk itt bájtra azonos a forrásbeli szöveggel; tartalmi ellenőrzés vagy kiegészítés nem történt. A 7. sablon szerinti új menet (DT-F11l a) később lefuthat, és ezt a fájlt felülírja.
+Ez a fájl **nem a 7. sablon szerinti menet terméke**: nincs „1. Kiinduló motívum-kivonat”, és a tanítói forrásokhoz nincs forrás-URL. A lenti szöveg **szétválasztással** (DT28, DT249 b) került ide a `motivumok/ISTENTISZT-001.md` 5. pontjából (a leképezési tábla T106–T109 blokkja, `naplok/F11_szetvalasztas_ISTENTISZT-001.tsv`); a forrásba a migráció (F11 M3) bájtra hozta át a régi tematikus tanulmány 5. pontjából (archív példány: `archivum/ISTENTISZT-001/Segitsegul_hivni_az_Urat_tematikus.md`). A négy blokk itt bájtra azonos a forrásbeli szöveggel; tartalmi ellenőrzés vagy kiegészítés nem történt. A 7. sablon szerinti új menet (DT249 a) később lefuthat, és ezt a fájlt felülírja.
 
 ## 1. Kiinduló motívum-kivonat
 
