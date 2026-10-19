@@ -1,0 +1,65 @@
+# F11.S2.4 (DT250): a felmerult_tanulmany -> forras_tanulmany mechanikus áttöltés döntései, soronként (kulcs: id + igehely); csak a kitöltött felmerult_tanulmany sorai (62 sor; a 198 üres felmerult_tanulmany-sor forras_tanulmany-ja üres, döntés nélkül). A felmerult_tanulmany változatlan. Szabály: a szkript docstringje; a napló a naplok/F11_zaras.md „S4” szakaszában.
+# proveniencia: scope=adat/elofordulasok.tsv, felmerult_tanulmany (62 kitöltött sor) × git ls-files alapnév | forras=manual (szkript: s24_attoltes.py, split('\t'), a repón kívül) | ts=2026-10-19
+id	igehely	felmerult_tanulmany	forras_tanulmany	dontes	indok
+TEREMT-001	1Móz 1:2	1Mózes 1 bővített tanulmány		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+TEREMT-001	1Móz 7:11	1Mózes 7:1–24 bővített tanulmány		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+TEREMT-001	1Móz 8:2	1Mózes 7:1–24 bővített tanulmány (kereszthivatkozásként)		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+TEREMT-001	1Móz 49:25	jelen tanulmány		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+TEREMT-001	2Móz 15:5	jelen tanulmány		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+TEREMT-001	2Móz 15:8	jelen tanulmány		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+ALVIL-001	Jel 6:8	a Halál+Hádész páros első megjelenése, amely a 20:13-14-es végső „kiadja halottait” jelenetben teljesedik be		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+ALVIL-001	Luk 10:15	második, önálló hádész-használati mintázat, ld. lent		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+ALVIL-001	Mt 11:23	második, önálló hádész-használati mintázat, ld. lent		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+MENNY-001	1Móz 6:2	1Móz 6:1-8 tanulmány		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+MENNY-001	1Móz 6:4	1Móz 6:1-8 tanulmány		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+MENNY-001	Jób 1:6	jelen tanulmányban felvéve, korábban nem feldolgozva		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+MENNY-001	Jób 2:1	jelen tanulmányban felvéve		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+MENNY-001	Jób 38:7	jelen tanulmányban felvéve		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+MENNY-001	4Móz 13:34	napló-alpontból, jelen tanulmányban kifejtve		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+MENNY-001	Júd 1:6	ÚSZ, korábban jelzett kereszthivatkozás		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+MENNY-001	Júd 1:14-15	ÚSZ, jelen tanulmányban pontosítva		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+MENNY-001	2Pét 2:4-5	ÚSZ, korábban jelzett kereszthivatkozás, jelen tanulmányban pontosítva		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+ANTROP-001	1Móz 2:7	keresztutalás az 1Móz 2:4-7 tanulmányból		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+ANTROP-001	1Thessz 5:23	saját bővített tanulmány		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+ANTROP-001	Zsid 4:12	saját bővített tanulmány		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+ANTROP-001	1Kor 15:45	keresztutalás az 1Móz 2:4-7 tanulmányból		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+ANTROP-001	Luk 1:46	negyedik, valódi lexikai előfordulás		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+ANTROP-001	Luk 1:47	negyedik, valódi lexikai előfordulás		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+ANTROP-001	1Kor 2:14	ötödik előfordulás, melléknévi alakban		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+ANTROP-001	1Kor 2:15	ötödik előfordulás, melléknévi alakban		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+HAMART-001	1Móz 3:14	1Moz_3v7-24_bovitett.md	genezis/1Moz_3v7-24_bovitett.md	athozva	fájlnév alakú; pontosan egy követett fájl ezzel az alapnévvel (git ls-files)
+HAMART-001	1Móz 3:16	1Moz_3v7-24_bovitett.md	genezis/1Moz_3v7-24_bovitett.md	athozva	fájlnév alakú; pontosan egy követett fájl ezzel az alapnévvel (git ls-files)
+HAMART-001	1Móz 3:17	1Moz_3v7-24_bovitett.md	genezis/1Moz_3v7-24_bovitett.md	athozva	fájlnév alakú; pontosan egy követett fájl ezzel az alapnévvel (git ls-files)
+HAMART-001	1Móz 3:18	1Moz_3v7-24_bovitett.md	genezis/1Moz_3v7-24_bovitett.md	athozva	fájlnév alakú; pontosan egy követett fájl ezzel az alapnévvel (git ls-files)
+HAMART-001	1Móz 3:19	1Moz_3v7-24_bovitett.md	genezis/1Moz_3v7-24_bovitett.md	athozva	fájlnév alakú; pontosan egy követett fájl ezzel az alapnévvel (git ls-files)
+HAMART-001	1Móz 3:23	1Moz_3v7-24_bovitett.md	genezis/1Moz_3v7-24_bovitett.md	athozva	fájlnév alakú; pontosan egy követett fájl ezzel az alapnévvel (git ls-files)
+HAMART-001	1Móz 4:2-3	1Moz_4v1-24_bovitett.md	genezis/1Moz_4v1-24_bovitett.md	athozva	fájlnév alakú; pontosan egy követett fájl ezzel az alapnévvel (git ls-files)
+HAMART-001	1Móz 4:7	1Moz_4v1-24_bovitett.md	genezis/1Moz_4v1-24_bovitett.md	athozva	fájlnév alakú; pontosan egy követett fájl ezzel az alapnévvel (git ls-files)
+HAMART-001	1Móz 4:10-11	1Moz_4v1-24_bovitett.md	genezis/1Moz_4v1-24_bovitett.md	athozva	fájlnév alakú; pontosan egy követett fájl ezzel az alapnévvel (git ls-files)
+HAMART-001	1Móz 4:12	1Moz_4v1-24_bovitett.md	genezis/1Moz_4v1-24_bovitett.md	athozva	fájlnév alakú; pontosan egy követett fájl ezzel az alapnévvel (git ls-files)
+HAMART-001	1Móz 4:14	1Moz_4v1-24_bovitett.md	genezis/1Moz_4v1-24_bovitett.md	athozva	fájlnév alakú; pontosan egy követett fájl ezzel az alapnévvel (git ls-files)
+HAMART-001	1Móz 5:29	új lexikai lelet, l. 2. pont		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+HAMART-001	1Móz 6:5	1Moz_6v1-8_bovitett.md	genezis/1Moz_6v1-8_bovitett.md	athozva	fájlnév alakú; pontosan egy követett fájl ezzel az alapnévvel (git ls-files)
+HAMART-001	1Móz 6:7	1Moz_6v1-8_bovitett.md	genezis/1Moz_6v1-8_bovitett.md	athozva	fájlnév alakú; pontosan egy követett fájl ezzel az alapnévvel (git ls-files)
+HAMART-001	1Móz 6:11	1Moz_6v9-22_bovitett.md	genezis/1Moz_6v9-22_bovitett.md	athozva	fájlnév alakú; pontosan egy követett fájl ezzel az alapnévvel (git ls-files)
+HAMART-001	1Móz 6:12	1Moz_6v9-22_bovitett.md	genezis/1Moz_6v9-22_bovitett.md	athozva	fájlnév alakú; pontosan egy követett fájl ezzel az alapnévvel (git ls-files)
+HAMART-001	1Móz 6:13	1Moz_6v9-22_bovitett.md	genezis/1Moz_6v9-22_bovitett.md	athozva	fájlnév alakú; pontosan egy követett fájl ezzel az alapnévvel (git ls-files)
+HAMART-001	1Móz 6:17	1Moz_6v9-22_bovitett.md	genezis/1Moz_6v9-22_bovitett.md	athozva	fájlnév alakú; pontosan egy követett fájl ezzel az alapnévvel (git ls-files)
+HAMART-001	1Móz 8:21	új lexikai lelet, l. 2. pont		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+HAMART-001	1Móz 9:25	1Moz_9v18-29_bovitett.md	genezis/1Moz_9v18-29_bovitett.md	athozva	fájlnév alakú; pontosan egy követett fájl ezzel az alapnévvel (git ls-files)
+HAMART-001	1Móz 12:3	1Moz_12v1-20_bovitett.md	genezis/1Moz_12v1-20_bovitett.md	athozva	fájlnév alakú; pontosan egy követett fájl ezzel az alapnévvel (git ls-files)
+HAMART-001	Zsolt 14:1	új lexikai lelet, TSK-val is megerősítve		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+HAMART-001	Zsolt 53:2	új lexikai lelet, TSK-val is megerősítve		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+HAMART-001	Ez 8:17	TSK-val is megerősítve		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+HAMART-001	Jón 3:8	új lexikai lelet		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+HAMART-001	Jer 6:7	TSK-val is megerősítve		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+HAMART-001	Hab 1:2	TSK-val is megerősítve		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+HAMART-001	Ézs 24:5-6	TSK-eredetű		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+HAMART-001	Hós 4:1-3	TSK-eredetű		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+HAMART-001	Gal 3:13	új lexikai lelet		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+HAMART-001	Zsid 6:7-8	új lexikai lelet		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+HAMART-001	Jel 11:18	új lexikai lelet		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+HAMART-001	Jel 19:2	új lexikai lelet		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+HAMART-001	Mt 15:19	TSK-eredetű		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+HAMART-001	Mk 7:21-23	TSK-eredetű		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
+HAMART-001	2Pét 3:6-7	TSK-eredetű		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki

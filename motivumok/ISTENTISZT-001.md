@@ -303,22 +303,17 @@ szakasz a lexikon-oldalon marad.
 
 ## 4. Kapcsolódás a kutatási sablonhoz
 
-A motívum közvetlenül érinti a pünkösdi/karizmatikus hangsúlyt a "segítségül hívás mint hitbeli cselekvés" témában — ez az 5. pontban, a nevesített tanítói alkalmazásban kerül kifejtésre, nem itt duplikálva.
+A motívum közvetlenül érinti a pünkösdi/karizmatikus hangsúlyt a "segítségül hívás mint hitbeli cselekvés" témában — ez az 5. pontban (az alkalmazási kérdésekben) kerül kifejtésre; a nevesített tanítói egyezés a saját fájljában áll (`motivumok/naplok/ISTENTISZT-001_tanitoi_kereses.md`), nem itt duplikálva.
 
 ## 5. Alkalmazás és tanítványság
 
-### A nevesített tanítói egyezés-keresés eredménye (öt lépéses módszertan szerint)
+### Nevesített tanítói egyezés
 
-**1. Motívum-kiemelés:** a legteológiailag súlyosabb csomópont — a segítségül hívás mint hitbeli, szóbeli cselekvés, amely üdvösséghez/szabaduláshoz vezet (Róm 10:9-10,13 vonal), illetve mint istentiszteleti szokás (genezisi vonal).
+A nevesített tanítói egyezés-keresés (7. lépés, B9) eredménye a saját fájljában áll: `motivumok/naplok/ISTENTISZT-001_tanitoi_kereses.md` (DT66 (a) 2., DT88 (a)).
 
-**2-4. Célzott keresés és forrás-ellenőrzés (jóváhagyott listából):**
+【NAPLO: F11 M7, 2026-10-19 — a korábban itt álló, a régi tematikus tanulmányból bájtra átvitt tanítói eredmény (leképezési tábla T106–T109) szétválasztással (DT28, DT249 b) a fenti fájlba került, ott bájtra azonosan; a fájl fejlécének `Dátum` és `Modell` mezője `manual`.】
 
-- **Kenneth Hagin — ✅ erős/közvetlen forrás.** Hagin *"Understanding Confession"* c. füzetében és *"Confession: Key to Unlocking Faith"* c. tanításában kifejezetten, dedikáltan a Róm 10:9-10 verspárra épül, amely lexikailag és teológiailag közvetlenül a 10:13 "segítségül hívás" csúcspontjához vezet. Hagin ebből a szövegből építi fel a "pozitív vallástétel" (positive confession) tanítását: a szóbeli megvallás ("Confess that you are saved" — "Valld meg, hogy megmenekültél") nem üres formula, hanem hitbeli cselekvés, amely a szívbeli hittel párosulva hozza el az üdvösséget. Ez dedikált, konkrétan erre az igeszakaszra szánt tanítás — ✅ jelölés indokolt.
-- **Derek Prince — ⚠️ részleges/beágyazott forrás.** A *"Deliverance and Demonology"* tanulmányvázlatban és a *"The Helmet of Hope"* prédikációban Prince kifejezetten idézi a "segítségül hívja az Úr nevét... megszabadul" formulát (Jóel 2:32 nyomán), de nem a genezisi/kánoni ív dedikált feldolgozásaként, hanem egy tágabb, szabadulás-szolgálati tanítás részeként alkalmazva — a névsegítségül-hívást mint a szabadulás feltételét mutatja be. Konkrét, idézhető forrás, de beágyazott jellegű — ⚠️ jelölés indokolt.
-- **Charles Capps — gap.** Nem került azonosításra megbízható, ellenőrizhető, konkrétan erre a motívumra (akár a genezisi, akár a Róm 10:13 vonalra) szánt Capps-forrás. Explicit hiányjelzés, nem pótolva gyengébb anyaggal.
-- **Kenneth Copeland, Oral Roberts, T. L. Osborn, Smith Wigglesworth és a lista többi tagja** — a célzott keresés nem hozott konkrétan erre a motívumra szabott, dedikált vagy akár beágyazott forrást; explicit hiányjelzés.
-
-**5. Alkalmazási kérdések** *(a tanulmány saját Peshat/Remez/Drash/Sod rétegeiből, kiegészítve a fenti nevesített forrásokkal)*:
+**Alkalmazási kérdések** *(a tanulmány saját Peshat/Remez/Drash/Sod rétegeiből, kiegészítve a saját fájlban nevesített tanítói forrásokkal: Hagin ✅ erős/közvetlen, Derek Prince ⚠️ részleges/beágyazott)*:
 
 1. *Mit jelent ez a mai hívő mindennapi életében?* A segítségül hívás — Hagin tanítása szerint — nem passzív érzés, hanem tudatos, szóbeli hitbeli cselekvés; a genezisi pátriárkák pedig azt mutatják, hogy ez egy visszatérő, helyhez köthető, akár nemzedékről nemzedékre átadható gyakorlattá is válhat.
 2. *Milyen konkrét lépést, döntést vagy szokásváltozást von maga után?* Ábrahám és Izsák mintája szerint: a segítségül hívás nem egyszeri esemény, hanem tudatosan felkeresett/fenntartott gyakorlat — érdemes "saját Beérsebát" (állandó imádati pontot/szokást) kialakítani.
@@ -395,7 +390,7 @@ belül) a KAPCSOLATOK-réteg új **Variáns** kategóriájába tartozik.】
 ##### D — negyedik minta: נִקְרָא...עַל (nikrá … al; birtoklás/hovatartozás), kizárva
 
 A H7121+H8034 kombinált teljes-előfordulás scan
-(`tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md`,【NAPLO: 2026.09.08-i】
+(`archivum/ISTENTISZT-001/Segitsegul_hivni_az_Urat_tematikus.md`,【NAPLO: 2026.09.08-i】
 v2-bővítés) egy negyedik, nyelvtanilag élesen elkülönülő szerkezetet is
 felszínre hozott: **נִקְרָא...עַל** (*nikrá...al*, "[egy név] hivatik ...
 felette/rajta") — passzív nifal ige + עַל (al) elöljárószó, szemben a fő

@@ -1,0 +1,6 @@
+# F11.T3.7 (DT-F11o (b)): az ISTENTISZT-001 három sorának forras_tanulmany-kitöltése, soronként (kulcs: id + igehely). Kézi döntés, nem lekérdezés: a felmerult_tanulmany a három soron üres (változatlan), a forrástanulmányt a DT-F11o (b) nevezi meg. A sor saját proveniencia-mezője (scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-09-05) a sor eredetére vonatkozik, ezért változatlan; e kitöltés proveniencia-sora itt áll.
+# proveniencia: scope=adat/elofordulasok.tsv, forras_tanulmany (ISTENTISZT-001: 1Móz 4:26, 1Móz 12:8, 1Móz 13:4) | forras=manual (DT-F11o (b)) | ts=2026-10-19
+id	igehely	forras_tanulmany_elotte	forras_tanulmany	dontes	indok
+ISTENTISZT-001	1Móz 4:26		genezis/1Moz_4v25-5v32_bovitett.md	kezi_kitoltes	DT-F11o (b); a tanulmány 2. pontja (4:26, קָרָא בְשֵׁם) és 📎-sora (234., F11.T3.6) a lelet keletkezési helye
+ISTENTISZT-001	1Móz 12:8		genezis/1Moz_12v1-20_bovitett.md	kezi_kitoltes	DT-F11o (b); a tanulmány 2. pontja (12:8, קָרָא בְשֵׁם יְהוָה) és 📎-sora (141., F11.T3.4) a lelet keletkezési helye
+ISTENTISZT-001	1Móz 13:4		genezis/1Moz_13v1-18_bovitett.md	kezi_kitoltes	DT-F11o (b); a tanulmány 4. pontja (13:4, ⭐ harmadik előfordulás) és 📎-sora (119., F11.T3.5) a lelet keletkezési helye

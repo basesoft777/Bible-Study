@@ -451,16 +451,45 @@ def torzscikk_szoveg(m, lex_szoveg, model):
     return torzscikk_tartalom, stat
 
 
+MIGRALT_LISTA = os.path.join('eszkozok', 'ellenorzes', 'e28_migralt_nezetek.tsv')
+
+
+def migralt_idk(root=None):
+    """N-F11e (F11): a migrált motívumok azonosítói -- az E28-lista
+    (`eszkozok/ellenorzes/e28_migralt_nezetek.tsv`) `id` oszlopa, bármely
+    `cel`-lal. A migrált motívum törzscikke megszűnt kimenet (D6, F11 M5), ezért
+    a generálásból kimarad. A `motivumok/[ID].md` megléte nem jel: a forrásréteg
+    mind a 9 motívumnál megvan (F4 G2). Hiányzó lista: üres halmaz.
+    TSV-olvasás split('\\t'), a `csv` modul tilos (CLAUDE.md)."""
+    ut = os.path.join(root or G.ROOT, MIGRALT_LISTA)
+    if not os.path.exists(ut):
+        return set()
+    with io.open(ut, encoding='utf-8', newline='') as f:
+        sorok = [ln.rstrip('\r\n') for ln in f if ln.strip() and not ln.startswith('#')]
+    if not sorok:
+        return set()
+    fejlec = sorok[0].split('\t')
+    i = fejlec.index('id')
+    return {s.split('\t')[i].strip() for s in sorok[1:]
+            if len(s.split('\t')) > i and s.split('\t')[i].strip()}
+
+
 def run(args, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek):
     elof_id_szerint = G.elofordulasok_id_szerint(elofordulasok)
     kimenet_gyoker = (
         os.path.join(G.ROOT, 'lexikon') if (args.ir or args.ellenoriz)
         else os.path.join(args.kimenet, 'lexikon')
     )
+    migralt = migralt_idk()
 
     for m in motivumok:
         sorai = elof_id_szerint.get(m['id'], [])
         if not sorai:
+            continue
+        if m['id'] in migralt:
+            # N-F11e: egy teljes --ir (pl. a #36) ne hozza vissza a megszűnt kimenetet.
+            print('  %s: migrált motívum (E28-lista) -- a törzscikk megszűnt kimenet (D6), '
+                  'kihagyva' % m['id'], file=sys.stderr)
             continue
 
         lex_path = os.path.join(G.ROOT, 'lexikon', '%s_TUDOMANYOS.md' % m['id'])

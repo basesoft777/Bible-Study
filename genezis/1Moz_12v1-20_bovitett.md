@@ -138,7 +138,7 @@ Az "segítségül hívta az Úr nevét" (12:8) formula nem első előfordulás:
 
 > 🔗 "Akkor kezdték segítségül hívni az Úr nevét." (1Móz 4:26)
 >
-> 📎 Bővebben, önálló tematikus feldolgozásban: `Segitsegul_hivni_az_Urat_tematikus.md` (Segítségül hívni az Úr nevét) — ez a study a 12:8-ban dokumentált oltárépítés+segítségülhívás mintázatot a teljes kánoni ívbe helyezve tárgyalja.
+> 📎 Bővebben, a motívum kézi forrásában: `motivumok/ISTENTISZT-001.md`, „3. A PaRDeS keretrendszer — a motívum egészére alkalmazva” szakasz (Segítségül hívni az Úr nevét) — ez a szakasz a 12:8-ban dokumentált oltárépítés+segítségülhívás mintázatot a teljes kánoni ívbe helyezve tárgyalja.
 > *(kulcsszó: **segítségül hívás** — קָרָא בְשֵׁם יְהוָה, ugyanaz a kifejezés mindkét helyen.)*
 
 **Ismétlődő motívum korábbi tanulmányodból:** az 1Móz 4:25-5:32 tanulmányban ez a kifejezés már szerepelt Énós nemzedékéhez kötve, mint a Séthita vonal istentiszteleti hagyományának kezdete. Ábrám itt ennek a hagyománynak explicit folytatójaként jelenik meg — a Bábel utáni új kezdet nem szakítja meg, hanem újraindítja ezt a fonalat.

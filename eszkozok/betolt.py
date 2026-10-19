@@ -52,7 +52,7 @@ ELOFORDULASOK_FEJLEC = [
     'strong', 'lexikon_szotar', 'lexikon_entry_id', 'jelentes_szam',
     'jelentes_en', 'jelentes_hu', 'karoli_szo', 'azonositas_modja',
     'megbizhatosag', 'proveniencia', 'igazolas', 'fo_elofordulas',
-    'felmerult_tanulmany',
+    'felmerult_tanulmany', 'forras_tanulmany',   # #11 S2 (DT250): az utolso oszlop, SEMA 2.2
 ]
 
 ELOFORDULASOK_KOTELEZO = ['id', 'igehely', 'kapcsolodas', 'gerinc_elem',
