@@ -32,9 +32,9 @@
 | 4. állítás: [nem TR] 103, ebből 5 párosított | OK | `adat/karoli_strong/nem_tr_parositott.tsv` | TAGNT TR = 4444, 4547 − 4444 = 103; az 5 sor pozíciója és Strongja egyezik; a tábla 45 sora |
 | 5. állítás: futó összeg, N-F22c 15 hívás | OK | futásnapló | utolsó sor 96,053973; N-F22c: 0,189068; 15 sor |
 | 5. állítás: plafon, újravetítés | OK | `api_koteg.py:54, 61, 116–118, 258–264`; `naplok/F22_2Kor_jelentes.md:48–57` | PLAFON 104,36, maradék 8,306. Egységár 0,005238; C: 1272 vers (Róm 431 + 1Kor 436 + Jel 405), ×0,005238 = 6,66, ×1,2 = 7,995. Felső becslés 0,16 USD/kérés; 2Kor-ra 4,41 |
-| 5. állítás: DT-F22h szám | **ELTÉRÉS** (alacsony) | `DONTESEK.md:324` | 7,996 USD szerepel, a helyes érték 7,995 (6,662736 × 1,2 = 7,99528) |
-| **5. állítás / D45: DT-F22h opciói** | **ELTÉRÉS** | `DONTESEK.md:324`; `naplok/F22_2Kor_jelentes.md:57` | A „c” opció (Róm + 1Kor) a jelenlegi őr mellett sem futtatható (a Róm után kb. 98,3 + 7,1 > 104,36, az 1Kor beküldését az őr elutasítja). A „c vagy b” javaslat félrevezető. A D45 szerint a ×1,2-es belefér-feltétel teljesül, tehát a C-nek egészben kellene indulnia; a „c” a D45-ben a nem-fér-bele ág |
-| 5. állítás: DT-F22h helyőrző | OK | `DONTESEK.md:324` | E26 = 0 találat; `DT-F22h` egyedi, végleges DT-szám nincs |
+| 5. állítás: DT262 szám | **ELTÉRÉS** (alacsony) | `DONTESEK.md:324` | 7,996 USD szerepel, a helyes érték 7,995 (6,662736 × 1,2 = 7,99528) |
+| **5. állítás / D45: DT262 opciói** | **ELTÉRÉS** | `DONTESEK.md:324`; `naplok/F22_2Kor_jelentes.md:57` | A „c” opció (Róm + 1Kor) a jelenlegi őr mellett sem futtatható (a Róm után kb. 98,3 + 7,1 > 104,36, az 1Kor beküldését az őr elutasítja). A „c vagy b” javaslat félrevezető. A D45 szerint a ×1,2-es belefér-feltétel teljesül, tehát a C-nek egészben kellene indulnia; a „c” a D45-ben a nem-fér-bele ág |
+| 5. állítás: DT262 helyőrző | OK | `DONTESEK.md:324` | E26 = 0 találat; `DT262` egyedi, végleges DT-szám nincs |
 | 6. állítás: FELADATOK.md generált blokkja | OK | — | a `FELADATOK.md` nem szerepel a diffben |
 | 6. állítás: GENERÁLT fájl kézzel | OK / NEM ELLENŐRIZHETŐ | `nem_tr_parositott.tsv:1`, `f22/versmegfeleltetes.tsv:1` | fejléc és tartalom konzisztens a TAGNT-tel; hogy szkript írta-e, futtatás nélkül nem igazolható |
 | 6. állítás: proveniencia (táblafejlécek) | **ELTÉRÉS** (alacsony) | 11 könyv `parok_*.tsv:1`, `szavak_*.tsv:1` | a `forras` nem létező fájlt nevez meg: `f22/valaszok/c/<könyv>_javito.jsonl`; a `f22/valaszok/c/*_javito*` közül csak `2Moz_javito.jsonl` létezik |
@@ -43,7 +43,7 @@
 | G: 22.9/2 soros futás (D15, DT60) | OK | `batchek.tsv:93–108` | a batch-időbélyegek sorosak, átfedés nincs |
 | G: 22.9/3 jelentés, nem_tr_lista | OK | — | `F22_2Kor_jelentes.md` és `nem_tr_parositott.tsv` frissült; a B-összesítő nem, helyette a 2Kor-jelentés „B csomag zárása” szakasza áll (tűrhető) |
 | G: 22.9 kész-ha (plafon alatt, újravetítés) | OK | — | 96,05 < 104,36; az újravetítés a 4. szakaszban |
-| **D45 / brief-fejléc** | **ELTÉRÉS** | `F22_KAROLI_STRONG_BRIEF.md:11, 180, 195`; D45 sor (266) | a fejléc `kovetkezo` mezője az F22.10.3 állapotát írja; a DT-F22h, az ellenőr és a PR nem szerepel; a Döntésnapló nem kapta meg a 2Kor / N-F22c eredményt; a 22.9 szövege szerint a 2Kor 13:13 „nincs görög szövege”, ami elavult |
+| **D45 / brief-fejléc** | **ELTÉRÉS** | `F22_KAROLI_STRONG_BRIEF.md:11, 180, 195`; D45 sor (266) | a fejléc `kovetkezo` mezője az F22.10.3 állapotát írja; a DT262, az ellenőr és a PR nem szerepel; a Döntésnapló nem kapta meg a 2Kor / N-F22c eredményt; a 22.9 szövege szerint a 2Kor 13:13 „nincs görög szövege”, ami elavult |
 | A1 memória vs. lekérdezés | OK | `F22_2Kor_jelentes.md:31` | a TR-utóirat állítást a TAGNT igazolja (12 TR-only sor) |
 | **A2 nyitott tételek** | **ELTÉRÉS** | `NYITOTT_FELADATOK.md:109–110` | az N-F22c (3) és az N-F22d („Nyitva marad: a Fil 1:16–17 újrapárosítása”) ezen az ágon elkészült (Fil 1:16–17: 11+11 pár), a `NYITOTT_FELADATOK.md` mégsem frissült |
 | A3, A4, A5 | nem értelmezett | — | nincs tanulmány, tematikus párhuzam, PaRDeS-réteg vagy nevesített tanító a diffben |
@@ -57,11 +57,11 @@
 
 **Az ELTÉRÉS-ek súlyossági sorrendben**
 
-1. A DT-F22h opciói (`DONTESEK.md:324`): a javasolt „c” a saját plafon-őr-elemzés szerint nem futtatható, és ellentmond a D45 belefér-ágának.
+1. A DT262 opciói (`DONTESEK.md:324`): a javasolt „c” a saját plafon-őr-elemzés szerint nem futtatható, és ellentmond a D45 belefér-ágának.
 2. A 2Kor 8:13/8:14 részleges vershatár-eltérése (`szavak_2Kor.tsv:5071–5079, 5103–5113`): 9 Károli-szó hamis `betoldas`, 11 görög token hamis `forditatlan`, és a jóváhagyási napló „nincs kézi leképezés” állítása ezt nem fedi.
 3. A2: az N-F22c (3) és az N-F22d a `NYITOTT_FELADATOK.md:109–110`-ben nyitottként áll, pedig elkészült.
 4. A brief fejléce, Döntésnaplója és 22.9-szövege elavult (`F22_KAROLI_STRONG_BRIEF.md:11, 180, 195, 266`).
 5. E17/DT3: a szavak-táblák ≥10-es Δ-jához nincs bontás.
 6. A táblafejlécek proveniencia-`forras` mezője nem létező `f22/valaszok/c/*_javito.jsonl` fájlt nevez meg.
 7. A naplókból hiányzik a `scope | forras | ts` proveniencia-sor.
-8. Kerekítési hiba: a DT-F22h 7,996 USD-t ír 7,995 helyett.
+8. Kerekítési hiba: a DT262 7,996 USD-t ír 7,995 helyett.

@@ -14,8 +14,8 @@ F22_KAROLI_STRONG_BRIEF.md (22.9, D45), `ab0240a..79cde01` (javítókör: `29f1d
 
 | pont | eredmény | fájl:sor | parancs / indok |
 |---|---|---|---|
-| 1. DT-F22h opciók, javaslat | OK | `DONTESEK.md:324` | egyetlen sor; az „a” kimondja a D45 belefér-ágat; a „c” a D45 nem-fér-bele ága, „önmagában nem futtatható”; a javaslat „a (vagy b)”; végleges DT-szám nincs (E26 = 0) |
-| 1. DT-F22h kerekítés | OK | `DONTESEK.md:324` | 7,995 USD; (0,005226×1638+1,36)/1894 = 0,0052377; ×1272 = 6,6627; ×1,2 = 7,99528; Róm+1Kor 867 vers: 4,54 / 5,45 USD |
+| 1. DT262 opciók, javaslat | OK | `DONTESEK.md:324` | egyetlen sor; az „a” kimondja a D45 belefér-ágat; a „c” a D45 nem-fér-bele ága, „önmagában nem futtatható”; a javaslat „a (vagy b)”; végleges DT-szám nincs (E26 = 0) |
+| 1. DT262 kerekítés | OK | `DONTESEK.md:324` | 7,995 USD; (0,005226×1638+1,36)/1894 = 0,0052377; ×1272 = 6,6627; ×1,2 = 7,99528; Róm+1Kor 867 vers: 4,54 / 5,45 USD |
 | 2. `kezi_versek_2Kor.tsv` | OK | `f22/kezi_versek_2Kor.tsv:3–5` | új fájl, fejléc `igehely ok`, két sor (2Kor 8:13, 8:14) |
 | 2. szavak: a két vers `fuggoben`/`kezi` | OK | `szavak_2Kor.tsv:5058–5126` | 69 sor, mind `fuggoben … kezi`; más versben nincs `fuggoben` |
 | 2. parok: nincs link a két versben | OK | `parok_2Kor.tsv` | 0 sor; a javítókör 22 törölt sora mind 8:13/8:14 |
@@ -24,10 +24,10 @@ F22_KAROLI_STRONG_BRIEF.md (22.9, D45), `ab0240a..79cde01` (javítókör: `29f1d
 | 2. helyesbítő sor | OK | `naplok/F22_versbeosztas_jovahagyas.md:65` | „2Kor 8:13–14 (helyesbítés a 64. sorra)”, 9 / 11 számmal, N-F22e |
 | 3. N-F22c, N-F22d lezárva | OK | `NYITOTT_FELADATOK.md:109, 110` | „LEZÁRVA” szöveg mindkettőben |
 | 3. N-F22e helyőrző | OK | `NYITOTT_FELADATOK.md:111` | végleges `N<n>` szám nincs; a 69 szósor egyezik |
-| 4. brief fejléc `kovetkezo` | OK (részben NEM ELLENŐRIZHETŐ) | `F22_KAROLI_STRONG_BRIEF.md:11` | DT-F22h, a C jóváhagyása, 96,0540 USD, N-F22e; a „draft PR #433” `gh` nélkül nem ellenőrizhető |
+| 4. brief fejléc `kovetkezo` | OK (részben NEM ELLENŐRIZHETŐ) | `F22_KAROLI_STRONG_BRIEF.md:11` | DT262, a C jóváhagyása, 96,0540 USD, N-F22e; a „draft PR #433” `gh` nélkül nem ellenőrizhető |
 | **4. 22.9 C-sor és a hiányzó görög szöveg listája** | **ELTÉRÉS** | `F22_KAROLI_STRONG_BRIEF.md:182, 195` | a brief szerint a Róm 16:25–27 és a Jel 12:18 „nincs görög szövegük”, `fuggoben` maradna; a `TAGNT_kivonat.tsv`-ben az F90 óta megvan (73 sor; Róm 16:27: 26). `lekerdez.py scan G1391 --szakasz "Róm 16:25-27"` → Róm 16:27 (`scope=range:Róm 16:25-27 \| forras=TAGNT_kivonat.tsv \| strong=G1391 \| n=1 \| ts=2026-10-19T16:06Z`); `scan G2476 --szakasz "Jel 12:18"` → Jel 12:18 (`… n=1 \| ts=2026-10-19T16:06Z`). A javítás csak a Fil és a 2Kor állítását írta át. A C tervét érinti |
 | **4. brief `ir` mező** | **ELTÉRÉS** (alacsony) | `F22_KAROLI_STRONG_BRIEF.md:15` | `kezi_versek_2Kor` 0 találat; az új fájl nincs az `ir` listában |
-| 4. D45 eredmény | OK (megjegyzéssel) | `F22_KAROLI_STRONG_BRIEF.md:266` | 2Kor 256 vers, 1,36 USD, N-F22c 36 vers, 0,1891 USD, 96,0540 / 8,31 / 7,995, DT-F22h; a bejegyzés a sor utolsó cellájában áll, nem a döntés-cellában, mint az A és B eredménye |
+| 4. D45 eredmény | OK (megjegyzéssel) | `F22_KAROLI_STRONG_BRIEF.md:266` | 2Kor 256 vers, 1,36 USD, N-F22c 36 vers, 0,1891 USD, 96,0540 / 8,31 / 7,995, DT262; a bejegyzés a sor utolsó cellájában áll, nem a döntés-cellában, mint az A és B eredménye |
 | 4. v2.45 sor | OK | `F22_KAROLI_STRONG_BRIEF.md` (Döntésnapló) | új sor, 2026.10.19, csökkenő sorrend |
 | 4. `feladatok.py ellenoriz` | NEM ELLENŐRIZHETŐ | — | a megengedett körön kívül; `futtat.py` E18, E26: 0 |
 | 5. N-F22c napló 7. szakasz Δ | OK | `naplok/F22_N-F22c_ujraparositas.md:105–120` | parok +617, szavak +120, könyvenként egyezik a `git diff --numstat 9f4fc06..c0d1070`-nel; Gal szúrópróba: 2:19 er 9→9 (Δ0), 2:20 er 33→35 (+2) |

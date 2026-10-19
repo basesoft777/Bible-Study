@@ -51,7 +51,7 @@ A próza nem lesz hosszabb, mint amit az adat elbír. Ahol egy hely csak formail
 ### Nincs benne
 
 - **A 3–5. összefüggés** (ALVIL-001, HAMART-001, TEREMT-001): motívumok közötti kapcsolat; előbb jelöltként, döntéssel (2. szabály). Ez a `beerkezo/LEXIKON_HALO_RES_BRIEF_TERVEZET.md` pilotja; a próza csak utána szólhat róluk, külön feladatban.
-- **A felmérés „Tanulmányozási kérdések” szakasza** (1–6.): mind új lekérdezést, jelöltet vagy döntést kér. A 6. kérdés három adathiánya N-tételként áll (`NYITOTT_FELADATOK.md` N-F126a, N-F126b, N-F126c).
+- **A felmérés „Tanulmányozási kérdések” szakasza** (1–6.): mind új lekérdezést, jelöltet vagy döntést kér. A 6. kérdés három adathiánya N-tételként áll (`NYITOTT_FELADATOK.md` N59, N60, N61).
 - **A Seól-határ (A4, a felmérés 1. tanulmányozási kérdése):** a névtelen hívások (2Sám 22, Zsolt 18, Jón 2) határa tartalmi döntés, **a felhasználóé**. A feladat nem dönt róla és nem érvel mellette; ha a Zsolt 116:4 bekezdése a 116:3-at érinti, csak a mért szomszédságot mondhatja ki, motívumközi állítás nélkül, és a szövegjavaslat jelöli a kérdést.
 - **A Kármel–Zakariás visszhang** (4. tanulmányozási kérdés): a közös szókészlet nem idézés. Az 1. összefüggés bekezdése a két helyet a közös szavaik szerint egymás mellé teheti, kapcsolatot nem állít.
 - **A prózasablon** (a felmérés kilenc pontja): a #123 2d. szakasza és a DT-F123c dolga. Ez a feladat a mai rések szerkezetébe ír, szakaszt nem rendez át.
@@ -118,7 +118,7 @@ Egy típushiba, amire külön figyelni kell: a kísérő szavak egyezése (péld
 
 **7. Független ellenőrzés** (`fuggetlen-ellenor`, `naplok/ELLENOR_<KÓD>.md`) a base..head diffen: minden új állítás mögött van-e saját proveniencia-sor; a mért tény és az értelmezés külön mondat-e; van-e új Sod, motívumközi állítás vagy idézés-állítás; a 8 hely mérce-táblája teljesül-e. ELTÉRÉS esetén `/elteres` (2 kör).
 
-**8. Zárás:** a brief fejléce (`allapot`, `lezarva_osszegzes`), zárónapló (`naplok/<KÓD>_zaras.md`), az N-F55d és az N-F126c állapota a `NYITOTT_FELADATOK.md`-ben. A #123 0.1/b előfeltétele (N-F123b) ezzel teljesül; a #123 `fugg` mezőjébe e feladat száma a befogadáskor kerül (l. 5. szakasz).
+**8. Zárás:** a brief fejléce (`allapot`, `lezarva_osszegzes`), zárónapló (`naplok/<KÓD>_zaras.md`), az N-F55d és az N61 állapota a `NYITOTT_FELADATOK.md`-ben. A #123 0.1/b előfeltétele (N-F123b) ezzel teljesül; a #123 `fugg` mezőjébe e feladat száma a befogadáskor kerül (l. 5. szakasz).
 
 ## 4. Elfogadási feltételek
 
