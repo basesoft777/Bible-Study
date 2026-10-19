@@ -2215,3 +2215,32 @@ def e30_meres(alap='', fej='origin/main', mag=112, minta=50):
     for i, (h, a, b, u) in enumerate(talalatok[:minta], 1):
         sor = next((s for s in u.split('\n') if re.search(r'(?<![\w])%s(?![\w])' % a, s)), '')
         print('%2d\t%s\t%s -> %s\t%s' % (i, h, a, b, sor.strip()[:150]))
+
+
+def e30_ascii_commit(base_ref, head_ref, commit_uzenet='', esemeny=''):
+    """E30 (DT-F112a: FIGYELMEZTETES): ekezet nelkul irt magyar szo a PR base..head
+    kezi commitjaiban. Push-esemenynel (main) nem fut (G4). Ha nincs base/head
+    (kezi futtatas --commit-uzenet-fajl-lal), az atadott szoveget nezi, '-' hash-sel."""
+    if esemeny == 'push':
+        return []
+    if base_ref and head_ref:
+        commitok = e30_commitok(base_ref, head_ref)
+    elif commit_uzenet:
+        commitok = [('-', commit_uzenet)]
+    else:
+        return []
+    commitok = [(h, u) for h, u in commitok if not e30_gepi_e(u)]
+    if not commitok:
+        return []
+    szotar = e30_szokeszlet([u for _, u in e30_commitok('', base_ref or 'HEAD')])
+    kiz = e30_kizaras()
+    talalatok = []
+    for h, u in commitok:
+        for a, b in e30_jeloltek(u, szotar, kiz):
+            talalatok.append(Talalat('E30', SZINT['E30'], h, 'uzenet',
+                                     '`%s` -> `%s` (ekezet nelkul irt magyar szo a commit-uzenetben)' % (a, b)))
+    return talalatok
+
+
+SZINT['E30'] = 'FIGYELMEZTETES'
+FAJLSZINTU_SZABALYOK.add('E30')
