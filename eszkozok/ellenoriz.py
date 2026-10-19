@@ -789,6 +789,26 @@ def szabaly15_kapcsolatok_fejlec(adat_dir):
     return Sor(cim, 'RENDBEN')
 
 
+ELOFORDULASOK_FEJLEC = ['id', 'igehely', 'kapcsolodas', 'pardes_szint', 'funkcio',
+                        'gerinc_elem', 'strong', 'lexikon_szotar', 'lexikon_entry_id',
+                        'jelentes_szam', 'jelentes_en', 'jelentes_hu', 'karoli_szo',
+                        'azonositas_modja', 'megbizhatosag', 'proveniencia', 'igazolas',
+                        'fo_elofordulas', 'felmerult_tanulmany', 'forras_tanulmany']
+
+
+def szabaly16_elofordulasok_fejlec(adat_dir):
+    """#11 S2 (DT250, SEMA.md 2.2): az elofordulasok.tsv fejlece pontosan a
+    SEMA 2.2 mezolistaja, a `forras_tanulmany` az utolso oszlop. A mezo nem
+    kotelezo (ures ertek megengedett); a nem ures ertek letezeset a CI E31
+    szabalya nezi (eszkozok/ellenorzes/szabalyok.py); a soronkenti
+    oszlopszamot a G.tsv_beolvas mar kikenyszeriti."""
+    cim = '16. elofordulasok.tsv fejléc (SEMA 2.2)'
+    fejlec, _ = G.tsv_beolvas(os.path.join(adat_dir, 'elofordulasok.tsv'))
+    if fejlec != ELOFORDULASOK_FEJLEC:
+        return Sor(cim, 'SÉRTÉS', 1, ['fejléc eltérő: %r (várt: %r)' % (fejlec, ELOFORDULASOK_FEJLEC)])
+    return Sor(cim, 'RENDBEN')
+
+
 # ---------------------------------------------------------------------------
 # Q1 / Q7 -- --study
 # ---------------------------------------------------------------------------
@@ -926,6 +946,7 @@ def main():
         tabla_sorok.append(szabaly13_forditasi_gyorsitotar(args.adat))
         tabla_sorok.append(szabaly14_kiejtes_terminologia(args.adat))
         tabla_sorok.append(szabaly15_kapcsolatok_fejlec(args.adat))
+        tabla_sorok.append(szabaly16_elofordulasok_fejlec(args.adat))
     except Exception as exc:
         print('HIBA: %s' % exc, file=sys.stderr)
         sys.exit(2)
