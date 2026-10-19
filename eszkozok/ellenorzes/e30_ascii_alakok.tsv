@@ -1,0 +1,51 @@
+alak	ok	forras
+allapot	mezonev	brief-fejlec allapot: (BRIEF_SABLON.md, F*_BRIEF.md)
+kovetkezo	mezonev	brief-fejlec kovetkezo: (BRIEF_SABLON.md)
+fugg	mezonev	brief-fejlec fugg: (BRIEF_SABLON.md)
+lezarva	mezonev	brief-fejlec lezarva: (BRIEF_SABLON.md)
+megallt	ertekkeszlet	brief-fejlec allapot: ertek (megallt), F*_BRIEF.md
+fazis	mezonev	brief-fejlec fazis: (BRIEF_SABLON.md)
+tipus	mezonev	brief-fejlec tipus: (BRIEF_SABLON.md)
+hianyzik	ertekkeszlet	adat/SEMA.md datasetek.allapot zart ertekkeszlet
+elerheto	ertekkeszlet	adat/SEMA.md datasetek.allapot zart ertekkeszlet
+korlatos	ertekkeszlet	adat/SEMA.md datasetek.allapot zart ertekkeszlet
+meg	ketertelmu	meg/még: az ekezetlen alak is helyes magyar szo (megmeg-ige, meg = es)
+mert	ketertelmu	mert/mért: az ekezetlen alak is helyes magyar szo
+kor	ketertelmu	kor/kör: az ekezetlen alak is helyes magyar szo
+sem	ketertelmu	sem/sém: az ekezetlen alak is helyes magyar szo
+fel	ketertelmu	fel/fél: az ekezetlen alak is helyes magyar szo
+arany	ketertelmu	arany/arány: az ekezetlen alak is helyes magyar szo
+mar	ketertelmu	mar/már: a ragozott mar ige alakja
+ben	rovidites	toldalek-toredek / igehely-szomszedsag
+helyen	ketertelmu	helyen/helyén: az ekezetlen alak is helyes magyar szo
+szinten	ketertelmu	szinten/szintén: az ekezetlen alak is helyes magyar szo
+hozza	ketertelmu	hozza/hozzá: az ekezetlen alak is helyes magyar szo (hoz ige)
+adat	ertekkeszlet	brief-fejlec munka ertekei
+archiv	ertekkeszlet	brief-fejlec tipus ertekei
+bovitett	ertekkeszlet	zart ertekkeszlet: adat\datasetek.tsv.# Dataset-matrix — ATALAKITASI_TERV.md.md 4.3. Kezzel karbantartott policy-tabla.
+cim	mezonev	brief-fejlec: CREMER_OCR_BRIEF.md
+ertelmezo	ertekkeszlet	brief-fejlec munka ertekei
+feladat	mezonev	brief-fejlec: F01_KAROLI_KULCS_BRIEF.md
+folyamat	ertekkeszlet	brief-fejlec munka ertekei
+forras	mezonev	brief-fejlec: F12_TEREMT002_PROZA_BRIEF.md
+fut	ertekkeszlet	brief-fejlec allapot ertekei
+gorog	ertekkeszlet	zart ertekkeszlet: adat\kiejtes_kivetelek.tsv.# Kiejtes-kivetelek (S3, D15). Kulcs: nyelv + alak. Séma: adat/SEMA.md 2.17
+haiku	ertekkeszlet	brief-fejlec modell ertekei
+heber	ertekkeszlet	zart ertekkeszlet: adat\kiejtes_kivetelek.tsv.# Kiejtes-kivetelek (S3, D15). Kulcs: nyelv + alak. Séma: adat/SEMA.md 2.17
+kod	mezonev	brief-fejlec: F01_KAROLI_KULCS_BRIEF.md
+melyelemzes	ertekkeszlet	zart ertekkeszlet: adat\datasetek.tsv.# Dataset-matrix — ATALAKITASI_TERV.md.md 4.3. Kezzel karbantartott policy-tabla.
+modell	mezonev	brief-fejlec: CREMER_OCR_BRIEF.md
+munka	mezonev	brief-fejlec: F09_SZOTAR_S2_BRIEF.md
+naplozas	ertekkeszlet	brief-fejlec tipus ertekei
+nyelv	ertekkeszlet	zart ertekkeszlet: adat\kiejtes_kivetelek.tsv.# Kiejtes-kivetelek (S3, D15). Kulcs: nyelv + alak. Séma: adat/SEMA.md 2.17
+olvas	mezonev	brief-fejlec: F07_THAYER_ELES_BRIEF.md
+opus	ertekkeszlet	brief-fejlec modell ertekei
+sonnet	ertekkeszlet	brief-fejlec modell ertekei
+strong	ertekkeszlet	zart ertekkeszlet: adat\kiejtes_heber_kivetelek.tsv.# Heber kiejtes-jelolt kezi felulbiralasok (S1.7, D36). Kulcs: strong. Séma: adat/SEMA.md 2.18.
+szotar	ertekkeszlet	zart ertekkeszlet: adat\forditasok.tsv.# Forditasi gyorsitotar. Kulcs: szotar+strong+entry_id+jelentes_szam+mezo. Sema: adat/SEMA.md 2.14
+tanulmany	ertekkeszlet	zart ertekkeszlet: adat\kulcsszavak.tsv.# Atmeneti tabla, study->adat atjaro. Kulcs: tanulmany + igehely + strong. Sema: adat/SEMA.md 2.8
+tematikus	ertekkeszlet	zart ertekkeszlet: adat\datasetek.tsv.# Dataset-matrix — ATALAKITASI_TERV.md.md 4.3. Kezzel karbantartott policy-tabla.
+nevet	ketertelmu	nevet/nevét: az ekezetlen alak is helyes magyar szo (nevet ige)
+tokennel	ketertelmu	tokennel/tokennél: az ekezetlen alak helyes (token+nel)
+szamkiosztas	rovidites	a szamkiosztas GitHub Action neve (CLAUDE.md, FELADATOK #50)
+bir	rovidites	igehely-rovidites (Bir = Bírák, F22.Bir)
