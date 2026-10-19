@@ -63,7 +63,7 @@ Minden motívum ciklusára, kivétel nélkül:
 ## 2c. A lexikai törzs helye a két lépésben (CLAUDE.md, hét lépés; felhasználói kérés, 2026-10-19, az orkesztrátor kidolgozásában)
 
 - **Adat-előkészítés (1. lépés):** a determinisztikus lépések: 1. gerinc-metszet, 3. teljes ÓSZ/ÚSZ scan, 4. kollokáció, 5. igealak-ellenőrzés, 6. LXX-híd. CLI-ből futnak; a `lexikai-scan` subagent is futtathatja őket.
-- **Értelmező menet (2. lépés):** a 2. lépés, a szemantikai mező-hipotézis, mert ez az egyetlen generatív lépés; ide tartozik a jelöltek elbírálása is (a `jeloltek.tsv` döntése, `gerinc_elem`, kizárás a negatív kritérium szerint).
+- **Értelmező menet (2. lépés):** a 2. lépés, a szemantikai mező-hipotézis (B3/P2), mert ez az egyetlen generatív lépés; ide tartozik a jelöltek elbírálása is (a `jeloltek.tsv` döntése, `gerinc_elem`, kizárás a negatív kritérium szerint). A B3/P2 **Opus, a Code-sessionben, a fő szálon**, a `lekerdez.py` futtatásával: a modell a lekérdezések valódi eredményén gondolkodik, nem összefoglalón. Subagentre nem adható, chatbe nem kerülhet.
 - **A 7. lépés** (nevesített tanító) egyik menetnek sem része: önálló menet, saját fájllal (`tanito-kereso`; az X.M7 csak a meglévő saját fájlra hivatkozik).
 
 **A migráció szétválasztás, nem új kutatás.** A motívumok törzse már levezetett (`adat/motivumok.tsv`, `adat/elofordulasok.tsv` `gerinc_elem`), és a #108 a mai TAHOT-on újrafuttatta a scant (`naplok/F108_ujrascan_elteresek.tsv`, `naplok/F108_MOTIVUM_UJRASCAN_naplo.md`). Ezért:
@@ -72,6 +72,13 @@ Minden motívum ciklusára, kivétel nélkül:
 - **⛔ ha az eltérés gerinc-elemet érint** (egy Strong be- vagy kikerül): tartalmi döntés, nem a migráció része; megállás, felhasználói döntés.
 
 A levezetés dokumentálása üres eredménynél is kötelező (CLAUDE.md, kutatási menet): az összevetés naplója az „eltérés nincs” esetben is elkészül, explicit jelöléssel.
+
+**A tengely: repón belül / kívül** (`ATALAKITASI_TERV.md.md` 5. szakasz; a `bun-gyuruzese-20260911-opus` menet azért lett jó, mert jobb adaton állt). A két lépés viszonya ezért:
+- a B4-es scanek (scan, kollokáció, igealak, LXX-híd) futhatnak subagenttel, de **a teljes kimenetük** — a proveniencia-sorokkal együtt, nem összefoglalóként — az értelmező menet elé kerül;
+- az értelmező menetben a `lekerdez.py` szabadon futtatható utánakérdezésre;
+- az adatlépés tehát gyorsít, de **nem szűri meg**, mit lát az értelmező.
+
+**Emberi döntés — az orkesztrátor sem hozhatja meg a felhasználó helyett:** a **P2 mezőválasztás** (`sablonok/4_PaRDeS_tematikus_sablon.md` P2: „a mező megválasztása emberi döntés”), a **B5 jelöltminősítés** és az **A4** (`MUNKAMENET.md`). A 2. lépcsőben ezek csak eltérésnél jönnek elő; ha előjönnek: **⛔, és a döntés a felhasználóé**.
 
 ## 3. Lépések (⛔ a kötelező megállások)
 
