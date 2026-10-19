@@ -43,11 +43,11 @@ from kozos import (
 # E20 (F37): a hianyzo kotelezo szakasz a tanulmany egeszere vonatkozik, nem
 # egy sorra -- a modositott tanulmanyfajlon mindig piros (F37 T3 "Futasi mod").
 FAJLSZINTU_SZABALYOK = {'E4', 'E5', 'E6', 'E7', 'E16', 'E19', 'E20', 'E25', 'E26', 'E27',
-                        'E28', 'E29'}
+                        'E28', 'E29', 'E31'}
 
 # Adattablan futo szabalyok: --teljes modban a futtat.py a ['__TELJES__']
 # jelzot adja nekik (az md-fajlok listaja helyett), kulonben nem futnanak.
-HATOKOR_SZABALYOK = {'E3', 'E19', 'E25', 'E28', 'E29'}
+HATOKOR_SZABALYOK = {'E3', 'E19', 'E25', 'E28', 'E29', 'E31'}
 
 SZINT = {
     'E2': 'HIBA', 'E3': 'HIBA', 'E4': 'HIBA', 'E5': 'HIBA', 'E6': 'HIBA',
@@ -55,6 +55,7 @@ SZINT = {
     'E12': 'FIGYELMEZTETES', 'E13': 'FIGYELMEZTETES', 'E14': 'FIGYELMEZTETES',
     'E15': 'FIGYELMEZTETES', 'E16': 'HIBA', 'E19': 'HIBA', 'E20': 'HIBA',
     'E25': 'FIGYELMEZTETES', 'E26': 'HIBA', 'E27': 'HIBA', 'E28': 'HIBA', 'E29': 'HIBA',
+    'E31': 'HIBA',
 }
 # F37 (E21 -> E13): tanulmanyfajlon az E13 HIBA (a fuggveny talalatonkent
 # allitja be; a futtat.py a talalat sajat szintjet veszi alapul).
@@ -2096,3 +2097,73 @@ def e29_kiadhato_kimenet_tisztasaga(fajlok):
 
 
 SZABALYOK_FUGGVENYEI['E29'] = e29_kiadhato_kimenet_tisztasaga
+
+
+# ---------------------------------------------------------------------------
+# E31 -- a `forras_tanulmany` letezo, reponbeli fajlra mutat (#11 S2, DT250)
+# ---------------------------------------------------------------------------
+# SEMA 2.2: az adat/elofordulasok.tsv `forras_tanulmany` mezoje repo-relativ
+# fajlut (a generalt visszamutato link forrasa, DT66 (a) 5.). Ures ertek
+# megengedett (nincs rogzitett forrastanulmany, nem negativ lelet), nem jelez.
+# A nem ures ertek HIBA, ha: szokoz a ket vegen; `\` elvalaszto; abszolut ut
+# vagy meghajto-elotag; ures, `.` vagy `..` utelem (igy a `./` elotag, a `//`
+# es a repobol kilepo ut is); vagy az ut nem letezo fajl. A letezes
+# kis-nagybetu-pontos (utelemenkent os.listdir), hogy a Windows-os futas
+# ugyanazt mondja, mint a CI Linuxa.
+# Az E30 szamot a #112 (F112_COMMIT_EKEZET_BRIEF.md, PR #427) foglalja, ezert
+# ez a kovetkezo szabad szam.
+# Fajlszintu (D8 nelkul) es mindig fut, a `fajlok` parametertol fuggetlenul:
+# egy tanulmanyfajl atnevezese vagy torlese akkor is pirosra forditja, ha a
+# tabla nem valtozott (CLAUDE.md: a hivatkozas ugyanabban a commitban frissul).
+
+E31_TABLA = 'adat/elofordulasok.tsv'
+E31_MEZO = 'forras_tanulmany'
+
+
+def _e31_ut_hiba(ertek):
+    """None, ha az `ertek` letezo, reponbeli fajl pontos repo-relativ utja;
+    kulonben a hiba rovid oka."""
+    if ertek != ertek.strip():
+        return 'szóköz az érték végén'
+    if '\\' in ertek:
+        return '`\\` elválasztó (a repó-relatív út `/`-rel tagolt)'
+    if ertek.startswith('/') or re.match(r'^[A-Za-z]:', ertek):
+        return 'abszolút út'
+    reszek = ertek.split('/')
+    if any(r in ('', '.', '..') for r in reszek):
+        return 'üres, `.` vagy `..` útelem (a repó-relatív út előtag és visszalépés nélküli)'
+    hely = ROOT
+    for r in reszek:
+        try:
+            tartalom = os.listdir(hely)
+        except (IOError, OSError):
+            return 'nem létező fájl'
+        if r not in tartalom:
+            return 'nem létező fájl'
+        hely = os.path.join(hely, r)
+    if not os.path.isfile(hely):
+        return 'nem fájl (könyvtár)'
+    return None
+
+
+def e31_forras_tanulmany_letezik(fajlok):
+    """E31: az adat/elofordulasok.tsv minden nem ures `forras_tanulmany`
+    erteke letezo, reponbeli fajlra mutat; az ures ertek nem jelez. HIBA,
+    fajlszintu; a `fajlok` parametert nem hasznalja."""
+    talalatok = []
+    ut = os.path.join(ROOT, *E31_TABLA.split('/'))
+    if not os.path.exists(ut):
+        return talalatok
+    for sorszam, d in dict_sorok_sorszammal(ut):
+        ertek = d.get(E31_MEZO, '')
+        if ertek == '':
+            continue
+        ok = _e31_ut_hiba(ertek)
+        if ok:
+            talalatok.append(Talalat(
+                'E31', SZINT['E31'], E31_TABLA, sorszam,
+                '%s | %s -- forras_tanulmany=%r: %s' % (d.get('id', ''), d.get('igehely', ''), ertek, ok)))
+    return talalatok
+
+
+SZABALYOK_FUGGVENYEI['E31'] = e31_forras_tanulmany_letezik

@@ -1404,5 +1404,79 @@ class E29Teszt(unittest.TestCase):
         self.assertIn('E29', SZ.SZABALYOK_FUGGVENYEI)
 
 
+# ---------------------------------------------------------------------------
+# E31 (#11 S2, DT250): a `forras_tanulmany` letezo, reponbeli fajlra mutat
+# ---------------------------------------------------------------------------
+
+_E31_FEJ = '# fejlec\nid\tigehely\tfelmerult_tanulmany\tforras_tanulmany\n'
+
+
+class E31Teszt(unittest.TestCase):
+    """E31: nem ures `forras_tanulmany` csak letezo, reponbeli fajlra mutathat;
+    az ures ertek nem jelez."""
+
+    def _fut(self, *ertekek, fajlok=('genezis/1Moz_3v7-24_bovitett.md',)):
+        with _IdeiglenesGyoker() as gy:
+            for relut in fajlok:
+                _ir(gy, relut, '# tanulmany\n')
+            sorok = ''.join('PROBA-001\t1Móz 3:%d\tx\t%s\n' % (i + 1, e) for i, e in enumerate(ertekek))
+            _ir(gy, 'adat/elofordulasok.tsv', _E31_FEJ + sorok)
+            return SZ.e31_forras_tanulmany_letezik(['__TELJES__'])
+
+    def test_pozitiv_letezo_fajl_es_ures_ertek_zold(self):
+        self.assertEqual(self._fut('genezis/1Moz_3v7-24_bovitett.md', ''), [])
+
+    def test_pozitiv_csak_ures_ertekek_zold(self):
+        self.assertEqual(self._fut('', '', fajlok=()), [])
+
+    def test_negativ_nem_letezo_fajl_hiba(self):
+        t = self._fut('genezis/1Moz_3v7-24_bovitett.md', 'genezis/nincs_ilyen.md')
+        self.assertEqual([(x.szabaly, x.szint, x.fajl, x.sor) for x in t],
+                         [('E31', 'HIBA', 'adat/elofordulasok.tsv', 4)])
+        self.assertIn('nem létező fájl', t[0].reszlet)
+
+    def test_negativ_csak_fajlnev_ut_nelkul_hiba(self):
+        t = self._fut('1Moz_3v7-24_bovitett.md')
+        self.assertEqual(len(t), 1)
+        self.assertIn('nem létező fájl', t[0].reszlet)
+
+    def test_negativ_kis_nagybetu_elteres_hiba(self):
+        t = self._fut('Genezis/1Moz_3v7-24_bovitett.md')
+        self.assertEqual(len(t), 1)
+        self.assertIn('nem létező fájl', t[0].reszlet)
+
+    def test_negativ_konyvtar_hiba(self):
+        t = self._fut('genezis')
+        self.assertEqual(len(t), 1)
+        self.assertIn('könyvtár', t[0].reszlet)
+
+    def test_negativ_reponbeliseg_es_alak(self):
+        rossz = ['./genezis/1Moz_3v7-24_bovitett.md', 'genezis/../genezis/1Moz_3v7-24_bovitett.md',
+                 '../kivul.md', '/genezis/1Moz_3v7-24_bovitett.md', 'C:/genezis/x.md',
+                 'genezis\\1Moz_3v7-24_bovitett.md', ' genezis/1Moz_3v7-24_bovitett.md',
+                 'genezis//1Moz_3v7-24_bovitett.md']
+        t = self._fut(*rossz)
+        self.assertEqual([x.sor for x in t], list(range(3, 3 + len(rossz))))
+        self.assertTrue(all(x.szint == 'HIBA' for x in t))
+
+    def test_tabla_nelkul_nulla_talalat(self):
+        with _IdeiglenesGyoker():
+            self.assertEqual(SZ.e31_forras_tanulmany_letezik(['__TELJES__']), [])
+
+    def test_oszlop_nelkuli_tabla_nem_jelez(self):
+        with _IdeiglenesGyoker() as gy:
+            _ir(gy, 'adat/elofordulasok.tsv', '# fejlec\nid\tigehely\nPROBA-001\t1Móz 3:1\n')
+            self.assertEqual(SZ.e31_forras_tanulmany_letezik(['__TELJES__']), [])
+
+    def test_szint_fajlszintu_hiba(self):
+        self.assertEqual(SZ.SZINT['E31'], 'HIBA')
+        self.assertIn('E31', SZ.FAJLSZINTU_SZABALYOK)
+        self.assertIn('E31', SZ.SZABALYOK_FUGGVENYEI)
+
+    def test_eles_tabla_zold(self):
+        # a repo mai tablaja (az S2.4 19 athozott sora) az E31-en zold
+        self.assertEqual(SZ.e31_forras_tanulmany_letezik(['__TELJES__']), [])
+
+
 if __name__ == '__main__':
     unittest.main()
