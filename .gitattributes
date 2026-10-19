@@ -14,3 +14,7 @@
 # A WSL-ben futó shell-szkriptek (pl. eszkozok/olvaso_szerver/indit.sh, telepit.sh): a CRLF-es munkafa-példányon a bash
 # "command not found" (CR a sor végén) hibával bukik (F100). Az LF itt kötelező.
 *.sh text eol=lf
+
+# A nyers forrás-JSON-ok (pl. konkordancia/lexikonok_nyers/DictBDB.json) bájtra a hash-elt alakban maradnak a munkafában is:
+# a bont.py a munkafa bájtjait hash-eli (F107, DT-F107i javítókör, ELLENOR_F107 2. ELTÉRÉS). Nem szöveg: nincs sorvég-konverzió.
+konkordancia/lexikonok_nyers/*.json -text

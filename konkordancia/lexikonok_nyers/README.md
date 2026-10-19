@@ -26,6 +26,19 @@ tartalmaznak licenc-jelzést. A modulok azonossága erősen valószínű, de nem
 bizonyított; egy saját, rögzített import az eredeti forrásból (Perseus,
 OpenScriptures) ezt a bizonytalanságot is megszüntetné (F6_BRIEF.md N5).
 
+## `DictBDB.json` — nem biblematedata-modul (F107, DT-F107a (x))
+
+*Bekerült: 2026.10.18.* Forrás: `eliranwong/unabridged-BDB-Hebrew-lexicon` @
+`6e8326c6884f8ef1399c7a365d660da9bb9e2d01`, `DictBDB.json`
+(`https://raw.githubusercontent.com/eliranwong/unabridged-BDB-Hebrew-lexicon/master/DictBDB.json`).
+SHA-256 `5d826c580a4dd06f54a53d1e19b5e8c354aab0180e200849e3148b89f370e33d`, git blob
+`9d6011ea9e3c61833be7a905d6d18e2363aaf37c`, 24 726 362 bájt (a hash az LF-es git-objektumra vonatkozik; l.
+`konkordancia/BDB_teljes_unabridged_README.md`, „Szerkezetvesztés a konverzióban”). Ez a
+`BDB_teljes_unabridged.tsv` nyers forrása (a `_convert_bdb.py` bájtra a K7-es TSV-t adja belőle). Licenc: az
+`adat/licencek.tsv` `BDB` sora (DT-F33g; DT-F107a (i)). A JSON nem SQLite: egy lista, `{top, def}` elemekkel
+(`DictInfo` + 8 090 `H…` kulcs, HTML a `def`-ben). A mellette álló `BDB.lexicon` licence tisztázatlan marad;
+a #107 csak azonosítóként és szerkezeti metaadatként használja (DT-F107a).
+
 ## Formátum
 
 Mind a 12 fájl SQLite 3.x adatbázis, egyetlen `Lexicon` táblával,

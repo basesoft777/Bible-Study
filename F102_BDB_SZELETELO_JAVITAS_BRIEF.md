@@ -86,6 +86,48 @@ hibákat hozhat, amelyeket a seed-101 nem mutat; (3) a kapu az új vak mintán (
 „Perfect3masculine” alakja a nyersben „Perfect 3 masculine” (szóközvesztés a TSV-láncban, mint M102/M117); az M162-nél a
 „Qal” név mindkét formázásból hiányzik, tehát az nem konverziós hiba.
 
+## 1c. Átadás a #107-ből (2026.10.18)
+
+*A #107 (BDB_JELOLT_SZOVEG) 8. lépése; a felhasználó döntése szerint (2026-10-18) egyeztetett eltérésként a #107 írja ezt a szakaszt —
+csak a törzset, a fejlécet nem. Forrás: `naplok/F107_BDB_JELOLT_SZOVEG_naplo.md` 4.8, 6.1; mérés: `eszkozok/bdb_jelolt/szerkezet_osszevet.py`
+(F107.29, `5aba58c9`).*
+
+**Elérhető (a #107 ágán, merge után a main-en):**
+- `adat/bdb_szakaszok.tsv` (SEMA 2.30) — a BDB minden szócikke (a `DictBDB.json` 8 090 Strongja) szakaszokra bontva a nyers forrás
+  jelölőiből (DT-F107a (c) hibrid: a szöveg és a tagolás a JSON-ból, a `bdb_id`, a szócikkhatár és a `section`/`remarks` a `BDB.lexicon`-ból,
+  csak metaadatként); oszlopok: `strong`, `bdb_id`, `sorszam`, `alszocikk`, `szakasz`, `resz`, `utvonal`, `jelolo`, `jel`, `gyakorisag`,
+  `szoveg`, `illesztes`, …; kulcs `strong` + `sorszam`.
+- `adat/bdb_forras_javitas.tsv` (SEMA 2.31) — a forráshibák javítótáblája: `pe_mem` (a JSON dagesses pe → mem hibája, 3 823 `javitva`),
+  `hivatkozas` (a TSV F34/F46 hivatkozás-javításai, 412), `kezi` (7 szerkezeti forráshiba, mindkét nyers forrásban igazolva).
+- Eszközök: `eszkozok/bdb_jelolt/bont.py` (bontó), `nezet_general.py` (sima szöveges nézet a táblából + javítótáblából),
+  `szerkezet_osszevet.py` (aranyminta / seed-101 / korpusz összevetés), `teszt_bont.py`.
+- **Az útvonal-formátum nincs kanonikus kulcsként befagyasztva** (DT190 🟡): `<törzs>[.<nagybetű>]/<szám>/<betű>[/<zárójeles>]`, a 2.28/2.29
+  formátumához igazítva, a #102 két bővítésével (nagybetűs csoport, zárójeles szint); a homonima-szakasz külön `szakasz`, a római fő tagolás
+  külön `resz` oszlop.
+
+**Mért számok a táblán (teljes / a `forras_hiba` csomópontok és helyek nélkül):**
+
+| mérce | teljes | `forras_hiba` nélkül |
+|---|---|---|
+| aranyminta (`adat/bdb_aranyminta.tsv`, 425 törzs / jelentés / alpont) | 411 / 425 (96,7%) | 411 / 416 (98,8%) |
+| seed-101 (a #99 13 szeletelő-hibájának helye) | 9 / 13 | 9 / 10 |
+| korpusz: a tábla útvonala ↔ a mai szeletelő (`adat/bdb_vers_jelentes.tsv`, 159 804 nem szűrt hivatkozás) | 136 538 (85,4%) | — |
+
+Seed-101 helyenként: egyezik M028, M031, M043, M140, M146, M203, M236, M238, M243; `forras_hiba` (a nyers forrásban igazolva, kézi sor a
+javítótáblában) M102 (H0559: a „Qal” és az „1” jelöletlen), M117 (H0539: a „Niph`al” és az „1.” jelöletlen), M162 (H3318: a „Qal” név
+hiányzik); nem egyezik M130 (H8478: a magányos „II.” `resz`-ként megvan, de az „1” a forrásban nem félkövér, és a seed várt helye a forrásból
+nem azonosítható egyértelműen). A korpusz-eltérés (14,6%) soronként nincs osztályozva (`szerkezet_osszevet.py --korpusz --lista N`).
+
+**JAVASLAT a hatókör szűkítésére (a #107 brief 8. lépése szerint; a felhasználó a `/befogad`-dal hagyja jóvá, addig a fenti 2. Hatókör
+érvényes):**
+- *A tábla által megszűnő (a táblán mérve kezelt) hibaosztályok:* a zárójeles és a gyakoriságszámos jelölő (M028, M043, M146, M243 — a
+  `<sub>` a `gyakorisag` oszlopban); a törzsfejléc „Hiph`il A./B.” (M031); a fő tagolás „II.” (M203); a jelöletlen alcímszó (M238, szócikkhatár);
+  a laza „2. a.” jelölő (M236); a fej-összefoglaló és a „1.a.” fej (M140); az útvonal-formátum (nagybetűs és zárójeles szint a táblában).
+- *Forrásban hibás, a javítótáblában kézi sorral (nem a szeletelő dolga):* az OCR-tapadás „263.1Say” (M102) és „1.carried” (M117), a hiányzó
+  „Qal” név (M162).
+- *Ami marad a #102-nek:* az igehely → szakasz hozzárendelés a táblán (a szeletelő átállása); az öröklés (az egyfejezetes könyv után); a
+  sigla-szűrés; az M130 (magányos „II.”); a korpusz-eltérések (14,6%) osztályozása; új vak mérés a táblán.
+
 ## 2. Hatókör
 
 **Benne (mérési alap: `naplok/BDB_SZELETELO_M2_seed101_iteletek.md`, a seed-100 ítéletei mellett):**
