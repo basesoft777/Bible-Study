@@ -21,7 +21,7 @@
 | 5 | Segítségül hívni az Úr nevét `[ID: ISTENTISZT-001]` | motivumok/ISTENTISZT-001.md;motivumlog/lexikon_pilot/ISTENTISZT-001_TUDOMANYOS.md | 1Móz 4:26 → 1Móz 12:8 → 1Móz 13:4 → 1Móz 21:33 → 1Móz 26:25 (5 fő előfordulás / 32 igehely-sor) |
 | 6 | Melkizedek — király-pap rendje, kenyér és bor `[ID: KIRALY-001]` | tematikus_lezart/Melkizedek_tematikus.md | 1Móz 14:18-20 (1 fő előfordulás / 9 igehely-sor) |
 | 7 | Isten fiai — Nefilim — Gibborim motívum-komplexum `[ID: MENNY-001]` | tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md | 1Móz 6:1-4 (1 fő előfordulás / 9 igehely-sor) |
-| 8 | Tehóm (תְּהוֹם) — Abüsszosz (ἄβυσσος): a mélység motívuma `[ID: TEREMT-001]` | tematikus_lezart/Tehom_tematikus.md | 1Móz 1:2 → 1Móz 7:11 → 1Móz 8:2 → 1Móz 49:25 → 2Móz 15:5,8 (5 fő előfordulás / 41 igehely-sor) |
+| 8 | Tehóm (תְּהוֹם) — Abüsszosz (ἄβυσσος): a mélység motívuma `[ID: TEREMT-001]` | tematikus_lezart/Tehom_tematikus.md | 1Móz 1:2 → 1Móz 7:11 → 1Móz 8:2 → 1Móz 49:25 → 2Móz 15:5,8 (5 fő előfordulás / 42 igehely-sor) |
 
 <!-- GENERÁLT-VÉGE: index -->
 

@@ -13,7 +13,7 @@
 - **Negatív kritérium** (motivumok.tsv): az igehelynek a תְּהוֹם gyököt kell tartalmaznia. **Teljesül**: a lexéma szó szerint áll a versben (a gerinc-elem H8415), nem csak tematikus vízkép.
 - **Hígulás-próba** (fölérendelt fogalom: vízi/kozmikus káosz-képzetek): a hely nem a fölérendelt fogalmon át tartozik ide, hanem lexikai alapon.
 - **Funkció** (CLAUDE.md, 3. kérdés): a Leviatán nyomában „megőszülő” mélység, hasonlat; költői-leíró funkció, rokon a Jób 38:16, 38:30 és Ez 31:4 helyekkel. Nem tér el a motívum többi helyétől, így a brief 4. lépésének ⛔-je nem él; DT-F109a nem keletkezett.
-- **Károli-szó:** „a tenger”. A Károli a tehómot tengernek fordítja (mint Zsolt 33:7 „hullámokat”, Zsolt 107:26 „fenékig”); a Károli-szóalak önmagában nem azonosítja a lexémát, a TAHOT igen. Azonosítás módja: `tartalom-alapú` (a Károli-szöveg olvasásával, nem #22 gépi párosításból), megbízhatóság `magas`.
+- **Károli-szó:** „a tenger”. A Károli a tehómot tengernek fordítja (mint Zsolt 33:7 „hullámokat”, Zsolt 107:26 „fenékig”); a Károli-szóalak önmagában nem azonosítja a lexémát, a TAHOT igen. Azonosítás módja: `tartalom-alapú` (a Károli-szöveg olvasásával, nem #22 gépi párosításból), megbízhatóság `közepes` (a Zsolt 33:7 és 107:26 precedenssel egyezően: a Károli-szó nem a lexémát tükrözi).
 
 ## Döntés
 `beépítve`. Írás:
