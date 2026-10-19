@@ -12,7 +12,7 @@ kovetkezo: /kovetkezo
 olvas: [adat/motivumok.tsv, adat/jeloltek.tsv, adat/elofordulasok.tsv, adat/SEMA.md, adat/grammatikai_strongok.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, naplok/F108_ujrascan_elteresek.tsv, naplok/F108_MOTIVUM_UJRASCAN_naplo.md, eszkozok/lekerdez.py, eszkozok/jelolt.py]
 ir: [adat/jeloltek.tsv]
 fugg: []
-nem_fugg: [9, 11, 55, 86]
+nem_fugg: [9, 11, 55, 86, 123]
 ---
 
 # F110_SZURO_PILOT_ISTENTISZT_BRIEF.md — Szűrő-szabály a tág gerinc-Strongokra, pilot az ISTENTISZT-001-en
