@@ -46,7 +46,7 @@ A szabályszöveg bekerült a parancsfájlokba (l. 1. szakasz); a `befogad.md` �
 
 ## 4. Ellenőrzés
 
-A futtatás a HEAD-en történt (`b8dacb58`, az F50.7 commit); a parancsfájlok más lépései változatlanok (l. a 3. szakaszt).
+Az 1. pont futtatása a HEAD-en történt (`b8dacb58`, az F50.7 commit), a zárás előtt a HEAD-en (`4b1cabd5`, az F50.10 commit) újrafutott: `141 brief, 0 hiba, 0 figyelmeztetés`, exit-kód 0 (`scope=feladatok.py ellenoriz, HEAD 4b1cabd5 | forras=helyi futtatás | ts=2026-10-19`); a parancsfájlok más lépései változatlanok (l. a 3. szakaszt).
 
 1. `python eszkozok/feladatok.py ellenoriz` (`scope=feladatok.py ellenoriz, HEAD b8dacb58 | forras=helyi futtatás | ts=2026-10-19`), exit-kód 0:
 
@@ -54,7 +54,7 @@ A futtatás a HEAD-en történt (`b8dacb58`, az F50.7 commit); a parancsfájlok 
 141 brief, 0 hiba, 0 figyelmeztetés
 ```
 
-2. A CI-ellenőrző a változott fájlokra, a CI merge-base alapját utánozva: `python eszkozok/ellenorzes/futtat.py --valtozott .claude/commands/befogad.md .claude/commands/kovetkezo.md DONTESEK.md F50_CI_JAVITO_KOR_BRIEF.md naplok/CI_JAVITO_KOR_naplo.md naplok/ELLENOR_F50.md naplok/ELLENOR_F50_2.md --diff-alap 1a6a6eef --diff-fej HEAD --esemeny pull_request` (`scope=futtat.py --valtozott, 7 fájl, 1a6a6eef..HEAD | forras=helyi futtatás | ts=2026-10-19`), exit-kód 0. Szabályonkénti találat: E2–E16, E19, E20, E26, E29: 0; E28: nem futott (nincs érintett fájl); **E25: 4 (JELENTES)**; **E27: 42 (JELENTES)**. A teljes találatlista (`--minta 1000`) fájlonkénti bontása: `CLAUDE.md` 1, `MUNKAMENET.md` 2, `FELADATOK.md` 5, `NYITOTT_FELADATOK.md` 36, `F10_LEXIKON_LEZARAS_BRIEF.md` 1, `F46_BDB_KONYVFELOLDAS_BRIEF.md` 1 (összesen 46 = 4 + 42). Mind a hat fájl **változatlan** a diffben, tehát az E25/E27 találatok nem e javítókör fájljaiban állnak (E25: D34 átmeneti jelölés; E27: nem létező távoli ágra mutató hivatkozások); a hét változott fájlban egyetlen találat sincs.
+2. A CI-ellenőrző a változott fájlokra, a CI merge-base alapját utánozva: `python eszkozok/ellenorzes/futtat.py --valtozott .claude/commands/befogad.md .claude/commands/kovetkezo.md DONTESEK.md F50_CI_JAVITO_KOR_BRIEF.md naplok/CI_JAVITO_KOR_naplo.md naplok/ELLENOR_F50.md naplok/ELLENOR_F50_2.md --diff-alap 1a6a6eef --diff-fej HEAD --esemeny pull_request` (`scope=futtat.py --valtozott, 7 fájl, 1a6a6eef..HEAD | forras=helyi futtatás | ts=2026-10-19`), exit-kód 0. Szabályonkénti találat: E2–E16, E19, E20, E26, E29: 0; E28: nem futott (nincs érintett fájl); **E25: 4 (JELENTES)**; **E27: 42 (JELENTES)**. A teljes találatlista (`--minta 1000`) fájlonkénti bontása: `CLAUDE.md` 1, `MUNKAMENET.md` 2, `FELADATOK.md` 5, `NYITOTT_FELADATOK.md` 36, `F10_LEXIKON_LEZARAS_BRIEF.md` 1, `F46_BDB_KONYVFELOLDAS_BRIEF.md` 1 (összesen 46 = 4 + 42). Mind a hat fájl **változatlan** a diffben, tehát az E25/E27 találatok nem e javítókör fájljaiban állnak (mért jelleg, `futtat.py … --minta 1000`, `scope=futtat.py --valtozott, 8 fájl, 1a6a6eef..HEAD | forras=helyi futtatás | ts=2026-10-19`, exit-kód 0: E25: 3 találat az `F26_EGYFORRAS_NAPLO_BRIEF.md#…` hivatkozásra, 1 a `DONTESEK.md#DT74`-re; E27: 3 találat „nem létezik a távoli repóban” (ághivatkozás), 39 egyéb „nem létezik” (commit, fájl vagy könyvtár, `olvas`-mezős hivatkozás)); a hét változott fájlban egyetlen találat sincs.
 
 ## 5. Az ELLENOR_F50 két eltérésének javítása
 
