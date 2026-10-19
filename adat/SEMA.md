@@ -212,6 +212,7 @@ study táblázatába).
 | `igazolas` | `IGAZOLAS` | ✔ | Megerősítette-e lekérdezés ezt a sort. L. 1.8. |
 | `fo_elofordulas` | szabad szöveg — **csoportkulcs, nem igen/nem** | | A naplóban (`PaRDeS_motivumok.md`) megnevezett "fő előfordulás" saját szövege, szó szerint (pl. `2Móz 15:5,8`, `1Móz 6:1-4`). Üres, ha a sor nem tartozik fő előforduláshoz. L. 2.2.3. |
 | `felmerult_tanulmany` | szabad szöveg | | A study 1. pontja "PaRDeS-szint, ahol felmerült" oszlopának a szint utáni része, szó szerint. Üres, ha a study táblázata nem tartalmaz ilyen oszlopot, vagy a sor csak a szintet ismétli. |
+| `forras_tanulmany` | repó-relatív fájlút | | A tanulmányfájl, amelyben a sor lelete felmerült (pl. `genezis/1Moz_3v7-24_bovitett.md`): a generált visszamutató link forrása (DT66 (a) 5., DT250). Az utolsó oszlop (a DT183 mintájára, #11 S2). Csak létező, repón belüli fájlra mutathat, előtag (`./`) és visszalépés (`..`) nélkül, `/` elválasztóval. Üres érték: nincs rögzített forrástanulmány, **nem negatív lelet**; üres sor nem tölthető ki asszociatív alapon. A `felmerult_tanulmany` szabad szöveg marad, mellette változatlan. |
 
 #### 2.2.1 A `gerinc_elem` mező — miért kötelező
 
