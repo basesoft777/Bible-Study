@@ -1,3 +1,4 @@
+<!-- ARCHÍV: lexikon/ISTENTISZT-001_TORZSCIKK.md @ 300ce93e · F11 M5 · 2026-10-19 · nem forrás, nem szerkesztendő -->
 # ISTENTISZT-001 — Segítségül hívni az Úr nevét
 
 *Kereszthivatkozási törzscikk — ugyanannak a tartalomnak az olvasói nézete, mint a [tudományos lexikonoldal](ISTENTISZT-001_TUDOMANYOS.md).*
