@@ -76,3 +76,5 @@ A régi `tematikus_lezart/Segitsegul_hivni_az_Urat_*.md` két fájl már nem lé
 **M1 ítéletek** (`naplok/ZSOLTAR_UJRAELLENORZES_helyek.tsv`, `itelet_M1` oszlop): **módosul 4** (Z01, Z02: javítva, F55.5; Z04, Z05: audit-nyom, az új sor az M2-ben), **megáll 2** (Z03: jelölve, F55.5; Z06: nem írva), **visszavonandó 0**, nem érintett 9 csoport. Minősítés-, jelölt- vagy ★-változás nincs, `DONTESEK.md`-tétel ezért nem kell.
 
 **Hátra:** az M2 (az `adat/auditok.tsv` új `lxx-hid` sorai: Zsolt 80:6, 80:7 `--naplo TEREMT-002 --lepes B4`; Zsolt 14:1, 53:2 `--naplo HAMART-001`) a PR #420 merge-e után; utána az M3.
+
+*F55.8 (2026-10-19): a Bun-tanulmány F55-jelölése a `modszertan` rés elé került (a 6. pont címe alá), mert a résen belül az E1 11. szabálya (rés-forrás egyezés) a #36 újragenerálásáig bukott. A tartalom változatlan.*

@@ -275,12 +275,12 @@ A válaszok a tanulmány saját Peshat/Remez/Drash/Sod megállapításaiból vez
 
 ## 6. Napló-frissítés
 
+【NAPLO: F55 (DT-F55b), 2026-10-19 — az alábbi „STEPBible-ellenőrizve” bekezdéshez: a régi `LXX_kivonat_Zsoltarok.tsv` a feliratos zsoltárokban egy verssel eltolt volt (a #42 kivezette); a Zsolt 14:1 és 53:2 LXX-egyeztetése az `LXX_OS`-en megismételve: LXX 13:1 διέφθειραν (G1311), LXX 52:2 διεφθάρησαν (G1311) — az állítás megáll. Proveniencia: scope=range:Zsolt 14:1 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=27 | ts=2026-10-19T10:09Z; scope=range:Zsolt 53:2 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=17 | ts=2026-10-19T10:09Z】
+
 <!-- RÉS-KEZDET: modszertan -->
 A `PaRDeS_motivumok.md` naplóban a motívum **✅ LEZÁRVA** jelölést kapott, `Bun_kovetkezmenyeinek_gyuruzese_tematikus.md` forrásfájllal, és átkerült az aktív ⭐ ajánlások közül a lezárt motívumok közé.
 
 🔍 **STEPBible-ellenőrizve:** H0779, H0127, H6093, H2403, H2555, H7843, H7451, H7043, H4390, H8085 — teljes ószövetségi előfordulás-scan, versen belüli együttállás-vizsgálattal (H4390+H2555 és H8085+H2555 kollokáció); G1944, G2671, G2672, G1311, G5351, G5356, G0093 — teljes újszövetségi előfordulás-scan; LXX-egyeztetés 1Móz 3:14,17,18; 4:11; 6:11-13,17; 9:25; 5Móz 21:23; 27:26; Zsolt 14:1; 53:2 igehelyeken. Forrás: `TAHOT_kivonat.tsv`, `TAGNT_kivonat.tsv`, `LXX_kivonat_Genezis.tsv`, `LXX_kivonat_Deuteronomium.tsv`, `LXX_kivonat_Zsoltarok.tsv`. Dátum: 2026.09.11.
-
-【NAPLO: F55 (DT-F55b), 2026-10-19 — a régi `LXX_kivonat_Zsoltarok.tsv` a feliratos zsoltárokban egy verssel eltolt volt (a #42 kivezette); a Zsolt 14:1 és 53:2 LXX-egyeztetése az `LXX_OS`-en megismételve: LXX 13:1 διέφθειραν (G1311), LXX 52:2 διεφθάρησαν (G1311) — az állítás megáll. Proveniencia: scope=range:Zsolt 14:1 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=27 | ts=2026-10-19T10:09Z; scope=range:Zsolt 53:2 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=17 | ts=2026-10-19T10:09Z】
 
 ### Minőségi kapu (Quality Gate)
 
