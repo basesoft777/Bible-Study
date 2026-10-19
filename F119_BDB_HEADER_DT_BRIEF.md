@@ -6,7 +6,9 @@ tipus: feladat
 fazis: 1
 munka: adat
 modell: sonnet
-allapot: fut
+allapot: lezarva
+pr: 419
+lezarva_osszegzes: a fejléc-literálok DT166–DT179-re cserélve, a tábla 2. sora újragenerálva (ELTÉRÉS: Károli-hash, F117.3, elfogadva), test_bajtra_azonos zöld; PR #419 (draft), zárójelentés naplok/BDB_HEADER_DT_zaras.md
 ag: claude/f119-bdb-header-dt
 ad: az `adat/bdb_vers_jelentes.tsv` újragenerálva a javított generátorral (csak a 2. sor / a kód-hash változik), a `teszt_bdb_vers_jelentes.Ujrageneralas.test_bajtra_azonos` zöld a `python eszkozok/teszt_futtat.py` teljes futásán, más teszt eredménye nem változik
 kovetkezo: a /kovetkezo indítja
