@@ -307,16 +307,11 @@ A motívum közvetlenül érinti a pünkösdi/karizmatikus hangsúlyt a "segíts
 
 ## 5. Alkalmazás és tanítványság
 
-### A nevesített tanítói egyezés-keresés eredménye (öt lépéses módszertan szerint)
+### Nevesített tanítói egyezés
 
-**1. Motívum-kiemelés:** a legteológiailag súlyosabb csomópont — a segítségül hívás mint hitbeli, szóbeli cselekvés, amely üdvösséghez/szabaduláshoz vezet (Róm 10:9-10,13 vonal), illetve mint istentiszteleti szokás (genezisi vonal).
+A nevesített tanítói egyezés-keresés (7. lépés, B9) eredménye a saját fájljában áll: `motivumok/naplok/ISTENTISZT-001_tanitoi_kereses.md` (DT66 (a) 2., DT88 (a)).
 
-**2-4. Célzott keresés és forrás-ellenőrzés (jóváhagyott listából):**
-
-- **Kenneth Hagin — ✅ erős/közvetlen forrás.** Hagin *"Understanding Confession"* c. füzetében és *"Confession: Key to Unlocking Faith"* c. tanításában kifejezetten, dedikáltan a Róm 10:9-10 verspárra épül, amely lexikailag és teológiailag közvetlenül a 10:13 "segítségül hívás" csúcspontjához vezet. Hagin ebből a szövegből építi fel a "pozitív vallástétel" (positive confession) tanítását: a szóbeli megvallás ("Confess that you are saved" — "Valld meg, hogy megmenekültél") nem üres formula, hanem hitbeli cselekvés, amely a szívbeli hittel párosulva hozza el az üdvösséget. Ez dedikált, konkrétan erre az igeszakaszra szánt tanítás — ✅ jelölés indokolt.
-- **Derek Prince — ⚠️ részleges/beágyazott forrás.** A *"Deliverance and Demonology"* tanulmányvázlatban és a *"The Helmet of Hope"* prédikációban Prince kifejezetten idézi a "segítségül hívja az Úr nevét... megszabadul" formulát (Jóel 2:32 nyomán), de nem a genezisi/kánoni ív dedikált feldolgozásaként, hanem egy tágabb, szabadulás-szolgálati tanítás részeként alkalmazva — a névsegítségül-hívást mint a szabadulás feltételét mutatja be. Konkrét, idézhető forrás, de beágyazott jellegű — ⚠️ jelölés indokolt.
-- **Charles Capps — gap.** Nem került azonosításra megbízható, ellenőrizhető, konkrétan erre a motívumra (akár a genezisi, akár a Róm 10:13 vonalra) szánt Capps-forrás. Explicit hiányjelzés, nem pótolva gyengébb anyaggal.
-- **Kenneth Copeland, Oral Roberts, T. L. Osborn, Smith Wigglesworth és a lista többi tagja** — a célzott keresés nem hozott konkrétan erre a motívumra szabott, dedikált vagy akár beágyazott forrást; explicit hiányjelzés.
+【NAPLO: F11 M7, 2026-10-19 — a korábban itt álló, a régi tematikus tanulmányból bájtra átvitt tanítói eredmény (leképezési tábla T106–T109) szétválasztással (DT28, DT-F11l b) a fenti fájlba került, ott bájtra azonosan; a fájl fejlécének `Dátum` és `Modell` mezője `manual`.】
 
 **5. Alkalmazási kérdések** *(a tanulmány saját Peshat/Remez/Drash/Sod rétegeiből, kiegészítve a fenti nevesített forrásokkal)*:
 
