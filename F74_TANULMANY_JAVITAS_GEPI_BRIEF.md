@@ -33,7 +33,7 @@ olvassa”) itt a csere-diffre szűkül: a végrehajtó minden megérintett sort
 nincs; az a #75 dolga.
 
 **A #11-függés oka:** a #11 T1-e (PR #420, a main-en: bfd94bdb, 2026-10-19) a Tanulmány sablont v21-re írja át. A #74 v22-t ír rá,
-ezért a v21 után fut. A #11 2. lépcsője (`beerkezo/MIGRACIO_2_LEPCSO_BRIEF_TERVEZET.md`) a `genezis/`-t nem írja (#23 pilot-terv
+ezért a v21 után fut. A #11 2. lépcsője (`F123_MIGRACIO2_BRIEF.md`) a `genezis/`-t nem írja (#23 pilot-terv
 4.5), tehát a #74 arra nem vár. Ha a #11 1. lépcsője és a T1 lezárult, de a #11 egésze nem, a `fugg` a `nem_fugg`-gal felülírható
 (felhasználói döntés).
 

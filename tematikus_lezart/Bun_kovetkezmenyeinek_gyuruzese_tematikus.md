@@ -275,6 +275,8 @@ A válaszok a tanulmány saját Peshat/Remez/Drash/Sod megállapításaiból vez
 
 ## 6. Napló-frissítés
 
+【NAPLO: F55 (DT256), 2026-10-19 — az alábbi „STEPBible-ellenőrizve” bekezdéshez: a régi `LXX_kivonat_Zsoltarok.tsv` a feliratos zsoltárokban egy verssel eltolt volt (a #42 kivezette), és a 2026.09.11-i futás a régi kivonat „53:1” sorát nézte, amely a ma helyes 53:2 (LXX 52:2) görögje volt (a forrásnév történeti; DT260); a Zsolt 14:1 és 53:2 LXX-egyeztetése az `LXX_OS`-en megismételve: LXX 13:1 διέφθειραν (G1311), LXX 52:2 διεφθάρησαν (G1311) — az állítás megáll. Proveniencia: scope=range:Zsolt 14:1 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=27 | ts=2026-10-19T10:09Z; scope=range:Zsolt 53:2 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=17 | ts=2026-10-19T10:09Z】
+
 <!-- RÉS-KEZDET: modszertan -->
 A `PaRDeS_motivumok.md` naplóban a motívum **✅ LEZÁRVA** jelölést kapott, `Bun_kovetkezmenyeinek_gyuruzese_tematikus.md` forrásfájllal, és átkerült az aktív ⭐ ajánlások közül a lezárt motívumok közé.
 
