@@ -147,7 +147,7 @@ döntések, a kihagyott és naplózott tételek). `tanulmany_audit.py` teljes fu
   tanulmány oldalán történik (5. szabály). A `konkordancia/` olvasása lekérdezésen át történik (`lekerdez.py`), a nyers adat nem
   kerül a fő szál kontextusába.
 - Brief írásakor: a #11 a kézi `fugg`-ban nem áll, mert a #11 (1. és 2. lépcső) a `genezis/`-t nem írja (#23 pilot-terv 4.5,
-  `beerkezo/MIGRACIO_2_LEPCSO_BRIEF_TERVEZET.md` „Nincs benne”). A `feladatok.py fuggesek` a #11-et a Tanulmány sablonon át
+  `F123_MIGRACIO2_BRIEF.md` „Nincs benne”). A `feladatok.py fuggesek` a #11-et a Tanulmány sablonon át
   (`sablonok/2_`, a PR #420 v21-e) levezeti, és a #74-en át a #75 amúgy is a #11 után fut. A `nem_fugg: [109, 110, 112]` oka:
   a #75 az adattáblákat és a `futtat.py`-t csak olvassa, ellenőrzésre. A #109 és a #110 más igehelyek sorait írja, a #112 egy
   új CI-szabályt vesz fel.
