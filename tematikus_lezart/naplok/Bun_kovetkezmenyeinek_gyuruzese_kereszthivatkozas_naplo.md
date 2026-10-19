@@ -269,7 +269,7 @@ Ugyanerre a nyolc igehelyre mindössze öt sor:
 8/b. Kollokáció-vizsgálat az ÚSZ-ben: φθείρω-család (G5351/G1311/G5356/G2704) + G1093 (γῆ) azonos versben — `TAGNT_kivonat.tsv`
 9. LXX-egyeztetés: 1Móz 3:14,17,18; 4:11; 6:11-13,17; 9:25; 12:3 — `LXX_kivonat_Genezis.tsv`
 10. LXX-egyeztetés: 5Móz 21:23, 27:26 — `LXX_kivonat_Deuteronomium.tsv`
-11. LXX-egyeztetés: Zsolt 14:1, 53:2 — `LXX_kivonat_Zsoltarok.tsv` 【NAPLO: javítva, F55 (DT-F55b), 2026-10-19 — korábban „53:1” (a régi kivonat egy verssel eltolt sora, l. a 3/c táblát). Ellenőrzés az `LXX_OS`-en: LXX 13:1 διέφθειραν (G1311), LXX 52:2 διεφθάρησαν (G1311). Proveniencia: scope=range:Zsolt 14:1 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=27 | ts=2026-10-19T10:09Z; scope=range:Zsolt 53:2 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=17 | ts=2026-10-19T10:09Z】
+11. LXX-egyeztetés: Zsolt 14:1, 53:2 — `LXX_kivonat_Zsoltarok.tsv` 【NAPLO: javítva, F55 (DT-F55b), 2026-10-19 — korábban „53:1”: a 2026.09.11-i futás a régi kivonat „53:1” sorát nézte, amely a ma helyes 53:2 (LXX 52:2) görögje volt (a forrásnév történeti, l. a 3/c táblát; DT-F55f). Ellenőrzés az `LXX_OS`-en: LXX 13:1 διέφθειραν (G1311), LXX 52:2 διεφθάρησαν (G1311). Proveniencia: scope=range:Zsolt 14:1 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=27 | ts=2026-10-19T10:09Z; scope=range:Zsolt 53:2 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=17 | ts=2026-10-19T10:09Z】
 12. TSK-lekérdezés nyolc fő igehelyre, Votes-értékekkel — `TSK_kereszthivatkozasok.tsv`
 13. Károli-kereszthivatkozás ugyanezekre — `Karoli_kereszthivatkozasok.tsv`
 14. BDB-szócikk-kinyerés: H0779, H0127, H6093, H2403, H2555, H7843, H7043, H7451 — `BDB_teljes_unabridged.tsv`
