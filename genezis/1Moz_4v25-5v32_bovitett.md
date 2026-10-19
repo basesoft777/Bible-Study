@@ -231,4 +231,4 @@ Lásd a 3. pont ⚠️ alpontjait.
 
 ---
 
-**Kapcsolódó motívum-forrás:** 📎 Bővebben, a motívum kézi forrásában: `motivumok/ISTENTISZT-001.md`, „1. Előfordulások összegyűjtése” szakasz (Segítségül hívni az Úr nevét) — a 4:26-ban dokumentált "az Úr nevének segítségül hívása" motívum teljes kánoni ívét (Genezis → próféták → ApCsel/Róma) ez a szakasz dolgozza fel részletesen.
+**Kapcsolódó motívum-forrás:** 📎 Bővebben, a motívum kézi forrásában: `motivumok/ISTENTISZT-001.md`, „3. A PaRDeS keretrendszer — a motívum egészére alkalmazva” szakasz (Segítségül hívni az Úr nevét) — a 4:26-ban dokumentált "az Úr nevének segítségül hívása" motívum teljes kánoni ívét (Genezis → próféták → ApCsel/Róma) ez a szakasz dolgozza fel.
