@@ -1,4 +1,4 @@
-# proveniencia: scope=manual | forras=f22/valaszok/sonnet/3Jan.jsonl, f22/versmegfeleltetes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; az API (Batch)-futásnak nincs lekérdezés-időbélyege) | modell-kimenet, javaslat: nem lekérdezés-eredmény; minden link `alacsony` (egy modell, nincs egyezés); a strong a TAGNT-ből, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py
+# proveniencia: scope=manual | forras=f22/valaszok/sonnet/3Jan.jsonl, f22/valaszok/sonnet/3Jan_javito.jsonl, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; az API (Batch)-futásnak nincs lekérdezés-időbélyege) | modell-kimenet, javaslat: nem lekérdezés-eredmény; minden link `alacsony` (egy modell, nincs egyezés); a strong a TAGNT-ből, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py
 vers	hu_sorszam	hu_szo	er_sorszam	er_szo	strong	bizonyossag	forras
 3Ján 1:1	2	presbiter	2	πρεσβύτερος	G4245	alacsony	S
 3Ján 1:1	4	szeretett	5	ἀγαπητῷ	G0027	alacsony	S
@@ -217,3 +217,12 @@ vers	hu_sorszam	hu_szo	er_sorszam	er_szo	strong	bizonyossag	forras
 3Ján 1:14	8	szemtől	8	πρὸς	G4314	alacsony	S
 3Ján 1:14	9	szembe	9	στόμα	G4750	alacsony	S
 3Ján 1:14	10	beszélhetünk	10	λαλήσομεν.	G2980	alacsony	S
+3Ján 1:15	1	Békesség	1	εἰρήνη	G1515	alacsony	S
+3Ján 1:15	2	néked	2	σοι.	G4771	alacsony	S
+3Ján 1:15	3	Köszöntenek	3	ἀσπάζονταί	G0782	alacsony	S
+3Ján 1:15	4	téged	4	σε	G4771	alacsony	S
+3Ján 1:15	7	barátaid	6	φίλοι.	G5384	alacsony	S
+3Ján 1:15	8	Köszöntsd	7	ἀσπάζου	G0782	alacsony	S
+3Ján 1:15	10	barátainkat	9	φίλους	G5384	alacsony	S
+3Ján 1:15	11	név	11	ὄνομα.¶	G3686	alacsony	S
+3Ján 1:15	12	szerint	10	κατ᾽	G2596	alacsony	S

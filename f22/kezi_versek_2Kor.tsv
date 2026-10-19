@@ -1,0 +1,5 @@
+# F22 (2026.10.19, ELLENOR_F22_2KOR): a modell-válaszoktól függetlenül kezi állapotú Károli-versek (egyesit.py kezi_felulir);
+# ok: tokenszintű vershatár-eltérés: a Károli 2Kor 8:13 vége (14–22. szó) a TAGNT 8:14 1–11. tokenje; a versszintű megfeleltetés nem fedi, a link csak tévesen jönne (betoldás/fordítatlan).
+igehely	ok
+2Kor 8:13	tokenszintű vershatár-eltérés: a 8:13 14–22. szava ("e mostani időben a ti bőségtek pótolja amazoknak fogyatkozását") = TAGNT 2Kor 8:14 1–11. token; nyitott: N-F22e
+2Kor 8:14	tokenszintű vershatár-eltérés: a 8:14 1–11. eredeti tokenje a Károli 8:13 végének felel meg; nyitott: N-F22e

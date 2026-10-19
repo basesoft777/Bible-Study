@@ -1,11 +1,17 @@
-# GENERÁLT: eszkozok/karoli_strong/nem_tr_lista.py | scope=az ÚSZ-könyvek szavak-táblái (1Jan, 1Pet, 1Thessz, 1Tim, 2Jan, 2Pet, 2Thessz, 2Tim, 3Jan, Ef, Fil, Filem, Gal, Jak, Jud, Kol, Tit, Zsid) | forras=adat/karoli_strong/szavak_<könyv>.tsv + konkordancia/TAGNT_kivonat.tsv | ts=2026-10-12T10:56:12+00:00 | a párosított [nem TR] eredeti tokenek (a TR más alakot olvas, annak nincs sora a kivonatban); a link `alacsony`, a strong a kritikai szöveg alakjáé; D45 (a) | kézzel szerkeszteni tilos
+# GENERÁLT: eszkozok/karoli_strong/nem_tr_lista.py | scope=az ÚSZ-könyvek szavak-táblái (1Jan, 1Pet, 1Thessz, 1Tim, 2Jan, 2Kor, 2Pet, 2Thessz, 2Tim, 3Jan, Ef, Fil, Filem, Gal, Jak, Jud, Kol, Tit, Zsid) | forras=adat/karoli_strong/szavak_<könyv>.tsv + konkordancia/TAGNT_kivonat.tsv | ts=2026-10-19T15:41:38+00:00 | a párosított [nem TR] eredeti tokenek (a TR más alakot olvas, annak nincs sora a kivonatban); a link `alacsony`, a strong a kritikai szöveg alakjáé; D45 (a) | kézzel szerkeszteni tilos
 vers	er_sorszam	er_szo	strong	kritikai_kiadas	allapot	hu_sorszam	hu_szo
 1Ján 1:5	5	ἀγγελία	G0031	NA28+NA27+Tyn+SBL+WH+Treg+Byz+KJV	parositva	5	üzenet
+1Ján 2:13	16	Ἔγραψα	G1125	NA28+NA27+Tyn+SBL+WH+Treg	parositva	19	Írok
 1Pét 3:1	22	κερδηθήσονται,	G2770	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	22	megnyeressenek
 1Thessz 1:7	4	τύπον	G5179	NA28+NA27+Tyn+SBL+WH+Treg	parositva	3	példaképekké
 1Thessz 2:3	11	οὐδὲ	G3761	NA28+NA27+Tyn+SBL+WH+Treg	parositva	11,12	sem nem
 1Tim 2:14	8	ἐξαπατηθεῖσα	G1818	NA28+NA27+Tyn+SBL+WH+Treg	parositva	9	megcsalattatván
 1Tim 6:11	16	πραϋπαθίαν·	G6073	NA28+NA27+Tyn+SBL+WH+Treg	parositva	22	szelídséget
+2Kor 5:12	22	μὴ	G3361	NA28+NA27+Tyn+SBL+WH+Treg	parositva	23	nem
+2Kor 5:12	23	ἐν	G1722	NA28+NA27+Tyn+SBL+WH+Treg	parositva	24	szívből
+2Kor 10:13	3	οὐκ	G3756	NA28+NA27+Tyn+SBL+WH+Treg	parositva	3	nem
+2Kor 12:3	10	χωρὶς	G5565	NA28+NA27+SBL+WH+Treg	parositva	12	kívül
+2Kor 12:9	15	τελεῖται.	G5055	NA28+NA27+Tyn+SBL+WH+Treg	parositva	16,17	végeztetik el
 2Pét 2:21	13	ὑποστρέψαι	G5290	NA28+NA27+Tyn+SBL+WH+Treg	parositva	17	elpártoljanak
 2Pét 2:22	18	κυλισμὸν	G2946	NA28+NA27+Tyn+SBL+WH+Treg	parositva	20	fertőjébe
 Ef 3:6	15	Ἰησοῦ	G2424	NA28+NA27+Tyn+SBL+WH+Treg	parositva	18	Jézusban

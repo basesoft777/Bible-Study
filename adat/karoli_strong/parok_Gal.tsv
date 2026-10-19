@@ -1,4 +1,4 @@
-# proveniencia: scope=manual | forras=f22/valaszok/sonnet/Gal.jsonl, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; az API (Batch)-futásnak nincs lekérdezés-időbélyege) | modell-kimenet, javaslat: nem lekérdezés-eredmény; minden link `alacsony` (egy modell, nincs egyezés); a strong a TAGNT-ből, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py
+# proveniencia: scope=manual | forras=f22/valaszok/sonnet/Gal.jsonl, f22/valaszok/sonnet/Gal_javito.jsonl, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; az API (Batch)-futásnak nincs lekérdezés-időbélyege) | modell-kimenet, javaslat: nem lekérdezés-eredmény; minden link `alacsony` (egy modell, nincs egyezés); a strong a TAGNT-ből, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py
 vers	hu_sorszam	hu_szo	er_sorszam	er_szo	strong	bizonyossag	forras
 Gal 1:1	1	Pál	1	Παῦλος	G3972	alacsony	S
 Gal 1:1	2	apostol	2	ἀπόστολος	G0652	alacsony	S
@@ -680,6 +680,50 @@ Gal 2:18	8	fölépítem	7	οἰκοδομῶ,	G3618	alacsony	S
 Gal 2:18	9	önmagamat	9	ἐμαυτὸν	G1473	alacsony	S
 Gal 2:18	10	teszem	10	συνιστάνω·	G4921	alacsony	S
 Gal 2:18	11	bűnössé	8	παραβάτην	G3848	alacsony	S
+Gal 2:19	1	Mert	2	γὰρ	G1063	alacsony	S
+Gal 2:19	2	én	1	ἐγὼ	G1473	alacsony	S
+Gal 2:19	4	törvény	4	νόμου	G3551	alacsony	S
+Gal 2:19	5	által	3	διὰ	G1223	alacsony	S
+Gal 2:19	6	meghaltam	6	ἀπέθανον,	G0599	alacsony	S
+Gal 2:19	8	törvénynek	5	νόμῳ	G3551	alacsony	S
+Gal 2:19	9	hogy	7	ἵνα	G2443	alacsony	S
+Gal 2:19	10	Istennek	8	θεῷ	G2316	alacsony	S
+Gal 2:19	11	éljek	9	ζήσω.	G2198	alacsony	S
+Gal 2:20	1	Krisztussal	1	Χριστῷ	G5547	alacsony	S
+Gal 2:20	2	együtt	2	συνεσταύρωμαι·	G4957	alacsony	S
+Gal 2:20	3	megfeszíttettem	2	συνεσταύρωμαι·	G4957	alacsony	S
+Gal 2:20	4	Élek	3	ζῶ	G2198	alacsony	S
+Gal 2:20	5	pedig	4	δὲ	G1161	alacsony	S
+Gal 2:20	6	többé	5	οὐκέτι	G2089+G3756	alacsony	S
+Gal 2:20	7	nem	5	οὐκέτι	G2089+G3756	alacsony	S
+Gal 2:20	8	én	6	ἐγώ,	G1473	alacsony	S
+Gal 2:20	9	hanem	8	δὲ	G1161	alacsony	S
+Gal 2:20	10	él	7	ζῇ	G2198	alacsony	S
+Gal 2:20	11	bennem	9	ἐν	G1722	alacsony	S
+Gal 2:20	11	bennem	10	ἐμοὶ	G1473	alacsony	S
+Gal 2:20	13	Krisztus	11	Χριστός·	G5547	alacsony	S
+Gal 2:20	14	a	12	ὃ	G3739	alacsony	S
+Gal 2:20	15	mely	12	ὃ	G3739	alacsony	S
+Gal 2:20	17	pedig	13	δὲ	G1161	alacsony	S
+Gal 2:20	18	most	14	νῦν	G3568	alacsony	S
+Gal 2:20	19	testben	16	ἐν	G1722	alacsony	S
+Gal 2:20	19	testben	17	σαρκί,	G4561	alacsony	S
+Gal 2:20	20	élek	15	ζῶ	G2198	alacsony	S
+Gal 2:20	22	Isten	25	θεοῦ	G2316	alacsony	S
+Gal 2:20	23	Fiában	23	υἱοῦ	G5207	alacsony	S
+Gal 2:20	24	való	21	τῇ	G3588	alacsony	S
+Gal 2:20	25	hitben	18	ἐν	G1722	alacsony	S
+Gal 2:20	25	hitben	19	πίστει	G4102	alacsony	S
+Gal 2:20	26	élem	20	ζῶ	G2198	alacsony	S
+Gal 2:20	27	a	28	τοῦ	G3588	alacsony	S
+Gal 2:20	28	ki	28	τοῦ	G3588	alacsony	S
+Gal 2:20	29	szeretett	29	ἀγαπήσαντός	G0025	alacsony	S
+Gal 2:20	30	engem	30	με	G3165	alacsony	S
+Gal 2:20	31	és	31	καὶ	G2532	alacsony	S
+Gal 2:20	32	önmagát	33	ἑαυτὸν	G1438	alacsony	S
+Gal 2:20	33	adta	32	παραδόντος	G3860	alacsony	S
+Gal 2:20	34	érettem	34	ὑπὲρ	G5228	alacsony	S
+Gal 2:20	34	érettem	35	ἐμοῦ.	G1473	alacsony	S
 Gal 2:21	1	Nem	1	οὐκ	G3756	alacsony	S
 Gal 2:21	2	törlöm	2	ἀθετῶ	G0114	alacsony	S
 Gal 2:21	3	el	2	ἀθετῶ	G0114	alacsony	S
