@@ -1,3 +1,5 @@
 # F22 (N-F22c, 2026.10.12): a modell-válaszoktól függetlenül kezi állapotú Károli-versek (egyesit.py kezi_felulir);
 # ok: a nyers TAGNT [..]/{..} jelölésű sorai a TAGNT_kivonat.tsv-ből kimaradtak (naplok/F22_TAGNT_zarojeles_sorok.md).
 igehely	ok
+Fil 3:13	tokenszintű vershatár-eltérés (ELLENOR_F22_2KOR, N-F22e; F22_C_elokeszites.md 3.): a Károli-vers egy szakasza a szomszéd eredeti versben áll: a TAGNT 3:13 vége („ἓν δέ … ἐπεκτεινόμενος”) a Károli 3:14 elejének felel meg
+Fil 3:14	tokenszintű vershatár-eltérés (ELLENOR_F22_2KOR, N-F22e; F22_C_elokeszites.md 3.): a Károli-vers egy szakasza a szomszéd eredeti versben áll: a Károli 3:14 eleje („De egyet cselekszem … nékik dőlvén,”) = TAGNT 3:13 vége

@@ -1,28 +1,5 @@
 # proveniencia: scope=manual | forras=f22/valaszok/sonnet/Zsid.jsonl, f22/valaszok/sonnet/Zsid_javito.jsonl, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; az API (Batch)-futásnak nincs lekérdezés-időbélyege) | modell-kimenet, javaslat: nem lekérdezés-eredmény; minden link `alacsony` (egy modell, nincs egyezés); a strong a TAGNT-ből, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py
 vers	hu_sorszam	hu_szo	er_sorszam	er_szo	strong	bizonyossag	forras
-Zsid 1:1	1	Minekutána	7	λαλήσας	G2980	alacsony	S
-Zsid 1:1	3	Isten	6	θεὸς	G2316	alacsony	S
-Zsid 1:1	4	sok	1	Πολυμερῶς	G4181	alacsony	S
-Zsid 1:1	5	rendben	1	Πολυμερῶς	G4181	alacsony	S
-Zsid 1:1	6	és	2	καὶ	G2532	alacsony	S
-Zsid 1:1	7	sokféleképen	3	πολυτρόπως	G4187	alacsony	S
-Zsid 1:1	8	szólott	7	λαλήσας	G2980	alacsony	S
-Zsid 1:1	9	hajdan	4	πάλαι	G3819	alacsony	S
-Zsid 1:1	11	atyáknak	8	τοῖς	G3588	alacsony	S
-Zsid 1:1	11	atyáknak	9	πατράσιν	G3962	alacsony	S
-Zsid 1:1	13	próféták	12	προφήταις	G4396	alacsony	S
-Zsid 1:1	14	által	10	ἐν	G1722	alacsony	S
-Zsid 1:2	1	A	10	ὃν	G3739	alacsony	S
-Zsid 1:2	2	kit	10	ὃν	G3739	alacsony	S
-Zsid 1:2	3	tett	11	ἔθηκεν	G5087	alacsony	S
-Zsid 1:2	4	mindennek	13	πάντων,	G3956	alacsony	S
-Zsid 1:2	5	örökösévé	12	κληρονόμον	G2818	alacsony	S
-Zsid 1:2	6	a	15	οὗ	G3739	alacsony	S
-Zsid 1:2	7	ki	15	οὗ	G3739	alacsony	S
-Zsid 1:2	8	által	14	δι᾽	G1223	alacsony	S
-Zsid 1:2	10	világot	19	αἰῶνας,	G0165	alacsony	S
-Zsid 1:2	11	is	16	καὶ	G2532	alacsony	S
-Zsid 1:2	12	teremtette	17	ἐποίησεν	G4160	alacsony	S
 Zsid 1:3	1	A	1	ὃς	G3739	alacsony	S
 Zsid 1:3	2	ki	1	ὃς	G3739	alacsony	S
 Zsid 1:3	5	dicsőségének	5	δόξης	G1391	alacsony	S
