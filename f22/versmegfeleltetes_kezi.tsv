@@ -2,3 +2,5 @@
 # `torol`: a detektor Károli-igehelyű sorát törli; más típus: hozzáadja (és kiváltja az azonos Károli-igehelyű / azonos eredetijű nincs_karoli sort). Jóváhagyás: naplok/F22_versbeosztas_jovahagyas.md
 karoli	eredeti	tipus
 # F85.8: az adatsorok kivezetve (a TAHOT_kivonat Igehely-kulcsa az F85.6 óta Károli-kulcs); az eredeti sorok: naplok/F85_kivezetett_sorok.tsv
+	Róm 8:38	torol
+	Róm 8:39	nincs_karoli
