@@ -6,7 +6,8 @@ tipus: feladat
 fazis: folyamat
 munka: folyamat
 modell: sonnet
-allapot: nem_indult
+allapot: fut
+ag: claude/f112-commit-ekezet
 ad: E30 CI-szabály, amely a PR `base..head` commit-üzeneteiben figyelmeztet az ékezet nélkül írt magyar szavakra, mért hamis-pozitív aránnyal
 kovetkezo: a brief végrehajtása a `/kovetkezo`-val
 olvas: [eszkozok/ellenorzes/, .github/workflows/ellenorzes.yml, BRIEF_SABLON.md, adat/SEMA.md, GitHub_feltoltesi_workflow.md]
