@@ -36,7 +36,7 @@ Két további kötelezettség (felhasználói döntések, 2026-10-17):
 
 **Benne van:** S. séma-tétel (S1–S3) · M. az ISTENTISZT-001 migrációja (M1–M7) · T. a két sablon átírása · a visszaírás-számláló, a leképezési tábla, a diff-jelentés · a HAMART-001 kontroll.
 
-**Nincs benne:** a másik 6 motívum migrációja (2. lépcső: az 1. lépcső ⛔ jóváhagyása után külön lépésenként, D38; ha a keret kicsi, külön brief) · a `genezis/` tartalma (a #23 pilot-terv 4.5: nem íródik; kivétel a T3, DT-F11o (a): a három, az `ir`-ben fájlszinten felsorolt `genezis/` fájlban egy-egy 📎-sor hivatkozási célja kézzel javítva, a tartalom változatlan) · a TEREMT-002 és a sablon `v1` véglegesítése (#12) · az E28/E29 CI-szabályok implementációja (külön ág, D6) · a törzscikk-generálás kivezetése az összes motívumra (csak az ISTENTISZT-001 törzscikke törlődik) · a repó láthatósága (N-F23c).
+**Nincs benne:** a másik 6 motívum migrációja (2. lépcső: az 1. lépcső ⛔ jóváhagyása után külön lépésenként, D38; ha a keret kicsi, külön brief) · a `genezis/` tartalma (a #23 pilot-terv 4.5: nem íródik; kivétel a T3, DT-F11o (a): a három, az `ir`-ben fájlszinten felsorolt `genezis/` fájlban egy-egy 📎-sor hivatkozási célja és megnevezése kézzel javítva, a T3/3 sorából ezen felül egy szó („részletesen”, DT-F11p (1)) kikerült; más tartalom nem változott) · a TEREMT-002 és a sablon `v1` véglegesítése (#12) · az E28/E29 CI-szabályok implementációja (külön ág, D6) · a törzscikk-generálás kivezetése az összes motívumra (csak az ISTENTISZT-001 törzscikke törlődik) · a repó láthatósága (N-F23c).
 
 ## 3. Lépések (⛔ a kötelező megállások)
 
