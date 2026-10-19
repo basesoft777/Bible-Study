@@ -8,7 +8,7 @@ munka: ertelmezo
 modell: opus
 allapot: nem_indult
 ad: a 32 E8-találat (versformátum) 0 a régi tanulmányokban, a próza bájtra azonos az E8-sorokon kívül; a Tanulmány sablon nem hivatkozik az alap sablonra, az alap sablon archívumban
-kovetkezo: /kovetkezo (a #11 lezárása, ill. a PR #420 merge-e után: a sablon 2_ v21 az alap)
+kovetkezo: /kovetkezo (a #11 lezárása után; a PR #420 a main-en, bfd94bdb: a sablon 2_ v21 az alap)
 olvas: [naplok/TANULMANY_ELLENORZES_utofeladat.md, naplok/TANULMANY_AUDIT.md, eszkozok/ellenorzes/tanulmany_audit.py, eszkozok/ellenorzes/futtat.py, eszkozok/igazolas_migracio.py, sablonok/1_PaRDeS_alap_sablon.md, sablonok/2_PaRDeS_bovitett_sablon.md, sablonok/PaRDeS_gyorsreferencia.md, sablonok/Javasolt_sablon_kiegeszites_BDB_arnyalat.md, genezis/1Moz_10v1-11v32_bovitett.md, genezis/1Moz_12v1-20_bovitett.md, genezis/1Moz_13v1-18_bovitett.md, genezis/1Moz_15_bovitett.md, genezis/1Moz_16_bovitett.md, genezis/1Moz_1v1_bovitett.md, genezis/1Moz_1v2-2v3_bovitett.md, genezis/1Moz_2v4-7_bovitett.md, genezis/1Moz_2v8-25_bovitett.md, genezis/1Moz_3v1-6_bovitett.md, genezis/1Moz_3v7-24_bovitett.md, genezis/1Moz_4v1-24_bovitett.md, genezis/1Moz_4v25-5v32_bovitett.md]
 ir: [genezis/1Moz_10v1-11v32_bovitett.md, genezis/1Moz_12v1-20_bovitett.md, genezis/1Moz_13v1-18_bovitett.md, genezis/1Moz_15_bovitett.md, genezis/1Moz_16_bovitett.md, genezis/1Moz_1v1_bovitett.md, genezis/1Moz_1v2-2v3_bovitett.md, genezis/1Moz_2v4-7_bovitett.md, genezis/1Moz_2v8-25_bovitett.md, genezis/1Moz_3v1-6_bovitett.md, genezis/1Moz_3v7-24_bovitett.md, genezis/1Moz_4v1-24_bovitett.md, genezis/1Moz_4v25-5v32_bovitett.md, sablonok/1_PaRDeS_alap_sablon.md, sablonok/2_PaRDeS_bovitett_sablon.md, sablonok/PaRDeS_gyorsreferencia.md, archivum/sablonok/1_PaRDeS_alap_sablon.md, eszkozok/f74_e8_csere.py]
 fugg: [11, 37]
@@ -32,7 +32,7 @@ feladat `ertelmezo`-ként kezelendő (nem csomagolható). A próza tartalmát a 
 olvassa”) itt a csere-diffre szűkül: a végrehajtó minden megérintett sort a teljes bekezdésével együtt olvas. Tartalmi javítás
 nincs; az a #75 dolga.
 
-**A #11-függés oka:** a #11 T1-e (PR #420, a brief írásakor nincs mergelve) a Tanulmány sablont v21-re írja át. A #74 v22-t ír rá,
+**A #11-függés oka:** a #11 T1-e (PR #420, a main-en: bfd94bdb, 2026-10-19) a Tanulmány sablont v21-re írja át. A #74 v22-t ír rá,
 ezért a v21 után fut. A #11 2. lépcsője (`beerkezo/MIGRACIO_2_LEPCSO_BRIEF_TERVEZET.md`) a `genezis/`-t nem írja (#23 pilot-terv
 4.5), tehát a #74 arra nem vár. Ha a #11 1. lépcsője és a T1 lezárult, de a #11 egésze nem, a `fugg` a `nem_fugg`-gal felülírható
 (felhasználói döntés).

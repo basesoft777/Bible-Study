@@ -8,7 +8,7 @@
 - Független ellenőrzés: `naplok/ELLENOR_F23_3.md` (ELTÉRÉS, 8; javítva D9–D11), `_4.md` (ELTÉRÉS, 1 alacsony; javítva), `_5.md` (ELTÉRÉS, 5; javítva D15). A D15 utáni újraellenőrzés a lezárással együtt futott: `_6.md` (ELTÉRÉS, 4; javítva F23.Z3–Z4); a lezárás a felhasználó döntése.
 - Ellenőrzés (#370): `feladatok.py ellenoriz` 0 hiba; `ellenorzes/futtat.py` diff-módban HIBA 0. K4: tartalmi fájl (`tematikus_lezart/`, `motivumok/`, `lexikon/`, `genezis/`, `general.py`, `adat/*.tsv`) nem változott.
 - Ellenőrzés (F23.Z): `feladatok.py ellenoriz` 128 brief, 0 hiba; `ellenorzes/futtat.py` diff-módban, a commit-üzenetekkel: HIBA 0 (az E5 a „Folytatási pont” címsor cseréjét a Z2 jelölésével fogadja).
-- Nyitott tételek gazdája (`NYITOTT_FELADATOK.md`): N-F23a → #11 (DT-F11b, a T3 előtt); N-F23b → gazda nincs (érintett: a #86 3.3, a tervezett feed-építő, és az E29 implementációja; a #86 briefje nem veszi fel); N-F23c → gazda nincs (a #11 kizárja, a #86 briefje nem veszi fel). A két gazda kijelölése felhasználói döntés. Végső ellenőrzés: `naplok/ELLENOR_F23_6.md` (ELTÉRÉS, 4; javítva F23.Z3–Z4), `naplok/ELLENOR_F23_7.md` (ELTÉRÉS, 5; javítva F23.Z4–Z5).
+- Nyitott tételek gazdája (`NYITOTT_FELADATOK.md`): N-F23a → #11 (DT250, a T3 előtt); N-F23b → gazda nincs (érintett: a #86 3.3, a tervezett feed-építő, és az E29 implementációja; a #86 briefje nem veszi fel); N-F23c → gazda nincs (a #11 kizárja, a #86 briefje nem veszi fel). A két gazda kijelölése felhasználói döntés. Végső ellenőrzés: `naplok/ELLENOR_F23_6.md` (ELTÉRÉS, 4; javítva F23.Z3–Z4), `naplok/ELLENOR_F23_7.md` (ELTÉRÉS, 5; javítva F23.Z4–Z5).
 
 ## Átadás a #11-nek
 
