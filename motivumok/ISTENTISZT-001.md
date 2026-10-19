@@ -303,7 +303,7 @@ szakasz a lexikon-oldalon marad.
 
 ## 4. Kapcsolódás a kutatási sablonhoz
 
-A motívum közvetlenül érinti a pünkösdi/karizmatikus hangsúlyt a "segítségül hívás mint hitbeli cselekvés" témában — ez az 5. pontban, a nevesített tanítói alkalmazásban kerül kifejtésre, nem itt duplikálva.
+A motívum közvetlenül érinti a pünkösdi/karizmatikus hangsúlyt a "segítségül hívás mint hitbeli cselekvés" témában — ez az 5. pontban (az alkalmazási kérdésekben) kerül kifejtésre; a nevesített tanítói egyezés a saját fájljában áll (`motivumok/naplok/ISTENTISZT-001_tanitoi_kereses.md`), nem itt duplikálva.
 
 ## 5. Alkalmazás és tanítványság
 
@@ -313,7 +313,7 @@ A nevesített tanítói egyezés-keresés (7. lépés, B9) eredménye a saját f
 
 【NAPLO: F11 M7, 2026-10-19 — a korábban itt álló, a régi tematikus tanulmányból bájtra átvitt tanítói eredmény (leképezési tábla T106–T109) szétválasztással (DT28, DT-F11l b) a fenti fájlba került, ott bájtra azonosan; a fájl fejlécének `Dátum` és `Modell` mezője `manual`.】
 
-**5. Alkalmazási kérdések** *(a tanulmány saját Peshat/Remez/Drash/Sod rétegeiből, kiegészítve a fenti nevesített forrásokkal)*:
+**Alkalmazási kérdések** *(a tanulmány saját Peshat/Remez/Drash/Sod rétegeiből, kiegészítve a saját fájlban nevesített tanítói forrásokkal: Hagin ✅ erős/közvetlen, Derek Prince ⚠️ részleges/beágyazott)*:
 
 1. *Mit jelent ez a mai hívő mindennapi életében?* A segítségül hívás — Hagin tanítása szerint — nem passzív érzés, hanem tudatos, szóbeli hitbeli cselekvés; a genezisi pátriárkák pedig azt mutatják, hogy ez egy visszatérő, helyhez köthető, akár nemzedékről nemzedékre átadható gyakorlattá is válhat.
 2. *Milyen konkrét lépést, döntést vagy szokásváltozást von maga után?* Ábrahám és Izsák mintája szerint: a segítségül hívás nem egyszeri esemény, hanem tudatosan felkeresett/fenntartott gyakorlat — érdemes "saját Beérsebát" (állandó imádati pontot/szokást) kialakítani.
