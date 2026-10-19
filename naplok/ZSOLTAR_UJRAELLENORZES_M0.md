@@ -68,3 +68,11 @@ A régi `tematikus_lezart/Segitsegul_hivni_az_Urat_*.md` két fájl már nem lé
 - A `Konnyu_ellenorzes_4_lezart_tanulmany.md` (28–29., 47–48., 197., 228., 321. sor) a Zsolt 42:8-at és 88:11-et „NEM ELLENŐRIZHETŐ — KONKORDANCIA-RÉS” jelöléssel viszi. Ez a régi TAHOT-hiányra utal, nem LXX-állítás. A TAHOT ma fejezetszinten teljes (F85), tehát az állítás elavult. Lehetséges új feladat a `/befogad` útján.
 - A szülő session háttér-szövege a „TAHOT F85 előtti kulcsairól” beszél. A brief tárgya viszont a régi **LXX**-kivonat. Az F85 átkulcsolása a Zsoltárok Károli–Strong táblapárját nem változtatta (`naplok/F85_jelentes.md` 192. sor: a régi és az új pipeline a Zsoltárokra azonos). Egyetlen `bizonytalan` zsoltársor maradt: Zsolt 77:11 (39. sor). TAHOT-irányú bővítést ezért nem javaslok.
 - A generált oldalak (`lexikon/HAMART-001_*`: Zsolt 53:2 / LXX 52:2, `LXX_OS`) már a helyes adatot mutatják. A #36-ra várnak, a #55 nem írja őket.
+
+## 6. A ⛔ döntései és az M1 (2026-10-19)
+
+**Döntés** (orkesztrátor, a felhasználó felhatalmazásával): DT-F55a (az `ir`-ből kikerül a két Segitsegul-út), DT-F55b (csere `【NAPLO: … javítva, F55】` jelöléssel, a régi szám látható), DT-F55c (az M2 audit-sorai a PR #420 merge-e után). A `Konnyu_ellenorzes_4_…` elavult TAHOT-állításai: N-F55a (`NYITOTT_FELADATOK.md`).
+
+**M1 ítéletek** (`naplok/ZSOLTAR_UJRAELLENORZES_helyek.tsv`, `itelet_M1` oszlop): **módosul 4** (Z01, Z02: javítva, F55.5; Z04, Z05: audit-nyom, az új sor az M2-ben), **megáll 2** (Z03: jelölve, F55.5; Z06: nem írva), **visszavonandó 0**, nem érintett 9 csoport. Minősítés-, jelölt- vagy ★-változás nincs, `DONTESEK.md`-tétel ezért nem kell.
+
+**Hátra:** az M2 (az `adat/auditok.tsv` új `lxx-hid` sorai: Zsolt 80:6, 80:7 `--naplo TEREMT-002 --lepes B4`; Zsolt 14:1, 53:2 `--naplo HAMART-001`) a PR #420 merge-e után; utána az M3.
