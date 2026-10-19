@@ -2099,6 +2099,154 @@ def e29_kiadhato_kimenet_tisztasaga(fajlok):
 SZABALYOK_FUGGVENYEI['E29'] = e29_kiadhato_kimenet_tisztasaga
 
 
+# --------------------------------------------------------------------------
+# E30 -- ékezet nélkül írt magyar szó a PR commit-üzeneteiben (F112, DT-F112a)
+# --------------------------------------------------------------------------
+# Szókészlet: a base-ág kézi commitjaiban legalább E30_MIN_GYAKORISAG-szor
+# előforduló ékezetes szó ékezetlen alakja. A kizárási lista az
+# e30_ascii_alakok.tsv (alak, ok, forras). A pontosság az M0 mérésben van:
+# naplok/COMMIT_EKEZET_meres.md.
+E30_MIN_GYAKORISAG = 3
+E30_ALAKOK_TSV = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'e30_ascii_alakok.tsv')
+_E30_ACCENT = str.maketrans('áéíóöőúüűÁÉÍÓÖŐÚÜŰ', 'aeiooouuuAEIOOOUUU')
+_E30_KOD = re.compile(r'`[^`\n]*`')
+_E30_FAJLUT = re.compile(r'\S*[/\\]\S*|\S+\.(?:md|py|tsv|yml|yaml|txt|json|sh|db)\b')
+_E30_AZONOSITO = re.compile(r'\b[A-Za-zÁ-ű]*[A-Z0-9][A-Za-z0-9_\-]*\d[A-Za-z0-9_\-]*\b|\b(?:DT|N|E|F|G|D|A|B|M|S)-?[A-Za-z]*\d+[a-z]?\b')
+_E30_SZO = re.compile(r'(?<![\w/\\.\-])([a-z]{3,})(?![\w/\\\-=]|\.\w)')
+_E30_ACC_SZO = re.compile(r'[a-záéíóöőúüű]*[áéíóöőúüű][a-záéíóöőúüű]*')
+E30_GEPI_ELEJE = ('szamkiosztas:',)
+E30_GEPI_RESZ = ('FELADATOK.md frissítés (gép)',)
+
+
+def e30_gepi_e(uzenet):
+    elso = (uzenet or '').lstrip().split('\n', 1)[0]
+    return elso.startswith(E30_GEPI_ELEJE) or any(r in elso for r in E30_GEPI_RESZ)
+
+
+def e30_tisztit(uzenet):
+    """A magyar szövegrészt hagyja meg: kód, fájlút, azonosító, Co-Authored-By nélkül."""
+    sorok = [s for s in (uzenet or '').split('\n') if not s.lower().startswith('co-authored-by:')]
+    szoveg = '\n'.join(sorok)
+    for minta in (_E30_KOD, _E30_FAJLUT, _E30_AZONOSITO):
+        szoveg = minta.sub(' ', szoveg)
+    return szoveg
+
+
+def e30_kizaras(utvonal=E30_ALAKOK_TSV):
+    ki = {}
+    if not os.path.exists(utvonal):
+        return ki
+    with open(utvonal, encoding='utf-8') as f:
+        sorok = f.read().split('\n')
+    for s in sorok[1:]:
+        if not s.strip() or s.startswith('#'):
+            continue
+        mezok = s.split('\t')
+        ki[mezok[0]] = mezok[1] if len(mezok) > 1 else ''
+    return ki
+
+
+def e30_szokeszlet(uzenetek, min_gyak=E30_MIN_GYAKORISAG):
+    """{ékezetlen alak: ékezetes alak} az ékezetes szavak gyakorisága alapján."""
+    from collections import Counter
+    szamlalo = Counter()
+    for u in uzenetek:
+        if e30_gepi_e(u):
+            continue
+        szamlalo.update(w for w in _E30_ACC_SZO.findall(e30_tisztit(u).lower()) if len(w) >= 3)
+    szotar = {}
+    for szo, db in szamlalo.most_common():
+        if db < min_gyak:
+            continue
+        szotar.setdefault(szo.translate(_E30_ACCENT), szo)
+    return szotar
+
+
+def e30_jeloltek(uzenet, szotar, kizaras):
+    """[(ékezetlen alak, javasolt ékezetes alak)] egy üzenetben, ismétlés nélkül."""
+    if e30_gepi_e(uzenet):
+        return []
+    ki, latott = [], set()
+    for m in _E30_SZO.finditer(e30_tisztit(uzenet)):
+        szo = m.group(1)
+        if szo in latott or szo in kizaras or szo not in szotar or szotar[szo] == szo:
+            continue
+        latott.add(szo)
+        ki.append((szo, szotar[szo]))
+    return ki
+
+
+def e30_commitok(alap, fej):
+    """[(rövid hash, üzenet)] az alap..fej kézi, nem-merge commitjaira."""
+    kimenet = subprocess.run(
+        ['git', 'log', '--no-merges', '--format=%h%x1f%B%x1e', '%s..%s' % (alap, fej) if alap else fej],
+        cwd=ROOT, capture_output=True, encoding='utf-8', errors='replace').stdout
+    ki = []
+    for blokk in kimenet.split('\x1e'):
+        if '\x1f' in blokk:
+            h, u = blokk.strip('\n').split('\x1f', 1)
+            ki.append((h, u))
+    return ki
+
+
+def e30_meres(alap='', fej='origin/main', mag=112, minta=50):
+    """M0 mérés (naplok/COMMIT_EKEZET_meres.md). Futtatás a repó gyökeréből:
+    python -c "import sys; sys.path.insert(0,'eszkozok/ellenorzes'); import szabalyok as S; S.e30_meres()"
+    Kiírja: üzenetszám, jelölt üzenetek, 30 leggyakoribb jelölt alak, és a
+    rögzített seedű véletlen minta (hash, alak -> javaslat, környezet)."""
+    import random
+    from collections import Counter
+    commitok = e30_commitok(alap, fej)
+    kezi = [(h, u) for h, u in commitok if not e30_gepi_e(u)]
+    szotar = e30_szokeszlet([u for _, u in kezi])
+    kiz = e30_kizaras()
+    talalatok, uzenetek, db = [], 0, Counter()
+    for h, u in kezi:
+        j = e30_jeloltek(u, szotar, kiz)
+        if j:
+            uzenetek += 1
+        for a, b in j:
+            talalatok.append((h, a, b, u))
+            db[a] += 1
+    print('commit (merge nelkul): %d, gepi kihagyva: %d, kezi: %d' % (len(commitok), len(commitok) - len(kezi), len(kezi)))
+    print('szokeszlet: %d, kizaras: %d' % (len(szotar), len(kiz)))
+    print('jelolt uzenet: %d, jelolt talalat: %d' % (uzenetek, len(talalatok)))
+    print('30 leggyakoribb: ' + ', '.join('%s=%d' % x for x in db.most_common(30)))
+    random.Random(mag).shuffle(talalatok)
+    for i, (h, a, b, u) in enumerate(talalatok[:minta], 1):
+        sor = next((s for s in u.split('\n') if re.search(r'(?<![\w])%s(?![\w])' % a, s)), '')
+        print('%2d\t%s\t%s -> %s\t%s' % (i, h, a, b, sor.strip()[:150]))
+
+
+def e30_ascii_commit(base_ref, head_ref, commit_uzenet='', esemeny=''):
+    """E30 (DT-F112a: FIGYELMEZTETES): ekezet nelkul irt magyar szo a PR base..head
+    kezi commitjaiban. Push-esemenynel (main) nem fut (G4). Ha nincs base/head
+    (kezi futtatas --commit-uzenet-fajl-lal), az atadott szoveget nezi, '-' hash-sel."""
+    if esemeny == 'push':
+        return []
+    if base_ref and head_ref:
+        commitok = e30_commitok(base_ref, head_ref)
+    elif commit_uzenet:
+        commitok = [('-', commit_uzenet)]
+    else:
+        return []
+    commitok = [(h, u) for h, u in commitok if not e30_gepi_e(u)]
+    if not commitok:
+        return []
+    szotar = e30_szokeszlet([u for _, u in e30_commitok('', base_ref or 'HEAD')])
+    kiz = e30_kizaras()
+    talalatok = []
+    for h, u in commitok:
+        for a, b in e30_jeloltek(u, szotar, kiz):
+            talalatok.append(Talalat('E30', SZINT['E30'], h, 'uzenet',
+                                     '`%s` -> `%s` (ekezet nelkul irt magyar szo a commit-uzenetben)' % (a, b)))
+    return talalatok
+
+
+SZINT['E30'] = 'FIGYELMEZTETES'
+FAJLSZINTU_SZABALYOK.add('E30')
+
+
 # ---------------------------------------------------------------------------
 # E31 -- a `forras_tanulmany` letezo, reponbeli fajlra mutat (#11 S2, DT250)
 # ---------------------------------------------------------------------------

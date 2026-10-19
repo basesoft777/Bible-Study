@@ -1404,6 +1404,58 @@ class E29Teszt(unittest.TestCase):
         self.assertIn('E29', SZ.SZABALYOK_FUGGVENYEI)
 
 
+class TestE30(unittest.TestCase):
+    """F112: ekezet nelkul irt magyar szo a commit-uzenetben (DT-F112a: FIGYELMEZTETES)."""
+
+    SZOTAR = {'ket': 'két', 'javitas': 'javítás', 'konyv': 'könyv', 'meg': 'még',
+              'allapot': 'állapot', 'forras': 'forrás', 'fuggetlen': 'független'}
+    KIZ = {'meg': 'ketertelmu', 'allapot': 'mezonev'}
+
+    def _j(self, uzenet):
+        return [a for a, _ in SZ.e30_jeloltek(uzenet, self.SZOTAR, self.KIZ)]
+
+    def test_ekezetlen_szo_jelol(self):
+        self.assertEqual(self._j('F1.1: ket javitas'), ['ket', 'javitas'])
+        self.assertEqual(SZ.e30_jeloltek('a konyv', self.SZOTAR, self.KIZ), [('konyv', 'könyv')])
+
+    def test_mezonev_nem_jelol(self):
+        self.assertEqual(self._j('brief fejlec: allapot: fut'), [])
+
+    def test_ketertelmu_par_nem_jelol(self):
+        self.assertEqual(self._j('meg nem kesz'), [])
+
+    def test_kodreszben_allo_szo_nem_jelol(self):
+        self.assertEqual(self._j('a `ket` mezo'), [])
+
+    def test_fajlut_azonosito_coauthored_nem_jelol(self):
+        self.assertEqual(self._j('naplok/ket_javitas.md frissitve'), [])
+        self.assertEqual(self._j('lásd F112_ket_BRIEF.md és ISTENTISZT-001'), [])
+        self.assertEqual(self._j('szöveg\n\nCo-Authored-By: Ket Konyv <a@b>'), [])
+        self.assertEqual(self._j('forras=manual'), [])
+
+    def test_ekezetes_alak_nem_jelol(self):
+        self.assertEqual(self._j('két javítás'), [])
+
+    def test_gepi_commit_kimarad(self):
+        self.assertEqual(self._j('szamkiosztas: DT-F1a -> DT1 ket konyv'), [])
+
+    def test_push_esemenynel_nem_fut(self):
+        self.assertEqual(SZ.e30_ascii_commit('a', 'b', 'ket konyv javitas', 'push'), [])
+
+    def test_szint_fajlszintu_figyelmeztetes(self):
+        self.assertEqual(SZ.SZINT['E30'], 'FIGYELMEZTETES')
+        self.assertIn('E30', SZ.FAJLSZINTU_SZABALYOK)
+
+    def test_kizaras_tsv_minden_soranak_van_oka_es_forrasa(self):
+        with open(SZ.E30_ALAKOK_TSV, encoding='utf-8') as f:
+            sorok = [s for s in f.read().split('\n')[1:] if s.strip()]
+        for s in sorok:
+            m = s.split('\t')
+            self.assertEqual(len(m), 3, s)
+            self.assertIn(m[1], ('mezonev', 'ertekkeszlet', 'ketertelmu', 'rovidites'), s)
+            self.assertTrue(m[2].strip(), s)
+
+
 # ---------------------------------------------------------------------------
 # E31 (#11 S2, DT250): a `forras_tanulmany` letezo, reponbeli fajlra mutat
 # ---------------------------------------------------------------------------

@@ -6,11 +6,14 @@ tipus: feladat
 fazis: folyamat
 munka: folyamat
 modell: sonnet
-allapot: nem_indult
+allapot: lezarva
+pr: 427
+lezarva_osszegzes: E30 FIGYELMEZTETÉS szinten bekötve (DT253, szűk kizárólista, mért 84%), 154 teszt zöld, ELLENOR_F112 ELTÉRÉS 7 mechanikus tétel javítva; zárójelentés naplok/COMMIT_EKEZET_zaras.md
+ag: claude/f112-commit-ekezet
 ad: E30 CI-szabály, amely a PR `base..head` commit-üzeneteiben figyelmeztet az ékezet nélkül írt magyar szavakra, mért hamis-pozitív aránnyal
-kovetkezo: a brief végrehajtása a `/kovetkezo`-val
+kovetkezo: az E30 20 PR utáni újraértékelése (N-F112a: jelölési arány, javítások száma, új 50 elemes minta; HIBA-szint és kizárólista-bővítés külön döntés)
 olvas: [eszkozok/ellenorzes/, .github/workflows/ellenorzes.yml, BRIEF_SABLON.md, adat/SEMA.md, GitHub_feltoltesi_workflow.md]
-ir: [eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/futtat.py, eszkozok/ellenorzes/e30_ascii_alakok.tsv, eszkozok/ellenorzes/tesztek/, naplok/COMMIT_EKEZET_meres.md]
+ir: [eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/futtat.py, eszkozok/ellenorzes/e30_ascii_alakok.tsv, eszkozok/ellenorzes/tesztek/, naplok/COMMIT_EKEZET_meres.md, .github/workflows/ellenorzes.yml]
 fugg: []
 ---
 # F112_COMMIT_EKEZET_BRIEF.md — CI-szabály: ékezet nélküli magyar szavak a commit-üzenetekben (E30)
@@ -47,7 +50,7 @@ Valódi hibának látszik például: `ket`, `konyv`, `javitas`, `fuggetlen`, `el
 
 1. Modell-ellenőrzés (`CLAUDE.md`).
 2. **M0 — mérés.** A kiinduló mérés megismétlése a végleges kizárási szabályokkal a main teljes kézi commit-történetén: jelölt üzenetek száma, a 30 leggyakoribb jelölt alak, és **50 véletlen jelölt találat kézi besorolása** (valódi hiba / hamis pozitív), rögzített seeddel. Napló: `naplok/COMMIT_EKEZET_meres.md`.
-   ⛔ **Megállás:** a mért pontosság és a javasolt szint (D2) a felhasználóé. `DT-F112a` tétel a `DONTESEK.md`-be (pontosság, a két szint-opció, javaslat), `allapot: dontesre_var`.
+   ⛔ **Megállás:** a mért pontosság és a javasolt szint (D2) a felhasználóé. `DT253` tétel a `DONTESEK.md`-be (pontosság, a két szint-opció, javaslat), `allapot: dontesre_var`.
 3. Az E30 megvalósítása a jóváhagyott szinttel; `FAJLSZINTU_SZABALYOK` közé sorolva (a találat nem fájlsorhoz kötődik, mint az E26-nál), a találat részlete: commit rövid hash, a jelölt alak, a javasolt ékezetes alak.
 4. Tesztek; `python eszkozok/ellenorzes/futtat.py` kézi futtatása egy szándékosan ékezetlen próba-üzenettel (repón kívüli ideiglenes fájllal, `--commit-uzenet-fajl`).
 5. Zárás a `/kovetkezo` 10. lépése szerint. A saját PR commitjai az E30-on maguk is átmennek.
@@ -56,7 +59,7 @@ Valódi hibának látszik például: `ket`, `konyv`, `javitas`, `fuggetlen`, `el
 
 - G1: az E30 a fenti kizárásokat mind alkalmazza; a tesztek zöldek.
 - G2: a mérés 50 elemes kézi mintája és a pontosság a naplóban áll, seeddel, újrafuttatható parancssal.
-- G3: az E30 szintje a `DT-F112a` döntés szerinti; a döntés előtt nem kerül a `main`-re futó ellenőrzésbe.
+- G3: az E30 szintje a `DT253` döntés szerinti; a döntés előtt nem kerül a `main`-re futó ellenőrzésbe.
 - G4: az E30 csak a PR `base..head` commitjait nézi; `push` eseménynél (main) nem fut.
 - G5: a kizárási lista minden sorának van `ok` mezője és forrása.
 - G6: a CSV-modul nem olvassa a TSV-t (`split('\t')`, `CLAUDE.md` „TSV-olvasás”).
@@ -64,5 +67,5 @@ Valódi hibának látszik például: `ket`, `konyv`, `javitas`, `fuggetlen`, `el
 ## 5. Döntésnapló
 
 - D1: a szabály száma **E30** (az E28 és az E29 a #23 CI-tervében foglalt: `naplok/MOTIVUM_FORRAS_ci_terv.md`).
-- D2: [javaslat] a szint **FIGYELMEZTETÉS**, nem HIBA. Indok: a commit a PR-ban már nem írható át (a #50 D1 szerint sincs `--amend`/`--force`), így a piros CI-t csak a PR újraírásával lehetne zöldre fordítani; a figyelmeztetés a következő commitra hat. A HIBA-szint csak akkor indokolt, ha a mért pontosság magas, és a javítás módja (pl. squash-merge-kor új üzenet) ki van mondva. A végleges szint az M0 után a `DT-F112a`-ban dől el.
+- D2: [javaslat] a szint **FIGYELMEZTETÉS**, nem HIBA. Indok: a commit a PR-ban már nem írható át (a #50 D1 szerint sincs `--amend`/`--force`), így a piros CI-t csak a PR újraírásával lehetne zöldre fordítani; a figyelmeztetés a következő commitra hat. A HIBA-szint csak akkor indokolt, ha a mért pontosság magas, és a javítás módja (pl. squash-merge-kor új üzenet) ki van mondva. A végleges szint az M0 után a `DT253`-ban dől el.
 - D3: a kétértelmű párok (`meg`, `mert`, `kor`, `sem`, `fel`, `arany` …) soha nem jelölnek; a szabály inkább kihagy, mint téved (CLAUDE.md 3. szabály szellemében: üres eredmény elfogadható).
