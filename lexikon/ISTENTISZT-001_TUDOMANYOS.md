@@ -1311,7 +1311,7 @@ választott, nem véletlenül tért el a "szabvány" ἐπικαλέομαι-tó
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-10-18 -->
 
-*Ez a blokk a `[ID: ISTENTISZT-001]` motívum 32 igehelyét veti össze a TSK (Votes ≥ 15) és a Károli-KH táblával; 23 igehely ad legalább egy találatot (104 találat összesen), 0 igehely versenkénti kereséssel nem vizsgálható.*
+*Ez a blokk a `[ID: ISTENTISZT-001]` motívum 32 igehelyét veti össze a TSK (Votes ≥ 15) és a Károli-KH táblával; 23 igehely ad legalább egy találatot (106 találat összesen), 0 igehely versenkénti kereséssel nem vizsgálható.*
 
 #### 1Móz 13:4
 - Károli-KH: 1Móz 12:8
@@ -1383,6 +1383,8 @@ választott, nem véletlenül tért el a "szabvány" ἐπικαλέομαι-tó
 - TSK: 5Móz 26:19 (Votes: 30)
 - TSK: Zsolt 66:10 (Votes: 28)
 - TSK: Zsolt 66:12 (Votes: 28)
+- TSK: Hós 2:20 (Votes: 27)
+- TSK: Hós 2:22 (Votes: 27)
 - TSK: Zak 10:6 (Votes: 25)
 - TSK: Mal 3:2 (Votes: 24)
 - TSK: Mal 3:3 (Votes: 24)
