@@ -1,4 +1,4 @@
-# F11.S2.4 (DT250): a felmerult_tanulmany -> forras_tanulmany mechanikus áttöltés döntései, soronként (kulcs: id + igehely); csak a kitöltött felmerult_tanulmany sorai (62 sor; a 198 üres felmerult_tanulmany-sor forras_tanulmany-ja üres, döntés nélkül). A felmerult_tanulmany változatlan. Szabály: a szkript docstringje; a napló a naplok/F11_zaras.md „S2” szakaszában.
+# F11.S2.4 (DT250): a felmerult_tanulmany -> forras_tanulmany mechanikus áttöltés döntései, soronként (kulcs: id + igehely); csak a kitöltött felmerult_tanulmany sorai (62 sor; a 198 üres felmerult_tanulmany-sor forras_tanulmany-ja üres, döntés nélkül). A felmerult_tanulmany változatlan. Szabály: a szkript docstringje; a napló a naplok/F11_zaras.md „S4” szakaszában.
 # proveniencia: scope=adat/elofordulasok.tsv, felmerult_tanulmany (62 kitöltött sor) × git ls-files alapnév | forras=manual (szkript: s24_attoltes.py, split('\t'), a repón kívül) | ts=2026-10-19
 id	igehely	felmerult_tanulmany	forras_tanulmany	dontes	indok
 TEREMT-001	1Móz 1:2	1Mózes 1 bővített tanulmány		ures_szabad_szoveg	nem fájlnév alakú érték (szabad szöveg); nem tölthető ki
