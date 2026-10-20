@@ -1,6 +1,6 @@
 # F22_USZ_C_jelentes.md — a 22.9 C csomag összesítője (Róm, 1Kor, Jel)
 
-*Proveniencia: scope=Róm, 1Kor, Jel (1 272 Károli-vers) | forras=a három könyvjelentés (`naplok/F22_Rom_jelentes.md`, `F22_1Kor_jelentes.md`, `F22_Jel_jelentes.md`), `f22/api_termeles/futasnaplo.tsv`, `batchek.tsv`, `f22_statisztika.py`, `egyesit.py --ellenoriz` (szkriptkimenetek) | ts=2026-10-20. Ág: `claude/f22-2kor` (a #433 merge-e után a main-ből). Módszer: D45, a brief 22.9 és a DT-F22h (b) szerint: Sonnet, Message Batches API, `effort=high`, `prompt_v3` változatlanul, könyvenként soros, a plafon-őr érintetlen, a batch-ek a felső becslésnek megfelelő részletekben (Róm 1 batch, 1Kor 2, Jel 3).*
+*Proveniencia: scope=Róm, 1Kor, Jel (1 272 Károli-vers) | forras=a három könyvjelentés (`naplok/F22_Rom_jelentes.md`, `F22_1Kor_jelentes.md`, `F22_Jel_jelentes.md`), `f22/api_termeles/futasnaplo.tsv`, `batchek.tsv`, `f22_statisztika.py`, `egyesit.py --ellenoriz` (szkriptkimenetek) | ts=2026-10-20. Ág: `claude/f22-2kor` (a #433 merge-e után a main-ből). Módszer: D45, a brief 22.9 és a DT-F22h (b) szerint (a main-en: DT262): Sonnet, Message Batches API, `effort=high`, `prompt_v3` változatlanul, könyvenként soros, a plafon-őr érintetlen, a batch-ek a felső becslésnek megfelelő részletekben (Róm 1 batch, 1Kor 2, Jel 3).*
 
 ## 1. Könyvenként
 
