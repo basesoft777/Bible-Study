@@ -8,9 +8,9 @@ A motívum lexikai azonosságú: a שְׁאוֹל (*seól*) és a görög ᾍδ�
 
 ## Tartalomjegyzék
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#tartalom | forrás:  | licenc: projekt-adat | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-10-20 -->
 
-*Ez a blokk a lexikon-oldal 12 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
+*Ez a blokk a lexikon-oldal 13 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
 
 - [Kivonat](#kivonat)
 - [Jelmagyarázat és rövidítések](#jelmagyarázat-és-rövidítések)
@@ -21,6 +21,7 @@ A motívum lexikai azonosságú: a שְׁאוֹל (*seól*) és a görög ᾍδ�
 - [4. Kereszthivatkozások](#4-kereszthivatkozások)
 - [5. Kapcsolatok](#5-kapcsolatok)
 - [6. Értelmezés](#6-értelmezés)
+- [6/b. Alkalmazás és tanítói egyezés](#6b-alkalmazás-és-tanítói-egyezés)
 - [7. Módszertan és nyitott kérdések](#7-módszertan-és-nyitott-kérdések)
 - [8. Irodalom és idézés](#8-irodalom-és-idézés)
 - [Kolofon](#kolofon)
@@ -1061,6 +1062,16 @@ A motívumhoz nincs rögzített kapcsolat.
 **Drash.** A motívum tanítása: a halál — még a maga legfélelmetesebb, birodalom-szerű formájában is — Isten szuverén hatalma alatt áll. Krisztus nem "elkerülte" a hádészt, hanem belépett oda és győztesen távozott, ezért "birtokolja a kulcsait" — vagyis a nyitás-zárás jogát, amely korábban kizárólag Isten közvetlen előjoga volt. Ez a hívő számára azt jelenti, hogy a halál nem autonóm, félelmetes végállomás, hanem egy olyan hely, amely fölött Krisztusnak hatalma van.
 
 **Sod** *(tömör)*. A hádész végső megsemmisítése (Jel 20:14, "a halál és a pokol/hádész pedig vettetének a tüzes tóba") azt a mintát fejezi be, amelyet Krisztus feltámadása nyitott meg: a halál birodalma maga is ideiglenes, Isten végső programjában felszámolandó valóság — nem örök ellenpólusa Isten uralmának, hanem annak alárendelt, végül megszüntetett intézménye.
+
+## 6/b. Alkalmazás és tanítói egyezés *(kézi)*
+
+### Alkalmazás és tanítványság *(kézi)*
+
+Az alkalmazási rész a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Hadesz_Seol_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
+
+### Tanítói egyezés *(kézi)*
+
+A tanítói egyezés a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Hadesz_Seol_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
 
 ## 7. Módszertan és nyitott kérdések *(kézi)*
 

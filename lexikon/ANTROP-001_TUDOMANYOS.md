@@ -8,9 +8,9 @@ A motívum lexikai azonosságú: a görög πνεῦμα (*pneuma*, "szellem") �
 
 ## Tartalomjegyzék
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#tartalom | forrás:  | licenc: projekt-adat | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-10-20 -->
 
-*Ez a blokk a lexikon-oldal 12 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
+*Ez a blokk a lexikon-oldal 13 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
 
 - [Kivonat](#kivonat)
 - [Jelmagyarázat és rövidítések](#jelmagyarázat-és-rövidítések)
@@ -21,6 +21,7 @@ A motívum lexikai azonosságú: a görög πνεῦμα (*pneuma*, "szellem") �
 - [4. Kereszthivatkozások](#4-kereszthivatkozások)
 - [5. Kapcsolatok](#5-kapcsolatok)
 - [6. Értelmezés](#6-értelmezés)
+- [6/b. Alkalmazás és tanítói egyezés](#6b-alkalmazás-és-tanítói-egyezés)
 - [7. Módszertan és nyitott kérdések](#7-módszertan-és-nyitott-kérdések)
 - [8. Irodalom és idézés](#8-irodalom-és-idézés)
 - [Kolofon](#kolofon)
@@ -379,6 +380,16 @@ A motívumhoz nincs rögzített kapcsolat.
 ⚠️ **Vitatott pont: trichotomizmus vs. dichotomizmus**
 - **Trichotomista hang:** Franz Delitzsch (19. századi luteránus ószövetség-kutató, *A System of Biblical Psychology*) és a modern karizmatikus vonalban **Watchman Nee** (*The Spiritual Man*) amellett érvelnek, hogy a *pneuma* és *pszükhé* valódi, ontológiailag is elkülönülő alkotóelemei az embernek, nem csupán funkcionális/retorikai megkülönböztetés.
 - **Dichotomista hang:** F.F. Bruce (evangéliumi újszövetség-kutató, *Hebrews*, NICNT-kommentár) a Zsid 4:12 "szétválasztás" kifejezését elsősorban retorikai, nem metafizikai megkülönböztetésként olvassa — szerinte a szöveg az Ige átható erejét szemlélteti, nem az emberi alkotóelemek szétbogozását célozza. Az 1Kor 2:14-15 melléknévi (ψυχικός/πνευματικός) szóhasználata mindkét olvasat számára hivatkozási alap lehet — a trichotomisták az itt leírt "szellemi ember" meglétét önálló, aktiválható alkotóelemként értik, míg a dichotomisták/funkcionalisták inkább a Szellem jelenlétével/hiányával jellemzett két emberi állapotként.
+
+## 6/b. Alkalmazás és tanítói egyezés *(kézi)*
+
+### Alkalmazás és tanítványság *(kézi)*
+
+Az alkalmazási rész a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
+
+### Tanítói egyezés *(kézi)*
+
+A tanítói egyezés a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
 
 ## 7. Módszertan és nyitott kérdések *(kézi)*
 

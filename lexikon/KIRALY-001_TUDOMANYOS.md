@@ -8,9 +8,9 @@ A motívum azt a lexikai azonosságot követi, amelyet a BDB H3548 (*kohén*) "p
 
 ## Tartalomjegyzék
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#KIRALY-001#tartalom | forrás:  | licenc: projekt-adat | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#KIRALY-001#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-10-20 -->
 
-*Ez a blokk a lexikon-oldal 12 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
+*Ez a blokk a lexikon-oldal 13 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
 
 - [Kivonat](#kivonat)
 - [Jelmagyarázat és rövidítések](#jelmagyarázat-és-rövidítések)
@@ -21,6 +21,7 @@ A motívum azt a lexikai azonosságot követi, amelyet a BDB H3548 (*kohén*) "p
 - [4. Kereszthivatkozások](#4-kereszthivatkozások)
 - [5. Kapcsolatok](#5-kapcsolatok)
 - [6. Értelmezés](#6-értelmezés)
+- [6/b. Alkalmazás és tanítói egyezés](#6b-alkalmazás-és-tanítói-egyezés)
 - [7. Módszertan és nyitott kérdések](#7-módszertan-és-nyitott-kérdések)
 - [8. Irodalom és idézés](#8-irodalom-és-idézés)
 - [Kolofon](#kolofon)
@@ -477,6 +478,16 @@ Az egyes kapcsolatok indoklása a fenti táblázat Funkció oszlopában áll; k�
 - **Kanonikus/hagyományos irány (Derek Kidner; Bruce Waltke; Victor Hamilton):** a Zsolt 110:4 **tudatosan idézi/hivatkozik** az 1Móz 14 eseményére mint már ismert, rögzült hagyományra — Dávid (vagy a zsoltár szerzője) tudatosan von párhuzamot a maga királyi-papi tisztsége és az ősi, Ábrahám korából ismert Melkizedek-alak közé, hogy a dávidi dinasztia legitimitását egy Áron előtti, ezért a lévita rendtől független papi tekintélyhez kösse.
 
 A projekt módszertani állásfoglalása: ez a vita a történeti-kritikai vs. kanonikus-irodalmi olvasat közötti szélesebb feszültség egyik konkrét megnyilvánulása — nem dönthető el pusztán filológiai eszközökkel, mivel mindkét olvasat konzisztens a rendelkezésre álló szöveggel. **Ez a két vita — (a) és (b) — egymástól független**: nem ugyanarról a kérdésről szól, és a projekt egyiket sem tekinti eldöntöttnek. A 2Móz 19:6 és Zak 6:13 bevonása egyik vitát sem dönti el, de a (b) vitát árnyalja: ha a "kritikai/redakciós irány" helyes, a 2Móz 19:6-nál dokumentált korai, kollektív "papok királysága" hagyomány önálló, a Zsolt 110-től és Gen 14-től is független tanúja lehet ugyanannak a régi ideológiai mintának — ez a lehetőség nyitva marad, nincs a projekt által eldöntve.
+
+## 6/b. Alkalmazás és tanítói egyezés *(kézi)*
+
+### Alkalmazás és tanítványság *(kézi)*
+
+Az alkalmazási rész a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Melkizedek_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
+
+### Tanítói egyezés *(kézi)*
+
+A tanítói egyezés a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Melkizedek_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
 
 ## 7. Módszertan és nyitott kérdések *(kézi)*
 

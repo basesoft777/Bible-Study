@@ -8,9 +8,9 @@ A motívum strukturális azonosságú: a genezisi átok-lánc (*arar → adamá 
 
 ## Tartalomjegyzék
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#tartalom | forrás:  | licenc: projekt-adat | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-10-20 -->
 
-*Ez a blokk a lexikon-oldal 12 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
+*Ez a blokk a lexikon-oldal 13 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
 
 - [Kivonat](#kivonat)
 - [Jelmagyarázat és rövidítések](#jelmagyarázat-és-rövidítések)
@@ -21,6 +21,7 @@ A motívum strukturális azonosságú: a genezisi átok-lánc (*arar → adamá 
 - [4. Kereszthivatkozások](#4-kereszthivatkozások)
 - [5. Kapcsolatok](#5-kapcsolatok)
 - [6. Értelmezés](#6-értelmezés)
+- [6/b. Alkalmazás és tanítói egyezés](#6b-alkalmazás-és-tanítói-egyezés)
 - [7. Módszertan és nyitott kérdések](#7-módszertan-és-nyitott-kérdések)
 - [8. Irodalom és idézés](#8-irodalom-és-idézés)
 - [Kolofon](#kolofon)
@@ -1128,6 +1129,16 @@ Az átok a szövegekben mindvégig **kimondott szó** marad (*árúr*, kijelent�
 **Az "eredendő bűn" fogalom alkalmazhatósága.** Az, hogy a következmények gyűrűznek, nem azonos azzal az állítással, hogy a bűnösség öröklődik. A szövegek az előbbit mondják ki explicit módon; az utóbbi teológiai következtetés, amelyet a Róm 5:12-21 érvelése alapoz meg. A napló ezt külön motívumként tartja nyilván ("Ádám–Krisztus tipológia", ⚠️ jelöléssel, a Róm 5:12 ἐφ' ᾧ (*ef hó*) fordítási vitájával együtt) — a jelen tanulmány nem dönti el a kérdést.
 
 **A 1Móz 8:21 hatóköre.** Hogy az ígéret a 3:17 átkának teljes visszavonását jelenti-e, vagy csak egy megismételt, özönvíz-szerű csapás kizárását, a lexikai adat alapján nem dönthető el egyértelműen: a vers más igét (*kalal*) tagad, mint amelyet a 3:17 használ (*arar*), ami a szűkebb olvasat felé mutat; ugyanakkor a két ige a Genezisen belül másutt (12:3) egymás mellett is áll.
+
+## 6/b. Alkalmazás és tanítói egyezés *(kézi)*
+
+### Alkalmazás és tanítványság *(kézi)*
+
+Az alkalmazási rész a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
+
+### Tanítói egyezés *(kézi)*
+
+A tanítói egyezés a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
 
 ## 7. Módszertan és nyitott kérdések *(kézi)*
 

@@ -8,9 +8,9 @@ A motívum lexikai azonosságú: a תְּהוֹם (*tehóm*, "mélység") szó a
 
 ## Tartalomjegyzék
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#tartalom | forrás:  | licenc: projekt-adat | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-10-20 -->
 
-*Ez a blokk a lexikon-oldal 12 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
+*Ez a blokk a lexikon-oldal 13 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
 
 - [Kivonat](#kivonat)
 - [Jelmagyarázat és rövidítések](#jelmagyarázat-és-rövidítések)
@@ -21,6 +21,7 @@ A motívum lexikai azonosságú: a תְּהוֹם (*tehóm*, "mélység") szó a
 - [4. Kereszthivatkozások](#4-kereszthivatkozások)
 - [5. Kapcsolatok](#5-kapcsolatok)
 - [6. Értelmezés](#6-értelmezés)
+- [6/b. Alkalmazás és tanítói egyezés](#6b-alkalmazás-és-tanítói-egyezés)
 - [7. Módszertan és nyitott kérdések](#7-módszertan-és-nyitott-kérdések)
 - [8. Irodalom és idézés](#8-irodalom-és-idézés)
 - [Kolofon](#kolofon)
@@ -671,6 +672,16 @@ A motívum egységes teológiai tanítása: **a mélység (a rendezetlenség, a 
 A mélység motívuma a Peshat/Remez/Drash rétegekből annyit enged levezetni: a formátlan, rendezetlen állapot (akár kozmikus, akár erkölcsi értelemben) önmagában nem azonos a gonosszal — sorsa attól függ, hogy Isten Szelleme "lebeg-e fölötte". Ez a mintázat előremutat minden olyan bibliai helyzetre, ahol a rendezetlenség rendezetté, a fenyegetés áldássá válik Isten jelenlétében. A Septuaginta-közvetített ábüσσος-visszhang (Jel 20:1,3) mutatja, hogy ugyanez a "bezárás" logika az eszkatológiai beteljesedésben is megjelenik. **Pontosítás:** a Jel 21:1 görög szövege a θάλασσα (*thalassza*, "tenger") szót használja, ami **nem azonos** és nem lexikai rokona az ἄβυσσος szócsaládnak — tematikus, nem lexikai párhuzam, és a "no more sea" inkább a teremtéskori vízi-káosz-szimbolika végső megszüntetésére utal általánosságban. Ennél mélyebb következtetés a szövegekből nem vezethető le fegyelmezetten.
 
 ⚠️ **Vitatott pont:** az 1Móz 1:2 *tehóm*-ának esetleges kapcsolata a közel-keleti teremtésmítoszok (pl. az akkád *Enūma Eliš* Tiámat-alakjával, amely nyelvileg rokon szó) tudományosan vitatott kérdés. **Hermann Gunkel** és követői (*Schöpfung und Chaos*) történeti-vallástörténeti rokonságot és polemikus átvételt feltételeztek. Ezzel szemben konzervatívabb exegéták, köztük **Gordon Wenham** (WBC) és **Umberto Cassuto**, hangsúlyozzák, hogy a *tehóm* a bibliai szövegben sehol nem viselkedik önálló, Istennel szembeni akarattal bíró lényként — pusztán anyagi elemként szerepel. A jelen tanulmány ez utóbbi olvasatot követi (összhangban a Sod-fegyelemmel), de a vita létezését jelzi.
+
+## 6/b. Alkalmazás és tanítói egyezés *(kézi)*
+
+### Alkalmazás és tanítványság *(kézi)*
+
+Az alkalmazási rész a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Tehom_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
+
+### Tanítói egyezés *(kézi)*
+
+A tanítói egyezés a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Tehom_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
 
 ## 7. Módszertan és nyitott kérdések *(kézi)*
 

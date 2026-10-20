@@ -8,9 +8,9 @@ A motívum lexikai azonosságú, három összefonódó kifejezésből álló kom
 
 ## Tartalomjegyzék
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#MENNY-001#tartalom | forrás:  | licenc: projekt-adat | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#MENNY-001#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-10-20 -->
 
-*Ez a blokk a lexikon-oldal 12 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
+*Ez a blokk a lexikon-oldal 13 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
 
 - [Kivonat](#kivonat)
 - [Jelmagyarázat és rövidítések](#jelmagyarázat-és-rövidítések)
@@ -21,6 +21,7 @@ A motívum lexikai azonosságú, három összefonódó kifejezésből álló kom
 - [4. Kereszthivatkozások](#4-kereszthivatkozások)
 - [5. Kapcsolatok](#5-kapcsolatok)
 - [6. Értelmezés](#6-értelmezés)
+- [6/b. Alkalmazás és tanítói egyezés](#6b-alkalmazás-és-tanítói-egyezés)
 - [7. Módszertan és nyitott kérdések](#7-módszertan-és-nyitott-kérdések)
 - [8. Irodalom és idézés](#8-irodalom-és-idézés)
 - [Kolofon](#kolofon)
@@ -317,6 +318,16 @@ Ez a motívum a bibliai tudományosság egyik legrégebbi, folyamatosan élő vi
 **Köztes/funkcionális nézet** — egyes újabb tudósok (pl. **John Walton**, NIV Application Commentary) az azonosítás helyett a szöveg funkciójára helyezik a hangsúlyt: a szakasz elsődleges célja a határátlépés és a felfuvalkodott emberi hírnév bűnének bemutatása, függetlenül a bené ha'Elohim pontos ontológiai státuszától.
 
 Mt 22:30 ("a feltámadáskor sem nem házasodnak, sem férjhez nem mennek, hanem olyanok lesznek, mint az Isten angyalai a mennyben") gyakran felmerül az angyali nézet ellenérveként — de ez a vers a *feltámadás utáni* állapotról szól, nem zárja ki eleve egy bukott angyali cselekedet lehetőségét a történelem korábbi pontján; ez maga is vitatott érvelési lépés mindkét oldalon.
+
+## 6/b. Alkalmazás és tanítói egyezés *(kézi)*
+
+### Alkalmazás és tanítványság *(kézi)*
+
+Az alkalmazási rész a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
+
+### Tanítói egyezés *(kézi)*
+
+A tanítói egyezés a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
 
 ## 7. Módszertan és nyitott kérdések *(kézi)*
 
