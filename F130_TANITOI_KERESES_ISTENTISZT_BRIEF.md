@@ -6,7 +6,8 @@ tipus: feladat
 fazis: 1
 munka: ertelmezo
 modell: opus
-allapot: nem_indult
+allapot: fut
+ag: claude/tanitoi-kereses-istentiszt
 ad: a motivumok/naplok/ISTENTISZT-001_tanitoi_kereses.md a 7. sablon szerinti, webes forrásokkal (mű, pontos hely, URL) igazolt eredményt hordozza a manual szétválasztás helyett; a régi változat archiválva; a #127 tanítói rése erre épülhet
 kovetkezo: "Te: /kovetkezo; első lépés M0 (modell-ellenőrzés, előfeltételek), ⛔ az M4-nél (az eredmény és a régi manual változat összevetése, a forrás 5. pontjának esetleges szövegjavaslata)"
 olvas: [motivumok/ISTENTISZT-001.md, "tematikus_lezart/ISTENTISZT-001*", "tematikus_lezart/naplok/ISTENTISZT-001*", motivumok/naplok/ISTENTISZT-001_tanitoi_kereses.md, archivum/ISTENTISZT-001/, sablonok/7_PaRDeS_tanitoi_kereses_sablon.md, sablonok/4_PaRDeS_tematikus_sablon.md, sablonok/PaRDeS_tanitok_lista.md, .claude/agents/tanito-kereso.md, adat/motivumok.tsv, naplok/F11_szetvalasztas_ISTENTISZT-001.tsv]
