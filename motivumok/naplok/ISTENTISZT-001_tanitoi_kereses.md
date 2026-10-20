@@ -121,6 +121,8 @@ Forrásnyelv: angol (a derekprince.com saját átiratai). Egyik találat sem ded
 
 ## 4. Összegzés
 
+<!-- RÉS-KEZDET: tanitoi -->
+
 A vizsgált 13 tanítóból **1 tanítónál (Derek Prince) van megbízható, URL-lel igazolt, nevesíthető anyag; 12 tanítónál gap.** Egyik találat sem ✅ (dedikált mű): a motívumra Prince-nél sem ismert önálló tanítás.
 
 | Tanító | Legjobb erősség | ✅ | ⚠️ | gap |
@@ -148,3 +150,5 @@ A vizsgált 13 tanítóból **1 tanítónál (Derek Prince) van megbízható, UR
 - A találatok a szabadulás/deliverance témakörben jelennek meg; a „segítségül hívni az Úr nevét” formula tipológiáját, a név jelentését vagy az ószövetségi gyakorlatot egyik forrás sem tárgyalja. Használatuk: a Jóel 2:32 igehelyre való tényleges hivatkozás, nem a motívum értelmezése.
 - A Hagin- és Wommack-gap forrás-hozzáférési korlát is (403, olvashatatlan PDF), nem csak tartalmi hiány; ez kézi, böngészős ellenőrzéssel pótolható. A Wommack *Receive Jesus* oldal ténylegesen idézi a Róm 10:13-at, de csak üdvösség-ima részeként; a besorolás (gap) mérlegelhető.
 - A keresőmotor (általános, nem könyvtár- vagy átirat-specifikus) korlátozott; a gap nem bizonyítja, hogy a tanító nem tanított a témáról, csak azt, hogy ezen a menetben nem volt igazolható forrás.
+
+<!-- RÉS-VÉGE: tanitoi -->
