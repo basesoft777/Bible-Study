@@ -11,7 +11,7 @@
 - **Motívum-ID:** `ISTENTISZT-001`
 - **Study-fájl:** `motivumok/ISTENTISZT-001.md` (az `adat/motivumok.tsv` `forras_study` mezőjének első tagja)
 - **Dátum:** `2026.10.20`
-- **Modell:** 1. pont (kiinduló kivonat): `claude-opus-5-5` (a session, F130 M2) · 2–4. pont (keresés): `[a tanito-kereso subagent tényleges modellneve]`
+- **Modell:** 1. pont (kiinduló kivonat): `claude-opus-5-5` (a session, F130 M2) · 2–4. pont (keresés): `claude-sonnet-5-5`
 
 ---
 
@@ -37,12 +37,112 @@ A teológiailag súlyos csomópontok, amelyekhez tanítói egyezés kereshető:
 
 ## 2. Névsor
 
-*(M3: a `tanito-kereso` subagent tölti ki.)*
+*(A `sablonok/PaRDeS_tanitok_lista.md` jóváhagyott köréből; a „NEM jóváhagyott” és a „Mérlegelés alatt” nevek nem szerepelnek. Lekérés dátuma minden forrásnál: 2026.10.20.)*
+
+**Célzottan, tanítónként megkeresett (13 tanító; ebből 7 önálló kereséssel, 6 csoportos, „VAGY” összekapcsolású lekérdezéssel).**
+
+| Tanító | A választás indoka |
+|---|---|
+| Derek Prince | Az 1. pont csomópontjai közül a Jóel 2:32 / Róm 10:12–13 a leginkább bizonyítottan beszédtéma nála (nyilvános, átiratos tanítás-archívum: derekprince.com); a lista külön is nevesíti. |
+| Kenneth Hagin | A lista Word of Faith-magja; a Róm 10 (hit, hallás, megvallás) központi nála, a lista külön is nevesíti. |
+| Andrew Wommack | Folytató a Hagin–Copeland vonalban; szervezete (awmi.net) nyilvános, kereshető tanítás- és tanulmányi anyagot ad a Róm 10:13-ról. |
+| Smith Wigglesworth | A korai pünkösdi kör; ismert a „név” (Jézus neve) témájú prédikációiról, ezért a Jóel/ApCsel 2:21 hívás-ígéretre rákerestem. |
+| F. F. Bosworth | Klasszikus gyógyító-evangélista; a *Christ the Healer* a Jóel–pünkösd–gyógyítás vonalon a lista leginkább szövegszerű műve. |
+| John G. Lake | Klasszikus gyógyító-evangélista, prédikációi nyilvánosak; Jóel 2:32-re rákerestem. |
+| Kenneth Copeland | Word of Faith vezető; a Róm 10:13 / Jóel 2:32 hívás-ígéretre rákerestem. |
+| Charles Capps; Oral Roberts (csoportos lekérdezés Copelanddel) | Word of Faith / karizmatikus kör; csak a közös „VAGY” kereséssel lettek lefedve (gyenge lefedettség, lásd 3.). |
+| Ern Baxter; Bob Mumford; Don Basham; Charles Simpson (csoportos lekérdezés) | A Fort Lauderdale-kör; a tanítói kör motívum-közelsége (név, gyülekezet, tanítványság) miatt egy csoportos kereséssel (1Móz 4:26, Róm 10:13, Jóel 2:32) ellenőrizve. |
+
+**Nem keresett tanítók (indoklással).** T. L. Osborn, Kathryn Kuhlman, Gordon Lindsay, Jerry Savelle, Fred Price: nincs ismert, a motívumhoz (a „segítségül hívni az Úr nevét” formula; 1Móz 4:26, Jóel 2:32, 1Kir 18:24, Zsolt 116) köthető dedikált tanításuk, és az első körös keresések (lásd 3.) sem mutattak rájuk; a hiányt nem töltöm ki feltételezéssel. A lista „NEM jóváhagyott” és „Mérlegelés alatt” nevei tiltottak, nem szerepelnek.
+
+**Kenneth Hagin és Derek Prince kapcsán:** mindkettőre rákerestem; Prince-nél lett találat, Hagin-nél gap (ok: 3.).
 
 ## 3. Keresések tanítónként
 
-*(M3: a `tanito-kereso` subagent tölti ki.)*
+*Jelölés: ✅ dedikált, kifejezetten a témára/igehelyre szánt mű vagy prédikáció; ⚠️ konkrét, idézhető, de tágabb mű része; gap = nincs URL-lel igazolt, a motívumra ténylegesen hivatkozó forrás. Ahol a forrást nem nyitottam meg, az nem lehet ✅/⚠️. A kereső-szó angol (a tanítók angol nyelvű forrásai miatt).*
+
+### 3.1 Derek Prince
+
+Forrásnyelv: angol (a derekprince.com saját átiratai). Egyik találat sem dedikált, ezért ✅ nincs.
+
+| Kereső-kifejezés | Forrás (mű + pontos hely) | Erősség | Összefoglalás (saját szavakkal) |
+|---|---|---|---|
+| Derek Prince "Joel 2:32" "call on the name of the Lord" | *War on Earth* (War in Heaven and Earth sorozat, 2/2. rész, kód MV-4431-100-ENG), átirat, a saját deliverance-történet szakasza. URL: https://www.derekprince.com/sermons/426 · lekérés: 2026.10.20 | ⚠️ | Prince elmondja, hogy a nehézkedés („heaviness”) szellemétől való szabadulása előtt a Jóel 2:32-re irányították; egyedül hívta az Úr nevét, és megszabadult. A vers személyes szabadulás-ígéretként szerepel (Jóel 2:32, egyéni ima), prédikáció-fő témája a démoni harc. A formula fogalmát nem exegetálja. |
+| Derek Prince "Joel 2" "call on the name of the Lord" deliverance | *How I Came To Grips With Demons* (Deliverance and Demonology sorozat, 1/6. rész, kód MA-6001-100-ENG), átirat. URL: https://www.derekprince.com/sermons/82 · lekérés: 2026.10.20 | ⚠️ | Prince a Jóel-könyvet a végidei Lélek-kitöltés vázaként olvassa (pusztulás, helyreállítás, ítélet), és a 2:32 hívás-ígéretét ennek csúcspontjaként kezeli; innen eredeztetett szolgálati elve, hogy az embereket a feltételek teljesítésére tanítja, hogy maguk hívják az Urat. Ez a Jóel-ígéret és a pünkösd összekötése felé mutat (1. pont 1. csomópont), de a kontextus a démonológia. |
+| Derek Prince "call on the name of the Lord" "shall be delivered" | *Deliverance From The Fleshly Nature* (The Fullness of the Cross, 3. kötet, 3/6. rész, kód MA-4215-100-ENG), átirat. URL: https://www.derekprince.com/sermons/138 · lekérés: 2026.10.20 | ⚠️ | A személyes szabadulás-története egy másik előadásban: az Ézs 61:3 után egy újabb igére volt szüksége; idézi az „aki segítségül hívja az Úr nevét, megszabadul” szöveget (az átiratban a hely megjelölése nélkül), és Jézus nevét hívja. A forrás nem nevezi meg a Jóel 2:32-t, de a szöveg az; ezt az átirat nem mondja ki, ezért csak ⚠️. |
+| Derek Prince "Joel 2:32" "all-inclusive promise" | *The Prayer of Release* (From Curse to Blessing, Legacy Radio, 10/10. rész), átirat. URL: https://www.derekprince.com/radio/210 · lekérés: 2026.10.20 | ⚠️ | A átok alóli feloldás hetedik feltételeként idézi a Jóel 2:32-t, és „mindenkit magában foglaló ígéretnek” nevezi: aki Jézus Krisztus nevét hívja hitben, annak a feltételek teljesítése mellett szabadulás jár. Az „aki” (mindaz) hangsúlya egyezik az 1. pont 1. csomópontjával, de a téma az átokoldás. |
+| Derek Prince "Joel 2:32" "Isaiah 61:3" depression | *You've Got to Have Hope* (Teaching Letter, kód TL-L048-100-ENG, 2005; „The Helmet of Hope” tanításból adaptálva). URL: https://www.derekprince.com/teaching/05-2 · lekérés: 2026.10.20 | ⚠️ | Ugyanaz a személyes történet írásban: Prince a Jóel 2:32-t és az Ézs 61:3-at párosítva imádkozik, és a nyomás elmúlik; a vers a szabadulás igei alapja. A téma a remény, nem a formula. |
+| Derek Prince "Romans 10:13" "call upon the name of the Lord" | *The Roman Pilgrimage (Part 15)* (The Roman Pilgrimage, 3. kötet, a lap szerint 3/4. rész), átirat, a Róm 10:11 utáni szakasz. URL: https://www.derekprince.com/sermons/347 · lekérés: 2026.10.20 | ⚠️ | A Róm 10:12–13-at olvasva Prince azt hangsúlyozza, hogy az üdvösség terve nem csak zsidóké, hanem mindenkié; az eljárást három lépésben írja le (szívbeli hit, szájjal való megvallás, az Úr nevének segítségül hívása), és vallási előképzettség nélküli emberek példáival szemlélteti. Ez az 1. pont 2. csomópontjának (Róm 10:12–14) egy része; a 10:14 kérdéssorát az átirat nem tárgyalja. A „megvallás” (10:9–10) itt a tanító saját keretezése, a motívumon kívüli. |
+| Derek Prince "Genesis 4:26" / "Psalm 116" / "Elijah" Carmel / "Acts 22:16" / "1 Corinthians 1:2" | nincs URL-lel igazolt találat (a keresés a derekprince.com-on és általánosan sem hozott 1Móz 4:26-ot, 1Kir 18-at, ApCsel 22:16-ot vagy 1Kor 1:2-t). A Zsolt 116:12–13-ra egyetlen napi áhítat találat volt (https://www.derekprince.com/devotionals/c-r022-038), de azt nem nyitottam meg. | gap | Üres eredmény ezekre az igehelyekre; a Zsolt 116 ágra nem töltöm ki a meg nem nyitott áhítattal. |
+
+### 3.2 Kenneth Hagin
+
+| Kereső-kifejezés | Forrás (mű + pontos hely) | Erősség | Összefoglalás (saját szavakkal) |
+|---|---|---|---|
+| Kenneth Hagin "Romans 10:13" / "call upon the name of the Lord" / "Joel 2:32" / "Acts 2:21" | Nincs ténylegesen megnyitott forrás. A keresés Rhema-oldalakat hozott (*How Faith Comes* cikk; *The Coming Restoration* e-book), amelyek a találati kivonat szerint a Róm 10:13-at üdvösség-imában idézik, ill. a Róm 10:8–10, 13–14, 17-ből a hit hallásból fakadását tárgyalják. A rhema.org cikk letöltése 403-as hibát adott (https://rhema.org/index.php?Itemid=456&catid=46&id=237%3Ahow-faith-comes&option=com_content&view=article); az e-book PDF (https://www.rhema.org/PDFs/ebooks/TheComingRestoration.pdf) csak tömörített bináris tartalmat adott, nem olvasható. | gap | Nincs URL-lel igazolt, megnyitott találat. A keresési kivonat szerinti használat is csak üdvösség-ima-idézet (Róm 10:13 egy imaszövegben), illetve a hit-hallás tárgyalása (Róm 10:17), amely nem a formula exegézise; ezért gap, nem ⚠️. |
+
+### 3.3 Andrew Wommack
+
+| Kereső-kifejezés | Forrás (mű + pontos hely) | Erősség | Összefoglalás (saját szavakkal) |
+|---|---|---|---|
+| Andrew Wommack "call upon the name of the Lord" "Romans 10:13" | *Receive Jesus* (Andrew Wommack Ministries, evangelizációs oldal). URL: https://www.awmi.net/resources/receive-jesus/ · lekérés: 2026.10.20 | gap | Az oldal a Róm 10:9–10, 13-at idézi az üdvösségre hívás alapjaként, és üdvösség-imát ad; magyarázat a formuláról nincs. Ez puszta igeidézet egy evangélizációs imában, nem a témára szánt tanítás, ezért gap (a hivatkozás ténye megvan, az anyag tartalmi értéke nincs; a kérdést a fő szál mérlegelheti). |
+| Andrew Wommack "Acts 22:16" baptism "call upon the Lord" (tanulmányi füzet) | *Discipleship Evangelism study guide* (Level 1, Lesson 1, Eternal Life), PDF. A keresés kivonata szerint az ApCsel 22:16-ot a keresztséggel kapcsolja. URL: https://cdn.awmi.net/documents/study-guides/sg417/discipleship-evangelism-study-guide-language-english-full.pdf · letöltés: 2026.10.20 | gap | A PDF szövege nem volt olvasható (csak a fájlszerkezet jött vissza), ezért a keresési kivonatot nem tudtam a forrásból igazolni; nem ✅/⚠️. |
+
+### 3.4 Smith Wigglesworth
+
+| Kereső-kifejezés | Forrás (mű + pontos hely) | Erősség | Összefoglalás (saját szavakkal) |
+|---|---|---|---|
+| Smith Wigglesworth "call upon the name of the Lord" sermon / "whosoever shall call upon the name of the Lord shall be saved" | nincs találat; két külön keresés sem hozott Wigglesworth-forrást (az egyetlen sorozat-cím, *The Power of the Name*, nem megnyitott forrás, tartalma ismeretlen). | gap | Üres eredmény; az *Ever Increasing Faith* szövegét sem sikerült megnyitni. |
+
+### 3.5 F. F. Bosworth
+
+| Kereső-kifejezés | Forrás (mű + pontos hely) | Erősség | Összefoglalás (saját szavakkal) |
+|---|---|---|---|
+| F. F. Bosworth *Christ the Healer* "call upon the name of the Lord" Joel 2:32 Romans 10:13 | nincs találat (csak a mű kiadói oldalai; a könyv szövegét nem nyitottam meg). | gap | Üres eredmény; a *Christ the Healer* gyógyítás-témájú, a keresés nem igazolta a Jóel 2:32 / Róm 10:13 használatot. |
+
+### 3.6 John G. Lake
+
+| Kereső-kifejezés | Forrás (mű + pontos hely) | Erősség | Összefoglalás (saját szavakkal) |
+|---|---|---|---|
+| John G. Lake "call upon the name of the Lord" Joel 2:32 sermon | nincs találat. | gap | Üres eredmény. |
+
+### 3.7 Kenneth Copeland, Charles Capps, Oral Roberts
+
+| Kereső-kifejezés | Forrás (mű + pontos hely) | Erősség | Összefoglalás (saját szavakkal) |
+|---|---|---|---|
+| Kenneth Copeland "call upon the name of the Lord" Romans 10:13 Joel 2:32 kcm.org (önálló keresés) | nincs találat. | gap | Üres eredmény. |
+| Charles Capps OR Kenneth Copeland OR Oral Roberts "call upon the name of the Lord" Joel 2:32 sermon (csoportos keresés) | nincs találat; egyik név sem szerepelt a találatok között. | gap | Üres eredmény. **Korlát:** a csoportos „VAGY” keresés gyengén fedi le az egyes neveket, ezért Capps és Roberts esetében a gap „nem találtam”, nem „biztosan nincs”. |
+
+### 3.8 Ern Baxter, Bob Mumford, Don Basham, Charles Simpson
+
+| Kereső-kifejezés | Forrás (mű + pontos hely) | Erősség | Összefoglalás (saját szavakkal) |
+|---|---|---|---|
+| Ern Baxter OR Bob Mumford OR Don Basham OR Charles Simpson "calling on the name of the Lord" Genesis 4:26 OR Romans 10:13 OR Joel 2:32 | nincs találat; egyik név sem szerepelt a találatokban. | gap | Üres eredmény. **Korlát:** csoportos „VAGY” keresés, tanítónként nem lett külön ellenőrizve. |
 
 ## 4. Összegzés
 
-*(M3: a `tanito-kereso` subagent tölti ki.)*
+A vizsgált 13 tanítóból **1 tanítónál (Derek Prince) van megbízható, URL-lel igazolt, nevesíthető anyag; 12 tanítónál gap.** Egyik találat sem ✅ (dedikált mű): a motívumra Prince-nél sem ismert önálló tanítás.
+
+| Tanító | Legjobb erősség | ✅ | ⚠️ | gap |
+|---|---|---|---|---|
+| Derek Prince | ⚠️ | 0 | 6 | 1 (1Móz 4:26, Zsolt 116, Kármel, ApCsel 22:16, 1Kor 1:2) |
+| Kenneth Hagin | gap | 0 | 0 | 1 |
+| Andrew Wommack | gap | 0 | 0 | 2 |
+| Smith Wigglesworth | gap | 0 | 0 | 1 |
+| F. F. Bosworth | gap | 0 | 0 | 1 |
+| John G. Lake | gap | 0 | 0 | 1 |
+| Kenneth Copeland | gap | 0 | 0 | 2 (önálló és csoportos) |
+| Charles Capps, Oral Roberts | gap | 0 | 0 | csoportos keresésből |
+| Ern Baxter, Bob Mumford, Don Basham, Charles Simpson | gap | 0 | 0 | csoportos keresésből |
+
+Összes sor: 0 ✅, 6 ⚠️ (mind Derek Prince), a táblázat gap-sorai a 3. szakaszban.
+
+**Mi igazolt Prince-nél (a 4. pont szerint):**
+- **Jóel 2:32 (1. csomópont):** ötször is (*War on Earth*, *How I Came To Grips With Demons*, *Deliverance From The Fleshly Nature*, *The Prayer of Release*, *You've Got to Have Hope*), mindig a szabadulás-ígéret alapjaként, nem a formula exegézisével; a *How I Came To Grips With Demons* köti a leginkább a Jóel-könyv Lélek-kitöltés-gondolatához.
+- **Róm 10:12–13 (2. csomópont):** *The Roman Pilgrimage (Part 15)*, a zsidó–görög egyenlőség keretében; a 10:14 nem szerepel.
+- **Az 1Móz 4:26, az 1Kir 18, a Zsolt 116, az ApCsel 22:16, az 1Kor 1:2** (és az 1. pont többi igehelye): nincs igazolt anyag (gap).
+
+**Figyelmeztetések a felhasználónak:**
+- A találatok a szabadulás/deliverance témakörben jelennek meg; a „segítségül hívni az Úr nevét” formula tipológiáját, a név jelentését vagy az ószövetségi gyakorlatot egyik forrás sem tárgyalja. Használatuk: a Jóel 2:32 igehelyre való tényleges hivatkozás, nem a motívum értelmezése.
+- A Hagin- és Wommack-gap forrás-hozzáférési korlát is (403, olvashatatlan PDF), nem csak tartalmi hiány; ez kézi, böngészős ellenőrzéssel pótolható. A Wommack *Receive Jesus* oldal ténylegesen idézi a Róm 10:13-at, de csak üdvösség-ima részeként; a besorolás (gap) mérlegelhető.
+- A keresőmotor (általános, nem könyvtár- vagy átirat-specifikus) korlátozott; a gap nem bizonyítja, hogy a tanító nem tanított a témáról, csak azt, hogy ezen a menetben nem volt igazolható forrás.
