@@ -15,7 +15,7 @@ fugg: [107]
 
 # A BDB szakaszonkénti fordításának előkészítése (BDB_SZAKASZ_ELOKESZITES)
 
-*v1 · 2026.10.20 · tervezet a #38 ⛔ Mj döntéséből (DT181 (b), DT-F38m (1); felhasználó, 2026-10-20). Írta a #38 döntésrögzítő menete
+*v1 · 2026.10.20 · tervezet a #38 ⛔ Mj döntéséből (DT181 (b), DT269 (1); felhasználó, 2026-10-20). Írta a #38 döntésrögzítő menete
 (`claude/f38-mj-dontes`); befogadás a `/befogad`-dal.*
 
 ## Miért
@@ -23,7 +23,7 @@ fugg: [107]
 A #38 eddig a `BDB_teljes_unabridged.tsv` sima szövegét fordította Strongonként egy darabban (`jelentes_szam = teljes`). A szöveg
 nem hordozza a jelentéspontok határát, ezért a magyar sem; a #107 utólagos illesztése 98 Strong 606 szakaszán elakadt (N-F107b).
 A DT181 (b) szerint a következő adagtól a fordító **szakaszonként** kapja a szöveget az `adat/bdb_szakaszok.tsv`-ből (kulcs `strong` +
-`sorszam`), és a szakaszhatár változatlan tokenként megy át. A DT-F38m (1) szerint a bemenet a nyers szöveg a `hivatkozas`
+`sorszam`), és a szakaszhatár változatlan tokenként megy át. A DT269 (1) szerint a bemenet a nyers szöveg a `hivatkozas`
 javításokkal, **pe/mem csere nélkül** (`nezet_general.py` `--pe-mem` nélküli logikája).
 
 Ez a feladat az eszközláncot készíti elő. **Fordítás nem indul:** a menet modellhívással fordítást nem készít, az
@@ -81,5 +81,5 @@ duplázott, felcserélt token, üres szakasz) és a `bdb_szakasz_hu.tsv` `illesz
 ## Nem cél
 
 - Fordítás (a #38-é); a `adat/forditasok.tsv` írása.
-- A pe/mem csere és a `BDB_teljes_unabridged.tsv` cseréje (DT231 (d) külön feladata; DT-F38m (1)).
+- A pe/mem csere és a `BDB_teljes_unabridged.tsv` cseréje (DT231 (d) külön feladata; DT269 (1)).
 - A #67 kapuja (`bdb_igehely_javitas` összevetés) — ugyanazt a két fájlt írja, a sorrend a befogadáskor dől el.
