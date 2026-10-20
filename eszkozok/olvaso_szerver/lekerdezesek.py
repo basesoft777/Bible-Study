@@ -231,12 +231,21 @@ def heber_d2(con, ig):
         "SELECT strong_nyers, alak, kiejtes FROM token_eredeti WHERE igehely=? AND nyelv='H' ORDER BY sorszam", (ig,))]
 
 
+_MACULA_SQL = ('SELECT xml_id, szo, lemma, strong_nyers, morf, szofaj, gloss, lxx_szo, lxx_strong, lxx_szo_forras, lxx_szo_rahlfs '
+               'FROM token_macula WHERE igehely=? ORDER BY rowid')
+# F115.4 előtti építés: nincs `lxx_szo_forras` / `lxx_szo_rahlfs` oszlop; a két mező üres marad
+_MACULA_SQL_REGI = ("SELECT xml_id, szo, lemma, strong_nyers, morf, szofaj, gloss, lxx_szo, lxx_strong, '', '' "
+                    'FROM token_macula WHERE igehely=? ORDER BY rowid')
+
+
 def macula(con, ig):
-    """A Macula-sorok dict-ként (a pilot `macula` mezői + xml_id az arámi/héber nyelvhez)."""
+    """A Macula-sorok dict-ként (a pilot `macula` mezői + xml_id az arámi/héber nyelvhez).
+    Az F115.4 előtt épült adatbázisban az `lxx_forras` és az `lxx_rahlfs` üres (az oszlopok hiányoznak; az `oshl_csalad` mintája)."""
+    oszl = {r[1] for r in con.execute('PRAGMA table_info(token_macula)')}
+    sql = _MACULA_SQL if {'lxx_szo_forras', 'lxx_szo_rahlfs'} <= oszl else _MACULA_SQL_REGI
     return [{'xml_id': x, 'szo': a, 'lemma': b, 'strong': hnorm(c) if c else None, 'morf': d, 'szofaj': e, 'gloss': f,
              'lxx': g, 'lxx_strong': hnorm(h) if h else None, 'lxx_forras': i or '', 'lxx_rahlfs': j or ''}
-            for x, a, b, c, d, e, f, g, h, i, j in con.execute(
-                'SELECT xml_id, szo, lemma, strong_nyers, morf, szofaj, gloss, lxx_szo, lxx_strong, lxx_szo_forras, lxx_szo_rahlfs FROM token_macula WHERE igehely=? ORDER BY rowid', (ig,))]
+            for x, a, b, c, d, e, f, g, h, i, j in con.execute(sql, (ig,))]
 
 
 def morf_kulcs(con):
