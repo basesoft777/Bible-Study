@@ -35,10 +35,10 @@ Eszköz: `eszkozok/karoli_strong/tokenszint_vershatar.py` (új; jelölt-lista a 
 
 | hely | mi a Károli-vers határa | állapot |
 |---|---|---|
-| 2Kor 2:12–13 | a Károli 2:12 vége („nem volt lelkemnek nyugodalma … Titust, az én atyámfiát”) = az eredeti 2:13 1–11. tokenje | mergelve, javítatlan |
+| 2Kor 2:12–13 | a Károli 2:12 vége („nem volt lelkemnek nyugodalma … Titust, az én atyámfiát”) = az eredeti 2:13 1–14. tokenje | mergelve, javítatlan |
 | 2Kor 5:14–15 | a Károli 5:15 eleje („Úgy vélekedvén, hogy ha egy meghalt mindenkiért, tehát mindazok meghaltak”) = az eredeti 5:14 vége (κρίναντας … ἀπέθανον) | mergelve, javítatlan |
 | 2Kor 8:13–14 | a Károli 8:13 vége = az eredeti 8:14 eleje | `kezi` kényszerben (F22.24) |
-| Zsid 1:1–2 | a Károli 1:1 vége („ez utolsó időkben szólott nékünk Fia által”) = az eredeti 1:2 1–7. tokenje | mergelve, javítatlan |
+| Zsid 1:1–2 | a Károli 1:1 vége („ez utolsó időkben szólott nékünk Fia által”) = az eredeti 1:2 1–9. tokenje | mergelve, javítatlan |
 | Fil 3:13–14 | a Károli 3:14 eleje („De egyet cselekszem, azokat … nékik dőlvén,”) = az eredeti 3:13 vége („ἓν δέ … ἐπεκτεινόμενος”) | mergelve, javítatlan (lazább küszöb) |
 | ApCsel 13:32–33, 24:2–3 | (még nem párosított könyv) | az ApCsel külön keretdöntés |
 
