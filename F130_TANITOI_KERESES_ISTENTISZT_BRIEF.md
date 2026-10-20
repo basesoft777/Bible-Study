@@ -6,10 +6,10 @@ tipus: feladat
 fazis: 1
 munka: ertelmezo
 modell: opus
-allapot: fut
+allapot: megallt
 ag: claude/tanitoi-kereses-istentiszt
 ad: a motivumok/naplok/ISTENTISZT-001_tanitoi_kereses.md a 7. sablon szerinti, webes forrásokkal (mű, pontos hely, URL) igazolt eredményt hordozza a manual szétválasztás helyett; a régi változat archiválva; a #127 tanítói rése erre épülhet
-kovetkezo: "Mz: fuggetlen-ellenor a base..head diffen (a 7. sablon pontjai, a forrás-URL-ek elérhetősége mintán, proveniencia, archiválás bájtra), utána zárás (zárónapló, „Egyeztetett eltérés”: DT-F130c M4-megosztás, draft PR) — az orkesztrátor vezényli; M0–M4 és F130.3 kész"
+kovetkezo: "Te: /elteres 130 (a független ellenőr ELTÉRÉS-e, 7 tétel: naplok/ELLENOR_F130.md; első az E5 HIBA 3, TÖRLÉS-SZÁNDÉKOS jelölés hiánya)"
 olvas: [motivumok/ISTENTISZT-001.md, "tematikus_lezart/ISTENTISZT-001*", "tematikus_lezart/naplok/ISTENTISZT-001*", motivumok/naplok/ISTENTISZT-001_tanitoi_kereses.md, archivum/ISTENTISZT-001/, sablonok/7_PaRDeS_tanitoi_kereses_sablon.md, sablonok/4_PaRDeS_tematikus_sablon.md, sablonok/PaRDeS_tanitok_lista.md, .claude/agents/tanito-kereso.md, adat/motivumok.tsv, naplok/F11_szetvalasztas_ISTENTISZT-001.tsv]
 ir: [motivumok/naplok/ISTENTISZT-001_tanitoi_kereses.md, motivumok/ISTENTISZT-001.md, archivum/ISTENTISZT-001/ISTENTISZT-001_tanitoi_kereses_manual.md]
 fugg: []
