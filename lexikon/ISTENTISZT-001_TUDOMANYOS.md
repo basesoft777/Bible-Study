@@ -8,7 +8,7 @@ A motívum az ószövetségi קָרָא בְּשֵׁם יְהוָה (kárá bes�
 
 ## Tartalomjegyzék
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-10-18 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-10-20 -->
 
 *Ez a blokk a lexikon-oldal 12 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
 
@@ -29,7 +29,7 @@ A motívum az ószövetségi קָרָא בְּשֵׁם יְהוָה (kárá bes�
 
 ## Jelmagyarázat és rövidítések
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#jelmagyarazat | forrás:  | licenc: minden jog fenntartva | ts=2026-10-18 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#jelmagyarazat | forrás:  | licenc: minden jog fenntartva | ts=2026-10-20 -->
 
 *Ez a blokk közös, minden lexikon-oldalon szó szerint azonos szöveg (G10).*
 
@@ -59,7 +59,7 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 
 ## 1. Előfordulások
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#elofordulasok | forrás: adat/elofordulasok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, adat/forditasok.tsv | licenc: minden jog fenntartva, közkincs, CC BY-SA 4.0 | ts=2026-10-18 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#elofordulasok | forrás: adat/elofordulasok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, adat/forditasok.tsv | licenc: minden jog fenntartva, közkincs, CC BY-SA 4.0 | ts=2026-10-20 -->
 
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum 32 igehely-sorát fedi az `elofordulasok.tsv`-ből, kanonikus sorrendben, a Károli-szöveggel (1/a) és az UBS-jelentés renderidejű hozzárendelésével (G3).*
 
@@ -328,7 +328,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 ## 1/b. Kizárt és vizsgált helyek
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-10-18 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-10-20 -->
 
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum 91 elutasított/nyitva maradt jelöltjét fedi a `jeloltek.tsv`-ből (G7).*
 
@@ -430,7 +430,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 ## 2. Szótári háttér
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#szocikkek | forrás: adat/lexikon_hivatkozasok.tsv, adat/szotar_szerepek.tsv, konkordancia/BDB_etimologia_kezi_hatarok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LSJ_teljes.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-10-18 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#szocikkek | forrás: adat/lexikon_hivatkozasok.tsv, adat/szotar_szerepek.tsv, konkordancia/BDB_etimologia_kezi_hatarok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LSJ_teljes.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-10-20 -->
 
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum 3 Strong-tokenjét fedi, szerepenként a szerepmátrix (`szotar_szerepek.tsv`) sorrendjében, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*
 
@@ -1233,7 +1233,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 *Forrás: konkordancia/SECE_G_teljes.tsv*
 
-*Proveniencia: `scope=id:ISTENTISZT-001 | forras=adat/lexikon_hivatkozasok.tsv | ts=2026-10-18`*
+*Proveniencia: `scope=id:ISTENTISZT-001 | forras=adat/lexikon_hivatkozasok.tsv | ts=2026-10-20`*
 
 ### Miért fontos ez a lelet *(kézi)*
 
@@ -1274,7 +1274,7 @@ választott, nem véletlenül tért el a "szabvány" ἐπικαλέομαι-tó
 
 ## 3. LXX-fordítói döntések
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#lxx | forrás: adat/lxx_dontesek.tsv, konkordancia/LXX_OS/1-chronicles.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/2-kings.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv, konkordancia/LXX_OS/joel.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zechariah.tsv, konkordancia/LXX_OS/zephaniah.tsv | licenc: CC BY 4.0, minden jog fenntartva | ts=2026-10-18 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#lxx | forrás: adat/lxx_dontesek.tsv, konkordancia/LXX_OS/1-chronicles.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/2-kings.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv, konkordancia/LXX_OS/joel.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zechariah.tsv, konkordancia/LXX_OS/zephaniah.tsv | licenc: CC BY 4.0, minden jog fenntartva | ts=2026-10-20 -->
 
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum ÓSZ-i előfordulásait veti össze az `LXX_OS`-szel (G5), soronként a Károli-vers minden versére.*
 
@@ -1309,7 +1309,7 @@ választott, nem véletlenül tért el a "szabvány" ἐπικαλέομαι-tó
 
 ## 4. Kereszthivatkozások
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-10-18 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-10-20 -->
 
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum 32 igehelyét veti össze a TSK (Votes ≥ 15) és a Károli-KH táblával; 23 igehely ad legalább egy találatot (106 találat összesen), 0 igehely versenkénti kereséssel nem vizsgálható.*
 
@@ -1562,11 +1562,11 @@ választott, nem véletlenül tért el a "szabvány" ἐπικαλέομαι-tó
 | Fil 4:19 | elutasítva | TSK Róm 10:12 (15, 18, 15); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés \| scope=manual \| forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md \| ts=2026-10-11 | ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
 | Róm 3:22 | elutasítva | TSK Róm 10:12 (15, 18, 15); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés \| scope=manual \| forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md \| ts=2026-10-11 | ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
 
-*Proveniencia: `scope=id:ISTENTISZT-001 | forras=adat/jeloltek.tsv+adat/elofordulasok.tsv+konkordancia/TSK_kereszthivatkozasok.tsv+konkordancia/Karoli_kereszthivatkozasok.tsv | ts=2026-10-18`*
+*Proveniencia: `scope=id:ISTENTISZT-001 | forras=adat/jeloltek.tsv+adat/elofordulasok.tsv+konkordancia/TSK_kereszthivatkozasok.tsv+konkordancia/Karoli_kereszthivatkozasok.tsv | ts=2026-10-20`*
 
 ## 5. Kapcsolatok
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kapcsolatok | forrás: adat/kapcsolatok.tsv | licenc: minden jog fenntartva | ts=2026-10-18 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kapcsolatok | forrás: adat/kapcsolatok.tsv | licenc: minden jog fenntartva | ts=2026-10-20 -->
 
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum 25 kapcsolat-sorát fedi a `kapcsolatok.tsv`-ből, 31 igehely-csomóponttal.*
 
@@ -1692,7 +1692,7 @@ graph LR
 
 *Rögzített indoklás nélküli kapcsolat-sor (1): 2Móz 33:19 → 2Móz 34:5.*
 
-*Proveniencia: `scope=id:ISTENTISZT-001 | forras=adat/kapcsolatok.tsv | ts=2026-10-18`*
+*Proveniencia: `scope=id:ISTENTISZT-001 | forras=adat/kapcsolatok.tsv | ts=2026-10-20`*
 
 ## 6. Értelmezés *(kézi)*
 
@@ -1730,6 +1730,32 @@ Beérseba).
 
 - **1Móz 13:4** — Nem új esemény, hanem tudatos visszatérés: a hűtlenség (egyiptomi kitérő) helyéről az imádat helyére.
 - **1Móz 21:33** — az egyetlen genezisi hely, ahol a formula önmagában teológiai kijelentést is hordoz Isten természetéről.
+
+**Peshat — a motívum közepe:**
+
+**A Kármel-jelenet (1Kir 18:24–26).** A 18:24-ben Illés a próbát két név szembeállításaként mondja ki: „Akkor hívjátok segítségül a ti istenteknek nevét, és én is segítségül hívom az Úrnak nevét; és a mely isten tűz által felel, az az Isten.” A 18:25-ben Baál prófétái kapják a felszólítást: „hívjátok segítségül a ti istenteknek nevét”. A 18:26-ban végrehajtják: „segítségül hívák a Baálnak nevét reggeltől fogva délig, mondván: Baál! hallgass meg minket! De nem jött szó, sem felelet.” A segítségül hívás szerkezete (קָרָא בְּשֵׁם, kárá besém) a két félnél azonos; a 18:25–26-ban a megszólított név Baálé (H1168), a 18:24-ben Illésé az Úré (H3068). A „felel” ige (H6030) a 18:24-ben és a 18:26-ban áll.
+
+Értelmezés (Peshat): a két fél ugyanazt teszi — egy nevet hív segítségül —, és a próba azt dönti el, melyik név az Istené: Baálé vagy az Úré.
+
+*Proveniencia: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, n=32) | forras=TAHOT_kivonat.tsv+Karoli_1908.tsv (naplok/F126_meres.py, split('\t')) | ts=2026-10-20T10:11Z · scope=range:1Kir 18:24, range:1Kir 18:25, range:1Kir 18:26 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | ts=2026-10-20T10:08Z | csatorna=cli*
+
+**A kívülálló elvárása (2Kir 5:11).** Naámán azt várta, hogy a próféta „kijő hozzám, és előállván, segítségül hívja az Úrnak, az ő Istenének nevét, és kezével megilleti a beteg helyeket”; a vers azzal kezdődik, hogy Naámán ezért megharagudott és elment. Az előfordulás funkciója a táblában: „ismétlődés, kívülálló szemszögéből”.
+
+Értelmezés (Peshat): a kívülálló a próféta Istenének, az Úrnak a nevét várja segítségül hívni, szemmel látható szertartásként; a történet ezt az elvárást nem teljesíti.
+
+*Proveniencia: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, n=32) | forras=elofordulasok.tsv (funkcio)+Karoli_1908.tsv (naplok/F126_meres.py, split('\t')) | ts=2026-10-20T10:11Z · scope=range:2Kir 5:11 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | ts=2026-10-20T10:08Z | csatorna=cli*
+
+**A név a hirdetés hármasában (1Krón 16:8; Zsolt 105:1; Ézs 12:4).** Az 1Krón 16:8-ban és a Zsolt 105:1-ben a felszólítás három tagja ugyanaz: „Dícsérjétek / Magasztaljátok az Urat, hívjátok segítségül az ő nevét, hirdessétek a népek között az ő nagy dolgait / cselekedeteit”. Az Ézs 12:4-ben ugyanez a hármas áll, és a név kétszer: „magasztaljátok az Ő nevét … mondjátok, hogy nagy az Ő neve.” Mért tény: a „hálát ad” ige (H3034) a motívum 32 helye közül csak ebben a háromban áll, és a két első vers tartalmi szókészlete teljesen azonos.
+
+Értelmezés (Peshat): a név segítségül hívása itt nem egyéni kérés, hanem közösségi felszólítás, amely a hálaadás és a népek közti hirdetés közé áll; az Ézs 12:4-ben a név maga is a kimondás tárgya („nagy az Ő neve”).
+
+*Proveniencia: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, n=32) | forras=TAHOT_kivonat.tsv+grammatikai_strongok.tsv+Karoli_1908.tsv (naplok/F126_meres.py, split('\t')) | ts=2026-10-20T10:11Z · scope=range:1Krón 16:8, range:Zsolt 105:1, range:Ézs 12:4 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | ts=2026-10-20T10:08Z | csatorna=cli*
+
+**ApCsel 9:21.** A vers az ApCsel 9:14 megnevezését ismétli meg, más beszélő szájából. A 9:14 a megszólított Úrhoz szól („kik a te nevedet segítségül hívják”); a 9:21-ben a hallgatók beszélnek harmadik személyben arról, aki üldözte „azokat, a kik ezt a nevet hívják segítségül”. A vers „mindnyájan” szava (πάντες, pantesz) a hallgatókra vonatkozik („Álmélkodnak vala pedig mindnyájan, a kik hallák”), a hívókra nem.
+
+Értelmezés (Peshat): a kívülállók szájában a csoport ismertetőjegye a név, amelyet segítségül hívnak („ezt a nevet”); ezen túl a hely a 9:14 ismétléseként tartozik a motívumhoz (Párhuzam, magas bizonyosság), további értelmezést a szöveg nem kínál.
+
+*Proveniencia: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, n=32) | forras=TAGNT_kivonat.tsv+Karoli_1908.tsv+kapcsolatok.tsv (naplok/F126_meres.py, split('\t')) | ts=2026-10-20T10:11Z · scope=range:ApCsel 9:14, range:ApCsel 9:21 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | ts=2026-10-20T10:08Z | csatorna=cli*
 
 **Remez:** a minta a Séthita vonaltól a pátriárkákon át húzódik
 tovább, a próféták nyilvános, versengő kontextusán (1Kir 18) és a
@@ -1797,6 +1823,40 @@ segítségül hívók körét zsidóra és görögre egyaránt kiterjeszti. Az
 egyetemes ígéret tehát nem a 13. versnél kezdődik: a 12. vers már
 kimondja, hogy ugyanaz az Úr gazdag mindazokhoz, akik őt segítségül
 hívják.
+
+**Remez — a motívum közepe:** az alábbi felismerések a név segítségül hívását követik a motívum helyein; a versek kísérő szavai csak mért tényként állnak. Ahol két hely közös szókészlete áll egymás mellett, az közös szókészlet, nem idézés és nem szándékos utalás.
+
+**Két oltár.** Az „oltár” (מִזְבֵּחַ, mizbéah, H4196) a motívum 32 helye közül négyben áll: a pátriárkák három oltáránál (1Móz 12:8; 13:4; 26:25) és a Kármelen, ahol Baál prófétái „sántikáltak az oltár körül, a melyet készítettek” (1Kir 18:26).
+
+Értelmezés (Remez): a külső forma — oltár és a név segítségül hívása — a pátriárkáknál és Baál prófétáinál ugyanaz; a két helycsoportot a megszólított név választja el: ott az Úr neve, itt Baálé. Tanulságként csak annyi mondható, amennyit a szöveg maga kimond: a próba azt dönti el, melyik „az Isten” (1Kir 18:24), nem a hívás formáját.
+
+*Proveniencia: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, n=32) | forras=TAHOT_kivonat.tsv+Karoli_1908.tsv (naplok/F126_meres.py, split('\t')) | ts=2026-10-20T10:11Z · scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H7121+H4196 | n=18 | ts=2026-10-20T10:08Z | csatorna=cli*
+
+**Zsolt 116:4.** A vers a formula első előfordulása a zsoltárban: „És az Úrnak nevét segítségül hívám: Kérlek Uram, szabadítsd meg az én lelkemet!” A hívó az Úr nevét hívja segítségül, és a vers többi része maga a kérés. A hely a zsoltáron belüli ismétlés révén kapcsolódik a motívumhoz (Zsolt 116:4 → 116:13 → 116:17); a név segítségül hívásáról a motívum többi helyéhez az adat új összefüggést nem ad, ezért a próza itt nem értelmez tovább.
+
+*Proveniencia: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, n=32) | forras=TAHOT_kivonat.tsv+Karoli_1908.tsv+kapcsolatok.tsv (naplok/F126_meres.py, split('\t')) | ts=2026-10-20T10:11Z · scope=range:Zsolt 116:4 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | ts=2026-10-20T10:08Z | csatorna=cli*
+
+**Zsolt 116:13.** A vers a formula második előfordulása ugyanabban a zsoltárban: „A szabadulásért való poharat felemelem, és az Úrnak nevét hívom segítségül.” Kísérő szavai közül a „szabadulás” (H3444), a „pohár” (H3563) és a „felemel” (H5375) a motívum 32 helye közül csak itt áll; a Jóel 2:32 „szabadulás” szava más héber szó (H6413). A hely a zsoltáron belüli ismétlés révén tartozik a motívumhoz (Zsolt 116:4 → 116:13 → 116:17); a motívum többi helyéhez az adat új összefüggést nem ad, ezért a próza itt nem értelmez tovább.
+
+*Proveniencia: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, n=32) | forras=TAHOT_kivonat.tsv+Karoli_1908.tsv+kapcsolatok.tsv (naplok/F126_meres.py, split('\t')) | ts=2026-10-20T10:11Z*
+
+**A név körül: küldetés és vád.** A liturgikus versekben a felszólítás így szól: „hívjátok segítségül az ő nevét, hirdessétek a népek között” (1Krón 16:8; Zsolt 105:1). A Zsolt 79:6-ban és a Jer 10:25-ben a harag azokra a nemzetekre szól, „a melyek nem hívják segítségül a te nevedet”. A Sof 3:9-ben a népek ajka megtisztul, „hogy mind segítségül hívják az Úr nevét”. Mért tény: az „ismer” ige (H3045) ezek közül öt versben áll (Károli: „hirdessétek”, illetve „nem ismernek”); a népeket a liturgikus versek az עַם (am, H5971), a két vádló vers a גּוֹי (gój, H1471) szóval nevezik.
+
+Értelmezés (Remez): a név segítségül hívása körül két irány áll: a nevet segítségül hívó közösség a népek felé fordul, a nemzetek elleni vád megnevezett oka pedig az, hogy a nevet nem hívják segítségül. A Sof 3:9-ben a népek maguk hívják a nevet; a három helycsoport egymás mellé állítása felismerés.
+
+*Proveniencia: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, n=32) | forras=TAHOT_kivonat.tsv+Karoli_1908.tsv (naplok/F126_meres.py, split('\t')) | ts=2026-10-20T10:11Z · scope=range:1Krón 16:8, range:Zsolt 105:1, range:Zsolt 79:6, range:Jer 10:25, range:Sof 3:9 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | ts=2026-10-20T10:08Z | csatorna=cli*
+
+**„Mindaz, a ki”.** A hívókra vonatkozó „mind” az ószövetségi helyek közül a Jóel 2:32-ben („mindaz, a ki az Úrnak nevét hívja segítségül”) és a Sof 3:9-ben („hogy mind segítségül hívják az Úr nevét”) áll (כֹּל, kol, H3605), az újszövetségiek közül öt helyen (πᾶς, pász: ApCsel 2:21; 9:14; Róm 10:12; 10:13; 1Kor 1:2). A genezisi helyeken a hívó egyetlen személy (Károli: „segítségűl hívá”, 1Móz 12:8; 13:4; 21:33; 26:25).
+
+Értelmezés (Remez): az Úr nevének segítségül hívása egyes szereplők gyakorlatából mindazok jegyévé tágul, akik a nevet hívják; az 1Kor 1:2 a nevet meg is nevezi („a mi Urunk Jézus Krisztus nevét”), a Róm 10:12 a hívók körét zsidóra és görögre mondja ki (l. fent, 3.).
+
+*Proveniencia: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, n=32) | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv+Karoli_1908.tsv (naplok/F126_meres.py, split('\t')) | ts=2026-10-20T10:11Z · scope=range:1Kor 1:2 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | ts=2026-10-20T10:08Z | csatorna=cli*
+
+**Róm 10:14.** A vers a 10:13 Jóel-idézetét — „minden, a ki segítségül hívja az Úr nevét, megtartatik” — kérdéssorral folytatja: „Mimódon hívják azért segítségül azt, a kiben nem hisznek? Mimódon hisznek pedig abban, a ki felől nem hallottak? Mimódon hallanának pedig prédikáló nélkül?” A 10:14-ben a „név” szó nem áll; a „segítségül hív” (ἐπικαλέομαι, epikaleomai) tárgya névmás, amely a 10:13 Urára utal vissza. Mért tény: a versben a „hisz” (πιστεύω) és a „hall” (ἀκούω) kétszer, a „hirdet” (κηρύσσω) egyszer áll. Szövegi adat: a TAGNT szerint a „hívják segítségül” alak (ἐπικαλέσωνται), valamint a „hisznek” és a „hallanának” alakja hat kiadásban áll (NA28, NA27, Tyndale House, SBL, Westcott–Hort, Tregelles), a Textus Receptus és a bizánci szöveg nélkül; az utóbbiak alakját a repó adata nem tartalmazza.
+
+Értelmezés (Peshat): a kérdéssor a 10:13-ban ígért segítségül hívásra kérdez vissza: az Úr nevét az hívja segítségül, aki hisz benne. Értelmezés (Remez): a hit, a hallás és a hirdető így a név segítségül hívásának előzményeiként áll a versben, és a Jóel-ígéret a sor végére kerül.
+
+*Proveniencia: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, n=32) | forras=TAGNT_kivonat.tsv (Kritikai kiadás)+Karoli_1908.tsv+kapcsolatok.tsv (naplok/F126_meres.py, split('\t')) | ts=2026-10-20T10:11Z · scope=range:Róm 10:13, range:Róm 10:14 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | ts=2026-10-20T10:08Z | csatorna=cli*
 
 **Drash:** a motívum azt tanítja, hogy az istentisztelet magja nem a
 nyilvános teljesítmény vagy a rituálé pontossága, hanem a
@@ -1875,6 +1935,10 @@ A H7121+H8034 együttes-előfordulás teljes ÓSZ-scanje a „call [X’s] name�
 
 A BDB H7121 2.c citációs listájának egyezése a motívum saját audit-eredményével a Jer 10:25 = Zsolt 79:6 párnál nem független megerősítés: ezt a párt a kutatás a BDB-idézet alapján találta meg, nem önálló kereséssel.
 
+**Négy forrás egybeesése a határeseteken.** A 2Móz 33:19-ben és a 34:5-ben — ahol nem az ember hívja segítségül Isten nevét, hanem Isten kiáltja ki a sajátját — négy forrás jelöli ugyanazt az eltérést a motívum többi helyétől: a BDB a 3. jelentéshez sorolja („kihirdetni”; a többi hely 2.c), a görög fordítás a καλέω (kaleó) igét adja (a 22 ószövetségi hely közül 18-ban ἐπικαλέομαι áll), a BSB „proclaim”-et ír (a többi helyen a „call” valamely alakját, az Ézs 12:4 kivételével), a Károli „kiált”-ot (csak e két helyen). Az Ézs 12:4-ben három forrás tér el: a görög fordítás βοάω (boaó), a BSB „proclaim”, a Károli „magasztaljátok”; a BDB viszont 2.c-t ad. A B-eset határa tehát nem egyetlen szótári besoroláson áll: négy fordítói és szótári forrás ugyanazt a két verset különíti el, az Ézs 12:4 átmeneti eset. Korlát: a négy forrás egybeesése mért, a függetlenségük nem (a BSB fordítóinak szótárhasználatát a repó adata nem mutatja), ezért ez egybeesés, nem független megerősítés. A βοάω nem csak az Ézs 12:4 görög szövegében áll: az 1Kir 18:24-ben a Baál-hívók felszólítását is ez adja, Illés saját hívását ott az ἐπικαλέομαι, ezért a vers az egyező helyek között van.
+
+*Proveniencia: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, n=32) | forras=elofordulasok.tsv (jelentes_szam, karoli_szo)+BSB_Strongs.tsv+Konyv_normalizalo_tabla.tsv+lxx_dontesek.tsv (naplok/F126_meres.py, split('\t')) | ts=2026-10-20T10:11Z · scope=range:<a 22 ószövetségi hely> | forras=LXX_OS/*.tsv+TAGNT_kivonat.tsv | ts=2026-10-20T10:07Z–10:08Z | csatorna=cli (23 sor: naplok/F126_lekerdezesek.tsv; összesítés: naplok/F126_lxx_osszesit.py)*
+
 #### A "be nem sorolható" eset mögötti hármas tipológia (A/B/C)
 
 Az elutasított jelöltek (Ézs 43:1, 44:5, 45:3
@@ -1946,7 +2010,7 @@ megnevezett/invokált fél áll szemben); a D inkább egy ötödik dimenzió
 
 ## 8. Irodalom és idézés
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#idezes | forrás:  | licenc: minden jog fenntartva | ts=2026-10-18 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#idezes | forrás:  | licenc: minden jog fenntartva | ts=2026-10-20 -->
 
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum hivatkozási adatait, a ténylegesen felhasznált szótárakat (teljes névvel, forrásfájlonként) és az adatforrásokat adja (G9, LEXV2_3-ig szűkítve).*
 
@@ -1954,7 +2018,7 @@ megnevezett/invokált fél áll szemben); a D inkább egy ötödik dimenzió
 - ID: `ISTENTISZT-001`
 - Cím: Segítségül hívni az Úr nevét
 - Státusz: publikálható (`v3`, 2026.09.22)
-- Generálva: 2026-10-18
+- Generálva: 2026-10-20
 - Fájl: `https://github.com/Basesoft777/Bible-Study/blob/main/lexikon/ISTENTISZT-001_TUDOMANYOS.md`
 
 **Felhasznált szótárak:**
@@ -1992,7 +2056,7 @@ megnevezett/invokált fél áll szemben); a D inkább egy ötödik dimenzió
 
 ## Kolofon
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditasok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/szotar_szerepek.tsv, konkordancia/BDB_etimologia_kezi_hatarok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LSJ_teljes.tsv, konkordancia/LXX_OS/1-chronicles.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/2-kings.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv, konkordancia/LXX_OS/joel.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zechariah.tsv, konkordancia/LXX_OS/zephaniah.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-10-18 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditasok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/szotar_szerepek.tsv, konkordancia/BDB_etimologia_kezi_hatarok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LSJ_teljes.tsv, konkordancia/LXX_OS/1-chronicles.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/2-kings.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv, konkordancia/LXX_OS/joel.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zechariah.tsv, konkordancia/LXX_OS/zephaniah.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-10-20 -->
 
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum törzsadatait (`motivumok.tsv`) és a lexikon-oldalon ténylegesen felhasznált forrásokat sorolja fel.*
 
