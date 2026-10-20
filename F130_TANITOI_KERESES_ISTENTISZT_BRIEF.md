@@ -7,6 +7,7 @@ fazis: 1
 munka: ertelmezo
 modell: opus
 allapot: lezarva
+pr: 451
 lezarva_osszegzes: "a tanítói fájl a 7. sablon szerint újraírva, webes forrásokkal (tanito-kereso M3, M4 forrásmegnyitás), a manual változat archiválva, az ISTENTISZT-001.md 5. pontja a jóváhagyott szöveg szerint; DT-F130c–e; ellenőrzés ELTÉRÉS 7 → TISZTA, egy javítókör; zárónapló naplok/TANITOI_KERESES_ISTENTISZT_zaras.md"
 ag: claude/tanitoi-kereses-istentiszt
 ad: a motivumok/naplok/ISTENTISZT-001_tanitoi_kereses.md a 7. sablon szerinti, webes forrásokkal (mű, pontos hely, URL) igazolt eredményt hordozza a manual szétválasztás helyett; a régi változat archiválva; a #127 tanítói rése erre épülhet
