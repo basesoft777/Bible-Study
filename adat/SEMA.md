@@ -312,12 +312,23 @@ Kulcs: `forras_igehely` + `cel_igehely` + `id`.
 
 ### 2.4 `jeloltek.tsv` — a kereszthivatkozás-napló gépi alakja
 
-Kulcs: `id` + `igehely`. **Ez a tábla a rendszer legfontosabb szerkezeti javítása.**
+Kulcs: `id` + `igehely` + `jelolt_tipus` + `cel_id` (DT-F127b (i), #127; előtte `id` + `igehely`).
+**Ez a tábla a rendszer legfontosabb szerkezeti javítása.**
+
+A tábla két jelöltfajtát hordoz, és ez az egyetlen kapu mindkettőhöz (2. szabály):
+**előfordulás-jelölt** (`jelolt_tipus=elofordulas`: a motívum lehetséges előfordulása) és
+**motívumközi jelölt** (`jelolt_tipus=motivumkozi`: az `id` motívum `igehely`-e és a `cel_id`
+motívum `cel_igehely`-e közötti lehetséges kapcsolat; a döntés után a `motivum_kapcsolatok.tsv`
+sora lesz belőle, 2.33). **Minden előfordulás-jelöltet olvasó eszköz csak az `elofordulas`
+sorokat olvassa** (`general.elofordulas_jeloltek`; DT-F127d (1): `general.py`,
+`lexikon_general.py`, `ellenoriz.py`, `jelolt.py`, `nem_vizsgalt.py`, `betolt.py`,
+`karoli_ellenorzes.py`, `ellenorzes/szabalyok.py`, `sqlite_epit.py`) — a motívumközi jelölt
+nem kizárt hely, nem a motívum vizsgált verse, és nem igazol előfordulást.
 
 | Mező | Típus | Kötelező | Leírás |
 |---|---|---|---|
 | `id` | motívum-id | ✔ | |
-| `igehely` | `IGEHELY` | ✔ | |
+| `igehely` | `IGEHELY` | ✔ | Motívumközi jelöltnél az `id` motívum oldali igehely. |
 | `forras_kereses` | szabad szöveg | ✔ | Melyik lekérdezés hozta elő (`scan H7497`, `TSK 1Móz 6:4`, `Károli-KH`). |
 | `dontes` | zárt | ✔ | `beépítve` \| `elutasítva` \| `nyitva`. |
 | `indoklas` | szabad szöveg | ✔ | `elutasítva` esetén **kötelezően érdemi**. Egészséges jel, ha sok az *„elutasítva, mert csak a fölérendelt fogalmon keresztül tartozna ide"* tétel. |
@@ -325,6 +336,10 @@ Kulcs: `id` + `igehely`. **Ez a tábla a rendszer legfontosabb szerkezeti javít
 | `azonositas_modja` | `AZONOSITAS_MODJA` | | |
 | `megbizhatosag` | `MEGBIZHATOSAG` | | |
 | `datum` | `DATUM` | ✔ | |
+| `jelolt_tipus` | zárt | ✔ | `elofordulas` \| `motivumkozi` (DT-F127b). A #127 előtti 627 sor `elofordulas`. |
+| `cel_id` | motívum-id | `motivumkozi`-nál ✔, egyébként üres | A kapcsolat másik motívuma; létező, a sajáttól eltérő ID. |
+| `cel_igehely` | `IGEHELY`-lista (`; `-vel elválasztva) | `motivumkozi`-nál ✔, egyébként üres | A másik motívum oldali igehely(ek); nem kulcs (DT-F127d). |
+| `cel_alpont` | szabad szöveg (a célalpont neve) | | DT-F127b (C): a kapcsolat célja a másik motívum egy ↳ alpontja. Amíg az alpontnak nincs adatbeli azonosítója, a jelölt `nyitva` marad (az `ellenoriz.py` 2/b. szabálya a `beépítve` + `cel_alpont` párt elutasítja), kapcsolat-sor nem keletkezik belőle. Nem kulcs (DT-F127d). |
 
 #### 2.4.1 Miért itt van a `karoli_szo`, és nem máshol
 
@@ -1353,6 +1368,34 @@ fejléc. Olvasás `split('\t')`.
 | `proveniencia` | `scope=<Strong> \| forras=bdb_jelolt/hu_illeszt.py (fejléc) \| ts=<nap>` |
 
 Állapot (F107.38, 2026-10-18; DT232 (d): a magyar jelölő-felismerés bővítése az illesztőben — törzsnév mindkét oldalon a bontó törzslistájából, a forrás alakjában, a magyaros alakokkal és a raggal, kulcs a kanonikus név (`Hithpa'el`, `Pe'al`); betű j-től csak tagolásjel után, a szám utáni „k.” nem; a kérdőjel utáni szám): 674 Strong, 9 664 sor; soronként `illeszkedik` 6 395, `horgonnyal` 202, `elakad` 606, `jelolo_nelkul` 2 461 (F107.34: 6 210 / 271 / 618 / 2 565). Strong-szinten a kapu szigorú illesztőjével (a kapu regexei, mint a kiinduló mérés) változatlanul `illeszkedik` 380, `tagolatlan` 94, `elakad` 200 (kiinduló: 355 / 89 / 230); horgonnyal kiegészítve `illeszkedik` 409, `horgonnyal` 85, `elakad` 98, `tagolatlan` 82 (F107.34: 385 / 105 / 101 / 83). A maradék `elakad` Strongok a #38 következő adagjában szakaszonként újrafordítandók (DT232 (c); lista: N-F107b, `naplok/F107_BDB_JELOLT_SZOVEG_naplo.md` 7.1); kézi illesztés nincs.
+---
+
+### 2.33 `motivum_kapcsolatok.tsv` — motívum–motívum kapcsolatok (F127, FELADATOK #127, DT-F127b)
+
+Kulcs: `id_a` + `igehely_a` + `id_b` + `igehely_b`, **rendezett párként** (`id_a` < `id_b`
+betűrendben). Szimmetrikus: a sor mindkét motívum lapján megjelenik (generált „5/b.
+Kapcsolódó motívumok” blokk, DT-F127b (α)). Más tengely, mint a `kapcsolatok.tsv` (2.3, a
+motívumon belüli igehely-párok); a 4. szakasz névütközése ugyanezt mutatja. **Minden sor
+mögött `beépítve` motívumközi jelölt áll** a `jeloltek.tsv`-ben (2. szabály; `ellenoriz.py`
+2/b.): a `dontes_ref` arra a sorra mutat, és a pár egyik oldala a jelölt `id`/`igehely`-e, a
+másik a `cel_id`/`cel_igehely` egyik eleme.
+
+| Mező | Típus | Kötelező | Leírás |
+|---|---|---|---|
+| `id_a` | motívum-id | ✔ | |
+| `igehely_a` | `IGEHELY` | ✔ | |
+| `alpont_a` | alpont-azonosító | | DT-F127b (C): csak létező alpont-azonosító (ma egy sincs: az alpont adatosítása a #123 ALVIL-001-ciklusáé vagy külön séma-tételé); üres = a motívum egésze. |
+| `id_b` | motívum-id | ✔ | |
+| `igehely_b` | `IGEHELY` | ✔ | |
+| `alpont_b` | alpont-azonosító | | Mint az `alpont_a`. |
+| `tipus` | zárt | ✔ | `szomszédos` (ugyanabban a fejezetben vagy beszédben áll) \| `közös_igehely`. A `tematikus` a DT-F127b szerint most nem része a készletnek. |
+| `funkcio` | szabad szöveg | | |
+| `bizonyossag` | zárt | ✔ | `magas` \| `közepes` \| `alacsony`. |
+| `pardes_szint` | `PARDES_SZINT` | | |
+| `indoklas` | szabad szöveg | | A mért szomszédság; a közös fejezet vagy szókészlet önmagában nem bizonyít szándékos utalást. |
+| `dontes_ref` | szöveg | ✔ | `jeloltek.tsv;<id>;<igehely>;motivumkozi;<cel_id>` — a döntést hordozó jelölt-sor kulcsa. |
+| `proveniencia` | `PROVENIENCIA` | ✔ | |
+
 ---
 
 ## 3. Integritási szabályok

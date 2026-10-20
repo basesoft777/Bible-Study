@@ -270,7 +270,9 @@ def munkalap_ellenoriz(munkalap_sorok, jeloltek, elofordulasok):
     ellenorzese (SEMA §3/2, 2.2 kotelezo mezok, G9 proveniencia). Az
     ervenyes sorok mellett a jeloltek-bol orokolt karoli_szo/azonositas_
     modja/megbizhatosag is bekerul a sor dict-jebe."""
-    beepitett = {(j['id'], j['igehely']): j for j in jeloltek if j.get('dontes') == 'beépítve'}
+    # DT-F127b: csak az előfordulás-jelölt igazolhat előfordulás-sort
+    beepitett = {(j['id'], j['igehely']): j for j in G.elofordulas_jeloltek(jeloltek)
+                 if j.get('dontes') == 'beépítve'}
     letezo = {(sor['id'], sor['igehely']) for sor in elofordulasok}
 
     eredmeny = []

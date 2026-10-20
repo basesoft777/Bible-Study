@@ -81,7 +81,8 @@ class Pozitiv(unittest.TestCase):
     def test_mai_adat_zold(self):
         sorok, sertesek = S.integritas(os.path.join(ROOT, 'adat'))
         self.assertEqual(sertesek, [], [s.sor_szoveg() for s in sertesek])
-        self.assertEqual(len(sorok), 14)   # #11 S2: + a 15. (DT183) es a 16. (DT250) fejlec-szabaly
+        # #11 S2: + a 15. (DT183) es a 16. (DT250) fejlec-szabaly; F127: + a 2/b. (DT-F127b)
+        self.assertEqual(len(sorok), 15)
 
     def test_g3_nincs_csv_modul(self):
         with open(os.path.join(ROOT, 'eszkozok', 'sqlite_epit.py'), encoding='utf-8') as f:

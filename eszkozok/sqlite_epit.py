@@ -234,7 +234,7 @@ def integritas(adat_dir):
         return G.tsv_beolvas(os.path.join(adat_dir, nev))[1]
     motivumok = be('motivumok.tsv')
     elofordulasok = be('elofordulasok.tsv')
-    jeloltek = be('jeloltek.tsv')
+    jeloltek_fejlec, jeloltek = G.tsv_beolvas(os.path.join(adat_dir, 'jeloltek.tsv'))
     kapcsolatok = be('kapcsolatok.tsv')
     datasetek = be('datasetek.tsv')
     auditok = be('auditok.tsv')
@@ -243,6 +243,7 @@ def integritas(adat_dir):
     sorok = [
         E.szabaly1_hivatkozasi_epseg(id_halmaz, elofordulasok, kapcsolatok, jeloltek, auditok),
         E.szabaly2_nincs_kozvetlen_ut(elofordulasok, jeloltek),
+        E.szabaly2b_motivumkozi(id_halmaz, jeloltek, jeloltek_fejlec, adat_dir),  # DT-F127b
         E.szabaly3_proveniencia(elofordulasok, auditok),
         E.szabaly4_gerinc_elem(elofordulasok),
         E.szabaly5_karoli_triplet(elofordulasok),
@@ -496,6 +497,8 @@ class Epito(object):
                               ('kapcsolatok.tsv', ['forras_igehely', 'cel_igehely']),
                               ('jeloltek.tsv', ['igehely'])):
             for r in G.tsv_beolvas(os.path.join(self.adat, nev))[1]:
+                if nev == 'jeloltek.tsv' and not G.jelolt_elofordulas_e(r):
+                    continue  # DT-F127b: csak előfordulás-jelölt
                 for o in oszlopok:
                     ertekek.append(r[o])
         for r in G.tsv_beolvas(os.path.join(self.adat, 'auditok.tsv'))[1]:
@@ -1217,6 +1220,8 @@ class Epito(object):
                     ('jeloltek', ['igehely'], ['id']))
         for tabla, oszl, kulcs in forrasok:
             for r in G.tsv_beolvas(os.path.join(self.adat, tabla + '.tsv'))[1]:
+                if tabla == 'jeloltek' and not G.jelolt_elofordulas_e(r):
+                    continue  # DT-F127b: a forras_kulcs (id|igehely) csak az előfordulás-jelöltre egyértelmű
                 for o in oszl:
                     v = self.vi.kibont(r[o])
                     sk = '|'.join([r[k] for k in kulcs] + [r[x] for x in oszl])

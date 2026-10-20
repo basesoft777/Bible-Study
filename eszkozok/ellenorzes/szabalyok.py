@@ -181,6 +181,10 @@ def e4_teljes_scan_naplo_es_dontes(fajlok):
 
     id_jeloltek = {}
     for d in jeloltek:
+        # DT-F127b: a teljes scan jelöltjei előfordulás-jelöltek; a motívumközi
+        # jelölt döntését az ellenoriz.py 2/b. szabálya őrzi.
+        if d.get('jelolt_tipus', 'elofordulas') != 'elofordulas':
+            continue
         id_jeloltek.setdefault(d.get('id', ''), []).append(d)
 
     naplo_szovegek = {}

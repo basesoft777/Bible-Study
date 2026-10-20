@@ -147,6 +147,9 @@ def szabaly1_hivatkozasi_epseg(motivum_id_halmaz, elofordulasok, kapcsolatok, je
     for sor in jeloltek:
         if sor['id'] not in motivum_id_halmaz:
             hibas.append('jeloltek: %s / %s' % (sor['id'], sor['igehely']))
+        # DT-F127b: a motívumközi jelölt célmotívuma is létező ID
+        if not G.jelolt_elofordulas_e(sor) and (sor.get('cel_id') or '') not in motivum_id_halmaz:
+            hibas.append('jeloltek (cel_id): %s / %s -> %s' % (sor['id'], sor['igehely'], sor.get('cel_id', '')))
     for sor in auditok:
         if sor['id'] not in motivum_id_halmaz:
             hibas.append('auditok: %s / %s' % (sor['id'], sor.get('lepes', '')))
@@ -156,7 +159,10 @@ def szabaly1_hivatkozasi_epseg(motivum_id_halmaz, elofordulasok, kapcsolatok, je
 
 
 def szabaly2_nincs_kozvetlen_ut(elofordulasok, jeloltek):
-    beepitett = {(j['id'], j['igehely']) for j in jeloltek if j.get('dontes') == 'beépítve'}
+    # DT-F127b: csak az előfordulás-jelölt igazolhat előfordulást -- egy
+    # azonos (id, igehely) motívumközi sor nem fedheti el a hiányát.
+    beepitett = {(j['id'], j['igehely']) for j in G.elofordulas_jeloltek(jeloltek)
+                 if j.get('dontes') == 'beépítve'}
     hibas = []
     for sor in elofordulasok:
         kulcs = (sor['id'], sor['igehely'])
@@ -165,6 +171,118 @@ def szabaly2_nincs_kozvetlen_ut(elofordulasok, jeloltek):
     if hibas:
         return Sor('2. Nincs közvetlen út', 'SÉRTÉS', len(hibas), hibas)
     return Sor('2. Nincs közvetlen út', 'RENDBEN')
+
+
+# ---------------------------------------------------------------------------
+# 2/b. DT-F127b (#127): motívumközi jelölt és kapcsolat (SEMA 2.4, 2.33)
+# ---------------------------------------------------------------------------
+
+MOTIVUM_KAPCSOLAT_FEJLEC = ['id_a', 'igehely_a', 'alpont_a', 'id_b', 'igehely_b', 'alpont_b',
+                            'tipus', 'funkcio', 'bizonyossag', 'pardes_szint', 'indoklas',
+                            'dontes_ref', 'proveniencia']
+MOTIVUM_KAPCSOLAT_TIPUSOK = ('szomszédos', 'közös_igehely')  # DT-F127b: a `tematikus` most nem
+BIZONYOSSAG_ERTEKEK = ('magas', 'közepes', 'alacsony')
+DONTES_ERTEKEK = ('beépítve', 'elutasítva', 'nyitva')
+
+
+def _igehely_lista(ertek):
+    return [x.strip() for x in (ertek or '').split(';') if x.strip()]
+
+
+def dontes_ref_szoveg(j):
+    """A `motivum_kapcsolatok.tsv` `dontes_ref` mezőjének alakja egy jelölt-sorra."""
+    return 'jeloltek.tsv;%s;%s;motivumkozi;%s' % (j['id'], j['igehely'], j.get('cel_id', ''))
+
+
+def szabaly2b_motivumkozi(motivum_id_halmaz, jeloltek, jeloltek_fejlec, adat_dir):
+    """SÉRTÉS, ha (1) a `jelolt_tipus` hiányzik a fejlécből vagy értéke nem
+    `elofordulas`/`motivumkozi`; (2) előfordulás-jelöltnek van `cel_*` mezője;
+    (3) motívumközi jelöltnek nincs létező, a sajátjától eltérő `cel_id`-je
+    vagy `cel_igehely`-e, vagy alponthoz kötve `beépítve` (DT-F127b (C): az
+    alpontnak még nincs adatbeli azonosítója, addig `nyitva`); (4) a kulcs
+    (id + igehely + jelolt_tipus + cel_id) ismétlődik; (5) a
+    `motivum_kapcsolatok.tsv` sora nem a séma szerinti, vagy nincs mögötte
+    `beépítve` motívumközi jelölt, amelynek igehely-párja egyezik (2. szabály:
+    nincs kapcsolat jelölt-döntés nélkül)."""
+    cim = '2/b. Motívumközi jelölt és kapcsolat (DT-F127b)'
+    hibas = []
+    for mezo in ('jelolt_tipus', 'cel_id', 'cel_igehely', 'cel_alpont'):
+        if mezo not in jeloltek_fejlec:
+            hibas.append('jeloltek.tsv: hiányzó oszlop: %s' % mezo)
+    if hibas:
+        return Sor(cim, 'SÉRTÉS', len(hibas), hibas)
+    kulcsok = {}
+    beepitett_mk = {}
+    for j in jeloltek:
+        tipus = j.get('jelolt_tipus', '')
+        hely = '%s / %s' % (j['id'], j['igehely'])
+        if tipus not in G.JELOLT_TIPUSOK:
+            hibas.append('jeloltek: %s -- ismeretlen jelolt_tipus: %r' % (hely, tipus))
+            continue
+        k = (j['id'], j['igehely'], tipus, j.get('cel_id', ''))
+        kulcsok[k] = kulcsok.get(k, 0) + 1
+        if tipus == 'elofordulas':
+            if j.get('cel_id') or j.get('cel_igehely') or j.get('cel_alpont'):
+                hibas.append('jeloltek: %s -- előfordulás-jelöltnek nem lehet cel_* mezője' % hely)
+            continue
+        cel = j.get('cel_id', '')
+        if cel not in motivum_id_halmaz or cel == j['id']:
+            hibas.append('jeloltek: %s -- érvénytelen cel_id: %r' % (hely, cel))
+        if not _igehely_lista(j.get('cel_igehely')):
+            hibas.append('jeloltek: %s -- motívumközi jelöltnek nincs cel_igehely-e' % hely)
+        if j.get('dontes') not in DONTES_ERTEKEK:
+            hibas.append('jeloltek: %s -- érvénytelen dontes' % hely)
+        if j.get('cel_alpont') and j.get('dontes') == 'beépítve':
+            hibas.append('jeloltek: %s -- alponthoz kötött jelölt nem lehet beépítve, amíg az alpontnak '
+                         'nincs adatbeli azonosítója (DT-F127b (C))' % hely)
+        if j.get('dontes') == 'beépítve':
+            beepitett_mk[dontes_ref_szoveg(j)] = j
+    for k, n in kulcsok.items():
+        if n > 1:
+            hibas.append('jeloltek: ismétlődő kulcs (%d×): %s' % (n, ' · '.join(k)))
+
+    mk_path = os.path.join(adat_dir, 'motivum_kapcsolatok.tsv')
+    if not os.path.exists(mk_path):
+        hibas.append('nincs adat/motivum_kapcsolatok.tsv')
+        return Sor(cim, 'SÉRTÉS', len(hibas), hibas)
+    fejlec, mk_sorok = G.tsv_beolvas(mk_path)
+    if fejlec != MOTIVUM_KAPCSOLAT_FEJLEC:
+        hibas.append('motivum_kapcsolatok.tsv: a fejléc eltér a sémától')
+        return Sor(cim, 'SÉRTÉS', len(hibas), hibas)
+    mk_kulcsok = set()
+    for r in mk_sorok:
+        hely = '%s %s ↔ %s %s' % (r['id_a'], r['igehely_a'], r['id_b'], r['igehely_b'])
+        k = (r['id_a'], r['igehely_a'], r['id_b'], r['igehely_b'])
+        if k in mk_kulcsok:
+            hibas.append('motivum_kapcsolatok: ismétlődő kulcs: %s' % hely)
+        mk_kulcsok.add(k)
+        if r['id_a'] not in motivum_id_halmaz or r['id_b'] not in motivum_id_halmaz:
+            hibas.append('motivum_kapcsolatok: %s -- ismeretlen motívum-ID' % hely)
+        if not r['id_a'] < r['id_b']:
+            hibas.append('motivum_kapcsolatok: %s -- a pár nem rendezett (id_a < id_b)' % hely)
+        if r['alpont_a'] or r['alpont_b']:
+            hibas.append('motivum_kapcsolatok: %s -- alpont-azonosító még nem létezik (DT-F127b (C))' % hely)
+        if r['tipus'] not in MOTIVUM_KAPCSOLAT_TIPUSOK:
+            hibas.append('motivum_kapcsolatok: %s -- ismeretlen tipus: %r' % (hely, r['tipus']))
+        if r['bizonyossag'] not in BIZONYOSSAG_ERTEKEK:
+            hibas.append('motivum_kapcsolatok: %s -- érvénytelen bizonyossag' % hely)
+        if not r['proveniencia']:
+            hibas.append('motivum_kapcsolatok: %s -- üres proveniencia' % hely)
+        j = beepitett_mk.get(r['dontes_ref'])
+        if j is None:
+            hibas.append('motivum_kapcsolatok: %s -- a dontes_ref nem beépített motívumközi jelöltre mutat: %r'
+                         % (hely, r['dontes_ref']))
+            continue
+        sajat = (j['id'], j['igehely'])
+        celok = {(j['cel_id'], c) for c in _igehely_lista(j['cel_igehely'])}
+        a, b = (r['id_a'], r['igehely_a']), (r['id_b'], r['igehely_b'])
+        if not ((a == sajat and b in celok) or (b == sajat and a in celok)):
+            hibas.append('motivum_kapcsolatok: %s -- az igehely-pár nem egyezik a jelölttel (%s)'
+                         % (hely, r['dontes_ref']))
+    if hibas:
+        return Sor(cim, 'SÉRTÉS', len(hibas), hibas)
+    n_mk = sum(1 for j in jeloltek if j.get('jelolt_tipus') == 'motivumkozi')
+    return Sor(cim, 'RENDBEN', megjegyzes='%d motívumközi jelölt, %d kapcsolat-sor' % (n_mk, len(mk_sorok)))
 
 
 def szabaly3_proveniencia(elofordulasok, auditok):
@@ -923,7 +1041,7 @@ def main():
     try:
         _, motivumok = G.tsv_beolvas(os.path.join(args.adat, 'motivumok.tsv'))
         _, elofordulasok = G.tsv_beolvas(os.path.join(args.adat, 'elofordulasok.tsv'))
-        _, jeloltek = G.tsv_beolvas(os.path.join(args.adat, 'jeloltek.tsv'))
+        jeloltek_fejlec, jeloltek = G.tsv_beolvas(os.path.join(args.adat, 'jeloltek.tsv'))
         _, kapcsolatok = G.tsv_beolvas(os.path.join(args.adat, 'kapcsolatok.tsv'))
         _, datasetek = G.tsv_beolvas(os.path.join(args.adat, 'datasetek.tsv'))
         _, auditok = G.tsv_beolvas(os.path.join(args.adat, 'auditok.tsv'))
@@ -939,6 +1057,7 @@ def main():
         tabla_sorok.append(szabaly1_hivatkozasi_epseg(motivum_id_halmaz, elofordulasok,
                                                         kapcsolatok, jeloltek, auditok))
         tabla_sorok.append(szabaly2_nincs_kozvetlen_ut(elofordulasok, jeloltek))
+        tabla_sorok.append(szabaly2b_motivumkozi(motivum_id_halmaz, jeloltek, jeloltek_fejlec, args.adat))
         tabla_sorok.append(szabaly3_proveniencia(elofordulasok, auditok))
         tabla_sorok.append(szabaly4_gerinc_elem(elofordulasok))
         tabla_sorok.append(szabaly5_karoli_triplet(elofordulasok))

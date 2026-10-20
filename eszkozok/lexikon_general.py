@@ -644,7 +644,9 @@ def jeloltek_sorok():
     global _jeloltek_cache
     if _jeloltek_cache is None:
         _, sorok = G.tsv_beolvas(JELOLTEK_TSV)
-        _jeloltek_cache = sorok
+        # DT-F127b: az 1/b. blokk és a `minosites` rés csak az előfordulás-
+        # jelölteket látja; a motívumközi jelölt nem „kizárt hely”.
+        _jeloltek_cache = G.elofordulas_jeloltek(sorok)
     return _jeloltek_cache
 
 

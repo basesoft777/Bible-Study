@@ -1,0 +1,2 @@
+# Motivum-motivum kapcsolatok (DT-F127b). Kulcs: id_a + igehely_a + id_b + igehely_b (rendezett par: id_a < id_b). Sema: adat/SEMA.md 2.33
+id_a	igehely_a	alpont_a	id_b	igehely_b	alpont_b	tipus	funkcio	bizonyossag	pardes_szint	indoklas	dontes_ref	proveniencia

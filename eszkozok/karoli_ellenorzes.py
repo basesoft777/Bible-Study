@@ -71,6 +71,12 @@ def tabla(rel):
     return sorok, i, sorok[i].split('\t')
 
 
+def elofordulas_sor(p, ix):
+    """DT-F127b: a jeloltek.tsv motívumközi sora nem előfordulás-jelölt; a
+    `jelolt_tipus` oszlop hiánya (más tábla, régi alak) előfordulásnak számít."""
+    return 'jelolt_tipus' not in ix or (len(p) > ix['jelolt_tipus'] and p[ix['jelolt_tipus']] == 'elofordulas')
+
+
 def token(s):
     return re.findall(r"[^\W\d_]+", s.casefold())
 
@@ -222,6 +228,8 @@ def nincs_strong_sorok():
     ki = []
     for n in range(i + 1, len(sorok)):
         p = sorok[n].split('\t')
+        if not elofordulas_sor(p, ix):  # DT-F127b
+            continue
         if len(p) > ix['azonositas_modja'] and p[ix['azonositas_modja']] == REGI_MOD                 and (p[ix['id']], p[ix['igehely']]) not in ekulcs:
             ki.append((n + 1, p[ix['id']], p[ix['igehely']], p[ix['karoli_szo']], p[ix['azonositas_modja']]))
     return ki
@@ -332,6 +340,8 @@ def frissit(ir=False, motivum=None, vers=None):
         for n in range(i + 1, len(sorok)):
             p = sorok[n].split('\t')
             if len(p) <= ix['azonositas_modja'] or p[ix['azonositas_modja']] != REGI_MOD:
+                continue
+            if not elofordulas_sor(p, ix):  # DT-F127b
                 continue
             if (p[ix['id']], p[ix['igehely']]) in cel:
                 p[ix['azonositas_modja']] = UJ_MOD

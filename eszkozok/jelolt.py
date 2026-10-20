@@ -86,7 +86,7 @@ def jelolt_sorok_szamit(szakasz_spec, adat_dir):
     _, jeloltek = G.tsv_beolvas(os.path.join(adat_dir, 'jeloltek.tsv'))
 
     strong_idx, letezo_parok = elofordulas_strong_index(elofordulasok)
-    jelolt_parok = {(j['id'], j['igehely']) for j in jeloltek}
+    jelolt_parok = {(j['id'], j['igehely']) for j in G.elofordulas_jeloltek(jeloltek)}  # DT-F127b
     formulaikus = {m['id'] for m in motivumok if m.get('azonossag_tipusa') == 'formulaikus'}
 
     talalt = set()
@@ -135,8 +135,10 @@ def jeloltek_ir(adat_dir, szakasz_spec, sorok):
     """Csak az 'uj jelolt' sorokat irja, id+igehely kulcs-duplikacio nelkul.
     Visszaadja a ténylegesen beirt (id, igehely) parok listajat."""
     path = os.path.join(adat_dir, 'jeloltek.tsv')
-    _, jeloltek_meglevo = G.tsv_beolvas(path)
-    meglevo_parok = {(j['id'], j['igehely']) for j in jeloltek_meglevo}
+    fejlec, jeloltek_meglevo = G.tsv_beolvas(path)
+    # DT-F127b: a kulcs id + igehely + jelolt_tipus + cel_id; az itt írt sor
+    # előfordulás-jelölt, tehát csak az előfordulás-sorokkal ütközhet.
+    meglevo_parok = {(j['id'], j['igehely']) for j in G.elofordulas_jeloltek(jeloltek_meglevo)}
 
     ma = datetime.date.today().isoformat()
     uj_sorok = []
@@ -158,8 +160,13 @@ def jeloltek_ir(adat_dir, szakasz_spec, sorok):
             'azonositas_modja': '',
             'megbizhatosag': '',
             'datum': ma,
+            'jelolt_tipus': 'elofordulas',
+            'cel_id': '',
+            'cel_igehely': '',
+            'cel_alpont': '',
         }
-        uj_sorok.append('\t'.join(mezok[m] for m in JELOLTEK_FEJLEC))
+        # a tábla tényleges fejléce szerint (a régi, 9 oszlopos tábla is)
+        uj_sorok.append('\t'.join(mezok[m] for m in fejlec))
 
     if not uj_sorok:
         return []
