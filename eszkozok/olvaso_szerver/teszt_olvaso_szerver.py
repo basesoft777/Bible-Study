@@ -154,6 +154,29 @@ class TestSzabalyok(unittest.TestCase):
             self.assertEqual(f(rossz), '/', repr(rossz))
 
 
+class TestMaculaRegiAdatbazis(unittest.TestCase):
+    """A `macula` az F115.4 előtt épült adatbázison (nincs `lxx_szo_forras` / `lxx_szo_rahlfs`) is fut: a két mező üres.
+    Eset: a 2026-10-14-i pardes.db-n minden fejezetlap 500-at adott (`no such column: lxx_szo_forras`)."""
+    ALAP = ('igehely TEXT, xml_id TEXT, szo TEXT, lemma TEXT, strong_nyers TEXT, morf TEXT, szofaj TEXT, gloss TEXT, '
+            'lxx_szo TEXT, lxx_strong TEXT')
+    SOR = ('1Móz 1:1', 'o010010010011', 'בְּ', 'בְּ', 'H9003', 'Rd', 'prep', 'in', 'ἐν', 'G1722')
+
+    def _con(self, uj):
+        con = sqlite3.connect(':memory:')
+        con.execute('CREATE TABLE token_macula (%s%s)' % (self.ALAP, ', lxx_szo_forras TEXT, lxx_szo_rahlfs TEXT' if uj else ''))
+        con.execute('INSERT INTO token_macula VALUES (%s)' % ', '.join('?' * (len(self.SOR) + (2 if uj else 0))),
+                    self.SOR + (('ενς', 'ἐν') if uj else ()))
+        return con
+
+    def test_regi_sema_ures_lxx_forras(self):
+        (m,) = q.macula(self._con(False), '1Móz 1:1')
+        self.assertEqual((m['lxx'], m['lxx_strong'], m['lxx_forras'], m['lxx_rahlfs']), ('ἐν', q.hnorm('G1722'), '', ''))
+
+    def test_uj_sema_valtozatlan(self):
+        (m,) = q.macula(self._con(True), '1Móz 1:1')
+        self.assertEqual((m['lxx_forras'], m['lxx_rahlfs']), ('ενς', 'ἐν'))
+
+
 @unittest.skipUnless(VAN_DB, 'nincs pardes.db')
 class TestRegiszterEsAdatbazis(unittest.TestCase):
     @classmethod
