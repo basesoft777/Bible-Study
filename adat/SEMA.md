@@ -709,15 +709,25 @@ A szűrő a 3. (LXX) blokkon túl a „Rokon szavak” blokkot is érinti
 
 ### 2.12 `res_forras.tsv` — rés-forrás megfeleltetés (RENDER_BRIEF.md R1.1)
 
-Kulcs: `id` + `res`. A lexikonoldal (`_TUDOMANYOS.md`) hét kézi rése
+Kulcs: `id` + `res`. A lexikonoldal (`_TUDOMANYOS.md`) kilenc rése
 (`kivonat`, `2b`, `miert_fontos`, `minosites`, `alatamasztas`, `ertelmezes`,
-`modszertan`) motívumonkénti és résenkénti forrása — a render-elv szerint a
-rés törzse nem a lexikonoldalon él, hanem a tanulmányban (RENDER_BRIEF.md G1).
+`alkalmazas`, `tanitoi`, `modszertan`) motívumonkénti és résenkénti forrása — a
+render-elv szerint a rés törzse nem a lexikonoldalon él, hanem a tanulmányban
+(RENDER_BRIEF.md G1).
+
+Az `alkalmazas` és a `tanitoi` rés a DT-F127a (#127) óta él: a lap „6/b. Alkalmazás
+és tanítói egyezés” szakaszában állnak, a 6. Értelmezés után (a szakaszszámozás
+nem tolódik). Az `alkalmazas` forrása a motívum kézi forrásának „5. Alkalmazás és
+tanítványság” pontja, a `tanitoi` forrása a 7. lépés saját fájljának
+(`motivumok/naplok/[ID]_tanitoi_kereses.md`) „Összegzés” szakasza — mindkettő a
+meglévő jelölő-mechanizmussal, saját sorral. A még nem migrált motívumoknál
+`forras=adat`, rögzített átmeneti mondattal; a jelölőket a #123 ciklusai teszik a
+forrásba. A törzscikkben (`_TORZSCIKK.md`) a két rés nem jelenik meg (D34).
 
 | Mező | Típus | Kötelező | Leírás |
 |---|---|---|---|
 | `id` | szabad szöveg | ✔ | Motívum-ID (`motivumok.tsv` kulcsa). |
-| `res` | zárt | ✔ | `kivonat` \| `2b` \| `miert_fontos` \| `minosites` \| `alatamasztas` \| `ertelmezes` \| `modszertan`. |
+| `res` | zárt | ✔ | `kivonat` \| `2b` \| `miert_fontos` \| `minosites` \| `alatamasztas` \| `ertelmezes` \| `alkalmazas` \| `tanitoi` \| `modszertan` (az utolsó előtti kettő: DT-F127a). |
 | `fejlec` | szabad szöveg | ✔ | A rés fejlécsora a lexikonoldalon, szó szerint (RENDER_BRIEF.md G2/G4 — a `VAZ_SABLON` induló fejléce; a nulla-diff ezt bájtra megőrzi). |
 | `forras` | zárt | ✔ | `lap` (a lexikonoldal mai, kézzel írt rése, változatlanul — átmeneti, RENDER_BRIEF.md G12) \| `tanulmany` (a `tanulmany` mezőben megadott fájl `<!-- RÉS-KEZDET: [res] -->…<!-- RÉS-VÉGE: [res] -->` jelölői közötti törzse) \| `adat` (a generátor adatból írja, pl. 0 kapcsolatnál az `alatamasztas`, RENDER_BRIEF.md G16). |
 | `tanulmany` | szabad szöveg | `forras=tanulmany`-nál ✔, egyébként üres | A forrásfájl relatív útvonala — a motívum tematikus tanulmánya (`tematikus_lezart/*.md`) vagy — a `minosites` résnél — a kereszthivatkozás-napló (`tematikus_lezart/naplok/*.md`), RENDER_BRIEF.md G14. `forras=adat`-nál: ha nem üres, a rés törzse maga ez a rögzített mondat (G16); ha üres, a generátor az adattáblából rendereli (F11 R, DT216): `alatamasztas` ← `kapcsolatok.tsv` `indoklas` (2.3), `2b` ← a `lexikon_hivatkozasok.tsv` szerephez nem rendelt (`SECE_G`, `SECE_H`, `MCGED`) sorai a motívum Strong-tokenjeire (2.5; ezeket a szerepmátrix nem rendereli), `minosites` ← `jeloltek.tsv` (a TSK / Károli-KH `forras_kereses`-ű sorok) + a független megerősítés (TSK Votes ≥ 15 / Károli-KH ∩ a motívum előfordulás-igehelyei, 3.10.7 2.). Üres adatnál kimondott hiánymondat; más rés üres mezővel hiba. Az így generált rés törzse elöl `<!-- GENERÁLT-RÉS: [rés] \| general.py --cel lexikon \| forrás: … -->` jelölőt, a végén proveniencia-sort (`scope=id:[ID] \| forras=… \| ts=…`) kap, a `fejlec` pedig `*(generált)*` végű (a határkeresés a régi `*(kézi)*` alakot tartalékként elfogadja). |
