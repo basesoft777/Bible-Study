@@ -1,0 +1,61 @@
+# Lekerdezes-naplo (lekerdez.py --naplo). Kulcs nincs. Sema: adat/SEMA.md 2.9
+id	lepes	proveniencia	datum
+F126	adhoc	scope=range:1Móz 4:26 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=19 | ts=2026-10-20T10:07Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:1Móz 12:8 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=34 | ts=2026-10-20T10:07Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:1Móz 13:4 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=17 | ts=2026-10-20T10:07Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:1Móz 21:33 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=17 | ts=2026-10-20T10:07Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:1Móz 26:25 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=22 | ts=2026-10-20T10:07Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:2Móz 33:19 | forras=LXX_OS/exodus.tsv+TAGNT_kivonat.tsv | n=28 | ts=2026-10-20T10:07Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:2Móz 34:5 | forras=LXX_OS/exodus.tsv+TAGNT_kivonat.tsv | n=14 | ts=2026-10-20T10:07Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:1Kir 18:24 | forras=LXX_OS/1-kings.tsv+TAGNT_kivonat.tsv | n=38 | ts=2026-10-20T10:07Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:1Kir 18:25 | forras=LXX_OS/1-kings.tsv+TAGNT_kivonat.tsv | n=29 | ts=2026-10-20T10:07Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:1Kir 18:26 | forras=LXX_OS/1-kings.tsv+TAGNT_kivonat.tsv | n=39 | ts=2026-10-20T10:07Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:2Kir 5:11 | forras=LXX_OS/2-kings.tsv+TAGNT_kivonat.tsv | n=34 | ts=2026-10-20T10:07Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:1Krón 16:8 | forras=LXX_OS/1-chronicles.tsv+TAGNT_kivonat.tsv | n=14 | ts=2026-10-20T10:07Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:Zsolt 79:6 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=19 | ts=2026-10-20T10:07Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:Zsolt 105:1 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=16 | ts=2026-10-20T10:07Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:Zsolt 116:4 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=11 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:Zsolt 116:13 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=8 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:Zsolt 116:17 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=4 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:Ézs 12:4 | forras=LXX_OS/isaiah.tsv+TAGNT_kivonat.tsv | n=25 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:Jer 10:25 | forras=LXX_OS/jeremiah-lxx.tsv+TAGNT_kivonat.tsv | n=31 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:Jóel 2:32 | forras=LXX_OS/joel.tsv+TAGNT_kivonat.tsv | n=28 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:Sof 3:9 | forras=LXX_OS/zephaniah.tsv+TAGNT_kivonat.tsv | n=21 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:Zak 13:9 | forras=LXX_OS/zechariah.tsv+TAGNT_kivonat.tsv | n=41 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:Zsolt 99:6 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=22 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:1Kir 18:24 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=0 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:1Kir 18:25 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=0 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:1Kir 18:26 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=0 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:Zak 13:9 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:Zsolt 116:4 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=0 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:Zsolt 116:13 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=2 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:Jóel 2:32 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:ApCsel 2:21 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:Róm 10:13 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=2 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:1Krón 16:8 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:Zsolt 105:1 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=2 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:Ézs 12:4 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=4 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:Zsolt 79:6 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:Jer 10:25 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:Sof 3:9 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=2 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:1Móz 12:8 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=0 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:1Móz 13:4 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:1Móz 26:25 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=0 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:ApCsel 9:14 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=2 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:ApCsel 9:21 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:Róm 10:12 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:1Kor 1:2 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:2Kir 5:11 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=0 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:Róm 10:14 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:2Móz 33:19 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=range:2Móz 34:5 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H7121+H6030 | n=43 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H7121+H0784 | n=11 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H7121+H4422 | n=3 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H7121+H3045 | n=37 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H7121+H3034 | n=5 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H7121+H4196 | n=18 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H7121+H3605 | n=142 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H7121+H1471 | n=15 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-20T10:08Z | csatorna=cli	2026.10.20
+F126	adhoc	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H7121+H8034 | n=196 | ts=2026-10-20T10:13Z | csatorna=cli	2026.10.20
