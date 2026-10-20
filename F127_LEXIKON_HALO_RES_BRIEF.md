@@ -5,11 +5,11 @@ kod: LEXIKON_HALO_RES
 tipus: feladat
 fazis: 1
 modell: opus
-allapot: fut
+allapot: megallt
 ag: claude/lexikon-halo-res
 munka: folyamat
 ad: eldöntött és bevezetett út két, ma hiányzó lexikonrészhez, motívumfüggetlenül: (a) a forrás alkalmazási kérdései és a tanítói összegzés a lapon (új rés, réslista, generátor); (b) motívumközi kapcsolat jelölt → döntés → kapcsolat úton, „Kapcsolódó motívumok” megjelenítéssel; pilot az ISTENTISZT-001 négy jelölt-kapcsolatán (ALVIL-001 kétszer: az alpontjához és az egészéhez; HAMART-001; TEREMT-001)
-kovetkezo: "végrehajtó: A3 élesítés (DT-F127c (a)), utána B1–B2; következő ⛔: B3 jelöltdöntés"
+kovetkezo: "Te: ⛔ DT-F127d — a jeloltek.tsv kulcsbővítésének hatóköre (javaslat: (1), az ir bővítésével hat eszközre; tartalék: (2) külön jelölttábla); az A rész kész és élesítve (F127.6); utána végrehajtó: B1–B2, következő ⛔: B3 jelöltdöntés"
 olvas: [naplok/PROZA_FELMERES_ISTENTISZT-001_20261019.md, RENDER_BRIEF.md, adat/SEMA.md, adat/res_forras.tsv, adat/kapcsolatok.tsv, adat/jeloltek.tsv, adat/elofordulasok.tsv, adat/motivumok.tsv, motivumok/ISTENTISZT-001.md, motivumok/naplok/ISTENTISZT-001_tanitoi_kereses.md, "tematikus_lezart/ISTENTISZT-001*", "tematikus_lezart/naplok/ISTENTISZT-001*", archivum/ISTENTISZT-001/, lexikon/, tematikus_lezart/Hadesz_Seol_tematikus.md, tematikus_lezart/naplok/Hadesz_Seol_kereszthivatkozas_naplo.md, tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md, tematikus_lezart/naplok/Bun_kovetkezmenyeinek_gyuruzese_kereszthivatkozas_naplo.md, tematikus_lezart/Tehom_tematikus.md, tematikus_lezart/naplok/Tehom_kereszthivatkozas_naplo.md, "tematikus_lezart/ALVIL-001*", "tematikus_lezart/naplok/ALVIL-001*", "tematikus_lezart/HAMART-001*", "tematikus_lezart/naplok/HAMART-001*", "tematikus_lezart/TEREMT-001*", "tematikus_lezart/naplok/TEREMT-001*", "tematikus_lezart/*_tematikus.md", sablonok/6_PaRDeS_lexikon_oldal_sablon.md, sablonok/9_PaRDeS_motivum_forras_sablon.md, sablonok/7_PaRDeS_tanitoi_kereses_sablon.md, MUNKAMENET.md, F123_MIGRACIO2_BRIEF.md, F10_LEXIKON_LEZARAS_BRIEF.md, eszkozok/general.py, eszkozok/lexikon_general.py, eszkozok/ellenoriz.py, eszkozok/lekerdez.py, eszkozok/ellenorzes/e28_migralt_nezetek.tsv, motivumlog/lexikon_pilot/Motivum_kapcsolatok_PILOT.tsv]
 ir: [adat/res_forras.tsv, adat/jeloltek.tsv, adat/SEMA.md, adat/motivum_kapcsolatok.tsv, eszkozok/lexikon_general.py, eszkozok/general.py, eszkozok/ellenoriz.py, RENDER_BRIEF.md, sablonok/6_PaRDeS_lexikon_oldal_sablon.md, motivumok/ISTENTISZT-001.md, motivumok/naplok/ISTENTISZT-001_tanitoi_kereses.md, lexikon/ISTENTISZT-001_TUDOMANYOS.md, lexikon/ALVIL-001_TUDOMANYOS.md, lexikon/HAMART-001_TUDOMANYOS.md, lexikon/TEREMT-001_TUDOMANYOS.md, generalt_proba/]
 fugg: [126, 130]
