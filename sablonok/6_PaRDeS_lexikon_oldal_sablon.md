@@ -198,6 +198,17 @@ egyezés). Ha egy eset nem fér bele a Forrás-igehely/Cél-igehely
 kétpontos modellbe (pl. egy versen belüli kontraszt), ezt itt explicit
 ki kell mondani, és jelezni a nyitott tervezési kérdést.
 
+### 5/b. Kapcsolódó motívumok (generált)
+*(DT-F127b (α), #127.)* Az `adat/motivum_kapcsolatok.tsv` sorai, amelyekben
+a motívum az egyik fél (SEMA 2.33): a másik motívum (hivatkozással a
+lapjára), az igehely-pár, típus, funkció, bizonyosság, PaRDeS-szint,
+indoklás; a sor mindkét motívum lapján megjelenik. Minden sor mögött
+`beépítve` motívumközi jelölt áll a `jeloltek.tsv`-ben (2. szabály). A
+döntésre váró motívumközi jelöltek csak számként szerepelnek. Kapcsolat
+nélkül kimondott hiánymondat. A törzscikkben nem jelenik meg (D34). A
+motívumközi kapcsolatról szóló próza nem ide, hanem később az
+`ertelmezes` résbe kerül.
+
 ### 6. Értelmezés (kézi)
 A forrás-study "3. A PaRDeS keretrendszer" szakasza (Peshat/Remez/
 Drash/Sod, a motívum egészére alkalmazva) átemelendő, és **bővítendő**
@@ -406,12 +417,13 @@ futtatandó
 A `4_PaRDeS_tematikus_sablon.md` Minőségi kapujából adaptálva, a
 lexikon-oldal saját kockázataira szabva:
 
-- [ ] **L1. Szerkezeti teljesség** — a TUDOMÁNYOS változat mind a 14
+- [ ] **L1. Szerkezeti teljesség** — a TUDOMÁNYOS változat mind a 15
       kötelező szakasza jelen van (cím+Kivonat, Tartalomjegyzék,
       Jelmagyarázat és rövidítések, 1. Előfordulások + 1/a, 1/b. Kizárt
       és vizsgált helyek, 2. Szótári háttér [+2/b és Miért fontos ez a
       lelet, ha van], 3. LXX-fordítói döntések, 4. Kereszthivatkozások
-      + Minősítés, 5. Kapcsolatok + Alátámasztás, 6. Értelmezés, 6/b.
+      + Minősítés, 5. Kapcsolatok + Alátámasztás, 5/b. Kapcsolódó
+      motívumok (DT-F127b), 6. Értelmezés, 6/b.
       Alkalmazás és tanítói egyezés (DT-F127a), 7.
       Módszertan és nyitott kérdések, 8. Irodalom és idézés, Kolofon —
       LEXV2_2_BRIEF.md G1), és az OLVASHATÓ változat mind a 7 kötelező

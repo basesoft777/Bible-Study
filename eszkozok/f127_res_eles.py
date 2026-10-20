@@ -1,4 +1,5 @@
-"""F127 A3 (DT-F127a): a „6/b. Alkalmazás és tanítói egyezés” szakasz és a
+"""F127 A3 (DT-F127a) és B4 (DT-F127b (α)): a „6/b. Alkalmazás és tanítói
+egyezés” szakasz, az „5/b. Kapcsolódó motívumok” generált blokk és a
 tartalomjegyzék élesítése a lexikonoldalakon, a többi blokk újragenerálása
 NÉLKÜL.
 
@@ -28,7 +29,12 @@ import lexikon_general as LG  # noqa: E402
 
 def egy_lap(szoveg, m):
     szoveg = szoveg.replace('\r\n', '\n')
-    uj = LG.res_blokkok_alkalmaz(szoveg, m)
+    # F127 B4 (DT-F127b (α)): az 5/b. Kapcsolódó motívumok szakasz is
+    # (beszúrás, ha még nincs; a blokk frissítése, ha már van).
+    kapcsolodo = LG.blokk_kapcsolodo(m)
+    uj = LG.szakasz_5b_beszur(szoveg, m, kapcsolodo)
+    uj, _ = LG._blokk_beilleszt_fejleccel(uj, LG._cel_kulcs(m['id'], 'kapcsolodo'), kapcsolodo)
+    uj = LG.res_blokkok_alkalmaz(uj, m)
     uj, _ = LG._blokk_beilleszt_fejleccel(uj, LG._cel_kulcs(m['id'], 'tartalom'), LG.blokk_tartalom(m))
     return szoveg, uj
 

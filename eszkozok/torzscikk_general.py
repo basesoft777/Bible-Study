@@ -218,7 +218,13 @@ def torzscikk_szoveg(m, lex_szoveg, model):
         d0 = d0_candidates[0]
         d1 = next(i for i, s in enumerate(blk) if s.startswith('</details>'))
         mermaid = blk[d0:d1 + 1]
-    alat = _uzemeltetoi_bekezdes_nelkul(clean(block(i_alat + 1, i_6)))
+    # DT-F127b (α): az Alátámasztás a lexikonoldal 5/b. szakaszáig tart; az
+    # 5/b. (Kapcsolódó motívumok) a törzscikkben nem jelenik meg (D34).
+    try:
+        i_alat_vege = min(idx(L, lambda s: s.startswith('## 5/b.'), i_alat + 1), i_6)
+    except KeyError:
+        i_alat_vege = i_6
+    alat = _uzemeltetoi_bekezdes_nelkul(clean(block(i_alat + 1, i_alat_vege)))
 
     # ---------- kimenet ----------
     O = []

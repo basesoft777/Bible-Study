@@ -361,6 +361,7 @@ SZAKASZOK = [
     ('3. LXX-fordítói döntések', True),
     ('4. Kereszthivatkozások', True),
     ('5. Kapcsolatok', True),
+    ('5/b. Kapcsolódó motívumok', True),  # DT-F127b (α) (#127)
     ('6. Értelmezés', False),
     ('6/b. Alkalmazás és tanítói egyezés', False),  # DT-F127a (#127)
     ('7. Módszertan és nyitott kérdések', False),
@@ -2050,6 +2051,89 @@ def blokk_kapcsolatok(m, konyv_sorrend, hianyzo_konyvek):
 
 
 # ---------------------------------------------------------------------------
+# 5/b. Kapcsolódó motívumok (DT-F127b (α), #127) -- a motivum_kapcsolatok.tsv
+# sorai mindkét érintett motívum lapján; a döntésre váró motívumközi jelöltek
+# (jeloltek.tsv, jelolt_tipus=motivumkozi, nyitva) csak számként.
+# ---------------------------------------------------------------------------
+
+SZAKASZ_5B = '## 5/b. Kapcsolódó motívumok'
+MOTIVUM_KAPCSOLATOK_TSV = os.path.join(ADAT, 'motivum_kapcsolatok.tsv')
+KAPCSOLODO_FORRASOK = ('adat/motivum_kapcsolatok.tsv', 'adat/jeloltek.tsv')
+
+
+def motivum_kapcsolatok_sorok():
+    if not os.path.exists(MOTIVUM_KAPCSOLATOK_TSV):
+        return []
+    return G.tsv_beolvas(MOTIVUM_KAPCSOLATOK_TSV)[1]
+
+
+def motivumkozi_jeloltek():
+    _, sorok = G.tsv_beolvas(JELOLTEK_TSV)
+    return [r for r in sorok if r.get('jelolt_tipus') == 'motivumkozi']
+
+
+def kapcsolodo_torzs(motivum_id, mk_sorok, mk_jeloltek):
+    """A blokk törzse (tiszta függvény): a motívum kapcsolat-sorai a másik
+    motívum szemszögéből, és a döntésre váró motívumközi jelöltek száma."""
+    sajat = []
+    for r in mk_sorok:
+        if r['id_a'] == motivum_id:
+            sajat.append((r['id_b'], r['igehely_a'], r['igehely_b'], r))
+        elif r['id_b'] == motivum_id:
+            sajat.append((r['id_a'], r['igehely_b'], r['igehely_a'], r))
+    out = []
+    if sajat:
+        out += ['| Kapcsolódó motívum | Itt | Ott | Típus | Funkció | Bizonyosság | PaRDeS-szint | Indoklás |',
+                '|---|---|---|---|---|---|---|---|']
+        for masik, itt, ott, r in sorted(sajat, key=lambda x: (x[0], x[1], x[2])):
+            out.append('| [%s](%s_TUDOMANYOS.md) | %s | %s | %s | %s | %s | %s | %s |' % (
+                masik, masik, itt, ott, r['tipus'], _cella(r['funkcio'] or EM_DASH), r['bizonyossag'],
+                r['pardes_szint'] or EM_DASH, _cella(r['indoklas'] or EM_DASH)))
+    else:
+        out.append('A motívumhoz nincs rögzített motívumközi kapcsolat a `motivum_kapcsolatok.tsv`-ben.')
+    nyitott = {}
+    for j in mk_jeloltek:
+        if j.get('dontes') != 'nyitva':
+            continue
+        if j['id'] == motivum_id:
+            masik = j.get('cel_id', '')
+        elif j.get('cel_id') == motivum_id:
+            masik = j['id']
+        else:
+            continue
+        nyitott[masik] = nyitott.get(masik, 0) + 1
+    if nyitott:
+        out += ['', '*Döntésre váró motívumközi jelölt (`jeloltek.tsv`, `nyitva`): %d — %s.*' % (
+            sum(nyitott.values()), ', '.join('%s: %d' % (k, nyitott[k]) for k in sorted(nyitott)))]
+    return '\n'.join(out)
+
+
+def blokk_kapcsolodo(m):
+    torzs = kapcsolodo_torzs(m['id'], motivum_kapcsolatok_sorok(), motivumkozi_jeloltek())
+    torzs += ('\n\n*Proveniencia: `scope=id:%s | forras=%s | ts=%s`*'
+              % (m['id'], '+'.join(KAPCSOLODO_FORRASOK), G.TS))
+    hatokor = ('Ez a blokk a `[ID: %s]` motívum motívumközi kapcsolatait adja a `motivum_kapcsolatok.tsv`-ből '
+               '(minden sor mögött beépített motívumközi jelölt áll, DT-F127b); a sor mindkét érintett '
+               'motívum lapján megjelenik.' % m['id'])
+    return _lexikon_blokk(m['id'], 'kapcsolodo', list(KAPCSOLODO_FORRASOK), [LC('projekt_adat')], hatokor, torzs)
+
+
+def szakasz_5b_beszur(fajl_szoveg, m, blokk):
+    """DT-F127b (α): ha a lapon még nincs „5/b.” szakasz, a 6. Értelmezés (az
+    `ertelmezes` rés fejléce) elé szúrja a szakaszcímet és a generált blokkot."""
+    if SZAKASZ_5B in fajl_szoveg:
+        return fajl_szoveg
+    sorok = res_forras_sorok()
+    for res in ('alatamasztas', 'ertelmezes'):
+        if (m['id'], res) not in sorok:
+            raise ValueError('hiányzó res_forras.tsv sor: %s / %s' % (m['id'], res))
+    a_i, a_talalt = _boundary_index(fajl_szoveg, sorok[(m['id'], 'alatamasztas')]['fejlec'], 0, 'alatamasztas')
+    e_i, _ = _boundary_index(fajl_szoveg, sorok[(m['id'], 'ertelmezes')]['fejlec'],
+                             a_i + len(a_talalt), 'ertelmezes')
+    return fajl_szoveg[:e_i] + SZAKASZ_5B + '\n\n' + blokk + '\n\n' + fajl_szoveg[e_i:]
+
+
+# ---------------------------------------------------------------------------
 # 8. Irodalom és idézés
 # ---------------------------------------------------------------------------
 
@@ -2298,6 +2382,7 @@ _BOUNDARY_SLOTS = (
     ('res', 'minosites'),
     ('lit', '## 5. Kapcsolatok'),
     ('res', 'alatamasztas'),
+    ('lit', SZAKASZ_5B),  # DT-F127b (α)
     ('res', 'ertelmezes'),
     ('lit', SZAKASZ_6B),
     ('res', 'alkalmazas'),
@@ -2802,6 +2887,10 @@ VAZ_SABLON = """# 📖 %(id)s — %(cim)s
 
 *Kézzel írandó.*
 
+## 5/b. Kapcsolódó motívumok
+
+%(kapcsolodo)s
+
 ## 6. Értelmezés *(kézi)*
 
 *Kézzel írandó — a forrás-study PaRDeS keretrendszere, bővítve a lexikai leletekkel.*
@@ -2830,7 +2919,7 @@ VAZ_SABLON = """# 📖 %(id)s — %(cim)s
 """
 
 BLOKK_NEVEK = ('tartalom', 'jelmagyarazat', 'elofordulasok', 'kizart', 'szocikkek', 'lxx',
-               'kereszthivatkozasok', 'kapcsolatok', 'idezes', 'kolofon')
+               'kereszthivatkozasok', 'kapcsolatok', 'kapcsolodo', 'idezes', 'kolofon')
 
 
 def render_lexikon_egy_id(m, sorai, konyv_sorrend, hianyzo_konyvek):
@@ -2865,6 +2954,7 @@ def render_lexikon_egy_id(m, sorai, konyv_sorrend, hianyzo_konyvek):
         'lxx': blokk_lxx_szov,
         'kereszthivatkozasok': blokk_kereszthiv_szov,
         'kapcsolatok': blokk_kapcsolatok_szov,
+        'kapcsolodo': blokk_kapcsolodo(m),  # DT-F127b (α)
         'idezes': blokk_idezes_szov,
         'kolofon': blokk_kolofon_szov,
     }
@@ -2884,6 +2974,7 @@ def epit_uj_fajl(m, blokkok):
         'lxx': blokkok['lxx'],
         'kereszthivatkozasok': blokkok['kereszthivatkozasok'],
         'kapcsolatok': blokkok['kapcsolatok'],
+        'kapcsolodo': blokkok['kapcsolodo'],
         'idezes': blokkok['idezes'],
         'kolofon': blokkok['kolofon'],
     }
@@ -2932,7 +3023,9 @@ def _blokk_beilleszt_fejleccel(fajl_szoveg, cel_kulcs, uj_blokk):
 
 
 def frissit_meglevo_fajlt(meglevo_szoveg, m, blokkok):
-    szoveg = meglevo_szoveg
+    # DT-F127b (α): a régi lapon az 5/b. szakasz még nincs meg -- beszúrás a
+    # 6. Értelmezés elé, utána a blokk a többihez hasonlóan frissül.
+    szoveg = szakasz_5b_beszur(meglevo_szoveg, m, blokkok['kapcsolodo'])
     for blokk_nev in BLOKK_NEVEK:
         cel_kulcs = _cel_kulcs(m['id'], blokk_nev)
         szoveg, _ = _blokk_beilleszt_fejleccel(szoveg, cel_kulcs, blokkok[blokk_nev])
