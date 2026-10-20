@@ -362,6 +362,7 @@ SZAKASZOK = [
     ('4. Kereszthivatkozások', True),
     ('5. Kapcsolatok', True),
     ('6. Értelmezés', False),
+    ('6/b. Alkalmazás és tanítói egyezés', False),  # DT-F127a (#127)
     ('7. Módszertan és nyitott kérdések', False),
     ('8. Irodalom és idézés', True),
     ('Kolofon', True),
@@ -382,7 +383,8 @@ def _heading_slug(cim):
 
 def blokk_tartalom(m):
     sorok = ['- [%s](#%s)' % (cim, _heading_slug(cim)) for cim, _ in SZAKASZOK]
-    hatokor = 'Ez a blokk a lexikon-oldal 12 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).'
+    hatokor = ('Ez a blokk a lexikon-oldal %d szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).'
+               % len(SZAKASZOK))
     torzs = '\n'.join(sorok)
     return _lexikon_blokk(m['id'], 'tartalom', [], [LC('projekt_adat')], hatokor, torzs)
 
@@ -2266,7 +2268,14 @@ def blokk_kolofon(m, fajl_licenc_blokk_lista):
 # ---------------------------------------------------------------------------
 
 RES_SORREND = ('kivonat', '2b', 'miert_fontos', 'minosites', 'alatamasztas',
-               'ertelmezes', 'modszertan')
+               'ertelmezes', 'alkalmazas', 'tanitoi', 'modszertan')
+
+# DT-F127a (#127): a két új rés (`alkalmazas`, `tanitoi`) közös szakasza a
+# 6. Értelmezés után. A régi lapokon a szakasz még nincs meg; a
+# res_blokkok_alkalmaz() ilyenkor a 7. szakasz (a `modszertan` rés fejléce)
+# elé szúrja, a törzset utána a res_forras.tsv szerint tölti.
+SZAKASZ_6B = '## 6/b. Alkalmazás és tanítói egyezés *(kézi)*'
+UJ_RESEK_6B = ('alkalmazas', 'tanitoi')
 
 # A dokumentum-sorrend a VAZ_SABLON szerint (allandó): egy rés vagy egy
 # generált szakasz literál címe követi az előzőt. A 'res' bejegyzések
@@ -2288,6 +2297,9 @@ _BOUNDARY_SLOTS = (
     ('lit', '## 5. Kapcsolatok'),
     ('res', 'alatamasztas'),
     ('res', 'ertelmezes'),
+    ('lit', SZAKASZ_6B),
+    ('res', 'alkalmazas'),
+    ('res', 'tanitoi'),
     ('res', 'modszertan'),
     ('lit', '## 8. Irodalom és idézés'),
     ('lit', '## Kolofon'),
@@ -2330,7 +2342,10 @@ def _tanulmany_szoveg(relativ_ut):
         # `apparatus` nézetként kerül (DT84 (10), SEMA 3.10.4): a `belso` szint
         # és a `【NAPLO】` kimarad, a RÉS-jelölők maradnak. A tematikus
         # tanulmány és a napló (a nem migrált motívumok) változatlanul.
-        if relativ_ut.replace('\\', '/').startswith('motivumok/'):
+        # DT-F127a: a 7. lépés saját fájlja (`motivumok/naplok/…_tanitoi_kereses.md`,
+        # B9) nem sablon-9 forrás, a szintszűrő nem vonatkozik rá -- változatlanul.
+        rel = relativ_ut.replace('\\', '/')
+        if rel.startswith('motivumok/') and not rel.startswith('motivumok/naplok/'):
             szoveg = G.forras_nezet(szoveg, 'apparatus')[0]
         _tanulmany_szoveg_cache[relativ_ut] = szoveg
     return _tanulmany_szoveg_cache[relativ_ut]
@@ -2598,11 +2613,32 @@ def _boundary_index(fajl_szoveg, needle, search_from, res):
     raise ValueError('a rés-fejléc nem található: %r' % needle)
 
 
+def szakasz_6b_beszur(fajl_szoveg, m):
+    """DT-F127a: ha a lapon még nincs „6/b.” szakasz, a 7. szakasz (a
+    `modszertan` rés fejléce) elé szúrja: a szakaszcím, és a két új rés
+    fejléce helyőrző törzzsel (a törzset a res_blokkok_alkalmaz cseréli).
+    Ha a szakasz már megvan, a szöveg változatlan."""
+    if SZAKASZ_6B in fajl_szoveg:
+        return fajl_szoveg
+    sorok = res_forras_sorok()
+    fejlecek = []
+    for res in ('ertelmezes',) + UJ_RESEK_6B + ('modszertan',):
+        sor = sorok.get((m['id'], res))
+        if sor is None:
+            raise ValueError('hiányzó res_forras.tsv sor: %s / %s' % (m['id'], res))
+        fejlecek.append(sor['fejlec'])
+    ert_i, ert_talalt = _boundary_index(fajl_szoveg, fejlecek[0], 0, 'ertelmezes')
+    mod_i, _ = _boundary_index(fajl_szoveg, fejlecek[-1], ert_i + len(ert_talalt), 'modszertan')
+    betet = '\n\n'.join([SZAKASZ_6B] + ['%s\n\n*Kézzel írandó.*' % f for f in fejlecek[1:-1]]) + '\n\n'
+    return fajl_szoveg[:mod_i] + betet + fajl_szoveg[mod_i:]
+
+
 def res_blokkok_alkalmaz(fajl_szoveg, m):
     """A het rés fejléc+törzs span-jét cseréli az adat/res_forras.tsv szerint
     -- 'lap' forrású résekhez NEM NYÚL (G12: a lap mai rése, változatlanul).
     HIBAKÓD, ha egy sor hiányzik a táblából (R1.3)."""
     sorok = res_forras_sorok()
+    fajl_szoveg = szakasz_6b_beszur(fajl_szoveg, m)
     for res in RES_SORREND:
         sor = sorok.get((m['id'], res))
         if sor is None:
@@ -2767,6 +2803,16 @@ VAZ_SABLON = """# 📖 %(id)s — %(cim)s
 ## 6. Értelmezés *(kézi)*
 
 *Kézzel írandó — a forrás-study PaRDeS keretrendszere, bővítve a lexikai leletekkel.*
+
+## 6/b. Alkalmazás és tanítói egyezés *(kézi)*
+
+### Alkalmazás és tanítványság *(kézi)*
+
+*Kézzel írandó.*
+
+### Tanítói egyezés *(kézi)*
+
+*Kézzel írandó.*
 
 ## 7. Módszertan és nyitott kérdések *(kézi)*
 

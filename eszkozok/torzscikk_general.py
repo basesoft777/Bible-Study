@@ -382,7 +382,14 @@ def torzscikk_szoveg(m, lex_szoveg, model):
 
     # 6-7
     w('## 6. Értelmezés'); w('')
-    O += clean(block(i_6 + 1, i_7)); w('')
+    # DT-F127a (#127): a lexikonoldal „6/b. Alkalmazás és tanítói egyezés”
+    # szakasza a törzscikkben nem jelenik meg (D34) -- a 6. szakasz a 6/b-ig tart.
+    try:
+        i_6_vege = idx(L, lambda s: s.startswith('## 6/b.'), i_6 + 1)
+    except KeyError:
+        i_6_vege = i_7
+    i_6_vege = min(i_6_vege, i_7)
+    O += clean(block(i_6 + 1, i_6_vege)); w('')
     w('## 7. Módszertan és nyitott kérdések'); w('')
     O += clean(block(i_7 + 1, i_8)); w('')
 

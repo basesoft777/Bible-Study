@@ -582,6 +582,18 @@ def szabaly11_res_forras_egyezes(adat_dir):
         return Sor(cim, 'KÉZI', megjegyzes='nincs tanulmány/adat forrású rés-sor')
 
     hibas = []
+    # DT-F127a (#127): a réslista teljessége -- minden motívumnak, amelynek
+    # van res_forras-sora, mind a kilenc résre (LG.RES_SORREND) kell sor;
+    # ismeretlen `res` érték is hiba (SEMA 2.12, zárt értékkészlet).
+    motivum_resek = {}
+    for r in res_sorok:
+        motivum_resek.setdefault(r['id'], set()).add(r['res'])
+    for motivum_id, resek in motivum_resek.items():
+        for res in LG.RES_SORREND:
+            if res not in resek:
+                hibas.append('%s / %s -- hiányzó res_forras.tsv sor' % (motivum_id, res))
+        for res in sorted(resek - set(LG.RES_SORREND)):
+            hibas.append('%s / %s -- ismeretlen rés' % (motivum_id, res))
     lex_szoveg_cache = {}
     for r in erintett:
         motivum_id, res = r['id'], r['res']
