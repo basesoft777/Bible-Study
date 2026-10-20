@@ -1,0 +1,111 @@
+# Károli 1908 — Zsolt 116:4
+És az Úrnak nevét segítségül hívám: Kérlek Uram, szabadítsd meg az én lelkemet!
+# Károli-KH (Zsolt 116:4) — 0 kapcsolódó igehely
+proveniencia: scope=range:Zsolt 116:4 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=0 | ts=2026-10-20T18:55Z | csatorna=cli
+
+# Károli 1908 — Zsolt 116:3
+Körülvettek engem a halál kötelei, és a pokol szorongattatásai támadtak meg engem; nyomorúságba és ínségbe jutottam.
+# Károli-KH (Zsolt 116:3) — 2 kapcsolódó igehely
+2Sám 22,5-6
+Zsolt 18,5-6
+proveniencia: scope=range:Zsolt 116:3 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=2 | ts=2026-10-20T18:55Z | csatorna=cli
+
+# Károli 1908 — ApCsel 2:21
+És lészen, hogy mindaz, a ki az Úrnak nevét segítségül hívja, megtartatik.
+# Károli-KH (ApCsel 2:21) — 1 kapcsolódó igehely
+1Móz 25,21-26
+proveniencia: scope=range:ApCsel 2:21 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-10-20T18:55Z | csatorna=cli
+
+# Károli 1908 — ApCsel 2:27
+Mert nem hagyod az én lelkemet a sírban, és nem engeded, hogy a te szented rothadást lásson.
+# Károli-KH (ApCsel 2:27) — 3 kapcsolódó igehely
+1Móz 46,27
+2Móz 1,5
+5Móz 10,22
+proveniencia: scope=range:ApCsel 2:27 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=3 | ts=2026-10-20T18:55Z | csatorna=cli
+
+# Károli 1908 — ApCsel 2:31
+Előre látván ezt, szólott a Krisztus feltámadásáról, hogy az ő lelke nem hagyatott a sírban, sem az ő teste rothadást nem látott.
+# Károli-KH (ApCsel 2:31) — 1 kapcsolódó igehely
+2Móz 1,8-22
+proveniencia: scope=range:ApCsel 2:31 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-10-20T18:55Z | csatorna=cli
+
+# Károli 1908 — 1Móz 4:26
+Séthnek is született fia, és nevezé annak nevét Énósnak. Akkor kezdték segítségül hívni az Úrnak nevét.
+# Károli-KH (1Móz 4:26) — 0 kapcsolódó igehely
+proveniencia: scope=range:1Móz 4:26 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=0 | ts=2026-10-20T18:55Z | csatorna=cli
+
+# Károli 1908 — 1Móz 4:2
+És ismét szűlé annak atyjafiát, Ábelt. És Ábel juhok pásztora lőn, Kain pedig földmívelő.
+# Károli-KH (1Móz 4:2) — 0 kapcsolódó igehely
+proveniencia: scope=range:1Móz 4:2 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=0 | ts=2026-10-20T18:55Z | csatorna=cli
+
+# Károli 1908 — 1Móz 4:3
+Lőn pedig idő multával, hogy Kain ajándékot vive az Úrnak a föld gyümölcséből.
+# Károli-KH (1Móz 4:3) — 0 kapcsolódó igehely
+proveniencia: scope=range:1Móz 4:3 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=0 | ts=2026-10-20T18:55Z | csatorna=cli
+
+# Károli 1908 — 1Móz 4:7
+Hiszen, ha jól cselekszel, emelt fővel járhatsz; ha pedig nem jól cselekszel, a bűn az ajtó előtt leselkedik, és reád van vágyódása; de te uralkodjál rajta.
+# Károli-KH (1Móz 4:7) — 0 kapcsolódó igehely
+proveniencia: scope=range:1Móz 4:7 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=0 | ts=2026-10-20T18:55Z | csatorna=cli
+
+# Károli 1908 — 1Móz 4:10
+Monda pedig az Úr: Mit cselekedtél? A te atyádfiának vére kiált én hozzám a földről.
+# Károli-KH (1Móz 4:10) — 1 kapcsolódó igehely
+Zsid 12,24
+proveniencia: scope=range:1Móz 4:10 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-10-20T18:55Z | csatorna=cli
+
+# Károli 1908 — 1Móz 4:11
+Mostan azért átkozott légy e földön, mely megnyitotta az ő száját, hogy befogadja a te atyádfiának vérét, a te kezedből.
+# Károli-KH (1Móz 4:11) — 0 kapcsolódó igehely
+proveniencia: scope=range:1Móz 4:11 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=0 | ts=2026-10-20T18:55Z | csatorna=cli
+
+# Károli 1908 — 1Móz 4:12
+Mikor a földet míveled, ne adja az többé néked az ő termő erejét, bujdosó és vándorló légy a földön.
+# Károli-KH (1Móz 4:12) — 0 kapcsolódó igehely
+proveniencia: scope=range:1Móz 4:12 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=0 | ts=2026-10-20T18:55Z | csatorna=cli
+
+# Károli 1908 — 1Móz 4:14
+Ímé elűzöl engem ma e földnek színéről, és a te színed elől el kell rejtőznöm; bujdosó és vándorló leszek a földön, és akkor akárki talál reám, megöl engemet.
+# Károli-KH (1Móz 4:14) — 0 kapcsolódó igehely
+proveniencia: scope=range:1Móz 4:14 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=0 | ts=2026-10-20T18:55Z | csatorna=cli
+
+# Károli 1908 — 1Móz 12:8
+Onnan azután a hegység felé méne Bétheltől keletre és felüté sátorát: Béthel vala nyugatra, Hái pedig keletre, és ott oltárt építe az Úrnak, és segítségűl hívá az Úr nevét.
+# Károli-KH (1Móz 12:8) — 0 kapcsolódó igehely
+proveniencia: scope=range:1Móz 12:8 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=0 | ts=2026-10-20T18:55Z | csatorna=cli
+
+# Károli 1908 — 1Móz 12:3
+És megáldom azokat, a kik téged áldanak, és a ki téged átkoz, megátkozom azt: és megáldatnak te benned a föld minden nemzetségei.
+# Károli-KH (1Móz 12:3) — 4 kapcsolódó igehely
+1Móz 18,18
+Ésa 51,2
+Csel 3,25
+Gal 3,8
+proveniencia: scope=range:1Móz 12:3 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=4 | ts=2026-10-20T18:55Z | csatorna=cli
+
+# Károli 1908 — Róm 10:12
+Mert nincs különbség zsidó meg görög között; mert ugyanaz az Ura mindeneknek, a ki kegyelemben gazdag mindenekhez, a kik őt segítségül hívják.
+# Károli-KH (Róm 10:12) — 1 kapcsolódó igehely
+Csel 10,34-35
+proveniencia: scope=range:Róm 10:12 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-10-20T18:55Z | csatorna=cli
+
+# Károli 1908 — Róm 10:7
+Avagy: Kicsoda száll le a mélységbe? (azaz, hogy Krisztust a halálból felhozza.)
+# Károli-KH (Róm 10:7) — 1 kapcsolódó igehely
+Márk 4,11
+proveniencia: scope=range:Róm 10:7 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-10-20T18:55Z | csatorna=cli
+
+# Károli 1908 — Róm 10:13
+Mert minden, a ki segítségül hívja az Úr nevét, megtartatik.
+# Károli-KH (Róm 10:13) — 2 kapcsolódó igehely
+Jóel 2,32
+Csel 2,21
+proveniencia: scope=range:Róm 10:13 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=2 | ts=2026-10-20T18:55Z | csatorna=cli
+
+# Károli 1908 — Róm 10:14
+Mimódon hívják azért segítségül azt, a kiben nem hisznek? Mimódon hisznek pedig abban, a ki felől nem hallottak? Mimódon hallanának pedig prédikáló nélkül?
+# Károli-KH (Róm 10:14) — 1 kapcsolódó igehely
+1Móz 3,15
+proveniencia: scope=range:Róm 10:14 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-10-20T18:55Z | csatorna=cli
