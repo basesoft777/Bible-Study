@@ -5,11 +5,13 @@ kod: ISTENTISZT001_PROZA
 tipus: feladat
 fazis: 1
 modell: opus
-allapot: megallt
+allapot: lezarva
+pr: 444
+lezarva_osszegzes: "az ertelmezes rés A0–A4, B0, B2–B7, a modszertan rés C1 bekezdéssel bővült (név-horgony, 6/8 + 2 „nincs új anyag”), a lexikon újragenerálva; N-F55d lezárva (22/18 megerősítve), új: N-F126a; ellenőrzés ELTÉRÉS 4 → 1 → TISZTA, két mechanikus javítókör; zárónapló naplok/ISTENTISZT001_PROZA_zaras.md"
 ag: claude/istentiszt001-proza
 munka: ertelmezo
 ad: az ISTENTISZT-001 kézi forrásának `ertelmezes` és `modszertan` rése a felmérés 1., 2., 6.–10. és 12. összefüggésével bővül (a 8 meg nem nevezett helyből 7 megalapozott vagy kimondottan formai értelmezést kap, a Zsolt 116:13-nál a próza kimondja, hogy nincs új anyag), a 11. a Módszertanba kerül, az N-F55d rendeződik; a lexikonoldal ebből újragenerálva
-kovetkezo: "Te: [elteres_kor 2/2] /elteres 126 — újraellenőrzés függ: naplok/ELLENOR_ISTENTISZT001_PROZA_3.md"
+kovetkezo: "nincs; nyitott: N-F126a, N61"
 olvas: [naplok/PROZA_FELMERES_ISTENTISZT-001_20261019.md, motivumok/ISTENTISZT-001.md, motivumok/naplok/ISTENTISZT-001_tanitoi_kereses.md, "tematikus_lezart/ISTENTISZT-001*", "tematikus_lezart/naplok/ISTENTISZT-001*", archivum/ISTENTISZT-001/, lexikon/ISTENTISZT-001_TUDOMANYOS.md, adat/elofordulasok.tsv, adat/kapcsolatok.tsv, adat/jeloltek.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/res_forras.tsv, adat/grammatikai_strongok.tsv, adat/SEMA.md, sablonok/9_PaRDeS_motivum_forras_sablon.md, MUNKAMENET.md, RENDER_BRIEF.md, F11_MIGRACIO_BRIEF.md, naplok/ELLENOR_ZSOLTAR_UJRAELLENORZES.md, naplok/ELLENOR_ZSOLTAR_UJRAELLENORZES_2.md, konkordancia/Karoli_1908.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TSK_kereszthivatkozasok.tsv, "konkordancia/LXX_OS/*", eszkozok/lekerdez.py, eszkozok/general.py, eszkozok/lexikon_general.py, eszkozok/ellenorzes/e28_migralt_nezetek.tsv]
 ir: [motivumok/ISTENTISZT-001.md, lexikon/ISTENTISZT-001_TUDOMANYOS.md]
 fugg: []
