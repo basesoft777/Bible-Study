@@ -6,10 +6,11 @@ tipus: feladat
 fazis: 1
 munka: ertelmezo
 modell: opus
-allapot: megallt
+allapot: lezarva
+lezarva_osszegzes: "a tanítói fájl a 7. sablon szerint újraírva, webes forrásokkal (tanito-kereso M3, M4 forrásmegnyitás), a manual változat archiválva, az ISTENTISZT-001.md 5. pontja a jóváhagyott szöveg szerint; DT-F130c–e; ellenőrzés ELTÉRÉS 7 → TISZTA, egy javítókör; zárónapló naplok/TANITOI_KERESES_ISTENTISZT_zaras.md"
 ag: claude/tanitoi-kereses-istentiszt
 ad: a motivumok/naplok/ISTENTISZT-001_tanitoi_kereses.md a 7. sablon szerinti, webes forrásokkal (mű, pontos hely, URL) igazolt eredményt hordozza a manual szétválasztás helyett; a régi változat archiválva; a #127 tanítói rése erre épülhet
-kovetkezo: "Te: [elteres_kor 1/2] zárás (/kovetkezo 10. lépés: push, PR) — naplok/ELLENOR_F130_2.md TISZTA"
+kovetkezo: "nincs; nyitott (felvétel a felhasználó döntése): az öt nem keresett tanító halasztott keresése (DT-F130d)"
 olvas: [motivumok/ISTENTISZT-001.md, "tematikus_lezart/ISTENTISZT-001*", "tematikus_lezart/naplok/ISTENTISZT-001*", motivumok/naplok/ISTENTISZT-001_tanitoi_kereses.md, archivum/ISTENTISZT-001/, sablonok/7_PaRDeS_tanitoi_kereses_sablon.md, sablonok/4_PaRDeS_tematikus_sablon.md, sablonok/PaRDeS_tanitok_lista.md, .claude/agents/tanito-kereso.md, adat/motivumok.tsv, naplok/F11_szetvalasztas_ISTENTISZT-001.tsv]
 ir: [motivumok/naplok/ISTENTISZT-001_tanitoi_kereses.md, motivumok/ISTENTISZT-001.md, archivum/ISTENTISZT-001/ISTENTISZT-001_tanitoi_kereses_manual.md]
 fugg: []
