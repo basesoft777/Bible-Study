@@ -108,3 +108,7 @@ Eltérő Károli-token (két modell partnerhalmaza különbözik) összesen: 0; 
 - Független ellenőrzés: a csomag után, közösen (`naplok/ELLENOR_F22_USZ_B.md`); ez a jelentés nem „ellenőrzött”.
 - Független szúrópróba (22.6): elmarad (DT70).
 - PR és merge a felhasználóé.
+
+## Utólagos javítás (2026.10.19)
+
+A Zsid 1:1–2 tokenszintű vershatár-eltérés (a Károli 1:1 vége „ez utolsó időkben szólott nékünk Fia által” = a TAGNT 1:2 1–7. tokenje): a két vers `kezi` kényszerbe került (`f22/kezi_versek_Zsid.tsv`), `parok_Zsid.tsv` 4 844 link, `szavak_Zsid.tsv` 64 `fuggoben` sor. Részletek: `naplok/F22_C_elokeszites.md` 3.

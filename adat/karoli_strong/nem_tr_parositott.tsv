@@ -1,7 +1,30 @@
-# GENERÁLT: eszkozok/karoli_strong/nem_tr_lista.py | scope=az ÚSZ-könyvek szavak-táblái (1Jan, 1Pet, 1Thessz, 1Tim, 2Jan, 2Kor, 2Pet, 2Thessz, 2Tim, 3Jan, Ef, Fil, Filem, Gal, Jak, Jud, Kol, Tit, Zsid) | forras=adat/karoli_strong/szavak_<könyv>.tsv + konkordancia/TAGNT_kivonat.tsv | ts=2026-10-19T15:41:38+00:00 | a párosított [nem TR] eredeti tokenek (a TR más alakot olvas, annak nincs sora a kivonatban); a link `alacsony`, a strong a kritikai szöveg alakjáé; D45 (a) | kézzel szerkeszteni tilos
+# GENERÁLT: eszkozok/karoli_strong/nem_tr_lista.py | scope=az ÚSZ-könyvek szavak-táblái (1Jan, 1Kor, 1Pet, 1Thessz, 1Tim, 2Jan, 2Kor, 2Pet, 2Thessz, 2Tim, 3Jan, Ef, Fil, Filem, Gal, Jak, Jel, Jud, Kol, Rom, Tit, Zsid) | forras=adat/karoli_strong/szavak_<könyv>.tsv + konkordancia/TAGNT_kivonat.tsv | ts=2026-10-20T05:41:20+00:00 | a párosított [nem TR] eredeti tokenek (a TR más alakot olvas, annak nincs sora a kivonatban); a link `alacsony`, a strong a kritikai szöveg alakjáé; D45 (a) | kézzel szerkeszteni tilos
 vers	er_sorszam	er_szo	strong	kritikai_kiadas	allapot	hu_sorszam	hu_szo
 1Ján 1:5	5	ἀγγελία	G0031	NA28+NA27+Tyn+SBL+WH+Treg+Byz+KJV	parositva	5	üzenet
 1Ján 2:13	16	Ἔγραψα	G1125	NA28+NA27+Tyn+SBL+WH+Treg	parositva	19	Írok
+1Kor 3:4	13	οὐκ	G3756	NA28+NA27+Tyn+SBL+WH+Treg	parositva	14	nem
+1Kor 3:4	14	ἄνθρωποί	G0444	NA28+NA27+Tyn+SBL+WH+Treg	parositva	15	testiek
+1Kor 3:5	1	Τί	G5101	NA28+NA27+Tyn+SBL+WH+Treg	parositva	2	kicsoda
+1Kor 3:5	5	τί	G5101	NA28+NA27+Tyn+SBL+WH+Treg	parositva	5	kicsoda
+1Kor 3:10	13	ἔθηκα,	G5087	NA28+NA27+Tyn+SBL+WH+Treg	parositva	11	vetettem
+1Kor 5:2	10	ἀρθῇ	G0142	NA28+NA27+Tyn+SBL+WH+Treg	parositva	12	kivettetnék
+1Kor 5:2	18	πράξας;	G4238	NA28+NA27+WH	parositva	19	cselekedte
+1Kor 8:8	5	παραστήσει	G3936	NA28+NA27+Tyn+SBL+WH+Treg	parositva	5,7	tesz kedvesekké
+1Kor 8:9	12	ἀσθενέσιν.	G0772	NA28+NA27+Tyn+SBL+WH+Treg	parositva	13	erőteleneknek
+1Kor 10:9	14	ἀπώλλυντο.	G0622	NA28+NA27+Tyn+SBL+WH+Treg	parositva	12	elveszének
+1Kor 10:10	3	καθάπερ	G2509	NA28+NA27+SBL+WH+Treg	parositva	5	miképen
+1Kor 10:11	4	τυπικῶς	G9992	NA28+NA27+Tyn+SBL+WH+Treg	parositva	3	példaképen
+1Kor 10:11	5	συνέβαινεν	G4819	NA28+NA27+Tyn+SBL+WH+Treg	parositva	4	estek
+1Kor 10:11	18	κατήντηκεν.¶	G2658	NA28+NA27+Tyn+SBL+WH+Treg	parositva	16	elérkezett
+1Kor 11:5	13	αὐτῆς·	G0846	NA28+NA27+Tyn+SBL+WH+Treg	parositva	13	ő
+1Kor 11:31	2	δὲ	G1161	NA28+NA27+Tyn+SBL+WH+Treg	parositva	1	Mert
+1Kor 12:9	14	ἑνὶ	G1520	NA28+NA27+Tyn+SBL+WH+Treg	parositva	11	egy
+1Kor 13:8	4	πίπτει.¶	G4098	NA28+NA27+Tyn+SBL+WH+Treg	parositva	4,6	el fogy
+1Kor 14:16	3	εὐλογῇς	G2127	NA28+NA27+Tyn+SBL+WH+Treg	parositva	4,5	mondasz áldást
+1Kor 14:16	4	ἐν	G1722	NA28+NA27+WH	parositva	3	lélekkel
+1Kor 14:21	11	ἑτέρων	G2087	NA28+NA27+Tyn+SBL+WH+Treg	parositva	9	idegen
+1Kor 14:35	15	γυναικὶ	G1135	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	15	asszonynak
+1Kor 15:24	5	παραδιδῷ	G3860	NA28+NA27+Tyn+SBL+WH	parositva	5	átadja
 1Pét 3:1	22	κερδηθήσονται,	G2770	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	22	megnyeressenek
 1Thessz 1:7	4	τύπον	G5179	NA28+NA27+Tyn+SBL+WH+Treg	parositva	3	példaképekké
 1Thessz 2:3	11	οὐδὲ	G3761	NA28+NA27+Tyn+SBL+WH+Treg	parositva	11,12	sem nem
@@ -26,6 +49,50 @@ Jak 4:5	14	κατῴκισεν	G6052	NA28+NA27+Tyn+SBL+WH+Treg	parositva	16	lako
 Jak 4:9	11	μετατραπήτω	G6060	NA28+NA27+SBL+WH	parositva	10	forduljon
 Jak 4:12	17	κρίνων	G2919	NA28+NA27+Tyn+SBL+WH+Treg	parositva	14	kárhoztatod
 Jak 4:12	19	πλησίον;¶	G4139	NA28+NA27+Tyn+SBL+WH+Treg	parositva	16	másikat
+Jel 4:10	14	προσκυνήσουσιν	G4352	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	13	imádja
+Jel 4:10	23	βαλοῦσιν	G0906	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	27	teszi
+Jel 8:11	10	ἐγένετο	G1096	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	6	változék
+Jel 8:11	14	ὑδάτων	G5204	NA28+NA27+Tyn+SBL+WH+Treg+Byz+KJV	parositva	9	folyóvizek
+Jel 8:12	31	φάνῃ	G5316	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	30	fényljék
+Jel 8:13	6	ἀετοῦ	G0105	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	9	angyalt
+Jel 8:13	17	κατοικοῦντας	G2730	NA28+NA27+Tyn+SBL+WH+Treg	parositva	23	lakosainak
+Jel 9:2	18	ἐσκοτώθη	G4656	NA28+NA27+Tyn+SBL+WH	parositva	18	meghomályosodék
+Jel 9:4	6	ἀδικήσουσιν	G0091	NA28+NA27+SBL+WH	parositva	9	bántsák
+Jel 9:5	3	αὐτοῖς	G0846	NA28+NA27+Tyn+SBL+Treg	parositva	3	azoknak
+Jel 9:5	10	βασανισθήσονται	G0928	NA28+NA27+Tyn+SBL+WH+Treg	parositva	11	kínoztassanak
+Jel 9:6	20	φεύγει	G5343	NA28+NA27+Tyn+SBL+WH+Treg	parositva	21	elmegy
+Jel 11:6	13	ἡμέρας	G2250	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	13	idejében
+Jel 11:11	14	ἐν	G1722	NA28+NA27+Tyn+SBL+WH+Treg	parositva	12	beléjök
+Jel 11:11	15	αὐτοῖς,	G0846	NA28+NA27+Tyn+SBL+WH+Treg	parositva	12	beléjök
+Jel 11:11	25	ἐπέπεσεν	G1968	NA28+NA27+Tyn+SBL+WH+Treg	parositva	19	esék
+Jel 11:18	35	μικροὺς	G3398	NA28+NA27+Tyn+SBL+WH+Treg	parositva	34	kicsinyeknek
+Jel 11:18	38	μεγάλους,	G3173	NA28+NA27+Tyn+SBL+WH+Treg	parositva	36	nagyoknak
+Jel 16:1	14	ἐκχέετε	G1632	NA28+NA27+Tyn+SBL+WH	parositva	17,18	töltsétek ki
+Jel 16:1	16	ἑπτὰ	G2033	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	24	hét
+Jel 16:14	4	δαιμονίων	G1140	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	2	ördögi
+Jel 16:14	7	ἃ	G3739	NA28+NA27+Tyn+SBL+WH+Treg+Byz+KJV	parositva	5,6	a kik
+Jel 16:14	8	ἐκπορεύεται	G1607	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	11	elmennek
+Jel 18:14	19	ἀπώλετο	G0622	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	19	eltávozott
+Jel 18:14	27	εὑρήσουσιν.	G2147	NA28+NA27+Tyn+SBL+WH+Treg	parositva	24,26	meg találod
+Jel 18:16	19	χρυσίῳ	G5553	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	19	aranynyal
+Jel 18:16	24	μαργαρίτῃ,	G3135	NA28+NA27+Tyn+SBL+WH+Treg	parositva	22	gyöngyökkel
+Jel 19:13	7	κέκληται	G2564	NA28+NA27+Tyn+SBL+WH+Treg	parositva	12	neveztetik
+Jel 19:15	13	πατάξῃ	G3960	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	12	verje
+Jel 20:9	9	ἐκύκλευσαν	G6059	NA28+NA27+Tyn+SBL+WH	parositva	7	körülvevék
+Jel 20:11	10	αὐτόν,	G0846	NA28+NA27+Byz	parositva	9	rajta
+Jel 20:12	13	θρόνου,	G2362	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	10	Isten
+Jel 20:12	16	ἠνοίχθησαν.	G0455	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	14,15	nyittatának meg
+Jel 20:12	20	ἠνοίχθη	G0455	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	20,21	nyittaték meg
+Jel 21:4	7	ἐκ	G1537	NA28+NA27+Tyn+SBL+WH+Treg	parositva	9	szemeikről
+Jel 21:5	7	θρόνῳ·	G2362	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	7	királyiszéken
+Jel 21:6	4	γέγοναν.	G1096	NA28+NA27+Tyn+SBL+WH+Treg	parositva	4	Meglett
+Jel 22:11	7	ῥυπαρὸς	G4508	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	11	fertelmes
+Jel 22:11	8	ῥυπανθήτω	G4510	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	12,13	legyen fertelmes
+Jel 22:11	13	δικαιοσύνην	G1343	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	21	igaz
+Jel 22:11	14	ποιησάτω	G4160	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	20	legyen
+Jel 22:12	16	ἐστὶν	G1510	NA28+NA27+Tyn+SBL+WH+Treg	parositva	19	lesz
+Jel 22:13	4	ἄλφα	G0001	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	4	Alfa
+Jel 22:16	27	πρωϊνός.	G4407	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	24	hajnali
 Kol 2:2	6	συμβιβασθέντες	G4822	NA28+NA27+Tyn+SBL+WH+Treg	parositva	7	egybeköttetvén
 Kol 2:2	13	πλοῦτος	G4149	NA28+NA27+Tyn+SBL+WH+Treg	parositva	17	gazdagságára
 Kol 2:12	5	βαπτισμῷ	G0909	NA28+NA27+SBL+Treg	parositva	6	keresztségben
@@ -36,6 +103,13 @@ Kol 4:12	18	σταθῆτε	G2476	NA28+NA27+Tyn+SBL+WH+Treg	parositva	16	megáll
 Kol 4:12	21	πεπληροφορημένοι	G4135	NA28+NA27+Tyn+SBL+WH+Treg	parositva	19,20	teljes meggyőződéssel
 Kol 4:15	7	Νύμφαν	G3564	NA28+NA27+Tyn+SBL+WH	parositva	8	Nimfást
 Kol 4:15	12	αὐτῆς	G0846	NA28+NA27+SBL+WH	parositva	14,15	ő házánál
+Róm 3:28	2	γὰρ	G1063	NA28+NA27+Tyn+SBL+WH+Treg	parositva	3	tehát
+Róm 4:1	7	προπάτορα	G6074	NA28+NA27+Tyn+SBL+WH+Treg	parositva	8	atyánk
+Róm 10:14	3	ἐπικαλέσωνται	G1941	NA28+NA27+Tyn+SBL+WH+Treg	parositva	2,4	hívják segítségül
+Róm 10:14	10	πιστεύσωσιν	G4100	NA28+NA27+Tyn+SBL+WH+Treg	parositva	11	hisznek
+Róm 10:14	16	ἀκούσωσιν	G0191	NA28+NA27+Tyn+SBL+WH+Treg	parositva	20	hallanának
+Róm 14:4	16	δυνατεῖ	G1414	NA28+NA27+Tyn+SBL+WH+Treg	parositva	24	képes
+Róm 14:4	20	κύριος	G2962	NA28+NA27+Tyn+SBL+WH+Treg	parositva	22,23	Úr által
 Zsid 2:1	10	παραρυῶμεν.¶	G3901	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	12,14	el sodortassunk
 Zsid 4:2	16	συγκεκερασμένους	G4786	NA28+NA27+Tyn+SBL+WH+Treg+Byz	parositva	18	párosították
 Zsid 4:7	13	προείρηται,	G4280	NA28+NA27+Tyn+SBL+WH+Treg	parositva	14,15,16	előbb mondva volt

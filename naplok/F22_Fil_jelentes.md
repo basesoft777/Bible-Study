@@ -102,3 +102,7 @@ A felhasználó döntése szerint (chat, 2026.10.12) a 48 zárójeles csoport (`
 - `parok_Fil.tsv`: 1638 → 1617 link; `szavak_Fil.tsv` (változott állapotok): er `fuggoben` 0 → 19; er `parositva` 1434 → 1415; hu `betoldas` 308 → 300; hu `fuggoben` 25 → 52; hu `parositva` 1395 → 1376.
 - Átnézési sor (`naplok/F22_Fil_atnezes.tsv`): 4.
 - `egyesit.py --konyv Fil --ellenoriz`: „rendben”. A fenti 1–5. szakasz számai a javítás előtti állapotot írják le.
+
+## Utólagos javítás (2026.10.19)
+
+A Fil 3:13–14 tokenszintű vershatár-eltérés (a Károli 3:14 eleje „De egyet cselekszem … nékik dőlvén,” = a TAGNT 3:13 vége): a két vers `kezi` kényszerbe került (`f22/kezi_versek_Fil.tsv`), `parok_Fil.tsv` 1 649 link, `szavak_Fil.tsv` 69 `fuggoben` sor. Részletek: `naplok/F22_C_elokeszites.md` 3.

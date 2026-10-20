@@ -1,3 +1,5 @@
 # F22 (N-F22c, 2026.10.12): a modell-válaszoktól függetlenül kezi állapotú Károli-versek (egyesit.py kezi_felulir);
 # ok: a nyers TAGNT [..]/{..} jelölésű sorai a TAGNT_kivonat.tsv-ből kimaradtak (naplok/F22_TAGNT_zarojeles_sorok.md).
 igehely	ok
+Zsid 1:1	tokenszintű vershatár-eltérés (ELLENOR_F22_2KOR, N-F22e; F22_C_elokeszites.md 3.): a Károli-vers egy szakasza a szomszéd eredeti versben áll: a Károli 1:1 vége („ez utolsó időkben szólott nékünk Fia által”) = TAGNT 1:2 1–7. token
+Zsid 1:2	tokenszintű vershatár-eltérés (ELLENOR_F22_2KOR, N-F22e; F22_C_elokeszites.md 3.): a Károli-vers egy szakasza a szomszéd eredeti versben áll: a TAGNT 1:2 1–7. tokenje a Károli 1:1 végének felel meg
