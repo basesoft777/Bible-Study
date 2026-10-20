@@ -2,6 +2,8 @@
 
 *FELADATOK #126 · `F126_ISTENTISZT001_PROZA_BRIEF.md` 3. szakasz 4. lépés · v1: 2026-10-20 (F126.4) · v2: 2026-10-20 (F126.4a, a felhasználó átdolgozási kérése szerint) · modell: claude-opus-5-5*
 
+**Jóváhagyás (2026-10-20, a felhasználó a chatben, az orkesztrátoron át):** a v2 bekezdései jóváhagyva („mehet”), és a B7 Peshat-mondata javítva („… az Úr nevét az hívja segítségül, aki hisz benne.”; a korábbi „aki hisz abban, akinek a neve” helyett; „mehet a javaslat szerint”). A beírás: F126.5 (v2), F126.5a (B7-javítás).
+
 **A forrásba (`motivumok/ISTENTISZT-001.md`) a jóváhagyásig semmi nem kerül.** Kérlek, bekezdésenként jelezd: **jóváhagyva / javítandó (mit) / elvetve**. Az elvetett bekezdés helyére nem kerül pótlás.
 
 A mérés: `naplok/F126_meres.md` (minden szám ott van, lekérdezésenként). A proveniencia-sorok a bekezdés alatti dőlt sorban állnak: a `【NAPLO】` a lapról kivágódik (`adat/SEMA.md` 3.10.3), ezért a proveniencia látható apparátus-sorként megy.
@@ -142,7 +144,7 @@ A felel + tűz alapú Kármel–Zakariás bekezdés kísérő szavakra épült, 
 ```markdown
 **Róm 10:14.** A vers a 10:13 Jóel-idézetét — „minden, a ki segítségül hívja az Úr nevét, megtartatik” — kérdéssorral folytatja: „Mimódon hívják azért segítségül azt, a kiben nem hisznek? Mimódon hisznek pedig abban, a ki felől nem hallottak? Mimódon hallanának pedig prédikáló nélkül?” A 10:14-ben a „név” szó nem áll; a „segítségül hív” (ἐπικαλέομαι, epikaleomai) tárgya névmás, amely a 10:13 Urára utal vissza. Mért tény: a versben a „hisz” (πιστεύω) és a „hall” (ἀκούω) kétszer, a „hirdet” (κηρύσσω) egyszer áll. Szövegi adat: a TAGNT szerint a „hívják segítségül” alak (ἐπικαλέσωνται), valamint a „hisznek” és a „hallanának” alakja hat kiadásban áll (NA28, NA27, Tyndale House, SBL, Westcott–Hort, Tregelles), a Textus Receptus és a bizánci szöveg nélkül; az utóbbiak alakját a repó adata nem tartalmazza.
 
-Értelmezés (Peshat): a kérdéssor a 10:13-ban ígért segítségül hívásra kérdez vissza: az Úr nevét az hívja segítségül, aki hisz abban, akinek a neve. Értelmezés (Remez): a hit, a hallás és a hirdető így a név segítségül hívásának előzményeiként áll a versben, és a Jóel-ígéret a sor végére kerül.
+Értelmezés (Peshat): a kérdéssor a 10:13-ban ígért segítségül hívásra kérdez vissza: az Úr nevét az hívja segítségül, aki hisz benne. Értelmezés (Remez): a hit, a hallás és a hirdető így a név segítségül hívásának előzményeiként áll a versben, és a Jóel-ígéret a sor végére kerül.
 
 *Proveniencia: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, n=32) | forras=TAGNT_kivonat.tsv (Kritikai kiadás)+Karoli_1908.tsv+kapcsolatok.tsv (naplok/F126_meres.py, split('\t')) | ts=2026-10-20T10:11Z · scope=range:Róm 10:13, range:Róm 10:14 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | ts=2026-10-20T10:08Z | csatorna=cli*
 ```
@@ -172,7 +174,7 @@ A felel + tűz alapú Kármel–Zakariás bekezdés kísérő szavakra épült, 
 | **Zsolt 116:4** | **nincs új anyag** — a próza kimondja | B3: „a név segítségül hívásáról a motívum többi helyéhez az adat új összefüggést nem ad, ezért a próza itt nem értelmez tovább.” |
 | **Zsolt 116:13** | **nincs új anyag** — a próza kimondja | B4: „a motívum többi helyéhez az adat új összefüggést nem ad, ezért a próza itt nem értelmez tovább.” |
 | ApCsel 9:21 | megalapozott értelmezés (Peshat); a formai rész kimondva | A4: „a kívülállók szájában a csoport ismertetőjegye a név …” + „további értelmezést a szöveg nem kínál.” |
-| Róm 10:14 | megalapozott értelmezés (Peshat, Remez) | B7: „az Úr nevét az hívja segítségül, aki hisz abban, akinek a neve.” |
+| Róm 10:14 | megalapozott értelmezés (Peshat, Remez) | B7: „az Úr nevét az hívja segítségül, aki hisz benne.” |
 
 Eredmény (v2): **6/8 megalapozott értelmezés + 2 „nincs új anyag”** (Zsolt 116:4, Zsolt 116:13).
 
