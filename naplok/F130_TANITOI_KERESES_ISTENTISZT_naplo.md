@@ -44,3 +44,7 @@
 - **380. sor (3. kérdés)**: „Derek Prince szabadulás-tanítása szerint pedig gyakori ellenállás a szégyen/kudarc érzése, amely visszatartja az embert a segítségül hívástól —” →
   „Derek Prince a levertségből való saját szabadulásáról szóló beszámolóiban a Jóel 2:32 ígéretére támaszkodva hívta segítségül az Úr nevét (a tanítói fájl 3.1) —”
   és a mondat vége: „a szöveg ezzel szemben azt mutatja” → „a szöveg is azt mutatja”; a többi része változatlan („…, hogy pontosan ez (a függőség beismerése) a helyes válasz.”)
+
+## Javítókör 1 (`/elteres 130`, ELLENOR_F130)
+
+- **Szándékos címsor-törlés (ELLENOR_F130 1. tétel, E5).** A `motivumok/naplok/ISTENTISZT-001_tanitoi_kereses.md` felülírása a régi, manual törzset és három címsorát (`## Eredet`; `## Az átvett eredmény (bájtra, a motivumok/ISTENTISZT-001.md 5. pontjából)`; `### A nevesített tanítói egyezés-keresés eredménye (öt lépéses módszertan szerint)`) szándékosan törölte: a régi változat bájtra archiválva van (`archivum/ISTENTISZT-001/ISTENTISZT-001_tanitoi_kereses_manual.md`, F130.1, DT-F130b), az új szerkezet a `sablonok/7_PaRDeS_tanitoi_kereses_sablon.md` négy pontját követi. A jelölés a F130.5 commit-üzenetében áll (`TÖRLÉS-SZÁNDÉKOS:`).
