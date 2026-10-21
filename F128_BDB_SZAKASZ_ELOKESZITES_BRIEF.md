@@ -8,7 +8,7 @@ modell: opus
 allapot: megallt
 ag: claude/f128-bdb-szakasz-elokeszites-a2fc2f
 ad: a #38 a következő adagtól szakaszonként fordíthat — a bemenet-előállító, a prompt v5, a szakasz-kapu és a forditasok.tsv szakaszkulcsa kész és tesztelt, modellhívásos fordítás nélkül
-kovetkezo: "Te: [elteres_kor 0/2] /elteres 128 — ELTÉRÉS (naplok/ELLENOR_F128.md): (1) bdb_szakasz_hu.tsv fejléc-hash elavul, (2) E16: a PR címe [ELLENŐRZŐ] előtagú legyen"
+kovetkezo: "Te: [elteres_kor 1/2] /elteres 128 — újraellenőrzés függ: naplok/ELLENOR_F128_2.md"
 olvas: [F38_BDB_FORDITAS_BRIEF.md, DONTESEK.md, adat/SEMA.md, adat/bdb_szakaszok.tsv, adat/bdb_forras_javitas.tsv, adat/bdb_szakasz_hu.tsv, adat/forditasok.tsv, adat/terminologia.tsv, eszkozok/emeles.py, eszkozok/forditas_kapuk.py, eszkozok/bdb_adatblokk.py, eszkozok/bdb_jelolt/nezet_general.py, eszkozok/bdb_jelolt/hu_illeszt.py, forditas/prompt_v4.md, naplok/F107_BDB_JELOLT_SZOVEG_naplo.md, naplok/BDB_FORDITAS_sorrend.tsv, konkordancia/BDB_teljes_unabridged.tsv]
 ir: [eszkozok/emeles.py, eszkozok/forditas_kapuk.py, eszkozok/teszt_forditas_kapuk.py, eszkozok/ellenoriz.py, eszkozok/teszt_ellenoriz_13.py, eszkozok/olvaso_szerver/lekerdezesek.py, eszkozok/olvaso_szerver/teszt_olvaso_szerver.py, eszkozok/bdb_adatblokk.py, eszkozok/teszt_bdb_adatblokk.py, eszkozok/bdb_jelolt/hu_illeszt.py, eszkozok/bdb_jelolt/teszt_bont.py, eszkozok/bdb_jelolt/szakasz_bemenet.py, eszkozok/bdb_jelolt/teszt_szakasz_bemenet.py, forditas/prompt_v5.md, adat/SEMA.md, adat/bdb_szakasz_hu.tsv, naplok/F128_BDB_SZAKASZ_ELOKESZITES_naplo.md, DONTESEK.md, NYITOTT_FELADATOK.md, F38_BDB_FORDITAS_BRIEF.md]
 fugg: [107]
