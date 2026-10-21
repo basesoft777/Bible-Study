@@ -162,7 +162,7 @@ A kérdés: tartalmaz-e a motívum negatív kritériuma (`adat/motivumok.tsv`) g
 | motívum (tág Strong) | gépi jegy a negatív kritériumban? | mondat |
 |---|---|---|
 | ISTENTISZT-001 (H7121+H8034) | igen | a קָרָא + בְּ + שֵׁם szerkezet, az aktív/passzív ige és az isteni névszó szó-sor szinten ellenőrizhető; a kézi rész a שֵׁם referense (a pilot igazolta) |
-| KIRALY-001 (H3548) | részben | Melkizedek megnevezése (H4442/G3198) vagy a „rendje szerint” formula a versben gépileg ellenőrizhető; a BDB „priest-king” sense nem szerepel a TAHOT-sorokban, az kézi |
+| KIRALY-001 (H3548) | részben | Melkizedek megnevezése (H4442/G3198) vagy a „rendje szerint” formula a versben gépileg ellenőrizhető; a BDB „priest-king” jelentése nem szerepel a TAHOT-sorokban, az kézi |
 | MENNY-001 (H1121+H0430) | igen | a בְּנֵי (הָ)אֱלֹהִים szomszédsági minta (H1121 és H0430 egymás mellett, esetleg H9009-cel) és a H5303 nefilim gépileg ellenőrizhető, a רפאים (H7496) kizárás Strong-szinten adott; a kézi rész az „elohim” jelentése (bírák, isten) |
 | ANTROP-001 (H5315+H2416) | részben | a két szó egyazon versben állása (kollokáció) gépi; a „megkülönböztető szerep” értelmezés, kézi |
 | HAMART-001 (H2403, H7451, H0127, H7843, H7043, H2555) | alig | a kritérium a genezisi átok→föld→romlás láncra való visszautalás; gépileg csak a megnevezett kollokációk (málé+chámász, sámá+chámász) ellenőrizhetők, az egyes tág Strongokra (H2403, H7451) nincs kizáró gépi jegy; külön szűrő-szabály kell, vagy a tág Strongok gerinc-szerepe felülvizsgálandó |
