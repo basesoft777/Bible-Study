@@ -136,3 +136,85 @@ előtti tartomány. A 98 együtt kb. 1,35 adagnyi (500 000 karakteres adaggal sz
 
 Az öt tétel a `DONTESEK.md`-ben: **DT-F128a** (tárolási kulcs), **DT-F128b** (`forras_hash`), **DT-F128c** (darabolás), **DT-F128d** (nem
 `egyezik` Strongok), **DT-F128e** (N-F107b). A döntésig kódírás nincs (brief M0).
+
+**Döntés (F128.3, `74e23809`):** a felhasználó 2026-10-21-én (chat, az orkesztrátor-sessionben továbbítva) mind az öt javaslatot
+elfogadta: DT-F128a (a), DT-F128b (1), DT-F128c (2), DT-F128d (2)+(i), DT-F128e sors (2), sorrend (i). A H8415 `kezi` soráról nem
+döntött: DT-F128f (🟡).
+
+## M1 — bemenet-előállító (F128.4, `73cf712b`)
+
+`eszkozok/bdb_jelolt/szakasz_bemenet.py`: Strongonként a szakasztábla sorai (`jel` + `szoveg`), a `hivatkozas` / `javitva`
+javításokkal (a Strong-nézeten, a `nezet_general.py` logikájával, a szakaszhatár mentén visszavágva), pe/mem csere nélkül;
+határtoken `⟪<sorszam>⟫` (a `⟦n⟧` az `emeles.py` héber/görög helyőrzője, ezért más jel). Szakaszonkénti SHA-1 (DT-F128b (1)),
+hívás-csoportok (DT-F128c (2)), a közös összefűző `strong_magyar()` (DT-F128a (a)); a 9 táblán kívüli Strong `None` (DT-F128d (2)).
+Előmérés: üres szakaszsor 0; a 412 hivatkozás-javításból szakaszhatáron átnyúló 0; `⟪⟫⟦⟧` jel a forrásszövegben 0.
+
+`--ellenoriz`: 8 090 Strong, 36 621 szakasz; a token nélküli szöveg mind a 8 090-en azonos a `nezet_general.py` (`--pe-mem` nélküli)
+nézetével; pe/mem eltérés a nyers táblához képest 0; determinisztikus. Több csoportos Strong 11 (a 20 000 fölöttiek), minden csoport
+≤ 10 000 karakter: H0834 3, H1961 3, H1980 6, H3117 3, H3588 3, H4480 5, H5414 3, H5920 5, H6440 3, H7725 4, H9005 6 csoport.
+
+`scope=adat/bdb_szakaszok.tsv + adat/bdb_forras_javitas.tsv, 8 090 Strong | forras=python eszkozok/bdb_jelolt/szakasz_bemenet.py --ellenoriz @73cf712b | ts=2026-10-21`
+
+## M3 — szakasz-kapu (F128.5, `22c23db5`; az M2 elé került, mert az `emeles.py` ága erre épül)
+
+`eszkozok/forditas_kapuk.py`: `ellenoriz_szakasz` (14. kapu, gátló: a tokenek száma és sorrendje a forrásé; nincs új, hiányzó,
+duplázott token, üres szakasz, szöveg az első token előtt), `ellenoriz_tagolas_szakaszonkent` (a 9. kapu szakaszpáronként; a
+szakasz elé mindkét oldalon `. ` kerül, hogy a szakasz eleji jelölő a folyó szövegbeli helyzetével azonosan ismerődjön fel),
+`kapuk_futtat_szakaszos` (a többi kapu a token nélküli szövegen). A régi `kapuk_futtat` változatlan.
+
+Tesztek (`eszkozok/teszt_forditas_kapuk.py`, 81, OK): 11 szintetikus eset (hiányzó, duplázott, felcserélt, új token, üres szakasz,
+token előtti szöveg; a szomszéd szakaszba vándorolt jelentésszám: egészben átmegy, szakaszonként nem), és a 674 kész Strong:
+a `bdb_szakasz_hu.tsv` `illeszkedik` sorainál kezdődő szakaszokból összerakott tokenes párokon **0 szakasz-kapu hiba (674/674)**.
+
+## M2 — prompt v5 és `emeles.py` (F128.6, `7426d6a8`)
+
+`forditas/prompt_v5.md`: a v4.2 szó szerinti másolata (a v4 mind a 193 sora sorrendben megvan, gépi ellenőrzéssel) + „Kiegészítő
+szabály (v5) — szakaszhatár-tokenek” (hat szabály, példával). `eszkozok/emeles.py` új ága: `szakasz_elokeszit`, `szakasz_ellenoriz`,
+`szakasz_rogzit` (`jelentes_szam = sz<sorszam>`, `forras_hash` a szakaszé), `szakasz_beir` (a régi `teljes` sor `--regi-elavult`-tal
+`elavult`, a `megjegyzes` jelöli; enélkül megáll; `kezi` régi sor csak `--kezi-felulir`-ral). A régi út (prompt v4, `rogzit` / `beir`)
+változatlan. Tesztek: `teszt_szakasz_bemenet.py` 23 (a rögzítés és a beírás ideiglenes táblákon; a repó `forditasok.tsv`-je nem
+íródik), `teszt_emeles.py` 10, `teszt_bdb_zaras.py` 21 — OK. (Az `olvaso_pilot/teszt_olvaso_pilot.py` hibái — Macula-görög, TSK —
+nem érintik a módosított kódot; a fájl nem importálja ezeket.)
+
+## M4 — száraz próba (modellhívás nincs; a `forditasok.tsv` nem íródik)
+
+Eseti szkript a repón kívül (`m4_szaraz.py`); a promptok a menet scratchpadjába íródtak, a repóba nem. A három Strong gépi választás:
+a legrövidebb kész, `egyezik`, 3 szakaszos, 300 karakter fölötti; a legtöbb törzsű kész `egyezik`; a legrövidebb (3 000 fölötti),
+legalább 3 törzsű `egyezik` N-F107b Strong.
+
+| Strong | szakasz | karakter | törzs | csoport | prompt (karakter) | token a promptban | kitöltetlen `{{…}}` | a kész magyar csoportjai (összeolvasztott sor) | 14. kapu | a többi kapu a kész magyaron |
+|---|---|---|---|---|---|---|---|---|---|---|
+| H0609 (rövid) | 3 | 307 | 0 | 1 | 26 362 | 3 | 0 | 1 (2) | RENDBEN | mind RENDBEN |
+| H1540 (több törzs) | 32 | 5 223 | 10 | 1 | 31 663 | 32 | 0 | 29 (3) | RENDBEN | 4_formazas, 5_terminologia SERTES |
+| H8130 (N-F107b) | 14 | 3 140 | 3 | 1 | 29 507 | 14 | 0 | 9 (5) | RENDBEN | 1, 2, 4, 9, 11 SERTES |
+
+A 674 kész Strongon (a kész magyar az `illeszkedik` soroknál kezdődő csoportokban): **14. szakasz-kapu 674/674 RENDBEN**; a 9.
+tagolás szakaszonként 578, egészben 657 RENDBEN; a teljes szakaszos kapusor 235-ön megy át (SERTES: 4_formazas 401, 9_tagolas 96,
+2_versszam 24, 11_konyvek 24, 1_gorog_heber 19, 5_terminologia 16, 10_torzs 1, 8_idezojel 1). Összevetésül a régi kapusor a TSV
+forrásán: 658/674 (csak 5_terminologia 16).
+
+A különbség oka nem a kapu, hanem a próba két mérhető tulajdonsága, ezért a kész magyaron a teljes kapusor nem mérce, csak a 14.:
+- a régi fordítás a TSV-ből készült: 346 Strongban `_<szám>` maradványt hordoz (a TSV `_N` gyakoriságszáma, DT181), a nézetből a
+  `<sub>` kimarad — ez a 4. kapu `_`-jelzése; a nézet és a TSV szövege a kész Strongok közül 401-nél eltér (M0 2.);
+- a `bdb_szakasz_hu.tsv`-ben 22 Strong magyar szakaszai átfednek (H0068, H0259, H0410, H0637, H0995, H1004, H1870, H1980, H1984,
+  H2388, H2416, H3384, H3644, H3772, H3947, H4264, H4672, H5127, H5674, H6242, H7725, H8130) — az összerakás itt duplikál (1., 2., 11.
+  kapu „többlet”). **Mind a 22 a 98 N-F107b Strong között van**, tehát újrafordul; új tétel nem kell.
+- a szakaszonkénti 9. kapu 96 hibájából 77 az összeolvasztott (elakad / horgony / átfedő) Strongoké; 19 más (pl. H0001 1. szakasz:
+  a „37 1. 2” „1.”-je; H0559 „I”): a szakaszonkénti illesztés szigorúbb, mint az egészben futó (ott a jelölő a következő szakaszban is
+  „megtalálható”). Új fordításon ez a cél (brief M3), a kész szövegen nem javítunk.
+
+`scope=F128 M4, H0609 / H1540 / H8130 + 674 kész Strong | forras=m4_szaraz.py, m4_atfedes.py, m4_tagolas.py (eseti, a repón kívül) @7426d6a8 | ts=2026-10-21`
+
+## M4.2 — SEMA és a #38 briefje
+
+`adat/SEMA.md` 2.14: a `jelentes_szam` (`sz<sorszam>`), a `forras_hash` (az `sz<n>` sor alapja) és az `allapot` (`elavult` a
+felváltott `teljes` sorra) sora, és egy bekezdés a szakaszonkénti sorokról (összefűző, olvasók, a 9 táblán kívüli, csoportok, kapuk).
+`F38_BDB_FORDITAS_BRIEF.md` „Lépések”: rövid hivatkozás a szakaszonkénti útra (a fejléchez nem nyúl).
+
+## Nyitott
+
+- **DT-F128f** (🟡): a H8415 `kezi` sora — újrafordul-e (a `szakasz_beir` ma megáll rajta, `--kezi-felulir` nélkül).
+- **DT-F128g** (🟡, ⛔): az olvasók átállítása az első `sz<n>` sor beírása előtt. Az `ir` mezőn kívül: `eszkozok/ellenoriz.py`
+  13. szabály (CI E1: az `sz<n>` sorhoz ma „nincs hozzá forrásszöveg” = SÉRTÉS), `olvaso_szerver/lekerdezesek.py` `bdb_magyar` /
+  `bdb_magyar_meta` (az utolsó nem üres sort veszi: az utolsó szakaszt mutatná), `bdb_adatblokk.py --karoli-epit` (a kész halmaz
+  csak `teljes`), `bdb_jelolt/hu_illeszt.py` (az utolsó nem üres sor). A #38 első szakaszos beírása nélküle a CI-t megbuktatja.
