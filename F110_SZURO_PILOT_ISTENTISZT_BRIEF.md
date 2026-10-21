@@ -9,7 +9,7 @@ munka: adat
 allapot: megallt
 ag: claude/f110-szuro-pilot-2
 ad: naplózott, determinisztikus szűrő (motivumok.tsv negatív kritérium + kollokáció) az F108 tág új helyeire; kipróbálva a G1941 21 nyitva jelöltjén és a H7121+H8034 168 nem-zsoltári új helyén; a jeloltek.tsv-be csak a szűrő utáni helyek, a 21 G1941-jelölt döntéssel; mérés, hogy a szabály a többi motívumra átvihető-e
-kovetkezo: "Te: [elteres_kor 1/2] ELLENOR_F110_2 1. E28 lexikon (ismert kivétel, döntés), 2. beerkezo-tervezet mechanikus, 3. A5 napló mechanikus, 4. A1 napló mechanikus"
+kovetkezo: "Te: [elteres_kor 2/2] /elteres 110 — újraellenőrzés függ: naplok/ELLENOR_F110_3.md"
 olvas: [adat/motivumok.tsv, adat/jeloltek.tsv, adat/elofordulasok.tsv, adat/SEMA.md, adat/grammatikai_strongok.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, naplok/F108_ujrascan_elteresek.tsv, naplok/F108_MOTIVUM_UJRASCAN_naplo.md, eszkozok/lekerdez.py, eszkozok/jelolt.py]
 ir: [adat/jeloltek.tsv]
 fugg: []
