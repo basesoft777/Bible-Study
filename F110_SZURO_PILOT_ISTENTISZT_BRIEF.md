@@ -6,11 +6,14 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: nem_indult
+allapot: lezarva
+ag: claude/f110-szuro-pilot-2
+pr: 455
+lezarva_osszegzes: "a jeloltek.tsv: 21 G1941-sor elutasítva + 2 új nyitva sor (Ézs 41:25, Ézs 64:6); a JSir 3:55 és 5Móz 32:3 kiszűrve, ApCsel 7:59 elutasítva; szűrő és átvihetőség-mérés a naplóban; 2 javítókör + a zárás után 1 kör a felhasználó kérésére (DT284; ELLENOR_F110_4: 3 tétel, _5: 1 tétel, mind javítva), 3 alacsony súlyú maradék a zárójelentésben; E28 javítva (F110.29: lexikon_general.py:2116 literál, lexikon újragenerálva), E11 javítva (F110.30: Cremer-hivatkozás törölve a G1941 fordításából)"
 ad: naplózott, determinisztikus szűrő (motivumok.tsv negatív kritérium + kollokáció) az F108 tág új helyeire; kipróbálva a G1941 21 nyitva jelöltjén és a H7121+H8034 168 nem-zsoltári új helyén; a jeloltek.tsv-be csak a szűrő utáni helyek, a 21 G1941-jelölt döntéssel; mérés, hogy a szabály a többi motívumra átvihető-e
-kovetkezo: /kovetkezo
-olvas: [adat/motivumok.tsv, adat/jeloltek.tsv, adat/elofordulasok.tsv, adat/SEMA.md, adat/grammatikai_strongok.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, naplok/F108_ujrascan_elteresek.tsv, naplok/F108_MOTIVUM_UJRASCAN_naplo.md, eszkozok/lekerdez.py, eszkozok/jelolt.py]
-ir: [adat/jeloltek.tsv]
+kovetkezo: "nincs; nyitott (felvétel a felhasználó döntése): a beerkezo-tervezet javítása a /befogad-kor, a napló :97 proveniencia; ELLENOR_F110_4 (3 tétel) és _5 (1 tétel) javítva (F110.33, F110.35); az F110.35-re ellenőri kör nem futott"
+olvas: [adat/motivumok.tsv, adat/jeloltek.tsv, adat/elofordulasok.tsv, adat/SEMA.md, adat/grammatikai_strongok.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, naplok/F108_ujrascan_elteresek.tsv, naplok/F108_MOTIVUM_UJRASCAN_naplo.md, eszkozok/lekerdez.py, eszkozok/jelolt.py, motivumok/ISTENTISZT-001.md, "tematikus_lezart/ISTENTISZT-001*", "tematikus_lezart/naplok/ISTENTISZT-001*", archivum/ISTENTISZT-001/]
+ir: [adat/jeloltek.tsv, eszkozok/lexikon_general.py, lexikon/ISTENTISZT-001_TUDOMANYOS.md, adat/forditasok.tsv]
 fugg: []
 nem_fugg: [9, 11, 55, 86, 123]
 ---
@@ -51,7 +54,7 @@ jelöltek beépítése a motívum saját menete); a Zsoltár-találatok (#55); a
 1. Modell-ellenőrzés (CLAUDE.md).
 2. A 168 + 21 hely kigyűjtése az `F108_ujrascan_elteresek.tsv`-ből, és újralekérdezése (`lekerdez.py kollokacio H7121 H8034`,
    `lekerdez.py scan G1941`), a lekérdezések proveniencia-sorával.
-3. ⛔ A szűrő-szabály szövege (héber és görög oldal) a naplóba és a `DONTESEK.md`-be (`DT-F110a`), megállás. A felhasználó jóváhagyása
+3. ⛔ A szűrő-szabály szövege (héber és görög oldal) a naplóba és a `DONTESEK.md`-be (`DT283`), megállás. A felhasználó jóváhagyása
    nélkül a `jeloltek.tsv` nem íródik.
 4. A jóváhagyott szabály futtatása (szkriptből, a CLAUDE.md shell- és TSV-szabályai szerint, `split('\t')`).
 5. Írás: a `jeloltek.tsv` csak új sorokkal bővül (H7121+H8034), és a 21 G1941-sor `dontes` / indoklás mezője változik; írás előtt
@@ -61,11 +64,12 @@ jelöltek beépítése a motívum saját menete); a Zsoltár-találatok (#55); a
 
 ## 4. Elfogadási feltételek
 
-- A szűrő-szabály a naplóban szövegesen és reprodukálható parancsokkal áll; a DT-F110a jóváhagyta.
+- A szűrő-szabály a naplóban szövegesen és reprodukálható parancsokkal áll; a DT283 jóváhagyta.
 - A 21 G1941-sor egyike sem `nyitva`; mindegyik indoklása a szabályra hivatkozik.
 - A H7121+H8034 168 helyéből a bekerültek és a kiszűrtek összege 168; üres eredmény explicit jelölve (CLAUDE.md 3. szabály).
 - Minden bekerülő sor proveniencia-sort hordoz; egyik sem kerül közvetlenül az `elofordulasok.tsv`-be (CLAUDE.md 2. szabály).
 
 ## 5. Döntésnapló
 
-- (helyőrző a futáskor: DT-F110a a szűrő-szabály szövege)
+- DT283: a szűrő-szabály szövege — **elfogadva** (2026-10-21; `DONTESEK.md`, `naplok/SZURO_PILOT_ISTENTISZT_naplo.md` 2. szakasz). A (2) pont módosítva az ELLENOR_F110 (1) után: a K2 határesetek (JSir 3:55, 5Móz 32:3) kiszűrve maradnak, a kritérium nem változik (döntéshozó: felhasználó, chat-válasz, 2026-10-21). Az ApCsel 7:59 elutasítva (ELLENOR_F110 2.). A helyőrző marad, végleges számot a `szamkiosztas` Action ad.
+- DT284: a zárás utáni CI-javítás (`DONTESEK.md`) — **(1) (a), (2) (a)** (döntéshozó: felhasználó, chat-válasz, 2026-10-21). (1) „ci piros / menjen a javitás”: a `lexikon_general.py:2116` literálja `DT277`-re, a lexikon újragenerálva (F110.29); az `ir` bővült (`eszkozok/lexikon_general.py`, `lexikon/ISTENTISZT-001_TUDOMANYOS.md`, `adat/forditasok.tsv`), eltérés a 2. szakasz lexikon-kizárásától. (2) a „(Cremer, 335, 742)” törölve a TBESG G1941 magyar fordításából (E11; F110.30), a sor `megjegyzes` mezője jelzi (F110.33).
