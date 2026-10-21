@@ -426,21 +426,50 @@ def bdb_angol(con, s):
     return r[0] if r else None
 
 
+_OSSZEFUZO = []
+
+
+def _osszefuzo():
+    """A közös összefűző (F128, DT-F128a (a), DT-F128g (a)): `eszkozok/bdb_jelolt/szakasz_bemenet.py` `strong_magyar_sorok`,
+    fájlútvonalról betöltve (a `bdb_jelolt` könyvtár nem kerül a `sys.path`-ra; az összefűző csak stdlib-et használ)."""
+    if not _OSSZEFUZO:
+        import importlib.util
+        import os
+        ut = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'bdb_jelolt', 'szakasz_bemenet.py')
+        spec = importlib.util.spec_from_file_location('szakasz_bemenet_olvaso', ut)
+        m = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(m)
+        _OSSZEFUZO.append(m.strong_magyar_sorok)
+    return _OSSZEFUZO[0]
+
+
+def _bdb_magyar_sorok(con, s):
+    """A Strong BDB-sorai a táblasorrendben, a közös összefűzőn át: (szöveg, 'szakasz' | 'teljes' | None, a felhasznált sorok).
+    A szakaszonként fordított Strong (`jelentes_szam = sz<sorszam>`) szövege a szakaszsorok összefűzése; a többié a `teljes`
+    sor (a jóváhagyott `kezi` sor elsőbbségével, DT-F128f (3))."""
+    nevek = ('jelentes_szam', 'mezo', 'forditas_hu', 'allapot', 'modell', 'datum')
+    sorok = [dict(zip(nevek, r)) for r in con.execute(
+        "SELECT jelentes_szam, mezo, forditas_hu, allapot, modell, datum FROM forditasok WHERE szotar='BDB' AND strong=? "
+        "ORDER BY rowid", (s,))]
+    return _osszefuzo()(sorok)
+
+
 def bdb_magyar(con, s):
-    hu = None
-    for (szoveg,) in con.execute("SELECT forditas_hu FROM forditasok WHERE szotar='BDB' AND strong=? ORDER BY rowid", (s,)):
-        if szoveg and szoveg.strip():
-            hu = szoveg.replace('\\n', '\n')
-    return hu
+    szoveg, _, _ = _bdb_magyar_sorok(con, s)
+    return szoveg.replace('\\n', '\n') if szoveg else None
 
 
 def bdb_magyar_meta(con, s):
-    """A magyar BDB-szócikk fordítás-jelölése: „modell, dátum” (a `forditasok.modell`, `.datum`; ugyanaz a sor, amelyet `bdb_magyar` választ: az utolsó nem üres)."""
-    meta = None
-    for szoveg, modell, datum in con.execute("SELECT forditas_hu, modell, datum FROM forditasok WHERE szotar='BDB' AND strong=? ORDER BY rowid", (s,)):
-        if szoveg and szoveg.strip():
-            meta = '%s, %s' % (modell, datum)
-    return meta
+    """A magyar BDB-szócikk fordítás-jelölése: „modell, dátum” (a `forditasok.modell`, `.datum`; ugyanazok a sorok, amelyeket
+    `bdb_magyar` összefűz: szakaszsoroknál a modellek az első előfordulás sorrendjében „ / ”-lel, a legkésőbbi dátum)."""
+    _, _, hasznalt = _bdb_magyar_sorok(con, s)
+    if not hasznalt:
+        return None
+    modellek = []
+    for r in hasznalt:
+        if r['modell'] not in modellek:
+            modellek.append(r['modell'])
+    return '%s, %s' % (' / '.join(str(m) for m in modellek), max(str(r['datum']) for r in hasznalt))
 
 
 def bdb_alias(con, s):
