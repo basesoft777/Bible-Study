@@ -9,9 +9,9 @@ munka: adat
 allapot: lezarva
 ag: claude/f110-szuro-pilot-2
 pr: 455
-lezarva_osszegzes: "a jeloltek.tsv: 21 G1941-sor elutasítva + 2 új nyitva sor (Ézs 41:25, Ézs 64:6); a JSir 3:55 és 5Móz 32:3 kiszűrve, ApCsel 7:59 elutasítva; szűrő és átvihetőség-mérés a naplóban; 2 javítókör, 3 alacsony súlyú maradék a zárójelentésben; E28 ismert kivétel (lexikon_general.py:2116)"
+lezarva_osszegzes: "a jeloltek.tsv: 21 G1941-sor elutasítva + 2 új nyitva sor (Ézs 41:25, Ézs 64:6); a JSir 3:55 és 5Móz 32:3 kiszűrve, ApCsel 7:59 elutasítva; szűrő és átvihetőség-mérés a naplóban; 2 javítókör, 3 alacsony súlyú maradék a zárójelentésben; E28 javítva (F110.29: lexikon_general.py:2116 literál, lexikon újragenerálva), E11 javítva (F110.30: Cremer-hivatkozás törölve a G1941 fordításából)"
 ad: naplózott, determinisztikus szűrő (motivumok.tsv negatív kritérium + kollokáció) az F108 tág új helyeire; kipróbálva a G1941 21 nyitva jelöltjén és a H7121+H8034 168 nem-zsoltári új helyén; a jeloltek.tsv-be csak a szűrő utáni helyek, a 21 G1941-jelölt döntéssel; mérés, hogy a szabály a többi motívumra átvihető-e
-kovetkezo: "nincs; nyitott (felvétel a felhasználó döntése): a beerkezo-tervezet javítása a /befogad-kor, a napló :97 proveniencia, lexikon-újragenerálás a main-beli sodródás javítása után"
+kovetkezo: "nincs; nyitott (felvétel a felhasználó döntése): a beerkezo-tervezet javítása a /befogad-kor, a napló :97 proveniencia; az F110.29–30 után ellenőri kör nem futott"
 olvas: [adat/motivumok.tsv, adat/jeloltek.tsv, adat/elofordulasok.tsv, adat/SEMA.md, adat/grammatikai_strongok.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, naplok/F108_ujrascan_elteresek.tsv, naplok/F108_MOTIVUM_UJRASCAN_naplo.md, eszkozok/lekerdez.py, eszkozok/jelolt.py]
 ir: [adat/jeloltek.tsv]
 fugg: []
