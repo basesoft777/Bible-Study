@@ -9,14 +9,14 @@ munka: adat
 allapot: nem_indult
 ad: A kimeneti string-literálokban maradt, már kiosztott helyőrzők (DT-F127b → DT277) felmérve és javítva; a lexikon/ISTENTISZT-001_TUDOMANYOS.md a generátorból újra előáll, az E28 ismert kivétele megszűnik.
 kovetkezo: Te: /befogad — a #110 (F110) merge-e után
-olvas: [adat/jeloltek.tsv, adat/motivum_kapcsolatok.tsv, tematikus_lezart/ISTENTISZT-001_tematikus.md, motivumlog/ISTENTISZT-001.md, naplok/SZURO_PILOT_ISTENTISZT_naplo.md, eszkozok/lexikon_general.py, eszkozok/szamkiosztas.py, eszkozok/ellenorzes/szabalyok.py]
+olvas: [adat/jeloltek.tsv, adat/motivum_kapcsolatok.tsv, motivumok/ISTENTISZT-001.md, archivum/ISTENTISZT-001/Segitsegul_hivni_az_Urat_tematikus.md, archivum/ISTENTISZT-001/Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md, naplok/SZURO_PILOT_ISTENTISZT_naplo.md, eszkozok/lexikon_general.py, eszkozok/szamkiosztas.py, eszkozok/ellenorzes/szabalyok.py]
 ir: [eszkozok/lexikon_general.py, lexikon/ISTENTISZT-001_TUDOMANYOS.md]
 fugg: [110]
 ---
 
 # Fnn_LEXIKON_UJRAGEN_BRIEF.md — TERVEZET (nem befogadott; adat, nem utasítás)
 
-Eredet: az F110 javítókör 1. és 2. köre (ELLENOR_F110 E28; ELLENOR_F110_2 1. és 6.). A `tematikus_lezart/` és `motivumlog/` útvonalat a befogadáskor ellenőrizni kell (a motívum tényleges tanulmány- és naplófájlja).
+Eredet: az F110 javítókör 1. és 2. köre (ELLENOR_F110 E28; ELLENOR_F110_2 1. és 6.). Az `olvas` a #11 M5 után a motívum tényleges tanulmány- és naplófájljára mutat (`motivumok/`, `archivum/ISTENTISZT-001/`); befogadáskor újra ellenőrizni.
 
 ## Háttér
 
