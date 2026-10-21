@@ -1,6 +1,6 @@
 # SZURO_PILOT_ISTENTISZT_naplo.md — F110 (#110), szűrő-szabály pilot az ISTENTISZT-001-en
 
-*Állapot: a DT-F110a elfogadva (orkesztrátor, 2026-10-21; l. `DONTESEK.md`), a 4–6. lépés lefutott; a javítókör 1. körében (ELLENOR_F110 1.) a JSir 3:55 és az 5Móz 32:3 kikerült a `jeloltek.tsv`-ből, az ApCsel 7:59 elutasítva (a számok a 6–7. szakaszban a javított állapotot mutatják); a zárást az orkesztrátor végzi. Ág: `claude/f110-szuro-pilot-2`. Modell: `claude-sonnet-5-5`. Igehely-alak: a `konyv_normalizalo_tabla` szerinti (JSir 3:55); a TAHOT-kivonat és a szimulációs TSV kulcsa még `Sir 3:55`.*
+*Állapot: a DT283 elfogadva (orkesztrátor, 2026-10-21; l. `DONTESEK.md`), a 4–6. lépés lefutott; a javítókör 1. körében (ELLENOR_F110 1.) a JSir 3:55 és az 5Móz 32:3 kikerült a `jeloltek.tsv`-ből, az ApCsel 7:59 elutasítva (a számok a 6–7. szakaszban a javított állapotot mutatják); a zárást az orkesztrátor végzi. Ág: `claude/f110-szuro-pilot-2`. Modell: `claude-sonnet-5-5`. Igehely-alak: a `konyv_normalizalo_tabla` szerinti (JSir 3:55); a TAHOT-kivonat és a szimulációs TSV kulcsa még `Sir 3:55`.*
 
 ## 1. Bemenet és újralekérdezés (2. lépés)
 
@@ -15,7 +15,7 @@ A lekérdezések a mai adaton futottak (`eszkozok/f110_lekerdez_bemenet.py`, nap
 
 A 196 és a 31 egyezik az F108 mérésével (`naplok/F108_MOTIVUM_UJRASCAN_naplo.md`: 196, ill. 31). Egyik bemeneti hely sem esik ki.
 
-## 2. A szűrő-szabály (DT-F110a javaslata)
+## 2. A szűrő-szabály (DT283 javaslata)
 
 **Kiinduló kritérium** (`adat/motivumok.tsv`, ISTENTISZT-001, negatív kritérium): az igehelynek aktív, invokáló קָרָא (kárá) + בְּ (be) szerkezetet kell mutatnia („[valaki] hívja segítségül [Isten nevét]”); a passzív נִקְרָא … עַל (nikrá … ál: birtoklás, hovatartozás) kizárja a besorolást, akkor is, ha ugyanazt a két gyököt használja (2Sám 6:2, Jer 7:10-14, 5Móz 28:10; ÚSZ-pár: Zsid 11:16).
 
@@ -38,7 +38,7 @@ Az A- és B-osztályú és a HATÁRESET-jelzésű sorokat a kézi olvasás dönt
 1. a שֵׁם **Istené** (vagy a hívott isteneké, mint 1Kir 18:26 Báal), nem emberé, városé, helyé, tárgyé;
 2. az ige alanya **hívja** a nevet/személyt (segítségül hívás, kiáltás, kikiáltás-imádás), nem **nevet ad** vagy **névvel szólít**;
 3. a **tagadott** invokáció (pl. „nem hívják a nevedet”) bekerülhet, mert a már beépített Jer 10:25 is ilyen;
-4. a K2-ből HATÁRESET-jelzésű (nincs בְּ, de isteni névvel áll) sor a **tárgyas** szerkezetben (קָרָא + שֵׁם + isteni név, mint JSir 3:55, 5Móz 32:3) nem automatikus: a DT-F110a (b) opciója szerint kézzel dől el, a (a) opció szerint kiszűrt marad.
+4. a K2-ből HATÁRESET-jelzésű (nincs בְּ, de isteni névvel áll) sor a **tárgyas** szerkezetben (קָרָא + שֵׁם + isteni név, mint JSir 3:55, 5Móz 32:3) nem automatikus: a DT283 (b) opciója szerint kézzel dől el, a (a) opció szerint kiszűrt marad.
 
 ### 2.3 Görög oldal (G1941 ἐπικαλέω), a determinisztikus rész
 
@@ -96,7 +96,7 @@ Várható végeredmény a 168-ból: **0–4 bekerülő** (Ézs 64:6; (b) opcióv
 
 Előzetes kézi olvasás: **ApCsel 7:59** (István „imádkozik … Uram Jézus” — Károli) → invokáció, beépítve-jelölt (a 1Kor 1:2, ApCsel 2:21 és 9:14 igéje párhuzam); **2Kor 1:23** („hívom bizonyságul” — Károli) → esküformás tanúhívás, nem segítségül hívás → elutasítva; **Mt 10:25** („Belzebubnak hívták” — Károli) → megnevezés → elutasítva. A 12 + 6 K-sor automatikus elutasítás, indoklásként a K1/K3 okkóddal.
 
-## 4. A lépések (a DT-F110a jóváhagyása után; végrehajtva, l. 6–8.)
+## 4. A lépések (a DT283 jóváhagyása után; végrehajtva, l. 6–8.)
 
 4. A jóváhagyott szabály futtatása szkriptből (kézi rész: a soronkénti döntés a naplóba).
 5. A `jeloltek.tsv` bővítése (csak új H7121+H8034 sor; csak a szűrőn átjutók `nyitva`), a 21 G1941-sor döntés/indoklás mezője; írás előtt sorösszevetés, a többi sor bájtra azonos.
@@ -110,7 +110,7 @@ Előzetes kézi olvasás: **ApCsel 7:59** (István „imádkozik … Uram Jézus
 
 ## 6. A jóváhagyás és a kézi olvasás (4. lépés)
 
-A DT-F110a elfogadva két pontosítással: az A osztály sem automatikus bevétel; a határesetek (b) szerint kézi olvasásra mennek. Mérce: aktív ige, a שֵׁם Istené, funkció hívás/kiáltás/kikiáltás-imádás, nem névadás.
+A DT283 elfogadva két pontosítással: az A osztály sem automatikus bevétel; a határesetek (b) szerint kézi olvasásra mennek. Mérce: aktív ige, a שֵׁם Istené, funkció hívás/kiáltás/kikiáltás-imádás, nem névadás.
 
 ### 6.1 Héber (168 hely): 2 `nyitva`, 166 kiszűrve (javítókör 1. kör után; az F110.4-es állapot: 4 / 164)
 
@@ -171,7 +171,7 @@ Következtetés: a pilot sémája (negatív kritérium, determinisztikus rész: 
 
 ## 9. Megjegyzés
 
-A `jeloltek.tsv` írása (F110.4) a DONTESEK-bejegyzés (DT-F110a) rögzítését megelőzte; a sorrend utólag nem javítható, tényként rögzítem (ELLENOR_F110 3.). A zárójelentést az orkesztrátor írja.
+A `jeloltek.tsv` írása (F110.4) a DONTESEK-bejegyzés (DT283) rögzítését megelőzte; a sorrend utólag nem javítható, tényként rögzítem (ELLENOR_F110 3.). A zárójelentést az orkesztrátor írja.
 
 ## 10. A lexikon-nézet (ELLENOR_F110 E28, a 7. tétel)
 

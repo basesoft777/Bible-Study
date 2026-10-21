@@ -69,7 +69,7 @@ kártya nélkül készül; az A3 (`betolt.py kulcsszo`) után fut a kártya, és
    `nyitva` / `elutasítva` / `beépítve`) · `új`.
 4. **Szűrő a tág gerinc-Strongokon:** a #108 által tágnak mért gerinc-Strongokon (H3548, H7451, H2403, H0127, H1121+H0430,
    H7121+H8034, H7843, H7043, H5315+H2416, H2555; `naplok/F108_MOTIVUM_UJRASCAN_naplo.md`) a **#110 szűrője** fut, ahol a #110
-   géppel alkalmazható szabályt adott (DT-F110a). Ahol nincs (a #110 csak az ISTENTISZT-001-re ad szabályt; a többi motívum tág
+   géppel alkalmazható szabályt adott (DT283). Ahol nincs (a #110 csak az ISTENTISZT-001-re ad szabályt; a többi motívum tág
    Strongjainak szűrése külön tétel), a sor `szuretlen_tag` jelzést kap, és a kártya összesítője külön számolja. A szűrő kizárta sor
    nem tűnik el: `kiszurve: <ok>` jelzéssel a kártya mellékletébe kerül.
 5. **Formulaikus motívum:** a `jelolt.py` szerinti `pozicionális ellenőrzés kell` jelzés megmarad.
