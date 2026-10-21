@@ -94,7 +94,7 @@ Várható végeredmény a 168-ból: **0–4 bekerülő** (Ézs 64:6; (b) opcióv
 | B | B_nincs_isten | 1 | Mt 10:25 |
 | | **összesen** | **21** | |
 
-Előzetes kézi olvasás: **ApCsel 7:59** (István „kiált, Úr Jézus”) → invokáció, beépítve-jelölt (a 1Kor 1:2, ApCsel 2:21 és 9:14 igéje párhuzam); **2Kor 1:23** („Istent hívom tanúul a lelkemre”) → esküformás tanúhívás, nem segítségül hívás → elutasítva; **Mt 10:25** („Beelzebubnak hívták a házigazdát”) → megnevezés → elutasítva. A 12 + 6 K-sor automatikus elutasítás, indoklásként a K1/K3 okkóddal.
+Előzetes kézi olvasás: **ApCsel 7:59** (István „imádkozik … Uram Jézus” — Károli) → invokáció, beépítve-jelölt (a 1Kor 1:2, ApCsel 2:21 és 9:14 igéje párhuzam); **2Kor 1:23** („hívom bizonyságul” — Károli) → esküformás tanúhívás, nem segítségül hívás → elutasítva; **Mt 10:25** („Belzebubnak hívták” — Károli) → megnevezés → elutasítva. A 12 + 6 K-sor automatikus elutasítás, indoklásként a K1/K3 okkóddal.
 
 ## 4. A lépések (a DT-F110a jóváhagyása után; végrehajtva, l. 6–8.)
 
