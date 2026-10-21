@@ -151,5 +151,113 @@ class Osszefuzo(unittest.TestCase):
         self.assertEqual(SB.strong_magyar([]), (None, None))
 
 
+sys.path.insert(0, os.path.dirname(ITT))
+import emeles as E  # noqa: E402
+
+
+def _olvas(ut):
+    with open(ut, encoding='utf-8') as f:
+        return f.read()
+
+
+class EmelesSzakaszag(unittest.TestCase):
+    """F128 M2: az `emeles.py` szakaszonkénti ága. A rögzítés és a beírás ideiglenes munka- és fordítástáblán fut (a repó
+    `adat/forditasok.tsv`-je nem íródik), a szakaszok helyén két szintetikus szakasszal."""
+
+    def test_prompt_v5_egy_csoport(self):
+        sp, szak = E.szakasz_forras('H1')
+        p = E.szakasz_promptok(sp, szak)
+        self.assertEqual(len(p), 1)
+        self.assertNotIn('{{', p[0][2])
+        self.assertIn('Kiegészítő szabály (v5) — szakaszhatár-tokenek', p[0][2])
+        self.assertEqual([int(n) for n in SB.TOKEN.findall(p[0][1])], [x['sorszam'] for x in szak])
+        self.assertIn(p[0][1], p[0][2])
+
+    def test_prompt_v5_csoportok(self):
+        sp, szak = E.szakasz_forras('H1980')
+        p = E.szakasz_promptok(sp, szak)
+        self.assertEqual(len(p), 6)
+        self.assertEqual([int(n) for _, f, _ in p for n in SB.TOKEN.findall(f)], [x['sorszam'] for x in szak])
+        self.assertIn('(2/6. rész', p[1][2])
+
+    def test_regi_ut_marad(self):
+        with self.assertRaises(SystemExit):
+            E.szakasz_forras('H4725')    # táblán kívüli: a régi `teljes` út
+        with self.assertRaises(SystemExit):
+            E.szakasz_forras('G26')      # Thayer: nincs szakaszága
+        sp, szoveg = E.forras_szoveg('H4725')
+        self.assertIn('{{FORRAS_SZOVEG}}', _olvas(E.PROMPT_UT))
+        self.assertNotIn('⟪', E.prompt_epit(sp, szoveg))
+
+    def _kor(self, strong, tmp):
+        import shutil
+        from types import SimpleNamespace as NS
+        from unittest import mock
+        szak = [{'sorszam': 1, 'jel': '', 'utvonal': 'cim', 'szoveg': 'H1. ab', 'hash': SB.sha1('H1. ab')},
+                {'sorszam': 2, 'jel': '', 'utvonal': 'fej', 'szoveg': 'father', 'hash': SB.sha1('father')}]
+        ford = os.path.join(tmp, 'forditasok.tsv')
+        shutil.copyfile(E.FORDITASOK_UT, ford)
+        be = os.path.join(tmp, 'hu.txt')
+        with open(be, 'w', encoding='utf-8') as f:
+            f.write('⟪1⟫ H1. ab ⟪2⟫ apa\n')
+        p = [mock.patch.object(SB, 'szakaszok', lambda s: szak if s == strong else None),
+             mock.patch.object(E, 'MUNKA_UT', os.path.join(tmp, 'munka.tsv')),
+             mock.patch.object(E, 'FORDITASOK_UT', ford)]
+        for x in p:
+            x.start()
+        self.addCleanup(lambda: [x.stop() for x in p])
+        E.cmd_szakasz_rogzit(NS(strong=strong, be=be, allapot='sonnet', modell='teszt-modell', datum='2026.10.21',
+                                megjegyzes='F128 teszt', kivetel=[]))
+        return ford, NS
+
+    def _sorok(self, ut):
+        return [s.split('\t') for s in _olvas(ut).split('\n') if s and not s.startswith('#')][1:]
+
+    def test_rogzit_beir_regi_elavult(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            ford, NS = self._kor('H0001', tmp)
+            munka = self._sorok(E.MUNKA_UT)
+            self.assertEqual([(m[3], m[5], m[6]) for m in munka],
+                             [('sz1', SB.sha1('H1. ab'), 'H1. ab'), ('sz2', SB.sha1('father'), 'apa')])
+            args = dict(strongok=['H0001'], allapot='sonnet', datum='2026.10.21', megjegyzes=None, kezi_felulir=False)
+            with self.assertRaises(SystemExit):
+                E.cmd_szakasz_beir(NS(regi_elavult=False, **args))
+            regi = _olvas(E.FORDITASOK_UT)
+            E.cmd_szakasz_beir(NS(regi_elavult=True, **args))
+            uj = self._sorok(ford)
+            h1 = [m for m in uj if m[1] == 'H0001']
+            self.assertEqual([(m[3], m[7]) for m in h1], [('teljes', 'elavult'), ('sz1', 'sonnet'), ('sz2', 'sonnet')])
+            self.assertIn('felváltva: szakaszonkénti fordítás', h1[0][11])
+            regi_sorok = [s for s in regi.split('\n') if s]
+            uj_sorok = [s for s in _olvas(ford).split('\n') if s]
+            self.assertEqual(len(uj_sorok), len(regi_sorok) + 2)
+            self.assertEqual(sum(1 for a, b in zip(regi_sorok, uj_sorok) if a != b), 1)
+            # a közös összefűző a szakaszsorokat adja
+            d = [dict(zip(E.FORDITASOK_FEJLEC, m)) for m in h1]
+            self.assertEqual(SB.strong_magyar(d), ('H1. ab apa', 'szakasz'))
+
+    def test_kezi_regi_sor_vedett(self):
+        # DT-F128f nyitott: a H8415 régi `teljes` sora `kezi`
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            ford, NS = self._kor('H8415', tmp)
+            with self.assertRaises(SystemExit):
+                E.cmd_szakasz_beir(NS(strongok=['H8415'], allapot='sonnet', datum='2026.10.21', megjegyzes=None,
+                                      kezi_felulir=False, regi_elavult=True))
+
+    def test_rogzit_hibas_token(self):
+        import tempfile
+        from unittest import mock
+        with tempfile.TemporaryDirectory() as tmp:
+            ford, NS = self._kor('H0001', tmp)
+            be = os.path.join(tmp, 'rossz.txt')
+            with open(be, 'w', encoding='utf-8') as f:
+                f.write('⟪1⟫ H1. ab apa\n')
+            with self.assertRaises(SystemExit):
+                E.cmd_szakasz_rogzit(NS(strong='H0001', be=be, allapot='sonnet', modell='m', datum=None,
+                                        megjegyzes=None, kivetel=[]))
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
