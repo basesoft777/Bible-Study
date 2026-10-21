@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-10-21",
-   "commit": "d1d8811b"
+   "commit": "6034aba5"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -821,7 +821,7 @@
    "fazis": "2",
    "allapot": "stop",
    "brief_allapot": "nem_indult",
-   "most": "Te: a #128 eszközlánca után /kovetkezo; első lépés ⛔ M0 (DT-F132a–e: forrás, kulcs, a 14 kész sor sorsa, a fordítás modellje és lánca, a #131 viszonya)",
+   "most": "Te: a #128 eszközlánca után /kovetkezo; első lépés ⛔ M0 (DT-F132a–d és f: forrás, kulcs, a 14 kész sor sorsa, a fordítás modellje és lánca, a tiltott-fordulat tábla helye; a DT282 eldöntve: a #131 görög része vár)",
    "fugg": "#128*",
    "tervezett": false,
    "reszletes": "",
