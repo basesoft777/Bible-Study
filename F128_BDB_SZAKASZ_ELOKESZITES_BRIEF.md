@@ -5,10 +5,12 @@ kod: BDB_SZAKASZ_ELOKESZITES
 tipus: feladat
 fazis: 1
 modell: opus
-allapot: megallt
+allapot: lezarva
+pr: 456
+lezarva_osszegzes: "a szakaszonkénti BDB-fordítás eszközlánca kész (bemenet-előállító, prompt v5, 14. szakasz-kapu, szakaszkulcs, közös összefűző, olvasók átállítása); DT-F128a–g; ellenőrzés ELTÉRÉS: 2 → 1 javítókör → TISZTA; a teszt_bont 2 main-beli bukása külön tervezet (beerkezo/Fnn_BDB_FEJLEC_DT_BRIEF.md)"
 ag: claude/f128-bdb-szakasz-elokeszites-a2fc2f
 ad: a #38 a következő adagtól szakaszonként fordíthat — a bemenet-előállító, a prompt v5, a szakasz-kapu és a forditasok.tsv szakaszkulcsa kész és tesztelt, modellhívásos fordítás nélkül
-kovetkezo: "Te: [elteres_kor 1/2] /elteres 128 — újraellenőrzés függ: naplok/ELLENOR_F128_2.md"
+kovetkezo: "Te: merge a felhasználótól (PR #456); a beerkezo/Fnn_BDB_FEJLEC_DT_BRIEF.md befogadása /befogad-dal"
 olvas: [F38_BDB_FORDITAS_BRIEF.md, DONTESEK.md, adat/SEMA.md, adat/bdb_szakaszok.tsv, adat/bdb_forras_javitas.tsv, adat/bdb_szakasz_hu.tsv, adat/forditasok.tsv, adat/terminologia.tsv, eszkozok/emeles.py, eszkozok/forditas_kapuk.py, eszkozok/bdb_adatblokk.py, eszkozok/bdb_jelolt/nezet_general.py, eszkozok/bdb_jelolt/hu_illeszt.py, forditas/prompt_v4.md, naplok/F107_BDB_JELOLT_SZOVEG_naplo.md, naplok/BDB_FORDITAS_sorrend.tsv, konkordancia/BDB_teljes_unabridged.tsv]
 ir: [eszkozok/emeles.py, eszkozok/forditas_kapuk.py, eszkozok/teszt_forditas_kapuk.py, eszkozok/ellenoriz.py, eszkozok/teszt_ellenoriz_13.py, eszkozok/olvaso_szerver/lekerdezesek.py, eszkozok/olvaso_szerver/teszt_olvaso_szerver.py, eszkozok/bdb_adatblokk.py, eszkozok/teszt_bdb_adatblokk.py, eszkozok/bdb_jelolt/hu_illeszt.py, eszkozok/bdb_jelolt/teszt_bont.py, eszkozok/bdb_jelolt/szakasz_bemenet.py, eszkozok/bdb_jelolt/teszt_szakasz_bemenet.py, forditas/prompt_v5.md, adat/SEMA.md, adat/bdb_szakasz_hu.tsv, naplok/F128_BDB_SZAKASZ_ELOKESZITES_naplo.md, DONTESEK.md, NYITOTT_FELADATOK.md, F38_BDB_FORDITAS_BRIEF.md]
 fugg: [107]
