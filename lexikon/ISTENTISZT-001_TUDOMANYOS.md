@@ -10,7 +10,7 @@ A motívum az ószövetségi קָרָא בְּשֵׁם יְהוָה (kárá bes�
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-10-20 -->
 
-*Ez a blokk a lexikon-oldal 13 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
+*Ez a blokk a lexikon-oldal 14 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
 
 - [Kivonat](#kivonat)
 - [Jelmagyarázat és rövidítések](#jelmagyarázat-és-rövidítések)
@@ -20,6 +20,7 @@ A motívum az ószövetségi קָרָא בְּשֵׁם יְהוָה (kárá bes�
 - [3. LXX-fordítói döntések](#3-lxx-fordítói-döntések)
 - [4. Kereszthivatkozások](#4-kereszthivatkozások)
 - [5. Kapcsolatok](#5-kapcsolatok)
+- [5/b. Kapcsolódó motívumok](#5b-kapcsolódó-motívumok)
 - [6. Értelmezés](#6-értelmezés)
 - [6/b. Alkalmazás és tanítói egyezés](#6b-alkalmazás-és-tanítói-egyezés)
 - [7. Módszertan és nyitott kérdések](#7-módszertan-és-nyitott-kérdések)
@@ -1694,6 +1695,24 @@ graph LR
 *Rögzített indoklás nélküli kapcsolat-sor (1): 2Móz 33:19 → 2Móz 34:5.*
 
 *Proveniencia: `scope=id:ISTENTISZT-001 | forras=adat/kapcsolatok.tsv | ts=2026-10-20`*
+
+## 5/b. Kapcsolódó motívumok
+
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-10-20 -->
+
+*Ez a blokk a `[ID: ISTENTISZT-001]` motívum motívumközi kapcsolatait adja a `motivum_kapcsolatok.tsv`-ből (minden sor mögött beépített motívumközi jelölt áll, DT-F127b); a sor mindkét érintett motívum lapján megjelenik.*
+
+| Kapcsolódó motívum | Itt | Ott | Típus | Funkció | Bizonyosság | PaRDeS-szint | Indoklás |
+|---|---|---|---|---|---|---|---|
+| [ALVIL-001](ALVIL-001_TUDOMANYOS.md) | ApCsel 2:21 | ApCsel 2:27 | szomszédos | a hívás ígéretének (2:21) alapja, hogy a Messiás nem marad a Seólban | közepes | Remez | Mért: azonos fejezet (ApCsel 2), 6 vers távolság; mindkét vers előfordulás a saját motívumában. A közös fejezet önmagában nem bizonyít szándékos utalást. Döntés: DT-F127e (felhasználó, 2026-10-20). |
+| [ALVIL-001](ALVIL-001_TUDOMANYOS.md) | ApCsel 2:21 | ApCsel 2:31 | szomszédos | a hívás ígéretének (2:21) alapja, hogy a Messiás nem marad a Seólban | közepes | Remez | Mért: azonos fejezet (ApCsel 2), 10 vers távolság; mindkét vers előfordulás a saját motívumában. A közös fejezet önmagában nem bizonyít szándékos utalást. Döntés: DT-F127e (felhasználó, 2026-10-20). |
+| [HAMART-001](HAMART-001_TUDOMANYOS.md) | 1Móz 12:8 | 1Móz 12:3 | szomszédos | a megfordított lánc után az első oltár és hívás | közepes | Remez | Mért: azonos fejezet (1Móz 12), 5 vers távolság; mindkét vers előfordulás a saját motívumában. A közös fejezet önmagában nem bizonyít szándékos utalást. Döntés: DT-F127e (felhasználó, 2026-10-20). |
+
+*Döntésre váró motívumközi jelölt (`jeloltek.tsv`, `nyitva`): 5 — ALVIL-001: 1, HAMART-001: 1, TEREMT-001: 3.*
+
+*Proveniencia: `scope=id:ISTENTISZT-001 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-10-20`*
+
+<!-- GENERÁLT-VÉGE: lexikon#ISTENTISZT-001#kapcsolodo -->
 
 ## 6. Értelmezés *(kézi)*
 

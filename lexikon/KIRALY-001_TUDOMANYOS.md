@@ -10,7 +10,7 @@ A motívum azt a lexikai azonosságot követi, amelyet a BDB H3548 (*kohén*) "p
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#KIRALY-001#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-10-20 -->
 
-*Ez a blokk a lexikon-oldal 13 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
+*Ez a blokk a lexikon-oldal 14 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
 
 - [Kivonat](#kivonat)
 - [Jelmagyarázat és rövidítések](#jelmagyarázat-és-rövidítések)
@@ -20,6 +20,7 @@ A motívum azt a lexikai azonosságot követi, amelyet a BDB H3548 (*kohén*) "p
 - [3. LXX-fordítói döntések](#3-lxx-fordítói-döntések)
 - [4. Kereszthivatkozások](#4-kereszthivatkozások)
 - [5. Kapcsolatok](#5-kapcsolatok)
+- [5/b. Kapcsolódó motívumok](#5b-kapcsolódó-motívumok)
 - [6. Értelmezés](#6-értelmezés)
 - [6/b. Alkalmazás és tanítói egyezés](#6b-alkalmazás-és-tanítói-egyezés)
 - [7. Módszertan és nyitott kérdések](#7-módszertan-és-nyitott-kérdések)
@@ -450,6 +451,18 @@ graph LR
 ### Alátámasztás *(kézi)*
 
 Az egyes kapcsolatok indoklása a fenti táblázat Funkció oszlopában áll; külön alátámasztás a tematikus tanulmányban nem készült.
+
+## 5/b. Kapcsolódó motívumok
+
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#KIRALY-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-10-20 -->
+
+*Ez a blokk a `[ID: KIRALY-001]` motívum motívumközi kapcsolatait adja a `motivum_kapcsolatok.tsv`-ből (minden sor mögött beépített motívumközi jelölt áll, DT-F127b); a sor mindkét érintett motívum lapján megjelenik.*
+
+A motívumhoz nincs rögzített motívumközi kapcsolat a `motivum_kapcsolatok.tsv`-ben.
+
+*Proveniencia: `scope=id:KIRALY-001 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-10-20`*
+
+<!-- GENERÁLT-VÉGE: lexikon#KIRALY-001#kapcsolodo -->
 
 ## 6. Értelmezés *(kézi)*
 
