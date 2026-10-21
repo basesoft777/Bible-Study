@@ -8,9 +8,9 @@ munka: adat
 modell: opus
 allapot: nem_indult
 ad: a Thayer szakaszonként, adatként (thayer_szakaszok.tsv) és igehelyenként jelentésponthoz kötve (thayer_vers_jelentes.tsv); a motívumok 13 görög gerincszava szakaszonként magyarul, szakasz-kapun átengedve — a #131 görög része erre épül
-kovetkezo: "Te: a #128 eszközlánca után /kovetkezo; első lépés ⛔ M0 (DT-F132a–e: forrás, kulcs, a 14 kész sor sorsa, a fordítás modellje és lánca, a #131 viszonya)"
-olvas: [konkordancia/lexikonok_nyers/Thayer.lexicon, konkordancia/lexikonok_nyers/README.md, konkordancia/Thayer_teljes.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, konkordancia/Karoli_1908.tsv, adat/licencek.tsv, adat/forditasok.tsv, adat/terminologia.tsv, adat/elofordulasok.tsv, adat/SEMA.md, eszkozok/bdb_jelolt/, eszkozok/emeles.py, eszkozok/forditas_kapuk.py, "forditas/prompt_v*.md", F128_BDB_SZAKASZ_ELOKESZITES_BRIEF.md, F131_SZOTARI_GERINC_BRIEF.md, F07_THAYER_ELES_BRIEF.md, F27_FP3_BRIEF.md]
-ir: [eszkozok/thayer_jelolt/, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/forditasok.tsv, adat/SEMA.md, naplok/F132_THAYER_SZAKASZ_naplo.md]
+kovetkezo: "Te: a #128 eszközlánca után /kovetkezo; első lépés ⛔ M0 (DT-F132a–d és f: forrás, kulcs, a 14 kész sor sorsa, a fordítás modellje és lánca, a tiltott-fordulat tábla helye; a DT282 eldöntve: a #131 görög része vár)"
+olvas: [konkordancia/lexikonok_nyers/Thayer.lexicon, konkordancia/lexikonok_nyers/README.md, konkordancia/Thayer_teljes.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, konkordancia/Karoli_1908.tsv, adat/licencek.tsv, adat/forditasok.tsv, adat/terminologia.tsv, adat/elofordulasok.tsv, adat/SEMA.md, adat/karoli_strong/, eszkozok/bdb_jelolt/, eszkozok/bdb_adatblokk.py, eszkozok/emeles.py, eszkozok/forditas_kapuk.py, "forditas/prompt_v*.md", F128_BDB_SZAKASZ_ELOKESZITES_BRIEF.md, F131_SZOTARI_GERINC_BRIEF.md, F07_THAYER_ELES_BRIEF.md, F27_FP3_BRIEF.md]
+ir: [eszkozok/thayer_jelolt/, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/thayer_sigla.tsv, adat/forditasok.tsv, adat/SEMA.md, naplok/F132_THAYER_SZAKASZ_naplo.md]
 fugg: [128]
 nem_fugg: [7, 27, 38, 67, 121, 123]
 ---
@@ -59,6 +59,38 @@ magyarul. A teljes Thayer fordítása **nem** része (az a #7, halasztva, D46).
   G4151 (23 726; 15 fej, 497 `bcv`), G5010 (945), G5351 (1 393), G5356 (974), G5590 (5 949) — összesen
   ≈ 42 600 karakter HTML nélkül.
 
+## 2a. Mankók (a felhasználó kérése, 2026-10-21: „lehet mankót épiteni hozzás mint a bdb hez?” — „igen”)
+
+A fordítás minden adagja ezeket használja; nélkülük adag nem indul. Az 1–4. a #121 négy mankója
+(`F121_GLOSSZA_FORDITAS_BRIEF.md` 2a) és a BDB adatblokkja (`eszkozok/bdb_adatblokk.py`, F56) a Thayerre
+alkalmazva; az 5–6. csak a Thayernél kell.
+
+1. **Terminológiai szójegyzék kapuval.** `adat/terminologia.tsv` (SEMA 2.15) a `kapu` oszloppal, a
+   `forditas_kapuk.py` 5. kapuja; görög sorokkal bővül, az aktuális verzióval.
+2. **Tiltott fordulatok.** `adat/tiltott_fordulatok.tsv` és a `14_tiltott` kapu — a #121-ben tervezve,
+   **a repóban még nincs megépítve**. Közös a BDB- és a Thayer-láncnak; hogy melyik feladat építi, az M0
+   6. pontja (DT-F132f).
+3. **Károli-alakok az adatblokkban.** Strongonként a #22 párosításának (`adat/karoli_strong/parok_*.tsv`)
+   Károli-alakjai gyakorisággal és proveniencia-sorral, egy `eszkozok/thayer_jelolt/` adatblokk-függvényből
+   (a `bdb_adatblokk.py` csak olvasott). **Ismert hiány (2026-10-21):** a párosítás 22 ÚSZ-könyvet fed; a
+   **Máté, Márk, Lukács, János és az ApCsel nincs benne** — a G1941 10 motívumhelyéből 4 az ApCsel-ben van.
+   A hiány a blokkban és a naplóban explicit, nem pótoljuk (CLAUDE.md 3. szabály); a lefedettséget az M0
+   méri.
+4. **Igehely-idézet Károli-szövegben.** A `bcv(k,f,v)` gépi, ezért szakaszonként minden idézett vers
+   Károli-szövege az adatblokkba kerül (`konkordancia/Karoli_1908.tsv`, a könyvnév a
+   `Konyv_normalizalo_tabla.tsv` szerint); a magyarítás ehhez igazodik. A BDB-nél ehhez szövegből kellett
+   feloldani a hivatkozást (`bdb_vers_jelentes.tsv`); itt nem.
+5. **Sigla- és rövidítéstábla (új: `adat/thayer_sigla.tsv`).** A Thayer apparátusa: kiadás-siglák
+   (`G T Tr WH`, `Rec.`, `L`, `Lachmann`), grammatikák (`Winers Grammar`, `Buttmann`), antik szerzők
+   (`Xenophon`, `Plato`), rövidítések (`Sept.`, `cf.`). Soronként: forrásalak, mi ez, a magyar kiadásban
+   változatlan-e vagy milyen egységes alakot kap, proveniencia. A gyűjtés a forrásból gépi (M1 mellékterméke),
+   a besorolás kézi; egy kapu ellenőrzi, hogy a fordítás a táblát követi. A tábla a #129 (BDB-kiadás)
+   rövidítésjegyzékének is mintája.
+6. **Nyelvközi híd.** A Thayer kiírja a héber megfelelőt (pl. G1941: „the Sept. very often for קָרָא”,
+   `ref0` jelöléssel). Az adatblokk ebből a héber szó magyar BDB-jelentését és terminológiai sorát is hozza
+   (`forditasok.tsv`, `bdb_szakasz_hu.tsv`), hogy a görög és a héber azonos magyar szót kapjon (a nyelvközi
+   egység elve; rangsor: szójegyzék > Károli > BDB > szótár). Ütközésnél soronként kézi ítélet.
+
 ## 3. Hatókör
 
 **Benne van:** a bontó a teljes Thayerre (determinisztikus, olcsó); az igehely → jelentéspont tábla a
@@ -92,12 +124,17 @@ javaslattal:
    szakasz-kapu) **szótárfüggetlenül**, Thayer-ággal (javaslat), vagy külön Thayer-lánc. Modell: Sonnet a
    DT-F38e mintájára, vagy Opus. A választást a #128 M0-ja (tárolási kulcs, `forras_hash`) befolyásolja,
    ezért ez a feladat a #128 után fut (`fugg: [128]`).
-5. **DT282 — viszony a #131-hez:** (a) a #131 görög része erre vár (`fugg` + 132 a #131 fejlécében;
-   a felhasználó jóváhagyásával, a befogadáskor vagy a #131 menetében) · (b) a #131 előbb csak a héber
-   BDB-réteggel készül, a görög a #132 után kerül be (újragenerálás). Javaslat: (a), ha a #128 és a #132
-   időben a #131 előtt elkészül; különben (b).
+5. **DT282 — viszony a #131-hez: ELDÖNTVE** (felhasználó, 2026-10-21: „már az arany lexikonban is
+   szeletelővel akarom látni a görög cikkeket”): (a), a #131 görög része erre vár; a #131 fejléce a
+   befogadásban `fugg: [127, 110, 132]` (`DONTESEK.md` DT282). Nem kérdezendő újra.
+6. **DT-F132f — a tiltott-fordulat tábla (2a/2) helye:** (a) a #128 építi, a közös lánc részeként ·
+   (b) ez a feladat építi (akkor az `ir` a menetben bővül: `adat/tiltott_fordulatok.tsv`,
+   `eszkozok/forditas_kapuk.py`) · (c) a #121 terve szerint marad. Javaslat: (a), mert a BDB- és a
+   Thayer-lánc közös kapuja.
+7. **A mankók felmérése:** a 2a/3 Károli-lefedettsége a 13 gerincszó idézett és motívumhelyein (hány vers
+   esik a hiányzó evangéliumokra és az ApCsel-re); a 2a/5 siglák előzetes listája a forrásból (darabszám).
 
-**⛔ M0:** a felhasználó dönt az 1–5. pontról. A döntésig nincs kódírás.
+**⛔ M0:** a felhasználó dönt az 1–4. és a 6. pontról. A döntésig nincs kódírás.
 
 ### M1 — bontó: `eszkozok/thayer_jelolt/bont.py`
 
@@ -118,8 +155,9 @@ a G1941 a motívum 10 ÚSZ-helyéből melyiket idézi, és melyik jelentéspont 
 
 ### M3 — a 13 gerincszó szakaszonkénti fordítása
 
-A DT-F132c–d szerint, a terminológia aktuális verziójával és a fordítási elvekkel (nyelvközi egység,
-rangsor: szójegyzék > Károli > BDB > szótár). Kapuk, köztük a szakasz-kapu (a tokenek száma és
+A DT-F132c–d szerint, a 2a mankóival (adatblokk: Károli-alakok, idézett versek Károli-szövege, sigla-tábla,
+nyelvközi híd; kapuk: terminológia, tiltott fordulatok, sigla), a terminológia aktuális verziójával és a
+fordítási elvekkel (nyelvközi egység, rangsor: szójegyzék > Károli > BDB > szótár). Kapuk, köztük a szakasz-kapu (a tokenek száma és
 sorrendje egyezik); bukás esetén önújrapróba, utána `naplok/F132_THAYER_SZAKASZ_bukottak.tsv`.
 Rögzítés a `forditasok.tsv`-be a DT-F132b/d szerinti kulccsal; írás előtt az eszköz a táblát összeveti
 az eredetivel (csak új sor, a meglévők bájtra azonosak). `modell` = a saját környezetből vett tényleges
@@ -151,4 +189,5 @@ Push és merge csak a felhasználótól.
 | DT-F132b | Kulcs, séma, a `G12` → `G0012` normalizálás | l. M0 2. | `Strong_padded`, a SEMA 2.29–2.30 mintájára |
 | DT-F132c | A 14 kész `teljes` sor sorsa | (a) újrafordítás szakaszonként · (b) utólagos illesztés · (c) mindkettő | (a) |
 | DT-F132d | A fordítás lánca és modellje | a #128 lánca szótárfüggetlenül / külön lánc; Sonnet / Opus | közös lánc; Sonnet (DT-F38e mintája) |
-| DT282 | Viszony a #131-hez | (a) a #131 görög része vár · (b) a #131 héberrel indul, a görög később | (a), ha időben elkészül; különben (b) |
+| DT282 | Viszony a #131-hez | (a) a #131 görög része vár · (b) a #131 héberrel indul, a görög később | **eldöntve: (a)** (felhasználó, 2026-10-21; `DONTESEK.md`) |
+| DT-F132f | A tiltott-fordulat tábla (2a/2) helye | (a) a #128 · (b) ez a feladat · (c) a #121 terve szerint | (a) |
