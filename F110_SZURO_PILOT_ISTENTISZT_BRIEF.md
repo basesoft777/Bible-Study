@@ -11,9 +11,9 @@ ag: claude/f110-szuro-pilot-2
 pr: 455
 lezarva_osszegzes: "a jeloltek.tsv: 21 G1941-sor elutasítva + 2 új nyitva sor (Ézs 41:25, Ézs 64:6); a JSir 3:55 és 5Móz 32:3 kiszűrve, ApCsel 7:59 elutasítva; szűrő és átvihetőség-mérés a naplóban; 2 javítókör, 3 alacsony súlyú maradék a zárójelentésben; E28 javítva (F110.29: lexikon_general.py:2116 literál, lexikon újragenerálva), E11 javítva (F110.30: Cremer-hivatkozás törölve a G1941 fordításából)"
 ad: naplózott, determinisztikus szűrő (motivumok.tsv negatív kritérium + kollokáció) az F108 tág új helyeire; kipróbálva a G1941 21 nyitva jelöltjén és a H7121+H8034 168 nem-zsoltári új helyén; a jeloltek.tsv-be csak a szűrő utáni helyek, a 21 G1941-jelölt döntéssel; mérés, hogy a szabály a többi motívumra átvihető-e
-kovetkezo: "nincs; nyitott (felvétel a felhasználó döntése): a beerkezo-tervezet javítása a /befogad-kor, a napló :97 proveniencia; az F110.29–30 után ellenőri kör nem futott"
+kovetkezo: "nincs; nyitott (felvétel a felhasználó döntése): a beerkezo-tervezet javítása a /befogad-kor, a napló :97 proveniencia; ELLENOR_F110_4 (F110.29–31): 3 tétel, javítva az F110.33-ban, újraellenőrzés nem futott"
 olvas: [adat/motivumok.tsv, adat/jeloltek.tsv, adat/elofordulasok.tsv, adat/SEMA.md, adat/grammatikai_strongok.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, naplok/F108_ujrascan_elteresek.tsv, naplok/F108_MOTIVUM_UJRASCAN_naplo.md, eszkozok/lekerdez.py, eszkozok/jelolt.py]
-ir: [adat/jeloltek.tsv]
+ir: [adat/jeloltek.tsv, eszkozok/lexikon_general.py, lexikon/ISTENTISZT-001_TUDOMANYOS.md, adat/forditasok.tsv]
 fugg: []
 nem_fugg: [9, 11, 55, 86, 123]
 ---
@@ -72,3 +72,4 @@ jelöltek beépítése a motívum saját menete); a Zsoltár-találatok (#55); a
 ## 5. Döntésnapló
 
 - DT-F110a: a szűrő-szabály szövege — **elfogadva** (2026-10-21; `DONTESEK.md`, `naplok/SZURO_PILOT_ISTENTISZT_naplo.md` 2. szakasz). A (2) pont módosítva az ELLENOR_F110 (1) után: a K2 határesetek (JSir 3:55, 5Móz 32:3) kiszűrve maradnak, a kritérium nem változik (döntéshozó: felhasználó, chat-válasz, 2026-10-21). Az ApCsel 7:59 elutasítva (ELLENOR_F110 2.). A helyőrző marad, végleges számot a `szamkiosztas` Action ad.
+- DT-F110b: a zárás utáni CI-javítás (`DONTESEK.md`) — **(1) (a), (2) (a)** (döntéshozó: felhasználó, chat-válasz, 2026-10-21). (1) „ci piros / menjen a javitás”: a `lexikon_general.py:2116` literálja `DT277`-re, a lexikon újragenerálva (F110.29); az `ir` bővült (`eszkozok/lexikon_general.py`, `lexikon/ISTENTISZT-001_TUDOMANYOS.md`, `adat/forditasok.tsv`), eltérés a 2. szakasz lexikon-kizárásától. (2) a „(Cremer, 335, 742)” törölve a TBESG G1941 magyar fordításából (E11; F110.30), a sor `megjegyzes` mezője jelzi (F110.33).

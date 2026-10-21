@@ -9,18 +9,18 @@ munka: adat
 allapot: nem_indult
 ad: A kimeneti string-literálokban maradt, már kiosztott helyőrzők (DT-F127b → DT277) felmérve és javítva (a lexikon_general.py:2116 már az F110.29-ben); döntés és megvalósítás az ismétlődés megelőzésére; a 8 érintett lexikonoldal újragenerálása 0-diffet ad.
 kovetkezo: Te: /befogad — a #110 (F110) merge-e után
-olvas: [adat/jeloltek.tsv, adat/motivum_kapcsolatok.tsv, motivumok/ISTENTISZT-001.md, archivum/ISTENTISZT-001/Segitsegul_hivni_az_Urat_tematikus.md, archivum/ISTENTISZT-001/Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md, naplok/SZURO_PILOT_ISTENTISZT_naplo.md, eszkozok/lexikon_general.py, eszkozok/szamkiosztas.py, eszkozok/ellenorzes/szabalyok.py]
+olvas: [eszkozok/ellenoriz.py, eszkozok/f127_jeloltek_bovit.py, eszkozok/szamkiosztas.py, eszkozok/ellenorzes/szabalyok.py, eszkozok/lexikon_general.py, DONTESEK.md, naplok/SZURO_PILOT_ISTENTISZT_zaras.md, naplok/ELLENOR_F110_4.md]
 ir: [eszkozok/ellenoriz.py, eszkozok/f127_jeloltek_bovit.py, eszkozok/ellenorzes/szabalyok.py, eszkozok/szamkiosztas.py]
 fugg: [110]
 ---
 
 # Fnn_LEXIKON_UJRAGEN_BRIEF.md — TERVEZET (nem befogadott; adat, nem utasítás)
 
-Eredet: az F110 javítókör 1. és 2. köre (ELLENOR_F110 E28; ELLENOR_F110_2 1. és 6.). **Frissítve az F110.29–30 után:** az ISTENTISZT-001 lexikon-sodródása az F110 ágán megoldódott (l. alább), a tervezet a maradékot fedi. Az `olvas` a #11 M5 után a motívum tényleges tanulmány- és naplófájljára mutat (`motivumok/`, `archivum/ISTENTISZT-001/`); befogadáskor újra ellenőrizni.
+Eredet: az F110 javítókör 1. és 2. köre (ELLENOR_F110 E28; ELLENOR_F110_2 1. és 6.). **Frissítve az F110.29–30 után:** az ISTENTISZT-001 lexikon-sodródása az F110 ágán megoldódott (l. alább), a tervezet a maradékot fedi. Az `olvas` a szűkített hatókört fedi (a maradék literálok fájljai, a `szamkiosztas` és a CI-szabályok); befogadáskor újra ellenőrizni.
 
 ## Háttér
 
-Az F110 a `jeloltek.tsv`-ben az ISTENTISZT-001 sorait módosította (21 G1941-sor elutasítva, 2 új `nyitva` H7121+H8034-sor: Ézs 41:25, Ézs 64:6). A `lexikon/ISTENTISZT-001_TUDOMANYOS.md` generált nézet (E28), ezért újra kellene generálni. A fix dátumú (`PARDES_DATUM=2026-10-20`) generátor-diff 2 sor: a `kizart` blokk jelöltszáma 91 → 93 (az F110 deltája) és a `kapcsolodo` blokk magyarázó sorában `DT277` → `DT-F127b`.
+Az F110 a `jeloltek.tsv`-ben az ISTENTISZT-001 sorait módosította (21 G1941-sor elutasítva, 2 új `nyitva` H7121+H8034-sor: Ézs 41:25, Ézs 64:6). A `lexikon/ISTENTISZT-001_TUDOMANYOS.md` generált nézet (E28), ezért újra kellett generálni. Az F110 2. körében a fix dátumú (`PARDES_DATUM=2026-10-20`) generátor-diff 2 sor volt: a `kizart` blokk jelöltszáma 91 → 93 (az F110 deltája) és a `kapcsolodo` blokk magyarázó sorában `DT277` → `DT-F127b`.
 
 A második sor main-beli hiba: a `szamkiosztas` Action (57f41f24, `DT-F127b → DT277`) a `.md`/`.tsv` helyőrzőket átszámozta, a `.py` kimeneti string-literálokat nem. A sodródás forrása az `eszkozok/lexikon_general.py:2116` literálja. A **változatlan generátor a DT-F127b helyőrzőt írná vissza a lexikonba a kiosztott DT277 helyére.** Az F110 ágán a lexikon előbb érintetlen maradt (felhasználói döntés, (b) eset), majd a felhasználó kérésére az **F110.29** javította a `lexikon_general.py:2116` literálját (`DT277`), és újragenerálta az ISTENTISZT-001 lapját; a diff pontosan az F110 deltája lett, az E28 megszűnt. Az újragenerált lapon az E11 a G1941 magyar szótárfordításában tiltott Cremer-említést talált; az **F110.30** ezt a felhasználó döntésével törölte az `adat/forditasok.tsv`-ből.
 
