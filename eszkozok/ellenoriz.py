@@ -815,6 +815,48 @@ def _teljes_szocikk(adat_dir, sor, cache):
     return talalat[1]
 
 
+# F128 (DT-F128a (a), DT-F128b (1), DT-F128g (a)): a BDB szakaszonkenti `sz<sorszam>`
+# soranak forrasszovege az adat/bdb_szakaszok.tsv szakasza az adat/bdb_forras_javitas.tsv
+# `hivatkozas` / `javitva` javitasaval, pe/mem csere nelkul -- a fordito bemenete
+# (eszkozok/bdb_jelolt/szakasz_bemenet.py), az adat_dir tablaibol.
+_SZAKASZ_JSZ = re.compile(r'^sz(\d+)$')
+
+
+def _szakasz_bemenet():
+    import importlib.util
+    ut = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'bdb_jelolt', 'szakasz_bemenet.py')
+    spec = importlib.util.spec_from_file_location('szakasz_bemenet_e13', ut)
+    m = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(m)
+    return m
+
+
+def _szakaszok_strongra(adat_dir, strong, cache):
+    """{sorszam: szakaszszoveg} a Strongra, vagy None (nincs a szakasztablaban / nincs tabla)."""
+    tabla = os.path.join(adat_dir, 'bdb_szakaszok.tsv')
+    jav = os.path.join(adat_dir, 'bdb_forras_javitas.tsv')
+    if not (os.path.exists(tabla) and os.path.exists(jav)):
+        return None
+    if 'sb' not in cache:
+        cache['sb'] = _szakasz_bemenet()
+    if ('sz', strong) not in cache:
+        szak = cache['sb'].szakaszok(strong, tabla, jav)
+        cache[('sz', strong)] = None if szak is None else {x['sorszam']: x['szoveg'] for x in szak}
+    return cache[('sz', strong)]
+
+
+def _szakasz_szoveg(adat_dir, sor, cache):
+    """Az `sz<n>` BDB-sor forrasszovege, kulonben None. Az `entry_id`-nek a Strong eredeti alakjaval kell egyeznie."""
+    m = _SZAKASZ_JSZ.match(sor.get('jelentes_szam') or '')
+    if not m or sor.get('szotar') != 'BDB' or sor.get('mezo') != 'forditas_hu':
+        return None
+    sp = _strong_padded(sor.get('strong'))
+    if sp is None or sor.get('entry_id') != re.sub(r'^H0*', 'H', sp):
+        return None
+    szak = _szakaszok_strongra(adat_dir, sp, cache)
+    return None if szak is None else szak.get(int(m.group(1)))
+
+
 # SEMA 2.14: a forditasok.tsv `allapot` zart ertekkeszlete (F38.265: + `sonnet`)
 FORDITAS_ALLAPOTOK = ('kezi', 'opus', 'sonnet', 'pilot', 'elavult')
 
@@ -848,12 +890,26 @@ def szabaly13_forditasi_gyorsitotar(adat_dir):
 
     forras_idx = _forditasok_forras_szoveg_idx(adat_dir)
     teljes_cache = {}
+    szakasz_cache = {}
+    # F128: egy Strong nem `elavult` `sz<n>` sorai egyutt a Strong osszes szakaszat fedik (SEMA 2.14)
+    sz_strongok = {}
+    for sor in sorok:
+        m = _SZAKASZ_JSZ.match(sor.get('jelentes_szam') or '')
+        if m and sor.get('szotar') == 'BDB' and sor.get('allapot') != 'elavult':
+            sz_strongok.setdefault(_strong_padded(sor.get('strong')), set()).add(int(m.group(1)))
+    for sp, meglevo in sorted(sz_strongok.items(), key=lambda p: str(p[0])):
+        szak = _szakaszok_strongra(adat_dir, sp, szakasz_cache) if sp else None
+        if szak is not None and meglevo != set(szak):
+            hibas.append('BDB %s: a szakaszsorok nem fedik le a szakaszokat (hiányzik: %s; fölös: %s)' % (
+                sp, sorted(set(szak) - meglevo)[:10], sorted(meglevo - set(szak))[:10]))
     for sor in sorok:
         kulcs = (sor.get('szotar'), sor.get('strong'), sor.get('entry_id'),
                  sor.get('jelentes_szam'), sor.get('mezo'))
         forras_szoveg = forras_idx.get(kulcs)
         if forras_szoveg is None:
             forras_szoveg = _teljes_szocikk(adat_dir, sor, teljes_cache)
+        if forras_szoveg is None:
+            forras_szoveg = _szakasz_szoveg(adat_dir, sor, szakasz_cache)
         if forras_szoveg is None:
             hibas.append('%s: nincs hozzá forrásszöveg (lexikon_hivatkozasok.tsv / '
                           'UBS_DNTG_jelentesek.tsv / teljes szócikk)' % (kulcs,))

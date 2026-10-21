@@ -106,5 +106,60 @@ class Szabaly13Teljes(unittest.TestCase):
         self.assertEqual(self._futtat([self._sor(), self._sor()]).verdict, 'SÉRTÉS')
 
 
+SZ1, SZ2 = 'H1. ab', '1 father Gn 1:1'   # a 2. szakasz a `hivatkozas` javítással (Gen -> Gn); pe/mem nélkül
+
+
+class Szabaly13Szakasz(Szabaly13Teljes):
+    """F128 (DT-F128a (a), DT-F128b (1), DT-F128g (a)): a BDB `sz<sorszam>` sorainak forrásszövege a szakasztábla
+    szakasza a hivatkozás-javítással; a nem `elavult` szakaszsorok együtt a Strong összes szakaszát fedik."""
+
+    def setUp(self):
+        super().setUp()
+        with open(os.path.join(self.adat, 'bdb_szakaszok.tsv'), 'w', encoding='utf-8', newline='\n') as fh:
+            fh.write('# GENERÁLT: teszt\n# forras: teszt\n')
+            fh.write('strong\tbdb_id\tsorszam\tutvonal\tjelolo\tjel\tszoveg\tilleszes\n')
+            fh.write('H0001\tBDB17\t1\tcim\tcim\t\tH1. ab\tegyezik\n')
+            fh.write('H0001\tBDB17\t2\t-/1/-\tpoint\t1\tfather Gen 1:1\tegyezik\n')
+        with open(os.path.join(self.adat, 'bdb_forras_javitas.tsv'), 'w', encoding='utf-8', newline='\n') as fh:
+            fh.write('# GENERÁLT: teszt\n# forras: teszt\n')
+            fh.write('strong\tsorszam\tbdb_id\thiba\tszo_sorszam\telofordulas\tforras_alak\tjavitott_alak\tallapot\n')
+            fh.write('H0001\t2\tBDB17\thivatkozas\t\t1\tGen\tGn\tjavitva\n')
+            fh.write('H0001\t2\tBDB17\tpe_mem\t1\t1\tfather\tfathxr\tjavitva\n')   # pe/mem: nem alkalmazódik
+
+    def _sz(self, n, szoveg, **kw):
+        alap = {'szotar': 'BDB', 'strong': 'H0001', 'entry_id': 'H1', 'jelentes_szam': 'sz%d' % n,
+                'mezo': 'forditas_hu', 'forras_hash': sha1(szoveg), 'forditas_hu': 'f%d' % n,
+                'allapot': 'sonnet', 'modell': 'claude-sonnet-5-5', 'datum': '2026.10.21'}
+        alap.update(kw)
+        return alap
+
+    def test_szakaszsorok_rendben(self):
+        self.assertEqual(self._futtat([self._sz(1, SZ1), self._sz(2, SZ2)]).verdict, 'RENDBEN')
+
+    def test_szakaszsorok_a_teljes_mellett(self):
+        self.assertEqual(self._futtat([self._sor(), self._sz(1, SZ1), self._sz(2, SZ2)]).verdict, 'RENDBEN')
+
+    def test_negativ_nyers_szoveg_hash_bukik(self):
+        # a javítás nélküli szöveg hash-e (Gen) nem a bemenet hash-e
+        self.assertEqual(self._futtat([self._sz(1, SZ1), self._sz(2, '1 father Gen 1:1')]).verdict, 'SÉRTÉS')
+
+    def test_negativ_hianyos_szakaszsorok(self):
+        e = self._futtat([self._sz(1, SZ1)])
+        self.assertEqual(e.verdict, 'SÉRTÉS')
+        self.assertTrue(any('nem fedik le' in h for h in e.peldak), e.peldak)
+
+    def test_elavult_szakaszsor_nem_szamit_a_lefedesbe(self):
+        # az `elavult` 2. szakaszsor mellett az élő sorok nem fedik le a Strongot
+        self.assertEqual(self._futtat([self._sz(1, SZ1), self._sz(2, SZ2, allapot='elavult')]).verdict, 'SÉRTÉS')
+        self.assertEqual(self._futtat([self._sz(1, SZ1, allapot='elavult'), self._sz(2, SZ2, allapot='elavult')]).verdict,
+                         'RENDBEN')
+
+    def test_negativ_tablan_kivuli_strong(self):
+        self.assertEqual(self._futtat([self._sz(1, SZ1, strong='H4725', entry_id='H4725')]).verdict, 'SÉRTÉS')
+
+    def test_negativ_entry_id_elter(self):
+        self.assertEqual(self._futtat([self._sz(1, SZ1, entry_id='H0001'), self._sz(2, SZ2)]).verdict, 'SÉRTÉS')
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
