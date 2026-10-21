@@ -125,15 +125,31 @@ def magyar_jelolok(hu):
     return sorted(set(ki))
 
 
-def forditasok():
-    with open(FORD, encoding='utf-8', newline='') as f:
-        sorok = [s for s in f.read().split('\n') if s and not s.startswith('#')]
+def forditasok(ut=None):
+    """{Strong: {'forditas_hu', 'forras_hash'}} a BDB-sorokból, a közös összefűzőn át (F128, DT-F128a (a), DT-F128g (a):
+    `szakasz_bemenet.strong_magyar_sorok`): a szakaszonként fordított Strong szövege a `sz<sorszam>` sorok összefűzése, a
+    `forras_hash` ilyenkor a token nélküli forrásnézet (`szakasz_bemenet.nezet`) SHA-1-e; különben a `teljes` sor és a saját
+    `forras_hash`-e (a jóváhagyott `kezi` sor elsőbbségével, DT-F128f (3))."""
+    import szakasz_bemenet as sb
+    with open(ut or FORD, encoding='utf-8', newline='') as f:
+        sorok = [s.rstrip('\r') for s in f.read().split('\n') if s and not s.startswith('#')]
     fej = sorok[0].split('\t')
-    ki = {}
+    strongonkent = collections.OrderedDict()
     for s in sorok[1:]:
         d = dict(zip(fej, s.split('\t')))
-        if d['szotar'] == 'BDB' and d.get('forditas_hu'):
-            ki['H%04d' % int(re.sub(r'\D', '', d['strong']))] = d     # az utolsó nem üres sor nyer
+        if d['szotar'] == 'BDB':
+            strongonkent.setdefault('H%04d' % int(re.sub(r'\D', '', d['strong'])), []).append(d)
+    ki = {}
+    for st, ds in strongonkent.items():
+        szoveg, tipus, hasznalt = sb.strong_magyar_sorok(ds)
+        if not szoveg:
+            continue
+        if tipus == 'szakasz':
+            szak = sb.szakaszok(st)
+            h = sb.sha1(sb.nezet(szak)) if szak else ''
+        else:
+            h = hasznalt[0].get('forras_hash', '')
+        ki[st] = {'forditas_hu': szoveg, 'forras_hash': h}
     return ki
 
 

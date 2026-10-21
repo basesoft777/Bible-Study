@@ -282,6 +282,33 @@ class HuIlleszt(unittest.TestCase):
         fej = s[2].split('\t')
         cls.sorok = [dict(zip(fej, x.split('\t'))) for x in s[3:] if x]
 
+    def test_osszefuzo_a_mai_adaton_valtozatlan(self):
+        # F128 (DT-F128g (a)): a közös összefűzővel a tábla törzse (a `# forras` fejlécsor és a sorvég nélkül) azonos
+        ts = self.sorok[0]['proveniencia'].rsplit('ts=', 1)[1]
+        uj = ['\t'.join(s) for s in self.hi.general(ts)[0]]
+        with open(self.hi.KI_UT, encoding='utf-8', newline='') as f:
+            regi = [x.rstrip('\r') for x in f.read().split('\n')[3:] if x.strip()]
+        self.assertEqual(uj, regi)
+
+    def test_forditasok_szakaszsorokkal(self):
+        # F128: a szakaszonként fordított Strong a `sz<sorszam>` sorok összefűzése, a hash a forrásnézeté
+        import tempfile
+        import szakasz_bemenet as sb
+        fej = ['szotar', 'strong', 'entry_id', 'jelentes_szam', 'mezo', 'forras_hash', 'forditas_hu', 'allapot']
+        szak = sb.szakaszok('H0001')
+        sorok = [['BDB', 'H0001', 'H1', 'teljes', 'forditas_hu', 'regi', 'régi', 'elavult']]
+        sorok += [['BDB', 'H0001', 'H1', 'sz%d' % x['sorszam'], 'forditas_hu', x['hash'], 'm%d' % x['sorszam'], 'sonnet']
+                  for x in reversed(szak)]
+        sorok += [['BDB', 'H0002', 'H2', 'teljes', 'forditas_hu', 'h2', 'második', 'sonnet']]
+        with tempfile.TemporaryDirectory() as tmp:
+            ut = os.path.join(tmp, 'forditasok.tsv')
+            with open(ut, 'w', encoding='utf-8', newline='\n') as fh:
+                fh.write('\n'.join(['# teszt', '\t'.join(fej)] + ['\t'.join(s) for s in sorok]) + '\n')
+            f = self.hi.forditasok(ut)
+        self.assertEqual(f['H0001']['forditas_hu'], ' '.join('m%d' % x['sorszam'] for x in szak))
+        self.assertEqual(f['H0001']['forras_hash'], sb.sha1(sb.nezet(szak)))
+        self.assertEqual(f['H0002'], {'forditas_hu': 'második', 'forras_hash': 'h2'})
+
     def test_forras_jelolok(self):
         self.assertEqual(self.hi.forras_jelolok('2. a.'), ['2', 'a'])
         self.assertEqual(self.hi.forras_jelolok('Hiph`il'), ["T:Hiph'il"])      # DT-F107b (d): kanonikus törzskulcs
