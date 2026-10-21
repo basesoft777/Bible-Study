@@ -6,7 +6,8 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: nem_indult
+allapot: fut
+ag: claude/f110-szuro-pilot-2
 ad: naplózott, determinisztikus szűrő (motivumok.tsv negatív kritérium + kollokáció) az F108 tág új helyeire; kipróbálva a G1941 21 nyitva jelöltjén és a H7121+H8034 168 nem-zsoltári új helyén; a jeloltek.tsv-be csak a szűrő utáni helyek, a 21 G1941-jelölt döntéssel; mérés, hogy a szabály a többi motívumra átvihető-e
 kovetkezo: /kovetkezo
 olvas: [adat/motivumok.tsv, adat/jeloltek.tsv, adat/elofordulasok.tsv, adat/SEMA.md, adat/grammatikai_strongok.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, naplok/F108_ujrascan_elteresek.tsv, naplok/F108_MOTIVUM_UJRASCAN_naplo.md, eszkozok/lekerdez.py, eszkozok/jelolt.py]
