@@ -5,10 +5,10 @@ kod: BDB_SZAKASZ_ELOKESZITES
 tipus: feladat
 fazis: 1
 modell: opus
-allapot: fut
+allapot: dontesre_var
 ag: claude/f128-bdb-szakasz-elokeszites-a2fc2f
 ad: a #38 a következő adagtól szakaszonként fordíthat — a bemenet-előállító, a prompt v5, a szakasz-kapu és a forditasok.tsv szakaszkulcsa kész és tesztelt, modellhívásos fordítás nélkül
-kovetkezo: "Indítható a fugg szerint"
+kovetkezo: "Te: DT-F128a–e (M0: tárolási kulcs, forras_hash, darabolás, nem egyezik Strongok, N-F107b) — a döntés után M1"
 olvas: [F38_BDB_FORDITAS_BRIEF.md, DONTESEK.md, adat/SEMA.md, adat/bdb_szakaszok.tsv, adat/bdb_forras_javitas.tsv, adat/bdb_szakasz_hu.tsv, adat/forditasok.tsv, adat/terminologia.tsv, eszkozok/emeles.py, eszkozok/forditas_kapuk.py, eszkozok/bdb_adatblokk.py, eszkozok/bdb_jelolt/nezet_general.py, eszkozok/bdb_jelolt/hu_illeszt.py, forditas/prompt_v4.md, naplok/F107_BDB_JELOLT_SZOVEG_naplo.md, naplok/BDB_FORDITAS_sorrend.tsv, konkordancia/BDB_teljes_unabridged.tsv]
 ir: [eszkozok/emeles.py, eszkozok/forditas_kapuk.py, eszkozok/teszt_forditas_kapuk.py, eszkozok/bdb_jelolt/szakasz_bemenet.py, eszkozok/bdb_jelolt/teszt_szakasz_bemenet.py, forditas/prompt_v5.md, adat/SEMA.md, naplok/F128_BDB_SZAKASZ_ELOKESZITES_naplo.md, DONTESEK.md, NYITOTT_FELADATOK.md, F38_BDB_FORDITAS_BRIEF.md]
 fugg: [107]
