@@ -128,7 +128,7 @@ Kézi olvasás, soronként (a tábla csak az átjutottakat kapja; a kiszűrtek s
 |---|---|---|---|
 | JSir 3:55 | K2 határeset | K2_nincs_be marad (kiszűrve; a jeloltek.tsv-ből kivéve, ELLENOR_F110 1.; „tartalmilag invokáció, de a formulán kívül esik (fölérendelt fogalom)”) | „I called name your O Yahweh”: aktív, Isten neve, hívás a gödörből; בְּ nincs |
 | 5Móz 32:3 | K2 határeset | K2_nincs_be marad (kiszűrve; a jeloltek.tsv-ből kivéve, ELLENOR_F110 1.; „tartalmilag invokáció, de a formulán kívül esik (fölérendelt fogalom)”) | „the name of Yahweh I will proclaim”: kikiáltás-imádás (a 2Móz 33:19 és 34:5 párja); בְּ nincs |
-| Ézs 41:25 | B | nyitva (**eltérés a vártól, jelezve**) | „he will call on name my”: aktív קרא + בְּ + שֵׁם, az Úr beszél; vitatott, hogy Círusz hívja-e a nevét; a motívum-menet dönt |
+| Ézs 41:25 | B | nyitva (**eltérés a vártól, jelezve**) | „he will call on name my”: aktív קרא + בְּ + שֵׁם, az Úr beszél; a szöveg és a בְּשֵׁם szerkezet alapján a motívum-menet dönt |
 | Ézs 64:6 | B | nyitva (**eltérés a vártól, jelezve**) | „there not [is one who] calls on name your”: tagadott invokáció (Jer 10:25 precedens) |
 | 1Móz 16:13 | K2 határeset | kiszűrve | névadás |
 | 2Móz 17:15 | K2 határeset | kiszűrve | névadás (oltár) |
