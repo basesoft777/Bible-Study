@@ -60,7 +60,8 @@ A gyakoriságot az M0 számolja egy Strong-címkés ószövetségi szövegből a
 > `forditas/prompt_v5.md`, 20 000 karakter fölött ≤ ~10 000 karakteres csoportok) → `szakasz_ellenoriz` (14. szakasz-kapu, 9.
 > tagolás szakaszonként) → `szakasz_rogzit` → `szakasz_beir --regi-elavult` (`jelentes_szam = sz<sorszam>`; a régi `teljes`
 > sor `elavult`). A 9 táblán kívüli Strong a régi úton (prompt v4, `rogzit` / `beir`). Séma: `adat/SEMA.md` 2.14; napló:
-> `naplok/F128_BDB_SZAKASZ_ELOKESZITES_naplo.md`. A H8415 `kezi` sora: DT-F128f; az olvasók átállítása az első `sz` sor előtt: DT-F128g.
+> `naplok/F128_BDB_SZAKASZ_ELOKESZITES_naplo.md`. A H8415 (`kezi`): újrafordul, a szakaszsorai `--kezi-marad`-dal kerülnek be, és
+> csak a felhasználó jóváhagyása után kapnak `kezi`-t (DT-F128f (3)); az olvasók a közös összefűzőt használják (DT-F128g (a)).
 
 ### M0 — Felmérés (csak olvas)
 

@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 """A kész magyar BDB-fordítás illesztése a szakasztáblához (F107, 7. lépés; DT-F107c (d) után).
 
-Bemenet: adat/bdb_szakaszok.tsv (a szakaszok, a `jel` fejekkel), adat/forditasok.tsv (csak olvasva: a BDB-sorok közül Strongonként az
-utolsó nem üres `forditas_hu`), eszkozok/forditas_kapuk.py (a magyar oldali jelölő- és törzsnév-felismerés, csak importálva).
+Bemenet: adat/bdb_szakaszok.tsv (a szakaszok, a `jel` fejekkel), adat/forditasok.tsv (csak olvasva: a BDB-sorok Strongonként a
+közös összefűzőn át, `szakasz_bemenet.strong_magyar_sorok`; F128, DT-F128g (a)), eszkozok/forditas_kapuk.py (a magyar oldali jelölő- és törzsnév-felismerés, csak importálva).
 Kimenet: adat/bdb_szakasz_hu.tsv (séma: adat/SEMA.md „bdb_szakasz_hu.tsv”). Az adat/forditasok.tsv nem íródik.
 
 Illesztés Strongonként:

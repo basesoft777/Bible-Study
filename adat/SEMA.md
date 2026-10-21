@@ -795,15 +795,20 @@ magyar szótári fordítás egyetlen helye — a `lexikon_hivatkozasok.tsv`
 | `terminologia_verzio` | szabad szöveg | | A 2.15 `terminologia.tsv` verziója, amellyel a fordítás készült; üres a migrált (a terminológia-tábla előtti) soroknál. |
 | `megjegyzes` | szabad szöveg | | A megszűnt `forditas_ubs.tsv` `megjegyzes` oszlopának öröksége — lábjegyzet-hivatkozás vagy a fordítói döntés indoklása. A render nem olvassa (csak emberi/archív jegyzet); üres a legtöbb sornál. |
 
-**Szakaszonkénti BDB-sorok (F128; DT181 (b), DT269 (1), DT-F128a–e).** A #38 a 7. adag előtti újrafordító adagtól
+**Szakaszonkénti BDB-sorok (F128; DT181 (b), DT269 (1), DT-F128a–g).** A #38 a 7. adag előtti újrafordító adagtól
 (DT-F128e: a 98 N-F107b Strong) szakaszonként fordít: a bemenet a `szakasz_bemenet.py` tokenes szövege (minden szakasz előtt
-`⟪<sorszam>⟫`), a prompt `forditas/prompt_v5.md`, a rögzítés `emeles.py szakasz_rogzit` → `szakasz_beir`. Egy Strong `sz<n>`
-sorai együtt a Strong összes szakaszát lefedik (a `szakasz_beir` ezt ellenőrzi). **A Strong magyar szövege nézet:** a közös
-összefűző (`szakasz_bemenet.strong_magyar`) a nem `elavult` `sz<n>` sorokat sorszám szerint, egy szóközzel fűzi össze; ha
-ilyen nincs, a `teljes` sort adja (a nem `elavult` elsőbbséggel). Olvasó, amely Strongonként „az utolsó nem üres sort” veszi
-(olvasó szerver `bdb_magyar`, `hu_illeszt.py`, `olvaso_pilot/adat.py`), és a 13. szabály (`ellenoriz.py`, CI E1, amely az
-`sz<n>` sorhoz ma nem talál forrásszöveget) az első `sz<n>` sor beírása előtt átállítandó (F128 M0 1.; az átállítás helye:
-DT-F128g). A 9 táblán kívüli Strong (H0747, H1753, H3367, H3848, H4123, H4725, H6433, H7560, H8065) és a Thayer a régi
+`⟪<sorszam>⟫`), a prompt `forditas/prompt_v5.md`, a rögzítés `emeles.py szakasz_rogzit` → `szakasz_beir`. Egy Strong nem
+`elavult` `sz<n>` sorai együtt a Strong összes szakaszát lefedik (a `szakasz_beir` és a 13. szabály ellenőrzi). **A Strong
+magyar szövege nézet:** a közös összefűző (`szakasz_bemenet.strong_magyar` / `strong_magyar_sorok`) a nem `elavult` `sz<n>`
+sorokat sorszám szerint, egy szóközzel fűzi össze; ha ilyen nincs, a `teljes` sort adja (a nem `elavult` elsőbbséggel). **A
+jóváhagyott sor elsőbbsége (DT-F128f (3)):** ha a Strongnak nem `elavult`, `kezi` `teljes` sora van (H8415), az az érvényes,
+amíg a szakaszsorok nem mind `kezi`-k; a nem `kezi` szakaszsorok mellé `szakasz_beir --kezi-marad` (a régi sor érintetlen), a
+jóváhagyott (`--allapot kezi`) szakaszsorokhoz `--regi-elavult --kezi-felulir` (ekkor lesz a régi `elavult`). **Az olvasók
+(DT-F128g (a), F128.10–.14) ezt az összefűzőt használják:** az olvasó szerver `bdb_magyar` / `bdb_magyar_meta`
+(`olvaso_szerver/lekerdezesek.py`; a meta a felhasznált sorok modelljei és legkésőbbi dátuma), a `hu_illeszt.py` (2.32), a
+`bdb_adatblokk.py --karoli-epit` kész halmaza (`teljes` vagy `sz<n>` sor); a 13. szabály (`ellenoriz.py`, CI E1) az `sz<n>`
+sor forrásszövegét a szakasztáblából veszi (a `forras_hash` fenti alapja). A #60 pilot (`olvaso_pilot/adat.py`) nincs
+átállítva (csak újragenerálásnál számít; DT-F128g (a)). A 9 táblán kívüli Strong (H0747, H1753, H3367, H3848, H4123, H4725, H6433, H7560, H8065) és a Thayer a régi
 `teljes` úton (prompt v4) fordul (DT-F128d (2)); a `reszleges` / `sikertelen` / `csonk` illesztésű Strong is szakaszonként.
 A hívás egysége (DT-F128c (2)): 20 000 karakterig a Strong egészben, fölötte ≤ ~10 000 karakteres szakaszcsoportok
 tokenhatáron. A kapuk: a 14. szakasz-kapu (`forditas_kapuk.ellenoriz_szakasz`), a 9. tagolás szakaszonként, a többi a token
@@ -1366,7 +1371,7 @@ a héber alakok NFD-ben. Olvasás `split('\t')`.
 ### 2.32 `bdb_szakasz_hu.tsv` — a kész magyar BDB-fordítás illesztése a szakaszokhoz (F107, FELADATOK #107, 7. lépés)
 
 **Generált** (`python eszkozok/bdb_jelolt/hu_illeszt.py --ts <nap>`; kézzel nem szerkeszthető; `--ellenoriz`; teszt: `teszt_bont.py`). A kész
-magyar BDB-fordítás (`adat/forditasok.tsv` BDB-sorai közül Strongonként az utolsó nem üres `forditas_hu`; **a fájl nem íródik**, az a #38-é)
+magyar BDB-fordítás (`adat/forditasok.tsv` BDB-sorai Strongonként a közös összefűzőn át, 2.14 — F128 előtt: az utolsó nem üres `forditas_hu`, a mai adaton azonos eredménnyel; **a fájl nem íródik**, az a #38-é)
 szakaszhatárai a szakasztábla (2.30) soraihoz illesztve, a #38 szakaszonkénti fordításának (DT181 (b)) előkészítéseként. Soronként a
 szakasztábla egy sora (csak a lefordított Strongok). Első két sor `# GENERÁLT` / `# forras` (a bemenetek és a kód hash-e), a harmadik a
 fejléc. Olvasás `split('\t')`.
@@ -1378,7 +1383,7 @@ fejléc. Olvasás `split('\t')`.
 | `horgony` | `illeszkedik`: a jelölők (pl. `2 a`, `T:Qal`); `horgonnyal`: a fejezet:vers; különben üres |
 | `hu_kezdet`, `hu_hossz` | a szakasz kezdete és hossza a `forditas_hu`-ban (karakter); üres, ha a sornak nincs saját szakasza |
 | `szoveg_hu` | a magyar szakasz (a sor horgonyától a következő horgonyig, a széleken szóköz nélkül); üres, ha nincs saját szakasza |
-| `forditas_forras_hash` | a fordítássor `forras_hash`-e (a TSV `Teljes_szocikk` SHA-1-e a fordításkor): az elavulás jele (DT231 (d): addig a változatlan TSV-hez kötött) |
+| `forditas_forras_hash` | a fordítássor `forras_hash`-e (a TSV `Teljes_szocikk` SHA-1-e a fordításkor): az elavulás jele (DT231 (d): addig a változatlan TSV-hez kötött). **Szakaszonként fordított Strongnál** (F128, DT-F128g (a): a magyar szöveg a közös összefűzőből, 2.14): a token nélküli forrásnézet (`szakasz_bemenet.nezet`, a szakaszok javított szövege egy szóközzel) SHA-1-e |
 | `proveniencia` | `scope=<Strong> \| forras=bdb_jelolt/hu_illeszt.py (fejléc) \| ts=<nap>` |
 
 Állapot (F107.38, 2026-10-18; DT232 (d): a magyar jelölő-felismerés bővítése az illesztőben — törzsnév mindkét oldalon a bontó törzslistájából, a forrás alakjában, a magyaros alakokkal és a raggal, kulcs a kanonikus név (`Hithpa'el`, `Pe'al`); betű j-től csak tagolásjel után, a szám utáni „k.” nem; a kérdőjel utáni szám): 674 Strong, 9 664 sor; soronként `illeszkedik` 6 395, `horgonnyal` 202, `elakad` 606, `jelolo_nelkul` 2 461 (F107.34: 6 210 / 271 / 618 / 2 565). Strong-szinten a kapu szigorú illesztőjével (a kapu regexei, mint a kiinduló mérés) változatlanul `illeszkedik` 380, `tagolatlan` 94, `elakad` 200 (kiinduló: 355 / 89 / 230); horgonnyal kiegészítve `illeszkedik` 409, `horgonnyal` 85, `elakad` 98, `tagolatlan` 82 (F107.34: 385 / 105 / 101 / 83). A maradék `elakad` Strongok a #38 következő adagjában szakaszonként újrafordítandók (DT232 (c); lista: N-F107b, `naplok/F107_BDB_JELOLT_SZOVEG_naplo.md` 7.1); kézi illesztés nincs.

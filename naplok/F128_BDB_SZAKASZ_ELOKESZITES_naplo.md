@@ -211,10 +211,41 @@ A különbség oka nem a kapu, hanem a próba két mérhető tulajdonsága, ezé
 felváltott `teljes` sorra) sora, és egy bekezdés a szakaszonkénti sorokról (összefűző, olvasók, a 9 táblán kívüli, csoportok, kapuk).
 `F38_BDB_FORDITAS_BRIEF.md` „Lépések”: rövid hivatkozás a szakaszonkénti útra (a fejléchez nem nyúl).
 
-## Nyitott
+## Nyitott (F128.8 állapota; azóta eldöntve, l. lent)
 
 - **DT-F128f** (🟡): a H8415 `kezi` sora — újrafordul-e (a `szakasz_beir` ma megáll rajta, `--kezi-felulir` nélkül).
 - **DT-F128g** (🟡, ⛔): az olvasók átállítása az első `sz<n>` sor beírása előtt. Az `ir` mezőn kívül: `eszkozok/ellenoriz.py`
   13. szabály (CI E1: az `sz<n>` sorhoz ma „nincs hozzá forrásszöveg” = SÉRTÉS), `olvaso_szerver/lekerdezesek.py` `bdb_magyar` /
   `bdb_magyar_meta` (az utolsó nem üres sort veszi: az utolsó szakaszt mutatná), `bdb_adatblokk.py --karoli-epit` (a kész halmaz
   csak `teljes`), `bdb_jelolt/hu_illeszt.py` (az utolsó nem üres sor). A #38 első szakaszos beírása nélküle a CI-t megbuktatja.
+
+## Az olvasók átállítása (DT-F128g (a), DT-F128f (3); F128.9–.14)
+
+**Döntés (F128.9, `b34f835b`):** a felhasználó 2026-10-21-én (chat, az orkesztrátor-sessionben továbbítva): DT-F128g (a) — a brief
+`ir` mezője bővül a négy olvasóval és tesztjeikkel, az átállítás ebben a menetben, a közös `strong_magyar` összefűzővel; DT-F128f (3) —
+a H8415 szakaszonként újrafordul, de az új szakaszsorok csak a felhasználó jóváhagyása után kapnak `kezi`-t; addig a régi,
+jóváhagyott `kezi` sor az érvényes.
+
+| tétel | mi változott | teszt |
+|---|---|---|
+| F128.10 `6b8bbf78` | `szakasz_bemenet.py`: `strong_magyar_sorok` (a felhasznált sorokkal); a nem `elavult` `kezi` `teljes` sor elsőbbsége, amíg a szakaszsorok nem mind `kezi`-k (DT-F128f (3)); paraméterezhető táblaútvonal; a `forras_javit` / `nezet_general` importja lusta. `emeles.py szakasz_beir --kezi-marad` (a régi `kezi` sor bájtra érintetlen), a jóváhagyás `--allapot kezi --regi-elavult --kezi-felulir` | `teszt_szakasz_bemenet.py` 25, OK |
+| F128.11 `5aba229c` | `ellenoriz.py` 13. szabály (CI E1): az `sz<n>` sor forrásszövege az `adat_dir` szakasztáblájából (hivatkozás-javítással, pe/mem nélkül); új: a nem `elavult` szakaszsorok együtt a Strong összes szakaszát fedik | `teszt_ellenoriz_13.py` 25 (7 új), OK; `ellenoriz.py` a repón: SÉRTÉS 0 |
+| F128.12 `8a78bfea` | `olvaso_szerver/lekerdezesek.py` `bdb_magyar`, `bdb_magyar_meta`: a közös összefűzőn át (fájlútvonalról, `sys.path` nélkül); a meta a felhasznált sorok modelljei („ / ”) és legkésőbbi dátuma | `teszt_futtat.py --gyors` (WSL-natív `~/pardes/pardes.db`, épült 2026-10-14): a 3 új teszt zöld; l. lent |
+| F128.13 `1720b1d6` | `bdb_adatblokk.py` `kesz_bdb_strongok`: `teljes` vagy `sz<n>` sor | `teszt_bdb_adatblokk.py` 46 (1 új), OK |
+| F128.14 `61517df7` | `hu_illeszt.py` `forditasok()`: a közös összefűzőn át; szakaszonként fordított Strongnál a `forditas_forras_hash` a token nélküli forrásnézet SHA-1-e | `teszt_bont.py` 47 (2 új, zöld) |
+
+**Változatlanság a mai adaton:** a valós adatbázison (`~/pardes/pardes.db`) a régi (utolsó nem üres sor) és az új `bdb_magyar` /
+`bdb_magyar_meta` mind a 674 BDB-Strongon azonos (eltérés 0); a `hu_illeszt.py` által generált `bdb_szakasz_hu.tsv`-törzs bájtra
+azonos a táblával (új teszt); a `kesz_bdb_strongok` halmaza változatlan (nincs `sz` sor).
+
+`scope=olvaso_szerver bdb_magyar(_meta), 674 BDB-Strong | forras=bdb_magyar_regi_uj.py (eseti, a repón kívül; WSL venv, ~/pardes/pardes.db) @8a78bfea | ts=2026-10-21`
+
+**A tesztfuttatás mellékleletei (nem e menet okozta):**
+- `teszt_futtat.py --gyors`: zöld `teszt_arculat`, `teszt_bdb_vers_jelentes`, `teszt_indito`, `teszt_kereses`, `teszt_tervezo`;
+  HIBA `teszt_olvaso_szerver` (2: `TestD2PilotEgyezes` 1Móz 1:25 és Zsolt 22 — első eltérő kulcs `vers:macula`, `vers:tsk_darab`,
+  `gorog_szo:usz_elofordulas`; a BDB-magyar nem érintett, l. a fenti 674/674-et) és `teszt_pilot_aranymintaval` (Károli-könyvek
+  57 ≠ 61): az adatbázis (2026-10-14) és a pilot-aranyminta eltérése.
+- `teszt_bont.py`: a 3 `--ellenoriz`-teszt (bont, forras_javit, hu_illeszt) Windowson a CRLF-checkout miatt bukik (a generátorok
+  `\n`-nel írnak, a munkapéldány CRLF; a `bont.py` / `forras_javit.py` kódja és bemenete változatlan); a `bdb_szakasz_hu.tsv`
+  fejlécében rögzített `forditas_kapuk.py@91730dafdb40` és `bdb_szakaszok.tsv@495d1c81cfc0` már a 72eee13d-n sem egyezett a fájlok
+  LF-hash-ével (`bcb8369a851f`, `66bd24b9abb6`). A tábla nem regenerálódott (nincs az `ir`-ben, a törzse változatlan).
