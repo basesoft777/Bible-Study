@@ -1,0 +1,321 @@
+--- lexikon/ALVIL-001_TUDOMANYOS.md (élő)
++++ generalt_proba/F127_B4_kapcsolodo_proba/lexikon/ALVIL-001_TUDOMANYOS.md (próba)
+@@ -10,7 +10,7 @@
+ 
+ <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-10-20 -->
+ 
+-*Ez a blokk a lexikon-oldal 13 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
++*Ez a blokk a lexikon-oldal 14 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
+ 
+ - [Kivonat](#kivonat)
+ - [Jelmagyarázat és rövidítések](#jelmagyarázat-és-rövidítések)
+@@ -20,6 +20,7 @@
+ - [3. LXX-fordítói döntések](#3-lxx-fordítói-döntések)
+ - [4. Kereszthivatkozások](#4-kereszthivatkozások)
+ - [5. Kapcsolatok](#5-kapcsolatok)
++- [5/b. Kapcsolódó motívumok](#5b-kapcsolódó-motívumok)
+ - [6. Értelmezés](#6-értelmezés)
+ - [6/b. Alkalmazás és tanítói egyezés](#6b-alkalmazás-és-tanítói-egyezés)
+ - [7. Módszertan és nyitott kérdések](#7-módszertan-és-nyitott-kérdések)
+@@ -1051,6 +1052,23 @@
+ 
+ A motívumhoz nincs rögzített kapcsolat.
+ 
++## 5/b. Kapcsolódó motívumok
++
++<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-10-20 -->
++
++*Ez a blokk a `[ID: ALVIL-001]` motívum motívumközi kapcsolatait adja a `motivum_kapcsolatok.tsv`-ből (minden sor mögött beépített motívumközi jelölt áll, DT-F127b); a sor mindkét érintett motívum lapján megjelenik.*
++
++| Kapcsolódó motívum | Itt | Ott | Típus | Funkció | Bizonyosság | PaRDeS-szint | Indoklás |
++|---|---|---|---|---|---|---|---|
++| [ISTENTISZT-001](ISTENTISZT-001_TUDOMANYOS.md) | ApCsel 2:27 | ApCsel 2:21 | szomszédos | a hívás ígéretének (2:21) alapja, hogy a Messiás nem marad a Seólban | közepes | Remez | Mért: azonos fejezet (ApCsel 2), 6 vers távolság; mindkét vers előfordulás a saját motívumában. A közös fejezet önmagában nem bizonyít szándékos utalást. Döntés: DT-F127e (felhasználó, 2026-10-20). |
++| [ISTENTISZT-001](ISTENTISZT-001_TUDOMANYOS.md) | ApCsel 2:31 | ApCsel 2:21 | szomszédos | a hívás ígéretének (2:21) alapja, hogy a Messiás nem marad a Seólban | közepes | Remez | Mért: azonos fejezet (ApCsel 2), 10 vers távolság; mindkét vers előfordulás a saját motívumában. A közös fejezet önmagában nem bizonyít szándékos utalást. Döntés: DT-F127e (felhasználó, 2026-10-20). |
++
++*Döntésre váró motívumközi jelölt (`jeloltek.tsv`, `nyitva`): 1 — ISTENTISZT-001: 1.*
++
++*Proveniencia: `scope=id:ALVIL-001 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-10-20`*
++
++<!-- GENERÁLT-VÉGE: lexikon#ALVIL-001#kapcsolodo -->
++
+ ## 6. Értelmezés *(kézi)*
+ 
+ **Peshat.** A hádész-vonal az egyéni halottak helye, ahonnan Krisztus feltámadása kiemeli Őt (ApCsel 2:27, 31, Zsolt 16:10 idézésével), és amelynek kulcsait Ő birtokolja (Jel 1:18), majd amelyet a végén magát a halált is a tűz tavába vetik (Jel 20:13-14). A gazdag ember és Lázár példázatában (Luk 16:23) a hádész a halál utáni, tudatos szenvedés helyeként jelenik meg. A Jelenések könyvében a Halál és a Hádész személyesített párosként lép fel (6:8), amely a végső ítéletben magával a hádésszel együtt semmisül meg (20:13-14).
+--- lexikon/ANTROP-001_TUDOMANYOS.md (élő)
++++ generalt_proba/F127_B4_kapcsolodo_proba/lexikon/ANTROP-001_TUDOMANYOS.md (próba)
+@@ -10,7 +10,7 @@
+ 
+ <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-10-20 -->
+ 
+-*Ez a blokk a lexikon-oldal 13 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
++*Ez a blokk a lexikon-oldal 14 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
+ 
+ - [Kivonat](#kivonat)
+ - [Jelmagyarázat és rövidítések](#jelmagyarázat-és-rövidítések)
+@@ -20,6 +20,7 @@
+ - [3. LXX-fordítói döntések](#3-lxx-fordítói-döntések)
+ - [4. Kereszthivatkozások](#4-kereszthivatkozások)
+ - [5. Kapcsolatok](#5-kapcsolatok)
++- [5/b. Kapcsolódó motívumok](#5b-kapcsolódó-motívumok)
+ - [6. Értelmezés](#6-értelmezés)
+ - [6/b. Alkalmazás és tanítói egyezés](#6b-alkalmazás-és-tanítói-egyezés)
+ - [7. Módszertan és nyitott kérdések](#7-módszertan-és-nyitott-kérdések)
+@@ -367,6 +368,18 @@
+ 
+ A motívumhoz nincs rögzített kapcsolat.
+ 
++## 5/b. Kapcsolódó motívumok
++
++<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-10-20 -->
++
++*Ez a blokk a `[ID: ANTROP-001]` motívum motívumközi kapcsolatait adja a `motivum_kapcsolatok.tsv`-ből (minden sor mögött beépített motívumközi jelölt áll, DT-F127b); a sor mindkét érintett motívum lapján megjelenik.*
++
++A motívumhoz nincs rögzített motívumközi kapcsolat a `motivum_kapcsolatok.tsv`-ben.
++
++*Proveniencia: `scope=id:ANTROP-001 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-10-20`*
++
++<!-- GENERÁLT-VÉGE: lexikon#ANTROP-001#kapcsolodo -->
++
+ ## 6. Értelmezés *(kézi)*
+ 
+ **Peshat** *(részletesen kifejtve)* — A Szentírás legalább négy helyen, egymástól függetlenül, egyértelmű grammatikai különállásban nevezi meg a *pneumát* és a *pszükhét* (nominális alakban): Pál 1Thessz 5:23-ban három külön, egyenként névelővel ellátott főnévként sorolja fel őket egy imában; a Zsidókhoz írt levél szerzője pedig kifejezetten azt állítja, hogy Isten Igéje képes ezeket "szétválasztani" — ami logikailag feltételezi, hogy a hallgató számára ez a kettő a hétköznapi tapasztalatban összemosódik, és csak Isten Igéje tudja élesen elkülöníteni őket; Mária éneke (Luk 1:46-47) pedig tudatos költői párhuzamban, ugyanabban a grammatikai szerepben állítja egymás mellé a kettőt — nem szinonimaként, hanem megkülönböztetve a magasztaló "lelket" és az örvendező "szellemet". Egy ötödik helyen, 1Kor 2:14-15-ben Pál a *pszükhé*/*pneuma* szavak melléknévi alakjaiból épít fel egy embertípus-megkülönböztetést: a "természet szerinti ember" (ψυχικός) nem fogadja be Isten Szellemének dolgait, míg a "szellemi ember" (πνευματικός) mindent képes megítélni/megvizsgálni — ez a felosztás a korábbi rétegtől eltérően nem az egyén belső szerkezetéről, hanem az Isten Szelleme felé való nyitottság/befogadóképesség szerinti emberi kategorizálásról szól. 1Móz 2:7 ehhez képest más nyelvi regiszterben mozog: nem "szellemet" és "lelket" különít el egymástól, hanem azt írja le, hogy Isten lehelete (amely a későbbi *pneuma* fogalom ószövetségi előzménye) és a porból formált test találkozásából lesz az ember "élő lélekké" (*nefes chajjá*) — tehát itt a "lélek" az egész, eleven emberi személyt jelöli, nem egy harmadik, elkülönült alkotóelemet.
+--- lexikon/HAMART-001_TUDOMANYOS.md (élő)
++++ generalt_proba/F127_B4_kapcsolodo_proba/lexikon/HAMART-001_TUDOMANYOS.md (próba)
+@@ -10,7 +10,7 @@
+ 
+ <!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-10-20 -->
+ 
+-*Ez a blokk a lexikon-oldal 13 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
++*Ez a blokk a lexikon-oldal 14 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
+ 
+ - [Kivonat](#kivonat)
+ - [Jelmagyarázat és rövidítések](#jelmagyarázat-és-rövidítések)
+@@ -20,6 +20,7 @@
+ - [3. LXX-fordítói döntések](#3-lxx-fordítói-döntések)
+ - [4. Kereszthivatkozások](#4-kereszthivatkozások)
+ - [5. Kapcsolatok](#5-kapcsolatok)
++- [5/b. Kapcsolódó motívumok](#5b-kapcsolódó-motívumok)
+ - [6. Értelmezés](#6-értelmezés)
+ - [6/b. Alkalmazás és tanítói egyezés](#6b-alkalmazás-és-tanítói-egyezés)
+ - [7. Módszertan és nyitott kérdések](#7-módszertan-és-nyitott-kérdések)
+@@ -1082,6 +1083,22 @@
+ 
+ A motívumhoz nincs rögzített kapcsolat.
+ 
++## 5/b. Kapcsolódó motívumok
++
++<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-10-20 -->
++
++*Ez a blokk a `[ID: HAMART-001]` motívum motívumközi kapcsolatait adja a `motivum_kapcsolatok.tsv`-ből (minden sor mögött beépített motívumközi jelölt áll, DT-F127b); a sor mindkét érintett motívum lapján megjelenik.*
++
++| Kapcsolódó motívum | Itt | Ott | Típus | Funkció | Bizonyosság | PaRDeS-szint | Indoklás |
++|---|---|---|---|---|---|---|---|
++| [ISTENTISZT-001](ISTENTISZT-001_TUDOMANYOS.md) | 1Móz 12:3 | 1Móz 12:8 | szomszédos | a megfordított lánc után az első oltár és hívás | közepes | Remez | Mért: azonos fejezet (1Móz 12), 5 vers távolság; mindkét vers előfordulás a saját motívumában. A közös fejezet önmagában nem bizonyít szándékos utalást. Döntés: DT-F127e (felhasználó, 2026-10-20). |
++
++*Döntésre váró motívumközi jelölt (`jeloltek.tsv`, `nyitva`): 1 — ISTENTISZT-001: 1.*
++
++*Proveniencia: `scope=id:HAMART-001 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-10-20`*
++
++<!-- GENERÁLT-VÉGE: lexikon#HAMART-001#kapcsolodo -->
++
+ ## 6. Értelmezés *(kézi)*
+ 
+ ### Peshat
+--- lexikon/HODIT-001_TUDOMANYOS.md (élő)
++++ generalt_proba/F127_B4_kapcsolodo_proba/lexikon/HODIT-001_TUDOMANYOS.md (próba)
+@@ -10,7 +10,7 @@
+ 
+ <!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-10-20 -->
+ 
+-*Ez a blokk a lexikon-oldal 13 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
++*Ez a blokk a lexikon-oldal 14 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
+ 
+ - [Kivonat](#kivonat)
+ - [Jelmagyarázat és rövidítések](#jelmagyarázat-és-rövidítések)
+@@ -20,6 +20,7 @@
+ - [3. LXX-fordítói döntések](#3-lxx-fordítói-döntések)
+ - [4. Kereszthivatkozások](#4-kereszthivatkozások)
+ - [5. Kapcsolatok](#5-kapcsolatok)
++- [5/b. Kapcsolódó motívumok](#5b-kapcsolódó-motívumok)
+ - [6. Értelmezés](#6-értelmezés)
+ - [6/b. Alkalmazás és tanítói egyezés](#6b-alkalmazás-és-tanítói-egyezés)
+ - [7. Módszertan és nyitott kérdések](#7-módszertan-és-nyitott-kérdések)
+@@ -534,6 +535,18 @@
+ 
+ A motívumhoz nincs rögzített kapcsolat.
+ 
++## 5/b. Kapcsolódó motívumok
++
++<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-10-20 -->
++
++*Ez a blokk a `[ID: HODIT-001]` motívum motívumközi kapcsolatait adja a `motivum_kapcsolatok.tsv`-ből (minden sor mögött beépített motívumközi jelölt áll, DT-F127b); a sor mindkét érintett motívum lapján megjelenik.*
++
++A motívumhoz nincs rögzített motívumközi kapcsolat a `motivum_kapcsolatok.tsv`-ben.
++
++*Proveniencia: `scope=id:HODIT-001 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-10-20`*
++
++<!-- GENERÁLT-VÉGE: lexikon#HODIT-001#kapcsolodo -->
++
+ ## 6. Értelmezés *(kézi)*
+ 
+ ### Peshat
+--- lexikon/ISTENTISZT-001_TUDOMANYOS.md (élő)
++++ generalt_proba/F127_B4_kapcsolodo_proba/lexikon/ISTENTISZT-001_TUDOMANYOS.md (próba)
+@@ -10,7 +10,7 @@
+ 
+ <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-10-20 -->
+ 
+-*Ez a blokk a lexikon-oldal 13 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
++*Ez a blokk a lexikon-oldal 14 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
+ 
+ - [Kivonat](#kivonat)
+ - [Jelmagyarázat és rövidítések](#jelmagyarázat-és-rövidítések)
+@@ -20,6 +20,7 @@
+ - [3. LXX-fordítói döntések](#3-lxx-fordítói-döntések)
+ - [4. Kereszthivatkozások](#4-kereszthivatkozások)
+ - [5. Kapcsolatok](#5-kapcsolatok)
++- [5/b. Kapcsolódó motívumok](#5b-kapcsolódó-motívumok)
+ - [6. Értelmezés](#6-értelmezés)
+ - [6/b. Alkalmazás és tanítói egyezés](#6b-alkalmazás-és-tanítói-egyezés)
+ - [7. Módszertan és nyitott kérdések](#7-módszertan-és-nyitott-kérdések)
+@@ -1695,6 +1696,24 @@
+ 
+ *Proveniencia: `scope=id:ISTENTISZT-001 | forras=adat/kapcsolatok.tsv | ts=2026-10-20`*
+ 
++## 5/b. Kapcsolódó motívumok
++
++<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-10-20 -->
++
++*Ez a blokk a `[ID: ISTENTISZT-001]` motívum motívumközi kapcsolatait adja a `motivum_kapcsolatok.tsv`-ből (minden sor mögött beépített motívumközi jelölt áll, DT-F127b); a sor mindkét érintett motívum lapján megjelenik.*
++
++| Kapcsolódó motívum | Itt | Ott | Típus | Funkció | Bizonyosság | PaRDeS-szint | Indoklás |
++|---|---|---|---|---|---|---|---|
++| [ALVIL-001](ALVIL-001_TUDOMANYOS.md) | ApCsel 2:21 | ApCsel 2:27 | szomszédos | a hívás ígéretének (2:21) alapja, hogy a Messiás nem marad a Seólban | közepes | Remez | Mért: azonos fejezet (ApCsel 2), 6 vers távolság; mindkét vers előfordulás a saját motívumában. A közös fejezet önmagában nem bizonyít szándékos utalást. Döntés: DT-F127e (felhasználó, 2026-10-20). |
++| [ALVIL-001](ALVIL-001_TUDOMANYOS.md) | ApCsel 2:21 | ApCsel 2:31 | szomszédos | a hívás ígéretének (2:21) alapja, hogy a Messiás nem marad a Seólban | közepes | Remez | Mért: azonos fejezet (ApCsel 2), 10 vers távolság; mindkét vers előfordulás a saját motívumában. A közös fejezet önmagában nem bizonyít szándékos utalást. Döntés: DT-F127e (felhasználó, 2026-10-20). |
++| [HAMART-001](HAMART-001_TUDOMANYOS.md) | 1Móz 12:8 | 1Móz 12:3 | szomszédos | a megfordított lánc után az első oltár és hívás | közepes | Remez | Mért: azonos fejezet (1Móz 12), 5 vers távolság; mindkét vers előfordulás a saját motívumában. A közös fejezet önmagában nem bizonyít szándékos utalást. Döntés: DT-F127e (felhasználó, 2026-10-20). |
++
++*Döntésre váró motívumközi jelölt (`jeloltek.tsv`, `nyitva`): 5 — ALVIL-001: 1, HAMART-001: 1, TEREMT-001: 3.*
++
++*Proveniencia: `scope=id:ISTENTISZT-001 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-10-20`*
++
++<!-- GENERÁLT-VÉGE: lexikon#ISTENTISZT-001#kapcsolodo -->
++
+ ## 6. Értelmezés *(kézi)*
+ 
+ ### PaRDeS keretrendszer
+--- lexikon/KIRALY-001_TUDOMANYOS.md (élő)
++++ generalt_proba/F127_B4_kapcsolodo_proba/lexikon/KIRALY-001_TUDOMANYOS.md (próba)
+@@ -10,7 +10,7 @@
+ 
+ <!-- GENERÁLT-KEZDET: general.py --cel lexikon#KIRALY-001#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-10-20 -->
+ 
+-*Ez a blokk a lexikon-oldal 13 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
++*Ez a blokk a lexikon-oldal 14 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
+ 
+ - [Kivonat](#kivonat)
+ - [Jelmagyarázat és rövidítések](#jelmagyarázat-és-rövidítések)
+@@ -20,6 +20,7 @@
+ - [3. LXX-fordítói döntések](#3-lxx-fordítói-döntések)
+ - [4. Kereszthivatkozások](#4-kereszthivatkozások)
+ - [5. Kapcsolatok](#5-kapcsolatok)
++- [5/b. Kapcsolódó motívumok](#5b-kapcsolódó-motívumok)
+ - [6. Értelmezés](#6-értelmezés)
+ - [6/b. Alkalmazás és tanítói egyezés](#6b-alkalmazás-és-tanítói-egyezés)
+ - [7. Módszertan és nyitott kérdések](#7-módszertan-és-nyitott-kérdések)
+@@ -451,6 +452,18 @@
+ 
+ Az egyes kapcsolatok indoklása a fenti táblázat Funkció oszlopában áll; külön alátámasztás a tematikus tanulmányban nem készült.
+ 
++## 5/b. Kapcsolódó motívumok
++
++<!-- GENERÁLT-KEZDET: general.py --cel lexikon#KIRALY-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-10-20 -->
++
++*Ez a blokk a `[ID: KIRALY-001]` motívum motívumközi kapcsolatait adja a `motivum_kapcsolatok.tsv`-ből (minden sor mögött beépített motívumközi jelölt áll, DT-F127b); a sor mindkét érintett motívum lapján megjelenik.*
++
++A motívumhoz nincs rögzített motívumközi kapcsolat a `motivum_kapcsolatok.tsv`-ben.
++
++*Proveniencia: `scope=id:KIRALY-001 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-10-20`*
++
++<!-- GENERÁLT-VÉGE: lexikon#KIRALY-001#kapcsolodo -->
++
+ ## 6. Értelmezés *(kézi)*
+ 
+ **Peshat:** öt szöveg együttesen egy szokatlan, ismétlődő alakzatot rajzol ki. Egy Ábrahám-kori kánaáni király, aki egyúttal "a Felséges Isten papja" — olyan kombináció, amely a későbbi izraeli rendszerben (király és pap szigorúan elkülönített tisztsége) tiltott lett volna. Melkizedek kenyeret és bort hoz — nem áldozati állatot —, megáldja Ábrámot, és Ábrám önként tizedet ad neki. A Genezis-szöveg semmi mást nem közöl róla: nincs genealógiája, nincs halál-formulája, nem tér vissza többé. Városa, Sálem, azonos a későbbi Jeruzsálem/Sionnal — ezt Zsolt 76:3 ugyanazzal a szóval (H8004) erősíti meg, mint egy, a Genezistől független ószövetségi hang. Alig néhány fejezettel/évszázaddal később, a Sínai-hegynél, Isten **ugyanezt a kombinációt egy egész népre** ruházza: "lesztek nékem papok királysága" (2Móz 19:6) — még mielőtt a lévita papság a maga szigorú, elkülönített intézményeként megszerveződne. Zsolt 110:4 ezt az alakot próféciai mintaként emeli fel egy jövőbeli, immár egyénre (a dávidi királyra) szűkített királyi-papi tisztség számára; Zakariás egy generációval a fogság után explicit próféciai képet fest: "pap lesz az ő királyi székén" (Zak 6:13) — a kombináció ezúttal egyetlen jövőbeli alakra összpontosítva, trónon ülő papként. Zsid 5-7 pedig szisztematikusan kifejti, hogy ez a rend miért és hogyan alkalmazható Krisztusra.
+--- lexikon/MENNY-001_TUDOMANYOS.md (élő)
++++ generalt_proba/F127_B4_kapcsolodo_proba/lexikon/MENNY-001_TUDOMANYOS.md (próba)
+@@ -10,7 +10,7 @@
+ 
+ <!-- GENERÁLT-KEZDET: general.py --cel lexikon#MENNY-001#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-10-20 -->
+ 
+-*Ez a blokk a lexikon-oldal 13 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
++*Ez a blokk a lexikon-oldal 14 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
+ 
+ - [Kivonat](#kivonat)
+ - [Jelmagyarázat és rövidítések](#jelmagyarázat-és-rövidítések)
+@@ -20,6 +20,7 @@
+ - [3. LXX-fordítói döntések](#3-lxx-fordítói-döntések)
+ - [4. Kereszthivatkozások](#4-kereszthivatkozások)
+ - [5. Kapcsolatok](#5-kapcsolatok)
++- [5/b. Kapcsolódó motívumok](#5b-kapcsolódó-motívumok)
+ - [6. Értelmezés](#6-értelmezés)
+ - [6/b. Alkalmazás és tanítói egyezés](#6b-alkalmazás-és-tanítói-egyezés)
+ - [7. Módszertan és nyitott kérdések](#7-módszertan-és-nyitott-kérdések)
+@@ -287,6 +288,18 @@
+ 
+ A motívumhoz nincs rögzített kapcsolat.
+ 
++## 5/b. Kapcsolódó motívumok
++
++<!-- GENERÁLT-KEZDET: general.py --cel lexikon#MENNY-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-10-20 -->
++
++*Ez a blokk a `[ID: MENNY-001]` motívum motívumközi kapcsolatait adja a `motivum_kapcsolatok.tsv`-ből (minden sor mögött beépített motívumközi jelölt áll, DT-F127b); a sor mindkét érintett motívum lapján megjelenik.*
++
++A motívumhoz nincs rögzített motívumközi kapcsolat a `motivum_kapcsolatok.tsv`-ben.
++
++*Proveniencia: `scope=id:MENNY-001 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-10-20`*
++
++<!-- GENERÁLT-VÉGE: lexikon#MENNY-001#kapcsolodo -->
++
+ ## 6. Értelmezés *(kézi)*
+ 
+ **Peshat:**
+--- lexikon/TEREMT-001_TUDOMANYOS.md (élő)
++++ generalt_proba/F127_B4_kapcsolodo_proba/lexikon/TEREMT-001_TUDOMANYOS.md (próba)
+@@ -10,7 +10,7 @@
+ 
+ <!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-10-20 -->
+ 
+-*Ez a blokk a lexikon-oldal 13 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
++*Ez a blokk a lexikon-oldal 14 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
+ 
+ - [Kivonat](#kivonat)
+ - [Jelmagyarázat és rövidítések](#jelmagyarázat-és-rövidítések)
+@@ -20,6 +20,7 @@
+ - [3. LXX-fordítói döntések](#3-lxx-fordítói-döntések)
+ - [4. Kereszthivatkozások](#4-kereszthivatkozások)
+ - [5. Kapcsolatok](#5-kapcsolatok)
++- [5/b. Kapcsolódó motívumok](#5b-kapcsolódó-motívumok)
+ - [6. Értelmezés](#6-értelmezés)
+ - [6/b. Alkalmazás és tanítói egyezés](#6b-alkalmazás-és-tanítói-egyezés)
+ - [7. Módszertan és nyitott kérdések](#7-módszertan-és-nyitott-kérdések)
+@@ -651,6 +652,20 @@
+ 
+ A motívumhoz nincs rögzített kapcsolat.
+ 
++## 5/b. Kapcsolódó motívumok
++
++<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-10-20 -->
++
++*Ez a blokk a `[ID: TEREMT-001]` motívum motívumközi kapcsolatait adja a `motivum_kapcsolatok.tsv`-ből (minden sor mögött beépített motívumközi jelölt áll, DT-F127b); a sor mindkét érintett motívum lapján megjelenik.*
++
++A motívumhoz nincs rögzített motívumközi kapcsolat a `motivum_kapcsolatok.tsv`-ben.
++
++*Döntésre váró motívumközi jelölt (`jeloltek.tsv`, `nyitva`): 3 — ISTENTISZT-001: 3.*
++
++*Proveniencia: `scope=id:TEREMT-001 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-10-20`*
++
++<!-- GENERÁLT-VÉGE: lexikon#TEREMT-001#kapcsolodo -->
++
+ ## 6. Értelmezés *(kézi)*
+ 
+ **Peshat** *(részletesen kifejtve)*

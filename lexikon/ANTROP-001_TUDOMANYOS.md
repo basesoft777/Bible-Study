@@ -8,9 +8,9 @@ A motívum lexikai azonosságú: a görög πνεῦμα (*pneuma*, "szellem") �
 
 ## Tartalomjegyzék
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#tartalom | forrás:  | licenc: projekt-adat | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-10-20 -->
 
-*Ez a blokk a lexikon-oldal 12 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
+*Ez a blokk a lexikon-oldal 14 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
 
 - [Kivonat](#kivonat)
 - [Jelmagyarázat és rövidítések](#jelmagyarázat-és-rövidítések)
@@ -20,7 +20,9 @@ A motívum lexikai azonosságú: a görög πνεῦμα (*pneuma*, "szellem") �
 - [3. LXX-fordítói döntések](#3-lxx-fordítói-döntések)
 - [4. Kereszthivatkozások](#4-kereszthivatkozások)
 - [5. Kapcsolatok](#5-kapcsolatok)
+- [5/b. Kapcsolódó motívumok](#5b-kapcsolódó-motívumok)
 - [6. Értelmezés](#6-értelmezés)
+- [6/b. Alkalmazás és tanítói egyezés](#6b-alkalmazás-és-tanítói-egyezés)
 - [7. Módszertan és nyitott kérdések](#7-módszertan-és-nyitott-kérdések)
 - [8. Irodalom és idézés](#8-irodalom-és-idézés)
 - [Kolofon](#kolofon)
@@ -366,6 +368,18 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 
 A motívumhoz nincs rögzített kapcsolat.
 
+## 5/b. Kapcsolódó motívumok
+
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-10-20 -->
+
+*Ez a blokk a `[ID: ANTROP-001]` motívum motívumközi kapcsolatait adja a `motivum_kapcsolatok.tsv`-ből (minden sor mögött beépített motívumközi jelölt áll, DT-F127b); a sor mindkét érintett motívum lapján megjelenik.*
+
+A motívumhoz nincs rögzített motívumközi kapcsolat a `motivum_kapcsolatok.tsv`-ben.
+
+*Proveniencia: `scope=id:ANTROP-001 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-10-20`*
+
+<!-- GENERÁLT-VÉGE: lexikon#ANTROP-001#kapcsolodo -->
+
 ## 6. Értelmezés *(kézi)*
 
 **Peshat** *(részletesen kifejtve)* — A Szentírás legalább négy helyen, egymástól függetlenül, egyértelmű grammatikai különállásban nevezi meg a *pneumát* és a *pszükhét* (nominális alakban): Pál 1Thessz 5:23-ban három külön, egyenként névelővel ellátott főnévként sorolja fel őket egy imában; a Zsidókhoz írt levél szerzője pedig kifejezetten azt állítja, hogy Isten Igéje képes ezeket "szétválasztani" — ami logikailag feltételezi, hogy a hallgató számára ez a kettő a hétköznapi tapasztalatban összemosódik, és csak Isten Igéje tudja élesen elkülöníteni őket; Mária éneke (Luk 1:46-47) pedig tudatos költői párhuzamban, ugyanabban a grammatikai szerepben állítja egymás mellé a kettőt — nem szinonimaként, hanem megkülönböztetve a magasztaló "lelket" és az örvendező "szellemet". Egy ötödik helyen, 1Kor 2:14-15-ben Pál a *pszükhé*/*pneuma* szavak melléknévi alakjaiból épít fel egy embertípus-megkülönböztetést: a "természet szerinti ember" (ψυχικός) nem fogadja be Isten Szellemének dolgait, míg a "szellemi ember" (πνευματικός) mindent képes megítélni/megvizsgálni — ez a felosztás a korábbi rétegtől eltérően nem az egyén belső szerkezetéről, hanem az Isten Szelleme felé való nyitottság/befogadóképesség szerinti emberi kategorizálásról szól. 1Móz 2:7 ehhez képest más nyelvi regiszterben mozog: nem "szellemet" és "lelket" különít el egymástól, hanem azt írja le, hogy Isten lehelete (amely a későbbi *pneuma* fogalom ószövetségi előzménye) és a porból formált test találkozásából lesz az ember "élő lélekké" (*nefes chajjá*) — tehát itt a "lélek" az egész, eleven emberi személyt jelöli, nem egy harmadik, elkülönült alkotóelemet.
@@ -379,6 +393,16 @@ A motívumhoz nincs rögzített kapcsolat.
 ⚠️ **Vitatott pont: trichotomizmus vs. dichotomizmus**
 - **Trichotomista hang:** Franz Delitzsch (19. századi luteránus ószövetség-kutató, *A System of Biblical Psychology*) és a modern karizmatikus vonalban **Watchman Nee** (*The Spiritual Man*) amellett érvelnek, hogy a *pneuma* és *pszükhé* valódi, ontológiailag is elkülönülő alkotóelemei az embernek, nem csupán funkcionális/retorikai megkülönböztetés.
 - **Dichotomista hang:** F.F. Bruce (evangéliumi újszövetség-kutató, *Hebrews*, NICNT-kommentár) a Zsid 4:12 "szétválasztás" kifejezését elsősorban retorikai, nem metafizikai megkülönböztetésként olvassa — szerinte a szöveg az Ige átható erejét szemlélteti, nem az emberi alkotóelemek szétbogozását célozza. Az 1Kor 2:14-15 melléknévi (ψυχικός/πνευματικός) szóhasználata mindkét olvasat számára hivatkozási alap lehet — a trichotomisták az itt leírt "szellemi ember" meglétét önálló, aktiválható alkotóelemként értik, míg a dichotomisták/funkcionalisták inkább a Szellem jelenlétével/hiányával jellemzett két emberi állapotként.
+
+## 6/b. Alkalmazás és tanítói egyezés *(kézi)*
+
+### Alkalmazás és tanítványság *(kézi)*
+
+Az alkalmazási rész a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
+
+### Tanítói egyezés *(kézi)*
+
+A tanítói egyezés a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
 
 ## 7. Módszertan és nyitott kérdések *(kézi)*
 

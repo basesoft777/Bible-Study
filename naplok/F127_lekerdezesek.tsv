@@ -1,0 +1,21 @@
+# Lekerdezes-naplo (lekerdez.py --naplo). Kulcs nincs. Sema: adat/SEMA.md 2.9
+id	lepes	proveniencia	datum
+F127	adhoc	scope=range:Zsolt 116:4 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=0 | ts=2026-10-20T18:55Z | csatorna=cli	2026.10.20
+F127	adhoc	scope=range:Zsolt 116:3 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=2 | ts=2026-10-20T18:55Z | csatorna=cli	2026.10.20
+F127	adhoc	scope=range:ApCsel 2:21 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-10-20T18:55Z | csatorna=cli	2026.10.20
+F127	adhoc	scope=range:ApCsel 2:27 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=3 | ts=2026-10-20T18:55Z | csatorna=cli	2026.10.20
+F127	adhoc	scope=range:ApCsel 2:31 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-10-20T18:55Z | csatorna=cli	2026.10.20
+F127	adhoc	scope=range:1Móz 4:26 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=0 | ts=2026-10-20T18:55Z | csatorna=cli	2026.10.20
+F127	adhoc	scope=range:1Móz 4:2 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=0 | ts=2026-10-20T18:55Z | csatorna=cli	2026.10.20
+F127	adhoc	scope=range:1Móz 4:3 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=0 | ts=2026-10-20T18:55Z | csatorna=cli	2026.10.20
+F127	adhoc	scope=range:1Móz 4:7 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=0 | ts=2026-10-20T18:55Z | csatorna=cli	2026.10.20
+F127	adhoc	scope=range:1Móz 4:10 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-10-20T18:55Z | csatorna=cli	2026.10.20
+F127	adhoc	scope=range:1Móz 4:11 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=0 | ts=2026-10-20T18:55Z | csatorna=cli	2026.10.20
+F127	adhoc	scope=range:1Móz 4:12 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=0 | ts=2026-10-20T18:55Z | csatorna=cli	2026.10.20
+F127	adhoc	scope=range:1Móz 4:14 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=0 | ts=2026-10-20T18:55Z | csatorna=cli	2026.10.20
+F127	adhoc	scope=range:1Móz 12:8 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=0 | ts=2026-10-20T18:55Z | csatorna=cli	2026.10.20
+F127	adhoc	scope=range:1Móz 12:3 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=4 | ts=2026-10-20T18:55Z | csatorna=cli	2026.10.20
+F127	adhoc	scope=range:Róm 10:12 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-10-20T18:55Z | csatorna=cli	2026.10.20
+F127	adhoc	scope=range:Róm 10:7 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-10-20T18:55Z | csatorna=cli	2026.10.20
+F127	adhoc	scope=range:Róm 10:13 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=2 | ts=2026-10-20T18:55Z | csatorna=cli	2026.10.20
+F127	adhoc	scope=range:Róm 10:14 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-10-20T18:55Z | csatorna=cli	2026.10.20

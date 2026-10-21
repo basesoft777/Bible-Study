@@ -8,9 +8,9 @@ A motívum strukturális azonosságú: a genezisi átok-lánc (*arar → adamá 
 
 ## Tartalomjegyzék
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#tartalom | forrás:  | licenc: projekt-adat | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-10-20 -->
 
-*Ez a blokk a lexikon-oldal 12 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
+*Ez a blokk a lexikon-oldal 14 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
 
 - [Kivonat](#kivonat)
 - [Jelmagyarázat és rövidítések](#jelmagyarázat-és-rövidítések)
@@ -20,7 +20,9 @@ A motívum strukturális azonosságú: a genezisi átok-lánc (*arar → adamá 
 - [3. LXX-fordítói döntések](#3-lxx-fordítói-döntések)
 - [4. Kereszthivatkozások](#4-kereszthivatkozások)
 - [5. Kapcsolatok](#5-kapcsolatok)
+- [5/b. Kapcsolódó motívumok](#5b-kapcsolódó-motívumok)
 - [6. Értelmezés](#6-értelmezés)
+- [6/b. Alkalmazás és tanítói egyezés](#6b-alkalmazás-és-tanítói-egyezés)
 - [7. Módszertan és nyitott kérdések](#7-módszertan-és-nyitott-kérdések)
 - [8. Irodalom és idézés](#8-irodalom-és-idézés)
 - [Kolofon](#kolofon)
@@ -1081,6 +1083,22 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 
 A motívumhoz nincs rögzített kapcsolat.
 
+## 5/b. Kapcsolódó motívumok
+
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-10-20 -->
+
+*Ez a blokk a `[ID: HAMART-001]` motívum motívumközi kapcsolatait adja a `motivum_kapcsolatok.tsv`-ből (minden sor mögött beépített motívumközi jelölt áll, DT-F127b); a sor mindkét érintett motívum lapján megjelenik.*
+
+| Kapcsolódó motívum | Itt | Ott | Típus | Funkció | Bizonyosság | PaRDeS-szint | Indoklás |
+|---|---|---|---|---|---|---|---|
+| [ISTENTISZT-001](ISTENTISZT-001_TUDOMANYOS.md) | 1Móz 12:3 | 1Móz 12:8 | szomszédos | a megfordított lánc után az első oltár és hívás | közepes | Remez | Mért: azonos fejezet (1Móz 12), 5 vers távolság; mindkét vers előfordulás a saját motívumában. A közös fejezet önmagában nem bizonyít szándékos utalást. Döntés: DT-F127e (felhasználó, 2026-10-20). |
+
+*Döntésre váró motívumközi jelölt (`jeloltek.tsv`, `nyitva`): 1 — ISTENTISZT-001: 1.*
+
+*Proveniencia: `scope=id:HAMART-001 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-10-20`*
+
+<!-- GENERÁLT-VÉGE: lexikon#HAMART-001#kapcsolodo -->
+
 ## 6. Értelmezés *(kézi)*
 
 ### Peshat
@@ -1128,6 +1146,16 @@ Az átok a szövegekben mindvégig **kimondott szó** marad (*árúr*, kijelent�
 **Az "eredendő bűn" fogalom alkalmazhatósága.** Az, hogy a következmények gyűrűznek, nem azonos azzal az állítással, hogy a bűnösség öröklődik. A szövegek az előbbit mondják ki explicit módon; az utóbbi teológiai következtetés, amelyet a Róm 5:12-21 érvelése alapoz meg. A napló ezt külön motívumként tartja nyilván ("Ádám–Krisztus tipológia", ⚠️ jelöléssel, a Róm 5:12 ἐφ' ᾧ (*ef hó*) fordítási vitájával együtt) — a jelen tanulmány nem dönti el a kérdést.
 
 **A 1Móz 8:21 hatóköre.** Hogy az ígéret a 3:17 átkának teljes visszavonását jelenti-e, vagy csak egy megismételt, özönvíz-szerű csapás kizárását, a lexikai adat alapján nem dönthető el egyértelműen: a vers más igét (*kalal*) tagad, mint amelyet a 3:17 használ (*arar*), ami a szűkebb olvasat felé mutat; ugyanakkor a két ige a Genezisen belül másutt (12:3) egymás mellett is áll.
+
+## 6/b. Alkalmazás és tanítói egyezés *(kézi)*
+
+### Alkalmazás és tanítványság *(kézi)*
+
+Az alkalmazási rész a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
+
+### Tanítói egyezés *(kézi)*
+
+A tanítói egyezés a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
 
 ## 7. Módszertan és nyitott kérdések *(kézi)*
 

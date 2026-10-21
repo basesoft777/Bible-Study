@@ -1,0 +1,14 @@
+# F127 B2: a pilot motívumközi jelöltjeinek mért szomszédsága (naplok/F127_B2_meres.py)
+jelolt	id	igehely	id_elofordulas	cel_id	cel_igehely	cel_elofordulas	fejezet_azonos	tavolsag_vers	proveniencia
+a	ISTENTISZT-001	Zsolt 116:4	igen	ALVIL-001	Zsolt 116:3	igen	igen	1	scope=ISTENTISZT-001 Zsolt 116:4 ↔ ALVIL-001 Zsolt 116:3 | forras=elofordulasok.tsv+Karoli_1908.tsv | ts=2026-10-20T18:55Z
+b	ISTENTISZT-001	ApCsel 2:21	igen	ALVIL-001	ApCsel 2:27	igen	igen	6	scope=ISTENTISZT-001 ApCsel 2:21 ↔ ALVIL-001 ApCsel 2:27 | forras=elofordulasok.tsv+Karoli_1908.tsv | ts=2026-10-20T18:55Z
+b	ISTENTISZT-001	ApCsel 2:21	igen	ALVIL-001	ApCsel 2:31	igen	igen	10	scope=ISTENTISZT-001 ApCsel 2:21 ↔ ALVIL-001 ApCsel 2:31 | forras=elofordulasok.tsv+Karoli_1908.tsv | ts=2026-10-20T18:55Z
+c	ISTENTISZT-001	1Móz 4:26	igen	HAMART-001	1Móz 4:2-3	igen	igen	23	scope=ISTENTISZT-001 1Móz 4:26 ↔ HAMART-001 1Móz 4:2-3 | forras=elofordulasok.tsv+Karoli_1908.tsv | ts=2026-10-20T18:55Z
+c	ISTENTISZT-001	1Móz 4:26	igen	HAMART-001	1Móz 4:7	igen	igen	19	scope=ISTENTISZT-001 1Móz 4:26 ↔ HAMART-001 1Móz 4:7 | forras=elofordulasok.tsv+Karoli_1908.tsv | ts=2026-10-20T18:55Z
+c	ISTENTISZT-001	1Móz 4:26	igen	HAMART-001	1Móz 4:10-11	igen	igen	15	scope=ISTENTISZT-001 1Móz 4:26 ↔ HAMART-001 1Móz 4:10-11 | forras=elofordulasok.tsv+Karoli_1908.tsv | ts=2026-10-20T18:55Z
+c	ISTENTISZT-001	1Móz 4:26	igen	HAMART-001	1Móz 4:12	igen	igen	14	scope=ISTENTISZT-001 1Móz 4:26 ↔ HAMART-001 1Móz 4:12 | forras=elofordulasok.tsv+Karoli_1908.tsv | ts=2026-10-20T18:55Z
+c	ISTENTISZT-001	1Móz 4:26	igen	HAMART-001	1Móz 4:14	igen	igen	12	scope=ISTENTISZT-001 1Móz 4:26 ↔ HAMART-001 1Móz 4:14 | forras=elofordulasok.tsv+Karoli_1908.tsv | ts=2026-10-20T18:55Z
+d	ISTENTISZT-001	1Móz 12:8	igen	HAMART-001	1Móz 12:3	igen	igen	5	scope=ISTENTISZT-001 1Móz 12:8 ↔ HAMART-001 1Móz 12:3 | forras=elofordulasok.tsv+Karoli_1908.tsv | ts=2026-10-20T18:55Z
+e	ISTENTISZT-001	Róm 10:12	igen	TEREMT-001	Róm 10:7	igen	igen	5	scope=ISTENTISZT-001 Róm 10:12 ↔ TEREMT-001 Róm 10:7 | forras=elofordulasok.tsv+Karoli_1908.tsv | ts=2026-10-20T18:55Z
+e	ISTENTISZT-001	Róm 10:13	igen	TEREMT-001	Róm 10:7	igen	igen	6	scope=ISTENTISZT-001 Róm 10:13 ↔ TEREMT-001 Róm 10:7 | forras=elofordulasok.tsv+Karoli_1908.tsv | ts=2026-10-20T18:55Z
+e	ISTENTISZT-001	Róm 10:14	igen	TEREMT-001	Róm 10:7	igen	igen	7	scope=ISTENTISZT-001 Róm 10:14 ↔ TEREMT-001 Róm 10:7 | forras=elofordulasok.tsv+Karoli_1908.tsv | ts=2026-10-20T18:55Z

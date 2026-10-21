@@ -54,8 +54,13 @@ NAPLOK = os.path.join(ROOT, 'naplok')
 MOTIVUMOK = ['ALVIL-001', 'ANTROP-001', 'HAMART-001', 'HODIT-001',
              'ISTENTISZT-001', 'KIRALY-001', 'MENNY-001', 'TEREMT-001']
 
+# A munkalap (naplok/JELOLTEK_RETRO_*_sorok.tsv) 9 oszlopos alakja; a
+# jeloltek.tsv a DT-F127b óta négy további oszlopot hordoz (SEMA 2.4): a
+# munkalap sorai hozzáfűzéskor `elofordulas` típust kapnak, üres cel_* mezőkkel.
 JELOLTEK_FEJLEC = ['id', 'igehely', 'forras_kereses', 'dontes', 'indoklas',
                    'karoli_szo', 'azonositas_modja', 'megbizhatosag', 'datum']
+JELOLTEK_TABLA_FEJLEC = JELOLTEK_FEJLEC + ['jelolt_tipus', 'cel_id', 'cel_igehely', 'cel_alpont']
+ELOFORDULAS_TOLDALEK = ['elofordulas', '', '', '']
 DONTES_ERTEKEK = {'beépítve', 'elutasítva', 'nyitva'}
 
 # --- kezi kiegeszitesek (DT-F63a (2) szerint a kodba irva, megjegyzessel es naplo-hivatkozassal) ---
@@ -147,6 +152,16 @@ def tabla(path):
     return sorok[0].split('\t'), [l.split('\t') for l in sorok[1:]]
 
 
+def jeloltek_tabla():
+    """(fejlec, sorok) a jeloltek.tsv-ből, csak az előfordulás-jelöltek
+    (DT-F127b: a motívumközi jelölt nem a motívum vizsgált verse)."""
+    fej, sorok = tabla(os.path.join(ADAT, 'jeloltek.tsv'))
+    if 'jelolt_tipus' not in fej:
+        return fej, sorok
+    i = fej.index('jelolt_tipus')
+    return fej, [r for r in sorok if r[i] == 'elofordulas']
+
+
 _IG = re.compile(r'^(.+?) (\d+):(\d+)(?:-(?:(\d+):)?(\d+))?$')
 
 
@@ -169,7 +184,7 @@ def kibont(igehely):
 def vizsgalt_versek(mid, munkalapokkal=False):
     """A motivum mar kezelt versei: jeloltek + elofordulasok (+ opcionalisan a munkalap)."""
     vers = set()
-    _, jel = tabla(os.path.join(ADAT, 'jeloltek.tsv'))
+    _, jel = jeloltek_tabla()
     for r in jel:
         if r[0] == mid:
             vers |= kibont(r[1])
@@ -341,9 +356,11 @@ def cmd_hozzafuz(args):
     nl = b'\r\n' if crlf else b'\n'
     szoveg = regi.decode('utf-8')
     fej, jel = tabla(path)
-    if fej != JELOLTEK_FEJLEC:
+    if fej != JELOLTEK_TABLA_FEJLEC:
         raise SystemExit('A jeloltek.tsv fejléce eltér a várttól.')
-    letezo = {(r[0], r[1]) for r in jel}
+    # DT-F127b: a kulcs id + igehely + jelolt_tipus + cel_id; a munkalap
+    # sorai előfordulás-jelöltek, tehát csak az előfordulás-sorokkal ütközhetnek.
+    letezo = {(r[0], r[1]) for r in jeloltek_tabla()[1]}
     uj, ismetlodo = [], []
     for mid in (args.id or MOTIVUMOK):
         for mezok in munkalap_sorok(mid):
@@ -352,7 +369,7 @@ def cmd_hozzafuz(args):
                 ismetlodo.append(kulcs)
             else:
                 letezo.add(kulcs)
-                uj.append(mezok)
+                uj.append(mezok + ELOFORDULAS_TOLDALEK)
     if ismetlodo:
         raise SystemExit('Már létező kulcs (megállás): %s' % ismetlodo[:5])
     if not regi.endswith(b'\n'):
@@ -386,7 +403,7 @@ def cmd_hozzafuz(args):
 
 def jeloltek_versenkent(mid):
     """vers -> [(dontes, indoklas, igehely-sor)] a jeloltek.tsv-bol."""
-    _, jel = tabla(os.path.join(ADAT, 'jeloltek.tsv'))
+    _, jel = jeloltek_tabla()
     ki = {}
     for r in jel:
         if r[0] == mid:

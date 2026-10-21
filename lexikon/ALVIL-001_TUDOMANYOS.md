@@ -8,9 +8,9 @@ A motívum lexikai azonosságú: a שְׁאוֹל (*seól*) és a görög ᾍδ�
 
 ## Tartalomjegyzék
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#tartalom | forrás:  | licenc: projekt-adat | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-10-20 -->
 
-*Ez a blokk a lexikon-oldal 12 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
+*Ez a blokk a lexikon-oldal 14 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
 
 - [Kivonat](#kivonat)
 - [Jelmagyarázat és rövidítések](#jelmagyarázat-és-rövidítések)
@@ -20,7 +20,9 @@ A motívum lexikai azonosságú: a שְׁאוֹל (*seól*) és a görög ᾍδ�
 - [3. LXX-fordítói döntések](#3-lxx-fordítói-döntések)
 - [4. Kereszthivatkozások](#4-kereszthivatkozások)
 - [5. Kapcsolatok](#5-kapcsolatok)
+- [5/b. Kapcsolódó motívumok](#5b-kapcsolódó-motívumok)
 - [6. Értelmezés](#6-értelmezés)
+- [6/b. Alkalmazás és tanítói egyezés](#6b-alkalmazás-és-tanítói-egyezés)
 - [7. Módszertan és nyitott kérdések](#7-módszertan-és-nyitott-kérdések)
 - [8. Irodalom és idézés](#8-irodalom-és-idézés)
 - [Kolofon](#kolofon)
@@ -1050,6 +1052,23 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 
 A motívumhoz nincs rögzített kapcsolat.
 
+## 5/b. Kapcsolódó motívumok
+
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-10-20 -->
+
+*Ez a blokk a `[ID: ALVIL-001]` motívum motívumközi kapcsolatait adja a `motivum_kapcsolatok.tsv`-ből (minden sor mögött beépített motívumközi jelölt áll, DT-F127b); a sor mindkét érintett motívum lapján megjelenik.*
+
+| Kapcsolódó motívum | Itt | Ott | Típus | Funkció | Bizonyosság | PaRDeS-szint | Indoklás |
+|---|---|---|---|---|---|---|---|
+| [ISTENTISZT-001](ISTENTISZT-001_TUDOMANYOS.md) | ApCsel 2:27 | ApCsel 2:21 | szomszédos | a hívás ígéretének (2:21) alapja, hogy a Messiás nem marad a Seólban | közepes | Remez | Mért: azonos fejezet (ApCsel 2), 6 vers távolság; mindkét vers előfordulás a saját motívumában. A közös fejezet önmagában nem bizonyít szándékos utalást. Döntés: DT-F127e (felhasználó, 2026-10-20). |
+| [ISTENTISZT-001](ISTENTISZT-001_TUDOMANYOS.md) | ApCsel 2:31 | ApCsel 2:21 | szomszédos | a hívás ígéretének (2:21) alapja, hogy a Messiás nem marad a Seólban | közepes | Remez | Mért: azonos fejezet (ApCsel 2), 10 vers távolság; mindkét vers előfordulás a saját motívumában. A közös fejezet önmagában nem bizonyít szándékos utalást. Döntés: DT-F127e (felhasználó, 2026-10-20). |
+
+*Döntésre váró motívumközi jelölt (`jeloltek.tsv`, `nyitva`): 1 — ISTENTISZT-001: 1.*
+
+*Proveniencia: `scope=id:ALVIL-001 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-10-20`*
+
+<!-- GENERÁLT-VÉGE: lexikon#ALVIL-001#kapcsolodo -->
+
 ## 6. Értelmezés *(kézi)*
 
 **Peshat.** A hádész-vonal az egyéni halottak helye, ahonnan Krisztus feltámadása kiemeli Őt (ApCsel 2:27, 31, Zsolt 16:10 idézésével), és amelynek kulcsait Ő birtokolja (Jel 1:18), majd amelyet a végén magát a halált is a tűz tavába vetik (Jel 20:13-14). A gazdag ember és Lázár példázatában (Luk 16:23) a hádész a halál utáni, tudatos szenvedés helyeként jelenik meg. A Jelenések könyvében a Halál és a Hádész személyesített párosként lép fel (6:8), amely a végső ítéletben magával a hádésszel együtt semmisül meg (20:13-14).
@@ -1061,6 +1080,16 @@ A motívumhoz nincs rögzített kapcsolat.
 **Drash.** A motívum tanítása: a halál — még a maga legfélelmetesebb, birodalom-szerű formájában is — Isten szuverén hatalma alatt áll. Krisztus nem "elkerülte" a hádészt, hanem belépett oda és győztesen távozott, ezért "birtokolja a kulcsait" — vagyis a nyitás-zárás jogát, amely korábban kizárólag Isten közvetlen előjoga volt. Ez a hívő számára azt jelenti, hogy a halál nem autonóm, félelmetes végállomás, hanem egy olyan hely, amely fölött Krisztusnak hatalma van.
 
 **Sod** *(tömör)*. A hádész végső megsemmisítése (Jel 20:14, "a halál és a pokol/hádész pedig vettetének a tüzes tóba") azt a mintát fejezi be, amelyet Krisztus feltámadása nyitott meg: a halál birodalma maga is ideiglenes, Isten végső programjában felszámolandó valóság — nem örök ellenpólusa Isten uralmának, hanem annak alárendelt, végül megszüntetett intézménye.
+
+## 6/b. Alkalmazás és tanítói egyezés *(kézi)*
+
+### Alkalmazás és tanítványság *(kézi)*
+
+Az alkalmazási rész a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Hadesz_Seol_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
+
+### Tanítói egyezés *(kézi)*
+
+A tanítói egyezés a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Hadesz_Seol_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
 
 ## 7. Módszertan és nyitott kérdések *(kézi)*
 

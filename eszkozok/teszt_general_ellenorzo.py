@@ -92,7 +92,9 @@ NEGATIV = {
 
 VART_KULCSOK = {
     'motivumok.tsv': ('id',), 'elofordulasok.tsv': ('id', 'igehely'),
-    'kapcsolatok.tsv': ('forras_igehely', 'cel_igehely', 'id'), 'jeloltek.tsv': ('id', 'igehely'),
+    'kapcsolatok.tsv': ('forras_igehely', 'cel_igehely', 'id'),
+    'jeloltek.tsv': ('id', 'igehely', 'jelolt_tipus', 'cel_id'),  # DT-F127b
+    'motivum_kapcsolatok.tsv': ('id_a', 'igehely_a', 'id_b', 'igehely_b'),  # DT-F127b, SEMA 2.33
     'lexikon_hivatkozasok.tsv': ('szotar', 'strong', 'entry_id', 'jelentes_szam'),
     'dontes_hatas.tsv': ('dontes_forras', 'erintett_fajl', 'tilos_minta'),
     'kiejtes_szabalyok.tsv': ('sorszam',), 'kiejtes_kivetelek.tsv': ('nyelv', 'alak'),
@@ -147,7 +149,9 @@ class SemaKulcsok(unittest.TestCase):
         for t in ('auditok.tsv', 'karoli_variancia.tsv', 'forditas_ubs.tsv'):
             with self.subTest(kulcs_nelkul=t):
                 self.assertNotIn(t, k)
-        self.assertEqual(len(k), 21)
+        # F127: 23 (a main-en a #127 előtt már 22 volt -- a 21-es elvárás elavult --,
+        # a #127 a motivum_kapcsolatok.tsv-vel (SEMA 2.33) egyet ad hozzá)
+        self.assertEqual(len(k), 23)
 
     def test_kitalalt_sema(self):
         tmp = tempfile.mkdtemp(prefix='teszt_sema_')

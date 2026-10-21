@@ -6,6 +6,8 @@ KIRALY-001	miert_fontos	### Miért fontos ez a lelet *(kézi)*	tanulmany	tematik
 KIRALY-001	minosites	### Minősítés *(kézi)*	tanulmany	tematikus_lezart/naplok/Melkizedek_tematikus_kereszthivatkozas_naplo.md
 KIRALY-001	alatamasztas	### Alátámasztás *(kézi)*	adat	Az egyes kapcsolatok indoklása a fenti táblázat Funkció oszlopában áll; külön alátámasztás a tematikus tanulmányban nem készült.
 KIRALY-001	ertelmezes	## 6. Értelmezés *(kézi)*	tanulmany	tematikus_lezart/Melkizedek_tematikus.md
+KIRALY-001	alkalmazas	### Alkalmazás és tanítványság *(kézi)*	adat	Az alkalmazási rész a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Melkizedek_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
+KIRALY-001	tanitoi	### Tanítói egyezés *(kézi)*	adat	A tanítói egyezés a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Melkizedek_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
 KIRALY-001	modszertan	## 7. Módszertan és nyitott kérdések *(kézi)*	tanulmany	tematikus_lezart/Melkizedek_tematikus.md
 ISTENTISZT-001	kivonat	## Kivonat *(kézi)*	tanulmany	motivumok/ISTENTISZT-001.md
 ISTENTISZT-001	2b	### 2/b. Kiegészítő szótári adatok *(generált)*	adat	
@@ -13,6 +15,8 @@ ISTENTISZT-001	miert_fontos	### Miért fontos ez a lelet *(kézi)*	tanulmany	mot
 ISTENTISZT-001	minosites	### Minősítés *(generált)*	adat	
 ISTENTISZT-001	alatamasztas	### Alátámasztás *(generált)*	adat	
 ISTENTISZT-001	ertelmezes	## 6. Értelmezés *(kézi)*	tanulmany	motivumok/ISTENTISZT-001.md
+ISTENTISZT-001	alkalmazas	### Alkalmazás és tanítványság *(kézi)*	tanulmany	motivumok/ISTENTISZT-001.md
+ISTENTISZT-001	tanitoi	### Tanítói egyezés *(kézi)*	tanulmany	motivumok/naplok/ISTENTISZT-001_tanitoi_kereses.md
 ISTENTISZT-001	modszertan	## 7. Módszertan és nyitott kérdések *(kézi)*	tanulmany	motivumok/ISTENTISZT-001.md
 TEREMT-001	kivonat	## Kivonat *(kézi)*	tanulmany	tematikus_lezart/Tehom_tematikus.md
 TEREMT-001	2b	### 2/b. Kiegészítő szótári adatok *(kézi)*	tanulmany	tematikus_lezart/Tehom_tematikus.md
@@ -20,6 +24,8 @@ TEREMT-001	miert_fontos	### Miért fontos ez a lelet *(kézi)*	tanulmany	tematik
 TEREMT-001	minosites	### Minősítés *(kézi)*	tanulmany	tematikus_lezart/naplok/Tehom_kereszthivatkozas_naplo.md
 TEREMT-001	alatamasztas	### Alátámasztás *(kézi)*	adat	A motívumhoz nincs rögzített kapcsolat.
 TEREMT-001	ertelmezes	## 6. Értelmezés *(kézi)*	tanulmany	tematikus_lezart/Tehom_tematikus.md
+TEREMT-001	alkalmazas	### Alkalmazás és tanítványság *(kézi)*	adat	Az alkalmazási rész a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Tehom_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
+TEREMT-001	tanitoi	### Tanítói egyezés *(kézi)*	adat	A tanítói egyezés a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Tehom_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
 TEREMT-001	modszertan	## 7. Módszertan és nyitott kérdések *(kézi)*	tanulmany	tematikus_lezart/Tehom_tematikus.md
 ALVIL-001	kivonat	## Kivonat *(kézi)*	tanulmany	tematikus_lezart/Hadesz_Seol_tematikus.md
 ALVIL-001	2b	### 2/b. Kiegészítő szótári adatok *(kézi)*	tanulmany	tematikus_lezart/Hadesz_Seol_tematikus.md
@@ -27,6 +33,8 @@ ALVIL-001	miert_fontos	### Miért fontos ez a lelet *(kézi)*	tanulmany	tematiku
 ALVIL-001	minosites	### Minősítés *(kézi)*	tanulmany	tematikus_lezart/naplok/Hadesz_Seol_kereszthivatkozas_naplo.md
 ALVIL-001	alatamasztas	### Alátámasztás *(kézi)*	adat	A motívumhoz nincs rögzített kapcsolat.
 ALVIL-001	ertelmezes	## 6. Értelmezés *(kézi)*	tanulmany	tematikus_lezart/Hadesz_Seol_tematikus.md
+ALVIL-001	alkalmazas	### Alkalmazás és tanítványság *(kézi)*	adat	Az alkalmazási rész a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Hadesz_Seol_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
+ALVIL-001	tanitoi	### Tanítói egyezés *(kézi)*	adat	A tanítói egyezés a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Hadesz_Seol_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
 ALVIL-001	modszertan	## 7. Módszertan és nyitott kérdések *(kézi)*	tanulmany	tematikus_lezart/Hadesz_Seol_tematikus.md
 MENNY-001	kivonat	## Kivonat *(kézi)*	tanulmany	tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md
 MENNY-001	2b	### 2/b. Kiegészítő szótári adatok *(kézi)*	tanulmany	tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md
@@ -34,6 +42,8 @@ MENNY-001	miert_fontos	### Miért fontos ez a lelet *(kézi)*	tanulmany	tematiku
 MENNY-001	minosites	### Minősítés *(kézi)*	tanulmany	tematikus_lezart/naplok/Isten_fiai_Nefilim_Gibborim_kereszthivatkozas_naplo.md
 MENNY-001	alatamasztas	### Alátámasztás *(kézi)*	adat	A motívumhoz nincs rögzített kapcsolat.
 MENNY-001	ertelmezes	## 6. Értelmezés *(kézi)*	tanulmany	tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md
+MENNY-001	alkalmazas	### Alkalmazás és tanítványság *(kézi)*	adat	Az alkalmazási rész a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
+MENNY-001	tanitoi	### Tanítói egyezés *(kézi)*	adat	A tanítói egyezés a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
 MENNY-001	modszertan	## 7. Módszertan és nyitott kérdések *(kézi)*	tanulmany	tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md
 ANTROP-001	kivonat	## Kivonat *(kézi)*	tanulmany	tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md
 ANTROP-001	2b	### 2/b. Kiegészítő szótári adatok *(kézi)*	tanulmany	tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md
@@ -41,6 +51,8 @@ ANTROP-001	miert_fontos	### Miért fontos ez a lelet *(kézi)*	tanulmany	tematik
 ANTROP-001	minosites	### Minősítés *(kézi)*	tanulmany	tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md
 ANTROP-001	alatamasztas	### Alátámasztás *(kézi)*	adat	A motívumhoz nincs rögzített kapcsolat.
 ANTROP-001	ertelmezes	## 6. Értelmezés *(kézi)*	tanulmany	tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md
+ANTROP-001	alkalmazas	### Alkalmazás és tanítványság *(kézi)*	adat	Az alkalmazási rész a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
+ANTROP-001	tanitoi	### Tanítói egyezés *(kézi)*	adat	A tanítói egyezés a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
 ANTROP-001	modszertan	## 7. Módszertan és nyitott kérdések *(kézi)*	tanulmany	tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md
 HODIT-001	kivonat	## Kivonat *(kézi)*	tanulmany	tematikus_lezart/Rafaim_tematikus.md
 HODIT-001	2b	### 2/b. Kiegészítő szótári adatok *(kézi)*	tanulmany	tematikus_lezart/Rafaim_tematikus.md
@@ -48,6 +60,8 @@ HODIT-001	miert_fontos	### Miért fontos ez a lelet *(kézi)*	tanulmany	tematiku
 HODIT-001	minosites	### Minősítés *(kézi)*	tanulmany	tematikus_lezart/naplok/Rafaim_kereszthivatkozas_naplo.md
 HODIT-001	alatamasztas	### Alátámasztás *(kézi)*	adat	A motívumhoz nincs rögzített kapcsolat.
 HODIT-001	ertelmezes	## 6. Értelmezés *(kézi)*	tanulmany	tematikus_lezart/Rafaim_tematikus.md
+HODIT-001	alkalmazas	### Alkalmazás és tanítványság *(kézi)*	adat	Az alkalmazási rész a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Rafaim_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
+HODIT-001	tanitoi	### Tanítói egyezés *(kézi)*	adat	A tanítói egyezés a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Rafaim_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
 HODIT-001	modszertan	## 7. Módszertan és nyitott kérdések *(kézi)*	tanulmany	tematikus_lezart/Rafaim_tematikus.md
 HAMART-001	kivonat	## Kivonat *(kézi)*	tanulmany	tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md
 HAMART-001	2b	### 2/b. Kiegészítő szótári adatok *(kézi)*	tanulmany	tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md
@@ -55,4 +69,6 @@ HAMART-001	miert_fontos	### Miért fontos ez a lelet *(kézi)*	tanulmany	tematik
 HAMART-001	minosites	### Minősítés *(kézi)*	tanulmany	tematikus_lezart/naplok/Bun_kovetkezmenyeinek_gyuruzese_kereszthivatkozas_naplo.md
 HAMART-001	alatamasztas	### Alátámasztás *(kézi)*	adat	A motívumhoz nincs rögzített kapcsolat.
 HAMART-001	ertelmezes	## 6. Értelmezés *(kézi)*	tanulmany	tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md
+HAMART-001	alkalmazas	### Alkalmazás és tanítványság *(kézi)*	adat	Az alkalmazási rész a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
+HAMART-001	tanitoi	### Tanítói egyezés *(kézi)*	adat	A tanítói egyezés a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
 HAMART-001	modszertan	## 7. Módszertan és nyitott kérdések *(kézi)*	tanulmany	tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md

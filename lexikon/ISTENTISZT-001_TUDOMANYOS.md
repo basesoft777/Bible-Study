@@ -10,7 +10,7 @@ A motívum az ószövetségi קָרָא בְּשֵׁם יְהוָה (kárá bes�
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-10-20 -->
 
-*Ez a blokk a lexikon-oldal 12 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
+*Ez a blokk a lexikon-oldal 14 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
 
 - [Kivonat](#kivonat)
 - [Jelmagyarázat és rövidítések](#jelmagyarázat-és-rövidítések)
@@ -20,7 +20,9 @@ A motívum az ószövetségi קָרָא בְּשֵׁם יְהוָה (kárá bes�
 - [3. LXX-fordítói döntések](#3-lxx-fordítói-döntések)
 - [4. Kereszthivatkozások](#4-kereszthivatkozások)
 - [5. Kapcsolatok](#5-kapcsolatok)
+- [5/b. Kapcsolódó motívumok](#5b-kapcsolódó-motívumok)
 - [6. Értelmezés](#6-értelmezés)
+- [6/b. Alkalmazás és tanítói egyezés](#6b-alkalmazás-és-tanítói-egyezés)
 - [7. Módszertan és nyitott kérdések](#7-módszertan-és-nyitott-kérdések)
 - [8. Irodalom és idézés](#8-irodalom-és-idézés)
 - [Kolofon](#kolofon)
@@ -1694,6 +1696,24 @@ graph LR
 
 *Proveniencia: `scope=id:ISTENTISZT-001 | forras=adat/kapcsolatok.tsv | ts=2026-10-20`*
 
+## 5/b. Kapcsolódó motívumok
+
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-10-20 -->
+
+*Ez a blokk a `[ID: ISTENTISZT-001]` motívum motívumközi kapcsolatait adja a `motivum_kapcsolatok.tsv`-ből (minden sor mögött beépített motívumközi jelölt áll, DT-F127b); a sor mindkét érintett motívum lapján megjelenik.*
+
+| Kapcsolódó motívum | Itt | Ott | Típus | Funkció | Bizonyosság | PaRDeS-szint | Indoklás |
+|---|---|---|---|---|---|---|---|
+| [ALVIL-001](ALVIL-001_TUDOMANYOS.md) | ApCsel 2:21 | ApCsel 2:27 | szomszédos | a hívás ígéretének (2:21) alapja, hogy a Messiás nem marad a Seólban | közepes | Remez | Mért: azonos fejezet (ApCsel 2), 6 vers távolság; mindkét vers előfordulás a saját motívumában. A közös fejezet önmagában nem bizonyít szándékos utalást. Döntés: DT-F127e (felhasználó, 2026-10-20). |
+| [ALVIL-001](ALVIL-001_TUDOMANYOS.md) | ApCsel 2:21 | ApCsel 2:31 | szomszédos | a hívás ígéretének (2:21) alapja, hogy a Messiás nem marad a Seólban | közepes | Remez | Mért: azonos fejezet (ApCsel 2), 10 vers távolság; mindkét vers előfordulás a saját motívumában. A közös fejezet önmagában nem bizonyít szándékos utalást. Döntés: DT-F127e (felhasználó, 2026-10-20). |
+| [HAMART-001](HAMART-001_TUDOMANYOS.md) | 1Móz 12:8 | 1Móz 12:3 | szomszédos | a megfordított lánc után az első oltár és hívás | közepes | Remez | Mért: azonos fejezet (1Móz 12), 5 vers távolság; mindkét vers előfordulás a saját motívumában. A közös fejezet önmagában nem bizonyít szándékos utalást. Döntés: DT-F127e (felhasználó, 2026-10-20). |
+
+*Döntésre váró motívumközi jelölt (`jeloltek.tsv`, `nyitva`): 5 — ALVIL-001: 1, HAMART-001: 1, TEREMT-001: 3.*
+
+*Proveniencia: `scope=id:ISTENTISZT-001 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-10-20`*
+
+<!-- GENERÁLT-VÉGE: lexikon#ISTENTISZT-001#kapcsolodo -->
+
 ## 6. Értelmezés *(kézi)*
 
 ### PaRDeS keretrendszer
@@ -1928,6 +1948,46 @@ folytatását külön vizsgált (nem beépített) jelölt-körként a
 jeloltek.tsv-be, negatív kritériummal együtt — és át kell-e vezetni a
 felismerést a tematikus study 2. és 3. pontjába? A döntésig ez a
 szakasz a lexikon-oldalon marad.
+
+## 6/b. Alkalmazás és tanítói egyezés *(kézi)*
+
+### Alkalmazás és tanítványság *(kézi)*
+
+**Alkalmazási kérdések** *(a tanulmány saját Peshat/Remez/Drash/Sod rétegeiből, kiegészítve a saját fájlban nevesített tanítói forrással: Derek Prince ⚠️ részleges/beágyazott; a többi jóváhagyott tanítónál, Kenneth Hagint is beleértve, nincs igazolt forrás (gap))*:
+
+1. *Mit jelent ez a mai hívő mindennapi életében?* A segítségül hívás nem passzív érzés, hanem hitbeli cselekvés: az Úr nevét az hívja segítségül, aki hisz benne (Róm 10:14, l. 3. pont); a genezisi pátriárkák pedig azt mutatják, hogy ez egy visszatérő, helyhez köthető, akár nemzedékről nemzedékre átadható gyakorlattá is válhat.
+2. *Milyen konkrét lépést, döntést vagy szokásváltozást von maga után?* Ábrahám és Izsák mintája szerint: a segítségül hívás nem egyszeri esemény, hanem tudatosan felkeresett/fenntartott gyakorlat — érdemes "saját Beérsebát" (állandó imádati pontot/szokást) kialakítani.
+3. *Milyen érzelmi/lelki ellenállás merülhet fel?* A Bábel-mintázat (saját név felmagasztalása) folyamatos kísértés az önerőből való megfelelésre; Derek Prince a levertségből való saját szabadulásáról szóló beszámolóiban a Jóel 2:32 ígéretére támaszkodva hívta segítségül az Úr nevét (a tanítói fájl 3.1) — a szöveg is azt mutatja, hogy pontosan ez (a függőség beismerése) a helyes válasz.
+
+### Tanítói egyezés *(kézi)*
+
+A vizsgált 13 tanítóból **1 tanítónál (Derek Prince) van megbízható, URL-lel igazolt, nevesíthető anyag; 12 tanítónál gap.** Egyik találat sem ✅ (dedikált mű): a motívumra Prince-nél sem ismert önálló tanítás.
+
+| Tanító | Legjobb erősség | ✅ | ⚠️ | gap |
+|---|---|---|---|---|
+| Derek Prince | ⚠️ | 0 | 6 | 1 (1Móz 4:26, Zsolt 116, Kármel, ApCsel 22:16, 1Kor 1:2) |
+| Kenneth Hagin | gap | 0 | 0 | 1 |
+| Andrew Wommack | gap | 0 | 0 | 2 |
+| Smith Wigglesworth | gap | 0 | 0 | 1 |
+| F. F. Bosworth | gap | 0 | 0 | 1 |
+| John G. Lake | gap | 0 | 0 | 1 |
+| Kenneth Copeland | gap | 0 | 0 | 2 (önálló és csoportos) |
+| Charles Capps, Oral Roberts | gap | 0 | 0 | csoportos keresésből |
+| Ern Baxter, Bob Mumford, Don Basham, Charles Simpson | gap | 0 | 0 | csoportos keresésből |
+
+Összes sor: 0 ✅, 6 ⚠️ (mind Derek Prince), a táblázat gap-sorai a 3. szakaszban.
+
+**Mi igazolt Prince-nél (a 4. pont szerint):**
+- **Jóel 2:32 (1. csomópont):** ötször is (*War on Earth*, *How I Came To Grips With Demons*, *Deliverance From The Fleshly Nature*, *The Prayer of Release*, *You've Got to Have Hope*), mindig a szabadulás-ígéret alapjaként, nem a formula exegézisével; a *How I Came To Grips With Demons* köti a leginkább a Jóel-könyv Lélek-kitöltés-gondolatához.
+- **Róm 10:12–13 (2. csomópont):** *The Roman Pilgrimage (Part 15)*, a zsidó–görög egyenlőség keretében; a 10:14 nem szerepel.
+- **Az 1Móz 4:26, az 1Kir 18, a Zsolt 116, az ApCsel 22:16, az 1Kor 1:2** (és az 1. pont többi igehelye): nincs igazolt anyag (gap).
+
+**M4 forrás-ellenőrzés (2026.10.20):** a 6 ⚠️ és a Wommack *Receive Jesus* sor (3.3, 1. sor) forrását friss Sonnet subagent nyitotta meg; a másik Wommack-sor (*Discipleship Evangelism study guide*, 3.3, 2. sor) forrását az M4 nem nyitotta meg, az ítéletet a session hozta (`claude-opus-5-5`); az erősségek nem változtak (a *Deliverance From The Fleshly Nature* Jóel 2:32-azonosítása a KJV-szövegegyezésből tett következtetés, `manual`). Napló: `naplok/F130_TANITOI_KERESES_ISTENTISZT_naplo.md`.
+
+**Figyelmeztetések a felhasználónak:**
+- A találatok a szabadulás/deliverance témakörben jelennek meg; a „segítségül hívni az Úr nevét” formula tipológiáját, a név jelentését vagy az ószövetségi gyakorlatot egyik forrás sem tárgyalja. Használatuk: a Jóel 2:32 igehelyre való tényleges hivatkozás, nem a motívum értelmezése.
+- A Hagin- és Wommack-gap forrás-hozzáférési korlát is (403, olvashatatlan PDF), nem csak tartalmi hiány; ez kézi, böngészős ellenőrzéssel pótolható. A Wommack *Receive Jesus* oldal ténylegesen idézi a Róm 10:13-at, de csak üdvösség-ima részeként; a besorolás (gap) mérlegelhető.
+- A keresőmotor (általános, nem könyvtár- vagy átirat-specifikus) korlátozott; a gap nem bizonyítja, hogy a tanító nem tanított a témáról, csak azt, hogy ezen a menetben nem volt igazolható forrás.
 
 ## 7. Módszertan és nyitott kérdések *(kézi)*
 

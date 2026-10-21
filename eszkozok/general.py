@@ -262,6 +262,22 @@ def tsv_beolvas(path):
     return fejlec, sorok
 
 
+# DT-F127b (i), DT-F127d (1): a `jeloltek.tsv` `jelolt_tipus` mezője
+# (`elofordulas` | `motivumkozi`, SEMA 2.4). Az előfordulás-jelöltet olvasó
+# eszközök csak az `elofordulas` sorokat látják; a mező HIÁNYA (régi, 9 oszlopos
+# munkalap vagy tesztadat) `elofordulas`-nak számít, az ÜRES érték nem (azt az
+# ellenoriz.py 2/b. szabálya hibának jelzi).
+JELOLT_TIPUSOK = ('elofordulas', 'motivumkozi')
+
+
+def jelolt_elofordulas_e(sor):
+    return sor.get('jelolt_tipus', 'elofordulas') == 'elofordulas'
+
+
+def elofordulas_jeloltek(sorok):
+    return [s for s in sorok if jelolt_elofordulas_e(s)]
+
+
 def sorveg_elemez(path):
     """(domináns_sorvég, crlf_db, lf_db) -- a célfájl mai sorvég-arányának mérése (K7)."""
     with io.open(path, 'rb') as f:
@@ -1569,6 +1585,7 @@ def kinyeres_elemez(szoveg, motivum_id, meglevo_jeloltek, konyv_sorrend, datum,
                 'azonositas_modja': '',
                 'megbizhatosag': '',
                 'datum': datum,
+                'jelolt_tipus': 'elofordulas',  # DT-F127b; a cel_* mezők üresek
                 '_sor': i,
                 '_gerinc': gerinc,
             })
@@ -1750,7 +1767,7 @@ def kinyeres_futtat(args, motivum_id, motivumok, konyv_sorrend):
         return 1
     jeloltek_ut = args.jeloltek_fajl or JELOLTEK_TSV
     szoveg = io.open(ut, encoding='utf-8', newline='').read()
-    _, jeloltek = tsv_beolvas(jeloltek_ut)
+    jeloltek = elofordulas_jeloltek(tsv_beolvas(jeloltek_ut)[1])
     eredmeny = kinyeres_elemez(szoveg, motivum_id, jeloltek, konyv_sorrend, datum_iso_bol(TS))
     kod = 1 if eredmeny['hibak'] else 0
     irt = False
@@ -1821,7 +1838,7 @@ def blokk_lista_eles(cel, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyv
         return general_naplo_blokkok(motivumok, elofordulasok, naplo_szoveg,
                                       konyv_sorrend, hianyzo_konyvek), None
     if cel == 'nyitott':
-        _, jeloltek = tsv_beolvas(JELOLTEK_TSV)
+        jeloltek = elofordulas_jeloltek(tsv_beolvas(JELOLTEK_TSV)[1])
         _, blokkok = general_nyitott(motivumok, elofordulasok, jeloltek,
                                       konyv_sorrend, hianyzo_konyvek)
         return blokkok, None
@@ -1962,13 +1979,13 @@ def main():
                     vegso_kod = 1
 
         elif cel == 'nyitott':
-            _, jeloltek = tsv_beolvas(JELOLTEK_TSV)
+            jeloltek = elofordulas_jeloltek(tsv_beolvas(JELOLTEK_TSV)[1])
             tartalom, _ = general_nyitott(motivumok, elofordulasok, jeloltek,
                                             konyv_sorrend, hianyzo_konyvek)
             kimenet_ir(args, 'NYITOTT_FELADATOK.md', tartalom, NYITOTT_MD)
 
         elif cel == 'naplok':
-            _, jeloltek = tsv_beolvas(JELOLTEK_TSV)
+            jeloltek = elofordulas_jeloltek(tsv_beolvas(JELOLTEK_TSV)[1])
             if args.id:
                 jeloltek = [j for j in jeloltek if j['id'] == args.id]
             jel_id_szerint = jeloltek_id_szerint(jeloltek)
@@ -1999,7 +2016,7 @@ def main():
 
             # K9 -- a hiánylista MINDIG a teljes (nem --id-szűkített) jeloltek.tsv-hez
             # képest készül, hogy a --id ne rejtse el a más ID-khez tartozó hiányt.
-            _, jeloltek_teljes = tsv_beolvas(JELOLTEK_TSV)
+            jeloltek_teljes = elofordulas_jeloltek(tsv_beolvas(JELOLTEK_TSV)[1])
             hianylista_sorok = naplo_hianylista_sorok(jeloltek_teljes)
             hianylista_ir(args, hianylista_sorok, jeloltek_teljes)
 
