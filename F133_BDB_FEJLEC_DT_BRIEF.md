@@ -1,5 +1,5 @@
 ---
-feladat:
+feladat: 133
 cim: A bdb_szakaszok.tsv és a bdb_forras_javitas.tsv fejléc-literáljai a végleges DT-számokra; a két bukó teszt_bont Determinizmus-teszt javítása
 kod: BDB_FEJLEC_DT
 tipus: feladat
@@ -8,7 +8,7 @@ munka: adat
 modell: sonnet
 allapot: nem_indult
 ad: a bont.py és a forras_javit.py fejléc-literálja a végleges DT225 / DT228 számot írja, a három érintett BDB-tábla újragenerálva (csak a fejlécsorok változnak), a teszt_bont.py Determinizmus.test_ellenoriz és test_javitas_ellenoriz zöld
-kovetkezo: Te: /befogad — a #128 (F128) merge-e után
+kovetkezo: "Indítható a fugg szerint"
 olvas: [eszkozok/bdb_jelolt/bont.py, eszkozok/bdb_jelolt/forras_javit.py, eszkozok/bdb_jelolt/hu_illeszt.py, eszkozok/bdb_jelolt/teszt_bont.py, eszkozok/szamkiosztas.py, adat/SEMA.md, naplok/ELLENOR_F128.md, F119_BDB_HEADER_DT_BRIEF.md]
 ir: [eszkozok/bdb_jelolt/bont.py, eszkozok/bdb_jelolt/forras_javit.py, adat/bdb_szakaszok.tsv, adat/bdb_forras_javitas.tsv, adat/bdb_szakasz_hu.tsv]
 fugg: [128]
