@@ -172,3 +172,9 @@ Következtetés: a pilot sémája (negatív kritérium, determinisztikus rész: 
 ## 9. Megjegyzés
 
 A `jeloltek.tsv` írása (F110.4) a DONTESEK-bejegyzés (DT-F110a) rögzítését megelőzte; a sorrend utólag nem javítható, tényként rögzítem (ELLENOR_F110 3.). A zárójelentést az orkesztrátor írja.
+
+## 10. A lexikon-nézet (ELLENOR_F110 E28, a 7. tétel)
+
+A `python eszkozok/general.py --cel lexikon --id ISTENTISZT-001 --ir` lefutott, a diff 41 beszúrt és 39 törölt sor volt. Fennálló eset: **(b)** — a változás nem csak a jeloltek-delta közvetlen következménye: a `ts=` jelölők (2026-10-20 → 2026-10-21) és a `kizart` blokk száma (91 → 93) mellett a `kapcsolodo` blokk magyarázó sorában `DT277` helyett `DT-F127b` jelent meg (main-beli sodródás, nem az F110 hatása). Ezért a lexikon-fájl **nem lett commitolva** (`git checkout`, érintetlen), az E28 ismert kivételként marad erre az ágra. A lexikon újragenerálásáról brief-tervezet: `beerkezo/Fnn_LEXIKON_UJRAGEN_BRIEF.md` (csak tervezet, a FELADATOK-ba nincs felvéve).
+
+A `NYITOTT_FELADATOK.md` generált blokka (6. tétel) a generátorral újra előállt (F110.16); csak a 110-es delta változott (nyitott jelöltek 49 → 30, az ISTENTISZT-001 nyitott-száma 21 → 2).
