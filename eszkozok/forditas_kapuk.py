@@ -15,6 +15,11 @@ kapujat:
   torzs      (csak BDB) az igetorzs-cimkek (Qal, Niph., Pi., Pu., Hiph.,
              Hoph., Hithp. es a ritkabbak) azonos sorrendben
 
+  szakasz    (F128, a szakaszonkenti BDB-bemenet, `kapuk_futtat_szakaszos`)
+             a `⟪n⟫` hatartokenek szama es sorrendje a forrase, nincs uj,
+             hianyzo, duplazott token, nincs ures szakasz; a 9. tagolas ilyenkor
+             szakaszonkent fut
+
 Eredmeny: RENDBEN | SERTES | JELZES. A SERTES kapuhiba (E4: egy
 onujraproba, utana naplok/EMELES_bukottak.tsv); a JELZES (hosszarany)
 nem gatol.
@@ -626,7 +631,89 @@ def kapuk_futtat(szotar, forras, forditas, bizonytalan=()):
 
 
 def atment(eredmenyek):
-    return all(e != 'SERTES' for n, e, _ in eredmenyek if n in GATOLO)
+    return all(e != 'SERTES' for n, e, _ in eredmenyek if n in GATOLO + SZAKASZ_GATOLO)
+
+
+# ---------------------------------------------------------------------------
+# 14. szakasz-kapu (F128 M3; DT181 (b), DT-F128a): a szakaszonkenti BDB-bemenet
+# hatartokenjei (`⟪<sorszam>⟫`, eszkozok/bdb_jelolt/szakasz_bemenet.py) a
+# forditasban valtozatlanul, azonos szamban es sorrendben; nincs uj, hianyzo
+# vagy duplazott token, a tokenek kozti szakasz nem ures, a token elott nincs
+# szoveg. A 9. tagolas-kapu ilyenkor szakaszonkent fut (a jelolo nem vandorolhat
+# at a szomszed szakaszba); a tobbi kapu a token nelkuli szovegen.
+# ---------------------------------------------------------------------------
+
+SZAKASZ_TOKEN = re.compile(r'⟪(\d+)⟫')
+SZAKASZ_GATOLO = ['14_szakasz']
+
+
+def szakasz_bont(szoveg):
+    """-> (a ket elso token elotti szoveg, [(sorszam, szakaszszoveg), ...])."""
+    d = SZAKASZ_TOKEN.split(szoveg)
+    return d[0].strip(), [(int(d[i]), d[i + 1].strip()) for i in range(1, len(d), 2)]
+
+
+def szakasz_nelkul(szoveg):
+    """A token nelkuli szoveg: a szakaszok egy szokozzel (a szakasz_bemenet.nezet alakja)."""
+    eleje, sz = szakasz_bont(szoveg)
+    return ' '.join(x for x in [eleje] + [t for _, t in sz] if x)
+
+
+def ellenoriz_szakasz(forras, forditas):
+    fe, fa = szakasz_bont(forras)
+    he, ha = szakasz_bont(forditas)
+    a, b = [n for n, _ in fa], [n for n, _ in ha]
+    hibak = []
+    if he:
+        hibak.append('szoveg az elso token elott: %r' % he[:40])
+    hiany = [n for n in a if n not in b]
+    uj = [n for n in b if n not in a]
+    dupla = sorted({n for n in b if b.count(n) > 1})
+    if hiany:
+        hibak.append('hianyzo token: %s' % ', '.join(map(str, hiany)))
+    if uj:
+        hibak.append('uj token: %s' % ', '.join(map(str, uj)))
+    if dupla:
+        hibak.append('duplazott token: %s' % ', '.join(map(str, dupla)))
+    if not (hiany or uj or dupla) and a != b:
+        i = next(i for i in range(len(a)) if a[i] != b[i])
+        hibak.append('a tokenek sorrendje elter a(z) %d. helytol: forras %s, forditas %s'
+                     % (i + 1, a[i:i + 3], b[i:i + 3]))
+    ures = [n for n, t in ha if not t and dict(fa).get(n)]
+    if ures:
+        hibak.append('ures szakasz: %s' % ', '.join(map(str, ures)))
+    if not fa:
+        hibak.append('a forrasban nincs szakasztoken')
+    if hibak:
+        return 'SERTES', '; '.join(hibak)
+    return 'RENDBEN', '%d szakasz' % len(a)
+
+
+def ellenoriz_tagolas_szakaszonkent(forras, forditas):
+    """A 9. kapu szakaszparonkent; csak ervenyes tokensorrendnel hivando. A szakasz ele `. ` kerul mindket oldalon,
+    hogy a szakasz eleji jelolo (`1 father`, `a.`) a folyo szovegbeli helyzetevel azonosan ismerodjon fel."""
+    _, fa = szakasz_bont(forras)
+    _, ha = szakasz_bont(forditas)
+    hibak, n_jel = [], 0
+    for (n, f), (_, h) in zip(fa, ha):
+        e, d = ellenoriz_tagolas('. ' + f, '. ' + bdb_jeloles_vissza(h))
+        n_jel += len(tagolas_sorozat('. ' + f))
+        if e == 'SERTES':
+            hibak.append('szakasz %d: %s' % (n, d))
+    if hibak:
+        return 'SERTES', '%d szakaszban: %s' % (len(hibak), ' | '.join(hibak[:3]))
+    return 'RENDBEN', '%d szakasz, %d forrasjelolo' % (len(fa), n_jel)
+
+
+def kapuk_futtat_szakaszos(szotar, forras, forditas, bizonytalan=()):
+    """A szakaszonkenti bemenet kapui: [(nev, eredmeny, reszlet), ...]. forras / forditas: tokenes szoveg."""
+    sz = ellenoriz_szakasz(forras, forditas)
+    ki = kapuk_futtat(szotar, szakasz_nelkul(forras), szakasz_nelkul(forditas), bizonytalan)
+    if sz[0] == 'RENDBEN':
+        ki = [(n,) + ellenoriz_tagolas_szakaszonkent(forras, forditas) if n == '9_tagolas' else (n, e, d)
+              for n, e, d in ki]
+    ki.append(('14_szakasz',) + sz)
+    return ki
 
 
 def main():

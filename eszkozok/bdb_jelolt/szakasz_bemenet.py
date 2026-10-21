@@ -184,6 +184,40 @@ def strong_magyar(sorok):
     return None, None
 
 
+HU_TABLA = os.path.join(nezet_general.GYOKER, 'adat', 'bdb_szakasz_hu.tsv')
+
+
+def kesz_magyar_csoportositva(strong):
+    """A kész magyar fordítás (`adat/bdb_szakasz_hu.tsv`, 2.32) szakaszai tokenes párként, a kapu próbájához (F128 M3, M4).
+    A csoport az `illeszkedik` sornál (és az 1. sornál) kezdődik; a többi sor (`horgonnyal`, `elakad`, `jelolo_nelkul`) a
+    megelőző csoportba olvad, mert a magyar szövegének határa nem biztos. -> (forrás tokenes, magyar tokenes, összeolvasztott
+    sorok száma) vagy None, ha a Strongnak nincs illesztett magyar szövege vagy szakaszsora."""
+    szak = szakaszok(strong)
+    if szak is None:
+        return None
+    if 'hu' not in _CACHE:
+        hu = collections.defaultdict(dict)
+        for r in nezet_general.olvas(HU_TABLA):
+            hu[r['strong']][int(r['sorszam'])] = r
+        _CACHE['hu'] = hu
+    hu = _CACHE['hu'].get(strong)
+    if not hu:
+        return None
+    csop = []
+    for x in szak:
+        r = hu.get(x['sorszam'])
+        if r is None:
+            return None
+        if not csop or r['kategoria'] == 'illeszkedik':
+            csop.append([x['sorszam'], [], []])
+        csop[-1][1].append(x['szoveg'])
+        if r['szoveg_hu']:
+            csop[-1][2].append(r['szoveg_hu'])
+    f = '\n'.join('%s %s' % (token(n), ' '.join(a)) for n, a, _ in csop)
+    h = '\n'.join('%s %s' % (token(n), ' '.join(b)) for n, _, b in csop)
+    return f, h, len(szak) - len(csop)
+
+
 def ellenoriz():
     """-> (hibák listája, statisztika)."""
     import unicodedata

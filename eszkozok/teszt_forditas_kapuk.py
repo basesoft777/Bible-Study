@@ -503,5 +503,92 @@ class ForrasVersOcr(unittest.TestCase):
         self.assertEqual(len(kapott), 10)
 
 
+class Szakasz(unittest.TestCase):
+    """F128 M3: a 14. szakasz-kapu (a `⟪n⟫` határtokenek), szintetikus esetek."""
+    F = '⟪1⟫ H1. ab\n⟪2⟫ noun father\n⟪3⟫ 1 father of individual\n⟪4⟫ 2 of God'
+
+    def _e(self, h):
+        return K.ellenoriz_szakasz(self.F, h)
+
+    def test_rendben(self):
+        self.assertEqual(self._e('⟪1⟫ H1. ab ⟪2⟫ főnév apa ⟪3⟫ 1 egyén apja ⟪4⟫ 2 Istenről'), ('RENDBEN', '4 szakasz'))
+
+    def test_hianyzo(self):
+        e, d = self._e('⟪1⟫ H1. ab ⟪2⟫ főnév apa 1 egyén apja ⟪4⟫ 2 Istenről')
+        self.assertEqual(e, 'SERTES')
+        self.assertIn('hianyzo token: 3', d)
+
+    def test_duplazott(self):
+        e, d = self._e('⟪1⟫ H1. ab ⟪2⟫ főnév ⟪2⟫ apa ⟪3⟫ 1 egyén apja ⟪4⟫ 2 Istenről')
+        self.assertEqual(e, 'SERTES')
+        self.assertIn('duplazott token: 2', d)
+
+    def test_felcserelt(self):
+        e, d = self._e('⟪1⟫ H1. ab ⟪3⟫ 1 egyén apja ⟪2⟫ főnév apa ⟪4⟫ 2 Istenről')
+        self.assertEqual(e, 'SERTES')
+        self.assertIn('sorrendje', d)
+
+    def test_ures_szakasz(self):
+        e, d = self._e('⟪1⟫ H1. ab ⟪2⟫ ⟪3⟫ 1 egyén apja, főnév apa ⟪4⟫ 2 Istenről')
+        self.assertEqual(e, 'SERTES')
+        self.assertIn('ures szakasz: 2', d)
+
+    def test_uj_token(self):
+        e, d = self._e('⟪1⟫ H1. ab ⟪2⟫ főnév apa ⟪3⟫ 1 egyén apja ⟪4⟫ 2 Istenről ⟪5⟫ toldás')
+        self.assertEqual(e, 'SERTES')
+        self.assertIn('uj token: 5', d)
+
+    def test_szoveg_az_elso_token_elott(self):
+        e, d = self._e('Fordítás: ⟪1⟫ H1. ab ⟪2⟫ főnév apa ⟪3⟫ 1 egyén apja ⟪4⟫ 2 Istenről')
+        self.assertEqual(e, 'SERTES')
+        self.assertIn('elso token elott', d)
+
+    def test_token_nelkuli_szoveg(self):
+        self.assertEqual(K.szakasz_nelkul('⟪1⟫ a b\n⟪2⟫ c'), 'a b c')
+
+    def test_atment_gatol(self):
+        self.assertFalse(K.atment([('14_szakasz', 'SERTES', '')]))
+        self.assertTrue(K.atment([('14_szakasz', 'RENDBEN', '')]))
+
+    def test_tagolas_szakaszonkent(self):
+        # a 2. jelentésszám a magyarban a szomszéd szakaszba vándorolt: egészben átmenne, szakaszonként nem
+        f = '⟪1⟫ word. 1 father of individual ⟪2⟫ 2 of God as father'
+        h = '⟪1⟫ szó. 1 egyén apja. 2 Isten ⟪2⟫ mint atya'
+        self.assertEqual(K.ellenoriz_tagolas(K.szakasz_nelkul(f), K.szakasz_nelkul(h))[0], 'RENDBEN')
+        self.assertEqual(K.ellenoriz_tagolas_szakaszonkent(f, h)[0], 'SERTES')
+        jo = '⟪1⟫ szó. 1 egyén apja ⟪2⟫ 2 Isten mint atya'
+        self.assertEqual(K.ellenoriz_tagolas_szakaszonkent(f, jo)[0], 'RENDBEN')
+
+    def test_szakaszos_futtatas(self):
+        f = '⟪1⟫ word. 1 father of individual ⟪2⟫ 2 of God as father'
+        nevek = [n for n, _, _ in K.kapuk_futtat_szakaszos('BDB', f, '⟪1⟫ szó. 1 egyén apja ⟪2⟫ 2 Isten mint atya')]
+        self.assertEqual(nevek[-1], '14_szakasz')
+        self.assertIn('9_tagolas', nevek)
+        e = dict((n, x) for n, x, _ in K.kapuk_futtat_szakaszos('BDB', f, '⟪1⟫ szó. 1 egyén apja 2 Isten mint atya'))
+        self.assertEqual(e['14_szakasz'], 'SERTES')
+
+
+class SzakaszKeszMagyar(unittest.TestCase):
+    """F128 M3: a kész magyar BDB-fordítás (`adat/bdb_szakasz_hu.tsv`) `illeszkedik` sorainál kezdődő szakaszokból
+    összerakott tokenes szövegeken a szakasz-kapu 0 hibát ad."""
+
+    def test_kesz_forditasok(self):
+        sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'bdb_jelolt'))
+        import szakasz_bemenet as SB
+        strongok = sorted({r['strong'] for r in SB.nezet_general.olvas(SB.HU_TABLA)})
+        self.assertEqual(len(strongok), 674)
+        hibak, n = [], 0
+        for st in strongok:
+            p = SB.kesz_magyar_csoportositva(st)
+            if p is None:
+                continue
+            n += 1
+            e, d = K.ellenoriz_szakasz(p[0], p[1])
+            if e != 'RENDBEN':
+                hibak.append((st, d))
+        self.assertEqual(hibak, [])
+        self.assertEqual(n, 674)
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
