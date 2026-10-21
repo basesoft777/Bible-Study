@@ -319,6 +319,20 @@ class KaroliTabla(unittest.TestCase):
             if s['karoli_alak'] == B.NINCS_KAROLI_ALAK:      # kifejezett ures jelzes, nem kitoltes
                 self.assertEqual((s['magas'], s['alacsony']), ('0', '0'))
 
+    def test_kesz_halmaz_a_szakaszsorokkal(self):
+        # F128 (DT-F128g (a)): a szakaszonkent forditott Strong (`sz<sorszam>` sorok) is kesz; mas jelentes_szam nem
+        import tempfile
+        fej = ['szotar', 'strong', 'entry_id', 'jelentes_szam', 'mezo', 'forras_hash', 'forditas_hu', 'allapot']
+        sorok = [('BDB', 'H0001', 'H1', 'teljes'), ('BDB', 'H0002', 'H2', 'sz1'), ('BDB', 'H0002', 'H2', 'sz2'),
+                 ('BDB', 'H0003', 'H3', '2.c'), ('BDB', 'H0004', 'H4', 'sz'), ('Thayer', 'G0005', 'G5', 'sz1')]
+        with tempfile.TemporaryDirectory() as tmp:
+            ut = os.path.join(tmp, 'forditasok.tsv')
+            with open(ut, 'w', encoding='utf-8', newline='\n') as fh:
+                fh.write('# teszt' + NL + TAB.join(fej) + NL)
+                for s in sorok:
+                    fh.write(TAB.join(list(s) + ['forditas_hu', 'h', 'x', 'sonnet']) + NL)
+            self.assertEqual(B.kesz_bdb_strongok(ut), ['H0001', 'H0002'])
+
     def test_minden_sor_proveniencia_nem_ures_es_alak_egyezik_a_szocikkevel(self):
         # SEMA 2.25: minden sorban kotelezo; az alak-sor proveniencia-ja a szocikk-soreval szo szerint azonos
         szoc = {s['strong']: s['proveniencia'] for s in self.szocikkek}

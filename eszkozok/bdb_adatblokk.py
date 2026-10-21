@@ -845,16 +845,19 @@ def atvezet_vissza(forditas, javitva_sorok):
 # F80: adat/bdb_karoli.tsv -- a kesz BDB-szocikkek Karoli-adata (SEMA 2.25)
 # ---------------------------------------------------------------------------
 
-def kesz_bdb_strongok():
-    """A `forditasok.tsv` kesz (`jelentes_szam=teljes`, `mezo=forditas_hu`) BDB-szocikkeinek
-    kulcsa (`strong`, 4 jegyre kitoltve), rendezve. Csak olvas."""
+KESZ_SZAKASZ = re.compile(r'^sz\d+$')  # F128 (DT-F128a (a)): a szakaszonkenti BDB-sor `jelentes_szam`-a
+
+
+def kesz_bdb_strongok(ut=None):
+    """A `forditasok.tsv` kesz BDB-szocikkeinek kulcsa (`strong`, 4 jegyre kitoltve), rendezve: a `jelentes_szam=teljes`
+    vagy a szakaszonkenti `sz<sorszam>` (F128, DT-F128g (a)) `forditas_hu` sor Strongja. Csak olvas."""
     ki = set()
     elso = True
-    for m in tsv_sorok(FORDITASOK_UT):
+    for m in tsv_sorok(ut or FORDITASOK_UT):
         if elso:
             elso = False
             continue
-        if m[0] == 'BDB' and m[3] == 'teljes' and m[4] == 'forditas_hu':
+        if m[0] == 'BDB' and (m[3] == 'teljes' or KESZ_SZAKASZ.match(m[3])) and m[4] == 'forditas_hu':
             ki.add(strong_padded(m[1]))
     return sorted(ki)
 
