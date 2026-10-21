@@ -6,10 +6,10 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: fut
+allapot: dontesre_var
 ag: claude/f110-szuro-pilot-2
 ad: naplózott, determinisztikus szűrő (motivumok.tsv negatív kritérium + kollokáció) az F108 tág új helyeire; kipróbálva a G1941 21 nyitva jelöltjén és a H7121+H8034 168 nem-zsoltári új helyén; a jeloltek.tsv-be csak a szűrő utáni helyek, a 21 G1941-jelölt döntéssel; mérés, hogy a szabály a többi motívumra átvihető-e
-kovetkezo: /kovetkezo
+kovetkezo: Te: DT-F110a jóváhagyása (a szűrő-szabály szövege és a 4 határeset; naplok/SZURO_PILOT_ISTENTISZT_naplo.md 2. szakasz) — utána a 4–6. lépés
 olvas: [adat/motivumok.tsv, adat/jeloltek.tsv, adat/elofordulasok.tsv, adat/SEMA.md, adat/grammatikai_strongok.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, naplok/F108_ujrascan_elteresek.tsv, naplok/F108_MOTIVUM_UJRASCAN_naplo.md, eszkozok/lekerdez.py, eszkozok/jelolt.py]
 ir: [adat/jeloltek.tsv]
 fugg: []
@@ -69,4 +69,4 @@ jelöltek beépítése a motívum saját menete); a Zsoltár-találatok (#55); a
 
 ## 5. Döntésnapló
 
-- (helyőrző a futáskor: DT-F110a a szűrő-szabály szövege)
+- DT-F110a: a szűrő-szabály szövege — javaslat a `DONTESEK.md`-ben és a `naplok/SZURO_PILOT_ISTENTISZT_naplo.md` 2. szakaszában; jóváhagyásra vár (2026-10-21).

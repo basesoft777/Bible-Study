@@ -1,0 +1,4 @@
+# GENERALT: F110.2 | az F108 uj-helyeinek ujralekerdezese a mai adaton (nem az elavult claude/f110-szuro-pilot agbol)
+parancs	n	F108-bemenet_n	bemenet_a_talalatban	proveniencia
+lekerdez.py kollokacio H7121 H8034	196	168	168	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H7121+H8034 | n=196 | ts=2026-10-21T09:18Z
+lekerdez.py scan G1941	31	21	21	scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-21T09:18Z
