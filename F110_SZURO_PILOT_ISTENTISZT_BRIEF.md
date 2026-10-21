@@ -69,4 +69,4 @@ jelöltek beépítése a motívum saját menete); a Zsoltár-találatok (#55); a
 
 ## 5. Döntésnapló
 
-- DT-F110a: a szűrő-szabály szövege — javaslat a `DONTESEK.md`-ben és a `naplok/SZURO_PILOT_ISTENTISZT_naplo.md` 2. szakaszában; jóváhagyásra vár (2026-10-21).
+- DT-F110a: a szűrő-szabály szövege — **elfogadva** (2026-10-21; `DONTESEK.md`, `naplok/SZURO_PILOT_ISTENTISZT_naplo.md` 2. szakasz). A (2) pont módosítva az ELLENOR_F110 (1) után: a K2 határesetek (JSir 3:55, 5Móz 32:3) kiszűrve maradnak, a kritérium nem változik (döntéshozó: felhasználó, chat-válasz, 2026-10-21). Az ApCsel 7:59 elutasítva (ELLENOR_F110 2.). A helyőrző marad, végleges számot a `szamkiosztas` Action ad.
