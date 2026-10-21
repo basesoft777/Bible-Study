@@ -1,6 +1,6 @@
 # SZURO_PILOT_ISTENTISZT_naplo.md — F110 (#110), szűrő-szabály pilot az ISTENTISZT-001-en
 
-*Állapot: a DT-F110a elfogadva (orkesztrátor, 2026-10-21; l. `DONTESEK.md`), a 4–6. lépés lefutott; a zárást az orkesztrátor végzi. Ág: `claude/f110-szuro-pilot-2`. Modell: `claude-sonnet-5-5`. Igehely-alak: a `konyv_normalizalo_tabla` szerinti (JSir 3:55); a TAHOT-kivonat és a szimulációs TSV kulcsa még `Sir 3:55`.*
+*Állapot: a DT-F110a elfogadva (orkesztrátor, 2026-10-21; l. `DONTESEK.md`), a 4–6. lépés lefutott; a javítókör 1. körében (ELLENOR_F110 1.) a JSir 3:55 és az 5Móz 32:3 kikerült a `jeloltek.tsv`-ből, az ApCsel 7:59 elutasítva (a számok a 6–7. szakaszban a javított állapotot mutatják); a zárást az orkesztrátor végzi. Ág: `claude/f110-szuro-pilot-2`. Modell: `claude-sonnet-5-5`. Igehely-alak: a `konyv_normalizalo_tabla` szerinti (JSir 3:55); a TAHOT-kivonat és a szimulációs TSV kulcsa még `Sir 3:55`.*
 
 ## 1. Bemenet és újralekérdezés (2. lépés)
 
@@ -112,21 +112,22 @@ Előzetes kézi olvasás: **ApCsel 7:59** (István „kiált, Úr Jézus”) →
 
 A DT-F110a elfogadva két pontosítással: az A osztály sem automatikus bevétel; a határesetek (b) szerint kézi olvasásra mennek. Mérce: aktív ige, a שֵׁם Istené, funkció hívás/kiáltás/kikiáltás-imádás, nem névadás.
 
-### 6.1 Héber (168 hely): 4 bekerül `nyitva`, 164 kiszűrve
+### 6.1 Héber (168 hely): 2 `nyitva`, 166 kiszűrve (javítókör 1. kör után; az F110.4-es állapot: 4 / 164)
 
 | csoport | db |
 |---|---|
 | automatikus kiszűrés (K0 12 + K1 38 + K2 nem határeset 100) | 150 |
 | kézi olvasás után kiszűrve (A 1 + B 11 + határeset 2) | 14 |
-| kézi olvasás után `nyitva` (JSir 3:55, 5Móz 32:3, Ézs 41:25, Ézs 64:6) | 4 |
+| K2_nincs_be marad (JSir 3:55, 5Móz 32:3; „tartalmilag invokáció, de a formulán kívül esik (fölérendelt fogalom)”) | 2 |
+| kézi olvasás után `nyitva` (Ézs 41:25, Ézs 64:6) | 2 |
 | **összesen** | **168** |
 
 Kézi olvasás, soronként (a tábla csak az átjutottakat kapja; a kiszűrtek sorszintű listája: `naplok/F110_szuro_szimulacio.tsv`, a kézi okok itt):
 
 | igehely | osztály | döntés | indoklás |
 |---|---|---|---|
-| JSir 3:55 | K2 határeset | nyitva | „I called name your O Yahweh”: aktív, Isten neve, hívás a gödörből; בְּ nincs |
-| 5Móz 32:3 | K2 határeset | nyitva | „the name of Yahweh I will proclaim”: kikiáltás-imádás (a 2Móz 33:19 és 34:5 párja); בְּ nincs |
+| JSir 3:55 | K2 határeset | K2_nincs_be marad (kiszűrve; a jeloltek.tsv-ből kivéve, ELLENOR_F110 1.; „tartalmilag invokáció, de a formulán kívül esik (fölérendelt fogalom)”) | „I called name your O Yahweh”: aktív, Isten neve, hívás a gödörből; בְּ nincs |
+| 5Móz 32:3 | K2 határeset | K2_nincs_be marad (kiszűrve; a jeloltek.tsv-ből kivéve, ELLENOR_F110 1.; „tartalmilag invokáció, de a formulán kívül esik (fölérendelt fogalom)”) | „the name of Yahweh I will proclaim”: kikiáltás-imádás (a 2Móz 33:19 és 34:5 párja); בְּ nincs |
 | Ézs 41:25 | B | nyitva (**eltérés a vártól, jelezve**) | „he will call on name my”: aktív קרא + בְּ + שֵׁם, az Úr beszél; vitatott, hogy Círusz hívja-e a nevét; a motívum-menet dönt |
 | Ézs 64:6 | B | nyitva (**eltérés a vártól, jelezve**) | „there not [is one who] calls on name your”: tagadott invokáció (Jer 10:25 precedens) |
 | 1Móz 16:13 | K2 határeset | kiszűrve | névadás |
@@ -137,7 +138,7 @@ Kézi olvasás, soronként (a tábla csak az átjutottakat kapja; a kiszűrtek s
 | 1Krón 6:65, Józs 21:9, 4Móz 32:38, 4Móz 32:42, Bír 18:29 | B | kiszűrve | városok/hely névadása |
 | 2Móz 31:2, 35:30 | B | kiszűrve | Becalél névvel szólítása |
 
-A vártnál két sorral több kerül be (Ézs 41:25 és Ézs 64:6): mindkettő a szabály szerint átjutó aktív בְּ-s invokáció, `nyitva` döntéssel, tehát nem kötelez; az orkesztrátor eldöntheti, hogy a motívum-menetben marad-e.
+Az F110.4-es állapotban négy hely volt `nyitva`; a javítókör 1. körében a JSir 3:55 és az 5Móz 32:3 a felhasználó döntése szerint kiszűrve maradt (a kritérium nem változik; a két hely a fölérendelt fogalmon át tartozna ide, a kritériummódosítás a motívum azonosságát írná át, ez nem a szűrő-pilot dolga). A vártnál két sorral több kerül be (Ézs 41:25 és Ézs 64:6): mindkettő a szabály szerint átjutó aktív בְּ-s invokáció, `nyitva` döntéssel, tehát nem kötelez; az orkesztrátor eldöntheti, hogy a motívum-menetben marad-e.
 
 ### 6.2 Görög (21 hely)
 
@@ -145,14 +146,14 @@ A vártnál két sorral több kerül be (Ézs 41:25 és Ézs 64:6): mindkettő a
 |---|---|---|
 | elutasítva, automatikus K1 | 12 | ApCsel 1:23, 4:36, 10:5, 10:18, 10:32, 11:13, 12:12, 12:25, 15:17; Mt 10:3; Jak 2:7; Zsid 11:16 |
 | elutasítva, automatikus K3 | 6 | ApCsel 25:11, 25:12, 25:21, 25:25, 26:32, 28:19 |
-| elutasítva, kézi | 2 | 2Kor 1:23 (esküformás tanúhívás), Mt 10:25 (megnevezés) |
-| nyitva marad | 1 | ApCsel 7:59 (aktív invokáció, a besorolás a motívum-menetben dől el) |
+| elutasítva, kézi | 3 | 2Kor 1:23 (esküformás tanúhívás), Mt 10:25 (megnevezés), ApCsel 7:59 (nincs ὄνομα — invokáció a formulán kívül; ELLENOR_F110 2.) |
+| nyitva marad | 0 | — |
 
-**Eltérés a brief 4. szakaszától:** „a 21 G1941-sor egyike sem `nyitva`”; az orkesztrátor döntése szerint az ApCsel 7:59 `nyitva` marad.
+**Eltérés a brief 4. szakaszától:** „a 21 G1941-sor egyike sem `nyitva`”; az orkesztrátor eredeti döntése szerint az ApCsel 7:59 `nyitva` maradt; a javítókör 1. körében (ELLENOR_F110 2.) elutasítva, így a brief 4. szakaszával egyezik: a 21 G1941-sor egyike sem `nyitva`.
 
 ## 7. Írás a `adat/jeloltek.tsv`-be (5. lépés)
 
-`python eszkozok/f110_ir.py`: 636 → 640 sor. 21 módosult sor (a G1941: `dontes`, `indoklas`, `datum`), 4 új sor (mind `nyitva`, `jelolt_tipus=elofordulas`, `forras_kereses` = a kollokáció proveniencia-sora). Az összes többi sor bájtra azonos (a szkript soronként vet össze, eltérésnél nem ír; split/join, nem `csv`). `python eszkozok/ellenoriz.py`: RENDBEN 14, SÉRTÉS 0, KÉZI 2, JELENTÉS 3 (a 2 KÉZI és 3 JELENTÉS nem F110-eredetű). Egyik új sor sem került az `elofordulasok.tsv`-be (2. szabály).
+`python eszkozok/f110_ir.py`: 636 → 640 sor (a javítókör 1. körében `eszkozok/f110_ir2.py`: 2 sor törölve, 638 sor; ApCsel 7:59 elutasítva; az új sorok közül 2 `nyitva`). 21 módosult sor (a G1941: `dontes`, `indoklas`, `datum`), 4 új sor (mind `nyitva`, `jelolt_tipus=elofordulas`, `forras_kereses` = a kollokáció proveniencia-sora). Az összes többi sor bájtra azonos (a szkript soronként vet össze, eltérésnél nem ír; split/join, nem `csv`). `python eszkozok/ellenoriz.py`: RENDBEN 14, SÉRTÉS 0, KÉZI 2, JELENTÉS 3 (a 2 KÉZI és 3 JELENTÉS nem F110-eredetű). Egyik új sor sem került az `elofordulasok.tsv`-be (2. szabály).
 
 ## 8. Átvihetőség-mérés (6. lépés)
 
