@@ -51,12 +51,25 @@ FEJLEC = ['strong', 'sorszam', 'bdb_id', 'szakasz', 'resz', 'utvonal', 'jel', 'k
 REF = re.compile(r'\d+:\d+')
 
 
-def sha256_fajl(ut):
+def sha256_bajtok(darabok):
+    """Sorvég-független SHA-256 (F128.21, ELLENOR_F128 1.): a `kod_hash` konvenciója szerint \\r\\n → \\n, így a CRLF- és az
+    LF-checkout ugyanazt a hash-t adja. A darabhatáron kettévágott \\r\\n-t a visszatartott záró \\r kezeli."""
     h = hashlib.sha256()
-    with open(ut, 'rb') as f:
-        for b in iter(lambda: f.read(1 << 20), b''):
-            h.update(b)
+    maradek = b''
+    for b in darabok:
+        b = maradek + b
+        if b.endswith(b'\r'):
+            b, maradek = b[:-1], b'\r'
+        else:
+            maradek = b''
+        h.update(b.replace(b'\r\n', b'\n'))
+    h.update(maradek)
     return h.hexdigest()
+
+
+def sha256_fajl(ut):
+    with open(ut, 'rb') as f:
+        return sha256_bajtok(iter(lambda: f.read(1 << 20), b''))
 
 
 def kod_hash():

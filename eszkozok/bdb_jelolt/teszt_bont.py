@@ -365,6 +365,30 @@ class HuIlleszt(unittest.TestCase):
         self.assertTrue(h['3']['szoveg_hu'].startswith('1 Gerár'))
         self.assertEqual(h['4']['kategoria'], 'illeszkedik')
 
+    def test_hash_sorveg_fuggetlen(self):
+        # F128.21 (ELLENOR_F128 1.): a CRLF- és az LF-bájtsor azonos hash-t ad, a darabhatáron kettévágott \r\n-nél is
+        import hashlib
+        import tempfile
+        lf = 'első sor\tא\nmásodik\tβ\n\nutolsó'.encode('utf-8')
+        crlf = lf.replace(b'\n', b'\r\n')
+        vart = hashlib.sha256(lf).hexdigest()
+        self.assertEqual(self.hi.sha256_bajtok([lf]), vart)
+        self.assertEqual(self.hi.sha256_bajtok([crlf]), vart)
+        for i in range(1, len(crlf)):
+            self.assertEqual(self.hi.sha256_bajtok([crlf[:i], crlf[i:]]), vart, i)
+        self.assertEqual(self.hi.sha256_bajtok([b'a\r', b'b']), hashlib.sha256(b'a\rb').hexdigest())   # magányos \r marad
+        self.assertEqual(self.hi.sha256_bajtok([b'a\r']), hashlib.sha256(b'a\r').hexdigest())
+        with tempfile.TemporaryDirectory() as tmp:
+            for nev, b in (('lf', lf), ('crlf', crlf)):
+                with open(os.path.join(tmp, nev), 'wb') as fh:
+                    fh.write(b)
+            self.assertEqual(self.hi.sha256_fajl(os.path.join(tmp, 'lf')), self.hi.sha256_fajl(os.path.join(tmp, 'crlf')))
+        # a forditas_kapuk.py hash-e az LF-blobé, a checkout sorvégétől függetlenül
+        with open(os.path.join(GYOKER, 'eszkozok', 'forditas_kapuk.py'), 'rb') as fh:
+            blob = fh.read().replace(b'\r\n', b'\n')
+        self.assertEqual(self.hi.sha256_fajl(os.path.join(GYOKER, 'eszkozok', 'forditas_kapuk.py')),
+                         hashlib.sha256(blob).hexdigest())
+
     def test_ellenoriz(self):
         with open(self.hi.KI_UT, encoding='utf-8') as f:
             ts = f.readline().split('--ts ')[1].split(' ')[0]
