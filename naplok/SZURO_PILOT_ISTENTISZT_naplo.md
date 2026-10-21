@@ -168,3 +168,7 @@ A kérdés: tartalmaz-e a motívum negatív kritériuma (`adat/motivumok.tsv`) g
 | HAMART-001 (H2403, H7451, H0127, H7843, H7043, H2555) | alig | a kritérium a genezisi átok→föld→romlás láncra való visszautalás; gépileg csak a megnevezett kollokációk (málé+chámász, sámá+chámász) ellenőrizhetők, az egyes tág Strongokra (H2403, H7451) nincs kizáró gépi jegy; külön szűrő-szabály kell, vagy a tág Strongok gerinc-szerepe felülvizsgálandó |
 
 Következtetés: a pilot sémája (negatív kritérium, determinisztikus rész: Strong + kollokáció + igealak/törzs; kézi rész: referens és funkció) közvetlenül átvihető a MENNY-001-re, részben a KIRALY-001-re és az ANTROP-001-re; a HAMART-001 tág Strongjaira nem, ott a szűrőnek nincs gépi horgonya a puszta Strong-találatnál.
+
+## 9. Megjegyzés
+
+A `jeloltek.tsv` írása (F110.4) a DONTESEK-bejegyzés (DT-F110a) rögzítését megelőzte; a sorrend utólag nem javítható, tényként rögzítem (ELLENOR_F110 3.). A zárójelentést az orkesztrátor írja.
