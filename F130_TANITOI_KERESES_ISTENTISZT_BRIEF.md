@@ -34,7 +34,7 @@ forrásokhoz (Kenneth Hagin ✅, Derek Prince ⚠️) nincs forrás-URL. A DT249
 szabályával, a jóváhagyott listából (`sablonok/PaRDeS_tanitok_lista.md`).
 
 A sorrend a felhasználó döntése (DT-F130a): **előbb ez a feladat, utána a #127**, hogy a #127
-`tanitoi` rése (DT-F127a) az igazolt eredményre épüljön, és a rés-jelölőket az új fájlba tegye.
+`tanitoi` rése (DT276) az igazolt eredményre épüljön, és a rés-jelölőket az új fájlba tegye.
 
 ## 2. Hatókör
 

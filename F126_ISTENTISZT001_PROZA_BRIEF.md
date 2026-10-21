@@ -58,7 +58,7 @@ A próza nem lesz hosszabb, mint amit az adat elbír. Ahol egy hely csak formail
 - **A Seól-határ (A4, a felmérés 1. tanulmányozási kérdése):** a névtelen hívások (2Sám 22, Zsolt 18, Jón 2) határa tartalmi döntés, **a felhasználóé**. A feladat nem dönt róla és nem érvel mellette; ha a Zsolt 116:4 bekezdése a 116:3-at érinti, csak a mért szomszédságot mondhatja ki, motívumközi állítás nélkül, és a szövegjavaslat jelöli a kérdést.
 - **A Kármel–Zakariás visszhang** (4. tanulmányozási kérdés): a közös szókészlet nem idézés. Az 1. összefüggés bekezdése a két helyet a közös szavaik szerint egymás mellé teheti, kapcsolatot nem állít.
 - **A prózasablon** (a felmérés kilenc pontja): a #123 2d. szakasza és a DT-F123c dolga. Ez a feladat a mai rések szerkezetébe ír, szakaszt nem rendez át.
-- **Új rés** (alkalmazási kérdések, tanítói összegzés): a 2. tervezet DT-F127a döntése.
+- **Új rés** (alkalmazási kérdések, tanítói összegzés): a 2. tervezet DT276 döntése.
 - **Új adat:** új jelölt, kapcsolat, előfordulás vagy `lxx_dontesek.tsv`-sor nem keletkezik. Ha a lekérdezés hiányt talál, N-tétel lesz belőle, nem próza.
 - **A kizárások újranyitása** és a meglévő próza átírása, kivéve az N-F55d-ből következő számjavítást.
 

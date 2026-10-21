@@ -52,7 +52,7 @@ Az R0 (R0.1–R0.7) lefutott, élő adatba nem írt (K3). A 0.7, 0.8, 0.10–0.1
 
 - **Rés:** a lexikonoldal egy kézi szakasza. Kilenc rögzített rés van, a `VAZ_SABLON`
   sorrendjében: `kivonat`, `2b`, `miert_fontos`, `minosites`, `alatamasztas`, `ertelmezes`,
-  `alkalmazas`, `tanitoi`, `modszertan` (az `alkalmazas` és a `tanitoi` a DT-F127a óta, #127:
+  `alkalmazas`, `tanitoi`, `modszertan` (az `alkalmazas` és a `tanitoi` a DT276 óta, #127:
   a „6/b. Alkalmazás és tanítói egyezés” szakaszban; forrásuk a motívum forrásának
   5. pontja, ill. a tanítói fájl „Összegzés” szakasza; `adat/SEMA.md` 2.12). Határai az R0.2 szerint (fejlécsortól a következő rés-fejlécig, generált
   markerig vagy váz-fejlécig).

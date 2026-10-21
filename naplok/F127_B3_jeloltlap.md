@@ -1,6 +1,6 @@
 # F127 B3 — jelöltlap: az ISTENTISZT-001 öt motívumközi jelöltje
 
-*A felhasználó döntésére (⛔ B3, DT-F127e). A lap a döntést nem hozza meg: jelöltenként a mért adatot, a másik motívum tanulmányának idevágó helyét és a választások következményét adja. A közös fejezet vagy szókészlet önmagában nem bizonyít szándékos utalást (brief B3).*
+*A felhasználó döntésére (⛔ B3, DT280). A lap a döntést nem hozza meg: jelöltenként a mért adatot, a másik motívum tanulmányának idevágó helyét és a választások következményét adja. A közös fejezet vagy szókészlet önmagában nem bizonyít szándékos utalást (brief B3).*
 
 *Proveniencia: scope=adat/jeloltek.tsv (jelolt_tipus=motivumkozi, 5 sor), adat/elofordulasok.tsv, konkordancia/Karoli_1908.tsv | forras=naplok/F127_B2_meres.py (naplok/F127_B2_szomszedsag.tsv), lekerdez.py karoli --naplo F127 (naplok/F127_lekerdezesek.tsv) | ts=2026-10-20. A „másik motívum” sorok a tematikus tanulmányok szövegéből (manual, a K1-olvasás alapján).*
 
@@ -24,7 +24,7 @@ Két formai kérdés is van (F1, F2), lent.
 | A másik motívum tanulmánya | `Hadesz_Seol_tematikus.md` 2/b. tábla: „a Seól szorongatásai megragadtak”, Remez (a 63 új H7585-hely egyike, értelmezés nélkül). A Zsolt 116:3 Károli-KH-ja: 2Sám 22:5-6, Zsolt 18:5-6; a felmérés 1. kérdése ezeket a szakaszokat (2Sám 22:4–7, Zsolt 18:4–7) az ISTENTISZT-001 határán kívül eső „név nélküli” hívások közt említi. |
 | Célszint | a #123 Seól-határ-döntése (DT-F123d) szerint az ALVIL-001 „kiáltás a Seól szorításából” ↳ alpontja |
 
-**Korlát:** a DT-F127b (C) szerint az alponthoz kötött jelölt csak **nyitva** lehet, amíg az alpontnak nincs adatbeli azonosítója (ezt a #123 ALVIL-001-ciklusa vezeti be). Ha az alpont helyett az ALVIL-001 egészéhez kötnéd, az eltérne a Seól-határ-döntéstől — ezt a brief ⛔-ként kezeli, az a te külön döntésed.
+**Korlát:** a DT277 (C) szerint az alponthoz kötött jelölt csak **nyitva** lehet, amíg az alpontnak nincs adatbeli azonosítója (ezt a #123 ALVIL-001-ciklusa vezeti be). Ha az alpont helyett az ALVIL-001 egészéhez kötnéd, az eltérne a Seól-határ-döntéstől — ezt a brief ⛔-ként kezeli, az a te külön döntésed.
 
 ## (b) ApCsel 2:21 ↔ ALVIL-001 ApCsel 2:27; 2:31 — a motívum egésze
 

@@ -7,7 +7,7 @@ fazis: 1
 modell: opus
 allapot: lezarva
 pr: 452
-lezarva_osszegzes: "két új rés (alkalmazas, tanitoi) a 8 lexikonoldalon 6/b.-ként, res_forras 56 → 72; motívumközi jelölt-út (jeloltek kulcsbővítés 627 → 634, új motivum_kapcsolatok.tsv 3 sorral, generált 5/b. blokk); DT-F127a–f; ellenőrzés ELTÉRÉS 5 → 2 → 2 (alacsony súlyú, két javítókör, a zárás jóváhagyva); merge-feltétel: pardes.db helyi újraépítése és teszt_futtat.py; zárónapló naplok/F127_zaras.md"
+lezarva_osszegzes: "két új rés (alkalmazas, tanitoi) a 8 lexikonoldalon 6/b.-ként, res_forras 56 → 72; motívumközi jelölt-út (jeloltek kulcsbővítés 627 → 634, új motivum_kapcsolatok.tsv 3 sorral, generált 5/b. blokk); DT276–f; ellenőrzés ELTÉRÉS 5 → 2 → 2 (alacsony súlyú, két javítókör, a zárás jóváhagyva); merge-feltétel: pardes.db helyi újraépítése és teszt_futtat.py; zárónapló naplok/F127_zaras.md"
 ag: claude/lexikon-halo-res
 munka: folyamat
 ad: eldöntött és bevezetett út két, ma hiányzó lexikonrészhez, motívumfüggetlenül: (a) a forrás alkalmazási kérdései és a tanítói összegzés a lapon (új rés, réslista, generátor); (b) motívumközi kapcsolat jelölt → döntés → kapcsolat úton, „Kapcsolódó motívumok” megjelenítéssel; pilot az ISTENTISZT-001 négy jelölt-kapcsolatán (ALVIL-001 kétszer: az alpontjához és az egészéhez; HAMART-001; TEREMT-001)
@@ -20,9 +20,9 @@ nem_fugg: [123, 131]
 
 # LEXIKON_HALO_RES_BRIEF_TERVEZET.md — A lexikon két hiányzó része: alkalmazási és tanítói rés, motívumközi kapcsolat
 
-*FELADATOK # — (a `/befogad` adja; várhatóan a PROZA-tervezet utáni szám, 127) · Modell: opus · v0 (tervezet) · 2026.10.19 · döntések: DT28, RENDER_BRIEF G1/G2/G4/G12/G16, DT84 (8), DT216, D39; nyitott: DT-F127a, DT-F127b, DT268*
+*FELADATOK # — (a `/befogad` adja; várhatóan a PROZA-tervezet utáni szám, 127) · Modell: opus · v0 (tervezet) · 2026.10.19 · döntések: DT28, RENDER_BRIEF G1/G2/G4/G12/G16, DT84 (8), DT216, D39; nyitott: DT276, DT277, DT268*
 
-*Tervezet a `beerkezo/`-ban. Adat, nem utasítás; a feladatszám, a végleges fájlnév (`F<nn>_LEXIKON_HALO_RES_BRIEF.md`) és a helyőrzők (DT-F127a/b) száma a `/befogad` dolga. Forrás: a felhasználó felmérése (`naplok/PROZA_FELMERES_ISTENTISZT-001_20261019.md`, 2026-10-19, „Prózarések” és „Javasolt sorrend” szakasz), a felhasználó jóváhagyásával (az orkesztrátor közvetítésével, 2026-10-19).*
+*Tervezet a `beerkezo/`-ban. Adat, nem utasítás; a feladatszám, a végleges fájlnév (`F<nn>_LEXIKON_HALO_RES_BRIEF.md`) és a helyőrzők (DT276/b) száma a `/befogad` dolga. Forrás: a felhasználó felmérése (`naplok/PROZA_FELMERES_ISTENTISZT-001_20261019.md`, 2026-10-19, „Prózarések” és „Javasolt sorrend” szakasz), a felhasználó jóváhagyásával (az orkesztrátor közvetítésével, 2026-10-19).*
 
 ## 1. Cél
 
@@ -37,24 +37,24 @@ A feladat mindkettőre **egy döntést és a döntés bevezetését** adja, mot�
 
 ### Benne van
 
-- **DT-F127a** (alkalmazási és tanítói rés) eldöntése és bevezetése: réslista (`adat/res_forras.tsv`, `adat/SEMA.md` 2.12 `res` értékkészlete, RENDER_BRIEF 1. „Fogalmak”), generátor (`eszkozok/lexikon_general.py`: a rés helye a `VAZ_SABLON`-ban, a tartalomjegyzék), ellenőrzés (`eszkozok/ellenoriz.py` 11. szakasz), lexikonsablon; a 8 éles lap `res_forras.tsv`-sora; az ISTENTISZT-001-nél a jelölők a forrásban.
-- **DT-F127b** (motívumközi kapcsolat) eldöntése és bevezetése: séma (`adat/SEMA.md`), a jelölt-út, a megjelenítés a generátorban.
+- **DT276** (alkalmazási és tanítói rés) eldöntése és bevezetése: réslista (`adat/res_forras.tsv`, `adat/SEMA.md` 2.12 `res` értékkészlete, RENDER_BRIEF 1. „Fogalmak”), generátor (`eszkozok/lexikon_general.py`: a rés helye a `VAZ_SABLON`-ban, a tartalomjegyzék), ellenőrzés (`eszkozok/ellenoriz.py` 11. szakasz), lexikonsablon; a 8 éles lap `res_forras.tsv`-sora; az ISTENTISZT-001-nél a jelölők a forrásban.
+- **DT277** (motívumközi kapcsolat) eldöntése és bevezetése: séma (`adat/SEMA.md`), a jelölt-út, a megjelenítés a generátorban.
 - **Pilot:** az ISTENTISZT-001 jelölt-kapcsolatai a felmérés 3–5. összefüggéséből — jelöltként, döntéssel, a döntés után kapcsolatként, és a lapon megjelenítve. Az ALVIL-001-gyel **két külön jelölt** (a #123 Seól-határ-döntése (felhasználó, 2026-10-19: az ISTENTISZT-001 határa marad, a „kiáltás a Seól szorításából” az ALVIL-001 ↳ alpontja; DT-F123d, PR #436, `56046a40`; a végleges szám a befogadáskor)): (a) Zsolt 116:3 ↔ Zsolt 116:4, az ALVIL-001 „kiáltás a Seól szorításából” alpontjához kötve; (b) ApCsel 2:21 ↔ ApCsel 2:27, 31, az ALVIL-001 egészéhez. A HAMART-001 (1Móz 4. fejezet ↔ 4:26; 1Móz 12:3 ↔ 12:8) és a TEREMT-001 (Róm 10:7 ↔ 10:12–14) jelöltje változatlan.
-- A CLAUDE.md „hét rése” mondatának frissítése, ha a DT-F127a a réslistát bővíti (a CLAUDE.md közös fájl, az `ir`-be nem kell).
+- A CLAUDE.md „hét rése” mondatának frissítése, ha a DT276 a réslistát bővíti (a CLAUDE.md közös fájl, az `ir`-be nem kell).
 
 ### Nincs benne
 
 - **Próza** a motívumközi kapcsolatokról: a jóváhagyott kapcsolat után külön, értelmező feladat (egy kéz, a másik motívum értelmezését is olvasva; a felmérés „Szabályok” táblájának K1-sora). Ez a feladat csak adatot és generált megjelenítést ad.
 - **Szöveg írása az alkalmazási résbe:** a rés a meglévő kézi szöveget hozza; a szöveg nem változik (a RENDER_BRIEF G9 mintája: „a jelölők a meglévő szöveg köré kerülnek”).
-- **A Seól-határ (A4)** eldöntve: a #123 Seól-határ-döntése (felhasználó, 2026-10-19: az ISTENTISZT-001 határa marad, a „kiáltás a Seól szorításából” az ALVIL-001 ↳ alpontja; DT-F123d, PR #436, `56046a40`; a végleges szám a befogadáskor). E feladat ezt nem nyitja újra, és az ALVIL-001 alpontját sem hozza létre (az a #123 ALVIL-001-ciklusáé); csak a kapcsolat célját köti hozzá, ha a DT-F127b így dönt.
+- **A Seól-határ (A4)** eldöntve: a #123 Seól-határ-döntése (felhasználó, 2026-10-19: az ISTENTISZT-001 határa marad, a „kiáltás a Seól szorításából” az ALVIL-001 ↳ alpontja; DT-F123d, PR #436, `56046a40`; a végleges szám a befogadáskor). E feladat ezt nem nyitja újra, és az ALVIL-001 alpontját sem hozza létre (az a #123 ALVIL-001-ciklusáé); csak a kapcsolat célját köti hozzá, ha a DT277 így dönt.
 - A Kármel–Zakariás visszhang (4. kérdés): motívumon belüli, nem motívumközi kapcsolat.
 - A felmérés motívumfüggetlen felmérő eszköze (`eszkozok/motivum_felmeres.py`): a #123 2d. szakaszáé. A pilot a jelölteket saját lekérdezéssel méri, eszközt nem fejleszt.
-- A 7 nem migrált motívum forrásának jelölése (l. DT-F127a, javaslat): a #123 ciklusaiban.
+- A 7 nem migrált motívum forrásának jelölése (l. DT276, javaslat): a #123 ciklusaiban.
 - A törzscikk (`lexikon/[ID]_TORZSCIKK.md`): kivezetés alatt (D34), az ISTENTISZT-001-é archív (E28).
 
 ## 3. Nyitott döntések (⛔ 0.2; döntéshozó: a felhasználó, vagy az orkesztrátor a felhasználó felhatalmazásával)
 
-### DT-F127a — alkalmazási és tanítói rés
+### DT276 — alkalmazási és tanítói rés
 
 **Kérdés:** kapjon-e a lexikonoldal új rést a forrás alkalmazási kérdéseinek és a tanítói összegzésnek; ha igen, hány rést, honnan generálódnak, hol állnak a lapon, és hogyan módosul a réslista?
 
@@ -83,7 +83,7 @@ A feladat mindkettőre **egy döntést és a döntés bevezetését** adja, mot�
 - az ISTENTISZT-001 forrásában `<!-- RÉS-KEZDET: alkalmazas -->` … `<!-- RÉS-VÉGE: alkalmazas -->` az alkalmazási kérdések köré, a tanítói fájlban `tanitoi` az Összegzés köré; **a szöveg nem változik** (bájt-összevetés a jelölők nélkül);
 - a generátor és az `ellenoriz.py` 11. szakasza az új résekkel; a #123 X.M1-lépése (leképezési tábla) a két új rést is kezeli — ezt N-tétel rögzíti a #123-nak.
 
-### DT-F127b — motívumközi kapcsolat
+### DT277 — motívumközi kapcsolat
 
 **Kérdés:** hol éljen a két motívum közötti kapcsolat (a `kapcsolatok.tsv`-ben vagy új táblában), milyen úton kerül be (jelölt → döntés → kapcsolat), és hogyan jelenik meg a lapon?
 
@@ -126,14 +126,14 @@ A feladat mindkettőre **egy döntést és a döntés bevezetését** adja, mot�
 
 **0.1 Előfeltételek:** a felmérés a main-en (`naplok/PROZA_FELMERES_ISTENTISZT-001_20261019.md`); a PROZA-feladat (`ISTENTISZT001_PROZA`) `lezarva` (ugyanazt a forrásfájlt írja, l. 6.); az `ir` fájljain nem fut más feladat (D39; a #123 a `jeloltek.tsv`-t és a `res_forras.tsv`-t is írja — ha fut, ⛔).
 
-**0.2 ⛔ DT-F127a és DT-F127b eldöntése** a 3. szakasz opciói és javaslatai szerint, a `DONTESEK.md`-be helyőrzős tételként. A felhasználó (vagy az orkesztrátor a felhasználó felhatalmazásával) dönt; a végrehajtás a döntés után indul.
+**0.2 ⛔ DT276 és DT277 eldöntése** a 3. szakasz opciói és javaslatai szerint, a `DONTESEK.md`-be helyőrzős tételként. A felhasználó (vagy az orkesztrátor a felhasználó felhatalmazásával) dönt; a végrehajtás a döntés után indul.
 
-**A — alkalmazási és tanítói rés (a DT-F127a döntése szerint; az alábbi a 3. opció útja):**
+**A — alkalmazási és tanítói rés (a DT276 döntése szerint; az alábbi a 3. opció útja):**
 - **A1** séma és dokumentáció: `adat/SEMA.md` 2.12, RENDER_BRIEF 1. (a döntésre hivatkozva), lexikonsablon, CLAUDE.md. Commit.
 - **A2** jelölők az ISTENTISZT-001 forrásában és tanítói fájljában; bájt-összevetés: a jelölők nélküli szöveg azonos a régivel (szkript-fájllal). Commit.
 - **A3** `res_forras.tsv` (8 × új sor), generátor, `ellenoriz.py` 11. szakasz. Próba-render a `generalt_proba/`-ba (nem a repón kívüli ideiglenes könyvtárba, mert verziózott próba; CLAUDE.md), a 8 lapra: a várt diff csak az új szakasz (és a tartalomjegyzék). **⛔ a próba-render jóváhagyása**, utána éles újragenerálás. Commit.
 
-**B — motívumközi kapcsolat (a DT-F127b döntése szerint; az alábbi a javaslat útja):**
+**B — motívumközi kapcsolat (a DT277 döntése szerint; az alábbi a javaslat útja):**
 - **B1** séma: az új tábla (`adat/motivum_kapcsolatok.tsv`, fejléc, `adat/SEMA.md` új szakasz) és a `jeloltek.tsv` kulcsbővítése (a meglévő sorok `jelolt_tipus=elofordulas`, a többi új mező üres); táblát író szkript, írás előtt sor-összevetés az eredetivel, eltérésnél megállás (CLAUDE.md, TSV-szabály; minta: `eszkozok/igazolas_migracio.py`); a generátor 1/b. és `minosites` szűrése. A `jeloltek.tsv` minden meglévő sorára nulla-diff a lapokon (`eszkozok/nulladiff.sh`). Commit.
 - **B2** pilot-jelöltek: a felmérés 3–5. összefüggésének mért alapja **saját lekérdezéssel** (a másik motívum előfordulása a `elofordulasok.tsv`-ben; a fejezet-, ill. beszéd-szomszédság `lekerdez.py karoli` / szkript-fájl alapján), `--naplo F<nn> --lepes adhoc`; a felmérés számai nem források. Jelölt soronként, `dontes=nyitva`, indoklással; az ALVIL-001-gyel két külön jelölt: (a) Zsolt 116:3 ↔ 116:4 az alpont-céllal (a célszint-részkérdés döntése szerint), (b) ApCsel 2:21 ↔ 2:27, 31 a motívum egészére. **K1:** az író az ALVIL-001, a HAMART-001 és a TEREMT-001 tematikus tanulmányát és kereszthivatkozás-naplóját egészben olvassa, mielőtt jelöltet ír (`olvas`). A TEREMT-001-nél a felmérés maga kéri az előzetes olvasást („óvatosan”). Commit.
 - **B3 ⛔ Jelöltdöntés a felhasználótól** (a B5 jelöltminősítés emberi döntés, `F123_MIGRACIO2_BRIEF.md` 2c.): soronként `beépítve` / `elutasítva` / `nyitva`, érdemi indoklással. A közös fejezet vagy a közös szókészlet önmagában **nem** bizonyít szándékos utalást; a jelölt indoklása csak a mért szomszédságot mondja ki. A Seól-határ eldöntött (a #123 Seól-határ-döntése (felhasználó, 2026-10-19: az ISTENTISZT-001 határa marad, a „kiáltás a Seól szorításából” az ALVIL-001 ↳ alpontja; DT-F123d, PR #436, `56046a40`; a végleges szám a befogadáskor)); ha egy jelöltdöntés ettől eltérne vagy újranyitná, ⛔, és a kérdés a felhasználóé.
@@ -145,7 +145,7 @@ A feladat mindkettőre **egy döntést és a döntés bevezetését** adja, mot�
 
 ## 5. Elfogadási feltételek
 
-1. A DT-F127a és a DT-F127b el van döntve, és a bevezetés a döntést követi.
+1. A DT276 és a DT277 el van döntve, és a bevezetés a döntést követi.
 2. (a) Az ISTENTISZT-001 lapján az alkalmazási kérdések és a tanítói összegzés megjelenik; a forrás- és a tanítói fájl szövege a jelölőkön kívül bájtra változatlan; a többi 7 lapon az új rés kimondott hiány- vagy átmeneti mondattal áll, nem üresen (DT2).
 3. (b) Minden motívumközi kapcsolat-sor mögött `beépítve` jelölt áll felhasználói döntéssel és érdemi indoklással; jelölt nélkül nincs kapcsolat.
 4. A meglévő jelöltek és kapcsolatok megjelenése nem változik (nulla-diff a régi blokkokon); motívumközi jelölt nem jelenik meg kizárt jelöltként.
@@ -153,21 +153,21 @@ A feladat mindkettőre **egy döntést és a döntés bevezetését** adja, mot�
 
 ## 6. Döntésnapló és sorrend (helyőrzők; végleges számot a `szamkiosztas` Action ad)
 
-- **DT-F127a** — alkalmazási és tanítói rés (3. szakasz). *Eldöntendő a 0.2-ben.* Javaslat: 3. opció, „6/b” hely, a 7 motívum a #123-ban, törzscikkben nem.
-- **DT-F127b** — motívumközi kapcsolat: tárolás, jelölt-út, megjelenítés (3. szakasz). *Eldöntendő a 0.2-ben.* Javaslat: új tábla, `jeloltek.tsv` kulcsbővítéssel, generált 5/b. blokk.
-- **A4 (Seól-határ):** eldöntve, a #123 Seól-határ-döntése (felhasználó, 2026-10-19: az ISTENTISZT-001 határa marad, a „kiáltás a Seól szorításából” az ALVIL-001 ↳ alpontja; DT-F123d, PR #436, `56046a40`; a végleges szám a befogadáskor). Itt csak a pilot két ALVIL-001-jelöltjét és a célszint-részkérdést (DT-F127b) alakítja. *Azonosító:* a Seól-döntés a #123-ban DT-F123d (az orkesztrátor feloldása, 2026-10-19); a #123 DT-F123c-je a `9_` sablon v1-véglegesítése, másik tétel.
+- **DT276** — alkalmazási és tanítói rés (3. szakasz). *Eldöntendő a 0.2-ben.* Javaslat: 3. opció, „6/b” hely, a 7 motívum a #123-ban, törzscikkben nem.
+- **DT277** — motívumközi kapcsolat: tárolás, jelölt-út, megjelenítés (3. szakasz). *Eldöntendő a 0.2-ben.* Javaslat: új tábla, `jeloltek.tsv` kulcsbővítéssel, generált 5/b. blokk.
+- **A4 (Seól-határ):** eldöntve, a #123 Seól-határ-döntése (felhasználó, 2026-10-19: az ISTENTISZT-001 határa marad, a „kiáltás a Seól szorításából” az ALVIL-001 ↳ alpontja; DT-F123d, PR #436, `56046a40`; a végleges szám a befogadáskor). Itt csak a pilot két ALVIL-001-jelöltjét és a célszint-részkérdést (DT277) alakítja. *Azonosító:* a Seól-döntés a #123-ban DT-F123d (az orkesztrátor feloldása, 2026-10-19); a #123 DT-F123c-je a `9_` sablon v1-véglegesítése, másik tétel.
 - **Sorrend a PROZA-feladattal** (`beerkezo/ISTENTISZT001_PROZA_BRIEF_TERVEZET.md`): mindkettő írja a `motivumok/ISTENTISZT-001.md`-t, és ez a feladat írja a `jeloltek.tsv`-t, amelyet az olvas; a `feladatok.py` kölcsönös levezetett függést adna (DT-F39g: kizárás, a kisebb sorszám előre). **A befogadáskor:** e feladat `fugg`-ja a PROZA számát kapja, a PROZA `nem_fugg`-ja e feladatét. Indok: a próza az aranymintát rendezi, a jelölők és a pilot utána jönnek.
-- **DT268 — sorrend a #123-mal** (befogadási döntés). A #123 is írja a `jeloltek.tsv`-t és a `res_forras.tsv`-t, és olvassa a `jeloltek.tsv`-t; a két feladat egyszerre nem futhat (D39 a közös táblákra is). Opciók: **1.** PROZA → e feladat → #123 (e feladat `nem_fugg: [123]`; a #123 levezetetten vár erre); **2.** e feladat a #123 után (a #123 fejlécébe `nem_fugg` kell e feladat számával, e feladatéba `fugg: [123]`; a 7 motívum jelölői ekkor e feladatban kerülnek a már migrált forrásokba: 7 motívumfájl írása); **3.** szétválasztás: az A rész (rés) a #123 előtt, a B rész (pilot) utána. **Javaslat: 1.** Indok: a #123 X.M1-je így már az új réseket és a jelölt-utat látja, a 7 motívum jelölőit a saját ciklusa teszi be (DT-F127a javaslata), és a felmérés is a lap-megjelenítést teszi a próza-munka elé („Javasolt sorrend”); ára, hogy a #123 e feladat zárásáig vár. A fejléc ezért már most `nem_fugg: [123]`. A PROZA számával kiegészítve a próbafutás 0 hibát, kör nélküli sorrendet adott (#110 → e feladat a számsorrendből, PROZA → e feladat → #123 a függésből); a 2. opcióval a próbafutás a #110-en át függési kört adott. *(proveniencia: scope=a két tervezet ideiglenes `F126_*`/`F127_*` másolata a repó gyökerében, a futás után törölve | forras=`python eszkozok/feladatok.py ellenoriz` és `fuggesek` | ts=2026-10-19)*
+- **DT268 — sorrend a #123-mal** (befogadási döntés). A #123 is írja a `jeloltek.tsv`-t és a `res_forras.tsv`-t, és olvassa a `jeloltek.tsv`-t; a két feladat egyszerre nem futhat (D39 a közös táblákra is). Opciók: **1.** PROZA → e feladat → #123 (e feladat `nem_fugg: [123]`; a #123 levezetetten vár erre); **2.** e feladat a #123 után (a #123 fejlécébe `nem_fugg` kell e feladat számával, e feladatéba `fugg: [123]`; a 7 motívum jelölői ekkor e feladatban kerülnek a már migrált forrásokba: 7 motívumfájl írása); **3.** szétválasztás: az A rész (rés) a #123 előtt, a B rész (pilot) utána. **Javaslat: 1.** Indok: a #123 X.M1-je így már az új réseket és a jelölt-utat látja, a 7 motívum jelölőit a saját ciklusa teszi be (DT276 javaslata), és a felmérés is a lap-megjelenítést teszi a próza-munka elé („Javasolt sorrend”); ára, hogy a #123 e feladat zárásáig vár. A fejléc ezért már most `nem_fugg: [123]`. A PROZA számával kiegészítve a próbafutás 0 hibát, kör nélküli sorrendet adott (#110 → e feladat a számsorrendből, PROZA → e feladat → #123 a függésből); a 2. opcióval a próbafutás a #110-en át függési kört adott. *(proveniencia: scope=a két tervezet ideiglenes `F126_*`/`F127_*` másolata a repó gyökerében, a futás után törölve | forras=`python eszkozok/feladatok.py ellenoriz` és `fuggesek` | ts=2026-10-19)*
 - **`munka: folyamat`, de motívumfájlt ír** (a jelölőket a forrásban és a tanítói fájlban): a `feladatok.py` ezért `ertelmezo`-ként kezeli (nem csomagolható, K3.1), és a K3.2 szerint az `olvas` a motívum teljes anyagát tartalmazza. Ez a szándék: a pilot jelöltdöntései értelmező munkák, egy kézben. Ha a befogadás a két részt szétválasztaná (A: folyamat, motívumfájl nélkül; B: értelmező pilot), az A-ból a jelölés átkerül a B-be vagy a #123-ba.
 
 ## 7. Eltérések a brieftől (végrehajtás közben, jóváhagyva)
 
-- **`eszkozok/torzscikk_general.py` módosítása** (F127.4) — a fájl nincs az `ir`-listán. A DT-F127a „törzscikkben nem” pontja csak itt valósítható meg: a törzscikk a lexikonoldal 6. szakaszát a 7.-ig másolta, így a 6/b. is átkerült volna; a módosítás után a 6. szakasz a 6/b-ig tart (a próbán 7/7 törzscikk 0 eltérés). Jóváhagyta: a felhasználó, 2026-10-20 (DT-F127c). A független ellenőr vizsgálja.
-- **Az élesítés módja** (DT-F127c (a)): nem teljes `--cel lexikon --ir`, hanem az `eszkozok/f127_res_eles.py --ir` (csak a 6/b. szakasz és a tartalomjegyzék), mert a 7 nem migrált lap teljes újragenerálása a #36 függő változásait is behozná. Mellékhatás: a 7 régi lapon a tartalomjegyzék-blokk fejlécében a licenc-érték frissül.
+- **`eszkozok/torzscikk_general.py` módosítása** (F127.4) — a fájl nincs az `ir`-listán. A DT276 „törzscikkben nem” pontja csak itt valósítható meg: a törzscikk a lexikonoldal 6. szakaszát a 7.-ig másolta, így a 6/b. is átkerült volna; a módosítás után a 6. szakasz a 6/b-ig tart (a próbán 7/7 törzscikk 0 eltérés). Jóváhagyta: a felhasználó, 2026-10-20 (DT278). A független ellenőr vizsgálja.
+- **Az élesítés módja** (DT278 (a)): nem teljes `--cel lexikon --ir`, hanem az `eszkozok/f127_res_eles.py --ir` (csak a 6/b. szakasz és a tartalomjegyzék), mert a 7 nem migrált lap teljes újragenerálása a #36 függő változásait is behozná. Mellékhatás: a 7 régi lapon a tartalomjegyzék-blokk fejlécében a licenc-érték frissül.
 - **N-F127a** (új nyitott tétel): a tanítói összegzés belső utalásai a lapon a tanítói fájl szakaszaira mutatnak; a forrásban javítandó.
-- **Az `ir` bővítése a `jeloltek.tsv` kulcsbővítéséhez** (DT-F127d (1), orkesztrátor, 2026-10-20): `eszkozok/jelolt.py`, `eszkozok/nem_vizsgalt.py` (írók: új fejléc), `eszkozok/betolt.py`, `eszkozok/karoli_ellenorzes.py`, `eszkozok/ellenorzes/szabalyok.py`, `eszkozok/sqlite_epit.py` (olvasók: `jelolt_tipus=elofordulas` szűrés); a `torzscikk_general.py` is az `ir`-be került. A jelölt-sor két további, nem kulcs oszlopa: `cel_igehely`, `cel_alpont`. D39-ellenőrzés indulás előtt: egyik nem mergelt ág és egyik futó/megállt brief sem írja ezeket (git fetch, 2026-10-20). A `pardes.db` újraépítése nem a /mnt/c-ről fut, helyi teendő.
+- **Az `ir` bővítése a `jeloltek.tsv` kulcsbővítéséhez** (DT279 (1), orkesztrátor, 2026-10-20): `eszkozok/jelolt.py`, `eszkozok/nem_vizsgalt.py` (írók: új fejléc), `eszkozok/betolt.py`, `eszkozok/karoli_ellenorzes.py`, `eszkozok/ellenorzes/szabalyok.py`, `eszkozok/sqlite_epit.py` (olvasók: `jelolt_tipus=elofordulas` szűrés); a `torzscikk_general.py` is az `ir`-be került. A jelölt-sor két további, nem kulcs oszlopa: `cel_igehely`, `cel_alpont`. D39-ellenőrzés indulás előtt: egyik nem mergelt ág és egyik futó/megállt brief sem írja ezeket (git fetch, 2026-10-20). A `pardes.db` újraépítése nem a /mnt/c-ről fut, helyi teendő.
 - **Az `ir` utólagos bővítése a ténylegesen írt fájlokkal** (a független ellenőrzés 2. ELTÉRÉS-tétele, `naplok/ELLENOR_F127.md`; a javítókör 1. köre, F127.19; a besorolást mechanikusnak a felhasználó hagyta jóvá, 2026-10-21): az `ir`-en kívül íródott, most felvéve —
-  - `lexikon/ANTROP-001_TUDOMANYOS.md`, `lexikon/HODIT-001_TUDOMANYOS.md`, `lexikon/KIRALY-001_TUDOMANYOS.md`, `lexikon/MENNY-001_TUDOMANYOS.md`: a 8 éles lap közül a 4, amely nem volt az `ir`-en; az A3 élesítése (F127.6, `84e63e0a`: 6/b. szakasz és tartalomjegyzék, DT-F127c (a)) és a B4 élesítése (F127.16, `750c0ef8`: 5/b. blokk, DT-F127f (a)) írta őket;
+  - `lexikon/ANTROP-001_TUDOMANYOS.md`, `lexikon/HODIT-001_TUDOMANYOS.md`, `lexikon/KIRALY-001_TUDOMANYOS.md`, `lexikon/MENNY-001_TUDOMANYOS.md`: a 8 éles lap közül a 4, amely nem volt az `ir`-en; az A3 élesítése (F127.6, `84e63e0a`: 6/b. szakasz és tartalomjegyzék, DT278 (a)) és a B4 élesítése (F127.16, `750c0ef8`: 5/b. blokk, DT281 (a)) írta őket;
   - `eszkozok/f127_res_jelolok.py` (F127.3, `7d23ae7f`: a rés-jelölők beírása), `eszkozok/f127_res_forras_bovit.py` és `eszkozok/f127_res_eles.py` (F127.4, `72e00b2b`: a `res_forras.tsv` 16 sora, ill. a részleges élesítő), `eszkozok/f127_jeloltek_bovit.py` (F127.9, `120f2cef`: a `jeloltek.tsv` kulcsbővítése): a feladat egyszeri, új segédszkriptjei.
   *(proveniencia: scope=9d602794..82a1873a | forras=`git diff --name-only`, `git log --diff-filter=A` | ts=2026-10-21)*
   - `eszkozok/teszt_general_ellenorzo.py` és `eszkozok/teszt_sqlite_epit.py` (F127.9, `120f2cef`: a kulcs-tábla a `jeloltek.tsv` bővített kulcsával és a `motivum_kapcsolatok.tsv`-vel, a táblaszám 23, az `ellenoriz.py`-szabályok száma 15 a 2/b. miatt) szintén az `ir`-en kívül íródott; az F127.26 vette fel őket (a független újraellenőrzés 1. ELTÉRÉS-tétele, `naplok/ELLENOR_F127_2.md`; a besorolást mechanikusnak a felhasználó hagyta jóvá, 2026-10-21).

@@ -199,7 +199,7 @@ kétpontos modellbe (pl. egy versen belüli kontraszt), ezt itt explicit
 ki kell mondani, és jelezni a nyitott tervezési kérdést.
 
 ### 5/b. Kapcsolódó motívumok (generált)
-*(DT-F127b (α), #127.)* Az `adat/motivum_kapcsolatok.tsv` sorai, amelyekben
+*(DT277 (α), #127.)* Az `adat/motivum_kapcsolatok.tsv` sorai, amelyekben
 a motívum az egyik fél (SEMA 2.33): a másik motívum (hivatkozással a
 lapjára), az igehely-pár, típus, funkció, bizonyosság, PaRDeS-szint,
 indoklás; a sor mindkét motívum lapján megjelenik. Minden sor mögött
@@ -234,7 +234,7 @@ felismerés NEM állít" bekezdés és egy "Nyitott kérdés a folytatáshoz"
 bekezdés.
 
 ### 6/b. Alkalmazás és tanítói egyezés (kézi)
-*(DT-F127a, #127.)* Két rés egy szakaszban, a 6. Értelmezés után (a
+*(DT276, #127.)* Két rés egy szakaszban, a 6. Értelmezés után (a
 szakaszszámozás nem tolódik, az „1/b.” mintájára):
 
 - **Alkalmazás és tanítványság** (`alkalmazas` rés) — a motívum kézi
@@ -423,8 +423,8 @@ lexikon-oldal saját kockázataira szabva:
       és vizsgált helyek, 2. Szótári háttér [+2/b és Miért fontos ez a
       lelet, ha van], 3. LXX-fordítói döntések, 4. Kereszthivatkozások
       + Minősítés, 5. Kapcsolatok + Alátámasztás, 5/b. Kapcsolódó
-      motívumok (DT-F127b), 6. Értelmezés, 6/b.
-      Alkalmazás és tanítói egyezés (DT-F127a), 7.
+      motívumok (DT277), 6. Értelmezés, 6/b.
+      Alkalmazás és tanítói egyezés (DT276), 7.
       Módszertan és nyitott kérdések, 8. Irodalom és idézés, Kolofon —
       LEXV2_2_BRIEF.md G1), és az OLVASHATÓ változat mind a 7 kötelező
       szakasza jelen van. Utólagos szerkesztésnél külön ellenőrizendő,

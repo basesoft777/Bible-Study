@@ -13,7 +13,7 @@
 
 *(proveniencia: scope=adat/jeloltek.tsv, adat/res_forras.tsv, adat/motivum_kapcsolatok.tsv, konkordancia/ @ 9d602794 és @ 15ef1a2b | forras=`git show <rev>:<fájl> \| grep -v '^#' \| tail -n +2 \| grep -c .`; `git diff --numstat 9d602794..HEAD`; `git diff --name-only 9d602794..HEAD -- konkordancia/ \| wc -l` | ts=2026-10-21T06:05Z)*
 
-A `jeloltek.tsv` numstatja (636 / 629) nem 7 új sort jelent 629 törléssel: az F127.9 kulcsbővítése (DT-F127d) a 627 régi adatsort, a fejlécet és a kommentsort négy új oszloppal írta vissza, az első 9 mező változatlan; ezt a független ellenőrzés word-diff-fel igazolta (`naplok/ELLENOR_F127.md`, „DT-F127d (627 sor, első 9 mező)” és „Lista 1”). A +7 a `jelolt_tipus` szerint:
+A `jeloltek.tsv` numstatja (636 / 629) nem 7 új sort jelent 629 törléssel: az F127.9 kulcsbővítése (DT279) a 627 régi adatsort, a fejlécet és a kommentsort négy új oszloppal írta vissza, az első 9 mező változatlan; ezt a független ellenőrzés word-diff-fel igazolta (`naplok/ELLENOR_F127.md`, „DT279 (627 sor, első 9 mező)” és „Lista 1”). A +7 a `jelolt_tipus` szerint:
 
 | `jelolt_tipus` | `dontes` | sor |
 |---|---|---|
@@ -21,13 +21,13 @@ A `jeloltek.tsv` numstatja (636 / 629) nem 7 új sort jelent 629 törléssel: az
 | `motivumkozi` | `beépítve` | 2 |
 | `motivumkozi` | `nyitva` | 5 |
 
-A 2 `beépítve` motívumközi jelölt 3 kapcsolat-sort ad, mert a DT-F127e (b) jelöltje (ISTENTISZT-001 ApCsel 2:21) két célverset (ALVIL-001 ApCsel 2:27 és 2:31) köt össze (DT-F127e F2, F127.13); a (d) (1Móz 12:8 ↔ HAMART-001 1Móz 12:3) egy sort ad.
+A 2 `beépítve` motívumközi jelölt 3 kapcsolat-sort ad, mert a DT280 (b) jelöltje (ISTENTISZT-001 ApCsel 2:21) két célverset (ALVIL-001 ApCsel 2:27 és 2:31) köt össze (DT280 F2, F127.13); a (d) (1Móz 12:8 ↔ HAMART-001 1Móz 12:3) egy sort ad.
 
 *(proveniencia: scope=adat/jeloltek.tsv @ 15ef1a2b | forras=`git show HEAD:adat/jeloltek.tsv \| grep -v '^#' \| tail -n +2 \| awk -F'\t' '{print $10" \| "$4}' \| sort \| uniq -c` | ts=2026-10-21T06:05Z)*
 
 ## 2. A `res_forras.tsv` +16 sorának bontása: 2 + 14
 
-A DT-F127a (3. opció; a 7 nem migrált motívumnál (i)) és az F127.4 commit (`72e00b2b`) szerint mind a 8 éles lexikonoldal két új rést kap (`alkalmazas`, `tanitoi`): 8 × 2 = 16 sor.
+A DT276 (3. opció; a 7 nem migrált motívumnál (i)) és az F127.4 commit (`72e00b2b`) szerint mind a 8 éles lexikonoldal két új rést kap (`alkalmazas`, `tanitoi`): 8 × 2 = 16 sor.
 
 | rész | motívum | sor | `forras` | `tanulmany` |
 |---|---|---|---|---|

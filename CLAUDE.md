@@ -49,7 +49,7 @@ Az értelmező próza egy kézben, egy modellel készül, és aki belenyúl, az 
 
 A `lexikon/[ID]_TUDOMANYOS.md` kilenc rése (`kivonat`, `2b`, `miert_fontos`,
 `minosites`, `alatamasztas`, `ertelmezes`, `alkalmazas`, `tanitoi`,
-`modszertan`; az `alkalmazas` és a `tanitoi` a DT-F127a óta) is a kimenet
+`modszertan`; az `alkalmazas` és a `tanitoi` a DT276 óta) is a kimenet
 rétegbe tartozik: a fejlécsoruk az `adat/res_forras.tsv`-ből, a törzsük a
 motívum tematikus tanulmányából (migrált motívumnál a forrásából), a tanítói
 fájljából vagy a kereszthivatkozás-naplójából
