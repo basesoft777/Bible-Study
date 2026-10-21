@@ -92,7 +92,7 @@ javaslattal:
    szakasz-kapu) **szótárfüggetlenül**, Thayer-ággal (javaslat), vagy külön Thayer-lánc. Modell: Sonnet a
    DT-F38e mintájára, vagy Opus. A választást a #128 M0-ja (tárolási kulcs, `forras_hash`) befolyásolja,
    ezért ez a feladat a #128 után fut (`fugg: [128]`).
-5. **DT-F132e — viszony a #131-hez:** (a) a #131 görög része erre vár (`fugg` + 132 a #131 fejlécében;
+5. **DT282 — viszony a #131-hez:** (a) a #131 görög része erre vár (`fugg` + 132 a #131 fejlécében;
    a felhasználó jóváhagyásával, a befogadáskor vagy a #131 menetében) · (b) a #131 előbb csak a héber
    BDB-réteggel készül, a görög a #132 után kerül be (újragenerálás). Javaslat: (a), ha a #128 és a #132
    időben a #131 előtt elkészül; különben (b).
@@ -151,4 +151,4 @@ Push és merge csak a felhasználótól.
 | DT-F132b | Kulcs, séma, a `G12` → `G0012` normalizálás | l. M0 2. | `Strong_padded`, a SEMA 2.29–2.30 mintájára |
 | DT-F132c | A 14 kész `teljes` sor sorsa | (a) újrafordítás szakaszonként · (b) utólagos illesztés · (c) mindkettő | (a) |
 | DT-F132d | A fordítás lánca és modellje | a #128 lánca szótárfüggetlenül / külön lánc; Sonnet / Opus | közös lánc; Sonnet (DT-F38e mintája) |
-| DT-F132e | Viszony a #131-hez | (a) a #131 görög része vár · (b) a #131 héberrel indul, a görög később | (a), ha időben elkészül; különben (b) |
+| DT282 | Viszony a #131-hez | (a) a #131 görög része vár · (b) a #131 héberrel indul, a görög később | (a), ha időben elkészül; különben (b) |
