@@ -13,9 +13,9 @@ Megjegyzés: az ág nincs a main csúcsára alapozva (F110 merge, DT283/DT284); 
 ## Rendben
 - Az ág csak az `ir`-ben szereplő fájlokat módosította; adattábla nem íródott (`forditasok.tsv`, `bdb_szakasz_hu.tsv`, `bdb_szakaszok.tsv` érintetlen); adatsor-törlés 0, táblasor-Δ 0.
 - H8415 kézi sor érintetlen; `szakasz_beir` `--kezi-marad` nélkül megáll rajta (`teszt_szakasz_bemenet.py:258`).
-- DT-F128a–g: hét helyőrzős, 🟢 sor, végleges DT-szám nincs az ágon; kódírás egyik ⛔-t sem előzte meg (F128.1 → .3 → .4; .8 → .9 → .10).
+- DT285–g: hét helyőrzős, 🟢 sor, végleges DT-szám nincs az ágon; kódírás egyik ⛔-t sem előzte meg (F128.1 → .3 → .4; .8 → .9 → .10).
 - `prompt_v5.md`: a v4-hez képest 51 beszúrás, 0 törlés. A régi `teljes` út változatlan; a `teljes` BDB-sorok száma 674, az új összefűző a mai adaton ugyanazt adja.
 - Szakasz-kapu, bemenet-előállító, 13. szabály `sz<n>` ága: kódban és tesztekben rendben; E2–E15, E19, E20, E26, E28, E29, E31: 0 találat.
 
 ## Nem ellenőrizhető (az ellenőr szerepéből)
-Tesztek és a main-en állítólag meglévő hibák (`teszt_olvaso_szerver` 2, `teszt_pilot_aranymintaval`) futtatása; a modellhívás hiánya; a száraz próba számai (a szkriptek a repón kívül); az, hogy a DT-F128a–g döntéseket a felhasználó hozta-e (a repóból nem igazolható).
+Tesztek és a main-en állítólag meglévő hibák (`teszt_olvaso_szerver` 2, `teszt_pilot_aranymintaval`) futtatása; a modellhívás hiánya; a száraz próba számai (a szkriptek a repón kívül); az, hogy a DT285–g döntéseket a felhasználó hozta-e (a repóból nem igazolható).

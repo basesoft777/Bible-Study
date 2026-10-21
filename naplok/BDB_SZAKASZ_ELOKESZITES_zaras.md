@@ -2,7 +2,7 @@
 
 *2026.10.21 · javítókör: claude-sonnet-5-5 (orkesztrátor), claude-opus-5-5 (végrehajtó) · ág: claude/f128-bdb-szakasz-elokeszites-a2fc2f · PR: #456 (draft)*
 
-- **Kész:** a szakaszonkénti BDB-fordítás eszközlánca (bemenet-előállító, prompt v5, 14. szakasz-kapu, `forditasok.tsv` szakaszkulcs, közös összefűző, olvasók átállítása); DT-F128a–g eldöntve; modellhívásos fordítás nincs, `adat/forditasok.tsv` nem íródott.
+- **Kész:** a szakaszonkénti BDB-fordítás eszközlánca (bemenet-előállító, prompt v5, 14. szakasz-kapu, `forditasok.tsv` szakaszkulcs, közös összefűző, olvasók átállítása); DT285–g eldöntve; modellhívásos fordítás nincs, `adat/forditasok.tsv` nem íródott.
 - **Független ellenőrzés:** `ELLENOR_F128` ELTÉRÉS: 2 tétel → javítókör 1/2 → `ELLENOR_F128_2` TISZTA.
 - **1. tétel (tábla-hash):** `bdb_szakasz_hu.tsv` újragenerálva (`--ts 2026-10-18`), a régivel sorszintűen összevetve csak a `# forras` sor változott; a hash sorvég-független lett (F128.21, teszttel).
 - **2. tétel (E16):** a draft PR címe `[ELLENŐRZŐ]` előtagú.

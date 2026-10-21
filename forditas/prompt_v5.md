@@ -2,15 +2,15 @@
 
 *A `forditas/prompt_v4.md` (v4.2) szó szerinti másolata, egyetlen új blokkal: „Kiegészítő szabály (v5) — szakaszhatár-tokenek”
 (a v4.2 adatblokk-blokkja után). A v4 egyetlen sora sem módosult; a v4 fejléce és verziónaplója alább változatlanul áll.
-Csak a BDB szakaszonkénti bemenetéhez (DT181 (b), DT-F128a–c): az `eszkozok/emeles.py szakasz_elokeszit` tölti ki, a forrás
-a `eszkozok/bdb_jelolt/szakasz_bemenet.py` tokenes szövege. A régi `teljes` út (a 9 táblán kívüli Strong, DT-F128d (2); a
+Csak a BDB szakaszonkénti bemenetéhez (DT181 (b), DT285–c): az `eszkozok/emeles.py szakasz_elokeszit` tölti ki, a forrás
+a `eszkozok/bdb_jelolt/szakasz_bemenet.py` tokenes szövege. A régi `teljes` út (a 9 táblán kívüli Strong, DT288 (2); a
 Thayer) a v4-et használja.*
 
 ## Verziónapló (v5)
 
 | Verzió | Dátum | Változás | Ok |
 |---|---|---|---|
-| v5.0 | 2026.10.21 | a v4.2 másolata + „Kiegészítő szabály (v5) — szakaszhatár-tokenek” blokk, példával | F128 M2 (DT181 (b), DT-F128a–c) |
+| v5.0 | 2026.10.21 | a v4.2 másolata + „Kiegészítő szabály (v5) — szakaszhatár-tokenek” blokk, példával | F128 M2 (DT181 (b), DT285–c) |
 
 ---
 

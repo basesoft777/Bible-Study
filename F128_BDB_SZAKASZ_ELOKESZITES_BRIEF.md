@@ -7,7 +7,7 @@ fazis: 1
 modell: opus
 allapot: lezarva
 pr: 456
-lezarva_osszegzes: "a szakaszonkénti BDB-fordítás eszközlánca kész (bemenet-előállító, prompt v5, 14. szakasz-kapu, szakaszkulcs, közös összefűző, olvasók átállítása); DT-F128a–g; ellenőrzés ELTÉRÉS: 2 → 1 javítókör → TISZTA; a teszt_bont 2 main-beli bukása külön tervezet (beerkezo/Fnn_BDB_FEJLEC_DT_BRIEF.md)"
+lezarva_osszegzes: "a szakaszonkénti BDB-fordítás eszközlánca kész (bemenet-előállító, prompt v5, 14. szakasz-kapu, szakaszkulcs, közös összefűző, olvasók átállítása); DT285–g; ellenőrzés ELTÉRÉS: 2 → 1 javítókör → TISZTA; a teszt_bont 2 main-beli bukása külön tervezet (beerkezo/Fnn_BDB_FEJLEC_DT_BRIEF.md)"
 ag: claude/f128-bdb-szakasz-elokeszites-a2fc2f
 ad: a #38 a következő adagtól szakaszonként fordíthat — a bemenet-előállító, a prompt v5, a szakasz-kapu és a forditasok.tsv szakaszkulcsa kész és tesztelt, modellhívásos fordítás nélkül
 kovetkezo: "Te: merge a felhasználótól (PR #456); a beerkezo/Fnn_BDB_FEJLEC_DT_BRIEF.md befogadása /befogad-dal"
@@ -38,7 +38,7 @@ eseteken teszteli.
 
 ### M0 — felmérés és ⛔ tervezési döntések (csak olvas)
 
-Mérje fel, és a `DONTESEK.md`-be helyőrzős tételként (`DT-F128a` …) vigye a felhasználó elé, opciókkal és javaslattal:
+Mérje fel, és a `DONTESEK.md`-be helyőrzős tételként (`DT285` …) vigye a felhasználó elé, opciókkal és javaslattal:
 
 1. **Tárolási kulcs.** (a) szakaszonkénti sorok az `adat/forditasok.tsv`-ben (`jelentes_szam` = a szakasz azonosítója, pl. `sz<sorszam>`;
    `forras_hash` a szakasz szövegéé), a Strong teljes szövege nézet; (b) egy `teljes` sor Strongonként, benne a szakaszhatár

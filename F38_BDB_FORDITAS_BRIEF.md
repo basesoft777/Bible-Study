@@ -55,13 +55,13 @@ A gyakoriságot az M0 számolja egy Strong-címkés ószövetségi szövegből a
 
 ## Lépések
 
-> **Szakaszonkénti út (#128, DT181 (b), DT-F128a–e; 2026.10.21).** A 7. adag előtti újrafordító adagtól (a 98 N-F107b Strong,
-> DT-F128e) a BDB szakaszonként fordul: `emeles.py szakasz_elokeszit` (tokenes bemenet `⟪sorszam⟫` határtokenekkel,
+> **Szakaszonkénti út (#128, DT181 (b), DT285–e; 2026.10.21).** A 7. adag előtti újrafordító adagtól (a 98 N-F107b Strong,
+> DT289) a BDB szakaszonként fordul: `emeles.py szakasz_elokeszit` (tokenes bemenet `⟪sorszam⟫` határtokenekkel,
 > `forditas/prompt_v5.md`, 20 000 karakter fölött ≤ ~10 000 karakteres csoportok) → `szakasz_ellenoriz` (14. szakasz-kapu, 9.
 > tagolás szakaszonként) → `szakasz_rogzit` → `szakasz_beir --regi-elavult` (`jelentes_szam = sz<sorszam>`; a régi `teljes`
 > sor `elavult`). A 9 táblán kívüli Strong a régi úton (prompt v4, `rogzit` / `beir`). Séma: `adat/SEMA.md` 2.14; napló:
 > `naplok/F128_BDB_SZAKASZ_ELOKESZITES_naplo.md`. A H8415 (`kezi`): újrafordul, a szakaszsorai `--kezi-marad`-dal kerülnek be, és
-> csak a felhasználó jóváhagyása után kapnak `kezi`-t (DT-F128f (3)); az olvasók a közös összefűzőt használják (DT-F128g (a)).
+> csak a felhasználó jóváhagyása után kapnak `kezi`-t (DT290 (3)); az olvasók a közös összefűzőt használják (DT291 (a)).
 
 ### M0 — Felmérés (csak olvas)
 

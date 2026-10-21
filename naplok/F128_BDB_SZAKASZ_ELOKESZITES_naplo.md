@@ -27,7 +27,7 @@ nem íródott ki). Bemenetek az ág bázisán (`72eee13d`): `adat/forditasok.tsv
 
 `scope=adat/forditasok.tsv, naplok/BDB_FORDITAS_sorrend.tsv, adat/bdb_szakaszok.tsv | forras=m0_meres.py @72eee13d | ts=2026-10-21`
 
-### 1. A `jelentes_szam = teljes` BDB-sorok olvasói (a tárolási kulcs, DT-F128a)
+### 1. A `jelentes_szam = teljes` BDB-sorok olvasói (a tárolási kulcs, DT285)
 
 Keresés: `grep` a `forditasok.tsv` / `forditasok` / `'teljes'` mintákra az `eszkozok/`, `naplok/`, `.github/workflows/` alatt, majd a
 találatok kódjának olvasása. Az alábbi tábla a futó (nem eseti) olvasókat sorolja; mit kellene átállítani (a) szakaszonkénti sorok
@@ -62,7 +62,7 @@ kulcs várhatóan a Thayerre is érvényes lesz.
 
 `scope=eszkozok/, naplok/, .github/workflows/ (olvasók) | forras=grep forditasok / 'teljes' + kódolvasás @72eee13d | ts=2026-10-21`
 
-### 2. A `forras_hash` alapja (DT-F128b)
+### 2. A `forras_hash` alapja (DT286)
 
 | mérés | érték |
 |---|---|
@@ -79,7 +79,7 @@ nézetből vezethető le, nem soronként külön.
 
 `scope=adat/forditasok.tsv BDB teljes sorai × konkordancia/BDB_teljes_unabridged.tsv × nezet_general.general(pe_mem=False) | forras=m0_meres.py @72eee13d | ts=2026-10-21`
 
-### 3. A darabolás egysége (DT-F128c)
+### 3. A darabolás egysége (DT287)
 
 | mérés | érték |
 |---|---|
@@ -96,7 +96,7 @@ kettévágása nélkül. A korábbi gyakorlat (F38 napló 4.): a 20 000 fölött
 
 `scope=adat/bdb_szakaszok.tsv + javítótábla nézete, 8 090 Strong | forras=m0_meres.py @72eee13d | ts=2026-10-21`
 
-### 4. A nem `egyezik` illesztésű Strongok (DT-F128d)
+### 4. A nem `egyezik` illesztésű Strongok (DT288)
 
 | kategória | Strong | nézet = TSV | hossz (medián / max.) | szakasz/Strong (medián) | kész | hátralék | a 7. adagban |
 |---|---|---|---|---|---|---|---|
@@ -113,7 +113,7 @@ felsorolt három kategória + a táblán kívüliek) **147** Strong; a 7. adagba
 
 `scope=adat/bdb_szakaszok.tsv illesztes × forditasok.tsv × BDB_FORDITAS_sorrend.tsv | forras=m0_meres2.py @72eee13d | ts=2026-10-21`
 
-### 5. A 98 elakadó Strong (N-F107b, DT-F128e)
+### 5. A 98 elakadó Strong (N-F107b, DT289)
 
 A lista a `bdb_szakasz_hu.tsv` `elakad` soraiból újraszámolva **98 Strong, 606 sor** — halmazként azonos a
 `naplok/F107_BDB_JELOLT_SZOVEG_naplo.md` 7.1 táblájával (`diff`: azonos).
@@ -134,19 +134,19 @@ előtti tartomány. A 98 együtt kb. 1,35 adagnyi (500 000 karakteres adaggal sz
 
 ### ⛔ M0 — döntésre vár
 
-Az öt tétel a `DONTESEK.md`-ben: **DT-F128a** (tárolási kulcs), **DT-F128b** (`forras_hash`), **DT-F128c** (darabolás), **DT-F128d** (nem
-`egyezik` Strongok), **DT-F128e** (N-F107b). A döntésig kódírás nincs (brief M0).
+Az öt tétel a `DONTESEK.md`-ben: **DT285** (tárolási kulcs), **DT286** (`forras_hash`), **DT287** (darabolás), **DT288** (nem
+`egyezik` Strongok), **DT289** (N-F107b). A döntésig kódírás nincs (brief M0).
 
 **Döntés (F128.3, `74e23809`):** a felhasználó 2026-10-21-én (chat, az orkesztrátor-sessionben továbbítva) mind az öt javaslatot
-elfogadta: DT-F128a (a), DT-F128b (1), DT-F128c (2), DT-F128d (2)+(i), DT-F128e sors (2), sorrend (i). A H8415 `kezi` soráról nem
-döntött: DT-F128f (🟡).
+elfogadta: DT285 (a), DT286 (1), DT287 (2), DT288 (2)+(i), DT289 sors (2), sorrend (i). A H8415 `kezi` soráról nem
+döntött: DT290 (🟡).
 
 ## M1 — bemenet-előállító (F128.4, `73cf712b`)
 
 `eszkozok/bdb_jelolt/szakasz_bemenet.py`: Strongonként a szakasztábla sorai (`jel` + `szoveg`), a `hivatkozas` / `javitva`
 javításokkal (a Strong-nézeten, a `nezet_general.py` logikájával, a szakaszhatár mentén visszavágva), pe/mem csere nélkül;
-határtoken `⟪<sorszam>⟫` (a `⟦n⟧` az `emeles.py` héber/görög helyőrzője, ezért más jel). Szakaszonkénti SHA-1 (DT-F128b (1)),
-hívás-csoportok (DT-F128c (2)), a közös összefűző `strong_magyar()` (DT-F128a (a)); a 9 táblán kívüli Strong `None` (DT-F128d (2)).
+határtoken `⟪<sorszam>⟫` (a `⟦n⟧` az `emeles.py` héber/görög helyőrzője, ezért más jel). Szakaszonkénti SHA-1 (DT286 (1)),
+hívás-csoportok (DT287 (2)), a közös összefűző `strong_magyar()` (DT285 (a)); a 9 táblán kívüli Strong `None` (DT288 (2)).
 Előmérés: üres szakaszsor 0; a 412 hivatkozás-javításból szakaszhatáron átnyúló 0; `⟪⟫⟦⟧` jel a forrásszövegben 0.
 
 `--ellenoriz`: 8 090 Strong, 36 621 szakasz; a token nélküli szöveg mind a 8 090-en azonos a `nezet_general.py` (`--pe-mem` nélküli)
@@ -213,22 +213,22 @@ felváltott `teljes` sorra) sora, és egy bekezdés a szakaszonkénti sorokról 
 
 ## Nyitott (F128.8 állapota; azóta eldöntve, l. lent)
 
-- **DT-F128f** (🟡): a H8415 `kezi` sora — újrafordul-e (a `szakasz_beir` ma megáll rajta, `--kezi-felulir` nélkül).
-- **DT-F128g** (🟡, ⛔): az olvasók átállítása az első `sz<n>` sor beírása előtt. Az `ir` mezőn kívül: `eszkozok/ellenoriz.py`
+- **DT290** (🟡): a H8415 `kezi` sora — újrafordul-e (a `szakasz_beir` ma megáll rajta, `--kezi-felulir` nélkül).
+- **DT291** (🟡, ⛔): az olvasók átállítása az első `sz<n>` sor beírása előtt. Az `ir` mezőn kívül: `eszkozok/ellenoriz.py`
   13. szabály (CI E1: az `sz<n>` sorhoz ma „nincs hozzá forrásszöveg” = SÉRTÉS), `olvaso_szerver/lekerdezesek.py` `bdb_magyar` /
   `bdb_magyar_meta` (az utolsó nem üres sort veszi: az utolsó szakaszt mutatná), `bdb_adatblokk.py --karoli-epit` (a kész halmaz
   csak `teljes`), `bdb_jelolt/hu_illeszt.py` (az utolsó nem üres sor). A #38 első szakaszos beírása nélküle a CI-t megbuktatja.
 
-## Az olvasók átállítása (DT-F128g (a), DT-F128f (3); F128.9–.14)
+## Az olvasók átállítása (DT291 (a), DT290 (3); F128.9–.14)
 
-**Döntés (F128.9, `b34f835b`):** a felhasználó 2026-10-21-én (chat, az orkesztrátor-sessionben továbbítva): DT-F128g (a) — a brief
-`ir` mezője bővül a négy olvasóval és tesztjeikkel, az átállítás ebben a menetben, a közös `strong_magyar` összefűzővel; DT-F128f (3) —
+**Döntés (F128.9, `b34f835b`):** a felhasználó 2026-10-21-én (chat, az orkesztrátor-sessionben továbbítva): DT291 (a) — a brief
+`ir` mezője bővül a négy olvasóval és tesztjeikkel, az átállítás ebben a menetben, a közös `strong_magyar` összefűzővel; DT290 (3) —
 a H8415 szakaszonként újrafordul, de az új szakaszsorok csak a felhasználó jóváhagyása után kapnak `kezi`-t; addig a régi,
 jóváhagyott `kezi` sor az érvényes.
 
 | tétel | mi változott | teszt |
 |---|---|---|
-| F128.10 `6b8bbf78` | `szakasz_bemenet.py`: `strong_magyar_sorok` (a felhasznált sorokkal); a nem `elavult` `kezi` `teljes` sor elsőbbsége, amíg a szakaszsorok nem mind `kezi`-k (DT-F128f (3)); paraméterezhető táblaútvonal; a `forras_javit` / `nezet_general` importja lusta. `emeles.py szakasz_beir --kezi-marad` (a régi `kezi` sor bájtra érintetlen), a jóváhagyás `--allapot kezi --regi-elavult --kezi-felulir` | `teszt_szakasz_bemenet.py` 25, OK |
+| F128.10 `6b8bbf78` | `szakasz_bemenet.py`: `strong_magyar_sorok` (a felhasznált sorokkal); a nem `elavult` `kezi` `teljes` sor elsőbbsége, amíg a szakaszsorok nem mind `kezi`-k (DT290 (3)); paraméterezhető táblaútvonal; a `forras_javit` / `nezet_general` importja lusta. `emeles.py szakasz_beir --kezi-marad` (a régi `kezi` sor bájtra érintetlen), a jóváhagyás `--allapot kezi --regi-elavult --kezi-felulir` | `teszt_szakasz_bemenet.py` 25, OK |
 | F128.11 `5aba229c` | `ellenoriz.py` 13. szabály (CI E1): az `sz<n>` sor forrásszövege az `adat_dir` szakasztáblájából (hivatkozás-javítással, pe/mem nélkül); új: a nem `elavult` szakaszsorok együtt a Strong összes szakaszát fedik | `teszt_ellenoriz_13.py` 25 (7 új), OK; `ellenoriz.py` a repón: SÉRTÉS 0 |
 | F128.12 `8a78bfea` | `olvaso_szerver/lekerdezesek.py` `bdb_magyar`, `bdb_magyar_meta`: a közös összefűzőn át (fájlútvonalról, `sys.path` nélkül); a meta a felhasznált sorok modelljei („ / ”) és legkésőbbi dátuma | `teszt_futtat.py --gyors` (WSL-natív `~/pardes/pardes.db`, épült 2026-10-14): a 3 új teszt zöld; l. lent |
 | F128.13 `1720b1d6` | `bdb_adatblokk.py` `kesz_bdb_strongok`: `teljes` vagy `sz<n>` sor | `teszt_bdb_adatblokk.py` 46 (1 új), OK |
