@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 """A kész magyar BDB-fordítás illesztése a szakasztáblához (F107, 7. lépés; DT-F107c (d) után).
 
-Bemenet: adat/bdb_szakaszok.tsv (a szakaszok, a `jel` fejekkel), adat/forditasok.tsv (csak olvasva: a BDB-sorok közül Strongonként az
-utolsó nem üres `forditas_hu`), eszkozok/forditas_kapuk.py (a magyar oldali jelölő- és törzsnév-felismerés, csak importálva).
+Bemenet: adat/bdb_szakaszok.tsv (a szakaszok, a `jel` fejekkel), adat/forditasok.tsv (csak olvasva: a BDB-sorok Strongonként a
+közös összefűzőn át, `szakasz_bemenet.strong_magyar_sorok`; F128, DT-F128g (a)), eszkozok/forditas_kapuk.py (a magyar oldali jelölő- és törzsnév-felismerés, csak importálva).
 Kimenet: adat/bdb_szakasz_hu.tsv (séma: adat/SEMA.md „bdb_szakasz_hu.tsv”). Az adat/forditasok.tsv nem íródik.
 
 Illesztés Strongonként:
@@ -51,12 +51,25 @@ FEJLEC = ['strong', 'sorszam', 'bdb_id', 'szakasz', 'resz', 'utvonal', 'jel', 'k
 REF = re.compile(r'\d+:\d+')
 
 
-def sha256_fajl(ut):
+def sha256_bajtok(darabok):
+    """Sorvég-független SHA-256 (F128.21, ELLENOR_F128 1.): a `kod_hash` konvenciója szerint \\r\\n → \\n, így a CRLF- és az
+    LF-checkout ugyanazt a hash-t adja. A darabhatáron kettévágott \\r\\n-t a visszatartott záró \\r kezeli."""
     h = hashlib.sha256()
-    with open(ut, 'rb') as f:
-        for b in iter(lambda: f.read(1 << 20), b''):
-            h.update(b)
+    maradek = b''
+    for b in darabok:
+        b = maradek + b
+        if b.endswith(b'\r'):
+            b, maradek = b[:-1], b'\r'
+        else:
+            maradek = b''
+        h.update(b.replace(b'\r\n', b'\n'))
+    h.update(maradek)
     return h.hexdigest()
+
+
+def sha256_fajl(ut):
+    with open(ut, 'rb') as f:
+        return sha256_bajtok(iter(lambda: f.read(1 << 20), b''))
 
 
 def kod_hash():
@@ -125,15 +138,31 @@ def magyar_jelolok(hu):
     return sorted(set(ki))
 
 
-def forditasok():
-    with open(FORD, encoding='utf-8', newline='') as f:
-        sorok = [s for s in f.read().split('\n') if s and not s.startswith('#')]
+def forditasok(ut=None):
+    """{Strong: {'forditas_hu', 'forras_hash'}} a BDB-sorokból, a közös összefűzőn át (F128, DT-F128a (a), DT-F128g (a):
+    `szakasz_bemenet.strong_magyar_sorok`): a szakaszonként fordított Strong szövege a `sz<sorszam>` sorok összefűzése, a
+    `forras_hash` ilyenkor a token nélküli forrásnézet (`szakasz_bemenet.nezet`) SHA-1-e; különben a `teljes` sor és a saját
+    `forras_hash`-e (a jóváhagyott `kezi` sor elsőbbségével, DT-F128f (3))."""
+    import szakasz_bemenet as sb
+    with open(ut or FORD, encoding='utf-8', newline='') as f:
+        sorok = [s.rstrip('\r') for s in f.read().split('\n') if s and not s.startswith('#')]
     fej = sorok[0].split('\t')
-    ki = {}
+    strongonkent = collections.OrderedDict()
     for s in sorok[1:]:
         d = dict(zip(fej, s.split('\t')))
-        if d['szotar'] == 'BDB' and d.get('forditas_hu'):
-            ki['H%04d' % int(re.sub(r'\D', '', d['strong']))] = d     # az utolsó nem üres sor nyer
+        if d['szotar'] == 'BDB':
+            strongonkent.setdefault('H%04d' % int(re.sub(r'\D', '', d['strong'])), []).append(d)
+    ki = {}
+    for st, ds in strongonkent.items():
+        szoveg, tipus, hasznalt = sb.strong_magyar_sorok(ds)
+        if not szoveg:
+            continue
+        if tipus == 'szakasz':
+            szak = sb.szakaszok(st)
+            h = sb.sha1(sb.nezet(szak)) if szak else ''
+        else:
+            h = hasznalt[0].get('forras_hash', '')
+        ki[st] = {'forditas_hu': szoveg, 'forras_hash': h}
     return ki
 
 

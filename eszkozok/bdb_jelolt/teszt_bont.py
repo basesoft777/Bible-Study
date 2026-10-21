@@ -282,6 +282,33 @@ class HuIlleszt(unittest.TestCase):
         fej = s[2].split('\t')
         cls.sorok = [dict(zip(fej, x.split('\t'))) for x in s[3:] if x]
 
+    def test_osszefuzo_a_mai_adaton_valtozatlan(self):
+        # F128 (DT-F128g (a)): a közös összefűzővel a tábla törzse (a `# forras` fejlécsor és a sorvég nélkül) azonos
+        ts = self.sorok[0]['proveniencia'].rsplit('ts=', 1)[1]
+        uj = ['\t'.join(s) for s in self.hi.general(ts)[0]]
+        with open(self.hi.KI_UT, encoding='utf-8', newline='') as f:
+            regi = [x.rstrip('\r') for x in f.read().split('\n')[3:] if x.strip()]
+        self.assertEqual(uj, regi)
+
+    def test_forditasok_szakaszsorokkal(self):
+        # F128: a szakaszonként fordított Strong a `sz<sorszam>` sorok összefűzése, a hash a forrásnézeté
+        import tempfile
+        import szakasz_bemenet as sb
+        fej = ['szotar', 'strong', 'entry_id', 'jelentes_szam', 'mezo', 'forras_hash', 'forditas_hu', 'allapot']
+        szak = sb.szakaszok('H0001')
+        sorok = [['BDB', 'H0001', 'H1', 'teljes', 'forditas_hu', 'regi', 'régi', 'elavult']]
+        sorok += [['BDB', 'H0001', 'H1', 'sz%d' % x['sorszam'], 'forditas_hu', x['hash'], 'm%d' % x['sorszam'], 'sonnet']
+                  for x in reversed(szak)]
+        sorok += [['BDB', 'H0002', 'H2', 'teljes', 'forditas_hu', 'h2', 'második', 'sonnet']]
+        with tempfile.TemporaryDirectory() as tmp:
+            ut = os.path.join(tmp, 'forditasok.tsv')
+            with open(ut, 'w', encoding='utf-8', newline='\n') as fh:
+                fh.write('\n'.join(['# teszt', '\t'.join(fej)] + ['\t'.join(s) for s in sorok]) + '\n')
+            f = self.hi.forditasok(ut)
+        self.assertEqual(f['H0001']['forditas_hu'], ' '.join('m%d' % x['sorszam'] for x in szak))
+        self.assertEqual(f['H0001']['forras_hash'], sb.sha1(sb.nezet(szak)))
+        self.assertEqual(f['H0002'], {'forditas_hu': 'második', 'forras_hash': 'h2'})
+
     def test_forras_jelolok(self):
         self.assertEqual(self.hi.forras_jelolok('2. a.'), ['2', 'a'])
         self.assertEqual(self.hi.forras_jelolok('Hiph`il'), ["T:Hiph'il"])      # DT-F107b (d): kanonikus törzskulcs
@@ -337,6 +364,30 @@ class HuIlleszt(unittest.TestCase):
         h = {x['sorszam']: x for x in self.sorok if x['strong'] == 'H0040'}
         self.assertTrue(h['3']['szoveg_hu'].startswith('1 Gerár'))
         self.assertEqual(h['4']['kategoria'], 'illeszkedik')
+
+    def test_hash_sorveg_fuggetlen(self):
+        # F128.21 (ELLENOR_F128 1.): a CRLF- és az LF-bájtsor azonos hash-t ad, a darabhatáron kettévágott \r\n-nél is
+        import hashlib
+        import tempfile
+        lf = 'első sor\tא\nmásodik\tβ\n\nutolsó'.encode('utf-8')
+        crlf = lf.replace(b'\n', b'\r\n')
+        vart = hashlib.sha256(lf).hexdigest()
+        self.assertEqual(self.hi.sha256_bajtok([lf]), vart)
+        self.assertEqual(self.hi.sha256_bajtok([crlf]), vart)
+        for i in range(1, len(crlf)):
+            self.assertEqual(self.hi.sha256_bajtok([crlf[:i], crlf[i:]]), vart, i)
+        self.assertEqual(self.hi.sha256_bajtok([b'a\r', b'b']), hashlib.sha256(b'a\rb').hexdigest())   # magányos \r marad
+        self.assertEqual(self.hi.sha256_bajtok([b'a\r']), hashlib.sha256(b'a\r').hexdigest())
+        with tempfile.TemporaryDirectory() as tmp:
+            for nev, b in (('lf', lf), ('crlf', crlf)):
+                with open(os.path.join(tmp, nev), 'wb') as fh:
+                    fh.write(b)
+            self.assertEqual(self.hi.sha256_fajl(os.path.join(tmp, 'lf')), self.hi.sha256_fajl(os.path.join(tmp, 'crlf')))
+        # a forditas_kapuk.py hash-e az LF-blobé, a checkout sorvégétől függetlenül
+        with open(os.path.join(GYOKER, 'eszkozok', 'forditas_kapuk.py'), 'rb') as fh:
+            blob = fh.read().replace(b'\r\n', b'\n')
+        self.assertEqual(self.hi.sha256_fajl(os.path.join(GYOKER, 'eszkozok', 'forditas_kapuk.py')),
+                         hashlib.sha256(blob).hexdigest())
 
     def test_ellenoriz(self):
         with open(self.hi.KI_UT, encoding='utf-8') as f:

@@ -20,6 +20,21 @@ Alparancsok:
 
   darabok E4: a darabolasi javaslat (jelentes-/torzshatar) kiirasa.
 
+  Szakaszonkenti ag (F128; DT181 (b), DT-F128a-e; csak BDB, a szakasztablaban
+  levo Strongra; a 9 tablan kivuli es a Thayer a regi `teljes` uton):
+
+  szakasz_elokeszit  a tokenes bemenet (eszkozok/bdb_jelolt/szakasz_bemenet.py),
+          a heber/gorog helyorzos valtozat es csoportonkent a prompt v5 -> --mappa
+  szakasz_ellenoriz  javitoreteg + kapuk (14. szakasz-kapu, 9. tagolas
+          szakaszonkent) a tokenes vazlaton
+  szakasz_rogzit     a munkatablaba szakaszonkent: `jelentes_szam = sz<sorszam>`,
+          `forras_hash` = a szakasz atadott szovegenek SHA-1-e (DT-F128b (1))
+  szakasz_beir       a munkatabla szakaszsorai az adat/forditasok.tsv-be; a Strong
+          regi `teljes` sora `--regi-elavult`-tal `elavult` lesz (DT-F128e), kulonben
+          megall; `kezi` regi sor (H8415, DT-F128f (3)): nem `kezi` szakaszsor csak
+          `--kezi-marad`-dal (a regi sor ervenyes marad), a jovahagyott (`--allapot kezi`)
+          szakaszsorok `--regi-elavult --kezi-felulir`-ral
+
     python eszkozok/emeles.py lista
     python eszkozok/emeles.py prompt H7121 --ki /tmp/.../H7121_prompt.md
     python eszkozok/emeles.py forras H7121 --ki /tmp/.../H7121_forras.txt
@@ -48,6 +63,7 @@ THAYER_UT = os.path.join(REPO, 'konkordancia', 'Thayer_teljes.tsv')
 BDB_UT = os.path.join(REPO, 'konkordancia', 'BDB_teljes_unabridged.tsv')
 KAROLI_UT = os.path.join(REPO, 'konkordancia', 'Konyv_normalizalo_tabla.tsv')
 PROMPT_UT = os.path.join(REPO, 'forditas', 'prompt_v4.md')
+PROMPT_V5_UT = os.path.join(REPO, 'forditas', 'prompt_v5.md')  # F128: a BDB szakaszonkenti aga
 LISTA_UT = os.path.join(REPO, 'naplok', 'EMELES_lista.tsv')
 PROMPT_JELOLO = '\n<!-- PROMPT-KEZDET -->\n'
 
@@ -287,8 +303,8 @@ def adatblokk_szoveg(strong):
     return bdb_adatblokk.blokk_epit(strong).rstrip(chr(10))
 
 
-def prompt_epit(strong, forras_darab, darab_info=''):
-    with open(PROMPT_UT, encoding='utf-8') as fh:
+def prompt_epit(strong, forras_darab, darab_info='', prompt_ut=None):
+    with open(prompt_ut or PROMPT_UT, encoding='utf-8') as fh:
         sablon = fh.read()
     # a jelolo feletti resz (fejlec, verzionaplo) nem prompt
     sablon = sablon.split(PROMPT_JELOLO, 1)[1].lstrip('\n')
@@ -757,6 +773,219 @@ def cmd_kotelezo(args):
     print(kotelezo_alakok_szoveg(szoveg))
 
 
+# ---------------------------------------------------------------------------
+# Szakaszonkenti ag (F128; DT181 (b), DT269 (1), DT-F128a-e). Csak BDB, a
+# szakasztablaban (adat/bdb_szakaszok.tsv) levo Strongra; a regi `teljes` ut
+# (fent) valtozatlan.
+# ---------------------------------------------------------------------------
+
+def _sb():
+    ut = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'bdb_jelolt')
+    if ut not in sys.path:
+        sys.path.insert(0, ut)
+    import szakasz_bemenet
+    return szakasz_bemenet
+
+
+def szakasz_forras(strong):
+    """-> (strong_padded, a szakaszok listaja: szakasz_bemenet.szakaszok)."""
+    sp = strong_padded(strong)
+    if not sp or szotar_strongnak(sp) != 'BDB':
+        raise SystemExit('a szakaszonkenti ag csak BDB-szocikkre fut: %s' % strong)
+    szak = _sb().szakaszok(sp)
+    if szak is None:
+        raise SystemExit('%s nincs a szakasztablaban -- a regi `teljes` ut (DT-F128d (2))' % sp)
+    return sp, szak
+
+
+def szakasz_promptok(sp, szak):
+    """[(csoport-sorszam 1-tol, a csoport tokenes forrasa, a prompt v5)] a DT-F128c (2) csoportjaival."""
+    SB = _sb()
+    cs = SB.csoportok(szak)
+    return [(i + 1, SB.tokenes(c), prompt_epit(sp, SB.tokenes(c), darab_info_szoveg(i, len(cs)), PROMPT_V5_UT))
+            for i, c in enumerate(cs)]
+
+
+def cmd_szakasz_elokeszit(args):
+    import json
+    SB = _sb()
+    sp, szak = szakasz_forras(args.strong)
+    os.makedirs(args.mappa, exist_ok=True)
+    alap = os.path.join(args.mappa, sp)
+    tokenes = SB.tokenes(szak)
+    bontott, hely = helyorzo_bont(tokenes)
+    kiir(tokenes, alap + '_szakasz_forras.txt')
+    kiir(bontott, alap + '_szakasz_hely.txt')
+    with open(alap + '_szakasz_hely.json', 'w', encoding='utf-8') as fh:
+        json.dump(hely, fh, ensure_ascii=False, indent=0)
+    promptok = szakasz_promptok(sp, szak)
+    meta = {'strong': sp, 'szakaszok': [{'sorszam': x['sorszam'], 'hash': x['hash'], 'hossz': len(x['szoveg'])} for x in szak],
+            'csoportok': [[int(n) for n in SB.TOKEN.findall(f)] for _, f, _ in promptok]}
+    with open(alap + '_szakasz.json', 'w', encoding='utf-8') as fh:
+        json.dump(meta, fh, ensure_ascii=False, indent=1)
+    for i, _, p in promptok:
+        kiir(p, '%s_c%d_prompt.md' % (alap, i))
+    print('%s: %d szakasz, %d csoport, %d helyorzo' % (sp, len(szak), len(promptok), len(hely)))
+
+
+def utofeldolgoz_szakasz(strong, nyers, kivetel=()):
+    """Az `utofeldolgoz` szakaszonkenti parja: javitoreteg a tokenes szovegen, kapuk: `kapuk_futtat_szakaszos`.
+    -> (vegleges, valtozasok, kapueredmenyek, atment)"""
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import normalizal as N
+    import forditas_kapuk as K
+    SB = _sb()
+    sp, szak = szakasz_forras(strong)
+    forras, forras_nt = SB.tokenes(szak), SB.nezet(szak)
+    vegleges, valt = N.normalizal(nyers, 'BDB')
+    vegleges, glossza = N.glossza_visszaallit(forras_nt, vegleges)
+    if glossza:
+        valt = list(valt) + [('glossza_visszaallit', len(glossza))]
+    vegleges, csere = K.terminologia_kisnagybetu_csere(forras_nt, vegleges, bizonytalan_lista=list(kivetel))
+    valt = list(valt) + [('5_kisnagybetu %s -> %s (%s)' % (alak, kot, angol), db)
+                         for angol, alak, kot, db in csere]
+    eredm = K.kapuk_futtat_szakaszos('BDB', forras, vegleges, bizonytalan=kivetel)
+    return vegleges, valt, eredm, K.atment(eredm)
+
+
+def cmd_szakasz_ellenoriz(args):
+    import json
+    sp = strong_padded(args.strong)
+    with open(args.be, encoding='utf-8') as fh:
+        vazlat = fh.read().strip('\n')
+    if args.mappa:
+        with open(os.path.join(args.mappa, sp + '_szakasz_hely.json'), encoding='utf-8') as fh:
+            hely = json.load(fh)
+        vazlat, hiany, tobbszor = helyorzo_visszaallit(vazlat, hely)
+        if hiany or tobbszor:
+            print('FIGYELEM: hianyzo helyorzok %s; tobbszor hasznalt %s' % (hiany, tobbszor))
+    vegleges, valt, eredm, ok = utofeldolgoz_szakasz(sp, vazlat, args.kivetel)
+    print('javitoreteg: %s' % (', '.join('%s=%d' % v for v in valt) or 'nincs valtozas'))
+    for n, e, r in eredm:
+        print('  %-22s %-8s %s' % (n, e, r))
+    print('ATMENT' if ok else 'BUKOTT')
+    if args.ki:
+        kiir(vegleges, args.ki)
+        kisnagybetu_naplo(sp, [v for v in valt if v[0].startswith('5_kisnagybetu')])
+
+
+def szakasz_sorok(sp, szak, szoveg, allapot, modell, datum, term_verzio, megjegyzes):
+    """A tokenes, kapun atment forditas -> a forditasok.tsv `sz<n>` sorai (DT-F128a (a), DT-F128b (1))."""
+    import forditas_kapuk as K
+    SB = _sb()
+    eleje, hu = K.szakasz_bont(szoveg)
+    if eleje or [n for n, _ in hu] != [x['sorszam'] for x in szak]:
+        raise SystemExit('a forditas tokenjei nem a forras szakaszai (%s)' % sp)
+    return [{'szotar': 'BDB', 'strong': sp, 'entry_id': strong_eredeti(sp), 'jelentes_szam': SB.jelentes_szam(n),
+             'mezo': 'forditas_hu', 'forras_hash': x['hash'], 'forditas_hu': t, 'allapot': allapot, 'modell': modell,
+             'datum': datum, 'terminologia_verzio': term_verzio, 'megjegyzes': megjegyzes}
+            for (n, t), x in zip(hu, szak)]
+
+
+def cmd_szakasz_rogzit(args):
+    """A vegleges tokenes forditas rogzitese a munkatablaba, szakaszonkent; a Strong korabbi munkatabla-sorai
+    (`teljes` es `sz<n>`) kiesnek."""
+    import datetime
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    sp, szak = szakasz_forras(args.strong)
+    with open(args.be, encoding='utf-8') as fh:
+        szoveg = fh.read().strip('\n')
+    if '\t' in szoveg or '\n' in szoveg:
+        raise SystemExit('a forditas tabot vagy sortorest tartalmaz -- TSV-be nem irhato')
+    vegleges, valt, eredm, ok = utofeldolgoz_szakasz(sp, szoveg, args.kivetel)
+    if vegleges != szoveg:
+        raise SystemExit('a --be nem a javitoreteg kimenete (futtasd elobb: szakasz_ellenoriz --ki)')
+    if not ok:
+        raise SystemExit('kapuhiba -- a sorok nem rogzithetok')
+    _, term_verzio = terminologia_szoveg()
+    megj = '; '.join(x for x in (
+        args.megjegyzes or '',
+        ('terminológia-kivétel (bizonytalan_feloldasok): ' + ', '.join(args.kivetel)) if args.kivetel else '') if x)
+    uj = szakasz_sorok(sp, szak, szoveg, args.allapot, args.modell,
+                       args.datum or datetime.date.today().strftime('%Y.%m.%d'), term_verzio, megj)
+    sorok = list(tsv_dict_sorok(MUNKA_UT)) if os.path.exists(MUNKA_UT) else []
+    sorok = [r for r in sorok if not (r['szotar'] == 'BDB' and r['entry_id'] == strong_eredeti(sp))] + uj
+    tsv_ir(MUNKA_UT, FORDITASOK_FEJLEC, sorok,
+           megjegyzes='F28 munkatabla (adat/forditasok.tsv semaja) -- jovahagyas elott; '
+                      'irja: python eszkozok/emeles.py rogzit / szakasz_rogzit')
+    print('rogzitve: BDB %s, %d szakaszsor (%d karakter) -> %s'
+          % (sp, len(uj), sum(len(r['forditas_hu']) for r in uj), os.path.relpath(MUNKA_UT, REPO)))
+
+
+def cmd_szakasz_beir(args):
+    """A munkatabla szakaszsorai az adat/forditasok.tsv-be. A Strong regi `teljes` sora `--regi-elavult`-tal `elavult`
+    allapotot kap, a `megjegyzes` a felvaltast jeloli (DT-F128e: nem torlodik); enelkul a beiras megall. `kezi` regi sor
+    (H8415, DT-F128f (3)): nem `kezi` szakaszsorok csak `--kezi-marad`-dal, a regi sor erintetlen es ervenyes marad (a kozos
+    osszefuzo, `strong_magyar`, ilyenkor azt adja); a jovahagyott szakaszsorok (`--allapot kezi`) `--regi-elavult
+    --kezi-felulir`-ral, ekkor lesz a regi `elavult`. Minden mas sor bajtra valtozatlan; ezt iras elott ellenorzi."""
+    import datetime
+    SB = _sb()
+    munka = list(tsv_dict_sorok(MUNKA_UT))
+    with open(FORDITASOK_UT, encoding='utf-8', newline='') as fh:
+        eredeti = fh.read()
+    sorok = eredeti.split('\n')
+    assert sorok[-1] == '', 'a forditasok.tsv nem sortoressel vegzodik'
+    sorok = sorok[:-1]
+    fej_i = next(i for i, s in enumerate(sorok) if s and not s.startswith('#'))
+    assert sorok[fej_i].split('\t') == FORDITASOK_FEJLEC, sorok[fej_i]
+    datum = args.datum or datetime.date.today().strftime('%Y.%m.%d')
+    i_allapot = FORDITASOK_FEJLEC.index('allapot')
+    i_megj = FORDITASOK_FEJLEC.index('megjegyzes')
+    idx = {tuple(s.split('\t')[:5]): i for i, s in enumerate(sorok) if i > fej_i and s and not s.startswith('#')}
+    valtozott = set()
+    for s in args.strongok:
+        sp, szak = szakasz_forras(s)
+        sajat = [r for r in munka if r['szotar'] == 'BDB' and r['strong'] == sp
+                 and SB.sorszam_jelentesbol(r['jelentes_szam']) is not None]
+        if [SB.sorszam_jelentesbol(r['jelentes_szam']) for r in sajat] != [x['sorszam'] for x in szak]:
+            raise SystemExit('%s: a munkatabla szakaszsorai nem fedik le a szakaszokat (szakasz_rogzit elobb)' % sp)
+        teljes_k = ('BDB', sp, strong_eredeti(sp), 'teljes', 'forditas_hu')
+        regi_marad = False
+        if teljes_k in idx:
+            regi = sorok[idx[teljes_k]].split('\t')
+            if regi[i_allapot] == 'kezi' and args.allapot != 'kezi':
+                # DT-F128f (3): a jovahagyott sor az ervenyes, amig az uj szakaszsorok nem kapnak `kezi`-t
+                if not args.kezi_marad:
+                    raise SystemExit('%s: a regi `teljes` sor `kezi` (jovahagyott) -- nem `kezi` szakaszsorok csak '
+                                     '--kezi-marad-dal, a regi sor erintetlen marad (DT-F128f (3))' % sp)
+                regi_marad = True
+            elif regi[i_allapot] == 'kezi' and not args.kezi_felulir:
+                raise SystemExit('%s: a regi `teljes` sor `kezi` -- a jovahagyott szakaszsorok beirasa csak '
+                                 '--kezi-felulir-ral (DT-F128f (3))' % sp)
+            if not regi_marad and not args.regi_elavult:
+                raise SystemExit('%s: van regi `teljes` sor -- --regi-elavult kell (DT-F128e)' % sp)
+            if not regi_marad and regi[i_allapot] != 'elavult':
+                regi[i_allapot] = 'elavult'
+                regi[i_megj] = '; '.join(x for x in (regi[i_megj], 'felváltva: szakaszonkénti fordítás (%s; DT-F128e)'
+                                                      % datum) if x)
+                sorok[idx[teljes_k]] = '\t'.join(regi)
+                valtozott.add(idx[teljes_k])
+        for r in sajat:
+            r = dict(r, allapot=args.allapot, datum=datum)
+            if args.megjegyzes:
+                r['megjegyzes'] = args.megjegyzes
+            uj = '\t'.join(r.get(m, '') for m in FORDITASOK_FEJLEC)
+            k = tuple(uj.split('\t')[:5])
+            if k in idx:
+                if sorok[idx[k]].split('\t')[i_allapot] == 'kezi' and not args.kezi_felulir:
+                    raise SystemExit('vedett kezi sor: %s' % (k,))
+                sorok[idx[k]] = uj
+                valtozott.add(idx[k])
+            else:
+                sorok.append(uj)
+                idx[k] = len(sorok) - 1
+                valtozott.add(len(sorok) - 1)
+    eredeti_sorok = eredeti.split('\n')[:-1]
+    for i, s in enumerate(eredeti_sorok):
+        if i not in valtozott and sorok[i] != s:
+            raise SystemExit('varatlan elteres a %d. sorban -- megallok' % (i + 1))
+    for s in sorok:
+        assert len(s.split('\t')) == len(FORDITASOK_FEJLEC) or s.startswith('#'), s[:80]
+    with open(FORDITASOK_UT, 'w', encoding='utf-8', newline='') as fh:
+        fh.write('\n'.join(sorok) + '\n')
+    print('adat/forditasok.tsv: %d sor valtozott/uj (%s)' % (len(valtozott), ', '.join(args.strongok)))
+
+
 # a `forditasok.tsv` allapot-ertekei, amelyeket a rogzit/beir ir (SEMA 2.14);
 # `pilot` (fordit.py) es `elavult` (ellenoriz.py javaslat) nem innen kerul be
 ALLAPOTOK = ['opus', 'sonnet', 'kezi']
@@ -828,6 +1057,38 @@ def parser_epit():
     p.add_argument('--lab', help='a naplo kezi zaro szakasza (md)')
     p.add_argument('--ki', required=True)
     p.set_defaults(fv=cmd_naplo_nezet)
+    # F128: a BDB szakaszonkenti aga
+    p = al.add_parser('szakasz_elokeszit', help='tokenes bemenet, helyorzok, prompt v5 csoportonkent (F128)')
+    p.add_argument('strong')
+    p.add_argument('--mappa', required=True, help='kimeneti mappa (a repon kivul)')
+    p.set_defaults(fv=cmd_szakasz_elokeszit)
+    p = al.add_parser('szakasz_ellenoriz')
+    p.add_argument('strong')
+    p.add_argument('--be', required=True, help='a tokenes forditas (helyorzos vazlat, ha --mappa adott)')
+    p.add_argument('--mappa', help='a szakasz_elokeszit mappaja (a _szakasz_hely.json)')
+    p.add_argument('--ki')
+    p.add_argument('--kivetel', nargs='*', default=[])
+    p.set_defaults(fv=cmd_szakasz_ellenoriz)
+    p = al.add_parser('szakasz_rogzit')
+    p.add_argument('strong')
+    p.add_argument('--be', required=True, help='a vegleges tokenes forditas (a szakasz_ellenoriz --ki kimenete)')
+    p.add_argument('--allapot', required=True, choices=ALLAPOTOK)
+    p.add_argument('--modell', required=True, help='a fordito LLM tenyleges modell-azonositoja; kotelezo')
+    p.add_argument('--datum')
+    p.add_argument('--megjegyzes')
+    p.add_argument('--kivetel', nargs='*', default=[])
+    p.set_defaults(fv=cmd_szakasz_rogzit)
+    p = al.add_parser('szakasz_beir')
+    p.add_argument('strongok', nargs='+')
+    p.add_argument('--allapot', required=True, choices=ALLAPOTOK)
+    p.add_argument('--datum')
+    p.add_argument('--megjegyzes')
+    p.add_argument('--regi-elavult', action='store_true', help='a Strong regi `teljes` sora `elavult` lesz (DT-F128e)')
+    p.add_argument('--kezi-felulir', action='store_true',
+                   help='jovahagyott (`--allapot kezi`) szakaszsorok: a regi `kezi` teljes sor `elavult` lesz (DT-F128f (3))')
+    p.add_argument('--kezi-marad', action='store_true',
+                   help='nem `kezi` szakaszsorok a regi `kezi` teljes sor mellett; az erintetlen marad es ervenyes (DT-F128f (3))')
+    p.set_defaults(fv=cmd_szakasz_beir)
     return ap
 
 

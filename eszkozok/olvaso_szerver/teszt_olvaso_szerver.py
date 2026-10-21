@@ -177,6 +177,44 @@ class TestMaculaRegiAdatbazis(unittest.TestCase):
         self.assertEqual((m['lxx_forras'], m['lxx_rahlfs']), ('ενς', 'ἐν'))
 
 
+class TestBdbMagyarOsszefuzo(unittest.TestCase):
+    """F128 (DT-F128a (a), DT-F128f (3), DT-F128g (a)): a `bdb_magyar` / `bdb_magyar_meta` a közös összefűzőn át — a
+    szakaszonként fordított Strong szövege a `sz<sorszam>` sorok összefűzése (nem az utolsó sor), a jóváhagyott `kezi`
+    `teljes` sor addig él, amíg a szakaszsorok nem mind `kezi`-k; a régi (egy `teljes` soros) Strong változatlan."""
+
+    def _con(self, sorok):
+        con = sqlite3.connect(':memory:')
+        con.execute('CREATE TABLE forditasok (szotar TEXT, strong TEXT, entry_id TEXT, jelentes_szam TEXT, mezo TEXT, '
+                    'forras_hash TEXT, forditas_hu TEXT, allapot TEXT, modell TEXT, datum TEXT, terminologia_verzio TEXT, '
+                    'megjegyzes TEXT)')
+        for st, jsz, hu, allapot, modell, datum in sorok:
+            con.execute('INSERT INTO forditasok VALUES (?,?,?,?,?,?,?,?,?,?,?,?)',
+                        ('BDB', st, st, jsz, 'forditas_hu', 'h', hu, allapot, modell, datum, 'v3', ''))
+        return con
+
+    def test_regi_teljes_sor_valtozatlan(self):
+        con = self._con([('H7121', '2.c', 'részlet', 'kezi', '', '2026.09.01'),
+                         ('H7121', 'teljes', 'egész\\nszöveg', 'kezi', 'claude-opus-5-5', '2026.10.01')])
+        self.assertEqual(q.bdb_magyar(con, 'H7121'), 'egész\nszöveg')
+        self.assertEqual(q.bdb_magyar_meta(con, 'H7121'), 'claude-opus-5-5, 2026.10.01')
+        self.assertIsNone(q.bdb_magyar(con, 'H0002'))
+        self.assertIsNone(q.bdb_magyar_meta(con, 'H0002'))
+
+    def test_szakaszsorok_osszefuzve(self):
+        con = self._con([('H0001', 'teljes', 'régi', 'elavult', 'claude-sonnet-5-5', '2026.10.01'),
+                         ('H0001', 'sz2', 'apa', 'sonnet', 'claude-sonnet-5-5', '2026.10.22'),
+                         ('H0001', 'sz1', 'H1. ab', 'sonnet', 'claude-opus-5-5', '2026.10.21')])
+        self.assertEqual(q.bdb_magyar(con, 'H0001'), 'H1. ab apa')
+        self.assertEqual(q.bdb_magyar_meta(con, 'H0001'), 'claude-opus-5-5 / claude-sonnet-5-5, 2026.10.22')
+
+    def test_kezi_teljes_elsobbsege(self):
+        con = self._con([('H8415', 'teljes', 'jóváhagyott', 'kezi', 'claude-opus-5-5', '2026.10.01'),
+                         ('H8415', 'sz1', 'a', 'sonnet', 'claude-sonnet-5-5', '2026.10.22'),
+                         ('H8415', 'sz2', 'b', 'sonnet', 'claude-sonnet-5-5', '2026.10.22')])
+        self.assertEqual(q.bdb_magyar(con, 'H8415'), 'jóváhagyott')
+        self.assertEqual(q.bdb_magyar_meta(con, 'H8415'), 'claude-opus-5-5, 2026.10.01')
+
+
 @unittest.skipUnless(VAN_DB, 'nincs pardes.db')
 class TestRegiszterEsAdatbazis(unittest.TestCase):
     @classmethod
