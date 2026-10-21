@@ -39,9 +39,27 @@ if hasattr(sys.stderr, 'reconfigure'):
     sys.stderr.reconfigure(encoding='utf-8')
 
 ITT = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, ITT)
-import forras_javit  # noqa: E402
-import nezet_general  # noqa: E402
+GYOKER = os.path.dirname(os.path.dirname(ITT))
+TABLA = os.path.join(GYOKER, 'adat', 'bdb_szakaszok.tsv')
+JAV = os.path.join(GYOKER, 'adat', 'bdb_forras_javitas.tsv')
+
+
+def _modulok():
+    """A forras_javit és a nezet_general lustán: a `strong_magyar` (az olvasó szerver, F128 DT-F128g) csak stdlib-et húz be."""
+    if ITT not in sys.path:
+        sys.path.insert(0, ITT)
+    import forras_javit
+    import nezet_general
+    return forras_javit, nezet_general
+
+
+def __getattr__(nev):
+    # visszafelé: `szakasz_bemenet.nezet_general` (tesztek, eseti szkriptek)
+    if nev in ('nezet_general', 'forras_javit'):
+        fj, ng = _modulok()
+        return ng if nev == 'nezet_general' else fj
+    raise AttributeError(nev)
+
 
 TOKEN = re.compile(r'⟪(\d+)⟫')
 EGY_HIVAS_HATAR = 20000   # DT-F128c (2): eddig a Strong egy hívás
@@ -69,22 +87,28 @@ def sha1(t):
 _CACHE = {}
 
 
-def _betolt():
-    if not _CACHE:
+def _betolt(tabla=None, jav_ut=None):
+    """(szakasztábla Strongonként, `hivatkozas` / `javitva` javítások Strongonként); útvonalanként gyorsítótárazva
+    (az `ellenoriz.py` 13. szabálya a saját `adat_dir`-jéből hívja)."""
+    tabla, jav_ut = tabla or TABLA, jav_ut or JAV
+    kulcs = (os.path.abspath(tabla), os.path.abspath(jav_ut))
+    if kulcs not in _CACHE:
+        _, ng = _modulok()
         tab = collections.OrderedDict()
-        for r in nezet_general.olvas(nezet_general.TABLA):
+        for r in ng.olvas(tabla):
             tab.setdefault(r['strong'], []).append(r)
         jav = collections.defaultdict(list)
-        for d in nezet_general.olvas(nezet_general.JAV):
+        for d in ng.olvas(jav_ut):
             if d['allapot'] == 'javitva' and d['hiba'] == 'hivatkozas':
                 jav[d['strong']].append(d)
-        _CACHE['tab'], _CACHE['jav'] = tab, jav
-    return _CACHE['tab'], _CACHE['jav']
+        _CACHE[kulcs] = (tab, jav)
+    return _CACHE[kulcs]
 
 
-def szakaszok(strong):
+def szakaszok(strong, tabla=None, jav_ut=None):
     """A Strong szakaszai a javított szöveggel; None, ha a Strong nincs a szakasztáblában."""
-    tab, jav = _betolt()
+    forras_javit, _ = _modulok()
+    tab, jav = _betolt(tabla, jav_ut)
     sorok = tab.get(strong)
     if sorok is None:
         return None
@@ -167,24 +191,38 @@ def csoportok(szak, hatar=EGY_HIVAS_HATAR, cel=CSOPORT_CEL):
     return ki
 
 
-def strong_magyar(sorok):
-    """A közös összefűző (DT-F128a (a)). sorok: egy Strong `forditasok.tsv`-sorai (dict, a tábla fejlécével), egy szótárból.
-    -> (szöveg, 'szakasz' | 'teljes' | None). A nem `elavult` `sz<n>` sorok sorszám szerint, egy szóközzel; ha nincs ilyen, a
-    `teljes` sor (nem `elavult` elsőbbséggel; több esetén az utolsó). Üres `forditas_hu` nem számít."""
-    sz = [(sorszam_jelentesbol(r.get('jelentes_szam')), r) for r in sorok
-          if r.get('mezo', 'forditas_hu') == 'forditas_hu' and sorszam_jelentesbol(r.get('jelentes_szam')) is not None
-          and r.get('allapot') != 'elavult' and (r.get('forditas_hu') or '').strip()]
-    if sz:
-        return ' '.join(r['forditas_hu'] for _, r in sorted(sz, key=lambda p: p[0])), 'szakasz'
-    teljes = [r for r in sorok if r.get('jelentes_szam') == 'teljes' and r.get('mezo', 'forditas_hu') == 'forditas_hu'
-              and (r.get('forditas_hu') or '').strip()]
+def strong_magyar_sorok(sorok):
+    """A közös összefűző (DT-F128a (a), DT-F128f (3)). sorok: egy Strong `forditasok.tsv`-sorai (dict, a tábla fejlécével),
+    egy szótárból, a tábla sorrendjében. -> (szöveg, 'szakasz' | 'teljes' | None, a felhasznált sorok).
+      - a nem `elavult` `sz<n>` sorok sorszám szerint, egy szóközzel;
+      - de ha van nem `elavult`, `kezi` (jóváhagyott) `teljes` sor, és a szakaszsorok nem mind `kezi`-k, a `kezi` `teljes` sor
+        az érvényes (DT-F128f (3): az új szakaszsorok csak jóváhagyás után kapnak `kezi`-t, addig a régi sor él);
+      - szakaszsor nélkül a `teljes` sor (nem `elavult` elsőbbséggel; több esetén az utolsó).
+    Üres `forditas_hu` nem számít; más `jelentes_szam` (pl. `2.c`, `részlet`) nem a Strong teljes szövege."""
+    def fh(r):
+        return r.get('mezo', 'forditas_hu') == 'forditas_hu' and (r.get('forditas_hu') or '').strip()
+    sz = sorted(((sorszam_jelentesbol(r.get('jelentes_szam')), r) for r in sorok
+                 if fh(r) and sorszam_jelentesbol(r.get('jelentes_szam')) is not None and r.get('allapot') != 'elavult'),
+                key=lambda p: p[0])
+    teljes = [r for r in sorok if fh(r) and r.get('jelentes_szam') == 'teljes']
     elo = [r for r in teljes if r.get('allapot') != 'elavult']
+    kezi = [r for r in elo if r.get('allapot') == 'kezi']
+    if sz and not (kezi and any(r.get('allapot') != 'kezi' for _, r in sz)):
+        return ' '.join(r['forditas_hu'] for _, r in sz), 'szakasz', [r for _, r in sz]
+    if kezi:
+        return kezi[-1]['forditas_hu'], 'teljes', [kezi[-1]]
     if elo or teljes:
-        return (elo or teljes)[-1]['forditas_hu'], 'teljes'
-    return None, None
+        r = (elo or teljes)[-1]
+        return r['forditas_hu'], 'teljes', [r]
+    return None, None, []
 
 
-HU_TABLA = os.path.join(nezet_general.GYOKER, 'adat', 'bdb_szakasz_hu.tsv')
+def strong_magyar(sorok):
+    """(szöveg, 'szakasz' | 'teljes' | None) — l. `strong_magyar_sorok`."""
+    return strong_magyar_sorok(sorok)[:2]
+
+
+HU_TABLA = os.path.join(GYOKER, 'adat', 'bdb_szakasz_hu.tsv')
 
 
 def kesz_magyar_csoportositva(strong):
@@ -197,7 +235,7 @@ def kesz_magyar_csoportositva(strong):
         return None
     if 'hu' not in _CACHE:
         hu = collections.defaultdict(dict)
-        for r in nezet_general.olvas(HU_TABLA):
+        for r in _modulok()[1].olvas(HU_TABLA):
             hu[r['strong']][int(r['sorszam'])] = r
         _CACHE['hu'] = hu
     hu = _CACHE['hu'].get(strong)
@@ -223,7 +261,7 @@ def ellenoriz():
     import unicodedata
     hibak, stat = [], collections.Counter()
     tab, _ = _betolt()
-    ref, _, _ = nezet_general.general(pe_mem=False)
+    ref, _, _ = _modulok()[1].general(pe_mem=False)
     mem_dag = unicodedata.normalize('NFD', 'מּ')
     pe_dag = unicodedata.normalize('NFD', 'פּ')
     nagy = []

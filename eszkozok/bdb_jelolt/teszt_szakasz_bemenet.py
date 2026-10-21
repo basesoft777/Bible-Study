@@ -143,6 +143,23 @@ class Osszefuzo(unittest.TestCase):
         sorok = [_f('sz1', 'a'), _f('sz2', 'x', 'elavult'), _f('sz3', 'c')]
         self.assertEqual(SB.strong_magyar(sorok), ('a c', 'szakasz'))
 
+    def test_kezi_teljes_elsobbsege_dt_f128f(self):
+        # DT-F128f (3): a jóváhagyott `teljes` sor él, amíg a szakaszsorok nem mind `kezi`-k
+        self.assertEqual(SB.strong_magyar([_f('teljes', 'jóváhagyott', 'kezi'), _f('sz1', 'a'), _f('sz2', 'b')]),
+                         ('jóváhagyott', 'teljes'))
+        self.assertEqual(SB.strong_magyar([_f('teljes', 'jóváhagyott', 'kezi'), _f('sz1', 'a', 'kezi'), _f('sz2', 'b')]),
+                         ('jóváhagyott', 'teljes'))
+        self.assertEqual(SB.strong_magyar([_f('teljes', 'jóváhagyott', 'kezi'), _f('sz1', 'a', 'kezi'),
+                                           _f('sz2', 'b', 'kezi')]), ('a b', 'szakasz'))
+        self.assertEqual(SB.strong_magyar([_f('teljes', 'régi', 'elavult'), _f('sz1', 'a', 'kezi'), _f('sz2', 'b', 'kezi')]),
+                         ('a b', 'szakasz'))
+
+    def test_felhasznalt_sorok(self):
+        sorok = [_f('sz2', 'b', 'sonnet'), _f('sz1', 'a', 'sonnet')]
+        sz, tipus, hasznalt = SB.strong_magyar_sorok(sorok)
+        self.assertEqual([r['jelentes_szam'] for r in hasznalt], ['sz1', 'sz2'])
+        self.assertEqual(SB.strong_magyar_sorok([_f('teljes', 'x')])[2][0]['forditas_hu'], 'x')
+
     def test_teljes_tartalek(self):
         self.assertEqual(SB.strong_magyar([_f('teljes', 'egész')]), ('egész', 'teljes'))
         self.assertEqual(SB.strong_magyar([_f('teljes', 'régi', 'elavult'), _f('teljes', 'új')]), ('új', 'teljes'))
@@ -220,7 +237,8 @@ class EmelesSzakaszag(unittest.TestCase):
             munka = self._sorok(E.MUNKA_UT)
             self.assertEqual([(m[3], m[5], m[6]) for m in munka],
                              [('sz1', SB.sha1('H1. ab'), 'H1. ab'), ('sz2', SB.sha1('father'), 'apa')])
-            args = dict(strongok=['H0001'], allapot='sonnet', datum='2026.10.21', megjegyzes=None, kezi_felulir=False)
+            args = dict(strongok=['H0001'], allapot='sonnet', datum='2026.10.21', megjegyzes=None, kezi_felulir=False,
+                        kezi_marad=False)
             with self.assertRaises(SystemExit):
                 E.cmd_szakasz_beir(NS(regi_elavult=False, **args))
             regi = _olvas(E.FORDITASOK_UT)
@@ -237,14 +255,28 @@ class EmelesSzakaszag(unittest.TestCase):
             d = [dict(zip(E.FORDITASOK_FEJLEC, m)) for m in h1]
             self.assertEqual(SB.strong_magyar(d), ('H1. ab apa', 'szakasz'))
 
-    def test_kezi_regi_sor_vedett(self):
-        # DT-F128f nyitott: a H8415 régi `teljes` sora `kezi`
+    def test_kezi_regi_sor_dt_f128f(self):
+        # DT-F128f (3): a H8415 régi `kezi` sora érvényes marad, amíg az új szakaszsorok nem kapnak `kezi`-t
         import tempfile
         with tempfile.TemporaryDirectory() as tmp:
             ford, NS = self._kor('H8415', tmp)
-            with self.assertRaises(SystemExit):
-                E.cmd_szakasz_beir(NS(strongok=['H8415'], allapot='sonnet', datum='2026.10.21', megjegyzes=None,
-                                      kezi_felulir=False, regi_elavult=True))
+            alap = dict(strongok=['H8415'], datum='2026.10.21', megjegyzes=None, regi_elavult=True)
+            with self.assertRaises(SystemExit):   # kifejezett --kezi-marad nélkül megáll
+                E.cmd_szakasz_beir(NS(allapot='sonnet', kezi_felulir=False, kezi_marad=False, **alap))
+            regi = [m for m in self._sorok(ford) if m[1] == 'H8415']
+            E.cmd_szakasz_beir(NS(allapot='sonnet', kezi_felulir=False, kezi_marad=True, **alap))
+            h = [m for m in self._sorok(ford) if m[1] == 'H8415']
+            self.assertEqual(h[0], regi[0])                      # a régi `kezi` sor bájtra érintetlen
+            self.assertEqual([(m[3], m[7]) for m in h[1:]], [('sz1', 'sonnet'), ('sz2', 'sonnet')])
+            d = [dict(zip(E.FORDITASOK_FEJLEC, m)) for m in h]
+            self.assertEqual(SB.strong_magyar(d), (regi[0][6], 'teljes'))   # a közös összefűző a jóváhagyott sort adja
+            with self.assertRaises(SystemExit):   # a jóváhagyás (`kezi`) --kezi-felulir nélkül megáll
+                E.cmd_szakasz_beir(NS(allapot='kezi', kezi_felulir=False, kezi_marad=False, **alap))
+            E.cmd_szakasz_beir(NS(allapot='kezi', kezi_felulir=True, kezi_marad=False, **alap))
+            h = [m for m in self._sorok(ford) if m[1] == 'H8415']
+            self.assertEqual([(m[3], m[7]) for m in h], [('teljes', 'elavult'), ('sz1', 'kezi'), ('sz2', 'kezi')])
+            d = [dict(zip(E.FORDITASOK_FEJLEC, m)) for m in h]
+            self.assertEqual(SB.strong_magyar(d), ('H1. ab apa', 'szakasz'))
 
     def test_rogzit_hibas_token(self):
         import tempfile

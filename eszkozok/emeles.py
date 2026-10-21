@@ -31,7 +31,9 @@ Alparancsok:
           `forras_hash` = a szakasz atadott szovegenek SHA-1-e (DT-F128b (1))
   szakasz_beir       a munkatabla szakaszsorai az adat/forditasok.tsv-be; a Strong
           regi `teljes` sora `--regi-elavult`-tal `elavult` lesz (DT-F128e), kulonben
-          megall; `kezi` regi sornal csak `--kezi-felulir`-ral (DT-F128f nyitott: H8415)
+          megall; `kezi` regi sor (H8415, DT-F128f (3)): nem `kezi` szakaszsor csak
+          `--kezi-marad`-dal (a regi sor ervenyes marad), a jovahagyott (`--allapot kezi`)
+          szakaszsorok `--regi-elavult --kezi-felulir`-ral
 
     python eszkozok/emeles.py lista
     python eszkozok/emeles.py prompt H7121 --ki /tmp/.../H7121_prompt.md
@@ -913,7 +915,9 @@ def cmd_szakasz_rogzit(args):
 def cmd_szakasz_beir(args):
     """A munkatabla szakaszsorai az adat/forditasok.tsv-be. A Strong regi `teljes` sora `--regi-elavult`-tal `elavult`
     allapotot kap, a `megjegyzes` a felvaltast jeloli (DT-F128e: nem torlodik); enelkul a beiras megall. `kezi` regi sor
-    (pl. H8415, DT-F128f) csak `--kezi-felulir`-ral. Minden mas sor bajtra valtozatlan; ezt iras elott ellenorzi."""
+    (H8415, DT-F128f (3)): nem `kezi` szakaszsorok csak `--kezi-marad`-dal, a regi sor erintetlen es ervenyes marad (a kozos
+    osszefuzo, `strong_magyar`, ilyenkor azt adja); a jovahagyott szakaszsorok (`--allapot kezi`) `--regi-elavult
+    --kezi-felulir`-ral, ekkor lesz a regi `elavult`. Minden mas sor bajtra valtozatlan; ezt iras elott ellenorzi."""
     import datetime
     SB = _sb()
     munka = list(tsv_dict_sorok(MUNKA_UT))
@@ -936,13 +940,21 @@ def cmd_szakasz_beir(args):
         if [SB.sorszam_jelentesbol(r['jelentes_szam']) for r in sajat] != [x['sorszam'] for x in szak]:
             raise SystemExit('%s: a munkatabla szakaszsorai nem fedik le a szakaszokat (szakasz_rogzit elobb)' % sp)
         teljes_k = ('BDB', sp, strong_eredeti(sp), 'teljes', 'forditas_hu')
+        regi_marad = False
         if teljes_k in idx:
             regi = sorok[idx[teljes_k]].split('\t')
-            if regi[i_allapot] == 'kezi' and not args.kezi_felulir:
-                raise SystemExit('%s: a regi `teljes` sor `kezi` (jovahagyott) -- csak --kezi-felulir-ral (DT-F128f)' % sp)
-            if not args.regi_elavult:
+            if regi[i_allapot] == 'kezi' and args.allapot != 'kezi':
+                # DT-F128f (3): a jovahagyott sor az ervenyes, amig az uj szakaszsorok nem kapnak `kezi`-t
+                if not args.kezi_marad:
+                    raise SystemExit('%s: a regi `teljes` sor `kezi` (jovahagyott) -- nem `kezi` szakaszsorok csak '
+                                     '--kezi-marad-dal, a regi sor erintetlen marad (DT-F128f (3))' % sp)
+                regi_marad = True
+            elif regi[i_allapot] == 'kezi' and not args.kezi_felulir:
+                raise SystemExit('%s: a regi `teljes` sor `kezi` -- a jovahagyott szakaszsorok beirasa csak '
+                                 '--kezi-felulir-ral (DT-F128f (3))' % sp)
+            if not regi_marad and not args.regi_elavult:
                 raise SystemExit('%s: van regi `teljes` sor -- --regi-elavult kell (DT-F128e)' % sp)
-            if regi[i_allapot] != 'elavult':
+            if not regi_marad and regi[i_allapot] != 'elavult':
                 regi[i_allapot] = 'elavult'
                 regi[i_megj] = '; '.join(x for x in (regi[i_megj], 'felváltva: szakaszonkénti fordítás (%s; DT-F128e)'
                                                       % datum) if x)
@@ -1072,7 +1084,10 @@ def parser_epit():
     p.add_argument('--datum')
     p.add_argument('--megjegyzes')
     p.add_argument('--regi-elavult', action='store_true', help='a Strong regi `teljes` sora `elavult` lesz (DT-F128e)')
-    p.add_argument('--kezi-felulir', action='store_true')
+    p.add_argument('--kezi-felulir', action='store_true',
+                   help='jovahagyott (`--allapot kezi`) szakaszsorok: a regi `kezi` teljes sor `elavult` lesz (DT-F128f (3))')
+    p.add_argument('--kezi-marad', action='store_true',
+                   help='nem `kezi` szakaszsorok a regi `kezi` teljes sor mellett; az erintetlen marad es ervenyes (DT-F128f (3))')
     p.set_defaults(fv=cmd_szakasz_beir)
     return ap
 
