@@ -1,6 +1,6 @@
 # SZURO_PILOT_ISTENTISZT_naplo.md — F110 (#110), szűrő-szabály pilot az ISTENTISZT-001-en
 
-*Állapot: a 3. lépés ⛔ pontján (DT-F110a, jóváhagyásra vár). Ág: `claude/f110-szuro-pilot-2`. Modell: `claude-sonnet-5-5`. A `adat/jeloltek.tsv` nem íródott.*
+*Állapot: a DT-F110a elfogadva (orkesztrátor, 2026-10-21; l. `DONTESEK.md`), a 4–6. lépés lefutott; a zárást az orkesztrátor végzi. Ág: `claude/f110-szuro-pilot-2`. Modell: `claude-sonnet-5-5`. Igehely-alak: a `konyv_normalizalo_tabla` szerinti (JSir 3:55); a TAHOT-kivonat és a szimulációs TSV kulcsa még `Sir 3:55`.*
 
 ## 1. Bemenet és újralekérdezés (2. lépés)
 
@@ -38,7 +38,7 @@ Az A- és B-osztályú és a HATÁRESET-jelzésű sorokat a kézi olvasás dönt
 1. a שֵׁם **Istené** (vagy a hívott isteneké, mint 1Kir 18:26 Báal), nem emberé, városé, helyé, tárgyé;
 2. az ige alanya **hívja** a nevet/személyt (segítségül hívás, kiáltás, kikiáltás-imádás), nem **nevet ad** vagy **névvel szólít**;
 3. a **tagadott** invokáció (pl. „nem hívják a nevedet”) bekerülhet, mert a már beépített Jer 10:25 is ilyen;
-4. a K2-ből HATÁRESET-jelzésű (nincs בְּ, de isteni névvel áll) sor a **tárgyas** szerkezetben (קָרָא + שֵׁם + isteni név, mint Siralm 3:55, 5Móz 32:3) nem automatikus: a DT-F110a (b) opciója szerint kézzel dől el, a (a) opció szerint kiszűrt marad.
+4. a K2-ből HATÁRESET-jelzésű (nincs בְּ, de isteni névvel áll) sor a **tárgyas** szerkezetben (קָרָא + שֵׁם + isteni név, mint JSir 3:55, 5Móz 32:3) nem automatikus: a DT-F110a (b) opciója szerint kézzel dől el, a (a) opció szerint kiszűrt marad.
 
 ### 2.3 Görög oldal (G1941 ἐπικαλέω), a determinisztikus rész
 
@@ -68,7 +68,7 @@ Az A- és B-osztályú sorokat a kézi olvasás dönti: a hívott **Isten/Úr/J�
 | K | K2_nincs_be | 104 |
 | | **összesen** | **168** |
 
-Ebből a K2-ben 4 HATÁRESET (nincs בְּ, de isteni névvel): 1Móz 16:13, 2Móz 17:15, 5Móz 32:3, Siralm 3:55 (`Sir 3:55`).
+Ebből a K2-ben 4 HATÁRESET (nincs בְּ, de isteni névvel): 1Móz 16:13, 2Móz 17:15, 5Móz 32:3, JSir 3:55 (a TAHOT-kulcs: `Sir 3:55`).
 
 Az automatikusan kiszűrt: **154** hely (K0 + K1 + K2); a kézi olvasásra váró: **14** (1 A + 13 B) + a 4 HATÁRESET.
 
@@ -78,11 +78,11 @@ Előzetes kézi olvasás (a TAHOT angol tükörfordítása alapján; a végleges
 - **Ézs 64:6** (B): „and there not [is one who] calls on name your” — tagadott invokáció (Jer 10:25 precedens) → beépítve-jelölt.
 - **Ézs 44:5** (B): önazonosítás („with the name of Jacob he will call out”) → határeset, kézi döntés a szabály szerint (nem Isten neve).
 - **Ézs 40:26, 41:25, 43:1, 45:4; 2Móz 31:2, 35:30; 4Móz 32:38, 32:42; Bír 18:29; Józs 21:9; 1Krón 6:65** (B): személy-/helynévvel, névvel szólítás → elutasítva.
-- **Siralm 3:55** (HATÁRESET): „I called name your O Yahweh” — tárgyas invokáció → a (b) opcióval beépítve-jelölt.
+- **JSir 3:55** (HATÁRESET): „I called name your O Yahweh” — tárgyas invokáció → a (b) opcióval beépítve-jelölt.
 - **5Móz 32:3** (HATÁRESET): „the name of Yahweh I will proclaim” — kikiáltás (a 2Móz 34:5 és 33:19 már beépített בְּ-es párja) → a (b) opcióval határeset, kézi döntés.
 - **1Móz 16:13, 2Móz 17:15** (HATÁRESET): megnevezés (az Úr nevének adása egy helynek/oltárnak) → elutasítva.
 
-Várható végeredmény a 168-ból: **0–4 bekerülő** (Ézs 64:6; (b) opcióval Siralm 3:55, esetleg 5Móz 32:3, Ézs 44:5), a többi kiszűrve. Ez nem hiba: a 168 új hely túlnyomó része megnevezés (נִקְרָא, „X nevét hívta”), amit a negatív kritérium kizár; a szűretlen bevétel (DT184 (c)) ezeket vitte volna be.
+Várható végeredmény a 168-ból: **0–4 bekerülő** (Ézs 64:6; (b) opcióval JSir 3:55, esetleg 5Móz 32:3, Ézs 44:5), a többi kiszűrve. Ez nem hiba: a 168 új hely túlnyomó része megnevezés (נִקְרָא, „X nevét hívta”), amit a negatív kritérium kizár; a szűretlen bevétel (DT184 (c)) ezeket vitte volna be.
 
 ### G1941 (21 hely, `nyitva` jelöltek a `jeloltek.tsv`-ben)
 
@@ -96,7 +96,7 @@ Várható végeredmény a 168-ból: **0–4 bekerülő** (Ézs 64:6; (b) opcióv
 
 Előzetes kézi olvasás: **ApCsel 7:59** (István „kiált, Úr Jézus”) → invokáció, beépítve-jelölt (a 1Kor 1:2, ApCsel 2:21 és 9:14 igéje párhuzam); **2Kor 1:23** („Istent hívom tanúul a lelkemre”) → esküformás tanúhívás, nem segítségül hívás → elutasítva; **Mt 10:25** („Beelzebubnak hívták a házigazdát”) → megnevezés → elutasítva. A 12 + 6 K-sor automatikus elutasítás, indoklásként a K1/K3 okkóddal.
 
-## 4. Hátralévő lépések (a DT-F110a jóváhagyása után)
+## 4. A lépések (a DT-F110a jóváhagyása után; végrehajtva, l. 6–8.)
 
 4. A jóváhagyott szabály futtatása szkriptből (kézi rész: a soronkénti döntés a naplóba).
 5. A `jeloltek.tsv` bővítése (csak új H7121+H8034 sor; csak a szűrőn átjutók `nyitva`), a 21 G1941-sor döntés/indoklás mezője; írás előtt sorösszevetés, a többi sor bájtra azonos.
@@ -107,3 +107,63 @@ Előzetes kézi olvasás: **ApCsel 7:59** (István „kiált, Úr Jézus”) →
 - `eszkozok/f110_lekerdez_bemenet.py` — a 2. lépés (kigyűjtés + újralekérdezés).
 - `eszkozok/f110_szuro.py` — a szabály determinisztikus része (szimuláció, csak a naplót írja).
 - `naplok/F110_bemenet.tsv`, `naplok/F110_lekerdezesek.tsv`, `naplok/F110_szuro_szimulacio.tsv`.
+
+## 6. A jóváhagyás és a kézi olvasás (4. lépés)
+
+A DT-F110a elfogadva két pontosítással: az A osztály sem automatikus bevétel; a határesetek (b) szerint kézi olvasásra mennek. Mérce: aktív ige, a שֵׁם Istené, funkció hívás/kiáltás/kikiáltás-imádás, nem névadás.
+
+### 6.1 Héber (168 hely): 4 bekerül `nyitva`, 164 kiszűrve
+
+| csoport | db |
+|---|---|
+| automatikus kiszűrés (K0 12 + K1 38 + K2 nem határeset 100) | 150 |
+| kézi olvasás után kiszűrve (A 1 + B 11 + határeset 2) | 14 |
+| kézi olvasás után `nyitva` (JSir 3:55, 5Móz 32:3, Ézs 41:25, Ézs 64:6) | 4 |
+| **összesen** | **168** |
+
+Kézi olvasás, soronként (a tábla csak az átjutottakat kapja; a kiszűrtek sorszintű listája: `naplok/F110_szuro_szimulacio.tsv`, a kézi okok itt):
+
+| igehely | osztály | döntés | indoklás |
+|---|---|---|---|
+| JSir 3:55 | K2 határeset | nyitva | „I called name your O Yahweh”: aktív, Isten neve, hívás a gödörből; בְּ nincs |
+| 5Móz 32:3 | K2 határeset | nyitva | „the name of Yahweh I will proclaim”: kikiáltás-imádás (a 2Móz 33:19 és 34:5 párja); בְּ nincs |
+| Ézs 41:25 | B | nyitva (**eltérés a vártól, jelezve**) | „he will call on name my”: aktív קרא + בְּ + שֵׁם, az Úr beszél; vitatott, hogy Círusz hívja-e a nevét; a motívum-menet dönt |
+| Ézs 64:6 | B | nyitva (**eltérés a vártól, jelezve**) | „there not [is one who] calls on name your”: tagadott invokáció (Jer 10:25 precedens) |
+| 1Móz 16:13 | K2 határeset | kiszűrve | névadás |
+| 2Móz 17:15 | K2 határeset | kiszűrve | névadás (oltár) |
+| Ézs 45:3 | A | kiszűrve | Isten hívja Círust névvel |
+| Ézs 44:5 | B | kiszűrve | Jákob neve, nem Isten neve |
+| Ézs 40:26, 43:1, 45:4 | B | kiszűrve | Isten névvel szólít |
+| 1Krón 6:65, Józs 21:9, 4Móz 32:38, 4Móz 32:42, Bír 18:29 | B | kiszűrve | városok/hely névadása |
+| 2Móz 31:2, 35:30 | B | kiszűrve | Becalél névvel szólítása |
+
+A vártnál két sorral több kerül be (Ézs 41:25 és Ézs 64:6): mindkettő a szabály szerint átjutó aktív בְּ-s invokáció, `nyitva` döntéssel, tehát nem kötelez; az orkesztrátor eldöntheti, hogy a motívum-menetben marad-e.
+
+### 6.2 Görög (21 hely)
+
+| döntés | db | helyek |
+|---|---|---|
+| elutasítva, automatikus K1 | 12 | ApCsel 1:23, 4:36, 10:5, 10:18, 10:32, 11:13, 12:12, 12:25, 15:17; Mt 10:3; Jak 2:7; Zsid 11:16 |
+| elutasítva, automatikus K3 | 6 | ApCsel 25:11, 25:12, 25:21, 25:25, 26:32, 28:19 |
+| elutasítva, kézi | 2 | 2Kor 1:23 (esküformás tanúhívás), Mt 10:25 (megnevezés) |
+| nyitva marad | 1 | ApCsel 7:59 (aktív invokáció, a besorolás a motívum-menetben dől el) |
+
+**Eltérés a brief 4. szakaszától:** „a 21 G1941-sor egyike sem `nyitva`”; az orkesztrátor döntése szerint az ApCsel 7:59 `nyitva` marad.
+
+## 7. Írás a `adat/jeloltek.tsv`-be (5. lépés)
+
+`python eszkozok/f110_ir.py`: 636 → 640 sor. 21 módosult sor (a G1941: `dontes`, `indoklas`, `datum`), 4 új sor (mind `nyitva`, `jelolt_tipus=elofordulas`, `forras_kereses` = a kollokáció proveniencia-sora). Az összes többi sor bájtra azonos (a szkript soronként vet össze, eltérésnél nem ír; split/join, nem `csv`). `python eszkozok/ellenoriz.py`: RENDBEN 14, SÉRTÉS 0, KÉZI 2, JELENTÉS 3 (a 2 KÉZI és 3 JELENTÉS nem F110-eredetű). Egyik új sor sem került az `elofordulasok.tsv`-be (2. szabály).
+
+## 8. Átvihetőség-mérés (6. lépés)
+
+A kérdés: tartalmaz-e a motívum negatív kritériuma (`adat/motivumok.tsv`) gépileg ellenőrizhető jegyet, amelyre a héber/görög szűrő épülhet. A tág Strongos motívumok a #108 `uj_talalat_nem_irva_tul_tag` sorai szerint (szám- és becslés nélkül):
+
+| motívum (tág Strong) | gépi jegy a negatív kritériumban? | mondat |
+|---|---|---|
+| ISTENTISZT-001 (H7121+H8034) | igen | a קָרָא + בְּ + שֵׁם szerkezet, az aktív/passzív ige és az isteni névszó szó-sor szinten ellenőrizhető; a kézi rész a שֵׁם referense (a pilot igazolta) |
+| KIRALY-001 (H3548) | részben | Melkizedek megnevezése (H4442/G3198) vagy a „rendje szerint” formula a versben gépileg ellenőrizhető; a BDB „priest-king” sense nem szerepel a TAHOT-sorokban, az kézi |
+| MENNY-001 (H1121+H0430) | igen | a בְּנֵי (הָ)אֱלֹהִים szomszédsági minta (H1121 és H0430 egymás mellett, esetleg H9009-cel) és a H5303 nefilim gépileg ellenőrizhető, a רפאים (H7496) kizárás Strong-szinten adott; a kézi rész az „elohim” jelentése (bírák, isten) |
+| ANTROP-001 (H5315+H2416) | részben | a két szó egyazon versben állása (kollokáció) gépi; a „megkülönböztető szerep” értelmezés, kézi |
+| HAMART-001 (H2403, H7451, H0127, H7843, H7043, H2555) | alig | a kritérium a genezisi átok→föld→romlás láncra való visszautalás; gépileg csak a megnevezett kollokációk (málé+chámász, sámá+chámász) ellenőrizhetők, az egyes tág Strongokra (H2403, H7451) nincs kizáró gépi jegy; külön szűrő-szabály kell, vagy a tág Strongok gerinc-szerepe felülvizsgálandó |
+
+Következtetés: a pilot sémája (negatív kritérium, determinisztikus rész: Strong + kollokáció + igealak/törzs; kézi rész: referens és funkció) közvetlenül átvihető a MENNY-001-re, részben a KIRALY-001-re és az ANTROP-001-re; a HAMART-001 tág Strongjaira nem, ott a szűrőnek nincs gépi horgonya a puszta Strong-találatnál.
