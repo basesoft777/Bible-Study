@@ -1,0 +1,191 @@
+# GENERALT: eszkozok/f110_szuro.py | bemenet=naplok/F110_bemenet.tsv | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | a jeloltek.tsv-t nem irja
+csoport	igehely	osztaly	okkod	indoklas
+H7121+H8034	1Kir 7:21	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (megnevezés: tárgyjel H0853)
+H7121+H8034	1Kir 8:43	K	K1_passziv	passzív/megnevezett ige (it has been called); + עַל
+H7121+H8034	1Kir 13:2	K	K0_nincs_par	a versben nincs egymástól 6 tokenen belüli H7121+H8034 pár
+H7121+H8034	1Kir 16:24	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (megnevezés: tárgyjel H0853)
+H7121+H8034	1Krón 4:9	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	1Krón 6:65	B	B_be_nem_nevszo	aktív קרא + בְּ + שֵׁם, de isteni névszó nincs a közelben: kézi olvasás (they called)
+H7121+H8034	1Krón 7:16	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	1Krón 7:23	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (megnevezés: tárgyjel H0853)
+H7121+H8034	1Krón 13:6	K	K1_passziv	passzív/megnevezett ige (it is called)
+H7121+H8034	1Krón 14:11	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	1Móz 2:19	K	K0_nincs_par	a versben nincs egymástól 6 tokenen belüli H7121+H8034 pár
+H7121+H8034	1Móz 2:20	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	1Móz 3:20	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	1Móz 4:17	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	1Móz 4:25	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (megnevezés: tárgyjel H0853)
+H7121+H8034	1Móz 5:2	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (megnevezés: tárgyjel H0853)
+H7121+H8034	1Móz 5:3	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (megnevezés: tárgyjel H0853)
+H7121+H8034	1Móz 5:29	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (megnevezés: tárgyjel H0853)
+H7121+H8034	1Móz 11:9	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	1Móz 16:11	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	1Móz 16:13	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb); isteni névvel: HATÁRESET
+H7121+H8034	1Móz 16:15	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	1Móz 17:5	K	K1_passziv	passzív/megnevezett ige (it will be called)
+H7121+H8034	1Móz 17:15	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (megnevezés: tárgyjel H0853)
+H7121+H8034	1Móz 17:19	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (megnevezés: tárgyjel H0853)
+H7121+H8034	1Móz 19:22	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	1Móz 19:37	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	1Móz 19:38	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	1Móz 21:3	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (megnevezés: tárgyjel H0853)
+H7121+H8034	1Móz 22:14	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	1Móz 25:30	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	1Móz 26:18	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	1Móz 26:20	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	1Móz 26:21	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	1Móz 26:22	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	1Móz 26:33	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (megnevezés: tárgyjel H0853)
+H7121+H8034	1Móz 27:36	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	1Móz 28:19	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (megnevezés: tárgyjel H0853)
+H7121+H8034	1Móz 29:32	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	1Móz 29:33	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	1Móz 29:34	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	1Móz 29:35	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	1Móz 30:6	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	1Móz 30:8	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	1Móz 30:11	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (megnevezés: tárgyjel H0853)
+H7121+H8034	1Móz 30:13	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (megnevezés: tárgyjel H0853)
+H7121+H8034	1Móz 30:18	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	1Móz 30:20	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (megnevezés: tárgyjel H0853)
+H7121+H8034	1Móz 30:21	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (megnevezés: tárgyjel H0853)
+H7121+H8034	1Móz 30:24	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (megnevezés: tárgyjel H0853)
+H7121+H8034	1Móz 31:48	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	1Móz 32:2	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	1Móz 32:30	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	1Móz 33:17	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	1Móz 35:8	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	1Móz 35:10	K	K1_passziv	passzív/megnevezett ige (it will be called)
+H7121+H8034	1Móz 35:15	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (megnevezés: tárgyjel H0853)
+H7121+H8034	1Móz 35:18	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	1Móz 38:3	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (megnevezés: tárgyjel H0853)
+H7121+H8034	1Móz 38:4	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (megnevezés: tárgyjel H0853)
+H7121+H8034	1Móz 38:5	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (megnevezés: tárgyjel H0853)
+H7121+H8034	1Móz 38:29	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	1Móz 38:30	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	1Móz 41:45	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	1Móz 41:51	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (megnevezés: tárgyjel H0853)
+H7121+H8034	1Móz 41:52	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	1Móz 48:6	K	K1_passziv	passzív/megnevezett ige (they will be called)
+H7121+H8034	1Móz 48:16	K	K1_passziv	passzív/megnevezett ige (may it be called)
+H7121+H8034	1Móz 50:11	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	1Sám 1:20	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (megnevezés: tárgyjel H0853)
+H7121+H8034	1Sám 7:12	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (megnevezés: tárgyjel H0853)
+H7121+H8034	2Kir 14:7	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (megnevezés: tárgyjel H0853)
+H7121+H8034	2Krón 3:17	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	2Krón 6:33	K	K1_passziv	passzív/megnevezett ige (it has been called); + עַל
+H7121+H8034	2Krón 7:14	K	K1_passziv	passzív/megnevezett ige (it has been called); + עַל
+H7121+H8034	2Krón 14:11	K	K0_nincs_par	a versben nincs egymástól 6 tokenen belüli H7121+H8034 pár
+H7121+H8034	2Krón 20:26	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (megnevezés: tárgyjel H0853)
+H7121+H8034	2Móz 2:10	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	2Móz 2:22	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (megnevezés: tárgyjel H0853)
+H7121+H8034	2Móz 15:23	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	2Móz 16:31	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (megnevezés: tárgyjel H0853)
+H7121+H8034	2Móz 17:7	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	2Móz 17:15	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb); isteni névvel: HATÁRESET
+H7121+H8034	2Móz 31:2	B	B_be_nem_nevszo	aktív קרא + בְּ + שֵׁם, de isteni névszó nincs a közelben: kézi olvasás (I have called)
+H7121+H8034	2Móz 35:30	B	B_be_nem_nevszo	aktív קרא + בְּ + שֵׁם, de isteni névszó nincs a közelben: kézi olvasás (he has called)
+H7121+H8034	2Sám 5:20	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	2Sám 6:2	K	K1_passziv	passzív/megnevezett ige (it is called)
+H7121+H8034	2Sám 9:2	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	2Sám 12:24	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (megnevezés: tárgyjel H0853)
+H7121+H8034	2Sám 12:25	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (megnevezés: tárgyjel H0853)
+H7121+H8034	2Sám 12:28	K	K1_passziv	passzív/megnevezett ige (it will be called); + עַל
+H7121+H8034	2Sám 18:18	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	4Móz 11:3	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	4Móz 11:34	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (megnevezés: tárgyjel H0853)
+H7121+H8034	4Móz 13:17	K	K0_nincs_par	a versben nincs egymástól 6 tokenen belüli H7121+H8034 pár
+H7121+H8034	4Móz 21:3	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	4Móz 32:38	B	B_be_nem_nevszo	aktív קרא + בְּ + שֵׁם, de isteni névszó nincs a közelben: kézi olvasás (they called)
+H7121+H8034	4Móz 32:42	B	B_be_nem_nevszo	aktív קרא + בְּ + שֵׁם, de isteni névszó nincs a közelben: kézi olvasás (he called)
+H7121+H8034	5Móz 3:14	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (megnevezés: tárgyjel H0853)
+H7121+H8034	5Móz 25:10	K	K1_passziv	passzív/megnevezett ige (it will be called)
+H7121+H8034	5Móz 28:10	K	K1_passziv	passzív/megnevezett ige (it is called); + עַל
+H7121+H8034	5Móz 32:3	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb); isteni névvel: HATÁRESET
+H7121+H8034	Bír 1:17	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (megnevezés: tárgyjel H0853)
+H7121+H8034	Bír 1:26	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	Bír 2:5	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	Bír 13:24	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (megnevezés: tárgyjel H0853)
+H7121+H8034	Bír 15:19	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	Bír 18:29	B	B_be_nem_nevszo	aktív קרא + בְּ + שֵׁם, de isteni névszó nincs a közelben: kézi olvasás (they called)
+H7121+H8034	Dán 9:18	K	K1_passziv	passzív/megnevezett ige (it is called); + עַל
+H7121+H8034	Dán 9:19	K	K1_passziv	passzív/megnevezett ige (it is called); + עַל
+H7121+H8034	Dán 10:1	K	K1_passziv	passzív/megnevezett ige (it had been called)
+H7121+H8034	Eszt 2:14	K	K1_passziv	passzív/megnevezett ige (she was summoned)
+H7121+H8034	Eszt 3:12	K	K0_nincs_par	a versben nincs egymástól 6 tokenen belüli H7121+H8034 pár
+H7121+H8034	Eszt 9:26	K	K0_nincs_par	a versben nincs egymástól 6 tokenen belüli H7121+H8034 pár
+H7121+H8034	Ez 20:29	K	K1_passziv	passzív/megnevezett ige (it has been called)
+H7121+H8034	Ezsd 2:61	K	K1_passziv	passzív/megnevezett ige (he was called); + עַל
+H7121+H8034	Hós 1:4	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	Hós 1:6	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	Hós 1:9	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	Jer 3:17	K	K0_nincs_par	a versben nincs egymástól 6 tokenen belüli H7121+H8034 pár
+H7121+H8034	Jer 7:10	K	K1_passziv	passzív/megnevezett ige (it is called); + עַל
+H7121+H8034	Jer 7:11	K	K1_passziv	passzív/megnevezett ige (it is called); + עַל
+H7121+H8034	Jer 7:14	K	K1_passziv	passzív/megnevezett ige (it is called); + עַל
+H7121+H8034	Jer 7:30	K	K1_passziv	passzív/megnevezett ige (it is called); + עַל
+H7121+H8034	Jer 11:16	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	Jer 14:9	K	K1_passziv	passzív/megnevezett ige (it is called); + עַל
+H7121+H8034	Jer 15:16	K	K1_passziv	passzív/megnevezett ige (it is called); + עַל
+H7121+H8034	Jer 20:3	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	Jer 23:6	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	Jer 25:29	K	K1_passziv	passzív/megnevezett ige (it is called); + עַל
+H7121+H8034	Jer 32:34	K	K1_passziv	passzív/megnevezett ige (it was called); + עַל
+H7121+H8034	Jer 34:15	K	K1_passziv	passzív/megnevezett ige (it is called); + עַל
+H7121+H8034	Jer 44:26	K	K1_passziv	passzív/megnevezett ige (named)
+H7121+H8034	Jób 42:14	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	Józs 5:9	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	Józs 7:26	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	Józs 19:47	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	Józs 21:9	B	B_be_nem_nevszo	aktív קרא + בְּ + שֵׁם, de isteni névszó nincs a közelben: kézi olvasás (he called)
+H7121+H8034	Mik 6:9	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	Neh 7:63	K	K1_passziv	passzív/megnevezett ige (he was called); + עַל
+H7121+H8034	Préd 6:10	K	K1_passziv	passzív/megnevezett ige (it has been named)
+H7121+H8034	Ruth 4:11	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	Ruth 4:14	K	K1_passziv	passzív/megnevezett ige (may it be proclaimed)
+H7121+H8034	Ruth 4:17	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	Sir 3:55	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb); isteni névvel: HATÁRESET
+H7121+H8034	Ámós 5:8	K	K0_nincs_par	a versben nincs egymástól 6 tokenen belüli H7121+H8034 pár
+H7121+H8034	Ámós 9:6	K	K0_nincs_par	a versben nincs egymástól 6 tokenen belüli H7121+H8034 pár
+H7121+H8034	Ámós 9:12	K	K1_passziv	passzív/megnevezett ige (it is called); + עַל
+H7121+H8034	Ézs 4:1	K	K1_passziv	passzív/megnevezett ige (let it be called); + עַל
+H7121+H8034	Ézs 7:14	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	Ézs 8:3	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	Ézs 9:6	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+H7121+H8034	Ézs 40:26	B	B_be_nem_nevszo	aktív קרא + בְּ + שֵׁם, de isteni névszó nincs a közelben: kézi olvasás (he calls)
+H7121+H8034	Ézs 41:25	B	B_be_nem_nevszo	aktív קרא + בְּ + שֵׁם, de isteni névszó nincs a közelben: kézi olvasás (he will call)
+H7121+H8034	Ézs 43:1	B	B_be_nem_nevszo	aktív קרא + בְּ + שֵׁם, de isteni névszó nincs a közelben: kézi olvasás (I have called [you])
+H7121+H8034	Ézs 43:7	K	K1_passziv	passzív/megnevezett ige ([one who] is called)
+H7121+H8034	Ézs 44:5	B	B_be_nem_nevszo	aktív קרא + בְּ + שֵׁם, de isteni névszó nincs a közelben: kézi olvasás (he will call out)
+H7121+H8034	Ézs 45:3	A	A_be_isten	aktív קרא + בְּ + שֵׁם + isteni névszó (calls)
+H7121+H8034	Ézs 45:4	B	B_be_nem_nevszo	aktív קרא + בְּ + שֵׁם, de isteni névszó nincs a közelben: kézi olvasás (I summoned)
+H7121+H8034	Ézs 48:1	K	K1_passziv	passzív/megnevezett ige ([who] are called)
+H7121+H8034	Ézs 48:2	K	K0_nincs_par	a versben nincs egymástól 6 tokenen belüli H7121+H8034 pár
+H7121+H8034	Ézs 49:1	K	K0_nincs_par	a versben nincs egymástól 6 tokenen belüli H7121+H8034 pár
+H7121+H8034	Ézs 54:5	K	K0_nincs_par	a versben nincs egymástól 6 tokenen belüli H7121+H8034 pár
+H7121+H8034	Ézs 62:2	K	K1_passziv	passzív/megnevezett ige (it will be called)
+H7121+H8034	Ézs 63:19	K	K1_passziv	passzív/megnevezett ige (it was called); + עַל
+H7121+H8034	Ézs 64:6	B	B_be_nem_nevszo	aktív קרא + בְּ + שֵׁם, de isteni névszó nincs a közelben: kézi olvasás ([is one who] calls)
+H7121+H8034	Ézs 65:1	K	K1_passziv	passzív/megnevezett ige (it had been called)
+H7121+H8034	Ézs 65:15	K	K2_nincs_be	nincs בְּ-előtag a שֵׁם előtt (egyéb)
+G1941	2Kor 1:23	A	A_aktiv_isten	aktív/középigés + isteni szó a környezetben (call)
+G1941	ApCsel 1:23	K	K1_passziv	passzív/megnevezett (was called)
+G1941	ApCsel 4:36	K	K1_passziv	passzív/megnevezett (having been called)
+G1941	ApCsel 7:59	A	A_aktiv_isten	aktív/középigés + isteni szó a környezetben (he was calling out)
+G1941	ApCsel 10:5	K	K1_passziv	passzív/megnevezett (is called)
+G1941	ApCsel 10:18	K	K1_passziv	passzív/megnevezett (is being called)
+G1941	ApCsel 10:32	K	K1_passziv	passzív/megnevezett (is called)
+G1941	ApCsel 11:13	K	K1_passziv	passzív/megnevezett (is called)
+G1941	ApCsel 12:12	K	K1_passziv	passzív/megnevezett (is called)
+G1941	ApCsel 12:25	K	K1_passziv	passzív/megnevezett (having been called)
+G1941	ApCsel 15:17	K	K1_passziv	passzív/megnevezett (has been called)
+G1941	ApCsel 25:11	K	K3_jogi	jogi fellebbezés: Kaisar/Szebasztosz a környezetben (I appeal!)
+G1941	ApCsel 25:12	K	K3_jogi	jogi fellebbezés: Kaisar/Szebasztosz a környezetben (You have appealed,)
+G1941	ApCsel 25:21	K	K3_jogi	jogi fellebbezés: Kaisar/Szebasztosz a környezetben (having appealed for)
+G1941	ApCsel 25:25	K	K3_jogi	jogi fellebbezés: Kaisar/Szebasztosz a környezetben (having appealed to)
+G1941	ApCsel 26:32	K	K3_jogi	jogi fellebbezés: Kaisar/Szebasztosz a környezetben (he had appealed)
+G1941	ApCsel 28:19	K	K3_jogi	jogi fellebbezés: Kaisar/Szebasztosz a környezetben (to appeal to)
+G1941	Jak 2:7	K	K1_passziv	passzív/megnevezett (having been called)
+G1941	Mt 10:3	K	K1_passziv	passzív/megnevezett (having been called)
+G1941	Mt 10:25	B	B_nincs_isten	aktív/középigés, de isteni szó nincs a közelben: kézi olvasás (they called on,)
+G1941	Zsid 11:16	K	K1_passziv	passzív/megnevezett (to be called)

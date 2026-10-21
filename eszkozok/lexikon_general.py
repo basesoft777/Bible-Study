@@ -2113,7 +2113,7 @@ def blokk_kapcsolodo(m):
     torzs += ('\n\n*Proveniencia: `scope=id:%s | forras=%s | ts=%s`*'
               % (m['id'], '+'.join(KAPCSOLODO_FORRASOK), G.TS))
     hatokor = ('Ez a blokk a `[ID: %s]` motívum motívumközi kapcsolatait adja a `motivum_kapcsolatok.tsv`-ből '
-               '(minden sor mögött beépített motívumközi jelölt áll, DT-F127b); a sor mindkét érintett '
+               '(minden sor mögött beépített motívumközi jelölt áll, DT277); a sor mindkét érintett '
                'motívum lapján megjelenik.' % m['id'])
     return _lexikon_blokk(m['id'], 'kapcsolodo', list(KAPCSOLODO_FORRASOK), [LC('projekt_adat')], hatokor, torzs)
 
