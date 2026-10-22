@@ -131,3 +131,20 @@ Ami **nem** döntés (a jóváhagyott mockupból vagy a briefből jön): a 900 p
 ## 8. Megállás
 
 A terv a felhasználó jóváhagyására vár: „Te: az M0-terv jóváhagyása (naplok/OLVASO_ALAPNEZET_M0.md)”, a DT-F134f–k döntésekkel együtt. Az M1 a jóváhagyás után indul.
+
+## 9. A felhasználó döntései (2026-10-22, chat)
+
+Az M0-terv jóváhagyva, a következő módosításokkal (a teljes szöveg a `DONTESEK.md`-ben):
+
+| Tétel | Döntés | Hatás a tervre |
+|---|---|---|
+| DT-F134f | (b) | egyetlen réteg (`il`); a `?nezet=munkaasztal` is réteg nélkül |
+| DT-F134g | (c) | nincs `lista` réteg; a 4. szakasz `lista` eleme ezzel érvénytelen |
+| DT-F134h | (a) | az export az új sablonból |
+| DT-F134i | (a) | localStorage; az E5 pontosítva |
+| DT-F134j | (a) | az `ir` bővült, a `lekerdezesek.py` nélkül |
+| DT-F134k | (b) | kliensoldali javaslat könyvnévre és igehelyre |
+| DT-F134l | (a) | **nincs fejezet-kalauz**: üres állapotban rövid útmutató + forrás + számlálók; a 7. szakasz 1. (CSP, sávok) és 3. (a kalauz költsége) kockázata megszűnik; a témaszkript CSP-kérdése marad |
+| DT-F134m | (c) | **nincs „Másolás forrással”**; a 7. szakasz 5. kockázata megszűnik |
+
+Az M1 a felhasználó külön indítására indul.
