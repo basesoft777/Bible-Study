@@ -20,7 +20,7 @@ fugg: [76]
 
 ## 1. Cél
 
-Az olvasó-szerver (`eszkozok/olvaso_szerver/`) elrendezése a felhasználó 2026-10-22-i döntései (DT-F134a–e) és a jóváhagyott, telefonon kipróbált mockup szerint:
+Az olvasó-szerver (`eszkozok/olvaso_szerver/`) elrendezése a felhasználó 2026-10-22-i döntései (DT292–e) és a jóváhagyott, telefonon kipróbált mockup szerint:
 
 - **Minta (vizuális mérce):** a mockup 9. változata, „Csak szöveg olvasó” — https://claude.ai/artifact/ExAeE1TKsNfuEMutErqsuA. Az Alap mockup és a többi változat: https://claude.ai/artifact/Scybm5aoGkc7N4Q3EYgm3r (a változat-sáv linkjeivel). A mockupot a menet csak olvassa (Artifact `read`); a mockup-kereteket nem írja át, a stílusukat és elemeiket viszi át a szerverre.
 - **Elv:** az alapnézet a Károli-szöveg, és semmi más. Minden más (navigáció, jelölések, forrás, vers- és szórészletek, fejezet-kalauz) erre épülő réteg; kis képernyőn csak felugró elemként jelenik meg.
@@ -33,9 +33,9 @@ Az olvasó-szerver (`eszkozok/olvaso_szerver/`) elrendezése a felhasználó 202
 2. **A részletek lapja — egy komponens, két mód:** versszámra koppintva versmód (fejsor: igehely + a vers eleje, „Másolás forrással”; fülek: Vers · Kereszthiv. · Témák · Motívum), szóra koppintva szómód (fejsor: Strong-szám, héber/görög alak, alapjelentés; „A vers: … →”). Váltás a két mód között bezárás nélkül; ‹ az előző tartalomra lép (előzménylánc).
 3. **Két alak:** 900 px alatt alulról felugró lap (betekintés kb. a képernyő felééig, felhúzva teljes nézet, lehúzásra vissza, majd zárás; a koppintott vers a lap fölött látható marad); 900 px-től állandó, párhuzamos oldalblokk.
 4. **Üres állapot:** kijelölés nélkül az oldalblokk (és kis képernyőn a Fejezet-kalauz gombra nyíló lap) a fejezet-kalauzt mutatja: kulcsszavak, személyek és helyek, témák, motívumok, a kereszthivatkozások célkönyvei, a meglévő blokkokból összesítve (a mockup 5. változata). Üres motívumlista: „Üres eredmény, nem negatív lelet.”
-5. **Téma:** az alapértelmezett a világos; a sötét a ⚙ menüben választható marad (a Rendszer lehetőség a DT-F134d szerint).
+5. **Téma:** az alapértelmezett a világos; a sötét a ⚙ menüben választható marad (a Rendszer lehetőség a DT295 szerint).
 6. **Arculat:** a színtokenek és a betűk már azonosak a mockupéval (mérve 2026-10-22); új: a kánon-sáv műfajszínei (`--g-tor` … `--g-apok`, világos és sötét érték) az `konfig/arculat.json`-ba; a mockup komponensstílusai (egysoros fejléc nagy képernyőn, 32 px-es ikongombok, pirula-chipek, árnyékos felugró elemek, fülsor) a tokenrendszeren át.
-7. **Nézetek helyett rétegek (DT-F134c):** a nézetváltó kikerül; az interlineáris sor és a munkaasztal elemei (verslista, panel) az olvasóra kapcsolható rétegek. Az alkalmazás terve (a `nezet` süti, a `/nezet/<nev>` útvonal, a DT148 elrendezései, a régi linkek kezelése) az M0-ban készül (⛔).
+7. **Nézetek helyett rétegek (DT294):** a nézetváltó kikerül; az interlineáris sor és a munkaasztal elemei (verslista, panel) az olvasóra kapcsolható rétegek. Az alkalmazás terve (a `nezet` süti, a `/nezet/<nev>` útvonal, a DT148 elrendezései, a régi linkek kezelése) az M0-ban készül (⛔).
 8. **Mérés:** a 6. szakasz kiinduló mérésének megismétlése az új állapotra (375 / 768 / 920 / 1280 px), valamint valódi telefonos próba a belső hálón (a portproxy- és tűzfal-lépéseket a felhasználó végzi).
 
 **Nincs benne**
@@ -47,7 +47,7 @@ Az olvasó-szerver (`eszkozok/olvaso_szerver/`) elrendezése a felhasználó 202
 
 ## 3. Lépések (⛔ a kötelező megállások)
 
-- **M0 — előkészítés ⛔.** A #76 zárásának ellenőrzése a main-en (a `fugg` miatt); a 9. változat és az Alap mockup olvasása (Artifact `read`); a DT-F134c alkalmazási terve (mi marad a `nezet` sütiből, a `/nezet/<nev>` útvonalból, a DT148 elrendezéseiből). Megállás: terv a felhasználónak.
+- **M0 — előkészítés ⛔.** A #76 zárásának ellenőrzése a main-en (a `fugg` miatt); a 9. változat és az Alap mockup olvasása (Artifact `read`); a DT294 alkalmazási terve (mi marad a `nezet` sütiből, a `/nezet/<nev>` útvonalból, a DT148 elrendezéseiből). Megállás: terv a felhasználónak.
 - **M1 — vázszerkezet.** A részletek-lap komponense (szerveroldalon a meglévő `/r/szo` és `/r/vers` töredékekre építve), a két alak CSS-e és JS-e, a fejsor, az előzménylánc; a fejezet-kalauz összesítése szerveroldalon.
 - **M2 — kis képernyő.** Fejléc nélküli olvasó, navigációs lap, tájoló pirula, húzás; a versműveletek a lap fejsorában.
 - **M3 — arculat.** Világos alaptéma; `--g-*` tokenek; komponensstílusok. A Tervező mód és az `arculat.json` őrei (#98) zöldek maradnak.
@@ -66,11 +66,11 @@ Az olvasó-szerver (`eszkozok/olvaso_szerver/`) elrendezése a felhasználó 202
 
 ## 5. Döntésnapló
 
-- **DT-F134a** 🟢 — az alapnézet a Károli-szöveg; kis képernyőn minden más felugró, tartós sáv nélkül (felhasználó, 2026-10-22).
-- **DT-F134b** 🟢 — a részletek egyetlen komponensben, szó- és versmóddal; 900 px alatt alsó lap, fölötte állandó oldalblokk; üres állapotban fejezet-kalauz (felhasználó, 2026-10-22; a 9. változat jóváhagyásával, telefonon kipróbálva).
-- **DT-F134c** 🟢 — nézetek helyett rétegek: a nézetváltó kikerül; a DT129 (4) „három váltható nézet” és a DT148 ennyiben módosul (felhasználó, 2026-10-22).
-- **DT-F134d** 🟢 — az alapértelmezett téma a világos, a sötét választható marad (felhasználó, 2026-10-22).
-- **DT-F134e** 🟢 — a szerver új stílusa a mockup világos színsémája és betűkészlete; a `--g-*` műfajszínek az `arculat.json`-ba; a komponensstílusok a mockupból (felhasználó, 2026-10-22).
+- **DT292** 🟢 — az alapnézet a Károli-szöveg; kis képernyőn minden más felugró, tartós sáv nélkül (felhasználó, 2026-10-22).
+- **DT293** 🟢 — a részletek egyetlen komponensben, szó- és versmóddal; 900 px alatt alsó lap, fölötte állandó oldalblokk; üres állapotban fejezet-kalauz (felhasználó, 2026-10-22; a 9. változat jóváhagyásával, telefonon kipróbálva).
+- **DT294** 🟢 — nézetek helyett rétegek: a nézetváltó kikerül; a DT129 (4) „három váltható nézet” és a DT148 ennyiben módosul (felhasználó, 2026-10-22).
+- **DT295** 🟢 — az alapértelmezett téma a világos, a sötét választható marad (felhasználó, 2026-10-22).
+- **DT296** 🟢 — a szerver új stílusa a mockup világos színsémája és betűkészlete; a `--g-*` műfajszínek az `arculat.json`-ba; a komponensstílusok a mockupból (felhasználó, 2026-10-22).
 
 A tételek teljes szövege a `DONTESEK.md`-ben.
 
