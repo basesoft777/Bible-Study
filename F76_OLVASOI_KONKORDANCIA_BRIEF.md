@@ -8,10 +8,10 @@ modell: opus
 munka: adat
 allapot: lezarva
 pr: 461
-lezarva_osszegzes: "zárás az M5-tel: helyi (WSL) olvasói felület a pardes.db-ből, három nézet, a #60 pilot blokk-készlete, keresés, hozzáférési szintek konfigból, kiadási kapcsoló, telepit.sh; K1–K3 teljesül (DT147, DT270 (a)), K4 részben (N-F76m), K5 mért korlátként (DT221), K6 nem teljesül (DT-F76r; a friss pardes.db-építést a #120 gátolja); egyeztetett eltérés: az M6/M7 új briefbe (DT-F76p); ellenőrzés ELTÉRÉS 8 → 2 → TISZTA, két javítókör"
+lezarva_osszegzes: "zárás az M5-tel: helyi (WSL) olvasói felület a pardes.db-ből, három nézet, a #60 pilot blokk-készlete, keresés, hozzáférési szintek konfigból, kiadási kapcsoló, telepit.sh; K1–K3 teljesül (DT147, DT270 (a)), K4 részben (N-F76m), K5 mért korlátként (DT221), K6 nem teljesül (DT300; a friss pardes.db-építést a #120 gátolja); egyeztetett eltérés: az M6/M7 új briefbe (DT298); ellenőrzés ELTÉRÉS 8 → 2 → TISZTA, két javítókör"
 ag: claude/f76-zaras
 ad: kutatói olvasói felület helyben (WSL): bibliaszöveg-kezdőlap könyv–fejezet–vers választóval, három váltható nézet (Olvasópult, Interlineáris, Munkaasztal), a #60 pilot teljes blokk-készlete a pardes.db-ből szerveroldali lapelőállítással, keresés (Strong, magyar szó és frázis, héber frázis), hozzáférési szintek konfigurációból, kiadási kapcsoló, telepítő szkript; mérés a VPS-t utánzó korlátokkal
-kovetkezo: "nincs; nyitott: az M6/M7 új briefjének befogadása (/befogad, DT-F76p); a K6 újrafuttatása a #120 után (DT-F76r); átadott: N-F76l, m, n és a többi N-F76 a NYITOTT_FELADATOK.md-ben"
+kovetkezo: "nincs; nyitott: az M6/M7 új briefjének befogadása (/befogad, DT298); a K6 újrafuttatása a #120 után (DT300); átadott: N-F76l, m, n és a többi N-F76 a NYITOTT_FELADATOK.md-ben"
 olvas: [ADATVAGYON_TERV.md, MUNKATERV.md, adat/szotar_szerepek.tsv, adat/SEMA.md, adat/licencek.tsv, "eszkozok/olvaso_pilot/*", eszkozok/sqlite_epit.py, naplok/OLVASOI_PILOT_ertekeles.md, naplok/SQLITE_EPIT_meres.md, DONTESEK.md]
 ir: [eszkozok/olvaso_szerver/, naplok/OLVASOI_KONKORDANCIA_M0.md, naplok/OLVASOI_KONKORDANCIA_meres.md, naplok/OLVASOI_KONKORDANCIA_zaras.md, naplok/OLVASOI_KONKORDANCIA_pilot_osszevetes.md, naplok/ELLENOR_F76_M2b.md, naplok/ELLENOR_F76_M2b_3.md, naplok/ELLENOR_F76_M2b_4.md, naplok/OLVASOI_KONKORDANCIA_M3.md, naplok/ELLENOR_F76_M3.md, naplok/ELLENOR_F76_M3_2.md, naplok/ELLENOR_F76_zaras.md, naplok/ELLENOR_F76_zaras_2.md, naplok/ELLENOR_F76_zaras_3.md]
 fugg: [44, 79, 92, 95, 97, 98]
@@ -22,7 +22,7 @@ nem_fugg: [9, 11, 52, 93]
 
 *Befogadásra váró brief-tervezet: a #76 csonkjának kitöltése (`F76_OLVASOI_KONKORDANCIA_BRIEF.md`, ugyanazon a számon és néven). Források: a DT129 (a felhasználó öt alapdöntése és a (4) pontosítása, 2026-10-13), a DT127 (saját hosting, a `pardes.db` mérete nem köt), a DT128 (modernizált Károli-réteg, nyitott), a DT124 (kiadási kapcsoló), a #60 olvasói pilot értékelő jelentése (`naplok/OLVASOI_PILOT_ertekeles.md`, 8. pont), és a látványterv (https://claude.ai/artifact/SivJAN3Q9iSFm9j8EziAiE). A csonk „Bemenet a hosting ⛔-hez és a CI-hez” szakasza (N-F76a–c) a kitöltésnél megmarad.*
 
-**Javasolt fejléc-adatok:** `tipus: feladat` · `fazis: 1` · `modell: opus` (a befogadáskor sonnet; az M3-tól opus, F76.38) · `munka: adat` · `fugg: [44, 79, 92]` · `nem_fugg: [52]` · `kovetkezo: "/kovetkezo; ⛔ M0 (terv), ⛔ M1 (helyi környezet: a disztribúció létrehozása a felhasználóé), ⛔ M5 (helyi próbaüzem), ⛔ M6 (VPS), ⛔ M7 (nyilvános közzététel)"`. *(2026-10-22: az M6 és az M7 kikerült a #76-ból, új briefbe; a #76 az M5-tel zárul; DT-F76p)*
+**Javasolt fejléc-adatok:** `tipus: feladat` · `fazis: 1` · `modell: opus` (a befogadáskor sonnet; az M3-tól opus, F76.38) · `munka: adat` · `fugg: [44, 79, 92]` · `nem_fugg: [52]` · `kovetkezo: "/kovetkezo; ⛔ M0 (terv), ⛔ M1 (helyi környezet: a disztribúció létrehozása a felhasználóé), ⛔ M5 (helyi próbaüzem), ⛔ M6 (VPS), ⛔ M7 (nyilvános közzététel)"`. *(2026-10-22: az M6 és az M7 kikerült a #76-ból, új briefbe; a #76 az M5-tel zárul; DT298)*
 
 ## 1. Cél
 
@@ -67,17 +67,17 @@ Az első kiadás **helyben, WSL-ben** fut; a VPS-re telepítés és a nyilvános
 - **M3 — keresés.** Strong-szám, magyar szó és frázis (a #92 indexén), héber frázis; a szótő-keresés, ha a szótő-oszlop addig elkészül.
 - **M4 — mérés.** A VPS-t utánzó korlátokkal; D2-egyezés a pilottal; jelentés proveniencia-sorral.
 - **M5 — ⛔ helyi próbaüzem.** A felhasználó átnézi; észrevételek a jelentésbe.
-- **M6 — ⛔ VPS.** A KVM S VPS megrendelése a felhasználóé; telepítés a szkriptből SSH-n át, HTTPS; mért lapidő az éles szerveren. Ha a felhasználó így dönt, külön feladat. *(2026-10-22: kikerült a #76-ból, új briefbe; l. zárójelentés, Egyeztetett eltérés; DT-F76p)*
-- **M7 — ⛔ nyilvános közzététel.** Csak ha teljesül: #89 (LICENSE, a saját adat licence), DT126 (a GPL-es KJV-fájl sorsa), DT78 (17) (idézési szabály és a saját réteg licence), és a DT-M6 szerinti kiadási mód. *(2026-10-22: kikerült a #76-ból, új briefbe; l. zárójelentés, Egyeztetett eltérés; DT-F76p)*
+- **M6 — ⛔ VPS.** A KVM S VPS megrendelése a felhasználóé; telepítés a szkriptből SSH-n át, HTTPS; mért lapidő az éles szerveren. Ha a felhasználó így dönt, külön feladat. *(2026-10-22: kikerült a #76-ból, új briefbe; l. zárójelentés, Egyeztetett eltérés; DT298)*
+- **M7 — ⛔ nyilvános közzététel.** Csak ha teljesül: #89 (LICENSE, a saját adat licence), DT126 (a GPL-es KJV-fájl sorsa), DT78 (17) (idézési szabály és a saját réteg licence), és a DT-M6 szerinti kiadási mód. *(2026-10-22: kikerült a #76-ból, új briefbe; l. zárójelentés, Egyeztetett eltérés; DT298)*
 
 ## 5. Elfogadás
 
 - **K1.** Minden lap és keresés a `pardes.db`-ből jön; a #60 két szakaszán a D2-egyezés 0 eltérés, egyetlen dokumentált kivétellel: a görög szó-lapok `usz_elofordulas` blokkja, ahol a `token_strong` a TAGNT „+” Strong-láncainak elemeit is számolja, a pilot TSV-útja nem (DT147: elfogadva; a lapon az érték bontása látszik).
 - **K2.** A három nézet váltható, a választás megmarad; a kezdőlap a bibliaszöveg könyv-, fejezet- és versválasztóval.
 - **K3.** Minden blokk jellegjelöléssel, forrás- és licencsorral; a hozzáférési szintek konfigurációból zárnak; a kiadási kapcsoló szerint a KJV-Strong és (kereskedelmi módban) az MCGED kimarad. A hozzáférési szint próbaüzemi váltója (fejléc, `/szint/<nev>`, süti; csak a `belso` kiadásban) a felhasználó kérésére került be (2026-10-14), és az M5 próbaüzem egyik ellenőrzési pontja; a #86 freemium/prémium határát nem dönti el. *(DT270 (a), 2026-10-20: a zárás-részt a #76 a mechanizmuson méri — konfigból zár, a váltó működik, a `teszt_szintek.py` a próba-konfiggal zöld —; a szintenkénti valódi zárás vizsgálata a #86-é, mert a blokk–szint hozzárendelés ma üres, és a blokkok összetétele még képlékeny.)*
-- **K4.** Az adatbázis a böngészőbe nem kerül ki; a frissességi teszt (a `meta` hashek egyeznek a TSV-kkel) a telepítés feltétele. *(2026-10-22: a telepítési feltétel (TSV-frissesség, D5) az M6-tal az új briefbe került; a #76-ban az adatbázis ki nem kerülése mérve; DT-F76p)*
-- **K5.** A VPS-t utánzó korlátokkal mért vers-lap idő a jelentésben (a pilot: 93 ms medián, szó-lap 3–5 ms); a magyar szóra keresés 100 ms alatt (#92 K5). *(2026-10-22: a mérvadó szám (DT221) az M6-é, így az új briefé; a #76 a WSL-mérést adja; DT-F76p)*
-- **K6.** Tesztek zöldek (Python 3.12 alatt; eredetileg 3.11, DT146/E1), CI zöld, a független ellenőr eltérés nélkül zár. *(2026-10-22: a VPS-oldali rész az új briefé; DT-F76p. A K6 „nem teljesül” jelöléssel elfogadva: a friss tesztfutás régi építésen piros, az új építést a #120 gátolja; a friss építés és a teljes tesztfutás a #120 után az új brief feltétele; DT-F76r)*
+- **K4.** Az adatbázis a böngészőbe nem kerül ki; a frissességi teszt (a `meta` hashek egyeznek a TSV-kkel) a telepítés feltétele. *(2026-10-22: a telepítési feltétel (TSV-frissesség, D5) az M6-tal az új briefbe került; a #76-ban az adatbázis ki nem kerülése mérve; DT298)*
+- **K5.** A VPS-t utánzó korlátokkal mért vers-lap idő a jelentésben (a pilot: 93 ms medián, szó-lap 3–5 ms); a magyar szóra keresés 100 ms alatt (#92 K5). *(2026-10-22: a mérvadó szám (DT221) az M6-é, így az új briefé; a #76 a WSL-mérést adja; DT298)*
+- **K6.** Tesztek zöldek (Python 3.12 alatt; eredetileg 3.11, DT146/E1), CI zöld, a független ellenőr eltérés nélkül zár. *(2026-10-22: a VPS-oldali rész az új briefé; DT298. A K6 „nem teljesül” jelöléssel elfogadva: a friss tesztfutás régi építésen piros, az új építést a #120 gátolja; a friss építés és a teljes tesztfutás a #120 után az új brief feltétele; DT300)*
 
 ## 6. Kapcsolódás
 
