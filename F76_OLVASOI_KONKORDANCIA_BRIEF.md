@@ -6,10 +6,11 @@ tipus: feladat
 fazis: 1
 modell: opus
 munka: adat
-allapot: megallt
+allapot: lezarva
+lezarva_osszegzes: "zárás az M5-tel: helyi (WSL) olvasói felület a pardes.db-ből, három nézet, a #60 pilot blokk-készlete, keresés, hozzáférési szintek konfigból, kiadási kapcsoló, telepit.sh; K1–K3 teljesül (DT147, DT270 (a)), K4 részben (N-F76m), K5 mért korlátként (DT221), K6 nem teljesül (DT-F76r; a friss pardes.db-építést a #120 gátolja); egyeztetett eltérés: az M6/M7 új briefbe (DT-F76p); ellenőrzés ELTÉRÉS 8 → 2 → TISZTA, két javítókör"
 ag: claude/f76-zaras
 ad: kutatói olvasói felület helyben (WSL): bibliaszöveg-kezdőlap könyv–fejezet–vers választóval, három váltható nézet (Olvasópult, Interlineáris, Munkaasztal), a #60 pilot teljes blokk-készlete a pardes.db-ből szerveroldali lapelőállítással, keresés (Strong, magyar szó és frázis, héber frázis), hozzáférési szintek konfigurációból, kiadási kapcsoló, telepítő szkript; mérés a VPS-t utánzó korlátokkal
-kovetkezo: "Te: [elteres_kor 2/2] zárás — az újraellenőrzés TISZTA (naplok/ELLENOR_F76_zaras_3.md); /kovetkezo 10. lépése: lezarva, draft PR"
+kovetkezo: "nincs; nyitott: az M6/M7 új briefjének befogadása (/befogad, DT-F76p); a K6 újrafuttatása a #120 után (DT-F76r); átadott: N-F76l, m, n és a többi N-F76 a NYITOTT_FELADATOK.md-ben"
 olvas: [ADATVAGYON_TERV.md, MUNKATERV.md, adat/szotar_szerepek.tsv, adat/SEMA.md, adat/licencek.tsv, "eszkozok/olvaso_pilot/*", eszkozok/sqlite_epit.py, naplok/OLVASOI_PILOT_ertekeles.md, naplok/SQLITE_EPIT_meres.md, DONTESEK.md]
 ir: [eszkozok/olvaso_szerver/, naplok/OLVASOI_KONKORDANCIA_M0.md, naplok/OLVASOI_KONKORDANCIA_meres.md, naplok/OLVASOI_KONKORDANCIA_zaras.md, naplok/OLVASOI_KONKORDANCIA_pilot_osszevetes.md, naplok/ELLENOR_F76_M2b.md, naplok/ELLENOR_F76_M2b_3.md, naplok/ELLENOR_F76_M2b_4.md, naplok/OLVASOI_KONKORDANCIA_M3.md, naplok/ELLENOR_F76_M3.md, naplok/ELLENOR_F76_M3_2.md, naplok/ELLENOR_F76_zaras.md, naplok/ELLENOR_F76_zaras_2.md, naplok/ELLENOR_F76_zaras_3.md]
 fugg: [44, 79, 92, 95, 97, 98]
