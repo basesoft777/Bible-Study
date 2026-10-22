@@ -11,7 +11,7 @@ ad: a BDB-szócikkek többszavas héber idézetei helyes szórendben jelennek me
 kovetkezo: Indítható a fugg szerint (a #104 után)
 olvas: [eszkozok/olvaso_szerver/, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/TAHOT_kivonat.tsv, adat/bdb_vers_jelentes.tsv]
 ir: [eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/bdb_szoerend.py, eszkozok/olvaso_szerver/teszt_olvaso_szerver.py]
-fugg: [99, 76, 102, 103, 104]
+fugg: [99, 102, 103, 104]
 ---
 
 # F<nn>_BDB_SZOREND_BRIEF.md — a héber idézetek szórendje

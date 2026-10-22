@@ -11,7 +11,7 @@ ad: 20 szócikkre olvasóbarát, „modell-kimenet” jelölésű jelentésmagya
 kovetkezo: Indítható a fugg szerint (a #105 után); a DT169 a próba költségmérése után dől el
 olvas: [adat/bdb_aranyminta.tsv, adat/bdb_vers_jelentes.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, eszkozok/olvaso_szerver/]
 ir: [adat/bdb_magyarazat_proba.tsv, adat/SEMA.md, adat/datasetek.tsv, eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/teszt_olvaso_szerver.py]
-fugg: [99, 76, 102, 103, 104, 105]
+fugg: [99, 102, 103, 104, 105]
 ---
 
 # F<nn>_BDB_MAGYARAZAT_BRIEF.md — modell-magyarázat próbája
