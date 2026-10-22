@@ -50,7 +50,7 @@ Az első kiadás **helyben, WSL-ben** fut; a VPS-re telepítés és a nyilvános
 **Benne van**
 - A webalkalmazás a fenti architektúrával; a három nézet; navigáció (könyv, fejezet, vers); keresés (Strong-szám, magyar szó, kétszavas magyar frázis, héber frázis a `frazis_pozicio`-ból).
 - A helyi szerverkörnyezet leírása és telepítő szkriptje (WSL, külön disztribúció az E:-n), amely később a VPS-en is fut.
-- Tesztek: lapok és keresés; a #60 D2-egyezése mindkét pilot-szakaszon (1Móz 1–25, Zsolt 22); Python 3.12 (eredetileg 3.11, DT146/E1); link- és keresési próba (N-F76b); SQL-injekció és XSS (N-F76c); hozzáférési szintek; kiadási kapcsoló.
+- Tesztek: lapok és keresés; a #60 D2-egyezése mindkét pilot-szakaszon (1Móz 1–25, Zsolt 22); Python 3.12 (eredetileg 3.11, DT146/E1); link- és keresési próba (N-F76b); SQL-injekció és XSS (N-F76c); hozzáférési szintek; kiadási kapcsoló. *(Az N-F76b és az N-F76c a felhasználó 2026-10-18-i döntésére elhalasztva, nem a #76 része; a keresést a `teszt_kereses.py` unittestjei fedik: `NYITOTT_FELADATOK.md`, N-F76b/c tétel.)*
 - Mérés a VPS-t utánzó korlátokkal (1 vCPU, 2 GB RAM): vers-lap, szó-lap, keresés ideje.
 
 **Nincs benne**
