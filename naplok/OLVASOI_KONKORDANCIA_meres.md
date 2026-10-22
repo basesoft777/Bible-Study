@@ -9,7 +9,7 @@
 | **K1 (D2)** | 1Móz 1–25: 21 991 összevetés, Zsolt 22: 3 022 összevetés; **az egyetlen eltérő blokk-csoport a `gorog_szo:usz_elofordulas`** (27 + 11 görög szó-lap), mind a dokumentált „+” Strong-lánc okkal (DT147). Más eltérés nincs. |
 | **K5 vers-lap** | 1 vCPU / 2 GB korláttal, meleg OS-gyorsítótárral a teljes vers-lap (Olvasópult, a fejezet szövegével és a vers-panellel) **medián 217 ms, p95 310 ms**; a vers-panel töredéke (`/r/vers/…`) 126 / 312 ms. A pilot 93 ms-a a D3 lekérdezés-készlet ideje (nem teljes lap); ugyanez a készlet ezen az adatbázison korlát nélkül 38,8 ms (1Móz 1–25) és 24,9 ms (Zsolt 22). **Hideg** (üres OS-gyorsítótár) a vers-lap **medián 4,8 s, p95 8,9 s**. |
 | **K5 magyar szó < 100 ms** | Meleg mediánnal **nem teljesül** a leggyakoribb szavakon: *és* alapmódban 152 ms (p95 162), pontos módban 97 ms (p95 118, a határon); a (c) mód *föld* 158 ms, *ki* 531 ms. A többi magyar szó 8–61 ms. **Hideg** gyorsítótárral minden magyar keresés 100 ms fölött van (219–2 098 ms). → **DT221** (döntés, megállás). |
-| **K6 tesztek** | a teljes futás (a lassú `teszt_szintek.py`-jal): 9 fájlból 7 zöld; **2 piros**: `teszt_bdb_vers_jelentes.py` (a main-ről örökölt, ismert hiba, #119), `teszt_olvaso_szerver.py` (a saját `m4_meres.py` első változata sértette a „SQL csak a `lekerdezesek.py`-ban” szabályt; javítva, újrafuttatva: l. 5. szakasz). |
+| **K6 tesztek** | a teljes futás (a lassú `teszt_szintek.py`-jal): 8 fájlból 6 zöld; **2 piros**: `teszt_bdb_vers_jelentes.py` (a main-ről örökölt, ismert hiba, #119), `teszt_olvaso_szerver.py` (a saját `m4_meres.py` első változata sértette a „SQL csak a `lekerdezesek.py`-ban” szabályt; javítva, újrafuttatva: l. 5. szakasz). |
 
 ## 1. Gép és környezet
 
@@ -124,7 +124,7 @@ A hideg vers-lap ~120–130 MB-ot olvas szétszórtan a 970 MB-os fájlból (≈
 
 ## 5. Tesztek (K6)
 
-`scope=python eszkozok/teszt_futtat.py (mind a 9 tesztfájl, a lassú teszt_szintek.py-jal), a WSL pardes disztribúcióban, taskset -c 2-7 | forras=unittest, Python 3.12.3, pardes.db meta.epites_ts=2026-10-18T12:18:16Z (~/pardes/pardes.db), a munkafa 7e4b6c5c + az m4_meres.py első változata | ts=2026-10-18T18:06:30Z–18:30:03Z`
+`scope=python eszkozok/teszt_futtat.py (mind a 8 tesztfájl, a lassú teszt_szintek.py-jal), a WSL pardes disztribúcióban, taskset -c 2-7 | forras=unittest, Python 3.12.3, pardes.db meta.epites_ts=2026-10-18T12:18:16Z (~/pardes/pardes.db), a munkafa 7e4b6c5c + az m4_meres.py első változata | ts=2026-10-18T18:06:30Z–18:30:03Z`
 
 | Fájl | Eredmény | Idő |
 |---|---|---:|
@@ -145,7 +145,7 @@ A hideg vers-lap ~120–130 MB-ot olvas szétszórtan a 970 MB-os fájlból (≈
 
 ### 5.1 Újrafuttatás a javított mérőszkripttel
 
-`scope=python eszkozok/teszt_futtat.py --fajl teszt_olvaso_szerver, WSL pardes, taskset -c 2-7 | forras=unittest, Python 3.12.3, pardes.db meta.epites_ts=2026-10-18T12:18:16Z | ts=2026-10-18T18:54:38Z–18:57:20Z`: **zöld, 73 teszt, 172,4 s** (köztük a `test_sql_csak_a_lekerdezesekben` és a D2). A teljes futás többi fájlja a javítás után nem futott újra (a javítás csak az `m4_meres.py`-t érinti, amelyet más teszt nem olvas). **Eredmény a K6-hoz:** 8 fájl zöld, 1 piros (`teszt_bdb_vers_jelentes.py`, #119); a CI és a független ellenőr nem futott.
+`scope=python eszkozok/teszt_futtat.py --fajl teszt_olvaso_szerver, WSL pardes, taskset -c 2-7 | forras=unittest, Python 3.12.3, pardes.db meta.epites_ts=2026-10-18T12:18:16Z | ts=2026-10-18T18:54:38Z–18:57:20Z`: **zöld, 73 teszt, 172,4 s** (köztük a `test_sql_csak_a_lekerdezesekben` és a D2). A teljes futás többi fájlja a javítás után nem futott újra (a javítás csak az `m4_meres.py`-t érinti, amelyet más teszt nem olvas). **Eredmény a K6-hoz:** 8 fájlból 7 zöld, 1 piros (`teszt_bdb_vers_jelentes.py`, #119); a CI és a független ellenőr nem futott.
 
 ## 6. D2-egyezés a #60 pilottal (K1)
 
