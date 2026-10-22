@@ -7,6 +7,7 @@ fazis: 1
 modell: opus
 munka: adat
 allapot: lezarva
+pr: 461
 lezarva_osszegzes: "zárás az M5-tel: helyi (WSL) olvasói felület a pardes.db-ből, három nézet, a #60 pilot blokk-készlete, keresés, hozzáférési szintek konfigból, kiadási kapcsoló, telepit.sh; K1–K3 teljesül (DT147, DT270 (a)), K4 részben (N-F76m), K5 mért korlátként (DT221), K6 nem teljesül (DT-F76r; a friss pardes.db-építést a #120 gátolja); egyeztetett eltérés: az M6/M7 új briefbe (DT-F76p); ellenőrzés ELTÉRÉS 8 → 2 → TISZTA, két javítókör"
 ag: claude/f76-zaras
 ad: kutatói olvasói felület helyben (WSL): bibliaszöveg-kezdőlap könyv–fejezet–vers választóval, három váltható nézet (Olvasópult, Interlineáris, Munkaasztal), a #60 pilot teljes blokk-készlete a pardes.db-ből szerveroldali lapelőállítással, keresés (Strong, magyar szó és frázis, héber frázis), hozzáférési szintek konfigurációból, kiadási kapcsoló, telepítő szkript; mérés a VPS-t utánzó korlátokkal
