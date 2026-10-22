@@ -65,8 +65,8 @@ Az első kiadás **helyben, WSL-ben** fut; a VPS-re telepítés és a nyilvános
 - **M3 — keresés.** Strong-szám, magyar szó és frázis (a #92 indexén), héber frázis; a szótő-keresés, ha a szótő-oszlop addig elkészül.
 - **M4 — mérés.** A VPS-t utánzó korlátokkal; D2-egyezés a pilottal; jelentés proveniencia-sorral.
 - **M5 — ⛔ helyi próbaüzem.** A felhasználó átnézi; észrevételek a jelentésbe.
-- **M6 — ⛔ VPS.** A KVM S VPS megrendelése a felhasználóé; telepítés a szkriptből SSH-n át, HTTPS; mért lapidő az éles szerveren. Ha a felhasználó így dönt, külön feladat.
-- **M7 — ⛔ nyilvános közzététel.** Csak ha teljesül: #89 (LICENSE, a saját adat licence), DT126 (a GPL-es KJV-fájl sorsa), DT78 (17) (idézési szabály és a saját réteg licence), és a DT-M6 szerinti kiadási mód.
+- **M6 — ⛔ VPS.** A KVM S VPS megrendelése a felhasználóé; telepítés a szkriptből SSH-n át, HTTPS; mért lapidő az éles szerveren. Ha a felhasználó így dönt, külön feladat. *(2026-10-22: kikerült a #76-ból, új briefbe; l. zárójelentés, Egyeztetett eltérés)*
+- **M7 — ⛔ nyilvános közzététel.** Csak ha teljesül: #89 (LICENSE, a saját adat licence), DT126 (a GPL-es KJV-fájl sorsa), DT78 (17) (idézési szabály és a saját réteg licence), és a DT-M6 szerinti kiadási mód. *(2026-10-22: kikerült a #76-ból, új briefbe; l. zárójelentés, Egyeztetett eltérés)*
 
 ## 5. Elfogadás
 

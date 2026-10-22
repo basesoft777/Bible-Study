@@ -1,3 +1,23 @@
+# Zárójelentés — #76 OLVASOI_KONKORDANCIA, zárás az M5-tel (2026-10-22)
+
+*Állapot: zárásra vár (`allapot: fut`); `lezarva` a független ellenőr (`naplok/ELLENOR_F76_zaras.md`) után. Ág: `claude/f76-zaras` (F76.64–). Végrehajtó: `claude-opus-5-5`. A korábbi menetek részjelentései alább változatlanok; az M3 napló: `naplok/OLVASOI_KONKORDANCIA_M3.md`, az M4: `naplok/OLVASOI_KONKORDANCIA_meres.md`.*
+
+- **Elkészült (M0–M5):** M0 terv (DT146); M1 `pardes` WSL-disztribúció, Python 3.12; M2/M2b Flask-alkalmazás (`eszkozok/olvaso_szerver/`), három nézet, a #60 pilot kirajzolt blokk-készlete (DT147–DT152), hozzáférési szintek konfigból, szintváltó, kiadási kapcsoló, `telepit.sh`; M3 keresés (Strong, magyar szó és frázis, héber frázis; DT220); M4 mérés 1 vCPU / 2 GB korláttal és vizuális összevetés; M5 helyi próbaüzem a felhasználóval (DT270, 2026-10-20).
+- **K1 teljesül** a DT147 kivétellel: D2 21 991 + 3 022 összevetés, egyetlen eltérő blokk-csoport a `gorog_szo:usz_elofordulas` (27 + 11 lap, a „+” Strong-lánc ok) (`meres.md` 0. és 6. szakasz).
+- **K2 teljesül:** három váltható nézet, `pardes_nezet` süti csak váltáskor, kezdőlap könyv–fejezet–vers választóval (`M0.md` 4.4, tesztekkel).
+- **K3 teljesül, DT270 (a) szerint a mechanizmuson mérve:** konfigból zár, a szintváltó működik (DT270: `/szint/nyilvanos` → 302), a `teszt_szintek.py` a próba-konfiggal zöld (13 teszt, `meres.md` 5.); jelleg-, forrás- és licencsor minden blokkon, kiadási kapcsoló teszttel (M2b). A szintenkénti valódi zárás a #86-é.
+- **K4 részben:** az adatbázis nem kerül ki (`/pardes.db` → 404), a `telepit.sh` futtatja a `frissesseg.py`-t. Nyitott: a helyi `pardes.db` (`epites_ts=2026-10-18T12:18:16Z`) a TSK-ra nem friss (N-F76m; `meres.md` 6.); a TSV-frissesség (D5) a telepítés feltétele, így az új briefé (M6).
+- **K5 a DT221 szerint, mért korlátként:** WSL2-n, a korláttal a vers-lap medián 217 ms (p95 310), a magyar szó a leggyakoribb szavakon 100 ms fölött, hidegen másodperces (`meres.md` 0.); a mérvadó szám az M6-é, tehát az új briefé; a bemelegítés: N-F76n.
+- **K6 részben:** az utolsó teljes futás (M4, 2026-10-18) 8 tesztfájl zöld, 1 piros (`teszt_bdb_vers_jelentes.py`, a #119 tárgya; a #119 azóta lezárva, PR #419; ezen az ágon újrafutás nem volt) (`meres.md` 5., 5.1). A CI és a független ellenőr a zárás része; a VPS-oldali rész az új briefé.
+- **M5-észrevétel:** a felhasználó a DT270-en túl nem adott újat (proveniencia: `manual`). Az M5 után született DT-F76o (a #76 nem kemény függés a #102–#106-nak) alkalmazva (F76.63).
+- **Átadott nyitott tételek (`NYITOTT_FELADATOK.md`):** N-F76l (Károli-KH tartomány vége, TIPNR ismétlődő sor; mechanikus, `blokkok.py`), N-F76m (TSK-frissesség, újraépítés), N-F76n (bemelegítés), N-F76k (MT-vershatár a 9 versösszevonásban), N-F76b/c (Playwright-próba, Semgrep CI-lépés; elhalasztva), N-F76d (BDB-bontás a db-építésbe; Caddy vagy nginx), N-F76h, N-F76i, N-F76j; N-F76a (Supabase mint hosting-opció) az új briefhez.
+
+## Egyeztetett eltérés
+
+Az M6 (VPS) és az M7 (nyilvános közzététel) a felhasználó döntésére (2026-10-22, egyeztetés a /kovetkezo-ban) kikerül a #76 hatóköréből; új briefbe kerülnek, amelyet a felhasználó külön sessionben fogad be a /befogad-dal. A #76 az M5-tel zárul; ez oldja fel a #134-et (fugg: [76]). A K5 mérvadó száma (DT221) és a K6 VPS-oldali része így az új briefé.
+
+---
+
 # Zárójelentés — #76 OLVASOI_KONKORDANCIA, 1. menet (M0 és M1)
 
 *Állapot: a feladat NEM kész, `allapot: megallt`. Ez a menet az M0 (terv) és az M1 (helyi környezet) lépéseit fedi; az M2–M7 hátravan. Ág: `claude/olvasoi-konkordancia` (F76.0–F76.8).*
