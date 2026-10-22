@@ -14,7 +14,7 @@
 
 ## Egyeztetett eltérés
 
-Az M6 (VPS) és az M7 (nyilvános közzététel) a felhasználó döntésére (2026-10-22, egyeztetés a /kovetkezo-ban) kikerül a #76 hatóköréből; új briefbe kerülnek, amelyet a felhasználó külön sessionben fogad be a /befogad-dal. A #76 az M5-tel zárul; ez oldja fel a #134-et (fugg: [76]). A K5 mérvadó száma (DT221) és a K6 VPS-oldali része így az új briefé.
+Az M6 (VPS) és az M7 (nyilvános közzététel) a felhasználó döntésére (DT-F76p; 2026-10-22, egyeztetés a /kovetkezo-ban, megerősítve a /elteres 76-ban) kikerül a #76 hatóköréből; új briefbe kerülnek, amelyet a felhasználó külön sessionben fogad be a /befogad-dal. A #76 az M5-tel zárul; ez oldja fel a #134-et (fugg: [76]) és a #86-ot (`F86_ELOFIZETES_FEED_BRIEF.md`, fugg: [79, 76]). A K5 mérvadó száma (DT221), a K6 VPS-oldali része és a K4 telepítési feltétele (TSV-frissesség, D5) így az új briefé.
 
 ---
 
