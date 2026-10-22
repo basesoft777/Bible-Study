@@ -8,13 +8,30 @@
 - **K3 teljesül, DT270 (a) szerint a mechanizmuson mérve:** konfigból zár, a szintváltó működik (DT270: `/szint/nyilvanos` → 302), a `teszt_szintek.py` a próba-konfiggal zöld (13 teszt, `meres.md` 5.); jelleg-, forrás- és licencsor minden blokkon, kiadási kapcsoló teszttel (M2b). A szintenkénti valódi zárás a #86-é.
 - **K4 részben:** az adatbázis nem kerül ki (`/pardes.db` → 404), a `telepit.sh` futtatja a `frissesseg.py`-t. Nyitott: a helyi `pardes.db` (`epites_ts=2026-10-18T12:18:16Z`) a TSK-ra nem friss (N-F76m; `meres.md` 6.); az N-F76m szerint „az M5 előtt” előírt újraépítés elmaradt, az M5 ezen a 2026-10-18-i építésen futott; az újraépítés az új brief telepítése előtt kell (DT-F76p); a TSV-frissesség (D5) a telepítés feltétele, így az új briefé (M6).
 - **K5 a DT221 szerint, mért korlátként:** WSL2-n, a korláttal a vers-lap medián 217 ms (p95 310), a magyar szó a leggyakoribb szavakon 100 ms fölött, hidegen másodperces (`meres.md` 0.); a mérvadó szám az M6-é, tehát az új briefé; a bemelegítés: N-F76n.
-- **K6 részben:** az M4 utáni állapot (2026-10-18, a teljes futás és az 5.1 újrafuttatása) szerint 8 tesztfájlból 7 zöld, 1 piros (`teszt_bdb_vers_jelentes.py`, a #119 tárgya; a #119 azóta lezárva, PR #419; ezen az ágon újrafutás nem volt) (`meres.md` 5., 5.1). A CI és a független ellenőr a zárás része; a VPS-oldali rész az új briefé.
+- **K6 nem teljesül (friss futás, 2026-10-22):** ezen az ágon a teljes készlet 8 tesztfájljából 6 zöld, **2 piros** (`teszt_olvaso_szerver.py`: a két D2-teszt; `teszt_pilot_aranymintaval.py`: 2 teszt); a `teszt_bdb_vers_jelentes.py` (#119) ma zöld. A futás a WSL `pardes.db`-jén ment, amelynek `epites_ts`-e **2026-10-14T09:35:00Z** (895 MB), nem az M4/M5 2026-10-18-i építése. Részletek: alább, „K6 újrafuttatás”. A korábbi, M4 utáni állapot (2026-10-18, a teljes futás és az 5.1 újrafuttatása): 8 tesztfájlból 7 zöld, 1 piros (`teszt_bdb_vers_jelentes.py`) (`meres.md` 5., 5.1). A CI és a független ellenőr a zárás része; a VPS-oldali rész az új briefé.
 - **M5-észrevétel:** a felhasználó a DT270-en túl nem adott újat (proveniencia: `manual`). Az M5 után született DT-F76o (a #76 nem kemény függés a #102–#106-nak) alkalmazva (F76.63).
 - **Átadott nyitott tételek (`NYITOTT_FELADATOK.md`):** N-F76l (Károli-KH tartomány vége, TIPNR ismétlődő sor; mechanikus, `blokkok.py`; gazda: az M6/M7-et átvevő új brief, DT-F76p, a felhasználó döntése 2026-10-22), N-F76m (TSK-frissesség, újraépítés), N-F76n (bemelegítés), N-F76k (MT-vershatár a 9 versösszevonásban), N-F76b/c (Playwright-próba, Semgrep CI-lépés; elhalasztva), N-F76d (BDB-bontás a db-építésbe; Caddy vagy nginx), N-F76h, N-F76i, N-F76j; N-F76f (a „teljes blokk-készlet” állítás a felhasználói vizuális összevetésig függőben), N-F76g (a tesztek a pilot JSON-jával mérnek, nem független adatforrás; nyitva); N-F76a (Supabase mint hosting-opció; a NYITOTT-ba az F76 zárásakor felvéve) az új briefhez.
 
 ## Egyeztetett eltérés
 
 Az M6 (VPS) és az M7 (nyilvános közzététel) a felhasználó döntésére (DT-F76p; 2026-10-22, egyeztetés a /kovetkezo-ban, megerősítve a /elteres 76-ban) kikerül a #76 hatóköréből; új briefbe kerülnek, amelyet a felhasználó külön sessionben fogad be a /befogad-dal. A #76 az M5-tel zárul; ez oldja fel a #134-et (fugg: [76]) és a #86-ot (`F86_ELOFIZETES_FEED_BRIEF.md`, fugg: [79, 76]). A K5 mérvadó száma (DT221), a K6 VPS-oldali része és a K4 telepítési feltétele (TSV-frissesség, D5) így az új briefé.
+
+## K6 újrafuttatás (2026-10-22, javítókör, ELLENOR_F76_zaras 1.)
+
+`scope=python eszkozok/teszt_futtat.py --reszletes (mind a 8 tesztfájl, a lassú teszt_szintek.py-jal), WSL pardes | forras=unittest, Python 3.12.3 (~/pardes/eszkozok/olvaso_szerver/.venv), pardes.db /home/basesoft/pardes/pardes.db, 895 MB, meta.epites_ts=2026-10-14T09:35:00Z (a teszt_futtat.py kiírása); a kód a claude/f76-zaras dd6b569a állapota (a futás alatt csak .md fájl változott) | ts=2026-10-22T16:48:21Z (a futás vége; időtartam 322 s)`
+
+| Fájl | Eredmény | Idő |
+|---|---|---:|
+| `teszt_arculat.py` | zöld, 22 teszt | 9,5 s |
+| `teszt_bdb_vers_jelentes.py` | zöld, 26 | 34,7 s |
+| `teszt_indito.py` | zöld, 39 | 15,0 s |
+| `teszt_kereses.py` | zöld, 36 | 16,4 s |
+| `teszt_olvaso_szerver.py` | **piros**, 78-ból 2 (1 kihagyva): `TestD2PilotEgyezes.test_1moz_1_25` („váratlan eltérés: vers:macula”), `TestD2PilotEgyezes.test_zsolt_22` („váratlan eltérés: vers:tsk_darab”); kihagyva: az F99 M1 gyökcsalád-teszt („a pardes.db még a gyökcsalád-oszlopok nélkül épült”) | 87,7 s |
+| `teszt_pilot_aranymintaval.py` | **piros**, 22-ből 2: `test_heber_csempe_szavankent_a_pilot_szerint` (1Móz 1:9 LXX-alak: szerver `συναξθήτω`, pilot `συναχθήτω`), `test_szamlalok_egyeznek_a_pilottal` (könyvszám: szerver 57, pilot 61; `1moz_1_1_2_3`) | 48,3 s |
+| `teszt_szintek.py` | zöld, 13 | 93,8 s |
+| `teszt_tervezo.py` | zöld, 48 | 16,4 s |
+
+A `teszt_futtat.py` kilépési kódja 1. Kódot nem javítottam (a javítókör mechanikus; a piros tétel tartalmivá vált, az orkesztrátornak visszaadva). *Értelmezés, nem igazolt ok (`manual`):* a futás az M4/M5 mérésénél (`epites_ts=2026-10-18T12:18:16Z`, 969 646 080 bájt, `meres.md` 1.) régebbi, 2026-10-14-i építésű `pardes.db`-n ment; a négy eltérés (Macula, TSK-darab, LXX-alak, könyvszám) adat-eltérésre utal, nem bizonyítottan kódhibára. Hogy a WSL-beli adatbázist ki és mikor cserélte, a repó adatából nem állapítható meg.
 
 ---
 
