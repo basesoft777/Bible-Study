@@ -11,7 +11,7 @@ ag: claude/f76-zaras
 ad: kutatói olvasói felület helyben (WSL): bibliaszöveg-kezdőlap könyv–fejezet–vers választóval, három váltható nézet (Olvasópult, Interlineáris, Munkaasztal), a #60 pilot teljes blokk-készlete a pardes.db-ből szerveroldali lapelőállítással, keresés (Strong, magyar szó és frázis, héber frázis), hozzáférési szintek konfigurációból, kiadási kapcsoló, telepítő szkript; mérés a VPS-t utánzó korlátokkal
 kovetkezo: "Te: /elteres 76 (a zárás független ellenőre ELTÉRÉS-t adott, 8 tétel: naplok/ELLENOR_F76_zaras.md)"
 olvas: [ADATVAGYON_TERV.md, MUNKATERV.md, adat/szotar_szerepek.tsv, adat/SEMA.md, adat/licencek.tsv, "eszkozok/olvaso_pilot/*", eszkozok/sqlite_epit.py, naplok/OLVASOI_PILOT_ertekeles.md, naplok/SQLITE_EPIT_meres.md, DONTESEK.md]
-ir: [eszkozok/olvaso_szerver/, naplok/OLVASOI_KONKORDANCIA_M0.md, naplok/OLVASOI_KONKORDANCIA_meres.md, naplok/OLVASOI_KONKORDANCIA_zaras.md, naplok/OLVASOI_KONKORDANCIA_pilot_osszevetes.md, naplok/ELLENOR_F76_M2b.md, naplok/ELLENOR_F76_M2b_3.md, naplok/ELLENOR_F76_M2b_4.md, naplok/OLVASOI_KONKORDANCIA_M3.md, naplok/ELLENOR_F76_M3.md, naplok/ELLENOR_F76_M3_2.md, naplok/ELLENOR_F76_zaras.md]
+ir: [eszkozok/olvaso_szerver/, naplok/OLVASOI_KONKORDANCIA_M0.md, naplok/OLVASOI_KONKORDANCIA_meres.md, naplok/OLVASOI_KONKORDANCIA_zaras.md, naplok/OLVASOI_KONKORDANCIA_pilot_osszevetes.md, naplok/ELLENOR_F76_M2b.md, naplok/ELLENOR_F76_M2b_3.md, naplok/ELLENOR_F76_M2b_4.md, naplok/OLVASOI_KONKORDANCIA_M3.md, naplok/ELLENOR_F76_M3.md, naplok/ELLENOR_F76_M3_2.md, naplok/ELLENOR_F76_zaras.md, naplok/ELLENOR_F76_zaras_2.md]
 fugg: [44, 79, 92, 95, 97, 98]
 nem_fugg: [9, 11, 52, 93]
 ---
