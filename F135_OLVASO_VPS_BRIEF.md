@@ -17,7 +17,7 @@ fugg: [76, 120]
 
 # F135_OLVASO_VPS_BRIEF.md — Az olvasói felület VPS-re telepítése és nyilvános közzététele
 
-*FELADATOK #135 · Modell: opus [javaslat] · v1 · 2026.10.22 · Forrás: a #76 M6 és M7 lépése, amelyet a felhasználó döntése (DT-F76p, 2026-10-22) vett ki a #76-ból, és a #76 zárásakor átadott feltételek és nyitott tételek (DT-F76r; `naplok/OLVASOI_KONKORDANCIA_zaras.md`; N-F76a, N-F76d, N-F76l, N-F76m, N-F76n).*
+*FELADATOK #135 · Modell: opus [javaslat] · v1 · 2026.10.22 · Forrás: a #76 M6 és M7 lépése, amelyet a felhasználó döntése (DT298, 2026-10-22) vett ki a #76-ból, és a #76 zárásakor átadott feltételek és nyitott tételek (DT300; `naplok/OLVASOI_KONKORDANCIA_zaras.md`; N-F76a, N-F76d, N-F76l, N-F76m, N-F76n).*
 
 ## 1. Cél
 
@@ -27,7 +27,7 @@ A #76-ban helyben (WSL) elkészült és a felhasználó által átnézett (M5, D
 
 **Benne van**
 - **Átvett feltételek a #76-ból:**
-  - **K6 (DT-F76r):** a `pardes.db` friss építése a main TSV-iből és a teljes tesztfutás (`python eszkozok/teszt_futtat.py`), miután a #120 a `sqlite_epit.py` `kezi_mt_or` őrének okát (N-F117a) megszüntette. A #76 zárásakor a futás 8 fájlból 6 zöld volt, a régi (2026-10-14-i) építés miatt.
+  - **K6 (DT300):** a `pardes.db` friss építése a main TSV-iből és a teljes tesztfutás (`python eszkozok/teszt_futtat.py`), miután a #120 a `sqlite_epit.py` `kezi_mt_or` őrének okát (N-F117a) megszüntette. A #76 zárásakor a futás 8 fájlból 6 zöld volt, a régi (2026-10-14-i) építés miatt.
   - **K4 (D5):** a frissességi teszt (a `meta` hashek egyeznek a TSV-kkel) a telepítés feltétele; az N-F76m TSK-eltérése itt rendeződik.
   - **K5 (DT221):** a mérvadó lapidő-mérés az éles szerveren; a bemelegítés (N-F76n).
 - **Telepítés:** a `telepit.sh` futtatása SSH-n át, fordított proxy (Caddy vagy nginx, N-F76d), HTTPS, szolgáltatásként indítás.
@@ -51,7 +51,7 @@ A #76-ban helyben (WSL) elkészült és a felhasználó által átnézett (M5, D
 ## 4. Elfogadási feltételek
 
 - **K1.** A szerveren a frissességi teszt zöld: a `meta` hashek egyeznek a TSV-kkel, a TSK-eltérés (N-F76m) megszűnt.
-- **K2.** A teljes tesztkészlet zöld a friss építésen (a #76 K6-ja, DT-F76r).
+- **K2.** A teljes tesztkészlet zöld a friss építésen (a #76 K6-ja, DT300).
 - **K3.** Az adatbázis a böngészőbe nem kerül ki (`/pardes.db` → 404 a szerveren is); HTTPS.
 - **K4.** A mérvadó K5-mérés az éles szerveren: a vers-lap ideje, és a magyar szóra keresés 100 ms alatt (#92 K5), vagy dokumentált eltérés döntéssel (DT221).
 - **K5.** A nyilvános közzététel csak az M5 feltételeinek teljesülése után; addig a szerver a `belso` kiadást szolgálja ki, hozzáférés-korláttal. [javaslat]
@@ -59,5 +59,5 @@ A #76-ban helyben (WSL) elkészült és a felhasználó által átnézett (M5, D
 
 ## 5. Döntésnapló
 
-- DT-F76p (a #76 hatókör-szűkítése), DT-F76r (a K6 átadása), DT129, DT127, DT221, DT124, DT126, DT78 (17), DT270.
+- DT298 (a #76 hatókör-szűkítése), DT300 (a K6 átadása), DT129, DT127, DT221, DT124, DT126, DT78 (17), DT270.
 - Nyitott tételek: N-F76a, N-F76d, N-F76l, N-F76m, N-F76n; N-F76b/c (elhalasztva).
