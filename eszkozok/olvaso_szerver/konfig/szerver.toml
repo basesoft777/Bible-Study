@@ -12,8 +12,10 @@ db = ""
 kiadas = "belso"
 
 [suti]
-# a nézetet megjegyző funkcionális süti (DT146/4): csak nézetváltáskor jön létre
-nev = "pardes_nezet"
+# a rétegeket (#134, DT-F134f (b): ma egy réteg, az interlineáris sor) megjegyző funkcionális süti (DT146/4): csak a réteg
+# kapcsolásakor (/reteg/<nev>/<be|ki>, a régi /nezet/<nev> álnéven) jön létre; a `?reteg=` felülírja. A régi `pardes_nezet`
+# sütit a szerver nem olvassa.
+nev = "pardes_reteg"
 szint_nev = "pardes_szint"   # a hozzáférési szintet megjegyző süti: CSAK a belso kiadásban, csak szintváltáskor (F76.34)
 max_kor_mp = 31536000     # 1 év
 secure = false            # HTTPS mögött (VPS) true

@@ -8,13 +8,13 @@ a { color: var(--accent); }
 .fejlec { display: flex; flex-wrap: wrap; gap: var(--space-fejlec-sor) var(--space-fejlec-oszlop); align-items: center; padding: var(--space-fejlec-fugg) var(--space-oldal); border-bottom: 1px solid var(--rule); }
 .logo { text-decoration: none; color: var(--fg); }
 .ugras input { width: 240px; max-width: 60vw; padding: 5px 8px; }
-.nezetvalto { margin-left: auto; display: flex; gap: var(--space-gombsor); }
-.nezetvalto a { padding: var(--space-gomb-fugg) var(--space-gomb-vizsz); border: 1px solid var(--rule); border-radius: var(--radius-csempe); text-decoration: none; }
+.retegvalto { margin-left: auto; display: flex; gap: var(--space-gombsor); }
+.reteg-kapcsolo { padding: var(--space-gomb-fugg) var(--space-gomb-vizsz); border: 1px solid var(--rule); border-radius: var(--radius-csempe); text-decoration: none; }
 .szintvalto { display: flex; gap: var(--space-gombsor); align-items: center; }
 .szintvalto .szint-cim { font: var(--fs-gomb-kis) var(--font-ui); color: var(--muted); }
 .szintvalto a { padding: 3px 8px; border: 1px solid var(--rule); border-radius: var(--radius-csempe); text-decoration: none; font-size: var(--fs-gomb); }
 .szintvalto a.aktiv { background: var(--fg); color: var(--bg); border-color: var(--fg); }
-.nezetvalto a.aktiv { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+.reteg-kapcsolo.aktiv { background: var(--accent); color: var(--bg); border-color: var(--accent); }
 .tartalom { padding: var(--space-tartalom-fent) var(--space-oldal) var(--space-tartalom-lent); }
 .labjegyzet { padding: var(--space-labjegyzet-fugg) var(--space-oldal); border-top: 1px solid var(--rule); color: var(--muted); font-size: var(--fs-megjegyzes); }
 h1 { margin: 6px 0 10px; }
@@ -28,10 +28,7 @@ h4 { font-size: var(--fs-kiscim); margin: 10px 0 4px; }
 .konyvek { columns: 3 280px; }
 .konyv { break-inside: avoid; margin: 2px 0; }
 .szam, .megj, .cimke { color: var(--muted); font-size: var(--fs-megjegyzes); }
-.oszlopok { display: grid; gap: var(--space-oszlopkoz); align-items: start; }
-.olvaso, .interlinearis { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-.munkaasztal { grid-template-columns: 180px minmax(0, 1fr) minmax(0, 1.2fr); }
-@media (max-width: 900px) { .olvaso, .interlinearis, .munkaasztal { grid-template-columns: minmax(0, 1fr); } }
+.olvaso-elrendezes { display: grid; gap: var(--space-oszlopkoz); align-items: start; grid-template-columns: minmax(0, 1fr) minmax(320px, 440px); }
 .jobb-oszlop { position: sticky; top: 8px; max-height: calc(100vh - 16px); overflow: auto; border: 1px solid var(--rule); }
 .vers { margin: 0 0 6px; }
 .vers.kijelolt, .il-vers.kijelolt { background: var(--accent-soft); border-radius: var(--radius-kiemeles); }
@@ -39,9 +36,6 @@ h4 { font-size: var(--fs-kiscim); margin: 10px 0 4px; }
 .szo { color: inherit; }
 .szo.par-magas { text-decoration-style: solid; }
 .szo-nincs { color: inherit; }
-.verslista { max-height: calc(100vh - 80px); overflow: auto; font-size: var(--fs-megjegyzes); display: flex; flex-direction: column; }
-.verslista a { padding: 2px 4px; text-decoration: none; color: var(--fg); border-bottom: 1px solid var(--rule); }
-.verslista a.aktiv { background: var(--accent-soft); }
 .il-vers { margin: 0 0 14px; padding: 4px; }
 .il-szo { flex-direction: column; align-items: flex-start; font: var(--fs-il-csempe)/var(--lh-csempe) var(--font-text); }
 .il-szo .er { font-size: var(--fs-il-eredeti-sor); color: var(--muted); }
@@ -220,3 +214,31 @@ h1 { font: 600 var(--fs-oldalcim)/var(--lh-oldalcim) var(--font-text); text-wrap
 .talalat > a:first-child { font-weight: 600; margin-right: 4px; white-space: nowrap; }
 .talalat mark { background: var(--accent-soft); color: inherit; border-radius: var(--radius-kiemeles); padding: 0 1px; }
 .talalat .heb { margin-right: 4px; }
+/* #134 M1: a részletek lapja (DT293) — egy komponens, két mód (szó / vers), két alak: 900 px-től állandó oldalblokk, alatta alulról
+   felugró lap (betekintés a képernyő feléig, ⤢: teljes nézet). A lap állapota a body osztálya (lap-nyitva, lap-egesz): a szerver a
+   nyitott módot (szó, vers, ?ful=info) már nyitva adja, a JS (olvaso.js) kapcsolja. Az arculati finomítás (árnyék, fülsor, gombok) az M3. */
+.reszletek { padding-top: 0; }
+.lap-fej { position: sticky; top: 0; z-index: 1; display: flex; align-items: center; gap: var(--space-gombsor); margin: 0 0 8px; padding: 8px 0; background: var(--panel); border-bottom: 1px solid var(--rule); }
+.lap-cim { flex: 1; min-width: 0; margin: 0; }
+.lap-cim-fo { display: block; font: 600 var(--fs-igehely) var(--font-text); unicode-bidi: isolate; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lap-cim-al { display: block; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lap-gomb { display: inline-flex; align-items: center; justify-content: center; flex: none; min-width: 32px; height: 32px; padding: 0 6px; border: 1px solid var(--rule); border-radius: var(--radius-csempe); background: var(--bg); color: var(--fg); text-decoration: none; cursor: pointer; font: var(--fs-gomb) var(--font-ui); }
+.lap-gomb:hover { border-color: var(--accent); color: var(--accent); }
+.lap-fogo, .lap-teljes { display: none; }
+.lap-versre-sor { margin: 0 0 10px; }
+.reszletek .fulek { flex-wrap: wrap; }
+@media (min-width: 900px) { .lap-info { display: none; } }
+@media (max-width: 899.98px) {
+  .olvaso-elrendezes { grid-template-columns: minmax(0, 1fr); }
+  .reszletek { position: fixed; left: 0; right: 0; bottom: 0; top: auto; z-index: 20; height: 48vh; max-height: none; margin: 0; overflow: auto; overscroll-behavior: contain;
+    border-radius: var(--radius-panel) var(--radius-panel) 0 0; box-shadow: 0 -10px 30px color-mix(in srgb, var(--fg) 20%, transparent);
+    transform: translateY(105%); visibility: hidden; transition: transform .2s ease, height .2s ease, visibility .2s; }
+  .lap-nyitva .reszletek { transform: none; visibility: visible; }
+  .lap-egesz .reszletek { height: calc(100dvh - 28px); }
+  .lap-nyitva .szoveg-oszlop { padding-bottom: 52vh; }
+  .lap-fej { padding-top: 14px; }
+  .lap-fogo { display: block; position: absolute; top: 4px; left: 50%; width: 40px; height: 4px; margin-left: -20px; border-radius: var(--radius-pill); background: var(--rule); }
+  .lap-teljes { display: inline-flex; }
+  .vers, .il-vers { scroll-margin-top: 8px; }
+}
+@media (prefers-reduced-motion: reduce) { .reszletek { transition: none; } }

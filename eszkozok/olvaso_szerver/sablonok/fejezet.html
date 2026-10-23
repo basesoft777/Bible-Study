@@ -1,16 +1,10 @@
 {% extends "alap.html" %}
 {% macro szavak(v) %}{% for w in v.szavak %}{% if w.fo %}<a class="szo{{ ' par-' ~ w.biz if w.biz else '' }}" href="/{{ slug }}/{{ fej }}/{{ v.vers }}?szo={{ w.fo }}&amp;ful=szo#v{{ v.vers }}" data-strong="{{ w.fo }}">{{ w.kiir }}</a>{% else %}<span class="szo-nincs">{{ w.kiir }}</span>{% endif %}{{ '' if w.szokoz is false else ' ' }}{% endfor %}{% if not v.szavak %}{{ v.szoveg }}{% endif %}{% endmacro %}
-{% macro vers_szoveg(v) %}
-<p class="vers{% if vers == v.vers %} kijelolt{% endif %}" id="v{{ v.vers }}">
-  <a class="versszam" href="/{{ slug }}/{{ fej }}/{{ v.vers }}{% if szo %}?szo={{ szo }}{% endif %}#v{{ v.vers }}">{{ v.vers }}</a>
-  {{ szavak(v) }}
-</p>
-{% endmacro %}
-{% macro vers_folyo(v) %}<span class="vers{% if vers == v.vers %} kijelolt{% endif %}" id="v{{ v.vers }}"><a class="versszam" href="/{{ slug }}/{{ fej }}/{{ v.vers }}{% if szo %}?szo={{ szo }}{% endif %}#v{{ v.vers }}">{{ v.vers }}</a>{{ szavak(v) }}</span> {% endmacro %}
+{% macro vers_folyo(v) %}<span class="vers{% if vers == v.vers %} kijelolt{% endif %}" id="v{{ v.vers }}"><a class="versszam" href="/{{ slug }}/{{ fej }}/{{ v.vers }}#v{{ v.vers }}">{{ v.vers }}</a>{{ szavak(v) }}</span> {% endmacro %}
 {% macro jeloles_kapcsolo() %}<label class="kapcs"><input type="checkbox" id="jeloles" checked> Kapcsolt szavak jelölése</label>{% endmacro %}
 {% macro interlinearis(v) %}
 <div class="il-vers{% if vers == v.vers %} kijelolt{% endif %}" id="v{{ v.vers }}">
-  <a class="versszam" href="/{{ slug }}/{{ fej }}/{{ v.vers }}{% if szo %}?szo={{ szo }}{% endif %}#v{{ v.vers }}">{{ v.vers }}</a>
+  <a class="versszam" href="/{{ slug }}/{{ fej }}/{{ v.vers }}#v{{ v.vers }}">{{ v.vers }}</a>
   <div class="il-szavak">
     {% for w in v.szavak %}
     <div class="il-szo">
@@ -35,75 +29,52 @@
   {% if not v.van_par %}<p class="megj">Ehhez a vershez nincs Károli–Strong párosítás (üres eredmény, nem negatív lelet).</p>{% endif %}
 </div>
 {% endmacro %}
-{% macro panelek(szo_html, vers_html, ful, ketto) %}
-<div class="panel" data-ful="{{ ful }}">
-  {% if not ketto %}
-  <div class="fulek" role="tablist">
-    <a class="ful{{ ' aktiv' if ful == 'szo' else '' }}" role="tab" data-ful="szo" href="?{{ 'szo=' ~ szo ~ '&' if szo else '' }}ful=szo">Szó</a>
-    <a class="ful{{ ' aktiv' if ful == 'vers' else '' }}" role="tab" data-ful="vers" href="?{{ 'szo=' ~ szo ~ '&' if szo else '' }}ful=vers">Vers részletei</a>
-  </div>
-  {% endif %}
-  <div class="ful-tartalom" data-ful="szo"{% if not ketto and ful != 'szo' %} hidden{% endif %}>
-    {% if szo_html %}{{ szo_html|safe }}{% else %}<p class="megj">Kattints egy szóra a szó-lapért.</p>{% endif %}
-  </div>
-  <div class="ful-tartalom" data-ful="vers"{% if not ketto and ful != 'vers' %} hidden{% endif %}>
-    {% if vers_html %}{{ vers_html|safe }}{% else %}<p class="megj">Kattints egy versszámra a vers részleteiért.</p>{% endif %}
-  </div>
-</div>
-{% endmacro %}
 {% block tartalom %}
-<div class="fejezetfej">
-  <h1>{{ nev }} {{ fej }}{% if vers %}:{{ vers }}{% endif %}</h1>
-  <p class="lapozo">
-    {% if elozo %}<a href="/{{ slug }}/{{ elozo }}">← {{ elozo }}. fejezet</a>{% endif %}
-    <a href="/{{ slug }}">{{ nev }}</a>
-    {% if kovetkezo %}<a href="/{{ slug }}/{{ kovetkezo }}">{{ kovetkezo }}. fejezet →</a>{% endif %}
-  </p>
-</div>
-<div class="cimkek" id="cimkek">
-  {% for szoveg, arany in cimkek %}<span class="cimke{{ ' arany' if arany else '' }}">{{ szoveg }}</span>
-  {% endfor %}
-</div>
-<details class="utmutato" id="utmutato"{% if vers is none %} open{% endif %}>
-  <summary>Hogyan olvasd ezt az oldalt?</summary>
-  <ol>
-    <li>A fejezet <b>Károli-szövege</b> áll a lapon ({{ nev }} {{ fej }}), írásjelekkel, ahogy a Bibliában olvasod. A kis számok a versszámok. A fejléc jobb szélén váltható a nézet: Olvasópult (szöveg és jobb oldalt a részletek), Interlineáris (a magyar szavak alatt az eredeti szó), Munkaasztal (verslista, szöveg, és egyszerre a szó és a vers lapja).</li>
-    <li>A <b>pontozottan aláhúzott szavakhoz</b> a héber eredetiben is tartozik szó. Rákattintva a <b>Szó</b> fülön megnyílik a szó teljes lapja: mit jelent, hogyan fordítja Károli, mi az alakja ebben a versben, hol fordul elő, mi a görög megfelelője.</li>
-    <li>A <b>versszámra</b> kattintva a <b>Vers részletei</b> nyílik meg: a vers héber eredetije szavanként, a görög fordítás (Septuaginta) és a kapcsolódó igehelyek.</li>
-    <li>A <b>görög szavak</b> is kattinthatók (keretes, aláhúzott szavak): ilyenkor a görög szó lapja nyílik meg, és onnan a héber szóra is vissza lehet lépni.</li>
-    <li>Minden blokk címe mellett a jellege áll: <span class="jelleg jelleg-forras">forrásadat</span> (változtatás nélkül egy adatkészletből), <span class="jelleg jelleg-gepi">gépi feldolgozás</span> (szabály rendezi vagy párosítja), <span class="jelleg jelleg-modell">modell-kimenet</span> (nyelvi modell fordította vagy párosította; javaslat-értékű). A pontozott aláhúzás a szövegben is modell-kimenet (a Károli–Strong párosítás). A blokk alatt a forrás és a licenc áll. <b>Arany számláló</b> a fejlécben: a magyar BDB-fordítás még nem teljes.</li>
-  </ol>
-</details>
-{% if nezet == 'olvaso' %}
-<div class="oszlopok olvaso">
-  <section class="szoveg-oszlop" aria-label="Károli-szöveg">
-    {{ szoveg_jegy }}
+{# #134 M1: egy elrendezés (DT292–294): a Károli-szöveg (réteg nélkül folyó szöveg, az `il` réteggel versenként interlineáris csempék) és
+   a részletek lapja: 900 px alatt alulról felugró lap, 900 px-től állandó oldalblokk. A lap módja (ures | vers | szo) a szerverről érkezik
+   (JS nélkül is működik), a JS (statikus/olvaso.js) töredékekkel vált köztük, bezárás nélkül, előzménylánccal. #}
+<div class="olvaso-elrendezes">
+  <section class="szoveg-oszlop" aria-label="{{ 'Interlineáris szöveg' if il else 'Károli-szöveg' }}">
+    <div class="fejezetfej">
+      <h1>{{ nev }} {{ fej }}</h1>
+      <p class="lapozo">
+        {% if elozo %}<a href="/{{ slug }}/{{ elozo }}">← {{ elozo }}. fejezet</a>{% endif %}
+        <a href="/{{ slug }}">{{ nev }}</a>
+        {% if kovetkezo %}<a href="/{{ slug }}/{{ kovetkezo }}">{{ kovetkezo }}. fejezet →</a>{% endif %}
+        <a class="lap-info" href="/{{ slug }}/{{ fej }}?ful=info">Forrás és számlálók</a>
+      </p>
+    </div>
+    {% if il %}
+    {% for v in versek %}{{ interlinearis(v) }}{% endfor %}
+    {% else %}
     {{ jeloles_kapcsolo() }}
     <p class="folyo" id="szoveg">{% for v in versek %}{{ vers_folyo(v) }}{% endfor %}</p>
+    {% endif %}
   </section>
-  <aside class="jobb-oszlop">{{ panelek(szo_html, vers_html, ful, false) }}</aside>
-</div>
-{% elif nezet == 'interlinearis' %}
-<div class="oszlopok interlinearis">
-  <section class="szoveg-oszlop" aria-label="Interlineáris szöveg">
-    {{ szoveg_jegy }}
-    {% for v in versek %}{{ interlinearis(v) }}{% endfor %}
-  </section>
-  <aside class="jobb-oszlop">{{ panelek(szo_html, none, 'szo', true) }}
-    {% if vers_html %}<div class="ful-tartalom">{{ vers_html|safe }}</div>{% endif %}
+  <aside class="jobb-oszlop reszletek" id="reszletek" aria-label="Részletek" data-fejezet="{{ slug }}/{{ fej }}" data-mod="{{ mod }}"{% if vers %} data-vers="{{ vers }}"{% endif %}{% if szo %} data-strong="{{ szo }}"{% endif %} data-ful="{{ vers_ful }}" data-uresfo="{{ ures_fo }}" data-uresal="{{ ures_al }}">
+    <div class="lap-fej">
+      <span class="lap-fogo" aria-hidden="true"></span>
+      <button type="button" class="lap-gomb lap-vissza" aria-label="Vissza az előző részletre" title="Vissza az előző részletre" hidden>‹</button>
+      <p class="lap-cim"><b class="lap-cim-fo">{{ lap_cim if mod != 'ures' else ures_fo }}</b> <span class="lap-cim-al">{{ lap_al if mod != 'ures' else ures_al }}</span></p>
+      <button type="button" class="lap-gomb lap-teljes" aria-label="Teljes nézet" title="Teljes nézet" aria-pressed="false">⤢</button>
+      <a class="lap-gomb lap-zar" href="/{{ slug }}/{{ fej }}" aria-label="Bezárás" title="Bezárás">✕</a>
+    </div>
+    <div class="lap-ures"{% if mod != 'ures' %} hidden{% endif %}>
+      <details class="utmutato" id="utmutato" open>
+        <summary>Hogyan olvasd ezt az oldalt?</summary>
+        <ol>
+          <li>Koppints egy <b>versszámra</b>: itt nyílnak meg a vers részletei (Vers · Kereszthiv. · Témák · Motívum).</li>
+          <li>Koppints egy <b>pontozottan aláhúzott szóra</b>: a szó lapja nyílik meg (jelentés, alakok, előfordulás, görög megfelelő). A két mód között bezárás nélkül válthatsz; a ‹ az előzőre lép.</li>
+          <li>Minden blokk mellett a jellege áll: <span class="jelleg jelleg-forras">forrásadat</span>, <span class="jelleg jelleg-gepi">gépi feldolgozás</span>, <span class="jelleg jelleg-modell">modell-kimenet</span> (javaslat-értékű; a pontozott aláhúzás is ilyen). <b>Arany számláló</b>: a magyar BDB-fordítás még nem teljes.</li>
+        </ol>
+      </details>
+      {{ szoveg_jegy }}
+      <div class="cimkek" id="cimkek">
+        {% for szoveg, arany in cimkek %}<span class="cimke{{ ' arany' if arany else '' }}">{{ szoveg }}</span>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="lap-tartalom"{% if mod == 'ures' %} hidden{% endif %}>{% if lap_html %}{{ lap_html }}{% endif %}</div>
   </aside>
 </div>
-{% else %}
-<div class="oszlopok munkaasztal">
-  <nav class="verslista" aria-label="Versek">
-    {% for v in versek %}<a href="/{{ slug }}/{{ fej }}/{{ v.vers }}{% if szo %}?szo={{ szo }}{% endif %}#v{{ v.vers }}"{% if vers == v.vers %} class="aktiv"{% endif %}><b>{{ v.vers }}</b> {{ v.szoveg[:28] }}…</a>{% endfor %}
-  </nav>
-  <section class="szoveg-oszlop" aria-label="Károli-szöveg">
-    {{ szoveg_jegy }}
-    {{ jeloles_kapcsolo() }}
-    {% for v in versek %}{{ vers_szoveg(v) }}{% endfor %}
-  </section>
-  <aside class="jobb-oszlop ketto">{{ panelek(szo_html, vers_html, ful, true) }}</aside>
-</div>
-{% endif %}
 {% endblock %}

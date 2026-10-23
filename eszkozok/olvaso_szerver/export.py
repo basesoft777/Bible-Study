@@ -37,7 +37,8 @@ def kiir(gyar, kimenet, slug, szint):
     kiir_arculat(gyar, kimenet)
     n = 0
     for fej, _ in gyar.kozos.fejezet_szam[kk]:
-        html = gyar.fejezet_lap(slug, fej, None, oldalak.ALAP_NEZET, szint, '', '', '/%s/%d' % (slug, fej))
+        # az új elrendezés, rétegek nélkül, ugyanabból a sablonból (#134, DT-F134h (a))
+        html = gyar.fejezet_lap(slug, fej, None, oldalak.ALAP_RETEG, szint, '', '', '/%s/%d' % (slug, fej))
         with open(os.path.join(kimenet, slug, '%d.html' % fej), 'w', encoding='utf-8', newline='\n') as f:
             f.write(html)
         n += 1

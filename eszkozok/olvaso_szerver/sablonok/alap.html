@@ -14,17 +14,15 @@
 <script src="/tervezo/tervezo.js?v={{ tervezo_v }}" defer></script>
 {% endif %}
 </head>
-<body class="nezet-{{ nezet }}">
+<body class="{{ 'reteg-il' if il else 'reteg-nincs' }}{{ ' lap-nyitva' if lap_nyitva else '' }}">
 <header class="fejlec">
   <a class="logo" href="/">PaRDeS olvasó</a>
   <form class="ugras" action="/kereses" method="get" role="search">
     <input type="text" name="q" placeholder="1Móz 1:4 · H0216 · világosság · a föld (Ctrl+K)" aria-label="Keresés (Strong-szám, magyar szó vagy frázis, héber frázis) vagy ugrás igehelyre" maxlength="100" autocomplete="off">
     <button type="submit">Keresés</button>
   </form>
-  <nav class="nezetvalto" aria-label="Nézet">
-    {% for kod, nev in nezetek %}
-    <a href="/nezet/{{ kod }}?vissza={{ ut|default('/')|urlencode }}"{% if kod == nezet %} class="aktiv" aria-current="true"{% endif %}>{{ nev }}</a>
-    {% endfor %}
+  <nav class="retegvalto" aria-label="Rétegek">
+    <a class="reteg-kapcsolo{{ ' aktiv' if il else '' }}" href="/reteg/il/{{ 'ki' if il else 'be' }}?vissza={{ ut|default('/')|urlencode }}" aria-pressed="{{ 'true' if il else 'false' }}" title="Az interlineáris sor: a magyar szavak alatt az eredeti szó, átírás, tükörfordítás, Strong-szám">Interlineáris sor</a>
   </nav>
   {% if szint_vezerlo %}
   <nav class="szintvalto" aria-label="Hozzáférési szint (próbaüzem)"><span class="szint-cim">Szint</span>

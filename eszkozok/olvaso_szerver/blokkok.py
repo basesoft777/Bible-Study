@@ -1281,15 +1281,16 @@ def blokk_html(b, K):
     return html
 
 
-# a szövegoszlop jelölése (Olvasópult, Interlineáris, Munkaasztal): a Károli-szöveg forrásadat, az aláhúzás és a
+# a szövegoszlop jelölése (folyó szöveg és az interlineáris réteg, #134): a Károli-szöveg forrásadat, az aláhúzás és a
 # szópárok a `token_par` modell-kimenete; a párosítatlan eredeti szavak a `token_karoli`-ból jönnek
 SZOVEG_FORRAS = B('szoveg.karoli', 'vers', 'szövegoszlop', 'forras', ('vers',), None, None)
 SZOVEG_PAR = B('szoveg.par', 'vers', 'szövegoszlop', 'modell', ('token_par', 'token_karoli'), None, None)
 
 
-def szoveg_jegy_html(kozos, nezet):
-    """Jelleg-címke és forrássor a szövegoszlop fölé; hibát dob, ha a licencsor hiányzik."""
-    if nezet == 'interlinearis':
+def szoveg_jegy_html(kozos, il=False):
+    """Jelleg-címke és forrássor a szövegoszlophoz (a részletek lapjának üres állapotában); `il`: az interlineáris réteg be van
+    kapcsolva. Hibát dob, ha a licencsor hiányzik."""
+    if il:
         par = 'A szavak alatti szópárok és a párosítatlan eredeti szavak sora:'
     else:
         par = 'A szavak pontozott aláhúzása (a kattintható szó):'

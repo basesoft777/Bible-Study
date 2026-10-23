@@ -8,8 +8,8 @@ hiba, az osztály és a hely megnevezésével. Így új elem csak regisztrálva 
 
 Olvasás:
 - **sablonok:** a `class="…"` attribútumok; a `{% … %}` címkék közti szöveg osztály, a `{{ … }}` kifejezés szöveg-literáljai
-  osztályok; a dinamikus előtag (`nezet-{{ nezet }}`, `' par-' ~ w.biz`) az értékkészletből bomlik ki: `nezet-` →
-  `oldalak.NEZETEK`, `par-` → a `token_par` bizonyosság-értékei (a `lekerdezesek.bizonyossag_ertekek`-ből, az adatbázisból).
+  osztályok; a dinamikus előtag (`' par-' ~ w.biz`) az értékkészletből bomlik ki: `par-` → a `token_par` bizonyosság-értékei
+  (a `lekerdezesek.bizonyossag_ertekek`-ből, az adatbázisból). (A `nezet-` előtag a #134 óta nincs: a nézetek helyett rétegek.)
 - **Python-modulok** (`ast`): a `class="…"`-t tartalmazó szöveg-literálok; a `%s` helyére kerülő operandus kibontva: literál,
   feltételes kifejezés literál-ágakkal, függvényparaméter (az alapértéke és a hívási helyek literál-argumentumai), vagy egy
   modulszintű szótár-literál értékeinek eleme (`JELLEG[j][1]`).
@@ -43,7 +43,6 @@ JS_FAJLOK = ((os.path.join(D, 'statikus', 'olvaso.js'), 'statikus/olvaso.js'),
              (os.path.join(D, 'tervezo_statikus', 'tervezo.js'), 'tervezo_statikus/tervezo.js'))
 ELEMEK_UT = os.path.join(D, 'konfig', 'elemek.toml')
 OSZTALY = re.compile(r'^[A-Za-z_][A-Za-z0-9_-]*$')
-NEZETEK = ('olvaso', 'interlinearis', 'munkaasztal')          # = oldalak.NEZETEK (a teszt összeveti)
 BIZONYOSSAG_TARTALEK = ('magas', 'alacsony')                  # csak adatbázis nélkül; a kimenet ezt jelzi
 
 
@@ -123,7 +122,7 @@ def _jinja_alternativak(kif, fajl, sor):
 def sablon_ertek(ertek, dinamikus, fajl, sor):
     """Egy `class` attribútum értékéből az osztályok: [(osztály, dinamikus-e)].
 
-    A kifejezés nem literál része csak egy ismert dinamikus előtagot (`nezet-`, `par-`) követhet, szóköz nélkül; minden más
+    A kifejezés nem literál része csak egy ismert dinamikus előtagot (pl. `par-`) követhet, szóköz nélkül; minden más
     nem literál kimenet (pl. a `{{ x or 'y' }}` `x`-e) hiba. Hiba az is, ha a kifejezés kimenete szóköz nélkül tapadna az előtte
     álló statikus osztálynévhez (`szo{{ 'x' }}`)."""
     ki = []
@@ -387,7 +386,8 @@ def bizonyossag_ertekek(db_ut):
 
 def felmeres(sablon_dir=SABLON_DIR, py_fajlok=PY_FAJLOK, biz=None, js_fajlok=None):
     """A felület osztály-előfordulásai: [Elofordulas]."""
-    dinamikus = {'nezet-': list(NEZETEK), 'par-': list(biz if biz is not None else BIZONYOSSAG_TARTALEK)}
+    # a `nezet-` előtag a #134 óta nincs (a body horga a rétegeké: `reteg-il` / `reteg-nincs`, literálként olvasható)
+    dinamikus = {'par-': list(biz if biz is not None else BIZONYOSSAG_TARTALEK)}
     ki, latott = [], set()
     for e in sablon_osztalyok(sablon_dir, dinamikus) + py_osztalyok(py_fajlok) + js_osztalyok(JS_FAJLOK if js_fajlok is None else js_fajlok):
         if (e.osztaly, e.fajl, e.sor) not in latott:                 # egy helyen egy osztály egyszer (a kibontás ismételheti)

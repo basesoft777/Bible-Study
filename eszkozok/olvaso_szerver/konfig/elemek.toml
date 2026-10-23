@@ -37,11 +37,12 @@ tulajdonsag = [
   { nev = "Szín", token = "fg" },
 ]
 
+# a nézetváltó helyén (#134, DT294): a rétegkapcsoló (ma egy réteg, az interlineáris sor); a tokenek a nézetváltó gombjáéi
 [[elem]]
-id = "nezetvalto"
-nev = "Nézetváltó gomb"
+id = "reteg-kapcsolo"
+nev = "Rétegkapcsoló gomb (Interlineáris sor)"
 csoport = "Fejléc"
-szelektor = ".nezetvalto a"
+szelektor = ".reteg-kapcsolo"
 tulajdonsag = [
   { nev = "Szövegszín", token = "accent" },
   { nev = "Keret színe", token = "rule" },
@@ -52,10 +53,10 @@ tulajdonsag = [
 ]
 
 [[elem]]
-id = "nezetvalto-aktiv"
-nev = "Nézetváltó gomb (aktív)"
+id = "reteg-kapcsolo-aktiv"
+nev = "Rétegkapcsoló gomb (bekapcsolva)"
 csoport = "Fejléc"
-szelektor = ".nezetvalto a.aktiv"
+szelektor = ".reteg-kapcsolo.aktiv"
 tulajdonsag = [
   { nev = "Háttér", token = "accent" },
   { nev = "Szöveg", token = "bg" },
@@ -335,15 +336,18 @@ tulajdonsag = [
   { nev = "Lekerekítés", token = "radius-kiemeles" },
 ]
 
+# a munkaasztal verslistájának helyén (#134, DT-F134g (c): nincs verslista): a részletek lapjának fejsor-gombjai (‹, ⤢, ✕)
 [[elem]]
-id = "verslista"
-nev = "Verslista (Munkaasztal)"
-csoport = "Folyó szöveg"
-szelektor = ".verslista"
+id = "lap-gomb"
+nev = "A részletek lapjának gombja (‹ ⤢ ✕)"
+csoport = "Jobb oldali panel"
+szelektor = ".lap-gomb"
 tulajdonsag = [
-  { nev = "Betűméret", token = "fs-megjegyzes" },
-  { nev = "Elválasztó", token = "rule" },
-  { nev = "Aktív sor háttere", token = "accent-soft" },
+  { nev = "Betűméret", token = "fs-gomb" },
+  { nev = "Keret", token = "rule" },
+  { nev = "Lekerekítés", token = "radius-csempe" },
+  { nev = "Háttér", token = "bg" },
+  { nev = "Szöveg", token = "fg" },
 ]
 
 # ---------------------------------------------------------------------------------------------------------------------
@@ -959,22 +963,38 @@ tulajdonsag = [
 # gk, st), regisztráltnak számítanak, ezért nincsenek itt.
 # ---------------------------------------------------------------------------------------------------------------------
 [kizart]
-# a nézetek rács-elrendezése; elrendezés-szerkesztés nincs a hatókörben
-oszlopok = "a nézetek rács-tárolója; az oszlopköz (space-oszlopkoz) elrendezési érték, a tartalékon át állítható"
-olvaso = "az Olvasópult rács-elrendezése (oszlopszélességek); elrendezés-szerkesztés nincs a hatókörben"
-interlinearis = "az Interlineáris nézet rács-elrendezése; elrendezés-szerkesztés nincs a hatókörben"
-munkaasztal = "a Munkaasztal rács-elrendezése; elrendezés-szerkesztés nincs a hatókörben"
+# az olvasó elrendezése (#134 M1): a szöveg és a részletek lapja; elrendezés-szerkesztés nincs a hatókörben
+olvaso-elrendezes = "a fejezet-lap rács-tárolója (szöveg + részletek lapja, 900 px alatt egy oszlop); az oszlopköz (space-oszlopkoz) elrendezési érték, a tartalékon át állítható"
+reszletek = "a részletek lapja (900 px alatt alsó lap, fölötte oldalblokk); a megjelenése a jobb oldali panel (.jobb-oszlop) tokenjeiből"
+# a részletek lapjának szerkezeti részei (#134 M1); a gombok megjelenése a lap-gomb elem, a háttér és a vonal a jobb oldali panel tokenjei
+lap-fej = "a lap fejsorának tárolója (ragadós, flex); a háttér (panel) és a vonal (rule) a jobb oldali panel tokenjei"
+lap-fogo = "a lap fogantyúja (csak 900 px alatt, díszítő sáv); a színe a rule token"
+lap-cim = "a fejsor címének tárolója (bekezdés); a megjelenés a gyermek-elemeken"
+lap-cim-fo = "a fejsor címe (igehely, vagy Strong + alak); a betű a vers-panel címének tokenje (fs-igehely)"
+lap-cim-al = "a fejsor alcíme (a vers eleje, vagy az alapjelentés); a megjegyzés színe (muted)"
+lap-vissza = "JavaScript-horog: az előzménylánc gombja (‹); a megjelenés a lap-gomb elem"
+lap-teljes = "JavaScript-horog: a teljes nézet gombja (⤢, csak 900 px alatt); a megjelenés a lap-gomb elem"
+lap-zar = "JavaScript-horog: a bezárás (✕; JS nélkül hivatkozás a fejezetre); a megjelenés a lap-gomb elem"
+lap-ures = "a lap üres állapota (útmutató, forrás, számlálók; DT-F134l): tároló, a megjelenés a gyermek-elemeken"
+lap-tartalom = "JavaScript-horog: a szó- vagy vers-töredék helye; saját megjelenése nincs"
+lap-info = "hivatkozás a lapozó sorban (900 px alatt): az üres állapot nyitott lapon; a hivatkozás (a) megjelenése"
+lap-versre-sor = "a szómód „A vers: … →” sorának tárolója (bekezdés, margó literál)"
+lap-versre = "JavaScript-horog: a szómódból a versmódra vált (hivatkozás); a hivatkozás (a) megjelenése"
+# a body állapot-horgai (#134 M1): a réteg és a lap állapota; CSS-ben csak horog, saját token nélkül
+reteg-il = "a body réteg-horga (az interlineáris sor be); CSS-szabály nincs rá"
+reteg-nincs = "a body réteg-horga (réteg nélkül); CSS-szabály nincs rá"
+lap-nyitva = "a body állapot-horga: a részletek lapja nyitva (900 px alatt felugrik); saját token nélkül"
+lap-egesz = "a body állapot-horga: a részletek lapja teljes nézetben (900 px alatt); saját token nélkül"
+retegvalto = "a rétegkapcsoló tárolója a fejlécben (flex); a köz a rétegkapcsoló space-gombsor tokenje"
 # JavaScript-horgok
-panel = "JavaScript-horog (fülváltás, töredék-betöltés); saját megjelenése nincs (a jobb oldali panel a 30. sor)"
 ful-tartalom = "JavaScript-horog (a fül tartalma); saját megjelenése nincs"
-fulek = "a fülek sora (flex-tároló, a köz a nézetváltó space-gombsor tokenje); a fül a 31–32. sor"
+fulek = "a fülek sora (flex-tároló, a köz a rétegkapcsoló space-gombsor tokenje); a fül a 31–32. sor"
 # tartalmi burkolók
 szolap = "tartalmi burkoló (article); a megjelenés a gyermek-elemeken"
 verslap = "tartalmi burkoló (article); a megjelenés a gyermek-elemeken"
 # sablon-horgok, CSS-szabály nélkül
 fejezetfej = "sablon-horog (a fejezet-lap címe és lapozója); CSS-szabály nincs rá"
 lapozo = "sablon-horog (előző/következő fejezet); CSS-szabály nincs rá"
-ketto = "sablon-horog (a Munkaasztal két panele); CSS-szabály nincs rá"
 # sor- és bekezdés-tárolók
 il-szavak = "az interlineáris csempék sora; a csempék közti köz a 53. sor (Interlineáris csempe) tulajdonsága"
 il-parositatlan = "a párosítatlan eredeti szavak sora (tároló); a betűmérete (fs-il-eredeti-sor) a tartalékon át állítható"
@@ -1010,10 +1030,6 @@ szo-nincs = "párosítás nélküli Károli-szó; a folyó szöveg (24) színét
 nyelvtani = "állapot-osztály (nyelvtani elem: szaggatott keret, halványítás, literálok); saját tokenje nincs"
 par-magas = "állapot-osztály (magas bizonyosságú pár: folytonos aláhúzás, literál); a színe a 26. sor tokenje"
 nincs-jeloles = "állapot-osztály a szövegoszlopon (az olvaso.js adja, a „jelölés” kapcsoló kikapcsolva): a kötött szó aláhúzása eltűnik (literál); saját tokenje nincs"
-# a body nézet-horga
-nezet-olvaso = "a body nézet-horga; CSS-szabály nincs rá"
-nezet-interlinearis = "a body nézet-horga; CSS-szabály nincs rá"
-nezet-munkaasztal = "a body nézet-horga; CSS-szabály nincs rá"
 # a keresőlap (M3) tárolói: a megjelenésük a meglévő tokenekből (betű: fs-karoli-panel, lh-karoli-panel; köz: space-blokkkoz; kiemelés: accent-soft, radius-kiemeles), a tartalékon át állíthatók
 talalatok = "a keresőlap találatlistájának tárolója (számozott lista, rács); a köz a blokkköz (space-blokkkoz) tokenje"
 talalat = "egy találat (igehely + Károli-vers, a talált szavak <mark>-kal); a betű a Károli-panel (fs-karoli-panel, lh-karoli-panel), a kiemelés az accent-soft tokenje"
