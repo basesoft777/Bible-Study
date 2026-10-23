@@ -217,6 +217,25 @@ A 4 piros ugyanaz, mint korábban: `TestD2PilotEgyezes.test_1moz_1_25`, `TestD2P
 
 ### 6.4 Nyitott pontok
 
-1. **⛔ 375 px-en a sáv két sorra törik** a „Strong számok” chippel (87 px, mérve). Lehetőségek: (a) 900 px alatt rövidebb felirat („Strong”), 4 px-es sávközzel — mérve egy sor; (b) a „Strong számok” felirat marad, a sáv 900 px alatt két soros; (c) 900 px alatt a chip csak ikon/pont, a teljes felirat a `title`-ben. Javaslat: (a), a 900 px-től a „Strong számok” marad. A felhasználó döntése.
+1. ~~**⛔ 375 px-en a sáv két sorra törik** a „Strong számok” chippel (87 px, mérve).~~ Eldőlt: a felhasználó „A” → (a); megvalósítva az F134.14-ben (6.5).
 2. **Nagyon széles képernyőn a sorhossz:** 1920 px-en a szöveg 977 px — a döntés szerint ez az alap; a 48 / 60 / 80ch az Aa-ban választható.
 3. A mérés emulált szélességen, a panel görgetősávjával; valódi böngésző és telefon az M4-é.
+
+### 6.5 A 375 px-es sáv: a felhasználó döntése (F134.14)
+
+A felhasználó, 2026-10-23 (chat, a koordinátor továbbította): „A” → a 6.4 (a) lehetősége. Megvalósítás: a chip mindkét feliratot tartalmazza (`<span class="jelolo-hosszu">Strong számok</span><span class="jelolo-rovid">Strong</span>`), a CSS a meglévő 900 px-es határon választ (alapból a rövid rejtett, 900 px alatt a sávban a hosszú). A `title` és az `input` `aria-label`-je mindkét szélességen a hosszú leírás („Strong számok: a Strong-számmal párosított szavak jelölése (pontozott aláhúzás)”). 900 px alatt a sáv oszlopköze a `space-gombsor` token (4 px), a chip pont nélküli, vízszintes belső térköze a `space-gomb-fugg` token (4 px): a 4 px-es köz és a pont elhagyása még nem volt elég a leghosszabb morzsához (ApCsel 27, mindkét nyíllal: 87 px, két sor, a ⌕ a 2. sorban), a szűkebb belső térközzel igen. Új token nem kellett; a két új osztály a regiszter `[kizart]` listáján. `SABLON_VERZIO = 'f134-m3l'`.
+
+**Mérés (saját próba, 127.0.0.1:8799, emulált 375 px; nem független ellenőrzés).** Proveniencia: `scope=olvaso_szerver 127.0.0.1:8799 (munkafa a 90d71fc4 után) | forras=bongeszo-meres | ts=2026-10-23`.
+
+| Oldal (375 px) | morzsa | chip | a sáv | ⌕ jobb széle | E1 | túlfolyás |
+|---|---|---|---|---|---|---|
+| Ez 37 | 72 px | 48 px, „Strong” | **49 px, egy sor** | 359 px | 146 px | 0 |
+| ApCsel 28 (csak ‹) | 106 px | 48 px | **49 px, egy sor** | 359 px | 146 px | 0 |
+| ApCsel 27 (‹ ›; a legszélesebb morzsa, vászon-méréssel a 66 könyv közül) | 106 px | 48 px | **49 px, egy sor**; a tartalék 3 px | 359 px | 146 px | 0 |
+| 1Thessz 4 (‹ ›) | — | 48 px | 49 px, egy sor | — | 178 px | 0 |
+
+920 px-en a chip felirata „Strong számok” (122 px), a fejléc első sorában (x = 725, a ⚙-val egy sorban), a fejléc 73 px, túlfolyás 0. Kattintásra (375 px, ApCsel 27) a szövegoszlop `nincs-jeloles`, újra kattintva visszaáll.
+
+**Tesztek** (`teszt_futtat.py --gyors`, a végső munkafán): 289, ebből 4 piros, mind a 4 ismert DT299-eset; **új piros: 0**; 1 kihagyott. A felirat-tesztek igazítva (`teszt_olvaso_szerver.py`: a két felirat a jelölésben, az `aria-label`, a CSS négy szabálya; `teszt_pilot_aranymintaval.py`: a hosszú felirat). Regiszter-őr: 0 hiba (198 osztály a felületen, 96 a regiszterben, 102 kizárva).
+
+**Nyitott:** a legrosszabb esetben (ApCsel 27) 3 px a tartalék; nagyobb rendszerbetűméretnél vagy más betűrenderelésnél (valódi telefon, M4) a sáv két sorra törhet.

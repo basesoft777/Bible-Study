@@ -68,8 +68,9 @@
   </details>
   {# DT-F134o (a felhasználó, 2026-10-23): a Strong-számmal párosított szavak jelölésének kapcsolója a fő navigációs
      sorban (900 px-től a fejléc első sorában, 900 px alatt az egysoros sávban), „Strong számok” felirattal; a működése változatlan
-     (a JS az id="jeloles"-t figyeli, a .szo szavak pontozott aláhúzását kapcsolja) #}
-  {% if nav.jeloles %}<div class="jelolo" role="group" aria-label="Jelölések a szövegben"><label class="kapcs chip" title="A Strong-számmal párosított szavak jelölése (pontozott aláhúzás)"><input type="checkbox" id="jeloles" checked> Strong számok</label></div>{% endif %}
+     (a JS az id="jeloles"-t figyeli, a .szo szavak pontozott aláhúzását kapcsolja). A felhasználó döntése („A”): 900 px alatt a
+     felirat „Strong”, 900 px-től „Strong számok”; mindkettő a jelölésben, a CSS választ; a title és az aria-label a hosszú leírás #}
+  {% if nav.jeloles %}<div class="jelolo" role="group" aria-label="Jelölések a szövegben"><label class="kapcs chip" title="Strong számok: a Strong-számmal párosított szavak jelölése (pontozott aláhúzás)"><input type="checkbox" id="jeloles" checked aria-label="Strong számok: a Strong-számmal párosított szavak jelölése (pontozott aláhúzás)"> <span class="jelolo-hosszu">Strong számok</span><span class="jelolo-rovid">Strong</span></label></div>{% endif %}
   {% endif %}
   <details class="beall" id="beall">
     <summary class="lap-gomb" aria-label="Beállítások" title="Beállítások">⚙</summary>

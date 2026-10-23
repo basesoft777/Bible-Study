@@ -379,7 +379,8 @@ class TestPilotAranymintaval(unittest.TestCase):
         for nezet in ('', 'il'):
             h = self.fejezet('1Móz 1:1', nezet)
             if nezet != 'il':
-                self.assertIn('<input type="checkbox" id="jeloles" checked> Strong számok', h, nezet)   # DT-F134o: a felirat
+                self.assertIn('<span class="jelolo-hosszu">Strong számok</span>', h, nezet)   # DT-F134o: a felirat
+                self.assertIn('<input type="checkbox" id="jeloles" checked', h, nezet)
             for t in ('rendszer', 'light', 'dark'):
                 self.assertIn('data-tema="%s"' % t, h, nezet)
             self.assertNotIn('<script>', h)

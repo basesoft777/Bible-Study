@@ -1235,7 +1235,15 @@ class TestNavigacio(unittest.TestCase):
         # az interlineáris réteg kapcsolója a ⚙ menüben marad
         self.assertLess(fej.index('id="jeloles"'), fej.index('id="beall"'))
         self.assertNotIn('id="jeloles"', fej[fej.index('class="nav-extra"'):])
-        self.assertIn('<input type="checkbox" id="jeloles" checked> Strong számok</label>', fej)
+        # a felhasználó döntése („A”): mindkét felirat a jelölésben, a CSS választ (900 px alatt „Strong”); a hosszú leírás az aria-label
+        self.assertIn('<span class="jelolo-hosszu">Strong számok</span><span class="jelolo-rovid">Strong</span></label>', fej)
+        self.assertIn('id="jeloles" checked aria-label="Strong számok: a Strong-számmal párosított szavak jelölése', fej)
+        with open(os.path.join(D, 'statikus', 'olvaso.css'), encoding='utf-8') as f:
+            css = f.read()
+        self.assertIn('.jelolo-rovid { display: none; }', css)
+        self.assertIn('.navlap .jelolo-hosszu { display: none; }', css)
+        self.assertIn('.navlap .jelolo-rovid { display: inline; }', css)
+        self.assertIn('.fejlec.navlap { column-gap: var(--space-gombsor); }', css)
         self.assertNotIn('Kapcsolt szavak', fej)
         self.assertLess(fej.index('id="beall"'), fej.index('class="retegvalto"'))
         self.assertIn('>Interlineáris sor</a>', fej)
