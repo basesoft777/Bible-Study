@@ -20,7 +20,7 @@ import blokkok
 import kereses as kereses_modul
 import lekerdezesek as q
 
-SABLON_VERZIO = 'f134-m1'
+SABLON_VERZIO = 'f134-m2'
 # nézetek helyett rétegek (#134, DT294, DT-F134f (b), DT-F134g (c)): egyetlen réteg, az interlineáris sor (`il`); az alap a folyó
 # Károli-szöveg réteg nélkül. A réteg-állapot szöveg: a bekapcsolt rétegek vesszővel, a RETEGEK sorrendjében ('' = nincs réteg).
 RETEGEK = ('il',)
@@ -34,6 +34,12 @@ VERS_FULEK = (('vers', 'Vers'), ('kh', 'Kereszthiv.'), ('temak', 'Témák'), ('m
 FULBLOKK = {'vers.kh': 'kh', 'vers.tsk': 'kh', 'vers.nave': 'temak', 'vers.tipnr': 'temak', 'vers.motivum': 'motivum', 'vers.kapcsolat': 'motivum'}
 # a lap `?ful=` értékei: a szómód, a versmód fülei, és az üres állapot nyitott lapon (kis képernyőn a forrás és a számlálók)
 FUL_ERTEKEK = ('szo', 'info') + tuple(k for k, _ in VERS_FULEK)
+# a navigáció (#134 M2): a könyvválasztó és a kánon-sáv műfaji csoportjai a kánon sorrendjében (a mockup 9. változatának MUFAJ-a);
+# (kód, név, könyvek száma, szín-kód). A szín-kód a kánon-sáv `data-mufaj` attribútuma (a műfajszínek az M3-ban, `--g-*`).
+# Csak 66 könyvnél érvényes; más könyvlistánál két csoport: Ószövetség / Újszövetség.
+MUFAJOK = (('tor', 'Törvény', 5, 'tor'), ('tort', 'Történeti könyvek', 12, 'tort'), ('bolcs', 'Költői és bölcsességi könyvek', 5, 'bolcs'),
+           ('prof', 'Nagypróféták', 5, 'prof'), ('kis', 'Kispróféták', 12, 'kis'), ('ev', 'Evangéliumok és Apostolok Cselekedetei', 5, 'ev'),
+           ('pal', 'Pál levelei', 13, 'lev'), ('alt', 'Általános levelek', 8, 'lev'), ('apok', 'Jelenések', 1, 'apok'))
 SABLON_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'sablonok')
 SZERVER_DIR = os.path.dirname(os.path.abspath(__file__))
 PILOT_DIR = os.path.join(os.path.dirname(SZERVER_DIR), 'olvaso_pilot')
@@ -200,6 +206,7 @@ class OldalGyar:
         ctx['reteg'] = reteg_ervenyes(ctx.get('reteg'))
         ctx['il'] = reteg_be(ctx['reteg'], 'il')
         ctx.setdefault('lap_nyitva', False)
+        ctx.setdefault('nav', None)                 # a fejezet-lap navigációja (#134 M2); a többi lapon a fejléc a régi
         ctx.setdefault('arculat_hash', self.arculat.hash)
         ctx.setdefault('lablec', self.lablec.kap() if self.lablec else None)
         ctx['tervezo'] = bool(self.tervezo) and self.kiadas == 'belso'
@@ -301,6 +308,37 @@ class OldalGyar:
             raise NemTalalhato('ismeretlen könyv')
         return self._render('konyv.html', kk=kk, slug=slug, nev=self.kozos.nev[kk], fejezetek=self.kozos.fejezet_szam[kk], reteg=reteg, ut=ut, szint=szint, cim=self.kozos.nev[kk])
 
+    def navigacio(self, kk, fej, elozo, kovetkezo, jeloles):
+        """A fejezet-lap navigációja (#134 M2): 900 px alatt a fejezetcímre nyíló navigációs lap, fölötte a fejléc. A könyvválasztó
+        (műfaji csoportok, a könyv fejezetei), a kánon-sáv (a könyvek szélessége a fejezetszámukkal arányos, SVG-téglalapok: a CSP
+        miatt `style=""` nélkül) és a kereső kliensoldali javaslatának könyvlistája (DT-F134k (b)) ugyanabból a meglévő
+        könyvlistából (`Kozos.konyvek`, `Kozos.fejezet_szam`); új adat és új végpont nincs."""
+        konyvek = self.kozos.konyvek
+        if len(konyvek) == sum(n for _, _, n, _ in MUFAJOK):
+            csop, i = [], 0
+            for kod, nev, n, szin in MUFAJOK:
+                csop.append((kod, nev, szin, konyvek[i:i + n]))
+                i += n
+        else:
+            csop = [('osz', 'Ószövetség', 'osz', [k for k in konyvek if k[3] < 39]), ('usz', 'Újszövetség', 'usz', [k for k in konyvek if k[3] >= 39])]
+        mufajok, kanon, x = [], [], 0.0
+        for kod, nev, szin, kl in csop:
+            sor = []
+            for kk_, sl, kn, srd in kl:
+                fl = [f for f, _ in self.kozos.fejezet_szam[kk_]]
+                # a fejezetrácsot a JS csak folytonos (1..n) fejezetszámozásnál rajzolja helyben; különben a könyv lapja nyílik
+                fejszam = len(fl) if fl == list(range(1, len(fl) + 1)) else ''
+                sor.append({'kk': kk_, 'slug': sl, 'nev': kn, 'nf': len(fl), 'fejszam': fejszam, 'itt': kk_ == kk})
+                if kanon and srd >= 39 and kanon[-1]['srd'] < 39:
+                    x += 6                                                # az Ó- és az Újszövetség határa
+                w = max(len(fl), 3)
+                kanon.append({'kk': kk_, 'slug': sl, 'nev': kn, 'nf': len(fl), 'szin': szin, 'itt': kk_ == kk, 'x': '%g' % x, 'w': '%g' % w, 'srd': srd})
+                x += w + 1
+            mufajok.append({'kod': kod, 'nev': nev, 'konyvek': sor})
+        return {'kk': kk, 'slug': self.kozos.slug[kk], 'nev': self.kozos.nev[kk], 'fej': fej, 'elozo': elozo, 'kovetkezo': kovetkezo,
+                'fejezetek': [f for f, _ in self.kozos.fejezet_szam[kk]], 'mufajok': mufajok, 'kanon': kanon, 'kanon_w': '%g' % max(x - 1, 1),
+                'jeloles': jeloles}
+
     def fejezet_lap(self, slug, fej, vers, reteg, szint, szo, ful, ut):
         """A fejezet-lap: a Károli-szöveg (réteg nélkül folyó szöveg, az `il` réteggel versenkénti interlineáris csempék) és a
         részletek lapja (#134 M1). `reteg`: a réteg-állapot (a régi nézetnév is, álnévként). A lap módja: `ful=szo` és ismert
@@ -365,7 +403,7 @@ class OldalGyar:
         return self._render('fejezet.html', kk=kk, slug=slug, nev=self.kozos.nev[kk], fej=fej, vers=vers, versek=vlista, reteg=reteg,
                             szo=szo_n if mod == 'szo' else None, lap_html=lap_html, lap_cim=lap_cim, lap_al=lap_al, mod=mod, vers_ful=vers_ful,
                             lap_nyitva=(mod != 'ures' or ful == 'info'), ures_fo=cim, ures_al='Útmutató, forrás és számlálók',
-                            ut=ut, elozo=elozo, kovetkezo=kovetkezo, cimkek=cimkek,
+                            ut=ut, elozo=elozo, kovetkezo=kovetkezo, cimkek=cimkek, nav=self.navigacio(kk, fej, elozo, kovetkezo, not il),
                             szint=szint, cim=cim, szoveg_jegy=blokkok.szoveg_jegy_html(self.kozos, il))
 
     def szamlalok(self, igehelyek, szint=None):

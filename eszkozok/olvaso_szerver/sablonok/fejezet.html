@@ -1,7 +1,6 @@
 {% extends "alap.html" %}
 {% macro szavak(v) %}{% for w in v.szavak %}{% if w.fo %}<a class="szo{{ ' par-' ~ w.biz if w.biz else '' }}" href="/{{ slug }}/{{ fej }}/{{ v.vers }}?szo={{ w.fo }}&amp;ful=szo#v{{ v.vers }}" data-strong="{{ w.fo }}">{{ w.kiir }}</a>{% else %}<span class="szo-nincs">{{ w.kiir }}</span>{% endif %}{{ '' if w.szokoz is false else ' ' }}{% endfor %}{% if not v.szavak %}{{ v.szoveg }}{% endif %}{% endmacro %}
 {% macro vers_folyo(v) %}<span class="vers{% if vers == v.vers %} kijelolt{% endif %}" id="v{{ v.vers }}"><a class="versszam" href="/{{ slug }}/{{ fej }}/{{ v.vers }}#v{{ v.vers }}">{{ v.vers }}</a>{{ szavak(v) }}</span> {% endmacro %}
-{% macro jeloles_kapcsolo() %}<label class="kapcs"><input type="checkbox" id="jeloles" checked> Kapcsolt szavak jelölése</label>{% endmacro %}
 {% macro interlinearis(v) %}
 <div class="il-vers{% if vers == v.vers %} kijelolt{% endif %}" id="v{{ v.vers }}">
   <a class="versszam" href="/{{ slug }}/{{ fej }}/{{ v.vers }}#v{{ v.vers }}">{{ v.vers }}</a>
@@ -36,7 +35,8 @@
 <div class="olvaso-elrendezes">
   <section class="szoveg-oszlop" aria-label="{{ 'Interlineáris szöveg' if il else 'Károli-szöveg' }}">
     <div class="fejezetfej">
-      <h1>{{ nev }} {{ fej }}</h1>
+      {# 900 px alatt a fejezetcím nyitja a navigációs lapot (#134 M2); JS nélkül a #navigacio cél #}
+      <h1><a class="navlap-nyito" href="#navigacio" aria-controls="navigacio" title="Navigáció: kereső, könyvek, fejezetek, beállítások">{{ nev }} {{ fej }}</a></h1>
       <p class="lapozo">
         {% if elozo %}<a href="/{{ slug }}/{{ elozo }}">← {{ elozo }}. fejezet</a>{% endif %}
         <a href="/{{ slug }}">{{ nev }}</a>
@@ -47,17 +47,17 @@
     {% if il %}
     {% for v in versek %}{{ interlinearis(v) }}{% endfor %}
     {% else %}
-    {{ jeloles_kapcsolo() }}
     <p class="folyo" id="szoveg">{% for v in versek %}{{ vers_folyo(v) }}{% endfor %}</p>
     {% endif %}
   </section>
-  <aside class="jobb-oszlop reszletek" id="reszletek" aria-label="Részletek" data-fejezet="{{ slug }}/{{ fej }}" data-mod="{{ mod }}"{% if vers %} data-vers="{{ vers }}"{% endif %}{% if szo %} data-strong="{{ szo }}"{% endif %} data-ful="{{ vers_ful }}" data-uresfo="{{ ures_fo }}" data-uresal="{{ ures_al }}">
+  <aside class="jobb-oszlop reszletek" id="reszletek" aria-label="Részletek" data-fejezet="{{ slug }}/{{ fej }}" data-kk="{{ kk }}" data-mod="{{ mod }}"{% if vers %} data-vers="{{ vers }}"{% endif %}{% if szo %} data-strong="{{ szo }}"{% endif %} data-ful="{{ vers_ful }}" data-uresfo="{{ ures_fo }}" data-uresal="{{ ures_al }}">
     <div class="lap-fej">
       <span class="lap-fogo" aria-hidden="true"></span>
       <button type="button" class="lap-gomb lap-vissza" aria-label="Vissza az előző részletre" title="Vissza az előző részletre" hidden>‹</button>
       <p class="lap-cim"><b class="lap-cim-fo">{{ lap_cim if mod != 'ures' else ures_fo }}</b> <span class="lap-cim-al">{{ lap_al if mod != 'ures' else ures_al }}</span></p>
       <button type="button" class="lap-gomb lap-teljes" aria-label="Teljes nézet" title="Teljes nézet" aria-pressed="false">⤢</button>
       <a class="lap-gomb lap-zar" href="/{{ slug }}/{{ fej }}" aria-label="Bezárás" title="Bezárás">✕</a>
+      <div class="lap-muv" id="lap-muv"></div>
     </div>
     <div class="lap-ures"{% if mod != 'ures' %} hidden{% endif %}>
       <details class="utmutato" id="utmutato" open>
@@ -77,4 +77,6 @@
     <div class="lap-tartalom"{% if mod == 'ures' %} hidden{% endif %}>{% if lap_html %}{{ lap_html }}{% endif %}</div>
   </aside>
 </div>
+{# a tájoló pirula (#134 M2): 900 px alatt felfelé görgetésre átmenetileg megjelenik, a navigációs lapot nyitja #}
+<a class="tajolo" id="tajolo" href="#navigacio" aria-label="Navigáció ({{ kk }} {{ fej }})" data-hely="{{ kk }} {{ fej }}">{{ kk }} {{ fej }}<span class="tajolo-vers" id="tajolo-vers">{{ ':' ~ vers if vers else '' }}</span><span class="tajolo-jel" aria-hidden="true"> ▾</span></a>
 {% endblock %}

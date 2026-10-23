@@ -230,7 +230,7 @@ h1 { font: 600 var(--fs-oldalcim)/var(--lh-oldalcim) var(--font-text); text-wrap
 @media (min-width: 900px) { .lap-info { display: none; } }
 @media (max-width: 899.98px) {
   .olvaso-elrendezes { grid-template-columns: minmax(0, 1fr); }
-  .reszletek { position: fixed; left: 0; right: 0; bottom: 0; top: auto; z-index: 20; height: 48vh; max-height: none; margin: 0; overflow: auto; overscroll-behavior: contain;
+  .reszletek { position: fixed; left: 0; right: 0; bottom: 0; top: auto; z-index: 44; height: 48vh; max-height: none; margin: 0; overflow: auto; overscroll-behavior: contain;
     border-radius: var(--radius-panel) var(--radius-panel) 0 0; box-shadow: 0 -10px 30px color-mix(in srgb, var(--fg) 20%, transparent);
     transform: translateY(105%); visibility: hidden; transition: transform .2s ease, height .2s ease, visibility .2s; }
   .lap-nyitva .reszletek { transform: none; visibility: visible; }
@@ -241,4 +241,82 @@ h1 { font: 600 var(--fs-oldalcim)/var(--lh-oldalcim) var(--font-text); text-wrap
   .lap-teljes { display: inline-flex; }
   .vers, .il-vers { scroll-margin-top: 8px; }
 }
-@media (prefers-reduced-motion: reduce) { .reszletek { transition: none; } }
+/* #134 M2: a navigáció (a mockup 9. változata). 900 px-től a fejezet-lap fejléce a régi helyén áll, a könyvválasztó, az Aa és a ⚙
+   lenyíló panel (details); 900 px alatt a fejléc navigációs lap: alulról felugrik a fejezetcímre vagy a tájoló pirulára koppintva
+   (body.navlap-nyitva; JS nélkül a #navigacio cél). A részletek lapjának fejsora húzható (fel: teljes, le: betekintés, majd zárás),
+   a műveletsora (.lap-muv) a szómód „A vers: … →” hivatkozása. Az arculati finomítás (műfajszínek, egysoros fejléc) az M3. */
+.fejlec { position: relative; }
+.fejlec summary { list-style: none; cursor: pointer; }
+.fejlec summary::-webkit-details-marker { display: none; }
+.navlap-fej { display: none; }
+.navlap-cim { font: 600 var(--fs-alcim) var(--font-text); }
+.navlap-nyito { color: inherit; text-decoration: none; }
+.konyvvalaszto, .aa, .beall { position: relative; }
+.morzsa { display: inline-flex; align-items: center; padding: 3px 10px; border: 1px solid var(--rule); border-radius: var(--radius-csempe); font: 600 var(--fs-alcim) var(--font-text); white-space: nowrap; }
+.morzsa-jel { color: var(--muted); font: var(--fs-megjegyzes) var(--font-ui); }
+.konyvpanel, .aa-menu, .beall-menu { position: absolute; z-index: 30; top: calc(100% + 6px); left: 0; display: grid; gap: 8px; padding: 12px; background: var(--panel); border: 1px solid var(--rule); border-radius: var(--radius-panel); box-shadow: 0 8px 24px color-mix(in srgb, var(--fg) 18%, transparent); }
+.konyvpanel { width: min(640px, calc(100vw - 32px)); max-height: 70vh; overflow: auto; }
+.aa-menu, .beall-menu { left: auto; right: 0; width: min(300px, calc(100vw - 32px)); }
+.beall-menu .retegvalto { margin-left: 0; }
+.menu-cim { margin: 0; font: 600 var(--fs-forrascim) var(--font-ui); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.fejezetracs-cim, .mufaj-cim { margin: 0 0 4px; font: 600 var(--fs-megjegyzes) var(--font-ui); color: var(--muted); }
+.fejezetracs { display: grid; grid-template-columns: repeat(auto-fill, minmax(40px, 1fr)); gap: 4px; }
+.mufaj { display: grid; gap: 2px; }
+.konyvracs { display: grid; grid-template-columns: repeat(auto-fill, minmax(58px, 1fr)); gap: 4px; }
+.fejezetgomb, .konyvgomb { display: block; padding: 6px 2px; text-align: center; border: 1px solid var(--rule); border-radius: var(--radius-kis-csempe); color: var(--fg); text-decoration: none; font: var(--fs-gomb) var(--font-ui); }
+.fejezetgomb:hover, .konyvgomb:hover { background: var(--accent-soft); }
+.fejezetgomb.itt, .konyvgomb.itt { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+.ugras { position: relative; }
+.javaslat { position: absolute; z-index: 31; left: 0; right: 0; top: calc(100% + 4px); min-width: 260px; max-height: 60vh; overflow: auto; display: grid; gap: 1px; padding: 4px; background: var(--panel); border: 1px solid var(--rule); border-radius: var(--radius-panel); box-shadow: 0 8px 24px color-mix(in srgb, var(--fg) 18%, transparent); }
+.javaslat-elem { display: grid; gap: 1px; padding: 6px 8px; border-radius: var(--radius-kiemeles); color: var(--fg); text-decoration: none; }
+.javaslat-elem:hover, .javaslat-elem.aktiv { background: var(--accent-soft); }
+.javaslat-fo { font: 600 var(--fs-sor) var(--font-ui); }
+.javaslat-al { font: var(--fs-megjegyzes) var(--font-ui); color: var(--muted); }
+.lepteto, .aa-sor { display: flex; gap: var(--space-gombsor); }
+.aa-ertek { margin-left: 6px; font: var(--fs-strong-szam) var(--font-mono); text-transform: none; letter-spacing: 0; color: var(--fg); }
+.aa-alap { justify-self: start; }
+.kanon { display: block; flex-basis: 100%; width: 100%; height: 16px; }
+.kanon-konyv { fill: color-mix(in srgb, var(--accent) 35%, transparent); }
+.kanon a:hover .kanon-konyv, .kanon a:focus-visible .kanon-konyv, .kanon-konyv.itt { fill: var(--accent); }
+.kanon-konyv.itt { stroke: var(--fg); stroke-width: 2px; vector-effect: non-scaling-stroke; }
+.nav-extra { display: flex; flex-basis: 100%; flex-wrap: wrap; gap: 6px 14px; align-items: center; }
+.nav-extra .kapcs { margin: 0; }
+.legutobb { display: flex; flex-wrap: wrap; gap: 4px 6px; align-items: center; font: var(--fs-megjegyzes) var(--font-ui); color: var(--muted); }
+.legutobb-hely { padding: 1px 7px; border: 1px solid var(--rule); border-radius: var(--radius-kiemeles); color: var(--fg); text-decoration: none; font: var(--fs-strong-szam) var(--font-mono); }
+.hatter, .tajolo { display: none; }
+.lap-fej { flex-wrap: wrap; }
+.lap-muv { display: flex; flex-basis: 100%; flex-wrap: wrap; gap: 6px; }
+.lap-muv:empty { display: none; }
+.lap-muv .lap-versre-sor { margin: 0; }
+.lap-muv .lap-versre { display: inline-block; padding: 3px 10px; border: 1px solid var(--rule); border-radius: var(--radius-pill); text-decoration: none; font: var(--fs-gomb) var(--font-ui); }
+.versenkent .folyo .vers { display: block; margin: 0 0 .45em; }
+@media (max-width: 899.98px) {
+  .fejlec.navlap { position: fixed; left: 0; right: 0; top: auto; bottom: 0; z-index: 46; max-height: 86vh; overflow: auto; overscroll-behavior: contain;
+    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 10px); background: var(--panel); border: 1px solid var(--rule); border-bottom: 0;
+    border-radius: var(--radius-panel) var(--radius-panel) 0 0; box-shadow: 0 -10px 30px color-mix(in srgb, var(--fg) 20%, transparent);
+    transform: translateY(105%); visibility: hidden; transition: transform .22s ease, visibility .22s; }
+  .navlap-nyitva .fejlec.navlap, html:not(.js-van) .fejlec.navlap:target { transform: none; visibility: visible; }
+  .navlap .navlap-fej { display: flex; flex-basis: 100%; order: -2; align-items: center; justify-content: space-between; }
+  .navlap .logo { display: none; }
+  .navlap .ugras { display: flex; flex-basis: 100%; order: -1; gap: var(--space-gombsor); }
+  .navlap .ugras input { flex: 1; width: auto; max-width: none; min-width: 0; }
+  .navlap .javaslat { position: absolute; }
+  .navlap details[open] { flex-basis: 100%; }
+  .navlap .konyvpanel, .navlap .aa-menu, .navlap .beall-menu { position: static; width: auto; max-height: none; margin-top: 6px; box-shadow: none; }
+  .navlap .kanon { height: 22px; }
+  .navlap-nyito::after { content: " ▾"; color: var(--muted); font: var(--fs-megjegyzes) var(--font-ui); }
+  .fejezetfej { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 12px; }
+  .fejezetfej h1 { margin-bottom: 4px; }
+  .lapozo { margin: 0 0 8px; }
+  .lapozo a:not(.lap-info) { display: none; }
+  .navlap-nyitva .hatter, .lap-nyitva.lap-egesz .hatter { display: block; position: fixed; inset: 0; z-index: 43; background: color-mix(in srgb, var(--fg) 30%, transparent); }
+  .navlap-nyitva .hatter { z-index: 45; }
+  .tajolo { display: inline-flex; position: fixed; top: calc(env(safe-area-inset-top, 0px) + 8px); left: 50%; z-index: 30; align-items: baseline; gap: 2px; padding: 5px 14px;
+    border: 1px solid var(--rule); border-radius: var(--radius-pill); background: var(--panel); color: var(--fg); text-decoration: none; font: 600 var(--fs-alcim) var(--font-text);
+    box-shadow: 0 4px 14px color-mix(in srgb, var(--fg) 15%, transparent); transform: translate(-50%, -70px); transition: transform .2s ease; }
+  .tajolo-latszik .tajolo { transform: translate(-50%, 0); }
+  .lap-nyitva .tajolo, .navlap-nyitva .tajolo { transform: translate(-50%, -70px); }
+  .tajolo-vers, .tajolo-jel { color: var(--muted); font: var(--fs-megjegyzes) var(--font-ui); }
+  .lap-fej { touch-action: none; cursor: grab; }
+}
+@media (prefers-reduced-motion: reduce) { .reszletek, .fejlec.navlap, .tajolo { transition: none; } }

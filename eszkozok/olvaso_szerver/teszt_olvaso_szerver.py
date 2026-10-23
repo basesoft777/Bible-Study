@@ -1198,5 +1198,77 @@ class TestReszletekLapja(unittest.TestCase):
         self.assertIn('<body class="reteg-nincs">', h)
 
 
+@unittest.skipUnless(VAN_DB and VAN_FLASK, 'nincs pardes.db vagy Flask')
+class TestNavigacio(unittest.TestCase):
+    """#134 M2: 900 px alatt fejléc és tartós sáv nélküli olvasó; a fejléc navigációs lap (kereső, könyvválasztó, ‹ ›, Aa, ⚙ a
+    réteggel, a szinttel, a Tervezővel és a témával, kánon-sáv, jelölés, Legutóbb), Fejezet-kalauz gomb nélkül (DT-F134l); a
+    fejezetcím és a tájoló pirula nyitja; a kereső javaslata kliensoldali, a lapban lévő könyvlistából (DT-F134k (b))."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.app = app_keszit('belso')
+        cls.c = cls.app.test_client()
+
+    def h(self, u):
+        r = self.c.get(u)
+        self.assertEqual(r.status_code, 200, u)
+        return r.get_data(as_text=True)
+
+    def test_a_fejezet_lap_navigacios_lapja(self):
+        h = self.h('/Ez/37')
+        fej = h[h.index('<header class="fejlec navlap" id="navigacio">'):h.index('</header>')]
+        for resz in ('class="lap-gomb navlap-zar"', 'class="konyvvalaszto"', '<form class="ugras"', 'id="javaslat"', 'class="lepteto"',
+                     'id="aa"', 'id="beall"', 'class="retegvalto"', 'class="szintvalto"', 'class="tema"', 'class="kanon"',
+                     'id="jeloles"', 'id="legutobb"'):
+            self.assertIn(resz, fej, resz)
+        self.assertNotIn('Fejezet-kalauz', h)
+        # a fejezetcím és a pirula a navigációs lapra mutat (JS nélkül a :target nyitja)
+        self.assertIn('<h1><a class="navlap-nyito" href="#navigacio"', h)
+        self.assertRegex(h, r'<a class="tajolo" id="tajolo" href="#navigacio"[^>]*>Ez 37<span class="tajolo-vers" id="tajolo-vers"></span>')
+        self.assertIn('<span class="tajolo-vers" id="tajolo-vers">:5</span>', self.h('/Ez/37/5'))
+        # a könyvválasztó: 66 könyv a műfaji csoportokban, a mostani könyv és fejezet jelölve, a fejezetrács a könyv fejezeteivel
+        self.assertEqual(len(re.findall(r'<a class="konyvgomb', fej)), 66)
+        self.assertEqual(re.findall(r'<div class="mufaj" data-mufaj="(\w+)">', fej), [m[0] for m in oldalak.MUFAJOK])
+        self.assertIn('<a class="konyvgomb itt" href="/Ez" data-kk="Ez"', fej)
+        self.assertEqual(len(re.findall(r'<a class="fejezetgomb', fej)), 48)
+        self.assertIn('<a class="fejezetgomb itt" href="/Ez/37" aria-current="page">37</a>', fej)
+        # a kánon-sáv: 66 téglalap, style attribútum nélkül (CSP); a mostani könyv kiemelve
+        self.assertEqual(len(re.findall(r'<rect class="kanon-konyv', fej)), 66)
+        self.assertEqual(len(re.findall(r'<rect class="kanon-konyv itt" data-mufaj="prof"', fej)), 1)
+        self.assertNotRegex(h, r'\sstyle=')
+        # a ⚙ menü sorrendje (a #98 őre is): réteg, szint, Tervező, téma
+        self.assertLess(fej.index('class="retegvalto"'), fej.index('class="szintvalto"'))
+        self.assertLess(fej.index('class="tervezo-kapcsolo"'), fej.index('class="tema"'))
+        # az első és az utolsó fejezet: a lépegető csak a létező irányba
+        self.assertNotIn('aria-label="Előző fejezet"', self.h('/1Moz/1'))
+        self.assertIn('aria-label="Következő fejezet"', self.h('/1Moz/1'))
+
+    def test_a_tobbi_lap_fejlece_valtozatlan(self):
+        for u in ('/', '/1Moz', '/kereses', '/szo/H0216'):
+            h = self.h(u)
+            self.assertIn('<header class="fejlec" id="navigacio">', h, u)
+            for resz in ('class="konyvvalaszto"', 'class="kanon"', 'class="tajolo"', 'class="hatter"', 'id="aa"'):
+                self.assertNotIn(resz, h, u)
+            self.assertIn('id="beall"', h, u)                              # a ⚙ menü mindenhol
+
+    def test_interlinearis_retegben_nincs_jeloles(self):
+        h = self.h('/Ez/37?reteg=il')
+        self.assertNotIn('id="jeloles"', h)
+        self.assertIn('class="kanon"', h)
+
+    def test_a_kliens_navigacio_logikaja(self):
+        """A JS: navigációs lap, pirula, húzás, javaslat a lap könyvlistájából, Aa CSSOM-mal, Legutóbb, a fülváltás az előzményláncban."""
+        with open(os.path.join(D, 'statikus', 'olvaso.js'), encoding='utf-8') as f:
+            js = f.read()
+        for resz in ("'navlap-nyitva'", "'tajolo-latszik'", "'pointerdown'", "'pointerup'", "querySelectorAll('.konyvgomb[data-kk]')",
+                     "'pardes_aa'", "'pardes_legutobb'", 'elozmenybeTesz(aktualis);\n        fulValt(uj);', "style.setProperty('font-size'"):
+            self.assertIn(resz, js, resz)
+        for tilos in ('fetch(\'/r/javaslat', 'innerHTML = j', "setAttribute('style'", '.cssText'):
+            self.assertNotIn(tilos, js, tilos)
+        with open(os.path.join(D, 'statikus', 'olvaso.css'), encoding='utf-8') as f:
+            css = f.read()
+        self.assertIn('html:not(.js-van) .fejlec.navlap:target', css)       # JS nélkül a cél-hivatkozás nyitja
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)

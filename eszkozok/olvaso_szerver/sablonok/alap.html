@@ -15,30 +15,85 @@
 {% endif %}
 </head>
 <body class="{{ 'reteg-il' if il else 'reteg-nincs' }}{{ ' lap-nyitva' if lap_nyitva else '' }}">
-<header class="fejlec">
+{# #134 M2: a fejezet-lapon (nav) a fejléc 900 px alatt navigációs lap: alulról felugrik a fejezetcímre (vagy a tájoló pirulára)
+   koppintva; JS nélkül a `#navigacio` cél (:target) nyitja. A többi lapon a fejléc a régi. A ⚙ menü (réteg, szint, Tervező, téma)
+   és az Aa `details`-elem: JS nélkül is nyitható. #}
+<header class="fejlec{{ ' navlap' if nav else '' }}" id="navigacio">
+  {% if nav %}
+  <div class="navlap-fej"><b class="navlap-cim">Navigáció</b><a class="lap-gomb navlap-zar" href="#" aria-label="A navigáció bezárása" title="Bezárás">✕</a></div>
+  {% endif %}
   <a class="logo" href="/">PaRDeS olvasó</a>
+  {% if nav %}
+  <details class="konyvvalaszto" id="konyvvalaszto">
+    <summary class="morzsa" aria-label="Könyv és fejezet kiválasztása">{{ nav.kk }} {{ nav.fej }}<span class="morzsa-jel" aria-hidden="true"> ▾</span></summary>
+    <div class="konyvpanel">
+      <p class="fejezetracs-cim" id="fejezetracs-cim">{{ nav.nev }} · fejezetek</p>
+      <div class="fejezetracs" id="fejezetracs" data-kk="{{ nav.kk }}">{% for f in nav.fejezetek %}<a class="fejezetgomb{{ ' itt' if f == nav.fej else '' }}" href="/{{ nav.slug }}/{{ f }}"{% if f == nav.fej %} aria-current="page"{% endif %}>{{ f }}</a>{% endfor %}</div>
+      {% for m in nav.mufajok %}
+      <div class="mufaj" data-mufaj="{{ m.kod }}"><p class="mufaj-cim">{{ m.nev }}</p>
+        <div class="konyvracs">{% for k in m.konyvek %}<a class="konyvgomb{{ ' itt' if k.itt else '' }}" href="/{{ k.slug }}" data-kk="{{ k.kk }}" data-nev="{{ k.nev }}" data-slug="{{ k.slug }}" data-fejszam="{{ k.fejszam }}" title="{{ k.nev }} · {{ k.nf }} fejezet">{{ k.kk }}</a>{% endfor %}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </details>
+  {% endif %}
   <form class="ugras" action="/kereses" method="get" role="search">
-    <input type="text" name="q" placeholder="1Móz 1:4 · H0216 · világosság · a föld (Ctrl+K)" aria-label="Keresés (Strong-szám, magyar szó vagy frázis, héber frázis) vagy ugrás igehelyre" maxlength="100" autocomplete="off">
+    <input type="text" name="q" placeholder="1Móz 1:4 · H0216 · világosság · a föld (Ctrl+K)" aria-label="Keresés (Strong-szám, magyar szó vagy frázis, héber frázis) vagy ugrás igehelyre" maxlength="100" autocomplete="off" aria-autocomplete="list" aria-controls="javaslat">
     <button type="submit">Keresés</button>
+    <div class="javaslat" id="javaslat" role="listbox" aria-label="Javaslatok" hidden></div>
   </form>
-  <nav class="retegvalto" aria-label="Rétegek">
-    <a class="reteg-kapcsolo{{ ' aktiv' if il else '' }}" href="/reteg/il/{{ 'ki' if il else 'be' }}?vissza={{ ut|default('/')|urlencode }}" aria-pressed="{{ 'true' if il else 'false' }}" title="Az interlineáris sor: a magyar szavak alatt az eredeti szó, átírás, tükörfordítás, Strong-szám">Interlineáris sor</a>
+  {% if nav %}
+  <nav class="lepteto" aria-label="Fejezetek">
+    {% if nav.elozo %}<a class="lap-gomb" href="/{{ nav.slug }}/{{ nav.elozo }}" aria-label="Előző fejezet" title="Előző fejezet ({{ nav.kk }} {{ nav.elozo }})">‹</a>{% endif %}
+    {% if nav.kovetkezo %}<a class="lap-gomb" href="/{{ nav.slug }}/{{ nav.kovetkezo }}" aria-label="Következő fejezet" title="Következő fejezet ({{ nav.kk }} {{ nav.kovetkezo }})">›</a>{% endif %}
   </nav>
-  {% if szint_vezerlo %}
-  <nav class="szintvalto" aria-label="Hozzáférési szint (próbaüzem)"><span class="szint-cim">Szint</span>
-    {% for n in szintek %}<a href="/szint/{{ n }}?vissza={{ ut|default('/')|urlencode }}"{% if n == szint_nev %} class="aktiv" aria-current="true"{% endif %}>{{ n }}</a>
-    {% endfor %}
-  </nav>
+  <details class="aa" id="aa">
+    <summary class="lap-gomb" aria-label="Szövegbeállítások" title="Szövegbeállítások">Aa</summary>
+    <div class="aa-menu">
+      <p class="menu-cim">Betűméret <output class="aa-ertek" id="aa-meret-ertek">100%</output></p>
+      <div class="aa-sor"><button type="button" class="lap-gomb" data-aa="meret-" aria-label="Kisebb betű">A−</button><button type="button" class="lap-gomb" data-aa="meret+" aria-label="Nagyobb betű">A+</button></div>
+      <p class="menu-cim">Sorköz</p>
+      <div class="tema aa-sorkoz" role="group" aria-label="Sorköz"><button type="button" data-aa-sorkoz="szuk" aria-pressed="false">szűk</button><button type="button" data-aa-sorkoz="" aria-pressed="true">közepes</button><button type="button" data-aa-sorkoz="tag" aria-pressed="false">tág</button></div>
+      <label class="kapcs"><input type="checkbox" id="aa-versenkent"> Versenként új sor</label>
+      <button type="button" class="lap-gomb aa-alap" data-aa="alap">Alapértékek</button>
+    </div>
+  </details>
   {% endif %}
-  {% if tervezo %}
-  <button type="button" class="tervezo-kapcsolo" id="tervezo-kapcsolo" aria-pressed="false" title="Tervező mód: elem kiválasztása, az arculat állítása (csak a belső kiadásban)" hidden>Tervező</button>
-  {% endif %}
-  <div class="tema" role="group" aria-label="Színséma">
-    <button type="button" data-tema="rendszer" aria-pressed="true">Rendszer</button>
-    <button type="button" data-tema="light" aria-pressed="false">Világos</button>
-    <button type="button" data-tema="dark" aria-pressed="false">Sötét</button>
+  <details class="beall" id="beall">
+    <summary class="lap-gomb" aria-label="Beállítások" title="Beállítások">⚙</summary>
+    <div class="beall-menu">
+      <p class="menu-cim">Rétegek</p>
+      <nav class="retegvalto" aria-label="Rétegek">
+        <a class="reteg-kapcsolo{{ ' aktiv' if il else '' }}" href="/reteg/il/{{ 'ki' if il else 'be' }}?vissza={{ ut|default('/')|urlencode }}" aria-pressed="{{ 'true' if il else 'false' }}" title="Az interlineáris sor: a magyar szavak alatt az eredeti szó, átírás, tükörfordítás, Strong-szám">Interlineáris sor</a>
+      </nav>
+      {% if szint_vezerlo %}
+      <nav class="szintvalto" aria-label="Hozzáférési szint (próbaüzem)"><span class="szint-cim">Szint</span>
+        {% for n in szintek %}<a href="/szint/{{ n }}?vissza={{ ut|default('/')|urlencode }}"{% if n == szint_nev %} class="aktiv" aria-current="true"{% endif %}>{{ n }}</a>
+        {% endfor %}
+      </nav>
+      {% endif %}
+      {% if tervezo %}
+      <button type="button" class="tervezo-kapcsolo" id="tervezo-kapcsolo" aria-pressed="false" title="Tervező mód: elem kiválasztása, az arculat állítása (csak a belső kiadásban)" hidden>Tervező</button>
+      {% endif %}
+      <p class="menu-cim">Téma</p>
+      <div class="tema" role="group" aria-label="Színséma">
+        <button type="button" data-tema="rendszer" aria-pressed="true">Rendszer</button>
+        <button type="button" data-tema="light" aria-pressed="false">Világos</button>
+        <button type="button" data-tema="dark" aria-pressed="false">Sötét</button>
+      </div>
+    </div>
+  </details>
+  {% if nav %}
+  <svg class="kanon" id="kanon" viewBox="0 0 {{ nav.kanon_w }} 10" preserveAspectRatio="none" role="group" aria-label="A kánon könyvei (a szélesség a fejezetszámmal arányos)">
+    {% for k in nav.kanon %}<a href="/{{ k.slug }}" data-kk="{{ k.kk }}" aria-label="{{ k.nev }}, {{ k.nf }} fejezet"><title>{{ k.nev }} · {{ k.nf }} fejezet</title><rect class="kanon-konyv{{ ' itt' if k.itt else '' }}" data-mufaj="{{ k.szin }}" x="{{ k.x }}" y="0" width="{{ k.w }}" height="10"></rect></a>{% endfor %}
+  </svg>
+  <div class="nav-extra">
+    {% if nav.jeloles %}<div class="jelolo" role="group" aria-label="Jelölések a szövegben"><label class="kapcs"><input type="checkbox" id="jeloles" checked> Kapcsolt szavak jelölése</label></div>{% endif %}
+    <div class="legutobb" id="legutobb" hidden><span class="legutobb-cim">Legutóbb:</span></div>
   </div>
+  {% endif %}
 </header>
+{% if nav %}<div class="hatter" id="hatter"></div>{% endif %}
 <main class="tartalom">
 {% block tartalom %}{% endblock %}
 </main>
