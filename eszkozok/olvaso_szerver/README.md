@@ -1,6 +1,6 @@
 # Olvasói szerver (#76 OLVASOI_KONKORDANCIA, M2–M3)
 
-Szerveroldali Flask-alkalmazás, amely a `pardes.db`-ből (csak olvasásra) állítja elő a Károli-bibliaszöveg lapjait: a Károli-szöveg az alapnézet, a szó és a vers részletei egyetlen lapon (900 px alatt alsó lap, fölötte oldalblokk); a nézetek helyett rétegek (ma egy: az interlineáris sor; #134, DT294). Terv: `naplok/OLVASOI_KONKORDANCIA_M0.md`; zárónapló: ugyanott 4.4, és `naplok/OLVASOI_KONKORDANCIA_zaras.md`.
+Szerveroldali Flask-alkalmazás, amely a `pardes.db`-ből (csak olvasásra) állítja elő a Károli-bibliaszöveg lapjait: a Károli-szöveg az alapnézet, a szó és a vers részletei egyetlen lapon (900 px alatt alsó lap, fölötte oldalblokk); a nézetek helyett rétegek (ma egy: az interlineáris sor; #134, DT294). 900 px alatt a fejezet-lapnak nincs tartós fejléce: a navigáció (kereső könyvnév/igehely-javaslattal, könyvválasztó, ‹ ›, Aa, ⚙, kánon-sáv, jelölés, Legutóbb) a fejezetcímre vagy a felfelé görgetéskor megjelenő tájoló pirulára koppintva alulról felugró lapon nyílik; a részletek lapja a fejsoránál húzható (#134 M2, `naplok/OLVASO_ALAPNEZET_M2.md`). Terv: `naplok/OLVASOI_KONKORDANCIA_M0.md`; zárónapló: ugyanott 4.4, és `naplok/OLVASOI_KONKORDANCIA_zaras.md`.
 
 ## Szerkezet
 
