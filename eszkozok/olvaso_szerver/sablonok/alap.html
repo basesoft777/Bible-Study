@@ -56,7 +56,13 @@
       <div class="aa-sor"><button type="button" class="lap-gomb" data-aa="meret-" aria-label="Kisebb betű">A−</button><button type="button" class="lap-gomb" data-aa="meret+" aria-label="Nagyobb betű">A+</button></div>
       <p class="menu-cim">Sorköz</p>
       <div class="tema aa-sorkoz" role="group" aria-label="Sorköz"><button type="button" data-aa-sorkoz="szuk" aria-pressed="false">szűk</button><button type="button" data-aa-sorkoz="" aria-pressed="true">közepes</button><button type="button" data-aa-sorkoz="tag" aria-pressed="false">tág</button></div>
-      <label class="kapcs"><input type="checkbox" id="aa-versenkent"> Versenként új sor</label>
+      {# #134 M3 javítókör (a mockup 4. változatának Aa-ja): betűcsalád és sorszélesség; a három betű fájlja a statikus/fonts/ alatt #}
+      <p class="menu-cim">Betűcsalád</p>
+      <div class="tema aa-betu" role="group" aria-label="Betűcsalád"><button type="button" data-aa-betu="" aria-pressed="true">Source Serif</button><button type="button" data-aa-betu="noto" aria-pressed="false">Noto Serif</button><button type="button" data-aa-betu="sans" aria-pressed="false">IBM Plex Sans</button></div>
+      <p class="menu-cim">Sorszélesség</p>
+      <div class="tema aa-szel" role="group" aria-label="Sorszélesség"><button type="button" data-aa-szel="keskeny" aria-pressed="false">keskeny</button><button type="button" data-aa-szel="" aria-pressed="true">közepes</button><button type="button" data-aa-szel="szeles" aria-pressed="false">széles</button></div>
+      {# az alap: versenként új sor (a felhasználó, 2026-10-23); JS nélkül is (a szövegoszlop versenkent osztálya a szerverről) #}
+      <label class="kapcs"><input type="checkbox" id="aa-versenkent" checked> Versenként új sor</label>
       <button type="button" class="lap-gomb aa-alap" data-aa="alap">Alapértékek</button>
     </div>
   </details>
@@ -86,6 +92,9 @@
     </div>
   </details>
   {% if nav %}
+  {# DT-F134n: 900 px alatt a fejléc ragadós felső sáv (könyvválasztó, ‹ ›, Aa, ⚙); ez a gomb nyitja a sáv alatt a keresőt, a kánon-sávot,
+     a jelölést és a „Legutóbb”-ot (JS nélkül a #navigacio cél); 900 px-től rejtett #}
+  <a class="lap-gomb navlap-gomb" href="#navigacio" aria-controls="navigacio" aria-expanded="false" aria-label="Keresés és navigáció" title="Keresés és navigáció">⌕</a>
   <svg class="kanon" id="kanon" viewBox="0 0 {{ nav.kanon_w }} 10" preserveAspectRatio="none" role="group" aria-label="A kánon könyvei (a szélesség a fejezetszámmal arányos)">
     {% for k in nav.kanon %}<a href="/{{ k.slug }}" data-kk="{{ k.kk }}" aria-label="{{ k.nev }}, {{ k.nf }} fejezet"><title>{{ k.nev }} · {{ k.nf }} fejezet</title><rect class="kanon-konyv{{ ' itt' if k.itt else '' }}" data-mufaj="{{ k.szin }}" x="{{ k.x }}" y="0" width="{{ k.w }}" height="10"></rect></a>{% endfor %}
   </svg>

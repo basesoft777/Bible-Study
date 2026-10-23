@@ -58,16 +58,17 @@ def alap_arculat():
 # =====================================================================================================================
 class TestRegiszter(unittest.TestCase):
     """Az elem-regiszter (`konfig/elemek.toml`) a jóváhagyott M0 1.1 szerint (83 sor) és a #134 M3 komponensstílusai (19 elem:
-    a navigáció és a műfajszínek), minden token létező és állítható."""
+    a navigáció és a műfajszínek; a javítókörben a tájoló pirula kikerült, DT-F134n: 18 maradt), minden token létező és állítható."""
 
     @classmethod
     def setUpClass(cls):
         cls.a = alap_arculat()
         cls.r = tervezo.Regiszter.betolt(cls.a.adat)
 
-    def test_102_elem_egyedi_id(self):
-        self.assertEqual(len(self.r.elemek), 83 + 19)
-        self.assertEqual(len({e['id'] for e in self.r.elemek}), 83 + 19)
+    def test_101_elem_egyedi_id(self):
+        self.assertEqual(len(self.r.elemek), 83 + 18)
+        self.assertEqual(len({e['id'] for e in self.r.elemek}), 83 + 18)
+        self.assertNotIn('tajolo', {e['id'] for e in self.r.elemek})
 
     def test_a_mufajszinek_irhatok(self):
         """#134 M3 (DT296): a nyolc műfajszín (--g-*) és az árnyék színe regisztrált token, tehát a tervező módban írható."""
@@ -716,7 +717,7 @@ class TestMentes(_Ideiglenes, unittest.TestCase):
         self.assertEqual(r.headers['Cache-Control'], 'no-cache')
         self.assertEqual(self.c.get('/tervezo/terkep.json', headers={'If-None-Match': r.headers['ETag']}).status_code, 304)
         t = r.get_json()
-        self.assertEqual(len(t['regiszter']), 83 + 19)
+        self.assertEqual(len(t['regiszter']), 83 + 18)                    # a tájoló pirula kikerült (DT-F134n)
         self.assertEqual(t['arculat_hash'], self.gyar.arculat.hash)
         self.assertEqual(t['tokenek']['bg'], {'csoport': 'szin', 'tipus': 'szin', 'ertek': {'light': '#f5f2ea', 'dark': '#151918'}, 'irhato': True})
         self.assertFalse(t['tokenek']['fs-csempe-megj']['irhato'])                            # regiszteren kívüli: csak előnézet

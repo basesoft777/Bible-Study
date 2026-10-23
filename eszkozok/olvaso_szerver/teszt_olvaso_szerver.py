@@ -1222,10 +1222,16 @@ class TestNavigacio(unittest.TestCase):
                      'id="jeloles"', 'id="legutobb"'):
             self.assertIn(resz, fej, resz)
         self.assertNotIn('Fejezet-kalauz', h)
-        # a fejezetcím és a pirula a navigációs lapra mutat (JS nélkül a :target nyitja)
+        # a fejezetcím és a sáv ⌕ gombja a navigációs lapra mutat (JS nélkül a :target nyitja); a tájoló pirula kikerült (DT-F134n)
         self.assertIn('<h1><a class="navlap-nyito" href="#navigacio"', h)
-        self.assertRegex(h, r'<a class="tajolo" id="tajolo" href="#navigacio"[^>]*>Ez 37<span class="tajolo-vers" id="tajolo-vers"></span>')
-        self.assertIn('<span class="tajolo-vers" id="tajolo-vers">:5</span>', self.h('/Ez/37/5'))
+        self.assertIn('<a class="lap-gomb navlap-gomb" href="#navigacio" aria-controls="navigacio" aria-expanded="false"', fej)
+        self.assertNotIn('tajolo', h)
+        # az Aa (a mockup 4. változata): betűcsalád, sorszélesség, versenként új sor az alap (a szerver adja, JS nélkül is)
+        for resz in ('data-aa-betu="" aria-pressed="true">Source Serif', 'data-aa-betu="noto"', 'data-aa-betu="sans"',
+                     'data-aa-szel="keskeny"', 'data-aa-szel="" aria-pressed="true"', 'data-aa-szel="szeles"',
+                     '<input type="checkbox" id="aa-versenkent" checked>'):
+            self.assertIn(resz, fej, resz)
+        self.assertIn('<section class="szoveg-oszlop versenkent"', h)
         # a könyvválasztó: 66 könyv a műfaji csoportokban, a mostani könyv és fejezet jelölve, a fejezetrács a könyv fejezeteivel
         self.assertEqual(len(re.findall(r'<a class="konyvgomb', fej)), 66)
         self.assertEqual(re.findall(r'<div class="mufaj" data-mufaj="(\w+)">', fej), [m[0] for m in oldalak.MUFAJOK])
@@ -1257,17 +1263,28 @@ class TestNavigacio(unittest.TestCase):
         self.assertIn('class="kanon"', h)
 
     def test_a_kliens_navigacio_logikaja(self):
-        """A JS: navigációs lap, pirula, húzás, javaslat a lap könyvlistájából, Aa CSSOM-mal, Legutóbb, a fülváltás az előzményláncban."""
+        """A JS: navigációs lap, húzás, javaslat a lap könyvlistájából, Aa CSSOM-mal és osztállyal, Legutóbb, a fülváltás az
+        előzményláncban; a ragadós fejléc (DT-F134n) mért magassága. A tájoló pirula kikerült."""
         with open(os.path.join(D, 'statikus', 'olvaso.js'), encoding='utf-8') as f:
             js = f.read()
-        for resz in ("'navlap-nyitva'", "'tajolo-latszik'", "'pointerdown'", "'pointerup'", "querySelectorAll('.konyvgomb[data-kk]')",
-                     "'pardes_aa'", "'pardes_legutobb'", 'elozmenybeTesz(aktualis);\n        fulValt(uj);', "style.setProperty('font-size'"):
+        for resz in ("'navlap-nyitva'", "'pointerdown'", "'pointerup'", "querySelectorAll('.konyvgomb[data-kk]')",
+                     "'pardes_aa'", "'pardes_legutobb'", 'elozmenybeTesz(aktualis);\n        fulValt(uj);', "style.setProperty('font-size'",
+                     "classList.toggle('betu-noto'", "classList.toggle('szel-szeles'", 'versenkent: true', "a.matches('.navlap-gomb')",
+                     "setProperty('scroll-padding-top'"):
             self.assertIn(resz, js, resz)
+        self.assertNotIn('tajolo', js)
         for tilos in ('fetch(\'/r/javaslat', 'innerHTML = j', "setAttribute('style'", '.cssText'):
             self.assertNotIn(tilos, js, tilos)
         with open(os.path.join(D, 'statikus', 'olvaso.css'), encoding='utf-8') as f:
             css = f.read()
         self.assertIn('html:not(.js-van) .fejlec.navlap:target', css)       # JS nélkül a cél-hivatkozás nyitja
+        # a ragadós fejléc: 900 px alatt a fejezet-lapon (DT-F134n), 900 px-től minden lapon (a mockup header.top-ja)
+        self.assertIn('.fejlec.navlap { position: sticky; top: 0;', css)
+        self.assertIn('.fejlec { position: sticky; top: 0;', css)
+        self.assertNotIn('position: fixed; left: 0; right: 0; top: auto; bottom: 0; z-index: 46', css)   # a régi alsó navigációs lap
+        # az oldalblokk a mockup arányával nő (.fo rács), nem fix 440 px
+        self.assertIn('minmax(460px, .9fr)', css)
+        self.assertNotIn('minmax(320px, 440px)', css)
 
 
 if __name__ == '__main__':

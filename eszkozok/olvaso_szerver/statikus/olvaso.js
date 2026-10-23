@@ -1,7 +1,7 @@
 // Az olvasói felület kis JavaScriptje (#76 M2, #134 M1–M2). Nélküle is minden működik: a vers- és szó-kattintás, a fülek, a
 // bezárás, a könyvválasztó, a ⚙ és az Aa menü sima hivatkozások vagy `details`-elemek (szerveroldali lap); 900 px alatt a navigációs
 // lapot a `#navigacio` cél nyitja. Itt csak a gyorsítás: a részletek lapja (szó- és versmód, fülek, előzménylánc, húzás), a töredék-
-// betöltés (/r/...), a navigációs lap és a tájoló pirula, a kereső javaslatai (DT-F134k (b)), a Ctrl+K és a helyi beállítások.
+// betöltés (/r/...), a navigációs lap (DT-F134n: a ragadós sáv alatt; a tájoló pirula kikerült), a kereső javaslatai (DT-F134k (b)), a Ctrl+K és a helyi beállítások.
 (function () {
   'use strict';
 
@@ -51,38 +51,42 @@
   }
 
   // ---------------------------------------------------------------------------------------------------------------------
-  // a fejléc lenyíló elemei (könyvválasztó, Aa, ⚙; `details`): egyszerre egy nyitott, kívülre kattintva vagy Esc-re zár
-  // (900 px alatt a navigációs lapon belül maradnak nyitva)
+  // a fejléc lenyíló elemei (könyvválasztó, Aa, ⚙; `details`): egyszerre egy nyitott, kívülre kattintva vagy Esc-re zár. 900 px
+  // alatt is a ragadós sávból nyílnak (DT-F134n); ilyenkor a navigációs lap (kereső, kánon-sáv, jelölés) bezárul.
   // ---------------------------------------------------------------------------------------------------------------------
   var lenyilok = document.querySelectorAll('.fejlec details');
   lenyilok.forEach(function (d) {
     d.addEventListener('toggle', function () {
-      if (d.open && !kicsi()) { lenyilok.forEach(function (m) { if (m !== d) { m.open = false; } }); }
+      if (!d.open) { return; }
+      lenyilok.forEach(function (m) { if (m !== d) { m.open = false; } });
+      if (kicsi() && navNyitva()) { navZar(); }
     });
   });
   document.addEventListener('click', function (ev) {
-    if (kicsi()) { return; }
     lenyilok.forEach(function (d) { if (d.open && !d.contains(ev.target)) { d.open = false; } });
   });
 
   // ---------------------------------------------------------------------------------------------------------------------
-  // a navigációs lap (#134 M2): 900 px alatt a fejléc; a fejezetcím, a tájoló pirula és a Ctrl+K nyitja, a ✕, a fátyol és az Esc zárja
+  // a navigációs lap (#134 M2; DT-F134n): 900 px alatt a fejléc ragadós felső sáv (könyvválasztó, ‹ ›, Aa, ⚙, ⌕); a sáv ⌕ gombja,
+  // a fejezetcím és a Ctrl+K a sáv alatt nyitja a keresőt, a kánon-sávot, a jelölést és a „Legutóbb”-ot; a ⌕, a fátyol és az Esc zárja
   // ---------------------------------------------------------------------------------------------------------------------
   var fejlec = document.querySelector('.fejlec.navlap');
-  var beall = document.getElementById('beall');
   var konyvvalaszto = document.getElementById('konyvvalaszto');
+  var navGomb = document.querySelector('.navlap-gomb');
   var navLapRejt = function () {};                                         // a részletek lapjának elrejtése (lent állítódik be)
 
   function navNyitva() { return document.body.classList.contains('navlap-nyitva'); }
   function navNyit() {
     if (!fejlec) { return; }
     navLapRejt();
+    lenyilok.forEach(function (d) { d.open = false; });
     document.body.classList.add('navlap-nyitva');
-    if (beall) { beall.open = true; }                                       // a mockup szerint a ⚙ menü a lapon kinyitva látszik
+    if (navGomb) { navGomb.setAttribute('aria-expanded', 'true'); }
     fejlec.scrollTop = 0;
   }
   function navZar() {
     document.body.classList.remove('navlap-nyitva');
+    if (navGomb) { navGomb.setAttribute('aria-expanded', 'false'); }
     zarJavaslat();
   }
   function navNyitHaKell() { if (fejlec && kicsi() && !navNyitva()) { navNyit(); } }
@@ -199,15 +203,32 @@
   // szövegbeállítások (Aa, a mockup 4. változatából, amit a 9. átvett): betűméret, sorköz, versenként új sor; localStorage.
   // A méretet és a sorközt CSSOM-mal állítja a szövegoszlopon (a CSP ezt engedi; `style=""` a jelölésben nincs), a tokent nem írja.
   // ---------------------------------------------------------------------------------------------------------------------
+  // A betűcsalád (Source Serif / Noto Serif / IBM Plex Sans) és a sorszélesség (keskeny 48ch / közepes 60ch / széles 80ch) a mockup
+  // 4. változatának Aa-jából, osztállyal (betu-*, szel-*). Az alap: versenként új sor (a felhasználó, 2026-10-23); a tárolt érték
+  // `v: 2` jelölése előtti (régi) tárolásból a versenkénti kapcsoló nem öröklődik, csak a kifejezett kikapcsolás.
   var AA_MERET = [0.85, 0.92, 1, 1.1, 1.2, 1.35, 1.5];
   var AA_SORKOZ = { szuk: 0.88, '': 1, tag: 1.15 };
-  var aa = { meret: 2, sorkoz: '', versenkent: false };
-  try { var aaT = JSON.parse(olvas('pardes_aa') || '{}'); if (aaT && typeof aaT === 'object') { for (var k in aa) { if (k in aaT) { aa[k] = aaT[k]; } } } } catch (e) { /* hibás tárolt érték: alapértékek */ }
+  var AA_BETU = { '': 1, noto: 1, sans: 1 };
+  var AA_SZEL = { keskeny: 1, '': 1, szeles: 1 };
+  function aaAlap() { return { v: 2, meret: 2, sorkoz: '', betu: '', szel: '', versenkent: true }; }
+  var aa = aaAlap();
+  try {
+    var aaT = JSON.parse(olvas('pardes_aa') || '{}');
+    if (aaT && typeof aaT === 'object') {
+      for (var k in aa) { if (k in aaT && k !== 'v' && (k !== 'versenkent' || aaT.v === 2)) { aa[k] = aaT[k]; } }
+    }
+  } catch (e) { /* hibás tárolt érték: alapértékek */ }
   var oszlop = document.querySelector('.szoveg-oszlop');
   function aaAlkalmaz(ment) {
     if (!oszlop) { return; }
     if (!(aa.meret >= 0 && aa.meret < AA_MERET.length)) { aa.meret = 2; }
     if (!(aa.sorkoz in AA_SORKOZ)) { aa.sorkoz = ''; }
+    if (!(aa.betu in AA_BETU)) { aa.betu = ''; }
+    if (!(aa.szel in AA_SZEL)) { aa.szel = ''; }
+    oszlop.classList.toggle('betu-noto', aa.betu === 'noto');
+    oszlop.classList.toggle('betu-sans', aa.betu === 'sans');
+    oszlop.classList.toggle('szel-keskeny', aa.szel === 'keskeny');
+    oszlop.classList.toggle('szel-szeles', aa.szel === 'szeles');
     oszlop.style.removeProperty('font-size');
     oszlop.style.removeProperty('line-height');
     var cs = window.getComputedStyle(oszlop);
@@ -219,6 +240,8 @@
     var ertek = document.getElementById('aa-meret-ertek');
     if (ertek) { ertek.textContent = Math.round(f * 100) + '%'; }
     document.querySelectorAll('[data-aa-sorkoz]').forEach(function (g) { g.setAttribute('aria-pressed', g.getAttribute('data-aa-sorkoz') === aa.sorkoz ? 'true' : 'false'); });
+    document.querySelectorAll('[data-aa-betu]').forEach(function (g) { g.setAttribute('aria-pressed', g.getAttribute('data-aa-betu') === aa.betu ? 'true' : 'false'); });
+    document.querySelectorAll('[data-aa-szel]').forEach(function (g) { g.setAttribute('aria-pressed', g.getAttribute('data-aa-szel') === aa.szel ? 'true' : 'false'); });
     var vk = document.getElementById('aa-versenkent');
     if (vk) { vk.checked = !!aa.versenkent; }
     if (ment) { tarol('pardes_aa', JSON.stringify(aa)); }
@@ -229,12 +252,18 @@
         var mit = g.getAttribute('data-aa');
         if (mit === 'meret-') { aa.meret = Math.max(0, aa.meret - 1); }
         else if (mit === 'meret+') { aa.meret = Math.min(AA_MERET.length - 1, aa.meret + 1); }
-        else if (mit === 'alap') { aa = { meret: 2, sorkoz: '', versenkent: false }; }
+        else if (mit === 'alap') { aa = aaAlap(); }
         aaAlkalmaz(true);
       });
     });
     document.querySelectorAll('[data-aa-sorkoz]').forEach(function (g) {
       g.addEventListener('click', function () { aa.sorkoz = g.getAttribute('data-aa-sorkoz'); aaAlkalmaz(true); });
+    });
+    document.querySelectorAll('[data-aa-betu]').forEach(function (g) {
+      g.addEventListener('click', function () { aa.betu = g.getAttribute('data-aa-betu'); aaAlkalmaz(true); });
+    });
+    document.querySelectorAll('[data-aa-szel]').forEach(function (g) {
+      g.addEventListener('click', function () { aa.szel = g.getAttribute('data-aa-szel'); aaAlkalmaz(true); });
     });
     var vkGomb = document.getElementById('aa-versenkent');
     if (vkGomb) { vkGomb.addEventListener('change', function () { aa.versenkent = vkGomb.checked; aaAlkalmaz(true); }); }
@@ -294,8 +323,6 @@
   var muvSor = document.getElementById('lap-muv');
   var uresResz = lap.querySelector('.lap-ures');
   var tartalom = lap.querySelector('.lap-tartalom');
-  var tajolo = document.getElementById('tajolo');
-  var tajoloVers = document.getElementById('tajolo-vers');
   var elozmeny = [];
   var keres = 0;                                                           // a késve érkező töredék ne írja felül a későbbit
 
@@ -349,7 +376,6 @@
     document.querySelectorAll('.szoveg-oszlop .kijelolt').forEach(function (e) { e.classList.remove('kijelolt'); });
     var el = vers ? document.getElementById('v' + vers) : null;
     if (el) { el.classList.add('kijelolt'); }
-    if (tajoloVers) { tajoloVers.textContent = vers ? ':' + vers : ''; }
     return el;
   }
 
@@ -406,8 +432,10 @@
   // kis képernyőn a koppintott vers a betekintő lap fölött maradjon látható (a mockup szabálya: csak ha a lap takarná)
   function versLathatova(el) {
     if (!el || !kicsi() || document.body.classList.contains('lap-egesz')) { return; }
+    // a ragadós sáv (DT-F134n) alatti rész számít: a vers a sáv alá, legalább 8 px-re kerül
     var r = el.getBoundingClientRect(), hatar = window.innerHeight * 0.5;
-    if (r.top > hatar - 40 || r.top < 0) { window.scrollBy({ top: r.top - Math.min(80, hatar / 3), behavior: 'smooth' }); }
+    var sav = fejlec ? Math.max(0, fejlec.getBoundingClientRect().bottom) : 0;
+    if (r.top > hatar - 40 || r.top < sav) { window.scrollBy({ top: r.top - Math.max(sav + 8, Math.min(80, hatar / 3)), behavior: 'smooth' }); }
   }
 
   function megjelenit(all, html) {
@@ -479,8 +507,14 @@
     if (ev.defaultPrevented || ev.button !== 0 || ev.ctrlKey || ev.metaKey || ev.shiftKey || ev.altKey) { return; }
     var a = ev.target.closest ? ev.target.closest('a[href]') : null;
     if (!a) { return; }
-    // a navigáció: a fejezetcím és a tájoló pirula (kis képernyőn a navigációs lap, nagyon a könyvválasztó), a lap ✕-e
-    if (a.matches('.navlap-nyito') || a === tajolo) {
+    // a navigáció: a sáv ⌕ gombja (kis képernyőn nyit/zár, DT-F134n), a fejezetcím (kis képernyőn a navigációs lap, nagyon a
+    // könyvválasztó), a lap ✕-e
+    if (a.matches('.navlap-gomb')) {
+      ev.preventDefault();
+      if (navNyitva()) { navZar(); } else { navNyit(); if (mezo) { mezo.focus(); } }
+      return;
+    }
+    if (a.matches('.navlap-nyito')) {
       ev.preventDefault();
       if (kicsi()) { navNyit(); }
       else if (konyvvalaszto) { konyvvalaszto.open = true; var s = konyvvalaszto.querySelector('summary'); if (s) { s.focus(); } }
@@ -583,26 +617,32 @@
     }
   });
 
-  // a tájoló pirula (900 px alatt): felfelé görgetésre (300 px mélység fölött, 6 px-es küszöb) megjelenik, lefelé vagy 2,5 mp után eltűnik
-  if (tajolo) {
-    var utolso = window.scrollY, idozito = null;
-    window.addEventListener('scroll', function () {
-      if (!kicsi()) { return; }
-      var y = window.scrollY;
-      if (y < utolso - 6 && y > 300) {
-        document.body.classList.add('tajolo-latszik');
-        clearTimeout(idozito);
-        idozito = setTimeout(function () { document.body.classList.remove('tajolo-latszik'); }, 2500);
-      } else if (y > utolso + 6 || y <= 300) {
-        document.body.classList.remove('tajolo-latszik');
-      }
-      utolso = y;
-    }, { passive: true });
+  // DT-F134n: a tájoló pirula kikerült (a ragadós felső sáv mindig mutatja a helyet és a navigációt).
+  // A ragadós fejléc magassága változhat (900 px-től 1–3 sor): az oldalblokk ragadós teteje, a magassága és a horgonyok görgetési
+  // margója a mért magasságból (CSSOM; a stíluslap literál tartaléka: 96 px, illetve 900 px alatt 56 px)
+  function fejlecIgazit() {
+    if (!fejlec) { return; }
+    var m = Math.ceil(fejlec.getBoundingClientRect().height);
+    if (navNyitva()) { return; }                                             // a nyitott navigációs lap magassága nem a sávé
+    document.documentElement.style.setProperty('scroll-padding-top', (m + 8) + 'px');
+    if (!kicsi()) {
+      lap.style.setProperty('top', (m + 8) + 'px');
+      lap.style.setProperty('max-height', 'calc(100vh - ' + (m + 16) + 'px)');
+    } else {
+      lap.style.removeProperty('top');
+      lap.style.removeProperty('max-height');
+    }
+  }
+  if (fejlec) {
+    if (window.ResizeObserver) { new ResizeObserver(fejlecIgazit).observe(fejlec); }
+    window.addEventListener('resize', fejlecIgazit);
+    fejlecIgazit();
   }
 
   function szelessegValt() {
     if (!kicsi()) { navZar(); teljes(false); }
     fejsor();
+    fejlecIgazit();
   }
   if (kicsiMedia && kicsiMedia.addEventListener) { kicsiMedia.addEventListener('change', szelessegValt); }
   muveletsor();

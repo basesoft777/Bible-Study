@@ -30,7 +30,7 @@ Az olvasó-szerver (`eszkozok/olvaso_szerver/`) elrendezése a felhasználó 202
 
 **Benne van**
 
-1. **Kis képernyő (900 px alatt):** nincs tartós fejléc és alsó sáv. A navigáció (kereső, könyvválasztó, ‹ ›, Aa, ⚙, kánon-sáv, jelölő chipek, „Legutóbb”; a Fejezet-kalauz gomb a DT-F134l szerint kimarad) a fejezetcímre koppintva felugró lapon nyílik; felfelé görgetésre egy átmeneti tájoló pirula („Ez 37 ▾”) is előhívja.
+1. **Kis képernyő (900 px alatt):** nincs tartós fejléc és alsó sáv. A navigáció (kereső, könyvválasztó, ‹ ›, Aa, ⚙, kánon-sáv, jelölő chipek, „Legutóbb”; a Fejezet-kalauz gomb a DT-F134l szerint kimarad) a fejezetcímre koppintva felugró lapon nyílik; felfelé görgetésre egy átmeneti tájoló pirula („Ez 37 ▾”) is előhívja. *Módosítva (DT-F134n, 2026-10-23): a navigáció 900 px alatt is egysoros ragadós felső sáv (könyvválasztó, ‹ ›, Aa, ⚙, ⌕); a kereső, a kánon-sáv, a jelölés és a „Legutóbb” a sáv ⌕ gombjával a sáv alatt nyílik; a tájoló pirula kikerült.*
 2. **A részletek lapja — egy komponens, két mód:** versszámra koppintva versmód (fejsor: igehely + a vers eleje; a „Másolás forrással” gomb a DT-F134m szerint nem kerül be; fülek: Vers · Kereszthiv. · Témák · Motívum), szóra koppintva szómód (fejsor: Strong-szám, héber/görög alak, alapjelentés; „A vers: … →”). Váltás a két mód között bezárás nélkül; ‹ az előző tartalomra lép (előzménylánc).
 3. **Két alak:** 900 px alatt alulról felugró lap (betekintés kb. a képernyő felééig, felhúzva teljes nézet, lehúzásra vissza, majd zárás; a koppintott vers a lap fölött látható marad); 900 px-től állandó, párhuzamos oldalblokk.
 4. **Üres állapot (DT-F134l):** kijelölés nélkül az oldalblokk rövid útmutatót mutat (koppints versszámra a vers, szóra a szó részleteiért), alatta a fejezet forrását és a számlálókat. A fejezet-kalauz (a mockup 5. változata) kimarad; később külön feladat lehet.
@@ -59,7 +59,7 @@ Az olvasó-szerver (`eszkozok/olvaso_szerver/`) elrendezése a felhasználó 202
 
 ## 4. Elfogadási feltételek
 
-- **E1** 375 px-en az első vers a fejezetcím alatt kezdődik (mérve: ≤ 200 px a lap tetejétől); nincs tartós sáv; vízszintes túlfolyás 0 minden mért oldalon.
+- **E1** 375 px-en az első vers a fejezetcím alatt kezdődik (mérve: ≤ 200 px a lap tetejétől); nincs tartós sáv; vízszintes túlfolyás 0 minden mért oldalon. *Módosítva (DT-F134n): a tartós sáv az egysoros ragadós navigációs sáv; a 200 px-es határ a sáv alatti első versre vonatkozik.*
 - **E2** Versszámra és szóra koppintva a lap 375 és 768 px-en látható helyen nyílik (a mai állapotban 3 874 / 34 277 px-rel a szöveg alatt); a koppintott vers a betekintő lap fölött látszik.
 - **E3** 900 px-től az oldalblokk állandó; kijelölés nélkül a rövid útmutatót, a fejezet forrását és a számlálókat mutatja (DT-F134l).
 - **E4** Szó- és versmód között bezárás nélkül lehet váltani, a ‹ az előzőre lép.

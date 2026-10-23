@@ -31,8 +31,9 @@ h4 { font-size: var(--fs-kiscim); margin: 10px 0 4px; }
 .konyvek { columns: 3 280px; }
 .konyv { break-inside: avoid; margin: 2px 0; }
 .szam, .megj, .cimke { color: var(--muted); font-size: var(--fs-megjegyzes); }
-.olvaso-elrendezes { display: grid; gap: var(--space-oszlopkoz); align-items: start; grid-template-columns: minmax(0, 1fr) minmax(320px, 440px); }
-.jobb-oszlop { position: sticky; top: 8px; max-height: calc(100vh - 16px); overflow: auto; border: 1px solid var(--rule); }
+.olvaso-elrendezes { display: grid; gap: var(--space-oszlopkoz); align-items: start; grid-template-columns: minmax(0, 1fr) minmax(400px, .8fr); }
+/* az oldalblokk ragadós teteje a ragadós fejléc alatt (#134 M3 javítókör): a literál a tartalék, a JS a mért fejléc-magassághoz igazítja */
+.jobb-oszlop { position: sticky; top: 96px; max-height: calc(100vh - 104px); overflow: auto; border: 1px solid var(--rule); }
 .vers { margin: 0 0 6px; }
 .vers.kijelolt, .il-vers.kijelolt { background: var(--accent-soft); border-radius: var(--radius-kiemeles); }
 .versszam { vertical-align: super; margin-right: 3px; text-decoration: none; }
@@ -239,7 +240,7 @@ details[open] > summary.lap-gomb, .lap-gomb[aria-pressed="true"] { background: v
     border-radius: var(--radius-panel) var(--radius-panel) 0 0; box-shadow: 0 -10px 30px color-mix(in srgb, var(--arnyek) 20%, transparent);
     transform: translateY(105%); visibility: hidden; transition: transform .2s ease, height .2s ease, visibility .2s; }
   .lap-nyitva .reszletek { transform: none; visibility: visible; }
-  .lap-egesz .reszletek { height: calc(100dvh - 28px); }
+  .lap-egesz .reszletek { height: calc(100dvh - 56px); }             /* DT-F134n: a teljes nézet is a ragadós sáv alatt marad */
   .lap-nyitva .szoveg-oszlop { padding-bottom: 52vh; }
   .lap-fej { padding-top: 14px; }
   .lap-fogo { display: block; position: absolute; top: 4px; left: 50%; width: 40px; height: 4px; margin-left: -20px; border-radius: var(--radius-pill); background: var(--rule); }
@@ -290,7 +291,7 @@ details[open] > summary.lap-gomb, .lap-gomb[aria-pressed="true"] { background: v
 .nav-extra .kapcs { margin: 0; }
 .legutobb { display: flex; flex-wrap: wrap; gap: 4px 6px; align-items: center; font: var(--fs-megjegyzes) var(--font-ui); color: var(--muted); }
 .legutobb-hely { padding: 1px 7px; border: 1px solid var(--rule); border-radius: var(--radius-kiemeles); color: var(--fg); text-decoration: none; font: var(--fs-strong-szam) var(--font-mono); }
-.hatter, .tajolo { display: none; }
+.hatter, .navlap-gomb { display: none; }
 .lap-fej { flex-wrap: wrap; }
 .lap-muv { display: flex; flex-basis: 100%; flex-wrap: wrap; gap: 6px; }
 .lap-muv:empty { display: none; }
@@ -298,19 +299,25 @@ details[open] > summary.lap-gomb, .lap-gomb[aria-pressed="true"] { background: v
 .lap-muv .lap-versre { display: inline-block; padding: 3px 10px; border: 1px solid var(--rule); border-radius: var(--radius-pill); text-decoration: none; font: var(--fs-gomb) var(--font-ui); }
 .versenkent .folyo .vers { display: block; margin: 0 0 .45em; }
 @media (max-width: 899.98px) {
-  .fejlec.navlap { position: fixed; left: 0; right: 0; top: auto; bottom: 0; z-index: 46; max-height: 86vh; overflow: auto; overscroll-behavior: contain;
-    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 10px); background: var(--panel); border: 1px solid var(--rule); border-bottom: 0;
-    border-radius: var(--radius-panel) var(--radius-panel) 0 0; box-shadow: 0 -10px 30px color-mix(in srgb, var(--arnyek) 20%, transparent);
-    transform: translateY(105%); visibility: hidden; transition: transform .22s ease, visibility .22s; }
-  .navlap-nyitva .fejlec.navlap, html:not(.js-van) .fejlec.navlap:target { transform: none; visibility: visible; }
-  .navlap .navlap-fej { display: flex; flex-basis: 100%; order: -2; align-items: center; justify-content: space-between; }
-  .navlap .logo { display: none; }
-  .navlap .ugras { display: flex; flex-basis: 100%; order: -1; gap: var(--space-gombsor); }
+  /* DT-F134n: a fejezet-lap fejléce 900 px alatt is felül marad: egysoros ragadós sáv (könyvválasztó, ‹ ›, Aa, ⚙, ⌕); a könyvválasztó,
+     az Aa és a ⚙ a sávból lenyíló panel; a ⌕ (a fejezetcím, a Ctrl+K) a sáv alatt nyitja a keresőt, a kánon-sávot, a jelölést és a
+     „Legutóbb”-ot (body.navlap-nyitva; JS nélkül a #navigacio cél) */
+  .fejlec.navlap { position: sticky; top: 0; z-index: 46; flex-wrap: wrap; }
+  .navlap .logo, .navlap .ugras, .navlap .kanon, .navlap .nav-extra { display: none; }
+  .navlap .konyvvalaszto { margin-right: auto; }
+  .navlap .konyvvalaszto, .navlap .aa, .navlap .beall { position: static; }
+  .navlap .konyvpanel, .navlap .aa-menu, .navlap .beall-menu { left: 8px; right: 8px; top: calc(100% + 4px); width: auto; max-height: calc(100dvh - 72px); overflow: auto; }
+  .navlap-gomb { display: inline-flex; }
+  .navlap-nyitva .navlap-gomb { background: var(--accent-soft); border-color: var(--accent); }
+  .navlap-nyitva .fejlec.navlap, html:not(.js-van) .fejlec.navlap:target { max-height: 100dvh; overflow: auto; overscroll-behavior: contain;
+    box-shadow: 0 10px 30px color-mix(in srgb, var(--arnyek) 20%, transparent); }
+  .navlap-nyitva .navlap .ugras, html:not(.js-van) .navlap:target .ugras { display: flex; flex-basis: 100%; order: 1; gap: var(--space-gombsor); }
   .navlap .ugras input { flex: 1; width: auto; max-width: none; min-width: 0; }
   .navlap .javaslat { position: absolute; }
-  .navlap details[open] { flex-basis: 100%; }
-  .navlap .konyvpanel, .navlap .aa-menu, .navlap .beall-menu { position: static; width: auto; max-height: none; margin-top: 6px; box-shadow: none; }
-  .navlap .kanon { height: 22px; }
+  .navlap-nyitva .navlap .kanon, html:not(.js-van) .navlap:target .kanon { display: block; order: 2; height: 22px; }
+  .navlap-nyitva .navlap .nav-extra, html:not(.js-van) .navlap:target .nav-extra { display: flex; order: 3; }
+  html:not(.js-van) .navlap:target .navlap-fej { display: flex; flex-basis: 100%; order: 4; align-items: center; justify-content: space-between; }
+  html:has(.fejlec.navlap) { scroll-padding-top: 56px; }
   .navlap-nyito::after { content: " ▾"; color: var(--muted); font: var(--fs-megjegyzes) var(--font-ui); }
   .fejezetfej { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 12px; }
   .fejezetfej h1 { margin-bottom: 4px; }
@@ -318,12 +325,6 @@ details[open] > summary.lap-gomb, .lap-gomb[aria-pressed="true"] { background: v
   .lapozo a:not(.lap-info) { display: none; }
   .navlap-nyitva .hatter, .lap-nyitva.lap-egesz .hatter { display: block; position: fixed; inset: 0; z-index: 43; background: color-mix(in srgb, var(--arnyek) 30%, transparent); }
   .navlap-nyitva .hatter { z-index: 45; }
-  .tajolo { display: inline-flex; position: fixed; top: calc(env(safe-area-inset-top, 0px) + 8px); left: 50%; z-index: 30; align-items: baseline; gap: 2px; padding: 5px 14px;
-    border: 1px solid var(--rule); border-radius: var(--radius-pill); background: var(--panel); color: var(--fg); text-decoration: none; font: 600 var(--fs-alcim) var(--font-text);
-    box-shadow: 0 4px 14px color-mix(in srgb, var(--arnyek) 15%, transparent); transform: translate(-50%, -70px); transition: transform .2s ease; }
-  .tajolo-latszik .tajolo { transform: translate(-50%, 0); }
-  .lap-nyitva .tajolo, .navlap-nyitva .tajolo { transform: translate(-50%, -70px); }
-  .tajolo-vers, .tajolo-jel { color: var(--muted); font: var(--fs-megjegyzes) var(--font-ui); }
   .lap-fej { touch-action: none; cursor: grab; }
 }
 /* #134 M3: arculat (DT295, DT296; a mockup 9. változata). A komponensstílusok a tokenrendszeren át: a műfajszínek (--g-*, világos és
@@ -386,5 +387,19 @@ details[open] > summary.morzsa { border-color: var(--accent); }
   .fejlec.navlap .nav-extra { flex: 0 1 auto; flex-wrap: nowrap; min-width: 0; }
   .fejlec.navlap .legutobb { flex-wrap: nowrap; overflow: hidden; }
   .fejlec.navlap .legutobb-hely:nth-of-type(n+4) { display: none; }
+  /* #134 M3 javítókör (a felhasználó, 2026-10-23): a fejléc ragadós (a mockup header.top-ja), a lenyíló panelek belőle nyílnak */
+  .fejlec { position: sticky; top: 0; z-index: 40; }
+  html:has(.fejlec.navlap) { scroll-padding-top: 96px; }
+  /* a mockup 9. változatának .fo rácsa: a szöveg 1fr, az oldalblokk 1100 px-ig minmax(400px, .8fr), fölötte minmax(460px, .9fr);
+     az egész legfeljebb 1480 px (a két oldali térközzel), középre igazítva */
+  .olvaso-elrendezes { max-width: 1448px; margin-inline: auto; }
 }
-@media (prefers-reduced-motion: reduce) { .reszletek, .fejlec.navlap, .tajolo { transition: none; } }
+@media (min-width: 1100px) {
+  .olvaso-elrendezes { grid-template-columns: minmax(0, 1fr) minmax(460px, .9fr); }
+}
+/* az Aa betűcsaládja és sorszélessége (a mockup 4. változata: Source Serif = az alap, Noto Serif, IBM Plex Sans; 48 / 60 / 80ch) */
+.szoveg-oszlop.betu-noto { font-family: var(--font-gr); }
+.szoveg-oszlop.betu-sans { font-family: var(--font-ui); }
+.szoveg-oszlop.szel-keskeny { max-width: 48ch; }
+.szoveg-oszlop.szel-szeles { max-width: 80ch; }
+@media (prefers-reduced-motion: reduce) { .reszletek { transition: none; } }

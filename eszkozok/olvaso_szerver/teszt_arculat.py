@@ -223,7 +223,9 @@ class TestMufajszinekEsTema(unittest.TestCase):
         self.assertNotIn('var(--fg) 18%', css)
         self.assertNotIn('var(--fg) 20%', css)
         self.assertNotIn('var(--fg) 30%', css)
-        self.assertGreaterEqual(css.count('color-mix(in srgb, var(--arnyek)'), 6)
+        # felugró panelek, javaslatlista, a részletek lapja, a nyitott navigációs sáv, a fátyol (a tájoló pirula árnyéka a
+        # javítókörben kikerült, DT-F134n)
+        self.assertGreaterEqual(css.count('color-mix(in srgb, var(--arnyek)'), 5)
 
     def test_a_temaszkript(self):
         with open(os.path.join(D, 'statikus', 'tema.js'), encoding='utf-8') as f:

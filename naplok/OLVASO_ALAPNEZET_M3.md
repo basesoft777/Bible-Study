@@ -85,3 +85,74 @@ A lassú `teszt_szintek.py` (DT129) nem futott (`--gyors`); a hozzáférési szi
 4. **Valódi mozgás** (az M2 4. pontja): a rejtett panelen az átmenet nem lép; a lapok mozgása és a pirula az M4 telefonos próbáján mérendő.
 5. **Kontraszt a `g-kis` teljes színén (világos téma):** a mostani könyv gombján a `panel` szöveg a műfajszínen áll. A token-értékekből számolva (a fenti képlettel, `panel` `#fffdf8` a nyolc világos műfajszínen): `g-tor` 7,44 · `g-tort` 6,94 · `g-bolcs` 5,57 · `g-prof` 5,83 · **`g-kis` 4,26** · `g-ev` 7,89 · `g-lev` 5,41 · `g-apok` 7,47; sötétben (`panel` `#1d2321`) mind 7,02 fölött. A `g-kis` (a mockup `#a0702a`-ja) 13 px-es szövegnél kevéssel a WCAG AA 4,5 alatt van, és csak egy Kispróféta-fejezeten jelenik meg. Nem változtattam, mert a mockup értékétől való eltérés lenne; a token a tervező módban állítható. Az M4 vizuális mérésére bízom, vagy a felhasználó dönthet róla.
 6. **Munkamódszer:** minden szkript (a kizárt-tábla frissítése, a mérőszkript) a Write eszközzel készült fájlból futott; heredoc és magyar szöveget tartalmazó inline kód nem volt. A böngészős mérőkódot a `javascript_tool` kapta (a böngészőben fut, nem a shellben).
+
+## 5. Javítókör (a felhasználó visszajelzése, 2026-10-23)
+
+*Ág: `claude/olvaso-alapnezet`, a b50093a7 (F134.11) után · modell: claude-opus-5-5 · a felhasználó a futó szerveren nézte (`http://192.168.1.172:9765/1Moz`), a visszajelzést a koordinátor továbbította. Az M4-et nem indítottam.*
+
+**A visszajelzés szó szerint:** „Volt a mockupban több válaszható betűtípus, ezek eltűntek. A navigációnak felül kell maradnia . A beállitássak és a könyv választóval. Alapértelmezés, minden vers új sorban . Vers és szó blokk kicsi marad akkor is ha van több hely. A károli blokk sem tölti ki a rendelkezésre álló helyet.” — és a 900 px alatti esetre (a koordinátor továbbításával): „Telefonon is felül”.
+
+### 5.1 Tételenként
+
+| Tétel | Mit csináltam | Hol |
+|---|---|---|
+| **a) Betűtípus-választó** | A mockup betűválasztója a 4. változat („Szövegbeállítások”) Aa paneljében van, a 9. változat ezt vette át: **Betűcsalád: Source Serif / Noto Serif / IBM Plex Sans** (a mockup `BETU` táblája), mellette **Sorszélesség: keskeny 48ch / közepes 60ch / széles 80ch**. Mindhárom betű fájlja már a `statikus/fonts/` alatt van (Source Serif 4, Noto Serif, IBM Plex Sans, OFL), letöltés nem kellett, kihagyott betű nincs. Az Aa két új szegmens-választót kapott (`aa-betu`, `aa-szel`, a sorköz `.tema` gombjainak stílusával); a választás osztály a szövegoszlopon (`betu-noto` → `var(--font-gr)`, amelynek első tagja a Noto Serif; `betu-sans` → `var(--font-ui)`; `szel-keskeny` / `szel-szeles` → 48 / 80ch), és a localStorage `pardes_aa` őrzi, mint az Aa többi beállítását. A sorszélességet a mockup ugyanebben a panelben adja, és az e) tételhez tartozik, ezért vettem át. | `sablonok/alap.html`, `statikus/olvaso.js`, `statikus/olvaso.css`, `konfig/elemek.toml` |
+| **b) A navigáció felül marad** | **900 px-től:** a fejléc ragadós (`position: sticky; top: 0`, minden lapon, a mockup `header.top`-ja); a könyvválasztó, az Aa és a ⚙ belőle nyílik. Az oldalblokk ragadós teteje a fejléc alá került (tartalék 96 px; a JS a mért fejléc-magasságból állítja: `top` = magasság + 8 px, `max-height` = `100vh` − magasság − 16 px, CSSOM), a horgonyokhoz `scroll-padding-top`. **900 px alatt (DT-F134n):** a fejezet-lap fejléce egysoros ragadós sáv: könyvválasztó (a morzsa, „Ez 37 ▾”), ‹ ›, Aa, ⚙ és egy új ⌕ gomb (`navlap-gomb`). A könyvválasztó, az Aa és a ⚙ a sávból lenyíló panel (8 px-es szegéllyel teljes szélességű, a képernyőn belül görgethető). A ⌕ (és a fejezetcím, a Ctrl+K) a sáv alatt nyitja a keresőt, a kánon-sávot, a jelölést és a „Legutóbb”-ot (fátyollal; a ⌕ újra, a fátyol vagy az Esc zárja; JS nélkül a `#navigacio` cél, ott ✕-szel). Egy lenyíló nyitása a navigációs részt bezárja. **A tájoló pirula kikerült** (sablon, JS, CSS, a regiszter `tajolo` eleme és három kizárt horga): a sáv mindig mutatja a helyet és a navigációt, a pirula fölösleges. A részletek alsó lapja a sáv alatt marad (z-sorrend; a teljes nézet magassága `100dvh − 56px`), a koppintott vers a sáv alá és a lap fölé görgetődik (a görgetés a sáv alját veszi alapul). A többi lap fejléce 900 px alatt változatlan (nem ragadós). | `sablonok/alap.html`, `sablonok/fejezet.html`, `statikus/olvaso.js`, `statikus/olvaso.css`, `konfig/elemek.toml`, `DONTESEK.md` (DT-F134n), a brief 2.1 és E1 |
+| **c) Versenként új sor az alap** | A szövegoszlop a szerverről `versenkent` osztállyal jön (JS nélkül is versenként új sor), az Aa kapcsolója alapból bekapcsolt (`checked`). Aki kikapcsolja, annál a localStorage őrzi. A tárolt érték új `v: 2` jelet kap: a korábbi (jel nélküli) tárolásból a betűméret és a sorköz megmarad, a versenkénti kapcsoló viszont nem öröklődik (a régi alap a kikapcsolt volt, így a korábbi tárolás nem jelent kifejezett választást). Az „Alapértékek” a versenkéntire állít vissza. Az interlineáris réteg változatlan (ott a csempe a vers egysége). | `sablonok/fejezet.html`, `sablonok/alap.html`, `statikus/olvaso.js` |
+| **d) A részletek-blokk nő a hellyel** | A fix `minmax(320px, 440px)` helyett a mockup 9. változatának `.fo` rácsa: a szöveg `minmax(0, 1fr)`, az oldalblokk 900–1100 px között `minmax(400px, .8fr)`, 1100 px fölött `minmax(460px, .9fr)`; az egész legfeljebb 1448 px (a mockup 1480 px-e a két oldali 16 px nélkül), középre igazítva. A köz a meglévő `space-oszlopkoz` token (16 px; a mockupban 20 / 28 px), új token nem kellett. | `statikus/olvaso.css` |
+| **e) A Károli-szöveg oszlopa** | A szövegoszlop sávja most a fejléc szélessége és az oldalblokk közti teljes 1fr. **A mockup sorhossz-korlátot alkalmaz:** a szöveg `max-width` alapja 60ch (a 4. változat „közepes” sorszélessége), választhatóan 48 / 80ch. Ezt követtem: az alap 60ch maradt, és a „széles” (80ch) kitölti a sávot 1600 px-en is. 920 és 1280 px-en a 60ch-s szöveg már gyakorlatilag kitölti a sávot (lent). | `statikus/olvaso.css`, `statikus/olvaso.js` |
+
+Egyéb: `SABLON_VERZIO = 'f134-m3j'` (a gyorsítótár-kulcs az új sablonra vált); a README bekezdése a ragadós sávval és az Aa új választóival.
+
+**Munkamódszer-hiba (jelzem):** a tájoló két sablonsorát egy heredocban futtatott, magyar megjegyzést tartalmazó Python-részlettel töröltem; ez a CLAUDE.md shell-szabályát sérti. Lefutott, az eredmény helyes (pontosan a két sor törlődött, ellenőrizve), utána minden módosítás az Edit eszközzel készült.
+
+### 5.2 Saját próba böngészőben (nem független ellenőrzés)
+
+*Módszer: saját fejlesztői szerver a WSL `pardes` disztribúcióban (127.0.0.1:8799, `belso` kiadás, `kutato` szint, WSL-natív `~/pardes/pardes.db`, `--ujratolt`; a végén leállítva; a felhasználó 8765-ös szerverét nem érintettem), a beépített böngészőpanel emulált szélességén, mérőszkripttel (`getBoundingClientRect`, `scrollWidth − clientWidth`, a látható `fixed`/`sticky` elemek), tárolt Aa-érték nélkül (Source Serif, 20 px; a 920 és 1600 px-es sor újramérve alapméreten, miután egy korábbi próba 110%-os betűmérete bent maradt). Oldal: Ez 37. A részletek lapjánál a panelen a `smooth` görgetés nem lép (az M2/M3 is leírta): a vers helyét a `scrollBy` azonnali változatával mértem, a kód ettől nem változott; az átmeneteket egy `adoptedStyleSheets`-lap kapcsolta ki. Proveniencia: `scope=olvaso_szerver 127.0.0.1:8799 (munkafa a b50093a7 után, a javítókör változásaival) | forras=bongeszo-meres | ts=2026-10-23`.*
+
+| Mérés | 375 px | 920 px | 1280 px | 1600 px |
+|---|---|---|---|---|
+| a fejléc / sáv magassága | **49 px, egy sor** (morzsa 72×30, öt 32×32-es gomb) | 80 px üres „Legutóbb”-bal; **102 px** (3 sor) két „Legutóbb”-bejegyzéssel | 80 px | 80 px |
+| a fejléc teteje görgetés után | **0** (`sticky`) | 0 | 0 | 0 |
+| az oldalblokk teteje görgetés után | — | 88 px (80 px-es fejléc); 110 px (102 px-es fejléc, lásd lent) | 89 px | 88 px |
+| **E1** az első vers teteje | **146 px** (≤ 200; a sáv nélkül az M3-ban 100 px; a h1 67 px-nél) | 229 px (a 102 px-es fejléccel) | 207 px | 207 px |
+| a szöveg sávja / a szöveg szélessége | 343 px / 343 px | 457 / 457 px | 641 / **600 px** (60ch) | 754 / **600 px** (60ch); „széles”: 754 px |
+| az oldalblokk szélessége | — (alsó lap) | 400 px (M3: 440) | **576 px** (M3: 440) | **678 px** (M3: 440) |
+| a rács | — | — | 1233 px | 1448 px, 69 px-nél kezdődik (középre) |
+| vízszintes túlfolyás | **0** (a nyitott navigációs résszel is 0) | 0 | 0 | 0 |
+| látható `fixed`/`sticky` elem lap nélkül | csak a sáv | a fejléc, az oldalblokk | ugyanígy | ugyanígy |
+
+**375 px, a sáv működése:** a ⌕ után a body `navlap-nyitva`, `aria-expanded="true"`, a fókusz a keresőben; a kereső 46 px-nél, a kánon-sáv 84 px-nél, a jelölés és a „Legutóbb” 112 px-nél, a nyitott rész 146 px magas, a fátyol látszik; újra a ⌕-re zár, a sáv visszaáll 49 px-re. 1200 px-es görgetés után a könyvválasztó, az Aa és a ⚙ panelje a sávból nyílik: mindhárom 52 px-nél kezdődik, 8 px-től 359 px szélesen; a könyvválasztó 740 px magas (a `100dvh − 72px` korlát), a képernyőn belül.
+
+**E2 (375 px, a részletek lapja):** a 20. versszámra koppintva versmód; a lap teteje 422 px (390 px magas betekintés), a 20. vers 80–144 px között: a 49 px-es sáv alatt és a lap fölött. Teljes nézet (⤢): a lap 56 px-nél kezdődik (756 px), a sáv látható marad.
+
+**Aa (1280 px):** IBM Plex Sans + széles + versenként kikapcsolva → a szövegoszlop `betu-sans szel-szeles`, a betű `"IBM Plex Sans"`, `max-width` 960 px (80ch), a vers `inline`; tárolva `{"v":2,…,"betu":"sans","szel":"szeles","versenkent":false}`; újratöltés után ugyanez. „Alapértékek”: `versenkent`, a kapcsoló bejelölve. Régi, `v` nélküli tárolt érték (`meret: 3, versenkent: false`) mellett: a betű 22 px (megmaradt), a vers versenként (az új alap). Az Aa panel 300 px széles; a két új választó gombjai elférnek (túlfolyás 0).
+
+**A fejléc magasságának követése:** 920 px-en a „Legutóbb” két bejegyzésével a fejléc 3 sorra (102 px) nő. Az 1600 → 920 px-es átméretezés után az oldalblokk még a régi (89 px-es) tetőn állt: a rejtett panelen a `ResizeObserver` és a `resize` esemény nem futott le (a böngészőpanel a mérés alatt rejtett volt). Kézzel kiváltott `resize` eseményre a kód helyesen számolt: `top` 110 px, `max-height` `calc(100vh − 118px)`, `scroll-padding-top` 110 px. Valódi (látható) böngészőben az M4 mérje.
+
+**A többi lap** (`/kereses`): 375 px-en a fejléc `relative` (változatlan), 1280 px-en `sticky`, 800 px-es görgetés után is 0-n.
+
+### 5.3 Tesztek
+
+*Futtatás: `python eszkozok/teszt_futtat.py --gyors` (WSL `pardes`, WSL-natív `~/pardes/pardes.db`, 895 MB, `epites_ts` 2026-10-14T09:35:00Z — a DT300 szerinti régi adatbázis), a javítókör munkafáján, a commit előtt. Proveniencia: `scope=eszkozok/olvaso_szerver teszt_*.py (--gyors, teszt_szintek.py nélkül) | forras=teszt_futtat.py | ts=2026-10-23`.*
+
+| Fájl | Az M3 után (9ca20b91) | A javítókör után | Megjegyzés |
+|---|---|---|---|
+| `teszt_arculat.py` | 27 / zöld | 27 / zöld | az árnyék-tesztben a `--arnyek` előfordulásainak alsó határa 6 → 5 (a tájoló pirula árnyéka kikerült) |
+| `teszt_bdb_vers_jelentes.py` | 26 / zöld | 26 / zöld | |
+| `teszt_indito.py` | 39 / zöld | 39 / zöld | |
+| `teszt_kereses.py` | 36 / zöld | 36 / zöld | |
+| `teszt_olvaso_szerver.py` | 90 / 2 piros (1 kihagyva) | 90 / 2 piros (1 kihagyva) | a navigációs tesztek az új állapotra: a ⌕ gomb, nincs tájoló, az Aa betűcsalád- és sorszélesség-gombjai, a bejelölt versenkénti kapcsoló, a szerver `versenkent` osztálya; a JS-ben a betű- és szélesség-osztályok, a `versenkent: true` alap, a `scroll-padding-top`; a CSS-ben a két ragadós fejléc, a régi alsó navigációs lap hiánya, a `minmax(460px, .9fr)` rács |
+| `teszt_pilot_aranymintaval.py` | 22 / 2 piros | 22 / 2 piros | |
+| `teszt_tervezo.py` | 49 / zöld | 49 / zöld | 101 elem (a `tajolo` kikerült; a teszt neve `test_101_elem_egyedi_id`), a térkép is 101; minden szelektor talál, a CSP- és a kiadás-őrök zöldek |
+| **összesen** | **289, ebből 4 piros** | **289, ebből 4 piros** (mind a 4 ismert DT299-eset; **új piros: 0**; 1 kihagyott) | |
+
+A 4 piros ugyanaz, mint az M3 után: `TestD2PilotEgyezes.test_1moz_1_25`, `TestD2PilotEgyezes.test_zsolt_22`, `test_heber_csempe_szavankent_a_pilot_szerint`, `test_szamlalok_egyeznek_a_pilottal` (régi adatbázis, DT299). Az első futás (a tesztek frissítése előtt) két újabb pirosat adott, mindkettő a tájoló kivételének számbeli következménye (`--arnyek` 5 < 6; a tervező térképe 101 ≠ 102); a számok frissítése után zöldek. A regiszter-őr (`regiszter_or.py`): 0 hiba (195 osztály a felületen, 96 a regiszterben, 99 kizárva). A `teszt_szintek.py` (DT129) nem futott; a szintek kódja nem változott.
+
+### 5.4 Nyitott pontok
+
+1. **Sorhossz 1600 px-en:** a mockup 60ch-s alapja mellett a szöveg 600 px, a sáv 754 px (154 px üres a szöveg és az oldalblokk között). A „széles” (80ch) kitölti. Ha a felhasználó nagy képernyőn a teljes kitöltést várja alapnak, az a mockuptól eltérő alapérték lenne (a széles alap vagy a sávhoz igazodó korlát): az ő döntése.
+2. **920 px-en az oldalblokk 400 px** (az M3-ban 440): a mockup 900–1100 px közti rácsa ezt adja (`minmax(400px, .8fr)`), a szöveg így 457 px. 1100 px fölött az oldalblokk 460 px-ről nő.
+3. **A rács köze 16 px** (a `space-oszlopkoz` token), a mockupban 20 / 28 px: a token a tervező módban állítható.
+4. **Valódi telefon** (az M4-é): a ragadós sáv és a `100dvh` viselkedése a böngésző címsorának be- és kicsúszásakor, és a sávból lenyíló könyvválasztó görgetése érintéssel.
+5. A 4. szakasz 2. pontja (ragadós fejléc 900 px-től) ezzel megoldott; a 3. pont (a ⚙ új sorba kerül a navigációs lapon) megszűnt, mert a ⚙ a sávban van.

@@ -1154,19 +1154,6 @@ tulajdonsag = [
   { nev = "Fátyol színe", token = "arnyek" },
 ]
 
-[[elem]]
-id = "tajolo"
-nev = "Tájoló pirula („Ez 37 ▾”, 900 px alatt felfelé görgetésre)"
-csoport = "Navigáció"
-szelektor = ".tajolo"
-tulajdonsag = [
-  { nev = "Háttér", token = "panel" },
-  { nev = "Szöveg", token = "fg" },
-  { nev = "Keret", token = "rule" },
-  { nev = "Lekerekítés", token = "radius-pill" },
-  { nev = "Árnyék színe", token = "arnyek" },
-]
-
 # ---------------------------------------------------------------------------------------------------------------------
 # Kizárt osztályok (a regiszter-őr kimenetéből; M0 1.2 indokai szerint)
 # Csak az az osztály áll itt, amely a felületen előfordul, és egyetlen [[elem]] szelektorában sem szerepel (a regiszter-őr
@@ -1273,7 +1260,7 @@ aa-ertek = "a betűméret kijelzése (%); fs-strong-szam, font-mono"
 aa-sor = "az Aa gombsora (A− A+; flex, space-gombsor)"
 aa-sorkoz = "a sorköz választója; a megjelenése a témaváltó (.tema) gombjaié"
 aa-alap = "az Aa „Alapértékek” gombja; a megjelenés a lap-gomb elem"
-versenkent = "állapot-osztály a szövegoszlopon (Aa: versenként új sor; a JS adja); a vers blokk-szintű (literál térköz), saját token nélkül"
+versenkent = "állapot-osztály a szövegoszlopon (Aa: versenként új sor; az alap, a szerver adja, a JS kapcsolja); a vers blokk-szintű (literál térköz), saját token nélkül"
 beall = "a beállítások lenyíló eleme (⚙, details: rétegek, szint, Tervező, téma); a gomb a lap-gomb elem"
 menu-cim = "a lenyíló panelek szakaszcíme (nagybetűs); fs-forrascim, muted tokenek"
 kanon = "a kánon-sáv (SVG; a könyvek szélessége a fejezetszámmal arányos, style attribútum nélkül, CSP)"
@@ -1283,6 +1270,12 @@ legutobb = "a „Legutóbb” sor tárolója (a JS tölti, localStorage); fs-meg
 legutobb-cim = "a „Legutóbb:” felirat; a tároló tokenjeit örökli"
 legutobb-hely = "egy legutóbb megnyitott vers hivatkozása (a JS adja); rule, radius-kiemeles, fs-strong-szam tokenek"
 lap-muv = "a részletek-lap fejsorának műveletsora (a szómód „A vers: … →” hivatkozása; flex-tároló)"
-tajolo-vers = "a pirula versszáma (:5); fs-megjegyzes, muted tokenek"
-tajolo-jel = "a pirula nyila (▾); a pirula-vers tokenjei"
-tajolo-latszik = "a body állapot-horga: a tájoló pirula látszik; saját token nélkül"
+# #134 M3 javítókör (a felhasználó visszajelzése, 2026-10-23; DT-F134n): a tájoló pirula kikerült (elem és horgok); új horgok és
+# állapot-osztályok, a megjelenésük meglévő elemekből és tokenekből
+navlap-gomb = "a ragadós sáv ⌕ gombja (900 px alatt; DT-F134n): a sáv alatt nyitja a keresőt, a kánon-sávot, a jelölést, a „Legutóbb”-ot; a megjelenés a lap-gomb elem"
+aa-betu = "a betűcsalád választója (Source Serif / Noto Serif / IBM Plex Sans; a mockup 4. változata); a megjelenése a témaváltó (.tema) gombjaié"
+aa-szel = "a sorszélesség választója (keskeny / közepes / széles); a megjelenése a témaváltó (.tema) gombjaié"
+betu-noto = "állapot-osztály a szövegoszlopon (Aa: Noto Serif; a JS adja); a betűcsalád a font-gr token (első tagja a Noto Serif)"
+betu-sans = "állapot-osztály a szövegoszlopon (Aa: IBM Plex Sans; a JS adja); a betűcsalád a font-ui token"
+szel-keskeny = "állapot-osztály a szövegoszlopon (Aa: keskeny sor, 48ch; a JS adja); literál, saját token nélkül"
+szel-szeles = "állapot-osztály a szövegoszlopon (Aa: széles sor, 80ch; a JS adja); literál, saját token nélkül"

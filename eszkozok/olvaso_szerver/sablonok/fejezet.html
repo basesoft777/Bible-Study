@@ -33,7 +33,7 @@
    a részletek lapja: 900 px alatt alulról felugró lap, 900 px-től állandó oldalblokk. A lap módja (ures | vers | szo) a szerverről érkezik
    (JS nélkül is működik), a JS (statikus/olvaso.js) töredékekkel vált köztük, bezárás nélkül, előzménylánccal. #}
 <div class="olvaso-elrendezes">
-  <section class="szoveg-oszlop" aria-label="{{ 'Interlineáris szöveg' if il else 'Károli-szöveg' }}">
+  <section class="szoveg-oszlop versenkent" aria-label="{{ 'Interlineáris szöveg' if il else 'Károli-szöveg' }}">
     <div class="fejezetfej">
       {# 900 px alatt a fejezetcím nyitja a navigációs lapot (#134 M2); JS nélkül a #navigacio cél #}
       <h1><a class="navlap-nyito" href="#navigacio" aria-controls="navigacio" title="Navigáció: kereső, könyvek, fejezetek, beállítások">{{ nev }} {{ fej }}</a></h1>
@@ -77,6 +77,4 @@
     <div class="lap-tartalom"{% if mod == 'ures' %} hidden{% endif %}>{% if lap_html %}{{ lap_html }}{% endif %}</div>
   </aside>
 </div>
-{# a tájoló pirula (#134 M2): 900 px alatt felfelé görgetésre átmenetileg megjelenik, a navigációs lapot nyitja #}
-<a class="tajolo" id="tajolo" href="#navigacio" aria-label="Navigáció ({{ kk }} {{ fej }})" data-hely="{{ kk }} {{ fej }}">{{ kk }} {{ fej }}<span class="tajolo-vers" id="tajolo-vers">{{ ':' ~ vers if vers else '' }}</span><span class="tajolo-jel" aria-hidden="true"> ▾</span></a>
 {% endblock %}
