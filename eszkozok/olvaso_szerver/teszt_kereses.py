@@ -337,10 +337,10 @@ class TestKeresesLap(unittest.TestCase):
         self.assertEqual(r.status_code, 302)
         self.assertEqual(r.headers['Location'], '/1Moz/1/4')
 
-    def test_minden_nezetbol_elerheto(self):
-        """A fejléc kereső mezője (Ctrl+K: `.ugras input[name=q]`) minden nézetben a /kereses-re küld."""
-        for nezet in ('olvaso', 'interlinearis', 'munkaasztal'):
-            for u in ('/1Moz/1/3?nezet=' + nezet, '/szo/H0216?nezet=' + nezet, '/?nezet=' + nezet, '/kereses?szo=föld&nezet=' + nezet):
+    def test_minden_retegbol_elerheto(self):
+        """A fejléc kereső mezője (Ctrl+K: `.ugras input[name=q]`) réteggel és nélküle is a /kereses-re küld (#134: nézetek helyett rétegek)."""
+        for reteg in ('', 'il'):
+            for u in ('/1Moz/1/3?reteg=' + reteg, '/szo/H0216?reteg=' + reteg, '/?reteg=' + reteg, '/kereses?szo=föld&reteg=' + reteg):
                 with self.subTest(u=u):
                     h = self.get(u).get_data(as_text=True)
                     self.assertRegex(h, r'<form class="ugras" action="/kereses" method="get" role="search">\s*<input type="text" name="q"')

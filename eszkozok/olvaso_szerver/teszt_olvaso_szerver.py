@@ -366,22 +366,31 @@ class TestLapok(unittest.TestCase):
         self.assertEqual(r.status_code, 200)
         self.assertIn('data-igehely="1Móz 1:4"', h)
 
-    def test_allando_cimek_es_nezetek_ugyanazt_adjak(self):
-        for n in oldalak.NEZETEK:
-            r = self.get('/1Moz/1/4?nezet=' + n)
-            self.assertEqual(r.status_code, 200)
-            self.assertIn('class="nezet-%s"' % n, r.get_data(as_text=True))
+    def test_allando_cimek_retegekkel_es_regi_nezetnevekkel(self):
+        """#134 (DT-F134f): a `?reteg=` és a régi `?nezet=` álnév ugyanazt a lapot adja; a body réteg-horga mutatja a réteget."""
+        for u, horog in (('/1Moz/1/4', 'reteg-nincs'), ('/1Moz/1/4?reteg=il', 'reteg-il'), ('/1Moz/1/4?reteg=', 'reteg-nincs'),
+                         ('/1Moz/1/4?nezet=olvaso', 'reteg-nincs'), ('/1Moz/1/4?nezet=interlinearis', 'reteg-il'),
+                         ('/1Moz/1/4?nezet=munkaasztal', 'reteg-nincs')):
+            r = self.get(u)
+            self.assertEqual(r.status_code, 200, u)
+            self.assertRegex(r.get_data(as_text=True), r'<body class="%s[ "]' % horog, u)
+        self.assertEqual(oldalak.reteg_ervenyes('il,il, x'), 'il')
+        self.assertEqual(oldalak.reteg_ervenyes('<script>'), '')
+        self.assertEqual(oldalak.reteg_ervenyes(None), '')
+        self.assertEqual(oldalak.RETEGEK, ('il',))                       # DT-F134g (c): nincs verslista-réteg
 
     def test_minden_vers_blokk_jelleggel_es_forrassal(self):
         h = self.get('/r/vers/1Moz/1/4').get_data(as_text=True)
         ids = re.findall(r'data-blokk="([^"]+)"', h)
-        self.assertEqual(ids, [b.id for b in blokkok.blokkok_oldalra('vers')])
+        # a fülek sorrendjében (#134 M1, FULBLOKK): Vers · Kereszthiv. · Témák · Motívum; fülön belül a regiszter sorrendje
+        sorrend = [k for k, _ in oldalak.VERS_FULEK]
+        self.assertEqual(ids, sorted([b.id for b in blokkok.blokkok_oldalra('vers')], key=lambda i: sorrend.index(oldalak.FULBLOKK.get(i, 'vers'))))
         self.assertEqual(len(re.findall(r'<h3>[^<]*<span class="jelleg jelleg-', h)), len(ids))      # blokkonként legalább egy címke
         self.assertEqual(len(re.findall(r'<p class="forras">Forrás és licenc: ', h)), len(ids))
 
-    def test_szovegoszlop_jelleg_es_forras_mindharom_nezetben(self):
-        for n in oldalak.NEZETEK:
-            h = self.get('/1Moz/1/4?nezet=' + n).get_data(as_text=True)
+    def test_szovegoszlop_jelleg_es_forras_retegekkel(self):
+        for n in ('', 'il'):
+            h = self.get('/1Moz/1/4?reteg=' + n).get_data(as_text=True)
             i = h.index('class="szoveg-jegy"')
             jegy = h[i:i + 2500]
             self.assertIn('jelleg-modell', jegy, n)
@@ -464,8 +473,9 @@ class TestLapok(unittest.TestCase):
         r = self.get('/1Moz/1/3', headers={'If-None-Match': a.headers['ETag']})
         self.assertEqual(r.status_code, 304)
         self.assertEqual(b.headers['Cache-Control'], 'no-cache')      # belső kiadás
-        # más nézet = más kulcs
+        # más réteg = más kulcs (a régi `?nezet=` álnéven is)
         c = self.get('/1Moz/1/3?nezet=interlinearis')
+        self.assertNotEqual(self.get('/1Moz/1/3?reteg=il').headers['ETag'], a.headers['ETag'])
         self.assertNotEqual(c.headers['ETag'], a.headers['ETag'])
 
     def test_etag_es_gyorsitotar_kulcsa_tartalmazza_a_kod_verziojat(self):
@@ -648,15 +658,15 @@ class TestLapok(unittest.TestCase):
         self.assertEqual(d[3][1][0][0], 3)                                  # er_sorszam = 3
         self.assertEqual(d[10][1][0][0], 11)                                # er_sorszam = 11 (nem 3, ahogy Strong szerinti illesztés adná)
         self.assertEqual(sorted(p[2] for p in d[12][1]), ['H0216', 'H0996'])
-        h = self.get('/1Moz/1/4?nezet=interlinearis').get_data(as_text=True)
+        h = self.get('/1Moz/1/4?reteg=il').get_data(as_text=True)
         self.assertIn('il-szo', h)
         self.assertIn('אֱלֹהִ֛ים', h)
         self.assertIn('אֱלֹהִ֔ים', h)
 
     def test_interlinearis_parositatlan_sor_es_nt(self):
-        h = self.get('/1Moz/1/4?nezet=interlinearis').get_data(as_text=True)
+        h = self.get('/1Moz/1/4?reteg=il').get_data(as_text=True)
         self.assertIn('Párosítatlan eredeti szavak', h)       # pl. az אֶת (H0853)
-        h = self.get('/Mt/1/1?nezet=interlinearis').get_data(as_text=True)
+        h = self.get('/Mt/1/1?reteg=il').get_data(as_text=True)
         self.assertIn('nincs Károli–Strong párosítás', h)        # ÚSZ: nincs token_par: explicit üres, nem néma
 
     def _rokon(self, strong):
@@ -692,49 +702,75 @@ class TestNezetSuti(unittest.TestCase):
     def setUp(self):
         self.c = self.app.test_client()
 
-    def test_nezetvaltas_sutit_hoz_letre(self):
-        r = self.c.get('/nezet/interlinearis?vissza=/1Moz/1')
+    def test_retegkapcsolas_sutit_hoz_letre(self):
+        """#134 (DT-F134f (b)): a réteg sütije csak kapcsoláskor jön létre (a DT146/4 rendje)."""
+        r = self.c.get('/reteg/il/be?vissza=/1Moz/1')
         self.assertEqual(r.status_code, 302)
         self.assertEqual(r.headers['Location'], '/1Moz/1')
+        self.assertEqual(r.headers['Cache-Control'], 'no-store')
         sc = r.headers['Set-Cookie']
-        self.assertTrue(sc.startswith('pardes_nezet=interlinearis'))
-        self.assertIn('SameSite=Lax', sc)
-        self.assertIn('HttpOnly', sc)
-        self.assertIn('Max-Age=31536000', sc)
-        self.assertIn('Path=/', sc)
-        # a következő kérés a megjegyzett nézetet kapja
-        h = self.c.get('/1Moz/1').get_data(as_text=True)
-        self.assertIn('class="nezet-interlinearis"', h)
+        self.assertTrue(sc.startswith('pardes_reteg=il;'), sc)
+        for jegy in ('SameSite=Lax', 'HttpOnly', 'Max-Age=31536000', 'Path=/'):
+            self.assertIn(jegy, sc)
+        # a következő kérés a megjegyzett réteget kapja; a kikapcsolás a sütit üresre írja
+        self.assertIn('<body class="reteg-il"', self.c.get('/1Moz/1').get_data(as_text=True))
+        r = self.c.get('/reteg/il/ki?vissza=/1Moz/1')
+        self.assertTrue(r.headers['Set-Cookie'].startswith('pardes_reteg=;'), r.headers['Set-Cookie'])
+        self.assertIn('<body class="reteg-nincs"', self.c.get('/1Moz/1').get_data(as_text=True))
 
-    def test_suti_csak_nezetvaltaskor_jon_letre(self):
-        for u in ('/', '/1Moz', '/1Moz/1', '/1Moz/1/4', '/szo/H0216', '/statusz', '/ugras?q=H0216', '/1Moz/1?nezet=munkaasztal', '/nincs', '/r/szo/H0216'):
+    def test_suti_csak_kapcsolaskor_jon_letre(self):
+        for u in ('/', '/1Moz', '/1Moz/1', '/1Moz/1/4', '/szo/H0216', '/statusz', '/ugras?q=H0216', '/1Moz/1?nezet=munkaasztal', '/1Moz/1?reteg=il',
+                  '/1Moz/1?ful=info', '/1Moz/1/4?ful=kh', '/nincs', '/r/szo/H0216', '/r/vers/1Moz/1/4', '/reteg/titkos/be', '/nezet/titkos'):
             r = self.c.get(u)
             self.assertNotIn('Set-Cookie', r.headers, u)
 
-    def test_nezet_parameter_felulirja_a_sutit(self):
-        self.c.get('/nezet/munkaasztal')
-        h = self.c.get('/1Moz/1?nezet=interlinearis').get_data(as_text=True)
-        self.assertIn('class="nezet-interlinearis"', h)
-        r = self.c.get('/1Moz/1?nezet=interlinearis')
+    def test_reteg_parameter_felulirja_a_sutit(self):
+        self.c.get('/reteg/il/be')
+        self.assertIn('<body class="reteg-nincs"', self.c.get('/1Moz/1?reteg=').get_data(as_text=True))
+        self.assertIn('<body class="reteg-nincs"', self.c.get('/1Moz/1?nezet=olvaso').get_data(as_text=True))
+        self.assertIn('<body class="reteg-il"', self.c.get('/1Moz/1').get_data(as_text=True))
+        r = self.c.get('/1Moz/1?reteg=')
         self.assertNotIn('Set-Cookie', r.headers)
 
     def test_ismeretlen_ertek_az_alapra_esik(self):
-        self.c.set_cookie('pardes_nezet', 'valami<script>')
+        self.c.set_cookie('pardes_reteg', 'valami<script>')
         h = self.c.get('/1Moz/1').get_data(as_text=True)
-        self.assertIn('class="nezet-olvaso"', h)
+        self.assertIn('<body class="reteg-nincs"', h)
         self.assertNotIn('<script>', h.replace('<script src', ''))
-        h = self.c.get('/1Moz/1?nezet=%3Cscript%3E').get_data(as_text=True)
-        self.assertIn('class="nezet-olvaso"', h)
+        for u in ('/1Moz/1?reteg=%3Cscript%3E', '/1Moz/1?nezet=%3Cscript%3E'):
+            self.assertIn('<body class="reteg-nincs"', self.c.get(u).get_data(as_text=True), u)
+
+    def test_a_regi_nezet_suti_nem_hat(self):
+        """DT-F134f (b): a régi `pardes_nezet` sütit a szerver nem olvassa."""
+        self.c.set_cookie('pardes_nezet', 'interlinearis')
+        self.assertIn('<body class="reteg-nincs"', self.c.get('/1Moz/1').get_data(as_text=True))
+
+    def test_regi_nezet_cim_atiranyit_a_retegre(self):
+        """DT-F134f (b): a `/nezet/<nev>` 302-vel a `vissza` címre, a nézetnek megfelelő réteggel; ismeretlen név: 404."""
+        for nev, ertek in (('interlinearis', 'il'), ('olvaso', ''), ('munkaasztal', '')):
+            r = self.c.get('/nezet/%s?vissza=/1Moz/1' % nev)
+            self.assertEqual(r.status_code, 302, nev)
+            self.assertEqual(r.headers['Location'], '/1Moz/1', nev)
+            self.assertTrue(r.headers['Set-Cookie'].startswith('pardes_reteg=%s;' % ertek), r.headers['Set-Cookie'])
+        self.assertEqual(self.c.get('/nezet/titkos').status_code, 404)
+        self.assertEqual(self.c.get('/reteg/il/talan').status_code, 404)
+        self.assertEqual(self.c.get('/reteg/lista/be').status_code, 404)          # DT-F134g (c): nincs verslista-réteg
 
     def test_vissza_whitelist(self):
         for rossz in ('//evil.com/x', 'http://evil.com', 'https://evil.com', '/\\evil.com'):
-            r = self.c.get('/nezet/olvaso', query_string={'vissza': rossz})
-            self.assertEqual(r.headers['Location'], '/', rossz)
+            for ut in ('/nezet/olvaso', '/reteg/il/be'):
+                r = self.c.get(ut, query_string={'vissza': rossz})
+                self.assertEqual(r.headers['Location'], '/', (ut, rossz))
 
-    def test_nezetvalto_hivatkozasok(self):
+    def test_retegkapcsolo_hivatkozas_es_nincs_nezetvalto(self):
+        """DT294: a nézetváltó kikerült; a helyén a rétegkapcsoló (Interlineáris sor)."""
         h = self.c.get('/1Moz/1').get_data(as_text=True)
-        for n in oldalak.NEZETEK:
-            self.assertIn('href="/nezet/%s?vissza=' % n, h)
+        self.assertIn('href="/reteg/il/be?vissza=/1Moz/1"', h)
+        self.assertNotIn('nezetvalto', h)
+        self.assertNotIn('href="/nezet/', h)
+        self.assertNotIn('Munkaasztal', h)
+        h = self.c.get('/1Moz/1?reteg=il').get_data(as_text=True)
+        self.assertIn('class="reteg-kapcsolo aktiv" href="/reteg/il/ki?vissza=/1Moz/1"', h)
 
 
 @unittest.skipUnless(VAN_DB and VAN_FLASK, 'nincs pardes.db vagy Flask')
@@ -1059,6 +1095,107 @@ class TestD2PilotEgyezes(unittest.TestCase):
 
     def test_zsolt_22(self):
         self._ellenoriz(self._szakasz('Zsolt 22', 'zsolt_22'))
+
+
+@unittest.skipUnless(VAN_DB and VAN_FLASK, 'nincs pardes.db vagy Flask')
+class TestReszletekLapja(unittest.TestCase):
+    """#134 M1: a részletek lapja — egy komponens, szó- és versmód, a fülek blokk-kiosztása (FULBLOKK), üres állapot rövid
+    útmutatóval, forrással és számlálókkal (DT-F134l, nincs fejezet-kalauz), nincs „Másolás forrással” (DT-F134m)."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.app = app_keszit('belso')
+        cls.c = cls.app.test_client()
+
+    def h(self, u):
+        r = self.c.get(u)
+        self.assertEqual(r.status_code, 200, u)
+        return r.get_data(as_text=True)
+
+    def test_ures_allapot_utmutato_forras_szamlalok(self):
+        h = self.h('/1Moz/1')
+        self.assertIn('data-mod="ures"', h)
+        ures = h[h.index('<div class="lap-ures">'):h.index('class="lap-tartalom"')]
+        for resz in ('Hogyan olvasd ezt az oldalt?', 'class="szoveg-jegy"', 'class="cimkek"', 'versszámra', 'aláhúzott szóra'):
+            self.assertIn(resz, ures)
+        self.assertIn('<body class="reteg-nincs">', h)                    # üres állapotban a lap nem nyitott (kis képernyőn rejtett)
+        self.assertNotIn('Fejezet-kalauz', h)
+        self.assertNotIn('Másolás forrással', h)
+        self.assertIn('class="lap-info" href="/1Moz/1?ful=info"', h)
+        h = self.h('/1Moz/1?ful=info')
+        self.assertIn('data-mod="ures"', h)
+        self.assertIn('<body class="reteg-nincs lap-nyitva">', h)
+
+    def test_versmod_fulei_es_blokk_kiosztasa(self):
+        h = self.h('/1Moz/1/3')
+        self.assertIn('data-mod="vers"', h)
+        self.assertIn('<body class="reteg-nincs lap-nyitva">', h)
+        self.assertRegex(h, r'<b class="lap-cim-fo">1Móz 1:3</b> <span class="lap-cim-al">[^<]+</span>')
+        self.assertEqual(re.findall(r'data-vful="(\w+)" aria-selected', h), ['vers', 'kh', 'temak', 'motivum'])
+        self.assertNotIn('Másolás forrással', h)
+        reszek = h.split('<div class="ful-tartalom" data-vful="')[1:]
+        kiosztas = {r.split('"', 1)[0]: set(re.findall(r'data-blokk="([^"]+)"', r)) for r in reszek}
+        self.assertEqual(kiosztas['kh'], {'vers.kh', 'vers.tsk'})
+        self.assertEqual(kiosztas['temak'], {'vers.nave', 'vers.tipnr'})
+        self.assertEqual(kiosztas['motivum'], {'vers.motivum', 'vers.kapcsolat'})
+        self.assertIn('vers.karoli', kiosztas['vers'])
+        self.assertFalse(kiosztas['vers'] & set(oldalak.FULBLOKK))
+        self.assertIn('<div class="ful-tartalom" data-vful="vers">', h)
+        self.assertIn('<div class="ful-tartalom" data-vful="kh" hidden>', h)
+        h = self.h('/1Moz/1/3?ful=kh')
+        self.assertIn('<div class="ful-tartalom" data-vful="kh">', h)
+        self.assertIn('<div class="ful-tartalom" data-vful="vers" hidden>', h)
+        self.assertIn('data-ful="kh"', h)
+        self.assertIn('href="/1Moz/1/3?ful=temak#v3"', h)                 # a fül JS nélkül is működik
+
+    def test_szomod_es_valtas_a_versre(self):
+        h = self.h('/1Moz/1/2?szo=H6440&ful=szo')
+        self.assertIn('data-mod="szo"', h)
+        self.assertIn('data-strong="H6440"', h)
+        self.assertIn('<a class="lap-versre" href="/1Moz/1/2?ful=vers#v2">A vers: 1Móz 1:2 →</a>', h)
+        self.assertRegex(h, r'<b class="lap-cim-fo">H6440 [^<]+</b>')
+        # vers a címben, a szómód kérése (`ful=szo`) nélkül: versmód
+        self.assertIn('data-mod="vers"', self.h('/1Moz/1/2?szo=H6440'))
+        # vers nélkül, a fejezeten: szómód, „A vers” hivatkozás nélkül
+        h = self.h('/1Moz/1?szo=H0216&ful=szo')
+        self.assertIn('data-mod="szo"', h)
+        self.assertNotIn('class="lap-versre"', h)
+        # ismeretlen Strong-szám: üres állapot, nem hiba
+        self.assertIn('data-mod="ures"', self.h('/1Moz/1?szo=H8999&ful=szo'))
+
+    def test_toredekek_fejsor_adata(self):
+        h = self.h('/r/vers/1Moz/1/3')
+        self.assertIn('data-lapcim="1Móz 1:3"', h)
+        self.assertRegex(h, r'data-lapal="[^"]+"')
+        h = self.h('/r/szo/H0216?ig=1Moz/1/3')
+        self.assertIn('data-lapcim="H0216 ', h)
+        self.assertIn('href="/1Moz/1/3?ful=vers#v3">A vers: 1Móz 1:3 →', h)
+        self.assertNotIn('class="lap-versre"', self.h('/r/szo/H0216'))
+
+    def test_a_kliens_lap_logikaja(self):
+        """A JS (statikus/olvaso.js): töredék-betöltés mindkét módra, előzménylánc legfeljebb 20, nincs vágólap (DT-F134m)."""
+        with open(os.path.join(D, 'statikus', 'olvaso.js'), encoding='utf-8') as f:
+            js = f.read()
+        for resz in ("'/r/vers/'", "'/r/szo/'", 'MAX_ELOZMENY = 20', "getElementById('reszletek')", "'lap-nyitva'", "'lap-egesz'", 'Escape'):
+            self.assertIn(resz, js)
+        self.assertNotIn('clipboard', js)
+        with open(os.path.join(D, 'statikus', 'olvaso.css'), encoding='utf-8') as f:
+            css = f.read()
+        self.assertIn('@media (max-width: 899.98px)', css)                # egyetlen töréspont: 900 px (DT293)
+
+    def test_a_statikus_export_az_uj_elrendezessel(self):
+        """DT-F134h (a): az export az új elrendezéssel, rétegek nélkül, ugyanabból a sablonból; a token-blokk is kiíródik."""
+        import export
+        gyar = self.app.extensions['pardes']['gyar']
+        with tempfile.TemporaryDirectory() as tmp:
+            n = export.kiir(gyar, tmp, 'Ruth', gyar.hozz.szint())
+            with open(os.path.join(tmp, 'Ruth', '1.html'), encoding='utf-8') as f:
+                h = f.read()
+            self.assertTrue(os.path.exists(os.path.join(tmp, 'arculat.css')))
+        self.assertEqual(n, 4)
+        self.assertIn('class="olvaso-elrendezes"', h)
+        self.assertIn('data-mod="ures"', h)
+        self.assertIn('<body class="reteg-nincs">', h)
 
 
 if __name__ == '__main__':

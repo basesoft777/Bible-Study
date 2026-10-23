@@ -274,7 +274,7 @@ class TesztLablecSablon(unittest.TestCase):
                                      trim_blocks=True, lstrip_blocks=True)
 
     def _lap(self, **kw):
-        ctx = dict(cim='x', arculat_hash='h', nezet='olvaso', nezetek=[], kiadas='belso', epites_ts='2026-10-14T09:35:00Z', tervezo=False, szint_vezerlo=False)
+        ctx = dict(cim='x', arculat_hash='h', reteg='', il=False, kiadas='belso', epites_ts='2026-10-14T09:35:00Z', tervezo=False, szint_vezerlo=False)
         ctx.update(kw)
         # az alap.html blokk-sablon: a `tartalom` blokk üres marad
         return self.env.get_template('alap.html').render(**ctx)

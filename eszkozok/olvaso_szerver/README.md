@@ -1,6 +1,6 @@
 # Olvasói szerver (#76 OLVASOI_KONKORDANCIA, M2–M3)
 
-Szerveroldali Flask-alkalmazás, amely a `pardes.db`-ből (csak olvasásra) állítja elő a Károli-bibliaszöveg lapjait, három váltható nézettel. Terv: `naplok/OLVASOI_KONKORDANCIA_M0.md`; zárónapló: ugyanott 4.4, és `naplok/OLVASOI_KONKORDANCIA_zaras.md`.
+Szerveroldali Flask-alkalmazás, amely a `pardes.db`-ből (csak olvasásra) állítja elő a Károli-bibliaszöveg lapjait: a Károli-szöveg az alapnézet, a szó és a vers részletei egyetlen lapon (900 px alatt alsó lap, fölötte oldalblokk); a nézetek helyett rétegek (ma egy: az interlineáris sor; #134, DT294). Terv: `naplok/OLVASOI_KONKORDANCIA_M0.md`; zárónapló: ugyanott 4.4, és `naplok/OLVASOI_KONKORDANCIA_zaras.md`.
 
 ## Szerkezet
 
@@ -28,14 +28,14 @@ Szerveroldali Flask-alkalmazás, amely a `pardes.db`-ből (csak olvasásra) áll
 | `teszt_indito.py` | az indító tesztjei (#100): szinkron-döntés, git-olvasás, lábléc, `indit.sh` ideiglenes adatbázisokkal |
 | `m4_meres.py` | az M4 lapidő-mérése a VPS-t utánzó korláttal (`systemd-run --scope`: 1 vCPU, 2 GB, csere nélkül; gunicorn a `gunicorn_conf.py` szerint), a korlát igazolásával, hideg/meleg/LRU idővel; rootként fut a WSL-ben (`drop_caches`), a repóba nem ír. Eredmény: `naplok/OLVASOI_KONKORDANCIA_meres.md` |
 | `teszt_olvaso_szerver.py` | tesztek (unittest) |
-| `teszt_kereses.py` | a keresés tesztjei (M3): értelmezés, független lekérdezéssel összevetett találatok, vershatár, üres eredmény, lapozás, SQL-injekció, XSS, a fejléc mezője minden nézetben, kiadás (authorizer-napló), hozzáférési szint |
+| `teszt_kereses.py` | a keresés tesztjei (M3): értelmezés, független lekérdezéssel összevetett találatok, vershatár, üres eredmény, lapozás, SQL-injekció, XSS, a fejléc mezője réteggel és nélküle, kiadás (authorizer-napló), hozzáférési szint |
 | `teszt_arculat.py` | a token-fájl, a token-blokk és az `/arculat.css` tesztjei (#98 M1) |
 | `teszt_tervezo.py` | a tervező mód tesztjei (#98 M2): regiszter, regiszter-őr, szabálytérkép, értékszűrés, a végpont biztonsága kiadásonként, atomi írás, ETag, szinkron-kimenet, a szelektorok a valódi lapokon |
 | `teszt_pilot_aranymintaval.py` | a kirajzolt blokk-készlet összevetése a #60 pilot aranymintájával (írásjeles szöveg, számlálók, szócsempék, „Ebben a versben”, Nave, blokk-címek); a döntések (DT148–i) tesztjei, az Interlineáris csempék |
 
 ## Útvonalak
 
-`/` kezdőlap · `/<könyv>` · `/<könyv>/<fejezet>` · `/<könyv>/<fejezet>/<vers>` · `/szo/<H0216|G1504>` · `/kereses?q=…` (`tipus`, `mod`) vagy `?strong=` · `?szo=` (`mod=pontos|szoto|szoto_strong`) · `?frazis=` · `?heber=` (`tol`: lapozás) · `/nezet/<olvaso|interlinearis|munkaasztal>?vissza=` · `/ugras?q=` · `/r/szo/<strong>`, `/r/vers/…` (töredékek) · `/arculat.css?v=<hash>` (a token-blokk) · `/statusz` · `/robots.txt`. A könyvkód ASCII-sített (`1Moz`). `.db`/`.tsv` nincs kiszolgálva.
+`/` kezdőlap · `/<könyv>` · `/<könyv>/<fejezet>` · `/<könyv>/<fejezet>/<vers>` (`?ful=szo|vers|kh|temak|motivum|info`: a részletek lapjának módja és füle; `?reteg=il`) · `/szo/<H0216|G1504>` · `/kereses?q=…` (`tipus`, `mod`) vagy `?strong=` · `?szo=` (`mod=pontos|szoto|szoto_strong`) · `?frazis=` · `?heber=` (`tol`: lapozás) · `/reteg/il/<be|ki>?vissza=` (a `pardes_reteg` süti csak itt jön létre) · `/nezet/<olvaso|interlinearis|munkaasztal>?vissza=` (a régi cím: 302 a megfelelő réteggel) · `/ugras?q=` · `/r/szo/<strong>`, `/r/vers/…` (töredékek) · `/arculat.css?v=<hash>` (a token-blokk) · `/statusz` · `/robots.txt`. A könyvkód ASCII-sített (`1Moz`). `.db`/`.tsv` nincs kiszolgálva.
 
 Csak a `belso` kiadásban (más kiadásban 404): `/tervezo/tervezo.js`, `/tervezo/tervezo.css`, `/tervezo/terkep.json` (a regiszter és a szabálytérkép), `/tervezo/kod` (egyszeri kód, csak helyi kérésre), `POST /tervezo/mentes`, `POST /tervezo/visszaallit`.
 
@@ -51,7 +51,7 @@ A `belso` kiadásban a fejlécben, a szintváltó mellett a **Tervező** kapcsol
 
 ## Keresés (M3)
 
-A fejléc mezője (minden nézetben; Ctrl+K) és a `/kereses` lap. A `q` mező a típust a bemenetből ismeri fel: igehely → ugrás; Strong-szám (legfeljebb három: a versek, amelyekben mind előfordul); héber betű → héber frázis; egy magyar szó → szó; több → frázis (2–4 szó). Az állandó cím a típusos alak (`/kereses?szo=föld`).
+A fejléc mezője (Ctrl+K) és a `/kereses` lap. A `q` mező a típust a bemenetből ismeri fel: igehely → ugrás; Strong-szám (legfeljebb három: a versek, amelyekben mind előfordul); héber betű → héber frázis; egy magyar szó → szó; több → frázis (2–4 szó). Az állandó cím a típusos alak (`/kereses?szo=föld`).
 
 - **Magyar szó:** `pontos` (a szóalak, kis/nagybetű nélkül, a `szo_kis` szabálya); `szoto` — az alap (DT146/2): a pontos alak ∪ a szótári alak minden Károli-alakja (`szotari_kereso`, a kötőjeles alakok darabjaival); `szoto_strong` — a (c) mód: ehhez a találatok nem nyelvtani Strong-számaival párosított minden magyar szó. A lap kiírja, mit talált és hogyan (alakok, mezők, Strong-ág). Ismert korlát: N-F94f, N-F94d (a súgó jelzi).
 - **Frázis:** a `token_karoli` egymást követő tokenjei egy Károli-versen belül (DT146/3, M0 E4); a héber frázisnál beírt szavanként egy TAHOT-token, vagy elöl legfeljebb három előtag-betű (ו ה ב כ ל מ ש) + egy token (*בראשית* = ב + ראשית; a TAHOT az előtagokat külön tartja). **Nem talál** a névmási szuffixumos vagy más, nem előtag-betűs tokenhatárt tartalmazó egybeírt alakra (*זרעו*, *למינו*): a TAHOT a szuffixumot is külön tokenként tartja (1Móz 1:11: זרע \| ו, ל \| מינ \| ו), az egybeírt alak csak ott talál, ahol egyetlen token. Ilyenkor tokenenként, szóközzel kell keresni (*זרע ו*, *ל מינ ו*), a tő betűit szóvégi alak nélkül (*מינ*, nem *מין*). A keresés itt szándékosan nem bővül (a felhasználó döntése, 2026-10-18); a súgó ugyanezt mondja, a `teszt_kereses.py` ellenőrzi. A vershatár a Károli-vers határa; a 9 versösszevonásos Károli-versben (`f22/versosszevonas.tsv`: 4Móz 29:39, Ézs 9:20, Ézs 64:1, Péld 11:31, Jób 16:22, Jób 36:33, Hós 1:11, Hós 11:11, Préd 2:26) a héber frázis a belső (MT) vershatáron átléphet, mert a `pardes.db` ezt a határt nem tárolja. Ismert korlát (DT220, eldöntve); a javítás külön tétel (N-F76k: az építő tárolja a belső határt). A Préd 2:26-ban a héber tokenek sorrendje a `pardes.db`-ben eltér a szövegétől (a beolvasztott MT 2:25 a vers végén áll; forrás: a #22 tokenfolyama, `eszkozok/karoli_strong/tokenek.py`), ezért ott a frázis a szövegben nem szomszédos szópárra (a 38. és a 39. token) is találhat; a javítás helye a #22 tokenfolyam (N-F76k).

@@ -140,15 +140,13 @@ class TestRegiszterOr(unittest.TestCase):
 
     def test_a_dinamikus_osztalyok_kibontva(self):
         latott = {e.osztaly for e in self.elof if e.dinamikus}
-        for o in ('nezet-olvaso', 'nezet-interlinearis', 'nezet-munkaasztal', 'par-magas', 'par-alacsony', 'jelleg-forras', 'jelleg-gepi',
+        for o in ('par-magas', 'par-alacsony', 'jelleg-forras', 'jelleg-gepi',
                   'jelleg-modell', 'st-link', 'strong', 'nyelvtani', 'folyamat', 'arany', 'aktiv', 'gor', 'heb'):
             self.assertIn(o, latott, o)
         self.assertIn('kijelolt', {e.osztaly for e in self.elof})               # a {% if %} … {% endif %} közti szöveg
-        try:
-            import oldalak
-        except ImportError:                                    # jinja2 nélkül a nézetlista összevetése kimarad
-            return
-        self.assertEqual(tuple(regiszter_or.NEZETEK), oldalak.NEZETEK)
+        # #134: a nézetek helyett rétegek; a `nezet-` dinamikus előtag megszűnt (a body horga literál: reteg-il / reteg-nincs)
+        self.assertFalse(hasattr(regiszter_or, 'NEZETEK'))
+        self.assertTrue({'reteg-il', 'reteg-nincs', 'lap-nyitva'} <= {e.osztaly for e in self.elof})
 
     @unittest.skipUnless(VAN_DB, 'nincs pardes.db: a par- értékkészlet a tartalék listából')
     def test_a_bizonyossag_az_adatbazisbol(self):
@@ -459,7 +457,7 @@ class TestKiadasok(unittest.TestCase):
 
     def test_csp_nem_lazul_es_nincs_inline(self):
         for c in (self.belso, self.alkalmazas.letrehoz(db_ut=DB, kiadas='nyilvanos').test_client()):
-            for ut in ('/', '/1Moz/1', '/1Moz/1/2?ful=vers&nezet=munkaasztal', '/szo/H0430'):
+            for ut in ('/', '/1Moz/1', '/1Moz/1/2?ful=vers', '/1Moz/1/2?ful=kh&reteg=il', '/1Moz/1?szo=H0430&ful=szo', '/szo/H0430'):
                 r = c.get(ut)
                 self.assertEqual(r.headers['Content-Security-Policy'], self.alkalmazas.CSP)
                 t = r.get_data(as_text=True)
@@ -860,9 +858,9 @@ class TestIlleszto(unittest.TestCase):
 # a lapok, amelyeken a regiszter minden szelektorának találnia kell (a belső kiadás alapértelmezett szintjén)
 LAPOK = (
     '/', '/1Moz', '/nincs-ilyen-konyv',
-    '/1Moz/1?nezet=olvaso', '/1Moz/1?nezet=interlinearis', '/1Moz/1?nezet=munkaasztal',
-    '/1Moz/1/1?szo=H0430&ful=szo&nezet=munkaasztal', '/1Moz/1/2?ful=vers&nezet=munkaasztal',
-    '/Jan/1/1?szo=G3056&ful=szo&nezet=olvaso', '/Jan/1/1?nezet=interlinearis', '/Zsolt/22/2?szo=H0410&ful=szo&nezet=interlinearis',
+    '/1Moz/1', '/1Moz/1?reteg=il', '/1Moz/1?ful=info',
+    '/1Moz/1/1?szo=H0430&ful=szo', '/1Moz/1/2?ful=vers', '/1Moz/1/2?ful=kh', '/1Moz/1/2?ful=temak', '/1Moz/1/2?ful=motivum',
+    '/Jan/1/1?szo=G3056&ful=szo', '/Jan/1/1?reteg=il', '/Zsolt/22/2?szo=H0410&ful=szo&reteg=il',
     '/szo/H0430', '/szo/G3056', '/szo/H7307', '/szo/H6440',
     '/szo/H1254',                       # ige: törzscímek (.torzs h5, .vz-torzs), magyar fordítás nélkül (.allapot.folyamat)
 )

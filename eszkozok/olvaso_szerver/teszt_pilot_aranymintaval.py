@@ -62,9 +62,9 @@ class TestPilotAranymintaval(unittest.TestCase):
     def K(self, ig=None, strong=None):
         return oldalak.Kontekst(self.con, self.kozos, ig=ig, strong=strong)
 
-    def fejezet(self, ig, nezet='olvaso', **kw):
+    def fejezet(self, ig, reteg='', **kw):
         kk, fej, v = igehely_reszek(ig)
-        return self.gyar.fejezet_lap(self.kozos.slug[kk], fej, kw.get('vers'), nezet, self.hozz.szint(), kw.get('szo'), kw.get('ful', 'szo'), '/')
+        return self.gyar.fejezet_lap(self.kozos.slug[kk], fej, kw.get('vers'), reteg, self.hozz.szint(), kw.get('szo'), kw.get('ful', 'szo'), '/')
 
     def vers_panel(self, ig):
         kk, fej, v = igehely_reszek(ig)
@@ -79,37 +79,31 @@ class TestPilotAranymintaval(unittest.TestCase):
                 yield azon, adat, v
 
     # -- 1. Károli-szöveg írásjelekkel -----------------------------------------------------------------------------
-    def test_karoli_szoveg_irasjelekkel_mindharom_nezetben(self):
-        """A fejezet-lap szövege (a `token_karoli` szavai + a `vers.karoli_szoveg` írásjelei) szó szerint a pilot Károli-szövege."""
+    def test_karoli_szoveg_irasjelekkel_retegekkel(self):
+        """A fejezet-lap szövege (a `token_karoli` szavai + a `vers.karoli_szoveg` írásjelei) szó szerint a pilot Károli-szövege:
+        réteg nélkül (folyó szöveg) és az interlineáris réteggel (#134: a munkaasztal nem nézet többé, DT-F134g)."""
         n = 0
-        for nezet in ('olvaso', 'interlinearis', 'munkaasztal'):
+        for nezet in ('', 'il'):
             lapok = {}
             for azon, adat, v in self.versek():
                 kk, fej, vn = igehely_reszek(v['igehely'])
                 if (kk, fej) not in lapok:
                     lapok[(kk, fej)] = self.fejezet(v['igehely'], nezet)
                 h = lapok[(kk, fej)]
-                if nezet == 'interlinearis':
+                if nezet == 'il':
                     m = re.search(r'<div class="il-vers[^"]*" id="v%d">(.*?)<div class="il-szavak">(.*?)</div>\s*(?:</div>|<div class="il-parositatlan">)' % vn, h, re.S)
                     self.assertIsNotNone(m, v['igehely'])
                     szavak = re.findall(r'<span class="hu">(.*?)</span>', m.group(2), re.S)
                     kapott = szoveg(' '.join(szavak))
                     # kötőjel után nincs szóköz a forrásban: az összefűzést a sima szóköz-egységesítés nem tudja visszaadni → szóköz nélkül hasonlítunk
                     self.assertEqual(kapott.replace(' ', ''), szoveg(v['karoli']).replace(' ', ''), '%s (%s)' % (v['igehely'], nezet))
-                elif nezet == 'olvaso':
+                else:
                     # folyó szöveg (DT-F76e): egy bekezdés, a versek <span class="vers"> elemek; a vers szövege a következő versig tart
                     folyo = re.search(r'<p class="folyo" id="szoveg">(.*?)</p>', h, re.S).group(1)
                     darabok = re.split(r'<span class="vers[^"]*" id="v(\d+)">', folyo)
                     vers_html = {int(darabok[i]): darabok[i + 1] for i in range(1, len(darabok), 2)}
                     self.assertIn(vn, vers_html, v['igehely'])
                     kapott = html.unescape(re.sub(r'<[^>]+>', '', re.sub(r'<a class="versszam".*?</a>', '', vers_html[vn], flags=re.S)))
-                    kapott = re.sub(r'\s+', ' ', kapott).strip()
-                    self.assertEqual(kapott, szoveg(v['karoli']), '%s (%s)' % (v['igehely'], nezet))
-                else:
-                    m = re.search(r'<p class="vers[^"]*" id="v%d">(.*?)</p>' % vn, h, re.S)
-                    self.assertIsNotNone(m, v['igehely'])
-                    # a szavak külön elemek, köztük szóközzel; a kötőjeles összetételben nincs (a címkék eltávolításánál nem szúrunk be szóközt)
-                    kapott = html.unescape(re.sub(r'<[^>]+>', '', re.sub(r'<a class="versszam".*?</a>', '', m.group(1), flags=re.S)))
                     kapott = re.sub(r'\s+', ' ', kapott).strip()
                     self.assertEqual(kapott, szoveg(v['karoli']), '%s (%s)' % (v['igehely'], nezet))
                 n += 1
@@ -150,7 +144,7 @@ class TestPilotAranymintaval(unittest.TestCase):
         self.assertRegex(h, r'<span class="cimke arany">BDB magyarul: \d+/\d+</span>')       # nem teljes → arany
         self.assertRegex(h, r'<span class="cimke">Károli–Strong: 57 könyv</span>')
         for jelleg in ('forrásadat', 'gépi feldolgozás', 'modell-kimenet'):
-            self.assertIn(jelleg, szoveg(h[h.index('id="utmutato"'):h.index('class="oszlopok')]))
+            self.assertIn(jelleg, szoveg(h[h.index('id="utmutato"'):h.index('class="lap-tartalom')]))
 
     # -- 3. a héber és az LXX szócsempék ------------------------------------------------------------------------------
     def test_heber_csempe_szavankent_a_pilot_szerint(self):
@@ -367,27 +361,24 @@ class TestPilotAranymintaval(unittest.TestCase):
         self.assertIn('jelleg-forras', blokk)
         self.assertIn('<p class="forras">Forrás és licenc: LXX_tobblet_szakaszok.tsv', blokk)
 
-    def test_DT_F76e_olvasopult_folyo_szoveg_a_masik_ketto_versenkent(self):
-        """DT-F76e (c): az Olvasópult folyó szöveg kis versszámokkal (a pilot elrendezése), az Interlineáris és a Munkaasztal versenként."""
-        h = self.fejezet('1Móz 1:1', 'olvaso')
+    def test_DT_F76e_folyo_szoveg_az_interlinearis_reteg_versenkent(self):
+        """DT-F76e (c): réteg nélkül folyó szöveg kis versszámokkal (a pilot elrendezése), az interlineáris réteggel versenként (#134)."""
+        h = self.fejezet('1Móz 1:1', '')
         self.assertEqual(len(re.findall(r'<p class="folyo"', h)), 1)
         self.assertNotIn('<p class="vers', h)
         self.assertEqual(len(re.findall(r'<span class="vers[ "]', h)), 31)
         self.assertEqual(len(re.findall(r'<a class="versszam"', h)), 31)
-        m = self.fejezet('1Móz 1:1', 'munkaasztal')
-        self.assertEqual(len(re.findall(r'<p class="vers[ "]', m)), 31)
-        self.assertNotIn('class="folyo"', m)
-        i = self.fejezet('1Móz 1:1', 'interlinearis')
+        i = self.fejezet('1Móz 1:1', 'il')
         self.assertEqual(len(re.findall(r'<div class="il-vers[ "]', i)), 31)
         self.assertNotIn('class="folyo"', i)
 
     def test_DT_F76i_alahuzas_kapcsolo_es_tema_valto(self):
-        """DT-F76i (a): „Kapcsolt szavak jelölése” kapcsoló mindhárom nézetben, Rendszer/Világos/Sötét témaváltó; a JS és a CSS kezeli (CSP: nincs inline)."""
-        # az Interlineárisban nincs aláhúzott szó, ott a kapcsoló nem jelenik meg (F76.32, E4)
-        self.assertNotIn('id="jeloles"', self.fejezet('1Móz 1:1', 'interlinearis'))
-        for nezet in ('olvaso', 'interlinearis', 'munkaasztal'):
+        """DT-F76i (a): „Kapcsolt szavak jelölése” kapcsoló a folyó szövegnél, Rendszer/Világos/Sötét témaváltó; a JS és a CSS kezeli (CSP: nincs inline)."""
+        # az interlineáris rétegben nincs aláhúzott szó, ott a kapcsoló nem jelenik meg (F76.32, E4)
+        self.assertNotIn('id="jeloles"', self.fejezet('1Móz 1:1', 'il'))
+        for nezet in ('', 'il'):
             h = self.fejezet('1Móz 1:1', nezet)
-            if nezet != 'interlinearis':
+            if nezet != 'il':
                 self.assertIn('<input type="checkbox" id="jeloles" checked> Kapcsolt szavak jelölése', h, nezet)
             for t in ('rendszer', 'light', 'dark'):
                 self.assertIn('data-tema="%s"' % t, h, nezet)
@@ -406,14 +397,14 @@ class TestPilotAranymintaval(unittest.TestCase):
         self.assertIn(':root:not([data-tema="light"])', blokk)
 
     def test_interlinearis_csempek_a_pilot_heber_csempei_szerint(self):
-        """F76.30: az Interlineáris nézet szavai csempék: magyar szó, alatta az eredeti, átírás, angol tükörfordítás, Strong (a pilot héber-csempe adata)."""
+        """F76.30: az interlineáris réteg szavai csempék: magyar szó, alatta az eredeti, átírás, angol tükörfordítás, Strong (a pilot héber-csempe adata)."""
         n = 0
         for azon, adat in self.pilot.items():
             lapok = {}
             for v in adat['versek']:
                 kk, fej, vn = igehely_reszek(v['igehely'])
                 if (kk, fej) not in lapok:
-                    lapok[(kk, fej)] = self.fejezet(v['igehely'], 'interlinearis')
+                    lapok[(kk, fej)] = self.fejezet(v['igehely'], 'il')
                 h = lapok[(kk, fej)]
                 m = re.search(r'<div class="il-vers[^"]*" id="v%d">(.*?)(?=<div class="il-vers|</section>)' % vn, h, re.S)
                 self.assertIsNotNone(m, v['igehely'])
@@ -426,7 +417,7 @@ class TestPilotAranymintaval(unittest.TestCase):
                 self.assertEqual(csempek, vart, '%s: az Interlineáris csempék nem egyeznek a pilot héber szavaival' % v['igehely'])
                 n += len(csempek)
         self.assertGreater(n, 300)
-        h = self.fejezet('1Móz 1:1', 'interlinearis')
+        h = self.fejezet('1Móz 1:1', 'il')
         self.assertIn('href="/1Moz/1/1?szo=H0430&amp;ful=szo#v1"', h)                # kattintásra a szó-lap
         self.assertIn('class="er nyelvtani"', h)                                        # a nyelvtani elemnek nincs szó-lapja
 
