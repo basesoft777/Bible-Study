@@ -382,7 +382,7 @@ details[open] > summary.morzsa { border-color: var(--accent); }
 .legutobb-hely:hover { border-color: var(--accent); }
 @media (min-width: 900px) {
   /* az egysoros fejléc: a vezérlők egy sorban (a kereső tölti ki a sort), alatta a kánon-sáv, mellette a chip és a „Legutóbb” (legfeljebb 3) */
-  .fejlec.navlap .kanon { flex: 1 1 320px; width: auto; min-width: 0; }
+  .fejlec.navlap .kanon { flex: 1 1 55%; width: auto; min-width: 0; }          /* 55 %-os alap: mindig a vezérlők alá, saját sorba törik */
   .fejlec.navlap .nav-extra { flex: 0 1 auto; flex-wrap: nowrap; min-width: 0; }
   .fejlec.navlap .legutobb { flex-wrap: nowrap; overflow: hidden; }
   .fejlec.navlap .legutobb-hely:nth-of-type(n+4) { display: none; }
