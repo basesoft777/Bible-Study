@@ -100,6 +100,10 @@
       "dark": "#23362f",
       "light": "#e2eee8"
     },
+    "arnyek": {
+      "dark": "#000000",
+      "light": "#000000"
+    },
     "bg": {
       "dark": "#151918",
       "light": "#f5f2ea"
@@ -107,6 +111,38 @@
     "fg": {
       "dark": "#e6e9e4",
       "light": "#1b1a17"
+    },
+    "g-apok": {
+      "dark": "#e39a9a",
+      "light": "#8b3a3a"
+    },
+    "g-bolcs": {
+      "dark": "#c3a6d8",
+      "light": "#7a5a93"
+    },
+    "g-ev": {
+      "dark": "#8cc4b1",
+      "light": "#1f5a49"
+    },
+    "g-kis": {
+      "dark": "#e8c487",
+      "light": "#a0702a"
+    },
+    "g-lev": {
+      "dark": "#9cc3e0",
+      "light": "#3c6e8f"
+    },
+    "g-prof": {
+      "dark": "#e2b25a",
+      "light": "#8a5a00"
+    },
+    "g-tor": {
+      "dark": "#d1a46a",
+      "light": "#6b4f2a"
+    },
+    "g-tort": {
+      "dark": "#7fb2d6",
+      "light": "#2f5d7c"
     },
     "gold": {
       "dark": "#e2b25a",
@@ -137,9 +173,9 @@
     "ang-csempe-vizsz": "8px",
     "blokkkoz": "18px",
     "cimkesor": "6px",
-    "fejlec-fugg": "10px",
-    "fejlec-oszlop": "20px",
-    "fejlec-sor": "12px",
+    "fejlec-fugg": "8px",
+    "fejlec-oszlop": "10px",
+    "fejlec-sor": "6px",
     "gomb-fugg": "4px",
     "gomb-vizsz": "10px",
     "gombsor": "4px",

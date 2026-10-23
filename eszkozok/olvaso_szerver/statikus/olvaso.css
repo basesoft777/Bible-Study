@@ -5,9 +5,12 @@
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--bg); color: var(--fg); }
 a { color: var(--accent); }
-.fejlec { display: flex; flex-wrap: wrap; gap: var(--space-fejlec-sor) var(--space-fejlec-oszlop); align-items: center; padding: var(--space-fejlec-fugg) var(--space-oldal); border-bottom: 1px solid var(--rule); }
-.logo { text-decoration: none; color: var(--fg); }
-.ugras input { width: 240px; max-width: 60vw; padding: 5px 8px; }
+.fejlec { display: flex; flex-wrap: wrap; gap: var(--space-fejlec-sor) var(--space-fejlec-oszlop); align-items: center; padding: var(--space-fejlec-fugg) var(--space-oldal); border-bottom: 1px solid var(--rule); background: var(--panel); }
+.logo { text-decoration: none; color: var(--fg); white-space: nowrap; }
+/* a kereső (#134 M3, a mockup omni-mezője): a sor maradékát kitölti (legalább 280 px-es alapból), 32 px magas mező és ⌕ gomb */
+.ugras { display: flex; align-items: center; gap: var(--space-gombsor); flex: 1 1 280px; min-width: 0; }
+.ugras input { flex: 1; min-width: 0; height: 32px; padding: 0 10px; border: 1px solid var(--rule); border-radius: var(--radius-csempe); background: var(--bg); color: var(--fg); font: var(--fs-sor) var(--font-ui); }
+.ugras input::placeholder { color: var(--muted); }
 .retegvalto { margin-left: auto; display: flex; gap: var(--space-gombsor); }
 .reteg-kapcsolo { padding: var(--space-gomb-fugg) var(--space-gomb-vizsz); border: 1px solid var(--rule); border-radius: var(--radius-csempe); text-decoration: none; }
 .szintvalto { display: flex; gap: var(--space-gombsor); align-items: center; }
@@ -42,9 +45,11 @@ h4 { font-size: var(--fs-kiscim); margin: 10px 0 4px; }
 .il-parositatlan { font-size: var(--fs-il-eredeti-sor); }
 .heb { font-family: var(--font-he); font-size: var(--fs-heb-betu); }
 .gor { font-family: var(--font-gr); }
-.fulek { display: flex; gap: var(--space-gombsor); margin-bottom: 8px; }
-.ful { padding: 3px 10px; border: 1px solid var(--rule); border-radius: var(--radius-csempe) var(--radius-csempe) 0 0; text-decoration: none; }
-.ful.aktiv { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+/* a fülsor (#134 M3, a mockup 9. változata): aláhúzott fülek egy sorban, az aktív alatt accent vonal */
+.fulek { display: flex; gap: 0; margin-bottom: 8px; border-bottom: 1px solid var(--rule); overflow-x: auto; scrollbar-width: none; }
+.ful { flex: 1 0 auto; padding: 9px 8px; margin-bottom: -1px; text-align: center; white-space: nowrap; border-bottom: 2px solid transparent; color: var(--muted); text-decoration: none; font: var(--fs-gomb) var(--font-ui); }
+.ful:hover { color: var(--fg); background: var(--accent-soft); }
+.ful.aktiv { color: var(--fg); border-bottom-color: var(--accent); font-weight: 600; }
 [hidden] { display: none !important; }
 .blokk { margin: 0 0 var(--space-blokkkoz); border-bottom: 1px solid var(--rule); }
 .blokk h3 { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
@@ -222,16 +227,16 @@ h1 { font: 600 var(--fs-oldalcim)/var(--lh-oldalcim) var(--font-text); text-wrap
 .lap-cim { flex: 1; min-width: 0; margin: 0; }
 .lap-cim-fo { display: block; font: 600 var(--fs-igehely) var(--font-text); unicode-bidi: isolate; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .lap-cim-al { display: block; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.lap-gomb { display: inline-flex; align-items: center; justify-content: center; flex: none; min-width: 32px; height: 32px; padding: 0 6px; border: 1px solid var(--rule); border-radius: var(--radius-csempe); background: var(--bg); color: var(--fg); text-decoration: none; cursor: pointer; font: var(--fs-gomb) var(--font-ui); }
-.lap-gomb:hover { border-color: var(--accent); color: var(--accent); }
+.lap-gomb { display: inline-flex; align-items: center; justify-content: center; flex: none; min-width: 32px; height: 32px; padding: 0 8px; border: 1px solid var(--rule); border-radius: var(--radius-csempe); background: transparent; color: var(--fg); text-decoration: none; cursor: pointer; font: var(--fs-gomb) var(--font-ui); }
+.lap-gomb:hover { background: var(--accent-soft); }
+details[open] > summary.lap-gomb, .lap-gomb[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent); }
 .lap-fogo, .lap-teljes { display: none; }
 .lap-versre-sor { margin: 0 0 10px; }
-.reszletek .fulek { flex-wrap: wrap; }
 @media (min-width: 900px) { .lap-info { display: none; } }
 @media (max-width: 899.98px) {
   .olvaso-elrendezes { grid-template-columns: minmax(0, 1fr); }
   .reszletek { position: fixed; left: 0; right: 0; bottom: 0; top: auto; z-index: 44; height: 48vh; max-height: none; margin: 0; overflow: auto; overscroll-behavior: contain;
-    border-radius: var(--radius-panel) var(--radius-panel) 0 0; box-shadow: 0 -10px 30px color-mix(in srgb, var(--fg) 20%, transparent);
+    border-radius: var(--radius-panel) var(--radius-panel) 0 0; box-shadow: 0 -10px 30px color-mix(in srgb, var(--arnyek) 20%, transparent);
     transform: translateY(105%); visibility: hidden; transition: transform .2s ease, height .2s ease, visibility .2s; }
   .lap-nyitva .reszletek { transform: none; visibility: visible; }
   .lap-egesz .reszletek { height: calc(100dvh - 28px); }
@@ -254,7 +259,7 @@ h1 { font: 600 var(--fs-oldalcim)/var(--lh-oldalcim) var(--font-text); text-wrap
 .konyvvalaszto, .aa, .beall { position: relative; }
 .morzsa { display: inline-flex; align-items: center; padding: 3px 10px; border: 1px solid var(--rule); border-radius: var(--radius-csempe); font: 600 var(--fs-alcim) var(--font-text); white-space: nowrap; }
 .morzsa-jel { color: var(--muted); font: var(--fs-megjegyzes) var(--font-ui); }
-.konyvpanel, .aa-menu, .beall-menu { position: absolute; z-index: 30; top: calc(100% + 6px); left: 0; display: grid; gap: 8px; padding: 12px; background: var(--panel); border: 1px solid var(--rule); border-radius: var(--radius-panel); box-shadow: 0 8px 24px color-mix(in srgb, var(--fg) 18%, transparent); }
+.konyvpanel, .aa-menu, .beall-menu { position: absolute; z-index: 30; top: calc(100% + 6px); left: 0; display: grid; gap: 8px; padding: 12px; background: var(--panel); border: 1px solid var(--rule); border-radius: var(--radius-panel); box-shadow: 0 8px 24px color-mix(in srgb, var(--arnyek) 18%, transparent); }
 .konyvpanel { width: min(640px, calc(100vw - 32px)); max-height: 70vh; overflow: auto; }
 .aa-menu, .beall-menu { left: auto; right: 0; width: min(300px, calc(100vw - 32px)); }
 .beall-menu .retegvalto { margin-left: 0; }
@@ -267,7 +272,7 @@ h1 { font: 600 var(--fs-oldalcim)/var(--lh-oldalcim) var(--font-text); text-wrap
 .fejezetgomb:hover, .konyvgomb:hover { background: var(--accent-soft); }
 .fejezetgomb.itt, .konyvgomb.itt { background: var(--accent); border-color: var(--accent); color: var(--bg); }
 .ugras { position: relative; }
-.javaslat { position: absolute; z-index: 31; left: 0; right: 0; top: calc(100% + 4px); min-width: 260px; max-height: 60vh; overflow: auto; display: grid; gap: 1px; padding: 4px; background: var(--panel); border: 1px solid var(--rule); border-radius: var(--radius-panel); box-shadow: 0 8px 24px color-mix(in srgb, var(--fg) 18%, transparent); }
+.javaslat { position: absolute; z-index: 31; left: 0; right: 0; top: calc(100% + 4px); min-width: 260px; max-height: 60vh; overflow: auto; display: grid; gap: 1px; padding: 4px; background: var(--panel); border: 1px solid var(--rule); border-radius: var(--radius-panel); box-shadow: 0 8px 24px color-mix(in srgb, var(--arnyek) 18%, transparent); }
 .javaslat-elem { display: grid; gap: 1px; padding: 6px 8px; border-radius: var(--radius-kiemeles); color: var(--fg); text-decoration: none; }
 .javaslat-elem:hover, .javaslat-elem.aktiv { background: var(--accent-soft); }
 .javaslat-fo { font: 600 var(--fs-sor) var(--font-ui); }
@@ -276,8 +281,10 @@ h1 { font: 600 var(--fs-oldalcim)/var(--lh-oldalcim) var(--font-text); text-wrap
 .aa-ertek { margin-left: 6px; font: var(--fs-strong-szam) var(--font-mono); text-transform: none; letter-spacing: 0; color: var(--fg); }
 .aa-alap { justify-self: start; }
 .kanon { display: block; flex-basis: 100%; width: 100%; height: 16px; }
-.kanon-konyv { fill: color-mix(in srgb, var(--accent) 35%, transparent); }
-.kanon a:hover .kanon-konyv, .kanon a:focus-visible .kanon-konyv, .kanon-konyv.itt { fill: var(--accent); }
+/* a kánon-sáv (#134 M3): a téglalap színe (color) a műfajszín (--g-*, a data-mufaj horgon; lent), a kitöltés ennek 35%-a, rámutatva és a
+   mostani könyvnél a teljes szín; műfaj nélkül (nem 66 könyves lista) az accent */
+.kanon-konyv { color: var(--accent); fill: color-mix(in srgb, currentColor 35%, transparent); }
+.kanon a:hover .kanon-konyv, .kanon a:focus-visible .kanon-konyv, .kanon-konyv.itt { fill: currentColor; }
 .kanon-konyv.itt { stroke: var(--fg); stroke-width: 2px; vector-effect: non-scaling-stroke; }
 .nav-extra { display: flex; flex-basis: 100%; flex-wrap: wrap; gap: 6px 14px; align-items: center; }
 .nav-extra .kapcs { margin: 0; }
@@ -293,7 +300,7 @@ h1 { font: 600 var(--fs-oldalcim)/var(--lh-oldalcim) var(--font-text); text-wrap
 @media (max-width: 899.98px) {
   .fejlec.navlap { position: fixed; left: 0; right: 0; top: auto; bottom: 0; z-index: 46; max-height: 86vh; overflow: auto; overscroll-behavior: contain;
     padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 10px); background: var(--panel); border: 1px solid var(--rule); border-bottom: 0;
-    border-radius: var(--radius-panel) var(--radius-panel) 0 0; box-shadow: 0 -10px 30px color-mix(in srgb, var(--fg) 20%, transparent);
+    border-radius: var(--radius-panel) var(--radius-panel) 0 0; box-shadow: 0 -10px 30px color-mix(in srgb, var(--arnyek) 20%, transparent);
     transform: translateY(105%); visibility: hidden; transition: transform .22s ease, visibility .22s; }
   .navlap-nyitva .fejlec.navlap, html:not(.js-van) .fejlec.navlap:target { transform: none; visibility: visible; }
   .navlap .navlap-fej { display: flex; flex-basis: 100%; order: -2; align-items: center; justify-content: space-between; }
@@ -309,14 +316,75 @@ h1 { font: 600 var(--fs-oldalcim)/var(--lh-oldalcim) var(--font-text); text-wrap
   .fejezetfej h1 { margin-bottom: 4px; }
   .lapozo { margin: 0 0 8px; }
   .lapozo a:not(.lap-info) { display: none; }
-  .navlap-nyitva .hatter, .lap-nyitva.lap-egesz .hatter { display: block; position: fixed; inset: 0; z-index: 43; background: color-mix(in srgb, var(--fg) 30%, transparent); }
+  .navlap-nyitva .hatter, .lap-nyitva.lap-egesz .hatter { display: block; position: fixed; inset: 0; z-index: 43; background: color-mix(in srgb, var(--arnyek) 30%, transparent); }
   .navlap-nyitva .hatter { z-index: 45; }
   .tajolo { display: inline-flex; position: fixed; top: calc(env(safe-area-inset-top, 0px) + 8px); left: 50%; z-index: 30; align-items: baseline; gap: 2px; padding: 5px 14px;
     border: 1px solid var(--rule); border-radius: var(--radius-pill); background: var(--panel); color: var(--fg); text-decoration: none; font: 600 var(--fs-alcim) var(--font-text);
-    box-shadow: 0 4px 14px color-mix(in srgb, var(--fg) 15%, transparent); transform: translate(-50%, -70px); transition: transform .2s ease; }
+    box-shadow: 0 4px 14px color-mix(in srgb, var(--arnyek) 15%, transparent); transform: translate(-50%, -70px); transition: transform .2s ease; }
   .tajolo-latszik .tajolo { transform: translate(-50%, 0); }
   .lap-nyitva .tajolo, .navlap-nyitva .tajolo { transform: translate(-50%, -70px); }
   .tajolo-vers, .tajolo-jel { color: var(--muted); font: var(--fs-megjegyzes) var(--font-ui); }
   .lap-fej { touch-action: none; cursor: grab; }
+}
+/* #134 M3: arculat (DT295, DT296; a mockup 9. változata). A komponensstílusok a tokenrendszeren át: a műfajszínek (--g-*, világos és
+   sötét érték) és az árnyék színe (--arnyek) a konfig/arculat.json-ban, az új elemek a regiszterben (konfig/elemek.toml). A fejléc
+   900 px-től egy sor (logó, morzsa, kereső, ‹ ›, Aa, ⚙), alatta a kánon-sáv a jelölés-chippel és a „Legutóbb”-bal; a gombok 32 px-esek. */
+.morzsa:hover, details[open] > summary.morzsa { background: var(--accent-soft); }
+details[open] > summary.morzsa { border-color: var(--accent); }
+.fejezetgomb { font-family: var(--font-mono); }
+.konyvgomb { padding: 7px 2px; font-weight: 500; }
+/* a műfaji csoport címe: nagybetűs felirat a műfajszín négyzetével (a négyzet színe a data-mufaj horgon, lent) */
+.mufaj-cim { display: flex; align-items: center; gap: 6px; font: 600 var(--fs-forrascim) var(--font-ui); text-transform: uppercase; letter-spacing: .08em; }
+.mufaj-cim::before { content: ""; flex: none; width: 10px; height: 10px; border-radius: var(--radius-szo); color: var(--accent); background: currentColor; }
+/* a műfajszínek: a kánon-sáv téglalapja és a csoport négyzete (color), a könyvgomb kerete és háttere (a szín 40 / 10 %-a, rámutatva
+   28 %, a mostani könyvnél a teljes szín); a Pál- és az általános levelek közös színe a --g-lev */
+.kanon-konyv[data-mufaj="tor"], .mufaj[data-mufaj="tor"] .mufaj-cim::before { color: var(--g-tor); }
+.mufaj[data-mufaj="tor"] .konyvgomb { border-color: color-mix(in srgb, var(--g-tor) 40%, transparent); background: color-mix(in srgb, var(--g-tor) 10%, transparent); }
+.mufaj[data-mufaj="tor"] .konyvgomb:hover, .mufaj[data-mufaj="tor"] .konyvgomb:focus-visible { background: color-mix(in srgb, var(--g-tor) 28%, transparent); }
+.mufaj[data-mufaj="tor"] .konyvgomb.itt { background: var(--g-tor); border-color: var(--g-tor); color: var(--panel); }
+.kanon-konyv[data-mufaj="tort"], .mufaj[data-mufaj="tort"] .mufaj-cim::before { color: var(--g-tort); }
+.mufaj[data-mufaj="tort"] .konyvgomb { border-color: color-mix(in srgb, var(--g-tort) 40%, transparent); background: color-mix(in srgb, var(--g-tort) 10%, transparent); }
+.mufaj[data-mufaj="tort"] .konyvgomb:hover, .mufaj[data-mufaj="tort"] .konyvgomb:focus-visible { background: color-mix(in srgb, var(--g-tort) 28%, transparent); }
+.mufaj[data-mufaj="tort"] .konyvgomb.itt { background: var(--g-tort); border-color: var(--g-tort); color: var(--panel); }
+.kanon-konyv[data-mufaj="bolcs"], .mufaj[data-mufaj="bolcs"] .mufaj-cim::before { color: var(--g-bolcs); }
+.mufaj[data-mufaj="bolcs"] .konyvgomb { border-color: color-mix(in srgb, var(--g-bolcs) 40%, transparent); background: color-mix(in srgb, var(--g-bolcs) 10%, transparent); }
+.mufaj[data-mufaj="bolcs"] .konyvgomb:hover, .mufaj[data-mufaj="bolcs"] .konyvgomb:focus-visible { background: color-mix(in srgb, var(--g-bolcs) 28%, transparent); }
+.mufaj[data-mufaj="bolcs"] .konyvgomb.itt { background: var(--g-bolcs); border-color: var(--g-bolcs); color: var(--panel); }
+.kanon-konyv[data-mufaj="prof"], .mufaj[data-mufaj="prof"] .mufaj-cim::before { color: var(--g-prof); }
+.mufaj[data-mufaj="prof"] .konyvgomb { border-color: color-mix(in srgb, var(--g-prof) 40%, transparent); background: color-mix(in srgb, var(--g-prof) 10%, transparent); }
+.mufaj[data-mufaj="prof"] .konyvgomb:hover, .mufaj[data-mufaj="prof"] .konyvgomb:focus-visible { background: color-mix(in srgb, var(--g-prof) 28%, transparent); }
+.mufaj[data-mufaj="prof"] .konyvgomb.itt { background: var(--g-prof); border-color: var(--g-prof); color: var(--panel); }
+.kanon-konyv[data-mufaj="kis"], .mufaj[data-mufaj="kis"] .mufaj-cim::before { color: var(--g-kis); }
+.mufaj[data-mufaj="kis"] .konyvgomb { border-color: color-mix(in srgb, var(--g-kis) 40%, transparent); background: color-mix(in srgb, var(--g-kis) 10%, transparent); }
+.mufaj[data-mufaj="kis"] .konyvgomb:hover, .mufaj[data-mufaj="kis"] .konyvgomb:focus-visible { background: color-mix(in srgb, var(--g-kis) 28%, transparent); }
+.mufaj[data-mufaj="kis"] .konyvgomb.itt { background: var(--g-kis); border-color: var(--g-kis); color: var(--panel); }
+.kanon-konyv[data-mufaj="ev"], .mufaj[data-mufaj="ev"] .mufaj-cim::before { color: var(--g-ev); }
+.mufaj[data-mufaj="ev"] .konyvgomb { border-color: color-mix(in srgb, var(--g-ev) 40%, transparent); background: color-mix(in srgb, var(--g-ev) 10%, transparent); }
+.mufaj[data-mufaj="ev"] .konyvgomb:hover, .mufaj[data-mufaj="ev"] .konyvgomb:focus-visible { background: color-mix(in srgb, var(--g-ev) 28%, transparent); }
+.mufaj[data-mufaj="ev"] .konyvgomb.itt { background: var(--g-ev); border-color: var(--g-ev); color: var(--panel); }
+.kanon-konyv[data-mufaj="lev"], .mufaj[data-mufaj="pal"] .mufaj-cim::before, .mufaj[data-mufaj="alt"] .mufaj-cim::before { color: var(--g-lev); }
+.mufaj[data-mufaj="pal"] .konyvgomb, .mufaj[data-mufaj="alt"] .konyvgomb { border-color: color-mix(in srgb, var(--g-lev) 40%, transparent); background: color-mix(in srgb, var(--g-lev) 10%, transparent); }
+.mufaj[data-mufaj="pal"] .konyvgomb:hover, .mufaj[data-mufaj="pal"] .konyvgomb:focus-visible, .mufaj[data-mufaj="alt"] .konyvgomb:hover, .mufaj[data-mufaj="alt"] .konyvgomb:focus-visible { background: color-mix(in srgb, var(--g-lev) 28%, transparent); }
+.mufaj[data-mufaj="pal"] .konyvgomb.itt, .mufaj[data-mufaj="alt"] .konyvgomb.itt { background: var(--g-lev); border-color: var(--g-lev); color: var(--panel); }
+.kanon-konyv[data-mufaj="apok"], .mufaj[data-mufaj="apok"] .mufaj-cim::before { color: var(--g-apok); }
+.mufaj[data-mufaj="apok"] .konyvgomb { border-color: color-mix(in srgb, var(--g-apok) 40%, transparent); background: color-mix(in srgb, var(--g-apok) 10%, transparent); }
+.mufaj[data-mufaj="apok"] .konyvgomb:hover, .mufaj[data-mufaj="apok"] .konyvgomb:focus-visible { background: color-mix(in srgb, var(--g-apok) 28%, transparent); }
+.mufaj[data-mufaj="apok"] .konyvgomb.itt { background: var(--g-apok); border-color: var(--g-apok); color: var(--panel); }
+/* a jelölő chip (a mockup pirula-chipje): a kapcsoló a chipben rejtve marad (fókuszálható, a címke kattintásra vált), az állapotot a
+   chip mutatja (bekapcsolva accent keret és accent-soft háttér, a pötty accent) */
+.chip { position: relative; display: inline-flex; align-items: center; gap: 6px; margin: 0; padding: 2px 10px; border: 1px solid var(--rule); border-radius: var(--radius-pill); color: var(--muted); font: var(--fs-megjegyzes) var(--font-ui); cursor: pointer; user-select: none; white-space: nowrap; }
+.chip::before { content: ""; flex: none; width: 8px; height: 8px; border-radius: var(--radius-pill); background: var(--rule); }
+.chip input { position: absolute; width: 1px; height: 1px; margin: 0; opacity: 0; pointer-events: none; }
+.chip:hover { border-color: var(--accent); }
+.chip:has(input:checked) { border-color: var(--accent); color: var(--fg); background: var(--accent-soft); }
+.chip:has(input:checked)::before { background: var(--accent); }
+.chip:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
+.legutobb-hely:hover { border-color: var(--accent); }
+@media (min-width: 900px) {
+  /* az egysoros fejléc: a vezérlők egy sorban (a kereső tölti ki a sort), alatta a kánon-sáv, mellette a chip és a „Legutóbb” (legfeljebb 3) */
+  .fejlec.navlap .kanon { flex: 1 1 320px; width: auto; min-width: 0; }
+  .fejlec.navlap .nav-extra { flex: 0 1 auto; flex-wrap: nowrap; min-width: 0; }
+  .fejlec.navlap .legutobb { flex-wrap: nowrap; overflow: hidden; }
+  .fejlec.navlap .legutobb-hely:nth-of-type(n+4) { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { .reszletek, .fejlec.navlap, .tajolo { transition: none; } }

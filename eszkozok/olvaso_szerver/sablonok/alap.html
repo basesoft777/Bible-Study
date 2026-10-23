@@ -1,10 +1,12 @@
 <!doctype html>
-<html lang="hu">
+<html lang="hu" data-tema="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>{{ cim }} – PaRDeS olvasó</title>
+{# #134 M3 (DT295, DT-F134i (a)): az alap a világos téma; a tárolt választást ez a nem halasztott külső szkript az első rajzolás előtt alkalmazza #}
+<script src="/statikus/tema.js"></script>
 <link rel="stylesheet" href="/statikus/fonts.css">
 <link rel="stylesheet" href="/arculat.css?v={{ arculat_hash }}">
 <link rel="stylesheet" href="/statikus/olvaso.css">
@@ -39,7 +41,7 @@
   {% endif %}
   <form class="ugras" action="/kereses" method="get" role="search">
     <input type="text" name="q" placeholder="1Móz 1:4 · H0216 · világosság · a föld (Ctrl+K)" aria-label="Keresés (Strong-szám, magyar szó vagy frázis, héber frázis) vagy ugrás igehelyre" maxlength="100" autocomplete="off" aria-autocomplete="list" aria-controls="javaslat">
-    <button type="submit">Keresés</button>
+    <button type="submit" class="lap-gomb kereso-gomb" aria-label="Keresés" title="Keresés">⌕</button>
     <div class="javaslat" id="javaslat" role="listbox" aria-label="Javaslatok" hidden></div>
   </form>
   {% if nav %}
@@ -77,8 +79,8 @@
       {% endif %}
       <p class="menu-cim">Téma</p>
       <div class="tema" role="group" aria-label="Színséma">
-        <button type="button" data-tema="rendszer" aria-pressed="true">Rendszer</button>
-        <button type="button" data-tema="light" aria-pressed="false">Világos</button>
+        <button type="button" data-tema="rendszer" aria-pressed="false">Rendszer</button>
+        <button type="button" data-tema="light" aria-pressed="true">Világos</button>
         <button type="button" data-tema="dark" aria-pressed="false">Sötét</button>
       </div>
     </div>
@@ -88,7 +90,7 @@
     {% for k in nav.kanon %}<a href="/{{ k.slug }}" data-kk="{{ k.kk }}" aria-label="{{ k.nev }}, {{ k.nf }} fejezet"><title>{{ k.nev }} · {{ k.nf }} fejezet</title><rect class="kanon-konyv{{ ' itt' if k.itt else '' }}" data-mufaj="{{ k.szin }}" x="{{ k.x }}" y="0" width="{{ k.w }}" height="10"></rect></a>{% endfor %}
   </svg>
   <div class="nav-extra">
-    {% if nav.jeloles %}<div class="jelolo" role="group" aria-label="Jelölések a szövegben"><label class="kapcs"><input type="checkbox" id="jeloles" checked> Kapcsolt szavak jelölése</label></div>{% endif %}
+    {% if nav.jeloles %}<div class="jelolo" role="group" aria-label="Jelölések a szövegben"><label class="kapcs chip"><input type="checkbox" id="jeloles" checked> Kapcsolt szavak jelölése</label></div>{% endif %}
     <div class="legutobb" id="legutobb" hidden><span class="legutobb-cim">Legutóbb:</span></div>
   </div>
   {% endif %}

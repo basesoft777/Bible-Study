@@ -57,16 +57,23 @@ def alap_arculat():
 # a regiszter
 # =====================================================================================================================
 class TestRegiszter(unittest.TestCase):
-    """Az elem-regiszter (`konfig/elemek.toml`) a jóváhagyott M0 1.1 szerint (83 sor), minden token létező és állítható."""
+    """Az elem-regiszter (`konfig/elemek.toml`) a jóváhagyott M0 1.1 szerint (83 sor) és a #134 M3 komponensstílusai (19 elem:
+    a navigáció és a műfajszínek), minden token létező és állítható."""
 
     @classmethod
     def setUpClass(cls):
         cls.a = alap_arculat()
         cls.r = tervezo.Regiszter.betolt(cls.a.adat)
 
-    def test_83_elem_egyedi_id(self):
-        self.assertEqual(len(self.r.elemek), 83)
-        self.assertEqual(len({e['id'] for e in self.r.elemek}), 83)
+    def test_102_elem_egyedi_id(self):
+        self.assertEqual(len(self.r.elemek), 83 + 19)
+        self.assertEqual(len({e['id'] for e in self.r.elemek}), 83 + 19)
+
+    def test_a_mufajszinek_irhatok(self):
+        """#134 M3 (DT296): a nyolc műfajszín (--g-*) és az árnyék színe regisztrált token, tehát a tervező módban írható."""
+        tok = self.r.tokenek()
+        for g in ('g-tor', 'g-tort', 'g-bolcs', 'g-prof', 'g-kis', 'g-ev', 'g-lev', 'g-apok', 'arnyek'):
+            self.assertIn(g, tok)
 
     def test_a_jovahagyott_nevek_mintai(self):
         nev = {e['id']: (e['nev'], e['szelektor']) for e in self.r.elemek}
@@ -385,7 +392,7 @@ class TestSzinkron(unittest.TestCase):
         ki = self.sz.tokens_json(self.a, self.r, self.css, alap, '2026-10-15', 'teszt@0')
         acc = ki['color']['tokens'][0]
         self.assertEqual((acc['name'], acc['value'], acc['usage']), ('accent', self.a.adat['szin']['accent'], 'Régi leírás'))
-        self.assertEqual(len(ki['color']['tokens']), 10)
+        self.assertEqual(len(ki['color']['tokens']), 19)                                # 10 + a #134 M3 műfajszínei (8) és árnyéka
         g0 = ki['type']['groups'][0]
         self.assertEqual(g0['name'], 'Olvasószöveg')
         oc = g0['styles'][0]
@@ -709,7 +716,7 @@ class TestMentes(_Ideiglenes, unittest.TestCase):
         self.assertEqual(r.headers['Cache-Control'], 'no-cache')
         self.assertEqual(self.c.get('/tervezo/terkep.json', headers={'If-None-Match': r.headers['ETag']}).status_code, 304)
         t = r.get_json()
-        self.assertEqual(len(t['regiszter']), 83)
+        self.assertEqual(len(t['regiszter']), 83 + 19)
         self.assertEqual(t['arculat_hash'], self.gyar.arculat.hash)
         self.assertEqual(t['tokenek']['bg'], {'csoport': 'szin', 'tipus': 'szin', 'ertek': {'light': '#f5f2ea', 'dark': '#151918'}, 'irhato': True})
         self.assertFalse(t['tokenek']['fs-csempe-megj']['irhato'])                            # regiszteren kívüli: csak előnézet

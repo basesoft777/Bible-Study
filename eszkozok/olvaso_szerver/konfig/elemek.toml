@@ -2,7 +2,8 @@
 #
 # Forrás: naplok/TERVEZO_MOD_M0.md 1.1 (A–L: 1–73. sor, a felhasználó jóváhagyása 2026-10-14; M: 74–83. sor, 2026-10-15).
 # Egy [[elem]]: id (kisbetű, szám, kötőjel), nev (magyar név), csoport, szelektor (CSS), tulajdonsag (magyar név → token).
-# A token a CSS-változó neve `--` nélkül: szín (bg, panel, fg, muted, rule, accent, accent-soft, gold, gold-soft, low),
+# A token a CSS-változó neve `--` nélkül: szín (bg, panel, fg, muted, rule, accent, accent-soft, gold, gold-soft, low; #134 M3:
+# a műfajszínek g-tor, g-tort, g-bolcs, g-prof, g-kis, g-ev, g-lev, g-apok és az árnyék színe, arnyek),
 # fs-* (betűméret), lh-* (sorköz), space-* (térköz), radius-* (lekerekítés); a token-fájl: konfig/arculat.json.
 # A tulajdonság típusa a tokenből jön (szín → palettaminta, hossz és sorköz → csúszka). Csak az itt szereplő tokenek
 # írhatók a mentési végponton (tervezo.py). A betűcsalád (font-*) nem állítható.
@@ -20,6 +21,7 @@ nev = "Fejléc sávja"
 csoport = "Fejléc"
 szelektor = ".fejlec"
 tulajdonsag = [
+  { nev = "Háttér", token = "panel" },
   { nev = "Alsó vonal színe", token = "rule" },
   { nev = "Függőleges belső térköz", token = "space-fejlec-fugg" },
   { nev = "Oldalmargó", token = "space-oldal" },
@@ -339,14 +341,15 @@ tulajdonsag = [
 # a munkaasztal verslistájának helyén (#134, DT-F134g (c): nincs verslista): a részletek lapjának fejsor-gombjai (‹, ⤢, ✕)
 [[elem]]
 id = "lap-gomb"
-nev = "A részletek lapjának gombja (‹ ⤢ ✕)"
+nev = "Ikongomb, 32 px (a fejléc ‹ › Aa ⚙ ⌕ gombjai, a részletek lapjának ‹ ⤢ ✕-e)"
 csoport = "Jobb oldali panel"
 szelektor = ".lap-gomb"
 tulajdonsag = [
   { nev = "Betűméret", token = "fs-gomb" },
   { nev = "Keret", token = "rule" },
   { nev = "Lekerekítés", token = "radius-csempe" },
-  { nev = "Háttér", token = "bg" },
+  { nev = "Háttér rámutatva és nyitva", token = "accent-soft" },
+  { nev = "Keret nyitva", token = "accent" },
   { nev = "Szöveg", token = "fg" },
 ]
 
@@ -372,8 +375,9 @@ nev = "Fül („Szó” / „Vers részletei”)"
 csoport = "Jobb oldali panel"
 szelektor = ".ful"
 tulajdonsag = [
-  { nev = "Keret", token = "rule" },
-  { nev = "Lekerekítés", token = "radius-csempe" },
+  { nev = "Szöveg", token = "muted" },
+  { nev = "Betűméret", token = "fs-gomb" },
+  { nev = "Háttér rámutatva", token = "accent-soft" },
 ]
 
 [[elem]]
@@ -382,8 +386,8 @@ nev = "Fül (aktív)"
 csoport = "Jobb oldali panel"
 szelektor = ".ful.aktiv"
 tulajdonsag = [
-  { nev = "Háttér", token = "accent" },
-  { nev = "Szöveg", token = "bg" },
+  { nev = "Aláhúzás", token = "accent" },
+  { nev = "Szöveg", token = "fg" },
 ]
 
 [[elem]]
@@ -957,6 +961,213 @@ tulajdonsag = [
 ]
 
 # ---------------------------------------------------------------------------------------------------------------------
+# N. Navigáció és arculat (#134 M3; DT295, DT296; a mockup 9. változata): a navigáció komponensei (M2) és a műfajszínek (--g-*),
+# a felugró elemek árnyéka (arnyek). Az M2-ben a [kizart] táblán álló osztályok közül ezek a komponensstílusok kerültek ide.
+# ---------------------------------------------------------------------------------------------------------------------
+[[elem]]
+id = "kereso"
+nev = "Kereső mezője (a fejlécben és a navigációs lapon)"
+csoport = "Navigáció"
+szelektor = ".ugras input"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-sor" },
+  { nev = "Háttér", token = "bg" },
+  { nev = "Szöveg", token = "fg" },
+  { nev = "Helyőrző szöveg", token = "muted" },
+  { nev = "Keret", token = "rule" },
+  { nev = "Lekerekítés", token = "radius-csempe" },
+]
+
+[[elem]]
+id = "morzsa"
+nev = "Igehely-morzsa (a könyvválasztó nyitója: „Ez 37 ▾”)"
+csoport = "Navigáció"
+szelektor = ".morzsa"
+tulajdonsag = [
+  { nev = "Keret", token = "rule" },
+  { nev = "Lekerekítés", token = "radius-csempe" },
+  { nev = "Háttér rámutatva és nyitva", token = "accent-soft" },
+  { nev = "Keret nyitva", token = "accent" },
+]
+
+[[elem]]
+id = "felugro-panel"
+nev = "Felugró panel (könyvválasztó, Aa, ⚙, a kereső javaslatai)"
+csoport = "Navigáció"
+szelektor = ".konyvpanel, .aa-menu, .beall-menu, .javaslat"
+tulajdonsag = [
+  { nev = "Háttér", token = "panel" },
+  { nev = "Keret", token = "rule" },
+  { nev = "Lekerekítés", token = "radius-panel" },
+  { nev = "Árnyék színe", token = "arnyek" },
+]
+
+[[elem]]
+id = "fejezetgomb"
+nev = "Fejezet gombja a könyvválasztó rácsában"
+csoport = "Navigáció"
+szelektor = ".fejezetgomb"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-gomb" },
+  { nev = "Keret", token = "rule" },
+  { nev = "Lekerekítés", token = "radius-kis-csempe" },
+  { nev = "Háttér rámutatva", token = "accent-soft" },
+]
+
+[[elem]]
+id = "konyvgomb"
+nev = "Könyv gombja a könyvválasztóban (a keret és a háttér a műfajszínből)"
+csoport = "Navigáció"
+szelektor = ".konyvgomb"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-gomb" },
+  { nev = "Szöveg", token = "fg" },
+  { nev = "Lekerekítés", token = "radius-kis-csempe" },
+  { nev = "A mostani könyv szövege", token = "panel" },
+]
+
+[[elem]]
+id = "mufaj-cim"
+nev = "Műfaji csoport címe a könyvválasztóban (a négyzet a műfajszín)"
+csoport = "Navigáció"
+szelektor = ".mufaj-cim"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-forrascim" },
+  { nev = "Szín", token = "muted" },
+  { nev = "A négyzet lekerekítése", token = "radius-szo" },
+]
+
+[[elem]]
+id = "mufaj-tor"
+nev = "Műfajszín: Törvény (kánon-sáv, könyvválasztó)"
+csoport = "Navigáció"
+szelektor = '.kanon-konyv[data-mufaj="tor"], .mufaj[data-mufaj="tor"]'
+tulajdonsag = [
+  { nev = "Műfajszín", token = "g-tor" },
+]
+
+[[elem]]
+id = "mufaj-tort"
+nev = "Műfajszín: Történeti könyvek (kánon-sáv, könyvválasztó)"
+csoport = "Navigáció"
+szelektor = '.kanon-konyv[data-mufaj="tort"], .mufaj[data-mufaj="tort"]'
+tulajdonsag = [
+  { nev = "Műfajszín", token = "g-tort" },
+]
+
+[[elem]]
+id = "mufaj-bolcs"
+nev = "Műfajszín: Költői és bölcsességi könyvek (kánon-sáv, könyvválasztó)"
+csoport = "Navigáció"
+szelektor = '.kanon-konyv[data-mufaj="bolcs"], .mufaj[data-mufaj="bolcs"]'
+tulajdonsag = [
+  { nev = "Műfajszín", token = "g-bolcs" },
+]
+
+[[elem]]
+id = "mufaj-prof"
+nev = "Műfajszín: Nagypróféták (kánon-sáv, könyvválasztó)"
+csoport = "Navigáció"
+szelektor = '.kanon-konyv[data-mufaj="prof"], .mufaj[data-mufaj="prof"]'
+tulajdonsag = [
+  { nev = "Műfajszín", token = "g-prof" },
+]
+
+[[elem]]
+id = "mufaj-kis"
+nev = "Műfajszín: Kispróféták (kánon-sáv, könyvválasztó)"
+csoport = "Navigáció"
+szelektor = '.kanon-konyv[data-mufaj="kis"], .mufaj[data-mufaj="kis"]'
+tulajdonsag = [
+  { nev = "Műfajszín", token = "g-kis" },
+]
+
+[[elem]]
+id = "mufaj-ev"
+nev = "Műfajszín: Evangéliumok és Apostolok Cselekedetei (kánon-sáv, könyvválasztó)"
+csoport = "Navigáció"
+szelektor = '.kanon-konyv[data-mufaj="ev"], .mufaj[data-mufaj="ev"]'
+tulajdonsag = [
+  { nev = "Műfajszín", token = "g-ev" },
+]
+
+[[elem]]
+id = "mufaj-lev"
+nev = "Műfajszín: Pál levelei és az általános levelek (kánon-sáv, könyvválasztó)"
+csoport = "Navigáció"
+szelektor = '.kanon-konyv[data-mufaj="lev"], .mufaj[data-mufaj="pal"], .mufaj[data-mufaj="alt"]'
+tulajdonsag = [
+  { nev = "Műfajszín", token = "g-lev" },
+]
+
+[[elem]]
+id = "mufaj-apok"
+nev = "Műfajszín: Jelenések (kánon-sáv, könyvválasztó)"
+csoport = "Navigáció"
+szelektor = '.kanon-konyv[data-mufaj="apok"], .mufaj[data-mufaj="apok"]'
+tulajdonsag = [
+  { nev = "Műfajszín", token = "g-apok" },
+]
+
+[[elem]]
+id = "chip"
+nev = "Jelölő chip (pirula: „Kapcsolt szavak jelölése”)"
+csoport = "Navigáció"
+szelektor = ".chip"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-megjegyzes" },
+  { nev = "Szöveg", token = "muted" },
+  { nev = "Keret", token = "rule" },
+  { nev = "Lekerekítés", token = "radius-pill" },
+  { nev = "Keret bekapcsolva", token = "accent" },
+  { nev = "Háttér bekapcsolva", token = "accent-soft" },
+]
+
+[[elem]]
+id = "navlap"
+nev = "Navigációs lap (900 px alatt alulról felugró fejléc)"
+csoport = "Navigáció"
+szelektor = ".fejlec.navlap"
+tulajdonsag = [
+  { nev = "Háttér", token = "panel" },
+  { nev = "Keret", token = "rule" },
+  { nev = "Lekerekítés", token = "radius-panel" },
+  { nev = "Árnyék színe", token = "arnyek" },
+]
+
+[[elem]]
+id = "reszletek-lap"
+nev = "A részletek alsó lapja (900 px alatt)"
+csoport = "Navigáció"
+szelektor = ".reszletek"
+tulajdonsag = [
+  { nev = "Lekerekítés", token = "radius-panel" },
+  { nev = "Árnyék színe", token = "arnyek" },
+]
+
+[[elem]]
+id = "hatter"
+nev = "Fátyol a navigációs lap és a teljes nézetű részletek-lap mögött"
+csoport = "Navigáció"
+szelektor = ".hatter"
+tulajdonsag = [
+  { nev = "Fátyol színe", token = "arnyek" },
+]
+
+[[elem]]
+id = "tajolo"
+nev = "Tájoló pirula („Ez 37 ▾”, 900 px alatt felfelé görgetésre)"
+csoport = "Navigáció"
+szelektor = ".tajolo"
+tulajdonsag = [
+  { nev = "Háttér", token = "panel" },
+  { nev = "Szöveg", token = "fg" },
+  { nev = "Keret", token = "rule" },
+  { nev = "Lekerekítés", token = "radius-pill" },
+  { nev = "Árnyék színe", token = "arnyek" },
+]
+
+# ---------------------------------------------------------------------------------------------------------------------
 # Kizárt osztályok (a regiszter-őr kimenetéből; M0 1.2 indokai szerint)
 # Csak az az osztály áll itt, amely a felületen előfordul, és egyetlen [[elem]] szelektorában sem szerepel (a regiszter-őr
 # mindkettőt ellenőrzi). Az állapot- és szövegrész-osztályok, amelyek egy szelektorban szerepelnek (pl. aktiv, kijelolt, he,
@@ -965,7 +1176,6 @@ tulajdonsag = [
 [kizart]
 # az olvasó elrendezése (#134 M1): a szöveg és a részletek lapja; elrendezés-szerkesztés nincs a hatókörben
 olvaso-elrendezes = "a fejezet-lap rács-tárolója (szöveg + részletek lapja, 900 px alatt egy oszlop); az oszlopköz (space-oszlopkoz) elrendezési érték, a tartalékon át állítható"
-reszletek = "a részletek lapja (900 px alatt alsó lap, fölötte oldalblokk); a megjelenése a jobb oldali panel (.jobb-oszlop) tokenjeiből"
 # a részletek lapjának szerkezeti részei (#134 M1); a gombok megjelenése a lap-gomb elem, a háttér és a vonal a jobb oldali panel tokenjei
 lap-fej = "a lap fejsorának tárolója (ragadós, flex); a háttér (panel) és a vonal (rule) a jobb oldali panel tokenjei"
 lap-fogo = "a lap fogantyúja (csak 900 px alatt, díszítő sáv); a színe a rule token"
@@ -1034,14 +1244,13 @@ nincs-jeloles = "állapot-osztály a szövegoszlopon (az olvaso.js adja, a „je
 talalatok = "a keresőlap találatlistájának tárolója (számozott lista, rács); a köz a blokkköz (space-blokkkoz) tokenje"
 talalat = "egy találat (igehely + Károli-vers, a talált szavak <mark>-kal); a betű a Károli-panel (fs-karoli-panel, lh-karoli-panel), a kiemelés az accent-soft tokenje"
 # űrlap és a tervező mód saját vezérlője
-ugras = "a gyorsugrás űrlap: böngésző-alapértelmezett mező, token nélkül"
 tervezo-kapcsolo = "a tervező mód saját kapcsolója (csak belso kiadás); a megjelenése a tervezo.css-ből, nem az arculatból (a tervező nem állítja önmagát)"
 tz-nem = "a tervező saját címkéjének állapota (nem regisztrált elem; a tervezo.js adja, csak belso kiadás); a tervezo.css-ből, nem az arculatból"
 tz-hiba = "a tervező saját üzenetsorának hibaállapota (a tervezo.js adja, csak belso kiadás); a tervezo.css-ből, nem az arculatból"
 # a navigáció (#134 M2): 900 px alatt a fejezet-lap fejléce navigációs lap (a mockup 9. változata). Szerkezeti tárolók és
 # JavaScript-horgok; a megjelenésük meglévő tokenekből (panel, rule, accent, accent-soft, muted, fg; fs-*, radius-*), a tartalékon
-# át állíthatók. Saját regiszter-elemet az M2 nem vesz fel (az elemszám 83 marad); a komponensstílusok regisztrálása az M3 (arculat).
-navlap = "a fejezet-lap fejlécének horga: 900 px alatt navigációs lap (alulról felugró, panel/rule tokenek, radius-panel); fölötte a fejléc"
+# át állíthatók. A komponensstílusok (kereső, morzsa, felugró panel, fejezet- és könyvgomb, műfajszínek, chip, navigációs lap,
+# részletek-lap, fátyol, tájoló pirula) az M3-ban regisztrált elemek (N. csoport); itt a szerkezeti tárolók és horgok maradnak.
 navlap-fej = "a navigációs lap fejsora (Navigáció + ✕; csak 900 px alatt, flex-tároló)"
 navlap-cim = "a navigációs lap címe („Navigáció”); a betű az alcím tokenje (fs-alcim)"
 navlap-zar = "JavaScript-horog: a navigációs lap ✕-e (JS nélkül `#` hivatkozás); a megjelenés a lap-gomb elem"
@@ -1049,42 +1258,31 @@ navlap-nyito = "JavaScript-horog: a fejezetcím hivatkozása (#navigacio); 900 p
 navlap-nyitva = "a body állapot-horga: a navigációs lap nyitva (900 px alatt); saját token nélkül"
 js-van = "a html horga: a JS fut (a navigációs lap :target-tartaléka ilyenkor nem él); CSS-szabály csak a tartalékon"
 konyvvalaszto = "a könyvválasztó lenyíló eleme (details); a megjelenés a gyermek-elemeken"
-morzsa = "a könyvválasztó nyitója (igehely-morzsa: könyvkód + fejezet); a keret (rule), lekerekítés (radius-csempe), betű (fs-alcim) tokenekből"
 morzsa-jel = "a morzsa nyila (▾); a megjegyzés színe és mérete (muted, fs-megjegyzes)"
-konyvpanel = "a könyvválasztó lenyíló panelje (rács); panel, rule, radius-panel tokenek"
 fejezetracs-cim = "a fejezetrács címe (a könyv neve); a megjegyzés tokenjei (fs-megjegyzes, muted)"
 fejezetracs = "a könyv fejezeteinek rácsa (tároló); a gomb a fejezetgomb"
-fejezetgomb = "egy fejezet gombja a rácsban (hivatkozás); rule, radius-kis-csempe, fs-gomb tokenek; a JS is rajzolja"
-mufaj = "a könyvválasztó műfaji csoportja (tároló; a műfajszín az M3-ban, data-mufaj)"
-mufaj-cim = "a műfaji csoport címe; a megjegyzés tokenjei (fs-megjegyzes, muted)"
 konyvracs = "a műfaj könyveinek rácsa (tároló); a gomb a konyvgomb"
-konyvgomb = "egy könyv gombja a könyvválasztóban (hivatkozás a könyv lapjára; JS-sel helyben a fejezetrács); a fejezetgomb tokenjei"
-itt = "állapot-osztály: a mostani könyv, fejezet (accent háttér) vagy a kánon-sávban a mostani könyv (accent kitöltés, fg keret); saját token nélkül"
-javaslat = "a kereső javaslatlistájának tárolója (DT-F134k (b)); panel, rule, radius-panel tokenek"
+itt = "állapot-osztály: a mostani fejezet (accent háttér), könyv (a műfajszín háttere) vagy a kánon-sávban a mostani könyv (a műfajszín teljes kitöltése, fg keret); saját token nélkül"
+kereso-gomb = "a kereső ⌕ gombja (submit); a megjelenés a lap-gomb elem (ikongomb)"
 javaslat-elem = "egy javaslat (hivatkozás; a JS adja); a kiemelése az accent-soft, a lekerekítése a radius-kiemeles token"
 javaslat-fo = "a javaslat fő sora (igehely); fs-sor token"
 javaslat-al = "a javaslat alsora (a könyv neve); fs-megjegyzes, muted tokenek"
 lepteto = "az előző/következő fejezet gombjainak sora (‹ ›; flex, space-gombsor); a gomb a lap-gomb elem"
 aa = "a szövegbeállítások lenyíló eleme (Aa, details); a gomb a lap-gomb elem"
-aa-menu = "a szövegbeállítások panelje; panel, rule, radius-panel tokenek"
 aa-ertek = "a betűméret kijelzése (%); fs-strong-szam, font-mono"
 aa-sor = "az Aa gombsora (A− A+; flex, space-gombsor)"
 aa-sorkoz = "a sorköz választója; a megjelenése a témaváltó (.tema) gombjaié"
 aa-alap = "az Aa „Alapértékek” gombja; a megjelenés a lap-gomb elem"
 versenkent = "állapot-osztály a szövegoszlopon (Aa: versenként új sor; a JS adja); a vers blokk-szintű (literál térköz), saját token nélkül"
 beall = "a beállítások lenyíló eleme (⚙, details: rétegek, szint, Tervező, téma); a gomb a lap-gomb elem"
-beall-menu = "a beállítások panelje; panel, rule, radius-panel tokenek"
 menu-cim = "a lenyíló panelek szakaszcíme (nagybetűs); fs-forrascim, muted tokenek"
 kanon = "a kánon-sáv (SVG; a könyvek szélessége a fejezetszámmal arányos, style attribútum nélkül, CSP)"
-kanon-konyv = "egy könyv téglalapja a kánon-sávban; a kitöltés az accent tokenből (a műfajszínek az M3-ban, data-mufaj)"
 nav-extra = "a navigáció kiegészítő sora (jelölések, Legutóbb; flex-tároló)"
 jelolo = "a jelölő kapcsolók tárolója (a mockup chip-sora; ma egy kapcsoló, a kapcsolt szavak jelölése)"
 legutobb = "a „Legutóbb” sor tárolója (a JS tölti, localStorage); fs-megjegyzes, muted tokenek"
 legutobb-cim = "a „Legutóbb:” felirat; a tároló tokenjeit örökli"
 legutobb-hely = "egy legutóbb megnyitott vers hivatkozása (a JS adja); rule, radius-kiemeles, fs-strong-szam tokenek"
-hatter = "a fátyol a navigációs lap és a teljes nézetű részletek-lap mögött (900 px alatt); a színe az fg tokenből (color-mix)"
 lap-muv = "a részletek-lap fejsorának műveletsora (a szómód „A vers: … →” hivatkozása; flex-tároló)"
-tajolo = "a tájoló pirula (900 px alatt, felfelé görgetésre); panel, rule, fg tokenek, radius-pill, fs-alcim"
 tajolo-vers = "a pirula versszáma (:5); fs-megjegyzes, muted tokenek"
 tajolo-jel = "a pirula nyila (▾); a pirula-vers tokenjei"
 tajolo-latszik = "a body állapot-horga: a tájoló pirula látszik; saját token nélkül"

@@ -35,6 +35,11 @@ DB = os.environ.get('PARDES_DB') or (GY + 'pardes.db')
 VAN_DB = os.path.exists(DB)
 CSS = os.path.join(D, 'statikus', 'olvaso.css')
 SZINEK = ('bg', 'panel', 'fg', 'muted', 'rule', 'accent', 'accent-soft', 'gold', 'gold-soft', 'low')
+# #134 M3 (DT296): a kánon-sáv és a könyvválasztó műfajszínei (a mockup 9. változatának értékei) és a felugró elemek árnyéka
+MUFAJSZINEK = {'g-tor': ('#6b4f2a', '#d1a46a'), 'g-tort': ('#2f5d7c', '#7fb2d6'), 'g-bolcs': ('#7a5a93', '#c3a6d8'),
+               'g-prof': ('#8a5a00', '#e2b25a'), 'g-kis': ('#a0702a', '#e8c487'), 'g-ev': ('#1f5a49', '#8cc4b1'),
+               'g-lev': ('#3c6e8f', '#9cc3e0'), 'g-apok': ('#8b3a3a', '#e39a9a')}
+SZINEK = SZINEK + tuple(MUFAJSZINEK) + ('arnyek',)
 
 
 def css_szoveg():
@@ -178,16 +183,57 @@ class TestStiluslapEsTokenBlokk(unittest.TestCase):
         gyoker = b[b.index(':root {'):b.index('}')]
         for n in SZINEK:
             self.assertIn('--%s: %s;' % (n, a.adat['szin'][n]['light']), gyoker)
-            self.assertEqual(b.count('--%s: %s;' % (n, a.adat['szin'][n]['dark'])), 2, n)    # mindkét sötét blokkban
+            azonos = a.adat['szin'][n]['dark'] == a.adat['szin'][n]['light']                 # pl. arnyek: mindkét témában fekete
+            self.assertEqual(b.count('--%s: %s;' % (n, a.adat['szin'][n]['dark'])), 2 + azonos, n)    # mindkét sötét blokkban
         self.assertIn('--fs-karoli-folyo: 1.25rem;', gyoker)
         self.assertIn('--lh-csempe: 1.3;', gyoker)
         self.assertIn('--space-he-csempe-min: 72px;', gyoker)
         self.assertIn('--radius-pill: 999px;', gyoker)
         self.assertIn('--font-he: "Frank Ruhl Libre"', gyoker)
-        self.assertEqual(len(re.findall(r'^  --', b, re.M)), 10 + 5 + 54 + 19 + 35 + 6)
+        self.assertEqual(len(re.findall(r'^  --', b, re.M)), 19 + 5 + 54 + 19 + 35 + 6)
 
     def test_a_token_blokk_determinisztikus(self):
         self.assertEqual(arculat.Arculat.betolt().css, arculat.Arculat.betolt().css)
+
+
+class TestMufajszinekEsTema(unittest.TestCase):
+    """#134 M3: a műfajszínek a token-fájlban (világos és sötét érték, DT296), a stíluslap a `data-mufaj` horgokra köti őket; a téma
+    alapja a világos, a tárolt választást egy külső, nem halasztott szkript alkalmazza (DT295, DT-F134i (a))."""
+
+    def test_a_mufajszinek_a_mockup_ertekeivel(self):
+        a = arculat.Arculat.betolt().adat
+        for n, (vil, sot) in MUFAJSZINEK.items():
+            self.assertEqual(a['szin'][n], {'light': vil, 'dark': sot}, n)
+        self.assertEqual(a['szin']['arnyek'], {'light': '#000000', 'dark': '#000000'})
+
+    def test_minden_mufaj_horog_szinhez_kotve(self):
+        """Minden műfaj-kód (`oldalak.MUFAJOK`) a könyvválasztóban, és minden szín-kód a kánon-sávban saját szabályt kap; a stíluslap
+        tokenje csak hivatkozás (a színérték egyetlen forrása a token-fájl)."""
+        import oldalak
+        css = css_szoveg()
+        for kod, _, _, szin in oldalak.MUFAJOK:
+            self.assertRegex(css, r'\.mufaj\[data-mufaj="%s"\] \.konyvgomb[ ,][^}]*var\(--g-%s\)' % (kod, szin), kod)
+            self.assertRegex(css, r'\.mufaj\[data-mufaj="%s"\] \.konyvgomb\.itt' % kod, kod)
+            self.assertRegex(css, r'\.kanon-konyv\[data-mufaj="%s"\][^{]*\{ color: var\(--g-%s\); \}' % (szin, szin), szin)
+        self.assertIn('fill: color-mix(in srgb, currentColor 35%, transparent)', css)
+
+    def test_az_arnyek_nem_az_fg_bol(self):
+        """A felugró elemek árnyéka és a fátyol az `arnyek` tokenből (sötét témában az fg világos, abból fény lenne, nem árnyék)."""
+        css = css_szoveg()
+        self.assertNotIn('var(--fg) 18%', css)
+        self.assertNotIn('var(--fg) 20%', css)
+        self.assertNotIn('var(--fg) 30%', css)
+        self.assertGreaterEqual(css.count('color-mix(in srgb, var(--arnyek)'), 6)
+
+    def test_a_temaszkript(self):
+        with open(os.path.join(D, 'statikus', 'tema.js'), encoding='utf-8') as f:
+            js = f.read()
+        self.assertIn("localStorage.getItem('pardes_tema')", js)
+        self.assertIn("setAttribute('data-tema', 'dark')", js)
+        self.assertIn("removeAttribute('data-tema')", js)                                  # Rendszer: attribútum nélkül
+        self.assertIn("setAttribute('data-tema', 'light')", js)                            # alap: világos
+        for tilos in ('innerHTML', 'eval(', 'document.write', '.cssText'):
+            self.assertNotIn(tilos, js, tilos)
 
 
 # =====================================================================================================================
@@ -201,6 +247,23 @@ class TestArculatUtvonal(unittest.TestCase):
         cls.app = alkalmazas.letrehoz(db_ut=DB, kiadas='belso')
         cls.c = cls.app.test_client()
         cls.gyar = cls.app.extensions['pardes']['gyar']
+
+    def test_a_lap_vilagos_alappal_es_a_temaszkripttel(self):
+        """#134 M3 (DT295, DT-F134i (a)): a szerver `data-tema="light"` alapot ad; a téma-szkript külső, nem halasztott, a `<head>`-ben a
+        stíluslapok előtt áll; a választóban a Világos az alap; inline szkript nincs."""
+        for ut in ('/', '/1Moz/1', '/szo/H0430', '/kereses'):
+            t = self.c.get(ut).get_data(as_text=True)
+            self.assertIn('<html lang="hu" data-tema="light">', t, ut)
+            i = t.index('<script src="/statikus/tema.js"></script>')
+            self.assertLess(i, t.index('</head>'), ut)
+            self.assertLess(i, t.index('<link rel="stylesheet"'), ut)
+            self.assertIn('<button type="button" data-tema="light" aria-pressed="true">Világos</button>', t, ut)
+            self.assertIn('<button type="button" data-tema="rendszer" aria-pressed="false">Rendszer</button>', t, ut)
+            self.assertIsNone(re.search(r'<script(?![^>]*\bsrc=)', t), ut)
+        r = self.c.get('/statikus/tema.js')
+        self.assertEqual(r.status_code, 200)
+        self.assertIn('javascript', r.headers['Content-Type'])
+        r.close()
 
     def test_utvonal(self):
         h = self.gyar.arculat.hash

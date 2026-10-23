@@ -34,10 +34,13 @@
     jeloles.addEventListener('change', function () { tarol('pardes_jeloles', jeloles.checked ? 'be' : 'ki'); jelolesAllit(); });
   }
 
+  // a színséma (#134 M3; DT295, DT-F134i (a)): az alap a világos; a tárolt választást az első rajzolás előtt a statikus/tema.js
+  // alkalmazza, itt csak a választó állapota és a váltás. „Rendszer”: attribútum nélkül a rendszer-beállítás.
   var temaGombok = document.querySelectorAll('.tema button[data-tema]');
   function temaAllit(tema) {
-    if (tema === 'light' || tema === 'dark') { document.documentElement.setAttribute('data-tema', tema); }
-    else { document.documentElement.removeAttribute('data-tema'); tema = 'rendszer'; }
+    if (tema === 'dark') { document.documentElement.setAttribute('data-tema', 'dark'); }
+    else if (tema === 'rendszer') { document.documentElement.removeAttribute('data-tema'); }
+    else { document.documentElement.setAttribute('data-tema', 'light'); tema = 'light'; }
     temaGombok.forEach(function (g) { g.setAttribute('aria-pressed', g.getAttribute('data-tema') === tema ? 'true' : 'false'); });
   }
   if (temaGombok.length) {
