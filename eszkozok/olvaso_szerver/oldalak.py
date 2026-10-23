@@ -20,7 +20,7 @@ import blokkok
 import kereses as kereses_modul
 import lekerdezesek as q
 
-SABLON_VERZIO = 'f134-m3j'
+SABLON_VERZIO = 'f134-m3k'
 # nézetek helyett rétegek (#134, DT294, DT-F134f (b), DT-F134g (c)): egyetlen réteg, az interlineáris sor (`il`); az alap a folyó
 # Károli-szöveg réteg nélkül. A réteg-állapot szöveg: a bekapcsolt rétegek vesszővel, a RETEGEK sorrendjében ('' = nincs réteg).
 RETEGEK = ('il',)

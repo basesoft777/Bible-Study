@@ -203,13 +203,15 @@
   // szövegbeállítások (Aa, a mockup 4. változatából, amit a 9. átvett): betűméret, sorköz, versenként új sor; localStorage.
   // A méretet és a sorközt CSSOM-mal állítja a szövegoszlopon (a CSP ezt engedi; `style=""` a jelölésben nincs), a tokent nem írja.
   // ---------------------------------------------------------------------------------------------------------------------
-  // A betűcsalád (Source Serif / Noto Serif / IBM Plex Sans) és a sorszélesség (keskeny 48ch / közepes 60ch / széles 80ch) a mockup
+  // A betűcsalád (Source Serif / Noto Serif / IBM Plex Sans) és a sorszélesség (keskeny 48ch / közepes 60ch / széles 80ch / teljes = az alap, DT-F134o) a mockup
   // 4. változatának Aa-jából, osztállyal (betu-*, szel-*). Az alap: versenként új sor (a felhasználó, 2026-10-23); a tárolt érték
   // `v: 2` jelölése előtti (régi) tárolásból a versenkénti kapcsoló nem öröklődik, csak a kifejezett kikapcsolás.
   var AA_MERET = [0.85, 0.92, 1, 1.1, 1.2, 1.35, 1.5];
   var AA_SORKOZ = { szuk: 0.88, '': 1, tag: 1.15 };
   var AA_BETU = { '': 1, noto: 1, sans: 1 };
-  var AA_SZEL = { keskeny: 1, '': 1, szeles: 1 };
+  // DT-F134o (2026-10-23): a sorszélesség alapja ('') a „teljes” (kitölti a sávot), a 60ch-s közepes a 'kozepes'; a korábban tárolt ''
+  // (a régi 60ch-s alap, kifejezett választás nélkül) így az új alapra vált.
+  var AA_SZEL = { keskeny: 1, kozepes: 1, szeles: 1, '': 1 };
   function aaAlap() { return { v: 2, meret: 2, sorkoz: '', betu: '', szel: '', versenkent: true }; }
   var aa = aaAlap();
   try {
@@ -228,6 +230,7 @@
     oszlop.classList.toggle('betu-noto', aa.betu === 'noto');
     oszlop.classList.toggle('betu-sans', aa.betu === 'sans');
     oszlop.classList.toggle('szel-keskeny', aa.szel === 'keskeny');
+    oszlop.classList.toggle('szel-kozepes', aa.szel === 'kozepes');
     oszlop.classList.toggle('szel-szeles', aa.szel === 'szeles');
     oszlop.style.removeProperty('font-size');
     oszlop.style.removeProperty('line-height');

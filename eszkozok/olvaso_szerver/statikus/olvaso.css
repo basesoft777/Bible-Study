@@ -178,7 +178,7 @@ body { font: var(--fs-torzs)/var(--lh-torzs) var(--font-ui); text-rendering: opt
 a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .logo { font: 600 var(--fs-logo) var(--font-text); }
 h1 { font: 600 var(--fs-oldalcim)/var(--lh-oldalcim) var(--font-text); text-wrap: balance; }
-.szoveg-oszlop { font: var(--fs-karoli-folyo)/var(--lh-karoli-folyo) var(--font-text); max-width: 60ch; font-optical-sizing: auto; font-variant-ligatures: common-ligatures; hanging-punctuation: first; text-wrap: pretty; hyphens: auto; }
+.szoveg-oszlop { font: var(--fs-karoli-folyo)/var(--lh-karoli-folyo) var(--font-text); font-optical-sizing: auto; font-variant-ligatures: common-ligatures; hanging-punctuation: first; text-wrap: pretty; hyphens: auto; }
 .karoli-szoveg { font: var(--fs-karoli-panel)/var(--lh-karoli-panel) var(--font-text); }
 .versszam { font: 600 var(--fs-versszam) var(--font-ui); color: var(--accent); letter-spacing: .02em; padding: 0 3px 0 4px; font-variant-numeric: lining-nums tabular-nums; }
 .szo { text-decoration: underline dotted; text-decoration-color: color-mix(in srgb, var(--muted) 60%, transparent); text-decoration-thickness: 1px; text-underline-offset: 6px; border-radius: var(--radius-szo); }
@@ -299,9 +299,9 @@ details[open] > summary.lap-gomb, .lap-gomb[aria-pressed="true"] { background: v
 .lap-muv .lap-versre { display: inline-block; padding: 3px 10px; border: 1px solid var(--rule); border-radius: var(--radius-pill); text-decoration: none; font: var(--fs-gomb) var(--font-ui); }
 .versenkent .folyo .vers { display: block; margin: 0 0 .45em; }
 @media (max-width: 899.98px) {
-  /* DT-F134n: a fejezet-lap fejléce 900 px alatt is felül marad: egysoros ragadós sáv (könyvválasztó, ‹ ›, Aa, ⚙, ⌕); a könyvválasztó,
-     az Aa és a ⚙ a sávból lenyíló panel; a ⌕ (a fejezetcím, a Ctrl+K) a sáv alatt nyitja a keresőt, a kánon-sávot, a jelölést és a
-     „Legutóbb”-ot (body.navlap-nyitva; JS nélkül a #navigacio cél) */
+  /* DT-F134n: a fejezet-lap fejléce 900 px alatt is felül marad: egysoros ragadós sáv (könyvválasztó, ‹ ›, Aa, a „Strong számok”
+     chip (DT-F134o), ⚙, ⌕); a könyvválasztó, az Aa és a ⚙ a sávból lenyíló panel; a ⌕ (a fejezetcím, a Ctrl+K) a sáv alatt nyitja a
+     keresőt, a kánon-sávot és a „Legutóbb”-ot (body.navlap-nyitva; JS nélkül a #navigacio cél) */
   .fejlec.navlap { position: sticky; top: 0; z-index: 46; flex-wrap: wrap; }
   .navlap .logo, .navlap .ugras, .navlap .kanon, .navlap .nav-extra { display: none; }
   .navlap .konyvvalaszto { margin-right: auto; }
@@ -382,24 +382,31 @@ details[open] > summary.morzsa { border-color: var(--accent); }
 .chip:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
 .legutobb-hely:hover { border-color: var(--accent); }
 @media (min-width: 900px) {
-  /* az egysoros fejléc: a vezérlők egy sorban (a kereső tölti ki a sort), alatta a kánon-sáv, mellette a chip és a „Legutóbb” (legfeljebb 3) */
+  /* az egysoros fejléc: a vezérlők (DT-F134o óta a „Strong számok” chippel) egy sorban (a kereső tölti ki a sort), alatta a kánon-sáv,
+     mellette a „Legutóbb” (legfeljebb 3) */
   .fejlec.navlap .kanon { flex: 1 1 55%; width: auto; min-width: 0; }          /* 55 %-os alap: mindig a vezérlők alá, saját sorba törik */
+  /* a kereső alapja legalább 280 px, széles képernyőn a sor − 1200 px: így a vezérlősor és az 55 %-os kánon-sáv 1920 px-en sem fér
+     egy sorba (a próba mérése, 2026-10-23: 280 px-es alappal 1920 px-en a kánon-sáv felkúszott, a kereső 325 px-re szűkült),
+     920 px-en pedig a vezérlők egy sorban maradnak */
+  .fejlec.navlap .ugras { flex-basis: max(280px, calc(100% - 1200px)); }
   .fejlec.navlap .nav-extra { flex: 0 1 auto; flex-wrap: nowrap; min-width: 0; }
   .fejlec.navlap .legutobb { flex-wrap: nowrap; overflow: hidden; }
   .fejlec.navlap .legutobb-hely:nth-of-type(n+4) { display: none; }
   /* #134 M3 javítókör (a felhasználó, 2026-10-23): a fejléc ragadós (a mockup header.top-ja), a lenyíló panelek belőle nyílnak */
   .fejlec { position: sticky; top: 0; z-index: 40; }
   html:has(.fejlec.navlap) { scroll-padding-top: 96px; }
-  /* a mockup 9. változatának .fo rácsa: a szöveg 1fr, az oldalblokk 1100 px-ig minmax(400px, .8fr), fölötte minmax(460px, .9fr);
-     az egész legfeljebb 1480 px (a két oldali térközzel), középre igazítva */
-  .olvaso-elrendezes { max-width: 1448px; margin-inline: auto; }
+  /* a mockup 9. változatának .fo rácsa: a szöveg 1fr, az oldalblokk 1100 px-ig minmax(400px, .8fr), fölötte minmax(460px, .9fr).
+     DT-F134o (a felhasználó, 2026-10-23): a rács nincs szélességhez kötve és nincs középre igazítva (a mockup 1480 px-e kikerült):
+     a szöveg és az oldalblokk a lap teljes szélességét kitölti; kívül csak a .tartalom space-oldal térköze, köztük a space-oszlopkoz */
 }
 @media (min-width: 1100px) {
   .olvaso-elrendezes { grid-template-columns: minmax(0, 1fr) minmax(460px, .9fr); }
 }
-/* az Aa betűcsaládja és sorszélessége (a mockup 4. változata: Source Serif = az alap, Noto Serif, IBM Plex Sans; 48 / 60 / 80ch) */
+/* az Aa betűcsaládja és sorszélessége (a mockup 4. változata: Source Serif = az alap, Noto Serif, IBM Plex Sans; 48 / 60 / 80ch).
+   DT-F134o: a sorszélesség alapja a „teljes” (korlát nélkül kitölti a sávot); a 48 / 60 / 80ch választható */
 .szoveg-oszlop.betu-noto { font-family: var(--font-gr); }
 .szoveg-oszlop.betu-sans { font-family: var(--font-ui); }
 .szoveg-oszlop.szel-keskeny { max-width: 48ch; }
+.szoveg-oszlop.szel-kozepes { max-width: 60ch; }
 .szoveg-oszlop.szel-szeles { max-width: 80ch; }
 @media (prefers-reduced-motion: reduce) { .reszletek { transition: none; } }

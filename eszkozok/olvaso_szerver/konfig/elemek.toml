@@ -273,7 +273,7 @@ tulajdonsag = [
 
 [[elem]]
 id = "kapcs"
-nev = "Kapcsoló („Kapcsolt szavak jelölése”)"
+nev = "Kapcsoló („Strong számok”: a Strong-számmal párosított szavak jelölése; DT-F134o)"
 csoport = "Fejezet-lap fölső része"
 szelektor = ".kapcs"
 tulajdonsag = [
@@ -1111,7 +1111,7 @@ tulajdonsag = [
 
 [[elem]]
 id = "chip"
-nev = "Jelölő chip (pirula: „Kapcsolt szavak jelölése”)"
+nev = "Jelölő chip (pirula: „Strong számok”, a fő navigációs sorban; DT-F134o)"
 csoport = "Navigáció"
 szelektor = ".chip"
 tulajdonsag = [
@@ -1265,17 +1265,18 @@ beall = "a beállítások lenyíló eleme (⚙, details: rétegek, szint, Tervez
 menu-cim = "a lenyíló panelek szakaszcíme (nagybetűs); fs-forrascim, muted tokenek"
 kanon = "a kánon-sáv (SVG; a könyvek szélessége a fejezetszámmal arányos, style attribútum nélkül, CSP)"
 nav-extra = "a navigáció kiegészítő sora (jelölések, Legutóbb; flex-tároló)"
-jelolo = "a jelölő kapcsolók tárolója (a mockup chip-sora; ma egy kapcsoló, a kapcsolt szavak jelölése)"
+jelolo = "a jelölő kapcsolók tárolója (a mockup chip-sora; ma egy kapcsoló: „Strong számok”, a Strong-számmal párosított szavak jelölése; DT-F134o: a fő navigációs sorban)"
 legutobb = "a „Legutóbb” sor tárolója (a JS tölti, localStorage); fs-megjegyzes, muted tokenek"
 legutobb-cim = "a „Legutóbb:” felirat; a tároló tokenjeit örökli"
 legutobb-hely = "egy legutóbb megnyitott vers hivatkozása (a JS adja); rule, radius-kiemeles, fs-strong-szam tokenek"
 lap-muv = "a részletek-lap fejsorának műveletsora (a szómód „A vers: … →” hivatkozása; flex-tároló)"
 # #134 M3 javítókör (a felhasználó visszajelzése, 2026-10-23; DT-F134n): a tájoló pirula kikerült (elem és horgok); új horgok és
 # állapot-osztályok, a megjelenésük meglévő elemekből és tokenekből
-navlap-gomb = "a ragadós sáv ⌕ gombja (900 px alatt; DT-F134n): a sáv alatt nyitja a keresőt, a kánon-sávot, a jelölést, a „Legutóbb”-ot; a megjelenés a lap-gomb elem"
+navlap-gomb = "a ragadós sáv ⌕ gombja (900 px alatt; DT-F134n): a sáv alatt nyitja a keresőt, a kánon-sávot és a „Legutóbb”-ot (a jelölés-chip a DT-F134o óta a sávban); a megjelenés a lap-gomb elem"
 aa-betu = "a betűcsalád választója (Source Serif / Noto Serif / IBM Plex Sans; a mockup 4. változata); a megjelenése a témaváltó (.tema) gombjaié"
-aa-szel = "a sorszélesség választója (keskeny / közepes / széles); a megjelenése a témaváltó (.tema) gombjaié"
+aa-szel = "a sorszélesség választója (keskeny / közepes / széles / teljes = az alap, DT-F134o); a megjelenése a témaváltó (.tema) gombjaié"
 betu-noto = "állapot-osztály a szövegoszlopon (Aa: Noto Serif; a JS adja); a betűcsalád a font-gr token (első tagja a Noto Serif)"
 betu-sans = "állapot-osztály a szövegoszlopon (Aa: IBM Plex Sans; a JS adja); a betűcsalád a font-ui token"
 szel-keskeny = "állapot-osztály a szövegoszlopon (Aa: keskeny sor, 48ch; a JS adja); literál, saját token nélkül"
+szel-kozepes = "állapot-osztály a szövegoszlopon (Aa: közepes sor, 60ch; a JS adja; DT-F134o: már nem az alap); literál, saját token nélkül"
 szel-szeles = "állapot-osztály a szövegoszlopon (Aa: széles sor, 80ch; a JS adja); literál, saját token nélkül"

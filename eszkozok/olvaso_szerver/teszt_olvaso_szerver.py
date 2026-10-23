@@ -1228,9 +1228,17 @@ class TestNavigacio(unittest.TestCase):
         self.assertNotIn('tajolo', h)
         # az Aa (a mockup 4. változata): betűcsalád, sorszélesség, versenként új sor az alap (a szerver adja, JS nélkül is)
         for resz in ('data-aa-betu="" aria-pressed="true">Source Serif', 'data-aa-betu="noto"', 'data-aa-betu="sans"',
-                     'data-aa-szel="keskeny"', 'data-aa-szel="" aria-pressed="true"', 'data-aa-szel="szeles"',
-                     '<input type="checkbox" id="aa-versenkent" checked>'):
+                     'data-aa-szel="keskeny"', 'data-aa-szel="kozepes"', 'data-aa-szel="szeles"',
+                     'data-aa-szel="" aria-pressed="true">teljes', '<input type="checkbox" id="aa-versenkent" checked>'):
             self.assertIn(resz, fej, resz)
+        # DT-F134o: a jelölés-chip („Strong számok”) a fő navigációs sorban, a ⚙ előtt, nem a ⌕ mögötti nav-extra részben;
+        # az interlineáris réteg kapcsolója a ⚙ menüben marad
+        self.assertLess(fej.index('id="jeloles"'), fej.index('id="beall"'))
+        self.assertNotIn('id="jeloles"', fej[fej.index('class="nav-extra"'):])
+        self.assertIn('<input type="checkbox" id="jeloles" checked> Strong számok</label>', fej)
+        self.assertNotIn('Kapcsolt szavak', fej)
+        self.assertLess(fej.index('id="beall"'), fej.index('class="retegvalto"'))
+        self.assertIn('>Interlineáris sor</a>', fej)
         self.assertIn('<section class="szoveg-oszlop versenkent"', h)
         # a könyvválasztó: 66 könyv a műfaji csoportokban, a mostani könyv és fejezet jelölve, a fejezetrács a könyv fejezeteivel
         self.assertEqual(len(re.findall(r'<a class="konyvgomb', fej)), 66)
@@ -1285,6 +1293,11 @@ class TestNavigacio(unittest.TestCase):
         # az oldalblokk a mockup arányával nő (.fo rács), nem fix 440 px
         self.assertIn('minmax(460px, .9fr)', css)
         self.assertNotIn('minmax(320px, 440px)', css)
+        # DT-F134o: a szöveg alapból kitölti a sávot (nincs 60ch-s alapkorlát), a rács nincs 1448 px-re korlátozva és középre igazítva
+        self.assertNotRegex(css, r'\.szoveg-oszlop \{[^}]*max-width')
+        self.assertNotIn('max-width: 1448px', css)
+        self.assertIn('.szoveg-oszlop.szel-kozepes { max-width: 60ch; }', css)
+        self.assertIn("classList.toggle('szel-kozepes'", js)
 
 
 if __name__ == '__main__':

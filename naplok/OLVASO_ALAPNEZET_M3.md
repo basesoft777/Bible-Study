@@ -156,3 +156,67 @@ A 4 piros ugyanaz, mint az M3 után: `TestD2PilotEgyezes.test_1moz_1_25`, `TestD
 3. **A rács köze 16 px** (a `space-oszlopkoz` token), a mockupban 20 / 28 px: a token a tervező módban állítható.
 4. **Valódi telefon** (az M4-é): a ragadós sáv és a `100dvh` viselkedése a böngésző címsorának be- és kicsúszásakor, és a sávból lenyíló könyvválasztó görgetése érintéssel.
 5. A 4. szakasz 2. pontja (ragadós fejléc 900 px-től) ezzel megoldott; a 3. pont (a ⚙ új sorba kerül a navigációs lapon) megszűnt, mert a ⚙ a sávban van.
+
+## 6. Javítókör 2. kör (a kitöltetlen hely; a „Strong számok” kapcsoló), 2026-10-23
+
+*Ág: `claude/olvaso-alapnezet`, a c67a4058 (F134.12) után · modell: claude-opus-5-5 · a felhasználó a futó szerveren nézte (`http://192.168.1.172:9765/1Moz`), a visszajelzést a koordinátor továbbította. Az M4-et nem indítottam.*
+
+**A visszajelzés szó szerint:** „Még mindig túl sok a kitöltetlen hely a Károli blokk és a vers blokk között. Ha csak a Károli blokk jelenik meg ott is sok a Margó, a kitöltetlen hely”. Ugyanehhez a körhöz, egymás után: „A Strong ki be kapcsolása is a fő navigációban legyen”; majd pontosítva: „a „kapcsolt szavak jelölése” kapcsolót … erre gondoltam”; „Legyen Strong számok”; „Ne kapcsolt szavak”. Döntés: `DT-F134o` 🟢 (a `DONTESEK.md`-ben; a DT296 „komponensstílusok a mockupból” része ennyiben módosul, az 5.4 szakasz 1. nyitott pontja ezzel eldőlt).
+
+**Az értelmezés javítása:** az első üzenet után a koordinátor értelmezése szerint az interlineáris réteg (`il`) kapcsolóját vittem ki a fő navigációba („Strong” chip). A pontosítás szerint a felhasználó a kapcsolt szavak jelölésének kapcsolójára gondolt: az `il`-es áthelyezést visszavontam (a kapcsoló a ⚙ menüben van, mint az F134.12-ben; stílusa és regiszter-bejegyzése változatlan), ez a köztes állapot nem került commitba.
+
+### 6.1 Mit változtattam
+
+| Tétel | Mit | Hol |
+|---|---|---|
+| **a) A szöveg kitölti a sávot** | A `.szoveg-oszlop` 60ch-s `max-width`-je megszűnt: a szöveg alapból a teljes sávot kitölti. Az Aa „Sorszélesség” választója négy gomb: keskeny (48ch) / közepes (60ch, új `szel-kozepes` osztály) / széles (80ch) / **teljes = az alap** (`data-aa-szel=""`, `aria-pressed="true"`). A korábban tárolt `szel: ''` (a régi 60ch-s alap, kifejezett választás nélkül) így az új alapra vált; aki a széleset vagy a keskenyet választotta, annál megmarad. | `statikus/olvaso.css`, `statikus/olvaso.js`, `sablonok/alap.html`, `konfig/elemek.toml` (`szel-kozepes` a `[kizart]` alatt, mint a többi `szel-*`) |
+| **b) A rács nincs korlátozva és középre igazítva** | A `.olvaso-elrendezes { max-width: 1448px; margin-inline: auto; }` kikerült. Kívül csak a `.tartalom` `space-oldal` térköze (16 px), a szöveg és az oldalblokk között a meglévő `space-oszlopkoz` (16 px); új token nem kellett. Az oszlop-arány (a szöveg `1fr`, az oldalblokk 1100 px-ig `minmax(400px, .8fr)`, fölötte `minmax(460px, .9fr)`) maradt. | `statikus/olvaso.css` |
+| **c) Csak a Károli-szöveg (900 px alatt)** | Ugyanaz az a) pont: a szövegnek nincs sorhossz-korlátja, a sáv a két 16 px-es `space-oldal` között teljes. 800 px-en a szöveg 753 px (korábban 600 px, 153 px üres maradt). | — |
+| **d) A „Strong számok” kapcsoló a fő navigációs sorban** | A jelölés-chip (`div.jelolo` > `label.kapcs.chip` > `input#jeloles`) kikerült a `nav-extra` részből (900 px-től a kánon-sáv melletti 2. sor, 900 px alatt a ⌕ mögött), és a fejléc vezérlősorában az Aa és a ⚙ között áll: 900 px-től a ragadós fejléc első sorában, 900 px alatt az egysoros sávban. Felirata „Strong számok” (a „Kapcsolt szavak” szöveg kikerült), `title`: „A Strong-számmal párosított szavak jelölése (pontozott aláhúzás)”. **A működése változatlan:** a JS az `id="jeloles"`-t figyeli, a `.szoveg-oszlop`-ra a `nincs-jeloles` osztályt teszi, a `pardes_jeloles` localStorage-kulcs őrzi; az `il`-rétegben a chip továbbra sem jelenik meg. **A felirat nem félrevezető:** a kapcsoló a `.szo` osztályú szavak pontozott aláhúzását kapcsolja, és `.szo` csak az a szó, amelynek a Károli–Strong párosításból Strong-száma van (`sablonok/fejezet.html`, `w.fo` = a Strong-szám, `data-strong`); a Strong-szám nélküli szó `szo-nincs`. A kapcsoló tehát a Strong-számmal rendelkező szavakat jelöli; magukat a számokat nem írja ki (azokat a szóra koppintva a részletek lapja, ill. az interlineáris réteg mutatja). | `sablonok/alap.html`, `konfig/elemek.toml` (a `kapcs`, `chip`, `jelolo`, `navlap-gomb` leírása) |
+| **e) A fejléc első sora 900 px-től** | A chip a vezérlősorba került, ezért a kereső alapja `max(280px, calc(100% - 1200px))` lett: 920 px-en a vezérlők (a chippel együtt) egy sorban maradnak, széles képernyőn pedig a kánon-sáv nem kúszik fel a vezérlők sorába. **Mellékesen talált hiba:** az F134.12 állapotában 1920 px-en a kánon-sáv a vezérlők sorába kúszott (a kereső 325 px-re szűkült), az F134.10 „mindig saját sorban” szándékával szemben; ezzel megszűnt. | `statikus/olvaso.css` |
+| Egyéb | `SABLON_VERZIO = 'f134-m3k'`; a README bekezdése; a sablon és a CSS megjegyzései (a ⌕ már nem nyitja a jelölést). | `oldalak.py`, `README.md` |
+
+### 6.2 Saját próba böngészőben (nem független ellenőrzés)
+
+*Módszer: saját fejlesztői szerver a WSL `pardes` disztribúcióban (127.0.0.1:8799, `belso` kiadás, WSL-natív `~/pardes/pardes.db`, `--ujratolt`; a végén leállítva; a felhasználó 8765-ös szerverét nem érintettem), a beépített böngészőpanel emulált szélességén, mérőszkripttel (`getBoundingClientRect`, `scrollWidth − clientWidth`), tárolt Aa-érték nélkül. Oldal: Ez 37, az `il`-réteg kikapcsolva, a jelölés bekapcsolva. 900 px-től az emulált ablakban 15 px-es függőleges görgetősáv van: a jobb margó a lap látható szélétől (`clientWidth`) mért érték. A „Legutóbb” sorban a böngésző korábbi bejegyzései állnak (a 2. sor magasságát nem befolyásolják). Proveniencia: `scope=olvaso_szerver 127.0.0.1:8799 (munkafa a c67a4058 után, a 2. kör végső változásaival) | forras=bongeszo-meres | ts=2026-10-23`.*
+
+| Szélesség (`clientWidth`) | margó bal | szöveg (sáv = szöveg) | köz | oldalblokk | margó jobb | túlfolyás | fejléc / sáv | E1 |
+|---|---|---|---|---|---|---|---|---|
+| 375 (375) | 16 | 343 | — (alsó lap) | — | 16 | 0 | **87 px, két sor** (⛔, lent) | 184 px (≤ 200; F134.12: 146) |
+| 800 (785) | 16 | 753 | — (alsó lap) | — | 16 | 0 | 49 px, egy sor | 112 px |
+| 920 (905) | 16 | 457 | 16 | 400 | 16 | 0 | 74 px (a vezérlők egy sorban) | 202 px |
+| 1000 (985) | 16 | 521 | 16 | 416 | 16 | 0 | 74 px | 202 px |
+| 1280 (1265) | 16 | 641 (F134.12: 600) | 16 | 576 | 16 | 0 | 74 px | 202 px |
+| 1600 (1585) | 16 | 809 (F134.12: 600 a 754-es sávban) | 16 | 728 (F134.12: 678) | 16 | 0 | 74 px | 202 px |
+| 1920 (1905) | 16 | 977 | 16 | 880 | 16 | 0 | 74 px (a kánon-sáv saját sorban) | 202 px |
+
+**A szöveg és az oldalblokk között** minden szélességen pontosan a 16 px-es köz van, üres sáv nincs; a rács a 16 px-es bal margónál kezdődik (F134.12-ben 1600 px-en 69 px-nél, középre igazítva). A szöveg mindenhol kitölti a sávját (a szöveg szélessége = a sáv szélessége).
+
+**A „Strong számok” chip 900 px-től:** 122×25 px, a fejléc első sorában az Aa és a ⚙ között (920 px-en x = 725, a ⚙ 857 px-nél, egy sorban; 1920 px-en x = 1725). Kattintásra (1000 px): a szövegoszlop `nincs-jeloles`, a `.szo` aláhúzása `none`, tárolva `pardes_jeloles: ki`; újra: aláhúzás, `be`.
+
+**375 px — a sáv nem fér egy sorba (⛔):** a „Strong számok” chip 122 px; a sáv elemei: könyvválasztó 72, ‹ › 68, Aa 33, chip 122, ⚙ 32, ⌕ 32 = 359 px + öt 10 px-es köz = 409 px, a hely 343 px. Mérve: a ⚙ és a ⌕ a 2. sorba tör (46 px-nél), a sáv 87 px, túlfolyás 0, E1 184 px. 4 px-es sávközzel is két sor (87 px). **Mért alternatíva** (csak a böngészőben, a kódban nincs): „Strong” felirattal (74 px) és 4 px-es sávközzel egy sor (49 px), a ⌕ jobb széle 359 px; az F134.12-es próbán a pont nélküli 60 px-es „Strong” chippel a leghosszabb morzsánál (ApCsel 28, 106 px) is egy sor volt. A felirat cseréje a felhasználó döntése; magamtól nem cseréltem.
+
+**Aa (1920 px):** a négy gomb (keskeny / közepes / széles / teljes) a 300 px-es panelben elfér (274 px, túlfolyás nélkül), alapból a „teljes” lenyomva; „közepes” → `szel-kozepes`, 600 px; „széles” → 800 px; „teljes” → 977 px, tárolva `"szel":""`.
+
+### 6.3 Tesztek
+
+*Futtatás: `python eszkozok/teszt_futtat.py --gyors` (WSL `pardes`, WSL-natív `~/pardes/pardes.db`, 895 MB, `epites_ts` 2026-10-14T09:35:00Z — a DT300 szerinti régi adatbázis), a 2. kör végső munkafáján, a commit előtt. Proveniencia: `scope=eszkozok/olvaso_szerver teszt_*.py (--gyors, teszt_szintek.py nélkül) | forras=teszt_futtat.py | ts=2026-10-23`.*
+
+| Fájl | F134.12 után | A 2. kör után | Megjegyzés |
+|---|---|---|---|
+| `teszt_arculat.py` | 27 / zöld | 27 / zöld | |
+| `teszt_bdb_vers_jelentes.py` | 26 / zöld | 26 / zöld | |
+| `teszt_indito.py` | 39 / zöld | 39 / zöld | |
+| `teszt_kereses.py` | 36 / zöld | 36 / zöld | |
+| `teszt_olvaso_szerver.py` | 90 / 2 piros (1 kihagyva) | 90 / 2 piros (1 kihagyva) | a navigációs teszt az új állapotra: az Aa négy sorszélesség-gombja, a „teljes” az alap; a „Strong számok” chip a ⚙ előtt, nem a `nav-extra`-ban, „Kapcsolt szavak” felirat nincs; az interlineáris kapcsoló a ⚙ menüben; a CSS-ben nincs `.szoveg-oszlop` `max-width` és `max-width: 1448px`, van `szel-kozepes` (60ch); a JS-ben a `szel-kozepes` |
+| `teszt_pilot_aranymintaval.py` | 22 / 2 piros | 22 / 2 piros | a DT-F76i-teszt a „Strong számok” feliratot várja |
+| `teszt_tervezo.py` | 49 / zöld | 49 / zöld | |
+| **összesen** | **289, ebből 4 piros** | **289, ebből 4 piros** (mind a 4 ismert DT299-eset; **új piros: 0**; 1 kihagyott) | |
+
+A 4 piros ugyanaz, mint korábban: `TestD2PilotEgyezes.test_1moz_1_25`, `TestD2PilotEgyezes.test_zsolt_22`, `test_heber_csempe_szavankent_a_pilot_szerint`, `test_szamlalok_egyeznek_a_pilottal` (régi adatbázis, DT299). Egy köztes futás (az `il`-es változattal) egy új pirosat adott (`teszt_arculat.py`: a `--space-gomb-fugg` token használatlan lett az átírt rétegkapcsoló-stílus miatt); az `il`-es változat visszavonásával a stílus az eredeti, a teszt zöld. A regiszter-őr (`regiszter_or.py`): 0 hiba (196 osztály a felületen, 96 a regiszterben, 100 kizárva; az új a `szel-kozepes`). A `teszt_szintek.py` (DT129) nem futott; a szintek kódja nem változott.
+
+### 6.4 Nyitott pontok
+
+1. **⛔ 375 px-en a sáv két sorra törik** a „Strong számok” chippel (87 px, mérve). Lehetőségek: (a) 900 px alatt rövidebb felirat („Strong”), 4 px-es sávközzel — mérve egy sor; (b) a „Strong számok” felirat marad, a sáv 900 px alatt két soros; (c) 900 px alatt a chip csak ikon/pont, a teljes felirat a `title`-ben. Javaslat: (a), a 900 px-től a „Strong számok” marad. A felhasználó döntése.
+2. **Nagyon széles képernyőn a sorhossz:** 1920 px-en a szöveg 977 px — a döntés szerint ez az alap; a 48 / 60 / 80ch az Aa-ban választható.
+3. A mérés emulált szélességen, a panel görgetősávjával; valódi böngésző és telefon az M4-é.
