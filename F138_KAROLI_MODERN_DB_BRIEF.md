@@ -1,5 +1,5 @@
 ---
-feladat: 137
+feladat: 138
 cim: Modernizált Károli a keresőben és a pardes.db-ben — a #96 rétegének betöltése és a keresés bővítése
 kod: KAROLI_MODERN_DB
 tipus: feladat
@@ -14,9 +14,9 @@ ir: [eszkozok/sqlite_epit.py, eszkozok/olvaso_szerver/kereses.py, adat/SEMA.md, 
 fugg: [96]
 ---
 
-# F137_KAROLI_MODERN_DB_BRIEF — csonk
+# F138_KAROLI_MODERN_DB_BRIEF — csonk
 
-*FELADATOK #137 · csonk-brief (F20 B3): nem végrehajtható, csak a feladat fejlécét hordozza; v1; 2026.10.24; a #96 N-F96a tétele szerint, a DT-F96b (a felhasználó döntése, chat, 2026-10-24: a keresés a modernizált szövegrétegben is keressen) alapján.*
+*FELADATOK #138 · csonk-brief (F20 B3): nem végrehajtható, csak a feladat fejlécét hordozza; v1; 2026.10.24; a #96 N-F96a tétele szerint, a DT-F96b (a felhasználó döntése, chat, 2026-10-24: a keresés a modernizált szövegrétegben is keressen) alapján.*
 
 - **Mit ad, ha kész:** a #96 `adat/karoli_modern/` tábláját a `pardes.db`-be tölti (`szotari_alak` mintájára: hash meta-sor, frissességi teszt), a `kereses.py` pedig a modern alakban is keres, egyesítve a pontos alakkal és a szótári alakos (`szotari_kereso`) találatokkal; a találat a Strong-hivatkozást is visszaadja.
 - **Következő lépés:** brief kell a #96 lezárása után. Nyitott: a vers-lap modern/1908 kapcsolója (#76) része-e, és a keresési teljesítmény mérése (a #95 mintájára).
