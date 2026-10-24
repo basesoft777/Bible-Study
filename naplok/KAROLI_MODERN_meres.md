@@ -253,7 +253,7 @@ A szabályok és a kimeneti táblák **nem változtak**. A javítás szabálydö
 
 **Nem változik a .1-ben (szándékosan):** a lemmaváltás (DT-F96e a: *e, oh, férfiú, leány, mostan, minekutánna*, az önálló *kik/mely*); minden igealak (*teremté, monda, -ván/-vén, vala, lőn, vagyon*: .2); a *-jék* és a *-jok/-jök* (4.5).
 
-**Az „a mi” kezelése (heurisztika, manual).** Toldalékos *mi-* (*mit, minek, mire*) mindig összevonva. A puszta „a mi”: ha a következő szó *-nk* birtokos (*a mi Istenünk, a mi atyánk*) → birtokos, marad (`mi_birtokos_marad`); ha a következő szó nagybetűs, személyes névmás (*nékünk, minket*), vagy írásjel követi → `bizonytalan`, változatlan (**298 token**; ezek a mintában is szerepelnek); különben → *ami*. Egy „a Ki…” nagybetűs vers közbeni eset `nagybetu`, változatlan.
+**Az „a mi” kezelése (heurisztika, manual; a DT-F96i előtti állapot, felváltotta a 4.6).** Toldalékos *mi-* (*mit, minek, mire*) mindig összevonva. A puszta „a mi”: ha a következő szó *-nk* birtokos (*a mi Istenünk, a mi atyánk*) → birtokos, marad (`mi_birtokos_marad`); ha a következő szó nagybetűs, személyes névmás (*nékünk, minket*), vagy írásjel követi → `bizonytalan`, változatlan (**298 token**; ezek a mintában is szerepelnek); különben → *ami*. Egy „a Ki…” nagybetűs vers közbeni eset `nagybetu`, változatlan.
 
 ### 4.3 K2 önellenőrzés
 
@@ -286,7 +286,7 @@ Oszlopok: `szoveg_1908`, `szoveg_modern` (a .1 kimenete), `valtozasok` (`sorszá
 - **DT-F96e (d)** *-jék* felszólító E/3 az *-ik*-es igéken (*cselekedjék, uralkodjék, lakozzék, igyék*): **93 alak, 417 token** (heurisztika: a szótári alak *-ik*-re végződik, a tő önálló szóként nem áll a korpuszban, így a tárgyas T/3 *megismerjék* kimarad). Az alternatíva hangrendje: *-jon/-jen/-jön*; csak *i/í* magánhangzós tőnél *-on* (*igyék → igyon*).
 - **DT-F96g** (új) *-jok/-jök* birtokos T/3 (*atyjok, reájok, hozzájok, útjokat, erejök*): **212 alak, 714 token** a *j*-s változaton (kizárva a többes számú *tolvajok, bajok, tutajok-*). A *j* nélküli változat (*kezöket, szívök, közöttök*) a .1-ben nem mért: a *-ok/-ök* többes számmal egybeesik, gépi szétválasztása szövegkörnyezetfüggő.
 
-### 4.6 Kísérleti „a mi”-szabály (DT-F96i 🟡; a kiadott réteg nem változott)
+### 4.6 Az „a mi”-szabály (DT-F96i; a 4.6.1–4.6.3 a kísérleti mérés, a 4.6.4 az alkalmazás)
 
 `scope=a Károli 1908 minden puszta „a mi” tokenje (1 164: „a” + „mi”, szóközzel, toldalék nélkül) | forras=konkordancia/Karoli_1908.tsv (sha256:49335bbcc77d) + adat/szoto/karoli_szotari_alak.tsv (sha256:edba33e6d65a) + eszkozok/karoli_modern/helyesiras.py (sha256:7295d5569705) | ts=2026-10-24T17:46Z`. A futtatás: `python eszkozok/karoli_modern/helyesiras.py --ami-proba`. Determinisztikus, LLM és API nélkül (**0 token**). Kimenet: `adat/karoli_modern/helyesiras_ami_proba.tsv`, generált, `# GENERÁLT:` fejléccel. Soronként egy token: `igehely`, `sorszam` (a „mi” `tokenizal`-sorszáma), `elozo`, `kovetkezo`, `dontes_regi`, `dontes_kiserleti`, `kriterium`, `valtozik`. **Ez nem a kiadott réteg.** A `helyesiras_alakok.tsv`, a `helyesiras_tokenek.tsv` és a `helyesiras_minta.tsv` nem változott. Ellenőrzés: a kapcsoló nélküli futás a repón kívülre generálva, a fejlécsor nélkül, bájtra azonos a három táblával. A három tábla fejléce viszont a szkript előző sha256-ját hordozza (`c0b30137c31b`), mert a kiadott réteget a döntés előtt nem generáltam újra.
 
@@ -349,3 +349,39 @@ Az ige: a #94 tábla `regies_jegy`-e vagy a `fedettseg.igei_tovek` próbája a s
 
 - **A 112 soros minta** (`helyesiras_minta.tsv`, a fájl nem változott). A kísérlet **egy sor** modern szövegét változtatja: M079 (2Móz 9:4, `bizonytalan` réteg), *mindabból, a mi Izráel fiaié → mindabból, ami Izráel fiaié*. Ez a felhasználó vonatkozó példáinak (*mindent, a mi …*) mintája. Az M076, M077, M078 és M080 bizonytalan tokenje birtokosra vált; a szövegük nem változik. A `nevmas:mi` és a `mi_birtokos_marad` réteg sorai nem változnak. **Az `ellenorzes` oszlop üres**, ezért pontosság nem mérhető. A „nem ront” itt csak annyit jelent, hogy a minta egyetlen sora sem változik a felhasználói példák ellenében. A 93 visszavont összevonás közül egy sem esik a mintába, így azokat a minta nem méri.
 - **Hunspell (DT301, csak mérce).** A kísérlet nem hoz létre új szóalakot. Az egyetlen szövegváltozó alakpár a *mi → ami* (9 token). Ez a `helyesiras_hunspell.tsv`-ben már `semleges`, mert a Hunspell mindkét alakot elfogadja. A visszavont összevonás a régi alakot (*a*, *mi*) adja vissza. A Hunspell a *mi* és az *ami* között szóalakon nem dönt, mert a különbség szövegkörnyezeti (4.1.4). Ezért nem futott újra; a szótárfájlok és a futtató ebben a sessionben nincsenek meg.
+
+#### 4.6.4 Alkalmazva (DT-F96i 🟢, 1. opció)
+
+**A felhasználó döntése:** 2026-10-24, chat: „Mehet a javaslat”. A 4.6.1 szabálya a kiadott .1 része lett, a `szabaly` oszlopban `ami:<kritérium>` címkével. A `--ami-proba` futás a DT-F96i előtti és a DT-F96i szerinti döntést veti össze, a kiadott réteget nem írja.
+
+`scope=a Károli 1908 minden verse (31 158) és tokenje (599 367) | forras=konkordancia/Karoli_1908.tsv (sha256:49335bbcc77d) + adat/szoto/karoli_szotari_alak.tsv (sha256:edba33e6d65a) + eszkozok/karoli_modern/helyesiras.py (sha256:555cf301c07a) | ts=2026-10-24` — `python eszkozok/karoli_modern/helyesiras.py --minta-frissit`, majd `--ami-proba`; 0 token.
+
+| | DT-F96i előtt (4.2) | DT-F96i szerint |
+|---|---:|---:|
+| változó vers | 12 804 | **12 760** |
+| változó token | 28 953 | **28 785** |
+| kieső (összevont „a”) | 11 212 | **11 128** (−93 + 9) |
+| `bizonytalan` „a mi” | 298 | **7** (és 1 `nagybetu`, változatlan) |
+| változó alak (`helyesiras_alakok.tsv`) | 1 377 | 1 377 (a törzs bájtra azonos) |
+
+A `helyesiras_tokenek.tsv`-ben csak a puszta „a mi” tokenjeinek sorai változtak: a döntés és a `szabaly` címke. Más sor nem változott (diff a futás előtti változattal).
+
+**A minta (`helyesiras_minta.tsv`)** az új `--minta-frissit` kapcsolóval frissült. Ez megtartja a kiválasztást (`minta_id`, `reteg`, `igehely`) és a felhasználói oszlopokat (`ellenorzes`, `megjegyzes`; most üresek), és csak a `szoveg_modern`, `valtozasok`, `alternativa` oszlopot számolja újra. A régi `--minta` kapcsoló a DT-F96i óta más verseket választana, mert a `bizonytalan` réteg jelöltjei 298-ról 7-re fogytak. Ezért a minta így nem generálódott újra. Változott 5 sor, a `bizonytalan` réteg 4 sora és az M076:
+- M076, M077, M078, M080: a bizonytalan „a mi” birtokosként jelölve (`=(birtokos, marad)`), a szöveg változatlan;
+- M079 (2Móz 9:4): *mindabból, a mi Izráel fiaié → mindabból, ami Izráel fiaié*.
+
+A `bizonytalan` réteg 4 sora így a DT-F96i döntéseit méri.
+
+**Külön felhasználói ellenőrzés: `adat/karoli_modern/helyesiras_ami_ellenorzes.tsv`**, generált, 109 token:
+
+| `tipus` | token | ellenőrizendő |
+|---|---:|---|
+| `osszevonas_visszavonva` | 93 | a DT-F96i előtt *ami* lett, most birtokos, marad *a mi* (*a mi atyáinknak, a mi mindennapi kenyerünket*) |
+| `osszevonas_uj` | 9 | a DT-F96i előtt bizonytalan volt, most *ami* |
+| `bizonytalan` | 7 | támpont nélkül, változatlan (a modell olvasata: 4.6.2) |
+
+Oszlopok: `szoveg_1908`, `szoveg_modern_dt_f96i_elott`, `szoveg_modern`, `kriterium`. Az `ellenorzes` és a `megjegyzes` oszlopot a felhasználó tölti (`jó` / `hibás`; a `bizonytalan` sorokon `vonatkozó` / `birtokos`). Újragenerálásnál a kitöltött értékek megmaradnak (`igehely` + `sorszam` kulcson). Ezt a 112 soros minta nem fedi: a K1 küszöbét (DT-F96h) erre a fájlra is alkalmazni kell.
+
+**Hunspell (DT301).** A `helyesiras_hunspell.tsv` fejléce a régi `helyesiras_tokenek.tsv` sha256-ját hordozza (`49fbf5d191c5`). Tartalmilag nem avult el: új alakpár nem keletkezett, a *mi → ami* pár benne van (`semleges`), és csak a darabszáma kisebb. Újrafuttatás nem volt, a futtató ebben a sessionben nincs meg.
+
+**A 4.2 „Az „a mi” kezelése” bekezdése a DT-F96i előtti állapotot írja le; a kiadott réteg a 4.6.1 szerint jár el.**
