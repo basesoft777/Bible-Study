@@ -1,4 +1,4 @@
-# GENERÁLT: eszkozok/karoli_modern/helyesiras.py (F96.1) — kézzel nem szerkeszthető; a javítás a szabályban vagy a kivételtáblában | forras=konkordancia/Karoli_1908.tsv (sha256:49335bbcc77d) + adat/szoto/karoli_szotari_alak.tsv (sha256:edba33e6d65a) + eszkozok/karoli_modern/helyesiras.py (sha256:fcc25c857009) | tokenizálás: eszkozok/karoli_strong/tokenek.py tokenizal (a #22 hu_sorszam-a; Strong token-kulcson illeszthető, DT-F96f) | a helyesírási lépcső (.1), az igealak (.2) nélkül; a puszta „a mi”: DT-F96i | Hunspell csak fejlesztési mérce (DT301, ítélete: helyesiras_hunspell.tsv), a tamasz=modell_ellenorizetlen a felhasználói mintán mérendő | scope=a szövegkörnyezet nélkül változó alakok (1580)
+# GENERÁLT: eszkozok/karoli_modern/helyesiras.py (F96.1) — kézzel nem szerkeszthető; a javítás a szabályban vagy a kivételtáblában | forras=konkordancia/Karoli_1908.tsv (sha256:49335bbcc77d) + adat/szoto/karoli_szotari_alak.tsv (sha256:edba33e6d65a) + eszkozok/karoli_modern/helyesiras.py (sha256:c11bfb3b38f9) | tokenizálás: eszkozok/karoli_strong/tokenek.py tokenizal (a #22 hu_sorszam-a; Strong token-kulcson illeszthető, DT-F96f) | a helyesírási lépcső (.1), az igealak (.2) nélkül; a puszta „a mi”: DT-F96i | Hunspell csak fejlesztési mérce (DT301, ítélete: helyesiras_hunspell.tsv), a tamasz=modell_ellenorizetlen a felhasználói mintán mérendő | scope=a szövegkörnyezet nélkül változó alakok (1590)
 alak	gyakorisag	alak_modern	szabaly	szabaly_forras	tamasz
 Aczmonig	1	Acmonig	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
 Aczmontól	1	Acmontól	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
@@ -218,7 +218,12 @@ Nyolczadik	2	Nyolcadik	karakter	manual (helyesírás-történet; #94: manual)	mo
 Nyolczadnapon	2	Nyolcadnapon	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
 Nyolcznapos	1	Nyolcnapos	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
 Nyolczvan	1	Nyolcvan	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
-Néki	4	Neki	neki	DT128	korpusz
+Néked	11	Neked	neki	DT128, DT-F96j	korpusz
+Nékem	10	Nekem	neki	DT128, DT-F96j	korpusz
+Néki	4	Neki	neki	DT128, DT-F96j	korpusz
+Nékik	2	Nekik	neki	DT128, DT-F96j	korpusz
+Néktek	7	Nektek	neki	DT128, DT-F96j	korpusz
+Nékünk	3	Nekünk	neki	DT128, DT-F96j	korpusz
 Orczád	1	Orcád	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
 Orczáját	1	Orcáját	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
 Orczám	1	Orcám	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
@@ -1097,7 +1102,12 @@ négyszázharminczöt	2	négyszázharmincöt	karakter	manual (helyesírás-tört
 négyszázhatvannyolcz	1	négyszázhatvannyolc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
 négyszáznyolczvanadik	1	négyszáznyolcvanadik	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
 négyőjöknek	1	négyőjüknek	jok	DT-F96g	modell_ellenorizetlen
-néki	1734	neki	neki	DT128	korpusz
+néked	773	neked	neki	DT128, DT-F96j	korpusz
+nékem	882	nekem	neki	DT128, DT-F96j	korpusz
+néki	1734	neki	neki	DT128, DT-F96j	korpusz
+nékik	1144	nekik	neki	DT128, DT-F96j	korpusz
+néktek	795	nektek	neki	DT128, DT-F96j	korpusz
+nékünk	292	nekünk	neki	DT128, DT-F96j	korpusz
 nélkűl	2	nélkül	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
 nősténynyel	1	nősténnyel	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
 olajfájokba	1	olajfájukba	jok	DT-F96g	modell_ellenorizetlen

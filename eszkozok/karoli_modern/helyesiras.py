@@ -13,7 +13,8 @@ Szabályok (a sorrend számít; minden szabály forrása a `szabaly_forras` oszl
 
   karakter      cz → c, czcz → cc, nyny → nny, lyly → lly, gygy → ggy, tyty → tty, szsz → ssz,
                 zszs → zzs, cscs → ccs (manual: általános helyesírás-történet; a #94-ben is manual)
-  neki          néki → neki (DT128 példája)
+  neki          néki → neki (DT128 példája) és a nék- család: néked, nékem, nékik, nékünk, néktek →
+                neked, nekem, nekik, nekünk, nektek (DT-F96j); a Nékó, Nékhusta (név) és a nékie nem
   szoto_94      a #94 `szotari_alak_mai` helyesírási eltérése (ékezet, e/ö, kettőzés) az alak elejére
                 vihető (setétség → sötétség, kivül → kívül, vajjon → vajon); a lemmaváltás
                 (e → ez, férfiú → férfi, leány → lány, mostan → most) NEM (DT-F96e a)
@@ -82,7 +83,7 @@ SZKRIPT = 'eszkozok/karoli_modern/helyesiras.py'
 
 FORRAS = {
     'karakter': 'manual (helyesírás-történet; #94: manual)',
-    'neki': 'DT128',
+    'neki': 'DT128, DT-F96j',
     'szoto_94': '#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai',
     'kivetel': 'N-F96b (manual)',
     'rea': 'DT-F96e b',
@@ -98,6 +99,7 @@ KIVETEL_LEMMA = {
     'dűl': None, 'ledűle': None, 'jóhiszeműleg': None,
     'kivűl': 'kívül',
 }
+NEK_CSALAD = {'néki', 'néked', 'nékem', 'nékik', 'nékünk', 'néktek'}
 SZOTAG = [(re.compile(r'dícs'), 'dics'), (re.compile(r'Dícs'), 'Dics'),
           (re.compile(r'^paizs'), 'pajzs'), (re.compile(r'^Paizs'), 'Pajzs'),
           (re.compile(r'^rézpaizs'), 'rézpajzs')]
@@ -187,8 +189,8 @@ def alak_modern(alak, sor, kis_szavak):
     szab = []
     uj = alak
     kis = alak.lower()
-    if kis == 'néki':
-        return nagy(alak, 'neki'), ['neki']
+    if kis in NEK_CSALAD:  # DT128 (néki), DT-F96j (néked, nékem, nékik, nékünk, néktek)
+        return nagy(alak, 'nek' + kis[3:]), ['neki']
     lemma = sor['szotari_alak'] if sor else ''
     mai = sor['szotari_alak_mai'] if sor else ''
     atvitt = False

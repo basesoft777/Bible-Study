@@ -445,3 +445,23 @@ A minta nem `valtozatlan` rétegű soraiban kimaradt régi írásmód, amelyre n
 2. **Egyedi ékezet- és betűhibák** (M024 *irígy*, M035 *akképen*, M054 *husvét*, M056 *bölcseség*, M058 *nyilásának*, M062 *hizelkedő*, M094 *sujts*). A #94 táblája és a karakterszabály nem fedi őket, korpusz-szintű számuk nem mért. → **N-F96c**.
 3. **Különírás:** *a felől, az által* (M065). Ez tokenváltozás volna (K2), ezért a .1 nem kezeli.
 4. **Az *atyjokfiai* összetétel** (M089): a DT-F96g szabálya csak szóvégen fut, az *atyánkfia*-típusú összetételben nem. Számuk nem mért.
+
+### 4.9 A DT-F96j alkalmazása és a .1 lezárása
+
+`scope=a Károli 1908 minden verse és tokenje; a minta 112 sora | forras=konkordancia/Karoli_1908.tsv (sha256:49335bbcc77d) + adat/szoto/karoli_szotari_alak.tsv (sha256:edba33e6d65a) + eszkozok/karoli_modern/helyesiras.py | ts=2026-10-24` — `python eszkozok/karoli_modern/helyesiras.py --minta-frissit`, majd `--ami-proba`; 0 token.
+
+**A felhasználó döntése** (chat, 2026-10-24: „Mehet”): a DT-F96j 1. opciója. A `neki` szabály zárt halmazra fut (`NEK_CSALAD`): *néki, néked, nékem, nékik, nékünk, néktek → neki, neked, nekem, nekik, nekünk, nektek*, nagybetűvel is. A korpusz *nék-* kezdetű tokenjei közül három kimarad: a *Nékó* és a *Nékhusta-* (tulajdonnév), valamint az egyszeri *nékie* (1Móz 15:5), mert az alakváltozat, nem csak ékezet. Ez utóbbi az N-F96c-hez tartozik.
+
+**Eredmény.** A DT-F96j **3 919 tokent** cserél, 10 alakon; a `neki` szabály összesen 5 657 tokenen fut (a *néki* 1 738-a és az új 3 919). Változó vers 13 083 → **14 733**, változó token 29 396 → **33 315**, változó alak 1 580 → **1 590**; a kieső tokenek száma 11 128, változatlan. A modern szövegben nem maradt *nék-* alak.
+
+**A minta.** A `--minta-frissit` 13 sort frissített (M015, M021, M034, M037, M049, M055, M057, M066, M075, M077, M085, M088, M101). Az új cseréket a modell átnézte, mind helyes. A `megjegyzes` oszlopban a korábbi „kimaradt (nincs rá szabály)” helyett ez áll: „DT-F96j: a nék- csere átnézve (jó)”. A csere csak ezt az oszlopot érintette; a többit a szkript soronként összevetette. Az `ellenorzes` értékei megmaradtak. Az „a mi” ellenőrző fájl 109 kitöltött sora a `--ami-proba` újrafuttatása után is megmaradt.
+
+**A K1 a DT-F96j után** (DT-F96h; modell-ellenőrzés, a felhasználó elfogadta):
+
+| halmaz | eredmény | küszöb | |
+|---|---:|---:|---|
+| minta, cserék (`→`) | **246 / 246 (100%)** | ≥ 98% | ✓ |
+| minta, `valtozatlan` réteg | **0** kihagyás | 0 | ✓ |
+| `helyesiras_ami_ellenorzes.tsv`, szövegváltozó sorok | **101 / 102 (99,0%)** | ≥ 98% | ✓ |
+
+**A .1 lezárva.** A K1 teljesül; a .1 ⛔ döntései (DT-F96e d, DT-F96g, DT-F96h, DT-F96i, DT-F96j) mind 🟢 és alkalmazva. Nyitva marad az N-F96c: az egyedi régi írásmódok (4.8.4) és a *nékie*. A K1 egyedül ezt a lépést nem tartja vissza.

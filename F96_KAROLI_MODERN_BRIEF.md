@@ -6,10 +6,10 @@ tipus: feladat
 fazis: 1
 modell: opus
 munka: adat
-allapot: megallt
+allapot: fut
 ag: ccr-a680d019-39s73e
 ad: a Károli 1908 modernizált szövegrétege (helyesírás + igealak; szórend, szókincs, írásjel, betoldás-jelölés változatlan), szabályalapú szavankénti cserével (a #94 szótári alak- és regies_jegy-táblájából, Hunspell csak fejlesztési mérce, DT301), LLM csak a szabállyal le nem fedett maradékra; minden token hordozza az 1908-as token vers-kulcsát és sorszámát (a Strong a #22 párosításából token-kulcson illeszthető, a réteg nem tárol Strongot, DT-F96f), a kieső segédigei vala jelölve; generált tábla az 1908-as szöveg mellett, nem helyette; két lépcső (helyesírás, majd igeragozás és vala), felhasználó által ellenőrzött mintán mérve, a token-felhasználással együtt
-kovetkezo: "Te: a DT-F96j (a nék- család, 3 919 token; napló 4.8.4). A .1 K1-e teljesül (napló 4.8.3; modell-ellenőrzés, a felhasználó elfogadta); a DT-F96j után a .1 lezárása, majd a .2"
+kovetkezo: "Modell: a .2 — igealak-lépcső és vala (a .1 lezárva, K1 teljesül: napló 4.9; nyitott: N-F96c)"
 olvas: [adat/szoto/, konkordancia/Karoli_1908.tsv, "adat/karoli_strong/*", adat/SEMA.md, adat/licencek.tsv, DONTESEK.md]
 ir: [eszkozok/karoli_modern/, adat/karoli_modern/, naplok/KAROLI_MODERN_meres.md]
 fugg: [94]
@@ -91,8 +91,8 @@ Szavankénti csere: minden modern token az 1908-as token vers-kulcsán és sorsz
 - **DT-F96f** 🟢 (helyőrző) — a modernizált réteg nem tárol és nem ellenőriz Strongot; minden sora hordozza az 1908-as token vers-kulcsát és sorszámát, így a #22 Strong-párosítása token-kulcson illeszthető (felhasználó, chat, 2026-10-24). Átvezetve: 1. szakasz, 2. szakasz, .2/2, K3, K4b, DT-F96b.
 - **DT-F96g** 🟢 (helyőrző) — a birtokos T/3 *-jok/-jök → -juk/-jük*; **eldöntve** (felhasználó, chat, 2026-10-24): a *j*-s változat (212 alak, 714 token) a .1 szabálya, a *j* nélküli marad; a mintán eltérő ítélet felülírja; alkalmazva (`jok` szabály, 714 token); `DONTESEK.md`, napló 4.7, 4.8.1.
 - **DT-F96h** 🟢 (helyőrző) — a K1 küszöbe; **eldöntve** (felhasználó, chat, 2026-10-24): változásszinten ≥ 98% helyes csere a mintán és külön a `helyesiras_ami_ellenorzes.tsv` 102 szövegváltozó során, a `valtozatlan` réteg 0 kihagyással; a `jek`/`jok` A/B és a bizonytalan „a mi” nem hiba; `DONTESEK.md`, napló 4.7. Mérve: teljesül (minta 230/230, ami-ellenőrzés 101/102; modell-ellenőrzés, a felhasználó elfogadta), napló 4.8.3.
-- **DT-F96j** 🟡 (helyőrző) — a .1: a *nék-* család (*néked, nékem, nékik, nékünk, néktek*; 3 919 token) a `neki` szabályba kerüljön-e (ma csak a *néki*); `DONTESEK.md`, napló 4.8.4.
-- **N-F96c** (helyőrző) — a .1 szabályai által nem fedett egyedi régi írásmódok (*irígy, akképen, husvét, bölcseség, nyilásának, hizelkedő, sujts*) és az összetételben álló *-jok* (*atyjokfiai*): korpusz-szintű számuk nem mért; napló 4.8.4.
+- **DT-F96j** 🟢 (helyőrző) — a *nék-* család (*néked, nékem, nékik, nékünk, néktek*; 3 919 token) a `neki` szabályban; **eldöntve** (felhasználó, chat, 2026-10-24: „Mehet”), alkalmazva; `DONTESEK.md`, napló 4.9.
+- **N-F96c** (helyőrző) — a .1 szabályai által nem fedett egyedi régi írásmódok (*irígy, akképen, husvét, bölcseség, nyilásának, hizelkedő, sujts*, *nékie*) és az összetételben álló *-jok* (*atyjokfiai*): korpusz-szintű számuk nem mért; napló 4.8.4.
 - **DT-F96i** 🟢 (helyőrző) — a puszta „a mi” birtokos/vonatkozó támpontjai (B1/B2 *-nk* birtokos, V1–V4); **eldöntve** (felhasználó, chat, 2026-10-24, „Mehet a javaslat”): a kiadott .1-ben (bizonytalan 298 → 7, 93 hibás összevonás visszavonva); a 109 szöveget változtató vagy bizonytalan token külön felhasználói ellenőrzésre (`adat/karoli_modern/helyesiras_ami_ellenorzes.tsv`), a K1 erre is vonatkozik; napló 4.6.
 - **N-F96b** (helyőrző) — a #94 `regies_jegy` értékkészletéből hiányzik a tárgyas T/3 (*mondák, adák*), és megfigyelt táblahibák (*vévén*, *kivűl*); a modernizálás saját szabállyal kezeli (napló 1.2).
 - **N-F96a** (helyőrző) — a modernizált réteg `pardes.db`-be töltése és a keresőbe kötése (`eszkozok/sqlite_epit.py`, `eszkozok/olvaso_szerver/kereses.py`) külön csonk-feladat, a #96 és a #92 után; a DT-F96b miatt kötelező, nem elhagyható. A csonk: #137 (KAROLI_MODERN_DB), a felhasználó jóváhagyásával befogadva (2026-10-24).
