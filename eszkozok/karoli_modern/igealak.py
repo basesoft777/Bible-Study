@@ -202,6 +202,15 @@ class Alakok:
         if not kis.startswith(kot):
             return None
         szem, targy = JEGY_SZEM[jegy]
+        if jegy in ('mult.E1', 'mult.E3') and kis.endswith(('taték', 'teték')):
+            # szenvedő E/3 (kiadaték → kiadatott, elemészteték → elemésztetett), nem E/1
+            to = kis[:-3]
+            return {'': nagy(alak, to + ir.kotohang(to))}
+        v = alap[:-2] if alap.endswith('ik') and len(alap) > 3 else alap
+        if (jegy == 'mult.E1' and kis.endswith('ék') and not self.targyas_kepes(kot, alap)
+                and ((kot + v + 'ik') in self.kis_szavak or (v + 'ik') in self.kis_szavak)):
+            m = ir.mult(alap, 'E3', False)  # -ik-es ige E/3-a (elutazék → elutazott), nem E/1
+            return {'': nagy(alak, kot + m)} if m else None
         if alap in TARGYAS_MINDIG:
             targy = True
         if jegy == 'mult.E1' and magas(alap) and kis.endswith('ék') and self.targyas_kepes(kot, alap):
@@ -889,7 +898,7 @@ def minta_sor(mid, reteg, ih, vers_ki):
         elif r[4] == 'segedige':
             valt.append('%d:%s→(kiesik, segédige)' % (r[0], r[1]))
         elif r[1] != r[3]:
-            valt.append('%d:%s→%s%s' % (r[0], r[1], r[3], ' [.2]' if r[6] else ''))
+            valt.append('%d:%s→%s%s' % (r[0], r[1], r[3], ' [.2]' if r[3] != r[2] else ''))
         if r[8]:
             valt.append('%d:%s?(%s)' % (r[0], r[1], r[8]))
         if r[9]:
