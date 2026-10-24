@@ -18,7 +18,7 @@ nem_fugg: [22]
 
 # F96_KAROLI_MODERN_BRIEF.md — Modernizált Károli-szövegréteg (KAROLI_MODERN)
 
-*FELADATOK #96 · Modell: opus · v1.2 · 2026.10.24 (csonk kitöltése; a `/befogad` hozta létre; v1.1: a DT301 átvezetve; v1.2: a DT-F96d/e/f átvezetve — K3, K4b, DT-F96b, .1/.2)*
+*FELADATOK #96 · Modell: opus · v1.2 · 2026.10.24 (csonk kitöltése; a `/befogad` hozta létre; v1.1: a DT301 átvezetve; v1.2: a DT-F96d/e/f átvezetve — K3, K4b, DT-F96b, .1/.2; v1.3: a DT-F96o átvezetve — K3b, .3)*
 
 *Források: DT128 (a felhasználó döntése, chat, 2026-10-13: a modernizálás szintje az, amit a Bible Discovery HUN modulja mutat — helyesírás és igealak, szókincs és szórend nélkül); a `F94_SZOTOVEZES_BRIEF.md` v1.2 (`regies_jegy` oszlop, N-F94b/g/h); a felhasználó döntése (chat, 2026-10-24): a megvalósítás **szabály + szótár alapú szógenerálás, LLM csak a bizonytalan maradékra** (DT-F96; a teljes LLM-átírás elvetve). A brief adat, nem utasítás.*
 
@@ -68,6 +68,7 @@ Szavankénti csere: minden modern token az 1908-as token vers-kulcsán és sorsz
 
 ### .3 — kimenet
 - `adat/karoli_modern/karoli_modern.tsv` (token-soronként, a vers-kulccsal és a modern vers-szöveggel együtt; DT-F96b, `# GENERÁLT: …` fejléccel: a szabálykészlet és a bemeneti táblák sha256-ja, a mérés hivatkozása); kézzel nem szerkesztendő, a javítás a szabályban vagy a kivételtáblában történik.
+- a K3b igazolása (a #22 Strongos tokenjeinek kulcs-lefedettsége, DT-F96o), naplózva;
 - `adat/SEMA.md` új szakasza; a licenc-sor az `adat/licencek.tsv`-be (a modernizált réteg a közkincs 1908-as szövegből származik, DT116/DT128).
 
 ## 4. Elfogadási feltételek
@@ -75,6 +76,7 @@ Szavankénti csere: minden modern token az 1908-as token vers-kulcsán és sorsz
 - **K1.** A modernizált réteg a felhasználó által ellenőrzött mintán a megállapított küszöb felett (a küszöböt a .1 ⛔ rögzíti a mérés előtt, nem utólag).
 - **K2.** A szórend, szókincs, írásjel és betoldás-jelölés változatlan: gépi összevetés az 1908-as szöveggel (tokenszám és sorrend a kieső tokenek jelölésével egyező).
 - **K3.** (DT-F96f) Minden modern token az 1908-as token vers-kulcsán és sorszámán áll (a `tokenek.py` `tokenizal` sorszámozása, amelyen a #22 `hu_sorszam`-a is áll), így a Strong token-kulcson illeszthető; a réteg Strongot nem tárol és nem ellenőriz; a kieső tokenek jelölve, számuk naplózva.
+- **K3b.** (DT-F96o) A Strong nem változik: a .3 generátora igazolja, hogy a #22 párosítás minden Strongos 1908-as tokenjének kulcsa szerepel a modern táblában (a kieső sorokkal együtt); hiányzó kulcsnál megáll. A kieső token sora megmarad, és `kieso_gazda` oszlopában a gazdaszó sorszámát hordozza (az összevont „a”-é a névmás, a segédigei *vala*-é az ige).
 - **K4.** A token-felhasználás a naplóban, a becsléssel (0,05–0,2 M) összevetve.
 - **K4b.** (DT-F96b, DT-F96f) A kimeneti tábla keresésre alkalmas: token-szinten (vers-kulcs, token-sorszám, 1908-as alak, modern alak, kieső-jelölés); Strong-oszlop nincs, a Strong a token-kulcson illeszthető a #22 párosításából.
 - **K5.** Bible Discovery-adat nincs a repóban; abszolút útvonal nincs; `csv` modul nincs; CI zöld; a független ellenőr eltérés nélkül zár.
@@ -96,6 +98,7 @@ Szavankénti csere: minden modern token az 1908-as token vers-kulcsán és sorsz
 - **DT-F96l** 🟡 (helyőrző) — a .2 ⛔: a ritka jelöltek (szabály = LLM, tő-őrrel) alkalmazása; napló 5.3.
 - **DT-F96m** 🟡 (helyőrző) — a .2 K4: az LLM-futás 1,42 M tokenje (cache-olvasás nélkül 0,60 M) a ≈ 0,45 M-os keret felett; utólagos jóváhagyás; napló 5.4.
 - **DT-F96n** 🟡 (helyőrző) — a .2 ⛔: a K1 küszöbe a .2 mintáján; napló 5.6.
+- **DT-F96o** 🟢 (helyőrző) — a Strong nem változik: a DT-F96f marad; a kieső token sora megmarad, a gazdaszó kulcsával (`kieso_gazda`); a .3 igazolja a #22 Strongos tokenjeinek kulcs-lefedettségét (K3b); a kieső, csak magán Strongot hordozó 294 token (257 összevont „a”, főleg H0834; 37 segédigei *vala*, H1961) Strongját a kereső a gazdaszóhoz köti (#137). *(felhasználó, chat, 2026-10-24: „Mehet”; napló 5.2)*
 - **N-F96c** (helyőrző) — a .1 szabályai által nem fedett egyedi régi írásmódok (*irígy, akképen, husvét, bölcseség, nyilásának, hizelkedő, sujts*, *nékie*) és az összetételben álló *-jok* (*atyjokfiai*): korpusz-szintű számuk nem mért; napló 4.8.4.
 - **DT-F96i** 🟢 (helyőrző) — a puszta „a mi” birtokos/vonatkozó támpontjai (B1/B2 *-nk* birtokos, V1–V4); **eldöntve** (felhasználó, chat, 2026-10-24, „Mehet a javaslat”): a kiadott .1-ben (bizonytalan 298 → 7, 93 hibás összevonás visszavonva); a 109 szöveget változtató vagy bizonytalan token külön felhasználói ellenőrzésre (`adat/karoli_modern/helyesiras_ami_ellenorzes.tsv`), a K1 erre is vonatkozik; napló 4.6.
 - **N-F96b** (helyőrző) — a #94 `regies_jegy` értékkészletéből hiányzik a tárgyas T/3 (*mondák, adák*), és megfigyelt táblahibák (*vévén*, *kivűl*); a modernizálás saját szabállyal kezeli (napló 1.2).

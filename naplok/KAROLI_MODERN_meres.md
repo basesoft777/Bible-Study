@@ -503,6 +503,15 @@ A #94 tábla sok igealakot elemezetlenül hagy (*ülnek, jöttek, hallotta, szer
 
 **K2 önellenőrzés:** minden versen a modern szöveg újratokenizálva pontosan a nem kieső tokenek modern alakjait adja, sorrendben. A nem-betű váz a kieső tokenek egy-egy szóközén kívül változatlan; eltérésnél a szkript megáll. **K3:** minden sor az 1908-as token vers-kulcsán és `tokenizal`-sorszámán áll (`igealak_tokenek.tsv`). A kieső tokenek: **2 447 segédigei** (`kieso=segedige`) és a .1 11 128 összevont „a”-ja (`kieso=osszevonva`).
 
+**A Strong a kieső tokeneken (DT-F96o).** `scope=a kieső tokenek a #22 párosított könyveiben | forras=adat/karoli_modern/igealak_tokenek.tsv + adat/karoli_strong/szavak_*.tsv | ts=2026-10-24` — a réteg Strongot nem tárol (DT-F96f); a mérés azt nézi, elveszhet-e Strong-illesztés.
+
+| kieső token | Strongos | a Strong a gazdaszón is ott van | csak a kieső tokenen | Strong nélkül (betoldás, függőben) | a könyv nincs párosítva |
+|---|---:|---:|---:|---:|---:|
+| összevont „a” | 5 572 | 5 315 | **257** (főleg H0834) | 3 865 | 1 691 |
+| segédigei *vala* | 38 | 1 | **37** (mind H1961) | 1 688 | 721 |
+
+A kieső sor a táblában megmarad (kulcs + `kieso`), ezért egy Strong-illesztés sem vész el. A modern szövegben a 294 tokennek nincs saját szava: a `kieso_gazda` oszlop a gazdaszó sorszámát adja (az összevont „a”-é a következő token, a segédigei *vala*-é az előző). A kereső (#137) ide köti a Strongot. A kulcs-lefedettség gépi igazolása a .3-ban (K3b).
+
 ### 5.3 LLM-ellenőrzés és tő-őr (DT-F96d)
 
 A nem automatikus igealak-jelöltek (ritka jegyes és régies gyanús alakok; **3 174 kisbetűs alak**) LLM-kérdésként mentek: alak, szótári alak, jegy és az első előfordulás versrészlete, a szabály jelöltje nélkül (vak ellenőrzés). Előfizetésből futott (Claude Code subagent, **claude-sonnet-5-5**, a .0 mérésének modellje), API és `PARDES_API_KEY` nélkül. Öt köteg: az elsőben 420 alak, ±8 szavas versrészlettel; a többi négyben 689 alak, ±5 szóval. Minden kérdésre jött válasz, 3 174 / 3 174 (`adat/karoli_modern/igealak_llm.tsv`, modell-kimenet, `modell_ellenorizetlen`).

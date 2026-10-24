@@ -43,7 +43,8 @@ adja, sorrendben; a nem-betű váz a kieső tokenek egy-egy szóközén kívül 
 
 Ír (generált, kézzel nem szerkeszthető):
   adat/karoli_modern/igealak_alakok.tsv    alakonként: osztály, jegy, szabály-jelölt, LLM-jelölt, döntés
-  adat/karoli_modern/igealak_tokenek.tsv   a .1 + .2 után változó, kieső, bizonytalan vagy jelölt tokenek
+  adat/karoli_modern/igealak_tokenek.tsv   a .1 + .2 után változó, kieső, bizonytalan vagy jelölt tokenek; a
+                                           kieső token `kieso_gazda` oszlopa a gazdaszó sorszáma (DT-F96o)
   adat/karoli_modern/igealak_minta.tsv     rögzített magú minta (--minta; --minta-frissit)
 
 Használat:
@@ -659,13 +660,16 @@ def kiir(vers_ki, gy, alakok, fd, a):
     for igehely, (sz, modern, t) in vers_ki.items():
         for r in t:
             if r[1] != r[3] or r[4] or r[7] or r[8] or r[9]:
+                # DT-F96o: a kieső token gazdaszava (a kereső ide köti a kieső token Strongját): az összevont
+                # „a”-é a következő (a névmás), a segédigei valáé az előző (az ige) token
+                gazda = str(r[0] + 1) if r[4] == 'osszevonva' else (str(r[0] - 1) if r[4] == 'segedige' else '')
                 tok_ki.append([igehely, str(r[0]), r[1], r[2], r[3], r[4], cimke(r[5], r[6]) if r[5] and r[6] else (r[5] or r[6]),
-                               cimke(r[7], r[8]) if r[7] and r[8] else (r[7] or r[8]), r[9]])
+                               cimke(r[7], r[8]) if r[7] and r[8] else (r[7] or r[8]), r[9], gazda])
     with open(os.path.join(ki_dir, 'igealak_tokenek.tsv'), 'w', encoding='utf-8', newline='\n') as f:
         f.write(fejlec.replace('\n', ' | scope=a .1 + .2 után változó, kieső, bizonytalan vagy jelölt tokenek (%d) a %d '
                                'tokenből\n' % (len(tok_ki), sum(gy.values()))))
         f.write('\t'.join(['igehely', 'sorszam', 'alak_1908', 'alak_helyesiras', 'alak_modern', 'kieso', 'szabaly',
-                           'bizonytalan', 'jelolt']) + '\n')
+                           'bizonytalan', 'jelolt', 'kieso_gazda']) + '\n')
         for r in tok_ki:
             f.write('\t'.join(r) + '\n')
     # alakonként
