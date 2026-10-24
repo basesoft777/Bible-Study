@@ -21,6 +21,8 @@ Szabályok (a sorrend számít; minden szabály forrása a `szabaly_forras` oszl
                 dűl-család és a jóhiszeműleg változatlan (a tábla mai alakja ott hibás: gyül, dül)
   rea           reá- → rá- (DT-F96e b)
   szotag        dícs- → dics-, paizs → pajzs (manual; a mintán mérendő)
+  jok           a j-s birtokos T/3 -jok/-jök → -juk/-jük (atyjok → atyjuk, rájok → rájuk; DT-F96g); a
+                többes számú tolvajok, bajok, tutajok- kizárva; a j nélküli (kezöket, szívök) marad
   nevmas        „a” + ki-/mely-/mi- és a vonatkozó határozószók (mint, mikor, hol, míg, hová …)
                 különírt alakja egybe: a kik → akik (DT128, N-F94f). Az „a” token kieső
                 (`kieso=osszevonva`), az összevont alak a névmás tokenjén áll.
@@ -31,8 +33,7 @@ Szabályok (a sorrend számít; minden szabály forrása a `szabaly_forras` oszl
                 a nagybetűs / személyes névmás utáni eset `bizonytalan` (változatlan, a felhasználó dönt)
 
 Nem e lépcső dolga (a .2-ben jön): igealak (teremté, monda, -ván/-vén), *vala*, *lőn*. A *-jék*
-felszólító E/3 (DT-F96e d) és a *-jok/-jök* birtokos T/3 itt nem változik: a mintában
-alternatívaként szerepel, a felhasználó dönt.
+felszólító E/3 nem változik (DT-F96e d); a mintában alternatívaként szerepel.
 
 Ír (generált, kézzel nem szerkeszthető):
   adat/karoli_modern/helyesiras_alakok.tsv   alakonként a változó alakok (alak → modern alak)
@@ -87,6 +88,7 @@ FORRAS = {
     'rea': 'DT-F96e b',
     'szotag': 'manual',
     'nevmas': 'DT128, N-F94f',
+    'jok': 'DT-F96g',
 }
 
 # N-F96b: a #94 tábla hibás mai alakjai. Lemma → None: a helyesírási átvitel nem fut (változatlan);
@@ -218,6 +220,10 @@ def alak_modern(alak, sor, kis_szavak):
         if u2 != uj:
             uj = u2
             szab.append('szotag')
+    u2 = jok_alt(uj)  # DT-F96g: a j-s birtokos T/3 -jok/-jök → -juk/-jük (a j nélküli marad)
+    if u2:
+        uj = u2
+        szab.append('jok')
     if szab == ['kivetel'] and uj == alak:
         return alak, ['kivetel']
     return uj, szab

@@ -1,4 +1,4 @@
-# GENERÁLT: eszkozok/karoli_modern/helyesiras.py (F96.1) — kézzel nem szerkeszthető; a javítás a szabályban vagy a kivételtáblában | forras=konkordancia/Karoli_1908.tsv (sha256:49335bbcc77d) + adat/szoto/karoli_szotari_alak.tsv (sha256:edba33e6d65a) + eszkozok/karoli_modern/helyesiras.py (sha256:555cf301c07a) | tokenizálás: eszkozok/karoli_strong/tokenek.py tokenizal (a #22 hu_sorszam-a; Strong token-kulcson illeszthető, DT-F96f) | a helyesírási lépcső (.1), az igealak (.2) nélkül; a puszta „a mi”: DT-F96i | Hunspell csak fejlesztési mérce (DT301, ítélete: helyesiras_hunspell.tsv), a tamasz=modell_ellenorizetlen a felhasználói mintán mérendő | scope=a változó, kieső vagy bizonytalan tokenek (28793) a 599367 tokenből
+# GENERÁLT: eszkozok/karoli_modern/helyesiras.py (F96.1) — kézzel nem szerkeszthető; a javítás a szabályban vagy a kivételtáblában | forras=konkordancia/Karoli_1908.tsv (sha256:49335bbcc77d) + adat/szoto/karoli_szotari_alak.tsv (sha256:edba33e6d65a) + eszkozok/karoli_modern/helyesiras.py (sha256:fcc25c857009) | tokenizálás: eszkozok/karoli_strong/tokenek.py tokenizal (a #22 hu_sorszam-a; Strong token-kulcson illeszthető, DT-F96f) | a helyesírási lépcső (.1), az igealak (.2) nélkül; a puszta „a mi”: DT-F96i | Hunspell csak fejlesztési mérce (DT301, ítélete: helyesiras_hunspell.tsv), a tamasz=modell_ellenorizetlen a felhasználói mintán mérendő | scope=a változó, kieső vagy bizonytalan tokenek (29404) a 599367 tokenből
 igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 1Móz 1:2	9	setétség	sötétség		szoto_94	
 1Móz 1:4	14	setétségtől	sötétségtől		szoto_94	
@@ -54,6 +54,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 1Móz 3:5	6	a		osszevonva	nevmas	
 1Móz 3:5	7	mely	amely		nevmas:mely	
 1Móz 3:6	17	kivánatos	kívánatos		szoto_94	
+1Móz 3:7	3	mindkettőjöknek	mindkettőjüknek		jok	
 1Móz 3:8	7	a		osszevonva	nevmas	
 1Móz 3:8	8	ki	aki		nevmas:ki	
 1Móz 3:9	10	néki	neki		neki	
@@ -78,6 +79,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 1Móz 4:17	12	szűlé	szülé		szoto_94	
 1Móz 4:19	14	Czilla	Cilla		karakter	
 1Móz 4:20	2	szűlé	szülé		szoto_94	
+1Móz 4:20	7	atyjok	atyjuk		jok	
 1Móz 4:22	1	Czilla	Cilla		karakter	
 1Móz 4:22	3	szűlé	szülé		szoto_94	
 1Móz 4:23	10	Czilla	Cilla		karakter	
@@ -169,7 +171,9 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 1Móz 9:10	18	a		osszevonva	nevmas	
 1Móz 9:10	19	mi	ami		ami:V3_ige_elotte+nevmas:mi	
 1Móz 9:22	11	hírűl	hírül		szoto_94	
+1Móz 9:23	16	atyjok	atyjuk		jok	
 1Móz 9:23	19	arczczal	arccal		karakter	
+1Móz 9:23	24	atyjok	atyjuk		jok	
 1Móz 9:24	7	a		osszevonva	nevmas	
 1Móz 9:24	8	mit	amit		nevmas:mi	
 1Móz 9:26	8	néki	neki		neki	
@@ -184,10 +188,14 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 1Móz 10:18	2	Czemareust	Cemareust		karakter	
 1Móz 10:19	6	Czídonból	Cídonból		karakter	
 1Móz 10:19	15	Czeboim	Ceboim		karakter	
+1Móz 10:20	5	családjok	családjuk		jok	
+1Móz 10:20	7	földjök	földjük		jok	
 1Móz 10:21	5	a		osszevonva	nevmas	
 1Móz 10:21	6	ki	aki		nevmas:ki	
 1Móz 10:23	4	Úcz	Úc		karakter	
 1Móz 10:26	6	Haczarmávethet	Hacarmávethet		karakter	
+1Móz 10:31	5	családjok	családjuk		jok	
+1Móz 10:31	7	földjök	földjük		jok	
 1Móz 11:6	30	a		osszevonva	nevmas	
 1Móz 11:6	31	mit	amit		nevmas:mi	
 1Móz 11:12	3	harminczöt	harmincöt		karakter	
@@ -335,8 +343,10 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 1Móz 17:27	16	körűlmetéltetének	körülmetéltetének		szoto_94	
 1Móz 18:1	4	néki	neki		neki	
 1Móz 18:1	12	űl	ül		szoto_94	
+1Móz 18:2	17	eléjök	eléjük		jok	
 1Móz 18:5	26	a		osszevonva	nevmas	
 1Móz 18:5	27	mint	amint		nevmas:hatarozo	
+1Móz 18:8	13	eléjök	eléjük		jok	
 1Móz 18:9	3	néki	neki		neki	
 1Móz 18:10	5	bizonynyal	bizonnyal		karakter	
 1Móz 18:13	11	Vajjon	Vajon		szoto_94	
@@ -354,12 +364,14 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 1Móz 19:1	11	űl	ül		szoto_94	
 1Móz 19:1	14	a		osszevonva	nevmas	
 1Móz 19:1	15	mint	amint		nevmas:hatarozo	
+1Móz 19:1	20	eléjök	eléjük		jok	
 1Móz 19:1	22	arczczal	arccal		karakter	
 1Móz 19:2	32	utczán	utcán		karakter	
 1Móz 19:4	8	körűlvevék	körülvevék		szoto_94	
 1Móz 19:5	5	néki	neki		neki	
 1Móz 19:5	10	a		osszevonva	nevmas	
 1Móz 19:5	11	kik	akik		nevmas:ki	
+1Móz 19:6	5	hozzájok	hozzájuk		jok	
 1Móz 19:8	6	a		osszevonva	nevmas	
 1Móz 19:8	7	kik	akik		nevmas:ki	
 1Móz 19:8	19	a		osszevonva	nevmas	
@@ -387,8 +399,11 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 1Móz 19:31	16	a		osszevonva	nevmas	
 1Móz 19:31	17	ki	aki		nevmas:ki	
 1Móz 19:32	13	támaszszunk	támasszunk		karakter	
+1Móz 19:33	7	atyjoknak	atyjuknak		jok	
 1Móz 19:34	17	néki	neki		neki	
 1Móz 19:34	30	támaszszunk	támasszunk		karakter	
+1Móz 19:35	8	atyjoknak	atyjuknak		jok	
+1Móz 19:36	9	atyjoktól	atyjuktól		jok	
 1Móz 19:37	2	szűle	szüle		szoto_94	
 1Móz 19:38	5	szűle	szüle		szoto_94	
 1Móz 20:3	9	néki	neki		neki	
@@ -737,6 +752,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 1Móz 31:24	11	néki	neki		neki	
 1Móz 31:32	1	A		osszevonva	nevmas	
 1Móz 31:32	2	kinél	Akinél		nevmas:ki	
+1Móz 31:34	17	rájok	rájuk		jok	
 1Móz 31:34	18	űle	üle		szoto_94	
 1Móz 31:37	11	közűl	közül		szoto_94	
 1Móz 31:39	1	A		osszevonva	nevmas	
@@ -750,6 +766,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 1Móz 31:50	11	kivűl	kívül		kivetel	
 1Móz 31:51	13	a		osszevonva	nevmas	
 1Móz 31:51	14	melyet	amelyet		nevmas:mely	
+1Móz 31:53	11	atyjok	atyjuk		jok	
 1Móz 32:10	10	a		osszevonva	nevmas	
 1Móz 32:10	11	melyeket	amelyeket		nevmas:mely	
 1Móz 32:10	18	pálczámmal	pálcámmal		karakter	
@@ -855,6 +872,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 1Móz 36:35	12	ki	aki		nevmas:ki	
 1Móz 36:39	23	a		osszevonva	nevmas	
 1Móz 36:39	24	ki	aki		nevmas:ki	
+1Móz 36:40	11	családjok	családjuk		jok	
 1Móz 36:42	5	Mibczár	Mibcár		karakter	
 1Móz 37:3	16	czifra	cifra		karakter	
 1Móz 37:3	20	néki	neki		neki	
@@ -864,7 +882,10 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 1Móz 37:10	17	a		osszevonva	nevmas	
 1Móz 37:10	18	melyet	amelyet		nevmas:mely	
 1Móz 37:11	4	reá	rá		rea	
+1Móz 37:12	11	atyjok	atyjuk		jok	
+1Móz 37:13	15	hozzájok	hozzájuk		jok	
 1Móz 37:14	3	néki	neki		neki	
+1Móz 37:18	8	hozzájok	hozzájuk		jok	
 1Móz 37:22	13	a		osszevonva	nevmas	
 1Móz 37:22	14	mely	amely		nevmas:mely	
 1Móz 37:22	23	reá	rá		rea	
@@ -873,6 +894,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 1Móz 37:23	18	czifra	cifra		karakter	
 1Móz 37:27	10	reá	rá		rea	
 1Móz 37:32	4	czifra	cifra		karakter	
+1Móz 37:32	8	atyjokhoz	atyjukhoz		jok	
 1Móz 38:3	6	szűle	szüle		szoto_94	
 1Móz 38:4	7	szűle	szüle		szoto_94	
 1Móz 38:5	3	szűle	szüle		szoto_94	
@@ -932,6 +954,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 1Móz 40:5	8	a		osszevonva	nevmas	
 1Móz 40:5	9	kik	akik		nevmas:ki	
 1Móz 40:5	11	tömlöczben	tömlöcben		karakter	
+1Móz 40:6	3	hozzájok	hozzájuk		jok	
 1Móz 40:7	6	a		osszevonva	nevmas	
 1Móz 40:7	7	kik	akik		nevmas:ki	
 1Móz 40:7	23	orczátok	orcátok		karakter	
@@ -953,6 +976,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 1Móz 41:15	11	ki	aki		nevmas:ki	
 1Móz 41:16	12	a		osszevonva	nevmas	
 1Móz 41:16	13	mi	ami		ami:V1_irasjel_elotte+nevmas:mi	
+1Móz 41:21	14	külsejök	külsejük		jok	
 1Móz 41:22	8	nevekedik	növekedik		szoto_94	
 1Móz 41:23	10	nevekedik	növekedik		szoto_94	
 1Móz 41:24	17	a		osszevonva	nevmas	
@@ -979,6 +1003,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 1Móz 41:55	26	mit	amit		nevmas:mi	
 1Móz 42:4	5	öcscsét	öccsét		karakter	
 1Móz 42:6	23	arczczal	arccal		karakter	
+1Móz 42:7	13	hozzájok	hozzájuk		jok	
 1Móz 42:9	6	a		osszevonva	nevmas	
 1Móz 42:9	7	melyeket	amelyeket		nevmas:mely	
 1Móz 42:10	3	néki	neki		neki	
@@ -991,8 +1016,11 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 1Móz 42:21	23	reá	rá		rea	
 1Móz 42:21	26	reánk	ránk		rea	
 1Móz 42:22	21	reám	rám		rea	
+1Móz 42:24	7	hozzájok	hozzájuk		jok	
+1Móz 42:26	3	gabonájokat	gabonájukat		jok	
 1Móz 42:28	23	a		osszevonva	nevmas	
 1Móz 42:28	24	mit	amit		nevmas:mi	
+1Móz 42:29	3	atyjokhoz	atyjukhoz		jok	
 1Móz 42:29	10	néki	neki		neki	
 1Móz 42:29	11	a		osszevonva	nevmas	
 1Móz 42:29	12	mi	ami		ami:regi_szabaly+nevmas:mi	
@@ -1001,10 +1029,14 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 1Móz 42:35	4	mint	amint		nevmas:hatarozo	
 1Móz 42:35	15	A		osszevonva	nevmas	
 1Móz 42:35	16	mint	Amint		nevmas:hatarozo	
+1Móz 42:35	26	atyjok	atyjuk		jok	
+1Móz 42:36	6	atyjok	atyjuk		jok	
 1Móz 42:38	29	a		osszevonva	nevmas	
 1Móz 42:38	30	melyen	amelyen		nevmas:mely	
+1Móz 43:2	16	atyjok	atyjuk		jok	
 1Móz 43:3	3	néki	neki		neki	
 1Móz 43:7	27	néki	neki		neki	
+1Móz 43:11	7	atyjok	atyjuk		jok	
 1Móz 43:12	8	a		osszevonva	nevmas	
 1Móz 43:12	9	mely	amely		nevmas:mely	
 1Móz 43:16	1	A		osszevonva	nevmas	
@@ -1013,6 +1045,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 1Móz 43:18	7	miért	amiért		nevmas:mi	
 1Móz 43:18	28	reánk	ránk		rea	
 1Móz 43:19	8	néki	neki		neki	
+1Móz 43:23	28	hozzájok	hozzájuk		jok	
 1Móz 43:26	6	néki	neki		neki	
 1Móz 43:27	14	a		osszevonva	nevmas	
 1Móz 43:27	15	kiről	akiről		nevmas:ki	
@@ -1021,6 +1054,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 1Móz 43:30	10	öcscse	öccse		karakter	
 1Móz 43:31	3	orczáját	orcáját		karakter	
 1Móz 43:32	3	néki	neki		neki	
+1Móz 43:34	15	mindnyájok	mindnyájuk		jok	
 1Móz 44:1	15	a		osszevonva	nevmas	
 1Móz 44:1	16	mennyit	amennyit		nevmas:hatarozo	
 1Móz 44:2	22	a		osszevonva	nevmas	
@@ -1034,6 +1068,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 1Móz 44:9	6	közűl	közül		szoto_94	
 1Móz 44:10	8	a		osszevonva	nevmas	
 1Móz 44:10	9	kinél	akinél		nevmas:ki	
+1Móz 44:13	4	ruhájokat	ruhájukat		jok	
 1Móz 44:15	8	a		osszevonva	nevmas	
 1Móz 44:15	9	mit	amit		nevmas:mi	
 1Móz 44:16	31	a		osszevonva	nevmas	
@@ -1050,12 +1085,15 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 1Móz 45:9	8	néki	neki		neki	
 1Móz 45:13	11	a		osszevonva	nevmas	
 1Móz 45:13	12	mit	amit		nevmas:mi	
+1Móz 45:25	10	atyjokhoz	atyjukhoz		jok	
 1Móz 45:27	3	néki	neki		neki	
 1Móz 45:27	7	a		osszevonva	nevmas	
 1Móz 45:27	8	melyeket	amelyeket		nevmas:mely	
 1Móz 45:27	17	a		osszevonva	nevmas	
 1Móz 45:27	18	melyeket	amelyeket		nevmas:mely	
+1Móz 45:27	29	atyjoknak	atyjuknak		jok	
 1Móz 46:4	7	bizonynyal	bizonnyal		karakter	
+1Móz 46:5	12	atyjokat	atyjukat		jok	
 1Móz 46:9	6	Kheczrón	Khecrón		karakter	
 1Móz 46:10	8	Czóhár	Cóhár		karakter	
 1Móz 46:12	7	Perecz	Perec		karakter	
@@ -1079,6 +1117,8 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 1Móz 46:29	17	mint	amint		nevmas:hatarozo	
 1Móz 46:30	12	orczádat	orcádat		karakter	
 1Móz 46:31	21	néki	neki		neki	
+1Móz 46:32	15	valamijök	valamijük		jok	
+1Móz 47:1	20	valamijök	valamijük		jok	
 1Móz 47:2	7	közűl	közül		szoto_94	
 1Móz 47:9	12	harmincz	harminc		karakter	
 1Móz 47:9	33	a		osszevonva	nevmas	
@@ -1093,16 +1133,20 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 1Móz 47:18	30	a		osszevonva	nevmas	
 1Móz 47:18	31	mint	amint		nevmas:hatarozo	
 1Móz 47:19	2	veszszünk	vesszünk		karakter	
+1Móz 47:20	17	földjöket	földjüket		jok	
 1Móz 47:22	23	a		osszevonva	nevmas	
 1Móz 47:22	24	mit	amit		nevmas:mi	
+1Móz 47:22	37	földjöket	földjüket		jok	
 1Móz 47:26	2	törvénynyé	törvénnyé		karakter	
 1Móz 47:26	21	egyedűl	egyedül		szoto_94	
 1Móz 47:29	14	néki	neki		neki	
+1Móz 47:30	15	sírjokba	sírjukba		jok	
 1Móz 47:31	8	néki	neki		neki	
 1Móz 48:5	7	a		osszevonva	nevmas	
 1Móz 48:5	8	kik	akik		nevmas:ki	
 1Móz 48:11	8	orczádat	orcádat		karakter	
 1Móz 48:12	12	arczczal	arccal		karakter	
+1Móz 48:13	4	mindkettejöket	mindkettejüket		jok	
 1Móz 48:15	8	a		osszevonva	nevmas	
 1Móz 48:15	9	kinek	akinek		nevmas:ki	
 1Móz 48:15	20	a		osszevonva	nevmas	
@@ -1112,6 +1156,8 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 1Móz 48:17	14	néki	neki		neki	
 1Móz 49:1	15	a		osszevonva	nevmas	
 1Móz 49:1	16	mi	ami		ami:V1_irasjel_elotte+nevmas:mi	
+1Móz 49:6	11	haragjokban	haragjukban		jok	
+1Móz 49:7	2	haragjok	haragjuk		jok	
 1Móz 49:10	11	pálcza	pálca		karakter	
 1Móz 49:10	13	közűl	közül		szoto_94	
 1Móz 49:10	20	néki	neki		neki	
@@ -1123,6 +1169,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 1Móz 49:26	17	közűl	közül		szoto_94	
 1Móz 49:28	9	a		osszevonva	nevmas	
 1Móz 49:28	10	mit	amit		nevmas:mi	
+1Móz 49:28	15	atyjok	atyjuk		jok	
 1Móz 49:33	4	a		osszevonva	nevmas	
 1Móz 49:33	5	mit	amit		nevmas:mi	
 1Móz 50:1	6	orczájára	orcájára		karakter	
@@ -1133,6 +1180,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 1Móz 50:12	9	miképen	amiképpen		szoto_94+nevmas:hatarozo	
 1Móz 50:15	1	A		osszevonva	nevmas	
 1Móz 50:15	2	mint	Amint		nevmas:hatarozo	
+1Móz 50:15	9	atyjok	atyjuk		jok	
 1Móz 50:15	25	a		osszevonva	nevmas	
 1Móz 50:15	26	mit	amit		nevmas:mi	
 1Móz 50:17	25	a		osszevonva	nevmas	
@@ -1147,7 +1195,9 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 2Móz 1:8	6	a		osszevonva	nevmas	
 2Móz 1:8	7	ki	aki		nevmas:ki	
 2Móz 1:10	24	harczoljon	harcoljon		karakter	
+2Móz 1:11	3	föléjök	föléjük		jok	
 2Móz 1:13	2	kegyetlenűl	kegyetlenül		szoto_94	
+2Móz 1:14	13	munkájokkal	munkájukkal		jok	
 2Móz 1:14	15	kegyetlenűl	kegyetlenül		szoto_94	
 2Móz 1:15	8	a		osszevonva	nevmas	
 2Móz 1:15	9	kik	akik		nevmas:ki	
@@ -1156,6 +1206,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 2Móz 1:16	10	szűlőszékre	szülőszékre		szoto_94	
 2Móz 1:17	11	a		osszevonva	nevmas	
 2Móz 1:17	12	mint	amint		nevmas:hatarozo	
+2Móz 1:19	23	hozzájok	hozzájuk		jok	
 2Móz 1:19	26	szűlnek	szülnek		szoto_94	
 2Móz 1:22	11	a		osszevonva	nevmas	
 2Móz 1:22	12	ki	aki		nevmas:ki	
@@ -1166,12 +1217,16 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 2Móz 2:7	20	közűl	közül		szoto_94	
 2Móz 2:8	6	néki	neki		neki	
 2Móz 2:9	3	néki	neki		neki	
+2Móz 2:11	18	munkájokat	munkájukat		jok	
 2Móz 2:11	33	közűl	közül		szoto_94	
 2Móz 2:13	14	a		osszevonva	nevmas	
 2Móz 2:13	15	ki	aki		nevmas:ki	
 2Móz 2:15	23	leűle	leüle		szoto_94	
+2Móz 2:16	20	atyjoknak	atyjuknak		jok	
+2Móz 2:18	2	atyjokhoz	atyjukhoz		jok	
 2Móz 2:21	17	Czipporát	Cipporát		karakter	
 2Móz 2:22	3	szűle	szüle		szoto_94	
+2Móz 2:25	10	rájok	rájuk		jok	
 2Móz 3:2	3	néki	neki		neki	
 2Móz 3:5	16	a		osszevonva	nevmas	
 2Móz 3:5	17	melyen	amelyen		nevmas:mely	
@@ -1206,6 +1261,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 2Móz 4:26	9	körűlmetélkedésért	körülmetélkedésért		szoto_94	
 2Móz 4:28	18	reá	rá		rea	
 2Móz 5:6	10	sarczoltatóinak	sarcoltatóinak		karakter	
+2Móz 5:8	10	rájok	rájuk		jok	
 2Móz 5:10	5	sarczoltatói	sarcoltatói		karakter	
 2Móz 5:11	7	a		osszevonva	nevmas	
 2Móz 5:11	8	hol	ahol		nevmas:hatarozo	
@@ -1215,9 +1271,11 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 2Móz 5:14	9	a		osszevonva	nevmas	
 2Móz 5:14	10	kiket	akiket		nevmas:ki	
 2Móz 5:14	13	sarczoltatói	sarcoltatói		karakter	
+2Móz 5:14	16	föléjök	föléjük		jok	
 2Móz 6:2	8	néki	neki		neki	
 2Móz 6:4	15	a		osszevonva	nevmas	
 2Móz 6:4	16	melyen	amelyen		nevmas:mely	
+2Móz 6:6	23	szolgálatjoktól	szolgálatjuktól		jok	
 2Móz 6:7	18	a		osszevonva	nevmas	
 2Móz 6:7	19	ki	aki		nevmas:ki	
 2Móz 6:8	6	a		osszevonva	nevmas	
@@ -1263,7 +1321,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 2Móz 7:7	11	mikor	amikor		nevmas:hatarozo	
 2Móz 7:10	11	a		osszevonva	nevmas	
 2Móz 7:10	12	mint	amint		nevmas:hatarozo	
-2Móz 7:13	9	reájok	rájok		rea	
+2Móz 7:13	9	reájok	rájuk		rea+jok	
 2Móz 7:13	10	a		osszevonva	nevmas	
 2Móz 7:13	11	mint	amint		nevmas:hatarozo	
 2Móz 7:15	19	a		osszevonva	nevmas	
@@ -1283,7 +1341,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 2Móz 7:20	41	mely	amely		nevmas:mely	
 2Móz 7:21	4	a		osszevonva	nevmas	
 2Móz 7:21	5	mely	amely		nevmas:mely	
-2Móz 7:22	19	reájok	rájok		rea	
+2Móz 7:22	19	reájok	rájuk		rea+jok	
 2Móz 7:22	20	a		osszevonva	nevmas	
 2Móz 7:22	21	mint	amint		nevmas:hatarozo	
 2Móz 7:25	6	a		osszevonva	nevmas	
@@ -1298,10 +1356,10 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 2Móz 8:15	2	a		osszevonva	nevmas	
 2Móz 8:15	3	mint	amint		nevmas:hatarozo	
 2Móz 8:15	9	könnyebbűl	könnyebbül		szoto_94	
-2Móz 8:15	17	reájok	rájok		rea	
+2Móz 8:15	17	reájok	rájuk		rea+jok	
 2Móz 8:15	18	a		osszevonva	nevmas	
 2Móz 8:15	19	mint	amint		nevmas:hatarozo	
-2Móz 8:19	20	reájok	rájok		rea	
+2Móz 8:19	20	reájok	rájuk		rea+jok	
 2Móz 8:19	21	a		osszevonva	nevmas	
 2Móz 8:19	22	mint	amint		nevmas:hatarozo	
 2Móz 8:20	21	néki	neki		neki	
@@ -1320,7 +1378,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 2Móz 9:4	17	mi	ami		ami:V1_irasjel_elotte+nevmas:mi	
 2Móz 9:8	11	kemenczehamuval	kemencehamuval		karakter	
 2Móz 9:10	3	kemenczehamut	kemencehamut		karakter	
-2Móz 9:12	11	reájok	rájok		rea	
+2Móz 9:12	11	reájok	rájuk		rea+jok	
 2Móz 9:12	12	a		osszevonva	nevmas	
 2Móz 9:12	13	mint	amint		nevmas:hatarozo	
 2Móz 9:13	16	néki	neki		neki	
@@ -1457,6 +1515,8 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 2Móz 14:16	7	pálczádat	pálcádat		karakter	
 2Móz 14:19	6	a		osszevonva	nevmas	
 2Móz 14:19	7	ki	aki		nevmas:ki	
+2Móz 14:19	16	mögéjök	mögéjük		jok	
+2Móz 14:19	23	mögéjök	mögéjük		jok	
 2Móz 14:20	18	setétség	sötétség		szoto_94	
 2Móz 14:31	8	a		osszevonva	nevmas	
 2Móz 14:31	9	melyet	amelyet		nevmas:mely	
@@ -1464,7 +1524,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 2Móz 15:4	10	harczosai	harcosai		karakter	
 2Móz 15:11	16	dícsérendő	dicsérendő		szotag	
 2Móz 15:17	9	lakhelyűl	lakhelyül		szoto_94	
-2Móz 15:19	16	reájok	rájok		rea	
+2Móz 15:19	16	reájok	rájuk		rea+jok	
 2Móz 15:20	17	tánczolva	táncolva		karakter	
 2Móz 15:25	8	néki	neki		neki	
 2Móz 15:25	24	néki	neki		neki	
@@ -1495,7 +1555,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 2Móz 16:18	17	ki	aki		nevmas:ki	
 2Móz 16:18	26	a		osszevonva	nevmas	
 2Móz 16:18	27	mennyit	amennyit		nevmas:hatarozo	
-2Móz 16:20	17	reájok	rájok		rea	
+2Móz 16:20	17	reájok	rájuk		rea+jok	
 2Móz 16:21	6	a		osszevonva	nevmas	
 2Móz 16:21	7	mennyit	amennyit		nevmas:hatarozo	
 2Móz 16:23	7	a		osszevonva	nevmas	
@@ -1510,6 +1570,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 2Móz 16:24	8	mint	amint		nevmas:hatarozo	
 2Móz 16:34	1	A		osszevonva	nevmas	
 2Móz 16:34	2	mint	Amint		nevmas:hatarozo	
+2Móz 17:1	16	útjok	útjuk		jok	
 2Móz 17:5	17	közűl	közül		szoto_94	
 2Móz 17:5	18	pálczádat	pálcádat		karakter	
 2Móz 17:5	20	melylyel	mellyel		karakter	
@@ -1575,10 +1636,10 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 2Móz 19:19	16	néki	neki		neki	
 2Móz 19:22	5	a		osszevonva	nevmas	
 2Móz 19:22	6	kik	akik		nevmas:ki	
-2Móz 19:22	15	reájok	rájok		rea	
+2Móz 19:22	15	reájok	rájuk		rea+jok	
 2Móz 19:23	24	körűl	körül		szoto_94	
 2Móz 19:24	5	néki	neki		neki	
-2Móz 19:24	31	reájok	rájok		rea	
+2Móz 19:24	31	reájok	rájuk		rea+jok	
 2Móz 20:2	8	a		osszevonva	nevmas	
 2Móz 20:2	9	ki	aki		nevmas:ki	
 2Móz 20:4	10	a		osszevonva	nevmas	
@@ -1643,6 +1704,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 2Móz 22:9	17	miről	amiről		nevmas:mi	
 2Móz 22:9	29	a		osszevonva	nevmas	
 2Móz 22:9	30	kit	akit		nevmas:ki	
+2Móz 22:11	6	kettejök	kettejük		jok	
 2Móz 22:16	6	a		osszevonva	nevmas	
 2Móz 22:16	7	ki	aki		nevmas:ki	
 2Móz 22:17	7	néki	neki		neki	
@@ -1689,6 +1751,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 2Móz 24:14	7	reánk	ránk		rea	
 2Móz 24:14	17	a		osszevonva	nevmas	
 2Móz 24:14	18	kinek	akinek		nevmas:ki	
+2Móz 24:14	23	hozzájok	hozzájuk		jok	
 2Móz 25:2	11	a		osszevonva	nevmas	
 2Móz 25:2	12	kit	akit		nevmas:ki	
 2Móz 25:3	6	a		osszevonva	nevmas	
@@ -1785,6 +1848,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 2Móz 28:38	16	a		osszevonva	nevmas	
 2Móz 28:38	17	melyeket	amelyeket		nevmas:mely	
 2Móz 28:39	4	koczkásan	kockásan		karakter	
+2Móz 28:41	22	tisztjökbe	tisztjükbe		jok	
 2Móz 28:43	9	a		osszevonva	nevmas	
 2Móz 28:43	10	mikor	amikor		nevmas:hatarozo	
 2Móz 28:43	16	a		osszevonva	nevmas	
@@ -1792,6 +1856,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 2Móz 29:1	3	a		osszevonva	nevmas	
 2Móz 29:1	4	mit	amit		nevmas:mi	
 2Móz 29:9	3	körűl	körül		szoto_94	
+2Móz 29:9	14	fejökre	fejükre		jok	
 2Móz 29:13	6	a		osszevonva	nevmas	
 2Móz 29:13	7	mi	ami		ami:V1_irasjel_elotte+nevmas:mi	
 2Móz 29:16	15	köröskörűl	köröskörül		szoto_94	
@@ -2104,6 +2169,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 2Móz 40:11	2	mosdómedenczét	mosdómedencét		karakter	
 2Móz 40:15	5	a		osszevonva	nevmas	
 2Móz 40:15	6	mint	amint		nevmas:hatarozo	
+2Móz 40:15	9	atyjokat	atyjukat		jok	
 2Móz 40:16	6	a		osszevonva	nevmas	
 2Móz 40:16	7	mint	amint		nevmas:hatarozo	
 2Móz 40:16	11	néki	neki		neki	
@@ -2293,6 +2359,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 3Móz 6:16	1	A		osszevonva	nevmas	
 3Móz 6:16	2	mi	Ami		ami:regi_szabaly+nevmas:mi	
 3Móz 6:17	4	kovászszal	kovásszal		karakter	
+3Móz 6:20	7	áldozatjok	áldozatjuk		jok	
 3Móz 6:20	8	a		osszevonva	nevmas	
 3Móz 6:20	9	melyet	amelyet		nevmas:mely	
 3Móz 6:22	1	A		osszevonva	nevmas	
@@ -2438,6 +2505,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 3Móz 9:21	13	a		osszevonva	nevmas	
 3Móz 9:21	14	mint	amint		nevmas:hatarozo	
 3Móz 9:24	26	arczra	arcra		karakter	
+3Móz 10:1	12	temjénezőjöket	temjénezőjüket		jok	
 3Móz 10:1	29	a		osszevonva	nevmas	
 3Móz 10:1	30	melyet	amelyet		nevmas:mely	
 3Móz 10:3	7	a		osszevonva	nevmas	
@@ -2847,6 +2915,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 3Móz 21:20	13	ki	aki		nevmas:ki	
 3Móz 21:21	2	a		osszevonva	nevmas	
 3Móz 21:21	3	kiben	akiben		nevmas:ki	
+3Móz 21:23	30	megszentelőjök	megszentelőjük		jok	
 3Móz 22:2	24	a		osszevonva	nevmas	
 3Móz 22:2	25	miket	amiket		nevmas:mi	
 3Móz 22:3	18	a		osszevonva	nevmas	
@@ -2861,11 +2930,13 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 3Móz 22:5	15	kitől	akitől		nevmas:ki	
 3Móz 22:6	4	a		osszevonva	nevmas	
 3Móz 22:6	5	ki	aki		nevmas:ki	
+3Móz 22:9	26	megszentelőjök	megszentelőjük		jok	
 3Móz 22:11	14	a		osszevonva	nevmas	
 3Móz 22:11	15	ki	aki		nevmas:ki	
 3Móz 22:13	6	özvegygyé	özveggyé		karakter	
 3Móz 22:15	9	a		osszevonva	nevmas	
 3Móz 22:15	10	melyeket	amelyeket		nevmas:mely	
+3Móz 22:16	19	megszentelőjök	megszentelőjük		jok	
 3Móz 22:18	34	a		osszevonva	nevmas	
 3Móz 22:18	35	miket	amiket		nevmas:mi	
 3Móz 22:20	1	A		osszevonva	nevmas	
@@ -2877,6 +2948,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 3Móz 23:2	12	melyeken	amelyeken		nevmas:mely	
 3Móz 23:4	8	a		osszevonva	nevmas	
 3Móz 23:4	9	melyekre	amelyekre		nevmas:mely	
+3Móz 23:4	11	idejökben	idejükben		jok	
 3Móz 23:10	12	a		osszevonva	nevmas	
 3Móz 23:10	13	melyet	amelyet		nevmas:mely	
 3Móz 23:12	1	A		osszevonva	nevmas	
@@ -2886,6 +2958,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 3Móz 23:15	10	a		osszevonva	nevmas	
 3Móz 23:15	11	melyen	amelyen		nevmas:mely	
 3Móz 23:17	16	kovászszal	kovásszal		karakter	
+3Móz 23:18	27	italáldozatjokkal	italáldozatjukkal		jok	
 3Móz 23:20	18	báránynyal	báránnyal		karakter	
 3Móz 23:32	11	kilenczedikének	kilencedikének		karakter	
 3Móz 23:36	8	nyolczadik	nyolcadik		karakter	
@@ -3073,6 +3146,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 4Móz 1:3	8	ki	aki		nevmas:ki	
 4Móz 1:5	6	a		osszevonva	nevmas	
 4Móz 1:5	7	kik	akik		nevmas:ki	
+4Móz 1:16	7	atyjok	atyjuk		jok	
 4Móz 1:17	10	a		osszevonva	nevmas	
 4Móz 1:17	11	kik	akik		nevmas:ki	
 4Móz 1:19	1	A		osszevonva	nevmas	
@@ -3109,6 +3183,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 4Móz 1:45	4	a		osszevonva	nevmas	
 4Móz 1:45	5	kik	akik		nevmas:ki	
 4Móz 1:45	10	közűl	közül		szoto_94	
+4Móz 1:47	11	közéjök	közéjük		jok	
 4Móz 1:51	26	a		osszevonva	nevmas	
 4Móz 1:51	27	ki	aki		nevmas:ki	
 4Móz 1:54	9	a		osszevonva	nevmas	
@@ -3137,8 +3212,10 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 4Móz 3:1	11	melyen	amelyen		nevmas:mely	
 4Móz 3:3	8	a		osszevonva	nevmas	
 4Móz 3:3	9	kiket	akiket		nevmas:ki	
+4Móz 3:4	34	atyjoknak	atyjuknak		jok	
 4Móz 3:6	12	néki	neki		neki	
 4Móz 3:9	12	néki	neki		neki	
+4Móz 3:10	8	föléjök	föléjük		jok	
 4Móz 3:12	12	a		osszevonva	nevmas	
 4Móz 3:12	13	mely	amely		nevmas:mely	
 4Móz 3:13	5	a		osszevonva	nevmas	
@@ -3168,6 +3245,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 4Móz 3:49	8	kik	akik		nevmas:ki	
 4Móz 3:51	16	a		osszevonva	nevmas	
 4Móz 3:51	17	miképen	amiképpen		szoto_94+nevmas:hatarozo	
+4Móz 4:2	12	atyjoknak	atyjuknak		jok	
 4Móz 4:3	1	Harmincz	Harminc		karakter	
 4Móz 4:3	10	a		osszevonva	nevmas	
 4Móz 4:3	11	ki	aki		nevmas:ki	
@@ -3180,24 +3258,32 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 4Móz 4:14	21	medenczéket	medencéket		karakter	
 4Móz 4:16	27	a		osszevonva	nevmas	
 4Móz 4:16	28	mi	ami		ami:V1_irasjel_elotte+nevmas:mi	
+4Móz 4:22	9	atyjoknak	atyjuknak		jok	
 4Móz 4:23	2	harmincz	harminc		karakter	
 4Móz 4:23	14	a		osszevonva	nevmas	
 4Móz 4:23	15	ki	aki		nevmas:ki	
+4Móz 4:24	3	munkájok	munkájuk		jok	
 4Móz 4:25	16	a		osszevonva	nevmas	
 4Móz 4:25	17	mely	amely		nevmas:mely	
 4Móz 4:26	10	a		osszevonva	nevmas	
 4Móz 4:26	11	melyek	amelyek		nevmas:mely	
+4Móz 4:26	24	szolgálatjokhoz	szolgálatjukhoz		jok	
 4Móz 4:26	30	a		osszevonva	nevmas	
 4Móz 4:26	31	mi	ami		ami:V1_irasjel_elotte+nevmas:mi	
+4Móz 4:27	13	szolgálatjok	szolgálatjuk		jok	
+4Móz 4:27	18	szolgálatjokra	szolgálatjukra		jok	
+4Móz 4:29	11	atyjoknak	atyjuknak		jok	
 4Móz 4:30	2	harmincz	harminc		karakter	
 4Móz 4:30	14	a		osszevonva	nevmas	
 4Móz 4:30	15	ki	aki		nevmas:ki	
 4Móz 4:31	3	a		osszevonva	nevmas	
 4Móz 4:31	4	mikre	amikre		nevmas:mi	
+4Móz 4:32	18	szolgálatjokhoz	szolgálatjukhoz		jok	
 4Móz 4:32	26	a		osszevonva	nevmas	
 4Móz 4:32	27	mikre	amikre		nevmas:mi	
 4Móz 4:33	8	a		osszevonva	nevmas	
 4Móz 4:33	9	melylyel	amellyel		karakter+nevmas:mely	
+4Móz 4:34	20	atyjoknak	atyjuknak		jok	
 4Móz 4:35	2	harmincz	harminc		karakter	
 4Móz 4:35	11	a		osszevonva	nevmas	
 4Móz 4:35	12	ki	aki		nevmas:ki	
@@ -3208,11 +3294,13 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 4Móz 4:39	2	harmincz	harminc		karakter	
 4Móz 4:39	11	a		osszevonva	nevmas	
 4Móz 4:39	12	kik	akik		nevmas:ki	
+4Móz 4:40	9	atyjoknak	atyjuknak		jok	
 4Móz 4:40	15	harmincz	harminc		karakter	
 4Móz 4:41	7	a		osszevonva	nevmas	
 4Móz 4:41	8	kik	akik		nevmas:ki	
 4Móz 4:41	14	a		osszevonva	nevmas	
 4Móz 4:41	15	kiket	akiket		nevmas:ki	
+4Móz 4:42	12	atyjoknak	atyjuknak		jok	
 4Móz 4:43	2	harmincz	harminc		karakter	
 4Móz 4:43	11	a		osszevonva	nevmas	
 4Móz 4:43	12	kik	akik		nevmas:ki	
@@ -3220,6 +3308,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 4Móz 4:45	8	kiket	akiket		nevmas:ki	
 4Móz 4:46	5	a		osszevonva	nevmas	
 4Móz 4:46	6	kiket	akiket		nevmas:ki	
+4Móz 4:46	18	atyjoknak	atyjuknak		jok	
 4Móz 4:47	2	harmincz	harminc		karakter	
 4Móz 4:47	10	a		osszevonva	nevmas	
 4Móz 4:47	11	kik	akik		nevmas:ki	
@@ -3272,6 +3361,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 4Móz 6:11	20	miért	amiért		nevmas:mi	
 4Móz 6:13	6	A		osszevonva	nevmas	
 4Móz 6:13	7	mely	Amely		nevmas:mely	
+4Móz 6:15	17	hozzájok	hozzájuk		jok	
 4Móz 6:18	26	a		osszevonva	nevmas	
 4Móz 6:18	27	mely	amely		nevmas:mely	
 4Móz 6:19	8	lapoczkáját	lapockáját		karakter	
@@ -3287,6 +3377,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 4Móz 6:26	8	reád	rád		rea	
 4Móz 7:1	4	a		osszevonva	nevmas	
 4Móz 7:1	5	mely	amely		nevmas:mely	
+4Móz 7:2	8	atyjok	atyjuk		jok	
 4Móz 7:8	5	nyolcz	nyolc		karakter	
 4Móz 7:9	15	a		osszevonva	nevmas	
 4Móz 7:9	16	melyet	amelyet		nevmas:mely	
@@ -3323,6 +3414,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 4Móz 7:84	21	medencze	medence		karakter	
 4Móz 7:85	3	harmincz	harminc		karakter	
 4Móz 7:85	12	medencze	medence		karakter	
+4Móz 7:87	15	hozzájok	hozzájuk		jok	
 4Móz 7:89	17	a		osszevonva	nevmas	
 4Móz 7:89	18	ki	aki		nevmas:ki	
 4Móz 7:89	33	közűl	közül		szoto_94	
@@ -3331,9 +3423,10 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 4Móz 8:3	17	miképen	amiképpen		szoto_94+nevmas:hatarozo	
 4Móz 8:4	21	a		osszevonva	nevmas	
 4Móz 8:4	22	melyet	amelyet		nevmas:mely	
-4Móz 8:7	9	reájok	rájok		rea	
+4Móz 8:7	9	reájok	rájuk		rea+jok	
 4Móz 8:16	12	a		osszevonva	nevmas	
 4Móz 8:16	13	kik	akik		nevmas:ki	
+4Móz 8:16	16	anyjok	anyjuk		jok	
 4Móz 8:20	14	a		osszevonva	nevmas	
 4Móz 8:20	15	mint	amint		nevmas:hatarozo	
 4Móz 8:22	21	a		osszevonva	nevmas	
@@ -3375,6 +3468,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 4Móz 11:16	15	kikről	akikről		nevmas:ki	
 4Móz 11:17	13	a		osszevonva	nevmas	
 4Móz 11:17	14	mely	amely		nevmas:mely	
+4Móz 11:17	21	beléjök	beléjük		jok	
 4Móz 11:20	17	a		osszevonva	nevmas	
 4Móz 11:20	18	ki	aki		nevmas:ki	
 4Móz 11:21	9	a		osszevonva	nevmas	
@@ -3383,6 +3477,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 4Móz 11:25	14	a		osszevonva	nevmas	
 4Móz 11:25	15	mely	amely		nevmas:mely	
 4Móz 11:29	3	néki	neki		neki	
+4Móz 11:29	24	beléjök	beléjük		jok	
 4Móz 11:32	21	a		osszevonva	nevmas	
 4Móz 11:32	22	ki	aki		nevmas:ki	
 4Móz 11:33	12	a		osszevonva	nevmas	
@@ -3393,7 +3488,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 4Móz 12:3	13	kik	akik		nevmas:ki	
 4Móz 12:7	7	a		osszevonva	nevmas	
 4Móz 12:7	8	ki	aki		nevmas:ki	
-4Móz 12:9	7	reájok	rájok		rea	
+4Móz 12:9	7	reájok	rájuk		rea+jok	
 4Móz 12:12	9	a		osszevonva	nevmas	
 4Móz 12:12	10	melynek	amelynek		nevmas:mely	
 4Móz 12:14	15	orczájára	orcájára		karakter	
@@ -3510,6 +3605,8 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 4Móz 15:23	14	a		osszevonva	nevmas	
 4Móz 15:23	15	melyen	amelyen		nevmas:mely	
 4Móz 15:24	6	kivül	kívül		szoto_94	
+4Móz 15:25	23	áldozatjokat	áldozatjukat		jok	
+4Móz 15:25	31	áldozatjokat	áldozatjukat		jok	
 4Móz 15:28	9	a		osszevonva	nevmas	
 4Móz 15:28	10	ki	aki		nevmas:ki	
 4Móz 15:28	20	néki	neki		neki	
@@ -3544,6 +3641,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 4Móz 16:7	21	kit	akit		nevmas:ki	
 4Móz 16:9	30	néki	neki		neki	
 4Móz 16:10	19	kivánjátok	kívánjátok		szoto_94	
+4Móz 16:15	13	áldozatjokra	áldozatjukra		jok	
 4Móz 16:21	6	megemészszem	megemésszem		karakter	
 4Móz 16:22	3	arczukra	arcukra		karakter	
 4Móz 16:26	19	a		osszevonva	nevmas	
@@ -3573,7 +3671,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 4Móz 16:40	34	miképen	amiképpen		szoto_94+nevmas:hatarozo	
 4Móz 16:40	37	néki	neki		neki	
 4Móz 16:45	7	megemészszem	megemésszem		karakter	
-4Móz 16:45	13	orczájokra	orcájokra		karakter	
+4Móz 16:45	13	orczájokra	orcájukra		karakter+jok	
 4Móz 16:46	16	reá	rá		rea	
 4Móz 16:47	6	a		osszevonva	nevmas	
 4Móz 16:47	7	mint	amint		nevmas:hatarozo	
@@ -3582,6 +3680,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 4Móz 16:49	14	kivül	kívül		szoto_94	
 4Móz 16:49	15	a		osszevonva	nevmas	
 4Móz 16:49	16	kik	akik		nevmas:ki	
+4Móz 17:3	15	atyjok	atyjuk		jok	
 4Móz 17:4	12	a		osszevonva	nevmas	
 4Móz 17:4	13	hol	ahol		nevmas:hatarozo	
 4Móz 17:5	8	a		osszevonva	nevmas	
@@ -3598,12 +3697,17 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 4Móz 18:7	38	ki	aki		nevmas:ki	
 4Móz 18:9	6	a		osszevonva	nevmas	
 4Móz 18:9	7	melyek	amelyek		nevmas:mely	
+4Móz 18:9	14	áldozatjok	áldozatjuk		jok	
+4Móz 18:9	16	ételáldozatjok	ételáldozatjuk		jok	
+4Móz 18:9	20	áldozatjok	áldozatjuk		jok	
+4Móz 18:9	25	áldozatjok	áldozatjuk		jok	
 4Móz 18:9	26	a		osszevonva	nevmas	
 4Móz 18:9	27	miket	amiket		nevmas:mi	
 4Móz 18:11	28	a		osszevonva	nevmas	
 4Móz 18:11	29	kik	akik		nevmas:ki	
 4Móz 18:12	14	a		osszevonva	nevmas	
 4Móz 18:12	15	melyeket	amelyeket		nevmas:mely	
+4Móz 18:13	6	földjökön	földjükön		jok	
 4Móz 18:13	7	a		osszevonva	nevmas	
 4Móz 18:13	8	melyeket	amelyeket		nevmas:mely	
 4Móz 18:13	15	a		osszevonva	nevmas	
@@ -3623,6 +3727,8 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 4Móz 18:19	8	melyeket	amelyeket		nevmas:mely	
 4Móz 18:19	27	a		osszevonva	nevmas	
 4Móz 18:19	28	kik	akik		nevmas:ki	
+4Móz 18:20	8	földjökből	földjükből		jok	
+4Móz 18:21	13	szolgálatjokért	szolgálatjukért		jok	
 4Móz 18:21	17	a		osszevonva	nevmas	
 4Móz 18:21	18	melylyel	amellyel		karakter+nevmas:mely	
 4Móz 18:24	5	a		osszevonva	nevmas	
@@ -3815,6 +3921,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 4Móz 24:23	15	mikor	amikor		nevmas:hatarozo	
 4Móz 25:5	12	a		osszevonva	nevmas	
 4Móz 25:5	13	kik	akik		nevmas:ki	
+4Móz 25:8	11	mindkettőjöket	mindkettőjüket		jok	
 4Móz 25:12	13	néki	neki		neki	
 4Móz 25:14	7	a		osszevonva	nevmas	
 4Móz 25:14	8	ki	aki		nevmas:ki	
@@ -3853,6 +3960,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 4Móz 26:49	1	Jéczertől	Jécertől		karakter	
 4Móz 26:49	3	Jéczeriták	Jéceriták		karakter	
 4Móz 26:51	8	harmincz	harminc		karakter	
+4Móz 26:55	9	atyjok	atyjuk		jok	
 4Móz 26:59	9	a		osszevonva	nevmas	
 4Móz 26:59	10	ki	aki		nevmas:ki	
 4Móz 26:63	8	a		osszevonva	nevmas	
@@ -3873,6 +3981,9 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 4Móz 27:3	14	kik	akik		nevmas:ki	
 4Móz 27:3	33	néki	neki		neki	
 4Móz 27:7	4	Czélofhád	Célofhád		karakter	
+4Móz 27:7	12	atyjoknak	atyjuknak		jok	
+4Móz 27:7	17	rájok	rájuk		jok	
+4Móz 27:7	20	atyjoknak	atyjuknak		jok	
 4Móz 27:9	5	néki	neki		neki	
 4Móz 27:10	5	néki	neki		neki	
 4Móz 27:11	15	a		osszevonva	nevmas	
@@ -3918,15 +4029,34 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 4Móz 28:26	5	a		osszevonva	nevmas	
 4Móz 28:26	6	mikor	amikor		nevmas:hatarozo	
 4Móz 28:31	9	kivül	kívül		szoto_94	
+4Móz 28:31	15	italáldozatjokkal	italáldozatjukkal		jok	
 4Móz 29:6	8	kivül	kívül		szoto_94	
+4Móz 29:6	20	italáldozatjokon	italáldozatjukon		jok	
 4Móz 29:6	21	kivül	kívül		szoto_94	
+4Móz 29:6	24	rendjök	rendjük		jok	
 4Móz 29:11	10	kivül	kívül		szoto_94	
+4Móz 29:11	21	italáldozatjokon	italáldozatjukon		jok	
 4Móz 29:11	22	kivül	kívül		szoto_94	
+4Móz 29:18	3	ételáldozatjokat	ételáldozatjukat		jok	
+4Móz 29:18	5	italáldozatjokat	italáldozatjukat		jok	
+4Móz 29:19	16	italáldozatjokon	italáldozatjukon		jok	
 4Móz 29:19	17	kivül	kívül		szoto_94	
+4Móz 29:21	3	ételáldozatjokat	ételáldozatjukat		jok	
+4Móz 29:21	5	italáldozatjokat	italáldozatjukat		jok	
 4Móz 29:22	17	kivül	kívül		szoto_94	
+4Móz 29:24	2	ételáldozatjokat	ételáldozatjukat		jok	
+4Móz 29:24	4	italáldozatjokat	italáldozatjukat		jok	
 4Móz 29:26	3	kilencz	kilenc		karakter	
+4Móz 29:27	3	ételáldozatjokat	ételáldozatjukat		jok	
+4Móz 29:27	5	italáldozatjokat	italáldozatjukat		jok	
 4Móz 29:29	3	nyolcz	nyolc		karakter	
+4Móz 29:30	3	ételáldozatjokat	ételáldozatjukat		jok	
+4Móz 29:30	5	italáldozatjokat	italáldozatjukat		jok	
+4Móz 29:33	3	ételáldozatjokat	ételáldozatjukat		jok	
+4Móz 29:33	5	italáldozatjokat	italáldozatjukat		jok	
 4Móz 29:35	1	Nyolczadnapon	Nyolcadnapon		karakter	
+4Móz 29:37	2	ételáldozatjokat	ételáldozatjukat		jok	
+4Móz 29:37	4	italáldozatjokat	italáldozatjukat		jok	
 4Móz 29:39	10	a		osszevonva	nevmas	
 4Móz 29:39	11	miket	amiket		nevmas:mi	
 4Móz 29:39	32	a		osszevonva	nevmas	
@@ -3981,6 +4111,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 4Móz 31:8	12	Czúrt	Cúrt		karakter	
 4Móz 31:12	20	a		osszevonva	nevmas	
 4Móz 31:12	21	mely	amely		nevmas:mely	
+4Móz 31:13	13	eléjök	eléjük		jok	
 4Móz 31:14	11	a		osszevonva	nevmas	
 4Móz 31:14	12	kik	akik		nevmas:ki	
 4Móz 31:14	16	harczról	harcról		karakter	
@@ -4043,6 +4174,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 4Móz 31:52	6	melyet	amelyet		nevmas:mely	
 4Móz 32:4	3	a		osszevonva	nevmas	
 4Móz 32:4	4	melyet	amelyet		nevmas:mely	
+4Móz 32:4	21	marhájok	marhájuk		jok	
 4Móz 32:7	14	a		osszevonva	nevmas	
 4Móz 32:7	15	melyet	amelyet		nevmas:mely	
 4Móz 32:9	22	a		osszevonva	nevmas	
@@ -4075,6 +4207,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 4Móz 33:1	6	kik	akik		nevmas:ki	
 4Móz 33:4	7	a		osszevonva	nevmas	
 4Móz 33:4	8	kiket	akiket		nevmas:ki	
+4Móz 33:4	16	elsőszülöttjöket	elsőszülöttjüket		jok	
 4Móz 33:6	8	a		osszevonva	nevmas	
 4Móz 33:6	9	mely	amely		nevmas:mely	
 4Móz 33:7	8	a		osszevonva	nevmas	
@@ -4117,6 +4250,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 4Móz 34:29	3	a		osszevonva	nevmas	
 4Móz 34:29	4	kiknek	akiknek		nevmas:ki	
 4Móz 34:29	10	oszszanak	osszanak		karakter	
+4Móz 35:3	17	állatjoknak	állatjuknak		jok	
 4Móz 35:4	6	a		osszevonva	nevmas	
 4Móz 35:4	7	melyeket	amelyeket		nevmas:mely	
 4Móz 35:4	16	kivül	kívül		szoto_94	
@@ -4190,6 +4324,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 4Móz 36:6	9	Czélofhád	Célofhád		karakter	
 4Móz 36:6	13	A		osszevonva	nevmas	
 4Móz 36:6	14	kihez	Akihez		nevmas:ki	
+4Móz 36:6	24	atyjok	atyjuk		jok	
 4Móz 36:8	4	a		osszevonva	nevmas	
 4Móz 36:8	5	ki	aki		nevmas:ki	
 4Móz 36:10	1	A		osszevonva	nevmas	
@@ -4197,6 +4332,8 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 4Móz 36:10	13	Czélofhád	Célofhád		karakter	
 4Móz 36:11	3	Thircza	Thirca		karakter	
 4Móz 36:11	9	Czélofhád	Célofhád		karakter	
+4Móz 36:11	13	nagybátyjok	nagybátyjuk		jok	
+4Móz 36:12	17	atyjok	atyjuk		jok	
 4Móz 36:13	6	a		osszevonva	nevmas	
 4Móz 36:13	7	melyeket	amelyeket		nevmas:mely	
 5Móz 1:1	4	a		osszevonva	nevmas	
@@ -4446,6 +4583,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 5Móz 4:34	27	a		osszevonva	nevmas	
 5Móz 4:34	28	miképen	amiképpen		szoto_94+nevmas:hatarozo	
 5Móz 4:37	20	orczájával	orcájával		karakter	
+5Móz 4:38	17	földjöket	földjüket		jok	
 5Móz 4:40	9	a		osszevonva	nevmas	
 5Móz 4:40	10	melyeket	amelyeket		nevmas:mely	
 5Móz 4:40	34	a		osszevonva	nevmas	
@@ -4599,6 +4737,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 5Móz 7:19	23	melylyel	amellyel		karakter+nevmas:mely	
 5Móz 7:19	40	a		osszevonva	nevmas	
 5Móz 7:19	41	melytől	amelytől		nevmas:mely	
+5Móz 7:20	6	rájok	rájuk		jok	
 5Móz 7:20	19	a		osszevonva	nevmas	
 5Móz 7:20	20	kik	akik		nevmas:ki	
 5Móz 7:20	23	a		osszevonva	nevmas	
@@ -4740,13 +4879,14 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 5Móz 11:3	5	melyeket	amelyeket		nevmas:mely	
 5Móz 11:4	2	a		osszevonva	nevmas	
 5Móz 11:4	3	melyeket	amelyeket		nevmas:mely	
-5Móz 11:4	12	reájok	rájok		rea	
+5Móz 11:4	12	reájok	rájuk		rea+jok	
 5Móz 11:5	2	a		osszevonva	nevmas	
 5Móz 11:5	3	melyeket	amelyeket		nevmas:mely	
 5Móz 11:5	8	a		osszevonva	nevmas	
 5Móz 11:5	9	míg	amíg		nevmas:hatarozo	
 5Móz 11:6	2	a		osszevonva	nevmas	
 5Móz 11:6	3	melyeket	amelyeket		nevmas:mely	
+5Móz 11:6	27	marhájokkal	marhájukkal		jok	
 5Móz 11:6	29	a		osszevonva	nevmas	
 5Móz 11:6	30	mely	amely		nevmas:mely	
 5Móz 11:7	10	a		osszevonva	nevmas	
@@ -5222,6 +5362,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 5Móz 22:22	15	a		osszevonva	nevmas	
 5Móz 22:22	16	ki	aki		nevmas:ki	
 5Móz 22:22	18	asszonynyal	asszonnyal		karakter	
+5Móz 22:24	3	mindkettőjöket	mindkettőjüket		jok	
 5Móz 22:25	25	a		osszevonva	nevmas	
 5Móz 22:25	26	ki	aki		nevmas:ki	
 5Móz 22:26	18	a		osszevonva	nevmas	
@@ -5525,6 +5666,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 5Móz 29:2	15	mit	amit		nevmas:mi	
 5Móz 29:3	4	a		osszevonva	nevmas	
 5Móz 29:3	5	melyeket	amelyeket		nevmas:mely	
+5Móz 29:8	5	földjöket	földjüket		jok	
 5Móz 29:9	15	a		osszevonva	nevmas	
 5Móz 29:9	16	mit	amit		nevmas:mi	
 5Móz 29:11	9	a		osszevonva	nevmas	
@@ -5573,6 +5715,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 5Móz 29:27	10	reá	rá		rea	
 5Móz 29:27	15	a		osszevonva	nevmas	
 5Móz 29:27	16	mely	amely		nevmas:mely	
+5Móz 29:28	8	földjökről	földjükről		jok	
 5Móz 29:28	19	a		osszevonva	nevmas	
 5Móz 29:28	20	mint	amint		nevmas:hatarozo	
 5Móz 30:1	5	reád	rád		rea	
@@ -5608,6 +5751,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 5Móz 31:3	26	mint	amint		nevmas:hatarozo	
 5Móz 31:4	7	a		osszevonva	nevmas	
 5Móz 31:4	8	miképen	amiképpen		szoto_94+nevmas:hatarozo	
+5Móz 31:4	18	földjökkel	földjükkel		jok	
 5Móz 31:4	19	a		osszevonva	nevmas	
 5Móz 31:4	20	melyeket	amelyeket		nevmas:mely	
 5Móz 31:5	16	a		osszevonva	nevmas	
@@ -5638,6 +5782,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 5Móz 31:18	7	orczámat	orcámat		karakter	
 5Móz 31:18	16	a		osszevonva	nevmas	
 5Móz 31:18	17	melyet	amelyet		nevmas:mely	
+5Móz 31:19	16	szájokba	szájukba		jok	
 5Móz 31:20	7	a		osszevonva	nevmas	
 5Móz 31:20	8	mely	amely		nevmas:mely	
 5Móz 31:21	30	a		osszevonva	nevmas	
@@ -5671,13 +5816,19 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 5Móz 32:21	5	mi	ami		ami:V1_irasjel_elotte+nevmas:mi	
 5Móz 32:21	16	a		osszevonva	nevmas	
 5Móz 32:21	17	mi	ami		ami:V1_irasjel_elotte+nevmas:mi	
-5Móz 32:23	3	reájok	rájok		rea	
+5Móz 32:23	3	reájok	rájuk		rea+jok	
+5Móz 32:23	6	rájok	rájuk		jok	
+5Móz 32:24	12	rájok	rájuk		jok	
 5Móz 32:25	1	Kivül	Kívül		szoto_94	
 5Móz 32:30	1	Miképen	Miképpen		szoto_94	
+5Móz 32:30	13	Kősziklájok	Kősziklájuk		jok	
+5Móz 32:31	10	kősziklájok	kősziklájuk		jok	
+5Móz 32:32	4	szőlőjök	szőlőjük		jok	
 5Móz 32:35	6	a		osszevonva	nevmas	
 5Móz 32:35	7	mikor	amikor		nevmas:hatarozo	
 5Móz 32:35	19	a		osszevonva	nevmas	
 5Móz 32:35	20	mi	ami		ami:V1_irasjel_elotte+nevmas:mi	
+5Móz 32:35	21	rájok	rájuk		jok	
 5Móz 32:37	10	a		osszevonva	nevmas	
 5Móz 32:37	11	melyben	amelyben		nevmas:mely	
 5Móz 32:38	1	A		osszevonva	nevmas	
@@ -5798,6 +5949,7 @@ Józs 2:7	21	a		osszevonva	nevmas
 Józs 2:7	22	kik	akik		nevmas:ki	
 Józs 2:8	7	a		osszevonva	nevmas	
 Józs 2:8	8	mikor	amikor		nevmas:hatarozo	
+Józs 2:8	11	hozzájok	hozzájuk		jok	
 Józs 2:10	12	a		osszevonva	nevmas	
 Józs 2:10	13	mikor	amikor		nevmas:hatarozo	
 Józs 2:10	24	a		osszevonva	nevmas	
@@ -5909,6 +6061,7 @@ Józs 5:6	29	a		osszevonva	nevmas
 Józs 5:6	30	kiknek	akiknek		nevmas:ki	
 Józs 5:6	41	a		osszevonva	nevmas	
 Józs 5:6	42	mely	amely		nevmas:mely	
+Józs 5:12	17	mannájok	mannájuk		jok	
 Józs 5:13	3	a		osszevonva	nevmas	
 Józs 5:13	4	mikor	amikor		nevmas:hatarozo	
 Józs 5:13	30	néki	neki		neki	
@@ -5959,6 +6112,7 @@ Józs 7:2	8	mely	amely		nevmas:mely
 Józs 7:3	6	néki	neki		neki	
 Józs 7:5	7	harminczhat	harminchat		karakter	
 Józs 7:6	10	arczczal	arccal		karakter	
+Józs 7:6	25	fejökre	fejükre		jok	
 Józs 7:10	12	arczra	arcra		karakter	
 Józs 7:11	7	a		osszevonva	nevmas	
 Józs 7:11	8	melyet	amelyet		nevmas:mely	
@@ -6052,10 +6206,12 @@ Józs 9:10	10	a		osszevonva	nevmas
 Józs 9:10	11	kik	akik		nevmas:ki	
 Józs 9:10	23	a		osszevonva	nevmas	
 Józs 9:10	24	ki	aki		nevmas:ki	
+Józs 9:11	20	eléjök	eléjük		jok	
 Józs 9:12	7	a		osszevonva	nevmas	
 Józs 9:12	8	mikor	amikor		nevmas:hatarozo	
 Józs 9:13	6	a		osszevonva	nevmas	
 Józs 9:13	7	melyeket	amelyeket		nevmas:mely	
+Józs 9:16	15	hozzájok	hozzájuk		jok	
 Józs 9:20	16	a		osszevonva	nevmas	
 Józs 9:20	17	melylyel	amellyel		karakter+nevmas:mely	
 Józs 9:21	16	a		osszevonva	nevmas	
@@ -6072,6 +6228,8 @@ Józs 10:1	20	a		osszevonva	nevmas
 Józs 10:1	21	mint	amint		nevmas:hatarozo	
 Józs 10:6	35	a		osszevonva	nevmas	
 Józs 10:6	36	kik	akik		nevmas:ki	
+Józs 10:9	2	rájok	rájuk		jok	
+Józs 10:11	16	rájok	rájuk		jok	
 Józs 10:11	25	a		osszevonva	nevmas	
 Józs 10:11	26	kik	akik		nevmas:ki	
 Józs 10:11	36	a		osszevonva	nevmas	
@@ -6117,7 +6275,8 @@ Józs 11:2	5	a		osszevonva	nevmas
 Józs 11:2	6	kik	akik		nevmas:ki	
 Józs 11:4	17	a		osszevonva	nevmas	
 Józs 11:4	18	mely	amely		nevmas:mely	
-Józs 11:7	18	reájok	rájok		rea	
+Józs 11:6	12	mindnyájokat	mindnyájukat		jok	
+Józs 11:7	18	reájok	rájuk		rea+jok	
 Józs 11:9	6	a		osszevonva	nevmas	
 Józs 11:9	7	mint	amint		nevmas:hatarozo	
 Józs 11:9	10	néki	neki		neki	
@@ -6305,6 +6464,7 @@ Józs 16:10	8	ki	aki		nevmas:ki
 Józs 17:1	25	néki	neki		neki	
 Józs 17:3	2	Czélofhádnak	Célofhádnak		karakter	
 Józs 17:3	30	Thircza	Thirca		karakter	
+Józs 17:4	39	atyjoknak	atyjuknak		jok	
 Józs 17:5	11	a		osszevonva	nevmas	
 Józs 17:5	12	melyek	amelyek		nevmas:mely	
 Józs 17:7	9	a		osszevonva	nevmas	
@@ -6356,6 +6516,7 @@ Józs 19:35	4	Cziddim	Ciddim		karakter
 Józs 19:35	5	Czér	Cér		karakter	
 Józs 19:38	10	Tizenkilencz	Tizenkilenc		karakter	
 Józs 19:41	7	Czóra	Córa		karakter	
+Józs 19:47	41	atyjoknak	atyjuknak		jok	
 Józs 19:50	6	néki	neki		neki	
 Józs 19:50	10	a		osszevonva	nevmas	
 Józs 19:50	11	melyet	amelyet		nevmas:mely	
@@ -6487,6 +6648,7 @@ Józs 23:16	36	melyet	amelyet		nevmas:mely
 Józs 24:3	25	néki	neki		neki	
 Józs 24:5	10	a		osszevonva	nevmas	
 Józs 24:5	11	hogy	ahogy		nevmas:hatarozo	
+Józs 24:7	15	rájok	rájuk		jok	
 Józs 24:7	26	a		osszevonva	nevmas	
 Józs 24:7	27	mit	amit		nevmas:mi	
 Józs 24:8	7	a		osszevonva	nevmas	
@@ -6530,6 +6692,7 @@ Józs 24:27	21	a		osszevonva	nevmas
 Józs 24:27	22	melyet	amelyet		nevmas:mely	
 Józs 24:30	10	a		osszevonva	nevmas	
 Józs 24:30	11	mely	amely		nevmas:mely	
+Józs 24:31	15	idejökben	idejükben		jok	
 Józs 24:31	16	a		osszevonva	nevmas	
 Józs 24:31	17	kik	akik		nevmas:ki	
 Józs 24:31	24	a		osszevonva	nevmas	
@@ -6565,6 +6728,7 @@ Bír 1:24	8	ki	aki		nevmas:ki
 Bír 1:24	15	néki	neki		neki	
 Bír 1:29	8	a		osszevonva	nevmas	
 Bír 1:29	9	ki	aki		nevmas:ki	
+Bír 1:35	19	rájok	rájuk		jok	
 Bír 2:1	21	a		osszevonva	nevmas	
 Bír 2:1	22	mely	amely		nevmas:mely	
 Bír 2:7	15	a		osszevonva	nevmas	
@@ -6660,6 +6824,7 @@ Bír 5:31	9	a		osszevonva	nevmas
 Bír 5:31	10	kik	akik		nevmas:ki	
 Bír 6:2	25	a		osszevonva	nevmas	
 Bír 6:2	26	melyek	amelyek		nevmas:mely	
+Bír 6:3	17	rájok	rájuk		jok	
 Bír 6:4	12	a		osszevonva	nevmas	
 Bír 6:4	13	merre	amerre		nevmas:hatarozo	
 Bír 6:9	13	a		osszevonva	nevmas	
@@ -6712,6 +6877,7 @@ Bír 7:5	30	a		osszevonva	nevmas
 Bír 7:5	31	kik	akik		nevmas:ki	
 Bír 7:6	5	a		osszevonva	nevmas	
 Bír 7:6	6	kik	akik		nevmas:ki	
+Bír 7:6	8	szájokhoz	szájukhoz		jok	
 Bír 7:7	13	a		osszevonva	nevmas	
 Bír 7:7	14	kik	akik		nevmas:ki	
 Bír 7:9	3	néki	neki		neki	
@@ -6807,6 +6973,7 @@ Bír 9:38	15	néki	neki		neki
 Bír 9:38	22	a		osszevonva	nevmas	
 Bír 9:38	23	melyet	amelyet		nevmas:mely	
 Bír 9:38	31	harczolj	harcolj		karakter	
+Bír 9:43	27	Rájok	Rájuk		jok	
 Bír 9:44	7	a		osszevonva	nevmas	
 Bír 9:44	8	mely	amely		nevmas:mely	
 Bír 9:48	32	a		osszevonva	nevmas	
@@ -6955,6 +7122,7 @@ Bír 16:26	7	ki	aki		nevmas:ki
 Bír 16:26	11	Ereszsz	Eressz		karakter	
 Bír 16:26	18	a		osszevonva	nevmas	
 Bír 16:26	19	melyeken	amelyeken		nevmas:mely	
+Bír 16:29	21	hozzájok	hozzájuk		jok	
 Bír 16:30	5	veszszek	vesszek		karakter	
 Bír 16:30	36	a		osszevonva	nevmas	
 Bír 16:30	37	mennyit	amennyit		nevmas:hatarozo	
@@ -7005,6 +7173,7 @@ Bír 18:27	11	a		osszevonva	nevmas
 Bír 18:27	12	ki	aki		nevmas:ki	
 Bír 18:28	5	a		osszevonva	nevmas	
 Bír 18:28	6	ki	aki		nevmas:ki	
+Bír 18:29	7	atyjoknak	atyjuknak		jok	
 Bír 18:29	10	a		osszevonva	nevmas	
 Bír 18:29	11	ki	aki		nevmas:ki	
 Bír 18:31	8	a		osszevonva	nevmas	
@@ -7261,6 +7430,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 1Sám 2:20	25	kit	akit		nevmas:ki	
 1Sám 2:22	9	a		osszevonva	nevmas	
 1Sám 2:22	10	mit	amit		nevmas:mi	
+1Sám 2:25	24	atyjok	atyjuk		jok	
 1Sám 2:27	8	néki	neki		neki	
 1Sám 2:30	31	a		osszevonva	nevmas	
 1Sám 2:30	32	kik	akik		nevmas:ki	
@@ -7452,6 +7622,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 1Sám 14:6	7	ki	aki		nevmas:ki	
 1Sám 14:7	4	néki	neki		neki	
 1Sám 14:7	12	néki	neki		neki	
+1Sám 14:9	20	hozzájok	hozzájuk		jok	
 1Sám 14:11	19	a		osszevonva	nevmas	
 1Sám 14:11	20	hova	ahova		nevmas:hatarozo	
 1Sám 14:17	23	a		osszevonva	nevmas	
@@ -7731,6 +7902,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 1Sám 23:3	6	néki	neki		neki	
 1Sám 23:4	11	néki	neki		neki	
 1Sám 23:5	10	harczola	harcola		karakter	
+1Sám 23:5	16	marhájokat	marhájukat		jok	
 1Sám 23:6	4	a		osszevonva	nevmas	
 1Sám 23:6	5	mikor	amikor		nevmas:hatarozo	
 1Sám 23:8	5	harczra	harcra		karakter	
@@ -7772,6 +7944,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 1Sám 25:2	23	néki	neki		neki	
 1Sám 25:3	10	a		osszevonva	nevmas	
 1Sám 25:3	11	ki	aki		nevmas:ki	
+1Sám 25:7	16	semmijök	semmijük		jok	
 1Sám 25:8	22	a		osszevonva	nevmas	
 1Sám 25:8	23	mi	ami		ami:V1_irasjel_elotte+nevmas:mi	
 1Sám 25:10	21	a		osszevonva	nevmas	
@@ -7780,6 +7953,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 1Sám 25:11	12	melyet	amelyet		nevmas:mely	
 1Sám 25:11	19	a		osszevonva	nevmas	
 1Sám 25:11	20	kikről	akikről		nevmas:ki	
+1Sám 25:12	8	útjokra	útjukra		jok	
 1Sám 25:16	3	reánk	ránk		rea	
 1Sám 25:17	34	néki	neki		neki	
 1Sám 25:20	4	a		osszevonva	nevmas	
@@ -7834,7 +8008,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 1Sám 26:12	25	ki	aki		nevmas:ki	
 1Sám 26:12	29	a		osszevonva	nevmas	
 1Sám 26:12	30	ki	aki		nevmas:ki	
-1Sám 26:12	42	reájok	rájok		rea	
+1Sám 26:12	42	reájok	rájuk		rea+jok	
 1Sám 26:16	5	a		osszevonva	nevmas	
 1Sám 26:16	6	mit	amit		nevmas:mi	
 1Sám 26:16	16	a		osszevonva	nevmas	
@@ -7895,9 +8069,11 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 1Sám 30:2	6	a		osszevonva	nevmas	
 1Sám 30:2	7	kik	akik		nevmas:ki	
 1Sám 30:2	18	elhurczolták	elhurcolták		karakter	
+1Sám 30:2	23	útjokra	útjukra		jok	
 1Sám 30:3	20	hurczoltattak	hurcoltattak		karakter	
 1Sám 30:4	6	a		osszevonva	nevmas	
 1Sám 30:4	7	mely	amely		nevmas:mely	
+1Sám 30:4	17	erejök	erejük		jok	
 1Sám 30:5	6	hurczoltatott	hurcoltatott		karakter	
 1Sám 30:8	17	néki	neki		neki	
 1Sám 30:9	10	a		osszevonva	nevmas	
@@ -7915,6 +8091,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 1Sám 30:16	22	melyet	amelyet		nevmas:mely	
 1Sám 30:17	20	a		osszevonva	nevmas	
 1Sám 30:17	21	kik	akik		nevmas:ki	
+1Sám 30:19	2	semmijök	semmijük		jok	
 1Sám 30:19	18	a		osszevonva	nevmas	
 1Sám 30:19	19	mit	amit		nevmas:mi	
 1Sám 30:21	9	a		osszevonva	nevmas	
@@ -8060,7 +8237,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 2Sám 5:14	6	a		osszevonva	nevmas	
 2Sám 5:14	7	kik	akik		nevmas:ki	
 2Sám 5:17	7	királylyá	királlyá		karakter	
-2Sám 5:23	12	reájok	rájok		rea	
+2Sám 5:23	12	reájok	rájuk		rea+jok	
 2Sám 5:25	5	a		osszevonva	nevmas	
 2Sám 5:25	6	mint	amint		nevmas:hatarozo	
 2Sám 5:25	9	néki	neki		neki	
@@ -8304,6 +8481,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 2Sám 17:28	2	medenczéket	medencéket		karakter	
 2Sám 18:1	6	a		osszevonva	nevmas	
 2Sám 18:1	7	mely	amely		nevmas:mely	
+2Sám 18:1	15	föléjök	föléjük		jok	
 2Sám 18:3	28	anynyit	annyit		karakter	
 2Sám 18:4	6	A		osszevonva	nevmas	
 2Sám 18:4	7	mi	Ami		ami:V1_irasjel_elotte+nevmas:mi	
@@ -8364,6 +8542,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 2Sám 19:40	17	kik	akik		nevmas:ki	
 2Sám 20:3	15	a		osszevonva	nevmas	
 2Sám 20:3	16	kiket	akiket		nevmas:ki	
+2Sám 20:3	31	hozzájok	hozzájuk		jok	
 2Sám 20:5	12	a		osszevonva	nevmas	
 2Sám 20:5	13	hogy	ahogy		nevmas:hatarozo	
 2Sám 20:5	18	néki	neki		neki	
@@ -8383,7 +8562,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 2Sám 21:6	11	felakaszszunk	felakasszunk		karakter	
 2Sám 21:9	7	a		osszevonva	nevmas	
 2Sám 21:9	8	kik	akik		nevmas:ki	
-2Sám 21:10	21	reájok	rájok		rea	
+2Sám 21:10	21	reájok	rájuk		rea+jok	
 2Sám 21:11	4	a		osszevonva	nevmas	
 2Sám 21:11	5	mit	amit		nevmas:mi	
 2Sám 21:12	20	utczájáról	utcájáról		karakter	
@@ -8522,6 +8701,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 1Kir 2:3	26	mint	amint		nevmas:hatarozo	
 1Kir 2:3	37	a		osszevonva	nevmas	
 1Kir 2:3	38	melyeket	amelyeket		nevmas:mely	
+1Kir 2:4	19	útjokat	útjukat		jok	
 1Kir 2:5	29	a		osszevonva	nevmas	
 1Kir 2:5	30	kiket	akiket		nevmas:ki	
 1Kir 2:5	32	harczi	harci		karakter	
@@ -8709,7 +8889,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 1Kir 6:29	7	kivül	kívül		szoto_94	
 1Kir 6:30	8	aranynyal	arannyal		karakter	
 1Kir 6:30	9	kivül	kívül		szoto_94	
-1Kir 6:32	7	reájok	rájok		rea	
+1Kir 6:32	7	reájok	rájuk		rea+jok	
 1Kir 6:32	16	aranynyal	arannyal		karakter	
 1Kir 6:34	5	cziprusfából	ciprusfából		karakter	
 1Kir 6:35	12	aranynyal	arannyal		karakter	
@@ -8788,6 +8968,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 1Kir 8:8	21	kivül	kívül		szoto_94	
 1Kir 8:9	12	a		osszevonva	nevmas	
 1Kir 8:9	13	melyeket	amelyeket		nevmas:mely	
+1Kir 8:11	10	szolgálatjokban	szolgálatjukban		jok	
 1Kir 8:13	7	a		osszevonva	nevmas	
 1Kir 8:13	8	hol	ahol		nevmas:hatarozo	
 1Kir 8:15	9	a		osszevonva	nevmas	
@@ -8821,6 +9002,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 1Kir 8:25	9	mit	amit		nevmas:mi	
 1Kir 8:25	30	a		osszevonva	nevmas	
 1Kir 8:25	31	ki	aki		nevmas:ki	
+1Kir 8:25	45	útjokat	útjukat		jok	
 1Kir 8:25	50	a		osszevonva	nevmas	
 1Kir 8:25	51	mint	amint		nevmas:hatarozo	
 1Kir 8:26	9	a		osszevonva	nevmas	
@@ -8845,7 +9027,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 1Kir 8:36	28	melyen	amelyen		nevmas:mely	
 1Kir 8:36	36	a		osszevonva	nevmas	
 1Kir 8:36	37	melyet	amelyet		nevmas:mely	
-1Kir 8:37	23	reájok	rájok		rea	
+1Kir 8:37	23	reájok	rájuk		rea+jok	
 1Kir 8:38	1	A		osszevonva	nevmas	
 1Kir 8:38	2	ki	Aki		nevmas:ki	
 1Kir 8:39	23	a		osszevonva	nevmas	
@@ -8867,7 +9049,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 1Kir 8:44	39	melyet	amelyet		nevmas:mely	
 1Kir 8:46	8	a		osszevonva	nevmas	
 1Kir 8:46	9	ki	aki		nevmas:ki	
-1Kir 8:46	14	reájok	rájok		rea	
+1Kir 8:46	14	reájok	rájuk		rea+jok	
 1Kir 8:46	23	a		osszevonva	nevmas	
 1Kir 8:46	24	kiktől	akiktől		nevmas:ki	
 1Kir 8:47	15	a		osszevonva	nevmas	
@@ -8932,7 +9114,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 1Kir 9:8	8	kik	akik		nevmas:ki	
 1Kir 9:9	12	a		osszevonva	nevmas	
 1Kir 9:9	13	ki	aki		nevmas:ki	
-1Kir 9:9	34	reájok	rájok		rea	
+1Kir 9:9	34	reájok	rájuk		rea+jok	
 1Kir 9:11	1	A		osszevonva	nevmas	
 1Kir 9:11	2	melyekhez	Amelyekhez		nevmas:mely	
 1Kir 9:11	10	czédrusfákat	cédrusfákat		karakter	
@@ -9030,6 +9212,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 1Kir 11:1	13	kivül	kívül		szoto_94	
 1Kir 11:2	4	a		osszevonva	nevmas	
 1Kir 11:2	5	kik	akik		nevmas:ki	
+1Kir 11:2	17	hozzájok	hozzájuk		jok	
 1Kir 11:3	3	néki	neki		neki	
 1Kir 11:4	30	a		osszevonva	nevmas	
 1Kir 11:4	31	mint	amint		nevmas:hatarozo	
@@ -9047,6 +9230,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 1Kir 11:13	22	melyet	amelyet		nevmas:mely	
 1Kir 11:14	10	a		osszevonva	nevmas	
 1Kir 11:14	11	ki	aki		nevmas:ki	
+1Kir 11:18	7	melléjök	melléjük		jok	
 1Kir 11:18	20	a		osszevonva	nevmas	
 1Kir 11:18	21	ki	aki		nevmas:ki	
 1Kir 11:18	24	néki	neki		neki	
@@ -9169,6 +9353,8 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 1Kir 13:11	21	melyet	amelyet		nevmas:mely	
 1Kir 13:11	32	a		osszevonva	nevmas	
 1Kir 13:11	33	melyeket	amelyeket		nevmas:mely	
+1Kir 13:11	43	atyjoknak	atyjuknak		jok	
+1Kir 13:12	6	atyjok	atyjuk		jok	
 1Kir 13:12	18	a		osszevonva	nevmas	
 1Kir 13:12	19	melyen	amelyen		nevmas:mely	
 1Kir 13:12	25	a		osszevonva	nevmas	
@@ -9672,8 +9858,10 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 2Kir 3:21	13	harczolni	harcolni		karakter	
 2Kir 3:21	16	a		osszevonva	nevmas	
 2Kir 3:21	17	kik	akik		nevmas:ki	
+2Kir 3:24	19	hozzájok	hozzájuk		jok	
 2Kir 3:27	7	a		osszevonva	nevmas	
 2Kir 3:27	8	ki	aki		nevmas:ki	
+2Kir 3:27	33	földjökbe	földjükbe		jok	
 2Kir 4:1	40	néki	neki		neki	
 2Kir 4:2	2	néki	neki		neki	
 2Kir 4:5	12	néki	neki		neki	
@@ -9833,8 +10021,12 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 2Kir 9:17	5	a		osszevonva	nevmas	
 2Kir 9:17	6	ki	aki		nevmas:ki	
 2Kir 9:17	23	Válaszsz	Válassz		karakter	
+2Kir 9:17	28	eléjök	eléjük		jok	
+2Kir 9:18	34	Hozzájok	Hozzájuk		jok	
 2Kir 9:19	6	a		osszevonva	nevmas	
 2Kir 9:19	7	ki	aki		nevmas:ki	
+2Kir 9:19	8	hozzájok	hozzájuk		jok	
+2Kir 9:20	8	Hozzájok	Hozzájuk		jok	
 2Kir 9:24	10	lapoczkák	lapockák		karakter	
 2Kir 9:26	11	a		osszevonva	nevmas	
 2Kir 9:26	12	melyet	amelyet		nevmas:mely	
@@ -9851,8 +10043,10 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 2Kir 10:5	31	királylyá	királlyá		karakter	
 2Kir 10:5	34	a		osszevonva	nevmas	
 2Kir 10:5	35	mi	ami		ami:V1_irasjel_elotte+nevmas:mi	
+2Kir 10:6	17	fejöket	fejüket		jok	
 2Kir 10:6	41	a		osszevonva	nevmas	
 2Kir 10:6	42	kik	akik		nevmas:ki	
+2Kir 10:7	5	hozzájok	hozzájuk		jok	
 2Kir 10:8	8	néki	neki		neki	
 2Kir 10:10	15	a		osszevonva	nevmas	
 2Kir 10:10	16	mit	amit		nevmas:mi	
@@ -9974,6 +10168,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 2Kir 13:19	3	reá	rá		rea	
 2Kir 13:21	21	a		osszevonva	nevmas	
 2Kir 13:21	22	mint	amint		nevmas:hatarozo	
+2Kir 13:23	10	hozzájok	hozzájuk		jok	
 2Kir 13:23	15	a		osszevonva	nevmas	
 2Kir 13:23	16	melyet	amelyet		nevmas:mely	
 2Kir 13:23	35	orczája	orcája		karakter	
@@ -10049,6 +10244,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 2Kir 16:2	18	mi	ami		ami:V1_irasjel_elotte+nevmas:mi	
 2Kir 16:2	26	a		osszevonva	nevmas	
 2Kir 16:2	27	mint	amint		nevmas:hatarozo	
+2Kir 16:3	5	útjokon	útjukon		jok	
 2Kir 16:3	19	a		osszevonva	nevmas	
 2Kir 16:3	20	kiket	akiket		nevmas:ki	
 2Kir 16:5	6	Réczin	Récin		karakter	
@@ -10115,11 +10311,12 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 2Kir 17:23	21	hurczoltatott	hurcoltatott		karakter	
 2Kir 17:24	23	a		osszevonva	nevmas	
 2Kir 17:24	24	kik	akik		nevmas:ki	
-2Kir 17:25	16	reájok	rájok		rea	
+2Kir 17:25	16	reájok	rájuk		rea+jok	
 2Kir 17:25	17	a		osszevonva	nevmas	
 2Kir 17:25	18	melyek	amelyek		nevmas:mely	
 2Kir 17:26	7	a		osszevonva	nevmas	
 2Kir 17:26	8	kiket	akiket		nevmas:ki	
+2Kir 17:26	26	rájok	rájuk		jok	
 2Kir 17:26	27	a		osszevonva	nevmas	
 2Kir 17:26	28	melyek	amelyek		nevmas:mely	
 2Kir 17:27	12	a		osszevonva	nevmas	
@@ -10170,6 +10367,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 2Kir 18:11	2	elhurczolta	elhurcolta		karakter	
 2Kir 18:12	17	a		osszevonva	nevmas	
 2Kir 18:12	18	melyeket	amelyeket		nevmas:mely	
+2Kir 18:12	28	rájok	rájuk		jok	
 2Kir 18:14	16	a		osszevonva	nevmas	
 2Kir 18:14	17	mit	amit		nevmas:mi	
 2Kir 18:14	31	harmincz	harminc		karakter	
@@ -10179,6 +10377,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 2Kir 18:16	16	melyeket	amelyeket		nevmas:mely	
 2Kir 18:17	33	a		osszevonva	nevmas	
 2Kir 18:17	34	mely	amely		nevmas:mely	
+2Kir 18:18	7	hozzájok	hozzájuk		jok	
 2Kir 18:19	18	a		osszevonva	nevmas	
 2Kir 18:19	19	melyben	amelyben		nevmas:mely	
 2Kir 18:20	11	vajjon	vajon		szoto_94	
@@ -10186,13 +10385,14 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 2Kir 18:21	25	kik	akik		nevmas:ki	
 2Kir 18:22	18	a		osszevonva	nevmas	
 2Kir 18:22	19	kinek	akinek		nevmas:ki	
-2Kir 18:23	16	reájok	rájok		rea	
+2Kir 18:23	16	reájok	rájuk		rea+jok	
 2Kir 18:25	1	Vajjon	Vajon		szoto_94	
 2Kir 18:26	31	a		osszevonva	nevmas	
 2Kir 18:26	32	mely	amely		nevmas:mely	
 2Kir 18:27	5	Vajjon	Vajon		szoto_94	
 2Kir 18:27	28	a		osszevonva	nevmas	
 2Kir 18:27	29	kik	akik		nevmas:ki	
+2Kir 18:27	41	ganéjokat	ganéjukat		jok	
 2Kir 18:33	1	Vajjon	Vajon		szoto_94	
 2Kir 18:35	8	a		osszevonva	nevmas	
 2Kir 18:35	9	ki	aki		nevmas:ki	
@@ -10228,6 +10428,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 2Kir 19:21	4	mit	amit		nevmas:mi	
 2Kir 19:23	20	czédrusait	cédrusait		karakter	
 2Kir 19:23	22	cziprusfáit	ciprusfáit		karakter	
+2Kir 19:26	6	erejökben	erejükben		jok	
 2Kir 19:28	10	a		osszevonva	nevmas	
 2Kir 19:28	11	mely	amely		nevmas:mely	
 2Kir 19:28	27	a		osszevonva	nevmas	
@@ -10574,6 +10775,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 1Krón 2:35	15	néki	neki		neki	
 1Krón 2:42	5	a		osszevonva	nevmas	
 1Krón 2:42	6	ki	aki		nevmas:ki	
+1Krón 2:42	18	atyjok	atyjuk		jok	
 1Krón 2:50	5	a		osszevonva	nevmas	
 1Krón 2:50	6	ki	aki		nevmas:ki	
 1Krón 2:54	11	Czórabeli	Córabeli		karakter	
@@ -10618,6 +10820,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 1Krón 4:33	6	melyek	amelyek		nevmas:mely	
 1Krón 4:38	9	a		osszevonva	nevmas	
 1Krón 4:38	10	kik	akik		nevmas:ki	
+1Krón 4:38	14	atyjok	atyjuk		jok	
 1Krón 4:41	16	a		osszevonva	nevmas	
 1Krón 4:41	17	kiket	akiket		nevmas:ki	
 1Krón 4:42	14	a		osszevonva	nevmas	
@@ -10628,6 +10831,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 1Krón 5:5	4	Reája	Rája		rea	
 1Krón 5:6	4	a		osszevonva	nevmas	
 1Krón 5:6	5	kit	akit		nevmas:ki	
+1Krón 5:12	3	előljárójok	előljárójuk		jok	
 1Krón 5:18	15	paizs	pajzs		szotag	
 1Krón 5:18	25	harczra	harcra		karakter	
 1Krón 5:20	12	a		osszevonva	nevmas	
@@ -10636,8 +10840,11 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 1Krón 5:22	12	harcz	harc		karakter	
 1Krón 5:23	11	a		osszevonva	nevmas	
 1Krón 5:23	12	mely	amely		nevmas:mely	
+1Krón 5:24	6	atyjok	atyjuk		jok	
 1Krón 5:24	22	a		osszevonva	nevmas	
 1Krón 5:24	23	kik	akik		nevmas:ki	
+1Krón 5:24	26	atyjok	atyjuk		jok	
+1Krón 5:25	5	atyjoknak	atyjuknak		jok	
 1Krón 5:25	14	a		osszevonva	nevmas	
 1Krón 5:25	15	kiket	akiket		nevmas:ki	
 1Krón 6:10	11	a		osszevonva	nevmas	
@@ -10675,6 +10882,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 1Krón 7:16	7	a		osszevonva	nevmas	
 1Krón 7:16	8	kit	akit		nevmas:ki	
 1Krón 7:16	13	öcscsét	öccsét		karakter	
+1Krón 7:22	5	atyjok	atyjuk		jok	
 1Krón 7:22	9	a		osszevonva	nevmas	
 1Krón 7:22	10	kihez	akihez		nevmas:ki	
 1Krón 7:24	5	a		osszevonva	nevmas	
@@ -10690,10 +10898,13 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 1Krón 9:4	14	Pérecz	Pérec		karakter	
 1Krón 9:6	10	hatszázkilenczvenen	hatszázkilencvenen		karakter	
 1Krón 9:9	4	kilenczszázötvenhatan	kilencszázötvenhatan		karakter	
+1Krón 9:9	12	atyjok	atyjuk		jok	
 1Krón 9:16	17	a		osszevonva	nevmas	
 1Krón 9:16	18	ki	aki		nevmas:ki	
+1Krón 9:20	10	előljárójok	előljárójuk		jok	
 1Krón 9:33	13	a		osszevonva	nevmas	
 1Krón 9:33	14	kik	akik		nevmas:ki	
+1Krón 9:33	21	kamarájokban	kamarájukban		jok	
 1Krón 10:7	7	a		osszevonva	nevmas	
 1Krón 10:7	8	kik	akik		nevmas:ki	
 1Krón 10:8	10	kifoszszák	kifosszák		karakter	
@@ -10744,10 +10955,11 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 1Krón 12:4	6	harmincz	harminc		karakter	
 1Krón 12:4	10	a		osszevonva	nevmas	
 1Krón 12:4	11	kiknek	akiknek		nevmas:ki	
+1Krón 12:4	12	előljárójok	előljárójuk		jok	
 1Krón 12:8	17	paizsosok	pajzsosok		szotag	
 1Krón 12:8	19	a		osszevonva	nevmas	
 1Krón 12:8	20	kiknek	akiknek		nevmas:ki	
-1Krón 12:8	21	orczájok	orcájok		karakter	
+1Krón 12:8	21	orczájok	orcájuk		karakter+jok	
 1Krón 12:8	25	orczája	orcája		karakter	
 1Krón 12:12	1	Nyolczadik	Nyolcadik		karakter	
 1Krón 12:12	3	kilenczedik	kilencedik		karakter	
@@ -10755,6 +10967,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 1Krón 12:15	4	kik	akik		nevmas:ki	
 1Krón 12:15	21	a		osszevonva	nevmas	
 1Krón 12:15	22	kik	akik		nevmas:ki	
+1Krón 12:17	4	elejökbe	elejükbe		jok	
 1Krón 12:18	7	harmincznak	harmincnak		karakter	
 1Krón 12:19	14	harczolni	harcolni		karakter	
 1Krón 12:20	19	a		osszevonva	nevmas	
@@ -10782,6 +10995,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 1Krón 12:31	13	válaszszák	válasszák		karakter	
 1Krón 12:32	5	a		osszevonva	nevmas	
 1Krón 12:32	6	kik	akik		nevmas:ki	
+1Krón 12:32	27	beszédjökre	beszédjükre		jok	
 1Krón 12:33	6	harczra	harcra		karakter	
 1Krón 12:34	10	paizszsal	paizzsal		karakter	
 1Krón 12:34	13	harminczhétezer	harminchétezer		karakter	
@@ -10813,7 +11027,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 1Krón 14:8	7	királylyá	királlyá		karakter	
 1Krón 14:10	19	néki	neki		neki	
 1Krón 14:14	11	néki	neki		neki	
-1Krón 14:14	22	reájok	rájok		rea	
+1Krón 14:14	22	reájok	rájuk		rea+jok	
 1Krón 14:16	5	a		osszevonva	nevmas	
 1Krón 14:16	6	mint	amint		nevmas:hatarozo	
 1Krón 14:16	7	néki	neki		neki	
@@ -10920,6 +11134,8 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 1Krón 18:13	20	merre	amerre		nevmas:hatarozo	
 1Krón 19:2	26	a		osszevonva	nevmas	
 1Krón 19:2	27	kik	akik		nevmas:ki	
+1Krón 19:4	11	ruhájokat	ruhájukat		jok	
+1Krón 19:5	13	eléjök	eléjük		jok	
 1Krón 19:7	4	harminczkétezer	harminckétezer		karakter	
 1Krón 19:7	13	a		osszevonva	nevmas	
 1Krón 19:7	14	kik	akik		nevmas:ki	
@@ -10936,6 +11152,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 1Krón 19:14	13	kik	akik		nevmas:ki	
 1Krón 19:16	16	a		osszevonva	nevmas	
 1Krón 19:16	17	kik	akik		nevmas:ki	
+1Krón 19:17	15	hozzájok	hozzájuk		jok	
 1Krón 19:19	16	néki	neki		neki	
 1Krón 20:1	9	harczba	harcba		karakter	
 1Krón 20:3	7	fűrészszel	fűrésszel		karakter	
@@ -10945,6 +11162,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 1Krón 20:6	13	kinek	akinek		nevmas:ki	
 1Krón 20:8	8	a		osszevonva	nevmas	
 1Krón 20:8	9	kik	akik		nevmas:ki	
+1Krón 21:6	9	közéjök	közéjük		jok	
 1Krón 21:10	14	válaszsz	válassz		karakter	
 1Krón 21:11	8	néki	neki		neki	
 1Krón 21:11	13	válaszsz	válassz		karakter	
@@ -10952,7 +11170,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 1Krón 21:12	46	ki	aki		nevmas:ki	
 1Krón 21:16	23	a		osszevonva	nevmas	
 1Krón 21:16	24	melyet	amelyet		nevmas:mely	
-1Krón 21:16	41	orczájokra	orcájokra		karakter	
+1Krón 21:16	41	orczájokra	orcájukra		karakter+jok	
 1Krón 21:17	16	a		osszevonva	nevmas	
 1Krón 21:17	17	ki	aki		nevmas:ki	
 1Krón 21:20	14	a		osszevonva	nevmas	
@@ -11010,6 +11228,8 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 1Krón 24:11	3	kilenczedik	kilencedik		karakter	
 1Krón 24:15	6	tizennyolczadik	tizennyolcadik		karakter	
 1Krón 24:16	3	tizenkilenczedik	tizenkilencedik		karakter	
+1Krón 24:19	5	rendjök	rendjük		jok	
+1Krón 24:19	15	atyjoknak	atyjuknak		jok	
 1Krón 24:19	19	a		osszevonva	nevmas	
 1Krón 24:19	20	mint	amint		nevmas:hatarozo	
 1Krón 24:19	23	néki	neki		neki	
@@ -11023,6 +11243,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 1Krón 25:2	15	a		osszevonva	nevmas	
 1Krón 25:2	16	ki	aki		nevmas:ki	
 1Krón 25:3	16	cziterával	citerával		karakter	
+1Krón 25:3	19	atyjok	atyjuk		jok	
 1Krón 25:3	22	a		osszevonva	nevmas	
 1Krón 25:3	23	ki	aki		nevmas:ki	
 1Krón 25:3	28	dícséretére	dicséretére		szotag	
@@ -11098,7 +11319,9 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 1Krón 29:3	27	melyeket	amelyeket		nevmas:mely	
 1Krón 29:5	31	a		osszevonva	nevmas	
 1Krón 29:5	32	mit	amit		nevmas:mi	
+1Krón 29:6	3	akaratjok	akaratjuk		jok	
 1Krón 29:7	17	tizennyolczezer	tizennyolcezer		karakter	
+1Krón 29:9	7	akaratjokból	akaratjukból		jok	
 1Krón 29:13	10	dícsérjük	dicsérjük		szotag	
 1Krón 29:14	20	a		osszevonva	nevmas	
 1Krón 29:14	21	mint	amint		nevmas:hatarozo	
@@ -11237,6 +11460,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 2Krón 5:10	20	mikor	amikor		nevmas:hatarozo	
 2Krón 5:11	14	a		osszevonva	nevmas	
 2Krón 5:11	15	kik	akik		nevmas:ki	
+2Krón 5:11	28	sorrendjöket	sorrendjüket		jok	
 2Krón 5:12	19	czimbalmokkal	cimbalmokkal		karakter	
 2Krón 5:12	22	cziterákkal	citerákkal		karakter	
 2Krón 5:13	12	dícséretére	dicséretére		szotag	
@@ -11272,6 +11496,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 2Krón 6:16	10	mit	amit		nevmas:mi	
 2Krón 6:16	29	a		osszevonva	nevmas	
 2Krón 6:16	30	ki	aki		nevmas:ki	
+2Krón 6:16	43	útjokat	útjukat		jok	
 2Krón 6:18	27	a		osszevonva	nevmas	
 2Krón 6:18	28	melyet	amelyet		nevmas:mely	
 2Krón 6:19	17	a		osszevonva	nevmas	
@@ -11289,7 +11514,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 2Krón 6:27	25	melyen	amelyen		nevmas:mely	
 2Krón 6:27	33	a		osszevonva	nevmas	
 2Krón 6:27	34	melyet	amelyet		nevmas:mely	
-2Krón 6:28	27	reájok	rájok		rea	
+2Krón 6:28	27	reájok	rájuk		rea+jok	
 2Krón 6:29	1	A		osszevonva	nevmas	
 2Krón 6:29	2	ki	Aki		nevmas:ki	
 2Krón 6:30	20	a		osszevonva	nevmas	
@@ -11310,7 +11535,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 2Krón 6:34	35	melyet	amelyet		nevmas:mely	
 2Krón 6:36	7	a		osszevonva	nevmas	
 2Krón 6:36	8	ki	aki		nevmas:ki	
-2Krón 6:36	12	reájok	rájok		rea	
+2Krón 6:36	12	reájok	rájuk		rea+jok	
 2Krón 6:36	23	a		osszevonva	nevmas	
 2Krón 6:36	24	kiktől	akiktől		nevmas:ki	
 2Krón 6:37	6	a		osszevonva	nevmas	
@@ -11367,7 +11592,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 2Krón 7:21	6	mely	amely		nevmas:mely	
 2Krón 7:22	11	a		osszevonva	nevmas	
 2Krón 7:22	12	ki	aki		nevmas:ki	
-2Krón 7:22	29	reájok	rájok		rea	
+2Krón 7:22	29	reájok	rájuk		rea+jok	
 2Krón 8:1	6	a		osszevonva	nevmas	
 2Krón 8:1	7	mi	ami		ami:V1_irasjel_elotte+nevmas:mi	
 2Krón 8:2	4	a		osszevonva	nevmas	
@@ -11394,6 +11619,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 2Krón 8:12	10	a		osszevonva	nevmas	
 2Krón 8:12	11	melyet	amelyet		nevmas:mely	
 2Krón 8:12	15	tornácz	tornác		karakter	
+2Krón 8:14	14	szolgálatjokban	szolgálatjukban		jok	
 2Krón 8:14	23	dícsérnék	dicsérnék		szotag	
 2Krón 8:15	8	a		osszevonva	nevmas	
 2Krón 8:15	9	melyet	amelyet		nevmas:mely	
@@ -11468,6 +11694,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 2Krón 10:4	24	reánk	ránk		rea	
 2Krón 10:6	8	a		osszevonva	nevmas	
 2Krón 10:6	9	kik	akik		nevmas:ki	
+2Krón 10:7	18	hozzájok	hozzájuk		jok	
 2Krón 10:8	7	a		osszevonva	nevmas	
 2Krón 10:8	8	melyet	amelyet		nevmas:mely	
 2Krón 10:8	9	néki	neki		neki	
@@ -11668,6 +11895,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 2Krón 20:15	5	kik	akik		nevmas:ki	
 2Krón 20:15	34	harczoltok	harcoltok		karakter	
 2Krón 20:16	8	Czicz	Cic		karakter	
+2Krón 20:16	13	rájok	rájuk		jok	
 2Krón 20:17	4	harczolnotok	harcolnotok		karakter	
 2Krón 20:19	21	dícsérjék	dicsérjék		szotag	
 2Krón 20:21	11	dícsérjék	dicsérjék		szotag	
@@ -11685,6 +11913,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 2Krón 20:34	17	ki	aki		nevmas:ki	
 2Krón 20:35	11	a		osszevonva	nevmas	
 2Krón 20:35	12	ki	aki		nevmas:ki	
+2Krón 21:3	6	atyjok	atyjuk		jok	
 2Krón 21:5	1	Harminczkét	Harminckét		karakter	
 2Krón 21:5	9	nyolcz	nyolc		karakter	
 2Krón 21:6	7	a		osszevonva	nevmas	
@@ -11779,15 +12008,16 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 2Krón 24:9	13	a		osszevonva	nevmas	
 2Krón 24:9	14	melyet	amelyet		nevmas:mely	
 2Krón 24:15	8	Százharmincz	Százharminc		karakter	
-2Krón 24:17	19	reájok	rájok		rea	
+2Krón 24:17	19	reájok	rájuk		rea+jok	
 2Krón 24:19	10	a		osszevonva	nevmas	
 2Krón 24:19	11	kik	akik		nevmas:ki	
-2Krón 24:19	18	reájok	rájok		rea	
+2Krón 24:19	18	reájok	rájuk		rea+jok	
 2Krón 24:20	11	a		osszevonva	nevmas	
 2Krón 24:20	12	ki	aki		nevmas:ki	
 2Krón 24:21	3	reá	rá		rea	
 2Krón 24:22	9	a		osszevonva	nevmas	
 2Krón 24:22	10	melylyel	amellyel		karakter+nevmas:mely	
+2Krón 24:24	7	rájok	rájuk		jok	
 2Krón 25:1	8	huszonkilencz	huszonkilenc		karakter	
 2Krón 25:3	11	a		osszevonva	nevmas	
 2Krón 25:3	12	kik	akik		nevmas:ki	
@@ -11914,6 +12144,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 2Krón 29:17	25	nyolcz	nyolc		karakter	
 2Krón 29:19	5	a		osszevonva	nevmas	
 2Krón 29:19	6	melyeket	amelyeket		nevmas:mely	
+2Krón 29:23	15	rájok	rájuk		jok	
 2Krón 29:25	8	czimbalmokkal	cimbalmokkal		karakter	
 2Krón 29:25	11	cziterákkal	citerákkal		karakter	
 2Krón 29:29	2	a		osszevonva	nevmas	
@@ -11940,6 +12171,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 2Krón 30:9	16	a		osszevonva	nevmas	
 2Krón 30:9	17	kik	akik		nevmas:ki	
 2Krón 30:9	39	orczáját	orcáját		karakter	
+2Krón 30:12	9	beléjök	beléjük		jok	
 2Krón 30:14	7	a		osszevonva	nevmas	
 2Krón 30:14	8	melyek	amelyek		nevmas:mely	
 2Krón 30:17	8	a		osszevonva	nevmas	
@@ -12006,7 +12238,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 2Krón 32:24	11	a		osszevonva	nevmas	
 2Krón 32:24	12	ki	aki		nevmas:ki	
 2Krón 32:24	18	néki	neki		neki	
-2Krón 32:26	15	reájok	rájok		rea	
+2Krón 32:26	15	reájok	rájuk		rea+jok	
 2Krón 32:27	20	paizsok	pajzsok		szotag	
 2Krón 32:29	18	néki	neki		neki	
 2Krón 32:30	5	a		osszevonva	nevmas	
@@ -12031,7 +12263,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 2Krón 33:9	15	a		osszevonva	nevmas	
 2Krón 33:9	16	kiket	akiket		nevmas:ki	
 2Krón 33:10	14	reá	rá		rea	
-2Krón 33:11	1	Reájok	Rájok		rea	
+2Krón 33:11	1	Reájok	Rájuk		rea+jok	
 2Krón 33:11	11	a		osszevonva	nevmas	
 2Krón 33:11	12	kik	akik		nevmas:ki	
 2Krón 33:11	21	lánczczal	lánccal		karakter	
@@ -12115,6 +12347,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 2Krón 35:4	11	a		osszevonva	nevmas	
 2Krón 35:4	12	mint	amint		nevmas:hatarozo	
 2Krón 35:7	23	harminczezeret	harmincezeret		karakter	
+2Krón 35:8	6	akaratjokból	akaratjukból		jok	
 2Krón 35:10	14	a		osszevonva	nevmas	
 2Krón 35:10	15	mint	amint		nevmas:hatarozo	
 2Krón 35:12	21	a		osszevonva	nevmas	
@@ -12148,9 +12381,11 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 2Krón 36:13	18	makacscsá	makaccsá		karakter	
 2Krón 36:14	24	a		osszevonva	nevmas	
 2Krón 36:14	25	melyet	amelyet		nevmas:mely	
-2Krón 36:17	2	reájok	rájok		rea	
+2Krón 36:15	9	hozzájok	hozzájuk		jok	
+2Krón 36:17	2	reájok	rájuk		rea+jok	
 2Krón 36:17	7	a		osszevonva	nevmas	
 2Krón 36:17	8	ki	aki		nevmas:ki	
+2Krón 36:17	31	mindnyájokat	mindnyájukat		jok	
 2Krón 36:20	2	a		osszevonva	nevmas	
 2Krón 36:20	3	kik	akik		nevmas:ki	
 2Krón 36:20	9	elhurczolta	elhurcolta		karakter	
@@ -12254,10 +12489,12 @@ Ezsd 4:22	12	nevekedjék	növekedjék		szoto_94
 Ezsd 4:23	11	kanczellár	kancellár		karakter	
 Ezsd 5:1	15	a		osszevonva	nevmas	
 Ezsd 5:1	16	kik	akik		nevmas:ki	
+Ezsd 5:3	5	hozzájok	hozzájuk		jok	
 Ezsd 5:5	23	a		osszevonva	nevmas	
 Ezsd 5:5	24	mikor	amikor		nevmas:hatarozo	
 Ezsd 5:6	19	a		osszevonva	nevmas	
 Ezsd 5:6	20	kik	akik		nevmas:ki	
+Ezsd 5:9	9	hozzájok	hozzájuk		jok	
 Ezsd 5:12	18	a		osszevonva	nevmas	
 Ezsd 5:12	19	ki	aki		nevmas:ki	
 Ezsd 5:13	2	Czírusnak	Círusnak		karakter	
@@ -12291,11 +12528,14 @@ Ezsd 6:21	6	a		osszevonva	nevmas
 Ezsd 6:21	7	kik	akik		nevmas:ki	
 Ezsd 6:21	14	a		osszevonva	nevmas	
 Ezsd 6:21	15	kik	akik		nevmas:ki	
+Ezsd 6:21	24	hozzájok	hozzájuk		jok	
+Ezsd 6:22	17	hozzájok	hozzájuk		jok	
 Ezsd 7:6	7	a		osszevonva	nevmas	
 Ezsd 7:6	8	ki	aki		nevmas:ki	
 Ezsd 7:6	24	néki	neki		neki	
 Ezsd 7:11	15	a		osszevonva	nevmas	
 Ezsd 7:11	16	ki	aki		nevmas:ki	
+Ezsd 7:17	11	hozzájok	hozzájuk		jok	
 Ezsd 7:18	7	a		osszevonva	nevmas	
 Ezsd 7:18	8	mit	amit		nevmas:mi	
 Ezsd 7:21	15	a		osszevonva	nevmas	
@@ -12328,10 +12568,12 @@ Ezsd 8:18	21	ki	aki		nevmas:ki
 Ezsd 8:18	30	tizennyolcz	tizennyolc		karakter	
 Ezsd 8:20	6	a		osszevonva	nevmas	
 Ezsd 8:20	7	kiket	akiket		nevmas:ki	
+Ezsd 8:20	17	mindnyájok	mindnyájuk		jok	
 Ezsd 8:22	30	a		osszevonva	nevmas	
 Ezsd 8:22	31	kik	akik		nevmas:ki	
 Ezsd 8:22	44	a		osszevonva	nevmas	
 Ezsd 8:22	45	kik	akik		nevmas:ki	
+Ezsd 8:24	12	hozzájok	hozzájuk		jok	
 Ezsd 8:25	16	a		osszevonva	nevmas	
 Ezsd 8:25	17	melyeket	amelyeket		nevmas:mely	
 Ezsd 8:29	3	reá	rá		rea	
@@ -12369,6 +12611,7 @@ Ezsd 10:14	11	a		osszevonva	nevmas
 Ezsd 10:14	12	ki	aki		nevmas:ki	
 Ezsd 10:16	5	a		osszevonva	nevmas	
 Ezsd 10:16	6	kik	akik		nevmas:ki	
+Ezsd 10:16	22	mindnyájok	mindnyájuk		jok	
 Ezsd 10:17	7	a		osszevonva	nevmas	
 Ezsd 10:17	8	kik	akik		nevmas:ki	
 Ezsd 10:18	7	a		osszevonva	nevmas	
@@ -12410,6 +12653,7 @@ Neh 3:23	18	ki	aki		nevmas:ki
 Neh 3:25	18	tömlöcz	tömlöc		karakter	
 Neh 4:2	19	Vajjon	Vajon		szoto_94	
 Neh 4:3	15	reá	rá		rea	
+Neh 4:4	13	fejökre	fejükre		jok	
 Neh 4:5	13	orczád	orcád		karakter	
 Neh 4:12	9	a		osszevonva	nevmas	
 Neh 4:12	10	kik	akik		nevmas:ki	
@@ -12445,6 +12689,7 @@ Neh 5:18	2	mit	Amit		nevmas:mi
 Neh 5:18	27	kivántam	kívántam		szoto_94	
 Neh 5:19	8	a		osszevonva	nevmas	
 Neh 5:19	9	mit	amit		nevmas:mi	
+Neh 6:3	4	hozzájok	hozzájuk		jok	
 Neh 6:5	11	a		osszevonva	nevmas	
 Neh 6:5	12	kinek	akinek		nevmas:ki	
 Neh 6:7	6	a		osszevonva	nevmas	
@@ -12456,6 +12701,7 @@ Neh 6:14	21	a		osszevonva	nevmas
 Neh 6:14	22	kik	akik		nevmas:ki	
 Neh 6:16	12	a		osszevonva	nevmas	
 Neh 6:16	13	kik	akik		nevmas:ki	
+Neh 6:17	16	hozzájok	hozzájuk		jok	
 Neh 6:19	14	néki	neki		neki	
 Neh 7:5	23	a		osszevonva	nevmas	
 Neh 7:5	24	kik	akik		nevmas:ki	
@@ -12510,15 +12756,19 @@ Neh 8:15	41	mint	amint		nevmas:hatarozo
 Neh 8:16	28	piaczán	piacán		karakter	
 Neh 8:16	32	piaczán	piacán		karakter	
 Neh 8:18	23	nyolczadik	nyolcadik		karakter	
+Neh 9:1	16	fejökre	fejükre		jok	
 Neh 9:5	34	dícséretnél	dicséretnél		szotag	
 Neh 9:6	20	a		osszevonva	nevmas	
 Neh 9:6	21	mi	ami		ami:V1_irasjel_elotte+nevmas:mi	
+Neh 9:6	34	mindnyájoknak	mindnyájuknak		jok	
 Neh 9:7	7	a		osszevonva	nevmas	
 Neh 9:7	8	ki	aki		nevmas:ki	
 Neh 9:17	11	a		osszevonva	nevmas	
 Neh 9:17	12	melyeket	amelyeket		nevmas:mely	
+Neh 9:17	21	fejöket	fejüket		jok	
 Neh 9:18	14	a		osszevonva	nevmas	
 Neh 9:18	15	ki	aki		nevmas:ki	
+Neh 9:20	16	szájoktól	szájuktól		jok	
 Neh 9:26	15	a		osszevonva	nevmas	
 Neh 9:26	16	kik	akik		nevmas:ki	
 Neh 9:28	15	a		osszevonva	nevmas	
@@ -12557,10 +12807,12 @@ Neh 11:6	4	a		osszevonva	nevmas
 Neh 11:6	5	kik	akik		nevmas:ki	
 Neh 11:6	9	négyszázhatvannyolcz	négyszázhatvannyolc		karakter	
 Neh 11:8	6	kilenczszázhuszonnyolczan	kilencszázhuszonnyolcan		karakter	
+Neh 11:9	6	előljárójok	előljárójuk		jok	
 Neh 11:12	3	a		osszevonva	nevmas	
 Neh 11:12	4	kik	akik		nevmas:ki	
 Neh 11:12	10	nyolczszázhuszonketten	nyolcszázhuszonketten		karakter	
 Neh 11:14	7	százhuszonnyolczan	százhuszonnyolcan		karakter	
+Neh 11:14	8	előljárójok	előljárójuk		jok	
 Neh 11:17	13	a		osszevonva	nevmas	
 Neh 11:17	14	ki	aki		nevmas:ki	
 Neh 11:17	28	a		osszevonva	nevmas	
@@ -12581,6 +12833,7 @@ Neh 12:46	17	dícsérő	dicsérő		szotag
 Neh 13:5	3	néki	neki		neki	
 Neh 13:6	12	harminczkettedik	harminckettedik		karakter	
 Neh 13:7	15	néki	neki		neki	
+Neh 13:13	19	melléjök	melléjük		jok	
 Neh 13:15	32	a		osszevonva	nevmas	
 Neh 13:15	33	mely	amely		nevmas:mely	
 Neh 13:16	6	a		osszevonva	nevmas	
@@ -12664,6 +12917,7 @@ Eszt 3:2	7	kik	akik		nevmas:ki
 Eszt 3:3	6	a		osszevonva	nevmas	
 Eszt 3:3	7	kik	akik		nevmas:ki	
 Eszt 3:4	6	néki	neki		neki	
+Eszt 3:4	12	rájok	rájuk		jok	
 Eszt 3:6	14	néki	neki		neki	
 Eszt 3:6	23	a		osszevonva	nevmas	
 Eszt 3:6	24	ki	aki		nevmas:ki	
@@ -12826,6 +13080,7 @@ Eszt 9:1	47	a		osszevonva	nevmas
 Eszt 9:1	48	kik	akik		nevmas:ki	
 Eszt 9:2	13	a		osszevonva	nevmas	
 Eszt 9:2	14	kik	akik		nevmas:ki	
+Eszt 9:3	21	rájok	rájuk		jok	
 Eszt 9:12	28	kivánságod	kívánságod		szoto_94	
 Eszt 9:13	14	a		osszevonva	nevmas	
 Eszt 9:13	15	kik	akik		nevmas:ki	
@@ -12858,6 +13113,8 @@ Eszt 9:26	23	a		osszevonva	nevmas
 Eszt 9:26	24	mi	ami		ami:V4_ige_utana+nevmas:mi	
 Eszt 9:27	12	a		osszevonva	nevmas	
 Eszt 9:27	13	kik	akik		nevmas:ki	
+Eszt 9:27	14	hozzájok	hozzájuk		jok	
+Eszt 9:31	8	idejökben	idejükben		jok	
 Eszt 9:31	9	a		osszevonva	nevmas	
 Eszt 9:31	10	miképen	amiképpen		szoto_94+nevmas:hatarozo	
 Eszt 9:31	20	a		osszevonva	nevmas	
@@ -12873,6 +13130,8 @@ Jób 1:11	11	a		osszevonva	nevmas
 Jób 1:11	12	mi	ami		ami:V1_irasjel_elotte+nevmas:mi	
 Jób 1:12	9	a		osszevonva	nevmas	
 Jób 1:12	10	mije	amije		nevmas:mi	
+Jób 1:13	19	bátyjoknak	bátyjuknak		jok	
+Jób 1:18	25	bátyjoknak	bátyjuknak		jok	
 Jób 2:4	13	a		osszevonva	nevmas	
 Jób 2:4	14	mije	amije		nevmas:mi	
 Jób 2:7	12	fekélylyel	fekéllyel		karakter	
@@ -12883,6 +13142,7 @@ Jób 2:11	12	mely	amely		nevmas:mely
 Jób 2:11	31	Czófár	Cófár		karakter	
 Jób 2:12	2	a		osszevonva	nevmas	
 Jób 2:12	3	mint	amint		nevmas:hatarozo	
+Jób 2:12	25	fejökre	fejükre		jok	
 Jób 3:3	1	Veszszen	Vesszen		karakter	
 Jób 3:3	6	a		osszevonva	nevmas	
 Jób 3:3	7	melyen	amelyen		nevmas:mely	
@@ -12900,6 +13160,7 @@ Jób 3:15	7	a		osszevonva	nevmas
 Jób 3:15	8	kik	akik		nevmas:ki	
 Jób 3:17	10	a		osszevonva	nevmas	
 Jób 3:17	11	kiknek	akiknek		nevmas:ki	
+Jób 3:17	12	erejök	erejük		jok	
 Jób 3:21	1	A		osszevonva	nevmas	
 Jób 3:21	2	kik	Akik		nevmas:ki	
 Jób 3:22	1	A		osszevonva	nevmas	
@@ -12942,6 +13203,7 @@ Jób 5:13	1	A		osszevonva	nevmas
 Jób 5:13	2	ki	Aki		nevmas:ki	
 Jób 5:15	1	A		osszevonva	nevmas	
 Jób 5:15	2	ki	Aki		nevmas:ki	
+Jób 5:15	8	szájoktól	szájuktól		jok	
 Jób 5:17	5	a		osszevonva	nevmas	
 Jób 5:17	6	kit	akit		nevmas:ki	
 Jób 5:26	6	a		osszevonva	nevmas	
@@ -12958,6 +13220,7 @@ Jób 6:16	1	A		osszevonva	nevmas
 Jób 6:16	2	melyek	Amelyek		nevmas:mely	
 Jób 6:16	6	a		osszevonva	nevmas	
 Jób 6:16	7	melyekben	amelyekben		nevmas:mely	
+Jób 6:18	2	útjokról	útjukról		jok	
 Jób 6:24	7	a		osszevonva	nevmas	
 Jób 6:24	8	miben	amiben		nevmas:mi	
 Jób 6:27	5	néki	neki		neki	
@@ -13087,6 +13350,7 @@ Jób 15:28	8	melyek	amelyek		nevmas:mely
 Jób 15:30	5	setétségtől	sötétségtől		szoto_94	
 Jób 15:31	5	a		osszevonva	nevmas	
 Jób 15:31	6	ki	aki		nevmas:ki	
+Jób 16:10	3	szájokat	szájukat		jok	
 Jób 16:10	5	arczul	arcul		karakter	
 Jób 16:12	11	czéltáblává	céltáblává		karakter	
 Jób 16:16	1	Orczám	Orcám		karakter	
@@ -13124,6 +13388,7 @@ Jób 20:26	19	mi	ami		ami:V1_irasjel_elotte+nevmas:mi
 Jób 21:3	4	a		osszevonva	nevmas	
 Jób 21:3	5	míg	amíg		nevmas:hatarozo	
 Jób 21:5	2	reám	rám		rea	
+Jób 21:17	9	rájok	rájuk		jok	
 Jób 21:18	13	a		osszevonva	nevmas	
 Jób 21:18	14	melyet	amelyet		nevmas:mely	
 Jób 21:19	11	néki	neki		neki	
@@ -13151,8 +13416,10 @@ Jób 22:15	6	a		osszevonva	nevmas
 Jób 22:15	7	melyen	amelyen		nevmas:mely	
 Jób 22:16	1	A		osszevonva	nevmas	
 Jób 22:16	2	kik	Akik		nevmas:ki	
+Jób 22:16	8	alapjokat	alapjukat		jok	
 Jób 22:17	1	A		osszevonva	nevmas	
 Jób 22:17	2	kik	Akik		nevmas:ki	
+Jób 22:20	9	maradékjokat	maradékjukat		jok	
 Jób 22:21	6	reá	rá		rea	
 Jób 22:21	13	reád	rád		rea	
 Jób 22:24	6	érczet	ércet		karakter	
@@ -13230,14 +13497,20 @@ Jób 29:11	11	mely	amely		nevmas:mely
 Jób 29:12	9	a		osszevonva	nevmas	
 Jób 29:12	10	kinek	akinek		nevmas:ki	
 Jób 29:13	6	reám	rám		rea	
+Jób 29:16	4	atyjok	atyjuk		jok	
 Jób 29:21	4	reám	rám		rea	
+Jób 29:22	11	rájok	rájuk		jok	
+Jób 29:24	2	rájok	rájuk		jok	
 Jób 29:24	8	arczom	arcom		karakter	
+Jób 29:25	3	útjokat	útjukat		jok	
 Jób 29:25	16	a		osszevonva	nevmas	
 Jób 29:25	17	ki	aki		nevmas:ki	
 Jób 30:1	5	a		osszevonva	nevmas	
 Jób 30:1	6	kik	akik		nevmas:ki	
 Jób 30:1	9	a		osszevonva	nevmas	
 Jób 30:1	10	kiknek	akiknek		nevmas:ki	
+Jób 30:1	11	atyjokat	atyjukat		jok	
+Jób 30:2	10	Rájok	Rájuk		jok	
 Jób 30:3	6	a		osszevonva	nevmas	
 Jób 30:3	7	kik	akik		nevmas:ki	
 Jób 30:4	1	A		osszevonva	nevmas	
@@ -13248,6 +13521,7 @@ Jób 30:20	10	reám	rám		rea
 Jób 30:21	6	harczolsz	harcolsz		karakter	
 Jób 30:25	6	a		osszevonva	nevmas	
 Jób 30:25	7	kinek	akinek		nevmas:ki	
+Jób 30:29	1	Atyjok	Atyjuk		jok	
 Jób 30:29	9	strucz	struc		karakter	
 Jób 31:12	5	a		osszevonva	nevmas	
 Jób 31:12	6	mely	amely		nevmas:mely	
@@ -13305,6 +13579,7 @@ Jób 34:26	8	a		osszevonva	nevmas
 Jób 34:26	9	hol	ahol		nevmas:hatarozo	
 Jób 34:27	1	A		osszevonva	nevmas	
 Jób 34:27	2	kik	Akik		nevmas:ki	
+Jób 34:28	5	hozzájok	hozzájuk		jok	
 Jób 34:29	10	arczát	arcát		karakter	
 Jób 34:32	1	A		osszevonva	nevmas	
 Jób 34:32	2	mit	Amit		nevmas:mi	
@@ -13335,6 +13610,7 @@ Jób 37:1	11	a		osszevonva	nevmas
 Jób 37:1	12	mely	amely		nevmas:mely	
 Jób 37:11	12	a		osszevonva	nevmas	
 Jób 37:11	13	mit	amit		nevmas:mi	
+Jób 37:14	6	rájok	rájuk		jok	
 Jób 37:16	1	Miképen	Miképpen		szoto_94	
 Jób 37:17	8	a		osszevonva	nevmas	
 Jób 37:17	9	mely	amely		nevmas:mely	
@@ -13359,6 +13635,7 @@ Jób 38:32	10	gönczölszekeret	göncölszekeret		karakter
 Jób 38:36	5	setét	sötét		szoto_94	
 Jób 39:5	5	a		osszevonva	nevmas	
 Jób 39:5	6	meddig	ameddig		nevmas:hatarozo	
+Jób 39:7	11	hozzájok	hozzájuk		jok	
 Jób 39:9	1	A		osszevonva	nevmas	
 Jób 39:9	2	melynek	Amelynek		nevmas:mely	
 Jób 39:13	9	Vajjon	Vajon		szoto_94	
@@ -13417,6 +13694,7 @@ Jób 42:11	40	néki	neki		neki
 Jób 42:12	14	néki	neki		neki	
 Jób 42:13	3	néki	neki		neki	
 Jób 42:14	9	Kecziha	Keciha		karakter	
+Jób 42:15	19	atyjok	atyjuk		jok	
 Zsolt 1:1	4	a		osszevonva	nevmas	
 Zsolt 1:1	5	ki	aki		nevmas:ki	
 Zsolt 1:3	10	a		osszevonva	nevmas	
@@ -13437,10 +13715,13 @@ Zsolt 4:7	9	reánk	ránk		rea
 Zsolt 4:7	10	arczodnak	arcodnak		karakter	
 Zsolt 4:8	7	a		osszevonva	nevmas	
 Zsolt 4:8	8	mikor	amikor		nevmas:hatarozo	
+Zsolt 4:8	12	búzájok	búzájuk		jok	
 Zsolt 5:5	7	a		osszevonva	nevmas	
 Zsolt 5:5	8	ki	aki		nevmas:ki	
 Zsolt 5:7	2	a		osszevonva	nevmas	
 Zsolt 5:7	3	kik	akik		nevmas:ki	
+Zsolt 5:10	5	szájokban	szájukban		jok	
+Zsolt 5:10	7	belsejök	belsejük		jok	
 Zsolt 5:12	5	a		osszevonva	nevmas	
 Zsolt 5:12	6	kik	akik		nevmas:ki	
 Zsolt 5:12	19	a		osszevonva	nevmas	
@@ -13518,6 +13799,7 @@ Zsolt 16:3	3	a		osszevonva	nevmas
 Zsolt 16:3	4	kik	akik		nevmas:ki	
 Zsolt 16:4	3	a		osszevonva	nevmas	
 Zsolt 16:4	4	kik	akik		nevmas:ki	
+Zsolt 16:4	13	italáldozatjokat	italáldozatjukat		jok	
 Zsolt 16:7	4	a		osszevonva	nevmas	
 Zsolt 16:7	5	ki	aki		nevmas:ki	
 Zsolt 17:2	3	orczádtól	orcádtól		karakter	
@@ -13527,6 +13809,7 @@ Zsolt 17:9	4	a		osszevonva	nevmas
 Zsolt 17:9	5	kik	akik		nevmas:ki	
 Zsolt 17:9	10	a		osszevonva	nevmas	
 Zsolt 17:9	11	kik	akik		nevmas:ki	
+Zsolt 17:10	4	szájokkal	szájukkal		jok	
 Zsolt 17:12	4	a		osszevonva	nevmas	
 Zsolt 17:12	5	mely	amely		nevmas:mely	
 Zsolt 17:15	6	orczádat	orcádat		karakter	
@@ -13584,8 +13867,10 @@ Zsolt 22:4	6	ki	aki		nevmas:ki
 Zsolt 22:4	8	dícséretei	dicséretei		szotag	
 Zsolt 22:8	1	A		osszevonva	nevmas	
 Zsolt 22:8	2	kik	Akik		nevmas:ki	
+Zsolt 22:8	12	fejöket	fejüket		jok	
 Zsolt 22:12	11	a		osszevonva	nevmas	
 Zsolt 22:12	12	ki	aki		nevmas:ki	
+Zsolt 22:14	3	szájokat	szájukat		jok	
 Zsolt 22:24	2	a		osszevonva	nevmas	
 Zsolt 22:24	3	kik	akik		nevmas:ki	
 Zsolt 22:25	18	orczáját	orcáját		karakter	
@@ -13666,6 +13951,7 @@ Zsolt 33:12	4	a		osszevonva	nevmas
 Zsolt 33:12	5	melynek	amelynek		nevmas:mely	
 Zsolt 33:12	12	a		osszevonva	nevmas	
 Zsolt 33:12	13	melyet	amelyet		nevmas:mely	
+Zsolt 33:15	3	mindnyájok	mindnyájuk		jok	
 Zsolt 33:20	7	paizsunk	pajzsunk		szotag	
 Zsolt 33:22	7	a		osszevonva	nevmas	
 Zsolt 33:22	8	miképen	amiképpen		szoto_94+nevmas:hatarozo	
@@ -13693,6 +13979,8 @@ Zsolt 35:4	5	a		osszevonva	nevmas
 Zsolt 35:4	6	kik	akik		nevmas:ki	
 Zsolt 35:4	13	a		osszevonva	nevmas	
 Zsolt 35:4	14	kik	akik		nevmas:ki	
+Zsolt 35:6	2	útjok	útjuk		jok	
+Zsolt 35:7	8	hálójokat	hálójukat		jok	
 Zsolt 35:8	8	a		osszevonva	nevmas	
 Zsolt 35:8	9	melyet	amelyet		nevmas:mely	
 Zsolt 35:10	11	A		osszevonva	nevmas	
@@ -13702,6 +13990,7 @@ Zsolt 35:11	9	miről	amiről		nevmas:mi
 Zsolt 35:12	2	roszszal	rosszal		karakter	
 Zsolt 35:20	6	a		osszevonva	nevmas	
 Zsolt 35:20	7	kik	akik		nevmas:ki	
+Zsolt 35:21	3	szájokat	szájukat		jok	
 Zsolt 35:26	5	a		osszevonva	nevmas	
 Zsolt 35:26	6	kik	akik		nevmas:ki	
 Zsolt 35:26	15	a		osszevonva	nevmas	
@@ -13778,6 +14067,7 @@ Zsolt 43:4	13	cziterával	citerával		karakter
 Zsolt 43:5	15	néki	neki		neki	
 Zsolt 44:2	11	a		osszevonva	nevmas	
 Zsolt 44:2	12	melyet	amelyet		nevmas:mely	
+Zsolt 44:4	12	karjok	karjuk		jok	
 Zsolt 44:4	25	orczád	orcád		karakter	
 Zsolt 44:11	6	a		osszevonva	nevmas	
 Zsolt 44:11	7	kik	akik		nevmas:ki	
@@ -13802,8 +14092,10 @@ Zsolt 48:11	2	milyen	Amilyen		nevmas:hatarozo
 Zsolt 48:14	4	sánczait	sáncait		karakter	
 Zsolt 49:7	1	A		osszevonva	nevmas	
 Zsolt 49:7	2	kik	Akik		nevmas:ki	
+Zsolt 49:12	1	Gondolatjok	Gondolatjuk		jok	
 Zsolt 49:13	14	a		osszevonva	nevmas	
 Zsolt 49:13	15	melyeket	amelyeket		nevmas:mely	
+Zsolt 49:15	16	alakjokat	alakjukat		jok	
 Zsolt 49:20	7	a		osszevonva	nevmas	
 Zsolt 49:20	8	kik	akik		nevmas:ki	
 Zsolt 49:21	14	a		osszevonva	nevmas	
@@ -13850,6 +14142,7 @@ Zsolt 55:15	2	kik	Akik		nevmas:ki
 Zsolt 55:20	12	a		osszevonva	nevmas	
 Zsolt 55:20	13	kik	akik		nevmas:ki	
 Zsolt 56:3	5	reám	rám		rea	
+Zsolt 56:6	6	gondolatjok	gondolatjuk		jok	
 Zsolt 56:7	6	kivánják	kívánják		szoto_94	
 Zsolt 57:2	17	a		osszevonva	nevmas	
 Zsolt 57:2	18	míg	amíg		nevmas:hatarozo	
@@ -13857,12 +14150,14 @@ Zsolt 57:3	6	a		osszevonva	nevmas
 Zsolt 57:3	7	ki	aki		nevmas:ki	
 Zsolt 57:5	12	a		osszevonva	nevmas	
 Zsolt 57:5	13	kiknek	akiknek		nevmas:ki	
+Zsolt 58:4	9	anyjok	anyjuk		jok	
 Zsolt 58:5	11	a		osszevonva	nevmas	
 Zsolt 58:5	12	mely	amely		nevmas:mely	
 Zsolt 58:6	1	A		osszevonva	nevmas	
 Zsolt 58:6	2	mely	Amely		nevmas:mely	
 Zsolt 58:6	11	a		osszevonva	nevmas	
 Zsolt 58:6	12	ki	aki		nevmas:ki	
+Zsolt 58:7	9	szájokban	szájukban		jok	
 Zsolt 58:9	5	a		osszevonva	nevmas	
 Zsolt 58:9	6	mely	amely		nevmas:mely	
 Zsolt 58:9	11	aszszonynak	asszonynak		karakter	
@@ -13871,6 +14166,7 @@ Zsolt 58:9	15	mely	amely		nevmas:mely
 Zsolt 59:2	9	reám	rám		rea	
 Zsolt 59:6	18	a		osszevonva	nevmas	
 Zsolt 59:6	19	ki	aki		nevmas:ki	
+Zsolt 59:8	2	szájokkal	szájukkal		jok	
 Zsolt 59:10	4	reád	rád		rea	
 Zsolt 59:12	22	paizsunk	pajzsunk		szotag	
 Zsolt 60:2	2	harczolt	harcolt		karakter	
@@ -13953,7 +14249,8 @@ Zsolt 69:17	17	reám	rám		rea
 Zsolt 69:18	5	orczádat	orcádat		karakter	
 Zsolt 69:22	8	eczettel	ecettel		karakter	
 Zsolt 69:24	1	Setétüljenek	Sötétüljenek		szoto_94	
-Zsolt 69:25	6	reájok	rájok		rea	
+Zsolt 69:25	6	reájok	rájuk		rea+jok	
+Zsolt 69:26	4	palotájok	palotájuk		jok	
 Zsolt 69:27	2	a		osszevonva	nevmas	
 Zsolt 69:27	3	kit	akit		nevmas:ki	
 Zsolt 69:30	3	a		osszevonva	nevmas	
@@ -14006,6 +14303,9 @@ Zsolt 72:18	7	a		osszevonva	nevmas
 Zsolt 72:18	8	ki	aki		nevmas:ki	
 Zsolt 73:1	9	a		osszevonva	nevmas	
 Zsolt 73:1	10	kik	akik		nevmas:ki	
+Zsolt 73:4	8	erejök	erejük		jok	
+Zsolt 73:7	9	elméjök	elméjük		jok	
+Zsolt 73:9	4	szájokat	szájukat		jok	
 Zsolt 73:27	3	a		osszevonva	nevmas	
 Zsolt 73:27	4	kik	akik		nevmas:ki	
 Zsolt 73:27	11	a		osszevonva	nevmas	
@@ -14060,25 +14360,29 @@ Zsolt 78:29	7	a		osszevonva	nevmas
 Zsolt 78:29	8	mit	amit		nevmas:mi	
 Zsolt 78:29	9	kivántak	kívántak		szoto_94	
 Zsolt 78:30	6	kivánságukkal	kívánságukkal		szoto_94	
+Zsolt 78:35	8	sziklájok	sziklájuk		jok	
+Zsolt 78:35	15	megváltójok	megváltójuk		jok	
 Zsolt 78:36	3	néki	neki		neki	
+Zsolt 78:36	4	szájokkal	szájukkal		jok	
 Zsolt 78:36	8	néki	neki		neki	
 Zsolt 78:39	13	a		osszevonva	nevmas	
 Zsolt 78:39	14	mely	amely		nevmas:mely	
 Zsolt 78:42	10	a		osszevonva	nevmas	
 Zsolt 78:42	11	melyen	amelyen		nevmas:mely	
 Zsolt 78:43	8	Czoán	Coán		karakter	
-Zsolt 78:45	3	reájok	rájok		rea	
+Zsolt 78:45	3	reájok	rájuk		rea+jok	
 Zsolt 78:45	4	a		osszevonva	nevmas	
 Zsolt 78:45	5	melyek	amelyek		nevmas:mely	
 Zsolt 78:45	10	a		osszevonva	nevmas	
 Zsolt 78:45	11	mely	amely		nevmas:mely	
+Zsolt 78:49	1	Rájok	Rájuk		jok	
 Zsolt 78:54	11	a		osszevonva	nevmas	
 Zsolt 78:54	12	melyet	amelyet		nevmas:mely	
 Zsolt 78:60	8	a		osszevonva	nevmas	
 Zsolt 78:60	9	melyben	amelyben		nevmas:mely	
 Zsolt 78:65	9	a		osszevonva	nevmas	
 Zsolt 78:65	10	ki	aki		nevmas:ki	
-Zsolt 78:66	8	reájok	rájok		rea	
+Zsolt 78:66	8	reájok	rájuk		rea+jok	
 Zsolt 78:68	9	a		osszevonva	nevmas	
 Zsolt 78:68	10	melyet	amelyet		nevmas:mely	
 Zsolt 78:69	12	a		osszevonva	nevmas	
@@ -14113,10 +14417,13 @@ Zsolt 81:11	8	a		osszevonva	nevmas
 Zsolt 81:11	9	ki	aki		nevmas:ki	
 Zsolt 81:14	7	reám	rám		rea	
 Zsolt 81:16	5	néki	neki		neki	
+Zsolt 81:16	11	idejök	idejük		jok	
 Zsolt 82:5	5	setétségben	sötétségben		szoto_94	
+Zsolt 83:3	7	fejöket	fejüket		jok	
 Zsolt 83:4	7	védenczeid	védenceid		karakter	
 Zsolt 83:11	1	A		osszevonva	nevmas	
 Zsolt 83:11	2	kik	Akik		nevmas:ki	
+Zsolt 83:12	14	felkentjökkel	felkentjükkel		jok	
 Zsolt 83:13	1	A		osszevonva	nevmas	
 Zsolt 83:13	2	kik	Akik		nevmas:ki	
 Zsolt 83:14	6	a		osszevonva	nevmas	
@@ -14172,6 +14479,7 @@ Zsolt 89:15	15	orczád	orcád		karakter
 Zsolt 89:16	4	a		osszevonva	nevmas	
 Zsolt 89:16	5	mely	amely		nevmas:mely	
 Zsolt 89:16	12	orczádnak	orcádnak		karakter	
+Zsolt 89:18	4	erejöknek	erejüknek		jok	
 Zsolt 89:19	6	paizsunk	pajzsunk		szotag	
 Zsolt 89:22	1	A		osszevonva	nevmas	
 Zsolt 89:22	2	kivel	Akivel		nevmas:ki	
@@ -14181,6 +14489,7 @@ Zsolt 89:35	9	mi	ami		ami:regi_szabaly+nevmas:mi
 Zsolt 89:36	6	vajjon	vajon		szoto_94	
 Zsolt 89:44	11	harczban	harcban		karakter	
 Zsolt 89:46	8	reá	rá		rea	
+Zsolt 89:51	7	gyalázatjokról	gyalázatjukról		jok	
 Zsolt 89:52	1	A		osszevonva	nevmas	
 Zsolt 89:52	2	melyekkel	Amelyekkel		nevmas:mely	
 Zsolt 89:52	8	a		osszevonva	nevmas	
@@ -14219,7 +14528,7 @@ Zsolt 94:12	10	a		osszevonva	nevmas
 Zsolt 94:12	11	kit	akit		nevmas:ki	
 Zsolt 94:20	9	a		osszevonva	nevmas	
 Zsolt 94:20	10	mely	amely		nevmas:mely	
-Zsolt 94:23	3	reájok	rájok		rea	
+Zsolt 94:23	3	reájok	rájuk		rea+jok	
 Zsolt 95:2	5	néki	neki		neki	
 Zsolt 95:4	1	A		osszevonva	nevmas	
 Zsolt 95:4	2	kinek	Akinek		nevmas:ki	
@@ -14242,8 +14551,10 @@ Zsolt 98:7	11	a		osszevonva	nevmas
 Zsolt 98:7	12	kik	akik		nevmas:ki	
 Zsolt 99:4	5	a		osszevonva	nevmas	
 Zsolt 99:4	6	ki	aki		nevmas:ki	
+Zsolt 99:7	5	hozzájok	hozzájuk		jok	
 Zsolt 99:7	12	a		osszevonva	nevmas	
 Zsolt 99:7	13	melyet	amelyet		nevmas:mely	
+Zsolt 99:8	10	hozzájok	hozzájuk		jok	
 Zsolt 100:4	7	tornáczaiba	tornácaiba		karakter	
 Zsolt 100:4	11	néki	neki		neki	
 Zsolt 101:5	1	A		osszevonva	nevmas	
@@ -14337,6 +14648,12 @@ Zsolt 105:19	2	a		osszevonva	nevmas
 Zsolt 105:19	3	míg	amíg		nevmas:hatarozo	
 Zsolt 105:26	8	a		osszevonva	nevmas	
 Zsolt 105:26	9	kit	akit		nevmas:ki	
+Zsolt 105:32	10	földjökre	földjükre		jok	
+Zsolt 105:33	5	fügefájokat	fügefájukat		jok	
+Zsolt 105:35	7	földjökön	földjükön		jok	
+Zsolt 105:35	11	szántóföldjöknek	szántóföldjüknek		jok	
+Zsolt 105:36	5	földjökön	földjükön		jok	
+Zsolt 105:36	7	erejöknek	erejüknek		jok	
 Zsolt 105:42	7	a		osszevonva	nevmas	
 Zsolt 105:42	8	melyet	amelyet		nevmas:mely	
 Zsolt 106:3	2	a		osszevonva	nevmas	
@@ -14348,18 +14665,19 @@ Zsolt 106:15	5	mit	amit		nevmas:mi
 Zsolt 106:15	6	kivántak	kívántak		szoto_94	
 Zsolt 106:20	7	a		osszevonva	nevmas	
 Zsolt 106:20	8	mely	amely		nevmas:mely	
+Zsolt 106:21	3	szabadítójokról	szabadítójukról		jok	
 Zsolt 106:21	4	a		osszevonva	nevmas	
 Zsolt 106:21	5	ki	aki		nevmas:ki	
 Zsolt 106:24	4	kivánatos	kívánatos		szoto_94	
-Zsolt 106:26	5	reájok	rájok		rea	
-Zsolt 106:29	6	reájok	rájok		rea	
+Zsolt 106:26	5	reájok	rájuk		rea+jok	
+Zsolt 106:29	6	reájok	rájuk		rea+jok	
 Zsolt 106:31	4	néki	neki		neki	
 Zsolt 106:34	7	a		osszevonva	nevmas	
 Zsolt 106:34	8	mint	amint		nevmas:hatarozo	
-Zsolt 106:36	9	reájok	rájok		rea	
+Zsolt 106:36	9	reájok	rájuk		rea+jok	
 Zsolt 106:38	9	a		osszevonva	nevmas	
 Zsolt 106:38	10	kiket	akiket		nevmas:ki	
-Zsolt 106:44	2	reájok	rájok		rea	
+Zsolt 106:44	2	reájok	rájuk		rea+jok	
 Zsolt 106:46	6	a		osszevonva	nevmas	
 Zsolt 106:46	7	kik	akik		nevmas:ki	
 Zsolt 107:2	6	a		osszevonva	nevmas	
@@ -14396,6 +14714,7 @@ Zsolt 109:19	10	a		osszevonva	nevmas
 Zsolt 109:19	11	melylyel	amellyel		karakter+nevmas:mely	
 Zsolt 109:20	10	a		osszevonva	nevmas	
 Zsolt 109:20	11	kik	akik		nevmas:ki	
+Zsolt 109:25	8	fejöket	fejüket		jok	
 Zsolt 109:31	11	a		osszevonva	nevmas	
 Zsolt 109:31	12	kik	akik		nevmas:ki	
 Zsolt 110:1	13	a		osszevonva	nevmas	
@@ -14428,6 +14747,7 @@ Zsolt 114:8	1	A		osszevonva	nevmas
 Zsolt 114:8	2	ki	Aki		nevmas:ki	
 Zsolt 115:3	9	a		osszevonva	nevmas	
 Zsolt 115:3	10	mit	amit		nevmas:mi	
+Zsolt 115:5	1	Szájok	Szájuk		jok	
 Zsolt 115:8	7	a		osszevonva	nevmas	
 Zsolt 115:8	8	kik	akik		nevmas:ki	
 Zsolt 115:9	10	paizsa	pajzsa		szotag	
@@ -14455,6 +14775,7 @@ Zsolt 118:26	10	a		osszevonva	nevmas
 Zsolt 118:26	11	kik	akik		nevmas:ki	
 Zsolt 119:1	2	a		osszevonva	nevmas	
 Zsolt 119:1	3	kiknek	akiknek		nevmas:ki	
+Zsolt 119:1	4	útjok	útjuk		jok	
 Zsolt 119:1	6	a		osszevonva	nevmas	
 Zsolt 119:1	7	kik	akik		nevmas:ki	
 Zsolt 119:2	2	a		osszevonva	nevmas	
@@ -14521,6 +14842,7 @@ Zsolt 124:2	6	a		osszevonva	nevmas
 Zsolt 124:2	7	ki	aki		nevmas:ki	
 Zsolt 124:3	7	a		osszevonva	nevmas	
 Zsolt 124:3	8	mint	amint		nevmas:hatarozo	
+Zsolt 124:3	10	haragjok	haragjuk		jok	
 Zsolt 124:6	4	a		osszevonva	nevmas	
 Zsolt 124:6	5	ki	aki		nevmas:ki	
 Zsolt 124:8	8	a		osszevonva	nevmas	
@@ -14574,6 +14896,8 @@ Zsolt 135:8	1	A		osszevonva	nevmas
 Zsolt 135:8	2	ki	Aki		nevmas:ki	
 Zsolt 135:10	1	A		osszevonva	nevmas	
 Zsolt 135:10	2	ki	Aki		nevmas:ki	
+Zsolt 135:16	1	Szájok	Szájuk		jok	
+Zsolt 135:17	9	szájokban	szájukban		jok	
 Zsolt 135:18	8	a		osszevonva	nevmas	
 Zsolt 135:18	9	kik	akik		nevmas:ki	
 Zsolt 135:21	6	a		osszevonva	nevmas	
@@ -14619,8 +14943,9 @@ Zsolt 140:5	14	A		osszevonva	nevmas
 Zsolt 140:5	15	kik	Akik		nevmas:ki	
 Zsolt 140:9	5	a		osszevonva	nevmas	
 Zsolt 140:9	6	mit	amit		nevmas:mi	
-Zsolt 140:11	4	reájok	rájok		rea	
+Zsolt 140:11	4	reájok	rájuk		rea+jok	
 Zsolt 140:14	9	orczád	orcád		karakter	
+Zsolt 141:5	22	nyavalyájokban	nyavalyájukban		jok	
 Zsolt 141:7	2	a		osszevonva	nevmas	
 Zsolt 141:7	3	ki	aki		nevmas:ki	
 Zsolt 141:9	5	a		osszevonva	nevmas	
@@ -14642,8 +14967,10 @@ Zsolt 144:2	12	kiben	akiben		nevmas:ki
 Zsolt 144:3	15	reá	rá		rea	
 Zsolt 144:8	1	A		osszevonva	nevmas	
 Zsolt 144:8	2	kiknek	Akiknek		nevmas:ki	
+Zsolt 144:8	3	szájok	szájuk		jok	
 Zsolt 144:11	11	a		osszevonva	nevmas	
 Zsolt 144:11	12	kiknek	akiknek		nevmas:ki	
+Zsolt 144:11	13	szájok	szájuk		jok	
 Zsolt 144:14	14	utczáinkon	utcáinkon		karakter	
 Zsolt 144:15	4	a		osszevonva	nevmas	
 Zsolt 144:15	5	melynek	amelynek		nevmas:mely	
@@ -14670,6 +14997,7 @@ Zsolt 146:6	12	a		osszevonva	nevmas
 Zsolt 146:6	13	mi	ami		ami:V1_irasjel_elotte+nevmas:mi	
 Zsolt 146:6	16	A		osszevonva	nevmas	
 Zsolt 146:6	17	ki	Aki		nevmas:ki	
+Zsolt 147:4	6	mindnyájokat	mindnyájukat		jok	
 Zsolt 147:8	1	A		osszevonva	nevmas	
 Zsolt 147:8	2	ki	Aki		nevmas:ki	
 Zsolt 147:9	1	A		osszevonva	nevmas	
@@ -14700,6 +15028,7 @@ Péld 1:26	12	mitől	amitől		nevmas:mi
 Péld 1:27	7	a		osszevonva	nevmas	
 Péld 1:27	8	mitől	amitől		nevmas:mi	
 Péld 1:27	21	reátok	rátok		rea	
+Péld 1:31	5	útjoknak	útjuknak		jok	
 Péld 1:33	1	A		osszevonva	nevmas	
 Péld 1:33	2	ki	Aki		nevmas:ki	
 Péld 2:7	6	paizst	pajzst		szotag	
@@ -14716,6 +15045,7 @@ Péld 2:16	11	a		osszevonva	nevmas
 Péld 2:16	12	ki	aki		nevmas:ki	
 Péld 2:17	1	A		osszevonva	nevmas	
 Péld 2:17	2	ki	Aki		nevmas:ki	
+Péld 2:20	5	útjokon	útjukon		jok	
 Péld 3:12	2	a		osszevonva	nevmas	
 Péld 3:12	3	kit	akit		nevmas:ki	
 Péld 3:12	16	a		osszevonva	nevmas	
@@ -14789,6 +15119,7 @@ Péld 9:7	10	a		osszevonva	nevmas
 Péld 9:7	11	ki	aki		nevmas:ki	
 Péld 9:15	5	a		osszevonva	nevmas	
 Péld 9:15	6	kik	akik		nevmas:ki	
+Péld 9:15	9	útjokon	útjukon		jok	
 Péld 10:3	11	kivánságát	kívánságát		szoto_94	
 Péld 10:4	1	Szegénynyé	Szegénnyé		karakter	
 Péld 10:4	3	a		osszevonva	nevmas	
@@ -14832,6 +15163,7 @@ Péld 11:19	8	a		osszevonva	nevmas
 Péld 11:19	9	ki	aki		nevmas:ki	
 Péld 11:20	11	a		osszevonva	nevmas	
 Péld 11:20	12	kik	akik		nevmas:ki	
+Péld 11:20	15	útjokban	útjukban		jok	
 Péld 11:22	6	aranyperecz	aranyperec		karakter	
 Péld 11:22	11	a		osszevonva	nevmas	
 Péld 11:22	12	kinek	akinek		nevmas:ki	
@@ -15076,9 +15408,10 @@ Péld 20:20	2	ki	Aki		nevmas:ki
 Péld 20:20	14	setétségben	sötétségben		szoto_94	
 Péld 20:21	1	A		osszevonva	nevmas	
 Péld 20:21	2	mely	Amely		nevmas:mely	
-Péld 20:26	9	reájok	rájok		rea	
+Péld 20:26	9	reájok	rájuk		rea+jok	
 Péld 20:27	8	a		osszevonva	nevmas	
 Péld 20:27	9	ki	aki		nevmas:ki	
+Péld 20:29	6	erejök	erejük		jok	
 Péld 21:6	9	a		osszevonva	nevmas	
 Péld 21:6	10	kik	akik		nevmas:ki	
 Péld 21:9	8	asszonynyal	asszonnyal		karakter	
@@ -15158,7 +15491,7 @@ Péld 24:24	1	A		osszevonva	nevmas
 Péld 24:24	2	ki	Aki		nevmas:ki	
 Péld 24:25	1	A		osszevonva	nevmas	
 Péld 24:25	2	kik	Akik		nevmas:ki	
-Péld 24:25	14	reájok	rájok		rea	
+Péld 24:25	14	reájok	rájuk		rea+jok	
 Péld 24:26	4	a		osszevonva	nevmas	
 Péld 24:26	5	ki	aki		nevmas:ki	
 Péld 24:27	3	kivül	kívül		szoto_94	
@@ -15376,6 +15709,7 @@ Préd 1:16	15	a		osszevonva	nevmas
 Préd 1:16	16	kik	akik		nevmas:ki	
 Préd 2:4	28	a		osszevonva	nevmas	
 Préd 2:4	29	mit	amit		nevmas:mi	
+Préd 2:6	10	beléjök	beléjük		jok	
 Préd 2:8	6	nevekedett	növekedett		szoto_94	
 Préd 2:8	20	a		osszevonva	nevmas	
 Préd 2:8	21	kik	akik		nevmas:ki	
@@ -15429,6 +15763,7 @@ Préd 4:1	7	a		osszevonva	nevmas
 Préd 4:1	8	melyek	amelyek		nevmas:mely	
 Préd 4:1	18	a		osszevonva	nevmas	
 Préd 4:1	19	kik	akik		nevmas:ki	
+Préd 4:1	23	vígasztalójok	vígasztalójuk		jok	
 Préd 4:2	6	a		osszevonva	nevmas	
 Préd 4:2	7	kik	akik		nevmas:ki	
 Préd 4:2	14	a		osszevonva	nevmas	
@@ -15442,6 +15777,7 @@ Préd 4:3	21	mely	amely		nevmas:mely
 Préd 4:8	4	a		osszevonva	nevmas	
 Préd 4:8	5	ki	aki		nevmas:ki	
 Préd 4:8	35	vajjon	vajon		szoto_94	
+Préd 4:9	17	munkájokból	munkájukból		jok	
 Préd 4:10	18	a		osszevonva	nevmas	
 Préd 4:10	19	ki	aki		nevmas:ki	
 Préd 4:13	12	a		osszevonva	nevmas	
@@ -15569,6 +15905,8 @@ Préd 9:4	24	a		osszevonva	nevmas
 Préd 9:4	25	ki	aki		nevmas:ki	
 Préd 9:4	38	a		osszevonva	nevmas	
 Préd 9:4	39	ki	aki		nevmas:ki	
+Préd 9:5	13	szerencséjök	szerencséjük		jok	
+Préd 9:5	24	elméjökben	elméjükben		jok	
 Préd 9:5	28	a		osszevonva	nevmas	
 Préd 9:5	29	míg	amíg		nevmas:hatarozo	
 Préd 9:8	16	a		osszevonva	nevmas	
@@ -15581,7 +15919,7 @@ Préd 9:11	40	melylyel	mellyel		karakter
 Préd 9:12	19	a		osszevonva	nevmas	
 Préd 9:12	20	hová	ahová		nevmas:hatarozo	
 Préd 9:14	26	miképen	miképpen		szoto_94	
-Préd 9:14	39	reájok	rájok		rea	
+Préd 9:14	39	reájok	rájuk		rea+jok	
 Préd 9:17	7	a		osszevonva	nevmas	
 Préd 9:17	8	ki	aki		nevmas:ki	
 Préd 10:2	4	a		osszevonva	nevmas	
@@ -15668,6 +16006,7 @@ Préd 12:12	7	kivánságos	kívánságos		szoto_94
 Én 4:4	23	paizsai	pajzsai		szotag	
 Én 4:5	13	a		osszevonva	nevmas	
 Én 4:5	14	melyek	amelyek		nevmas:mely	
+Én 4:8	23	barlangjokból	barlangjukból		jok	
 Én 4:8	25	párduczoknak	párducoknak		karakter	
 Én 4:9	22	aranylánczczal	aranylánccal		karakter	
 Én 4:13	9	cziprusok	ciprusok		karakter	
@@ -15706,12 +16045,14 @@ Préd 12:12	7	kivánságos	kívánságos		szoto_94
 Ézs 1:7	16	a		osszevonva	nevmas	
 Ézs 1:7	17	hol	ahol		nevmas:hatarozo	
 Ézs 1:12	8	kivánja	kívánja		szoto_94	
+Ézs 1:23	22	eléjök	eléjük		jok	
 Ézs 1:28	10	a		osszevonva	nevmas	
 Ézs 1:28	11	kik	akik		nevmas:ki	
 Ézs 1:29	7	a		osszevonva	nevmas	
 Ézs 1:29	8	melyekben	amelyekben		nevmas:mely	
 Ézs 1:29	16	a		osszevonva	nevmas	
 Ézs 1:29	17	melyeket	amelyeket		nevmas:mely	
+Ézs 1:31	13	oltójok	oltójuk		jok	
 Ézs 2:1	5	a		osszevonva	nevmas	
 Ézs 2:1	6	melyet	amelyet		nevmas:mely	
 Ézs 2:7	6	aranynyal	arannyal		karakter	
@@ -15751,6 +16092,7 @@ Préd 12:12	7	kivánságos	kívánságos		szoto_94
 Ézs 5:22	4	kik	akik		nevmas:ki	
 Ézs 5:23	1	A		osszevonva	nevmas	
 Ézs 5:23	2	kik	Akik		nevmas:ki	
+Ézs 5:24	16	virágjok	virágjuk		jok	
 Ézs 5:25	24	utczán	utcán		karakter	
 Ézs 5:29	20	a		osszevonva	nevmas	
 Ézs 5:29	21	ki	aki		nevmas:ki	
@@ -15779,6 +16121,7 @@ Préd 12:12	7	kivánságos	kívánságos		szoto_94
 Ézs 8:3	5	a		osszevonva	nevmas	
 Ézs 8:3	6	ki	aki		nevmas:ki	
 Ézs 8:6	10	Reczinben	Recinben		karakter	
+Ézs 8:7	3	rájok	rájuk		jok	
 Ézs 8:17	6	a		osszevonva	nevmas	
 Ézs 8:17	7	ki	aki		nevmas:ki	
 Ézs 8:17	9	orczáját	orcáját		karakter	
@@ -15798,13 +16141,16 @@ Préd 12:12	7	kivánságos	kívánságos		szoto_94
 Ézs 9:9	11	kik	akik		nevmas:ki	
 Ézs 9:10	14	czédrusokat	cédrusokat		karakter	
 Ézs 9:11	6	Reczin	Recin		karakter	
+Ézs 9:11	10	rájok	rájuk		jok	
 Ézs 9:15	13	a		osszevonva	nevmas	
 Ézs 9:15	14	ki	aki		nevmas:ki	
 Ézs 9:16	8	a		osszevonva	nevmas	
 Ézs 9:16	9	kiket	akiket		nevmas:ki	
+Ézs 9:20	12	karjoknak	karjuknak		jok	
 Ézs 10:1	9	a		osszevonva	nevmas	
 Ézs 10:1	10	kik	akik		nevmas:ki	
 Ézs 10:2	2	elriaszszák	elriasszák		karakter	
+Ézs 10:2	18	prédájok	prédájuk		jok	
 Ézs 10:3	2	vajjon	vajon		szoto_94	
 Ézs 10:5	6	pálcza	pálca		karakter	
 Ézs 10:6	21	utczák	utcák		karakter	
@@ -15850,6 +16196,7 @@ Préd 12:12	7	kivánságos	kívánságos		szoto_94
 Ézs 13:17	7	a		osszevonva	nevmas	
 Ézs 13:17	8	kik	akik		nevmas:ki	
 Ézs 13:21	11	struczok	strucok		karakter	
+Ézs 14:1	17	hozzájok	hozzájuk		jok	
 Ézs 14:3	5	a		osszevonva	nevmas	
 Ézs 14:3	6	melyen	amelyen		nevmas:mely	
 Ézs 14:3	19	a		osszevonva	nevmas	
@@ -15887,13 +16234,14 @@ Préd 12:12	7	kivánságos	kívánságos		szoto_94
 Ézs 17:8	10	miket	amiket		nevmas:mi	
 Ézs 17:9	12	a		osszevonva	nevmas	
 Ézs 17:9	13	melyeket	amelyeket		nevmas:mely	
+Ézs 17:10	20	beléjök	beléjük		jok	
 Ézs 17:11	1	A		osszevonva	nevmas	
 Ézs 17:11	2	mely	Amely		nevmas:mely	
 Ézs 17:12	6	a		osszevonva	nevmas	
 Ézs 17:12	7	kik	akik		nevmas:ki	
 Ézs 17:12	18	a		osszevonva	nevmas	
 Ézs 17:12	19	kik	akik		nevmas:ki	
-Ézs 17:14	5	reájok	rájok		rea	
+Ézs 17:14	5	reájok	rájuk		rea+jok	
 Ézs 18:1	5	a		osszevonva	nevmas	
 Ézs 18:1	6	mely	amely		nevmas:mely	
 Ézs 18:2	1	A		osszevonva	nevmas	
@@ -15945,6 +16293,7 @@ Préd 12:12	7	kivánságos	kívánságos		szoto_94
 Ézs 22:15	21	néki	neki		neki	
 Ézs 22:16	15	a		osszevonva	nevmas	
 Ézs 22:16	16	ki	aki		nevmas:ki	
+Ézs 22:21	15	atyjok	atyjuk		jok	
 Ézs 22:22	11	a		osszevonva	nevmas	
 Ézs 22:22	12	mit	amit		nevmas:mi	
 Ézs 22:22	19	a		osszevonva	nevmas	
@@ -15982,7 +16331,7 @@ Préd 12:12	7	kivánságos	kívánságos		szoto_94
 Ézs 26:19	10	a		osszevonva	nevmas	
 Ézs 26:19	11	kik	akik		nevmas:ki	
 Ézs 27:6	13	gyümölcscsel	gyümölccsel		karakter	
-Ézs 27:8	7	Reájok	Rájok		rea	
+Ézs 27:8	7	Reájok	Rájuk		rea+jok	
 Ézs 27:11	26	néki	neki		neki	
 Ézs 27:13	11	a		osszevonva	nevmas	
 Ézs 27:13	12	kik	akik		nevmas:ki	
@@ -16105,11 +16454,12 @@ Préd 12:12	7	kivánságos	kívánságos		szoto_94
 Ézs 33:15	22	ki	aki		nevmas:ki	
 Ézs 33:21	14	a		osszevonva	nevmas	
 Ézs 33:21	15	melyekbe	amelyekbe		nevmas:mely	
-Ézs 33:23	3	árbóczfájok	árbócfájok		karakter	
+Ézs 33:23	3	árbóczfájok	árbócfájuk		karakter+jok	
 Ézs 33:24	10	a		osszevonva	nevmas	
 Ézs 33:24	11	mely	amely		nevmas:mely	
 Ézs 34:6	20	Boczrában	Bocrában		karakter	
 Ézs 34:13	15	struczok	strucok		karakter	
+Ézs 34:16	11	hijjok	hijjuk		jok	
 Ézs 35:2	10	néki	neki		neki	
 Ézs 35:4	15	a		osszevonva	nevmas	
 Ézs 35:4	16	ki	aki		nevmas:ki	
@@ -16118,6 +16468,7 @@ Préd 12:12	7	kivánságos	kívánságos		szoto_94
 Ézs 35:8	21	a		osszevonva	nevmas	
 Ézs 35:8	22	ki	aki		nevmas:ki	
 Ézs 35:9	12	reá	rá		rea	
+Ézs 35:10	14	fejökön	fejükön		jok	
 Ézs 36:6	9	a		osszevonva	nevmas	
 Ézs 36:6	10	ki	aki		nevmas:ki	
 Ézs 36:7	12	vajjon	vajon		szoto_94	
@@ -16125,12 +16476,13 @@ Préd 12:12	7	kivánságos	kívánságos		szoto_94
 Ézs 36:7	18	kinek	akinek		nevmas:ki	
 Ézs 36:8	3	harczolj	harcolj		karakter	
 Ézs 36:8	11	királylyal	királlyal		karakter	
-Ézs 36:8	23	reájok	rájok		rea	
+Ézs 36:8	23	reájok	rájuk		rea+jok	
 Ézs 36:9	1	Miképen	Miképpen		szoto_94	
 Ézs 36:9	7	a		osszevonva	nevmas	
 Ézs 36:9	8	ki	aki		nevmas:ki	
 Ézs 36:12	24	a		osszevonva	nevmas	
 Ézs 36:12	25	kik	akik		nevmas:ki	
+Ézs 36:12	31	ganéjokat	ganéjukat		jok	
 Ézs 36:20	7	a		osszevonva	nevmas	
 Ézs 36:20	8	ki	aki		nevmas:ki	
 Ézs 36:21	17	néki	neki		neki	
@@ -16209,12 +16561,15 @@ Préd 12:12	7	kivánságos	kívánságos		szoto_94
 Ézs 40:20	22	mely	amely		nevmas:mely	
 Ézs 40:22	7	a		osszevonva	nevmas	
 Ézs 40:22	8	melynek	amelynek		nevmas:mely	
+Ézs 40:24	17	rájok	rájuk		jok	
 Ézs 40:26	13	a		osszevonva	nevmas	
 Ézs 40:26	14	ki	aki		nevmas:ki	
+Ézs 40:26	28	híjok	híjuk		jok	
 Ézs 40:28	14	a		osszevonva	nevmas	
 Ézs 40:28	15	ki	aki		nevmas:ki	
 Ézs 40:31	2	a		osszevonva	nevmas	
 Ézs 40:31	3	kik	akik		nevmas:ki	
+Ézs 40:31	7	erejök	erejük		jok	
 Ézs 41:1	2	reám	rám		rea	
 Ézs 41:2	6	a		osszevonva	nevmas	
 Ézs 41:2	7	kit	akit		nevmas:ki	
@@ -16299,6 +16654,7 @@ Préd 12:12	7	kivánságos	kívánságos		szoto_94
 Ézs 43:11	8	kivül	kívül		szoto_94	
 Ézs 43:13	9	a		osszevonva	nevmas	
 Ézs 43:13	10	ki	aki		nevmas:ki	
+Ézs 43:14	17	mindnyájokat	mindnyájukat		jok	
 Ézs 43:16	5	a		osszevonva	nevmas	
 Ézs 43:16	6	ki	aki		nevmas:ki	
 Ézs 43:17	1	A		osszevonva	nevmas	
@@ -16422,6 +16778,7 @@ Préd 12:12	7	kivánságos	kívánságos		szoto_94
 Ézs 49:9	10	kik	akik		nevmas:ki	
 Ézs 49:10	13	a		osszevonva	nevmas	
 Ézs 49:10	14	ki	aki		nevmas:ki	
+Ézs 49:18	19	mindnyájokat	mindnyájukat		jok	
 Ézs 49:21	7	szűlte	szülte		szoto_94	
 Ézs 49:23	8	arczczal	arccal		karakter	
 Ézs 49:23	25	a		osszevonva	nevmas	
@@ -16456,6 +16813,7 @@ Préd 12:12	7	kivánságos	kívánságos		szoto_94
 Ézs 51:10	6	ki	aki		nevmas:ki	
 Ézs 51:10	14	a		osszevonva	nevmas	
 Ézs 51:10	15	ki	aki		nevmas:ki	
+Ézs 51:11	15	fejökön	fejükön		jok	
 Ézs 51:12	14	a		osszevonva	nevmas	
 Ézs 51:12	15	ki	aki		nevmas:ki	
 Ézs 51:13	6	a		osszevonva	nevmas	
@@ -16486,6 +16844,7 @@ Préd 12:12	7	kivánságos	kívánságos		szoto_94
 Ézs 52:11	15	a		osszevonva	nevmas	
 Ézs 52:11	16	kik	akik		nevmas:ki	
 Ézs 52:14	1	Miképen	Miképpen		szoto_94	
+Ézs 52:15	10	szájokat	szájukat		jok	
 Ézs 52:15	12	a		osszevonva	nevmas	
 Ézs 52:15	13	mit	amit		nevmas:mi	
 Ézs 53:2	15	néki	neki		neki	
@@ -16562,6 +16921,7 @@ Préd 12:12	7	kivánságos	kívánságos		szoto_94
 Ézs 57:5	2	kik	Akik		nevmas:ki	
 Ézs 57:8	23	a		osszevonva	nevmas	
 Ézs 57:8	24	merre	amerre		nevmas:hatarozo	
+Ézs 57:13	8	mindnyájokat	mindnyájukat		jok	
 Ézs 57:13	16	a		osszevonva	nevmas	
 Ézs 57:13	17	ki	aki		nevmas:ki	
 Ézs 57:15	8	a		osszevonva	nevmas	
@@ -16614,6 +16974,7 @@ Préd 12:12	7	kivánságos	kívánságos		szoto_94
 Ézs 59:21	18	a		osszevonva	nevmas	
 Ézs 59:21	19	melyeket	amelyeket		nevmas:mely	
 Ézs 60:8	12	dúczaikhoz	dúcaikhoz		karakter	
+Ézs 60:9	16	ezüstjöket	ezüstjüket		jok	
 Ézs 60:12	7	a		osszevonva	nevmas	
 Ézs 60:12	8	mely	amely		nevmas:mely	
 Ézs 60:13	6	cziprus	ciprus		karakter	
@@ -16643,6 +17004,7 @@ Préd 12:12	7	kivánságos	kívánságos		szoto_94
 Ézs 63:7	24	melyet	amelyet		nevmas:mely	
 Ézs 63:8	10	a		osszevonva	nevmas	
 Ézs 63:8	11	kik	akik		nevmas:ki	
+Ézs 63:8	17	megtartójok	megtartójuk		jok	
 Ézs 63:9	7	orczájának	orcájának		karakter	
 Ézs 63:11	10	a		osszevonva	nevmas	
 Ézs 63:11	11	ki	aki		nevmas:ki	
@@ -16717,6 +17079,7 @@ Préd 12:12	7	kivánságos	kívánságos		szoto_94
 Ézs 66:3	16	ki	aki		nevmas:ki	
 Ézs 66:3	22	a		osszevonva	nevmas	
 Ézs 66:3	23	ki	aki		nevmas:ki	
+Ézs 66:4	9	rájok	rájuk		jok	
 Ézs 66:4	11	a		osszevonva	nevmas	
 Ézs 66:4	12	mitől	amitől		nevmas:mi	
 Ézs 66:4	31	a		osszevonva	nevmas	
@@ -16769,6 +17132,7 @@ Jer 2:2	18	a		osszevonva	nevmas
 Jer 2:2	19	mikor	amikor		nevmas:hatarozo	
 Jer 2:3	10	a		osszevonva	nevmas	
 Jer 2:3	11	kik	akik		nevmas:ki	
+Jer 2:3	20	rájok	rájuk		jok	
 Jer 2:6	10	a		osszevonva	nevmas	
 Jer 2:6	11	ki	aki		nevmas:ki	
 Jer 2:6	16	a		osszevonva	nevmas	
@@ -16782,6 +17146,7 @@ Jer 2:8	33	kik	akik		nevmas:ki
 Jer 2:13	23	a		osszevonva	nevmas	
 Jer 2:13	24	melyek	amelyek		nevmas:mely	
 Jer 2:15	3	reá	rá		rea	
+Jer 2:15	5	hangjokat	hangjukat		jok	
 Jer 2:17	1	Vajjon	Vajon		szoto_94	
 Jer 2:17	14	a		osszevonva	nevmas	
 Jer 2:17	15	mikor	amikor		nevmas:hatarozo	
@@ -16807,7 +17172,7 @@ Jer 2:32	13	nyaklánczairól	nyakláncairól		karakter
 Jer 2:36	11	a		osszevonva	nevmas	
 Jer 2:36	12	mint	amint		nevmas:hatarozo	
 Jer 3:1	17	vajjon	vajon		szoto_94	
-Jer 3:2	17	reájok	rájok		rea	
+Jer 3:2	17	reájok	rájuk		rea+jok	
 Jer 3:5	14	a		osszevonva	nevmas	
 Jer 3:5	15	mint	amint		nevmas:hatarozo	
 Jer 3:6	11	a		osszevonva	nevmas	
@@ -16821,6 +17186,7 @@ Jer 3:19	5	Miképen	Miképpen		szoto_94
 Jer 3:19	15	kivánatos	kívánatos		szoto_94	
 Jer 3:20	2	a		osszevonva	nevmas	
 Jer 3:20	3	mint	amint		nevmas:hatarozo	
+Jer 3:21	11	útjokat	útjukat		jok	
 Jer 4:12	5	reám	rám		rea	
 Jer 4:17	10	daczoskodott	dacoskodott		karakter	
 Jer 4:19	25	harczi	harci		karakter	
@@ -16860,14 +17226,16 @@ Jer 5:24	14	a		osszevonva	nevmas
 Jer 5:24	15	ki	aki		nevmas:ki	
 Jer 6:3	14	a		osszevonva	nevmas	
 Jer 6:3	15	mi	ami		ami:V1_irasjel_elotte+nevmas:mi	
-Jer 6:9	15	reájok	rájok		rea	
+Jer 6:9	15	reájok	rájuk		rea+jok	
 Jer 6:11	15	utczán	utcán		karakter	
+Jer 6:17	4	föléjök	föléjük		jok	
 Jer 6:18	12	a		osszevonva	nevmas	
 Jer 6:18	13	mi	ami		ami:V1_irasjel_elotte+nevmas:mi	
-Jer 6:18	15	reájok	rájok		rea	
+Jer 6:18	15	reájok	rájuk		rea+jok	
 Jer 6:20	6	a		osszevonva	nevmas	
 Jer 6:20	7	mi	ami		ami:V1_irasjel_elotte+nevmas:mi	
 Jer 6:26	17	reánk	ránk		rea	
+Jer 6:27	15	útjokat	útjukat		jok	
 Jer 7:1	4	a		osszevonva	nevmas	
 Jer 7:1	5	melyet	amelyet		nevmas:mely	
 Jer 7:2	20	a		osszevonva	nevmas	
@@ -16908,6 +17276,7 @@ Jer 7:26	4	reám	rám		rea
 Jer 7:27	10	reád	rád		rea	
 Jer 7:28	9	a		osszevonva	nevmas	
 Jer 7:28	10	mely	amely		nevmas:mely	
+Jer 7:28	30	szájokból	szájukból		jok	
 Jer 7:29	20	a		osszevonva	nevmas	
 Jer 7:29	21	melyre	amelyre		nevmas:mely	
 Jer 7:30	16	a		osszevonva	nevmas	
@@ -16939,6 +17308,7 @@ Jer 8:3	25	a		osszevonva	nevmas
 Jer 8:3	26	hová	ahová		nevmas:hatarozo	
 Jer 8:6	9	a		osszevonva	nevmas	
 Jer 8:6	10	ki	aki		nevmas:ki	
+Jer 8:6	23	pályájokra	pályájukra		jok	
 Jer 8:6	27	harczra	harcra		karakter	
 Jer 8:7	14	gerlicze	gerlice		karakter	
 Jer 8:16	23	a		osszevonva	nevmas	
@@ -16953,6 +17323,7 @@ Jer 9:12	30	a		osszevonva	nevmas
 Jer 9:12	31	melyen	amelyen		nevmas:mely	
 Jer 9:13	10	a		osszevonva	nevmas	
 Jer 9:13	11	melyet	amelyet		nevmas:mely	
+Jer 9:13	12	eléjök	eléjük		jok	
 Jer 9:14	12	a		osszevonva	nevmas	
 Jer 9:14	13	mikre	amikre		nevmas:mi	
 Jer 9:16	7	a		osszevonva	nevmas	
@@ -17002,13 +17373,14 @@ Jer 11:5	21	mint	amint		nevmas:hatarozo
 Jer 11:6	13	utczáin	utcáin		karakter	
 Jer 11:7	7	a		osszevonva	nevmas	
 Jer 11:7	8	mikor	amikor		nevmas:hatarozo	
+Jer 11:8	19	rájok	rájuk		jok	
 Jer 11:8	25	a		osszevonva	nevmas	
 Jer 11:8	26	melyeket	amelyeket		nevmas:mely	
 Jer 11:10	7	a		osszevonva	nevmas	
 Jer 11:10	8	kik	akik		nevmas:ki	
 Jer 11:10	35	a		osszevonva	nevmas	
 Jer 11:10	36	melyet	amelyet		nevmas:mely	
-Jer 11:11	10	reájok	rájok		rea	
+Jer 11:11	10	reájok	rájuk		rea+jok	
 Jer 11:11	11	a		osszevonva	nevmas	
 Jer 11:11	12	melyből	amelyből		nevmas:mely	
 Jer 11:12	12	a		osszevonva	nevmas	
@@ -17021,6 +17393,7 @@ Jer 11:17	19	mit	amit		nevmas:mi
 Jer 11:19	8	hurczolt	hurcolt		karakter	
 Jer 11:21	9	a		osszevonva	nevmas	
 Jer 11:21	10	kik	akik		nevmas:ki	
+Jer 12:2	15	szájokhoz	szájukhoz		jok	
 Jer 12:7	9	a		osszevonva	nevmas	
 Jer 12:7	10	kit	akit		nevmas:ki	
 Jer 12:11	14	a		osszevonva	nevmas	
@@ -17073,8 +17446,10 @@ Jer 13:25	16	ki	aki		nevmas:ki
 Jer 13:26	4	arczodra	arcodra		karakter	
 Jer 14:1	4	a		osszevonva	nevmas	
 Jer 14:1	5	mit	amit		nevmas:mi	
+Jer 14:3	20	fejöket	fejüket		jok	
 Jer 14:4	4	a		osszevonva	nevmas	
 Jer 14:4	5	mely	amely		nevmas:mely	
+Jer 14:4	18	fejöket	fejüket		jok	
 Jer 14:8	19	a		osszevonva	nevmas	
 Jer 14:8	20	ki	aki		nevmas:ki	
 Jer 14:9	11	a		osszevonva	nevmas	
@@ -17086,6 +17461,7 @@ Jer 14:16	5	melynek	amelynek		nevmas:mely
 Jer 14:16	12	utczáin	utcáin		karakter	
 Jer 14:16	22	a		osszevonva	nevmas	
 Jer 14:16	23	ki	aki		nevmas:ki	
+Jer 14:16	34	rájok	rájuk		jok	
 Jer 14:18	29	a		osszevonva	nevmas	
 Jer 14:18	30	melyet	amelyet		nevmas:mely	
 Jer 14:22	7	a		osszevonva	nevmas	
@@ -17099,10 +17475,10 @@ Jer 15:2	25	a		osszevonva	nevmas
 Jer 15:2	26	ki	aki		nevmas:ki	
 Jer 15:2	31	a		osszevonva	nevmas	
 Jer 15:2	32	ki	aki		nevmas:ki	
-Jer 15:3	4	reájok	rájok		rea	
+Jer 15:3	4	reájok	rájuk		rea+jok	
 Jer 15:4	15	a		osszevonva	nevmas	
 Jer 15:4	16	miket	amiket		nevmas:mi	
-Jer 15:8	9	reájok	rájok		rea	
+Jer 15:8	9	reájok	rájuk		rea+jok	
 Jer 15:8	15	reája	rája		rea	
 Jer 15:9	2	a		osszevonva	nevmas	
 Jer 15:9	3	ki	aki		nevmas:ki	
@@ -17111,6 +17487,7 @@ Jer 15:12	1	Vajjon	Vajon		szoto_94
 Jer 15:14	6	a		osszevonva	nevmas	
 Jer 15:14	7	melyet	amelyet		nevmas:mely	
 Jer 15:15	9	reám	rám		rea	
+Jer 15:19	37	hozzájok	hozzájuk		jok	
 Jer 15:20	6	érczbástyává	ércbástyává		karakter	
 Jer 16:3	12	a		osszevonva	nevmas	
 Jer 16:3	13	kik	akik		nevmas:ki	
@@ -17118,6 +17495,9 @@ Jer 16:3	21	a		osszevonva	nevmas
 Jer 16:3	22	kik	akik		nevmas:ki	
 Jer 16:3	28	a		osszevonva	nevmas	
 Jer 16:3	29	kik	akik		nevmas:ki	
+Jer 16:6	21	hajokat	hajukat		jok	
+Jer 16:7	20	atyjokért	atyjukért		jok	
+Jer 16:7	22	anyjokért	anyjukért		jok	
 Jer 16:10	33	a		osszevonva	nevmas	
 Jer 16:10	34	melylyel	amellyel		karakter+nevmas:mely	
 Jer 16:12	19	reám	rám		rea	
@@ -17135,6 +17515,7 @@ Jer 16:15	26	a		osszevonva	nevmas
 Jer 16:15	27	melyet	amelyet		nevmas:mely	
 Jer 16:16	12	halászszák	halásszák		karakter	
 Jer 16:16	22	vadászszák	vadásszák		karakter	
+Jer 16:17	5	útjokat	útjukat		jok	
 Jer 16:17	9	orczám	orcám		karakter	
 Jer 17:1	7	hegygyel	heggyel		karakter	
 Jer 17:4	10	a		osszevonva	nevmas	
@@ -17161,7 +17542,7 @@ Jer 17:16	17	a		osszevonva	nevmas
 Jer 17:16	18	mi	ami		ami:V1_irasjel_elotte+nevmas:mi	
 Jer 17:18	3	a		osszevonva	nevmas	
 Jer 17:18	4	kik	akik		nevmas:ki	
-Jer 17:18	19	reájok	rájok		rea	
+Jer 17:18	19	reájok	rájuk		rea+jok	
 Jer 17:19	14	a		osszevonva	nevmas	
 Jer 17:19	15	melyen	amelyen		nevmas:mely	
 Jer 17:19	18	a		osszevonva	nevmas	
@@ -17194,11 +17575,11 @@ Jer 18:14	9	Vajjon	Vajon		szoto_94
 Jer 18:16	8	a		osszevonva	nevmas	
 Jer 18:16	9	ki	aki		nevmas:ki	
 Jer 18:17	13	arczczal	arccal		karakter	
-Jer 18:17	15	reájok	rájok		rea	
+Jer 18:17	15	reájok	rájuk		rea+jok	
 Jer 18:19	2	reám	rám		rea	
 Jer 18:20	2	roszszal	rosszal		karakter	
 Jer 18:21	28	harczon	harcon		karakter	
-Jer 18:22	7	reájok	rájok		rea	
+Jer 18:22	7	reájok	rájuk		rea+jok	
 Jer 18:23	20	orczád	orcád		karakter	
 Jer 19:2	7	a		osszevonva	nevmas	
 Jer 19:2	8	mely	amely		nevmas:mely	
@@ -17337,6 +17718,7 @@ Jer 23:2	10	a		osszevonva	nevmas
 Jer 23:2	11	kik	akik		nevmas:ki	
 Jer 23:3	7	a		osszevonva	nevmas	
 Jer 23:3	8	melyekre	amelyekre		nevmas:mely	
+Jer 23:4	4	melléjök	melléjük		jok	
 Jer 23:6	16	a		osszevonva	nevmas	
 Jer 23:6	17	melylyel	amellyel		karakter+nevmas:mely	
 Jer 23:7	10	a		osszevonva	nevmas	
@@ -17349,8 +17731,10 @@ Jer 23:8	12	a		osszevonva	nevmas
 Jer 23:8	13	ki	aki		nevmas:ki	
 Jer 23:8	25	a		osszevonva	nevmas	
 Jer 23:8	26	melyekre	amelyekre		nevmas:mely	
+Jer 23:8	34	földjökön	földjükön		jok	
+Jer 23:12	4	útjok	útjuk		jok	
 Jer 23:12	12	setétben	sötétben		szoto_94	
-Jer 23:12	19	reájok	rájok		rea	
+Jer 23:12	19	reájok	rájuk		rea+jok	
 Jer 23:16	12	a		osszevonva	nevmas	
 Jer 23:16	13	kik	akik		nevmas:ki	
 Jer 23:17	5	a		osszevonva	nevmas	
@@ -17406,7 +17790,7 @@ Jer 24:8	42	a		osszevonva	nevmas
 Jer 24:8	43	kik	akik		nevmas:ki	
 Jer 24:9	17	a		osszevonva	nevmas	
 Jer 24:9	18	hová	ahová		nevmas:hatarozo	
-Jer 24:10	7	reájok	rájok		rea	
+Jer 24:10	7	reájok	rájuk		rea+jok	
 Jer 24:10	9	a		osszevonva	nevmas	
 Jer 24:10	10	míg	amíg		nevmas:hatarozo	
 Jer 24:10	14	a		osszevonva	nevmas	
@@ -17432,6 +17816,7 @@ Jer 25:15	22	a		osszevonva	nevmas
 Jer 25:15	23	kikhez	akikhez		nevmas:ki	
 Jer 25:16	10	a		osszevonva	nevmas	
 Jer 25:16	11	melyet	amelyet		nevmas:mely	
+Jer 25:16	13	közéjök	közéjük		jok	
 Jer 25:17	12	a		osszevonva	nevmas	
 Jer 25:17	13	kikhez	akikhez		nevmas:ki	
 Jer 25:18	18	a		osszevonva	nevmas	
@@ -17448,6 +17833,7 @@ Jer 25:27	27	a		osszevonva	nevmas
 Jer 25:27	28	melyet	amelyet		nevmas:mely	
 Jer 25:29	6	a		osszevonva	nevmas	
 Jer 25:29	7	mely	amely		nevmas:mely	
+Jer 25:38	14	földjök	földjük		jok	
 Jer 26:1	5	a		osszevonva	nevmas	
 Jer 26:1	6	ki	aki		nevmas:ki	
 Jer 26:2	17	a		osszevonva	nevmas	
@@ -17461,6 +17847,7 @@ Jer 26:4	19	a		osszevonva	nevmas
 Jer 26:4	20	melyet	amelyet		nevmas:mely	
 Jer 26:5	9	a		osszevonva	nevmas	
 Jer 26:5	10	kiket	akiket		nevmas:ki	
+Jer 26:5	22	rájok	rájuk		jok	
 Jer 26:7	12	a		osszevonva	nevmas	
 Jer 26:7	13	mint	amint		nevmas:hatarozo	
 Jer 26:8	8	a		osszevonva	nevmas	
@@ -17516,6 +17903,7 @@ Jer 27:15	25	a		osszevonva	nevmas
 Jer 27:15	26	kik	akik		nevmas:ki	
 Jer 27:16	20	a		osszevonva	nevmas	
 Jer 27:16	21	kik	akik		nevmas:ki	
+Jer 27:17	3	rájok	rájuk		jok	
 Jer 27:18	19	a		osszevonva	nevmas	
 Jer 27:18	20	melyek	amelyek		nevmas:mely	
 Jer 27:19	21	a		osszevonva	nevmas	
@@ -17573,7 +17961,7 @@ Jer 29:16	17	a		osszevonva	nevmas
 Jer 29:16	18	mely	amely		nevmas:mely	
 Jer 29:16	27	a		osszevonva	nevmas	
 Jer 29:16	28	kik	akik		nevmas:ki	
-Jer 29:17	8	reájok	rájok		rea	
+Jer 29:17	8	reájok	rájuk		rea+jok	
 Jer 29:17	21	a		osszevonva	nevmas	
 Jer 29:17	22	milyenek	amilyenek		nevmas:hatarozo	
 Jer 29:17	26	a		osszevonva	nevmas	
@@ -17647,8 +18035,10 @@ Jer 31:32	13	a		osszevonva	nevmas
 Jer 31:32	14	melyen	amelyen		nevmas:mely	
 Jer 31:32	24	a		osszevonva	nevmas	
 Jer 31:32	25	kik	akik		nevmas:ki	
+Jer 31:32	32	férjök	férjük		jok	
 Jer 31:33	6	a		osszevonva	nevmas	
 Jer 31:33	7	melyet	amelyet		nevmas:mely	
+Jer 31:33	22	belsejökbe	belsejükbe		jok	
 Jer 31:35	5	a		osszevonva	nevmas	
 Jer 31:35	6	ki	aki		nevmas:ki	
 Jer 31:35	13	a		osszevonva	nevmas	
@@ -17697,6 +18087,7 @@ Jer 32:22	6	a		osszevonva	nevmas
 Jer 32:22	7	mely	amely		nevmas:mely	
 Jer 32:23	18	a		osszevonva	nevmas	
 Jer 32:23	19	miket	amiket		nevmas:mi	
+Jer 32:23	32	rájok	rájuk		jok	
 Jer 32:24	3	sánczok	sáncok		karakter	
 Jer 32:24	17	a		osszevonva	nevmas	
 Jer 32:24	18	kik	akik		nevmas:ki	
@@ -17724,6 +18115,7 @@ Jer 32:37	7	a		osszevonva	nevmas
 Jer 32:37	8	melyekre	amelyekre		nevmas:mely	
 Jer 32:42	6	A		osszevonva	nevmas	
 Jer 32:42	7	miképen	Amiképpen		szoto_94+nevmas:hatarozo	
+Jer 32:42	17	rájok	rájuk		jok	
 Jer 32:42	22	a		osszevonva	nevmas	
 Jer 32:42	23	miket	amiket		nevmas:mi	
 Jer 32:43	7	a		osszevonva	nevmas	
@@ -17828,10 +18220,12 @@ Jer 35:10	10	a		osszevonva	nevmas
 Jer 35:10	11	mint	amint		nevmas:hatarozo	
 Jer 35:14	7	a		osszevonva	nevmas	
 Jer 35:14	8	melyekkel	amelyekkel		nevmas:mely	
+Jer 35:14	27	atyjok	atyjuk		jok	
 Jer 35:15	39	a		osszevonva	nevmas	
 Jer 35:15	40	melyet	amelyet		nevmas:mely	
 Jer 35:15	51	reá	rá		rea	
 Jer 35:15	55	reám	rám		rea	
+Jer 35:16	10	atyjoknak	atyjuknak		jok	
 Jer 35:16	21	reám	rám		rea	
 Jer 35:17	22	a		osszevonva	nevmas	
 Jer 35:17	23	melyről	amelyről		nevmas:mely	
@@ -17871,6 +18265,7 @@ Jer 36:14	17	a		osszevonva	nevmas
 Jer 36:14	18	ki	aki		nevmas:ki	
 Jer 36:14	26	a		osszevonva	nevmas	
 Jer 36:14	27	melyből	amelyből		nevmas:mely	
+Jer 36:14	47	hozzájok	hozzájuk		jok	
 Jer 36:15	3	néki	neki		neki	
 Jer 36:21	29	a		osszevonva	nevmas	
 Jer 36:21	30	kik	akik		nevmas:ki	
@@ -17879,8 +18274,10 @@ Jer 36:23	19	a		osszevonva	nevmas
 Jer 36:23	20	mely	amely		nevmas:mely	
 Jer 36:23	31	a		osszevonva	nevmas	
 Jer 36:23	32	mely	amely		nevmas:mely	
+Jer 36:24	5	ruhájokat	ruhájukat		jok	
 Jer 36:24	14	a		osszevonva	nevmas	
 Jer 36:24	15	kik	akik		nevmas:ki	
+Jer 36:25	21	rájok	rájuk		jok	
 Jer 36:27	16	a		osszevonva	nevmas	
 Jer 36:27	17	melyeket	amelyeket		nevmas:mely	
 Jer 36:28	14	a		osszevonva	nevmas	
@@ -17890,6 +18287,7 @@ Jer 36:28	21	melyet	amelyet		nevmas:mely
 Jer 36:30	14	néki	neki		neki	
 Jer 36:30	15	a		osszevonva	nevmas	
 Jer 36:30	16	ki	aki		nevmas:ki	
+Jer 36:31	16	rájok	rájuk		jok	
 Jer 36:31	29	a		osszevonva	nevmas	
 Jer 36:31	30	melyről	amelyről		nevmas:mely	
 Jer 36:32	25	a		osszevonva	nevmas	
@@ -17968,6 +18366,7 @@ Jer 39:9	15	a		osszevonva	nevmas
 Jer 39:9	16	kik	akik		nevmas:ki	
 Jer 39:10	5	a		osszevonva	nevmas	
 Jer 39:10	6	kiknek	akiknek		nevmas:ki	
+Jer 39:10	7	semmijök	semmijük		jok	
 Jer 39:12	7	reá	rá		rea	
 Jer 39:12	13	néki	neki		neki	
 Jer 39:12	18	a		osszevonva	nevmas	
@@ -18026,6 +18425,8 @@ Jer 41:3	7	kik	akik		nevmas:ki
 Jer 41:3	15	a		osszevonva	nevmas	
 Jer 41:3	16	kik	akik		nevmas:ki	
 Jer 41:5	7	nyolczvan	nyolcvan		karakter	
+Jer 41:6	3	eléjök	eléjük		jok	
+Jer 41:6	14	eléjök	eléjük		jok	
 Jer 41:7	21	a		osszevonva	nevmas	
 Jer 41:7	22	kik	akik		nevmas:ki	
 Jer 41:8	7	a		osszevonva	nevmas	
@@ -18091,10 +18492,10 @@ Jer 42:16	17	a		osszevonva	nevmas
 Jer 42:16	18	mitől	amitől		nevmas:mi	
 Jer 42:17	8	a		osszevonva	nevmas	
 Jer 42:17	9	kik	akik		nevmas:ki	
-Jer 42:17	12	orczájokat	orcájokat		karakter	
+Jer 42:17	12	orczájokat	orcájukat		karakter+jok	
 Jer 42:17	37	a		osszevonva	nevmas	
 Jer 42:17	38	melyet	amelyet		nevmas:mely	
-Jer 42:17	41	reájok	rájok		rea	
+Jer 42:17	41	reájok	rájuk		rea+jok	
 Jer 42:18	10	Miképen	Miképpen		szoto_94	
 Jer 42:18	25	reátok	rátok		rea	
 Jer 42:20	25	a		osszevonva	nevmas	
@@ -18106,6 +18507,7 @@ Jer 42:22	16	hová	ahová		nevmas:hatarozo
 Jer 42:22	17	kivánkoztok	kívánkoztok		szoto_94	
 Jer 43:1	2	a		osszevonva	nevmas	
 Jer 43:1	3	mint	amint		nevmas:hatarozo	
+Jer 43:1	26	hozzájok	hozzájuk		jok	
 Jer 43:5	14	a		osszevonva	nevmas	
 Jer 43:5	15	kik	akik		nevmas:ki	
 Jer 43:5	21	a		osszevonva	nevmas	
@@ -18194,7 +18596,7 @@ Jer 44:25	31	melyeket	amelyeket		nevmas:mely
 Jer 44:25	40	néki	neki		neki	
 Jer 44:26	10	a		osszevonva	nevmas	
 Jer 44:26	11	kik	akik		nevmas:ki	
-Jer 44:27	4	reájok	rájok		rea	
+Jer 44:27	4	reájok	rájuk		rea+jok	
 Jer 44:27	16	a		osszevonva	nevmas	
 Jer 44:27	17	kik	akik		nevmas:ki	
 Jer 44:28	2	a		osszevonva	nevmas	
@@ -18235,7 +18637,7 @@ Jer 46:13	5	melyet	amelyet		nevmas:mely
 Jer 46:18	7	a		osszevonva	nevmas	
 Jer 46:18	8	kinek	akinek		nevmas:ki	
 Jer 46:20	7	reá	rá		rea	
-Jer 46:21	24	reájok	rájok		rea	
+Jer 46:21	24	reájok	rájuk		rea+jok	
 Jer 46:22	13	szekerczékkel	szekercékkel		karakter	
 Jer 46:25	30	a		osszevonva	nevmas	
 Jer 46:25	31	kik	akik		nevmas:ki	
@@ -18246,6 +18648,7 @@ Jer 46:28	21	a		osszevonva	nevmas
 Jer 46:28	22	kik	akik		nevmas:ki	
 Jer 47:1	4	a		osszevonva	nevmas	
 Jer 47:1	5	melyet	amelyet		nevmas:mely	
+Jer 47:3	15	erejök	erejük		jok	
 Jer 47:7	1	Miképen	Miképpen		szoto_94	
 Jer 47:7	8	néki	neki		neki	
 Jer 48:8	20	a		osszevonva	nevmas	
@@ -18322,33 +18725,38 @@ Jer 49:20	8	melyet	amelyet		nevmas:mely
 Jer 49:20	16	a		osszevonva	nevmas	
 Jer 49:20	17	melyeket	amelyeket		nevmas:mely	
 Jer 49:20	23	elhurczolják	elhurcolják		karakter	
+Jer 49:20	33	legelőjök	legelőjük		jok	
 Jer 49:22	10	Boczrán	Bocrán		karakter	
 Jer 49:23	17	a		osszevonva	nevmas	
 Jer 49:23	18	mely	amely		nevmas:mely	
 Jer 49:24	17	szűlő	szülő		szoto_94	
-Jer 49:26	9	utczájokon	utcájokon		karakter	
+Jer 49:26	9	utczájokon	utcájukon		karakter+jok	
 Jer 49:26	12	harczoló	harcoló		karakter	
 Jer 49:28	6	a		osszevonva	nevmas	
 Jer 49:28	7	melyeket	amelyeket		nevmas:mely	
+Jer 49:29	3	nyájokat	nyájukat		jok	
+Jer 49:29	16	feléjök	feléjük		jok	
 Jer 49:31	10	a		osszevonva	nevmas	
 Jer 49:31	11	kik	akik		nevmas:ki	
+Jer 49:31	19	kapujok	kapujuk		jok	
+Jer 49:31	21	zárjok	zárjuk		jok	
 Jer 49:32	9	zsákmánynyá	zsákmánnyá		karakter	
-Jer 49:32	25	reájok	rájok		rea	
+Jer 49:32	25	reájok	rájuk		rea+jok	
 Jer 49:34	4	a		osszevonva	nevmas	
 Jer 49:34	5	melyet	amelyet		nevmas:mely	
 Jer 49:36	21	a		osszevonva	nevmas	
 Jer 49:36	22	kihez	akihez		nevmas:ki	
-Jer 49:37	17	reájok	rájok		rea	
+Jer 49:37	17	reájok	rájuk		rea+jok	
 Jer 50:1	4	a		osszevonva	nevmas	
 Jer 50:1	5	melyet	amelyet		nevmas:mely	
 Jer 50:3	16	a		osszevonva	nevmas	
 Jer 50:3	17	ki	aki		nevmas:ki	
-Jer 50:5	7	orczájokat	orcájokat		karakter	
+Jer 50:5	7	orczájokat	orcájukat		karakter+jok	
 Jer 50:5	17	a		osszevonva	nevmas	
 Jer 50:5	18	mely	amely		nevmas:mely	
 Jer 50:7	1	A		osszevonva	nevmas	
 Jer 50:7	2	ki	Aki		nevmas:ki	
-Jer 50:7	4	reájok	rájok		rea	
+Jer 50:7	4	reájok	rájuk		rea+jok	
 Jer 50:9	25	a		osszevonva	nevmas	
 Jer 50:9	26	ki	aki		nevmas:ki	
 Jer 50:10	5	a		osszevonva	nevmas	
@@ -18368,6 +18776,7 @@ Jer 50:21	26	a		osszevonva	nevmas
 Jer 50:21	27	mint	amint		nevmas:hatarozo	
 Jer 50:22	1	Harczi	Harci		karakter	
 Jer 50:26	2	reá	rá		rea	
+Jer 50:27	16	napjok	napjuk		jok	
 Jer 50:29	8	a		osszevonva	nevmas	
 Jer 50:29	9	ki	aki		nevmas:ki	
 Jer 50:29	23	néki	neki		neki	
@@ -18381,6 +18790,8 @@ Jer 50:32	24	a		osszevonva	nevmas
 Jer 50:32	25	kik	akik		nevmas:ki	
 Jer 50:33	16	a		osszevonva	nevmas	
 Jer 50:33	17	kik	akik		nevmas:ki	
+Jer 50:33	21	beléjök	beléjük		jok	
+Jer 50:34	4	megváltójok	megváltójuk		jok	
 Jer 50:34	11	bizonynyal	bizonnyal		karakter	
 Jer 50:37	13	a		osszevonva	nevmas	
 Jer 50:37	14	mely	amely		nevmas:mely	
@@ -18496,6 +18907,7 @@ Jer 52:21	8	tizennyolcz	tizennyolc		karakter
 Jer 52:23	4	kilenczvenhat	kilencvenhat		karakter	
 Jer 52:25	7	a		osszevonva	nevmas	
 Jer 52:25	8	ki	aki		nevmas:ki	
+Jer 52:25	9	felügyelőjök	felügyelőjük		jok	
 Jer 52:25	12	harczosoknak	harcosoknak		karakter	
 Jer 52:25	18	a		osszevonva	nevmas	
 Jer 52:25	19	kik	akik		nevmas:ki	
@@ -18545,10 +18957,16 @@ Sir 1:22	10	miképen	amiképpen		szoto_94+nevmas:hatarozo
 Sir 2:4	13	a		osszevonva	nevmas	
 Sir 2:4	14	mi	ami		ami:V1_irasjel_elotte+nevmas:mi	
 Sir 2:4	17	kivánatos	kívánatos		szoto_94	
+Sir 2:10	11	fejökre	fejükre		jok	
+Sir 2:10	16	fejöket	fejüket		jok	
 Sir 2:11	28	utczáin	utcáin		karakter	
+Sir 2:12	3	anyjoknak	anyjuknak		jok	
 Sir 2:12	17	utczáin	utcáin		karakter	
+Sir 2:12	21	anyjoknak	anyjuknak		jok	
+Sir 2:15	10	fejöket	fejüket		jok	
 Sir 2:15	19	a		osszevonva	nevmas	
 Sir 2:15	20	melyről	amelyről		nevmas:mely	
+Sir 2:16	3	szájokat	szájukat		jok	
 Sir 2:16	19	a		osszevonva	nevmas	
 Sir 2:16	20	melyet	amelyet		nevmas:mely	
 Sir 2:17	4	a		osszevonva	nevmas	
@@ -18575,7 +18993,9 @@ Sir 3:30	1	Orczáját	Orcáját		karakter
 Sir 3:37	3	a		osszevonva	nevmas	
 Sir 3:37	4	ki	aki		nevmas:ki	
 Sir 3:52	3	reám	rám		rea	
-Sir 3:65	6	reájok	rájok		rea	
+Sir 3:60	7	gondolatjokat	gondolatjukat		jok	
+Sir 3:61	9	gondolatjokat	gondolatjukat		jok	
+Sir 3:65	6	reájok	rájuk		rea+jok	
 Sir 4:1	16	utcza	utca		karakter	
 Sir 4:2	4	a		osszevonva	nevmas	
 Sir 4:2	5	kik	akik		nevmas:ki	
@@ -18587,6 +19007,7 @@ Sir 4:5	8	a		osszevonva	nevmas
 Sir 4:5	9	kik	akik		nevmas:ki	
 Sir 4:6	10	a		osszevonva	nevmas	
 Sir 4:6	11	mely	amely		nevmas:mely	
+Sir 4:8	6	ábrázatjok	ábrázatjuk		jok	
 Sir 4:8	14	utczákon	utcákon		karakter	
 Sir 4:9	3	a		osszevonva	nevmas	
 Sir 4:9	4	kik	akik		nevmas:ki	
@@ -18595,7 +19016,7 @@ Sir 4:9	10	kik	akik		nevmas:ki
 Sir 4:13	12	a		osszevonva	nevmas	
 Sir 4:13	13	kik	akik		nevmas:ki	
 Sir 4:14	5	utczákon	utcákon		karakter	
-Sir 4:16	10	reájok	rájok		rea	
+Sir 4:16	10	reájok	rájuk		rea+jok	
 Sir 4:16	14	orczáját	orcáját		karakter	
 Sir 4:17	16	a		osszevonva	nevmas	
 Sir 4:17	17	mely	amely		nevmas:mely	
@@ -18614,11 +19035,15 @@ Ez 1:1	4	harminczadik	harmincadik		karakter
 Ez 1:4	13	a		osszevonva	nevmas	
 Ez 1:4	14	mely	amely		nevmas:mely	
 Ez 1:4	22	ércz	érc		karakter	
+Ez 1:5	12	ábrázatjok	ábrázatjuk		jok	
+Ez 1:5	14	formájok	formájuk		jok	
 Ez 1:6	4	orczája	orcája		karakter	
+Ez 1:6	9	mindenikőjöknek	mindenikőjüknek		jok	
 Ez 1:7	19	ércz	érc		karakter	
+Ez 1:8	11	négyőjöknek	négyőjüknek		jok	
 Ez 1:8	12	orczái	orcái		karakter	
 Ez 1:9	13	orczája	orcája		karakter	
-Ez 1:10	2	orczájok	orcájok		karakter	
+Ez 1:10	2	orczájok	orcájuk		karakter+jok	
 Ez 1:10	6	orcza	orca		karakter	
 Ez 1:10	9	orcza	orca		karakter	
 Ez 1:10	16	orcza	orca		karakter	
@@ -18630,19 +19055,22 @@ Ez 1:12	10	hová	ahová		nevmas:hatarozo
 Ez 1:13	11	a		osszevonva	nevmas	
 Ez 1:13	12	mely	amely		nevmas:mely	
 Ez 1:14	13	czikázása	cikázása		karakter	
-Ez 1:15	21	orczájok	orcájok		karakter	
+Ez 1:15	21	orczájok	orcájuk		karakter+jok	
 Ez 1:20	1	A		osszevonva	nevmas	
 Ez 1:20	2	hová	Ahová		nevmas:hatarozo	
 Ez 1:20	9	a		osszevonva	nevmas	
 Ez 1:20	10	hová	ahová		nevmas:hatarozo	
+Ez 1:22	16	fejök	fejük		jok	
 Ez 1:23	15	a		osszevonva	nevmas	
 Ez 1:23	16	melyek	amelyek		nevmas:mely	
 Ez 1:23	24	a		osszevonva	nevmas	
 Ez 1:23	25	melyek	amelyek		nevmas:mely	
 Ez 1:25	7	a		osszevonva	nevmas	
 Ez 1:25	8	mely	amely		nevmas:mely	
+Ez 1:25	10	fejök	fejük		jok	
 Ez 1:26	5	a		osszevonva	nevmas	
 Ez 1:26	6	mely	amely		nevmas:mely	
+Ez 1:26	7	fejök	fejük		jok	
 Ez 1:27	4	érczként	ércként		karakter	
 Ez 1:27	6	a		osszevonva	nevmas	
 Ez 1:27	7	melyet	amelyet		nevmas:mely	
@@ -18656,7 +19084,7 @@ Ez 2:2	17	ki	aki		nevmas:ki
 Ez 2:3	14	a		osszevonva	nevmas	
 Ez 2:3	15	kik	akik		nevmas:ki	
 Ez 2:4	3	orczájú	orcájú		karakter	
-Ez 2:6	30	orczájoktól	orcájoktól		karakter	
+Ez 2:6	30	orczájoktól	orcájuktól		karakter+jok	
 Ez 2:8	7	a		osszevonva	nevmas	
 Ez 2:8	8	mit	amit		nevmas:mi	
 Ez 2:8	25	a		osszevonva	nevmas	
@@ -18668,12 +19096,13 @@ Ez 3:3	17	a		osszevonva	nevmas
 Ez 3:3	18	melyet	amelyet		nevmas:mely	
 Ez 3:6	4	a		osszevonva	nevmas	
 Ez 3:6	5	kik	akik		nevmas:ki	
+Ez 3:6	18	hozzájok	hozzájuk		jok	
 Ez 3:6	23	reád	rád		rea	
 Ez 3:8	2	keménynyé	keménnyé		karakter	
 Ez 3:8	4	orczádat	orcádat		karakter	
 Ez 3:8	5	a		osszevonva	nevmas	
 Ez 3:8	6	milyen	amilyen		nevmas:hatarozo	
-Ez 3:8	9	orczájok	orcájok		karakter	
+Ez 3:8	9	orczájok	orcájuk		karakter+jok	
 Ez 3:8	11	keménynyé	keménnyé		karakter	
 Ez 3:8	13	a		osszevonva	nevmas	
 Ez 3:8	14	milyen	amilyen		nevmas:hatarozo	
@@ -18720,6 +19149,7 @@ Ez 5:14	9	a		osszevonva	nevmas
 Ez 5:14	10	kik	akik		nevmas:ki	
 Ez 5:15	11	a		osszevonva	nevmas	
 Ez 5:15	12	kik	akik		nevmas:ki	
+Ez 5:16	7	rájok	rájuk		jok	
 Ez 5:16	10	a		osszevonva	nevmas	
 Ez 5:16	11	melyeket	amelyeket		nevmas:mely	
 Ez 5:17	3	reátok	rátok		rea	
@@ -18736,7 +19166,7 @@ Ez 6:12	18	a		osszevonva	nevmas
 Ez 6:12	19	ki	aki		nevmas:ki	
 Ez 6:13	33	a		osszevonva	nevmas	
 Ez 6:13	34	hol	ahol		nevmas:hatarozo	
-Ez 6:14	4	reájok	rájok		rea	
+Ez 6:14	4	reájok	rájuk		rea+jok	
 Ez 7:3	9	reád	rád		rea	
 Ez 7:3	16	reád	rád		rea	
 Ez 7:4	17	reád	rád		rea	
@@ -18754,10 +19184,15 @@ Ez 7:15	10	ki	aki		nevmas:ki
 Ez 7:15	19	a		osszevonva	nevmas	
 Ez 7:15	20	ki	aki		nevmas:ki	
 Ez 7:18	9	orczán	orcán		karakter	
+Ez 7:18	12	mindnyájok	mindnyájuk		jok	
+Ez 7:19	1	Ezüstjöket	Ezüstjüket		jok	
 Ez 7:19	3	utczákra	utcákra		karakter	
+Ez 7:19	10	ezüstjök	ezüstjük		jok	
+Ez 7:19	32	csábítójok	csábítójuk		jok	
 Ez 7:20	19	szenynyé	szennyé		karakter	
 Ez 7:22	4	arczomat	arcomat		karakter	
 Ez 7:23	3	lánczot	láncot		karakter	
+Ez 7:27	14	Útjok	Útjuk		jok	
 Ez 8:1	25	reám	rám		rea	
 Ez 8:2	26	ércz	érc		karakter	
 Ez 8:3	33	a		osszevonva	nevmas	
@@ -18773,7 +19208,7 @@ Ez 8:9	13	melyeket	amelyeket		nevmas:mely
 Ez 8:14	9	a		osszevonva	nevmas	
 Ez 8:14	10	mely	amely		nevmas:mely	
 Ez 8:16	16	tornácz	tornác		karakter	
-Ez 8:16	31	orczájokkal	orcájokkal		karakter	
+Ez 8:16	31	orczájokkal	orcájukkal		karakter+jok	
 Ez 9:2	11	a		osszevonva	nevmas	
 Ez 9:2	12	mely	amely		nevmas:mely	
 Ez 9:2	36	érczoltár	ércoltár		karakter	
@@ -18791,6 +19226,8 @@ Ez 9:6	17	kiken	akiken		nevmas:ki
 Ez 9:6	34	a		osszevonva	nevmas	
 Ez 9:6	35	kik	akik		nevmas:ki	
 Ez 9:8	13	orczámra	orcámra		karakter	
+Ez 9:10	12	útjokat	útjukat		jok	
+Ez 9:10	13	fejökhöz	fejükhöz		jok	
 Ez 9:11	16	a		osszevonva	nevmas	
 Ez 9:11	17	mint	amint		nevmas:hatarozo	
 Ez 10:1	7	a		osszevonva	nevmas	
@@ -18813,6 +19250,7 @@ Ez 10:22	2	orczáik	orcáik		karakter
 Ez 10:22	6	orczák	orcák		karakter	
 Ez 10:22	8	a		osszevonva	nevmas	
 Ez 10:22	9	melyeket	amelyeket		nevmas:mely	
+Ez 10:22	16	formájokat	formájukat		jok	
 Ez 10:22	23	orczája	orcája		karakter	
 Ez 11:1	13	a		osszevonva	nevmas	
 Ez 11:1	14	mely	amely		nevmas:mely	
@@ -18834,6 +19272,7 @@ Ez 11:17	19	a		osszevonva	nevmas
 Ez 11:17	20	melyekben	amelyekben		nevmas:mely	
 Ez 11:21	2	a		osszevonva	nevmas	
 Ez 11:21	3	kiknek	akiknek		nevmas:ki	
+Ez 11:21	15	fejökhöz	fejükhöz		jok	
 Ez 11:24	21	a		osszevonva	nevmas	
 Ez 11:24	22	melyet	amelyet		nevmas:mely	
 Ez 11:25	9	a		osszevonva	nevmas	
@@ -18902,9 +19341,11 @@ Ez 14:15	17	melyen	amelyen		nevmas:mely
 Ez 14:19	11	reá	rá		rea	
 Ez 14:22	6	a		osszevonva	nevmas	
 Ez 14:22	7	kiket	akiket		nevmas:ki	
+Ez 14:22	18	útjokat	útjukat		jok	
 Ez 14:22	31	a		osszevonva	nevmas	
 Ez 14:22	32	mit	amit		nevmas:mi	
 Ez 14:22	34	reá	rá		rea	
+Ez 14:23	6	útjokat	útjukat		jok	
 Ez 14:23	15	a		osszevonva	nevmas	
 Ez 14:23	16	mit	amit		nevmas:mi	
 Ez 15:3	19	akaszszanak	akasszanak		karakter	
@@ -18929,6 +19370,8 @@ Ez 16:13	4	aranynyal	arannyal		karakter
 Ez 16:14	16	a		osszevonva	nevmas	
 Ez 16:14	17	melyeket	amelyeket		nevmas:mely	
 Ez 16:14	18	reád	rád		rea	
+Ez 16:18	13	eléjök	eléjük		jok	
+Ez 16:19	16	eléjök	eléjük		jok	
 Ez 16:24	8	utczán	utcán		karakter	
 Ez 16:27	20	a		osszevonva	nevmas	
 Ez 16:27	21	kik	akik		nevmas:ki	
@@ -18950,6 +19393,8 @@ Ez 16:51	24	a		osszevonva	nevmas
 Ez 16:51	25	melyeket	amelyeket		nevmas:mely	
 Ez 16:52	6	a		osszevonva	nevmas	
 Ez 16:52	7	melyre	amelyre		nevmas:mely	
+Ez 16:55	8	állapotjokba	állapotjukba		jok	
+Ez 16:55	15	állapotjokba	állapotjukba		jok	
 Ez 16:57	5	a		osszevonva	nevmas	
 Ez 16:57	6	miképen	amiképpen		szoto_94+nevmas:hatarozo	
 Ez 16:60	4	a		osszevonva	nevmas	
@@ -19006,22 +19451,27 @@ Ez 20:6	15	melyet	amelyet		nevmas:mely
 Ez 20:6	19	a		osszevonva	nevmas	
 Ez 20:6	20	mely	amely		nevmas:mely	
 Ez 20:8	9	reám	rám		rea	
+Ez 20:8	29	rájok	rájuk		jok	
 Ez 20:9	15	a		osszevonva	nevmas	
 Ez 20:9	16	kik	akik		nevmas:ki	
 Ez 20:9	20	a		osszevonva	nevmas	
 Ez 20:9	21	kiknek	akiknek		nevmas:ki	
+Ez 20:12	22	megszentelőjök	megszentelőjük		jok	
 Ez 20:13	17	a		osszevonva	nevmas	
 Ez 20:13	18	melyeket	amelyeket		nevmas:mely	
+Ez 20:13	38	rájok	rájuk		jok	
 Ez 20:14	14	a		osszevonva	nevmas	
 Ez 20:14	15	kiknek	akiknek		nevmas:ki	
 Ez 20:21	18	a		osszevonva	nevmas	
 Ez 20:21	19	melyeket	amelyeket		nevmas:mely	
+Ez 20:21	34	rájok	rájuk		jok	
 Ez 20:22	16	a		osszevonva	nevmas	
 Ez 20:22	17	kiknek	akiknek		nevmas:ki	
 Ez 20:25	11	a		osszevonva	nevmas	
 Ez 20:25	12	melyek	amelyek		nevmas:mely	
 Ez 20:28	6	a		osszevonva	nevmas	
 Ez 20:28	7	melyért	amelyért		nevmas:mely	
+Ez 20:28	42	illatjokat	illatjukat		jok	
 Ez 20:29	7	a		osszevonva	nevmas	
 Ez 20:29	8	hova	ahova		nevmas:hatarozo	
 Ez 20:32	2	a		osszevonva	nevmas	
@@ -19036,6 +19486,8 @@ Ez 21:2	4	arczodat	arcodat		karakter
 Ez 21:3	11	reád	rád		rea	
 Ez 21:10	13	veszszeje	vesszeje		karakter	
 Ez 21:12	23	czombodra	combodra		karakter	
+Ez 21:15	9	kapujokban	kapujukban		jok	
+Ez 21:15	10	rájok	rájuk		jok	
 Ez 21:16	10	a		osszevonva	nevmas	
 Ez 21:16	11	merre	amerre		nevmas:hatarozo	
 Ez 21:19	9	a		osszevonva	nevmas	
@@ -19048,6 +19500,7 @@ Ez 21:27	16	kié	akié		nevmas:ki
 Ez 21:27	20	néki	neki		neki	
 Ez 21:29	15	a		osszevonva	nevmas	
 Ez 21:29	16	kiknek	akiknek		nevmas:ki	
+Ez 21:29	17	napjok	napjuk		jok	
 Ez 21:31	3	reád	rád		rea	
 Ez 21:31	8	reád	rád		rea	
 Ez 22:5	1	A		osszevonva	nevmas	
@@ -19077,18 +19530,27 @@ Ez 22:26	20	a		osszevonva	nevmas
 Ez 22:26	21	mi	ami		ami:V4_ige_utana+nevmas:mi	
 Ez 22:30	5	a		osszevonva	nevmas	
 Ez 22:30	6	ki	aki		nevmas:ki	
-Ez 22:31	4	reájok	rájok		rea	
+Ez 22:31	4	reájok	rájuk		rea+jok	
+Ez 22:31	9	útjokat	útjukat		jok	
+Ez 22:31	10	fejökhöz	fejükhöz		jok	
 Ez 23:4	17	A		osszevonva	nevmas	
 Ez 23:4	18	mi	Ami		ami:regi_szabaly+nevmas:mi	
 Ez 23:8	22	reá	rá		rea	
 Ez 23:12	16	kivánatos	kívánatos		szoto_94	
+Ez 23:13	8	útjok	útjuk		jok	
+Ez 23:13	9	kettőjöknek	kettőjüknek		jok	
 Ez 23:15	13	harczolók	harcolók		karakter	
+Ez 23:16	3	hozzájok	hozzájuk		jok	
+Ez 23:16	9	hozzájok	hozzájuk		jok	
 Ez 23:18	14	a		osszevonva	nevmas	
 Ez 23:18	15	mint	amint		nevmas:hatarozo	
 Ez 23:22	20	reád	rád		rea	
+Ez 23:23	21	mindnyájokat	mindnyájukat		jok	
 Ez 23:23	23	harczolókat	harcolókat		karakter	
+Ez 23:23	29	mindnyájokat	mindnyájukat		jok	
 Ez 23:24	3	reád	rád		rea	
 Ez 23:24	14	paizszsal	paizzsal		karakter	
+Ez 23:27	15	rájok	rájuk		jok	
 Ez 23:28	13	a		osszevonva	nevmas	
 Ez 23:28	14	kiket	akiket		nevmas:ki	
 Ez 23:28	18	a		osszevonva	nevmas	
@@ -19097,8 +19559,10 @@ Ez 23:30	3	reád	rád		rea
 Ez 23:40	12	a		osszevonva	nevmas	
 Ez 23:40	13	kiknek	akiknek		nevmas:ki	
 Ez 23:42	21	karpereczeket	karpereceket		karakter	
+Ez 23:42	28	fejökre	fejükre		jok	
 Ez 23:44	5	a		osszevonva	nevmas	
 Ez 23:44	6	hogy	ahogy		nevmas:hatarozo	
+Ez 23:46	8	rájok	rájuk		jok	
 Ez 23:49	2	reátok	rátok		rea	
 Ez 24:1	8	kilenczedik	kilencedik		karakter	
 Ez 24:4	10	czombot	combot		karakter	
@@ -19147,6 +19611,8 @@ Ez 27:11	13	paizsaikat	pajzsaikat		szotag
 Ez 27:24	17	czédrusfából	cédrusfából		karakter	
 Ez 27:27	17	a		osszevonva	nevmas	
 Ez 27:27	18	kik	akik		nevmas:ki	
+Ez 27:30	4	hangjokat	hangjukat		jok	
+Ez 27:30	11	fejökre	fejükre		jok	
 Ez 27:35	11	arczaik	arcaik		karakter	
 Ez 28:2	34	olylyá	ollyá		karakter	
 Ez 28:6	8	olylyá	ollyá		karakter	
@@ -19161,6 +19627,7 @@ Ez 28:19	3	kik	akik		nevmas:ki
 Ez 28:23	3	reá	rá		rea	
 Ez 28:23	7	utczáira	utcáira		karakter	
 Ez 28:23	16	reá	rá		rea	
+Ez 28:25	28	földjökön	földjükön		jok	
 Ez 29:3	19	a		osszevonva	nevmas	
 Ez 29:3	20	ki	aki		nevmas:ki	
 Ez 29:3	24	a		osszevonva	nevmas	
@@ -19209,6 +19676,7 @@ Ez 33:12	17	a		osszevonva	nevmas
 Ez 33:12	18	melyen	amelyen		nevmas:mely	
 Ez 33:16	4	melylyel	mellyel		karakter	
 Ez 33:16	9	néki	neki		neki	
+Ez 33:17	14	útjok	útjuk		jok	
 Ez 33:27	12	a		osszevonva	nevmas	
 Ez 33:27	13	kik	akik		nevmas:ki	
 Ez 33:27	23	a		osszevonva	nevmas	
@@ -19226,25 +19694,31 @@ Ez 34:6	22	ki	aki		nevmas:ki
 Ez 34:6	25	a		osszevonva	nevmas	
 Ez 34:6	26	ki	aki		nevmas:ki	
 Ez 34:8	12	ragadománynyá	ragadománnyá		karakter	
+Ez 34:10	33	szájokból	szájukból		jok	
 Ez 34:12	1	Miképen	Miképpen		szoto_94	
 Ez 34:12	7	a		osszevonva	nevmas	
 Ez 34:12	8	mely	amely		nevmas:mely	
 Ez 34:12	24	a		osszevonva	nevmas	
 Ez 34:12	25	hova	ahova		nevmas:hatarozo	
+Ez 34:13	16	földjökre	földjükre		jok	
 Ez 34:18	21	iszszátok	isszátok		karakter	
 Ez 34:19	13	iszszák	isszák		karakter	
-Ez 34:26	3	reájok	rájok		rea	
+Ez 34:20	7	hozzájok	hozzájuk		jok	
+Ez 34:23	3	föléjök	föléjük		jok	
+Ez 34:26	3	reájok	rájuk		rea+jok	
+Ez 34:27	13	földjökön	földjükön		jok	
 Ez 34:28	22	a		osszevonva	nevmas	
 Ez 34:28	23	ki	aki		nevmas:ki	
 Ez 34:28	24	felijeszsze	felijessze		karakter	
 Ez 35:3	3	néki	neki		neki	
 Ez 35:3	18	reád	rád		rea	
+Ez 35:8	14	beléjök	beléjük		jok	
 Ez 35:11	18	a		osszevonva	nevmas	
 Ez 35:11	19	melylyel	amellyel		karakter+nevmas:mely	
 Ez 35:15	1	A		osszevonva	nevmas	
 Ez 35:15	2	mint	Amint		nevmas:hatarozo	
 Ez 36:2	11	reátok	rátok		rea	
-Ez 36:18	4	reájok	rájok		rea	
+Ez 36:18	4	reájok	rájuk		rea+jok	
 Ez 36:18	7	a		osszevonva	nevmas	
 Ez 36:18	8	melyet	amelyet		nevmas:mely	
 Ez 36:20	5	a		osszevonva	nevmas	
@@ -19265,6 +19739,7 @@ Ez 37:7	5	mint	amint		nevmas:hatarozo
 Ez 37:8	10	nevekedett	növekedett		szoto_94	
 Ez 37:10	3	a		osszevonva	nevmas	
 Ez 37:10	4	mint	amint		nevmas:hatarozo	
+Ez 37:10	7	beléjök	beléjük		jok	
 Ez 37:16	11	reá	rá		rea	
 Ez 37:16	27	reá	rá		rea	
 Ez 37:17	11	egygyé	eggyé		karakter	
@@ -19273,17 +19748,23 @@ Ez 37:20	5	a		osszevonva	nevmas
 Ez 37:20	6	melyekre	amelyekre		nevmas:mely	
 Ez 37:21	16	a		osszevonva	nevmas	
 Ez 37:21	17	kik	akik		nevmas:ki	
+Ez 37:21	29	földjökre	földjükre		jok	
+Ez 37:22	15	mindnyájok	mindnyájuk		jok	
 Ez 37:23	19	a		osszevonva	nevmas	
 Ez 37:23	20	melyekben	amelyekben		nevmas:mely	
+Ez 37:24	15	mindnyájoknak	mindnyájuknak		jok	
 Ez 37:25	12	a		osszevonva	nevmas	
 Ez 37:25	13	melyen	amelyen		nevmas:mely	
+Ez 37:26	21	közéjök	közéjük		jok	
 Ez 38:4	26	paizszsal	paizzsal		karakter	
 Ez 38:5	7	paizszsal	paizzsal		karakter	
+Ez 38:11	22	zárjok	zárjuk		jok	
+Ez 38:11	24	kapujok	kapujuk		jok	
 Ez 38:12	19	a		osszevonva	nevmas	
 Ez 38:12	20	mely	amely		nevmas:mely	
 Ez 38:17	10	a		osszevonva	nevmas	
 Ez 38:17	11	kiről	akiről		nevmas:ki	
-Ez 38:17	32	reájok	rájok		rea	
+Ez 38:17	32	reájok	rájuk		rea+jok	
 Ez 38:18	6	a		osszevonva	nevmas	
 Ez 38:18	7	mely	amely		nevmas:mely	
 Ez 38:22	18	reá	rá		rea	
@@ -19297,9 +19778,12 @@ Ez 39:9	17	paizsokat	pajzsokat		szotag
 Ez 39:9	26	pálczákat	pálcákat		karakter	
 Ez 39:19	12	a		osszevonva	nevmas	
 Ez 39:19	13	melyet	amelyet		nevmas:mely	
+Ez 39:21	24	rájok	rájuk		jok	
 Ez 39:23	20	orczámat	orcámat		karakter	
 Ez 39:24	11	orczámat	orcámat		karakter	
 Ez 39:26	7	melylyel	mellyel		karakter	
+Ez 39:26	12	földjökön	földjükön		jok	
+Ez 39:28	21	földjökre	földjükre		jok	
 Ez 39:29	6	orczámat	orcámat		karakter	
 Ez 40:3	14	ércznek	ércnek		karakter	
 Ez 40:3	22	mérőpálcza	mérőpálca		karakter	
@@ -19365,6 +19849,8 @@ Ez 41:25	20	tornácz	tornác		karakter
 Ez 41:25	22	kivül	kívül		szoto_94	
 Ez 41:26	13	tornácz	tornác		karakter	
 Ez 42:7	5	kivül	kívül		szoto_94	
+Ez 42:9	12	beléjök	beléjük		jok	
+Ez 42:12	30	hozzájok	hozzájuk		jok	
 Ez 42:16	6	mérőpálczával	mérőpálcával		karakter	
 Ez 42:16	10	mérőpálczával	mérőpálcával		karakter	
 Ez 42:17	8	mérőpálczával	mérőpálcával		karakter	
@@ -19382,7 +19868,7 @@ Ez 43:18	27	reá	rá		rea
 Ez 43:19	11	a		osszevonva	nevmas	
 Ez 43:19	12	kik	akik		nevmas:ki	
 Ez 43:21	21	kivül	kívül		szoto_94	
-Ez 43:24	12	reájok	rájok		rea	
+Ez 43:24	12	reájok	rájuk		rea+jok	
 Ez 43:27	6	nyolczadik	nyolcadik		karakter	
 Ez 44:3	17	tornáczának	tornácának		karakter	
 Ez 44:4	23	orczámra	orcámra		karakter	
@@ -19394,8 +19880,11 @@ Ez 44:14	14	a		osszevonva	nevmas
 Ez 44:14	15	mit	amit		nevmas:mi	
 Ez 44:15	9	a		osszevonva	nevmas	
 Ez 44:15	10	kik	akik		nevmas:ki	
+Ez 44:18	4	fejökön	fejükön		jok	
 Ez 44:19	15	a		osszevonva	nevmas	
 Ez 44:19	16	melyekben	amelyekben		nevmas:mely	
+Ez 44:20	2	fejöket	fejüket		jok	
+Ez 44:20	12	hajokat	hajukat		jok	
 Ez 44:26	5	néki	neki		neki	
 Ez 44:27	2	a		osszevonva	nevmas	
 Ez 44:27	3	mely	amely		nevmas:mely	
@@ -19484,6 +19973,7 @@ Dán 1:13	12	a		osszevonva	nevmas
 Dán 1:13	13	kik	akik		nevmas:ki	
 Dán 1:15	17	a		osszevonva	nevmas	
 Dán 1:15	18	kik	akik		nevmas:ki	
+Dán 1:19	7	mindnyájok	mindnyájuk		jok	
 Dán 1:20	7	a		osszevonva	nevmas	
 Dán 1:20	8	mely	amely		nevmas:mely	
 Dán 1:20	23	a		osszevonva	nevmas	
@@ -19717,6 +20207,8 @@ Dán 6:24	10	a		osszevonva	nevmas
 Dán 6:24	11	kik	akik		nevmas:ki	
 Dán 6:24	32	a		osszevonva	nevmas	
 Dán 6:24	33	mikor	amikor		nevmas:hatarozo	
+Dán 6:24	34	rájok	rájuk		jok	
+Dán 6:24	40	csontjokat	csontjukat		jok	
 Dán 6:25	10	a		osszevonva	nevmas	
 Dán 6:25	11	kik	akik		nevmas:ki	
 Dán 6:27	1	A		osszevonva	nevmas	
@@ -19837,7 +20329,7 @@ Dán 10:6	8	orczája	orcája		karakter
 Dán 10:6	26	ércznek	ércnek		karakter	
 Dán 10:7	11	a		osszevonva	nevmas	
 Dán 10:7	12	kik	akik		nevmas:ki	
-Dán 10:7	23	reájok	rájok		rea	
+Dán 10:7	23	reájok	rájuk		rea+jok	
 Dán 10:8	18	orczám	orcám		karakter	
 Dán 10:9	16	orczámra	orcámra		karakter	
 Dán 10:9	20	orczámmal	orcámmal		karakter	
@@ -19886,6 +20378,7 @@ Dán 11:30	23	a		osszevonva	nevmas
 Dán 11:30	24	kik	akik		nevmas:ki	
 Dán 11:32	2	a		osszevonva	nevmas	
 Dán 11:32	3	kik	akik		nevmas:ki	
+Dán 11:34	10	hozzájok	hozzájuk		jok	
 Dán 11:36	33	a		osszevonva	nevmas	
 Dán 11:36	34	mi	ami		ami:regi_szabaly+nevmas:mi	
 Dán 11:37	9	kedvenczével	kedvencével		karakter	
@@ -19933,6 +20426,7 @@ Hós 2:2	8	a		osszevonva	nevmas
 Hós 2:2	9	milyen	amilyen		nevmas:hatarozo	
 Hós 2:2	22	a		osszevonva	nevmas	
 Hós 2:2	23	milyen	amilyen		nevmas:hatarozo	
+Hós 2:4	5	anyjok	anyjuk		jok	
 Hós 2:4	8	a		osszevonva	nevmas	
 Hós 2:4	9	ki	aki		nevmas:ki	
 Hós 2:4	18	a		osszevonva	nevmas	
@@ -19965,6 +20459,8 @@ Hós 4:12	9	pálczája	pálcája		karakter
 Hós 4:12	11	néki	neki		neki	
 Hós 5:1	14	reátok	rátok		rea	
 Hós 5:1	21	Miczpának	Micpának		karakter	
+Hós 5:2	7	mindnyájok	mindnyájuk		jok	
+Hós 5:10	8	rájok	rájuk		jok	
 Hós 5:11	10	néki	neki		neki	
 Hós 5:14	24	a		osszevonva	nevmas	
 Hós 5:14	25	ki	aki		nevmas:ki	
@@ -19982,14 +20478,18 @@ Hós 7:4	6	kemencze	kemence		karakter
 Hós 7:4	7	a		osszevonva	nevmas	
 Hós 7:4	8	melyet	amelyet		nevmas:mely	
 Hós 7:6	4	kemencze	kemence		karakter	
+Hós 7:6	15	sütőjök	sütőjük		jok	
 Hós 7:7	6	kemencze	kemence		karakter	
 Hós 7:7	16	a		osszevonva	nevmas	
 Hós 7:7	17	ki	aki		nevmas:ki	
 Hós 7:10	23	daczára	dacára		karakter	
 Hós 7:12	2	a		osszevonva	nevmas	
 Hós 7:12	3	mint	amint		nevmas:hatarozo	
-Hós 7:13	8	reájok	rájok		rea	
+Hós 7:13	8	reájok	rájuk		rea+jok	
+Hós 7:15	8	karjokat	karjukat		jok	
+Hós 7:16	23	gyalázatjok	gyalázatjuk		jok	
 Hós 8:4	12	kivül	kívül		szoto_94	
+Hós 8:4	13	Ezüstjökből	Ezüstjükből		jok	
 Hós 8:6	14	forgácscsá	forgáccsá		karakter	
 Hós 8:8	11	a		osszevonva	nevmas	
 Hós 8:8	12	melyen	amelyen		nevmas:mely	
@@ -20014,6 +20514,7 @@ Hós 10:14	14	miképen	amiképpen		szoto_94+nevmas:hatarozo
 Hós 10:14	20	harcznak	harcnak		karakter	
 Hós 11:2	1	A		osszevonva	nevmas	
 Hós 11:2	2	mint	Amint		nevmas:hatarozo	
+Hós 11:4	10	hozzájok	hozzájuk		jok	
 Hós 11:4	12	a		osszevonva	nevmas	
 Hós 11:4	13	kik	akik		nevmas:ki	
 Hós 11:8	1	Miképen	Miképpen		szoto_94	
@@ -20025,6 +20526,7 @@ Hós 12:8	17	a		osszevonva	nevmas
 Hós 12:8	18	mely	amely		nevmas:mely	
 Hós 12:14	15	néki	neki		neki	
 Hós 13:1	5	nagygyá	naggyá		karakter	
+Hós 13:2	12	ezüstjökből	ezüstjükből		jok	
 Hós 13:2	24	a		osszevonva	nevmas	
 Hós 13:2	25	kik	akik		nevmas:ki	
 Hós 13:3	12	a		osszevonva	nevmas	
@@ -20032,7 +20534,9 @@ Hós 13:3	13	mely	amely		nevmas:mely
 Hós 13:4	19	kivül	kívül		szoto_94	
 Hós 13:6	1	A		osszevonva	nevmas	
 Hós 13:6	2	mint	Amint		nevmas:hatarozo	
+Hós 13:7	5	hozzájok	hozzájuk		jok	
 Hós 13:7	11	párducz	párduc		karakter	
+Hós 13:8	1	Rájok	Rájuk		jok	
 Hós 13:10	15	a		osszevonva	nevmas	
 Hós 13:10	16	kik	akik		nevmas:ki	
 Hós 14:1	4	daczolt	dacolt		karakter	
@@ -20210,7 +20714,8 @@ Jóel 3:21	5	melyből	amelyből		nevmas:mely
 Ámós 8:10	22	ki	aki		nevmas:ki	
 Ámós 8:14	1	A		osszevonva	nevmas	
 Ámós 8:14	2	kik	Akik		nevmas:ki	
-Ámós 9:4	17	reájok	rájok		rea	
+Ámós 9:1	22	mindnyájok	mindnyájuk		jok	
+Ámós 9:4	17	reájok	rájuk		rea+jok	
 Ámós 9:5	8	a		osszevonva	nevmas	
 Ámós 9:5	9	ki	aki		nevmas:ki	
 Ámós 9:6	1	A		osszevonva	nevmas	
@@ -20227,6 +20732,8 @@ Jóel 3:21	5	melyből	amelyből		nevmas:mely
 Ámós 9:12	20	a		osszevonva	nevmas	
 Ámós 9:12	21	ki	aki		nevmas:ki	
 Ámós 9:14	21	iszszák	isszák		karakter	
+Ámós 9:15	6	földjökbe	földjükbe		jok	
+Ámós 9:15	14	földjökből	földjükből		jok	
 Ámós 9:15	15	a		osszevonva	nevmas	
 Ámós 9:15	16	melyet	amelyet		nevmas:mely	
 Abd 1:1	22	reá	rá		rea	
@@ -20273,6 +20780,7 @@ Jón 3:2	14	a		osszevonva	nevmas
 Jón 3:2	15	mit	amit		nevmas:mi	
 Jón 3:8	24	a		osszevonva	nevmas	
 Jón 3:8	25	mely	amely		nevmas:mely	
+Jón 3:10	12	útjokról	útjukról		jok	
 Jón 3:10	20	a		osszevonva	nevmas	
 Jón 3:10	21	melyről	amelyről		nevmas:mely	
 Jón 4:5	24	a		osszevonva	nevmas	
@@ -20315,6 +20823,8 @@ Mik 3:5	14	a		osszevonva	nevmas
 Mik 3:5	15	kik	akik		nevmas:ki	
 Mik 3:5	25	a		osszevonva	nevmas	
 Mik 3:5	26	ki	aki		nevmas:ki	
+Mik 3:5	30	szájokba	szájukba		jok	
+Mik 3:7	11	szájokat	szájukat		jok	
 Mik 3:9	11	a		osszevonva	nevmas	
 Mik 3:9	12	kik	akik		nevmas:ki	
 Mik 3:10	1	A		osszevonva	nevmas	
@@ -20350,6 +20860,7 @@ Mik 6:10	13	a		osszevonva	nevmas
 Mik 6:10	14	mely	amely		nevmas:mely	
 Mik 6:11	1	Vajjon	Vajon		szoto_94	
 Mik 6:12	6	ragadománynyal	ragadománnyal		karakter	
+Mik 6:12	16	szájokban	szájukban		jok	
 Mik 6:14	19	a		osszevonva	nevmas	
 Mik 6:14	20	mit	amit		nevmas:mi	
 Mik 7:4	1	A		osszevonva	nevmas	
@@ -20362,6 +20873,8 @@ Mik 7:10	10	ki	aki		nevmas:ki
 Mik 7:10	30	utcza	utca		karakter	
 Mik 7:14	10	a		osszevonva	nevmas	
 Mik 7:14	11	mely	amely		nevmas:mely	
+Mik 7:16	8	erejökkel	erejükkel		jok	
+Mik 7:16	10	szájokra	szájukra		jok	
 Mik 7:18	6	a		osszevonva	nevmas	
 Mik 7:18	7	ki	aki		nevmas:ki	
 Mik 7:20	7	a		osszevonva	nevmas	
@@ -20377,6 +20890,7 @@ Náh 2:3	8	aczéltűzben	acéltűzben		karakter
 Náh 2:4	2	utczákon	utcákon		karakter	
 Náh 2:4	8	piaczokon	piacokon		karakter	
 Náh 2:5	12	védősáncz	védősánc		karakter	
+Náh 2:10	14	mindnyájok	mindnyájuk		jok	
 Náh 2:10	15	arcza	arca		karakter	
 Náh 2:11	12	a		osszevonva	nevmas	
 Náh 2:11	13	hová	ahová		nevmas:hatarozo	
@@ -20465,6 +20979,7 @@ Sof 1:5	3	a		osszevonva	nevmas
 Sof 1:5	4	kik	akik		nevmas:ki	
 Sof 1:5	13	a		osszevonva	nevmas	
 Sof 1:5	14	kik	akik		nevmas:ki	
+Sof 1:5	23	Molokjokra	Molokjukra		jok	
 Sof 1:6	3	a		osszevonva	nevmas	
 Sof 1:6	4	kik	akik		nevmas:ki	
 Sof 1:6	10	a		osszevonva	nevmas	
@@ -20482,9 +20997,11 @@ Sof 1:11	16	a		osszevonva	nevmas
 Sof 1:11	17	ki	aki		nevmas:ki	
 Sof 1:12	12	a		osszevonva	nevmas	
 Sof 1:12	13	kik	akik		nevmas:ki	
+Sof 1:12	15	seprejökön	seprejükön		jok	
 Sof 1:12	17	a		osszevonva	nevmas	
 Sof 1:12	18	kik	akik		nevmas:ki	
 Sof 1:13	18	iszszák	isszák		karakter	
+Sof 1:18	2	ezüstjök	ezüstjük		jok	
 Sof 2:1	7	arczátlan	arcátlan		karakter	
 Sof 2:2	2	szűlne	szülne		szoto_94	
 Sof 2:3	8	a		osszevonva	nevmas	
@@ -20503,6 +21020,7 @@ Sof 3:6	9	a		osszevonva	nevmas
 Sof 3:6	10	ki	aki		nevmas:ki	
 Sof 3:7	16	a		osszevonva	nevmas	
 Sof 3:7	17	mit	amit		nevmas:mi	
+Sof 3:8	23	rájok	rájuk		jok	
 Sof 3:11	10	a		osszevonva	nevmas	
 Sof 3:11	11	melyekkel	amelyekkel		nevmas:mely	
 Sof 3:11	19	a		osszevonva	nevmas	
@@ -20513,6 +21031,7 @@ Sof 3:13	22	a		osszevonva	nevmas
 Sof 3:13	23	ki	aki		nevmas:ki	
 Sof 3:18	6	a		osszevonva	nevmas	
 Sof 3:18	7	kik	akik		nevmas:ki	
+Sof 3:19	26	gyalázatjoknak	gyalázatjuknak		jok	
 Hag 1:9	24	a		osszevonva	nevmas	
 Hag 1:9	25	mely	amely		nevmas:mely	
 Hag 1:11	19	a		osszevonva	nevmas	
@@ -20621,6 +21140,7 @@ Zak 5:5	22	a		osszevonva	nevmas
 Zak 5:5	23	mi	ami		ami:V1_irasjel_elotte+nevmas:mi	
 Zak 5:6	9	a		osszevonva	nevmas	
 Zak 5:6	10	mi	ami		ami:V1_irasjel_elotte+nevmas:mi	
+Zak 5:6	17	formájok	formájuk		jok	
 Zak 5:10	5	a		osszevonva	nevmas	
 Zak 5:10	6	ki	aki		nevmas:ki	
 Zak 6:1	22	ércz	érc		karakter	
@@ -20658,6 +21178,7 @@ Zak 8:9	9	a		osszevonva	nevmas
 Zak 8:9	10	kik	akik		nevmas:ki	
 Zak 8:9	19	a		osszevonva	nevmas	
 Zak 8:9	20	kik	akik		nevmas:ki	
+Zak 8:12	19	harmatjokat	harmatjukat		jok	
 Zak 8:13	4	a		osszevonva	nevmas	
 Zak 8:13	5	miképen	amiképpen		szoto_94+nevmas:hatarozo	
 Zak 8:14	7	A		osszevonva	nevmas	
@@ -20764,6 +21285,7 @@ Zak 14:12	13	a		osszevonva	nevmas
 Zak 14:12	14	melyek	amelyek		nevmas:mely	
 Zak 14:12	23	a		osszevonva	nevmas	
 Zak 14:12	24	míg	amíg		nevmas:hatarozo	
+Zak 14:12	34	szájokban	szájukban		jok	
 Zak 14:14	5	harczolni	harcolni		karakter	
 Zak 14:15	14	a		osszevonva	nevmas	
 Zak 14:15	15	melyek	amelyek		nevmas:mely	
@@ -20775,6 +21297,7 @@ Zak 14:16	10	a		osszevonva	nevmas
 Zak 14:16	11	melyek	amelyek		nevmas:mely	
 Zak 14:17	4	a		osszevonva	nevmas	
 Zak 14:17	5	ki	aki		nevmas:ki	
+Zak 14:18	14	rájok	rájuk		jok	
 Zak 14:18	22	a		osszevonva	nevmas	
 Zak 14:18	23	melylyel	amellyel		karakter+nevmas:mely	
 Zak 14:18	29	a		osszevonva	nevmas	
@@ -20868,6 +21391,7 @@ Mt 2:9	28	a		osszevonva	nevmas
 Mt 2:9	29	hol	ahol		nevmas:hatarozo	
 Mt 2:11	15	néki	neki		neki	
 Mt 2:11	21	néki	neki		neki	
+Mt 2:12	14	hazájokba	hazájukba		jok	
 Mt 2:13	29	a		osszevonva	nevmas	
 Mt 2:13	30	míg	amíg		nevmas:hatarozo	
 Mt 2:15	10	a		osszevonva	nevmas	
@@ -21081,6 +21605,7 @@ Mt 8:17	3	a		osszevonva	nevmas
 Mt 8:17	4	mit	amit		nevmas:mi	
 Mt 8:19	6	néki	neki		neki	
 Mt 8:20	3	néki	neki		neki	
+Mt 8:20	8	barlangjok	barlangjuk		jok	
 Mt 8:21	9	néki	neki		neki	
 Mt 8:22	4	néki	neki		neki	
 Mt 8:27	16	néki	neki		neki	
@@ -21105,6 +21630,7 @@ Mt 9:20	5	a		osszevonva	nevmas
 Mt 9:20	6	ki	aki		nevmas:ki	
 Mt 9:22	5	reá	rá		rea	
 Mt 9:28	22	néki	neki		neki	
+Mt 9:30	6	rájok	rájuk		jok	
 Mt 9:32	12	néki	neki		neki	
 Mt 10:2	9	a		osszevonva	nevmas	
 Mt 10:2	10	kit	akit		nevmas:ki	
@@ -21215,6 +21741,7 @@ Mt 12:4	22	a		osszevonva	nevmas
 Mt 12:4	23	kik	akik		nevmas:ki	
 Mt 12:11	10	a		osszevonva	nevmas	
 Mt 12:11	11	kinek	akinek		nevmas:ki	
+Mt 12:15	16	mindnyájokat	mindnyájukat		jok	
 Mt 12:17	6	a		osszevonva	nevmas	
 Mt 12:17	7	ki	aki		nevmas:ki	
 Mt 12:18	5	a		osszevonva	nevmas	
@@ -21287,12 +21814,14 @@ Mt 13:23	11	ki	aki		nevmas:ki
 Mt 13:23	17	a		osszevonva	nevmas	
 Mt 13:23	18	ki	aki		nevmas:ki	
 Mt 13:23	32	harmincz	harminc		karakter	
+Mt 13:24	5	eléjök	eléjük		jok	
 Mt 13:24	13	a		osszevonva	nevmas	
 Mt 13:24	14	ki	aki		nevmas:ki	
 Mt 13:27	7	néki	neki		neki	
 Mt 13:28	13	néki	neki		neki	
 Mt 13:29	6	a		osszevonva	nevmas	
 Mt 13:29	7	mikor	amikor		nevmas:hatarozo	
+Mt 13:31	5	eléjök	eléjük		jok	
 Mt 13:31	13	a		osszevonva	nevmas	
 Mt 13:31	14	melyet	amelyet		nevmas:mely	
 Mt 13:32	1	A		osszevonva	nevmas	
@@ -21314,6 +21843,7 @@ Mt 13:40	2	miképen	Amiképpen		szoto_94+nevmas:hatarozo
 Mt 13:41	19	a		osszevonva	nevmas	
 Mt 13:41	20	kik	akik		nevmas:ki	
 Mt 13:42	6	kemenczébe	kemencébe		karakter	
+Mt 13:43	10	Atyjoknak	Atyjuknak		jok	
 Mt 13:43	12	A		osszevonva	nevmas	
 Mt 13:43	13	kinek	Akinek		nevmas:ki	
 Mt 13:44	10	a		osszevonva	nevmas	
@@ -21414,6 +21944,7 @@ Mt 17:5	25	kiben	akiben		nevmas:ki
 Mt 17:6	4	a		osszevonva	nevmas	
 Mt 17:6	5	mint	amint		nevmas:hatarozo	
 Mt 17:6	8	arczra	arcra		karakter	
+Mt 17:7	3	hozzájok	hozzájuk		jok	
 Mt 17:9	14	a		osszevonva	nevmas	
 Mt 17:9	15	mit	amit		nevmas:mi	
 Mt 17:12	17	a		osszevonva	nevmas	
@@ -21427,6 +21958,7 @@ Mt 17:26	7	néki	neki		neki
 Mt 17:27	20	a		osszevonva	nevmas	
 Mt 17:27	21	mely	amely		nevmas:mely	
 Mt 18:1	9	Vajjon	Vajon		szoto_94	
+Mt 18:2	7	közéjök	közéjük		jok	
 Mt 18:4	1	A		osszevonva	nevmas	
 Mt 18:4	2	ki	Aki		nevmas:ki	
 Mt 18:5	2	a		osszevonva	nevmas	
@@ -21636,6 +22168,7 @@ Mt 22:43	3	Miképen	Miképpen		szoto_94
 Mt 22:46	8	néki	neki		neki	
 Mt 23:3	2	a		osszevonva	nevmas	
 Mt 23:3	3	mit	amit		nevmas:mi	
+Mt 23:4	17	ujjokkal	ujjukkal		jok	
 Mt 23:7	3	piaczokon	piacokon		karakter	
 Mt 23:9	12	a		osszevonva	nevmas	
 Mt 23:9	13	ki	aki		nevmas:ki	
@@ -22101,6 +22634,7 @@ Mk 6:2	15	kik	akik		nevmas:ki
 Mk 6:2	29	a		osszevonva	nevmas	
 Mk 6:2	30	mi	ami		ami:V1_irasjel_elotte+nevmas:mi	
 Mk 6:2	31	néki	neki		neki	
+Mk 6:5	13	rájok	rájuk		jok	
 Mk 6:8	11	pálczán	pálcán		karakter	
 Mk 6:10	4	A		osszevonva	nevmas	
 Mk 6:10	5	hol	Ahol		nevmas:hatarozo	
@@ -22122,9 +22656,11 @@ Mk 6:30	12	a		osszevonva	nevmas
 Mk 6:30	13	miket	amiket		nevmas:mi	
 Mk 6:30	17	a		osszevonva	nevmas	
 Mk 6:30	18	miket	amiket		nevmas:mi	
+Mk 6:31	30	idejök	idejük		jok	
 Mk 6:33	6	a		osszevonva	nevmas	
 Mk 6:33	7	mint	amint		nevmas:hatarozo	
 Mk 6:37	12	néki	neki		neki	
+Mk 6:41	35	mindnyájok	mindnyájuk		jok	
 Mk 6:44	1	A		osszevonva	nevmas	
 Mk 6:44	2	kik	Akik		nevmas:ki	
 Mk 6:45	17	a		osszevonva	nevmas	
@@ -22172,12 +22708,15 @@ Mk 7:32	3	néki	neki		neki
 Mk 7:32	14	reá	rá		rea	
 Mk 7:34	8	néki	neki		neki	
 Mk 8:4	6	néki	neki		neki	
+Mk 8:6	25	eléjök	eléjük		jok	
+Mk 8:7	12	eléjök	eléjük		jok	
 Mk 8:9	3	a		osszevonva	nevmas	
 Mk 8:9	4	kik	akik		nevmas:ki	
 Mk 8:19	15	néki	neki		neki	
 Mk 8:23	18	reá	rá		rea	
 Mk 8:27	8	Czézárea	Cézárea		karakter	
 Mk 8:29	14	néki	neki		neki	
+Mk 8:30	2	rájok	rájuk		jok	
 Mk 9:1	14	a		osszevonva	nevmas	
 Mk 9:1	15	kik	akik		nevmas:ki	
 Mk 9:1	20	a		osszevonva	nevmas	
@@ -22199,6 +22738,7 @@ Mk 9:18	3	hol	ahol		nevmas:hatarozo
 Mk 9:19	4	néki	neki		neki	
 Mk 9:23	4	néki	neki		neki	
 Mk 9:25	17	néki	neki		neki	
+Mk 9:36	5	közéjök	közéjük		jok	
 Mk 9:37	1	A		osszevonva	nevmas	
 Mk 9:37	2	ki	Aki		nevmas:ki	
 Mk 9:37	16	a		osszevonva	nevmas	
@@ -22236,6 +22776,7 @@ Mk 10:13	15	a		osszevonva	nevmas
 Mk 10:13	16	kik	akik		nevmas:ki	
 Mk 10:15	4	A		osszevonva	nevmas	
 Mk 10:15	5	ki	Aki		nevmas:ki	
+Mk 10:16	7	rájok	rájuk		jok	
 Mk 10:18	4	néki	neki		neki	
 Mk 10:20	5	néki	neki		neki	
 Mk 10:21	8	néki	neki		neki	
@@ -22314,6 +22855,7 @@ Mk 11:24	4	A		osszevonva	nevmas
 Mk 11:24	5	mit	Amit		nevmas:mi	
 Mk 11:28	3	néki	neki		neki	
 Mk 11:31	19	néki	neki		neki	
+Mk 12:6	14	hozzájok	hozzájuk		jok	
 Mk 12:10	7	A		osszevonva	nevmas	
 Mk 12:10	8	mely	Amely		nevmas:mely	
 Mk 12:14	5	néki	neki		neki	
@@ -22529,6 +23071,7 @@ Luk 1:20	9	a		osszevonva	nevmas
 Luk 1:20	10	melyen	amelyen		nevmas:mely	
 Luk 1:20	19	a		osszevonva	nevmas	
 Luk 1:20	20	melyek	amelyek		nevmas:mely	
+Luk 1:20	24	idejökben	idejükben		jok	
 Luk 1:25	8	a		osszevonva	nevmas	
 Luk 1:25	9	melyekben	amelyekben		nevmas:mely	
 Luk 1:25	10	reám	rám		rea	
@@ -22584,6 +23127,8 @@ Luk 2:5	5	ki	aki		nevmas:ki
 Luk 2:5	6	néki	neki		neki	
 Luk 2:8	7	a		osszevonva	nevmas	
 Luk 2:8	8	kik	akik		nevmas:ki	
+Luk 2:8	18	nyájok	nyájuk		jok	
+Luk 2:9	6	hozzájok	hozzájuk		jok	
 Luk 2:13	9	a		osszevonva	nevmas	
 Luk 2:13	10	kik	akik		nevmas:ki	
 Luk 2:13	13	dícsérik	dicsérik		szotag	
@@ -22738,6 +23283,7 @@ Luk 6:4	26	melyeket	amelyeket		nevmas:mely
 Luk 6:6	18	a		osszevonva	nevmas	
 Luk 6:6	19	kinek	akinek		nevmas:ki	
 Luk 6:7	10	vajjon	vajon		szoto_94	
+Luk 6:10	3	mindnyájokon	mindnyájukon		jok	
 Luk 6:13	13	a		osszevonva	nevmas	
 Luk 6:13	14	kiket	akiket		nevmas:ki	
 Luk 6:14	2	a		osszevonva	nevmas	
@@ -22904,7 +23450,7 @@ Luk 9:11	20	kiknek	akiknek		nevmas:ki
 Luk 9:12	13	néki	neki		neki	
 Luk 9:17	8	a		osszevonva	nevmas	
 Luk 9:17	9	mi	ami		ami:V3_ige_elotte+nevmas:mi	
-Luk 9:21	3	reájok	rájok		rea	
+Luk 9:21	3	reájok	rájuk		rea+jok	
 Luk 9:24	2	a		osszevonva	nevmas	
 Luk 9:24	3	ki	aki		nevmas:ki	
 Luk 9:24	12	a		osszevonva	nevmas	
@@ -23195,6 +23741,7 @@ Luk 16:15	22	mi	ami		ami:regi_szabaly+nevmas:mi
 Luk 16:26	13	a		osszevonva	nevmas	
 Luk 16:26	14	kik	akik		nevmas:ki	
 Luk 16:29	2	néki	neki		neki	
+Luk 16:30	15	hozzájok	hozzájuk		jok	
 Luk 16:31	4	néki	neki		neki	
 Luk 17:1	14	a		osszevonva	nevmas	
 Luk 17:1	15	ki	aki		nevmas:ki	
@@ -23300,7 +23847,7 @@ Luk 20:2	16	a		osszevonva	nevmas
 Luk 20:2	17	ki	aki		nevmas:ki	
 Luk 20:5	18	néki	neki		neki	
 Luk 20:10	10	néki	neki		neki	
-Luk 20:17	3	reájok	rájok		rea	
+Luk 20:17	3	reájok	rájuk		rea+jok	
 Luk 20:17	9	a		osszevonva	nevmas	
 Luk 20:17	10	mi	ami		ami:V1_irasjel_elotte+nevmas:mi	
 Luk 20:17	14	A		osszevonva	nevmas	
@@ -23434,10 +23981,11 @@ Luk 23:25	14	kit	akit		nevmas:ki
 Luk 23:26	6	Czirénebeli	Cirénebeli		karakter	
 Luk 23:27	11	a		osszevonva	nevmas	
 Luk 23:27	12	kik	akik		nevmas:ki	
+Luk 23:28	3	hozzájok	hozzájuk		jok	
 Luk 23:29	12	a		osszevonva	nevmas	
 Luk 23:29	13	mely	amely		nevmas:mely	
 Luk 23:30	8	reánk	ránk		rea	
-Luk 23:34	19	reájok	rájok		rea	
+Luk 23:34	19	reájok	rájuk		rea+jok	
 Luk 23:36	9	eczettel	ecettel		karakter	
 Luk 23:37	4	néki	neki		neki	
 Luk 23:43	3	néki	neki		neki	
@@ -23449,13 +23997,15 @@ Luk 23:48	14	mik	amik		nevmas:mi
 Luk 23:49	9	a		osszevonva	nevmas	
 Luk 23:49	10	kik	akik		nevmas:ki	
 Luk 23:55	16	miképen	miképpen		szoto_94	
-Luk 24:5	8	orczájokat	orcájokat		karakter	
+Luk 24:4	13	melléjök	melléjük		jok	
+Luk 24:5	8	orczájokat	orcájukat		karakter+jok	
 Luk 24:10	17	a		osszevonva	nevmas	
 Luk 24:10	18	kik	akik		nevmas:ki	
 Luk 24:14	6	a		osszevonva	nevmas	
 Luk 24:14	7	mik	amik		nevmas:mi	
 Luk 24:15	4	a		osszevonva	nevmas	
 Luk 24:15	5	mint	amint		nevmas:hatarozo	
+Luk 24:15	12	hozzájok	hozzájuk		jok	
 Luk 24:17	7	a		osszevonva	nevmas	
 Luk 24:17	8	melyeket	amelyeket		nevmas:mely	
 Luk 24:18	9	néki	neki		neki	
@@ -23481,6 +24031,7 @@ Luk 24:39	25	mint	amint		nevmas:hatarozo
 Luk 24:42	4	néki	neki		neki	
 Luk 24:44	19	a		osszevonva	nevmas	
 Luk 24:44	20	mik	amik		nevmas:mi	
+Luk 24:45	5	elméjöket	elméjüket		jok	
 Luk 24:49	6	reátok	rátok		rea	
 Luk 24:53	6	dícsérvén	dicsérvén		szotag	
 Ján 1:3	11	a		osszevonva	nevmas	
@@ -23572,6 +24123,7 @@ Ján 2:9	22	kik	akik		nevmas:ki
 Ján 2:10	3	néki	neki		neki	
 Ján 2:14	15	a		osszevonva	nevmas	
 Ján 2:14	16	mint	amint		nevmas:hatarozo	
+Ján 2:15	6	mindnyájokat	mindnyájukat		jok	
 Ján 2:18	7	néki	neki		neki	
 Ján 2:22	20	a		osszevonva	nevmas	
 Ján 2:22	21	melyet	amelyet		nevmas:mely	
@@ -23579,7 +24131,8 @@ Ján 2:23	1	A		osszevonva	nevmas
 Ján 2:23	2	mint	Amint		nevmas:hatarozo	
 Ján 2:23	18	a		osszevonva	nevmas	
 Ján 2:23	19	melyeket	amelyeket		nevmas:mely	
-Ján 2:24	8	reájok	rájok		rea	
+Ján 2:24	8	reájok	rájuk		rea+jok	
+Ján 2:24	14	mindnyájokat	mindnyájukat		jok	
 Ján 3:2	7	néki	neki		neki	
 Ján 3:2	20	a		osszevonva	nevmas	
 Ján 3:2	21	melyeket	amelyeket		nevmas:mely	
@@ -23992,6 +24545,7 @@ Ján 8:7	9	A		osszevonva	nevmas
 Ján 8:7	10	ki	Aki		nevmas:ki	
 Ján 8:10	13	néki	neki		neki	
 Ján 8:11	9	néki	neki		neki	
+Ján 8:12	4	hozzájok	hozzájuk		jok	
 Ján 8:12	12	a		osszevonva	nevmas	
 Ján 8:12	13	ki	aki		nevmas:ki	
 Ján 8:13	3	néki	neki		neki	
@@ -24101,6 +24655,7 @@ Ján 10:6	13	a		osszevonva	nevmas
 Ján 10:6	14	mit	amit		nevmas:mi	
 Ján 10:8	2	a		osszevonva	nevmas	
 Ján 10:8	3	kik	akik		nevmas:ki	
+Ján 10:8	12	rájok	rájuk		jok	
 Ján 10:12	5	a		osszevonva	nevmas	
 Ján 10:12	6	ki	aki		nevmas:ki	
 Ján 10:12	9	a		osszevonva	nevmas	
@@ -24494,6 +25049,7 @@ Ján 18:23	2	néki	neki		neki
 Ján 18:25	12	néki	neki		neki	
 Ján 18:26	9	a		osszevonva	nevmas	
 Ján 18:26	10	kinek	akinek		nevmas:ki	
+Ján 18:29	5	hozzájok	hozzájuk		jok	
 Ján 18:30	4	néki	neki		neki	
 Ján 18:31	19	néki	neki		neki	
 Ján 18:32	6	a		osszevonva	nevmas	
@@ -24662,7 +25218,7 @@ ApCsel 1:21	9	a		osszevonva	nevmas
 ApCsel 1:21	10	kik	akik		nevmas:ki	
 ApCsel 1:24	16	a		osszevonva	nevmas	
 ApCsel 1:24	17	kit	akit		nevmas:ki	
-ApCsel 1:26	4	reájok	rájok		rea	
+ApCsel 1:26	4	reájok	rájuk		rea+jok	
 ApCsel 2:2	17	a		osszevonva	nevmas	
 ApCsel 2:2	18	hol	ahol		nevmas:hatarozo	
 ApCsel 2:4	11	a		osszevonva	nevmas	
@@ -24710,7 +25266,7 @@ ApCsel 3:2	30	a		osszevonva	nevmas
 ApCsel 3:2	31	kik	akik		nevmas:ki	
 ApCsel 3:4	5	reá	rá		rea	
 ApCsel 3:4	12	reánk	ránk		rea	
-ApCsel 3:5	5	reájok	rájok		rea	
+ApCsel 3:5	5	reájok	rájuk		rea+jok	
 ApCsel 3:8	17	dícsérve	dicsérve		szotag	
 ApCsel 3:9	10	dícséri	dicséri		szotag	
 ApCsel 3:10	8	a		osszevonva	nevmas	
@@ -24719,6 +25275,7 @@ ApCsel 3:10	22	a		osszevonva	nevmas
 ApCsel 3:10	23	mi	ami		ami:V1_irasjel_elotte+nevmas:mi	
 ApCsel 3:11	10	a		osszevonva	nevmas	
 ApCsel 3:11	11	ki	aki		nevmas:ki	
+ApCsel 3:11	19	hozzájok	hozzájuk		jok	
 ApCsel 3:11	21	tornáczba	tornácba		karakter	
 ApCsel 3:12	18	reánk	ránk		rea	
 ApCsel 3:16	14	a		osszevonva	nevmas	
@@ -24791,7 +25348,7 @@ ApCsel 5:37	21	kik	akik		nevmas:ki
 ApCsel 5:39	14	harczolóknak	harcolóknak		karakter	
 ApCsel 5:40	3	néki	neki		neki	
 ApCsel 6:3	1	Válaszszatok	Válasszatok		karakter	
-ApCsel 6:6	10	reájok	rájok		rea	
+ApCsel 6:6	10	reájok	rájuk		rea+jok	
 ApCsel 6:9	12	Czirénebeliekének	Cirénebeliekének		karakter	
 ApCsel 6:9	16	Czilicziából	Ciliciából		karakter	
 ApCsel 6:12	11	reá	rá		rea	
@@ -24939,7 +25496,7 @@ ApCsel 11:11	12	Czézáreából	Cézáreából		karakter
 ApCsel 11:13	6	a		osszevonva	nevmas	
 ApCsel 11:13	7	mint	amint		nevmas:hatarozo	
 ApCsel 11:13	17	néki	neki		neki	
-ApCsel 11:15	11	reájok	rájok		rea	
+ApCsel 11:15	11	reájok	rájuk		rea+jok	
 ApCsel 11:15	12	miképen	miképpen		szoto_94	
 ApCsel 11:15	14	reánk	ránk		rea	
 ApCsel 11:16	7	a		osszevonva	nevmas	
@@ -24975,11 +25532,12 @@ ApCsel 13:1	22	Luczius	Lucius		karakter
 ApCsel 13:2	13	Válaszszátok	Válasszátok		karakter	
 ApCsel 13:2	21	a		osszevonva	nevmas	
 ApCsel 13:2	22	melyre	amelyre		nevmas:mely	
-ApCsel 13:3	8	reájok	rájok		rea	
+ApCsel 13:3	8	reájok	rájuk		rea+jok	
 ApCsel 13:4	9	Szeleucziába	Szeleuciába		karakter	
 ApCsel 13:4	13	Cziprusba	Ciprusba		karakter	
 ApCsel 13:9	10	reá	rá		rea	
 ApCsel 13:11	25	reá	rá		rea	
+ApCsel 13:15	14	hozzájok	hozzájuk		jok	
 ApCsel 13:27	2	a		osszevonva	nevmas	
 ApCsel 13:27	3	kik	akik		nevmas:ki	
 ApCsel 13:29	5	a		osszevonva	nevmas	
@@ -25027,10 +25585,12 @@ ApCsel 16:14	15	reánk	ránk		rea
 ApCsel 16:14	24	a		osszevonva	nevmas	
 ApCsel 16:14	25	miket	amiket		nevmas:mi	
 ApCsel 16:19	17	piaczra	piacra		karakter	
+ApCsel 16:23	6	rájok	rájuk		jok	
 ApCsel 16:23	7	tömlöczbe	tömlöcbe		karakter	
 ApCsel 16:23	12	tömlöcztartónak	tömlöctartónak		karakter	
 ApCsel 16:24	9	tömlöczbe	tömlöcbe		karakter	
 ApCsel 16:26	10	tömlöcz	tömlöc		karakter	
+ApCsel 16:26	19	mindnyájoknak	mindnyájuknak		jok	
 ApCsel 16:27	4	tömlöcztartó	tömlöctartó		karakter	
 ApCsel 16:27	11	tömlöcznek	tömlöcnek		karakter	
 ApCsel 16:32	3	néki	neki		neki	
@@ -25039,8 +25599,10 @@ ApCsel 16:37	15	tömlöczbe	tömlöcbe		karakter
 ApCsel 16:40	4	tömlöczből	tömlöcből		karakter	
 ApCsel 17:1	9	a		osszevonva	nevmas	
 ApCsel 17:1	10	hol	ahol		nevmas:hatarozo	
+ApCsel 17:1	14	zsinagógájok	zsinagógájuk		jok	
 ApCsel 17:2	3	a		osszevonva	nevmas	
 ApCsel 17:2	4	mint	amint		nevmas:hatarozo	
+ApCsel 17:2	8	hozzájok	hozzájuk		jok	
 ApCsel 17:3	21	a		osszevonva	nevmas	
 ApCsel 17:3	22	kit	akit		nevmas:ki	
 ApCsel 17:5	15	piaczi	piaci		karakter	
@@ -25056,6 +25618,7 @@ ApCsel 17:24	3	a		osszevonva	nevmas
 ApCsel 17:24	4	ki	aki		nevmas:ki	
 ApCsel 17:24	10	a		osszevonva	nevmas	
 ApCsel 17:24	11	mi	ami		ami:V1_irasjel_elotte+nevmas:mi	
+ApCsel 17:26	18	idejöket	idejüket		jok	
 ApCsel 17:28	8	miképen	miképpen		szoto_94	
 ApCsel 18:2	17	Prisczillára	Priscillára		karakter	
 ApCsel 18:5	4	Maczedóniából	Macedóniából		karakter	
@@ -25069,15 +25632,16 @@ ApCsel 19:2	3	Vajjon	Vajon		szoto_94
 ApCsel 19:2	14	néki	neki		neki	
 ApCsel 19:4	13	a		osszevonva	nevmas	
 ApCsel 19:4	14	ki	aki		nevmas:ki	
-ApCsel 19:6	4	reájok	rájok		rea	
-ApCsel 19:6	12	reájok	rájok		rea	
+ApCsel 19:6	4	reájok	rájuk		rea+jok	
+ApCsel 19:6	12	reájok	rájuk		rea+jok	
 ApCsel 19:13	15	a		osszevonva	nevmas	
 ApCsel 19:13	16	kikben	akikben		nevmas:ki	
 ApCsel 19:14	10	a		osszevonva	nevmas	
 ApCsel 19:14	11	kik	akik		nevmas:ki	
-ApCsel 19:16	2	reájok	rájok		rea	
+ApCsel 19:16	2	reájok	rájuk		rea+jok	
 ApCsel 19:16	7	a		osszevonva	nevmas	
 ApCsel 19:16	8	kiben	akiben		nevmas:ki	
+ApCsel 19:17	17	mindnyájokra	mindnyájukra		jok	
 ApCsel 19:20	6	nevekedik	növekedik		szoto_94	
 ApCsel 19:21	9	Maczedóniát	Macedóniát		karakter	
 ApCsel 19:22	3	Maczedóniába	Macedóniába		karakter	
@@ -25086,6 +25650,7 @@ ApCsel 19:26	27	a		osszevonva	nevmas
 ApCsel 19:26	28	melyek	amelyek		nevmas:mely	
 ApCsel 19:29	17	Maczedóniából	Macedóniából		karakter	
 ApCsel 19:31	11	néki	neki		neki	
+ApCsel 19:34	9	mindnyájokból	mindnyájukból		jok	
 ApCsel 19:35	17	a		osszevonva	nevmas	
 ApCsel 19:35	18	ki	aki		nevmas:ki	
 ApCsel 19:40	13	a		osszevonva	nevmas	
@@ -25095,6 +25660,7 @@ ApCsel 20:3	12	néki	neki		neki
 ApCsel 20:3	13	a		osszevonva	nevmas	
 ApCsel 20:3	14	mint	amint		nevmas:hatarozo	
 ApCsel 20:3	21	Maczedónián	Macedónián		karakter	
+ApCsel 20:6	13	hozzájok	hozzájuk		jok	
 ApCsel 20:8	8	a		osszevonva	nevmas	
 ApCsel 20:8	9	hol	ahol		nevmas:hatarozo	
 ApCsel 20:10	4	reá	rá		rea	
@@ -25126,16 +25692,20 @@ ApCsel 21:19	7	miket	amiket		nevmas:mi
 ApCsel 21:20	10	néki	neki		neki	
 ApCsel 21:23	4	a		osszevonva	nevmas	
 ApCsel 21:23	5	mit	amit		nevmas:mi	
+ApCsel 21:24	10	rájok	rájuk		jok	
+ApCsel 21:24	13	fejöket	fejüket		jok	
 ApCsel 21:24	21	a		osszevonva	nevmas	
 ApCsel 21:24	22	miket	amiket		nevmas:mi	
 ApCsel 21:26	21	a		osszevonva	nevmas	
 ApCsel 21:26	22	míg	amíg		nevmas:hatarozo	
 ApCsel 21:27	22	reá	rá		rea	
+ApCsel 21:32	10	hozzájok	hozzájuk		jok	
 ApCsel 21:33	13	lánczczal	lánccal		karakter	
 ApCsel 21:37	12	Vajjon	Vajon		szoto_94	
 ApCsel 21:39	10	Cziliczia	Cilicia		karakter	
 ApCsel 22:1	10	a		osszevonva	nevmas	
 ApCsel 22:1	11	melylyel	amellyel		karakter+nevmas:mely	
+ApCsel 22:2	8	hozzájok	hozzájuk		jok	
 ApCsel 22:3	7	czilicziai	ciliciai		karakter	
 ApCsel 22:4	10	tömlöczbe	tömlöcbe		karakter	
 ApCsel 22:5	1	Miképen	Miképpen		szoto_94	
@@ -25237,6 +25807,9 @@ ApCsel 27:25	13	a		osszevonva	nevmas
 ApCsel 27:25	14	mint	amint		nevmas:hatarozo	
 ApCsel 27:27	7	a		osszevonva	nevmas	
 ApCsel 27:27	8	mint	amint		nevmas:hatarozo	
+ApCsel 27:27	23	hozzájok	hozzájuk		jok	
+ApCsel 27:33	9	mindnyájokat	mindnyájukat		jok	
+ApCsel 27:35	12	mindnyájok	mindnyájuk		jok	
 ApCsel 27:43	15	a		osszevonva	nevmas	
 ApCsel 27:43	16	kik	akik		nevmas:ki	
 ApCsel 28:5	2	néki	neki		neki	
@@ -25332,7 +25905,7 @@ Róm 2:29	6	ki	aki		nevmas:ki
 Róm 2:29	21	a		osszevonva	nevmas	
 Róm 2:29	22	melynek	amelynek		nevmas:mely	
 Róm 2:29	23	dícsérete	dicsérete		szotag	
-Róm 3:2	9	reájok	rájok		rea	
+Róm 3:2	9	reájok	rájuk		rea+jok	
 Róm 3:3	8	Vajjon	Vajon		szoto_94	
 Róm 3:4	13	a		osszevonva	nevmas	
 Róm 3:4	14	mint	amint		nevmas:hatarozo	
@@ -25351,6 +25924,7 @@ Róm 3:11	6	a		osszevonva	nevmas
 Róm 3:11	7	ki	aki		nevmas:ki	
 Róm 3:12	7	a		osszevonva	nevmas	
 Róm 3:12	8	ki	aki		nevmas:ki	
+Róm 3:14	1	Szájok	Szájuk		jok	
 Róm 3:19	4	a		osszevonva	nevmas	
 Róm 3:19	5	mit	amit		nevmas:mi	
 Róm 3:19	11	a		osszevonva	nevmas	
@@ -25585,6 +26159,7 @@ Róm 10:15	8	A		osszevonva	nevmas
 Róm 10:15	9	miképen	Amiképpen		szoto_94+nevmas:hatarozo	
 Róm 10:15	19	a		osszevonva	nevmas	
 Róm 10:15	20	kik	akik		nevmas:ki	
+Róm 10:18	15	hangjok	hangjuk		jok	
 Róm 10:20	8	a		osszevonva	nevmas	
 Róm 10:20	9	kik	akik		nevmas:ki	
 Róm 10:20	16	a		osszevonva	nevmas	
@@ -25602,6 +26177,7 @@ Róm 11:13	6	a		osszevonva	nevmas
 Róm 11:13	7	mennyiben	amennyiben		nevmas:hatarozo	
 Róm 11:22	11	a		osszevonva	nevmas	
 Róm 11:22	12	kik	akik		nevmas:ki	
+Róm 11:24	28	olajfájokba	olajfájukba		jok	
 Róm 11:25	24	a		osszevonva	nevmas	
 Róm 11:25	25	meddig	ameddig		nevmas:hatarozo	
 Róm 11:26	7	a		osszevonva	nevmas	
@@ -25831,6 +26407,7 @@ Róm 16:25	4	ki	aki		nevmas:ki
 1Kor 7:30	10	kik	akik		nevmas:ki	
 1Kor 7:30	15	a		osszevonva	nevmas	
 1Kor 7:30	16	kik	akik		nevmas:ki	
+1Kor 7:30	19	semmijök	semmijük		jok	
 1Kor 7:31	2	a		osszevonva	nevmas	
 1Kor 7:31	3	kik	akik		nevmas:ki	
 1Kor 7:32	9	A		osszevonva	nevmas	
@@ -25966,6 +26543,7 @@ Róm 16:25	4	ki	aki		nevmas:ki
 1Kor 12:23	15	melyek	amelyek		nevmas:mely	
 1Kor 12:24	1	A		osszevonva	nevmas	
 1Kor 12:24	2	melyek	Amelyek		nevmas:mely	
+1Kor 12:30	2	mindnyájoknak	mindnyájuknak		jok	
 1Kor 13:1	18	ércz	érc		karakter	
 1Kor 13:1	21	czimbalom	cimbalom		karakter	
 1Kor 13:12	23	a		osszevonva	nevmas	
@@ -26006,6 +26584,7 @@ Róm 16:25	4	ki	aki		nevmas:ki
 1Kor 15:15	19	kit	akit		nevmas:ki	
 1Kor 15:18	1	A		osszevonva	nevmas	
 1Kor 15:18	2	kik	Akik		nevmas:ki	
+1Kor 15:20	7	zsengéjök	zsengéjük		jok	
 1Kor 15:22	2	a		osszevonva	nevmas	
 1Kor 15:22	3	miképen	amiképpen		szoto_94+nevmas:hatarozo	
 1Kor 15:23	12	a		osszevonva	nevmas	
@@ -26328,6 +26907,7 @@ Gal 1:23	5	A		osszevonva	nevmas
 Gal 1:23	6	ki	Aki		nevmas:ki	
 Gal 1:23	15	a		osszevonva	nevmas	
 Gal 1:23	16	melyet	amelyet		nevmas:mely	
+Gal 2:2	6	eléjök	eléjük		jok	
 Gal 2:4	6	a		osszevonva	nevmas	
 Gal 2:4	7	kik	akik		nevmas:ki	
 Gal 2:4	16	melylyel	mellyel		karakter	
@@ -26336,6 +26916,7 @@ Gal 2:8	2	a		osszevonva	nevmas
 Gal 2:8	3	ki	aki		nevmas:ki	
 Gal 2:10	5	a		osszevonva	nevmas	
 Gal 2:10	6	mit	amit		nevmas:mi	
+Gal 2:14	14	mindnyájok	mindnyájuk		jok	
 Gal 2:18	3	a		osszevonva	nevmas	
 Gal 2:18	4	miket	amiket		nevmas:mi	
 Gal 2:20	14	a		osszevonva	nevmas	
@@ -26504,6 +27085,7 @@ Ef 4:15	10	a		osszevonva	nevmas
 Ef 4:15	11	ki	aki		nevmas:ki	
 Ef 4:16	1	A		osszevonva	nevmas	
 Ef 4:16	2	kiből	Akiből		nevmas:ki	
+Ef 4:17	22	elméjöknek	elméjüknek		jok	
 Ef 4:21	10	a		osszevonva	nevmas	
 Ef 4:21	11	mint	amint		nevmas:hatarozo	
 Ef 4:28	1	A		osszevonva	nevmas	
@@ -26527,6 +27109,7 @@ Ef 5:14	6	ki	aki		nevmas:ki
 Ef 5:19	6	dícséretekben	dicséretekben		szotag	
 Ef 5:19	12	dícséretet	dicséretet		szotag	
 Ef 5:24	2	miképen	miképpen		szoto_94	
+Ef 5:24	14	férjöknek	férjüknek		jok	
 Ef 5:25	7	miképen	miképpen		szoto_94	
 Ef 5:28	14	A		osszevonva	nevmas	
 Ef 5:28	15	ki	Aki		nevmas:ki	
@@ -26824,6 +27407,7 @@ Kol 4:16	18	Laodiczeából	Laodiceából		karakter
 1Thessz 4:17	7	kik	akik		nevmas:ki	
 1Thessz 5:3	2	a		osszevonva	nevmas	
 1Thessz 5:3	3	mikor	amikor		nevmas:hatarozo	
+1Thessz 5:3	13	rájok	rájuk		jok	
 1Thessz 5:7	2	a		osszevonva	nevmas	
 1Thessz 5:7	3	kik	akik		nevmas:ki	
 1Thessz 5:7	8	a		osszevonva	nevmas	
@@ -26836,6 +27420,7 @@ Kol 4:16	18	Laodiczeából	Laodiceából		karakter
 1Thessz 5:11	10	miképen	amiképpen		szoto_94+nevmas:hatarozo	
 1Thessz 5:12	8	a		osszevonva	nevmas	
 1Thessz 5:12	9	kik	akik		nevmas:ki	
+1Thessz 5:13	4	munkájokért	munkájukért		jok	
 1Thessz 5:21	3	a		osszevonva	nevmas	
 1Thessz 5:21	4	mi	ami		ami:V1_irasjel_elotte+nevmas:mi	
 1Thessz 5:22	2	a		osszevonva	nevmas	
@@ -26882,7 +27467,7 @@ Kol 4:16	18	Laodiczeából	Laodiceából		karakter
 2Thessz 2:9	2	kinek	Akinek		nevmas:ki	
 2Thessz 2:10	8	a		osszevonva	nevmas	
 2Thessz 2:10	9	kik	akik		nevmas:ki	
-2Thessz 2:11	4	reájok	rájok		rea	
+2Thessz 2:11	4	reájok	rájuk		rea+jok	
 2Thessz 2:12	4	a		osszevonva	nevmas	
 2Thessz 2:12	5	kik	akik		nevmas:ki	
 2Thessz 2:13	11	a		osszevonva	nevmas	
@@ -27092,12 +27677,17 @@ Tit 1:9	1	A		osszevonva	nevmas
 Tit 1:9	2	ki	Aki		nevmas:ki	
 Tit 1:11	1	A		osszevonva	nevmas	
 Tit 1:11	2	kiknek	Akiknek		nevmas:ki	
+Tit 1:11	7	szájokat	szájukat		jok	
 Tit 1:11	8	a		osszevonva	nevmas	
 Tit 1:11	9	kik	akik		nevmas:ki	
 Tit 1:11	17	a		osszevonva	nevmas	
 Tit 1:11	18	miket	amiket		nevmas:mi	
+Tit 1:12	8	prófétájok	prófétájuk		jok	
+Tit 1:15	17	elméjök	elméjük		jok	
 Tit 2:1	5	a		osszevonva	nevmas	
 Tit 2:1	6	mik	amik		nevmas:mi	
+Tit 2:4	7	férjöket	férjüket		jok	
+Tit 2:5	6	férjöknek	férjüknek		jok	
 Tit 2:12	1	A		osszevonva	nevmas	
 Tit 2:12	2	mely	Amely		nevmas:mely	
 Tit 2:12	13	kivánságokat	kívánságokat		szoto_94	
@@ -27266,6 +27856,7 @@ Zsid 7:2	8	a		osszevonva	nevmas
 Zsid 7:2	9	ki	aki		nevmas:ki	
 Zsid 7:4	7	a		osszevonva	nevmas	
 Zsid 7:4	8	kinek	akinek		nevmas:ki	
+Zsid 7:5	13	parancsolatjok	parancsolatjuk		jok	
 Zsid 7:6	3	a		osszevonva	nevmas	
 Zsid 7:6	4	kinek	akinek		nevmas:ki	
 Zsid 7:8	10	a		osszevonva	nevmas	
@@ -27315,6 +27906,7 @@ Zsid 8:6	12	a		osszevonva	nevmas
 Zsid 8:6	13	mely	amely		nevmas:mely	
 Zsid 8:9	5	a		osszevonva	nevmas	
 Zsid 8:9	6	melyet	amelyet		nevmas:mely	
+Zsid 8:10	23	elméjökbe	elméjükbe		jok	
 Zsid 8:13	8	a		osszevonva	nevmas	
 Zsid 8:13	9	mi	ami		ami:V1_irasjel_elotte+nevmas:mi	
 Zsid 9:2	6	a		osszevonva	nevmas	
@@ -27344,6 +27936,7 @@ Zsid 10:10	2	mely	Amely		nevmas:mely
 Zsid 10:11	13	a		osszevonva	nevmas	
 Zsid 10:11	14	melyek	amelyek		nevmas:mely	
 Zsid 10:12	9	űle	üle		szoto_94	
+Zsid 10:16	24	elméjökbe	elméjükbe		jok	
 Zsid 10:18	1	A		osszevonva	nevmas	
 Zsid 10:18	2	hol	Ahol		nevmas:hatarozo	
 Zsid 10:20	4	a		osszevonva	nevmas	
@@ -27391,6 +27984,7 @@ Zsid 11:14	2	a		osszevonva	nevmas
 Zsid 11:14	3	kik	akik		nevmas:ki	
 Zsid 11:15	7	a		osszevonva	nevmas	
 Zsid 11:15	8	melyből	amelyből		nevmas:mely	
+Zsid 11:15	12	idejök	idejük		jok	
 Zsid 11:18	1	A		osszevonva	nevmas	
 Zsid 11:18	2	kinek	Akinek		nevmas:ki	
 Zsid 11:29	11	a		osszevonva	nevmas	
@@ -27417,6 +28011,7 @@ Zsid 12:16	9	a		osszevonva	nevmas
 Zsid 12:16	10	ki	aki		nevmas:ki	
 Zsid 12:19	9	a		osszevonva	nevmas	
 Zsid 12:19	10	kik	akik		nevmas:ki	
+Zsid 12:19	16	hozzájok	hozzájuk		jok	
 Zsid 12:20	5	a		osszevonva	nevmas	
 Zsid 12:20	6	mi	ami		ami:V1_irasjel_elotte+nevmas:mi	
 Zsid 12:23	6	a		osszevonva	nevmas	
@@ -27641,12 +28236,14 @@ Jak 5:20	5	ki	aki		nevmas:ki
 1Pét 2:24	2	ki	Aki		nevmas:ki	
 1Pét 2:24	19	a		osszevonva	nevmas	
 1Pét 2:24	20	kinek	akinek		nevmas:ki	
+1Pét 3:1	7	férjöknek	férjüknek		jok	
 1Pét 3:3	1	A		osszevonva	nevmas	
 1Pét 3:3	2	kiknek	Akiknek		nevmas:ki	
 1Pét 3:4	12	a		osszevonva	nevmas	
 1Pét 3:4	13	mi	ami		ami:V1_irasjel_elotte+nevmas:mi	
 1Pét 3:5	10	a		osszevonva	nevmas	
 1Pét 3:5	11	kik	akik		nevmas:ki	
+1Pét 3:5	17	férjöknek	férjüknek		jok	
 1Pét 3:6	8	a		osszevonva	nevmas	
 1Pét 3:6	9	kinek	akinek		nevmas:ki	
 1Pét 3:7	18	a		osszevonva	nevmas	
@@ -27785,6 +28382,7 @@ Jak 5:20	5	ki	aki		nevmas:ki
 2Pét 2:18	12	kik	akik		nevmas:ki	
 2Pét 2:19	11	a		osszevonva	nevmas	
 2Pét 2:19	12	kit	akit		nevmas:ki	
+2Pét 2:21	4	rájok	rájuk		jok	
 2Pét 3:1	7	amelylyel	amellyel		karakter	
 2Pét 3:3	10	a		osszevonva	nevmas	
 2Pét 3:3	11	kik	akik		nevmas:ki	
@@ -27939,6 +28537,7 @@ Jak 5:20	5	ki	aki		nevmas:ki
 1Ján 4:4	13	ki	aki		nevmas:ki	
 1Ján 4:4	18	a		osszevonva	nevmas	
 1Ján 4:4	19	ki	aki		nevmas:ki	
+1Ján 4:5	14	rájok	rájuk		jok	
 1Ján 4:6	5	a		osszevonva	nevmas	
 1Ján 4:6	6	ki	aki		nevmas:ki	
 1Ján 4:6	11	reánk	ránk		rea	
@@ -28047,6 +28646,7 @@ Jak 5:20	5	ki	aki		nevmas:ki
 3Ján 1:6	2	kik	Akik		nevmas:ki	
 3Ján 1:6	11	a		osszevonva	nevmas	
 3Ján 1:6	12	kiket	akiket		nevmas:ki	
+3Ján 1:6	19	útjokra	útjukra		jok	
 3Ján 1:9	6	a		osszevonva	nevmas	
 3Ján 1:9	7	ki	aki		nevmas:ki	
 3Ján 1:10	8	a		osszevonva	nevmas	
@@ -28088,6 +28688,7 @@ Júd 1:15	17	a		osszevonva	nevmas
 Júd 1:15	18	melyekkel	amelyekkel		nevmas:mely	
 Júd 1:15	24	a		osszevonva	nevmas	
 Júd 1:15	25	melyet	amelyet		nevmas:mely	
+Júd 1:16	9	szájok	szájuk		jok	
 Júd 1:17	9	a		osszevonva	nevmas	
 Júd 1:17	10	melyeket	amelyeket		nevmas:mely	
 Júd 1:18	11	a		osszevonva	nevmas	
@@ -28276,6 +28877,7 @@ Jel 4:1	16	a		osszevonva	nevmas
 Jel 4:1	17	melyet	amelyet		nevmas:mely	
 Jel 4:3	2	a		osszevonva	nevmas	
 Jel 4:3	3	ki	aki		nevmas:ki	
+Jel 4:4	21	fejökön	fejükön		jok	
 Jel 4:5	20	a		osszevonva	nevmas	
 Jel 4:5	21	mely	amely		nevmas:mely	
 Jel 4:7	24	arcza	arca		karakter	
@@ -28356,6 +28958,7 @@ Jel 7:14	12	a		osszevonva	nevmas
 Jel 7:14	13	kik	akik		nevmas:ki	
 Jel 7:15	17	a		osszevonva	nevmas	
 Jel 7:15	18	ki	aki		nevmas:ki	
+Jel 7:16	13	rájok	rájuk		jok	
 Jel 7:17	4	a		osszevonva	nevmas	
 Jel 7:17	5	ki	aki		nevmas:ki	
 Jel 8:2	7	a		osszevonva	nevmas	
@@ -28373,6 +28976,7 @@ Jel 8:13	32	kik	akik		nevmas:ki
 Jel 9:2	15	kemenczének	kemencének		karakter	
 Jel 9:4	21	a		osszevonva	nevmas	
 Jel 9:4	22	kiknek	akiknek		nevmas:ki	
+Jel 9:7	13	fejökön	fejükön		jok	
 Jel 9:7	21	orczáik	orcáik		karakter	
 Jel 9:7	27	orczái	orcái		karakter	
 Jel 9:13	15	a		osszevonva	nevmas	
@@ -28420,6 +29024,7 @@ Jel 11:2	4	a		osszevonva	nevmas
 Jel 11:2	5	mely	amely		nevmas:mely	
 Jel 11:4	10	a		osszevonva	nevmas	
 Jel 11:4	11	melyek	amelyek		nevmas:mely	
+Jel 11:5	11	szájokból	szájukból		jok	
 Jel 11:5	12	a		osszevonva	nevmas	
 Jel 11:5	13	mely	amely		nevmas:mely	
 Jel 11:8	9	utczáin	utcáin		karakter	
@@ -28427,6 +29032,7 @@ Jel 11:8	10	a		osszevonva	nevmas
 Jel 11:8	11	mely	amely		nevmas:mely	
 Jel 11:8	18	a		osszevonva	nevmas	
 Jel 11:8	19	hol	ahol		nevmas:hatarozo	
+Jel 11:11	12	beléjök	beléjük		jok	
 Jel 11:11	21	a		osszevonva	nevmas	
 Jel 11:11	22	kik	akik		nevmas:ki	
 Jel 11:12	7	a		osszevonva	nevmas	
@@ -28516,12 +29122,14 @@ Jel 14:1	16	a		osszevonva	nevmas
 Jel 14:1	17	kiknek	akiknek		nevmas:ki	
 Jel 14:2	19	a		osszevonva	nevmas	
 Jel 14:2	20	kik	akik		nevmas:ki	
+Jel 14:2	23	hárfájokkal	hárfájukkal		jok	
 Jel 14:3	34	a		osszevonva	nevmas	
 Jel 14:3	35	kik	akik		nevmas:ki	
 Jel 14:4	3	a		osszevonva	nevmas	
 Jel 14:4	4	kik	akik		nevmas:ki	
 Jel 14:4	14	a		osszevonva	nevmas	
 Jel 14:4	15	kik	akik		nevmas:ki	
+Jel 14:5	4	szájokban	szájukban		jok	
 Jel 14:6	9	a		osszevonva	nevmas	
 Jel 14:6	10	kinél	akinél		nevmas:ki	
 Jel 14:7	9	néki	neki		neki	
@@ -28613,6 +29221,7 @@ Jel 17:12	5	a		osszevonva	nevmas
 Jel 17:12	6	melyet	amelyet		nevmas:mely	
 Jel 17:12	11	a		osszevonva	nevmas	
 Jel 17:12	12	kik	akik		nevmas:ki	
+Jel 17:13	5	erejöket	erejüket		jok	
 Jel 17:15	6	a		osszevonva	nevmas	
 Jel 17:15	7	melyeket	amelyeket		nevmas:mely	
 Jel 17:15	9	a		osszevonva	nevmas	
@@ -28655,6 +29264,7 @@ Jel 18:15	4	kik	akik		nevmas:ki
 Jel 18:16	9	a		osszevonva	nevmas	
 Jel 18:16	10	mely	amely		nevmas:mely	
 Jel 18:16	19	aranynyal	arannyal		karakter	
+Jel 18:19	6	fejökre	fejükre		jok	
 Jel 18:19	20	a		osszevonva	nevmas	
 Jel 18:19	21	melyben	amelyben		nevmas:mely	
 Jel 18:19	24	a		osszevonva	nevmas	
@@ -28703,6 +29313,7 @@ Jel 20:2	10	ki	aki		nevmas:ki
 Jel 20:3	28	néki	neki		neki	
 Jel 20:4	15	a		osszevonva	nevmas	
 Jel 20:4	16	kiknek	akiknek		nevmas:ki	
+Jel 20:4	17	fejöket	fejüket		jok	
 Jel 20:4	27	a		osszevonva	nevmas	
 Jel 20:4	28	kik	akik		nevmas:ki	
 Jel 20:6	4	a		osszevonva	nevmas	

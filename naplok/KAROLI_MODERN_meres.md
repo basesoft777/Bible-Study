@@ -402,3 +402,46 @@ A felhasználó a modell javaslatát hagyta jóvá (chat: „Mehet”). A K1 kü
   - **Marad:** a *j* nélküli változat (*kezöket, szívök*).
   - A minta `jok` rétegén eltérő ítélet felülírja.
   - **Hátra van:** az alkalmazás (generátor-szabály, újragenerálás, a minta `--minta-frissit`-tel).
+
+### 4.8 A DT-F96g alkalmazása, az átnézés és a K1 mérése
+
+`scope=a Károli 1908 minden verse és tokenje; a minta 112 sora; a helyesiras_ami_ellenorzes.tsv 109 sora | forras=konkordancia/Karoli_1908.tsv (sha256:49335bbcc77d) + adat/szoto/karoli_szotari_alak.tsv (sha256:edba33e6d65a) + eszkozok/karoli_modern/helyesiras.py | ts=2026-10-24` — `python eszkozok/karoli_modern/helyesiras.py --minta-frissit`, majd `--ami-proba`. Az átnézés és a mérés a scratchpadben futott, 0 token.
+
+#### 4.8.1 DT-F96g alkalmazva
+
+Új szabály, `jok` (`szabaly_forras`: DT-F96g): a *j*-s birtokos T/3 *-jok/-jök → -juk/-jük*, **212 alak, 714 token**. A szabály az alak minden más cseréje után fut, így a *reájok → rájok → rájuk* sor is teljesül. A 212 alakot egyenként átnéztem. A többes számra gyanús hat alak (*hajokat, ganéjokat, nyájok, nyájokat, zárjok, ujjokkal*) a versben mind birtokos (*a saját ganéjokat*, *az ő nyájok mellett*), többes számú főnév nincs köztük.
+
+Új állapot: változó vers 12 760 → **13 083**, változó token 28 785 → **29 396**, változó alak 1 377 → **1 580**; a kieső tokenek száma 11 128, változatlan. A minta 9 sora frissült a `--minta-frissit` kapcsolóval (M039, M042, M061, M101–M106). A *j* nélküli változat (*kezöket, szívök*) marad.
+
+#### 4.8.2 Az átnézés — a felhasználó a modellre bízta
+
+**A felhasználó döntése** (chat, 2026-10-24): „Nézd át te. Elfogadom a döntést”. A két fájl `ellenorzes` oszlopát ezért a modell (claude-opus-5-5) töltötte ki. Minden sor `megjegyzes`-e így kezdődik: *modell-ellenőrzés (claude-opus-5-5), a felhasználó elfogadta (chat, 2026-10-24)*.
+
+**A K1 így nem független felhasználói mérés.** A szabályokat író modell ellenőrizte a saját kimenetét, és ezt a felhasználó fogadta el. A független ellenőr (K5) ezt külön mérheti.
+
+A beíró szkript csak ezt a két oszlopot írta. Előtte soronként összevetette a többi oszlopot az eredetivel, és üres oszlopot nem írt felül.
+
+- **Minta (112 sor):** 104 `jó`, 8 `A` (a `jek` réteg; DT-F96e d: marad), 0 `hibás`. A `jok` réteg 6 sora `jó`, mert a DT-F96g már a `szoveg_modern`-ben van.
+- **`helyesiras_ami_ellenorzes.tsv` (109 sor):** 101 `jó`, 1 `hibás`, 3 `birtokos`, 4 `vonatkozó`.
+  - A hibás sor az A089 (Ef 3:20): *elgondoljuk, a mi bennünk munkálkodó erő → ami bennünk …*. Ez személyes névmás és igenév, nem vonatkozó; a V1 (vessző előtte) itt téved.
+  - Ugyanez a szerkezet áll a bizonytalan A077-ben (Róm 5:8, *a mi hozzánk való szerelmét*), ezt a modell birtokosnak jelölte.
+
+#### 4.8.3 A K1 mérése (DT-F96h)
+
+| halmaz | eredmény | küszöb | |
+|---|---:|---:|---|
+| minta, cserék (`→`) | **230 / 230 (100%)** | ≥ 98% | ✓ |
+| minta, szándékos *marad* (`=`) | 15 / 15 | — | |
+| minta, `valtozatlan` réteg | **0** kihagyás (6 sor) | 0 | ✓ |
+| `helyesiras_ami_ellenorzes.tsv`, szövegváltozó sorok | **101 / 102 (99,0%)** | ≥ 98% | ✓ |
+
+A K1 teljesül; az A089 hibája a küszöbön belül van, a szabály nem változott.
+
+#### 4.8.4 Megfigyelések: kimaradt régi írásmód (nem csere-hiba, a K1-be nem számít)
+
+A minta nem `valtozatlan` rétegű soraiban kimaradt régi írásmód, amelyre nincs szabály. A `megjegyzes` oszlop soronként jelzi.
+
+1. **A *nék-* család** (*néked, nékem, nékik, nékünk, néktek*): **3 919 token** a korpuszban (*nékik* 1 146, *nékem* 892, *néktek* 802, *néked* 784, *nékünk* 295). A minta 14 sorában fordul elő. A `neki` szabály csak a *néki*-t cseréli, mert a DT128 példája ez. → **DT-F96j** 🟡.
+2. **Egyedi ékezet- és betűhibák** (M024 *irígy*, M035 *akképen*, M054 *husvét*, M056 *bölcseség*, M058 *nyilásának*, M062 *hizelkedő*, M094 *sujts*). A #94 táblája és a karakterszabály nem fedi őket, korpusz-szintű számuk nem mért. → **N-F96c**.
+3. **Különírás:** *a felől, az által* (M065). Ez tokenváltozás volna (K2), ezért a .1 nem kezeli.
+4. **Az *atyjokfiai* összetétel** (M089): a DT-F96g szabálya csak szóvégen fut, az *atyánkfia*-típusú összetételben nem. Számuk nem mért.
