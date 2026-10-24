@@ -6,10 +6,10 @@ tipus: feladat
 fazis: 1
 modell: opus
 munka: adat
-allapot: fut
+allapot: dontesre_var
 ag: ccr-a680d019-39s73e
 ad: a Károli 1908 modernizált szövegrétege (helyesírás + igealak; szórend, szókincs, írásjel, betoldás-jelölés változatlan), szabályalapú szavankénti cserével (a #94 szótári alak- és regies_jegy-táblájából, Hunspell csak fejlesztési mérce, DT301), LLM csak a szabállyal le nem fedett maradékra; a Károli–Strong párosítás szavanként átvihető, a kieső segédigei vala jelölve; generált tábla az 1908-as szöveg mellett, nem helyette; két lépcső (helyesírás, majd igeragozás és vala), felhasználó által ellenőrzött mintán mérve, a token-felhasználással együtt
-kovetkezo: "Folytatás: F96.0 (előkészítés és token-mérés) fut"
+kovetkezo: "Te: DT-F96d (a token-keret: a 0,2 M helyett ≈ 0,44 M kell a mért beállítással) és DT-F96e (a modernizálás határa) a DONTESEK.md-ben; utána a .1 helyesírási lépcső"
 olvas: [adat/szoto/, konkordancia/Karoli_1908.tsv, "adat/karoli_strong/*", adat/SEMA.md, adat/licencek.tsv, DONTESEK.md]
 ir: [eszkozok/karoli_modern/, adat/karoli_modern/, naplok/KAROLI_MODERN_meres.md]
 fugg: [94]
@@ -85,4 +85,7 @@ Szavankénti csere: a Strong-szám a szón marad, a kieső token jelölve. Gener
 - **N-F94b** — a Hunspell hu_HU licencdöntés; lezárva a DT-F96c-vel (csak fejlesztési mérce).
 - **DT301** 🟢 (helyőrző) — a Hunspell hu_HU csak fejlesztési mérce (a DT139 mintájára), a kiadott modernizált réteg nélküle készül. *(felhasználó, chat, 2026-10-24)*
 - **DT-F96b** 🟢 (helyőrző) — a keresés a modernizált szövegrétegben is keressen (a szótári alakos kereséssel egyesítve), nem csak az alakszótárban. *(felhasználó, chat, 2026-10-24)* Következmény: a réteg táblája keresésre alkalmas sémájú (vers-kulcs, token-sorszám, modern alak, Strong), hogy a `pardes.db`-be töltés és a `kereses.py` bővítése külön csonkban (N-F96a) ráépülhessen; maga a betöltés és a keresőbővítés nem a #96 `ir` listájában van.
+- **DT-F96d** 🟡 (helyőrző) — a .0/3 ⛔: a mért token-felhasználás (≈ 0,44 M a teljes LLM-jelölt maradékra) a 0,2 M-os küszöb felett; opciók és javaslat a `DONTESEK.md`-ben, mérés: `naplok/KAROLI_MODERN_meres.md` 2.
+- **DT-F96e** 🟡 (helyőrző) — a modernizálás határa: a #94 nem helyesírási lemmaváltásai (*e → ez*, *férfiú → férfi*, *leány → lány*), a *reá → rá*, a *-ván/-vén* és a *-jék* felszólító; `DONTESEK.md`.
+- **N-F96b** (helyőrző) — a #94 `regies_jegy` értékkészletéből hiányzik a tárgyas T/3 (*mondák, adák*), és megfigyelt táblahibák (*vévén*, *kivűl*); a modernizálás saját szabállyal kezeli (napló 1.2).
 - **N-F96a** (helyőrző) — a modernizált réteg `pardes.db`-be töltése és a keresőbe kötése (`eszkozok/sqlite_epit.py`, `eszkozok/olvaso_szerver/kereses.py`) külön csonk-feladat, a #96 és a #92 után; a DT-F96b miatt kötelező, nem elhagyható. A csonk: #137 (KAROLI_MODERN_DB), a felhasználó jóváhagyásával befogadva (2026-10-24).
