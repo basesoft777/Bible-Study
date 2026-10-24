@@ -518,6 +518,27 @@ A nem automatikus igealak-jelöltek (ritka jegyes és régies gyanús alakok; **
 
 A ritka jegyes alakokon a szabály és az LLM **2 400 / 2 771 alakon egyezik (86,6%)**. Az eltérések (modell-átnézés, 30 elemes szúrópróba) főként jegyhibák, és ott az LLM-nek van igaza: nem ige (*félénk, felirata, haladék, erősebbé*), a mai alak hibás E/2 jeggyel (*elmentél, elvesztél*), a magas hangrendű *-ék* E/3-a (*elutazék → elutazott*). A szenvedő *-taték/-teték* (*kiadaték → kiadatott*) és az *-ik*-es *-ék* E/3-a erre szabályjavítást kapott. Az LLM is hibázik: *játszék → játsszon*, *keltének* változatlan, a tárgyas/alanyi választás. A tő-őr főként két esetben bukik: a helyesírási ékezetnél (*kinyujtá → kinyújtotta*: a tő-őr a .1 utáni alakot nézi), és ott, ahol az LLM a *-nd-* jövő időt jelenre írta (*mondándom → mondom*, *leendesz → leszel*). Ez utóbbi helyes kiszűrés: igeidő-váltás. A jelölt a modern szövegbe nem kerül be; az alkalmazás a DT-F96l döntése.
 
+### 5.3b Második ellenőrzés opusszal a vitatott alakokon
+
+**A felhasználó kérésére** (chat, 2026-10-24: „Mehet, futtasd opusszal a vitatott 880 alakot”) a vitatott jelöltek második, vak LLM-ellenőrzést kaptak. Vitatott az a ritka jegyes vagy régies gyanús alak, ahol a szabály és a sonnet nem egyezik, vagy a tő-őr bukott: **860 kérdés** (858 kisbetűs alak). A futtató Claude Code subagent volt, **claude-opus-5-5** modellel, két 430-as kötegben, előfizetésből, API nélkül. A versrészlet ±6 szó volt, a szótári alakkal. **Eltérés a sonnet-utasítástól:** az opus utasítása külön kimondta, hogy a *-nd-* jövő idő egy szóban nem írható át, ezért változatlanul adandó vissza. A sonnet ezeket jelen időre írta, a tő-őr pedig nagyrészt kiszűrte őket (5.3). Az opus válasza: `adat/karoli_modern/igealak_llm_opus.tsv` (modell-kimenet, `modell_ellenorizetlen`). A második köteg a választ id helyett sorszámmal adta vissza; a kérdésfájl sorrendje szerint lett visszarendelve, a sorszám-egyezés ellenőrzésével.
+
+| osztály | opus tő-őr | az opus kivel egyezik | alak | token |
+|---|---|---|---:|---:|
+| ritka jegyes | ok | a sonnettel | 257 | 454 |
+| ritka jegyes | ok | a szabállyal | 61 | 132 |
+| ritka jegyes | ok | egyikkel sem | 20 | 50 |
+| ritka jegyes | bukott | — | 33 | 82 |
+| régies gyanú | ok | a sonnettel | 414 | 2 972 |
+| régies gyanú | ok | a szabállyal | 3 | 28 |
+| régies gyanú | ok | egyikkel sem | 121 | 325 |
+| régies gyanú | bukott | — | 8 | 13 |
+
+**Megfigyelések** (modell-átnézés, szúrópróba):
+- Az „egyikkel sem” sorok zöme (104 alak, 286 token) *-nd-* jövő idő, amelyet az opus az utasítása szerint változatlanul hagyott (*mondándok, leend, teendi*).
+- Ahol az opus a szabállyal egyezik, ott a sonnet jellemzően **a szókincsbe nyúlt**, ami a DT128 szerint tilos: *általmenének → átmentek* (opus: *általmentek*), *helyheztete → helyeztetett* (opus: *helyheztetett*), *eltapodá → eltaposta* (opus: *eltapodta*), *eltelé → eltöltötte*. A tárgyas/alanyi és a személy választásában is az opus a pontosabb: *lakozátok → lakoztatok*, nem *laktatok*; *átronték → átrontottam*, nem *átrontottak*.
+- Az opus a .1 helyesírását nem pótolja: *Kinyujtá → Kinyujtotta*, nem *Kinyújtotta*. Ez a .1 dolga (N-F96c).
+- Az opus és a sonnet egyezése nem teljesen független megerősítés: a két utasítás közös, csak a *-nd-* mondatban tér el.
+
 ### 5.4 Token-felhasználás (K4)
 
 `scope=az 5 LLM-köteg | forras=a subagentek átirata (usage mezők), adat/karoli_modern/igealak_llm_hivasok.jsonl | ts=2026-10-24`
@@ -532,6 +553,16 @@ A ritka jegyes alakokon a szabály és az LLM **2 400 / 2 771 alakon egyezik (86
 | **összesen** | **3 174** | 16 | **499 738** | **819 384** | **100 665** | **1 419 787** |
 
 A becslés (a brief 0,05–0,2 M-ja, illetve a DT-F96d ≈ 0,45 M-os kerete, a .0 API-mérése alapján, alakonként 132,5 token) **a teljes számítás szerint kb. háromszorosan túllépve: 1,42 M**, alakonként 447 token. A cache-olvasás nélkül (új bemenet + kimenet) **0,60 M**, ez is a keret felett. Az ok a subagent saját rendszerpromptja és eszközleírása (hívásonként kb. 57 ezer token), amely minden hívásnál újra beolvasódik; a .0 API-mérésében ez nem volt. Az első köteg (fájlba író beállítás) után a többi kötegnél csak egy olvasás és a válasz a hand-back üzenetben: alakonként 382 token. A keret kérdése: DT-F96m.
+
+**Az opus-ellenőrzés** (5.3b; `adat/karoli_modern/igealak_llm_opus_hivasok.jsonl`):
+
+| köteg | alak | hívás | bemenet (új + cache-írás) | cache-olvasás | kimenet | összesen |
+|---|---:|---:|---:|---:|---:|---:|
+| opus 1 | 430 | 2 | 87 053 | 57 300 | 12 735 | 157 088 |
+| opus 2 | 430 | 2 | 87 025 | 57 300 | 10 972 | 155 297 |
+| **összesen** | **860** | 4 | **174 078** | **114 600** | **23 707** | **312 385** |
+
+Alakonként 363 token. **A .2 LLM-felhasználása összesen 1 732 172 token** (sonnet 1 419 787 + opus 312 385); cache-olvasás nélkül 0,80 M. Az opus-futás a DT-F96m nyitott kérdése mellett, a felhasználó külön kérésére ment.
 
 A .2 determinisztikus része (szabályok, *vala*, minta) 0 token.
 
