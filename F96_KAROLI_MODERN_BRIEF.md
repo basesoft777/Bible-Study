@@ -65,7 +65,7 @@ Szavankénti csere: a Strong-szám a szón marad, a kieső token jelölve. Gener
 3. Mintavétel és felhasználói ellenőrzés a .1 szerint ⛔; a lefedettség (maradt-e régies igealak) kiírva.
 
 ### .3 — kimenet
-- `adat/karoli_modern/karoli_modern.tsv` (vers-soronként, `# GENERÁLT: …` fejléccel: a szabálykészlet és a bemeneti táblák sha256-ja, a mérés hivatkozása); kézzel nem szerkesztendő, a javítás a szabályban vagy a kivételtáblában történik.
+- `adat/karoli_modern/karoli_modern.tsv` (token-soronként, a vers-kulccsal és a modern vers-szöveggel együtt; DT-F96b, `# GENERÁLT: …` fejléccel: a szabálykészlet és a bemeneti táblák sha256-ja, a mérés hivatkozása); kézzel nem szerkesztendő, a javítás a szabályban vagy a kivételtáblában történik.
 - `adat/SEMA.md` új szakasza; a licenc-sor az `adat/licencek.tsv`-be (a modernizált réteg a közkincs 1908-as szövegből származik, DT116/DT128).
 
 ## 4. Elfogadási feltételek
@@ -74,6 +74,7 @@ Szavankénti csere: a Strong-szám a szón marad, a kieső token jelölve. Gener
 - **K2.** A szórend, szókincs, írásjel és betoldás-jelölés változatlan: gépi összevetés az 1908-as szöveggel (tokenszám és sorrend a kieső tokenek jelölésével egyező).
 - **K3.** A Strong-párosítás szavanként átvitt; a kieső tokenek jelölve, számuk naplózva.
 - **K4.** A token-felhasználás a naplóban, a becsléssel (0,05–0,2 M) összevetve.
+- **K4b.** (DT-F96b) A kimeneti tábla keresésre alkalmas: token-szinten (vers-kulcs, token-sorszám, 1908-as alak, modern alak, Strong, kieső-jelölés), így a modern alakra való keresés a Strong-hivatkozást is visszaadja.
 - **K5.** Bible Discovery-adat nincs a repóban; abszolút útvonal nincs; `csv` modul nincs; CI zöld; a független ellenőr eltérés nélkül zár.
 
 ## 5. Döntésnapló
@@ -81,4 +82,5 @@ Szavankénti csere: a Strong-szám a szón marad, a kieső token jelölve. Gener
 - **DT128** 🟢 — a modernizálás szintje (helyesírás + igealak, szókincs és szórend nélkül); a teljes szöveg a `DONTESEK.md`-ben.
 - **DT-F96** 🟢 (helyőrző) — a megvalósítás szabály + szótár alapú szógenerálás, LLM csak a bizonytalan maradékra; a teljes LLM-átírás elvetve. *(felhasználó, chat, 2026-10-24; a token-becslés alapja: 599 ezer szó, 62 109 szóalak, ~3,78 M karakter)*
 - **N-F94b** — a Hunspell hu_HU licencdöntés; nyitott, a .1 ⛔ előtt kell.
-- **N-F96a** (helyőrző) — a modernizált réteg `pardes.db`-be töltése a #96 része vagy külön csonk; alapértelmezés: külön csonk (a #92 után).
+- **DT-F96b** 🟢 (helyőrző) — a keresés a modernizált szövegrétegben is keressen (a szótári alakos kereséssel egyesítve), nem csak az alakszótárban. *(felhasználó, chat, 2026-10-24)* Következmény: a réteg táblája keresésre alkalmas sémájú (vers-kulcs, token-sorszám, modern alak, Strong), hogy a `pardes.db`-be töltés és a `kereses.py` bővítése külön csonkban (N-F96a) ráépülhessen; maga a betöltés és a keresőbővítés nem a #96 `ir` listájában van.
+- **N-F96a** (helyőrző) — a modernizált réteg `pardes.db`-be töltése és a keresőbe kötése (`eszkozok/sqlite_epit.py`, `eszkozok/olvaso_szerver/kereses.py`) külön csonk-feladat, a #96 és a #92 után; a DT-F96b miatt kötelező, nem elhagyható. A csonkot a `/befogad` hozza létre a felhasználó jóváhagyásával.
