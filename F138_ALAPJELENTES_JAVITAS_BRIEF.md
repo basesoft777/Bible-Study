@@ -1,5 +1,5 @@
 ---
-feladat: 137
+feladat: 138
 cim: A szó-lap alapjelentésének javítása — a „LORD” hiba a forrásban, a visszaesési sorrend, a BDB-kinyerő a sikertelen sorokra, aranymintával
 kod: ALAPJELENTES_JAVITAS
 tipus: feladat
@@ -9,15 +9,15 @@ allapot: nem_indult
 ad: a szó-lap alapjelentése magyar vagy forrásjelölt Károli-alak minden olyan Strong-számnál, ahol ma az angol Strong-szótár (benne a hibás „LORD”) áll; a TAHOT_kivonat és a Strong_szotar istenneves sorai a glosszát hordozzák; a mai 638 jó alapjelentés változatlan
 kovetkezo: "A /kovetkezo a #134 zárása után indíthatja (M0 ⛔: terv)"
 munka: adat
-olvas: [konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv, konkordancia/TIPNR_kivonat.tsv, adat/forditasok.tsv]
+olvas: [konkordancia/TBESH.txt, eszkozok/tbesh_konszolidalt_import.py, konkordancia/TIPNR_kivonat.tsv, adat/forditasok.tsv]
 ir: [konkordancia/TAHOT_kivonat.tsv, konkordancia/Strong_szotar.tsv, konkordancia/TAHOT_TAGNT_README.md, eszkozok/alapjelentes_istennev_javit.py, eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/bdb_szelet.py, eszkozok/olvaso_szerver/teszt_alapjelentes.py, eszkozok/olvaso_szerver/teszt_alapjelentes_arany.tsv, adat/alapjelentes_kezi.tsv]
 fugg: [134]
 nem_fugg: [27]
 ---
 
-# F137_ALAPJELENTES_JAVITAS_BRIEF.md — A szó-lap alapjelentésének javítása
+# F138_ALAPJELENTES_JAVITAS_BRIEF.md — A szó-lap alapjelentésének javítása
 
-*FELADATOK #137 · Modell: opus · v1 · 2026.10.23*
+*FELADATOK #138 · Modell: opus · v1 · 2026.10.23*
 
 ## 1. Cél
 
@@ -43,11 +43,11 @@ A szó-lap fejlécének „Alapjelentés” sora (`blokkok.alapjelentes`) ma ké
 - A szó-lap más blokkjai (a „Strong-szótár” blokk a javított adatot mutatja, a kódja nem változik).
 - Licenc-módosítás; ha az M0 szerint a `Strong_szotar` licencsora (ma openscriptures) a tábla valódi forrását nem fedi, az N-tétel, nem javítás.
 
-*A fejléc függései (befogadás, 2026-10-23):* `fugg: [134]`, mert a #134 az ágán a `blokkok.py`-t is írja (DT-F134j). `nem_fugg: [27]`: a #27 Thayer-sorokat ír az `adat/forditasok.tsv`-be; ez a feladat csak a BDB-sorokat olvassa, és az aranyminta a mai állapotot rögzíti (a levezetett függés a #27 ↔ #38 ↔ #137 kört adta). Az `olvas` szándékosan szűk: a szerver kódját (`lekerdezesek.py`, `oldalak.py`, `_szo_panel.html`), az `sqlite_epit.py`-t, a `SEMA.md`-t és a `licencek.tsv`-t a menet olvassa, de felsorolva függési kört adtak a konkordancia-táblák olvasóival (`KOR 22 27 38 48 101 102 103 104 120 122 137`); az `adat/SEMA.md` új szakaszát (a kézi tábla) a menet az M0 tervében jelzi, és ha a fejléc `ir`-je bővül, az új befogadás.
+*A fejléc függései (befogadás, 2026-10-23):* `fugg: [134]`, mert a #134 az ágán a `blokkok.py`-t is írja (DT-F134j). `nem_fugg: [27]`: a #27 Thayer-sorokat ír az `adat/forditasok.tsv`-be; ez a feladat csak a BDB-sorokat olvassa, és az aranyminta a mai állapotot rögzíti (a levezetett függés a #27 ↔ #38 ↔ #138 kört adta). Az `olvas` szándékosan szűk: a szerver kódját (`lekerdezesek.py`, `oldalak.py`, `_szo_panel.html`), az `sqlite_epit.py`-t, a `SEMA.md`-t és a `licencek.tsv`-t a menet olvassa, de felsorolva függési kört adtak a konkordancia-táblák olvasóival (`KOR 22 27 38 48 101 102 103 104 120 122 138`); az `adat/SEMA.md` új szakaszát (a kézi tábla) a menet az M0 tervében jelzi, és ha a fejléc `ir`-je bővül, az új befogadás.
 
 ## 3. Lépések (⛔ a kötelező megállások)
 
-- **M0 — igazolás és terv ⛔.** (1) A nyers STEPBible TAHOT-fájl a `TAHOT_TAGNT_README.md` szerinti forrásból (Gen–Deu fájl): az Elohim, az Él és a נֵס `Expanded Strong tags` mezője szó szerint, proveniencia-sorral; igazolja vagy cáfolja a `»`-mechanizmust. (2) A `Strong_szotar.tsv` „Jelentés” oszlopának eredete (TAHOT-egyezés mérése a teljes táblán). (3) A javítási forrás eldöntése a 10 sorra (`»` előtti glossza vagy TBESH) — **DT-F137a**. (4) A Károli-visszaesés pontos szabálya (szótári alak, nagybetű, több egyenlő gyakoriságú alak) — **DT-F137b**. Megállás: terv a felhasználónak.
+- **M0 — igazolás és terv ⛔.** (1) A nyers STEPBible TAHOT-fájl a `TAHOT_TAGNT_README.md` szerinti forrásból (Gen–Deu fájl): az Elohim, az Él és a נֵס `Expanded Strong tags` mezője szó szerint, proveniencia-sorral; igazolja vagy cáfolja a `»`-mechanizmust. (2) A `Strong_szotar.tsv` „Jelentés” oszlopának eredete (TAHOT-egyezés mérése a teljes táblán). (3) A javítási forrás eldöntése a 10 sorra (`»` előtti glossza vagy TBESH) — **DT-F138a**. (4) A Károli-visszaesés pontos szabálya (szótári alak, nagybetű, több egyenlő gyakoriságú alak) — **DT-F138b**. Megállás: terv a felhasználónak.
 - **M1 — aranyminta.** A mai 638 eredmény rögzítése; a teszt zöld a változtatás előtt.
 - **M2 — adatjavítás.** A 10 Strong-szám sorai a két táblában; sor-szintű összevetés, napló (`naplok/ALAPJELENTES_JAVITAS_adat.md`).
 - **M3 — kód.** A visszaesési sorrend és a kinyerő célzott szabályai; a kézi tábla betöltése. Az aranyminta zöld marad.
@@ -57,7 +57,7 @@ A szó-lap fejlécének „Alapjelentés” sora (`blokkok.alapjelentes`) ma ké
 ## 4. Elfogadási feltételek
 
 - **E1** A mai 638 magyar alapjelentés karakterre azonos (aranyminta-teszt).
-- **E2** A 10 istenneves Strong-szám egyikénél sem áll „LORD” sem a szó-lap alapjelentésében, sem a „Strong-szótár” blokkban; a H0430-nál magyar vagy Károli-alapú alapjelentés áll (a DT-F137b szerint).
+- **E2** A 10 istenneves Strong-szám egyikénél sem áll „LORD” sem a szó-lap alapjelentésében, sem a „Strong-szótár” blokkban; a H0430-nál magyar vagy Károli-alapú alapjelentés áll (a DT-F138b szerint).
 - **E3** A 36 sikertelen sor mindegyike magyar BDB-, Károli-, kézi vagy (indokolt esetben) TBESH-alapjelentést kap; angol Strong-visszaesés csak indoklással marad.
 - **E4** A forrásjelölés látszik: a nem magyar BDB-ből jövő alapjelentés megmondja a forrását (`lang` és felirat).
 - **E5** A tiltott forrás (kiadás, hozzáférési szint) egyik ágon sem olvasható (a `teszt_szintek.py` megfelelő esetei zöldek).
@@ -65,8 +65,8 @@ A szó-lap fejlécének „Alapjelentés” sora (`blokkok.alapjelentes`) ma ké
 
 ## 5. Döntésnapló
 
-- **DT-F137a** 🟡 — a 10 istenneves sor javítási forrása: (a) a STEPBible-glossza `»` előtti része · (b) a TBESH-glossza · (c) mindkettő, eltérésnél ⛔. Javaslat: az M0 nyers adata alapján.
-- **DT-F137b** 🟡 — a Károli-visszaesés szabálya: (a) a leggyakoribb szótári alak, nagy kezdőbetű a tulajdonnév/istennév jelleg szerint, „(Károli)” jelöléssel · (b) a két leggyakoribb szótári alak · (c) csak ha a leggyakoribb alak a párok legalább X%-a. Javaslat: az M0 mérése alapján.
+- **DT-F138a** 🟡 — a 10 istenneves sor javítási forrása: (a) a STEPBible-glossza `»` előtti része · (b) a TBESH-glossza · (c) mindkettő, eltérésnél ⛔. Javaslat: az M0 nyers adata alapján.
+- **DT-F138b** 🟡 — a Károli-visszaesés szabálya: (a) a leggyakoribb szótári alak, nagy kezdőbetű a tulajdonnév/istennév jelleg szerint, „(Károli)” jelöléssel · (b) a két leggyakoribb szótári alak · (c) csak ha a leggyakoribb alak a párok legalább X%-a. Javaslat: az M0 mérése alapján.
 
 ## 6. Kiinduló mérés (2026-10-23, a befogadó session)
 
