@@ -216,7 +216,13 @@ SZEM_VEG = {'': ('E3', False), 'a': ('E3', True), 'e': ('E3', True), 'ak': ('T3'
             'ák': ('T3', True), 'ék': ('T3', True), 'am': ('E1', False), 'em': ('E1', False), 'ál': ('E2', False),
             'él': ('E2', False), 'ad': ('E2', True), 'ed': ('E2', True), 'unk': ('T1', False), 'ünk': ('T1', False),
             'uk': ('T1', True), 'ük': ('T1', True), 'atok': ('T2', False), 'etek': ('T2', False),
-            'átok': ('T2', True), 'étek': ('T2', True)}
+            'átok': ('T2', True), 'étek': ('T2', True), 'alak': ('E1', True), 'elek': ('E1', True),
+            'lak': ('E1', True), 'lek': ('E1', True)}
+
+
+# Az E/3 és T/3 alanyi kötőhangzós múlt csak ezeken az igéken cserél (a korpusz gyakori, igei használatú alakjai).
+KOTOHANG_IGE = {'szól', 'áll', 'száll', 'mond', 'támad', 'gerjed', 'küld', 'marad', 'szalad', 'ragad', 'kezd', 'múl',
+                'fárad', 'olvad', 'szakad', 'származ', 'mondot'}
 
 
 def kotohang_mult(alak, lemma, szavak):
@@ -227,12 +233,19 @@ def kotohang_mult(alak, lemma, szavak):
     v = alap[:-2] if alap.endswith('ik') and len(alap) > 3 else alap
     if not v or not a.startswith(kot + v):
         return None
+    if a.startswith(('halott', 'körülött')) or (alap in RENDHAGYO and not RENDHAGYO[alap][0].startswith(v)):
+        return None  # halott (melléknév); elveszett, veszett: az elvész, nem az elvesz (vett) alakja
     for kh in ('ott', 'ett', 'ött'):
+        alap_t = v + kh[0] + 't'
+        if any((k + alap_t + x) in szavak for k in ('', kot) for x in ('ik', 'ni', 'ett', 'ott', 'ött', 'etik', 'atik')):
+            continue  # születtél (születik), küldettem (küldetett), verettek (veretik): saját igető
         if a.startswith(kot + v + kh):
             veg = a[len(kot + v + kh):]
             if veg not in SZEM_VEG:
                 return None
             szem, targy = SZEM_VEG[veg]
+            if szem in ('E3', 'T3') and not targy and v not in KOTOHANG_IGE:
+                return None  # a puszta -ott / -ottak melléknévi igenév is lehet (törött, elbizakodottak, megölöttek)
             m = mult(alap, szem, targy)
             if m and kot + m != a:
                 return kot + m

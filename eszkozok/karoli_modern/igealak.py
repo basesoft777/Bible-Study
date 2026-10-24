@@ -103,7 +103,7 @@ LON = {'lőn': 'lett', 'lőnek': 'lettek'}
 TARGYAS_MINDIG = {'mond'}  # DT128: monda → mondta (az idézett beszéd tárgy)
 HATAROZOTT_TARGY = {'azt', 'ezt', 'őt', 'őket', 'magát', 'magokat', 'magukat', 'azokat', 'ezeket', 'mindazt',
                     'amazt', 'önmagát', 'mindezt', 'mindazokat', 'mindezeket', 'magamat', 'magadat'}
-BIRTOKOS_TARGY = re.compile(r'(ját|jét|át|ét|mat|met|dat|det|nkat|nket|tokat|teket|ukat|üket|jukat|jüket|'
+BIRTOKOS_TARGY = re.compile(r'(ját|jét|mat|met|dat|det|nkat|nket|tokat|teket|ukat|üket|jukat|jüket|'
                             r'imat|imet|idat|idet|ait|eit|jait|jeit)$')
 E1_JEL = {'én', 'engem', 'nekem', 'nékem', 'velem', 'tőlem', 'hozzám', 'bennem', 'belőlem', 'rám', 'reám',
           'rólam', 'előttem', 'magam', 'magamat', 'enyém', 'nálam', 'értem', 'utánam', 'ellenem', 'mellettem'}
@@ -330,14 +330,39 @@ def tagmondat(spans, szoveg, i, irany):
     return ki
 
 
+VONATKOZO_TARGY = {'melyet', 'melyeket', 'kit', 'kiket', 'mit', 'miket', 'amelyet', 'amelyeket', 'akit', 'akiket',
+                   'amit', 'amiket'}
+ALANYI_TARGY = {'engem', 'engemet', 'téged', 'tégedet', 'minket', 'minket', 'titeket', 'bennünket', 'benneteket'}
+
+
+def tagmondat_szuk(spans, szoveg, i, irany, n):
+    """Mint a tagmondat, de vesszőnél és az „és” kötőszónál is megáll, legfeljebb n token."""
+    ki = []
+    j = i
+    while len(ki) < n:
+        k = j + irany
+        if k < 0 or k >= len(spans):
+            break
+        koz = szoveg[spans[j][1]:spans[k][0]] if irany > 0 else szoveg[spans[k][1]:spans[j][0]]
+        if re.search(r'[.,;:!?]', koz) or spans[k][2].lower() == 'és':
+            break
+        ki.append(k)
+        j = k
+    return ki
+
+
 def targyas_e(spans, szoveg, i):
-    """Határozott tárgy a tagmondatban (heurisztika, manual)."""
+    """Határozott tárgy a tagmondatban (heurisztika, manual). Alanyi, ha a tárgy vonatkozó névmás (a melyet …
+    adának → amelyet adtak) vagy 1./2. személyű névmás (engem); a tagmondat a vesszőig és az „és”-ig tart."""
     koz_utan = szoveg[spans[i][1]:spans[i + 1][0]] if i + 1 < len(spans) else ''
+    if any(spans[j][2].lower() in VONATKOZO_TARGY for j in tagmondat_szuk(spans, szoveg, i, -1, 30)):
+        return False
+    kornyezet = tagmondat_szuk(spans, szoveg, i, 1, 5) + tagmondat_szuk(spans, szoveg, i, -1, 4)
+    if any(spans[j][2].lower() in ALANYI_TARGY for j in kornyezet):
+        return False
     if i + 1 < len(spans) and ',' in koz_utan and spans[i + 1][2].lower() == 'hogy':
         return True
-    if ':' in koz_utan:
-        return True  # idézett beszéd
-    for j in tagmondat(spans, szoveg, i, 1) + tagmondat(spans, szoveg, i, -1):
+    for j in kornyezet:
         w = spans[j][2].lower()
         if w in HATAROZOTT_TARGY:
             return True
@@ -349,8 +374,17 @@ def targyas_e(spans, szoveg, i):
     return False
 
 
-def e1_e(spans):
-    return any(s[2].lower() in E1_JEL for s in spans)
+def nevelo_utan(spans, szoveg, i):
+    """Az igealak-jelölt névelő (a, az, egy) után, egy szóközzel áll: főnév (a tevék, a küldöttek)."""
+    return i > 0 and spans[i - 1][2].lower() in ('a', 'az', 'egy') and szoveg[spans[i - 1][1]:spans[i][0]] == ' '
+
+
+def e1_e(spans, szoveg=None, i=None):
+    """Egyes szám első személy a tagmondatban (vesszőig, „és”-ig); tagmondat nélkül az egész versben."""
+    if szoveg is None:
+        return any(s[2].lower() in E1_JEL for s in spans)
+    return any(spans[j][2].lower() in E1_JEL
+               for j in tagmondat_szuk(spans, szoveg, i, 1, 8) + tagmondat_szuk(spans, szoveg, i, -1, 8))
 
 
 class Feldolgozo:
@@ -401,13 +435,18 @@ class Feldolgozo:
                 j = self.a.jegy_jeloltek(alak, sor)
                 ki = ('', None, 'igenev_kivetel') if j == {} else ('jelolt', j, 'igealak_ritka:' + sor['regies_jegy'])
         elif o == 'regies_gyanu':
-            ki = ('jelolt', self.a.gyanu_jelolt(alak, sor, reszlet), 'gyanu:' + reszlet)
+            m = ir.kotohang_mult(self.alakszotar[alak][0], sor['szotari_alak_mai'] or sor['szotari_alak'],
+                                 self.a.kis_szavak) if sor else None
+            if m and m in self.a.kis_szavak:
+                ki = ('szabaly', {'': nagy(alak, m)}, 'kotohang_mult')  # DT-F96k b (mondotta → mondta)
+            else:
+                ki = ('jelolt', self.a.gyanu_jelolt(alak, sor, reszlet), 'gyanu:' + reszlet)
         if not ki[0] and sor and o in ('valtozatlan', 'regies_gyanu', 'helyesiras_tabla', 'helyesiras_szabaly'):
             # DT-F96k (🟡): a régies, kötőhangzós múlt (mondotta → mondta, szólott → szólt) jelölt, nem csere
             m = ir.kotohang_mult(self.alakszotar[alak][0], sor['szotari_alak_mai'] or sor['szotari_alak'],
                                  self.a.kis_szavak)
             if m and m in self.a.kis_szavak:
-                ki = ('jelolt', {'': nagy(alak, m)}, 'kotohang_mult')
+                ki = ('szabaly', {'': nagy(alak, m)}, 'kotohang_mult')  # DT-F96k b: automatikus csere
         self.alak_dontes[alak] = ki
         return ki
 
@@ -436,6 +475,9 @@ class Feldolgozo:
                 if alk == 'lon' and r[1].lower() == 'lőnek' and re.search(r'nyil|nyíl|íj', szoveg.lower()):
                     r[8] = 'lonek_lo'
                     continue
+                if alk == 'szabaly' and nevelo_utan(spans, szoveg, i):
+                    r[8] = 'nevelo_utan'  # a tevék, egy tevének, a küldöttek: főnév, nem igealak
+                    continue
                 r[3], r[6] = self.valaszt(jel, spans, szoveg, i, r), cim
             elif alk == 'jelolt':
                 jl = []
@@ -449,18 +491,40 @@ class Feldolgozo:
                     jl.append('opus:%s(%s)' % (llm2, 'tő-őr ok' if tor2 == 'ok' else 'tő-őr bukott'))
                 r[9] = '; '.join(jl)
                 r[6] = cim
+                # DT-F96l (2. opció): a három forrásból (szabály, sonnet, opus) legalább kettő egyezik, és a
+                # tő-őr átengedi → csere; a felszólító -jál a DT-F96k a szerint marad
+                if not cim.startswith('felszolito') and not nevelo_utan(spans, szoveg, i):
+                    tobb = self.tobbseg(jel, llm if tor == 'ok' else '', llm2 if tor2 == 'ok' else '')
+                    if tobb:
+                        ertek, forrasok = tobb
+                        r[3] = self.valaszt(ertek, spans, szoveg, i, r) if isinstance(ertek, dict) else ertek
+                        r[6] = cimke(cim, 'tobbseg:' + forrasok)
             elif alk == 'vala':
                 self.vala(t, spans, szoveg, i)
         modern = self.szoveg(szoveg, spans, t)
         self.k2(igehely, szoveg, modern, t)
         return t, modern
 
+    def tobbseg(self, jel, llm, llm2):
+        """DT-F96l: (érték, források) a többségi jelöltre, vagy None. A szövegkörnyezetfüggő szabály-jelölt
+        (alanyi/tárgyas, E/1/T/3) akkor szavaz, ha az LLM-alak az egyik értéke: ekkor a csere tokenenként a
+        heurisztika szerint (valaszt) megy, és bizonytalannak jelölt."""
+        szab = set(jel.values()) if jel else set()
+        if llm and llm2 and llm == llm2:
+            if llm in szab and len(szab) > 1:
+                return jel, 'szabaly+sonnet+opus'
+            return llm, 'szabaly+sonnet+opus' if llm in szab else 'sonnet+opus'
+        for l, nev in ((llm, 'sonnet'), (llm2, 'opus')):
+            if l and l in szab:
+                return (jel if len(szab) > 1 else l), 'szabaly+' + nev
+        return None
+
     def valaszt(self, jel, spans, szoveg, i, r):
         if '' in jel:
             return jel['']
         if 'E1' in jel:
             r[8] = 'ek_E1_T3'
-            return jel['E1'] if e1_e(spans) else jel['T3']
+            return jel['E1'] if e1_e(spans, szoveg, i) else jel['T3']
         r[8] = 'targyas_heur'
         return jel['targyas'] if targyas_e(spans, szoveg, i) else jel['alanyi']
 
@@ -493,8 +557,8 @@ class Feldolgozo:
         if jegy == 'hatarozoi_igenev' or (ek.endswith(('va', 've')) and ek != lemma and self.a.igei(sor['szotari_alak'])):
             r[3], r[6] = nagy(r[1], volt), 'vala_letige_igenev'
             return
-        if jegy.startswith('mult.') or ek in VALA:
-            self.kiesik(r, 'vala_segedige_mult')
+        if jegy.startswith('mult.') or ek in VALA or (e[3] != e[2] and e[6] and ir.mult_alak_e(e[3], e[2])):
+            self.kiesik(r, 'vala_segedige_mult')  # régies vagy a .2 által múltba tett ige (illeték → illették)
             return
         if sajat_mult and ek not in ir.IGEKOTOK and lemma not in NEM_IGE:
             self.kiesik(r, 'vala_segedige_mult')
@@ -716,6 +780,7 @@ def osszesit(vers_ki, gy, alakok, fd, alak_ki):
     biz = collections.Counter()
     marad = collections.Counter()
     marad_jelolt = collections.Counter()
+    nem_regies = collections.Counter()
     for sz, modern, t in vers_ki.values():
         for r in t:
             if r[4]:
@@ -728,9 +793,16 @@ def osszesit(vers_ki, gy, alakok, fd, alak_ki):
                 o = alakok.oszt[r[1]][0]
                 kis = r[1].lower()
                 if o in ('igealak_gyakori', 'igealak_ritka', 'regies_gyanu') or kis in VALA or kis in LON or kis == 'vagyon':
-                    alk = fd.alak_info(r[1])[0]
+                    alk, _, cim = fd.alak_info(r[1])
                     if alk == 'szabaly' and r[3] == r[2] and not r[8]:
                         continue
+                    if 'tobbseg:' in r[6]:
+                        nem_regies[o] += 1  # a többség szerint nem régies igealak (tett, leszek, halál): változatlan
+                        continue
+                    if cim.startswith('felszolito'):
+                        o = 'felszolito_E2 (DT-F96k a: marad)'
+                    elif cim == 'gyanu:nd_jovo':
+                        o = 'nd_jovo (egy szóban nem írható át)'
                     marad[o if o != 'regies_lista' else 'regies_lista:' + kis] += 1
                     if r[9]:
                         marad_jelolt[o] += 1
@@ -740,6 +812,7 @@ def osszesit(vers_ki, gy, alakok, fd, alak_ki):
     print('.2 bizonytalan (token): %s' % dict(biz))
     print('LEFEDETTSÉG — régies igealak a modern szövegben (token): %s; ebből jelölttel: %s'
           % (dict(sorted(marad.items(), key=lambda x: -x[1])), dict(marad_jelolt)))
+    print('a többség szerint nem régies, változatlan (token): %s' % dict(nem_regies))
     print('alakonként: %s' % dict(collections.Counter((r[2], r[6]) for r in alak_ki)))
     eg = collections.Counter((r[2], r[10], r[11]) for r in alak_ki if r[9])
     if eg:

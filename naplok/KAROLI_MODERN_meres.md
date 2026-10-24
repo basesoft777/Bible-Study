@@ -582,3 +582,58 @@ A modern szövegben maradó régies igealak, tokenben: ritka jegyes **6 734** (e
 ### 5.6 A minta (⛔ felhasználói ellenőrzés)
 
 `adat/karoli_modern/igealak_minta.tsv`: rögzített magú (20261024), rétegzett minta, **120 vers**, 20 réteg. A rétegek: jegyenként a gyakori igealak; a tárgyas/alanyi heurisztika; az *-ék* E/1/T/3; *lőn*, *vagyon*, a gyanú kézi listája; a *vala* négy esete; a ritka és a gyanús jelölt; a felszólító *-jál*; a kötőhangzós múlt; és változatlan vers. Oszlopok: `szoveg_1908`, `szoveg_modern` (a .1 + .2 után), `valtozasok` (a `[.2]` jelű a .2 cseréje, a `?(…)` a bizonytalan jelölés), `jelolt` (a nem automatikus jelöltek: `szabaly:` és `llm:` a tő-őr eredményével), `ellenorzes` és `megjegyzes`. Az utolsó kettőt a felhasználó tölti: *jó* / *hibás*, a jelölt soron *A* = a jelölt jó, *B* = maradjon. A modell nem tölti ki őket. A K1 küszöbét és mérési egységét a felhasználó adja a mérés előtt (a .1 DT-F96h-ja a .1-re szólt; a delegálás a .2-re nem érvényes).
+
+### 5.7 A döntések alkalmazása és a K1 (DT-F96k, l, m, n)
+
+`scope=a Károli 1908 minden verse és tokenje; a minta 120 sora | forras=mint 5., + adat/karoli_modern/igealak_llm_opus.tsv | ts=2026-10-24` — `python eszkozok/karoli_modern/igealak.py --minta-frissit`; 0 token.
+
+**A felhasználó döntése** (chat, 2026-10-24: „Mehet” a javaslatokra): DT-F96m 1. (a túllépés elfogadva; a keret a teljes számítással, cache-olvasással mérve; minden további LLM-futás előtt kötegszám és becslés, jóváhagyással); DT-F96k (b) igen, (a) marad; DT-F96l 2. opció; DT-F96n 1. opció, a minta modell-ellenőrzéssel, a felhasználó elfogadására.
+
+**Alkalmazva.**
+- **DT-F96k (b):** a kötőhangzós régi múlt automatikus csere, korpusz-támasszal. Ez **620 token**: *szólott → szólt* 144, *mondotta → mondta* 91, *állott → állt* 58, *megmondotta → megmondta* 46 …
+  - Kimarad a melléknévi igenév (*halott*, *törött*, *elbizakodottak*, *megölöttek*): az E/3 és a T/3 alanyi csak a `KOTOHANG_IGE` listán cserél.
+  - Kimarad a más igéhez tartozó alak (*születtél*: születik; *elveszett*: elvész; *küldettem*, *kiűzettek*: szenvedő) és a *körülött-* névutó.
+- **DT-F96k (a):** a felszólító *-jál* (319 token) változatlan; a jelölt a mintában marad.
+- **DT-F96l, 2. opció:** a ritka és a gyanús jelölt cserél, ha a szabály, a sonnet és az opus közül legalább kettő egyezik, és a tő-őr átengedi. Ez **6 866 token**: szabály + sonnet 6 041, sonnet + opus 663, szabály + opus 160 …
+  - A szövegkörnyezetfüggő szabály-jelölt (alanyi/tárgyas, E/1/T/3) tokenenként a heurisztikával dönt.
+  - A felszólító *-jál* és a névelő utáni alak kimarad.
+  - Ahol a többség a változatlan alakot adja, ott az alak nem régies igealak (*tett, leszek, halál*; 2 596 token).
+
+**Javítások a minta modell-átnézése után** (a mérés előtt, a küszöb rögzítése után):
+1. **A névelő utáni igealak-jelölt főnév, változatlan marad:** *a tevék*, *egy tevének*, *a küldöttek*; 47 token, `bizonytalan=nevelo_utan`.
+2. **A kötőhangzós szabály szűkítése:** l. fent.
+3. **A segédigei *vala* a .2 által múltba tett ige után is kiesik:** *illeték vala → illették*. Az *-lak/-lek* E/1 (*etettelek*) múltnak számít.
+4. **A tárgyas/alanyi heurisztika finomítása:**
+   - a vonatkozó névmás tárgya alanyit kér: *amelyeket adtak*, *amelyet hoztak*;
+   - az 1./2. személyű tárgy alanyit kér: *hagytál el engemet*;
+   - a tagmondat a vesszőig és az „és”-ig tart;
+   - az idézet előtti kettőspont már nem tárgyas jel: *feleltek*;
+   - a puszta *-át/-ét* nem birtokos tárgy: *ötven horgocskát* → *csináltak*;
+   - az E/1 próbája is tagmondaton belül fut.
+5. **A régies gyanús osztályban is a kötőhangzós szabály dönt** (*mondotta*).
+
+**A .2 együtt:**
+- A .2 a modern szövegben **25 996 tokent cserél**, és **2 450 segédigei *vala*-t ejt ki**. A .1-gyel együtt **21 255 vers** változik.
+- A K2 minden versen átmegy, a .1 újraszámolása egyezik.
+- **Lefedettség:** a modern szövegben 1 146 token régies igealak marad. Ebből döntés szerint marad 319 (felszólító *-jál*), egy szóban nem írható át 147 (*-nd-* jövő). A többi 680 token:
+  - régies gyanú 294 és ritka jegyes 214, ahol nincs többségi jelölt;
+  - gyakori jegyes 135: a névelő utáni és a jelölt nélküli alakok;
+  - a *vala*-család 34 bizonytalan esete és egyéb, 37.
+
+**A K1** (DT-F96n; modell-ellenőrzés, claude-opus-5-5; **a felhasználó elfogadására vár**):
+
+| halmaz | eredmény | küszöb | |
+|---|---:|---:|---|
+| a minta automatikus cseréi (`[.2]` és a kieső *vala*) | **313 / 316 (99,1%)** | ≥ 98% | ✓ |
+| ebből bizonytalan nélkül | 275 / 277 (99,3%) | — | |
+| bizonytalan jelölésű cserék (`targyas_heur`, `ek_E1_T3`, `mult_korpuszban_nincs`; mellékmérés) | 38 / 39 (97,4%) | külön kiírva | |
+| `valtozatlan` réteg | **0** kihagyás | 0 | ✓ |
+
+**A három hibás csere** (a minta `megjegyzes` oszlopában):
+- **G020, Jn 6:58:** *atyáitok evék a mannát → evett*; helyesen *ették*. A gyakori *evék* jegye mult.E3, a T/3-at a szabály nem látja.
+- **G046, Ez 25:5:** *tevék legelőjévé → tették*. A *tevék* itt főnév; névelő nincs előtte, ezért a próba nem fogja meg.
+- **G084, Jel 12:2:** *kínlódik vala → kínlódik volt*; helyesen *kínlódott*. A #94 elemezetlen *kínlódik*-ja a korpuszban nem igazolható igének.
+
+Mindhárom egyedi eset. Szabállyal csak az utolsó javítható általánosan (az *-ik* végű, elemezetlen alak igeként a *vala* előtt), ez a .3-ban vagy a felhasználó döntése szerint.
+
+**Megfigyelés a mintán kívül (nem javítva, a K1-be nem számít):** a minta nem automatikus rétegeiben maradt régies alakok (*összefoglalák, agyonverék, táncolának, megölém, elhozám, kirántá, felháboríták, rakád, mondám, általméne*) a többségi jelölt hiánya vagy a #94 jegyhiánya miatt maradtak. A lefedettségbe beleszámítanak.
