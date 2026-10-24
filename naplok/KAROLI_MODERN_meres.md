@@ -98,9 +98,68 @@ A brief becslése (~0,05–0,2 M) az (1)-es változatban **túllépve** (0,44 M;
 
 **Minőségi megfigyelések a mintán (modell-kimenet, a felhasználó még nem ellenőrizte):** 194 sor `biztos`, 6 `bizonytalan`; a 41 `regies_gyanu` sorból 27-et írt át (*mondák*-típus → *-ták*, *-teték → -tetett*, *-vén → -ve*), 14-et hagyott változatlanul mai alakként (*elvesznek, hullák, karaván*) — a gyanú-heurisztika hamis pozitívjai. A jegyhibát elkapta (*követe*: főnév). **Szókincs- és alakhiba is van:** *megnevekedék → megszaporodott* (szókincscsere, a DT128 tiltja), *lennék → legyek* (a feltételes mód mai alak), *őrizénditek → őrizendőtök* (nem létező alak), *ráküldé → rákűldte* (helyesírási hiba), *keltének* változatlanul. Következmény: az LLM-kimenet elé determinisztikus **tő-őr** kell (a modern alaknak az igető, illetve a szótári alak mai alakjának betűsorát kell hordoznia; ami nem, az `bizonytalan`, felhasználói sorba), ez a .2 része.
 
-## 3. Nyitott a .1 előtt
+## 3. Nyitott a .1 előtt — állapot a .1 indulásakor
 
-- ⛔ DT-F96d: a token-keret (az 1.–3. változat, a modell, a tokenszintű esetek kezelése).
-- DT-F96e: a `lemmavaltas` osztály és a *reá → rá* — helyesírás vagy szókincs (a DT128 szintjén belül vagy kívül).
-- N-F96b: a #94 `regies_jegy` értékkészletének tárgyas T/3-hiánya és a megfigyelt táblahibák (*vévén*, *kivűl*): a modernizálás saját szabállyal kezeli, a #94 lezárt.
-- A Hunspell hu_HU (DT301, fejlesztési mérce) a .1/2-ben jön; a licenc-idézet ide kerül a használat előtt.
+- DT-F96d 🟢: a keret emelve (≈ 0,45 M), az LLM-es maradék az előfizetésből (Claude Code), API nélkül; tő-őr kötelező. A .1 nem használ LLM-et (0 token).
+- DT-F96e 🟢: (a) a lemmaváltások maradnak; (b) *reá → rá* igen (.1); (c) *-ván/-vén* igen (.2); (d) *-jék*: a .1 mintája dönt (4.5).
+- DT-F96f 🟢: a réteg nem tárol Strongot; token-kulcs (vers-kulcs + `tokenizal`-sorszám).
+- N-F96b: a *kivűl* és a további megfigyelt táblahibák a .1 kivételtáblájában (4.2); a *vévén* a .2-ben.
+- A Hunspell hu_HU (DT301): 4.1.
+
+## 4. F96.1 — helyesírási lépcső
+
+`scope=a Károli 1908 minden verse (31 158) és tokenje (599 367) | forras=konkordancia/Karoli_1908.tsv (sha256:49335bbcc77d) + adat/szoto/karoli_szotari_alak.tsv (sha256:edba33e6d65a) + eszkozok/karoli_modern/helyesiras.py | ts=2026-10-24T13:36Z` — `python eszkozok/karoli_modern/helyesiras.py --minta`; determinisztikus, LLM és API nélkül (**0 token**). Kimenet (generált, `# GENERÁLT:` fejléccel): `adat/karoli_modern/helyesiras_alakok.tsv` (a szövegkörnyezet nélkül változó alakok), `adat/karoli_modern/helyesiras_tokenek.tsv` (a változó, kieső vagy bizonytalan tokenek, vers-kulccsal és `tokenizal`-sorszámmal, DT-F96f), `adat/karoli_modern/helyesiras_minta.tsv` (4.4). Ez a .1 köztes kimenete, nem a .3 kiadott rétege.
+
+### 4.1 Hunspell hu_HU (DT301) — nem futott
+
+A futtató környezetben a Hunspell nem érhető el: nincs telepítve (sem `hunspell`, sem `/usr/share/hunspell`), a csomagforrás és a szótár forrása (GitHub, PyPI) a hálózati szabály miatt nem tölthető le (`connect_rejected`, 2026-10-24). A licencet így nem lehetett szó szerint idézni a forrásból, és a Hunspell nem futott. A brief .1/2 szerint, ahol sem a korpusz, sem a #94 tábla nem támasztja alá a modern alakot, a `tamasz` = `modell_ellenorizetlen`; a mérőszám a felhasználói minta. A Hunspell-mérés pótolható, ha a szótárfájl (és a licenc szövege) a repón kívül rendelkezésre áll: a felhasználó vagy egy hálózattal futó session dolga.
+
+### 4.2 Szabályok és darabszámok
+
+| szabály (`szabaly`) | forrás (`szabaly_forras`) | token | példa |
+|---|---|---:|---|
+| `nevmas` — „a” + vonatkozó névmás / határozószó egybe | DT128, N-F94f | 11 212 összevonás | *a kik → akik*, *a melylyel → amellyel*, *a mint → amint*, *a hol → ahol*, *a hogy → ahogy* |
+| ebből `nevmas:ki` / `:mely` / `:mi` / `:hatarozo` | | 5 311 / 2 903 / 1 338 / 1 660 | |
+| `karakter` | manual (helyesírás-történet) | 3 101 | *harmincz → harminc*, *királylyal → királlyal*, *gonoszszal → gonosszal* |
+| `neki` | DT128 | 1 738 | *néki → neki* |
+| `szoto_94` — a #94 mai szótári alakjának helyesírási eltérése | #94 | 1 134 | *miképen → miképpen*, *kivül → kívül*, *vajjon → vajon*, *közűl → közül*, *nevekedik → növekedik* |
+| `rea` | DT-F96e b | 661 | *reá → rá*, *reájok → rájok*, *reáköltesz → ráköltesz* |
+| `szotag` | manual | 160 | *dícsér- → dicsér-*, *paizs → pajzs* |
+| `kivetel` | N-F96b | 4 csere | *kivűl → kívül* (a #94 tábla: *kivül*); változatlan marad a *gyűl-*, *egybegyűl-*, *összegyűl-*, *dűl-*, *ledűle*, *jóhiszeműleg* (a tábla mai alakja ott hibás: *gyül*, *dül*) |
+
+Összesen: **12 804 vers változik** (a 31 158-ból), **28 953 token** (ebből 11 212 kieső „a”), **1 377 alak** szövegkörnyezet nélkül. Az alakok `tamasz` oszlopa: `szoto_94` 177, `korpusz` 106 (a modern alak a Károliban is áll), `manual` 1, **`modell_ellenorizetlen` 1 093** (zömmel a `karakter` cseréi: a *cz*-s alakok modern párja a Károliban nem fordul elő; Hunspell nélkül ez a mintán mérhető).
+
+**Nem változik a .1-ben (szándékosan):** a lemmaváltás (DT-F96e a: *e, oh, férfiú, leány, mostan, minekutánna*, az önálló *kik/mely*); minden igealak (*teremté, monda, -ván/-vén, vala, lőn, vagyon*: .2); a *-jék* és a *-jok/-jök* (4.5).
+
+**Az „a mi” kezelése (heurisztika, manual).** Toldalékos *mi-* (*mit, minek, mire*) mindig összevonva. A puszta „a mi”: ha a következő szó *-nk* birtokos (*a mi Istenünk, a mi atyánk*) → birtokos, marad (`mi_birtokos_marad`); ha a következő szó nagybetűs, személyes névmás (*nékünk, minket*), vagy írásjel követi → `bizonytalan`, változatlan (**298 token**; ezek a mintában is szerepelnek); különben → *ami*. Egy „a Ki…” nagybetűs vers közbeni eset `nagybetu`, változatlan.
+
+### 4.3 K2 önellenőrzés
+
+A generátor minden versen ellenőrzi, és eltérésnél megáll: a modern versszöveg újratokenizálva pontosan a nem kieső tokenek modern alakjait adja, sorrendben; a nem-betű váz (írásjel, szóköz) csak az összevonások egy-egy szóközével rövidebb. A futás 31 158 versen hiba nélkül ment át. (Ez a generátor saját ellenőrzése, nem a független ellenőré.)
+
+### 4.4 A minta (⛔ felhasználói ellenőrzés)
+
+`adat/karoli_modern/helyesiras_minta.tsv` — rögzített mag (20261024), rétegzett, **112 vers**, egy vers egy rétegben:
+
+| réteg | vers | mit ellenőrizz |
+|---|---:|---|
+| `karakter` | 14 | a *cz/lyly/szsz …* csere |
+| `neki` | 8 | *néki → neki* |
+| `szoto_94` | 14 | a #94 tábla átvitele (*kívül, vajon, miképpen, sötétség, növekedik*) |
+| `rea` | 8 | *reá → rá* |
+| `nevmas:ki`, `nevmas:mely`, `nevmas:mi`, `nevmas:hatarozo` | 10 + 10 + 8 + 8 | az összevonás (*akik, amely, ami, amint, ahol, ahogy*) |
+| `mi_birtokos_marad` | 4 | a „mi” birtokosként jogosan maradt-e |
+| `bizonytalan` | 4 | a változatlanul hagyott „a mi”: *ami* vagy birtokos |
+| `kivetel_szotag` | 4 | az N-F96b kivétel és a *dics-/pajzs* |
+| `jek` | 8 | a *-jék* felszólító E/3: az `alternativa` oszlop a *-jon/-jen/-jön* változat (DT-F96e d) |
+| `jok` | 6 | a *-jok/-jök* birtokos T/3: az `alternativa` oszlop a *-juk/-jük* változat (DT-F96g) |
+| `valtozatlan` | 6 | nem maradt-e ki régi helyesírás (a Hunspell helyett) |
+
+Oszlopok: `szoveg_1908`, `szoveg_modern` (a .1 kimenete), `valtozasok` (`sorszám:régi→új`; `(összevonva)` = kieső „a”; `?(…)` = bizonytalan, változatlan; `=(…)` = szándékosan marad), `alternativa` (csak a `jek`/`jok` sorokon). **Az `ellenorzes` és a `megjegyzes` oszlopot a felhasználó tölti** (javasolt értékek: `jó` / `hibás`; a `jek`/`jok` sorokon `A` = a `szoveg_modern`, `B` = az `alternativa`); a mérés csak a kitöltött sorokon fut. Az igealak (*monda, vala, lőn*) e lépcsőben szándékosan régi: nem hiba.
+
+**A K1 küszöbe** (brief .1/3, K1) a mérés előtt rögzítendő: DT-F96h.
+
+### 4.5 Döntésre váró, a mintán eldöntendő
+
+- **DT-F96e (d)** *-jék* felszólító E/3 az *-ik*-es igéken (*cselekedjék, uralkodjék, lakozzék, igyék*): **93 alak, 417 token** (heurisztika: a szótári alak *-ik*-re végződik, a tő önálló szóként nem áll a korpuszban, így a tárgyas T/3 *megismerjék* kimarad). Az alternatíva hangrendje: *-jon/-jen/-jön*; csak *i/í* magánhangzós tőnél *-on* (*igyék → igyon*).
+- **DT-F96g** (új) *-jok/-jök* birtokos T/3 (*atyjok, reájok, hozzájok, útjokat, erejök*): **212 alak, 714 token** a *j*-s változaton (kizárva a többes számú *tolvajok, bajok, tutajok-*). A *j* nélküli változat (*kezöket, szívök, közöttök*) a .1-ben nem mért: a *-ok/-ök* többes számmal egybeesik, gépi szétválasztása szövegkörnyezetfüggő.

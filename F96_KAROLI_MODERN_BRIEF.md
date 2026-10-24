@@ -6,10 +6,10 @@ tipus: feladat
 fazis: 1
 modell: opus
 munka: adat
-allapot: fut
+allapot: megallt
 ag: ccr-a680d019-39s73e
 ad: a Károli 1908 modernizált szövegrétege (helyesírás + igealak; szórend, szókincs, írásjel, betoldás-jelölés változatlan), szabályalapú szavankénti cserével (a #94 szótári alak- és regies_jegy-táblájából, Hunspell csak fejlesztési mérce, DT301), LLM csak a szabállyal le nem fedett maradékra; minden token hordozza az 1908-as token vers-kulcsát és sorszámát (a Strong a #22 párosításából token-kulcson illeszthető, a réteg nem tárol Strongot, DT-F96f), a kieső segédigei vala jelölve; generált tábla az 1908-as szöveg mellett, nem helyette; két lépcső (helyesírás, majd igeragozás és vala), felhasználó által ellenőrzött mintán mérve, a token-felhasználással együtt
-kovetkezo: "Folytatás: a .1 helyesírási lépcső (a DT-F96d/e/f eldöntve, a brief v1.2-ben átvezetve)"
+kovetkezo: "Te: a .1 ⛔ — a K1 küszöbe (DT-F96h), majd az adat/karoli_modern/helyesiras_minta.tsv 112 sorának ellenorzes oszlopa (jó/hibás; a jek/jok sorokon A/B: DT-F96e d, DT-F96g); utána a .1 mérése és a .2"
 olvas: [adat/szoto/, konkordancia/Karoli_1908.tsv, "adat/karoli_strong/*", adat/SEMA.md, adat/licencek.tsv, DONTESEK.md]
 ir: [eszkozok/karoli_modern/, adat/karoli_modern/, naplok/KAROLI_MODERN_meres.md]
 fugg: [94]
@@ -89,5 +89,7 @@ Szavankénti csere: minden modern token az 1908-as token vers-kulcsán és sorsz
 - **DT-F96d** 🟢 (helyőrző) — a .0/3 ⛔: a mért token-felhasználás (≈ 0,44 M a teljes LLM-jelölt maradékra) a 0,2 M-os küszöb felett; **eldöntve** (felhasználó, chat, 2026-10-24): a keret emelhető (≈ 0,45 M), az LLM-es maradék az előfizetésből fut (Claude Code), API nélkül; tő-őr kötelező az LLM-kimenet elé. Mérés: `naplok/KAROLI_MODERN_meres.md` 2.
 - **DT-F96e** 🟢 (helyőrző) — a modernizálás határa; **eldöntve** (felhasználó, chat, 2026-10-24): (a) a nem helyesírási lemmaváltások (*e → ez*, *férfiú → férfi*, *leány → lány*) maradnak; (b) *reá → rá*: igen (.1); (c) *-ván/-vén → -va/-ve*: igen (.2); (d) a *-jék* felszólító E/3-at a .1 ⛔ felhasználói mintája dönti el.
 - **DT-F96f** 🟢 (helyőrző) — a modernizált réteg nem tárol és nem ellenőriz Strongot; minden sora hordozza az 1908-as token vers-kulcsát és sorszámát, így a #22 Strong-párosítása token-kulcson illeszthető (felhasználó, chat, 2026-10-24). Átvezetve: 1. szakasz, 2. szakasz, .2/2, K3, K4b, DT-F96b.
+- **DT-F96g** 🟡 (helyőrző) — a .1 ⛔: a birtokos T/3 *-jok/-jök → -juk/-jük* (212 alak, 714 token a *j*-s változaton) a modernizálás része-e; a mintán (`jok` réteg) dönthető; `DONTESEK.md`.
+- **DT-F96h** 🟡 (helyőrző) — a .1 ⛔: a K1 küszöbe és mérési egysége, a mérés előtt; `DONTESEK.md`, napló 4.4.
 - **N-F96b** (helyőrző) — a #94 `regies_jegy` értékkészletéből hiányzik a tárgyas T/3 (*mondák, adák*), és megfigyelt táblahibák (*vévén*, *kivűl*); a modernizálás saját szabállyal kezeli (napló 1.2).
 - **N-F96a** (helyőrző) — a modernizált réteg `pardes.db`-be töltése és a keresőbe kötése (`eszkozok/sqlite_epit.py`, `eszkozok/olvaso_szerver/kereses.py`) külön csonk-feladat, a #96 és a #92 után; a DT-F96b miatt kötelező, nem elhagyható. A csonk: #137 (KAROLI_MODERN_DB), a felhasználó jóváhagyásával befogadva (2026-10-24).
