@@ -385,3 +385,20 @@ Oszlopok: `szoveg_1908`, `szoveg_modern_dt_f96i_elott`, `szoveg_modern`, `kriter
 **Hunspell (DT301).** A `helyesiras_hunspell.tsv` fejléce a régi `helyesiras_tokenek.tsv` sha256-ját hordozza (`49fbf5d191c5`). Tartalmilag nem avult el: új alakpár nem keletkezett, a *mi → ami* pár benne van (`semleges`), és csak a darabszáma kisebb. Újrafuttatás nem volt, a futtató ebben a sessionben nincs meg.
 
 **A 4.2 „Az „a mi” kezelése” bekezdése a DT-F96i előtti állapotot írja le; a kiadott réteg a 4.6.1 szerint jár el.**
+
+### 4.7 Döntések a .1 ⛔ mérése előtt (felhasználó, 2026-10-24)
+
+A felhasználó a modell javaslatát hagyta jóvá (chat: „Mehet”). A K1 küszöbe így **a mérés előtt** rögzült (brief K1). A minta és a generált táblák ebben a menetben nem változtak.
+
+- **DT-F96h (K1) 🟢.**
+  - **Egység:** a csere, vagyis a minta `valtozasok` tétele.
+  - **Küszöb:** ≥ 98% helyes csere két külön halmazon: a 112 soros mintán (`helyesiras_minta.tsv`) és a `helyesiras_ami_ellenorzes.tsv` 102 szövegváltozó során (`osszevonas_visszavonva` + `osszevonas_uj`; legfeljebb 2 hibás).
+  - **`valtozatlan` réteg:** 0 kihagyott régi helyesírás.
+  - **Nem hiba:** a `jek`/`jok` sorok A/B választása és a 7 bizonytalan „a mi” besorolása (döntés).
+  - **Küszöb alatt:** a hibás szabály javul, és csak az érintett sorok mérődnek újra.
+- **DT-F96e (d) 🟢.** A *-jék* felszólító E/3 (93 alak, 417 token) **marad**. Élő, választékos alak (4.1.4: a Hunspell elfogadja), a DT-F96e (a) logikája szerint. A minta `jek` rétegén eltérő ítélet felülírja.
+- **DT-F96g 🟢.**
+  - **Változik:** a *j*-s *-jok/-jök → -juk/-jük* (212 alak, 714 token) a .1 szabálya. Gépileg egyértelmű, és a Hunspell a régi alakot elutasítja (4.1.4: *rájok*, *orcájok-*).
+  - **Marad:** a *j* nélküli változat (*kezöket, szívök*).
+  - A minta `jok` rétegén eltérő ítélet felülírja.
+  - **Hátra van:** az alkalmazás (generátor-szabály, újragenerálás, a minta `--minta-frissit`-tel).
