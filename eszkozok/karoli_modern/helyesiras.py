@@ -26,6 +26,9 @@ Szabályok (a sorrend számít; minden szabály forrása a `szabaly_forras` oszl
                 (`kieso=osszevonva`), az összevont alak a névmás tokenjén áll. A puszta „a mi”
                 birtokos (a mi Istenünk) változatlan; ahol a heurisztika nem dönt, `bizonytalan`
                 (változatlan, a mintában a felhasználó dönt)
+  ami_proba     KÍSÉRLETI (DT-F96i 🟡, csak --ami-proba): a puszta „a mi” birtokos/vonatkozó támpontjai
+                (B1/B2 -nk birtokos főnév utána, V1–V4 írásjel, mindazt/mindent/semmit, ige előtte/utána);
+                csak a helyesiras_ami_proba.tsv-t írja, a kiadott helyesiras_*.tsv-hez nem nyúl
 
 Nem e lépcső dolga (a .2-ben jön): igealak (teremté, monda, -ván/-vén), *vala*, *lőn*. A *-jék*
 felszólító E/3 (DT-F96e d) és a *-jok/-jök* birtokos T/3 itt nem változik: a mintában
@@ -44,10 +47,12 @@ Használat:
     python eszkozok/karoli_modern/helyesiras.py
     python eszkozok/karoli_modern/helyesiras.py --minta          (a minta újragenerálása is)
     python eszkozok/karoli_modern/helyesiras.py --kimenet <könyvtár>   (próba a repón kívülre)
+    python eszkozok/karoli_modern/helyesiras.py --ami-proba     (DT-F96i mérése: helyesiras_ami_proba.tsv)
 """
 
 import argparse
 import collections
+import datetime
 import hashlib
 import os
 import random
@@ -111,6 +116,54 @@ NK = re.compile(r'(nk|nkat|nket|nknek|nkhoz|nkhez|nkhöz|nkban|nkben|nkból|nkb�
                 r'nktól|nktől|nkkal|nkkel|nkért|nkon|nken|nkön|nké|nkig|nkká|nkké)$')
 
 BETU = re.compile(r'[^\W_]+', re.UNICODE)
+
+# DT-F96i (🟡, KÍSÉRLETI, csak --ami-proba): a puszta „a mi” birtokos vagy vonatkozó támpontjai.
+# A *-nk* birtokos a nagybetűs főnéven is (a mi Istenünk, Urunk), minden esetraggal: a NK mintából
+# hiányzik a -nknak, -nknél, -nkba, -nkéi (Urunknak, Istenünknél, ruhánkba), ezért ez külön minta; a
+# -nk az atyánkfia-összetételben is; a ragos személyes névmás (nékünk, velünk) nem birtokos főnév, a magunk-család viszont az (a mi magunk).
+NK_PROBA = re.compile(r'nk(nak|nek|at|et|ot|öt|hoz|hez|höz|ban|ben|ba|be|ból|ből|ra|re|ról|ről|tól|től|kal|kel|'
+                      r'ért|on|en|ön|é|éi|ig|ká|ké|nál|nél)?$|nkfi[^\W_]*$')  # atyánkfiai: a -nk az összetételben
+MAGUNK = {'magunk', 'magunkat', 'magunknak'}
+AMI_ELOTTE = {'mindazt', 'mindent', 'semmit'}
+
+
+def ami_proba_keszit(tabla, igei):
+    """A DT-F96i kísérleti döntése: (spans, szoveg, i) → ('birtokos'|'vonatkozo'|None, kritérium).
+
+    Sorrend (az első illeszkedő dönt): B1 a következő szó -nk birtokos főnév; B2 a második szó az,
+    szóközzel, és az első nem ige (a mi Jézus Krisztusunkban); V1 előtte vessző, pontosvessző vagy
+    kettőspont; V2 előtte mindazt/mindent/semmit; V3 előtte ige; V4 utána ige. A melléknév-támpontot
+    a repó adata nem hordozza (szófaj nincs), ezért nem fut. Az ige: a #94 tábla regies_jegy-e vagy
+    a fedettseg.igei_tovek próbája a szótári alakon."""
+
+    def ige(w):
+        s = fedettseg.tablasor(tabla, w)
+        return bool(s) and bool(s['regies_jegy'] or igei(s['szotari_alak']))
+
+    def nk_fonev(w):
+        wk = w.lower()
+        return wk in MAGUNK or (wk not in SZEMELYES_NK and bool(NK_PROBA.search(wk)))
+
+    def dont(spans, szoveg, i):
+        b2 = spans[i + 1][1]
+        k1 = spans[i + 2] if i + 2 < len(spans) and szoveg[b2:spans[i + 2][0]] == ' ' else None
+        k2 = (spans[i + 3] if k1 and i + 3 < len(spans) and szoveg[k1[1]:spans[i + 3][0]] == ' '
+              else None)
+        if k1 and nk_fonev(k1[2]):
+            return 'birtokos', 'B1_nk_utana'
+        if k2 and nk_fonev(k2[2]) and not ige(k1[2]):
+            return 'birtokos', 'B2_nk_masodik'
+        elv = szoveg[spans[i - 1][1]:spans[i][0]] if i > 0 else ''
+        if re.search(r'[,;:]', elv):
+            return 'vonatkozo', 'V1_irasjel_elotte'
+        if i > 0 and spans[i - 1][2].lower() in AMI_ELOTTE:
+            return 'vonatkozo', 'V2_mindazt_elotte'
+        if i > 0 and elv == ' ' and ige(spans[i - 1][2]):
+            return 'vonatkozo', 'V3_ige_elotte'
+        if k1 and ige(k1[2]):
+            return 'vonatkozo', 'V4_ige_utana'
+        return None, ''
+    return dont
 
 
 def sha(ut):
@@ -182,8 +235,11 @@ def nevmas_csalad(kis):
     return None
 
 
-def vers_feldolgoz(igehely, szoveg, alakszotar):
-    """Egy vers: tokenlista [(sorszam, alak1908, modern, kieso, szabaly, bizonytalan)], modern szöveg."""
+def vers_feldolgoz(igehely, szoveg, alakszotar, ami_proba=None, ami_naplo=None):
+    """Egy vers: tokenlista [(sorszam, alak1908, modern, kieso, szabaly, bizonytalan)], modern szöveg.
+
+    ami_proba: a DT-F96i kísérleti „a mi”-döntése (spans, szoveg, i) → (dontes|None, kriterium); ha
+    megadott, a puszta „a mi” minden tokenje az ami_naplo listába kerül (régi és kísérleti döntés)."""
     spans = [(m.start(), m.end(), m.group(0)) for m in BETU.finditer(szoveg)]
     sorok = []
     for i, (a, b, t) in enumerate(spans):
@@ -206,15 +262,37 @@ def vers_feldolgoz(igehely, szoveg, alakszotar):
                 w = spans[i + 2][2]
                 wk = w.lower()
                 if wk in SZEMELYES_NK or w[:1].isupper():
-                    sorok[i + 1][5] = 'mi_birtokos_vagy_vonatkozo'
-                    continue
-                if NK.search(wk):
-                    sorok[i + 1][5] = ''
-                    sorok[i + 1][4] = (sorok[i + 1][4] + '+' if sorok[i + 1][4] else '') + 'mi_birtokos_marad'
-                    continue
+                    regi = 'bizonytalan'
+                elif NK.search(wk):
+                    regi = 'birtokos'
+                else:
+                    regi = 'vonatkozo'
             else:
-                sorok[i + 1][5] = 'mi_irasjel_utan'
+                regi = 'irasjel'
+            dontes, krit = regi, ''
+            if ami_proba is not None:  # DT-F96i kísérleti szabály (--ami-proba)
+                d, krit = ami_proba(spans, szoveg, i)
+                if d:
+                    dontes = d
+                elif regi in ('bizonytalan', 'irasjel'):
+                    krit = 'nincs_tampont'
+                else:
+                    krit = 'regi_szabaly'
+                ami_naplo.append((igehely, i + 2, regi, dontes, krit))
+                krit = '+ami_proba:' + krit
+            if dontes == 'bizonytalan':
+                sorok[i + 1][5] = 'mi_birtokos_vagy_vonatkozo'
+                sorok[i + 1][4] += krit
                 continue
+            if dontes == 'irasjel':
+                sorok[i + 1][5] = 'mi_irasjel_utan'
+                sorok[i + 1][4] += krit
+                continue
+            if dontes == 'birtokos':
+                sorok[i + 1][5] = ''
+                sorok[i + 1][4] = (sorok[i + 1][4] + '+' if sorok[i + 1][4] else '') + 'mi_birtokos_marad' + krit
+                continue
+            sorok[i + 1][4] += krit
         uj = (t[:1] + kov_mod.lower()) if t == 'A' else ('a' + kov_mod.lower() if kov_mod[:1].islower() else None)
         if uj is None:  # „a Ki…” nagybetűvel a vers közepén: nem vonjuk össze
             sorok[i + 1][5] = 'nagybetu'
@@ -287,6 +365,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--minta', action='store_true')
     ap.add_argument('--kimenet', default=None, help='próba-kimenet könyvtára (a repón kívül)')
+    ap.add_argument('--ami-proba', action='store_true',
+                    help='DT-F96i kísérleti „a mi”-szabály: csak a helyesiras_ami_proba.tsv-t írja')
     a = ap.parse_args()
     ki_dir = a.kimenet or os.path.join(ROOT, KI_DIR)
     tabla = fedettseg.tabla_beolvas()
@@ -302,6 +382,9 @@ def main():
     alakszotar = {}
     for alak in gy:
         alakszotar[alak] = alak_modern(alak, fedettseg.tablasor(tabla, alak), kis_szavak)
+    if a.ami_proba:
+        ami_proba_fut(versek, alakszotar, tabla, kis_szavak, ki_dir)
+        return
 
     tok_ki = []
     vers_ki = {}
@@ -370,6 +453,70 @@ def main():
 
     if a.minta:
         minta(vers_ki, tabla, kis_szavak, ki_dir, fejlec)
+
+
+def ami_proba_fut(versek, alakszotar, tabla, kis_szavak, ki_dir):
+    """DT-F96i: a kísérleti „a mi”-szabály mérése; a kiadott helyesiras_*.tsv-hez nem nyúl."""
+    dont = ami_proba_keszit(tabla, fedettseg.igei_tovek(tabla, kis_szavak))
+    naplo = []
+    regi_modern, uj_modern = {}, {}
+    uj_par = collections.Counter()
+    for igehely, sz in versek:
+        sorok_r, m_r = vers_feldolgoz(igehely, sz, alakszotar)
+        sorok_u, m_u = vers_feldolgoz(igehely, sz, alakszotar, dont, naplo)
+        regi_modern[igehely], uj_modern[igehely] = m_r, m_u
+        for r, u in zip(sorok_r, sorok_u):
+            if (r[2], r[3]) != (u[2], u[3]):
+                uj_par[(u[1], u[2] or '(összevonva)')] += 1
+    vszoveg = dict(versek)
+    sorok_ki = []
+    for igehely, n, regi, uj, krit in naplo:
+        sp = [m.group(0) for m in BETU.finditer(vszoveg[igehely])]
+        elozo = sp[n - 3] if n >= 3 else ''
+        kov = ' '.join(sp[n:n + 2])
+        sorok_ki.append([igehely, str(n), elozo, kov, regi, uj, krit, 'igen' if regi != uj else 'nem'])
+    # a minta (112 vers): melyik sor modern szövege változna
+    minta_valt = []
+    with open(os.path.join(ROOT, KI_DIR, 'helyesiras_minta.tsv'), encoding='utf-8') as f:
+        for l in f:
+            m = l.rstrip('\n').split('\t')
+            if l.startswith('#') or m[0] == 'minta_id':
+                continue
+            if uj_modern[m[2]] != m[4]:
+                minta_valt.append('%s %s (%s)' % (m[0], m[2], m[1]))
+    # Hunspell (DT301, csak mérce): az új alakpárok benne vannak-e a már megítélt párokban
+    hs = {}
+    with open(os.path.join(ROOT, KI_DIR, 'helyesiras_hunspell.tsv'), encoding='utf-8') as f:
+        for l in f:
+            m = l.rstrip('\n').split('\t')
+            if l.startswith('#') or m[0] == 'alak_1908':
+                continue
+            hs[(m[0], m[1])] = m[8]
+    hk = ('%s (sha256:%s) + %s (sha256:%s) + %s (sha256:%s)'
+          % (KAROLI, sha(KAROLI)[:12], SZOTARI, sha(SZOTARI)[:12], SZKRIPT, sha(SZKRIPT)[:12]))
+    with open(os.path.join(ki_dir, 'helyesiras_ami_proba.tsv'), 'w', encoding='utf-8', newline='\n') as f:
+        f.write('# GENERÁLT: %s --ami-proba (F96.1, DT-F96i 🟡 KÍSÉRLETI) — kézzel nem szerkeszthető; nem a '
+                'kiadott réteg, a helyesiras_*.tsv változatlan | forras=%s | scope=a Károli 1908 minden puszta '
+                '„a mi” tokenje (%d): a régi és a kísérleti döntés, kritériummal | ts=%s\n'
+                % (SZKRIPT, hk, len(sorok_ki), datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%MZ')))
+        f.write('\t'.join(['igehely', 'sorszam', 'elozo', 'kovetkezo', 'dontes_regi', 'dontes_kiserleti',
+                           'kriterium', 'valtozik']) + '\n')
+        for s in sorok_ki:
+            f.write('\t'.join(s) + '\n')
+    atm = collections.Counter((s[4], s[5]) for s in sorok_ki)
+    print('puszta „a mi”: %d token' % len(sorok_ki))
+    print('régi döntés: %s' % dict(collections.Counter(s[4] for s in sorok_ki)))
+    print('kísérleti döntés: %s' % dict(collections.Counter(s[5] for s in sorok_ki)))
+    print('átmenet (régi → kísérleti): %s' % dict(sorted(atm.items())))
+    for (r, u), db in sorted(atm.items()):
+        kr = collections.Counter(s[6] for s in sorok_ki if (s[4], s[5]) == (r, u))
+        print('  %s → %s: %s' % (r, u, dict(kr)))
+    print('változó vers (modern szöveg): %d' % sum(1 for k in versek if regi_modern[k[0]] != uj_modern[k[0]]))
+    print('a mintában változó sor: %d %s' % (len(minta_valt), minta_valt))
+    print('új alakpár (token): %s' % dict(uj_par))
+    print('Hunspell-ítélet az új alakpárokra (helyesiras_hunspell.tsv): %s'
+          % {'%s→%s' % p: hs.get(p, 'nincs a táblában') for p in uj_par})
+    print('bemenet: %s' % hk)
 
 
 RETEGEK = [  # (réteg, darab)

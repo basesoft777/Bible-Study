@@ -285,3 +285,67 @@ Oszlopok: `szoveg_1908`, `szoveg_modern` (a .1 kimenete), `valtozasok` (`sorszá
 
 - **DT-F96e (d)** *-jék* felszólító E/3 az *-ik*-es igéken (*cselekedjék, uralkodjék, lakozzék, igyék*): **93 alak, 417 token** (heurisztika: a szótári alak *-ik*-re végződik, a tő önálló szóként nem áll a korpuszban, így a tárgyas T/3 *megismerjék* kimarad). Az alternatíva hangrendje: *-jon/-jen/-jön*; csak *i/í* magánhangzós tőnél *-on* (*igyék → igyon*).
 - **DT-F96g** (új) *-jok/-jök* birtokos T/3 (*atyjok, reájok, hozzájok, útjokat, erejök*): **212 alak, 714 token** a *j*-s változaton (kizárva a többes számú *tolvajok, bajok, tutajok-*). A *j* nélküli változat (*kezöket, szívök, közöttök*) a .1-ben nem mért: a *-ok/-ök* többes számmal egybeesik, gépi szétválasztása szövegkörnyezetfüggő.
+
+### 4.6 Kísérleti „a mi”-szabály (DT-F96i 🟡; a kiadott réteg nem változott)
+
+`scope=a Károli 1908 minden puszta „a mi” tokenje (1 164: „a” + „mi”, szóközzel, toldalék nélkül) | forras=konkordancia/Karoli_1908.tsv (sha256:49335bbcc77d) + adat/szoto/karoli_szotari_alak.tsv (sha256:edba33e6d65a) + eszkozok/karoli_modern/helyesiras.py (sha256:7295d5569705) | ts=2026-10-24T17:46Z`. A futtatás: `python eszkozok/karoli_modern/helyesiras.py --ami-proba`. Determinisztikus, LLM és API nélkül (**0 token**). Kimenet: `adat/karoli_modern/helyesiras_ami_proba.tsv`, generált, `# GENERÁLT:` fejléccel. Soronként egy token: `igehely`, `sorszam` (a „mi” `tokenizal`-sorszáma), `elozo`, `kovetkezo`, `dontes_regi`, `dontes_kiserleti`, `kriterium`, `valtozik`. **Ez nem a kiadott réteg.** A `helyesiras_alakok.tsv`, a `helyesiras_tokenek.tsv` és a `helyesiras_minta.tsv` nem változott. Ellenőrzés: a kapcsoló nélküli futás a repón kívülre generálva, a fejlécsor nélkül, bájtra azonos a három táblával. A három tábla fejléce viszont a szkript előző sha256-ját hordozza (`c0b30137c31b`), mert a kiadott réteget a döntés előtt nem generáltam újra.
+
+**Előzmény.** A felhasználó vizsgálata (chat, 2026-10-24, az orkesztrátoron át; ezeket a darabszámokat nem ez a menet kérdezte le): a Károli 1908-ban a vonatkozó névmás különírt alakban áll (*a mi* 1 164, *a ki* 2 592, *a kik* 1 756, *a mely-* 2 909). Egybeírva csak *ami* 2, *akik* 6 és *amely-* 13 fordul elő. A puszta *a mi* 1 164-es darabszámát ez a menet is megkapta. A felhasználó példái: vonatkozó a 3Móz 11:42, az 1Thessz 5:21, a Neh 9:6 és a 2Móz 23:11; birtokos a Sir 5:2, a 4Móz 36:3, az 5Móz 21:7 és a Róm 5:21. A javasolt támpontokat a felhasználó még nem hagyta jóvá: birtokos, ha a *mi* után *-ünk/-unk/-ink/-eink* végű birtokos főnév áll; vonatkozó, ha előtte vessző, *mindazt/mindent/semmit* vagy ige áll, utána ige vagy melléknév.
+
+#### 4.6.1 A kísérleti szabály
+
+Sorrend: az első illeszkedő támpont dönt. A kód: `ami_proba_keszit`.
+
+| kritérium | feltétel |
+|---|---|
+| `B1_nk_utana` → birtokos | a következő szó *-nk* birtokos főnév, minden esetraggal (`NK_PROBA`), az összetett *atyánkfia-* család is; nagybetűs főnéven is (*Istenünk, Urunk*). Nem az a ragos személyes névmás (*nékünk, velünk, minket*). A *magunk*-család igen (*a mi magunk lelkét*). |
+| `B2_nk_masodik` → birtokos | a második szó ilyen, szóközzel, és az első nem ige (*a mi mindennapi kenyerünket, megtartó Istenünknek*) |
+| `V1_irasjel_elotte` → vonatkozó | az „a” előtt vessző, pontosvessző vagy kettőspont áll |
+| `V2_mindazt_elotte` → vonatkozó | előtte *mindazt/mindent/semmit* áll, írásjel nélkül |
+| `V3_ige_elotte` → vonatkozó | előtte ige áll, írásjel nélkül |
+| `V4_ige_utana` → vonatkozó | utána ige áll |
+| `nincs_tampont` | a régi `bizonytalan` marad (változatlan) |
+| `regi_szabaly` | a régi döntés marad (a régi vonatkozó *ami* lesz) |
+
+Az ige: a #94 tábla `regies_jegy`-e vagy a `fedettseg.igei_tovek` próbája a szótári alakon (manual heurisztika).
+
+**Eltérések a javaslattól, mind a mért adatból:**
+1. **A birtokos-támpont a vessző elé került.** A kísérleti birtokosok közül **179** előtt írásjel áll (*az Úr, a mi Istenünk*; 44 a régi birtokosokból, 120 a régi bizonytalanokból, 15 a régi vonatkozókból). Fordított sorrendben a vessző-támpont mind a 179-et *ami*-vé vonná össze.
+2. **A *-nk* minden birtokos személyjelre áll**, a *-ánk/-énk/-ónk* alakra is (*Atyánk, Kősziklánk, Megtartónk*), nem csak az *-ünk/-unk/-ink/-eink* alakra.
+3. **Új támpont a második szón álló *-nk* (B2).** A javaslat „utána melléknév → vonatkozó” támpontja éppen ezeken az eseteken hibázna (*a mi mindennapi kenyerünket*).
+4. **A melléknév-támpont nem fut.** A repó adata szófajt nem hordoz, ezért a melléknév nem ismerhető fel. Melléknév-találgatást nem tettem a helyére.
+
+#### 4.6.2 Eredmény
+
+| régi döntés → kísérleti | token | kritérium |
+|---|---:|---|
+| birtokos → birtokos | 377 | B1 377 |
+| **bizonytalan → birtokos** | **282** | B1 281, B2 1 (*Jak 2:1 a mi Jézus Krisztusunkban*) |
+| **bizonytalan → vonatkozó** | **9** | V1 9 (*mindabból, a mi Izráel fiaié*; *mindent, a mi Eliméleké volt*; *az, a mi velünk történt*) |
+| **bizonytalan → bizonytalan** | **7** | nincs támpont |
+| **vonatkozó → birtokos** | **93** | B1 71, B2 22 |
+| vonatkozó → vonatkozó | 396 | V1 276, V2 2, V3 9, V4 14, régi szabály 95 |
+| **összesen** | 1 164 | |
+
+**A bizonytalan „a mi” 298-ról 7-re csökken.** 98 vers modern szövege változik: 102 token, 9 új összevonás és 93 visszavont összevonás. A 282 bizonytalan → birtokos csere a szöveget nem változtatja, csak a jelölést.
+
+**A mai kiadott szabály hibái (a 93 „vonatkozó → birtokos”).** Ezeket a kísérlet tárta fel. A mai `NK` minta nem ismeri a *-nknak* (37), *-nkba/-nkbe* (10), *-nknál/-nknél* (4) végződést és az *atyánkfia-* összetételt (20). Az ilyen esetekben ma *ami*-t ad: *a mi atyáinknak → ami atyáinknak*, *a mi atyánkfiait → ami atyánkfiait*, *a mi szívünkbe → ami szívünkbe*. A második szón álló birtokost sem ismeri (22): *a mi mindennapi kenyerünket → ami mindennapi kenyerünket* (Mt 6:11, Luk 11:3). Mind a 93 sort egyenként átnéztem, és birtokosnak olvastam. **Ez modell-olvasat (`modell_ellenorizetlen`), nem felhasználói ellenőrzés.** A sorok a `helyesiras_ami_proba.tsv`-ben vannak, `valtozik=igen` értékkel.
+
+**A 7 megmaradt bizonytalan** és a modell olvasata (értelmezés, nem döntés):
+
+| igehely | | olvasat |
+|---|---|---|
+| 1Krón 24:20 | *A mi Lévi többi fiait illeti* | vonatkozó |
+| Ján 3:6 | *és a mi Lélektől született* | vonatkozó |
+| Róm 1:20 | *Mert a mi Istenben láthatatlan* | vonatkozó |
+| 1Pét 3:21 | *A mi minket is megtart* | vonatkozó |
+| 2Kor 7:14 | *a mi Titus előtt való dicsekvésünk* | birtokos |
+| Józs 22:27 | *a mi utánunk való nemzetségeink* | birtokos |
+| Róm 5:8 | *a mi hozzánk való szerelmét* | nem dönthető a sorból |
+
+**Ismert maradék hiba a kísérleti vonatkozókban** (szkenneléssel: *-nk* szó 2–4 szón belül, írásjel nélkül; a scratchpadben, nem kimenet), ≈ 11 token birtokosnak olvasva. *Filem 1:1 a mi szeretett munkatársunknak* és *2Pét 3:15 a mi szeretett atyánkfia*: a *szeretett* igei alak, ezért a B2 nem fut. *2Kor 4:17 a mi pillanatnyi könnyű szenvedésünk*, *2Kor 7:12, 2Kor 9:3, 1Thessz 1:9, 1Thessz 2:1 a mi (ti) hozzátok való menetelünk*, *2Thessz 2:1*, *2Thessz 3:14*, *Tit 3:6*: a *-nk* a harmadik vagy negyedik szón áll, *való* szerkezettel. Ezek a mai kiadott rétegben is hibásak, a kísérlet nem rontja őket. Javításuk a B2 kiterjesztése volna (*való*, melléknévi igenév), ehhez új mérés kell.
+
+#### 4.6.3 A minta és a Hunspell
+
+- **A 112 soros minta** (`helyesiras_minta.tsv`, a fájl nem változott). A kísérlet **egy sor** modern szövegét változtatja: M079 (2Móz 9:4, `bizonytalan` réteg), *mindabból, a mi Izráel fiaié → mindabból, ami Izráel fiaié*. Ez a felhasználó vonatkozó példáinak (*mindent, a mi …*) mintája. Az M076, M077, M078 és M080 bizonytalan tokenje birtokosra vált; a szövegük nem változik. A `nevmas:mi` és a `mi_birtokos_marad` réteg sorai nem változnak. **Az `ellenorzes` oszlop üres**, ezért pontosság nem mérhető. A „nem ront” itt csak annyit jelent, hogy a minta egyetlen sora sem változik a felhasználói példák ellenében. A 93 visszavont összevonás közül egy sem esik a mintába, így azokat a minta nem méri.
+- **Hunspell (DT301, csak mérce).** A kísérlet nem hoz létre új szóalakot. Az egyetlen szövegváltozó alakpár a *mi → ami* (9 token). Ez a `helyesiras_hunspell.tsv`-ben már `semleges`, mert a Hunspell mindkét alakot elfogadja. A visszavont összevonás a régi alakot (*a*, *mi*) adja vissza. A Hunspell a *mi* és az *ami* között szóalakon nem dönt, mert a különbség szövegkörnyezeti (4.1.4). Ezért nem futott újra; a szótárfájlok és a futtató ebben a sessionben nincsenek meg.
