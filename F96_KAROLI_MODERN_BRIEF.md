@@ -6,9 +6,10 @@ tipus: feladat
 fazis: 1
 modell: opus
 munka: adat
-allapot: nem_indult
+allapot: fut
+ag: ccr-a680d019-39s73e
 ad: a Károli 1908 modernizált szövegrétege (helyesírás + igealak; szórend, szókincs, írásjel, betoldás-jelölés változatlan), szabályalapú szavankénti cserével (a #94 szótári alak- és regies_jegy-táblájából, Hunspell csak fejlesztési mérce, DT301), LLM csak a szabállyal le nem fedett maradékra; a Károli–Strong párosítás szavanként átvihető, a kieső segédigei vala jelölve; generált tábla az 1908-as szöveg mellett, nem helyette; két lépcső (helyesírás, majd igeragozás és vala), felhasználó által ellenőrzött mintán mérve, a token-felhasználással együtt
-kovetkezo: "A /kovetkezo indíthatja (a #94 lezárva; a Hunspell-kérdés eldöntve: DT301, csak fejlesztési mérce)"
+kovetkezo: "Folytatás: F96.0 (előkészítés és token-mérés) fut"
 olvas: [adat/szoto/, konkordancia/Karoli_1908.tsv, "adat/karoli_strong/*", adat/SEMA.md, adat/licencek.tsv, DONTESEK.md]
 ir: [eszkozok/karoli_modern/, adat/karoli_modern/, naplok/KAROLI_MODERN_meres.md]
 fugg: [94]
