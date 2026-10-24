@@ -104,15 +104,137 @@ A brief becslése (~0,05–0,2 M) az (1)-es változatban **túllépve** (0,44 M;
 - DT-F96e 🟢: (a) a lemmaváltások maradnak; (b) *reá → rá* igen (.1); (c) *-ván/-vén* igen (.2); (d) *-jék*: a .1 mintája dönt (4.5).
 - DT-F96f 🟢: a réteg nem tárol Strongot; token-kulcs (vers-kulcs + `tokenizal`-sorszám).
 - N-F96b: a *kivűl* és a további megfigyelt táblahibák a .1 kivételtáblájában (4.2); a *vévén* a .2-ben.
-- A Hunspell hu_HU (DT301): 4.1.
+- A Hunspell hu_HU (DT301): 4.1 (a pótló menet: futott, 4.1.3–4.1.5).
 
 ## 4. F96.1 — helyesírási lépcső
 
 `scope=a Károli 1908 minden verse (31 158) és tokenje (599 367) | forras=konkordancia/Karoli_1908.tsv (sha256:49335bbcc77d) + adat/szoto/karoli_szotari_alak.tsv (sha256:edba33e6d65a) + eszkozok/karoli_modern/helyesiras.py | ts=2026-10-24T13:36Z` — `python eszkozok/karoli_modern/helyesiras.py --minta`; determinisztikus, LLM és API nélkül (**0 token**). Kimenet (generált, `# GENERÁLT:` fejléccel): `adat/karoli_modern/helyesiras_alakok.tsv` (a szövegkörnyezet nélkül változó alakok), `adat/karoli_modern/helyesiras_tokenek.tsv` (a változó, kieső vagy bizonytalan tokenek, vers-kulccsal és `tokenizal`-sorszámmal, DT-F96f), `adat/karoli_modern/helyesiras_minta.tsv` (4.4). Ez a .1 köztes kimenete, nem a .3 kiadott rétege.
 
-### 4.1 Hunspell hu_HU (DT301) — nem futott
+### 4.1 Hunspell hu_HU (DT301): fejlesztési mérce, futott
 
-A futtató környezetben a Hunspell nem érhető el: nincs telepítve (sem `hunspell`, sem `/usr/share/hunspell`), a csomagforrás és a szótár forrása (GitHub, PyPI) a hálózati szabály miatt nem tölthető le (`connect_rejected`, 2026-10-24). A licencet így nem lehetett szó szerint idézni a forrásból, és a Hunspell nem futott. A brief .1/2 szerint, ahol sem a korpusz, sem a #94 tábla nem támasztja alá a modern alakot, a `tamasz` = `modell_ellenorizetlen`; a mérőszám a felhasználói minta. A Hunspell-mérés pótolható, ha a szótárfájl (és a licenc szövege) a repón kívül rendelkezésre áll: a felhasználó vagy egy hálózattal futó session dolga.
+*Előzmény: a .1 első menetében (2026-10-24, 13:36Z előtt) a Hunspell nem futhatott, mert a GitHub és a PyPI felé a hálózati szabály `connect_rejected` választ adott; a `helyesiras_alakok.tsv` fejléce és a DT-F96h szövege ezt az állapotot rögzíti. A mérést ugyanazon a napon, egy hálózattal futó menet pótolta (4.1.1–4.1.5).*
+
+**A DT301 szerint csak fejlesztési mérce.** A Hunspell-ítélet a szabályok ellenőrzésére szolgál. A `helyesiras_alakok.tsv`, a `helyesiras_tokenek.tsv` és a `helyesiras_minta.tsv` alakjai és `tamasz` oszlopa **nem változtak**. A szótárfájlok nem kerültek a repóba: a repón kívül, a session scratchpadjében vannak, a kimenet csak a sha256-jukat és a forrás-URL-t rögzíti.
+
+#### 4.1.1 Forrás és licenc (playbook 2. pont)
+
+`scope=LibreOffice/dictionaries, hu_HU/ (hu_HU.aff, hu_HU.dic, README_hu_HU.txt, description.xml) | forras=https://raw.githubusercontent.com/LibreOffice/dictionaries/67032ee957631908098a72edf48dc81cac27e369/hu_HU/<fájl> (a master HEAD-je a lekéréskor, `git ls-remote`) | ts=2026-10-24T15:57:55Z`
+
+| fájl | bájt | sha256 |
+|---|---:|---|
+| `hu_HU.aff` | 2 316 267 | `f3a2748dd535cfde2142ab17d0f7f8e4787b03fb25a60829c69ac8d493db4802` |
+| `hu_HU.dic` | 1 786 144 | `97293d670ad4a3b8e7eebef7e25c6e8e939b914c64b6b4672b2bf416b768f990` |
+| `README_hu_HU.txt` | 1 190 | `52b17fc3d53b6935eab747a71894507d702f7f0fde379c819c16cc803005fc84` |
+| `description.xml` | 839 | `049d1c6cac167cce2fe18638c35ecfacea72c78337803bae2aede146a879c6ee` |
+
+A `hu_HU/` könyvtárban külön licencfájl nincs: a `LICENSE`, a `COPYING` és a `license.txt` lekérése 404-et adott. A README a `COPYING.LGPL`-re és a `COPYING.MPL`-re a forrásfa gyökerében hivatkozik; ezeket ez a menet nem kérte le.
+
+A licenc **szó szerint**, a `README_hu_HU.txt`-ből (UTF-8):
+
+> Magyar Ispell helyesírási szótár – 1.9 szótárállományok morfológiai adatokkal
+>
+> A szótárállományok a LibreOffice projekt részeként a következő nyílt forráskódú
+> licencek bármelyike alapján szabadon felhasználhatóak, de mindenféle garancia nélkül:
+>
+> MPLv2 vagy LesserGPLv3+
+>
+> (c) Németh László és Godó Ferenc, 2025
+>
+> Honlap: http://magyarispell.sf.net
+>
+> ------------------------------------------------------------------------------
+>
+> Hungarian Hunspell dictionaries version 1.9 with morphological data
+>
+> These files are part of the LibreOffice project.
+>
+> License: MPLv2 and LesserGPLv3+
+>
+> The contents of this software may be used under the terms of
+> the GNU Lesser General Public License Version 3 or later (the "LGPL",
+> see COPYING.LGPL) or the Mozilla Public License Version 2.0 or later
+> (the "MPL", see COPYING.MPL in the root folder of the source tree).
+>
+> Software distributed under these licenses is distributed on an "AS IS" basis,
+> WITHOUT WARRANTY OF ANY KIND, either express or implied. See the licences
+> for the specific language governing rights and limitations under the licenses.
+>
+> 2025 (c) László Németh & Ferenc Godó
+>
+> Home: http://magyarispell.sf.net
+
+A `hu_HU.aff` fejlécéből szó szerint (a megjegyzéssorok ISO-8859-2 kódolásúak, a szótár maga `SET UTF-8`):
+
+> \# This dictionary is based on the Hungarian wordlist and affixes created
+> \# by László Németh and Ferenc Godó, and it is covered by their original
+> \# GPL/LGPL/MPL license as published by the FSF and Mozilla Foundation.
+> \#
+> \# Version: December 2025, 1.9
+
+**Két eltérés a korábbi feltevéshez képest, jelzésként; nem jogi vélemény:**
+1. A DT301 kérdése emlékezetből „MPL 1.1 / LGPL / GPL hármas licencet” feltételezett. A README szerint a licenc **MPLv2 vagy LGPLv3+** (a magyar szöveg szerint „bármelyike”), GPL nélkül.
+2. A `hu_HU.aff` fejléce régebbi megfogalmazással „GPL/LGPL/MPL” licencet említ. A két fájl tehát nem egyezik. A fejlesztési mércét (DT301) ez nem érinti, mert a kiadott rétegbe semmi nem kerül a szótárból, ezért `licencek.tsv`-sor sem kell. A brief 2. szakasza szerint a kiadásba vételhez új licencdöntés kellene.
+
+`description.xml`: `version value="2023.05.22"`, kiadó: FSF.hu Alapítvány. A verziója eltér a README-ben és az `.aff`-ban álló 1.9-es verziótól (2025-12); ezt a mérés nem vizsgálta.
+
+#### 4.1.2 A futtató
+
+- **Hunspell 1.7.2** (`https://github.com/hunspell/hunspell`, tag `v1.7.2`, commit `2969be996acad84b91ab3875b1816636fe61a40e`, klón: 2026-10-24). A könyvtár licence MPL 1.1 / GPL 2.0 / LGPL 2.1. A forrás nem került a repóba.
+- Az `apt` nem érte el a csomagtárat (DNS). A `pip install hunspell` / `cyhunspell` csomagot nem lehetett telepíteni (a PyPI a `no_proxy`-n áll, DNS nélkül; a proxyn át letöltött `cyhunspell` buildje elbukott). Az `autoreconf`-hoz hiányzik az `autopoint`, ezért a CLI nem fordult le. Helyette a könyvtár forrásából egy saját, kis futtató fordult: `eszkozok/karoli_modern/hunspell_driver.cxx`. Ez soronként egy szót olvas, a `Hunspell::spell` ítéletét adja vissza, és csak mérési célra, `--suggest` kapcsolóval, legfeljebb 3 javaslatot is. Fordítás:
+  `g++ -O2 -std=c++11 -DHUNSPELL_STATIC -I<hunspell>/src/hunspell eszkozok/karoli_modern/hunspell_driver.cxx <hunspell>/src/hunspell/{affentry,affixmgr,csutil,filemgr,hashmgr,hunspell,hunzip,phonet,replist,suggestmgr}.cxx -o hs_check`
+- A mérő szkript: `python eszkozok/karoli_modern/hunspell_meres.py --futtato <hs_check> --aff <hu_HU.aff> --dic <hu_HU.dic>`. Az útvonalak a repón kívül vannak, és csak argumentumként mennek át. A kimenet: `adat/karoli_modern/helyesiras_hunspell.tsv`, generált, `# GENERÁLT:` fejléccel. Alakpáronként rögzíti a `hunspell_1908`, a `hunspell_modern` (`elfogad`/`elutasit`) és a `hunspell_itelet` oszlopot. **Ez az ítélet-oszlop a `modell_ellenorizetlen` jelölés frissítése; a `tamasz` oszlop maga nem változik.**
+- Próba: *harminc, királlyal, sötétség, neki, akik, amellyel* elfogadva; *harmincz, királylyal, melylyel, atyjok* elutasítva. A *setétség* viszont elfogadva: a szótár a régies alakot is ismeri (4.1.4).
+
+#### 4.1.3 Eredmény
+
+`scope=a helyesiras_alakok.tsv mind az 1 377 alakja + a helyesiras_tokenek.tsv 146 további, szövegkörnyezetfüggő alakpárja (nem kieső, változó; zömmel nevmas) = 1 523 alakpár, 2 988 szó | forras=adat/karoli_modern/helyesiras_alakok.tsv + helyesiras_tokenek.tsv; Hunspell 1.7.2 + LibreOffice hu_HU 1.9 (67032ee9) | ts=2026-10-24T16:01Z` — determinisztikus, LLM nélkül (**0 token**).
+
+Ítélet a pár két alakjából. `megerosit`: a modern alak elfogadva, az 1908-as elutasítva. `semleges`: mindkettő elfogadva. `cafol`: a modern elutasítva, az 1908-as elfogadva. `ismeretlen`: mindkettő elutasítva. Az alábbi számok alak / token formában értendők, a token az 1908-as alak korpuszgyakorisága.
+
+| `tamasz` | alak | megerősít | semleges | ismeretlen | cáfol |
+|---|---:|---:|---:|---:|---:|
+| `modell_ellenorizetlen` | **1 093** | **824 / 2 348** | 20 / 39 | 246 / 442 | **3 / 5** |
+| `szoto_94` | 177 | 138 / 1 018 | 13 / 51 | 26 / 65 | 0 |
+| `korpusz` | 106 | 84 / 424 | 13 / 2 295 | 9 / 107 | 0 |
+| `manual` | 1 | 1 / 4 | 0 | 0 | 0 |
+| **alakok összesen** | 1 377 | 1 047 / 3 794 | 46 / 2 385 | 281 / 614 | 3 / 5 |
+| tokenek (szövegkörnyezetfüggő) | 146 | 4 / 269 | 141 / 10 942 | 0 | 1 / 1 |
+
+Szabályonként, az alakok táblájában:
+
+| szabály | megerősít | semleges | ismeretlen | cáfol |
+|---|---:|---:|---:|---:|
+| `karakter` | 847 | 16 | 244 | 3 |
+| `szoto_94` | 138 | 13 | 26 | 0 |
+| `szotag` | 52 | 5 | 4 | 0 |
+| `rea` | 9 | 10 | 7 | 0 |
+| `neki` | 0 | 2 | 0 | 0 |
+| `kivetel` | 1 | 0 | 0 | 0 |
+
+A `modell_ellenorizetlen` 1 093 alakjából tehát **824 alakot (2 348 token) a Hunspell alátámaszt**. 20 alakon nem dönt, mert a régi alakot is elfogadja; 246 alakon nem dönt, mert a modernt sem ismeri; 3 alakon cáfol.
+
+#### 4.1.4 A tipikus elutasítások és a Hunspell korlátai
+
+A 285 elutasított modern alakot (`ismeretlen` + `cafol`) heurisztika sorolta be, mérési célra, a scratchpadben. A javaslat (`suggest`) csak itt, a naplóban szerepel, és nem kimeneti alak.
+
+- **Nagybetűs, zömmel tulajdonnév: 182 alak** (*Acmonig, Bocra, Cefon, Ciklág, Cilicia …*). A kisbetűsítve újrapróbált alakok egyikét sem fogadja el a Hunspell, tehát nem mondatkezdő közszavakról van szó. A *cz → c* a tulajdonneveken a Hunspellel nem ellenőrizhető.
+- **Régies igealak, a .2 dolga: kb. 32 alak** (*harcola, harcolának, szülé, leüle, körülmetélé, növekedének, ráveté*). A helyesírási csere maga helyes, az elutasítás oka az igealak. Hasonló a *-jok/-jök* birtokos T/3 (8 alak, 101 token: *rájok* 88, *orcájok-*, *utcájokon*): a Hunspell csak a *-juk/-jük* alakot ismeri (*rájuk, orcájukat*). Ez a DT-F96g-hez adat, nem döntés.
+- **Összetett számnevek: kb. 18 alak** (*harmincezeret, kétezernyolcszáztizenkettő, száznyolcvanötezeret*). A Hunspell a hosszú számnév-összetételt nem ismeri, ez a szótár korlátja. Megfigyelés: a mai helyesírás (AkH. 12., 2000 fölött kötőjel: *kétezer-nyolcszáztizenkettő*) kötőjelet kívánna, ez azonban tokenváltozás (K2), és a .1 nem kezeli.
+- **Régi helyesírású vagy alakú közszó, amelyet a szabály nem fed le** (*cerimóniákat → ceremóniákat, kálcédon → kalcedon, skárlátcikkeket → skarlát-, pőröllyel → pöröllyel, sudarcédrussal → sudár-, köröskörül → körös-körül, kívánatosb*): a karaktercsere után maradó eltérés. Lemma- vagy alakváltás, a DT-F96e (a) szerint nem e lépcső dolga. A *körös-körül* kötőjeles, tehát tokenváltozás volna.
+- **A semleges eset a Hunspell korlátja.** A szótár sok régies alakot elfogad: *néki* (1 734 token), *reá, reám, reád*, *setétség* és ragozott alakjai, *arczára, válaszszák, harmincz* (*Harmincz*), *paizsos*. Ezeken a Hunspell nem dönt. A régi alak elfogadása nem cáfolja a szabályt, de alá sem támasztja. A *néki → neki* és a *reá → rá* forrása a DT128 és a DT-F96e (b), tehát felhasználói döntés.
+- **A szövegkörnyezetfüggő összevonás** (`nevmas`: *a kik → akik*) szóalakon nem mérhető. A *kik* és az *akik* is helyes szó, ezért a pár 141 esetben semleges; a döntést a minta hozza.
+
+#### 4.1.5 Amit a Hunspell cáfol vagy hibának mutat (nem javítva, jelzés)
+
+A szabályok és a kimeneti táblák **nem változtak**. A javítás szabálydöntés, a .1 ⛔ mintája után.
+
+1. **`karakter` (nyny → nny) összetételi határon: cáfolat.** *keménynyakú → keménnyakú* (3 token), *Keménynyakú* (1), *keménynyakúak* (1): összesen 3 alak, 5 token. A Hunspell a régi alakot elfogadja, a modernt elutasítja, első javaslata *keménynyakú*. Az AkH. szerint az összetételben a kettős betű nem egyszerűsödik (*kemény + nyakú*). A szabály tehát az összetételi határon hibás: a modern alak a változatlan *keménynyakú*. A többi *nyny/gygy/cscs/lyly/szsz* csere (201 alak) a Hunspell szerint helyes (*aranynyal → arannyal, egygyé → eggyé, öcscse → öccse*).
+2. **Szabálysorrend-hiba: `karakter` a `szotag` előtt.** *paizszsal → paizzsal* (7 token): a *zszs → zzs* csere után a *paizs → pajzs* szabály már nem illeszkedik, így félig modern alak jön létre. A Hunspell mindkét alakot elutasítja, és a *pajzzsal*-t javasolja. Nem cáfolat (`ismeretlen`), de valódi generátorhiba.
+3. **`karakter` (cz → c) szóvégi kettőzéssel: cáfolat jellegű.** *strucz → struc* (3), *struczok → strucok* (3), *struczmadarak, struczmadár, struczmadárnak* (4): 5 alak, 10 token. A Hunspell a *struc*-ot elutasítja, és a *strucc*-ot javasolja. A mai alak *strucc* (AkH.), a mechanikus *cz → c* itt rossz modern alakot ad. A régit sem fogadja el, ezért a besorolás `ismeretlen`.
+4. **`nevmas:hatarozo`, *a minemű → aminemű* (1Krón 17:8, 1 token).** A Hunspell az *aminemű*-t nem ismeri, a *minemű*-t igen (`cafol`). Gyenge jelzés: az *aminemű* régies, de létező vonatkozó névmás, így a hiány valószínűleg a szótár korlátja. A mintán dönthető.
+5. **`szotag`, *paizst → pajzst* (18 token) és *dícséréd → dicséréd*.** A Hunspell elutasítja őket: a mai alak *pajzsot*, illetve *dicséred*. A helyesírási csere helyes, az eltérés alaktani, tehát nem a .1 dolga.
+
+**Összegzés a szabályokra:** a Hunspell a `modell_ellenorizetlen` alakok 75%-át (824 / 1 093) alátámasztja. Egy szabályt cáfol egy szűk esetben: a `karakter` nyny → nny cseréje összetételi határon (5 token). Egy szabálysorrend-hibát (7 token) és egy szóvégi *cz → cc* esetet (10 token) mutat meg. A többi elutasítás a tulajdonnév, a .2-es igealak, a *-jok* és a szótár korlátja. A javítás (kivétel a *keménynyakú*-ra, a *paizs* sorrendje, *strucc*) a .1 ⛔ után, a felhasználói mintával együtt dönthető.
 
 ### 4.2 Szabályok és darabszámok
 
@@ -127,7 +249,7 @@ A futtató környezetben a Hunspell nem érhető el: nincs telepítve (sem `huns
 | `szotag` | manual | 160 | *dícsér- → dicsér-*, *paizs → pajzs* |
 | `kivetel` | N-F96b | 4 csere | *kivűl → kívül* (a #94 tábla: *kivül*); változatlan marad a *gyűl-*, *egybegyűl-*, *összegyűl-*, *dűl-*, *ledűle*, *jóhiszeműleg* (a tábla mai alakja ott hibás: *gyül*, *dül*) |
 
-Összesen: **12 804 vers változik** (a 31 158-ból), **28 953 token** (ebből 11 212 kieső „a”), **1 377 alak** szövegkörnyezet nélkül. Az alakok `tamasz` oszlopa: `szoto_94` 177, `korpusz` 106 (a modern alak a Károliban is áll), `manual` 1, **`modell_ellenorizetlen` 1 093** (zömmel a `karakter` cseréi: a *cz*-s alakok modern párja a Károliban nem fordul elő; Hunspell nélkül ez a mintán mérhető).
+Összesen: **12 804 vers változik** (a 31 158-ból), **28 953 token** (ebből 11 212 kieső „a”), **1 377 alak** szövegkörnyezet nélkül. Az alakok `tamasz` oszlopa: `szoto_94` 177, `korpusz` 106 (a modern alak a Károliban is áll), `manual` 1, **`modell_ellenorizetlen` 1 093** (zömmel a `karakter` cseréi: a *cz*-s alakok modern párja a Károliban nem fordul elő; Hunspell nélkül ez a mintán mérhető; a Hunspell-ítélet: 4.1.3).
 
 **Nem változik a .1-ben (szándékosan):** a lemmaváltás (DT-F96e a: *e, oh, férfiú, leány, mostan, minekutánna*, az önálló *kik/mely*); minden igealak (*teremté, monda, -ván/-vén, vala, lőn, vagyon*: .2); a *-jék* és a *-jok/-jök* (4.5).
 
