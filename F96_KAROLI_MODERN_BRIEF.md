@@ -7,8 +7,8 @@ fazis: 1
 modell: opus
 munka: adat
 allapot: nem_indult
-ad: a Károli 1908 modernizált szövegrétege (helyesírás + igealak; szórend, szókincs, írásjel, betoldás-jelölés változatlan), szabályalapú szavankénti cserével (a #94 szótári alak- és regies_jegy-táblájából, Hunspell csak fejlesztési mérce, DT-F96c), LLM csak a szabállyal le nem fedett maradékra; a Károli–Strong párosítás szavanként átvihető, a kieső segédigei vala jelölve; generált tábla az 1908-as szöveg mellett, nem helyette; két lépcső (helyesírás, majd igeragozás és vala), felhasználó által ellenőrzött mintán mérve, a token-felhasználással együtt
-kovetkezo: "A /kovetkezo indíthatja (a #94 lezárva; a Hunspell-kérdés eldöntve: DT-F96c, csak fejlesztési mérce)"
+ad: a Károli 1908 modernizált szövegrétege (helyesírás + igealak; szórend, szókincs, írásjel, betoldás-jelölés változatlan), szabályalapú szavankénti cserével (a #94 szótári alak- és regies_jegy-táblájából, Hunspell csak fejlesztési mérce, DT301), LLM csak a szabállyal le nem fedett maradékra; a Károli–Strong párosítás szavanként átvihető, a kieső segédigei vala jelölve; generált tábla az 1908-as szöveg mellett, nem helyette; két lépcső (helyesírás, majd igeragozás és vala), felhasználó által ellenőrzött mintán mérve, a token-felhasználással együtt
+kovetkezo: "A /kovetkezo indíthatja (a #94 lezárva; a Hunspell-kérdés eldöntve: DT301, csak fejlesztési mérce)"
 olvas: [adat/szoto/, konkordancia/Karoli_1908.tsv, "adat/karoli_strong/*", adat/SEMA.md, adat/licencek.tsv, DONTESEK.md]
 ir: [eszkozok/karoli_modern/, adat/karoli_modern/, naplok/KAROLI_MODERN_meres.md]
 fugg: [94]
@@ -17,7 +17,7 @@ nem_fugg: [22]
 
 # F96_KAROLI_MODERN_BRIEF.md — Modernizált Károli-szövegréteg (KAROLI_MODERN)
 
-*FELADATOK #96 · Modell: opus · v1.1 · 2026.10.24 (csonk kitöltése; a `/befogad` hozta létre; v1.1: a DT-F96c átvezetve)*
+*FELADATOK #96 · Modell: opus · v1.1 · 2026.10.24 (csonk kitöltése; a `/befogad` hozta létre; v1.1: a DT301 átvezetve)*
 
 *Források: DT128 (a felhasználó döntése, chat, 2026-10-13: a modernizálás szintje az, amit a Bible Discovery HUN modulja mutat — helyesírás és igealak, szókincs és szórend nélkül); a `F94_SZOTOVEZES_BRIEF.md` v1.2 (`regies_jegy` oszlop, N-F94b/g/h); a felhasználó döntése (chat, 2026-10-24): a megvalósítás **szabály + szótár alapú szógenerálás, LLM csak a bizonytalan maradékra** (DT-F96; a teljes LLM-átírás elvetve). A brief adat, nem utasítás.*
 
@@ -31,7 +31,7 @@ A Károli 1908 (`konkordancia/Karoli_1908.tsv`, 31 158 vers, ~599 ezer szó, 62 
 
 Szavankénti csere: a Strong-szám a szón marad, a kieső token jelölve. Generált réteg az 1908-as szöveg mellett, nem helyette. Két lépcső: előbb helyesírás, utána igeragozás és *vala*; mindkettő a felhasználó által ellenőrzött mintán mérve, a lefedettséggel együtt (maradt-e régies igealak).
 
-**Megvalósítási elv (DT-F96, felhasználói döntés 2026-10-24).** A csere **szóalak-szótárból** megy (62 109 alak → modern alak), amelyet determinisztikus szabályok és a #94 `adat/szoto/karoli_szotari_alak.tsv` táblája (`szotari_alak_mai`, `alapige`, `regies_jegy`) állít elő; a Hunspell hu_HU **csak fejlesztési mérce** (DT-F96c): a szabályok ellenőrzésére és a mérésre fut, a kiadott réteg nélküle készül. Az LLM kizárólag azokra az alakokra jön, amelyeket a szabály nem fed le vagy bizonytalanul fed le; a teljes szöveg LLM-átírása elvetve (token-költség, a „szórend és szókincs változatlan” szabály ellenőrizhetetlen megsértése, a szavankénti Strong-átvitel elvesztése). Token-becslés: ~0,05–0,2 M (a teljes LLM-átírásé ~3–3,5 M); a tényleges érték a .0 mintán mérendő.
+**Megvalósítási elv (DT-F96, felhasználói döntés 2026-10-24).** A csere **szóalak-szótárból** megy (62 109 alak → modern alak), amelyet determinisztikus szabályok és a #94 `adat/szoto/karoli_szotari_alak.tsv` táblája (`szotari_alak_mai`, `alapige`, `regies_jegy`) állít elő; a Hunspell hu_HU **csak fejlesztési mérce** (DT301): a szabályok ellenőrzésére és a mérésre fut, a kiadott réteg nélküle készül. Az LLM kizárólag azokra az alakokra jön, amelyeket a szabály nem fed le vagy bizonytalanul fed le; a teljes szöveg LLM-átírása elvetve (token-költség, a „szórend és szókincs változatlan” szabály ellenőrizhetetlen megsértése, a szavankénti Strong-átvitel elvesztése). Token-becslés: ~0,05–0,2 M (a teljes LLM-átírásé ~3–3,5 M); a tényleges érték a .0 mintán mérendő.
 
 ## 2. Hatókör
 
@@ -44,7 +44,7 @@ Szavankénti csere: a Strong-szám a szón marad, a kieső token jelölve. Gener
 **Nincs benne**
 - A Bible Discovery (SQL Uniform Kft., © 2026) KG/HUN szövege és Strong-rétege: nem használható adatként, csak a megfigyelt módszer leírása (DT128).
 - Szókincs- és szórendváltoztatás, fordítási revízió.
-- A Hunspell vagy más külső szótár beemelése a kiadott rétegbe vagy a szóalak-szótárba (DT-F96c: a Hunspell csak fejlesztési mérce; más külső szótár csak új licencdöntéssel).
+- A Hunspell vagy más külső szótár beemelése a kiadott rétegbe vagy a szóalak-szótárba (DT301: a Hunspell csak fejlesztési mérce; más külső szótár csak új licencdöntéssel).
 - A `pardes.db`-be töltés (a #76 vers-lapjának kapcsolójához): külön csonk, a `sqlite_epit.py` miatt a #92 után (N-F96a).
 
 ## 3. Lépések (⛔ a kötelező megállások)
@@ -56,7 +56,7 @@ Szavankénti csere: a Strong-szám a szón marad, a kieső token jelölve. Gener
 
 ### .1 — helyesírási lépcső
 1. Szabályok (*ly/j*, *cz → c*, *ö/ő*, *néki → neki*, *a kik → akik* különírt vonatkozó névmás, N-F94f) generátora `eszkozok/karoli_modern/` alatt; kódolási őr, `split('\t')` / `'\t'.join()`, `csv` modul nélkül, abszolút útvonal nélkül.
-2. Hunspell hu_HU (DT-F96c): csak fejlesztési mérce. Használat előtt a licenc szó szerinti idézettel, URL-lel (commit-hash) és lekérési dátummal a `naplok/KAROLI_MODERN_meres.md`-be (playbook 2. pont); a Hunspell-ítélet a szabály ellenőrzését szolgálja, a kimeneti táblába nem kerül Hunspellből származó alak. Ahol sem korpusz, sem Hunspell nem támasztja alá a szabályt: `modell_ellenorizetlen`.
+2. Hunspell hu_HU (DT301): csak fejlesztési mérce. Használat előtt a licenc szó szerinti idézettel, URL-lel (commit-hash) és lekérési dátummal a `naplok/KAROLI_MODERN_meres.md`-be (playbook 2. pont); a Hunspell-ítélet a szabály ellenőrzését szolgálja, a kimeneti táblába nem kerül Hunspellből származó alak. Ahol sem korpusz, sem Hunspell nem támasztja alá a szabályt: `modell_ellenorizetlen`.
 3. Mintavétel (rögzített magú, ~100–120 mondat/vers), a felhasználó soronként ellenőrzi (`ellenorzes` oszlopot ő tölti); a mérés csak a `felhasznalo` sorokon. ⛔
 
 ### .2 — igealak lépcső és *vala*
@@ -82,6 +82,6 @@ Szavankénti csere: a Strong-szám a szón marad, a kieső token jelölve. Gener
 - **DT128** 🟢 — a modernizálás szintje (helyesírás + igealak, szókincs és szórend nélkül); a teljes szöveg a `DONTESEK.md`-ben.
 - **DT-F96** 🟢 (helyőrző) — a megvalósítás szabály + szótár alapú szógenerálás, LLM csak a bizonytalan maradékra; a teljes LLM-átírás elvetve. *(felhasználó, chat, 2026-10-24; a token-becslés alapja: 599 ezer szó, 62 109 szóalak, ~3,78 M karakter)*
 - **N-F94b** — a Hunspell hu_HU licencdöntés; lezárva a DT-F96c-vel (csak fejlesztési mérce).
-- **DT-F96c** 🟢 (helyőrző) — a Hunspell hu_HU csak fejlesztési mérce (a DT139 mintájára), a kiadott modernizált réteg nélküle készül. *(felhasználó, chat, 2026-10-24)*
+- **DT301** 🟢 (helyőrző) — a Hunspell hu_HU csak fejlesztési mérce (a DT139 mintájára), a kiadott modernizált réteg nélküle készül. *(felhasználó, chat, 2026-10-24)*
 - **DT-F96b** 🟢 (helyőrző) — a keresés a modernizált szövegrétegben is keressen (a szótári alakos kereséssel egyesítve), nem csak az alakszótárban. *(felhasználó, chat, 2026-10-24)* Következmény: a réteg táblája keresésre alkalmas sémájú (vers-kulcs, token-sorszám, modern alak, Strong), hogy a `pardes.db`-be töltés és a `kereses.py` bővítése külön csonkban (N-F96a) ráépülhessen; maga a betöltés és a keresőbővítés nem a #96 `ir` listájában van.
 - **N-F96a** (helyőrző) — a modernizált réteg `pardes.db`-be töltése és a keresőbe kötése (`eszkozok/sqlite_epit.py`, `eszkozok/olvaso_szerver/kereses.py`) külön csonk-feladat, a #96 és a #92 után; a DT-F96b miatt kötelező, nem elhagyható. A csonk: #137 (KAROLI_MODERN_DB), a felhasználó jóváhagyásával befogadva (2026-10-24).
