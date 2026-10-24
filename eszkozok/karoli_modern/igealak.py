@@ -83,6 +83,9 @@ KI_DIR = os.path.join('adat', 'karoli_modern')
 H_TOKENEK = os.path.join(KI_DIR, 'helyesiras_tokenek.tsv')
 LLM_TABLA = os.path.join(KI_DIR, 'igealak_llm.tsv')
 LLM_NAPLO = os.path.join(KI_DIR, 'igealak_llm_hivasok.jsonl')
+# A második, opus-ellenőrzés a vitatott alakokon (a szabály és a sonnet nem egyezik, vagy a tő-őr bukott)
+LLM2_TABLA = os.path.join(KI_DIR, 'igealak_llm_opus.tsv')
+LLM2_NAPLO = os.path.join(KI_DIR, 'igealak_llm_opus_hivasok.jsonl')
 SZKRIPT = 'eszkozok/karoli_modern/igealak.py'
 MODUL = 'eszkozok/karoli_modern/igeragozas.py'
 MAG = 20261024
@@ -291,8 +294,8 @@ def to_or(llm, alak_h, sor, alakok, reszlet=''):
     return any(o.startswith(t) for t in tovek) and abs(len(o) - len(a)) <= 5
 
 
-def llm_beolvas():
-    ut = os.path.join(ROOT, LLM_TABLA)
+def llm_beolvas(tabla=LLM_TABLA):
+    ut = os.path.join(ROOT, tabla)
     ki = {}
     if not os.path.exists(ut):
         return ki
@@ -355,6 +358,7 @@ class Feldolgozo:
         self.alakszotar = alakszotar
         self.dont = dont
         self.llm = llm
+        self.llm2 = llm_beolvas(LLM2_TABLA)
         self.alak_dontes = {}  # alak → (alkalmazas, jeloltek, szabaly)
         self.szamlalo = collections.Counter()
 
@@ -406,9 +410,9 @@ class Feldolgozo:
         self.alak_dontes[alak] = ki
         return ki
 
-    def llm_jelolt(self, alak, alak_h):
-        """(llm-alak, tő-őr) az LLM-táblából (kisbetűs kulcs); ('', '') ha nincs."""
-        d = self.llm.get(alak.lower())
+    def llm_jelolt(self, alak, alak_h, masodik=False):
+        """(llm-alak, tő-őr) az LLM-táblából (kisbetűs kulcs; masodik: az opus-tábla); ('', '') ha nincs."""
+        d = (self.llm2 if masodik else self.llm).get(alak.lower())
         if not d:
             return '', ''
         llm = nagy(alak_h, d['llm_alak'])
@@ -439,6 +443,9 @@ class Feldolgozo:
                 llm, tor = self.llm_jelolt(r[1], r[2])
                 if llm:
                     jl.append('llm:%s(%s)' % (llm, 'tő-őr ok' if tor == 'ok' else 'tő-őr bukott'))
+                llm2, tor2 = self.llm_jelolt(r[1], r[2], True)
+                if llm2:
+                    jl.append('opus:%s(%s)' % (llm2, 'tő-őr ok' if tor2 == 'ok' else 'tő-őr bukott'))
                 r[9] = '; '.join(jl)
                 r[6] = cim
             elif alk == 'vala':
@@ -602,13 +609,16 @@ def main():
     ap.add_argument('--koteg', type=int, default=560)
     ap.add_argument('--llm-valasz', default=None, help='az LLM-válaszok könyvtára (a repón kívül)')
     ap.add_argument('--modell', default=None)
+    ap.add_argument('--opus', action='store_true', help='a --llm-valasz az opus-táblába ír (igealak_llm_opus.tsv)')
     a = ap.parse_args()
     tabla, versek, gy, kis_szavak, alakszotar, dont, alakok = elokeszit()
     if a.llm_kerdes:
         llm_kerdes(a.llm_kerdes, a.koteg, versek, gy, alakok, alakszotar)
         return
     if a.llm_valasz:
-        llm_valasz(a.llm_valasz, a.modell, alakok, alakszotar)
+        llm_valasz(a.llm_valasz, a.modell, alakok, alakszotar,
+                   (LLM2_TABLA, LLM2_NAPLO, 'a vitatott jelöltek (a szabály és a sonnet nem egyezik, vagy a tő-őr bukott)')
+                   if a.opus else (LLM_TABLA, LLM_NAPLO, 'a nem automatikus (jelölt) igealakok'))
         return
     fd = Feldolgozo(alakok, alakszotar, dont, llm_beolvas())
     h_vart = set(h_tokenek_beolvas())
@@ -632,7 +642,8 @@ def bemenet_hash():
     return ('%s (sha256:%s) + %s (sha256:%s) + %s (sha256:%s) + %s (sha256:%s) + %s (sha256:%s)%s'
             % (KAROLI, sha(KAROLI)[:12], SZOTARI, sha(SZOTARI)[:12], H_TOKENEK, sha(H_TOKENEK)[:12],
                SZKRIPT, sha(SZKRIPT)[:12], MODUL, sha(MODUL)[:12],
-               (' + %s (sha256:%s)' % (LLM_TABLA, sha(LLM_TABLA)[:12])) if os.path.exists(os.path.join(ROOT, LLM_TABLA)) else ''))
+               ''.join(' + %s (sha256:%s)' % (t, sha(t)[:12]) for t in (LLM_TABLA, LLM2_TABLA)
+                       if os.path.exists(os.path.join(ROOT, t)))))
 
 
 def kiir(vers_ki, gy, alakok, fd, a):
@@ -669,14 +680,20 @@ def kiir(vers_ki, gy, alakok, fd, a):
         egy = ''
         if llm and jel:
             egy = 'egyezik' if llm in jel.values() else 'elter'
+        llm2, tor2 = fd.llm_jelolt(alak, fd.alakszotar[alak][0], True)
+        egy2 = ''
+        if llm2:
+            egy2 = '+'.join(x for x, ok in (('szabaly', bool(jel) and llm2 in jel.values()), ('sonnet', llm2 == llm)) if ok) or 'egyik_sem'
         alak_ki.append([alak, str(gy[alak]), o, reszlet, sor['regies_jegy'] if sor else '',
-                        sor['szotari_alak'] if sor else '', alk or 'valtozatlan', cim, sz, llm, tor, egy])
+                        sor['szotari_alak'] if sor else '', alk or 'valtozatlan', cim, sz, llm, tor, egy,
+                        llm2, tor2, egy2])
     with open(os.path.join(ki_dir, 'igealak_alakok.tsv'), 'w', encoding='utf-8', newline='\n') as f:
         f.write(fejlec.replace('\n', ' | scope=az igealak-osztályú és a vala/lőn/vagyon alakok (%d); alkalmazas: '
                                'szabaly = automatikus csere, jelolt = nem automatikus (a modern szöveg nem változik)\n'
                                % len(alak_ki)))
         f.write('\t'.join(['alak', 'gyakorisag', 'osztaly', 'reszlet', 'regies_jegy', 'szotari_alak', 'alkalmazas',
-                           'szabaly', 'szabaly_jelolt', 'llm_alak', 'to_or', 'egyezes']) + '\n')
+                           'szabaly', 'szabaly_jelolt', 'llm_alak', 'to_or', 'egyezes', 'opus_alak', 'opus_to_or',
+                           'opus_egyezik']) + '\n')
         for r in alak_ki:
             f.write('\t'.join(r) + '\n')
     osszesit(vers_ki, gy, alakok, fd, alak_ki)
@@ -723,6 +740,9 @@ def osszesit(vers_ki, gy, alakok, fd, alak_ki):
     eg = collections.Counter((r[2], r[10], r[11]) for r in alak_ki if r[9])
     if eg:
         print('LLM: osztály × tő-őr × egyezés (alak): %s' % dict(sorted(eg.items())))
+    eg2 = collections.Counter((r[2], r[13], r[14]) for r in alak_ki if r[12])
+    if eg2:
+        print('opus: osztály × tő-őr × kivel egyezik (alak): %s' % dict(sorted(eg2.items())))
 
 
 # ---- LLM (DT-F96d) -------------------------------------------------------------------------------
@@ -775,7 +795,7 @@ def llm_kerdes(ki, koteg, versek, gy, alakok, alakszotar):
     print('LLM-kérdés: %d alak, %d köteg → %s' % (len(sorok), nk, ki))
 
 
-def llm_valasz(ki, modell, alakok, alakszotar):
+def llm_valasz(ki, modell, alakok, alakszotar, cel=(LLM_TABLA, LLM_NAPLO, 'a nem automatikus (jelölt) igealakok')):
     """A válaszfájlok (valasz_NN.tsv) és a hívásnapló (hivasok.jsonl) beolvasása az igealak_llm.tsv-be."""
     if not modell:
         raise SystemExit('--modell kötelező (a ténylegesen futott modell neve)')
@@ -803,18 +823,19 @@ def llm_valasz(ki, modell, alakok, alakszotar):
         with open(os.path.join(ki, 'hivasok.jsonl'), encoding='utf-8') as f:
             hivasok = [json.loads(l) for l in f if l.strip()]
     ts = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%MZ')
-    ut = os.path.join(ROOT, LLM_TABLA)
+    tabla, naplo, hatokor = cel
+    ut = os.path.join(ROOT, tabla)
     with open(ut, 'w', encoding='utf-8', newline='\n') as f:
         f.write('# GENERÁLT: %s --llm-valasz (F96.2, DT-F96d) — modell-kimenet (modell_ellenorizetlen), kézzel nem '
-                'szerkeszthető | modell=%s (Claude Code, előfizetés, API nélkül) | scope=a nem automatikus (jelölt) '
-                'igealakok kisbetűsen (%d kérdés, %d válasz, %d hiányzó) | token: %s | ts=%s\n'
-                % (SZKRIPT, modell, len(kulcs), len(valasz), len(hiany),
+                'szerkeszthető | modell=%s (Claude Code, előfizetés, API nélkül) | scope=%s '
+                'kisbetűsen (%d kérdés, %d válasz, %d hiányzó) | token: %s | ts=%s\n'
+                % (SZKRIPT, modell, hatokor, len(kulcs), len(valasz), len(hiany),
                    sum(h.get('total_tokens', 0) for h in hivasok), ts))
         f.write('alak\tllm_alak\tkerdes_id\n')
         for i in sorted(kulcs):
             if i in valasz:
                 f.write('%s\t%s\t%s\n' % (kulcs[i], valasz[i], i))
-    with open(os.path.join(ROOT, LLM_NAPLO), 'w', encoding='utf-8', newline='\n') as f:
+    with open(os.path.join(ROOT, naplo), 'w', encoding='utf-8', newline='\n') as f:
         for h in hivasok:
             f.write(json.dumps(h, ensure_ascii=False) + '\n')
     print('LLM-válasz: %d / %d; hiányzik: %d %s; értelmezhetetlen sor: %d %s'
