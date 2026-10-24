@@ -465,3 +465,80 @@ A minta nem `valtozatlan` rétegű soraiban kimaradt régi írásmód, amelyre n
 | `helyesiras_ami_ellenorzes.tsv`, szövegváltozó sorok | **101 / 102 (99,0%)** | ≥ 98% | ✓ |
 
 **A .1 lezárva.** A K1 teljesül; a .1 ⛔ döntései (DT-F96e d, DT-F96g, DT-F96h, DT-F96i, DT-F96j) mind 🟢 és alkalmazva. Nyitva marad az N-F96c: az egyedi régi írásmódok (4.8.4) és a *nékie*. A K1 egyedül ezt a lépést nem tartja vissza.
+
+## 5. F96.2 — igealak-lépcső és *vala*
+
+`scope=a Károli 1908 minden verse és tokenje (31 158 vers, 599 367 token) | forras=konkordancia/Karoli_1908.tsv (sha256:49335bbcc77d) + adat/szoto/karoli_szotari_alak.tsv (sha256:edba33e6d65a) + adat/karoli_modern/helyesiras_tokenek.tsv (sha256:4759bd24957f, a .1 kimenete) + eszkozok/karoli_modern/igealak.py + igeragozas.py + adat/karoli_modern/igealak_llm.tsv | ts=2026-10-24` — `python eszkozok/karoli_modern/igealak.py --minta`.
+
+### 5.1 A generátor
+
+A .2 a .1 kimenetére épül: az `igealak.py` a .1-et a `helyesiras.py` függvényeivel újraszámolja, és összeveti a kiadott `helyesiras_tokenek.tsv`-vel. Mind a **33 323 sor egyezik**, eltérésnél a szkript megáll. A múlt idő képzése és a jelen idő elemzése az `igeragozas.py`-ban van (kézi szabálykészlet, manual; rendhagyó tövek, hangkivetés, *-ad/-ed* tövek, az *i*-hangú igék hangrendje kézi listában). Hunspell és API nélkül fut.
+
+| döntés | alak | token | |
+|---|---:|---:|---|
+| gyakori jegyes alak (DT140, a 200 leggyakoribb) | 318 | 12 565 | automatikus; a 329 alakot a modell átnézte, 7 hibás jegyű vagy rosszul képzett alak a `KEZI` táblában (*érte*: névutós névmás; *megjelenék → megjelent*; *eltemeték → eltemették*) |
+| a jegy nélküli régies alakok kézi listája (`GYANU_KEZI`, N-F96b) | 74 | 1 496 | automatikus: *jő → jön*, *vőn → vett*, *mondák → mondták*, *álla → állt* … (a gyanús alakok 6+ gyakoriságú, átnézett része) |
+| *lőn → lett*, *lőnek → lettek*, *vagyon → van* | 4 | 752 | automatikus; a névelő utáni *vagyon* (főnév) és a nyíllal álló *lőnek* (lő) marad |
+| ritka jegyes alak (`igealak_ritka`) | 2 793 | 6 528 | **nem automatikus** (N-F94h): a szabály és az LLM jelöltje a `jelolt` oszlopban |
+| jegy nélküli régies gyanú (`regies_gyanu`) | 682 | 3 701 | **nem automatikus**: jelölt |
+| felszólító E/2 *-jál/-jél* (*cselekedjél → cselekedj*) | 92 | 319 | **nem automatikus**, jelölt: DT-F96k |
+| kötőhangzós régi múlt (*mondotta → mondta*, *szólott → szólt*) | 89 | 658 | **nem automatikus**, jelölt: DT-F96k |
+| határozói igenév kivétele (*lévén*, *jövén*-család) | 13 | — | változatlan: a mai alak is *-vén* |
+
+A .2 a modern szövegben **18 566 tokent cserél**, és **2 447 tokent ejt ki** (segédigei *vala*). A .1-gyel együtt **20 134 vers** változik.
+
+A tárgyas/alanyi választás a T/3, E/2, T/1 és T/2 régies alakján heurisztikus (határozott tárgy a tagmondatban): 583 token, `bizonytalan=targyas_heur`. A tárgyas alakot csak akkor kínálja, ha az ige tárgyas alakja a korpuszban áll (*bemenének → bementek*, nem *bementék*). A magas hangrendű *-ék* E/1 vagy T/3 tárgyas: 272 token, `bizonytalan=ek_E1_T3`; E/1 akkor, ha a versben egyes szám első személyű névmás áll.
+
+### 5.2 A *vala* (K2, K3)
+
+| eset | token | a modern szövegben |
+|---|---:|---|
+| létigei | 2 332 | *volt / voltak / voltam …* |
+| létigei, igenév után (*írva vala*) | 20 | *volt* |
+| segédigei, múlt idejű ige után (*mondotta vala*, *parancsolt vala*) | 1 014 | kiesik |
+| segédigei, jelen idejű ige után (*mondja vala*, *megy vala*, *ülnek vala*) | 1 433 | kiesik; az ige múlt időbe: *mondta*, *ment*, *ültek* (1 417 alakcsere; ebből 165 a korpuszban nem álló alak, `bizonytalan=mult_korpuszban_nincs`) |
+| segédigei, az ige nem elemezhető | 34 | mindkettő változatlan, `bizonytalan=vala_segedige` |
+
+A #94 tábla sok igealakot elemezetlenül hagy (*ülnek, jöttek, hallotta, szeret → szer*). Ilyenkor a *vala* előtti szóra saját tőkeresés fut: igekötő, rendhagyó múlt tő, vagy tő + múlt idő jele, ahol a tő igeneve a korpuszban áll. A határozószók (*előtt, mellett, között*) így nem számítanak igének. A heurisztika a szórendet nem nézi (*vala* az ige előtt): ez létigei *volt* lesz.
+
+**K2 önellenőrzés:** minden versen a modern szöveg újratokenizálva pontosan a nem kieső tokenek modern alakjait adja, sorrendben. A nem-betű váz a kieső tokenek egy-egy szóközén kívül változatlan; eltérésnél a szkript megáll. **K3:** minden sor az 1908-as token vers-kulcsán és `tokenizal`-sorszámán áll (`igealak_tokenek.tsv`). A kieső tokenek: **2 447 segédigei** (`kieso=segedige`) és a .1 11 128 összevont „a”-ja (`kieso=osszevonva`).
+
+### 5.3 LLM-ellenőrzés és tő-őr (DT-F96d)
+
+A nem automatikus igealak-jelöltek (ritka jegyes és régies gyanús alakok; **3 174 kisbetűs alak**) LLM-kérdésként mentek: alak, szótári alak, jegy és az első előfordulás versrészlete, a szabály jelöltje nélkül (vak ellenőrzés). Előfizetésből futott (Claude Code subagent, **claude-sonnet-5-5**, a .0 mérésének modellje), API és `PARDES_API_KEY` nélkül. Öt köteg: az elsőben 420 alak, ±8 szavas versrészlettel; a többi négyben 689 alak, ±5 szóval. Minden kérdésre jött válasz, 3 174 / 3 174 (`adat/karoli_modern/igealak_llm.tsv`, modell-kimenet, `modell_ellenorizetlen`).
+
+| osztály | tő-őr | szabály = LLM | alak |
+|---|---|---|---:|
+| ritka jegyes | ok | egyezik | 2 400 |
+| ritka jegyes | ok | eltér | 296 |
+| ritka jegyes | bukott | — | 75 |
+| régies gyanú | ok | nincs szabály-jelölt | 426 |
+| régies gyanú | ok | egyezik / eltér | 133 / 34 |
+| régies gyanú | bukott | — | 86 |
+
+A ritka jegyes alakokon a szabály és az LLM **2 400 / 2 771 alakon egyezik (86,6%)**. Az eltérések (modell-átnézés, 30 elemes szúrópróba) főként jegyhibák, és ott az LLM-nek van igaza: nem ige (*félénk, felirata, haladék, erősebbé*), a mai alak hibás E/2 jeggyel (*elmentél, elvesztél*), a magas hangrendű *-ék* E/3-a (*elutazék → elutazott*). A szenvedő *-taték/-teték* (*kiadaték → kiadatott*) és az *-ik*-es *-ék* E/3-a erre szabályjavítást kapott. Az LLM is hibázik: *játszék → játsszon*, *keltének* változatlan, a tárgyas/alanyi választás. A tő-őr főként két esetben bukik: a helyesírási ékezetnél (*kinyujtá → kinyújtotta*: a tő-őr a .1 utáni alakot nézi), és ott, ahol az LLM a *-nd-* jövő időt jelenre írta (*mondándom → mondom*, *leendesz → leszel*). Ez utóbbi helyes kiszűrés: igeidő-váltás. A jelölt a modern szövegbe nem kerül be; az alkalmazás a DT-F96l döntése.
+
+### 5.4 Token-felhasználás (K4)
+
+`scope=az 5 LLM-köteg | forras=a subagentek átirata (usage mezők), adat/karoli_modern/igealak_llm_hivasok.jsonl | ts=2026-10-24`
+
+| köteg | alak | hívás | bemenet (új + cache-írás) | cache-olvasás | kimenet | összesen |
+|---|---:|---:|---:|---:|---:|---:|
+| 1 | 420 | 4 | 108 561 | 247 864 | 12 653 | 369 078 |
+| 2 | 689 | 3 | 97 798 | 142 869 | 22 608 | 263 275 |
+| 3 | 689 | 3 | 97 507 | 142 843 | 23 434 | 263 784 |
+| 4 | 689 | 3 | 98 802 | 142 924 | 21 756 | 263 482 |
+| 5 | 687 | 3 | 97 070 | 142 884 | 20 214 | 260 168 |
+| **összesen** | **3 174** | 16 | **499 738** | **819 384** | **100 665** | **1 419 787** |
+
+A becslés (a brief 0,05–0,2 M-ja, illetve a DT-F96d ≈ 0,45 M-os kerete, a .0 API-mérése alapján, alakonként 132,5 token) **a teljes számítás szerint kb. háromszorosan túllépve: 1,42 M**, alakonként 447 token. A cache-olvasás nélkül (új bemenet + kimenet) **0,60 M**, ez is a keret felett. Az ok a subagent saját rendszerpromptja és eszközleírása (hívásonként kb. 57 ezer token), amely minden hívásnál újra beolvasódik; a .0 API-mérésében ez nem volt. Az első köteg (fájlba író beállítás) után a többi kötegnél csak egy olvasás és a válasz a hand-back üzenetben: alakonként 382 token. A keret kérdése: DT-F96m.
+
+A .2 determinisztikus része (szabályok, *vala*, minta) 0 token.
+
+### 5.5 Lefedettség — maradt-e régies igealak
+
+A modern szövegben maradó régies igealak, tokenben: ritka jegyes **6 734** (ebből jelölttel 6 706), régies gyanú **3 685** (jelölttel 3 592), gyakori jegyes **241** (a felszólító *-jál* és a jelölt nélküli 5 alak), a *vala*-család 34 (a bizonytalan segédige), *lőnek* 2, *vagyon* 1. Összesen **10 697 token** régies igealak marad, ebből 10 439 jelölttel. Ha a DT-F96l szerint a szabály + LLM egyező, tő-őrön átment ritka jelöltjei bekerülnek, ez 5 771 tokennel csökken (a 2 400 alak tokenje). A gyanú-heurisztika alsó becslés (napló 1.2): a jegy nélküli, a heurisztikán kívül eső régies alak nem számolódik. A *-nd-* jövő (*mondándok, leend*) egy tokenben nem írható át (a mai alak két szó: *mondani fogok*); jelöltként marad.
+
+### 5.6 A minta (⛔ felhasználói ellenőrzés)
+
+`adat/karoli_modern/igealak_minta.tsv`: rögzített magú (20261024), rétegzett minta, **120 vers**, 20 réteg. A rétegek: jegyenként a gyakori igealak; a tárgyas/alanyi heurisztika; az *-ék* E/1/T/3; *lőn*, *vagyon*, a gyanú kézi listája; a *vala* négy esete; a ritka és a gyanús jelölt; a felszólító *-jál*; a kötőhangzós múlt; és változatlan vers. Oszlopok: `szoveg_1908`, `szoveg_modern` (a .1 + .2 után), `valtozasok` (a `[.2]` jelű a .2 cseréje, a `?(…)` a bizonytalan jelölés), `jelolt` (a nem automatikus jelöltek: `szabaly:` és `llm:` a tő-őr eredményével), `ellenorzes` és `megjegyzes`. Az utolsó kettőt a felhasználó tölti: *jó* / *hibás*, a jelölt soron *A* = a jelölt jó, *B* = maradjon. A modell nem tölti ki őket. A K1 küszöbét és mérési egységét a felhasználó adja a mérés előtt (a .1 DT-F96h-ja a .1-re szólt; a delegálás a .2-re nem érvényes).
