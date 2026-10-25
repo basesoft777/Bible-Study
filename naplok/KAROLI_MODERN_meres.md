@@ -939,3 +939,62 @@ A 140 versből 7 sor modern szövege változott (H001, H025, H047, H078, H110, H
 - **a DT-F96p hatókörén kívüli *-ök/-ok* birtokos (8):** *előttök, közülök, rajtok, szivökben, szomjúságokban, szavoknak, uroknak, magoknak*.
 
 **Megállás:** a 2. opció végrehajtva, a folytatás (lezárás, ellenőrzés, újabb kör) a felhasználó döntése: **DT-F96s** (🟡, `DONTESEK.md`).
+
+## 12. A jelöltként maradt alakok köre (DT-F96s, 3. opció) — megállás a DT-F96t-n
+
+**A felhasználó döntése** (chat, 2026-10-25): „3” — további kör a jelöltként maradt alakokra. A DT-F96s ehhez példaként a DT-F96q eltérés-szabályának lazítását adta ott, ahol a szabály-jelölt bizonyítottan gyenge. Új LLM-futás nem volt: a kör a meglévő szavazatokon dolgozik.
+
+### 12.1 A szabályok (`igealak.py`)
+
+1. **Nem tanúsított szabály-jelölt** (`…:opus_tanusitott`, `bizonytalan=szabaly_nem_tanusitott`):
+   - Ha a szabály-jelölt egyetlen értéke sem áll a Károli 1908 korpuszában, az opus-alak viszont igen, és a tő-őr átengedi, akkor az opus-alak cserél. A régi rétegben feltétel még, hogy a sonnet ne adjon más, tanúsított alakot.
+   - Nem cserél:
+     - ha az alak változatlan;
+     - ha az E/3 tárgyas *-á/-é* mai alakja nem *-a/-e* végű: *rombolá → rombolt* hibás, *rombolta* a helyes;
+     - ha az *-ék* opus-alakja nem E/1, de a mondatszakaszban E/1 jelző áll;
+     - az *-nd-* jövő idő (*adánd*).
+2. **A .1 cseréje a szavazatokon:** a szabály-jelöltre és az LLM-alakra (`h1_atvisz`), mielőtt szavaznak (*dícsérve = dicsérve*). Az LLM-jelölt tő-őre a .1-ben változott alakon a .1 utáni alakon is mér.
+3. **Alanyi–tárgyas pár** (`tobbseg:alanyi_targyas`, `bizonytalan=targyas_heur`): ha a sonnet és az opus csak a T/3 alanyi és tárgyas ragban tér el (*hittek / hitték*), a tagmondat tárgya dönt.
+
+### 12.2 A próbák hibái
+
+- **Az első próba 95 tokent változtatott.** Ebből:
+  - 27 token csak címkét kapott (*higyjetek, csepüvé*);
+  - a *rombolá → rombolt* rossz ragozás volt;
+  - az *-nd-* jövő idő 100 tokenje cserélt volna, a jelölt-maradék 147 → 47-re esett volna;
+  - a 3 *reá*-tokennél (3Móz 8:7, Luk 4:40, ApCsel 18:12) visszalépett a .1, mert az LLM-szavazatot nem normalizáltam.
+- Mind a négyet a fenti kizárások javítják.
+
+### 12.3 Eredmény
+
+| Szabály | Token |
+|---|---|
+| `kor3:opus_tanusitott` (*cselekvé → cselekedte, eltörlé → eltörölte, megszünék → megszűnt, válék → vált, kijövél → kijöttél* …) | 29 |
+| `tobbseg:opus_tanusitott` (*megvereték → megveretett, tulajdoníttaték → tulajdoníttatott, aluvék → aludt* (Bír 16:3), *érteté → értette* …) | 22 |
+| `kor4:opus_tanusitott` (*felgyullada → felgyulladt, megvirrada → megvirradt, elbágyada → elbágyadt* …) | 7 |
+| `tobbseg:alanyi_targyas` (*hivék*: Mk 16:11, Ján 9:18 → *hittek*; Luk 24:37 *azt hivék* → *hitték*) | 3 |
+| a normalizálás és a tő-őr tartalékpróbája (*dícsérvén → dicsérve* 6, *dícséré → dicsérte* 2, *körűlmetéltetvén → körülmetéltetve* 1) | 9 |
+| **összesen** | **70** |
+
+Mind a 70 csere átnézve, mind helyes.
+
+**Újragenerálás:**
+- .2 és .3 újragenerálva; a K2, K3 és K3b teljesül, a Strong nem változott;
+- `szabaly_nem_tanusitott` 58 tokenen áll; a változó token 50 307.
+
+### 12.4 A minta2
+
+Két sor modern szövege változott (H024 *hivék → hitték*, H051 *dícsérvén → dicsérve*). Mindkettő korábbi kihagyás volt, mindkettő helyes; a végrehajtó session (`claude-opus-5-5`) ellenőrizte.
+
+| Réteg | Csere | Hiba | Kihagyás |
+|---|---|---|---|
+| véletlen (100) | 95 | 0 | 4 (1 igealak + 3 *-ök/-ok*) |
+| kor3 (20) | 69 | 0 | 4 |
+| kor3-*vala* (10) | 25 | 0 | 0 |
+| `ek_E1_T3` (10) | 26 | 0 | 1 |
+
+- **A lefedettség a véletlen rétegen:** igealak 95/96 = **99,0%**; az *-ök/-ok*-kal együtt 95/99 = 96,0%.
+- **A maradék igealak a *megfullada*:** sem a szabály-jelölt (*megfulladott*), sem az opus-alak (*megfulladt*) nem áll a korpuszban, ezért a 12.1 szerint jelölt marad.
+- **Torzítás:** a 11.4 szerint a 99,0% erre a mintára hangolt kör eredménye, a valódi lefedettséget felülbecsli.
+
+**Megállás:** a folytatás a felhasználó döntése, **DT-F96t** (🟡).
