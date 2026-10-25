@@ -1530,5 +1530,108 @@ class E31Teszt(unittest.TestCase):
         self.assertEqual(SZ.e31_forras_tanulmany_letezik(['__TELJES__']), [])
 
 
+# ---------------------------------------------------------------------------
+# E32 (#141, DT-F141a): kiosztott helyorzo egy kimeneti string-literalban
+# ---------------------------------------------------------------------------
+
+class E32Teszt(unittest.TestCase):
+    """E32: a szamkiosztas mar kiosztott helyorzoja a string-literalban jelez;
+    megjegyzesben, docstringben, kihagy-jelolt soron es tesztfajlban nem."""
+
+    KIOSZTOTT = {'DT-F127b': 'DT277'}
+
+    def _fut(self, forras, relut='eszkozok/proba_kimenet.py', kiosztott=None):
+        with _IdeiglenesGyoker() as gy:
+            _ir(gy, relut, forras)
+            eredeti = SZ._e32_kiosztasok
+            SZ._e32_kiosztasok = lambda: dict(self.KIOSZTOTT if kiosztott is None else kiosztott)
+            try:
+                return SZ.e32_kiosztott_helyorzo_literalban([relut])
+            finally:
+                SZ._e32_kiosztasok = eredeti
+
+    def test_pozitiv_visszairt_kiosztott_helyorzo_a_literalban(self):
+        t = self._fut('x = 1\nprint("lásd DT-F127b döntés")\n')
+        self.assertEqual([(x.szabaly, x.szint, x.fajl, x.sor) for x in t],
+                         [('E32', 'HIBA', 'eszkozok/proba_kimenet.py', 2)])
+        self.assertIn('DT-F127b', t[0].reszlet)
+        self.assertIn('DT277', t[0].reszlet)
+
+    def test_pozitiv_tobbsoros_literal_pontos_sora(self):
+        t = self._fut('S = """elso\nmasodik DT-F127b\nharmadik"""\n')
+        self.assertEqual([x.sor for x in t], [2])
+
+    def test_pozitiv_fstring_literal_resze(self):
+        t = self._fut('n = 3\nprint(f"{n} db, DT-F127b szerint")\n')
+        self.assertEqual([x.sor for x in t], [2])
+
+    def test_negativ_megjegyzes_nem_jelez(self):
+        self.assertEqual(self._fut('# DT-F127b a megjegyzésben\nx = 1  # N-F127b\n', kiosztott={'DT-F127b': 'DT277', 'N-F127b': 'N5'}), [])
+
+    def test_negativ_docstring_nem_jelez(self):
+        forras = ('"""Modul DT-F127b.\n"""\n\n\ndef f():\n    """Függvény DT-F127b."""\n    return 1\n\n\n'
+                  'class C:\n    "osztály DT-F127b"\n')
+        self.assertEqual(self._fut(forras), [])
+
+    def test_negativ_nem_kiosztott_helyorzo_nem_jelez(self):
+        self.assertEqual(self._fut('print("DT-F999z")\n'), [])
+
+    def test_negativ_kiosztott_szam_nem_jelez(self):
+        self.assertEqual(self._fut('print("DT277")\n'), [])
+
+    def test_negativ_kihagy_jeloles_a_soron(self):
+        self.assertEqual(self._fut('print("DT-F127b")  # e32-kihagy: történeti\n'), [])
+        self.assertEqual(self._fut('print("DT-F127b")  # szamkiosztas-kihagy\n'), [])
+
+    def test_negativ_tesztfajl_es_szabalyfajl_kizart(self):
+        for relut in ('eszkozok/teszt_proba.py', 'eszkozok/ellenorzes/tesztek/test_x.py',
+                      'eszkozok/szamkiosztas.py', 'eszkozok/ellenorzes/szabalyok.py'):
+            self.assertEqual(self._fut('print("DT-F127b")\n', relut=relut), [], relut)
+
+    def test_negativ_nem_eszkozok_py_nem_jelez(self):
+        self.assertEqual(self._fut('print("DT-F127b")\n', relut='masik/proba.py'), [])
+
+    def test_negativ_szintaktikai_hibas_fajl_nem_omlik(self):
+        self.assertEqual(self._fut('def (:\n'), [])
+
+    def test_teljes_mod_bejarja_az_eszkozok_fat(self):
+        with _IdeiglenesGyoker() as gy:
+            _ir(gy, 'eszkozok/al/mappa/k.py', 'print("DT-F127b")\n')
+            eredeti = SZ._e32_kiosztasok
+            SZ._e32_kiosztasok = lambda: dict(self.KIOSZTOTT)
+            try:
+                t = SZ.e32_kiosztott_helyorzo_literalban(['__TELJES__'])
+            finally:
+                SZ._e32_kiosztasok = eredeti
+            self.assertEqual([(x.fajl, x.sor) for x in t], [('eszkozok/al/mappa/k.py', 1)])
+
+    def test_kiosztasok_a_szamkiosztas_commitokbol(self):
+        # valodi (ideiglenes) git-repo: a `szamkiosztas:` commit uzenetebol
+        # kiolvasott hozzarendeles; a ma is definialt helyorzo nem kiosztott
+        with _IdeiglenesGyoker() as gy:
+            def git(*a):
+                subprocess.check_call(('git', '-c', 'user.name=t', '-c', 'user.email=t@t') + a,
+                                      cwd=gy, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            git('init', '-q')
+            _ir(gy, 'DONTESEK.md', '| DT-F7q | #7 | kerdes |\n')
+            git('add', '-A')
+            git('commit', '-q', '-m', 'F1: alap')
+            uz = _ir(gy, 'uzenet.txt', 'szamkiosztas: DT-F127b \u2192 DT277, DT-F7q \u2192 DT278\n')
+            git('commit', '-q', '--allow-empty', '-F', 'uzenet.txt')
+            self.assertEqual(SZ._e32_kiosztasok(), {'DT-F127b': 'DT277'})
+
+    def test_szint_d8_jelentes_a_regi_soron(self):
+        # nem fajlszintu: a futtat.py D8-cal csak a diff-ben hozzaadott soron HIBA
+        self.assertEqual(SZ.SZINT['E32'], 'HIBA')
+        self.assertNotIn('E32', SZ.FAJLSZINTU_SZABALYOK)
+        self.assertIn('E32', SZ.HATOKOR_SZABALYOK)
+        self.assertIn('E32', SZ.SZABALYOK_FUGGVENYEI)
+
+    def test_eles_repo_csak_a_tesztek_kivul_jelez_es_fut(self):
+        # a mai repon a szabaly lefut es a kizart fajlokat nem jelzi
+        t = SZ.e32_kiosztott_helyorzo_literalban(['__TELJES__'])
+        self.assertTrue(all(not SZ._e32_kizart(x.fajl) for x in t))
+
+
 if __name__ == '__main__':
     unittest.main()
