@@ -1415,6 +1415,35 @@ másik a `cel_id`/`cel_igehely` egyik eleme.
 | `dontes_ref` | szöveg | ✔ | `jeloltek.tsv;<id>;<igehely>;motivumkozi;<cel_id>` — a döntést hordozó jelölt-sor kulcsa. |
 | `proveniencia` | `PROVENIENCIA` | ✔ | |
 
+### 2.34 `thayer_szakaszok.tsv` — a Thayer jelölt szövegrétege, szakaszonként (F132, FELADATOK #132, DT-F132a–b)
+
+**Generált** (`python eszkozok/thayer_jelolt/bont.py --ts <nap>`; kézzel nem szerkeszthető; azonos bemenettel és `--ts`-sel bájtra
+azonos, a `--ellenoriz` és az `eszkozok/thayer_jelolt/teszt_bont.py` ellenőrzi). Forrás (DT-F132a (b), felhasználó, 2026-10-25):
+**a szerkezet** (bekezdéshatár, fej, útvonal) a `konkordancia/lexikonok_nyers/Thayer.lexicon`-ból (`Lexicon(Topic, Definition)`, HTML;
+a formázási réteg licence nem tisztázott, ezért innen csak szerkezet és azonosító jön, szöveg nem); **a szöveg** a
+`konkordancia/Thayer_teljes.tsv` `Teljes_szocikk`-jéből, illesztéssel (a szakasz szövege a TSV-szöveg szelete). Egy sor = a szócikk egy
+bekezdése: a `<p>`, `</p>`, `<div>`, `</div>` jelölők közötti, címkék nélkül nem üres HTML-darab, a forrás sorrendjében (a forrásban
+helyenként egymásba ágyazott vagy lezáratlan `<p>` áll, ezért a határ a jelölő). Az első két sor `# GENERÁLT: …` és `# forras: …` (a két
+bemenet és a kód hash-e), a harmadik a fejléc. Olvasás `split('\t')`. **Lexikai forrásréteg, nem study-adat:** keresési találatból nem
+lehet közvetlenül study-sor (CLAUDE.md 2. szabály).
+
+| Oszlop | Jelentés |
+|---|---|
+| `strong` | `Strong_padded` (`G0012`); a lexikon `Topic`-ja (`G12`) az `eszkozok/thayer_jelolt/kulcs.py` `strong_pad` függvényével normalizálva (DT-F132b (4): egyetlen függvény) |
+| `sorszam` | a bekezdés sorszáma a szócikkben (1-től; az 1. a cím) |
+| `utvonal` | `<felső>/<szám>/<betű>`, a hiányzó szint `-` (pl. `-/1/-`, `II/1/a`, `A.I/2/-`); a felső szint a nagybetűs fej (`A.`, sima szöveg, csak a sorban következő betű) és a római fej (`<span class="lexheading">I.</span>`) ponttal; különleges: `cim` (a `<b>G… — …</b>` címsor; újabb címsor a fejállapotot törli), `fej` (a cím után, az első fej előtti bekezdés). Fej nélküli bekezdés az előző útvonalát örökli |
+| `jel` | a bekezdés elején álló fej a forrás alakjában (`1.`, `a.`, `I.`, `A.`); üres, ha nincs. A forrásban bekezdésen belüli fej nem fordul elő (F132 M1 felmérés) |
+| `szoveg` | a bekezdés szövege a `jel` után, a `Thayer_teljes.tsv` szövegéből (a szóközök összevonva, tab nélkül); `sikertelen` illesztésnél üres (explicit hiány) |
+| `illesztes` | a Strong illesztési kategóriája: `egyezik` (a bekezdések szóközök nélküli szövege sorban, hézag és maradék nélkül kiadja a TSV szövegét) \| `reszleges` (nem így: a határok a difflib egyező blokkjain át vetülnek a TSV-szövegre; a szöveg közelítő) \| `sikertelen` (a TSV-ben nincs ilyen Strong) |
+| `forras` | `Thayer.lexicon:<Topic>#<sorszam>` (a szerkezet helye) |
+| `forras_hash` | a bekezdés nyers HTML-jének SHA-256-ja, 16 jegy (az elavulás jele) |
+| `proveniencia` | `scope=<Strong> \| forras=thayer_jelolt/bont.py (fejléc) \| ts=<nap>`; a bemenetek és a kód hash-e a `# forras:` fejlécsorban (a 2.29 mintája) |
+
+Kulcs: `strong` + `sorszam`. Állapot (F132 M1, 2026-10-25): 5 426 Strong, 17 093 sor; illesztés: `egyezik` 5 411, `reszleges` 15,
+`sikertelen` 0; fejes szócikk 1 687. A 15 `reszleges` Strong mindegyikében a `Thayer_teljes.tsv` egy összefüggő szövegrészt elveszít
+(összesen 2 715 karakter szóközök nélkül, a G4151-ben 18), jellemzően egy `πρωι` / `νοι` / `Νινευι` alak után (a TSV-konverzió hibája);
+a kezelése: DT-F132i (`naplok/F132_THAYER_SZAKASZ_naplo.md` M1).
+
 ---
 
 ## 3. Integritási szabályok

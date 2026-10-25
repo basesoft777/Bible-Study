@@ -195,3 +195,72 @@ A felhasználó (chat, szó szerint): „mind a javaslat szerint, az M3 külön 
   `forras_hash`-egyező) szakaszos fordítású szavak kimaradnak. Az M3 újrafuttatható; a listát egy tesztelt
   eszköz állítja elő az `eszkozok/thayer_jelolt/`-ban (M3-előfeltétel). A brief M3-a, 5. (3. pont) és 6.
   szakasza, valamint az `ad` mező átírva.
+
+## M1 — bontó (2026-10-25)
+
+`eszkozok/thayer_jelolt/bont.py` (a `bdb_jelolt/bont.py` mintájára), `kulcs.py` (a `G12` → `G0012` normalizálás egyetlen
+függvénye, DT-F132b (4)), `teszt_bont.py` (16 teszt, zöld). Kimenet: `adat/thayer_szakaszok.tsv` (SEMA 2.34), `--ts 2026-10-25`,
+`--ellenoriz` azonos.
+
+*(proveniencia: `scope=konkordancia/lexikonok_nyers/Thayer.lexicon, konkordancia/Thayer_teljes.tsv | forras=eszkozok/thayer_jelolt/bont.py --ts 2026-10-25 (a fejlécsor hash-eivel); m1_felmer*.py, m1_elter.py, m1_veszt.py (eseti, a repón kívül) | ts=2026-10-25`)*
+
+### Felmérés (a szabályok alapja)
+
+- A határ: a `<p>`, `</p>`, `<div>`, `</div>` jelölő; a címkék nélkül nem üres darab a bekezdés. Így 17 093 bekezdés (= a forrás
+  `<p>`-száma). 112 szócikkben a HTML egymásba ágyazott vagy lezáratlan `<p>`-t tartalmaz (pl. G21: második címsor `<p><p>…</p>, (…`;
+  G687: `<div></p><p><p>…`), ezért a `<p>…</p>` pár nem használható határnak.
+- Fejek a bekezdés elején: `<b>1.</b>` szám 3 274, `<b>a.</b>` betű 2 536, `<span class="lexheading">I.</span>` római 162, sima
+  `A. ` nagybetű 13 (G1223, G1325, G1519, G1909). Bekezdésen belüli félkövér fej: 0; kombinált fej (`1. a.`): 0.
+- Címsor: `<b>G… — …</b>` 5 537, `<b>G…a: …</b>` 20 (al-címszó, pl. G299a). 6 szócikk első bekezdése nem a saját címe (G299 →
+  G299a, G687 lezáratlan stb.).
+
+### Eredmény
+
+| Mért | Érték |
+|---|---|
+| Strong | 5 426 (a TSV-ben a lexikonon kívül: 0) |
+| sor (bekezdés) | 17 093: `cim` 5 557, `fej` 5 545, fejes 5 985, fej nélküli örökölt 6 |
+| fejes szócikk | 1 687 (a brief 1 685-öt mért a `<b>` fejekre; +2 a csak római / nagybetűs fejű szócikk) |
+| illesztés | `egyezik` 5 411, `reszleges` 15, `sikertelen` 0 |
+
+Az M0 3. pontja 7 eltérő szócikket mért (a „TSV a lexikon része” részsztring-próbával); a sorrendhű bekezdésenkénti illesztés
+szigorúbb, 15-öt talál. Mind a 15-ben **egyetlen összefüggő szövegrész hiányzik a TSV-ből** (TSV-többlet 0):
+
+| Strong | lexikon (szóköz nélkül) | TSV | hiány | a hiány előtti alak |
+|---|---|---|---|---|
+| G0260 | 455 | 295 | 160 | `πρωι` |
+| G0575 | 11 509 | 11 431 | 78 | `πρωι` |
+| G0846 | 11 313 | 11 208 | 105 | `νοι` |
+| G1100 | 2 935 | 2 313 | 622 | `νοι` |
+| G1909 | 27 276 | 27 195 | 81 | `πρωι` |
+| G2675 | 1 515 | 1 341 | 174 | `νοι` |
+| G3536 | 256 | 165 | 91 | `Νινευι` |
+| G3563 | 1 362 | 1 177 | 185 | `νοι` |
+| **G4151** | 19 530 | 19 512 | 18 | `νοι` („1Co 14:15, 1Co 14:16.”) |
+| G4404 | 530 | 30 | 500 | `πρωι` |
+| G4405 | 363 | 61 | 302 | `πρωι` |
+| G4406 | 367 | 269 | 98 | `πρωι` |
+| G4407 | 269 | 169 | 100 | `πρωι` |
+| G5132 | 1 443 | 1 251 | 192 | (a `Fritzsche on Additions to` után) |
+| G5567 | 909 | 900 | 9 | `νοι` |
+
+Összesen 2 715 karakter. A tábla ezeket `reszleges` jelöléssel, közelítő (a difflib egyező blokkjaira vetített) szakaszhatárral
+hordozza; üres szakasz nincs. A G4151 gerincszó: az M3 előtt döntés kell (**DT-F132i**, `DONTESEK.md`, 🟡; javaslat: javítótábla
+a DT228 mintájára).
+
+### G1941 aranyminta (kézzel ellenőrizve a forrás HTML-jén)
+
+| sorszam | utvonal | jel | a szöveg eleje |
+|---|---|---|---|
+| 1 | `cim` | | G1941 — ἐπικαλέω |
+| 2 | `fej` | | ἐπικαλῶ: 1 aorist ἐπεκαλεσα; … the Sept. very often for קָרָא; |
+| 3 | `-/1/-` | 1. | to put a name upon, to surname: … |
+| 4 | `-/2/-` | 2. | ἐπικαλεῖται τό ὄνομα τίνος ἐπί τινα, after the Hebrew … |
+| 5 | `-/3/-` | 3. | τίνι with the accusative of the object; … |
+| 6 | `-/4/-` | 4. | to call upon (like German anrufen), to invoke; … |
+| 7 | `-/5/-` | 5. | Hebraistically (like יְהוָה בְּשֵׁם קָרָא …) |
+
+7 bekezdés, 5 fej, `egyezik` — a brief száma. Megjegyzés az M2-höz: az 5. pontban az „Act 9:14,21; 22:16” sorozatból csak az
+ApCsel 9:14 `bcv`-jelölt, a 9:21 és a 22:16 a forrásban jelöletlen szöveg (a `bcv`-tábla nem pótolja, l. M2).
+
+Kimaradt (nem a brief `ir`-e): az `adat/datasetek.tsv` `Thayer_szakaszok` sora (a `BDB_szakaszok` mintájára) — külön tételben.
