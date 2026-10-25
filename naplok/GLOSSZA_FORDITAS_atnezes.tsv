@@ -21,7 +21,7 @@ rang	strong	entry_id	fo	tahot_elofordulas	glossza_en	glossza_hu	csoport	megjegyz
 14	H3605	H3605	igen	5415	all	minden	top300		
 15	H0559	H0559	igen	5309	to say	mondani	top300		
 16	H3808	H3808	igen	5170	not	nem	top300		
-17	H1121	H1121A	igen	4943	son: child	fiú: gyermek	top300+kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő	
+17	H1121	H1121A	igen	4943	son: child	fiú: gyermek	top300+kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő | JAVASLAT: 200 karakteres kontextussal újrafordítva, a fordítás változatlan	=
 17	H1121	H1121B		4943	Beno	Benó	top300		
 17	H1121	H1121G		4943	son: descendant/people	fiú: leszármazott/nép	top300		
 17	H1121	H1121H		4943	son: young animal	fiú: állatkölyök	top300		
@@ -82,7 +82,7 @@ rang	strong	entry_id	fo	tahot_elofordulas	glossza_en	glossza_hu	csoport	megjegyz
 34	H6440	H6440M		2127	face: angry	arc: haragos	top300		
 34	H6440	H6440N		2127	face: kindness	arc: kegyesség	top300		
 35	H1004	H1004A		2049	place	hely	top300		
-35	H1004	H1004B	igen	2049	house: home	ház: otthon	top300+kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő	
+35	H1004	H1004B	igen	2049	house: home	ház: otthon	top300+kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő | JAVASLAT: 200 karakteres kontextussal újrafordítva, a fordítás változatlan	=
 35	H1004	H1004G		2049	Beth-(ashbea)	Bét-(Asbea)	top300		
 35	H1004	H1004H		2049	Beth (Haggan)	Bét (Haggán)	top300		
 35	H1004	H1004I		2049	Beth-(togarmah)	Bét-(Tógarma)	top300		
@@ -114,7 +114,7 @@ rang	strong	entry_id	fo	tahot_elofordulas	glossza_en	glossza_hu	csoport	megjegyz
 38	H5971	H5971J		1873	Amaw	Amav	top300+kiemelt	a fordító bizonytalan (? a megjegyzésben)	
 38	H5971	H5971K		1873	people: soldiers	nép: katonák	top300		
 38	H5971	H5971L		1873	people: creatures	nép: teremtmények	top300		
-39	H9034	H9034	igen	1708	her	őt (nőt)	top300+kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+39	H9034	H9034	igen	1708	her	őt (nőt)	top300+kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d) | JAVASLAT: H90xx egységesítés (nem „nőt”)	őt (női)
 40	H0376	H0376G	igen	1664	man	férfi	top300		
 40	H0376	H0376H		1664	man: husband	férfi: férj	top300		
 40	H0376	H0376I		1664	man: anyone	férfi: valaki	top300		
@@ -294,7 +294,7 @@ rang	strong	entry_id	fo	tahot_elofordulas	glossza_en	glossza_hu	csoport	megjegyz
 91	H4100	H4100	igen	753	what?	mi (kérdő)	top300		
 92	H3548	H3548	igen	750	priest	pap	top300		
 93	H0428	H0428	igen	746	these	ezek	top300		
-94	H9032	H9032	igen	738	you	téged (nő)	top300+kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+94	H9032	H9032	igen	738	you	téged (nő)	top300+kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d) | JAVASLAT: H90xx egységesítés (nem „nő”)	téged (női)
 95	H7121	H7121G	igen	733	to call: call to	hívni: megszólítani	top300		
 95	H7121	H7121H		733	to call: call by	hívni: elnevezni	top300		
 95	H7121	H7121I		733	to call: call out	hívni: kiáltani	top300		
@@ -306,7 +306,7 @@ rang	strong	entry_id	fo	tahot_elofordulas	glossza_en	glossza_hu	csoport	megjegyz
 98	H1870	H1870H	igen	708	Way	Út	top300		
 98	H1870	H1870I		708	(King's) Highway	(a király) országútja	top300		
 98	H1870	H1870J		708	way: direction	út: irány	top300		
-98	H1870	H1870K		708	way: road	út: útvonal	top300+kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő	
+98	H1870	H1870K		708	way: road	út: útvonal	top300+kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő | JAVASLAT: 200 karakteres kontextussal újrafordítva, a fordítás változatlan	=
 98	H1870	H1870L		708	way: journey	út: utazás	top300		
 99	H7451	H7451A		662	bad: harmful	rossz: ártalmas	top300		
 99	H7451	H7451B		662	bad: evil	rossz: gonosz	top300		
@@ -332,8 +332,8 @@ rang	strong	entry_id	fo	tahot_elofordulas	glossza_en	glossza_hu	csoport	megjegyz
 100	H5375	H5375W		656	to lift: bearing(armour)	emelni: (fegyvert) viselni	top300		
 100	H5375	H5375X		656	to lift: give(gift)	emelni: (ajándékot) adni	top300		
 101	H3389	H3389	igen	643	Jerusalem	Jeruzsálem	top300		
-102	H4714	H4714G	igen	641	Egypt	Mizraim	top300+kiemelt	a fordító bizonytalan (? a megjegyzésben)	
-102	H4714	H4714H		641	Egypt	Mizraim	top300+kiemelt	a fordító bizonytalan (? a megjegyzésben)	
+102	H4714	H4714G	igen	641	Egypt	Mizraim	top300+kiemelt	a fordító bizonytalan (? a megjegyzésben) | JAVASLAT: a glossza „Egypt”; Károli: Egyiptom	Egyiptom
+102	H4714	H4714H		641	Egypt	Mizraim	top300+kiemelt	a fordító bizonytalan (? a megjegyzésben) | JAVASLAT: a glossza „Egypt”; Károli: Egyiptom	Egyiptom
 102	H4714	H4714I		641	(Sea of) Egypt	(Egyiptom) tengere	top300		
 102	H4714	H4714J		641	(Brook of) Egypt	(Egyiptom) patakja	top300		
 103	H0251	H0251G	igen	630	brother: male-sibling	fivér: fiútestvér	top300		
@@ -358,7 +358,7 @@ rang	strong	entry_id	fo	tahot_elofordulas	glossza_en	glossza_hu	csoport	megjegyz
 108	H1323	H1323G	igen	588	daughter	leány	top300		
 108	H1323	H1323H		588	daughter: village	leány: falu	top300		
 108	H1323	H1323I		588	Bath (Shua)	Bát (Súa)	top300		
-109	H7760	H7760A	igen	585	to set: make	helyezni: csinálni	top300+kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő	
+109	H7760	H7760A	igen	585	to set: make	helyezni: csinálni	top300+kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő | JAVASLAT: 200 karakteres kontextussal újrafordítva (def: make/establish)	helyezni: létrehozni
 109	H7760	H7760B		585	fate	sors	top300+kiemelt	a fordító bizonytalan (? a megjegyzésben)	
 109	H7760	H7760H		585	to set: put	helyezni: adni	top300		
 109	H7760	H7760I		585	to set: take	helyezni: venni	top300		
@@ -389,7 +389,7 @@ rang	strong	entry_id	fo	tahot_elofordulas	glossza_en	glossza_hu	csoport	megjegyz
 119	H2896	H2896A	igen	538	pleasant	kellemes	top300		
 119	H2896	H2896B		538	good	jó	top300		
 119	H2896	H2896C		538	welfare	jólét	top300		
-120	H1419	H1419A	igen	526	great: large	nagy: nagyméretű	top300+kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő	
+120	H1419	H1419A	igen	526	great: large	nagy: nagyméretű	top300+kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő | JAVASLAT: 200 karakteres kontextussal újrafordítva, a fordítás változatlan	=
 120	H1419	H1419B		526	Haggedolim	Haggedolim	top300		
 120	H1419	H1419J		526	Great (Sea)	Nagy (tenger)	top300		
 120	H1419	H1419K		526	great: old	nagy: idős	top300		
@@ -399,7 +399,7 @@ rang	strong	entry_id	fo	tahot_elofordulas	glossza_en	glossza_hu	csoport	megjegyz
 121	H5975	H5975J		521	to stand: put	állni: elhelyezni	top300		
 122	H6963	H6963A		506	voice	hang	top300		
 122	H6963	H6963B		506	frivolity	könnyelműség	top300		
-122	H6963	H6963H	igen	506	voice: sound	hang: zaj	top300+kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő	
+122	H6963	H6963H	igen	506	voice: sound	hang: zaj	top300+kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő | JAVASLAT: 200 karakteres kontextussal újrafordítva, a fordítás változatlan	=
 122	H6963	H6963I		506	voice: thunder	hang: mennydörgés	top300		
 122	H6963	H6963J		506	voice: message	hang: üzenet	top300		
 122	H6963	H6963K		506	voice: [sound of]	hang: [hangja]	top300		
@@ -418,7 +418,7 @@ rang	strong	entry_id	fo	tahot_elofordulas	glossza_en	glossza_hu	csoport	megjegyz
 126	H2416	H2416C		498	living thing	élőlény	top300		
 126	H2416	H2416D		498	community	közösség	top300		
 126	H2416	H2416E		498	life	élet	top300		
-127	H6310	H6310G	igen	498	lip	ajak	top300+kiemelt	a jelentés „száj” (TBESH szócikk); eldöntendő: „ajak” vagy „száj” (F140.23 c)	
+127	H6310	H6310G	igen	498	lip	ajak	top300+kiemelt	a jelentés „száj” (TBESH szócikk); eldöntendő: „ajak” vagy „száj” (F140.23 c) | JAVASLAT: a TBESH szócikk jelentése „mouth”	száj
 127	H6310	H6310H		498	lip: edge	ajak: szél	top300		
 127	H6310	H6310I		498	lip: word	ajak: szó	top300		
 127	H6310	H6310J		498	lip: opening	ajak: nyílás	top300		
@@ -542,7 +542,7 @@ rang	strong	entry_id	fo	tahot_elofordulas	glossza_en	glossza_hu	csoport	megjegyz
 189	H9013	H9013	igen	309	[emph.?]	[emphaticus]	top300+kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
 190	H3069	H3069	igen	306	YHWH/God	az ÚR/Isten	top300		
 191	H4940	H4940	igen	303	family	család	top300		
-192	H6485	H6485A	igen	303	to reckon: list	számba venni: felsorolni	top300+kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő	
+192	H6485	H6485A	igen	303	to reckon: list	számba venni: felsorolni	top300+kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő | JAVASLAT: 200 karakteres kontextussal újrafordítva, a fordítás változatlan	=
 192	H6485	H6485B		303	reckoning	számbavétel	top300		
 192	H6485	H6485H		303	to reckon: punish	számba venni: megbüntetni	top300		
 192	H6485	H6485I		303	to reckon: visit	számba venni: meglátogatni	top300		
@@ -688,14 +688,14 @@ rang	strong	entry_id	fo	tahot_elofordulas	glossza_en	glossza_hu	csoport	megjegyz
 248	H8354	H8354	igen	217	to drink	inni	top300		
 249	H0899	H0899A		217	treachery	hűtlenség	top300		
 249	H0899	H0899B	igen	217	garment	ruha	top300		
-250	H3559	H3559A	igen	217	to establish: prepare	megalapozni: előkészíteni	top300+kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő	
+250	H3559	H3559A	igen	217	to establish: prepare	megalapozni: előkészíteni	top300+kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő | JAVASLAT: 200 karakteres kontextussal újrafordítva, a fordítás változatlan	=
 250	H3559	H3559B		217	blow	ütés	top300		
 250	H3559	H3559H		217	to establish: establish	megalapozni: megszilárdítani	top300		
 250	H3559	H3559I		217	to establish: make	megalapozni: megalkotni	top300		
 250	H3559	H3559J		217	to establish: commit	megalapozni: rábízni	top300		
 250	H3559	H3559K		217	to establish: right	megalapozni: helyes	top300		
 251	H8337	H8337	igen	216	six	hat	top300		
-252	H5800	H5800A	igen	215	to leave: forsake	elhagyni: cserbenhagyni	top300+kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő	
+252	H5800	H5800A	igen	215	to leave: forsake	elhagyni: cserbenhagyni	top300+kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő | JAVASLAT: 200 karakteres kontextussal újrafordítva, a fordítás változatlan	=
 252	H5800	H5800B		215	to restore	helyreállítani	top300		
 252	H5800	H5800C		215	to leave: release	elhagyni: elengedni	top300		
 252	H5800	H5800G		215	Forsaken	Elhagyott	top300		
@@ -758,7 +758,7 @@ rang	strong	entry_id	fo	tahot_elofordulas	glossza_en	glossza_hu	csoport	megjegyz
 280	H0241	H0241G	igen	187	ear	fül	top300		
 280	H0241	H0241H		187	ear: hearing	fül: hallás	top300		
 280	H0241	H0241I		187	ear: to ears	fül: valaki füle hallatára	top300		
-281	H5612	H5612A		186	scroll: document	tekercs: okirat	top300+kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő	
+281	H5612	H5612A		186	scroll: document	tekercs: okirat	top300+kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő | JAVASLAT: 200 karakteres kontextussal újrafordítva, a fordítás változatlan	=
 281	H5612	H5612B	igen	186	scroll	tekercs	top300		
 281	H5612	H5612H		186	scroll: book	tekercs: könyv	top300		
 281	H5612	H5612I		186	scroll: read	tekercs: olvasni	top300		
@@ -807,31 +807,31 @@ rang	strong	entry_id	fo	tahot_elofordulas	glossza_en	glossza_hu	csoport	megjegyz
 300	H6942	H6942I		171	to consecrate: forfeit	megszentelni: elveszíteni	top300		
 300	H6942	H6942J		171	to consecrate: prepare	megszentelni: előkészíteni	top300		
 300	H6942	H6942K		171	to consecrate: holiness	megszentelni: szentség	top300		
-	H1056	H1056	igen	1	(Tophet of) Baca	Baka (Tófet)	kiemelt	a fordító bizonytalan (? a megjegyzésben)	
+	H1056	H1056	igen	1	(Tophet of) Baca	Baka (Tófet)	kiemelt	a fordító bizonytalan (? a megjegyzésben) | JAVASLAT: a többi „(…) völgye” sorral egységes	Baka (völgye)
 	H1180	H1180	igen	1	Baal	Baáli	kiemelt	a fordító bizonytalan (? a megjegyzésben)	
-	H1197	H1197A	igen	94	to burn: burn	égni: égetni	kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő	
-	H1350	H1350A	igen	104	to redeem: redeem	megváltani: kiváltani	kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő	
-	H1354	H1354	igen	13	back/rim/brow	hát/perem/gerinc	kiemelt	a fordító bizonytalan (? a megjegyzésben)	
-	H1361	H1361	igen	34	to exult	ujjongani	kiemelt	a fordító bizonytalan (? a megjegyzésben)	
-	H1984	H1984B	igen	165	to boast: praise	dicsekedni: dicsérni	kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő	
-	H2051	H2051	igen	1	casks	hordók	kiemelt	a fordító bizonytalan (? a megjegyzésben)	
-	H2342	H2342A	igen	58	to twist: tremble	csavarodni: remegni	kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő	
-	H2470	H2470A	igen	76	be weak: weak	gyengének lenni: gyenge	kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő	
-	H2490	H2490C		143	to profane/begin: begin	gyalázni/kezdeni: kezdeni	kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő	
-	H2491	H2491A	igen	94	slain: killed	megölt: legyilkolt	kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő	
-	H3104	H3104	igen	27	jubilee/horn	kos/kürt	kiemelt	a rögzített „kos/kürt” hibás; javasolt: „jubileum/kürt”	
+	H1197	H1197A	igen	94	to burn: burn	égni: égetni	kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő | JAVASLAT: 200 karakteres kontextussal újrafordítva (def: burn/ignite)	égni: meggyulladni
+	H1350	H1350A	igen	104	to redeem: redeem	megváltani: kiváltani	kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő | JAVASLAT: 200 karakteres kontextussal újrafordítva, a fordítás változatlan	=
+	H1354	H1354	igen	13	back/rim/brow	hát/perem/gerinc	kiemelt	a fordító bizonytalan (? a megjegyzésben) | JAVASLAT: marad, a „?” törölhető	=
+	H1361	H1361	igen	34	to exult	ujjongani	kiemelt	a fordító bizonytalan (? a megjegyzésben) | JAVASLAT: marad, a „?” törölhető	=
+	H1984	H1984B	igen	165	to boast: praise	dicsekedni: dicsérni	kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő | JAVASLAT: 200 karakteres kontextussal újrafordítva, a fordítás változatlan	=
+	H2051	H2051	igen	1	casks	hordók	kiemelt	a fordító bizonytalan (? a megjegyzésben) | JAVASLAT: tulajdonnév; a glossza („casks”) félrevezető	Vedán
+	H2342	H2342A	igen	58	to twist: tremble	csavarodni: remegni	kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő | JAVASLAT: 200 karakteres kontextussal újrafordítva, a fordítás változatlan	=
+	H2470	H2470A	igen	76	be weak: weak	gyengének lenni: gyenge	kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő | JAVASLAT: 200 karakteres kontextussal újrafordítva, a fordítás változatlan	=
+	H2490	H2490C		143	to profane/begin: begin	gyalázni/kezdeni: kezdeni	kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő | JAVASLAT: 200 karakteres kontextussal újrafordítva, a fordítás változatlan	=
+	H2491	H2491A	igen	94	slain: killed	megölt: legyilkolt	kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő | JAVASLAT: 200 karakteres kontextussal újrafordítva, a fordítás változatlan	=
+	H3104	H3104	igen	27	jubilee/horn	kos/kürt	kiemelt	a rögzített „kos/kürt” hibás; javasolt: „jubileum/kürt” | JAVASLAT: hibás sor javítása	jubileum/kürt
 	H4060	H4060G		55	`great stature`	nagy termet	kiemelt	a fordító bizonytalan (? a megjegyzésben)	
-	H4578	H4578	igen	32	belly	belső	kiemelt	a rögzített „belső” helyett „has” javasolt (gloss: belly)	
-	H4693	H4693	igen	5	Egypt	Mizraim	kiemelt	a fordító bizonytalan (? a megjegyzésben)	
+	H4578	H4578	igen	32	belly	belső	kiemelt	a rögzített „belső” helyett „has” javasolt (gloss: belly) | JAVASLAT: hibás sor javítása	has
+	H4693	H4693	igen	5	Egypt	Mizraim	kiemelt	a fordító bizonytalan (? a megjegyzésben) | JAVASLAT: a glossza „Egypt”; Károli: Egyiptom	Egyiptom
 	H4970	H4970	igen	43	how	hogyan	kiemelt	a fordító bizonytalan (? a megjegyzésben)	
-	H5158	H5158A	igen	141	torrent: river	patak: folyó	kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő	
-	H5289	H5289	igen	1	newborn	újszülött	kiemelt	a fordító bizonytalan (? a megjegyzésben)	
-	H5937	H5937	igen	16	to exult	ujjongani	kiemelt	a fordító bizonytalan (? a megjegyzésben)	
-	H6114	H6114	igen	1	magistrate	elöljáró	kiemelt	a fordító bizonytalan (? a megjegyzésben)	
-	H6424	H6424	igen	6	to envy	irigykedni	kiemelt	a fordító bizonytalan (? a megjegyzésben)	
-	H6924	H6924G	igen	87	front: east	elöl: kelet	kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő	
-	H6999	H6999A	igen	116	to offer: burn	áldozni: elégetni	kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő	
-	H8577	H8577M		28	serpent: snake	kígyó: kígyó	kiemelt	a rögzített „kígyó: kígyó” helyett „sárkány: kígyó” javasolt	
+	H5158	H5158A	igen	141	torrent: river	patak: folyó	kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő | JAVASLAT: 200 karakteres kontextussal újrafordítva, a fordítás változatlan	=
+	H5289	H5289	igen	1	newborn	újszülött	kiemelt	a fordító bizonytalan (? a megjegyzésben) | JAVASLAT: a szócikk: a shaking, scattering	rázás/szórás
+	H5937	H5937	igen	16	to exult	ujjongani	kiemelt	a fordító bizonytalan (? a megjegyzésben) | JAVASLAT: marad, a „?” törölhető	=
+	H6114	H6114	igen	1	magistrate	elöljáró	kiemelt	a fordító bizonytalan (? a megjegyzésben) | JAVASLAT: a szócikk: restraint, oppression	visszatartás; elöljáró
+	H6424	H6424	igen	6	to envy	irigykedni	kiemelt	a fordító bizonytalan (? a megjegyzésben) | JAVASLAT: a szócikk „mérlegelni” is; a bizonytalanság marad	irigyelni
+	H6924	H6924G	igen	87	front: east	elöl: kelet	kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő | JAVASLAT: 200 karakteres kontextussal újrafordítva, a fordítás változatlan	=
+	H6999	H6999A	igen	116	to offer: burn	áldozni: elégetni	kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő | JAVASLAT: 200 karakteres kontextussal újrafordítva, a fordítás változatlan	=
+	H8577	H8577M		28	serpent: snake	kígyó: kígyó	kiemelt	a rögzített „kígyó: kígyó” helyett „sárkány: kígyó” javasolt | JAVASLAT: az árnyalat-megkülönböztetés miatt	sárkány: kígyó
 	H9007	H9007	igen	139	which/that	amely/hogy	kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
 	H9014	H9014	igen	8	[-]	[kötőjel]	kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
 	H9027	H9027	igen	16	your	-tok/-tek (női)	kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
@@ -841,7 +841,7 @@ rang	strong	entry_id	fo	tahot_elofordulas	glossza_en	glossza_hu	csoport	megjegyz
 	H9041	H9041	igen	166	you	te (alany)	kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
 	H9042	H9042	igen	29	you	te (alany, női)	kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
 	H9044	H9044	igen	44	she	ő (alany, női)	kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
-	H9045	H9045	igen	26	we	-nk	kiemelt	a rögzített „-nk” hibás; javasolt: „mi (alany)”	
+	H9045	H9045	igen	26	we	-nk	kiemelt	a rögzített „-nk” hibás; javasolt: „mi (alany)” | JAVASLAT: hibás sor javítása	mi (alany)
 	H9046	H9046	igen	80	you	ti (alany)	kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
 	H9047	H9047	igen	1	you	ti (alany, női)	kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
 	H9049	H9049	igen	9	they	ők (alany, női)	kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
