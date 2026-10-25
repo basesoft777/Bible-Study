@@ -6,10 +6,10 @@ tipus: feladat
 fazis: folyamat
 modell: sonnet
 munka: adat
-allapot: fut
+allapot: dontesre_var
 ag: ccr-6c9c92aa-tnvazz
 ad: A kimeneti string-literálokban maradt, már kiosztott helyőrzők (DT-F127b → DT277) felmérve és javítva (a lexikon_general.py:2116 már az F110.29-ben); döntés és megvalósítás az ismétlődés megelőzésére; a 8 érintett lexikonoldal újragenerálása 0-diffet ad.
-kovetkezo: "Folytatás: DT-F141a eldöntve (a) — F141.2: CI-szabály az ellenorzes/szabalyok.py-ban, utána F141.3 a 74 literál; az ir lista bővítendő"
+kovetkezo: "Te: DT-F141a eldöntése, utána /kovetkezo"
 olvas: [eszkozok/ellenoriz.py, eszkozok/f127_jeloltek_bovit.py, eszkozok/szamkiosztas.py, eszkozok/ellenorzes/szabalyok.py, eszkozok/lexikon_general.py, DONTESEK.md, naplok/SZURO_PILOT_ISTENTISZT_zaras.md, naplok/ELLENOR_F110_4.md]
 ir: [eszkozok/ellenoriz.py, eszkozok/f127_jeloltek_bovit.py, eszkozok/ellenorzes/szabalyok.py, eszkozok/szamkiosztas.py]
 fugg: [110]
