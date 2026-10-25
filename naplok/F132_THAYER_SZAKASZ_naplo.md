@@ -417,3 +417,15 @@ eltérés elfogadva?”. Átvezetve (`DONTESEK.md`, 🟢; a brief 6. döntésnap
 - Mellékhatás: a `thayer_vers_jelentes.tsv` fejlécsora (a `bont.py` kód-hash-e) újragenerálva, adatsor nem változott.
 - Tesztek: `teszt_bont.py` 23 (új `Javitas` osztály, 7 teszt), `teszt_lanc.py` 18, `teszt_vers_jelentes.py` 9 — zöld; `--ellenoriz`:
   `forras_javit.py`, `bont.py`, `sigla_gyujt.py`, `vers_jelentes.py` azonos; `thayer_bemenet.py --ellenoriz` RENDBEN.
+
+## F132.12 — DT-F132k (2): `forditas/prompt_v5_1.md` (2026-10-25)
+
+- **Új:** `forditas/prompt_v5_1.md` = a `prompt_v5.md` szó szerinti másolata (a v5 fejléce is, változatlanul) + egyetlen új blokk,
+  „Kiegészítő szabály (v5.1) — Thayer-szócikk” (a v5 határtoken-blokkja után): (1) a határtoken-szabály 1–6. pontja a Thayerre;
+  (2) a v4 általános szabályai és a v4.1 érvényesek, a v4 BDB-blokkja nem; (3) a v4.2 adatblokk-szabályából az 1–3. és 6. pont, a 4.
+  (`[kihagyva …]`) és 5. (`[BDB: X]`) nem; a Thayer-blokk négy része (Károli-alakok a le nem fedett könyvekkel; idézett versek,
+  `[nincs Károli-vers …]`; siglák a három jelöléssel, a terminológia elsőbb; nyelvközi híd, rangsor: terminológia > Károli > BDB >
+  szótár, `[nincs Strong-egyezés]` esetén nincs kitalált megfelelő); (4) a javított forrásszöveg (DT-F132i (2)) teljes.
+- A `prompt_v5.md` és a #128 fájljai változatlanok; a `thayer_jelolt/forditas.py` `PROMPT_UT`-ja a v5.1-re állt.
+- Teszt: `teszt_lanc.py` `test_prompt_v5_1` (a v5.1 törzse a blokk nélkül bájtra = a v5; a prompt tartalmazza a blokkot, a
+  jelölő fölötti rész nem kerül bele); a modul 19 tesztje zöld.

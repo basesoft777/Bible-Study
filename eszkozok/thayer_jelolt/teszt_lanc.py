@@ -172,6 +172,23 @@ class Lanc(unittest.TestCase):
     def tearDown(self):
         shutil.rmtree(self.tmp)
 
+    def test_prompt_v5_1(self):
+        # DT-F132k (2): a Thayer a v5.1-et használja; a v5.1 = a v5 szó szerint + egyetlen új blokk; a v5 a BDB-é marad
+        self.assertTrue(F.PROMPT_UT.endswith(os.path.join('forditas', 'prompt_v5_1.md')))
+        with open(F.PROMPT_UT, encoding='utf-8') as fh:
+            v51 = fh.read()
+        with open(F.E.PROMPT_V5_UT, encoding='utf-8') as fh:
+            v5 = fh.read()
+        self.assertNotIn('v5.1', v5)
+        blokk_eleje = '## Kiegészítő szabály (v5.1) — Thayer-szócikk'
+        vege = '## Ideiglenes terminológia (kötelező megfeleltetés'
+        torzs = v51.split('*A v5.0 fejléce, változatlanul:*\n\n', 1)[1]
+        i, j = torzs.index(blokk_eleje), torzs.index(vege)
+        self.assertEqual(torzs[:i] + torzs[j:], v5)
+        p = F.prompt_epit('G1941', TB.szakaszok('G1941'))
+        self.assertIn(blokk_eleje, p)
+        self.assertNotIn('Verziónapló (v5.1)', p)  # a jelölő fölötti rész nem kerül a promptba
+
     def test_prompt(self):
         sz = TB.szakaszok('G1941')
         p = F.prompt_epit('G1941', sz)

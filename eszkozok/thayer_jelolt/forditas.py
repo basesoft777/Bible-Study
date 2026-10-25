@@ -47,7 +47,7 @@ import thayer_bemenet as TB  # noqa: E402
 import thayer_kapuk as TK  # noqa: E402
 
 SZOTAR = TB.SZOTAR
-PROMPT_UT = E.PROMPT_V5_UT
+PROMPT_UT = os.path.join(GYOKER, 'forditas', 'prompt_v5_1.md')  # DT-F132k (2): a v5 + Thayer-kiegészítés; a v5 a BDB-é
 FORDITASOK_UT = E.FORDITASOK_UT
 MUNKA_UT = os.path.join(GYOKER, 'naplok', 'F132_THAYER_SZAKASZ_munka.tsv')
 FEJLEC = E.FORDITASOK_FEJLEC
