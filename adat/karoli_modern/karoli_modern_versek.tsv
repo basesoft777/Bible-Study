@@ -1,4 +1,4 @@
-# GENERÁLT: eszkozok/karoli_modern/karoli_modern.py (F96.3) — kézzel nem szerkeszthető; a javítás a szabályban (helyesiras.py, igealak.py, igeragozas.py) vagy a kivételtáblában (helyesiras.py: KIVETEL_LEMMA, ALAK_KIVETEL; igealak.py: KEZI, GYANU_KEZI, VALA_ELOTT_KEZI, VALA_ELOTT_MULT_KEZI, TOKEN_KIVETEL, E1_TARGYAS_KEZI, OK_KEZI, E1_MINDIG_VEG, KOR3_VALA_HOMOGRAF) | forras=konkordancia/Karoli_1908.tsv (sha256:49335bbcc77d53bcbfe52b4c7939b6b041cdd276ced019b6bf4ee61872bd3236) + adat/szoto/karoli_szotari_alak.tsv (sha256:edba33e6d65af46535ede231f36d2d7e4eeaab8ece2905ae831c1ddaf593a022) + adat/karoli_modern/helyesiras_tokenek.tsv (sha256:a3a9b6d24f7f272f7226fb1bb2d66b533eda7e4254a528daad29da3540c064d0) + adat/karoli_modern/igealak_tokenek.tsv (sha256:cbd3f3413725becdfd7124cb436d8a6fab8feb9288dc6dfc8ffa468cbeca6cfd) + adat/karoli_modern/igealak_llm.tsv (sha256:878dbe192b427139e43846d0509303b84dd6337ec8a21af7cc103516cefcd63c) + adat/karoli_modern/igealak_llm_opus.tsv (sha256:f536a79c073e585eed25842d277bacbc7a432f91476ba55027f67c03c1506d18) + adat/karoli_modern/igealak_llm_kor3.tsv (sha256:801636853498b761f859bc71ff4554082b0e5605e0447d71649b15e3bda23f23) + adat/karoli_modern/igealak_llm_kor4.tsv (sha256:532f4bf407d959c186cd470fc7b17d9166008e710d9ec2410553ffb373cd8c31) + adat/karoli_modern/igealak_llm_kor5.tsv (sha256:ce45db48117dc20a10f2893b46dbac253abdf22f7e24753993ecfa3ad4baef30) + eszkozok/karoli_strong/tokenek.py (sha256:705ccda729d06fb62d573d1edae410107a25a67ca75eba876f328e276e82ba54) + eszkozok/karoli_modern/fedettseg.py (sha256:beba874f8859dcfa4590e516ce9ffc91945f63971900b89fd47a9e34c4ccfc05) + eszkozok/karoli_modern/helyesiras.py (sha256:dbfd948155d621defed65b5b100ac268b2e299bfb99cb2a85ee7f48540ea4764) + eszkozok/karoli_modern/igealak.py (sha256:5c4303c09b5fd48516df8617c588911494a311cea5d69c86a45c0726ae281e7c) + eszkozok/karoli_modern/igeragozas.py (sha256:172887f578377c6238140c791fb6d84cf6bc0246c2bf364425c7d7e717cc0f64) + eszkozok/karoli_modern/karoli_modern.py (sha256:8217fdc4d096e953fd07852eacea9cfc27d755cae0e2a427168920c41c8a9f02) + adat/karoli_strong/szavak_*.tsv (61 fájl, a K3b bemenete, összesített sha256:c441cc76e5f3b1c2d9bd2a97b458679254dfdbe3523e8131fb1f7dd4ba7c2a96) | a modernizálás szintje: helyesírás + igealak, szókincs, szórend, írásjel és betoldás-jelölés változatlan (DT128) | tokenizálás: eszkozok/karoli_strong/tokenek.py tokenizal (a #22 hu_sorszam-a; a Strong token-kulcson illeszthető, a réteg Strongot nem tárol, DT-F96f, DT-F96o) | mérés: naplok/KAROLI_MODERN_meres.md 4.9 (.1, K1 246/246), 5.7 és 7.–8. (.2, K1 a javítások után a 8. szakasz szerint), 10. (a 3. kör, DT-F96q; a lefedettséget is mérő K1: igealak_minta2.tsv) 11. (a 4. kör, DT-F96r), 12. (DT-F96s) és 14. (az 5. kör, DT-F96u), modell-ellenőrzés, a felhasználó elfogadta | ts=2026-10-25T11:58Z | scope=a Károli 1908 minden verse (31158), a konkordancia/Karoli_1908.tsv sorrendjében
+# GENERÁLT: eszkozok/karoli_modern/karoli_modern.py (F96.3) — kézzel nem szerkeszthető; a javítás a szabályban (helyesiras.py, igealak.py, igeragozas.py) vagy a kivételtáblában (helyesiras.py: KIVETEL_LEMMA, ALAK_KIVETEL; igealak.py: KEZI, GYANU_KEZI, VALA_ELOTT_KEZI, VALA_ELOTT_MULT_KEZI, TOKEN_KIVETEL, E1_TARGYAS_KEZI, OK_KEZI, E1_MINDIG_VEG, KOR3_VALA_HOMOGRAF) | forras=konkordancia/Karoli_1908.tsv (sha256:49335bbcc77d53bcbfe52b4c7939b6b041cdd276ced019b6bf4ee61872bd3236) + adat/szoto/karoli_szotari_alak.tsv (sha256:edba33e6d65af46535ede231f36d2d7e4eeaab8ece2905ae831c1ddaf593a022) + adat/karoli_modern/helyesiras_tokenek.tsv (sha256:a3a9b6d24f7f272f7226fb1bb2d66b533eda7e4254a528daad29da3540c064d0) + adat/karoli_modern/igealak_tokenek.tsv (sha256:2c2f4ce5d42b1c6020fa4854d1ed3637e4185e4a740b1e264eca59798d5c7077) + adat/karoli_modern/igealak_llm.tsv (sha256:878dbe192b427139e43846d0509303b84dd6337ec8a21af7cc103516cefcd63c) + adat/karoli_modern/igealak_llm_opus.tsv (sha256:f536a79c073e585eed25842d277bacbc7a432f91476ba55027f67c03c1506d18) + adat/karoli_modern/igealak_llm_kor3.tsv (sha256:801636853498b761f859bc71ff4554082b0e5605e0447d71649b15e3bda23f23) + adat/karoli_modern/igealak_llm_kor4.tsv (sha256:532f4bf407d959c186cd470fc7b17d9166008e710d9ec2410553ffb373cd8c31) + adat/karoli_modern/igealak_llm_kor5.tsv (sha256:ce45db48117dc20a10f2893b46dbac253abdf22f7e24753993ecfa3ad4baef30) + eszkozok/karoli_strong/tokenek.py (sha256:705ccda729d06fb62d573d1edae410107a25a67ca75eba876f328e276e82ba54) + eszkozok/karoli_modern/fedettseg.py (sha256:beba874f8859dcfa4590e516ce9ffc91945f63971900b89fd47a9e34c4ccfc05) + eszkozok/karoli_modern/helyesiras.py (sha256:dbfd948155d621defed65b5b100ac268b2e299bfb99cb2a85ee7f48540ea4764) + eszkozok/karoli_modern/igealak.py (sha256:b07ec19aeb377129f680505ae31f4fd58b37a6a9341909753246a834a32cdddf) + eszkozok/karoli_modern/igeragozas.py (sha256:172887f578377c6238140c791fb6d84cf6bc0246c2bf364425c7d7e717cc0f64) + eszkozok/karoli_modern/karoli_modern.py (sha256:8217fdc4d096e953fd07852eacea9cfc27d755cae0e2a427168920c41c8a9f02) + adat/karoli_strong/szavak_*.tsv (61 fájl, a K3b bemenete, összesített sha256:c441cc76e5f3b1c2d9bd2a97b458679254dfdbe3523e8131fb1f7dd4ba7c2a96) | a modernizálás szintje: helyesírás + igealak, szókincs, szórend, írásjel és betoldás-jelölés változatlan (DT128) | tokenizálás: eszkozok/karoli_strong/tokenek.py tokenizal (a #22 hu_sorszam-a; a Strong token-kulcson illeszthető, a réteg Strongot nem tárol, DT-F96f, DT-F96o) | mérés: naplok/KAROLI_MODERN_meres.md 4.9 (.1, K1 246/246), 5.7 és 7.–8. (.2, K1 a javítások után a 8. szakasz szerint), 10. (a 3. kör, DT-F96q; a lefedettséget is mérő K1: igealak_minta2.tsv) 11. (a 4. kör, DT-F96r), 12. (DT-F96s) és 14. (az 5. kör, DT-F96u), modell-ellenőrzés, a felhasználó elfogadta | ts=2026-10-25T12:01Z | scope=a Károli 1908 minden verse (31158), a konkordancia/Karoli_1908.tsv sorrendjében
 igehely	szoveg_modern	valtozott
 1Móz 1:1	Kezdetben teremtette Isten az eget és a földet.	igen
 1Móz 1:2	A föld pedig kietlen és puszta volt, és sötétség volt a mélység színén, és az Isten Lelke lebegett a vizek felett.	igen
@@ -104,7 +104,7 @@ igehely	szoveg_modern	valtozott
 1Móz 4:22	Cilla pedig szülte Tubálkaint, mindenféle réz- és vasszerszámok kovácsolóját: és Tubálkain hugát, Nahamát.	igen
 1Móz 4:23	Akkor mondta Lámekh az ő feleségeinek: Oh Háda és Cilla, hallgassatok szómra, Lámekh feleségei, halljátok beszédem: embert öltem, mert megsebzett; ifjat öltem, mert megütött.	igen
 1Móz 4:24	Ha hétszeres a bosszú Kainért, hetvenhétszeres az Lámekhért.	nem
-1Móz 4:25	Ádám pedig ismét ismerte az ő feleségét, és az szüle neki fiat, és nevezte annak nevét Séthnek: mert adott úgymond, énnékem az Isten más magot Ábel helyett, kit megölt Kain.	igen
+1Móz 4:25	Ádám pedig ismét ismerte az ő feleségét, és az szült neki fiat, és nevezte annak nevét Séthnek: mert adott úgymond, énnékem az Isten más magot Ábel helyett, kit megölt Kain.	igen
 1Móz 4:26	Séthnek is született fia, és nevezte annak nevét Énósnak. Akkor kezdték segítségül hívni az Úrnak nevét.	igen
 1Móz 5:1	Ez az Ádám nemzetségének könyve. Amely napon teremtette Isten az embert, Isten hasonlatosságára teremtette azt.	igen
 1Móz 5:2	Férfiúvá és asszonnyá teremtette őket, és megáldotta őket és nevezte az ő nevüket Ádámnak, amely napon teremtettek.	igen
@@ -385,11 +385,11 @@ igehely	szoveg_modern	valtozott
 1Móz 16:1	És Szárai, az Ábrám felesége nem szült neki; de volt neki egy Égyiptomból való szolgálója, kinek neve Hágár volt.	igen
 1Móz 16:2	Mondta azért Szárai Ábrámnak: Ímé az Úr bezárolta az én méhemet, hogy ne szüljek: kérlek, menj be az én szolgálómhoz, talán az által megépülök; és engedett Ábrám a Szárai szavának.	igen
 1Móz 16:3	Vette tehát Szárai, Ábrám felesége az Égyiptombeli Hágárt, az ő szolgálóját, tíz esztendővel azután, hogy Ábrám a Kanaán földén letelepedett, és adta azt Ábrámnak az ő férjének feleségül.	igen
-1Móz 16:4	És béméne Hágárhoz, és az fogada az ő méhében; ez pedig amint látta, hogy terhes, nem volt becsülete az ő asszonyának ő előtte.	igen
+1Móz 16:4	És béméne Hágárhoz, és az fogadott az ő méhében; ez pedig amint látta, hogy terhes, nem volt becsülete az ő asszonyának ő előtte.	igen
 1Móz 16:5	Mondta azért Szárai Ábrámnak: Bántódásom van miattad. Én adtam öledbe szolgálómat, és mivelhogy látja, hogy teherbe esett, nincsen előtte becsületem. Tegyen ítéletet az Úr én közöttem és te közötted.	igen
 1Móz 16:6	És mondta Ábrám Szárainak: Ímé a te szolgálód kezedben van, azt tedd vele amit jónak látsz. Nyomorgatta azért Szárai, és az elfuta ő előle.	igen
 1Móz 16:7	És találta őt az Úrnak angyala egy forrásnál a pusztában, annál a forrásnál, amely a Súrba menő úton van.	igen
-1Móz 16:8	És mondta: Hágár, Szárai szolgálója! honnan jössz és hová mégy? És az monda: Az én asszonyomnak, Szárainak színe elől futok én.	igen
+1Móz 16:8	És mondta: Hágár, Szárai szolgálója! honnan jössz és hová mégy? És az mondta: Az én asszonyomnak, Szárainak színe elől futok én.	igen
 1Móz 16:9	Akkor mondta neki az Úr angyala: Térj meg a te asszonyodhoz, és alázd meg magad az ő kezei alatt.	igen
 1Móz 16:10	És mondta neki az Úrnak angyala: Felettébb megsokasítom a te magodat, hogy sokasága miatt megszámlálható se legyen.	igen
 1Móz 16:11	És mondta neki az Úrnak angyala: Ímé te terhes vagy, és szülsz fiat; és nevezd nevét Ismáelnek, mivelhogy meghallotta Isten a te nyomorúságodat.	igen
@@ -548,7 +548,7 @@ igehely	szoveg_modern	valtozott
 1Móz 21:32	Megkötötték tehát a szövetséget Beérsebában, és felkelt Abimélek és Pikhól annak hadvezére és visszatértek a Filiszteusok földére.	igen
 1Móz 21:33	Ábrahám pedig tamariskusfákat ültetett Beérsebában, és segítségül hívta ott az örökkévaló Úr Istennek nevét.	igen
 1Móz 21:34	És sok ideig tartózkodott Ábrahám a Filiszteusok földén.	igen
-1Móz 22:1	És lett ezeknek utána, az Isten megkisértette Ábrahámot, és mondta neki: Ábrahám! S az felele: Ímhol vagyok.	igen
+1Móz 22:1	És lett ezeknek utána, az Isten megkisértette Ábrahámot, és mondta neki: Ábrahám! S az felelt: Ímhol vagyok.	igen
 1Móz 22:2	És mondta: Vedd a te fiadat, ama te egyetlenegyedet, akit szeretsz, Izsákot, és menj el Mórijának földére, és áldozd meg ott égő áldozatul a hegyek közül egyen, amelyet mondándok neked.	igen
 1Móz 22:3	Felkelt azért Ábrahám jó reggel, és megnyergelte az ő szamarát, és maga mellé vette két szolgáját, és az ő fiát Izsákot, és fát hasogatott az égő áldozathoz. Akkor felkelt és elindult a helyre, melyet neki az Isten mondott.	igen
 1Móz 22:4	Harmadnapon felemelte az ő szemeit Ábrahám, és látta a helyet messziről.	igen
@@ -660,7 +660,7 @@ igehely	szoveg_modern	valtozott
 1Móz 24:66	Elbeszélte azután a szolga Izsáknak mindazokat a dolgokat, amelyeket cselekedett.	igen
 1Móz 24:67	Izsák pedig bevitte Rebekát Sárának az ő anyjának sátorába. És elvette Rebekát és lett neki felesége és szerette őt. S megvigasztalódott Izsák az ő anyja halála után.	igen
 1Móz 25:1	Ábrahám pedig ismét vett magának feleséget, kinek neve Ketúráh volt.	igen
-1Móz 25:2	És az szülé neki Zimránt, Joksánt, Médánt, Midiánt, Isbákot és Suakhot.	igen
+1Móz 25:2	És az szülte neki Zimránt, Joksánt, Médánt, Midiánt, Isbákot és Suakhot.	igen
 1Móz 25:3	Joksán pedig nemzette Sébát, és Dédánt. Dédánnak pedig fiai voltak: Assurim, Letúsim és Leummim.	igen
 1Móz 25:4	S Midiánnak fiai: Éfah, Éfer, Hánok, Abida és Eldaah: Mind ezek Ketúráhnak fiai.	nem
 1Móz 25:5	Valamije pedig Ábrahámnak volt, mindazt Izsáknak adta.	igen
@@ -745,7 +745,7 @@ igehely	szoveg_modern	valtozott
 1Móz 27:15	És vette Rebeka az ő nagyobbik fiának Ézsaúnak drága ruháit, melyek ő nála otthon voltak, és felöltöztette Jákóbot az ő kisebbik fiát.	igen
 1Móz 27:16	A kecskegödölyék bőrével pedig beborította az ő kezeit, és nyakának simaságát.	igen
 1Móz 27:17	És az ételt amelyet készített, kenyérrel együtt adta Jákóbnak az ő fiának kezébe.	igen
-1Móz 27:18	És bement az ő atyjához és mondta: Atyám! és az monda: Ímhol vagyok. Ki vagy te fiam?	igen
+1Móz 27:18	És bement az ő atyjához és mondta: Atyám! és az mondta: Ímhol vagyok. Ki vagy te fiam?	igen
 1Móz 27:19	Mondta Jákób az ő atyjának: Én vagyok Ézsaú a te elsőszülötted, aképen cselekedtem amint parancsoltad, kelj fel, kérlek, űlj le és egyél vadászatomból, hogy megáldjon engem a te lelked.	igen
 1Móz 27:20	És mondta Izsák az ő fiának: Hogy van az, hogy ily hamar találtál, fiam? És felelt: Mert az Úr, a te Istened hozta előmbe.	igen
 1Móz 27:21	És mondta Izsák Jákóbnak: Jer közelebb, kérlek, hadd tapogassalak meg fiam: hogy vajon te vagy-é az én fiam Ézsaú vagy nem?	igen
@@ -1122,7 +1122,7 @@ igehely	szoveg_modern	valtozott
 1Móz 37:36	A Midiániták pedig eladták őt Égyiptomba Pótifárnak, a Faraó főemberének, a testőrök főhadnagyának.	igen
 1Móz 38:1	És lett abban az időben, hogy Júda elment az ő atyjafiaitól, és betért egy Adullámbeli férfiúhoz, kinek neve Khira volt.	igen
 1Móz 38:2	És meglátta ott Júda egy Súah nevű Kanaánbeli férfiúnak leányát, és elvette azt, és bement hozzá.	igen
-1Móz 38:3	És az fogada méhében és szült fiat, és nevezte nevét Hérnek.	igen
+1Móz 38:3	És az fogadott méhében és szült fiat, és nevezte nevét Hérnek.	igen
 1Móz 38:4	És ismét fogadott méhében, s fiat szült, és nevezte nevét Ónánnak.	igen
 1Móz 38:5	Még egyszer szült fiat, és nevezte nevét Sélának, és mikor azt szülte, Khezibben volt.	igen
 1Móz 38:6	És vett Júda az ő elsőszülött fiának Hérnek feleséget, ennek neve Thámár volt.	igen
@@ -1136,7 +1136,7 @@ igehely	szoveg_modern	valtozott
 1Móz 38:14	Levetette azért magáról özvegyi ruháját, elfátyolozta és beburkolta magát, és leült Enajim kapujába, mely a Thimnába vezető úton van; mert látta, hogy felnevekedett Séla, és még sem adták őt annak feleségül.	igen
 1Móz 38:15	Meglátta pedig őt Júda, és tisztátalan személynek gondolta, mivelhogy befedezte orcáját.	igen
 1Móz 38:16	És hozzá tért az útra és mondta: Engedd meg kérlek, hogy menjek be te hozzád, mert nem tudta, hogy az ő menye az. Ez pedig mondta: Mit adsz nekem ha bejösz hozzám?	igen
-1Móz 38:17	És felelt: Küldök neked az én nyájamból egy kecskefiat. És az monda: Adsz-é zálogot, míg megküldöd?	igen
+1Móz 38:17	És felelt: Küldök neked az én nyájamból egy kecskefiat. És az mondta: Adsz-é zálogot, míg megküldöd?	igen
 1Móz 38:18	És mondta: Micsoda zálogot adjak neked? És mondta: Gyűrűdet, gyűrűd zsinórját és pálcádat, mely kezedben van. Oda adta azért neki, és bement hozzá, és teherbe ejtette.	igen
 1Móz 38:19	Azután felkelt és elment, és levetette magáról a fátyolt; és felvette az ő özvegyi ruháját.	igen
 1Móz 38:20	És megküldte Júda a kecskefiat az ő Adullámbeli barátjától, hogy visszavegye a zálogot az asszonytól, de nem találta azt.	igen
@@ -7150,7 +7150,7 @@ Ruth 1:20	És ő mondta nekik: Ne hívjatok engem Naóminak, hívjatok inkább M
 Ruth 1:21	Többed magammal mentem el, és elárvultan hozott vissza engemet az Úr; miért hívnátok hát engem Naóminak, holott az Úr ellenem fordult, és a Mindenható nyomorúsággal illetett engemet?	nem
 Ruth 1:22	Így tért vissza Naómi, és vele a Moábita Ruth, az ő menye, aki hazatért Moáb mezejéről. Megérkeztek pedig Bethlehembe az árpaaratás kezdetén.	igen
 Ruth 2:1	Volt pedig Naóminak egy rokona az ő férje után, előkelő derék ember Elimélek nemzetségéből; neve Boáz.	igen
-Ruth 2:2	És mondta a Moábita Ruth Naóminak: Hadd menjek, kérlek, a mezőre, hogy kalászokat szedegessek az után, akinek szemei előtt kedvességet találok. És az monda: Menj édes leányom.	igen
+Ruth 2:2	És mondta a Moábita Ruth Naóminak: Hadd menjek, kérlek, a mezőre, hogy kalászokat szedegessek az után, akinek szemei előtt kedvességet találok. És az mondta: Menj édes leányom.	igen
 Ruth 2:3	Elment azért és odaérkezett, szedegetett a mezőn az aratók után, és történetesen oda talált a Boáz szántóföldjére, aki Elimélek nemzetségéből való volt.	igen
 Ruth 2:4	És ímé Boáz kijött Bethlehemből, és mondta az aratóknak: Az Úr legyen veletek! És ők mondták neki: Áldjon meg téged az Úr!	igen
 Ruth 2:5	És mondta Boáz az ő szolgájának, aki az aratók felügyelője volt: Kié ez a leányzó?	igen
@@ -7180,20 +7180,20 @@ Ruth 3:5	És ő mondta neki: Mindazt, amit mondasz, megcselekszem.	igen
 Ruth 3:6	És lement a szérűre, és mindent úgy cselekedett, amint napaasszonya parancsolta.	igen
 Ruth 3:7	És Boáz evett és ivott, és felvidámult az ő szíve. És elment, hogy lefeküdjék a garmada szélén; és az eljött titkon, és felhajtotta lába felől a leplet, és lefeküdt.	igen
 Ruth 3:8	Történt pedig éjfél tájon, hogy felrettent a férfiú, és odafordult. És ímé: asszony fekszik az ő lábainál.	nem
-Ruth 3:9	És mondta: Kicsoda vagy te? És az monda: Én Ruth vagyok, a te szolgálód; terjesszed ki hát takaródat a te szolgálódra, mert te vagy a legközelebbi rokon.	igen
+Ruth 3:9	És mondta: Kicsoda vagy te? És az mondta: Én Ruth vagyok, a te szolgálód; terjesszed ki hát takaródat a te szolgálódra, mert te vagy a legközelebbi rokon.	igen
 Ruth 3:10	És ő mondta: Az Úrnak áldotta vagy te, édes leányom! Utóbbi szereteteddel jobbat cselekedtél, mint az elsővel: hogy nem jártál az ifjak után, sem szegény, sem gazdag után.	igen
 Ruth 3:11	Most hát, édes leányom, ne félj! Mindent, amit mondasz, megteszek neked; mert tudja az én népemnek egész kapuja, hogy derék asszony vagy.	igen
 Ruth 3:12	És most: bizony igaz, hogy közel rokon vagyok: de van nálamnál még közelebbi rokon is.	nem
 Ruth 3:13	Ez éjszakán hálj itt; s majd reggel, ha az megvált téged, jó: váltson meg; ha pedig nem akar téged megváltani, akkor én váltalak meg. Él az Úr! Feküdj itt reggelig.	nem
 Ruth 3:14	És feküdt az ő lábainál reggelig, és felkelt, mielőtt valaki az ő felebarátját megismerhette, mert mondta: Meg ne tudja senki, hogy ez az asszony a szérűre jött.	igen
 Ruth 3:15	És mondta: Add ide a nagy kendődet, amely rajtad van, és tartsd. És ő oda tartotta azt. Boáz pedig mért hat mérték árpát, és feladta neki, maga pedig bement a városba.	igen
-Ruth 3:16	És elment az ő napaasszonyához, és az monda: Hogy vagy édes leányom? És ő elbeszélt neki mindent, amit cselekedett vele az a férfi.	igen
+Ruth 3:16	És elment az ő napaasszonyához, és az mondta: Hogy vagy édes leányom? És ő elbeszélt neki mindent, amit cselekedett vele az a férfi.	igen
 Ruth 3:17	És mondta: Ezt a hat mérték árpát adta nekem, mert mondta: Ne menj üresen a te napadhoz.	igen
 Ruth 3:18	És mondta Naómi: Légy veszteg leányom, míg megtudod, hova dől el a dolog; mert nem nyugszik az a férfiú, míg véghez nem viszi a dolgot még ma.	igen
 Ruth 4:1	Boáz pedig felment a kapuba, és ott leült. És ímé arra ment az a legközelebbi rokon, akiről Boáz beszélt, és mondta neki: Jer csak, ülj ide atyafi. És az oda ment és leült.	igen
 Ruth 4:2	Ekkor ő maga mellé vett tíz férfiút a város vénei közül és mondta: Üljetek ide! És azok leültek.	igen
 Ruth 4:3	És ő mondta a legközelebbi rokonnak: Azt a darab szántóföldet, mely a mi atyánkfiáé, Eliméleké volt, eladja Naómi, aki haza jött a Moáb mezejéről.	igen
-Ruth 4:4	Én pedig gondoltam, hogy füledbe juttatom, mondva: Vedd meg az itt ülők előtt és az én népemnek vénei előtt. Ha megváltod: váltsd meg; és ha nem váltod meg: jelentsd ki előttem, hogy tudjam; mert rajtad kívül nincs, aki megváltaná, és én vagyok utánad. És az monda: Én megváltom.	igen
+Ruth 4:4	Én pedig gondoltam, hogy füledbe juttatom, mondva: Vedd meg az itt ülők előtt és az én népemnek vénei előtt. Ha megváltod: váltsd meg; és ha nem váltod meg: jelentsd ki előttem, hogy tudjam; mert rajtad kívül nincs, aki megváltaná, és én vagyok utánad. És az mondta: Én megváltom.	igen
 Ruth 4:5	És mondta Boáz: Amely napon megveszed a szántóföldet Naómi kezéből, akkor a Moábita Ruthtól, a megholtnak feleségétől veszed meg, hogy nevet támassz a megholtnak, az ő örökségében.	igen
 Ruth 4:6	A legközelebbi rokon pedig mondta: Nem válthatom meg magamnak, hogy el ne veszessem a magam örökségét; váltsd meg te magadnak az én rokoni részemet, mert én nem válthatom meg.	igen
 Ruth 4:7	Ez volt pedig a szokás régen Izráelben, a megváltás és cserélés alkalmával, minden dolognak megerősítésére: A férfi lehúzta az ő saruját és oda adta felebarátjának, és ez volt a bizonyság Izráelben.	igen
@@ -8783,7 +8783,7 @@ Ruth 4:22	És Obed nemzette Isait, Isai pedig nemzette Dávidot.	igen
 1Kir 2:10	Azután elaludt Dávid az ő atyáival, és eltemettetett a Dávid városában.	igen
 1Kir 2:11	Az idő pedig, amelyben uralkodott Dávid Izráelen, negyven esztendő. Hebronban uralkodott hét esztendeig, Jeruzsálemben pedig uralkodott harminchárom esztendeig.	igen
 1Kir 2:12	Azután Salamon ült Dávidnak, az ő atyjának királyi székibe, és megerősödött az ő királyi birodalma felette igen.	igen
-1Kir 2:13	De Adónia, a Haggit fia bement Bethsabéhoz, a Salamon anyjához, és az monda: Békességes-é a te jöveteled? Ki felelt: Békességes.	igen
+1Kir 2:13	De Adónia, a Haggit fia bement Bethsabéhoz, a Salamon anyjához, és az mondta: Békességes-é a te jöveteled? Ki felelt: Békességes.	igen
 1Kir 2:14	És mondta: Beszédem volna veled. Mondta az: Szólj.	igen
 1Kir 2:15	Akkor mondta Adónia: Te tudod, hogy az ország az enyém volt, és az egész Izráel rám nézett, hogy én uralkodjam; de elvétetett az ország tőlem, és lett az én atyámfiáé, mert az Úrtól adatott neki.	igen
 1Kir 2:16	Most egy kérést kérek tőled, ne szégyenítsd meg orcámat. Az pedig mondta: Beszélj!	igen
@@ -9200,7 +9200,7 @@ Ruth 4:22	És Obed nemzette Isait, Isai pedig nemzette Dávidot.	igen
 1Kir 13:13	És mondta az ő fiainak: Nyergeljétek meg nekem a szamarat; és mikor megnyergelték neki a szamarat, felült rá,	igen
 1Kir 13:14	És elment az Isten embere után, és megtalálta őt egy cserfa alatt ülve, és mondta neki: Te vagy-é amaz Isten embere, aki Júdából jöttél? És mondta: Én vagyok.	igen
 1Kir 13:15	Akkor mondta neki: Jere haza velem és egyél kenyeret.	igen
-1Kir 13:16	De az felele: Nem mehetek vissza veled, be sem mehetek veled; nem eszem kenyeret, vizet sem iszom veled e helyen;	nem
+1Kir 13:16	De az felelt: Nem mehetek vissza veled, be sem mehetek veled; nem eszem kenyeret, vizet sem iszom veled e helyen;	igen
 1Kir 13:17	Mert meg van nekem az Úrnak beszédével parancsolva: Ne egyél kenyeret, vizet se igyál ott, és ne térj azon az úton vissza, amelyen oda menéndesz.	igen
 1Kir 13:18	És felelt az neki: Én is olyan próféta vagyok, mint te, és nekem angyal szólt az Úrnak beszédével, mondva: Hozd vissza őt veled a te házadba, hogy kenyeret egyék és vizet igyék. És e képen hazudott neki.	igen
 1Kir 13:19	Megtért azért vele, és kenyeret evett az ő házában, és vizet ivott.	igen
@@ -9627,7 +9627,7 @@ Ruth 4:22	És Obed nemzette Isait, Isai pedig nemzette Dávidot.	igen
 2Kir 4:20	Ki mikor felvette őt, vitte az ő anyjához, és az az ölében tartotta délig, és akkor meghalt.	igen
 2Kir 4:21	És felment az asszony, és az Isten emberének ágyára tette őt, és az ajtót bezárva kijött onnét.	igen
 2Kir 4:22	És előhívatta az ő férjét és mondta: Kérlek, küldj ide nekem egyet a szolgák közül és egy szamarat, hadd menjek el hamar az Isten emberéhez, és mindjárt megjövök.	igen
-2Kir 4:23	És az monda: Miért mégy ő hozzá, ma nincs sem újhold, sem szombat? Felelt az: Csak hagyd rám!	igen
+2Kir 4:23	És az mondta: Miért mégy ő hozzá, ma nincs sem újhold, sem szombat? Felelt az: Csak hagyd rám!	igen
 2Kir 4:24	És megnyergelte a szamarat, és mondta a szolgának: Hajtsd és siess, ne késlelj engem a menésben, hanem ha mondándom neked.	igen
 2Kir 4:25	És elmenve, jutott az Isten emberéhez a Kármel hegyére. És mikor meglátta őt az Isten embere távolról, mondta Géházinak, az ő szolgájának: Ímé a Súnemita ez!	igen
 2Kir 4:26	Fuss, kérlek, eleibe, és kérdezd meg tőle, ha békességben van-é mind ő, mind az ő férje, mind az ő gyermeke? Mondta az: Békességben!	igen
@@ -9742,7 +9742,7 @@ Ruth 4:22	És Obed nemzette Isait, Isai pedig nemzette Dávidot.	igen
 2Kir 8:11	És mereven ránézett Hazáelre, mígnem zavarba jött; végre sírni kezdett az Isten embere.	nem
 2Kir 8:12	És mondta Hazáel: Miért sír az én uram? És felelt: Mert tudom a veszedelmet, amelyet az Izráel fiaira hozol; az ő erős városait megégeted, az ő ifjait fegyverrel levágatod, és kis gyermekeit a földhöz vered, és terhes asszonyait ketté vágod.	igen
 2Kir 8:13	És mondta Hazáel: Kicsoda a te szolgád, ez az eb, hogy ilyen nagy dolgokat cselekednék? És felelt Elizeus: Megjelentette nekem az Úr, hogy te leszel Siria királya.	igen
-2Kir 8:14	És elment Elizeustól, és bement az ő urához, és az monda neki: Mit mondott Elizeus? és mondta: Azt mondta, hogy meggyógyulsz.	igen
+2Kir 8:14	És elment Elizeustól, és bement az ő urához, és az mondta neki: Mit mondott Elizeus? és mondta: Azt mondta, hogy meggyógyulsz.	igen
 2Kir 8:15	Másnap azonban elővett egy takarót és bemártva azt vízbe, ráterítette az ő arcára, és meghalt: és uralkodott Hazáel ő helyette.	igen
 2Kir 8:16	És Jórámnak, az Akháb fiának, az Izráel királyának ötödik esztendejében, mikor még Josafát volt Júda királya, uralkodni kezdett Jórám, a Josafát fia, Júda királya.	igen
 2Kir 8:17	Harminckét esztendős volt, mikor uralkodni kezdett, és nyolc esztendeig uralkodott Jeruzsálemben.	igen
@@ -12930,7 +12930,7 @@ Jób 3:21	Akik a halált várják, de nem jön az, és szorgalmasabban keresik m
 Jób 3:22	Akik nagy örömmel örvendeznek, vigadnak, mikor megtalálják a koporsót.	igen
 Jób 3:23	A férfiúnak, aki útvesztőbe jutott, és akit az Isten bekerített köröskörül.	igen
 Jób 3:24	Mert kenyerem gyanánt van az én fohászkodásom, és sóhajtásaim ömölnek, mint habok.	nem
-Jób 3:25	Mert amitől remegve remegtem, az jöve rám, és amitől rettegtem, az esék rajtam.	igen
+Jób 3:25	Mert amitől remegve remegtem, az jött rám, és amitől rettegtem, az esék rajtam.	igen
 Jób 3:26	Nincs békességem, sem nyugtom, sem pihenésem, mert nyomorúság támadt rám.	igen
 Jób 4:1	És felelt a témáni Elifáz, és mondta:	igen
 Jób 4:2	Ha szólni próbálunk hozzád, zokon veszed-é? De hát ki bírná türtőztetni magát a beszédben?	nem
@@ -20700,7 +20700,7 @@ Ez 10:2	És szólt a gyolcsba öltözött férfiúnak, és mondta: Menj be a for
 Ez 10:3	A Kérubok pedig állanak a háztól jobbra, mikor a férfi bement, és a felhő betöltötte a belső pitvart.	igen
 Ez 10:4	És eltávozott az Úr dicsősége a Kérubról, a ház küszöbére, és megtelt a ház a felhővel, és a pitvar betelt az Úr dicsőségének fényességével.	igen
 Ez 10:5	És a Kérubok szárnyainak csattogása meghallatott a külső pitvarig, mint az erős Isten hangja, mikor beszél.	igen
-Ez 10:6	És lett, mikor parancsolt ama gyolcsba öltözött férfinak, mondva: Végy tüzet a forgókerekek közül, a Kérubok közül, az beméne, és állt a kerék mellé.	igen
+Ez 10:6	És lett, mikor parancsolt ama gyolcsba öltözött férfinak, mondva: Végy tüzet a forgókerekek közül, a Kérubok közül, az bement, és állt a kerék mellé.	igen
 Ez 10:7	És kinyújtotta egy Kérub a kezét a Kérubok közül a tűzhöz, mely volt a Kérubok között, és vett és tette a gyolcsba öltözöttnek markába, ki elvette és kiment.	igen
 Ez 10:8	És látszott a Kérubokon emberi kéznek formája szárnyaik alatt.	igen
 Ez 10:9	És láttam, és ímé, négy kerék volt a Kérubok mellett, egyik kerék volt az egyik Kérub mellett és a másik kerék a másik Kérub mellett, és olyanok voltak a kerekek, mintha tarsiskőből volnának.	igen
@@ -22044,7 +22044,7 @@ Dán 8:18	És mikor szólt velem, ájultan estem orcámmal a földre; de megille
 Dán 8:19	És mondta: Ímé, én megmondom neked, mi lesz a haragnak végén? Mert a végső időre szól.	igen
 Dán 8:20	Az a kétszarvú kos, melyet láttál, Médiának és Persiának királya.	nem
 Dán 8:21	A szőrös kecskebak Görögország királya, a nagy szarv pedig, amely szemei között volt, az az első király.	igen
-Dán 8:22	Hogy pedig az letöretteték, és négy állt helyébe: négy ország támad abból a nemzetből, de nem annak erejével.	igen
+Dán 8:22	Hogy pedig az letöretett, és négy állt helyébe: négy ország támad abból a nemzetből, de nem annak erejével.	igen
 Dán 8:23	És ezek országai után, mikor elfogynak a gonoszok, támad egy kemény orcájú, ravaszságokhoz értő király.	igen
 Dán 8:24	És annak nagy ereje lesz, noha nem a maga ereje által, és csudálatosképen pusztít és jó szerencsével halad és cselekszik, és elpusztítja az erőseket és a szenteknek népét.	nem
 Dán 8:25	És a maga eszén jár, és szerencsés lesz az álnokság az ő kezében, és szívében felfuvalkodik és hirtelen elveszt sokakat; sőt a fejedelmek fejedelme ellen is feltámad, de kéz nélkül rontatik meg.	nem
@@ -23445,9 +23445,9 @@ Mt 9:3	És ímé némelyek az írástudók közül mondták magukban: Ez károml
 Mt 9:4	És Jézus, látva az ő gondolataikat, mondta: Miért gondoltok gonoszt a ti szívetekben?	igen
 Mt 9:5	Mert mi könnyebb, ezt mondani-é: Megbocsáttattak neked a te bűneid; vagy ezt mondani: Kelj föl és járj?	igen
 Mt 9:6	Hogy pedig megtudjátok, hogy az ember Fiának van hatalma a földön a bűnöket megbocsátani (ekkor mondta a gutaütöttnek): Kelj föl, vedd a te ágyadat, és eredj haza.	igen
-Mt 9:7	És az felkelvén, haza ment.	igen
+Mt 9:7	És az felkelve, haza ment.	igen
 Mt 9:8	A sokaság pedig ezt látva, elálmélkodott, és dicsőítette az Istent, hogy ilyen hatalmat adott az embereknek.	igen
-Mt 9:9	És mikor Jézus onnét tovább ment, látott egy embert ülni a vámszedő helyen, akinek Máté volt a neve, és mondta neki: Kövess engem! És az felkelvén, követte őt.	igen
+Mt 9:9	És mikor Jézus onnét tovább ment, látott egy embert ülni a vámszedő helyen, akinek Máté volt a neve, és mondta neki: Kövess engem! És az felkelve, követte őt.	igen
 Mt 9:10	És lett, amikor ő letelepedett a házban, ímé sok vámszedő és bűnös jött oda és letelepedtek Jézussal és az ő tanítványaival az asztalhoz.	igen
 Mt 9:11	És látva ezt a farizeusok, mondták az ő tanítványainak: Miért eszik ez a ti Mesteretek a vámszedőkkel és bűnösökkel együtt?	igen
 Mt 9:12	Jézus pedig ezt hallva, mondta nekik: Nem az egészségeseknek van szüksége orvosra, hanem a betegeknek.	igen
@@ -25294,7 +25294,7 @@ Luk 7:36	Kérte pedig őt egy a farizeusok közül, hogy ő vele egyék; annakok
 Luk 7:37	És ímé a városban egy asszony aki bűnös volt, mikor megtudta, hogy ő a farizeus házában leült enni, hozott egy alabástrom szelence drága kenetet.	igen
 Luk 7:38	És megállva hátul az ő lábainál sírva, könnyeivel kezdte öntözni az ő lábait, és fejének hajával törölte meg, és csókolgatta az ő lábait, és megkente drága kenettel.	igen
 Luk 7:39	Mikor pedig ezt látta a farizeus, aki őt meghívta, mondta magában: Ez, ha próféta volna, tudná ki és miféle asszony az, aki őt illeti: hogy bűnös.	igen
-Luk 7:40	És felelve Jézus, mondta neki: Simon, van valami mondani valóm neked. És az monda: Mester, mondjad.	igen
+Luk 7:40	És felelve Jézus, mondta neki: Simon, van valami mondani valóm neked. És az mondta: Mester, mondjad.	igen
 Luk 7:41	Egy hitelezőnek két adósa volt: az egyik adós volt ötszáz pénzzel, a másik pedig ötvennel.	igen
 Luk 7:42	És mikor nem volt nekik miből megadni, mind a kettőnek elengedte. E kettő közül azért, mondd meg, melyik szereti őt jobban?	igen
 Luk 7:43	Felelve pedig Simon, mondta: Azt gondolom, hogy az, akinek többet engedett el. És Jézus mondta neki: Igazán ítéltél.	igen
@@ -25970,7 +25970,7 @@ Luk 22:43	És angyal jelent meg neki mennyből, erősítve őt.	igen
 Luk 22:44	És haláltusában lévén, buzgóságosabban imádkozott; és az ő verítéke olyan volt, mint a nagy vércseppek, melyek a földre hullanak.	igen
 Luk 22:45	És minekutána fölkelt az imádkozástól, az ő tanítványaihoz menve, aludva találta őket a szomorúság miatt,	igen
 Luk 22:46	És mondta nekik: Mit alusztok? Keljetek fel és imádkozzatok, hogy kísértetbe ne essetek.	igen
-Luk 22:47	És mikor még beszélt, ímé sokaság jött, melynek az méne előtte, aki Júdásnak neveztetik, egy a tizenkettő közül: és közelgetett Jézushoz, hogy őt megcsókolja.	igen
+Luk 22:47	És mikor még beszélt, ímé sokaság jött, melynek az ment előtte, aki Júdásnak neveztetik, egy a tizenkettő közül: és közelgetett Jézushoz, hogy őt megcsókolja.	igen
 Luk 22:48	Jézus pedig mondta neki: Júdás, csókkal árulod el az embernek Fiát?	igen
 Luk 22:49	Látva pedig azok, akik ő körülötte voltak, ami következik, mondták neki: Uram, vágjuk-é őket fegyverrel?	igen
 Luk 22:50	És közülök valaki megvágta a főpap szolgáját, és levágta annak jobb fülét.	igen
@@ -26136,7 +26136,7 @@ Ján 1:29	Másnap látta János Jézust ő hozzá menni, és mondta: Ímé az Is
 Ján 1:30	Ez az, akiről én ezt mondtam: Én utánam jön egy férfiú, aki előttem lett, mert előbb volt nálamnál.	igen
 Ján 1:31	És én nem ismertem őt; de hogy megjelentessék Izráelnek, azért jöttem én, aki vízzel keresztelek.	igen
 Ján 1:32	És bizonyságot tett János, mondva: Láttam a Lelket leszállani az égből, mint egy galambot; és megnyugodott ő rajta.	igen
-Ján 1:33	És én nem ismertem őt; de aki elküldött engem, hogy vízzel kereszteljek, az mondá nekem: Akire látod a Lelket leszállani és rajta megnyugodni, az az, aki keresztel Szent Lélekkel.	igen
+Ján 1:33	És én nem ismertem őt; de aki elküldött engem, hogy vízzel kereszteljek, az mondta nekem: Akire látod a Lelket leszállani és rajta megnyugodni, az az, aki keresztel Szent Lélekkel.	igen
 Ján 1:34	És én láttam, és bizonyságot tettem, hogy ez az Isten Fia.	nem
 Ján 1:35	Másnap ismét ott állt János és kettő az ő tanítványai közül;	igen
 Ján 1:36	És ránézve Jézusra, amint ott járt, mondta: Ímé az Isten Báránya!	igen
@@ -26280,7 +26280,7 @@ Ján 5:7	Felelt neki a beteg: Uram, nincs emberem, hogy amikor a víz felzavarod
 Ján 5:8	Mondta neki Jézus: Kelj fel, vedd fel a te nyoszolyádat, és járj!	igen
 Ján 5:9	És azonnal meggyógyult az ember, és felvette nyoszolyáját, és járt. Aznap pedig szombat volt.	igen
 Ján 5:10	Mondták azért a zsidók a meggyógyultnak: Szombat van, nem szabad neked a nyoszolyádat hordanod!	igen
-Ján 5:11	Felelt nekik: Aki meggyógyított engem, az mondá nekem: Vedd fel a nyoszolyádat, és járj.	igen
+Ján 5:11	Felelt nekik: Aki meggyógyított engem, az mondta nekem: Vedd fel a nyoszolyádat, és járj.	igen
 Ján 5:12	Megkérdezték azért őt: Ki az az ember, aki mondta neked: Vedd fel a nyoszolyádat, és járj?	igen
 Ján 5:13	A meggyógyult pedig nem tudta, hogy ki az; mert Jézus félre vonult, sokaság lévén azon a helyen.	igen
 Ján 5:14	Ezek után találkozott vele Jézus a templomban, és mondta neki: Ímé meggyógyultál; többé ne vétkezzél, hogy rosszabbul ne legyen dolgod!	igen
@@ -26695,7 +26695,7 @@ Ján 13:2	És vacsora közben, amikor az ördög belesugalta már Iskáriótes J
 Ján 13:3	Tudva Jézus, hogy az Atya mindent hatalmába adott neki, és hogy ő az Istentől jött és az Istenhez megy,	igen
 Ján 13:4	Felkelt a vacsorától, levetette a felső ruháját; és egy kendőt véve, körülkötötte magát.	igen
 Ján 13:5	Azután vizet töltött a medencébe, és kezdte mosni a tanítványok lábait, és megtörleni a kendővel, amellyel körül van kötve.	igen
-Ján 13:6	Ment azért Simon Péterhez; és az monda neki: Uram, te mosod-é meg az én lábaimat?	igen
+Ján 13:6	Ment azért Simon Péterhez; és az mondta neki: Uram, te mosod-é meg az én lábaimat?	igen
 Ján 13:7	Felelt Jézus és mondta neki: Amit én cselekszem, te azt most nem érted, de ezután majd megérted.	igen
 Ján 13:8	Mondta neki Péter: Az én lábaimat nem mosod meg soha! Felelt neki Jézus: Ha meg nem moslak téged, semmi közöd sincs én hozzám.	igen
 Ján 13:9	Mondta neki Simon Péter: Uram, ne csak lábaimat, hanem kezeimet és fejemet is!	igen
@@ -27896,7 +27896,7 @@ ApCsel 26:11	És minden zsinagógában gyakorta büntetve őket, káromlásra k�
 ApCsel 26:12	E dologban épen útban lévén Damaskus felé a főpapoktól vett felhatalmazással és engedelemmel,	nem
 ApCsel 26:13	Délben láttam az úton király, hogy mennyből a napnak fényességét meghaladó világosság sugárzott körül engem és azokat, kik velem együtt haladtak.	igen
 ApCsel 26:14	Mikor pedig mi mindnyájan leestünk a földre, hallottam szózatot, mely én hozzám szól és ezt mondta zsidó nyelven: Saul, Saul, mit kergetsz engem? Nehéz neked az ösztön ellen rúgódoznod.	igen
-ApCsel 26:15	Én pedig mondtam: Kicsoda vagy, Uram? És az monda: Én vagyok Jézus, akit te kergetsz.	igen
+ApCsel 26:15	Én pedig mondtam: Kicsoda vagy, Uram? És az mondta: Én vagyok Jézus, akit te kergetsz.	igen
 ApCsel 26:16	De kelj fel, és állj lábaidra: mert azért jelentem meg neked, hogy téged szolgává és bizonysággá rendeljelek úgy azokban, amiket láttál, mint azokban, amikre nézve meg fogok neked jelenni;	igen
 ApCsel 26:17	Megszabadítva téged e néptől és a pogányoktól, kik közé most küldelek,	igen
 ApCsel 26:18	Hogy megnyissad szemeiket, hogy sötétségből világosságra és a Sátánnak hatalmából az Istenhez térjenek, hogy bűneiknek bocsánatát és a megszenteltettek között osztályrészt nyerjenek az én bennem való hit által.	igen

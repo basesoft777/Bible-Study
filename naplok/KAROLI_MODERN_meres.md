@@ -1093,3 +1093,42 @@ A kérdés a teljes modern vers, a token [szögletes zárójelben]. A helyét a 
 **Eredmény:** 4 token változott (Préd 2:5 ×2, 2:6, 2:9), mind átnézve a versével, mind helyes; más token nem változott. Az `ek_E1_T3` jelölés 692 → 694 tokenen áll. A minták modern szövege nem változott (a két mintában nincs Préd 2). A .3 újragenerálva: K2, K3, K3b teljesül, a Strong nem változott.
 
 **Az N-F96f állapota:** részben megoldva. Ismert, nyitott maradék a 10.4 szerint 3 token, ahol E/1 helyén T/3 maradt (1Móz 39:15 *kezdék*, Dán 7:16 *kérék*, Ez 22:30 *keresék*); az `ek_E1_T3` heurisztika a teljes osztályon nem igazolt.
+
+### 15.2 A `nevelo_utan` kizárás (4. kör, 2.) és a friss lefedettség-mérés
+
+**A kizárás leírása (a 10.3 óta működött, ott nem írtam le).** A `nevelo_utan` (`igealak.py`) a névelő után, egy szóközzel álló igealak-jelöltet főnévnek veszi (*a tevék*, *egy tevének*, *a küldöttek*, *a megmaradottak*). Ilyenkor nem cserél:
+- a .2 szabálya (`alk == 'szabaly'`, az *-ok* birtokos kivételével; `bizonytalan=nevelo_utan`);
+- a DT-F96l többségi szavazása (`jelolt` ág);
+- a 3. és a 4. kör alkalmazása (`kor3_alkalmaz`: a `nevelo_utan` jelölésű tokent mindkét körben kihagyja).
+
+A DT-F96q/r ezt a feltételt nem nevezte meg; a 10.3 és a 11.3 csere-számai ezzel a kizárással értendők.
+
+**A hiba:** a Károli névmási *az*-a (*az monda*, *az felele*, *az méne*: ő mondta) is névelőnek számított, ezért 31 valódi igealak régies maradt (ellenőr: 47 `nevelo_utan` token, ebből 31 igealak). Ide tartozik az S0072 *felele* (1Móz 22:1, 1Kir 13:16): a 4. körben a szabály és az opus egyezett (*felelt*), mégsem lett csere.
+
+**A javítás:** a névelő *a* csak mássalhangzóval, az *az* csak magánhangzóval kezdődő szó előtt áll. A mássalhangzós szó előtti *az* névmás, a magánhangzós szó előtti *a* nem névelő: ott a kizárás nem érvényes. Az *egy* mindkét esetben névelő marad. A függvény egy helyen dönt, a hívásai (a .2 szabálya, a `jelolt` ág, a kor3/kor4 `kor3_alkalmaz`) ugyanezt használják.
+
+**Eredmény (próba, majd élesítés):** 39 token sora változott, ebből 27 token modern alakja. Mind a 27 átnézve a versével, mind helyes:
+- *az monda → mondta* ×14 (1Móz 16:8, 27:18, 38:17; 1Kir 2:13; 2Kir 4:23, 8:14; Ruth 2:2, 3:9, 3:16, 4:4; Luk 7:40; Ján 13:6; ApCsel 26:15), *az mondá → mondta* ×2 (Ján 1:33, 5:11);
+- *az felele → felelt* ×2 (1Móz 22:1, 1Kir 13:16);
+- *az fogada → fogadott* ×2 (1Móz 16:4, 38:3; a korpusz többi *fogada*-ja is így cserél), *az szűle → szült* (1Móz 4:25), *az szűlé → szülte* (1Móz 25:2);
+- *az beméne → bement* (Ez 10:6), *az méne → ment* (Luk 22:47), *az jöve → jött* (Jób 3:25);
+- *az felkelvén → felkelve* ×2 (Mt 9:7, 9:9), *az letöretteték → letöretett* (Dán 8:22).
+
+A többi 12 sor csak címkét kapott (a szabálycímke és a bizonytalan jelölés; a modern alak azonos: *felnövekedék, felemelkedék, feltekinte, fölkele, megfordulván, megosztá, bevádoltaték* a .2 vagy egy korábbi kör cseréjével; *tőled, vigye, vette, lenne, leszek* változatlan). A minták modern szövege nem változott. A .3: K2, K3, K3b teljesül, a Strong nem változott; a változó token 50 491 → 50 516, a változó vers 21 620 → 21 621.
+
+**Ami a kizárásban marad (21 token):** 14 névszó vagy melléknévi igenév, helyesen (*tevék* ×4, *küldöttek* ×3, *megmaradott(ak)* ×5, *megfáradott* ×2), és 7 kihagyás: a magánhangzós ige a névmási *az* után, amelyet a hangtani próba nem választ el a névelős főnévtől: *az elfuta* (1Móz 16:6), *az elbeszélé* (2Kir 8:6), *az esék* (Jób 3:25), *az elküldé* (Luk 15:15), *az eljő* ×2 (Préd 9:14, Ján 4:25; határeset); valamint az *egy monda* (Jel 6:1: „egy monda”, számnévi névmás), mert az *egy* marad. Ezek kihagyások, nem hibák.
+
+**A friss lefedettség-mérés (a független ellenőr helyettesítő mintája).** A független ellenőr a 4. körben (`ELLENOR_F96.md` 4. kör, 2. rész) a kért véletlen minta helyett determinisztikus, egyenletes, szisztematikus mintát vett: a `karoli_modern_versek.tsv` 160 + 311·k sora (k = 0…99), 100 vers, a két meglévő mintával egy közös vers cserélve.
+
+| | Csere | Hiba | Kihagyás |
+|---|---|---|---|
+| igealak | 92 | 0 | 5 |
+| *-ök/-ok* birtokos | 9 | 0 | 2 magas hangrendű + 2 mély (*-ok*) |
+
+- **Lefedettség igealakra: 92 / (92 + 5) = 94,8%.** A korpuszbecslés kb. 1 560 token (Poisson 95%-os sáv kb. 500–3 600).
+- **Az 5 kihagyás:** *egybegyűle* (Bír 6:35; a tő-őr az ű/ü eltérésen bukik), *sétála* (Dán 4:26; egyik szkenben sincs), *az méne* (Luk 22:47; `nevelo_utan`), *Helybenhagyák* (ApCsel 24:9; egyik szkenben sincs), *lőnek* (Jel 11:19; `lonek_lo` téves találat, 15.3).
+- **A 14.4 „100%”-a** (96/96) a minta2 véletlen rétegére vonatkozik, amelynek kihagyásai jelölték ki a 4.–5. kör osztályait: torzított, a valódi lefedettséget felülbecsli. Ennél a mérésnél 5 várt kihagyás mellett 0 kihagyás valószínűsége kb. 0,7% (ellenőr).
+- **A javítókör után** az *az méne* (15.2) és a *lőnek* (15.3) javult; az *egybegyűle, sétála, Helybenhagyák* maradt. Új mérést nem végeztem: a minta kihagyásaira hangolt javítás után a számot ugyanez a torzítás érné.
+- A mintán kívüli szúrópróba (ellenőr) további kihagyásai: 1Móz 7:17 *felveheték*, 1Móz 16:4 *béméne*, 2Sám 7:10 *elplántálám*, 2Krón 35:23 *lövének*.
+
+A DT-F96v (🟡) leírása ezzel a számmal frissült; a döntés a felhasználóé.

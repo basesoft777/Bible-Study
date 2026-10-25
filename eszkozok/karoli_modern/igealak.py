@@ -552,9 +552,20 @@ def kor3_beolvas(tabla=KOR3_TABLA):
     return alak, vala, jelolt
 
 
+MAGANHANGZO = set('aáeéiíoóöőuúüű')
+
+
 def nevelo_utan(spans, szoveg, i):
-    """Az igealak-jelölt névelő (a, az, egy) után, egy szóközzel áll: főnév (a tevék, a küldöttek)."""
-    return i > 0 and spans[i - 1][2].lower() in ('a', 'az', 'egy') and szoveg[spans[i - 1][1]:spans[i][0]] == ' '
+    """Az igealak-jelölt névelő után, egy szóközzel áll: főnév (a tevék, egy tevének, a küldöttek); ilyenkor a
+    .2 szabálya, a 3. és a 4. kör nem cserél (bizonytalan=nevelo_utan; a 10.3 óta működő, ott le nem írt
+    kizárás, napló 15.2). A névelő az „a” csak mássalhangzóval, az „az” csak magánhangzóval kezdődő szó előtt; a
+    mássalhangzós szó előtti „az” névmás (az monda, az méne, az felele: ő mondta), a magánhangzós előtti „a” nem
+    névelő, ott a kizárás nem érvényes (ELLENOR_F96 4. kör, 2.). Az „egy” mindkét esetben névelő."""
+    if i == 0 or szoveg[spans[i - 1][1]:spans[i][0]] != ' ':
+        return False
+    elo = spans[i - 1][2].lower()
+    mgh = spans[i][2][:1].lower() in MAGANHANGZO
+    return elo == 'egy' or (elo == 'a' and not mgh) or (elo == 'az' and mgh)
 
 
 def mondatszakasz(spans, szoveg, i):
