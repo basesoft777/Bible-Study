@@ -568,3 +568,6 @@ Végrehajtó: `claude-opus-5-5`. Tételenként külön commit (F132.18–F132.24
   történt: 7 sor, soronként csak a `magyar_alak` és a `besorolas_proveniencia` mező; a `sigla_gyujt.py --ellenoriz` azonos (a kézi
   oszlopot az eszköz átmásolja). SEMA 2.37 frissítve. Tesztek (`teszt_lanc.py`, 25, zöld): a besorolt üres alak JELZES, a SERTES
   elsőbb; a `nincs_egyseges` nem ellenőrzött; a táblában `javaslat` / `besorolt` sor `magyar_alak`-ja nem üres; az adatblokk jelölése.
+- **F132.22 (5. tétel, `ir` maradvány):** a brief `ir` mezőjéből kikerült az `adat/forditasok.tsv`, a
+  `naplok/F132_THAYER_SZAKASZ_munka.tsv` és a `naplok/F132_THAYER_SZAKASZ_bukottak.tsv` (DT-F132g (1): az M3 külön briefbe került; a
+  #132 egyiket sem írja). A tervezet (`beerkezo/Fnn_THAYER_M3_BRIEF.md`) `ir`-je mindhármat tartalmazza; nem változott.
