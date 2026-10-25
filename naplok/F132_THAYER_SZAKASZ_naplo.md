@@ -445,6 +445,13 @@ eltérés elfogadva?”. Átvezetve (`DONTESEK.md`, 🟢; a brief 6. döntésnap
   lekérdezés …; jóváhagyásra vár`). A javaslat **nem jóváhagyás**: a 16. kapu és az adatblokk besorolatlannak veszi; a `besorolt` a
   felhasználó jóváhagyásával lesz (az M3 előfeltétele). A többi 164 jelölt `jelolt` maradt. Írás előtt összevetve: csak a 91 sor kézi
   oszlopai változtak; a `sigla_gyujt.py --ellenoriz` azonos (a kézi oszlopokat az eszköz nem írja át).
+  *Pontosítás (F132.24, ELLENOR_F132 7. tétel): a mondat tartalmilag igaz, bájtszinten nem. Mért: `git diff --numstat e41710e~1
+  e41710e -- adat/` → `thayer_sigla.tsv` 258/258 (a 2 megjegyzés-sor, a fejléc és mind a 255 adatsor): az új `besorolas_proveniencia`
+  oszlop minden sorban (a 164 `jelolt` sorban üresen) és a fejlécben, a `# FÉLIG KÉZI` sor szövege és a `# forras:` sor kód-hash-e
+  (`kód@67a23018df55` →); a régi oszlopok közül tartalmilag csak a 91 `jelolt` → `javaslat` sor kézi oszlopai változtak (`tipus` 91,
+  `jelentes` 91, `allapot` 91, `magyar_alak` 84 — a 7 üres alak üres maradt), a számoszlopok és a többi 164 sor nem; `SEMA.md` 8/4.*
+  *(proveniencia: `scope=adat/thayer_sigla.tsv @e41710e~1..e41710e | forras=git diff --numstat, git diff --word-diff=porcelain és
+  eseti oszloponkénti összevető szkript (scratchpad, split('\t')) | ts=2026-10-25T12:14Z`)*
 - **Elv:** a terminológiai kapus kulcs alakja kötelező (`cf.`, `Sept.`, `i. e.`, `p.`, `etc.`, `Plato`, `Xenophon`, `Herodotus`,
   `Aristotle` — teszt); a többi görög szerző a szójegyzék névalakjainak mintájára, a prompt v4 7. szabályával (Philón, Plutarkhosz,
   Josephus); az általános rövidítések a szójegyzék párjainak mintájára (`ibid.` → `uo.` az `id.` → `ua.` mellett; `viz.` → `ti.` az
@@ -579,3 +586,5 @@ Végrehajtó: `claude-opus-5-5`. Tételenként külön commit (F132.18–F132.24
   (korlát: a 15 javított Strong, a csak aranymintás szakaszolás; a jelöletlen igehely-folytatás, az üres `karoli_vers`, az ÓSZ-számozás).
   Csak hozzáfűzés: a meglévő sorok bájtra változatlanok. A brief `ir` mezője bővült az `adat/datasetek.tsv`-vel. `python
   eszkozok/ellenoriz.py`: SÉRTÉS 0 (RENDBEN 14, KÉZI 2, JELENTÉS 3).
+- **F132.24 (7. tétel):** a napló F132.13-mondata („csak a 91 sor kézi oszlopai változtak”) alatt pontosítás a mért
+  állapottal (numstat 258/258, új oszlop minden sorban + fejléc + kód-hash; tartalmilag csak a 91 sor kézi oszlopai), proveniencia-sorral.
