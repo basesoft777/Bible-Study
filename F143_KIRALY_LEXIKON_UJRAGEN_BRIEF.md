@@ -22,7 +22,7 @@ nem_fugg: [27, 38, 123, 131]
 
 ## 1. Cél
 
-Az N-F132a (`NYITOTT_FELADATOK.md`) lezárása. Az F132.19 (DT-F132l (a)) az `adat/elofordulasok.tsv` KIRALY-001 / Zsid 7:1-28
+Az N-F132a (`NYITOTT_FELADATOK.md`) lezárása. Az F132.19 (DT337 (a)) az `adat/elofordulasok.tsv` KIRALY-001 / Zsid 7:1-28
 sorában a `G5010+G0813+G0282` Strong-mezőt `G5010+G0540+G0282`-re javította. A G0813 (ἄτακτος) a Zsid 7:1-28-ban nem fordul elő,
 egyetlen helye az 1Thessz 5:14; a Zsid 7:3 *ἀπάτωρ* szava a G0540. A generált nézet (`lexikon/KIRALY-001_TUDOMANYOS.md`,
 `_TORZSCIKK.md`) ma is a régi mezőt és egy „G0813 — ἄτακτος” alszakaszt mutat, vagyis a kanonikus adat és a nézet elvált
@@ -74,5 +74,5 @@ többi adat drift-je), az éles írás a DT74 (3) hatálya alá eshet: ezt az M0
 
 | Azonosító | Kérdés | Állapot |
 |---|---|---|
-| DT-F132l | a G0813 → G0540 csere | eldöntve: (a) (felhasználó, 2026-10-25) |
+| DT337 | a G0813 → G0540 csere | eldöntve: (a) (felhasználó, 2026-10-25) |
 | (M0 ⛔) | az éles írás és a DT74 (3) | nyitott |

@@ -1,17 +1,17 @@
-# Prompt v5.1 — F132_THAYER_SZAKASZ_BRIEF.md, DT-F132k (2) (a v5.0-ból)
+# Prompt v5.1 — F132_THAYER_SZAKASZ_BRIEF.md, DT336 (2) (a v5.0-ból)
 
 *A `forditas/prompt_v5.md` (v5.0) szó szerinti másolata, egyetlen új blokkal: „Kiegészítő szabály (v5.1) — Thayer-szócikk” (a v5
 szakaszhatár-blokkja után, az „Ideiglenes terminológia” előtt). A v5 egyetlen sora sem módosult; a v5 fejléce és verziónaplója alább
 változatlanul áll (a benne álló „Csak a BDB szakaszonkénti bemenetéhez” a v5.0-ra vonatkozik). A v5.1 a Thayer szakaszonkénti
-bemenetéhez készült (DT-F132d (1), DT-F132k (2)): az `eszkozok/thayer_jelolt/forditas.py elokeszit` tölti ki, a forrás az
-`eszkozok/thayer_jelolt/thayer_bemenet.py` tokenes szövege (a javított nézet, DT-F132i (2)), az `{{ADATBLOKK}}` az
+bemenetéhez készült (DT330 (1), DT336 (2)): az `eszkozok/thayer_jelolt/forditas.py elokeszit` tölti ki, a forrás az
+`eszkozok/thayer_jelolt/thayer_bemenet.py` tokenes szövege (a javított nézet, DT333 (2)), az `{{ADATBLOKK}}` az
 `eszkozok/thayer_jelolt/adatblokk.py` négyrészes Thayer-blokkja. A BDB-lánc (#128, #38) továbbra is a v5.0-t használja.*
 
 ## Verziónapló (v5.1)
 
 | Verzió | Dátum | Változás | Ok |
 |---|---|---|---|
-| v5.1 | 2026.10.25 | a v5.0 másolata + „Kiegészítő szabály (v5.1) — Thayer-szócikk” blokk: a határtoken-szabály a Thayerre; a v4.2 adatblokk-szabályának érvényes pontjai a Thayer-blokkra; a négy blokkrész (Károli-alakok, idézett versek, siglák, nyelvközi híd) használata | F132 DT-F132k (2) |
+| v5.1 | 2026.10.25 | a v5.0 másolata + „Kiegészítő szabály (v5.1) — Thayer-szócikk” blokk: a határtoken-szabály a Thayerre; a v4.2 adatblokk-szabályának érvényes pontjai a Thayer-blokkra; a négy blokkrész (Károli-alakok, idézett versek, siglák, nyelvközi híd) használata | F132 DT336 (2) |
 
 ---
 
@@ -249,7 +249,7 @@ Ha a Strong-szám G-vel kezdődik, a forrás Thayer görög szótárának szóci
      jelentését a héber megfelelővel magyarázza, a görög és a héber jelentés ugyanazt a magyar szót kapja (rangsor: terminológia >
      Károli > BDB > szótár). `[nincs Strong-egyezés]` vagy `[nincs magyar BDB-fordítás]` esetén a héber szót változatlanul hagyod, és
      magyar megfelelőt nem találsz ki hozzá.
-4. **A forrásszöveg teljessége.** Ha az adatblokk fejléce szerint a forrásszöveg a lexikonból kiegészítve érkezik (DT-F132i (2)), a
+4. **A forrásszöveg teljessége.** Ha az adatblokk fejléce szerint a forrásszöveg a lexikonból kiegészítve érkezik (DT333 (2)), a
    szöveg teljes, úgy fordítod. Ha a fejlécben „FIGYELEM … a hiányt ne pótold” áll, a hiányt nem pótolod.
 
 ## Ideiglenes terminológia (kötelező megfeleltetés, amíg a 4a élesíti a saját tábláját)

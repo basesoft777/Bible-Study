@@ -26,7 +26,7 @@ Tag-leltár (a szerkezet jelölői): `ref0` 64 478 (a héber/görög szóhivatko
 2a/6), `ref` 63 953, `b` 30 519, `p` 17 093, `i` 15 930, `div` 5 426, `span` 671; ritka: `TOPIC` 338,
 `REFERENCE` 224, `DATE` 171, `FOOTNOTE` 65, `BITMAP` 31, `ref2` 22, `ERROR` 12.
 
-### 2. Licenc (DT-F132a alapja)
+### 2. Licenc (DT327 alapja)
 
 - `konkordancia/lexikonok_nyers/README.md` 17. sor (Thayer): „1886/1889, közkincs; a modul anyagát Tim
   Morton (Bible Analyzer) formázta, engedéllyel” — besorolás: „`közkincs` — a formázási réteg eredete
@@ -113,7 +113,7 @@ ApCsel** (a `Konyv_normalizalo_tabla.tsv` 40–44. sora). Strongonként:
 | G5590 | 7 | 2 | 95 | 55 | 23 | 38 | 30 | 3/7 |
 | **össz.** | **51** | **14** | **668** | **322** | **70** | **278** | — | **26/51** |
 
-*Pontosítás (F132.19, ELLENOR_F132 2. tétel, DT-F132l (a)):* a `G0813` sor (motívumhely 1) a KIRALY-001 / Zsid 7:1-28 sor hibás
+*Pontosítás (F132.19, ELLENOR_F132 2. tétel, DT337 (a)):* a `G0813` sor (motívumhely 1) a KIRALY-001 / Zsid 7:1-28 sor hibás
 `strong` mezőjéből (`G5010+G0813+G0282`) jött, ellenőrzés nélkül átvéve; a G0813 a Zsid 7:1-28-ban nem fordul elő (egyetlen helye
 az 1Thessz 5:14), az *ἀπάτωρ* a Zsid 7:3-ban G0540. A mező az F132.19-ben `G5010+G0540+G0282`; a 6. tábla G0813-sora a mérés pillanatának
 állapota, a G0540-re ez a tábla nem mért (a lekérdezés sorai: a „Javítókör 1” szakasz, F132.19).
@@ -177,7 +177,7 @@ az M1 gyűjtése pótolja, ha van).
 
 ### 8. ⛔ M0 — döntések
 
-A felhasználó elé: DT-F132a, DT-F132b, DT-F132c, DT-F132d, DT-F132f (`DONTESEK.md`). A DT282 eldöntött,
+A felhasználó elé: DT327, DT328, DT329, DT330, DT331 (`DONTESEK.md`). A DT282 eldöntött,
 nem kérdezett újra. A döntésig kódírás nincs.
 
 ## Döntések (2026-10-25)
@@ -185,16 +185,16 @@ nem kérdezett újra. A döntésig kódírás nincs.
 A felhasználó (chat, szó szerint): „mind a javaslat szerint, az M3 külön Sonnet-menetben”. Átvezetve
 (`DONTESEK.md`, 🟢; a brief 6. döntésnaplója és `ir` mezője):
 
-- **DT-F132a (b):** szerkezet és `bcv` a `Thayer.lexicon`-ból, szöveg a `Thayer_teljes.tsv`-ből illesztéssel.
-- **DT-F132b (1)+(2)+(3)+(4):** a két tábla a SEMA 2.30 / 2.29 mintájára, `Strong_padded`, fordítási kulcs
+- **DT327 (b):** szerkezet és `bcv` a `Thayer.lexicon`-ból, szöveg a `Thayer_teljes.tsv`-ből illesztéssel.
+- **DT328 (1)+(2)+(3)+(4):** a két tábla a SEMA 2.30 / 2.29 mintájára, `Strong_padded`, fordítási kulcs
   `sz<sorszam>`, a normalizálás egy függvény.
-- **DT-F132c (a)+(i)+(ii):** újrafordítás; a 8 gerinc-`opus` sor `elavult`, az 5 `kezi` a jóváhagyásig érvényes.
-- **DT-F132d (1)+(S):** közös lánc, a #128 fájljai nem változnak; Sonnet; **az M3 külön Sonnet-menetben**.
-- **DT-F132f (b):** a #132 építi a tiltott-fordulat táblát és kaput, `15_tiltott` számmal.
+- **DT329 (a)+(i)+(ii):** újrafordítás; a 8 gerinc-`opus` sor `elavult`, az 5 `kezi` a jóváhagyásig érvényes.
+- **DT330 (1)+(S):** közös lánc, a #128 fájljai nem változnak; Sonnet; **az M3 külön Sonnet-menetben**.
+- **DT331 (b):** a #132 építi a tiltott-fordulat táblát és kaput, `15_tiltott` számmal.
 
 ## Egyeztetett eltérés
 
-- **Hatókör (DT-F132h (1), felhasználó, 2026-10-25, chat: „1, újrafuttatható M3”):** az M3 nem a brief 2.
+- **Hatókör (DT332 (1), felhasználó, 2026-10-25, chat: „1, újrafuttatható M3”):** az M3 nem a brief 2.
   szakaszának rögzített 13 görög gerincszavára fut, hanem a motívumok aktuális görög gerincszavaira, a futás
   pillanatában (`adat/elofordulasok.tsv` `strong`, `Strong_padded`); a már érvényes (nem `elavult`,
   `forras_hash`-egyező) szakaszos fordítású szavak kimaradnak. Az M3 újrafuttatható; a listát egy tesztelt
@@ -204,7 +204,7 @@ A felhasználó (chat, szó szerint): „mind a javaslat szerint, az M3 külön 
 ## M1 — bontó (2026-10-25)
 
 `eszkozok/thayer_jelolt/bont.py` (a `bdb_jelolt/bont.py` mintájára), `kulcs.py` (a `G12` → `G0012` normalizálás egyetlen
-függvénye, DT-F132b (4)), `teszt_bont.py` (16 teszt, zöld). Kimenet: `adat/thayer_szakaszok.tsv` (SEMA 2.34), `--ts 2026-10-25`,
+függvénye, DT328 (4)), `teszt_bont.py` (16 teszt, zöld). Kimenet: `adat/thayer_szakaszok.tsv` (SEMA 2.34), `--ts 2026-10-25`,
 `--ellenoriz` azonos.
 
 *(proveniencia: `scope=konkordancia/lexikonok_nyers/Thayer.lexicon, konkordancia/Thayer_teljes.tsv | forras=eszkozok/thayer_jelolt/bont.py --ts 2026-10-25 (a fejlécsor hash-eivel); m1_felmer*.py, m1_elter.py, m1_veszt.py (eseti, a repón kívül) | ts=2026-10-25`)*
@@ -250,7 +250,7 @@ szigorúbb, 15-öt talál. Mind a 15-ben **egyetlen összefüggő szövegrész h
 | G5567 | 909 | 900 | 9 | `νοι` |
 
 Összesen 2 715 karakter. A tábla ezeket `reszleges` jelöléssel, közelítő (a difflib egyező blokkjaira vetített) szakaszhatárral
-hordozza; üres szakasz nincs. A G4151 gerincszó: az M3 előtt döntés kell (**DT-F132i**, `DONTESEK.md`, 🟡; javaslat: javítótábla
+hordozza; üres szakasz nincs. A G4151 gerincszó: az M3 előtt döntés kell (**DT333**, `DONTESEK.md`, 🟡; javaslat: javítótábla
 a DT228 mintájára).
 
 ### G1941 aranyminta (kézzel ellenőrizve a forrás HTML-jén)
@@ -278,7 +278,7 @@ Kimaradt (nem a brief `ir`-e): az `adat/datasetek.tsv` `Thayer_szakaszok` sora (
 
 *(proveniencia: `scope=Thayer.lexicon (bcv), Konyv_normalizalo_tabla.tsv, Karoli_1908.tsv, adat/elofordulasok.tsv (G1941) | forras=eszkozok/thayer_jelolt/vers_jelentes.py --ts 2026-10-25; m2_meres.py (eseti, a repón kívül) | ts=2026-10-25`)*
 
-**Sémaeltérés (a végrehajtóé, jóváhagyásra):** a DT-F132b (2) nyolc oszlopa mellé egy kilencedik került, a `szakasz` (a
+**Sémaeltérés (a végrehajtóé, jóváhagyásra):** a DT328 (2) nyolc oszlopa mellé egy kilencedik került, a `szakasz` (a
 hivatkozást tartalmazó bekezdés sorszáma, a `thayer_szakaszok.tsv` kulcsa). A `sorszam` a 2.29 mintájára a hivatkozás sorszáma
 (egyedi kulcs); a `szakasz` nélkül a hivatkozás nem köthető egyértelműen a szakaszsorhoz, mert az örökölt útvonalú bekezdések
 útvonala nem egyedi.
@@ -313,7 +313,7 @@ A Siralmak: a könyvtábla `JSir`-t ad, a `Karoli_1908.tsv` `Sir`-t; a `karoli_v
 A motívum magja tehát a Thayer 5. jelentéspontja (segítségül hívni az Úr nevét); az 1Pét 1:17 az 1. pont („atyának nevezni”).
 A két jelöletlen ApCsel-hely a szövegben az 5. pont alatt áll, de a tábla nem tölti ki (CLAUDE.md 3. szabály).
 
-## M3-előfeltétel 1 — tiltott fordulatok és a `15_tiltott` kapu (DT-F132f (b), 2026-10-25)
+## M3-előfeltétel 1 — tiltott fordulatok és a `15_tiltott` kapu (DT331 (b), 2026-10-25)
 
 - `adat/tiltott_fordulatok.tsv` (új, kézi, SEMA 2.36): 2 tétel, a DT241 / `F121_GLOSSZA_FORDITAS_BRIEF.md` 2a/2 első elemei
   („melléknéven nevezni”, „melléknevet adni”; helyette „más néven (is) nevezni”). Más tételt a végrehajtó nem vett fel (tartalom:
@@ -338,12 +338,12 @@ A két jelöletlen ApCsel-hely a szövegben az 5. pont alatt áll, de a tábla n
 
 | Fájl | Mit ad |
 |---|---|
-| `eszkozok/thayer_jelolt/thayer_bemenet.py` | a Thayer-betöltő (DT-F132d (1)): a #128 `bdb_jelolt/szakasz_bemenet.py` szótárfüggetlen függvényeit **importálja** (saját modulnéven, a #128 fájlja változatlan): `⟪n⟫`, `sz<n>`, SHA-1, `csoportok`, `strong_magyar`; a szakasz szövege `jel` + `szoveg`. `--ellenoriz`: 5 426 Strong, 17 093 szakasz, rendben; 10 Strong több csoportos (a G4151: 3 csoport, 6 920 / 7 584 / 9 261 karakter) |
-| `eszkozok/thayer_jelolt/szolista.py` | az újrafuttatható M3 listája (DT-F132h): ma **13 Strong, mind `forditando` / `nincs_szakaszos`** (= a brief 13 szava; 42 600 karakter), ebből 5-nek van régi `kezi` `teljes` sora (G0282, G1941, G1944, G4151, G5590: DT-F132c (ii)), 1 `reszleges` illesztésű (G4151: DT-F132i) |
-| `eszkozok/thayer_jelolt/sigla_gyujt.py`, `adat/thayer_sigla.tsv` (SEMA 2.37) | 254 gépi jelölt, 90 a gerincszavakban; besorolt 0 (**DT-F132j**) |
+| `eszkozok/thayer_jelolt/thayer_bemenet.py` | a Thayer-betöltő (DT330 (1)): a #128 `bdb_jelolt/szakasz_bemenet.py` szótárfüggetlen függvényeit **importálja** (saját modulnéven, a #128 fájlja változatlan): `⟪n⟫`, `sz<n>`, SHA-1, `csoportok`, `strong_magyar`; a szakasz szövege `jel` + `szoveg`. `--ellenoriz`: 5 426 Strong, 17 093 szakasz, rendben; 10 Strong több csoportos (a G4151: 3 csoport, 6 920 / 7 584 / 9 261 karakter) |
+| `eszkozok/thayer_jelolt/szolista.py` | az újrafuttatható M3 listája (DT332): ma **13 Strong, mind `forditando` / `nincs_szakaszos`** (= a brief 13 szava; 42 600 karakter), ebből 5-nek van régi `kezi` `teljes` sora (G0282, G1941, G1944, G4151, G5590: DT329 (ii)), 1 `reszleges` illesztésű (G4151: DT333) |
+| `eszkozok/thayer_jelolt/sigla_gyujt.py`, `adat/thayer_sigla.tsv` (SEMA 2.37) | 254 gépi jelölt, 90 a gerincszavakban; besorolt 0 (**DT335**) |
 | `eszkozok/thayer_jelolt/thayer_kapuk.py` | a közös kapusor (`kapuk_futtat_szakaszos`: 1–13., `14_szakasz`, `15_tiltott`) + `16_sigla` (besorolt sorra gátoló) |
-| `eszkozok/thayer_jelolt/adatblokk.py` | csoportonként: 1. Károli-alakok (a párosítás le nem fedett ÚSZ-könyvei — Mt, Mk, Luk, Ján, ApCsel — explicit), 2. az idézett versek Károli-szövege (`thayer_vers_jelentes.tsv`; hiánynál `[nincs Károli-vers]`), 3. siglák (a terminológiai alak elsőbb), 4. nyelvközi híd (héber `ref0` → `Strong_szotar.tsv` pontos szótő → a meglévő magyar BDB-fordítás eleje); `reszleges` illesztésnél figyelmeztetés (DT-F132i) |
-| `eszkozok/thayer_jelolt/forditas.py` | az M3 parancsai: `lista`, `elokeszit`, `ellenoriz`, `rogzit` (munkatábla: `naplok/F132_THAYER_SZAKASZ_munka.tsv`), `beir` (DT-F132c (i)/(ii) szerint; minden más sor bájtra változatlan) — az `emeles.py` szakaszos ágának Thayer-párja, az `emeles.py` függvényeit importálva |
+| `eszkozok/thayer_jelolt/adatblokk.py` | csoportonként: 1. Károli-alakok (a párosítás le nem fedett ÚSZ-könyvei — Mt, Mk, Luk, Ján, ApCsel — explicit), 2. az idézett versek Károli-szövege (`thayer_vers_jelentes.tsv`; hiánynál `[nincs Károli-vers]`), 3. siglák (a terminológiai alak elsőbb), 4. nyelvközi híd (héber `ref0` → `Strong_szotar.tsv` pontos szótő → a meglévő magyar BDB-fordítás eleje); `reszleges` illesztésnél figyelmeztetés (DT333) |
+| `eszkozok/thayer_jelolt/forditas.py` | az M3 parancsai: `lista`, `elokeszit`, `ellenoriz`, `rogzit` (munkatábla: `naplok/F132_THAYER_SZAKASZ_munka.tsv`), `beir` (DT329 (i)/(ii) szerint; minden más sor bájtra változatlan) — az `emeles.py` szakaszos ágának Thayer-párja, az `emeles.py` függvényeit importálva |
 | `eszkozok/thayer_jelolt/teszt_lanc.py` | 18 teszt, zöld (betöltő, szólista ideiglenes táblákon, sigla-kapu, sigla-tábla kézi oszlopainak védelme, adatblokk, prompt, szakaszsorok, beírás ideiglenes másolaton: opus `teljes` → `elavult`; `kezi` `teljes` mellett csak `--kezi-marad`, csak hozzáfűzés) |
 
 Próba (fordítás nélkül, a scratchpadbe): `elokeszit G1941` → 7 szakasz, 1 csoport, 37 helyőrző, prompt 51 313 bájt (benne az
@@ -353,22 +353,22 @@ idézett versek miatt). A forrást „fordításként” visszaadva az `ellenori
 
 Megfigyelés: a terminológiai szójegyzék 10 sigla-jelöltre már ad kötelező alakot (`cf.` → `vö.`, `Sept.` → `Septuaginta`, `i. e.`
 → `azaz`, `p.` → `o.`, `etc.` → `stb.`, `Plato` → `Platón`, `Xenophon` → `Xenophón`, `Herodotus`, `Aristotle`, `id.`); az adatblokk
-ezt jelzi, a sigla-besorolásnak ehhez kell igazodnia (DT-F132j).
+ezt jelzi, a sigla-besorolásnak ehhez kell igazodnia (DT335).
 
 ## M3-előfeltétel 3 — a prompt
 
 A `forditas/prompt_v5.md` változatlan (a #128 fájlja). A Thayer-prompt ugyanazokat a helyőrzőket kapja, az `{{ADATBLOKK}}` helyén a
-Thayer-adatblokkal. A v5 szövege a határtoken-blokkban és az adatblokk-szabályban a BDB-t nevezi meg: **DT-F132k** (🟡; javaslat:
+Thayer-adatblokkal. A v5 szövege a határtoken-blokkban és az adatblokk-szabályban a BDB-t nevezi meg: **DT336** (🟡; javaslat:
 új `prompt_v5_1.md` Thayer-kiegészítéssel).
 
 ## M3 indítása (⛔ itt állok meg; a fordítás nem fut ebben az Opus-menetben)
 
-**Nyitott döntések az M3 előtt:** DT-F132g (az indítás módja), DT-F132i (a TSV szövegvesztése; a G4151-et érinti), DT-F132j
-(sigla-besorolás), DT-F132k (a prompt Thayer-ága). A DT-F132g opciói (`DONTESEK.md`):
+**Nyitott döntések az M3 előtt:** DT334 (az indítás módja), DT333 (a TSV szövegvesztése; a G4151-et érinti), DT335
+(sigla-besorolás), DT336 (a prompt Thayer-ága). A DT334 opciói (`DONTESEK.md`):
 
 1. **Külön M3-brief** (`F<nn>_THAYER_M3_BRIEF.md`, `modell: sonnet`, `fugg: [132]`, `/befogad`-dal) — *javaslat*: a CLAUDE.md
    modell-ellenőrzése változatlanul működik (a `vegrehajto-sonnet` a saját briefje `modell: sonnet` mezőjéhez mér); egy brief = egy
-   modell; az M3 újrafuttatható (DT-F132h), ezért saját feladat illik hozzá; a #132 az Mz-vel (SEMA, mérés, független ellenőrzés)
+   modell; az M3 újrafuttatható (DT332), ezért saját feladat illik hozzá; a #132 az Mz-vel (SEMA, mérés, független ellenőrzés)
    az M3 előtt lezárható.
 2. **Lépésszintű modell-mező** a #132 briefben (pl. `modell_m3: sonnet`) — a CLAUDE.md modell-ellenőrzésének, a `/kovetkezo`-nak és
    a `feladatok.py`-nak is tudnia kell róla: rendszerszabály-változás.
@@ -380,13 +380,13 @@ Thayer-adatblokkal. A v5 szövege a határtoken-blokkban és az adatblokk-szabá
 **Az M3 Sonnet-menetének lépései (bármelyik opcióval, a modell-ellenőrzés után):**
 
 ```
-python eszkozok/thayer_jelolt/forditas.py lista --ki <scratchpad>/m3_lista.tsv      # DT-F132h: a futás listája, okkal
+python eszkozok/thayer_jelolt/forditas.py lista --ki <scratchpad>/m3_lista.tsv      # DT332: a futás listája, okkal
 python eszkozok/thayer_jelolt/forditas.py elokeszit <STRONG> --mappa <scratchpad>/m3
 #   a <STRONG>_c<i>_prompt.md fordítása (csoportonként), a helyőrzős vázlat: <scratchpad>/m3/<STRONG>_vazlat.txt
 python eszkozok/thayer_jelolt/forditas.py ellenoriz <STRONG> --be <vázlat> --mappa <scratchpad>/m3 --ki <végleges>
 python eszkozok/thayer_jelolt/forditas.py rogzit <STRONG> --be <végleges> --allapot sonnet --modell <a saját tényleges modellnév>
-python eszkozok/thayer_jelolt/forditas.py beir <STRONG> --allapot sonnet --regi-elavult      # opus régi sor (DT-F132c (i))
-python eszkozok/thayer_jelolt/forditas.py beir <STRONG> --allapot sonnet --kezi-marad        # kezi régi sor (DT-F132c (ii))
+python eszkozok/thayer_jelolt/forditas.py beir <STRONG> --allapot sonnet --regi-elavult      # opus régi sor (DT329 (i))
+python eszkozok/thayer_jelolt/forditas.py beir <STRONG> --allapot sonnet --kezi-marad        # kezi régi sor (DT329 (ii))
 ```
 
 Kapubukásnál egy önújrapróba, utána `naplok/F132_THAYER_SZAKASZ_bukottak.tsv`; commit adagonként.
@@ -396,18 +396,18 @@ Kapubukásnál egy önújrapróba, utána `naplok/F132_THAYER_SZAKASZ_bukottak.t
 A felhasználó (chat, szó szerint): „mehet, g(1), i(2), j(3), k(2)”, erre a kérdésre: „Mehet így, g(1), i(2), j(3), k(2) és a két
 eltérés elfogadva?”. Átvezetve (`DONTESEK.md`, 🟢; a brief 6. döntésnaplója):
 
-- **DT-F132g (1):** külön M3-brief (`modell: sonnet`, `fugg: [132]`); a tervezet a `beerkezo/`-ban, a befogadás nem e menet dolga.
+- **DT334 (1):** külön M3-brief (`modell: sonnet`, `fugg: [132]`); a tervezet a `beerkezo/`-ban, a befogadás nem e menet dolga.
   Az M3 kikerül a #132 hatóköréből; a #132 az Mz-vel zárul.
-- **DT-F132i (2):** javítótábla `adat/thayer_forras_javitas.tsv` (a DT228 mintája).
-- **DT-F132j (3):** gépi sigla-javaslat a `thayer_sigla.tsv`-ben, javaslat-jelöléssel; a jóváhagyás a felhasználóé.
-- **DT-F132k (2):** új `forditas/prompt_v5_1.md`, a v5 változatlan.
+- **DT333 (2):** javítótábla `adat/thayer_forras_javitas.tsv` (a DT228 mintája).
+- **DT335 (3):** gépi sigla-javaslat a `thayer_sigla.tsv`-ben, javaslat-jelöléssel; a jóváhagyás a felhasználóé.
+- **DT336 (2):** új `forditas/prompt_v5_1.md`, a v5 változatlan.
 
 **Egyeztetett eltérések (a fenti válasz „a két eltérés elfogadva” része):**
 
 1. Az `adat/thayer_vers_jelentes.tsv` kilencedik oszlopa, a `szakasz` (l. M2 „Sémaeltérés”) — elfogadva, a tábla és a SEMA 2.35 marad.
 2. Az `adat/bdb_szakasz_hu.tsv` fejlécsorának hash-újragenerálása (l. M3-előfeltétel 1 „Mellékhatás”) — elfogadva, az `ir` bővülése marad.
 
-## F132.11 — DT-F132i (2): a `Thayer_teljes.tsv` javítótáblája (2026-10-25)
+## F132.11 — DT333 (2): a `Thayer_teljes.tsv` javítótáblája (2026-10-25)
 
 *(proveniencia: `scope=konkordancia/lexikonok_nyers/Thayer.lexicon, konkordancia/Thayer_teljes.tsv | forras=eszkozok/thayer_jelolt/forras_javit.py --ts 2026-10-25, bont.py --ts 2026-10-25 (a fejlécsorok hash-eivel); i_meres.py, i_diff.py (eseti, a repón kívül) | ts=2026-10-25`)*
 
@@ -424,19 +424,19 @@ eltérés elfogadva?”. Átvezetve (`DONTESEK.md`, 🟢; a brief 6. döntésnap
 - Tesztek: `teszt_bont.py` 23 (új `Javitas` osztály, 7 teszt), `teszt_lanc.py` 18, `teszt_vers_jelentes.py` 9 — zöld; `--ellenoriz`:
   `forras_javit.py`, `bont.py`, `sigla_gyujt.py`, `vers_jelentes.py` azonos; `thayer_bemenet.py --ellenoriz` RENDBEN.
 
-## F132.12 — DT-F132k (2): `forditas/prompt_v5_1.md` (2026-10-25)
+## F132.12 — DT336 (2): `forditas/prompt_v5_1.md` (2026-10-25)
 
 - **Új:** `forditas/prompt_v5_1.md` = a `prompt_v5.md` szó szerinti másolata (a v5 fejléce is, változatlanul) + egyetlen új blokk,
   „Kiegészítő szabály (v5.1) — Thayer-szócikk” (a v5 határtoken-blokkja után): (1) a határtoken-szabály 1–6. pontja a Thayerre;
   (2) a v4 általános szabályai és a v4.1 érvényesek, a v4 BDB-blokkja nem; (3) a v4.2 adatblokk-szabályából az 1–3. és 6. pont, a 4.
   (`[kihagyva …]`) és 5. (`[BDB: X]`) nem; a Thayer-blokk négy része (Károli-alakok a le nem fedett könyvekkel; idézett versek,
   `[nincs Károli-vers …]`; siglák a három jelöléssel, a terminológia elsőbb; nyelvközi híd, rangsor: terminológia > Károli > BDB >
-  szótár, `[nincs Strong-egyezés]` esetén nincs kitalált megfelelő); (4) a javított forrásszöveg (DT-F132i (2)) teljes.
+  szótár, `[nincs Strong-egyezés]` esetén nincs kitalált megfelelő); (4) a javított forrásszöveg (DT333 (2)) teljes.
 - A `prompt_v5.md` és a #128 fájljai változatlanok; a `thayer_jelolt/forditas.py` `PROMPT_UT`-ja a v5.1-re állt.
 - Teszt: `teszt_lanc.py` `test_prompt_v5_1` (a v5.1 törzse a blokk nélkül bájtra = a v5; a prompt tartalmazza a blokkot, a
   jelölő fölötti rész nem kerül bele); a modul 19 tesztje zöld.
 
-## F132.13 — DT-F132j (3): gépi sigla-javaslat jóváhagyásra (2026-10-25)
+## F132.13 — DT335 (3): gépi sigla-javaslat jóváhagyásra (2026-10-25)
 
 *(proveniencia: `scope=adat/thayer_sigla.tsv (tipus, jelentes, magyar_alak) | forras=manual — modell-javaslat (claude-opus-5-5), nem lekérdezés: a gerincszavak javított nézetének szövegkörnyezete (j_ktx.py, eseti, a repón kívül) és az adat/terminologia.tsv alapján | ts=2026-10-25`)*
 
@@ -491,17 +491,17 @@ kötetszám) · `ii.` (kötetszám; a szójegyzék `vol. ii` → `II. köt.`) ·
 - nem sigla (12): b. · c. · d. · bb. (betűjel, Stephanus-lapszakasz) · h. · v. · j. (`v. h.`, `b. j.`) · u. · theol. (német műcím) ·
   St. · J. · Chr. (névelem).
 
-## F132.14 — DT-F132g (1): az M3 brief-tervezete; az M3 kikerül a #132 hatóköréből (2026-10-25)
+## F132.14 — DT334 (1): az M3 brief-tervezete; az M3 kikerül a #132 hatóköréből (2026-10-25)
 
 - **Tervezet:** `beerkezo/Fnn_THAYER_M3_BRIEF.md` (`modell: sonnet`, `fugg: [132]`, `munka: adat`, `allapot: nem_indult`, a
-  `BRIEF_SABLON.md` szerint): az újrafuttatható M3 a DT-F132c, d, h, i, j, k szerint; a parancssor a fenti „M3 indítása”
+  `BRIEF_SABLON.md` szerint): az újrafuttatható M3 a DT329, d, h, i, j, k szerint; a parancssor a fenti „M3 indítása”
   szakaszból (a prompt már a v5.1); 1. lépése ⛔ előfeltétel: a sigla-javaslatok felhasználói jóváhagyása (`javaslat` → `besorolt`,
   a jóváhagyás proveniencia-sorával). A befogadás nem e menet dolga (`/befogad`, a felhasználó jóváhagyásával).
 - **A #132 briefje:** az `ad` mező, a 3. hatókör (benne / nincs benne), az M3 szakasz eleje („Kikerült e feladat hatóköréből”), az Mz
-  és az 5. elfogadási feltétel 3. pontja a DT-F132g (1) szerint; az `ir` mezőben a tervezet útvonala.
+  és az 5. elfogadási feltétel 3. pontja a DT334 (1) szerint; az `ir` mezőben a tervezet útvonala.
 - A `thayer_jelolt/forditas.py` docstringje a promptot még v5-nek írta: javítva (`prompt_v5_1.md`, a kód az F132.12 óta azt használta).
 
-## Mz — zárás (2026-10-25; az M3 a DT-F132g (1) szerint külön feladat)
+## Mz — zárás (2026-10-25; az M3 a DT334 (1) szerint külön feladat)
 
 *(proveniencia: `scope=adat/thayer_*.tsv, eszkozok/thayer_jelolt/ | forras=a generátorok --ellenoriz módja; forditas.py lista / elokeszit (a scratchpadbe, fordítás nélkül); a tesztek @2fe54b8 | ts=2026-10-25`)*
 
@@ -512,7 +512,7 @@ kötetszám) · `ii.` (kötetszám; a szójegyzék `vol. ii` → `II. köt.`) ·
 | `thayer_vers_jelentes.tsv` | 63 953 sor = a forrás `bcv`-száma (ÚSZ 58 266, ÓSZ 5 687); üres `karoli_vers`: ÚSZ 28, ÓSZ 12 (M2) |
 | `thayer_sigla.tsv` | 255 jelölt, 91 a gerincszavakban; `javaslat` 91 (magyar alak 22, `változatlan` 62, üres 7), `besorolt` 0 |
 | `tiltott_fordulatok.tsv` | 2 tétel, kapu `15_tiltott` |
-| M3-lista (`forditas.py lista`, DT-F132h) | 13 Strong, mind `forditando` / `nincs_szakaszos`; ebből 1 `javitassal` (G4151, 3 csoport), a többi `egyezik` (1 csoport) |
+| M3-lista (`forditas.py lista`, DT332) | 13 Strong, mind `forditando` / `nincs_szakaszos`; ebből 1 `javitassal` (G4151, 3 csoport), a többi `egyezik` (1 csoport) |
 | M3-lánc próbája (fordítás nélkül) | `elokeszit G1941`: 7 szakasz, 1 csoport, 37 helyőrző; `elokeszit G4151`: 17 szakasz, 3 csoport, 291 helyőrző, a prompt a v5.1 blokkjával és a javítás tájékoztató sorával |
 | G1941 motívumhelyei | l. M2: 7 / 10 `bcv`-vel idézve (1 az 1. pont alatt, 6 az 5. pont alatt), 2 jelöletlen, 1 nem idézett |
 
@@ -531,13 +531,13 @@ A #132 lezárása a független ellenőrzés után (orkesztrátor).
 
 ## Javítókör 1 (`/elteres 132`, ELLENOR_F132; 2026-10-25)
 
-A felhasználó jóváhagyott besorolása: `DONTESEK.md` DT-F132l (a 2. tétel döntése és az 1., 3.–7. tétel javaslatának jóváhagyása).
+A felhasználó jóváhagyott besorolása: `DONTESEK.md` DT337 (a 2. tétel döntése és az 1., 3.–7. tétel javaslatának jóváhagyása).
 Végrehajtó: `claude-opus-5-5`. Tételenként külön commit (F132.18–F132.24).
 
 - **F132.18 (1. tétel, CI E5):** a brief M3-címsorának cseréje alatt látható megjegyzés; a `TÖRLÉS-SZÁNDÉKOS:` jelölés a commit-üzenet
   sor elején áll, mert az E5 csak azt olvassa (`eszkozok/ellenorzes/szabalyok.py` `SZANDEKOS_JELOLES_MINTA`; a CI a PR összes
   commit-üzenetét `--commit-uzenet-fajl`-ként adja).
-- **F132.19 (2. tétel, DT-F132l (a)):** `adat/elofordulasok.tsv` KIRALY-001 / Zsid 7:1-28 `strong`: `G5010+G0813+G0282` →
+- **F132.19 (2. tétel, DT337 (a)):** `adat/elofordulasok.tsv` KIRALY-001 / Zsid 7:1-28 `strong`: `G5010+G0813+G0282` →
   `G5010+G0540+G0282`; a sor `proveniencia` mezője `scope=manual`, a lekérdezésre hivatkozva. Írás előtt összevetve: a 262 sorból
   csak ez az egy változott (bájtra). A lekérdezések saját proveniencia-sora:
 
@@ -577,7 +577,7 @@ Végrehajtó: `claude-opus-5-5`. Tételenként külön commit (F132.18–F132.24
   oszlopot az eszköz átmásolja). SEMA 2.37 frissítve. Tesztek (`teszt_lanc.py`, 25, zöld): a besorolt üres alak JELZES, a SERTES
   elsőbb; a `nincs_egyseges` nem ellenőrzött; a táblában `javaslat` / `besorolt` sor `magyar_alak`-ja nem üres; az adatblokk jelölése.
 - **F132.22 (5. tétel, `ir` maradvány):** a brief `ir` mezőjéből kikerült az `adat/forditasok.tsv`, a
-  `naplok/F132_THAYER_SZAKASZ_munka.tsv` és a `naplok/F132_THAYER_SZAKASZ_bukottak.tsv` (DT-F132g (1): az M3 külön briefbe került; a
+  `naplok/F132_THAYER_SZAKASZ_munka.tsv` és a `naplok/F132_THAYER_SZAKASZ_bukottak.tsv` (DT334 (1): az M3 külön briefbe került; a
   #132 egyiket sem írja). A tervezet (`beerkezo/Fnn_THAYER_M3_BRIEF.md`) `ir`-je mindhármat tartalmazza; nem változott.
 - **F132.23 (6. tétel, `datasetek.tsv`):** az `adat/datasetek.tsv`-be 8 sor került: `Thayer_szakaszok`
   (`adat/thayer_szakaszok.tsv`) és `Thayer_vers_jelentes` (`adat/thayer_vers_jelentes.tsv`), mindkettő a négy study-típusra

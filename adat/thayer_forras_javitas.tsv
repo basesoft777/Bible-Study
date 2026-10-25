@@ -1,4 +1,4 @@
-# GENERÁLT: eszkozok/thayer_jelolt/forras_javit.py --ts 2026-10-25 — kézzel nem szerkesztendő (F132, DT-F132i (2); séma: adat/SEMA.md 2.38).
+# GENERÁLT: eszkozok/thayer_jelolt/forras_javit.py --ts 2026-10-25 — kézzel nem szerkesztendő (F132, DT333 (2); séma: adat/SEMA.md 2.38).
 # forras: konkordancia/lexikonok_nyers/Thayer.lexicon@b184561ea399 (a hiányzó szöveg és az igazolás) + konkordancia/Thayer_teljes.tsv@e20c7f05776b + kód@0eacdee77202
 strong	sorszam	hiba	tsv_poz	sor_poz	elotte	javitott_alak	utana	hossz	allapot	indok	proveniencia
 G0260	4	tsv_szovegvesztes	356	92	 Mat 13:29. ἅμα πρωι	early in the morning: Mat 20:1 (in Greek writings ἅμα τῷ ἡλίῳ, ἅμα τῇ ἡμέρα). In 1Th 4:17 and 1Th 5:10, where ἅμα is followed by σύν, ἅμα is an adverb (at the same time) and must be joined to the verb.		160	javitva	a TSV a lexikon G260#4 bekezdéséből 160 karaktert (szóközök nélkül) veszít, egyetlen törlésként; a beszúrással a Strong illesztése egyezik, és a sor szövege (szóközök nélkül) = a lexikonbekezdés címkék nélküli szövege	scope=G0260 | forras=thayer_jelolt/forras_javit.py (fejléc) | ts=2026-10-25

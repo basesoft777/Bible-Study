@@ -22,7 +22,7 @@ A hozzáadott sor = a commit utáni sorok, amelyek a commit szülőjében nem vo
 |---|---|---|---|---|---|
 | `26ec7bd` | köztes állapot (47 szócikk csak a `naplok/EMELES_munka.tsv`-ben) | 0 | 0 | 0 | 0 |
 | `9358d5b` | 7a (kisebbített szelet) | 663 | 84 | 663 | 0 |
-| `9ccbd84` | H4725 (8. kapu «-javítása, DT-F38j) | 1 | 1 | 0 | 1 |
+| `9ccbd84` | H4725 (8. kapu «-javítása, DT322) | 1 | 1 | 0 | 1 |
 | `5931be1` | 7b | 695 | 92 | 695 | 0 |
 | `6244e1c` | 7c | 682 | 102 | 681 | 1 (H8065) |
 | `08f4c80` | 7d | 220 | 37 | 220 | 0 |
@@ -54,8 +54,8 @@ A 7a és 5931be1 commitüzenete kerek számot ad (150 535, 150 036), a 7c (`~150
 
 | commit | változás | `adat/forditasok.tsv` | megjegyzés |
 |---|---|---|---|
-| `01e627e` | H8123 `sz2`: a `megjegyzes` mező (utolsó) üresről kitöltöttre („335t.” OCR-hiba; DT-F38l (3)) | 1 sor módosul (−1/+1), sorszám nem változik | a fordítás szövege nem változott |
-| `5c3f455` | H4912 rögzítése kapu-felülbírálással (DT-F38k (1)) | +8 új `sz1`–`sz8` sor | `allapot=sonnet`, `modell=claude-sonnet-5-5`, `megjegyzes=kapu-felülbírálás: 11_konyvek (DT-F38k)`; korábbi `teljes` sor nincs |
+| `01e627e` | H8123 `sz2`: a `megjegyzes` mező (utolsó) üresről kitöltöttre („335t.” OCR-hiba; DT324 (3)) | 1 sor módosul (−1/+1), sorszám nem változik | a fordítás szövege nem változott |
+| `5c3f455` | H4912 rögzítése kapu-felülbírálással (DT323 (1)) | +8 új `sz1`–`sz8` sor | `allapot=sonnet`, `modell=claude-sonnet-5-5`, `megjegyzes=kapu-felülbírálás: 11_konyvek (DT323)`; korábbi `teljes` sor nincs |
 
 A `451077c..a99de53` szakaszra: `git diff --numstat` → `adat/forditasok.tsv` 9 / 1 (nettó +8); más `adat/` vagy `konkordancia/` tábla Δ = 0; `naplok/EMELES_munka.tsv` 8 / 0.
 
