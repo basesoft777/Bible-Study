@@ -38,8 +38,16 @@ Tokenszintű döntés:
   tárgyas/alanyi    a T/3, E/2, T/1, T/2 régies alakja a ragozást nem jelöli: határozott tárgy a
                     tagmondatban (azt, ezt, őt, őket, a/az + -t, birtokos -t, utána „, hogy”) → tárgyas;
                     különben alanyi; a mond mindig tárgyas (DT128: monda → mondta)
-  -ék E/1 vagy T/3  magas hangrendű igén (kérék): E/1, ha a versben egyes szám első személy áll (én,
-                    engem, nekem …), különben T/3 tárgyas (`bizonytalan=ek_E1_T3`)
+  -ék E/1 vagy T/3  magas hangrendű igén (kérék): E/1, ha a tagmondatban E/1 névmás áll (én, engem, nekem …),
+                    vagy a token mondatszakaszában (.;:!? között) E/1 igealak (mondám, valék, vagyok) vagy
+                    előtte E/1 névmás, a birtokos „az én” nélkül (N-F96f); a tárgyatlan felelék, -jövék mindig
+                    E/1; különben T/3 tárgyas (`bizonytalan=ek_E1_T3`)
+  3. kör (DT-F96q)  a modern szövegben változatlanul maradt régies alak (regies_szken.py, igealak_llm_kor3.tsv):
+                    ha az opus és a szabály-jelölt egyezik, és a tő-őr átengedi → csere (`kor3:szabaly+opus`);
+                    szabály-jelölt nélkül a tő-őrön átment opus-alak cserél (`kor3:opus`,
+                    `bizonytalan=kor3_csak_opus`); eltérésnél jelölt marad (`jelolt`: kor3_szabaly, kor3_opus).
+                    A létigeinek vett vala előtti igén az opus dönt (szabály-jelölt nincs): a vala kiesik
+                    (`vala_segedige_kor3`, `bizonytalan=kor3_csak_opus`); a homográf (mert) csak tagadószó után
 
 Önellenőrzés (K2): a modern versszöveg újratokenizálva pontosan a nem kieső tokenek modern alakjait
 adja, sorrendben; a nem-betű váz a kieső tokenek egy-egy szóközén kívül változatlan.
@@ -49,10 +57,11 @@ adja, sorrendben; a nem-betű váz a kieső tokenek egy-egy szóközén kívül 
   adat/karoli_modern/igealak_tokenek.tsv   a .1 + .2 után változó, kieső, bizonytalan vagy jelölt tokenek; a
                                            kieső token `kieso_gazda` oszlopa a gazdaszó sorszáma (DT-F96o)
   adat/karoli_modern/igealak_minta.tsv     rögzített magú minta (--minta; --minta-frissit)
+  adat/karoli_modern/igealak_minta2.tsv    a lefedettséget is mérő minta (N-F96g; --minta2; --minta-frissit)
 
 Használat:
     python eszkozok/karoli_modern/igealak.py
-    python eszkozok/karoli_modern/igealak.py --minta | --minta-frissit
+    python eszkozok/karoli_modern/igealak.py --minta | --minta2 | --minta-frissit
     python eszkozok/karoli_modern/igealak.py --kimenet <könyvtár>          (próba a repón kívülre)
     python eszkozok/karoli_modern/igealak.py --llm-kerdes <könyvtár> [--koteg N]
     python eszkozok/karoli_modern/igealak.py --llm-valasz <könyvtár> --modell <név>
@@ -90,6 +99,9 @@ LLM_NAPLO = os.path.join(KI_DIR, 'igealak_llm_hivasok.jsonl')
 # A második, opus-ellenőrzés a vitatott alakokon (a szabály és a sonnet nem egyezik, vagy a tő-őr bukott)
 LLM2_TABLA = os.path.join(KI_DIR, 'igealak_llm_opus.tsv')
 LLM2_NAPLO = os.path.join(KI_DIR, 'igealak_llm_opus_hivasok.jsonl')
+# A 3. ellenőri kör (N-F96d/e, DT-F96q): a régies-szken kérdései, szabály-jelöltje és az opus válasza
+# (regies_szken.py --llm-valasz)
+KOR3_TABLA = os.path.join(KI_DIR, 'igealak_llm_kor3.tsv')
 SZKRIPT = 'eszkozok/karoli_modern/igealak.py'
 MODUL = 'eszkozok/karoli_modern/igeragozas.py'
 MAG = 20261024
@@ -108,6 +120,14 @@ HATAROZOTT_TARGY = {'azt', 'ezt', 'őt', 'őket', 'magát', 'magokat', 'magukat'
                     'amazt', 'önmagát', 'mindezt', 'mindazokat', 'mindezeket', 'magamat', 'magadat'}
 BIRTOKOS_TARGY = re.compile(r'(ját|jét|mat|met|dat|det|nkat|nket|tokat|teket|ukat|üket|jukat|jüket|'
                             r'imat|imet|idat|idet|ait|eit|jait|jeit)$')
+# N-F96f: a versben álló, egyértelmű E/1 igealak (az -ék E/1 vagy T/3 választásához; felelék … mondám)
+E1_IGE = {'valék', 'vagyok', 'leszek', 'lészek', 'voltam', 'valám'}
+# N-F96f: a tárgyatlan ige -ék alakja mindig E/1 (a T/3 tárgyas felelték, eljötték nem lehetséges; a T/3 alanyi
+# régies alakja -ének): felelék → feleltem, eljövék → eljöttem
+E1_MINDIG_VEG = ('felelék', 'jövék')
+# A 3. kör vala-párjai alakszintűek; a homográf ige csak a tagadószó után ige (nem mert vala → nem mert; a „Mert
+# vala néki …” kötőszó)
+KOR3_VALA_HOMOGRAF = {'mert': ('nem', 'sem', 'se')}
 E1_JEL = {'én', 'engem', 'nekem', 'nékem', 'velem', 'tőlem', 'hozzám', 'bennem', 'belőlem', 'rám', 'reám',
           'rólam', 'előttem', 'magam', 'magamat', 'enyém', 'nálam', 'értem', 'utánam', 'ellenem', 'mellettem'}
 # A fedettseg.igei_tovek próbáján igeinek látszó, de vala előtt névszói szavak (köz → között, hely → helyett).
@@ -437,6 +457,32 @@ def targyrag(w):
     return False
 
 
+def kor3_beolvas():
+    """A 3. kör táblája: (alak → (szabály-jelölt dict vagy None, opus-alak), vala-pár → opus-alak)."""
+    alak, vala = {}, {}
+    ut = os.path.join(ROOT, KOR3_TABLA)
+    if not os.path.exists(ut):
+        return alak, vala
+    fej = None
+    with open(ut, encoding='utf-8') as f:
+        for l in f:
+            if l.startswith('#'):
+                continue
+            m = l.rstrip('\n').split('\t')
+            if fej is None:
+                fej = m
+                continue
+            d = dict(zip(fej, m))
+            if d['tipus'] == 'vala':
+                vala[d['kerdes']] = d['opus_alak']
+                continue
+            jel = None
+            if d['szabaly_jelolt']:
+                jel = dict((x.split('=', 1) if '=' in x else ('', x)) for x in d['szabaly_jelolt'].split('|'))
+            alak[d['kerdes']] = (jel, d['opus_alak'])
+    return alak, vala
+
+
 def nevelo_utan(spans, szoveg, i):
     """Az igealak-jelölt névelő (a, az, egy) után, egy szóközzel áll: főnév (a tevék, a küldöttek)."""
     return i > 0 and spans[i - 1][2].lower() in ('a', 'az', 'egy') and szoveg[spans[i - 1][1]:spans[i][0]] == ' '
@@ -457,6 +503,7 @@ class Feldolgozo:
         self.dont = dont
         self.llm = llm
         self.llm2 = llm_beolvas(LLM2_TABLA)
+        self.kor3_alak, self.kor3_vala = kor3_beolvas()
         SZAVAK.update(alakok.kis_szavak)
         self.alak_dontes = {}  # alak → (alkalmazas, jeloltek, szabaly)
         self.szamlalo = collections.Counter()
@@ -586,7 +633,7 @@ class Feldolgozo:
                 if alk == 'szabaly' and cim != 'ok_birtokos' and nevelo_utan(spans, szoveg, i):
                     r[8] = 'nevelo_utan'  # a tevék, egy tevének, a küldöttek: főnév, nem igealak
                     continue
-                r[3], r[6] = self.valaszt(jel, spans, szoveg, i, r), cim
+                r[3], r[6] = self.valaszt(jel, spans, szoveg, i, r, t), cim
             elif alk == 'jelolt':
                 jl = []
                 if jel:
@@ -605,10 +652,13 @@ class Feldolgozo:
                     tobb = self.tobbseg(jel, llm if tor == 'ok' else '', llm2 if tor2 == 'ok' else '')
                     if tobb:
                         ertek, forrasok = tobb
-                        r[3] = self.valaszt(ertek, spans, szoveg, i, r) if isinstance(ertek, dict) else ertek
+                        r[3] = self.valaszt(ertek, spans, szoveg, i, r, t) if isinstance(ertek, dict) else ertek
                         r[6] = cimke(cim, 'tobbseg:' + forrasok)
             elif alk == 'vala':
                 self.vala(t, spans, szoveg, i)
+                self.kor3_vala_alkalmaz(t, spans, szoveg, i)
+            if alk != 'vala' and not cim.startswith('felszolito') and cim != 'gyanu:nd_jovo':
+                self.kor3_alkalmaz(t, spans, szoveg, i)
         modern = self.szoveg(szoveg, spans, t)
         self.k2(igehely, szoveg, modern, t)
         return t, modern
@@ -627,14 +677,104 @@ class Feldolgozo:
                 return (jel if len(szab) > 1 else l), 'szabaly+' + nev
         return None
 
-    def valaszt(self, jel, spans, szoveg, i, r):
+    def valaszt(self, jel, spans, szoveg, i, r, t=None):
         if '' in jel:
             return jel['']
         if 'E1' in jel:
             r[8] = 'ek_E1_T3'
-            return jel['E1'] if e1_e(spans, szoveg, i) else jel['T3']
+            e1 = (r[1].lower().endswith(E1_MINDIG_VEG) or e1_e(spans, szoveg, i)
+                  or (t is not None and self.e1_ige(t, i, spans, szoveg)))
+            return jel['E1'] if e1 else jel['T3']
         r[8] = 'targyas_heur'
         return jel['targyas'] if targyas_e(spans, szoveg, i) else jel['alanyi']
+
+    def e1_ige(self, t, i, spans, szoveg):
+        """N-F96f: E/1 jelzője a token mondatszakaszában (a .;:!? jelek között; a másik mondat és az idézett beszéd
+        E/1-e nem számít: elnyelék a … gabonafejek. És elmondám; kezdék …: Én vagyok-é): az egyértelmű E/1 igealak
+        (-ám/-ém E/1 tárgyas elbeszélő múlt: mondám, N-1, vagy a régies-szken E/1 jelöltje; valék, vagyok, leszek:
+        felelék, és mondám) vagy a token előtt álló E/1 névmás (E1_JEL; a tagmondaton belül utána is, e1_e), a birtokos
+        „az én” nélkül (megszentségteleníték az én …; ölék meg, csak én magam: T/3)."""
+        szak = [0] * len(spans)
+        n = 0
+        for j in range(1, len(spans)):
+            if re.search(r'[.;:!?]', szoveg[spans[j - 1][1]:spans[j][0]]):
+                n += 1
+            szak[j] = n
+        for j, q in enumerate(t):
+            if j == i or q[4] or szak[j] != szak[i]:
+                continue
+            w = q[1].lower()
+            if w in E1_JEL and j < i and not (w == 'én' and j > 0 and t[j - 1][1].lower() in ('az', 'a')):
+                return True
+            if w in E1_IGE:
+                return True
+            if w.endswith(('ám', 'ém')):
+                if self.alak_info(q[1])[2] == 'mult_E1_targyas':
+                    return True
+                k = self.kor3_alak.get(w)
+                if k and k[0] and '' in k[0] and k[1].lower() == k[0][''].lower() and k[1].lower().endswith('m'):
+                    return True
+        return False
+
+    def kor3_alkalmaz(self, t, spans, szoveg, i):
+        """DT-F96q: a modern szövegben változatlanul maradt régies alak a 3. kör táblájából. Ha az opus és a
+        szabály-jelölt egyezik, és a tő-őr átengedi: csere (szöveg-környezetfüggő jelöltnél a tagmondat vagy a vers
+        dönt); ha szabály-jelölt nincs: a tő-őrön átment opus-alak cserél, bizonytalan jelöléssel; ha eltérnek:
+        jelölt marad."""
+        r = t[i]
+        if r[4] or r[3].lower() != r[1].lower() or r[6] == 'token_kivetel' or r[8] == 'nevelo_utan':
+            return
+        k = self.kor3_alak.get(r[1].lower())
+        if not k or r[1].lower() in IGENEV_KIVETEL:
+            return
+        jel, opus = k
+        opus_h = nagy(r[1], opus)
+        if opus_h.lower() == r[1].lower():
+            return
+        o, reszlet, sor = self.a.oszt[r[1]]
+        tor = to_or(opus_h, r[2], sor, self.a, reszlet)
+        if jel:
+            jel_h = {kk: nagy(r[1], v) for kk, v in jel.items()}
+        if jel and opus_h in jel_h.values() and tor:
+            r[3] = self.valaszt(jel_h, spans, szoveg, i, r, t)
+            r[6] = cimke(r[6], 'kor3:szabaly+opus')
+        elif not jel and tor:
+            r[3] = opus_h
+            r[6] = cimke(r[6], 'kor3:opus')
+            r[8] = cimke(r[8], 'kor3_csak_opus') if r[8] else 'kor3_csak_opus'
+        else:
+            jl = [r[9]] if r[9] else []
+            if jel:
+                jl.append('kor3_szabaly:' + '|'.join('%s%s' % (kk + '=' if kk else '', v) for kk, v in jel_h.items()))
+            jl.append('kor3_opus:%s(%s)' % (opus_h, 'tő-őr ok' if tor else 'tő-őr bukott'))
+            r[9] = '; '.join(jl)
+
+    def kor3_vala_alkalmaz(self, t, spans, szoveg, i):
+        """DT-F96q, N-F96e: a létigeinek vett vala előtti ige a 3. kör táblájából. Szabály-jelölt itt nincs: a
+        tő-őrön átment opus-alak dönt (a vala kiesik, az ige múlt időbe kerül), bizonytalan jelöléssel."""
+        r = t[i]
+        if not r[6].startswith('vala_letige') or i == 0 or t[i - 1][4]:
+            return
+        if szoveg[spans[i - 1][1]:spans[i][0]] != ' ':
+            return
+        e = t[i - 1]
+        h = KOR3_VALA_HOMOGRAF.get(e[3].lower())
+        if h and (i < 2 or t[i - 2][1].lower() not in h):
+            return
+        opus = self.kor3_vala.get(e[3].lower() + ' ' + r[1].lower()) or self.kor3_vala.get(e[2].lower() + ' ' + r[1].lower())
+        if not opus or opus == '-':
+            return
+        uj = nagy(e[3], opus)
+        o, reszlet, sor = self.a.oszt[e[1]]
+        if not (to_or(uj, e[2], sor, self.a, reszlet) or to_or(uj, e[3], sor, self.a, reszlet)):
+            r[9] = '; '.join(x for x in (r[9], 'kor3_opus:%s %s (tő-őr bukott)' % (uj, '-')) if x)
+            return
+        if uj != e[3]:
+            e[3] = uj
+            e[6] = cimke(e[6], 'jelen_mult_vala') if e[6] else 'jelen_mult_vala'
+            e[8] = cimke(e[8], 'kor3_csak_opus') if e[8] else 'kor3_csak_opus'
+        self.kiesik(r, 'vala_segedige_kor3')
+        r[8] = 'kor3_csak_opus'
 
     def vala(self, t, spans, szoveg, i):
         r = t[i]
@@ -785,6 +925,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--minta', action='store_true')
     ap.add_argument('--minta-frissit', action='store_true')
+    ap.add_argument('--minta2', action='store_true', help='a lefedettséget is mérő minta (N-F96g) kiválasztása')
     ap.add_argument('--kimenet', default=None)
     ap.add_argument('--llm-kerdes', default=None, help='az LLM-kérdések könyvtára (a repón kívül)')
     ap.add_argument('--koteg', type=int, default=560)
@@ -823,7 +964,7 @@ def bemenet_hash():
     return ('%s (sha256:%s) + %s (sha256:%s) + %s (sha256:%s) + %s (sha256:%s) + %s (sha256:%s)%s'
             % (KAROLI, sha(KAROLI)[:12], SZOTARI, sha(SZOTARI)[:12], H_TOKENEK, sha(H_TOKENEK)[:12],
                SZKRIPT, sha(SZKRIPT)[:12], MODUL, sha(MODUL)[:12],
-               ''.join(' + %s (sha256:%s)' % (t, sha(t)[:12]) for t in (LLM_TABLA, LLM2_TABLA)
+               ''.join(' + %s (sha256:%s)' % (t, sha(t)[:12]) for t in (LLM_TABLA, LLM2_TABLA, KOR3_TABLA)
                        if os.path.exists(os.path.join(ROOT, t)))))
 
 
@@ -832,12 +973,14 @@ def kiir(vers_ki, gy, alakok, fd, a):
     os.makedirs(ki_dir, exist_ok=True)
     hk = bemenet_hash()
     fejlec = ('# GENERÁLT: %s (F96.2) — kézzel nem szerkeszthető; a javítás a szabályban vagy a kivételtáblában '
-              '(KEZI, GYANU_KEZI, VALA_ELOTT_KEZI, VALA_ELOTT_MULT_KEZI, TOKEN_KIVETEL, E1_TARGYAS_KEZI, OK_KEZI) | '
+              '(KEZI, GYANU_KEZI, VALA_ELOTT_KEZI, VALA_ELOTT_MULT_KEZI, TOKEN_KIVETEL, E1_TARGYAS_KEZI, OK_KEZI, '
+              'E1_MINDIG_VEG, KOR3_VALA_HOMOGRAF) | '
               'forras=%s | a .1 (helyesiras.py) kimenetére épül, újraszámolva és összevetve | tokenizálás: tokenizal '
               '(a #22 hu_sorszam-a; Strong token-kulcson illeszthető, DT-F96f) | a ritka jegyes és a régies gyanús '
               'alak a DT-F96l szerint cserél (a szabály, a sonnet és az opus közül kettő egyezik, tő-őrrel), különben '
-              'a jelolt oszlopban marad | LLM: az igealak_llm.tsv és az igealak_llm_opus.tsv (DT-F96d, előfizetés, '
-              'API nélkül)\n' % (SZKRIPT, hk))
+              'a jelolt oszlopban marad; a 3. kör (DT-F96q) a változatlanul maradt régies alakon a szabály és az opus '
+              'egyezésével cserél | LLM: az igealak_llm.tsv, az igealak_llm_opus.tsv és az igealak_llm_kor3.tsv '
+              '(DT-F96d, előfizetés, API nélkül)\n' % (SZKRIPT, hk))
     tok_ki = []
     for igehely, (sz, modern, t) in vers_ki.items():
         for r in t:
@@ -886,8 +1029,12 @@ def kiir(vers_ki, gy, alakok, fd, a):
     osszesit(vers_ki, gy, alakok, fd, alak_ki)
     if a.minta:
         minta(vers_ki, ki_dir, fejlec, fd)
+    elif a.minta2:
+        minta2(vers_ki, ki_dir, fejlec)
     elif a.minta_frissit:
         minta_frissit(vers_ki, ki_dir, fejlec, fd)
+        if os.path.exists(os.path.join(ki_dir, MINTA2)):
+            minta_frissit(vers_ki, ki_dir, fejlec, fd, MINTA2)
     print('bemenet: %s' % hk)
 
 
@@ -1099,11 +1246,52 @@ def minta(vers_ki, ki_dir, fejlec, fd):
     minta_ir(sorok, ki_dir, fejlec, '')
 
 
-def minta_frissit(vers_ki, ki_dir, fejlec, fd):
-    ut = os.path.join(ki_dir, 'igealak_minta.tsv')
+MINTA2 = 'igealak_minta2.tsv'
+MAG2 = 20261025
+RETEGEK2 = [('veletlen', 100), ('kor3', 20), ('kor3_vala', 10), ('ek_E1_T3', 10)]
+MINTA2_SCOPE = ('rögzített magú (%d) minta (N-F96g), %d vers: a veletlen réteg az összes vers egyenletes mintája (a '
+                'lefedettség mércéje), a többi a 3. kör cseréinek és az -ék E/1–T/3 választásnak a rétege; az '
+                'ellenorzes és a megjegyzes oszlopot a felhasználó tölti, vagy a felhasználó által elfogadott '
+                'modell-ellenőrzés (DT-F96n): a vers minden régies igealakja számít, a rossz csere hibás, a '
+                'modern szövegben változatlanul maradt régies alak kihagyás (jó / hibás / kihagyás; a megjegyzésben '
+                'csere=<n> hiba=<n> kihagyas=<n>)')
+
+
+def minta2(vers_ki, ki_dir, fejlec):
+    """N-F96g: a K1 a lefedettséget is méri: egyenletes véletlen versek, és a 3. kör cseréinek rétegei."""
+    rnd = random.Random(MAG2)
+    jelolt = collections.defaultdict(list)
+    for ih, (sz, modern, t) in vers_ki.items():
+        jelolt['veletlen'].append(ih)
+        if any('kor3:' in r[6] for r in t):
+            jelolt['kor3'].append(ih)
+        if any(r[6] == 'vala_segedige_kor3' for r in t):
+            jelolt['kor3_vala'].append(ih)
+        if any(r[8] == 'ek_E1_T3' for r in t):
+            jelolt['ek_E1_T3'].append(ih)
+    valasztott, hasznalt = [], set()
+    for reteg, db in RETEGEK2:
+        l = sorted(jelolt[reteg])
+        rnd.shuffle(l)
+        n = 0
+        for ih in l:
+            if n >= db:
+                break
+            if ih in hasznalt:
+                continue
+            hasznalt.add(ih)
+            valasztott.append((reteg, ih))
+            n += 1
+    sorok = [minta_sor('H%03d' % i, reteg, ih, vers_ki) + ['', ''] for i, (reteg, ih) in enumerate(valasztott, 1)]
+    minta_ir(sorok, ki_dir, fejlec, '', MINTA2, MINTA2_SCOPE % (MAG2, len(sorok)))
+
+
+def minta_frissit(vers_ki, ki_dir, fejlec, fd, nev='igealak_minta.tsv'):
+    ut = os.path.join(ki_dir, nev)
     regi = helyesiras.felhasznaloi_oszlopok(ut, ('minta_id',), ('reteg', 'igehely', 'ellenorzes', 'megjegyzes'))
     sorok = [minta_sor(k[0], v[0], v[1], vers_ki) + [v[2], v[3]] for k, v in sorted(regi.items())]
-    minta_ir(sorok, ki_dir, fejlec, ' | a kiválasztás változatlan, a szabály szerint újraszámolva (--minta-frissit)')
+    minta_ir(sorok, ki_dir, fejlec, ' | a kiválasztás változatlan, a szabály szerint újraszámolva (--minta-frissit)',
+             nev, MINTA2_SCOPE % (MAG2, len(sorok)) if nev == MINTA2 else None)
 
 
 def minta_sor(mid, reteg, ih, vers_ki):
@@ -1123,12 +1311,13 @@ def minta_sor(mid, reteg, ih, vers_ki):
     return [mid, reteg, ih, sz, modern, '; '.join(valt), ' | '.join(alt)]
 
 
-def minta_ir(sorok, ki_dir, fejlec, megj):
-    with open(os.path.join(ki_dir, 'igealak_minta.tsv'), 'w', encoding='utf-8', newline='\n') as f:
-        f.write(fejlec.replace('\n', ' | scope=rögzített magú (%d) rétegzett minta, %d vers; az ellenorzes és a '
-                               'megjegyzes oszlopot a felhasználó tölti, vagy a felhasználó által elfogadott '
-                               'modell-ellenőrzés (DT-F96n; jó / hibás; a jelölt soron A = a jelölt jó, '
-                               'B = maradjon)%s\n' % (MAG, len(sorok), megj)))
+def minta_ir(sorok, ki_dir, fejlec, megj, nev='igealak_minta.tsv', scope=None):
+    if scope is None:
+        scope = ('rögzített magú (%d) rétegzett minta, %d vers; az ellenorzes és a megjegyzes oszlopot a felhasználó '
+                 'tölti, vagy a felhasználó által elfogadott modell-ellenőrzés (DT-F96n; jó / hibás; a jelölt soron '
+                 'A = a jelölt jó, B = maradjon)' % (MAG, len(sorok)))
+    with open(os.path.join(ki_dir, nev), 'w', encoding='utf-8', newline='\n') as f:
+        f.write(fejlec.replace('\n', ' | scope=%s%s\n' % (scope, megj)))
         f.write('\t'.join(['minta_id', 'reteg', 'igehely', 'szoveg_1908', 'szoveg_modern', 'valtozasok', 'jelolt',
                            'ellenorzes', 'megjegyzes']) + '\n')
         for s in sorok:
