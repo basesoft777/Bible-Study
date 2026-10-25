@@ -1467,6 +1467,30 @@ sor `# GENERÁLT: …` és `# forras: …`, a harmadik a fejléc. Olvasás `spli
 
 Kulcs: `strong` + `sorszam`. Állapot (F132 M2, 2026-10-25): 63 953 sor (ÚSZ 58 266, ÓSZ 5 687); `karoli_vers` üres: ÚSZ 28, ÓSZ 12.
 
+
+### 2.36 `tiltott_fordulatok.tsv` — tiltott magyar fordulatok (F132, DT-F132f; elv: DT241, F121 2a/2)
+
+**Kézi tábla** (kézzel szerkeszthető; új tételt a fordítási javítások hoznak, a felhasználó döntésével). Szótárfüggetlen: a
+BDB- és a Thayer-lánc közös kapuja, a `forditas_kapuk.py` **15. kapuja** (`15_tiltott`, gátoló; a `kapuk_futtat` és a
+`kapuk_futtat_szakaszos` is futtatja). Olyan magyar szerkezetek, amelyek a fordítás kimenetében hibának számítanak
+(tükörfordítás, hamis barát); a tétel **értelemhez kötött minta**, nem puszta szó (DT241: a „melléknév” nyelvtani értelemben
+helyes). Találatnál a sor nem rögzül automatikusan, kézi ítéletre áll meg. Az első sor `#` megjegyzés, a második a fejléc.
+Olvasás `split('\t')`.
+
+| Oszlop | Jelentés |
+|---|---|
+| `magyar_alak` | a tiltott fordulat olvasható alakja (`melléknéven nevezni`) |
+| `minta` | Python regex, kis/nagybetű-független (`re.IGNORECASE`), a fordítás nyers szövegén; csak az igei / értelemhez kötött szerkezetet fogja |
+| `ertelem` | melyik értelemben tiltott (pl. „ige: nevet adni, más néven is nevezni”) |
+| `helyette` | a javasolt alak (a terminológiai szójegyzékkel összhangban) |
+| `indoklas` | miért hiba |
+| `verzio` | a tétel verziója (`v1` …) |
+| `proveniencia` | `manual (döntés: …; tétel: …)` — a felvételt elrendelő döntés és forrás |
+
+Kulcs: `magyar_alak` + `verzio`. Állapot (F132, 2026-10-25): 2 tétel (a DT241 / F121 2a/2 első elemei: „melléknéven nevezni”,
+„melléknevet adni”); a `forditasok.tsv`-ben a kapu 4 helyen talál, mind a G1941 két sorában (Thayer `teljes`, TBESG `1`; F121 2b/4),
+a 98 nyelvtani „melléknév” sor nem találat. A tartalmat a #121 bővíti.
+
 ---
 
 ## 3. Integritási szabályok

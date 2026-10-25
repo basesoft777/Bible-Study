@@ -306,3 +306,22 @@ A Siralmak: a könyvtábla `JSir`-t ad, a `Karoli_1908.tsv` `Sir`-t; a `karoli_v
 
 A motívum magja tehát a Thayer 5. jelentéspontja (segítségül hívni az Úr nevét); az 1Pét 1:17 az 1. pont („atyának nevezni”).
 A két jelöletlen ApCsel-hely a szövegben az 5. pont alatt áll, de a tábla nem tölti ki (CLAUDE.md 3. szabály).
+
+## M3-előfeltétel 1 — tiltott fordulatok és a `15_tiltott` kapu (DT-F132f (b), 2026-10-25)
+
+- `adat/tiltott_fordulatok.tsv` (új, kézi, SEMA 2.36): 2 tétel, a DT241 / `F121_GLOSSZA_FORDITAS_BRIEF.md` 2a/2 első elemei
+  („melléknéven nevezni”, „melléknevet adni”; helyette „más néven (is) nevezni”). Más tételt a végrehajtó nem vett fel (tartalom:
+  a #121 és a javítások).
+- `eszkozok/forditas_kapuk.py`: `tiltott_betolt`, `ellenoriz_tiltott`, a `15_tiltott` a `GATOLO`-ban, a `kapuk_futtat` végén
+  (a szakaszos futtatás is átveszi). A `14` foglalt (`14_szakasz`), ezért `15`.
+- `eszkozok/teszt_forditas_kapuk.py`: `Tiltott` osztály, 7 teszt; a modul 88 tesztje zöld. `teszt_bdb_zaras.py` 21 teszt zöld.
+- Mérés a `forditasok.tsv`-n *(proveniencia: `scope=adat/forditasok.tsv (forditas_hu) | forras=tiltott_meres.py (eseti, a repón kívül) @aee1355 | ts=2026-10-25`)*:
+  találat 4 hely, mind a G1941 két sorában (Thayer `teljes` `kezi`: 3; TBESG `1` `kezi`: 1) — egyezik a F121 2b/4 mérésével;
+  a „melléknév” szóalakot tartalmazó 98 sor egyike sem találat. A két G1941-sor javítása a #121 0. tétele (nem ez a feladat);
+  az M3 Thayer-sora a kapun megy át.
+- **Mellékhatás (az `ir` bővült: `adat/bdb_szakasz_hu.tsv`):** a `bdb_jelolt/hu_illeszt.py` a kimenet `# forras:` fejlécsorába a
+  `forditas_kapuk.py` hash-ét írja, ezért a kapuváltozás után az `--ellenoriz` eltért. Újragenerálva (`--ts 2026-10-18`, a fájl saját
+  napja): **csak a fejlécsor hash-e változott** (`8ce0a55f14eb` → az új), adatsor nem.
+- Megfigyelés (nem e feladat változása): a `bdb_jelolt/teszt_bont.py` két determinizmus-tesztje (`bont.py --ellenoriz`,
+  `forras_javit.py --ellenoriz`) e környezetben a változtatás **előtt** is eltér (tiszta `aee1355` állapoton mérve) — a
+  `bdb_szakaszok.tsv` / `bdb_forras_javitas.tsv` újragenerálása környezetfüggő; nem javítottam (nem e feladat fájljai).
