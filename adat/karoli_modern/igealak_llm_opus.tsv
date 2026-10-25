@@ -1,4 +1,4 @@
-# GENERÁLT: eszkozok/karoli_modern/igealak.py --llm-valasz (F96.2, DT-F96d) — modell-kimenet (modell_ellenorizetlen), kézzel nem szerkeszthető | modell=claude-opus-5-5 (Claude Code, előfizetés, API nélkül) | scope=a vitatott jelöltek (a szabály és a sonnet nem egyezik, vagy a tő-őr bukott) kisbetűsen (860 kérdés, 860 válasz, 0 hiányzó) | token: 312385 | ts=2026-10-24T20:33Z
+# GENERÁLT: eszkozok/karoli_modern/igealak.py --llm-valasz (F96.2, DT303) — modell-kimenet (modell_ellenorizetlen), kézzel nem szerkeszthető | modell=claude-opus-5-5 (Claude Code, előfizetés, API nélkül) | scope=a vitatott jelöltek (a szabály és a sonnet nem egyezik, vagy a tő-őr bukott) kisbetűsen (860 kérdés, 860 válasz, 0 hiányzó) | token: 312385 | ts=2026-10-24T20:33Z
 alak	llm_alak	kerdes_id
 adattaték	adatott	L0002
 adánd	adánd	L0007
