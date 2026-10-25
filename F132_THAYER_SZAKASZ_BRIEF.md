@@ -8,7 +8,7 @@ munka: adat
 modell: opus
 allapot: fut
 ag: claude/thayer-szakasz
-ad: a Thayer szakaszonként, adatként (thayer_szakaszok.tsv) és igehelyenként jelentésponthoz kötve (thayer_vers_jelentes.tsv); a motívumok 13 görög gerincszava szakaszonként magyarul, szakasz-kapun átengedve — a #131 görög része erre épül
+ad: a Thayer szakaszonként, adatként (thayer_szakaszok.tsv) és igehelyenként jelentésponthoz kötve (thayer_vers_jelentes.tsv); a motívumok aktuális görög gerincszavai (a futás pillanatában, újrafuttatható M3, DT-F132h) szakaszonként magyarul, szakasz-kapun átengedve — a #131 görög része erre épül
 kovetkezo: "M1 — bontó (eszkozok/thayer_jelolt/bont.py)"
 olvas: [konkordancia/lexikonok_nyers/Thayer.lexicon, konkordancia/lexikonok_nyers/README.md, konkordancia/Thayer_teljes.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, konkordancia/Karoli_1908.tsv, adat/licencek.tsv, adat/forditasok.tsv, adat/terminologia.tsv, adat/elofordulasok.tsv, adat/SEMA.md, adat/karoli_strong/, eszkozok/bdb_jelolt/, eszkozok/bdb_adatblokk.py, eszkozok/emeles.py, eszkozok/forditas_kapuk.py, "forditas/prompt_v*.md", F128_BDB_SZAKASZ_ELOKESZITES_BRIEF.md, F131_SZOTARI_GERINC_BRIEF.md, F07_THAYER_ELES_BRIEF.md, F27_FP3_BRIEF.md]
 ir: [eszkozok/thayer_jelolt/, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/thayer_sigla.tsv, adat/forditasok.tsv, adat/SEMA.md, adat/tiltott_fordulatok.tsv, eszkozok/forditas_kapuk.py, eszkozok/teszt_forditas_kapuk.py, naplok/F132_THAYER_SZAKASZ_naplo.md]
@@ -154,13 +154,15 @@ hivatkozást tartalmazó szakaszé. ÚSZ-helyeken a számozás egyezik; az ÓSZ-
 LXX-utalás) számozási eltérését a naplóban mérni, nem kitölteni. Teszt: a 63 953 `bcv` mind a táblában;
 a G1941 a motívum 10 ÚSZ-helyéből melyiket idézi, és melyik jelentéspont alatt (a naplóba).
 
-### M3 — a 13 gerincszó szakaszonkénti fordítása
+### M3 — a motívumok aktuális görög gerincszavainak szakaszonkénti fordítása (újrafuttatható, DT-F132h)
+
+**Hatókör (DT-F132h (1), felhasználó, 2026-10-25):** nem a 2. szakasz rögzített 13 szava, hanem **a motívumok aktuális görög gerincszavai, a futás pillanatában**: az `adat/elofordulasok.tsv` `strong` mezőjének görög Strongjai (`Strong_padded`-re normalizálva). Kimarad, aminek már van érvényes (nem `elavult`, `forras_hash`-egyező) szakaszos fordítása; a többit a Sonnet-lánc adagonként fordítja. A listát minden futás elején az `eszkozok/thayer_jelolt/` listázó eszköze állítja elő (a kihagyottak okkal, proveniencia-sorral); az első futás a mai halmaz. Az M3 újrafuttatható: új motívum görög szava a következő futásban kerül sorra.
 
 A DT-F132c–d szerint, a 2a mankóival (adatblokk: Károli-alakok, idézett versek Károli-szövege, sigla-tábla,
 nyelvközi híd; kapuk: terminológia, tiltott fordulatok, sigla), a terminológia aktuális verziójával és a
 fordítási elvekkel (nyelvközi egység, rangsor: szójegyzék > Károli > BDB > szótár). Kapuk, köztük a szakasz-kapu (a tokenek száma és
 sorrendje egyezik); bukás esetén önújrapróba, utána `naplok/F132_THAYER_SZAKASZ_bukottak.tsv`.
-Rögzítés a `forditasok.tsv`-be a DT-F132b/d szerinti kulccsal; írás előtt az eszköz a táblát összeveti
+Rögzítés a `forditasok.tsv`-be a DT-F132b/d szerinti kulccsal; a régi `teljes` sorok jelölése (DT-F132c (i)+(ii)) az adott futásban fordított szavakra; írás előtt az eszköz a táblát összeveti
 az eredetivel (csak új sor, a meglévők bájtra azonosak). `modell` = a saját környezetből vett tényleges
 név. Commit adagonként.
 
@@ -176,8 +178,9 @@ Push és merge csak a felhasználótól.
    `--ellenoriz` zöld, a tesztek zöldek.
 2. Minden Thayer-szócikk minden bekezdése a `thayer_szakaszok.tsv`-ben; a 63 953 `bcv` a
    `thayer_vers_jelentes.tsv`-ben; a Strong-kulcs mindenhol `Strong_padded`.
-3. A 13 gerincszó minden szakasza magyarul a `forditasok.tsv`-ben, a gátoló kapukon átment; a régi
-   `teljes` sorok a DT-F132c szerint kezelve.
+3. A motívumok aktuális görög gerincszavainak (a futás pillanatában, DT-F132h) minden szakasza magyarul a
+   `forditasok.tsv`-ben, a gátoló kapukon átment; a futás listája és a kihagyottak okkal a naplóban; a régi
+   `teljes` sorok a DT-F132c szerint kezelve, az érintett szavakra.
 4. A TSV-ket `split('\t')` olvassa és `'\t'.join()` írja (a `csv` modul tilos, CLAUDE.md).
 5. Lekérdezésből származó állítás mellett proveniencia-sor; hiány explicit, nem kitöltve.
 6. `python eszkozok/ellenoriz.py` SÉRTÉS 0; `python eszkozok/feladatok.py ellenoriz` 0 hiba.
@@ -191,4 +194,5 @@ Push és merge csak a felhasználótól.
 | DT-F132c | A 14 kész `teljes` sor sorsa | (a) újrafordítás szakaszonként · (b) utólagos illesztés · (c) mindkettő | **eldöntve: (a)+(i)+(ii)** (felhasználó, 2026-10-25; `DONTESEK.md`) |
 | DT-F132d | A fordítás lánca és modellje | a #128 lánca szótárfüggetlenül / külön lánc; Sonnet / Opus | **eldöntve: (1)+(S); az M3 külön Sonnet-menetben** (felhasználó, 2026-10-25; `DONTESEK.md`; az indítás: DT-F132g) |
 | DT282 | Viszony a #131-hez | (a) a #131 görög része vár · (b) a #131 héberrel indul, a görög később | **eldöntve: (a)** (felhasználó, 2026-10-21; `DONTESEK.md`) |
+| DT-F132h | Az M3 hatóköre | (1) újrafuttatható M3 az `elofordulasok.tsv` aktuális görög halmazán · (2) bővített rögzített lista · (3) teljes Thayer | **eldöntve: (1)** (felhasználó, 2026-10-25; `DONTESEK.md`) |
 | DT-F132f | A tiltott-fordulat tábla (2a/2) helye | (a) a #128 · (b) ez a feladat · (c) a #121 terve szerint | **eldöntve: (b), kapu `15_tiltott`** (felhasználó, 2026-10-25; `DONTESEK.md`) |

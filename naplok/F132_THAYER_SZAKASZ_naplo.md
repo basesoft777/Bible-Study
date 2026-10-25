@@ -186,3 +186,12 @@ A felhasználó (chat, szó szerint): „mind a javaslat szerint, az M3 külön 
 - **DT-F132c (a)+(i)+(ii):** újrafordítás; a 8 gerinc-`opus` sor `elavult`, az 5 `kezi` a jóváhagyásig érvényes.
 - **DT-F132d (1)+(S):** közös lánc, a #128 fájljai nem változnak; Sonnet; **az M3 külön Sonnet-menetben**.
 - **DT-F132f (b):** a #132 építi a tiltott-fordulat táblát és kaput, `15_tiltott` számmal.
+
+## Egyeztetett eltérés
+
+- **Hatókör (DT-F132h (1), felhasználó, 2026-10-25, chat: „1, újrafuttatható M3”):** az M3 nem a brief 2.
+  szakaszának rögzített 13 görög gerincszavára fut, hanem a motívumok aktuális görög gerincszavaira, a futás
+  pillanatában (`adat/elofordulasok.tsv` `strong`, `Strong_padded`); a már érvényes (nem `elavult`,
+  `forras_hash`-egyező) szakaszos fordítású szavak kimaradnak. Az M3 újrafuttatható; a listát egy tesztelt
+  eszköz állítja elő az `eszkozok/thayer_jelolt/`-ban (M3-előfeltétel). A brief M3-a, 5. (3. pont) és 6.
+  szakasza, valamint az `ad` mező átírva.
