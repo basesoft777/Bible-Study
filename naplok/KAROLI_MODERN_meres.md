@@ -1228,3 +1228,27 @@ Ebből 1 043 sor modern alakja eltér a .1-étől; 41 csak jelölt.
 A 4. körben jelzett állapot (`8b858b3..b8334a64`): ugyanaz a +1 084 (1 084 új, 0 eltűnt), 645 módosult sor. A javítókör sort nem adott és nem vett el. Az 1.–3. tétel 44 sort módosított (4 + 39 + 1), a 4. tétel csak a fejlécet. A 44 sorból:
 - 34 a 4. körig a `8b858b3` óta változatlan volt; ezek adják a módosult sorok 645 → 679 növekedését;
 - 10 már korábban is módosult sor volt: a 7 volt `token_opus` sor (15.2), a Préd 2:5 *építék*, a Préd 2:9 *Gyűjték* (15.1) és a Dán 8:22 *letöretteték* (15.2).
+
+### 15.6 Összegzés és megállás
+
+| Tétel | Változás | Token (modern alak) |
+|---|---|---|
+| 1. `ek_E1_T3` + visszaható E/1 névmás | `E1_JEL` bővítés, `ek_e1_fordit` (`MAGAM_E1`) | 4 (Préd 2:5 ×2, 2:6, 2:9) |
+| 2. `nevelo_utan` | hangtani névelő-próba, az *egy* marad; leírás a kódban és a 15.2-ben; friss mérés: 94,8% | 27 (+12 sor csak címke) |
+| 3. `lonek_lo` | egész szavas nyíl/íj szólista (`NYIL_IJ`) | 1 (Jel 11:19) |
+| 4. proveniencia | `ts=` a szken- és az igealak-fejlécekben, kör-címke, `--futas-ts`; a szken-táblák a pillanatképből | 0 (csak fejléc) |
+| 5. E17 | a +1 084 bontása (15.5) | — |
+
+A javítókör után:
+- az `igealak_tokenek.tsv` 67 685 adatsor (változatlan);
+- a változó token 50 491 → 50 517, a változó vers 21 620 → 21 621;
+- K2, K3 és K3b minden lépés után teljesült; a 418 633 Strongos token kulcsa mind a táblában, a Strong nem változott;
+- a két minta (`igealak_minta.tsv`, `igealak_minta2.tsv`) modern szövege egyetlen soron sem változott, csak a fejlécük.
+
+**Nyitva marad (nem a javítókör tárgya):**
+- 3 ismert E/1 → T/3 hiba (1Móz 39:15, Dán 7:16, Ez 22:30; 15.1);
+- a magánhangzós ige a névmási *az* után (7 kihagyás, 15.2);
+- az ellenőr mintájának *egybegyűle, sétála, Helybenhagyák* kihagyása és a mintán kívüli szúrópróba alakjai (15.2);
+- a `karoli_modern.py` fejlécéből szintén hiányzik a `ts=` (nem tartozott a 4. tételhez).
+
+**Megállás:** a javítás a független ellenőr újraellenőrzésére vár (`naplok/ELLENOR_F96_2.md`). A DT-F96v (🟡) a felhasználó döntése marad.
