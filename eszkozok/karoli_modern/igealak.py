@@ -48,6 +48,11 @@ Tokenszintű döntés:
                     `bizonytalan=kor3_csak_opus`); eltérésnél jelölt marad (`jelolt`: kor3_szabaly, kor3_opus).
                     A létigeinek vett vala előtti igén az opus dönt (szabály-jelölt nincs): a vala kiesik
                     (`vala_segedige_kor3`, `bizonytalan=kor3_csak_opus`); a homográf (mert) csak tagadószó után
+  4. kör (DT-F96r)  ugyanígy az igealak_llm_kor4.tsv-ből (`kor4:…`, `kor4_csak_opus`), a .1 utáni alakon, a .2
+                    döntése nélküli tokenen (a .1-ben változott tokenen a tő-őr a .1 utáni alakon is mér); a
+                    `vala_nem_elemezheto` vala is (létige → volt); a `jelolt` típus a DT-F96l opus-szavazata, ahol
+                    az igealak_llm_opus.tsv nem szavazott. A .1 cseréje a .2 eredményén is (h1_atvisz: reáveté →
+                    rávetette, nem reávetette)
 
 Önellenőrzés (K2): a modern versszöveg újratokenizálva pontosan a nem kieső tokenek modern alakjait
 adja, sorrendben; a nem-betű váz a kieső tokenek egy-egy szóközén kívül változatlan.
@@ -460,6 +465,19 @@ def targyrag(w):
     return False
 
 
+def h1_atvisz(r1, r2, uj):
+    """A .1 cseréje (reá → rá, dí → di) a .2 eredményén is: ha a .2-alak az 1908-as alak .1 előtti részével kezdődik
+    (a szavazat az 1908-as alakra jött: reáveté → reávetette), a .1 szerinti részre cseréljük (rávetette)."""
+    a, b, u = r1.lower(), r2.lower(), uj.lower()
+    j = 0
+    while j < min(len(a), len(b)) and a[len(a) - 1 - j] == b[len(b) - 1 - j]:
+        j += 1
+    ea, eb = a[:len(a) - j], b[:len(b) - j]
+    if ea != eb and u.startswith(ea) and not (len(eb) >= len(ea) and u.startswith(eb)):
+        return nagy(uj, eb + uj[len(ea):])
+    return uj
+
+
 def kor3_beolvas(tabla=KOR3_TABLA):
     """A 3. (4.) kör táblája: (alak → (szabály-jelölt dict vagy None, opus-alak), vala-pár → opus-alak,
     jelölt alak → opus-alak)."""
@@ -671,6 +689,9 @@ class Feldolgozo:
             if alk != 'vala' and not cim.startswith('felszolito') and cim != 'gyanu:nd_jovo':
                 self.kor3_alkalmaz(t, spans, szoveg, i)
                 self.kor3_alkalmaz(t, spans, szoveg, i, 4)
+        for r in t:
+            if not r[4] and r[3] != r[2] and r[2] != r[1]:
+                r[3] = h1_atvisz(r[1], r[2], r[3])
         modern = self.szoveg(szoveg, spans, t)
         self.k2(igehely, szoveg, modern, t)
         return t, modern
@@ -751,8 +772,11 @@ class Feldolgozo:
             return
         o, reszlet, sor = self.a.oszt[r[1]]
         tor = to_or(opus_h, r[2], sor, self.a, reszlet)
+        if not tor and kor == 4 and r[2] != r[1]:
+            # a .1-ben változott tokenen (reáadá → ráadá, harczolának → harcolának) a tő-őr a .1 utáni alakon mér
+            tor = to_or(opus_h, r[2], None, self.a, '')
         if jel:
-            jel_h = {kk: nagy(r[1], v) for kk, v in jel.items()}
+            jel_h = {kk: h1_atvisz(r[1], r[2], nagy(r[1], v)) for kk, v in jel.items()}
         if jel and opus_h in jel_h.values() and tor:
             r[3] = self.valaszt(jel_h, spans, szoveg, i, r, t)
             r[6] = cimke(r[6], nev + ':szabaly+opus') if r[6] else nev + ':szabaly+opus'
@@ -1001,7 +1025,7 @@ def kiir(vers_ki, gy, alakok, fd, a):
               '(a #22 hu_sorszam-a; Strong token-kulcson illeszthető, DT-F96f) | a ritka jegyes és a régies gyanús '
               'alak a DT-F96l szerint cserél (a szabály, a sonnet és az opus közül kettő egyezik, tő-őrrel), különben '
               'a jelolt oszlopban marad; a 3. kör (DT-F96q) a változatlanul maradt régies alakon a szabály és az opus '
-              'egyezésével cserél | LLM: az igealak_llm.tsv, az igealak_llm_opus.tsv és az igealak_llm_kor3.tsv '
+              'egyezésével cserél | LLM: az igealak_llm.tsv, az igealak_llm_opus.tsv, az igealak_llm_kor3.tsv és az igealak_llm_kor4.tsv '
               '(DT-F96d, előfizetés, API nélkül)\n' % (SZKRIPT, hk))
     tok_ki = []
     for igehely, (sz, modern, t) in vers_ki.items():

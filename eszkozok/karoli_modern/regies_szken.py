@@ -18,14 +18,22 @@ döntés (DT-F96q) szerint LLM-kérdés (opus, vak); a kérdések a repón kív�
 A szabály-jelölt az -ék végen szövegkörnyezetfüggő (E1=…|T3=…; az -ik-es igén E/3 alanyi), az -ának/-ének végen
 alanyi=…|targyas=…, ha a tárgyas alak a korpuszban áll; a választást az igealak.py tokenenként végzi.
 
+A 4. kör (--kor 4, DT-F96r, 2. opció) a 3. kör után mért kihagyás-osztályok: v-tő (megnyugovék), igekötő + régi tő
+(körülvevék), ható ige (késhetének), igeképzős tő (felzúdíták), -a/-e E/3 alanyi múlt névszószűrővel (megfullada), a
+csak a .1 által változtatott token (a modern alakján), a vala_nem_elemezheto vala, és a jelölt opus-szavazat nélkül
+(`jelolt` típus; az igealak_alakok.tsv-ből). Bemenete a 3. kör utáni réteg pillanatképe (karoli_modern.tsv,
+igealak_alakok.tsv); a kérdések S-azonosítósak.
+
 Ír (generált): adat/karoli_modern/regies_szken.tsv (a 3. ellenőri kör előtti réteg pillanatképe; az újrafuttatás a
                --kimenet kapcsolóval a maradékot méri: a már kérdezett alak, a kor3-tábláé is, kimarad)
                adat/karoli_modern/igealak_llm_kor3.tsv + _hivasok.jsonl (--llm-valasz)
+               adat/karoli_modern/regies_szken_kor4.tsv, igealak_llm_kor4.tsv + _hivasok.jsonl (--kor 4)
 Használat:
     python eszkozok/karoli_modern/regies_szken.py
     python eszkozok/karoli_modern/regies_szken.py --llm-kerdes <könyvtár a repón kívül> [--koteg N]
     python eszkozok/karoli_modern/regies_szken.py --llm-valasz <könyvtár> --modell <név>
     python eszkozok/karoli_modern/regies_szken.py --kimenet <könyvtár a repón kívül>   (maradék-mérés)
+    python eszkozok/karoli_modern/regies_szken.py --kor 4 [--llm-kerdes … | --llm-valasz … --modell … | --kimenet …]
 """
 
 import argparse
@@ -161,16 +169,26 @@ class Szken:
         if tip == 'igenev':
             return t + ('va' if veg == 'ván' else 've')
         kot, alap = ir.szetbont(t, self.sz)
+        regi_to = False
         for regi, uj in REGI_TO.items():
             if alap.endswith(regi) and len(alap) == len(regi):
                 alap = uj
+        if self.kor == 4 and not ir.ige_e(alap, self.sz) and alap not in ir.RENDHAGYO:
+            for k in self.kot:
+                if k and t.startswith(k) and t[len(k):] in REGI_TO:
+                    kot, alap = k, REGI_TO[t[len(k):]]  # körülvev → körül + vesz
+                    regi_to = True
+                    break
+            else:
+                if alap.endswith('v') and self.igei(alap[:-1] + 'd'):
+                    alap = alap[:-1] + 'dik'  # megnyugov → megnyugodik (megnyugovék → megnyugodott)
         if tip == 'pass':
             return t + 'at' + ir.kotohang(t + 'at') if veg == 'aték' else t + 'et' + ir.kotohang(t + 'et')
         if not ir.ige_e(alap, self.sz) and alap not in ir.RENDHAGYO:
             alap2 = alap + 'ik'
             if ir.ige_e(alap2, self.sz):
                 alap = alap2
-        elif tip == 'ek' and (kot + alap + 'ik') in self.sz:
+        elif tip == 'ek' and not regi_to and (kot + alap + 'ik') in self.sz:
             alap = alap + 'ik'  # bosszankodék → bosszankodik
         if tip == 'ek':
             # -ék: E/1 vagy T/3 tárgyas (a versbeli E/1 dönt, igealak.py); az -ik-es igén E/3 alanyi; ha a T/3
@@ -290,11 +308,11 @@ def llm_valasz(ki, modell, kor=3):
     tok = sum(h.get('total_tokens', 0) for h in hivasok)
     ts = __import__('datetime').datetime.now(__import__('datetime').timezone.utc).strftime('%Y-%m-%dT%H:%MZ')
     with open(os.path.join(ROOT, TABLA), 'w', encoding='utf-8', newline='\n') as f:
-        f.write('# GENERÁLT: %s --llm-valasz (F96.3, ' + ('DT-F96r, 4. kör' if kor == 4 else 'DT-F96q') + ') — modell-kimenet (modell_ellenorizetlen), kézzel nem '
+        f.write(('# GENERÁLT: %s --llm-valasz (F96.3, ' + ('DT-F96r, 4. kör' if kor == 4 else 'DT-F96q') + ') — modell-kimenet (modell_ellenorizetlen), kézzel nem '
                 'szerkeszthető | modell=%s (Claude Code subagent, előfizetés, API nélkül; vak, versrészlettel) | '
                 'forras=%s (sha256:%s) | scope=a régies-szken minden kérdése (%d: %d alak, %d vala-pár, %d jelölt) | '
                 'opus_alak: az alak mai alakja; a vala-páron a vala előtti ige mai múlt idejű alakja, ha a vala '
-                'segédige, különben - | token: %d (%d hívás) | ts=%s\n'
+                'segédige, különben - | token: %d (%d hívás) | ts=%s\n')
                 % (SZKRIPT, modell, KI_, sha(KI_), len(kerdes), sum(1 for r in kerdes if r[1] == 'alak'),
                    sum(1 for r in kerdes if r[1] == 'vala'), sum(1 for r in kerdes if r[1] == 'jelolt'), tok, sum(h.get('hivasok', 0) for h in hivasok), ts))
         f.write('\t'.join(['id', 'tipus', 'kerdes', 'szabaly_jelolt', 'opus_alak']) + '\n')
