@@ -1,0 +1,372 @@
+# GENERÁLT: eszkozok/karoli_modern/regies_szken.py --kor 5 (F96.3, 5. kör: DT-F96u, 1. opció) — kézzel nem szerkeszthető | forras=adat/karoli_modern/igealak_tokenek.tsv (sha256:b72a4d340de107e934060bca9f1185e9b6a65db8d06b9a356623fd1c5ecf14a7) + adat/karoli_modern/karoli_modern_versek.tsv (sha256:db56b7d3e6d4e728c5ef077c2f96a6c578c90e8b0f6fb188e19b14f3a645ee54) + adat/karoli_modern/karoli_modern.tsv (sha256:33b88ba440ad9a6adbd20d1e3402117f137189f34454df2a5bcd1a9dd461a95b) | scope=a modern szövegben változatlanul maradt jelölt tokenek, ahol legalább egy forrás változtatna (370), a felszólító és a -nd- jövő nélkül; meglevo_jeloltek: a szabály- és LLM-jelöltek; vers: a modern versszöveg, a token [szögletes zárójelben] | ts=2026-10-25T12:07Z
+id	igehely	sorszam	alak	meglevo_jeloltek	vers
+T0001	1Móz 3:12	19	evém	ettem	És mondta az ember: Az asszony, akit mellém adtál, ő adott nekem arról a fáról, úgy [evém].
+T0002	1Móz 3:13	20	evém	ettem	És mondta az Úr Isten az asszonynak: Mit cselekedtél? Az asszony pedig mondta: A kígyó ámított el engem, úgy [evém].
+T0003	1Móz 7:17	10	növekedének	nevekedtek|növekedtek	Mikor az özönvíz negyven napig volt a földön, annyira [növekedének] a vizek, hogy felveheték a bárkát, és az felemelkedék a földről.
+T0004	1Móz 7:17	19	felemelkedék	felemelkedett	Mikor az özönvíz negyven napig volt a földön, annyira növekedének a vizek, hogy felveheték a bárkát, és az [felemelkedék] a földről.
+T0005	1Móz 7:18	7	növekedének	nevekedtek|növekedtek	A vizek pedig áradtak és egyre [növekedének] a földön, és a bárka járt a víz színén.
+T0006	1Móz 7:20	3	növekedének	nevekedtek|növekedtek	Tizenöt singgel [növekedének] a vizek feljebb, minekutánna a hegyek elboríttattak.
+T0007	1Móz 8:9	27	bévevé	bévette|bévevte	De a galamb nem talált lábainak nyugvóhelyet és visszatért ő hozzá a bárkába, mert víz volt az egész föld színén; ő pedig kezét kinyujtotta, megfogta, és [bévevé] azt magához a bárkába.
+T0008	1Móz 9:19	8	népesedék	népesedett|népesedtem	Ezek hárman a Noé fiai s ezektől [népesedék] meg az egész föld.
+T0009	1Móz 14:14	11	felfegyverzé	felfegyverezte|felfegyverzette	Amint meghallotta Ábrám, hogy az ő atyjafia fogságba esett, [felfegyverzé] házában növekedett háromszáz tizennyolc próbált legényét és üldözve nyomult Dánig.
+T0010	1Móz 17:25	10	körülmetélék	körülmetéltem|körülmetélték	Ismáel pedig az ő fia tizenhárom esztendős volt, mikor [körülmetélék] az ő férfitestének bőrét.
+T0011	1Móz 19:16	3	késedelmeskedék	késedelmeskedett|késedelmeskedtem	Mikor pedig [késedelmeskedék], megragadták a férfiak az ő kezét és az ő feleségének kezét és két leánya kezét, az Úrnak iránta való irgalmából, és kivitték őt: és ott hagyták a városon kívül.
+T0012	1Móz 19:25	2	elsülyeszté	elsüllyesztette|elsülyesztette	És [elsülyeszté] ama városokat, és azt az egész vidéket, és a városok minden lakosait, és a föld növényeit is.
+T0013	1Móz 19:29	20	elsülyeszté	elsüllyesztette|elsülyesztette	És lett mikor elvesztette Isten annak a környéknek városait, megemlékezett az Isten Ábrahámról, és kiküldte Lótot a veszedelemből, mikor [elsülyeszté] a városokat, amelyekben lakott Lót.
+T0014	1Móz 21:16	4	leüle	leült	És elment s [leüle] által ellenébe mintegy nyillövésnyi távolságra; mert azt mondta: Ne lássam mikor a gyermek meghal. Leüle tehát által ellenébe, és fölemelte szavát és sírt.
+T0015	1Móz 21:16	20	Leüle	Leült	És elment s leüle által ellenébe mintegy nyillövésnyi távolságra; mert azt mondta: Ne lássam mikor a gyermek meghal. [Leüle] tehát által ellenébe, és fölemelte szavát és sírt.
+T0016	1Móz 21:20	8	felnövekedék	felnövekedett	És volt Isten a gyermekkel, s az [felnövekedék], és lakott a pusztában, és lett íjásszá.
+T0017	1Móz 22:1	7	megkisérté	megkisértette|megkísértette	És lett ezeknek utána, az Isten [megkisérté] Ábrahámot, és mondta neki: Ábrahám! S az felele: Ímhol vagyok.
+T0018	1Móz 24:46	21	ivám	ittam	Ő pedig sietett és leeresztette az ő vedrét és mondta: Igyál, sőt a te tevéidnek is inni adok; és én [ivám], s a tevéknek is inni adott.
+T0019	1Móz 24:61	9	felűlének	felültek|felűltek	És felkelt Rebeka és az ő szolgálóleányai, és [felűlének] a tevékre, s követték azt a férfiút. Így vette a szolga Rebekát, és elment.
+T0020	1Móz 25:29	8	megjövén	megjönve|megjöve|megjőve	Jákób egyszer valami főzeléket főzött, és Ézsaú [megjövén] elfáradva a mezőről,
+T0021	1Móz 26:31	5	megesküvének	megesküdtek	Reggel pedig felkelve, egymásnak [megesküvének], és elbocsátotta őket Izsák, és elmentek ő tőle békességgel.
+T0022	1Móz 31:34	13	tevének	tettek|tették	Rákhel pedig vette a házi bálványokat, és tette azokat egy [tevének] a nyergébe, és rájuk üle; Lábán pedig felhányta az egész sátort, és nem találta meg azokat.
+T0023	1Móz 31:34	18	üle	ült	Rákhel pedig vette a házi bálványokat, és tette azokat egy tevének a nyergébe, és rájuk [üle]; Lábán pedig felhányta az egész sátort, és nem találta meg azokat.
+T0024	1Móz 32:7	2	megíjede	megijedt|megíjedett	Igen [megíjede] Jákób és féltében a népet, mely vele volt, a juhokat, a barmokat és a tevéket két seregre osztotta.
+T0025	1Móz 32:23	5	átköltözteté	átköltöztetta|átköltöztette	Vette hát azokat és [átköltözteté] a vízen, azután átköltözteté mindenét valamije volt.
+T0026	1Móz 32:23	9	átköltözteté	átköltöztetta|átköltöztette	Vette hát azokat és átköltözteté a vízen, azután [átköltözteté] mindenét valamije volt.
+T0027	1Móz 34:7	14	megharaguvának	megharagudtak	Mikor Jákób fiai megjöttek a mezőről és meghallották a dolgot, elkeseredtek s nagyon [megharaguvának] azok az emberek, azért hogy ocsmányságot cselekedett Izráelben, Jákób leányával hálva, aminek nem kellett volna történni.
+T0028	1Móz 35:11	11	növekedjél	nevekedj	És mondta neki az Isten: Én vagyok a mindenható Isten, [növekedjél] és sokasodjál, nép és népek sokasága légyen te tőled; és királyok származzanak a te ágyékodból.
+T0029	1Móz 35:29	13	bételvén	betelve|bételve	És kimúlt Izsák és meghalt, és takaríttatott az ő eleihez vén korban, [bételvén] az élettel; és eltemették őt az ő fiai, Ézsaú és Jákób.
+T0030	1Móz 37:25	2	leűlének	leültek|leűltek	Azután [leűlének] kenyerezni, és felemelték szemeiket, és látták, hogy ímé egy Ismáelita karaván jött Gileádból, és azoknak tevéi vittek fűszerszámot, balzsamot és mirhát, menve, hogy alávigyék Égyiptomba.
+T0031	1Móz 38:12	12	megvígasztalódék	megvigasztalódott|megvígasztalódott	Sok idő múlva meghalt Súa leánya, a Júda felesége. Júda pedig [megvígasztalódék] és elment az ő juhainak nyírőihez, barátjával az Adullámbeli Khirával, Thimnába.
+T0032	1Móz 38:14	11	leüle	leült	Levetette azért magáról özvegyi ruháját, elfátyolozta és beburkolta magát, és [leüle] Enajim kapujába, mely a Thimnába vezető úton van; mert látta, hogy felnevekedett Séla, és még sem adták őt annak feleségül.
+T0033	1Móz 41:8	3	nyugtalankodék	nyugtalankodott|nyugtalankodtam	Reggelre kelve, [nyugtalankodék] lelkében, elküldött azért és egybehívatta Égyiptom minden jövendőmondóját, és minden bölcsét és elbeszélte nekik a Faraó az ő álmát, de senki sem volt, ki azokat megmagyarázta volna a Faraónak.
+T0034	1Móz 41:14	15	megborotválkozék	megborotválkozott|megborotválkoztam	Elküldött azért a Faraó és hívatta Józsefet, és hamarsággal kihozták őt a tömlöcből, és [megborotválkozék], ruhát váltott és a Faraóhoz ment.
+T0035	1Móz 42:35	6	kiüresíték	kiüresítettem|kiüresítették	És lett amint zsákjaikat [kiüresíték], ímé az ő csomó pénze mindeniknek zsákjában volt. Amint látták az ő csomó pénzeiket ők és az ő atyjuk, megfélemlettek.
+T0036	1Móz 43:3	7	fogadkozék	fogadkozott|fogadkoztam	És felelt neki Júda, mondva: Erősen [fogadkozék] az a férfiú, mondva: Színem elé ne kerűljetek, ha veletek nem lesz a ti atyátokfia.
+T0037	1Móz 43:33	1	Leűlének	Leültek|Leűltek	[Leűlének] azért ő előtte, az elsőszülött az ő elsőszülöttsége szerint, és a fiatalabb az ő fiatalsága szerint. És az emberek álmélkodva néztek egymásra.
+T0038	1Móz 44:6	2	utóléré	utolérte|utólérta	És [utóléré] őket, és ilyen szavakkal szólt nekik.
+T0039	1Móz 47:14	23	bévivé	bévitte|bévivte	József pedig mind összeszedte a pénzt, ami találtatott Égyiptomnak és Kanaánnak földén a gabonáért, amelyet azok vettek; és [bévivé] József a pénzt a Faraó házába.
+T0040	1Móz 50:1	9	siránkozék	siránkozott|siránkoztam	József pedig az ő atyja orcájára borúla és [siránkozék] felette és csókolgatta őt.
+T0041	1Móz 50:21	13	megvígasztalá	megvigasztalta|megvígasztalta	Most annakokáért ne féljetek: Eltartalak én titeket és a ti gyermekeiteket. És [megvígasztalá] őket és szívükre beszélt.
+T0042	2Móz 2:3	18	belétevé	belétette|belétevte	De mikor tovább nem rejtegethette, szerzett annak egy gyékény-ládácskát, és bekente azt gyantával és szurokkal s [belétevé] a gyermeket és letette a folyóvíz szélén a sás közé.
+T0043	2Móz 2:6	13	könyörüle	könyörült	És kinyitotta és látta a gyermeket; és ímé egy síró fiú. És [könyörüle] rajta és mondta: A héberek gyermekei közül való ez.
+T0044	2Móz 2:15	23	leüle	leült	A Faraó is meghallotta azt a dolgot és Mózest halálra kerestette: de elfutott Mózes a Faraó elől és lakozott Midián földén; [leüle] pedig egy kútnál.
+T0045	2Móz 7:20	18	megsujtá	megsujtotta|megsújtotta	Mózes és Áron pedig úgy cselekedtek, amint az Úr parancsolta. És felemelte a vesszőt és [megsujtá] a vizet, amely a folyóban volt a Faraó előtt és az ő szolgái előtt, és mind vérré változott a víz, amely a folyóban volt.
+T0046	2Móz 8:17	11	megsujtá	megsujtotta|megsújtotta	És aképen cselekedtek. Áron kinyujtotta kezét az ő vesszejével és [megsujtá] a föld porát, és tetvek lettek emberen és barmon; a föld minden pora tetvekké lett egész Égyiptom földén.
+T0047	2Móz 9:20	10	megfélemedék	megfélemedett|megfélemedtem	Aki a Faraó szolgái közül az Úr beszédétől [megfélemedék], szolgáit és barmait házakba futtatta.
+T0048	2Móz 14:31	21	hívének	hittek|hívtak|hívták	És látta Izráel azt a nagy dolgot, amelyet cselekedett az Úr Égyiptomban: félte azért a nép az Urat és [hívének] az Úrnak és Mózesnek, az ő szolgájának.
+T0049	2Móz 15:1	2	éneklé	énekelte|éneklette	Akkor [éneklé] Mózes és az Izráel fiai ezt az éneket az Úrnak, és szóltak mondva: Éneklek az Úrnak, mert fenséges ő, lovat lovasával tengerbe vetett.
+T0050	2Móz 15:25	21	megédesedék	megédesedett|megédesedtem	Ez pedig az Úrhoz kiáltott, és mutatott neki az Úr egy fát és bevetette azt a vízbe, és a víz [megédesedék]. Ott adott neki rendtartást és törvényt és ott megkísértette.
+T0051	2Móz 16:20	11	megférgesedék	megférgesedett|megférgesedtem	De nem hallgattak Mózesre, mert némelyek hagytak abból reggelre; és [megférgesedék] s megbüszhödék. Mózes pedig megharagudott rájuk.
+T0052	2Móz 18:13	5	leüle	leült	És lett másod napon, [leüle] Mózes törvényt tenni a népnek; a nép pedig állt Mózes előtt reggeltől estig.
+T0053	2Móz 19:16	18	megrémüle	megrémült	És lett harmadnapon virradatkor, mennydörgések, villámlások és sűrű felhő lett a hegyen és igen erős kürtzengés; és [megrémüle] mind az egész táborbeli nép.
+T0054	2Móz 32:1	11	egybegyűle	egybegyült|egybegyűlt	Mikor látta a nép, hogy Mózes késik a hegyről leszállani, [egybegyűle] a nép Áron ellen és mondta neki: Kelj fel, csinálj nekünk isteneket, kik előttünk járjanak; mert nem tudjuk mint lett dolga ama férfiúnak Mózesnek, aki minket Égyiptom földéből kihozott.
+T0055	2Móz 36:22	5	rendezék	rendeztem|rendezték	A deszkákat pedig így [rendezék] a hajlékhoz: húsz deszkát déli oldalon, délfelé.
+T0056	2Móz 37:13	10	ráilleszté	ráillesztette|ráillesztotta	Azután öntött hozzá négy arany karikát, és a karikákat [ráilleszté] a négy láb négy szegletére.
+T0057	3Móz 8:4	15	gyűle	gyült|gyűlt	És a képen cselekedett Mózes, amint az Úr parancsolta neki, és egybe [gyűle] a gyülekezet a gyülekezet sátorának nyílásához.
+T0058	4Móz 11:34	10	temeték	temetett|temettetett|temették	És elnevezték azt a helyet Kibrot-thaavának: mert ott [temeték] el a mohó népet.
+T0059	4Móz 16:42	3	egybegyűle	egybegyült|egybegyűlt	Mikor pedig [egybegyűle] a gyülekezet Mózes ellen és Áron ellen, akkor fordultak a gyülekezet sátora felé: és ímé befedezte azt a felhő, és megjelent az Úrnak dicsősége.
+T0060	4Móz 21:9	20	feltekinte	feltekintett	Csinált azért Mózes rézkígyót, és feltűzte azt póznára. És lett, hogy ha a kígyó valakit megmar volt, és az [feltekinte] a rézkígyóra, életben maradt.
+T0061	4Móz 21:17	2	éneklé	énekelte|éneklette	Akkor [éneklé] az Izráel ez éneket: Jöjj fel óh kút! énekeljetek neki!
+T0062	4Móz 25:8	10	általdöfé	általdöfta|általdöfte	És bement az izráelita férfi után a sátorba, és [általdöfé] mindkettőjüket, mind az izráelita férfit, mind az asszonyt hason. És megszűnt a csapás Izráel fiai között.
+T0063	4Móz 32:9	11	elidegeníték	elidegenítettem|elidegenítették	Mert felmentek az Eskól völgyéig, és megnézték a földet, és [elidegeníték] Izráel fiainak szívét, hogy be ne menjenek arra a földre, amelyet adott nekik az Úr.
+T0064	5Móz 1:32	3	hivétek	hittetek	Mindazáltal nem [hivétek] az Úrnak, a ti Isteneteknek.
+T0065	5Móz 1:43	16	vakmerősködétek	vakmerősködtatok|vakmerősködtetek	És megmondtam nektek, de nem hallgattatok rám, hanem pártot ütöttetek az Úr parancsolata ellen, és [vakmerősködétek], és felmentetek a hegyre.
+T0066	5Móz 4:42	20	gyűlölte	gyűlölt|gyűlölte|gyűlöltött	Hogy oda fusson a gyilkos, aki nem akarva gyilkolta meg az ő felebarátját, aki az előtt nem [gyűlölte], és hogy életben maradjon, ha befutott valamelyikbe e városok közül.
+T0067	5Móz 5:23	18	jövétek	jöttetek	És lett, mikor a szót a sötétség közepéből hallottátok, és a hegy tűzzel égett, hozzám [jövétek] a ti törzseiteknek minden fejedelmével és vénjével;
+T0068	5Móz 8:16	4	étete	etetett|étetett	Aki mannával [étete] téged a pusztában, amit nem ismertek a te atyáid, hogy megsanyargasson és hogy megpróbáljon téged, és jól tegyen veled azután:
+T0069	5Móz 9:28	27	gyűlölte	gyűlölt|gyűlölte|gyűlöltött	Hogy ne mondja a föld népe, ahonnét kihoztál minket: mivelhogy az Úr nem vihette be őket a földre, amelyet igért volt nekik, és mivelhogy [gyűlölte] őket, azért hozta ki őket, hogy megölje őket a pusztában.
+T0070	5Móz 19:6	30	gyűlölte	gyűlölt|gyűlölte|gyűlöltött	Különben a vérbosszuló rokon űzőbe veszi az ő szívének búsulásában, és eléri, ha az út hosszú leend, és agyon üti őt, holott nem méltó a halálra, mivel azelőtt nem [gyűlölte] azt.
+T0071	Józs 2:8	6	feküvének	feküdtek	Ők pedig még le sem [feküvének], amikor felment ő hozzájuk az asszony a házhéjára,
+T0072	Józs 4:4	1	Előhivá	Előhivte|Előhívta	[Előhivá] azért Józsué a tizenkét férfiút, akiket az Izráel fiai közül rendelt, egy-egy férfiút egy-egy nemzetségből;
+T0073	Józs 4:23	14	általjövétek	általjöttetek	Mert kiszárította az Úr, a ti Istenetek a Jordán vizét ti előttetek, míg [általjövétek] rajta, amiképpen cselekedett az Úr, a ti Istenetek a Veres tengerrel, amelyet megszárított előttünk; míg általjöttünk rajta.
+T0074	Józs 8:28	3	felgyujtatá	felgyujtatta|felgyújtatta	Ait pedig [felgyujtatá] Józsué és tette örökkévaló kőhalommá, pusztassággá mind e napig.
+T0075	Józs 10:5	1	Összegyülének	Összegyültek|Összegyűltek	[Összegyülének] azért, és felment az Emoreusoknak öt királya: Jeruzsálemnek királya, Hebronnak királya, Jármutnak királya, Lákisnak királya, Eglonnak királya, ők magok és minden seregük, és tábort ütöttek Gibeonnál, és hadakoztak ellene.
+T0076	Józs 11:5	2	összegyülének	összegyültek|összegyűltek	És [összegyülének] mindezek a királyok, és megindultak, és táborba szálltak együttesen Méromnak vizeinél, hogy hadakozzanak Izráel ellen.
+T0077	Józs 11:9	16	megbénítá	megbénítette|megbénította	És úgy cselekedett velük Józsué, amint megmondta neki az Úr: az ő lovaikat [megbénítá], szekereiket pedig tűzzel égette el.
+T0078	Józs 11:21	26	törlé	törlötte|törölte	Majd elment Józsué ez időben, és kiirtotta az Anákokat a hegyek közül Hebronból, Debirből, Anábból és Júdának minden hegyéből, és Izráelnek minden hegyéből; városaikkal együtt [törlé] el őket Józsué.
+T0079	Józs 18:1	10	helyhezteték	helyeztették|helyhezteett|helyheztették	Izráel fiainak egész gyülekezete pedig összegyülekezett Silóban és oda [helyhezteték] a gyülekezetnek sátorát, minekutána meghódolt előttök a föld.
+T0080	Józs 20:5	24	gyűlölte	gyűlölt|gyűlölte|gyűlöltött	Hogyha pedig kergeti azt a vérbosszúló, ki ne adják a gyilkost annak kezébe, mert nem szándékosan ölte meg az ő felebarátját, és nem [gyűlölte] ő azt annakelőtte.
+T0081	Józs 22:12	6	egybegyűle	egybegyült|egybegyűlt	Amint meghallották Izráel fiai, [egybegyűle] Izráel fiainak egész gyülekezete Silóban, hogy hadakozni induljanak fel ellenük.
+T0082	Józs 24:8	28	eltörlém	eltörlöttem|eltöröltem	Majd elhozálak titeket az Emoreusok földére, akik túl laktak a Jordánon, és hadakoztak ellenetek; de kezetekbe adtam őket, és bírtátok az ő földüket, őket pedig [eltörlém] a ti orcátok elől.
+T0083	Józs 24:11	2	általjövétek	általjöttetek	Majd [általjövétek] a Jordánon, és jutottatok Jérikhóba, és hadakoztak veletek Jérikhónak urai: az Emoreus, Perizeus, Kananeus, Khittheus, Girgazeus, Khivveus és Jebuzeus; de kezetekbe adtam őket.
+T0084	Bír 6:35	7	egybegyűle	egybegyült|egybegyűlt	És követeket küldött egész Manasséba, és [egybegyűle] az is ő utána; és követeket küldött Aserbe és Zebulonba és Nafthaliba, és feljöttek eleikbe.
+T0085	Bír 7:24	27	egybegyűle	egybegyült|egybegyűlt	És követeket küldött Gedeon az egész Efraim hegységbe, ezt izenve: Jőjjetek alá a Midiániták ellen és foglaljátok el előttök a vizeket Béthbaráig, és a Jordánt. És [egybegyűle] Efraimnak minden férfia, és elzárták a vizeket Béthbaráig, és a Jordánt is.
+T0086	Bír 8:3	18	lecsendesedék	lecsendesedett|lecsendesedtem	Kezetekbe adta az Isten Midiánnak fejedelmeit, Orebet és Zéebet; hát mit cselekedhettem én olyat, mint ti?! Akkor [lecsendesedék] az ő felháborodott lelkük, mikor e beszédet mondta.
+T0087	Bír 15:1	16	vivén	vive|víve	Lett pedig néhány nap múlva, a búzaaratásnak idejében, meglátogatta Sámson az ő feleségét, egy kecskegödölyét [vivén] neki, és mondta: Bemegyek az én feleségemhez a hálóházba. De nem hagyta őt bemenni az ő atyja.
+T0088	Bír 16:9	31	tudódék	tudódott|tudódtam	A lesben állók pedig ott vártak annál a hálókamarában. És mondta neki: Rajtad a Filiszteusok, Sámson! És elszakasztotta a gúzsokat, miképpen elszakad a csepűfonal, ha tűz éri, – és ki nem [tudódék], miben volt az ő ereje.
+T0089	Bír 16:25	13	játszék	játsszon|játszott|játszék	Lett pedig, hogy mikor megvídámult az ő szívük, mondták: Hívjátok Sámsont, hadd [játszék] előttünk. És előhívták Sámsont a fogházból, és játszék ő előttük, és az oszlopok közé állították őt.
+T0090	Bír 16:25	21	játszék	játsszon|játszott|játszék	Lett pedig, hogy mikor megvídámult az ő szívük, mondták: Hívjátok Sámsont, hadd játszék előttünk. És előhívták Sámsont a fogházból, és [játszék] ő előttük, és az oszlopok közé állították őt.
+T0091	1Sám 4:18	9	hátraesék	hátraesett|hátraestem	És lett, hogy midőn az Isten ládáját említette, [hátraesék] a székről a kapufélhez, és nyakát szegte és meghalt, mert immár vén és nehéz ember volt. És ő negyven esztendeig ítélt Izráel felett.
+T0092	1Sám 13:4	23	egybegyűle	egybegyült|egybegyűlt	És meghallotta egész Izráel, hogy azt mondták: Megverte Saul a Filiszteusok előőrsét, és gyűlöletessé vált Izráel a Filiszteusok előtt. A nép pedig [egybegyűle] Saul mellé Gilgálba.
+T0093	1Sám 17:49	23	mélyede	mélyedett|mélyedt	És Dávid benyúlt kezével a tarisznyába és kivett onnan egy követ, és elhajítva, homlokán találta a Filiszteust, úgy, hogy a kő homlokába [mélyede], és arccal a földre esett.
+T0094	1Sám 18:7	7	vígadozának	vigadoztak|vígadoztak	És énekelni kezdtek az asszonyok, kik [vígadozának] és mondták: Megverte Saul az ő ezerét és Dávid is az ő tízezerét.
+T0095	1Sám 19:4	4	nyilatkozék	nyilatkozott|nyilatkoztam	És Jonathán kedvezően [nyilatkozék] Dávid felől az ő atyja, Saul előtt, és mondta neki: Ne vétkezzék a király Dávid ellen, az ő szolgája ellen, mert ő nem vétett neked, sőt szolgálata felette hasznos volt neked.
+T0096	1Sám 20:36	18	ellövé	ellövte|ellőtte	És mondta a gyermeknek: Eredj, keresd meg a nyilakat, amelyeket ellövök. És mikor a gyermek elfutott, [ellövé] a nyilat, úgy hogy rajta túl ment.
+T0097	1Sám 25:1	5	egybegyűle	egybegyült|egybegyűlt	Meghalt pedig Sámuel, és [egybegyűle] az egész Izráel, és siratták őt, és eltemették az ő házában Rámában. Dávid pedig felkelt és elment Párán pusztájába.
+T0098	1Sám 25:20	11	leereszkedék	leereszkedett|leereszkedtem	És történt, hogy amint a szamáron ment, és [leereszkedék] a hegynek egyik mellékösvényén: ímé Dávid és az ő emberei lejöttek eleibe, és ő összetalálkozott velük.
+T0099	1Sám 26:7	32	feküvének	feküdtek	És elment éjjel Dávid, és Abisai a nép közé. És ímé, Saul lefeküdve, aludt a kerített táborban, és dárdája a földbe volt szúrva fejénél; Abner pedig és a nép körülötte [feküvének].
+T0100	1Sám 26:12	35	aluvának	aludtak	Akkor elvette Dávid a dárdát és a vizes korsót Saul feje mellől, és elmentek. És senki sem volt, aki látta volna, sem aki észrevette volna, sem aki felserkent volna, hanem mindnyájan [aluvának], mert az Úr mély álmot bocsátott rájuk.
+T0101	1Sám 28:8	9	vevén	veve|véve	Másnak tettette azért Saul magát, és más ruhákat [vevén] magára, elment ő és vele két férfi; és elmentek éjjel az asszonyhoz, és mondta: Mondj jövendőt nekem halottidézés által, és idézd fel nekem azt, akit mondok neked.
+T0102	1Sám 29:4	2	megharaguvának	megharagudtak	De [megharaguvának] ő rá a Filiszteusok vezérei, és mondták neki a Filiszteusok vezérei: Küldd vissza ezt az embert, hogy térjen vissza a helyére oda, amelyet rendeltél neki, és ne jöjjön el mi velünk a harcba, hogy ellenünk ne forduljon a harcban; mert ugyan mivel tehetné magát kedvesebbé ura előtt, hacsak nem ezeknek a vitézeknek fejeivel?
+T0103	1Sám 31:4	43	belébocsátkozék	belébocsátkozott|belébocsátkoztam	És mondta Saul az ő fegyverhordozójának: Húzd ki kardodat, és szúrj keresztül azzal engem, hogy valami módon rám ne jöjjenek e körülmetéletlenek, és keresztülszúrjanak engemet és gúnyt űzzenek belőlem. De fegyverhordozója nem akarta, mert nagyon félt. Akkor Saul vette a kardot és [belébocsátkozék].
+T0104	1Sám 31:5	11	belébocsátkozék	belébocsátkozott|belébocsátkoztam	És fegyverhordozója amint meglátta, hogy Saul meghalt, ő is [belébocsátkozék] az ő kardjába, és vele együtt meghalt.
+T0105	2Sám 1:6	27	utólérék	utolérték|utólértam	Felelt az ifjú, ki a hírt hozta: Történetből felmentem a Gilboa hegyére, és ímé Saul az ő dárdájára támaszkodott, és ímé a szekerek és lovagok [utólérék] őtet.
+T0106	2Sám 2:28	2	fuvata	fuvatott|fúvatott	Trombitát [fuvata] azért Joáb, és megállt az egész nép, és nem üldözték tovább Izráelt, és nem harcoltak tovább.
+T0107	2Sám 2:32	2	felvevén	felveve|felvéve	És [felvevén] Asáelt, eltemették őt atyjának sírboltjában, mely Bethlehemben volt. Joáb pedig és az ő vitézei egész éjjel menve, Hebronban virradtak meg.
+T0108	2Sám 4:6	9	általüték	általütöttem|általütötték	Bemenve azért ezek a ház belsejébe, gabonát vitt, [általüték] őt az ötödik oldalborda alatt; s Rékáb és az ő atyjafia, Bahana, elszaladtak.
+T0109	2Sám 4:12	25	felvevén	felveve|felvéve	Parancsolt azért Dávid az ő szolgáinak, hogy megöljék őket; és elvagdalták kezeiket és lábaikat; és felakasztották őket Hebronban, a halastó mellett. Isbósetnek pedig fejét [felvevén], eltemették az Abner sírboltjába, Hebronban.
+T0110	2Sám 6:8	2	bosszankodék	bosszankodott|bosszankodtam	És [bosszankodék] Dávid, hogy az Úr ilyen romlással rontotta meg Uzzát, és nevezte azt a helyet Péres Uzzának, mind e mai napig.
+T0111	2Sám 6:16	29	megútálá	megutálta|megútálta	Lett pedig, hogy mikor az Úr ládája Dávid városába ért, Mikál, Saulnak leánya kinézett az ablakon, és látva, hogy Dávid király ugrál és táncol az Úr előtt, [megútálá] őt szívében.
+T0112	2Sám 7:10	3	szerzék	szereztek|szereztem|szerzettem|szerzették	Helyet is [szerzék] az én népemnek Izráelnek, és ott elplántálám őt, és lakozott az ő helyében, és többé helyéből ki nem mozdíttatik, és nem fogják többé az álnokságnak fiai nyomorgatni őt, mint annakelőtte,
+T0113	2Sám 13:14	9	levén	leve|lévén	Ő azonban nem akart szavára hallgatni, hanem erősebb [levén] nála, erőt vett rajta, és vele feküdt.
+T0114	2Sám 13:15	12	gyűlölte	gyűlölt|gyűlölte|gyűlöltött	És meggyűlölte őt Amnon felette igen, mert nagyobb lett gyűlölete, mellyel [gyűlölte] őt, a szeretetnél, mellyel őt megszerette. És mondta neki Amnon: Kelj fel, eredj dolgodra.
+T0115	2Sám 13:19	19	tevén	teve|téve	Hamut hintett azért Támár az ő fejére, és a tarka szoknyát, mely rajta volt, meghasogatta, kezét pedig fejére [tevén], jajgatva járt.
+T0116	2Sám 15:7	5	mulván	mulva|múlva	Lett pedig negyven esztendő [mulván], mondta Absolon a királynak: Hadd menjek el, és teljesítsem Hebronban azt a fogadást, melyet fogadtam az Úrnak;
+T0117	2Sám 18:14	16	lövé	lövte|lőtte	Mondta azért Joáb: Nem akarok előtted késedelmezni; és vett három nyilat kezébe és Absolonnak szívébe [lövé], minthogy még élt a cserfán.
+T0118	2Sám 18:15	9	általverék	általvert|általverték	Körülfogták akkor a Joáb fegyverhordozó szolgái tízen, és [általverék] Absolont, és megölték őt.
+T0119	2Sám 20:1	20	fuvata	fuvatott|fúvatott	Volt pedig ott történetesen egy istentelen ember, kinek neve Séba volt, Bikrinek fia, Benjámin nemzetségéből való férfiú. Ez trombitát [fuvata], és mondta: Nincsen nekünk semmi közünk Dávidhoz, és semmi örökségünk nincsen az Isai fiában. Azért oh Izráel, oszoljatok el, kiki az ő sátorába.
+T0120	2Sám 20:5	10	késék	késett|késtem	Elment azért Amasa, hogy összegyűjtse Júdát, de több ideig [késék], mint ahogy a király meghagyta neki.
+T0121	2Sám 20:10	4	őrizkedék	őrizkedett|őrizkedtem	Amasa azonban nem [őrizkedék] a fegyvertől, mely Joáb kezében volt, és általütötte őt az ötödik oldalborda alatt, és kiontotta a bélit a földre, és noha többször nem ütötte által, mindazáltal meghalt; Joáb pedig és Abisai, az ő atyjafia, üldözték azután Sébát, a Bikri fiát.
+T0122	2Sám 20:15	28	rombolá	rombolt|rombolta	És eljövén, körülfogták őt Abelában Béth-Maaka városában, és nagy töltést emeltek a város ellen, mely a kőfallal egyenlő volt; és az egész nép, mely Joábbal volt, [rombolá], hogy ledöntse a kőfalat,
+T0123	2Sám 22:15	1	Ellövé	Ellövte|Ellőtte	[Ellövé] nyilait és szétszórta azokat, Villámot, és összekeverte azokat.
+T0124	2Sám 24:1	9	felingerlé	felingerelte|felingerlette	Ismét felgerjedt az Úrnak haragja Izráel ellen, és [felingerlé] Dávidot ő ellenek, ezt mondva: Eredj el, számláld meg Izráelt és Júdát.
+T0125	2Sám 24:10	7	megsebhedék	megsebhedett|megsebhedtem	Minekutána pedig Dávid a népet megszámlálta, [megsebhedék] az ő szíve, és mondta Dávid az Úrnak: Igen vétkeztem abban, amit cselekedtem. Azért most, óh Uram, vedd el, kérlek, a te szolgádnak álnokságát; mert felette esztelenül cselekedtem!
+T0126	1Kir 7:3	2	bepadlá	bepadlotta|bepadlta	És [bepadlá] cédrusdeszkákkal felül a gerendák felett, melyek voltak negyvenöt oszlopon, mindenik renden tizenöt.
+T0127	1Kir 11:25	16	gyűlölte	gyűlölt|gyűlölte|gyűlöltött	És ellensége volt Izráelnek Salamonnak egész életében, a nyomorúságon kívül, amelyet Hadád szerzett, és [gyűlölte] Izráelt, és uralkodott Siriában.
+T0128	1Kir 13:13	13	megnyergelék	megnyergeltem|megnyergelték	És mondta az ő fiainak: Nyergeljétek meg nekem a szamarat; és mikor [megnyergelék] neki a szamarat, felült rá,
+T0129	1Kir 13:23	7	megnyergelék	megnyergeltem|megnyergelték	És miután evett kenyeret és ivott, [megnyergelék] a szamarat a prófétának, akit visszahozott.
+T0130	1Kir 22:34	7	kilövé	kilövte|kilőtte	Egy ember pedig csak úgy találomra [kilövé] az ő kézívét, és találta az Izráel királyát a páncél és a kapocs között. És ő mondta a kocsisának: Fordulj meg és vigy ki engem a táborból, mert megsebesültem!
+T0131	2Kir 5:20	13	megkimélé	megkimélte|megkímélte	Géházi, Elizeusnak, az Isten emberének szolgája azt gondolta: Ímé az én uram [megkimélé] ezt a Siriabeli Naámánt, és nem akarta tőle elvenni, amit hozott volt; él az Úr, hogy utána futok, és valamit kérek tőle.
+T0132	2Kir 9:13	18	megfuvaták	megfuvatták|megfúvatták	Akkor nagy sietséggel kiki mind vette az ő ruháját, és alája terítették a grádics felső részére és [megfuvaták] a harsonákat, és kikiáltották: Jéhu uralkodik!
+T0133	2Kir 9:24	8	lövé	lövte|lőtte	Jéhu pedig meghúzva az ívét, Jórámot hátba [lövé] a lapockák között úgy, hogy a szívén ment át a nyíl, és lerogyott a szekérben.
+T0134	2Kir 13:17	22	nyíla	nyila|nyíla|nyílt	És mondta: Nyisd ki az ablakot napkelet felől. És mikor kinyitotta, mondta Elizeus: Lőjj! És lőtt. Akkor mondta: Az Úrnak győzedelmes [nyíla] ez, győzedelmes nyíl a Siriabeliek ellen; mert megvered a Siriabelieket Afekben a megsemmisülésig.
+T0135	2Kir 18:18	2	kihívaták	kihívatták|kihívták	És [kihívaták] a királyt. És kiment hozzájuk Eliákim, a Hilkia fia, ki a király házának gondviselője volt, és Sebna, az íródeák, és Joákh, az Asáf fia, az emlékíró.
+T0136	2Kir 18:32	30	higyjetek	higgyetek|higyjetek	Míg eljövök és elviszlek titeket a ti földetekhez hasonló földre, gabonás és boros földre, kenyeres és szőlős földre, olajfás, és mézes földre, hogy élhessetek és meg ne haljatok. Ne [higyjetek] Ezékiásnak, mert félrevezet benneteket, mikor azt mondja: Az Úr megszabadít minket!
+T0137	2Kir 20:11	8	visszatéríté	visszatérítette|visszatérította	És könyörgött Ésaiás próféta az Úrhoz, és [visszatéríté] az árnyékot Akház napóráján, azokon a grádicsokon, amelyeken már aláment volt, tíz grádiccsal.
+T0138	1Krón 5:20	3	levének	lettek	És győzedelmesek [levének] azokon, és kezekbe adattak a Hágárénusok és mindazok, akik ezekkel voltak; mert az Istenhez kiáltottak harc közben, és ő meghallgatta őket, mert ő benne bíztak.
+T0139	1Krón 10:4	38	bocsátkozék	bocsátkozott|bocsátkoztam	És mondta Saul az ő fegyverhordozójának: Vond ki fegyveredet, és verj által engem vele, mert netalán eljönnek e körülmetéletlenek, és meggyaláznak engemet. De fegyverhordozója nem akarta, mert igen félt. Ragadta azért Saul a fegyvert, és belé [bocsátkozék].
+T0140	1Krón 10:5	14	bocsátkozék	bocsátkozott|bocsátkoztam	Látva pedig az ő fegyverhordozója, hogy Saul immár meghalt, ő is a fegyverbe [bocsátkozék], és meghalt.
+T0141	1Krón 10:12	16	vivén	vive|víve	Feltámadtak mindnyájan az erős férfiak, és elvitték Saulnak és az ő fiainak testét; és Jábesbe [vivén], eltemették azoknak csontjaikat a tölgyfa alatt Jábesben, és bőjtöltek hetednapig.
+T0142	1Krón 12:19	17	segéllék	segéllettem|segélték	Ennekfelette Manasséból is hajlottak Dávidhoz, mikor a Filiszteusokkal együtt Saul ellen ment volna harcolni; de nem [segéllék] őket; mert tanácsot tartva, haza küldték a Filiszteusok fejedelmei, mondva: A mi fejünk veszésével fog visszamenni az ő urához, Saulhoz.
+T0143	1Krón 13:7	2	helyhezteték	helyeztették|helyhezteett|helyheztették	És [helyhezteték] az Isten ládáját az Abinádáb házából egy új szekérre; Uzza és Ahió vezették a szekeret.
+T0144	1Krón 13:11	10	sujtá	sujtotta|sújtotta	Akkor Dávid igen megdöbbene, hogy az Úr ily csapással [sujtá] Uzzát. Azért azt a helyet mind e mai napig Péres-Uzzának nevezik.
+T0145	1Krón 17:22	8	tevéd	tetted	És az Izráel népét a te népeddé [tevéd] mindörökké, és te Uram, nekik Istenük lettél.
+T0146	1Krón 19:4	9	megnyiratá	megnyiratta|megnyíratta	Megfogatta azért Hánun a Dávid szolgáit és azokat [megnyiratá], és ruhájukat félig elmetszette az ő derekukig, és úgy bocsátotta el őket.
+T0147	1Krón 22:9	14	körüle	körüle|körült|körülötte	Ímé fiad lesz neked, akinek csendessége lesz, mert nyugodalmat adok neki minden [körüle] való ellenségeitől; azért neveztetik Salamonnak, mert békességet és nyugodalmat adok Izráelnek az ő idejében.
+T0148	1Krón 23:5	6	vala	dicsérték	Négyezeren ajtónállók; négyezeren pedig dicsérik [vala] az Urat minden zengő szerszámokkal, melyeket Dávid készíttetett a dicséretre.
+T0149	1Krón 29:20	27	tisztelék	tisztelt|tisztelték	És szólt Dávid az egész gyülekezethez: Kérlek, áldjátok az Urat, a ti Isteneteket. Áldotta azért az egész gyülekezet az Urat, az ő atyáik Istenét; s leborulva, [tisztelék] az Urat és a királyt.
+T0150	1Krón 29:22	32	fölkenék	fölkentem|fölkenték	S ettek és ittak az Úr előtt azon a napon nagy vígasságban. Azután Salamont, a Dávid fiát másodszor is királlyá tették és felkenték őt az Úrnak, hogy lenne fejedelem; Sádókot is [fölkenék] a főpapságra.
+T0151	2Krón 7:3	29	tisztelék	tisztelt|tisztelték	És az Izráel fiai mindnyájan látták, amikor alászállt a tűz és az Úr dicsősége a házra, és arccal leborultak a föld felé a padlózatra, s imádták és [tisztelék] az Urat, hogy jó és az ő kegyelme mindörökké való!
+T0152	2Krón 14:3	11	eltöreté	eltöretette|eltörette	Elrontotta az idegen istenek oltárait és a magaslatokat; a bálványokat [eltöreté], és az Aserákat kivágatta;
+T0153	2Krón 15:14	2	megesküvének	megesküdtek	És [megesküvének] az Úrnak felszóval, kiáltással, trombita- és kürtszókkal.
+T0154	2Krón 23:12	14	vala	dicsérték	Mikor pedig meghallotta Athália a futkosó nép szavát, akik a királyt dicsérik [vala]; akkor ő is felment a nép közé az Úr házába.
+T0155	2Krón 24:5	2	összehivatá	összehivatta|összehívatta	És [összehivatá] a papokat és a Lévitákat, és mondta nekik: Menjetek el a Júda városaiba, és szedjetek az Izráel népétől fejenként pénzt, hogy a ti Istentek háza esztendőnként kijavíttassék. Ti pedig siessetek e dologgal; de a Léviták nem siettek.
+T0156	2Krón 24:11	6	elviteték	elviteett|elvitették|elvitték	És időnként a Léviták által [elviteték] a ládát a király gondviselőjéhez, és mikor látták, hogy sok pénz van benne, eljövén a király íródeákja és a főpap választott embere, kiüríték a ládát, s azután ismét visszavitték helyére. Ezt művelték időnként, és nagy összeg pénzt gyűjtöttek.
+T0157	2Krón 24:11	29	kiüríték	kiürítettem|kiürítették	És időnként a Léviták által elviteték a ládát a király gondviselőjéhez, és mikor látták, hogy sok pénz van benne, eljövén a király íródeákja és a főpap választott embere, [kiüríték] a ládát, s azután ismét visszavitték helyére. Ezt művelték időnként, és nagy összeg pénzt gyűjtöttek.
+T0158	2Krón 24:25	34	temeték	temetett|temettetett|temették	És mikor tőle elmentek (súlyos betegségben hagyták hátra): pártot ütöttek ellene az ő szolgái, a Jójada pap fiának haláláért, és megölték őt ágyában, és meghalt. És eltemették őt a Dávid városában, de nem [temeték] őt a királyok sírjába.
+T0159	2Krón 26:21	32	ítélkezék	ítélkezett|ítélkeztem	És lett Uzziás király halála napjáig bélpoklos; és lakott egy elkülönített házban bélpoklosan, mert az Úr házából kivettetett. És Jótám, az ő fia volt a király házában, aki [ítélkezék] az ország népe felett.
+T0160	2Krón 30:13	3	gyűle	gyült|gyűlt	Sok nép [gyűle] azért Jeruzsálembe, hogy a kovásztalan kenyerek ünnepét megtartsák a második hónapban; igen nagy gyülekezet volt.
+T0161	2Krón 30:21	21	vala	dicsérték	Megtartották tehát az Izráel fiai, akik Jeruzsálemben találtattak, a kovásztalan kenyerek ünnepét hét napon át nagy örömmel, és dicsérik [vala] az Urat minden nap a Léviták és a papok, az Úr erejét éneklő szerszámokkal.
+T0162	2Krón 32:15	15	higyjetek	higgyetek|higyjetek	Most azért Ezékiás titeket el ne ámítson és meg ne csaljon ily módon; ne [higyjetek] neki, mert ha egy népnek és országnak istene sem szabadíthatta meg az ő népét kezemből és az én atyáim kezéből: mennyivel kevésbbé szabadíthat meg titeket a ti Istenetek az én kezemből!
+T0163	2Krón 35:10	2	levén	leve|lévén	Készen [levén] a szolgálat, a papok helyeikre álltak, a Léviták is csapatjaik szerint, amint a király parancsolta.
+T0164	2Krón 35:24	28	siránkozék	siránkozott|siránkoztam	Levéve azért őt az ő szolgái a szekérből, másik szekerére helyezték, és vitték Jeruzsálembe: És meghalt, és eltemettetett az ő atyáinak sírjába; s egész Júda és Jeruzsálem [siránkozék] Jósiás felett.
+T0165	Ezsd 3:1	14	felgyüle	felgyült	Mikor pedig eljött a hetedik hónap, és Izráel fiai az ő városaikban lakoztak, [felgyüle] a nép egyenlőképen Jeruzsálembe.
+T0166	Ezsd 5:7	6	levén	leve|lévén	Tudósítást küldtek ugyanis hozzá, ekként [levén] az írva: „Dárius királynak minden békesség!
+T0167	Ezsd 9:1	18	különíték	különítettem|különítették	Minekutána ezek elvégeződének, jöttek hozzám a főemberek, mondva: Izráel népe és a papok és a Léviták nem [különíték] el magokat e tartományok népeitől, amiképpen pedig azoknak, a Kananeusoknak, Hitteusoknak, Perizeusoknak, Jebuzeusoknak, Ammonitáknak, Moábitáknak, Égyiptomiaknak és Emoreusoknak útálatos vétke szerint el kellett volna,
+T0168	Ezsd 10:5	22	megesküvének	megesküdtek	Fölkelt annakokáért Ezsdrás, és megeskette a papoknak, a Lévitáknak és az egész Izráelnek fejedelmeit, hogy e beszéd szerint fognak cselekedni; és [megesküvének].
+T0169	Neh 4:1	16	bosszankodék	bosszankodott|bosszankodtam	Lett pedig, mikor meghallotta Szanballat, hogy mi építjük a kőfalat, haragra gerjedt és felette igen [bosszankodék], és gúnyolta a zsidókat;
+T0170	Neh 4:8	2	összeesküvének	összeesküdtek	És [összeesküvének] mindnyájan egyenlő akarattal, hogy eljönnek Jeruzsálemet megostromolni és népét megrémíteni.
+T0171	Neh 5:7	22	szerzék	szereztek|szereztem|szerzettem|szerzették	És magamba szállva, gondolkodtam erről, és megfeddtem az előljárókat és főembereket, ezt mondva nekik: Ti a ti atyátokfiaival szemben uzsoráskodtok! És [szerzék] ő ellenük nagy gyűlést;
+T0172	Neh 5:13	39	dicsérék	dicsérték|dícsért	Ruhámat is megráztam és mondtam: Épen így rázzon ki az Isten minden embert az ő házából és vagyonából, és épen így legyen kirázatott és üres, valaki meg nem teljesíti e beszédet. És mondta az egész gyülekezet: Ámen. És [dicsérék] az Urat, és e beszéd szerint cselekedett a nép.
+T0173	Neh 5:14	31	evénk	ettük|ettünk	Sőt azon naptól fogva, melyen Júdának földére helytartójukul rendeltettem, Artaxerxes királynak huszadik esztendejétől fogva harminckettedik esztendejéig, azaz tizenkét esztendeig, sem én, sem az én atyámfiai a helytartónak járó kenyeret nem [evénk].
+T0174	Neh 5:15	10	terhelék	terheltem|terhelték	Holott az előbbi helytartók, akik én előttem voltak, [terhelék] a népet és vettek tőlök kenyérért és borért negyven ezüst sikluson felül; sőt még legényeik is zsarnokoskodtak a népen. De én nem cselekedtem így az Isten félelme miatt.
+T0175	Neh 8:1	14	felgyüle	felgyült	Mikor pedig eljött a hetedik hónap, és Izráel fiai az ő városaikban lakoztak; [felgyüle] az egész nép egyenlőképen a piacra, mely a vizek kapuja előtt volt, és mondták az írástudó Ezsdrásnak, hogy hozza elő a Mózes törvényének könyvét, melyet parancsolt az Úr Izráelnek.
+T0176	Neh 8:11	4	csendesíték	csendesítettem|csendesítették	A Léviták is [csendesíték] volt az egész népet, mondva: Hallgassatok, mert e nap szent és ne bánkódjatok!
+T0177	Neh 9:23	9	bevivéd	bevitted|bevivted	Fiaikat pedig megsokasítottad, mint az ég csillagait, és [bevivéd] őket a földre, mely felől megmondtad atyáiknak, hogy bemennek arra, hogy bírják azt.
+T0178	Neh 9:38	11	megpecsételének	megpecsételtek|megpecsételték	És mindemellett mi erős kötést szereztünk és azt aláírtuk, melyet [megpecsételének] a mi fejedelmeink, Lévitáink és papjaink.
+T0179	Eszt 2:23	15	megírattaték	megíratott|megírattatott	És megvizsgálták a dolgot és úgy találták, és mind a kettőt fára akasztották. És [megírattaték] a krónikák könyvébe a király előtt.
+T0180	Eszt 4:4	11	megszomorodék	megszomorodott|megszomorodtam	Eljöttek azért Eszternek leányai és udvarmesterei és megmondták neki, és [megszomorodék] a királyasszony nagyon, és küldött ruhákat, hogy felöltöztetnék Márdokeust, és hogy vesse le a zsákot magáról; de nem fogadta el.
+T0181	Eszt 8:15	23	vígada	vigadott|vigadt|vígadott	Márdokeus pedig kiment a király elől kék bíbor és fehér királyi ruhában, és nagy arany koronával, és bíborbársony palástban, és Susán városa [vígada] és örvendezett.
+T0182	Eszt 9:17	9	megnyugovának	megnyugodtak	Történt ez az Adár hónapjának tizenharmadik napján, és [megnyugovának] a tizennegyedik napon, és tették azt vigalom és öröm napjává.
+T0183	Eszt 9:18	16	megnyugovának	megnyugodtak	De a zsidók, akik Susánban voltak, egybegyűltek azon hónap tizenharmadik és tizennegyedik napján, és [megnyugovának] azon hónap tizenötödik napján, és azt tették vigalom és öröm napjává.
+T0184	Eszt 9:22	6	megnyugovának	megnyugodtak	Mint olyan napokat, amelyeken [megnyugovának] a zsidók ellenségeiktől, és mint olyan hónapot, amelyben keserűségük örömre és siralmuk ünnepre fordult; hogy tartsák meg azokat vigalom és öröm napjaiul, és küldjenek adjándékot egymásnak és adományokat a szegényeknek.
+T0185	Jób 17:10	2	elmulának	elmultak|elmúltak	Napjaim [elmulának], szívemnek kincsei: terveim meghiusulának.
+T0186	Jób 17:10	6	meghiusulának	meghiusultak|meghiúsultak	Napjaim elmulának, szívemnek kincsei: terveim [meghiusulának].
+T0187	Jób 29:24	11	sötétíték	sötétítettem|sötétítették	Ha rájuk mosolyogtam, nem bizakodtak el, és arcom derüjét nem [sötétíték] be.
+T0188	Zsolt 68:11	7	szerzéd	szerezted|szerzetted	Benne tanyázott a te gyülekezeted: te [szerzéd] jóvoltodból a szegénynek, oh Isten!
+T0189	Zsolt 78:56	2	megkisérték	megkisértettem|megkísértették	De [megkisérték] és megharagították a magasságos Istent, és nem őrizték meg bizonyságait;
+T0190	Zsolt 78:57	5	levének	lettek	Elfordultak ugyanis és hűtlenek [levének], mint apáik; visszafelé fordultak, mint a csalfa kézív.
+T0191	Zsolt 78:59	10	megútálá	megutálta|megútálta	Meghallotta ezt Isten és felgerjedt; és az Izráelt felette [megútálá].
+T0192	Zsolt 78:67	2	megútálá	megutálta|megútálta	Azután [megútálá] a József sátorát, és nem választotta Efraim törzsét;
+T0193	Zsolt 105:23	10	zsellérkedék	zsellérkedett|zsellérkedtem	És bement Izráel Égyiptomba, s Jákób a Khám földén [zsellérkedék].
+T0194	Zsolt 106:33	2	megkeseríték	megkeserítettem|megkeserítették	Mert [megkeseríték] az ő szívét, és gondatlanul szólt ajkaival.
+T0195	Zsolt 106:36	7	levének	lettek	És tisztelték azoknak bálványait, és tőrré [levének] azok rájuk.
+T0196	Zsolt 107:26	6	sülyedének	süllyedtek|sülyedtek	Az égig emelkedtek, a fenékig [sülyedének]; lelkük elolvadt az inségben.
+T0197	Zsolt 131:2	4	elnémítám	elnémítettem|elnémítottam	Sőt lecsendesítettem és [elnémítám] lelkemet. Amilyen az elválasztott gyermek az anyjánál; mint az elválasztott gyermek, olyan bennem az én lelkem.
+T0198	Préd 2:8	1	Szerzék	Szereztek|Szereztem|Szerzettem|Szerzették	[Szerzék] szolgákat és szolgálókat, házamnál növekedett szolgáim is voltak nekem; öreg és apró barmoknak nyájaival is többel bírtam mindazoknál, akik voltak én előttem Jeruzsálemben.
+T0199	Préd 2:9	12	szerzék	szereztek|szereztem|szerzettem|szerzették	Gyűjtötték magamnak ezüstöt és aranyat is, és királyok drágaságait és tartományokat; [szerzék] magamnak éneklő férfiakat és éneklő asszonyokat, és az emberek fiainak gyönyörűségit, asszonyt és asszonyokat.
+T0200	Ézs 1:31	2	csepüvé	csepüvé|csepűvé	És [csepüvé] lesz az erős, és munkája szikrává: mindketten égni fognak, és oltójuk nem lesz.
+T0201	Ézs 26:14	18	eltörléd	eltörlötted|eltörölted	A meghaltak nem élnek, az árnyak nem kelnek föl: ezért látogattad meg és vesztetted el őket, és [eltörléd] emlékezetöket.
+T0202	Ézs 26:15	5	megszaporítád	Megszaporítottad|megszaporítottad	Megszaporítottad e népet, Uram! [megszaporítád] e népet, magadat megdicsőítetted, kiterjesztetted a földnek minden határait.
+T0203	Ézs 40:12	9	mértéklé	mértékelte|mértéklette	Ki mérte meg markával a vizeket, és ki [mértéklé] az egeket arasszal, a föld porát ki foglalta mércébe, és a hegyeket ki tette körtefontra, és a halmokat a mérlegserpenyőbe?
+T0204	Ézs 43:10	18	higyjetek	higgyetek|higyjetek	Ti vagytok az én tanuim, így szól az Úr; és szolgám, akit elválasztottam, hogy megtudjátok és [higyjetek] nekem és megértsétek, hogy én vagyok az, előttem Isten nem alkottatott, és utánam nem lesz!
+T0205	Ézs 49:13	10	megvígasztalá	megvigasztalta|megvígasztalta	Ujjongjatok egek, és föld örvendezz, ujjongva énekeljetek hegyek; mert [megvígasztalá] népét az Úr, és könyörül szegényein!
+T0206	Ézs 52:9	7	megvígasztalá	megvigasztalta|megvígasztalta	Ujjongva énekeljetek mindnyájan, Jeruzsálem romjai, mert [megvígasztalá] az Úr népét, megváltotta Jeruzsálemet.
+T0207	Ézs 57:11	14	vevéd	vetted	Kitől féltél és rettegtél, hogy hazudtál és rólam meg nem emlékeztél, szívedre sem [vevéd]? vagy azért nem félsz engem, hogy hallgatok már régtől fogva?
+T0208	Ézs 58:13	27	tevén	teve|téve	Ha megtartóztatod szombaton lábadat, és nem űzöd kedvtelésedet szent napomon, és a szombatot gyönyörűségnek hívod, az Úr szent és dicsőséges napjának, és megszenteled azt, dolgaidat nem [tevén], foglalkozást sem találva, hamis beszédet sem szólva:
+T0209	Jer 2:7	25	tevétek	tettetek|tettétek	És bevittelek titeket a bőség földébe, hogy annak gyümölcseivel és javaival éljetek; és bementetek, és megfertőztettétek az én földemet, és az én örökségemet útálatossá [tevétek].
+T0210	Jer 9:4	9	higyjetek	higgyetek|higyjetek	Mindenki őrizkedjék a barátjától, és egyetlen atyátokfiának se [higyjetek], mert minden atyafi cselbe csal, és minden barát rágalmazva jár.
+T0211	Jer 12:6	24	higyj	higgy|higyj	Bizony még a te atyádfiai és a te atyádnak háznépe is: ők is hűtlenül bántak veled; ők is tele torokkal kiabáltak utánad! Ne [higyj] nekik, még ha szépen beszélgetnek is veled!
+T0212	Jer 26:9	20	összegyűle	összegyült|összegyűlt	Miért prófétáltál az Úr nevében, mondva: Olyan lesz e ház, mint Siló, és e város elpusztul, lakatlanná lesz? És [összegyűle] az egész nép Jeremiás ellen az Úrnak házában.
+T0213	Jer 37:15	4	megharaguvának	megharagudtak	És a fejedelmek [megharaguvának] Jeremiásra, és megveretett őt, és vetették a fogházba az írástudó Jónatán házába: mert azt rendelték fogháznak.
+T0214	Jer 41:16	3	vevén	veve|véve	És magához [vevén] Jóhanán, Káreának fia, és a seregnek minden vezetője, akik ő vele voltak, a nép minden maradékát, amelyet visszahoztak Ismáeltől, Natániának fiától Mispából, miután ez megölte Gedáliást, Ahikámnak fiát, az erős férfiakat, vitézeket és asszonynépeket és gyermekeket és udvari szolgákat, akiket visszahozott Gibeonból:
+T0215	Jer 52:8	9	utólérék	utolérték|utólértam	A Káldeusok serege pedig űzte a királyt, és [utólérék] Sedékiást a jerikói síkon, mert egész serege elfutott mellőle.
+T0216	Ez 3:2	5	megéteté	megetette|megétette	Felnyitottam azért számat, és [megéteté] velem azt a türetet.
+T0217	Ez 16:17	2	vevéd	vetted	És [vevéd] a te ékességidet az én aranyomból és ezüstömből, melyeket neked adtam, és csináltál magadnak férfiú képeket, és azokkal paráználkodtál.
+T0218	Ez 16:18	2	vevéd	vetted	És [vevéd] hímes ruháidat és befedezted azokat, és olajomat és füstölőszeremet vetetted eléjük.
+T0219	Ez 16:20	2	vevéd	vetted	És [vevéd] a te fiaidat és leányaidat, kiket nekem szültél, és megáldoztad őket azoknak eledelül. Avagy nem volt-é már elég paráznaságodból,
+T0220	Ez 16:25	8	tevéd	tetted	És minden keresztútnál megépítetted magaslatodat, s útálatossá [tevéd] szépségedet, és kétfelé vetetted lábaidat minden melletted elmenőnek, és sokasítottad paráznaságodat.
+T0221	Ez 23:41	19	tevéd	tetted	És ültél pompás kerevetre, s terített asztal volt az előtt, és az én füstölő szeremet és olajomat arra [tevéd];
+T0222	Ez 28:2	35	tevéd	tetted	Embernek fia! mondjad Tírus fejedelmének: Ezt mondja az Úr Isten: Mivelhogy felfuvalkodott szíved és ezt mondtad: Isten vagyok én, Isten székében ülök a tengerek szívében, holott csak ember vagy és nem Isten, mégis ollyá [tevéd] szíved, minő az Isten szíve,
+T0223	Ez 28:6	9	tevéd	tetted	Ezokáért így szól az Úr Isten: Mivel ollyá [tevéd] szíved, minő az Isten szíve:
+T0224	Ez 31:5	14	növekedének	nevekedtek|növekedtek	Ennekokáért lett magasb növése a mező minden fájánál: s megsokasultak ágai, s hosszúra [növekedének] galyai a sok víztől, midőn kiterjesztette azokat.
+T0225	Ez 47:1	2	visszatéríte	visszatérített|visszatérított	És [visszatéríte] engem a ház ajtajához, és ímé, víz jött ki a ház küszöbe alól napkelet felé, mert a ház eleje kelet felé volt, és a víz aláfolyt a ház jobb oldala alól az oltártól délre.
+T0226	Dán 4:16	10	rémüldözék	rémüldöztem|rémüldözött	Ekkor Dániel, akinek neve Baltazár, közel egy óráig [rémüldözék], és az ő gondolatai háborították őt. Szólt a király, és mondta: Baltazár, az álom és annak jelentése meg ne rettentsenek téged! Felelt Baltazár, és mondta: Uram, az álom szálljon a te gyűlölőidre, a magyarázata pedig a te ellenségeidre!
+T0227	Dán 5:5	7	tünének	tüntek|tűntek	Abban az órában emberi kéznek ujjai [tünének] fel, és írtak a gyertyatartóval szemben a király palotájának meszelt falán, és a király nézte azt a kézfejet, amely írt.
+T0228	Dán 6:14	9	restelkedék	restelkedett|restelkedtem	Akkor a király, amint hallotta ezt, igen [restelkedék] a miatt, és szíve szerint azon volt, hogy Dánielt megszabadítsa, és napnyugotig törekedett őt megmenteni.
+T0229	Dán 8:22	4	letöretteték	letöretett	Hogy pedig az [letöretteték], és négy állt helyébe: négy ország támad abból a nemzetből, de nem annak erejével.
+T0230	Hós 3:2	2	megszerzém	megszereztem|megszerzettem	És [megszerzém] azt magamnak tizenöt ezüstön és egy hómer árpán és egy letek árpán.
+T0231	Jón 3:6	20	borítkozék	borítkozott|borítkoztam	És eljutott a beszéd Ninive királyához, és felkelt királyi székéből, és levetette magáról az ő királyi ruháját, és zsákba [borítkozék], és ült a porba.
+T0232	Mik 7:5	2	higyjetek	higgyetek|higyjetek	Ne [higyjetek] a barátnak; ne bízzatok a tanácsadóban; az öledben ülő előtt is zárd be szádnak ajtaját.
+T0233	Zak 6:8	13	lecsendesíték	lecsendesítettem|lecsendesítették	Majd hívott engem, és beszélt velem, mondva: Lásd! Az észak földére menők [lecsendesíték] lelkemet északnak földén.
+T0234	Zak 11:8	19	megútála	megutált|megútált	És három pásztort vertem el egy hónap alatt, mert elkeseredett a lelkem miattok, és az ő lelkük is [megútála] engem.
+T0235	Mt 2:2	17	jövénk	jöttünk	Hol van a zsidók királya, aki megszületett? Mert láttuk az ő csillagát napkeleten, és azért [jövénk], hogy tisztességet tegyünk neki.
+T0236	Mt 3:6	10	tevén	teve|téve	És megkeresztelkedtek ő általa a Jordán vizében, vallást [tevén] az ő bűneikről.
+T0237	Mt 14:6	7	ünnepelék	ünnepeltem|ünnepelték	Hanem mikor a Heródes születése napját [ünnepelék], táncolt a Heródiás leánya ő előttük, és megtetszett Heródesnek;
+T0238	Mt 14:9	2	megszomorodék	megszomorodott|megszomorodtam	És [megszomorodék] a király, de esküjéért és a vendégek miatt parancsolta, hogy adják oda.
+T0239	Mt 14:15	3	estveledék	estveledett|estveledtem	Mikor pedig [estveledék], hozzá mentek az ő tanítványai, mondva: Puszta hely ez, és az idő már elmúlt; bocsásd el a sokaságot, hogy menjenek el a falvakba és vegyenek magoknak eleséget.
+T0240	Mt 14:23	14	beestveledék	beestveledett|beestveledtem	És amint elbocsátotta a sokaságot, felment a hegyre, magánosan imádkozni. Mikor pedig [beestveledék], egyedül volt ott.
+T0241	Mt 15:30	7	vivén	vive|víve	És nagy sokaság ment hozzá, [vivén] magokkal sántákat, vakokat, némákat, csonkákat és sok egyebeket, és odahelyezték őket a Jézus lábai elé; és meggyógyította őket,
+T0242	Mt 15:36	2	vevén	veve|véve	És [vevén] a hét kenyeret és a halakat, és hálákat adva, megtörte, és adta az ő tanítványainak, a tanítványok pedig a sokaságnak.
+T0243	Mt 18:2	2	előhíván	előhíva|előhívva	És [előhíván] Jézus egy kis gyermeket, közéjük állította azt,
+T0244	Mt 19:24	7	tevének	tettek|tették	Ismét mondom pedig nektek: Könnyebb a [tevének] a tű fokán átmenni, hogynem a gazdagnak az Isten országába bejutni.
+T0245	Mt 20:8	3	beestveledék	beestveledett|beestveledtem	Mikor pedig [beestveledék], mondta a szőlőnek ura az ő vincellérjének: Hívd elő a munkásokat, és add ki nekik a bért, az utolsóktól kezdve mind az elsőkig.
+T0246	Mt 20:24	6	megboszankodék	megboszankodott|megboszankodtam	És hallva ezt a tíz, [megboszankodék] a két testvérre.
+T0247	Mt 22:25	10	vevén	veve|véve	Volt pedig minálunk hét testvér: és az első feleséget [vevén], meghalt; és mivelhogy nem volt magzata, feleségét a testvérére hagyta;
+T0248	Mt 24:1	2	kijővén	kijövet|kijövén|kijőve	És [kijővén] Jézus a templomból, tovább ment; és hozzámentek az ő tanítványai, hogy mutogassák neki a templom épületeit.
+T0249	Mt 25:1	12	elővevén	elvéve|előveve|elővéve	Akkor hasonlatos lesz a mennyeknek országa ama tíz szűzhöz, akik [elővevén] az ő lámpásaikat, kimentek a vőlegény elé.
+T0250	Mt 25:5	8	aluvának	aludtak	Késve pedig a vőlegény, mindannyian elszunnyadtak és [aluvának].
+T0251	Mt 25:27	13	megjövén	megjönve|megjöve|megjőve	El kellett volna tehát helyezned az én pénzemet a pénzváltóknál; és én, [megjövén], nyereséggel kaptam volna meg a magamét.
+T0252	Mt 26:20	3	beestveledék	beestveledett|beestveledtem	Mikor pedig [beestveledék], letelepedett a tizenkettővel,
+T0253	Mt 26:27	2	vevén	veve|véve	És [vevén] a poharat és hálákat adva, adta azoknak, ezt mondva: Igyatok ebből mindnyájan;
+T0254	Mt 26:40	6	aluva	aludott|alva	Akkor ment a tanítványokhoz és [aluva] találta őket, és mondta Péternek: Így nem birtatok vigyázni velem egy óráig sem!?
+T0255	Mt 26:43	6	aluva	aludott|alva	És mikor visszatért, ismét [aluva] találta őket; mert megnehezedtek az ő szemeik.
+T0256	Mt 27:57	3	beesteledék	beesteledett|beesteledtem	Mikor pedig [beesteledék], eljött egy gazdag ember Arimathiából, név szerint József, aki maga is tanítványa volt Jézusnak;
+T0257	Mt 28:13	8	odajövén	odajönve|odajöve|odajőve	Ezt mondva: Mondjátok, hogy: Az ő tanítványai [odajövén] éjjel, ellopták őt, mikor mi aluvánk.
+T0258	Mt 28:13	14	aluvánk	aludtunk	Ezt mondva: Mondjátok, hogy: Az ő tanítványai odajövén éjjel, ellopták őt, mikor mi [aluvánk].
+T0259	Mt 28:15	3	fölvevén	fölveve|fölvéve	Azok pedig [fölvevén] a pénzt, úgy cselekedtek, amint megtanították őket. És elterjedt ez a hír a zsidók között mind e mai napig.
+T0260	Mk 1:10	3	feljővén	feljöve|feljövet|feljőve	És azonnal [feljővén] a vízből, látta az egeket megnyilatkozni, és a Lelket mint egy galambot ő rá leszállani;
+T0261	Mk 1:15	14	higyjetek	higgyetek|higyjetek	És mondva: Bétölt az idő, és elközelített az Istennek országa; térjetek meg, és [higyjetek] az evangyéliomban.
+T0262	Mk 3:20	6	egybegyűle	egybegyült|egybegyűlt	Azután haza tértek. És ismét [egybegyűle] a sokaság, annyira, hogy még nem is ehettek.
+T0263	Mk 4:1	11	gyűle	gyült|gyűlt	És ismét kezdett tanítani a tenger mellett. És nagy sokaság [gyűle] ő hozzá, úgy hogy ő a hajóba lépve, a tengeren ült, az egész sokaság pedig a tenger mellett a földön volt.
+T0264	Mk 4:19	13	közbejővén	közbejövet|közbejövén	De a világi gondok és a gazdagság csalárdsága és egyéb dolgok kívánsága [közbejővén], elfojtják az ígét, és gyümölcstelen lesz.
+T0265	Mk 5:21	13	gyűle	gyült|gyűlt	És mikor ismét általment Jézus a hajón a tulsó partra, nagy sokaság [gyűle] ő hozzá; és volt a tenger mellett.
+T0266	Mk 5:29	7	megérzé	megérezte|megérzette	És vérének forrása azonnal kiszáradt és [megérzé] testében, hogy kigyógyult bajából.
+T0267	Mk 5:30	4	észrevevén	észreveve|észrevéve	Jézus pedig azonnal [észrevevén] magán, hogy isteni erő áradott ki belőle, megfordult a sokaságban, és mondta: Kicsoda illette az én ruháimat?
+T0268	Mk 5:36	20	higyj	higgy|higyj	Jézus pedig, amint hallotta a beszédet, amit mondtak, azonnal mondta a zsinagóga fejének: Ne félj, csak [higyj].
+T0269	Mk 6:26	6	megszomorodék	megszomorodott|megszomorodtam	A király pedig noha igen [megszomorodék], eskűje és a vendégek miatt nem akarta őt elutasítani.
+T0270	Mk 6:47	3	beesteledék	beesteledett|beesteledtem	És mikor [beesteledék], a hajó a tenger közepén vala, ő pedig egymaga a szárazon.
+T0271	Mk 8:6	11	vevén	veve|véve	Akkor megparancsolta a sokaságnak, hogy telepedjenek le a földre. És [vevén] a hét kenyeret, és hálákat adva, megszegte, és adta az ő tanítványainak, hogy eléjük tegyék. És a sokaság elé tették.
+T0272	Mk 9:27	8	fölkele	fölkelt	Jézus pedig megfogva kezét, fölemelte; és az [fölkele].
+T0273	Mk 10:25	3	tevének	tettek|tették	Könnyebb a [tevének] a tű fokán átmenni, hogynem a gazdagnak az Isten országába bejutni.
+T0274	Mk 11:19	3	beestveledék	beestveledett|beestveledtem	És mikor [beestveledék], kiment a városból.
+T0275	Mk 12:42	7	odajövén	odajönve|odajöve|odajőve	És egy szegény özvegy asszony is [odajövén], két fillért, azaz egy negyed pénzt vetett bele.
+T0276	Mk 14:11	8	igérék	igértem|igérték	Azok pedig, amint meghallották, örvendeztek, és [igérék], hogy pénzt adnak neki. Ő pedig kereste, mimódon árulhatná el őt jó alkalommal.
+T0277	Mk 14:37	4	aluva	aludott|alva	Azután visszatért és [aluva] találta őket, és mondta Péternek: Simon, alszol? Nem bírtál egy óráig vigyázni?
+T0278	Mk 14:40	6	aluva	aludott|alva	Amikor pedig visszatért, ismét [aluva] találta őket; mert a szemeik megnehezedtek, és nem tudták mit feleljenek neki.
+T0279	Mk 15:31	6	csúfolodván	csúfolodva|csúfolódva	Hasonlóképen pedig a főpapok is, [csúfolodván] egymás között, az írástudókkal együtt mondták: Másokat megtartott, magát nem bírja megtartani.
+T0280	Luk 4:39	10	elhagyá	elhagyta	És Jézus mellé állva, megdorgálta a hideglelést, és az [elhagyá] őt; és ő azonnal felkelve, szolgált nekik.
+T0281	Luk 5:7	25	elsülyedének	elsüllyedtek|elsülyedtek	Intettek azért társaiknak, akik a másik hajóban voltak, hogy jöjjenek és segítsenek nekik. És eljövén, megtöltötték mind a két hajót, annyira, hogy csaknem [elsülyedének].
+T0282	Luk 5:15	12	gyűle	gyült|gyűlt	A hír azonban annál inkább terjedt ő felőle; és nagy sokaság [gyűle] egybe, hogy őt hallgassák, és hogy általa meggyógyuljanak az ő betegségeikből.
+T0283	Luk 7:38	17	törlé	törlötte|törölte	És megállva hátul az ő lábainál sírva, könnyeivel kezdte öntözni az ő lábait, és fejének hajával [törlé] meg, és csókolgatta az ő lábait, és megkente drága kenettel.
+T0284	Luk 7:44	31	törlé	törlötte|törölte	És az asszonyhoz fordulva, mondta Simonnak: Látod-é ez asszonyt? Bejöttem a te házadba, az én lábaimnak vizet nem adtál: ez pedig könnyeivel öntözte az én lábaimat, és fejének hajával [törlé] meg.
+T0285	Luk 8:23	4	elszenderedék	elszenderedett|elszenderedtem	De hajózásuk közben [elszenderedék]; és szélvész csapott le a tóra, és megmerültek, és veszedelemben voltak.
+T0286	Luk 8:33	20	megfullada	megfulladott|megfulladt	És minekutána kimentek az ördögök az emberből, bementek a disznókba; és a disznónyáj a meredekről a tóba rohant, és [megfullada].
+T0287	Luk 8:50	12	higyj	higgy|higyj	Jézus pedig mikor ezt hallotta, felelt neki, mondva: Ne félj; csak [higyj], és megtartatik.
+T0288	Luk 9:42	5	odaméne	odament	Amíg pedig az [odaméne], azon közben az ördög földhöz ütötte azt, és megrángatta. De Jézus megdorgálta a tisztátalan lelket, és meggyógyította a gyermeket, és adta azt az ő atyjának.
+T0289	Luk 15:12	18	megosztá	megosztotta	És mondta az ifjabbik az ő atyjának: Atyám, add ki a vagyonból rám eső részt! És az [megosztá] köztök a vagyont.
+T0290	Luk 15:13	16	eltékozlá	eltékozlotta|eltékozolta	Nem sok nap mulva aztán a kisebbik fiú összeszedve mindenét, messze vidékre költözött; és ott [eltékozlá] vagyonát, mivelhogy dobzódva élt.
+T0291	Luk 15:25	11	hazajövén	hazajöve|hazajövet	Az ő nagyobbik fia pedig a mezőn volt: és mikor [hazajövén], közelgetett a házhoz, hallotta a zenét és táncot.
+T0292	Luk 16:1	17	bevádoltaték	bevádoltaott|bevádoltatott	Mondta pedig az ő tanítványainak is: Volt egy gazdag ember, kinek vala egy sáfára; és az [bevádoltaték] nála, hogy javait eltékozolja.
+T0293	Luk 16:21	17	eljővén	eljöve|eljövet|eljőve	És kívánt megelégedni a morzsalékokkal, melyek hullottak a gazdagnak asztaláról; de az ebek is [eljővén], nyalták az ő sebeit.
+T0294	Luk 18:23	6	megszomorodék	megszomorodott|megszomorodtam	Az pedig ezeket hallva, igen [megszomorodék]; mert igen gazdag volt.
+T0295	Luk 18:24	8	megszomorodék	megszomorodott|megszomorodtam	És mikor látta Jézus, hogy az igen [megszomorodék], mondta: Mily nehezen mennek be az Isten országába, akiknek gazdagságuk van!
+T0296	Luk 18:25	4	tevének	tettek|tették	Mert könnyebb a [tevének] a tű fokán átmenni, hogynem a gazdagnak az Isten országába bejutni.
+T0297	Luk 19:23	13	megjövén	megjönve|megjöve|megjőve	Miért nem adtad azért az én pénzemet a pénzváltók asztalára, és én [megjövén], kamatostól kaptam volna azt vissza?
+T0298	Luk 19:35	14	helyhezteték	helyeztették|helyhezteett|helyheztették	Elvitték azért azt Jézushoz: és az ő felsőruháikat a vemhére vetve, Jézust rá [helyhezteték].
+T0299	Luk 22:66	6	egybegyűle	egybegyült|egybegyűlt	És amint nappal lett, [egybegyűle] a nép véneinek tanácsa, főpapok és írástudók: és vitték őt az ő gyülekezetükbe,
+T0300	Luk 23:54	9	virrada	virradott|virradt	És az a nap péntek volt, és szombat [virrada] rá.
+T0301	Luk 23:56	9	nyugovának	nyugodtak	Visszatérve pedig, készítettek fűszerszámokat és keneteket. És szombaton [nyugovának] a parancsolat szerint.
+T0302	Luk 24:1	11	vivén	vive|víve	A hétnek első napján pedig kora reggel a sírhoz mentek, [vivén] az elkészített fűszerszámokat, és némely más asszonyok is velük.
+T0303	Luk 24:41	5	hívék	hittek|hívtam	Mikor pedig még nem [hívék] az öröm miatt, és csodálkoztak, mondta nekik: Van-é itt valami enni valótok?
+T0304	Ján 2:2	4	meghivaték	meghivatott|meghivattam|meghívatott	És Jézus is [meghivaték] az ő tanítványaival együtt a menyegzőbe.
+T0305	Ján 6:16	3	estveledék	estveledett|estveledtem	Mikor pedig [estveledék], lementek az ő tanítványai a tengerhez,
+T0306	Ján 6:29	11	higyjetek	higgyetek|higyjetek	Felelt Jézus és mondta nekik: Az az Isten dolga, hogy [higyjetek] abban, akit ő küldött.
+T0307	Ján 8:59	9	elrejtőzködék	elrejtőzködtem|elrejtőzködött	Köveket ragadtak azért, hogy rá hajigálják; Jézus pedig [elrejtőzködék], és kiment a templomból, átmenve közöttük; és ilyen módon eltávozott.
+T0308	Ján 10:37	9	higyjetek	higgyetek|higyjetek	Ha az én Atyám dolgait nem cselekszem, ne [higyjetek] nekem;
+T0309	Ján 10:38	10	higyjetek	higgyetek|higyjetek	Ha pedig azokat cselekszem, ha nekem nem hisztek is, [higyjetek] a cselekedeteknek: hogy megtudjátok és elhigyjétek, hogy az Atya én bennem van, és én ő benne vagyok.
+T0310	Ján 11:2	24	törlé	törlötte|törölte	Az a Mária volt pedig az, akinek a testvére Lázár beteg volt, aki megkente az Urat kenettel és a hajával [törlé] meg annak lábait.
+T0311	Ján 11:15	10	higyjetek	higgyetek|higyjetek	És örülök, hogy nem voltam ott, ti érettetek, hogy [higyjetek]. De menjünk el ő hozzá!
+T0312	Ján 12:36	5	higyjetek	higgyetek|higyjetek	Míg a világosságotok megvan, [higyjetek] a világosságban, hogy a világosság fiai legyetek. Ezeket mondta Jézus, és elmenve, elrejtőzködék előlük.
+T0313	Ján 12:36	18	elrejtőzködék	elrejtőzködtem|elrejtőzködött	Míg a világosságotok megvan, higyjetek a világosságban, hogy a világosság fiai legyetek. Ezeket mondta Jézus, és elmenve, [elrejtőzködék] előlük.
+T0314	Ján 13:21	7	nyugtalankodék	nyugtalankodott|nyugtalankodtam	Mikor ezeket mondta Jézus, igen [nyugtalankodék] lelkében, s bizonyságot tett, és mondta: Bizony, bizony mondom nektek, hogy egy ti közületek elárul engem.
+T0315	Ján 14:1	6	higyjetek	higgyetek|higyjetek	Ne nyugtalankodjék a ti szívetek: [higyjetek] Istenben, és higyjetek én bennem.
+T0316	Ján 14:1	9	higyjetek	higgyetek|higyjetek	Ne nyugtalankodjék a ti szívetek: higyjetek Istenben, és [higyjetek] én bennem.
+T0317	Ján 14:11	1	Higyjetek	Higgyetek|Higyjetek	[Higyjetek] nekem, hogy én az Atyában vagyok, és az Atya én bennem van; ha pedig nem, magokért a cselekedetekért higyjetek nekem.
+T0318	Ján 14:11	20	higyjetek	higgyetek|higyjetek	Higyjetek nekem, hogy én az Atyában vagyok, és az Atya én bennem van; ha pedig nem, magokért a cselekedetekért [higyjetek] nekem.
+T0319	Ján 14:29	13	higyjetek	higgyetek|higyjetek	És most mondtam meg nektek, mielőtt meglenne: hogy amikor majd meglesz, [higyjetek].
+T0320	Ján 17:14	10	gyűlölte	gyűlölt|gyűlölte|gyűlöltött	Én a te ígédet nekik adtam; és a világ [gyűlölte] őket, mivelhogy nem e világból valók, amint hogy én sem e világból vagyok.
+T0321	Ján 18:3	4	vevén	veve|véve	Júdás azért magához [vevén] a katonai csapatot, és a papi fejedelmektől és a farizeusoktól szolgákat, oda ment fáklyákkal, lámpásokkal és fegyverekkel.
+T0322	Ján 19:13	12	üle	ült	Pilátus azért, amikor hallotta e beszédet, kihozta Jézust, és [üle] a törvénytevő székbe azon a helyen, amelyet Kőpadolatnak hívtak, zsidóul pedig Gabbathának.
+T0323	Ján 19:35	22	higyjetek	higgyetek|higyjetek	És aki látta, bizonyságot tett, és igaz az ő tanúbizonysága; és az tudja, hogy ő igazat mond, hogy ti is [higyjetek].
+T0324	Ján 19:42	13	helyhezteték	helyeztették|helyhezteett|helyheztették	A zsidók péntekje miatt azért, mivelhogy az a sír közel volt, abba [helyhezteték] Jézust.
+T0325	Ján 20:11	12	siránkozék	siránkozott|siránkoztam	Mária pedig künn állt a sírnál sírva. Amíg azonban [siránkozék], behajolt a sírba;
+T0326	Ján 20:16	6	megfordulván	megfordulva	Mondta neki Jézus: Mária! Az [megfordulván], mondta neki: Rabbóni! ami azt teszi: Mester!
+T0327	Ján 21:4	4	reggeledék	reggeledett|reggeledtem	Mikor pedig immár [reggeledék], megállt Jézus a parton; a tanítványok azonban nem ismerték meg, hogy Jézus van ott.
+T0328	Ján 21:17	11	Megszomorodék	Megszomorodott|Megszomorodtam	Mondta neki harmadszor is: Simon, Jónának fia, szeretsz-é engem? [Megszomorodék] Péter, hogy harmadszor is mondta neki: Szeretsz-é engem? És mondta neki: Uram, te mindent tudsz; te tudod, hogy én szeretlek téged. Mondta neki Jézus: Legeltesd az én juhaimat!
+T0329	ApCsel 1:4	3	összejövén	összejöve|összejövén|összejőve	És velük [összejövén], meghagyta nekik, hogy el ne menjenek Jeruzsálemből, hanem várják be az Atyának ígéretét, melyet úgymond, hallottatok tőlem:
+T0330	ApCsel 2:6	7	egybegyűle	egybegyült|egybegyűlt	Minekutána pedig ez a zúgás lett, [egybegyűle] a sokaság és megzavarodék, mivelhogy mindegyik a maga nyelvén hallotta őket szólni.
+T0331	ApCsel 5:6	5	begöngyölék	begöngyöltem|begöngyölték	Az ifjak pedig felkelve, [begöngyölék] őt, és kivive eltemették.
+T0332	ApCsel 6:6	2	állatának	Állattak|állattak	Kiket [állatának] az apostolok elébe; és miután imádkoztak, kezeiket rájuk vetették.
+T0333	ApCsel 6:12	2	felzendíték	felzendítettem|felzendítették	És [felzendíték] a népet, a véneket és az írástudókat; és rá rohanva, magukkal ragadták őt, és vitték a tanács elé;
+T0334	ApCsel 6:13	2	állatának	Állattak|állattak	És [állatának] hamis tanúkat, kik mondták: Ez az ember nem szűnik meg káromló beszédeket szólni e szent hely ellen és a törvény ellen:
+T0335	ApCsel 9:25	4	vevén	veve|véve	A tanítványok azért [vevén] őt éjjel, a kőfalon bocsátották alá, leeresztve egy kosárban.
+T0336	ApCsel 9:27	5	vevén	veve|véve	Barnabás azonban maga mellé [vevén] őt, vitte az apostolokhoz, és elbeszélte nekik, mint látta az úton az Urat, és hogy beszélt vele, és mint tanított Damaskusban nagy bátorsággal a Jézus nevében.
+T0337	ApCsel 11:18	4	megnyugovának	megnyugodtak	Ezeknek hallatára aztán [megnyugovának], és dicsőítették az Istent, mondva: Eszerint hát a pogányoknak is adott az Isten megtérést az életre!
+T0338	ApCsel 13:29	14	helyhezteték	helyeztették|helyhezteett|helyheztették	És mikor mindazokat elvégezték, amik ő felőle megirattak, a fáról levéve sírba [helyhezteték].
+T0339	ApCsel 13:36	13	helyhezteték	helyeztették|helyhezteett|helyheztették	Mert Dávid, minekutána a saját idejében szolgált az Isten akaratának, elaludt, és [helyhezteték] az ő atyáihoz, és rothadást látott.
+T0340	ApCsel 13:44	9	egybegyűle	egybegyült|egybegyűlt	A következő szombaton aztán majdnem az egész város [egybegyűle] az Isten ígéjének hallgatására,
+T0341	ApCsel 14:18	5	lecsendesíték	lecsendesítettem|lecsendesítették	És ezeket mondva, nagynehezen [lecsendesíték] a sokaságot, hogy nekik ne áldozzék.
+T0342	ApCsel 16:15	13	hívének	hittek|hívtak|hívták	Mikor pedig megkeresztelkedett mind házanépével egybe, kért minket, mondva: Ha az Úr [hívének] ítéltetek engem, jertek az én házamhoz, és maradjatok ott. És unszolt minket.
+T0343	ApCsel 16:31	4	Higyj	Higgy|Higyj	Azok pedig mondták: [Higyj] az Úr Jézus Krisztusban, és idvezülsz mind te, mind a te házadnépe!
+T0344	ApCsel 16:40	12	vígasztalák	vigasztalták|vígasztalták	Kijövén pedig a tömlöcből, bementek Lidiához; és mikor látták az atyafiakat, [vígasztalák] őket, és eltávoztak.
+T0345	ApCsel 22:23	7	elhányák	Elhányták|elhányták	Mikor pedig azok kiabáltak, és köntösüket [elhányák], és port szórtak a levegőbe,
+T0346	ApCsel 23:28	10	levivém	levittem|levivtem	Meg akarva pedig tudni az okát, miért vádolják őt, [levivém] őt az ő tanácsuk elébe.
+T0347	ApCsel 25:23	3	eljővén	eljöve|eljövet|eljőve	Másnap tehát [eljővén] Agrippa és Bernicé nagy pompával, és bemenve a kihallgatási terembe az ezredesekkel és a város főfőpolgáraival együtt, Festus parancsolatjára előhozták Pált.
+T0348	Róm 1:27	23	elvevén	elveve|elvéve	Hasonlóképen a férfiak is elhagyva az asszonynéppel való természetes élést, egymásra gerjedtek bujaságukban, férfiak férfiakkal fertelmeskedve, és az ő tévelygésöknek méltó jutalmát [elvevén] önmagokban.
+T0349	2Kor 7:1	17	vivén	vive|víve	Mivelhogy azért ilyen ígéreteink vannak, szeretteim, tisztítsuk meg magunkat minden testi és lelki tisztátalanságtól, Isten félelmében [vivén] véghez a mi megszentelésünket.
+T0350	Gal 2:9	17	nyujták	nyujtották|nyújtották	És elismerve a nekem adatott kegyelmet, Jakab és Kéfás, meg János, kik oszlopokul tekintetnek, bajtársi jobbjukat [nyujták] nekem és Barnabásnak, hogy mi a pogányok között, ők pedig a körülmetélés között prédikáljunk:
+T0351	Gal 3:13	9	levén	leve|lévén	Krisztus váltott meg minket a törvény átkától, átokká [levén] érettünk; mert meg van írva: Átkozott minden, aki fán függ:
+T0352	Ef 2:21	8	rakattatván	rakattatva|rakatva	Akiben az egész épület szép renddel [rakattatván], növekedik szent templommá az Úrban;
+T0353	Ef 3:18	6	vevén	veve|véve	A szeretetben meggyökerezve és alapot [vevén], hogy megérthessétek minden szentekkel egybe, mi a szélessége és hosszúsága és mélysége és magassága az Isten jóvoltának,
+T0354	Ef 5:29	9	gyűlölte	gyűlölt|gyűlölte|gyűlöltött	Mert soha senki az ő tulajdon testét nem [gyűlölte]; hanem táplálgatja és ápolgatja azt, miképpen az Úr is az egyházat;
+T0355	Ef 6:9	8	elhegyván	elhagyva|elhegyva	Ti is urak, ugyanazt cselekedjétek ő velük, [elhegyván] a fenyegetést; tudva, hogy a ti Uratok is mennyben van, és személyválogatás nincsen Ő nála.
+T0356	Ef 6:15	2	felsarúzván	felsaruzva|felsarúzva	És [felsarúzván] lábaitokat a békesség evangyéliomának készségével;
+T0357	Ef 6:16	2	fölvevén	fölveve|fölvéve	Mindezekhez [fölvevén] a hitnek pajzsát, amellyel ama gonosznak minden tüzes nyilát megolthatjátok;
+T0358	Fil 1:29	11	higyjetek	higgyetek|higyjetek	Mert nektek adatott az a kegyelem a Krisztusért, nemcsak hogy [higyjetek] Ő benne, hanem hogy szenvedjetek is Ő érette:
+T0359	Kol 1:10	14	növekedvén	nevekedve	Hogy járjatok méltóan az Úrhoz, teljes tetszésére, minden jó cselekedettel gyümölcsöt teremve és [növekedvén] az Isten megismerésében;
+T0360	1Tim 4:8	13	meglévén	megléve|meglévén	Mert a test gyakorlásának kevés haszna van; de a kegyesség mindenre hasznos, [meglévén] benne a jelenvaló és a jövő életnek ígérete.
+T0361	Tit 3:2	10	tanusítván	tanusítva|tanúsítva	Senkit ne szidalmazzanak, ne veszekedjenek, gyöngédek legyenek, teljes szelídséget [tanusítván] minden ember iránt.
+T0362	Zsid 2:4	4	tevén	teve|téve	Velük együtt bizonyságot [tevén] arról az Isten, jelekkel meg csodákkal és sokféle erőkkel s a Szent Léleknek közléseivel az ő akarata szerint.
+T0363	Zsid 4:1	15	levőnek	lévőnek	Óvakodjunk tehát, hogy mivel megvan az ő nyugodalmába való bemenetel ígérete, valaki közületek fogyatkozásban [levőnek] ne láttassék.
+T0364	Zsid 9:6	4	levén	leve|lévén	Ezek pedig ekképen [levén] elrendezve; az első sátorba ugyan mindenkor bejárnak a papok az istentisztelet elvégzésére,
+T0365	Zsid 9:19	13	vevén	veve|véve	Mert mikor Mózes a törvény szerint minden parancsolatot elmondott az egész népnek, [vevén] a borjúknak és a bakoknak vérét, vízzel és vörös gyapjúval meg izsóppal együtt, magát a könyvet is és az egész népet meghintette,
+T0366	Zsid 10:12	9	üle	ült	Ő azonban, egy áldozattal áldozva a bűnökért, mindörökre [üle] az Istennek jobbjára,
+T0367	Zsid 11:4	20	tevén	teve|téve	Hit által vitt Ábel becsesebb áldozatot Istennek, mint Kain, ami által bizonyságot nyert a felől, hogy igaz, bizonyságot [tevén] az ő ajándékairól Isten, és az által még holta után is beszél.
+T0368	Zsid 11:13	19	tevén	teve|téve	Hitben haltak meg mindezek, nem nyerve meg az ígéreteket, hanem csak távolról látva és üdvözölve azokat, és vallást [tevén] arról, hogy idegenek és vándorok a földön.
+T0369	1Ján 4:1	3	higyjetek	higgyetek|higyjetek	Szeretteim, ne [higyjetek] minden léleknek, hanem próbáljátok meg a lelkeket, ha Istentől vannak-é; mert sok hamis próféta jött ki a világba.
+T0370	1Ján 5:13	20	higyjetek	higgyetek|higyjetek	Ezeket írtam nektek, akik hisztek az Isten Fiának nevében, hogy tudjátok meg, hogy örök életetek van, és hogy [higyjetek] az Isten Fiának nevében.

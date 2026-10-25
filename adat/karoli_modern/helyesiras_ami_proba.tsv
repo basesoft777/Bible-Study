@@ -1,0 +1,1166 @@
+# GENERÁLT: eszkozok/karoli_modern/helyesiras.py --ami-proba (F96.1, DT-F96i) — kézzel nem szerkeszthető; mérés, nem a kiadott réteg (az a DT-F96i óta a dontes_kiserleti oszlop szerint jár el) | forras=konkordancia/Karoli_1908.tsv (sha256:49335bbcc77d) + adat/szoto/karoli_szotari_alak.tsv (sha256:edba33e6d65a) + eszkozok/karoli_modern/helyesiras.py (sha256:dbfd948155d6) | scope=a Károli 1908 minden puszta „a mi” tokenje (1164): a DT-F96i előtti és a DT-F96i szerinti döntés, kritériummal | ts=2026-10-25T07:28Z
+igehely	sorszam	elozo	kovetkezo	dontes_regi	dontes_kiserleti	kriterium	valtozik
+1Móz 1:26	7	embert	képünkre és	birtokos	birtokos	B1_nk_utana	nem
+1Móz 8:19	10	minden	mozog a	vonatkozo	vonatkozo	regi_szabaly	nem
+1Móz 9:2	16	minden	nyüzsög a	vonatkozo	vonatkozo	regi_szabaly	nem
+1Móz 9:10	19	kezdve	a bárkából	vonatkozo	vonatkozo	V3_ige_elotte	nem
+1Móz 14:23	13	mindabból	a tiéd	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Móz 17:4	2		engem illet	vonatkozo	vonatkozo	regi_szabaly	nem
+1Móz 19:12	19	mindenedet	a tied	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Móz 19:31	8	kisebbiknek	atyánk megvénhedett	birtokos	birtokos	B1_nk_utana	nem
+1Móz 19:32	6	inni	atyánknak és	vonatkozo	birtokos	B1_nk_utana	igen
+1Móz 19:32	16	magot	atyánktól	birtokos	birtokos	B1_nk_utana	nem
+1Móz 19:34	33	magot	atyánktól	birtokos	birtokos	B1_nk_utana	nem
+1Móz 23:6	13	közöttünk	temetőhelyeink közűl	birtokos	birtokos	B1_nk_utana	nem
+1Móz 30:30	3	Mert	kevesed vala	vonatkozo	vonatkozo	regi_szabaly	nem
+1Móz 30:33	15	felel	nem pettyegetett	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Móz 31:14	19	örökségünk	atyánk házában	birtokos	birtokos	B1_nk_utana	nem
+1Móz 31:16	11	el	atyánktól miénk	birtokos	birtokos	B1_nk_utana	nem
+1Móz 31:16	16	és	fiainké Most	birtokos	birtokos	B1_nk_utana	nem
+1Móz 32:13	10	abból	kezénél vala	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Móz 33:9	12	tiéd	a tiéd	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Móz 34:9	12	és	leányainkat vegyétek	birtokos	birtokos	B1_nk_utana	nem
+1Móz 34:14	10	hogy	húgunkat körűlmetélkedetlen	birtokos	birtokos	B1_nk_utana	nem
+1Móz 34:16	3	Így	leányainkat néktek	birtokos	birtokos	B1_nk_utana	nem
+1Móz 34:17	10	felveszszük	leányunkat és	birtokos	birtokos	B1_nk_utana	nem
+1Móz 34:21	28	és	leányainkat adjuk	birtokos	birtokos	B1_nk_utana	nem
+1Móz 34:29	15	mindent	a házban	vonatkozo	vonatkozo	V2_mindazt_elotte	nem
+1Móz 34:31	13	bánni	húgunkkal	birtokos	birtokos	B1_nk_utana	nem
+1Móz 37:26	12	megöljük	atyánkfiát és	vonatkozo	birtokos	B1_nk_utana	igen
+1Móz 39:22	17	úgyhogy	ott történik	vonatkozo	vonatkozo	regi_szabaly	nem
+1Móz 41:12	20	nékünk	álmainkat mindegyikünknek	birtokos	birtokos	B1_nk_utana	nem
+1Móz 41:16	13	meg	a Faraónak	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Móz 42:21	8	mi	atyánkfia ellen	vonatkozo	birtokos	B1_nk_utana	igen
+1Móz 42:29	12	néki	velök történt	vonatkozo	vonatkozo	regi_szabaly	nem
+1Móz 42:32	5	atyafiak	atyánknak fiai	vonatkozo	birtokos	B1_nk_utana	igen
+1Móz 43:4	6	velünk	öcsénket elmegyünk	birtokos	birtokos	B1_nk_utana	nem
+1Móz 43:8	33	se	gyermekeink	birtokos	birtokos	B1_nk_utana	nem
+1Móz 43:18	23	először	zsákjainkba tétetett	vonatkozo	birtokos	B1_nk_utana	igen
+1Móz 43:18	36	tegyen	szamarainkkal együtt	birtokos	birtokos	B1_nk_utana	nem
+1Móz 43:21	11	vala	zsákjainkat ímé	birtokos	birtokos	B1_nk_utana	nem
+1Móz 43:22	15	tette	pénzünket zsákjainkba	birtokos	birtokos	B1_nk_utana	nem
+1Móz 43:28	10	szolgád	atyánk még	birtokos	birtokos	B1_nk_utana	nem
+1Móz 44:25	4	monda	atyánk Menjetek	birtokos	birtokos	B1_nk_utana	nem
+1Móz 44:26	8	ha	legkisebbik atyánkfia	vonatkozo	birtokos	B2_nk_masodik	igen
+1Móz 44:26	24	ha	legkisebbik atyánkfia	vonatkozo	birtokos	B2_nk_masodik	igen
+1Móz 44:31	18	szolgádnak	atyánknak ősz	vonatkozo	birtokos	B1_nk_utana	igen
+1Móz 46:34	18	mint	atyáink hogy	birtokos	birtokos	B1_nk_utana	nem
+1Móz 47:3	24	mint	atyáink	birtokos	birtokos	B1_nk_utana	nem
+1Móz 47:14	8	pénzt	találtatik vala	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Móz 47:19	20	és	földünk szolgái	birtokos	birtokos	B1_nk_utana	nem
+1Móz 49:1	16	néktek	rátok következik	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Móz 3:18	39	Úrnak	Istenünknek	bizonytalan	birtokos	B1_nk_utana	igen
+2Móz 5:3	21	Úrnak	Istenünknek hogy	bizonytalan	birtokos	B1_nk_utana	igen
+2Móz 5:8	26	áldozzunk	Istenünknek	bizonytalan	birtokos	B1_nk_utana	igen
+2Móz 8:10	17	hasonló	Urunkhoz Istenünkhöz	bizonytalan	birtokos	B1_nk_utana	igen
+2Móz 8:26	16	Úrnak	Istenünknek a	bizonytalan	birtokos	B1_nk_utana	igen
+2Móz 8:26	19	Istenünknek	utálatos az	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Móz 8:26	33	előtt	az Égyiptombelieknek	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Móz 8:27	11	áldozunk	Urunknak Istenünknek	bizonytalan	birtokos	B1_nk_utana	igen
+2Móz 9:4	17	mindabból	Izráel fiaié	bizonytalan	vonatkozo	V1_irasjel_elotte	igen
+2Móz 9:25	10	mindazt	a mezőn	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Móz 10:5	19	maradékot	megmaradt néktek	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Móz 10:9	5	monda	gyermekeinkkel és	birtokos	birtokos	B1_nk_utana	nem
+2Móz 10:9	11	megyünk	fiainkkal és	birtokos	birtokos	B1_nk_utana	nem
+2Móz 10:25	19	megáldozzuk	Urunknak Istenünknek	bizonytalan	birtokos	B1_nk_utana	igen
+2Móz 10:26	5	jőnek	barmaink is	birtokos	birtokos	B1_nk_utana	nem
+2Móz 10:26	19	szolgáljunk	Urunknak Istenünknek	bizonytalan	birtokos	B1_nk_utana	igen
+2Móz 12:10	8	vagy	megmarad belőle	vonatkozo	vonatkozo	regi_szabaly	nem
+2Móz 12:16	24	csak	eledelére való	vonatkozo	vonatkozo	regi_szabaly	nem
+2Móz 12:27	22	Égyiptombelieket	házainkat pedig	birtokos	birtokos	B1_nk_utana	nem
+2Móz 13:12	8	mindazt	az ő	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Móz 13:12	18	is	néked lesz	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Móz 14:5	31	Izráelt	szolgálatunkból	birtokos	birtokos	B1_nk_utana	nem
+2Móz 15:26	15	cselekeszed	kedves az	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Móz 16:23	34	meg	pedig megmarad	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Móz 19:12	24	mindaz	a hegyet	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Móz 20:11	17	mindent	azokban van	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Móz 20:17	24	semmit	a te	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Móz 23:11	17	szegényei	pedig ezektől	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Móz 26:13	11	abból	a sátor	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Móz 29:13	7	mindazt	a belet	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Móz 34:9	19	Kegyelmezz	vétkeinknek és	birtokos	birtokos	B1_nk_utana	nem
+2Móz 34:19	3	Mindaz	az anyja	vonatkozo	vonatkozo	regi_szabaly	nem
+2Móz 34:34	23	fiainak	parancsot kapott	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Móz 40:9	15	azt	benne van	vonatkozo	vonatkozo	regi_szabaly	nem
+3Móz 2:3	2		pedig megmarad	vonatkozo	vonatkozo	regi_szabaly	nem
+3Móz 2:8	7	ételáldozatot	ezekből készült	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+3Móz 2:10	2		pedig megmarad	vonatkozo	vonatkozo	regi_szabaly	nem
+3Móz 4:8	25	kövérjét	a belek	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+3Móz 6:4	25	bízottat	reá bízatott	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+3Móz 6:16	2		pedig megmarad	vonatkozo	vonatkozo	regi_szabaly	nem
+3Móz 7:16	24	áldozatát	pedig megmarad	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+3Móz 7:17	2		pedig annak	vonatkozo	vonatkozo	regi_szabaly	nem
+3Móz 7:19	18	meg	különben a	vonatkozo	vonatkozo	regi_szabaly	nem
+3Móz 7:21	14	akármihez	tisztátalan útálatosság	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+3Móz 8:32	2		pedig megmarad	vonatkozo	vonatkozo	regi_szabaly	nem
+3Móz 11:33	12	együtt	benne van	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+3Móz 11:36	13	de	azoknak holttestéhez	vonatkozo	vonatkozo	regi_szabaly	nem
+3Móz 11:41	4	is	csúszik mászik	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+3Móz 11:42	3	Mindazt	hason csúszik	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+3Móz 11:42	9	mindazt	négy sőt	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+3Móz 11:42	14	mindazt	több lábon	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+3Móz 13:20	29	az	a kelevényben	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+3Móz 13:25	24	az	a seben	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+3Móz 14:18	3	És	megmarad az	vonatkozo	vonatkozo	regi_szabaly	nem
+3Móz 14:29	2		pedig megmarad	vonatkozo	vonatkozo	regi_szabaly	nem
+3Móz 14:31	3	Azt	kitelik az	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+3Móz 14:36	25	tisztátalanná	a házban	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+3Móz 15:10	9	valamit	annak alatta	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+3Móz 15:32	13	van	által tisztátalanná	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+3Móz 19:6	11	meg	pedig harmadnapra	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+3Móz 25:5	2		a te	vonatkozo	vonatkozo	regi_szabaly	nem
+3Móz 25:5	14	és	a te	vonatkozo	vonatkozo	regi_szabaly	nem
+3Móz 25:32	2		pedig a	vonatkozo	vonatkozo	regi_szabaly	nem
+3Móz 27:22	7	mezejét	nem az	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+3Móz 27:28	32	minden	teljesen néki	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+3Móz 27:32	10	mindabból	a vessző	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+4Móz 3:46	2		pedig a	vonatkozo	vonatkozo	regi_szabaly	nem
+4Móz 4:16	28	mindenre	abban van	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+4Móz 4:26	31	mindazt	tenni való	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+4Móz 6:4	13	igyék	a szőlőtőről	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+4Móz 10:32	6	velünk	jót cselekszik	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+4Móz 11:6	4	pedig	lelkünk eleped	birtokos	birtokos	B1_nk_utana	nem
+4Móz 16:26	20	abból	az övék	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+4Móz 16:30	22	mindazt	az övék	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+4Móz 16:33	7	mindaz	az övék	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+4Móz 18:14	3	Minden	teljesen Istennek	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+4Móz 18:29	14	kövérjét	abból szentelni	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+4Móz 20:3	16	megholtak	atyánkfiai az	vonatkozo	birtokos	B1_nk_utana	igen
+4Móz 20:4	15	és	barmaink	birtokos	birtokos	B1_nk_utana	nem
+4Móz 20:15	3	Hogy	atyáink alámentek	birtokos	birtokos	B1_nk_utana	nem
+4Móz 20:15	20	és	atyáinkat	birtokos	birtokos	B1_nk_utana	nem
+4Móz 20:16	8	meghallgatta	szónkat és	birtokos	birtokos	B1_nk_utana	nem
+4Móz 21:5	30	útálja	lelkünk	birtokos	birtokos	B1_nk_utana	nem
+4Móz 22:38	15	valamit	mondani valót	vonatkozo	vonatkozo	V4_ige_utana	nem
+4Móz 27:3	2		atyánk meghalt	birtokos	birtokos	B1_nk_utana	nem
+4Móz 27:4	5	el	atyánknak neve	vonatkozo	birtokos	B1_nk_utana	igen
+4Móz 27:4	21	nékünk	atyánknak atyjafiai	vonatkozo	birtokos	B1_nk_utana	igen
+4Móz 30:12	20	semmi	az ő	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+4Móz 31:23	5	is	állja a	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+4Móz 31:23	25	pedig	nem állja	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+4Móz 31:49	12	kik	kezünk alatt	birtokos	birtokos	B1_nk_utana	nem
+4Móz 31:50	21	végezzünk	lelkünkért az	birtokos	birtokos	B1_nk_utana	nem
+4Móz 32:16	14	és	kicsinyeinknek városokat	birtokos	birtokos	B1_nk_utana	nem
+4Móz 32:18	6	addig	házainkhoz a	birtokos	birtokos	B1_nk_utana	nem
+4Móz 32:19	20	nékünk	örökségünk a	birtokos	birtokos	B1_nk_utana	nem
+4Móz 32:26	2		kicsinyeink feleségeink	birtokos	birtokos	B1_nk_utana	nem
+4Móz 32:32	14	legyen	örökségünknek birtoka	birtokos	birtokos	B1_nk_utana	nem
+4Móz 36:2	30	hogy	atyánkfiának Czélofhádnak	vonatkozo	birtokos	B1_nk_utana	igen
+4Móz 36:3	17	örökségök	atyáink örökségétől	birtokos	birtokos	B1_nk_utana	nem
+4Móz 36:3	33	lesznek	örökségünk pedig	birtokos	birtokos	B1_nk_utana	nem
+4Móz 36:4	25	Eképen	atyáink törzseinek	birtokos	birtokos	B1_nk_utana	nem
+5Móz 1:6	4	Úr	Istenünk szólott	bizonytalan	birtokos	B1_nk_utana	igen
+5Móz 1:17	21	Istené	pedig nehéznek	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+5Móz 1:19	26	Úr	Istenünk nékünk	bizonytalan	birtokos	B1_nk_utana	igen
+5Móz 1:20	13	Úr	Istenünk ád	bizonytalan	birtokos	B1_nk_utana	igen
+5Móz 1:25	27	Úr	Istenünk ád	bizonytalan	birtokos	B1_nk_utana	igen
+5Móz 1:28	6	mi	atyánkfiai megrettenték	vonatkozo	birtokos	B1_nk_utana	igen
+5Móz 1:28	10	megrettenték	szíveinket mondván	birtokos	birtokos	B1_nk_utana	nem
+5Móz 1:41	26	Úr	Istenünk És	bizonytalan	birtokos	B1_nk_utana	igen
+5Móz 2:8	4	általmenénk	atyánkfiai között	vonatkozo	birtokos	B1_nk_utana	igen
+5Móz 2:29	32	Úr	Istenünk ád	bizonytalan	birtokos	B1_nk_utana	igen
+5Móz 2:33	5	Úr	Istenünk kezünkbe	bizonytalan	birtokos	B1_nk_utana	igen
+5Móz 2:36	31	Úr	Istenünk adta	bizonytalan	birtokos	B1_nk_utana	igen
+5Móz 2:36	35	adta	kezünkbe	vonatkozo	birtokos	B1_nk_utana	igen
+5Móz 2:37	29	Úr	Istenünk	bizonytalan	birtokos	B1_nk_utana	igen
+5Móz 3:3	7	Úr	Istenünk Ógot	bizonytalan	birtokos	B1_nk_utana	igen
+5Móz 4:7	20	Úr	Istenünk valahányszor	bizonytalan	birtokos	B1_nk_utana	igen
+5Móz 5:2	4	Úr	Istenünk szövetséget	bizonytalan	birtokos	B1_nk_utana	igen
+5Móz 5:3	3	Nem	atyáinkkal kötötte	birtokos	birtokos	B1_nk_utana	nem
+5Móz 5:21	27	semmit	a te	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+5Móz 5:24	7	Úr	Istenünk megmutatta	bizonytalan	birtokos	B1_nk_utana	igen
+5Móz 5:25	19	Úrnak	Istenünknek szavát	bizonytalan	birtokos	B1_nk_utana	igen
+5Móz 5:27	15	Úr	Istenünk és	bizonytalan	birtokos	B1_nk_utana	igen
+5Móz 5:27	31	Úr	Istenünk és	bizonytalan	birtokos	B1_nk_utana	igen
+5Móz 6:4	6	Úr	Istenünk egy	bizonytalan	birtokos	B1_nk_utana	igen
+5Móz 6:18	5	cselekedjed	igaz és	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+5Móz 6:20	21	Úr	Istenünk parancsolt	bizonytalan	birtokos	B1_nk_utana	igen
+5Móz 6:22	20	háznépén	szemeink láttára	birtokos	birtokos	B1_nk_utana	nem
+5Móz 6:23	19	megesküdött	atyáinknak	vonatkozo	birtokos	B1_nk_utana	igen
+5Móz 6:24	17	Urat	Istenünket hogy	bizonytalan	birtokos	B1_nk_utana	igen
+5Móz 6:25	18	előtt	Istenünk előtt	bizonytalan	birtokos	B1_nk_utana	igen
+5Móz 8:3	40	ember	az Úrnak	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+5Móz 9:18	30	cselekedvén	gonosz az	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+5Móz 10:14	18	minden	rajta van	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+5Móz 12:8	16	azt	jónak látszik	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+5Móz 12:25	20	cselekszed	igaz az	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+5Móz 12:28	29	cselekszed	jó és	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+5Móz 13:15	13	mindenestől	benne van	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+5Móz 13:16	3	És	préda van	vonatkozo	vonatkozo	regi_szabaly	nem
+5Móz 13:18	23	cselekedjed	igaz az	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+5Móz 15:8	21	szükségére	nélkül szűkölködik	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+5Móz 20:14	13	azt	lesz a	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+5Móz 21:7	6	mondják	kezeink nem	birtokos	birtokos	B1_nk_utana	nem
+5Móz 21:7	16	sem	szemeink nem	birtokos	birtokos	B1_nk_utana	nem
+5Móz 21:9	15	azt	igaz az	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+5Móz 21:20	9	Ez	fiunk pártütő	birtokos	birtokos	B1_nk_utana	nem
+5Móz 21:20	17	hallgat	szónkra tobzódó	birtokos	birtokos	B1_nk_utana	nem
+5Móz 22:3	18	holmijával	elveszett tőle	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+5Móz 23:13	20	azt	elment tőled	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+5Móz 23:23	4	arra	ajkaidon kijön	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+5Móz 24:20	9	le	még utánad	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+5Móz 24:21	8	le	utánad marad	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+5Móz 26:3	36	Úr	atyáinknak hogy	vonatkozo	birtokos	B1_nk_utana	igen
+5Móz 26:7	6	Úrhoz	atyáink Istenéhez	birtokos	birtokos	B1_nk_utana	nem
+5Móz 26:7	14	Úr	szónkat és	birtokos	birtokos	B1_nk_utana	nem
+5Móz 26:7	19	megtekintette	nyomorúságunkat kínunkat	birtokos	birtokos	B1_nk_utana	nem
+5Móz 26:15	28	vala	atyáinknak a	vonatkozo	birtokos	B1_nk_utana	igen
+5Móz 29:15	18	előtt	Istenünk előtt	bizonytalan	birtokos	B1_nk_utana	igen
+5Móz 29:18	20	Úrtól	Istenünktől hogy	bizonytalan	birtokos	B1_nk_utana	igen
+5Móz 29:29	6	Úréi	Istenünkéi a	bizonytalan	birtokos	B1_nk_utana	igen
+5Móz 29:29	16	és	fiainké mind	birtokos	birtokos	B1_nk_utana	nem
+5Móz 32:21	5	ők	nem isten	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+5Móz 32:21	17	őket	nem népem	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+5Móz 32:27	17	mondják	kezünk a	birtokos	birtokos	B1_nk_utana	nem
+5Móz 32:31	3	Mert	Kősziklánk nem	bizonytalan	birtokos	B1_nk_utana	igen
+5Móz 32:35	20	siet	rájok vár	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Józs 2:11	7	megolvadott	szívünk és	birtokos	birtokos	B1_nk_utana	nem
+Józs 2:13	15	mindent	az övék	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Józs 2:13	21	megmentitek	lelkünket a	birtokos	birtokos	B1_nk_utana	nem
+Józs 2:14	7	férfiak	lelkünket érje	birtokos	birtokos	B1_nk_utana	nem
+Józs 2:14	19	ezt	dolgunkat És	birtokos	birtokos	B1_nk_utana	nem
+Józs 2:19	31	házban	fejünkön legyen	birtokos	birtokos	B1_nk_utana	nem
+Józs 2:20	6	ezt	dolgunkat akkor	birtokos	birtokos	B1_nk_utana	nem
+Józs 2:23	25	mindent	történt vala	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Józs 6:17	9	minden	benne van	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Józs 6:21	6	mindent	csak vala	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Józs 6:24	10	azt	benne vala	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Józs 8:27	6	és	zsákmányolni valója	vonatkozo	vonatkozo	regi_szabaly	nem
+Józs 9:11	5	nékünk	véneink és	birtokos	birtokos	B1_nk_utana	nem
+Józs 9:12	3	Ez	kenyerünk meleg	birtokos	birtokos	B1_nk_utana	nem
+Józs 9:12	12	elhoztuk	házainkból elindulván	birtokos	birtokos	B1_nk_utana	nem
+Józs 9:24	47	tőletek	életünket ezért	birtokos	birtokos	B1_nk_utana	nem
+Józs 13:2	6	föld	fennmaradt A	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Józs 14:10	26	Mózesnek	alatt Izráel	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Józs 17:4	25	nékünk	atyánkfiai között	vonatkozo	birtokos	B1_nk_utana	igen
+Józs 18:6	22	előtt	Istenünk előtt	bizonytalan	birtokos	B1_nk_utana	igen
+Józs 22:19	47	Úrnak	Istenünknek oltárán	bizonytalan	birtokos	B1_nk_utana	igen
+Józs 22:24	21	fiaitok	fiainkhoz mondván	birtokos	birtokos	B1_nk_utana	nem
+Józs 22:25	29	fiaitok	fiainkat hogy	birtokos	birtokos	B1_nk_utana	nem
+Józs 22:27	13	és	utánunk való	bizonytalan	bizonytalan	nincs_tampont	nem
+Józs 22:27	26	előtte	egészen égőáldozatainkkal	vonatkozo	birtokos	B2_nk_masodik	igen
+Józs 22:27	42	maholnap	fiainknak Nincs	vonatkozo	birtokos	B1_nk_utana	igen
+Józs 22:28	10	vagy	nemzetségeinknek ezt	birtokos	birtokos	B1_nk_utana	nem
+Józs 22:28	23	melyet	atyáink készítettek	birtokos	birtokos	B1_nk_utana	nem
+Józs 22:29	25	Úrnak	Istenünknek oltárán	bizonytalan	birtokos	B1_nk_utana	igen
+Józs 23:6	12	azt	meg van	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Józs 23:9	12	népeket	pedig titeket	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Józs 24:17	6	Úr	Istenünk az	bizonytalan	birtokos	B1_nk_utana	igen
+Józs 24:17	29	tette	szemeink előtt	birtokos	birtokos	B1_nk_utana	nem
+Józs 24:18	14	lakóját	orczánk elől	birtokos	birtokos	B1_nk_utana	nem
+Józs 24:18	25	ő	Istenünk	bizonytalan	birtokos	B1_nk_utana	igen
+Józs 24:24	9	Úrnak	Istenünknek szolgálunk	bizonytalan	birtokos	B1_nk_utana	igen
+Bír 10:10	15	elhagytuk	Istenünket és	bizonytalan	birtokos	B1_nk_utana	igen
+Bír 11:24	28	Úr	Istenünk űzött	bizonytalan	birtokos	B1_nk_utana	igen
+Bír 13:14	3	Mindabból	csak a	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Bír 16:23	22	adta	istenünk Sámsont	birtokos	birtokos	B1_nk_utana	nem
+Bír 16:23	26	Sámsont	ellenségünket	birtokos	birtokos	B1_nk_utana	nem
+Bír 16:24	16	adta	istenünk a	birtokos	birtokos	B1_nk_utana	nem
+Bír 16:24	19	istenünk	ellenségünket földünk	birtokos	birtokos	B1_nk_utana	nem
+Bír 18:5	16	é	útunk a	birtokos	birtokos	B1_nk_utana	nem
+Bír 18:10	24	hiány	csak a	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Bír 19:20	10	Mindarra	nélkül csak	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Bír 20:12	15	az	ti közöttetek	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Bír 20:48	22	és	csak található	vonatkozo	vonatkozo	regi_szabaly	nem
+Bír 21:7	21	feleségül	leányainkat	birtokos	birtokos	B1_nk_utana	nem
+Bír 21:25	13	cselekedte	jónak látszott	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Ruth 4:3	13	mely	atyánkfiáé Eliméleké	vonatkozo	birtokos	B1_nk_utana	igen
+Ruth 4:9	18	mindent	Eliméleké volt	bizonytalan	vonatkozo	V1_irasjel_elotte	igen
+Ruth 4:9	24	mindent	Kiljoné és	bizonytalan	vonatkozo	V1_irasjel_elotte	igen
+1Sám 2:2	18	mint	Istenünk	bizonytalan	birtokos	B1_nk_utana	igen
+1Sám 2:32	11	helyett	jót cselekedett	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Sám 2:34	8	jel	következik két	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Sám 5:7	27	Dágonra	istenünkre	birtokos	birtokos	B1_nk_utana	nem
+1Sám 6:9	40	az	velünk történt	bizonytalan	vonatkozo	V1_irasjel_elotte	igen
+1Sám 7:8	14	Úrhoz	Istenünkhöz hogy	bizonytalan	birtokos	B1_nk_utana	igen
+1Sám 8:20	21	vezesse	harczainkat	birtokos	birtokos	B1_nk_utana	nem
+1Sám 9:6	35	is	útunkat hogy	birtokos	birtokos	B1_nk_utana	nem
+1Sám 9:8	26	nékünk	útunkat	birtokos	birtokos	B1_nk_utana	nem
+1Sám 9:19	32	azt	szívedben van	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Sám 9:20	21	az	Izráelben becses	bizonytalan	vonatkozo	V1_irasjel_elotte	igen
+1Sám 9:24	9	és	rajta volt	vonatkozo	vonatkozo	regi_szabaly	nem
+1Sám 10:7	14	azt	csak kezed	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Sám 15:9	20	mindazt	jó vala	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Sám 15:9	29	hanem	megvetett és	vonatkozo	vonatkozo	V4_ige_utana	nem
+1Sám 15:19	17	azt	bűnös az	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Sám 16:7	33	nézi	szeme előtt	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Sám 16:16	4	azért	urunk szolgáidnak	birtokos	birtokos	B1_nk_utana	nem
+1Sám 17:9	28	legyetek	szolgáink hogy	birtokos	birtokos	B1_nk_utana	nem
+1Sám 21:3	13	egyebet	van	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Sám 23:20	15	és	gondunk lesz	birtokos	birtokos	B1_nk_utana	nem
+1Sám 25:8	23	abból	kezed közt	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Sám 25:14	22	köszöntsék	urunkat de	birtokos	birtokos	B1_nk_utana	nem
+1Sám 25:17	17	veszedelem	urunk és	birtokos	birtokos	B1_nk_utana	nem
+1Sám 25:21	23	mindannak	az övé	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Sám 25:22	18	mindabból	az övé	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Sám 29:7	14	cselekedjél	a Filiszteusok	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Sám 3:19	19	mindazt	tetszenék Izráel	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Sám 7:22	23	hallottuk	füleinkkel	birtokos	birtokos	B1_nk_utana	nem
+2Sám 10:12	7	bátrak	nemzetségünkért és	birtokos	birtokos	B1_nk_utana	nem
+2Sám 10:12	11	és	Istenünknek városaiért	bizonytalan	birtokos	B1_nk_utana	igen
+2Sám 14:20	28	észrevegyen	a földön	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Sám 15:15	17	királynak	urunknak ímé	vonatkozo	birtokos	B1_nk_utana	igen
+2Sám 18:4	7	király	néktek jónak	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Sám 18:12	20	mert	fülünk hallására	birtokos	birtokos	B1_nk_utana	nem
+2Sám 19:9	23	minket	ellenségeinknek kezéből	birtokos	birtokos	B1_nk_utana	nem
+2Sám 19:38	14	vele	néked tetszik	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Sám 19:41	18	téged	atyánkfiai a	vonatkozo	birtokos	B1_nk_utana	igen
+2Sám 19:43	39	haza	királyunkat De	birtokos	birtokos	B1_nk_utana	nem
+2Sám 22:32	12	kőszikla	Istenünkön kivül	bizonytalan	birtokos	B1_nk_utana	igen
+2Sám 24:22	16	fel	néki tetszik	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Kir 1:11	20	és	urunk Dávid	birtokos	birtokos	B1_nk_utana	nem
+1Kir 1:43	8	Igen	urunk Dávid	birtokos	birtokos	B1_nk_utana	nem
+1Kir 1:47	10	áldják	urunkat Dávid	birtokos	birtokos	B1_nk_utana	nem
+1Kir 5:8	9	Megértettem	felől küldöttél	vonatkozo	vonatkozo	V3_ige_elotte	nem
+1Kir 8:21	17	szerzett	atyáinkkal mikor	birtokos	birtokos	B1_nk_utana	nem
+1Kir 8:40	15	adtál	atyáinknak	vonatkozo	birtokos	B1_nk_utana	igen
+1Kir 8:53	24	kihoztad	atyáinkat Égyiptomból	birtokos	birtokos	B1_nk_utana	nem
+1Kir 8:57	4	Úr	Istenünk legyen	bizonytalan	birtokos	B1_nk_utana	igen
+1Kir 8:57	12	volt	atyáinkkal ne	birtokos	birtokos	B1_nk_utana	nem
+1Kir 8:58	5	magához	szívünket hogy	birtokos	birtokos	B1_nk_utana	nem
+1Kir 8:58	24	melyeket	atyáinknak parancsolt	vonatkozo	birtokos	B1_nk_utana	igen
+1Kir 8:59	17	előtt	Istenünk előtt	bizonytalan	birtokos	B1_nk_utana	igen
+1Kir 8:61	10	Úrhoz	Istenünkhöz hogy	bizonytalan	birtokos	B1_nk_utana	igen
+1Kir 8:65	26	előtt	Istenünk előtt	bizonytalan	birtokos	B1_nk_utana	igen
+1Kir 10:15	3	Azonkivül	jő vala	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Kir 11:33	35	volna	tetszett volna	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Kir 11:38	16	cselekedénded	tetszik nékem	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Kir 12:4	7	megnehezítette	igánkat de	birtokos	birtokos	B1_nk_utana	nem
+1Kir 12:10	30	megnehezítette	igánkat te	birtokos	birtokos	B1_nk_utana	nem
+1Kir 14:8	39	cselekedvén	kedves az	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Kir 14:26	15	mindent	csak elvihető	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Kir 15:5	6	cselekedte	kedves volt	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Kir 15:11	6	cselekedé	kedves volt	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Kir 20:6	23	veszik	csak kedves	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Kir 20:31	24	köteleket	nyakunkba és	vonatkozo	birtokos	B1_nk_utana	igen
+1Kir 22:43	17	cselekedvén	az Úr	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Kir 10:5	35	teszünk	néked tetszik	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Kir 10:30	12	azt	nékem tetszett	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Kir 12:12	20	mindarra	a ház	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Kir 16:2	18	cselekedé	az Úrnak	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Kir 18:22	10	Úrban	Istenünkben bízunk	bizonytalan	birtokos	B1_nk_utana	igen
+2Kir 19:29	18	esztendőben	magától terem	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Kir 20:3	19	cselekedtem	jó volt	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Kir 20:13	29	mindent	csak találtatott	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Kir 20:15	13	láttak	csak van	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Kir 20:17	9	mindaz	a te	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Kir 22:13	33	mivel	atyáink nem	birtokos	birtokos	B1_nk_utana	nem
+2Kir 24:7	17	elvett	csak az	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Krón 12:17	43	meg	atyáink Istene	birtokos	birtokos	B1_nk_utana	nem
+1Krón 12:19	29	mondván	fejünk veszésével	birtokos	birtokos	B1_nk_utana	nem
+1Krón 13:2	15	Úrtól	Istenünktől van	bizonytalan	birtokos	B1_nk_utana	igen
+1Krón 13:2	22	mindenfelé	atyánkfiaihoz a	vonatkozo	birtokos	B1_nk_utana	igen
+1Krón 13:3	5	ide	Istenünknek ládáját	bizonytalan	birtokos	B1_nk_utana	igen
+1Krón 15:13	10	Úr	Istenünk csapást	bizonytalan	birtokos	B1_nk_utana	igen
+1Krón 16:14	5	Úr	Istenünk az	bizonytalan	birtokos	B1_nk_utana	igen
+1Krón 16:32	14	minden	azon van	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Krón 19:13	8	mindnyájan	népünkért és	birtokos	birtokos	B1_nk_utana	nem
+1Krón 19:13	12	és	Istenünk városaiért	bizonytalan	birtokos	B1_nk_utana	igen
+1Krón 19:13	21	azt	néki tetszik	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Krón 21:23	16	cselekedje	néki tetszik	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Krón 21:24	16	mert	a tied	vonatkozo	vonatkozo	regi_szabaly	nem
+1Krón 24:20	2		Lévi többi	bizonytalan	bizonytalan	nincs_tampont	nem
+1Krón 24:21	2		illeti Rehábiát	vonatkozo	vonatkozo	V4_ige_utana	nem
+1Krón 28:2	30	és	Istenünk lábainak	bizonytalan	birtokos	B1_nk_utana	igen
+1Krón 28:8	13	és	Istenünk hallására	bizonytalan	birtokos	B1_nk_utana	igen
+1Krón 29:3	11	házához	kincsem aranyam	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Krón 29:10	20	Izráelnek	atyánknak Istene	vonatkozo	birtokos	B1_nk_utana	igen
+1Krón 29:15	13	mint	atyáink is	birtokos	birtokos	B1_nk_utana	nem
+1Krón 29:15	18	egyenként	életünk napjai	birtokos	birtokos	B1_nk_utana	nem
+1Krón 29:18	8	Izráelnek	atyáinknak Istene	vonatkozo	birtokos	B1_nk_utana	igen
+1Krón 29:30	10	azzal	az ő	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Krón 2:4	43	Úrnak	Istenünknek szentelt	bizonytalan	birtokos	B1_nk_utana	igen
+2Krón 2:5	13	mert	Istenünk nagyobb	bizonytalan	birtokos	B1_nk_utana	igen
+2Krón 4:6	20	azt	áldozatra való	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Krón 6:31	18	volt	atyáinknak	vonatkozo	birtokos	B1_nk_utana	igen
+2Krón 8:1	7	mulva	alatt Salamon	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Krón 10:4	7	megnehezítette	igánkat de	birtokos	birtokos	B1_nk_utana	nem
+2Krón 10:10	28	megnehezítette	igánkat te	birtokos	birtokos	B1_nk_utana	nem
+2Krón 13:10	8	Úr	Istenünk a	bizonytalan	birtokos	B1_nk_utana	igen
+2Krón 13:11	39	Úrnak	Istenünknek rendelését	bizonytalan	birtokos	B1_nk_utana	igen
+2Krón 14:2	6	cselekedé	jó és	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Krón 14:7	27	Urat	Istenünket megkerestük	bizonytalan	birtokos	B1_nk_utana	igen
+2Krón 14:11	50	vagy	Istenünk ne	bizonytalan	birtokos	B1_nk_utana	igen
+2Krón 19:7	16	Úrnál	Istenünknél nincsen	bizonytalan	birtokos	B1_nk_utana	igen
+2Krón 20:9	29	hozzád	nyomorúságainkban hallgass	birtokos	birtokos	B1_nk_utana	nem
+2Krón 20:12	31	néznek	szemeink	birtokos	birtokos	B1_nk_utana	nem
+2Krón 20:32	15	azt	az Úr	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Krón 21:17	14	vagyont	a király	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Krón 24:7	16	mindazt	az Úr	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Krón 28:13	24	ezzel	bűneinket és	birtokos	birtokos	B1_nk_utana	nem
+2Krón 29:6	4	vétkeztek	atyáink és	birtokos	birtokos	B1_nk_utana	nem
+2Krón 29:6	11	előtt	Istenünk előtt	bizonytalan	birtokos	B1_nk_utana	igen
+2Krón 29:9	4	ímé	atyáink fegyver	birtokos	birtokos	B1_nk_utana	nem
+2Krón 31:6	27	tizedét	az Úrnak	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Krón 31:10	39	rakás	megmaradt	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Krón 31:12	9	és	megszenteltetett nagy	vonatkozo	vonatkozo	V4_ige_utana	nem
+2Krón 31:20	8	Júdában	jó igaz	vonatkozo	vonatkozo	regi_szabaly	nem
+2Krón 32:8	11	Úr	Istenünk hogy	bizonytalan	birtokos	B1_nk_utana	igen
+2Krón 32:11	19	Úr	Istenünk megszabadít	bizonytalan	birtokos	B1_nk_utana	igen
+2Krón 34:21	36	hogy	atyáink nem	birtokos	birtokos	B1_nk_utana	nem
+2Krón 34:26	22	Istene	a beszédeket	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Ezsd 4:3	20	építeni	Istenünknek hanem	bizonytalan	birtokos	B1_nk_utana	igen
+Ezsd 8:17	35	szolgákat	Istenünk házához	bizonytalan	birtokos	B1_nk_utana	igen
+Ezsd 8:21	13	magunkat	Istenünk előtt	bizonytalan	birtokos	B1_nk_utana	igen
+Ezsd 8:22	12	oltalmunkra	ellenségeink ellen	birtokos	birtokos	B1_nk_utana	nem
+Ezsd 8:22	25	mondván	Istenünk kegyelme	bizonytalan	birtokos	B1_nk_utana	igen
+Ezsd 8:23	5	és	Istenünkhöz könyörgénk	bizonytalan	birtokos	B1_nk_utana	igen
+Ezsd 8:25	12	edényeket	Istenünk házának	bizonytalan	birtokos	B1_nk_utana	igen
+Ezsd 8:31	17	s	Istenünk kegyelme	bizonytalan	birtokos	B1_nk_utana	igen
+Ezsd 8:33	12	edények	Istenünk házában	bizonytalan	birtokos	B1_nk_utana	igen
+Ezsd 9:6	18	mert	álnokságaink felülhaladtak	birtokos	birtokos	B1_nk_utana	nem
+Ezsd 9:6	25	és	vétkeink mind	birtokos	birtokos	B1_nk_utana	nem
+Ezsd 9:7	2		atyáink napjaitól	birtokos	birtokos	B1_nk_utana	nem
+Ezsd 9:7	16	és	álnokságainkért adattunk	birtokos	birtokos	B1_nk_utana	nem
+Ezsd 9:7	22	mi	királyaink és	birtokos	birtokos	B1_nk_utana	nem
+Ezsd 9:7	26	és	papjaink a	birtokos	birtokos	B1_nk_utana	nem
+Ezsd 9:8	10	Úr	Istenünk rajtunk	bizonytalan	birtokos	B1_nk_utana	igen
+Ezsd 9:8	33	szemeinket	Istenünk s	bizonytalan	birtokos	B1_nk_utana	igen
+Ezsd 9:8	42	kissé	szolgaságunkban	birtokos	birtokos	B1_nk_utana	nem
+Ezsd 9:9	12	minket	Istenünk hanem	bizonytalan	birtokos	B1_nk_utana	igen
+Ezsd 9:9	27	felemelhessük	Istenünk házát	bizonytalan	birtokos	B1_nk_utana	igen
+Ezsd 10:2	16	vétkeztünk	Istenünk ellen	bizonytalan	birtokos	B1_nk_utana	igen
+Ezsd 10:3	5	frigyet	Istenünkkel hogy	bizonytalan	birtokos	B1_nk_utana	igen
+Ezsd 10:3	27	gondolnak	Istenünk parancsolatára	bizonytalan	birtokos	B1_nk_utana	igen
+Ezsd 10:14	33	magunkról	Istenünknek e	bizonytalan	birtokos	B1_nk_utana	igen
+Neh 4:9	5	imádkozánk	Istenünkhöz és	bizonytalan	birtokos	B1_nk_utana	igen
+Neh 4:11	2		ellenségeink pedig	birtokos	birtokos	B1_nk_utana	nem
+Neh 4:15	6	meghallották	ellenségeink hogy	birtokos	birtokos	B1_nk_utana	nem
+Neh 4:20	11	hallándjátok	Istenünk hadakozik	bizonytalan	birtokos	B1_nk_utana	igen
+Neh 5:4	15	adójáért	mezeinkre és	birtokos	birtokos	B1_nk_utana	nem
+Neh 5:5	5	bár	testünk épen	birtokos	birtokos	B1_nk_utana	nem
+Neh 5:5	11	mint	atyánkfiainak testök	vonatkozo	birtokos	B1_nk_utana	igen
+Neh 5:5	16	s	fiaink olyanok	birtokos	birtokos	B1_nk_utana	nem
+Neh 5:8	7	megváltottuk	atyánkfiait a	vonatkozo	birtokos	B1_nk_utana	igen
+Neh 5:8	18	vala	tehetségünk szerint	birtokos	birtokos	B1_nk_utana	nem
+Neh 5:9	15	fogtok	Istenünk félelmében	bizonytalan	birtokos	B1_nk_utana	igen
+Neh 5:9	28	pogányok	ellenségeink	birtokos	birtokos	B1_nk_utana	nem
+Neh 6:1	13	és	többi ellenségeink	vonatkozo	birtokos	B2_nk_masodik	igen
+Neh 6:16	26	hogy	Istenünktől vitetett	bizonytalan	birtokos	B1_nk_utana	igen
+Neh 8:10	26	nap	Urunknak és	bizonytalan	birtokos	B1_nk_utana	igen
+Neh 9:6	21	mindent	rajta van	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Neh 9:9	4	annakfelette	atyáinknak Égyiptomban	vonatkozo	birtokos	B1_nk_utana	igen
+Neh 9:16	4	pedig	atyáink felfuvalkodának	birtokos	birtokos	B1_nk_utana	nem
+Neh 9:34	3	Hiszen	királyaink fejedelmeink	birtokos	birtokos	B1_nk_utana	nem
+Neh 9:36	12	melyet	atyáinknak adál	vonatkozo	birtokos	B1_nk_utana	igen
+Neh 9:37	12	helyezél	bűneinkért s	birtokos	birtokos	B1_nk_utana	nem
+Neh 9:38	13	megpecsételének	fejedelmeink Lévitáink	birtokos	birtokos	B1_nk_utana	nem
+Neh 10:29	33	Úrnak	Urunknak minden	bizonytalan	birtokos	B1_nk_utana	igen
+Neh 10:30	19	venni	fiainknak	vonatkozo	birtokos	B1_nk_utana	igen
+Neh 10:32	13	esztendőnként	Istenünk házának	bizonytalan	birtokos	B1_nk_utana	igen
+Neh 10:33	34	és	Istenünk házának	bizonytalan	birtokos	B1_nk_utana	igen
+Neh 10:34	19	azt	Istenünk házába	bizonytalan	birtokos	B1_nk_utana	igen
+Neh 10:34	32	Úrnak	Istenünknek oltárán	bizonytalan	birtokos	B1_nk_utana	igen
+Neh 10:36	22	fajzásait	Istenünk házába	bizonytalan	birtokos	B1_nk_utana	igen
+Neh 10:36	31	szolgálnak	Istenünk házában	bizonytalan	birtokos	B1_nk_utana	igen
+Neh 10:37	3	És	lisztjeinknek felemelt	birtokos	birtokos	B1_nk_utana	nem
+Neh 10:37	18	papoknak	Istenünk házának	bizonytalan	birtokos	B1_nk_utana	igen
+Neh 10:38	24	tizedét	Istenünk házába	bizonytalan	birtokos	B1_nk_utana	igen
+Neh 10:39	40	el	Istenünknek házát	bizonytalan	birtokos	B1_nk_utana	igen
+Neh 13:2	21	de	Istenünk az	bizonytalan	birtokos	B1_nk_utana	igen
+Neh 13:18	11	s	Istenünk reánk	bizonytalan	birtokos	B1_nk_utana	igen
+Eszt 3:11	19	vele	néked tetszik	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Eszt 4:1	6	mindazt	történt és	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Eszt 4:7	7	mindazt	érte őt	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Eszt 6:13	13	mindazt	vele történt	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Eszt 9:26	24	és	érte őket	vonatkozo	vonatkozo	V4_ige_utana	nem
+Jób 1:11	12	mindazt	az övé	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Jób 8:9	12	mert	napjaink csak	birtokos	birtokos	B1_nk_utana	nem
+Jób 15:9	14	olyat	nálunk nem	bizonytalan	vonatkozo	V1_irasjel_elotte	igen
+Jób 20:26	19	is	sátrában megmaradt	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Jób 22:13	12	é	a homály	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Jób 22:20	4	kigyomláltatott	ellenségünk és	birtokos	birtokos	B1_nk_utana	nem
+Jób 23:14	5	viszi	felőlem elrendeltetett	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Jób 32:8	12	lehellése	értelmet ad	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Jób 41:11	9	visszafizessem	az ég	vonatkozo	vonatkozo	regi_szabaly	nem
+Zsolt 8:9	10	mindent	a tenger	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Zsolt 18:25	14	szerint	szemei előtt	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Zsolt 18:32	11	kőszikla	Istenünkön kivül	bizonytalan	birtokos	B1_nk_utana	igen
+Zsolt 19:7	15	semmi	elrejtőzhetnék hevétől	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Zsolt 20:6	8	és	Istenünk nevében	bizonytalan	birtokos	B1_nk_utana	igen
+Zsolt 20:8	11	Úrnak	Istenünknek nevéről	bizonytalan	birtokos	B1_nk_utana	igen
+Zsolt 33:21	6	vigad	szívünk csak	birtokos	birtokos	B1_nk_utana	nem
+Zsolt 40:4	7	szájamba	Istenünknek dicséretét	bizonytalan	birtokos	B1_nk_utana	igen
+Zsolt 44:19	6	tőled	szívünk sem	birtokos	birtokos	B1_nk_utana	nem
+Zsolt 44:27	4	fel	segítségünkre ments	birtokos	birtokos	B1_nk_utana	nem
+Zsolt 46:2	3	Isten	oltalmunk és	birtokos	birtokos	B1_nk_utana	nem
+Zsolt 46:8	9	Istene	várunk Szela	birtokos	birtokos	B1_nk_utana	nem
+Zsolt 46:12	9	Istene	várunk Szela	birtokos	birtokos	B1_nk_utana	nem
+Zsolt 48:2	8	dicséretes	Istenünknek városában	bizonytalan	birtokos	B1_nk_utana	igen
+Zsolt 48:9	11	városában	Istenünk városában	bizonytalan	birtokos	B1_nk_utana	igen
+Zsolt 48:15	6	Isten	Istenünk mindörökké	bizonytalan	birtokos	B1_nk_utana	igen
+Zsolt 50:3	3	Eljön	Istenünk és	bizonytalan	birtokos	B1_nk_utana	igen
+Zsolt 51:6	9	azt	gonosz a	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Zsolt 60:12	17	Isten	seregeinkkel	birtokos	birtokos	B1_nk_utana	nem
+Zsolt 62:9	13	Isten	menedékünk Szela	birtokos	birtokos	B1_nk_utana	nem
+Zsolt 66:8	4	népek	Istenünket és	bizonytalan	birtokos	B1_nk_utana	igen
+Zsolt 67:7	12	Isten	Istenünk	bizonytalan	birtokos	B1_nk_utana	igen
+Zsolt 68:20	10	rólunk	szabadításunk Istene	birtokos	birtokos	B1_nk_utana	nem
+Zsolt 68:21	3	Ez	Istenünk a	bizonytalan	birtokos	B1_nk_utana	igen
+Zsolt 69:35	12	és	csak mozog	vonatkozo	vonatkozo	regi_szabaly	nem
+Zsolt 80:7	8	és	ellenségeink csúfkodnak	birtokos	birtokos	B1_nk_utana	nem
+Zsolt 81:2	4	Istennek	erősségünknek ujjongjatok	birtokos	birtokos	B1_nk_utana	nem
+Zsolt 81:4	7	holdtöltekor	ünnepünk napján	birtokos	birtokos	B1_nk_utana	nem
+Zsolt 85:10	14	lakozzék	földünkön	birtokos	birtokos	B1_nk_utana	nem
+Zsolt 89:18	14	fel	szarvunkat is	birtokos	birtokos	B1_nk_utana	nem
+Zsolt 89:19	5	Úr	paizsunk és	birtokos	birtokos	B1_nk_utana	nem
+Zsolt 89:19	11	Szentje	királyunk	birtokos	birtokos	B1_nk_utana	nem
+Zsolt 89:35	9	és	kijött az	vonatkozo	vonatkozo	regi_szabaly	nem
+Zsolt 90:8	4	vetetted	álnokságainkat titkos	birtokos	birtokos	B1_nk_utana	nem
+Zsolt 90:9	12	megemésztjük	esztendeinket mint	birtokos	birtokos	B1_nk_utana	nem
+Zsolt 90:10	2		esztendeinknek napjai	birtokos	birtokos	B1_nk_utana	nem
+Zsolt 90:15	5	minket	nyomorúságunk napjaihoz	birtokos	birtokos	B1_nk_utana	nem
+Zsolt 90:17	6	Úrnak	Istenünknek jó	bizonytalan	birtokos	B1_nk_utana	igen
+Zsolt 90:17	14	és	kezünknek munkáját	birtokos	birtokos	B1_nk_utana	nem
+Zsolt 90:17	22	és	kezünknek munkáját	birtokos	birtokos	B1_nk_utana	nem
+Zsolt 92:14	7	házában	Istenünknek tornáczaiban	bizonytalan	birtokos	B1_nk_utana	igen
+Zsolt 94:23	19	Úr	Istenünk	bizonytalan	birtokos	B1_nk_utana	igen
+Zsolt 95:1	8	vígadozzunk	szabadításunk kősziklájának	birtokos	birtokos	B1_nk_utana	nem
+Zsolt 95:6	12	előtt	alkotónk előtt	birtokos	birtokos	B1_nk_utana	nem
+Zsolt 95:7	4	ő	Istenünk mi	bizonytalan	birtokos	B1_nk_utana	igen
+Zsolt 96:12	7	minden	rajta van	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Zsolt 98:3	16	mind	Istenünknek szabadítását	bizonytalan	birtokos	B1_nk_utana	igen
+Zsolt 99:5	5	Urat	Istenünket és	bizonytalan	birtokos	B1_nk_utana	igen
+Zsolt 99:9	5	Urat	Istenünket és	bizonytalan	birtokos	B1_nk_utana	igen
+Zsolt 99:9	19	Úr	Istenünk	bizonytalan	birtokos	B1_nk_utana	igen
+Zsolt 103:10	11	nékünk	álnokságaink szerint	birtokos	birtokos	B1_nk_utana	nem
+Zsolt 103:12	15	tőlünk	vétkeinket	birtokos	birtokos	B1_nk_utana	nem
+Zsolt 103:14	5	tudja	formáltatásunkat megemlékezik	birtokos	birtokos	B1_nk_utana	nem
+Zsolt 105:7	5	Úr	Istenünk az	bizonytalan	birtokos	B1_nk_utana	igen
+Zsolt 108:12	18	Isten	seregeinkkel	birtokos	birtokos	B1_nk_utana	nem
+Zsolt 113:5	6	Úrhoz	Istenünkhöz a	bizonytalan	birtokos	B1_nk_utana	igen
+Zsolt 115:3	3	Pedig	Istenünk az	bizonytalan	birtokos	B1_nk_utana	igen
+Zsolt 116:5	8	és	Istenünk irgalmas	bizonytalan	birtokos	B1_nk_utana	igen
+Zsolt 118:23	8	ez	szemeink előtt	birtokos	birtokos	B1_nk_utana	nem
+Zsolt 119:91	12	minden	van te	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Zsolt 122:2	4	álltak	lábaink a	birtokos	birtokos	B1_nk_utana	nem
+Zsolt 122:9	4	Úrnak	Istenünknek házáért	bizonytalan	birtokos	B1_nk_utana	igen
+Zsolt 123:2	20	Úrra	Istenünkre mígnem	bizonytalan	birtokos	B1_nk_utana	igen
+Zsolt 124:8	2		segítségünk az	birtokos	birtokos	B1_nk_utana	nem
+Zsolt 126:4	5	Uram	foglyainkat mint	birtokos	birtokos	B1_nk_utana	nem
+Zsolt 135:5	10	és	Urunk minden	bizonytalan	birtokos	B1_nk_utana	igen
+Zsolt 144:13	11	ezerszeresedjenek	legelőinken	birtokos	birtokos	B1_nk_utana	nem
+Zsolt 144:14	13	legyen	utczáinkon	birtokos	birtokos	B1_nk_utana	nem
+Zsolt 146:6	13	mindent	bennök van	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Zsolt 147:5	3	Nagy	Urunk és	bizonytalan	birtokos	B1_nk_utana	igen
+Zsolt 147:7	8	hárfát	Istenünknek	bizonytalan	birtokos	B1_nk_utana	igen
+Péld 1:13	7	megtöltjük	házainkat zsákmánnyal	birtokos	birtokos	B1_nk_utana	nem
+Péld 10:32	7	tudják	kedves az	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Péld 14:33	8	bölcseség	pedig a	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Préd 1:9	2		volt ugyanaz	vonatkozo	vonatkozo	V4_ige_utana	nem
+Préd 1:9	6	ugyanaz	ezután is	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Préd 1:9	12	és	történt ugyanaz	vonatkozo	vonatkozo	regi_szabaly	nem
+Préd 1:9	16	ugyanaz	ezután is	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Préd 2:18	12	dolog	történik a	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Préd 3:2	16	kiszaggatásának	ültettetett	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Préd 3:15	2		most történik	vonatkozo	vonatkozo	V4_ige_utana	nem
+Préd 3:15	9	és	következik immár	vonatkozo	vonatkozo	V4_ige_utana	nem
+Préd 3:15	18	visszahozza	elmult	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Préd 7:14	35	vegyen	reá következik	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Préd 7:24	6	van	van és	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Préd 8:7	6	azt	következik mert	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Préd 10:11	13	ember	következik és	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Préd 10:11	17	és	utána lesz	vonatkozo	vonatkozo	regi_szabaly	nem
+Préd 11:7	8	jó	szemeinkkel néznünk	birtokos	birtokos	B1_nk_utana	nem
+Én 1:16	11	és	nyoszolyánk zöldellő	birtokos	birtokos	B1_nk_utana	nem
+Én 1:17	2		házainknak gerendái	vonatkozo	birtokos	B1_nk_utana	igen
+Én 1:17	8	és	mennyezetünk cziprusfa	birtokos	birtokos	B1_nk_utana	nem
+Én 2:9	15	áll	falunkon túl	birtokos	birtokos	B1_nk_utana	nem
+Én 2:12	15	hallatik	földünkön	birtokos	birtokos	B1_nk_utana	nem
+Én 2:15	15	mert	szőlőink virágban	birtokos	birtokos	B1_nk_utana	nem
+Én 7:13	6	és	ajtónk előtt	birtokos	birtokos	B1_nk_utana	nem
+Én 8:8	13	cselekedjünk	húgunk felől	birtokos	birtokos	B1_nk_utana	nem
+Ézs 4:1	16	és	ruhánkba öltözködünk	vonatkozo	birtokos	B1_nk_utana	igen
+Ézs 10:15	39	azt	nem fa	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Ézs 33:22	5	Úr	bíránk az	birtokos	birtokos	B1_nk_utana	nem
+Ézs 33:22	10	Úr	vezérünk az	birtokos	birtokos	B1_nk_utana	nem
+Ézs 33:22	15	Úr	királyunk Ő	birtokos	birtokos	B1_nk_utana	nem
+Ézs 36:7	9	Úrban	Istenünkben bízunk	bizonytalan	birtokos	B1_nk_utana	igen
+Ézs 38:3	19	hogy	jó előtted	vonatkozo	vonatkozo	regi_szabaly	nem
+Ézs 39:2	24	mindent	kincsei közt	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Ézs 39:4	12	láttak	csak házamban	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Ézs 40:3	15	kietlenben	Istenünknek	bizonytalan	birtokos	B1_nk_utana	igen
+Ézs 42:17	20	vagytok	isteneink	birtokos	birtokos	B1_nk_utana	nem
+Ézs 47:4	4	szól	Megváltónk seregeknek	bizonytalan	birtokos	B1_nk_utana	igen
+Ézs 53:1	4	hitt	tanításunknak és	vonatkozo	birtokos	B1_nk_utana	igen
+Ézs 53:5	7	megrontatott	vétkeinkért békességünknek	birtokos	birtokos	B1_nk_utana	nem
+Ézs 55:2	6	azért	nem kenyér	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Ézs 55:2	14	azért	meg nem	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Ézs 55:7	22	és	Istenünkhöz mert	bizonytalan	birtokos	B1_nk_utana	igen
+Ézs 59:13	9	eltávozánk	Istenünktől szóltunk	bizonytalan	birtokos	B1_nk_utana	igen
+Ézs 63:16	19	vagy	Atyánk megváltónk	bizonytalan	birtokos	B1_nk_utana	igen
+Ézs 64:7	13	Te	alkotónk és	birtokos	birtokos	B1_nk_utana	nem
+Jer 1:3	22	viteléig	az ötödik	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Jer 3:22	20	Úr	Istenünk	bizonytalan	birtokos	B1_nk_utana	igen
+Jer 3:23	13	Úrban	Istenünkben van	bizonytalan	birtokos	B1_nk_utana	igen
+Jer 3:24	7	emésztette	atyáink szerzeményét	birtokos	birtokos	B1_nk_utana	nem
+Jer 3:25	7	minket	szégyenünk mert	birtokos	birtokos	B1_nk_utana	nem
+Jer 3:25	15	ellen	Istenünk ellen	bizonytalan	birtokos	B1_nk_utana	igen
+Jer 3:25	21	és	atyáink gyermekségünk	birtokos	birtokos	B1_nk_utana	nem
+Jer 3:25	35	Úrnak	Istenünknek szavára	bizonytalan	birtokos	B1_nk_utana	igen
+Jer 5:19	14	Úr	Istenünk akkor	bizonytalan	birtokos	B1_nk_utana	igen
+Jer 5:24	12	Urat	Istenünket a	bizonytalan	birtokos	B1_nk_utana	igen
+Jer 6:3	15	legelteti	keze ügyébe	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Jer 6:18	13	azt	következik reájok	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Jer 6:20	7	tömjén	Sébából kerül	bizonytalan	vonatkozo	V1_irasjel_elotte	igen
+Jer 7:31	25	és	gondolatomban sem	vonatkozo	vonatkozo	regi_szabaly	nem
+Jer 8:14	19	Úr	Istenünk hallgatásra	bizonytalan	birtokos	B1_nk_utana	igen
+Jer 9:18	9	és	szemeink is	birtokos	birtokos	B1_nk_utana	nem
+Jer 9:21	6	halál	ablakainkra bejött	birtokos	birtokos	B1_nk_utana	nem
+Jer 9:21	10	bejött	palotáinkba hogy	vonatkozo	birtokos	B1_nk_utana	igen
+Jer 11:21	26	halj	kezünk által	birtokos	birtokos	B1_nk_utana	nem
+Jer 12:4	30	meg	végünket	birtokos	birtokos	B1_nk_utana	nem
+Jer 14:7	13	temérdek	törvényszegésünk vétkeztünk	birtokos	birtokos	B1_nk_utana	nem
+Jer 14:20	4	Uram	gonoszságainkat atyáink	birtokos	birtokos	B1_nk_utana	nem
+Jer 14:22	23	é	Urunk Istenünk	bizonytalan	birtokos	B1_nk_utana	igen
+Jer 16:10	26	micsoda	bűnünk és	birtokos	birtokos	B1_nk_utana	nem
+Jer 16:10	31	micsoda	vétkünk a	birtokos	birtokos	B1_nk_utana	nem
+Jer 16:10	40	ellen	Istenünk ellen	bizonytalan	birtokos	B1_nk_utana	igen
+Jer 16:19	29	bírtak	atyáink és	birtokos	birtokos	B1_nk_utana	nem
+Jer 17:16	18	tudod	ajkaimon jött	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Jer 18:12	17	mindnyájan	gonosz szívünk	vonatkozo	birtokos	B2_nk_masodik	igen
+Jer 21:13	29	be	házainkba	vonatkozo	birtokos	B1_nk_utana	igen
+Jer 23:6	23	Úr	igazságunk	birtokos	birtokos	B1_nk_utana	nem
+Jer 23:36	24	Urának	Istenünknek beszédét	bizonytalan	birtokos	B1_nk_utana	igen
+Jer 25:13	13	mindazt	megvan írva	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Jer 26:16	25	Úrnak	Istenünknek nevében	bizonytalan	birtokos	B1_nk_utana	igen
+Jer 26:19	41	vonnánk	lelkünkre	birtokos	birtokos	B1_nk_utana	nem
+Jer 31:6	21	Úrhoz	Istenünkhöz	bizonytalan	birtokos	B1_nk_utana	igen
+Jer 32:30	13	cselekedték	gonosz az	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Jer 33:16	19	Úr	igazságunk	birtokos	birtokos	B1_nk_utana	nem
+Jer 35:6	11	fia	atyánk parancsolta	birtokos	birtokos	B1_nk_utana	nem
+Jer 35:8	8	fiának	atyánknak szavára	vonatkozo	birtokos	B1_nk_utana	igen
+Jer 35:8	24	mi	feleségeink a	birtokos	birtokos	B1_nk_utana	nem
+Jer 35:8	27	feleségeink	fiaink és	birtokos	birtokos	B1_nk_utana	nem
+Jer 35:8	31	és	leányaink	birtokos	birtokos	B1_nk_utana	nem
+Jer 35:10	15	Jónadáb	atyánk megparancsolta	birtokos	birtokos	B1_nk_utana	nem
+Jer 36:15	11	azt	fülünk hallatára	birtokos	birtokos	B1_nk_utana	nem
+Jer 37:3	23	Úrnak	Istenünknek	bizonytalan	birtokos	B1_nk_utana	igen
+Jer 42:6	10	Úrnak	Istenünknek szavára	bizonytalan	birtokos	B1_nk_utana	igen
+Jer 42:6	30	Úrnak	Istenünknek szavára	bizonytalan	birtokos	B1_nk_utana	igen
+Jer 42:20	22	Úrnak	Istenünknek és	bizonytalan	birtokos	B1_nk_utana	igen
+Jer 42:20	31	Úr	Istenünk úgy	bizonytalan	birtokos	B1_nk_utana	igen
+Jer 43:2	24	Úr	Istenünk hogy	bizonytalan	birtokos	B1_nk_utana	igen
+Jer 44:16	5	dologban	végett szóltál	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Jer 44:17	9	mi	szánkkal fogadtunk	birtokos	birtokos	B1_nk_utana	nem
+Jer 44:17	28	és	atyáink és	birtokos	birtokos	B1_nk_utana	nem
+Jer 44:17	32	és	királyaink és	birtokos	birtokos	B1_nk_utana	nem
+Jer 44:17	36	és	fejedelmeink Júda	birtokos	birtokos	B1_nk_utana	nem
+Jer 44:19	15	vajjon	férjeink híre	birtokos	birtokos	B1_nk_utana	nem
+Jer 44:25	28	teljesítjük	fogadásainkat a	birtokos	birtokos	B1_nk_utana	nem
+Jer 46:16	17	vissza	népünkhöz és	birtokos	birtokos	B1_nk_utana	nem
+Jer 46:16	21	és	szülőföldünkre az	birtokos	birtokos	B1_nk_utana	nem
+Jer 50:28	16	Úrnak	Istenünknek bosszúállását	bizonytalan	birtokos	B1_nk_utana	igen
+Jer 51:10	5	Úr	igazságainkat jertek	birtokos	birtokos	B1_nk_utana	nem
+Jer 51:10	15	Úrnak	Istenünknek dolgát	bizonytalan	birtokos	B1_nk_utana	igen
+Jer 52:19	19	serlegeket	arany aranyban	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Jer 52:19	23	aranyban	ezüst ezüstben	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Sir 2:4	14	mindent	a szemnek	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Sir 3:40	3	Tudakozzuk	útainkat és	birtokos	birtokos	B1_nk_utana	nem
+Sir 4:18	8	járhattunk	utczáinkon elközelgetett	birtokos	birtokos	B1_nk_utana	nem
+Sir 4:18	12	elközelgetett	végünk beteltek	birtokos	birtokos	B1_nk_utana	nem
+Sir 4:18	16	beteltek	napjaink bizony	birtokos	birtokos	B1_nk_utana	nem
+Sir 4:18	21	eljött	végünk	birtokos	birtokos	B1_nk_utana	nem
+Sir 4:19	4	valának	üldözőink az	birtokos	birtokos	B1_nk_utana	nem
+Sir 5:2	2		örökségünk idegenekre	birtokos	birtokos	B1_nk_utana	nem
+Sir 5:15	4	van	szívünk öröme	birtokos	birtokos	B1_nk_utana	nem
+Sir 5:15	10	fordult	körtánczunk	birtokos	birtokos	B1_nk_utana	nem
+Sir 5:16	3	Elesett	fejünknek koronája	birtokos	birtokos	B1_nk_utana	nem
+Sir 5:17	5	beteg	szívünk ezekért	birtokos	birtokos	B1_nk_utana	nem
+Sir 5:17	11	meg	szemeink	birtokos	birtokos	B1_nk_utana	nem
+Sir 5:21	10	meg	napjainkat mint	birtokos	birtokos	B1_nk_utana	nem
+Ez 3:1	7	fia	előtted van	vonatkozo	vonatkozo	regi_szabaly	nem
+Ez 11:5	21	és	lelketekben készül	vonatkozo	vonatkozo	regi_szabaly	nem
+Ez 18:18	11	és	nem jó	vonatkozo	vonatkozo	regi_szabaly	nem
+Ez 20:32	3	És	lelketekben támadt	vonatkozo	vonatkozo	regi_szabaly	nem
+Ez 22:8	2		nékem szenteltetett	vonatkozo	vonatkozo	regi_szabaly	nem
+Ez 22:26	8	megfertéztették	nékem szenteltetett	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Ez 22:26	17	között	szent és	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Ez 22:26	21	és	köz s	vonatkozo	vonatkozo	V4_ige_utana	nem
+Ez 23:4	18	leányokat	pedig a	vonatkozo	vonatkozo	regi_szabaly	nem
+Ez 24:6	29	ki	benne van	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Ez 33:10	13	Bizony	bűneink és	birtokos	birtokos	B1_nk_utana	nem
+Ez 36:2	18	magasságok	örökségünk lőnek	birtokos	birtokos	B1_nk_utana	nem
+Ez 37:11	18	Elszáradtak	csontjaink és	birtokos	birtokos	B1_nk_utana	nem
+Ez 37:11	23	elveszett	reménységünk kivágattunk	birtokos	birtokos	B1_nk_utana	nem
+Ez 41:9	12	És	üresen maradt	vonatkozo	vonatkozo	regi_szabaly	nem
+Ez 46:7	21	azt	kezétől telik	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Ez 48:18	2		pedig megmaradt	vonatkozo	vonatkozo	regi_szabaly	nem
+Ez 48:21	2		pedig megmaradt	vonatkozo	vonatkozo	regi_szabaly	nem
+Ez 48:22	15	annak	a fejedelemé	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Dán 1:13	6	néked	ábrázatunkat és	birtokos	birtokos	B1_nk_utana	nem
+Dán 2:29	26	azt	lesz	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Dán 2:45	31	királynak	majd ezután	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Dán 3:17	3	Ímé	Istenünk a	bizonytalan	birtokos	B1_nk_utana	igen
+Dán 9:6	16	szóltak	királyainknak fejedelmeinknek	vonatkozo	birtokos	B1_nk_utana	igen
+Dán 9:8	7	pirulása	királyainké fejedelmeinké	birtokos	birtokos	B1_nk_utana	nem
+Dán 9:9	2		Urunké Istenünké	bizonytalan	birtokos	B1_nk_utana	igen
+Dán 9:10	7	Úrnak	Istenünknek szavára	bizonytalan	birtokos	B1_nk_utana	igen
+Dán 9:12	12	és	bíráink ellen	birtokos	birtokos	B1_nk_utana	nem
+Dán 9:13	18	Úrnak	Istenünknek szine	bizonytalan	birtokos	B1_nk_utana	igen
+Dán 9:13	28	volna	álnokságainkból és	birtokos	birtokos	B1_nk_utana	nem
+Dán 9:14	17	Úr	Istenünk minden	bizonytalan	birtokos	B1_nk_utana	igen
+Dán 9:16	25	mert	bűneinkért és	birtokos	birtokos	B1_nk_utana	nem
+Dán 9:16	29	és	atyáink hamisságaiért	birtokos	birtokos	B1_nk_utana	nem
+Dán 9:18	18	meg	pusztulásunkat és	birtokos	birtokos	B1_nk_utana	nem
+Dán 9:18	32	nem	igazságunkban hanem	birtokos	birtokos	B1_nk_utana	nem
+Dán 9:18	43	elődbe	esedezéseinket	birtokos	birtokos	B1_nk_utana	nem
+Dán 9:27	31	és	elhatároztatott a	vonatkozo	vonatkozo	regi_szabaly	nem
+Dán 10:14	7	adjam	a te	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Dán 10:21	5	néked	fel van	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Dán 11:36	34	mert	elhatároztatott az	vonatkozo	vonatkozo	regi_szabaly	nem
+Hós 4:3	9	minden	azon lakik	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Hós 14:3	20	azt	jó és	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Mik 4:5	13	is	Urunk Istenünk	bizonytalan	birtokos	B1_nk_utana	igen
+Mik 5:5	4	ő	békességünk Ha	birtokos	birtokos	B1_nk_utana	nem
+Mik 5:5	11	eljő	földünkre és	birtokos	birtokos	B1_nk_utana	nem
+Mik 5:6	18	ha	földünkre eljő	birtokos	birtokos	B1_nk_utana	nem
+Mik 5:6	23	és	határunkba lép	vonatkozo	birtokos	B1_nk_utana	igen
+Mik 7:17	19	Úrhoz	Istenünkhöz és	bizonytalan	birtokos	B1_nk_utana	igen
+Náh 1:5	19	minden	rajta él	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Hab 2:6	21	gyűjti	nem övé	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Zak 1:6	34	hogy	útaink és	birtokos	birtokos	B1_nk_utana	nem
+Zak 5:5	23	az	kijön	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Zak 5:6	10	Az	kijön mérőedény	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Zak 9:7	13	is	Istenünké marad	bizonytalan	birtokos	B1_nk_utana	igen
+Zak 11:2	10	leomlott	legjava Jajgassatok	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Mal 2:10	22	megrontván	atyáink szövetségét	birtokos	birtokos	B1_nk_utana	nem
+Mt 1:20	27	mert	benne fogantatott	vonatkozo	vonatkozo	regi_szabaly	nem
+Mt 1:23	15	nevezik	azt jelenti	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Mt 3:9	10	Ábrahám	atyánk Mert	birtokos	birtokos	B1_nk_utana	nem
+Mt 5:37	11	nem	pedig ezeken	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Mt 6:11	2		mindennapi kenyerünket	vonatkozo	birtokos	B2_nk_masodik	igen
+Mt 6:12	5	meg	vétkeinket miképen	birtokos	birtokos	B1_nk_utana	nem
+Mt 7:6	5	azt	szent az	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Mt 8:17	14	el	erőtlenségünket és	birtokos	birtokos	B1_nk_utana	nem
+Mt 8:17	20	hordozta	betegségünket	birtokos	birtokos	B1_nk_utana	nem
+Mt 9:16	13	mert	azt kitoldaná	vonatkozo	vonatkozo	regi_szabaly	nem
+Mt 10:26	11	dolog	napfényre ne	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Mt 10:26	19	titok	ki ne	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Mt 13:19	19	azt	annak szívébe	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Mt 15:11	8	embert	a szájon	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Mt 15:11	14	hanem	kijön a	vonatkozo	vonatkozo	V4_ige_utana	nem
+Mt 15:17	7	minden	a szájon	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Mt 18:11	10	megtartsa	elveszett vala	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Mt 20:4	12	és	igazságos megadom	vonatkozo	vonatkozo	regi_szabaly	nem
+Mt 20:7	19	és	igazságos megkapjátok	vonatkozo	vonatkozo	regi_szabaly	nem
+Mt 20:14	3	Vedd	a tiéd	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Mt 20:33	8	megnyíljanak	szemeink	birtokos	birtokos	B1_nk_utana	nem
+Mt 21:21	19	cselekszitek	e fügefán	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Mt 21:42	27	csodálatos	szemeink előtt	birtokos	birtokos	B1_nk_utana	nem
+Mt 22:21	12	azért	a császáré	vonatkozo	vonatkozo	regi_szabaly	nem
+Mt 22:21	19	és	az Istené	vonatkozo	vonatkozo	regi_szabaly	nem
+Mt 25:8	14	mert	lámpásaink kialusznak	birtokos	birtokos	B1_nk_utana	nem
+Mt 25:25	14	megvan	a tied	vonatkozo	vonatkozo	regi_szabaly	nem
+Mt 27:25	14	és	magzatainkon	birtokos	birtokos	B1_nk_utana	nem
+Mt 28:11	19	mindent	történt	vonatkozo	vonatkozo	V2_mindazt_elotte	nem
+Mk 2:21	12	máskülönben	azt kitoldaná	vonatkozo	vonatkozo	regi_szabaly	nem
+Mk 4:22	7	dolog	meg ne	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Mk 5:14	24	az	történt	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Mk 5:41	11	kúmi	megmagyarázva azt	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Mk 6:2	30	az	néki adatott	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Mk 7:15	7	kívülvaló	bemenvén ő	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Mk 7:18	15	hogy	kívülről megy	vonatkozo	vonatkozo	regi_szabaly	nem
+Mk 7:20	4	továbbá	az emberből	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Mk 11:10	3	Áldott	Atyánknak Dávidnak	bizonytalan	birtokos	B1_nk_utana	igen
+Mk 12:11	8	csodálatos	szemeink előtt	birtokos	birtokos	B1_nk_utana	nem
+Mk 12:17	9	meg	a Császáré	vonatkozo	vonatkozo	V3_ige_elotte	nem
+Mk 12:17	16	és	az Istené	vonatkozo	vonatkozo	regi_szabaly	nem
+Mk 12:29	15	Úr	Istenünk egy	bizonytalan	birtokos	B1_nk_utana	igen
+Mk 13:11	19	hanem	adatik néktek	vonatkozo	vonatkozo	V4_ige_utana	nem
+Mk 14:8	3	Ő	tőle telt	vonatkozo	vonatkozo	regi_szabaly	nem
+Mk 15:16	11	részébe	az őrház	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Mk 15:34	13	Sabaktáni	megmagyarázva annyi	vonatkozo	vonatkozo	regi_szabaly	nem
+Luk 1:35	22	azért	születik is	vonatkozo	vonatkozo	V4_ige_utana	nem
+Luk 1:55	6	volt	atyáinknak Ábrahám	vonatkozo	birtokos	B1_nk_utana	igen
+Luk 1:71	3	Hogy	ellenségeinktől megszabadít	birtokos	birtokos	B1_nk_utana	nem
+Luk 1:72	5	cselekedjék	atyáinkkal és	birtokos	birtokos	B1_nk_utana	nem
+Luk 1:73	8	Ábrahámnak	atyánknak hogy	vonatkozo	birtokos	B1_nk_utana	igen
+Luk 1:74	4	megszabadulván	ellenségeink kezéből	birtokos	birtokos	B1_nk_utana	nem
+Luk 1:75	7	előtte	életünknek minden	birtokos	birtokos	B1_nk_utana	nem
+Luk 1:78	2		Istenünk nagy	bizonytalan	birtokos	B1_nk_utana	igen
+Luk 1:79	16	igazgassa	lábainkat a	birtokos	birtokos	B1_nk_utana	nem
+Luk 2:17	6	elhirdeték	nékik a	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Luk 3:8	12	Ábrahám	atyánk mert	birtokos	birtokos	B1_nk_utana	nem
+Luk 3:13	11	mint	előtökbe rendeltetett	vonatkozo	vonatkozo	regi_szabaly	nem
+Luk 7:5	4	szereti	nemzetünket és	birtokos	birtokos	B1_nk_utana	nem
+Luk 8:56	13	mondják	történt	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Luk 9:17	9	felszedék	darabok maradtak	vonatkozo	vonatkozo	V3_ige_elotte	nem
+Luk 11:3	2		mindennapi kenyerünket	vonatkozo	birtokos	B2_nk_masodik	igen
+Luk 11:4	6	nékünk	bűneinket mert	birtokos	birtokos	B1_nk_utana	nem
+Luk 11:40	7	teremtette	kívül van	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Luk 11:40	17	is	belől van	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Luk 11:41	5	alamizsnául	benne van	vonatkozo	vonatkozo	regi_szabaly	nem
+Luk 12:26	4	ha	legkisebb dolog	vonatkozo	vonatkozo	regi_szabaly	nem
+Luk 13:26	11	és	utczáinkon tanítottál	birtokos	birtokos	B1_nk_utana	nem
+Luk 16:12	13	néktek	a tiétek	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Luk 16:15	22	mert	az emberek	vonatkozo	vonatkozo	regi_szabaly	nem
+Luk 17:5	9	Növeljed	hitünket	birtokos	birtokos	B1_nk_utana	nem
+Luk 18:27	5	monda	embereknél lehetetlen	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Luk 19:10	12	megtartsa	elveszett	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Luk 20:17	10	tehát	meg van	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Luk 20:25	9	azért	a császáré	vonatkozo	vonatkozo	regi_szabaly	nem
+Luk 20:25	16	és	az Istené	vonatkozo	vonatkozo	regi_szabaly	nem
+Luk 22:49	10	valának	következik mondának	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Luk 23:41	7	mert	cselekedetünknek méltó	birtokos	birtokos	B1_nk_utana	nem
+Luk 23:47	6	százados	történt dicsőíté	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Luk 24:20	9	és	főembereink halálos	birtokos	birtokos	B1_nk_utana	nem
+Luk 24:32	9	é	szívünk mi	birtokos	birtokos	B1_nk_utana	nem
+Ján 1:3	12	lett	lett	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Ján 1:39	9	Rabbi	megmagyarázva azt	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Ján 1:42	15	Messiást	megmagyarázva azt	vonatkozo	vonatkozo	regi_szabaly	nem
+Ján 1:43	21	hivatni	megmagyarázva Kőszikla	vonatkozo	vonatkozo	regi_szabaly	nem
+Ján 3:6	2		testtől született	vonatkozo	vonatkozo	regi_szabaly	nem
+Ján 3:6	9	és	Lélektől született	bizonytalan	bizonytalan	nincs_tampont	nem
+Ján 3:11	19	és	bizonyságtételünket el	birtokos	birtokos	B1_nk_utana	nem
+Ján 4:12	7	te	atyánknál Jákóbnál	vonatkozo	birtokos	B1_nk_utana	igen
+Ján 4:20	2		atyáink ezen	birtokos	birtokos	B1_nk_utana	nem
+Ján 6:31	2		atyáink a	birtokos	birtokos	B1_nk_utana	nem
+Ján 6:63	5	az	megelevenít a	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Ján 7:51	3	Vajjon	törvényünk kárhoztatja	birtokos	birtokos	B1_nk_utana	nem
+Ján 8:39	6	néki	atyánk Ábrahám	birtokos	birtokos	B1_nk_utana	nem
+Ján 8:53	7	te	atyánknál Ábrahámnál	vonatkozo	birtokos	B1_nk_utana	igen
+Ján 9:7	12	tavában	azt jelenti	vonatkozo	vonatkozo	regi_szabaly	nem
+Ján 9:20	11	ez	fiunk és	birtokos	birtokos	B1_nk_utana	nem
+Ján 11:11	9	Lázár	barátunk elaludt	birtokos	birtokos	B1_nk_utana	nem
+Ján 12:38	14	hitt	tanításunknak és	vonatkozo	birtokos	B1_nk_utana	igen
+Ján 15:19	10	azt	az övé	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Ján 16:15	3	Mindaz	az Atyáé	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Ján 18:4	6	mindazt	reá következendő	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Ján 19:7	10	és	törvényünk szerint	birtokos	birtokos	B1_nk_utana	nem
+Ján 20:16	11	Rabbóni	azt teszi	vonatkozo	vonatkozo	regi_szabaly	nem
+ApCsel 2:11	9	szólják	nyelvünkön az	birtokos	birtokos	B1_nk_utana	nem
+ApCsel 2:16	5	az	megmondatott Jóel	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+ApCsel 2:39	22	Úr	Istenünk	bizonytalan	birtokos	B1_nk_utana	igen
+ApCsel 3:10	23	álmélkodással	történt vala	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+ApCsel 3:13	8	Istene	atyáinknak Istene	vonatkozo	birtokos	B1_nk_utana	igen
+ApCsel 3:25	13	szerzett	atyáinkkal mondván	birtokos	birtokos	B1_nk_utana	nem
+ApCsel 4:21	26	azért	történt	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+ApCsel 4:36	10	el	megmagyarázva annyi	vonatkozo	vonatkozo	regi_szabaly	nem
+ApCsel 5:30	2		atyáinknak Istene	vonatkozo	birtokos	B1_nk_utana	igen
+ApCsel 7:2	15	megjelenék	atyánknak Ábrahámnak	vonatkozo	birtokos	B1_nk_utana	igen
+ApCsel 7:11	18	eledelt	atyáink	birtokos	birtokos	B1_nk_utana	nem
+ApCsel 7:12	12	először	atyáinkat	birtokos	birtokos	B1_nk_utana	nem
+ApCsel 7:15	10	és	atyáink	birtokos	birtokos	B1_nk_utana	nem
+ApCsel 7:19	3	Ez	nemzetségünkkel álnokul	birtokos	birtokos	B1_nk_utana	nem
+ApCsel 7:19	9	nyomorgatta	atyáinkat hogy	birtokos	birtokos	B1_nk_utana	nem
+ApCsel 7:38	19	és	atyáinkkal ki	birtokos	birtokos	B1_nk_utana	nem
+ApCsel 7:39	7	engedni	atyáink hanem	birtokos	birtokos	B1_nk_utana	nem
+ApCsel 7:44	5	sátora	atyáinknál volt	vonatkozo	birtokos	B1_nk_utana	igen
+ApCsel 7:45	3	Melyet	atyáink átvévén	birtokos	birtokos	B1_nk_utana	nem
+ApCsel 7:45	20	Isten	atyáink színe	birtokos	birtokos	B1_nk_utana	nem
+ApCsel 12:9	12	az	történik az	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+ApCsel 13:17	8	kiválasztotta	atyáinkat és	birtokos	birtokos	B1_nk_utana	nem
+ApCsel 14:17	23	örömmel	szívünket	birtokos	birtokos	B1_nk_utana	nem
+ApCsel 15:10	17	sem	atyáink sem	birtokos	birtokos	B1_nk_utana	nem
+ApCsel 15:25	15	hozzátok	szeretteinkkel Barnabással	birtokos	birtokos	B1_nk_utana	nem
+ApCsel 15:26	8	koczkára	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+ApCsel 15:36	13	meg	atyánkfiait minden	vonatkozo	birtokos	B1_nk_utana	igen
+ApCsel 16:20	14	megháborítják	városunkat	birtokos	birtokos	B1_nk_utana	nem
+ApCsel 17:20	7	beszélsz	füleinknek meg	birtokos	birtokos	B1_nk_utana	nem
+ApCsel 17:24	11	mindazt	abban van	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+ApCsel 19:25	17	van	jóllétünk	birtokos	birtokos	B1_nk_utana	nem
+ApCsel 20:20	7	magamat	hasznos hogy	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+ApCsel 20:21	13	és	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+ApCsel 22:14	5	monda	atyáinknak Istene	vonatkozo	birtokos	B1_nk_utana	igen
+ApCsel 23:30	21	hogy	dolguk van	vonatkozo	vonatkozo	regi_szabaly	nem
+ApCsel 24:6	14	és	törvényünk szerint	birtokos	birtokos	B1_nk_utana	nem
+ApCsel 26:5	13	én	vallásunknak legszigorúbb	vonatkozo	birtokos	B1_nk_utana	igen
+ApCsel 26:6	6	Istentől	atyáinknak tett	vonatkozo	birtokos	B1_nk_utana	igen
+ApCsel 26:7	3	Melyre	tizenkét nemzetségünk	vonatkozo	birtokos	B2_nk_masodik	igen
+ApCsel 27:10	15	hanem	életünknek is	birtokos	birtokos	B1_nk_utana	nem
+ApCsel 28:15	7	mikor	dolgainkat meghallották	birtokos	birtokos	B1_nk_utana	nem
+ApCsel 28:25	23	által	atyáinknak mondván	vonatkozo	birtokos	B1_nk_utana	igen
+Róm 1:4	17	által	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+Róm 1:7	16	Istentől	Atyánktól és	bizonytalan	birtokos	B1_nk_utana	igen
+Róm 1:15	3	Azért	rajtam áll	vonatkozo	vonatkozo	regi_szabaly	nem
+Róm 1:19	3	Mert	az Isten	vonatkozo	vonatkozo	regi_szabaly	nem
+Róm 1:20	3	Mert	Istenben láthatatlan	bizonytalan	bizonytalan	nincs_tampont	nem
+Róm 2:28	16	körülmetélés	a testen	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Róm 3:5	4	pedig	igazságtalanságunk az	birtokos	birtokos	B1_nk_utana	nem
+Róm 4:1	7	Ábrahám	atyánk nyert	birtokos	birtokos	B1_nk_utana	nem
+Róm 4:12	17	is	atyánknak Ábrahámnak	vonatkozo	birtokos	B1_nk_utana	igen
+Róm 4:24	19	feltámasztotta	Urunkat a	bizonytalan	birtokos	B1_nk_utana	igen
+Róm 4:25	3	Ki	bűneinkért halálra	birtokos	birtokos	B1_nk_utana	nem
+Róm 4:25	10	feltámasztatott	megigazulásunkért	birtokos	birtokos	B1_nk_utana	nem
+Róm 5:1	9	Istennel	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+Róm 5:5	13	kitöltetett	szívünkbe a	vonatkozo	birtokos	B1_nk_utana	igen
+Róm 5:8	5	pedig	hozzánk való	bizonytalan	bizonytalan	nincs_tampont	nem
+Róm 5:11	9	Istenben	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+Róm 5:21	19	életre	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+Róm 6:6	5	hogy	ó emberünk	vonatkozo	birtokos	B2_nk_masodik	igen
+Róm 6:11	14	Istennek	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+Róm 6:23	14	élet	Urunk Krisztus	bizonytalan	birtokos	B1_nk_utana	igen
+Róm 7:5	14	dolgoztak	tagjainkban hogy	birtokos	birtokos	B1_nk_utana	nem
+Róm 7:25	5	Istennek	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+Róm 8:3	3	Mert	a törvénynek	vonatkozo	vonatkozo	regi_szabaly	nem
+Róm 8:16	7	tesz	lelkünkkel együtt	birtokos	birtokos	B1_nk_utana	nem
+Róm 8:23	19	fiúságot	testünknek megváltását	birtokos	birtokos	B1_nk_utana	nem
+Róm 8:26	9	van	erőtelenségünknek Mert	birtokos	birtokos	B1_nk_utana	nem
+Róm 8:38	38	vagyon	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+Róm 9:10	12	Izsáktól	atyánktól	birtokos	birtokos	B1_nk_utana	nem
+Róm 10:16	15	hitt	beszédünknek	birtokos	birtokos	B1_nk_utana	nem
+Róm 14:23	14	eszik	pedig hitből	vonatkozo	vonatkozo	regi_szabaly	nem
+Róm 15:4	7	megirattak	tanulságunkra irattak	birtokos	birtokos	B1_nk_utana	nem
+Róm 15:6	11	és	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+Róm 15:30	6	atyámfiai	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+Róm 16:1	6	Fébét	nénénket ki	birtokos	birtokos	B1_nk_utana	nem
+Róm 16:9	4	Orbánt	munkatársunkat a	birtokos	birtokos	B1_nk_utana	nem
+Róm 16:18	5	ilyenek	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+Róm 16:20	13	hamar	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+Róm 16:24	2		Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+1Kor 1:2	19	kik	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+1Kor 1:3	7	Istentől	Atyánktól és	bizonytalan	birtokos	B1_nk_utana	igen
+1Kor 1:7	11	várván	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+1Kor 1:8	10	feddhetetlenségben	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+1Kor 1:9	11	Fiával	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+1Kor 1:10	6	atyámfiai	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+1Kor 2:7	17	Isten	dicsőségünkre	birtokos	birtokos	B1_nk_utana	nem
+1Kor 4:2	2		pedig egyébiránt	vonatkozo	vonatkozo	regi_szabaly	nem
+1Kor 4:6	18	annakfelette	írva van	vonatkozo	vonatkozo	V4_ige_utana	nem
+1Kor 5:4	7	lelkem	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+1Kor 5:4	14	egybegyűlvén	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+1Kor 5:7	20	hiszen	húsvéti bárányunk	vonatkozo	birtokos	B2_nk_masodik	igen
+1Kor 6:11	17	és	Istenünk Lelke	bizonytalan	birtokos	B1_nk_utana	igen
+1Kor 7:32	18	gondot	az Úré	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Kor 9:1	15	Krisztust	Urunkat Nem	bizonytalan	birtokos	B1_nk_utana	igen
+1Kor 10:1	10	hogy	atyáink mindnyájan	birtokos	birtokos	B1_nk_utana	nem
+1Kor 10:11	9	pedig	tanulságunkra a	birtokos	birtokos	B1_nk_utana	nem
+1Kor 10:24	5	keresse	az övé	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Kor 10:24	12	azt	a másé	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Kor 15:3	17	meghalt	bűneinkért az	birtokos	birtokos	B1_nk_utana	nem
+1Kor 15:10	7	vagyok	vagyok és	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Kor 15:14	10	hiábavaló	prédikálásunk de	birtokos	birtokos	B1_nk_utana	nem
+1Kor 15:31	17	Jézusban	Urunkban	bizonytalan	birtokos	B1_nk_utana	igen
+1Kor 15:57	12	nékünk	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+1Kor 16:12	2		pedig Apollós	vonatkozo	vonatkozo	regi_szabaly	nem
+2Kor 1:2	7	Istentől	Atyánktól és	bizonytalan	birtokos	B1_nk_utana	igen
+2Kor 1:3	6	és	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+2Kor 1:5	13	bőséges	vígasztalásunk is	birtokos	birtokos	B1_nk_utana	nem
+2Kor 1:6	32	És	reménységünk erős	birtokos	birtokos	B1_nk_utana	nem
+2Kor 1:8	9	atyámfiai	nyomorúságunk felől	birtokos	birtokos	B1_nk_utana	nem
+2Kor 1:12	3	Mert	dicsekedésünk ez	birtokos	birtokos	B1_nk_utana	nem
+2Kor 1:18	7	hogy	beszédünk hozzátok	birtokos	birtokos	B1_nk_utana	nem
+2Kor 1:22	13	adta	szíveinkbe	vonatkozo	birtokos	B1_nk_utana	igen
+2Kor 3:2	2		levelünk ti	birtokos	birtokos	B1_nk_utana	nem
+2Kor 3:2	8	beírva	szívünkbe a	vonatkozo	birtokos	B1_nk_utana	igen
+2Kor 3:3	8	Krisztusnak	szolgálatunk által	birtokos	birtokos	B1_nk_utana	nem
+2Kor 3:5	13	ellenkezőleg	alkalmatos voltunk	vonatkozo	birtokos	B2_nk_masodik	igen
+2Kor 3:11	10	dicsőséges	megmarad	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Kor 4:3	5	leplezett	evangyéliomunk azoknak	birtokos	birtokos	B1_nk_utana	nem
+2Kor 4:6	14	világosságot	szívünkben az	birtokos	birtokos	B1_nk_utana	nem
+2Kor 4:10	16	legyen	testünkben	birtokos	birtokos	B1_nk_utana	nem
+2Kor 4:11	19	legyen	halandó testünkben	vonatkozo	birtokos	B2_nk_masodik	igen
+2Kor 4:16	7	ha	külső emberünk	vonatkozo	birtokos	B2_nk_masodik	igen
+2Kor 4:17	3	Mert	pillanatnyi könnyű	vonatkozo	vonatkozo	regi_szabaly	nem
+2Kor 5:2	9	erre	mennyei hajlékunkat	vonatkozo	birtokos	B2_nk_masodik	igen
+2Kor 5:4	18	hogy	halandó elnyelje	vonatkozo	vonatkozo	regi_szabaly	nem
+2Kor 6:11	2		szánk megnyílt	birtokos	birtokos	B1_nk_utana	nem
+2Kor 6:11	9	korinthusiak	szívünk kitárult	birtokos	birtokos	B1_nk_utana	nem
+2Kor 7:1	20	véghez	megszentelésünket	birtokos	birtokos	B1_nk_utana	nem
+2Kor 7:5	10	nyugodalma	testünknek sőt	birtokos	birtokos	B1_nk_utana	nem
+2Kor 7:12	20	nálatok	irántatok való	vonatkozo	vonatkozo	regi_szabaly	nem
+2Kor 7:14	20	azonképen	Titus előtt	bizonytalan	bizonytalan	nincs_tampont	nem
+2Kor 8:9	4	ismeritek	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+2Kor 8:20	8	minket	szolgálatunk által	birtokos	birtokos	B1_nk_utana	nem
+2Kor 8:22	5	velök	atyánkfiát is	vonatkozo	birtokos	B1_nk_utana	igen
+2Kor 8:23	15	akár	atyánkfiai felől	vonatkozo	birtokos	B1_nk_utana	igen
+2Kor 9:3	7	hogy	felőletek való	vonatkozo	vonatkozo	regi_szabaly	nem
+2Kor 10:4	3	Mert	vitézkedésünk fegyverei	birtokos	birtokos	B1_nk_utana	nem
+2Kor 10:8	10	is	hatalmunkkal a	birtokos	birtokos	B1_nk_utana	nem
+2Kor 10:15	17	köztetek	mérőzsinórunk szerint	birtokos	birtokos	B1_nk_utana	nem
+2Kor 11:31	5	és	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+2Kor 12:14	17	keresem	a tiétek	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Gal 1:3	10	és	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+Gal 1:4	6	önmagát	bűneinkért hogy	birtokos	birtokos	B1_nk_utana	nem
+Gal 1:4	19	és	Atyánknak akarata	bizonytalan	birtokos	B1_nk_utana	igen
+Gal 2:4	14	kikémleljék	szabadságunkat melylyel	birtokos	birtokos	B1_nk_utana	nem
+Gal 6:10	11	pedig	hitünknek cselédeivel	birtokos	birtokos	B1_nk_utana	nem
+Gal 6:14	9	hanem	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+Gal 6:18	2		Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+Ef 1:2	7	Istentől	Atyánktól és	bizonytalan	birtokos	B1_nk_utana	igen
+Ef 1:3	7	és	Urunknak Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+Ef 1:7	5	van	váltságunk az	birtokos	birtokos	B1_nk_utana	nem
+Ef 1:14	5	záloga	örökségünknek Isten	birtokos	birtokos	B1_nk_utana	nem
+Ef 1:17	3	Hogy	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+Ef 2:3	10	mindnyájan	testünk kívánságaiban	birtokos	birtokos	B1_nk_utana	nem
+Ef 2:14	4	Ő	békességünk ki	birtokos	birtokos	B1_nk_utana	nem
+Ef 3:11	13	Jézusban	Urunkban	bizonytalan	birtokos	B1_nk_utana	igen
+Ef 3:12	5	van	bátorságunk és	birtokos	birtokos	B1_nk_utana	nem
+Ef 3:14	5	térdeimet	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+Ef 3:20	16	elgondoljuk	bennünk munkálkodó	bizonytalan	vonatkozo	V1_irasjel_elotte	igen
+Ef 4:28	17	azt	jó hogy	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Ef 5:13	12	minden	napvilágra jő	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Ef 5:20	6	mindenekért	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+Ef 6:2	10	anyádat	az első	vonatkozo	vonatkozo	regi_szabaly	nem
+Ef 6:8	5	kiki	jót cselekszik	vonatkozo	vonatkozo	regi_szabaly	nem
+Ef 6:22	9	megismerjétek	dolgainkat és	birtokos	birtokos	B1_nk_utana	nem
+Ef 6:24	9	szeretik	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+Fil 1:2	7	Istentől	Atyánktól és	bizonytalan	birtokos	B1_nk_utana	igen
+Fil 1:28	10	előtt	azoknak a	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Fil 3:20	3	Mert	országunk mennyekben	birtokos	birtokos	B1_nk_utana	nem
+Fil 3:21	4	elváltoztatja	nyomorúságos testünket	vonatkozo	birtokos	B2_nk_masodik	igen
+Fil 4:20	6	és	Atyánknak dicsőség	bizonytalan	birtokos	B1_nk_utana	igen
+Fil 4:23	2		Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+Kol 1:2	16	Istentől	Atyánktól és	bizonytalan	birtokos	B1_nk_utana	igen
+Kol 1:3	7	és	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+Kol 1:7	8	Epafrástól	szerelmes szolgatársunktól	vonatkozo	birtokos	B2_nk_masodik	igen
+Kol 1:14	4	van	váltságunk az	birtokos	birtokos	B1_nk_utana	nem
+Kol 1:16	7	minden	van a	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Kol 1:20	20	mindent	csak van	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Kol 1:24	14	betöltöm	híja van	vonatkozo	vonatkozo	V3_ige_elotte	nem
+Kol 1:24	27	testéért	az egyház	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Kol 3:4	5	Krisztus	életünk megjelen	birtokos	birtokos	B1_nk_utana	nem
+Kol 3:5	17	fösvénységet	bálványimádás	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Kol 4:1	4	urak	igazságos és	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Thessz 1:1	25	Istentől	Atyánktól és	bizonytalan	birtokos	B1_nk_utana	igen
+1Thessz 1:2	10	rólatok	imádságainkban	birtokos	birtokos	B1_nk_utana	nem
+1Thessz 1:3	14	és	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+1Thessz 1:3	26	előtt	Atyánk előtt	bizonytalan	birtokos	B1_nk_utana	igen
+1Thessz 1:5	3	Hogy	evangyéliomunk ti	birtokos	birtokos	B1_nk_utana	nem
+1Thessz 1:6	4	ti	követőinkké lettetek	birtokos	birtokos	B1_nk_utana	nem
+1Thessz 1:9	9	volt	hozzátok való	vonatkozo	vonatkozo	V3_ige_elotte	nem
+1Thessz 2:1	7	hogy	ti hozzátok	vonatkozo	vonatkozo	regi_szabaly	nem
+1Thessz 2:2	18	bátorságunk	Istenünkben hogy	bizonytalan	birtokos	B1_nk_utana	igen
+1Thessz 2:3	3	Mert	buzdításunk nem	birtokos	birtokos	B1_nk_utana	nem
+1Thessz 2:4	28	megvizsgálja	szívünket	birtokos	birtokos	B1_nk_utana	nem
+1Thessz 2:8	14	hanem	magunk lelkét	bizonytalan	birtokos	B1_nk_utana	igen
+1Thessz 2:9	5	atyámfiai	fáradozásunkra és	birtokos	birtokos	B1_nk_utana	nem
+1Thessz 2:19	4	kicsoda	reménységünk örömünk	birtokos	birtokos	B1_nk_utana	nem
+1Thessz 2:19	18	is	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+1Thessz 2:20	5	vagytok	dicsőségünk és	birtokos	birtokos	B1_nk_utana	nem
+1Thessz 3:2	5	Timótheust	atyánkfiát és	vonatkozo	birtokos	B1_nk_utana	igen
+1Thessz 3:5	31	hiábavaló	fáradságunk	birtokos	birtokos	B1_nk_utana	nem
+1Thessz 3:9	18	miattatok	Istenünk előtt	bizonytalan	birtokos	B1_nk_utana	igen
+1Thessz 3:11	7	és	Atyánk és	bizonytalan	birtokos	B1_nk_utana	igen
+1Thessz 3:11	11	és	Urunk a	bizonytalan	birtokos	B1_nk_utana	igen
+1Thessz 3:11	19	meg	útunkat ti	birtokos	birtokos	B1_nk_utana	nem
+1Thessz 3:13	11	szentségben	Istenünk és	bizonytalan	birtokos	B1_nk_utana	igen
+1Thessz 3:13	20	eljő	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+1Thessz 5:9	14	szerezzünk	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+1Thessz 5:21	4	megpróbáljatok	jó azt	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Thessz 5:22	3	Mindentől	gonosznak látszik	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Thessz 5:23	23	meg	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+1Thessz 5:28	2		Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+2Thessz 1:1	11	Istenben	Atyánkban és	bizonytalan	birtokos	B1_nk_utana	igen
+2Thessz 1:2	7	Istentől	Atyánktól és	bizonytalan	birtokos	B1_nk_utana	igen
+2Thessz 1:8	19	engedelmeskednek	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+2Thessz 1:10	18	mivelhogy	tanúbizonyságunknak hitele	vonatkozo	birtokos	B1_nk_utana	igen
+2Thessz 1:11	9	hogy	Istenünk méltóknak	bizonytalan	birtokos	B1_nk_utana	igen
+2Thessz 1:12	5	meg	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+2Thessz 1:12	18	benne	Istenünknek és	bizonytalan	birtokos	B1_nk_utana	igen
+2Thessz 2:1	6	atyámfiai	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+2Thessz 2:1	13	és	ő hozzá	vonatkozo	vonatkozo	regi_szabaly	nem
+2Thessz 2:4	11	mindannak	Istennek vagy	bizonytalan	vonatkozo	V1_irasjel_elotte	igen
+2Thessz 2:14	6	titeket	evangyéliomunk által	birtokos	birtokos	B1_nk_utana	nem
+2Thessz 2:14	10	által	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+2Thessz 2:16	4	pedig	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+2Thessz 2:16	12	Isten	Atyánk a	bizonytalan	birtokos	B1_nk_utana	igen
+2Thessz 3:6	2		Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+2Thessz 3:12	9	őket	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+2Thessz 3:14	7	engedelmeskedik	levél által	vonatkozo	vonatkozo	V3_ige_elotte	nem
+2Thessz 3:17	10	kezemmel	ismertető jegye	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Thessz 3:18	2		Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+1Tim 1:1	6	apostola	megtartó Istenünknek	vonatkozo	birtokos	B2_nk_masodik	igen
+1Tim 1:1	13	Krisztusnak	reménységünknek rendelése	birtokos	birtokos	B1_nk_utana	nem
+1Tim 1:2	14	Istentől	Atyánktól és	bizonytalan	birtokos	B1_nk_utana	igen
+1Tim 1:2	20	Jézustól	Urunktól	bizonytalan	birtokos	B1_nk_utana	igen
+1Tim 1:10	9	és	egyéb csak	vonatkozo	vonatkozo	regi_szabaly	nem
+1Tim 1:12	13	Jézusnak	Urunknak hogy	bizonytalan	birtokos	B1_nk_utana	igen
+1Tim 1:14	5	pedig	Urunknak kegyelme	bizonytalan	birtokos	B1_nk_utana	igen
+1Tim 2:3	8	dolog	megtartó Istenünk	vonatkozo	birtokos	B2_nk_masodik	igen
+1Tim 2:7	2		végett rendeltettem	vonatkozo	vonatkozo	regi_szabaly	nem
+1Tim 6:3	9	követi	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+1Tim 6:14	9	feddhetetlenül	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+1Tim 6:17	30	mindent	tápláltatásunkra	birtokos	birtokos	B1_nk_utana	nem
+1Tim 6:20	6	meg	rád van	vonatkozo	vonatkozo	V3_ige_elotte	nem
+2Tim 1:2	16	Jézustól	Urunktól	bizonytalan	birtokos	B1_nk_utana	igen
+2Tim 1:8	5	hát	Urunk bizonyságtételét	bizonytalan	birtokos	B1_nk_utana	igen
+2Tim 1:9	11	nem	cselekedeteink szerint	birtokos	birtokos	B1_nk_utana	nem
+2Tim 1:10	5	most	Megtartónknak Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+2Tim 4:15	9	ellenállott	beszédinknek	birtokos	birtokos	B1_nk_utana	nem
+Tit 1:3	17	bízatott	megtartó Istenünknek	vonatkozo	birtokos	B2_nk_masodik	igen
+Tit 1:4	14	Krisztustól	Megtartónktól	bizonytalan	birtokos	B1_nk_utana	igen
+Tit 2:10	10	hogy	megtartó Istenünknek	vonatkozo	birtokos	B2_nk_masodik	igen
+Tit 3:4	4	mikor	megtartó Istenünknek	vonatkozo	birtokos	B2_nk_masodik	igen
+Tit 3:6	6	bőséggel	megtartó Jézus	vonatkozo	vonatkozo	regi_szabaly	nem
+Filem 1:1	11	Filemonnak	szeretett munkatársunknak	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Filem 1:2	8	Arkhippusnak	bajtársunknak és	vonatkozo	birtokos	B1_nk_utana	igen
+Filem 1:3	7	Istentől	Atyánktól és	bizonytalan	birtokos	B1_nk_utana	igen
+Filem 1:8	12	azt	illendő	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Filem 1:25	2		Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+Zsid 3:1	9	figyelmezzetek	vallásunknak apostolára	vonatkozo	birtokos	B1_nk_utana	igen
+Zsid 7:14	5	hogy	Urunk Júdából	bizonytalan	birtokos	B1_nk_utana	igen
+Zsid 8:13	9	elsőt	pedig megavul	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Zsid 9:9	2		példázat a	vonatkozo	vonatkozo	regi_szabaly	nem
+Zsid 11:3	14	hogy	látható a	vonatkozo	vonatkozo	regi_szabaly	nem
+Zsid 11:4	11	Kain	által bizonyságot	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Zsid 12:9	3	Aztán	testi apáink	vonatkozo	birtokos	B2_nk_masodik	igen
+Zsid 12:20	6	ki	parancsolva volt	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Zsid 12:29	3	Mert	Istenünk megemésztő	bizonytalan	birtokos	B1_nk_utana	igen
+Zsid 13:20	19	által	Urunkat Jézust	bizonytalan	birtokos	B1_nk_utana	igen
+Zsid 13:21	16	bennetek	kedves ő	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Zsid 13:23	5	hogy	atyánkfia Timótheus	vonatkozo	birtokos	B1_nk_utana	igen
+Jak 2:1	15	Urában	Jézus Krisztusunkban	bizonytalan	birtokos	B2_nk_masodik	igen
+Jak 2:21	4	Ábrahám	atyánk nem	birtokos	birtokos	B1_nk_utana	nem
+Jak 3:6	13	nyelv	tagjaink között	birtokos	birtokos	B1_nk_utana	nem
+1Pét 1:3	6	és	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+1Pét 1:7	7	hitetek	sokkal becsesebb	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Pét 2:24	4	ki	bűneinket maga	birtokos	birtokos	B1_nk_utana	nem
+1Pét 3:4	13	romolhatatlanságával	igen becses	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Pét 3:21	2		minket is	bizonytalan	bizonytalan	nincs_tampont	nem
+1Pét 3:21	12	keresztség	nem a	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Pét 4:4	2		miatt csudálkoznak	vonatkozo	vonatkozo	regi_szabaly	nem
+2Pét 1:1	17	nyertek	Istenünknek és	bizonytalan	birtokos	B1_nk_utana	igen
+2Pét 1:2	12	Jézusnak	Urunknak megismerésében	bizonytalan	birtokos	B1_nk_utana	igen
+2Pét 1:3	10	minket	az életre	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+2Pét 1:8	15	gyümölcstelenekké	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+2Pét 1:11	8	néktek	Urunknak és	bizonytalan	birtokos	B1_nk_utana	igen
+2Pét 1:14	12	miképen	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+2Pét 1:16	10	veletek	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+2Pét 3:15	3	És	Urunknak hosszútűrését	bizonytalan	birtokos	B1_nk_utana	igen
+2Pét 3:15	11	miképen	szeretett atyánkfia	vonatkozo	vonatkozo	V4_ige_utana	nem
+2Pét 3:18	7	és	Urunknak és	bizonytalan	birtokos	B1_nk_utana	igen
+1Ján 1:1	2		kezdettől fogva	vonatkozo	vonatkozo	regi_szabaly	nem
+1Ján 1:3	17	pedig	közösségünk az	birtokos	birtokos	B1_nk_utana	nem
+1Ján 2:2	6	áldozat	vétkeinkért de	birtokos	birtokos	B1_nk_utana	nem
+1Ján 2:8	7	néktek	igaz ő	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Ján 2:16	4	mindaz	a világban	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Ján 2:21	21	igazságból	hazugság	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Ján 3:5	10	hogy	bűneinket elvegye	birtokos	birtokos	B1_nk_utana	nem
+1Ján 3:14	12	szeretjük	atyánkfiait A	vonatkozo	birtokos	B1_nk_utana	igen
+1Ján 3:15	19	élete	megmaradhatna ő	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Ján 3:16	20	életünket	atyánkfiaiért	vonatkozo	birtokos	B1_nk_utana	igen
+1Ján 3:19	17	előtte	szíveinket	birtokos	birtokos	B1_nk_utana	nem
+1Ján 3:20	12	Isten	szívünknél és	vonatkozo	birtokos	B1_nk_utana	igen
+1Ján 4:10	24	áldozatul	bűneinkért	birtokos	birtokos	B1_nk_utana	nem
+1Ján 5:4	4	mindaz	az Istentől	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+1Ján 5:4	21	világot	hitünk	birtokos	birtokos	B1_nk_utana	nem
+3Ján 1:12	19	hogy	bizonyságtételünk igaz	birtokos	birtokos	B1_nk_utana	nem
+Júd 1:4	15	kik	Istenünknek kegyelmét	bizonytalan	birtokos	B1_nk_utana	igen
+Júd 1:4	28	és	Urunkat a	bizonytalan	birtokos	B1_nk_utana	igen
+Júd 1:17	12	melyeket	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+Júd 1:21	8	várván	Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen
+Júd 1:25	6	Istennek	megtartónknak dicsőség	vonatkozo	birtokos	B1_nk_utana	igen
+Jel 1:5	29	bennünket	bűneinkből az	birtokos	birtokos	B1_nk_utana	nem
+Jel 2:25	3	Hanem	nálatok van	vonatkozo	vonatkozo	regi_szabaly	nem
+Jel 3:11	7	meg	nálad van	vonatkozo	vonatkozo	V3_ige_elotte	nem
+Jel 5:6	28	vala	az Istennek	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Jel 5:10	5	minket	Istenünknek királyokká	bizonytalan	birtokos	B1_nk_utana	igen
+Jel 5:13	25	minden	ezekben van	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Jel 6:10	20	bosszút	vérünkért azokon	birtokos	birtokos	B1_nk_utana	nem
+Jel 7:3	20	pecsételjük	Istenünk szolgáit	bizonytalan	birtokos	B1_nk_utana	igen
+Jel 7:10	9	idvesség	Istenünké a	bizonytalan	birtokos	B1_nk_utana	igen
+Jel 7:12	18	erő	Istenünknek mind	bizonytalan	birtokos	B1_nk_utana	igen
+Jel 11:8	21	hol	Urunk is	bizonytalan	birtokos	B1_nk_utana	igen
+Jel 11:15	21	országai	Urunkéi és	bizonytalan	birtokos	B1_nk_utana	igen
+Jel 12:10	22	és	Istenünknek országa	bizonytalan	birtokos	B1_nk_utana	igen
+Jel 12:10	32	mert	atyánkfiainak vádolója	vonatkozo	birtokos	B1_nk_utana	igen
+Jel 12:10	44	nappal	Istenünk előtt	bizonytalan	birtokos	B1_nk_utana	igen
+Jel 18:14	15	minden	ínyes és	vonatkozo	vonatkozo	regi_szabaly	nem
+Jel 19:1	32	Úré	Istenünké	bizonytalan	birtokos	B1_nk_utana	igen
+Jel 19:5	14	Dícsérjétek	Istenünket mindnyájan	bizonytalan	birtokos	B1_nk_utana	igen
+Jel 19:6	24	Úr	Istenünk a	bizonytalan	birtokos	B1_nk_utana	igen
+Jel 21:8	29	lesz	a második	vonatkozo	vonatkozo	V1_irasjel_elotte	nem
+Jel 22:21	2		Urunk Jézus	bizonytalan	birtokos	B1_nk_utana	igen

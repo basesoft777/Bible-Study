@@ -1,0 +1,5 @@
+{"sorok": 420, "modell": ["claude-sonnet-5-5"], "hivasok": 4, "input_tokens": 8, "output_tokens": 12653, "cache_read_input_tokens": 247864, "cache_creation_input_tokens": 108553, "total_tokens": 369078, "koteg": 1, "ts": "2026-10-24"}
+{"sorok": 689, "modell": ["claude-sonnet-5-5"], "hivasok": 3, "input_tokens": 6, "output_tokens": 22608, "cache_read_input_tokens": 142869, "cache_creation_input_tokens": 97792, "total_tokens": 263275, "koteg": 2, "ts": "2026-10-24"}
+{"sorok": 689, "modell": ["claude-sonnet-5-5"], "hivasok": 3, "input_tokens": 6, "output_tokens": 23434, "cache_read_input_tokens": 142843, "cache_creation_input_tokens": 97501, "total_tokens": 263784, "koteg": 3, "ts": "2026-10-24"}
+{"sorok": 689, "modell": ["claude-sonnet-5-5"], "hivasok": 3, "input_tokens": 6, "output_tokens": 21756, "cache_read_input_tokens": 142924, "cache_creation_input_tokens": 98796, "total_tokens": 263482, "koteg": 4, "ts": "2026-10-24"}
+{"sorok": 687, "modell": ["claude-sonnet-5-5"], "hivasok": 3, "input_tokens": 6, "output_tokens": 20214, "cache_read_input_tokens": 142884, "cache_creation_input_tokens": 97064, "total_tokens": 260168, "koteg": 5, "ts": "2026-10-24"}
