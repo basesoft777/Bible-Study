@@ -110,13 +110,13 @@ ApCsel** (a `Konyv_normalizalo_tabla.tsv` 40–44. sora). Strongonként:
 | G5010 | 4 | 0 | 10 | 1 | 1 | 8 | 4 | 3/4 |
 | G5351 | 1 | 0 | 8 | 0 | 0 | 7 | 9 | 1/1 |
 | G5356 | 1 | 0 | 9 | 0 | 2 | 8 | 9 | 0/1 |
+| G5590 | 7 | 2 | 95 | 55 | 23 | 38 | 30 | 3/7 |
+| **össz.** | **51** | **14** | **668** | **322** | **70** | **278** | — | **26/51** |
 
 *Pontosítás (F132.19, ELLENOR_F132 2. tétel, DT-F132l (a)):* a `G0813` sor (motívumhely 1) a KIRALY-001 / Zsid 7:1-28 sor hibás
 `strong` mezőjéből (`G5010+G0813+G0282`) jött, ellenőrzés nélkül átvéve; a G0813 a Zsid 7:1-28-ban nem fordul elő (egyetlen helye
-az 1Thessz 5:14), az *ἀπάτωρ* a Zsid 7:3-ban G0540. A mező az F132.19-ben `G5010+G0540+G0282`; a fenti sor a mérés pillanatának
+az 1Thessz 5:14), az *ἀπάτωρ* a Zsid 7:3-ban G0540. A mező az F132.19-ben `G5010+G0540+G0282`; a 6. tábla G0813-sora a mérés pillanatának
 állapota, a G0540-re ez a tábla nem mért (a lekérdezés sorai: a „Javítókör 1” szakasz, F132.19).
-| G5590 | 7 | 2 | 95 | 55 | 23 | 38 | 30 | 3/7 |
-| **össz.** | **51** | **14** | **668** | **322** | **70** | **278** | — | **26/51** |
 
 *A „motívumhely” az `elofordulasok.tsv` `strong` mezőjében (a `+`-szal összetett értékek bontva) a
 Stronghoz tartozó különböző igehely; a `parok`: vers a Stronghoz párosított különböző vers.*
