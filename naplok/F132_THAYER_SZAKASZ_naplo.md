@@ -556,7 +556,7 @@ Végrehajtó: `claude-opus-5-5`. Tételenként külön commit (F132.18–F132.24
   `gerinc_elofordulas` mezője; a kézi oszlopok változatlanok (a gerincszavakban előforduló jelölt 91 → 90: az `educ.` gerinc-előfordulása
   0 lett, `javaslat` marad). A szólista (`szolista.py`, csak stdout) ma: 13 Strong, mind `forditando` / `nincs_szakaszos`, a G0813 helyett
   G0540 (2 szakasz, 214 karakter). A `lexikon/KIRALY-001_TUDOMANYOS.md` és `_TORZSCIKK.md` generált nézet a régi tokent mutatja (G0813
-  szócikk-alszakasz); a #132 `ir`-én kívül esik, újragenerálása nem e kör része (az E28 hatóköre csak az ISTENTISZT-001).
+  szócikk-alszakasz); a #132 `ir`-én kívül esik, újragenerálása nem e kör része (az E28 hatóköre csak az ISTENTISZT-001); nyitott tétele: `NYITOTT_FELADATOK.md` N-F132a (F132.27).
 - **F132.20 (3. tétel, 16. kapu, egybetűs sigla):** `thayer_kapuk._re` — egybetűs alaknál a betű-pont(-szóköz)-betű-pont lánc tagja
   nem találat (előtte és utána is; a szomszéd betű önálló kell legyen, a `Gen. T` `T`-je találat). Az `adatblokk.py` ugyanezt a
   függvényt használja (3. rész, siglák), így egységes. Új teszt (`teszt_lanc.py`, 23, zöld): 7 negatív és 6 pozitív minta, a kapu
