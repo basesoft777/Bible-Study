@@ -214,6 +214,16 @@ def terminologia_sorok():
     return ki
 
 
+KONTEXTUS_HOSSZ_ARNYALAT = 90
+
+
+def kontextus_hossz(s):
+    """A kettospontos arnyalat-soroknal ('house: palace') a definicio eleje a szulo-szocikk
+    szovegenek ismetlese; az arnyalat-cimke az elso karakterekben all, ezert rovidebb kontextus
+    (token-takarekossag, 82 koteg; a brief ~200 karakteres iranyaban a nem-arnyalat soroknal marad)."""
+    return KONTEXTUS_HOSSZ_ARNYALAT if ':' in s['glossza'] else KONTEXTUS_HOSSZ
+
+
 def prompt_epit(sorok):
     """Egy kotegre: a glosszakban/definicio-elejeken elofordulo terminologiai kulcsok
     + a kotegbemenet. Nincs modellhivas."""
@@ -222,7 +232,7 @@ def prompt_epit(sorok):
     talalt = ['%s -> %s' % (k, v) for k, v in term.items() if k.lower() in szoveg and len(k) > 3]
     bemenet = '\n'.join('%s | %s | %s | %s | %s | %s' % (
         s['entry_id'], s['lemma'], s['atiras'], s['szofaj'], s['glossza'],
-        re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', s['definicio']))[:KONTEXTUS_HOSSZ]) for s in sorok)
+        re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', s['definicio']))[:kontextus_hossz(s)]) for s in sorok)
     return PROMPT_V1.format(terminologia='; '.join(talalt) if talalt else '(ebben a kötegben nincs)',
                             bemenet=bemenet)
 
@@ -469,6 +479,10 @@ def parancs_koteg(meret, kimenet):
     mai = par[:meret]
     bemenet_sorok = [rep for rep, _ in mai]
     szoveg = prompt_epit(bemenet_sorok)
+    if '--csak-bemenet' in sys.argv:
+        # folytato kotegeknel a szabalyok mar a kontextusban vannak: csak a terminologia + bemenet
+        term = szoveg.split('8. Terminológia', 1)[1].split('\n', 1)[0]
+        szoveg = '8. Terminológia' + term + '\n\n' + szoveg.split('definíció eleje):\n', 1)[1]
     with open(kimenet, 'w', encoding='utf-8') as f:
         f.write(szoveg)
     print('fuggo par: %d (sor: %d); a koteg: %d par, %d sor; prompt: %s' % (
@@ -489,7 +503,9 @@ def parancs_rogzit(valasz, modell, masodik):
             sor = sor.rstrip('\n').rstrip('\r')
             if not sor.strip():
                 continue
-            m = sor.split('\t')
+            # a valasz sora: TAB-bal vagy ' | '-pel tagolt (a session ' | '-pel irja)
+            m = sor.split('\t') if '\t' in sor else sor.split(' | ')
+            m[0] = m[0].strip()
             if m[0] not in par:
                 raise SystemExit('ISMERETLEN/MAR KESZ azonosito a valaszban: ' + m[0])
             hu = m[1].strip() if len(m) > 1 else ''
