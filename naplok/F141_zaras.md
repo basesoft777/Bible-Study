@@ -1,0 +1,14 @@
+# F141 zárónapló (LEXIKON_LITERAL_JAVITAS)
+
+**Készült.** E32 CI-szabály (`eszkozok/ellenorzes/szabalyok.py`): AST-alapon jelzi a `eszkozok/**/*.py` string-literáljaiban (megjegyzésben és docstringben nem) maradt, már kiosztott `DT-F`/`N-F`/`D-F` helyőrzőt; új sorra HIBA, régire JELENTÉS (D8); 15 teszt. A 4 maradék literál javítva (DT-F127b → DT277: `ellenoriz.py` 207/237/264, `f127_jeloltek_bovit.py:31`). Döntések: DT-F141a (E32 szabály, a 74 literál javítása külön feladat) és DT-F141b (lásd lent), mindkettő 🟢 eldöntve (felhasználó, 2026-10-25).
+
+**Egyeztetett eltérés a briefhez.** A brief 4. lépésének elfogadási feltétele (8 lexikonoldal újragenerálása a `ts=` jelölőkön kívül üres diffet ad) szűkítve: elég, hogy a `DT277` sor („beépített motívumközi jelölt áll, DT277”) a 8 lapon nem sodródik; ezt az ISTENTISZT-001 és a 7 újragenerált lap diffje igazolta. A 7 lap (ALVIL, ANTROP, HAMART, HODIT, KIRALY, MENNY, TEREMT-001) a generátorhoz képest elavult (licenc, kizárt-jelöltszám, szócikk-blokk, megbízhatóság-jelölés); tartalmi újragenerálásuk a #36 és #143 dolga. Lexikonfájlt az F141 nem módosított. Döntés: DT-F141b (b), a brief szövegét nem írtuk át.
+
+**Mért eredmények.** `python eszkozok/ellenorzes/futtat.py --teljes`: E32 JELENTÉS 70 meglévő találat, 13 fájlban (ugyanezt az `e32_kiosztott_helyorzo_literalban` közvetlen hívása adja): `karoli_modern/helyesiras.py` 15, `emeles.py` 12, `karoli_modern/igealak.py` 9, `f110_ir.py` 8, `karoli_modern/regies_szken.py` 8, `karoli_modern/karoli_modern.py` 6, `thayer_jelolt/forditas.py` 3, `thayer_jelolt/adatblokk.py` 2, `thayer_jelolt/bont.py` 2, `thayer_jelolt/szolista.py` 2, `bdb_jelolt/szakasz_bemenet.py` 1, `f110_ir2.py` 1, `thayer_jelolt/forras_javit.py` 1. `python eszkozok/feladatok.py ellenoriz`: 163 brief, 0 hiba.
+
+**Tesztek.** `tesztek/test_szabalyok.py`: 180 teszt, a mai futáson OK. A végrehajtó korábbi futásán 1 környezeti hiba volt (`E16EsemenyTest.test_push_ures_cimmel_nem_piros`, a sekély klón miatt hiányzó E27-es commitok); ezen a klónon nem jelentkezett.
+
+**Nyitott javaslatok.**
+1. Külön feladat a 70 literál javítására, a generált adatfájl fejlécébe/proveniencia-sorába kerülőkkel kezdve (`karoli_modern/*`, `thayer_jelolt/forras_javit.py`, `thayer_jelolt/szolista.py`); `/befogad`, felhasználói jóváhagyással.
+2. Az `ellenorzes.yml` lépésneve „E2-E30”, E2-E32-re javítandó külön ágon (D6, workflow).
+3. A 7 elavult lexikonlap újragenerálása a #36-ban és a #143-ban (KIRALY).
