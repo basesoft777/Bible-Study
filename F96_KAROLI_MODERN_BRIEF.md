@@ -8,6 +8,7 @@ modell: opus
 munka: adat
 allapot: lezarva
 ag: ccr-a680d019-39s73e
+pr: 470
 ad: a Károli 1908 modernizált szövegrétege (helyesírás + igealak; szórend, szókincs, írásjel, betoldás-jelölés változatlan), szabályalapú szavankénti cserével (a #94 szótári alak- és regies_jegy-táblájából, Hunspell csak fejlesztési mérce, DT301), LLM csak a szabállyal le nem fedett maradékra; minden token hordozza az 1908-as token vers-kulcsát és sorszámát (a Strong a #22 párosításából token-kulcson illeszthető, a réteg nem tárol Strongot, DT-F96f), a kieső segédigei vala jelölve; generált tábla az 1908-as szöveg mellett, nem helyette; két lépcső (helyesírás, majd igeragozás és vala), felhasználó által ellenőrzött mintán mérve, a token-felhasználással együtt
 kovetkezo: lezárva
 olvas: [adat/szoto/, konkordancia/Karoli_1908.tsv, "adat/karoli_strong/*", adat/SEMA.md, adat/licencek.tsv, DONTESEK.md]
