@@ -10,9 +10,9 @@
 | minden más `adat/` tábla | — | — | 0 | — |
 | `konkordancia/` (minden tábla) | — | — | 0 | — |
 
-A `git diff --numstat 61714f36 HEAD -- adat konkordancia` egyetlen fájlt ad (`adat/forditasok.tsv`); a többi `adat/` és `konkordancia/` tábla változatlan (Δ = 0). A 2 261 sor tisztán hozzáadott (0 törölt, 0 módosított): a régi `teljes` sorok `elavult` jelölése a 7. adagban nem írta át a meglévő sorokat, hanem újakat adott hozzá. A repó más változott fájljai (nem `adat/`, nem `konkordancia/`): `DONTESEK.md`, `F38_BDB_FORDITAS_BRIEF.md`, `eszkozok/forditas_kapuk.py`, `eszkozok/teszt_forditas_kapuk.py`, `naplok/BDB_FORDITAS_hibas.tsv`, `naplok/EMELES_munka.tsv` (2262 / 1, nettó +2 261 a `451077c`-ig; a fejig 2270 / 1, nettó +2 269, vagyis a javítókör +8 sorral), `naplok/ELLENOR_F38_adag7.md`.
+A `git diff --numstat 61714f36 451077c -- adat konkordancia` egyetlen fájlt ad (`adat/forditasok.tsv`); a többi `adat/` és `konkordancia/` tábla változatlan (Δ = 0). A 2 261 sor tisztán hozzáadott (0 törölt, 0 módosított): a régi `teljes` sorok `elavult` jelölése a 7. adagban nem írta át a meglévő sorokat, hanem újakat adott hozzá. A repó más változott fájljai (nem `adat/`, nem `konkordancia/`): `DONTESEK.md`, `F38_BDB_FORDITAS_BRIEF.md`, `eszkozok/forditas_kapuk.py`, `eszkozok/teszt_forditas_kapuk.py`, `naplok/BDB_FORDITAS_hibas.tsv`, `naplok/EMELES_munka.tsv` (2262 / 1, nettó +2 261 a `451077c`-ig; a fejig 2270 / 1, nettó +2 269, vagyis a javítókör +8 sorral), `naplok/ELLENOR_F38_adag7.md`.
 
-*(proveniencia: scope=adat/forditasok.tsv @ 61714f36 és @ 451077c; adat/, konkordancia/ | forras=`git show <rev>:adat/forditasok.tsv \| grep -v '^#' \| tail -n +2 \| grep -c .` (→ 737 és 2998); `git diff --numstat 61714f36 HEAD -- adat konkordancia` | ts=2026-10-25T11:08Z)*
+*(proveniencia: scope=adat/forditasok.tsv @ 61714f36 és @ 451077c; adat/, konkordancia/ | forras=`git show <rev>:adat/forditasok.tsv \| grep -v '^#' \| tail -n +2 \| grep -c .` (→ 737 és 2998); `git diff --numstat 61714f36 451077c -- adat konkordancia` | ts=2026-10-25T11:08Z)*
 
 ## 2. Commitonkénti bontás (`adat/forditasok.tsv`)
 
