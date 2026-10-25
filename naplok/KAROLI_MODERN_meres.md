@@ -1166,7 +1166,7 @@ A DT-F96v (🟡) leírása ezzel a számmal frissült; a döntés a felhasznál�
 3. Az LLM-táblák a meglévő válaszfájlokból (scratchpad: `llm_kor3/`, `llm_kor4/`, `llm_kor5/`; `--modell claude-opus-5-5`, a hívásnaplók szerint) újraírva: a fejlécen kívül minden sor azonos, a három hívásnapló bájtra azonos. A sorrend: kor3-szken → kor3-LLM → kor4-szken (a végleges kor3-tábla sha-jával) → kor4-LLM → kor5-szken → kor5-LLM.
 4. Az `igealak.py` (`--minta-frissit`) és a `karoli_modern.py` újragenerálva: a 4 + 2 tábla a fejlécen kívül azonos. A K2, K3 és K3b teljesül, a Strong nem változott.
 
-Nem változott: a `karoli_modern.py` saját fejléce (a `ts=` itt sincs; nem tartozott a tételhez, l. a 15.6).
+Nem változott: a `karoli_modern.py` saját fejléce. Ebben a `ts=` már a javítókör előtt is megvolt (`eszkozok/karoli_modern/karoli_modern.py:166`; a `karoli_modern.tsv:1` és a `karoli_modern_versek.tsv:1` fejlécében a javítókör előtt `ts=2026-10-25T10:45Z`, az újragenerálás után `ts=2026-10-25T12:10Z`), ezért a tételhez nem kellett hozzányúlni. *(Javítva a 2. javítókörben, `ELLENOR_F96_2` 1.: a korábbi szöveg tévesen hiányzónak írta.)*
 
 ### 15.5 E17: az `igealak_tokenek.tsv` sorszám-változásának bontása (4. kör, 5.)
 
@@ -1248,7 +1248,6 @@ A javítókör után:
 **Nyitva marad (nem a javítókör tárgya):**
 - 3 ismert E/1 → T/3 hiba (1Móz 39:15, Dán 7:16, Ez 22:30; 15.1);
 - a magánhangzós ige a névmási *az* után (7 kihagyás, 15.2);
-- az ellenőr mintájának *egybegyűle, sétála, Helybenhagyák* kihagyása és a mintán kívüli szúrópróba alakjai (15.2);
-- a `karoli_modern.py` fejlécéből szintén hiányzik a `ts=` (nem tartozott a 4. tételhez).
+- az ellenőr mintájának *egybegyűle, sétála, Helybenhagyák* kihagyása és a mintán kívüli szúrópróba alakjai (15.2).
 
 **Megállás:** a javítás a független ellenőr újraellenőrzésére vár (`naplok/ELLENOR_F96_2.md`). A DT-F96v (🟡) a felhasználó döntése marad.
