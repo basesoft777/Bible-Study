@@ -16,7 +16,7 @@ Az M1 kötegenként halad, a legnagyobb TAHOT-előfordulású Strongokkal kezdve
 
 ## Állás
 
-Lásd a legutóbbi commit-üzenetet és a `--ellenoriz` kimenetét (sor / 11 677; Strong / 8 718).
+A 2026-10-25-i session (`claude-sonnet-5-5`) 17 köteget rögzített (a 12 fix istennév-sor mellett): **2 771 sor / 11 677** (23,7%), **1 670 Strong / 8 718** legalább egy sorral; kapuhiba 0 (`--ellenoriz`), elakadó 0 (`naplok/GLOSSZA_FORDITAS_elakad.tsv` nem jött létre), bizonytalan (`?` a `megjegyzes`-ben) 20 sor. Hátra: **6 481 (glossza, szófaj) pár ≈ 65 köteg** (100 pár/köteg). A sorrend TAHOT-gyakoriság szerinti csökkenő, tehát a leggyakoribb szavak készek; a 300 leggyakoribb Strong jó része már a táblában van. A `fo` jelölt (1 632 sor `igen`) a K2-szabály szerint számolt; a részben kész 38 Strongnak a `fo` sora még fordításra vár.
 
 ## Megfigyelések (az M2 zárójelentés és a felhasználói átnézés számára)
 
