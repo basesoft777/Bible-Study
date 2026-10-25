@@ -158,6 +158,12 @@ a G1941 a motívum 10 ÚSZ-helyéből melyiket idézi, és melyik jelentéspont 
 
 ### M3 — a motívumok aktuális görög gerincszavainak szakaszonkénti fordítása (újrafuttatható, DT-F132h)
 
+*Szándékos címsor-törlés (TÖRLÉS-SZÁNDÉKOS, ELLENOR_F132 1. tétel): a korábbi „### M3 — a 13 gerincszó szakaszonkénti
+fordítása” címsor e címsorra cserélődött. Ok: DT-F132h (1), a hatókör nem a rögzített 13 szó, hanem a motívumok aktuális görög
+gerincszavai; DT-F132g (1), az M3 külön Sonnet-briefbe került (`beerkezo/Fnn_THAYER_M3_BRIEF.md`). A CI E5 a jelölést a
+commit-üzenet sor eleji `TÖRLÉS-SZÁNDÉKOS:` mezőjéből olvassa (`eszkozok/ellenorzes/szabalyok.py` `SZANDEKOS_JELOLES_MINTA`); az
+F132.18 commit hordozza.*
+
 **Kikerült e feladat hatóköréből (DT-F132g (1), felhasználó, 2026-10-25).** Az M3 a saját, `modell: sonnet` briefjén fut; a
 tervezet: `beerkezo/Fnn_THAYER_M3_BRIEF.md` (a parancssor a napló „M3 indítása” szakaszából; előfeltétel: a sigla-javaslatok
 felhasználói jóváhagyása, DT-F132j (3)). E feladat az M3 előfeltételeit adja (F132.4–F132.13); az alábbi leírás a tervezet alapja.
