@@ -864,3 +864,78 @@ Az ellenőrzés vak opus-subagent (`claude-opus-5-5`, 150 065 token) volt. A sz�
 **A maradék-szken** (`regies_szken.py --kimenet`, a repón kívül) az újragenerált rétegen 9 új alakot (11 token: *begöngyölék, eloszlatám, felhalmozák, megnyergelék, vehetének* …) és 3 új *vala*-párt (*csépel, felakasztották, hajigál vala*) talál. Ezeket a szken most azért ismeri fel, mert a 3. kör cseréi a tő igei alakját a korpuszba hozták (*begöngyölte*). A DT-F96q jóváhagyása egyetlen futásra szólt, ezért ezek nem kerültek újra LLM-re.
 
 **Megállás:** a lefedettségre nincs elfogadott küszöb, ezért a folytatás tartalmi döntés. Helyőrzője a **DT-F96r** (🟡, `DONTESEK.md`).
+
+## 11. A 4. kör (DT-F96r, 2. opció) — megállás a DT-F96s-en
+
+**A felhasználó döntése** (chat, 2026-10-25): „2” — még egy kör a 10.6 maradék osztályaira, opus-futással (becslés kb. 0,2–0,3 M token), majd a minta2 újramérése.
+
+### 11.1 A szken (`regies_szken.py --kor 4`)
+
+Bemenet: a 3. kör utáni réteg pillanatképe (`karoli_modern.tsv` és `igealak_alakok.tsv` a `9fd137f`-nél). A kérdésekből a már kérdezett alak és *vala*-pár kimarad (minden LLM-tábla, a kor3 is). Kimenet: `adat/karoli_modern/regies_szken_kor4.tsv`, `S%04d` azonosítókkal.
+
+| Jelöltkör | A 10.6 kihagyása | Kérdés |
+|---|---|---|
+| igei próba: igekötő + régi tő; v-tő → *-d* (*megnyugov → megnyugod*); ható ige; igeképzős tő (*-ít, -oz, -gat, -ad* …) | *körülvevék, megnyugovék, késhetének, tűrhetém, felzúdíták* | 291 alak (728 token), a következő két kör alakjaival együtt |
+| *-a/-e* E/3 alanyi elbeszélő múlt; névszószűrő: kimarad, ha a korpuszban *-ában/-ához/-ával …* esetragos alakja áll | *megfullada, felüle* | (az előző sorban) |
+| a csak a .1 által változtatott token, a modern alakján | *dícsérvén* | (az előző sorban) |
+| a `vala_nem_elemezheto` *vala* | *cselekedik vala* | 33 pár (42 token) |
+| `jelolt`: változatlan (vagy csak a .1-ben változott) jelölt alak, amelyre opus-szavazat még nincs | *dícsérvén* | 161 alak |
+
+A szabály-jelölt a v-tövön *-dik* igét ad (*megnyugovék → megnyugodott*), az igekötő + régi tövön pedig a régi tő mai igéjét (*körülvevék → E1=körülvettem|T3=körülvették*). Ez a javítás a futás után került be: a kérdések és a válaszok változatlanok, csak a szabály-jelölt oszlop számolódott újra ugyanabból a pillanatképből (a `regies_szken_kor4.tsv` 1–4., 6–7. oszlopa azonos).
+
+### 11.2 Az opus-futás (K4)
+
+2 köteg (243 + 242), vak, versrészlettel. A modell mindkét átiratban `claude-opus-5-5`. Összesen **282 897 token** (4 hívás; kötegenként 140 741 és 142 156; a keret 0,2–0,3 M). Eredmény: `igealak_llm_kor4.tsv` és a hívásnapló.
+
+### 11.3 Alkalmazás (`igealak.py`)
+
+| | Token | Alak |
+|---|---|---|
+| csere, a szabály és az opus egyezik, a tő-őr átengedi (`kor4:szabaly+opus`) | 184 | 119 |
+| jelölt marad (`kor4_szabaly`, `kor4_opus` a `jelolt` oszlopban) | 83 | 59 |
+| a `jelolt` típus: a DT-F96l többsége az új opus-szavazattal; valódi szövegváltozás | 10 | — |
+| ugyanez, csak a címke bővül (a szabály és a sonnet már egyezett) | 319 | — |
+| *vala* kiesik (`vala_segedige_kor4`; az ige múlt időbe kerül: 12 token, *sátoroz → sátorozott, cselekedik → cselekedett, hintenek → hintettek*) | 16 | — |
+| a `vala_nem_elemezheto` *vala* létige (`vala_letige_kor4`: Ez 27:8, Ján 3:26) | 2 | — |
+
+Mind a 184 csere igei alak; átnézve egyedi alakonként (119), névszó nem cserélt. A *vive → vitt* a Károliban E/3 elbeszélő múlt.
+
+**Két javítás a próbák alapján:**
+- **A .1 cseréje a .2 eredményén** (`h1_atvisz`): a szavazat az 1908-as alakra jött, és a *reáveté → reávetette* visszacsinálta volna a .1 *reá → rá* cseréjét. Ez 3 tokent érintett (3Móz 8:7, Luk 4:40, ApCsel 18:12), a régebbi rétegekben egyet sem.
+- **A tő-őr a .1-ben változott tokenen:** a 4. körben a .1 utáni alakon is mér (*harczolának → harcoltak, reáadá → ráadta, körűlvevék → körülvették*).
+
+**Újragenerálás:**
+- `igealak_tokenek.tsv`: 67 432 → 67 685 sor, a változó token 50 078 → 50 246;
+- .3: K2, K3 és K3b teljesül, a Strong nem változott;
+- az `ek_E1_T3` 692 tokenen áll (+7: *körülvevék*, a tagmondat dönt);
+- a 4. kör osztályaiban a maradék-szken 0 új jelöltet talál.
+
+**A régi minta:** a G008 (*rávetette, ráadta*), a G044 (*táncoltak*) és a G083 (*felháborították*) korábbi kihagyása javult, átnézve. A G106 *üle* (helyesen *ült*) kihagyás maradt, mert a szken a háromgyűs alakot nem nézi.
+
+### 11.4 A minta2 újramérése
+
+A 140 versből 7 sor modern szövege változott (H001, H025, H047, H078, H110, H120, H135). Ezeket a végrehajtó session (`claude-opus-5-5`) a 10.6 szabályával újraellenőrizte: mind a 7 javítás helyes, új hiba nincs. A többi 133 sor szövege nem változott, ott a vak K1 ítélete érvényes.
+
+| Réteg | Csere | Hiba | Kihagyás |
+|---|---|---|---|
+| véletlen (100) | 93 | 0 | 6 |
+| kor3 (20) | 69 | 0 | 4 |
+| kor3-*vala* (10) | 25 | 0 | 0 |
+| `ek_E1_T3` (10) | 26 | 0 | 1 |
+| **összesen** | **213** | **0** | **11** |
+
+- **A cserék pontossága:** 213/213.
+- **A lefedettség a véletlen rétegen:**
+  - igealak: 93 / (93 + 3) = **96,9%** (a 3. kör után 92,7%);
+  - az *-ök/-ok* birtokossal együtt: 93 / 99 = 93,9%.
+- **Korpuszbecslés:** 3 igealak-kihagyás 100 versben, kb. 930 token. A 95%-os Poisson-sáv kb. 200–2 700.
+- **Torzítás:** a véletlen réteg 10.6-os kihagyásai jelölték ki a 4. kör osztályait, ezért ezen a rétegen a 96,9% a valódi lefedettséget felülbecsli. Torzítatlan mérés új véletlen mintából lehetséges.
+
+**A maradék kihagyások:**
+- **igealak (3):**
+  - *hivék*: a szabály, a sonnet és az opus három különböző alakot ad, mert a T/3 alanyi és a tárgyas között a szövegkörnyezet dönt;
+  - *megfullada*: a szabály *megfulladott*, az opus *megfulladt*, ezért jelölt marad;
+  - *dícsérvén*: az opus *dicsérve*, a szabály *dícsérve*; a .1 ékezetcseréje miatt nincs egyezés;
+- **a DT-F96p hatókörén kívüli *-ök/-ok* birtokos (8):** *előttök, közülök, rajtok, szivökben, szomjúságokban, szavoknak, uroknak, magoknak*.
+
+**Megállás:** a 2. opció végrehajtva, a folytatás (lezárás, ellenőrzés, újabb kör) a felhasználó döntése: **DT-F96s** (🟡, `DONTESEK.md`).
