@@ -174,3 +174,15 @@ az M1 gyűjtése pótolja, ha van).
 
 A felhasználó elé: DT-F132a, DT-F132b, DT-F132c, DT-F132d, DT-F132f (`DONTESEK.md`). A DT282 eldöntött,
 nem kérdezett újra. A döntésig kódírás nincs.
+
+## Döntések (2026-10-25)
+
+A felhasználó (chat, szó szerint): „mind a javaslat szerint, az M3 külön Sonnet-menetben”. Átvezetve
+(`DONTESEK.md`, 🟢; a brief 6. döntésnaplója és `ir` mezője):
+
+- **DT-F132a (b):** szerkezet és `bcv` a `Thayer.lexicon`-ból, szöveg a `Thayer_teljes.tsv`-ből illesztéssel.
+- **DT-F132b (1)+(2)+(3)+(4):** a két tábla a SEMA 2.30 / 2.29 mintájára, `Strong_padded`, fordítási kulcs
+  `sz<sorszam>`, a normalizálás egy függvény.
+- **DT-F132c (a)+(i)+(ii):** újrafordítás; a 8 gerinc-`opus` sor `elavult`, az 5 `kezi` a jóváhagyásig érvényes.
+- **DT-F132d (1)+(S):** közös lánc, a #128 fájljai nem változnak; Sonnet; **az M3 külön Sonnet-menetben**.
+- **DT-F132f (b):** a #132 építi a tiltott-fordulat táblát és kaput, `15_tiltott` számmal.

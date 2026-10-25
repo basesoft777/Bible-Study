@@ -6,12 +6,12 @@ tipus: feladat
 fazis: 2
 munka: adat
 modell: opus
-allapot: megallt
+allapot: fut
 ag: claude/thayer-szakasz
 ad: a Thayer szakaszonként, adatként (thayer_szakaszok.tsv) és igehelyenként jelentésponthoz kötve (thayer_vers_jelentes.tsv); a motívumok 13 görög gerincszava szakaszonként magyarul, szakasz-kapun átengedve — a #131 görög része erre épül
-kovetkezo: "Te: ⛔ M0 — döntés a DT-F132a, b, c, d, f tételekről (DONTESEK.md)"
+kovetkezo: "M1 — bontó (eszkozok/thayer_jelolt/bont.py)"
 olvas: [konkordancia/lexikonok_nyers/Thayer.lexicon, konkordancia/lexikonok_nyers/README.md, konkordancia/Thayer_teljes.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, konkordancia/Karoli_1908.tsv, adat/licencek.tsv, adat/forditasok.tsv, adat/terminologia.tsv, adat/elofordulasok.tsv, adat/SEMA.md, adat/karoli_strong/, eszkozok/bdb_jelolt/, eszkozok/bdb_adatblokk.py, eszkozok/emeles.py, eszkozok/forditas_kapuk.py, "forditas/prompt_v*.md", F128_BDB_SZAKASZ_ELOKESZITES_BRIEF.md, F131_SZOTARI_GERINC_BRIEF.md, F07_THAYER_ELES_BRIEF.md, F27_FP3_BRIEF.md]
-ir: [eszkozok/thayer_jelolt/, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/thayer_sigla.tsv, adat/forditasok.tsv, adat/SEMA.md, naplok/F132_THAYER_SZAKASZ_naplo.md]
+ir: [eszkozok/thayer_jelolt/, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/thayer_sigla.tsv, adat/forditasok.tsv, adat/SEMA.md, adat/tiltott_fordulatok.tsv, eszkozok/forditas_kapuk.py, eszkozok/teszt_forditas_kapuk.py, naplok/F132_THAYER_SZAKASZ_naplo.md]
 fugg: [128]
 nem_fugg: [7, 27, 38, 67, 121, 123]
 ---
@@ -186,9 +186,9 @@ Push és merge csak a felhasználótól.
 
 | Azonosító | Kérdés | Opciók | Javaslat |
 |---|---|---|---|
-| DT-F132a | A forrás (szöveg és szerkezet) | (a) Thayer.lexicon HTML · (b) szerkezet a lexikonból, szöveg a TSV-ből · (c) csak TSV | (a), ha a licenc engedi; különben (b) |
-| DT-F132b | Kulcs, séma, a `G12` → `G0012` normalizálás | l. M0 2. | `Strong_padded`, a SEMA 2.29–2.30 mintájára |
-| DT-F132c | A 14 kész `teljes` sor sorsa | (a) újrafordítás szakaszonként · (b) utólagos illesztés · (c) mindkettő | (a) |
-| DT-F132d | A fordítás lánca és modellje | a #128 lánca szótárfüggetlenül / külön lánc; Sonnet / Opus | közös lánc; Sonnet (DT-F38e mintája) |
+| DT-F132a | A forrás (szöveg és szerkezet) | (a) Thayer.lexicon HTML · (b) szerkezet a lexikonból, szöveg a TSV-ből · (c) csak TSV | **eldöntve: (b)** (felhasználó, 2026-10-25; `DONTESEK.md`) |
+| DT-F132b | Kulcs, séma, a `G12` → `G0012` normalizálás | l. M0 2. | **eldöntve: (1)+(2)+(3)+(4)** (felhasználó, 2026-10-25; `DONTESEK.md`) |
+| DT-F132c | A 14 kész `teljes` sor sorsa | (a) újrafordítás szakaszonként · (b) utólagos illesztés · (c) mindkettő | **eldöntve: (a)+(i)+(ii)** (felhasználó, 2026-10-25; `DONTESEK.md`) |
+| DT-F132d | A fordítás lánca és modellje | a #128 lánca szótárfüggetlenül / külön lánc; Sonnet / Opus | **eldöntve: (1)+(S); az M3 külön Sonnet-menetben** (felhasználó, 2026-10-25; `DONTESEK.md`; az indítás: DT-F132g) |
 | DT282 | Viszony a #131-hez | (a) a #131 görög része vár · (b) a #131 héberrel indul, a görög később | **eldöntve: (a)** (felhasználó, 2026-10-21; `DONTESEK.md`) |
-| DT-F132f | A tiltott-fordulat tábla (2a/2) helye | (a) a #128 · (b) ez a feladat · (c) a #121 terve szerint | (a) |
+| DT-F132f | A tiltott-fordulat tábla (2a/2) helye | (a) a #128 · (b) ez a feladat · (c) a #121 terve szerint | **eldöntve: (b), kapu `15_tiltott`** (felhasználó, 2026-10-25; `DONTESEK.md`) |
