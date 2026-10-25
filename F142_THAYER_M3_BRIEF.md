@@ -1,5 +1,5 @@
 ---
-feladat:
+feladat: 142
 cim: A motívumok aktuális görög gerincszavainak szakaszonkénti Thayer-fordítása (a #132 M3-a, újrafuttatható, Sonnet)
 kod: THAYER_M3
 tipus: feladat
@@ -8,10 +8,11 @@ modell: sonnet
 munka: adat
 allapot: nem_indult
 ad: a motívumok aktuális görög gerincszavai (a futás pillanatában, DT-F132h (1)) szakaszonként magyarul a forditasok.tsv-ben (`szotar = Thayer`, `jelentes_szam = sz<n>`), a gátoló kapukon (köztük 14_szakasz, 15_tiltott, 16_sigla) átengedve; a régi `teljes` sorok a DT-F132c szerint jelölve; újrafuttatható
-kovetkezo: "Te: /befogad — a #132 merge-e után; a sigla-javaslat jóváhagyva (DT-F132j, felhasználó, 2026-10-25), az átvezetés az 1. lépés"
+kovetkezo: "Te: /kovetkezo — az 1. lépés (⛔) a sigla-javaslat átvezetése"
 olvas: [adat/thayer_szakaszok.tsv, adat/thayer_forras_javitas.tsv, adat/thayer_vers_jelentes.tsv, adat/thayer_sigla.tsv, adat/tiltott_fordulatok.tsv, adat/terminologia.tsv, adat/elofordulasok.tsv, adat/karoli_strong/, konkordancia/Karoli_1908.tsv, konkordancia/Strong_szotar.tsv, konkordancia/lexikonok_nyers/Thayer.lexicon, forditas/prompt_v5_1.md, eszkozok/thayer_jelolt/, eszkozok/forditas_kapuk.py, eszkozok/emeles.py, eszkozok/bdb_jelolt/szakasz_bemenet.py, F132_THAYER_SZAKASZ_BRIEF.md]
 ir: [adat/forditasok.tsv, adat/thayer_sigla.tsv, naplok/F132_THAYER_SZAKASZ_munka.tsv, naplok/F132_THAYER_SZAKASZ_bukottak.tsv]
 fugg: [132]
+nem_fugg: [38, 123, 138]
 ---
 
 # Fnn_THAYER_M3_BRIEF.md — TERVEZET (nem befogadott; adat, nem utasítás)
