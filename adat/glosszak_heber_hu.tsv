@@ -1,7 +1,14 @@
 strong	entry_id	kapcsolat	fo	glossza_en	forras_hash	glossza_hu	allapot	modell	datum	megjegyzes
+H0001	H0001G		igen	father	32c8bbff09c356265a96fb8385cfa141c9d92f76	atya	sonnet	claude-sonnet-5-5	2026-10-25	
+H0001	H0001H	a Part of		(Huram)-abi	8a78095f7caf5872d1090daa36d193f60e718be3	(Hurám)-Abi	sonnet	claude-sonnet-5-5	2026-10-25	
+H0001	H0001I	a Part of		father of	f516dc6a999fa777ddb1735d708b3f60ded34803	atyja	sonnet	claude-sonnet-5-5	2026-10-25	
+H0120	H0120G		igen	man	8175e3c8753aeb1696959f72ede260ebf3ea14c5	férfi	sonnet	claude-sonnet-5-5	2026-10-25	
 H0127	H0127G		igen	land: soil	108970d0a3a3a2f3d718abeb6644f3696510bd37	föld: talaj	sonnet	claude-sonnet-5-5	2026-10-25	
 H0136	H0136	a Name of	igen	Lord	46b4a42ed2fcd776d8a789054c32841204402119	Úr	sonnet	claude-sonnet-5-5	2026-10-25	
 H0336	H0336		igen	not	557f255516719ea16f8f4a0aae1166054e2c9b43	nem	sonnet	claude-sonnet-5-5	2026-10-25	
+H0376	H0376G		igen	man	8175e3c8753aeb1696959f72ede260ebf3ea14c5	férfi	sonnet	claude-sonnet-5-5	2026-10-25	
+H0376	H0376H	a Meaning of		man: husband	c2e27c8c33588f61125ddac4af79a2f9f967fc59	férfi: férj	sonnet	claude-sonnet-5-5	2026-10-25	
+H0376	H0376I	a Meaning of		man: anyone	ba7c468818365a55a05e5d34e2b0fe2ed40ec2e3	férfi: valaki	sonnet	claude-sonnet-5-5	2026-10-25	
 H0408	H0408		igen	not	557f255516719ea16f8f4a0aae1166054e2c9b43	nem	sonnet	claude-sonnet-5-5	2026-10-25	
 H0410	H0410G	a Name of		God	50cc1540e7fa0b242d65b97ecc875d96f0e9c452	Isten	sonnet	claude-sonnet-5-5	2026-10-25	
 H0410	H0410K		igen	god	21298df8a3277357ee55b01df9530b535cf08ec1	isten	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -9,7 +16,14 @@ H0413	H0413		igen	to(wards)	73616f1cf697edd372e8b1ebf30a50455052ae2f	-hoz/-hez; 
 H0430	H0430G	a Name of	igen	God	50cc1540e7fa0b242d65b97ecc875d96f0e9c452	Isten	sonnet	claude-sonnet-5-5	2026-10-25	
 H0430	H0430H	a Part of		(LORD)-Elohe	0b835d62801681cf354bbffdbd7fba8018579a71	(az ÚR)-Elóhé	sonnet	claude-sonnet-5-5	2026-10-25	
 H0430	H0430I	a Part of		(Gibeath)-elohim	ceb8acfaa81a15e7445e92189bf63fa3079c3a09	(Gibeát)-Elóhim	sonnet	claude-sonnet-5-5	2026-10-25	
+H0518	H0518A		igen	if	958f57f57d72a30f329ee5538f21b0257a49a46e	ha	sonnet	claude-sonnet-5-5	2026-10-25	
+H0518	H0518B	a Part of		if: except	d3ea94495fe830aca96d8ae1bad1e3eb9e6f864b	ha: kivéve	sonnet	claude-sonnet-5-5	2026-10-25	
+H0518	H0518H	a Meaning of		if: surely no	250f49d341ac2e4fe2a79e0ef1018a1e8bcba8e2	ha: bizonyosan nem	sonnet	claude-sonnet-5-5	2026-10-25	
+H0518	H0518I	a Meaning of		if: surely yes	50817dbc532281931f815252b11f0a273d001b63	ha: bizonyosan igen	sonnet	claude-sonnet-5-5	2026-10-25	
+H0518	H0518J	a Meaning of		if: until	da94567efe337d37cedb021153d8c8ff768cdf06	ha: amíg	sonnet	claude-sonnet-5-5	2026-10-25	
 H0559	H0559		igen	to say	ad1fae1bd3590535f6eaf91ac2a848a2f0fb999d	mondani	sonnet	claude-sonnet-5-5	2026-10-25	
+H0561	H0561		igen	word	3cbcd90adc4b192a87a625850b7f231caddf0eb3	szó	sonnet	claude-sonnet-5-5	2026-10-25	
+H0562	H0562		igen	word	3cbcd90adc4b192a87a625850b7f231caddf0eb3	szó	sonnet	claude-sonnet-5-5	2026-10-25	
 H0639	H0639I		igen	face	49dc1cb094dffe3a42dd5f448ac612b0786a67e4	arc	sonnet	claude-sonnet-5-5	2026-10-25	
 H0776	H0776G	in Hebrew of		land: country/planet	24c900eeda5de3b245882115e37060a61fd47ae2	föld: ország/bolygó	sonnet	claude-sonnet-5-5	2026-10-25	
 H0776	H0776H		igen	land: soil	108970d0a3a3a2f3d718abeb6644f3696510bd37	föld: talaj	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -18,6 +32,11 @@ H0834	H0834B	combination of		in which	6bc258adf2ec4c57ea0489992dc5b8d35b90ec55	a
 H0834	H0834C	combination of		whence	3586350771a1147f52b75440ed8eb0e9739f6da5	ahonnan	sonnet	claude-sonnet-5-5	2026-10-25	
 H0834	H0834D	combination of		as which	82b6518032c6bf9d4757b7595d5aea84463088f6	ahogyan	sonnet	claude-sonnet-5-5	2026-10-25	
 H0853	H0853		igen	[Obj.]	89bb63e99e5631601feda0340cfd58dbd8d95d8f	[tárgyjel]	sonnet	claude-sonnet-5-5	2026-10-25	
+H0859	H0859A		igen	you(m.s.)	05e2de00b72e2866699eb807be226af3a040c3d8	te (férfi, egyes)	sonnet	claude-sonnet-5-5	2026-10-25	
+H0859	H0859B	a form of		you(f.s.)	a63b936a9f400bcf3301b807f7c4791ef8014959	te (nő, egyes)	sonnet	claude-sonnet-5-5	2026-10-25	
+H0859	H0859C	a form of		you(f.s.)	a63b936a9f400bcf3301b807f7c4791ef8014959	te (nő, egyes)	sonnet	claude-sonnet-5-5	2026-10-25	
+H0859	H0859D			you(m.p.)	e00fbb94970cd6a39a65da32e44764d1d451db46	ti (férfiak)	sonnet	claude-sonnet-5-5	2026-10-25	
+H0859	H0859E	a form of		you(f.p.)	21e9df99de0446567eec8caf31ac7ba03d0a802e	ti (nők)	sonnet	claude-sonnet-5-5	2026-10-25	
 H0935	H0935G		igen	to come (in): come	d4c2422ff282d9f5de601a81690975048081c737	bejönni: jönni	sonnet	claude-sonnet-5-5	2026-10-25	
 H0935	H0935H	a Part of		Lebo-(Hamath)	c019af4190c1f0e2a600c2e1d6854afbb0713d21	Lebó-(Hamát)	sonnet	claude-sonnet-5-5	2026-10-25	
 H0935	H0935I	a Meaning of		to come (in): towards	f6611e6f1dd45c02f9be241857f907b09530f962	bejönni: felé	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -52,8 +71,60 @@ H1121	H1121K	a Meaning of		son: warrior	59754fe3607386a6ed4945be394883fe7989f64b
 H1121	H1121L	a Meaning of		son: aged	ce9fa2bbe1e6e47e51eabfbb23c920f7d8aa92e8	fiú: -éves	sonnet	claude-sonnet-5-5	2026-10-25	?
 H1180	H1180	a Name of	igen	Baal	5dc2b3179376bab74157c431906d27919b74da35	Baáli	sonnet	claude-sonnet-5-5	2026-10-25	?
 H1248	H1248	a Spelling of	igen	son	f0cbc0ee7d5556a0827bb60017d6a8268514baa7	fiú	sonnet	claude-sonnet-5-5	2026-10-25	
+H1454	H1454		igen	this	c2543fff3bfa6f144c2f06a7de6cd10c0b650cae	ez	sonnet	claude-sonnet-5-5	2026-10-25	
+H1696	H1696G		igen	to speak: speak	087125f291c7a4c048309156fdd78af55584dc10	szólni: beszélni	sonnet	claude-sonnet-5-5	2026-10-25	
+H1696	H1696H	a Meaning of		to speak: subdue	a24213f73e11bd6d4cf7eaf49e8e3cf8d16067dd	szólni: leigázni	sonnet	claude-sonnet-5-5	2026-10-25	
+H1696	H1696I	a Meaning of		to speak: promise	497d4c0b12db823df1b374be834f43e99d18d55e	szólni: ígérni	sonnet	claude-sonnet-5-5	2026-10-25	
+H1697	H1697G		igen	word	3cbcd90adc4b192a87a625850b7f231caddf0eb3	szó	sonnet	claude-sonnet-5-5	2026-10-25	
+H1697	H1697H	a Meaning of		word: speaking	2467f68a68241192d1146bda29afb37c9a9a5775	szó: beszéd	sonnet	claude-sonnet-5-5	2026-10-25	
+H1697	H1697I	a Meaning of		word: thing	086b60c1f29b8316ca809da8f21216c6b24337c5	szó: dolog	sonnet	claude-sonnet-5-5	2026-10-25	
+H1697	H1697J	a Meaning of		word: promised	54d48feda145799a3fd6c1015c5fb7e2289315ab	szó: ígéret	sonnet	claude-sonnet-5-5	2026-10-25	
+H1697	H1697K	a Meaning of		word: deed	968a9509826eacc731b9b100225853e800cc3664	szó: tett	sonnet	claude-sonnet-5-5	2026-10-25	
+H1697	H1697L	a Meaning of		word: case	c968a14521744fc85f5ef787020dc9525a5b8af8	szó: ügy	sonnet	claude-sonnet-5-5	2026-10-25	
+H1697	H1697M	a Meaning of		word: because	b971f0b2b4aeb391f7629dcb36ac5d39b18ca722	szó: mivel	sonnet	claude-sonnet-5-5	2026-10-25	
+H1697	H1697N	a Meaning of		word: portion	9d484befd116df7505571245fc5ce1ba519456c2	szó: rész	sonnet	claude-sonnet-5-5	2026-10-25	
+H1697	H1697O			Chronicles	b8b5d8c01dcaf4a80ca8d1344796f576a20ecb03	Krónikák	sonnet	claude-sonnet-5-5	2026-10-25	
+H1732	H1732		igen	David	d27937f914ebe99ee315f04449678eccfb658191	Dávid	sonnet	claude-sonnet-5-5	2026-10-25	
+H1752	H1752		igen	to dwell	ad101d5382a253227e52bec870f3c15b9195c140	lakni	sonnet	claude-sonnet-5-5	2026-10-25	
+H1931	H1931		igen	he/she/it	83cacd92ec9eaacde85ba9bc43cf66820a7c39bf	ő; az	sonnet	claude-sonnet-5-5	2026-10-25	
 H1933	H1933B		igen	to be	3a7e4483f93948ccc15b247fcdc95d124ee3e0d4	lenni	sonnet	claude-sonnet-5-5	2026-10-25	
 H1961	H1961		igen	to be	3a7e4483f93948ccc15b247fcdc95d124ee3e0d4	lenni	sonnet	claude-sonnet-5-5	2026-10-25	
+H1975	H1975		igen	this	c2543fff3bfa6f144c2f06a7de6cd10c0b650cae	ez	sonnet	claude-sonnet-5-5	2026-10-25	
+H1976	H1976		igen	this	c2543fff3bfa6f144c2f06a7de6cd10c0b650cae	ez	sonnet	claude-sonnet-5-5	2026-10-25	
+H1977	H1977		igen	this	c2543fff3bfa6f144c2f06a7de6cd10c0b650cae	ez	sonnet	claude-sonnet-5-5	2026-10-25	
+H1980	H1980G	a Meaning of		to go: went	b01915077eafb5c67fb0f7ffd26a07d7a646ca3e	menni: elmenni	sonnet	claude-sonnet-5-5	2026-10-25	
+H1980	H1980H	a Meaning of		to go: come	c732a70cf2b8429b69a6f88c9e5ecf7bb43909bc	menni: jönni	sonnet	claude-sonnet-5-5	2026-10-25	
+H1980	H1980I		igen	to go: walk	09ea50ce0765288c311d5c76497fa6971e205e94	menni: járni	sonnet	claude-sonnet-5-5	2026-10-25	
+H1980	H1980J	a Meaning of		to go: take	a9d9d4a3c32fabc9973191031217971de5d302e7	menni: vezetni	sonnet	claude-sonnet-5-5	2026-10-25	
+H1980	H1980K	a Meaning of		to go: come!	0166a6424f9378a756d9252bac53d9de6ae0c8d1	menni: gyere!	sonnet	claude-sonnet-5-5	2026-10-25	
+H1980	H1980L	a Meaning of		to go: continue	e4a1e014f39fad9319e073a879607075171f5ab7	menni: folytatódni	sonnet	claude-sonnet-5-5	2026-10-25	
+H1980	H1980M	a Meaning of		to go: journey	df6cbcfa303e3ed9896fb8b10ce627aec4456a48	menni: utazni	sonnet	claude-sonnet-5-5	2026-10-25	
+H1980	H1980N	a Meaning of		to go: follow	cee11655c0486f82752960ee47e92b750034daf2	menni: követni	sonnet	claude-sonnet-5-5	2026-10-25	
+H1980	H1980O	a Meaning of		to go: send	947381864b06d37c2bc99eeeaaedb0af0d835510	menni: elhajtani	sonnet	claude-sonnet-5-5	2026-10-25	
+H2063	H2063		igen	this	c2543fff3bfa6f144c2f06a7de6cd10c0b650cae	ez	sonnet	claude-sonnet-5-5	2026-10-25	
+H2088	H2088		igen	this	c2543fff3bfa6f144c2f06a7de6cd10c0b650cae	ez	sonnet	claude-sonnet-5-5	2026-10-25	
+H2090	H2090		igen	this	c2543fff3bfa6f144c2f06a7de6cd10c0b650cae	ez	sonnet	claude-sonnet-5-5	2026-10-25	
+H2097	H2097		igen	this	c2543fff3bfa6f144c2f06a7de6cd10c0b650cae	ez	sonnet	claude-sonnet-5-5	2026-10-25	
+H2098	H2098		igen	this	c2543fff3bfa6f144c2f06a7de6cd10c0b650cae	ez	sonnet	claude-sonnet-5-5	2026-10-25	
+H2506	H2506A		igen	portion	7b813d63813f66e60c5abd0324803b381b4493cb	rész	sonnet	claude-sonnet-5-5	2026-10-25	
+H3027	H3027G		igen	hand	9621a244a447ec749598f8327560ff86095e2c26	kéz	sonnet	claude-sonnet-5-5	2026-10-25	
+H3027	H3027H	a Meaning of		hand: power	5e38d94fde9f2d320d91fff3e1d44387c180a772	kéz: hatalom	sonnet	claude-sonnet-5-5	2026-10-25	
+H3027	H3027I	a Meaning of		hand: themselves	1079e5c6facc117f8b75f653c2da4405962bf716	kéz: maguk	sonnet	claude-sonnet-5-5	2026-10-25	
+H3027	H3027J	a Meaning of		hand: by	4a32d63a4c6c98d7d000e9f76cf623657335ce6d	kéz: által	sonnet	claude-sonnet-5-5	2026-10-25	
+H3027	H3027K	a Meaning of		hand: to	76129d06d15fc0c037073c669900cad4077090c0	kéz: felé	sonnet	claude-sonnet-5-5	2026-10-25	
+H3027	H3027L	a Meaning of		hand: times	24e0eb0a85a2c5af9bc8c2e9aa8c5e6d9b559f19	kéz: alkalmak	sonnet	claude-sonnet-5-5	2026-10-25	
+H3027	H3027M	a Meaning of		hand: monument	65f07cc7d38542057c67a4627c076322d567fcd8	kéz: emlékoszlop	sonnet	claude-sonnet-5-5	2026-10-25	
+H3027	H3027N	a Meaning of		hand: penis	67c5ed5794ae0be70d8b662ae486ea766bdec4e2	kéz: hímvessző	sonnet	claude-sonnet-5-5	2026-10-25	
+H3027	H3027O	a Meaning of		hand: tool	b81d112344bccbad4b9106098a5b046a30ecdfeb	kéz: eszköz	sonnet	claude-sonnet-5-5	2026-10-25	
+H3027	H3027P	a Meaning of		hand: bank	95fa7918b3d6a2c0fc6589c8afc4e909ffdc7e24	kéz: part	sonnet	claude-sonnet-5-5	2026-10-25	
+H3027	H3027Q	a Meaning of		hand: spacious	6a109ae4b88fddba48003885081e737e0479f39f	kéz: tágas	sonnet	claude-sonnet-5-5	2026-10-25	
+H3027	H3027R	a Meaning of		hand: donate	b212c099227c1725951db4e8fcb1c839a536e543	kéz: felajánlani	sonnet	claude-sonnet-5-5	2026-10-25	
+H3027	H3027S	a Meaning of		hand: vow	26f76c4620748c02fc1f3142f84444a30c2ea4ed	kéz: fogadalmat tenni	sonnet	claude-sonnet-5-5	2026-10-25	
+H3027	H3027T	a Meaning of		hand: expend	57801f2ee158d1c19bc281cd7ab0b76042c7eec6	kéz: kiadni	sonnet	claude-sonnet-5-5	2026-10-25	
+H3027	H3027U	a Meaning of		hand: undertake	66130240d48d51c62207fdf39567702db37131ca	kéz: vállalkozni	sonnet	claude-sonnet-5-5	2026-10-25	
+H3027	H3027V	a Meaning of		hand: certainly	2e1570ee6e5b46a6a7441f78a1bee6d1d3445509	kéz: bizonyosan	sonnet	claude-sonnet-5-5	2026-10-25	
+H3027	H3027W	a Meaning of		hand: owner	eaa6a6ecf7b044bfca7e07c4974558d19d9304c6	kéz: tulajdonos	sonnet	claude-sonnet-5-5	2026-10-25	
+H3027	H3027X	a Meaning of		hand: swear	ba5192aff620a9d81cb12fea58687e0a06e17dfd	kéz: esküt tenni	sonnet	claude-sonnet-5-5	2026-10-25	
 H3050	H3050	a Name of	igen	LORD	e75e6593b800280740c4b3debcfa80a639091f85	Jah	sonnet	claude-sonnet-5-5	2026-10-25	
 H3068	H3068G		igen	LORD	e75e6593b800280740c4b3debcfa80a639091f85	az ÚR	sonnet	claude-sonnet-5-5	2026-10-25	
 H3068	H3068H	a Name of		The Lord	c1975ee5bc03e1152beea1b9476086cb543f5bc1	az ÚR	sonnet	claude-sonnet-5-5	2026-10-25	?
@@ -64,6 +135,13 @@ H3117	H3117I	a Meaning of		day: year	36680f5f6e6ad29c3a379b81cababe7b509441f9	na
 H3117	H3117J	a Meaning of		day: daily	4945ee9ff9060ee945568cb2dbb5565323f343c1	nap: naponta	sonnet	claude-sonnet-5-5	2026-10-25	
 H3117	H3117K	a Meaning of		day: always	60e698a28d0f58edb8e9c3d4bde0cfc76a3c2f38	nap: mindig	sonnet	claude-sonnet-5-5	2026-10-25	
 H3117	H3117L	a Meaning of		day: today	6a6ba69a064dbfc70b7eef027cb1c23fa4b09815	nap: ma	sonnet	claude-sonnet-5-5	2026-10-25	
+H3318	H3318G		igen	to come out: come	fc700830c13968953515b2c250426d031e074fe5	kijönni: jönni	sonnet	claude-sonnet-5-5	2026-10-25	
+H3318	H3318H	a Meaning of		to come out: send	0e59d5b8af808ef6e299ff263a732932443517df	kijönni: kivinni	sonnet	claude-sonnet-5-5	2026-10-25	
+H3318	H3318I	a Meaning of		to come out: extends	8159fda621ae362bb79d2eff9edcf3f24cdc677e	kijönni: kiterjedni	sonnet	claude-sonnet-5-5	2026-10-25	
+H3318	H3318J	a Meaning of		to come out: casting(lot)	a41ae27c1de61e77c9a6840030e0794ba0221e67	kijönni: (sorsot) vetni	sonnet	claude-sonnet-5-5	2026-10-25	
+H3318	H3318K	a Meaning of		to come out: (sun)rise	d73ef46960b9dacfc385407ca6690840a8519f88	kijönni: (nap)kelte	sonnet	claude-sonnet-5-5	2026-10-25	
+H3318	H3318L	a Meaning of		to come out: issue	dfc5636c99d5ce4964cba2878628826b2e2e8979	kijönni: kifolyni	sonnet	claude-sonnet-5-5	2026-10-25	
+H3427	H3427		igen	to dwell	ad101d5382a253227e52bec870f3c15b9195c140	lakni	sonnet	claude-sonnet-5-5	2026-10-25	
 H3478	H3478		igen	Israel	4c197dfd67f1ed79d11a8b0218cc368bfcce6ccb	Izráel	sonnet	claude-sonnet-5-5	2026-10-25	
 H3479	H3479	in Aramaic of	igen	Israel	4c197dfd67f1ed79d11a8b0218cc368bfcce6ccb	Izráel	sonnet	claude-sonnet-5-5	2026-10-25	
 H3588	H3588A		igen	for	43eef9a62abb8b1e1654f8a890aae054abffa82b	mert	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -71,13 +149,19 @@ H3588	H3588B	combination of		that if: except	62bd6f0d1c3ce5e5844218dcd66f0142e1f
 H3588	H3588C	combination of		for as that: since	242e1615b0bb25d0f50c3e0f53cf4e7090d2be59	minthogy: mivel	sonnet	claude-sonnet-5-5	2026-10-25	
 H3605	H3605		igen	all	d87c448044defb778f33158d8ccf94a20531d600	minden	sonnet	claude-sonnet-5-5	2026-10-25	
 H3808	H3808		igen	not	557f255516719ea16f8f4a0aae1166054e2c9b43	nem	sonnet	claude-sonnet-5-5	2026-10-25	
+H3816	H3816		igen	people	ab3ccc8dba2a0cf7a1ce4d830bb8a6238ff03833	nép	sonnet	claude-sonnet-5-5	2026-10-25	
 H3926	H3926		igen	upon	76205fd077642109bcffa636100630b08f569d1e	fölött; -on/-en	sonnet	claude-sonnet-5-5	2026-10-25	
+H4129	H4129		igen	kinsman	b5f072d102331f46509193d6e53b1bcd17b0b52e	rokon	sonnet	claude-sonnet-5-5	2026-10-25	
 H4428	H4428G		igen	king	481902ec14eaf3fcfec6be82bd6a63b972ac517f	király	sonnet	claude-sonnet-5-5	2026-10-25	
 H4428	H4428H			`the king`	3c2ae28a943102906ff745cec2f0d6efa7e160b0	a király	sonnet	claude-sonnet-5-5	2026-10-25	?
 H4428	H4428I			King's	306470c3b0051f6dc47a22fd7e3068aa3267d8a3	a királyé	sonnet	claude-sonnet-5-5	2026-10-25	?
 H4428	H4428J	a Name of		King's	306470c3b0051f6dc47a22fd7e3068aa3267d8a3	a királyé	sonnet	claude-sonnet-5-5	2026-10-25	?
 H4428	H4428K	a Name of		Milcom	484c8445e38ee63a5a70b0b153830785a7d2d55b	Milkom	sonnet	claude-sonnet-5-5	2026-10-25	
 H4428	H4428L			King's	306470c3b0051f6dc47a22fd7e3068aa3267d8a3	a királyé	sonnet	claude-sonnet-5-5	2026-10-25	?
+H4480	H4480A		igen	from	0b1e95cfd9775191a7224d0a218ae79187e80c1d	-ból/-ből; -tól/-től	sonnet	claude-sonnet-5-5	2026-10-25	
+H4480	H4480B			portion	7b813d63813f66e60c5abd0324803b381b4493cb	rész	sonnet	claude-sonnet-5-5	2026-10-25	
+H4962	H4962		igen	man	8175e3c8753aeb1696959f72ede260ebf3ea14c5	férfi	sonnet	claude-sonnet-5-5	2026-10-25	
+H5115	H5115B			to dwell	ad101d5382a253227e52bec870f3c15b9195c140	lakni	sonnet	claude-sonnet-5-5	2026-10-25	
 H5414	H5414G		igen	to give: give	2d3e1ac57ac612eaca5de715c66b1323c623fe90	adni: odaadni	sonnet	claude-sonnet-5-5	2026-10-25	
 H5414	H5414H	a Meaning of		to give: put	2e466fba74c944a678b03a095ef681eacc3ae58b	adni: tenni	sonnet	claude-sonnet-5-5	2026-10-25	
 H5414	H5414I	a Meaning of		to give: make	5babf23d3c620f0203526c6fe2acb7897f674c62	adni: csinálni	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -87,11 +171,27 @@ H5414	H5414L	a Meaning of		to give: throw	4f2f12c209e292e80439483212a1af5c11017d
 H5414	H5414M	a Meaning of		to give: cry out	0d48c2d072b08215578a95be35ce4e1cdfcd2f73	adni: kiáltani	sonnet	claude-sonnet-5-5	2026-10-25	
 H5414	H5414N	a Meaning of		to give: pay	827f44367e3d41d3592d6ddc6fef3dd745c6a2c2	adni: fizetni	sonnet	claude-sonnet-5-5	2026-10-25	
 H5414	H5414O	a Meaning of		to give: give(marriage)	4cdc469a5a7561fa40d8556e17e80b4088bcbb8c	adni: házasságra adni	sonnet	claude-sonnet-5-5	2026-10-25	
+H5414	H5414P	a Meaning of		to give: do	f944c2b0646b80eaf044854a5d44aedb3711f9e4	adni: cselekedni	sonnet	claude-sonnet-5-5	2026-10-25	
+H5414	H5414Q	a Meaning of		to give: if only!	645d5eae4741e3c219859a5d848f12967ac4865e	adni: bárcsak!	sonnet	claude-sonnet-5-5	2026-10-25	
+H5704	H5704		igen	till	29d32eb5f40b3b74e687f2965b42c09467d18a1d	-ig; míg	sonnet	claude-sonnet-5-5	2026-10-25	
+H5892	H5892A			excitement	a66cd1a2dad21e17b1576940a770d90b7eeef869	izgalom	sonnet	claude-sonnet-5-5	2026-10-25	
+H5892	H5892B		igen	city	2c54892c40a1751663d9aca4e03e6a833056bc9f	város	sonnet	claude-sonnet-5-5	2026-10-25	
+H5892	H5892G	a Part of		City (of On)	1c5ab18fc57b3eba6ee517473f50e8133016375d	(Ón) városa	sonnet	claude-sonnet-5-5	2026-10-25	
+H5892	H5892H			Ir-	02bbe4e2d2ce9adf880b5191b64b2af158aca8b8	Ir	sonnet	claude-sonnet-5-5	2026-10-25	
 H5921	H5921A		igen	upon	76205fd077642109bcffa636100630b08f569d1e	fölött; -on/-en	sonnet	claude-sonnet-5-5	2026-10-25	
 H5921	H5921B	a Meaning of		as	df211ccdd94a63e0bcb9e6ae427a249484a49d60	mint	sonnet	claude-sonnet-5-5	2026-10-25	
 H5943	H5943	in Aramaic of	igen	Most High	1639d0e499c7e8a59be2c19d70df14de66ab09e6	Felséges	sonnet	claude-sonnet-5-5	2026-10-25	
 H5945	H5945B	in Hebrew of	igen	Most High	1639d0e499c7e8a59be2c19d70df14de66ab09e6	Felséges	sonnet	claude-sonnet-5-5	2026-10-25	
 H5946	H5946	in Aramaic of	igen	Most High	1639d0e499c7e8a59be2c19d70df14de66ab09e6	Felséges	sonnet	claude-sonnet-5-5	2026-10-25	
+H5971	H5971A		igen	people	ab3ccc8dba2a0cf7a1ce4d830bb8a6238ff03833	nép	sonnet	claude-sonnet-5-5	2026-10-25	
+H5971	H5971B			kinsman	b5f072d102331f46509193d6e53b1bcd17b0b52e	rokon	sonnet	claude-sonnet-5-5	2026-10-25	
+H5971	H5971G			Ammi	092c40ae86d69df3fa31f0bf144d1596a86b71d8	Ammi	sonnet	claude-sonnet-5-5	2026-10-25	
+H5971	H5971H			People's (Gate)	30ee9941053564c156a2df065b28988f5bd1dd66	A nép (kapuja)	sonnet	claude-sonnet-5-5	2026-10-25	
+H5971	H5971I	a Part of		(Ibleam)-am	d479ed6d7633d25e5fff30caab742e6cdce500d2	(Jibleám)-ám	sonnet	claude-sonnet-5-5	2026-10-25	?
+H5971	H5971J			Amaw	2bbd5da6956bfd259a82cbcd51386ee9ee258dee	Amav	sonnet	claude-sonnet-5-5	2026-10-25	?
+H5971	H5971K	a Meaning of		people: soldiers	bd25e7d1b252631f2a541e2ac73a311489919034	nép: katonák	sonnet	claude-sonnet-5-5	2026-10-25	
+H5971	H5971L	a Meaning of		people: creatures	1ef4e41562d3d0d71bf42433775e43dc92818fb9	nép: teremtmények	sonnet	claude-sonnet-5-5	2026-10-25	
+H6030	H6030A			to dwell	ad101d5382a253227e52bec870f3c15b9195c140	lakni	sonnet	claude-sonnet-5-5	2026-10-25	
 H6072	H6072		igen	to press	27a13efae72a18ffbb7c734dc2131017a25e029d	szorítani	sonnet	claude-sonnet-5-5	2026-10-25	
 H6213	H6213A	a Meaning of		to make: do	8e6e0c7de12c981fed80d8307fc0fca3b447ebe7	csinálni: tenni	sonnet	claude-sonnet-5-5	2026-10-25	
 H6213	H6213B			to press	27a13efae72a18ffbb7c734dc2131017a25e029d	szorítani	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -110,8 +210,23 @@ H6484	H6484		igen	to press	27a13efae72a18ffbb7c734dc2131017a25e029d	szorítani	s
 H6635	H6635B	a Name of	igen	Hosts	53103abbf6928a041edf7fdcc119b345aafa39bf	Seregek	sonnet	claude-sonnet-5-5	2026-10-25	
 H6671	H6671		igen	to press	27a13efae72a18ffbb7c734dc2131017a25e029d	szorítani	sonnet	claude-sonnet-5-5	2026-10-25	
 H6693	H6693		igen	to press	27a13efae72a18ffbb7c734dc2131017a25e029d	szorítani	sonnet	claude-sonnet-5-5	2026-10-25	
+H7200	H7200G		igen	to see: see	78e0ae3526832581af43572d54af05ca70bc93e0	látni: nézni	sonnet	claude-sonnet-5-5	2026-10-25	
+H7200	H7200H	a Meaning of		to see: examine	2921e3ed144434a344b40ae46cc1a6ab05afb2d8	látni: megvizsgálni	sonnet	claude-sonnet-5-5	2026-10-25	
+H7200	H7200I	a Meaning of		to see: behold!	599ddf7f1fa47ba86a95ba78943c5d32ba4c1965	látni: íme!	sonnet	claude-sonnet-5-5	2026-10-25	
+H7200	H7200J	a Meaning of		to see: select	43a40cec3a1e122f07e8b2559e9e7f156060bdf0	látni: kiválasztani	sonnet	claude-sonnet-5-5	2026-10-25	
+H7200	H7200K	a Meaning of		to see: enjoy	25eb420c958fb861eba0a95d01075d98030f2b7a	látni: élvezni	sonnet	claude-sonnet-5-5	2026-10-25	
+H7200	H7200L	a Meaning of		to see: seer	1d1377c2df91eb7e6e062c84df7d46900f81a037	látni: látnok	sonnet	claude-sonnet-5-5	2026-10-25	
+H7200	H7200M	a Meaning of		to see: approach	8699cc7e16fecbe771c8cb7d110a93e9cf114b87	látni: közeledni	sonnet	claude-sonnet-5-5	2026-10-25	
+H7200	H7200N	a Name of		Provider	7ceee3f3615a2bbe4ce0ac5a269a311e4821daf4	Gondviselő	sonnet	claude-sonnet-5-5	2026-10-25	
 H7706	H7706	a Name of	igen	Almighty	498c1e01a9b03525941f8e210d909a1b72760332	Mindenható	sonnet	claude-sonnet-5-5	2026-10-25	
+H7931	H7931		igen	to dwell	ad101d5382a253227e52bec870f3c15b9195c140	lakni	sonnet	claude-sonnet-5-5	2026-10-25	
 H7945	H7945	combination of	igen	which	ed04ff4dabf1e2d4cd6b89136c2b24dec27ecca4	amely; aki	sonnet	claude-sonnet-5-5	2026-10-25	
+H8085	H8085G		igen	to hear: hear	1dc2649b849987a61ecf7ce74c5e5cdb834f221c	hallani: meghallani	sonnet	claude-sonnet-5-5	2026-10-25	
+H8085	H8085H	a Meaning of		to hear: obey	adcd727ee3d4e5be49b7f32fd057f4129d575056	hallani: engedelmeskedni	sonnet	claude-sonnet-5-5	2026-10-25	
+H8085	H8085I	a Meaning of		to hear: proclaim	2eaef3a38ff0f93f3ec14536d8f4db8272122323	hallani: kihirdetni	sonnet	claude-sonnet-5-5	2026-10-25	
+H8085	H8085J	a Meaning of		to hear: understand	8ca4b5d83aa1e857234691d2e46b88b0d09cccd8	hallani: megérteni	sonnet	claude-sonnet-5-5	2026-10-25	
+H8085	H8085K	a Meaning of		to hear: judge	b94921637e1b682257cd426aded24468d5d4edd4	hallani: megítélni	sonnet	claude-sonnet-5-5	2026-10-25	
+H8085	H8085L	a Meaning of		to hear: welcome	e4f4143a36ce8208c1c39206d57320185b2daf29	hallani: fogadni	sonnet	claude-sonnet-5-5	2026-10-25	
 H9001	H9001		igen	&	7c4d33785daa5c2370201ffa236b427aa37c9996	és (igei vav)	sonnet	claude-sonnet-5-5	2026-10-25	
 H9002	H9002		igen	and	cffa50a32cb13a240d705317bcec65dd1f31b6ad	és	sonnet	claude-sonnet-5-5	2026-10-25	
 H9003	H9003		igen	in/on/with	17237e7c50c2667f596e7f8b72308a6ac219d954	-ban/-ben; -val/-vel	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -119,11 +234,16 @@ H9004	H9004		igen	like/as	7d385992026f878ade9861cb017e3af2d27fb3cf	mint; -ként	
 H9005	H9005		igen	to/for	376ef0717bdb65d8989e810f67ea030f6af5eed1	-hoz/-hez; -nak/-nek	sonnet	claude-sonnet-5-5	2026-10-25	
 H9006	H9006		igen	from	0b1e95cfd9775191a7224d0a218ae79187e80c1d	-ból/-ből; -tól/-től	sonnet	claude-sonnet-5-5	2026-10-25	
 H9009	H9009		igen	[the]	bac5944203c206a57951767dc79081bceb8c1c12	[névelő]	sonnet	claude-sonnet-5-5	2026-10-25	
+H9011	H9011		igen	[to]	0459fb73174f3bd8d8702bf65167a60617219aea	[felé]	sonnet	claude-sonnet-5-5	2026-10-25	
 H9020	H9020		igen	my	3ece1471f44f63177cbc35ba0b904e0c096b6783	-m	sonnet	claude-sonnet-5-5	2026-10-25	
 H9021	H9021		igen	your	4dc73741b9473168444fab7e680b439ba69f41ec	-d	sonnet	claude-sonnet-5-5	2026-10-25	
 H9023	H9023		igen	his	b187a9ed471ef7465c5d78cc7b4b1846f07ac76d	-ja/-je	sonnet	claude-sonnet-5-5	2026-10-25	
+H9024	H9024		igen	her	999400659233415aa4ccade0fe02602633266041	-ja/-je (női)	sonnet	claude-sonnet-5-5	2026-10-25	
+H9026	H9026		igen	your	4dc73741b9473168444fab7e680b439ba69f41ec	-tok/-tek	sonnet	claude-sonnet-5-5	2026-10-25	
 H9028	H9028		igen	their	df055c669423fda108ed197fb55c5ed489d433e1	-uk/-ük	sonnet	claude-sonnet-5-5	2026-10-25	
 H9030	H9030		igen	me	b1c1d8736f20db3fb6c1c66bb1455ed43909f0d8	engem	sonnet	claude-sonnet-5-5	2026-10-25	
 H9031	H9031		igen	you	8af56de68279cb6f5ed022f31af18b9fcdcc2e92	téged	sonnet	claude-sonnet-5-5	2026-10-25	
 H9033	H9033		igen	him	330317bbc57fe33d9b3505994863adb733da347d	őt	sonnet	claude-sonnet-5-5	2026-10-25	
+H9034	H9034		igen	her	999400659233415aa4ccade0fe02602633266041	őt (nőt)	sonnet	claude-sonnet-5-5	2026-10-25	
+H9036	H9036		igen	you	8af56de68279cb6f5ed022f31af18b9fcdcc2e92	titeket	sonnet	claude-sonnet-5-5	2026-10-25	
 H9038	H9038		igen	them	98910a6e9ae7a753e5a63f81b499a1f233a88256	őket	sonnet	claude-sonnet-5-5	2026-10-25	
