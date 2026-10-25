@@ -5,10 +5,10 @@ kod: GLOSSZA_FORDITAS
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: fut
+allapot: megallt
 ag: ccr-636782ad-lysuoh
 ad: minden héber Strong-számhoz (8 718) rövid magyar jelentés egy új adattáblában (adat/glosszak_heber_hu.tsv, allapot=sonnet, modell = a ténylegesen futó modell; a pardes.db-be az sqlite_epit.py általános adat/*.tsv-betöltője hozza), a TBESH glosszájából fordítva, a lemma és a definíció eleje mint kontextus mellett; kapukkal ellenőrizve; a 300 leggyakoribb szóra kézi átnézési lista
-kovetkezo: "/kovetkezo (M0 ⛔: mérés, kulcsséma és prompt-minta 30 szón)"
+kovetkezo: "Te: az M0 ⛔ jóváhagyása — naplok/GLOSSZA_FORDITAS_M0.md (szabályok, kulcsséma, prompt, 30 szavas próba) és a DONTESEK.md DT-F140b K1–K10 kérdései; jóváhagyás után /kovetkezo az M1-re"
 munka: adat
 olvas: [konkordancia/TBESH.txt, konkordancia/TBESH_TBESG_README.md, konkordancia/Strong_szotar.tsv, konkordancia/TAHOT_kivonat.tsv, adat/terminologia.tsv, eszkozok/forditas_kapuk.py, eszkozok/emeles.py]
 ir: [adat/glosszak_heber_hu.tsv, adat/SEMA.md, eszkozok/glossza_forditas.py, eszkozok/teszt_glossza_forditas.py]
