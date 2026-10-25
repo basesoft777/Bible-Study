@@ -5,7 +5,8 @@ kod: GLOSSZA_FORDITAS
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: nem_indult
+allapot: fut
+ag: ccr-636782ad-lysuoh
 ad: minden héber Strong-számhoz (8 718) rövid magyar jelentés egy új adattáblában (adat/glosszak_heber_hu.tsv, allapot=sonnet, modell = a ténylegesen futó modell; a pardes.db-be az sqlite_epit.py általános adat/*.tsv-betöltője hozza), a TBESH glosszájából fordítva, a lemma és a definíció eleje mint kontextus mellett; kapukkal ellenőrizve; a 300 leggyakoribb szóra kézi átnézési lista
 kovetkezo: "/kovetkezo (M0 ⛔: mérés, kulcsséma és prompt-minta 30 szón)"
 munka: adat
