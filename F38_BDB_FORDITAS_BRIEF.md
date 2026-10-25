@@ -6,8 +6,8 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 allapot: megallt
-ag: claude/f38-mj-dontes
-pr: https://github.com/basesoft777/Bible-Study/pull/228
+ag: ccr-ecfe0c66-bujfae
+pr:
 ad: a BDB_teljes_unabridged.tsv mind a 8 090 szócikkének teljes magyar fordítása az adat/forditasok.tsv-ben (allapot=sonnet; az 1–4. adagra is, DT-F38e), gyakorisági sorrendben, adagonként commitolva; ami a futás leállításáig nem készül el, angol marad
 kovetkezo: "A 7. adag 7a, 7b, 7c és 7d szelete kész (2026.10.25: 7a 85 szócikk H6571–H6343 + H4725, 7b 92 szócikk H6453–H8096, 7c 102 szócikk H8438–H8065, 7d 37 szócikk H8084–H4581, szakaszonként, allapot=sonnet; a 8. kapu «-javítása DT-F38j; a H2809 `-os jelölése DT-F38k (2)); a 7. adagból egyetlen szócikk marad: a H4912, amelyet a 11. kapu elutasít (`Wisdom 1:8` = Péld, nem Bölcs; naplok/BDB_FORDITAS_hibas.tsv), rögzítése a DT-F38k (1) szerint kapumódosítás nélkül, az eszközlánc felülbírálás nélkül nem engedi, ezért a felhasználó döntésére vár; folytatás: a 98 elakadó Strong (N-F107b) újrafordítása külön szeletekben, a H4912 a döntés szerint; a 9. adag előtt a #67 kapuja (DT55); a 8. adagtól adagonként a Károli-lefedettség mérése, indulás csak ≥85%-nál (DT56, naplok/BDB_FORDITAS_karoli_lefedettseg.py)"
 olvas: [konkordancia/BDB_teljes_unabridged.tsv, adat/forditasok.tsv, adat/terminologia.tsv, adat/SEMA.md, eszkozok/emeles.py, eszkozok/normalizal.py, eszkozok/forditas_kapuk.py, konkordancia/Konyv_normalizalo_tabla.tsv, F28_EMELES_BRIEF.md, naplok/EMELES_naplo.md, DONTESEK.md, FELADATOK.md, konkordancia/Strong_szotar.tsv, konkordancia/TAHOT_kivonat.tsv]
