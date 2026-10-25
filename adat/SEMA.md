@@ -1508,17 +1508,17 @@ rövidítésjegyzékének is mintája. Az első két sor `#` megjegyzés (a más
 | `gyujtes` | a gépi gyűjtés szabálya: `minta` (a brief 2a/5 és az M0 7. pontjának megnevezett elemei) \| `kiadas_sigla` (az `R G L T Tr WH` sigla, ha legalább kettő sorban áll) \| `rovidites` (ponttal záruló szóalak, ≥ 10 előfordulás, ≥ 90%-ban ponttal) |
 | `tipus` | **kézi:** pl. `kiadás-sigla`, `grammatika`, `antik szerző`, `modern szerző`, `rövidítés`, `könyvrövidítés`, `nem sigla`; üres: besorolatlan |
 | `jelentes` | **kézi:** mi ez (pl. „Westcott–Hort kiadás”) |
-| `magyar_alak` | **kézi:** a magyar kiadás egységes alakja; `változatlan`: a forrásalak marad |
+| `magyar_alak` | **kézi:** a magyar kiadás egységes alakja; `változatlan`: a forrásalak marad; `nincs_egyseges`: nincs egységes magyar alak (több szerep, a szövegkörnyezet dönt; a 16. kapu nem ellenőrzi, az adatblokk így jelzi). `javaslat` és `besorolt` sorban **nem üres** (ELLENOR_F132 4. tétel, F132.21; teszt: `teszt_lanc.py` `test_tabla_sema`); `jelolt` sorban üres |
 | `elofordulas`, `szocikk` | gépi: előfordulás és érintett szócikk a teljes Thayerben |
 | `gerinc_elofordulas` | gépi: előfordulás a motívumok aktuális görög gerincszavaiban (`szolista.gerinc_strongok`) |
 | `pelda` | gépi: az első előfordulás `<strong>:<sorszam>` (a 2.34 kulcsa) |
-| `allapot` | `jelolt` (gépi, besorolatlan) \| `javaslat` (DT-F132j (3): modell-javaslat a `tipus`, `jelentes`, `magyar_alak` mezőben, **jóváhagyásra vár**; a kapu és az adatblokk besorolatlannak veszi) \| `besorolt` (kézi, a felhasználó jóváhagyásával; csak ilyen sort ellenőriz a 16. kapu; üres `magyar_alak`: nincs egységes alak, a kapu nem ellenőrzi) |
+| `allapot` | `jelolt` (gépi, besorolatlan) \| `javaslat` (DT-F132j (3): modell-javaslat a `tipus`, `jelentes`, `magyar_alak` mezőben, **jóváhagyásra vár**; a kapu és az adatblokk besorolatlannak veszi) \| `besorolt` (kézi, a felhasználó jóváhagyásával; csak ilyen sort ellenőriz a 16. kapu; `nincs_egyseges`: a kapu nem ellenőrzi; üres `magyar_alak`: kitöltetlen besorolás, a kapu JELZES-ként jelenti, nem gátol) |
 | `besorolas_proveniencia` | **kézi:** a besorolás (javaslat vagy jóváhagyás) proveniencia-sora; modell-javaslatnál `scope=adat/thayer_sigla.tsv (tipus, jelentes, magyar_alak) \| forras=manual — modell-javaslat (<tényleges modellnév>), nem lekérdezés: … \| ts=<nap>` (CLAUDE.md 1. szabály: nem lekérdezés, tehát `manual`); üres: besorolatlan |
 | `proveniencia` | `scope=adat/thayer_szakaszok.tsv \| forras=thayer_jelolt/sigla_gyujt.py (fejléc) \| ts=<nap>`: a gépi oszlopoké (az eszköz minden futáskor írja) |
 
 Kulcs: `forrasalak`. Állapot (F132.11, 2026-10-25; a javított nézeten): 255 jelölt (`minta` 31, `kiadas_sigla` 6, `rovidites` 218),
 ebből 91 fordul elő a gerincszavakban; besorolt: 0 (az F132.9-es, nyers szövegen mért állapot: 254 / 90). F132.13 (DT-F132j (3)):
-a 91 gerinc-jelölt mindegyike `javaslat` (`claude-opus-5-5`; magyar alak 22, `változatlan` 62, üres — nincs egységes alak — 7; a
+a 91 gerinc-jelölt mindegyike `javaslat` (`claude-opus-5-5`; magyar alak 22, `változatlan` 62, `nincs_egyseges` 7 — az F132.21 előtt üres —; a
 terminológiai kulcsú sorok alakja a szójegyzéké); a jóváhagyás (`besorolt`) a felhasználóé, az M3 előfeltétele. A lista:
 `naplok/F132_THAYER_SZAKASZ_naplo.md` F132.13. A terminológiai szójegyzék (2.15) 10 jelöltre már ad magyar alakot (`cf.` → `vö.`, `Sept.` →
 `Septuaginta`, `i. e.` → `azaz`, `Plato` → `Platón` …), az elsőbbséget kap (az adatblokk jelzi). F132.19 (DT-F132l (a), a

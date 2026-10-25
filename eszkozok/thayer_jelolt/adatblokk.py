@@ -223,7 +223,10 @@ def szakasz_sigla(sp, csoport, ts):
         if not r.get('forrasalak') or not TK._re(r['forrasalak']).search(szoveg):
             continue
         db += 1
-        if r.get('allapot') == 'besorolt' and r.get('magyar_alak'):
+        if r.get('allapot') == 'besorolt' and r.get('magyar_alak') == TK.NINCS_EGYSEGES:
+            sor.append('- `%s` [nincs egységes magyar alak: a szövegkörnyezet szerint%s]'
+                       % (r['forrasalak'], (' — %s' % r['jelentes']) if r.get('jelentes') else ''))
+        elif r.get('allapot') == 'besorolt' and r.get('magyar_alak'):
             sor.append('- `%s` → `%s`%s' % (r['forrasalak'], r['magyar_alak'], (' (%s)' % r['jelentes']) if r.get('jelentes') else ''))
         elif r['forrasalak'] in term:
             sor.append('- `%s` [besorolatlan a sigla-táblában; a terminológia szerint: `%s`]' % (r['forrasalak'], term[r['forrasalak']]))

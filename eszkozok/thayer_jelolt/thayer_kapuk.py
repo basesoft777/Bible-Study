@@ -7,8 +7,10 @@ fut, és egy Thayer-specifikus kapuval bővül:
   16_sigla   a sigla-tábla (`adat/thayer_sigla.tsv`, SEMA 2.37) **besorolt** soraira: ha a forrás tartalmazza a `forrasalak`-ot,
              a fordításban áll a tábla szerinti alak (`magyar_alak`; `változatlan` esetén maga a `forrasalak`). Hiánya SERTES
              (gátoló). Besorolatlan sor (`jelolt`, illetve a jóváhagyatlan `javaslat`, DT-F132j (3)) nem gátol: a kapu a számát
-             JELZES-ként jelenti. A `besorolt`, de üres `magyar_alak`-ú sor (nincs egységes alak, pl. `N.`, `e.`) nem ellenőrzött
-             és nem besorolatlan: nem számít bele egyikbe sem.
+             JELZES-ként jelenti. A `besorolt`, `magyar_alak = nincs_egyseges` sor (nincs egységes alak, pl. `N.`, `e.`) nem
+             ellenőrzött és nem besorolatlan: nem számít bele egyikbe sem. A `besorolt`, de **üres** `magyar_alak`-ú sor kitöltetlen
+             besorolás (ELLENOR_F132 4. tétel): nem ellenőrzött, és a kapu JELZES-ként jelenti (nem gátol: a hiba a táblában van, nem
+             a fordításban), hogy ne menjen át csendben.
 
   from thayer_kapuk import kapuk_futtat_thayer, atment
 TSV: split('\\t'), csv modul nélkül.
@@ -32,6 +34,7 @@ import forditas_kapuk as K  # noqa: E402
 SIGLA_UT = os.path.join(GYOKER, 'adat', 'thayer_sigla.tsv')
 THAYER_GATOLO = ['16_sigla']
 VALTOZATLAN = 'változatlan'
+NINCS_EGYSEGES = 'nincs_egyseges'
 _CACHE = {}
 
 
@@ -61,11 +64,14 @@ def _re(alak):
 
 def ellenoriz_sigla(forras, forditas, sigla=None):
     sigla = sigla_betolt() if sigla is None else sigla
-    hibak, besorolatlan, n = [], 0, 0
+    hibak, besorolatlan, kitoltetlen, n = [], 0, [], 0
     for r in sigla:
         if not r.get('forrasalak') or not _re(r['forrasalak']).search(forras):
             continue
+        if r.get('allapot') == 'besorolt' and r.get('magyar_alak') == NINCS_EGYSEGES:
+            continue
         if r.get('allapot') == 'besorolt' and not r.get('magyar_alak'):
+            kitoltetlen.append(r['forrasalak'])
             continue
         if r.get('allapot') != 'besorolt':
             besorolatlan += 1
@@ -76,8 +82,14 @@ def ellenoriz_sigla(forras, forditas, sigla=None):
             hibak.append('%s -> %s hiányzik' % (r['forrasalak'], cel))
     if hibak:
         return 'SERTES', '; '.join(hibak[:8])
-    if besorolatlan:
-        return 'JELZES', '%d besorolt sigla rendben; %d besorolatlan sigla a forrásban (nem gátol)' % (n, besorolatlan)
+    if besorolatlan or kitoltetlen:
+        reszek = ['%d besorolt sigla rendben' % n]
+        if besorolatlan:
+            reszek.append('%d besorolatlan sigla a forrásban (nem gátol)' % besorolatlan)
+        if kitoltetlen:
+            reszek.append('%d besorolt sigla üres magyar_alak-kal, kitöltetlen (alak vagy `%s` kell; nem gátol): %s'
+                          % (len(kitoltetlen), NINCS_EGYSEGES, ', '.join(kitoltetlen[:8])))
+        return 'JELZES', '; '.join(reszek)
     return 'RENDBEN', '%d besorolt sigla rendben' % n
 
 

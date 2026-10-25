@@ -449,8 +449,9 @@ eltérés elfogadva?”. Átvezetve (`DONTESEK.md`, 🟢; a brief 6. döntésnap
   Josephus); az általános rövidítések a szójegyzék párjainak mintájára (`ibid.` → `uo.` az `id.` → `ua.` mellett; `viz.` → `ti.` az
   `sc.` → `ti.` mellett; `vol.` → `köt.` a `vol. ii` → `II. köt.` mellett); a kiadás-siglák, a grammatikák, a modern szerzők és a
   műcím-rövidítések (forráshivatkozás) `változatlan`; ahol egy alak több szerepben áll és egyiknek sincs egységes magyar alakja, a
-  `magyar_alak` üres (a kapu nem ellenőrzi).
-- **Kapu** (`thayer_kapuk.py`): a `besorolt`, de üres `magyar_alak`-ú sor nem ellenőrzött és nem besorolatlan; a `javaslat`
+  `magyar_alak` üres (a kapu nem ellenőrzi). *Az F132.21 óta (ELLENOR_F132 4. tétel) ez explicit érték: `nincs_egyseges`.*
+- **Kapu** (`thayer_kapuk.py`): a `besorolt`, de üres `magyar_alak`-ú sor nem ellenőrzött és nem besorolatlan *(az F132.21 óta:
+  `nincs_egyseges` = nem ellenőrzött; az üres = kitöltetlen, JELZES)*; a `javaslat`
   besorolatlan (JELZES, nem gátol). Tesztek (`teszt_lanc.py`, 22, zöld): a javaslat nem gátol; a proveniencia `manual`, modellnévvel; a
   gerinc minden jelöltje javaslat vagy besorolt; a terminológiai kulcsú sorok alakja a szójegyzéké (9).
 
@@ -557,3 +558,13 @@ Végrehajtó: `claude-opus-5-5`. Tételenként külön commit (F132.18–F132.24
   G5356:3).
 
   *(proveniencia: `scope=a 13 gerincszó (szolista.gerinc_strongok) javított nézetű szakaszai | forras=eseti mérőszkript (scratchpad, a repón kívül): a régi `(?<!\w)X(?!\w)` és az új `thayer_kapuk._re` @4afe60c0 + a javítás | ts=2026-10-25`)*
+- **F132.21 (4. tétel, 16. kapu, üres `magyar_alak`):** explicit érték `nincs_egyseges` (`thayer_kapuk.NINCS_EGYSEGES`). A kapu: a
+  `besorolt` + `nincs_egyseges` nem ellenőrzött; a `besorolt` + üres `magyar_alak` kitöltetlen besorolás → JELZES (a besorolatlan
+  sorral azonos, nem gátoló szint: a hiba a táblában van, nem a fordításban; a SERTES elsőbb), a forrásalakok felsorolásával. Az
+  adatblokk a `nincs_egyseges` sort „[nincs egységes magyar alak: a szövegkörnyezet szerint — <jelentes>]” alakban adja, nem
+  `→ nincs_egyseges`-ként. `adat/thayer_sigla.tsv`: a 7 `javaslat` sor (`N.`, `e.`, `ii.`, `i.`, `O.`, `g.`, `al.`) `magyar_alak`
+  mezője üres → `nincs_egyseges`, a `besorolas_proveniencia` kiegészítve (a javaslat tartalma nem változott). A `magyar_alak` kézi
+  oszlop, a `sigla_gyujt.py` nem állítja elő (a javaslat az F132.13-ban kézzel került be), ezért a módosítás szkripttel, összevetéssel
+  történt: 7 sor, soronként csak a `magyar_alak` és a `besorolas_proveniencia` mező; a `sigla_gyujt.py --ellenoriz` azonos (a kézi
+  oszlopot az eszköz átmásolja). SEMA 2.37 frissítve. Tesztek (`teszt_lanc.py`, 25, zöld): a besorolt üres alak JELZES, a SERTES
+  elsőbb; a `nincs_egyseges` nem ellenőrzött; a táblában `javaslat` / `besorolt` sor `magyar_alak`-ja nem üres; az adatblokk jelölése.

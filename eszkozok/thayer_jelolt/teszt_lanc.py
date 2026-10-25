@@ -113,13 +113,28 @@ class Sigla(unittest.TestCase):
         self.assertEqual(TK.ellenoriz_sigla('Rec. text', 'szöveg', s)[0], 'JELZES')
         self.assertEqual(TK.ellenoriz_sigla('semmi', 'semmi', s)[0], 'RENDBEN')
 
-    def test_kapu_javaslat_es_ures_alak(self):
-        # DT-F132j (3): a jóváhagyatlan javaslat nem gátol (besorolatlan); a besorolt, üres magyar_alak nem ellenőrzött
+    def test_kapu_javaslat_es_nincs_egyseges(self):
+        # DT-F132j (3): a jóváhagyatlan javaslat nem gátol (besorolatlan); a besorolt `nincs_egyseges` nem ellenőrzött
         s = [{'forrasalak': 'Rec.', 'allapot': 'javaslat', 'magyar_alak': TK.VALTOZATLAN},
-             {'forrasalak': 'N.', 'allapot': 'besorolt', 'magyar_alak': ''}]
+             {'forrasalak': 'N.', 'allapot': 'besorolt', 'magyar_alak': TK.NINCS_EGYSEGES}]
         self.assertEqual(TK.ellenoriz_sigla('Rec. N. T.', 'Újszövetség', s), ('JELZES', '0 besorolt sigla rendben; 1 besorolatlan '
                                                                                'sigla a forrásban (nem gátol)'))
-        self.assertEqual(TK.ellenoriz_sigla('N. T.', 'Újszövetség', s)[0], 'RENDBEN')
+        self.assertEqual(TK.ellenoriz_sigla('N. T.', 'Újszövetség', s), ('RENDBEN', '0 besorolt sigla rendben'))
+
+    def test_kapu_besorolt_ures_alak_jelez(self):
+        # ELLENOR_F132 4.: a besorolt, üres magyar_alak kitöltetlen besorolás -> JELZES (nem csendes, nem gátol)
+        s = [{'forrasalak': 'N.', 'allapot': 'besorolt', 'magyar_alak': ''},
+             {'forrasalak': 'cf.', 'allapot': 'besorolt', 'magyar_alak': 'vö.'}]
+        e, r = TK.ellenoriz_sigla('cf. N. T.', 'vö. Újszövetség', s)
+        self.assertEqual(e, 'JELZES')
+        self.assertIn('1 besorolt sigla rendben', r)
+        self.assertIn('1 besorolt sigla üres magyar_alak-kal, kitöltetlen', r)
+        self.assertIn('N.', r)
+        self.assertTrue(TK.atment([('16_sigla', e, r)]))
+        # a SERTES elsőbb: a besorolt alak hiánya gátol akkor is, ha kitöltetlen sor is van
+        self.assertEqual(TK.ellenoriz_sigla('cf. N. T.', 'lásd Újszövetség', s)[0], 'SERTES')
+        # a forrásban nem álló kitöltetlen sor nem számít
+        self.assertEqual(TK.ellenoriz_sigla('cf. x', 'vö. x', s), ('RENDBEN', '1 besorolt sigla rendben'))
 
     def test_kapu_egybetus_sigla_tobbtagu_rovidites(self):
         # ELLENOR_F132 3.: az egybetűs sigla a betű-pont-(szóköz-)betű-pont láncban nem találat
@@ -161,6 +176,9 @@ class Sigla(unittest.TestCase):
         for r in TK.sigla_betolt():
             self.assertIn(r['gyujtes'], ('minta', 'kiadas_sigla', 'rovidites'))
             self.assertIn(r['allapot'], ('jelolt', 'javaslat', 'besorolt'))
+            if r['allapot'] in ('javaslat', 'besorolt'):
+                # ELLENOR_F132 4.: a besorolás magyar_alak-ja nem üres: alak, `változatlan` vagy `nincs_egyseges`
+                self.assertTrue(r['magyar_alak'], r['forrasalak'])
             if r['allapot'] == 'javaslat':
                 # modell-javaslat: nem lekérdezés, a proveniencia `manual`, modellnévvel (CLAUDE.md 1. szabály)
                 self.assertRegex(r['besorolas_proveniencia'], r'forras=manual — modell-javaslat \(claude-[\w.-]+\), nem lekérdezés')
@@ -196,6 +214,18 @@ class Adatblokk(unittest.TestCase):
         self.assertIn('1Pét 1:17 „És ha Atyának hívjátok őt', b)
         self.assertIn('= H7121', b)
         self.assertIn('`cf.` [besorolatlan a sigla-táblában; a terminológia szerint: `vö.`]', b)
+
+    def test_sigla_nincs_egyseges(self):
+        # ELLENOR_F132 4.: a besorolt `nincs_egyseges` sor nem alakként jelenik meg, hanem explicit jelöléssel
+        eredeti = TK.sigla_betolt
+        TK.sigla_betolt = lambda ut=None: [{'forrasalak': 'cf.', 'allapot': 'besorolt', 'magyar_alak': TK.NINCS_EGYSEGES,
+                                            'jelentes': 'próba'}]
+        try:
+            b = adatblokk.blokk('G1941', ts='T')
+        finally:
+            TK.sigla_betolt = eredeti
+        self.assertIn('`cf.` [nincs egységes magyar alak: a szövegkörnyezet szerint — próba]', b)
+        self.assertNotIn('→ `nincs_egyseges`', b)
 
     def test_csoportonkent(self):
         sz = TB.szakaszok('G1941')
