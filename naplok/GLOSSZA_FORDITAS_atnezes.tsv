@@ -1,0 +1,847 @@
+rang	strong	entry_id	fo	tahot_elofordulas	glossza_en	glossza_hu	csoport	megjegyzes	javitas_hu
+1	H9002	H9002	igen	29708	and	és	top300+kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+2	H9009	H9009	igen	23945	[the]	[névelő]	top300+kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+3	H9001	H9001	igen	21328	&	és (igei vav)	top300+kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+4	H9005	H9005	igen	20819	to/for	-hoz/-hez; -nak/-nek	top300+kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+5	H9003	H9003	igen	15777	in/on/with	-ban/-ben; -val/-vel	top300+kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+6	H0853	H0853	igen	10946	[Obj.]	[tárgyjel]	top300		
+7	H9023	H9023	igen	7925	his	-ja/-je	top300+kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+8	H3068	H3068G	igen	6528	LORD	az ÚR	top300		
+8	H3068	H3068H		6528	The Lord	az ÚR	top300+kiemelt	a fordító bizonytalan (? a megjegyzésben)	
+8	H3068	H3068I		6528	(Jerusalem of) the Lord	(az ÚR Jeruzsálemje)	top300+kiemelt	a fordító bizonytalan (? a megjegyzésben)	
+9	H9006	H9006	igen	6388	from	-ból/-ből; -tól/-től	top300+kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+10	H5921	H5921A	igen	5774	upon	fölött; -on/-en	top300		
+10	H5921	H5921B		5774	as	mint	top300		
+11	H0413	H0413	igen	5518	to(wards)	-hoz/-hez; felé	top300		
+12	H0834	H0834A	igen	5500	which	amely; aki	top300		
+12	H0834	H0834B		5500	in which	amelyben	top300		
+12	H0834	H0834C		5500	whence	ahonnan	top300		
+12	H0834	H0834D		5500	as which	ahogyan	top300		
+13	H9033	H9033	igen	5430	him	őt	top300+kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+14	H3605	H3605	igen	5415	all	minden	top300		
+15	H0559	H0559	igen	5309	to say	mondani	top300		
+16	H3808	H3808	igen	5170	not	nem	top300		
+17	H1121	H1121A	igen	4943	son: child	fiú: gyermek	top300+kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő	
+17	H1121	H1121B		4943	Beno	Benó	top300		
+17	H1121	H1121G		4943	son: descendant/people	fiú: leszármazott/nép	top300		
+17	H1121	H1121H		4943	son: young animal	fiú: állatkölyök	top300		
+17	H1121	H1121I		4943	son: type of	fiú: -féle	top300+kiemelt	a fordító bizonytalan (? a megjegyzésben)	
+17	H1121	H1121J		4943	son	fiú	top300		
+17	H1121	H1121K		4943	son: warrior	fiú: harcos	top300		
+17	H1121	H1121L		4943	son: aged	fiú: -éves	top300+kiemelt	a fordító bizonytalan (? a megjegyzésben)	
+18	H3588	H3588A	igen	4483	for	mert	top300		
+18	H3588	H3588B		4483	that if: except	hogy ha: kivéve	top300		
+18	H3588	H3588C		4483	for as that: since	minthogy: mivel	top300		
+19	H9021	H9021	igen	4339	your	-d	top300+kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+20	H9020	H9020	igen	4256	my	-m	top300+kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+21	H9038	H9038	igen	3586	them	őket	top300+kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+22	H1961	H1961	igen	3562	to be	lenni	top300		
+23	H9028	H9028	igen	3360	their	-uk/-ük	top300+kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+24	H9030	H9030	igen	3282	me	engem	top300+kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+25	H9004	H9004	igen	2964	like/as	mint; -ként	top300+kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+26	H6213	H6213A		2629	to make: do	csinálni: tenni	top300		
+26	H6213	H6213B		2629	to press	szorítani	top300		
+26	H6213	H6213H	igen	2629	to make	csinálni	top300		
+26	H6213	H6213I		2629	to make: offer	csinálni: felajánlani	top300		
+26	H6213	H6213J		2629	to make: [do]	csinálni: [tenni]	top300		
+27	H0430	H0430G	igen	2603	God	Isten	top300		
+27	H0430	H0430H		2603	(LORD)-Elohe	(az ÚR)-Elóhé	top300		
+27	H0430	H0430I		2603	(Gibeath)-elohim	(Gibeát)-Elóhim	top300		
+28	H0935	H0935G	igen	2573	to come (in): come	bejönni: jönni	top300		
+28	H0935	H0935H		2573	Lebo-(Hamath)	Lebó-(Hamát)	top300		
+28	H0935	H0935I		2573	to come (in): towards	bejönni: felé	top300		
+28	H0935	H0935J		2573	to come (in): advanced	bejönni: előrehaladott	top300		
+28	H0935	H0935K		2573	to come (in): (sun)set	bejönni: (nap)nyugta	top300		
+28	H0935	H0935L		2573	to come (in): marry	bejönni: megházasodni	top300		
+28	H0935	H0935M		2573	to come (in): fulfill	bejönni: beteljesülni	top300		
+28	H0935	H0935N		2573	to come (in): besiege	bejönni: ostrom alá kerülni	top300		
+28	H0935	H0935O		2573	Lebo	Lebó	top300		
+28	H0935	H0935P		2573	to come (in): bring	bejönni: behozni	top300		
+29	H4428	H4428G	igen	2526	king	király	top300		
+29	H4428	H4428H		2526	`the king`	a király	top300+kiemelt	a fordító bizonytalan (? a megjegyzésben)	
+29	H4428	H4428I		2526	King's	a királyé	top300+kiemelt	a fordító bizonytalan (? a megjegyzésben)	
+29	H4428	H4428J		2526	King's	a királyé	top300+kiemelt	a fordító bizonytalan (? a megjegyzésben)	
+29	H4428	H4428K		2526	Milcom	Milkom	top300		
+29	H4428	H4428L		2526	King's	a királyé	top300+kiemelt	a fordító bizonytalan (? a megjegyzésben)	
+30	H3478	H3478	igen	2508	Israel	Izráel	top300		
+31	H0776	H0776G		2504	land: country/planet	föld: ország/bolygó	top300		
+31	H0776	H0776H	igen	2504	land: soil	föld: talaj	top300		
+32	H9031	H9031	igen	2419	you	téged	top300+kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+33	H3117	H3117G	igen	2306	day	nap	top300		
+33	H3117	H3117H		2306	day: old	nap: régmúlt	top300		
+33	H3117	H3117I		2306	day: year	nap: év	top300		
+33	H3117	H3117J		2306	day: daily	nap: naponta	top300		
+33	H3117	H3117K		2306	day: always	nap: mindig	top300		
+33	H3117	H3117L		2306	day: today	nap: ma	top300		
+34	H6440	H6440G		2127	face: before	arc: előtt	top300		
+34	H6440	H6440H	igen	2127	face	arc	top300		
+34	H6440	H6440I		2127	face: because	arc: miatt	top300		
+34	H6440	H6440J		2127	face: surface	arc: felszín	top300		
+34	H6440	H6440K		2127	face: east	arc: kelet	top300		
+34	H6440	H6440L		2127	face of	arca (valakinek)	top300		
+34	H6440	H6440M		2127	face: angry	arc: haragos	top300		
+34	H6440	H6440N		2127	face: kindness	arc: kegyesség	top300		
+35	H1004	H1004A		2049	place	hely	top300		
+35	H1004	H1004B	igen	2049	house: home	ház: otthon	top300+kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő	
+35	H1004	H1004G		2049	Beth-(ashbea)	Bét-(Asbea)	top300		
+35	H1004	H1004H		2049	Beth (Haggan)	Bét (Haggán)	top300		
+35	H1004	H1004I		2049	Beth-(togarmah)	Bét-(Tógarma)	top300		
+35	H1004	H1004J		2049	House (of the Forest)	(az erdő) háza	top300		
+35	H1004	H1004K		2049	House (of the Forests of Lebanon)	(Libanon erdejének) háza	top300		
+35	H1004	H1004L		2049	Beth-(baal-meon)	Bét-(Baál-Meon)	top300		
+35	H1004	H1004M		2049	house: household	ház: háznép	top300		
+35	H1004	H1004N		2049	house: container	ház: tartály	top300		
+35	H1004	H1004O		2049	house: inside	ház: belső	top300		
+35	H1004	H1004P		2049	house: palace	ház: palota	top300		
+35	H1004	H1004Q		2049	house: temple	ház: templom	top300		
+36	H5414	H5414G	igen	2011	to give: give	adni: odaadni	top300		
+36	H5414	H5414H		2011	to give: put	adni: tenni	top300		
+36	H5414	H5414I		2011	to give: make	adni: csinálni	top300		
+36	H5414	H5414J		2011	to give: turn	adni: fordítani	top300		
+36	H5414	H5414K		2011	to give: allow	adni: megengedni	top300		
+36	H5414	H5414L		2011	to give: throw	adni: dobni	top300		
+36	H5414	H5414M		2011	to give: cry out	adni: kiáltani	top300		
+36	H5414	H5414N		2011	to give: pay	adni: fizetni	top300		
+36	H5414	H5414O		2011	to give: give(marriage)	adni: házasságra adni	top300		
+36	H5414	H5414P		2011	to give: do	adni: cselekedni	top300		
+36	H5414	H5414Q		2011	to give: if only!	adni: bárcsak!	top300		
+37	H1931	H1931	igen	1879	he/she/it	ő; az	top300		
+38	H5971	H5971A	igen	1873	people	nép	top300		
+38	H5971	H5971B		1873	kinsman	rokon	top300		
+38	H5971	H5971G		1873	Ammi	Ammi	top300		
+38	H5971	H5971H		1873	People's (Gate)	A nép (kapuja)	top300		
+38	H5971	H5971I		1873	(Ibleam)-am	(Jibleám)-ám	top300+kiemelt	a fordító bizonytalan (? a megjegyzésben)	
+38	H5971	H5971J		1873	Amaw	Amav	top300+kiemelt	a fordító bizonytalan (? a megjegyzésben)	
+38	H5971	H5971K		1873	people: soldiers	nép: katonák	top300		
+38	H5971	H5971L		1873	people: creatures	nép: teremtmények	top300		
+39	H9034	H9034	igen	1708	her	őt (nőt)	top300+kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+40	H0376	H0376G	igen	1664	man	férfi	top300		
+40	H0376	H0376H		1664	man: husband	férfi: férj	top300		
+40	H0376	H0376I		1664	man: anyone	férfi: valaki	top300		
+41	H9024	H9024	igen	1625	her	-ja/-je (női)	top300+kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+42	H3027	H3027G	igen	1619	hand	kéz	top300		
+42	H3027	H3027H		1619	hand: power	kéz: hatalom	top300		
+42	H3027	H3027I		1619	hand: themselves	kéz: maguk	top300		
+42	H3027	H3027J		1619	hand: by	kéz: által	top300		
+42	H3027	H3027K		1619	hand: to	kéz: felé	top300		
+42	H3027	H3027L		1619	hand: times	kéz: alkalmak	top300		
+42	H3027	H3027M		1619	hand: monument	kéz: emlékoszlop	top300		
+42	H3027	H3027N		1619	hand: penis	kéz: hímvessző	top300		
+42	H3027	H3027O		1619	hand: tool	kéz: eszköz	top300		
+42	H3027	H3027P		1619	hand: bank	kéz: part	top300		
+42	H3027	H3027Q		1619	hand: spacious	kéz: tágas	top300		
+42	H3027	H3027R		1619	hand: donate	kéz: felajánlani	top300		
+42	H3027	H3027S		1619	hand: vow	kéz: fogadalmat tenni	top300		
+42	H3027	H3027T		1619	hand: expend	kéz: kiadni	top300		
+42	H3027	H3027U		1619	hand: undertake	kéz: vállalkozni	top300		
+42	H3027	H3027V		1619	hand: certainly	kéz: bizonyosan	top300		
+42	H3027	H3027W		1619	hand: owner	kéz: tulajdonos	top300		
+42	H3027	H3027X		1619	hand: swear	kéz: esküt tenni	top300		
+43	H1980	H1980G		1549	to go: went	menni: elmenni	top300		
+43	H1980	H1980H		1549	to go: come	menni: jönni	top300		
+43	H1980	H1980I	igen	1549	to go: walk	menni: járni	top300		
+43	H1980	H1980J		1549	to go: take	menni: vezetni	top300		
+43	H1980	H1980K		1549	to go: come!	menni: gyere!	top300		
+43	H1980	H1980L		1549	to go: continue	menni: folytatódni	top300		
+43	H1980	H1980M		1549	to go: journey	menni: utazni	top300		
+43	H1980	H1980N		1549	to go: follow	menni: követni	top300		
+43	H1980	H1980O		1549	to go: send	menni: elhajtani	top300		
+44	H1697	H1697G	igen	1442	word	szó	top300		
+44	H1697	H1697H		1442	word: speaking	szó: beszéd	top300		
+44	H1697	H1697I		1442	word: thing	szó: dolog	top300		
+44	H1697	H1697J		1442	word: promised	szó: ígéret	top300		
+44	H1697	H1697K		1442	word: deed	szó: tett	top300		
+44	H1697	H1697L		1442	word: case	szó: ügy	top300		
+44	H1697	H1697M		1442	word: because	szó: mivel	top300		
+44	H1697	H1697N		1442	word: portion	szó: rész	top300		
+44	H1697	H1697O		1442	Chronicles	Krónikák	top300		
+45	H9026	H9026	igen	1328	your	-tok/-tek	top300+kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+46	H7200	H7200G	igen	1300	to see: see	látni: nézni	top300		
+46	H7200	H7200H		1300	to see: examine	látni: megvizsgálni	top300		
+46	H7200	H7200I		1300	to see: behold!	látni: íme!	top300		
+46	H7200	H7200J		1300	to see: select	látni: kiválasztani	top300		
+46	H7200	H7200K		1300	to see: enjoy	látni: élvezni	top300		
+46	H7200	H7200L		1300	to see: seer	látni: látnok	top300		
+46	H7200	H7200M		1300	to see: approach	látni: közeledni	top300		
+46	H7200	H7200N		1300	Provider	Gondviselő	top300		
+47	H5704	H5704	igen	1261	till	-ig; míg	top300		
+48	H9036	H9036	igen	1259	you	titeket	top300+kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+49	H0001	H0001G	igen	1213	father	atya	top300		
+49	H0001	H0001H		1213	(Huram)-abi	(Hurám)-Abi	top300		
+49	H0001	H0001I		1213	father of	atyja	top300		
+50	H4480	H4480A	igen	1189	from	-ból/-ből; -tól/-től	top300		
+50	H4480	H4480B		1189	portion	rész	top300		
+51	H2088	H2088	igen	1180	this	ez	top300		
+52	H8085	H8085G	igen	1160	to hear: hear	hallani: meghallani	top300		
+52	H8085	H8085H		1160	to hear: obey	hallani: engedelmeskedni	top300		
+52	H8085	H8085I		1160	to hear: proclaim	hallani: kihirdetni	top300		
+52	H8085	H8085J		1160	to hear: understand	hallani: megérteni	top300		
+52	H8085	H8085K		1160	to hear: judge	hallani: megítélni	top300		
+52	H8085	H8085L		1160	to hear: welcome	hallani: fogadni	top300		
+53	H1696	H1696G	igen	1142	to speak: speak	szólni: beszélni	top300		
+53	H1696	H1696H		1142	to speak: subdue	szólni: leigázni	top300		
+53	H1696	H1696I		1142	to speak: promise	szólni: ígérni	top300		
+54	H0859	H0859A	igen	1094	you(m.s.)	te (férfi, egyes)	top300		
+54	H0859	H0859B		1094	you(f.s.)	te (nő, egyes)	top300		
+54	H0859	H0859C		1094	you(f.s.)	te (nő, egyes)	top300		
+54	H0859	H0859D		1094	you(m.p.)	ti (férfiak)	top300		
+54	H0859	H0859E		1094	you(f.p.)	ti (nők)	top300		
+55	H5892	H5892A		1090	excitement	izgalom	top300		
+55	H5892	H5892B	igen	1090	city	város	top300		
+55	H5892	H5892G		1090	City (of On)	(Ón) városa	top300		
+55	H5892	H5892H		1090	Ir-	Ir	top300		
+56	H3427	H3427	igen	1079	to dwell	lakni	top300		
+57	H9011	H9011	igen	1078	[to]	[felé]	top300+kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+58	H1732	H1732	igen	1075	David	Dávid	top300		
+59	H0518	H0518A	igen	1070	if	ha	top300		
+59	H0518	H0518B		1070	if: except	ha: kivéve	top300		
+59	H0518	H0518H		1070	if: surely no	ha: bizonyosan nem	top300		
+59	H0518	H0518I		1070	if: surely yes	ha: bizonyosan igen	top300		
+59	H0518	H0518J		1070	if: until	ha: amíg	top300		
+60	H3318	H3318G	igen	1067	to come out: come	kijönni: jönni	top300		
+60	H3318	H3318H		1067	to come out: send	kijönni: kivinni	top300		
+60	H3318	H3318I		1067	to come out: extends	kijönni: kiterjedni	top300		
+60	H3318	H3318J		1067	to come out: casting(lot)	kijönni: (sorsot) vetni	top300		
+60	H3318	H3318K		1067	to come out: (sun)rise	kijönni: (nap)kelte	top300		
+60	H3318	H3318L		1067	to come out: issue	kijönni: kifolyni	top300		
+60	H3318	H3318M		1067	to come out: produce	kijönni: létrehozni	top300		
+60	H3318	H3318N		1067	to come out: regular	kijönni: megszokott	top300		
+60	H3318	H3318O		1067	to come out: speak	kijönni: kimondani	top300		
+60	H3318	H3318P		1067	to come out: surrender	kijönni: megadni magát	top300		
+61	H7725	H7725G	igen	1057	to return: return	visszatérni: visszamenni	top300		
+61	H7725	H7725H		1057	to return: rescue	visszatérni: megmenteni	top300		
+61	H7725	H7725I		1057	to return: turn back	visszatérni: elfordulni	top300		
+61	H7725	H7725J		1057	to return: again	visszatérni: újra	top300		
+61	H7725	H7725K		1057	to return: pay	visszatérni: megfizetni	top300		
+61	H7725	H7725L		1057	to return: refuse	visszatérni: visszautasítani	top300		
+61	H7725	H7725M		1057	to return: reply	visszatérni: válaszolni	top300		
+61	H7725	H7725N		1057	to return: recall	visszatérni: felidézni	top300		
+61	H7725	H7725O		1057	to return: repent	visszatérni: megtérni	top300		
+62	H5973	H5973A	igen	1052	with	-val/-vel; mellett	top300		
+62	H5973	H5973B		1052	from with	mellől	top300		
+63	H0259	H0259	igen	971	one	egy	top300		
+64	H3947	H3947G	igen	966	to take: take	venni: fogni	top300		
+64	H3947	H3947H		966	to take: recieve	venni: kapni	top300		
+64	H3947	H3947I		966	to take: marry	venni: megházasodni	top300		
+64	H3947	H3947J		966	to take: bring	venni: hozni	top300		
+64	H3947	H3947K		966	to take: buy	venni: vásárolni	top300		
+64	H3947	H3947L		966	to take: fire	venni: tüzet fogni	top300+kiemelt	a fordító bizonytalan (? a megjegyzésben)	
+65	H3045	H3045	igen	945	to know	tudni	top300		
+66	H0854	H0854	igen	929	with	-val/-vel; mellett	top300		
+67	H5927	H5927G	igen	890	to ascend: rise	felmenni: emelkedni	top300		
+67	H5927	H5927H		890	to ascend: establish	felmenni: felállítani	top300		
+67	H5927	H5927I		890	to ascend: offer up	felmenni: felajánlani	top300		
+67	H5927	H5927J		890	to ascend: attack	felmenni: támadni	top300		
+67	H5927	H5927K		890	to ascend: copulate	felmenni: közösülni	top300		
+67	H5927	H5927L		890	to ascend: dawn	felmenni: hajnalodni	top300		
+67	H5927	H5927M		890	to ascend: regurgitate	felmenni: visszaöklendezni	top300		
+68	H5869	H5869A	igen	887	eye	szem	top300		
+68	H5869	H5869B		887	Fountain (Gate)	Forrás (kapu)	top300		
+68	H5869	H5869G		887	Fountain of	Forrása	top300+kiemelt	a fordító bizonytalan (? a megjegyzésben)	
+68	H5869	H5869H		887	eye: seeing	szem: látás	top300		
+68	H5869	H5869I		887	eye: appearance	szem: külső	top300		
+68	H5869	H5869J		887	eye: before(the eyes)	szem: szeme előtt	top300		
+68	H5869	H5869K		887	eye: sin	szem: bűn	top300		
+68	H5869	H5869M		887	spring	forrás	top300		
+69	H8141	H8141	igen	877	year	év	top300		
+70	H0589	H0589	igen	874	I	én	top300		
+71	H8034	H8034	igen	864	name	név	top300		
+72	H9010	H9010	igen	862	[the]	[névelő, arám]	top300+kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+73	H7971	H7971G	igen	847	to send: depart	küldeni: távozni	top300		
+73	H7971	H7971H		847	to send: let go	küldeni: elengedni	top300		
+73	H7971	H7971I		847	to send: divorce	küldeni: elválni	top300		
+73	H7971	H7971J		847	to send: marriage	küldeni: házasság	top300		
+73	H7971	H7971K		847	to send: reach	küldeni: kinyújtani	top300		
+73	H7971	H7971L		847	to send: burn	küldeni: elégetni	top300		
+73	H7971	H7971M		847	to send: exile	küldeni: száműzni	top300		
+74	H2009	H2009	igen	843	behold	íme	top300		
+75	H4191	H4191	igen	840	to die	meghalni	top300		
+76	H8033	H8033G	igen	834	there	ott	top300		
+76	H8033	H8033H		834	(Jerusalem) Is There	(Jeruzsálem) ott van	top300		
+77	H3063	H3063G	igen	820	Judah	Júda	top300		
+77	H3063	H3063H		820	Judah	Júda	top300		
+77	H3063	H3063I		820	Judah	Júda	top300		
+77	H3063	H3063J		820	Judah	Júda	top300		
+77	H3063	H3063K		820	Judah	Júda	top300		
+77	H3063	H3063L		820	Judah	Júda	top300		
+77	H3063	H3063M		820	Judah	Júda	top300		
+77	H3063	H3063N		820	Judea	Júdea	top300		
+77	H3063	H3063O		820	(Baalah of)Judah	(Baala) Júda	top300		
+78	H9035	H9035	igen	816	us	minket	top300+kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+79	H0398	H0398	igen	810	to eat	enni	top300		
+80	H9025	H9025	igen	803	our	-nk	top300+kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+81	H5650	H5650	igen	801	servant/slave	szolga/rabszolga	top300		
+82	H0369	H0369	igen	789	nothing	semmi	top300		
+83	H0802	H0802G	igen	781	woman	nő	top300		
+83	H0802	H0802H		781	woman: wife	nő: feleség	top300		
+83	H0802	H0802I		781	woman: another	nő: másik	top300		
+84	H3651	H3651A		771	right	igaz; helyes	top300		
+84	H3651	H3651B		771	as	mint	top300		
+84	H3651	H3651C	igen	771	so	így	top300		
+85	H8147	H8147	igen	769	two	kettő	top300		
+86	H1571	H1571	igen	769	also	is; még	top300		
+87	H4872	H4872	igen	766	Moses	Mózes	top300		
+88	H9008	H9008	igen	757	[?]	[kérdőpartikula]	top300+kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+89	H9022	H9022	igen	756	your	-d (női)	top300+kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+90	H5315	H5315G	igen	754	soul	lélek	top300		
+90	H5315	H5315H		754	soul: life	lélek: élet	top300		
+90	H5315	H5315I		754	soul: myself	lélek: magam	top300		
+90	H5315	H5315J		754	soul: person	lélek: személy	top300		
+90	H5315	H5315K		754	soul: animal	lélek: állat	top300		
+90	H5315	H5315L		754	soul: appetite	lélek: étvágy	top300		
+90	H5315	H5315M		754	soul: dead	lélek: halott	top300		
+90	H5315	H5315N		754	soul: neck	lélek: nyak	top300		
+91	H4100	H4100	igen	753	what?	mi (kérdő)	top300		
+92	H3548	H3548	igen	750	priest	pap	top300		
+93	H0428	H0428	igen	746	these	ezek	top300		
+94	H9032	H9032	igen	738	you	téged (nő)	top300+kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+95	H7121	H7121G	igen	733	to call: call to	hívni: megszólítani	top300		
+95	H7121	H7121H		733	to call: call by	hívni: elnevezni	top300		
+95	H7121	H7121I		733	to call: call out	hívni: kiáltani	top300		
+95	H7121	H7121J		733	to call: read out	hívni: felolvasni	top300		
+96	H0408	H0408	igen	724	not	nem	top300		
+97	H0310	H0310A	igen	716	after	után; mögött	top300		
+97	H0310	H0310B		716	backwards	hátrafelé	top300		
+98	H1870	H1870G		708	way: conduct	út: magatartás	top300		
+98	H1870	H1870H	igen	708	Way	Út	top300		
+98	H1870	H1870I		708	(King's) Highway	(a király) országútja	top300		
+98	H1870	H1870J		708	way: direction	út: irány	top300		
+98	H1870	H1870K		708	way: road	út: útvonal	top300+kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő	
+98	H1870	H1870L		708	way: journey	út: utazás	top300		
+99	H7451	H7451A		662	bad: harmful	rossz: ártalmas	top300		
+99	H7451	H7451B		662	bad: evil	rossz: gonosz	top300		
+99	H7451	H7451C	igen	662	distress: harm	nyomorúság: kár	top300		
+99	H7451	H7451H		662	bad: evil	rossz: gonosz	top300		
+99	H7451	H7451I		662	distress: evil	nyomorúság: gonosz	top300		
+100	H5375	H5375G	igen	656	to lift: raise	emelni: felvenni	top300		
+100	H5375	H5375H		656	to lift: bear	emelni: viselni	top300		
+100	H5375	H5375I		656	to lift: forgive	emelni: megbocsátani	top300		
+100	H5375	H5375J		656	to lift: guilt	emelni: bűnösség	top300		
+100	H5375	H5375K		656	to lift: aid	emelni: segíteni	top300		
+100	H5375	H5375L		656	to lift: exalt	emelni: felmagasztalni	top300		
+100	H5375	H5375M		656	to lift: look	emelni: felnézni	top300		
+100	H5375	H5375N		656	to lift: loud	emelni: hangosan kimondani	top300		
+100	H5375	H5375O		656	to lift: trust	emelni: bízni	top300		
+100	H5375	H5375P		656	to lift: vow	emelni: fogadalmat tenni	top300		
+100	H5375	H5375Q		656	to lift: kindness	emelni: kegyet mutatni	top300		
+100	H5375	H5375R		656	to lift: fight	emelni: harcolni	top300		
+100	H5375	H5375S		656	to lift: enthuse	emelni: lelkesíteni	top300		
+100	H5375	H5375T		656	to lift: journey	emelni: elindulni	top300		
+100	H5375	H5375U		656	to lift: marry	emelni: feleségül venni	top300		
+100	H5375	H5375V		656	to lift: count	emelni: összeszámlálni	top300		
+100	H5375	H5375W		656	to lift: bearing(armour)	emelni: (fegyvert) viselni	top300		
+100	H5375	H5375X		656	to lift: give(gift)	emelni: (ajándékot) adni	top300		
+101	H3389	H3389	igen	643	Jerusalem	Jeruzsálem	top300		
+102	H4714	H4714G	igen	641	Egypt	Mizraim	top300+kiemelt	a fordító bizonytalan (? a megjegyzésben)	
+102	H4714	H4714H		641	Egypt	Mizraim	top300+kiemelt	a fordító bizonytalan (? a megjegyzésben)	
+102	H4714	H4714I		641	(Sea of) Egypt	(Egyiptom) tengere	top300		
+102	H4714	H4714J		641	(Brook of) Egypt	(Egyiptom) patakja	top300		
+103	H0251	H0251G	igen	630	brother: male-sibling	fivér: fiútestvér	top300		
+103	H0251	H0251H		630	brother: male-relative	fivér: férfi rokon	top300		
+103	H0251	H0251I		630	brother: compatriot	fivér: honfitárs	top300		
+104	H6965	H6965A		628	(Leb)-kamai	(Leb)-Kamai	top300		
+104	H6965	H6965B	igen	628	to arise: rise	felkelni: felemelkedni	top300		
+104	H6965	H6965H		628	to arise: raise	felkelni: felállítani	top300		
+104	H6965	H6965I		628	to arise: establish	felkelni: megerősíteni	top300		
+104	H6965	H6965J		628	to arise: attack	felkelni: támadni	top300		
+104	H6965	H6965K		628	to arise: guard	felkelni: őrt állni	top300		
+105	H2063	H2063	igen	604	this	ez	top300		
+106	H7218	H7218A	igen	600	head	fej	top300		
+106	H7218	H7218B		600	prince	fejedelem	top300		
+106	H7218	H7218H		600	head: leader	fej: vezető	top300		
+106	H7218	H7218I		600	head: top	fej: csúcs	top300		
+106	H7218	H7218J		600	head: first	fej: első	top300		
+106	H7218	H7218K		600	head: group	fej: csoport	top300		
+106	H7218	H7218L		600	head: count	fej: létszám	top300		
+107	H3820	H3820A	igen	595	heart	szív	top300		
+107	H3820	H3820B		595	Leb	Leb	top300		
+108	H1323	H1323G	igen	588	daughter	leány	top300		
+108	H1323	H1323H		588	daughter: village	leány: falu	top300		
+108	H1323	H1323I		588	Bath (Shua)	Bát (Súa)	top300		
+109	H7760	H7760A	igen	585	to set: make	helyezni: csinálni	top300+kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő	
+109	H7760	H7760B		585	fate	sors	top300+kiemelt	a fordító bizonytalan (? a megjegyzésben)	
+109	H7760	H7760H		585	to set: put	helyezni: adni	top300		
+109	H7760	H7760I		585	to set: take	helyezni: venni	top300		
+109	H7760	H7760J		585	to set: accuse	helyezni: vádolni	top300		
+109	H7760	H7760K		585	to set: consider	helyezni: megfontolni	top300		
+109	H7760	H7760L		585	to set: appoint	helyezni: kinevezni	top300		
+109	H7760	H7760M		585	to set: name	helyezni: elnevezni	top300		
+110	H4325	H4325G	igen	581	water	víz	top300		
+110	H4325	H4325H		581	Water (Gate)	Víz (kapu)	top300		
+111	H3967	H3967	igen	581	hundred	száz	top300		
+112	H3541	H3541	igen	577	thus	így	top300		
+113	H0582	H0582	igen	566	human	ember (halandó)	top300		
+114	H1471	H1471A	igen	561	nation	nemzet	top300		
+114	H1471	H1471B		561	Goiim	Góim	top300		
+114	H1471	H1471G		561	Gentile	pogány	top300		
+114	H1471	H1471H		561	(Harosheth)-hagoyim	(Haroset)-Hagojim	top300		
+115	H5674	H5674A	igen	556	to pass	átmenni	top300		
+115	H5674	H5674B		556	be angry	haragudni	top300		
+115	H5674	H5674C		556	to pass: bring	átmenni: átvinni	top300		
+115	H5674	H5674D		556	to pass: trespass	átmenni: vétkezni	top300		
+115	H5674	H5674G		556	(Valley of) the Travelers	(az Átutazók völgye)	top300		
+115	H5674	H5674H		556	be arrogant	gőgösnek lenni	top300		
+116	H1992	H1992	igen	553	they(masc.)	ők (hímnem)	top300		
+117	H0120	H0120G	igen	551	man	férfi	top300		
+117	H0120	H0120H		551	the man (Adam)	az ember (Ádám)	top300		
+118	H2022	H2022G	igen	546	mountain: mount	hegy: domb	top300		
+118	H2022	H2022H		546	mountain: hill country	hegy: hegyvidék	top300		
+119	H2896	H2896A	igen	538	pleasant	kellemes	top300		
+119	H2896	H2896B		538	good	jó	top300		
+119	H2896	H2896C		538	welfare	jólét	top300		
+120	H1419	H1419A	igen	526	great: large	nagy: nagyméretű	top300+kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő	
+120	H1419	H1419B		526	Haggedolim	Haggedolim	top300		
+120	H1419	H1419J		526	Great (Sea)	Nagy (tenger)	top300		
+120	H1419	H1419K		526	great: old	nagy: idős	top300		
+121	H5975	H5975G	igen	521	to stand: stand	állni: megállni	top300		
+121	H5975	H5975H		521	to stand: appoint	állni: szolgálni	top300		
+121	H5975	H5975I		521	to stand: rise	állni: felkelni	top300		
+121	H5975	H5975J		521	to stand: put	állni: elhelyezni	top300		
+122	H6963	H6963A		506	voice	hang	top300		
+122	H6963	H6963B		506	frivolity	könnyelműség	top300		
+122	H6963	H6963H	igen	506	voice: sound	hang: zaj	top300+kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő	
+122	H6963	H6963I		506	voice: thunder	hang: mennydörgés	top300		
+122	H6963	H6963J		506	voice: message	hang: üzenet	top300		
+122	H6963	H6963K		506	voice: [sound of]	hang: [hangja]	top300		
+122	H6963	H6963L		506	voice: listen	hang: figyelni	top300		
+123	H0505	H0505G	igen	506	thousand	ezer	top300		
+123	H0505	H0505H		506	thousand: clan	ezer: nemzetség	top300		
+124	H8478	H8478G	igen	505	underneath: under	alsó rész: alatt	top300		
+124	H8478	H8478H		505	underneath: instead	alsó rész: helyett	top300		
+124	H8478	H8478I		505	underneath: stand	alsó rész: állás	top300		
+124	H8478	H8478J		505	underneath: because of	alsó rész: miatt	top300		
+124	H8478	H8478K		505	underneath: owning	alsó rész: birtoklás	top300		
+124	H8478	H8478L		505	underneath: swear	alsó rész: esküdni	top300		
+125	H5221	H5221	igen	500	to smite	megütni	top300		
+126	H2416	H2416A	igen	498	alive	élő	top300		
+126	H2416	H2416B		498	kinsfolk	rokonság	top300		
+126	H2416	H2416C		498	living thing	élőlény	top300		
+126	H2416	H2416D		498	community	közösség	top300		
+126	H2416	H2416E		498	life	élet	top300		
+127	H6310	H6310G	igen	498	lip	ajak	top300+kiemelt	a jelentés „száj” (TBESH szócikk); eldöntendő: „ajak” vagy „száj” (F140.23 c)	
+127	H6310	H6310H		498	lip: edge	ajak: szél	top300		
+127	H6310	H6310I		498	lip: word	ajak: szó	top300		
+127	H6310	H6310J		498	lip: opening	ajak: nyílás	top300		
+127	H6310	H6310K		498	lip: according	ajak: szerint	top300		
+127	H6310	H6310L		498	lip: one third	ajak: egyharmad	top300		
+128	H3205	H3205	igen	496	to beget	nemzeni	top300		
+129	H6680	H6680	igen	494	to command	parancsolni	top300		
+130	H5750	H5750	igen	490	still	még	top300		
+131	H6635	H6635A		485	army	sereg	top300		
+131	H6635	H6635B	igen	485	Hosts	Seregek	top300		
+131	H6635	H6635H		485	army: war	sereg: háború	top300		
+131	H6635	H6635I		485	army: duty	sereg: szolgálat	top300		
+132	H8104	H8104G	igen	469	to keep: obey	őrizni: megtartani	top300		
+132	H8104	H8104H		469	to keep: guard	őrizni: vigyázni	top300		
+132	H8104	H8104I		469	to keep: look at	őrizni: figyelni	top300		
+132	H8104	H8104J		469	to keep: careful	őrizni: gondos	top300		
+133	H6944	H6944G	igen	469	holiness	szentség	top300		
+133	H6944	H6944H		469	Most Holy Place	Szentek Szentje	top300		
+133	H6944	H6944I		469	(Way of) Holiness	(a szentség) útja	top300		
+133	H6944	H6944J		469	Holy Place	szent hely	top300		
+134	H4672	H4672	igen	455	to find	találni	top300		
+135	H7227	H7227A	igen	454	many	sok	top300		
+135	H7227	H7227B		454	chief	főnök	top300		
+135	H7227	H7227G		454	(Sidon) the Great	(Szidon) a nagy	top300		
+136	H0136	H0136	igen	440	Lord	Úr	top300		
+137	H5769	H5769G	igen	438	forever: enduring	örökre: tartós	top300		
+137	H5769	H5769H		438	Everlasting	Örökkévaló	top300		
+137	H5769	H5769I		438	forever: any time	örökre: bármikor	top300		
+137	H5769	H5769J		438	forever: antiquity	örökre: ókor	top300		
+138	H5307	H5307G	igen	435	to fall: fall	esni: leesni	top300		
+138	H5307	H5307H		435	to fall: deserting	esni: elpártolni	top300		
+138	H5307	H5307I		435	to fall: allot	esni: sorsot vetni	top300		
+138	H5307	H5307J		435	to fall: kill	esni: elesni	top300		
+138	H5307	H5307K		435	to fall: angry	esni: haragos	top300		
+138	H5307	H5307L		435	to fall: fail	esni: elbukni	top300		
+138	H5307	H5307M		435	to fall: fell(trees)	esni: (fát) kivágni	top300		
+138	H5307	H5307N		435	to fall: presenting	esni: bemutatni	top300		
+139	H6258	H6258	igen	433	now	most	top300		
+140	H7969	H7969	igen	432	three	három	top300		
+141	H4310	H4310	igen	423	who?	ki (kérdő)	top300		
+142	H4941	H4941G	igen	422	justice: judgement	igazságosság: ítélet	top300		
+142	H4941	H4941H		422	justice	igazságosság	top300		
+142	H4941	H4941I		422	justice: rule	igazságosság: szabály	top300		
+142	H4941	H4941J		422	justice: custom	igazságosság: szokás	top300		
+142	H4941	H4941K		422	(Hall of) Judgment	(az ítélet) csarnoka	top300		
+143	H8064	H8064	igen	421	heaven	ég	top300		
+144	H8269	H8269	igen	421	ruler	uralkodó	top300		
+145	H8432	H8432	igen	418	midst	közép	top300		
+146	H2719	H2719	igen	413	sword	kard	top300		
+147	H0996	H0996G	igen	407	between	között	top300		
+147	H0996	H0996H		407	between: among	között: közt	top300		
+148	H9012	H9012	igen	407	[emph.?]	[emphaticus]	top300+kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+149	H7586	H7586G	igen	407	Saul	Saul	top300		
+149	H7586	H7586H		407	Shaul	Saul	top300		
+149	H7586	H7586I		407	Shaul	Saul	top300		
+149	H7586	H7586J		407	Shaul	Saul	top300		
+150	H4994	H4994	igen	404	please	kérlek	top300		
+151	H3701	H3701G	igen	403	silver: money	ezüst: pénz	top300		
+151	H3701	H3701H		403	silver: price	ezüst: ár	top300		
+152	H4725	H4725	igen	401	place	hely	top300		
+153	H4196	H4196	igen	401	altar	oltár	top300		
+154	H3220	H3220G	igen	396	sea	tenger	top300		
+154	H3220	H3220H		396	sea: west	tenger: nyugat	top300		
+154	H3220	H3220I		396	(Mt. Ephron in the) West	(Efron hegye) nyugaton	top300		
+155	H7651	H7651	igen	395	seven	hét	top300		
+156	H9043	H9043	igen	390	he	ő (alany)	top300+kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+157	H2091	H2091	igen	389	gold	arany	top300		
+158	H3381	H3381	igen	381	to go down	lemenni	top300		
+159	H7307	H7307G	igen	378	spirit	szellem	top300		
+159	H7307	H7307H		378	spirit: breath	szellem: lehelet	top300		
+159	H7307	H7307I		378	spirit: side	szellem: oldal	top300		
+159	H7307	H7307J		378	spirit: temper	szellem: kedély	top300		
+160	H0784	H0784	igen	378	fire	tűz	top300		
+161	H1129	H1129	igen	376	to build	építeni	top300		
+162	H5002	H5002	igen	376	utterance	kijelentés	top300		
+163	H8179	H8179G	igen	374	gate	kapu	top300		
+163	H8179	H8179H		374	gate: town	kapu: város	top300		
+164	H5046	H5046	igen	371	to tell	megmondani	top300		
+165	H1818	H1818	igen	360	blood	vér	top300		
+166	H0595	H0595	igen	359	I	én	top300		
+167	H9040	H9040	igen	359	I	én (alany)	top300+kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+168	H3290	H3290	igen	350	Jacob	Jákób	top300		
+169	H4427	H4427A	igen	348	to reign	uralkodni	top300		
+169	H4427	H4427B		348	to advise	tanácsot adni	top300		
+170	H0175	H0175	igen	347	Aaron	Áron	top300		
+171	H0168	H0168G	igen	345	tent	sátor	top300		
+171	H0168	H0168H		345	tent: home	sátor: otthon	top300		
+172	H1768	H1768	igen	345	that	hogy; amely	top300		
+173	H2568	H2568	igen	343	five	öt	top300		
+174	H6240	H6240	igen	339	ten	tíz	top300		
+175	H5439	H5439G	igen	336	around	körül: határ	top300		
+175	H5439	H5439H		336	around: side	körül: oldal	top300		
+175	H5439	H5439I		336	around: whole	körül: egész	top300		
+175	H5439	H5439J		336	around: neighours	körül: szomszédok	top300		
+176	H7704	H7704A		334	Sirion	Sirjon	top300		
+176	H7704	H7704B	igen	334	land: soil	föld: talaj	top300		
+176	H7704	H7704G		334	land: country	föld: ország	top300		
+176	H7704	H7704H		334	Field (of the Launderer)	(a ruhamosó) mezeje	top300		
+176	H7704	H7704I		334	land: wildlife	föld: vadvilág	top300		
+176	H7704	H7704M		334	field	mező	top300		
+177	H0113	H0113	igen	333	lord	úr	top300		
+178	H6030	H6030A		332	to dwell	lakni	top300		
+178	H6030	H6030B	igen	332	to answer	felelni	top300		
+178	H6030	H6030C		332	to sing	énekelni	top300		
+179	H6086	H6086G	igen	330	tree: wood	fa: faanyag	top300		
+179	H6086	H6086H		330	tree	fa	top300		
+179	H6086	H6086I		330	tree: stick	fa: bot	top300		
+179	H6086	H6086J		330	tree: stake	fa: cövek	top300		
+179	H6086	H6086K		330	tree: carpenter	fa: ács	top300		
+180	H1288	H1288	igen	330	to bless	megáldani	top300		
+181	H3627	H3627	igen	325	article/utensil	eszköz; edény	top300		
+182	H0176	H0176A	igen	321	or	vagy	top300		
+182	H0176	H0176B		321	desire	vágy	top300		
+183	H4421	H4421	igen	320	battle	csata	top300		
+184	H0702	H0702	igen	318	four	négy	top300		
+185	H2005	H2005	igen	316	look!	íme!	top300		
+186	H3372	H3372G	igen	315	to fear	félni	top300		
+186	H3372	H3372H		315	to fear: revere	félni: tisztelni	top300		
+187	H6242	H6242	igen	315	twenty	húsz	top300		
+188	H5030	H5030	igen	315	prophet	próféta	top300		
+189	H9013	H9013	igen	309	[emph.?]	[emphaticus]	top300+kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+190	H3069	H3069	igen	306	YHWH/God	az ÚR/Isten	top300		
+191	H4940	H4940	igen	303	family	család	top300		
+192	H6485	H6485A	igen	303	to reckon: list	számba venni: felsorolni	top300+kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő	
+192	H6485	H6485B		303	reckoning	számbavétel	top300		
+192	H6485	H6485H		303	to reckon: punish	számba venni: megbüntetni	top300		
+192	H6485	H6485I		303	to reckon: visit	számba venni: meglátogatni	top300		
+192	H6485	H6485J		303	to reckon: overseer	számba venni: felügyelő	top300		
+192	H6485	H6485K		303	to reckon: missing	számba venni: hiányzó	top300		
+192	H6485	H6485L		303	to reckon: put	számba venni: letétbe helyezni	top300		
+193	H3966	H3966	igen	300	much	nagyon	top300		
+194	H5493	H5493G	igen	300	to turn aside: remove	elfordulni: eltávolítani	top300		
+194	H5493	H5493H		300	to turn aside: depart	elfordulni: eltávozni	top300		
+194	H5493	H5493I		300	to turn aside: turn aside	elfordulni: letérni	top300		
+195	H3899	H3899G	igen	298	food	étel	top300		
+195	H3899	H3899H		298	food: bread	étel: kenyér	top300		
+195	H3899	H3899I		298	food: allowance	étel: ellátmány	top300		
+196	H6256	H6256	igen	296	time	idő	top300		
+197	H2403	H2403A	igen	295	sin	bűn	top300		
+197	H2403	H2403B		295	sin	bűn	top300		
+197	H2403	H2403H		295	sin: sin offering	bűn: bűnáldozat	top300		
+197	H2403	H2403I		295	sin: punishment	bűn: büntetés	top300		
+198	H8010	H8010	igen	293	Solomon	Salamon	top300		
+199	H2388	H2388G	igen	291	to strengthen: strengthen	megerősíteni: támogatni	top300		
+199	H2388	H2388H		291	to strengthen: hold	megerősíteni: megragadni	top300		
+199	H2388	H2388I		291	to strengthen: ensure	megerősíteni: biztosítani	top300		
+199	H2388	H2388J		291	to strengthen: prevail over	megerősíteni: felülkerekedni	top300		
+199	H2388	H2388K		291	to strengthen: persevere	megerősíteni: kitartani	top300		
+200	H3881	H3881	igen	291	Levi	Lévi	top300		
+201	H5647	H5647G	igen	288	to serve	szolgálni	top300		
+201	H5647	H5647H		288	to serve: minister	szolgálni: szolgálatot végezni	top300		
+201	H5647	H5647I		288	to serve: labour	szolgálni: dolgozni	top300		
+201	H5647	H5647J		288	to serve: burden	szolgálni: terhelni	top300		
+202	H3772	H3772G	igen	288	to cut: cut	vágni: kivágni	top300		
+202	H3772	H3772H		288	to cut: make(covenant)	vágni: (szövetséget) kötni	top300		
+202	H3772	H3772I		288	to cut: eliminate	vágni: kiirtani	top300		
+202	H3772	H3772J		288	to cut: lack	vágni: hiányozni	top300		
+203	H6430	H6430G		288	Philistine	filiszteus	top300		
+203	H6430	H6430H	igen	288	Philistine	filiszteus	top300		
+203	H6430	H6430I		288	(Sea of the) Philistines	(a filiszteusok) tengere	top300		
+204	H5930	H5930A	igen	287	burnt offering	égőáldozat	top300		
+204	H5930	H5930B		287	ascent	feljárat	top300		
+205	H2320	H2320G	igen	285	month	hónap	top300		
+205	H2320	H2320H		285	month: new moon	hónap: újhold	top300		
+206	H1285	H1285	igen	284	covenant	szövetség	top300		
+207	H0341	H0341	igen	283	enemy	ellenség	top300		
+208	H2421	H2421	igen	282	to live	élni	top300		
+209	H7126	H7126G	igen	280	to present: come	bemutatni: közeledni	top300		
+209	H7126	H7126H		280	to present: bring	bemutatni: odavinni	top300		
+210	H0639	H0639G		276	face: anger	arc: harag	top300		
+210	H0639	H0639H		276	face: nose	arc: orr	top300		
+210	H0639	H0639I	igen	276	face	arc	top300		
+211	H6629	H6629G	igen	274	flock	nyáj	top300		
+211	H6629	H6629H		274	Sheep (Gate)	Juh (kapu)	top300		
+212	H6547	H6547G	igen	274	Pharaoh	Fáraó	top300		
+212	H6547	H6547H		274	Pharaoh	Fáraó	top300		
+212	H6547	H6547I		274	Pharaoh	Fáraó	top300		
+212	H6547	H6547J		274	Pharaoh	Fáraó	top300		
+212	H6547	H6547K		274	Pharaoh	Fáraó	top300		
+212	H6547	H6547L		274	Pharaoh	Fáraó	top300		
+212	H6547	H6547M		274	Pharaoh	Fáraó	top300		
+212	H6547	H6547N		274	Pharaoh	Fáraó	top300		
+212	H6547	H6547Q		274	Pharaoh (Neco)	Fáraó (Néko)	top300		
+212	H6547	H6547R		274	Pharaoh	Fáraó	top300		
+212	H6547	H6547S		274	Pharaoh (Hophra)	Fáraó (Hofra)	top300		
+212	H6547	H6547T		274	Pharaoh	Fáraó	top300		
+213	H0068	H0068G		273	stone	kő	top300		
+213	H0068	H0068H	igen	273	stone: weight	kő: súly	top300		
+213	H0068	H0068I		273	(Zoheleth) Stone	(Zohelet) köve	top300		
+214	H4616	H4616	igen	272	because	mivel; érdekében	top300		
+215	H4057	H4057A		271	mouth	száj	top300		
+215	H4057	H4057B	igen	271	wilderness	puszta	top300		
+215	H4057	H4057G		271	Wilderness (of Sinai)	(a Sínai) pusztája	top300		
+216	H1320	H1320	igen	270	flesh	hús	top300		
+217	H7563	H7563	igen	263	wicked	gonosz	top300		
+218	H0894	H0894	igen	262	Babylon	Babilon	top300		
+219	H3824	H3824	igen	252	heart	szív	top300		
+220	H4294	H4294G		252	tribe: rod	törzs: bot	top300		
+220	H4294	H4294H	igen	252	tribe	törzs	top300		
+220	H4294	H4294I		252	tribe: arrow	törzs: nyíl	top300		
+220	H4294	H4294J		252	tribe: stick	törzs: pálca	top300		
+220	H4294	H4294K		252	tribe: supply	törzs: készlet	top300		
+221	H4390	H4390	igen	249	to fill	megtölteni	top300		
+222	H0520	H0520A	igen	247	cubit	sing (hosszmérték)	top300		
+222	H0520	H0520B		247	foundation	alap	top300		
+223	H7272	H7272	igen	247	foot	láb	top300		
+224	H2617	H2617A	igen	247	kindness	jóság	top300		
+224	H2617	H2617B		247	shame	gyalázat	top300		
+225	H2428	H2428A		246	strength: soldiers	erő: katonák	top300		
+225	H2428	H2428B		246	Helech	Hélek	top300		
+225	H2428	H2428G	igen	246	strength	erő	top300		
+225	H2428	H2428H		246	strength: rich	erő: gazdag	top300		
+225	H2428	H2428I		246	strength: worthy	erő: derék	top300		
+226	H0410	H0410G		241	God	Isten	top300		
+226	H0410	H0410H		241	El (Berith)	El (Berit)	top300		
+226	H0410	H0410I		241	El (Elohe)	El (Elohé)	top300		
+226	H0410	H0410J		241	El (Most High)	El (Felséges)	top300		
+226	H0410	H0410K	igen	241	god	isten	top300		
+226	H0410	H0410L		241	god: power	isten: hatalom	top300		
+227	H1366	H1366G	igen	240	border: boundary	határ: határvonal	top300		
+227	H1366	H1366H		240	border: area	határ: terület	top300		
+228	H5288	H5288	igen	239	youth	ifjú	top300		
+229	H2398	H2398	igen	238	to sin	vétkezni	top300		
+230	H7965	H7965G	igen	237	peace	béke	top300		
+230	H7965	H7965H		237	Peace	Béke	top300		
+230	H7965	H7965I		237	peace: well-being	béke: jólét	top300		
+230	H7965	H7965J		237	peace: friendship	béke: barátság	top300		
+230	H7965	H7965K		237	peace: greeting	béke: üdvözlet	top300		
+230	H7965	H7965L		237	peace: completely	béke: teljesen	top300		
+231	H4639	H4639G		236	deed: work	tett: munka	top300		
+231	H4639	H4639H		236	deed: justice	tett: igazságosság	top300		
+231	H4639	H4639I	igen	236	deed: judgement	tett: ítélet	top300		
+231	H4639	H4639J		236	deed: custom	tett: szokás	top300		
+231	H4639	H4639K		236	deed	tett	top300		
+232	H3915	H3915	igen	233	night	éjszaka	top300		
+233	H5771	H5771G	igen	233	iniquity: crime	vétek: bűntett	top300		
+233	H5771	H5771H		233	iniquity: guilt	vétek: bűnösség	top300		
+233	H5771	H5771I		233	iniquity: punishment	vétek: büntetés	top300		
+234	H2142	H2142	igen	232	to remember	emlékezni	top300		
+235	H3423	H3423G	igen	231	to possess: possess	birtokolni: örökölni	top300		
+235	H3423	H3423H		231	to possess: take	birtokolni: elfoglalni	top300		
+235	H3423	H3423I		231	to possess: poor	birtokolni: szegény	top300		
+236	H2233	H2233G	igen	229	seed	mag	top300		
+236	H2233	H2233H		229	seed: children	mag: gyermekek	top300		
+236	H2233	H2233I		229	seed: semen	mag: ondó	top300		
+237	H7235	H7235A	igen	227	to multiply	megsokasodni	top300		
+237	H7235	H7235B		227	to shoot	lőni	top300		
+238	H7130	H7130G	igen	227	entrails: among	belek: között	top300		
+238	H7130	H7130H		227	entrails: inner parts	belek: belső részek	top300		
+239	H0127	H0127G	igen	225	land: soil	föld: talaj	top300		
+239	H0127	H0127H		225	land: country	föld: ország	top300		
+239	H0127	H0127I		225	land: planet	föld: bolygó	top300		
+240	H1245	H1245	igen	225	to seek	keresni	top300		
+241	H3789	H3789	igen	224	to write	írni	top300		
+242	H4150	H4150G		223	meeting: time appointed	találkozás: kijelölt idő	top300		
+242	H4150	H4150H		223	meeting: festival	találkozás: ünnep	top300		
+242	H4150	H4150I	igen	223	meeting	találkozás	top300		
+242	H4150	H4150J		223	meeting: signal appointed	találkozás: kijelölt jel	top300		
+243	H5159	H5159	igen	222	inheritance	örökség	top300		
+244	H0517	H0517	igen	220	mother	anya	top300		
+245	H8451	H8451	igen	219	instruction	tanítás	top300		
+246	H3091	H3091G	igen	218	Joshua	Józsué	top300		
+246	H3091	H3091H		218	Joshua	Józsué	top300		
+246	H3091	H3091I		218	Joshua	Józsué	top300		
+246	H3091	H3091J		218	Joshua	Józsué	top300		
+247	H9048	H9048	igen	217	they	ők (alany)	top300+kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+248	H8354	H8354	igen	217	to drink	inni	top300		
+249	H0899	H0899A		217	treachery	hűtlenség	top300		
+249	H0899	H0899B	igen	217	garment	ruha	top300		
+250	H3559	H3559A	igen	217	to establish: prepare	megalapozni: előkészíteni	top300+kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő	
+250	H3559	H3559B		217	blow	ütés	top300		
+250	H3559	H3559H		217	to establish: establish	megalapozni: megszilárdítani	top300		
+250	H3559	H3559I		217	to establish: make	megalapozni: megalkotni	top300		
+250	H3559	H3559J		217	to establish: commit	megalapozni: rábízni	top300		
+250	H3559	H3559K		217	to establish: right	megalapozni: helyes	top300		
+251	H8337	H8337	igen	216	six	hat	top300		
+252	H5800	H5800A	igen	215	to leave: forsake	elhagyni: cserbenhagyni	top300+kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő	
+252	H5800	H5800B		215	to restore	helyreállítani	top300		
+252	H5800	H5800C		215	to leave: release	elhagyni: elengedni	top300		
+252	H5800	H5800G		215	Forsaken	Elhagyott	top300		
+252	H5800	H5800H		215	to leave: neglect	elhagyni: elhanyagolni	top300		
+253	H4264	H4264	igen	215	camp	tábor	top300		
+254	H1242	H1242	igen	214	morning	reggel	top300		
+255	H5186	H5186	igen	214	to stretch	kinyújtani	top300		
+256	H4397	H4397G	igen	214	messenger	követ	top300		
+256	H4397	H4397H		214	messenger: angel	követ: angyal	top300		
+257	H3130	H3130G	igen	213	Joseph	József	top300		
+257	H3130	H3130H		213	Joseph	József	top300		
+257	H3130	H3130I		213	Joseph	József	top300		
+257	H3130	H3130J		213	Joseph	József	top300		
+257	H3130	H3130K		213	Joseph	József	top300		
+258	H5337	H5337	igen	213	to rescue	megmenteni	top300		
+259	H3254	H3254G		212	to add: again	hozzátenni: újra	top300		
+259	H3254	H3254H	igen	212	to add	hozzátenni	top300		
+260	H7901	H7901G	igen	212	to lie down: lay down	lefeküdni: lefektetni	top300		
+260	H7901	H7901H		212	to lie down: sleep	lefeküdni: aludni	top300		
+260	H7901	H7901I		212	to lie down: have sex	lefeküdni: közösülni	top300		
+260	H7901	H7901J		212	to lie down: be dead	lefeküdni: halottnak lenni	top300		
+261	H4503	H4503G	igen	211	offering	áldozat	top300		
+261	H4503	H4503H		211	offering: gift	áldozat: ajándék	top300		
+261	H4503	H4503I		211	offering: tribute	áldozat: adó	top300		
+262	H0157	H0157G	igen	211	to love: lover	szeretni: szerető	top300		
+262	H0157	H0157H		211	to love: friend	szeretni: barát	top300		
+263	H3615	H3615G	igen	208	to end: finish	befejezni: elvégezni	top300		
+263	H3615	H3615H		208	to end: destroy	befejezni: elpusztítani	top300		
+263	H3615	H3615I		208	to end: decides	befejezni: elhatározni	top300		
+263	H3615	H3615J		208	to end: expend	befejezni: elkölteni	top300		
+264	H6662	H6662	igen	206	righteous	igaz	top300		
+265	H3467	H3467	igen	206	to save	megszabadítani	top300		
+266	H8199	H8199	igen	202	to judge	ítélni	top300		
+267	H0727	H0727	igen	202	ark	láda	top300		
+268	H0905	H0905G	igen	200	alone: pole	egyedül: rúd	top300		
+268	H0905	H0905H		200	alone	egyedül	top300		
+268	H0905	H0905I		200	alone: each	egyedül: mindegyik	top300		
+268	H0905	H0905J		200	alone: besides	egyedül: kívül	top300		
+269	H0622	H0622	igen	200	to gather	összegyűjteni	top300		
+270	H3519	H3519	igen	200	glory	dicsőség	top300		
+271	H3201	H3201	igen	194	be able	képesnek lenni	top300		
+272	H3709	H3709G	igen	193	palm	tenyér	top300		
+272	H3709	H3709H		193	palm: sole	tenyér: talp	top300		
+272	H3709	H3709I		193	palm: dish	tenyér: tál	top300		
+273	H8081	H8081	igen	193	oil	olaj	top300		
+274	H2691	H2691A	igen	191	court	udvar	top300		
+274	H2691	H2691B		191	village	falu	top300		
+275	H0929	H0929	igen	190	animal	állat	top300		
+276	H7311	H7311A	igen	190	to exalt	felmagasztalni	top300		
+276	H7311	H7311B		190	be rotten	megrothadni	top300		
+277	H7626	H7626G		190	tribe: staff	törzs: bot	top300		
+277	H7626	H7626H	igen	190	tribe	törzs	top300		
+277	H7626	H7626I		190	tribe: javelin	törzs: dárda	top300		
+277	H7626	H7626J		190	tribe: ruler	törzs: uralkodó	top300		
+278	H7453	H7453	igen	188	neighbor	felebarát	top300		
+279	H0352	H0352A	igen	187	ram	kos	top300		
+279	H0352	H0352B		187	pillar	oszlop	top300		
+279	H0352	H0352C		187	leader	vezér	top300		
+279	H0352	H0352D		187	terebinth	terebinthus	top300		
+280	H0241	H0241G	igen	187	ear	fül	top300		
+280	H0241	H0241H		187	ear: hearing	fül: hallás	top300		
+280	H0241	H0241I		187	ear: to ears	fül: valaki füle hallatára	top300		
+281	H5612	H5612A		186	scroll: document	tekercs: okirat	top300+kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő	
+281	H5612	H5612B	igen	186	scroll	tekercs	top300		
+281	H5612	H5612H		186	scroll: book	tekercs: könyv	top300		
+281	H5612	H5612I		186	scroll: read	tekercs: olvasni	top300		
+282	H1540	H1540G		186	Heglam	Heglam	top300+kiemelt	a fordító bizonytalan (? a megjegyzésben)	
+282	H1540	H1540H	igen	186	to reveal: reveal	kinyilatkoztatni: feltárni	top300		
+282	H1540	H1540I		186	to reveal: uncover	kinyilatkoztatni: leleplezni	top300		
+282	H1540	H1540J		186	to reveal: proclaim	kinyilatkoztatni: hirdetni	top300		
+282	H1540	H1540K		186	to reveal: remove	kinyilatkoztatni: eltávolítani	top300		
+283	H7650	H7650	igen	186	to swear	esküdni	top300		
+284	H0006	H0006	igen	184	to perish	elveszni	top300		
+285	H1241	H1241	igen	183	cattle	marha	top300		
+286	H7223	H7223G	igen	182	first	első	top300		
+286	H7223	H7223H		182	first: previous	első: előző	top300		
+286	H7223	H7223I		182	first: chief	első: főnök	top300		
+287	H3383	H3383	igen	182	Jordan	Jordán	top300		
+288	H4687	H4687	igen	182	commandment	parancsolat	top300		
+289	H4124	H4124G	igen	181	Moab	Moáb	top300		
+289	H4124	H4124H		181	Moab	Moáb	top300		
+289	H4124	H4124I		181	(Plains of) Moab	(Moáb) síkjai	top300		
+290	H0669	H0669G	igen	180	Ephraim	Efraim	top300		
+290	H0669	H0669H		180	Ephraim (Gate)	Efraim (kapu)	top300		
+290	H0669	H0669I		180	Ephraim (Gate)	Efraim (kapu)	top300		
+290	H0669	H0669J		180	(Mount) Ephraim	(Efraim) hegye	top300		
+290	H0669	H0669K		180	(Forest of) Ephraim	(Efraim) erdeje	top300		
+290	H0669	H0669L		180	Ephraim	Efraim	top300		
+291	H4430	H4430	igen	180	king	király	top300		
+292	H2205	H2205G		178	old: elder	öreg: vén	top300		
+292	H2205	H2205H	igen	178	old	öreg	top300		
+293	H7462	H7462A		177	House of Shepherds	A pásztorok háza	top300		
+293	H7462	H7462B	igen	177	to pasture	legeltetni	top300		
+293	H7462	H7462C		177	to accompany	kísérni	top300		
+293	H7462	H7462D		177	to befriend	megbarátkozni	top300		
+294	H3898	H3898A	igen	177	to fight	harcolni	top300		
+294	H3898	H3898B		177	to feed on	táplálékul használni	top300		
+295	H6235	H6235	igen	176	ten	tíz	top300		
+296	H8193	H8193G		176	lips	ajkak	top300		
+296	H8193	H8193H	igen	176	lip: words	ajak: szavak	top300		
+296	H8193	H8193I		176	lip: edge	ajak: szél	top300		
+296	H8193	H8193J		176	lip: shore	ajak: part	top300		
+296	H8193	H8193K		176	lip: language	ajak: nyelv	top300		
+297	H0085	H0085	igen	175	Abraham	Ábrahám	top300		
+298	H7970	H7970	igen	173	thirty	harminc	top300		
+299	H7812	H7812	igen	172	to bow	meghajolni	top300		
+300	H6942	H6942G	igen	171	to consecrate: consecate	megszentelni: felszentelni	top300		
+300	H6942	H6942H		171	to consecrate: dedicate	megszentelni: ajánlani	top300		
+300	H6942	H6942I		171	to consecrate: forfeit	megszentelni: elveszíteni	top300		
+300	H6942	H6942J		171	to consecrate: prepare	megszentelni: előkészíteni	top300		
+300	H6942	H6942K		171	to consecrate: holiness	megszentelni: szentség	top300		
+	H1056	H1056	igen	1	(Tophet of) Baca	Baka (Tófet)	kiemelt	a fordító bizonytalan (? a megjegyzésben)	
+	H1180	H1180	igen	1	Baal	Baáli	kiemelt	a fordító bizonytalan (? a megjegyzésben)	
+	H1197	H1197A	igen	94	to burn: burn	égni: égetni	kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő	
+	H1350	H1350A	igen	104	to redeem: redeem	megváltani: kiváltani	kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő	
+	H1354	H1354	igen	13	back/rim/brow	hát/perem/gerinc	kiemelt	a fordító bizonytalan (? a megjegyzésben)	
+	H1361	H1361	igen	34	to exult	ujjongani	kiemelt	a fordító bizonytalan (? a megjegyzésben)	
+	H1984	H1984B	igen	165	to boast: praise	dicsekedni: dicsérni	kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő	
+	H2051	H2051	igen	1	casks	hordók	kiemelt	a fordító bizonytalan (? a megjegyzésben)	
+	H2342	H2342A	igen	58	to twist: tremble	csavarodni: remegni	kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő	
+	H2470	H2470A	igen	76	be weak: weak	gyengének lenni: gyenge	kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő	
+	H2490	H2490C		143	to profane/begin: begin	gyalázni/kezdeni: kezdeni	kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő	
+	H2491	H2491A	igen	94	slain: killed	megölt: legyilkolt	kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő	
+	H3104	H3104	igen	27	jubilee/horn	kos/kürt	kiemelt	a rögzített „kos/kürt” hibás; javasolt: „jubileum/kürt”	
+	H4060	H4060G		55	`great stature`	nagy termet	kiemelt	a fordító bizonytalan (? a megjegyzésben)	
+	H4578	H4578	igen	32	belly	belső	kiemelt	a rögzített „belső” helyett „has” javasolt (gloss: belly)	
+	H4693	H4693	igen	5	Egypt	Mizraim	kiemelt	a fordító bizonytalan (? a megjegyzésben)	
+	H4970	H4970	igen	43	how	hogyan	kiemelt	a fordító bizonytalan (? a megjegyzésben)	
+	H5158	H5158A	igen	141	torrent: river	patak: folyó	kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő	
+	H5289	H5289	igen	1	newborn	újszülött	kiemelt	a fordító bizonytalan (? a megjegyzésben)	
+	H5937	H5937	igen	16	to exult	ujjongani	kiemelt	a fordító bizonytalan (? a megjegyzésben)	
+	H6114	H6114	igen	1	magistrate	elöljáró	kiemelt	a fordító bizonytalan (? a megjegyzésben)	
+	H6424	H6424	igen	6	to envy	irigykedni	kiemelt	a fordító bizonytalan (? a megjegyzésben)	
+	H6924	H6924G	igen	87	front: east	elöl: kelet	kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő	
+	H6999	H6999A	igen	116	to offer: burn	áldozni: elégetni	kiemelt	a kontextus 90 karakter volt (200 helyett); a homonima-megkülönböztetés ellenőrzendő	
+	H8577	H8577M		28	serpent: snake	kígyó: kígyó	kiemelt	a rögzített „kígyó: kígyó” helyett „sárkány: kígyó” javasolt	
+	H9007	H9007	igen	139	which/that	amely/hogy	kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+	H9014	H9014	igen	8	[-]	[kötőjel]	kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+	H9027	H9027	igen	16	your	-tok/-tek (női)	kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+	H9029	H9029	igen	135	their	-uk/-ük (női)	kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+	H9037	H9037	igen	2	you	titeket (női)	kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+	H9039	H9039	igen	115	them	őket (női)	kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+	H9041	H9041	igen	166	you	te (alany)	kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+	H9042	H9042	igen	29	you	te (alany, női)	kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+	H9044	H9044	igen	44	she	ő (alany, női)	kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+	H9045	H9045	igen	26	we	-nk	kiemelt	a rögzített „-nk” hibás; javasolt: „mi (alany)”	
+	H9046	H9046	igen	80	you	ti (alany)	kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+	H9047	H9047	igen	1	you	ti (alany, női)	kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	
+	H9049	H9049	igen	9	they	ők (alany, női)	kiemelt	H90xx utótag-csoport: egységes forma kell (F140.23 d)	

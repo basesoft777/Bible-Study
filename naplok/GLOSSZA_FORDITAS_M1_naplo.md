@@ -1,6 +1,6 @@
 # GLOSSZA_FORDITAS — M1 napló (folyamatban)
 
-*F140 (#140) · M1 · a fordító modell: `claude-sonnet-5-5` (a `modell` mezőben a session saját környezetéből vett név) · állapot: **fut, folytatandó***
+*F140 (#140) · M1 · a fordító modell: `claude-sonnet-5-5` (a `modell` mezőben a session saját környezetéből vett név) · állapot: **az M1 kész (11 677 / 11 677); az M2 átnézési lista a `GLOSSZA_FORDITAS_atnezes.tsv`-ben***
 
 Proveniencia: `scope=konkordancia/TBESH.txt + konkordancia/Strong_szotar.tsv + konkordancia/TAHOT_kivonat.tsv + adat/glosszak_heber_hu.tsv | forras=helyi-futtatas (eszkozok/glossza_forditas.py --ellenoriz) | ts=2026-10-25`.
 
