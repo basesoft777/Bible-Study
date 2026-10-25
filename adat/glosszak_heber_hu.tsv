@@ -8,6 +8,7 @@ H0008	H0008		igen	destruction	a1ea5461c70014e5c7cb6ddff30988ca62142804	pusztulá
 H0012	H0012		igen	destruction	a1ea5461c70014e5c7cb6ddff30988ca62142804	pusztulás	sonnet	claude-sonnet-5-5	2026-10-25	
 H0013	H0013		igen	destruction	a1ea5461c70014e5c7cb6ddff30988ca62142804	pusztulás	sonnet	claude-sonnet-5-5	2026-10-25	
 H0014	H0014		igen	be willing	2215b074f4f62d10b5fac3239e041b608ec48da2	hajlandónak lenni	sonnet	claude-sonnet-5-5	2026-10-25	
+H0024	H0024		igen	Abib	edacd0ce1942df3e61e5eeb6b0813560a1e9d87e	Ábib	sonnet	claude-sonnet-5-5	2026-10-25	
 H0026	H0026G		igen	Abigail	cbd1cabda875a8c39a21f1bbf8f6237542855c6d	Abigail	sonnet	claude-sonnet-5-5	2026-10-25	
 H0026	H0026H			Abigail	cbd1cabda875a8c39a21f1bbf8f6237542855c6d	Abigail	sonnet	claude-sonnet-5-5	2026-10-25	
 H0029	H0029G		igen	Abijah	ec46e9152a546e0027aa973711a6575798718f71	Abija	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -39,12 +40,14 @@ H0052	H0052		igen	Abishai	2dd0871d794dcedcf4e9076573d2facd0787ba74	Abisai	sonnet
 H0053	H0053		igen	Absalom	c998a00a7121c097f0ef7c80d69d94dd073f922f	Absolon	sonnet	claude-sonnet-5-5	2026-10-25	
 H0054	H0054		igen	Abiathar	2fac17d7490407424a8d782a33d690e0cc10490c	Ebjátár	sonnet	claude-sonnet-5-5	2026-10-25	
 H0056	H0056		igen	to mourn	a6a8418b352c11aaa413b21a078a8d070b144982	gyászolni	sonnet	claude-sonnet-5-5	2026-10-25	
+H0057	H0057		igen	mourning	8052957f238d49ef471956a49f0755d327115880	gyászoló	sonnet	claude-sonnet-5-5	2026-10-25	
 H0060	H0060		igen	mourning	8052957f238d49ef471956a49f0755d327115880	gyász	sonnet	claude-sonnet-5-5	2026-10-25	
 H0061	H0061		igen	truly	90099b2e34aa9d96304e9cb4c2b9ae07073445c0	bizony	sonnet	claude-sonnet-5-5	2026-10-25	
 H0062	H0062		igen	Abel-beth-maachah	8a4d77227eb7214e2ca70acf41bbd15825942183	Ábel-Béth-Maaká	sonnet	claude-sonnet-5-5	2026-10-25	
 H0068	H0068G	a Meaning of		stone	e30bfd0c38dca4ae75091549a8a74cf9ce38db16	kő	sonnet	claude-sonnet-5-5	2026-10-25	
 H0068	H0068H		igen	stone: weight	b877a199f0011532f86ee65bc6bf3eaabd369613	kő: súly	sonnet	claude-sonnet-5-5	2026-10-25	
 H0068	H0068I	a Part of		(Zoheleth) Stone	70af0f0254d50f29675e94e947ff72de46bafe3e	(Zohelet) köve	sonnet	claude-sonnet-5-5	2026-10-25	
+H0069	H0069	in Aramaic of	igen	stone	e30bfd0c38dca4ae75091549a8a74cf9ce38db16	kő	sonnet	claude-sonnet-5-5	2026-10-25	
 H0070	H0070		igen	wheel	3a7195d99bee6bb15aacf02a10d56b4cbd65b1fe	kerék	sonnet	claude-sonnet-5-5	2026-10-25	
 H0073	H0073		igen	girdle	d7a13fa92f2dbdbc5a8f0d8ffdf14ef687aa4dc8	öv	sonnet	claude-sonnet-5-5	2026-10-25	
 H0074	H0074		igen	Abner	df809354878af890f48e740b633133727724c92d	Abnér	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -54,6 +57,8 @@ H0082	H0082		igen	to fly	949723bba15157e206ff73ffac32ba7892ec545a	repülni	sonne
 H0085	H0085		igen	Abraham	1a52173707ec6b114ffc8b33be3043eca43f2eb4	Ábrahám	sonnet	claude-sonnet-5-5	2026-10-25	
 H0086	H0086		igen	to bow	d1558903b9d39253727ffe154ba21aa64bc8f47f	meghajolni	sonnet	claude-sonnet-5-5	2026-10-25	
 H0087	H0087	a Name of	igen	Abram	536ae001803cfc0c8e7fc03a918d830b9dbee749	Ábrám	sonnet	claude-sonnet-5-5	2026-10-25	
+H0090	H0090G		igen	Agag	559311ed916047bbab1a272442bf607b56ef9e3b	Agág	sonnet	claude-sonnet-5-5	2026-10-25	
+H0090	H0090H			Agag	559311ed916047bbab1a272442bf607b56ef9e3b	Agág	sonnet	claude-sonnet-5-5	2026-10-25	
 H0098	H0098		igen	pool	51a4b13bc79072fe3da6e4a7ccc98d7556ecd171	tó	sonnet	claude-sonnet-5-5	2026-10-25	
 H0102	H0102		igen	band	2502deb44ba556abc83784f27250dcd7bbaebc0f	csapat	sonnet	claude-sonnet-5-5	2026-10-25	
 H0103	H0103		igen	to gather	1e5923fc41602124e50fbd706a421d85c92a8d0d	összegyűjteni	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -84,6 +89,8 @@ H0136	H0136	a Name of	igen	Lord	46b4a42ed2fcd776d8a789054c32841204402119	Úr	son
 H0138	H0138G		igen	Adonijah	a6ab8f4185b5f96d671b7b06207199c8fa578b25	Adónijá	sonnet	claude-sonnet-5-5	2026-10-25	
 H0138	H0138H			Adonijah	a6ab8f4185b5f96d671b7b06207199c8fa578b25	Adónijá	sonnet	claude-sonnet-5-5	2026-10-25	
 H0138	H0138I			Adonijah	a6ab8f4185b5f96d671b7b06207199c8fa578b25	Adónijá	sonnet	claude-sonnet-5-5	2026-10-25	
+H0143	H0143		igen	Adar	0dbb15026385d5ca33398ae2b48f044d1c68aae9	Adár	sonnet	claude-sonnet-5-5	2026-10-25	
+H0154	H0154		igen	Edrei	f46d2b3c8e9d3a8731d0245b1585d490991a8e30	Edrei	sonnet	claude-sonnet-5-5	2026-10-25	
 H0155	H0155		igen	clothing	73a98bdea9da87d3b52e52328872742af1184d58	ruházat	sonnet	claude-sonnet-5-5	2026-10-25	
 H0157	H0157G		igen	to love: lover	d73fb1b5d7d6e5b7c46f11756c30488e18225959	szeretni: szerető	sonnet	claude-sonnet-5-5	2026-10-25	
 H0157	H0157H	a Meaning of		to love: friend	92c988770ec7f06fbed2d89eee719a1223c8ddad	szeretni: barát	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -96,6 +103,9 @@ H0165	H0165		igen	where?	4bfc973915b15c34d41266101ffd5292e6935cd7	hol (kérdő)	
 H0166	H0166		igen	to shine	36508477eec6b31a270c0658d1e5a66cc09cefe2	ragyogni	sonnet	claude-sonnet-5-5	2026-10-25	
 H0168	H0168G		igen	tent	899343d863ff08ecfb0e8f420d43a1a9366b53b5	sátor	sonnet	claude-sonnet-5-5	2026-10-25	
 H0168	H0168H	a Meaning of		tent: home	ca90f00675469c3c1b2af157b74f855b82568772	sátor: otthon	sonnet	claude-sonnet-5-5	2026-10-25	
+H0173	H0173G		igen	Oholibamah	222a141b4790e3df169ec857f205377d4fbd7afc	Oholibáma	sonnet	claude-sonnet-5-5	2026-10-25	
+H0173	H0173H			Oholibamah	222a141b4790e3df169ec857f205377d4fbd7afc	Oholibáma	sonnet	claude-sonnet-5-5	2026-10-25	
+H0173	H0173I			Oholibamah	222a141b4790e3df169ec857f205377d4fbd7afc	Oholibáma	sonnet	claude-sonnet-5-5	2026-10-25	
 H0175	H0175		igen	Aaron	afafb738461b35f1eb36194c21cb463113dfced4	Áron	sonnet	claude-sonnet-5-5	2026-10-25	
 H0176	H0176A		igen	or	1758356db21759f7c5a0da9b4dd1db8fd6feab3f	vagy	sonnet	claude-sonnet-5-5	2026-10-25	
 H0176	H0176B			desire	c3c84bf0c498946f97959101e536652e6353eb59	vágy	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -119,6 +129,7 @@ H0200	H0200		igen	folly	cdfd63c0c3220c6f06c3fe47f73dd7d987f0574a	bolondság	sonn
 H0202	H0202		igen	strength	57a4e7ca7f6cbd2eaf2a37fa426511c4055c84e7	erő	sonnet	claude-sonnet-5-5	2026-10-25	
 H0205	H0205G		igen	evil: wickedness	cb473f671d2e465f286bfced56acb167d8be08e5	gonosz: gonoszság	sonnet	claude-sonnet-5-5	2026-10-25	
 H0205	H0205H	a Meaning of		evil: trouble	f5a51dfefcafbcd6e7e0acdcb95317600c7743cf	gonosz: baj	sonnet	claude-sonnet-5-5	2026-10-25	
+H0209	H0209		igen	Onan	16cd0284636294cf1aab08359060729af7e27726	Ónán	sonnet	claude-sonnet-5-5	2026-10-25	
 H0211	H0211G		igen	Ophir	0323b2d911d1709f9019f697f375ac1002a6ef29	Ófir	sonnet	claude-sonnet-5-5	2026-10-25	
 H0211	H0211H			Ophir	0323b2d911d1709f9019f697f375ac1002a6ef29	Ófir	sonnet	claude-sonnet-5-5	2026-10-25	
 H0212	H0212		igen	wheel	3a7195d99bee6bb15aacf02a10d56b4cbd65b1fe	kerék	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -129,11 +140,15 @@ H0216	H0216		igen	light	dfccc06f14414bff5a59be7fc90abf4404b47fc8	fény	sonnet	cl
 H0217	H0217A		igen	flame	f41c19c580f7b5b2914d71b45b593282066b6ab4	láng	sonnet	claude-sonnet-5-5	2026-10-25	
 H0217	H0217B			flame	f41c19c580f7b5b2914d71b45b593282066b6ab4	láng	sonnet	claude-sonnet-5-5	2026-10-25	
 H0219	H0219A		igen	light	dfccc06f14414bff5a59be7fc90abf4404b47fc8	fény	sonnet	claude-sonnet-5-5	2026-10-25	
+H0221	H0221G		igen	Uri	7784ac6f7e8508f6d9265f8fc27cc2b91221c3cb	Úri	sonnet	claude-sonnet-5-5	2026-10-25	
+H0221	H0221H			Uri	7784ac6f7e8508f6d9265f8fc27cc2b91221c3cb	Úri	sonnet	claude-sonnet-5-5	2026-10-25	
+H0221	H0221I			Uri	7784ac6f7e8508f6d9265f8fc27cc2b91221c3cb	Úri	sonnet	claude-sonnet-5-5	2026-10-25	
 H0223	H0223A		igen	Uriah	577166c3ad1429f6507140c953f2333158cf5aa4	Uriás	sonnet	claude-sonnet-5-5	2026-10-25	
 H0223	H0223B			Uriah	577166c3ad1429f6507140c953f2333158cf5aa4	Uriás	sonnet	claude-sonnet-5-5	2026-10-25	
 H0223	H0223G			Uriah	577166c3ad1429f6507140c953f2333158cf5aa4	Uriás	sonnet	claude-sonnet-5-5	2026-10-25	
 H0223	H0223H			Uriah	577166c3ad1429f6507140c953f2333158cf5aa4	Uriás	sonnet	claude-sonnet-5-5	2026-10-25	
 H0223	H0223I			Uriah	577166c3ad1429f6507140c953f2333158cf5aa4	Uriás	sonnet	claude-sonnet-5-5	2026-10-25	
+H0224	H0224		igen	Urim	f6e7b635c8d3d769e35d1b608e76ba1a3688e007	Urim	sonnet	claude-sonnet-5-5	2026-10-25	
 H0226	H0226G		igen	sign: miraculous	ebdd86e071cbcc0b235b61e62bf20ff8d43bf3a4	jel: csodás	sonnet	claude-sonnet-5-5	2026-10-25	
 H0226	H0226H	a Meaning of		sign:  indicator	fed3d9b53d0b61210e5b16c84e852734d6ef90fd	jel: mutató	sonnet	claude-sonnet-5-5	2026-10-25	
 H0227	H0227A		igen	then	6f8f8e9f767353d846d34ea5a451c83849c1b01b	akkor	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -193,6 +208,8 @@ H0319	H0319		igen	end	7a92f3d26362d6557d5701de77a63a01df61e57f	vég	sonnet	claud
 H0322	H0322		igen	backwards	c1d90f6ed95de8b2f849cb8fba9cb0695ea047bb	hátrafelé	sonnet	claude-sonnet-5-5	2026-10-25	
 H0324	H0324	in Aramaic of	igen	satrap	863c97c971032ba8ab7794748dfd2926260d4e7a	satrapa	sonnet	claude-sonnet-5-5	2026-10-25	
 H0325	H0325		igen	Ahasuerus	f95f3de51627dce7047b409f72efd14651245d7b	Aháziverós	sonnet	claude-sonnet-5-5	2026-10-25	
+H0330	H0330		igen	fine linen	1f25b8390a33ca37d56f6ec7c71caa91e8ca1b7c	patyolat	sonnet	claude-sonnet-5-5	2026-10-25	
+H0331	H0331		igen	to shutter	b26449254cc2e71b8ac9f1bdc3d976437a35e737	bezárni	sonnet	claude-sonnet-5-5	2026-10-25	
 H0332	H0332		igen	to shut	2a67c24294f5a76fad987069f1ec098001dd0cda	bezárni	sonnet	claude-sonnet-5-5	2026-10-25	
 H0335	H0335		igen	where?	4bfc973915b15c34d41266101ffd5292e6935cd7	hová (kérdő)	sonnet	claude-sonnet-5-5	2026-10-25	
 H0336	H0336		igen	not	557f255516719ea16f8f4a0aae1166054e2c9b43	nem	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -215,6 +232,8 @@ H0353	H0353		igen	strength	57a4e7ca7f6cbd2eaf2a37fa426511c4055c84e7	erő	sonnet	
 H0354	H0354		igen	deer	f6f4ab7964bbf41d6b2d0d7dbbaa56afdd2f6790	szarvas	sonnet	claude-sonnet-5-5	2026-10-25	
 H0355	H0355		igen	doe	d6b4e84ee7f31d88617a6b60421451272ebf1a3a	szarvastehén	sonnet	claude-sonnet-5-5	2026-10-25	
 H0357	H0357		igen	Aijalon	f3d1f195cddd3ed6a815fe365e51eec5adc1ebce	Ajjalón	sonnet	claude-sonnet-5-5	2026-10-25	
+H0359	H0359A		igen	Elath	5c93737a1fa6c49ba278dc426a9d21ed1405d41e	Elát	sonnet	claude-sonnet-5-5	2026-10-25	
+H0359	H0359B	a Spelling of		Eloth	7a40b122b077d9e0cee8516970aaff881ea8aa92	Elót	sonnet	claude-sonnet-5-5	2026-10-25	
 H0361	H0361		igen	arches	fefd19cf92f05cd92e1448c9de848489ab8f4c2d	csarnok	sonnet	claude-sonnet-5-5	2026-10-25	
 H0365	H0365	a Spelling of	igen	doe	d6b4e84ee7f31d88617a6b60421451272ebf1a3a	szarvastehén	sonnet	claude-sonnet-5-5	2026-10-25	
 H0367	H0367		igen	terror	10f9bb8fa0db73b6aa111df49a1d20db9da9a563	rettegés	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -229,7 +248,13 @@ H0378	H0378		igen	Ish-bosheth	bff16de624671abd2c0034d480b181aeb4c5009a	Isbóset	
 H0383	H0383	in Aramaic of	igen	there is	aa37b79c26f7fb2d533ea43c1d25c738a2ec8674	van	sonnet	claude-sonnet-5-5	2026-10-25	
 H0385	H0385		igen	Ithamar	4a8673e2415c692b77c3709865c8f8abcfc28d4f	Itamár	sonnet	claude-sonnet-5-5	2026-10-25	
 H0386	H0386		igen	strong	0117691d0201f04aa02f586b774c190802d47d8c	erős	sonnet	claude-sonnet-5-5	2026-10-25	
+H0387	H0387G		igen	Ethan	2f8f37e09f76ed80027cc8f15aa23ecbff0e8cca	Étán	sonnet	claude-sonnet-5-5	2026-10-25	
+H0387	H0387H			Ethan	2f8f37e09f76ed80027cc8f15aa23ecbff0e8cca	Étán	sonnet	claude-sonnet-5-5	2026-10-25	
+H0387	H0387I	a Name of		Ethan	2f8f37e09f76ed80027cc8f15aa23ecbff0e8cca	Étán	sonnet	claude-sonnet-5-5	2026-10-25	
+H0387	H0387J	a Name of		Ethan	2f8f37e09f76ed80027cc8f15aa23ecbff0e8cca	Étán	sonnet	claude-sonnet-5-5	2026-10-25	
 H0389	H0389		igen	surely	e058f812ae6ba9f4aa581e82048cd53f34d1b573	bizony	sonnet	claude-sonnet-5-5	2026-10-25	
+H0393	H0393		igen	cruel	eccec79ca9961fb746226c832e1ae62d68cf6141	kegyetlen	sonnet	claude-sonnet-5-5	2026-10-25	
+H0394	H0394		igen	cruel	eccec79ca9961fb746226c832e1ae62d68cf6141	kegyetlen	sonnet	claude-sonnet-5-5	2026-10-25	
 H0396	H0396		igen	food	39ccb32d95edfdbcd882f2b01809724ec640ea16	étel	sonnet	claude-sonnet-5-5	2026-10-25	
 H0397	H0397		igen	Achish	9c788a105eed1cc7bd9f18bc63553c412f1190fb	Ákis	sonnet	claude-sonnet-5-5	2026-10-25	
 H0398	H0398		igen	to eat	c3f26f4280129f4a4d87dfbdb2b69453dd21eff7	enni	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -260,6 +285,7 @@ H0425	H0425J			Elah	1a7c9ccb63479e904df40e444ec171fb6660334d	Éla	sonnet	claude-
 H0425	H0425K			Elah	1a7c9ccb63479e904df40e444ec171fb6660334d	Éla	sonnet	claude-sonnet-5-5	2026-10-25	
 H0425	H0425L			(Valley of) Elah	279f3193a7f8283ccfdb6da8534907292475db1a	(Éla) völgye	sonnet	claude-sonnet-5-5	2026-10-25	
 H0426	H0426	in Aramaic of	igen	god	21298df8a3277357ee55b01df9530b535cf08ec1	isten	sonnet	claude-sonnet-5-5	2026-10-25	
+H0427	H0427		igen	oak	d9bf71cd4fa116691c5e17f4b0fe7778b25670ab	tölgy	sonnet	claude-sonnet-5-5	2026-10-25	
 H0428	H0428		igen	these	81b781d39d62e9d0e272e181ce7802af3f0f94f7	ezek	sonnet	claude-sonnet-5-5	2026-10-25	
 H0429	H0429	in Aramaic of	igen	these	81b781d39d62e9d0e272e181ce7802af3f0f94f7	ezek	sonnet	claude-sonnet-5-5	2026-10-25	
 H0430	H0430G	a Name of	igen	God	50cc1540e7fa0b242d65b97ecc875d96f0e9c452	Isten	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -269,6 +295,7 @@ H0433	H0433		igen	god	21298df8a3277357ee55b01df9530b535cf08ec1	isten	sonnet	clau
 H0434	H0434		igen	worthless	7f570751cdfef4389d3895e38d1328435104576a	haszontalan	sonnet	claude-sonnet-5-5	2026-10-25	
 H0436	H0436G	a Part of		(Diviners') Oak	7055678e1046dd8daf9650b41da1c8ccec5f4b6a	(Jósok) tölgye	sonnet	claude-sonnet-5-5	2026-10-25	
 H0436	H0436H		igen	terebinth	23690360751201429d05dc6f759f04005113e8c0	terebinthus	sonnet	claude-sonnet-5-5	2026-10-25	
+H0437	H0437		igen	oak	d9bf71cd4fa116691c5e17f4b0fe7778b25670ab	tölgy	sonnet	claude-sonnet-5-5	2026-10-25	
 H0441	H0441A			tame	9e7255c0e051bee67fe3745c43b0f6cfcc2878c0	szelíd	sonnet	claude-sonnet-5-5	2026-10-25	
 H0441	H0441B		igen	chief	c4b038d0316060f704c271350dae0f568717db26	főnök	sonnet	claude-sonnet-5-5	2026-10-25	
 H0446	H0446G		igen	Eliab	1dab97e8d8b15fdd933d33b1285f3c9cf4e4e14a	Eliáb	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -366,6 +393,7 @@ H0511	H0511K			Elkanah	2ab94e037b0220d46eff80c4fe375b53cd01e795	Elkána	sonnet	c
 H0511	H0511L			Elkanah	2ab94e037b0220d46eff80c4fe375b53cd01e795	Elkána	sonnet	claude-sonnet-5-5	2026-10-25	
 H0511	H0511M			Elkanah	2ab94e037b0220d46eff80c4fe375b53cd01e795	Elkána	sonnet	claude-sonnet-5-5	2026-10-25	
 H0511	H0511N			Elkanah	2ab94e037b0220d46eff80c4fe375b53cd01e795	Elkána	sonnet	claude-sonnet-5-5	2026-10-25	
+H0516	H0516		igen	Do Not Destroy	bf9e43c166e01322bc9ff289f19ce51b1bb71dc1	Ne pusztítsd el	sonnet	claude-sonnet-5-5	2026-10-25	
 H0517	H0517		igen	mother	5116e40694ac48f654cb7b6816177e0e717237c6	anya	sonnet	claude-sonnet-5-5	2026-10-25	
 H0518	H0518A		igen	if	958f57f57d72a30f329ee5538f21b0257a49a46e	ha	sonnet	claude-sonnet-5-5	2026-10-25	
 H0518	H0518B	a Part of		if: except	d3ea94495fe830aca96d8ae1bad1e3eb9e6f864b	ha: kivéve	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -375,9 +403,11 @@ H0518	H0518J	a Meaning of		if: until	da94567efe337d37cedb021153d8c8ff768cdf06	ha
 H0519	H0519		igen	maidservant	e4dc38a0ea090cc806451c5fda4eb060ece0f843	szolgálóleány	sonnet	claude-sonnet-5-5	2026-10-25	
 H0520	H0520A		igen	cubit	9ac62f73e5ba1904dd47f63854a6765a656b1e1b	sing (hosszmérték)	sonnet	claude-sonnet-5-5	2026-10-25	
 H0520	H0520B			foundation	ec9624c80320be0ef1881f7609ff06e973b43e5a	alap	sonnet	claude-sonnet-5-5	2026-10-25	
+H0524	H0524	in Aramaic of	igen	people	ab3ccc8dba2a0cf7a1ce4d830bb8a6238ff03833	nép	sonnet	claude-sonnet-5-5	2026-10-25	
 H0526	H0526G		igen	Amon	bdb679839d5629b469f1fdf85c25f67c2ca0ccfb	Ámon	sonnet	claude-sonnet-5-5	2026-10-25	
 H0526	H0526H			Amon	bdb679839d5629b469f1fdf85c25f67c2ca0ccfb	Ámon	sonnet	claude-sonnet-5-5	2026-10-25	
 H0526	H0526I	a Name of		Amon	bdb679839d5629b469f1fdf85c25f67c2ca0ccfb	Ámon	sonnet	claude-sonnet-5-5	2026-10-25	
+H0529	H0529		igen	faithful	9bfdd8b52bec6cbd77ebb79ee25fde35ab527870	hűséges	sonnet	claude-sonnet-5-5	2026-10-25	
 H0530	H0530		igen	faithfulness	c31e65d926330a187bad49930c38af47b95b39af	hűség	sonnet	claude-sonnet-5-5	2026-10-25	
 H0531	H0531		igen	Amoz	48712ac184353405c83eba52810498144877a579	Ámóc	sonnet	claude-sonnet-5-5	2026-10-25	
 H0533	H0533		igen	strong	0117691d0201f04aa02f586b774c190802d47d8c	erős	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -487,6 +517,7 @@ H0693	H0693		igen	to ambush	f0a0d83c2bfb6c4ae397bcb1a6a5b119d9f2db1d	leselkedni	
 H0697	H0697		igen	locust	f77cf558c6b4dbb0036a7038625a513ee141ab1b	sáska	sonnet	claude-sonnet-5-5	2026-10-25	
 H0699	H0699		igen	window	320ad267d8d969f285eda5c184f5455bd29c8c95	ablak	sonnet	claude-sonnet-5-5	2026-10-25	
 H0702	H0702		igen	four	9f8f7eec5dea5ac43738721939c120318cbff1df	négy	sonnet	claude-sonnet-5-5	2026-10-25	
+H0703	H0703	in Aramaic of	igen	four	9f8f7eec5dea5ac43738721939c120318cbff1df	négy	sonnet	claude-sonnet-5-5	2026-10-25	
 H0705	H0705		igen	forty	88ddff0da7c9c2be0e47c8aa8165964f36aae93c	negyven	sonnet	claude-sonnet-5-5	2026-10-25	
 H0707	H0707		igen	to weave	385bb470d17ed72638944d63373ee74d49015594	szőni	sonnet	claude-sonnet-5-5	2026-10-25	
 H0710	H0710		igen	purple	afaed75406bd414820cea4a5119f90c259c05755	bíbor	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -573,8 +604,10 @@ H0860	H0860		igen	she-ass	896d453cfd40dbd92803d3230124d458b8d5a140	szamárkanca	
 H0861	H0861		igen	furnace	8d578a640422796ea80726b6029feff3da109d49	kemence	sonnet	claude-sonnet-5-5	2026-10-25	
 H0863	H0863G		igen	Ittai	6b66160f6330d62b4d6f168936fad0a38f5dbd7d	Ittai	sonnet	claude-sonnet-5-5	2026-10-25	
 H0863	H0863H			Ittai	6b66160f6330d62b4d6f168936fad0a38f5dbd7d	Ittai	sonnet	claude-sonnet-5-5	2026-10-25	
+H0865	H0865		igen	previously	3523c6c11bfc6a24908e0e8c4549d17dde1f8106	előbb	sonnet	claude-sonnet-5-5	2026-10-25	
 H0866	H0866		igen	wages	32b2f2ce0381e1dde30e6ba90fcd64631063af83	bér	sonnet	claude-sonnet-5-5	2026-10-25	
 H0868	H0868		igen	wages	32b2f2ce0381e1dde30e6ba90fcd64631063af83	bér	sonnet	claude-sonnet-5-5	2026-10-25	
+H0870	H0870		igen	place	9da8f1fa7d3a9fd015ae3c831a765e25ae03e4d7	hely	sonnet	claude-sonnet-5-5	2026-10-25	
 H0875	H0875		igen	well	bd8483287459b73c55c2d0cff873a2588e82ad7a	kút	sonnet	claude-sonnet-5-5	2026-10-25	
 H0883	H0883		igen	Beer-lahai-roi	3f52faf09c80345691756789aeb44006277da7e2	Beér-Lahaj-Rói	sonnet	claude-sonnet-5-5	2026-10-25	
 H0884	H0884		igen	Beersheba	9449597f848ffb1bb734e49cd72273ea18c12f0f	Beérséba	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -613,6 +646,7 @@ H0935	H0935P	a Meaning of		to come (in): bring	71c189603dc7328490aa445c0f69adcb4
 H0936	H0936		igen	to despise	bc56f93e2d11d4fb0dfb9645f8a2ec9c7c40a9ee	megvetni	sonnet	claude-sonnet-5-5	2026-10-25	
 H0937	H0937		igen	contempt	f8be79ed7e4399f0ca55090da4c1ab97e8cd5a18	megvetés	sonnet	claude-sonnet-5-5	2026-10-25	
 H0947	H0947		igen	to trample	432fffb04eb338da7034deeedb5e31ab357ecd58	eltaposni	sonnet	claude-sonnet-5-5	2026-10-25	
+H0948	H0948		igen	fine linen	1f25b8390a33ca37d56f6ec7c71caa91e8ca1b7c	patyolat	sonnet	claude-sonnet-5-5	2026-10-25	
 H0953	H0953A		igen	pit	00884428322b305950c6a50314a97c1a288fd28e	verem	sonnet	claude-sonnet-5-5	2026-10-25	
 H0953	H0953B			Cistern	774ea74805b30e918dad0a6a66655fb3d735d401	Ciszterna	sonnet	claude-sonnet-5-5	2026-10-25	
 H0954	H0954		igen	be ashamed	48a59109249ec48ab16c23053a509e74d86b1660	szégyenkezni	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -662,11 +696,16 @@ H1005	H1005	in Aramaic of	igen	house	5be93480bd8b743454a93dca084849202af43af5	h�
 H1007	H1007		igen	Beth-aven	906de51f00bf4b52f64035a31fa184b2c8122f12	Béth-Áven	sonnet	claude-sonnet-5-5	2026-10-25	
 H1008	H1008G		igen	Bethel	ffd50ad2340f32f072d639894531ee493ad80e63	Béthel	sonnet	claude-sonnet-5-5	2026-10-25	
 H1008	H1008H			Bethel	ffd50ad2340f32f072d639894531ee493ad80e63	Béthel	sonnet	claude-sonnet-5-5	2026-10-25	
+H1020	H1020		igen	Beth-jeshimoth	b7d6cd73de776dfc4bb6e65d0000d3a7fe5f431d	Béth-Jesimót	sonnet	claude-sonnet-5-5	2026-10-25	
+H1022	H1022	a group of	igen	Bethlehemite	29808c643802bb30314866aa3cf294a3506f6c2a	betlehemita	sonnet	claude-sonnet-5-5	2026-10-25	
 H1032	H1032G		igen	Beth-horon	57ff597ee7c2cdf46462fcfb020f3ff92f31b815	Béthoron	sonnet	claude-sonnet-5-5	2026-10-25	
 H1032	H1032H			(Upper) Beth-horon	2c997629fe8bb07312f37247c8a6007d2b754114	(Felső) Béthoron	sonnet	claude-sonnet-5-5	2026-10-25	
 H1032	H1032I	a Name of		(Lower) Beth-horon	b75c10a939c7925d3ff057ec38420bd717d09e11	(Alsó) Béthoron	sonnet	claude-sonnet-5-5	2026-10-25	
 H1035	H1035G		igen	Bethlehem	4c40cf387301483e89941a0151d0ea7ed281c785	Betlehem	sonnet	claude-sonnet-5-5	2026-10-25	
 H1035	H1035H			Bethlehem	4c40cf387301483e89941a0151d0ea7ed281c785	Betlehem	sonnet	claude-sonnet-5-5	2026-10-25	
+H1037	H1037		igen	Beth-millo	66dbd16b65419e4235bb49f6a5a2532dd4428c04	Béth-Millo	sonnet	claude-sonnet-5-5	2026-10-25	
+H1047	H1047		igen	Beth-peor	01a4a516da504a7d97b1f62fe90f509d26ab76e7	Béth-Peór	sonnet	claude-sonnet-5-5	2026-10-25	
+H1049	H1049		igen	Beth-zur	e53b73ccb5d63a7a0b99b17e7b6143fdc2b43408	Béth-Cúr	sonnet	claude-sonnet-5-5	2026-10-25	
 H1052	H1052		igen	Beth-shean	ba0c4a44e6786759d3336d189820d41d148dbb39	Bét-Seán	sonnet	claude-sonnet-5-5	2026-10-25	
 H1053	H1053G		igen	Beth-shemesh	0734df86f0bb251726bc906416beb1f1d672bea9	Bét-Semes	sonnet	claude-sonnet-5-5	2026-10-25	
 H1053	H1053H			Beth-shemesh	0734df86f0bb251726bc906416beb1f1d672bea9	Bét-Semes	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -677,6 +716,7 @@ H1060	H1060		igen	firstborn	1337424e46091da725a310d68a9a3aab5fedab86	elsőszül�
 H1061	H1061		igen	firstfruit	90285665cbd99e9ea0a1109ed1fdcfa6b926a648	zsenge	sonnet	claude-sonnet-5-5	2026-10-25	
 H1062	H1062		igen	birthright	83b2d09ec404bfd7dc8ba8518ed8a50a5f7330eb	elsőszülöttség	sonnet	claude-sonnet-5-5	2026-10-25	
 H1065	H1065		igen	weeping	4b1bf2ea4426e1153c59ff7b9a5fd6650977f1bc	sírás	sonnet	claude-sonnet-5-5	2026-10-25	
+H1075	H1075		igen	Bichri	ddf93b99f3fd54b2537830ed90fed4010a0779ff	Bikri	sonnet	claude-sonnet-5-5	2026-10-25	
 H1077	H1077		igen	not	557f255516719ea16f8f4a0aae1166054e2c9b43	nem	sonnet	claude-sonnet-5-5	2026-10-25	
 H1086	H1086		igen	to become old	50a8123973754f0b693d7ec936fe15de98f3e6be	megöregedni	sonnet	claude-sonnet-5-5	2026-10-25	
 H1087	H1087		igen	old	c00dbbc9dadfbe1e232e93a729dd4752fade0abf	öreg	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -684,6 +724,8 @@ H1089	H1089		igen	to trouble	b40d2ba0b2b5a2e702661412e36102ba141d2dd7	megzavarni
 H1090	H1090A		igen	Bilhah	3c780480dec3d0f82fe5f7b9e5dee4205f1efdbd	Bilha	sonnet	claude-sonnet-5-5	2026-10-25	
 H1090	H1090B			Bilhah	3c780480dec3d0f82fe5f7b9e5dee4205f1efdbd	Bilha	sonnet	claude-sonnet-5-5	2026-10-25	
 H1091	H1091		igen	terror	10f9bb8fa0db73b6aa111df49a1d20db9da9a563	rettegés	sonnet	claude-sonnet-5-5	2026-10-25	
+H1095	H1095	in Hebrew of	igen	Belteshazzar	1a22244c395bcd3bfa0a88f0dea9052ac8f8ab52	Beltsazár	sonnet	claude-sonnet-5-5	2026-10-25	
+H1096	H1096	in Aramaic of	igen	Belteshazzar	1a22244c395bcd3bfa0a88f0dea9052ac8f8ab52	Beltsazár	sonnet	claude-sonnet-5-5	2026-10-25	
 H1097	H1097		igen	without	0d4e654c613ea68bffeeab1587b7dbac44826c2b	nélkül	sonnet	claude-sonnet-5-5	2026-10-25	
 H1100	H1100G	a Name of		Belial	277a9c432b836cfb57a3d4f66fa3afdd14fbaf84	Béliál	sonnet	claude-sonnet-5-5	2026-10-25	
 H1100	H1100H	a Meaning of		Belial: destruction	80e79461c275d93647571b4143aa429522f9ec26	Béliál: pusztulás	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -768,10 +810,13 @@ H1168	H1168B			Baal	5dc2b3179376bab74157c431906d27919b74da35	Baál	sonnet	claude
 H1168	H1168G			Baal	5dc2b3179376bab74157c431906d27919b74da35	Baál	sonnet	claude-sonnet-5-5	2026-10-25	
 H1168	H1168H	a Name of		Baal	5dc2b3179376bab74157c431906d27919b74da35	Baál	sonnet	claude-sonnet-5-5	2026-10-25	
 H1168	H1168I	a Part of		(Bamoth)-baal	83702f9de1f5306d55492f641c6d6b65e24ba91c	(Bámót)-Baál	sonnet	claude-sonnet-5-5	2026-10-25	
+H1176	H1176		igen	Baal-zebub	8933b2dd71d6886f1f675bf4908603cb89e6f128	Baál-Zebub	sonnet	claude-sonnet-5-5	2026-10-25	
 H1177	H1177G		igen	Baal-hanan	ee78154f9fe7e0c006823dc3b42ce18db44c934c	Baál-Hanán	sonnet	claude-sonnet-5-5	2026-10-25	
 H1177	H1177H			Baal-hanan	ee78154f9fe7e0c006823dc3b42ce18db44c934c	Baál-Hanán	sonnet	claude-sonnet-5-5	2026-10-25	
 H1180	H1180	a Name of	igen	Baal	5dc2b3179376bab74157c431906d27919b74da35	Baáli	sonnet	claude-sonnet-5-5	2026-10-25	?
+H1186	H1186		igen	Baal-meon	78c30b8805209987a75ff801c09b16c215d46b03	Baál-Meón	sonnet	claude-sonnet-5-5	2026-10-25	
 H1187	H1187	a Name of	igen	Baal of Peor	d9244185ec25f66393aeb39d09767c749f7a500a	Baál-Peór	sonnet	claude-sonnet-5-5	2026-10-25	
+H1188	H1188		igen	Baal-perazim	0f44141b825f1d88d552fe8f43227544ccf9e950	Baál-Perácim	sonnet	claude-sonnet-5-5	2026-10-25	
 H1196	H1196G		igen	Baanah	7225284d634b3c65231a327fe793fcc1eade7aef	Baaná	sonnet	claude-sonnet-5-5	2026-10-25	
 H1196	H1196H			Baanah	7225284d634b3c65231a327fe793fcc1eade7aef	Baaná	sonnet	claude-sonnet-5-5	2026-10-25	
 H1196	H1196I			Baanah	7225284d634b3c65231a327fe793fcc1eade7aef	Baaná	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -784,6 +829,7 @@ H1200	H1200		igen	fire	1da8402449899ec1ba9c34c095dbb79d0585dcd7	tűz	sonnet	clau
 H1201	H1201		igen	Baasha	b7b25f0b794b6a47ee034be930775d5944ca3027	Baása	sonnet	claude-sonnet-5-5	2026-10-25	
 H1204	H1204		igen	to terrify	0a9406d7ccac0a61557f6acae93d46dc0754c2f3	megrémíteni	sonnet	claude-sonnet-5-5	2026-10-25	
 H1205	H1205		igen	terror	10f9bb8fa0db73b6aa111df49a1d20db9da9a563	rettegés	sonnet	claude-sonnet-5-5	2026-10-25	
+H1210	H1210		igen	vintage	0be9098c7e56feb3b53dd88fb275e07ae96c7738	szüret	sonnet	claude-sonnet-5-5	2026-10-25	
 H1212	H1212G		igen	Bezalel	d0123916f040ec9a55dce275ab34b06fdcf8dbd5	Becálél	sonnet	claude-sonnet-5-5	2026-10-25	
 H1212	H1212H			Bezalel	d0123916f040ec9a55dce275ab34b06fdcf8dbd5	Becálél	sonnet	claude-sonnet-5-5	2026-10-25	
 H1214	H1214G		igen	to cut off	91108fd90355420a3197548ba0720fbb4b598ec6	levágni	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -794,6 +840,8 @@ H1219	H1219		igen	to gather/restrain/fortify	dd57f05bb71b64e35d02b258829cb6c3c31
 H1220	H1220		igen	gold	09feb137fd5e58ac9131bff6c66ba2e70260bf8c	arany	sonnet	claude-sonnet-5-5	2026-10-25	
 H1222	H1222		igen	gold	09feb137fd5e58ac9131bff6c66ba2e70260bf8c	arany	sonnet	claude-sonnet-5-5	2026-10-25	
 H1223	H1223		igen	enclosure	955d031f0edb8c5c48cba5a387f1e93be7f90bf8	kerítés	sonnet	claude-sonnet-5-5	2026-10-25	
+H1224	H1224G		igen	Bozrah	2c6459f5b2404d929e2e1ec40b5cc3e5551e1550	Bocra	sonnet	claude-sonnet-5-5	2026-10-25	
+H1224	H1224H	a Name of		Bozrah	2c6459f5b2404d929e2e1ec40b5cc3e5551e1550	Bocra	sonnet	claude-sonnet-5-5	2026-10-25	
 H1233	H1233		igen	breach	a8f316c41ebcc6d026768fa7b8fc5c2a5336f93b	rés	sonnet	claude-sonnet-5-5	2026-10-25	
 H1234	H1234		igen	to break up/open	d56a39ae71bda3935edd3d732729f209de7cda78	feltörni/felnyitni	sonnet	claude-sonnet-5-5	2026-10-25	
 H1237	H1237G	a Name of		Valley (of Jericho)	d57e5d6f010c4fcd46686ad9ab289d010d9b749c	Völgy (Jerikó)	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -806,11 +854,13 @@ H1238	H1238B		igen	to empty	8d4a48b18474e3df6a54b3b02235be97a368faac	kiüríteni
 H1241	H1241		igen	cattle	7ba71faedbd3bd02d894d31fb584a7217f7a20e1	marha	sonnet	claude-sonnet-5-5	2026-10-25	
 H1242	H1242		igen	morning	45a21e4b5b2a90eb845ecf9801b1740c35baf300	reggel	sonnet	claude-sonnet-5-5	2026-10-25	
 H1245	H1245		igen	to seek	b4f92b8653b9ee296ff3f6c12fc57189049c89d2	keresni	sonnet	claude-sonnet-5-5	2026-10-25	
+H1246	H1246		igen	request	088e29b0ab0079560dea5d3e5aeb2f7868af661e	kérés	sonnet	claude-sonnet-5-5	2026-10-25	
 H1247	H1247	in Aramaic of	igen	son	f0cbc0ee7d5556a0827bb60017d6a8268514baa7	fia	sonnet	claude-sonnet-5-5	2026-10-25	
 H1248	H1248	a Spelling of	igen	son	f0cbc0ee7d5556a0827bb60017d6a8268514baa7	fiú	sonnet	claude-sonnet-5-5	2026-10-25	
 H1249	H1249		igen	pure	afe003f11764b023d47a96ae7daae0bc2c83e524	tiszta	sonnet	claude-sonnet-5-5	2026-10-25	
 H1250	H1250A		igen	grain	ee4dddc76b9d5e555f1096c3a3ad6a15725746c9	gabona	sonnet	claude-sonnet-5-5	2026-10-25	
 H1250	H1250B			field	2da0b68df8841752bb747a76780679bcd87c6215	mező	sonnet	claude-sonnet-5-5	2026-10-25	
+H1251	H1251	in Aramaic of	igen	field	2da0b68df8841752bb747a76780679bcd87c6215	mező	sonnet	claude-sonnet-5-5	2026-10-25	
 H1254	H1254A		igen	to create	1c48105c767a1c9a202df967c554de389325e00b	teremteni	sonnet	claude-sonnet-5-5	2026-10-25	
 H1254	H1254B			to fatten	722f5610dd2a0ca34eebc5e85e3c386f2a46d5b5	meghízni	sonnet	claude-sonnet-5-5	2026-10-25	
 H1259	H1259		igen	hail	71cd3baa826ac019bc4e8408150453e2dd4a7faf	jégeső	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -874,6 +924,7 @@ H1343	H1343		igen	proud	0f4d4213d6d9c701b432e33016a301220d1f0c04	kevély	sonnet	
 H1344	H1344		igen	pride	ac1cea310fc7b7e6f8c3105f9852e15ae3e6ce3e	kevélység	sonnet	claude-sonnet-5-5	2026-10-25	
 H1346	H1346		igen	pride	ac1cea310fc7b7e6f8c3105f9852e15ae3e6ce3e	kevélység	sonnet	claude-sonnet-5-5	2026-10-25	
 H1347	H1347		igen	pride	ac1cea310fc7b7e6f8c3105f9852e15ae3e6ce3e	büszkeség	sonnet	claude-sonnet-5-5	2026-10-25	
+H1348	H1348		igen	majesty	e0320f5566428600bf4ab428ea74650b1561adc2	fenség	sonnet	claude-sonnet-5-5	2026-10-25	
 H1349	H1349		igen	proud	0f4d4213d6d9c701b432e33016a301220d1f0c04	kevély	sonnet	claude-sonnet-5-5	2026-10-25	
 H1350	H1350A		igen	to redeem: redeem	ff3c93b3f511e7041abe278560a8b47277fa4b51	megváltani: kiváltani	sonnet	claude-sonnet-5-5	2026-10-25	
 H1350	H1350B			redemption	3030612ad7b2ad32a218fa48c24b4697c3d3de7b	megváltás	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -907,6 +958,7 @@ H1389	H1389J	a Spelling of		Gibeat	62ab77d89f42c120bcbc29941ed6ec6ef624c193	Gibe
 H1390	H1390G		igen	Gibeah	d38dba2f1ebafc3956eb71bd235e3cfaa8cd1de9	Gibea	sonnet	claude-sonnet-5-5	2026-10-25	
 H1390	H1390H			Gibeah	d38dba2f1ebafc3956eb71bd235e3cfaa8cd1de9	Gibea	sonnet	claude-sonnet-5-5	2026-10-25	
 H1391	H1391		igen	Gibeon	c859a15b1b912d1bf4b5449f5a308398b32e3c3a	Gibeon	sonnet	claude-sonnet-5-5	2026-10-25	
+H1393	H1393	a group of	igen	Gibeonite	9df6b61141d579c59879ebe63bedce79ff7ebc2b	gibeoni	sonnet	claude-sonnet-5-5	2026-10-25	
 H1394	H1394	a Spelling of	igen	Gibeah	d38dba2f1ebafc3956eb71bd235e3cfaa8cd1de9	Gibea	sonnet	claude-sonnet-5-5	2026-10-25	
 H1396	H1396		igen	to prevail	ef965404b17a846060fbf713c3e3e93536486ae6	felülkerekedni	sonnet	claude-sonnet-5-5	2026-10-25	
 H1397	H1397		igen	great man	92c399e04a3815fcefee7340a4d713d85d61411e	hatalmas férfi	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -973,6 +1025,7 @@ H1501	H1501		igen	locust	f77cf558c6b4dbb0036a7038625a513ee141ab1b	sáska	sonnet	
 H1504	H1504		igen	to cut	13b54a86a7603cacec7dac779f9aac07e37f25d2	levágni	sonnet	claude-sonnet-5-5	2026-10-25	
 H1506	H1506		igen	piece	b0a94b3de01d89a02cb22c45613f73eb796b5862	darab	sonnet	claude-sonnet-5-5	2026-10-25	
 H1507	H1507		igen	Gezer	bddafd4d8f885d9535b0dfcd42065cbd949f6e8f	Gézer	sonnet	claude-sonnet-5-5	2026-10-25	
+H1508	H1508		igen	cutting/separation	07e3cb97a4588e56bba35ae08a6019da2e2e0351	vágás/elválasztás	sonnet	claude-sonnet-5-5	2026-10-25	
 H1512	H1512		igen	belly	73bcd51503b6715afc1a21824565eb01ba5d65c5	belső	sonnet	claude-sonnet-5-5	2026-10-25	
 H1513	H1513		igen	coal	4a31e8e82ec76f79254d223b0500a5498016ba30	szén	sonnet	claude-sonnet-5-5	2026-10-25	
 H1516	H1516G	a Name of		Valley	95fba34442984b590a302a7ff8f232266f186f53	Völgy	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -995,6 +1048,8 @@ H1524	H1524B			youth	f9925d1162aeb2027de701b6505077229eae41f5	ifjú	sonnet	claud
 H1530	H1530G		igen	heap	ee8a7a7a8c63b5014e545e8cf3f69eef3b616b1c	halom	sonnet	claude-sonnet-5-5	2026-10-25	
 H1530	H1530H	a Meaning of		heap: wave	d9edc9e43caa2e286e75ef8e79c5607aff8a47ca	halom: hullám	sonnet	claude-sonnet-5-5	2026-10-25	
 H1531	H1531	a Spelling of	igen	bowl	4a07eca0993872febdb68d0bbeb05d6f53780c62	tál	sonnet	claude-sonnet-5-5	2026-10-25	
+H1533	H1533G		igen	Gilboa	274fae25974f7f5b1e9484876f57527239d2acb2	Gilboa	sonnet	claude-sonnet-5-5	2026-10-25	
+H1533	H1533H			(Mount) Gilboa	3c3c9b47e988768404d207a24d53c775d543f602	(Gilboa) hegye	sonnet	claude-sonnet-5-5	2026-10-25	
 H1534	H1534		igen	wheel	3a7195d99bee6bb15aacf02a10d56b4cbd65b1fe	kerék	sonnet	claude-sonnet-5-5	2026-10-25	
 H1536	H1536		igen	wheel	3a7195d99bee6bb15aacf02a10d56b4cbd65b1fe	kerék	sonnet	claude-sonnet-5-5	2026-10-25	
 H1537	H1537G		igen	Gilgal	91e33283c98aeb3710a5b6f19dca60b044abb577	Gilgál	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -1041,6 +1096,7 @@ H1589	H1589		igen	to steal	7a51e3edb582c45c5c4755d080cf493164667787	lopni	sonnet
 H1590	H1590		igen	thief	c9fdea28cd1ff6ebc41435c86016023e0231464b	tolvaj	sonnet	claude-sonnet-5-5	2026-10-25	
 H1593	H1593		igen	garden	b1ade531057f51c2992479335d03b774afdeb6fa	kert	sonnet	claude-sonnet-5-5	2026-10-25	
 H1594	H1594	a Spelling of	igen	garden	b1ade531057f51c2992479335d03b774afdeb6fa	kert	sonnet	claude-sonnet-5-5	2026-10-25	
+H1598	H1598		igen	to defend	cdd6e7cac2bcecf92b2a243938077705ae2c49a2	megvédeni	sonnet	claude-sonnet-5-5	2026-10-25	
 H1602	H1602		igen	to abhor	b14e846dc33260727eebe0f33d96ef02d9c12d02	utálni	sonnet	claude-sonnet-5-5	2026-10-25	
 H1603	H1603		igen	Gaal	796bf5af0eeeb1088c3b264f929dfaeba415070f	Gáál	sonnet	claude-sonnet-5-5	2026-10-25	
 H1605	H1605		igen	to rebuke	1d4ab3bea5c15b66911a2772f1e4be153676b3ab	megdorgálni	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -1056,6 +1112,7 @@ H1618	H1618		igen	scab	36d31b811810be70d3b62e444629fa823a0a366a	varasodás	sonne
 H1623	H1623		igen	to scrape	88e29ea6ba6b0415ff222ef4a9f679f49db2903e	kikaparni	sonnet	claude-sonnet-5-5	2026-10-25	
 H1624	H1624		igen	to stir up	8fb23ae892c21276b155e1c17f823b8fa26ceadb	felingerelni	sonnet	claude-sonnet-5-5	2026-10-25	
 H1625	H1625		igen	cud	d39521fe195cb5733081751444bbf4703ef75b13	kérődzés	sonnet	claude-sonnet-5-5	2026-10-25	
+H1627	H1627		igen	throat	39736679cb35de1c3e375975c712b2ae0e1a9a8f	torok	sonnet	claude-sonnet-5-5	2026-10-25	
 H1629	H1629		igen	to cut off	91108fd90355420a3197548ba0720fbb4b598ec6	levágni	sonnet	claude-sonnet-5-5	2026-10-25	
 H1637	H1637		igen	threshing floor	9be9b7cec8a2cf3594900314dd174a64fabd1e40	szérű	sonnet	claude-sonnet-5-5	2026-10-25	
 H1638	H1638		igen	to break	a554ae8c6247588488c4c34750b60cbe49e87a57	eltörni	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -1076,6 +1133,8 @@ H1657	H1657G		igen	Goshen	0f3a33a3267ca9ed130c8cab1344c06ddd768fb3	Gósen	sonnet
 H1657	H1657H			Goshen	0f3a33a3267ca9ed130c8cab1344c06ddd768fb3	Gósen	sonnet	claude-sonnet-5-5	2026-10-25	
 H1661	H1661		igen	Gath	a2f35e2b9b80d04bed9a36cb3ae2d4141bea5a44	Gát	sonnet	claude-sonnet-5-5	2026-10-25	
 H1663	H1663	a Spelling of	igen	Gittite	7305e02b7674caf3c9c90d89df42e878d4265830	gittita	sonnet	claude-sonnet-5-5	2026-10-25	
+H1667	H1667G		igen	Gath-rimmon	d15d7747d75f7f25a490a5b069c9781affb4ca44	Gát-Rimmon	sonnet	claude-sonnet-5-5	2026-10-25	
+H1667	H1667H	a Name of		Gath-rimmon	d15d7747d75f7f25a490a5b069c9781affb4ca44	Gát-Rimmon	sonnet	claude-sonnet-5-5	2026-10-25	
 H1668	H1668	in Aramaic of	igen	this	c2543fff3bfa6f144c2f06a7de6cd10c0b650cae	ez	sonnet	claude-sonnet-5-5	2026-10-25	
 H1669	H1669		igen	to languish	135aef09b0afd9728fbd7983cc9e9f91ebb4ab2a	elsenyvedni	sonnet	claude-sonnet-5-5	2026-10-25	
 H1671	H1671		igen	sorrow	ccd7764f4ed1c7f37f1ddcfee9189e7367b45bfa	bánat	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -1126,6 +1185,7 @@ H1725	H1725		igen	to rush	f74fe30125ffc2c98e05ffce78ea34b3a689cff2	rohanni	sonne
 H1730	H1730G		igen	beloved	c2945cad391501478b43f94adbc64ea7385e063d	szeretett	sonnet	claude-sonnet-5-5	2026-10-25	
 H1730	H1730H	a Meaning of		beloved: love	05a7d257008c225a86f0d13093d4edc835596f15	szeretett: szerelem	sonnet	claude-sonnet-5-5	2026-10-25	
 H1730	H1730I	a Meaning of		beloved: male relative	f9f57b768dec8dca8f3601b225ab488019d271f9	szeretett: férfi rokon	sonnet	claude-sonnet-5-5	2026-10-25	
+H1731	H1731		igen	pot	cb79bd0ce2a8c435a9bbeddc9ef6c8bc7c3c4b43	fazék	sonnet	claude-sonnet-5-5	2026-10-25	
 H1732	H1732		igen	David	d27937f914ebe99ee315f04449678eccfb658191	Dávid	sonnet	claude-sonnet-5-5	2026-10-25	
 H1740	H1740		igen	to wash	44bcdcc86d2e56308aa614ff34ce2221ad0d2274	mosni	sonnet	claude-sonnet-5-5	2026-10-25	
 H1742	H1742		igen	faint	3a550c2ca38306d8c10a25d65d947466479e6192	elcsigázott	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -1144,13 +1204,17 @@ H1769	H1769I	a Name of		Dibon(-gad)	c162a99dce37c91e3ebe3459cba38843dfc769e7	Dib
 H1775	H1775	a Spelling of	igen	Dibon	e7b59931767757482869d5841399dbd2752c0454	Dibon	sonnet	claude-sonnet-5-5	2026-10-25	
 H1777	H1777		igen	to judge	7fbaf25626e3a1d0cd942ad1a200b52909d7847d	ítélni	sonnet	claude-sonnet-5-5	2026-10-25	
 H1779	H1779		igen	judgment	4d48fd16322723fea793e5de4a5ebdf36b953918	ítélet	sonnet	claude-sonnet-5-5	2026-10-25	
+H1783	H1783		igen	Dinah	948e1a15b408b8ce9b47c7337b9861c7a9c9ded9	Dína	sonnet	claude-sonnet-5-5	2026-10-25	
 H1791	H1791	in Aramaic of	igen	this	c2543fff3bfa6f144c2f06a7de6cd10c0b650cae	ez	sonnet	claude-sonnet-5-5	2026-10-25	
 H1792	H1792		igen	to crush	18ff8146cad3eeebc4ecf62eaa7175dbff60b532	összezúzni	sonnet	claude-sonnet-5-5	2026-10-25	
 H1793	H1793B			dust	7d6d3243ab287fe21047d0deea17cb937edaa778	por	sonnet	claude-sonnet-5-5	2026-10-25	
 H1794	H1794		igen	to crush	18ff8146cad3eeebc4ecf62eaa7175dbff60b532	összezúzni	sonnet	claude-sonnet-5-5	2026-10-25	
 H1797	H1797	in Aramaic of	igen	this	c2543fff3bfa6f144c2f06a7de6cd10c0b650cae	ez	sonnet	claude-sonnet-5-5	2026-10-25	
 H1800	H1800		igen	poor	2156e40a12d6bdb61e2e05675d31f1c4d6178178	szegény	sonnet	claude-sonnet-5-5	2026-10-25	
+H1803	H1803A			hair	bc70b0511b268629ba9522bfbab90c0cec91c2c1	szál	sonnet	claude-sonnet-5-5	2026-10-25	
+H1803	H1803B		igen	poor	2156e40a12d6bdb61e2e05675d31f1c4d6178178	szegény	sonnet	claude-sonnet-5-5	2026-10-25	
 H1804	H1804		igen	to trouble	b40d2ba0b2b5a2e702661412e36102ba141d2dd7	megzavarni	sonnet	claude-sonnet-5-5	2026-10-25	
+H1808	H1808		igen	branch	10d735e581f1e2505cd69675691925490e447c44	ág	sonnet	claude-sonnet-5-5	2026-10-25	
 H1809	H1809		igen	to languish	135aef09b0afd9728fbd7983cc9e9f91ebb4ab2a	elsenyvedni	sonnet	claude-sonnet-5-5	2026-10-25	
 H1814	H1814		igen	to burn/pursue	b0439b192c76b7e2d90274d764da22c2bd18dcfa	égni; üldözni	sonnet	claude-sonnet-5-5	2026-10-25	
 H1817	H1817A		igen	door	2680b6746cf8291f98b1e23de31855f7d807d305	ajtó	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -1184,6 +1248,7 @@ H1855	H1855	in Aramaic of	igen	to break up	df594578dfe1910ae497594668bfb105ef675
 H1856	H1856		igen	to pierce	34aa919cec9e753ff7e4c46b974bb175cb2203cd	átszúrni	sonnet	claude-sonnet-5-5	2026-10-25	
 H1863	H1863		igen	thistle	e2ca3a96678053bde7784a7d7f242bdc0ae988d8	bogáncs	sonnet	claude-sonnet-5-5	2026-10-25	
 H1864	H1864		igen	south	7e3fb5d99b37e07fcb9f0c90fd94bfeb96f93045	dél	sonnet	claude-sonnet-5-5	2026-10-25	
+H1865	H1865		igen	liberty	abd663767ae6badd02573a5fa1ae43bfe2c03c7e	szabadság	sonnet	claude-sonnet-5-5	2026-10-25	
 H1867	H1867G		igen	Darius	54eeb937cc6293e04b590d65f846db4ea97457e3	Dárius	sonnet	claude-sonnet-5-5	2026-10-25	
 H1867	H1867H			Darius	54eeb937cc6293e04b590d65f846db4ea97457e3	Dárius	sonnet	claude-sonnet-5-5	2026-10-25	
 H1867	H1867I			Darius	54eeb937cc6293e04b590d65f846db4ea97457e3	Dárius	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -1208,6 +1273,7 @@ H1885	H1885		igen	Dathan	9a57bb1cafc876137a47fa0fe1a3850266422f03	Dátán	sonnet
 H1887	H1887		igen	behold	78dba8d364c204bdd15995dc2ad3f3d208360a1b	íme	sonnet	claude-sonnet-5-5	2026-10-25	
 H1889	H1889		igen	Aha!	dfd5571fd1a0e5d362c4826c989b5fb59dcfbf9b	hah	sonnet	claude-sonnet-5-5	2026-10-25	
 H1892	H1892		igen	vanity	3c2339681629826cc9e56f58a68ecc43d14b8341	hiúság	sonnet	claude-sonnet-5-5	2026-10-25	
+H1893	H1893		igen	Abel	2d319d8fd568ecba51bd00c03dfa9ece2252aa62	Ábel	sonnet	claude-sonnet-5-5	2026-10-25	
 H1895	H1895		igen	to divide	1c8edac507b770f9c6a1a846a4dc5809e47d4603	felosztani	sonnet	claude-sonnet-5-5	2026-10-25	
 H1897	H1897		igen	to mutter	25d594dbf70493d280e3bfead380670e7a65b7ce	mormolni	sonnet	claude-sonnet-5-5	2026-10-25	
 H1898	H1898		igen	to remove	444c5fb651f79fbe8d7d838a513b3547c3a36f02	eltávolodni	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -1285,6 +1351,7 @@ H2008	H2008		igen	here/thus	5f1adbe7e8b199fcdb690b756aca685ab6d468e6	itt/így	so
 H2009	H2009		igen	behold	78dba8d364c204bdd15995dc2ad3f3d208360a1b	íme	sonnet	claude-sonnet-5-5	2026-10-25	
 H2011	H2011G	a Part of	igen	(Topheth of) Hinnom	850feaaed5f8ccbec560074313890b43c3ea0846	Hinnom (Tófete)	sonnet	claude-sonnet-5-5	2026-10-25	
 H2011	H2011H	a Part of		(Topheth of son of) Hinnom	9891021255ef29e5177e48410f9f1093d9a8cbc7	Hinnom fia (Tófete)	sonnet	claude-sonnet-5-5	2026-10-25	
+H2013	H2013		igen	to silence	7f7cd2b80250c5791ce610a5063880d325e1d699	elhallgattatni	sonnet	claude-sonnet-5-5	2026-10-25	
 H2015	H2015		igen	to overturn	1c2a19a4faca44404a78f03e062241f4835cadaa	felforgatni	sonnet	claude-sonnet-5-5	2026-10-25	
 H2021	H2021		igen	weapon	395d3b4c7bb341ea56a46a588ce791050441a2b1	fegyver	sonnet	claude-sonnet-5-5	2026-10-25	
 H2022	H2022G		igen	mountain: mount	d015568ca748eda65b4b86b60ce0d342cd18f145	hegy: domb	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -1307,6 +1374,13 @@ H2053	H2053		igen	hook	6bab147e478a11267ab5e2f82df5e41144ed1fe7	kampó	sonnet	cl
 H2056	H2056		igen	child	0e93069c40111cd62dac2cd02cd71daffdb01cc0	gyermek	sonnet	claude-sonnet-5-5	2026-10-25	
 H2060	H2060		igen	Vashti	d07b7a89bdbeaf675bb6c8f883ef3c67d7a13c7c	Vásti	sonnet	claude-sonnet-5-5	2026-10-25	
 H2063	H2063		igen	this	c2543fff3bfa6f144c2f06a7de6cd10c0b650cae	ez	sonnet	claude-sonnet-5-5	2026-10-25	
+H2066	H2066G		igen	Zabad	e5f247675f191a59a5f21c17ebeda048073ea6b4	Zábád	sonnet	claude-sonnet-5-5	2026-10-25	
+H2066	H2066H			Zabad	e5f247675f191a59a5f21c17ebeda048073ea6b4	Zábád	sonnet	claude-sonnet-5-5	2026-10-25	
+H2066	H2066I			Zabad	e5f247675f191a59a5f21c17ebeda048073ea6b4	Zábád	sonnet	claude-sonnet-5-5	2026-10-25	
+H2066	H2066J			Zabad	e5f247675f191a59a5f21c17ebeda048073ea6b4	Zábád	sonnet	claude-sonnet-5-5	2026-10-25	
+H2066	H2066K			Zabad	e5f247675f191a59a5f21c17ebeda048073ea6b4	Zábád	sonnet	claude-sonnet-5-5	2026-10-25	
+H2066	H2066L			Zabad	e5f247675f191a59a5f21c17ebeda048073ea6b4	Zábád	sonnet	claude-sonnet-5-5	2026-10-25	
+H2066	H2066M	a Name of		Zabad	e5f247675f191a59a5f21c17ebeda048073ea6b4	Zábád	sonnet	claude-sonnet-5-5	2026-10-25	
 H2069	H2069G		igen	Zebadiah	2a637c820f3dbbb977174f24b7689d9061573221	Zebadjá	sonnet	claude-sonnet-5-5	2026-10-25	
 H2069	H2069H			Zebadiah	2a637c820f3dbbb977174f24b7689d9061573221	Zebadjá	sonnet	claude-sonnet-5-5	2026-10-25	
 H2069	H2069I			Zebadiah	2a637c820f3dbbb977174f24b7689d9061573221	Zebadjá	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -1327,6 +1401,7 @@ H2088	H2088		igen	this	c2543fff3bfa6f144c2f06a7de6cd10c0b650cae	ez	sonnet	claude
 H2089	H2089	a Spelling of	igen	lamb	ac0bb7d6a6eb6a8e8c9d8e84f7af05b41cb9922b	bárány	sonnet	claude-sonnet-5-5	2026-10-25	
 H2090	H2090		igen	this	c2543fff3bfa6f144c2f06a7de6cd10c0b650cae	ez	sonnet	claude-sonnet-5-5	2026-10-25	
 H2091	H2091		igen	gold	09feb137fd5e58ac9131bff6c66ba2e70260bf8c	arany	sonnet	claude-sonnet-5-5	2026-10-25	
+H2092	H2092		igen	to loathe	5f1e250f383323cd119c63b53dd6e7e4502abef0	megundorodni	sonnet	claude-sonnet-5-5	2026-10-25	
 H2094	H2094A			to shine	36508477eec6b31a270c0658d1e5a66cc09cefe2	ragyogni	sonnet	claude-sonnet-5-5	2026-10-25	
 H2094	H2094B		igen	to warn	92026e57e1b94089c2534227a450bf35b0f61a1d	figyelmeztetni	sonnet	claude-sonnet-5-5	2026-10-25	
 H2097	H2097		igen	this	c2543fff3bfa6f144c2f06a7de6cd10c0b650cae	ez	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -1355,6 +1430,7 @@ H2128	H2128J			Ziph	31e0838e9bb5b1020ac04dd535a6b7ff32f28172	Zif	sonnet	claude-s
 H2132	H2132G			(Mount of) Olives	942ee254e724772a45b96a7285159efba0e14ede	(az Olajfák) hegye	sonnet	claude-sonnet-5-5	2026-10-25	
 H2132	H2132H		igen	olive	0947fcc917eb1d3c89ad818beb61e3b2c3cf3bba	olajfa	sonnet	claude-sonnet-5-5	2026-10-25	
 H2134	H2134		igen	pure	afe003f11764b023d47a96ae7daae0bc2c83e524	tiszta	sonnet	claude-sonnet-5-5	2026-10-25	
+H2135	H2135		igen	to clean	97c9f4815cba570cd8190605bcdd6843ac0f6e43	megtisztulni	sonnet	claude-sonnet-5-5	2026-10-25	
 H2138	H2138		igen	male	030ef4a52619b493d3cc75d8034e3df378dae231	hím	sonnet	claude-sonnet-5-5	2026-10-25	
 H2139	H2139G		igen	Zaccur	9afafcbfea09692cf4ac380000d91aec50840dc6	Zakkúr	sonnet	claude-sonnet-5-5	2026-10-25	
 H2139	H2139H			Zaccur	9afafcbfea09692cf4ac380000d91aec50840dc6	Zakkúr	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -1411,6 +1487,7 @@ H2148	H2148x	a Name of		Zechariah	ea67ccc0e2de4510edfffd192dde17799b1fc465	Zakar
 H2148	H2148y			Zechariah	ea67ccc0e2de4510edfffd192dde17799b1fc465	Zakariás	sonnet	claude-sonnet-5-5	2026-10-25	
 H2148	H2148z			Zechariah	ea67ccc0e2de4510edfffd192dde17799b1fc465	Zakariás	sonnet	claude-sonnet-5-5	2026-10-25	
 H2151	H2151A			to shake	85ab2fd523cbda94f8b8a26af72ad51a2a350470	megrázkódni	sonnet	claude-sonnet-5-5	2026-10-25	
+H2151	H2151B		igen	be vile	3163c91ca043d66bd0d432d017ce7b97d6fbc629	megvetettnek lenni	sonnet	claude-sonnet-5-5	2026-10-25	
 H2154	H2154		igen	wickedness	b6c4e28b8995de94ebecab66624ed7c5a271b82c	gonosz terv	sonnet	claude-sonnet-5-5	2026-10-25	
 H2158	H2158		igen	song	eac923ffd38e75dc5a30da86bd6ae3442638a89f	ének	sonnet	claude-sonnet-5-5	2026-10-25	
 H2159	H2159		igen	branch	10d735e581f1e2505cd69675691925490e447c44	ág	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -1490,12 +1567,15 @@ H2282	H2282		igen	feast	f37a74d82869756054661d6501b29cdfec0fdb38	ünnep	sonnet	c
 H2283	H2283		igen	terror	10f9bb8fa0db73b6aa111df49a1d20db9da9a563	rettegés	sonnet	claude-sonnet-5-5	2026-10-25	
 H2284	H2284		igen	locust	f77cf558c6b4dbb0036a7038625a513ee141ab1b	sáska	sonnet	claude-sonnet-5-5	2026-10-25	
 H2287	H2287		igen	to celebrate	57d3401c765f806185881b4269071ef34ad874e0	ünnepelni	sonnet	claude-sonnet-5-5	2026-10-25	
+H2290	H2290A	a Spelling of		belt	aec3c10f5159ed77dad06f3fb53ae0eba6358a4a	öv	sonnet	claude-sonnet-5-5	2026-10-25	
+H2290	H2290B		igen	belt	aec3c10f5159ed77dad06f3fb53ae0eba6358a4a	öv	sonnet	claude-sonnet-5-5	2026-10-25	
 H2292	H2292A		igen	Haggai	c4d6a794ca9ff1b4b7e81740e6a199cfb8823f47	Aggeus	sonnet	claude-sonnet-5-5	2026-10-25	
 H2292	H2292B	in Aramaic of		Haggai	c4d6a794ca9ff1b4b7e81740e6a199cfb8823f47	Aggeus	sonnet	claude-sonnet-5-5	2026-10-25	
 H2296	H2296		igen	to gird	866ce61f562411d74dba024f90ca9927857bef9c	felövezni	sonnet	claude-sonnet-5-5	2026-10-25	
 H2297	H2297		igen	one	fe05bcdcdc4928012781a5f1a2a77cbb5398e106	egy	sonnet	claude-sonnet-5-5	2026-10-25	
 H2298	H2298	in Aramaic of	igen	one	fe05bcdcdc4928012781a5f1a2a77cbb5398e106	egy	sonnet	claude-sonnet-5-5	2026-10-25	
 H2299	H2299		igen	sharp	ca0b6293f204dd5c62dd9f27e6d94ce7f68cacee	éles	sonnet	claude-sonnet-5-5	2026-10-25	
+H2300	H2300B	a Spelling of		to sharpen	9eabc73833c4cd2a6d075893351a8b3a4c25eb0f	megélesíteni	sonnet	claude-sonnet-5-5	2026-10-25	
 H2301	H2301		igen	Hadad	75f60fd1be0471efb7733eb8bd88d251b54cacab	Hadád	sonnet	claude-sonnet-5-5	2026-10-25	
 H2302	H2302		igen	to rejoice	a96c790893b3e2983ad3a5be5af4e220112b0fb7	örvendezni	sonnet	claude-sonnet-5-5	2026-10-25	
 H2304	H2304		igen	joy	c7d56fc0723a766824f554c4d00f28ea16c2c36b	öröm	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -1509,6 +1589,7 @@ H2319	H2319H		igen	new	c2a6b03f190dfb2b4aa91f8af8d477a9bc3401dc	új	sonnet	claud
 H2320	H2320G		igen	month	021710fa7866431c1dacaa6cd31eeeb47dce64b6	hónap	sonnet	claude-sonnet-5-5	2026-10-25	
 H2320	H2320H	a Meaning of		month: new moon	05f08a84e1ab5db4cddf9b1bf45cd46ade56fb59	hónap: újhold	sonnet	claude-sonnet-5-5	2026-10-25	
 H2324	H2324	in Aramaic of	igen	to show	8dc803095d2c969514420935273d0f706e236b0a	megmutatni	sonnet	claude-sonnet-5-5	2026-10-25	
+H2334	H2334		igen	Havvoth-jair	a03c0fb851ce0bedde79dd5961a6522c6cd2f0a1	Havvót-Jáir	sonnet	claude-sonnet-5-5	2026-10-25	
 H2336	H2336		igen	thistle	e2ca3a96678053bde7784a7d7f242bdc0ae988d8	bogáncs	sonnet	claude-sonnet-5-5	2026-10-25	
 H2340	H2340		igen	Hivite	cb491bfb65f199cf7af1915d040fbf3a9d885e36	hivvita	sonnet	claude-sonnet-5-5	2026-10-25	
 H2342	H2342A		igen	to twist: tremble	dd1b20ccd4ec3652159907e54ff7c221eaa1da66	csavarodni: remegni	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -1601,6 +1682,7 @@ H2445	H2445		igen	wise	cb129d1d3b49b6c3df1377ba1d479523d8e5a559	bölcs	sonnet	cl
 H2449	H2449		igen	be wise	0f82aca066d60d3f5280e4412c6dea2d9d99d40e	bölcsnek lenni	sonnet	claude-sonnet-5-5	2026-10-25	
 H2450	H2450		igen	wise	cb129d1d3b49b6c3df1377ba1d479523d8e5a559	bölcs	sonnet	claude-sonnet-5-5	2026-10-25	
 H2451	H2451		igen	wisdom	d788956320b23c44b20204cc8ec5a505fc27a1a2	bölcsesség	sonnet	claude-sonnet-5-5	2026-10-25	
+H2452	H2452	in Aramaic of	igen	wisdom	d788956320b23c44b20204cc8ec5a505fc27a1a2	bölcsesség	sonnet	claude-sonnet-5-5	2026-10-25	
 H2454	H2454	a Spelling of	igen	wisdom	d788956320b23c44b20204cc8ec5a505fc27a1a2	bölcsesség	sonnet	claude-sonnet-5-5	2026-10-25	
 H2459	H2459		igen	fat	5b5fb1c9d70308c44b6bf579a82122981bd37a7c	zsír	sonnet	claude-sonnet-5-5	2026-10-25	
 H2461	H2461		igen	milk	cf5dbf0ec57dff5da56d86c45b3bdd11849a065a	tej	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -1654,6 +1736,7 @@ H2529	H2529A		igen	curd	18475524cf7b8f37bb8e63da3428d939b44a5568	aludttej	sonnet
 H2529	H2529B			heat	853911dc66c6fcccbffd26e5c83d4baaa2c4f981	forróság	sonnet	claude-sonnet-5-5	2026-10-25	
 H2530	H2530A		igen	to desire	23bde4bcd32783e7adbc4f2796532bc8e37b2c77	kívánni	sonnet	claude-sonnet-5-5	2026-10-25	
 H2530	H2530B			precious thing	12266d33f524e6f5ea6e051096af6c8e6b88891c	drága dolog	sonnet	claude-sonnet-5-5	2026-10-25	
+H2531	H2531		igen	delight	2a17ce1476ccc47f826b9841281edfdca11fb3c3	gyönyör	sonnet	claude-sonnet-5-5	2026-10-25	
 H2532	H2532A		igen	desire	c3c84bf0c498946f97959101e536652e6353eb59	vágy	sonnet	claude-sonnet-5-5	2026-10-25	
 H2532	H2532B			desirable thing	b240153937ad05e4b3db99d43170cfbc333425f6	kívánatos dolog	sonnet	claude-sonnet-5-5	2026-10-25	
 H2534	H2534		igen	rage	4712b03826176c9321aff35f78728c732e55cb41	düh	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -1666,10 +1749,14 @@ H2549	H2549		igen	fifth	5ad43148c90a8f2d296fc74f9f327538e964d000	ötödik	sonnet
 H2550	H2550		igen	to spare	b4007016a2c98ab35462ffa68606d2f0e96a8769	kímélni	sonnet	claude-sonnet-5-5	2026-10-25	
 H2552	H2552		igen	to warm	c1f4eda30f8134772f879e07149a1c42fca90125	melegedni	sonnet	claude-sonnet-5-5	2026-10-25	
 H2553	H2553		igen	pillar	a873c3cd340b3957b3b11c7d752e46a019cd57b9	oszlop	sonnet	claude-sonnet-5-5	2026-10-25	
+H2554	H2554		igen	to injure	da6ea99d2b2b866482cb87b1e01b4bf0b7c272ce	erőszakot tenni	sonnet	claude-sonnet-5-5	2026-10-25	
 H2555	H2555		igen	violence	c8ceaa59d3031a316e2e212b2b1b80213368b10b	erőszak	sonnet	claude-sonnet-5-5	2026-10-25	
+H2556	H2556A		igen	to leaven	e3740670d5bc03d3e0b82c234a4114476505ccbd	megkovászosodni	sonnet	claude-sonnet-5-5	2026-10-25	
+H2556	H2556B			be red	cfdf75f94599383f0375ec289d19824e8d974a87	pirosnak lenni	sonnet	claude-sonnet-5-5	2026-10-25	
 H2556	H2556C			to oppress	1e0b4cbe83f9c5ab56aa02d7769cc75e5f829ab8	elnyomni	sonnet	claude-sonnet-5-5	2026-10-25	
 H2557	H2557A		igen	leaven	bb5719f632206243c227dc5980a5c111b3150a12	kovász	sonnet	claude-sonnet-5-5	2026-10-25	
 H2557	H2557B			leaven	bb5719f632206243c227dc5980a5c111b3150a12	kovász	sonnet	claude-sonnet-5-5	2026-10-25	
+H2560	H2560C			be red	cfdf75f94599383f0375ec289d19824e8d974a87	pirosnak lenni	sonnet	claude-sonnet-5-5	2026-10-25	
 H2561	H2561		igen	wine	e4fd69b08aca140838ea650323ccf78234d3c99c	bor	sonnet	claude-sonnet-5-5	2026-10-25	
 H2563	H2563A		igen	clay	de6b29cb18084bdc455d9d293dddac87217ce659	agyag	sonnet	claude-sonnet-5-5	2026-10-25	
 H2563	H2563B			heap	ee8a7a7a8c63b5014e545e8cf3f69eef3b616b1c	halom	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -1693,6 +1780,7 @@ H2586	H2586I			Hanun	b0e84a0641650a3b09b37996abbdd07f8cfe4219	Hánun	sonnet	clau
 H2587	H2587		igen	gracious	4c1158ebaad90ac160162abb11fe82d1287d14d9	irgalmas	sonnet	claude-sonnet-5-5	2026-10-25	
 H2595	H2595		igen	spear	0e57fb64220973ea0905aece01cb3359ceef1039	lándzsa	sonnet	claude-sonnet-5-5	2026-10-25	
 H2596	H2596		igen	to dedicate	614def0b3d48ff4968b3a6d6603db963919d70e4	felszentelni	sonnet	claude-sonnet-5-5	2026-10-25	
+H2598	H2598		igen	dedication	773a44d309a598cd67bea377ebe4b2b9a0e4ffdf	felavatás	sonnet	claude-sonnet-5-5	2026-10-25	
 H2600	H2600		igen	for nothing	ad93e45183dbc0371218658822f00c12718ea84c	ingyen	sonnet	claude-sonnet-5-5	2026-10-25	
 H2602	H2602		igen	frost	7784005a1a0657c5f6474cf9f4acd8c11a484641	dér	sonnet	claude-sonnet-5-5	2026-10-25	
 H2603	H2603A		igen	be gracious	bc714ef99e913ad4618f512591fee9a069e5c1fe	kegyelmesnek lenni	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -1775,6 +1863,7 @@ H2696	H2696G		igen	Hezron	f4b11813b539e41374c9e7c72f658730d6ba3259	Hecron	sonnet
 H2696	H2696H			Hezron	f4b11813b539e41374c9e7c72f658730d6ba3259	Hecron	sonnet	claude-sonnet-5-5	2026-10-25	
 H2696	H2696I	a Part of		(Kerioth)-hezron	86eb59a0158278691c3acef8b3ce460850739de0	(Kerijót)-Hecron	sonnet	claude-sonnet-5-5	2026-10-25	
 H2696	H2696J	a Name of		Hezron	f4b11813b539e41374c9e7c72f658730d6ba3259	Hecron	sonnet	claude-sonnet-5-5	2026-10-25	
+H2705	H2705		igen	Hazar-shual	e9fe5ce058b95c767238a1ca34f9dd3f1dc2a702	Hácar-Súál	sonnet	claude-sonnet-5-5	2026-10-25	
 H2706	H2706G		igen	statute: decree	36c93acef4ac81d8b82fec80cbccf6f867ac0b20	rendelet: határozat	sonnet	claude-sonnet-5-5	2026-10-25	
 H2706	H2706H	a Meaning of		statute: portion	0da5b644da5d5589493bdd2b02c12202df6ab7a8	rendelet: rész	sonnet	claude-sonnet-5-5	2026-10-25	
 H2706	H2706I	a Meaning of		statute: allotment	a39117b15e8899744a81625a1dc8ff3dc8eada83	rendelet: járandóság	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -1794,6 +1883,7 @@ H2721	H2721A		igen	drought	7d52e6d4b263a8286dadcdea3bb1d2c0d38b6c08	szárazság	
 H2721	H2721B			desolation	c3b1880d483bb8e1e6ead920ca6a146aa0ec29c8	pusztaság	sonnet	claude-sonnet-5-5	2026-10-25	
 H2722	H2722	a Name of	igen	Horeb	3f76b77c019ca07cd7ec75e0f32e4c05c0bc3bb7	Hóreb	sonnet	claude-sonnet-5-5	2026-10-25	
 H2723	H2723		igen	desolation	c3b1880d483bb8e1e6ead920ca6a146aa0ec29c8	elpusztítottság	sonnet	claude-sonnet-5-5	2026-10-25	
+H2724	H2724		igen	dry ground	5792b79182e91a6653498235ca79d84e88fb1213	száraz föld	sonnet	claude-sonnet-5-5	2026-10-25	
 H2725	H2725		igen	drought	7d52e6d4b263a8286dadcdea3bb1d2c0d38b6c08	szárazság	sonnet	claude-sonnet-5-5	2026-10-25	
 H2728	H2728		igen	locust	f77cf558c6b4dbb0036a7038625a513ee141ab1b	sáska	sonnet	claude-sonnet-5-5	2026-10-25	
 H2729	H2729		igen	to tremble	4d80002af7a7215ed221619d10c24493682c7c77	remegni	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -1824,6 +1914,7 @@ H2778	H2778B			to winter	0740ce33c33944b00348fe8eb43bca3dfeebf42d	áttelelni	son
 H2778	H2778C			to acquire	901492226ad8937e9beffc563444c4c00b5e2430	megszerezni	sonnet	claude-sonnet-5-5	2026-10-25	
 H2781	H2781		igen	reproach	80af330fa43cbdcc75cc6f32c804e6e7db01fc7a	szidalom	sonnet	claude-sonnet-5-5	2026-10-25	
 H2782	H2782		igen	to decide	36c09bd0a8def7e022e7aaa4e37116bbd0b4e0e3	elhatározni	sonnet	claude-sonnet-5-5	2026-10-25	
+H2786	H2786		igen	to grind	407f27235a447fd197ca638025bc97f94add1f09	őrölni	sonnet	claude-sonnet-5-5	2026-10-25	
 H2787	H2787		igen	to scorch	3a840ab94eb305272acb48b342651a0676ad749c	megperzselődni	sonnet	claude-sonnet-5-5	2026-10-25	
 H2789	H2789		igen	earthenware	d97110863d25f2652b7cc5f6fd85aaf16300c753	cserép	sonnet	claude-sonnet-5-5	2026-10-25	
 H2790	H2790A			to plow/plot	ce7236a37c523d99db372a06069765fe42e2c97a	szántani/tervelni	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -1837,6 +1928,7 @@ H2803	H2803G	a Meaning of		to devise: design	f150b85ce04daafd54db8e4e755ec243694
 H2803	H2803H		igen	to devise: count	17244a145752f61402c0f730aa87a55c57e9e753	kigondolni: számolni	sonnet	claude-sonnet-5-5	2026-10-25	
 H2803	H2803I	a Meaning of		to devise: devise	dba83818ea6e46754982d23e0b1297510b64e54b	kigondolni: kieszelni	sonnet	claude-sonnet-5-5	2026-10-25	
 H2803	H2803J	a Meaning of		to devise: think	5b1029bfa9e758955edbaa3c593bdf0df4fbdcc6	kigondolni: gondolni	sonnet	claude-sonnet-5-5	2026-10-25	
+H2805	H2805		igen	artwork	fb35823ad333307ab8c3353e54c6adec2e7fdbfd	műalkotás	sonnet	claude-sonnet-5-5	2026-10-25	
 H2809	H2809		igen	Heshbon	1a375b279c5240ffcdc2ab3f40e8bc6351d19d83	Hesbon	sonnet	claude-sonnet-5-5	2026-10-25	
 H2811	H2811G		igen	Hashabiah	42b67be86dfa6782ccadac94cce40aaf2b4f1c93	Hasabjá	sonnet	claude-sonnet-5-5	2026-10-25	
 H2811	H2811H			Hashabiah	42b67be86dfa6782ccadac94cce40aaf2b4f1c93	Hasabjá	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -1892,8 +1984,11 @@ H2902	H2902B			to be smeared	f0a078c7a41e561388ad7646d8fbb43ca1dc8eb5	bekenetni	
 H2904	H2904		igen	to cast	0239f9af43e11b77155b8f1cbad322ae485a2448	elvetni	sonnet	claude-sonnet-5-5	2026-10-25	
 H2905	H2905		igen	row	e8cdc05b346aa0d4a91a2bf6d7c6a0941a6555a7	sor	sonnet	claude-sonnet-5-5	2026-10-25	
 H2909	H2909		igen	to shoot	cd3a4e02dc2d8fde0f0c13e687865654786e9118	lőni	sonnet	claude-sonnet-5-5	2026-10-25	
+H2912	H2912		igen	to grind	407f27235a447fd197ca638025bc97f94add1f09	őrölni	sonnet	claude-sonnet-5-5	2026-10-25	
+H2914	H2914		igen	tumor	aa3939a63ace95f5ffeab3d1798d49b5adbe9e27	daganat	sonnet	claude-sonnet-5-5	2026-10-25	
 H2916	H2916		igen	mud	589539e9dc2b6aaf253f051fef5b2b759e2c10a6	sár	sonnet	claude-sonnet-5-5	2026-10-25	
 H2919	H2919		igen	dew	72d628f9e272dc75eb64218a6380013b6de2628d	harmat	sonnet	claude-sonnet-5-5	2026-10-25	
+H2921	H2921		igen	to spot	2e9577c55672712f29aa62f7df6511040b8df7ed	foltozni	sonnet	claude-sonnet-5-5	2026-10-25	
 H2922	H2922	a Spelling of	igen	lamb	ac0bb7d6a6eb6a8e8c9d8e84f7af05b41cb9922b	bárány	sonnet	claude-sonnet-5-5	2026-10-25	
 H2924	H2924		igen	lamb	ac0bb7d6a6eb6a8e8c9d8e84f7af05b41cb9922b	bárány	sonnet	claude-sonnet-5-5	2026-10-25	
 H2925	H2925		igen	captivity	4b83f50af9cc88519c11107ba99b50485aa19fc5	fogság	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -1910,6 +2005,7 @@ H2940	H2940		igen	taste	270fdbaac5aff8e5ed150fe05a2c0725a1c795e6	íz	sonnet	clau
 H2942	H2942	in Aramaic of	igen	command	1925f793093581c47a5c6b2e414506b1cbae280d	parancs	sonnet	claude-sonnet-5-5	2026-10-25	
 H2944	H2944		igen	to pierce	34aa919cec9e753ff7e4c46b974bb175cb2203cd	átszúrni	sonnet	claude-sonnet-5-5	2026-10-25	
 H2945	H2945		igen	child	0e93069c40111cd62dac2cd02cd71daffdb01cc0	gyermek	sonnet	claude-sonnet-5-5	2026-10-25	
+H2950	H2950		igen	to smear	4525976c955c51430792e1ca215c66c3d1585d1d	bekenni	sonnet	claude-sonnet-5-5	2026-10-25	
 H2951	H2951		igen	official	5adeac62dbc1427c247cbaec06f0c19059f8d037	tisztviselő	sonnet	claude-sonnet-5-5	2026-10-25	
 H2956	H2956		igen	to pursue	27156a95323a3cafdea2832d5e6ad649ef610865	üldözni	sonnet	claude-sonnet-5-5	2026-10-25	
 H2960	H2960		igen	burden	cdc8883bfd1cb74f5728f865c690df7e66f561bb	teher	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -2458,6 +2554,7 @@ H3588	H3588A		igen	for	43eef9a62abb8b1e1654f8a890aae054abffa82b	mert	sonnet	clau
 H3588	H3588B	combination of		that if: except	62bd6f0d1c3ce5e5844218dcd66f0142e1f14584	hogy ha: kivéve	sonnet	claude-sonnet-5-5	2026-10-25	
 H3588	H3588C	combination of		for as that: since	242e1615b0bb25d0f50c3e0f53cf4e7090d2be59	minthogy: mivel	sonnet	claude-sonnet-5-5	2026-10-25	
 H3591	H3591		igen	javelin	42fc2d95c37da8987f26db4a11fcdc8b8ae1997d	dárda	sonnet	claude-sonnet-5-5	2026-10-25	
+H3593	H3593		igen	battle	ddb4a6bd8fed8f7bed2b44e7a69fde18974e5c42	csata	sonnet	claude-sonnet-5-5	2026-10-25	
 H3595	H3595		igen	basin	1ade45cf0f38cbfd52d8bf7e00c57c53cd4008dc	medence	sonnet	claude-sonnet-5-5	2026-10-25	
 H3602	H3602		igen	thus	2e53d1fd94ee7ca88376faa55cc00477c0857895	így	sonnet	claude-sonnet-5-5	2026-10-25	
 H3603	H3603G			Plain (of Jericho)	469f080c0c9309d808cb28eb229735f6d48823f3	(Jérikó) síksága	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -2525,6 +2622,7 @@ H3709	H3709H	a Meaning of		palm: sole	f45d2d4178d7c87ad766046920383c17c93a4b74	t
 H3709	H3709I	a Meaning of		palm: dish	4833655171b09b3936465fb72fe67284386c9450	tenyér: tál	sonnet	claude-sonnet-5-5	2026-10-25	
 H3710	H3710		igen	rock	38464bf083d958b53580c63c01e56707fd043588	szikla	sonnet	claude-sonnet-5-5	2026-10-25	
 H3711	H3711		igen	to subdue	4cc049f29e95b162a7664959fd13b7c5eb68cbab	leigázni	sonnet	claude-sonnet-5-5	2026-10-25	
+H3712	H3712		igen	branch	10d735e581f1e2505cd69675691925490e447c44	ág	sonnet	claude-sonnet-5-5	2026-10-25	
 H3713	H3713A		igen	bowl	4a07eca0993872febdb68d0bbeb05d6f53780c62	tál	sonnet	claude-sonnet-5-5	2026-10-25	
 H3713	H3713B			frost	7784005a1a0657c5f6474cf9f4acd8c11a484641	dér	sonnet	claude-sonnet-5-5	2026-10-25	
 H3715	H3715A		igen	lion	eaf14a01af23a2750f52c1b1992232c6adc001c4	oroszlán	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -2556,6 +2654,7 @@ H3760	H3760G		igen	Carmel	0aaeab12f176431a998e257e417e10fae807d29d	Karmel	sonnet
 H3760	H3760H			(Mount) Carmel	1d976d77b5b61da5125b1c473b5e88ea9dfa1f7a	Karmel (hegye)	sonnet	claude-sonnet-5-5	2026-10-25	
 H3766	H3766		igen	to bow	d1558903b9d39253727ffe154ba21aa64bc8f47f	meghajolni	sonnet	claude-sonnet-5-5	2026-10-25	
 H3767	H3767		igen	leg	321d6cc5177a8d6e5b6e7726163fd5599f47fa3d	lábszár	sonnet	claude-sonnet-5-5	2026-10-25	
+H3768	H3768		igen	fine linen	1f25b8390a33ca37d56f6ec7c71caa91e8ca1b7c	patyolat	sonnet	claude-sonnet-5-5	2026-10-25	
 H3770	H3770		igen	belly	73bcd51503b6715afc1a21824565eb01ba5d65c5	belső	sonnet	claude-sonnet-5-5	2026-10-25	
 H3772	H3772G		igen	to cut: cut	55bdfee63ca939001ef2ebacc8c0b5c08978e7ff	vágni: kivágni	sonnet	claude-sonnet-5-5	2026-10-25	
 H3772	H3772H	a Meaning of		to cut: make(covenant)	6a710367176997012441769fde4102a576c6e717	vágni: (szövetséget) kötni	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -2637,6 +2736,7 @@ H3905	H3905		igen	to oppress	1e0b4cbe83f9c5ab56aa02d7769cc75e5f829ab8	elnyomni	s
 H3906	H3906		igen	oppression	d6eb1d5570ac2199a950e19aa9e1bab9c15b8858	elnyomás	sonnet	claude-sonnet-5-5	2026-10-25	
 H3909	H3909		igen	secrecy	7967b682853a668385ebd5a728bac1b0ddd965e7	titok	sonnet	claude-sonnet-5-5	2026-10-25	
 H3910	H3910		igen	myrrh	60c5abb637048c8d22b20333c2d06df5b340d267	mirrha	sonnet	claude-sonnet-5-5	2026-10-25	
+H3913	H3913		igen	to sharpen	9eabc73833c4cd2a6d075893351a8b3a4c25eb0f	megélesíteni	sonnet	claude-sonnet-5-5	2026-10-25	
 H3915	H3915		igen	night	1be2a44cb53dde903be8466c08dee9067da8ede3	éjszaka	sonnet	claude-sonnet-5-5	2026-10-25	
 H3918	H3918		igen	lion	eaf14a01af23a2750f52c1b1992232c6adc001c4	oroszlán	sonnet	claude-sonnet-5-5	2026-10-25	
 H3920	H3920		igen	to capture	456439ecf6ea3f1b9128ad28f0c65f7901cbcaa8	elfoglalni	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -2647,6 +2747,7 @@ H3925	H3925H	a Meaning of		to learn: learn	13127463b556dfe59e4b4af028948c5402114
 H3926	H3926		igen	upon	76205fd077642109bcffa636100630b08f569d1e	fölött; -on/-en	sonnet	claude-sonnet-5-5	2026-10-25	
 H3929	H3929G		igen	Lamech	1c6b9c81f215bd90a397f8514bb83d3c25e261ee	Lámek	sonnet	claude-sonnet-5-5	2026-10-25	
 H3929	H3929H			Lamech	1c6b9c81f215bd90a397f8514bb83d3c25e261ee	Lámek	sonnet	claude-sonnet-5-5	2026-10-25	
+H3930	H3930		igen	throat	39736679cb35de1c3e375975c712b2ae0e1a9a8f	torok	sonnet	claude-sonnet-5-5	2026-10-25	
 H3932	H3932		igen	to mock	6bcd7747c561270034181dc3b62829edf086a2e1	gúnyolni	sonnet	claude-sonnet-5-5	2026-10-25	
 H3938	H3938		igen	to eat	c3f26f4280129f4a4d87dfbdb2b69453dd21eff7	enni	sonnet	claude-sonnet-5-5	2026-10-25	
 H3940	H3940		igen	torch	e7de9e6263e2524557710e5df3ac5dbd8a0ca682	fáklya	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -3498,6 +3599,7 @@ H5329	H5329		igen	to conduct	4dd7bcbca9b23a644b4abc2a13ae98a70bb0a836	vezényeln
 H5331	H5331		igen	perpetuity	66039d23b15490f2e63189315404c01c7e5d2404	örökkévalóság	sonnet	claude-sonnet-5-5	2026-10-25	
 H5333	H5333		igen	garrison	fba4ac458f9ea75e2e98e12427c2000db5c09141	helyőrség	sonnet	claude-sonnet-5-5	2026-10-25	
 H5337	H5337		igen	to rescue	81ecd43d30c43606fa0908cb7e8d348f25ad9296	megmenteni	sonnet	claude-sonnet-5-5	2026-10-25	
+H5338	H5338	in Aramaic of	igen	to rescue	81ecd43d30c43606fa0908cb7e8d348f25ad9296	megszabadítani	sonnet	claude-sonnet-5-5	2026-10-25	
 H5339	H5339		igen	flower	5a46b8253d07320a14cace9b4dcbf80f93dcef04	virág	sonnet	claude-sonnet-5-5	2026-10-25	
 H5340	H5340		igen	to shine	36508477eec6b31a270c0658d1e5a66cc09cefe2	ragyogni	sonnet	claude-sonnet-5-5	2026-10-25	
 H5341	H5341		igen	to watch	3f52379d8aa2f45d5bf181b746f71556fb1dd077	vigyázni	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -3678,6 +3780,7 @@ H5542	H5542		igen	Selah	49d2d7d39b94afffdefc3d8573f5bb9779f40d40	Szela	sonnet	cl
 H5545	H5545		igen	to forgive	3cb28742888b659e61d4ed16fb5cb439a9cc93cf	megbocsátani	sonnet	claude-sonnet-5-5	2026-10-25	
 H5549	H5549		igen	to build	260bd566a4459c2ee0a60c5099ff2ea16c10cb68	építeni	sonnet	claude-sonnet-5-5	2026-10-25	
 H5550	H5550		igen	mound	5bf2cccc9427390ac1f218eb60f342b36fc5c413	sánc	sonnet	claude-sonnet-5-5	2026-10-25	
+H5552	H5552		igen	branch	10d735e581f1e2505cd69675691925490e447c44	ág	sonnet	claude-sonnet-5-5	2026-10-25	
 H5553	H5553G	a Name of		rock	38464bf083d958b53580c63c01e56707fd043588	szikla	sonnet	claude-sonnet-5-5	2026-10-25	
 H5553	H5553H		igen	crag	95a452953746a67ea866ceb0d518be6e978a92f9	szirt	sonnet	claude-sonnet-5-5	2026-10-25	
 H5556	H5556		igen	locust	f77cf558c6b4dbb0036a7038625a513ee141ab1b	sáska	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -3809,6 +3912,7 @@ H5718	H5718M			Adaiah	a54978a54b81917e5741bee5122c700dbc90355c	Adájá	sonnet	cl
 H5718	H5718N	a Name of		Adaiah	a54978a54b81917e5741bee5122c700dbc90355c	Adájá	sonnet	claude-sonnet-5-5	2026-10-25	
 H5718	H5718O	a Name of		Adaiah	a54978a54b81917e5741bee5122c700dbc90355c	Adájá	sonnet	claude-sonnet-5-5	2026-10-25	
 H5729	H5729		igen	Eden	770cb7beb2690d48a5eb4e8799ca4d55c68f72ba	Éden	sonnet	claude-sonnet-5-5	2026-10-25	
+H5730	H5730B			delight	2a17ce1476ccc47f826b9841281edfdca11fb3c3	gyönyör	sonnet	claude-sonnet-5-5	2026-10-25	
 H5731	H5731A		igen	Eden	770cb7beb2690d48a5eb4e8799ca4d55c68f72ba	Éden	sonnet	claude-sonnet-5-5	2026-10-25	
 H5731	H5731B			Eden	770cb7beb2690d48a5eb4e8799ca4d55c68f72ba	Éden	sonnet	claude-sonnet-5-5	2026-10-25	
 H5731	H5731G			Eden	770cb7beb2690d48a5eb4e8799ca4d55c68f72ba	Éden	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -4068,6 +4172,7 @@ H6021	H6021G		igen	Amasa	1b4cf01422838ac9fd4a4b1f229488e99c9c60b9	Amasa	sonnet	c
 H6021	H6021H			Amasa	1b4cf01422838ac9fd4a4b1f229488e99c9c60b9	Amasa	sonnet	claude-sonnet-5-5	2026-10-25	
 H6025	H6025		igen	grape	bc8a2f8cdedb005b5c787692853709b060db75ff	szőlőszem	sonnet	claude-sonnet-5-5	2026-10-25	
 H6026	H6026		igen	to delight	877595f3bd9098ec4aac8c784bafcc10a25357df	gyengédnek lenni	sonnet	claude-sonnet-5-5	2026-10-25	
+H6027	H6027		igen	delight	2a17ce1476ccc47f826b9841281edfdca11fb3c3	gyönyör	sonnet	claude-sonnet-5-5	2026-10-25	
 H6029	H6029		igen	to bind	c334fe9166db465d94da98775223824177f3d9e6	megkötni	sonnet	claude-sonnet-5-5	2026-10-25	
 H6030	H6030A			to dwell	ad101d5382a253227e52bec870f3c15b9195c140	lakni	sonnet	claude-sonnet-5-5	2026-10-25	
 H6030	H6030B		igen	to answer	0f25ca7a72dde68a3963da7dd84ca04e5476e056	felelni	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -4096,6 +4201,7 @@ H6068	H6068H			Anathoth	839cb85aa64457ea911f4ac2d4140a42ecd51e0f	Anatót	sonnet	
 H6068	H6068I			Anathoth	839cb85aa64457ea911f4ac2d4140a42ecd51e0f	Anatót	sonnet	claude-sonnet-5-5	2026-10-25	
 H6072	H6072		igen	to press	27a13efae72a18ffbb7c734dc2131017a25e029d	szorítani	sonnet	claude-sonnet-5-5	2026-10-25	
 H6073	H6073		igen	branch	10d735e581f1e2505cd69675691925490e447c44	ág	sonnet	claude-sonnet-5-5	2026-10-25	
+H6076	H6076B			tumor	aa3939a63ace95f5ffeab3d1798d49b5adbe9e27	daganat	sonnet	claude-sonnet-5-5	2026-10-25	
 H6079	H6079		igen	eyelid	d9bca9c6a43c6e1abf5393c0d11f933ff17b9c92	szemhéj	sonnet	claude-sonnet-5-5	2026-10-25	
 H6080	H6080		igen	to throw	06cf50f963169ce1abe2a14da8028ababf338627	dobni	sonnet	claude-sonnet-5-5	2026-10-25	
 H6083	H6083		igen	dust	7d6d3243ab287fe21047d0deea17cb937edaa778	por	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -4154,6 +4260,7 @@ H6160	H6160I	a Part of		Plains (of Moab)	e018928354036a4ddb7537d91f356954a97523f
 H6160	H6160J	a Spelling of		(Beth)-arabah	840469317206b9788e0cb7b23b171029e83571ba	(Bét)-Arábá	sonnet	claude-sonnet-5-5	2026-10-25	
 H6160	H6160K	a Name of		(Sea of) the Arabah	1005b3e84e414e754d0b329a2bb680878b8a1516	(az Arábá) tengere	sonnet	claude-sonnet-5-5	2026-10-25	
 H6160	H6160L			plain	68c46e84d76d2e7e686e5158bf598909abd4e45b	síkság	sonnet	claude-sonnet-5-5	2026-10-25	
+H6163	H6163A	a group of	igen	Arab	b6d1baf2389c22fa1996339a7aba3673492c3d1c	arábiai	sonnet	claude-sonnet-5-5	2026-10-25	
 H6163	H6163B	a group of		Arabian	2efbfd31a1aab10ccb2da1b7702e22e88d47c01f	arab	sonnet	claude-sonnet-5-5	2026-10-25	
 H6165	H6165		igen	to long for	ca4e845908ca2e10918867c98cd450df7f08633c	vágyódni	sonnet	claude-sonnet-5-5	2026-10-25	
 H6168	H6168		igen	to uncover	83494e52b72545cea243c3562f3ecc879565fbc5	felfedni	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -4347,6 +4454,7 @@ H6504	H6504		igen	to separate	862a734320afc86beb34c1bcbd2a113a01342ee9	elválasz
 H6505	H6505		igen	mule	067f4fcde209dcdc7c9551d7f975b3319ca0debe	öszvér	sonnet	claude-sonnet-5-5	2026-10-25	
 H6509	H6509		igen	be fruitful	5c37e96016472149f4f4f6940ee6d923ff9986c2	termékenynek lenni	sonnet	claude-sonnet-5-5	2026-10-25	
 H6510	H6510		igen	heifer	7f90732a6c8426408ae55dd349d23fe8db4a3e3c	üsző	sonnet	claude-sonnet-5-5	2026-10-25	
+H6517	H6517		igen	pot	cb79bd0ce2a8c435a9bbeddc9ef6c8bc7c3c4b43	fazék	sonnet	claude-sonnet-5-5	2026-10-25	
 H6522	H6522		igen	Perizzite	4587453e7c583546dd7e97dde9287dcebbc14f51	perizzita	sonnet	claude-sonnet-5-5	2026-10-25	
 H6523	H6523	in Aramaic of	igen	iron	b6a8f89581549d66f7d66487d4bbb46ff4f3c59c	vas	sonnet	claude-sonnet-5-5	2026-10-25	
 H6524	H6524A		igen	to sprout	7d5683696a802a5a1ed0efabe3b2176c3fd288f6	sarjadni	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -4665,6 +4773,7 @@ H6966	H6966G	in Aramaic of	igen	to stand: rise	1914d563c7e0a29ba42b1543bb5ea5102
 H6966	H6966H	in Aramaic of		to stand: raise	06949c4c184ed3abe91b74b59180060969d0f49b	állni: felállítani	sonnet	claude-sonnet-5-5	2026-10-25	
 H6966	H6966I	in Aramaic of		to stand: establish	38896a2cf05fb0c2aae88d3ef1f126279839e18e	állni: megerősíteni	sonnet	claude-sonnet-5-5	2026-10-25	
 H6967	H6967		igen	height	73e7e545c519a38f0aec9e72df51f8ba169db34d	magasság	sonnet	claude-sonnet-5-5	2026-10-25	
+H6973	H6973		igen	to loathe	5f1e250f383323cd119c63b53dd6e7e4502abef0	megundorodni	sonnet	claude-sonnet-5-5	2026-10-25	
 H6974	H6974		igen	to awake	20bcf6522559fd3d797cb8d7aa56a149e07f7d41	felébredni	sonnet	claude-sonnet-5-5	2026-10-25	
 H6975	H6975		igen	thorn	653ca56794d35dca7a2a0a90bfde1cb4b21cf06d	tövis	sonnet	claude-sonnet-5-5	2026-10-25	
 H6979	H6979A			to dig	4c00c54d02434f251ca776552622461b99911a99	ásni	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -4764,6 +4873,8 @@ H7122	H7122I	a Meaning of		to encounter: chanced	ce9318f888b25cd9199b2739fa0c42c
 H7123	H7123	in Aramaic of	igen	to read	3d527aec6909053557ad5e9ede5a51358a2ef1f2	olvasni	sonnet	claude-sonnet-5-5	2026-10-25	
 H7126	H7126G		igen	to present: come	c7b41f732b1d3e30bcc3169fce1b8faaa11df5d8	bemutatni: közeledni	sonnet	claude-sonnet-5-5	2026-10-25	
 H7126	H7126H	a Meaning of		to present: bring	2ea8ef169fdcecd6186b85ee270efed522072e34	bemutatni: odavinni	sonnet	claude-sonnet-5-5	2026-10-25	
+H7127	H7127	in Aramaic of	igen	to approach	8965320049da313b62fa1091855e99f53f13b801	közeledni	sonnet	claude-sonnet-5-5	2026-10-25	
+H7128	H7128		igen	battle	ddb4a6bd8fed8f7bed2b44e7a69fde18974e5c42	csata	sonnet	claude-sonnet-5-5	2026-10-25	
 H7130	H7130G		igen	entrails: among	8e34b858f14e22a38f5e320f0e37c25d462eb4d4	belek: között	sonnet	claude-sonnet-5-5	2026-10-25	
 H7130	H7130H	a Meaning of		entrails: inner parts	7cffb341d29c93a2ce00658d1a03eb20682f1b7e	belek: belső részek	sonnet	claude-sonnet-5-5	2026-10-25	
 H7131	H7131		igen	approaching	59879e11e5147703556aaeec8eeb4037412548bd	közelgő	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -4779,6 +4890,7 @@ H7141	H7141I			Korah	ffea9a47c70e08cbd3810b1214fe769c0f8a4397	Kóré	sonnet	clau
 H7141	H7141J			Korah	ffea9a47c70e08cbd3810b1214fe769c0f8a4397	Kóré	sonnet	claude-sonnet-5-5	2026-10-25	
 H7143	H7143		igen	Kareah	b2497af3dceeeb4be1d6e05d43d6783045a1b057	Káreách	sonnet	claude-sonnet-5-5	2026-10-25	
 H7144	H7144		igen	bald spot	85ebbaef3c5089e6ac7ab219812a8a9a584c9733	kopasz folt	sonnet	claude-sonnet-5-5	2026-10-25	
+H7149	H7149	in Aramaic of	igen	town	0cd0b19231db9a2b915e37ea2c366c9029cd9020	város	sonnet	claude-sonnet-5-5	2026-10-25	
 H7151	H7151		igen	town	0cd0b19231db9a2b915e37ea2c366c9029cd9020	város	sonnet	claude-sonnet-5-5	2026-10-25	
 H7153	H7153	a Name of	igen	Kiriath-arba	bf80a06f2f8b42b754d674f9455d05e9c53d30e9	Kirját-Arba	sonnet	claude-sonnet-5-5	2026-10-25	
 H7157	H7157		igen	Kiriath-jearim	ec26dc448bd89577477265d32378e1332bc6d2c6	Kirját-Jeárim	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -4815,6 +4927,7 @@ H7203	H7203B			vision	625f139d6ccd7576ef3abd9d0f75fb14eafb2afa	látomás	sonnet	
 H7205	H7205		igen	Reuben	031f5c441ff7ca2caf32fad5d02c05c4f7506fa3	Rúben	sonnet	claude-sonnet-5-5	2026-10-25	
 H7206	H7206	a group of	igen	Reubenite	dc20772371efcc52b4ec0ab20907ae0642db2660	rúbenita	sonnet	claude-sonnet-5-5	2026-10-25	
 H7213	H7213		igen	to rise	c6cd19b963225091ca05cc924aa61dd544dec76b	korán kelni	sonnet	claude-sonnet-5-5	2026-10-25	
+H7214	H7214		igen	wild ox	fdfda9220403ec69c13af5da156d0221a61c0fe2	vadökör	sonnet	claude-sonnet-5-5	2026-10-25	
 H7216	H7216G	a Name of	igen	Ramoth	9be383facaf8679a7581b55858d98a524275a137	Rámót	sonnet	claude-sonnet-5-5	2026-10-25	
 H7216	H7216H	a Spelling of		Ramoth	9be383facaf8679a7581b55858d98a524275a137	Rámót	sonnet	claude-sonnet-5-5	2026-10-25	
 H7217	H7217	in Aramaic of	igen	head	1a954628a960aaef81d7b2d4521929579f3541e6	fej	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -4890,6 +5003,7 @@ H7323	H7323I	a Meaning of		to run: pieces	3fde3a4fc84316b360bae723e4a745db3ad9ae
 H7324	H7324		igen	to empty	8d4a48b18474e3df6a54b3b02235be97a368faac	kiüríteni	sonnet	claude-sonnet-5-5	2026-10-25	
 H7326	H7326		igen	be poor	0521ce68b58921f5e69233016e5b47e380a805ff	szegénynek lenni	sonnet	claude-sonnet-5-5	2026-10-25	
 H7327	H7327		igen	Ruth	8f3d9ec2a7420178d2c083c3bf2241f469e836a3	Ruth	sonnet	claude-sonnet-5-5	2026-10-25	
+H7328	H7328		igen	mystery	4dc232a068e53e424c7b68475d8be11b0252c183	titok	sonnet	claude-sonnet-5-5	2026-10-25	
 H7333	H7333		igen	prince	a47b5cc8f06168f0ec3832a99894834e1d27f744	fejedelem	sonnet	claude-sonnet-5-5	2026-10-25	
 H7336	H7336		igen	to rule	d4d85efed723d9902f7ee8b59f5cdd8d39b9c05a	uralni	sonnet	claude-sonnet-5-5	2026-10-25	
 H7337	H7337		igen	to enlarge	bd7d701b81ade6fa78a9f40818cc81bc558a4d56	kiszélesedni	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -4988,6 +5102,7 @@ H7467	H7467H			Reuel	fe520a5dee503e80a46358629fd40336978c187e	Reuél	sonnet	clau
 H7467	H7467I	a Name of		Reuel	fe520a5dee503e80a46358629fd40336978c187e	Reuél	sonnet	claude-sonnet-5-5	2026-10-25	
 H7467	H7467J	a Name of		Reuel	fe520a5dee503e80a46358629fd40336978c187e	Reuél	sonnet	claude-sonnet-5-5	2026-10-25	
 H7471	H7471		igen	pasture	602facf0012ce39407ab1af92307686c2b6c3d7c	legelő	sonnet	claude-sonnet-5-5	2026-10-25	
+H7474	H7474		igen	darling	f6546f98cf7a2a38988414d2bf8d8b9a3f717bd4	kedves	sonnet	claude-sonnet-5-5	2026-10-25	
 H7479	H7479		igen	veil	7ef7689a99d28f57789585efd36937bde77c5c13	lepel	sonnet	claude-sonnet-5-5	2026-10-25	
 H7481	H7481		igen	to thunder	7cd734f49e0451cd62b5079b2b18eb230c2307cc	mennydörögni	sonnet	claude-sonnet-5-5	2026-10-25	
 H7488	H7488A			be fresh	30e9c152edae4fdda93a69fac3ead1af8c2d174c	üdének lenni	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -5017,6 +5132,7 @@ H7533	H7533		igen	to crush	18ff8146cad3eeebc4ecf62eaa7175dbff60b532	összezúzni
 H7534	H7534		igen	thin	6ca0fa2674cdc58af08c183fdf771041a9fedc14	vékony	sonnet	claude-sonnet-5-5	2026-10-25	
 H7535	H7535		igen	except	672fccd70b672edfe12c4b12cbbdf7da010ad355	kivéve	sonnet	claude-sonnet-5-5	2026-10-25	
 H7537	H7537		igen	to rot	cc6177d02eaa20e27811238357e5a6c16e072389	rothadni	sonnet	claude-sonnet-5-5	2026-10-25	
+H7540	H7540		igen	to skip about	232453290718222c3d8dca51e832d86c93a8935e	ugrándozni	sonnet	claude-sonnet-5-5	2026-10-25	
 H7543	H7543		igen	to mix	f041e697d446b2fe4ced6764fb9903881055b600	összekeverni	sonnet	claude-sonnet-5-5	2026-10-25	
 H7544	H7544		igen	spice	7c05204dcfaf173d8b1e2cdd5fc900e3eadc4351	fűszer	sonnet	claude-sonnet-5-5	2026-10-25	
 H7545	H7545		igen	spice	7c05204dcfaf173d8b1e2cdd5fc900e3eadc4351	fűszer	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -5047,6 +5163,9 @@ H7590	H7590		igen	to despise	bc56f93e2d11d4fb0dfb9645f8a2ec9c7c40a9ee	megvetni	s
 H7592	H7592		igen	to ask	bc71c15a1711ed584c9d08ff371ee3dd77b58a45	kérdezni	sonnet	claude-sonnet-5-5	2026-10-25	
 H7593	H7593	in Aramaic of	igen	to ask	bc71c15a1711ed584c9d08ff371ee3dd77b58a45	kérni	sonnet	claude-sonnet-5-5	2026-10-25	
 H7596	H7596		igen	petition	f05a15179d8f5fdebe2df41e99e382cf9dc84325	kérés	sonnet	claude-sonnet-5-5	2026-10-25	
+H7597	H7597A		igen	Shealtiel	219b51c425c66980ba0eca41bb1fbc1cf5f2a16b	Sealtiel	sonnet	claude-sonnet-5-5	2026-10-25	
+H7597	H7597B	a Spelling of		Shealtiel	219b51c425c66980ba0eca41bb1fbc1cf5f2a16b	Sealtiel	sonnet	claude-sonnet-5-5	2026-10-25	
+H7598	H7598	in Aramaic of	igen	Shealtiel	219b51c425c66980ba0eca41bb1fbc1cf5f2a16b	Sealtiel	sonnet	claude-sonnet-5-5	2026-10-25	
 H7599	H7599		igen	to rest	66a5f14a45d2e5b68eadc4a80cdf7f21ffa97d18	megnyugodni	sonnet	claude-sonnet-5-5	2026-10-25	
 H7600	H7600		igen	secure	d015cc465bdb4e51987df7fb870472d3fb9a3505	biztonságos	sonnet	claude-sonnet-5-5	2026-10-25	
 H7602	H7602A		igen	to long for	ca4e845908ca2e10918867c98cd450df7f08633c	vágyódni	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -5087,6 +5206,7 @@ H7641	H7641A			stream	c82e3d7279efa3eca576370af952c815d48ce41f	patak	sonnet	clau
 H7641	H7641B		igen	ear	ddbc6188203df73f608191f3b0a3c1faf4e7eb00	fül	sonnet	claude-sonnet-5-5	2026-10-25	
 H7641	H7641G	a Name of		Euphrates	450381770a4428413efbcc93202f8eee5d415ffe	Eufrátesz	sonnet	claude-sonnet-5-5	2026-10-25	
 H7641	H7641H			Shibboleth	dc1e757a96676dfbbec4591cc6f18a7e013ad61c	Sibbólet	sonnet	claude-sonnet-5-5	2026-10-25	
+H7644	H7644		igen	Shebna	68a6e6d1215e35068efc551c3cea6ed7b3e2dddd	Sebna	sonnet	claude-sonnet-5-5	2026-10-25	
 H7646	H7646		igen	to satisfy	1c33a879d80cfdd14a012fd41c514625eae71d75	jóllakni	sonnet	claude-sonnet-5-5	2026-10-25	
 H7647	H7647		igen	abundance	e5e3b73b4cfae281741ea79ce76a203da957b23e	bőség	sonnet	claude-sonnet-5-5	2026-10-25	
 H7649	H7649		igen	sated	2f9b500cf4a176e92235baf80ef0e1283d29b6dd	jóllakott	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -5148,6 +5268,8 @@ H7725	H7725L	a Meaning of		to return: refuse	f87d9793e31859d6249e12f14988cd9b533
 H7725	H7725M	a Meaning of		to return: reply	02173f208812454e3bb374b8a6a9ebbef18bdc28	visszatérni: válaszolni	sonnet	claude-sonnet-5-5	2026-10-25	
 H7725	H7725N	a Meaning of		to return: recall	f15d653cb98a6ad86e47ef07ede401ea7fd821bb	visszatérni: felidézni	sonnet	claude-sonnet-5-5	2026-10-25	
 H7725	H7725O	a Meaning of		to return: repent	13501a7dd667a9a9ae30316592303a7e255aeb59	visszatérni: megtérni	sonnet	claude-sonnet-5-5	2026-10-25	
+H7732	H7732G		igen	Shobal	cc23afa66517f453a2a4de489fcd52361a770252	Sobál	sonnet	claude-sonnet-5-5	2026-10-25	
+H7732	H7732H			Shobal	cc23afa66517f453a2a4de489fcd52361a770252	Sobál	sonnet	claude-sonnet-5-5	2026-10-25	
 H7737	H7737A		igen	be like	6d65162b9880153f167af3440837fbc41322475d	hasonlónak lenni	sonnet	claude-sonnet-5-5	2026-10-25	
 H7737	H7737B			to set	f65b7c9d5cda62f91f87c5a5d0e2f1d0d231a6a9	helyezni	sonnet	claude-sonnet-5-5	2026-10-25	
 H7743	H7743		igen	to sink	b25d5e89562194dbc872afd29bf528aa3cdb924d	elsüllyedni	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -5184,6 +5306,7 @@ H7797	H7797		igen	to rejoice	a96c790893b3e2983ad3a5be5af4e220112b0fb7	örvendezn
 H7799	H7799		igen	lily	fddbe01857e2d3ab505bfc1dac3b38a2c8b8cd65	liliom	sonnet	claude-sonnet-5-5	2026-10-25	
 H7800	H7800		igen	Susa	6b970d422c27bcc2bb9c2426395df688be4b1ed9	Susán	sonnet	claude-sonnet-5-5	2026-10-25	
 H7801	H7801	a Spelling of	igen	Susa	6b970d422c27bcc2bb9c2426395df688be4b1ed9	Susán	sonnet	claude-sonnet-5-5	2026-10-25	
+H7804	H7804	in Aramaic of	igen	to rescue	81ecd43d30c43606fa0908cb7e8d348f25ad9296	megszabadítani	sonnet	claude-sonnet-5-5	2026-10-25	
 H7805	H7805		igen	to see	be5382916f5c0b88ac6f419f4a7c740d2708a3a0	látni	sonnet	claude-sonnet-5-5	2026-10-25	
 H7806	H7806		igen	to twist	f6a51a856ad2462f442d96111cccc20daa5738aa	sodorni	sonnet	claude-sonnet-5-5	2026-10-25	
 H7810	H7810		igen	bribe	307784a8e718d42909ce8e66bc8d3d15e35a81f4	vesztegetés	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -5236,6 +5359,7 @@ H7901	H7901G		igen	to lie down: lay down	d353c7b22b10d590e3a59babe55f160cd2a61e5
 H7901	H7901H	a Meaning of		to lie down: sleep	105ce21723103d76dce2de986ce03c0d8eb80cd5	lefeküdni: aludni	sonnet	claude-sonnet-5-5	2026-10-25	
 H7901	H7901I	a Meaning of		to lie down: have sex	eb1dad28a168a75fcd303a046cc57fff66517a77	lefeküdni: közösülni	sonnet	claude-sonnet-5-5	2026-10-25	
 H7901	H7901J	a Meaning of		to lie down: be dead	68a447cc725f7c4e8badfd5213e3f9a0395379b7	lefeküdni: halottnak lenni	sonnet	claude-sonnet-5-5	2026-10-25	
+H7902	H7902		igen	semen	f1358a077206bd846da9cc1da82f4718b6fe84fc	magömlés	sonnet	claude-sonnet-5-5	2026-10-25	
 H7905	H7905		igen	spear	0e57fb64220973ea0905aece01cb3359ceef1039	lándzsa	sonnet	claude-sonnet-5-5	2026-10-25	
 H7907	H7907		igen	heart	ef8201e13a29bcc30d4df6b11b34d56cdade2bbd	szív	sonnet	claude-sonnet-5-5	2026-10-25	
 H7909	H7909		igen	childless	aeb257536f6fe007e42ed1315037837aab1b2ea3	gyermektelen	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -5277,6 +5401,7 @@ H7945	H7945	combination of	igen	which	ed04ff4dabf1e2d4cd6b89136c2b24dec27ecca4	a
 H7950	H7950		igen	snow	b94e9f3d7e001981b2dd49f2a70822a8ac8f3e68	hó	sonnet	claude-sonnet-5-5	2026-10-25	
 H7951	H7951		igen	to prosper	b63a18a6dfb6048f79e95d74e7320d432dde388a	boldogulni	sonnet	claude-sonnet-5-5	2026-10-25	
 H7952	H7952		igen	to neglect	64fc309264354317e85fc577f395443f25c29d04	elhanyagolni	sonnet	claude-sonnet-5-5	2026-10-25	
+H7956	H7956		igen	Shelah	b376a0ace4e3c46079ad077ecd3bf5614123aaba	Séla	sonnet	claude-sonnet-5-5	2026-10-25	
 H7957	H7957		igen	flame	f41c19c580f7b5b2914d71b45b593282066b6ab4	láng	sonnet	claude-sonnet-5-5	2026-10-25	
 H7965	H7965G		igen	peace	d7c50a080cb30eef6646744884a95ef9dd00d4ed	béke	sonnet	claude-sonnet-5-5	2026-10-25	
 H7965	H7965H	a Name of		Peace	39470e6a6267af3c7994550c0254bf7734ee205a	Béke	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -5311,6 +5436,7 @@ H7971	H7971K	a Meaning of		to send: reach	fd40bee01b165771498c2c68e987419cc04859
 H7971	H7971L	a Meaning of		to send: burn	8be0f3f4582c571e00ab10e234644ed9b75cd741	küldeni: elégetni	sonnet	claude-sonnet-5-5	2026-10-25	
 H7971	H7971M	a Meaning of		to send: exile	4210ff6b3fd8a9ef242bd0d2d70eecd088897b5b	küldeni: száműzni	sonnet	claude-sonnet-5-5	2026-10-25	
 H7972	H7972	in Aramaic of	igen	to send	d2e941a2b01c59592ae6b1bbb640af5d6abe9e24	küldeni	sonnet	claude-sonnet-5-5	2026-10-25	
+H7974	H7974		igen	Shelah	b376a0ace4e3c46079ad077ecd3bf5614123aaba	Séla	sonnet	claude-sonnet-5-5	2026-10-25	
 H7979	H7979		igen	table	c3ee137d4f22eb06ed1351d644f3674592c90836	asztal	sonnet	claude-sonnet-5-5	2026-10-25	
 H7982	H7982		igen	shield	733aa03fdd44bf8e5018a0a892dffe981207827f	pajzs	sonnet	claude-sonnet-5-5	2026-10-25	
 H7984	H7984		igen	governor	a7d66620f91b1eb07f761109723bb8f5e71ee66e	helytartó	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -5341,6 +5467,7 @@ H8018	H8018M			Shelemiah	421062b35186a043cdd6c00bdd08e523b05e4225	Selemjá	sonne
 H8018	H8018N			Shelemiah	421062b35186a043cdd6c00bdd08e523b05e4225	Selemjá	sonnet	claude-sonnet-5-5	2026-10-25	
 H8018	H8018O	a Name of		Shelemiah	421062b35186a043cdd6c00bdd08e523b05e4225	Selemjá	sonnet	claude-sonnet-5-5	2026-10-25	
 H8025	H8025		igen	to draw	0af96f89503e1dfc80e7152e6234a71111dc6ae4	vonni	sonnet	claude-sonnet-5-5	2026-10-25	
+H8027	H8027		igen	to do three	a2413c3d2275197367fbf1f4a44e79435efcb1bc	háromszor tenni	sonnet	claude-sonnet-5-5	2026-10-25	
 H8029	H8029		igen	third	34fb3300b9a77bebdc988ec3edd0d4a6a42a26f9	harmadik	sonnet	claude-sonnet-5-5	2026-10-25	
 H8032	H8032		igen	three days ago	80f5bcd2b032316b2b3728a7dc1b02208da84bca	harmadnapja	sonnet	claude-sonnet-5-5	2026-10-25	
 H8033	H8033G		igen	there	490528f36debf7c15cea5e9a9d1ea024cf6b2921	ott	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -5350,6 +5477,8 @@ H8035	H8035		igen	Shem	996fcd45d0f1f7727ff614cc15e9d5e24fbdbc51	Sém	sonnet	clau
 H8036	H8036	in Aramaic of	igen	name	6ae999552a0d2dca14d62e2bc8b764d377b1dd6c	név	sonnet	claude-sonnet-5-5	2026-10-25	
 H8040	H8040G		igen	left	12c0f1fbadc4046b5f2bb9e063b227ef8750d9d6	bal	sonnet	claude-sonnet-5-5	2026-10-25	
 H8040	H8040H	a Meaning of		left: north	31607569bb4eec45ee24297056b895053367405f	bal: észak	sonnet	claude-sonnet-5-5	2026-10-25	
+H8042	H8042G		igen	left	12c0f1fbadc4046b5f2bb9e063b227ef8750d9d6	bal	sonnet	claude-sonnet-5-5	2026-10-25	
+H8042	H8042H	a Meaning of		left: north	31607569bb4eec45ee24297056b895053367405f	bal: észak	sonnet	claude-sonnet-5-5	2026-10-25	
 H8045	H8045		igen	to destroy	cb0b91d4f76829c47873b5e799521969cb963c41	elpusztítani	sonnet	claude-sonnet-5-5	2026-10-25	
 H8047	H8047G		igen	horror: destroyed	5573c94a613ff8710966effb5d6dba29f2ec14f8	borzalom: elpusztított	sonnet	claude-sonnet-5-5	2026-10-25	
 H8047	H8047H	a Meaning of		horror: appalled	c9115635e46fe159d2a98ae33c3345740f5f42b9	borzalom: megdöbbent	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -5360,6 +5489,7 @@ H8052	H8052		igen	tidings	1ab21e583816043071debb7911004c4cd5eb859a	hír	sonnet	c
 H8055	H8055		igen	to rejoice	a96c790893b3e2983ad3a5be5af4e220112b0fb7	örvendezni	sonnet	claude-sonnet-5-5	2026-10-25	
 H8056	H8056		igen	glad	3d95672b7ca966952d7ce9f5dd20f5585f66f52e	örvendező	sonnet	claude-sonnet-5-5	2026-10-25	
 H8057	H8057		igen	joy	c7d56fc0723a766824f554c4d00f28ea16c2c36b	öröm	sonnet	claude-sonnet-5-5	2026-10-25	
+H8058	H8058		igen	to release	e44907f3afd717c84f3083f64c878ad27b9b6a75	elengedni	sonnet	claude-sonnet-5-5	2026-10-25	
 H8064	H8064		igen	heaven	66da9f3b8d9d83f34770a14c38276a69433a535b	ég	sonnet	claude-sonnet-5-5	2026-10-25	
 H8065	H8065	in Aramaic of	igen	heaven	66da9f3b8d9d83f34770a14c38276a69433a535b	ég	sonnet	claude-sonnet-5-5	2026-10-25	
 H8066	H8066		igen	eighth	dd5d5862925f1f953cab0dba448b6b14e371bf53	nyolcadik	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -5380,6 +5510,7 @@ H8085	H8085I	a Meaning of		to hear: proclaim	2eaef3a38ff0f93f3ec14536d8f4db82721
 H8085	H8085J	a Meaning of		to hear: understand	8ca4b5d83aa1e857234691d2e46b88b0d09cccd8	hallani: megérteni	sonnet	claude-sonnet-5-5	2026-10-25	
 H8085	H8085K	a Meaning of		to hear: judge	b94921637e1b682257cd426aded24468d5d4edd4	hallani: megítélni	sonnet	claude-sonnet-5-5	2026-10-25	
 H8085	H8085L	a Meaning of		to hear: welcome	e4f4143a36ce8208c1c39206d57320185b2daf29	hallani: fogadni	sonnet	claude-sonnet-5-5	2026-10-25	
+H8086	H8086	in Aramaic of	igen	to hear	c78a4f49e734816270584d29370c511589cba1fb	hallani	sonnet	claude-sonnet-5-5	2026-10-25	
 H8088	H8088A			sound	5e2e97c3c7ba3035c6e6fc3a17e1bc22029c0c3e	hang	sonnet	claude-sonnet-5-5	2026-10-25	
 H8088	H8088B		igen	report	a27297bde9732f2e73fbc06db2611764e3ad9855	hír	sonnet	claude-sonnet-5-5	2026-10-25	
 H8089	H8089	a Spelling of	igen	report	a27297bde9732f2e73fbc06db2611764e3ad9855	hír	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -5452,6 +5583,7 @@ H8142	H8142		igen	sleep	c3ca5f787365eae0dea86250e27d476406956478	alvás	sonnet	c
 H8144	H8144		igen	scarlet	5bcfe00e72a941bf31a1d625e419cd7abba17203	skarlát	sonnet	claude-sonnet-5-5	2026-10-25	
 H8145	H8145		igen	second	352f7829a2384b001cc12b0c2613c756454a1f6a	második	sonnet	claude-sonnet-5-5	2026-10-25	
 H8147	H8147		igen	two	ad782ecdac770fc6eb9a62e44f90873fb97fb26b	kettő	sonnet	claude-sonnet-5-5	2026-10-25	
+H8150	H8150		igen	to sharpen	9eabc73833c4cd2a6d075893351a8b3a4c25eb0f	megélesíteni	sonnet	claude-sonnet-5-5	2026-10-25	
 H8151	H8151		igen	to gird	866ce61f562411d74dba024f90ca9927857bef9c	felövezni	sonnet	claude-sonnet-5-5	2026-10-25	
 H8153	H8153		igen	sleep	c3ca5f787365eae0dea86250e27d476406956478	alvás	sonnet	claude-sonnet-5-5	2026-10-25	
 H8154	H8154		igen	to plunder	49de029906e039ec41249ddf3bf535ffd0dda025	kifosztani	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -5468,6 +5600,7 @@ H8165	H8165B			Seir	3c612c5a5e5b89f7b0174c9365370e2be50f5985	Széir	sonnet	claud
 H8165	H8165G			(Mount) Seir	fbcb46ecb0614805c211e25e652909a448b727a7	(Széir) hegye	sonnet	claude-sonnet-5-5	2026-10-25	
 H8165	H8165H			(Mount) Seir	fbcb46ecb0614805c211e25e652909a448b727a7	(Széir) hegye	sonnet	claude-sonnet-5-5	2026-10-25	
 H8172	H8172		igen	to lean	3079fe294f67dc6b938106009a8881b4777afa9a	támaszkodni	sonnet	claude-sonnet-5-5	2026-10-25	
+H8173	H8173A			to smear	4525976c955c51430792e1ca215c66c3d1585d1d	bekenni	sonnet	claude-sonnet-5-5	2026-10-25	
 H8173	H8173B		igen	to delight	877595f3bd9098ec4aac8c784bafcc10a25357df	gyengédnek lenni	sonnet	claude-sonnet-5-5	2026-10-25	
 H8175	H8175C			to know	3e384013303ced5286bbee0802c8f5902ae31e58	tudni	sonnet	claude-sonnet-5-5	2026-10-25	
 H8178	H8178B			storm	6ad3a9478f1c41621cc342d325bc73ed825e0c69	zápor	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -5475,6 +5608,8 @@ H8179	H8179G		igen	gate	3c5b492776742690efb6a0f1fd8508693400e2cc	kapu	sonnet	cla
 H8179	H8179H	a Meaning of		gate: town	1ff829eccb9b686e5e670ab56a092f2fb0419a70	kapu: város	sonnet	claude-sonnet-5-5	2026-10-25	
 H8181	H8181		igen	hair	bc70b0511b268629ba9522bfbab90c0cec91c2c1	haj	sonnet	claude-sonnet-5-5	2026-10-25	
 H8184	H8184		igen	barley	f2c9bd9fdbd280341ad3188dca65864de1ff846d	árpa	sonnet	claude-sonnet-5-5	2026-10-25	
+H8185	H8185		igen	hair	bc70b0511b268629ba9522bfbab90c0cec91c2c1	szál	sonnet	claude-sonnet-5-5	2026-10-25	
+H8191	H8191		igen	delight	2a17ce1476ccc47f826b9841281edfdca11fb3c3	gyönyör	sonnet	claude-sonnet-5-5	2026-10-25	
 H8193	H8193G			lips	588eb63ee76f8e67d1211bc4952ddd8fd3abfb6a	ajkak	sonnet	claude-sonnet-5-5	2026-10-25	
 H8193	H8193H	a Meaning of	igen	lip: words	5cbeb59ff6403e7708294b30156a4a06f0215984	ajak: szavak	sonnet	claude-sonnet-5-5	2026-10-25	
 H8193	H8193I	a Meaning of		lip: edge	8bc50599c845e4c347ec2c45de1d38ee77aae206	ajak: szél	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -5493,6 +5628,7 @@ H8203	H8203L			Shephatiah	372a8d8108e2dbc3639c79be4d7d7323470101c0	Sefatja	sonne
 H8203	H8203M			Shephatiah	372a8d8108e2dbc3639c79be4d7d7323470101c0	Sefatja	sonnet	claude-sonnet-5-5	2026-10-25	
 H8203	H8203N			Shephatiah	372a8d8108e2dbc3639c79be4d7d7323470101c0	Sefatja	sonnet	claude-sonnet-5-5	2026-10-25	
 H8203	H8203O			Shephatiah	372a8d8108e2dbc3639c79be4d7d7323470101c0	Sefatja	sonnet	claude-sonnet-5-5	2026-10-25	
+H8205	H8205		igen	bareness	ba15a5558c34675b3eed944d027271ff9fdcb2c7	kopárság	sonnet	claude-sonnet-5-5	2026-10-25	
 H8210	H8210G		igen	to pour: pour	63da78241c1d153aaa56502825964de6f606a8f8	önteni: kiönteni	sonnet	claude-sonnet-5-5	2026-10-25	
 H8210	H8210H	a Meaning of		to pour: kill	8960c5e05d404c50a313936e2f798c5aba60fe2b	önteni: vért ontani	sonnet	claude-sonnet-5-5	2026-10-25	
 H8210	H8210I	a Meaning of		to pour: build siege mound	7ff17e7c222e7c867a38d65da3afb78d08d277c4	önteni: ostromsáncot építeni	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -5529,6 +5665,8 @@ H8283	H8283		igen	Sarah	d24e087f504af9366c8376d8a7143821dfd38427	Sára	sonnet	cl
 H8293	H8293	a Spelling of	igen	remnant	1c0447e93e575edea94db7063cefa64d6ca9c8e4	maradvány	sonnet	claude-sonnet-5-5	2026-10-25	
 H8297	H8297	a Name of	igen	Sarai	d742e7e5973e5b59670c5a17870c5cb7be00c003	Száraj	sonnet	claude-sonnet-5-5	2026-10-25	
 H8300	H8300		igen	survivor	f52d1b093df0d74e19e55dfd71374c3b2e72cf25	megmaradt	sonnet	claude-sonnet-5-5	2026-10-25	
+H8302	H8302A			lance	3161cdc7bf197e4c3a35b9cbe358c79910f27e90	dárda	sonnet	claude-sonnet-5-5	2026-10-25	
+H8302	H8302B		igen	armor	e3aa3ff7e2c628603615384ae5e7bce199734aa1	páncél	sonnet	claude-sonnet-5-5	2026-10-25	
 H8304	H8304G		igen	Seraiah	c3da40b87a691a95f71329dfc94fb63a2563e34e	Szeráia	sonnet	claude-sonnet-5-5	2026-10-25	
 H8304	H8304H			Seraiah	c3da40b87a691a95f71329dfc94fb63a2563e34e	Szeráia	sonnet	claude-sonnet-5-5	2026-10-25	
 H8304	H8304I			Seraiah	c3da40b87a691a95f71329dfc94fb63a2563e34e	Szeráia	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -5558,14 +5696,17 @@ H8342	H8342		igen	rejoicing	a03d74beb75c08b57fc32537ff6a398979a479f8	öröm	sonn
 H8345	H8345		igen	sixth	04053a7b8a6957822a1a10641c094af04adc071e	hatodik	sonnet	claude-sonnet-5-5	2026-10-25	
 H8346	H8346		igen	sixty	387f1fe4b7f07681b0893ad24d62a2893aa33e67	hatvan	sonnet	claude-sonnet-5-5	2026-10-25	
 H8347	H8347	a Name of	igen	Babylon	08b98c5731597d2d0b3c4f1c384dd9d81d6e36fa	Babilon	sonnet	claude-sonnet-5-5	2026-10-25	
+H8352	H8352		igen	Seth	0c3aae570a54aebbfb2593834fcd1b45f852d1d2	Szét	sonnet	claude-sonnet-5-5	2026-10-25	
 H8354	H8354		igen	to drink	aa685ddf993953c9d3497728be1a46abeafa851b	inni	sonnet	claude-sonnet-5-5	2026-10-25	
 H8356	H8356		igen	foundation	ec9624c80320be0ef1881f7609ff06e973b43e5a	alap	sonnet	claude-sonnet-5-5	2026-10-25	
+H8359	H8359		igen	warp	af58c7038ec2d43ee676686b18dba74a718ead5e	láncfonal	sonnet	claude-sonnet-5-5	2026-10-25	
 H8362	H8362		igen	to transplant	6866b157092cd3a3a4fed2e2ce88e4391a623090	átültetni	sonnet	claude-sonnet-5-5	2026-10-25	
 H8365	H8365		igen	to open	e2c7f655feacf379196d971c4b4a18e3f8d493c1	kinyitni	sonnet	claude-sonnet-5-5	2026-10-25	
 H8367	H8367		igen	be quiet	b59a952f7751465b873826fa03f7d2b4c5ed7bb9	csendben lenni	sonnet	claude-sonnet-5-5	2026-10-25	
 H8371	H8371		igen	to appoint	798fbcc2639f8fd1a1a7faa62ab8057d6619edb3	kijelölni	sonnet	claude-sonnet-5-5	2026-10-25	
 H8372	H8372		igen	chamber	6bca20a7cf2e2a76017ce0c56a484fb323fefff1	kamra	sonnet	claude-sonnet-5-5	2026-10-25	
 H8373	H8373		igen	to long for	ca4e845908ca2e10918867c98cd450df7f08633c	vágyódni	sonnet	claude-sonnet-5-5	2026-10-25	
+H8374	H8374	a Spelling of	igen	to loathe	5f1e250f383323cd119c63b53dd6e7e4502abef0	megundorodni	sonnet	claude-sonnet-5-5	2026-10-25	
 H8378	H8378		igen	desire	c3c84bf0c498946f97959101e536652e6353eb59	vágy	sonnet	claude-sonnet-5-5	2026-10-25	
 H8381	H8381		igen	curse	f0321970a081e3a5589ab2e1d42eccf02a378ec4	átok	sonnet	claude-sonnet-5-5	2026-10-25	
 H8383	H8383		igen	toil	46ce45230091967b522cff5a4867aebbb2ec6e46	fáradság	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -5635,6 +5776,7 @@ H8518	H8518		igen	to hang	43c2e1b79527df970a61723fe3a184ea73926f51	felakasztani	
 H8532	H8532	in Aramaic of	igen	three	b802f384302cb24fbab0a44997e820bf2e8507bb	három	sonnet	claude-sonnet-5-5	2026-10-25	
 H8535	H8535		igen	complete	0737c22d3bfae812339732d14d8c7dbd6dc4e09c	teljes	sonnet	claude-sonnet-5-5	2026-10-25	
 H8537	H8537		igen	integrity	b9b4d1f1383dd40a2add69513356071bc4247039	feddhetetlenség	sonnet	claude-sonnet-5-5	2026-10-25	
+H8539	H8539		igen	to astounded	a42712408f299b7602db2f7c339fb73c6697b73e	elképedni	sonnet	claude-sonnet-5-5	2026-10-25	
 H8543	H8543		igen	yesterday	1aa96b8f44f6515a65f3c132ce1b8842a9bd9e87	tegnap	sonnet	claude-sonnet-5-5	2026-10-25	
 H8544	H8544		igen	likeness	6108ca54c29c88b9b5aba305f95becfa140d283b	hasonlatosság	sonnet	claude-sonnet-5-5	2026-10-25	
 H8548	H8548		igen	continually	9a698970cb546b76095741761bad140b1f3471b9	szüntelenül	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -5675,6 +5817,7 @@ H8605	H8605		igen	prayer	12df55dfe072a7f0bd4de0275ad18a281cda306d	imádság	sonn
 H8606	H8606		igen	terror	10f9bb8fa0db73b6aa111df49a1d20db9da9a563	rettegés	sonnet	claude-sonnet-5-5	2026-10-25	
 H8608	H8608		igen	to beat	048a897237779e0dc419e3d380ab940bc56e7e04	verni	sonnet	claude-sonnet-5-5	2026-10-25	
 H8610	H8610		igen	to capture	456439ecf6ea3f1b9128ad28f0c65f7901cbcaa8	elfoglalni	sonnet	claude-sonnet-5-5	2026-10-25	
+H8612	H8612		igen	Topheth	3b6a2a816473c2a95c546ec7ad331494d226389b	Tófet	sonnet	claude-sonnet-5-5	2026-10-25	
 H8615	H8615A			cord	3d72b32fffbc94bb6296e9edbccc005958d6bee5	kötél	sonnet	claude-sonnet-5-5	2026-10-25	
 H8615	H8615B		igen	hope	4955742b2d74102e861dbbc8004c5527b3fe1337	remény	sonnet	claude-sonnet-5-5	2026-10-25	
 H8619	H8619		igen	trumpet	562540cd391b44eff3d23589cdd9720639ee91ee	kürt	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -5740,3 +5883,4 @@ H9044	H9044		igen	she	4a240ec058b403b420ec3ba1b1c3acc6cadf3ac5	ő (alany, női)	
 H9045	H9045		igen	we	676e6f35cfc173f73fea9fe27699cf8185397f0c	-nk	sonnet	claude-sonnet-5-5	2026-10-25	?
 H9046	H9046		igen	you	8af56de68279cb6f5ed022f31af18b9fcdcc2e92	ti (alany)	sonnet	claude-sonnet-5-5	2026-10-25	
 H9048	H9048		igen	they	f1fdd46d8d229558fa889e1610ec4ca9adc25328	ők (alany)	sonnet	claude-sonnet-5-5	2026-10-25	
+H9049	H9049		igen	they	f1fdd46d8d229558fa889e1610ec4ca9adc25328	ők (alany, női)	sonnet	claude-sonnet-5-5	2026-10-25	
