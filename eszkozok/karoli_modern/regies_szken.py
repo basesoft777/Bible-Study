@@ -51,6 +51,19 @@ KI = os.path.join('adat', 'karoli_modern', 'regies_szken.tsv')
 # A DT-F96q szerinti opus-futás eredménye (a kérdés, a szabály-jelölt és az opus válasza); az igealak.py olvassa
 KOR3_TABLA = os.path.join('adat', 'karoli_modern', 'igealak_llm_kor3.tsv')
 KOR3_NAPLO = os.path.join('adat', 'karoli_modern', 'igealak_llm_kor3_hivasok.jsonl')
+# A 4. kör (DT-F96r, 2. opció): a 3. kör után mért kihagyás-osztályok (--kor 4)
+KI4 = os.path.join('adat', 'karoli_modern', 'regies_szken_kor4.tsv')
+KOR4_TABLA = os.path.join('adat', 'karoli_modern', 'igealak_llm_kor4.tsv')
+KOR4_NAPLO = os.path.join('adat', 'karoli_modern', 'igealak_llm_kor4_hivasok.jsonl')
+ALAKOK = os.path.join('adat', 'karoli_modern', 'igealak_alakok.tsv')
+# A .2 szabálycímkéinek eleje: az ilyen címkéjű token igealak-döntést kapott (a 4. kör a csak a .1 által változtatott
+# tokent is nézi, a modern alakján)
+K2_ELO = ('igealak', 'gyanu', 'kotohang', 'mult_E1', 'ok_birtokos', 'token_kivetel', 'tobbseg', 'kor3', 'vala',
+          'jelen_mult', 'lon', 'vagyon', 'felszolito', 'jegyhiba', 'igenev')
+KEPZO = ('ít', 'ul', 'ül', 'oz', 'ez', 'öz', 'gat', 'get', 'tat', 'tet', 'kod', 'ked', 'köd', 'dos', 'des', 'dös', 'lad',
+         'led', 'ad', 'ed')  # az -ad/-ed (megfullad) névszóval is egybeesik: a csere csak a szabály és az opus egyezésével
+NEVSZO_RAG = ('ában', 'ében', 'ához', 'éhez', 'ából', 'éből', 'ára', 'ére', 'ával', 'ével', 'áról', 'éről', 'ától',
+              'étől')
 SZKRIPT = 'eszkozok/karoli_modern/regies_szken.py'
 VALA = ('vala', 'valának', 'valék', 'valál', 'valánk', 'valátok')
 
@@ -70,6 +83,7 @@ VEG = [('ának', ('T3', False)), ('ének', ('T3', False)), ('ánk', ('T1', False
        ('ád', ('E2', True)), ('éd', ('E2', True)), ('ám', ('E1', True)), ('ém', ('E1', True)),
        ('ál', ('E2', False)), ('él', ('E2', False)), ('ék', 'ek'), ('ák', ('T3', True)),
        ('vén', 'igenev'), ('ván', 'igenev'), ('á', ('E3', True)), ('é', ('E3', True))]
+VEG4 = VEG + [('a', ('E3', False)), ('e', ('E3', False))]
 VALA_VEG = ('', 'nak', 'nek', 'anak', 'enek', 'ják', 'ja', 'i', 'ik', 'unk', 'ünk', 'juk', 'jük', 'sz', 'tok', 'tek',
             'tök', 'ok', 'ek', 'ök', 'om', 'em', 'öm', 'tt', 'ott', 'ett', 'ött', 't', 'ta', 'te', 'tak', 'ták', 'ték',
             'hat', 'het')
@@ -93,7 +107,8 @@ def beolvas():
 
 
 class Szken:
-    def __init__(self, tok):
+    def __init__(self, tok, kor=3):
+        self.kor = kor
         self.tok = tok
         self.sz = collections.Counter()
         for m in tok:
@@ -101,14 +116,14 @@ class Szken:
             if m[3]:
                 self.sz[m[3].lower()] += 1
         self.volt = set()
-        for t in LLM_TABLAK + [KOR3_TABLA]:
+        for t in LLM_TABLAK + [KOR3_TABLA, KOR4_TABLA]:
             if not os.path.exists(os.path.join(ROOT, t)):
                 continue
             with open(os.path.join(ROOT, t), encoding='utf-8') as f:
                 for l in f:
                     if not l.startswith('#'):
                         m = l.rstrip('\n').split('\t')
-                        self.volt.add(m[2] if t == KOR3_TABLA and len(m) > 2 else m[0])
+                        self.volt.add(m[2] if t in (KOR3_TABLA, KOR4_TABLA) and len(m) > 2 else m[0])
         self.kot = [''] + ir.IGEKOTOK
 
     def igei(self, t):
@@ -125,6 +140,20 @@ class Szken:
                     if (kk + to + s) in self.sz and (kk + to + s) != t:
                         return True
         return False
+
+    def igei4(self, t):
+        """A 4. kör tágabb igei próbája: igekötő + régi tő (körülvev), v-tő (megnyugov → megnyugod), ható ige
+        (késhet, tűrhet), igeképzős tő (felzúdít)."""
+        if self.igei(t):
+            return True
+        for k in self.kot:
+            if k and t.startswith(k) and t[len(k):] in REGI_TO:
+                return True
+        if t.endswith('v') and len(t) >= 4 and (self.igei(t[:-1] + 'd') or self.igei(t[:-1] + 'sz')):
+            return True
+        if t.endswith(('hat', 'het')) and len(t) > 5 and self.igei(t[:-3]):
+            return True
+        return t.endswith(KEPZO) and len(t) >= 5
 
     def szabaly_jelolt(self, w, veg, tip):
         """A végződés szerinti mai alak; None, ha nem képezhető."""
@@ -167,19 +196,28 @@ class Szken:
         alak = collections.Counter()
         elso = {}
         jel = {}
+        kor4 = self.kor == 4
         for i, m in enumerate(self.tok):
-            if m[4] or (m[3] and m[3].lower() != m[2].lower()):
+            if m[4]:
                 continue
+            if m[3] and m[3].lower() != m[2].lower():
+                # a 4. kör a csak a .1 által változtatott tokent is nézi (dícsérvén → dicsérvén)
+                if not kor4 or any(c.startswith(K2_ELO) for c in m[6].split('+')):
+                    continue
             w0 = m[3] or m[2]
             if w0[:1].isupper() and m[1] != '1':
                 continue
             w = w0.lower()
             if len(w) < 4 or w in self.volt or w in NEM_IGE:
                 continue
-            for veg, tip in VEG:
+            for veg, tip in (VEG4 if kor4 else VEG):
                 if w.endswith(veg):
                     t = w[:-len(veg)]
-                    if veg in ('á', 'é') or self.igei(t) or (veg in ('ák', 'ék', 'ám', 'ém', 'ád', 'éd') and self.igei(t + 'ik')):
+                    if veg in ('a', 'e') and (len(t) < 3 or any((t + x) in self.sz for x in NEVSZO_RAG)):
+                        break  # névszó (keze → kezében)
+                    igei = self.igei4 if kor4 else self.igei
+                    if (veg in ('á', 'é') or igei(t)
+                            or (veg in ('ák', 'ék', 'ám', 'ém', 'ád', 'éd') and igei(t + 'ik'))):
                         alak[w] += 1
                         elso.setdefault(w, i)
                         jel[w] = self.szabaly_jelolt(w, veg, tip) or ''
@@ -188,7 +226,7 @@ class Szken:
         vala = collections.Counter()
         velso = {}
         for i, m in enumerate(self.tok):
-            if m[2].lower() in VALA and m[6].startswith('vala_letige'):
+            if m[2].lower() in VALA and (m[6].startswith('vala_letige') or (kor4 and m[6] == 'vala_nem_elemezheto')):
                 j = idx.get((m[0], int(m[1]) - 1))
                 if j is None or self.tok[j][4]:
                     continue
@@ -200,8 +238,10 @@ class Szken:
                     if veg and not w.endswith(veg):
                         continue
                     t = w[:len(w) - len(veg)] if veg else w
-                    if len(t) >= 3 and self.igei(t):
+                    if len(t) >= 3 and (self.igei4(t) if kor4 else self.igei(t)):
                         k = w + ' ' + m[2].lower()
+                        if k in self.volt:
+                            break
                         vala[k] += 1
                         velso.setdefault(k, j)
                         break
@@ -220,13 +260,14 @@ def versreszlet(tok, i, n=6):
                         for j in range(j0, j1 + 1))
 
 
-def llm_valasz(ki, modell):
+def llm_valasz(ki, modell, kor=3):
     """A válaszfájlok (valasz_NN.tsv: id<TAB>válasz) és a hívásnapló (hivasok.jsonl) beolvasása a
     regies_szken.tsv kérdéseihez; ír: igealak_llm_kor3.tsv (+ hívásnapló)."""
     if not modell:
         raise SystemExit('--modell kötelező (a ténylegesen futott modell neve)')
+    KI_, TABLA, NAPLO = (KI4, KOR4_TABLA, KOR4_NAPLO) if kor == 4 else (KI, KOR3_TABLA, KOR3_NAPLO)
     kerdes = []
-    with open(os.path.join(ROOT, KI), encoding='utf-8') as f:
+    with open(os.path.join(ROOT, KI_), encoding='utf-8') as f:
         for l in f:
             if l.startswith('#') or l.startswith('id\t'):
                 continue
@@ -248,21 +289,46 @@ def llm_valasz(ki, modell):
         hivasok = [json.loads(l) for l in f if l.strip()]
     tok = sum(h.get('total_tokens', 0) for h in hivasok)
     ts = __import__('datetime').datetime.now(__import__('datetime').timezone.utc).strftime('%Y-%m-%dT%H:%MZ')
-    with open(os.path.join(ROOT, KOR3_TABLA), 'w', encoding='utf-8', newline='\n') as f:
-        f.write('# GENERÁLT: %s --llm-valasz (F96.3, DT-F96q) — modell-kimenet (modell_ellenorizetlen), kézzel nem '
+    with open(os.path.join(ROOT, TABLA), 'w', encoding='utf-8', newline='\n') as f:
+        f.write('# GENERÁLT: %s --llm-valasz (F96.3, ' + ('DT-F96r, 4. kör' if kor == 4 else 'DT-F96q') + ') — modell-kimenet (modell_ellenorizetlen), kézzel nem '
                 'szerkeszthető | modell=%s (Claude Code subagent, előfizetés, API nélkül; vak, versrészlettel) | '
-                'forras=%s (sha256:%s) | scope=a régies-szken minden kérdése (%d: %d alak, %d vala-pár) | '
+                'forras=%s (sha256:%s) | scope=a régies-szken minden kérdése (%d: %d alak, %d vala-pár, %d jelölt) | '
                 'opus_alak: az alak mai alakja; a vala-páron a vala előtti ige mai múlt idejű alakja, ha a vala '
                 'segédige, különben - | token: %d (%d hívás) | ts=%s\n'
-                % (SZKRIPT, modell, KI, sha(KI), len(kerdes), sum(1 for r in kerdes if r[1] == 'alak'),
-                   sum(1 for r in kerdes if r[1] == 'vala'), tok, sum(h.get('hivasok', 0) for h in hivasok), ts))
+                % (SZKRIPT, modell, KI_, sha(KI_), len(kerdes), sum(1 for r in kerdes if r[1] == 'alak'),
+                   sum(1 for r in kerdes if r[1] == 'vala'), sum(1 for r in kerdes if r[1] == 'jelolt'), tok, sum(h.get('hivasok', 0) for h in hivasok), ts))
         f.write('\t'.join(['id', 'tipus', 'kerdes', 'szabaly_jelolt', 'opus_alak']) + '\n')
         for r in kerdes:
             f.write('\t'.join([r[0], r[1], r[2], r[4], valasz[r[0]]]) + '\n')
-    with open(os.path.join(ROOT, KOR3_NAPLO), 'w', encoding='utf-8', newline='\n') as f:
+    with open(os.path.join(ROOT, NAPLO), 'w', encoding='utf-8', newline='\n') as f:
         for h in hivasok:
             f.write(json.dumps(h, ensure_ascii=False) + '\n')
-    print('kor3: %d válasz; token: %d; kiírva: %s' % (len(valasz), tok, KOR3_TABLA))
+    print('kor%d: %d válasz; token: %d; kiírva: %s' % (kor, len(valasz), tok, TABLA))
+
+
+def jelolt_opus_nelkul(tok):
+    """A 4. kör (H): a változatlanul maradt jelölt alak, amelyre opus-szavazat még nincs (a DT-F96l többségéhez
+    a harmadik szavazat); a felszólító (DT-F96k a) és a -nd- jövő kimarad. {alak: szabály-jelölt}."""
+    ki = {}
+    fej = None
+    with open(os.path.join(ROOT, ALAKOK), encoding='utf-8') as f:
+        for l in f:
+            if l.startswith('#'):
+                continue
+            m = l.rstrip('\n').split('\t')
+            if fej is None:
+                fej = m
+                continue
+            d = dict(zip(fej, m))
+            if (d['alkalmazas'] == 'jelolt' and not d['opus_alak'] and not d['szabaly'].startswith('felszolito')
+                    and d['szabaly'] != 'gyanu:nd_jovo'):
+                ki[d['alak'].lower()] = d['szabaly_jelolt']
+    valtozatlan = set()
+    for m in tok:
+        # változatlan, vagy csak a .1 változtatta (a régies végződés megmaradt: dícsérvén → dicsérvén)
+        if not m[4] and m[2].lower() in ki and (not m[3] or m[3].lower()[-3:] == m[2].lower()[-3:]):
+            valtozatlan.add(m[2].lower())
+    return {k: v for k, v in ki.items() if k in valtozatlan}
 
 
 def main():
@@ -272,24 +338,40 @@ def main():
     ap.add_argument('--llm-valasz', default=None, help='a válaszok könyvtára (a repón kívül)')
     ap.add_argument('--modell', default=None)
     ap.add_argument('--kimenet', default=None, help='a szken próbája (maradék-mérés) a repón kívülre')
+    ap.add_argument('--kor', type=int, default=3, choices=(3, 4), help='4: a 3. kör utáni kihagyás-osztályok (DT-F96r)')
     a = ap.parse_args()
     if a.llm_valasz:
-        llm_valasz(a.llm_valasz, a.modell)
+        llm_valasz(a.llm_valasz, a.modell, a.kor)
         return
     tok = beolvas()
-    s = Szken(tok)
+    s = Szken(tok, a.kor)
     alak, elso, jel, vala, velso = s.futtat()
+    elotag = 'S' if a.kor == 4 else 'R'
     sorok = []
     n = 0
     for w in sorted(alak):
         n += 1
         ih, vr = versreszlet(tok, elso[w])
-        sorok.append(['R%04d' % n, 'alak', w, str(alak[w]), jel[w], ih, vr])
+        sorok.append(['%s%04d' % (elotag, n), 'alak', w, str(alak[w]), jel[w], ih, vr])
     for k in sorted(vala):
         n += 1
         ih, vr = versreszlet(tok, velso[k])
-        sorok.append(['R%04d' % n, 'vala', k, str(vala[k]), '', ih, vr])
-    ki_ut = os.path.join(a.kimenet, 'regies_szken.tsv') if a.kimenet else os.path.join(ROOT, KI)
+        sorok.append(['%s%04d' % (elotag, n), 'vala', k, str(vala[k]), '', ih, vr])
+    if a.kor == 4:
+        jo = jelolt_opus_nelkul(tok)
+        gy = collections.Counter()
+        je = {}
+        for i, m in enumerate(tok):
+            w = m[2].lower()
+            if w in jo and not m[4] and w not in alak:
+                gy[w] += 1
+                je.setdefault(w, i)
+        for w in sorted(gy):
+            n += 1
+            ih, vr = versreszlet(tok, je[w])
+            sorok.append(['%s%04d' % (elotag, n), 'jelolt', w, str(gy[w]), jo[w], ih, vr])
+    nev = 'regies_szken_kor4.tsv' if a.kor == 4 else 'regies_szken.tsv'
+    ki_ut = os.path.join(a.kimenet, nev) if a.kimenet else os.path.join(ROOT, KI4 if a.kor == 4 else KI)
     if a.kimenet:
         os.makedirs(a.kimenet, exist_ok=True)
     with open(ki_ut, 'w', encoding='utf-8', newline='\n') as f:
@@ -301,8 +383,8 @@ def main():
         f.write('\t'.join(['id', 'tipus', 'kerdes', 'gyakorisag', 'szabaly_jelolt', 'elso_igehely', 'versreszlet']) + '\n')
         for r in sorok:
             f.write('\t'.join(r) + '\n')
-    print('alak: %d (%d token); vala: %d pár (%d token); kiírva: %s' % (len(alak), sum(alak.values()), len(vala),
-                                                                         sum(vala.values()), ki_ut))
+    print('alak: %d (%d token); vala: %d pár (%d token); jelölt: %d; kiírva: %s'
+          % (len(alak), sum(alak.values()), len(vala), sum(vala.values()), sum(1 for r in sorok if r[1] == 'jelolt'), ki_ut))
     if a.llm_kerdes:
         if os.path.abspath(a.llm_kerdes).startswith(ROOT):
             raise SystemExit('a kérdések a repón kívülre mennek')

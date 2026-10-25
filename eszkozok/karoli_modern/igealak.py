@@ -102,6 +102,9 @@ LLM2_NAPLO = os.path.join(KI_DIR, 'igealak_llm_opus_hivasok.jsonl')
 # A 3. ellenőri kör (N-F96d/e, DT-F96q): a régies-szken kérdései, szabály-jelöltje és az opus válasza
 # (regies_szken.py --llm-valasz)
 KOR3_TABLA = os.path.join(KI_DIR, 'igealak_llm_kor3.tsv')
+# A 4. kör (DT-F96r, 2. opció): a 3. kör után mért kihagyás-osztályok; a kulcs a .1 utáni alak; a `jelolt` típus a
+# DT-F96l többségének opus-szavazata, ahol az igealak_llm_opus.tsv nem szavazott
+KOR4_TABLA = os.path.join(KI_DIR, 'igealak_llm_kor4.tsv')
 SZKRIPT = 'eszkozok/karoli_modern/igealak.py'
 MODUL = 'eszkozok/karoli_modern/igeragozas.py'
 MAG = 20261024
@@ -457,12 +460,13 @@ def targyrag(w):
     return False
 
 
-def kor3_beolvas():
-    """A 3. kör táblája: (alak → (szabály-jelölt dict vagy None, opus-alak), vala-pár → opus-alak)."""
-    alak, vala = {}, {}
-    ut = os.path.join(ROOT, KOR3_TABLA)
+def kor3_beolvas(tabla=KOR3_TABLA):
+    """A 3. (4.) kör táblája: (alak → (szabály-jelölt dict vagy None, opus-alak), vala-pár → opus-alak,
+    jelölt alak → opus-alak)."""
+    alak, vala, jelolt = {}, {}, {}
+    ut = os.path.join(ROOT, tabla)
     if not os.path.exists(ut):
-        return alak, vala
+        return alak, vala, jelolt
     fej = None
     with open(ut, encoding='utf-8') as f:
         for l in f:
@@ -476,11 +480,14 @@ def kor3_beolvas():
             if d['tipus'] == 'vala':
                 vala[d['kerdes']] = d['opus_alak']
                 continue
+            if d['tipus'] == 'jelolt':
+                jelolt[d['kerdes']] = d['opus_alak']
+                continue
             jel = None
             if d['szabaly_jelolt']:
                 jel = dict((x.split('=', 1) if '=' in x else ('', x)) for x in d['szabaly_jelolt'].split('|'))
             alak[d['kerdes']] = (jel, d['opus_alak'])
-    return alak, vala
+    return alak, vala, jelolt
 
 
 def nevelo_utan(spans, szoveg, i):
@@ -503,7 +510,8 @@ class Feldolgozo:
         self.dont = dont
         self.llm = llm
         self.llm2 = llm_beolvas(LLM2_TABLA)
-        self.kor3_alak, self.kor3_vala = kor3_beolvas()
+        self.kor3_alak, self.kor3_vala, _ = kor3_beolvas()
+        self.kor4_alak, self.kor4_vala, self.kor4_jelolt = kor3_beolvas(KOR4_TABLA)
         SZAVAK.update(alakok.kis_szavak)
         self.alak_dontes = {}  # alak → (alkalmazas, jeloltek, szabaly)
         self.szamlalo = collections.Counter()
@@ -603,6 +611,8 @@ class Feldolgozo:
     def llm_jelolt(self, alak, alak_h, masodik=False):
         """(llm-alak, tő-őr) az LLM-táblából (kisbetűs kulcs; masodik: az opus-tábla); ('', '') ha nincs."""
         d = (self.llm2 if masodik else self.llm).get(alak.lower())
+        if not d and masodik and alak.lower() in self.kor4_jelolt:
+            d = {'llm_alak': self.kor4_jelolt[alak.lower()]}  # a 4. kör opus-szavazata (DT-F96r)
         if not d:
             return '', ''
         llm = nagy(alak_h, d['llm_alak'])
@@ -657,8 +667,10 @@ class Feldolgozo:
             elif alk == 'vala':
                 self.vala(t, spans, szoveg, i)
                 self.kor3_vala_alkalmaz(t, spans, szoveg, i)
+                self.kor3_vala_alkalmaz(t, spans, szoveg, i, 4)
             if alk != 'vala' and not cim.startswith('felszolito') and cim != 'gyanu:nd_jovo':
                 self.kor3_alkalmaz(t, spans, szoveg, i)
+                self.kor3_alkalmaz(t, spans, szoveg, i, 4)
         modern = self.szoveg(szoveg, spans, t)
         self.k2(igehely, szoveg, modern, t)
         return t, modern
@@ -716,20 +728,26 @@ class Feldolgozo:
                     return True
         return False
 
-    def kor3_alkalmaz(self, t, spans, szoveg, i):
+    def kor3_alkalmaz(self, t, spans, szoveg, i, kor=3):
         """DT-F96q: a modern szövegben változatlanul maradt régies alak a 3. kör táblájából. Ha az opus és a
         szabály-jelölt egyezik, és a tő-őr átengedi: csere (szöveg-környezetfüggő jelöltnél a tagmondat vagy a vers
         dönt); ha szabály-jelölt nincs: a tő-őrön átment opus-alak cserél, bizonytalan jelöléssel; ha eltérnek:
-        jelölt marad."""
+        jelölt marad. A 4. kör (DT-F96r) ugyanígy, a .1 utáni alakon, a .2 döntése nélküli tokenen."""
         r = t[i]
-        if r[4] or r[3].lower() != r[1].lower() or r[6] == 'token_kivetel' or r[8] == 'nevelo_utan':
+        if kor == 4:
+            if r[4] or r[3].lower() != r[2].lower() or r[6] or r[8] == 'nevelo_utan':
+                return
+            k = self.kor4_alak.get(r[2].lower())
+        else:
+            if r[4] or r[3].lower() != r[1].lower() or r[6] == 'token_kivetel' or r[8] == 'nevelo_utan':
+                return
+            k = self.kor3_alak.get(r[1].lower())
+        if not k or r[1].lower() in IGENEV_KIVETEL or r[2].lower() in IGENEV_KIVETEL:
             return
-        k = self.kor3_alak.get(r[1].lower())
-        if not k or r[1].lower() in IGENEV_KIVETEL:
-            return
+        nev = 'kor%d' % kor
         jel, opus = k
         opus_h = nagy(r[1], opus)
-        if opus_h.lower() == r[1].lower():
+        if opus_h.lower() in (r[1].lower(), r[2].lower()):
             return
         o, reszlet, sor = self.a.oszt[r[1]]
         tor = to_or(opus_h, r[2], sor, self.a, reszlet)
@@ -737,44 +755,48 @@ class Feldolgozo:
             jel_h = {kk: nagy(r[1], v) for kk, v in jel.items()}
         if jel and opus_h in jel_h.values() and tor:
             r[3] = self.valaszt(jel_h, spans, szoveg, i, r, t)
-            r[6] = cimke(r[6], 'kor3:szabaly+opus')
+            r[6] = cimke(r[6], nev + ':szabaly+opus') if r[6] else nev + ':szabaly+opus'
         elif not jel and tor:
             r[3] = opus_h
-            r[6] = cimke(r[6], 'kor3:opus')
-            r[8] = cimke(r[8], 'kor3_csak_opus') if r[8] else 'kor3_csak_opus'
+            r[6] = cimke(r[6], nev + ':opus') if r[6] else nev + ':opus'
+            r[8] = cimke(r[8], nev + '_csak_opus') if r[8] else nev + '_csak_opus'
         else:
             jl = [r[9]] if r[9] else []
             if jel:
-                jl.append('kor3_szabaly:' + '|'.join('%s%s' % (kk + '=' if kk else '', v) for kk, v in jel_h.items()))
-            jl.append('kor3_opus:%s(%s)' % (opus_h, 'tő-őr ok' if tor else 'tő-őr bukott'))
+                jl.append(nev + '_szabaly:' + '|'.join('%s%s' % (kk + '=' if kk else '', v) for kk, v in jel_h.items()))
+            jl.append(nev + '_opus:%s(%s)' % (opus_h, 'tő-őr ok' if tor else 'tő-őr bukott'))
             r[9] = '; '.join(jl)
 
-    def kor3_vala_alkalmaz(self, t, spans, szoveg, i):
+    def kor3_vala_alkalmaz(self, t, spans, szoveg, i, kor=3):
         """DT-F96q, N-F96e: a létigeinek vett vala előtti ige a 3. kör táblájából. Szabály-jelölt itt nincs: a
         tő-őrön átment opus-alak dönt (a vala kiesik, az ige múlt időbe kerül), bizonytalan jelöléssel."""
         r = t[i]
-        if not r[6].startswith('vala_letige') or i == 0 or t[i - 1][4]:
+        if i == 0 or t[i - 1][4] or not (r[6].startswith('vala_letige') or (kor == 4 and r[6] == 'vala_nem_elemezheto')):
             return
+        tabla, nev = (self.kor4_vala, 'kor4') if kor == 4 else (self.kor3_vala, 'kor3')
         if szoveg[spans[i - 1][1]:spans[i][0]] != ' ':
             return
         e = t[i - 1]
         h = KOR3_VALA_HOMOGRAF.get(e[3].lower())
         if h and (i < 2 or t[i - 2][1].lower() not in h):
             return
-        opus = self.kor3_vala.get(e[3].lower() + ' ' + r[1].lower()) or self.kor3_vala.get(e[2].lower() + ' ' + r[1].lower())
+        opus = tabla.get(e[3].lower() + ' ' + r[1].lower()) or tabla.get(e[2].lower() + ' ' + r[1].lower())
+        if opus == '-' and r[6] == 'vala_nem_elemezheto':
+            r[3], r[6], r[8] = nagy(r[1], VALA[r[1].lower()][1]), 'vala_letige_' + nev, nev + '_csak_opus'
+            return
         if not opus or opus == '-':
             return
         uj = nagy(e[3], opus)
         o, reszlet, sor = self.a.oszt[e[1]]
         if not (to_or(uj, e[2], sor, self.a, reszlet) or to_or(uj, e[3], sor, self.a, reszlet)):
-            r[9] = '; '.join(x for x in (r[9], 'kor3_opus:%s %s (tő-őr bukott)' % (uj, '-')) if x)
+            r[9] = '; '.join(x for x in (r[9], '%s_opus:%s (tő-őr bukott)' % (nev, uj)) if x)
             return
         if uj != e[3]:
             e[3] = uj
             e[6] = cimke(e[6], 'jelen_mult_vala') if e[6] else 'jelen_mult_vala'
-            e[8] = cimke(e[8], 'kor3_csak_opus') if e[8] else 'kor3_csak_opus'
-        self.kiesik(r, 'vala_segedige_kor3')
-        r[8] = 'kor3_csak_opus'
+            e[8] = cimke(e[8], nev + '_csak_opus') if e[8] else nev + '_csak_opus'
+        self.kiesik(r, 'vala_segedige_' + nev)
+        r[8] = nev + '_csak_opus'
 
     def vala(self, t, spans, szoveg, i):
         r = t[i]
@@ -964,7 +986,7 @@ def bemenet_hash():
     return ('%s (sha256:%s) + %s (sha256:%s) + %s (sha256:%s) + %s (sha256:%s) + %s (sha256:%s)%s'
             % (KAROLI, sha(KAROLI)[:12], SZOTARI, sha(SZOTARI)[:12], H_TOKENEK, sha(H_TOKENEK)[:12],
                SZKRIPT, sha(SZKRIPT)[:12], MODUL, sha(MODUL)[:12],
-               ''.join(' + %s (sha256:%s)' % (t, sha(t)[:12]) for t in (LLM_TABLA, LLM2_TABLA, KOR3_TABLA)
+               ''.join(' + %s (sha256:%s)' % (t, sha(t)[:12]) for t in (LLM_TABLA, LLM2_TABLA, KOR3_TABLA, KOR4_TABLA)
                        if os.path.exists(os.path.join(ROOT, t)))))
 
 
