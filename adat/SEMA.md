@@ -1491,6 +1491,33 @@ Kulcs: `magyar_alak` + `verzio`. Állapot (F132, 2026-10-25): 2 tétel (a DT241 
 „melléknevet adni”); a `forditasok.tsv`-ben a kapu 4 helyen talál, mind a G1941 két sorában (Thayer `teljes`, TBESG `1`; F121 2b/4),
 a 98 nyelvtani „melléknév” sor nem találat. A tartalmat a #121 bővíti.
 
+
+### 2.37 `thayer_sigla.tsv` — a Thayer sigla- és rövidítéstáblája (F132, brief 2a/5)
+
+**Félig kézi tábla.** A számoszlopokat és az új jelölt sorokat az `eszkozok/thayer_jelolt/sigla_gyujt.py --ts <nap>` írja a
+`thayer_szakaszok.tsv` szövegéből (a fordítónak átadott szöveg); a **besorolás kézi** (`tipus`, `jelentes`, `magyar_alak`,
+`allapot`), és az eszköz ezeket soha nem írja át (írás előtt összeveti, eltérésnél megáll); sort nem töröl (az eltűnt jelölt
+`elofordulas = 0`). A `--ellenoriz` bájtra összevet. A besorolt sorokat a `thayer_jelolt/thayer_kapuk.py` **16. kapuja**
+(`16_sigla`, gátoló) ellenőrzi a Thayer-fordításon; a besorolatlan sor nem gátol (JELZES). A tábla a #129 (BDB-kiadás)
+rövidítésjegyzékének is mintája. Az első két sor `#` megjegyzés (a második: a bemenetek és a kód hash-e), a harmadik a fejléc.
+
+| Oszlop | Jelentés |
+|---|---|
+| `forrasalak` | a sigla / rövidítés a forrás alakjában (`Rec.`, `WH`, `Winers Grammar`, `cf.`, `Macc.`) |
+| `gyujtes` | a gépi gyűjtés szabálya: `minta` (a brief 2a/5 és az M0 7. pontjának megnevezett elemei) \| `kiadas_sigla` (az `R G L T Tr WH` sigla, ha legalább kettő sorban áll) \| `rovidites` (ponttal záruló szóalak, ≥ 10 előfordulás, ≥ 90%-ban ponttal) |
+| `tipus` | **kézi:** pl. `kiadás-sigla`, `grammatika`, `antik szerző`, `modern szerző`, `rövidítés`, `könyvrövidítés`, `nem sigla`; üres: besorolatlan |
+| `jelentes` | **kézi:** mi ez (pl. „Westcott–Hort kiadás”) |
+| `magyar_alak` | **kézi:** a magyar kiadás egységes alakja; `változatlan`: a forrásalak marad |
+| `elofordulas`, `szocikk` | gépi: előfordulás és érintett szócikk a teljes Thayerben |
+| `gerinc_elofordulas` | gépi: előfordulás a motívumok aktuális görög gerincszavaiban (`szolista.gerinc_strongok`) |
+| `pelda` | gépi: az első előfordulás `<strong>:<sorszam>` (a 2.34 kulcsa) |
+| `allapot` | `jelolt` (gépi, besorolatlan) \| `besorolt` (kézi; csak ilyen sort ellenőriz a 16. kapu) |
+| `proveniencia` | `scope=adat/thayer_szakaszok.tsv \| forras=thayer_jelolt/sigla_gyujt.py (fejléc) \| ts=<nap>`; a kézi besorolás a saját döntés-hivatkozását a `jelentes`-ben viseli |
+
+Kulcs: `forrasalak`. Állapot (F132, 2026-10-25): 254 jelölt (`minta` 31, `kiadas_sigla` 6, `rovidites` 217), ebből 90 fordul elő a
+gerincszavakban; besorolt: 0. A terminológiai szójegyzék (2.15) 10 jelöltre már ad magyar alakot (`cf.` → `vö.`, `Sept.` →
+`Septuaginta`, `i. e.` → `azaz`, `Plato` → `Platón` …), az elsőbbséget kap (az adatblokk jelzi).
+
 ---
 
 ## 3. Integritási szabályok
