@@ -1020,3 +1020,56 @@ A második és a harmadik csoport (370 token) a tokenszintű kör tárgya. A kor
 - Utána a minta2 változott sorainak ellenőrzése jön.
 
 **Megállás:** a keret és a cserélési szabály a felhasználó döntése (**DT-F96u**, 🟡).
+
+## 14. Az 5. kör: tokenszintű opus-kérdés (DT-F96u, 1. opció) — megállás a DT-F96v-n
+
+**A felhasználó döntése** (chat, 2026-10-25): „1” — tokenenként, a teljes verssel, vak opus-futás. Csere akkor van, ha a válasz egy meglévő jelölttel egyezik, és a tő-őr átengedi.
+
+### 14.1 A kérdések (`regies_szken.py --kor 5`)
+
+Bemenet: a 4. kör és a jelölt-kör utáni `igealak_tokenek.tsv` (`0dda8b3`). A hatókör a DT-F96u szerint a modern szövegben változatlan, `jelolt` oszlopos, nem kieső token, a felszólító és a *-nd-* jövő nélkül. Két csoport:
+- ahol legalább egy LLM-szavazat változtatna: 357 token;
+- ahol LLM-szavazat nincs, és a szabály-jelölt változtatna: 13 token.
+
+Ez **370 kérdés**, `T%04d` azonosítóval, a meglévő jelöltekkel (`regies_szken_kor5.tsv`).
+
+Egy próbahiba: az első változat a csak szabály szerint változó, de minden LLM szerint változatlan tokeneket is felvette (*vége → végett*). Ez 743 kérdés lett volna, ezért szűkítve.
+
+A kérdés a teljes modern vers, a token [szögletes zárójelben]. A helyét a K2 garantálja: a nem kieső tokenek sorrendje a modern szöveg szavaié, eltérésnél a szkript megáll.
+
+### 14.2 A futás (K4)
+
+2 köteg (185 + 185), vak, `claude-opus-5-5` mindkét átiratban. Összesen **285 418 token** (4 hívás; kötegenként 144 936 és 140 482; a keret 0,25–0,35 M). Eredmény: `igealak_llm_kor5.tsv` és a hívásnapló.
+
+### 14.3 Alkalmazás
+
+- **Csere** (`kor5:token_opus+meglevo`, `bizonytalan=token_opus`): **205 token**.
+  - A válasz a .1 cseréjével normalizálva egyezik egy meglévő jelölttel, és a tő-őr átengedi (a .1-ben változott tokenen a .1 utáni alakon is mér).
+  - Kizárva a *jövén/jővén/lévén* igenév (`IGENEV_KIVETEL`): ez 4 tokent tartott vissza (*eljővén, kijővén* …).
+- **Jelölt marad** (`kor5_token_opus` a `jelolt` oszlopban): 106 token. A válasz itt nem egyezik meglévő jelölttel, vagy a tő-őr bukik. A többi kérdésre az opus változatlan alakot adott.
+- **Átnézés:** a 147 egyedi alak–eredmény pár mind átnézve, a kétes helyeken a verssel:
+  - *aluva találta őket → alva* (igenév);
+  - *szerzék → szereztem* (2Sám 7:10, Neh 5:7: E/1);
+  - *nevekedének → növekedtek* (a #94 mai lemmája; a réteg korábban is 42 tokenen így cserél);
+  - *rombolá → rombolta*, *megfullada → megfulladt*, *űle → ült*.
+- **Újragenerálás:**
+  - .2 és .3 újragenerálva; a K2, K3 és K3b teljesül, a Strong nem változott;
+  - a változó token 50 491, a változó vers 21 620;
+  - a .1-visszalépés 0 tokenen.
+
+### 14.4 A minták
+
+- **A minta2:** a H046 (*megfullada → megfulladt*) változott, korábbi kihagyás volt, most jó.
+- **A régi minta:** a G106 (*űle → ült*) változott, korábbi kihagyás volt, most jó.
+
+| A minta2 rétege | Csere | Hiba | Kihagyás |
+|---|---|---|---|
+| véletlen (100) | 96 | 0 | 3 (mind *-ök/-ok*, a DT-F96p hatókörén kívül) |
+| kor3 (20) | 69 | 0 | 4 |
+| kor3-*vala* (10) | 25 | 0 | 0 |
+| `ek_E1_T3` (10) | 26 | 0 | 1 |
+
+- **Lefedettség a véletlen rétegen:** igealak 96/96 = **100%**; az *-ök/-ok*-kal együtt 96/99 = 97,0%.
+- **Torzítás:** a 11.4 és a 12.4 szerint a szám erre a mintára hangolt körök után áll elő, ezért felülbecsül. Torzítatlan mérés csak friss véletlen mintán lehetséges.
+
+**Megállás:** a folytatás a felhasználó döntése, **DT-F96v** (🟡).
