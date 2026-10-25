@@ -46,7 +46,7 @@ H2763 · ige · Hif'íl                          ← alcím (Strong-szám, szóf
 **Benne van:**
 
 - a héber szó-lap fejlécének (`_szo_panel.html` és a `szo_torzs` által átadott mezők) átrendezése a fenti sorrendre, a kis és a nagy képernyős nézetben (a #134 elrendezésén belül);
-- a kiemelt jelentés-sor forrás-sorrendje a DT-F140a (a) szerint (`blokkok.alapjelentes`): jóváhagyott kézi jelentés > a #140 magyar glosszája (`adat/glosszak_heber_hu.tsv`, a pardes.db-ben azonos nevű tábla) > a BDB-kivágás; ha egyik sincs, a sor jelölten üres („magyar jelentés még nincs”), angol szöveg nem kerül a helyére;
+- a kiemelt jelentés-sor forrás-sorrendje a DT302 (a) szerint (`blokkok.alapjelentes`): jóváhagyott kézi jelentés > a #140 magyar glosszája (`adat/glosszak_heber_hu.tsv`, a pardes.db-ben azonos nevű tábla) > a BDB-kivágás; ha egyik sincs, a sor jelölten üres („magyar jelentés még nincs”), angol szöveg nem kerül a helyére;
 - a szófaji előtag (és a vezető nyelvtani címke, pl. `ige Hiph`il:`) leválasztása a megjelenített alapjelentésről **a megjelenítési rétegben**; ami leválik, az alcímbe kerülhet, ha a `Szófaj` mezőnél többet mond (binyan);
 - a magyar átírás a címsorban, a DT-F139a döntés szerinti forrásból; gépi átírás esetén látható jelöléssel (pl. `title` és jelölő osztály);
 - az angol szótagolású `Kiejtés` kivétele a fejlécből (a Strong-szótár blokkjában, lejjebb, megmaradhat);
@@ -85,12 +85,12 @@ H2763 · ige · Hif'íl                          ← alcím (Strong-szám, szóf
 
 - A héber szó-lap fejléce a cél-sorrendben áll; a szófaj sehol nem ismétlődik a fejlécben.
 - A címsorban a magyar átírás a DT-F139a szerint áll; gépi átírásnál a jelölés látható; az angol szótagolású kiejtés a fejlécben nem szerepel.
-- A kiemelt jelentés-sor a DT-F140a (a) sorrendjét követi (kézi > TBESH-glossza fordítása > BDB-kivágás); angol szöveg a kiemelt sorban nem áll, a hiány jelölt; a `bdb_szelet.py` változatlan.
+- A kiemelt jelentés-sor a DT302 (a) sorrendjét követi (kézi > TBESH-glossza fordítása > BDB-kivágás); angol szöveg a kiemelt sorban nem áll, a hiány jelölt; a `bdb_szelet.py` változatlan.
 - `python eszkozok/teszt_futtat.py` zöld; az új fejléc-teszt legalább 10 Stronggal.
 - (M1 esetén) az `adat/kiejtes_heber_atiras.tsv` minden sora provenienciával; a generátor kétszeri futása bájtazonos.
 
 ## 5. Döntésnapló
 
-- **DT-F140a** (🟢, 2026-10-25, a felhasználó): a kiemelt jelentés forrása és sorrendje (a), a #139 függése a #140-től (d); átvezetve ebbe a briefbe a befogadáskor.
+- **DT302** (🟢, 2026-10-25, a felhasználó): a kiemelt jelentés forrása és sorrendje (a), a #139 függése a #140-től (d); átvezetve ebbe a briefbe a befogadáskor.
 - **DT-F139a** (nyitott, M0 ⛔): a héber átírás forrása a címsorban, (a)/(b)/(c), l. M0 4.
 - Előzmény (2026-10-25, chat, `manual`): a felhasználó jóváhagyta, hogy a jelentés ne a címsorban, hanem közvetlenül alatta, kiemelve álljon, és hogy a megjelenítés a #138-tól külön feladat legyen.

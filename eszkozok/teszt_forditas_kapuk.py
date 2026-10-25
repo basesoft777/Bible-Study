@@ -503,6 +503,20 @@ class ForrasVersOcr(unittest.TestCase):
         self.assertEqual(len(kapott), 10)
 
 
+class IdezojelForrasMaradvany(unittest.TestCase):
+    """A H4725 `«GKC:130c»` forras-maradvanya (DT-F38j): a « a forrasban is par."""
+
+    def test_forras_francia_idezojel_par(self):
+        forras = 'zz (Ges ^«GKC:130c»§ 130c) zz'
+        forditas = 'zz (Ges ^«GKC:130c»§ 130c) zz'
+        self.assertEqual(K.idezojel_parok_forras(forras), 1)
+        self.assertEqual(K.ellenoriz_idezojel(forras, forditas)[0], 'RENDBEN')
+
+    def test_valodi_hiany_tovabbra_is_serites(self):
+        self.assertEqual(K.ellenoriz_idezojel('nincs', 'itt »van« egy')[0], 'SERTES')
+        self.assertEqual(K.ellenoriz_idezojel('"x" y', 'x y')[0], 'SERTES')
+
+
 class Szakasz(unittest.TestCase):
     """F128 M3: a 14. szakasz-kapu (a `⟪n⟫` határtokenek), szintetikus esetek."""
     F = '⟪1⟫ H1. ab\n⟪2⟫ noun father\n⟪3⟫ 1 father of individual\n⟪4⟫ 2 of God'

@@ -8,7 +8,7 @@ Az fp2/kapuk.py a naplok/FORDITAS_P4_ellenoriz.py fuggvenyeit importalja;
 ez a modul ugyanigy tesz (1-6. ellenorzes), es hozzaadja a brief harom uj
 kapujat:
 
-  idezojel   az idezojel-parok szama egyezik (forras: ASCII " / 2 + “;
+  idezojel   az idezojel-parok szama egyezik (forras: ASCII " / 2 + “ + «;
              forditas: „ + » nyito jelek)
   tagolas    a jelentesszamok es betujelek (1., 2., a., b., α., I., II.)
              sorozata azonos -- enelkul a render nem tud jelentest kivagni
@@ -78,7 +78,8 @@ TILTOTT_UT = os.path.join(REPO, 'adat', 'tiltott_fordulatok.tsv')
 # ---------------------------------------------------------------------------
 
 def idezojel_parok_forras(szoveg):
-    return szoveg.count('"') // 2 + szoveg.count('“')
+    # « a H4725 forras-maradvanya (`«GKC:130c»`); a forditas »-t szamol, ezert a forras « jelet is (DT-F38j)
+    return szoveg.count('"') // 2 + szoveg.count('“') + szoveg.count('«')
 
 
 def idezojel_parok_forditas(szoveg):
