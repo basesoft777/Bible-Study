@@ -400,3 +400,20 @@ eltérés elfogadva?”. Átvezetve (`DONTESEK.md`, 🟢; a brief 6. döntésnap
 
 1. Az `adat/thayer_vers_jelentes.tsv` kilencedik oszlopa, a `szakasz` (l. M2 „Sémaeltérés”) — elfogadva, a tábla és a SEMA 2.35 marad.
 2. Az `adat/bdb_szakasz_hu.tsv` fejlécsorának hash-újragenerálása (l. M3-előfeltétel 1 „Mellékhatás”) — elfogadva, az `ir` bővülése marad.
+
+## F132.11 — DT-F132i (2): a `Thayer_teljes.tsv` javítótáblája (2026-10-25)
+
+*(proveniencia: `scope=konkordancia/lexikonok_nyers/Thayer.lexicon, konkordancia/Thayer_teljes.tsv | forras=eszkozok/thayer_jelolt/forras_javit.py --ts 2026-10-25, bont.py --ts 2026-10-25 (a fejlécsorok hash-eivel); i_meres.py, i_diff.py (eseti, a repón kívül) | ts=2026-10-25`)*
+
+- **Új:** `eszkozok/thayer_jelolt/forras_javit.py` → `adat/thayer_forras_javitas.tsv` (generált, SEMA 2.38). Egy sor = egy lyuk; a
+  beszúrt szöveg a lexikonbekezdés címkék nélküli szövegéből, soronként gépileg igazolva (egyetlen törlés egyetlen bekezdésben; a
+  beszúrással a Strong illesztése `egyezik`; a javított sor szóközök nélkül = a lexikonbekezdés). Eredmény: **15 lyuk, mind `javitva`,
+  2 715 karakter** (szóközök nélkül; az M1 száma), `jelolt_marad` 0. A G4151 6. sora: „1Co 14:15, 1Co 14:16.” (18).
+- **A bontó** (`bont.py`) a táblát csak a határokhoz olvassa: a 15 Strong illesztése `reszleges` → **`javitassal`** (175 sor `illesztes`
+  mezője; a `szoveg` mező **egyetlen sorban sem változott**, a difflib-vetítés határai pontosak voltak). A tábla nyers marad.
+- **A nézet:** `thayer_bemenet.szakaszok` a `javitassal` sorba a `sor_poz` helyén beszúrja a `javitott_alak`-ot (az `elotte` mezővel
+  igazolva). Ezt kapja a fordítás (a `forras_hash` is erről), az adatblokk (a „hiányt ne pótold” figyelmeztetés helyett tájékoztató
+  sor) és a sigla-gyűjtés (`sigla_gyujt.py` a nézetre állt: 255 jelölt, ebből 91 a gerincszavakban; korábban 254 / 90).
+- Mellékhatás: a `thayer_vers_jelentes.tsv` fejlécsora (a `bont.py` kód-hash-e) újragenerálva, adatsor nem változott.
+- Tesztek: `teszt_bont.py` 23 (új `Javitas` osztály, 7 teszt), `teszt_lanc.py` 18, `teszt_vers_jelentes.py` 9 — zöld; `--ellenoriz`:
+  `forras_javit.py`, `bont.py`, `sigla_gyujt.py`, `vers_jelentes.py` azonos; `thayer_bemenet.py --ellenoriz` RENDBEN.

@@ -282,7 +282,10 @@ def blokk(strong, csoport=None, ts=None):
     reszek = [szakasz_karoli(sp, ts), szakasz_versek(sp, csoport, ts), szakasz_sigla(sp, csoport, ts), szakasz_hid(sp, csoport, ts)]
     illeszt = szak[0]['illesztes']
     fej = ['### Adatblokk — Thayer %s (gépi, a projekt adataiból; nem értelmezés)' % kulcs.strong_eredeti(sp)]
-    if illeszt != 'egyezik':
+    if illeszt == 'javitassal':
+        fej.append('[a forrásszöveg a Thayer_teljes.tsv szövegvesztése miatt a lexikonból kiegészítve (adat/thayer_forras_javitas.tsv, '
+                   'DT-F132i (2)); a szakaszok szövege teljes]')
+    elif illeszt != 'egyezik':
         fej.append('[FIGYELEM: a forrásszöveg illesztése `%s` (a Thayer_teljes.tsv szövegrészt veszít; DT-F132i) — a hiányt ne pótold]'
                    % illeszt)
     return '\n'.join(fej + [''] + ['\n'.join(r) + '\n' for r in reszek]).rstrip('\n')

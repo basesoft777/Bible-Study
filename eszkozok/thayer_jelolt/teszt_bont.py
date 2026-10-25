@@ -142,7 +142,7 @@ class Tabla(unittest.TestCase):
     def test_reszleges_explicit(self):
         st = adatok()['st']
         kat = collections.Counter(s[0]['illesztes'] for s in st.values())
-        self.assertEqual(set(kat) - {'egyezik', 'reszleges', 'sikertelen'}, set())
+        self.assertEqual(set(kat) - {'egyezik', 'javitassal', 'reszleges', 'sikertelen'}, set())
         for sp, sorok in st.items():
             self.assertEqual(len({r['illesztes'] for r in sorok}), 1, sp)
 
@@ -166,6 +166,69 @@ class Tabla(unittest.TestCase):
                 if s:
                     self.assertEqual(len(s.split('\t')), len(bont.FEJLEC))
                     self.assertNotIn('\r', s)
+
+
+class Javitas(unittest.TestCase):
+    """DT-F132i (2): adat/thayer_forras_javitas.tsv (SEMA 2.38) és a javított nézet (thayer_bemenet.szakaszok)."""
+
+    def jav(self):
+        with open(bont.JAV_UT, encoding='utf-8', newline='') as f:
+            sorok = f.read().split('\n')
+        fej = sorok[2].split('\t')
+        return [dict(zip(fej, s.split('\t'))) for s in sorok[3:] if s]
+
+    def test_tizenot_lyuk_javitva(self):
+        j = self.jav()
+        self.assertEqual(len(j), 15)
+        self.assertEqual({r['allapot'] for r in j}, {'javitva'})
+        self.assertEqual(sum(int(r['hossz']) for r in j), 2715)  # M1: 2 715 karakter szóközök nélkül
+        self.assertIn('G4151', {r['strong'] for r in j})
+        for r in j:
+            self.assertRegex(r['proveniencia'], r'^scope=%s \| forras=thayer_jelolt/forras_javit\.py \(fejléc\) \| ts=\d{4}-\d\d-\d\d$'
+                             % r['strong'])
+
+    def test_tabla_nyers_hatar_pontos(self):
+        # a szakasztábla nyers marad: a javitassal Strong sorainak összefűzése = a TSV szövege (szóközök nélkül)
+        a = adatok()
+        n = 0
+        for sp, sorok in a['st'].items():
+            if sorok[0]['illesztes'] != 'javitassal':
+                continue
+            n += 1
+            self.assertEqual(nows(''.join(r['jel'] + r['szoveg'] for r in sorok)), nows(a['tsv'][sp]), sp)
+        self.assertEqual(n, 15)
+
+    def test_nezet_a_lexikon_szovege(self):
+        # a javított nézet soronként = a lexikonbekezdés címkék nélküli szövege (szóközök nélkül)
+        import thayer_bemenet as TB
+        a = adatok()
+        for r in self.jav():
+            sp = r['strong']
+            nezet = TB.szakaszok(sp)
+            plain = [bont.sima(s) for s in bont.szegmensek(a['lex'][sp][1])]
+            self.assertEqual([nows(x['szoveg']) for x in nezet], [nows(p) for p in plain], sp)
+            self.assertIn(r['javitott_alak'], nezet[int(r['sorszam']) - 1]['szoveg'])
+
+    def test_g4151(self):
+        import thayer_bemenet as TB
+        self.assertTrue(TB.szakaszok('G4151')[5]['szoveg'].endswith('1Co 14:15, 1Co 14:16.'))
+        self.assertNotIn('1Co 14:16.', adatok()['st']['G4151'][5]['szoveg'])
+
+    def test_rossz_elotte_hibat_dob(self):
+        import thayer_bemenet as TB
+        r = {'strong': 'G4151', 'sorszam': '6', 'illesztes': 'javitassal', 'szoveg': 'x' * 5000}
+        with self.assertRaises(ValueError):
+            TB.javitott_szoveg(r, TB.javitas_olvas())
+
+    def test_javitas_nelkul_reszleges(self):
+        # javítótábla nélkül a bontó a 15 Strongot `reszleges`-nek írja (a régi viselkedés)
+        _, stat, _ = bont.general('2026-10-25', jav_ut=None)
+        self.assertEqual((stat['reszleges'], stat['javitassal']), (15, 0))
+
+    def test_forras_javit_ellenoriz(self):
+        r = subprocess.run([sys.executable, os.path.join(ITT, 'forras_javit.py'), '--ellenoriz'],
+                           capture_output=True, text=True, encoding='utf-8')
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
 
 
 class Determinizmus(unittest.TestCase):

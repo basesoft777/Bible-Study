@@ -155,8 +155,11 @@ class Adatblokk(unittest.TestCase):
         self.assertIn('⟪7⟫ Róm 10:13', b)
         self.assertNotIn('⟪3⟫', b)
 
-    def test_reszleges_figyelmeztet(self):
-        self.assertIn('DT-F132i', adatblokk.blokk('G4151', TB.szakaszok('G4151')[:2], ts='T'))
+    def test_javitassal_jelzes(self):
+        # DT-F132i (2): a G4151 szövege a javítótáblával teljes — tájékoztató sor, nem „a hiányt ne pótold” figyelmeztetés
+        b = adatblokk.blokk('G4151', TB.szakaszok('G4151')[:2], ts='T')
+        self.assertIn('DT-F132i (2)', b)
+        self.assertNotIn('FIGYELEM', b)
 
     def test_nincs(self):
         self.assertEqual(adatblokk.blokk('G99999'), 'nincs adatblokk')

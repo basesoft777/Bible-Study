@@ -1,74 +1,74 @@
 # FÉLIG KÉZI: a számoszlopokat és az új jelölt sorokat az eszkozok/thayer_jelolt/sigla_gyujt.py --ts 2026-10-25 írja; a tipus, jelentes, magyar_alak, allapot kézi (az eszköz nem írja át). Séma: adat/SEMA.md 2.37.
-# forras: adat/thayer_szakaszok.tsv@37932f4b4b2c + adat/elofordulasok.tsv@1d6017885a31 (gerinc) + kód@6574cdd383b7
+# forras: adat/thayer_szakaszok.tsv@50e03d4837a8 + adat/thayer_forras_javitas.tsv@76d38ec8472d (nézet) + adat/elofordulasok.tsv@1d6017885a31 (gerinc) + kód@67a23018df55
 forrasalak	gyujtes	tipus	jelentes	magyar_alak	elofordulas	szocikk	gerinc_elofordulas	pelda	allapot	proveniencia
-Rec.	minta				1041	674	19	G0001:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
-cf.	minta				7236	2854	61	G0001:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
-L	kiadas_sigla				2311	1100	17	G0001:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
-T	kiadas_sigla				2675	1242	17	G0001:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
-Tr	kiadas_sigla				2807	1217	18	G0001:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
-WH	kiadas_sigla				2733	1255	20	G0001:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
-Winers Grammar	minta				1549	920	4	G0001:5	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
-Buttmann	minta				2253	1116	7	G0001:5	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
-Cf.	minta				589	566	4	G0001:5	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
-Josephus	minta				837	678	2	G0002:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
+Rec.	minta				1043	676	19	G0001:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
+cf.	minta				7243	2855	61	G0001:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
+L	kiadas_sigla				2314	1103	17	G0001:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
+T	kiadas_sigla				2679	1244	17	G0001:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
+Tr	kiadas_sigla				2812	1220	18	G0001:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
+WH	kiadas_sigla				2736	1257	20	G0001:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
+Winers Grammar	minta				1551	920	4	G0001:5	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
+Buttmann	minta				2255	1116	7	G0001:5	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
+Cf.	minta				590	567	4	G0001:5	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
+Josephus	minta				838	679	2	G0002:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 Philo	minta				384	340	3	G0002:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 Aristotle	minta				413	394	3	G0004:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
-i. e.	minta				2337	1315	31	G0005:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
-Winer's Grammar	minta				1376	815	6	G0007:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
+i. e.	minta				2340	1318	31	G0005:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
+Winer's Grammar	minta				1377	816	6	G0007:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 Tdf.	minta				540	403	1	G0011:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
-Sept.	minta				1648	1445	12	G0012:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
-Plutarch	minta				854	796	3	G0017:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
+Sept.	minta				1652	1449	12	G0012:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
+Plutarch	minta				855	797	3	G0017:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 Plato	minta				959	849	12	G0018:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 Xenophon	minta				909	766	8	G0018:3	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
-G	kiadas_sigla				1580	840	11	G0018:11	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
+G	kiadas_sigla				1584	842	11	G0018:11	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 Lightfoot	minta				340	287	0	G0019:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 Trench	minta				177	170	2	G0019:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
-Herodotus	minta				926	847	7	G0023:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
+Herodotus	minta				928	849	7	G0023:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 Apocr.	minta				9	9	0	G0025:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 Grimm	minta				129	115	1	G0025:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
-Meyer	minta				450	355	4	G0025:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
-Homer	minta				1562	1391	6	G0027:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
+Meyer	minta				451	355	4	G0025:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
+Homer	minta				1565	1394	6	G0027:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 Vulg.	minta				293	275	0	G0029:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 Gesenius	minta				66	61	3	G0029:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
-R	kiadas_sigla				1348	753	10	G0030:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
+R	kiadas_sigla				1351	755	10	G0030:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 Schmidt	minta				97	91	1	G0039:8	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 Polybius	minta				634	567	3	G0059:5	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 Lucian	minta				262	256	0	G0064:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 Lachmann	minta				296	252	1	G0071:8	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 Griesbach	minta				60	57	0	G0071:8	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
-Thucydides	minta				389	363	2	G0084:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
+Thucydides	minta				390	364	2	G0084:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 Tischendorf	minta				7	7	0	G0426:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
-p.	rovidites				4642	2093	29	G0001:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
-etc.	rovidites				2489	1188	17	G0012:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
-b.	rovidites				1879	1165	15	G0018:7	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
-V.	rovidites				1269	890	12	G0014:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
+p.	rovidites				4644	2095	29	G0001:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
+etc.	rovidites				2490	1188	17	G0012:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
+b.	rovidites				1880	1165	15	G0018:7	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
+V.	rovidites				1270	891	12	G0014:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 c.	rovidites				1040	685	14	G0018:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 A.	rovidites				940	695	4	G0014:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 Macc.	rovidites				854	625	4	G0008:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
-d.	rovidites				694	478	4	G0032:5	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
+d.	rovidites				695	479	4	G0032:5	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 N.	rovidites				654	514	7	G0005:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
-B.	rovidites				553	461	4	G0001:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
+B.	rovidites				555	462	4	G0001:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 Sir.	rovidites				542	367	3	G0012:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 e.	rovidites				481	360	6	G0001:5	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
-ii.	rovidites				462	350	3	G0026:3	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
-i.	rovidites				459	363	4	G0001:5	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
-D.	rovidites				449	396	3	G0001:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
+ii.	rovidites				463	351	3	G0026:3	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
+i.	rovidites				462	363	4	G0001:5	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
+D.	rovidites				451	398	3	G0001:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 Wis.	rovidites				393	307	8	G0012:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
-Phryn.	rovidites				298	255	0	G0032:7	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
-h.	rovidites				285	256	1	G0105:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
-Lob.	rovidites				280	270	1	G0001:5	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
+Phryn.	rovidites				300	257	0	G0032:7	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
+h.	rovidites				286	257	1	G0105:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
+Lob.	rovidites				282	271	1	G0001:5	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 ibid.	rovidites				241	211	5	G0012:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 O.	rovidites				217	188	2	G0018:11	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 Proleg.	rovidites				212	189	0	G0011:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 vol.	rovidites				208	176	5	G0026:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 g.	rovidites				202	168	2	G0001:5	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
-pp.	rovidites				193	156	3	G0028:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
-v.	rovidites				181	172	2	G0025:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
+pp.	rovidites				194	157	3	G0028:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
+v.	rovidites				182	173	2	G0025:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 iii.	rovidites				179	162	1	G0073:6	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 j.	rovidites				178	152	1	G0165:9	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 Alex.	rovidites				170	157	0	G0112:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 mem.	rovidites				153	137	1	G0018:4	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
-viz.	rovidites				147	124	1	G0080:5	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
+viz.	rovidites				148	125	1	G0080:5	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 Cor.	rovidites				137	124	2	G0012:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 Theol.	rovidites				118	86	3	G0026:3	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 legg.	rovidites				117	113	4	G0096:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
@@ -78,7 +78,7 @@ Athen.	rovidites				97	94	0	G0106:2	jelolt	scope=adat/thayer_szakaszok.tsv | for
 n.	rovidites				89	84	0	G0105:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 iv.	rovidites				88	78	0	G0039:8	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 diss.	rovidites				86	82	2	G0039:8	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
-St.	rovidites				85	69	1	G0073:6	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
+St.	rovidites				86	70	1	G0073:6	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 rep.	rovidites				84	81	0	G0171:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 Ausf.	rovidites				80	76	0	G0100:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 Spr.	rovidites				74	70	0	G0100:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
@@ -123,7 +123,7 @@ Prof.	rovidites				33	30	0	G0154:2	jelolt	scope=adat/thayer_szakaszok.tsv | forr
 Ps.	rovidites				33	30	0	G0025:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 Untersuch.	rovidites				32	32	0	G0060:4	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 Schol.	rovidites				31	30	0	G0536:5	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
-Hist.	rovidites				30	28	0	G0065:4	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
+Hist.	rovidites				31	29	0	G0065:4	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 Zeitgesch.	rovidites				30	29	0	G0452:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 alleg.	rovidites				30	28	0	G0076:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 Antiq.	rovidites				28	28	0	G0026:4	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
@@ -255,3 +255,4 @@ orac.	rovidites				10	10	0	G0049:2	jelolt	scope=adat/thayer_szakaszok.tsv | forr
 vesp.	rovidites				10	10	0	G1194:4	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 virt.	rovidites				10	10	0	G0114:3	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
 xiv.	rovidites				10	9	0	G0840:2	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25
+Chr.	rovidites				10	8	2	G1100:4	jelolt	scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=2026-10-25

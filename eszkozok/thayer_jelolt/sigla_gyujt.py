@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 """A Thayer sigla- és rövidítéstáblájának gépi jelöltgyűjtése (F132, brief 2a/5; M1 mellékterméke).
 
-Bemenet: `adat/thayer_szakaszok.tsv` (a `jel` + `szoveg`, vagyis a fordítónak átadott szöveg). Kimenet:
+Bemenet: `adat/thayer_szakaszok.tsv` a javított nézetben (`thayer_bemenet.szakaszok`: a `jel` + `szoveg`, a
+`thayer_forras_javitas.tsv` beszúrásaival — vagyis a fordítónak átadott szöveg; DT-F132i (2)). Kimenet:
 `adat/thayer_sigla.tsv` (SEMA 2.37). **Félig kézi tábla:** a számoszlopokat (`elofordulas`, `szocikk`,
 `gerinc_elofordulas`, `pelda`) és az új jelölt sorokat ez az eszköz írja; a besorolás (`tipus`, `jelentes`, `magyar_alak`,
 `allapot = besorolt`) kézi, és az eszköz **soha nem írja át** (írás előtt összeveti a régi táblával, eltérésnél megáll). Sort nem
@@ -59,9 +60,9 @@ def _minta_re(a):
 def szovegek(tabla=None):
     """-> [(strong, sorszam, szöveg)] a tábla sorrendjében."""
     ki = []
-    for st, sorok in TB.tabla_olvas(tabla).items():
-        for r in sorok:
-            ki.append((st, r['sorszam'], ' '.join(x for x in (r['jel'], r['szoveg']) if x)))
+    for st in TB.tabla_olvas(tabla):
+        for x in TB.szakaszok(st, tabla):
+            ki.append((st, str(x['sorszam']), x['szoveg']))
     return ki
 
 
@@ -150,8 +151,10 @@ def osszefesul(gy, regi, ts):
 def fajl_szoveg(sorok, ts):
     fej = ['# FÉLIG KÉZI: a számoszlopokat és az új jelölt sorokat az eszkozok/thayer_jelolt/sigla_gyujt.py --ts %s írja; a tipus, '
            'jelentes, magyar_alak, allapot kézi (az eszköz nem írja át). Séma: adat/SEMA.md 2.37.' % ts,
-           '# forras: adat/thayer_szakaszok.tsv@%s + adat/elofordulasok.tsv@%s (gerinc) + kód@%s'
-           % (szolista.sha12(TB.TABLA), szolista.sha12(szolista.ELOFORDULASOK_UT), bont.sha256_fajl(os.path.abspath(__file__))[:12]),
+           '# forras: adat/thayer_szakaszok.tsv@%s + adat/thayer_forras_javitas.tsv@%s (nézet) + adat/elofordulasok.tsv@%s (gerinc) '
+           '+ kód@%s'
+           % (szolista.sha12(TB.TABLA), szolista.sha12(TB.JAV_TABLA), szolista.sha12(szolista.ELOFORDULASOK_UT),
+              bont.sha256_fajl(os.path.abspath(__file__))[:12]),
            '\t'.join(FEJLEC)]
     return '\n'.join(fej + ['\t'.join(r.get(m, '') for m in FEJLEC) for r in sorok]) + '\n'
 

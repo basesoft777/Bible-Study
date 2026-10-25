@@ -7,7 +7,9 @@ a betöltő Thayer-specifikus: a szakaszok az `adat/thayer_szakaszok.tsv`-ből (
 
   - `szakaszok(strong)`: [{sorszam, jel, utvonal, szoveg, hash, illesztes}] vagy None (a Strong nincs a táblában); a
     `szoveg` a `jel` + `szoveg` egy szóközzel (a BDB-nézet alakja), a `hash` ennek SHA-1-e (a `forditasok.tsv` `sz<n>`
-    sorának `forras_hash`-e, DT286 (1)).
+    sorának `forras_hash`-e, DT286 (1)). **Javított nézet (DT-F132i (2)):** a `javitassal` illesztésű Strong sorába az
+    `adat/thayer_forras_javitas.tsv` (SEMA 2.38) `javitva` sora a `sor_poz` helyén beszúrja a `javitott_alak`-ot (a tábla
+    `elotte` mezőjével igazolva; eltérésnél ValueError). A `thayer_szakaszok.tsv` maga nyers marad.
   - `tokenes`, `csoportok`, `nezet`, `jelentes_szam`, `sorszam_jelentesbol`, `strong_magyar`, `strong_magyar_sorok`, `TOKEN`:
     a #128 függvényei változatlanul.
 
@@ -34,6 +36,7 @@ import kulcs  # noqa: E402
 
 GYOKER = os.path.dirname(os.path.dirname(ITT))
 TABLA = os.path.join(GYOKER, 'adat', 'thayer_szakaszok.tsv')
+JAV_TABLA = os.path.join(GYOKER, 'adat', 'thayer_forras_javitas.tsv')
 SZOTAR = 'Thayer'
 
 
@@ -80,14 +83,49 @@ def tabla_olvas(ut=None):
     return _CACHE[ut]
 
 
-def szakaszok(strong, tabla=None):
+def javitas_olvas(ut=None):
+    """-> {(Strong, sorszam): (sor_poz, javitott_alak, elotte)} a javítótábla `javitva` soraiból; {} ha nincs fájl."""
+    ut = os.path.abspath(ut or JAV_TABLA)
+    kulcs_ = ('jav', ut)
+    if kulcs_ not in _CACHE:
+        d = {}
+        if os.path.exists(ut):
+            with open(ut, encoding='utf-8', newline='') as f:
+                sorok = [s for s in f.read().split('\n') if s and not s.startswith('#')]
+            fej = sorok[0].split('\t')
+            for s in sorok[1:]:
+                r = dict(zip(fej, s.split('\t')))
+                if r['allapot'] == 'javitva':
+                    d[(r['strong'], r['sorszam'])] = (int(r['sor_poz']), r['javitott_alak'], r['elotte'])
+        _CACHE[kulcs_] = d
+    return _CACHE[kulcs_]
+
+
+def javitott_szoveg(r, jav):
+    """A sor `szoveg`-e a javítótábla beszúrásával (DT-F132i (2)); a nem `javitassal` sor változatlan."""
+    sz = r['szoveg']
+    if r['illesztes'] != 'javitassal':
+        return sz
+    j = jav.get((r['strong'], r['sorszam']))
+    if j is None:
+        return sz
+    p, alak, elotte = j
+    if p > len(sz) or sz[max(0, p - len(elotte)):p] != elotte:
+        raise ValueError('%s#%s: a javítótábla `elotte` mezője nem illeszkedik a sorra' % (r['strong'], r['sorszam']))
+    return sz[:p] + alak + sz[p:]
+
+
+def szakaszok(strong, tabla=None, javitas=None):
     sp = kulcs.strong_pad(strong)
     sorok = tabla_olvas(tabla).get(sp) if sp else None
     if sorok is None:
         return None
+    jav = javitas_olvas(javitas)
+    if sorok[0]['illesztes'] == 'javitassal' and not any((sp, r['sorszam']) in jav for r in sorok):
+        raise ValueError('%s: `javitassal` illesztés, de nincs `javitva` sora a javítótáblában' % sp)
     ki = []
     for r in sorok:
-        t = ' '.join(x for x in (r['jel'], r['szoveg']) if x)
+        t = ' '.join(x for x in (r['jel'], javitott_szoveg(r, jav)) if x)
         ki.append({'sorszam': int(r['sorszam']), 'jel': r['jel'], 'utvonal': r['utvonal'], 'szoveg': t, 'hash': sha1(t),
                    'illesztes': r['illesztes']})
     return ki
