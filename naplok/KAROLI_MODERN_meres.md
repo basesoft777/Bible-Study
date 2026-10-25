@@ -998,3 +998,25 @@ Két sor modern szövege változott (H024 *hivék → hitték*, H051 *dícsérv�
 - **Torzítás:** a 11.4 szerint a 99,0% erre a mintára hangolt kör eredménye, a valódi lefedettséget felülbecsli.
 
 **Megállás:** a folytatás a felhasználó döntése, **DT-F96t** (🟡).
+
+## 13. A tokenszintű kör felmérése (DT-F96t, 3. opció) — megállás a DT-F96u-n
+
+**A felhasználó döntése** (chat, 2026-10-25): „3” — további kör, tokenszintű LLM-kérdéssel. A DT-F96m szerint minden további LLM-futás előtt a keret jóváhagyása kell, ezért a futás előtt felmérés készült.
+
+**A maradék** (`igealak_tokenek.tsv`; a modern szövegben változatlan, `jelolt` oszlopos, nem kieső tokenek, a felszólító *-jál/-jél* és a *-nd-* jövő nélkül):
+
+| Csoport | Token | Alak | Példák |
+|---|---|---|---|
+| minden LLM-szavazat „változatlan” (nem régies) | 2 747 | 232 | *tett, elment, leszek, tőled, halál, rajtad, egyék* |
+| legalább egy LLM-szavazat változtatna, nincs egyezés | 357 | 205 | *higyjetek, egybegyűle, vevén, gyűlölte, megszomorodék, gyűle, tevének, törlé, megnyugovának* |
+| csak szabály-jelölt | 13 | 6 | *leűle, űle, felgyűle, könyörűle, megréműle* |
+
+A második és a harmadik csoport (370 token) a tokenszintű kör tárgya. A korábbi körök alakonként kérdeztek, az első előfordulás ±6 (±8) szavas részletével, így a szövegkörnyezetfüggő alakban az egy válasz nem illik minden előfordulásra. Ilyen az alanyi/tárgyas, az E/1/T/3 és az igenév/múlt (*vevén*) különbsége.
+
+**Javaslat** (DT-F96u, 1. opció):
+- A kérdés tokenenként szól, a teljes vers szövegével, vakon, 2 opus-kötegben.
+- A becslés a 4. kör mért kötegtokenje alapján kb. 0,3 M token: kötegenként kb. 140 ezer a rögzített rész, a teljes vers miatt nagyobb kérdésfájllal.
+- Csere akkor van, ha az új válasz egy meglévő forrással egyezik, és a tő-őr átengedi; ez a DT-F96l kettő-egyezése tokenszinten.
+- Utána a minta2 változott sorainak ellenőrzése jön.
+
+**Megállás:** a keret és a cserélési szabály a felhasználó döntése (**DT-F96u**, 🟡).
