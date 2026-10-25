@@ -1140,3 +1140,28 @@ A DT-F96v (🟡) leírása ezzel a számmal frissült; a döntés a felhasznál�
 **A javítás (`igealak.py`, `NYIL_IJ`):** a vers egy szava egész szóként a nyíl/íj szócsaládba tartozik: *nyíl/nyil* + (*a, ai, aid, aidat, aim, aimat, ait, aival, ak, akat, akba, akkal, aknak, at, át, lal, lá, tól, okat, azók, asok, lövésnyi*), illetve *íj/íjj/ijj* + (*at, ját, aim, im, dal, ász, ászok, ászai, ászokhoz, ászszá*). A szólistát a Károli 1908 *nyil-/nyíl-/íj-/ijj-* kezdetű szavaiból állítottam össze. Kimarad a *nyílik, nyilt, nyílott, nyilván-, nyílás-* és a *megnyilatkoz-*.
 
 **Eredmény:** 1 token változott, a Jel 11:19 *lőnek → lettek*; átnézve a versével, helyes. Az 1Krón 12:2 „nyíllal lőnek vala” `lonek_lo` maradt (*lőttek*). A minták modern szövege nem változott. A .3: K2, K3, K3b teljesül, a Strong nem változott; a változó token 50 517.
+
+### 15.4 Proveniencia: a `ts=` mező és a szken-fejlécek (4. kör, 4.)
+
+**A hiba:** a három szken-tábla (`regies_szken.tsv`, `regies_szken_kor4.tsv`, `regies_szken_kor5.tsv`) és az `igealak.py` táblái (`igealak_tokenek.tsv`, `igealak_alakok.tsv`, `igealak_minta.tsv`, `igealak_minta2.tsv`) fejlécéből hiányzott a `ts=` (CLAUDE.md 1. szabály: `scope | forras | ts`). A `regies_szken_kor4.tsv` fejléce a 3. kör címkéjét viselte („N-F96d/e, DT-F96q”), `--kor 4` nélkül.
+
+**A javítás:**
+- `regies_szken.py`: minden szken-fejléc `ts=`-t kap. A címke a kör szerint: 3. kör „(F96.3, 3. kör: N-F96d/e, DT-F96q)”, 4. kör „--kor 4 (F96.3, 4. kör: DT-F96r, 2. opció; a 3. kör utáni kihagyás-osztályok)”, 5. kör „--kor 5 (F96.3, 5. kör: DT-F96u, 1. opció)”. A 4. kör `forras` mezője a tényleges bemenetet sorolja: `karoli_modern.tsv`, `igealak_alakok.tsv`, valamint a kérdezett alakokat kizáró LLM-táblák, a kor3-tábla is (a `volt` halmaz). A scope-ban szerepel a `jelolt` kérdések száma is (161).
+- Az LLM-táblák (`--llm-valasz`) fejlécében a kör neve egységes („3. kör: DT-F96q”, „--kor 4, 4. kör: DT-F96r”, „5. kör: DT-F96u”). Új kapcsoló: `--futas-ts`. Ezzel a meglévő válaszfájlokból újraírt táblán a `futas_ts` az LLM-futás eredeti ideje marad (kor3 `2026-10-25T08:31Z`, kor4 `10:09Z`, kor5 `10:42Z`, a korábbi fejlécekből); a `ts` az újraírás ideje.
+- `igealak.py`: a közös fejléc `ts=`-t kap (`igealak_tokenek`, `igealak_alakok`, a két minta).
+
+**Az újragenerálás menete:** a szken-táblák pillanatképek (a kérdésazonosítók és a válaszok rájuk épülnek), ezért mindegyik a saját pillanatkép-bemenetéből készült újra. A segédszkript a repón kívül volt. Lépései: a mostani bemenet mentése, a pillanatkép visszaállítása (`git show <commit>:<út>`), a szken futtatása, majd a mostani bemenet visszaállítása (utána `git status`: a bemenetek változatlanok).
+
+| Tábla | Pillanatkép | A futás idejére eltéve |
+|---|---|---|
+| `regies_szken.tsv` | `karoli_modern.tsv` @ `8b858b3` | `igealak_llm_kor3.tsv`, `igealak_llm_kor4.tsv` (akkor még nem léteztek) |
+| `regies_szken_kor4.tsv` | `karoli_modern.tsv`, `igealak_alakok.tsv` @ `9fd137f` | `igealak_llm_kor4.tsv` (a `volt` halmazt bővítené) |
+| `regies_szken_kor5.tsv` | `igealak_tokenek.tsv`, `karoli_modern_versek.tsv`, `karoli_modern.tsv` @ `0dda8b3` | — |
+
+**Az ellenőrzés:**
+1. Előbb a régi kóddal, `--kimenet`-tel futott próba: mindhárom tábla a fejléccel együtt bájtra azonos lett a kiadottal, vagyis a pillanatkép reprodukálható.
+2. Az új fejléces futás után mindhárom tábla a fejlécen kívül bájtra azonos a korábbival.
+3. Az LLM-táblák a meglévő válaszfájlokból (scratchpad: `llm_kor3/`, `llm_kor4/`, `llm_kor5/`; `--modell claude-opus-5-5`, a hívásnaplók szerint) újraírva: a fejlécen kívül minden sor azonos, a három hívásnapló bájtra azonos. A sorrend: kor3-szken → kor3-LLM → kor4-szken (a végleges kor3-tábla sha-jával) → kor4-LLM → kor5-szken → kor5-LLM.
+4. Az `igealak.py` (`--minta-frissit`) és a `karoli_modern.py` újragenerálva: a 4 + 2 tábla a fejlécen kívül azonos. A K2, K3 és K3b teljesül, a Strong nem változott.
+
+Nem változott: a `karoli_modern.py` saját fejléce (a `ts=` itt sincs; nem tartozott a tételhez, l. a 15.6).

@@ -1179,7 +1179,8 @@ def kiir(vers_ki, gy, alakok, fd, a):
               'alak a DT-F96l szerint cserél (a szabály, a sonnet és az opus közül kettő egyezik, tő-őrrel), különben '
               'a jelolt oszlopban marad; a 3. kör (DT-F96q) a változatlanul maradt régies alakon a szabály és az opus '
               'egyezésével cserél | LLM: az igealak_llm.tsv, az igealak_llm_opus.tsv, az igealak_llm_kor3.tsv, _kor4.tsv és _kor5.tsv '
-              '(DT-F96d, előfizetés, API nélkül)\n' % (SZKRIPT, hk))
+              '(DT-F96d, előfizetés, API nélkül) | ts=%s\n'
+              % (SZKRIPT, hk, datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%MZ')))
     tok_ki = []
     for igehely, (sz, modern, t) in vers_ki.items():
         for r in t:

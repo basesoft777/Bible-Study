@@ -107,6 +107,11 @@ VALA_VEG = ('', 'nak', 'nek', 'anak', 'enek', 'ják', 'ja', 'i', 'ik', 'unk', '�
             'hat', 'het')
 
 
+def most():
+    """A proveniencia ts-mezője (UTC, percre)."""
+    return __import__('datetime').datetime.now(__import__('datetime').timezone.utc).strftime('%Y-%m-%dT%H:%MZ')
+
+
 def sha(ut):
     h = hashlib.sha256()
     with open(os.path.join(ROOT, ut), 'rb') as f:
@@ -288,7 +293,13 @@ def versreszlet(tok, i, n=6):
                         for j in range(j0, j1 + 1))
 
 
-def llm_valasz(ki, modell, kor=3):
+def ts_mezo(futas_ts=None):
+    """A ts-mező; a meglévő válaszokból való újraírásnál (--futas-ts) az LLM-futás eredeti ideje is."""
+    return most() + (' | futas_ts=%s (az LLM-futás ideje; a tábla a meglévő válaszfájlokból újraírva)' % futas_ts
+                     if futas_ts else '')
+
+
+def llm_valasz(ki, modell, kor=3, futas_ts=None):
     """A válaszfájlok (valasz_NN.tsv: id<TAB>válasz) és a hívásnapló (hivasok.jsonl) beolvasása a
     regies_szken.tsv kérdéseihez; ír: igealak_llm_kor3.tsv (+ hívásnapló)."""
     if not modell:
@@ -316,15 +327,14 @@ def llm_valasz(ki, modell, kor=3):
     with open(os.path.join(ki, 'hivasok.jsonl'), encoding='utf-8') as f:
         hivasok = [json.loads(l) for l in f if l.strip()]
     tok = sum(h.get('total_tokens', 0) for h in hivasok)
-    ts = __import__('datetime').datetime.now(__import__('datetime').timezone.utc).strftime('%Y-%m-%dT%H:%MZ')
     with open(os.path.join(ROOT, TABLA), 'w', encoding='utf-8', newline='\n') as f:
-        f.write(('# GENERÁLT: %s --llm-valasz (F96.3, ' + ('DT-F96r, 4. kör' if kor == 4 else 'DT-F96q') + ') — modell-kimenet (modell_ellenorizetlen), kézzel nem '
+        f.write(('# GENERÁLT: %s --llm-valasz (F96.3, ' + ('--kor 4, 4. kör: DT-F96r' if kor == 4 else '3. kör: DT-F96q') + ') — modell-kimenet (modell_ellenorizetlen), kézzel nem '
                 'szerkeszthető | modell=%s (Claude Code subagent, előfizetés, API nélkül; vak, versrészlettel) | '
                 'forras=%s (sha256:%s) | scope=a régies-szken minden kérdése (%d: %d alak, %d vala-pár, %d jelölt) | '
                 'opus_alak: az alak mai alakja; a vala-páron a vala előtti ige mai múlt idejű alakja, ha a vala '
                 'segédige, különben - | token: %d (%d hívás) | ts=%s\n')
                 % (SZKRIPT, modell, KI_, sha(KI_), len(kerdes), sum(1 for r in kerdes if r[1] == 'alak'),
-                   sum(1 for r in kerdes if r[1] == 'vala'), sum(1 for r in kerdes if r[1] == 'jelolt'), tok, sum(h.get('hivasok', 0) for h in hivasok), ts))
+                   sum(1 for r in kerdes if r[1] == 'vala'), sum(1 for r in kerdes if r[1] == 'jelolt'), tok, sum(h.get('hivasok', 0) for h in hivasok), ts_mezo(futas_ts)))
         f.write('\t'.join(['id', 'tipus', 'kerdes', 'szabaly_jelolt', 'opus_alak']) + '\n')
         for r in kerdes:
             f.write('\t'.join([r[0], r[1], r[2], r[4], valasz[r[0]]]) + '\n')
@@ -438,13 +448,13 @@ def kor5(a):
         with open(os.path.join(a.llm_valasz, 'hivasok.jsonl'), encoding='utf-8') as f:
             hivasok = [json.loads(l) for l in f if l.strip()]
         tok = sum(h.get('total_tokens', 0) for h in hivasok)
-        ts = __import__('datetime').datetime.now(__import__('datetime').timezone.utc).strftime('%Y-%m-%dT%H:%MZ')
         with open(os.path.join(ROOT, KOR5_TABLA), 'w', encoding='utf-8', newline='\n') as f:
-            f.write('# GENERÁLT: %s --kor 5 --llm-valasz (F96.3, DT-F96u) — modell-kimenet (modell_ellenorizetlen), '
+            f.write('# GENERÁLT: %s --kor 5 --llm-valasz (F96.3, 5. kör: DT-F96u) — modell-kimenet (modell_ellenorizetlen), '
                     'kézzel nem szerkeszthető | modell=%s (Claude Code subagent, előfizetés, API nélkül; vak, a teljes '
                     'verssel, tokenenként) | forras=%s (sha256:%s) | scope=a változatlanul maradt, eltérő szavazatú '
                     'jelölt tokenek (%d) | token: %d (%d hívás) | ts=%s\n'
-                    % (SZKRIPT, a.modell, KI5, sha(KI5), len(kerdes), tok, sum(h.get('hivasok', 0) for h in hivasok), ts))
+                    % (SZKRIPT, a.modell, KI5, sha(KI5), len(kerdes), tok, sum(h.get('hivasok', 0) for h in hivasok),
+                       ts_mezo(a.futas_ts)))
             f.write('\t'.join(['id', 'igehely', 'sorszam', 'alak', 'meglevo_jeloltek', 'opus_alak']) + '\n')
             for r in kerdes:
                 f.write('\t'.join(r[:5] + [valasz[r[0]]]) + '\n')
@@ -458,11 +468,12 @@ def kor5(a):
     if a.kimenet:
         os.makedirs(a.kimenet, exist_ok=True)
     with open(ki_ut, 'w', encoding='utf-8', newline='\n') as f:
-        f.write('# GENERÁLT: %s --kor 5 (F96.3, DT-F96u) — kézzel nem szerkeszthető | forras=%s (sha256:%s) + %s '
-                '(sha256:%s) + %s (sha256:%s) | scope=a modern szövegben változatlanul maradt jelölt tokenek, ahol '
-                'legalább egy forrás változtatna (%d), a felszólító és a -nd- jövő nélkül; meglevo_jeloltek: a szabály- '
-                'és LLM-jelöltek; vers: a modern versszöveg, a token [szögletes zárójelben]\n'
-                % (SZKRIPT, I_TOKENEK, sha(I_TOKENEK), VERSEK, sha(VERSEK), KM, sha(KM), len(sorok)))
+        f.write('# GENERÁLT: %s --kor 5 (F96.3, 5. kör: DT-F96u, 1. opció) — kézzel nem szerkeszthető | forras=%s '
+                '(sha256:%s) + %s (sha256:%s) + %s (sha256:%s) | scope=a modern szövegben változatlanul maradt jelölt '
+                'tokenek, ahol legalább egy forrás változtatna (%d), a felszólító és a -nd- jövő nélkül; '
+                'meglevo_jeloltek: a szabály- és LLM-jelöltek; vers: a modern versszöveg, a token [szögletes '
+                'zárójelben] | ts=%s\n'
+                % (SZKRIPT, I_TOKENEK, sha(I_TOKENEK), VERSEK, sha(VERSEK), KM, sha(KM), len(sorok), most()))
         f.write('\t'.join(['id', 'igehely', 'sorszam', 'alak', 'meglevo_jeloltek', 'vers']) + '\n')
         for r in sorok:
             f.write('\t'.join(r) + '\n')
@@ -484,6 +495,8 @@ def main():
     ap.add_argument('--koteg', type=int, default=380)
     ap.add_argument('--llm-valasz', default=None, help='a válaszok könyvtára (a repón kívül)')
     ap.add_argument('--modell', default=None)
+    ap.add_argument('--futas-ts', default=None,
+                    help='a --llm-valasz újraírásnál az LLM-futás eredeti ideje (a fejléc futas_ts mezője)')
     ap.add_argument('--kimenet', default=None, help='a szken próbája (maradék-mérés) a repón kívülre')
     ap.add_argument('--kor', type=int, default=3, choices=(3, 4, 5),
                     help='4: a 3. kör utáni kihagyás-osztályok (DT-F96r); 5: tokenszintű kérdés (DT-F96u)')
@@ -492,7 +505,7 @@ def main():
         kor5(a)
         return
     if a.llm_valasz:
-        llm_valasz(a.llm_valasz, a.modell, a.kor)
+        llm_valasz(a.llm_valasz, a.modell, a.kor, a.futas_ts)
         return
     tok = beolvas()
     s = Szken(tok, a.kor)
@@ -526,11 +539,19 @@ def main():
     if a.kimenet:
         os.makedirs(a.kimenet, exist_ok=True)
     with open(ki_ut, 'w', encoding='utf-8', newline='\n') as f:
-        f.write('# GENERÁLT: %s (F96.3, N-F96d/e, DT-F96q) — kézzel nem szerkeszthető | forras=%s (sha256:%s) + %s | '
+        cimke = ('--kor 4 (F96.3, 4. kör: DT-F96r, 2. opció; a 3. kör utáni kihagyás-osztályok)' if a.kor == 4
+                 else '(F96.3, 3. kör: N-F96d/e, DT-F96q)')
+        kerdezett = LLM_TABLAK + ([KOR3_TABLA] if a.kor == 4 else [])
+        f.write('# GENERÁLT: %s %s — kézzel nem szerkeszthető | forras=%s (sha256:%s)%s + %s | '
                 'scope=a modern szövegben maradt régies-igealak-jelöltek: %d alak (%d token), %d vala előtti pár '
-                '(%d token); a szabaly_jelolt a végződés szerinti mai alak (igeragozas.mult), modell_ellenorizetlen\n'
-                % (SZKRIPT, KM, sha(KM), ' + '.join('%s (sha256:%s)' % (t, sha(t)[:12]) for t in LLM_TABLAK),
-                   len(alak), sum(alak.values()), len(vala), sum(vala.values())))
+                '(%d token)%s; a szabaly_jelolt a végződés szerinti mai alak (igeragozas.mult), modell_ellenorizetlen '
+                '| ts=%s\n'
+                % (SZKRIPT, cimke, KM, sha(KM),
+                   ' + %s (sha256:%s)' % (ALAKOK, sha(ALAKOK)) if a.kor == 4 else '',
+                   ' + '.join('%s (sha256:%s)' % (t, sha(t)[:12]) for t in kerdezett if os.path.exists(os.path.join(ROOT, t))),
+                   len(alak), sum(alak.values()), len(vala), sum(vala.values()),
+                   ', %d jelölt opus-szavazat nélkül' % sum(1 for r in sorok if r[1] == 'jelolt') if a.kor == 4 else '',
+                   most()))
         f.write('\t'.join(['id', 'tipus', 'kerdes', 'gyakorisag', 'szabaly_jelolt', 'elso_igehely', 'versreszlet']) + '\n')
         for r in sorok:
             f.write('\t'.join(r) + '\n')
