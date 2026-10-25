@@ -269,6 +269,7 @@ a DT228 mintájára).
 ApCsel 9:14 `bcv`-jelölt, a 9:21 és a 22:16 a forrásban jelöletlen szöveg (a `bcv`-tábla nem pótolja, l. M2).
 
 Kimaradt (nem a brief `ir`-e): az `adat/datasetek.tsv` `Thayer_szakaszok` sora (a `BDB_szakaszok` mintájára) — külön tételben.
+*Megtörtént az F132.23-ban (ELLENOR_F132 6. tétel; a felhasználó jóváhagyásával az `ir` bővült): `Thayer_szakaszok` és `Thayer_vers_jelentes`, l. „Javítókör 1”.*
 
 ## M2 — igehely → jelentéspont (2026-10-25)
 
@@ -571,3 +572,10 @@ Végrehajtó: `claude-opus-5-5`. Tételenként külön commit (F132.18–F132.24
 - **F132.22 (5. tétel, `ir` maradvány):** a brief `ir` mezőjéből kikerült az `adat/forditasok.tsv`, a
   `naplok/F132_THAYER_SZAKASZ_munka.tsv` és a `naplok/F132_THAYER_SZAKASZ_bukottak.tsv` (DT-F132g (1): az M3 külön briefbe került; a
   #132 egyiket sem írja). A tervezet (`beerkezo/Fnn_THAYER_M3_BRIEF.md`) `ir`-je mindhármat tartalmazza; nem változott.
+- **F132.23 (6. tétel, `datasetek.tsv`):** az `adat/datasetek.tsv`-be 8 sor került: `Thayer_szakaszok`
+  (`adat/thayer_szakaszok.tsv`) és `Thayer_vers_jelentes` (`adat/thayer_vers_jelentes.tsv`), mindkettő a négy study-típusra
+  (`bovitett`, `tematikus`, `melyelemzes`, `lexikon_oldal`), `ajanlott`, `korlatos` — a BDB-pár (`BDB_szakaszok`,
+  `BDB_vers_jelentes`) mintájára, amely ugyanígy négy-négy sorral szerepel. A leírás a SEMA 2.34/2.35-ből és az M1/M2 méréseiből
+  (korlát: a 15 javított Strong, a csak aranymintás szakaszolás; a jelöletlen igehely-folytatás, az üres `karoli_vers`, az ÓSZ-számozás).
+  Csak hozzáfűzés: a meglévő sorok bájtra változatlanok. A brief `ir` mezője bővült az `adat/datasetek.tsv`-vel. `python
+  eszkozok/ellenoriz.py`: SÉRTÉS 0 (RENDBEN 14, KÉZI 2, JELENTÉS 3).
