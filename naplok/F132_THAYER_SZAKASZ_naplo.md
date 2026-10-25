@@ -384,3 +384,19 @@ python eszkozok/thayer_jelolt/forditas.py beir <STRONG> --allapot sonnet --kezi-
 ```
 
 Kapubukásnál egy önújrapróba, utána `naplok/F132_THAYER_SZAKASZ_bukottak.tsv`; commit adagonként.
+
+## Döntések (2026-10-25, második kör)
+
+A felhasználó (chat, szó szerint): „mehet, g(1), i(2), j(3), k(2)”, erre a kérdésre: „Mehet így, g(1), i(2), j(3), k(2) és a két
+eltérés elfogadva?”. Átvezetve (`DONTESEK.md`, 🟢; a brief 6. döntésnaplója):
+
+- **DT-F132g (1):** külön M3-brief (`modell: sonnet`, `fugg: [132]`); a tervezet a `beerkezo/`-ban, a befogadás nem e menet dolga.
+  Az M3 kikerül a #132 hatóköréből; a #132 az Mz-vel zárul.
+- **DT-F132i (2):** javítótábla `adat/thayer_forras_javitas.tsv` (a DT228 mintája).
+- **DT-F132j (3):** gépi sigla-javaslat a `thayer_sigla.tsv`-ben, javaslat-jelöléssel; a jóváhagyás a felhasználóé.
+- **DT-F132k (2):** új `forditas/prompt_v5_1.md`, a v5 változatlan.
+
+**Egyeztetett eltérések (a fenti válasz „a két eltérés elfogadva” része):**
+
+1. Az `adat/thayer_vers_jelentes.tsv` kilencedik oszlopa, a `szakasz` (l. M2 „Sémaeltérés”) — elfogadva, a tábla és a SEMA 2.35 marad.
+2. Az `adat/bdb_szakasz_hu.tsv` fejlécsorának hash-újragenerálása (l. M3-előfeltétel 1 „Mellékhatás”) — elfogadva, az `ir` bővülése marad.
