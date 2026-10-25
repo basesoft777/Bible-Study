@@ -1250,4 +1250,19 @@ A javítókör után:
 - a magánhangzós ige a névmási *az* után (7 kihagyás, 15.2);
 - az ellenőr mintájának *egybegyűle, sétála, Helybenhagyák* kihagyása és a mintán kívüli szúrópróba alakjai (15.2).
 
-**Megállás:** a javítás a független ellenőr újraellenőrzésére vár (`naplok/ELLENOR_F96_2.md`). A DT-F96v (🟡) a felhasználó döntése marad.
+**Megállás:** az 1. javítókör a független újraellenőrzésen állt meg (`naplok/ELLENOR_F96_2.md`: ELTÉRÉS: 2 tétel, dokumentációs). A 2. javítókör ezt a két tételt javította (15.2, 15.4, 15.6), majd szintén az újraellenőrzésen állt meg (`naplok/ELLENOR_F96_3.md`: ELTÉRÉS: 1 tétel, ez a megállás-mutató). A javítókör-korlát (2/2) ezzel betelt; ezt a tételt a zárócommit javítja (16.). *(Javítva a zárásban, `ELLENOR_F96_3` 1.: a korábbi szöveg az `ELLENOR_F96_2.md`-re várónak írta a munkát.)*
+
+## 16. Zárás (DT-F96v, 1. opció)
+
+**A felhasználó döntése** (chat, 2026-10-25): „1, zárd le a hivatkozás javításával”.
+
+- **A független ellenőr** a 3. kör óta végzett változásokon (`8b858b3..d5f6607`, `naplok/ELLENOR_F96.md` 4. kör) friss, egyenletes mintán mért. A mintát szisztematikusan vette, mert a kért magú véletlen mintát nem futtathatta. A lefedettség igealakra 94,8% (92 csere, 0 hiba, 5 kihagyás).
+- **A két javítókör** (`naplok/ELLENOR_F96_2.md`, `naplok/ELLENOR_F96_3.md`) mind az öt 4. körös tételt javította. Ebből a minta két kihagyását pótolta: *az méne*, *lőnek*. A korlát betelt, a maradék egyetlen dokumentációs tétel (a 15.6 megállás-mutatója) a zárásban javítva.
+- **A kiadott réteg:** `adat/karoli_modern/karoli_modern.tsv` (599 367 token, 50 517 változó) és `karoli_modern_versek.tsv` (31 158 vers, 21 621 változó). A K2, K3 és K3b teljesül, a Strong nem változott (DT-F96o).
+- **A maradék** (N-F96h, nyitott tétel a briefben; utófeladat a `/befogad`-dal, a felhasználó jóváhagyásával):
+  - a jelöltként maradt tokenek (`igealak_tokenek.tsv` `jelolt` oszlop);
+  - a magánhangzós ige a névmási *az* után (7 token);
+  - 3 E/1 → T/3 hiba (1Móz 39:15, Dán 7:16, Ez 22:30);
+  - az ellenőr mintájának és szúrópróbájának kihagyásai (*egybegyűle, sétála, Helybenhagyák, felveheték, béméne, elplántálám, lövének, megszerzém*);
+  - a mély hangrendű *-ok* birtokos (DT-F96p, 3. opció);
+  - az N-F96c.
