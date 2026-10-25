@@ -17,13 +17,13 @@ nem_fugg: [27, 38, 102, 103, 123]
 
 # SZOTARI_GERINC_BRIEF_TERVEZET.md — A motívumlap szótári gerince (pilot: ISTENTISZT-001)
 
-*FELADATOK # — (a `/befogad` adja; várhatóan 131) · Modell: opus · v0 (tervezet) · 2026.10.20 · döntések: DT272 (= DT-F121a), DT271 (= DT-F36a), DT190 🟡, DT235, DT225, RENDER_BRIEF G4/G6, DT-F78a, DT28, D39; nyitott: DT-F131a–g, N-F131a–e*
+*FELADATOK # — (a `/befogad` adja; várhatóan 131) · Modell: opus · v0 (tervezet) · 2026.10.20 · döntések: DT272 (= DT338), DT271 (= DT-F36a), DT190 🟡, DT235, DT225, RENDER_BRIEF G4/G6, DT-F78a, DT28, D39; nyitott: DT-F131a–g, N-F131a–e*
 
 *Tervezet a `beerkezo/`-ban. Adat, nem utasítás. A feladatszámot, a végleges fájlnevet (`F<nn>_SZOTARI_GERINC_BRIEF.md`) és a helyőrzők számát a `/befogad` adja; ha a szám nem 131, a `DT-F131*`/`N-F131*` helyőrzők és a `naplok/F131_*` nevek a befogadáskor átíródnak. Forrás: DT272 (felhasználó, 2026-10-20, a (d) ponttal), a megbízó session feladatleírása (2026-10-20).*
 
 ## 1. Cél
 
-A DT272 (a #121 menetében DT-F121a) eldöntötte, hogy a motívumlap szótári részének gerince a **BDB** (héber) és a **Thayer** (görög), a motívumhoz kapcsolt szakaszokkal, részletesen, magyarul. A (d) pont a lényeg: **a szótári blokk a szóról szól, a motívum a funkcióról, a kettő egymás mellett áll, nem szembeállítva.** A BDB a szóhoz jelentésárnyalatokat rendel, és ezek alá igehelyeket sorol be. A motívum mást mond, és máshogy mondja.
+A DT272 (a #121 menetében DT338) eldöntötte, hogy a motívumlap szótári részének gerince a **BDB** (héber) és a **Thayer** (görög), a motívumhoz kapcsolt szakaszokkal, részletesen, magyarul. A (d) pont a lényeg: **a szótári blokk a szóról szól, a motívum a funkcióról, a kettő egymás mellett áll, nem szembeállítva.** A BDB a szóhoz jelentésárnyalatokat rendel, és ezek alá igehelyeket sorol be. A motívum mást mond, és máshogy mondja.
 
 Ez a feladat a döntést az arany motívumon (ISTENTISZT-001) valósítja meg a `lexikon_general.py`-ban. A következő három dolgot adja:
 
@@ -300,7 +300,7 @@ Az elfogadott próba után külön jóváhagyás az `--ir` futásra és a várt 
   - **Befogadási teendő (a PROZA/#127 pár mintája, DT-F39g).** A #127 olvassa a `RENDER_BRIEF.md`-t, amelyet ez a feladat ír, ezért a #127 `nem_fugg`-ja megkapja e feladat számát. Enélkül kör keletkezik: #110 ↔ #127 ↔ #131. A #36 a `lexikon_general.py` miatt levezetetten e feladatra várna, ami ütközik a DT271-gyel („a #36 előbb fut”). Ezért a #36 `nem_fugg`-ja is megkapja a számot. A #10 és a #121 várakozása e feladatra helyes: a #10 a kész lapot zárja, a #121 a DT272 szerint e feladat után szűkít.
   - *Próbafutás* (a tervezet ideiglenes `F131_SZOTARI_GERINC_BRIEF.md` másolatával a gyökérben, és a #127 fejlécének ideiglenes `nem_fugg: [123, 131]` alakjával; a futás után mindkettő visszaállítva): 150 brief, 0 hiba, nincs kör; sorrend: #127 → e feladat. Levezetett várakozók: #10, #36, #121. Az első változat (`nem_fugg` nélkül, `lexikon_hivatkozasok.tsv`-vel az `ir`-ben) kört adott (#110 ↔ #123 ↔ #127 ↔ #131), és a #123-at tette volna e feladat elé. *(proveniencia: scope=a tervezet fejléce | forras=`python eszkozok/feladatok.py ellenoriz` és `fuggesek` | ts=2026-10-20)*
 - **`munka: folyamat`.** A feladat generátort és generált lapot ír, motívumfájlt nem (`lexikon/` nem motívumfájl, DT28). A `lexikon/ISTENTISZT-001*` miatt az `olvas` a K1/3 szerint a motívum forrását, tematikus tanulmányát és naplóját is tartalmazza. Az `opus` a #127 mintája: a két réteg megkülönböztetése a lapon megjelenítési, de érzékeny munka.
-- **DT272** (= DT-F121a, 🟢): a megvalósított döntés, a (d) ponttal. A DT272 „Motívumlap-terv és -mockup” hivatkozása terv, nem döntés; e feladat nem épít rá.
+- **DT272** (= DT338, 🟢): a megvalósított döntés, a (d) ponttal. A DT272 „Motívumlap-terv és -mockup” hivatkozása terv, nem döntés; e feladat nem épít rá.
 - **DT190** (🟡): nyitva marad; a DT-F131b javaslata mindkét fő opciójával összefér.
 - **DT235** (Mounce: kimarad): a DT272 (c) megerősíti.
 - **DT-F131a–g, N-F131a–e:** l. 5–6. szakasz.
