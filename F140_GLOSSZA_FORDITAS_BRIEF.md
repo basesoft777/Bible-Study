@@ -8,7 +8,7 @@ modell: sonnet
 allapot: fut
 ag: ccr-636782ad-lysuoh
 ad: minden héber Strong-számhoz (8 718) rövid magyar jelentés egy új adattáblában (adat/glosszak_heber_hu.tsv, allapot=sonnet, modell = a ténylegesen futó modell; a pardes.db-be az sqlite_epit.py általános adat/*.tsv-betöltője hozza), a TBESH glosszájából fordítva, a lemma és a definíció eleje mint kontextus mellett; kapukkal ellenőrizve; a 300 leggyakoribb szóra kézi átnézési lista
-kovetkezo: "Folytatás: M1 — 10 954/11 677 sor kész (75 köteg); következő: python eszkozok/glossza_forditas.py --koteg <fajl> --csak-bemenet, fordítás, --rogzit <valasz> --modell <tényleges modellnév>; l. naplok/GLOSSZA_FORDITAS_M1_naplo.md Folytatási pont és Tanácsok a folytatáshoz"
+kovetkezo: "Folytatás: M1 — 11 054/11 677 sor kész (76 köteg); következő: python eszkozok/glossza_forditas.py --koteg <fajl> --csak-bemenet, fordítás, --rogzit <valasz> --modell <tényleges modellnév>; l. naplok/GLOSSZA_FORDITAS_M1_naplo.md Folytatási pont és Tanácsok a folytatáshoz"
 munka: adat
 olvas: [konkordancia/TBESH.txt, konkordancia/TBESH_TBESG_README.md, konkordancia/Strong_szotar.tsv, konkordancia/TAHOT_kivonat.tsv, adat/terminologia.tsv, eszkozok/forditas_kapuk.py, eszkozok/emeles.py]
 ir: [adat/glosszak_heber_hu.tsv, adat/SEMA.md, eszkozok/glossza_forditas.py, eszkozok/teszt_glossza_forditas.py, naplok/GLOSSZA_FORDITAS_elakad.tsv, naplok/GLOSSZA_FORDITAS_atnezes.tsv, naplok/GLOSSZA_FORDITAS_zaras.md]
