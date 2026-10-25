@@ -110,6 +110,11 @@ ApCsel** (a `Konyv_normalizalo_tabla.tsv` 40–44. sora). Strongonként:
 | G5010 | 4 | 0 | 10 | 1 | 1 | 8 | 4 | 3/4 |
 | G5351 | 1 | 0 | 8 | 0 | 0 | 7 | 9 | 1/1 |
 | G5356 | 1 | 0 | 9 | 0 | 2 | 8 | 9 | 0/1 |
+
+*Pontosítás (F132.19, ELLENOR_F132 2. tétel, DT-F132l (a)):* a `G0813` sor (motívumhely 1) a KIRALY-001 / Zsid 7:1-28 sor hibás
+`strong` mezőjéből (`G5010+G0813+G0282`) jött, ellenőrzés nélkül átvéve; a G0813 a Zsid 7:1-28-ban nem fordul elő (egyetlen helye
+az 1Thessz 5:14), az *ἀπάτωρ* a Zsid 7:3-ban G0540. A mező az F132.19-ben `G5010+G0540+G0282`; a fenti sor a mérés pillanatának
+állapota, a G0540-re ez a tábla nem mért (a lekérdezés sorai: a „Javítókör 1” szakasz, F132.19).
 | G5590 | 7 | 2 | 95 | 55 | 23 | 38 | 30 | 3/7 |
 | **össz.** | **51** | **14** | **668** | **322** | **70** | **278** | — | **26/51** |
 
@@ -511,3 +516,32 @@ SÉRTÉS 0 (RENDBEN 14, KÉZI 2, JELENTÉS 3). `python eszkozok/feladatok.py ell
 **Nyitva a felhasználónak:** (1) a 91 sigla-javaslat jóváhagyása (lista: F132.13; különösen a három apokrif-rövidítés és a 7 üres
 alak) — az M3 előfeltétele; (2) az M3 tervezetének befogadása (`beerkezo/Fnn_THAYER_M3_BRIEF.md`, `/befogad`, a #132 merge-e után).
 A #132 lezárása a független ellenőrzés után (orkesztrátor).
+
+## Javítókör 1 (`/elteres 132`, ELLENOR_F132; 2026-10-25)
+
+A felhasználó jóváhagyott besorolása: `DONTESEK.md` DT-F132l (a 2. tétel döntése és az 1., 3.–7. tétel javaslatának jóváhagyása).
+Végrehajtó: `claude-opus-5-5`. Tételenként külön commit (F132.18–F132.24).
+
+- **F132.18 (1. tétel, CI E5):** a brief M3-címsorának cseréje alatt látható megjegyzés; a `TÖRLÉS-SZÁNDÉKOS:` jelölés a commit-üzenet
+  sor elején áll, mert az E5 csak azt olvassa (`eszkozok/ellenorzes/szabalyok.py` `SZANDEKOS_JELOLES_MINTA`; a CI a PR összes
+  commit-üzenetét `--commit-uzenet-fajl`-ként adja).
+- **F132.19 (2. tétel, DT-F132l (a)):** `adat/elofordulasok.tsv` KIRALY-001 / Zsid 7:1-28 `strong`: `G5010+G0813+G0282` →
+  `G5010+G0540+G0282`; a sor `proveniencia` mezője `scope=manual`, a lekérdezésre hivatkozva. Írás előtt összevetve: a 262 sorból
+  csak ez az egy változott (bájtra). A lekérdezések saját proveniencia-sora:
+
+  ```
+  # scan G0813 — 0 igehely, 0 szó-előfordulás
+  proveniencia: scope=range:Zsid 7:1-28 | forras=TAGNT_kivonat.tsv | strong=G0813 | n=0 | ts=2026-10-25T12:04Z
+  # scan G0540 — 1 igehely, 1 szó-előfordulás
+  Zsid 7:3
+  proveniencia: scope=range:Zsid 7:1-28 | forras=TAGNT_kivonat.tsv | strong=G0540 | n=1 | ts=2026-10-25T12:04Z
+  # scan G0813 — 1 igehely, 1 szó-előfordulás
+  1Thessz 5:14
+  proveniencia: scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G0813 | n=1 | ts=2026-10-25T12:04Z
+  ```
+
+  Következmények (újragenerálva, `--ts 2026-10-25`): `adat/thayer_sigla.tsv` — a `# forras:` sor `elofordulasok.tsv` hash-e és 10 sor
+  `gerinc_elofordulas` mezője; a kézi oszlopok változatlanok (a gerincszavakban előforduló jelölt 91 → 90: az `educ.` gerinc-előfordulása
+  0 lett, `javaslat` marad). A szólista (`szolista.py`, csak stdout) ma: 13 Strong, mind `forditando` / `nincs_szakaszos`, a G0813 helyett
+  G0540 (2 szakasz, 214 karakter). A `lexikon/KIRALY-001_TUDOMANYOS.md` és `_TORZSCIKK.md` generált nézet a régi tokent mutatja (G0813
+  szócikk-alszakasz); a #132 `ir`-én kívül esik, újragenerálása nem e kör része (az E28 hatóköre csak az ISTENTISZT-001).

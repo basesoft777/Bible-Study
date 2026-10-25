@@ -1521,7 +1521,8 @@ ebből 91 fordul elő a gerincszavakban; besorolt: 0 (az F132.9-es, nyers szöve
 a 91 gerinc-jelölt mindegyike `javaslat` (`claude-opus-5-5`; magyar alak 22, `változatlan` 62, üres — nincs egységes alak — 7; a
 terminológiai kulcsú sorok alakja a szójegyzéké); a jóváhagyás (`besorolt`) a felhasználóé, az M3 előfeltétele. A lista:
 `naplok/F132_THAYER_SZAKASZ_naplo.md` F132.13. A terminológiai szójegyzék (2.15) 10 jelöltre már ad magyar alakot (`cf.` → `vö.`, `Sept.` →
-`Septuaginta`, `i. e.` → `azaz`, `Plato` → `Platón` …), az elsőbbséget kap (az adatblokk jelzi).
+`Septuaginta`, `i. e.` → `azaz`, `Plato` → `Platón` …), az elsőbbséget kap (az adatblokk jelzi). F132.19 (DT-F132l (a), a
+KIRALY-001 G0813 → G0540): a gerincszavakban előforduló jelölt 90 (az `educ.` gerinc-előfordulása 0, `javaslat` marad).
 
 
 ### 2.38 `thayer_forras_javitas.tsv` — a `Thayer_teljes.tsv` szövegvesztésének javítótáblája (F132, DT-F132i (2); a 2.31 mintája)
