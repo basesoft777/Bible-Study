@@ -10,8 +10,8 @@ ad: a héber szó-lap fejléce három sorban, egységes rendben: címsor = hébe
 kovetkezo: "A /kovetkezo a #134 zárása után indíthatja (M0 ⛔: mérés és terv; ⛔ DT-F139a: a héber átírás forrása)"
 munka: folyamat
 olvas: [F134_OLVASO_ALAPNEZET_BRIEF.md, F138_ALAPJELENTES_JAVITAS_BRIEF.md, F05_SZOTAR_BRIEF.md, adat/kiejtes_kivetelek.tsv, adat/kiejtes_heber_kivetelek.tsv, eszkozok/heber_kiejtes_jeloltek.py, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/Strong_szotar.tsv]
-ir: [eszkozok/olvaso_szerver/sablonok/_szo_panel.html, eszkozok/olvaso_szerver/statikus/, eszkozok/olvaso_szerver/oldalak.py, eszkozok/olvaso_szerver/lekerdezesek.py, eszkozok/olvaso_szerver/teszt_olvaso_szerver.py, eszkozok/olvaso_szerver/teszt_szolap_fejlec.py, eszkozok/heber_atiras_general.py, adat/kiejtes_heber_atiras.tsv, adat/kiejtes_heber_jeloltszabalyok.tsv]
-fugg: [134]
+ir: [eszkozok/olvaso_szerver/sablonok/_szo_panel.html, eszkozok/olvaso_szerver/statikus/, eszkozok/olvaso_szerver/oldalak.py, eszkozok/olvaso_szerver/lekerdezesek.py, eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/teszt_olvaso_szerver.py, eszkozok/olvaso_szerver/teszt_szolap_fejlec.py, eszkozok/heber_atiras_general.py, adat/kiejtes_heber_atiras.tsv, adat/kiejtes_heber_jeloltszabalyok.tsv]
+fugg: [134, 140]
 ---
 
 # F139_SZOLAP_FEJLEC_BRIEF.md — A szó-lap fejlécének átrendezése
@@ -46,6 +46,7 @@ H2763 · ige · Hif'íl                          ← alcím (Strong-szám, szóf
 **Benne van:**
 
 - a héber szó-lap fejlécének (`_szo_panel.html` és a `szo_torzs` által átadott mezők) átrendezése a fenti sorrendre, a kis és a nagy képernyős nézetben (a #134 elrendezésén belül);
+- a kiemelt jelentés-sor forrás-sorrendje a DT-F140a (a) szerint (`blokkok.alapjelentes`): jóváhagyott kézi jelentés > a #140 magyar glosszája (`adat/glosszak_heber_hu.tsv`, a pardes.db-ben azonos nevű tábla) > a BDB-kivágás; ha egyik sincs, a sor jelölten üres („magyar jelentés még nincs”), angol szöveg nem kerül a helyére;
 - a szófaji előtag (és a vezető nyelvtani címke, pl. `ige Hiph`il:`) leválasztása a megjelenített alapjelentésről **a megjelenítési rétegben**; ami leválik, az alcímbe kerülhet, ha a `Szófaj` mezőnél többet mond (binyan);
 - a magyar átírás a címsorban, a DT-F139a döntés szerinti forrásból; gépi átírás esetén látható jelöléssel (pl. `title` és jelölő osztály);
 - az angol szótagolású `Kiejtés` kivétele a fejlécből (a Strong-szótár blokkjában, lejjebb, megmaradhat);
@@ -53,8 +54,8 @@ H2763 · ige · Hif'íl                          ← alcím (Strong-szám, szóf
 
 **Nincs benne:**
 
-- az alapjelentés **tartalmának** javítása (kinyerő, visszaesési sorrend, „LORD”, tulajdonnevek, Károli-alak mint jelölt): az a #138; ez a feladat a `bdb_szelet.py`-t és a `blokkok.alapjelentes`-t nem írja;
-- az angol visszaesés megszüntetése vagy a hiányzó jelentés jelölése a fejlécben: a #138 után, a mért minőség alapján, külön döntéssel;
+- a BDB-kivágás (`bdb_szelet.py`) javítása és a „LORD” a forrásfájlokban: a #138; ez a feladat a `bdb_szelet.py`-t nem írja;
+- a magyar glosszák előállítása: a #140.
 - a görög szó-lap fejléce (a TBESG-ág): külön mérés után, ha a felhasználó kéri;
 - a H1581-es forráshiba (a szomszédos גַּמְלִיאֵל szócikk a H1581 szakaszai elején): külön nyitott tétel.
 
@@ -84,11 +85,12 @@ H2763 · ige · Hif'íl                          ← alcím (Strong-szám, szóf
 
 - A héber szó-lap fejléce a cél-sorrendben áll; a szófaj sehol nem ismétlődik a fejlécben.
 - A címsorban a magyar átírás a DT-F139a szerint áll; gépi átírásnál a jelölés látható; az angol szótagolású kiejtés a fejlécben nem szerepel.
-- A `bdb_szelet.py` és a `blokkok.alapjelentes` változatlan (a #138 hatóköre).
+- A kiemelt jelentés-sor a DT-F140a (a) sorrendjét követi (kézi > TBESH-glossza fordítása > BDB-kivágás); angol szöveg a kiemelt sorban nem áll, a hiány jelölt; a `bdb_szelet.py` változatlan.
 - `python eszkozok/teszt_futtat.py` zöld; az új fejléc-teszt legalább 10 Stronggal.
 - (M1 esetén) az `adat/kiejtes_heber_atiras.tsv` minden sora provenienciával; a generátor kétszeri futása bájtazonos.
 
 ## 5. Döntésnapló
 
+- **DT-F140a** (🟢, 2026-10-25, a felhasználó): a kiemelt jelentés forrása és sorrendje (a), a #139 függése a #140-től (d); átvezetve ebbe a briefbe a befogadáskor.
 - **DT-F139a** (nyitott, M0 ⛔): a héber átírás forrása a címsorban, (a)/(b)/(c), l. M0 4.
 - Előzmény (2026-10-25, chat, `manual`): a felhasználó jóváhagyta, hogy a jelentés ne a címsorban, hanem közvetlenül alatta, kiemelve álljon, és hogy a megjelenítés a #138-tól külön feladat legyen.
