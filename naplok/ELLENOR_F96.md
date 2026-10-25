@@ -158,3 +158,143 @@
 7. A brief `kovetkezo` mezője elavult (2. kör).
 
 **NEM ELLENŐRIZHETŐ:** a K2/K3/K3b újragenerálása és összevetése (a `karoli_modern.py`-t a szerepköröm nem engedi futtatni); a K1 322-es nevezője; az N-4 +40-es részének soronkénti bontása; a felhasználó chatbeli jóváhagyásai; a végrehajtó session tényleges modellje.
+
+# 4. kör
+
+*(A független ellenőr jelentése szó szerint; az ellenőr ebben a futásban nem tudott fájlba írni, a beillesztést a végrehajtó session végezte, változtatás nélkül.)*
+
+ELTÉRÉS: 5 tétel
+
+# Független ellenőrzés, 4. kör: F96_KAROLI_MODERN_BRIEF.md, `8b858b3..HEAD` (ág: `ccr-a680d019-39s73e`, HEAD = `d5f6607`)
+
+**A jelentés nincs fájlba írva.** Ebben a sessionben nincs írási eszközöm. A Bash a szerepem szerint csak `git diff`/`git log`, `lekerdez.py` és `futtat.py` hívásra használható, így a `naplok/ELLENOR_F96.md`-hez sem tudtam hozzáírni. Az alábbi szöveget a hívónak vagy a felhasználónak kell 4. körként a fájlba illesztenie.
+
+**Ugyanez a korlát kizárt két kért lépést:**
+- A generátorokat nem futtattam újra `--kimenet`-tel.
+- A `random.Random(20261026).sample` mintát sem tudtam előállítani, mert tetszőleges Python nem futtatható.
+
+Ezek a pontok NEM ELLENŐRIZHETŐ minősítést kaptak. A lefedettséget helyettesítő mintán mértem, ennek a módja a 2. részben áll.
+
+## 0. Modell-ellenőrzés
+- A tényleges modell `claude-opus-5-5`, a subagent-fájlban kért modell `opus`: egyezik.
+- A menet `modell` mezői `claude-opus-5-5` értéket mutatnak, ez a hívásnaplók `"modell": ["claude-opus-5-5"]` mezőjével egyezik:
+  - `igealak_llm_kor3/4/5.tsv` fejléc;
+  - `igealak_llm_kor3/4/5_hivasok.jsonl`.
+
+## 1. Táblázat
+
+| pont | eredmény | fájl:sor | parancs / indok |
+|---|---|---|---|
+| 0 / modell-mező | OK | `adat/karoli_modern/igealak_llm_kor5_hivasok.jsonl:1-2` | Read. Mindhárom jsonl-ben `claude-opus-5-5`. Tokenösszegek: kor3 148676+148137+148604+149815 = 595 232; kor4 140741+142156 = 282 897; kor5 144936+140482 = 285 418. Mindhárom egyezik a naplóval, a DONTESEK-kel és a fejlécekkel. |
+| CI | OK (a diffen) | `FELADATOK.md:63` | `python eszkozok/ellenorzes/futtat.py --valtozott $(git diff --name-only 8b858b3..HEAD) --diff-alap 8b858b3 --diff-fej HEAD`. Eredmény: E2–E16, E19, E20, E26, E28–E31 0 találat; E25 4 JELENTES (CLAUDE.md, MUNKAMENET.md); E27 HIBA 2 (`FELADATOK.md:63`, commit `1f420a7c`). A diff a FELADATOK.md-t nem érinti, a hiba korábbi. Külön CI-jelentést nem kaptam bemenetként, ezért összevetni nem tudtam. |
+| K2 / K3 / K3b (generátor újrafuttatása) | NEM ELLENŐRIZHETŐ | `eszkozok/karoli_modern/karoli_modern.py` | Az újrafuttatás a megengedett parancskörön kívül esik. Részigazolás, Grep count: `karoli_modern.tsv` 599 369 sor = 2 fejlécsor + 599 367 token (a scope-pal egyezik); `karoli_modern_versek.tsv` 31 160 = 2 + 31 158. |
+| Strong változatlan | OK | — | `git diff --stat 8b858b3..HEAD -- adat/karoli_strong konkordancia adat/szoto eszkozok/karoli_strong eszkozok/karoli_modern/igeragozas.py eszkozok/karoli_modern/helyesiras.py adat/karoli_modern/helyesiras_tokenek.tsv`: üres kimenet. |
+| fejléc sha256 | NEM ELLENŐRIZHETŐ | `karoli_modern.tsv:1` | A sha256 csak engedélyen kívüli paranccsal számolható. A `karoli_modern.py` BEMENETEK listájába a kor3/4/5 tábla bekerült (`git diff … karoli_modern.py`). |
+| proveniencia (ts) | **ELTÉRÉS** | `adat/karoli_modern/regies_szken.tsv:1`, `regies_szken_kor4.tsv:1`, `regies_szken_kor5.tsv:1`, `igealak_tokenek.tsv:1` | Read. A régies-szken három fejlécéből hiányzik a `ts=`, holott a CLAUDE.md 1. szabálya `scope \| forras \| ts` hármast ír elő. Az `igealak_tokenek` és az `igealak_alakok` fejlécében a ts korábban is hiányzott. A `regies_szken_kor4.tsv:1` fejléce rossz címkét visel: „(F96.3, N-F96d/e, DT-F96q)”, `--kor 4` nélkül, pedig a 4. kör táblája (DT-F96r). |
+| D: DT-F96q (csere = szabály + opus egyezése, tő-őrrel) | **ELTÉRÉS** | `eszkozok/karoli_modern/igealak.py:856`, `:860`, `:552`; `adat/karoli_modern/igealak_llm_kor4.tsv:74` | A kód a leírt szabályon felül kizárja a `nevelo_utan` jelölésű tokent. Ez a feltétel sem a DT-F96q/r-ben, sem a napló 10.3/11.3-ban nem szerepel. A `nevelo_utan` (a, az, egy után) a Károli névmási „az”-ját névelőnek veszi. Következmény: az `S0072 felele` kérdésben a szabály és az opus egyezik (`felelt`/`felelt`), mégsem cserél (1Móz 22:1, 1Kir 13:16). Grep `\tnevelo_utan$` a `karoli_modern.tsv`-n: 47 token. Ebből 31 valódi igealak maradt régiesen (*az monda* ×14, *mondá* ×2, *felele* ×2, *fogada* ×2, *felkelvén* ×2, *méne*, *beméne*, *jöve*, *esék*, *elküldé*, *elbeszélé*, *szüle*, *szülé*, *elfuta*), 2 határeset (*eljő*), 14 helyesen főnév vagy melléknévi igenév (*tevék, küldöttek, megmaradott(ak), megfáradott*). A kód régebbi, de a 3–5. kör a lefedettség javítását vállalta. |
+| D: DT-F96q / N-F96f („megoldva”) | **ELTÉRÉS** | `adat/karoli_modern/karoli_modern_versek.tsv:17404`, `:17405`, `:17408`; `karoli_modern.tsv:333492` | Grep `^Préd 2:[4-9]\t` mindkét táblán. Salamon E/1-es beszédében az `ek_E1_T3` rossz személyt ad: Préd 2:5 *építék → építették*, *ülteték → ültették* (az 1908-ban: „építék magamnak házakat”); 2:6 *ülteték → ültették*; 2:9 *Gyűjték → Gyűjtötték magamnak*. Ugyanitt a *Csinálék → Csináltam* és az 5. körben a *szerzék → szereztem* helyes, így egy versen belül keveredik a személy. A 10.4 „T/3 maradt” listája (1Móz 39:15, Dán 7:16, Ez 22:30) ezeket nem említi. A szabály a token utáni *magamnak* E/1 jelzőt nem nézi. 4 rossz token, a csere-pontosság állítását (hiba 0) ez az osztály cáfolja. |
+| D: DT-F96r/s/u számok | OK | `karoli_modern.tsv` | Grep count a `karoli_modern.tsv`-n: `kor3:szabaly\+opus` 690; `kor4:szabaly\+opus` 184; `kor5:token_opus\+meglevo` 205; `\tvala_segedige_kor3\t` 71; `\tvala_segedige_kor4\t` 16; `opus_tanusitott` 58 (= 29+22+7); `\tszabaly_nem_tanusitott$` 58; `\tek_E1_T3$` 692. Az `igealak_tokenek.tsv`-n: `kor5_token_opus:` 106; `\ttoken_opus\t` 205. A `karoli_modern_versek.tsv`-n `\tigen$` 21 620. Mind egyezik a napló 10.–14. szakaszával. |
+| D: DT-F96u szabály (szúrópróba) | OK | `adat/karoli_modern/igealak_llm_kor5.tsv:3-25`, `:114`, `:201`, `:256` | Read és Grep. Az `opus_alak` minden cserélt esetben a `meglevo_jeloltek` egyike. A T0022 *tevének* (főnév, 1Móz 31:34) helyesen változatlan. Megjegyzés, nem ELTÉRÉS: ahol a modernebb írásmód is jelölt volt, a kör a régiest választja (*elsülyesztette*, *felűltek*, *megkisértette*). Ez a .1 hiánya (N-F96c): Grep `sülye` szerint a *sülyed-* sehol nincs modernizálva. |
+| `lőnek` (a kiadott réteg) | **ELTÉRÉS** | `eszkozok/karoli_modern/igealak.py:702`; `igealak_tokenek.tsv:66933`; `karoli_modern_versek.tsv:30949` | Az `re.search(r'nyil\|nyíl\|íj', …)` a Jel 11:19 *megnyilatkozék* szavára is illeszkedik, ezért a „lőnek villámlások” `lonek_lo` jelölést kap, és nem lesz belőle *lettek*. A kód régebbi (`git log -S"lonek_lo"` → `c7bcd33`), az 1 tokenes hiba a kiadott táblában van. |
+| E17 / DT3 (sorszám-Δ) | **ELTÉRÉS** (`igealak_tokenek`) | `naplok/KAROLI_MODERN_meres.md` 10.5, 11.3 | Módszer: `git diff --numstat 8b858b3..HEAD` és Grep `^` count. Változott táblák: `igealak_tokenek` +1084 (66 601 → 67 685); `igealak_alakok` 0; `karoli_modern` 0; `karoli_modern_versek` 0; `igealak_minta` 0. Új táblák: `igealak_llm_kor3` +1516, `igealak_llm_kor4` +485, `igealak_llm_kor5` +370, `regies_szken` +1516, `regies_szken_kor4` +485, `regies_szken_kor5` +370, `igealak_minta2` +140. Az `adat/` és a `konkordancia/` többi `.tsv`-je 0 (nincs a diffben). Az új táblák bontása a naplóban megvan (1354+162; 291+33+161; 357+13; 100/20/10/10). Az `igealak_tokenek` +1084-e csak két lépcsőben szerepel (+831, +253), olyan kategóriabontás nélkül, amelynek összege a Δ. |
+| törölt sorok | NEM ELLENŐRIZHETŐ | `igealak_tokenek.tsv` | A numstat −646 sort mutat. A napló szerint „egy sor sem tűnt el”, vagyis ezek módosítások. A kulcsok soronkénti összevetése engedélyen kívüli számítás. |
+| nulla-diff hatóköre | OK, részben | — | A Strong-, szótő-, konkordancia- és .1-bemenetek bájtra változatlanok (fenti `--stat`). A „.1-visszalépés 0 token” állítás NEM ELLENŐRIZHETŐ. |
+| K1 / minta2 számai | OK | `adat/karoli_modern/igealak_minta2.tsv:3-142` | A Grep `\tcsere=\d+` a véletlen réteg 100 során összesen 96-ot ad. A `(kihagyás\|hibás)\tcsere=` kihagyás-sorai: 36, 49, 50 (véletlen, 3 db); 111, 112, 121, 122 (kor3, 4 db); 138 (ek, 1 db). Ez egyezik a 14.4 táblájával. |
+| ⛔ pontok | OK | brief 3. pont; DONTESEK DT-F96q–v | Minden kör DT-helyőrzőn állt meg (r, s, t, u, v). Minden LLM-futás előtt van jóváhagyás: q (kor3), r 2. opció (kor4), u (kor5). A DT-F96v 🟡 nyitott, a brief `kovetkezo` mezője ezt mutatja. Végleges DT-szám nincs. A diff fájljai mind az `ir` listán vannak. |
+| csv / abszolút út / kódolási őr | OK | `regies_szken.py:41-56`, `igealak.py:82-103` | Grep `import csv\|csv\.\|/home/\|reconfigure`: nincs csv, nincs abszolút út, a wrapper az importok után áll. |
+| A1 | OK | napló 11.3, 12.3, 14.3 | Az „átnézve, mind helyes” állítások végrehajtói vagy modell-ellenőrzésként jelöltek. A Préd 2 hibái az ek-osztályt érintik, nem ezeket a köröket. |
+| A2 | **ELTÉRÉS** (az N-F96f státusza) | `F96_KAROLI_MODERN_BRIEF.md` N-F96f sor | Az „N-F96f megoldva” túlzó, l. a Préd 2:5–9 sort. |
+| A3 / A4 / A5 | nem alkalmazható | — | Nincs tanulmány, PaRDeS-réteg vagy tanító a diffben. A Tanulmány-ellenőrzés (F37 T4) nem él: nincs `*_bovitett.md` vagy `*_tanulmany.md`. |
+| A6 | OK | — | E12–E15 0 találat (a futtat.py fenti kimenete). |
+| Friss véletlen minta (mag 20261026) | NEM ELLENŐRIZHETŐ | — | A `random.sample` nem futtatható. Helyette determinisztikus, egyenletes szisztematikus mintát vettem (l. 2. rész). |
+
+## 2. Lefedettség-mérés, helyettesítő mintán
+
+**A minta.** A `karoli_modern_versek.tsv` 160 + 311·k sora (k = 0…99), az 1908-as párja a `Karoli_1908.tsv` eggyel kisebb sorszámú sora.
+- Kiválasztás: Read offset/limit 1; az 1908-as szöveg: Grep `^(<100 igehely>)\t` a `konkordancia/Karoli_1908.tsv`-n.
+- A két meglévő mintából egyetlen vers esett bele, a 2Sám 19:43 (`igealak_minta.tsv:35`, G033). Helyette a következő vers, a 2Sám 20:1 került be.
+
+**Számlálás.**
+- A csere a helyes igealak-csere, a *vala* és a *-ván/-vén* is ide tartozik.
+- A *lészen → lesz* a rendszer szerint cserél, ezért csereként számoltam.
+- A tisztán helyesírási csere (*közűl, néki, a kik*) nem számít.
+
+**Versenként, ahol nem 0/0/0:**
+- 1Móz 19:11 — 3 csere
+- 1Móz 28:6 — 4
+- 1Móz 37:7 — 4
+- 1Móz 46:15 — 1
+- 2Móz 18:24 — 3
+- 2Móz 38:12 — 2
+- 3Móz 9:3 — 1
+- 4Móz 26:22 — mély *-ok*: *számok*
+- Józs 10:3 — 2
+- Józs 20:6 — 1
+- Bír 6:35 — 3 csere, **1 kihagyás**: *egybegyűle*. Mindhárom forrás *egybegyűlt*/*egybegyült*, de a tő-őr az ű/ü eltérésen elbukik (`igealak_tokenek.tsv:16295`).
+- Bír 18:7 — magas *-ök* kihagyás: *felettök*
+- 1Sám 4:14 — 3
+- 1Sám 17:4 — 2
+- 1Sám 27:2 — 3
+- 2Sám 10:3 — 1 csere; mély *-ok*: *uroknak*
+- 2Sám 20:1 — 4
+- 1Kir 4:21 — 3
+- 1Kir 12:25 — 4
+- 1Kir 22:7 — 1
+- 2Kir 10:4 — 2
+- 2Kir 20:10 — 1
+- 2Krón 8:6 — 2
+- 2Krón 35:8 — 2
+- Zsolt 89:11 — 1
+- Zsolt 105:39 — 1
+- Zsolt 119:57 — 1
+- Ézs 8:14 — 1
+- Ézs 40:24 — 1
+- Sir 1:1 — 2
+- Ez 42:3 — 3
+- Dán 4:26 — **1 kihagyás**: *sétála*. Egyik szkenben sincs; a `fedettseg_alakok.tsv:54308` szerint `valtozatlan`/`lexikon`.
+- Ámós 8:9 — 1
+- Mt 25:37 — 1
+- Mk 4:33 — 2
+- Mk 11:27 — 3
+- Luk 2:5 — 1
+- Luk 8:44 — 3
+- Luk 15:12 — 2 csere; magas *-ök* kihagyás: *köztök*
+- Luk 22:47 — 3 csere, **1 kihagyás**: *az méne*, `nevelo_utan`
+- Ján 5:12 — 2
+- Ján 19:19 — 3
+- ApCsel 7:39 — 2
+- ApCsel 15:24 — 2
+- ApCsel 24:9 — 1 csere, **1 kihagyás**: *Helybenhagyák*. Egyik szkenben sincs (`fedettseg_alakok.tsv:4000`).
+- Filem 1:21 — 2
+- Jel 11:19 — 2 csere, **1 kihagyás**: *lőnek*, `lonek_lo` téves találat.
+
+A *-ök → -ük* (DT-F96p) és a *-jok* csere 9 tokenen helyes: 1Móz 6:20 ×3, 2Móz 28:41, 5Móz 31:28, 2Krón 35:8, Zsolt 140:3, Ézs 40:24, ApCsel 7:39. A többi 52 versben 0/0/0.
+
+**Összesen (100 vers):**
+- igealak: **92 csere, 0 hiba, 5 kihagyás**;
+- *-ök/-ok* birtokos: 9 csere, 2 magas hangrendű kihagyás (a DT-F96p tőfeltételén kívül), külön 2 mély hangrendű *-ok*;
+- szándékosan változatlan (*-nd-*, *-jál/-jél*, *jövén/lévén*): a mintában nem fordult elő.
+
+**Lefedettség igealakra: 92 / (92 + 5) = 94,8%.**
+- Korpuszbecslés: kb. 1 560 token; Poisson 95%-os sáv kb. 500–3 600.
+- A minta2 véletlen rétege (96/96, 0 kihagyás) ennél jóval kedvezőbb. 5 várt eset mellett 0 kihagyás valószínűsége kb. 0,7%, ami megerősíti a napló saját torzítás-figyelmeztetését.
+- A mintán kívüli szúrópróba további kihagyásokat talált: 1Móz 7:17 *felveheték*, 1Móz 16:4 *béméne*, 2Sám 7:10 *elplántálám*, 2Krón 35:23 *lövének*.
+
+## 3. ELTÉRÉS-ek, súlyossági sorrendben
+
+1. **Rossz személy az `ek_E1_T3`-ban** (Préd 2:5, 2:6, 2:9; 4 token: *építették, ültették ×2, Gyűjtötték magamnak*), így az „N-F96f megoldva” túlzó. Bizonyíték: `karoli_modern_versek.tsv:17404/17405/17408`, `karoli_modern.tsv:333492`.
+2. **Lefedettség és a leírt szabály.** A mért lefedettség 94,8% (5 kihagyás), a napló 100%-a helyett. Ennek oka részben egy le nem írt kizárás: a `nevelo_utan` feltétel a kor3/kor4 alkalmazásban (`igealak.py:856/860`) az *az monda / felele / méne* típusú névmási „az” utáni igéket is kizárja. 31 token marad így régies. Ide tartozik az S0072 *felele* is (`igealak_llm_kor4.tsv:74`), ahol a szabály és az opus egyezett, mégsem lett csere.
+3. **A `lonek_lo` regex téves találata** a *megnyilatkozék* szóra (`igealak.py:702`, Jel 11:19, 1 token).
+4. **Proveniencia.** A `regies_szken*.tsv` fejlécéből hiányzik a `ts=`, a `regies_szken_kor4.tsv:1` címkéje hibás.
+5. **E17.** Az `igealak_tokenek.tsv` +1084 soros Δ-jához nincs összegző kategóriabontás.
+
+Nem ellenőrizhető maradt a generátorok újrafuttatása (K2/K3/K3b), a sha256-ok, valamint a kért magú véletlen minta: mindhárom a megengedett parancskörön kívül esik.
+
+Fájlok:
+- /home/user/bible-study/adat/karoli_modern/karoli_modern_versek.tsv
+- /home/user/bible-study/adat/karoli_modern/karoli_modern.tsv
+- /home/user/bible-study/adat/karoli_modern/igealak_tokenek.tsv
+- /home/user/bible-study/adat/karoli_modern/igealak_llm_kor4.tsv
+- /home/user/bible-study/eszkozok/karoli_modern/igealak.py
+- /home/user/bible-study/naplok/KAROLI_MODERN_meres.md
+- /home/user/bible-study/naplok/ELLENOR_F96.md (ide kell beilleszteni ezt a 4. kört; én nem írtam bele)
