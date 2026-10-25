@@ -4,7 +4,9 @@
 eszkozok/glossza_forditas.py -- F140 GLOSSZA_FORDITAS: a TBESH rovid glosszajanak
 (7. oszlop) magyar forditasa a heber Strong-szamokra.
 
-M0 allapot: csak a meres es a sor-valasztas (--m0). A forditas (M1) nincs benne.
+M0: a meres es a sor-valasztas (--m0). M1 (DT-F140b K7 (a)): a session forditja a kotegeket,
+a szkript kotegeket keszit (--koteg), rogzit (--rogzit) es ellenoriz (--ellenoriz); nincs
+modellhivas a szkriptben. A tabla: adat/glosszak_heber_hu.tsv (SEMA 2.34).
 
 A TBESH tab-tagolt; az adatsorok az 'eStrong#' fejlecsor utan kezdodnek:
   0 eStrong  1 dStrong ('H2763A =' vagy 'H0430G = a Name of')  2 uStrong
@@ -27,6 +29,7 @@ TBESH = os.path.join(GYOKER, 'konkordancia', 'TBESH.txt')
 SZOTAR = os.path.join(GYOKER, 'konkordancia', 'Strong_szotar.tsv')
 TAHOT = os.path.join(GYOKER, 'konkordancia', 'TAHOT_kivonat.tsv')
 
+TB = None
 HEBER_SOR = re.compile(r'^H\d{4}[a-z]?$')
 
 
@@ -100,11 +103,38 @@ def valaszt(sorok_alap):
 
 NEVTOREDEK = re.compile(r'^\s*(This name|means)|Combined with')
 
+# K5 (DT-F140b): a TAHOT "Rovid jelentes"-e a 11 istenneves Strongnal "LORD"-ot hordoz (#138
+# targya), ezert itt a K5-lista dont a fo sorrol; ahol a Strongnak tobb sora van, az entry_id-t
+# a lista nevezi meg (H5945B 'Felseges', H6635B 'Seregek'); egysoros alapnal az egyetlen sor.
+K5_FO = {'H3068': 'H3068G', 'H0430': 'H0430G', 'H0136': 'H0136', 'H0410': 'H0410K',
+         'H5945': 'H5945B', 'H3050': 'H3050', 'H7706': 'H7706', 'H6635': 'H6635B',
+         'H5943': 'H5943', 'H5946': 'H5946', 'H1180': 'H1180'}
 
-def fo_jelolt(sorok_alap):
-    """Strongonkenti kiemelt (fo) sor javaslata: az elso kapcsolat nelkuli sor, amelynek
-    glosszaja nem zarojeles es definicioja nem nevtoredek ('Combined with', 'This name ...');
-    ha nincs, az elso kapcsolat nelkuli sor; ha az sincs, a valaszt() B-fallbackja."""
+
+def tahot_norm(glossza):
+    """TAHOT 'Rovid jelentes' / TBESH-glossza osszevetesi alakja: a kettespont elotti resz,
+    kisbetusen, az alahuzas szokozzel (a TAHOT 'House_of_the_Forest' alakja)."""
+    return glossza.split(':')[0].replace('_', ' ').strip().lower()
+
+
+def tahot_tobbseg():
+    """Strongonkenti tobbsegi TAHOT 'Rovid jelentes' (normalizalt). A fo-jelolt kivalasztasaban
+    szamit csak; szoveg nem kerul at (DT-F140b K2)."""
+    szaml = defaultdict(Counter)
+    with open(TAHOT, encoding='utf-8') as f:
+        for i, sor in enumerate(f):
+            if i == 0:
+                continue
+            m = sor.rstrip('\n').split('\t')
+            if len(m) > 5 and re.match(r'^H\d{4}$', m[1]):
+                szaml[m[1]][tahot_norm(m[5])] += 1
+    return {h: c.most_common(1)[0][0] for h, c in szaml.items()}
+
+
+def fo_heurisztika(sorok_alap):
+    """A 2.2 heurisztika (M0): az elso kapcsolat nelkuli sor, amelynek glosszaja nem zarojeles
+    es definicioja nem nevtoredek; ha nincs, az elso kapcsolat nelkuli; ha az sincs, a valaszt()
+    fallbackja. Csak tartalek: a K2-szabaly (fo_jelolt) elobb a TAHOT-tobbseget nezi."""
     tiszta = [s for s in sorok_alap if s['kapcsolat'] == '' and '(' not in s['glossza']
               and not NEVTOREDEK.search(s['definicio'][:80])]
     if tiszta:
@@ -113,6 +143,29 @@ def fo_jelolt(sorok_alap):
     if fo:
         return fo[0]
     return valaszt(sorok_alap)[0][0]
+
+
+def fo_jelolt(sorok_alap, tobbseg=None):
+    """Strongonkenti kiemelt (fo) sor (DT-F140b K2, K5).
+    1. K5-lista (istennevek): a lista entry_id-je;
+    2. K2: az a sor, amelynek glosszaja (kettespont elotti resz, kisbetusen) egyezik a TAHOT
+       Strongonkenti tobbsegi 'Rovid jelentes'-evel (tobbseg: tahot_tobbseg() eredmenye);
+       tobb egyezo sornal a kapcsolat nelkuli, kettospont nelkuli sor az elso;
+    3. egyebkent (nincs TAHOT-adat / nem illeszthetö) a 2.2 heurisztika."""
+    alap = sorok_alap[0]['alap']
+    if alap in K5_FO:
+        for s in sorok_alap:
+            if s['entry_id'] == K5_FO[alap]:
+                return s
+    if tobbseg and alap in tobbseg:
+        egyezo = [s for s in sorok_alap if tahot_norm(s['glossza']) == tobbseg[alap]]
+        if egyezo:
+            # tobb egyezo sor: a kapcsolat nelkuli, kettospont nelkuli (a pontos glossza),
+            # nem zarojeles, nem nevtoredek elonyben; egyenlo rangnal a fajlsorrend
+            return min(enumerate(egyezo), key=lambda p: (
+                p[1]['kapcsolat'] != '', ':' in p[1]['glossza'], '(' in p[1]['glossza'],
+                bool(NEVTOREDEK.search(p[1]['definicio'][:80])), p[0]))[1]
+    return fo_heurisztika(sorok_alap)
 
 
 # ---------------------------------------------------------------- prompt (M0-javaslat v1)
@@ -127,11 +180,15 @@ Szabályok:
    kontextus a többértelmű glosszához (pl. `to devote/destroy`): a glosszát ne cseréld le a definícióra.
 4. Tulajdonnév: a magyar (Károli-hagyományú) névalak (Rehoboam → Roboám, Abijah → Abija);
    ha nincs hagyományos magyar alak, magyaros átírás. Személy- és helynévnél semmi magyarázat.
-5. Istennevek (Károli-szóhasználat): `YHWH`/`LORD` (H3068) → „az ÚR”; `God` (H0430) → „Isten”;
-   `Lord` (H0136) → „Úr”; `El` → „Isten” vagy „El” (a glossza szerint). Ne írj „Jehova”-t, ha a glossza nem.
+5. Istennevek (projekt-konvenció; az „az ÚR” nem Károli-alak): `LORD`/YHWH (H3068) → „az ÚR”;
+   `God` (H0430, H0410G) → „Isten”; `Lord` (H0136) → „Úr”; `god` (H0410K) → „isten”;
+   `Most High` (H5945B, H5943, H5946) → „Felséges”; `Almighty` (H7706) → „Mindenható”;
+   `Hosts` (H6635B) → „Seregek”; Jah (H3050) → „Jah”; `Baal` (H1180) → „Baáli” `?`-lel.
+   Összetételben ugyanígy: `(LORD)` → „(az ÚR)”, `(God)` → „(Isten)”. Ne írj „Jehova”-t, ha a glossza nem.
 6. Jelölők: `[Obj.]`, `(f.s.)`, `+` és hasonló szögletes/zárójeles jelölők jelentése megmarad
    magyarul (pl. „[tárgyjel]”); kettősponttal bővített glossza („land: country”) → „föld: ország”.
-7. Nincs benne héber vagy görög betű, angol szó, idézőjel, magyarázat, kérdőjel.
+7. Nincs benne héber vagy görög betű, angol szó, idézőjel, magyarázat, kérdőjel. Ha a glosszában
+   kettőspont van („house: home”), a magyarban is megmarad („ház: otthon”).
 8. Terminológia (kötelező megfelelők): {terminologia}
 9. Bizonytalanságot ne jelezz a szövegben; a nehéz esetre a sor végére `<TAB>?` kerül.
 
@@ -201,10 +258,14 @@ def kapuk(sor, hu, forras_hash_elteres=False):
             hibak.append('angol szo: ' + w)
     if re.search(r'["“”?]', hu):
         hibak.append('tiltott jel')
+    if ':' in sor['glossza'] and ':' not in hu:
+        hibak.append('kettospont elveszett (K3)')
     return hibak
 
 
 def m0():
+    global TB
+    TB = tahot_tobbseg()
     sorok = tbesh_sorok()
     alapok = defaultdict(list)
     for s in sorok:
@@ -214,7 +275,7 @@ def m0():
     print('TBESH-ban van, szotar-ban nincs (a hatokorbol kimarad):', kulso)
     alapok = defaultdict(list, {a: v for a, v in alapok.items() if a in set(szot)})
     sorok = [s for s in sorok if s['alap'] in alapok]
-    print('hatokor (8718 Strong): sor', len(sorok), '; fo-jelolt (Strongonkent 1):', len({fo_jelolt(v)['entry_id'] for v in alapok.values()}))
+    print('hatokor (8718 Strong): sor', len(sorok), '; fo-jelolt (Strongonkent 1):', len({fo_jelolt(v, TB)['entry_id'] for v in alapok.values()}))
     print('TBESH heber sor:', len(sorok))
     print('TBESH alapszam:', len(alapok))
     print('Strong_szotar heber Strong:', len(szot), '(egyedi %d)' % len(set(szot)))
@@ -272,7 +333,8 @@ def m0_proba(fajl):
     for s in tbesh_sorok():
         al[s['alap']].append(s)
     sor_id = {s['entry_id']: s for v in al.values() for s in v}
-    fo = {fo_jelolt(v)['entry_id'] for v in al.values()}
+    tb = tahot_tobbseg()
+    fo = {fo_jelolt(v, tb)['entry_id'] for v in al.values()}
     print('| entry_id | fo | kapcsolat | glossza_en | glossza_hu | ? | kapu |')
     print('|---|---|---|---|---|---|---|')
     db = hiba = 0
@@ -291,8 +353,225 @@ def m0_proba(fajl):
     print('\nsorok: %d, kapuhiba: %d' % (db, hiba))
 
 
+# ---------------------------------------------------------------- M1: tabla, koteg, rogzites
+TABLA = os.path.join(GYOKER, 'adat', 'glosszak_heber_hu.tsv')
+ELAKAD = os.path.join(GYOKER, 'naplok', 'GLOSSZA_FORDITAS_elakad.tsv')
+FEJLEC = ['strong', 'entry_id', 'kapcsolat', 'fo', 'glossza_en', 'forras_hash', 'glossza_hu',
+          'allapot', 'modell', 'datum', 'megjegyzes']
+KOTEG_MERET = 100
+
+# K5 (DT-F140b): az istennevek fix forditasa entry_id szerint; a szkript irja be (nem a modell).
+ISTENNEV_FIX = {
+    'H3068G': ('az ÚR', ''), 'H0430G': ('Isten', ''), 'H0136': ('Úr', ''), 'H0410K': ('isten', ''),
+    'H0410G': ('Isten', ''), 'H5945B': ('Felséges', ''), 'H3050': ('Jah', ''),
+    'H7706': ('Mindenható', ''), 'H6635B': ('Seregek', ''), 'H5943': ('Felséges', ''),
+    'H5946': ('Felséges', ''), 'H1180': ('Baáli', '?'),
+}
+
+
+def hatokor():
+    """A 8718 heber Strong TBESH-sorai (a H9015-H9019 elemek kimaradnak): (alapok, sorok)."""
+    szot = set(szotar_strongok())
+    alapok = defaultdict(list)
+    for s in tbesh_sorok():
+        if s['alap'] in szot:
+            alapok[s['alap']].append(s)
+    return alapok, [s for v in alapok.values() for s in v]
+
+
+def tabla_olvas():
+    sorok = {}
+    if not os.path.exists(TABLA):
+        return sorok
+    with open(TABLA, encoding='utf-8') as f:
+        for i, sor in enumerate(f):
+            if i == 0:
+                assert sor.rstrip('\n').split('\t') == FEJLEC, 'fejlec elter'
+                continue
+            m = sor.rstrip('\n').split('\t')
+            assert len(m) == len(FEJLEC), 'oszlopszam: ' + sor[:40]
+            sorok[m[1]] = dict(zip(FEJLEC, m))
+    return sorok
+
+
+def tabla_ir(sorok):
+    """Teljes ujrairas entry_id szerint rendezve; az irás elott a meglevo sorok valtozatlansaganak
+    ellenorzese (CLAUDE.md: tablat iro szkript az eredetivel veti ossze; eltereskor megall)."""
+    regi = tabla_olvas()
+    for k, v in regi.items():
+        if sorok.get(k) != v:
+            raise SystemExit('MEGALL: a meglevo sor valtozna: ' + k)
+    with open(TABLA, 'w', encoding='utf-8', newline='\n') as f:
+        f.write('\t'.join(FEJLEC) + '\n')
+        for k in sorted(sorok):
+            f.write('\t'.join(sorok[k][c] for c in FEJLEC) + '\n')
+
+
+def uj_sor(s, fo_ids, hu, allapot, modell, datum, megj):
+    return {'strong': s['alap'], 'entry_id': s['entry_id'], 'kapcsolat': s['kapcsolat'],
+            'fo': 'igen' if s['entry_id'] in fo_ids else '', 'glossza_en': s['glossza'],
+            'forras_hash': sha1(s['glossza']), 'glossza_hu': hu, 'allapot': allapot,
+            'modell': modell, 'datum': datum, 'megjegyzes': megj}
+
+
+def fo_idk(alapok):
+    tb = tahot_tobbseg()
+    return {fo_jelolt(v, tb)['entry_id'] for v in alapok.values()}
+
+
+def fuggo_parok(sorok, kesz):
+    """A (glossza, szofaj) parok, amelyeknek van meg forditatlan sora; gyakorisag szerint
+    csokkeno sorrendben (a TAHOT-elofordulas), igy a reszleges futas is a legfontosabbat adja.
+    Visszaad: lista [(rep_sor, [forditatlan sorok])]."""
+    gy = tahot_gyakorisag()
+    csoport = defaultdict(list)
+    for s in sorok:
+        if s['entry_id'] in ISTENNEV_FIX:
+            continue
+        csoport[(s['glossza'], s['szofaj'])].append(s)
+    ki = []
+    for kulcs, v in csoport.items():
+        hianyzo = [s for s in v if s['entry_id'] not in kesz]
+        if not hianyzo:
+            continue
+        rep = max(v, key=lambda s: (gy.get(s['alap'], 0), s['kapcsolat'] == '', s['entry_id']))
+        ki.append((rep, hianyzo))
+    ki.sort(key=lambda p: (-gy.get(p[0]['alap'], 0), p[0]['entry_id']))
+    return ki
+
+
+def parancs_fix(modell):
+    alapok, sorok = hatokor()
+    tabla = tabla_olvas()
+    fo = fo_idk(alapok)
+    datum = ido()
+    uj = dict(tabla)
+    for s in sorok:
+        if s['entry_id'] in ISTENNEV_FIX and s['entry_id'] not in tabla:
+            hu, megj = ISTENNEV_FIX[s['entry_id']]
+            uj[s['entry_id']] = uj_sor(s, fo, hu, 'sonnet', modell, datum, megj)
+    tabla_ir(uj)
+    print('fix istennev-sorok:', len(uj) - len(tabla), '; tabla:', len(uj))
+
+
+def ido():
+    import datetime
+    return datetime.date.today().isoformat()
+
+
+def parancs_koteg(meret, kimenet):
+    alapok, sorok = hatokor()
+    kesz = tabla_olvas()
+    par = fuggo_parok(sorok, kesz)
+    if not par:
+        print('NINCS fuggo par: minden sor forditva')
+        return
+    mai = par[:meret]
+    bemenet_sorok = [rep for rep, _ in mai]
+    szoveg = prompt_epit(bemenet_sorok)
+    with open(kimenet, 'w', encoding='utf-8') as f:
+        f.write(szoveg)
+    print('fuggo par: %d (sor: %d); a koteg: %d par, %d sor; prompt: %s' % (
+        len(par), sum(len(h) for _, h in par), len(mai), sum(len(h) for _, h in mai), kimenet))
+
+
+def parancs_rogzit(valasz, modell, masodik):
+    alapok, sorok = hatokor()
+    kesz = tabla_olvas()
+    par = {rep['entry_id']: (rep, h) for rep, h in fuggo_parok(sorok, kesz)}
+    fo = fo_idk(alapok)
+    datum = ido()
+    uj = dict(kesz)
+    hibas = []
+    n_par = n_sor = 0
+    with open(valasz, encoding='utf-8') as f:
+        for sor in f:
+            sor = sor.rstrip('\n').rstrip('\r')
+            if not sor.strip():
+                continue
+            m = sor.split('\t')
+            if m[0] not in par:
+                raise SystemExit('ISMERETLEN/MAR KESZ azonosito a valaszban: ' + m[0])
+            hu = m[1].strip() if len(m) > 1 else ''
+            bizonytalan = len(m) > 2 and m[2].strip() == '?'
+            rep, hianyzo = par.pop(m[0])
+            h = kapuk(rep, hu)
+            if h:
+                hibas.append((rep, hu, h))
+                continue
+            n_par += 1
+            for s in hianyzo:
+                uj[s['entry_id']] = uj_sor(s, fo, hu, 'sonnet', modell, datum,
+                                           '?' if bizonytalan else '')
+                n_sor += 1
+    tabla_ir(uj)
+    print('rogzitve: %d par, %d sor; tabla: %d sor' % (n_par, n_sor, len(uj)))
+    print('a valaszbol hianyzo (nem kapott forditast): %d par' % len(par))
+    for rep, hu, h in hibas:
+        print('KAPUHIBA\t%s\t%s\t%s\t%s' % (rep['entry_id'], rep['glossza'], hu, '; '.join(h)))
+    if masodik and hibas:
+        uj_fejlec = not os.path.exists(ELAKAD)
+        with open(ELAKAD, 'a', encoding='utf-8', newline='\n') as f:
+            if uj_fejlec:
+                f.write('entry_id\tglossza_en\tutolso_hu\thiba\tdatum\n')
+            for rep, hu, h in hibas:
+                f.write('%s\t%s\t%s\t%s\t%s\n' % (rep['entry_id'], rep['glossza'], hu, '; '.join(h), datum))
+        print('masodik bukas: %d par az elakado-listaba kerult' % len(hibas))
+
+
+def parancs_ellenoriz():
+    alapok, sorok = hatokor()
+    tabla = tabla_olvas()
+    tbesh = {s['entry_id']: s for s in sorok}
+    hibak = []
+    for k, r in tabla.items():
+        s = tbesh.get(k)
+        if s is None:
+            hibak.append((k, 'nincs TBESH-sor'))
+            continue
+        if r['glossza_en'] != s['glossza'] or r['forras_hash'] != sha1(s['glossza']):
+            hibak.append((k, 'forras_hash/glossza_en eltér'))
+        if r['strong'] != s['alap'] or r['kapcsolat'] != s['kapcsolat']:
+            hibak.append((k, 'strong/kapcsolat eltér'))
+        h = kapuk(s, r['glossza_hu'])
+        if h:
+            hibak.append((k, '; '.join(h)))
+        if r['megjegyzes'] not in ('', '?') :
+            hibak.append((k, 'megjegyzes ismeretlen'))
+        if not r['modell'] or r['allapot'] not in ('sonnet', 'kezi'):
+            hibak.append((k, 'modell/allapot'))
+    fo = fo_idk(alapok)
+    for k, r in tabla.items():
+        if (r['fo'] == 'igen') != (k in fo):
+            hibak.append((k, 'fo eltér a szabálytól'))
+    for h in hibak[:50]:
+        print('HIBA\t%s\t%s' % h)
+    ures_fo = [a for a in alapok if any(x['entry_id'] in tabla for x in alapok[a])
+               and not any(tabla[x['entry_id']]['fo'] == 'igen' for x in alapok[a] if x['entry_id'] in tabla)]
+    print('sor: %d / %d ; strong (legalabb egy sorral): %d / %d ; hiba: %d ; bizonytalan (?): %d ; fo nélküli, részben kész strong: %d' % (
+        len(tabla), len(sorok), len({r['strong'] for r in tabla.values()}), len(alapok), len(hibak),
+        sum(1 for r in tabla.values() if r['megjegyzes'] == '?'), len(ures_fo)))
+    return len(hibak)
+
+
+def argv_ertek(nev, alap=None):
+    if nev in sys.argv:
+        return sys.argv[sys.argv.index(nev) + 1]
+    return alap
+
+
 if __name__ == '__main__':
-    if '--m0-proba' in sys.argv:
+    if '--fix' in sys.argv:
+        parancs_fix(argv_ertek('--modell'))
+    elif '--koteg' in sys.argv:
+        parancs_koteg(int(argv_ertek('--meret', KOTEG_MERET)), argv_ertek('--koteg'))
+    elif '--rogzit' in sys.argv:
+        if not argv_ertek('--modell'):
+            raise SystemExit('--modell kotelezo (a ténylegesen futó modell neve)')
+        parancs_rogzit(argv_ertek('--rogzit'), argv_ertek('--modell'), '--masodik' in sys.argv)
+    elif '--ellenoriz' in sys.argv:
+        raise SystemExit(1 if parancs_ellenoriz() else 0)
+    elif '--m0-proba' in sys.argv:
         m0_proba(sys.argv[sys.argv.index('--m0-proba') + 1])
     elif '--m0' in sys.argv:
         m0()

@@ -59,5 +59,56 @@ class Valasztas(unittest.TestCase):
         self.assertEqual([s['entry_id'] for s in g.valaszt(al['H2763'])[0]], ['H2763A', 'H2763B'])
 
 
+class K2FoSzabaly(unittest.TestCase):
+    """DT-F140b K2/K5: a fo a TAHOT-tobbseggel egyezo glosszaju sor; istennevek a K5-lista szerint."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.al = {}
+        for s in g.tbesh_sorok():
+            cls.al.setdefault(s['alap'], []).append(s)
+        cls.tb = g.tahot_tobbseg()
+
+    def fo(self, h):
+        return g.fo_jelolt(self.al[h], self.tb)['entry_id']
+
+    def test_a_2_2_szabaly_hibai_javitva(self):
+        self.assertEqual(self.fo('H6213'), 'H6213H')   # "to make" (nem "to press")
+        self.assertEqual(self.fo('H1004'), 'H1004B')   # "house" (nem "place")
+        self.assertEqual(self.fo('H5892'), 'H5892B')   # "city" (nem "excitement")
+        self.assertEqual(self.fo('H7451'), 'H7451C')
+        self.assertEqual(self.fo('H4057'), 'H4057B')   # "wilderness" (nem "mouth")
+        self.assertEqual(self.fo('H5483'), 'H5483M')   # "horse"
+
+    def test_k5_istennevek(self):
+        for h, e in [('H3068', 'H3068G'), ('H0430', 'H0430G'), ('H0410', 'H0410K'),
+                     ('H5945', 'H5945B'), ('H6635', 'H6635B'), ('H0136', 'H0136'),
+                     ('H3050', 'H3050'), ('H7706', 'H7706'), ('H1180', 'H1180')]:
+            self.assertEqual(self.fo(h), e)
+
+    def test_nem_illesztheto_heurisztika(self):
+        # tobbseg nelkul a 2.2 heurisztika
+        self.assertEqual(g.fo_jelolt(self.al['H1588']) ['entry_id'], g.fo_heurisztika(self.al['H1588'])['entry_id'])
+
+    def test_strongonkent_egy_fo(self):
+        fo = {}
+        for h, v in self.al.items():
+            if h in ('H9015', 'H9016', 'H9017', 'H9018', 'H9019'):
+                continue
+            fo[h] = g.fo_jelolt(v, self.tb)['entry_id']
+        # TBESH-sajatossag: a H7178 alatt van egy H7156H entry_id (Kartan)
+        self.assertEqual([h for h, e in fo.items() if not e.startswith(h)], ['H7178'])
+        self.assertEqual(len(fo), 8718)
+
+    def test_fix_istennevek_kapu(self):
+        for eid, (hu, megj) in g.ISTENNEV_FIX.items():
+            self.assertEqual(g.kapuk({'glossza': 'God'}, hu), [], eid)
+
+    def test_kettospont_kapu(self):
+        self.assertTrue(g.kapuk(sor('house: home'), 'ház otthon'))
+        self.assertEqual(g.kapuk(sor('house: home'), 'ház: otthon'), [])
+
+
+
 if __name__ == '__main__':
     unittest.main()
