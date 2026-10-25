@@ -5,7 +5,7 @@ Bemenet: `adat/thayer_szakaszok.tsv` a javított nézetben (`thayer_bemenet.szak
 `thayer_forras_javitas.tsv` beszúrásaival — vagyis a fordítónak átadott szöveg; DT-F132i (2)). Kimenet:
 `adat/thayer_sigla.tsv` (SEMA 2.37). **Félig kézi tábla:** a számoszlopokat (`elofordulas`, `szocikk`,
 `gerinc_elofordulas`, `pelda`) és az új jelölt sorokat ez az eszköz írja; a besorolás (`tipus`, `jelentes`, `magyar_alak`,
-`allapot = besorolt`) kézi, és az eszköz **soha nem írja át** (írás előtt összeveti a régi táblával, eltérésnél megáll). Sort nem
+`allapot` — `javaslat` vagy `besorolt` —, `besorolas_proveniencia`) kézi, és az eszköz **soha nem írja át** (írás előtt összeveti a régi táblával, eltérésnél megáll). Sort nem
 töröl: a forrásból eltűnt jelölt `elofordulas = 0`-val marad.
 
 A gyűjtés három szabálya (`gyujtes` oszlop), rögzítve a futás előtt:
@@ -39,8 +39,8 @@ import thayer_bemenet as TB  # noqa: E402
 
 KI_UT = os.path.join(TB.GYOKER, 'adat', 'thayer_sigla.tsv')
 FEJLEC = ['forrasalak', 'gyujtes', 'tipus', 'jelentes', 'magyar_alak', 'elofordulas', 'szocikk', 'gerinc_elofordulas', 'pelda',
-          'allapot', 'proveniencia']
-KEZI = ('tipus', 'jelentes', 'magyar_alak', 'allapot')
+          'allapot', 'besorolas_proveniencia', 'proveniencia']
+KEZI = ('tipus', 'jelentes', 'magyar_alak', 'allapot', 'besorolas_proveniencia')
 
 MINTA = ['Rec.', 'Lachmann', 'Tdf.', 'Tischendorf', 'Griesbach', 'Grsb.', 'Winers Grammar', "Winer's Grammar",
          'Buttmann', 'Sept.', 'Vulg.', 'Apocr.', 'cf.', 'Cf.', 'i. e.', 'q. v.', 'Xenophon', 'Plato', 'Homer', 'Herodotus',
@@ -139,7 +139,7 @@ def osszefesul(gy, regi, ts):
             continue
         ki.append({'forrasalak': alak, 'gyujtes': d['gyujtes'], 'tipus': '', 'jelentes': '', 'magyar_alak': '',
                    'elofordulas': str(d['elofordulas']), 'szocikk': str(len(d['szocikk'])),
-                   'gerinc_elofordulas': str(d['gerinc']), 'pelda': d['pelda'], 'allapot': 'jelolt',
+                   'gerinc_elofordulas': str(d['gerinc']), 'pelda': d['pelda'], 'allapot': 'jelolt', 'besorolas_proveniencia': '',
                    'proveniencia': 'scope=adat/thayer_szakaszok.tsv | forras=thayer_jelolt/sigla_gyujt.py (fejléc) | ts=%s' % ts})
     for r in ki:
         for m in FEJLEC:
@@ -150,7 +150,7 @@ def osszefesul(gy, regi, ts):
 
 def fajl_szoveg(sorok, ts):
     fej = ['# FÉLIG KÉZI: a számoszlopokat és az új jelölt sorokat az eszkozok/thayer_jelolt/sigla_gyujt.py --ts %s írja; a tipus, '
-           'jelentes, magyar_alak, allapot kézi (az eszköz nem írja át). Séma: adat/SEMA.md 2.37.' % ts,
+           'jelentes, magyar_alak, allapot, besorolas_proveniencia kézi (az eszköz nem írja át). Séma: adat/SEMA.md 2.37.' % ts,
            '# forras: adat/thayer_szakaszok.tsv@%s + adat/thayer_forras_javitas.tsv@%s (nézet) + adat/elofordulasok.tsv@%s (gerinc) '
            '+ kód@%s'
            % (szolista.sha12(TB.TABLA), szolista.sha12(TB.JAV_TABLA), szolista.sha12(szolista.ELOFORDULASOK_UT),

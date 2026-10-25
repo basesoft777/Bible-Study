@@ -1497,7 +1497,7 @@ a 98 nyelvtani „melléknév” sor nem találat. A tartalmat a #121 bővíti.
 
 **Félig kézi tábla.** A számoszlopokat és az új jelölt sorokat az `eszkozok/thayer_jelolt/sigla_gyujt.py --ts <nap>` írja a
 `thayer_szakaszok.tsv` javított nézetéből (`thayer_bemenet.szakaszok`, a 2.38 beszúrásaival: a fordítónak átadott szöveg); a **besorolás kézi** (`tipus`, `jelentes`, `magyar_alak`,
-`allapot`), és az eszköz ezeket soha nem írja át (írás előtt összeveti, eltérésnél megáll); sort nem töröl (az eltűnt jelölt
+`allapot`, `besorolas_proveniencia`), és az eszköz ezeket soha nem írja át (írás előtt összeveti, eltérésnél megáll); sort nem töröl (az eltűnt jelölt
 `elofordulas = 0`). A `--ellenoriz` bájtra összevet. A besorolt sorokat a `thayer_jelolt/thayer_kapuk.py` **16. kapuja**
 (`16_sigla`, gátoló) ellenőrzi a Thayer-fordításon; a besorolatlan sor nem gátol (JELZES). A tábla a #129 (BDB-kiadás)
 rövidítésjegyzékének is mintája. Az első két sor `#` megjegyzés (a második: a bemenetek és a kód hash-e), a harmadik a fejléc.
@@ -1512,11 +1512,15 @@ rövidítésjegyzékének is mintája. Az első két sor `#` megjegyzés (a más
 | `elofordulas`, `szocikk` | gépi: előfordulás és érintett szócikk a teljes Thayerben |
 | `gerinc_elofordulas` | gépi: előfordulás a motívumok aktuális görög gerincszavaiban (`szolista.gerinc_strongok`) |
 | `pelda` | gépi: az első előfordulás `<strong>:<sorszam>` (a 2.34 kulcsa) |
-| `allapot` | `jelolt` (gépi, besorolatlan) \| `besorolt` (kézi; csak ilyen sort ellenőriz a 16. kapu) |
-| `proveniencia` | `scope=adat/thayer_szakaszok.tsv \| forras=thayer_jelolt/sigla_gyujt.py (fejléc) \| ts=<nap>`; a kézi besorolás a saját döntés-hivatkozását a `jelentes`-ben viseli |
+| `allapot` | `jelolt` (gépi, besorolatlan) \| `javaslat` (DT-F132j (3): modell-javaslat a `tipus`, `jelentes`, `magyar_alak` mezőben, **jóváhagyásra vár**; a kapu és az adatblokk besorolatlannak veszi) \| `besorolt` (kézi, a felhasználó jóváhagyásával; csak ilyen sort ellenőriz a 16. kapu; üres `magyar_alak`: nincs egységes alak, a kapu nem ellenőrzi) |
+| `besorolas_proveniencia` | **kézi:** a besorolás (javaslat vagy jóváhagyás) proveniencia-sora; modell-javaslatnál `scope=adat/thayer_sigla.tsv (tipus, jelentes, magyar_alak) \| forras=manual — modell-javaslat (<tényleges modellnév>), nem lekérdezés: … \| ts=<nap>` (CLAUDE.md 1. szabály: nem lekérdezés, tehát `manual`); üres: besorolatlan |
+| `proveniencia` | `scope=adat/thayer_szakaszok.tsv \| forras=thayer_jelolt/sigla_gyujt.py (fejléc) \| ts=<nap>`: a gépi oszlopoké (az eszköz minden futáskor írja) |
 
 Kulcs: `forrasalak`. Állapot (F132.11, 2026-10-25; a javított nézeten): 255 jelölt (`minta` 31, `kiadas_sigla` 6, `rovidites` 218),
-ebből 91 fordul elő a gerincszavakban; besorolt: 0 (az F132.9-es, nyers szövegen mért állapot: 254 / 90). A terminológiai szójegyzék (2.15) 10 jelöltre már ad magyar alakot (`cf.` → `vö.`, `Sept.` →
+ebből 91 fordul elő a gerincszavakban; besorolt: 0 (az F132.9-es, nyers szövegen mért állapot: 254 / 90). F132.13 (DT-F132j (3)):
+a 91 gerinc-jelölt mindegyike `javaslat` (`claude-opus-5-5`; magyar alak 22, `változatlan` 62, üres — nincs egységes alak — 7; a
+terminológiai kulcsú sorok alakja a szójegyzéké); a jóváhagyás (`besorolt`) a felhasználóé, az M3 előfeltétele. A lista:
+`naplok/F132_THAYER_SZAKASZ_naplo.md` F132.13. A terminológiai szójegyzék (2.15) 10 jelöltre már ad magyar alakot (`cf.` → `vö.`, `Sept.` →
 `Septuaginta`, `i. e.` → `azaz`, `Plato` → `Platón` …), az elsőbbséget kap (az adatblokk jelzi).
 
 

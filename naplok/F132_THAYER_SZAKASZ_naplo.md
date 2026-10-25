@@ -429,3 +429,47 @@ eltérés elfogadva?”. Átvezetve (`DONTESEK.md`, 🟢; a brief 6. döntésnap
 - A `prompt_v5.md` és a #128 fájljai változatlanok; a `thayer_jelolt/forditas.py` `PROMPT_UT`-ja a v5.1-re állt.
 - Teszt: `teszt_lanc.py` `test_prompt_v5_1` (a v5.1 törzse a blokk nélkül bájtra = a v5; a prompt tartalmazza a blokkot, a
   jelölő fölötti rész nem kerül bele); a modul 19 tesztje zöld.
+
+## F132.13 — DT-F132j (3): gépi sigla-javaslat jóváhagyásra (2026-10-25)
+
+*(proveniencia: `scope=adat/thayer_sigla.tsv (tipus, jelentes, magyar_alak) | forras=manual — modell-javaslat (claude-opus-5-5), nem lekérdezés: a gerincszavak javított nézetének szövegkörnyezete (j_ktx.py, eseti, a repón kívül) és az adat/terminologia.tsv alapján | ts=2026-10-25`)*
+
+- **A tábla** (`adat/thayer_sigla.tsv`): a gerincszavakban előforduló **91 jelölt mindegyike `allapot = javaslat`** (`tipus`,
+  `jelentes`, `magyar_alak`); új kézi oszlop: `besorolas_proveniencia` (`forras=manual — modell-javaslat (claude-opus-5-5), nem
+  lekérdezés …; jóváhagyásra vár`). A javaslat **nem jóváhagyás**: a 16. kapu és az adatblokk besorolatlannak veszi; a `besorolt` a
+  felhasználó jóváhagyásával lesz (az M3 előfeltétele). A többi 164 jelölt `jelolt` maradt. Írás előtt összevetve: csak a 91 sor kézi
+  oszlopai változtak; a `sigla_gyujt.py --ellenoriz` azonos (a kézi oszlopokat az eszköz nem írja át).
+- **Elv:** a terminológiai kapus kulcs alakja kötelező (`cf.`, `Sept.`, `i. e.`, `p.`, `etc.`, `Plato`, `Xenophon`, `Herodotus`,
+  `Aristotle` — teszt); a többi görög szerző a szójegyzék névalakjainak mintájára, a prompt v4 7. szabályával (Philón, Plutarkhosz,
+  Josephus); az általános rövidítések a szójegyzék párjainak mintájára (`ibid.` → `uo.` az `id.` → `ua.` mellett; `viz.` → `ti.` az
+  `sc.` → `ti.` mellett; `vol.` → `köt.` a `vol. ii` → `II. köt.` mellett); a kiadás-siglák, a grammatikák, a modern szerzők és a
+  műcím-rövidítések (forráshivatkozás) `változatlan`; ahol egy alak több szerepben áll és egyiknek sincs egységes magyar alakja, a
+  `magyar_alak` üres (a kapu nem ellenőrzi).
+- **Kapu** (`thayer_kapuk.py`): a `besorolt`, de üres `magyar_alak`-ú sor nem ellenőrzött és nem besorolatlan; a `javaslat`
+  besorolatlan (JELZES, nem gátol). Tesztek (`teszt_lanc.py`, 22, zöld): a javaslat nem gátol; a proveniencia `manual`, modellnévvel; a
+  gerinc minden jelöltje javaslat vagy besorolt; a terminológiai kulcsú sorok alakja a szójegyzéké (9).
+
+### Jóváhagyási lista (91 sor; a teljes indoklás a tábla `jelentes` mezőjében)
+
+**Magyar alakot kap (22):** cf. → vö. · Cf. → Vö. · i. e. → azaz · Sept. → Septuaginta · p. → o. · pp. → o. · etc. → stb. ·
+ibid. → uo. · viz. → ti. · vol. → köt. · Plato → Platón · Xenophon → Xenophón · Herodotus → Hérodotosz · Aristotle → Arisztotelész ·
+Philo → Philón · Plutarch → Plutarkhosz · Homer → Homérosz · Polybius → Polübiosz · Thucydides → Thuküdidész ·
+**Macc. → Makk · Sir. → Sir · Wis. → Bölcs** (apokrif könyvek; a Károli-rövidítéslistában nincsenek — külön figyelmet kér).
+
+**Nincs egységes alak, a kapu nem ellenőrzi (7):** `N.` / `O.` (az `N. T.` / `O. T.` része: folyó szövegben Újszövetség /
+Ószövetség, műcímben változatlan) · `e.` / `g.` (az `e. g.` = pl. és az `i. e.` része; Stephanus-lapszakasz) · `i.` (az `i. e.` része;
+kötetszám) · `ii.` (kötetszám; a szójegyzék `vol. ii` → `II. köt.`) · `al.` (`et al.` = és mások; igehely-sor után: és máshol).
+
+**Változatlan (62):**
+- kiadás-sigla (11): Rec. · R · G · L · T · Tr · WH · Tdf. · Lachmann · A. · V. (az `A. V.` / `R. V.` része) — *figyelem:* a `T` és a
+  `G` a kapu szóhatáros keresésében az `N. T.`, illetve a `G. L. Hahn` alakban is találat, ezért ahol a csoport egyetlen `T`-je az
+  `N. T.`-ben áll, a kapu bukhat;
+- kézirat-sigla (1): Vat.;
+- grammatika (4): Winers Grammar · Winer's Grammar · Buttmann · B. (`B. §`, `B. D.`);
+- modern szerző (6): Trench · Grimm · Meyer · Gesenius · Schmidt · Lob.;
+- antik szerző (2): Josephus · Cass. (`Dio Cass.`);
+- műcím-rövidítés (25): D. (`B. D.`) · mem. · Cor. (Római Kelemen, nem bibliai) · Theol. · legg. · diss. · Gram. · Lex. · Dict. ·
+  Tim. (Platón) · Magn. · eth. · Ep. · Phaedr. · Bib. · Sacr. · mund. · opif. · div. · rer. · haer. · El. · anab. · Path. · educ.;
+- rövidítés (1): iii. (kötetszám);
+- nem sigla (12): b. · c. · d. · bb. (betűjel, Stephanus-lapszakasz) · h. · v. · j. (`v. h.`, `b. j.`) · u. · theol. (német műcím) ·
+  St. · J. · Chr. (névelem).

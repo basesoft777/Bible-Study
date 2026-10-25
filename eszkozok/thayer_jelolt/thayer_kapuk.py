@@ -6,7 +6,9 @@ fut, és egy Thayer-specifikus kapuval bővül:
 
   16_sigla   a sigla-tábla (`adat/thayer_sigla.tsv`, SEMA 2.37) **besorolt** soraira: ha a forrás tartalmazza a `forrasalak`-ot,
              a fordításban áll a tábla szerinti alak (`magyar_alak`; `változatlan` esetén maga a `forrasalak`). Hiánya SERTES
-             (gátoló). Besorolatlan (`jelolt`) sor nem gátol: a kapu a számát JELZES-ként jelenti.
+             (gátoló). Besorolatlan sor (`jelolt`, illetve a jóváhagyatlan `javaslat`, DT-F132j (3)) nem gátol: a kapu a számát
+             JELZES-ként jelenti. A `besorolt`, de üres `magyar_alak`-ú sor (nincs egységes alak, pl. `N.`, `e.`) nem ellenőrzött
+             és nem besorolatlan: nem számít bele egyikbe sem.
 
   from thayer_kapuk import kapuk_futtat_thayer, atment
 TSV: split('\\t'), csv modul nélkül.
@@ -54,7 +56,9 @@ def ellenoriz_sigla(forras, forditas, sigla=None):
     for r in sigla:
         if not r.get('forrasalak') or not _re(r['forrasalak']).search(forras):
             continue
-        if r.get('allapot') != 'besorolt' or not r.get('magyar_alak'):
+        if r.get('allapot') == 'besorolt' and not r.get('magyar_alak'):
+            continue
+        if r.get('allapot') != 'besorolt':
             besorolatlan += 1
             continue
         n += 1

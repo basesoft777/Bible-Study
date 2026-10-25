@@ -113,6 +113,14 @@ class Sigla(unittest.TestCase):
         self.assertEqual(TK.ellenoriz_sigla('Rec. text', 'szöveg', s)[0], 'JELZES')
         self.assertEqual(TK.ellenoriz_sigla('semmi', 'semmi', s)[0], 'RENDBEN')
 
+    def test_kapu_javaslat_es_ures_alak(self):
+        # DT-F132j (3): a jóváhagyatlan javaslat nem gátol (besorolatlan); a besorolt, üres magyar_alak nem ellenőrzött
+        s = [{'forrasalak': 'Rec.', 'allapot': 'javaslat', 'magyar_alak': TK.VALTOZATLAN},
+             {'forrasalak': 'N.', 'allapot': 'besorolt', 'magyar_alak': ''}]
+        self.assertEqual(TK.ellenoriz_sigla('Rec. N. T.', 'Újszövetség', s), ('JELZES', '0 besorolt sigla rendben; 1 besorolatlan '
+                                                                               'sigla a forrásban (nem gátol)'))
+        self.assertEqual(TK.ellenoriz_sigla('N. T.', 'Újszövetség', s)[0], 'RENDBEN')
+
     def test_kapusor(self):
         e = TK.kapuk_futtat_thayer('⟪1⟫ a', '⟪1⟫ a')
         nevek = [n for n, _, _ in e]
@@ -135,7 +143,30 @@ class Sigla(unittest.TestCase):
     def test_tabla_sema(self):
         for r in TK.sigla_betolt():
             self.assertIn(r['gyujtes'], ('minta', 'kiadas_sigla', 'rovidites'))
-            self.assertIn(r['allapot'], ('jelolt', 'besorolt'))
+            self.assertIn(r['allapot'], ('jelolt', 'javaslat', 'besorolt'))
+            if r['allapot'] == 'javaslat':
+                # modell-javaslat: nem lekérdezés, a proveniencia `manual`, modellnévvel (CLAUDE.md 1. szabály)
+                self.assertRegex(r['besorolas_proveniencia'], r'forras=manual — modell-javaslat \(claude-[\w.-]+\), nem lekérdezés')
+                self.assertTrue(r['tipus'])
+
+    def test_javaslat_a_terminologiaval_osszhangban(self):
+        # ahol a terminológiai szójegyzék kapus kulcsa a forrásalak, a javasolt magyar alak a szójegyzéké
+        term = {}
+        for r in adatblokk.terminologia():
+            if r.get('kapu') == 'igen':
+                term.setdefault(r.get('angol', ''), r.get('magyar', ''))
+        n = 0
+        for r in TK.sigla_betolt():
+            if r['allapot'] in ('javaslat', 'besorolt') and r['forrasalak'] in term:
+                n += 1
+                self.assertEqual(r['magyar_alak'], term[r['forrasalak']], r['forrasalak'])
+        self.assertGreaterEqual(n, 9)
+
+    def test_javaslat_lefedi_a_gerincet(self):
+        # DT-F132j (3): minden, a gerincszavakban előforduló jelölt kapott javaslatot (vagy már besorolt)
+        for r in TK.sigla_betolt():
+            if int(r['gerinc_elofordulas']) > 0:
+                self.assertIn(r['allapot'], ('javaslat', 'besorolt'), r['forrasalak'])
 
 
 class Adatblokk(unittest.TestCase):
