@@ -98,5 +98,87 @@ class PromptAdatblokk(unittest.TestCase):
         self.assertIn('`Y [BDB: X]`', p)
 
 
+class KapuFelulir(unittest.TestCase):
+    """DT-F38k (1): a celzott kapu-felulbiralas (`--kapu-felulir` + `--dontes`) szabalyai."""
+
+    def setUp(self):
+        import tempfile
+        self.tmp = tempfile.TemporaryDirectory()
+        self.dont = os.path.join(self.tmp.name, 'DONTESEK.md')
+        with open(self.dont, 'w', encoding='utf-8') as fh:
+            fh.write('| DT-F38k | cim | ... |\n| DT99 | masik | ... |\n')
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    @staticmethod
+    def args(kapu=None, dontes=None):
+        a = ['szakasz_rogzit', 'H0001', '--be', 'x.txt', '--allapot', 'sonnet', '--modell', 'm']
+        if kapu:
+            a += ['--kapu-felulir', kapu]
+        if dontes:
+            a += ['--dontes', dontes]
+        return parse(a)
+
+    @staticmethod
+    def eredm(*bukott):
+        nevek = ['1_gorog_heber', '5_terminologia', '11_konyvek', '14_szakasz']
+        return [(n, 'SERTES' if n in bukott else 'RENDBEN', '') for n in nevek]
+
+    def felulir(self, a, e):
+        return E.kapu_felulir(a, e, self.dont)
+
+    def test_felulbiralas_nelkul_nincs_megjegyzes(self):
+        self.assertEqual(self.felulir(self.args(), self.eredm('11_konyvek')), '')
+
+    def test_felulbiralas_nelkul_a_bukas_marad(self):
+        # a rogzitok `not ok and not felulir` agon allnak meg: ures felulbiralas + bukas = megallas
+        e = self.eredm('11_konyvek')
+        self.assertFalse(all(x != 'SERTES' for _, x, _ in e))
+        self.assertEqual(self.felulir(self.args(), e), '')
+
+    def test_dontes_nelkul_hiba(self):
+        with self.assertRaises(SystemExit) as k:
+            self.felulir(self.args(kapu='11_konyvek'), self.eredm('11_konyvek'))
+        self.assertIn('--dontes', str(k.exception))
+
+    def test_dontes_kapu_nelkul_hiba(self):
+        with self.assertRaises(SystemExit):
+            self.felulir(self.args(dontes='DT-F38k'), self.eredm('11_konyvek'))
+
+    def test_ismeretlen_dontes_hiba(self):
+        with self.assertRaises(SystemExit) as k:
+            self.felulir(self.args('11_konyvek', 'DT-F38z'), self.eredm('11_konyvek'))
+        self.assertIn('DONTESEK.md', str(k.exception))
+
+    def test_nem_bukott_kapu_felulbiralasa_hiba(self):
+        with self.assertRaises(SystemExit) as k:
+            self.felulir(self.args('5_terminologia', 'DT-F38k'), self.eredm('11_konyvek'))
+        self.assertIn('felesleges', str(k.exception))
+
+    def test_semmi_sem_bukott_felesleges(self):
+        with self.assertRaises(SystemExit) as k:
+            self.felulir(self.args('11_konyvek', 'DT-F38k'), self.eredm())
+        self.assertIn('felesleges', str(k.exception))
+
+    def test_ket_kapu_bukasa_egy_felulbiralassal_nem_eleg(self):
+        with self.assertRaises(SystemExit) as k:
+            self.felulir(self.args('11_konyvek', 'DT-F38k'), self.eredm('11_konyvek', '5_terminologia'))
+        self.assertIn('nem eleg', str(k.exception))
+
+    def test_ismeretlen_kapunev_hiba(self):
+        with self.assertRaises(SystemExit):
+            self.felulir(self.args('99_nincs', 'DT-F38k'), self.eredm('11_konyvek'))
+
+    def test_siker_megjegyzessel(self):
+        self.assertEqual(self.felulir(self.args('11_konyvek', 'DT-F38k'), self.eredm('11_konyvek')),
+                         'kapu-felülbírálás: 11_konyvek (DT-F38k)')
+
+    def test_a_rogzit_is_kapja_a_kapcsolot(self):
+        a = parse(['rogzit', 'H0001', '--be', 'x.txt', '--allapot', 'sonnet', '--modell', 'm',
+                   '--kapu-felulir', '11_konyvek', '--dontes', 'DT-F38k'])
+        self.assertEqual((a.kapu_felulir, a.dontes), ('11_konyvek', 'DT-F38k'))
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
