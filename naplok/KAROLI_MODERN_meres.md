@@ -1132,3 +1132,11 @@ A többi 12 sor csak címkét kapott (a szabálycímke és a bizonytalan jelöl�
 - A mintán kívüli szúrópróba (ellenőr) további kihagyásai: 1Móz 7:17 *felveheték*, 1Móz 16:4 *béméne*, 2Sám 7:10 *elplántálám*, 2Krón 35:23 *lövének*.
 
 A DT-F96v (🟡) leírása ezzel a számmal frissült; a döntés a felhasználóé.
+
+### 15.3 A `lonek_lo` kivétel szóhatárhoz kötve (4. kör, 3.)
+
+**A hiba:** a *lőnek* „nyíllal lőnek” kivétele (`lonek_lo`: a *lő* ige, nem *lőn → lettek*) részszót keresett a versben (`nyil|nyíl|íj`), ezért a Jel 11:19 *megnyilatkozék* szavára is illeszkedett, és a „lőnek villámlások” régies maradt.
+
+**A javítás (`igealak.py`, `NYIL_IJ`):** a vers egy szava egész szóként a nyíl/íj szócsaládba tartozik: *nyíl/nyil* + (*a, ai, aid, aidat, aim, aimat, ait, aival, ak, akat, akba, akkal, aknak, at, át, lal, lá, tól, okat, azók, asok, lövésnyi*), illetve *íj/íjj/ijj* + (*at, ját, aim, im, dal, ász, ászok, ászai, ászokhoz, ászszá*). A szólistát a Károli 1908 *nyil-/nyíl-/íj-/ijj-* kezdetű szavaiból állítottam össze. Kimarad a *nyílik, nyilt, nyílott, nyilván-, nyílás-* és a *megnyilatkoz-*.
+
+**Eredmény:** 1 token változott, a Jel 11:19 *lőnek → lettek*; átnézve a versével, helyes. Az 1Krón 12:2 „nyíllal lőnek vala” `lonek_lo` maradt (*lőttek*). A minták modern szövege nem változott. A .3: K2, K3, K3b teljesül, a Strong nem változott; a változó token 50 517.

@@ -152,6 +152,11 @@ E1_JEL = {'én', 'engem', 'nekem', 'nékem', 'velem', 'tőlem', 'hozzám', 'benn
           'magamnak', 'magamban', 'magamba', 'magamra', 'magamhoz', 'magammal', 'magamtól', 'magamért', 'magamról',
           'magamnál', 'magamon', 'magamból'}
 MAGAM_E1 = {w for w in E1_JEL if w.startswith('magam')}
+# A „nyíllal lőnek” (lő ige, nem lőn → lettek) kivétele: a vers egy szava a nyíl/íj szócsaládból, egész szóként
+# (ELLENOR_F96 4. kör, 3.: a részszó-keresés a megnyilatkozék szóra is illeszkedett, Jel 11:19); a nyílik, nyilt,
+# nyilván, nyílás és a megnyilatkoz- nem tartozik ide
+NYIL_IJ = re.compile(r'(?:nyíl|nyil)(?:a|ai|aid|aidat|aim|aimat|ait|aival|ak|akat|akba|akkal|aknak|at|át|lal|lá|tól|'
+                     r'okat|azók|asok|lövésnyi)?|(?:íj|íjj|ijj)(?:at|ját|aim|im|dal|ász|ászok|ászai|ászokhoz|ászszá)?')
 # A fedettseg.igei_tovek próbáján igeinek látszó, de vala előtt névszói szavak (köz → között, hely → helyett).
 NEM_IGE = {'köz', 'hely', 'nyíl', 'erős', 'fel', 'meg', 'el', 'körül', 'szerint', 'mellett', 'között', 'mell', 'ala',
            'felett', 'alatt', 'előtt', 'helyett', 'ott', 'itt', 'fia', 'fiai', 'neve', 'feje'}
@@ -726,7 +731,7 @@ class Feldolgozo:
                 if alk == 'vagyon' and i > 0 and spans[i - 1][2].lower() in ('a', 'az'):
                     r[6] = 'vagyon_fonev_marad'
                     continue
-                if alk == 'lon' and r[1].lower() == 'lőnek' and re.search(r'nyil|nyíl|íj', szoveg.lower()):
+                if alk == 'lon' and r[1].lower() == 'lőnek' and any(NYIL_IJ.fullmatch(s[2].lower()) for s in spans):
                     r[8] = 'lonek_lo'
                     continue
                 if alk == 'szabaly' and cim != 'ok_birtokos' and nevelo_utan(spans, szoveg, i):
