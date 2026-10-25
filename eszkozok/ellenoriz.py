@@ -204,7 +204,7 @@ def szabaly2b_motivumkozi(motivum_id_halmaz, jeloltek, jeloltek_fejlec, adat_dir
     `motivum_kapcsolatok.tsv` sora nem a séma szerinti, vagy nincs mögötte
     `beépítve` motívumközi jelölt, amelynek igehely-párja egyezik (2. szabály:
     nincs kapcsolat jelölt-döntés nélkül)."""
-    cim = '2/b. Motívumközi jelölt és kapcsolat (DT-F127b)'
+    cim = '2/b. Motívumközi jelölt és kapcsolat (DT277)'
     hibas = []
     for mezo in ('jelolt_tipus', 'cel_id', 'cel_igehely', 'cel_alpont'):
         if mezo not in jeloltek_fejlec:
@@ -234,7 +234,7 @@ def szabaly2b_motivumkozi(motivum_id_halmaz, jeloltek, jeloltek_fejlec, adat_dir
             hibas.append('jeloltek: %s -- érvénytelen dontes' % hely)
         if j.get('cel_alpont') and j.get('dontes') == 'beépítve':
             hibas.append('jeloltek: %s -- alponthoz kötött jelölt nem lehet beépítve, amíg az alpontnak '
-                         'nincs adatbeli azonosítója (DT-F127b (C))' % hely)
+                         'nincs adatbeli azonosítója (DT277 (C))' % hely)
         if j.get('dontes') == 'beépítve':
             beepitett_mk[dontes_ref_szoveg(j)] = j
     for k, n in kulcsok.items():
@@ -261,7 +261,7 @@ def szabaly2b_motivumkozi(motivum_id_halmaz, jeloltek, jeloltek_fejlec, adat_dir
         if not r['id_a'] < r['id_b']:
             hibas.append('motivum_kapcsolatok: %s -- a pár nem rendezett (id_a < id_b)' % hely)
         if r['alpont_a'] or r['alpont_b']:
-            hibas.append('motivum_kapcsolatok: %s -- alpont-azonosító még nem létezik (DT-F127b (C))' % hely)
+            hibas.append('motivum_kapcsolatok: %s -- alpont-azonosító még nem létezik (DT277 (C))' % hely)
         if r['tipus'] not in MOTIVUM_KAPCSOLAT_TIPUSOK:
             hibas.append('motivum_kapcsolatok: %s -- ismeretlen tipus: %r' % (hely, r['tipus']))
         if r['bizonyossag'] not in BIZONYOSSAG_ERTEKEK:
