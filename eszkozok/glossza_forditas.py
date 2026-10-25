@@ -218,10 +218,14 @@ KONTEXTUS_HOSSZ_ARNYALAT = 90
 
 
 def kontextus_hossz(s):
-    """A kettospontos arnyalat-soroknal ('house: palace') a definicio eleje a szulo-szocikk
-    szovegenek ismetlese; az arnyalat-cimke az elso karakterekben all, ezert rovidebb kontextus
-    (token-takarekossag, 82 koteg; a brief ~200 karakteres iranyaban a nem-arnyalat soroknal marad)."""
-    return KONTEXTUS_HOSSZ_ARNYALAT if ':' in s['glossza'] else KONTEXTUS_HOSSZ
+    """Az arnyalat-soroknal (kapcsolat = 'a Meaning of', gloss tipikusan 'house: palace') a
+    definicio eleje a szulo-szocikk szovegenek ismetlese; az arnyalat-cimke az elso karakterekben
+    all, ezert 90 karakter elég (token-takarekossag). ELTERES a brief ~200 karakteres irányatol:
+    az M2 zarojelentesben rogzitendo. A kapcsolat nelkuli es a homonima (a/b, pl. H2763A/B) sorokat
+    a definicio valasztja szet, ezert azoknal 200 marad (DT-F140 tanacs, 2026-10-25).
+    A 17. koteg ELOTT a szabaly a ':' jelre epult (':' in glossza), ami 20 homonima- es 72
+    kapcsolat nelkuli sort is 90-re vitt; l. naplok/GLOSSZA_FORDITAS_homonima_szuroproba.tsv."""
+    return KONTEXTUS_HOSSZ_ARNYALAT if s['kapcsolat'] == 'a Meaning of' else KONTEXTUS_HOSSZ
 
 
 def prompt_epit(sorok):
