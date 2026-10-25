@@ -1,0 +1,202 @@
+# GENERÁLT: eszkozok/karoli_modern/token_minta.py (F96.0/3) — kézzel nem szerkeszthető | scope=200 alakos rétegzett minta az LLM-jelölt maradékból (mag 20261024) | forras=adat/karoli_modern/fedettseg_alakok.tsv + konkordancia/Karoli_1908.tsv; modell: claude-sonnet-5-5 (API, adaptive, effort=low) | ts=2026-10-24T11:32:48Z–2026-10-24T11:33:14Z | modell-kimenet, modell_ellenorizetlen: mérési melléktermék, nem a kiadott réteg
+sorszam	alak	osztaly	reszlet	szotari_alak	regies_jegy	pelda_igehely	llm_modern	llm_biztos	llm_indoklas	ellenorzes
+1	imádkozván	igealak_ritka	hatarozoi_igenev	imádkozik	hatarozoi_igenev	ApCsel 1:24	imádkozva	biztos	határozói igenév	modell_ellenorizetlen
+2	feltámadál	igealak_ritka	mult.E2	feltámad	mult.E2	Ézs 36:5	feltámadtál	biztos	régies múlt 2. személy	modell_ellenorizetlen
+3	bezárulának	igealak_ritka	mult.T3	bezárul	mult.T3	1Móz 8:2	bezárultak	biztos	elbeszélt múlt, alanyi, többes 3.	modell_ellenorizetlen
+4	megbarátkozál	igealak_ritka	mult.E2	megbarátkoz	mult.E2	2Krón 20:37	megbarátkoztál	biztos	régies múlt 2. személy	modell_ellenorizetlen
+5	elvesznek	regies_gyanu	kivetel_jegy_nelkul	elvesz		5Móz 7:20	elvesznek	biztos	mai alak	modell_ellenorizetlen
+6	elosztá	igealak_ritka	mult.targyas.E3	eloszt	mult.targyas.E3	Józs 18:10	elosztotta	biztos	elbeszélt múlt, tárgyas (a földet)	modell_ellenorizetlen
+7	sürgetvén	igealak_ritka	hatarozoi_igenev	sürget	hatarozoi_igenev	Zsolt 104:21	sürgetve	biztos	határozói igenév	modell_ellenorizetlen
+8	lefosztának	igealak_ritka	mult.T3	lefoszt	mult.T3	2Krón 20:25	lefosztották	biztos	tárgyas, a ruhákat	modell_ellenorizetlen
+9	támadván	igealak_ritka	hatarozoi_igenev	támad	hatarozoi_igenev	2Krón 24:21	támadva	biztos	határozói igenév	modell_ellenorizetlen
+10	megtermé	igealak_ritka	mult.targyas.E3	megterm	mult.targyas.E3	Jak 5:18	megtermette	biztos	tárgyas, gyümölcsét	modell_ellenorizetlen
+11	meghódoltatá	igealak_ritka	mult.targyas.E3	meghódoltat	mult.targyas.E3	Józs 11:12	meghódoltatta	biztos	tárgyas, városát	modell_ellenorizetlen
+12	hátratekinte	igealak_ritka	mult.alanyi.E3	hátratekint	mult.alanyi.E3	1Sám 24:9	hátratekintett	biztos	alanyi, elbeszélt múlt	modell_ellenorizetlen
+13	megkeményíték	igealak_ritka	mult.E1	megkeményít	mult.E1	Neh 9:16	megkeményítették	biztos	tárgyas, nyakukat	modell_ellenorizetlen
+14	tudatá	igealak_ritka	mult.targyas.E3	tudat	mult.targyas.E3	Ézs 41:26	tudatta	biztos	elbeszélt múlt, tárgyas	modell_ellenorizetlen
+15	követe	igealak_ritka	mult.alanyi.E3	követ	mult.alanyi.E3	Péld 16:14	követe	biztos	főnév, birtokos alak	modell_ellenorizetlen
+16	szaporítá	igealak_ritka	mult.targyas.E3	szaporít	mult.targyas.E3	Ez 23:14	szaporította	biztos	tárgyas, paráznaságait	modell_ellenorizetlen
+17	megírá	igealak_ritka	mult.targyas.E3	megír	mult.targyas.E3	5Móz 31:9	megírta	biztos	tárgyas, törvényt	modell_ellenorizetlen
+18	köszönté	igealak_ritka	mult.targyas.E3	köszönt	mult.targyas.E3	1Móz 47:7	köszöntötte	biztos	tárgyas, a Faraót	modell_ellenorizetlen
+19	hozzájárulván	igealak_ritka	hatarozoi_igenev	hozzájárul	hatarozoi_igenev	Mt 9:20	hozzájárulva	biztos	határozói igenév	modell_ellenorizetlen
+20	megfúván	igealak_ritka	hatarozoi_igenev	megfú	hatarozoi_igenev	Bír 6:34	megfújva	biztos	határozói igenév, helyesírás	modell_ellenorizetlen
+21	meríte	igealak_ritka	mult.alanyi.E3	merít	mult.alanyi.E3	1Móz 24:20	merített	biztos	alanyi, nincs tárgy	modell_ellenorizetlen
+22	kisértvén	igealak_ritka	hatarozoi_igenev	kisért	hatarozoi_igenev	Mt 16:1	kísértve	biztos	határozói igenév	modell_ellenorizetlen
+23	hullák	regies_gyanu	elemezetlen:-ák	hullák		Ézs 37:36	hullák	biztos	főnév, hulla többes; mai alak	modell_ellenorizetlen
+24	illete	igealak_ritka	mult.alanyi.E3	illet	mult.alanyi.E3	Dán 10:10	illette	biztos	tárgyas, engem	modell_ellenorizetlen
+25	magasztaltaték	igealak_ritka	mult.E1	magasztaltat	mult.E1	1Kir 10:23	magasztaltatott	biztos	szenvedő múlt	modell_ellenorizetlen
+26	megvágá	igealak_ritka	mult.targyas.E3	megvág	mult.targyas.E3	Luk 22:50	megvágta	biztos	tárgyas, szolgáját	modell_ellenorizetlen
+27	fonának	igealak_ritka	mult.T3	fon	mult.T3	2Móz 35:25	fontak	biztos	alanyi, nincs tárgy	modell_ellenorizetlen
+28	kiterjeszték	igealak_ritka	mult.E1	kiterjeszt	mult.E1	2Móz 37:9	kiterjesztették	biztos	tárgyas, szárnyaikat	modell_ellenorizetlen
+29	parancsolék	igealak_ritka	mult.E1	parancsol	mult.E1	5Móz 3:18	parancsoltam	biztos	1. személy, alanyi	modell_ellenorizetlen
+30	rátevé	igealak_ritka	mult.targyas.E3	rátesz	mult.targyas.E3	1Móz 48:14	rátette	biztos	tárgyas, rá kitett kéz	modell_ellenorizetlen
+31	találánk	igealak_ritka	mult.T1	talál	mult.T1	ApCsel 5:23	találtunk	biztos	alanyi, senkit tagadás	modell_ellenorizetlen
+32	mozdulának	igealak_ritka	mult.T3	mozdul	mult.T3	4Móz 14:44	mozdultak	biztos	alanyi, többes 3.	modell_ellenorizetlen
+33	tántorgának	igealak_ritka	mult.T3	tántorg	mult.T3	Zsolt 107:27	tántorogtak	biztos	múlt, tántorog alak	modell_ellenorizetlen
+34	bőjtöle	igealak_ritka	mult.alanyi.E3	bőjtöl	mult.alanyi.E3	2Sám 12:16	böjtölt	biztos	alanyi, elbeszélt múlt	modell_ellenorizetlen
+35	lennétek	regies_gyanu	kivetel_jegy_nelkul	lesz		ApCsel 26:29	lennétek	biztos	mai feltételes alak	modell_ellenorizetlen
+36	kivevé	igealak_ritka	mult.targyas.E3	kivesz	mult.targyas.E3	1Móz 48:12	kivette	biztos	tárgyas, azokat	modell_ellenorizetlen
+37	vetemedvén	regies_gyanu	elemezetlen:v-tő	vetemedvén		Péld 7:13	vetemedve	biztos	határozói igenév	modell_ellenorizetlen
+38	odamenvén	igealak_ritka	hatarozoi_igenev	odamegy	hatarozoi_igenev	1Kir 18:21	odamenve	biztos	határozói igenév	modell_ellenorizetlen
+39	járának	igealak_ritka	mult.T3	jár	mult.T3	4Móz 2:34	jártak	biztos	alanyi, tábort járni	modell_ellenorizetlen
+40	elcsodálkozának	igealak_ritka	mult.T3	elcsodálkoz	mult.T3	Mt 8:27	elcsodálkoztak	biztos	alanyi, többes 3.	modell_ellenorizetlen
+41	Megkérdeztetvén	regies_gyanu	elemezetlen:v-tő	megkérdeztetvén		Luk 17:20	Megkérdeztetve	biztos	határozói igenév	modell_ellenorizetlen
+42	viselé	igealak_ritka	mult.targyas.E3	visel	mult.targyas.E3	1Sám 18:30	viselte	biztos	tárgyas, magát	modell_ellenorizetlen
+43	egybegyűlvén	igealak_ritka	hatarozoi_igenev	egybegyűl	hatarozoi_igenev	1Sám 28:4	egybegyűlve	biztos	határozói igenév	modell_ellenorizetlen
+44	kivágatá	igealak_ritka	mult.targyas.E3	kivágatik	mult.targyas.E3	2Krón 14:3	kivágatta	biztos	tárgyas, Aserákat	modell_ellenorizetlen
+45	megnyílék	igealak_ritka	mult.E1	megnyíl	mult.E1	ApCsel 12:10	megnyílt	biztos	alanyi, elbeszélt múlt	modell_ellenorizetlen
+46	megfeddetvén	igealak_ritka	hatarozoi_igenev	megfeddetik	hatarozoi_igenev	Ef 5:13	megfeddetve	biztos	határozói igenév	modell_ellenorizetlen
+47	buzdítá	igealak_ritka	mult.targyas.E3	buzdít	mult.targyas.E3	2Krón 35:2	buzdította	biztos	tárgyas, őket	modell_ellenorizetlen
+48	feltette	regies_gyanu	kivetel_jegy_nelkul	feltesz		Bír 19:28	feltette	biztos	mai alak	modell_ellenorizetlen
+49	viteté	igealak_ritka	mult.targyas.E3	vitet	mult.targyas.E3	2Sám 11:27	vitette	biztos	tárgyas, őt	modell_ellenorizetlen
+50	tekinte	igealak_ritka	mult.alanyi.E3	tekint	mult.alanyi.E3	1Móz 4:4	tekintett	biztos	alanyi, Úrra	modell_ellenorizetlen
+51	bocsátván	igealak_ritka	hatarozoi_igenev	bocsát	hatarozoi_igenev	1Krón 21:26	bocsátva	biztos	határozói igenév	modell_ellenorizetlen
+52	engedétek	igealak_ritka	mult.T2	enged	mult.T2	4Móz 27:14	engedtetek	biztos	elbeszélt múlt, ti: engedtetek	modell_ellenorizetlen
+53	hisznek	regies_gyanu	kivetel_jegy_nelkul	hisz		2Móz 4:1	hisznek	biztos	mai alak	modell_ellenorizetlen
+54	reád	regies_gyanu	kivetel_jegy_nelkul	te		1Móz 4:7	rád	biztos	helyesírás, névmási ragos alak	modell_ellenorizetlen
+55	levévén	regies_gyanu	elemezetlen:v-tő	levévén		Mk 15:46	levéve	biztos	határozói igenév	modell_ellenorizetlen
+56	erőszakoskodjál	igealak_ritka	felszolito.E2	erőszakoskodik	felszolito.E2	5Móz 24:14	erőszakoskodj	biztos	régies felszólítás	modell_ellenorizetlen
+57	oltalmaza	igealak_ritka	mult.alanyi.E3	oltalmaz	mult.alanyi.E3	2Móz 2:19	oltalmazott	biztos	elbeszélt múlt, alanyi	modell_ellenorizetlen
+58	elkülöníté	igealak_ritka	mult.targyas.E3	elkülönít	mult.targyas.E3	Neh 10:28	elkülönítette	biztos	tárgyas: magát	modell_ellenorizetlen
+59	rátevék	igealak_ritka	mult.E1	rátesz	mult.E1	3Móz 8:18	rátették	biztos	tárgyas: kezeiket	modell_ellenorizetlen
+60	gyűlölték	regies_gyanu	elemezetlen:-ék	gyűlölték		Péld 1:29	gyűlölték	biztos	már mai alak	modell_ellenorizetlen
+61	Emelkedjél	igealak_ritka	felszolito.E2	emelkedik	felszolito.E2	Zsolt 21:14	Emelkedj	biztos	régies felszólítás	modell_ellenorizetlen
+62	megzendülének	igealak_ritka	mult.T3	megzendül	mult.T3	Zsolt 77:18	megzendültek	biztos	elbeszélt múlt, többes 3.	modell_ellenorizetlen
+63	íra	igealak_ritka	mult.alanyi.E3	ír	mult.alanyi.E3	2Sám 11:14	írt	biztos	elbeszélt múlt, tárgyatlan vagy levelet: írt	modell_ellenorizetlen
+64	távozék	igealak_ritka	mult.E3	távozik	mult.E3	2Móz 33:11	távozott	biztos	elbeszélt múlt, alanyi	modell_ellenorizetlen
+65	megverének	igealak_ritka	mult.T3	megver	mult.T3	Én 5:7	megverték	biztos	tárgyas: engem	modell_ellenorizetlen
+66	kevélykedvén	igealak_ritka	hatarozoi_igenev	kevélyked	hatarozoi_igenev	1Tim 6:21	kevélykedve	biztos	határozói igenév	modell_ellenorizetlen
+67	felszedék	igealak_ritka	mult.E1	felszed	mult.E1	2Krón 29:16	felszedték	biztos	tárgyas, tisztátalanságot (kihordják)	modell_ellenorizetlen
+68	prédikála	igealak_ritka	mult.alanyi.E3	prédikál	mult.alanyi.E3	Mk 1:7	prédikált	biztos	elbeszélt múlt, alanyi	modell_ellenorizetlen
+69	elutazék	igealak_ritka	mult.E1	elutaz	mult.E1	Mt 21:33	elutazott	biztos	elbeszélt múlt, alanyi	modell_ellenorizetlen
+70	elfordítá	igealak_ritka	mult.targyas.E3	elfordít	mult.targyas.E3	1Móz 8:13	elfordította	biztos	tárgyas: fedelét	modell_ellenorizetlen
+71	megérték	regies_gyanu	elemezetlen:-ék	megérték		Luk 20:19	megértették	bizonytalan	tárgyas: hogy mondta; megértették	modell_ellenorizetlen
+72	leszel	regies_gyanu	kivetel_jegy_nelkul	lesz		5Móz 28:25	leszel	biztos	mai alak	modell_ellenorizetlen
+73	alkotának	igealak_ritka	mult.T3	alkot	mult.T3	2Krón 4:3	alkottak	biztos	elbeszélt múlt, tárgyas: kört → alkottak	modell_ellenorizetlen
+74	felhányá	igealak_ritka	mult.targyas.E3	felhány	mult.targyas.E3	1Móz 31:34	felhányta	biztos	tárgyas: sátort	modell_ellenorizetlen
+75	siratván	igealak_ritka	hatarozoi_igenev	sirat	hatarozoi_igenev	Ez 8:14	siratva	biztos	határozói igenév	modell_ellenorizetlen
+76	kiirták	regies_gyanu	elemezetlen:-ák	kiirták		Bír 4:24	kiirtották	biztos	helyesírás és tárgyas múlt: Jábint	modell_ellenorizetlen
+77	megtérítvén	igealak_ritka	hatarozoi_igenev	megtérít	hatarozoi_igenev	ApCsel 3:26	megtérítve	biztos	határozói igenév	modell_ellenorizetlen
+78	építhete	igealak_ritka	mult.alanyi.E3	építhet	mult.alanyi.E3	1Kir 5:3	építhetett	biztos	elbeszélt múlt, tárgyas: házat → építhetett	modell_ellenorizetlen
+79	összegyülekezének	igealak_ritka	mult.T3	összegyülekez	mult.T3	Mt 22:41	összegyűltek	bizonytalan	igető marad: összegyülekeztek	modell_ellenorizetlen
+80	ajándékozának	igealak_ritka	mult.T3	ajándékoz	mult.T3	Ezsd 3:5	ajándékoztak	biztos	elbeszélt múlt, alanyi	modell_ellenorizetlen
+81	bemutatá	igealak_ritka	mult.targyas.E3	bemutat	mult.targyas.E3	Bír 3:17	bemutatta	biztos	tárgyas: ajándékot	modell_ellenorizetlen
+82	Szeretvén	igealak_ritka	hatarozoi_igenev	szeret	hatarozoi_igenev	2Sám 19:6	Szeretve	biztos	határozói igenév	modell_ellenorizetlen
+83	Előjöve	igealak_ritka	mult.alanyi.E3	előjön	mult.alanyi.E3	2Sám 3:35	Előjött	biztos	elbeszélt múlt, alanyi	modell_ellenorizetlen
+84	megszereté	igealak_ritka	mult.targyas.E3	megszeret	mult.targyas.E3	1Móz 34:3	megszerette	biztos	tárgyas: leányt	modell_ellenorizetlen
+85	építteték	regies_gyanu	elemezetlen:-teték	építteték		Bír 6:28	építtetett	biztos	szenvedő múlt, oltár	modell_ellenorizetlen
+86	szólék	igealak_ritka	mult.E1	szól	mult.E1	Zsolt 39:4	szóltam	biztos	elbeszélt egyes 1.	modell_ellenorizetlen
+87	őrizénditek	regies_gyanu	nd_jovo	őrizénditek		1Kir 9:6	őrizendőtök	bizonytalan	régies jövő: meg nem őriztek	modell_ellenorizetlen
+88	hívaték	igealak_ritka	mult.E3	hívatik	mult.E3	4Móz 12:15	hívatott	biztos	szenvedő múlt, alanyi	modell_ellenorizetlen
+89	emlékezél	igealak_ritka	mult.E2	emlékezik	mult.E2	Ézs 57:11	emlékeztél	biztos	régies múlt, te	modell_ellenorizetlen
+90	ragaszkodék	igealak_ritka	mult.E3	ragaszkodik	mult.E3	1Móz 34:3	ragaszkodott	biztos	elbeszélt múlt, alanyi	modell_ellenorizetlen
+91	hazuda	igealak_ritka	mult.alanyi.E3	hazud	mult.alanyi.E3	1Kir 13:18	hazudott	biztos	elbeszélt múlt, alanyi	modell_ellenorizetlen
+92	megmosdának	igealak_ritka	mult.T3	megmosd	mult.T3	2Móz 40:32	megmosdottak	biztos	elbeszélt múlt, többes 3.	modell_ellenorizetlen
+93	megnevekedék	igealak_ritka	mult.E3	megnevekedik	mult.E3	ApCsel 7:17	megszaporodott	bizonytalan	megnevekedett; igető marad	modell_ellenorizetlen
+94	köpvén	regies_gyanu	elemezetlen:-vén	köpvén		Mk 7:33	köpve	biztos	határozói igenév	modell_ellenorizetlen
+95	tudakolá	igealak_ritka	mult.targyas.E3	tudakol	mult.targyas.E3	ApCsel 23:19	tudakolta	biztos	tárgyas: kérdezte	modell_ellenorizetlen
+96	Elkezdék	igealak_ritka	mult.E1	elkezd	mult.E1	2Krón 29:17	Elkezdték	biztos	tárgyas: megszentelést	modell_ellenorizetlen
+97	elvégezteték	igealak_ritka	mult.E1	elvégeztet	mult.E1	1Móz 2:1	elvégeztetett	biztos	szenvedő múlt	modell_ellenorizetlen
+98	zúzá	regies_gyanu	elemezetlen:-á	zúzá		Dán 2:34	zúzta	biztos	tárgyas: azokat	modell_ellenorizetlen
+99	elhozák	regies_gyanu	elemezetlen:-ák	elhozák		1Móz 43:32	elhozták	biztos	tárgyas múlt, többes 3.	modell_ellenorizetlen
+100	fölkelének	igealak_ritka	mult.T3	fölkel	mult.T3	Ezsd 5:2	fölkeltek	biztos	elbeszélt múlt, többes 3.	modell_ellenorizetlen
+101	feltámasztá	igealak_ritka	mult.targyas.E3	feltámaszt	mult.targyas.E3	ApCsel 10:40	feltámasztotta	biztos	elbeszélt múlt, tárgyas (Ezt)	modell_ellenorizetlen
+102	megrontván	igealak_ritka	hatarozoi_igenev	megront	hatarozoi_igenev	Mal 2:10	megrontva	biztos	határozói igenév	modell_ellenorizetlen
+103	gyűlölék	igealak_ritka	mult.E1	gyűlöl	mult.E1	Eszt 9:1	gyűlölték	biztos	elbeszélt múlt, többes 3., tárgy: őket	modell_ellenorizetlen
+104	kisegíté	igealak_ritka	mult.targyas.E3	kisegít	mult.targyas.E3	Zsolt 106:10	kisegítette	biztos	elbeszélt múlt, tárgyas (őket)	modell_ellenorizetlen
+105	megcsinálák	regies_gyanu	elemezetlen:-ák	megcsinálák		2Móz 36:19	megcsinálták	biztos	többes 3. múlt, tárgyas (deszkákat)	modell_ellenorizetlen
+106	megsebesítének	igealak_ritka	mult.T3	megsebesít	mult.T3	Én 5:7	megsebesítettek	biztos	többes 3. múlt, tárgy: engem (alanyi)	modell_ellenorizetlen
+107	rakatván	igealak_ritka	hatarozoi_igenev	rakatik	hatarozoi_igenev	1Kir 5:9	rakatva	biztos	határozói igenév	modell_ellenorizetlen
+108	elszélede	igealak_ritka	mult.alanyi.E3	elszéled	mult.alanyi.E3	2Móz 5:12	elszéledt	biztos	elbeszélt múlt, alanyi	modell_ellenorizetlen
+109	teljesedék	igealak_ritka	mult.E3	teljesedik	mult.E3	Mt 2:17	teljesedett	biztos	elbeszélt múlt, alanyi	modell_ellenorizetlen
+110	hozzásietvén	igealak_ritka	hatarozoi_igenev	hozzásiet	hatarozoi_igenev	Mk 9:15	hozzásietve	biztos	határozói igenév	modell_ellenorizetlen
+111	éretted	regies_gyanu	kivetel_jegy_nelkul	te		1Móz 12:13	éretted	biztos	nem ige, névutós alak, helyes	modell_ellenorizetlen
+112	kihúzá	igealak_ritka	mult.targyas.E3	kihúz	mult.targyas.E3	2Móz 4:6	kihúzta	biztos	elbeszélt múlt, tárgyas (kezét)	modell_ellenorizetlen
+113	megemlékezél	igealak_ritka	mult.E2	megemlékezik	mult.E2	Ez 23:21	megemlékeztél	biztos	régi múlt, 2. szg., alanyi	modell_ellenorizetlen
+114	elhatározá	igealak_ritka	mult.targyas.E3	elhatároz	mult.targyas.E3	2Sám 21:16	elhatározta	biztos	elbeszélt múlt, tárgyas	modell_ellenorizetlen
+115	eljőjjön	regies_gyanu	kivetel_jegy_nelkul	eljön		Bír 9:24	eljöjjön	biztos	régies felszólító, helyesírás	modell_ellenorizetlen
+116	elegyíte	igealak_ritka	mult.alanyi.E3	elegyít	mult.alanyi.E3	Mt 13:33	elegyítette	biztos	elbeszélt múlt, tárgyas (lisztbe, mondatban a kovász tárgy)	modell_ellenorizetlen
+117	vára	regies_gyanu	vegzodes:-a	vár		Ézs 29:7	vára	biztos	főnév (vára ellen)	modell_ellenorizetlen
+118	bevitte	regies_gyanu	kivetel_jegy_nelkul	bevisz		1Kir 15:15	bevitte	biztos	mai alak	modell_ellenorizetlen
+119	alámentek	regies_gyanu	kivetel_jegy_nelkul	alámegy		4Móz 20:15	alámentek	biztos	mai múlt alak	modell_ellenorizetlen
+120	feljővén	igealak_ritka	hatarozoi_igenev	feljő	hatarozoi_igenev	Mk 1:10	feljőve	bizonytalan	határozói igenév, feljőve/feljővén → feljövet; mai: feljőve	modell_ellenorizetlen
+121	megparancsolák	regies_gyanu	elemezetlen:-ák	megparancsolák		ApCsel 4:18	megparancsolták	biztos	többes 3. múlt, tárgyas	modell_ellenorizetlen
+122	megrémülének	igealak_ritka	mult.T3	megrémül	mult.T3	1Sám 7:7	megrémültek	biztos	többes 3. múlt, alanyi	modell_ellenorizetlen
+123	fogatván	igealak_ritka	hatarozoi_igenev	fogat	hatarozoi_igenev	ApCsel 12:4	fogatva	biztos	határozói igenév	modell_ellenorizetlen
+124	elhelyezék	igealak_ritka	mult.E1	elhelyez	mult.E1	2Sám 6:17	elhelyezték	biztos	többes 3. múlt, tárgyas (azt)	modell_ellenorizetlen
+125	Egybegyűjték	igealak_ritka	mult.E3	egybegyűjtik	mult.E3	Ján 11:47	Egybegyűjtötték	biztos	többes 3. múlt, tárgyas (főtanácsot)	modell_ellenorizetlen
+126	Megkapván	igealak_ritka	hatarozoi_igenev	megkap	hatarozoi_igenev	2Pét 2:13	Megkapva	biztos	határozói igenév	modell_ellenorizetlen
+127	meghasítá	igealak_ritka	mult.targyas.E3	meghasít	mult.targyas.E3	Bír 15:19	meghasította	biztos	elbeszélt múlt, tárgyas	modell_ellenorizetlen
+128	behinté	igealak_ritka	mult.targyas.E3	behint	mult.targyas.E3	Bír 9:45	behintette	biztos	elbeszélt múlt, tárgyas (azt)	modell_ellenorizetlen
+129	jelenteték	regies_gyanu	elemezetlen:-teték	jelenteték		Józs 7:16	jelentetett	biztos	szenvedő elbeszélt múlt	modell_ellenorizetlen
+130	tekintének	igealak_ritka	mult.T3	tekint	mult.T3	1Sám 6:19	tekintettek	biztos	többes 3. múlt, alanyi	modell_ellenorizetlen
+131	felövezétek	igealak_ritka	mult.T2	felövez	mult.T2	5Móz 1:41	felövezettétek	biztos	többes 2. múlt, tárgyas (magatokat)	modell_ellenorizetlen
+132	ejte	igealak_ritka	mult.alanyi.E3	ejt	mult.alanyi.E3	4Móz 21:1	ejtett	biztos	elbeszélt múlt, tárgyas (foglyokat)	modell_ellenorizetlen
+133	küldék	igealak_ritka	mult.E1	küld	mult.E1	5Móz 2:26	küldtem	biztos	egyes 1. múlt, tárgyas (követeket)	modell_ellenorizetlen
+134	megszegényedvén	igealak_ritka	hatarozoi_igenev	megszegényed	hatarozoi_igenev	Péld 30:9	megszegényedve	biztos	határozói igenév	modell_ellenorizetlen
+135	rólad	regies_gyanu	kivetel_jegy_nelkul	te		1Móz 27:45	rólad	biztos	névutós alak, helyes	modell_ellenorizetlen
+136	ráküldé	igealak_ritka	mult.targyas.E3	ráküld	mult.targyas.E3	2Kir 24:2	rákűldte	bizonytalan	elbeszélt múlt, tárgyas; helyesírás: ráküldte	modell_ellenorizetlen
+137	karaván	regies_gyanu	elemezetlen:v-tő	karaván		1Móz 37:25	karaván	biztos	főnév	modell_ellenorizetlen
+138	felszálla	igealak_ritka	mult.alanyi.E3	felszáll	mult.alanyi.E3	1Móz 19:28	felszállt	biztos	elbeszélt múlt, alanyi	modell_ellenorizetlen
+139	leselkedének	igealak_ritka	mult.T3	leselkedik	mult.T3	Bír 16:2	leselkedtek	biztos	többes 3. múlt, alanyi	modell_ellenorizetlen
+140	adatának	igealak_ritka	mult.T3	adatik	mult.T3	1Krón 5:20	adattak	biztos	szenvedő többes 3. múlt	modell_ellenorizetlen
+141	tulajdonítván	igealak_ritka	hatarozoi_igenev	tulajdonít	hatarozoi_igenev	2Kor 5:19	tulajdonítva	biztos	határozói igenév	modell_ellenorizetlen
+142	elragadtatám	regies_gyanu	elemezetlen:-tatám	elragadtatám		ApCsel 22:17	elragadtattam	biztos	egyes 1. szenvedő múlt	modell_ellenorizetlen
+143	akarának	igealak_ritka	mult.T3	akar	mult.T3	Ez 20:8	akartak	biztos	többes 3. múlt, alanyi	modell_ellenorizetlen
+144	közelítének	igealak_ritka	mult.T3	közelít	mult.T3	1Móz 33:6	közelítettek	biztos	többes 3. múlt, alanyi	modell_ellenorizetlen
+145	egyesűlének	igealak_ritka	mult.T3	egyesűl	mult.T3	1Móz 14:3	egyesültek	biztos	többes 3. múlt, helyesírás	modell_ellenorizetlen
+146	szidalmazván	igealak_ritka	hatarozoi_igenev	szidalmaz	hatarozoi_igenev	Luk 22:65	szidalmazva	biztos	határozói igenév	modell_ellenorizetlen
+147	levetkezvén	regies_gyanu	elemezetlen:v-tő	levetkezvén		Kol 2:11	levetkezve	biztos	határozói igenév	modell_ellenorizetlen
+148	ontván	igealak_ritka	hatarozoi_igenev	ont	hatarozoi_igenev	1Kir 2:5	ontva	biztos	határozói igenév	modell_ellenorizetlen
+149	felnyitá	igealak_ritka	mult.targyas.E3	felnyit	mult.targyas.E3	2Kir 4:35	felnyitotta	biztos	elbeszélt múlt, tárgyas (szemeit)	modell_ellenorizetlen
+150	elhívatá	igealak_ritka	mult.targyas.E3	elhívat	mult.targyas.E3	Bír 16:18	elhívatta	biztos	elbeszélt múlt, tárgyas	modell_ellenorizetlen
+151	átvevék	igealak_ritka	mult.E1	átvesz	mult.E1	2Móz 36:2	átvették	biztos	elbeszélt múlt, tárgyas, többes 3.	modell_ellenorizetlen
+152	kihirdetteté	igealak_ritka	mult.targyas.E3	kihirdettet	mult.targyas.E3	2Krón 36:22	kihirdettette	biztos	elbeszélt múlt, egyes 3., tárgyas	modell_ellenorizetlen
+153	jelenék	igealak_ritka	mult.E1	jelen	mult.E1	Dán 8:1	jelent	biztos	elbeszélt múlt, alanyi, egyes 3.	modell_ellenorizetlen
+154	megzavará	igealak_ritka	mult.targyas.E3	megzavar	mult.targyas.E3	2Móz 14:24	megzavarta	biztos	elbeszélt múlt, tárgyas, egyes 3.	modell_ellenorizetlen
+155	megverettetém	regies_gyanu	elemezetlen:-tetém	megverettetém		Jer 31:18	megverettettem	biztos	egyes 1., elbeszélt múlt, alanyi	modell_ellenorizetlen
+156	megvervén	igealak_ritka	hatarozoi_igenev	megver	hatarozoi_igenev	Ézs 19:22	megverve	biztos	határozói igenév	modell_ellenorizetlen
+157	megesküvének	regies_gyanu	elemezetlen:v-tő	megesküvének		1Móz 26:31	megesküdtek	biztos	elbeszélt múlt, többes 3., alanyi	modell_ellenorizetlen
+158	fogák	regies_gyanu	elemezetlen:-ák	fogák		Bír 3:25	fogták	biztos	elbeszélt múlt, tárgyas, többes 3.	modell_ellenorizetlen
+159	elszaladának	igealak_ritka	mult.T3	elszalad	mult.T3	2Sám 4:6	elszaladtak	biztos	elbeszélt múlt, többes 3., alanyi	modell_ellenorizetlen
+160	ülteté	igealak_ritka	mult.targyas.E3	ültet	mult.targyas.E3	Ez 17:5	ültette	biztos	elbeszélt múlt, tárgyas, egyes 3.	modell_ellenorizetlen
+161	megharagudván	igealak_ritka	hatarozoi_igenev	megharagud	hatarozoi_igenev	1Kir 8:46	megharagudva	biztos	határozói igenév	modell_ellenorizetlen
+162	felhatalmazván	regies_gyanu	elemezetlen:v-tő	felhatalmazván		Mk 13:34	felhatalmazva	biztos	határozói igenév	modell_ellenorizetlen
+163	igyatok	regies_gyanu	kivetel_jegy_nelkul	iszik		3Móz 10:9	igyatok	biztos	mai alak, nincs változás	modell_ellenorizetlen
+164	tétetvén	igealak_ritka	hatarozoi_igenev	tétet	hatarozoi_igenev	2Tim 2:26	téve	biztos	határozói igenév, foglyokká tétetvén	modell_ellenorizetlen
+165	szemlélvén	regies_gyanu	elemezetlen:v-tő	szemlélvén		Zsolt 63:3	szemlélve	biztos	határozói igenév	modell_ellenorizetlen
+166	megbarátkozék	igealak_ritka	mult.E1	megbarátkoz	mult.E1	2Krón 20:35	megbarátkozott	biztos	elbeszélt múlt, alanyi, egyes 3.	modell_ellenorizetlen
+167	visszaküldé	igealak_ritka	mult.targyas.E3	visszaküld	mult.targyas.E3	Luk 23:11	visszaküldte	biztos	elbeszélt múlt, tárgyas, egyes 3.	modell_ellenorizetlen
+168	összegyűle	igealak_ritka	mult.alanyi.E3	összegyűl	mult.alanyi.E3	Jer 26:9	összegyűlt	biztos	elbeszélt múlt, alanyi, egyes 3.	modell_ellenorizetlen
+169	keltének	igealak_ritka	mult.T3	kelt	mult.T3	Zak 8:7	keltének	biztos	főnév birtokos, nem igealak	modell_ellenorizetlen
+170	elpusztítá	igealak_ritka	mult.targyas.E3	elpusztít	mult.targyas.E3	1Krón 20:1	elpusztította	biztos	elbeszélt múlt, tárgyas, egyes 3.	modell_ellenorizetlen
+171	lejőjj	regies_gyanu	kivetel_jegy_nelkul	lejön		1Sám 23:20	lejöjj	biztos	felszólítás, helyesírás	modell_ellenorizetlen
+172	fundáltaték	igealak_ritka	mult.E1	fundáltat	mult.E1	1Kir 6:37	fundáltatott	biztos	elbeszélt múlt, szenvedő, egyes 3.	modell_ellenorizetlen
+173	csapá	igealak_ritka	mult.targyas.E3	csap	mult.targyas.E3	2Krón 18:23	csapta	biztos	elbeszélt múlt, tárgyas, egyes 3.	modell_ellenorizetlen
+174	hálván	regies_gyanu	elemezetlen:v-tő	hálván		1Móz 34:7	hálva	biztos	határozói igenév	modell_ellenorizetlen
+175	mutatván	igealak_ritka	hatarozoi_igenev	mutat	hatarozoi_igenev	Tit 2:7	mutatva	biztos	határozói igenév	modell_ellenorizetlen
+176	megmerülének	igealak_ritka	mult.T3	megmerül	mult.T3	Luk 8:23	megmerültek	biztos	elbeszélt múlt, többes 3., alanyi	modell_ellenorizetlen
+177	elkezdvén	igealak_ritka	hatarozoi_igenev	elkezd	hatarozoi_igenev	Luk 24:27	elkezdve	biztos	határozói igenév	modell_ellenorizetlen
+178	meghozá	igealak_ritka	mult.targyas.E3	meghoz	mult.targyas.E3	1Kir 2:40	meghozta	biztos	elbeszélt múlt, tárgyas, egyes 3.	modell_ellenorizetlen
+179	felszökvén	igealak_ritka	hatarozoi_igenev	felszök	hatarozoi_igenev	ApCsel 3:8	felszökve	biztos	határozói igenév	modell_ellenorizetlen
+180	Előhívá	igealak_ritka	mult.targyas.E3	előhív	mult.targyas.E3	2Móz 12:21	Előhívta	biztos	elbeszélt múlt, tárgyas, egyes 3.	modell_ellenorizetlen
+181	benyujtá	igealak_ritka	mult.targyas.E3	benyujt	mult.targyas.E3	Én 5:4	benyújtotta	biztos	elbeszélt múlt, tárgyas, ly→j helyesírás	modell_ellenorizetlen
+182	lennék	regies_gyanu	kivetel_jegy_nelkul	lesz		1Krón 28:4	legyek	biztos	feltételes régies, alanyi, egyes 1.	modell_ellenorizetlen
+183	akarák	regies_gyanu	elemezetlen:-ák	akarák		1Krón 19:19	akarták	biztos	elbeszélt múlt, többes 3., tárgyas	modell_ellenorizetlen
+184	rakván	igealak_ritka	hatarozoi_igenev	rak	hatarozoi_igenev	1Kir 19:21	rakva	biztos	határozói igenév	modell_ellenorizetlen
+185	hányá	igealak_ritka	mult.targyas.E3	hány	mult.targyas.E3	Józs 10:28	hányta	biztos	elbeszélt múlt, tárgyas, egyes 3.	modell_ellenorizetlen
+186	elpusztulának	igealak_ritka	mult.T3	elpusztul	mult.T3	5Móz 2:16	elpusztultak	biztos	elbeszélt múlt, többes 3., alanyi	modell_ellenorizetlen
+187	tartózkodjál	igealak_ritka	felszolito.E2	tartózkodik	felszolito.E2	1Sám 19:2	tartózkodj	biztos	régies felszólítás	modell_ellenorizetlen
+188	keresztelkedjél	igealak_ritka	felszolito.E2	keresztelked	felszolito.E2	ApCsel 22:16	keresztelkedj	biztos	régies felszólítás	modell_ellenorizetlen
+189	kötének	regies_gyanu	vegzodes:-ének	köt		1Móz 21:27	kötöttek	biztos	elbeszélt múlt, többes 3., alanyi	modell_ellenorizetlen
+190	megnyomoríta	igealak_ritka	mult.alanyi.E3	megnyomorít	mult.alanyi.E3	2Krón 16:10	megnyomorította	biztos	elbeszélt múlt, tárgyas, egyes 3.	modell_ellenorizetlen
+191	szolgáltata	igealak_ritka	mult.alanyi.E3	szolgáltat	mult.alanyi.E3	1Kir 11:18	szolgáltatott	biztos	elbeszélt múlt, alanyi, egyes 3.	modell_ellenorizetlen
+192	otthagyván	igealak_ritka	hatarozoi_igenev	otthagy	hatarozoi_igenev	Mt 4:20	otthagyva	biztos	határozói igenév	modell_ellenorizetlen
+193	készíté	igealak_ritka	mult.targyas.E3	készít	mult.targyas.E3	1Kir 18:33	készítette	biztos	elbeszélt múlt, tárgyas, egyes 3.	modell_ellenorizetlen
+194	dagadának	igealak_ritka	mult.T3	dagad	mult.T3	Neh 9:21	dagadtak	biztos	elbeszélt múlt, többes 3., alanyi	modell_ellenorizetlen
+195	megrendíté	igealak_ritka	mult.targyas.E3	megrendít	mult.targyas.E3	Jób 1:19	megrendítette	biztos	elbeszélt múlt, tárgyas, egyes 3.	modell_ellenorizetlen
+196	egybeköttetvén	igealak_ritka	hatarozoi_igenev	egybeköttet	hatarozoi_igenev	Kol 2:2	egybeköttetve	biztos	határozói igenév	modell_ellenorizetlen
+197	szállítának	igealak_ritka	mult.T3	szállít	mult.T3	1Krón 22:4	szállítottak	biztos	elbeszélt múlt, többes 3., alanyi	modell_ellenorizetlen
+198	elhajítván	igealak_ritka	hatarozoi_igenev	elhajít	hatarozoi_igenev	1Sám 17:49	elhajítva	biztos	határozói igenév	modell_ellenorizetlen
+199	felülteté	igealak_ritka	mult.targyas.E3	felültet	mult.targyas.E3	2Móz 4:20	felültette	biztos	elbeszélt múlt, tárgyas, egyes 3.	modell_ellenorizetlen
+200	elhala	igealak_ritka	mult.alanyi.E3	elhal	mult.alanyi.E3	1Sám 25:37	elhalt	biztos	elbeszélt múlt, alanyi, egyes 3.	modell_ellenorizetlen

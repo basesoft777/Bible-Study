@@ -7,8 +7,8 @@
    "eszkozok/feladatterkep_kartyak.tsv"
   ],
   "belyeg": {
-   "datum": "2026-10-24",
-   "commit": "5c6fe257"
+   "datum": "2026-10-25",
+   "commit": "9847c23a"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -77,7 +77,7 @@
   {
    "kulcs": "wait",
    "cimke": "Függésre vár",
-   "db": 16
+   "db": 18
   },
   {
    "kulcs": "plan",
@@ -92,26 +92,18 @@
  ],
  "sor": [
   {
-   "szam": 96,
-   "kod": "KAROLI_MODERN",
-   "cim": "Modernizált Károli-szövegréteg — helyesírás és igealak, szókincs és szórend nélkül, az 1908-as szövegből generálva (DT128)",
-   "most": "A /kovetkezo indíthatja (a #94 lezárva; a Hunspell-kérdés eldöntve: DT301, csak fejlesztési mérce)",
-   "felbemaradt": false,
-   "parhuzamos": true
-  },
-  {
-   "szam": 133,
-   "kod": "BDB_FEJLEC_DT",
-   "cim": "A bdb_szakaszok.tsv és a bdb_forras_javitas.tsv fejléc-literáljai a végleges DT-számokra; a két bukó teszt_bont Determinizmus-teszt javítása",
-   "most": "Indítható a fugg szerint",
-   "felbemaradt": false,
-   "parhuzamos": true
-  },
-  {
    "szam": 134,
    "kod": "OLVASO_ALAPNEZET",
    "cim": "Olvasófelület — a Károli-szöveg az alapnézet, a szó és a vers részletei egyetlen lapon (kis képernyőn alsó lap, nagyon oldalblokk)",
    "most": "A /kovetkezo a #76 zárása után indíthatja (M0 ⛔: terv)",
+   "felbemaradt": false,
+   "parhuzamos": true
+  },
+  {
+   "szam": 140,
+   "kod": "GLOSSZA_FORDITAS",
+   "cim": "A héber szavak rövid magyar jelentése — a TBESH-glossza fordítása mind a 8 718 héber Strongra, a szó-lap kiemelt jelentés-sorának forrásaként (GLOSSZA_FORDITAS)",
+   "most": "/kovetkezo (M0 ⛔: mérés, kulcsséma és prompt-minta 30 szón)",
    "felbemaradt": false,
    "parhuzamos": true
   }
@@ -238,7 +230,7 @@
    "allapot": "wait",
    "brief_allapot": "nem_indult",
    "most": "a #11 lezárása (M6, zárónapló, merge), utána a #36 (az éles lexikon/ újragenerálása, DT246) lezárása után /kovetkezo (a DT245–c mind eldöntve, 2026-10-19); első lépés a P előfeltétel-ellenőrzés, utána az L0. Előfeltétel: a #8 négy nyitott sora (LD008, LD009, LD058, LD064) eldöntve (DT-F26c) — a DT245 (🟢, 3. változat) szerint az LD008 feloldandó, az LD009, LD058, LD064 a DT-F43 (c) szerint dokumentáltan nyitott",
-   "fugg": "#8 (kész), #9 (kész), #11 (kész), #36, #52*, #113 (kész), #121*, #131*",
+   "fugg": "#8 (kész), #9 (kész), #11 (kész), #36, #52*, #113 (kész), #121*, #131*, #141*",
    "tervezett": false,
    "reszletes": "A 8 lexikonoldal mérhető feltételek (L1–L7) szerinti lezárása. Briefet még nem kapott; előtte el kell döntened az L6 és L7 feltételt (DT2), és meg kell lennie a #9-nek és a #11-nek.",
    "roviden": "A 8 kész lexikonoldal hivatalos lezárása.",
@@ -518,22 +510,6 @@
    "leiras_hiany": true
   },
   {
-   "kulcs": "KAROLI_MODERN",
-   "szam": 96,
-   "kod": "KAROLI_MODERN",
-   "cim": "Modernizált Károli-szövegréteg — helyesírás és igealak, szókincs és szórend nélkül, az 1908-as szövegből generálva (DT128)",
-   "fazis": "1",
-   "allapot": "ready",
-   "brief_allapot": "nem_indult",
-   "most": "A /kovetkezo indíthatja (a #94 lezárva; a Hunspell-kérdés eldöntve: DT301, csak fejlesztési mérce)",
-   "fugg": "#94 (kész)",
-   "tervezett": false,
-   "reszletes": "",
-   "roviden": "",
-   "leiras_forras": null,
-   "leiras_hiany": true
-  },
-  {
    "kulcs": "ADATBAZIS_FRISSITES",
    "szam": 101,
    "kod": "ADATBAZIS_FRISSITES",
@@ -670,7 +646,7 @@
    "allapot": "wait",
    "brief_allapot": "nem_indult",
    "most": "M0: az első tétel (a „nevezni” terminológiai sorai és a G1941 két kézi sorának javítása), utána a mérés megismétlése, az eszközök, a négy mankó és a terminológia v4 tervezete; ⛔ a D1–D4 döntés és a v4 jóváhagyása",
-   "fugg": "#11 (kész), #131*, #132*",
+   "fugg": "#11 (kész), #131*, #132*, #141*",
    "tervezett": false,
    "reszletes": "",
    "roviden": "",
@@ -766,7 +742,7 @@
    "allapot": "stop",
    "brief_allapot": "nem_indult",
    "most": "Te: a #127 és a #110 lezárása után /kovetkezo; első lépés ⛔ 0.3: DT-F131a–e",
-   "fugg": "#110 (kész), #127 (kész), #132, #133*",
+   "fugg": "#110 (kész), #127 (kész), #132, #133*, #141*",
    "tervezett": false,
    "reszletes": "",
    "roviden": "",
@@ -795,10 +771,10 @@
    "kod": "BDB_FEJLEC_DT",
    "cim": "A bdb_szakaszok.tsv és a bdb_forras_javitas.tsv fejléc-literáljai a végleges DT-számokra; a két bukó teszt_bont Determinizmus-teszt javítása",
    "fazis": "1",
-   "allapot": "ready",
+   "allapot": "wait",
    "brief_allapot": "nem_indult",
    "most": "Indítható a fugg szerint",
-   "fugg": "#128 (kész)",
+   "fugg": "#128 (kész), #141*",
    "tervezett": false,
    "reszletes": "",
    "roviden": "",
@@ -862,7 +838,7 @@
    "allapot": "idle",
    "brief_allapot": "brief_kell",
    "most": "brief kell a #96 lezárása után (a #92 és a #76 lezárva); a brief dönti el, hogy a vers-lap kapcsolója ennek része vagy külön csonk",
-   "fugg": "#96, #120*",
+   "fugg": "#96 (kész), #120*",
    "tervezett": false,
    "reszletes": "",
    "roviden": "",
@@ -879,6 +855,54 @@
    "brief_allapot": "nem_indult",
    "most": "A /kovetkezo a #134 zárása után indíthatja (M0 ⛔: terv)",
    "fugg": "#134",
+   "tervezett": false,
+   "reszletes": "",
+   "roviden": "",
+   "leiras_forras": null,
+   "leiras_hiany": true
+  },
+  {
+   "kulcs": "SZOLAP_FEJLEC",
+   "szam": 139,
+   "kod": "SZOLAP_FEJLEC",
+   "cim": "A szó-lap fejlécének átrendezése — a címsorban a szótő és a magyar átírás, alatta kiemelve a magyar alapjelentés szófaj nélkül, az alcímben a Strong-szám és a szófaj (SZOLAP_FEJLEC)",
+   "fazis": "1",
+   "allapot": "wait",
+   "brief_allapot": "nem_indult",
+   "most": "A /kovetkezo a #134 zárása után indíthatja (M0 ⛔: mérés és terv; ⛔ DT-F139a: a héber átírás forrása)",
+   "fugg": "#134, #138*, #140",
+   "tervezett": false,
+   "reszletes": "",
+   "roviden": "",
+   "leiras_forras": null,
+   "leiras_hiany": true
+  },
+  {
+   "kulcs": "GLOSSZA_FORDITAS",
+   "szam": 140,
+   "kod": "GLOSSZA_FORDITAS",
+   "cim": "A héber szavak rövid magyar jelentése — a TBESH-glossza fordítása mind a 8 718 héber Strongra, a szó-lap kiemelt jelentés-sorának forrásaként (GLOSSZA_FORDITAS)",
+   "fazis": "1",
+   "allapot": "ready",
+   "brief_allapot": "nem_indult",
+   "most": "/kovetkezo (M0 ⛔: mérés, kulcsséma és prompt-minta 30 szón)",
+   "fugg": "—",
+   "tervezett": false,
+   "reszletes": "",
+   "roviden": "",
+   "leiras_forras": null,
+   "leiras_hiany": true
+  },
+  {
+   "kulcs": "LEXIKON_LITERAL_JAVITAS",
+   "szam": 141,
+   "kod": "LEXIKON_LITERAL_JAVITAS",
+   "cim": "A kimeneti literálokban maradt kiosztott helyőrzők (DT-F127b) felmérése, javítása és az ismétlődés megelőzése",
+   "fazis": "folyamat",
+   "allapot": "ready",
+   "brief_allapot": "nem_indult",
+   "most": "/kovetkezo; első lépés az újrafelmérés, utána ⛔ DT-F141a ((a) CI-szabály / (b) szamkiosztas .py-ra / (c) mindkettő)",
+   "fugg": "#110 (kész)",
    "tervezett": false,
    "reszletes": "",
    "roviden": "",
@@ -964,7 +988,6 @@
    "TANULMANY_JAVITAS",
    "KAROLI_UJJLENYOMAT",
    "ELOFIZETES_FEED",
-   "KAROLI_MODERN",
    "ADATBAZIS_FRISSITES",
    "BDB_SZELETELO_JAVITAS",
    "BDB_TAGOLAS",
@@ -987,10 +1010,13 @@
    "BDB_BATCH_VAKPROBA",
    "KAROLI_MODERN_DB",
    "ALAPJELENTES_JAVITAS",
+   "SZOLAP_FEJLEC",
+   "GLOSSZA_FORDITAS",
+   "LEXIKON_LITERAL_JAVITAS",
    "TERV_BEFOGAD"
   ]
  },
- "terkep": "flowchart LR\n  classDef stop fill:#d93025,stroke:#8c1d18,color:#ffffff,stroke-width:2px\n  classDef run fill:#1e8e3e,stroke:#0d5226,color:#ffffff,stroke-width:2px\n  classDef ready fill:#1a73e8,stroke:#0b3d91,color:#ffffff,stroke-width:2px\n  classDef wait fill:#f9ab00,stroke:#a86f00,color:#2b1d00,stroke-width:2px\n  classDef plan fill:#8e44ad,stroke:#5b2470,color:#ffffff,stroke-width:2px,stroke-dasharray:6 3\n  classDef idle fill:#80868b,stroke:#4a4f54,color:#ffffff\n  classDef dt fill:#ff6d00,stroke:#a34500,color:#ffffff,stroke-width:2px\n\n  P_MCP_BUROK[\"MCP_BUROK\"]:::plan\n  P_SZPA_AUDIT[\"SZPA_AUDIT\"]:::plan\n  P_TERV_BEFOGAD[\"TERV_BEFOGAD\"]:::plan\n  T10[\"#10 LEXIKON_LEZARAS\"]:::wait\n  T101[\"#101 ADATBAZIS_FRISSITES\"]:::idle\n  T102[\"#102 BDB_SZELETELO_JAVITAS\"]:::wait\n  T103[\"#103 BDB_TAGOLAS\"]:::wait\n  T104[\"#104 BDB_MEGJELENITES\"]:::wait\n  T105[\"#105 BDB_SZOREND\"]:::wait\n  T106[\"#106 BDB_MAGYARAZAT\"]:::wait\n  T111[\"#111 ELTERES\"]:::stop\n  T12[\"#12 TEREMT-002 3. lépés…\"]:::idle\n  T120[\"#120 BSB_SQLITE_KEZI_MT\"]:::wait\n  T121[\"#121 GLOSSZA_FORDITAS\"]:::wait\n  T122[\"#122 KJV_MEGJELENITES\"]:::wait\n  T123[\"#123 MIGRACIO2\"]:::stop\n  T124[\"#124 GERINC_KARTYA\"]:::wait\n  T125[\"#125 GERINC_KARTYA_SZOVEG\"]:::idle\n  T129[\"#129 BDB_KIADAS\"]:::stop\n  T13[\"#13 1Móz 17-től a…\"]:::idle\n  T131[\"#131 SZOTARI_GERINC\"]:::stop\n  T132[\"#132 THAYER_SZAKASZ\"]:::stop\n  T133[\"#133 BDB_FEJLEC_DT\"]:::ready\n  T134[\"#134 OLVASO_ALAPNEZET\"]:::ready\n  T135[\"#135 OLVASO_VPS\"]:::wait\n  T136[\"#136 BDB_BATCH_VAKPROBA\"]:::stop\n  T137[\"#137 KAROLI_MODERN_DB\"]:::idle\n  T138[\"#138 ALAPJELENTES_JAVITAS\"]:::wait\n  T22[\"#22 Károli–Strong párosítás…\"]:::stop\n  T25[\"#25 OLVASOI_HTML\"]:::idle\n  T27[\"#27 FP3\"]:::idle\n  T36[\"#36 LEXIKON_UJRAGEN\"]:::wait\n  T38[\"#38 BDB_FORDITAS\"]:::stop\n  T48[\"#48 KJV_REGI_KIVEZETES\"]:::wait\n  T52[\"#52 TERV_SZINKRON\"]:::stop\n  T59[\"#59 SZOSZEDET\"]:::ready\n  T67[\"#67 BDB_JAVITAS_KAPU\"]:::idle\n  T69[\"#69 SEMA_DATASET_SZAM\"]:::ready\n  T7[\"#7 Thayer teljes magyar…\"]:::idle\n  T70[\"#70 SZOTAR_S26\"]:::ready\n  T74[\"#74 TANULMANY_JAVITAS_GEPI\"]:::ready\n  T75[\"#75 TANULMANY_JAVITAS\"]:::wait\n  T81[\"#81 KAROLI_UJJLENYOMAT\"]:::wait\n  T86[\"#86 ELOFIZETES_FEED\"]:::stop\n  T96[\"#96 KAROLI_MODERN\"]:::ready\n  D_DT_F38i{{\"DT-F38i\"}}:::dt\n  D_DT_M3{{\"DT-M3\"}}:::dt\n  D_DT_M5{{\"DT-M5\"}}:::dt\n  D_DT_M7{{\"DT-M7\"}}:::dt\n  D_DT_M8{{\"DT-M8\"}}:::dt\n  D_DT181{{\"DT181\"}}:::dt\n  D_DT2{{\"DT2\"}}:::dt\n  D_DT234{{\"DT234\"}}:::dt\n  D_DT235{{\"DT235\"}}:::dt\n  D_DT236{{\"DT236\"}}:::dt\n  D_DT237{{\"DT237\"}}:::dt\n  D_DT238{{\"DT238\"}}:::dt\n  D_DT239{{\"DT239\"}}:::dt\n  D_DT240{{\"DT240\"}}:::dt\n  D_DT241{{\"DT241\"}}:::dt\n  D_DT242{{\"DT242\"}}:::dt\n  D_DT245{{\"DT245\"}}:::dt\n  D_DT246{{\"DT246\"}}:::dt\n  D_DT247{{\"DT247\"}}:::dt\n  D_DT248{{\"DT248\"}}:::dt\n  D_DT254{{\"DT254\"}}:::dt\n  D_DT269{{\"DT269\"}}:::dt\n  D_DT271{{\"DT271\"}}:::dt\n  D_DT272{{\"DT272\"}}:::dt\n  D_DT28{{\"DT28\"}}:::dt\n  D_DT282{{\"DT282\"}}:::dt\n  D_DT292{{\"DT292\"}}:::dt\n  D_DT293{{\"DT293\"}}:::dt\n  D_DT294{{\"DT294\"}}:::dt\n  D_DT295{{\"DT295\"}}:::dt\n  D_DT296{{\"DT296\"}}:::dt\n  D_DT297{{\"DT297\"}}:::dt\n  D_DT298{{\"DT298\"}}:::dt\n  D_DT300{{\"DT300\"}}:::dt\n  D_DT301{{\"DT301\"}}:::dt\n  D_DT52{{\"DT52\"}}:::dt\n  D_DT56{{\"DT56\"}}:::dt\n  D_DT57{{\"DT57\"}}:::dt\n  D_DT71{{\"DT71\"}}:::dt\n  D_DT74{{\"DT74\"}}:::dt\n  D_DT77{{\"DT77\"}}:::dt\n  D_DT78{{\"DT78\"}}:::dt\n  D_DT90{{\"DT90\"}}:::dt\n\n  P_MCP_BUROK --> D_DT_M3\n  P_MCP_BUROK --> D_DT_M5\n  P_MCP_BUROK --> D_DT_M7\n  P_SZPA_AUDIT --> D_DT77\n  P_TERV_BEFOGAD --> D_DT_M8\n  T10 --> D_DT2\n  T10 --> D_DT245\n  T10 --> D_DT246\n  T10 --> D_DT247\n  T10 --> D_DT74\n  T10 --> T121\n  T10 --> T131\n  T10 --> T36\n  T10 --> T52\n  T102 --> D_DT297\n  T102 --> T138\n  T103 --> T102\n  T104 --> T102\n  T104 --> T103\n  T104 --> T122\n  T104 --> T138\n  T105 --> T102\n  T105 --> T103\n  T105 --> T104\n  T105 --> T138\n  T106 --> D_DT297\n  T106 --> T102\n  T106 --> T103\n  T106 --> T104\n  T106 --> T105\n  T12 --> D_DT74\n  T120 --> D_DT300\n  T120 --> T138\n  T121 --> D_DT234\n  T121 --> D_DT235\n  T121 --> D_DT236\n  T121 --> D_DT237\n  T121 --> D_DT238\n  T121 --> D_DT239\n  T121 --> D_DT240\n  T121 --> D_DT241\n  T121 --> D_DT242\n  T121 --> D_DT271\n  T121 --> D_DT272\n  T121 --> T131\n  T121 --> T132\n  T122 --> T120\n  T122 --> T22\n  T122 --> T38\n  T124 --> T138\n  T125 --> T124\n  T129 --> T102\n  T129 --> T103\n  T129 --> T132\n  T129 --> T133\n  T13 --> T10\n  T131 --> D_DT282\n  T131 --> T132\n  T131 --> T133\n  T132 --> D_DT282\n  T134 --> D_DT292\n  T134 --> D_DT293\n  T134 --> D_DT294\n  T134 --> D_DT295\n  T134 --> D_DT296\n  T134 --> D_DT298\n  T135 --> T120\n  T135 --> T122\n  T135 --> T52\n  T137 --> T120\n  T137 --> T96\n  T138 --> T134\n  T22 --> D_DT56\n  T22 --> D_DT57\n  T22 --> D_DT71\n  T22 --> T138\n  T25 --> T12\n  T27 --> D_DT271\n  T36 --> D_DT271\n  T36 --> D_DT28\n  T36 --> D_DT74\n  T36 --> T52\n  T38 --> D_DT181\n  T38 --> D_DT269\n  T38 --> D_DT271\n  T38 --> D_DT52\n  T38 --> D_DT56\n  T38 --> D_DT_F38i\n  T48 --> T138\n  T48 --> T22\n  T52 --> D_DT78\n  T52 --> D_DT90\n  T67 --> T132\n  T67 --> T27\n  T67 --> T7\n  T69 --> D_DT248\n  T70 --> D_DT74\n  T75 --> D_DT254\n  T75 --> T123\n  T75 --> T125\n  T75 --> T74\n  T81 --> T123\n  T81 --> T138\n  T86 --> D_DT298\n  T86 --> T121\n  T86 --> T123\n  T86 --> T132\n  T86 --> T27\n  T86 --> T38\n  T86 --> T52\n  T86 --> T7\n  T96 --> D_DT301",
+ "terkep": "flowchart LR\n  classDef stop fill:#d93025,stroke:#8c1d18,color:#ffffff,stroke-width:2px\n  classDef run fill:#1e8e3e,stroke:#0d5226,color:#ffffff,stroke-width:2px\n  classDef ready fill:#1a73e8,stroke:#0b3d91,color:#ffffff,stroke-width:2px\n  classDef wait fill:#f9ab00,stroke:#a86f00,color:#2b1d00,stroke-width:2px\n  classDef plan fill:#8e44ad,stroke:#5b2470,color:#ffffff,stroke-width:2px,stroke-dasharray:6 3\n  classDef idle fill:#80868b,stroke:#4a4f54,color:#ffffff\n  classDef dt fill:#ff6d00,stroke:#a34500,color:#ffffff,stroke-width:2px\n\n  P_MCP_BUROK[\"MCP_BUROK\"]:::plan\n  P_SZPA_AUDIT[\"SZPA_AUDIT\"]:::plan\n  P_TERV_BEFOGAD[\"TERV_BEFOGAD\"]:::plan\n  T10[\"#10 LEXIKON_LEZARAS\"]:::wait\n  T101[\"#101 ADATBAZIS_FRISSITES\"]:::idle\n  T102[\"#102 BDB_SZELETELO_JAVITAS\"]:::wait\n  T103[\"#103 BDB_TAGOLAS\"]:::wait\n  T104[\"#104 BDB_MEGJELENITES\"]:::wait\n  T105[\"#105 BDB_SZOREND\"]:::wait\n  T106[\"#106 BDB_MAGYARAZAT\"]:::wait\n  T111[\"#111 ELTERES\"]:::stop\n  T12[\"#12 TEREMT-002 3. lépés…\"]:::idle\n  T120[\"#120 BSB_SQLITE_KEZI_MT\"]:::wait\n  T121[\"#121 GLOSSZA_FORDITAS\"]:::wait\n  T122[\"#122 KJV_MEGJELENITES\"]:::wait\n  T123[\"#123 MIGRACIO2\"]:::stop\n  T124[\"#124 GERINC_KARTYA\"]:::wait\n  T125[\"#125 GERINC_KARTYA_SZOVEG\"]:::idle\n  T129[\"#129 BDB_KIADAS\"]:::stop\n  T13[\"#13 1Móz 17-től a…\"]:::idle\n  T131[\"#131 SZOTARI_GERINC\"]:::stop\n  T132[\"#132 THAYER_SZAKASZ\"]:::stop\n  T133[\"#133 BDB_FEJLEC_DT\"]:::wait\n  T134[\"#134 OLVASO_ALAPNEZET\"]:::ready\n  T135[\"#135 OLVASO_VPS\"]:::wait\n  T136[\"#136 BDB_BATCH_VAKPROBA\"]:::stop\n  T137[\"#137 KAROLI_MODERN_DB\"]:::idle\n  T138[\"#138 ALAPJELENTES_JAVITAS\"]:::wait\n  T139[\"#139 SZOLAP_FEJLEC\"]:::wait\n  T140[\"#140 GLOSSZA_FORDITAS\"]:::ready\n  T141[\"#141 LEXIKON_LITERAL_JAVITAS\"]:::ready\n  T22[\"#22 Károli–Strong párosítás…\"]:::stop\n  T25[\"#25 OLVASOI_HTML\"]:::idle\n  T27[\"#27 FP3\"]:::idle\n  T36[\"#36 LEXIKON_UJRAGEN\"]:::wait\n  T38[\"#38 BDB_FORDITAS\"]:::stop\n  T48[\"#48 KJV_REGI_KIVEZETES\"]:::wait\n  T52[\"#52 TERV_SZINKRON\"]:::stop\n  T59[\"#59 SZOSZEDET\"]:::ready\n  T67[\"#67 BDB_JAVITAS_KAPU\"]:::idle\n  T69[\"#69 SEMA_DATASET_SZAM\"]:::ready\n  T7[\"#7 Thayer teljes magyar…\"]:::idle\n  T70[\"#70 SZOTAR_S26\"]:::ready\n  T74[\"#74 TANULMANY_JAVITAS_GEPI\"]:::ready\n  T75[\"#75 TANULMANY_JAVITAS\"]:::wait\n  T81[\"#81 KAROLI_UJJLENYOMAT\"]:::wait\n  T86[\"#86 ELOFIZETES_FEED\"]:::stop\n  D_DT_F38i{{\"DT-F38i\"}}:::dt\n  D_DT_M3{{\"DT-M3\"}}:::dt\n  D_DT_M5{{\"DT-M5\"}}:::dt\n  D_DT_M7{{\"DT-M7\"}}:::dt\n  D_DT_M8{{\"DT-M8\"}}:::dt\n  D_DT181{{\"DT181\"}}:::dt\n  D_DT2{{\"DT2\"}}:::dt\n  D_DT234{{\"DT234\"}}:::dt\n  D_DT235{{\"DT235\"}}:::dt\n  D_DT236{{\"DT236\"}}:::dt\n  D_DT237{{\"DT237\"}}:::dt\n  D_DT238{{\"DT238\"}}:::dt\n  D_DT239{{\"DT239\"}}:::dt\n  D_DT240{{\"DT240\"}}:::dt\n  D_DT241{{\"DT241\"}}:::dt\n  D_DT242{{\"DT242\"}}:::dt\n  D_DT245{{\"DT245\"}}:::dt\n  D_DT246{{\"DT246\"}}:::dt\n  D_DT247{{\"DT247\"}}:::dt\n  D_DT248{{\"DT248\"}}:::dt\n  D_DT254{{\"DT254\"}}:::dt\n  D_DT269{{\"DT269\"}}:::dt\n  D_DT271{{\"DT271\"}}:::dt\n  D_DT272{{\"DT272\"}}:::dt\n  D_DT28{{\"DT28\"}}:::dt\n  D_DT282{{\"DT282\"}}:::dt\n  D_DT292{{\"DT292\"}}:::dt\n  D_DT293{{\"DT293\"}}:::dt\n  D_DT294{{\"DT294\"}}:::dt\n  D_DT295{{\"DT295\"}}:::dt\n  D_DT296{{\"DT296\"}}:::dt\n  D_DT297{{\"DT297\"}}:::dt\n  D_DT298{{\"DT298\"}}:::dt\n  D_DT300{{\"DT300\"}}:::dt\n  D_DT52{{\"DT52\"}}:::dt\n  D_DT56{{\"DT56\"}}:::dt\n  D_DT57{{\"DT57\"}}:::dt\n  D_DT71{{\"DT71\"}}:::dt\n  D_DT74{{\"DT74\"}}:::dt\n  D_DT77{{\"DT77\"}}:::dt\n  D_DT78{{\"DT78\"}}:::dt\n  D_DT90{{\"DT90\"}}:::dt\n\n  P_MCP_BUROK --> D_DT_M3\n  P_MCP_BUROK --> D_DT_M5\n  P_MCP_BUROK --> D_DT_M7\n  P_SZPA_AUDIT --> D_DT77\n  P_TERV_BEFOGAD --> D_DT_M8\n  T10 --> D_DT2\n  T10 --> D_DT245\n  T10 --> D_DT246\n  T10 --> D_DT247\n  T10 --> D_DT74\n  T10 --> T121\n  T10 --> T131\n  T10 --> T141\n  T10 --> T36\n  T10 --> T52\n  T102 --> D_DT297\n  T102 --> T138\n  T103 --> T102\n  T104 --> T102\n  T104 --> T103\n  T104 --> T122\n  T104 --> T138\n  T105 --> T102\n  T105 --> T103\n  T105 --> T104\n  T105 --> T138\n  T106 --> D_DT297\n  T106 --> T102\n  T106 --> T103\n  T106 --> T104\n  T106 --> T105\n  T12 --> D_DT74\n  T120 --> D_DT300\n  T120 --> T138\n  T121 --> D_DT234\n  T121 --> D_DT235\n  T121 --> D_DT236\n  T121 --> D_DT237\n  T121 --> D_DT238\n  T121 --> D_DT239\n  T121 --> D_DT240\n  T121 --> D_DT241\n  T121 --> D_DT242\n  T121 --> D_DT271\n  T121 --> D_DT272\n  T121 --> T131\n  T121 --> T132\n  T121 --> T141\n  T122 --> T120\n  T122 --> T22\n  T122 --> T38\n  T124 --> T138\n  T125 --> T124\n  T129 --> T102\n  T129 --> T103\n  T129 --> T132\n  T129 --> T133\n  T13 --> T10\n  T131 --> D_DT282\n  T131 --> T132\n  T131 --> T133\n  T131 --> T141\n  T132 --> D_DT282\n  T133 --> T141\n  T134 --> D_DT292\n  T134 --> D_DT293\n  T134 --> D_DT294\n  T134 --> D_DT295\n  T134 --> D_DT296\n  T134 --> D_DT298\n  T135 --> T120\n  T135 --> T122\n  T135 --> T52\n  T137 --> T120\n  T138 --> T134\n  T139 --> T134\n  T139 --> T138\n  T139 --> T140\n  T22 --> D_DT56\n  T22 --> D_DT57\n  T22 --> D_DT71\n  T22 --> T138\n  T25 --> T12\n  T27 --> D_DT271\n  T36 --> D_DT271\n  T36 --> D_DT28\n  T36 --> D_DT74\n  T36 --> T52\n  T38 --> D_DT181\n  T38 --> D_DT269\n  T38 --> D_DT271\n  T38 --> D_DT52\n  T38 --> D_DT56\n  T38 --> D_DT_F38i\n  T48 --> T138\n  T48 --> T22\n  T52 --> D_DT78\n  T52 --> D_DT90\n  T67 --> T132\n  T67 --> T27\n  T67 --> T7\n  T69 --> D_DT248\n  T70 --> D_DT74\n  T75 --> D_DT254\n  T75 --> T123\n  T75 --> T125\n  T75 --> T74\n  T81 --> T123\n  T81 --> T138\n  T86 --> D_DT298\n  T86 --> T121\n  T86 --> T123\n  T86 --> T132\n  T86 --> T27\n  T86 --> T38\n  T86 --> T52\n  T86 --> T7",
  "dontesek": {
   "nyitott": [
    {
@@ -3146,6 +3172,196 @@
      "🟢"
     ],
     "sor": 376
+   },
+   {
+    "id": "DT303",
+    "feladat": "#96 KAROLI_MODERN (.0/3 ⛔, token-keret)",
+    "kerdes": "A bizonytalan (LLM-jelölt) maradék a fedettségi mérés szerint 3 303 kisbetűs alak (`igealak_ritka` 2 621: a ritka alakok jegye ~6%-ban hibás, N-F94h; `regies_gyanu` 682: jegy nélküli régies igealak, köztük a #94 értékkészletéből hiányzó tárgyas T/3 *mondák, adák, találák*). A ~200 alakos mintán (claude-sonnet-5-5, API, alakonként a példaverssel) a tényleges felhasználás 26 498 token, alakonként 132,5; a teljes maradékra ≈ 0,44 M token, a brief 0,2 M-os küszöbe felett (a tokenszintű, szövegkörnyezetfüggő esetekkel — 2 207 *-ék/-ák* és 543 „a mi” token — ≈ 0,8 M; a teljes LLM-átírás ~3–3,5 M). A mintán az LLM a jegyhibát elkapta (*követe*: főnév), de szókincs- és alakhibát is adott (*megnevekedék → megszaporodott*, *lennék → legyek*, *őrizénditek → őrizendőtök*): bármelyik változatban determinisztikus tő-őr kell az LLM-kimenet elé. A mintán mért költség kb. 0,09 USD (normál ár); 0,44 M token kb. 1,5 USD normál, kb. 0,75 USD Batch-áron. *(forrás: `naplok/KAROLI_MODERN_meres.md` 1.–2. szakasz; `adat/karoli_modern/token_minta_hivasok.jsonl`)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 377
+   },
+   {
+    "id": "DT304",
+    "feladat": "#96 KAROLI_MODERN (.0, a modernizálás határa)",
+    "kerdes": "A fedettségi mérés olyan alakokat talált, amelyeknél nem egyértelmű, hogy a DT128 szintjén (helyesírás + igealak; szókincs nem) belül esnek-e. *(forrás: `naplok/KAROLI_MODERN_meres.md` 1.2–1.3)* (a) a #94 `szotari_alak_mai` nem helyesírási lemmaváltásai (165 alak, 10 980 token): *e → ez* (1 457+66), *oh → ó* (221+78), *férfiú → férfi* (*férfiú, férfiak, férfiút* …), *leány → lány* (*leánya, leányai* …), *cselekedik → cselekszik* (*cselekedett* mai alak; *cselekedjék* régies felszólító?); a *ki/mely → aki/amely* sorok zöme a különírt „a kik” → *akik* tokenszabállyal kezelődik (N-F94f), az önálló *kik, mely* (vonatkozó névmásként, „a” nélkül) marad-e; (b) a *reá*-család (*reá, reám, reátok, reánk*; 640 token) → *rá-*: a DT128 a *néki → neki*-t nevezi, ezt nem; (c) a határozói igenév *-ván/-vén* (a #94 jegye `hatarozoi_igenev`, 690 alak) → *-va/-ve*: a *-ván/-vén* a mai irodalmi nyelvben is él; (d) az *-ik*-es igék *-jék* felszólító E/3-a (*cselekedjék, uralkodjék, lakozzék*) → *-jon/-jen/-jön*: a mai nyelvben választékos változat",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 378
+   },
+   {
+    "id": "DT305",
+    "feladat": "#96 KAROLI_MODERN (a Strong-átvitel kérdése)",
+    "kerdes": "Viszi-e a modernizált réteg a Strong-párosítást? *(forrás: chat 2026-10-24; a brief 1. szakasza, K3, K4b, DT-F96b)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 379
+   },
+   {
+    "id": "DT306",
+    "feladat": "#96 KAROLI_MODERN (.1 ⛔, a modernizálás határa: birtokos T/3)",
+    "kerdes": "A .1 során talált, a DT-F96e-ben nem szereplő régies alak: a birtokos T/3 *-jok/-jök* (*atyjok, reájok → rájok, hozzájok, útjokat, erejök*; 212 alak, 714 token) a mai *-juk/-jük* helyett; a *j* nélküli változat (*kezöket, szívök, közöttök*) a többes számú *-ok/-ök*-kel alakilag egybeesik, ezért gépileg csak szövegkörnyezettel választható szét (nem mért). Helyesírás/alaktan-e (a DT128 szintjén belül), vagy élő régies változat? *(forrás: `naplok/KAROLI_MODERN_meres.md` 4.5; a mintában a `jok` réteg 6 verse, `alternativa` oszloppal)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 380
+   },
+   {
+    "id": "DT307",
+    "feladat": "#96 KAROLI_MODERN (.1 ⛔, a K1 küszöbe és a minta)",
+    "kerdes": "A K1 szerint a küszöböt a .1 ⛔ rögzíti, a mérés előtt. A helyesírási lépcső mintája kész (`adat/karoli_modern/helyesiras_minta.tsv`, 112 vers, mag 20261024; 12 804 változó vers, 28 953 változó token, 298 bizonytalan „a mi”, 1 093 alak `modell_ellenorizetlen`, mert a Hunspell nem futhatott). Mi a küszöb, és mi a mérés egysége? *(forrás: brief .1/3, K1; `naplok/KAROLI_MODERN_meres.md` 4.4)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 381
+   },
+   {
+    "id": "DT308",
+    "feladat": "#96 KAROLI_MODERN (.1 ⛔, a puszta „a mi”: birtokos vagy vonatkozó)",
+    "kerdes": "A Károli 1908 a vonatkozó névmást különírja. A puszta *a mi* (1 164 token) lehet vonatkozó (*mindent, a mi rajta van → ami*), de lehet birtokos is (*a mi Istenünk*). A kiadott .1 szabály 298 ilyen tokent `bizonytalan`-ként változatlanul hagy, főként a nagybetűs *-nk* birtokost (*a mi Istenünk, Urunk*). A felhasználó vizsgálata után javasolt támpontok (a felhasználó még nem hagyta jóvá): birtokos, ha a *mi* után *-nk* birtokos főnév áll; vonatkozó, ha előtte vessző, *mindazt/mindent/semmit* vagy ige áll, illetve ha utána ige vagy melléknév áll. Kísérleti szabályként a generátorba került (`--ami-proba`), és külön fájlba fut (`adat/karoli_modern/helyesiras_ami_proba.tsv`); a kiadott réteg nem változott. Mérés: a bizonytalan 298-ról 7-re csökken (282 birtokos, 9 vonatkozó). Emellett a kísérlet 93 hibát talált a mai szabályban: a mai `NK` minta nem ismeri a *-nknak, -nkba, -nknál* végződést és az *atyánkfia-* összetételt, és a második szón álló birtokost sem (*a mi mindennapi kenyerünket → ami …*, Mt 6:11). Ezek visszavonnának egy-egy összevonást. A 112 soros mintából egy sor modern szövege változik (M079, 2Móz 9:4 → *ami*), a felhasználói példák irányában. A Hunspell nem dönt, mert nincs új szóalak, a *mi → ami* pedig `semleges`. Ismert maradék: kb. 11 token birtokos *való*-szerkezettel vagy melléknévi igenévvel (*a mi szeretett munkatársunknak*), ezek a mai rétegben is hibásak. *(forrás: `naplok/KAROLI_MODERN_meres.md` 4.6)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 382
+   },
+   {
+    "id": "DT309",
+    "feladat": "#96 KAROLI_MODERN (.1, a *nék-* család)",
+    "kerdes": "A modell-átnézés (napló 4.8.4) szerint a `neki` szabály csak a *néki → neki* cserét végzi (a DT128 példája), a *néked, nékem, nékik, nékünk, néktek* (3 919 token: *nékik* 1 146, *nékem* 892, *néktek* 802, *néked* 784, *nékünk* 295) változatlan marad; a minta 14 sorában áll. Ugyanaz az alaki régiség, mint a *néki* (a mai alak *neked, nekem, nekik, nekünk, nektek*). Része-e a .1-nek? *(forrás: `naplok/KAROLI_MODERN_meres.md` 4.8.4)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 383
+   },
+   {
+    "id": "DT310",
+    "feladat": "#96 KAROLI_MODERN (.2 ⛔, a modernizálás határa: felszólító és kötőhangzós múlt)",
+    "kerdes": "A .2 két, a DT-F96e-ben nem szereplő régies igealak-típust talált: (a) a felszólító E/2 *-jál/-jél, -zzál* (*cselekedjél, emlékezzél, bízzál*; 92 alak, 319 token) a mai *-j* (*cselekedj, emlékezz, bízz*) helyett; a hosszú alak a mai nyelvben választékos változat; (b) a régi, kötőhangzós múlt (*mondotta, megmondotta, szólott, állottak*; 89 alak, 658 token) a mai *mondta, megmondta, szólt, álltak* helyett. Mindkettő jelöltként áll a mintában, a modern szöveg nem változik. *(forrás: `naplok/KAROLI_MODERN_meres.md` 5.1; minta: `felszolito_E2`, `kotohang_mult` réteg)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 384
+   },
+   {
+    "id": "DT311",
+    "feladat": "#96 KAROLI_MODERN (.2 ⛔, a ritka jelöltek alkalmazása)",
+    "kerdes": "A ritka jegyes alak (N-F94h: a jegy ~6%-ban hibás) a .2-ben nem automatikus csere: a szabály és az LLM jelöltje a `jelolt` oszlopban áll. A szabály és a vak LLM-ellenőrzés 2 400 / 2 771 ritka alakon egyezik (86,6%, 5 771 token), a tő-őrön átmenve. Az eltérő 296 alak zömében jegyhiba, ott az LLM-nek van igaza; a régies gyanúban 426 alakra csak LLM-jelölt van. A vitatott 860 kérdést (a felhasználó kérésére) opus is ellenőrizte (napló 5.3b): a ritka vitatott alakokon 257 alakon a sonnettel, 61-en a szabállyal egyezik; ahol a szabállyal, ott a sonnet jellemzően a szókincsbe nyúlt (*általmenének → átmentek*). Bekerüljenek-e ezek a jelöltek a modern szövegbe? *(forrás: `naplok/KAROLI_MODERN_meres.md` 5.3, 5.3b, 5.5; minta: `jelolt_ritka`, `jelolt_gyanu` réteg)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 385
+   },
+   {
+    "id": "DT312",
+    "feladat": "#96 KAROLI_MODERN (.2, K4: a token-keret túllépése)",
+    "kerdes": "A DT303 ≈ 0,45 M-os keretet adott az LLM-es maradékra, a .0 API-mérése (alakonként 132,5 token) alapján. A .2 tényleges felhasználása az előfizetésből (Claude Code subagent, claude-sonnet-5-5, 5 köteg, 3 174 alak) 1,42 M token (a sonnet-futás: ebből cache-olvasás 0,82 M, új bemenet 0,50 M, kimenet 0,10 M; alakonként 447; cache-olvasás nélkül 0,60 M), és a felhasználó külön kérésére futott opus-ellenőrzés (860 vitatott alak) további 0,31 M (összesen 1,73 M; napló 5.4). Az ok: a subagent rendszerpromptja hívásonként kb. 57 ezer token. A futás a keret ellenőrzése előtt indult (az első köteg mérése után a többi párhuzamosan futott), ezért a keret túllépése már megtörtént: utólagos jóváhagyás kell, és a következő LLM-futásokra mérési egység és keret. *(forrás: `naplok/KAROLI_MODERN_meres.md` 5.4; `adat/karoli_modern/igealak_llm_hivasok.jsonl`)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 386
+   },
+   {
+    "id": "DT313",
+    "feladat": "#96 KAROLI_MODERN (.2 ⛔, a K1 küszöbe a .2-re)",
+    "kerdes": "A .2 mintáján (`adat/karoli_modern/igealak_minta.tsv`, 120 vers) a K1 küszöbe és mérési egysége a mérés előtt rögzítendő. A .1 DT-F96h-ja és a modell-átnézés delegálása a .2-re nem érvényes. *(forrás: `naplok/KAROLI_MODERN_meres.md` 5.6)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 387
+   },
+   {
+    "id": "DT314",
+    "feladat": "#96 KAROLI_MODERN (a Strong a modernizálás után)",
+    "kerdes": "A felhasználó: „Nem változzon a Strong.” A modernizált réteg Strongot nem tárol (DT305), a #22 párosítás az 1908-as szövegen marad, a token-kulcs változatlan; Strong-illesztés csak a kieső tokeneken (összevont „a”, segédigei *vala*) veszhetne el. Mérés: 5 572 + 38 Strongos kieső token, ebből 294-en a Strong csak a kieső tokenen áll (257 „a”, főleg H0834; 37 *vala*, H1961). *(forrás: `naplok/KAROLI_MODERN_meres.md` 5.2)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 388
+   },
+   {
+    "id": "DT315",
+    "feladat": "#96 KAROLI_MODERN (a j nélküli birtokos T/3 *-ök*)",
+    "kerdes": "A felhasználó (chat, 2026-10-25): „egyszer *nemök*, egyszer *neme*” (1Móz 1:21). A DT306 csak a *j*-s *-jok/-jök*-et cserélte; a *j* nélküli *-ök/-ok* a többes számmal egybeeshet, ezért maradt. Biztonságos részhalmaz: ahol a tő többese a korpuszban *-ek* (*szív → szívek*, ezért a *szívök* csak birtokos). *(forrás: `naplok/KAROLI_MODERN_meres.md` 7.)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 389
+   },
+   {
+    "id": "DT316",
+    "feladat": "#96 KAROLI_MODERN (a 3. ellenőri kör maradéka: N-F96d–g)",
+    "kerdes": "A 3. ellenőri kör a lefedettség hiányát mutatta ki: a modern szövegben változatlanul maradt régies igealakok (N-F96d), a *vala* előtti ragtalan jelen és régmúlt (N-F96e), az `ek_E1_T3` (N-F96f), és a K1 eljárása nem számolta a kihagyást (N-F96g). A felhasználó (chat, 2026-10-25: „1”) a szisztematikus újramérést választotta. *(forrás: `naplok/KAROLI_MODERN_meres.md` 9.–10.)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 390
+   },
+   {
+    "id": "DT317",
+    "feladat": "#96 KAROLI_MODERN (a lefedettség küszöbe)",
+    "kerdes": "A DT313 küszöbe csak a cserék pontosságát (≥ 98%) és a `valtozatlan` réteg kihagyását szabta meg; a lefedettségre (a modern szövegben maradt régies igealak aránya) nincs küszöb. A 3. kör után a 2. minta véletlen rétegén (100 vers) 89 csere, 0 hiba, 10 kihagyás: 7 igealak (lefedettség 92,7%), 3 *-ök* birtokos a DT315 hatókörén kívül; korpusz-szinten kb. 2 200 igealak-token (95%: kb. 900–4 500). A kihagyás osztályai: v-tövű *-ék* (*megnyugovék, körülvevék*), *-a/-e* E/3 alanyi elbeszélő múlt (*megfullada, felüle*), ható ige régies raggal (*késhetének, tűrhetém*), a három forrásból egyezés nélkül maradt jelölt (*hivék*, *dícsérvén*); a maradék-szken 9 újonnan felismert alakot (11 token) és 3 *vala*-párt talál. *(forrás: `naplok/KAROLI_MODERN_meres.md` 10.)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 391
+   },
+   {
+    "id": "DT318",
+    "feladat": "#96 KAROLI_MODERN (a 4. kör után: lezárás)",
+    "kerdes": "A 4. kör után a minta2 véletlen rétegén a cserék 93/93, a lefedettség 96,9% (3 igealak-kihagyás: *hivék*, *megfullada*, *dícsérvén*, mind szabály–opus eltérés vagy háromirányú eltérés; korpusz-szinten kb. 930 token, 95%: kb. 200–2 700); a 8 *-ök/-ok* kihagyás a DT315 hatókörén kívül. A véletlen réteg kihagyásai jelölték ki a 4. kör osztályait, ezért ez a szám felülbecsül. A 4. kör osztályaiban maradék jelölt nincs. *(forrás: `naplok/KAROLI_MODERN_meres.md` 11.)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 392
+   },
+   {
+    "id": "DT319",
+    "feladat": "#96 KAROLI_MODERN (a jelölt-kör után: lezárás)",
+    "kerdes": "A minta2 véletlen rétegén a cserék 95/95, a lefedettség 99,0% (1 igealak-kihagyás: *megfullada*); a 3 *-ök/-ok* a DT315 hatókörén kívül. A szám torzított: a minta kihagyásai jelölték ki a 4. kör osztályait. A korpuszban jelöltként maradt alakok (a szabály és az opus eltér, egyik sem tanúsított, vagy a tő-őr bukik) a `jelolt` oszlopban vannak. *(forrás: `naplok/KAROLI_MODERN_meres.md` 12.)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 393
+   },
+   {
+    "id": "DT320",
+    "feladat": "#96 KAROLI_MODERN (a tokenszintű LLM-kör kerete és szabálya)",
+    "kerdes": "A modern szövegben változatlanul maradt jelölt tokenek (a felszólító és a *-nd-* jövő nélkül): 357 token (205 alak), ahol legalább egy LLM-szavazat változtatna, de nincs egyezés (*vevén, gyűlölte, megszomorodék, tevének, gyűle, higyjetek*), és 13 token csak szabály-jelölttel (*űle, leűle, felgyűle*). A többi 2 747 jelölt tokenre minden LLM-szavazat „változatlan” (*tett, leszek, halál*): kimarad. A korábbi körök alakonként, az első előfordulás versrészletével kérdeztek; a szövegkörnyezetfüggő alak (alanyi/tárgyas, E/1/T/3, igenév/múlt) ezért nem dőlt el. *(forrás: `naplok/KAROLI_MODERN_meres.md` 13.)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 394
+   },
+   {
+    "id": "DT321",
+    "feladat": "#96 KAROLI_MODERN (az 5. kör után: lezárás)",
+    "kerdes": "A minta2 véletlen rétegén a cserék 96/96, igealak-kihagyás nincs; a 3 *-ök/-ok* a DT315 hatókörén kívül. A szám torzított: a minta kihagyásai jelölték ki a 4.–5. kör osztályait. A független ellenőr helyettesítő, szisztematikus mintáján (100 vers, `ELLENOR_F96.md` 4. kör 2. rész) a lefedettség igealakra 94,8% (92 csere, 0 hiba, 5 kihagyás: *egybegyűle, sétála, az méne, Helybenhagyák, lőnek*; korpuszbecslés kb. 1 560 token, Poisson-sáv kb. 500–3 600); a 14.4 „100%”-a a torzított minta2-re vonatkozik. A javítókör (napló 15.2, 15.3) az *az méne* és a *lőnek* kihagyását javította, új mérés nélkül. A korpuszban 106 jelölt token maradt (az 5. kör opus-válasza nem egyezik meglévő jelölttel, vagy a tő-őr bukik). *(forrás: `naplok/KAROLI_MODERN_meres.md` 14., 15.2)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 395
    }
   ],
   "javasolt": [],
@@ -3387,6 +3603,18 @@
      "✅"
     ],
     "sor": 365,
+    "oszlopszam": 10,
+    "fejlec_oszlopszam": 8
+   },
+   {
+    "id": "DT302",
+    "feladat": "#140 GLOSSZA_FORDITAS (a #138, #139 érintésével)",
+    "kerdes": "Mi legyen a szó-lap kiemelt magyar jelentés-sorának forrása? Ma a lefordított BDB-szócikk elejéből gépileg kivágott szöveg (DT-F76f), ennek híján az angol Strong-szótár szava; a kivágás a 7a adag 85 szócikkéből 13-nál hibás, és csak a kész BDB-szócikkekre ad bármit. A TBESH rövid glosszája mind a 8 718 héber Strongot fedi (62 920 karakter), és a „LORD”-hibát nem hordozza (H0430: „God”). *(forrás: a 2026-10-25-i chat; mérés: `scope=adat/forditasok.tsv 7a adag + konkordancia/TBESH.txt + konkordancia/Strong_szotar.tsv",
+    "allapot": "ellenorizendo",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 396,
     "oszlopszam": 10,
     "fejlec_oszlopszam": 8
    }

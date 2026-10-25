@@ -1,0 +1,1589 @@
+# GENERÁLT: eszkozok/karoli_modern/helyesiras.py (F96.1) — kézzel nem szerkeszthető; a javítás a szabályban vagy a kivételtáblában | forras=konkordancia/Karoli_1908.tsv (sha256:49335bbcc77d) + adat/szoto/karoli_szotari_alak.tsv (sha256:edba33e6d65a) + eszkozok/karoli_modern/helyesiras.py (sha256:dbfd948155d6) | tokenizálás: eszkozok/karoli_strong/tokenek.py tokenizal (a #22 hu_sorszam-a; Strong token-kulcson illeszthető, DT305) | a helyesírási lépcső (.1), az igealak (.2) nélkül; a puszta „a mi”: DT308 | Hunspell csak fejlesztési mérce (DT301, ítélete: helyesiras_hunspell.tsv), a tamasz=modell_ellenorizetlen a felhasználói mintán mérendő | scope=a szövegkörnyezet nélkül változó alakok (1587)
+alak	gyakorisag	alak_modern	szabaly	szabaly_forras	tamasz
+Aczmonig	1	Acmonig	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Aczmontól	1	Acmontól	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Alásülylyednek	1	Alásüllyednek	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Arczuk	1	Arcuk	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Atyjok	1	Atyjuk	jok	DT306	korpusz
+Atyjoknak	1	Atyjuknak	jok	DT306	korpusz
+Beczert	2	Becert	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Bizonynyal	7	Bizonnyal	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+Boczkát	1	Bockát	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Boczra	2	Bocra	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Boczrában	1	Bocrában	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Boczrából	3	Bocrából	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Boczrán	1	Bocrán	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Boczrára	1	Bocrára	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Boczécz	1	Bocéc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Béczert	1	Bécert	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Bölcscsé	1	Bölccsé	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czaanannimnál	1	Caanannimnál	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czafenát	1	Cafenát	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czalmonában	1	Calmonában	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czalmonából	1	Calmonából	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czarthan	1	Carthan	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czeboim	3	Ceboim	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czeboimnak	1	Ceboimnak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czedádnál	1	Cedádnál	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czefi	1	Cefi	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czefon	1	Cefon	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czefó	2	Cefó	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czefón	2	Cefón	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czemaraim	1	Cemaraim	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czemareust	2	Cemareust	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czererah	1	Cererah	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czeret	1	Ceret	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czezáreába	1	Cezáreába	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czibhón	6	Cibhón	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czibhónnak	2	Cibhónnak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czicz	1	Cic	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Cziddim	1	Ciddim	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czidonig	1	Cidonig	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czifjon	1	Cifjon	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czihor	1	Cihor	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Cziklág	1	Ciklág	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Cziklágban	1	Ciklágban	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Cziliczia	2	Cilicia	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czilicziában	1	Ciliciában	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czilicziából	2	Ciliciából	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czilicziát	1	Ciliciát	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czilla	3	Cilla	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czin	9	Cin	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czinig	1	Cinig	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czippor	2	Cippor	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czippora	1	Cippora	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czipporát	2	Cipporát	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czippór	2	Cippór	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czippórnak	3	Cippórnak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Cziprusba	2	Ciprusba	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Cziprusig	1	Ciprusig	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Cziprust	1	Ciprust	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Cziréne	1	Ciréne	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czirénebeli	1	Cirénebeli	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czirénebeliekének	1	Cirénebeliekének	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czirénei	1	Cirénei	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czirénius	1	Cirénius	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czobeusok	1	Cobeusok	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czofimból	1	Cofimból	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czohar	1	Cohar	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czohár	2	Cohár	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czoán	3	Coán	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czoár	2	Coár	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czoárig	2	Coárig	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czáfon	1	Cáfon	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czédrusfát	1	Cédrusfát	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czéfátban	1	Céfátban	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czéla	1	Céla	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czélofhád	7	Célofhád	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czélofhádnak	4	Célofhádnak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czér	1	Cér	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czézárea	2	Cézárea	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czézáreába	9	Cézáreába	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czézáreában	2	Cézáreában	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czézáreából	3	Cézáreából	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czídonból	1	Cídonból	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czídonig	1	Cídonig	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czídont	2	Cídont	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czírus	17	Círus	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czírushoz	1	Círushoz	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czírusnak	4	Círusnak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czóbeusok	1	Cóbeusok	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czóbeusokat	1	Cóbeusokat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czóbának	3	Cóbának	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czófár	4	Cófár	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czóhár	1	Cóhár	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czóra	3	Córa	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czórabeli	1	Córabeli	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czórah	1	Córah	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czórába	1	Córába	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czórából	3	Córából	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czóárba	1	Cóárba	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czóárban	1	Cóárban	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czóárból	1	Cóárból	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czóárnak	1	Cóárnak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czúf	1	Cúf	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czúr	2	Cúr	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Czúrt	2	Cúrt	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Dícséretet	2	Dicséretet	szotag	manual	korpusz
+Dícsérjelek	1	Dicsérjelek	szotag	manual	korpusz
+Dícsérjétek	5	Dicsérjétek	szotag	manual	korpusz
+Dícsérlek	2	Dicsérlek	szotag	manual	korpusz
+Dícsérve	1	Dicsérve	szotag	manual	modell_ellenorizetlen
+Eczbón	1	Ecbón	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Eczem	2	Ecem	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Eczemben	1	Ecemben	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Eczer	4	Ecer	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Eczernek	1	Ecernek	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Eczjon	2	Ecjon	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Elczáfán	1	Elcáfán	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Eliczáfán	1	Elicáfán	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Ereszsz	1	Eressz	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Ereszszétek	1	Eresszétek	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Ezüstjökből	1	Ezüstjükből	jok	DT306	modell_ellenorizetlen
+Ezüstjöket	1	Ezüstjüket	jok	DT306	modell_ellenorizetlen
+Fenicziába	1	Feniciába	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Fenicziáig	1	Feniciáig	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Galáczia	1	Galácia	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+Gondolatjok	1	Gondolatjuk	jok	DT306	modell_ellenorizetlen
+Haczar	8	Hacar	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Haczarmávethet	2	Hacarmávethet	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Haczár	1	Hacár	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Haczéróth	1	Hacéróth	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Harczi	1	Harci	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Harczkiáltás	1	Harckiáltás	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Harczold	1	Harcold	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Harczra	1	Harcra	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Harmincz	4	Harminc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Harminczkét	3	Harminckét	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Harminczöt	1	Harmincöt	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Haszszófereth	1	Hasszófereth	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Heczroniták	2	Hecroniták	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Heczrontól	2	Hecrontól	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Hozzájok	2	Hozzájuk	jok	DT306	korpusz
+Háczaczon	1	Hácacon	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Héczion	1	Hécion	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Hírűl	1	Hírül	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+Húcz	2	Húc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Iczhár	3	Ichár	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Jahcza	1	Jahca	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Jahczát	1	Jahcát	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Jaháczba	1	Jahácba	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Jahácznál	1	Jahácnál	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Jakhczeél	1	Jakhceél	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Jakhczeéliták	1	Jakhceéliták	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Jakhczeéltől	1	Jakhceéltől	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Jakhcziel	1	Jakhciel	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Jiczhár	4	Jichár	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Jáháczig	1	Jáhácig	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Jéczer	2	Jécer	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Jéczeriták	1	Jéceriták	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Jéczertől	1	Jécertől	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Kaczag	1	Kacag	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Kaczinnak	1	Kacinnak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Kappadócziában	1	Kappadóciában	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+Keczicz	1	Kecic	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Kecziha	1	Keciha	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Kheczrón	12	Khecrón	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Kháczort	1	Khácort	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Kibczaimot	1	Kibcaimot	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Kikaczagják	2	Kikacagják	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Kilencz	5	Kilenc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Kilenczedik	1	Kilencedik	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Kilenczednapon	1	Kilencednapon	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Királylyá	2	Királlyá	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Kivána	1	Kívána	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+Kivánatos	1	Kívánatos	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+Kivánatosabbak	1	Kívánatosabbak	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+Kivánatosb	1	Kívánatosb	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+Kivánja	1	Kívánja	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+Kivánjátok	1	Kívánjátok	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+Kivánkozik	1	Kívánkozik	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+Kivánsággal	1	Kívánsággal	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+Kiváná	1	Kíváná	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+Kivül	2	Kívül	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+Kresczens	1	Krescens	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Kétségnélkűl	1	Kétségnélkül	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+Kócz	2	Kóc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Körűlmetéltetvén	1	Körülmetéltetvén	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+Kősziklájok	1	Kősziklájuk	jok	DT306	modell_ellenorizetlen
+Laodiczeabeli	1	Laodiceabeli	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Laodiczeában	4	Laodiceában	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Laodiczeából	1	Laodiceából	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Lapálylyá	1	Lapállyá	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Leűle	1	Leüle	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+Luczius	2	Lucius	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Maczedóniába	3	Macedóniába	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+Maczedóniában	3	Macedóniában	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Maczedóniából	2	Macedóniából	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+Maczedónián	1	Macedónián	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+Maczedóniát	1	Macedóniát	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Maszszában	1	Masszában	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+Maszszáh	1	Masszáh	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Mibczár	2	Mibcár	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Miczpe	2	Micpe	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Miczpába	1	Micpába	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Miczpának	2	Micpának	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Miczpéig	1	Micpéig	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Miczrajimnak	1	Micrajimnak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Miczráim	4	Micráim	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Miczár	1	Micár	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Miképen	32	Miképpen	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+Molokjokra	1	Molokjukra	jok	DT306	modell_ellenorizetlen
+Mócza	1	Móca	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Neczib	1	Necib	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Niszszi	1	Nisszi	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Nyolcz	4	Nyolc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Nyolczadik	2	Nyolcadik	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Nyolczadnapon	2	Nyolcadnapon	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Nyolcznapos	1	Nyolcnapos	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Nyolczvan	1	Nyolcvan	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Néked	11	Neked	neki	DT128, DT309	korpusz
+Nékem	10	Nekem	neki	DT128, DT309	korpusz
+Néki	4	Neki	neki	DT128, DT309	korpusz
+Nékik	2	Nekik	neki	DT128, DT309	korpusz
+Néktek	7	Nektek	neki	DT128, DT309	korpusz
+Nékünk	3	Nekünk	neki	DT128, DT309	korpusz
+Orczád	1	Orcád	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Orczáját	1	Orcáját	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Orczám	1	Orcám	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Orczámat	1	Orcámat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Paczczécz	1	Paccéc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Paizsa	1	Pajzsa	szotag	manual	korpusz
+Paizsom	1	Pajzsom	szotag	manual	modell_ellenorizetlen
+Perecz	1	Perec	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Perecznek	1	Perecnek	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Ponczius	4	Poncius	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Prisczilla	3	Priscilla	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Prisczillára	1	Priscillára	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Pérecz	9	Pérec	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Péreczben	1	Pérecben	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Péreczből	1	Pérecből	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Péreczet	1	Pérecet	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Pérecziták	1	Péreciták	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Pérecznek	1	Pérecnek	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Pérecztől	1	Pérectől	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Reczin	3	Recin	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Reczinben	1	Recinben	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Reczinnek	1	Recinnek	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Reczés	1	Recés	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Reád	1	Rád	rea	DT304 b	korpusz
+Reája	4	Rája	rea	DT304 b	korpusz
+Reájok	2	Rájuk	rea+jok	DT304 b; DT306	korpusz
+Reám	2	Rám	rea	DT304 b	korpusz
+Reámtörtek	1	Rámtörtek	rea	DT304 b	modell_ellenorizetlen
+Roszszal	1	Rosszal	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+Rájok	4	Rájuk	jok	DT306	korpusz
+Réczin	2	Récin	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Réczint	2	Récint	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Sadduczeusok	1	Sadduceusok	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+Sahaczimát	1	Sahacimát	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Saréczert	1	Sarécert	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Setétben	1	Sötétben	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+Setétüljenek	1	Sötétüljenek	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+Szakaszszátok	1	Szakasszátok	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Szegénynyé	1	Szegénnyé	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+Szeleucziába	1	Szeleuciába	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Szájok	3	Szájuk	jok	DT306	modell_ellenorizetlen
+Százharmincz	1	Százharminc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Szűl	1	Szül	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+Szűlé	1	Szülé	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+Terjeszsze	1	Terjessze	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Thircza	4	Thirca	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Tirczának	1	Tircának	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Tizenkilencz	1	Tizenkilenc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Tizenkilenczedik	1	Tizenkilencedik	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Tizennyolcz	1	Tizennyolc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Tizennyolczadik	1	Tizennyolcadik	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Utczáin	1	Utcáin	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Vajjon	104	Vajon	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+Veszszen	2	Vesszen	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+Veszszenek	1	Vesszenek	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Válaszsz	3	Válassz	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Válaszszatok	5	Válasszatok	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Válaszszátok	2	Válasszátok	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+aczélból	2	acélból	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+aczéllá	1	acéllá	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+aczélt	1	acélt	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+aczéltükör	1	acéltükör	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+aczéltűzben	1	acéltűzben	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+adománynyal	1	adománnyal	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+akaratjok	1	akaratjuk	jok	DT306	modell_ellenorizetlen
+akaratjokból	2	akaratjukból	jok	DT306	modell_ellenorizetlen
+akaszszanak	1	akasszanak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+akaszszák	2	akasszák	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+akáczot	1	akácot	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+alacsonynyá	1	alacsonnyá	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+alakjokat	1	alakjukat	jok	DT306	modell_ellenorizetlen
+alapjokat	1	alapjukat	jok	DT306	modell_ellenorizetlen
+aluszsza	1	alussza	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+aluszszák	1	alusszák	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+amelylyel	1	amellyel	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+anyjok	3	anyjuk	jok	DT306	korpusz
+anyjoknak	2	anyjuknak	jok	DT306	modell_ellenorizetlen
+anyjokért	1	anyjukért	jok	DT306	modell_ellenorizetlen
+anynyira	1	annyira	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+anynyit	1	annyit	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+aranyláncz	3	aranylánc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+aranylánczczal	1	aranylánccal	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+aranylánczok	1	aranyláncok	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+aranylánczot	2	aranyláncot	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+aranynyal	53	arannyal	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+aranyperecz	1	aranyperec	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+aranypereczet	1	aranyperecet	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+aranypálczáját	1	aranypálcáját	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+araszszal	1	arasszal	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+arcz	1	arc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+arcza	3	arca	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+arczai	2	arcai	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+arczaik	3	arcaik	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+arczczal	39	arccal	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+arczod	1	arcod	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+arczodat	5	arcodat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+arczodnak	1	arcodnak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+arczodra	1	arcodra	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+arczom	1	arcom	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+arczomat	6	arcomat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+arczra	13	arcra	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+arczuk	4	arcuk	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+arczukat	3	arcukat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+arczuknak	1	arcuknak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+arczukra	2	arcukra	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+arczul	13	arcul	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+arczába	1	arcába	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+arczán	1	arcán	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+arczának	1	arcának	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+arczára	7	arcára	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+arczáról	1	arcáról	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+arczát	11	arcát	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+arczátlan	1	arcátlan	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+arczú	3	arcú	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+asszonynyal	16	asszonnyal	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+asszonynyá	4	asszonnyá	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+aszszonynak	1	asszonynak	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+aszálylyal	1	aszállyal	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+atyjok	31	atyjuk	jok	DT306	korpusz
+atyjokat	3	atyjukat	jok	DT306	korpusz
+atyjokhoz	4	atyjukhoz	jok	DT306	modell_ellenorizetlen
+atyjoknak	21	atyjuknak	jok	DT306	korpusz
+atyjoktól	1	atyjuktól	jok	DT306	modell_ellenorizetlen
+atyjokért	1	atyjukért	jok	DT306	modell_ellenorizetlen
+barlangjok	1	barlangjuk	jok	DT306	korpusz
+barlangjokból	1	barlangjukból	jok	DT306	modell_ellenorizetlen
+becsűlete	1	becsülete	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+beiszsza	1	beissza	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+belsejök	1	belsejük	jok	DT306	modell_ellenorizetlen
+belsejökbe	1	belsejükbe	jok	DT306	modell_ellenorizetlen
+beléjök	10	beléjük	jok	DT306	modell_ellenorizetlen
+beszédjökre	1	beszédjükre	jok	DT306	modell_ellenorizetlen
+beviszszük	1	bevisszük	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+bizonynyal	15	bizonnyal	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+boczrai	1	bocrai	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+boreczetet	1	borecetet	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+báránynyal	3	báránnyal	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+bátyjoknak	2	bátyjuknak	jok	DT306	modell_ellenorizetlen
+bérczek	1	bércek	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+bércztetőkön	1	bérctetőkön	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+bölcscsé	4	bölccsé	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+búzájok	1	búzájuk	jok	DT306	modell_ellenorizetlen
+családjok	3	családjuk	jok	DT306	korpusz
+cselekeszszük	5	cselekesszük	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+csontjokat	1	csontjukat	jok	DT306	modell_ellenorizetlen
+csábítójok	1	csábítójuk	jok	DT306	modell_ellenorizetlen
+czerimóniákat	1	cerimóniákat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czethal	3	cethal	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czethalak	1	cethalak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czifra	3	cifra	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czifrázatok	2	cifrázatok	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czikázása	1	cikázása	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czikázó	1	cikázó	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czilicziai	1	ciliciai	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czimbalmokkal	14	cimbalmokkal	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czimbalom	1	cimbalom	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czimbalommal	2	cimbalommal	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czimpájára	3	cimpájára	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czimpáját	5	cimpáját	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czinkosai	1	cinkosai	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czinóberrel	1	cinóberrel	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+cziprus	3	ciprus	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+cziprusaiból	1	ciprusaiból	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+cziprusait	1	ciprusait	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+cziprusfa	2	ciprusfa	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+cziprusfából	1	ciprusfából	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+cziprusfáit	1	ciprusfáit	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+cziprusfürt	1	ciprusfürt	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+cziprusi	2	ciprusi	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+cziprusiak	1	ciprusiak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+cziprusok	4	ciprusok	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+cziprust	1	ciprust	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czirkalommal	1	cirkalommal	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czirénei	3	cirénei	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czirógatnak	1	cirógatnak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czitera	3	citera	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+cziteráid	1	citeráid	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+cziterákat	1	citerákat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+cziterákkal	12	citerákkal	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+cziterán	1	citerán	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+cziterának	5	citerának	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+cziterát	1	citerát	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+cziterával	4	citerával	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+cziteráznak	1	citeráznak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czivakodtak	1	civakodtak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czivakodás	1	civakodás	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czivódnak	1	civódnak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czivódás	1	civódás	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czombjaidon	1	combjaidon	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czombodat	1	combodat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czombodra	1	combodra	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czombomat	1	combomat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czombot	2	combot	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czáfolj	2	cáfolj	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czáfolja	1	cáfolja	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czáfolá	1	cáfolá	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czédrus	9	cédrus	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czédrusai	3	cédrusai	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czédrusaid	1	cédrusaid	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czédrusaidat	1	cédrusaidat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czédrusait	4	cédrusait	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czédrusba	1	cédrusba	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czédrusdeszkákkal	2	cédrusdeszkákkal	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czédrusfa	3	cédrusfa	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czédrusfadeszkákkal	1	cédrusfadeszkákkal	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czédrusfagerendákkal	1	cédrusfagerendákkal	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czédrusfából	5	cédrusfából	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czédrusfához	1	cédrusfához	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czédrusfái	1	cédrusfái	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czédrusfájához	1	cédrusfájához	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czédrusfájától	1	cédrusfájától	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czédrusfák	3	cédrusfák	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czédrusfákat	11	cédrusfákat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czédrusfákon	1	cédrusfákon	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czédrusfákra	1	cédrusfákra	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czédrusfát	6	cédrusfát	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czédrusfával	4	cédrusfával	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czédrusgerenda	1	cédrusgerenda	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czédrusgerendából	1	cédrusgerendából	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czédrusgerendák	1	cédrusgerendák	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czédrusok	3	cédrusok	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czédrusokat	2	cédrusokat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czédrusoszlopon	1	cédrusoszlopon	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czédrussá	1	cédrussá	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czédrust	4	cédrust	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czélba	1	célba	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czélegyenest	1	célegyenest	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czéljából	1	céljából	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czéljára	1	céljára	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czélját	1	célját	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czélra	1	célra	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czéltáblául	1	céltáblául	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czéltáblává	1	céltáblává	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czélul	1	célul	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czérna	1	cérna	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czímere	1	címere	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czímet	2	címet	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+czóbai	1	cóbai	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+daczolt	1	dacolt	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+daczos	1	dacos	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+daczoskodott	1	dacoskodott	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+daczoskodtak	1	dacoskodtak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+daczára	1	dacára	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+dícsérem	1	dicsérem	szotag	manual	korpusz
+dícsérendő	2	dicsérendő	szotag	manual	modell_ellenorizetlen
+dícséret	2	dicséret	szotag	manual	korpusz
+dícséretben	2	dicséretben	szotag	manual	modell_ellenorizetlen
+dícsérete	2	dicsérete	szotag	manual	korpusz
+dícséreted	2	dicséreted	szotag	manual	korpusz
+dícséretedben	1	dicséretedben	szotag	manual	modell_ellenorizetlen
+dícséretei	1	dicséretei	szotag	manual	modell_ellenorizetlen
+dícséretekben	1	dicséretekben	szotag	manual	modell_ellenorizetlen
+dícséretekkel	1	dicséretekkel	szotag	manual	korpusz
+dícséretes	1	dicséretes	szotag	manual	korpusz
+dícséretet	9	dicséretet	szotag	manual	korpusz
+dícséretnek	1	dicséretnek	szotag	manual	modell_ellenorizetlen
+dícséretnél	1	dicséretnél	szotag	manual	modell_ellenorizetlen
+dícséretre	3	dicséretre	szotag	manual	korpusz
+dícséretreméltó	1	dicséretreméltó	szotag	manual	modell_ellenorizetlen
+dícséretére	4	dicséretére	szotag	manual	modell_ellenorizetlen
+dícséretével	1	dicséretével	szotag	manual	modell_ellenorizetlen
+dícséri	2	dicséri	szotag	manual	korpusz
+dícsérik	4	dicsérik	szotag	manual	korpusz
+dícsérjed	1	dicsérjed	szotag	manual	modell_ellenorizetlen
+dícsérjék	6	dicsérjék	szotag	manual	korpusz
+dícsérjétek	1	dicsérjétek	szotag	manual	korpusz
+dícsérjük	1	dicsérjük	szotag	manual	korpusz
+dícsérlek	2	dicsérlek	szotag	manual	korpusz
+dícsérnék	2	dicsérnék	szotag	manual	modell_ellenorizetlen
+dícsérték	2	dicsérték	szotag	manual	modell_ellenorizetlen
+dícsérve	1	dicsérve	szotag	manual	modell_ellenorizetlen
+dícsérvén	6	dicsérvén	szotag	manual	modell_ellenorizetlen
+dícséré	2	dicséré	szotag	manual	modell_ellenorizetlen
+dícséréd	1	dicséréd	szotag	manual	modell_ellenorizetlen
+dícsérék	1	dicsérék	szotag	manual	korpusz
+dícsérém	1	dicsérém	szotag	manual	korpusz
+dícsérésére	1	dicsérésére	szotag	manual	modell_ellenorizetlen
+dícsérő	4	dicsérő	szotag	manual	korpusz
+dícsőíttessék	1	dicsőíttessék	szotag	manual	korpusz
+dúczaikhoz	1	dúcaikhoz	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+eczet	2	ecet	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+eczetes	1	ecetes	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+eczetet	3	ecetet	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+eczettel	6	ecettel	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+edénynyel	1	edénnyel	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+edénynyé	1	edénnyé	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+egyedűl	5	egyedül	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+egygyel	4	eggyel	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+egygyé	10	eggyé	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+eledelűl	3	eledelül	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+elejökbe	1	elejükbe	jok	DT306	modell_ellenorizetlen
+elfogyaszszanak	1	elfogyasszanak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+elhurczolják	2	elhurcolják	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+elhurczolta	7	elhurcolta	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+elhurczoltatnak	1	elhurcoltatnak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+elhurczolták	1	elhurcolták	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+elméjök	2	elméjük	jok	DT306	modell_ellenorizetlen
+elméjökbe	2	elméjükbe	jok	DT306	modell_ellenorizetlen
+elméjökben	1	elméjükben	jok	DT306	modell_ellenorizetlen
+elméjöket	1	elméjüket	jok	DT306	modell_ellenorizetlen
+elméjöknek	1	elméjüknek	jok	DT306	modell_ellenorizetlen
+eloszszatok	1	elosszatok	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+elriaszsza	1	elriassza	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+elriaszszák	1	elriasszák	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+elszéleszsze	1	elszélessze	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+elsőszülöttjöket	1	elsőszülöttjüket	jok	DT306	modell_ellenorizetlen
+elsűle	1	elsüle	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+elsűlyeszté	2	elsülyeszté	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+elveszszek	1	elvesszek	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+elveszszen	4	elvesszen	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+elveszszenek	3	elvesszenek	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+elveszszetek	1	elvesszetek	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+elviszszük	2	elvisszük	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+elválaszsza	2	elválassza	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+elválaszszák	2	elválasszák	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+eléjök	18	eléjük	jok	DT306	korpusz
+előljárójok	5	előljárójuk	jok	DT306	korpusz
+emberorcza	1	emberorca	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+emlékeztetőűl	2	emlékeztetőül	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+emészsze	5	eméssze	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+emészszelek	1	emésszelek	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+emészszem	1	emésszem	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+emészszen	3	emésszen	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+emészszétek	1	emésszétek	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+enyészszenek	1	enyésszenek	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+erejök	6	erejük	jok	DT306	korpusz
+erejökben	1	erejükben	jok	DT306	modell_ellenorizetlen
+erejöket	1	erejüket	jok	DT306	modell_ellenorizetlen
+erejökkel	1	erejükkel	jok	DT306	modell_ellenorizetlen
+erejöknek	2	erejüknek	jok	DT306	modell_ellenorizetlen
+ereszsz	1	eressz	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+ereszszétek	1	eresszétek	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+erkölcscsel	1	erkölccsel	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+eszszük	2	esszük	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+ezüstjök	2	ezüstjük	jok	DT306	modell_ellenorizetlen
+ezüstjökből	1	ezüstjükből	jok	DT306	modell_ellenorizetlen
+ezüstjöket	1	ezüstjüket	jok	DT306	modell_ellenorizetlen
+fakaszsz	1	fakassz	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+fecscsent	1	feccsent	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+fejök	3	fejük	jok	DT306	korpusz
+fejöket	12	fejüket	jok	DT306	korpusz
+fejökhöz	3	fejükhöz	jok	DT306	modell_ellenorizetlen
+fejökre	9	fejükre	jok	DT306	modell_ellenorizetlen
+fejökön	5	fejükön	jok	DT306	korpusz
+fekélylyel	1	fekéllyel	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+felakaszszunk	1	felakasszunk	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+feleségűl	18	feleségül	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+felgyűle	2	felgyüle	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+felijeszsze	1	felijessze	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+felkentjökkel	1	felkentjükkel	jok	DT306	modell_ellenorizetlen
+feltámaszszam	2	feltámasszam	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+felveszszük	1	felvesszük	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+felviszszük	2	felvisszük	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+feléjök	1	feléjük	jok	DT306	modell_ellenorizetlen
+felügyelőjök	1	felügyelőjük	jok	DT306	modell_ellenorizetlen
+felűl	3	felül	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+fenicziai	1	feniciai	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+forgácscsá	1	forgáccsá	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+formájok	2	formájuk	jok	DT306	modell_ellenorizetlen
+formájokat	1	formájukat	jok	DT306	modell_ellenorizetlen
+foszszuk	1	fosszuk	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+foszszátok	2	fosszátok	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+fáraszsza	1	fárassza	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+fáraszszam	1	fárasszam	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+fénynyel	1	fénnyel	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+férjök	1	férjük	jok	DT306	modell_ellenorizetlen
+férjöket	1	férjüket	jok	DT306	korpusz
+férjöknek	4	férjüknek	jok	DT306	modell_ellenorizetlen
+földjök	3	földjük	jok	DT306	korpusz
+földjökbe	2	földjükbe	jok	DT306	modell_ellenorizetlen
+földjökből	2	földjükből	jok	DT306	korpusz
+földjöket	4	földjüket	jok	DT306	korpusz
+földjökkel	1	földjükkel	jok	DT306	modell_ellenorizetlen
+földjökre	4	földjükre	jok	DT306	korpusz
+földjökről	1	földjükről	jok	DT306	modell_ellenorizetlen
+földjökön	7	földjükön	jok	DT306	korpusz
+föléjök	6	föléjük	jok	DT306	modell_ellenorizetlen
+fügefájokat	1	fügefájukat	jok	DT306	modell_ellenorizetlen
+fűrészszel	2	fűrésszel	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+gabonájokat	1	gabonájukat	jok	DT306	modell_ellenorizetlen
+ganéjokat	2	ganéjukat	jok	DT306	modell_ellenorizetlen
+gerjeszszek	1	gerjesszek	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+gerjeszszenek	3	gerjesszenek	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+gerjeszszetek	1	gerjesszetek	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+gerlicze	1	gerlice	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+gerliczédnek	1	gerlicédnek	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+gerliczéhez	1	gerlicéhez	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+gerliczék	1	gerlicék	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+gerliczékből	1	gerlicékből	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+gerliczének	1	gerlicének	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+gerliczét	9	gerlicét	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+gondolatjok	1	gondolatjuk	jok	DT306	modell_ellenorizetlen
+gondolatjokat	2	gondolatjukat	jok	DT306	modell_ellenorizetlen
+gonoszszal	12	gonosszal	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+grádicscsal	5	grádiccsal	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+gyalázatjok	1	gyalázatjuk	jok	DT306	modell_ellenorizetlen
+gyalázatjoknak	1	gyalázatjuknak	jok	DT306	modell_ellenorizetlen
+gyalázatjokról	1	gyalázatjukról	jok	DT306	modell_ellenorizetlen
+gyerkőczöket	1	gyerkőcöket	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+gyolcscsal	1	gyolccsal	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+gyászszal	1	gyásszal	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+gyümölcscsel	2	gyümölccsel	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+gyűlekezetének	1	gyülekezetének	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+gönczölszekeret	2	göncölszekeret	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+gúnynyá	1	gúnnyá	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+gúzszsal	1	gúzzsal	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+hajokat	2	hajukat	jok	DT306	modell_ellenorizetlen
+halászszatok	1	halásszatok	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+halászszák	1	halásszák	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+hangjok	1	hangjuk	jok	DT306	modell_ellenorizetlen
+hangjokat	2	hangjukat	jok	DT306	modell_ellenorizetlen
+haragjok	2	haragjuk	jok	DT306	modell_ellenorizetlen
+haragjokban	1	haragjukban	jok	DT306	modell_ellenorizetlen
+harcz	14	harc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harcza	1	harca	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczainkat	1	harcainkat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczait	2	harcait	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczba	8	harcba	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczban	13	harcban	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczból	6	harcból	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczi	16	harci	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczmezőn	1	harcmezőn	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harcznak	3	harcnak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczok	1	harcok	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczokat	2	harcokat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczol	3	harcol	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczola	4	harcola	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczold	1	harcold	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczolj	3	harcolj	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczolja	1	harcolja	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczoljak	1	harcoljak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczoljanak	4	harcoljanak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczoljatok	6	harcoljatok	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczoljon	3	harcoljon	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczoljunk	1	harcoljunk	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczolnak	2	harcolnak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczolni	12	harcolni	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczolnotok	1	harcolnotok	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczolnának	1	harcolnának	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczolsz	2	harcolsz	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczolt	10	harcolt	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczoltak	2	harcoltak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczoltanak	1	harcoltanak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczoltok	2	harcoltok	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczolva	1	harcolva	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczolának	4	harcolának	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczoláshoz	1	harcoláshoz	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczoló	1	harcoló	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczolók	1	harcolók	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczolókat	1	harcolókat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczolókkal	1	harcolókkal	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczolóknak	1	harcolóknak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczon	3	harcon	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczos	5	harcos	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczosai	2	harcosai	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczosból	3	harcosból	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczosok	4	harcosok	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczosokat	1	harcosokat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczosoknak	1	harcosoknak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczossá	1	harcossá	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczot	6	harcot	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczra	27	harcra	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczról	1	harcról	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harcztérre	1	harctérre	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harcztól	2	harctól	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczuk	1	harcuk	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harczát	1	harcát	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harmatjokat	1	harmatjukat	jok	DT306	modell_ellenorizetlen
+harmincnyolcz	1	harmincnyolc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harmincz	94	harminc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harminczadik	1	harmincadik	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harminczan	4	harmincan	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harminczat	1	harmincat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harminczegy	3	harmincegy	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harminczegyedik	1	harmincegyedik	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harminczezer	4	harmincezer	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+harminczezeren	1	harmincezeren	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harminczezeret	1	harmincezeret	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harminczhat	3	harminchat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harminczhatezer	1	harminchatezer	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harminczhatodik	1	harminchatodik	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harminczhetedik	3	harminchetedik	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harminczheten	1	harmincheten	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harminczhárom	5	harminchárom	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+harminczháromig	1	harmincháromig	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harminczhét	5	harminchét	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harminczhétezer	1	harminchétezer	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harminczkettedik	2	harminckettedik	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harminczkilenczedik	3	harminckilencedik	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harminczkét	10	harminckét	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harminczkétezer	1	harminckétezer	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harmincznak	2	harmincnak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harmincznyolcz	1	harmincnyolc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harmincznyolczadik	2	harmincnyolcadik	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harmincznyolczezer	1	harmincnyolcezer	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harmincznégy	1	harmincnégy	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harminczöt	6	harmincöt	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+harminczötödik	1	harmincötödik	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+hatezernyolczszáz	1	hatezernyolcszáz	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+hatszázhuszonnyolcz	1	hatszázhuszonnyolc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+hatszázkilenczvenen	1	hatszázkilencvenen	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+hatszáznegyvennyolcz	1	hatszáznegyvennyolc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+hatvankilencz	1	hatvankilenc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+hatvannyolcz	1	hatvannyolc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+hazájokba	1	hazájukba	jok	DT306	modell_ellenorizetlen
+hegygyel	2	heggyel	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+hegygyé	3	heggyé	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+helylyel	1	hellyel	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+hijjok	1	hijjuk	jok	DT306	modell_ellenorizetlen
+hiszszük	3	hisszük	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+hitványnyal	1	hitvánnyal	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+homálylyá	1	homállyá	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+hoszsza	1	hossza	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+hoszszában	1	hosszában	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+hozzájok	66	hozzájuk	jok	DT306	korpusz
+hurczolnak	1	hurcolnak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+hurczolni	1	hurcolni	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+hurczolt	1	hurcolt	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+hurczolta	3	hurcolta	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+hurczoltak	1	hurcoltak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+hurczoltatott	2	hurcoltatott	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+hurczoltattak	1	hurcoltattak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+hurczoltatása	1	hurcoltatása	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+hurczolá	1	hurcolá	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+hurczolák	1	hurcolák	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+hurczolának	2	hurcolának	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+huszonkilencz	8	huszonkilenc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+huszonkétezerharmincznégyen	1	huszonkétezerharmincnégyen	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+huszonnyolcz	5	huszonnyolc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+huszonnyolczezerhatszázan	1	huszonnyolcezerhatszázan	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+hálójokat	1	hálójukat	jok	DT306	korpusz
+hárfájokkal	1	hárfájukkal	jok	DT306	modell_ellenorizetlen
+háromezerhatszázharmincz	1	háromezerhatszázharminc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+háromezerkilenczszázharmincz	1	háromezerkilencszázharminc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+háromszázhuszonnyolcz	1	háromszázhuszonnyolc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+háromszázkilenczven	2	háromszázkilencven	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+háromszázkilenczvenkettő	2	háromszázkilencvenkettő	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+hétezerháromszázharminczheten	1	hétezerháromszázharmincheten	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+hétezerháromszázharminczhét	1	hétezerháromszázharminchét	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+hétszázharminczhat	2	hétszázharminchat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+híjok	1	híjuk	jok	DT306	modell_ellenorizetlen
+hírűl	3	hírül	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+húszezernyolczszáz	1	húszezernyolcszáz	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+idejök	3	idejük	jok	DT306	modell_ellenorizetlen
+idejökben	4	idejükben	jok	DT306	modell_ellenorizetlen
+idejöket	1	idejüket	jok	DT306	modell_ellenorizetlen
+illatjokat	1	illatjukat	jok	DT306	modell_ellenorizetlen
+illeszszék	1	illesszék	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+iszsza	5	issza	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+iszszuk	2	isszuk	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+iszszák	10	isszák	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+iszszátok	2	isszátok	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+italáldozatjokat	8	italáldozatjukat	jok	DT306	modell_ellenorizetlen
+italáldozatjokkal	2	italáldozatjukkal	jok	DT306	modell_ellenorizetlen
+italáldozatjokon	3	italáldozatjukon	jok	DT306	modell_ellenorizetlen
+jobblapoczka	1	jobblapocka	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+jobblapoczkát	1	jobblapockát	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+jáczint	3	jácint	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+jáczintból	1	jácintból	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+jövevénynyé	1	jövevénnyé	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kaczagok	1	kacagok	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kalapácscsal	1	kalapáccsal	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kamarájokban	1	kamarájukban	jok	DT306	modell_ellenorizetlen
+kancza	1	kanca	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kanczellár	3	kancellár	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kanczellárnak	1	kancellárnak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kapujok	2	kapujuk	jok	DT306	modell_ellenorizetlen
+kapujokban	1	kapujukban	jok	DT306	modell_ellenorizetlen
+karjok	1	karjuk	jok	DT306	korpusz
+karjokat	1	karjukat	jok	DT306	modell_ellenorizetlen
+karjoknak	1	karjuknak	jok	DT306	modell_ellenorizetlen
+karlánczokat	1	karláncokat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+karpereczeket	4	karpereceket	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+karpereczet	2	karperecet	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+keczeléket	1	keceléket	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kedvencze	1	kedvence	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kedvenczeik	1	kedvenceik	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kedvenczével	1	kedvencével	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kegyetlenűl	2	kegyetlenül	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kelepcze	1	kelepce	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kemencze	14	kemence	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kemenczehamut	1	kemencehamut	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kemenczehamuval	1	kemencehamuval	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kemenczébe	10	kemencébe	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kemenczében	5	kemencében	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kemenczéből	2	kemencéből	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kemenczéidbe	1	kemencéidbe	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kemenczéje	1	kemencéje	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kemenczéjében	1	kemencéjében	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kemenczék	1	kemencék	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kemenczéknek	1	kemencéknek	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kemenczének	2	kemencének	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kemenczét	1	kemencét	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kemenczévé	1	kemencévé	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+keménynyé	2	keménnyé	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kenőcscsé	1	kenőccsé	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+ketreczbe	1	ketrecbe	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kettejök	1	kettejük	jok	DT306	modell_ellenorizetlen
+kettőjöknek	1	kettőjüknek	jok	DT306	modell_ellenorizetlen
+kicsinynyel	1	kicsinnyel	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kicsinynyé	2	kicsinnyé	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kiemészszék	1	kiemésszék	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kifoszszák	1	kifosszák	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kilencz	14	kilenc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kilencze	1	kilence	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kilenczedik	19	kilencedik	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kilenczediknek	1	kilencediknek	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kilenczedikén	2	kilencedikén	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kilenczedikének	1	kilencedikének	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kilenczen	1	kilencen	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kilenczre	1	kilencre	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kilenczszáz	9	kilencszáz	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kilenczszázhetvenhárom	2	kilencszázhetvenhárom	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kilenczszázhuszonnyolczan	1	kilencszázhuszonnyolcan	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kilenczszáznegyvenöt	1	kilencszáznegyvenöt	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kilenczszázötvenhatan	1	kilencszázötvenhatan	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kilenczven	4	kilencven	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kilenczvenhat	2	kilencvenhat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kilenczvenkilencz	3	kilencvenkilenc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kilenczvenkilenczen	1	kilencvenkilencen	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kilenczvenkilenczet	2	kilencvenkilencet	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kilenczvennyolcz	3	kilencvennyolc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kilenczvenöt	4	kilencvenöt	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+királylyal	22	királlyal	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+királylyá	75	királlyá	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kivonszsza	1	kivonssza	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kiván	13	kíván	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánatos	7	kívánatos	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánatosak	1	kívánatosak	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánatosb	1	kívánatosb	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánd	3	kívánd	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánhassak	1	kívánhassak	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánhat	1	kívánhat	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánj	2	kívánj	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánja	4	kívánja	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánják	6	kívánják	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánjátok	1	kívánjátok	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánkozik	4	kívánkozik	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánkoznál	1	kívánkoznál	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánkozol	1	kívánkozol	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánkozom	1	kívánkozom	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánkoztok	1	kívánkoztok	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánkozástokat	1	kívánkozástokat	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánnak	3	kívánnak	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánni	1	kívánni	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánok	2	kívánok	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánom	4	kívánom	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánsz	5	kívánsz	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánság	2	kívánság	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánsága	9	kívánsága	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánságaiban	1	kívánságaiban	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánságnak	1	kívánságnak	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánságod	3	kívánságod	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánságodat	1	kívánságodat	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánságokat	2	kívánságokat	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánságokban	1	kívánságokban	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánságom	1	kívánságom	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánságomat	3	kívánságomat	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánságomra	1	kívánságomra	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánságos	1	kívánságos	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánságtól	1	kívánságtól	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánságuk	1	kívánságuk	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánságukkal	1	kívánságukkal	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánságuknak	1	kívánságuknak	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánságának	4	kívánságának	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánságát	5	kívánságát	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánságával	1	kívánságával	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánt	4	kívánt	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánta	1	kívánta	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivántak	2	kívántak	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivántam	1	kívántam	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivántok	1	kívántok	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivántátok	1	kívántátok	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánva	1	kívánva	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivánása	2	kívánása	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivül	116	kívül	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+kivűl	4	kívül	kivetel	N-F96b (manual)	manual
+koczkára	5	kockára	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+koczkás	1	kockás	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+koczkásan	1	kockásan	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kormánypálczával	1	kormánypálcával	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kovászszal	4	kovásszal	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kácziaillatú	1	káciaillatú	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kálczédon	1	kálcédon	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+készszel	1	késszel	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kétezernyolczszáztizenkettő	1	kétezernyolcszáztizenkettő	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kétezernyolczszáztizennyolcz	1	kétezernyolcszáztizennyolc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kétszázharminczketten	1	kétszázharmincketten	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kétszáznyolczvanezer	1	kétszáznyolcvanezer	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kétszáznyolczvanezeren	1	kétszáznyolcvanezeren	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kétszáznyolczvannyolcz	1	kétszáznyolcvannyolc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kétszáznyolczvannégyen	1	kétszáznyolcvannégyen	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+kétszáztizennyolcz	1	kétszáztizennyolc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+könnyebbűl	1	könnyebbül	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+könyörűle	1	könyörüle	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+körtánczban	3	körtáncban	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+körtánczot	1	körtáncot	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+körtánczunk	1	körtáncunk	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+köröskörűl	12	köröskörül	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+körűl	13	körül	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+körűlmetéletlen	2	körülmetéletlen	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+körűlmetélkedetlen	1	körülmetélkedetlen	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+körűlmetélkedik	1	körülmetélkedik	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+körűlmetélkedjetek	1	körülmetélkedjetek	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+körűlmetélkedjék	1	körülmetélkedjék	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+körűlmetélkedék	1	körülmetélkedék	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+körűlmetélkedésért	1	körülmetélkedésért	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+körűlmetélted	1	körülmetélted	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+körűlmetéltessék	3	körülmetéltessék	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+körűlmetéltetének	1	körülmetéltetének	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+körűlmetélé	3	körülmetélé	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+körűlmetélék	1	körülmetélék	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+körűltök	1	körültök	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+körűlvevék	1	körülvevék	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+körűlállanak	1	körülállanak	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+körűlötte	1	körülötte	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+közéjök	6	közéjük	jok	DT306	korpusz
+közűl	60	közül	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+közűletek	3	közületek	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+külsejök	1	külsejük	jok	DT306	korpusz
+kősziklájok	1	kősziklájuk	jok	DT306	modell_ellenorizetlen
+lakhelyűl	1	lakhelyül	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+laodiczeaiak	1	laodiceaiak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+lapoczka	1	lapocka	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+lapoczkájáról	1	lapockájáról	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+lapoczkáját	1	lapockáját	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+lapoczkák	1	lapockák	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+lapoczkán	1	lapockán	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+lapoczkára	1	lapockára	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+lapoczkát	9	lapockát	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+lapáczra	1	lapácra	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+legelőjök	1	legelőjük	jok	DT306	korpusz
+leánynyal	1	leánnyal	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+leűle	4	leüle	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+licziai	1	liciai	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+láblánczokat	1	lábláncokat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+lábpánczél	1	lábpáncél	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+láncz	1	lánc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+lánczaira	1	láncaira	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+lánczczal	4	lánccal	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+lánczmívű	1	láncmívű	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+lánczok	2	láncok	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+lánczokat	6	láncokat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+lánczokba	4	láncokba	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+lánczokkal	4	láncokkal	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+lánczomat	1	láncomat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+lánczot	5	láncot	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+lánczra	2	láncra	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+láncztól	1	lánctól	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+maczedóniai	1	macedóniai	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+makacscsá	1	makaccsá	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+mannájok	1	mannájuk	jok	DT306	modell_ellenorizetlen
+maradékjokat	1	maradékjukat	jok	DT306	modell_ellenorizetlen
+marhájok	1	marhájuk	jok	DT306	modell_ellenorizetlen
+marhájokat	1	marhájukat	jok	DT306	modell_ellenorizetlen
+marhájokkal	1	marhájukkal	jok	DT306	modell_ellenorizetlen
+medencze	15	medence	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+medenczébe	1	medencébe	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+medenczék	1	medencék	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+medenczékbe	1	medencékbe	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+medenczéket	13	medencéket	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+medenczékre	1	medencékre	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+medenczét	3	medencét	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+megcselekeszszük	3	megcselekesszük	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+megemészsze	4	megeméssze	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+megemészszem	2	megemésszem	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+megemészszen	1	megemésszen	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+megfoszszanak	1	megfosszanak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+megharczolhatok	1	megharcolhatok	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+megharczolt	1	megharcolt	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+megharczoltam	1	megharcoltam	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+megharczolának	1	megharcolának	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+megijeszsze	1	megijessze	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+megiszszák	1	megisszák	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+megiszszátok	2	megisszátok	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+megkiván	1	megkíván	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+megkivántam	1	megkívántam	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+megréműle	1	megrémüle	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+megszentelőjök	4	megszentelőjük	jok	DT306	modell_ellenorizetlen
+megtartójok	1	megtartójuk	jok	DT306	modell_ellenorizetlen
+megteszszük	1	megtesszük	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+megváltójok	2	megváltójuk	jok	DT306	korpusz
+melléjök	4	melléjük	jok	DT306	korpusz
+melylyel	126	mellyel	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+menynyivel	2	mennyivel	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+meszsze	1	messze	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+meszszünnen	1	messzünnen	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+miképen	254	miképpen	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+mindenikőjöknek	1	mindenikőjüknek	jok	DT306	modell_ellenorizetlen
+mindkettejöket	1	mindkettejüket	jok	DT306	modell_ellenorizetlen
+mindkettőjöket	2	mindkettőjüket	jok	DT306	modell_ellenorizetlen
+mindkettőjöknek	1	mindkettőjüknek	jok	DT306	modell_ellenorizetlen
+mindnyájok	13	mindnyájuk	jok	DT306	korpusz
+mindnyájokat	12	mindnyájukat	jok	DT306	korpusz
+mindnyájokból	1	mindnyájukból	jok	DT306	modell_ellenorizetlen
+mindnyájoknak	4	mindnyájuknak	jok	DT306	modell_ellenorizetlen
+mindnyájokon	1	mindnyájukon	jok	DT306	korpusz
+mindnyájokra	1	mindnyájukra	jok	DT306	modell_ellenorizetlen
+mosdómedencze	2	mosdómedence	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+mosdómedenczébe	1	mosdómedencébe	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+mosdómedenczék	2	mosdómedencék	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+mosdómedenczéket	2	mosdómedencéket	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+mosdómedenczém	2	mosdómedencém	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+mosdómedenczén	1	mosdómedencén	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+mosdómedenczét	12	mosdómedencét	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+munkájok	1	munkájuk	jok	DT306	korpusz
+munkájokat	1	munkájukat	jok	DT306	modell_ellenorizetlen
+munkájokból	1	munkájukból	jok	DT306	modell_ellenorizetlen
+munkájokkal	1	munkájukkal	jok	DT306	modell_ellenorizetlen
+munkájokért	1	munkájukért	jok	DT306	modell_ellenorizetlen
+mércze	2	mérce	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+mérczébe	1	mércébe	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+mérczéje	2	mércéje	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+mérőpálcza	2	mérőpálca	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+mérőpálczával	5	mérőpálcával	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+mészkemenczén	1	mészkemencén	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+mészszel	2	mésszel	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+mészszé	2	mésszé	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+mögéjök	2	mögéjük	jok	DT306	modell_ellenorizetlen
+nagybátyjok	1	nagybátyjuk	jok	DT306	modell_ellenorizetlen
+nagygyal	1	naggyal	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+nagygyá	12	naggyá	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+napjok	2	napjuk	jok	DT306	modell_ellenorizetlen
+negyvenkilencz	1	negyvenkilenc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+negyvennyolcz	1	negyvennyolc	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+nevekedett	6	növekedett	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+nevekedik	17	növekedik	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+nevekedjék	2	növekedjék	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+nevekedjél	1	növekedjél	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+nevekedjünk	1	növekedjünk	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+nevekednek	4	növekednek	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+nevekedtek	5	növekedtek	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+nevekedtél	1	növekedtél	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+nevekedvén	1	növekedvén	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+nevekedének	4	növekedének	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+nyaklánczairól	1	nyakláncairól	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+nyaklánczokat	1	nyakláncokat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+nyaklánczát	1	nyakláncát	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+nyavalyájokban	1	nyavalyájukban	jok	DT306	modell_ellenorizetlen
+nyolcz	22	nyolc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+nyolczad	2	nyolcad	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+nyolczadik	28	nyolcadik	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+nyolczadiknak	1	nyolcadiknak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+nyolczadmagával	1	nyolcadmagával	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+nyolczadnapon	2	nyolcadnapon	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+nyolczadnappal	1	nyolcadnappal	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+nyolczat	1	nyolcat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+nyolczezer	2	nyolcezer	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+nyolczezeren	1	nyolcezeren	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+nyolczhúrú	1	nyolchúrú	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+nyolcznak	1	nyolcnak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+nyolcznapos	1	nyolcnapos	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+nyolczszáz	8	nyolcszáz	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+nyolczszázat	1	nyolcszázat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+nyolczszázezer	2	nyolcszázezer	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+nyolczszázhuszonketten	1	nyolcszázhuszonketten	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+nyolczszáznegyvenöt	1	nyolcszáznegyvenöt	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+nyolczvan	10	nyolcvan	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+nyolczvanan	3	nyolcvanan	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+nyolczvanat	1	nyolcvanat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+nyolczvanezer	2	nyolcvanezer	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+nyolczvanezeret	1	nyolcvanezeret	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+nyolczvanhat	1	nyolcvanhat	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+nyolczvanhárom	1	nyolcvanhárom	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+nyolczvanhét	1	nyolcvanhét	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+nyolczvanhétezeren	1	nyolcvanhétezeren	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+nyolczvankét	2	nyolcvankét	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+nyolczvannégy	1	nyolcvannégy	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+nyolczvanöt	2	nyolcvanöt	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+nyájok	1	nyájuk	jok	DT306	korpusz
+nyájokat	1	nyájukat	jok	DT306	modell_ellenorizetlen
+négyszázharmincz	1	négyszázharminc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+négyszázharminczöt	2	négyszázharmincöt	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+négyszázhatvannyolcz	1	négyszázhatvannyolc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+négyszáznyolczvanadik	1	négyszáznyolcvanadik	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+négyőjöknek	1	négyőjüknek	jok	DT306	modell_ellenorizetlen
+néked	773	neked	neki	DT128, DT309	korpusz
+nékem	882	nekem	neki	DT128, DT309	korpusz
+néki	1734	neki	neki	DT128, DT309	korpusz
+nékik	1144	nekik	neki	DT128, DT309	korpusz
+néktek	795	nektek	neki	DT128, DT309	korpusz
+nékünk	292	nekünk	neki	DT128, DT309	korpusz
+nélkűl	2	nélkül	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+nősténynyel	1	nősténnyel	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+olajfájokba	1	olajfájukba	jok	DT306	modell_ellenorizetlen
+oltójok	1	oltójuk	jok	DT306	modell_ellenorizetlen
+olylyá	2	ollyá	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+onikszszal	1	oniksszal	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+orcza	12	orca	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+orczapirulásra	1	orcapirulásra	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+orczád	18	orcád	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+orczádat	33	orcádat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+orczádnak	3	orcádnak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+orczádra	1	orcádra	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+orczádtól	1	orcádtól	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+orczái	3	orcái	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+orczáid	1	orcáid	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+orczáik	6	orcáik	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+orczáinkat	1	orcáinkat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+orczáit	2	orcáit	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+orczáitokat	1	orcáitokat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+orczáitokba	1	orcáitokba	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+orczája	32	orcája	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+orczájok	4	orcájuk	karakter+jok	manual (helyesírás-történet; #94: manual); DT306	modell_ellenorizetlen
+orczájokat	3	orcájukat	karakter+jok	manual (helyesírás-történet; #94: manual); DT306	modell_ellenorizetlen
+orczájokkal	1	orcájukkal	karakter+jok	manual (helyesírás-történet; #94: manual); DT306	modell_ellenorizetlen
+orczájokra	2	orcájukra	karakter+jok	manual (helyesírás-történet; #94: manual); DT306	modell_ellenorizetlen
+orczájoktól	1	orcájuktól	karakter+jok	manual (helyesírás-történet; #94: manual); DT306	modell_ellenorizetlen
+orczájukat	2	orcájukat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+orczájában	1	orcájában	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+orczájából	1	orcájából	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+orczájának	10	orcájának	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+orczájára	7	orcájára	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+orczáját	47	orcáját	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+orczájától	1	orcájától	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+orczájával	1	orcájával	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+orczájú	2	orcájú	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+orczák	1	orcák	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+orczám	11	orcám	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+orczámat	23	orcámat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+orczámmal	3	orcámmal	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+orczámra	8	orcámra	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+orczán	1	orcán	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+orczának	1	orcának	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+orczánk	3	orcánk	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+orczánkat	1	orcánkat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+orczáról	1	orcáról	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+orczát	2	orcát	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+orczátok	4	orcátok	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+orczátokat	2	orcátokat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+orczával	1	orcával	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+oroszlánorcza	1	oroszlánorca	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+orrpereczeket	1	orrpereceket	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+orrpereczet	1	orrperecet	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+oszsza	1	ossza	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+oszszad	2	osszad	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+oszszanak	1	osszanak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+oszszák	1	osszák	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+oszszátok	3	osszátok	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+paizs	8	pajzs	szotag	manual	modell_ellenorizetlen
+paizsa	5	pajzsa	szotag	manual	korpusz
+paizsai	1	pajzsai	szotag	manual	korpusz
+paizsaikat	1	pajzsaikat	szotag	manual	modell_ellenorizetlen
+paizsod	1	pajzsod	szotag	manual	modell_ellenorizetlen
+paizsok	1	pajzsok	szotag	manual	korpusz
+paizsokat	10	pajzsokat	szotag	manual	modell_ellenorizetlen
+paizsom	6	pajzsom	szotag	manual	modell_ellenorizetlen
+paizsos	2	pajzsos	szotag	manual	modell_ellenorizetlen
+paizsosok	2	pajzsosok	szotag	manual	modell_ellenorizetlen
+paizsosokat	1	pajzsosokat	szotag	manual	modell_ellenorizetlen
+paizsra	4	pajzsra	szotag	manual	modell_ellenorizetlen
+paizst	18	pajzst	szotag	manual	modell_ellenorizetlen
+paizsuk	1	pajzsuk	szotag	manual	modell_ellenorizetlen
+paizsunk	4	pajzsunk	szotag	manual	modell_ellenorizetlen
+paizszsal	7	pajzzsal	kivetel	N-F96b (manual)	manual
+paizsát	4	pajzsát	szotag	manual	modell_ellenorizetlen
+palaczkjait	1	palackjait	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+palaczkocska	1	palackocska	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+palotájok	1	palotájuk	jok	DT306	modell_ellenorizetlen
+parancsolatjok	1	parancsolatjuk	jok	DT306	modell_ellenorizetlen
+pereczeket	2	pereceket	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+piaczain	2	piacain	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+piaczi	1	piaci	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+piaczokon	6	piacokon	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+piaczon	5	piacon	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+piaczra	2	piacra	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+piaczról	1	piacról	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+piaczán	5	piacán	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+piaczának	1	piacának	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+prédájok	1	prédájuk	jok	DT306	modell_ellenorizetlen
+próféczia	3	prófécia	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+prófécziájában	1	próféciájában	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+prófécziáját	1	próféciáját	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+prófécziát	1	próféciát	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+prófétájok	1	prófétájuk	jok	DT306	modell_ellenorizetlen
+pálcza	12	pálca	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+pálczádat	3	pálcádat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+pálczáinak	1	pálcáinak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+pálczáitok	1	pálcáitok	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+pálczája	11	pálcája	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+pálczájának	1	pálcájának	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+pálczáját	5	pálcáját	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+pálczákat	2	pálcákat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+pálczámat	4	pálcámat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+pálczámmal	1	pálcámmal	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+pálczán	1	pálcán	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+pálczányi	5	pálcányi	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+pálczányira	4	pálcányira	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+pálczát	6	pálcát	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+pálczával	4	pálcával	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+pályájokra	1	pályájukra	jok	DT306	modell_ellenorizetlen
+pánczél	5	páncél	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+pánczélba	2	páncélba	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+pánczéljába	1	páncéljába	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+pánczélnak	1	páncélnak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+pánczélokat	4	páncélokat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+pánczélt	1	páncélt	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+párducz	5	párduc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+párduczhoz	1	párduchoz	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+párduczoknak	1	párducoknak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+párduczoknál	1	párducoknál	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+pőrölylyel	1	pőröllyel	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+ragadománynyal	3	ragadománnyal	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+ragadománynyá	2	ragadománnyá	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+rakonczátlan	1	rakoncátlan	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+rekeszsze	8	rekessze	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+rendjök	2	rendjük	jok	DT306	modell_ellenorizetlen
+reá	237	rá	rea	DT304 b	korpusz
+reáadá	1	ráadá	rea	DT304 b	modell_ellenorizetlen
+reáborult	1	ráborult	rea	DT304 b	korpusz
+reábízott	1	rábízott	rea	DT304 b	modell_ellenorizetlen
+reád	89	rád	rea	DT304 b	korpusz
+reáesik	1	ráesik	rea	DT304 b	modell_ellenorizetlen
+reája	2	rája	rea	DT304 b	korpusz
+reájok	88	rájuk	rea+jok	DT304 b; DT306	korpusz
+reájuk	4	rájuk	rea	DT304 b	korpusz
+reáköltesz	1	ráköltesz	rea	DT304 b	modell_ellenorizetlen
+reáköté	1	ráköté	rea	DT304 b	modell_ellenorizetlen
+reám	109	rám	rea	DT304 b	korpusz
+reánk	47	ránk	rea	DT304 b	korpusz
+reátok	61	rátok	rea	DT304 b	korpusz
+reátámadának	1	rátámadának	rea	DT304 b	modell_ellenorizetlen
+reátör	2	rátör	rea	DT304 b	korpusz
+reátört	1	rátört	rea	DT304 b	korpusz
+reávalókkal	1	rávalókkal	rea	DT304 b	modell_ellenorizetlen
+reávetvén	1	rávetvén	rea	DT304 b	modell_ellenorizetlen
+reáveté	1	ráveté	rea	DT304 b	korpusz
+reávontam	1	rávontam	rea	DT304 b	modell_ellenorizetlen
+roszszal	5	rosszal	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+ruhájokat	3	ruhájukat	jok	DT306	korpusz
+rájok	60	rájuk	jok	DT306	korpusz
+rézmedenczét	1	rézmedencét	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+rézpaizs	1	rézpajzs	szotag	manual	modell_ellenorizetlen
+rézpaizsokat	2	rézpajzsokat	szotag	manual	modell_ellenorizetlen
+sadduczeusok	11	sadduceusok	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+sadduczeusokat	1	sadduceusokat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+sarczoljatok	1	sarcoljatok	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+sarczoltatta	1	sarcoltatta	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+sarczoltatói	2	sarcoltatói	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+sarczoltatóinak	1	sarcoltatóinak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+sarczoltatók	1	sarcoltatók	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+sarczolástokat	1	sarcolástokat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+sarczoló	2	sarcoló	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+sarjaszszon	1	sarjasszon	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+segítségűl	4	segítségül	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+semmijök	4	semmijük	jok	DT306	modell_ellenorizetlen
+seprejökön	1	seprejükön	jok	DT306	modell_ellenorizetlen
+setét	4	sötét	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+setétben	5	sötétben	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+setétedik	1	sötétedik	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+setétet	1	sötétet	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+setétség	15	sötétség	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+setétségben	9	sötétségben	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+setétségből	3	sötétségből	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+setétsége	1	sötétsége	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+setétséget	3	sötétséget	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+setétséggel	1	sötétséggel	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+setétségnek	4	sötétségnek	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+setétségnél	1	sötétségnél	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+setétségtől	3	sötétségtől	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+skárlátczikkeket	1	skárlátcikkeket	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+sorrendjöket	1	sorrendjüket	jok	DT306	modell_ellenorizetlen
+strucz	3	strucc	kivetel	N-F96b (manual)	manual
+struczmadarak	2	struccmadarak	kivetel	N-F96b (manual)	manual
+struczmadár	1	struccmadár	kivetel	N-F96b (manual)	manual
+struczmadárnak	1	struccmadárnak	kivetel	N-F96b (manual)	manual
+struczok	3	struccok	kivetel	N-F96b (manual)	manual
+sudarczédrussal	1	sudarcédrussal	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+szabadítójokról	1	szabadítójukról	jok	DT306	modell_ellenorizetlen
+szakaszsza	3	szakassza	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+szakaszszatok	1	szakasszatok	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+szakaszszon	1	szakasszon	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+szakaszszuk	1	szakasszuk	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+szegénynyé	3	szegénnyé	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+szekerczékkel	1	szekercékkel	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+szelencze	1	szelence	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+szelenczéje	1	szelencéje	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+szelenczét	1	szelencét	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+személylyel	1	személlyel	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+szentenczia	1	szentencia	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+szenynyé	1	szennyé	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+szerencséjök	1	szerencséjük	jok	DT306	modell_ellenorizetlen
+szigonynyal	2	szigonnyal	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+sziklájok	1	sziklájuk	jok	DT306	modell_ellenorizetlen
+szolgálatjok	1	szolgálatjuk	jok	DT306	modell_ellenorizetlen
+szolgálatjokban	2	szolgálatjukban	jok	DT306	korpusz
+szolgálatjokhoz	2	szolgálatjukhoz	jok	DT306	modell_ellenorizetlen
+szolgálatjokra	1	szolgálatjukra	jok	DT306	modell_ellenorizetlen
+szolgálatjoktól	1	szolgálatjuktól	jok	DT306	modell_ellenorizetlen
+szolgálatjokért	1	szolgálatjukért	jok	DT306	modell_ellenorizetlen
+szunynyadás	1	szunnyadás	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+szájok	3	szájuk	jok	DT306	modell_ellenorizetlen
+szájokat	8	szájukat	jok	DT306	korpusz
+szájokba	2	szájukba	jok	DT306	modell_ellenorizetlen
+szájokban	6	szájukban	jok	DT306	korpusz
+szájokból	3	szájukból	jok	DT306	korpusz
+szájokhoz	2	szájukhoz	jok	DT306	modell_ellenorizetlen
+szájokkal	3	szájukkal	jok	DT306	korpusz
+szájokra	1	szájukra	jok	DT306	korpusz
+szájoktól	2	szájuktól	jok	DT306	modell_ellenorizetlen
+szántóföldjöknek	1	szántóföldjüknek	jok	DT306	modell_ellenorizetlen
+százharminczan	1	százharmincan	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+százharminczkilencz	1	százharminckilenc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+százharmincznyolcz	1	százharmincnyolc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+százhuszonnyolcz	3	százhuszonnyolc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+százhuszonnyolczan	1	százhuszonnyolcan	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+száznegyvennyolcz	1	száznegyvennyolc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+száznyolczvan	1	száznyolcvan	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+száznyolczvanezer	2	száznyolcvanezer	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+száznyolczvanezeren	1	száznyolcvanezeren	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+száznyolczvannyolcz	1	száznyolcvannyolc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+száznyolczvanötezeret	2	száznyolcvanötezeret	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+színaranynyal	1	színarannyal	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+szóharczokban	1	szóharcokban	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+szövetségűl	3	szövetségül	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+szőlőjök	1	szőlőjük	jok	DT306	modell_ellenorizetlen
+szűl	11	szül	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+szűle	33	szüle	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+szűletek	1	születek	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+szűli	1	szüli	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+szűljek	1	szüljek	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+szűljenek	2	szüljenek	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+szűljetek	1	szüljetek	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+szűljön	1	szüljön	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+szűlne	1	szülne	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+szűlnek	2	szülnek	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+szűlni	1	szülni	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+szűlsz	3	szülsz	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+szűlt	19	szült	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+szűlte	4	szülte	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+szűltek	1	szültek	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+szűltelek	2	szültelek	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+szűltem	5	szültem	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+szűltél	2	szültél	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+szűltünk	1	szültünk	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+szűlé	17	szülé	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+szűlének	2	szülének	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+szűlésben	1	szülésben	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+szűlése	2	szülése	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+szűléshez	1	szüléshez	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+szűlést	1	szülést	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+szűléstől	2	szüléstől	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+szűlésének	1	szülésének	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+szűlök	1	szülök	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+szűlő	6	szülő	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+szűlőnek	1	szülőnek	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+szűlőszékre	1	szülőszékre	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+szűlőtök	1	szülőtök	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+sáncza	1	sánca	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+sánczait	1	sáncait	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+sánczok	1	sáncok	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+sánczot	6	sáncot	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+sárkánynyal	1	sárkánnyal	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+sírjokba	1	sírjukba	jok	DT306	modell_ellenorizetlen
+sóbálványnyá	1	sóbálvánnyá	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+sörénynyel	1	sörénnyel	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+sülylyel	1	süllyel	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+sütőjök	1	sütőjük	jok	DT306	modell_ellenorizetlen
+tanácscsal	2	tanáccsal	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+temjénezőjöket	1	temjénezőjüket	jok	DT306	modell_ellenorizetlen
+terjeszszed	1	terjesszed	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+terjeszszék	2	terjesszék	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+teszszük	1	tesszük	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+tikkaszsza	1	tikkassza	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tisztjökbe	1	tisztjükbe	jok	DT306	modell_ellenorizetlen
+tizenegygyel	1	tizeneggyel	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tizenkilencz	1	tizenkilenc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tizenkilenczedik	3	tizenkilencedik	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tizenkilenczen	1	tizenkilencen	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tizennyolcz	11	tizennyolc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tizennyolczadik	10	tizennyolcadik	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tizennyolczan	1	tizennyolcan	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tizennyolczezer	3	tizennyolcezer	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+tizennyolczezeret	2	tizennyolcezeret	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tornácz	11	tornác	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tornácza	11	tornáca	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tornáczai	2	tornácai	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tornáczaiba	2	tornácaiba	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tornáczaiban	2	tornácaiban	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tornáczaidban	2	tornácaidban	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tornáczba	1	tornácba	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tornáczban	2	tornácban	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tornácznak	2	tornácnak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tornáczok	1	tornácok	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tornáczokon	1	tornácokon	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tornáczot	3	tornácot	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tornáczra	3	tornácra	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tornáczába	2	tornácába	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tornáczában	5	tornácában	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tornáczának	8	tornácának	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tornáczát	6	tornácát	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tudománynyal	8	tudománnyal	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+támaszsz	2	támassz	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+támaszszak	2	támasszak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+támaszszon	2	támasszon	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+támaszszunk	2	támasszunk	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tánczczal	2	tánccal	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tánczol	3	táncol	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tánczola	2	táncola	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tánczoljanak	1	táncoljanak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tánczolnak	1	táncolnak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tánczolni	1	táncolni	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tánczoltatok	2	táncoltatok	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tánczolva	2	táncolva	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tánczolának	1	táncolának	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tánczolást	1	táncolást	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tánczoló	1	táncoló	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tánczolók	1	táncolók	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tánczot	1	táncot	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+téglaégetőkemenczébe	1	téglaégetőkemencébe	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tömlöcz	14	tömlöc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tömlöczbe	30	tömlöcbe	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tömlöczbeli	2	tömlöcbeli	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tömlöczben	9	tömlöcben	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tömlöczből	6	tömlöcből	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tömlöczházba	1	tömlöcházba	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tömlöcznek	2	tömlöcnek	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tömlöczre	1	tömlöcre	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tömlöcztartó	4	tömlöctartó	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tömlöcztartónak	2	tömlöctartónak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tömlöczévé	2	tömlöcévé	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tömlöczökbe	1	tömlöcökbe	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tömlöczöt	2	tömlöcöt	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+tömlöczötökben	1	tömlöcötökben	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+törvénynyé	2	törvénnyé	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+ujjokkal	1	ujjukkal	jok	DT306	modell_ellenorizetlen
+utcza	6	utca	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+utczafőkön	1	utcafőkön	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+utczába	1	utcába	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+utczában	2	utcában	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+utczádat	1	utcádat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+utczái	1	utcái	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+utczáiban	2	utcáiban	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+utczáin	16	utcáin	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+utczáinak	1	utcáinak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+utczáinkon	3	utcáinkon	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+utczáira	3	utcáira	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+utczáit	2	utcáit	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+utczája	1	utcája	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+utczájokon	1	utcájukon	karakter+jok	manual (helyesírás-történet; #94: manual); DT306	modell_ellenorizetlen
+utczájából	1	utcájából	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+utczáján	2	utcáján	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+utczájának	1	utcájának	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+utczájára	2	utcájára	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+utczájáról	1	utcájáról	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+utczák	7	utcák	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+utczákat	2	utcákat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+utczáknak	1	utcáknak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+utczákon	11	utcákon	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+utczákra	3	utcákra	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+utczákról	1	utcákról	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+utczán	16	utcán	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+utczának	1	utcának	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+utczára	3	utcára	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+vadászsz	1	vadássz	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+vadászszanak	1	vadásszanak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+vadászszon	1	vadásszon	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+vadászszák	1	vadásszák	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+vadászszátok	1	vadásszátok	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+vajjon	83	vajon	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+valamijök	2	valamijük	jok	DT306	modell_ellenorizetlen
+valólánczokban	1	valóláncokban	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+vaskemencze	1	vaskemence	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+vaskemenczéből	1	vaskemencéből	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+vaslánczczal	1	vaslánccal	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+veszsz	2	vessz	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+veszszeje	1	vesszeje	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+veszszejét	1	vesszejét	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+veszszejévé	1	vesszejévé	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+veszszek	1	vesszek	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+veszszen	6	vesszen	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+veszszenek	3	vesszenek	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+veszszetek	4	vesszetek	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+veszszük	1	vesszük	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+veszszünk	2	vesszünk	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+veszsződ	1	vessződ	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+veszszővel	1	vesszővel	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+viczkándozókká	1	vickándozókká	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+vinczellérei	1	vincellérei	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+vinczelléreitek	1	vincelléreitek	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+vinczellérjének	1	vincellérjének	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+vinczellérnek	1	vincellérnek	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+virágjok	1	virágjuk	jok	DT306	modell_ellenorizetlen
+viszszavonások	1	visszavonások	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+vonszszák	1	vonsszák	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+válaszsz	4	válassz	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+válaszsza	3	válassza	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+válaszszam	1	válasszam	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+válaszszanak	2	válasszanak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+válaszszatok	3	válasszatok	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+válaszszon	3	válasszon	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+válaszszunk	1	válasszunk	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+válaszszák	6	válasszák	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+védenczeid	1	védenceid	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+védősáncz	1	védősánc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+vígasztalójok	1	vígasztalójuk	jok	DT306	korpusz
+völgygyé	1	völggyé	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+zsengéjök	1	zsengéjük	jok	DT306	modell_ellenorizetlen
+zsinagógájok	1	zsinagógájuk	jok	DT306	modell_ellenorizetlen
+zsákmánynyal	2	zsákmánnyal	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+zsákmánynyá	2	zsákmánnyá	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+zárjok	2	zárjuk	jok	DT306	korpusz
+Ébecz	1	Ébec	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Éczjon	1	Écjon	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Úcz	2	Úc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+Útjok	1	Útjuk	jok	DT306	modell_ellenorizetlen
+ábrázatjok	2	ábrázatjuk	jok	DT306	modell_ellenorizetlen
+álarczot	1	álarcot	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+áldozatjok	4	áldozatjuk	jok	DT306	modell_ellenorizetlen
+áldozatjokat	2	áldozatjukat	jok	DT306	modell_ellenorizetlen
+áldozatjokra	1	áldozatjukra	jok	DT306	modell_ellenorizetlen
+állapotjokba	2	állapotjukba	jok	DT306	modell_ellenorizetlen
+állatjoknak	1	állatjuknak	jok	DT306	modell_ellenorizetlen
+áraszsza	1	árassza	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+árbóczfájok	1	árbócfájuk	karakter+jok	manual (helyesírás-történet; #94: manual); DT306	modell_ellenorizetlen
+árbóczfának	1	árbócfának	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+árbóczfát	1	árbócfát	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+élelműl	1	élelmül	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+ércz	13	érc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+érczajtókat	1	ércajtókat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+érczbástyává	2	ércbástyává	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+érczből	2	ércből	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+érczcsövek	1	érccsövek	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+érczczé	1	érccé	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+ércze	1	érce	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+érczed	1	érced	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+érczet	1	ércet	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+érczfazékban	1	ércfazékban	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+érczhez	2	érchez	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+érczként	1	ércként	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+érczkígyót	1	érckígyót	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+érczkörmei	1	érckörmei	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+érczmíves	1	ércmíves	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+ércznek	2	ércnek	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+érczoltár	1	ércoltár	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+érczzárakkal	1	érczárakkal	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+érczíjat	1	ércíjat	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+érczív	1	ércív	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+ételáldozatjok	1	ételáldozatjuk	jok	DT306	modell_ellenorizetlen
+ételáldozatjokat	7	ételáldozatjukat	jok	DT306	modell_ellenorizetlen
+ételűl	1	ételül	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+íjászszá	1	íjásszá	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+öcscse	2	öccse	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+öcscsének	1	öccsének	karakter	manual (helyesírás-történet; #94: manual)	korpusz
+öcscsét	3	öccsét	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+öltözetűl	1	öltözetül	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+ömleszszenek	1	ömlesszenek	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+örökségedűl	1	örökségedül	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+örökségűl	3	örökségül	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+összegyűlekezének	1	összegyülekezének	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+ötszázharmincz	1	ötszázharminc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+ötvenkilencz	2	ötvenkilenc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+özvegygyel	1	özveggyel	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+özvegygyé	2	özveggyé	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+útjok	6	útjuk	jok	DT306	modell_ellenorizetlen
+útjokat	11	útjukat	jok	DT306	modell_ellenorizetlen
+útjokban	1	útjukban	jok	DT306	modell_ellenorizetlen
+útjoknak	1	útjuknak	jok	DT306	modell_ellenorizetlen
+útjokon	3	útjukon	jok	DT306	modell_ellenorizetlen
+útjokra	3	útjukra	jok	DT306	modell_ellenorizetlen
+útjokról	2	útjukról	jok	DT306	modell_ellenorizetlen
+ügygyel	1	üggyel	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+űl	5	ül	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
+űle	3	üle	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
