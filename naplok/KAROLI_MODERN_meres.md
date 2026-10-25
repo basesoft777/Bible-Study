@@ -637,3 +637,31 @@ A modern szövegben maradó régies igealak, tokenben: ritka jegyes **6 734** (e
 Mindhárom egyedi eset. Szabállyal csak az utolsó javítható általánosan (az *-ik* végű, elemezetlen alak igeként a *vala* előtt), ez a .3-ban vagy a felhasználó döntése szerint.
 
 **Megfigyelés a mintán kívül (nem javítva, a K1-be nem számít):** a minta nem automatikus rétegeiben maradt régies alakok (*összefoglalák, agyonverék, táncolának, megölém, elhozám, kirántá, felháboríták, rakád, mondám, általméne*) a többségi jelölt hiánya vagy a #94 jegyhiánya miatt maradtak. A lefedettségbe beleszámítanak.
+
+**A .2 lezárva** (felhasználó, chat, 2026-10-25: „Mehet” a K1 elfogadására): a K1 a modell-ellenőrzés alapján teljesül (313 / 316, 99,1%), a DT-F96k, l, m, n, o mind 🟢 és alkalmazva.
+
+## 6. F96.3 — a kiadott tábla
+
+`scope=a Károli 1908 minden verse és tokenje (31 158 vers, 599 367 token) + a #22 párosítás 61 könyvének Strongos magyar tokenjei | forras=konkordancia/Karoli_1908.tsv + adat/szoto/karoli_szotari_alak.tsv + adat/karoli_modern/helyesiras_tokenek.tsv + igealak_tokenek.tsv + igealak_llm.tsv + igealak_llm_opus.tsv + adat/karoli_strong/szavak_*.tsv; a teljes sha256 a táblák fejlécében | ts=2026-10-25` — `python eszkozok/karoli_modern/karoli_modern.py`; 0 token.
+
+**Kimenet** (SEMA 2.34):
+- `adat/karoli_modern/karoli_modern.tsv`: token-soronként a teljes szöveg (599 367 sor, 19,6 MB).
+- `adat/karoli_modern/karoli_modern_versek.tsv`: versenként a modern szöveg (31 158 sor, 4,6 MB).
+
+A brief .3 egy táblát írt le, „token-soronként, a vers-kulccsal és a modern vers-szöveggel együtt”. A versszöveg minden tokensorban ismétlődne (kb. 90 MB, a GitHub 100 MB-os fájlkorlátja közelében), ezért a tokensor és a versszöveg két táblába került, közös vers-kulccsal. A K4b (keresésre alkalmas, token-szintű tábla) így teljesül.
+
+**Ellenőrzések** (mind lefutott, eltérésnél a szkript megáll):
+
+| | eredmény |
+|---|---|
+| a .1 újraszámolása = `helyesiras_tokenek.tsv` | 33 323 / 33 323 sor egyezik |
+| a .2 újraszámolása = `igealak_tokenek.tsv` | 65 195 / 65 195 sor egyezik |
+| K2 (a modern versszöveg újratokenizálva = a nem kieső tokenek modern alakja; írásjel-váz) | minden versen átment |
+| K3 (versenként a tokenek száma és sorrendje = a `tokenizal` 1908-as kimenete) | minden versen átment |
+| **K3b** (DT-F96o: a #22 minden Strongos magyar tokenjének kulcsa a táblában, azonos 1908-as alakkal) | **418 633 / 418 633** (61 könyv); ebből kieső, a `kieso_gazda`-n át illeszthető: 5 572 összevont „a” és 38 segédigei *vala* |
+
+**Számok:** 48 121 token változik (.1 + .2, a kieső tokenek nélkül), 13 578 kiesik (11 128 összevont „a”, 2 450 segédigei *vala*), és 21 255 vers változik. A Strong egy tokenen sem vész el és nem változik: a réteg Strongot nem tárol, a kulcs változatlan.
+
+**Licenc:** `adat/licencek.tsv` `karoli_modern` sor. A projekt saját adata, a Károli 1908 közkincs. Strong-oszlop nincs, ezért TAHOT/TAGNT-összetevő sincs; a Hunspellből alak nem került be (DT301).
+
+**Nyitott, a #96-on kívül:** N-F96c (egyedi régi írásmódok: *Pezsdűljenek, eledelűl, nékie*), N-F96a / #137 (a `pardes.db`-be töltés és a kereső; a DT-F96o kötelező pontja). A K5-ből hátravan a CI és a független ellenőr.

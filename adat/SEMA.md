@@ -1417,6 +1417,31 @@ másik a `cel_id`/`cel_igehely` egyik eleme.
 
 ---
 
+### 2.34 `adat/karoli_modern/` — a modernizált Károli-szövegréteg (F96, FELADATOK #96, DT128, DT-F96f, DT-F96o)
+
+A Károli 1908 modernizált rétege: helyesírás és igealak, a szókincs, a szórend, az írásjel és a betoldás-jelölés változatlan (DT128). **Generált, kézzel nem szerkeszthető**; a javítás a szabályban (`eszkozok/karoli_modern/helyesiras.py`, `igealak.py`, `igeragozas.py`) vagy a kivételtáblában (`KEZI`, `GYANU_KEZI`, `KIVETEL_LEMMA`) történik. Az 1908-as szöveg mellett áll, nem helyette. Olvasás `split('\t')`, írás `'\t'.join()` (a `csv` modul tilos). Az első sor `# GENERÁLT: …` (a bemenetek teljes sha256-ja, a mérés hivatkozása), az első nem-`#` sor a fejléc. A tokenizálás az `eszkozok/karoli_strong/tokenek.py` `tokenizal` függvénye: a `sorszam` ugyanaz, amelyen a #22 párosítás (`adat/karoli_strong/szavak_*.tsv`, 2.20) `sorszam`-a áll. **A réteg Strongot nem tárol és nem ellenőriz** (DT-F96f); a Strong token-kulcson (`igehely` + `sorszam`) illeszthető, és a modernizálástól nem változik (DT-F96o, K3b: a generátor igazolja, hogy a #22 minden Strongos magyar tokenjének kulcsa itt áll, azonos 1908-as alakkal). Mérés: `naplok/KAROLI_MODERN_meres.md` 4. (.1) és 5. (.2).
+
+**Kiadott táblák (F96.3, `eszkozok/karoli_modern/karoli_modern.py`):**
+
+`karoli_modern.tsv` — token-soronként a teljes Károli 1908 (599 367 token). Kulcs: `igehely` + `sorszam`.
+
+| Mező | Típus | Kötelező | Leírás |
+|---|---|---|---|
+| `igehely` | `IGEHELY` | ✔ | a `konkordancia/Karoli_1908.tsv` vers-kulcsa |
+| `sorszam` | egész | ✔ | a token sorszáma a versben (`tokenizal`, 1-től); a #22 `sorszam`-a |
+| `alak_1908` | szöveg | ✔ | az 1908-as token, ahogy a szövegben áll |
+| `alak_modern` | szöveg | | a modern alak; **üres, ha a token kiesik** |
+| `kieso` | zárt | | `osszevonva` (a különírt vonatkozó névmás „a”-ja: *a kik → akik*) \| `segedige` (a segédigei *vala*: *lebeg vala → lebegett*) \| üres |
+| `kieso_gazda` | egész | | a kieső tokennél a gazdaszó `sorszam`-a (az összevont „a”-é a következő, a segédigei *vala*-é az előző token); a kereső ide köti a kieső token Strongját (DT-F96o, #137) |
+| `szabaly` | szöveg | | a cserét adó szabály(ok) `+`-szal (`karakter`, `neki`, `szoto_94`, `rea`, `jok`, `nevmas:…`, `ami:…`, `igealak:<jegy>`, `gyanu_kezi`, `kotohang_mult`, `tobbseg:<források>`, `vala_letige`, `vala_segedige_…`, `jelen_mult_vala`, `lon`, `vagyon` …); a változatlan tokennél üres vagy a nem cserélő döntés (`mi_birtokos_marad`, `vagyon_fonev_marad`) |
+| `bizonytalan` | szöveg | | a heurisztikus döntés jele (`targyas_heur`, `ek_E1_T3`, `mult_korpuszban_nincs`, `nevelo_utan`, `vala_segedige`, `mi_birtokos_vagy_vonatkozo` …): a csere megtörtént vagy szándékosan elmaradt, de felhasználói ellenőrzés nélküli |
+
+`karoli_modern_versek.tsv` — versenként a modern szöveg (31 158 vers): `igehely`, `szoveg_modern` (a nem kieső tokenek modern alakja az 1908-as írásjel-vázban; a kieső token és az egy szóköze elmarad), `valtozott` (`igen` \| `nem`). A K2: a `szoveg_modern` újratokenizálva pontosan a vers nem kieső `alak_modern`-jeit adja, sorrendben.
+
+**Mérő- és melléktáblák (generált, nem a kiadott réteg):** `fedettseg_alakok.tsv` (F96.0, alakosztályok), `token_minta.tsv` + `token_minta_hivasok.jsonl` (F96.0/3, API-mérés), `helyesiras_alakok.tsv`, `helyesiras_tokenek.tsv`, `helyesiras_hunspell.tsv` (DT301: csak mérce), `helyesiras_ami_proba.tsv`, `helyesiras_ami_ellenorzes.tsv`, `helyesiras_minta.tsv` (.1), `igealak_alakok.tsv`, `igealak_tokenek.tsv`, `igealak_llm.tsv` + `igealak_llm_hivasok.jsonl` (sonnet), `igealak_llm_opus.tsv` + `igealak_llm_opus_hivasok.jsonl` (opus), `igealak_minta.tsv` (.2). Az LLM-táblák modell-kimenetek (`modell_ellenorizetlen`); a minták `ellenorzes`/`megjegyzes` oszlopa a felhasználói (vagy a felhasználó által elfogadott modell-) ellenőrzés, újragenerálásnál megmarad.
+
+---
+
 ## 3. Integritási szabályok
 
 Ezeket az `ellenoriz.py` (F4/commit-hook) kényszeríti ki. Amíg az nem készül el, kézi

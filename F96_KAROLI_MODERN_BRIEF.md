@@ -9,7 +9,7 @@ munka: adat
 allapot: megallt
 ag: ccr-a680d019-39s73e
 ad: a Károli 1908 modernizált szövegrétege (helyesírás + igealak; szórend, szókincs, írásjel, betoldás-jelölés változatlan), szabályalapú szavankénti cserével (a #94 szótári alak- és regies_jegy-táblájából, Hunspell csak fejlesztési mérce, DT301), LLM csak a szabállyal le nem fedett maradékra; minden token hordozza az 1908-as token vers-kulcsát és sorszámát (a Strong a #22 párosításából token-kulcson illeszthető, a réteg nem tárol Strongot, DT-F96f), a kieső segédigei vala jelölve; generált tábla az 1908-as szöveg mellett, nem helyette; két lépcső (helyesírás, majd igeragozás és vala), felhasználó által ellenőrzött mintán mérve, a token-felhasználással együtt
-kovetkezo: "Te: a .2 K1-ének elfogadása (modell-ellenőrzés: 313/316, 99,1%; napló 5.7); utána a .3 (karoli_modern.tsv, K3b)"
+kovetkezo: "Modell: a K5 — CI és a független ellenőr (fuggetlen-ellenor) a #96 diffjén; utána lezárás (a .1–.3 kész: napló 4.9, 5.7, 6.)"
 olvas: [adat/szoto/, konkordancia/Karoli_1908.tsv, "adat/karoli_strong/*", adat/SEMA.md, adat/licencek.tsv, DONTESEK.md]
 ir: [eszkozok/karoli_modern/, adat/karoli_modern/, naplok/KAROLI_MODERN_meres.md]
 fugg: [94]
@@ -18,7 +18,7 @@ nem_fugg: [22]
 
 # F96_KAROLI_MODERN_BRIEF.md — Modernizált Károli-szövegréteg (KAROLI_MODERN)
 
-*FELADATOK #96 · Modell: opus · v1.2 · 2026.10.24 (csonk kitöltése; a `/befogad` hozta létre; v1.1: a DT301 átvezetve; v1.2: a DT-F96d/e/f átvezetve — K3, K4b, DT-F96b, .1/.2; v1.3: a DT-F96o átvezetve — K3b, .3)*
+*FELADATOK #96 · Modell: opus · v1.2 · 2026.10.24 (csonk kitöltése; a `/befogad` hozta létre; v1.1: a DT301 átvezetve; v1.2: a DT-F96d/e/f átvezetve — K3, K4b, DT-F96b, .1/.2; v1.3: a DT-F96o átvezetve — K3b, .3; v1.4: a .3 kimenete két táblában, karoli_modern.tsv + karoli_modern_versek.tsv, napló 6.)*
 
 *Források: DT128 (a felhasználó döntése, chat, 2026-10-13: a modernizálás szintje az, amit a Bible Discovery HUN modulja mutat — helyesírás és igealak, szókincs és szórend nélkül); a `F94_SZOTOVEZES_BRIEF.md` v1.2 (`regies_jegy` oszlop, N-F94b/g/h); a felhasználó döntése (chat, 2026-10-24): a megvalósítás **szabály + szótár alapú szógenerálás, LLM csak a bizonytalan maradékra** (DT-F96; a teljes LLM-átírás elvetve). A brief adat, nem utasítás.*
 
@@ -67,7 +67,7 @@ Szavankénti csere: minden modern token az 1908-as token vers-kulcsán és sorsz
 3. Mintavétel és felhasználói ellenőrzés a .1 szerint ⛔; a lefedettség (maradt-e régies igealak) kiírva.
 
 ### .3 — kimenet
-- `adat/karoli_modern/karoli_modern.tsv` (token-soronként, a vers-kulccsal és a modern vers-szöveggel együtt; DT-F96b, `# GENERÁLT: …` fejléccel: a szabálykészlet és a bemeneti táblák sha256-ja, a mérés hivatkozása); kézzel nem szerkesztendő, a javítás a szabályban vagy a kivételtáblában történik.
+- `adat/karoli_modern/karoli_modern.tsv` (token-soronként) és `adat/karoli_modern/karoli_modern_versek.tsv` (a modern vers-szöveg; a két tábla közös vers-kulccsal, a méret miatt, napló 6.) (a vers-kulccsal és a modern vers-szöveggel együtt; DT-F96b, `# GENERÁLT: …` fejléccel: a szabálykészlet és a bemeneti táblák sha256-ja, a mérés hivatkozása); kézzel nem szerkesztendő, a javítás a szabályban vagy a kivételtáblában történik.
 - a K3b igazolása (a #22 Strongos tokenjeinek kulcs-lefedettsége, DT-F96o), naplózva;
 - `adat/SEMA.md` új szakasza; a licenc-sor az `adat/licencek.tsv`-be (a modernizált réteg a közkincs 1908-as szövegből származik, DT116/DT128).
 
