@@ -53,6 +53,11 @@ Tokenszintű döntés:
                     `vala_nem_elemezheto` vala is (létige → volt); a `jelolt` típus a DT-F96l opus-szavazata, ahol
                     az igealak_llm_opus.tsv nem szavazott. A .1 cseréje a .2 eredményén is (h1_atvisz: reáveté →
                     rávetette, nem reávetette)
+  jelölt-kör        (DT-F96s) ha a szabály-jelölt a korpuszban nem áll, az opus-alak igen, és a tő-őr átengedi:
+                    az opus-alak cserél (`…:opus_tanusitott`, `bizonytalan=szabaly_nem_tanusitott`; kizárva az
+                    -á/-é nem -a/-e végű, az E/1-környezetű -ék nem E/1 alakja és a -nd- jövő); a szavazás előtt a
+                    .1 cseréje a jelölteken is; a sonnet–opus T/3 alanyi–tárgyas pár a tagmondat szerint
+                    (`tobbseg:alanyi_targyas`)
 
 Önellenőrzés (K2): a modern versszöveg újratokenizálva pontosan a nem kieső tokenek modern alakjait
 adja, sorrendben; a nem-betű váz a kieső tokenek egy-egy szóközén kívül változatlan.
@@ -465,6 +470,16 @@ def targyrag(w):
     return False
 
 
+def alanyi_targyas_par(a, b):
+    """(alanyi, tárgyas), ha a két alak csak a T/3 alanyi és tárgyas ragban tér el (hittek / hitték, adtak /
+    adták); különben None."""
+    for x, y in ((a, b), (b, a)):
+        xl, yl = x.lower(), y.lower()
+        if xl[:-2] == yl[:-2] and len(xl) > 4 and (xl[-2:], yl[-2:]) in (('ek', 'ék'), ('ak', 'ák')):
+            return x, y
+    return None
+
+
 def h1_atvisz(r1, r2, uj):
     """A .1 cseréje (reá → rá, dí → di) a .2 eredményén is: ha a .2-alak az 1908-as alak .1 előtti részével kezdődik
     (a szavazat az 1908-as alakra jött: reáveté → reávetette), a .1 szerinti részre cseréljük (rávetette)."""
@@ -635,7 +650,11 @@ class Feldolgozo:
             return '', ''
         llm = nagy(alak_h, d['llm_alak'])
         o, reszlet, sor = self.a.oszt[alak]
-        return llm, 'ok' if to_or(llm, alak_h, sor, self.a, reszlet) else 'bukott'
+        ok = to_or(llm, alak_h, sor, self.a, reszlet)
+        if not ok and alak.lower() != alak_h.lower():
+            # DT-F96s: a .1-ben változott alakon (dícsérvén → dicsérvén) a tő-őr a .1 utáni alakon is mér
+            ok = to_or(llm, alak_h, None, self.a, '')
+        return llm, 'ok' if ok else 'bukott'
 
     def vers(self, igehely, szoveg):
         sorok_h, modern_h = helyesiras.vers_feldolgoz(igehely, szoveg, self.alakszotar, self.dont)
@@ -677,11 +696,27 @@ class Feldolgozo:
                 # DT-F96l (2. opció): a három forrásból (szabály, sonnet, opus) legalább kettő egyezik, és a
                 # tő-őr átengedi → csere; a felszólító -jál a DT-F96k a szerint marad
                 if not cim.startswith('felszolito') and not nevelo_utan(spans, szoveg, i):
-                    tobb = self.tobbseg(jel, llm if tor == 'ok' else '', llm2 if tor2 == 'ok' else '')
+                    # DT-F96s (3. opció): a szabály-jelöltre a .1 cseréje (dícsérve → dicsérve), mielőtt szavaz
+                    jel_n = {k: h1_atvisz(r[1], r[2], v) for k, v in jel.items()} if jel else jel
+                    l1 = h1_atvisz(r[1], r[2], llm) if tor == 'ok' else ''
+                    l2 = h1_atvisz(r[1], r[2], llm2) if tor2 == 'ok' else ''
+                    tobb = self.tobbseg(jel_n, l1, l2)
                     if tobb:
                         ertek, forrasok = tobb
                         r[3] = self.valaszt(ertek, spans, szoveg, i, r, t) if isinstance(ertek, dict) else ertek
                         r[6] = cimke(cim, 'tobbseg:' + forrasok)
+                    elif l1 and l2 and alanyi_targyas_par(l1, l2):
+                        # a sonnet és az opus csak a T/3 alanyi–tárgyas ragozásban tér el (hittek / hitték): a
+                        # tagmondat tárgya dönt (targyas_heur)
+                        par = alanyi_targyas_par(l1, l2)
+                        r[3] = self.valaszt({'alanyi': par[0], 'targyas': par[1]}, spans, szoveg, i, r, t)
+                        r[6] = cimke(cim, 'tobbseg:alanyi_targyas')
+                    elif cim != 'gyanu:nd_jovo' and l2 and self.tanusitott(l2) and not any(self.tanusitott(v) for v in (jel_n or {}).values()) \
+                            and not (l1 and l1 != l2 and self.tanusitott(l1)) and self.tanusitott_ok(r, l2, t, spans, szoveg, i):
+                        # a szabály-jelölt a korpuszban nem áll, az opus-alak igen (és a sonnet nem mond mást)
+                        r[3] = l2
+                        r[6] = cimke(cim, 'tobbseg:opus_tanusitott')
+                        r[8] = 'szabaly_nem_tanusitott'
             elif alk == 'vala':
                 self.vala(t, spans, szoveg, i)
                 self.kor3_vala_alkalmaz(t, spans, szoveg, i)
@@ -720,6 +755,23 @@ class Feldolgozo:
             return jel['E1'] if e1 else jel['T3']
         r[8] = 'targyas_heur'
         return jel['targyas'] if targyas_e(spans, szoveg, i) else jel['alanyi']
+
+    def tanusitott(self, w):
+        """A szóalak a Károli 1908 korpuszában áll (kisbetűsen)."""
+        return bool(w) and w.lower() in self.a.kis_szavak
+
+    def tanusitott_ok(self, r, uj, t, spans, szoveg, i):
+        """DT-F96s: a tanúsított opus-alak csak akkor írja felül a nem tanúsított szabály-jelöltet, ha változtat, és a
+        régies végződés ragozását nem sérti: az E/3 tárgyas -á/-é mai alakja -a/-e végű (rombolá → rombolta, nem
+        rombolt); az -ék nem E/1 opus-alakja nem fogadható el, ha a mondatszakaszban E/1 jelző áll (aluvék)."""
+        w, u = r[1].lower(), uj.lower()
+        if u == r[2].lower():
+            return False
+        if w.endswith(('á', 'é')) and not u.endswith(('a', 'e')):
+            return False
+        if w.endswith('ék') and not u.endswith('m') and (e1_e(spans, szoveg, i) or self.e1_ige(t, i, spans, szoveg)):
+            return False
+        return True
 
     def e1_ige(self, t, i, spans, szoveg):
         """N-F96f: E/1 jelzője a token mondatszakaszában (a .;:!? jelek között; a másik mondat és az idézett beszéd
@@ -784,6 +836,12 @@ class Feldolgozo:
             r[3] = opus_h
             r[6] = cimke(r[6], nev + ':opus') if r[6] else nev + ':opus'
             r[8] = cimke(r[8], nev + '_csak_opus') if r[8] else nev + '_csak_opus'
+        elif tor and self.tanusitott(opus_h) and not any(self.tanusitott(v) for v in jel_h.values()) \
+                and self.tanusitott_ok(r, opus_h, t, spans, szoveg, i):
+            # DT-F96s (3. opció): a szabály-jelölt a korpuszban nem áll (bévevte, megnyugovtam), az opus-alak igen
+            r[3] = opus_h
+            r[6] = cimke(r[6], nev + ':opus_tanusitott') if r[6] else nev + ':opus_tanusitott'
+            r[8] = cimke(r[8], 'szabaly_nem_tanusitott') if r[8] else 'szabaly_nem_tanusitott'
         else:
             jl = [r[9]] if r[9] else []
             if jel:

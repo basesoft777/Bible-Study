@@ -1,4 +1,4 @@
-# GENERÁLT: eszkozok/karoli_modern/igealak.py (F96.2) — kézzel nem szerkeszthető; a javítás a szabályban vagy a kivételtáblában (KEZI, GYANU_KEZI, VALA_ELOTT_KEZI, VALA_ELOTT_MULT_KEZI, TOKEN_KIVETEL, E1_TARGYAS_KEZI, OK_KEZI, E1_MINDIG_VEG, KOR3_VALA_HOMOGRAF) | forras=konkordancia/Karoli_1908.tsv (sha256:49335bbcc77d) + adat/szoto/karoli_szotari_alak.tsv (sha256:edba33e6d65a) + adat/karoli_modern/helyesiras_tokenek.tsv (sha256:a3a9b6d24f7f) + eszkozok/karoli_modern/igealak.py (sha256:4c35a05a8c4b) + eszkozok/karoli_modern/igeragozas.py (sha256:172887f57837) + adat/karoli_modern/igealak_llm.tsv (sha256:878dbe192b42) + adat/karoli_modern/igealak_llm_opus.tsv (sha256:f536a79c073e) + adat/karoli_modern/igealak_llm_kor3.tsv (sha256:801636853498) + adat/karoli_modern/igealak_llm_kor4.tsv (sha256:532f4bf407d9) | a .1 (helyesiras.py) kimenetére épül, újraszámolva és összevetve | tokenizálás: tokenizal (a #22 hu_sorszam-a; Strong token-kulcson illeszthető, DT-F96f) | a ritka jegyes és a régies gyanús alak a DT-F96l szerint cserél (a szabály, a sonnet és az opus közül kettő egyezik, tő-őrrel), különben a jelolt oszlopban marad; a 3. kör (DT-F96q) a változatlanul maradt régies alakon a szabály és az opus egyezésével cserél | LLM: az igealak_llm.tsv, az igealak_llm_opus.tsv és az igealak_llm_kor3.tsv (DT-F96d, előfizetés, API nélkül) | scope=a .1 + .2 után változó, kieső, bizonytalan vagy jelölt tokenek (67685) a 599367 tokenből
+# GENERÁLT: eszkozok/karoli_modern/igealak.py (F96.2) — kézzel nem szerkeszthető; a javítás a szabályban vagy a kivételtáblában (KEZI, GYANU_KEZI, VALA_ELOTT_KEZI, VALA_ELOTT_MULT_KEZI, TOKEN_KIVETEL, E1_TARGYAS_KEZI, OK_KEZI, E1_MINDIG_VEG, KOR3_VALA_HOMOGRAF) | forras=konkordancia/Karoli_1908.tsv (sha256:49335bbcc77d) + adat/szoto/karoli_szotari_alak.tsv (sha256:edba33e6d65a) + adat/karoli_modern/helyesiras_tokenek.tsv (sha256:a3a9b6d24f7f) + eszkozok/karoli_modern/igealak.py (sha256:5f392147dec1) + eszkozok/karoli_modern/igeragozas.py (sha256:172887f57837) + adat/karoli_modern/igealak_llm.tsv (sha256:878dbe192b42) + adat/karoli_modern/igealak_llm_opus.tsv (sha256:f536a79c073e) + adat/karoli_modern/igealak_llm_kor3.tsv (sha256:801636853498) + adat/karoli_modern/igealak_llm_kor4.tsv (sha256:532f4bf407d9) | a .1 (helyesiras.py) kimenetére épül, újraszámolva és összevetve | tokenizálás: tokenizal (a #22 hu_sorszam-a; Strong token-kulcson illeszthető, DT-F96f) | a ritka jegyes és a régies gyanús alak a DT-F96l szerint cserél (a szabály, a sonnet és az opus közül kettő egyezik, tő-őrrel), különben a jelolt oszlopban marad; a 3. kör (DT-F96q) a változatlanul maradt régies alakon a szabály és az opus egyezésével cserél | LLM: az igealak_llm.tsv, az igealak_llm_opus.tsv, az igealak_llm_kor3.tsv és az igealak_llm_kor4.tsv (DT-F96d, előfizetés, API nélkül) | scope=a .1 + .2 után változó, kieső, bizonytalan vagy jelölt tokenek (67685) a 599367 tokenből
 igehely	sorszam	alak_1908	alak_helyesiras	alak_modern	kieso	szabaly	bizonytalan	jelolt	kieso_gazda
 1Móz 1:1	2	teremté	teremté	teremtette		igealak:mult.targyas.E3			
 1Móz 1:2	7	vala	vala	volt		vala_letige			
@@ -502,7 +502,7 @@ igehely	sorszam	alak_1908	alak_helyesiras	alak_modern	kieso	szabaly	bizonytalan	
 1Móz 7:22	8	vala	vala	volt		vala_letige			
 1Móz 7:22	12	közűl	közül	közül		szoto_94			
 1Móz 7:22	14	meghala	meghala	meghalt		igealak:mult.alanyi.E3			
-1Móz 7:23	2	eltörle	eltörle	eltörle				kor4_szabaly:eltörlött; kor4_opus:eltörölt(tő-őr ok)	
+1Móz 7:23	2	eltörle	eltörle	eltörölt		kor4:opus_tanusitott	szabaly_nem_tanusitott		
 1Móz 7:23	7	a			osszevonva	nevmas			8
 1Móz 7:23	8	mely	amely	amely		nevmas:mely			
 1Móz 7:23	12	vala	vala	volt		vala_letige			
@@ -947,7 +947,7 @@ igehely	sorszam	alak_1908	alak_helyesiras	alak_modern	kieso	szabaly	bizonytalan	
 1Móz 15:5	19	monda	monda	mondta		igealak:mult.alanyi.E3			
 1Móz 15:5	22	lészen	lészen	lesz		gyanu_kezi			
 1Móz 15:6	2	hitt	hitt	hitt		gyanu:kivetel_jegy_nelkul+tobbseg:sonnet+opus		llm:hitt(tő-őr ok); opus:hitt(tő-őr ok)	
-1Móz 15:6	6	tulajdoníttaték	tulajdoníttaték	tulajdoníttaték		igealak_ritka:mult.E1		szabaly:tulajdoníttaott; llm:tulajdonítatott(tő-őr bukott); opus:tulajdoníttatott(tő-őr ok)	
+1Móz 15:6	6	tulajdoníttaték	tulajdoníttaték	tulajdoníttatott		igealak_ritka:mult.E1+tobbseg:opus_tanusitott	szabaly_nem_tanusitott	szabaly:tulajdoníttaott; llm:tulajdonítatott(tő-őr bukott); opus:tulajdoníttatott(tő-őr ok)	
 1Móz 15:7	2	monda	monda	mondta		igealak:mult.alanyi.E3			
 1Móz 15:7	3	néki	neki	neki		neki			
 1Móz 15:7	14	néked	neked	neked		neki			
@@ -1058,7 +1058,7 @@ igehely	sorszam	alak_1908	alak_helyesiras	alak_modern	kieso	szabaly	bizonytalan	
 1Móz 17:12	3	körűlmetéltessék	körülmetéltessék	körülmetéltessék		szoto_94			
 1Móz 17:12	16	a			osszevonva	nevmas			17
 1Móz 17:12	17	ki	aki	aki		nevmas:ki			
-1Móz 17:13	1	Körűlmetéltetvén	Körülmetéltetvén	Körülmetéltetvén		szoto_94+igealak_ritka:hatarozoi_igenev		szabaly:Körűlmetéltetve; opus:Körülmetéltetve(tő-őr ok)	
+1Móz 17:13	1	Körűlmetéltetvén	Körülmetéltetvén	Körülmetéltetve		szoto_94+igealak_ritka:hatarozoi_igenev+tobbseg:szabaly+opus		szabaly:Körűlmetéltetve; opus:Körülmetéltetve(tő-őr ok)	
 1Móz 17:13	2	körűlmetéltessék	körülmetéltessék	körülmetéltessék		szoto_94			
 1Móz 17:13	9	vett	vett	vett		gyanu:kivetel_jegy_nelkul+tobbseg:sonnet+opus		llm:vett(tő-őr ok); opus:vett(tő-őr ok)	
 1Móz 17:13	12	szövetségűl	szövetségül	szövetségül		szoto_94			
@@ -1874,7 +1874,7 @@ igehely	sorszam	alak_1908	alak_helyesiras	alak_modern	kieso	szabaly	bizonytalan	
 1Móz 25:6	13	elküldé	elküldé	elküldte		igealak:mult.targyas.E3			
 1Móz 25:8	2	kimúlék	kimúlék	kimúlt		kor3:szabaly+opus			
 1Móz 25:8	4	meghala	meghala	meghalt		igealak:mult.alanyi.E3			
-1Móz 25:8	14	takaríttaték	takaríttaték	takaríttaték		igealak_ritka:mult.E1		szabaly:takaríttaott; llm:takarítatott(tő-őr bukott); opus:takaríttatott(tő-őr ok)	
+1Móz 25:8	14	takaríttaték	takaríttaték	takaríttatott		igealak_ritka:mult.E1+tobbseg:opus_tanusitott	szabaly_nem_tanusitott	szabaly:takaríttaott; llm:takarítatott(tő-őr bukott); opus:takaríttatott(tő-őr ok)	
 1Móz 25:9	2	eltemeték	eltemeték	eltemették		igealak_kezi			
 1Móz 25:9	16	Czohár	Cohár	Cohár		karakter			
 1Móz 25:10	9	vett	vett	vett		gyanu:kivetel_jegy_nelkul+tobbseg:sonnet+opus		llm:vett(tő-őr ok); opus:vett(tő-őr ok)	
@@ -1892,7 +1892,7 @@ igehely	sorszam	alak_1908	alak_helyesiras	alak_modern	kieso	szabaly	bizonytalan	
 1Móz 25:17	8	harminczkét	harminckét	harminckét		karakter			
 1Móz 25:17	11	kimúlék	kimúlék	kimúlt		kor3:szabaly+opus			
 1Móz 25:17	13	meghala	meghala	meghalt		igealak:mult.alanyi.E3			
-1Móz 25:17	15	takaríttaték	takaríttaték	takaríttaték		igealak_ritka:mult.E1		szabaly:takaríttaott; llm:takarítatott(tő-őr bukott); opus:takaríttatott(tő-őr ok)	
+1Móz 25:17	15	takaríttaték	takaríttaték	takaríttatott		igealak_ritka:mult.E1+tobbseg:opus_tanusitott	szabaly_nem_tanusitott	szabaly:takaríttaott; llm:takarítatott(tő-őr bukott); opus:takaríttatott(tő-őr ok)	
 1Móz 25:18	6	a			osszevonva	nevmas			7
 1Móz 25:18	7	mely	amely	amely		nevmas:mely			
 1Móz 25:18	11	a			osszevonva	nevmas			12
@@ -3046,7 +3046,7 @@ igehely	sorszam	alak_1908	alak_helyesiras	alak_modern	kieso	szabaly	bizonytalan	
 1Móz 35:28	6	nyolczvan	nyolcvan	nyolcvan		karakter			
 1Móz 35:29	2	kimúlék	kimúlék	kimúlt		kor3:szabaly+opus			
 1Móz 35:29	5	meghala	meghala	meghalt		igealak:mult.alanyi.E3			
-1Móz 35:29	7	takaríttaték	takaríttaték	takaríttaték		igealak_ritka:mult.E1		szabaly:takaríttaott; llm:takarítatott(tő-őr bukott); opus:takaríttatott(tő-őr ok)	
+1Móz 35:29	7	takaríttaték	takaríttaték	takaríttatott		igealak_ritka:mult.E1+tobbseg:opus_tanusitott	szabaly_nem_tanusitott	szabaly:takaríttaott; llm:takarítatott(tő-őr bukott); opus:takaríttatott(tő-őr ok)	
 1Móz 35:29	13	bételvén	bételvén	bételvén		gyanu:elemezetlen:v-tő		llm:betelve(tő-őr bukott); opus:bételve(tő-őr ok)	
 1Móz 35:29	17	eltemeték	eltemeték	eltemették		igealak_kezi			
 1Móz 36:2	5	közűl	közül	közül		szoto_94			
@@ -4426,7 +4426,7 @@ igehely	sorszam	alak_1908	alak_helyesiras	alak_modern	kieso	szabaly	bizonytalan	
 1Móz 49:33	5	mit	amit	amit		nevmas:mi			
 1Móz 49:33	9	fölszedé	fölszedé	fölszedte		igealak_ritka:mult.targyas.E3+tobbseg:szabaly+sonnet		szabaly:fölszedte; llm:fölszedte(tő-őr ok)	
 1Móz 49:33	14	kimúlék	kimúlék	kimúlt		kor3:szabaly+opus			
-1Móz 49:33	19	takaríttaték	takaríttaték	takaríttaték		igealak_ritka:mult.E1		szabaly:takaríttaott; llm:takarítatott(tő-őr bukott); opus:takaríttatott(tő-őr ok)	
+1Móz 49:33	19	takaríttaték	takaríttaték	takaríttatott		igealak_ritka:mult.E1+tobbseg:opus_tanusitott	szabaly_nem_tanusitott	szabaly:takaríttaott; llm:takarítatott(tő-őr bukott); opus:takaríttatott(tő-őr ok)	
 1Móz 50:1	6	orczájára	orcájára	orcájára		karakter			
 1Móz 50:1	9	siránkozék	siránkozék	siránkozék				kor3_szabaly:siránkoztam; kor3_opus:siránkozott(tő-őr ok)	
 1Móz 50:1	12	csókolgatá	csókolgatá	csókolgatta		igealak_ritka:mult.targyas.E3+tobbseg:szabaly+sonnet		szabaly:csókolgatta; llm:csókolgatta(tő-őr ok)	
@@ -5058,7 +5058,7 @@ igehely	sorszam	alak_1908	alak_helyesiras	alak_modern	kieso	szabaly	bizonytalan	
 2Móz 8:5	2	monda	monda	mondta		igealak:mult.alanyi.E3			
 2Móz 8:6	2	kinyujtá	kinyujtá	kinyujtotta		igealak_ritka:mult.targyas.E3+tobbseg:szabaly+opus		szabaly:kinyujtotta; llm:kinyújtotta(tő-őr bukott); opus:kinyujtotta(tő-őr ok)	
 2Móz 8:6	9	jövének	jövének	jöttek		igealak:mult.T3			
-2Móz 8:6	12	ellepék	ellepék	ellepék				kor3_szabaly:ellepett; kor3_opus:ellepték(tő-őr ok)	
+2Móz 8:6	12	ellepék	ellepék	ellepték		kor3:opus_tanusitott	szabaly_nem_tanusitott		
 2Móz 8:7	6	cselekedének	cselekedének	cselekedtek		igealak:mult.T3	targyas_heur		
 2Móz 8:7	10	mesterségökkel	mesterségökkel	mesterségükkel		ok_birtokos			
 2Móz 8:7	12	felhozák	felhozák	felhozták		gyanu:elemezetlen:-ák+tobbseg:szabaly+sonnet		szabaly:felhozták; llm:felhozták(tő-őr ok)	
@@ -5697,7 +5697,7 @@ igehely	sorszam	alak_1908	alak_helyesiras	alak_modern	kieso	szabaly	bizonytalan	
 2Móz 16:12	8	mondván	mondván	mondva		igealak:hatarozoi_igenev			
 2Móz 16:13	2	lőn	lőn	lett		lon			
 2Móz 16:13	6	jövének	jövének	jöttek		igealak:mult.T3			
-2Móz 16:13	9	ellepék	ellepék	ellepék				kor3_szabaly:ellepett; kor3_opus:ellepték(tő-őr ok)	
+2Móz 16:13	9	ellepék	ellepék	ellepték		kor3:opus_tanusitott	szabaly_nem_tanusitott		
 2Móz 16:13	15	lőn	lőn	lett		lon			
 2Móz 16:13	18	körűl	körül	körül		szoto_94			
 2Móz 16:14	5	megszűnék	megszűnék	megszűnt		igealak_ritka:mult.E3+tobbseg:szabaly+sonnet		szabaly:megszűnt; llm:megszűnt(tő-őr ok)	
@@ -6839,7 +6839,7 @@ igehely	sorszam	alak_1908	alak_helyesiras	alak_modern	kieso	szabaly	bizonytalan	
 2Móz 36:4	18	melyet	amelyet	amelyet		nevmas:mely			
 2Móz 36:5	1	Parancsola	Parancsola	Parancsolt		igealak:mult.alanyi.E3			
 2Móz 36:5	6	tevék	tevék	tették		igealak:mult.E1	ek_E1_T3		
-2Móz 36:5	21	megszünék	megszünék	megszünék				kor3_szabaly:megszüntem; kor3_opus:megszűnt(tő-őr ok)	
+2Móz 36:5	21	megszünék	megszünék	megszűnt		kor3:opus_tanusitott	szabaly_nem_tanusitott		
 2Móz 36:7	8	munkálkodának	munkálkodának	munkálkodtak		igealak_ritka:mult.T3+tobbseg:szabaly+sonnet		szabaly:munkálkodtak; llm:munkálkodtak(tő-őr ok)	
 2Móz 36:7	9	készíték	készíték	készítették		igealak_ritka:mult.E1+tobbseg:szabaly+sonnet+opus	ek_E1_T3	szabaly:E1=készítettem|T3=készítették; llm:készítették(tő-őr ok); opus:készítették(tő-őr ok)	
 2Móz 36:7	24	készíték	készíték	készítették		igealak_ritka:mult.E1+tobbseg:szabaly+sonnet+opus	ek_E1_T3	szabaly:E1=készítettem|T3=készítették; llm:készítették(tő-őr ok); opus:készítették(tő-őr ok)	
@@ -8465,7 +8465,7 @@ igehely	sorszam	alak_1908	alak_helyesiras	alak_modern	kieso	szabaly	bizonytalan	
 3Móz 24:10	8	ki	aki	aki		nevmas:ki			
 3Móz 24:10	12	vala	vala	volt		vala_letige			
 3Móz 24:10	17	versengének	versengének	versengtek		igealak_ritka:mult.T3+tobbseg:sonnet+opus		szabaly:versengettek; llm:versengtek(tő-őr ok); opus:versengtek(tő-őr ok)	
-3Móz 24:11	2	káromlá	káromlá	káromlá				kor3_szabaly:káromlotta; kor3_opus:káromolta(tő-őr ok)	
+3Móz 24:11	2	káromlá	káromlá	káromolta		kor3:opus_tanusitott	szabaly_nem_tanusitott		
 3Móz 24:11	11	átkozódék	átkozódék	átkozódott		igealak_ritka:mult.E3+tobbseg:szabaly+sonnet		szabaly:átkozódott; llm:átkozódott(tő-őr ok)	
 3Móz 24:11	12	elvivék	elvivék	elvitték		igealak:mult.E1	ek_E1_T3		
 3Móz 24:11	22	vala	vala	volt		vala_letige			
@@ -9347,12 +9347,12 @@ igehely	sorszam	alak_1908	alak_helyesiras	alak_modern	kieso	szabaly	bizonytalan	
 4Móz 11:1	4	panaszolkodék	panaszolkodék	panaszolkodott		igealak_ritka:mult.E1+tobbseg:sonnet+opus		szabaly:panaszolkodtam; llm:panaszolkodott(tő-őr ok); opus:panaszolkodott(tő-őr ok)	
 4Móz 11:1	15	meghallá	meghallá	meghallotta		igealak:mult.targyas.E3			
 4Móz 11:1	20	gerjede	gerjede	gerjedt		igealak_ritka:mult.alanyi.E3+tobbseg:szabaly+sonnet		szabaly:gerjedt; llm:gerjedt(tő-őr ok)	
-4Móz 11:1	22	felgyullada	felgyullada	felgyullada				kor4_szabaly:felgyulladott; kor4_opus:felgyulladt(tő-őr ok)	
+4Móz 11:1	22	felgyullada	felgyullada	felgyulladt		kor4:opus_tanusitott	szabaly_nem_tanusitott		
 4Móz 11:1	23	ellenök	ellenök	ellenük		ok_birtokos			
 4Móz 11:1	28	megemészté	megemészté	megemésztette		igealak:mult.targyas.E3			
 4Móz 11:2	1	Kiálta	Kiálta	Kiáltott		igealak:mult.alanyi.E3			
 4Móz 11:2	7	könyörge	könyörge	könyörgött		igealak:mult.alanyi.E3			
-4Móz 11:2	12	megszünék	megszünék	megszünék				kor3_szabaly:megszüntem; kor3_opus:megszűnt(tő-őr ok)	
+4Móz 11:2	12	megszünék	megszünék	megszűnt		kor3:opus_tanusitott	szabaly_nem_tanusitott		
 4Móz 11:3	2	nevezé	nevezé	nevezte		igealak:mult.targyas.E3			
 4Móz 11:3	9	vala	vala		segedige	vala_segedige_kor4	kor4_csak_opus		8
 4Móz 11:3	10	ellenök	ellenök	ellenük		ok_birtokos			
@@ -9493,7 +9493,7 @@ igehely	sorszam	alak_1908	alak_helyesiras	alak_modern	kieso	szabaly	bizonytalan	
 4Móz 12:6	2	monda	monda	mondta		igealak:mult.alanyi.E3			
 4Móz 12:7	7	a			osszevonva	nevmas			8
 4Móz 12:7	8	ki	aki	aki		nevmas:ki			
-4Móz 12:9	2	felgyullada	felgyullada	felgyullada				kor4_szabaly:felgyulladott; kor4_opus:felgyulladt(tő-őr ok)	
+4Móz 12:9	2	felgyullada	felgyullada	felgyulladt		kor4:opus_tanusitott	szabaly_nem_tanusitott		
 4Móz 12:9	7	reájok	rájuk	rájuk		rea+jok			
 4Móz 12:9	9	elméne	elméne	elment		igealak:mult.alanyi.E3			
 4Móz 12:10	5	eltávozék	eltávozék	eltávozott		igealak:mult.E3			
@@ -10165,7 +10165,7 @@ igehely	sorszam	alak_1908	alak_helyesiras	alak_modern	kieso	szabaly	bizonytalan	
 4Móz 21:2	8	monda	monda	mondta		igealak:mult.alanyi.E3			
 4Móz 21:3	2	meghallgatá	meghallgatá	meghallgatta		igealak_ritka:mult.targyas.E3+tobbseg:szabaly+sonnet		szabaly:meghallgatta; llm:meghallgatta(tő-őr ok)	
 4Móz 21:3	9	adá	adá	adta		igealak:mult.targyas.E3			
-4Móz 21:3	13	eltörlé	eltörlé	eltörlé				kor3_szabaly:eltörlötte; kor3_opus:eltörölte(tő-őr ok)	
+4Móz 21:3	13	eltörlé	eltörlé	eltörölte		kor3:opus_tanusitott	szabaly_nem_tanusitott		
 4Móz 21:3	19	nevezé	nevezé	nevezte		igealak:mult.targyas.E3			
 4Móz 21:4	2	elindulának	elindulának	elindultak		igealak:mult.T3			
 4Móz 21:4	19	megkeseredék	megkeseredék	megkeseredett		igealak_ritka:mult.E1+tobbseg:sonnet+opus		szabaly:megkeseredtem; llm:megkeseredett(tő-őr ok); opus:megkeseredett(tő-őr ok)	
@@ -10590,7 +10590,7 @@ igehely	sorszam	alak_1908	alak_helyesiras	alak_modern	kieso	szabaly	bizonytalan	
 4Móz 25:8	2	beméne	beméne	bement		igealak:mult.alanyi.E3			
 4Móz 25:8	10	általdöfé	általdöfé	általdöfé				kor3_szabaly:általdöfta; kor3_opus:általdöfte(tő-őr ok)	
 4Móz 25:8	11	mindkettőjöket	mindkettőjüket	mindkettőjüket		jok			
-4Móz 25:8	21	megszünék	megszünék	megszünék				kor3_szabaly:megszüntem; kor3_opus:megszűnt(tő-őr ok)	
+4Móz 25:8	21	megszünék	megszünék	megszűnt		kor3:opus_tanusitott	szabaly_nem_tanusitott		
 4Móz 25:9	3	vala	vala		segedige	vala_segedige_mult			2
 4Móz 25:10	2	szóla	szóla	szólt		igealak:mult.alanyi.E3			
 4Móz 25:10	6	mondván	mondván	mondva		igealak:hatarozoi_igenev			
@@ -16158,7 +16158,7 @@ Bír 4:24	14	kiirták	kiirták	kiirtották		gyanu:elemezetlen:-ák+tobbseg:szaba
 Bír 5:1	12	mondván	mondván	mondva		igealak:hatarozoi_igenev			
 Bír 5:2	10	kele	kele	kelt		igealak_ritka:mult.alanyi.E3+tobbseg:szabaly+sonnet		szabaly:kelt; llm:kelt(tő-őr ok)	
 Bír 5:3	12	Dícséretet	Dicséretet	Dicséretet		szotag			
-Bír 5:4	4	kijövél	kijövél	kijövél				kor3_szabaly:kijövtél; kor3_opus:kijöttél(tő-őr ok)	
+Bír 5:4	4	kijövél	kijövél	kijöttél		kor3:opus_tanusitott	szabaly_nem_tanusitott		
 Bír 5:4	19	áradának	áradának	áradtak		igealak_ritka:mult.T3+tobbseg:szabaly+sonnet		szabaly:áradtak; llm:áradtak(tő-őr ok)	
 Bír 5:5	6	orczája	orcája	orcája		karakter			
 Bír 5:7	11	felkelék	felkelék	felkeltem		igealak_ritka:mult.E1+tobbseg:szabaly+sonnet		szabaly:felkeltem; llm:felkeltem(tő-őr ok)	
@@ -16973,7 +16973,7 @@ Bír 16:1	12	bement	bement	bement		gyanu:kivetel_jegy_nelkul+tobbseg:sonnet+opus
 Bír 16:2	6	mondván	mondván	mondva		igealak:hatarozoi_igenev			
 Bír 16:2	10	körülvevék	körülvevék	körülvették		kor4:szabaly+opus	ek_E1_T3		
 Bír 16:2	13	leselkedének	leselkedének	leselkedtek		igealak_ritka:mult.T3+tobbseg:szabaly+sonnet		szabaly:leselkedtek; llm:leselkedtek(tő-őr ok)	
-Bír 16:3	2	aluvék	aluvék	aluvék		gyanu:elemezetlen:v-tő		llm:aludtam(tő-őr ok); opus:aludt(tő-őr ok)	
+Bír 16:3	2	aluvék	aluvék	aludt		gyanu:elemezetlen:v-tő+tobbseg:opus_tanusitott	szabaly_nem_tanusitott	llm:aludtam(tő-őr ok); opus:aludt(tő-őr ok)	
 Bír 16:3	9	megfogván	megfogván	megfogva		igealak:hatarozoi_igenev			
 Bír 16:3	24	vette	vette	vette		gyanu:kivetel_jegy_nelkul+tobbseg:sonnet+opus		llm:vette(tő-őr ok); opus:vette(tő-őr ok)	
 Bír 16:3	26	felvitte	felvitte	felvitte		gyanu:kivetel_jegy_nelkul+tobbseg:sonnet+opus		llm:felvitte(tő-őr ok); opus:felvitte(tő-őr ok)	
@@ -17884,7 +17884,7 @@ Ruth 4:22	7	nemzé	nemzé	nemzette		igealak:mult.targyas.E3
 1Sám 3:13	15	melyet	amelyet	amelyet		nevmas:mely			
 1Sám 3:13	20	teszik	teszik	tették		jelen_mult_vala			
 1Sám 3:13	21	vala	vala		segedige	vala_segedige_jelen			20
-1Sám 3:15	1	Aluvék	Aluvék	Aluvék		gyanu:elemezetlen:v-tő		llm:Aludtam(tő-őr ok); opus:Aludt(tő-őr ok)	
+1Sám 3:15	1	Aluvék	Aluvék	Aludt		gyanu:elemezetlen:v-tő+tobbseg:opus_tanusitott	szabaly_nem_tanusitott	llm:Aludtam(tő-őr ok); opus:Aludt(tő-őr ok)	
 1Sám 3:15	8	kinyitá	kinyitá	kinyitotta		igealak_ritka:mult.targyas.E3+tobbseg:szabaly+sonnet		szabaly:kinyitotta; llm:kinyitotta(tő-őr ok)	
 1Sám 3:15	16	meri	meri	merte		jelen_mult_vala			
 1Sám 3:15	17	vala	vala		segedige	vala_segedige_jelen			16
@@ -18577,7 +18577,7 @@ Ruth 4:22	7	nemzé	nemzé	nemzette		igealak:mult.targyas.E3
 1Sám 14:25	6	eljuta	eljuta	eljutott		igealak_ritka:mult.alanyi.E3+tobbseg:szabaly+sonnet		szabaly:eljutott; llm:eljutott(tő-őr ok)	
 1Sám 14:25	11	vala	vala	volt		vala_letige			
 1Sám 14:26	5	beméne	beméne	bement		igealak:mult.alanyi.E3			
-1Sám 14:26	15	érteté	érteté	érteté		gyanu:elemezetlen:-teté		llm:érintette(tő-őr ok); opus:értette(tő-őr ok)	
+1Sám 14:26	15	érteté	érteté	értette		gyanu:elemezetlen:-teté+tobbseg:opus_tanusitott	szabaly_nem_tanusitott	llm:érintette(tő-őr ok); opus:értette(tő-őr ok)	
 1Sám 14:27	5	vala	vala		segedige	vala_segedige_mult			4
 1Sám 14:27	8	megesketé	megesketé	megeskette		igealak_ritka:mult.targyas.E3+tobbseg:szabaly+opus		szabaly:megeskette; llm:megesketette(tő-őr ok); opus:megeskette(tő-őr ok)	
 1Sám 14:27	12	kinyújtá	kinyújtá	kinyújtotta		igealak:mult.targyas.E3			
@@ -20296,7 +20296,7 @@ Ruth 4:22	7	nemzé	nemzé	nemzette		igealak:mult.targyas.E3
 2Sám 2:16	17	nevezék	nevezék	nevezték		igealak:mult.E1	ek_E1_T3		
 2Sám 2:17	4	harcz	harc	harc		karakter			
 2Sám 2:17	5	lőn	lőn	lett		lon			
-2Sám 2:17	10	megvereték	megvereték	megvereték		igealak_ritka:mult.E1		szabaly:megverettem; llm:megverettetett(tő-őr ok); opus:megveretett(tő-őr ok)	
+2Sám 2:17	10	megvereték	megvereték	megveretett		igealak_ritka:mult.E1+tobbseg:opus_tanusitott	szabaly_nem_tanusitott	szabaly:megverettem; llm:megverettetett(tő-őr ok); opus:megveretett(tő-őr ok)	
 2Sám 2:18	3	vala	vala	volt		vala_letige			
 2Sám 2:18	15	vala	vala	volt		vala_letige			
 2Sám 2:19	3	üldözé	üldözé	üldözte		igealak_ritka:mult.targyas.E3+tobbseg:szabaly+sonnet		szabaly:üldözte; llm:üldözte(tő-őr ok)	
@@ -20931,7 +20931,7 @@ Ruth 4:22	7	nemzé	nemzé	nemzette		igealak:mult.targyas.E3
 2Sám 11:15	10	hol	ahol	ahol		nevmas:hatarozo			
 2Sám 11:15	12	harcz	harc	harc		karakter			
 2Sám 11:16	1	Lőn	Lőn	Lett		lon			
-2Sám 11:16	5	ostromlá	ostromlá	ostromlá				kor3_szabaly:ostromlotta; kor3_opus:ostromolta(tő-őr ok)	
+2Sám 11:16	5	ostromlá	ostromlá	ostromolta		kor3:opus_tanusitott	szabaly_nem_tanusitott		
 2Sám 11:16	9	állatá	állatá	állatta		kor3:szabaly+opus			
 2Sám 11:16	14	a			osszevonva	nevmas			15
 2Sám 11:16	15	hol	ahol	ahol		nevmas:hatarozo			
@@ -21577,7 +21577,7 @@ Ruth 4:22	7	nemzé	nemzé	nemzette		igealak:mult.targyas.E3
 2Sám 17:21	14	mondának	mondának	mondták		igealak:mult.T3			
 2Sám 17:22	1	Felkele	Felkele	Felkelt		igealak:mult.alanyi.E3			
 2Sám 17:22	11	általkelének	általkelének	általkeltek		igealak_ritka:mult.T3+tobbseg:szabaly+opus		szabaly:általkeltek; llm:átkeltek(tő-őr bukott); opus:általkeltek(tő-őr ok)	
-2Sám 17:22	15	megvirrada	megvirrada	megvirrada				kor4_szabaly:megvirradott; kor4_opus:megvirradt(tő-őr ok)	
+2Sám 17:22	15	megvirrada	megvirrada	megvirradt		kor4:opus_tanusitott	szabaly_nem_tanusitott		
 2Sám 17:22	18	hiányzék	hiányzék	hiányzott		igealak_ritka:mult.E3+tobbseg:szabaly+sonnet		szabaly:hiányzott; llm:hiányzott(tő-őr ok)	
 2Sám 17:22	19	a			osszevonva	nevmas			20
 2Sám 17:22	20	ki	aki	aki		nevmas:ki			
@@ -21632,7 +21632,7 @@ Ruth 4:22	7	nemzé	nemzé	nemzette		igealak:mult.targyas.E3
 2Sám 18:5	30	parancsola	parancsola	parancsolt		igealak:mult.alanyi.E3			
 2Sám 18:6	1	Kiméne	Kiméne	Kiment		igealak:mult.alanyi.E3			
 2Sám 18:6	11	megütközének	megütközének	megütköztek		igealak_ritka:mult.T3+tobbseg:szabaly+sonnet		szabaly:megütköztek; llm:megütköztek(tő-őr ok)	
-2Sám 18:7	2	megvereték	megvereték	megvereték		igealak_ritka:mult.E1		szabaly:megverettem; llm:megverettetett(tő-őr ok); opus:megveretett(tő-őr ok)	
+2Sám 18:7	2	megvereték	megvereték	megveretett		igealak_ritka:mult.E1+tobbseg:opus_tanusitott	szabaly_nem_tanusitott	szabaly:megverettem; llm:megverettetett(tő-őr ok); opus:megveretett(tő-őr ok)	
 2Sám 18:8	4	harcz	harc	harc		karakter			
 2Sám 18:8	14	emészte	emészte	emésztett		igealak_ritka:mult.alanyi.E3+tobbseg:szabaly+sonnet		szabaly:emésztett; llm:emésztett(tő-őr ok)	
 2Sám 18:9	2	találkozék	találkozék	találkozott		igealak_ritka:mult.E3+tobbseg:szabaly+sonnet		szabaly:találkozott; llm:találkozott(tő-őr ok)	
@@ -22235,7 +22235,7 @@ Ruth 4:22	7	nemzé	nemzé	nemzette		igealak:mult.targyas.E3
 2Sám 24:25	3	építe	építe	épített		igealak:mult.alanyi.E3			
 2Sám 24:25	9	áldozék	áldozék	áldozott		igealak_kezi			
 2Sám 24:25	15	megkegyelmeze	megkegyelmeze	megkegyelmezett		igealak_ritka:mult.alanyi.E3+tobbseg:szabaly+sonnet		szabaly:megkegyelmezett; llm:megkegyelmezett(tő-őr ok)	
-2Sám 24:25	21	megszünék	megszünék	megszünék				kor3_szabaly:megszüntem; kor3_opus:megszűnt(tő-őr ok)	
+2Sám 24:25	21	megszünék	megszünék	megszűnt		kor3:opus_tanusitott	szabaly_nem_tanusitott		
 1Kir 1:2	2	mondának	mondának	mondták		igealak:mult.T3			
 1Kir 1:2	3	néki	neki	neki		neki			
 1Kir 1:2	16	a			osszevonva	nevmas			17
@@ -23187,7 +23187,7 @@ Ruth 4:22	7	nemzé	nemzé	nemzette		igealak:mult.targyas.E3
 1Kir 8:53	12	a			osszevonva	nevmas			13
 1Kir 8:53	13	miképen	amiképpen	amiképpen		szoto_94+nevmas:hatarozo			
 1Kir 8:54	13	felkele	felkele	felkelt		igealak:mult.alanyi.E3			
-1Kir 8:54	19	megszünék	megszünék	megszünék				kor3_szabaly:megszüntem; kor3_opus:megszűnt(tő-őr ok)	
+1Kir 8:54	19	megszünék	megszünék	megszűnt		kor3:opus_tanusitott	szabaly_nem_tanusitott		
 1Kir 8:55	2	felállván	felállván	felállva		igealak_ritka:hatarozoi_igenev+tobbseg:szabaly+sonnet		szabaly:felállva; llm:felállva(tő-őr ok)	
 1Kir 8:55	3	megáldá	megáldá	megáldotta		igealak:mult.targyas.E3			
 1Kir 8:55	10	mondván	mondván	mondva		igealak:hatarozoi_igenev			
@@ -24999,7 +24999,7 @@ Ruth 4:22	7	nemzé	nemzé	nemzette		igealak:mult.targyas.E3
 2Kir 2:7	20	megállottak	megállottak	megálltak		kotohang_mult			
 2Kir 2:8	2	fogá	fogá	fogta		igealak_ritka:mult.targyas.E3+tobbseg:szabaly+sonnet		szabaly:fogta; llm:fogta(tő-őr ok)	
 2Kir 2:8	10	megüté	megüté	megütötte		igealak_ritka:mult.targyas.E3+tobbseg:szabaly+sonnet		szabaly:megütötte; llm:megütötte(tő-őr ok)	
-2Kir 2:8	17	válék	válék	válék				kor3_szabaly:váltam; kor3_opus:vált(tő-őr ok)	
+2Kir 2:8	17	válék	válék	vált		kor3:opus_tanusitott	szabaly_nem_tanusitott		
 2Kir 2:8	24	menének	menének	mentek		igealak:mult.T3			
 2Kir 2:9	4	monda	monda	mondta		igealak:mult.alanyi.E3			
 2Kir 2:9	13	tőled	tőled	tőled		gyanu:kivetel_jegy_nelkul+tobbseg:sonnet+opus		llm:tőled(tő-őr ok); opus:tőled(tő-őr ok)	
@@ -25033,7 +25033,7 @@ Ruth 4:22	7	nemzé	nemzé	nemzette		igealak:mult.targyas.E3
 2Kir 2:14	7	mely	amely	amely		nevmas:mely			
 2Kir 2:14	12	megüté	megüté	megütötte		igealak_ritka:mult.targyas.E3+tobbseg:szabaly+sonnet		szabaly:megütötte; llm:megütötte(tő-őr ok)	
 2Kir 2:14	16	monda	monda	mondta		igealak:mult.alanyi.E3			
-2Kir 2:14	32	válék	válék	válék				kor3_szabaly:váltam; kor3_opus:vált(tő-őr ok)	
+2Kir 2:14	32	válék	válék	vált		kor3:opus_tanusitott	szabaly_nem_tanusitott		
 2Kir 2:15	8	a			osszevonva	nevmas			9
 2Kir 2:15	9	kik	akik	akik		nevmas:ki			
 2Kir 2:15	12	valának	valának	voltak		vala_letige			
@@ -27886,7 +27886,7 @@ Ruth 4:22	7	nemzé	nemzé	nemzette		igealak:mult.targyas.E3
 1Krón 16:32	14	mi	ami	ami		ami:V1_irasjel_elotte+nevmas:mi			
 1Krón 16:35	26	dícséretedben	dicséretedben	dicséretedben		szotag			
 1Krón 16:36	11	monda	monda	mondta		igealak:mult.alanyi.E3			
-1Krón 16:36	16	dícséré	dicséré	dicséré		szotag+igealak_ritka:mult.targyas.E3		szabaly:dícsérte; opus:dicsérte(tő-őr bukott)	
+1Krón 16:36	16	dícséré	dicséré	dicsérte		szotag+igealak_ritka:mult.targyas.E3+tobbseg:szabaly+opus		szabaly:dícsérte; opus:dicsérte(tő-őr ok)	
 1Krón 16:37	2	hagyá	hagyá	hagyta		igealak:mult.targyas.E3			
 1Krón 16:38	6	hatvannyolcz	hatvannyolc	hatvannyolc		karakter			
 1Krón 16:39	13	hagyá	hagyá	hagyta		igealak:mult.targyas.E3			
@@ -28858,7 +28858,7 @@ Ruth 4:22	7	nemzé	nemzé	nemzette		igealak:mult.targyas.E3
 2Krón 5:13	7	vala	vala	volt		vala_letige			
 2Krón 5:13	12	dícséretére	dicséretére	dicséretére		szotag			
 2Krón 5:13	21	czimbalmokkal	cimbalmokkal	cimbalmokkal		karakter			
-2Krón 5:13	26	dícsérvén	dicsérvén	dicsérvén		szotag+igealak_ritka:hatarozoi_igenev		szabaly:dícsérve; opus:dicsérve(tő-őr bukott)	
+2Krón 5:13	26	dícsérvén	dicsérvén	dicsérve		szotag+igealak_ritka:hatarozoi_igenev+tobbseg:szabaly+opus		szabaly:dícsérve; opus:dicsérve(tő-őr ok)	
 2Krón 5:13	44	megtelék	megtelék	megtelt		igealak_ritka:mult.E3+tobbseg:szabaly+sonnet		szabaly:megtelt; llm:megtelt(tő-őr ok)	
 2Krón 5:14	19	vala	vala		segedige	vala_segedige_mult			18
 2Krón 6:1	2	monda	monda	mondta		igealak:mult.alanyi.E3			
@@ -30374,7 +30374,7 @@ Ruth 4:22	7	nemzé	nemzé	nemzette		igealak:mult.targyas.E3
 2Krón 25:16	8	monda	monda	mondta		igealak:mult.alanyi.E3			
 2Krón 25:16	9	néki	neki	neki		neki			
 2Krón 25:16	12	Vajjon	Vajon	Vajon		szoto_94			
-2Krón 25:16	23	Megszünék	Megszünék	Megszünék				kor3_szabaly:Megszüntem; kor3_opus:Megszűnt(tő-őr ok)	
+2Krón 25:16	23	Megszünék	Megszünék	Megszűnt		kor3:opus_tanusitott	szabaly_nem_tanusitott		
 2Krón 25:16	29	mondotta	mondotta	mondta		kotohang_mult			
 2Krón 25:16	41	műveléd	műveléd	művelted		kor3:szabaly+opus			
 2Krón 25:16	45	fogadád	fogadád	fogadtad		kor3:szabaly+opus			
@@ -30608,7 +30608,7 @@ Ruth 4:22	7	nemzé	nemzé	nemzette		igealak:mult.targyas.E3
 2Krón 28:17	7	vala	vala		segedige	vala_segedige_mult			6
 2Krón 28:17	13	levágának	levágának	levágtak		igealak_ritka:mult.T3+tobbseg:szabaly+sonnet	targyas_heur	szabaly:alanyi=levágtak|targyas=levágták; llm:levágtak(tő-őr ok)	
 2Krón 28:17	16	hurczolának	hurcolának	hurcoltak		karakter+kor4:szabaly+opus			
-2Krón 28:18	5	ellepék	ellepék	ellepék				kor3_szabaly:ellepett; kor3_opus:ellepték(tő-őr ok)	
+2Krón 28:18	5	ellepék	ellepék	ellepték		kor3:opus_tanusitott	szabaly_nem_tanusitott		
 2Krón 28:18	17	elfoglalák	elfoglalák	elfoglalták		gyanu_kezi			
 2Krón 28:18	36	laknak	laknak	laktak		jelen_mult_vala			
 2Krón 28:18	37	vala	vala		segedige	vala_segedige_jelen			36
@@ -30634,7 +30634,7 @@ Ruth 4:22	7	nemzé	nemzé	nemzette		igealak:mult.targyas.E3
 2Krón 28:24	19	bezárá	bezárá	bezárta		igealak_ritka:mult.targyas.E3+tobbseg:szabaly+sonnet		szabaly:bezárta; llm:bezárta(tő-őr ok)	
 2Krón 28:24	21	csinála	csinála	csinált		igealak:mult.alanyi.E3			
 2Krón 28:25	6	építe	építe	épített		igealak:mult.alanyi.E3			
-2Krón 28:25	14	ingerlé	ingerlé	ingerlé				kor3_szabaly:ingerlette; kor3_opus:ingerelte(tő-őr ok)	
+2Krón 28:25	14	ingerlé	ingerlé	ingerelte		kor3:opus_tanusitott	szabaly_nem_tanusitott		
 2Krón 28:27	1	Meghala	Meghala	Meghalt		igealak:mult.alanyi.E3			
 2Krón 28:27	8	eltemeték	eltemeték	eltemették		igealak_kezi			
 2Krón 28:27	14	vivék	vivék	vitték		igealak:mult.E1	ek_E1_T3		
@@ -30814,7 +30814,7 @@ Ruth 4:22	7	nemzé	nemzé	nemzette		igealak:mult.targyas.E3
 2Krón 30:22	8	kik	akik	akik		nevmas:ki			
 2Krón 30:22	12	valának	valának	voltak		vala_letige			
 2Krón 30:22	23	áldozván	áldozván	áldozva		igealak_ritka:hatarozoi_igenev+tobbseg:szabaly+sonnet		szabaly:áldozva; llm:áldozva(tő-őr ok)	
-2Krón 30:22	27	dícsérvén	dicsérvén	dicsérvén		szotag+igealak_ritka:hatarozoi_igenev		szabaly:dícsérve; opus:dicsérve(tő-őr bukott)	
+2Krón 30:22	27	dícsérvén	dicsérvén	dicsérve		szotag+igealak_ritka:hatarozoi_igenev+tobbseg:szabaly+opus		szabaly:dícsérve; opus:dicsérve(tő-őr ok)	
 2Krón 30:23	2	tarta	tarta	tartott		igealak_ritka:mult.alanyi.E3+tobbseg:szabaly+sonnet		szabaly:tartott; llm:tartott(tő-őr ok)	
 2Krón 30:24	6	ada	ada	adott		igealak:mult.alanyi.E3			
 2Krón 30:24	17	adának	adának	adtak		igealak:mult.T3	targyas_heur		
@@ -31101,7 +31101,7 @@ Ruth 4:22	7	nemzé	nemzé	nemzette		igealak:mult.targyas.E3
 2Krón 34:4	1	Leronták	Leronták	Lerontották		gyanu:elemezetlen:-ák+tobbseg:szabaly+sonnet+opus		szabaly:Lerontották; llm:Lerontották(tő-őr ok); opus:Lerontották(tő-őr ok)	
 2Krón 34:4	12	lehányatá	lehányatá	lehányatta		igealak_ritka:mult.targyas.E3+tobbseg:szabaly+sonnet		szabaly:lehányatta; llm:lehányatta(tő-őr ok)	
 2Krón 34:4	22	szétrombolá	szétrombolá	szétrombolta		kor3:szabaly+opus			
-2Krón 34:4	25	töreté	töreté	töreté				kor3_szabaly:törette; kor3_opus:törte(tő-őr ok)	
+2Krón 34:4	25	töreté	töreté	törte		kor3:opus_tanusitott	szabaly_nem_tanusitott		
 2Krón 34:4	27	elhinteté	elhinteté	elhintette		igealak_ritka:mult.targyas.E3+tobbseg:szabaly+sonnet		szabaly:elhintette; llm:elhintette(tő-őr ok)	
 2Krón 34:4	30	a			osszevonva	nevmas			31
 2Krón 34:4	31	kik	akik	akik		nevmas:ki			
@@ -31255,7 +31255,7 @@ Ruth 4:22	7	nemzé	nemzé	nemzette		igealak:mult.targyas.E3
 2Krón 35:12	22	mint	amint	amint		nevmas:hatarozo			
 2Krón 35:12	31	elválaszták	elválaszták	elválasztották		gyanu:elemezetlen:-ák+tobbseg:szabaly+sonnet+opus		szabaly:elválasztották; llm:elválasztották(tő-őr ok); opus:elválasztották(tő-őr ok)	
 2Krón 35:13	2	megsüték	megsüték	megsütötték		igealak_ritka:mult.E1+tobbseg:szabaly+sonnet+opus	ek_E1_T3	szabaly:E1=megsütöttem|T3=megsütötték; llm:megsütötték(tő-őr ok); opus:megsütötték(tő-őr ok)	
-2Krón 35:13	13	megfőzék	megfőzék	megfőzék				kor3_szabaly:megfőzött; kor3_opus:megfőzték(tő-őr ok)	
+2Krón 35:13	13	megfőzék	megfőzék	megfőzték		kor3:opus_tanusitott	szabaly_nem_tanusitott		
 2Krón 35:13	21	adák	adák	adták		gyanu_kezi			
 2Krón 35:14	8	elkészíték	elkészíték	elkészítették		igealak_ritka:mult.E1+tobbseg:szabaly+sonnet+opus	ek_E1_T3	szabaly:E1=elkészítettem|T3=elkészítették; llm:elkészítették(tő-őr ok); opus:elkészítették(tő-őr ok)	
 2Krón 35:14	24	valának	valának	voltak		vala_letige			
@@ -31504,12 +31504,12 @@ Ezsd 3:10	14	állaták	állaták	állatták		kor3:szabaly+opus
 Ezsd 3:10	24	czimbalmokkal	cimbalmokkal	cimbalmokkal		karakter			
 Ezsd 3:10	26	dícsérjék	dicsérjék	dicsérjék		szotag			
 Ezsd 3:11	2	énekelének	énekelének	énekeltek		igealak_ritka:mult.T3+tobbseg:szabaly+sonnet		szabaly:énekeltek; llm:énekeltek(tő-őr ok)	
-Ezsd 3:11	3	dícsérvén	dicsérvén	dicsérvén		szotag+igealak_ritka:hatarozoi_igenev		szabaly:dícsérve; opus:dicsérve(tő-őr bukott)	
+Ezsd 3:11	3	dícsérvén	dicsérvén	dicsérve		szotag+igealak_ritka:hatarozoi_igenev+tobbseg:szabaly+opus		szabaly:dícsérve; opus:dicsérve(tő-őr ok)	
 Ezsd 3:11	8	adván	adván	adva		igealak:hatarozoi_igenev			
 Ezsd 3:11	9	néki	neki	neki		neki			
 Ezsd 3:11	26	kiált	kiált	kiáltott		jelen_mult_vala			
 Ezsd 3:11	27	vala	vala		segedige	vala_segedige_jelen			26
-Ezsd 3:11	28	dícsérvén	dicsérvén	dicsérvén		szotag+igealak_ritka:hatarozoi_igenev		szabaly:dícsérve; opus:dicsérve(tő-őr bukott)	
+Ezsd 3:11	28	dícsérvén	dicsérvén	dicsérve		szotag+igealak_ritka:hatarozoi_igenev+tobbseg:szabaly+opus		szabaly:dícsérve; opus:dicsérve(tő-őr ok)	
 Ezsd 3:12	15	a			osszevonva	nevmas			16
 Ezsd 3:12	16	kik	akik	akik		nevmas:ki			
 Ezsd 3:12	18	vala	vala		segedige	vala_segedige_mult			17
@@ -31577,7 +31577,7 @@ Ezsd 4:23	6	felolvastaték	felolvastaték	felolvastatott		igealak_ritka:mult.E1+
 Ezsd 4:23	11	kanczellár	kancellár	kancellár		karakter			
 Ezsd 4:23	15	menének	menének	mentek		igealak:mult.T3			
 Ezsd 4:23	22	megakadályozák	megakadályozák	megakadályozták		gyanu:elemezetlen:-ák+tobbseg:szabaly+sonnet		szabaly:megakadályozták; llm:megakadályozták(tő-őr ok)	
-Ezsd 4:24	2	megszünék	megszünék	megszünék				kor3_szabaly:megszüntem; kor3_opus:megszűnt(tő-őr ok)	
+Ezsd 4:24	2	megszünék	megszünék	megszűnt		kor3:opus_tanusitott	szabaly_nem_tanusitott		
 Ezsd 5:1	2	prófétálának	prófétálának	prófétáltak		igealak_ritka:mult.T3+tobbseg:szabaly+sonnet	targyas_heur	szabaly:alanyi=prófétáltak|targyas=prófétálták; llm:prófétáltak(tő-őr ok)	
 Ezsd 5:1	15	a			osszevonva	nevmas			16
 Ezsd 5:1	16	kik	akik	akik		nevmas:ki			
@@ -32187,7 +32187,7 @@ Neh 5:12	20	megeskettetém	megeskettetém	megeskettettem		gyanu:elemezetlen:-tet
 Neh 5:13	3	megrázám	megrázám	megráztam		kor3:szabaly+opus			
 Neh 5:13	5	mondék	mondék	mondtam		igealak:mult.E1			
 Neh 5:13	33	monda	monda	mondta		igealak:mult.alanyi.E3			
-Neh 5:13	39	dícsérék	dicsérék	dicsérék		szotag+igealak_ritka:mult.E3		szabaly:dícsért; opus:dicsérték(tő-őr bukott)	
+Neh 5:13	39	dícsérék	dicsérék	dicsérék		szotag+igealak_ritka:mult.E3		szabaly:dícsért; opus:dicsérték(tő-őr ok)	
 Neh 5:14	15	harminczkettedik	harminckettedik	harminckettedik		karakter			
 Neh 5:14	31	evénk	evénk	evénk		gyanu:elemezetlen:-énk		llm:ettünk(tő-őr bukott); opus:ettük(tő-őr bukott)	
 Neh 5:15	5	a			osszevonva	nevmas			6
@@ -32986,7 +32986,7 @@ Eszt 3:11	18	a			osszevonva	nevmas			19
 Eszt 3:11	19	mi	ami	ami		ami:V1_irasjel_elotte+nevmas:mi			
 Eszt 3:11	20	néked	neked	neked		neki			
 Eszt 3:12	1	Előhivatának	Előhivatának	Előhivattak		igealak_ritka:mult.T3+tobbseg:szabaly+sonnet	targyas_heur	szabaly:alanyi=Előhivattak|targyas=Előhivatták; llm:Előhivattak(tő-őr ok)	
-Eszt 3:12	12	megiraték	megiraték	megiraték		igealak_ritka:mult.E1		szabaly:megirattam; llm:megíratott(tő-őr bukott); opus:megiratott(tő-őr ok)	
+Eszt 3:12	12	megiraték	megiraték	megiratott		igealak_ritka:mult.E1+tobbseg:opus_tanusitott	szabaly_nem_tanusitott	szabaly:megirattam; llm:megíratott(tő-őr bukott); opus:megiratott(tő-őr ok)	
 Eszt 3:12	15	a			osszevonva	nevmas			16
 Eszt 3:12	16	miként	amiként	amiként		nevmas:hatarozo			
 Eszt 3:12	18	parancsolá	parancsolá	parancsolta		igealak:mult.targyas.E3			
@@ -33232,7 +33232,7 @@ Eszt 7:9	40	reá	rá	rá		rea
 Eszt 7:10	1	Felakaszták	Felakaszták	Felakasztották		kor3:szabaly+opus			
 Eszt 7:10	6	a			osszevonva	nevmas			7
 Eszt 7:10	7	melyet	amelyet	amelyet		nevmas:mely			
-Eszt 7:10	11	megszünék	megszünék	megszünék				kor3_szabaly:megszüntem; kor3_opus:megszűnt(tő-őr ok)	
+Eszt 7:10	11	megszünék	megszünék	megszűnt		kor3:opus_tanusitott	szabaly_nem_tanusitott		
 Eszt 8:1	4	adá	adá	adta		igealak:mult.targyas.E3			
 Eszt 8:1	16	beméne	beméne	bement		igealak:mult.alanyi.E3			
 Eszt 8:1	21	elmondotta	elmondotta	elmondta		kotohang_mult			
@@ -33383,7 +33383,7 @@ Eszt 9:31	12	nékik	nekik	nekik		neki
 Eszt 9:31	20	a			osszevonva	nevmas			21
 Eszt 9:31	21	mint	amint	amint		nevmas:hatarozo			
 Eszt 9:32	4	megerősíté	megerősíté	megerősítette		igealak_ritka:mult.targyas.E3+tobbseg:szabaly+sonnet		szabaly:megerősítette; llm:megerősítette(tő-őr ok)	
-Eszt 9:32	11	iraték	iraték	iraték		igealak_ritka:mult.E1		szabaly:irattam; llm:íratott(tő-őr bukott); opus:iratott(tő-őr ok)	
+Eszt 9:32	11	iraték	iraték	iratott		igealak_ritka:mult.E1+tobbseg:opus_tanusitott	szabaly_nem_tanusitott	szabaly:irattam; llm:íratott(tő-őr bukott); opus:iratott(tő-őr ok)	
 Eszt 10:1	5	vettete	vettete	vettetett		igealak_ritka:mult.alanyi.E3+tobbseg:szabaly+sonnet		szabaly:vettetett; llm:vettetett(tő-őr ok)	
 Eszt 10:2	16	felmagasztalá	felmagasztalá	felmagasztalta		igealak_ritka:mult.targyas.E3+tobbseg:szabaly+sonnet		szabaly:felmagasztalta; llm:felmagasztalta(tő-őr ok)	
 Eszt 10:3	21	a			osszevonva	nevmas			22
@@ -35853,7 +35853,7 @@ Zsolt 106:26	5	reájok	rájuk	rájuk		rea+jok
 Zsolt 106:29	6	reájok	rájuk	rájuk		rea+jok			
 Zsolt 106:30	9	vége	vége	vége		gyanu:vegzodes:-e+tobbseg:sonnet+opus		szabaly:végett; llm:vége(tő-őr ok); opus:vége(tő-őr ok)	
 Zsolt 106:30	10	lőn	lőn	lett		lon			
-Zsolt 106:31	3	tulajdoníttaték	tulajdoníttaték	tulajdoníttaték		igealak_ritka:mult.E1		szabaly:tulajdoníttaott; llm:tulajdonítatott(tő-őr bukott); opus:tulajdoníttatott(tő-őr ok)	
+Zsolt 106:31	3	tulajdoníttaték	tulajdoníttaték	tulajdoníttatott		igealak_ritka:mult.E1+tobbseg:opus_tanusitott	szabaly_nem_tanusitott	szabaly:tulajdoníttaott; llm:tulajdonítatott(tő-őr bukott); opus:tulajdoníttatott(tő-őr ok)	
 Zsolt 106:31	4	néki	neki	neki		neki			
 Zsolt 106:32	1	Megharagíták	Megharagíták	Megharagították		kor4:szabaly+opus			
 Zsolt 106:33	2	megkeseríték	megkeseríték	megkeseríték				kor4_szabaly:megkeserítettem; kor4_opus:megkeserítették(tő-őr ok)	
@@ -38216,7 +38216,7 @@ Préd 12:15	5	hallván	hallván	hallva		igealak:hatarozoi_igenev
 Ézs 22:7	2	lészen	lészen	lesz		gyanu_kezi			
 Ézs 22:11	16	a			osszevonva	nevmas			17
 Ézs 22:11	17	ki	aki	aki		nevmas:ki			
-Ézs 22:11	19	cselekvé	cselekvé	cselekvé				kor3_szabaly:cselekvette; kor3_opus:cselekedte(tő-őr ok)	
+Ézs 22:11	19	cselekvé	cselekvé	cselekedte		kor3:opus_tanusitott	szabaly_nem_tanusitott		
 Ézs 22:11	21	a			osszevonva	nevmas			22
 Ézs 22:11	22	ki	aki	aki		nevmas:ki			
 Ézs 22:11	24	elvégzé	elvégzé	elvégezte		igealak_ritka:mult.targyas.E3+tobbseg:sonnet+opus		szabaly:elvégzette; llm:elvégezte(tő-őr ok); opus:elvégezte(tő-őr ok)	
@@ -39603,7 +39603,7 @@ Jer 1:3	26	vala	vala	volt		vala_letige
 Jer 1:4	1	Szóla	Szóla	Szólt		igealak:mult.alanyi.E3			
 Jer 1:4	5	nékem	nekem	nekem		neki			
 Jer 1:4	6	mondván	mondván	mondva		igealak:hatarozoi_igenev			
-Jer 1:5	11	kijövél	kijövél	kijövél				kor3_szabaly:kijövtél; kor3_opus:kijöttél(tő-őr ok)	
+Jer 1:5	11	kijövél	kijövél	kijöttél		kor3:opus_tanusitott	szabaly_nem_tanusitott		
 Jer 1:6	2	mondék	mondék	mondtam		igealak:mult.E1			
 Jer 1:7	4	monda	monda	mondta		igealak:mult.alanyi.E3			
 Jer 1:7	5	nékem	nekem	nekem		neki			
@@ -41631,7 +41631,7 @@ Jer 37:14	11	hallgata	hallgata	hallgatott		igealak:mult.alanyi.E3
 Jer 37:14	15	megfogá	megfogá	megfogta		igealak_ritka:mult.targyas.E3+tobbseg:szabaly+sonnet		szabaly:megfogta; llm:megfogta(tő-őr ok)	
 Jer 37:14	18	vivé	vivé	vitte		igealak:mult.targyas.E3			
 Jer 37:15	4	megharaguvának	megharaguvának	megharaguvának		gyanu:elemezetlen:v-tő		llm:megharagudtak(tő-őr bukott); opus:megharagudtak(tő-őr bukott)	
-Jer 37:15	7	megvereték	megvereték	megvereték		igealak_ritka:mult.E1		szabaly:megverettem; llm:megverettetett(tő-őr ok); opus:megveretett(tő-őr ok)	
+Jer 37:15	7	megvereték	megvereték	megveretett		igealak_ritka:mult.E1+tobbseg:opus_tanusitott	szabaly_nem_tanusitott	szabaly:megverettem; llm:megverettetett(tő-őr ok); opus:megveretett(tő-őr ok)	
 Jer 37:15	10	veték	veték	vetették		gyanu:elemezetlen:-ék+tobbseg:szabaly+opus		szabaly:vetették; llm:vették(tő-őr ok); opus:vetették(tő-őr ok)	
 Jer 37:15	20	vala	vala		segedige	vala_segedige_mult			19
 Jer 37:16	4	tömlöczbe	tömlöcbe	tömlöcbe		karakter			
@@ -44574,7 +44574,7 @@ Ez 32:1	17	mondván	mondván	mondva		igealak:hatarozoi_igenev
 Ez 32:2	11	néki	neki	neki		neki			
 Ez 32:2	15	elvesztél	elvesztél	elvesztél		igealak_ritka:mult.E2+tobbseg:sonnet+opus		szabaly:alanyi=elvesztettél|targyas=elvesztetted; llm:elvesztél(tő-őr ok); opus:elvesztél(tő-őr ok)	
 Ez 32:2	19	valál	valál	voltál		vala_letige			
-Ez 32:2	26	kijövél	kijövél	kijövél				kor3_szabaly:kijövtél; kor3_opus:kijöttél(tő-őr ok)	
+Ez 32:2	26	kijövél	kijövél	kijöttél		kor3:opus_tanusitott	szabaly_nem_tanusitott		
 Ez 32:2	29	megháborítád	megháborítád	megháborítottad		kor3:szabaly+opus			
 Ez 32:3	8	rád	rád	rád		gyanu:kivetel_jegy_nelkul+tobbseg:sonnet+opus		llm:rád(tő-őr ok); opus:rád(tő-őr ok)	
 Ez 32:4	10	reád	rád	rád		rea+gyanu:kivetel_jegy_nelkul			
@@ -46000,7 +46000,7 @@ Dán 6:16	22	a			osszevonva	nevmas			23
 Dán 6:16	23	kinek	akinek	akinek		nevmas:ki			
 Dán 6:17	2	hozának	hozának	hoztak		igealak:mult.T3	targyas_heur		
 Dán 6:17	7	tevék	tevék	tették		igealak:mult.E1	ek_E1_T3		
-Dán 6:17	12	megpecsétlé	megpecsétlé	megpecsétlé				kor3_szabaly:megpecsétlette; kor3_opus:megpecsételte(tő-őr ok)	
+Dán 6:17	12	megpecsétlé	megpecsétlé	megpecsételte		kor3:opus_tanusitott	szabaly_nem_tanusitott		
 Dán 6:18	2	eltávozék	eltávozék	eltávozott		igealak:mult.E3			
 Dán 6:18	10	tölté	tölté	töltötte		igealak_ritka:mult.targyas.E3+tobbseg:szabaly+sonnet		szabaly:töltötte; llm:töltötte(tő-őr ok)	
 Dán 6:18	17	hozata	hozata	hozatott		igealak_ritka:mult.alanyi.E3+tobbseg:szabaly+sonnet		szabaly:hozatott; llm:hozatott(tő-őr ok)	
@@ -47151,7 +47151,7 @@ Jón 4:7	10	megszúrá	megszúrá	megszúrta		igealak_ritka:mult.targyas.E3+tobb
 Jón 4:7	15	elszárada	elszárada	elszáradt		igealak_ritka:mult.alanyi.E3+tobbseg:sonnet+opus		szabaly:elszáradott; llm:elszáradt(tő-őr ok); opus:elszáradt(tő-őr ok)	
 Jón 4:8	2	lőn	lőn	lett		lon			
 Jón 4:8	8	rendele	rendele	rendelt		igealak:mult.alanyi.E3			
-Jón 4:8	19	elbágyada	elbágyada	elbágyada				kor4_szabaly:elbágyadott; kor4_opus:elbágyadt(tő-őr ok)	
+Jón 4:8	19	elbágyada	elbágyada	elbágyadt		kor4:opus_tanusitott	szabaly_nem_tanusitott		
 Jón 4:8	20	Kiváná	Kíváná	Kívánta		szoto_94+igealak_ritka:mult.targyas.E3+tobbseg:szabaly+opus		szabaly:Kívánta; opus:Kívánta(tő-őr ok)	
 Jón 4:8	26	monda	monda	mondta		igealak:mult.alanyi.E3			
 Jón 4:9	2	monda	monda	mondta		igealak:mult.alanyi.E3			
@@ -48153,7 +48153,7 @@ Mal 3:5	33	kik	akik	akik		nevmas:ki
 Mal 3:10	29	néktek	nektek	nektek		neki			
 Mal 3:10	37	reátok	rátok	rátok		rea			
 Mal 3:12	11	lesztek	lesztek	lesztek		gyanu:kivetel_jegy_nelkul+tobbseg:sonnet+opus		llm:lesztek(tő-őr ok); opus:lesztek(tő-őr ok)	
-Mal 3:16	16	iraték	iraték	iraték		igealak_ritka:mult.E1		szabaly:irattam; llm:íratott(tő-őr bukott); opus:iratott(tő-őr ok)	
+Mal 3:16	16	iraték	iraték	iratott		igealak_ritka:mult.E1+tobbseg:opus_tanusitott	szabaly_nem_tanusitott	szabaly:irattam; llm:íratott(tő-őr bukott); opus:iratott(tő-őr ok)	
 Mal 3:16	20	a			osszevonva	nevmas			21
 Mal 3:16	21	kik	akik	akik		nevmas:ki			
 Mal 3:17	10	a			osszevonva	nevmas			11
@@ -50216,7 +50216,7 @@ Mt 21:33	4	Vala	Vala	Volt		vala_letige
 Mt 21:33	7	a			osszevonva	nevmas			8
 Mt 21:33	8	ki	aki	aki		nevmas:ki			
 Mt 21:33	10	plántála	plántála	plántált		kor4:szabaly+opus			
-Mt 21:33	14	körülvevé	körülvevé	körülvevé				kor3_szabaly:körülvevte; kor3_opus:körülvette(tő-őr ok)	
+Mt 21:33	14	körülvevé	körülvevé	körülvette		kor3:opus_tanusitott	szabaly_nem_tanusitott		
 Mt 21:33	16	ása	ása	ásott		gyanu:elemezetlen:-a+tobbseg:sonnet+opus		llm:ásott(tő-őr ok); opus:ásott(tő-őr ok)	
 Mt 21:33	21	építe	építe	épített		igealak:mult.alanyi.E3			
 Mt 21:33	23	kiadá	kiadá	kiadta		igealak_ritka:mult.targyas.E3+tobbseg:szabaly+sonnet		szabaly:kiadta; llm:kiadta(tő-őr ok)	
@@ -51411,7 +51411,7 @@ Mk 2:6	9	ülnek	ülnek	ültek		jelen_mult_vala
 Mk 2:6	10	vala	vala		segedige	vala_segedige_jelen			9
 Mk 2:6	11	szívökben	szívökben	szívükben		ok_birtokos			
 Mk 2:6	13	okoskodván	okoskodván	okoskodva		igealak_ritka:hatarozoi_igenev+tobbseg:szabaly+sonnet		szabaly:okoskodva; llm:okoskodva(tő-őr ok)	
-Mk 2:8	4	észrevevé	észrevevé	észrevevé				kor3_szabaly:észrevevte; kor3_opus:észrevette(tő-őr ok)	
+Mk 2:8	4	észrevevé	észrevevé	észrevette		kor3:opus_tanusitott	szabaly_nem_tanusitott		
 Mk 2:8	14	monda	monda	mondta		igealak:mult.alanyi.E3			
 Mk 2:8	15	nékik	nekik	nekik		neki			
 Mk 2:9	9	néked	neked	neked		neki			
@@ -52771,7 +52771,7 @@ Mk 11:33	11	nékik	nekik	nekik		neki
 Mk 11:33	16	néktek	nektek	nektek		neki			
 Mk 12:1	2	kezde	kezde	kezdett		igealak:mult.alanyi.E3			
 Mk 12:1	3	nékik	nekik	nekik		neki			
-Mk 12:1	11	körülvevé	körülvevé	körülvevé				kor3_szabaly:körülvevte; kor3_opus:körülvette(tő-őr ok)	
+Mk 12:1	11	körülvevé	körülvevé	körülvette		kor3:opus_tanusitott	szabaly_nem_tanusitott		
 Mk 12:1	15	ása	ása	ásott		gyanu:elemezetlen:-a+tobbseg:sonnet+opus		llm:ásott(tő-őr ok); opus:ásott(tő-őr ok)	
 Mk 12:1	18	építe	építe	épített		igealak:mult.alanyi.E3			
 Mk 12:1	20	kiadá	kiadá	kiadta		igealak_ritka:mult.targyas.E3+tobbseg:szabaly+sonnet		szabaly:kiadta; llm:kiadta(tő-őr ok)	
@@ -53448,7 +53448,7 @@ Mk 16:10	8	valának	valának	voltak		vala_letige
 Mk 16:10	12	sírnak	sírnak	sírtak		jelen_mult_vala			
 Mk 16:10	13	vala	vala		segedige	vala_segedige_jelen			12
 Mk 16:11	10	vala	vala		segedige	vala_segedige_mult			9
-Mk 16:11	12	hivék	hivék	hivék		gyanu:elemezetlen:-ék		szabaly:hivték; llm:hittek(tő-őr ok); opus:hitték(tő-őr ok)	
+Mk 16:11	12	hivék	hivék	hittek		gyanu:elemezetlen:-ék+tobbseg:alanyi_targyas	targyas_heur	szabaly:hivték; llm:hittek(tő-őr ok); opus:hitték(tő-őr ok)	
 Mk 16:12	5	jelenék	jelenék	jelent		igealak_ritka:mult.E1+tobbseg:szabaly+sonnet		szabaly:jelent; llm:jelent(tő-őr ok)	
 Mk 16:12	13	mennek	mennek	mentek		jelen_mult_vala			
 Mk 16:12	14	vala	vala		segedige	vala_segedige_jelen			13
@@ -53693,7 +53693,7 @@ Luk 2:8	8	kik	akik	akik		nevmas:ki
 Luk 2:8	18	nyájok	nyájuk	nyájuk		jok			
 Luk 2:9	6	hozzájok	hozzájuk	hozzájuk		jok			
 Luk 2:9	7	jöve	jöve	jött		igealak:mult.alanyi.E3			
-Luk 2:9	12	körülvevé	körülvevé	körülvevé				kor3_szabaly:körülvevte; kor3_opus:körülvette(tő-őr ok)	
+Luk 2:9	12	körülvevé	körülvevé	körülvette		kor3:opus_tanusitott	szabaly_nem_tanusitott		
 Luk 2:9	17	megfélemlének	megfélemlének	megfélemlettek		igealak:mult.T3			
 Luk 2:10	2	monda	monda	mondta		igealak:mult.alanyi.E3			
 Luk 2:10	5	nékik	nekik	nekik		neki			
@@ -53735,7 +53735,7 @@ Luk 2:19	9	forgatja	forgatja	forgatta		jelen_mult_vala	mult_korpuszban_nincs
 Luk 2:19	10	vala	vala		segedige	vala_segedige_jelen			9
 Luk 2:20	4	visszatérének	visszatérének	visszatértek		igealak:mult.T3			
 Luk 2:20	5	dicsőítvén	dicsőítvén	dicsőítve		igealak_ritka:hatarozoi_igenev+tobbseg:szabaly+sonnet		szabaly:dicsőítve; llm:dicsőítve(tő-őr ok)	
-Luk 2:20	7	dícsérvén	dicsérvén	dicsérvén		szotag+igealak_ritka:hatarozoi_igenev		szabaly:dícsérve; opus:dicsérve(tő-őr bukott)	
+Luk 2:20	7	dícsérvén	dicsérvén	dicsérve		szotag+igealak_ritka:hatarozoi_igenev+tobbseg:szabaly+opus		szabaly:dícsérve; opus:dicsérve(tő-őr ok)	
 Luk 2:20	13	a			osszevonva	nevmas			14
 Luk 2:20	14	miket	amiket	amiket		nevmas:mi			
 Luk 2:20	18	a			osszevonva	nevmas			19
@@ -54202,7 +54202,7 @@ Luk 6:11	7	vala	vala		segedige	vala_segedige_jelen			6
 Luk 6:12	2	lőn	lőn	lett		lon			
 Luk 6:12	6	kiméne	kiméne	kiment		igealak:mult.alanyi.E3			
 Luk 6:12	17	tölté	tölté	töltötte		igealak_ritka:mult.targyas.E3+tobbseg:szabaly+sonnet		szabaly:töltötte; llm:töltötte(tő-őr ok)	
-Luk 6:13	3	megvirrada	megvirrada	megvirrada				kor4_szabaly:megvirradott; kor4_opus:megvirradt(tő-őr ok)	
+Luk 6:13	3	megvirrada	megvirrada	megvirradt		kor4:opus_tanusitott	szabaly_nem_tanusitott		
 Luk 6:13	4	előszólítá	előszólítá	előszólította		igealak_ritka:mult.targyas.E3+tobbseg:szabaly+sonnet		szabaly:előszólította; llm:előszólította(tő-őr ok)	
 Luk 6:13	9	kiválaszta	kiválaszta	kiválasztott		igealak_ritka:mult.alanyi.E3+tobbseg:szabaly+sonnet		szabaly:kiválasztott; llm:kiválasztott(tő-őr ok)	
 Luk 6:13	13	a			osszevonva	nevmas			14
@@ -55511,7 +55511,7 @@ Luk 16:7	2	monda	monda	mondta		igealak:mult.alanyi.E3
 Luk 16:7	10	monda	monda	mondta		igealak:mult.alanyi.E3			
 Luk 16:7	15	monda	monda	mondta		igealak:mult.alanyi.E3			
 Luk 16:7	23	nyolczvanat	nyolcvanat	nyolcvanat		karakter			
-Luk 16:8	2	dícséré	dicséré	dicséré		szotag+igealak_ritka:mult.targyas.E3		szabaly:dícsérte; opus:dicsérte(tő-őr bukott)	
+Luk 16:8	2	dícséré	dicséré	dicsérte		szotag+igealak_ritka:mult.targyas.E3+tobbseg:szabaly+opus		szabaly:dícsérte; opus:dicsérte(tő-őr ok)	
 Luk 16:9	4	néktek	nektek	nektek		neki			
 Luk 16:10	1	A			osszevonva	nevmas			2
 Luk 16:10	2	ki	Aki	Aki		nevmas:ki			
@@ -56595,7 +56595,7 @@ Luk 24:36	12	nékik	nekik	nekik		neki
 Luk 24:36	14	néktek	nektek	nektek		neki			
 Luk 24:37	1	Megrémülvén	Megrémülvén	Megrémülve		igealak_ritka:hatarozoi_igenev+tobbseg:szabaly+sonnet		szabaly:Megrémülve; llm:Megrémülve(tő-őr ok)	
 Luk 24:37	4	félvén	félvén	félve		igealak_ritka:hatarozoi_igenev+tobbseg:szabaly+sonnet		szabaly:félve; llm:félve(tő-őr ok)	
-Luk 24:37	6	hivék	hivék	hivék		gyanu:elemezetlen:-ék		szabaly:hivték; llm:hittek(tő-őr ok); opus:hitték(tő-őr ok)	
+Luk 24:37	6	hivék	hivék	hitték		gyanu:elemezetlen:-ék+tobbseg:alanyi_targyas	targyas_heur	szabaly:hivték; llm:hittek(tő-őr ok); opus:hitték(tő-őr ok)	
 Luk 24:38	2	monda	monda	mondta		igealak:mult.alanyi.E3			
 Luk 24:38	3	nékik	nekik	nekik		neki			
 Luk 24:39	24	a			osszevonva	nevmas			25
@@ -56633,7 +56633,7 @@ Luk 24:51	9	felviteték	felviteték	felvitetett		igealak_ritka:mult.E1+tobbseg:s
 Luk 24:52	3	imádván	imádván	imádva		igealak_ritka:hatarozoi_igenev+tobbseg:szabaly+sonnet		szabaly:imádva; llm:imádva(tő-őr ok)	
 Luk 24:52	5	visszatérének	visszatérének	visszatértek		igealak:mult.T3			
 Luk 24:53	5	valának	valának	voltak		vala_letige			
-Luk 24:53	6	dícsérvén	dicsérvén	dicsérvén		szotag+igealak_ritka:hatarozoi_igenev		szabaly:dícsérve; opus:dicsérve(tő-őr bukott)	
+Luk 24:53	6	dícsérvén	dicsérvén	dicsérve		szotag+igealak_ritka:hatarozoi_igenev+tobbseg:szabaly+opus		szabaly:dícsérve; opus:dicsérve(tő-őr ok)	
 Luk 24:53	8	áldván	áldván	áldva		igealak_ritka:hatarozoi_igenev+tobbseg:szabaly+sonnet		szabaly:áldva; llm:áldva(tő-őr ok)	
 Ján 1:1	2	vala	vala	volt		vala_letige			
 Ján 1:1	8	vala	vala	volt		vala_letige			
@@ -57367,7 +57367,7 @@ Ján 6:14	17	ki	aki	aki		nevmas:ki
 Ján 6:14	19	vala	vala	volt		vala_letige			
 Ján 6:15	3	a			osszevonva	nevmas			4
 Ján 6:15	4	mint	amint	amint		nevmas:hatarozo			
-Ján 6:15	5	észrevevé	észrevevé	észrevevé				kor3_szabaly:észrevevte; kor3_opus:észrevette(tő-őr ok)	
+Ján 6:15	5	észrevevé	észrevevé	észrevette		kor3:opus_tanusitott	szabaly_nem_tanusitott		
 Ján 6:15	13	királylyá	királlyá	királlyá		karakter			
 Ján 6:15	16	elvonula	elvonula	elvonult		igealak_ritka:mult.alanyi.E3+tobbseg:szabaly+sonnet		szabaly:elvonult; llm:elvonult(tő-őr ok)	
 Ján 6:16	3	estveledék	estveledék	estveledék				kor4_szabaly:estveledtem; kor4_opus:estveledett(tő-őr ok)	
@@ -57963,7 +57963,7 @@ Ján 9:16	28	lőn	lőn	lett		lon
 Ján 9:17	2	mondának	mondának	mondták		igealak:mult.T3			
 Ján 9:17	11	megnyitá	megnyitá	megnyitotta		igealak:mult.targyas.E3			
 Ján 9:17	16	monda	monda	mondta		igealak:mult.alanyi.E3			
-Ján 9:18	2	hivék	hivék	hivék		gyanu:elemezetlen:-ék		szabaly:hivték; llm:hittek(tő-őr ok); opus:hitték(tő-őr ok)	
+Ján 9:18	2	hivék	hivék	hittek		gyanu:elemezetlen:-ék+tobbseg:alanyi_targyas	targyas_heur	szabaly:hivték; llm:hittek(tő-őr ok); opus:hitték(tő-őr ok)	
 Ján 9:18	9	vala	vala	volt		vala_letige			
 Ján 9:18	11	megjöve	megjöve	megjött		igealak_ritka:mult.alanyi.E3+tobbseg:szabaly+sonnet		szabaly:megjött; llm:megjött(tő-őr ok)	
 Ján 9:18	15	előhívák	előhívák	előhívták		gyanu:elemezetlen:-ák+tobbseg:szabaly+sonnet		szabaly:előhívták; llm:előhívták(tő-őr ok)	
@@ -61756,7 +61756,7 @@ ApCsel 22:29	2	eltávozának	eltávozának	eltávoztak		igealak_ritka:mult.T3+to
 ApCsel 22:29	6	a			osszevonva	nevmas			7
 ApCsel 22:29	7	kik	akik	akik		nevmas:ki			
 ApCsel 22:29	10	akarák	akarák	akarták		gyanu_kezi			
-ApCsel 22:29	15	megijede	megijede	megijede				kor4_szabaly:megijedett; kor4_opus:megijedt(tő-őr ok)	
+ApCsel 22:29	15	megijede	megijede	megijedt		kor4:opus_tanusitott	szabaly_nem_tanusitott		
 ApCsel 22:30	4	akarván	akarván	akarva		igealak:hatarozoi_igenev			
 ApCsel 22:30	13	feloldatá	feloldatá	feloldatta		kor3:szabaly+opus			
 ApCsel 22:30	17	megparancsolá	megparancsolá	megparancsolta		igealak:mult.targyas.E3			
@@ -62375,7 +62375,7 @@ Róm 3:26	20	ki	aki	aki		nevmas:ki
 Róm 3:30	5	a			osszevonva	nevmas			6
 Róm 3:30	6	ki	aki	aki		nevmas:ki			
 Róm 4:3	6	Hitt	Hitt	Hitt		gyanu:kivetel_jegy_nelkul+tobbseg:sonnet+opus		llm:Hitt(tő-őr ok); opus:Hitt(tő-őr ok)	
-Róm 4:3	12	tulajdoníttaték	tulajdoníttaték	tulajdoníttaték		igealak_ritka:mult.E1		szabaly:tulajdoníttaott; llm:tulajdonítatott(tő-őr bukott); opus:tulajdoníttatott(tő-őr ok)	
+Róm 4:3	12	tulajdoníttaték	tulajdoníttaték	tulajdoníttatott		igealak_ritka:mult.E1+tobbseg:opus_tanusitott	szabaly_nem_tanusitott	szabaly:tulajdoníttaott; llm:tulajdonítatott(tő-őr bukott); opus:tulajdoníttatott(tő-őr ok)	
 Róm 4:3	15	néki	neki	neki		neki			
 Róm 4:4	3	a			osszevonva	nevmas			4
 Róm 4:4	4	ki	aki	aki		nevmas:ki			
@@ -62393,9 +62393,9 @@ Róm 4:7	9	a			osszevonva	nevmas			10
 Róm 4:7	10	kiknek	akiknek	akiknek		nevmas:ki			
 Róm 4:8	4	a			osszevonva	nevmas			5
 Róm 4:8	5	kinek	akinek	akinek		nevmas:ki			
-Róm 4:9	20	tulajdoníttaték	tulajdoníttaték	tulajdoníttaték		igealak_ritka:mult.E1		szabaly:tulajdoníttaott; llm:tulajdonítatott(tő-őr bukott); opus:tulajdoníttatott(tő-őr ok)	
+Róm 4:9	20	tulajdoníttaték	tulajdoníttaték	tulajdoníttatott		igealak_ritka:mult.E1+tobbseg:opus_tanusitott	szabaly_nem_tanusitott	szabaly:tulajdoníttaott; llm:tulajdonítatott(tő-őr bukott); opus:tulajdoníttatott(tő-őr ok)	
 Róm 4:10	1	Miképen	Miképpen	Miképpen		szoto_94			
-Róm 4:10	2	tulajdoníttaték	tulajdoníttaték	tulajdoníttaték		igealak_ritka:mult.E1		szabaly:tulajdoníttaott; llm:tulajdonítatott(tő-őr bukott); opus:tulajdoníttatott(tő-őr ok)	
+Róm 4:10	2	tulajdoníttaték	tulajdoníttaték	tulajdoníttatott		igealak_ritka:mult.E1+tobbseg:opus_tanusitott	szabaly_nem_tanusitott	szabaly:tulajdoníttaott; llm:tulajdonítatott(tő-őr bukott); opus:tulajdoníttatott(tő-őr ok)	
 Róm 4:11	15	a			osszevonva	nevmas			16
 Róm 4:11	16	kik	akik	akik		nevmas:ki			
 Róm 4:11	19	hisznek	hisznek	hisznek		gyanu:kivetel_jegy_nelkul+tobbseg:sonnet+opus		llm:hisznek(tő-őr ok); opus:hisznek(tő-őr ok)	
@@ -62422,9 +62422,9 @@ Róm 4:18	18	lészen	lészen	lesz		gyanu_kezi
 Róm 4:20	13	adván	adván	adva		igealak:hatarozoi_igenev			
 Róm 4:21	5	a			osszevonva	nevmas			6
 Róm 4:21	6	mit	amit	amit		nevmas:mi			
-Róm 4:22	3	tulajdoníttaték	tulajdoníttaték	tulajdoníttaték		igealak_ritka:mult.E1		szabaly:tulajdoníttaott; llm:tulajdonítatott(tő-őr bukott); opus:tulajdoníttatott(tő-őr ok)	
+Róm 4:22	3	tulajdoníttaték	tulajdoníttaték	tulajdoníttatott		igealak_ritka:mult.E1+tobbseg:opus_tanusitott	szabaly_nem_tanusitott	szabaly:tulajdoníttaott; llm:tulajdonítatott(tő-őr bukott); opus:tulajdoníttatott(tő-őr ok)	
 Róm 4:22	4	néki	neki	neki		neki			
-Róm 4:23	8	tulajdoníttaték	tulajdoníttaték	tulajdoníttaték		igealak_ritka:mult.E1		szabaly:tulajdoníttaott; llm:tulajdonítatott(tő-őr bukott); opus:tulajdoníttatott(tő-őr ok)	
+Róm 4:23	8	tulajdoníttaték	tulajdoníttaték	tulajdoníttatott		igealak_ritka:mult.E1+tobbseg:opus_tanusitott	szabaly_nem_tanusitott	szabaly:tulajdoníttaott; llm:tulajdonítatott(tő-őr bukott); opus:tulajdoníttatott(tő-őr ok)	
 Róm 4:23	9	néki	neki	neki		neki			
 Róm 4:24	5	a			osszevonva	nevmas			6
 Róm 4:24	6	kiknek	akiknek	akiknek		nevmas:ki			
@@ -66732,7 +66732,7 @@ Jel 8:10	18	esék	esék	esett		igealak:mult.E3
 Jel 8:11	6	változék	változék	változott		igealak_ritka:mult.E3+tobbseg:szabaly+sonnet		szabaly:változott; llm:változott(tő-őr ok)	
 Jel 8:11	15	meghala	meghala	meghalt		igealak:mult.alanyi.E3			
 Jel 8:11	20	lőnek	lőnek	lettek		lon			
-Jel 8:12	7	megvereték	megvereték	megvereték		igealak_ritka:mult.E1		szabaly:megverettem; llm:megverettetett(tő-őr ok); opus:megveretett(tő-őr ok)	
+Jel 8:12	7	megvereték	megvereték	megveretett		igealak_ritka:mult.E1+tobbseg:opus_tanusitott	szabaly_nem_tanusitott	szabaly:megverettem; llm:megverettetett(tő-őr ok); opus:megveretett(tő-őr ok)	
 Jel 8:13	2	láték	láték	láttam		igealak:mult.E1			
 Jel 8:13	4	hallék	hallék	hallottam		igealak:mult.E1			
 Jel 8:13	11	a			osszevonva	nevmas			12
@@ -66791,7 +66791,7 @@ Jel 9:17	20	valának	valának	voltak		vala_letige
 Jel 9:17	26	vala	vala	volt		vala_letige			
 Jel 9:17	38	jő	jő	jött		gyanu_kezi+jelen_mult_vala			
 Jel 9:17	39	vala	vala		segedige	vala_segedige_jelen			38
-Jel 9:18	3	öleték	öleték	öleték		igealak_ritka:mult.E1		szabaly:ölettem; llm:ölettetett(tő-őr ok); opus:öletett(tő-őr ok)	
+Jel 9:18	3	öleték	öleték	öletett		igealak_ritka:mult.E1+tobbseg:opus_tanusitott	szabaly_nem_tanusitott	szabaly:ölettem; llm:ölettetett(tő-őr ok); opus:öletett(tő-őr ok)	
 Jel 9:18	16	a			osszevonva	nevmas			17
 Jel 9:18	17	mely	amely	amely		nevmas:mely			
 Jel 9:18	20	jő	jő	jött		gyanu_kezi+jelen_mult_vala			
