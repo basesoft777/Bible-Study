@@ -5,10 +5,10 @@ kod: GLOSSZA_FORDITAS
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: fut
+allapot: megallt
 ag: ccr-636782ad-lysuoh
 ad: minden héber Strong-számhoz (8 718) rövid magyar jelentés egy új adattáblában (adat/glosszak_heber_hu.tsv, allapot=sonnet, modell = a ténylegesen futó modell; a pardes.db-be az sqlite_epit.py általános adat/*.tsv-betöltője hozza), a TBESH glosszájából fordítva, a lemma és a definíció eleje mint kontextus mellett; kapukkal ellenőrizve; a 300 leggyakoribb szóra kézi átnézési lista
-kovetkezo: "Folytatás: az átnézés jóváhagyva és alkalmazva (--javit, 17 javítás + 3 ? törlés, allapot=kezi, naplok/GLOSSZA_FORDITAS_javit_naplo.tsv); hátra: független ellenőr (naplok/ELLENOR_F140.md), a K8 (ADAT_LICENC) kisfeladat jelzése, zárás és draft PR"
+kovetkezo: "Te: /elteres F140 — a független ellenőr ELTÉRÉS-t jelzett (naplok/ELLENOR_F140.md, 7 tétel: H6308 és H6117 fordítási hiba, ~4% hibaarány a mintában; javít-napló ? törlés; zárójelentés elavult; H8577M; 13 backtick; ir lista)"
 munka: adat
 olvas: [konkordancia/TBESH.txt, konkordancia/TBESH_TBESG_README.md, konkordancia/Strong_szotar.tsv, konkordancia/TAHOT_kivonat.tsv, adat/terminologia.tsv, eszkozok/forditas_kapuk.py, eszkozok/emeles.py]
 ir: [adat/glosszak_heber_hu.tsv, adat/SEMA.md, eszkozok/glossza_forditas.py, eszkozok/teszt_glossza_forditas.py, naplok/GLOSSZA_FORDITAS_elakad.tsv, naplok/GLOSSZA_FORDITAS_atnezes.tsv, naplok/GLOSSZA_FORDITAS_zaras.md]
