@@ -468,7 +468,10 @@ kötetszám) · `ii.` (kötetszám; a szójegyzék `vol. ii` → `II. köt.`) ·
 **Változatlan (62):**
 - kiadás-sigla (11): Rec. · R · G · L · T · Tr · WH · Tdf. · Lachmann · A. · V. (az `A. V.` / `R. V.` része) — *figyelem:* a `T` és a
   `G` a kapu szóhatáros keresésében az `N. T.`, illetve a `G. L. Hahn` alakban is találat, ezért ahol a csoport egyetlen `T`-je az
-  `N. T.`-ben áll, a kapu bukhat;
+  `N. T.`-ben áll, a kapu bukhat; *javítva az F132.20-ban (ELLENOR_F132 3. tétel):* a kapu (`thayer_kapuk._re`) az egybetűs siglát
+  (`R`, `G`, `L`, `T`, `V` …) a betű-pont(-szóköz)-betű-pont láncban (`N. T.`, `O. T.`, `A. V.`, `R. V.`, `G. L. Hahn`, `N.T.`) nem
+  találja, a forrásban és a fordításban sem; teszt: `teszt_lanc.py` `test_kapu_egybetus_sigla_tobbtagu_rovidites`. Mért hatás a 13
+  gerincszó szakaszain (a régi és az új minta szakaszonként, l. „Javítókör 1”, F132.20);
 - kézirat-sigla (1): Vat.;
 - grammatika (4): Winers Grammar · Winer's Grammar · Buttmann · B. (`B. §`, `B. D.`);
 - modern szerző (6): Trench · Grimm · Meyer · Gesenius · Schmidt · Lob.;
@@ -545,3 +548,12 @@ Végrehajtó: `claude-opus-5-5`. Tételenként külön commit (F132.18–F132.24
   0 lett, `javaslat` marad). A szólista (`szolista.py`, csak stdout) ma: 13 Strong, mind `forditando` / `nincs_szakaszos`, a G0813 helyett
   G0540 (2 szakasz, 214 karakter). A `lexikon/KIRALY-001_TUDOMANYOS.md` és `_TORZSCIKK.md` generált nézet a régi tokent mutatja (G0813
   szócikk-alszakasz); a #132 `ir`-én kívül esik, újragenerálása nem e kör része (az E28 hatóköre csak az ISTENTISZT-001).
+- **F132.20 (3. tétel, 16. kapu, egybetűs sigla):** `thayer_kapuk._re` — egybetűs alaknál a betű-pont(-szóköz)-betű-pont lánc tagja
+  nem találat (előtte és utána is; a szomszéd betű önálló kell legyen, a `Gen. T` `T`-je találat). Az `adatblokk.py` ugyanezt a
+  függvényt használja (3. rész, siglák), így egységes. Új teszt (`teszt_lanc.py`, 23, zöld): 7 negatív és 6 pozitív minta, a kapu
+  RENDBEN az `N. T.` / `R. V.` / `G. L. Hahn` esetén, SERTES, ha az önálló `T` hiányzik és a fordításban csak az `N. T.` áll.
+  Mért hatás (szakaszonként: a régi minta talál, az új nem, mert a betű csak láncban áll — besorolt sigla esetén ezek lettek volna
+  hamis SERTES-ek): `R` 11 → 8 (G5590:5, G5356:3, G5351:2), `G` 9 → 8 (G0012:2), `L` 11 → 11, `T` 13 → 10 (G1941:5, G4151:10,
+  G5356:3).
+
+  *(proveniencia: `scope=a 13 gerincszó (szolista.gerinc_strongok) javított nézetű szakaszai | forras=eseti mérőszkript (scratchpad, a repón kívül): a régi `(?<!\w)X(?!\w)` és az új `thayer_kapuk._re` @4afe60c0 + a javítás | ts=2026-10-25`)*

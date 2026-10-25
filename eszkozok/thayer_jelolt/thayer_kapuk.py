@@ -46,8 +46,17 @@ def sigla_betolt(ut=None):
     return _CACHE[ut]
 
 
+# Egybetűs sigla (`R`, `G`, `L`, `T`) többtagú rövidítésen belül nem találat (ELLENOR_F132 3. tétel): a betű-pont(-szóköz)-betű-pont
+# láncban (`N. T.`, `O. T.`, `A. V.`, `R. V.`, `G. L. Hahn`, `N.T.`) a betű a rövidítés tagja, nem kiadás-sigla. A szomszéd betű maga
+# is önálló kell legyen (`Gen. T` a `T`-t találja).
+_LANC_ELOTT = r'(?<!(?<!\w)[^\W\d_]\.\s)(?<!(?<!\w)[^\W\d_]\.)'
+_LANC_UTAN = r'(?!\.\s?[^\W\d_]\.)'
+
+
 def _re(alak):
-    return re.compile(r'(?<![\w])' + re.escape(alak) + (r'(?![\w])' if alak[-1:].isalnum() else ''))
+    egybetus = len(alak) == 1 and alak.isalpha()
+    return re.compile(r'(?<![\w])' + (_LANC_ELOTT if egybetus else '') + re.escape(alak)
+                      + (r'(?![\w])' if alak[-1:].isalnum() else '') + (_LANC_UTAN if egybetus else ''))
 
 
 def ellenoriz_sigla(forras, forditas, sigla=None):

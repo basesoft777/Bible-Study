@@ -121,6 +121,23 @@ class Sigla(unittest.TestCase):
                                                                                'sigla a forrásban (nem gátol)'))
         self.assertEqual(TK.ellenoriz_sigla('N. T.', 'Újszövetség', s)[0], 'RENDBEN')
 
+    def test_kapu_egybetus_sigla_tobbtagu_rovidites(self):
+        # ELLENOR_F132 3.: az egybetűs sigla a betű-pont-(szóköz-)betű-pont láncban nem találat
+        for alak, szoveg in (('T', 'N. T.'), ('T', 'O. T. 12'), ('T', 'N.T.'), ('R', 'R. V. reads'), ('V', 'A. V.'),
+                             ('G', 'G. L. Hahn'), ('L', 'G. L. Hahn')):
+            self.assertIsNone(TK._re(alak).search(szoveg), (alak, szoveg))
+        for alak, szoveg in (('T', 'G L T Tr WH'), ('T', 'T WH; cf. N. T.'), ('T', 'Gen. T'), ('G', 'R G'), ('L', 'L T Tr'),
+                             ('R', 'R G, N. T.')):
+            self.assertIsNotNone(TK._re(alak).search(szoveg), (alak, szoveg))
+        self.assertIsNone(TK._re('Tr').search('Trench'))
+        s = [{'forrasalak': a, 'allapot': 'besorolt', 'magyar_alak': TK.VALTOZATLAN} for a in ('R', 'G', 'L', 'T')]
+        # negatív: a forrás egyetlen T-je az N. T.-ben áll -> nincs mit ellenőrizni (korábban hamis SERTES)
+        self.assertEqual(TK.ellenoriz_sigla('see N. T. i. 12', 'l. Újszövetség i. 12', s), ('RENDBEN', '0 besorolt sigla rendben'))
+        self.assertEqual(TK.ellenoriz_sigla('so R. V.; G. L. Hahn', 'így az angol revideált fordítás; Hahn', s)[0], 'RENDBEN')
+        # pozitív: az önálló sigla továbbra is ellenőrzött, a fordítás láncbeli betűje nem pótolja
+        self.assertEqual(TK.ellenoriz_sigla('G L T Tr WH', 'G L T Tr WH', s), ('RENDBEN', '3 besorolt sigla rendben'))
+        self.assertEqual(TK.ellenoriz_sigla('T WH; N. T.', 'WH; N. T.', s)[0], 'SERTES')
+
     def test_kapusor(self):
         e = TK.kapuk_futtat_thayer('⟪1⟫ a', '⟪1⟫ a')
         nevek = [n for n, _, _ in e]
