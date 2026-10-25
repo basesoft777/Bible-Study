@@ -504,7 +504,7 @@ class ForrasVersOcr(unittest.TestCase):
 
 
 class IdezojelForrasMaradvany(unittest.TestCase):
-    """A H4725 `«GKC:130c»` forras-maradvanya (DT-F38i): a « a forrasban is par."""
+    """A H4725 `«GKC:130c»` forras-maradvanya (DT-F38j): a « a forrasban is par."""
 
     def test_forras_francia_idezojel_par(self):
         forras = 'zz (Ges ^«GKC:130c»§ 130c) zz'

@@ -70,7 +70,7 @@ GATOLO = ['1_gorog_heber', '2_versszam', '3_karoli_roviditesek', '4_formazas',
 # ---------------------------------------------------------------------------
 
 def idezojel_parok_forras(szoveg):
-    # « a H4725 forras-maradvanya (`«GKC:130c»`); a forditas »-t szamol, ezert a forras « jelet is (DT-F38i)
+    # « a H4725 forras-maradvanya (`«GKC:130c»`); a forditas »-t szamol, ezert a forras « jelet is (DT-F38j)
     return szoveg.count('"') // 2 + szoveg.count('“') + szoveg.count('«')
 
 
