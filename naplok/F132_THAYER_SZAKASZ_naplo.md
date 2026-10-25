@@ -264,3 +264,45 @@ a DT228 mintájára).
 ApCsel 9:14 `bcv`-jelölt, a 9:21 és a 22:16 a forrásban jelöletlen szöveg (a `bcv`-tábla nem pótolja, l. M2).
 
 Kimaradt (nem a brief `ir`-e): az `adat/datasetek.tsv` `Thayer_szakaszok` sora (a `BDB_szakaszok` mintájára) — külön tételben.
+
+## M2 — igehely → jelentéspont (2026-10-25)
+
+`eszkozok/thayer_jelolt/vers_jelentes.py`, `teszt_vers_jelentes.py` (9 teszt, zöld). Kimenet: `adat/thayer_vers_jelentes.tsv`
+(SEMA 2.35), `--ts 2026-10-25`, `--ellenoriz` azonos.
+
+*(proveniencia: `scope=Thayer.lexicon (bcv), Konyv_normalizalo_tabla.tsv, Karoli_1908.tsv, adat/elofordulasok.tsv (G1941) | forras=eszkozok/thayer_jelolt/vers_jelentes.py --ts 2026-10-25; m2_meres.py (eseti, a repón kívül) | ts=2026-10-25`)*
+
+**Sémaeltérés (a végrehajtóé, jóváhagyásra):** a DT-F132b (2) nyolc oszlopa mellé egy kilencedik került, a `szakasz` (a
+hivatkozást tartalmazó bekezdés sorszáma, a `thayer_szakaszok.tsv` kulcsa). A `sorszam` a 2.29 mintájára a hivatkozás sorszáma
+(egyedi kulcs); a `szakasz` nélkül a hivatkozás nem köthető egyértelműen a szakaszsorhoz, mert az örökölt útvonalú bekezdések
+útvonala nem egyedi.
+
+| Mért | Érték |
+|---|---|
+| sor = `bcv` | 63 953 (ÚSZ 58 266, ÓSZ 5 687) — a brief száma; `bcv` nélküli `<ref>`: 0 |
+| ismeretlen könyvszám | 0 |
+| `karoli_vers` üres, ÚSZ | 28: Róm 17 (3:31 ×9, 8:39 ×8: a `Karoli_1908.tsv` Róm 8-a 38, Róm 3-a 30 versű), Ján 1:52 ×6, ApCsel 19:41 ×2, 1Kor 3:23 ×2, 1Tim 6:22 ×1 |
+| `karoli_vers` üres, ÓSZ | 12: Zsolt 4 (21:23, 77:56, 103:30, 15:8 — LXX-számozás), Jób 3 (40:22, 38:41, 17:16), Péld 12:28, Préd 10:20, Jóel 3:24, Hós 13:16, Dán 3:98 |
+| ÓSZ-sor a Zsoltárokban | 499 (a létező, de LXX-szerint eltolt vers nem mérhető ebből; nincs átkulcsolás, a brief szerint mérni, nem kitölteni) |
+| jelöletlen igehely-folytatás (becslés: `</ref>` után `,<vers>` vagy `; f:v`) | ≈ 228 — nincs a táblában |
+
+A Siralmak: a könyvtábla `JSir`-t ad, a `Karoli_1908.tsv` `Sir`-t; a `karoli_vers` a Károli-kulcsot írja (a
+`bdb_vers_jelentes.py` `KAROLI_KONYV` mintája). Enélkül 18 JSir-hivatkozás néma nem-találat lett volna (az első mérésben az volt).
+
+### G1941: a 10 motívumhely (az `elofordulasok.tsv` szerint) a Thayerben
+
+| Motívumhely | `bcv`-vel idézi? | szakasz | jelentéspont |
+|---|---|---|---|
+| 1Pét 1:17 | igen | 3 | `-/1/-` (to put a name upon, to surname) |
+| ApCsel 2:21 | igen | 7 | `-/5/-` (Hebraistically … to invoke) |
+| ApCsel 9:14 | igen | 7 | `-/5/-` |
+| Róm 10:12 | igen | 7 | `-/5/-` |
+| Róm 10:13 | igen | 7 | `-/5/-` |
+| 1Kor 1:2 | igen | 7 | `-/5/-` |
+| 2Tim 2:22 | igen | 7 | `-/5/-` |
+| ApCsel 9:21 | nem — a forrásban jelöletlen („Act 9:14,21”) | (7) | — |
+| ApCsel 22:16 | nem — a forrásban jelöletlen („; 22:16>”) | (7) | — |
+| Róm 10:14 | nem idézi | — | — |
+
+A motívum magja tehát a Thayer 5. jelentéspontja (segítségül hívni az Úr nevét); az 1Pét 1:17 az 1. pont („atyának nevezni”).
+A két jelöletlen ApCsel-hely a szövegben az 5. pont alatt áll, de a tábla nem tölti ki (CLAUDE.md 3. szabály).

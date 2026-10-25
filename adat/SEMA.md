@@ -1444,6 +1444,29 @@ Kulcs: `strong` + `sorszam`. Állapot (F132 M1, 2026-10-25): 5 426 Strong, 17 09
 (összesen 2 715 karakter szóközök nélkül, a G4151-ben 18), jellemzően egy `πρωι` / `νοι` / `Νινευι` alak után (a TSV-konverzió hibája);
 a kezelése: DT-F132i (`naplok/F132_THAYER_SZAKASZ_naplo.md` M1).
 
+
+### 2.35 `thayer_vers_jelentes.tsv` — a Thayer igehely-hivatkozásai jelentésponthoz kötve (F132, FELADATOK #132, DT-F132b (2))
+
+**Generált** (`python eszkozok/thayer_jelolt/vers_jelentes.py --ts <nap>`; kézzel nem szerkeszthető; azonos bemenettel és `--ts`-sel
+bájtra azonos, a `--ellenoriz` és az `eszkozok/thayer_jelolt/teszt_vers_jelentes.py` ellenőrzi). A `Thayer.lexicon` minden
+`<ref onclick="bcv(k,f,v)">` hivatkozására egy sor, a szócikkön belüli sorrendben. A forrásban az igehely gépi attribútum, tehát —
+a BDB-vel (2.29) szemben — nincs szövegből visszafejtés, öröklött könyv és okkód. A forrásban jelöletlen folytatás („Act 9:14,21;
+22:16”: csak a 9:14 `bcv`) **nincs** a táblában (explicit hiány). **Lexikai index, nem study-adat** (CLAUDE.md 2. szabály). Az első két
+sor `# GENERÁLT: …` és `# forras: …`, a harmadik a fejléc. Olvasás `split('\t')`.
+
+| Oszlop | Jelentés |
+|---|---|
+| `strong` | `Strong_padded` (a `thayer_jelolt/kulcs.py` szerint) |
+| `sorszam` | a hivatkozás sorszáma a szócikkben (1-től; a 2.29 `sorszam`-ja) |
+| `szakasz` | a hivatkozást tartalmazó bekezdés `sorszam`-a a `thayer_szakaszok.tsv`-ben (2.34; a `strong` + `szakasz` oda mutat) |
+| `konyv` | a `bcv` könyvszáma (1–66) a `Konyv_normalizalo_tabla.tsv` k-adik adatsorának `Magyar rövidítés`-e (`1Móz`, `Mt`, `JSir`) |
+| `fejezet`, `vers` | a `bcv` fejezet- és versszáma, változatlanul |
+| `karoli_vers` | a Károli-vers a `Karoli_1908.tsv` `Igehely` kulcsa szerint (a Siralmak ott `Sir`); **üres, ha nincs ilyen kulcs** (kitöltés és átkulcsolás nélkül). ÚSZ-helyen a számozás egyezik; az ÓSZ-hivatkozás (LXX-utalás, pl. `Zsolt 103:30`) LXX-számozása csak akkor látszik, ha a vers a Károliban nem létezik — a létező, de eltolt vers nem jelölt |
+| `utvonal` | a `szakasz` útvonala (2.34) |
+| `proveniencia` | `scope=<Strong> \| forras=thayer_jelolt/vers_jelentes.py (fejléc) \| ts=<nap>`; a bemenetek és a kód hash-e a `# forras:` fejlécsorban |
+
+Kulcs: `strong` + `sorszam`. Állapot (F132 M2, 2026-10-25): 63 953 sor (ÚSZ 58 266, ÓSZ 5 687); `karoli_vers` üres: ÚSZ 28, ÓSZ 12.
+
 ---
 
 ## 3. Integritási szabályok
