@@ -1114,7 +1114,9 @@ A DT-F96q/r ezt a feltételt nem nevezte meg; a 10.3 és a 11.3 csere-számai ez
 - *az beméne → bement* (Ez 10:6), *az méne → ment* (Luk 22:47), *az jöve → jött* (Jób 3:25);
 - *az felkelvén → felkelve* ×2 (Mt 9:7, 9:9), *az letöretteték → letöretett* (Dán 8:22).
 
-A többi 12 sor csak címkét kapott (a szabálycímke és a bizonytalan jelölés; a modern alak azonos: *felnövekedék, felemelkedék, feltekinte, fölkele, megfordulván, megosztá, bevádoltaték* a .2 vagy egy korábbi kör cseréjével; *tőled, vigye, vette, lenne, leszek* változatlan). A minták modern szövege nem változott. A .3: K2, K3, K3b teljesül, a Strong nem változott; a változó token 50 491 → 50 516, a változó vers 21 620 → 21 621.
+A többi 12 sor csak címkét kapott (a szabálycímke és a bizonytalan jelölés), a modern alak azonos:
+- *felnövekedék, felemelkedék, feltekinte, fölkele, megfordulván, megosztá, bevádoltaték* (7 token): eddig az 5. kör cseréje volt (`kor5:token_opus+meglevo`), most a .2 szabálya cseréli ugyanarra az alakra. Ezért a `token_opus` jelölés 205 → 198 tokenen áll (a 14.3 205-je a javítókör előtti szám);
+- *tőled, vigye, vette, lenne, leszek* (5 token): változatlan, csak a szabálycímkét kapták meg. A minták modern szövege nem változott. A .3: K2, K3, K3b teljesül, a Strong nem változott; a változó token 50 491 → 50 516, a változó vers 21 620 → 21 621.
 
 **Ami a kizárásban marad (21 token):** 14 névszó vagy melléknévi igenév, helyesen (*tevék* ×4, *küldöttek* ×3, *megmaradott(ak)* ×5, *megfáradott* ×2), és 7 kihagyás: a magánhangzós ige a névmási *az* után, amelyet a hangtani próba nem választ el a névelős főnévtől: *az elfuta* (1Móz 16:6), *az elbeszélé* (2Kir 8:6), *az esék* (Jób 3:25), *az elküldé* (Luk 15:15), *az eljő* ×2 (Préd 9:14, Ján 4:25; határeset); valamint az *egy monda* (Jel 6:1: „egy monda”, számnévi névmás), mert az *egy* marad. Ezek kihagyások, nem hibák.
 
@@ -1165,3 +1167,64 @@ A DT-F96v (🟡) leírása ezzel a számmal frissült; a döntés a felhasznál�
 4. Az `igealak.py` (`--minta-frissit`) és a `karoli_modern.py` újragenerálva: a 4 + 2 tábla a fejlécen kívül azonos. A K2, K3 és K3b teljesül, a Strong nem változott.
 
 Nem változott: a `karoli_modern.py` saját fejléce (a `ts=` itt sincs; nem tartozott a tételhez, l. a 15.6).
+
+### 15.5 E17: az `igealak_tokenek.tsv` sorszám-változásának bontása (4. kör, 5.)
+
+**Mérés:** a `8b858b3` és a javítókör 4. tétele utáni HEAD (`ccc555b4`) táblájának kulcsonkénti (igehely, sorszám) összevetése, `split('\t')`-tel. A számítás szkriptje a repón kívül van. A szabálycímke a `szabaly`, a `bizonytalan` és a `jelolt` oszlop változásából adódik. A sorok a 10.–15. szakasz összes körét együtt mutatják.
+
+| | Sor |
+|---|---|
+| `8b858b3` (fájlsor 66 603, ebből 2 fejléc) | 66 601 |
+| HEAD (fájlsor 67 687) | 67 685 |
+| **Δ** | **+1 084** |
+| új sor | 1 084 |
+| eltűnt sor | 0 |
+| **Δ = új − eltűnt** | **+1 084** |
+| módosult sor (a Δ-t nem érinti) | 679 |
+| változatlan sor | 65 922 |
+
+A `git diff --numstat` −680 sora (a 4. körben −646) ennek megfelelően nem törlés: 679 módosult sor és a fejléc.
+
+**Az új sorok (1 084) szabálycímke szerint:**
+
+| Címke | Sor |
+|---|---|
+| `kor3:szabaly+opus` (DT-F96q, 10.3) | 690 |
+| `kor4:szabaly+opus` (DT-F96r, 11.3) | 162 |
+| `kor5:token_opus+meglevo` (DT-F96u, 14.3) | 131 |
+| csak jelölt: `kor5_token_opus` a `jelolt` oszlopban (DT-F96u) | 41 |
+| `kor3:opus_tanusitott` (DT-F96s, 12.3) | 29 |
+| `jelen_mult_vala`, `kor3_csak_opus` (a kieső *vala* előtti ige múlt időbe, 10.3) | 12 |
+| `jelen_mult_vala`, `kor4_csak_opus` (ugyanez a 4. körben, 11.3) | 11 |
+| `kor4:opus_tanusitott` (DT-F96s, 12.3) | 7 |
+| `kivetel`, `kor4_csak_opus` | 1 |
+| **összesen** | **1 084** |
+
+Ebből 1 043 sor modern alakja eltér a .1-étől; 41 csak jelölt.
+
+**A módosult sorok (679) a változás oka szerint:**
+
+| Ok | Sor |
+|---|---|
+| **csak címke vagy jelölt (a modern alak azonos)** | **398** |
+| a 4. kör opus-szavazata a DT-F96l címkéjében és a `jelolt` oszlopban (11.3, `jelolt` típus) | 331 |
+| az 5. kör jelöltje (`kor5_token_opus`) a `jelolt` oszlopban | 64 |
+| a 4. kör jelöltje (`kor4_opus`) a `jelolt` oszlopban | 3 |
+| **a modern alak változott** | **281** |
+| *vala* kiesik, `vala_segedige_kor3` (10.3) | 71 |
+| az 5. kör cseréje, `kor5:token_opus+meglevo` (14.3) | 67 |
+| a DT-F96l többsége a 4. kör opus-szavazatával (`…+opus`, `tobbseg:sonnet+opus`; 11.3; ide tartozik a Dán 8:22 *letöretteték* is, 15.2) | 30 |
+| a `nevelo_utan` feloldása (15.2; a 27 tokenből 26, a 27. az előző sorban) | 26 |
+| `kor4:szabaly+opus` (11.3) | 22 |
+| `tobbseg:opus_tanusitott` (DT-F96s, 12.3) | 22 |
+| az `ek_E1_T3` E/1-re fordul: a 10.4 mondatszakasz-szabálya (16) és a 15.1 *ülteték* ×2 | 18 |
+| *vala* kiesik vagy létige a 4. körben: `vala_segedige_kor4` 16, `vala_letige_kor4` 2 | 18 |
+| `tobbseg:alanyi_targyas` (DT-F96s, 12.3) | 3 |
+| `vala_segedige_mult` (a régmúlt *vala*-ja) | 2 |
+| `jelen_mult_vala`, `kor3_csak_opus` | 1 |
+| *lőnek → lettek* (15.3) | 1 |
+| **összesen** | **679** |
+
+A 4. körben jelzett állapot (`8b858b3..b8334a64`): ugyanaz a +1 084 (1 084 új, 0 eltűnt), 645 módosult sor. A javítókör sort nem adott és nem vett el. Az 1.–3. tétel 44 sort módosított (4 + 39 + 1), a 4. tétel csak a fejlécet. A 44 sorból:
+- 34 a 4. körig a `8b858b3` óta változatlan volt; ezek adják a módosult sorok 645 → 679 növekedését;
+- 10 már korábban is módosult sor volt: a 7 volt `token_opus` sor (15.2), a Préd 2:5 *építék*, a Préd 2:9 *Gyűjték* (15.1) és a Dán 8:22 *letöretteték* (15.2).
