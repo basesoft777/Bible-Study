@@ -9,7 +9,7 @@ munka: adat
 allapot: megallt
 ag: ccr-a680d019-39s73e
 ad: a Károli 1908 modernizált szövegrétege (helyesírás + igealak; szórend, szókincs, írásjel, betoldás-jelölés változatlan), szabályalapú szavankénti cserével (a #94 szótári alak- és regies_jegy-táblájából, Hunspell csak fejlesztési mérce, DT301), LLM csak a szabállyal le nem fedett maradékra; minden token hordozza az 1908-as token vers-kulcsát és sorszámát (a Strong a #22 párosításából token-kulcson illeszthető, a réteg nem tárol Strongot, DT-F96f), a kieső segédigei vala jelölve; generált tábla az 1908-as szöveg mellett, nem helyette; két lépcső (helyesírás, majd igeragozás és vala), felhasználó által ellenőrzött mintán mérve, a token-felhasználással együtt
-kovetkezo: "Te: [elteres_kor 2/2] /elteres 96 — újraellenőrzés függ: naplok/ELLENOR_F96_3.md"
+kovetkezo: "Te: [elteres_kor 2/2] ELLENOR_F96_3 1. mechanikus (a napló 15.6 megállás-mutatója); DT-F96v (a #96 lezárása)"
 olvas: [adat/szoto/, konkordancia/Karoli_1908.tsv, "adat/karoli_strong/*", adat/SEMA.md, adat/licencek.tsv, DONTESEK.md]
 ir: [eszkozok/karoli_modern/, adat/karoli_modern/, naplok/KAROLI_MODERN_meres.md, naplok/ELLENOR_F96.md, adat/SEMA.md, adat/licencek.tsv, DONTESEK.md, F137_KAROLI_MODERN_DB_BRIEF.md]
 fugg: [94]
