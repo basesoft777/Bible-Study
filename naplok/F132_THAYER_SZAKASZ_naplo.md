@@ -483,3 +483,31 @@ kötetszám) · `ii.` (kötetszám; a szójegyzék `vol. ii` → `II. köt.`) ·
 - **A #132 briefje:** az `ad` mező, a 3. hatókör (benne / nincs benne), az M3 szakasz eleje („Kikerült e feladat hatóköréből”), az Mz
   és az 5. elfogadási feltétel 3. pontja a DT-F132g (1) szerint; az `ir` mezőben a tervezet útvonala.
 - A `thayer_jelolt/forditas.py` docstringje a promptot még v5-nek írta: javítva (`prompt_v5_1.md`, a kód az F132.12 óta azt használta).
+
+## Mz — zárás (2026-10-25; az M3 a DT-F132g (1) szerint külön feladat)
+
+*(proveniencia: `scope=adat/thayer_*.tsv, eszkozok/thayer_jelolt/ | forras=a generátorok --ellenoriz módja; forditas.py lista / elokeszit (a scratchpadbe, fordítás nélkül); a tesztek @2fe54b8 | ts=2026-10-25`)*
+
+| Mért | Érték |
+|---|---|
+| `thayer_szakaszok.tsv` | 5 426 Strong, 17 093 sor; illesztés `egyezik` 5 411, `javitassal` 15, `reszleges` 0, `sikertelen` 0; fejes szócikk 1 687 |
+| `thayer_forras_javitas.tsv` | 15 lyuk, mind `javitva`, 2 715 karakter (szóközök nélkül) |
+| `thayer_vers_jelentes.tsv` | 63 953 sor = a forrás `bcv`-száma (ÚSZ 58 266, ÓSZ 5 687); üres `karoli_vers`: ÚSZ 28, ÓSZ 12 (M2) |
+| `thayer_sigla.tsv` | 255 jelölt, 91 a gerincszavakban; `javaslat` 91 (magyar alak 22, `változatlan` 62, üres 7), `besorolt` 0 |
+| `tiltott_fordulatok.tsv` | 2 tétel, kapu `15_tiltott` |
+| M3-lista (`forditas.py lista`, DT-F132h) | 13 Strong, mind `forditando` / `nincs_szakaszos`; ebből 1 `javitassal` (G4151, 3 csoport), a többi `egyezik` (1 csoport) |
+| M3-lánc próbája (fordítás nélkül) | `elokeszit G1941`: 7 szakasz, 1 csoport, 37 helyőrző; `elokeszit G4151`: 17 szakasz, 3 csoport, 291 helyőrző, a prompt a v5.1 blokkjával és a javítás tájékoztató sorával |
+| G1941 motívumhelyei | l. M2: 7 / 10 `bcv`-vel idézve (1 az 1. pont alatt, 6 az 5. pont alatt), 2 jelöletlen, 1 nem idézett |
+
+**Determinizmus (`--ellenoriz`):** `bont.py`, `forras_javit.py`, `vers_jelentes.py`, `sigla_gyujt.py` azonos; `thayer_bemenet.py`
+RENDBEN; `bdb_jelolt/hu_illeszt.py --ts 2026-10-18` azonos (a `--ts` nélküli hívás a mai napot írná a fejlécbe, ezért tér el — nem
+adateltérés).
+
+**Tesztek:** `thayer_jelolt/teszt_bont.py` 23, `teszt_lanc.py` 22, `teszt_vers_jelentes.py` 9, `teszt_forditas_kapuk.py` 88,
+`teszt_bdb_zaras.py` 21, `bdb_jelolt/teszt_szakasz_bemenet.py` 25, `teszt_feladatok.py` 115 — mind zöld. `python eszkozok/ellenoriz.py`:
+SÉRTÉS 0 (RENDBEN 14, KÉZI 2, JELENTÉS 3). `python eszkozok/feladatok.py ellenoriz`: 160 brief, 0 hiba, 1 figyelmeztetés (az
+`F131_SZOTARI_GERINC_BRIEF.md` fázis-függése a #132-re; a main-en is fennáll, nem e feladat változása).
+
+**Nyitva a felhasználónak:** (1) a 91 sigla-javaslat jóváhagyása (lista: F132.13; különösen a három apokrif-rövidítés és a 7 üres
+alak) — az M3 előfeltétele; (2) az M3 tervezetének befogadása (`beerkezo/Fnn_THAYER_M3_BRIEF.md`, `/befogad`, a #132 merge-e után).
+A #132 lezárása a független ellenőrzés után (orkesztrátor).
