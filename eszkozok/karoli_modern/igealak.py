@@ -786,8 +786,8 @@ class Feldolgozo:
         """DT-F96u (1. opció): a tokenszintű opus-válasz cserél, ha egy meglévő jelölttel (szabály, sonnet, korábbi
         opus) egyezik, és a tő-őr átengedi (a DT-F96l kettő-egyezése tokenszinten); különben jelölt marad."""
         k = self.kor5.get((igehely, str(r[0])))
-        if not k or r[4] or r[3].lower() != r[2].lower():
-            return
+        if not k or r[4] or r[3].lower() != r[2].lower() or r[2].lower().endswith(('jövén', 'jővén', 'lévén')):
+            return  # a jövén/lévén igenév a mai irodalmi nyelvben is -vén (IGENEV_KIVETEL)
         meglevo, opus = k
         uj = h1_atvisz(r[1], r[2], nagy(r[1], opus))
         if uj.lower() == r[2].lower():

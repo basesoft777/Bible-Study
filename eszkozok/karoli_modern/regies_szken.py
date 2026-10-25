@@ -34,6 +34,8 @@ Használat:
     python eszkozok/karoli_modern/regies_szken.py --llm-valasz <könyvtár> --modell <név>
     python eszkozok/karoli_modern/regies_szken.py --kimenet <könyvtár a repón kívül>   (maradék-mérés)
     python eszkozok/karoli_modern/regies_szken.py --kor 4 [--llm-kerdes … | --llm-valasz … --modell … | --kimenet …]
+    python eszkozok/karoli_modern/regies_szken.py --kor 5 [ugyanezek] (tokenszintű kérdés a teljes verssel, DT-F96u;
+        bemenet: igealak_tokenek.tsv, karoli_modern_versek.tsv; ír: regies_szken_kor5.tsv, igealak_llm_kor5.tsv)
 """
 
 import argparse
