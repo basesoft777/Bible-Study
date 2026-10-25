@@ -21,9 +21,12 @@ Alakszintű döntés (az osztály a `fedettseg.py osztalyoz` szerint):
                     tokenszinten (l. lent)
   regies_gyanu_kezi a jegy nélküli régies alakok kézzel átnézett, gyakori része (GYANU_KEZI: jő → jön,
                     mondák → mondták …; N-F96b): automatikus csere
-  igealak_ritka,    NEM automatikus csere (N-F94h: a ritka alak jegye ~6%-ban hibás): a szabály jelöltje
-  regies_gyanu      és az LLM jelöltje a `jelolt` oszlopba kerül, a modern szöveg nem változik
-  felszolito.E2     -jál/-jél → -j: nem automatikus (DT-F96k, a felhasználó dönt), jelölt
+  igealak_ritka,    jelölt (N-F94h: a ritka alak jegye ~6%-ban hibás): a szabály, a sonnet és az opus
+  regies_gyanu      jelöltje a `jelolt` oszlopban; a modern szöveg a DT-F96l szerint változik, ha kettő
+                    egyezik és a tő-őr átengedi
+  felszolito.E2     -jál/-jél → -j: nem cserél (DT-F96k a), jelölt
+  kotohang_mult     mondotta → mondta (DT-F96k b); mult_E1_targyas: mondám → mondtam (N-1); ok_birtokos:
+                    szívök → szívük (DT-F96p)
 
 Tokenszintű döntés:
 
@@ -156,7 +159,26 @@ VALA_ELOTT_KEZI = {
     'verdesik': 'verdesték', 'lesik': 'lesték', 'megérthetik': 'megérthették', 'feküszik': 'feküdt',
     'igyekszik': 'igyekezett', 'szakadozik': 'szakadozott', 'élelmeztetik': 'élelmeztetett',
     'hivattatik': 'hivattatott', 'mívelik': 'mívelték', 'könnyebbítik': 'könnyebbítették', 'kínlódik': 'kínlódott',
+    # a 2. ellenőri kör (ELT-1 maradéka): a létigeinek vett vala előtti, nem -ik végű jelen idejű igék (a 255
+    # jelölt szóból kézzel átnézve; a többi névszó: fiai, olyanok, velük …, ott a vala helyesen volt)
+    'meri': 'merte', 'erőlteti': 'erőltette', 'megbotránkoznak': 'megbotránkoztak', 'alkalmaznak': 'alkalmaztak',
+    'becsapnak': 'becsaptak', 'bujkálsz': 'bujkáltál', 'csikorgatják': 'csikorgatták',
+    'dolgoztatnak': 'dolgoztattak', 'emelheti': 'emelhette', 'gyötri': 'gyötörte', 'hihetnek': 'hihettek',
+    'háborognak': 'háborogtak', 'járkálnak': 'járkáltak', 'kényszeríti': 'kényszerítette',
+    'lakhatunk': 'lakhattunk', 'legelésznek': 'legelésztek', 'megkedvelnek': 'megkedveltek',
+    'megnyiratja': 'megnyiratta', 'megvilágosítja': 'megvilágosította', 'nyalják': 'nyalták',
+    'repdesnek': 'repdestek', 'rágják': 'rágták', 'sajdítanak': 'sajdítottak', 'suttogja': 'suttogta',
+    'szegdelnek': 'szegdeltek', 'szemlélődnek': 'szemlélődtek', 'szikráznak': 'szikráztak',
+    'sínlődnek': 'sínlődtek', 'tanulhatja': 'tanulhatta', 'táncolnak': 'táncoltak', 'vesztegeti': 'vesztegette',
+    'vigasztalják': 'vigasztalták', 'vonszolják': 'vonszolták', 'vész': 'veszett', 'ásnak': 'ástak',
+    'őrzi': 'őrizte', 'lőnek': 'lőttek',  # 1Krón 12:2: nyíllal lőnek vala
+    'ellenek': 'elltek',  # N-2: a juhok ellenek vala (1Móz 30:39, 31:8), nem E/1
 }
+# A vala előtti, már múlt idejű, de a próbán át nem ismert igék: csak a vala esik ki.
+VALA_ELOTT_MULT_KEZI = {'tusakodtatok', 'etettelek', 'tévelyegtem', 'vendégeskedtek'}
+# N-1: az E/1 tárgyas elbeszélő múlt (-ám/-ém: mondám → mondtam), ha az E/3 tárgyas párja (mondá) jegyes; a 131
+# alak kézzel átnézve. Felülbírálás: a #94 hibás töve (elvégzik, kérd); kimarad az értém (értem 'miattam' is).
+E1_TARGYAS_KEZI = {'elvégzém': 'elvégeztem', 'kérdém': 'kérdeztem', 'értém': None}
 # ELT-4: tokenszintű kivételek (igehely, sorszám) → mai alak, vagy None = változatlan (a szövegkörnyezet dönt;
 # kézzel átnézve az evék és a tevék minden előfordulásán): a tevék főnév (tevék jőnek, tevék legelőjévé); az
 # evék T/3 (a ti atyáitok evék, az Izráel fiai evék), a tevék E/1 (bizonyságot tevék, és mondám).
@@ -484,6 +506,10 @@ class Feldolgozo:
             else:
                 ki = ('jelolt', self.a.gyanu_jelolt(alak, sor, reszlet), 'gyanu:' + reszlet)
         if not ki[0]:
+            m = self.e1_targyas(self.alakszotar[alak][0])  # N-1 (2. ellenőri kör)
+            if m:
+                ki = ('szabaly', {'': nagy(alak, m)}, 'mult_E1_targyas')
+        if not ki[0]:
             m = self.ok_birtokos(self.alakszotar[alak][0])  # DT-F96p
             if m:
                 ki = ('szabaly', {'': nagy(alak, m)}, 'ok_birtokos')
@@ -495,6 +521,20 @@ class Feldolgozo:
                 ki = ('szabaly', {'': nagy(alak, m)}, 'kotohang_mult')  # DT-F96k b: automatikus csere
         self.alak_dontes[alak] = ki
         return ki
+
+    def e1_targyas(self, alak_h):
+        """N-1: az E/1 tárgyas elbeszélő múlt (-ám/-ém) mai alakja, ha az E/3 tárgyas pár jegyes; különben None."""
+        w = alak_h.lower()
+        if w in E1_TARGYAS_KEZI:
+            return E1_TARGYAS_KEZI[w]
+        if not w.endswith(('ám', 'ém')) or len(w) < 4:
+            return None
+        s = fedettseg.tablasor(self.a.tabla, w[:-1])
+        if not s or s['regies_jegy'] != 'mult.targyas.E3':
+            return None
+        kot, alap = self.a.bontas(w[:-1], s)
+        m = ir.mult(alap, 'E1', True)
+        return kot + m if m and w.startswith(kot) else None
 
     def ok_birtokos(self, alak_h):
         """DT-F96p: a j nélküli birtokos T/3 -ök mai -ük alakja, ha a tő többese -ek; különben None."""
@@ -628,7 +668,10 @@ class Feldolgozo:
         if jegy.startswith('mult.') or ek in VALA or (e[3] != e[2] and e[6] and ir.mult_alak_e(e[3], e[2])):
             self.kiesik(r, 'vala_segedige_mult')  # régies vagy a .2 által múltba tett ige (illeték → illették)
             return
-        if ek in VALA_ELOTT_KEZI:  # ELT-1: elemezetlen -ik ige (szégyenlik vala → szégyenlették)
+        if ek in VALA_ELOTT_MULT_KEZI:
+            self.kiesik(r, 'vala_segedige_mult')
+            return
+        if ek in VALA_ELOTT_KEZI:  # ELT-1: elemezetlen jelen idejű ige (szégyenlik vala → szégyenlették)
             e[3] = nagy(e[2], VALA_ELOTT_KEZI[ek])
             e[6] = cimke(e[6], 'jelen_mult_vala')
             self.kiesik(r, 'vala_segedige_jelen')
@@ -788,11 +831,13 @@ def kiir(vers_ki, gy, alakok, fd, a):
     ki_dir = a.kimenet or os.path.join(ROOT, KI_DIR)
     os.makedirs(ki_dir, exist_ok=True)
     hk = bemenet_hash()
-    fejlec = ('# GENERÁLT: %s (F96.2) — kézzel nem szerkeszthető; a javítás a szabályban vagy a KEZI / GYANU_KEZI '
-              'táblában | forras=%s | a .1 (helyesiras.py) kimenetére épül, újraszámolva és összevetve | '
-              'tokenizálás: tokenizal (a #22 hu_sorszam-a; Strong token-kulcson illeszthető, DT-F96f) | a ritka '
-              'jegyes és a régies gyanús alak NEM automatikus csere (N-F94h): a jelolt oszlopban | LLM: az '
-              'igealak_llm.tsv (DT-F96d, előfizetés, API nélkül), tő-őrrel\n' % (SZKRIPT, hk))
+    fejlec = ('# GENERÁLT: %s (F96.2) — kézzel nem szerkeszthető; a javítás a szabályban vagy a kivételtáblában '
+              '(KEZI, GYANU_KEZI, VALA_ELOTT_KEZI, VALA_ELOTT_MULT_KEZI, TOKEN_KIVETEL, E1_TARGYAS_KEZI, OK_KEZI) | '
+              'forras=%s | a .1 (helyesiras.py) kimenetére épül, újraszámolva és összevetve | tokenizálás: tokenizal '
+              '(a #22 hu_sorszam-a; Strong token-kulcson illeszthető, DT-F96f) | a ritka jegyes és a régies gyanús '
+              'alak a DT-F96l szerint cserél (a szabály, a sonnet és az opus közül kettő egyezik, tő-őrrel), különben '
+              'a jelolt oszlopban marad | LLM: az igealak_llm.tsv és az igealak_llm_opus.tsv (DT-F96d, előfizetés, '
+              'API nélkül)\n' % (SZKRIPT, hk))
     tok_ki = []
     for igehely, (sz, modern, t) in vers_ki.items():
         for r in t:
@@ -1083,7 +1128,7 @@ def minta_ir(sorok, ki_dir, fejlec, megj):
         f.write(fejlec.replace('\n', ' | scope=rögzített magú (%d) rétegzett minta, %d vers; az ellenorzes és a '
                                'megjegyzes oszlopot a felhasználó tölti, vagy a felhasználó által elfogadott '
                                'modell-ellenőrzés (DT-F96n; jó / hibás; a jelölt soron A = a jelölt jó, '
-                               'B = maradjon), a modell nem%s\n' % (MAG, len(sorok), megj)))
+                               'B = maradjon)%s\n' % (MAG, len(sorok), megj)))
         f.write('\t'.join(['minta_id', 'reteg', 'igehely', 'szoveg_1908', 'szoveg_modern', 'valtozasok', 'jelolt',
                            'ellenorzes', 'megjegyzes']) + '\n')
         for s in sorok:

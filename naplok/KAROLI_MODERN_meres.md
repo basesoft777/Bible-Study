@@ -674,8 +674,8 @@ A brief .3 egy táblát írt le, „token-soronként, a vers-kulccsal és a mode
 
 | tétel | javítás | ellenőrzés |
 |---|---|---|
-| **ELT-1** „-ik ige + volt” (32 eset) | `igealak.py` `VALA_ELOTT_KEZI`: a 37 „-ik + vala” esetből a 29 igei alak (34 token) kézzel átnézett múlt idejű alakja, a *vala* kiesik (*szégyenlik vala → szégyenlették*, *igyekszik vala → igyekezett*, *kínlódik vala → kínlódott*). A *kik, második, kisebbik, betegeik, kérdéseik, mellvértjeik* nem ige, marad. | a versek táblán `\w+ik volt`: csak *második* (3), *hetedik*, *kisebbik* |
-| **ELT-2** a .1 nyitott hibái (napló 4.1.5) | `helyesiras.py` `ALAK_KIVETEL`: *keménynyakú(ak)* változatlan (összetételi határ), *paizszsal → pajzzsal*, *strucz → strucc*, *struczok → struccok*, *struczmadarak → struccmadarak* | 18 token, a táblán grep-pel |
+| **ELT-1** „-ik ige + volt” (32 eset) | `igealak.py` `VALA_ELOTT_KEZI`: a 37 „-ik + vala” esetből a 29 igei alak (32 token; a 34 a 8. szakasz előtti elírás) kézzel átnézett múlt idejű alakja, a *vala* kiesik (*szégyenlik vala → szégyenlették*, *igyekszik vala → igyekezett*, *kínlódik vala → kínlódott*). A *kik, második, kisebbik, betegeik, kérdéseik, mellvértjeik* nem ige, marad. | a versek táblán `\w+ik volt`: csak *második* (3), *hetedik*, *kisebbik* |
+| **ELT-2** a .1 nyitott hibái (napló 4.1.5) | `helyesiras.py` `ALAK_KIVETEL`: *keménynyakú(ak)* változatlan (összetételi határ), *paizszsal → pajzzsal*, *strucz → strucc*, *struczok → struccok*, *struczmadarak → struccmadarak* | 22 `kivetel` sor: 17 csere (*pajzzsal* 7, *strucc-* 10), 5 változatlan (*keménynyakú(ak)*) |
 | **ELT-3** tárgyas-heurisztika | `targyrag()`: az „a/az + -t” csak akkor tárgy, ha a *-t* (*-at, -et* …) nélküli tő szó a korpuszban (*a kárpit* nem tárgy) | 2Móz 36:16: *Csináltak ötven hurkot … csináltak* |
 | **ELT-4** a K1 három hibája | `igealak.py` `TOKEN_KIVETEL`: igehely + sorszám szerinti kivétel, az *evék* és a *tevék* minden előfordulásán átnézve. 7 token: a *tevék* főnév (1Móz 24:63, Ez 25:5) változatlan; *ették* (Ján 6:58, 2Móz 16:35); *tettem* (Neh 13:21, Dán 9:4, Jer 35:5). A Jel 12:2 az ELT-1-gyel javult. | a minta G020, G046, G084 sora jó |
 | **ELT-5** DONTESEK DT-F96d/e | az oszlopcsúszás javítva (Állapot 🟢, Döntés, Napló) | 8 oszlop |
@@ -689,7 +689,7 @@ A brief .3 egy táblát írt le, „token-soronként, a vers-kulccsal és a mode
 **DT-F96p** (a *j* nélküli birtokos T/3, alkalmazva):
 - A szabály: *-ök → -ük* (ragokkal is: *kezökbe → kezükbe*), ahol a tő többese a korpuszban *-ek* (*szív → szívek*), és nem *j* előzi meg. A *nemök* kézi listából jön (a *nemek* nem áll a korpuszban).
 - Kizárva a ragtalan *-tök* *t*-végű tövön, mert az múlt idejű T/2 ige (*ültök, jöttök, megöltök, készültök*; 17 alak). Kivétel: *érettök, értök* (névmás).
-- A 195 jelöltalakot a modell átnézte. **911 token** cserél: *velök → velük* 220, *ellenök → ellenük* 66, *szívök → szívük* 42, *Istenök → Istenük* 37, *nemzetségök* 19, *lelkök* 18, *szemök* 17 …
+- A 195 kisbetűs jelöltalakot a modell átnézte (17 igealak kizárva); a táblában **182 alak** (kis- és nagybetűsen külön számolva: *Istenök, istenök*) és **911 token** cserél: *velök → velük* 220, *ellenök → ellenük* 66, *szívök → szívük* 42, *Istenök → Istenük* 37, *nemzetségök* 19, *lelkök* 18, *szemök* 17 …
 - A névelő utáni alak is cserél (*a kezökbe*): a névelő-próba csak az igealak-jelöltekre fut.
 - A mély hangrendű *-ok* (*házok*) nem cserél, mert a próba ott hamis találatot ad (*gonoszok, akartok*).
 
@@ -720,3 +720,31 @@ A brief .3 egy táblát írt le, „token-soronként, a vers-kulccsal és a mode
 **Mérési melléktábla, nem frissítve:** a `helyesiras_hunspell.tsv` (DT301, csak mérce) az ELT-2 előtti alakpárokra szól. A Hunspell-futtató a sessionben nem fut újra; a kiadott rétegbe Hunspell-alak nem kerül, ezért a tábla a 4.1 mérés lenyomata marad.
 
 **Lefedettség:** a modern szövegben maradó régies igealak 1 146 token (az ELT-1 a létigeinek vett *vala* előtti igét javította, ezért a számot nem változtatja): felszólító *-jál* 319 (marad), *-nd-* jövő 147, régies gyanú 294, ritka jegyes 214, gyakori jegyes 135, *vala*-család bizonytalan 34, egyéb 3.
+
+## 8. A független ellenőr második köre és a javítások
+
+`scope=a #96 diffje (61714f36..ca95eb3) és a javítás után a teljes réteg | forras=naplok/ELLENOR_F96.md (2. kör, ELTÉRÉS: 6 tétel) + a 6. szakasz bemenetei | ts=2026-10-25` — `python eszkozok/karoli_modern/igealak.py --minta-frissit`, `python eszkozok/karoli_modern/karoli_modern.py`; 0 token.
+
+**A felhasználó döntése** (chat, 2026-10-25: „Mehet”): mind a hat tétel javítása, a jelöltek teljes átnézésével. Ez a javítókörök szabálya szerinti utolsó újraellenőrzés előtti kör.
+
+| tétel | javítás | ellenőrzés |
+|---|---|---|
+| **ELT-1 maradéka** (nem *-ik* végű jelen idejű ige + *vala → volt*) | A létigeinek vett *vala* előtt álló, jelen idejű végződésű szavak (255 alak–vala pár) mind átnézve. A 37 igei alak a `VALA_ELOTT_KEZI`-be került (*ásnak vala → ástak*, *járkálnak vala → járkáltak*, *vigasztalják vala → vigasztalták*, *meri vala → merte*, *gyötri vala → gyötörte*, *lőnek vala → lőttek* (1Krón 12:2, nyíllal), *vész vala → veszett*). 4 már múlt idejű alak után (*tusakodtatok, etettelek, tévelyegtem, vendégeskedtek*) csak a *vala* esik ki (`VALA_ELOTT_MULT_KEZI`). A többi szó névszó (*fiai, olyanok, velük, embernek* …), ott a *vala* helyesen *volt*. | a lista újrafuttatva: csak névszó maradt |
+| **N-1** E/1 tárgyas elbeszélő múlt *-ám/-ém* | Új szabály (`mult_E1_targyas`): az *-ám/-ém* alak, ha az E/3 tárgyas párja (*mondá*) a #94 táblában `mult.targyas.E3` jegyű. A mai alak a jegy szerinti E/1 (*mondám → mondtam*, *látám → láttam*, *hallám → hallottam*). A 131 alakot a modell átnézte; az `E1_TARGYAS_KEZI` felülbírálja az *elvégzém → elvégeztem*, *kérdém → kérdeztem* alakot, az *értém* kimarad (*értem* 'miattam' is). A névutók (*elém, felém, alám*) nem esnek a szabály alá: nincs jegyes E/3 párjuk. **430 token.** A hangrend javítva: a csak *i/í* hangú *-ít* ige mély (*megtisztítám → megtisztítottam*). | a versek táblán *mondám, látám, hallám, adám*: 0 |
+| **N-2** *ellenek vala → ellentem* | `VALA_ELOTT_KEZI`: *ellenek → elltek* (1Móz 30:39, 31:8; 3 token) | |
+| **ELT-7** fejlécek | Az `igealak_minta.tsv` fejlécéből kikerült az önellentmondó „a modell nem”. Az `igealak_tokenek.tsv`, az `igealak_alakok.tsv` és a minta fejléce a DT-F96l szerinti cserét írja le. A `karoli_modern.tsv` fejléce minden kivételtáblát felsorol (`ALAK_KIVETEL`, `VALA_ELOTT_KEZI`, `VALA_ELOTT_MULT_KEZI`, `TOKEN_KIVETEL`, `E1_TARGYAS_KEZI`, `OK_KEZI`), és a K1-et a 8. szakaszra hivatkozza. Az `igealak.py` docstringje is a DT-F96l-et írja. | |
+| **N-3** a 7. szakasz számai | javítva a 7. szakaszban: 32 token (nem 34); 22 `kivetel` sor (17 csere, 5 változatlan); 182 alak (kis- és nagybetűsen külön) | |
+| **N-4** az `igealak_tokenek.tsv` bontása | l. lent | |
+
+**N-4, az `igealak_tokenek.tsv` változásának bontása** (új / eltűnt kulcs, a csere szabálya szerint):
+
+| kör | sorok | Δ | bontás |
+|---|---:|---:|---|
+| 1. javítókör (`73b16a1 → 8aa3799`) | 65 195 → 66 131 | +936 | +911 `ok_birtokos` (DT-F96p), +32 `jelen_mult_vala` (ELT-1: a *vala* előtti ige; a *vala* sora már bent volt), −5 `karakter` (a *keménynyakú(ak)* változatlan, ELT-2), −2 `token_kivetel` (a *tevék* főnév, ELT-4) |
+| 2. javítókör (`8aa3799 → 8.`) | 66 131 → 66 601 | +470 | +430 `mult_E1_targyas` (N-1), +40 `jelen_mult_vala` (az ELT-1 maradéka és az N-2; a *vala* sora már bent volt) |
+
+**A K1 a javítás után** (modell-ellenőrzés, a felhasználó elfogadta): a minta automatikus cseréi **322 / 322 (100%)**, a változatlan rétegben 0 kihagyás. A 2. körben 3 sor változott (G050 *mondtam*; G051 az *etettelek vala* *vala*-ja kiesik; G068 *megöltem, elhoztam*), mind átnézve, jó. A korlát marad: a mintahibák egy részét a mintatokenekre is ható kézi kivétel javította, így a 100% ugyanazon a mintán nem független becslés (DT-F96h).
+
+**Az újragenerálás igazolása:** a .3 generátora a .1-et és a .2-t újraszámolja, és soronként összeveti a kiadott táblákkal: `helyesiras_tokenek.tsv` 33 318 sor, `igealak_tokenek.tsv` 66 601 sor, egyezik. A K2 és a K3 minden versen átment. A K3b: 418 633 / 418 633 (61 könyv; a kieső, Strongos tokenek: 5 572 összevont „a”, 40 segédigei *vala*). A réteg: 49 449 token változik, 13 657 kiesik (11 128 összevont „a”, 2 529 segédigei *vala*), 21 516 vers változik.
+
+**Lefedettség:** a régies igealak a modern szövegben 1 145 token (felszólító *-jál* 319 marad; *-nd-* jövő 147; régies gyanú 294; ritka jegyes 214; gyakori jegyes 135; a *vala*-család 34 bizonytalan esete; egyéb 2). A számláló a fedettség osztályain fut (`igealak_gyakori`, `igealak_ritka`, `regies_gyanu`, a *vala/lőn/vagyon*). A `valtozatlan` osztályú régies alakot, amilyen az N-1 *mondám*-ja volt, nem látja. A 2. kör ezért külön kereséssel ellenőrizte az ismert osztályokat (*-ám/-ém*, „ige + volt”).

@@ -158,11 +158,12 @@ def main():
             h.update(f.read())
     hk += ' + %s (%d fájl, a K3b bemenete, összesített sha256:%s)' % (STRONG_SZAVAK, len(szavak), h.hexdigest())
     fejlec = ('# GENERÁLT: %s (F96.3) — kézzel nem szerkeszthető; a javítás a szabályban (helyesiras.py, igealak.py, '
-              'igeragozas.py) vagy a kivételtáblában (KEZI, GYANU_KEZI, KIVETEL_LEMMA) | forras=%s | a modernizálás '
+              'igeragozas.py) vagy a kivételtáblában (helyesiras.py: KIVETEL_LEMMA, ALAK_KIVETEL; igealak.py: KEZI, GYANU_KEZI, '
+              'VALA_ELOTT_KEZI, VALA_ELOTT_MULT_KEZI, TOKEN_KIVETEL, E1_TARGYAS_KEZI, OK_KEZI) | forras=%s | a modernizálás '
               'szintje: helyesírás + igealak, szókincs, szórend, írásjel és betoldás-jelölés változatlan (DT128) | '
               'tokenizálás: eszkozok/karoli_strong/tokenek.py tokenizal (a #22 hu_sorszam-a; a Strong token-kulcson '
               'illeszthető, a réteg Strongot nem tárol, DT-F96f, DT-F96o) | mérés: naplok/KAROLI_MODERN_meres.md 4.9 '
-              '(.1, K1 246/246) és 5.7 (.2, K1 313/316, 99,1%%), modell-ellenőrzés, a felhasználó elfogadta | ts=%s\n'
+              '(.1, K1 246/246), 5.7 és 7.–8. (.2, K1 a javítások után a 8. szakasz szerint), modell-ellenőrzés, a felhasználó elfogadta | ts=%s\n'
               % (SZKRIPT, hk, ts))
     os.makedirs(ki_dir, exist_ok=True)
     with open(os.path.join(ki_dir, 'karoli_modern.tsv'), 'w', encoding='utf-8', newline='\n') as f:

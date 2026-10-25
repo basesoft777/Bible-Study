@@ -1,4 +1,4 @@
-# GENERÁLT: eszkozok/karoli_modern/igealak.py (F96.2) — kézzel nem szerkeszthető; a javítás a szabályban vagy a KEZI / GYANU_KEZI táblában | forras=konkordancia/Karoli_1908.tsv (sha256:49335bbcc77d) + adat/szoto/karoli_szotari_alak.tsv (sha256:edba33e6d65a) + adat/karoli_modern/helyesiras_tokenek.tsv (sha256:a3a9b6d24f7f) + eszkozok/karoli_modern/igealak.py (sha256:31861e54595d) + eszkozok/karoli_modern/igeragozas.py (sha256:c92d2b3cfaae) + adat/karoli_modern/igealak_llm.tsv (sha256:878dbe192b42) + adat/karoli_modern/igealak_llm_opus.tsv (sha256:f536a79c073e) | a .1 (helyesiras.py) kimenetére épül, újraszámolva és összevetve | tokenizálás: tokenizal (a #22 hu_sorszam-a; Strong token-kulcson illeszthető, DT-F96f) | a ritka jegyes és a régies gyanús alak NEM automatikus csere (N-F94h): a jelolt oszlopban | LLM: az igealak_llm.tsv (DT-F96d, előfizetés, API nélkül), tő-őrrel | scope=az igealak-osztályú és a vala/lőn/vagyon alakok (4221); alkalmazas: szabaly = automatikus csere; jelolt = a szabály, a sonnet és az opus jelöltje, a modern szöveg a DT-F96l többségi szabálya szerint változik (tobbseg:<források>)
+# GENERÁLT: eszkozok/karoli_modern/igealak.py (F96.2) — kézzel nem szerkeszthető; a javítás a szabályban vagy a kivételtáblában (KEZI, GYANU_KEZI, VALA_ELOTT_KEZI, VALA_ELOTT_MULT_KEZI, TOKEN_KIVETEL, E1_TARGYAS_KEZI, OK_KEZI) | forras=konkordancia/Karoli_1908.tsv (sha256:49335bbcc77d) + adat/szoto/karoli_szotari_alak.tsv (sha256:edba33e6d65a) + adat/karoli_modern/helyesiras_tokenek.tsv (sha256:a3a9b6d24f7f) + eszkozok/karoli_modern/igealak.py (sha256:15af442021f2) + eszkozok/karoli_modern/igeragozas.py (sha256:172887f57837) + adat/karoli_modern/igealak_llm.tsv (sha256:878dbe192b42) + adat/karoli_modern/igealak_llm_opus.tsv (sha256:f536a79c073e) | a .1 (helyesiras.py) kimenetére épül, újraszámolva és összevetve | tokenizálás: tokenizal (a #22 hu_sorszam-a; Strong token-kulcson illeszthető, DT-F96f) | a ritka jegyes és a régies gyanús alak a DT-F96l szerint cserél (a szabály, a sonnet és az opus közül kettő egyezik, tő-őrrel), különben a jelolt oszlopban marad | LLM: az igealak_llm.tsv és az igealak_llm_opus.tsv (DT-F96d, előfizetés, API nélkül) | scope=az igealak-osztályú és a vala/lőn/vagyon alakok (4364); alkalmazas: szabaly = automatikus csere; jelolt = a szabály, a sonnet és az opus jelöltje, a modern szöveg a DT-F96l többségi szabálya szerint változik (tobbseg:<források>)
 alak	gyakorisag	osztaly	reszlet	regies_jegy	szotari_alak	alkalmazas	szabaly	szabaly_jelolt	llm_alak	to_or	egyezes	opus_alak	opus_to_or	opus_egyezik
 Ada	2	igealak_gyakori	mult.alanyi.E3	mult.alanyi.E3	ad	szabaly	igealak:mult.alanyi.E3	Adott						
 Adá	4	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	ad	szabaly	igealak:mult.targyas.E3	Adta						
@@ -86,6 +86,7 @@ Elkülde	14	igealak_gyakori	mult.alanyi.E3	mult.alanyi.E3	elküld	szabaly	igeala
 Elküldvén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	elküld	jelolt	igealak_ritka:hatarozoi_igenev	Elküldve	Elküldve	ok	egyezik			
 Elküldé	7	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	elküld	szabaly	igealak:mult.targyas.E3	Elküldte						
 Elküldék	1	igealak_ritka	mult.E1	mult.E1	elküld	jelolt	igealak_ritka:mult.E1	E1=Elküldtem|T3=Elküldték	Elküldték	ok	egyezik			
+Elküldém	1	valtozatlan			elküldé	szabaly	mult_E1_targyas	Elküldtem						
 Elküldének	2	igealak_ritka	mult.T3	mult.T3	elküld	jelolt	igealak_ritka:mult.T3	alanyi=Elküldtek|targyas=Elküldték	Elküldtek	ok	egyezik			
 Elment	2	regies_gyanu	kivetel_jegy_nelkul		elmegy	jelolt	gyanu:kivetel_jegy_nelkul		Elment	ok		Elment	ok	sonnet
 Elmentek	1	regies_gyanu	kivetel_jegy_nelkul		elmegy	jelolt	gyanu:kivetel_jegy_nelkul		Elmentek	ok		Elmentek	ok	sonnet
@@ -108,6 +109,7 @@ Elvetvén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	elvet	jelolt	igealak
 Elveté	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	elvet	jelolt	igealak_ritka:mult.targyas.E3	Elvetette	Elvetette	ok	egyezik			
 Elvevé	5	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	elvesz	szabaly	igealak:mult.targyas.E3	Elvette						
 Elvevék	2	igealak_ritka	mult.E1	mult.E1	elvesz	jelolt	igealak_ritka:mult.E1	E1=Elvettem|T3=Elvették	Elvették	ok	egyezik			
+Elvevém	1	valtozatlan			elvevé	szabaly	mult_E1_targyas	Elvettem						
 Elvezeté	2	igealak_ritka	mult.targyas.E3	mult.targyas.E3	elvezet	jelolt	igealak_ritka:mult.targyas.E3	Elvezette	Elvezette	ok	egyezik			
 Elvivé	2	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	elvisz	szabaly	igealak:mult.targyas.E3	Elvitte						
 Elvivék	5	igealak_gyakori	mult.E1	mult.E1	elvisz	szabaly	igealak:mult.E1	E1=Elvittem|T3=Elvitték						
@@ -115,6 +117,7 @@ Elváltoztatá	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	elváltoztat	jelo
 Elvégezteték	1	igealak_ritka	mult.E1	mult.E1	elvégeztet	jelolt	igealak_ritka:mult.E1	Elvégezteett	Elvégeztetett	ok	elter	Elvégeztetett	ok	sonnet
 Elvégezé	1	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	elvégezik	szabaly	igealak:mult.targyas.E3	Elvégezte						
 Elvégezék	1	igealak_ritka	mult.E3	mult.E3	elvégezik	jelolt	igealak_ritka:mult.E3	Elvégezett	Elvégezték	ok	elter	Elvégezték	ok	sonnet
+Elvégezém	2	valtozatlan			elvégezé	szabaly	mult_E1_targyas	Elvégeztem						
 Elálmélkodának	1	igealak_ritka	mult.T3	mult.T3	elálmélkodik	jelolt	igealak_ritka:mult.T3	Elálmélkodtak	Elálmélkodtak	ok	egyezik			
 Elégedjél	1	igealak_ritka	felszolito.E2	felszolito.E2	elégedik	jelolt	felszolito_E2	Elégedj						
 Elérkezék	3	igealak_ritka	mult.E3	mult.E3	elérkezik	jelolt	igealak_ritka:mult.E3	Elérkezett	Elérkezett	ok	egyezik			
@@ -148,6 +151,7 @@ Felelvén	25	igealak_gyakori	hatarozoi_igenev	hatarozoi_igenev	felel	szabaly	ige
 Felelék	2	igealak_ritka	mult.E1	mult.E1	felel	jelolt	igealak_ritka:mult.E1	E1=Feleltem|T3=Felelték	Feleltem	ok	egyezik			
 Felelének	26	igealak_gyakori	mult.T3	mult.T3	felel	szabaly	igealak:mult.T3	alanyi=Feleltek|targyas=Felelték						
 Felemelé	1	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	felemelik	szabaly	igealak:mult.targyas.E3	Felemelte						
+Felemelém	1	valtozatlan			felemelé	szabaly	mult_E1_targyas	Felemeltem						
 Felgerjede	1	igealak_gyakori	mult.alanyi.E3	mult.alanyi.E3	felgerjed	szabaly	igealak:mult.alanyi.E3	Felgerjedt						
 Felgerjedett	1	valtozatlan			felgerjed	szabaly	kotohang_mult	Felgerjedt						
 Felhozák	1	regies_gyanu	elemezetlen:-ák		felhozák	jelolt	gyanu:elemezetlen:-ák	Felhozták	Felhozták	ok	egyezik			
@@ -166,12 +170,14 @@ Felment	1	regies_gyanu	kivetel_jegy_nelkul		felmegy	jelolt	gyanu:kivetel_jegy_ne
 Felmentél	1	igealak_ritka	mult.E2	mult.E2	felment	jelolt	igealak_ritka:mult.E2	alanyi=Felmentettél|targyas=Felmentetted	Felmentél	ok	elter	Felmentél	ok	sonnet
 Felmenének	6	igealak_gyakori	mult.T3	mult.T3	felmegy	szabaly	igealak:mult.T3	Felmentek						
 Felméne	14	igealak_gyakori	mult.alanyi.E3	mult.alanyi.E3	felmegy	szabaly	igealak:mult.alanyi.E3	Felment						
+Felnyitám	1	valtozatlan			felnyitá	szabaly	mult_E1_targyas	Felnyitottam						
 Felszabadulván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	felszabadul	jelolt	igealak_ritka:hatarozoi_igenev	Felszabadulva	Felszabadulva	ok	egyezik			
 Felszedé	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	felszed	jelolt	igealak_ritka:mult.targyas.E3	Felszedte	Felszedte	ok	egyezik			
 Felszálla	1	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	felszáll	jelolt	igealak_ritka:mult.alanyi.E3	Felszállt	Felszállt	ok	egyezik			
 Feltevék	1	igealak_ritka	mult.E1	mult.E1	feltesz	jelolt	igealak_ritka:mult.E1	E1=Feltettem|T3=Feltették	Feltették	ok	egyezik			
 Feltámadott	2	valtozatlan			feltámad	szabaly	kotohang_mult	Feltámadt						
 Feltámadának	1	igealak_ritka	mult.T3	mult.T3	feltámad	jelolt	igealak_ritka:mult.T3	Feltámadtak	Feltámadtak	ok	egyezik			
+Feltámasztám	1	valtozatlan			feltámasztá	szabaly	mult_E1_targyas	Feltámasztottam						
 Felvevé	1	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	felvesz	szabaly	igealak:mult.targyas.E3	Felvette						
 Felvevék	1	igealak_ritka	mult.E1	mult.E1	felvesz	jelolt	igealak_ritka:mult.E1	E1=Felvettem|T3=Felvették	Felvették	ok	egyezik			
 Felálla	1	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	feláll	jelolt	igealak_ritka:mult.alanyi.E3	Felállt	Felállt	ok	egyezik			
@@ -181,7 +187,9 @@ Fogadának	1	igealak_ritka	mult.T3	mult.T3	fogad	jelolt	igealak_ritka:mult.T3	al
 Fohászkodjál	1	igealak_ritka	felszolito.E2	felszolito.E2	fohászkodik	jelolt	felszolito_E2	Fohászkodj						
 Fordula	2	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	fordul	jelolt	igealak_ritka:mult.alanyi.E3	Fordult	Fordult	ok	egyezik			
 Fordítván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	fordít	jelolt	igealak_ritka:hatarozoi_igenev	Fordítva	Fordítva	ok	egyezik			
+Fordítám	1	valtozatlan			fordítá	szabaly	mult_E1_targyas	Fordítottam						
 Futa	1	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	fut	jelolt	igealak_ritka:mult.alanyi.E3	Futott	Futott	ok	egyezik			
+Fölemelém	1	valtozatlan			fölemelé	szabaly	mult_E1_targyas	Fölemeltem						
 Fölkele	1	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	fölkel	jelolt	igealak_ritka:mult.alanyi.E3	Fölkelt	Fölkelt	ok	egyezik			
 Fölkelvén	2	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	fölkel	jelolt	igealak_ritka:hatarozoi_igenev	Fölkelve	Fölkelve	ok	egyezik			
 Fölkelék	1	igealak_ritka	mult.E1	mult.E1	fölkel	jelolt	igealak_ritka:mult.E1	Fölkeltem	Fölkeltem	ok	egyezik			
@@ -196,6 +204,7 @@ Hajlék	1	regies_gyanu	elemezetlen:-ék		hajlék	jelolt	gyanu:elemezetlen:-ék	H
 Hajta	1	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	hajt	jelolt	igealak_ritka:mult.alanyi.E3	Hajtott	Hajtott	ok	egyezik			
 Hallván	6	igealak_gyakori	hatarozoi_igenev	hatarozoi_igenev	hall	szabaly	igealak:hatarozoi_igenev	Hallva						
 Hallák	2	regies_gyanu	elemezetlen:-ák		hallák	szabaly	gyanu_kezi	Hallották						
+Hallám	2	valtozatlan			hallá	szabaly	mult_E1_targyas	Hallottam						
 Hallátok	1	igealak_ritka	mult.T2	mult.T2	hall	jelolt	igealak_ritka:mult.T2	alanyi=Hallottatok|targyas=Hallottátok	Hallottátok	ok	egyezik			
 Hallék	1	igealak_gyakori	mult.E1	mult.E1	hall	szabaly	igealak:mult.E1	Hallottam						
 Halván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	hal	jelolt	igealak_ritka:hatarozoi_igenev	Halva	Halván	ok	elter	Halván	ok	sonnet
@@ -266,6 +275,7 @@ Kiméne	23	igealak_gyakori	mult.alanyi.E3	mult.alanyi.E3	kimegy	szabaly	igealak:
 Kinyujtá	2	igealak_ritka	mult.targyas.E3	mult.targyas.E3	kinyujt	jelolt	igealak_ritka:mult.targyas.E3	Kinyujtotta	Kinyújtotta	bukott	elter	Kinyujtotta	ok	szabaly
 Kipusztítá	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	kipusztít	jelolt	igealak_ritka:mult.targyas.E3	Kipusztította	Kipusztította	ok	egyezik			
 Kirekeszteték	1	regies_gyanu	elemezetlen:-eték		kirekeszteték	jelolt	gyanu:elemezetlen:-eték		Kirekesztetett	ok		Kirekesztetett	ok	sonnet
+Kiterjesztém	1	valtozatlan			kiterjeszté	szabaly	mult_E1_targyas	Kiterjesztettem						
 Kitűzvén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	kitűz	jelolt	igealak_ritka:hatarozoi_igenev	Kitűzve	Kitűzve	ok	egyezik			
 Kivivé	3	igealak_ritka	mult.targyas.E3	mult.targyas.E3	kivisz	jelolt	igealak_ritka:mult.targyas.E3	Kivitte	Kivitte	ok	egyezik			
 Kivivék	2	igealak_ritka	mult.E1	mult.E1	kivisz	jelolt	igealak_ritka:mult.E1	E1=Kivittem|T3=Kivitték	Kivitték	ok	egyezik			
@@ -305,6 +315,7 @@ Lebána	2	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	lebán	jelolt	igealak_ritk
 Leesék	1	igealak_ritka	mult.E3	mult.E3	leesik	jelolt	igealak_ritka:mult.E3	Leesett	Leesett	ok	egyezik			
 Lefegyverezvén	1	regies_gyanu	elemezetlen:v-tő		lefegyverezvén	jelolt	gyanu:elemezetlen:v-tő		Lefegyverezve	ok		Lefegyverezve	ok	sonnet
 Lefeküvék	1	regies_gyanu	elemezetlen:v-tő		lefeküvék	szabaly	gyanu_kezi	Lefeküdt						
+Legeltetém	1	valtozatlan			legelteté	szabaly	mult_E1_targyas	Legeltettem						
 Lehajtá	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	lehajt	jelolt	igealak_ritka:mult.targyas.E3	Lehajtotta	Lehajtotta	ok	egyezik			
 Lehányatá	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	lehányat	jelolt	igealak_ritka:mult.targyas.E3	Lehányatta	Lehányatta	ok	egyezik			
 Lehúzá	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	lehúz	jelolt	igealak_ritka:mult.targyas.E3	Lehúzta	Lehúzta	ok	egyezik			
@@ -327,6 +338,7 @@ Láta	1	igealak_gyakori	mult.alanyi.E3	mult.alanyi.E3	lát	szabaly	igealak:mult.
 Láttaték	1	igealak_ritka	mult.E1	mult.E1	láttat	jelolt	igealak_ritka:mult.E1	Láttaott	Láttatott	ok	elter	Láttatott	ok	sonnet
 Látván	27	igealak_gyakori	hatarozoi_igenev	hatarozoi_igenev	lát	szabaly	igealak:hatarozoi_igenev	Látva						
 Látá	3	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	lát	szabaly	igealak:mult.targyas.E3	Látta						
+Látám	15	valtozatlan			látá	szabaly	mult_E1_targyas	Láttam						
 Láték	1	igealak_gyakori	mult.E1	mult.E1	lát	szabaly	igealak:mult.E1	Láttam						
 Lészen	4	valtozatlan			lesz	szabaly	gyanu_kezi	Lesz						
 Lévén	1	igealak_gyakori	hatarozoi_igenev	hatarozoi_igenev	lesz	valtozatlan	igenev_kivetel							
@@ -390,8 +402,10 @@ Megmondá	1	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	megmond	szabaly	igea
 Megmondák	3	regies_gyanu	elemezetlen:-ák		megmondák	szabaly	gyanu_kezi	Megmondták						
 Megmozdula	1	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	megmozdul	jelolt	igealak_ritka:mult.alanyi.E3	Megmozdult	Megmozdult	ok	egyezik			
 Megnyitá	2	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	megnyit	szabaly	igealak:mult.targyas.E3	Megnyitotta						
+Megnyitám	1	valtozatlan			megnyitá	szabaly	mult_E1_targyas	Megnyitottam						
 Megosztozának	1	igealak_ritka	mult.T3	mult.T3	megosztozik	jelolt	igealak_ritka:mult.T3	Megosztoztak	Megosztoztak	ok	egyezik			
 Megparancsolá	2	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	megparancsol	szabaly	igealak:mult.targyas.E3	Megparancsolta						
+Megragadám	1	valtozatlan			megragadá	szabaly	mult_E1_targyas	Megragadtam						
 Megronta	1	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	megront	jelolt	igealak_ritka:mult.alanyi.E3	Megrontott	Megrontott	ok	egyezik			
 Megrémüle	1	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	megrémül	jelolt	igealak_ritka:mult.alanyi.E3	Megrémült	Megrémült	ok	egyezik			
 Megrémülvén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megrémül	jelolt	igealak_ritka:hatarozoi_igenev	Megrémülve	Megrémülve	ok	egyezik			
@@ -444,6 +458,7 @@ Mondottam	1	valtozatlan			mond	szabaly	kotohang_mult	Mondtam
 Mondván	34	igealak_gyakori	hatarozoi_igenev	hatarozoi_igenev	mond	szabaly	igealak:hatarozoi_igenev	Mondva						
 Mondá	2	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	mond	szabaly	igealak:mult.targyas.E3	Mondta						
 Mondák	2	regies_gyanu	elemezetlen:-ák		mondák	szabaly	gyanu_kezi	Mondták						
+Mondám	7	valtozatlan			monda	szabaly	mult_E1_targyas	Mondtam						
 Mondának	60	igealak_gyakori	mult.T3	mult.T3	mond	szabaly	igealak:mult.T3	Mondták						
 Mondék	3	igealak_gyakori	mult.E1	mult.E1	mond	szabaly	igealak:mult.E1	Mondtam						
 Munkálkodának	1	igealak_ritka	mult.T3	mult.T3	munkálkodik	jelolt	igealak_ritka:mult.T3	Munkálkodtak	Munkálkodtak	ok	egyezik			
@@ -457,6 +472,7 @@ Nyelvöket	1	valtozatlan			nyelv	szabaly	ok_birtokos	Nyelvüket
 Nyilván	3	regies_gyanu	elemezetlen:v-tő		nyilván	jelolt	gyanu:elemezetlen:v-tő		Nyilván	ok		Nyilván	ok	sonnet
 Nyomozódván	1	regies_gyanu	elemezetlen:v-tő		nyomozódván	jelolt	gyanu:elemezetlen:v-tő		Nyomozódva	ok		Nyomozódva	ok	sonnet
 Nézvén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	néz	jelolt	igealak_ritka:hatarozoi_igenev	Nézve	Nézve	ok	egyezik			
+Nézém	3	valtozatlan			nézém	szabaly	mult_E1_targyas	Néztem						
 Odamenének	1	igealak_ritka	mult.T3	mult.T3	odamegy	jelolt	igealak_ritka:mult.T3	Odamentek	Odamentek	ok	egyezik			
 Odaveté	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	odavet	jelolt	igealak_ritka:mult.targyas.E3	Odavetette	Odavetette	ok	egyezik			
 Olvasának	1	igealak_ritka	mult.T3	mult.T3	olvas	jelolt	igealak_ritka:mult.T3	alanyi=Olvastak|targyas=Olvasták	Olvastak	ok	egyezik			
@@ -534,6 +550,7 @@ Vett	3	regies_gyanu	kivetel_jegy_nelkul		vesz	jelolt	gyanu:kivetel_jegy_nelkul		
 Veté	1	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	vet	szabaly	igealak:mult.targyas.E3	Vetette						
 Vevé	10	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	vesz	szabaly	igealak:mult.targyas.E3	Vette						
 Vevék	2	igealak_gyakori	mult.E1	mult.E1	vesz	szabaly	igealak:mult.E1	E1=Vettem|T3=Vették						
+Vevém	2	valtozatlan			vevé	szabaly	mult_E1_targyas	Vettem						
 Vevének	1	igealak_ritka	mult.T3	mult.T3	vesz	jelolt	igealak_ritka:mult.T3	alanyi=Vettek|targyas=Vették	Vettek	ok	egyezik			
 Vidd	12	regies_gyanu	kivetel_jegy_nelkul		visz	jelolt	gyanu:kivetel_jegy_nelkul		Vidd	ok		Vidd	ok	sonnet
 Vigyázván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	vigyáz	jelolt	igealak_ritka:hatarozoi_igenev	Vigyázva	Vigyázva	ok	egyezik			
@@ -566,6 +583,7 @@ adván	29	igealak_gyakori	hatarozoi_igenev	hatarozoi_igenev	ad	szabaly	igealak:h
 adá	139	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	ad	szabaly	igealak:mult.targyas.E3	adta						
 adák	42	regies_gyanu	elemezetlen:-ák		adák	szabaly	gyanu_kezi	adták						
 adál	9	igealak_ritka	mult.E2	mult.E2	ad	jelolt	igealak_ritka:mult.E2	alanyi=adtál|targyas=adtad	adtál	ok	egyezik			
+adám	12	valtozatlan			adá	szabaly	mult_E1_targyas	adtam						
 adának	42	igealak_gyakori	mult.T3	mult.T3	ad	szabaly	igealak:mult.T3	alanyi=adtak|targyas=adták						
 adánd	2	regies_gyanu	nd_jovo		adánd	jelolt	gyanu:nd_jovo		ad	ok		adánd	ok	egyik_sem
 adándasz	1	regies_gyanu	nd_jovo		adándasz	jelolt	gyanu:nd_jovo		adsz	bukott		adándasz	ok	egyik_sem
@@ -581,10 +599,12 @@ akara	17	igealak_gyakori	mult.alanyi.E3	mult.alanyi.E3	akar	szabaly	igealak:mult
 akarván	20	igealak_gyakori	hatarozoi_igenev	hatarozoi_igenev	akar	szabaly	igealak:hatarozoi_igenev	akarva						
 akará	34	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	akar	szabaly	igealak:mult.targyas.E3	akarta						
 akarák	11	regies_gyanu	elemezetlen:-ák		akarák	szabaly	gyanu_kezi	akarták						
+akarám	2	valtozatlan			akará	szabaly	mult_E1_targyas	akartam						
 akarának	5	igealak_ritka	mult.T3	mult.T3	akar	jelolt	igealak_ritka:mult.T3	alanyi=akartak|targyas=akarták	akartak	ok	egyezik			
 akarándja	1	regies_gyanu	nd_jovo		akarándja	jelolt	gyanu:nd_jovo		akarja	bukott		akarándja	ok	egyik_sem
 akarátok	2	igealak_ritka	mult.T2	mult.T2	akar	jelolt	igealak_ritka:mult.T2	alanyi=akartatok|targyas=akartátok	akartatok	ok	egyezik			
 alkotá	3	igealak_ritka	mult.targyas.E3	mult.targyas.E3	alkot	jelolt	igealak_ritka:mult.targyas.E3	alkotta	alkotta	ok	egyezik			
+alkotám	1	valtozatlan			alkotá	szabaly	mult_E1_targyas	alkottam						
 alkotának	2	igealak_ritka	mult.T3	mult.T3	alkot	jelolt	igealak_ritka:mult.T3	alanyi=alkottak|targyas=alkották	alkottak	ok	egyezik			
 alkoték	1	igealak_ritka	mult.E1	mult.E1	alkot	jelolt	igealak_ritka:mult.E1	alkottam	alkottam	ok	egyezik			
 aluvék	1	regies_gyanu	elemezetlen:v-tő		aluvék	jelolt	gyanu:elemezetlen:v-tő		aludtam	ok		aludt	ok	egyik_sem
@@ -644,6 +664,7 @@ bejelenték	1	igealak_ritka	mult.E1	mult.E1	bejelent	jelolt	igealak_ritka:mult.E
 bejárván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	bejár	jelolt	igealak_ritka:hatarozoi_igenev	bejárva	bejárva	ok	egyezik			
 bejárá	6	igealak_ritka	mult.targyas.E3	mult.targyas.E3	bejár	jelolt	igealak_ritka:mult.targyas.E3	bejárta	bejárta	ok	egyezik			
 bejárák	1	regies_gyanu	elemezetlen:-ák		bejárák	jelolt	gyanu:elemezetlen:-ák	bejárták	bejárták	ok	egyezik			
+bejárám	1	valtozatlan			bejárá	szabaly	mult_E1_targyas	bejártam						
 bejöve	2	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	bejön	jelolt	igealak_ritka:mult.alanyi.E3	bejött	bejött	ok	egyezik			
 bejövének	1	igealak_ritka	mult.T3	mult.T3	bejön	jelolt	igealak_ritka:mult.T3	bejöttek	bejöttek	ok	egyezik			
 bejövünk	1	regies_gyanu	kivetel_jegy_nelkul		bejön	jelolt	gyanu:kivetel_jegy_nelkul		bejövünk	ok		bejövünk	ok	sonnet
@@ -705,6 +726,7 @@ betelék	7	igealak_ritka	mult.E3	mult.E3	betelik	jelolt	igealak_ritka:mult.E3	be
 betelének	8	igealak_ritka	mult.T3	mult.T3	betelik	jelolt	igealak_ritka:mult.T3	alanyi=beteltek|targyas=betelték	beteltek	ok	egyezik			
 beteríté	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	beterít	jelolt	igealak_ritka:mult.targyas.E3	beterítette	beterítette	ok	egyezik			
 betevé	4	igealak_ritka	mult.targyas.E3	mult.targyas.E3	betesz	jelolt	igealak_ritka:mult.targyas.E3	betette	betette	ok	egyezik			
+betevém	1	valtozatlan			betevé	szabaly	mult_E1_targyas	betettem						
 betére	2	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	betér	jelolt	igealak_ritka:mult.alanyi.E3	betért	betért	ok	egyezik			
 betérének	1	igealak_ritka	mult.T3	mult.T3	betér	jelolt	igealak_ritka:mult.T3	betértek	betértek	ok	egyezik			
 betöltvén	2	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	betölt	jelolt	igealak_ritka:hatarozoi_igenev	betöltve	betöltve	ok	egyezik			
@@ -718,6 +740,7 @@ beveré	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	bever	jelolt	igealak_rit
 bevette	7	regies_gyanu	kivetel_jegy_nelkul		bevesz	jelolt	gyanu:kivetel_jegy_nelkul		bevette	ok		bevette	ok	sonnet
 beveté	4	igealak_ritka	mult.targyas.E3	mult.targyas.E3	bevetik	jelolt	igealak_ritka:mult.targyas.E3	bevetette	bevetette	ok	egyezik			
 beveték	1	igealak_ritka	mult.E3	mult.E3	bevetik	jelolt	igealak_ritka:mult.E3	bevetett	bevetették	ok	elter	bevetették	ok	sonnet
+bevetém	1	valtozatlan			beveté	szabaly	mult_E1_targyas	bevetettem						
 bevevé	8	igealak_ritka	mult.targyas.E3	mult.targyas.E3	bevesz	jelolt	igealak_ritka:mult.targyas.E3	bevette	bevette	ok	egyezik			
 bevevék	9	igealak_ritka	mult.E1	mult.E1	bevesz	jelolt	igealak_ritka:mult.E1	E1=bevettem|T3=bevették	bevették	ok	egyezik			
 bevigye	1	regies_gyanu	kivetel_jegy_nelkul		bevisz	jelolt	gyanu:kivetel_jegy_nelkul		bevigye	ok		bevigye	ok	sonnet
@@ -727,6 +750,7 @@ bevitt	6	regies_gyanu	kivetel_jegy_nelkul		bevisz	jelolt	gyanu:kivetel_jegy_nelk
 bevitte	5	regies_gyanu	kivetel_jegy_nelkul		bevisz	jelolt	gyanu:kivetel_jegy_nelkul		bevitte	ok		bevitte	ok	sonnet
 bevivé	17	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	bevisz	szabaly	igealak:mult.targyas.E3	bevitte						
 bevivék	7	igealak_ritka	mult.E1	mult.E1	bevisz	jelolt	igealak_ritka:mult.E1	E1=bevittem|T3=bevitték	bevitték	ok	egyezik			
+bevivém	2	valtozatlan			bevivé	szabaly	mult_E1_targyas	bevittem						
 bevivén	2	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	bevisz	jelolt	igealak_ritka:hatarozoi_igenev	bevive	bevive	ok	egyezik			
 beviénd	1	regies_gyanu	nd_jovo		beviénd	jelolt	gyanu:nd_jovo		bevisz	ok		beviénd	ok	egyik_sem
 bevonula	1	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	bevonul	jelolt	igealak_ritka:mult.alanyi.E3	bevonult	bevonult	ok	egyezik			
@@ -746,6 +770,7 @@ beállíta	1	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	beállít	jelolt	igeala
 beállítá	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	beállít	jelolt	igealak_ritka:mult.targyas.E3	beállította	beállította	ok	egyezik			
 beírván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	beír	jelolt	igealak_ritka:hatarozoi_igenev	beírva	beírva	ok	egyezik			
 beírá	4	igealak_ritka	mult.targyas.E3	mult.targyas.E3	beír	jelolt	igealak_ritka:mult.targyas.E3	beírta	beírta	ok	egyezik			
+beírám	1	valtozatlan			beírá	szabaly	mult_E1_targyas	beírtam						
 beülvén	2	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	beül	jelolt	igealak_ritka:hatarozoi_igenev	beülve	beülve	ok	egyezik			
 beülénk	1	igealak_ritka	mult.T1	mult.T1	beül	jelolt	igealak_ritka:mult.T1	beültünk	beültünk	ok	egyezik			
 bizonyságtételöket	1	valtozatlan			bizonyságtétel	szabaly	ok_birtokos	bizonyságtételüket						
@@ -757,6 +782,7 @@ bocsátandok	1	regies_gyanu	nd_jovo		bocsátandok	jelolt	gyanu:nd_jovo		bocsáto
 bocsátván	2	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	bocsát	jelolt	igealak_ritka:hatarozoi_igenev	bocsátva	bocsátva	ok	egyezik			
 bocsátá	14	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	bocsát	szabaly	igealak:mult.targyas.E3	bocsátotta						
 bocsáták	5	regies_gyanu	elemezetlen:-ák		bocsáták	jelolt	gyanu:elemezetlen:-ák	bocsátották	bocsátották	ok	egyezik			
+bocsátám	1	valtozatlan			bocsátá	szabaly	mult_E1_targyas	bocsátottam						
 borula	17	igealak_gyakori	mult.alanyi.E3	mult.alanyi.E3	borul	szabaly	igealak:mult.alanyi.E3	borult						
 borulván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	borul	jelolt	igealak_ritka:hatarozoi_igenev	borulva	borulva	ok	egyezik			
 borulának	3	igealak_ritka	mult.T3	mult.T3	borul	jelolt	igealak_ritka:mult.T3	borultak	borultak	ok	egyezik			
@@ -822,6 +848,7 @@ cselekedvén	28	igealak_gyakori	hatarozoi_igenev	hatarozoi_igenev	cselekedik	sza
 cselekedé	8	igealak_ritka	mult.targyas.E3	mult.targyas.E3	cselekedik	jelolt	igealak_ritka:mult.targyas.E3	cselekedte	cselekedte	ok	egyezik			
 cselekedék	122	igealak_gyakori	mult.E3	mult.E3	cselekedik	szabaly	igealak:mult.E3	cselekedett						
 cselekedél	2	igealak_ritka	mult.E2	mult.E2	cselekedik	jelolt	igealak_ritka:mult.E2	alanyi=cselekedtél|targyas=cselekedted	cselekedtél	ok	egyezik			
+cselekedém	2	valtozatlan			cselekedé	szabaly	mult_E1_targyas	cselekedtem						
 cselekedénded	1	regies_gyanu	nd_jovo		cselekedénded	jelolt	gyanu:nd_jovo		cselekeded	bukott		cselekedénded	ok	egyik_sem
 cselekedéndesz	1	regies_gyanu	nd_jovo		cselekedéndesz	jelolt	gyanu:nd_jovo		cselekedsz	bukott		cselekedéndesz	ok	egyik_sem
 cselekedének	57	igealak_gyakori	mult.T3	mult.T3	cselekedik	szabaly	igealak:mult.T3	alanyi=cselekedtek|targyas=cselekedték						
@@ -854,6 +881,7 @@ dicsőítteték	2	igealak_ritka	mult.E1	mult.E1	dicsőíttet	jelolt	igealak_ritk
 dicsőítvén	4	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	dicsőít	jelolt	igealak_ritka:hatarozoi_igenev	dicsőítve	dicsőítve	ok	egyezik			
 dicsőíté	4	igealak_ritka	mult.targyas.E3	mult.targyas.E3	dicsőít	jelolt	igealak_ritka:mult.targyas.E3	dicsőítette	dicsőítette	ok	egyezik			
 dicsőíték	7	igealak_ritka	mult.E1	mult.E1	dicsőít	jelolt	igealak_ritka:mult.E1	E1=dicsőítettem|T3=dicsőítették	dicsőítették	ok	egyezik			
+dicsőítém	1	valtozatlan			dicsőíté	szabaly	mult_E1_targyas	dicsőítettem						
 dobálván	1	regies_gyanu	elemezetlen:v-tő		dobálván	jelolt	gyanu:elemezetlen:v-tő		dobálva	ok		dobálva	ok	sonnet
 dorgálván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	dorgál	jelolt	igealak_ritka:hatarozoi_igenev	dorgálva	dorgálva	ok	egyezik			
 dorgálák	1	regies_gyanu	elemezetlen:-ák		dorgálák	jelolt	gyanu:elemezetlen:-ák	dorgálták	dorgálták	ok	egyezik			
@@ -872,6 +900,7 @@ egybegyűjteté	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	egybegyűjtet	je
 egybegyűjtvén	6	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	egybegyűjtik	jelolt	igealak_ritka:hatarozoi_igenev	egybegyűjtve	egybegyűjtve	ok	egyezik			
 egybegyűjté	7	igealak_ritka	mult.targyas.E3	mult.targyas.E3	egybegyűjtik	jelolt	igealak_ritka:mult.targyas.E3	egybegyűjtötte	egybegyűjtötte	ok	egyezik			
 egybegyűjték	1	igealak_ritka	mult.E3	mult.E3	egybegyűjtik	jelolt	igealak_ritka:mult.E3	egybegyűjtött	egybegyűjtötték	ok	elter	egybegyűjtötték	ok	sonnet
+egybegyűjtém	1	valtozatlan			egybegyűjté	szabaly	mult_E1_targyas	egybegyűjtöttem						
 egybegyűle	11	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	egybegyűl	jelolt	igealak_ritka:mult.alanyi.E3	egybegyült	egybegyűlt	bukott	elter	egybegyűlt	bukott	sonnet
 egybegyűlvén	5	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	egybegyűl	jelolt	igealak_ritka:hatarozoi_igenev	egybegyűlve	egybegyűlve	ok	egyezik			
 egybegyűlének	9	igealak_ritka	mult.T3	mult.T3	egybegyűl	jelolt	igealak_ritka:mult.T3	egybegyűltek	egybegyűltek	ok	egyezik			
@@ -879,6 +908,7 @@ egybehivatá	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	egybehivat	jelolt	i
 egybehívatá	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	egybehívatik	jelolt	igealak_ritka:mult.targyas.E3	egybehívatta	egybehívatta	ok	egyezik			
 egybehívá	3	igealak_ritka	mult.targyas.E3	mult.targyas.E3	egybehív	jelolt	igealak_ritka:mult.targyas.E3	egybehívta	egybehívta	ok	egyezik			
 egybehívák	1	regies_gyanu	elemezetlen:-ák		egybehívák	jelolt	gyanu:elemezetlen:-ák	egybehívták	egybehívták	ok	egyezik			
+egybehívám	1	valtozatlan			egybehívá	szabaly	mult_E1_targyas	egybehívtam						
 egybeköte	1	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	egybeköt	jelolt	igealak_ritka:mult.alanyi.E3	egybekötött	egybekötött	ok	egyezik			
 egybeköttetvén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	egybeköttet	jelolt	igealak_ritka:hatarozoi_igenev	egybeköttetve	egybeköttetve	ok	egyezik			
 egybemenének	1	igealak_ritka	mult.T3	mult.T3	egybemegy	jelolt	igealak_ritka:mult.T3	egybementek	egybementek	ok	egyezik			
@@ -906,12 +936,14 @@ elalélván	1	regies_gyanu	elemezetlen:v-tő		elalélván	jelolt	gyanu:elemezetl
 elbeszéle	1	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	elbeszél	jelolt	igealak_ritka:mult.alanyi.E3	elbeszélt	elbeszélt	ok	egyezik			
 elbeszélé	30	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	elbeszél	szabaly	igealak:mult.targyas.E3	elbeszélte						
 elbeszélék	11	igealak_ritka	mult.E1	mult.E1	elbeszél	jelolt	igealak_ritka:mult.E1	E1=elbeszéltem|T3=elbeszélték	elbeszélték	ok	egyezik			
+elbeszélém	2	valtozatlan			elbeszélé	szabaly	mult_E1_targyas	elbeszéltem						
 elbeszélének	3	igealak_ritka	mult.T3	mult.T3	elbeszél	jelolt	igealak_ritka:mult.T3	alanyi=elbeszéltek|targyas=elbeszélték	elbeszéltek	ok	egyezik			
 elbocsáttatván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	elbocsáttat	jelolt	igealak_ritka:hatarozoi_igenev	elbocsáttatva	elbocsáttatva	ok	egyezik			
 elbocsáttatának	1	igealak_ritka	mult.T3	mult.T3	elbocsáttat	jelolt	igealak_ritka:mult.T3	elbocsáttattak	elbocsáttattak	ok	egyezik			
 elbocsátván	3	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	elbocsát	jelolt	igealak_ritka:hatarozoi_igenev	elbocsátva	elbocsátva	ok	egyezik			
 elbocsátá	36	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	elbocsát	szabaly	igealak:mult.targyas.E3	elbocsátotta						
 elbocsáták	9	regies_gyanu	elemezetlen:-ák		elbocsáták	szabaly	gyanu_kezi	elbocsátották						
+elbocsátám	3	valtozatlan			elbocsátá	szabaly	mult_E1_targyas	elbocsátottam						
 elbontatván	1	regies_gyanu	elemezetlen:v-tő		elbontatván	jelolt	gyanu:elemezetlen:v-tő		elbontatva	ok		elbontatva	ok	sonnet
 elboríttatván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	elboríttat	jelolt	igealak_ritka:hatarozoi_igenev	elboríttatva	elboríttatva	ok	egyezik			
 elboríttatának	1	igealak_ritka	mult.T3	mult.T3	elboríttat	jelolt	igealak_ritka:mult.T3	elboríttattak	elboríttattak	ok	egyezik			
@@ -982,6 +1014,7 @@ elhajták	4	regies_gyanu	elemezetlen:-ák		elhajták	jelolt	gyanu:elemezetlen:-�
 elhajtának	1	igealak_ritka	mult.T3	mult.T3	elhajt	jelolt	igealak_ritka:mult.T3	alanyi=elhajtottak|targyas=elhajtották	elhajtottak	ok	egyezik			
 elhajítván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	elhajít	jelolt	igealak_ritka:hatarozoi_igenev	elhajítva	elhajítva	ok	egyezik			
 elhajítá	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	elhajít	jelolt	igealak_ritka:mult.targyas.E3	elhajította	elhajította	ok	egyezik			
+elhajítám	1	valtozatlan			elhajítám	szabaly	mult_E1_targyas	elhajítottam						
 elhajózván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	elhajóz	jelolt	igealak_ritka:hatarozoi_igenev	elhajózva	elhajózva	ok	egyezik			
 elhajózának	1	igealak_ritka	mult.T3	mult.T3	elhajózik	jelolt	igealak_ritka:mult.T3	elhajóztak	elhajóztak	ok	egyezik			
 elhajózánk	2	igealak_ritka	mult.T1	mult.T1	elhajózik	jelolt	igealak_ritka:mult.T1	elhajóztunk	elhajóztunk	ok	egyezik			
@@ -1013,6 +1046,7 @@ elhozatá	5	igealak_ritka	mult.targyas.E3	mult.targyas.E3	elhozat	jelolt	igealak
 elhozván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	elhoz	jelolt	igealak_ritka:hatarozoi_igenev	elhozva	elhozva	ok	egyezik			
 elhozá	9	igealak_ritka	mult.targyas.E3	mult.targyas.E3	elhoz	jelolt	igealak_ritka:mult.targyas.E3	elhozta	elhozta	ok	egyezik			
 elhozák	12	regies_gyanu	elemezetlen:-ák		elhozák	szabaly	gyanu_kezi	elhozták						
+elhozám	1	valtozatlan			elhozá	szabaly	mult_E1_targyas	elhoztam						
 elhulla	3	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	elhull	jelolt	igealak_ritka:mult.alanyi.E3	elhullott	elhullott	ok	egyezik			
 elhullának	7	igealak_ritka	mult.T3	mult.T3	elhull	jelolt	igealak_ritka:mult.T3	elhullottak	elhulltak	ok	elter	elhullottak	ok	szabaly
 elhívatá	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	elhívat	jelolt	igealak_ritka:mult.targyas.E3	elhívatta	elhívatta	ok	egyezik			
@@ -1074,6 +1108,7 @@ elküldeték	1	igealak_ritka	mult.E1	mult.E1	elküldet	jelolt	igealak_ritka:mult
 elküldvén	11	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	elküld	jelolt	igealak_ritka:hatarozoi_igenev	elküldve	elküldve	ok	egyezik			
 elküldé	52	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	elküld	szabaly	igealak:mult.targyas.E3	elküldte						
 elküldék	11	igealak_ritka	mult.E1	mult.E1	elküld	jelolt	igealak_ritka:mult.E1	E1=elküldtem|T3=elküldték	elküldték	ok	egyezik			
+elküldém	2	valtozatlan			elküldé	szabaly	mult_E1_targyas	elküldtem						
 elküldének	3	igealak_ritka	mult.T3	mult.T3	elküld	jelolt	igealak_ritka:mult.T3	alanyi=elküldtek|targyas=elküldték	elküldtek	ok	egyezik			
 elküldöttek	3	valtozatlan			elküld	szabaly	kotohang_mult	elküldtek						
 elküldöttem	2	valtozatlan			elküld	szabaly	kotohang_mult	elküldtem						
@@ -1111,6 +1146,7 @@ elmondotta	3	regies_gyanu	kivetel_jegy_nelkul		elmond	szabaly	kotohang_mult	elmo
 elmondván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	elmond	jelolt	igealak_ritka:hatarozoi_igenev	elmondva	elmondva	ok	egyezik			
 elmondá	15	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	elmond	szabaly	igealak:mult.targyas.E3	elmondta						
 elmondák	6	regies_gyanu	elemezetlen:-ák		elmondák	szabaly	gyanu_kezi	elmondták						
+elmondám	2	valtozatlan			elmondá	szabaly	mult_E1_targyas	elmondtam						
 elmosta	2	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	elmost	jelolt	igealak_ritka:mult.alanyi.E3	elmostott	elmosta	ok	elter	elmosta	ok	sonnet
 elméne	173	igealak_gyakori	mult.alanyi.E3	mult.alanyi.E3	elmegy	szabaly	igealak:mult.alanyi.E3	elment						
 elmúlott	1	valtozatlan			elmúlik	szabaly	kotohang_mult	elmúlt						
@@ -1132,6 +1168,7 @@ eloszlának	3	igealak_ritka	mult.T3	mult.T3	eloszl	jelolt	igealak_ritka:mult.T3	
 eloszolván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	eloszol	jelolt	igealak_ritka:hatarozoi_igenev	eloszolva	eloszolva	ok	egyezik			
 elosztá	5	igealak_ritka	mult.targyas.E3	mult.targyas.E3	eloszt	jelolt	igealak_ritka:mult.targyas.E3	elosztotta	elosztotta	ok	egyezik			
 eloszták	3	regies_gyanu	elemezetlen:-ák		eloszták	jelolt	gyanu:elemezetlen:-ák	elosztották	elosztották	ok	egyezik			
+elosztám	1	valtozatlan			elosztá	szabaly	mult_E1_targyas	elosztottam						
 elpusztulának	2	igealak_ritka	mult.T3	mult.T3	elpusztul	jelolt	igealak_ritka:mult.T3	elpusztultak	elpusztultak	ok	egyezik			
 elpusztíttatván	2	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	elpusztíttat	jelolt	igealak_ritka:hatarozoi_igenev	elpusztíttatva	elpusztíttatva	ok	egyezik			
 elpusztítá	4	igealak_ritka	mult.targyas.E3	mult.targyas.E3	elpusztít	jelolt	igealak_ritka:mult.targyas.E3	elpusztította	elpusztította	ok	egyezik			
@@ -1145,6 +1182,7 @@ elragadtatám	2	regies_gyanu	elemezetlen:-tatám		elragadtatám	jelolt	gyanu:ele
 elragadá	6	igealak_ritka	mult.targyas.E3	mult.targyas.E3	elragad	jelolt	igealak_ritka:mult.targyas.E3	elragadta	elragadta	ok	egyezik			
 elrejté	12	igealak_ritka	mult.targyas.E3	mult.targyas.E3	elrejt	jelolt	igealak_ritka:mult.targyas.E3	elrejtette	elrejtette	ok	egyezik			
 elrejték	4	igealak_ritka	mult.E1	mult.E1	elrejt	jelolt	igealak_ritka:mult.E1	E1=elrejtettem|T3=elrejtették	elrejtették	ok	egyezik			
+elrejtém	3	valtozatlan			elrejté	szabaly	mult_E1_targyas	elrejtettem						
 elrejtőzék	4	igealak_ritka	mult.E1	mult.E1	elrejtőz	jelolt	igealak_ritka:mult.E1	elrejtőztem	elrejtőzött	ok	elter	elrejtőzött	ok	sonnet
 elrejtőzél	1	igealak_ritka	mult.E2	mult.E2	elrejtőz	jelolt	igealak_ritka:mult.E2	elrejtőztél	elrejtőztél	ok	egyezik			
 elrejtőzének	2	igealak_ritka	mult.T3	mult.T3	elrejtőz	jelolt	igealak_ritka:mult.T3	elrejtőztek	elrejtőztek	ok	egyezik			
@@ -1190,6 +1228,7 @@ eltelének	3	igealak_ritka	mult.T3	mult.T3	eltelik	jelolt	igealak_ritka:mult.T3	
 eltemetteték	29	igealak_gyakori	mult.E1	mult.E1	eltemettet	szabaly	igealak_kezi	eltemettetett						
 eltemeté	2	igealak_ritka	mult.targyas.E3	mult.targyas.E3	eltemetik	jelolt	igealak_ritka:mult.targyas.E3	eltemette	eltemette	ok	egyezik			
 eltemeték	36	igealak_gyakori	mult.E3	mult.E3	eltemetik	szabaly	igealak_kezi	eltemették						
+eltemetém	1	valtozatlan			eltemeté	szabaly	mult_E1_targyas	eltemettem						
 elterjede	6	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	elterjed	jelolt	igealak_ritka:mult.alanyi.E3	elterjedt	elterjedt	ok	egyezik			
 elterjeszték	1	igealak_ritka	mult.E1	mult.E1	elterjeszt	jelolt	igealak_ritka:mult.E1	E1=elterjesztettem|T3=elterjesztették	elterjesztették	ok	egyezik			
 eltett	1	regies_gyanu	kivetel_jegy_nelkul		eltesz	jelolt	gyanu:kivetel_jegy_nelkul		eltett	ok		eltett	ok	sonnet
@@ -1197,7 +1236,7 @@ eltette	1	regies_gyanu	kivetel_jegy_nelkul		eltesz	jelolt	gyanu:kivetel_jegy_nel
 eltevé	2	igealak_ritka	mult.targyas.E3	mult.targyas.E3	eltesz	jelolt	igealak_ritka:mult.targyas.E3	eltette	eltette	ok	egyezik			
 eltevék	1	igealak_ritka	mult.E1	mult.E1	eltesz	jelolt	igealak_ritka:mult.E1	E1=eltettem|T3=eltették	eltették	ok	egyezik			
 eltiltá	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	eltilt	jelolt	igealak_ritka:mult.targyas.E3	eltiltette	eltiltotta	ok	elter	eltiltotta	ok	sonnet
-eltisztítá	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	eltisztít	jelolt	igealak_ritka:mult.targyas.E3	eltisztítette	eltisztította	ok	elter	eltisztította	ok	sonnet
+eltisztítá	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	eltisztít	jelolt	igealak_ritka:mult.targyas.E3	eltisztította	eltisztította	ok	egyezik	eltisztította	ok	szabaly+sonnet
 eltávozván	6	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	eltávozik	jelolt	igealak_ritka:hatarozoi_igenev	eltávozva	eltávozva	ok	egyezik			
 eltávozzál	1	igealak_ritka	felszolito.E2	felszolito.E2	eltávozik	jelolt	felszolito_E2	eltávozz						
 eltávozának	4	igealak_ritka	mult.T3	mult.T3	eltávozik	jelolt	igealak_ritka:mult.T3	eltávoztak	eltávoztak	ok	egyezik			
@@ -1210,6 +1249,7 @@ eltévelyítvén	1	regies_gyanu	elemezetlen:v-tő		eltévelyítvén	jelolt	gyanu
 eltörvén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	eltörik	jelolt	igealak_ritka:hatarozoi_igenev	eltörve	eltörve	ok	egyezik			
 eltöré	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	eltörik	jelolt	igealak_ritka:mult.targyas.E3	eltörte	eltörte	ok	egyezik			
 eltörék	1	igealak_ritka	mult.E3	mult.E3	eltörik	jelolt	igealak_ritka:mult.E3	eltört	eltörött	ok	elter	eltört	ok	szabaly
+eltörém	2	valtozatlan			eltörém	szabaly	mult_E1_targyas	eltörtem						
 eltöröltetének	1	igealak_ritka	mult.T3	mult.T3	eltöröltet	jelolt	igealak_ritka:mult.T3	eltöröltettek	eltöröltettek	ok	egyezik			
 eltörölvén	2	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	eltöröl	jelolt	igealak_ritka:hatarozoi_igenev	eltörölve	eltörölve	ok	egyezik			
 elutasítá	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	elutasít	jelolt	igealak_ritka:mult.targyas.E3	elutasította	elutasította	ok	egyezik			
@@ -1226,6 +1266,7 @@ elveszte	1	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	elveszt	jelolt	igealak_ri
 elvesztvén	3	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	elveszt	jelolt	igealak_ritka:hatarozoi_igenev	elvesztve	elvesztve	ok	egyezik			
 elveszté	6	igealak_ritka	mult.targyas.E3	mult.targyas.E3	elveszt	jelolt	igealak_ritka:mult.targyas.E3	elvesztette	elvesztette	ok	egyezik			
 elvesztél	1	igealak_ritka	mult.E2	mult.E2	elveszt	jelolt	igealak_ritka:mult.E2	alanyi=elvesztettél|targyas=elvesztetted	elvesztél	ok	elter	elvesztél	ok	sonnet
+elvesztém	4	valtozatlan			elveszté	szabaly	mult_E1_targyas	elvesztettem						
 elveszvén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	elvesz	jelolt	igealak_ritka:hatarozoi_igenev	elveszve	elveszve	ok	egyezik			
 elveszének	4	igealak_ritka	mult.T3	mult.T3	elvesz	jelolt	igealak_ritka:mult.T3	alanyi=elvettek|targyas=elvették	elvesztek	ok	elter	elvesztek	ok	sonnet
 elvete	1	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	elvet	jelolt	igealak_ritka:mult.alanyi.E3	elvetett	elvetett	ok	egyezik			
@@ -1236,6 +1277,7 @@ elvetvén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	elvet	jelolt	igealak
 elveté	8	igealak_ritka	mult.targyas.E3	mult.targyas.E3	elvet	jelolt	igealak_ritka:mult.targyas.E3	elvetette	elvetette	ok	egyezik			
 elvevé	30	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	elvesz	szabaly	igealak:mult.targyas.E3	elvette						
 elvevék	6	igealak_ritka	mult.E1	mult.E1	elvesz	jelolt	igealak_ritka:mult.E1	E1=elvettem|T3=elvették	elvették	ok	egyezik			
+elvevém	2	valtozatlan			elvevé	szabaly	mult_E1_targyas	elvettem						
 elvevén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	elvesz	jelolt	igealak_ritka:hatarozoi_igenev	elveve	elvéve	bukott	elter	elvéve	bukott	sonnet
 elvezeté	3	igealak_ritka	mult.targyas.E3	mult.targyas.E3	elvezet	jelolt	igealak_ritka:mult.targyas.E3	elvezette	elvezette	ok	egyezik			
 elvezeték	1	igealak_ritka	mult.E1	mult.E1	elvezet	jelolt	igealak_ritka:mult.E1	E1=elvezettem|T3=elvezették	elvezették	ok	egyezik			
@@ -1258,6 +1300,7 @@ elvágatá	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	elvágatik	jelolt	ige
 elválasztaték	2	igealak_ritka	mult.E1	mult.E1	elválasztat	jelolt	igealak_ritka:mult.E1	elválasztaott	elválasztatott	ok	elter	elválasztatott	ok	sonnet
 elválasztá	6	igealak_ritka	mult.targyas.E3	mult.targyas.E3	elválaszt	jelolt	igealak_ritka:mult.targyas.E3	elválasztotta	elválasztotta	ok	egyezik			
 elválaszták	1	regies_gyanu	elemezetlen:-ák		elválaszták	jelolt	gyanu:elemezetlen:-ák	elválasztották	elválasztották	ok	egyezik			
+elválasztám	1	valtozatlan			elválasztá	szabaly	mult_E1_targyas	elválasztottam						
 elválasztándom	1	regies_gyanu	nd_jovo		elválasztándom	jelolt	gyanu:nd_jovo		elválasztom	bukott		elválasztándom	ok	egyik_sem
 elváltoztatá	3	igealak_ritka	mult.targyas.E3	mult.targyas.E3	elváltoztat	jelolt	igealak_ritka:mult.targyas.E3	elváltoztatta	elváltoztatta	ok	egyezik			
 elváltozának	1	igealak_ritka	mult.T3	mult.T3	elváltozik	jelolt	igealak_ritka:mult.T3	elváltoztak	elváltoztak	ok	egyezik			
@@ -1269,7 +1312,9 @@ elvégezteték	3	igealak_ritka	mult.E1	mult.E1	elvégeztet	jelolt	igealak_ritka:
 elvégezvén	2	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	elvégezik	jelolt	igealak_ritka:hatarozoi_igenev	elvégezve	elvégezve	ok	egyezik			
 elvégezé	22	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	elvégezik	szabaly	igealak:mult.targyas.E3	elvégezte						
 elvégezék	2	igealak_ritka	mult.E3	mult.E3	elvégezik	jelolt	igealak_ritka:mult.E3	elvégezett	elvégezték	ok	elter	elvégezték	ok	sonnet
+elvégezém	1	valtozatlan			elvégezé	szabaly	mult_E1_targyas	elvégeztem						
 elvégzé	2	igealak_ritka	mult.targyas.E3	mult.targyas.E3	elvégzik	jelolt	igealak_ritka:mult.targyas.E3	elvégzette	elvégezte	ok	elter	elvégezte	ok	sonnet
+elvégzém	1	valtozatlan			elvégzé	szabaly	mult_E1_targyas	elvégeztem						
 elvéteté	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	elvétet	jelolt	igealak_ritka:mult.targyas.E3	elvétette	elvétette	ok	egyezik			
 elvéteték	2	igealak_ritka	mult.E1	mult.E1	elvétet	jelolt	igealak_ritka:mult.E1	elvéteett	elvétetett	ok	elter	elvétetett	ok	sonnet
 elvőn	2	regies_gyanu	kivetel_jegy_nelkul		elvesz	jelolt	gyanu:kivetel_jegy_nelkul		elvett	ok		elvett	ok	sonnet
@@ -1295,9 +1340,11 @@ előhivatván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	előhivat	jelolt
 előhivatá	2	igealak_ritka	mult.targyas.E3	mult.targyas.E3	előhivat	jelolt	igealak_ritka:mult.targyas.E3	előhivatta	előhivatta	ok	egyezik			
 előhoza	1	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	előhoz	jelolt	igealak_ritka:mult.alanyi.E3	előhozott	előhozott	ok	egyezik			
 előhozatá	4	igealak_ritka	mult.targyas.E3	mult.targyas.E3	előhozat	jelolt	igealak_ritka:mult.targyas.E3	előhozatta	előhozatta	ok	egyezik			
+előhozatám	1	valtozatlan			előhozatá	szabaly	mult_E1_targyas	előhozattam						
 előhozván	2	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	előhoz	jelolt	igealak_ritka:hatarozoi_igenev	előhozva	előhozva	ok	egyezik			
 előhozá	4	igealak_ritka	mult.targyas.E3	mult.targyas.E3	előhoz	jelolt	igealak_ritka:mult.targyas.E3	előhozta	előhozta	ok	egyezik			
 előhozák	6	regies_gyanu	elemezetlen:-ák		előhozák	szabaly	gyanu_kezi	előhozták						
+előhozám	1	valtozatlan			előhozá	szabaly	mult_E1_targyas	előhoztam						
 előhívatá	3	igealak_ritka	mult.targyas.E3	mult.targyas.E3	előhívatik	jelolt	igealak_ritka:mult.targyas.E3	előhívatta	előhívatta	ok	egyezik			
 előhívá	3	igealak_ritka	mult.targyas.E3	mult.targyas.E3	előhív	jelolt	igealak_ritka:mult.targyas.E3	előhívta	előhívta	ok	egyezik			
 előhívák	2	regies_gyanu	elemezetlen:-ák		előhívák	jelolt	gyanu:elemezetlen:-ák	előhívták	előhívták	ok	egyezik			
@@ -1325,12 +1372,14 @@ előállának	1	igealak_ritka	mult.T3	mult.T3	előáll	jelolt	igealak_ritka:mult
 előállítá	6	igealak_ritka	mult.targyas.E3	mult.targyas.E3	előállít	jelolt	igealak_ritka:mult.targyas.E3	előállította	előállította	ok	egyezik			
 elűzé	2	igealak_ritka	mult.targyas.E3	mult.targyas.E3	elűz	jelolt	igealak_ritka:mult.targyas.E3	elűzte	elűzte	ok	egyezik			
 elűzék	3	igealak_ritka	mult.E1	mult.E1	elűz	jelolt	igealak_ritka:mult.E1	E1=elűztem|T3=elűzték	elűzték	ok	egyezik			
+elűzém	1	valtozatlan			elűzé	szabaly	mult_E1_targyas	elűztem						
 emele	2	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	emel	jelolt	igealak_ritka:mult.alanyi.E3	emelt	emelt	ok	egyezik			
 emelkedjél	1	igealak_ritka	felszolito.E2	felszolito.E2	emelkedik	jelolt	felszolito_E2	emelkedj						
 emelkedék	2	igealak_ritka	mult.E3	mult.E3	emelkedik	jelolt	igealak_ritka:mult.E3	emelkedett	emelkedett	ok	egyezik			
 emelkedének	2	igealak_ritka	mult.T3	mult.T3	emelkedik	jelolt	igealak_ritka:mult.T3	emelkedtek	emelkedtek	ok	egyezik			
 emelvén	4	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	emel	jelolt	igealak_ritka:hatarozoi_igenev	emelve	emelve	ok	egyezik			
 emelé	2	igealak_ritka	mult.targyas.E3	mult.targyas.E3	emel	jelolt	igealak_ritka:mult.targyas.E3	emelte	emelte	ok	egyezik			
+emelém	5	valtozatlan			emelé	szabaly	mult_E1_targyas	emeltem						
 emelének	2	igealak_ritka	mult.T3	mult.T3	emel	jelolt	igealak_ritka:mult.T3	alanyi=emeltek|targyas=emelték	emeltek	ok	egyezik			
 emlegetvén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	emlegetik	jelolt	igealak_ritka:hatarozoi_igenev	emlegetve	emlegetve	ok	egyezik			
 emlékeztetvén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	emlékeztet	jelolt	igealak_ritka:hatarozoi_igenev	emlékeztetve	emlékeztetve	ok	egyezik			
@@ -1411,6 +1460,7 @@ felelvén	98	igealak_gyakori	hatarozoi_igenev	hatarozoi_igenev	felel	szabaly	ige
 felelé	3	igealak_ritka	mult.targyas.E3	mult.targyas.E3	felel	jelolt	igealak_ritka:mult.targyas.E3	felelte	felelt	ok	elter	felelte	ok	szabaly
 felelék	10	igealak_ritka	mult.E1	mult.E1	felel	jelolt	igealak_ritka:mult.E1	E1=feleltem|T3=felelték	feleltem	ok	egyezik			
 felelél	1	igealak_ritka	mult.E2	mult.E2	felel	jelolt	igealak_ritka:mult.E2	alanyi=feleltél|targyas=felelted	feleltél	ok	egyezik			
+felelém	1	valtozatlan			felele	szabaly	mult_E1_targyas	feleltem						
 felelének	34	igealak_gyakori	mult.T3	mult.T3	felel	szabaly	igealak:mult.T3	alanyi=feleltek|targyas=felelték						
 felelénk	1	igealak_ritka	mult.T1	mult.T1	felel	jelolt	igealak_ritka:mult.T1	alanyi=feleltünk|targyas=feleltük	feleltünk	ok	egyezik			
 felelétek	2	igealak_ritka	mult.T2	mult.T2	felel	jelolt	igealak_ritka:mult.T2	alanyi=feleltetek|targyas=feleltétek	feleltetek	ok	egyezik			
@@ -1421,6 +1471,7 @@ felemelteték	2	igealak_ritka	mult.E1	mult.E1	felemeltet	jelolt	igealak_ritka:mu
 felemelvén	9	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	felemelik	jelolt	igealak_ritka:hatarozoi_igenev	felemelve	felemelve	ok	egyezik			
 felemelé	38	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	felemelik	szabaly	igealak:mult.targyas.E3	felemelte						
 felemelék	7	igealak_ritka	mult.E3	mult.E3	felemelik	jelolt	igealak_ritka:mult.E3	felemelt	felemelték	ok	elter	felemelték	ok	sonnet
+felemelém	7	valtozatlan			felemelé	szabaly	mult_E1_targyas	felemeltem						
 feleségök	2	valtozatlan			feleség	szabaly	ok_birtokos	feleségük						
 feleségöket	1	valtozatlan			feleség	szabaly	ok_birtokos	feleségüket						
 felfegyverkezvén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	felfegyverkez	jelolt	igealak_ritka:hatarozoi_igenev	felfegyverkezve	felfegyverkezve	ok	egyezik			
@@ -1554,6 +1605,7 @@ felviteték	5	igealak_ritka	mult.E1	mult.E1	felvitet	jelolt	igealak_ritka:mult.E
 felvitte	3	regies_gyanu	kivetel_jegy_nelkul		felvisz	jelolt	gyanu:kivetel_jegy_nelkul		felvitte	ok		felvitte	ok	sonnet
 felvivé	7	igealak_ritka	mult.targyas.E3	mult.targyas.E3	felvisz	jelolt	igealak_ritka:mult.targyas.E3	felvitte	felvitte	ok	egyezik			
 felvivék	8	igealak_ritka	mult.E1	mult.E1	felvisz	jelolt	igealak_ritka:mult.E1	E1=felvittem|T3=felvitték	felvitték	ok	egyezik			
+felvivém	1	valtozatlan			felvivé	szabaly	mult_E1_targyas	felvittem						
 felvivén	2	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	felvisz	jelolt	igealak_ritka:hatarozoi_igenev	felvive	felvive	ok	egyezik			
 felvonaték	1	regies_gyanu	elemezetlen:-aték		felvonaték	jelolt	gyanu:elemezetlen:-aték		felvonatott	ok		felvonatott	ok	sonnet
 felvonván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	felvon	jelolt	igealak_ritka:hatarozoi_igenev	felvonva	felvonva	ok	egyezik			
@@ -1569,6 +1621,7 @@ felállíttatá	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	felállíttat	je
 felállíttatál	1	igealak_ritka	mult.E2	mult.E2	felállíttat	jelolt	igealak_ritka:mult.E2	felállíttattál	felállíttattál	ok	egyezik			
 felállítá	12	igealak_ritka	mult.targyas.E3	mult.targyas.E3	felállít	jelolt	igealak_ritka:mult.targyas.E3	felállította	felállította	ok	egyezik			
 felállíták	2	regies_gyanu	elemezetlen:-ák		felállíták	jelolt	gyanu:elemezetlen:-ák	felállították	felállították	ok	egyezik			
+felállítám	1	valtozatlan			felállítá	szabaly	mult_E1_targyas	felállítottam						
 felébredvén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	felébred	jelolt	igealak_ritka:hatarozoi_igenev	felébredve	felébredve	ok	egyezik			
 felégete	1	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	feléget	jelolt	igealak_ritka:mult.alanyi.E3	felégetett	felégetett	ok	egyezik			
 felégeté	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	feléget	jelolt	igealak_ritka:mult.targyas.E3	felégette	felégette	ok	egyezik			
@@ -1666,6 +1719,7 @@ fölemelkedének	3	igealak_ritka	mult.T3	mult.T3	fölemelked	jelolt	igealak_ritk
 fölemelvén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	fölemel	jelolt	igealak_ritka:hatarozoi_igenev	fölemelve	fölemelve	ok	egyezik			
 fölemelé	4	igealak_ritka	mult.targyas.E3	mult.targyas.E3	fölemel	jelolt	igealak_ritka:mult.targyas.E3	fölemelte	fölemelte	ok	egyezik			
 fölemelék	3	igealak_ritka	mult.E1	mult.E1	fölemel	jelolt	igealak_ritka:mult.E1	E1=fölemeltem|T3=fölemelték	fölemelték	ok	egyezik			
+fölemelém	2	valtozatlan			fölemelé	szabaly	mult_E1_targyas	fölemeltem						
 fölgerjede	2	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	fölgerjed	jelolt	igealak_ritka:mult.alanyi.E3	fölgerjedt	fölgerjedt	ok	egyezik			
 fölgerjedett	1	valtozatlan			fölgerjed	szabaly	kotohang_mult	fölgerjedt						
 fölismerék	1	igealak_ritka	mult.E1	mult.E1	fölismer	jelolt	igealak_ritka:mult.E1	E1=fölismertem|T3=fölismerték	fölismerték	ok	egyezik			
@@ -1693,6 +1747,7 @@ fölvegyétek	1	regies_gyanu	kivetel_jegy_nelkul		fölvesz	jelolt	gyanu:kivetel_
 fölvette	2	regies_gyanu	kivetel_jegy_nelkul		fölvesz	jelolt	gyanu:kivetel_jegy_nelkul		fölvette	ok		fölvette	ok	sonnet
 fölvevé	2	igealak_ritka	mult.targyas.E3	mult.targyas.E3	fölvesz	jelolt	igealak_ritka:mult.targyas.E3	fölvette	fölvette	ok	egyezik			
 fölvevék	1	igealak_ritka	mult.E1	mult.E1	fölvesz	jelolt	igealak_ritka:mult.E1	E1=fölvettem|T3=fölvették	fölvették	ok	egyezik			
+fölvevém	1	valtozatlan			fölvevé	szabaly	mult_E1_targyas	fölvettem						
 fölvevén	2	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	fölvesz	jelolt	igealak_ritka:hatarozoi_igenev	fölveve	fölvéve	bukott	elter	fölvéve	bukott	sonnet
 fölviteték	2	igealak_ritka	mult.E1	mult.E1	fölvitet	jelolt	igealak_ritka:mult.E1	fölviteett	fölvitetett	ok	elter	fölvitetett	ok	sonnet
 fölvévén	1	regies_gyanu	elemezetlen:v-tő		fölvévén	jelolt	gyanu:elemezetlen:v-tő		fölvéve	ok		fölvéve	ok	sonnet
@@ -1718,6 +1773,7 @@ gondolván	9	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	gondol	jelolt	igeal
 gondolá	9	igealak_ritka	mult.targyas.E3	mult.targyas.E3	gondol	jelolt	igealak_ritka:mult.targyas.E3	gondolta	gondolta	ok	egyezik			
 gondolák	1	regies_gyanu	elemezetlen:-ák		gondolák	jelolt	gyanu:elemezetlen:-ák	gondolták	gondolták	ok	egyezik			
 gondolál	1	igealak_ritka	mult.E2	mult.E2	gondol	jelolt	igealak_ritka:mult.E2	alanyi=gondoltál|targyas=gondoltad	gondoltál	ok	egyezik			
+gondolám	2	valtozatlan			gondolá	szabaly	mult_E1_targyas	gondoltam						
 gondoskodjál	1	igealak_ritka	felszolito.E2	felszolito.E2	gondoskodik	jelolt	felszolito_E2	gondoskodj						
 gyarapodának	1	igealak_ritka	mult.T3	mult.T3	gyarapod	jelolt	igealak_ritka:mult.T3	gyarapodtak	gyarapodtak	ok	egyezik			
 gyarapodék	2	igealak_ritka	mult.E1	mult.E1	gyarapod	jelolt	igealak_ritka:mult.E1	gyarapodtam	gyarapodott	ok	elter	gyarapodott	ok	sonnet
@@ -1790,6 +1846,7 @@ hallgatánk	1	igealak_ritka	mult.T1	mult.T1	hallgat	jelolt	igealak_ritka:mult.T1
 hallván	40	igealak_gyakori	hatarozoi_igenev	hatarozoi_igenev	hall	szabaly	igealak:hatarozoi_igenev	hallva						
 hallá	18	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	hall	szabaly	igealak:mult.targyas.E3	hallotta						
 hallák	13	regies_gyanu	elemezetlen:-ák		hallák	szabaly	gyanu_kezi	hallották						
+hallám	25	valtozatlan			hallá	szabaly	mult_E1_targyas	hallottam						
 hallának	1	igealak_ritka	mult.T3	mult.T3	hall	jelolt	igealak_ritka:mult.T3	alanyi=hallottak|targyas=hallották	hallottak	ok	egyezik			
 hallándasz	1	regies_gyanu	nd_jovo		hallándasz	jelolt	gyanu:nd_jovo		hallasz	bukott		hallándasz	ok	egyik_sem
 hallándja	1	regies_gyanu	nd_jovo		hallándja	jelolt	gyanu:nd_jovo		hallja	bukott		hallándja	ok	egyik_sem
@@ -1852,6 +1909,7 @@ hirdete	1	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	hirdet	jelolt	igealak_ritk
 hirdetvén	9	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	hirdet	jelolt	igealak_ritka:hatarozoi_igenev	hirdetve	hirdetve	ok	egyezik			
 hirdeté	6	igealak_ritka	mult.targyas.E3	mult.targyas.E3	hirdet	jelolt	igealak_ritka:mult.targyas.E3	hirdette	hirdette	ok	egyezik			
 hirdeték	3	igealak_ritka	mult.E1	mult.E1	hirdet	jelolt	igealak_ritka:mult.E1	E1=hirdettem|T3=hirdették	hirdettem	ok	egyezik			
+hirdetém	1	valtozatlan			hirdeté	szabaly	mult_E1_targyas	hirdettem						
 hirdetének	2	igealak_ritka	mult.T3	mult.T3	hirdet	jelolt	igealak_ritka:mult.T3	alanyi=hirdettek|targyas=hirdették	hirdettek	ok	egyezik			
 hisznek	24	regies_gyanu	kivetel_jegy_nelkul		hisz	jelolt	gyanu:kivetel_jegy_nelkul		hisznek	ok		hisznek	ok	sonnet
 hitt	16	regies_gyanu	kivetel_jegy_nelkul		hisz	jelolt	gyanu:kivetel_jegy_nelkul		hitt	ok		hitt	ok	sonnet
@@ -1915,6 +1973,7 @@ hívatál	1	igealak_ritka	mult.E2	mult.E2	hívatik	jelolt	igealak_ritka:mult.E2	
 hívaték	1	igealak_ritka	mult.E3	mult.E3	hívatik	jelolt	igealak_ritka:mult.E3	hívatott	hívatott	ok	egyezik			
 hívá	13	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	hív	szabaly	igealak:mult.targyas.E3	hívta						
 hívák	1	regies_gyanu	elemezetlen:-ák		hívák	jelolt	gyanu:elemezetlen:-ák	hívták	hívták	ok	egyezik			
+hívám	2	valtozatlan			hívá	szabaly	mult_E1_targyas	hívtam						
 híván	4	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	hí	jelolt	igealak_ritka:hatarozoi_igenev	híva	hívva	ok	elter	híva	ok	szabaly
 hívék	1	igealak_ritka	mult.E1	mult.E1	hív	jelolt	igealak_ritka:mult.E1	hívtam	hittek	bukott	elter	hittek	bukott	sonnet
 hívén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	hí	jelolt	igealak_ritka:hatarozoi_igenev	híve	hívén	ok	elter	híve	ok	szabaly
@@ -1938,6 +1997,7 @@ illetvén	2	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	illet	jelolt	igealak
 illeté	19	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	illet	szabaly	igealak:mult.targyas.E3	illette						
 illeték	2	regies_gyanu	elemezetlen:-eték		illeték	jelolt	gyanu:elemezetlen:-eték		illették	ok		illették	ok	sonnet
 illetél	1	igealak_ritka	mult.E2	mult.E2	illet	jelolt	igealak_ritka:mult.E2	alanyi=illettél|targyas=illetted	illettél	ok	egyezik			
+illetém	1	valtozatlan			illeté	szabaly	mult_E1_targyas	illettem						
 illeténdi	1	regies_gyanu	nd_jovo		illeténdi	jelolt	gyanu:nd_jovo		illeti	ok		illeténdi	ok	egyik_sem
 illetének	1	igealak_ritka	mult.T3	mult.T3	illet	jelolt	igealak_ritka:mult.T3	alanyi=illettek|targyas=illették	illettek	ok	egyezik			
 imádkozván	5	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	imádkozik	jelolt	igealak_ritka:hatarozoi_igenev	imádkozva	imádkozva	ok	egyezik			
@@ -1951,6 +2011,7 @@ imádkozék	23	igealak_gyakori	mult.E3	mult.E3	imádkozik	szabaly	igealak:mult.E
 imádván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	imád	jelolt	igealak_ritka:hatarozoi_igenev	imádva	imádva	ok	egyezik			
 imádá	9	igealak_ritka	mult.targyas.E3	mult.targyas.E3	imád	jelolt	igealak_ritka:mult.targyas.E3	imádta	imádta	ok	egyezik			
 imádák	6	regies_gyanu	elemezetlen:-ák		imádák	szabaly	gyanu_kezi	imádták						
+imádám	1	valtozatlan			imádá	szabaly	mult_E1_targyas	imádtam						
 indula	10	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	indul	jelolt	igealak_ritka:mult.alanyi.E3	indult	indult	ok	egyezik			
 indultál	2	igealak_ritka	mult.E2	mult.E2	indult	jelolt	igealak_ritka:mult.E2	indultottál	indultál	ok	elter	indultál	ok	sonnet
 indulván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	indul	jelolt	igealak_ritka:hatarozoi_igenev	indulva	indulva	ok	egyezik			
@@ -1974,6 +2035,7 @@ ismervén	4	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	ismer	jelolt	igealak
 ismeré	12	igealak_ritka	mult.targyas.E3	mult.targyas.E3	ismer	jelolt	igealak_ritka:mult.targyas.E3	ismerte	ismerte	ok	egyezik			
 ismerék	8	igealak_ritka	mult.E1	mult.E1	ismer	jelolt	igealak_ritka:mult.E1	E1=ismertem|T3=ismerték	ismerték	ok	egyezik			
 ismerél	2	igealak_ritka	mult.E2	mult.E2	ismer	jelolt	igealak_ritka:mult.E2	alanyi=ismertél|targyas=ismerted	ismertél	ok	egyezik			
+ismerém	1	valtozatlan			ismeré	szabaly	mult_E1_targyas	ismertem						
 istenök	3	valtozatlan			isten	szabaly	ok_birtokos	istenük						
 istenöket	1	valtozatlan			isten	szabaly	ok_birtokos	istenüket						
 istenöknek	1	valtozatlan			isten	szabaly	ok_birtokos	istenüknek						
@@ -1993,6 +2055,7 @@ jelenteték	4	regies_gyanu	elemezetlen:-teték		jelenteték	jelolt	gyanu:elemeze
 jelentvén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	jelent	jelolt	igealak_ritka:hatarozoi_igenev	jelentve	jelentve	ok	egyezik			
 jelenté	7	igealak_ritka	mult.targyas.E3	mult.targyas.E3	jelent	jelolt	igealak_ritka:mult.targyas.E3	jelentette	jelentette	ok	egyezik			
 jelenték	2	regies_gyanu	elemezetlen:-ék		jelenték	jelolt	gyanu:elemezetlen:-ék	jelentették	jelentették	ok	egyezik			
+jelentém	4	valtozatlan			jelenté	szabaly	mult_E1_targyas	jelentettem						
 jelenék	5	igealak_ritka	mult.E1	mult.E1	jelen	jelolt	igealak_ritka:mult.E1	jelent	jelent	ok	egyezik			
 juta	22	igealak_gyakori	mult.alanyi.E3	mult.alanyi.E3	jut	szabaly	igealak:mult.alanyi.E3	jutott						
 jutand	1	regies_gyanu	nd_jovo		jutand	jelolt	gyanu:nd_jovo		jut	ok		jutand	ok	egyik_sem
@@ -2051,6 +2114,7 @@ keresztelkedvén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	keresztelked	
 keresztelvén	1	regies_gyanu	elemezetlen:-vén		keresztelvén	jelolt	gyanu:elemezetlen:-vén		keresztelve	ok		keresztelve	ok	sonnet
 keresé	6	igealak_ritka	mult.targyas.E3	mult.targyas.E3	keres	jelolt	igealak_ritka:mult.targyas.E3	kereste	kereste	ok	egyezik			
 keresék	5	igealak_ritka	mult.E1	mult.E1	keres	jelolt	igealak_ritka:mult.E1	E1=kerestem|T3=keresték	keresték	ok	egyezik			
+keresém	6	valtozatlan			keresé	szabaly	mult_E1_targyas	kerestem						
 keresénded	1	regies_gyanu	nd_jovo		keresénded	jelolt	gyanu:nd_jovo		keresed	bukott		keresénded	ok	egyik_sem
 keresénditek	1	regies_gyanu	nd_jovo		keresénditek	jelolt	gyanu:nd_jovo		keresitek	bukott		keresénditek	ok	egyik_sem
 keríté	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	kerít	jelolt	igealak_ritka:mult.targyas.E3	kerítette	kerítette	ok	egyezik			
@@ -2066,6 +2130,7 @@ kezdettek	1	valtozatlan			kezd	szabaly	kotohang_mult	kezdtek
 kezdettél	1	valtozatlan			kezd	szabaly	kotohang_mult	kezdtél						
 kezdé	31	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	kezd	szabaly	igealak:mult.targyas.E3	kezdte						
 kezdék	14	igealak_gyakori	mult.E1	mult.E1	kezd	szabaly	igealak:mult.E1	E1=kezdtem|T3=kezdték						
+kezdém	1	tablan_kivul				szabaly	mult_E1_targyas	kezdtem						
 kezdének	12	igealak_ritka	mult.T3	mult.T3	kezd	jelolt	igealak_ritka:mult.T3	alanyi=kezdtek|targyas=kezdték	kezdtek	ok	egyezik			
 kezök	9	valtozatlan			kéz	szabaly	ok_birtokos	kezük						
 kezökbe	16	valtozatlan			kéz	szabaly	ok_birtokos	kezükbe						
@@ -2097,6 +2162,7 @@ kihozatá	5	igealak_ritka	mult.targyas.E3	mult.targyas.E3	kihozat	jelolt	igealak
 kihozván	2	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	kihoz	jelolt	igealak_ritka:hatarozoi_igenev	kihozva	kihozva	ok	egyezik			
 kihozá	6	igealak_ritka	mult.targyas.E3	mult.targyas.E3	kihoz	jelolt	igealak_ritka:mult.targyas.E3	kihozta	kihozta	ok	egyezik			
 kihozák	8	regies_gyanu	elemezetlen:-ák		kihozák	szabaly	gyanu_kezi	kihozták						
+kihozám	2	valtozatlan			kihozá	szabaly	mult_E1_targyas	kihoztam						
 kihozándom	1	regies_gyanu	nd_jovo		kihozándom	jelolt	gyanu:nd_jovo		kihozom	bukott		kihozándom	ok	egyik_sem
 kihányatá	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	kihányat	jelolt	igealak_ritka:mult.targyas.E3	kihányatta	kihányatta	ok	egyezik			
 kihányván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	kihány	jelolt	igealak_ritka:hatarozoi_igenev	kihányva	kihányva	ok	egyezik			
@@ -2109,6 +2175,7 @@ kiirtatván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	kiirtat	jelolt	ige
 kiirtá	6	igealak_ritka	mult.targyas.E3	mult.targyas.E3	kiirt	jelolt	igealak_ritka:mult.targyas.E3	kiirtotta	kiirtotta	ok	egyezik			
 kiirták	1	regies_gyanu	elemezetlen:-ák		kiirták	jelolt	gyanu:elemezetlen:-ák	kiirtották	kiirtották	ok	egyezik			
 kijelenté	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	kijelent	jelolt	igealak_ritka:mult.targyas.E3	kijelentette	kijelentette	ok	egyezik			
+kijelentém	1	valtozatlan			kijelentém	szabaly	mult_E1_targyas	kijelentettem						
 kijöve	26	igealak_gyakori	mult.alanyi.E3	mult.alanyi.E3	kijön	szabaly	igealak:mult.alanyi.E3	kijött						
 kijövék	1	igealak_ritka	mult.E1	mult.E1	kijön	jelolt	igealak_ritka:mult.E1	kijöttem	kijöttem	ok	egyezik			
 kijövén	6	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	kijön	valtozatlan	igenev_kivetel							
@@ -2153,6 +2220,7 @@ kinyújtá	15	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	kinyújt	szabaly	i
 kinyújták	1	regies_gyanu	elemezetlen:-ák		kinyújták	jelolt	gyanu:elemezetlen:-ák	kinyújtották	kinyújtották	ok	egyezik			
 kiontaték	1	igealak_ritka	mult.E1	mult.E1	kiontat	jelolt	igealak_ritka:mult.E1	kiontaott	kiontatott	ok	elter	kiontatott	ok	sonnet
 kiontá	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	kiont	jelolt	igealak_ritka:mult.targyas.E3	kiontotta	kiontotta	ok	egyezik			
+kiontám	1	valtozatlan			kiontá	szabaly	mult_E1_targyas	kiontottam						
 kipusztítván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	kipusztít	jelolt	igealak_ritka:hatarozoi_igenev	kipusztítva	kipusztítva	ok	egyezik			
 kipusztíták	1	regies_gyanu	elemezetlen:-ák		kipusztíták	jelolt	gyanu:elemezetlen:-ák	kipusztították	kipusztították	ok	egyezik			
 kipusztítának	1	igealak_ritka	mult.T3	mult.T3	kipusztít	jelolt	igealak_ritka:mult.T3	alanyi=kipusztítottak|targyas=kipusztították	kipusztítottak	ok	egyezik			
@@ -2165,6 +2233,7 @@ királynéasszonya	7	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	királynéasszo
 királynéasszonyának	2	igealak_ritka	mult.T3	mult.T3	királynéasszony	jelolt	igealak_ritka:mult.T3	királynéasszonytak	királynéasszonyának	ok	elter	királynéasszonyának	ok	sonnet
 kisegíté	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	kisegít	jelolt	igealak_ritka:mult.targyas.E3	kisegítette	kisegítette	ok	egyezik			
 kiszabadítá	2	igealak_ritka	mult.targyas.E3	mult.targyas.E3	kiszabadít	jelolt	igealak_ritka:mult.targyas.E3	kiszabadította	kiszabadította	ok	egyezik			
+kiszabadítám	2	valtozatlan			kiszabadítá	szabaly	mult_E1_targyas	kiszabadítottam						
 kiszaggattaték	1	igealak_ritka	mult.E1	mult.E1	kiszaggattat	jelolt	igealak_ritka:mult.E1	kiszaggattaott	kiszaggattatott	ok	elter	kiszaggattatott	ok	sonnet
 kiszolgáltatá	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	kiszolgáltat	jelolt	igealak_ritka:mult.targyas.E3	kiszolgáltatta	kiszolgáltatta	ok	egyezik			
 kiszállottak	1	valtozatlan			kiszáll	szabaly	kotohang_mult	kiszálltak						
@@ -2176,6 +2245,7 @@ kitekinte	1	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	kitekint	jelolt	igealak_
 kitekintvén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	kitekint	jelolt	igealak_ritka:hatarozoi_igenev	kitekintve	kitekintve	ok	egyezik			
 kiterjeszté	9	igealak_ritka	mult.targyas.E3	mult.targyas.E3	kiterjeszt	jelolt	igealak_ritka:mult.targyas.E3	kiterjesztette	kiterjesztette	ok	egyezik			
 kiterjeszték	2	igealak_ritka	mult.E1	mult.E1	kiterjeszt	jelolt	igealak_ritka:mult.E1	E1=kiterjesztettem|T3=kiterjesztették	kiterjesztették	ok	egyezik			
+kiterjesztém	3	valtozatlan			kiterjeszté	szabaly	mult_E1_targyas	kiterjesztettem						
 kiterjeszténdi	2	regies_gyanu	nd_jovo		kiterjeszténdi	jelolt	gyanu:nd_jovo		kiterjeszti	ok		kiterjeszténdi	ok	egyik_sem
 kiteríté	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	kiterít	jelolt	igealak_ritka:mult.targyas.E3	kiterítette	kiterítette	ok	egyezik			
 kiteríték	2	igealak_ritka	mult.E1	mult.E1	kiterít	jelolt	igealak_ritka:mult.E1	E1=kiterítettem|T3=kiterítették	kiterítették	ok	egyezik			
@@ -2194,6 +2264,7 @@ kiveté	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	kivetik	jelolt	igealak_r
 kiveték	5	regies_gyanu	elemezetlen:-eték		kiveték	jelolt	gyanu:elemezetlen:-eték		kivetették	ok		kivetették	ok	sonnet
 kivevé	7	igealak_ritka	mult.targyas.E3	mult.targyas.E3	kivesz	jelolt	igealak_ritka:mult.targyas.E3	kivette	kivette	ok	egyezik			
 kivevék	1	igealak_ritka	mult.E1	mult.E1	kivesz	jelolt	igealak_ritka:mult.E1	E1=kivettem|T3=kivették	kivették	ok	egyezik			
+kivevém	1	valtozatlan			kivevé	szabaly	mult_E1_targyas	kivettem						
 kivezetvén	2	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	kivezet	jelolt	igealak_ritka:hatarozoi_igenev	kivezetve	kivezetve	ok	egyezik			
 kivezeté	4	igealak_ritka	mult.targyas.E3	mult.targyas.E3	kivezet	jelolt	igealak_ritka:mult.targyas.E3	kivezette	kivezette	ok	egyezik			
 kivigye	2	regies_gyanu	kivetel_jegy_nelkul		kivisz	jelolt	gyanu:kivetel_jegy_nelkul		kivigye	ok		kivigye	ok	sonnet
@@ -2202,6 +2273,7 @@ kivitt	6	regies_gyanu	kivetel_jegy_nelkul		kivisz	jelolt	gyanu:kivetel_jegy_nelk
 kivitte	3	regies_gyanu	kivetel_jegy_nelkul		kivisz	jelolt	gyanu:kivetel_jegy_nelkul		kivitte	ok		kivitte	ok	sonnet
 kivivé	3	igealak_ritka	mult.targyas.E3	mult.targyas.E3	kivisz	jelolt	igealak_ritka:mult.targyas.E3	kivitte	kivitte	ok	egyezik			
 kivivék	5	igealak_ritka	mult.E1	mult.E1	kivisz	jelolt	igealak_ritka:mult.E1	E1=kivittem|T3=kivitték	kivitték	ok	egyezik			
+kivivém	1	valtozatlan			kivivé	szabaly	mult_E1_targyas	kivittem						
 kivivén	2	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	kivisz	jelolt	igealak_ritka:hatarozoi_igenev	kivive	kivíve	bukott	elter	kivive	ok	szabaly
 kivonula	1	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	kivonul	jelolt	igealak_ritka:mult.alanyi.E3	kivonult	kivonult	ok	egyezik			
 kivonulának	2	igealak_ritka	mult.T3	mult.T3	kivonul	jelolt	igealak_ritka:mult.T3	kivonultak	kivonultak	ok	egyezik			
@@ -2217,6 +2289,7 @@ kiválasztaték	5	igealak_ritka	mult.E1	mult.E1	kiválasztat	jelolt	igealak_ritk
 kiválasztván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	kiválaszt	jelolt	igealak_ritka:hatarozoi_igenev	kiválasztva	kiválasztva	ok	egyezik			
 kiválasztá	2	igealak_ritka	mult.targyas.E3	mult.targyas.E3	kiválaszt	jelolt	igealak_ritka:mult.targyas.E3	kiválasztotta	kiválasztotta	ok	egyezik			
 kiválaszták	2	regies_gyanu	elemezetlen:-ák		kiválaszták	jelolt	gyanu:elemezetlen:-ák	kiválasztották	kiválasztották	ok	egyezik			
+kiválasztám	1	valtozatlan			kiválaszta	szabaly	mult_E1_targyas	kiválasztottam						
 kiválogatá	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	kiválogat	jelolt	igealak_ritka:mult.targyas.E3	kiválogatta	kiválogatta	ok	egyezik			
 kivánd	3	regies_gyanu	nd_jovo		kivánd	jelolt	gyanu:nd_jovo							
 kivőn	1	regies_gyanu	kivetel_jegy_nelkul		kivesz	jelolt	gyanu:kivetel_jegy_nelkul		kivett	ok		kivett	ok	sonnet
@@ -2226,11 +2299,13 @@ kiáltozának	3	igealak_ritka	mult.T3	mult.T3	kiáltoz	jelolt	igealak_ritka:mult
 kiáltozék	1	igealak_ritka	mult.E1	mult.E1	kiáltoz	jelolt	igealak_ritka:mult.E1	kiáltoztam	kiáltozott	ok	elter	kiáltozott	ok	sonnet
 kiáltván	9	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	kiált	jelolt	igealak_ritka:hatarozoi_igenev	kiáltva	kiáltva	ok	egyezik			
 kiáltá	5	igealak_ritka	mult.targyas.E3	mult.targyas.E3	kiált	jelolt	igealak_ritka:mult.targyas.E3	kiáltotta	kiáltotta	ok	egyezik			
+kiáltám	1	valtozatlan			kiálta	szabaly	mult_E1_targyas	kiáltottam						
 kiáltának	32	igealak_gyakori	mult.T3	mult.T3	kiált	szabaly	igealak:mult.T3	alanyi=kiáltottak|targyas=kiáltották						
 kiálték	7	igealak_ritka	mult.E1	mult.E1	kiált	jelolt	igealak_ritka:mult.E1	kiáltottam	kiáltottam	ok	egyezik			
 kiöntetvén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	kiöntet	jelolt	igealak_ritka:hatarozoi_igenev	kiöntetve	kiöntetve	ok	egyezik			
 kiönté	2	igealak_ritka	mult.targyas.E3	mult.targyas.E3	kiönt	jelolt	igealak_ritka:mult.targyas.E3	kiöntötte	kiöntötte	ok	egyezik			
 kiönték	1	igealak_ritka	mult.E1	mult.E1	kiönt	jelolt	igealak_ritka:mult.E1	E1=kiöntöttem|T3=kiöntötték	kiöntötték	ok	egyezik			
+kiöntém	1	valtozatlan			kiönté	szabaly	mult_E1_targyas	kiöntöttem						
 kiűze	1	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	kiűz	jelolt	igealak_ritka:mult.alanyi.E3	kiűzött	kiűzött	ok	egyezik			
 kiűzvén	3	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	kiűz	jelolt	igealak_ritka:hatarozoi_igenev	kiűzve	kiűzve	ok	egyezik			
 kiűzé	11	igealak_ritka	mult.targyas.E3	mult.targyas.E3	kiűz	jelolt	igealak_ritka:mult.targyas.E3	kiűzte	kiűzte	ok	egyezik			
@@ -2245,6 +2320,7 @@ kérdezék	5	igealak_ritka	mult.E1	mult.E1	kérdez	jelolt	igealak_ritka:mult.E1	
 kérdezősködék	2	igealak_ritka	mult.E1	mult.E1	kérdezősköd	jelolt	igealak_ritka:mult.E1	kérdezősködtem	kérdezősködött	ok	elter	kérdezősködött	ok	sonnet
 kérdezősködének	2	igealak_ritka	mult.T3	mult.T3	kérdezősköd	jelolt	igealak_ritka:mult.T3	kérdezősködtek	kérdezősködtek	ok	egyezik			
 kérdé	2	igealak_ritka	mult.targyas.E3	mult.targyas.E3	kérd	jelolt	igealak_ritka:mult.targyas.E3	kérdte	kérdezte	ok	elter	kérdezte	ok	sonnet
+kérdém	1	valtozatlan			kérdé	szabaly	mult_E1_targyas	kérdeztem						
 kére	3	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	kér	jelolt	igealak_ritka:mult.alanyi.E3	kért	kért	ok	egyezik			
 kérend	1	regies_gyanu	nd_jovo		kérend	jelolt	gyanu:nd_jovo		kér	ok		kérend	ok	egyik_sem
 kérkedjél	1	igealak_ritka	felszolito.E2	felszolito.E2	kérkedik	jelolt	felszolito_E2	kérkedj						
@@ -2330,6 +2406,7 @@ küldvén	7	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	küld	jelolt	igealak
 küldé	10	igealak_ritka	mult.targyas.E3	mult.targyas.E3	küld	jelolt	igealak_ritka:mult.targyas.E3	küldte	küldte	ok	egyezik			
 küldék	7	igealak_ritka	mult.E1	mult.E1	küld	jelolt	igealak_ritka:mult.E1	E1=küldtem|T3=küldték	küldtem	ok	egyezik			
 küldél	1	igealak_ritka	mult.E2	mult.E2	küld	jelolt	igealak_ritka:mult.E2	alanyi=küldtél|targyas=küldted	küldtél	ok	egyezik			
+küldém	5	valtozatlan			külde	szabaly	mult_E1_targyas	küldtem						
 küldének	17	igealak_gyakori	mult.T3	mult.T3	küld	szabaly	igealak:mult.T3	alanyi=küldtek|targyas=küldték						
 küldöttek	8	valtozatlan			küld	szabaly	kotohang_mult	küldtek						
 küldöttem	17	valtozatlan			küld	szabaly	kotohang_mult	küldtem						
@@ -2369,6 +2446,7 @@ lefeküvék	9	regies_gyanu	elemezetlen:v-tő		lefeküvék	szabaly	gyanu_kezi	lef
 lefeküvén	1	regies_gyanu	elemezetlen:v-tő		lefeküvén	jelolt	gyanu:elemezetlen:v-tő		lefeküdve	ok		lefeküdve	ok	sonnet
 lefosztának	1	igealak_ritka	mult.T3	mult.T3	lefoszt	jelolt	igealak_ritka:mult.T3	lefosztottak	lefosztottak	ok	egyezik			
 legelteté	2	igealak_ritka	mult.targyas.E3	mult.targyas.E3	legeltet	jelolt	igealak_ritka:mult.targyas.E3	legeltette	legeltette	ok	egyezik			
+legeltetém	1	valtozatlan			legelteté	szabaly	mult_E1_targyas	legeltettem						
 legyőzvén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	legyőz	jelolt	igealak_ritka:hatarozoi_igenev	legyőzve	legyőzve	ok	egyezik			
 legyőzé	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	legyőz	jelolt	igealak_ritka:mult.targyas.E3	legyőzte	legyőzte	ok	egyezik			
 lehajolván	4	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	lehajol	jelolt	igealak_ritka:hatarozoi_igenev	lehajolva	lehajolva	ok	egyezik			
@@ -2417,6 +2495,7 @@ leszállván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	leszáll	jelolt	i
 leszállál	1	igealak_ritka	mult.E2	mult.E2	leszáll	jelolt	igealak_ritka:mult.E2	alanyi=leszálltál|targyas=leszálltad	leszálltál	ok	egyezik			
 leszállának	3	igealak_ritka	mult.T3	mult.T3	leszáll	jelolt	igealak_ritka:mult.T3	alanyi=leszálltak|targyas=leszállták	leszálltak	ok	egyezik			
 leszállítá	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	leszállít	jelolt	igealak_ritka:mult.targyas.E3	leszállította	leszállította	ok	egyezik			
+leszállítám	2	valtozatlan			leszállítám	szabaly	mult_E1_targyas	leszállítottam						
 leszünk	20	regies_gyanu	kivetel_jegy_nelkul		lesz	jelolt	gyanu:kivetel_jegy_nelkul		leszünk	ok		leszünk	ok	sonnet
 letelepedék	6	igealak_ritka	mult.E1	mult.E1	leteleped	jelolt	igealak_ritka:mult.E1	letelepedtem	letelepedett	ok	elter	letelepedett	ok	sonnet
 letelepedének	4	igealak_ritka	mult.T3	mult.T3	leteleped	jelolt	igealak_ritka:mult.T3	letelepedtek	letelepedtek	ok	egyezik			
@@ -2478,6 +2557,7 @@ láttaték	2	igealak_ritka	mult.E1	mult.E1	láttat	jelolt	igealak_ritka:mult.E1	
 látván	60	igealak_gyakori	hatarozoi_igenev	hatarozoi_igenev	lát	szabaly	igealak:hatarozoi_igenev	látva						
 látá	89	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	lát	szabaly	igealak:mult.targyas.E3	látta						
 láták	23	regies_gyanu	elemezetlen:-ák		láták	szabaly	gyanu_kezi	látták						
+látám	59	valtozatlan			látá	szabaly	mult_E1_targyas	láttam						
 látának	7	igealak_ritka	mult.T3	mult.T3	lát	jelolt	igealak_ritka:mult.T3	alanyi=láttak|targyas=látták	láttak	ok	egyezik			
 látándasz	1	regies_gyanu	nd_jovo		látándasz	jelolt	gyanu:nd_jovo		látsz	bukott		látándasz	ok	egyik_sem
 látánk	2	igealak_ritka	mult.T1	mult.T1	lát	jelolt	igealak_ritka:mult.T1	alanyi=láttunk|targyas=láttuk	láttunk	ok	egyezik			
@@ -2508,6 +2588,7 @@ megaláztatván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megaláztat	je
 megaláztatának	2	igealak_ritka	mult.T3	mult.T3	megaláztat	jelolt	igealak_ritka:mult.T3	megaláztattak	megaláztattak	ok	egyezik			
 megalázá	4	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megaláz	jelolt	igealak_ritka:mult.targyas.E3	megalázta	megalázta	ok	egyezik			
 megalázák	2	regies_gyanu	elemezetlen:-ák		megalázák	jelolt	gyanu:elemezetlen:-ák	megalázták	megalázták	ok	egyezik			
+megalázám	1	valtozatlan			megalázá	szabaly	mult_E1_targyas	megaláztam						
 megaranyoztatá	1	regies_gyanu	elemezetlen:-tatá		megaranyoztatá	jelolt	gyanu:elemezetlen:-tatá		megaranyoztatta	ok		megaranyoztatta	ok	sonnet
 megbarátkozál	1	igealak_ritka	mult.E2	mult.E2	megbarátkoz	jelolt	igealak_ritka:mult.E2	megbarátkoztál	megbarátkoztál	ok	egyezik			
 megbarátkozék	3	igealak_ritka	mult.E1	mult.E1	megbarátkoz	jelolt	igealak_ritka:mult.E1	megbarátkoztam	megbarátkozott	ok	elter	megbarátkozott	ok	sonnet
@@ -2560,6 +2641,7 @@ megemésztetvén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megemésztet	
 megemészteték	1	regies_gyanu	elemezetlen:-eték		megemészteték	jelolt	gyanu:elemezetlen:-eték		megemésztetett	ok		megemésztetett	ok	sonnet
 megemésztetének	1	igealak_ritka	mult.T3	mult.T3	megemésztet	jelolt	igealak_ritka:mult.T3	alanyi=megemésztettek|targyas=megemésztették	megemésztettek	ok	egyezik			
 megemészté	17	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	megemészt	szabaly	igealak:mult.targyas.E3	megemésztette						
+megemésztém	1	valtozatlan			megemészté	szabaly	mult_E1_targyas	megemésztettem						
 megengedteték	1	regies_gyanu	elemezetlen:-teték		megengedteték	jelolt	gyanu:elemezetlen:-teték		megengedtetett	ok		megengedtetett	ok	sonnet
 megengedvén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megenged	jelolt	igealak_ritka:hatarozoi_igenev	megengedve	megengedve	ok	egyezik			
 megengedé	4	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megenged	jelolt	igealak_ritka:mult.targyas.E3	megengedte	megengedte	ok	egyezik			
@@ -2576,6 +2658,7 @@ megerősödének	2	igealak_ritka	mult.T3	mult.T3	megerősödik	jelolt	igealak_ri
 megeskettetém	1	regies_gyanu	elemezetlen:-tetém		megeskettetém	jelolt	gyanu:elemezetlen:-tetém		megeskettettem	ok		megeskettettem	ok	sonnet
 megesketvén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megesket	jelolt	igealak_ritka:hatarozoi_igenev	megesketve	megesketve	ok	egyezik			
 megesketé	6	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megesket	jelolt	igealak_ritka:mult.targyas.E3	megeskette	megesketette	ok	elter	megeskette	ok	szabaly
+megesketém	1	valtozatlan			megesketé	szabaly	mult_E1_targyas	megeskettem						
 megesküdteté	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megesküdtet	jelolt	igealak_ritka:mult.targyas.E3	megesküdtette	megesküdtette	ok	egyezik			
 megesküdének	1	igealak_ritka	mult.T3	mult.T3	megesküd	jelolt	igealak_ritka:mult.T3	megesküdtek	megesküdtek	ok	egyezik			
 megesküvék	21	regies_gyanu	elemezetlen:v-tő		megesküvék	szabaly	gyanu_kezi	megesküdött						
@@ -2583,8 +2666,10 @@ megesküvének	3	regies_gyanu	elemezetlen:v-tő		megesküvének	jelolt	gyanu:ele
 megesék	1	igealak_ritka	mult.E1	mult.E1	meges	jelolt	igealak_ritka:mult.E1	E1=megestem|T3=megesték	megesett	ok	elter	megesett	ok	sonnet
 megevé	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megeszik	jelolt	igealak_ritka:mult.targyas.E3	megette	megette	ok	egyezik			
 megevék	4	regies_gyanu	kivetel_jegy_nelkul		megeszik	jelolt	gyanu:kivetel_jegy_nelkul		megették	ok		megették	ok	sonnet
+megevém	2	valtozatlan			megevém	szabaly	mult_E1_targyas	megettem						
 megfeddetvén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megfeddetik	jelolt	igealak_ritka:hatarozoi_igenev	megfeddetve	megfeddetve	ok	egyezik			
 megfeddé	2	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megfedd	jelolt	igealak_ritka:mult.targyas.E3	megfeddte	megfeddte	ok	egyezik			
+megfeddém	3	valtozatlan			megfeddé	szabaly	mult_E1_targyas	megfeddtem						
 megfejté	3	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megfejt	jelolt	igealak_ritka:mult.targyas.E3	megfejtette	megfejtette	ok	egyezik			
 megfelele	1	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	megfelel	jelolt	igealak_ritka:mult.alanyi.E3	megfelelt	megfelelt	ok	egyezik			
 megfenyegetvén	2	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megfenyeget	jelolt	igealak_ritka:hatarozoi_igenev	megfenyegetve	megfenyegetve	ok	egyezik			
@@ -2592,6 +2677,7 @@ megfenyegeté	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megfenyeget	jelolt
 megfenyítvén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megfenyít	jelolt	igealak_ritka:hatarozoi_igenev	megfenyítve	megfenyítve	ok	egyezik			
 megfertézteté	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megfertéztet	jelolt	igealak_ritka:mult.targyas.E3	megfertéztette	megfertéztette	ok	egyezik			
 megfertézteték	2	igealak_ritka	mult.E1	mult.E1	megfertéztet	jelolt	igealak_ritka:mult.E1	megfertézteett	megfertéztették	ok	elter	megfertéztették	ok	sonnet
+megfertéztetém	1	valtozatlan			megfertéztetém	szabaly	mult_E1_targyas	megfertéztettem						
 megfertőztetvén	2	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megfertőztet	jelolt	igealak_ritka:hatarozoi_igenev	megfertőztetve	megfertőztetve	ok	egyezik			
 megfertőzteté	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megfertőztet	jelolt	igealak_ritka:mult.targyas.E3	megfertőztette	megfertőztette	ok	egyezik			
 megfertőzteték	1	igealak_ritka	mult.E1	mult.E1	megfertőztet	jelolt	igealak_ritka:mult.E1	megfertőzteett	megfertőztetett	ok	elter	megfertőztetett	ok	sonnet
@@ -2607,6 +2693,7 @@ megfogyatkozának	1	igealak_ritka	mult.T3	mult.T3	megfogyatkozik	jelolt	igealak_
 megfogyatkozék	1	igealak_ritka	mult.E3	mult.E3	megfogyatkozik	jelolt	igealak_ritka:mult.E3	megfogyatkozott	megfogyatkozott	ok	egyezik			
 megfogá	11	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megfog	jelolt	igealak_ritka:mult.targyas.E3	megfogta	megfogta	ok	egyezik			
 megfogák	6	regies_gyanu	elemezetlen:-ák		megfogák	szabaly	gyanu_kezi	megfogták						
+megfogám	1	valtozatlan			megfogá	szabaly	mult_E1_targyas	megfogtam						
 megfordula	6	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	megfordul	jelolt	igealak_ritka:mult.alanyi.E3	megfordult	megfordult	ok	egyezik			
 megfordulván	10	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megfordul	jelolt	igealak_ritka:hatarozoi_igenev	megfordulva	megfordulva	ok	egyezik			
 megfordulának	2	igealak_ritka	mult.T3	mult.T3	megfordul	jelolt	igealak_ritka:mult.T3	megfordultak	megfordultak	ok	egyezik			
@@ -2655,6 +2742,7 @@ meghallgatá	13	igealak_ritka	mult.targyas.E3	mult.targyas.E3	meghallgat	jelolt	
 meghallván	6	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	meghall	jelolt	igealak_ritka:hatarozoi_igenev	meghallva	meghallva	ok	egyezik			
 meghallá	40	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	meghall	szabaly	igealak:mult.targyas.E3	meghallotta						
 meghallák	18	regies_gyanu	elemezetlen:-ák		meghallák	szabaly	gyanu_kezi	meghallották						
+meghallám	1	valtozatlan			meghallá	szabaly	mult_E1_targyas	meghallottam						
 meghalván	7	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	meghal	jelolt	igealak_ritka:hatarozoi_igenev	meghalva	meghalva	ok	egyezik			
 meghalványodék	1	igealak_ritka	mult.E1	mult.E1	meghalványod	jelolt	igealak_ritka:mult.E1	meghalványodtam	meghalványodott	ok	elter	meghalványodott	ok	sonnet
 meghalának	14	igealak_gyakori	mult.T3	mult.T3	meghal	szabaly	igealak:mult.T3	meghaltak						
@@ -2706,7 +2794,9 @@ megismertetém	1	regies_gyanu	elemezetlen:-tetém		megismertetém	jelolt	gyanu:e
 megismervén	2	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megismerik	jelolt	igealak_ritka:hatarozoi_igenev	megismerve	megismerve	ok	egyezik			
 megismeré	8	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megismerik	jelolt	igealak_ritka:mult.targyas.E3	megismerte	megismerte	ok	egyezik			
 megismerék	5	igealak_ritka	mult.E3	mult.E3	megismerik	jelolt	igealak_ritka:mult.E3	megismert	megismerték	ok	elter	megismerték	ok	sonnet
+megismerém	3	valtozatlan			megismeré	szabaly	mult_E1_targyas	megismertem						
 megitatá	2	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megitat	jelolt	igealak_ritka:mult.targyas.E3	megitatta	megitatta	ok	egyezik			
+megitatám	1	valtozatlan			megitatá	szabaly	mult_E1_targyas	megitattam						
 megizené	3	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megizen	jelolt	igealak_ritka:mult.targyas.E3	megizente	megizente	ok	egyezik			
 megizenék	2	igealak_ritka	mult.E1	mult.E1	megizen	jelolt	igealak_ritka:mult.E1	E1=megizentem|T3=megizenték	megizenték	ok	egyezik			
 megjelenjél	1	igealak_ritka	felszolito.E2	felszolito.E2	megjelen	jelolt	felszolito_E2	megjelenj						
@@ -2714,6 +2804,7 @@ megjelenteték	1	regies_gyanu	elemezetlen:-teték		megjelenteték	jelolt	gyanu:e
 megjelentvén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megjelent	jelolt	igealak_ritka:hatarozoi_igenev	megjelentve	megjelentve	ok	egyezik			
 megjelenté	9	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megjelent	jelolt	igealak_ritka:mult.targyas.E3	megjelentette	megjelentette	ok	egyezik			
 megjelenték	6	regies_gyanu	elemezetlen:-ék		megjelenték	jelolt	gyanu:elemezetlen:-ék	megjelentették	megjelentették	ok	egyezik			
+megjelentém	3	valtozatlan			megjelenté	szabaly	mult_E1_targyas	megjelentettem						
 megjelentének	2	igealak_ritka	mult.T3	mult.T3	megjelent	jelolt	igealak_ritka:mult.T3	alanyi=megjelentettek|targyas=megjelentették	megjelentették	ok	egyezik			
 megjelenvén	5	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megjelen	jelolt	igealak_ritka:hatarozoi_igenev	megjelenve	megjelenve	ok	egyezik			
 megjelenék	27	igealak_gyakori	mult.E1	mult.E1	megjelen	szabaly	igealak_kezi	megjelent						
@@ -2755,6 +2846,7 @@ megkisérték	1	igealak_ritka	mult.E1	mult.E1	megkisért	jelolt	igealak_ritka:mu
 megkémlelék	1	igealak_ritka	mult.E1	mult.E1	megkémlel	jelolt	igealak_ritka:mult.E1	megkémleltem	megkémlelték	ok	elter	megkémlelték	ok	sonnet
 megkérdezé	14	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	megkérdez	szabaly	igealak:mult.targyas.E3	megkérdezte						
 megkérdezék	14	igealak_gyakori	mult.E1	mult.E1	megkérdez	szabaly	igealak:mult.E1	E1=megkérdeztem|T3=megkérdezték						
+megkérdezém	1	valtozatlan			megkérdezé	szabaly	mult_E1_targyas	megkérdeztem						
 megkérdé	25	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	megkérd	szabaly	igealak_kezi	megkérdezte						
 megkérdék	11	igealak_ritka	mult.E1	mult.E1	megkérd	jelolt	igealak_ritka:mult.E1	E1=megkérdtem|T3=megkérdték	megkérdezték	ok	elter	megkérdezték	ok	sonnet
 megkérdénk	1	igealak_ritka	mult.T1	mult.T1	megkérd	jelolt	igealak_ritka:mult.T1	alanyi=megkérdtünk|targyas=megkérdtük	megkérdeztük	ok	elter	megkérdeztük	ok	sonnet
@@ -2785,6 +2877,7 @@ meglett	5	regies_gyanu	kivetel_jegy_nelkul		meglesz	jelolt	gyanu:kivetel_jegy_ne
 meglopá	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	meglop	jelolt	igealak_ritka:mult.targyas.E3	meglopta	meglopta	ok	egyezik			
 megláta	1	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	meglát	jelolt	igealak_ritka:mult.alanyi.E3	meglátott	meglátott	ok	egyezik			
 meglátogatá	2	igealak_ritka	mult.targyas.E3	mult.targyas.E3	meglátogat	jelolt	igealak_ritka:mult.targyas.E3	meglátogatta	meglátogatta	ok	egyezik			
+meglátogatám	1	valtozatlan			meglátogatá	szabaly	mult_E1_targyas	meglátogattam						
 meglátszának	1	igealak_ritka	mult.T3	mult.T3	meglátsz	jelolt	igealak_ritka:mult.T3	meglátszottak	meglátszottak	ok	egyezik			
 meglátszék	1	igealak_ritka	mult.E1	mult.E1	meglátsz	jelolt	igealak_ritka:mult.E1	meglátszott	meglátszott	ok	egyezik			
 megláttaték	1	igealak_ritka	mult.E1	mult.E1	megláttat	jelolt	igealak_ritka:mult.E1	megláttaott	megláttatott	ok	elter	megláttatott	ok	sonnet
@@ -2802,6 +2895,7 @@ megmaradottak	3	valtozatlan			megmarad	szabaly	kotohang_mult	megmaradtak
 megmelegedék	1	igealak_ritka	mult.E1	mult.E1	megmeleged	jelolt	igealak_ritka:mult.E1	megmelegedtem	megmelegedett	ok	elter	megmelegedett	ok	sonnet
 megmeneküle	1	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	megmenekül	jelolt	igealak_ritka:mult.alanyi.E3	megmenekült	megmenekült	ok	egyezik			
 megmenté	3	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megment	jelolt	igealak_ritka:mult.targyas.E3	megmentette	megmentette	ok	egyezik			
+megmentém	1	valtozatlan			megmenté	szabaly	mult_E1_targyas	megmentettem						
 megmerülének	1	igealak_ritka	mult.T3	mult.T3	megmerül	jelolt	igealak_ritka:mult.T3	megmerültek	megmerültek	ok	egyezik			
 megmonda	1	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	megmond	jelolt	igealak_ritka:mult.alanyi.E3	megmondta	megmondta	ok	egyezik			
 megmondaték	1	regies_gyanu	elemezetlen:-aték		megmondaték	jelolt	gyanu:elemezetlen:-aték		megmondatott	ok		megmondatott	ok	sonnet
@@ -2811,6 +2905,7 @@ megmondottam	7	valtozatlan			megmond	szabaly	kotohang_mult	megmondtam
 megmondván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megmond	jelolt	igealak_ritka:hatarozoi_igenev	megmondva	megmondva	ok	egyezik			
 megmondá	22	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	megmond	szabaly	igealak:mult.targyas.E3	megmondta						
 megmondák	20	regies_gyanu	elemezetlen:-ák		megmondák	szabaly	gyanu_kezi	megmondták						
+megmondám	1	valtozatlan			megmondá	szabaly	mult_E1_targyas	megmondtam						
 megmondánk	1	igealak_ritka	mult.T1	mult.T1	megmond	jelolt	igealak_ritka:mult.T1	megmondtuk	megmondtuk	ok	egyezik			
 megmosakodék	1	igealak_ritka	mult.E1	mult.E1	megmosakod	jelolt	igealak_ritka:mult.E1	megmosakodtam	megmosakodott	ok	elter	megmosakodott	ok	sonnet
 megmosdának	1	igealak_ritka	mult.T3	mult.T3	megmosd	jelolt	igealak_ritka:mult.T3	megmosdtak	megmosdottak	ok	elter	megmosdottak	ok	sonnet
@@ -2825,6 +2920,7 @@ megmozdula	1	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	megmozdul	jelolt	igeala
 megmutatá	11	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megmutat	jelolt	igealak_ritka:mult.targyas.E3	megmutatta	megmutatta	ok	egyezik			
 megmutaták	2	regies_gyanu	elemezetlen:-ák		megmutaták	jelolt	gyanu:elemezetlen:-ák	megmutatták	megmutatták	ok	egyezik			
 megméré	15	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	megmér	szabaly	igealak:mult.targyas.E3	megmérte						
+megmérém	1	valtozatlan			megméré	szabaly	mult_E1_targyas	megmértem						
 megnevekedék	1	igealak_ritka	mult.E3	mult.E3	megnevekedik	jelolt	igealak_ritka:mult.E3	megnevekedett	megnövekedett	bukott	elter	megnevekedett	ok	szabaly
 megnyervén	3	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megnyer	jelolt	igealak_ritka:hatarozoi_igenev	megnyerve	megnyerve	ok	egyezik			
 megnyeré	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megnyer	jelolt	igealak_ritka:mult.targyas.E3	megnyerte	megnyerte	ok	egyezik			
@@ -2836,6 +2932,7 @@ megnyittaték	1	igealak_ritka	mult.E1	mult.E1	megnyittat	jelolt	igealak_ritka:mu
 megnyitván	3	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megnyit	jelolt	igealak_ritka:hatarozoi_igenev	megnyitva	megnyitva	ok	egyezik			
 megnyitá	17	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	megnyit	szabaly	igealak:mult.targyas.E3	megnyitotta						
 megnyiták	1	regies_gyanu	elemezetlen:-ák		megnyiták	jelolt	gyanu:elemezetlen:-ák	megnyitották	megnyitották	ok	egyezik			
+megnyitám	2	valtozatlan			megnyitá	szabaly	mult_E1_targyas	megnyitottam						
 megnyitándom	1	regies_gyanu	nd_jovo		megnyitándom	jelolt	gyanu:nd_jovo		megnyitom	bukott		megnyitándom	ok	egyik_sem
 megnyomorgaták	1	regies_gyanu	elemezetlen:-ák		megnyomorgaták	jelolt	gyanu:elemezetlen:-ák	megnyomorgatták	megnyomorgatták	ok	egyezik			
 megnyomorodának	1	igealak_ritka	mult.T3	mult.T3	megnyomorod	jelolt	igealak_ritka:mult.T3	megnyomorodtak	megnyomorodtak	ok	egyezik			
@@ -2859,11 +2956,13 @@ megostromolván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megostromol	je
 megosztá	2	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megoszt	jelolt	igealak_ritka:mult.targyas.E3	megosztotta	megosztotta	ok	egyezik			
 megparancsolá	39	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	megparancsol	szabaly	igealak:mult.targyas.E3	megparancsolta						
 megparancsolák	2	regies_gyanu	elemezetlen:-ák		megparancsolák	jelolt	gyanu:elemezetlen:-ák	megparancsolták	megparancsolták	ok	egyezik			
+megparancsolám	5	valtozatlan			megparancsolá	szabaly	mult_E1_targyas	megparancsoltam						
 megpróbálván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megpróbál	jelolt	igealak_ritka:hatarozoi_igenev	megpróbálva	megpróbálva	ok	egyezik			
 megragada	1	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	megragad	jelolt	igealak_ritka:mult.alanyi.E3	megragadt	megragadott	ok	elter	megragadott	ok	sonnet
 megragadván	9	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megragad	jelolt	igealak_ritka:hatarozoi_igenev	megragadva	megragadva	ok	egyezik			
 megragadá	7	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megragad	jelolt	igealak_ritka:mult.targyas.E3	megragadta	megragadta	ok	egyezik			
 megragadák	4	regies_gyanu	elemezetlen:-ák		megragadák	jelolt	gyanu:elemezetlen:-ák	megragadták	megragadták	ok	egyezik			
+megragadám	2	valtozatlan			megragadá	szabaly	mult_E1_targyas	megragadtam						
 megrakván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megrak	jelolt	igealak_ritka:hatarozoi_igenev	megrakva	megrakva	ok	egyezik			
 megrendíté	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megrendít	jelolt	igealak_ritka:mult.targyas.E3	megrendítette	megrendítette	ok	egyezik			
 megrepedezének	1	igealak_ritka	mult.T3	mult.T3	megrepedez	jelolt	igealak_ritka:mult.T3	megrepedeztek	megrepedeztek	ok	egyezik			
@@ -2895,6 +2994,7 @@ megsokasodék	1	igealak_ritka	mult.E3	mult.E3	megsokasodik	jelolt	igealak_ritka:
 megsokasulának	1	igealak_ritka	mult.T3	mult.T3	megsokasul	jelolt	igealak_ritka:mult.T3	megsokasultak	megsokasultak	ok	egyezik			
 megsokasítván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megsokasít	jelolt	igealak_ritka:hatarozoi_igenev	megsokasítva	megsokasítva	ok	egyezik			
 megsokasítá	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megsokasít	jelolt	igealak_ritka:mult.targyas.E3	megsokasította	megsokasította	ok	egyezik			
+megsokasítám	1	valtozatlan			megsokasítám	szabaly	mult_E1_targyas	megsokasítottam						
 megsujtá	2	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megsujt	jelolt	igealak_ritka:mult.targyas.E3	megsujtotta	megsújtotta	bukott	elter	megsújtotta	bukott	sonnet
 megszabadula	1	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	megszabadul	jelolt	igealak_ritka:mult.alanyi.E3	megszabadult	megszabadult	ok	egyezik			
 megszabadulván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megszabadul	jelolt	igealak_ritka:hatarozoi_igenev	megszabadulva	megszabadulva	ok	egyezik			
@@ -2906,10 +3006,12 @@ megszabadítál	1	igealak_ritka	mult.E2	mult.E2	megszabadít	jelolt	igealak_ritk
 megszabván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megszab	jelolt	igealak_ritka:hatarozoi_igenev	megszabva	megszabva	ok	egyezik			
 megszaggatván	4	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megszaggat	jelolt	igealak_ritka:hatarozoi_igenev	megszaggatva	megszaggatva	ok	egyezik			
 megszaggatá	19	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	megszaggat	szabaly	igealak:mult.targyas.E3	megszaggatta						
+megszaggatám	1	valtozatlan			megszaggatá	szabaly	mult_E1_targyas	megszaggattam						
 megszakadott	1	valtozatlan			megszakad	szabaly	kotohang_mult	megszakadt						
 megszaporodál	1	igealak_ritka	mult.E2	mult.E2	megszaporodik	jelolt	igealak_ritka:mult.E2	megszaporodtál	megszaporodtál	ok	egyezik			
 megszaporodának	2	igealak_ritka	mult.T3	mult.T3	megszaporodik	jelolt	igealak_ritka:mult.T3	megszaporodtak	megszaporodtak	ok	egyezik			
 megszaporítá	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megszaporít	jelolt	igealak_ritka:mult.targyas.E3	megszaporította	megszaporította	ok	egyezik			
+megszaporítám	1	valtozatlan			megszaporítám	szabaly	mult_E1_targyas	megszaporítottam						
 megszedé	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megszedik	jelolt	igealak_ritka:mult.targyas.E3	megszedte	megszedte	ok	egyezik			
 megszegvén	3	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megszeg	jelolt	igealak_ritka:hatarozoi_igenev	megszegve	megszegve	ok	egyezik			
 megszegé	5	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megszeg	jelolt	igealak_ritka:mult.targyas.E3	megszegte	megszegte	ok	egyezik			
@@ -2964,6 +3066,7 @@ megtaláltaték	1	igealak_ritka	mult.E1	mult.E1	megtaláltat	jelolt	igealak_ritk
 megtalálván	2	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megtalál	jelolt	igealak_ritka:hatarozoi_igenev	megtalálva	megtalálva	ok	egyezik			
 megtalálá	6	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megtalál	jelolt	igealak_ritka:mult.targyas.E3	megtalálta	megtalálta	ok	egyezik			
 megtalálák	5	regies_gyanu	elemezetlen:-ák		megtalálák	jelolt	gyanu:elemezetlen:-ák	megtalálták	megtalálták	ok	egyezik			
+megtalálám	2	valtozatlan			megtalálá	szabaly	mult_E1_targyas	megtaláltam						
 megtanula	2	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	megtanul	jelolt	igealak_ritka:mult.alanyi.E3	megtanult	megtanult	ok	egyezik			
 megtanítá	2	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megtanít	jelolt	igealak_ritka:mult.targyas.E3	megtanította	megtanította	ok	egyezik			
 megtanítándod	1	regies_gyanu	nd_jovo		megtanítándod	jelolt	gyanu:nd_jovo		megtanítod	bukott		megtanítándod	ok	egyik_sem
@@ -2972,12 +3075,14 @@ megtapogatván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megtapogat	jelo
 megtartván	4	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megtart	jelolt	igealak_ritka:hatarozoi_igenev	megtartva	megtartva	ok	egyezik			
 megtartá	2	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megtart	jelolt	igealak_ritka:mult.targyas.E3	megtartotta	megtartotta	ok	egyezik			
 megtarták	4	regies_gyanu	elemezetlen:-ák		megtarták	jelolt	gyanu:elemezetlen:-ák	megtartották	megtartották	ok	egyezik			
+megtartám	2	valtozatlan			megtartá	szabaly	mult_E1_targyas	megtartottam						
 megtartándja	1	regies_gyanu	nd_jovo		megtartándja	jelolt	gyanu:nd_jovo		megtartja	bukott		megtartándja	ok	egyik_sem
 megtartándják	1	regies_gyanu	nd_jovo		megtartándják	jelolt	gyanu:nd_jovo		megtartják	bukott		megtartándják	ok	egyik_sem
 megtartándod	2	regies_gyanu	nd_jovo		megtartándod	jelolt	gyanu:nd_jovo		megtartod	bukott		megtartándod	ok	egyik_sem
 megtegye	1	regies_gyanu	kivetel_jegy_nelkul		megtesz	jelolt	gyanu:kivetel_jegy_nelkul		megtegye	ok		megtegye	ok	sonnet
 megtekinte	1	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	megtekint	jelolt	igealak_ritka:mult.alanyi.E3	megtekintett	megtekintett	ok	egyezik			
 megtekinté	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megtekint	jelolt	igealak_ritka:mult.targyas.E3	megtekintette	megtekintette	ok	egyezik			
+megtekintém	1	valtozatlan			megtekinte	szabaly	mult_E1_targyas	megtekintettem						
 megtekintének	1	igealak_ritka	mult.T3	mult.T3	megtekint	jelolt	igealak_ritka:mult.T3	alanyi=megtekintettek|targyas=megtekintették	megtekintettek	ok	egyezik			
 megtelepedék	2	igealak_ritka	mult.E1	mult.E1	megteleped	jelolt	igealak_ritka:mult.E1	megtelepedtem	megtelepedett	ok	elter	megtelepedett	ok	sonnet
 megtelepedének	2	igealak_ritka	mult.T3	mult.T3	megteleped	jelolt	igealak_ritka:mult.T3	megtelepedtek	megtelepedtek	ok	egyezik			
@@ -2994,8 +3099,9 @@ megtisztula	1	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	megtisztul	jelolt	igea
 megtisztulván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megtisztul	jelolt	igealak_ritka:hatarozoi_igenev	megtisztulva	megtisztulva	ok	egyezik			
 megtisztulának	1	igealak_ritka	mult.T3	mult.T3	megtisztul	jelolt	igealak_ritka:mult.T3	megtisztultak	megtisztultak	ok	egyezik			
 megtisztítván	2	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megtisztít	jelolt	igealak_ritka:hatarozoi_igenev	megtisztítva	megtisztítva	ok	egyezik			
-megtisztítá	4	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megtisztít	jelolt	igealak_ritka:mult.targyas.E3	megtisztítette	megtisztította	ok	elter	megtisztította	ok	sonnet
-megtisztíták	4	regies_gyanu	elemezetlen:-ák		megtisztíták	jelolt	gyanu:elemezetlen:-ák	megtisztítették	megtisztították	ok	elter	megtisztították	ok	sonnet
+megtisztítá	4	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megtisztít	jelolt	igealak_ritka:mult.targyas.E3	megtisztította	megtisztította	ok	egyezik	megtisztította	ok	szabaly+sonnet
+megtisztíták	4	regies_gyanu	elemezetlen:-ák		megtisztíták	jelolt	gyanu:elemezetlen:-ák	megtisztították	megtisztították	ok	egyezik	megtisztították	ok	szabaly+sonnet
+megtisztítám	1	valtozatlan			megtisztítá	szabaly	mult_E1_targyas	megtisztítottam						
 megtudakolá	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megtudakol	jelolt	igealak_ritka:mult.targyas.E3	megtudakolta	megtudakolta	ok	egyezik			
 megtudakozván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megtudakoz	jelolt	igealak_ritka:hatarozoi_igenev	megtudakozva	megtudakozva	ok	egyezik			
 megtudakozá	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megtudakoz	jelolt	igealak_ritka:mult.targyas.E3	megtudakozta	megtudakozta	ok	egyezik			
@@ -3041,6 +3147,7 @@ megvereték	4	igealak_ritka	mult.E1	mult.E1	megveret	jelolt	igealak_ritka:mult.E
 megvervén	5	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megver	jelolt	igealak_ritka:hatarozoi_igenev	megverve	megverve	ok	egyezik			
 megveré	43	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	megver	szabaly	igealak:mult.targyas.E3	megverte						
 megverék	11	igealak_ritka	mult.E1	mult.E1	megver	jelolt	igealak_ritka:mult.E1	E1=megvertem|T3=megverték	megverték	ok	egyezik			
+megverém	1	valtozatlan			megveré	szabaly	mult_E1_targyas	megvertem						
 megverének	1	igealak_ritka	mult.T3	mult.T3	megver	jelolt	igealak_ritka:mult.T3	alanyi=megvertek|targyas=megverték	megvertek	ok	egyezik			
 megvett	1	regies_gyanu	kivetel_jegy_nelkul		megvesz	jelolt	gyanu:kivetel_jegy_nelkul		megvett	ok		megvett	ok	sonnet
 megvette	3	regies_gyanu	kivetel_jegy_nelkul		megvesz	jelolt	gyanu:kivetel_jegy_nelkul		megvette	ok		megvette	ok	sonnet
@@ -3049,6 +3156,7 @@ megvetvén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megvet	jelolt	igeal
 megveté	2	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megvet	jelolt	igealak_ritka:mult.targyas.E3	megvetette	megvetette	ok	egyezik			
 megveték	2	regies_gyanu	elemezetlen:-eték		megveték	jelolt	gyanu:elemezetlen:-eték		megvetették	ok		megvetették	ok	sonnet
 megvevé	7	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megvesz	jelolt	igealak_ritka:mult.targyas.E3	megvette	megvette	ok	egyezik			
+megvevém	1	valtozatlan			megvevé	szabaly	mult_E1_targyas	megvettem						
 megvevének	1	igealak_ritka	mult.T3	mult.T3	megvesz	jelolt	igealak_ritka:mult.T3	alanyi=megvettek|targyas=megvették	megvettek	ok	egyezik			
 megvidámítá	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megvidámít	jelolt	igealak_ritka:mult.targyas.E3	megvidámította	megvidámította	ok	egyezik			
 megvigasztalá	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megvigasztal	jelolt	igealak_ritka:mult.targyas.E3	megvigasztalta	megvigasztalta	ok	egyezik			
@@ -3073,9 +3181,11 @@ megáldotta	8	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	megáldott	jelolt	igea
 megáldoztatván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megáldoztat	jelolt	igealak_ritka:hatarozoi_igenev	megáldoztatva	megáldoztatva	ok	egyezik			
 megáldozván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megáldoz	jelolt	igealak_ritka:hatarozoi_igenev	megáldozva	megáldozva	ok	egyezik			
 megáldozá	5	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megáldoz	jelolt	igealak_ritka:mult.targyas.E3	megáldozta	megáldozta	ok	egyezik			
+megáldozám	1	valtozatlan			megáldozá	szabaly	mult_E1_targyas	megáldoztam						
 megáldván	2	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megáld	jelolt	igealak_ritka:hatarozoi_igenev	megáldva	megáldva	ok	egyezik			
 megáldá	44	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	megáld	szabaly	igealak:mult.targyas.E3	megáldotta						
 megáldák	3	regies_gyanu	elemezetlen:-ák		megáldák	jelolt	gyanu:elemezetlen:-ák	megáldották	megáldották	ok	egyezik			
+megáldám	1	valtozatlan			megáldá	szabaly	mult_E1_targyas	megáldottam						
 megálla	37	igealak_gyakori	mult.alanyi.E3	mult.alanyi.E3	megáll	szabaly	igealak:mult.alanyi.E3	megállt						
 megállott	13	valtozatlan			megáll	szabaly	kotohang_mult	megállt						
 megállottak	2	valtozatlan			megáll	szabaly	kotohang_mult	megálltak						
@@ -3085,9 +3195,11 @@ megállátok	1	igealak_ritka	mult.T2	mult.T2	megáll	jelolt	igealak_ritka:mult.T
 megállítá	2	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megállít	jelolt	igealak_ritka:mult.targyas.E3	megállította	megállította	ok	egyezik			
 megáradván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megárad	jelolt	igealak_ritka:hatarozoi_igenev	megáradva	megáradva	ok	egyezik			
 megátkozá	3	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megátkoz	jelolt	igealak_ritka:mult.targyas.E3	megátkozta	megátkozta	ok	egyezik			
+megátkozám	1	valtozatlan			megátkozá	szabaly	mult_E1_targyas	megátkoztam						
 megége	4	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	megég	jelolt	igealak_ritka:mult.alanyi.E3	megégett	megégett	ok	egyezik			
 megégeté	9	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megégetik	jelolt	igealak_ritka:mult.targyas.E3	megégette	megégette	ok	egyezik			
 megégeték	5	igealak_ritka	mult.E3	mult.E3	megégetik	jelolt	igealak_ritka:mult.E3	megégetett	megégették	ok	elter	megégették	ok	sonnet
+megégetém	2	valtozatlan			megégeté	szabaly	mult_E1_targyas	megégettem						
 megéhezék	5	igealak_ritka	mult.E3	mult.E3	megéhezik	jelolt	igealak_ritka:mult.E3	megéhezett	megéhezett	ok	egyezik			
 megél	1	regies_gyanu	elemezetlen:-él		megél	jelolt	gyanu:elemezetlen:-él		megél	ok		megél	ok	sonnet
 megélede	1	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	megéled	jelolt	igealak_ritka:mult.alanyi.E3	megéledt	megéledt	ok	egyezik			
@@ -3095,6 +3207,7 @@ megéledének	1	igealak_ritka	mult.T3	mult.T3	megéled	jelolt	igealak_ritka:mult
 megépítteték	2	igealak_ritka	mult.E1	mult.E1	megépíttet	jelolt	igealak_ritka:mult.E1	megépítteett	megépíttetett	ok	elter	megépíttetett	ok	sonnet
 megépíté	23	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	megépít	szabaly	igealak:mult.targyas.E3	megépítette						
 megépíték	3	igealak_ritka	mult.E1	mult.E1	megépít	jelolt	igealak_ritka:mult.E1	E1=megépítettem|T3=megépítették	megépítették	ok	egyezik			
+megépítém	2	valtozatlan			megépíté	szabaly	mult_E1_targyas	megépítettem						
 megépüle	1	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	megépül	jelolt	igealak_ritka:mult.alanyi.E3	megépült	megépült	ok	egyezik			
 megépülend	1	regies_gyanu	nd_jovo		megépülend	jelolt	gyanu:nd_jovo		megépül	ok		megépülend	ok	egyik_sem
 megérezvén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megérez	jelolt	igealak_ritka:hatarozoi_igenev	megérezve	megérezve	ok	egyezik			
@@ -3108,9 +3221,11 @@ megértetvén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megértet	jelolt
 megértvén	5	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megért	jelolt	igealak_ritka:hatarozoi_igenev	megértve	megértve	ok	egyezik			
 megérté	3	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megért	jelolt	igealak_ritka:mult.targyas.E3	megértette	megértette	ok	egyezik			
 megérték	1	regies_gyanu	elemezetlen:-ék		megérték	jelolt	gyanu:elemezetlen:-ék	megértették	megértették	ok	egyezik			
+megértém	3	valtozatlan			megérté	szabaly	mult_E1_targyas	megértettem						
 megírattaték	1	regies_gyanu	elemezetlen:-taték		megírattaték	jelolt	gyanu:elemezetlen:-taték		megíratott	ok		megírattatott	ok	egyik_sem
 megírá	5	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megír	jelolt	igealak_ritka:mult.targyas.E3	megírta	megírta	ok	egyezik			
 megírák	1	regies_gyanu	elemezetlen:-ák		megírák	jelolt	gyanu:elemezetlen:-ák	megírták	megírták	ok	egyezik			
+megírám	1	valtozatlan			megírá	szabaly	mult_E1_targyas	megírtam						
 megítéltetének	2	igealak_ritka	mult.T3	mult.T3	megítéltet	jelolt	igealak_ritka:mult.T3	megítéltettek	megítéltettek	ok	egyezik			
 megítélé	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megítél	jelolt	igealak_ritka:mult.targyas.E3	megítélte	megítélte	ok	egyezik			
 megízlelvén	2	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megízlel	jelolt	igealak_ritka:hatarozoi_igenev	megízlelve	megízlelve	ok	egyezik			
@@ -3122,10 +3237,12 @@ megölettetvén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megölettet	je
 megölettetének	1	igealak_ritka	mult.T3	mult.T3	megölettet	jelolt	igealak_ritka:mult.T3	megölettettek	megölettettek	ok	egyezik			
 megöleté	4	igealak_ritka	mult.targyas.E3	mult.targyas.E3	megöletik	jelolt	igealak_ritka:mult.targyas.E3	megölette	megölette	ok	egyezik			
 megöleték	4	igealak_ritka	mult.E3	mult.E3	megöletik	jelolt	igealak_ritka:mult.E3	megöletett	megölettetett	ok	elter	megöletett	ok	szabaly
+megöletém	1	valtozatlan			megöleté	szabaly	mult_E1_targyas	megölettem						
 megöletének	1	igealak_ritka	mult.T3	mult.T3	megöletik	jelolt	igealak_ritka:mult.T3	alanyi=megölettek|targyas=megölették	megölettek	ok	egyezik			
 megölvén	11	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	megöl	jelolt	igealak_ritka:hatarozoi_igenev	megölve	megölve	ok	egyezik			
 megölé	50	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	megöl	szabaly	igealak:mult.targyas.E3	megölte						
 megölék	26	igealak_gyakori	mult.E1	mult.E1	megöl	szabaly	igealak:mult.E1	E1=megöltem|T3=megölték						
+megölém	1	valtozatlan			megölé	szabaly	mult_E1_targyas	megöltem						
 megöléndi	1	regies_gyanu	nd_jovo		megöléndi	jelolt	gyanu:nd_jovo		megöli	ok		megöléndi	ok	egyik_sem
 megölének	8	igealak_ritka	mult.T3	mult.T3	megöl	jelolt	igealak_ritka:mult.T3	alanyi=megöltek|targyas=megölték	megölték	ok	egyezik			
 megölétek	4	igealak_ritka	mult.T2	mult.T2	megöl	jelolt	igealak_ritka:mult.T2	alanyi=megöltetek|targyas=megöltétek	megöltetek	ok	egyezik			
@@ -3190,6 +3307,7 @@ mondván	1203	igealak_gyakori	hatarozoi_igenev	hatarozoi_igenev	mond	szabaly	ige
 mondá	241	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	mond	szabaly	igealak:mult.targyas.E3	mondta						
 mondák	61	regies_gyanu	elemezetlen:-ák		mondák	szabaly	gyanu_kezi	mondták						
 mondál	1	igealak_ritka	mult.E2	mult.E2	mond	jelolt	igealak_ritka:mult.E2	mondtad	mondtál	ok	elter	mondtál	ok	sonnet
+mondám	77	valtozatlan			monda	szabaly	mult_E1_targyas	mondtam						
 mondának	348	igealak_gyakori	mult.T3	mult.T3	mond	szabaly	igealak:mult.T3	mondták						
 mondánd	2	regies_gyanu	nd_jovo		mondánd	jelolt	gyanu:nd_jovo		mond	ok		mondánd	ok	egyik_sem
 mondándasz	1	regies_gyanu	nd_jovo		mondándasz	jelolt	gyanu:nd_jovo		mondasz	bukott		mondándasz	ok	egyik_sem
@@ -3227,6 +3345,7 @@ mérék	1	igealak_ritka	mult.E1	mult.E1	mér	jelolt	igealak_ritka:mult.E1	E1=mé
 művelendi	1	regies_gyanu	nd_jovo		művelendi	jelolt	gyanu:nd_jovo		műveli	ok		művelendi	ok	egyik_sem
 művelé	2	igealak_ritka	mult.targyas.E3	mult.targyas.E3	művel	jelolt	igealak_ritka:mult.targyas.E3	művelte	művelte	ok	egyezik			
 művelék	2	igealak_ritka	mult.E1	mult.E1	művel	jelolt	igealak_ritka:mult.E1	E1=műveltem|T3=művelték	művelték	ok	egyezik			
+művelém	1	valtozatlan			művelé	szabaly	mult_E1_targyas	műveltem						
 nehezedék	2	igealak_ritka	mult.E3	mult.E3	nehezedik	jelolt	igealak_ritka:mult.E3	nehezedett	nehezedett	ok	egyezik			
 nekieresztvén	1	regies_gyanu	elemezetlen:v-tő		nekieresztvén	jelolt	gyanu:elemezetlen:v-tő		nekieresztve	ok		nekieresztve	ok	sonnet
 nemze	24	igealak_gyakori	mult.alanyi.E3	mult.alanyi.E3	nemz	szabaly	igealak:mult.alanyi.E3	nemzett						
@@ -3245,6 +3364,7 @@ nevezteték	4	igealak_ritka	mult.E1	mult.E1	neveztet	jelolt	igealak_ritka:mult.E
 nevezvén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	nevez	jelolt	igealak_ritka:hatarozoi_igenev	nevezve	nevezve	ok	egyezik			
 nevezé	82	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	nevez	szabaly	igealak:mult.targyas.E3	nevezte						
 nevezék	17	igealak_gyakori	mult.E1	mult.E1	nevez	szabaly	igealak:mult.E1	E1=neveztem|T3=nevezték						
+nevezém	2	valtozatlan			nevezé	szabaly	mult_E1_targyas	neveztem						
 nevezének	1	igealak_ritka	mult.T3	mult.T3	nevez	jelolt	igealak_ritka:mult.T3	alanyi=neveztek|targyas=nevezték	nevezték	ok	egyezik			
 nevök	7	valtozatlan			név	szabaly	ok_birtokos	nevük						
 nevöket	8	valtozatlan			név	szabaly	ok_birtokos	nevüket						
@@ -3280,10 +3400,12 @@ népökből	1	valtozatlan			nép	szabaly	ok_birtokos	népükből
 népöket	2	valtozatlan			nép	szabaly	ok_birtokos	népüket						
 nézvén	6	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	néz	jelolt	igealak_ritka:hatarozoi_igenev	nézve	nézve	ok	egyezik			
 nézé	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	néz	jelolt	igealak_ritka:mult.targyas.E3	nézte	nézte	ok	egyezik			
+nézém	1	valtozatlan			nézém	szabaly	mult_E1_targyas	néztem						
 nézének	1	igealak_ritka	mult.T3	mult.T3	néz	jelolt	igealak_ritka:mult.T3	alanyi=néztek|targyas=nézték	néztek	ok	egyezik			
 növekedvén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	növekedik	jelolt	igealak_ritka:hatarozoi_igenev	növekedve	növekedve	ok	egyezik			
 növekedék	10	igealak_ritka	mult.E3	mult.E3	növekedik	jelolt	igealak_ritka:mult.E3	növekedett	növekedett	ok	egyezik			
 odaadá	4	igealak_ritka	mult.targyas.E3	mult.targyas.E3	odaad	jelolt	igealak_ritka:mult.targyas.E3	odaadta	odaadta	ok	egyezik			
+odaadám	3	valtozatlan			odaadá	szabaly	mult_E1_targyas	odaadtam						
 odaajándékozá	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	odaajándékoz	jelolt	igealak_ritka:mult.targyas.E3	odaajándékozta	odaajándékozta	ok	egyezik			
 odafutamodék	1	igealak_ritka	mult.E1	mult.E1	odafutamod	jelolt	igealak_ritka:mult.E1	odafutamodtam	odafutamodott	ok	elter	odafutamodott	ok	sonnet
 odahelyezé	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	odahelyez	jelolt	igealak_ritka:mult.targyas.E3	odahelyezta	odahelyezte	ok	elter	odahelyezte	ok	sonnet
@@ -3326,6 +3448,7 @@ olvasák	1	regies_gyanu	elemezetlen:-ák		olvasák	jelolt	gyanu:elemezetlen:-ák
 olvasának	3	igealak_ritka	mult.T3	mult.T3	olvas	jelolt	igealak_ritka:mult.T3	alanyi=olvastak|targyas=olvasták	olvastak	ok	egyezik			
 ontván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	ont	jelolt	igealak_ritka:hatarozoi_igenev	ontva	ontva	ok	egyezik			
 ontá	2	igealak_ritka	mult.targyas.E3	mult.targyas.E3	ont	jelolt	igealak_ritka:mult.targyas.E3	ontotta	ontotta	ok	egyezik			
+ontám	1	valtozatlan			ontá	szabaly	mult_E1_targyas	ontottam						
 ontának	1	igealak_ritka	mult.T3	mult.T3	ont	jelolt	igealak_ritka:mult.T3	alanyi=ontottak|targyas=ontották	ontottak	ok	egyezik			
 oszolván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	oszol	jelolt	igealak_ritka:hatarozoi_igenev	oszolva	oszolva	ok	egyezik			
 osztaték	1	regies_gyanu	elemezetlen:-aték		osztaték	jelolt	gyanu:elemezetlen:-aték		osztatott	ok		osztatott	ok	sonnet
@@ -3341,6 +3464,7 @@ parancsolván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	parancsol	jelolt
 parancsolá	27	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	parancsol	szabaly	igealak:mult.targyas.E3	parancsolta						
 parancsolák	1	regies_gyanu	elemezetlen:-ák		parancsolák	jelolt	gyanu:elemezetlen:-ák	parancsolták	parancsolták	ok	egyezik			
 parancsolál	1	igealak_ritka	mult.E2	mult.E2	parancsol	jelolt	igealak_ritka:mult.E2	alanyi=parancsoltál|targyas=parancsoltad	parancsoltál	ok	egyezik			
+parancsolám	1	valtozatlan			parancsolá	szabaly	mult_E1_targyas	parancsoltam						
 parancsolának	1	igealak_ritka	mult.T3	mult.T3	parancsol	jelolt	igealak_ritka:mult.T3	alanyi=parancsoltak|targyas=parancsolták	parancsoltak	ok	egyezik			
 parancsolék	3	igealak_ritka	mult.E1	mult.E1	parancsol	jelolt	igealak_ritka:mult.E1	parancsoltam	parancsoltam	ok	egyezik			
 paráználkodjál	9	igealak_ritka	felszolito.E2	felszolito.E2	paráználkodik	jelolt	felszolito_E2	paráználkodj						
@@ -3396,6 +3520,7 @@ rendelvén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	rendel	jelolt	igeal
 rendelé	5	igealak_ritka	mult.targyas.E3	mult.targyas.E3	rendel	jelolt	igealak_ritka:mult.targyas.E3	rendelte	rendelte	ok	egyezik			
 rendelék	5	igealak_ritka	mult.E1	mult.E1	rendel	jelolt	igealak_ritka:mult.E1	E1=rendeltem|T3=rendelték	rendelték	ok	egyezik			
 rendelél	1	igealak_ritka	mult.E2	mult.E2	rendel	jelolt	igealak_ritka:mult.E2	alanyi=rendeltél|targyas=rendelted	rendeltél	ok	egyezik			
+rendelém	4	valtozatlan			rendele	szabaly	mult_E1_targyas	rendeltem						
 rendelének	2	igealak_ritka	mult.T3	mult.T3	rendel	jelolt	igealak_ritka:mult.T3	alanyi=rendeltek|targyas=rendelték	rendeltek	ok	egyezik			
 repese	1	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	repes	jelolt	igealak_ritka:mult.alanyi.E3	repesett	repesett	ok	egyezik			
 repülvén	2	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	repül	jelolt	igealak_ritka:hatarozoi_igenev	repülve	repülve	ok	egyezik			
@@ -3568,6 +3693,7 @@ szüle	7	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	szül	jelolt	igealak_ritka:
 születék	6	igealak_ritka	mult.E3	mult.E3	születik	jelolt	igealak_ritka:mult.E3	született	született	ok	egyezik			
 születének	8	igealak_ritka	mult.T3	mult.T3	születik	jelolt	igealak_ritka:mult.T3	születtek	születtek	ok	egyezik			
 szülé	19	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	szül	szabaly	igealak:mult.targyas.E3	szülte						
+szülém	1	valtozatlan			szülé	szabaly	mult_E1_targyas	szültem						
 szülének	1	igealak_ritka	mult.T3	mult.T3	szül	jelolt	igealak_ritka:mult.T3	alanyi=szültek|targyas=szülték	szültek	ok	egyezik			
 szűle	33	igealak_gyakori	mult.alanyi.E3	mult.alanyi.E3	szűl	szabaly	igealak:mult.alanyi.E3	szült						
 szűlé	17	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	szűl	szabaly	igealak:mult.targyas.E3	szülte						
@@ -3593,6 +3719,7 @@ találtaték	21	regies_gyanu	elemezetlen:-taték		találtaték	szabaly	gyanu_kez
 találván	7	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	talál	jelolt	igealak_ritka:hatarozoi_igenev	találva	találva	ok	egyezik			
 találá	18	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	talál	szabaly	igealak:mult.targyas.E3	találta						
 találák	26	regies_gyanu	elemezetlen:-ák		találák	szabaly	gyanu_kezi	találták						
+találám	3	valtozatlan			találá	szabaly	mult_E1_targyas	találtam						
 találának	10	igealak_ritka	mult.T3	mult.T3	talál	jelolt	igealak_ritka:mult.T3	alanyi=találtak|targyas=találták	találtak	ok	egyezik			
 találánk	1	igealak_ritka	mult.T1	mult.T1	talál	jelolt	igealak_ritka:mult.T1	alanyi=találtunk|targyas=találtuk	találtunk	ok	egyezik			
 találék	4	igealak_ritka	mult.E1	mult.E1	talál	jelolt	igealak_ritka:mult.E1	találtam	találtam	ok	egyezik			
@@ -3615,6 +3742,7 @@ tartozék	2	igealak_ritka	mult.E3	mult.E3	tartozik	jelolt	igealak_ritka:mult.E3	
 tartván	11	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	tart	jelolt	igealak_ritka:hatarozoi_igenev	tartva	tartva	ok	egyezik			
 tartá	4	igealak_ritka	mult.targyas.E3	mult.targyas.E3	tart	jelolt	igealak_ritka:mult.targyas.E3	tartotta	tartotta	ok	egyezik			
 tarták	2	regies_gyanu	elemezetlen:-ák		tarták	jelolt	gyanu:elemezetlen:-ák	tartották	tartották	ok	egyezik			
+tartám	1	valtozatlan			tarta	szabaly	mult_E1_targyas	tartottam						
 tartának	7	igealak_ritka	mult.T3	mult.T3	tart	jelolt	igealak_ritka:mult.T3	alanyi=tartottak|targyas=tartották	tartottak	ok	egyezik			
 tartózkodjál	2	igealak_ritka	felszolito.E2	felszolito.E2	tartózkodik	jelolt	felszolito_E2	tartózkodj						
 tartózkodának	2	igealak_ritka	mult.T3	mult.T3	tartózkodik	jelolt	igealak_ritka:mult.T3	tartózkodtak	tartózkodtak	ok	egyezik			
@@ -3646,12 +3774,14 @@ teremtetvén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	teremtet	jelolt	i
 teremtetél	2	igealak_ritka	mult.E2	mult.E2	teremtet	jelolt	igealak_ritka:mult.E2	alanyi=teremtettél|targyas=teremtetted	teremtettél	ok	egyezik			
 teremtetének	1	igealak_ritka	mult.T3	mult.T3	teremtet	jelolt	igealak_ritka:mult.T3	alanyi=teremtettek|targyas=teremtették	teremtettek	ok	egyezik			
 teremté	18	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	teremt	szabaly	igealak:mult.targyas.E3	teremtette						
+teremtém	3	valtozatlan			teremté	szabaly	mult_E1_targyas	teremtettem						
 teremvén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	terem	jelolt	igealak_ritka:hatarozoi_igenev	teremve	termve	bukott	elter	teremve	ok	szabaly
 terhöket	1	valtozatlan			teher	szabaly	ok_birtokos	terhüket						
 terjede	1	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	terjed	jelolt	igealak_ritka:mult.alanyi.E3	terjedt	terjedt	ok	egyezik			
 terjeszte	1	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	terjeszt	jelolt	igealak_ritka:mult.alanyi.E3	terjesztett	terjesztett	ok	egyezik			
 terjesztvén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	terjeszt	jelolt	igealak_ritka:hatarozoi_igenev	terjesztve	terjesztve	ok	egyezik			
 terjeszté	2	igealak_ritka	mult.targyas.E3	mult.targyas.E3	terjeszt	jelolt	igealak_ritka:mult.targyas.E3	terjesztette	terjesztette	ok	egyezik			
+terjesztém	2	valtozatlan			terjeszté	szabaly	mult_E1_targyas	terjesztettem						
 terjesztének	1	igealak_ritka	mult.T3	mult.T3	terjeszt	jelolt	igealak_ritka:mult.T3	alanyi=terjesztettek|targyas=terjesztették	terjesztettek	ok	egyezik			
 terme	3	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	term	jelolt	igealak_ritka:mult.alanyi.E3	termett	termett	ok	egyezik			
 termének	1	igealak_ritka	mult.T3	mult.T3	term	jelolt	igealak_ritka:mult.T3	alanyi=termettek|targyas=termették	termének	ok	elter	termének	ok	sonnet
@@ -3673,6 +3803,7 @@ tette	65	regies_gyanu	kivetel_jegy_nelkul		tesz	jelolt	gyanu:kivetel_jegy_nelkul
 tettöket	1	valtozatlan			tett	szabaly	ok_birtokos	tettüket						
 tevé	59	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	tesz	szabaly	igealak:mult.targyas.E3	tette						
 tevék	41	igealak_gyakori	mult.E1	mult.E1	tesz	szabaly	igealak:mult.E1	E1=tettem|T3=tették						
+tevém	6	valtozatlan			tevé	szabaly	mult_E1_targyas	tettem						
 tevén	6	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	tesz	jelolt	igealak_ritka:hatarozoi_igenev	teve	téve	bukott	elter	téve	bukott	sonnet
 tevének	10	igealak_ritka	mult.T3	mult.T3	tesz	jelolt	igealak_ritka:mult.T3	alanyi=tettek|targyas=tették	tettek	ok	egyezik			
 teéndenek	2	regies_gyanu	nd_jovo		teéndenek	jelolt	gyanu:nd_jovo		tesznek	bukott		teéndenek	ok	egyik_sem
@@ -3774,6 +3905,7 @@ versengének	4	igealak_ritka	mult.T3	mult.T3	verseng	jelolt	igealak_ritka:mult.T
 vervén	3	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	ver	jelolt	igealak_ritka:hatarozoi_igenev	verve	verve	ok	egyezik			
 veré	6	igealak_ritka	mult.targyas.E3	mult.targyas.E3	ver	jelolt	igealak_ritka:mult.targyas.E3	verte	verte	ok	egyezik			
 verék	3	igealak_ritka	mult.E1	mult.E1	ver	jelolt	igealak_ritka:mult.E1	E1=vertem|T3=verték	verték	ok	egyezik			
+verém	1	valtozatlan			veré	szabaly	mult_E1_targyas	vertem						
 verének	1	igealak_ritka	mult.T3	mult.T3	ver	jelolt	igealak_ritka:mult.T3	alanyi=vertek|targyas=verték	vertek	ok	egyezik			
 verődének	1	igealak_ritka	mult.T3	mult.T3	verődik	jelolt	igealak_ritka:mult.T3	verődtek	verődtek	ok	egyezik			
 vesze	2	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	vesz	jelolt	igealak_ritka:mult.alanyi.E3	vett	veszett	ok	elter	veszett	ok	sonnet
@@ -3802,11 +3934,13 @@ vetvén	13	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	vet	jelolt	igealak_ri
 veté	35	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	vet	szabaly	igealak:mult.targyas.E3	vetette						
 veték	26	regies_gyanu	elemezetlen:-ék		veték	jelolt	gyanu:elemezetlen:-ék	vetették	vették	ok	elter	vetették	ok	szabaly
 vetél	2	igealak_ritka	mult.E2	mult.E2	vet	jelolt	igealak_ritka:mult.E2	alanyi=vetettél|targyas=vetetted	vetél	ok	elter	vetél	ok	sonnet
+vetém	3	valtozatlan			veté	szabaly	mult_E1_targyas	vetettem						
 vetének	18	igealak_gyakori	mult.T3	mult.T3	vet	szabaly	igealak:mult.T3	alanyi=vetettek|targyas=vetették						
 veténk	2	igealak_ritka	mult.T1	mult.T1	vet	jelolt	igealak_ritka:mult.T1	alanyi=vetettünk|targyas=vetettük	vetettünk	ok	egyezik			
 vetétek	1	igealak_ritka	mult.T2	mult.T2	vet	jelolt	igealak_ritka:mult.T2	alanyi=vetettetek|targyas=vetettétek	vetettetek	ok	egyezik			
 vevé	90	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	vesz	szabaly	igealak:mult.targyas.E3	vette						
 vevék	23	igealak_gyakori	mult.E1	mult.E1	vesz	szabaly	igealak:mult.E1	E1=vettem|T3=vették						
+vevém	7	valtozatlan			vevé	szabaly	mult_E1_targyas	vettem						
 vevén	11	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	vesz	jelolt	igealak_ritka:hatarozoi_igenev	veve	véve	bukott	elter	véve	bukott	sonnet
 vevének	7	igealak_ritka	mult.T3	mult.T3	vesz	jelolt	igealak_ritka:mult.T3	alanyi=vettek|targyas=vették	vettek	ok	egyezik			
 vezeté	8	igealak_ritka	mult.targyas.E3	mult.targyas.E3	vezet	jelolt	igealak_ritka:mult.targyas.E3	vezette	vezette	ok	egyezik			
@@ -3891,6 +4025,7 @@ vitte	12	regies_gyanu	kivetel_jegy_nelkul		visz	jelolt	gyanu:kivetel_jegy_nelkul
 vitézkedjél	1	igealak_ritka	felszolito.E2	felszolito.E2	vitézked	jelolt	felszolito_E2	vitézkedj						
 vivé	46	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	visz	szabaly	igealak:mult.targyas.E3	vitte						
 vivék	47	igealak_gyakori	mult.E1	mult.E1	visz	szabaly	igealak:mult.E1	E1=vittem|T3=vitték						
+vivém	2	valtozatlan			vivé	szabaly	mult_E1_targyas	vittem						
 vivén	5	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	visz	jelolt	igealak_ritka:hatarozoi_igenev	vive	víve	bukott	elter	víve	bukott	sonnet
 vivének	22	igealak_gyakori	mult.T3	mult.T3	visz	szabaly	igealak:mult.T3	alanyi=vittek|targyas=vitték						
 vizök	1	valtozatlan			víz	szabaly	ok_birtokos	vizük						
@@ -3920,6 +4055,7 @@ választatván	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	választat	jelo
 választván	2	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	választ	jelolt	igealak_ritka:hatarozoi_igenev	választva	választva	ok	egyezik			
 választá	7	igealak_ritka	mult.targyas.E3	mult.targyas.E3	választ	jelolt	igealak_ritka:mult.targyas.E3	választotta	választotta	ok	egyezik			
 választák	5	regies_gyanu	elemezetlen:-ák		választák	jelolt	gyanu:elemezetlen:-ák	választották	választották	ok	egyezik			
+választám	1	valtozatlan			választa	szabaly	mult_E1_targyas	választottam						
 választának	1	igealak_ritka	mult.T3	mult.T3	választ	jelolt	igealak_ritka:mult.T3	alanyi=választottak|targyas=választották	választottak	ok	egyezik			
 választánd	1	regies_gyanu	nd_jovo		választánd	jelolt	gyanu:nd_jovo		választ	ok		választánd	ok	egyik_sem
 választék	1	igealak_ritka	mult.E1	mult.E1	választ	jelolt	igealak_ritka:mult.E1	választottam	választottam	ok	egyezik			
@@ -3941,11 +4077,13 @@ vége	55	regies_gyanu	vegzodes:-e		vég	jelolt	gyanu:vegzodes:-e	végett	vége	o
 végezvén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	végez	jelolt	igealak_ritka:hatarozoi_igenev	végezve	végezve	ok	egyezik			
 végezé	8	igealak_ritka	mult.targyas.E3	mult.targyas.E3	végez	jelolt	igealak_ritka:mult.targyas.E3	végezte	végezte	ok	egyezik			
 végezék	5	igealak_ritka	mult.E1	mult.E1	végez	jelolt	igealak_ritka:mult.E1	E1=végeztem|T3=végezték	végezték	ok	egyezik			
+végezém	2	valtozatlan			végezé	szabaly	mult_E1_targyas	végeztem						
 végze	1	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	végzik	jelolt	igealak_ritka:mult.alanyi.E3	végzett	végzett	ok	egyezik			
 végének	1	regies_gyanu	vegzodes:-ének		vég	jelolt	gyanu:vegzodes:-ének	végtek	végének	ok	elter	végének	ok	sonnet
 vélekedvén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	vélekedik	jelolt	igealak_ritka:hatarozoi_igenev	vélekedve	vélekedve	ok	egyezik			
 véteté	1	igealak_ritka	mult.targyas.E3	mult.targyas.E3	vétet	jelolt	igealak_ritka:mult.targyas.E3	vétette	vétette	ok	egyezik			
 véteték	1	regies_gyanu	elemezetlen:-eték		véteték	jelolt	gyanu:elemezetlen:-eték		vétetett	ok		vétetett	ok	sonnet
+vétetém	1	valtozatlan			vétetém	szabaly	mult_E1_targyas	vétettem						
 vétkezendik	2	regies_gyanu	nd_jovo		vétkezendik	jelolt	gyanu:nd_jovo		vétkezik	bukott		vétkezendik	ok	egyik_sem
 vétkezzél	3	igealak_ritka	felszolito.E2	felszolito.E2	vétkezik	jelolt	felszolito_E2	vétkezz						
 vétkezék	9	igealak_ritka	mult.E3	mult.E3	vétkezik	jelolt	igealak_ritka:mult.E3	vétkezett	vétkezett	ok	egyezik			
@@ -4015,6 +4153,7 @@ zúzá	1	regies_gyanu	elemezetlen:-á		zúzá	jelolt	gyanu:elemezetlen:-á		zúz
 áldván	2	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	áld	jelolt	igealak_ritka:hatarozoi_igenev	áldva	áldva	ok	egyezik			
 áldá	7	igealak_ritka	mult.targyas.E3	mult.targyas.E3	áld	jelolt	igealak_ritka:mult.targyas.E3	áldotta	áldotta	ok	egyezik			
 áldák	3	regies_gyanu	elemezetlen:-ák		áldák	jelolt	gyanu:elemezetlen:-ák	áldották	áldották	ok	egyezik			
+áldám	2	valtozatlan			áldá	szabaly	mult_E1_targyas	áldottam						
 álla	41	regies_gyanu	vegzodes:-a		áll	szabaly	gyanu_kezi	állt						
 álland	2	regies_gyanu	nd_jovo		álland	jelolt	gyanu:nd_jovo		áll	ok		álland	ok	egyik_sem
 állhata	1	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	állhat	jelolt	igealak_ritka:mult.alanyi.E3	állhatott	állhatott	ok	egyezik			
@@ -4030,6 +4169,7 @@ zúzá	1	regies_gyanu	elemezetlen:-á		zúzá	jelolt	gyanu:elemezetlen:-á		zúz
 állítá	12	igealak_ritka	mult.targyas.E3	mult.targyas.E3	állít	jelolt	igealak_ritka:mult.targyas.E3	állította	állította	ok	egyezik			
 állíták	7	regies_gyanu	elemezetlen:-ák		állíták	szabaly	gyanu_kezi	állították						
 állítál	2	igealak_ritka	mult.E2	mult.E2	állít	jelolt	igealak_ritka:mult.E2	alanyi=állítottál|targyas=állítottad	állítottál	ok	egyezik			
+állítám	2	valtozatlan			állítá	szabaly	mult_E1_targyas	állítottam						
 állítánk	1	igealak_ritka	mult.T1	mult.T1	állít	jelolt	igealak_ritka:mult.T1	alanyi=állítottunk|targyas=állítottuk	állítottunk	ok	egyezik			
 állíték	1	igealak_ritka	mult.E1	mult.E1	állít	jelolt	igealak_ritka:mult.E1	állítottam	állítottam	ok	egyezik			
 álmoda	1	regies_gyanu	vegzodes:-a		álmod	jelolt	gyanu:vegzodes:-a	álmodott	álmodott	ok	egyezik			
@@ -4049,6 +4189,7 @@ zúzá	1	regies_gyanu	elemezetlen:-á		zúzá	jelolt	gyanu:elemezetlen:-á		zúz
 átadván	2	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	átad	jelolt	igealak_ritka:hatarozoi_igenev	átadva	átadva	ok	egyezik			
 átadá	8	igealak_ritka	mult.targyas.E3	mult.targyas.E3	átad	jelolt	igealak_ritka:mult.targyas.E3	átadta	átadta	ok	egyezik			
 átadák	5	regies_gyanu	elemezetlen:-ák		átadák	jelolt	gyanu:elemezetlen:-ák	átadták	átadták	ok	egyezik			
+átadám	1	valtozatlan			átadá	szabaly	mult_E1_targyas	átadtam						
 átevezvén	1	regies_gyanu	elemezetlen:v-tő		átevezvén	jelolt	gyanu:elemezetlen:v-tő		átevezve	ok		átevezve	ok	sonnet
 áthajózánk	1	igealak_ritka	mult.T1	mult.T1	áthajóz	jelolt	igealak_ritka:mult.T1	áthajóztunk	áthajóztunk	ok	egyezik			
 átkele	3	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	átkel	jelolt	igealak_ritka:mult.alanyi.E3	átkelt	átkelt	ok	egyezik			
@@ -4170,6 +4311,7 @@ zúzá	1	regies_gyanu	elemezetlen:-á		zúzá	jelolt	gyanu:elemezetlen:-á		zúz
 összegyűjtvén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	összegyűjt	jelolt	igealak_ritka:hatarozoi_igenev	összegyűjtve	összegyűjtve	ok	egyezik			
 összegyűjté	18	igealak_gyakori	mult.targyas.E3	mult.targyas.E3	összegyűjt	szabaly	igealak:mult.targyas.E3	összegyűjtötte						
 összegyűjték	8	igealak_ritka	mult.E1	mult.E1	összegyűjt	jelolt	igealak_ritka:mult.E1	E1=összegyűjtöttem|T3=összegyűjtötték	összegyűjtötték	ok	egyezik			
+összegyűjtém	1	valtozatlan			összegyűjté	szabaly	mult_E1_targyas	összegyűjtöttem						
 összegyűle	1	igealak_ritka	mult.alanyi.E3	mult.alanyi.E3	összegyűl	jelolt	igealak_ritka:mult.alanyi.E3	összegyült	összegyűlt	bukott	elter	összegyűlt	bukott	sonnet
 összegyűlekezének	1	igealak_ritka	mult.T3	mult.T3	összegyűlekez	jelolt	igealak_ritka:mult.T3	összegyülekeztek						
 összegyűlvén	2	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	összegyűl	jelolt	igealak_ritka:hatarozoi_igenev	összegyűlve	összegyűlve	ok	egyezik			
@@ -4186,6 +4328,7 @@ zúzá	1	regies_gyanu	elemezetlen:-á		zúzá	jelolt	gyanu:elemezetlen:-á		zúz
 összetalálkozék	1	igealak_ritka	mult.E1	mult.E1	összetalálkoz	jelolt	igealak_ritka:mult.E1	összetalálkozott	összetalálkozott	ok	egyezik			
 összetöré	5	igealak_ritka	mult.targyas.E3	mult.targyas.E3	összetör	jelolt	igealak_ritka:mult.targyas.E3	összetörte	összetörte	ok	egyezik			
 összetörék	2	igealak_ritka	mult.E1	mult.E1	összetör	jelolt	igealak_ritka:mult.E1	E1=összetörtem|T3=összetörték	összetörték	ok	egyezik			
+összetörém	2	valtozatlan			összetöré	szabaly	mult_E1_targyas	összetörtem						
 összetörének	1	igealak_ritka	mult.T3	mult.T3	összetör	jelolt	igealak_ritka:mult.T3	alanyi=összetörtek|targyas=összetörték	összetörtek	ok	egyezik			
 összeérvén	1	igealak_ritka	hatarozoi_igenev	hatarozoi_igenev	összeér	jelolt	igealak_ritka:hatarozoi_igenev	összeérve	összeérve	ok	egyezik			
 összeülének	1	igealak_ritka	mult.T3	mult.T3	összeül	jelolt	igealak_ritka:mult.T3	összeültek	összeültek	ok	egyezik			

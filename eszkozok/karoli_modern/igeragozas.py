@@ -106,7 +106,7 @@ def hang(szo):
     if any(c in MELY for c in m):
         return 'o'
     if all(c in 'ií' for c in m):
-        return 'o' if szo in I_MELY or any(szo.endswith(x) for x in I_MELY) else 'e'
+        return 'o' if szo in I_MELY or any(szo.endswith(x) for x in I_MELY) or szo.endswith('ít') else 'e'
     return 'ö' if m[-1] in KEREK else 'e'
 
 
