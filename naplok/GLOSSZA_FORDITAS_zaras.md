@@ -11,4 +11,5 @@ Proveniencia: `scope=adat/glosszak_heber_hu.tsv + konkordancia/TBESH.txt | forra
 - **Egyeztetett eltérés (kontextus-hossz):** az `a Meaning of` árnyalat-soroknál 90 karakteres kontextus (a brief ~200-zal szemben); a 17. köteg előtt kész 20 homonima-sor tévedésből 90-et kapott (`naplok/GLOSSZA_FORDITAS_homonima_szuroproba.tsv`) — ezek az átnézésnél elsők.
 - **Ismert hibás sorok** (a szkript védelme miatt a tábla nem módosítható, az átnézési lista `megjegyzes` oszlopa jelzi): H3104 „kos/kürt” (jubileum/kürt), H9045 „-nk” (mi, alany), H4578 „belső” (has), H8577M „kígyó: kígyó”; H6310G ajak/száj eldöntendő; H90xx egységesítendő.
 - **K8 (nyitott, merge előtt kötelező):** az `ADAT_LICENC` bejegyzés (`glosszak_heber_hu`: TBESH, TAHOT, projekt_adat) az `eszkozok/sqlite_epit.py`-ban hiányzik; a tábla main-re kerülése előtt külön kisfeladatként el kell végezni (CC BY 4.0 forrásjelölés).
-- **Hátra:** ⛔ a felhasználó átnézi az átnézési listát; utána a független ellenőr, majd zárás és PR.
+- **Átnézés (a felhasználó jóváhagyta):** 17 javítás és 3 „?” törlés alkalmazva a naplózott `--javit` móddal (`allapot=kezi`, napló: `naplok/GLOSSZA_FORDITAS_javit_naplo.tsv`); a 20 homonima 200 karakteres újrafordításából 2 sor tért el (H1197A, H7760A). Bizonytalan sor most: 20.
+- **Hátra:** független ellenőr, majd zárás és PR.

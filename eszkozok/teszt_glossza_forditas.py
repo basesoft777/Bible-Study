@@ -109,6 +109,44 @@ class K2FoSzabaly(unittest.TestCase):
         self.assertEqual(g.kapuk(sor('house: home'), 'ház: otthon'), [])
 
 
+class Javit(unittest.TestCase):
+    def setUp(self):
+        self.tabla = {
+            'H1': {'strong': 'H1', 'entry_id': 'H1', 'kapcsolat': '', 'fo': 'igen', 'glossza_en': 'belly',
+                   'forras_hash': 'x', 'glossza_hu': 'belső', 'allapot': 'sonnet', 'modell': 'm',
+                   'datum': 'd0', 'megjegyzes': ''},
+            'H2': {'strong': 'H2', 'entry_id': 'H2', 'kapcsolat': '', 'fo': 'igen', 'glossza_en': 'exult',
+                   'forras_hash': 'x', 'glossza_hu': 'ujjongani', 'allapot': 'sonnet', 'modell': 'm',
+                   'datum': 'd0', 'megjegyzes': '?'},
+        }
+        self.tb = {'H1': sor('belly'), 'H2': sor('exult')}
+
+    def test_javitas_es_naplo(self):
+        uj, naplo, hibak, eng = g.javit_alkalmaz([('H1', 'has')], self.tabla, self.tb, 'd1')
+        self.assertEqual(uj['H1']['glossza_hu'], 'has')
+        self.assertEqual(uj['H1']['allapot'], 'kezi')
+        self.assertEqual(uj['H1']['modell'], 'm')
+        self.assertEqual(naplo, [('H1', 'belső', 'has', 'd1', 'javitas')])
+        self.assertEqual(eng, {'H1'})
+        self.assertEqual(self.tabla['H1']['glossza_hu'], 'belső')  # az eredeti nem valtozik
+
+    def test_egyenlo_jel_csak_kerdojelet_torol(self):
+        uj, naplo, hibak, eng = g.javit_alkalmaz([('H1', '='), ('H2', '=')], self.tabla, self.tb, 'd1')
+        self.assertEqual(uj['H1'], self.tabla['H1'])
+        self.assertEqual(uj['H2']['megjegyzes'], '')
+        self.assertEqual(uj['H2']['glossza_hu'], 'ujjongani')
+        self.assertEqual(eng, {'H2'})
+
+    def test_kapu_bukas_nem_ir(self):
+        uj, naplo, hibak, eng = g.javit_alkalmaz([('H1', 'the belly')], self.tabla, self.tb, 'd1')
+        self.assertTrue(hibak)
+        self.assertEqual(naplo, [])
+        self.assertEqual(eng, set())
+
+    def test_ismeretlen_azonosito(self):
+        uj, naplo, hibak, eng = g.javit_alkalmaz([('H9', 'has')], self.tabla, self.tb, 'd1')
+        self.assertEqual(hibak, [('H9', 'nincs ilyen sor a tablaban')])
+
 
 if __name__ == '__main__':
     unittest.main()

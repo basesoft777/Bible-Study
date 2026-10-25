@@ -6,7 +6,8 @@ eszkozok/glossza_forditas.py -- F140 GLOSSZA_FORDITAS: a TBESH rovid glosszajana
 
 M0: a meres es a sor-valasztas (--m0). M1 (DT-F140b K7 (a)): a session forditja a kotegeket,
 a szkript kotegeket keszit (--koteg), rogzit (--rogzit) es ellenoriz (--ellenoriz); nincs
-modellhivas a szkriptben. A tabla: adat/glosszak_heber_hu.tsv (SEMA 2.34).
+modellhivas a szkriptben. M2 utan: --javit <atnezes.tsv> -- a felhasznalo altal jovahagyott javitasok
+naplozott alkalmazasa (allapot=kezi; naplok/GLOSSZA_FORDITAS_javit_naplo.tsv). A tabla: adat/glosszak_heber_hu.tsv (SEMA 2.34).
 
 A TBESH tab-tagolt; az adatsorok az 'eStrong#' fejlecsor utan kezdodnek:
   0 eStrong  1 dStrong ('H2763A =' vagy 'H0430G = a Name of')  2 uStrong
@@ -408,12 +409,13 @@ def tabla_olvas():
     return sorok
 
 
-def tabla_ir(sorok):
+def tabla_ir(sorok, engedett=()):
     """Teljes ujrairas entry_id szerint rendezve; az irás elott a meglevo sorok valtozatlansaganak
-    ellenorzese (CLAUDE.md: tablat iro szkript az eredetivel veti ossze; eltereskor megall)."""
+    ellenorzese (CLAUDE.md: tablat iro szkript az eredetivel veti ossze; eltereskor megall).
+    engedett: a naplozott javito mod (--javit) altal modosithato entry_id-k."""
     regi = tabla_olvas()
     for k, v in regi.items():
-        if sorok.get(k) != v:
+        if k not in engedett and sorok.get(k) != v:
             raise SystemExit('MEGALL: a meglevo sor valtozna: ' + k)
     with open(TABLA, 'w', encoding='utf-8', newline='\n') as f:
         f.write('\t'.join(FEJLEC) + '\n')
@@ -574,6 +576,65 @@ def parancs_ellenoriz():
     return len(hibak)
 
 
+def javit_alkalmaz(atnezes_sorok, tabla, tbesh, datum):
+    """A felhasznalo altal jovahagyott javitasok (naplok/GLOSSZA_FORDITAS_atnezes.tsv, 'javitas_hu'
+    oszlop). Szabaly: ures vagy '=' -> a fordítás marad; ha a megjegyzes '?', a '?' torlodik es a
+    sor 'kezi' lesz; mas ertek -> kapuk, majd allapot='kezi', megjegyzes ures, datum frissul,
+    a modell mezo valtozatlan (a forditot rogziti; a javitast a felhasznalo hagyta jova).
+    Visszaad: (uj_tabla, naplo_sorok, hibak, engedett_idk)."""
+    uj = {k: dict(v) for k, v in tabla.items()}
+    naplo, hibak, engedett = [], [], set()
+    for k, jav in atnezes_sorok:
+        if k not in uj:
+            hibak.append((k, 'nincs ilyen sor a tablaban'))
+            continue
+        jav = jav.strip()
+        r = uj[k]
+        if jav in ('', '='):
+            if jav == '=' and r['megjegyzes'] == '?':
+                naplo.append((k, r['glossza_hu'], r['glossza_hu'], datum, '? torolve'))
+                r.update({'megjegyzes': '', 'allapot': 'kezi', 'datum': datum})
+                engedett.add(k)
+            continue
+        h = kapuk(tbesh[k], jav)
+        if h:
+            hibak.append((k, '; '.join(h)))
+            continue
+        naplo.append((k, r['glossza_hu'], jav, datum, 'javitas'))
+        r.update({'glossza_hu': jav, 'allapot': 'kezi', 'megjegyzes': '', 'datum': datum})
+        engedett.add(k)
+    return uj, naplo, hibak, engedett
+
+
+def parancs_javit(fajl):
+    alapok, sorok = hatokor()
+    tabla = tabla_olvas()
+    tbesh = {s['entry_id']: s for s in sorok}
+    atn = []
+    with open(fajl, encoding='utf-8') as f:
+        for i, sor in enumerate(f):
+            if i == 0:
+                continue
+            m = sor.rstrip('\n').split('\t')
+            if len(m) >= 10:
+                atn.append((m[2], m[9]))
+    datum = ido()
+    uj, naplo, hibak, engedett = javit_alkalmaz(atn, tabla, tbesh, datum)
+    for h in hibak:
+        print('JAVITAS-HIBA\t%s\t%s' % h)
+    if hibak:
+        raise SystemExit('MEGALL: a javitasok nem mentek at a kapukon; a tabla nem valtozott')
+    tabla_ir(uj, engedett)
+    naplo_fajl = os.path.join(GYOKER, 'naplok', 'GLOSSZA_FORDITAS_javit_naplo.tsv')
+    uj_fejlec = not os.path.exists(naplo_fajl)
+    with open(naplo_fajl, 'a', encoding='utf-8', newline='\n') as f:
+        if uj_fejlec:
+            f.write('entry_id\tregi_hu\tuj_hu\tdatum\tmuvelet\n')
+        for n in naplo:
+            f.write('\t'.join(n) + '\n')
+    print('javitva: %d sor (naplo: %s)' % (len(naplo), naplo_fajl))
+
+
 def argv_ertek(nev, alap=None):
     if nev in sys.argv:
         return sys.argv[sys.argv.index(nev) + 1]
@@ -589,6 +650,8 @@ if __name__ == '__main__':
         if not argv_ertek('--modell'):
             raise SystemExit('--modell kotelezo (a ténylegesen futó modell neve)')
         parancs_rogzit(argv_ertek('--rogzit'), argv_ertek('--modell'), '--masodik' in sys.argv)
+    elif '--javit' in sys.argv:
+        parancs_javit(argv_ertek('--javit'))
     elif '--ellenoriz' in sys.argv:
         raise SystemExit(1 if parancs_ellenoriz() else 0)
     elif '--m0-proba' in sys.argv:
