@@ -473,3 +473,13 @@ kötetszám) · `ii.` (kötetszám; a szójegyzék `vol. ii` → `II. köt.`) ·
 - rövidítés (1): iii. (kötetszám);
 - nem sigla (12): b. · c. · d. · bb. (betűjel, Stephanus-lapszakasz) · h. · v. · j. (`v. h.`, `b. j.`) · u. · theol. (német műcím) ·
   St. · J. · Chr. (névelem).
+
+## F132.14 — DT-F132g (1): az M3 brief-tervezete; az M3 kikerül a #132 hatóköréből (2026-10-25)
+
+- **Tervezet:** `beerkezo/Fnn_THAYER_M3_BRIEF.md` (`modell: sonnet`, `fugg: [132]`, `munka: adat`, `allapot: nem_indult`, a
+  `BRIEF_SABLON.md` szerint): az újrafuttatható M3 a DT-F132c, d, h, i, j, k szerint; a parancssor a fenti „M3 indítása”
+  szakaszból (a prompt már a v5.1); 1. lépése ⛔ előfeltétel: a sigla-javaslatok felhasználói jóváhagyása (`javaslat` → `besorolt`,
+  a jóváhagyás proveniencia-sorával). A befogadás nem e menet dolga (`/befogad`, a felhasználó jóváhagyásával).
+- **A #132 briefje:** az `ad` mező, a 3. hatókör (benne / nincs benne), az M3 szakasz eleje („Kikerült e feladat hatóköréből”), az Mz
+  és az 5. elfogadási feltétel 3. pontja a DT-F132g (1) szerint; az `ir` mezőben a tervezet útvonala.
+- A `thayer_jelolt/forditas.py` docstringje a promptot még v5-nek írta: javítva (`prompt_v5_1.md`, a kód az F132.12 óta azt használta).

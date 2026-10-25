@@ -5,7 +5,8 @@ A #128 BDB-ágának (`eszkozok/emeles.py szakasz_*`) Thayer-párja; a #128 fájl
 importálja: a helyőrzőket, a terminológiát, a Károli-táblát és a kötelező alakokat (`emeles.py`), a javítóréteget
 (`normalizal.py`), a tokent, a kulcsot és a csoportosítást (`bdb_jelolt/szakasz_bemenet.py`, a `thayer_bemenet.py`-on át), a
 közös kapukat (`forditas_kapuk.kapuk_futtat_szakaszos`, benne `14_szakasz`, `15_tiltott`) a `16_sigla`-val (`thayer_kapuk.py`).
-Prompt: `forditas/prompt_v5.md` (a v4.2 Thayer-ága a v5 határtoken-blokkjával); `{{ADATBLOKK}}`: `thayer_jelolt/adatblokk.py`.
+Prompt: `forditas/prompt_v5_1.md` (DT-F132k (2): a v5 + „Kiegészítő szabály (v5.1) — Thayer-szócikk”); `{{ADATBLOKK}}`:
+`thayer_jelolt/adatblokk.py`.
 
 Ez a modul NEM fordít: a fordítást a hívó (az M3 Sonnet-menete, DT-F132d (S), DT-F132g) végzi a kiírt promptokból.
 
