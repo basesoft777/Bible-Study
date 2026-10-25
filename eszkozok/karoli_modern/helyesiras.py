@@ -184,11 +184,24 @@ def nagy(minta, uj):
     return uj[:1].upper() + uj[1:] if minta[:1].isupper() else uj
 
 
+# A karakterszabály hibái (napló 4.1.5, a Hunspell-mérés cáfolatai; ELT-2): összetételi határon a kettős betű
+# nem egyszerűsödik (kemény + nyakú), a paizs → pajzs a zszs → zzs elé tartozik, a strucz mai alakja strucc.
+ALAK_KIVETEL = {
+    'keménynyakú': 'keménynyakú', 'keménynyakúak': 'keménynyakúak',
+    'paizszsal': 'pajzzsal',
+    'strucz': 'strucc', 'struczok': 'struccok', 'struczmadarak': 'struccmadarak', 'struczmadár': 'struccmadár',
+    'struczmadárnak': 'struccmadárnak',
+}
+
+
 def alak_modern(alak, sor, kis_szavak):
     """Egy alak helyesírási modern alakja (szövegkörnyezet nélkül): (alak, [szabályok])."""
     szab = []
     uj = alak
     kis = alak.lower()
+    if kis in ALAK_KIVETEL:  # napló 4.1.5 (ELT-2)
+        cel = ALAK_KIVETEL[kis]
+        return (nagy(alak, cel), ['kivetel']) if cel != kis else (alak, ['kivetel'])
     if kis in NEK_CSALAD:  # DT128 (néki), DT-F96j (néked, nékem, nékik, nékünk, néktek)
         return nagy(alak, 'nek' + kis[3:]), ['neki']
     lemma = sor['szotari_alak'] if sor else ''
@@ -564,8 +577,8 @@ def ami_proba_fut(versek, alakszotar, dont, ki_dir):
                    + regi_ell.get((s[0], s[1]), ['', '']))
     with open(ell_ut, 'w', encoding='utf-8', newline='\n') as f:
         f.write('# GENERÁLT: %s --ami-proba (F96.1, DT-F96i) — kézzel nem szerkeszthető, kivéve az ellenorzes és a '
-                'megjegyzes oszlopot, amelyet a felhasználó tölt (jó / hibás; a bizonytalan sorokon: vonatkozó / '
-                'birtokos), a modell nem; újragenerálásnál a kitöltött értékek megmaradnak | forras=%s | scope=a '
+                'megjegyzes oszlopot, amelyet a felhasználó tölt, vagy a felhasználó által elfogadott modell-ellenőrzés '
+                '(DT-F96h; jó / hibás; a bizonytalan sorokon: vonatkozó / birtokos); újragenerálásnál a kitöltött értékek megmaradnak | forras=%s | scope=a '
                 'DT-F96i szerint szöveget változtató „a mi”-döntések és a megmaradt bizonytalanok (%d token) | ts=%s\n'
                 % (SZKRIPT, hk, len(ell), datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%MZ')))
         f.write('\t'.join(['ae_id', 'tipus', 'igehely', 'sorszam', 'szoveg_1908', 'szoveg_modern_dt_f96i_elott',
@@ -696,7 +709,8 @@ def minta_sor(mid, reteg, ih, vers_ki, tabla, kis_szavak):
 def minta_ir(sorok_ki, ki_dir, fejlec, megj):
     with open(os.path.join(ki_dir, 'helyesiras_minta.tsv'), 'w', encoding='utf-8', newline='\n') as f:
         f.write(fejlec.replace('\n', ' | scope=rögzített magú (%d) rétegzett minta, %d vers; az ellenorzes és a '
-                               'megjegyzes oszlopot a felhasználó tölti (jó / hibás / A / B), a modell nem%s\n'
+                               'megjegyzes oszlopot a felhasználó tölti, vagy a felhasználó által elfogadott '
+                               'modell-ellenőrzés (DT-F96h; jó / hibás / A / B)%s\n'
                                % (MAG, len(sorok_ki), megj)))
         f.write('\t'.join(['minta_id', 'reteg', 'igehely', 'szoveg_1908', 'szoveg_modern', 'valtozasok',
                            'alternativa', 'ellenorzes', 'megjegyzes']) + '\n')

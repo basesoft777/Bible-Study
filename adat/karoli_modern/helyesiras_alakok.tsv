@@ -1,4 +1,4 @@
-# GENERÁLT: eszkozok/karoli_modern/helyesiras.py (F96.1) — kézzel nem szerkeszthető; a javítás a szabályban vagy a kivételtáblában | forras=konkordancia/Karoli_1908.tsv (sha256:49335bbcc77d) + adat/szoto/karoli_szotari_alak.tsv (sha256:edba33e6d65a) + eszkozok/karoli_modern/helyesiras.py (sha256:c11bfb3b38f9) | tokenizálás: eszkozok/karoli_strong/tokenek.py tokenizal (a #22 hu_sorszam-a; Strong token-kulcson illeszthető, DT-F96f) | a helyesírási lépcső (.1), az igealak (.2) nélkül; a puszta „a mi”: DT-F96i | Hunspell csak fejlesztési mérce (DT301, ítélete: helyesiras_hunspell.tsv), a tamasz=modell_ellenorizetlen a felhasználói mintán mérendő | scope=a szövegkörnyezet nélkül változó alakok (1590)
+# GENERÁLT: eszkozok/karoli_modern/helyesiras.py (F96.1) — kézzel nem szerkeszthető; a javítás a szabályban vagy a kivételtáblában | forras=konkordancia/Karoli_1908.tsv (sha256:49335bbcc77d) + adat/szoto/karoli_szotari_alak.tsv (sha256:edba33e6d65a) + eszkozok/karoli_modern/helyesiras.py (sha256:dbfd948155d6) | tokenizálás: eszkozok/karoli_strong/tokenek.py tokenizal (a #22 hu_sorszam-a; Strong token-kulcson illeszthető, DT-F96f) | a helyesírási lépcső (.1), az igealak (.2) nélkül; a puszta „a mi”: DT-F96i | Hunspell csak fejlesztési mérce (DT301, ítélete: helyesiras_hunspell.tsv), a tamasz=modell_ellenorizetlen a felhasználói mintán mérendő | scope=a szövegkörnyezet nélkül változó alakok (1587)
 alak	gyakorisag	alak_modern	szabaly	szabaly_forras	tamasz
 Aczmonig	1	Acmonig	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
 Aczmontól	1	Acmontól	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
@@ -163,7 +163,6 @@ Kaczinnak	1	Kacinnak	karakter	manual (helyesírás-történet; #94: manual)	mode
 Kappadócziában	1	Kappadóciában	karakter	manual (helyesírás-történet; #94: manual)	korpusz
 Keczicz	1	Kecic	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
 Kecziha	1	Keciha	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
-Keménynyakú	1	Keménnyakú	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
 Kheczrón	12	Khecrón	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
 Kháczort	1	Khácort	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
 Kibczaimot	1	Kibcaimot	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
@@ -818,8 +817,6 @@ kemenczéknek	1	kemencéknek	karakter	manual (helyesírás-történet; #94: manu
 kemenczének	2	kemencének	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
 kemenczét	1	kemencét	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
 kemenczévé	1	kemencévé	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
-keménynyakú	3	keménnyakú	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
-keménynyakúak	1	keménnyakúak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
 keménynyé	2	keménnyé	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
 kenőcscsé	1	kenőccsé	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
 ketreczbe	1	ketrecbe	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
@@ -1180,7 +1177,7 @@ paizsra	4	pajzsra	szotag	manual	modell_ellenorizetlen
 paizst	18	pajzst	szotag	manual	modell_ellenorizetlen
 paizsuk	1	pajzsuk	szotag	manual	modell_ellenorizetlen
 paizsunk	4	pajzsunk	szotag	manual	modell_ellenorizetlen
-paizszsal	7	paizzsal	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+paizszsal	7	pajzzsal	kivetel	N-F96b (manual)	manual
 paizsát	4	pajzsát	szotag	manual	modell_ellenorizetlen
 palaczkjait	1	palackjait	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
 palaczkocska	1	palackocska	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
@@ -1288,11 +1285,11 @@ setétségnél	1	sötétségnél	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv
 setétségtől	3	sötétségtől	szoto_94	#94 adat/szoto/karoli_szotari_alak.tsv szotari_alak_mai	szoto_94
 skárlátczikkeket	1	skárlátcikkeket	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
 sorrendjöket	1	sorrendjüket	jok	DT-F96g	modell_ellenorizetlen
-strucz	3	struc	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
-struczmadarak	2	strucmadarak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
-struczmadár	1	strucmadár	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
-struczmadárnak	1	strucmadárnak	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
-struczok	3	strucok	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
+strucz	3	strucc	kivetel	N-F96b (manual)	manual
+struczmadarak	2	struccmadarak	kivetel	N-F96b (manual)	manual
+struczmadár	1	struccmadár	kivetel	N-F96b (manual)	manual
+struczmadárnak	1	struccmadárnak	kivetel	N-F96b (manual)	manual
+struczok	3	struccok	kivetel	N-F96b (manual)	manual
 sudarczédrussal	1	sudarcédrussal	karakter	manual (helyesírás-történet; #94: manual)	modell_ellenorizetlen
 szabadítójokról	1	szabadítójukról	jok	DT-F96g	modell_ellenorizetlen
 szakaszsza	3	szakassza	karakter	manual (helyesírás-történet; #94: manual)	korpusz

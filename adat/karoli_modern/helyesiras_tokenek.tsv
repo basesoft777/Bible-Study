@@ -1,4 +1,4 @@
-# GENERÁLT: eszkozok/karoli_modern/helyesiras.py (F96.1) — kézzel nem szerkeszthető; a javítás a szabályban vagy a kivételtáblában | forras=konkordancia/Karoli_1908.tsv (sha256:49335bbcc77d) + adat/szoto/karoli_szotari_alak.tsv (sha256:edba33e6d65a) + eszkozok/karoli_modern/helyesiras.py (sha256:c11bfb3b38f9) | tokenizálás: eszkozok/karoli_strong/tokenek.py tokenizal (a #22 hu_sorszam-a; Strong token-kulcson illeszthető, DT-F96f) | a helyesírási lépcső (.1), az igealak (.2) nélkül; a puszta „a mi”: DT-F96i | Hunspell csak fejlesztési mérce (DT301, ítélete: helyesiras_hunspell.tsv), a tamasz=modell_ellenorizetlen a felhasználói mintán mérendő | scope=a változó, kieső vagy bizonytalan tokenek (33323) a 599367 tokenből
+# GENERÁLT: eszkozok/karoli_modern/helyesiras.py (F96.1) — kézzel nem szerkeszthető; a javítás a szabályban vagy a kivételtáblában | forras=konkordancia/Karoli_1908.tsv (sha256:49335bbcc77d) + adat/szoto/karoli_szotari_alak.tsv (sha256:edba33e6d65a) + eszkozok/karoli_modern/helyesiras.py (sha256:dbfd948155d6) | tokenizálás: eszkozok/karoli_strong/tokenek.py tokenizal (a #22 hu_sorszam-a; Strong token-kulcson illeszthető, DT-F96f) | a helyesírási lépcső (.1), az igealak (.2) nélkül; a puszta „a mi”: DT-F96i | Hunspell csak fejlesztési mérce (DT301, ítélete: helyesiras_hunspell.tsv), a tamasz=modell_ellenorizetlen a felhasználói mintán mérendő | scope=a változó, kieső vagy bizonytalan tokenek (33318) a 599367 tokenből
 igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 1Móz 1:2	9	setétség	sötétség		szoto_94	
 1Móz 1:4	14	setétségtől	sötétségtől		szoto_94	
@@ -2242,7 +2242,6 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 2Móz 32:8	8	nékik	nekik		neki	
 2Móz 32:8	25	a		osszevonva	nevmas	
 2Móz 32:8	26	kik	akik		nevmas:ki	
-2Móz 32:9	11	keménynyakú	keménnyakú		karakter	
 2Móz 32:10	4	nékem	nekem		neki	
 2Móz 32:11	20	a		osszevonva	nevmas	
 2Móz 32:11	21	melyet	amelyet		nevmas:mely	
@@ -2274,9 +2273,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 2Móz 33:1	15	melyet	amelyet		nevmas:mely	
 2Móz 33:1	21	a		osszevonva	nevmas	
 2Móz 33:1	22	melyről	amelyről		nevmas:mely	
-2Móz 33:3	15	keménynyakú	keménnyakú		karakter	
 2Móz 33:3	21	emészszelek	emésszelek		karakter	
-2Móz 33:5	11	Keménynyakú	Keménnyakú		karakter	
 2Móz 33:7	24	a		osszevonva	nevmas	
 2Móz 33:7	25	ki	aki		nevmas:ki	
 2Móz 33:11	8	a		osszevonva	nevmas	
@@ -2309,7 +2306,6 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 2Móz 34:4	21	néki	neki		neki	
 2Móz 34:7	1	A		osszevonva	nevmas	
 2Móz 34:7	2	ki	Aki		nevmas:ki	
-2Móz 34:9	14	keménynyakú	keménnyakú		karakter	
 2Móz 34:10	14	a		osszevonva	nevmas	
 2Móz 34:10	15	milyenek	amilyenek		nevmas:hatarozo	
 2Móz 34:10	30	a		osszevonva	nevmas	
@@ -2895,7 +2891,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 3Móz 11:12	1	A		osszevonva	nevmas	
 3Móz 11:12	2	minek	Aminek		nevmas:mi	
 3Móz 11:12	12	néktek	nektek		neki	
-3Móz 11:16	2	strucz	struc		karakter	
+3Móz 11:16	2	strucz	strucc		kivetel	
 3Móz 11:20	4	a		osszevonva	nevmas	
 3Móz 11:20	5	mely	amely		nevmas:mely	
 3Móz 11:20	10	néktek	nektek		neki	
@@ -5533,7 +5529,6 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 5Móz 10:14	18	mi	ami		ami:V1_irasjel_elotte+nevmas:mi	
 5Móz 10:15	24	a		osszevonva	nevmas	
 5Móz 10:15	25	mint	amint		nevmas:hatarozo	
-5Móz 10:16	11	keménynyakúak	keménnyakúak		karakter	
 5Móz 10:17	17	a		osszevonva	nevmas	
 5Móz 10:17	18	ki	aki		nevmas:ki	
 5Móz 10:18	12	néki	neki		neki	
@@ -5757,7 +5752,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	szabaly	bizonytalan
 5Móz 14:10	13	néktek	nektek		neki	
 5Móz 14:12	3	a		osszevonva	nevmas	
 5Móz 14:12	4	melyeket	amelyeket		nevmas:mely	
-5Móz 14:15	2	strucz	struc		karakter	
+5Móz 14:15	2	strucz	strucc		kivetel	
 5Móz 14:19	7	néktek	nektek		neki	
 5Móz 14:21	8	a		osszevonva	nevmas	
 5Móz 14:21	9	ki	aki		nevmas:ki	
@@ -8850,7 +8845,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 1Sám 17:41	14	ki	aki		nevmas:ki	
 1Sám 17:41	16	paizsát	pajzsát		szotag	
 1Sám 17:43	14	reám	rám		rea	
-1Sám 17:45	10	paizszsal	paizzsal		karakter	
+1Sám 17:45	10	paizszsal	pajzzsal		kivetel	
 1Sám 17:45	24	a		osszevonva	nevmas	
 1Sám 17:45	25	kit	akit		nevmas:ki	
 1Sám 17:49	25	arczczal	arccal		karakter	
@@ -12381,7 +12376,7 @@ Ruth 4:18	6	Pérecz	Pérec		karakter
 1Krón 12:32	6	kik	akik		nevmas:ki	
 1Krón 12:32	27	beszédjökre	beszédjükre		jok	
 1Krón 12:33	6	harczra	harcra		karakter	
-1Krón 12:34	10	paizszsal	paizzsal		karakter	
+1Krón 12:34	10	paizszsal	pajzzsal		kivetel	
 1Krón 12:34	13	harminczhétezer	harminchétezer		karakter	
 1Krón 12:35	4	a		osszevonva	nevmas	
 1Krón 12:35	5	kik	akik		nevmas:ki	
@@ -15132,7 +15127,7 @@ Jób 30:21	6	harczolsz	harcolsz		karakter
 Jób 30:25	6	a		osszevonva	nevmas	
 Jób 30:25	7	kinek	akinek		nevmas:ki	
 Jób 30:29	1	Atyjok	Atyjuk		jok	
-Jób 30:29	9	strucz	struc		karakter	
+Jób 30:29	9	strucz	strucc		kivetel	
 Jób 31:12	5	a		osszevonva	nevmas	
 Jób 31:12	6	mely	amely		nevmas:mely	
 Jób 31:14	13	néki	neki		neki	
@@ -15261,7 +15256,7 @@ Jób 39:9	2	melynek	Amelynek		nevmas:mely
 Jób 39:12	4	néked	neked		neki	
 Jób 39:13	9	Vajjon	Vajon		szoto_94	
 Jób 39:14	12	reá	rá		rea	
-Jób 39:16	4	struczmadár	strucmadár		karakter	
+Jób 39:16	4	struczmadár	struccmadár		kivetel	
 Jób 39:16	6	vajjon	vajon		szoto_94	
 Jób 39:20	11	néki	neki		neki	
 Jób 39:21	3	néki	neki		neki	
@@ -15358,7 +15353,7 @@ Zsolt 5:12	5	a		osszevonva	nevmas
 Zsolt 5:12	6	kik	akik		nevmas:ki	
 Zsolt 5:12	19	a		osszevonva	nevmas	
 Zsolt 5:12	20	kik	akik		nevmas:ki	
-Zsolt 5:13	13	paizszsal	paizzsal		karakter	
+Zsolt 5:13	13	paizszsal	pajzzsal		kivetel	
 Zsolt 7:1	3	a		osszevonva	nevmas	
 Zsolt 7:1	4	melyet	amelyet		nevmas:mely	
 Zsolt 7:5	2	gonoszszal	gonosszal		karakter	
@@ -18010,7 +18005,7 @@ Préd 12:12	7	kivánságos	kívánságos		szoto_94
 Ézs 13:8	19	arczuk	arcuk		karakter	
 Ézs 13:17	7	a		osszevonva	nevmas	
 Ézs 13:17	8	kik	akik		nevmas:ki	
-Ézs 13:21	11	struczok	strucok		karakter	
+Ézs 13:21	11	struczok	struccok		kivetel	
 Ézs 14:1	17	hozzájok	hozzájuk		jok	
 Ézs 14:3	5	a		osszevonva	nevmas	
 Ézs 14:3	6	melyen	amelyen		nevmas:mely	
@@ -18301,7 +18296,7 @@ Préd 12:12	7	kivánságos	kívánságos		szoto_94
 Ézs 33:24	10	a		osszevonva	nevmas	
 Ézs 33:24	11	mely	amely		nevmas:mely	
 Ézs 34:6	20	Boczrában	Bocrában		karakter	
-Ézs 34:13	15	struczok	strucok		karakter	
+Ézs 34:13	15	struczok	struccok		kivetel	
 Ézs 34:16	11	hijjok	hijjuk		jok	
 Ézs 34:17	10	nékik	nekik		neki	
 Ézs 35:2	10	néki	neki		neki	
@@ -18365,7 +18360,7 @@ Préd 12:12	7	kivánságos	kívánságos		szoto_94
 Ézs 37:31	5	a		osszevonva	nevmas	
 Ézs 37:31	6	mely	amely		nevmas:mely	
 Ézs 37:33	16	reá	rá		rea	
-Ézs 37:33	21	paizszsal	paizzsal		karakter	
+Ézs 37:33	21	paizszsal	pajzzsal		kivetel	
 Ézs 37:34	3	a		osszevonva	nevmas	
 Ézs 37:34	4	melyen	amelyen		nevmas:mely	
 Ézs 37:36	11	száznyolczvanötezeret	száznyolcvanötezeret		karakter	
@@ -18521,7 +18516,7 @@ Préd 12:12	7	kivánságos	kívánságos		szoto_94
 Ézs 43:16	6	ki	aki		nevmas:ki	
 Ézs 43:17	1	A		osszevonva	nevmas	
 Ézs 43:17	2	ki	Aki		nevmas:ki	
-Ézs 43:20	10	struczok	strucok		karakter	
+Ézs 43:20	10	struczok	struccok		kivetel	
 Ézs 43:21	3	a		osszevonva	nevmas	
 Ézs 43:21	4	melyet	amelyet		nevmas:mely	
 Ézs 43:23	3	nékem	nekem		neki	
@@ -20929,7 +20924,7 @@ Jer 50:34	4	megváltójok	megváltójuk		jok
 Jer 50:34	11	bizonynyal	bizonnyal		karakter	
 Jer 50:37	13	a		osszevonva	nevmas	
 Jer 50:37	14	mely	amely		nevmas:mely	
-Jer 50:39	7	struczmadárnak	strucmadárnak		karakter	
+Jer 50:39	7	struczmadárnak	struccmadárnak		kivetel	
 Jer 50:40	1	A		osszevonva	nevmas	
 Jer 50:40	2	mint	Amint		nevmas:hatarozo	
 Jer 50:42	3	paizst	pajzst		szotag	
@@ -21140,7 +21135,7 @@ Sir 3:65	6	reájok	rájuk		rea+jok
 Sir 4:1	16	utcza	utca		karakter	
 Sir 4:2	4	a		osszevonva	nevmas	
 Sir 4:2	5	kik	akik		nevmas:ki	
-Sir 4:3	18	struczmadarak	strucmadarak		karakter	
+Sir 4:3	18	struczmadarak	struccmadarak		kivetel	
 Sir 4:4	17	a		osszevonva	nevmas	
 Sir 4:4	18	ki	aki		nevmas:ki	
 Sir 4:4	21	nékik	nekik		neki	
@@ -21788,7 +21783,7 @@ Ez 23:23	21	mindnyájokat	mindnyájukat		jok
 Ez 23:23	23	harczolókat	harcolókat		karakter	
 Ez 23:23	29	mindnyájokat	mindnyájukat		jok	
 Ez 23:24	3	reád	rád		rea	
-Ez 23:24	14	paizszsal	paizzsal		karakter	
+Ez 23:24	14	paizszsal	pajzzsal		kivetel	
 Ez 23:24	22	nékik	nekik		neki	
 Ez 23:27	15	rájok	rájuk		jok	
 Ez 23:28	13	a		osszevonva	nevmas	
@@ -22048,8 +22043,8 @@ Ez 37:25	13	melyen	amelyen		nevmas:mely
 Ez 37:26	21	közéjök	közéjük		jok	
 Ez 37:27	9	nékik	nekik		neki	
 Ez 37:27	13	nékem	nekem		neki	
-Ez 38:4	26	paizszsal	paizzsal		karakter	
-Ez 38:5	7	paizszsal	paizzsal		karakter	
+Ez 38:4	26	paizszsal	pajzzsal		kivetel	
+Ez 38:5	7	paizszsal	pajzzsal		kivetel	
 Ez 38:11	22	zárjok	zárjuk		jok	
 Ez 38:11	24	kapujok	kapujuk		jok	
 Ez 38:11	26	nékik	nekik		neki	
@@ -23208,7 +23203,7 @@ Mik 1:1	4	a		osszevonva	nevmas
 Mik 1:1	5	mely	amely		nevmas:mely	
 Mik 1:1	17	a		osszevonva	nevmas	
 Mik 1:1	18	melyet	amelyet		nevmas:mely	
-Mik 1:8	18	struczmadarak	strucmadarak		karakter	
+Mik 1:8	18	struczmadarak	struccmadarak		kivetel	
 Mik 1:15	5	néked	neked		neki	
 Mik 2:1	3	a		osszevonva	nevmas	
 Mik 2:1	4	kik	akik		nevmas:ki	

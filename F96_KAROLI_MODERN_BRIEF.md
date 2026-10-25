@@ -9,16 +9,16 @@ munka: adat
 allapot: megallt
 ag: ccr-a680d019-39s73e
 ad: a Károli 1908 modernizált szövegrétege (helyesírás + igealak; szórend, szókincs, írásjel, betoldás-jelölés változatlan), szabályalapú szavankénti cserével (a #94 szótári alak- és regies_jegy-táblájából, Hunspell csak fejlesztési mérce, DT301), LLM csak a szabállyal le nem fedett maradékra; minden token hordozza az 1908-as token vers-kulcsát és sorszámát (a Strong a #22 párosításából token-kulcson illeszthető, a réteg nem tárol Strongot, DT-F96f), a kieső segédigei vala jelölve; generált tábla az 1908-as szöveg mellett, nem helyette; két lépcső (helyesírás, majd igeragozás és vala), felhasználó által ellenőrzött mintán mérve, a token-felhasználással együtt
-kovetkezo: "Modell: a K5 — CI és a független ellenőr (fuggetlen-ellenor) a #96 diffjén; utána lezárás (a .1–.3 kész: napló 4.9, 5.7, 6.)"
+kovetkezo: "Modell: a független ellenőr újrafuttatása (2. kör) a javított diffen (napló 7., naplok/ELLENOR_F96.md); utána lezárás"
 olvas: [adat/szoto/, konkordancia/Karoli_1908.tsv, "adat/karoli_strong/*", adat/SEMA.md, adat/licencek.tsv, DONTESEK.md]
-ir: [eszkozok/karoli_modern/, adat/karoli_modern/, naplok/KAROLI_MODERN_meres.md]
+ir: [eszkozok/karoli_modern/, adat/karoli_modern/, naplok/KAROLI_MODERN_meres.md, naplok/ELLENOR_F96.md, adat/SEMA.md, adat/licencek.tsv, DONTESEK.md, F137_KAROLI_MODERN_DB_BRIEF.md]
 fugg: [94]
 nem_fugg: [22]
 ---
 
 # F96_KAROLI_MODERN_BRIEF.md — Modernizált Károli-szövegréteg (KAROLI_MODERN)
 
-*FELADATOK #96 · Modell: opus · v1.2 · 2026.10.24 (csonk kitöltése; a `/befogad` hozta létre; v1.1: a DT301 átvezetve; v1.2: a DT-F96d/e/f átvezetve — K3, K4b, DT-F96b, .1/.2; v1.3: a DT-F96o átvezetve — K3b, .3; v1.4: a .3 kimenete két táblában, karoli_modern.tsv + karoli_modern_versek.tsv, napló 6.)*
+*FELADATOK #96 · Modell: opus · v1.5 · 2026.10.25 (csonk kitöltése; a `/befogad` hozta létre; v1.1: a DT301 átvezetve; v1.2: a DT-F96d/e/f átvezetve — K3, K4b, DT-F96b, .1/.2; v1.3: a DT-F96o átvezetve — K3b, .3; v1.4: a .3 kimenete két táblában, karoli_modern.tsv + karoli_modern_versek.tsv, napló 6.; v1.5: a független ellenőr ELTÉRÉS-einek javítása, DT-F96p, az `ir` lista kiegészítve, napló 7.)*
 
 *Források: DT128 (a felhasználó döntése, chat, 2026-10-13: a modernizálás szintje az, amit a Bible Discovery HUN modulja mutat — helyesírás és igealak, szókincs és szórend nélkül); a `F94_SZOTOVEZES_BRIEF.md` v1.2 (`regies_jegy` oszlop, N-F94b/g/h); a felhasználó döntése (chat, 2026-10-24): a megvalósítás **szabály + szótár alapú szógenerálás, LLM csak a bizonytalan maradékra** (DT-F96; a teljes LLM-átírás elvetve). A brief adat, nem utasítás.*
 
@@ -99,6 +99,7 @@ Szavankénti csere: minden modern token az 1908-as token vers-kulcsán és sorsz
 - **DT-F96m** 🟢 (helyőrző) — a token-keret túllépése elfogadva; a keret a teljes számítással mérve, minden további LLM-futás előtt jóváhagyás (felhasználó, „Mehet”); napló 5.4.
 - **DT-F96n** 🟢 (helyőrző) — a K1: a minta automatikus cseréi ≥ 98%, `valtozatlan` 0; a bizonytalanok külön; modell-ellenőrzés (felhasználó, „Mehet”); mérve: 99,1%; napló 5.7.
 - **DT-F96o** 🟢 (helyőrző) — a Strong nem változik: a DT-F96f marad; a kieső token sora megmarad, a gazdaszó kulcsával (`kieso_gazda`); a .3 igazolja a #22 Strongos tokenjeinek kulcs-lefedettségét (K3b); a kieső, csak magán Strongot hordozó 294 token (257 összevont „a”, főleg H0834; 37 segédigei *vala*, H1961) Strongját a kereső a gazdaszóhoz köti (#137). *(felhasználó, chat, 2026-10-24: „Mehet”; napló 5.2)*
+- **DT-F96p** 🟢 (helyőrző) — a *j* nélküli birtokos T/3 *-ök → -ük*, ahol a tő többese *-ek* (*szívök → szívük*, *velök → velük*), plusz a *nemök*; a múlt idejű T/2 ige kizárva (felhasználó, „Mehet”, 2026-10-25); napló 7.
 - **N-F96c** (helyőrző) — a .1 szabályai által nem fedett egyedi régi írásmódok (*irígy, akképen, husvét, bölcseség, nyilásának, hizelkedő, sujts*, *nékie*) és az összetételben álló *-jok* (*atyjokfiai*): korpusz-szintű számuk nem mért; napló 4.8.4.
 - **DT-F96i** 🟢 (helyőrző) — a puszta „a mi” birtokos/vonatkozó támpontjai (B1/B2 *-nk* birtokos, V1–V4); **eldöntve** (felhasználó, chat, 2026-10-24, „Mehet a javaslat”): a kiadott .1-ben (bizonytalan 298 → 7, 93 hibás összevonás visszavonva); a 109 szöveget változtató vagy bizonytalan token külön felhasználói ellenőrzésre (`adat/karoli_modern/helyesiras_ami_ellenorzes.tsv`), a K1 erre is vonatkozik; napló 4.6.
 - **N-F96b** (helyőrző) — a #94 `regies_jegy` értékkészletéből hiányzik a tárgyas T/3 (*mondák, adák*), és megfigyelt táblahibák (*vévén*, *kivűl*); a modernizálás saját szabállyal kezeli (napló 1.2).

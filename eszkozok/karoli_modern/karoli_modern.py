@@ -48,6 +48,7 @@ I_TOKENEK = os.path.join(KI_DIR, 'igealak_tokenek.tsv')
 STRONG_SZAVAK = os.path.join('adat', 'karoli_strong', 'szavak_*.tsv')
 SZKRIPT = 'eszkozok/karoli_modern/karoli_modern.py'
 BEMENETEK = [igealak.KAROLI, igealak.SZOTARI, igealak.H_TOKENEK, I_TOKENEK, igealak.LLM_TABLA, igealak.LLM2_TABLA,
+             'eszkozok/karoli_strong/tokenek.py', 'eszkozok/karoli_modern/fedettseg.py',
              'eszkozok/karoli_modern/helyesiras.py', igealak.SZKRIPT, igealak.MODUL, SZKRIPT]
 
 
@@ -150,6 +151,12 @@ def main():
 
     ts = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%MZ')
     hk = ' + '.join('%s (sha256:%s)' % (b, sha(b)) for b in BEMENETEK if os.path.exists(os.path.join(ROOT, b)))
+    h = hashlib.sha256()
+    szavak = sorted(glob.glob(os.path.join(ROOT, STRONG_SZAVAK)))
+    for ut in szavak:
+        with open(ut, 'rb') as f:
+            h.update(f.read())
+    hk += ' + %s (%d fájl, a K3b bemenete, összesített sha256:%s)' % (STRONG_SZAVAK, len(szavak), h.hexdigest())
     fejlec = ('# GENERÁLT: %s (F96.3) — kézzel nem szerkeszthető; a javítás a szabályban (helyesiras.py, igealak.py, '
               'igeragozas.py) vagy a kivételtáblában (KEZI, GYANU_KEZI, KIVETEL_LEMMA) | forras=%s | a modernizálás '
               'szintje: helyesírás + igealak, szókincs, szórend, írásjel és betoldás-jelölés változatlan (DT128) | '

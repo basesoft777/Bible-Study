@@ -1,6 +1,6 @@
 # KAROLI_MODERN_meres.md — a modernizált Károli-réteg mérési naplója (F96, FELADATOK #96)
 
-*Brief: `F96_KAROLI_MODERN_BRIEF.md` v1.1. Végrehajtó: claude-opus-5-5 (a kért modell: opus). Ág: `ccr-a680d019-39s73e`.*
+*Brief: `F96_KAROLI_MODERN_BRIEF.md` v1.5 (a napló a v1.1-gyel indult). Végrehajtó: claude-opus-5-5 (a kért modell: opus). Ág: `ccr-a680d019-39s73e`.*
 
 ## 1. F96.0 — előkészítés és fedettségi mérés
 
@@ -665,3 +665,58 @@ A brief .3 egy táblát írt le, „token-soronként, a vers-kulccsal és a mode
 **Licenc:** `adat/licencek.tsv` `karoli_modern` sor. A projekt saját adata, a Károli 1908 közkincs. Strong-oszlop nincs, ezért TAHOT/TAGNT-összetevő sincs; a Hunspellből alak nem került be (DT301).
 
 **Nyitott, a #96-on kívül:** N-F96c (egyedi régi írásmódok: *Pezsdűljenek, eledelűl, nékie*), N-F96a / #137 (a `pardes.db`-be töltés és a kereső; a DT-F96o kötelező pontja). A K5-ből hátravan a CI és a független ellenőr.
+
+## 7. A független ellenőr első köre és a javítások
+
+`scope=a #96 diffje (61714f36..b21871f) és a javítás után a teljes réteg | forras=naplok/ELLENOR_F96.md (1. kör, ELTÉRÉS: 11 tétel) + a 6. szakasz bemenetei | ts=2026-10-25` — `python eszkozok/karoli_modern/helyesiras.py --minta-frissit`, `--ami-proba`, `python eszkozok/karoli_modern/igealak.py --minta-frissit`, `python eszkozok/karoli_modern/karoli_modern.py`; 0 token.
+
+**A felhasználó döntése** (chat, 2026-10-25: „Mehet”): a javasolt besorolás szerinti javítás, és a DT-F96p 1. opciója.
+
+| tétel | javítás | ellenőrzés |
+|---|---|---|
+| **ELT-1** „-ik ige + volt” (32 eset) | `igealak.py` `VALA_ELOTT_KEZI`: a 37 „-ik + vala” esetből a 29 igei alak (34 token) kézzel átnézett múlt idejű alakja, a *vala* kiesik (*szégyenlik vala → szégyenlették*, *igyekszik vala → igyekezett*, *kínlódik vala → kínlódott*). A *kik, második, kisebbik, betegeik, kérdéseik, mellvértjeik* nem ige, marad. | a versek táblán `\w+ik volt`: csak *második* (3), *hetedik*, *kisebbik* |
+| **ELT-2** a .1 nyitott hibái (napló 4.1.5) | `helyesiras.py` `ALAK_KIVETEL`: *keménynyakú(ak)* változatlan (összetételi határ), *paizszsal → pajzzsal*, *strucz → strucc*, *struczok → struccok*, *struczmadarak → struccmadarak* | 18 token, a táblán grep-pel |
+| **ELT-3** tárgyas-heurisztika | `targyrag()`: az „a/az + -t” csak akkor tárgy, ha a *-t* (*-at, -et* …) nélküli tő szó a korpuszban (*a kárpit* nem tárgy) | 2Móz 36:16: *Csináltak ötven hurkot … csináltak* |
+| **ELT-4** a K1 három hibája | `igealak.py` `TOKEN_KIVETEL`: igehely + sorszám szerinti kivétel, az *evék* és a *tevék* minden előfordulásán átnézve. 7 token: a *tevék* főnév (1Móz 24:63, Ez 25:5) változatlan; *ették* (Ján 6:58, 2Móz 16:35); *tettem* (Neh 13:21, Dán 9:4, Jer 35:5). A Jel 12:2 az ELT-1-gyel javult. | a minta G020, G046, G084 sora jó |
+| **ELT-5** DONTESEK DT-F96d/e | az oszlopcsúszás javítva (Állapot 🟢, Döntés, Napló) | 8 oszlop |
+| **ELT-6** bontás | l. lent (`igealak_alakok.tsv`) | |
+| **ELT-7** elavult fejlécek | a minták fejléce: „a felhasználó tölti, vagy a felhasználó által elfogadott modell-ellenőrzés”; az `igealak_alakok.tsv` fejléce a DT-F96l szerint; a .2 mintájának `megjegyzes`-e: „a felhasználó elfogadta (chat, 2026-10-25)” | |
+| **ELT-8** `ir` lista | a brief `ir` mezője kiegészítve: `naplok/ELLENOR_F96.md`, `adat/SEMA.md`, `adat/licencek.tsv`, `DONTESEK.md`, `F137_KAROLI_MODERN_DB_BRIEF.md` | |
+| **ELT-9** token-keret | nincs teendő: dokumentált, utólag jóváhagyva (DT-F96m) | |
+| **ELT-10** verziószámok | a brief címsora v1.5; a napló fejléce; a DT-F96m szövege a sonnet- és az opus-számot szétválasztja | |
+| **ELT-11** bemeneti hash | a `karoli_modern.py` `BEMENETEK`-je kiegészül: `tokenek.py`, `fedettseg.py`, és a K3b bemenete (`adat/karoli_strong/szavak_*.tsv`, 61 fájl, összesített sha256) | a táblák fejléce |
+
+**DT-F96p** (a *j* nélküli birtokos T/3, alkalmazva):
+- A szabály: *-ök → -ük* (ragokkal is: *kezökbe → kezükbe*), ahol a tő többese a korpuszban *-ek* (*szív → szívek*), és nem *j* előzi meg. A *nemök* kézi listából jön (a *nemek* nem áll a korpuszban).
+- Kizárva a ragtalan *-tök* *t*-végű tövön, mert az múlt idejű T/2 ige (*ültök, jöttök, megöltök, készültök*; 17 alak). Kivétel: *érettök, értök* (névmás).
+- A 195 jelöltalakot a modell átnézte. **911 token** cserél: *velök → velük* 220, *ellenök → ellenük* 66, *szívök → szívük* 42, *Istenök → Istenük* 37, *nemzetségök* 19, *lelkök* 18, *szemök* 17 …
+- A névelő utáni alak is cserél (*a kezökbe*): a névelő-próba csak az igealak-jelöltekre fut.
+- A mély hangrendű *-ok* (*házok*) nem cserél, mert a próba ott hamis találatot ad (*gonoszok, akartok*).
+
+**ELT-6, az `igealak_alakok.tsv` bontása** (4 221 adatsor a javítás után; az 1. körben 4 039):
+
+| osztály × alkalmazás | alak |
+|---|---:|
+| `igealak_ritka` × jelolt (a többségi csere tokenszinten, DT-F96l) | 2 879 |
+| `regies_gyanu` × jelolt | 678 |
+| `igealak_gyakori` × szabaly | 318 |
+| `valtozatlan` × szabaly (kötőhangzós múlt, DT-F96p, kézi gyanúlista) | 235 |
+| `regies_gyanu` × szabaly (kézi lista, kötőhangzós múlt) | 76 |
+| `regies_lista` (vala 10, lőn 3, vagyon 1, egyéb 1) | 15 |
+| `igealak_ritka` × valtozatlan (igenév-kivétel) | 8 |
+| `igealak_gyakori` × jelolt (felszólító *-jál*) | 6 |
+| `igealak_gyakori` × valtozatlan (KEZI: jegyhiba, igenév-kivétel) | 5 |
+| `tablan_kivul` × szabaly | 1 |
+
+**A K1 a javítás után** (modell-ellenőrzés, a felhasználó elfogadta):
+- A minta automatikus cseréi: **319 / 319 (100%)**, a változatlan rétegben 0 kihagyás.
+- A minta 6 sora változott; mind átnézve, jó: a G020, G046 és G084 javult, a G071 és G113 a DT-F96p, a G091 az ELT-3 miatt változott.
+
+**Az újragenerálás igazolása** (a független ellenőr szerepköre a futtatást nem engedte, ezért itt):
+- A .3 generátora a .1-et és a .2-t újraszámolja, és soronként összeveti a kiadott táblákkal: `helyesiras_tokenek.tsv` 33 318 sor, `igealak_tokenek.tsv` 66 131 sor, egyezik. A K2 és a K3 minden versen átment.
+- A K3b: 418 633 / 418 633 Strongos token a táblában, azonos 1908-as alakkal. A K3b 61 könyvre igazol: a #22 párosításában nincs még **Mt, Mk, Lk, Ján, ApCsel** (`adat/karoli_strong/szavak_*.tsv`); ezeken a Strong-illesztés a #22 dolga.
+- A réteg számai: 49 025 token változik, 13 610 kiesik (11 128 összevont „a”, 2 482 segédigei *vala*), 21 454 vers változik.
+
+**Mérési melléktábla, nem frissítve:** a `helyesiras_hunspell.tsv` (DT301, csak mérce) az ELT-2 előtti alakpárokra szól. A Hunspell-futtató a sessionben nem fut újra; a kiadott rétegbe Hunspell-alak nem kerül, ezért a tábla a 4.1 mérés lenyomata marad.
+
+**Lefedettség:** a modern szövegben maradó régies igealak 1 146 token (az ELT-1 a létigeinek vett *vala* előtti igét javította, ezért a számot nem változtatja): felszólító *-jál* 319 (marad), *-nd-* jövő 147, régies gyanú 294, ritka jegyes 214, gyakori jegyes 135, *vala*-család bizonytalan 34, egyéb 3.

@@ -144,6 +144,33 @@ GYANU_KEZI = {
     'lefeküvék': 'lefeküdt', 'találtaték': 'találtatott', 'vetteték': 'vettetett',
     'várván': 'várva',
 }
+# ELT-1: a #94 által elemezetlen (vagy hibás lemmájú) -ik végű jelen idejű ige a segédigei vala előtt; a mai
+# múlt idejű alak kézzel átnézve (a 37 „-ik + vala” esetből a 29 igei alak; a kik, második, kisebbik, betegeik,
+# kérdéseik, mellvértjeik nem ige). A vala kiesik.
+VALA_ELOTT_KEZI = {
+    'szégyenlik': 'szégyenlették', 'megehetik': 'megehették', 'leeresztik': 'leeresztették',
+    'kötözgetik': 'kötözgették', 'hallgatózik': 'hallgatózott', 'terjeszkedik': 'terjeszkedett',
+    'emésztetik': 'emésztetett', 'nyugoszik': 'nyugodott', 'szomjúhozik': 'szomjúhozott', 'késik': 'késett',
+    'őrlik': 'őrölték', 'erősbödik': 'erősbödött', 'merik': 'merték', 'befedezik': 'befedezték',
+    'érthetik': 'érthették', 'töredezik': 'töredezett', 'legelészik': 'legelészett', 'letelepszik': 'letelepedett',
+    'verdesik': 'verdesték', 'lesik': 'lesték', 'megérthetik': 'megérthették', 'feküszik': 'feküdt',
+    'igyekszik': 'igyekezett', 'szakadozik': 'szakadozott', 'élelmeztetik': 'élelmeztetett',
+    'hivattatik': 'hivattatott', 'mívelik': 'mívelték', 'könnyebbítik': 'könnyebbítették', 'kínlódik': 'kínlódott',
+}
+# ELT-4: tokenszintű kivételek (igehely, sorszám) → mai alak, vagy None = változatlan (a szövegkörnyezet dönt;
+# kézzel átnézve az evék és a tevék minden előfordulásán): a tevék főnév (tevék jőnek, tevék legelőjévé); az
+# evék T/3 (a ti atyáitok evék, az Izráel fiai evék), a tevék E/1 (bizonyságot tevék, és mondám).
+TOKEN_KIVETEL = {
+    ('1Móz 24:63', 16): None, ('Ez 25:5', 4): None,
+    ('Ján 6:58', 18): 'ették', ('2Móz 16:35', 8): 'ették',
+    ('Neh 13:21', 3): 'tettem', ('Dán 9:4', 10): 'tettem', ('Jer 35:5', 13): 'tettem',
+}
+# DT-F96p: a j nélküli birtokos T/3 -ök → -ük, ahol a tő többes száma a korpuszban -ek (szív → szívek, ezért a
+# szívök csak birtokos); a nemök (a nemek nem áll a korpuszban) kézi listából. Kimarad a múlt idejű T/2 ige
+# (ültök, jöttök, megöltök: a ragtalan -tök t-végű tövön), kivéve az érettök, értök névmást.
+OK_RAG = ('', 'et', 'nek', 'ben', 'be', 'ből', 're', 'ről', 'hez', 'höz', 'től', 'kel', 'ért', 'ön', 'ig')
+OK_KEZI = {'nemök': 'nemük'}
+OK_NEVMAS = {'érettök', 'értök'}
 # A határozói igenév kivételei: a mai irodalmi alak is -vén (lévén), nem változik.
 IGENEV_KIVETEL = {'lévén', 'jövén', 'eljövén', 'feljövén', 'kijövén', 'bejövén', 'visszajövén', 'előjövén'}
 
@@ -367,9 +394,23 @@ def targyas_e(spans, szoveg, i):
         if w in HATAROZOTT_TARGY:
             return True
         elo = spans[j - 1][2].lower() if j > 0 else ''
-        if elo in ('a', 'az') and w.endswith('t') and len(w) > 2:
+        if elo in ('a', 'az') and w.endswith('t') and len(w) > 2 and targyrag(w):
             return True
         if BIRTOKOS_TARGY.search(w) and len(w) > 4:
+            return True
+    return False
+
+
+SZAVAK = set()  # a korpusz kisbetűs szavai (a Feldolgozo tölti)
+EKEZET_VISSZA = str.maketrans({'á': 'a', 'é': 'e'})
+
+
+def targyrag(w):
+    """A -t tárgyrag-e: a -t / -at / -et / -ot / -öt nélküli tő (az á/é rövidülésével is) szó a korpuszban
+    (földet → föld, urat → ura, fát → fa); a kárpit, a fiat nem tárgy."""
+    for n in (1, 2):
+        t = w[:-n]
+        if len(t) >= 2 and (t in SZAVAK or (t[:-1] + t[-1:].translate(EKEZET_VISSZA)) in SZAVAK):
             return True
     return False
 
@@ -394,6 +435,7 @@ class Feldolgozo:
         self.dont = dont
         self.llm = llm
         self.llm2 = llm_beolvas(LLM2_TABLA)
+        SZAVAK.update(alakok.kis_szavak)
         self.alak_dontes = {}  # alak → (alkalmazas, jeloltek, szabaly)
         self.szamlalo = collections.Counter()
 
@@ -441,6 +483,10 @@ class Feldolgozo:
                 ki = ('szabaly', {'': nagy(alak, m)}, 'kotohang_mult')  # DT-F96k b (mondotta → mondta)
             else:
                 ki = ('jelolt', self.a.gyanu_jelolt(alak, sor, reszlet), 'gyanu:' + reszlet)
+        if not ki[0]:
+            m = self.ok_birtokos(self.alakszotar[alak][0])  # DT-F96p
+            if m:
+                ki = ('szabaly', {'': nagy(alak, m)}, 'ok_birtokos')
         if not ki[0] and sor and o in ('valtozatlan', 'regies_gyanu', 'helyesiras_tabla', 'helyesiras_szabaly'):
             # DT-F96k (🟡): a régies, kötőhangzós múlt (mondotta → mondta, szólott → szólt) jelölt, nem csere
             m = ir.kotohang_mult(self.alakszotar[alak][0], sor['szotari_alak_mai'] or sor['szotari_alak'],
@@ -449,6 +495,23 @@ class Feldolgozo:
                 ki = ('szabaly', {'': nagy(alak, m)}, 'kotohang_mult')  # DT-F96k b: automatikus csere
         self.alak_dontes[alak] = ki
         return ki
+
+    def ok_birtokos(self, alak_h):
+        """DT-F96p: a j nélküli birtokos T/3 -ök mai -ük alakja, ha a tő többese -ek; különben None."""
+        w = alak_h.lower()
+        if w in OK_KEZI:
+            return OK_KEZI[w]
+        for r in OK_RAG:
+            veg = 'ök' + r
+            if not w.endswith(veg) or len(w) <= len(veg) + 1 or w[-len(veg) - 1] == 'j':
+                continue
+            to = w[:-len(veg)]
+            if not ((to + 'ek') in self.a.kis_szavak or (to + 'ek' + r) in self.a.kis_szavak):
+                return None
+            if r == '' and to.endswith('t') and w not in OK_NEVMAS:
+                return None  # ültök, jöttök: múlt idejű T/2 ige
+            return to + 'ük' + r
+        return None
 
     def llm_jelolt(self, alak, alak_h, masodik=False):
         """(llm-alak, tő-őr) az LLM-táblából (kisbetűs kulcs; masodik: az opus-tábla); ('', '') ha nincs."""
@@ -468,6 +531,11 @@ class Feldolgozo:
             if r[4]:
                 continue
             alk, jel, cim = self.alak_info(r[1])
+            if (igehely, r[0]) in TOKEN_KIVETEL:  # ELT-4: tokenszintű, kézzel átnézett kivétel
+                cel = TOKEN_KIVETEL[(igehely, r[0])]
+                r[3] = nagy(r[1], cel) if cel else r[2]
+                r[6] = 'token_kivetel'
+                continue
             if alk in ('szabaly', 'lon', 'vagyon') and jel:
                 if alk == 'vagyon' and i > 0 and spans[i - 1][2].lower() in ('a', 'az'):
                     r[6] = 'vagyon_fonev_marad'
@@ -475,7 +543,7 @@ class Feldolgozo:
                 if alk == 'lon' and r[1].lower() == 'lőnek' and re.search(r'nyil|nyíl|íj', szoveg.lower()):
                     r[8] = 'lonek_lo'
                     continue
-                if alk == 'szabaly' and nevelo_utan(spans, szoveg, i):
+                if alk == 'szabaly' and cim != 'ok_birtokos' and nevelo_utan(spans, szoveg, i):
                     r[8] = 'nevelo_utan'  # a tevék, egy tevének, a küldöttek: főnév, nem igealak
                     continue
                 r[3], r[6] = self.valaszt(jel, spans, szoveg, i, r), cim
@@ -559,6 +627,11 @@ class Feldolgozo:
             return
         if jegy.startswith('mult.') or ek in VALA or (e[3] != e[2] and e[6] and ir.mult_alak_e(e[3], e[2])):
             self.kiesik(r, 'vala_segedige_mult')  # régies vagy a .2 által múltba tett ige (illeték → illették)
+            return
+        if ek in VALA_ELOTT_KEZI:  # ELT-1: elemezetlen -ik ige (szégyenlik vala → szégyenlették)
+            e[3] = nagy(e[2], VALA_ELOTT_KEZI[ek])
+            e[6] = cimke(e[6], 'jelen_mult_vala')
+            self.kiesik(r, 'vala_segedige_jelen')
             return
         if sajat_mult and ek not in ir.IGEKOTOK and lemma not in NEM_IGE:
             self.kiesik(r, 'vala_segedige_mult')
@@ -757,7 +830,8 @@ def kiir(vers_ki, gy, alakok, fd, a):
                         llm2, tor2, egy2])
     with open(os.path.join(ki_dir, 'igealak_alakok.tsv'), 'w', encoding='utf-8', newline='\n') as f:
         f.write(fejlec.replace('\n', ' | scope=az igealak-osztályú és a vala/lőn/vagyon alakok (%d); alkalmazas: '
-                               'szabaly = automatikus csere, jelolt = nem automatikus (a modern szöveg nem változik)\n'
+                               'szabaly = automatikus csere; jelolt = a szabály, a sonnet és az opus jelöltje, a modern '
+                               'szöveg a DT-F96l többségi szabálya szerint változik (tobbseg:<források>)\n'
                                % len(alak_ki)))
         f.write('\t'.join(['alak', 'gyakorisag', 'osztaly', 'reszlet', 'regies_jegy', 'szotari_alak', 'alkalmazas',
                            'szabaly', 'szabaly_jelolt', 'llm_alak', 'to_or', 'egyezes', 'opus_alak', 'opus_to_or',
@@ -1007,7 +1081,8 @@ def minta_sor(mid, reteg, ih, vers_ki):
 def minta_ir(sorok, ki_dir, fejlec, megj):
     with open(os.path.join(ki_dir, 'igealak_minta.tsv'), 'w', encoding='utf-8', newline='\n') as f:
         f.write(fejlec.replace('\n', ' | scope=rögzített magú (%d) rétegzett minta, %d vers; az ellenorzes és a '
-                               'megjegyzes oszlopot a felhasználó tölti (jó / hibás; a jelölt soron A = a jelölt jó, '
+                               'megjegyzes oszlopot a felhasználó tölti, vagy a felhasználó által elfogadott '
+                               'modell-ellenőrzés (DT-F96n; jó / hibás; a jelölt soron A = a jelölt jó, '
                                'B = maradjon), a modell nem%s\n' % (MAG, len(sorok), megj)))
         f.write('\t'.join(['minta_id', 'reteg', 'igehely', 'szoveg_1908', 'szoveg_modern', 'valtozasok', 'jelolt',
                            'ellenorzes', 'megjegyzes']) + '\n')
