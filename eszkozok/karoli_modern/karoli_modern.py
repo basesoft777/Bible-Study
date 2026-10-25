@@ -48,7 +48,7 @@ I_TOKENEK = os.path.join(KI_DIR, 'igealak_tokenek.tsv')
 STRONG_SZAVAK = os.path.join('adat', 'karoli_strong', 'szavak_*.tsv')
 SZKRIPT = 'eszkozok/karoli_modern/karoli_modern.py'
 BEMENETEK = [igealak.KAROLI, igealak.SZOTARI, igealak.H_TOKENEK, I_TOKENEK, igealak.LLM_TABLA, igealak.LLM2_TABLA,
-             igealak.KOR3_TABLA, igealak.KOR4_TABLA, 'eszkozok/karoli_strong/tokenek.py', 'eszkozok/karoli_modern/fedettseg.py',
+             igealak.KOR3_TABLA, igealak.KOR4_TABLA, igealak.KOR5_TABLA, 'eszkozok/karoli_strong/tokenek.py', 'eszkozok/karoli_modern/fedettseg.py',
              'eszkozok/karoli_modern/helyesiras.py', igealak.SZKRIPT, igealak.MODUL, SZKRIPT]
 
 
@@ -163,7 +163,7 @@ def main():
               'szintje: helyesírás + igealak, szókincs, szórend, írásjel és betoldás-jelölés változatlan (DT128) | '
               'tokenizálás: eszkozok/karoli_strong/tokenek.py tokenizal (a #22 hu_sorszam-a; a Strong token-kulcson '
               'illeszthető, a réteg Strongot nem tárol, DT-F96f, DT-F96o) | mérés: naplok/KAROLI_MODERN_meres.md 4.9 '
-              '(.1, K1 246/246), 5.7 és 7.–8. (.2, K1 a javítások után a 8. szakasz szerint), 10. (a 3. kör, DT-F96q; a lefedettséget is mérő K1: igealak_minta2.tsv) és 11. (a 4. kör, DT-F96r), modell-ellenőrzés, a felhasználó elfogadta | ts=%s\n'
+              '(.1, K1 246/246), 5.7 és 7.–8. (.2, K1 a javítások után a 8. szakasz szerint), 10. (a 3. kör, DT-F96q; a lefedettséget is mérő K1: igealak_minta2.tsv) 11. (a 4. kör, DT-F96r), 12. (DT-F96s) és 14. (az 5. kör, DT-F96u), modell-ellenőrzés, a felhasználó elfogadta | ts=%s\n'
               % (SZKRIPT, hk, ts))
     os.makedirs(ki_dir, exist_ok=True)
     with open(os.path.join(ki_dir, 'karoli_modern.tsv'), 'w', encoding='utf-8', newline='\n') as f:

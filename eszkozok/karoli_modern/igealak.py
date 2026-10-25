@@ -53,6 +53,8 @@ Tokenszintű döntés:
                     `vala_nem_elemezheto` vala is (létige → volt); a `jelolt` típus a DT-F96l opus-szavazata, ahol
                     az igealak_llm_opus.tsv nem szavazott. A .1 cseréje a .2 eredményén is (h1_atvisz: reáveté →
                     rávetette, nem reávetette)
+  5. kör (DT-F96u)  tokenszintű opus-válasz a teljes verssel (igealak_llm_kor5.tsv): csere, ha egy meglévő
+                    jelölttel egyezik és a tő-őr átengedi (`kor5:token_opus+meglevo`, `bizonytalan=token_opus`)
   jelölt-kör        (DT-F96s) ha a szabály-jelölt a korpuszban nem áll, az opus-alak igen, és a tő-őr átengedi:
                     az opus-alak cserél (`…:opus_tanusitott`, `bizonytalan=szabaly_nem_tanusitott`; kizárva az
                     -á/-é nem -a/-e végű, az E/1-környezetű -ék nem E/1 alakja és a -nd- jövő); a szavazás előtt a
@@ -115,6 +117,8 @@ KOR3_TABLA = os.path.join(KI_DIR, 'igealak_llm_kor3.tsv')
 # A 4. kör (DT-F96r, 2. opció): a 3. kör után mért kihagyás-osztályok; a kulcs a .1 utáni alak; a `jelolt` típus a
 # DT-F96l többségének opus-szavazata, ahol az igealak_llm_opus.tsv nem szavazott
 KOR4_TABLA = os.path.join(KI_DIR, 'igealak_llm_kor4.tsv')
+# Az 5. kör (DT-F96u, 1. opció): tokenszintű opus-válasz a teljes verssel; kulcs: (igehely, sorszám)
+KOR5_TABLA = os.path.join(KI_DIR, 'igealak_llm_kor5.tsv')
 SZKRIPT = 'eszkozok/karoli_modern/igealak.py'
 MODUL = 'eszkozok/karoli_modern/igeragozas.py'
 MAG = 20261024
@@ -493,6 +497,26 @@ def h1_atvisz(r1, r2, uj):
     return uj
 
 
+def kor5_beolvas():
+    """Az 5. kör táblája: (igehely, sorszám) → (meglévő jelöltek listája, opus-alak)."""
+    ki = {}
+    ut = os.path.join(ROOT, KOR5_TABLA)
+    if not os.path.exists(ut):
+        return ki
+    fej = None
+    with open(ut, encoding='utf-8') as f:
+        for l in f:
+            if l.startswith('#'):
+                continue
+            m = l.rstrip('\n').split('\t')
+            if fej is None:
+                fej = m
+                continue
+            d = dict(zip(fej, m))
+            ki[(d['igehely'], d['sorszam'])] = (d['meglevo_jeloltek'].split('|'), d['opus_alak'])
+    return ki
+
+
 def kor3_beolvas(tabla=KOR3_TABLA):
     """A 3. (4.) kör táblája: (alak → (szabály-jelölt dict vagy None, opus-alak), vala-pár → opus-alak,
     jelölt alak → opus-alak)."""
@@ -545,6 +569,7 @@ class Feldolgozo:
         self.llm2 = llm_beolvas(LLM2_TABLA)
         self.kor3_alak, self.kor3_vala, _ = kor3_beolvas()
         self.kor4_alak, self.kor4_vala, self.kor4_jelolt = kor3_beolvas(KOR4_TABLA)
+        self.kor5 = kor5_beolvas()
         SZAVAK.update(alakok.kis_szavak)
         self.alak_dontes = {}  # alak → (alkalmazas, jeloltek, szabaly)
         self.szamlalo = collections.Counter()
@@ -725,6 +750,7 @@ class Feldolgozo:
                 self.kor3_alkalmaz(t, spans, szoveg, i)
                 self.kor3_alkalmaz(t, spans, szoveg, i, 4)
         for r in t:
+            self.kor5_alkalmaz(igehely, r)
             if not r[4] and r[3] != r[2] and r[2] != r[1]:
                 r[3] = h1_atvisz(r[1], r[2], r[3])
         modern = self.szoveg(szoveg, spans, t)
@@ -755,6 +781,25 @@ class Feldolgozo:
             return jel['E1'] if e1 else jel['T3']
         r[8] = 'targyas_heur'
         return jel['targyas'] if targyas_e(spans, szoveg, i) else jel['alanyi']
+
+    def kor5_alkalmaz(self, igehely, r):
+        """DT-F96u (1. opció): a tokenszintű opus-válasz cserél, ha egy meglévő jelölttel (szabály, sonnet, korábbi
+        opus) egyezik, és a tő-őr átengedi (a DT-F96l kettő-egyezése tokenszinten); különben jelölt marad."""
+        k = self.kor5.get((igehely, str(r[0])))
+        if not k or r[4] or r[3].lower() != r[2].lower():
+            return
+        meglevo, opus = k
+        uj = h1_atvisz(r[1], r[2], nagy(r[1], opus))
+        if uj.lower() == r[2].lower():
+            return
+        o, reszlet, sor = self.a.oszt[r[1]]
+        tor = to_or(uj, r[2], sor, self.a, reszlet) or (r[1] != r[2] and to_or(uj, r[2], None, self.a, ''))
+        if tor and uj.lower() in {h1_atvisz(r[1], r[2], v).lower() for v in meglevo}:
+            r[3] = uj
+            r[6] = cimke(r[6], 'kor5:token_opus+meglevo') if r[6] else 'kor5:token_opus+meglevo'
+            r[8] = 'token_opus'
+        else:
+            r[9] = '; '.join(x for x in (r[9], 'kor5_token_opus:%s(%s)' % (uj, 'tő-őr ok' if tor else 'tő-őr bukott')) if x)
 
     def tanusitott(self, w):
         """A szóalak a Károli 1908 korpuszában áll (kisbetűsen)."""
@@ -1068,7 +1113,7 @@ def bemenet_hash():
     return ('%s (sha256:%s) + %s (sha256:%s) + %s (sha256:%s) + %s (sha256:%s) + %s (sha256:%s)%s'
             % (KAROLI, sha(KAROLI)[:12], SZOTARI, sha(SZOTARI)[:12], H_TOKENEK, sha(H_TOKENEK)[:12],
                SZKRIPT, sha(SZKRIPT)[:12], MODUL, sha(MODUL)[:12],
-               ''.join(' + %s (sha256:%s)' % (t, sha(t)[:12]) for t in (LLM_TABLA, LLM2_TABLA, KOR3_TABLA, KOR4_TABLA)
+               ''.join(' + %s (sha256:%s)' % (t, sha(t)[:12]) for t in (LLM_TABLA, LLM2_TABLA, KOR3_TABLA, KOR4_TABLA, KOR5_TABLA)
                        if os.path.exists(os.path.join(ROOT, t)))))
 
 
@@ -1083,7 +1128,7 @@ def kiir(vers_ki, gy, alakok, fd, a):
               '(a #22 hu_sorszam-a; Strong token-kulcson illeszthető, DT-F96f) | a ritka jegyes és a régies gyanús '
               'alak a DT-F96l szerint cserél (a szabály, a sonnet és az opus közül kettő egyezik, tő-őrrel), különben '
               'a jelolt oszlopban marad; a 3. kör (DT-F96q) a változatlanul maradt régies alakon a szabály és az opus '
-              'egyezésével cserél | LLM: az igealak_llm.tsv, az igealak_llm_opus.tsv, az igealak_llm_kor3.tsv és az igealak_llm_kor4.tsv '
+              'egyezésével cserél | LLM: az igealak_llm.tsv, az igealak_llm_opus.tsv, az igealak_llm_kor3.tsv, _kor4.tsv és _kor5.tsv '
               '(DT-F96d, előfizetés, API nélkül)\n' % (SZKRIPT, hk))
     tok_ki = []
     for igehely, (sz, modern, t) in vers_ki.items():

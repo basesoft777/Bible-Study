@@ -64,6 +64,14 @@ KI4 = os.path.join('adat', 'karoli_modern', 'regies_szken_kor4.tsv')
 KOR4_TABLA = os.path.join('adat', 'karoli_modern', 'igealak_llm_kor4.tsv')
 KOR4_NAPLO = os.path.join('adat', 'karoli_modern', 'igealak_llm_kor4_hivasok.jsonl')
 ALAKOK = os.path.join('adat', 'karoli_modern', 'igealak_alakok.tsv')
+# Az 5. kör (DT-F96u, 1. opció): tokenszintű kérdés a teljes verssel a változatlanul maradt, eltérő szavazatú jelöltekre
+KI5 = os.path.join('adat', 'karoli_modern', 'regies_szken_kor5.tsv')
+KOR5_TABLA = os.path.join('adat', 'karoli_modern', 'igealak_llm_kor5.tsv')
+KOR5_NAPLO = os.path.join('adat', 'karoli_modern', 'igealak_llm_kor5_hivasok.jsonl')
+I_TOKENEK = os.path.join('adat', 'karoli_modern', 'igealak_tokenek.tsv')
+VERSEK = os.path.join('adat', 'karoli_modern', 'karoli_modern_versek.tsv')
+SZAVAZAT = re.compile(r'(?:llm|opus|kor3_opus|kor4_opus):([^(;]+)\(')
+SZABALY = re.compile(r'(?:szabaly|kor3_szabaly|kor4_szabaly):([^;]+)')
 # A .2 szabálycímkéinek eleje: az ilyen címkéjű token igealak-döntést kapott (a 4. kör a csak a .1 által változtatott
 # tokent is nézi, a modern alakján)
 K2_ELO = ('igealak', 'gyanu', 'kotohang', 'mult_E1', 'ok_birtokos', 'token_kivetel', 'tobbseg', 'kor3', 'vala',
@@ -349,6 +357,125 @@ def jelolt_opus_nelkul(tok):
     return {k: v for k, v in ki.items() if k in valtozatlan}
 
 
+def szavazatok(jelolt):
+    """A `jelolt` oszlop meglévő jelöltjei: (szabály-értékek, LLM-értékek)."""
+    szab = [v.split('=')[-1].strip() for x in SZABALY.findall(jelolt) for v in x.split('|')]
+    return szab, [v.strip() for v in SZAVAZAT.findall(jelolt)]
+
+
+def kor5_kerdesek():
+    """Az 5. kör kérdései: a modern szövegben változatlan, kieső nélküli, `jelolt` oszlopos token, ahol legalább egy
+    LLM-szavazat változtatna, vagy LLM-szavazat nélkül a szabály-jelölt változtatna; a felszólító (DT-F96k a) és a -nd- jövő kimarad. A vers a modern
+    szöveg, a token [szögletes zárójelben] (a nem kieső tokenek sorrendje a K2 szerint a modern szöveg szavaié)."""
+    kieso = collections.defaultdict(set)
+    for m in beolvas():
+        if m[4]:
+            kieso[m[0]].add(int(m[1]))
+    vers = {}
+    with open(os.path.join(ROOT, VERSEK), encoding='utf-8') as f:
+        for l in f:
+            if l.startswith('#') or l.startswith('igehely\t'):
+                continue
+            m = l.rstrip('\n').split('\t')
+            vers[m[0]] = m[1]
+    betu = re.compile(r"[^\W\d_]+(?:['’][^\W\d_]+)*")
+    sorok = []
+    with open(os.path.join(ROOT, I_TOKENEK), encoding='utf-8') as f:
+        fej = None
+        for l in f:
+            if l.startswith('#'):
+                continue
+            m = l.rstrip('\n').split('\t')
+            if fej is None:
+                fej = m
+                continue
+            d = dict(zip(fej, m))
+            if not d['jelolt'] or d['kieso'] or d['alak_modern'].lower() != d['alak_helyesiras'].lower():
+                continue
+            if d['szabaly'].startswith('felszolito') or 'nd_jovo' in d['szabaly']:
+                continue
+            szab, llm = szavazatok(d['jelolt'])
+            w = d['alak_helyesiras'].lower()
+            if llm and all(v.lower() == w for v in llm):
+                continue  # minden LLM-szavazat szerint változatlan (nem régies; vége ≠ végett)
+            if not [v for v in szab + llm if v.lower() != w]:
+                continue
+            sorsz = int(d['sorszam'])
+            n = sorsz - 1 - sum(1 for k in kieso[d['igehely']] if k < sorsz)
+            sz = vers[d['igehely']]
+            sp = list(betu.finditer(sz))
+            if n >= len(sp) or sp[n].group(0) != d['alak_modern']:
+                raise SystemExit('a token helye a versben nem azonosítható: %s %s' % (d['igehely'], d['sorszam']))
+            jelolt = sz[:sp[n].start()] + '[' + sp[n].group(0) + ']' + sz[sp[n].end():]
+            meglevo = '|'.join(sorted({v for v in szab + llm if v}))
+            sorok.append([d['igehely'], d['sorszam'], d['alak_helyesiras'], meglevo, jelolt])
+    return sorok
+
+
+def kor5(a):
+    if a.llm_valasz:
+        if not a.modell:
+            raise SystemExit('--modell kötelező (a ténylegesen futott modell neve)')
+        kerdes = []
+        with open(os.path.join(ROOT, KI5), encoding='utf-8') as f:
+            for l in f:
+                if not l.startswith('#') and not l.startswith('id\t'):
+                    kerdes.append(l.rstrip('\n').split('\t'))
+        valasz = {}
+        for fn in sorted(os.listdir(a.llm_valasz)):
+            if re.match(r'valasz_\d+\.tsv$', fn):
+                with open(os.path.join(a.llm_valasz, fn), encoding='utf-8') as f:
+                    for l in f:
+                        m = l.rstrip('\n').split('\t')
+                        if len(m) == 2:
+                            valasz[m[0]] = m[1].strip()
+        hiany = [r[0] for r in kerdes if r[0] not in valasz]
+        if hiany or len(valasz) != len(kerdes):
+            raise SystemExit('a válasz nem teljes: %d hiányzik %s' % (len(hiany), hiany[:5]))
+        import json
+        with open(os.path.join(a.llm_valasz, 'hivasok.jsonl'), encoding='utf-8') as f:
+            hivasok = [json.loads(l) for l in f if l.strip()]
+        tok = sum(h.get('total_tokens', 0) for h in hivasok)
+        ts = __import__('datetime').datetime.now(__import__('datetime').timezone.utc).strftime('%Y-%m-%dT%H:%MZ')
+        with open(os.path.join(ROOT, KOR5_TABLA), 'w', encoding='utf-8', newline='\n') as f:
+            f.write('# GENERÁLT: %s --kor 5 --llm-valasz (F96.3, DT-F96u) — modell-kimenet (modell_ellenorizetlen), '
+                    'kézzel nem szerkeszthető | modell=%s (Claude Code subagent, előfizetés, API nélkül; vak, a teljes '
+                    'verssel, tokenenként) | forras=%s (sha256:%s) | scope=a változatlanul maradt, eltérő szavazatú '
+                    'jelölt tokenek (%d) | token: %d (%d hívás) | ts=%s\n'
+                    % (SZKRIPT, a.modell, KI5, sha(KI5), len(kerdes), tok, sum(h.get('hivasok', 0) for h in hivasok), ts))
+            f.write('\t'.join(['id', 'igehely', 'sorszam', 'alak', 'meglevo_jeloltek', 'opus_alak']) + '\n')
+            for r in kerdes:
+                f.write('\t'.join(r[:5] + [valasz[r[0]]]) + '\n')
+        with open(os.path.join(ROOT, KOR5_NAPLO), 'w', encoding='utf-8', newline='\n') as f:
+            for h in hivasok:
+                f.write(json.dumps(h, ensure_ascii=False) + '\n')
+        print('kor5: %d válasz; token: %d; kiírva: %s' % (len(valasz), tok, KOR5_TABLA))
+        return
+    sorok = [['T%04d' % n] + r for n, r in enumerate(kor5_kerdesek(), 1)]
+    ki_ut = os.path.join(a.kimenet, 'regies_szken_kor5.tsv') if a.kimenet else os.path.join(ROOT, KI5)
+    if a.kimenet:
+        os.makedirs(a.kimenet, exist_ok=True)
+    with open(ki_ut, 'w', encoding='utf-8', newline='\n') as f:
+        f.write('# GENERÁLT: %s --kor 5 (F96.3, DT-F96u) — kézzel nem szerkeszthető | forras=%s (sha256:%s) + %s '
+                '(sha256:%s) + %s (sha256:%s) | scope=a modern szövegben változatlanul maradt jelölt tokenek, ahol '
+                'legalább egy forrás változtatna (%d), a felszólító és a -nd- jövő nélkül; meglevo_jeloltek: a szabály- '
+                'és LLM-jelöltek; vers: a modern versszöveg, a token [szögletes zárójelben]\n'
+                % (SZKRIPT, I_TOKENEK, sha(I_TOKENEK), VERSEK, sha(VERSEK), KM, sha(KM), len(sorok)))
+        f.write('\t'.join(['id', 'igehely', 'sorszam', 'alak', 'meglevo_jeloltek', 'vers']) + '\n')
+        for r in sorok:
+            f.write('\t'.join(r) + '\n')
+    print('kor5: %d token-kérdés; kiírva: %s' % (len(sorok), ki_ut))
+    if a.llm_kerdes:
+        if os.path.abspath(a.llm_kerdes).startswith(ROOT):
+            raise SystemExit('a kérdések a repón kívülre mennek')
+        os.makedirs(a.llm_kerdes, exist_ok=True)
+        for b in range(0, len(sorok), a.koteg):
+            with open(os.path.join(a.llm_kerdes, 'kerdes_%02d.tsv' % (b // a.koteg + 1)), 'w', encoding='utf-8') as f:
+                for r in sorok[b:b + a.koteg]:
+                    f.write('\t'.join([r[0], r[3], r[5]]) + '\n')
+        print('LLM-kérdés: %d köteg → %s' % ((len(sorok) + a.koteg - 1) // a.koteg, a.llm_kerdes))
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--llm-kerdes', default=None)
@@ -356,8 +483,12 @@ def main():
     ap.add_argument('--llm-valasz', default=None, help='a válaszok könyvtára (a repón kívül)')
     ap.add_argument('--modell', default=None)
     ap.add_argument('--kimenet', default=None, help='a szken próbája (maradék-mérés) a repón kívülre')
-    ap.add_argument('--kor', type=int, default=3, choices=(3, 4), help='4: a 3. kör utáni kihagyás-osztályok (DT-F96r)')
+    ap.add_argument('--kor', type=int, default=3, choices=(3, 4, 5),
+                    help='4: a 3. kör utáni kihagyás-osztályok (DT-F96r); 5: tokenszintű kérdés (DT-F96u)')
     a = ap.parse_args()
+    if a.kor == 5:
+        kor5(a)
+        return
     if a.llm_valasz:
         llm_valasz(a.llm_valasz, a.modell, a.kor)
         return
