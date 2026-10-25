@@ -1073,3 +1073,23 @@ A kérdés a teljes modern vers, a token [szögletes zárójelben]. A helyét a 
 - **Torzítás:** a 11.4 és a 12.4 szerint a szám erre a mintára hangolt körök után áll elő, ezért felülbecsül. Torzítatlan mérés csak friss véletlen mintán lehetséges.
 
 **Megállás:** a folytatás a felhasználó döntése, **DT-F96v** (🟡).
+
+## 15. Javítókör (`/elteres`, 1. kör): a független ellenőr 4. körének 5 tétele
+
+**Bemenet:** `naplok/ELLENOR_F96.md` 4. kör (ELTÉRÉS: 5 tétel); a besorolás (mind az 5 tétel `mechanikus`) a felhasználó jóváhagyása. A végrehajtó session modellje `claude-opus-5-5`. Minden kódváltozás előtt `--kimenet`-próba a repón kívülre, tokenenkénti összevetés a kiadott `igealak_tokenek.tsv`-vel, és minden megváltozott token átnézése a versével (`konkordancia/Karoli_1908.tsv`). A számok a végrehajtó session mérései (`manual`), független ellenőrzésük az újraellenőrzés dolga.
+
+### 15.1 Az `ek_E1_T3` és a visszaható E/1 névmás (4. kör, 1.)
+
+**A hiba:** Salamon E/1 beszédében (Préd 2:5–9) a *magamnak* mellett az *-ék* T/3-ra fordult: *építék → építették*, *ülteték → ültették* (2:5, 2:6), *Gyűjték → Gyűjtötték*. Két külön ok:
+- az `E1_JEL` nem ismerte a visszaható E/1 névmás ragos alakjait (*építék*, *Gyűjték*: a szabály-jelölt E1/T3, a `valaszt` dönt);
+- az *ülteték* elemezetlen alak, szabály-jelölt nélkül; a sonnet és az opus egyező *ültették* alakja a `tobbseg` ágon közvetlenül cserélt, az E/1 heurisztika nélkül.
+
+**A javítás (`igealak.py`):**
+1. Az `E1_JEL` bővül: *magamnak, magamban, magamba, magamra, magamhoz, magammal, magamtól, magamért, magamról, magamnál, magamon, magamból* (a *magam, magamat* már benne volt). Hatás: 2 token (Préd 2:5 *építettem*, 2:9 *Gyűjtöttem*).
+2. Új lépés (`ek_e1_fordit`) a `tobbseg` ágon, ha a többségi érték nem szövegkörnyezetfüggő: az *-ék* token *-ták/-ték* végű, változtató többségi alakja E/1-re fordul (*-tam/-tem*), `ek_E1_T3` jelöléssel, ha a mondatszakaszban (`.;:!?` között) visszaható E/1 névmás (`MAGAM_E1`) áll. Hatás: 2 token (Préd 2:5, 2:6 *ültettem*).
+
+**A szűkítés (próba):** az első változat a 2. lépésben a tágabb E/1 jelzőt (`e1_e`, `e1_ige`) használta. A próbán 9 token változott, ebből 5 hibásan: T/3 helyett E/1 lett az 1Móz 47:9 *érték* (változatlan alakon), az Ez 20:13 *megveték* (az *ellenem* miatt), az Ez 23:38 *megfertézteték* (*az én szent helyemet*), a Józs 24:12 *űzék* (a darázsok űzték) és a Zak 5:9 *felemelék* (a két asszony). A kiadott változat ezért csak a *magam-* névmásra és csak változtató alakra fordít.
+
+**Eredmény:** 4 token változott (Préd 2:5 ×2, 2:6, 2:9), mind átnézve a versével, mind helyes; más token nem változott. Az `ek_E1_T3` jelölés 692 → 694 tokenen áll. A minták modern szövege nem változott (a két mintában nincs Préd 2). A .3 újragenerálva: K2, K3, K3b teljesül, a Strong nem változott.
+
+**Az N-F96f állapota:** részben megoldva. Ismert, nyitott maradék a 10.4 szerint 3 token, ahol E/1 helyén T/3 maradt (1Móz 39:15 *kezdék*, Dán 7:16 *kérék*, Ez 22:30 *keresék*); az `ek_E1_T3` heurisztika a teljes osztályon nem igazolt.

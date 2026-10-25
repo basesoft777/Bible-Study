@@ -1,4 +1,4 @@
-# GENERÁLT: eszkozok/karoli_modern/igealak.py (F96.2) — kézzel nem szerkeszthető; a javítás a szabályban vagy a kivételtáblában (KEZI, GYANU_KEZI, VALA_ELOTT_KEZI, VALA_ELOTT_MULT_KEZI, TOKEN_KIVETEL, E1_TARGYAS_KEZI, OK_KEZI, E1_MINDIG_VEG, KOR3_VALA_HOMOGRAF) | forras=konkordancia/Karoli_1908.tsv (sha256:49335bbcc77d) + adat/szoto/karoli_szotari_alak.tsv (sha256:edba33e6d65a) + adat/karoli_modern/helyesiras_tokenek.tsv (sha256:a3a9b6d24f7f) + eszkozok/karoli_modern/igealak.py (sha256:606ca41dc236) + eszkozok/karoli_modern/igeragozas.py (sha256:172887f57837) + adat/karoli_modern/igealak_llm.tsv (sha256:878dbe192b42) + adat/karoli_modern/igealak_llm_opus.tsv (sha256:f536a79c073e) + adat/karoli_modern/igealak_llm_kor3.tsv (sha256:801636853498) + adat/karoli_modern/igealak_llm_kor4.tsv (sha256:532f4bf407d9) + adat/karoli_modern/igealak_llm_kor5.tsv (sha256:ce45db48117d) | a .1 (helyesiras.py) kimenetére épül, újraszámolva és összevetve | tokenizálás: tokenizal (a #22 hu_sorszam-a; Strong token-kulcson illeszthető, DT-F96f) | a ritka jegyes és a régies gyanús alak a DT-F96l szerint cserél (a szabály, a sonnet és az opus közül kettő egyezik, tő-őrrel), különben a jelolt oszlopban marad; a 3. kör (DT-F96q) a változatlanul maradt régies alakon a szabály és az opus egyezésével cserél | LLM: az igealak_llm.tsv, az igealak_llm_opus.tsv, az igealak_llm_kor3.tsv, _kor4.tsv és _kor5.tsv (DT-F96d, előfizetés, API nélkül) | scope=a .1 + .2 után változó, kieső, bizonytalan vagy jelölt tokenek (67685) a 599367 tokenből
+# GENERÁLT: eszkozok/karoli_modern/igealak.py (F96.2) — kézzel nem szerkeszthető; a javítás a szabályban vagy a kivételtáblában (KEZI, GYANU_KEZI, VALA_ELOTT_KEZI, VALA_ELOTT_MULT_KEZI, TOKEN_KIVETEL, E1_TARGYAS_KEZI, OK_KEZI, E1_MINDIG_VEG, KOR3_VALA_HOMOGRAF) | forras=konkordancia/Karoli_1908.tsv (sha256:49335bbcc77d) + adat/szoto/karoli_szotari_alak.tsv (sha256:edba33e6d65a) + adat/karoli_modern/helyesiras_tokenek.tsv (sha256:a3a9b6d24f7f) + eszkozok/karoli_modern/igealak.py (sha256:5c4303c09b5f) + eszkozok/karoli_modern/igeragozas.py (sha256:172887f57837) + adat/karoli_modern/igealak_llm.tsv (sha256:878dbe192b42) + adat/karoli_modern/igealak_llm_opus.tsv (sha256:f536a79c073e) + adat/karoli_modern/igealak_llm_kor3.tsv (sha256:801636853498) + adat/karoli_modern/igealak_llm_kor4.tsv (sha256:532f4bf407d9) + adat/karoli_modern/igealak_llm_kor5.tsv (sha256:ce45db48117d) | a .1 (helyesiras.py) kimenetére épül, újraszámolva és összevetve | tokenizálás: tokenizal (a #22 hu_sorszam-a; Strong token-kulcson illeszthető, DT-F96f) | a ritka jegyes és a régies gyanús alak a DT-F96l szerint cserél (a szabály, a sonnet és az opus közül kettő egyezik, tő-őrrel), különben a jelolt oszlopban marad; a 3. kör (DT-F96q) a változatlanul maradt régies alakon a szabály és az opus egyezésével cserél | LLM: az igealak_llm.tsv, az igealak_llm_opus.tsv, az igealak_llm_kor3.tsv, _kor4.tsv és _kor5.tsv (DT-F96d, előfizetés, API nélkül) | scope=a .1 + .2 után változó, kieső, bizonytalan vagy jelölt tokenek (67685) a 599367 tokenből
 igehely	sorszam	alak_1908	alak_helyesiras	alak_modern	kieso	szabaly	bizonytalan	jelolt	kieso_gazda
 1Móz 1:1	2	teremté	teremté	teremtette		igealak:mult.targyas.E3			
 1Móz 1:2	7	vala	vala	volt		vala_letige			
@@ -37227,10 +37227,10 @@ Préd 2:4	1	Elvégezém	Elvégezém	Elvégeztem		mult_E1_targyas
 Préd 2:4	13	követé	követé	követte		igealak:mult.targyas.E3			
 Préd 2:4	28	a			osszevonva	nevmas			29
 Préd 2:4	29	mit	amit	amit		nevmas:mi			
-Préd 2:5	5	építék	építék	építették		igealak_ritka:mult.E1+tobbseg:szabaly+sonnet+opus	ek_E1_T3	szabaly:E1=építettem|T3=építették; llm:építették(tő-őr ok); opus:építették(tő-őr ok)	
-Préd 2:5	8	ülteték	ülteték	ültették		gyanu:elemezetlen:-teték+tobbseg:sonnet+opus		llm:ültették(tő-őr ok); opus:ültették(tő-őr ok)	
+Préd 2:5	5	építék	építék	építettem		igealak_ritka:mult.E1+tobbseg:szabaly+sonnet+opus	ek_E1_T3	szabaly:E1=építettem|T3=építették; llm:építették(tő-őr ok); opus:építették(tő-őr ok)	
+Préd 2:5	8	ülteték	ülteték	ültettem		gyanu:elemezetlen:-teték+tobbseg:sonnet+opus	ek_E1_T3	llm:ültették(tő-őr ok); opus:ültették(tő-őr ok)	
 Préd 2:6	1	Csinálék	Csinálék	Csináltam		igealak_ritka:mult.E1+tobbseg:szabaly+sonnet		szabaly:Csináltam; llm:Csináltam(tő-őr ok)	
-Préd 2:6	9	ülteték	ülteték	ültették		gyanu:elemezetlen:-teték+tobbseg:sonnet+opus		llm:ültették(tő-őr ok); opus:ültették(tő-őr ok)	
+Préd 2:6	9	ülteték	ülteték	ültettem		gyanu:elemezetlen:-teték+tobbseg:sonnet+opus	ek_E1_T3	llm:ültették(tő-őr ok); opus:ültették(tő-őr ok)	
 Préd 2:6	10	beléjök	beléjük	beléjük		jok			
 Préd 2:7	1	Csinálék	Csinálék	Csináltam		igealak_ritka:mult.E1+tobbseg:szabaly+sonnet		szabaly:Csináltam; llm:Csináltam(tő-őr ok)	
 Préd 2:8	1	Szerzék	Szerzék	Szereztem		igealak_ritka:mult.E1+kor5:token_opus+meglevo	token_opus	szabaly:E1=Szerzettem|T3=Szerzették; llm:Szereztek(tő-őr ok); opus:Szereztem(tő-őr ok)	
@@ -37238,7 +37238,7 @@ Préd 2:8	6	nevekedett	növekedett	növekedett		szoto_94
 Préd 2:8	10	nékem	nekem	nekem		neki			
 Préd 2:8	20	a			osszevonva	nevmas			21
 Préd 2:8	21	kik	akik	akik		nevmas:ki			
-Préd 2:9	1	Gyűjték	Gyűjték	Gyűjtötték		igealak_ritka:mult.E1+tobbseg:szabaly+sonnet+opus	ek_E1_T3	szabaly:E1=Gyűjtöttem|T3=Gyűjtötték; llm:Gyűjtötték(tő-őr ok); opus:Gyűjtötték(tő-őr ok)	
+Préd 2:9	1	Gyűjték	Gyűjték	Gyűjtöttem		igealak_ritka:mult.E1+tobbseg:szabaly+sonnet+opus	ek_E1_T3	szabaly:E1=Gyűjtöttem|T3=Gyűjtötték; llm:Gyűjtötték(tő-őr ok); opus:Gyűjtötték(tő-őr ok)	
 Préd 2:9	12	szerzék	szerzék	szereztem		igealak_ritka:mult.E1+kor5:token_opus+meglevo	token_opus	szabaly:E1=szerzettem|T3=szerzették; llm:szereztek(tő-őr ok); opus:szereztem(tő-őr ok)	
 Préd 2:10	2	nagygyá	naggyá	naggyá		karakter			
 Préd 2:10	3	levék	levék	lettem		kor3:szabaly+opus			

@@ -146,7 +146,12 @@ E1_MINDIG_VEG = ('felelék', 'jövék')
 # vala néki …” kötőszó)
 KOR3_VALA_HOMOGRAF = {'mert': ('nem', 'sem', 'se')}
 E1_JEL = {'én', 'engem', 'nekem', 'nékem', 'velem', 'tőlem', 'hozzám', 'bennem', 'belőlem', 'rám', 'reám',
-          'rólam', 'előttem', 'magam', 'magamat', 'enyém', 'nálam', 'értem', 'utánam', 'ellenem', 'mellettem'}
+          'rólam', 'előttem', 'magam', 'magamat', 'enyém', 'nálam', 'értem', 'utánam', 'ellenem', 'mellettem',
+          # ELLENOR_F96 4. kör, 1.: a visszaható E/1 névmás ragos alakjai is E/1 jelzők (Préd 2:5 építék magamnak
+          # házakat → építettem, nem építették)
+          'magamnak', 'magamban', 'magamba', 'magamra', 'magamhoz', 'magammal', 'magamtól', 'magamért', 'magamról',
+          'magamnál', 'magamon', 'magamból'}
+MAGAM_E1 = {w for w in E1_JEL if w.startswith('magam')}
 # A fedettseg.igei_tovek próbáján igeinek látszó, de vala előtt névszói szavak (köz → között, hely → helyett).
 NEM_IGE = {'köz', 'hely', 'nyíl', 'erős', 'fel', 'meg', 'el', 'körül', 'szerint', 'mellett', 'között', 'mell', 'ala',
            'felett', 'alatt', 'előtt', 'helyett', 'ott', 'itt', 'fia', 'fiai', 'neve', 'feje'}
@@ -552,6 +557,17 @@ def nevelo_utan(spans, szoveg, i):
     return i > 0 and spans[i - 1][2].lower() in ('a', 'az', 'egy') and szoveg[spans[i - 1][1]:spans[i][0]] == ' '
 
 
+def mondatszakasz(spans, szoveg, i):
+    """Az i. token mondatszakaszának (a .;:!? jelek között) tokenindexei, az i. nélkül."""
+    eleje = i
+    while eleje > 0 and not re.search(r'[.;:!?]', szoveg[spans[eleje - 1][1]:spans[eleje][0]]):
+        eleje -= 1
+    vege = i
+    while vege + 1 < len(spans) and not re.search(r'[.;:!?]', szoveg[spans[vege][1]:spans[vege + 1][0]]):
+        vege += 1
+    return [j for j in range(eleje, vege + 1) if j != i]
+
+
 def e1_e(spans, szoveg=None, i=None):
     """Egyes szám első személy a tagmondatban (vesszőig, „és”-ig); tagmondat nélkül az egész versben."""
     if szoveg is None:
@@ -729,6 +745,8 @@ class Feldolgozo:
                     if tobb:
                         ertek, forrasok = tobb
                         r[3] = self.valaszt(ertek, spans, szoveg, i, r, t) if isinstance(ertek, dict) else ertek
+                        if not isinstance(ertek, dict):
+                            r[3] = self.ek_e1_fordit(r, r[3], t, spans, szoveg, i)
                         r[6] = cimke(cim, 'tobbseg:' + forrasok)
                     elif l1 and l2 and alanyi_targyas_par(l1, l2):
                         # a sonnet és az opus csak a T/3 alanyi–tárgyas ragozásban tér el (hittek / hitték): a
@@ -781,6 +799,22 @@ class Feldolgozo:
             return jel['E1'] if e1 else jel['T3']
         r[8] = 'targyas_heur'
         return jel['targyas'] if targyas_e(spans, szoveg, i) else jel['alanyi']
+
+    def ek_e1_fordit(self, r, uj, t, spans, szoveg, i):
+        """ELLENOR_F96 4. kör, 1.: a szabály-jelölt nélküli -ék alakon (ülteték: elemezetlen) a sonnet és az opus
+        egyező T/3 tárgyas alakja (ültették) a mondatszakasz E/1 jelzője mellett (Préd 2:5 ülteték magamnak; 2:6
+        Csinálék magamnak …, és ülteték) E/1-re fordul: -ták/-ték → -tam/-tem (ültettem), ek_E1_T3 jelöléssel.
+        Szűkítve (napló 15.1): csak a visszaható E/1 névmás (MAGAM_E1) jelez, a mondatszakaszban; a tágabb E/1 jelző
+        (e1_e, e1_ige) a próbán T/3-at fordított E/1-re (Ez 20:13 ellenem … megveték; Ez 23:38 megfertézteték az én
+        …; Józs 24:12 űzék; Zak 5:9 felemelék; 1Móz 47:9 érték)."""
+        w, u = r[1].lower(), uj.lower()
+        if not (w.endswith('ék') and u.endswith(('ták', 'ték')) and u != r[2].lower()):
+            return uj
+        szak = mondatszakasz(spans, szoveg, i)
+        if not any(spans[j][2].lower() in MAGAM_E1 for j in szak):
+            return uj
+        r[8] = 'ek_E1_T3'
+        return uj[:-2] + ('am' if u.endswith('ták') else 'em')
 
     def kor5_alkalmaz(self, igehely, r):
         """DT-F96u (1. opció): a tokenszintű opus-válasz cserél, ha egy meglévő jelölttel (szabály, sonnet, korábbi
