@@ -6,10 +6,12 @@ tipus: feladat
 fazis: 2
 munka: adat
 modell: opus
-allapot: megallt
+allapot: lezarva
+pr: 472
+lezarva_osszegzes: "a Thayer szakasztábla (17 093 szakasz, 5 426 Strong) és igehely → jelentéspont tábla (63 953 sor), az M3 teljes lánca (betöltő, szólista, adatblokk, 15_tiltott/16_sigla kapu, prompt v5.1, sigla-javaslat); az M3 fordítása külön Sonnet-feladat (beerkezo/Fnn_THAYER_M3_BRIEF.md); G0813 → G0540 a KIRALY-001-ben; ellenőrzés ELTÉRÉS 7 → 2 → TISZTA, két mechanikus javítókör; zárónapló naplok/THAYER_SZAKASZ_zaras.md"
 ag: claude/thayer-szakasz
 ad: a Thayer szakaszonként, adatként (thayer_szakaszok.tsv) és igehelyenként jelentésponthoz kötve (thayer_vers_jelentes.tsv); a motívumok aktuális görög gerincszavainak szakaszonkénti fordításához a teljes lánc (betöltő, szólista, javítótábla, adatblokk, kapuk, prompt v5.1, sigla-javaslat); a fordítás maga (az újrafuttatható M3, DT-F132h) a külön Sonnet-feladat (DT-F132g (1), tervezet: beerkezo/Fnn_THAYER_M3_BRIEF.md) — a #131 görög része erre épül
-kovetkezo: "Te: [elteres_kor 2/2] /elteres 132 — újraellenőrzés függ: naplok/ELLENOR_F132_3.md"
+kovetkezo: "nincs; nyitott: N-F132a, a sigla-jóváhagyás (DT-F132j), az M3-tervezet befogadása"
 olvas: [konkordancia/lexikonok_nyers/Thayer.lexicon, konkordancia/lexikonok_nyers/README.md, konkordancia/Thayer_teljes.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, konkordancia/Karoli_1908.tsv, adat/licencek.tsv, adat/forditasok.tsv, adat/terminologia.tsv, adat/elofordulasok.tsv, adat/SEMA.md, adat/karoli_strong/, eszkozok/bdb_jelolt/, eszkozok/bdb_adatblokk.py, eszkozok/emeles.py, eszkozok/forditas_kapuk.py, "forditas/prompt_v*.md", F128_BDB_SZAKASZ_ELOKESZITES_BRIEF.md, F131_SZOTARI_GERINC_BRIEF.md, F07_THAYER_ELES_BRIEF.md, F27_FP3_BRIEF.md]
 ir: [eszkozok/thayer_jelolt/, adat/elofordulasok.tsv, adat/datasetek.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/thayer_sigla.tsv, adat/thayer_forras_javitas.tsv, adat/SEMA.md, adat/tiltott_fordulatok.tsv, forditas/prompt_v5_1.md, beerkezo/Fnn_THAYER_M3_BRIEF.md, eszkozok/forditas_kapuk.py, eszkozok/teszt_forditas_kapuk.py, adat/bdb_szakasz_hu.tsv, naplok/F132_THAYER_SZAKASZ_naplo.md]
 fugg: [128]
