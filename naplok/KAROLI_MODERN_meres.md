@@ -748,3 +748,17 @@ A brief .3 egy táblát írt le, „token-soronként, a vers-kulccsal és a mode
 **Az újragenerálás igazolása:** a .3 generátora a .1-et és a .2-t újraszámolja, és soronként összeveti a kiadott táblákkal: `helyesiras_tokenek.tsv` 33 318 sor, `igealak_tokenek.tsv` 66 601 sor, egyezik. A K2 és a K3 minden versen átment. A K3b: 418 633 / 418 633 (61 könyv; a kieső, Strongos tokenek: 5 572 összevont „a”, 40 segédigei *vala*). A réteg: 49 449 token változik, 13 657 kiesik (11 128 összevont „a”, 2 529 segédigei *vala*), 21 516 vers változik.
 
 **Lefedettség:** a régies igealak a modern szövegben 1 145 token (felszólító *-jál* 319 marad; *-nd-* jövő 147; régies gyanú 294; ritka jegyes 214; gyakori jegyes 135; a *vala*-család 34 bizonytalan esete; egyéb 2). A számláló a fedettség osztályain fut (`igealak_gyakori`, `igealak_ritka`, `regies_gyanu`, a *vala/lőn/vagyon*). A `valtozatlan` osztályú régies alakot, amilyen az N-1 *mondám*-ja volt, nem látja. A 2. kör ezért külön kereséssel ellenőrizte az ismert osztályokat (*-ám/-ém*, „ige + volt”).
+
+## 9. A független ellenőr harmadik köre — megállás
+
+`naplok/ELLENOR_F96.md` 3. kör: **ELTÉRÉS, 7 tétel**. Ez a javítókörök szabálya szerinti utolsó újraellenőrzés volt, ezért a végrehajtó nem javít tovább: a tételek nyitott tételként (helyőrzővel) kerülnek a briefbe, és a folytatás a felhasználó döntése.
+
+**Saját hibák, amelyeket a 3. kör kimutatott:**
+- A 8. szakasz „a lista újrafuttatva: csak névszó maradt” állítása hamis. Az ellenőrző lista végződésszűrője a ragtalan E/3 jelen időt és a régmúltat (múlt + *vala*) nem fedte.
+- Az N-1 ellenőrzése csak négy szót nézett (*mondám, látám, hallám, adám*). A szabály csak azokat az *-ám/-ém* alakokat fogta meg, amelyeknek az E/3 tárgyas párja a #94 táblában jegyes; a többi (*imádkozám, evém, megérkezém*) maradt.
+- A 8. szakasz lefedettség-száma (1 145 token) nagyságrenddel alábecsül, mert a számláló a fedettségi mérés `valtozatlan` osztályát nem látja. A 8. szakasz ezt kimondta, de tételt nem nyitott.
+- A K1 eljárása (DT-F96h/n) a minta változatlanul maradt régies alakját nem számolta kihagyásnak.
+
+**Nyitott tételek** (a brief döntésnaplójában): **N-F96d** (a `valtozatlan` osztály régies igealakjai), **N-F96e** (a *vala* előtti ragtalan E/3 jelen és a régmúlt), **N-F96f** (az `ek_E1_T3`), **N-F96g** (a K1 mérési eljárása). A 6. (E17: az `igealak_alakok.tsv` +143-as Δ-ja: 143 `mult_E1_targyas` alak, kis- és nagybetűsen külön, kisbetűsítve 129; a 8. szakasz 131-e a felülbírálás előtti jelöltszám) és a 7. tétel (a brief `kovetkezo` mezője) itt és a brief fejlécében javítva.
+
+**A kiadott réteg állapota:** a K2, K3 és K3b teljesül; a Strong változatlan. A cserék a mintán pontosak. A lefedettség hiányos: a fenti osztályok régies alakja a modern szövegben maradt, és egyes mondatokban régi és mai igealak keveredik (Neh 1:4 „bőjtöltem és imádkozám”).
