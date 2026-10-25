@@ -6,7 +6,8 @@ tipus: feladat
 fazis: 2
 munka: adat
 modell: opus
-allapot: nem_indult
+allapot: fut
+ag: claude/thayer-szakasz
 ad: a Thayer szakaszonként, adatként (thayer_szakaszok.tsv) és igehelyenként jelentésponthoz kötve (thayer_vers_jelentes.tsv); a motívumok 13 görög gerincszava szakaszonként magyarul, szakasz-kapun átengedve — a #131 görög része erre épül
 kovetkezo: "Te: a #128 eszközlánca után /kovetkezo; első lépés ⛔ M0 (DT-F132a–d és f: forrás, kulcs, a 14 kész sor sorsa, a fordítás modellje és lánca, a tiltott-fordulat tábla helye; a DT282 eldöntve: a #131 görög része vár)"
 olvas: [konkordancia/lexikonok_nyers/Thayer.lexicon, konkordancia/lexikonok_nyers/README.md, konkordancia/Thayer_teljes.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, konkordancia/Karoli_1908.tsv, adat/licencek.tsv, adat/forditasok.tsv, adat/terminologia.tsv, adat/elofordulasok.tsv, adat/SEMA.md, adat/karoli_strong/, eszkozok/bdb_jelolt/, eszkozok/bdb_adatblokk.py, eszkozok/emeles.py, eszkozok/forditas_kapuk.py, "forditas/prompt_v*.md", F128_BDB_SZAKASZ_ELOKESZITES_BRIEF.md, F131_SZOTARI_GERINC_BRIEF.md, F07_THAYER_ELES_BRIEF.md, F27_FP3_BRIEF.md]
