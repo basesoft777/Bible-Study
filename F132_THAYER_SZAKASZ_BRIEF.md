@@ -6,12 +6,12 @@ tipus: feladat
 fazis: 2
 munka: adat
 modell: opus
-allapot: fut
+allapot: megallt
 ag: claude/thayer-szakasz
 ad: a Thayer szakaszonként, adatként (thayer_szakaszok.tsv) és igehelyenként jelentésponthoz kötve (thayer_vers_jelentes.tsv); a motívumok aktuális görög gerincszavai (a futás pillanatában, újrafuttatható M3, DT-F132h) szakaszonként magyarul, szakasz-kapun átengedve — a #131 görög része erre épül
-kovetkezo: "M1 — bontó (eszkozok/thayer_jelolt/bont.py)"
+kovetkezo: "Te: M3 — külön Sonnet-menet (DT-F132d)"
 olvas: [konkordancia/lexikonok_nyers/Thayer.lexicon, konkordancia/lexikonok_nyers/README.md, konkordancia/Thayer_teljes.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, konkordancia/Karoli_1908.tsv, adat/licencek.tsv, adat/forditasok.tsv, adat/terminologia.tsv, adat/elofordulasok.tsv, adat/SEMA.md, adat/karoli_strong/, eszkozok/bdb_jelolt/, eszkozok/bdb_adatblokk.py, eszkozok/emeles.py, eszkozok/forditas_kapuk.py, "forditas/prompt_v*.md", F128_BDB_SZAKASZ_ELOKESZITES_BRIEF.md, F131_SZOTARI_GERINC_BRIEF.md, F07_THAYER_ELES_BRIEF.md, F27_FP3_BRIEF.md]
-ir: [eszkozok/thayer_jelolt/, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/thayer_sigla.tsv, adat/forditasok.tsv, adat/SEMA.md, adat/tiltott_fordulatok.tsv, eszkozok/forditas_kapuk.py, eszkozok/teszt_forditas_kapuk.py, adat/bdb_szakasz_hu.tsv, naplok/F132_THAYER_SZAKASZ_naplo.md]
+ir: [eszkozok/thayer_jelolt/, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/thayer_sigla.tsv, adat/forditasok.tsv, adat/SEMA.md, adat/tiltott_fordulatok.tsv, eszkozok/forditas_kapuk.py, eszkozok/teszt_forditas_kapuk.py, adat/bdb_szakasz_hu.tsv, naplok/F132_THAYER_SZAKASZ_naplo.md, naplok/F132_THAYER_SZAKASZ_munka.tsv, naplok/F132_THAYER_SZAKASZ_bukottak.tsv]
 fugg: [128]
 nem_fugg: [7, 27, 38, 67, 121, 123]
 ---
@@ -195,4 +195,8 @@ Push és merge csak a felhasználótól.
 | DT-F132d | A fordítás lánca és modellje | a #128 lánca szótárfüggetlenül / külön lánc; Sonnet / Opus | **eldöntve: (1)+(S); az M3 külön Sonnet-menetben** (felhasználó, 2026-10-25; `DONTESEK.md`; az indítás: DT-F132g) |
 | DT282 | Viszony a #131-hez | (a) a #131 görög része vár · (b) a #131 héberrel indul, a görög később | **eldöntve: (a)** (felhasználó, 2026-10-21; `DONTESEK.md`) |
 | DT-F132h | Az M3 hatóköre | (1) újrafuttatható M3 az `elofordulasok.tsv` aktuális görög halmazán · (2) bővített rögzített lista · (3) teljes Thayer | **eldöntve: (1)** (felhasználó, 2026-10-25; `DONTESEK.md`) |
+| DT-F132g | Az M3 Sonnet-menetének indítása | (1) külön M3-brief `modell: sonnet` · (2) lépésszintű modell-mező · (3) a `modell` átváltása · (4) subagent nélküli session | 🟡 javaslat: (1) |
+| DT-F132i | A `Thayer_teljes.tsv` szövegvesztése (15 Strong, köztük G4151) | (1) marad · (2) javítótábla · (3) a 15 Strong szövege a lexikonból | 🟡 javaslat: (2) |
+| DT-F132j | A sigla-tábla kézi besorolása | (1) az M3 előtt, a futás szavaira · (2) utólag · (3) gépi javaslat jóváhagyásra | 🟡 javaslat: (1) |
+| DT-F132k | A prompt v5 Thayer-ága | (1) változatlan · (2) új `prompt_v5_1.md` · (3) a v5 helyben | 🟡 javaslat: (2) |
 | DT-F132f | A tiltott-fordulat tábla (2a/2) helye | (a) a #128 · (b) ez a feladat · (c) a #121 terve szerint | **eldöntve: (b), kapu `15_tiltott`** (felhasználó, 2026-10-25; `DONTESEK.md`) |
