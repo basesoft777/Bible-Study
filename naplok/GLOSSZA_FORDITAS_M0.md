@@ -242,7 +242,11 @@ sorok: 101, kapuhiba: 0
 | K4 | Az ige alakja | (a) főnévi igenév („mondani”) · (b) a szótári 3. egyes szám múlt („mondta”) | **(a)** (a brief is ezt írja) |
 | K5 | Az istennevek | H3068 „az ÚR”, H0430 „Isten”, H0136 „Úr”, H0410K „isten”, H5945B „Felséges” a promptban rögzítve | jóváhagyás |
 | K6 | Az ismeretlen magyar névalak | magyaros átírás + `?` a `megjegyzes`-ben; a 300-as listán átnézendő | jóváhagyás |
-| K7 | Az M1 végrehajtása | (a) a session maga fordít kötegenként (~117 köteg, több session, „Folytatási pont”-tal), a script csak köteget készít, rögzít és ellenőriz · (b) külső API-hívás (nincs ilyen szkript a repóban, külön fejlesztés) | **(a)** |
+| K7 | Az M1 végrehajtása | (a) a session maga fordít kötegenként (~117 köteg, több session, „Folytatási pont”-tal), a script csak köteget készít, rögzít és ellenőriz · (b) külső API-hívás (a repóban van minta: `eszkozok/karoli_strong/api_koteg.py` [Anthropic Message Batches, F77] és `eszkozok/fordit.py` [OpenRouter, F03]; API-kulcsot és költséget kíván) | **(a)** |
 | K8 | Licenc-bejegyzés | az `sqlite_epit.py` `ADAT_LICENC`-ébe `glosszak_heber_hu: ['TBESH']` (külön, a felhasználó elé kerülő módosítás) · vagy marad az alapértelmezett `projekt_adat` | az `ADAT_LICENC`-bejegyzés külön kisfeladatként |
 | K9 | Az „nincs angol szó” kapu | (a) a jelenlegi forrás-alapú közelítés + kivétel-lista · (b) angol szólista behozatala (új dataset, licenc-ellenőrzéssel, playbook 2. pont) | **(a)** |
 | K10 | Hossz-korlát | 50 karakter / 6 szó (a javaslat) · szigorúbb (40 / 5) | a javaslat |
+
+## 7. DT-F140b alkalmazása (2026-10-25, a felhasználó döntése, chat)
+
+A K1–K10 a `DONTESEK.md` DT-F140b sora szerint eldőlt (a K2, K5, K8 kifejezett megerősítéssel). A napló fenti szövege a döntés előtti állapotot rögzíti; az alkalmazás: `K1` a (B) változat (a próba is ez szerint készült); `K2` a `fo` a TAHOT-többséggel egyező glosszájú sor (`fo_jelolt()`, `tahot_tobbseg()`; a K5-lista a 11 istenneves Strongnál; a 2.2 heurisztika a nem illeszthetőnél; mért: a 1 392 többsoros alapból 1 304 illeszkedik a TAHOT-többséghez, 83 nem, 5 a K5-listán); `K5` a prompt 5. szabálya és az `ISTENNEV_FIX` (a szkript írja be, a modell nem fordítja); `K3` a kettőspont-kapu; a K7 szerint a napló fenti „nincs ilyen szkript” állítása téves volt (l. a K7 sor javítását); a K8-at a #140 nem hajtja végre: javaslat a zárójelentésben.

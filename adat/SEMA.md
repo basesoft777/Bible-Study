@@ -1415,6 +1415,31 @@ másik a `cel_id`/`cel_igehely` egyik eleme.
 | `dontes_ref` | szöveg | ✔ | `jeloltek.tsv;<id>;<igehely>;motivumkozi;<cel_id>` — a döntést hordozó jelölt-sor kulcsa. |
 | `proveniencia` | `PROVENIENCIA` | ✔ | |
 
+### 2.34 `glosszak_heber_hu.tsv` — a TBESH-glosszák magyar fordítása (F140, FELADATOK #140, DT-F140a, DT-F140b)
+
+Kulcs: `entry_id`. Minden héber Strong (8 718; a H9015–H9019 előtag-elemek nincsenek benne) minden
+TBESH-sora egy sor (11 677 sor, DT-F140b K1 (B)). A szó-lap kiemelt jelentés-sorának forrása (a
+forrás-sorrendet és a megjelenítést a #139 adja). A `forditasok.tsv`-től (2.14) külön tábla, mert azt a
+#38 folyamatosan írja. Írja: `eszkozok/glossza_forditas.py` (`--fix`, `--rogzit`); a session fordít
+kötegenként (K7 (a)), a szkript nem hív modellt. Ellenőrzi: `glossza_forditas.py --ellenoriz`. A sorok
+entry_id szerint rendezve állnak; a szkript írás előtt összeveti a meglévő sorokat (változás esetén megáll).
+
+| Mező | Típus | Kötelező | Leírás |
+|---|---|---|---|
+| `strong` | `STRONG` | ✔ | A TBESH `eStrong#` oszlopa (az első öt karakter). TBESH-sajátosság: a H7178 alatt áll a `H7156H` entry_id (Kartan). |
+| `entry_id` | szabad szöveg | ✔ | A TBESH `dStrong` oszlopának első szava (`H0430G`, `H2763A`); a tábla kulcsa, globálisan egyedi. |
+| `kapcsolat` | szabad szöveg | | A TBESH kapcsolata (`a Name of`, `a Meaning of`, `in Aramaic of`, …); üres, ha nincs. |
+| `fo` | zárt | | `igen`, ha a sor a Strong kiemelt jelöltje; Strongonként pontosan egy. Szabály (K2): az a sor, amelynek glosszája (a kettőspont előtti rész, kisbetűsítve, `_` helyett szóköz) egyezik a `TAHOT_kivonat.tsv` „Rövid jelentés” oszlopának Strongonkénti többségi értékével; a 11 istenneves Strongnál a K5-lista (`K5_FO`) dönt; ahol a TAHOT nem illeszthető, a 2.2 heurisztika (`fo_heurisztika`). A TAHOT-oszlop csak a kiválasztásban számít, szöveg nem kerül át belőle. |
+| `glossza_en` | szabad szöveg | ✔ | A TBESH 7. oszlopa (`Gloss`) szó szerint. |
+| `forras_hash` | szabad szöveg | ✔ | A `glossza_en` SHA-1 hexdigestje, UTF-8 kódolásból; eltérés az újraszámolttól sértés (`--ellenoriz`). |
+| `glossza_hu` | szabad szöveg | ✔ | A magyar jelentés: legfeljebb 50 karakter és 6 szó; szófaj nélkül; ige főnévi igenévvel (K4), főnév alanyesetben; a „szó: árnyalat” kettőspontja megmarad (K3, kapu); nincs héber/görög betű, idézőjel, kérdőjel és angol szó (forrás-alapú közelítés + kivétel-lista, K9). Istennevek: a K5-lista (`ISTENNEV_FIX`), az „az ÚR” projekt-konvenció, nem Károli-alak. |
+| `allapot` | zárt | ✔ | `sonnet` (a modell fordította, kapukon átment, emberi jóváhagyás nélkül) \| `kezi` (a felhasználó átírta). |
+| `modell` | szabad szöveg | ✔ | A ténylegesen futó modell neve (a session saját környezetéből; briefből másolni tilos). |
+| `datum` | `DATUM` | ✔ | A fordítás napja. |
+| `megjegyzes` | zárt | | Üres vagy `?`: a fordító bizonytalan (magyaros átírás, K6); az M2 zárójelentése külön felsorolja. |
+
+**Gyorsítótár (K7):** azonos (`glossza_en`, szófaj) párra egyszer fordul a modell; az eredmény a pár minden sorába kerül. **Elakadók:** a kapun kétszer elbukó sor nem kerül a táblába, hanem a `naplok/GLOSSZA_FORDITAS_elakad.tsv`-be. **Licenc:** a TBESH CC BY 4.0, a fordítás származtatott mű, a `fo` kiválasztása a TAHOT-ot is használja; az `sqlite_epit.py` `ADAT_LICENC`-bejegyzése (`glosszak_heber_hu: ['TBESH', 'TAHOT', 'projekt_adat']`) külön kisfeladat (DT-F140b K8), a tábla main-re és `pardes.db`-be kerülése előtt kell.
+
 ---
 
 ## 3. Integritási szabályok

@@ -5,13 +5,13 @@ kod: GLOSSZA_FORDITAS
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: megallt
+allapot: fut
 ag: ccr-636782ad-lysuoh
 ad: minden héber Strong-számhoz (8 718) rövid magyar jelentés egy új adattáblában (adat/glosszak_heber_hu.tsv, allapot=sonnet, modell = a ténylegesen futó modell; a pardes.db-be az sqlite_epit.py általános adat/*.tsv-betöltője hozza), a TBESH glosszájából fordítva, a lemma és a definíció eleje mint kontextus mellett; kapukkal ellenőrizve; a 300 leggyakoribb szóra kézi átnézési lista
-kovetkezo: "Te: az M0 ⛔ jóváhagyása — naplok/GLOSSZA_FORDITAS_M0.md (szabályok, kulcsséma, prompt, 30 szavas próba) és a DONTESEK.md DT-F140b K1–K10 kérdései; jóváhagyás után /kovetkezo az M1-re"
+kovetkezo: "Folytatás: M1 — python eszkozok/glossza_forditas.py --koteg <fajl> (a következő 100 pár), fordítás, --rogzit <valasz> --modell <tényleges modellnév>; kész sorok száma: l. --ellenoriz"
 munka: adat
 olvas: [konkordancia/TBESH.txt, konkordancia/TBESH_TBESG_README.md, konkordancia/Strong_szotar.tsv, konkordancia/TAHOT_kivonat.tsv, adat/terminologia.tsv, eszkozok/forditas_kapuk.py, eszkozok/emeles.py]
-ir: [adat/glosszak_heber_hu.tsv, adat/SEMA.md, eszkozok/glossza_forditas.py, eszkozok/teszt_glossza_forditas.py]
+ir: [adat/glosszak_heber_hu.tsv, adat/SEMA.md, eszkozok/glossza_forditas.py, eszkozok/teszt_glossza_forditas.py, naplok/GLOSSZA_FORDITAS_elakad.tsv, naplok/GLOSSZA_FORDITAS_atnezes.tsv, naplok/GLOSSZA_FORDITAS_zaras.md]
 fugg: []
 nem_fugg: [38, 138]
 ---
@@ -41,6 +41,7 @@ Előmérés a befogadáskor (`scope=konkordancia/TBESH.txt H-sorai, konkordancia
 - a fordító szkript (`eszkozok/glossza_forditas.py`): kötegelt, újraindítható, a `forras_hash` a TBESH-glossza SHA-1-e; a prompt bemenete szavanként a héber lemma, az átírás, a szófaj, a glossza és a definíció első ~200 karaktere, a köteg elején a projekt terminológiája (`adat/terminologia.tsv`); a kimenet egy rövid magyar jelentés (legfeljebb ~5 szó, több értelem pontosvesszővel), szófaj nélkül, főnévnél alanyesetben, igénél főnévi igenévvel;
 - tulajdonnév: a magyar (Károli-hagyományú) névalak, pl. H7346 „Roboám”; istennév: a Károli-szóhasználat szerint (H3068 „az ÚR”, H0430 „Isten”);
 - kapuk (gépi, minden soron; saját kapukészlet, az `eszkozok/forditas_kapuk.py` csak minta, nem közös kód: a #38 futás közben módosíthatja, ezért `nem_fugg: [38]`): nem üres; nincs benne héber vagy görög betű; nincs angol szó (szótár-alapú ellenőrzés, kivétel-listával); hossz-korlát; a `forras_hash` egyezik;
+- **DT-F140b szerint igazítva (2026-10-25, a felhasználó döntése):** mind a 11 677 TBESH-sor fordul, `kapcsolat` és `fo` oszloppal (K1 (B)); a `fo` a `TAHOT_kivonat.tsv` „Rövid jelentés” oszlopának Strongonkénti többségi értékével egyező glosszájú sor (K2), az istenneves Strongoknál a K5-lista; a TAHOT-oszlop csak a kiválasztásban számít, szöveg nem kerül át; az M1-et a session végzi kötegenként (K7 (a)), a `modell` mezőbe a ténylegesen futó modell neve kerül; az `ADAT_LICENC`-bejegyzés (K8) külön kisfeladat, a tábla main-re kerülése előtt.
 - a 300 leggyakoribb héber Strong (a `TAHOT_kivonat.tsv` előfordulásszáma szerint) kézi átnézési listája a `naplok/GLOSSZA_FORDITAS_atnezes.tsv`-be; a hibás sort a felhasználó `kezi` sorral írja felül.
 
 **Nincs benne:**
@@ -67,3 +68,4 @@ Előmérés a befogadáskor (`scope=konkordancia/TBESH.txt H-sorai, konkordancia
 ## 5. Döntésnapló
 
 - **DT-F140a** (2026-10-25, a felhasználó, chat; a tétel a `DONTESEK.md`-ben): a kiemelt jelentés forrása és sorrendje; a modell; a #138 szűkítése; a #139 függése; a saját tábla (e).
+- **DT-F140b** (2026-10-25, a felhasználó, chat; a tétel a `DONTESEK.md`-ben): K1 (B), K2 (a) módosított `fo`-szabállyal, K3 (a), K4 (a), K5 kibővített istennév-lista, K6, K7 (a), K8 külön kisfeladat, K9 (a), K10 50/6. Az M1 ezek szerint fut.
