@@ -14,6 +14,7 @@ olvas: [konkordancia/TBESH.txt, konkordancia/TBESH_TBESG_README.md, konkordancia
 ir: [adat/glosszak_heber_hu.tsv, adat/SEMA.md, eszkozok/glossza_forditas.py, eszkozok/teszt_glossza_forditas.py, naplok/GLOSSZA_FORDITAS_elakad.tsv, naplok/GLOSSZA_FORDITAS_atnezes.tsv, naplok/GLOSSZA_FORDITAS_zaras.md, naplok/GLOSSZA_FORDITAS_M0.md, naplok/GLOSSZA_FORDITAS_M1_naplo.md, naplok/GLOSSZA_FORDITAS_homonima_szuroproba.tsv, naplok/GLOSSZA_FORDITAS_javit_naplo.tsv, naplok/ELLENOR_F140*.md, DONTESEK.md, eszkozok/glossza_minta.py, naplok/GLOSSZA_FORDITAS_minta_DTF140c.tsv, naplok/GLOSSZA_FORDITAS_minta2_ige_DTF140c.tsv, naplok/GLOSSZA_FORDITAS_testver_DTF140d.tsv, naplok/GLOSSZA_FORDITAS_ige_kozos_DTF140c.tsv, eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py]
 fugg: []
 nem_fugg: [38, 138]
+pr: 481
 ---
 
 # F140_GLOSSZA_FORDITAS_BRIEF.md — A héber szavak rövid magyar jelentése
