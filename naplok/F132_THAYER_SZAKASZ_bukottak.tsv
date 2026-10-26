@@ -1,0 +1,2 @@
+strong	kapu	ok	probalkozas	modell	datum	proveniencia
+G1311	5_terminologia + 16_sigla	ellentmondó kapuk: a 5. kapu a `from Homer down` fordítását `Homérosztól kezdve` alakban köti, a 16. kapu a `Homer` sigla miatt a ragozatlan, szó végi `Homérosz` alakot is megköveteli (`(?![\w])`), a forrásban egyetlen `Homer` áll; mindkettő egyszerre nem teljesíthető (`Homérosz-tól`: 5. kapu SÉRTÉS) — a lánc hibája, tétel: DT-F142c	2 (eredeti + önújrapróba)	claude-sonnet-5-5	2026.10.26	scope=G1311 | forras=python eszkozok/thayer_jelolt/forditas.py ellenoriz G1311 | ts=2026-10-26
