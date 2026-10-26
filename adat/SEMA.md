@@ -810,6 +810,13 @@ jóváhagyott (`--allapot kezi`) szakaszsorokhoz `--regi-elavult --kezi-felulir`
 sor forrásszövegét a szakasztáblából veszi (a `forras_hash` fenti alapja). A #60 pilot (`olvaso_pilot/adat.py`) nincs
 átállítva (csak újragenerálásnál számít; DT291 (a)). A 9 táblán kívüli Strong (H0747, H1753, H3367, H3848, H4123, H4725, H6433, H7560, H8065) és a Thayer a régi
 `teljes` úton (prompt v4) fordul (DT288 (2)); a `reszleges` / `sikertelen` / `csonk` illesztésű Strong is szakaszonként.
+
+**Thayer `sz<n>` sorok (F132, F145; DT-F142d).** A Thayer a #132 óta szakaszonként is fordul (`eszkozok/thayer_jelolt/forditas.py`, prompt
+`forditas/prompt_v5_1.md`); az `sz<n>` sor `forras_hash`-e a `thayer_bemenet.szakaszok()[i].hash`: a 2.34 sor `jel` + `szoveg`-e egy szóközzel, a 2.38 `javitva`
+beszúrásaival. A 13. szabály (`ellenoriz.py`) a `szotar = Thayer`, `sz<n>` sor forrásszövegét ebből veszi (az `entry_id` a Strong eredeti alakja, `G86`), és a
+nem `elavult` `sz<n>` sorok lefedettségét a BDB-vel azonos módon ellenőrzi. A CI **E19** (`szabalyok.py`) a `lexikon_hivatkozasok.tsv` `jelentes_szam = teljes`
+sorát fedettnek veszi, ha a Strongnak (szótár + strong + entry_id) a szótár összes szakaszát lefedő, nem `elavult` (`opus` / `sonnet` / `kezi`) `sz<n>` sorai vannak
+(a szakaszkészlet a 13. szabályéval azonos forrásból, a 2.30 / 2.34 táblából); részleges lefedettség nem fed.
 A hívás egysége (DT287 (2)): 20 000 karakterig a Strong egészben, fölötte ≤ ~10 000 karakteres szakaszcsoportok
 tokenhatáron. A kapuk: a 14. szakasz-kapu (`forditas_kapuk.ellenoriz_szakasz`), a 9. tagolás szakaszonként, a többi a token
 nélküli szövegen (`kapuk_futtat_szakaszos`).
@@ -1500,7 +1507,14 @@ a 98 nyelvtani „melléknév” sor nem találat. A tartalmat a #121 bővíti.
 `allapot`, `besorolas_proveniencia`), és az eszköz ezeket soha nem írja át (írás előtt összeveti, eltérésnél megáll); sort nem töröl (az eltűnt jelölt
 `elofordulas = 0`). A `--ellenoriz` bájtra összevet. A besorolt sorokat a `thayer_jelolt/thayer_kapuk.py` **16. kapuja**
 (`16_sigla`, gátoló) ellenőrzi a Thayer-fordításon; a besorolatlan sor nem gátol (JELZES). A tábla a #129 (BDB-kiadás)
-rövidítésjegyzékének is mintája. Az első két sor `#` megjegyzés (a második: a bemenetek és a kód hash-e), a harmadik a fejléc.
+rövidítésjegyzékének is mintája.
+
+**A 16. kapu szabályai (F145, DT-F142b/c; pontos leírás: `thayer_kapuk.py` docstringje).** A kapu a besorolt sor minden forrásbeli
+előfordulására (a forrás-oldali keresés: önálló szó; az egybetűs sigla láncszabálya, F132.20, változatlan) megköveteli a cél-alakot
+(`magyar_alak`; `változatlan` esetén a `forrasalak`) a fordításban, három tűréssel. **(a) Változatlan átvétel (egyedi kivétel, DT-F145a (b)):** nincs általános átvétel-kivétel semmilyen sigla-típusra (`rövidítés`, `antik szerző`, `modern szerző`, …): a fordítatlan `cf. Winers Grammar`, `Xenophon, Cyril 3, 3`, G0282 `by Philo in de temul.` és G4151 `in Philo's use of` SERTES. Az egyetlen kivétel a `thayer_kapuk.py` `ATVETEL_KIVETEL` állandójának soronkénti eleme (Strong, sigla, a változatlanul átvett ablak = a sigla szava + 3 szó): G0012, `Philo`, `Philo's Lehre von der` (J. G. Müller, *Philo's Lehre von der Weltschöpfung*, műcím; a prompt 5. szabálya: a műcím változatlan). Az az előfordulás mentesül, amelynek ablaka szerepel a kivételek között és szó szerint, szóhatáron kezdődően megvan a fordításban; a kapu hívása a Strongot nem adja át, ezért a (sigla, ablak) egyezés azonosít. Ha minden előfordulás mentesül, a sor nem ellenőrzött, és a kapu részletében „N sigla változatlan átvételben, nem ellenőrzött” áll; a többi előfordulás magyar alakját a kapu megköveteli. Új kivétel csak döntéssel vehető fel. **(b) Ragozás-tűrés:** a
+legalább 4 betűs, nem `könyvrövidítés` típusú cél-alak szó elején kezdődik, de toldalékot elfogad (`Homérosztól`, `Platónnál`); a rövidebb
+cél-alaknál (`Tr`, `WH`) és a `könyvrövidítés`nél a szóvég-határ marad. **(c) Számjegy-előtag:** a `könyvrövidítés` típusú sor cél-alakja számjegy
+mögött is találat (`4Makk`, `2Makk`, a 11. kapu `normalizal.APOKRIF_ALIAS` alakja). Az első két sor `#` megjegyzés (a második: a bemenetek és a kód hash-e), a harmadik a fejléc.
 
 | Oszlop | Jelentés |
 |---|---|
@@ -1578,10 +1592,10 @@ A Károli 1908 modernizált rétege: helyesírás és igealak, a szókincs, a sz
 
 **Mérő- és melléktáblák (generált, nem a kiadott réteg):** `fedettseg_alakok.tsv` (F96.0, alakosztályok), `token_minta.tsv` + `token_minta_hivasok.jsonl` (F96.0/3, API-mérés), `helyesiras_alakok.tsv`, `helyesiras_tokenek.tsv`, `helyesiras_hunspell.tsv` (DT301: csak mérce), `helyesiras_ami_proba.tsv`, `helyesiras_ami_ellenorzes.tsv`, `helyesiras_minta.tsv` (.1), `igealak_alakok.tsv`, `igealak_tokenek.tsv`, `igealak_llm.tsv` + `igealak_llm_hivasok.jsonl` (sonnet), `igealak_llm_opus.tsv` + `igealak_llm_opus_hivasok.jsonl` (opus), `igealak_minta.tsv` (.2), `regies_szken.tsv` (`eszkozok/karoli_modern/regies_szken.py`, a 3. ellenőri kör előtti réteg pillanatképe: a modern szövegben változatlanul maradt régies-igealak-jelöltek; `id`, `tipus` = `alak` \| `vala`, `kerdes`, `gyakorisag`, `szabaly_jelolt` — szövegkörnyezetfüggőnél `E1=…\|T3=…` vagy `alanyi=…\|targyas=…` —, `elso_igehely`, `versreszlet`), `igealak_llm_kor3.tsv` + `igealak_llm_kor3_hivasok.jsonl` (opus, DT316: `id`, `tipus`, `kerdes`, `szabaly_jelolt`, `opus_alak`; a *vala*-páron `-` = létige), `regies_szken_kor4.tsv` + `igealak_llm_kor4.tsv` + `igealak_llm_kor4_hivasok.jsonl` (a 4. kör, DT317: mint a 3. köré, `S%04d`; a `tipus` `jelolt` is: a DT311 opus-szavazata), `regies_szken_kor5.tsv` + `igealak_llm_kor5.tsv` + `igealak_llm_kor5_hivasok.jsonl` (az 5. kör, DT320: tokenenként, `T%04d`; `igehely`, `sorszam`, `alak`, `meglevo_jeloltek`, a kérdéstáblában `vers` — a modern vers, a token [zárójelben] —, a választáblában `opus_alak`), `igealak_minta2.tsv` (N-F96g: a lefedettséget is mérő minta, `H%03d`; `ellenorzes` = `jó` \| `hibás` \| `kihagyás`, a `megjegyzes` `csere=<n> hiba=<n> kihagyas=<n>`-nel kezdődik). Az LLM-táblák modell-kimenetek (`modell_ellenorizetlen`); a minták `ellenorzes`/`megjegyzes` oszlopa a felhasználói (vagy a felhasználó által elfogadott modell-) ellenőrzés, újragenerálásnál megmarad. **Proveniencia (napló 15.4):** az `igealak.py` és a `regies_szken.py` minden táblájának `# GENERÁLT:` fejléce `forras=… | scope=… | ts=…` hármast hordoz; a szken-tábla fejléce a saját körét és döntését nevezi meg (3. kör: N-F96d/e, DT316; 4. kör: DT317; 5. kör: DT320). A szken-táblák pillanatképek: az újrageneráláshoz a bemenetet a pillanatkép commitjából kell visszaállítani (3. kör `8b858b3`, 4. kör `9fd137f`, 5. kör `0dda8b3`). A meglévő válaszfájlokból újraírt LLM-tábla fejlécében a `futas_ts` az LLM-futás eredeti ideje, a `ts` az újraírásé.
 
-### 2.39 `glosszak_heber_hu.tsv` — a TBESH-glosszák magyar fordítása (F140, FELADATOK #140, DT-F140a, DT-F140b)
+### 2.39 `glosszak_heber_hu.tsv` — a TBESH-glosszák magyar fordítása (F140, FELADATOK #140, DT-F140a, DT346)
 
 Kulcs: `entry_id`. Minden héber Strong (8 718; a H9015–H9019 előtag-elemek nincsenek benne) minden
-TBESH-sora egy sor (11 677 sor, DT-F140b K1 (B)). A szó-lap kiemelt jelentés-sorának forrása (a
+TBESH-sora egy sor (11 677 sor, DT346 K1 (B)). A szó-lap kiemelt jelentés-sorának forrása (a
 forrás-sorrendet és a megjelenítést a #139 adja). A `forditasok.tsv`-től (2.14) külön tábla, mert azt a
 #38 folyamatosan írja. Írja: `eszkozok/glossza_forditas.py` (`--fix`, `--rogzit`); a session fordít
 kötegenként (K7 (a)), a szkript nem hív modellt. Ellenőrzi: `glossza_forditas.py --ellenoriz`. A sorok
@@ -1596,12 +1610,12 @@ entry_id szerint rendezve állnak; a szkript írás előtt összeveti a meglév�
 | `glossza_en` | szabad szöveg | ✔ | A TBESH 7. oszlopa (`Gloss`) szó szerint. |
 | `forras_hash` | szabad szöveg | ✔ | A `glossza_en` SHA-1 hexdigestje, UTF-8 kódolásból; eltérés az újraszámolttól sértés (`--ellenoriz`). |
 | `glossza_hu` | szabad szöveg | ✔ | A magyar jelentés: legfeljebb 50 karakter és 6 szó; szófaj nélkül; ige főnévi igenévvel (K4), főnév alanyesetben; a „szó: árnyalat” kettőspontja megmarad (K3, kapu); nincs héber/görög betű, idézőjel, kérdőjel és angol szó (forrás-alapú közelítés + kivétel-lista, K9). Istennevek: a K5-lista (`ISTENNEV_FIX`), az „az ÚR” projekt-konvenció, nem Károli-alak. **Kivétel (ELLENOR_F140_4 3. tétel):** ha a TBESH szerint az ige csak melléknévi/igenévi alakban fordul elő (pl. H7465 „összetört, romlott”, Péld 25:19; H7806 „sodrott, sodorva készült”, 2Móz 26:1), vagy a szó Hithpael/Hophal/Pual alakú, a magyar jelentés ezt az alakot követheti, ha a Károli-hely igazolja. |
-| `allapot` | zárt | ✔ | `sonnet` (a modell fordította, kapukon átment, emberi jóváhagyás nélkül) \| `kezi` (a sort a naplózott `--javit` mód írta át: a felhasználó átnézési javítása, vagy a felhasználó által jóváhagyott átnéző-javaslat [DT-F140c]; a `modell` mező ilyenkor is a fordítót rögzíti; a szöveg nem mindig változik, l. `?`). |
+| `allapot` | zárt | ✔ | `sonnet` (a modell fordította, kapukon átment, emberi jóváhagyás nélkül) \| `kezi` (a sort a naplózott `--javit` mód írta át: a felhasználó átnézési javítása, vagy a felhasználó által jóváhagyott átnéző-javaslat [DT347]; a `modell` mező ilyenkor is a fordítót rögzíti; a szöveg nem mindig változik, l. `?`). |
 | `modell` | szabad szöveg | ✔ | A ténylegesen futó modell neve (a session saját környezetéből; briefből másolni tilos). |
 | `datum` | `DATUM` | ✔ | A fordítás napja. |
-| `megjegyzes` | zárt | | Üres vagy `?`: a fordító (vagy az átnéző) bizonytalan: magyaros átírás (K6), vagy a TBESH-glossza és a definíció eltér (pl. H6808); a `--javit` `=?` értéke a szöveget nem változtatja, a `?`-t beállítja (`kezi`; napló: `? beallitva`, korábbi `?` visszaállításakor `? visszaallitva`). A több értelmet a vessző (szinonimák) vagy a pontosvessző (különböző értelmek) választja el, a két alak együtt él (DT-F140d). Az M2 zárójelentése külön felsorolja. |
+| `megjegyzes` | zárt | | Üres vagy `?`: a fordító (vagy az átnéző) bizonytalan: magyaros átírás (K6), vagy a TBESH-glossza és a definíció eltér (pl. H6808); a `--javit` `=?` értéke a szöveget nem változtatja, a `?`-t beállítja (`kezi`; napló: `? beallitva`, korábbi `?` visszaállításakor `? visszaallitva`). A több értelmet a vessző (szinonimák) vagy a pontosvessző (különböző értelmek) választja el, a két alak együtt él (DT348). Az M2 zárójelentése külön felsorolja. |
 
-**Gyorsítótár (K7):** azonos (`glossza_en`, szófaj) párra egyszer fordul a modell; az eredmény a pár minden sorába kerül. **Elakadók:** a kapun kétszer elbukó sor nem kerül a táblába, hanem a `naplok/GLOSSZA_FORDITAS_elakad.tsv`-be. **Licenc:** a TBESH CC BY 4.0, a fordítás származtatott mű, a `fo` kiválasztása a TAHOT-ot is használja; az `sqlite_epit.py` `ADAT_LICENC`-bejegyzése (`glosszak_heber_hu: ['TBESH', 'TAHOT', 'projekt_adat']`) bekerült (DT-F140b K8, F140.138), így a tábla a TBESH (CC BY 4.0) forrásjelölésével töltődik a `pardes.db`-be.
+**Gyorsítótár (K7):** azonos (`glossza_en`, szófaj) párra egyszer fordul a modell; az eredmény a pár minden sorába kerül. **Elakadók:** a kapun kétszer elbukó sor nem kerül a táblába, hanem a `naplok/GLOSSZA_FORDITAS_elakad.tsv`-be. **Licenc:** a TBESH CC BY 4.0, a fordítás származtatott mű, a `fo` kiválasztása a TAHOT-ot is használja; az `sqlite_epit.py` `ADAT_LICENC`-bejegyzése (`glosszak_heber_hu: ['TBESH', 'TAHOT', 'projekt_adat']`) bekerült (DT346 K8, F140.138), így a tábla a TBESH (CC BY 4.0) forrásjelölésével töltődik a `pardes.db`-be.
 
 
 ---

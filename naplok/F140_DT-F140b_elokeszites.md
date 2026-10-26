@@ -1,4 +1,4 @@
-# F140 — DT-F140b Opus-előkészítés (a K1–K10 átvizsgálása)
+# F140 — DT346 Opus-előkészítés (a K1–K10 átvizsgálása)
 
 *#140 GLOSSZA_FORDITAS · M0 ⛔ · 2026-10-25 · a session modellje: `claude-opus-5-5` (orkesztrátori előkészítés, a felhasználó kérésére) · a tétel állapota 🟡 marad; ez a napló **nem dönt**, nem alkalmazza a döntést, az M1-et nem indítja.*
 
