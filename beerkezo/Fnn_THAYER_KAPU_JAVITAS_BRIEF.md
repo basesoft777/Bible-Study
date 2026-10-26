@@ -1,16 +1,16 @@
 ---
 feladat:
-cim: A Thayer-lánc kapujavítása — a 16. kapu műcím-kivétele és ragozás-tűrése, az ellenoriz.py 13. szabályának Thayer-ága, a két állapotfüggő teszt (a #142 újraindításának előfeltétele)
+cim: A Thayer-lánc kapujavítása — a 16. kapu műcím-kivétele és ragozás-tűrése, az ellenoriz.py 13. szabályának és a CI E19-nek Thayer-szakasz-ága, a két állapotfüggő teszt (a #142 újraindításának előfeltétele)
 kod: THAYER_KAPU_JAVITAS
 tipus: feladat
 fazis: 2
 modell: sonnet
 munka: adat
 allapot: nem_indult
-ad: a 16_sigla kapu a változatlanul átvett műcímben álló siglát nem követeli meg, a magyar alakot ragozva és számjegy mögött (`Homérosztól`, `4Makk`) is elfogadja; az ellenoriz.py 13. szabálya a Thayer szakaszsorok forrásszövegét is ismeri (SÉRTÉS 0); a teszt_lanc.py két állapotfüggő tesztje zöld; a #142 bukott és várakozó 8 Strongja újrafuttatható
+ad: a 16_sigla kapu a változatlanul átvett műcímben álló siglát nem követeli meg, a magyar alakot ragozva és számjegy mögött (`Homérosztól`, `4Makk`) is elfogadja; az ellenoriz.py 13. szabálya a Thayer szakaszsorok forrásszövegét is ismeri (SÉRTÉS 0); a CI E19 a `teljes` hivatkozást a Strong teljes `sz<n>`-lefedettségével is fedettnek veszi (a #142 PR #482-je zöld); a teszt_lanc.py két állapotfüggő tesztje zöld; a #142 bukott és várakozó 8 Strongja újrafuttatható
 kovetkezo: "1. lépés: M0 mérés (a 8 érintett Strong kapueredménye a javítás előtt)"
-olvas: [eszkozok/thayer_jelolt/, eszkozok/forditas_kapuk.py, eszkozok/normalizal.py, eszkozok/ellenoriz.py, eszkozok/teszt_ellenoriz_13.py, adat/thayer_sigla.tsv, adat/thayer_szakaszok.tsv, adat/thayer_forras_javitas.tsv, adat/forditasok.tsv, adat/terminologia.tsv, naplok/F132_THAYER_SZAKASZ_bukottak.tsv, F142_THAYER_M3_BRIEF.md, F132_THAYER_SZAKASZ_BRIEF.md]
-ir: [eszkozok/thayer_jelolt/thayer_kapuk.py, eszkozok/thayer_jelolt/teszt_lanc.py, eszkozok/ellenoriz.py, eszkozok/teszt_ellenoriz_13.py, adat/SEMA.md]
+olvas: [eszkozok/thayer_jelolt/, eszkozok/forditas_kapuk.py, eszkozok/normalizal.py, eszkozok/ellenoriz.py, eszkozok/teszt_ellenoriz_13.py, eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/tesztek/test_szabalyok.py, adat/lexikon_hivatkozasok.tsv, adat/thayer_sigla.tsv, adat/thayer_szakaszok.tsv, adat/thayer_forras_javitas.tsv, adat/forditasok.tsv, adat/terminologia.tsv, naplok/F132_THAYER_SZAKASZ_bukottak.tsv, F142_THAYER_M3_BRIEF.md, F132_THAYER_SZAKASZ_BRIEF.md]
+ir: [eszkozok/thayer_jelolt/thayer_kapuk.py, eszkozok/thayer_jelolt/teszt_lanc.py, eszkozok/ellenoriz.py, eszkozok/teszt_ellenoriz_13.py, eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/tesztek/test_szabalyok.py, adat/SEMA.md]
 fugg: []
 ---
 
@@ -34,6 +34,10 @@ végez. Az érintett tételek (mind `DONTESEK.md`, javaslatuk szerint):
   `normalizal.APOKRIF_ALIAS`) kizárja egymást (G1944, G5010, G5590).
 - **DT-F142d:** az `ellenoriz.py` 13. szabálya (`_szakasz_szoveg`) csak a `BDB` `sz<n>` sorokhoz keres forrásszöveget; a 19 új
   Thayer-sorra `nincs hozzá forrásszöveg` SÉRTÉS-t ad (a #142 előtt SÉRTÉS 0, utána 1).
+- **CI E19 (PR #482, run 40371120583, `f11eaf9d`):** `HIBA adat/lexikon_hivatkozasok.tsv:9 -- Thayer G0086 G86/teljes -- nincs opus,
+  sonnet vagy kezi forditas (sem erre a jelentesre, sem teljes szintre)`; ugyanígy a 15. (G2671) és a 19. sor (G5356). Ok: a DT329 (i)
+  szerint a régi nem `kezi` `teljes` sor `elavult` lett, az E19 (`szabalyok.py` `e19_szotari_forditas_hiany`) viszont a `teljes`
+  hivatkozást csak `teljes` vagy azonos `jelentes_szam`-ú fordítással tekinti fedettnek, a Strong `sz<n>` szakaszsoraival nem.
 - **DT-F142a:** a `teszt_lanc.py` két tesztje állapotfüggő: a `test_g1941_reszei` a sigla-jóváhagyás előtti állapotot várja
   (`` `cf.` [besorolatlan …] `` a jóváhagyott `` `cf.` → `vö.` `` helyett); a `test_beir_kezi_marad` feltételezi, hogy a valódi
   `forditasok.tsv`-ben nincs G1941 szakaszsor (az F142.7 óta van).
@@ -53,6 +57,11 @@ végez. Az érintett tételek (mind `DONTESEK.md`, javaslatuk szerint):
 2. `ellenoriz.py` 13. szabály — **Thayer-ág:** a `szotar = Thayer`, `sz<n>` sor forrásszövege a `thayer_bemenet` szakaszaiból
    (a `forditas.py rogzit` által használt szövegből, ugyanazzal a hash-számítással); a lefedettség-ellenőrzés (egy Strong nem
    `elavult` `sz<n>` sorai a Strong összes szakaszát fedik) a BDB-vel azonos módon. Teszt a `teszt_ellenoriz_13.py`-ban.
+2b. `szabalyok.py` E19 — a `jelentes_szam = teljes` hivatkozás fedett, ha a Strongnak (szotár + strong + entry_id) a
+   `forditasok.tsv`-ben a szótár összes szakaszát lefedő, nem `elavult` (`opus` / `sonnet` / `kezi`) `sz<n>` sorai vannak (a
+   szakaszkészlet a 13. szabály Thayer-, illetve BDB-ágával azonos forrásból); részleges lefedettség nem fed. Teszt a
+   `test_szabalyok.py` `E19Teszt` osztályában (teljes lefedettség: nincs találat; hiányzó szakasz: HIBA). A `lexikon_hivatkozasok.tsv`
+   nem változik.
 3. `teszt_lanc.py` — a `test_g1941_reszei` várakozása a jóváhagyott sigla-állapotra (`` `cf.` → `vö.` ``), vagy a tábla
    fixture-ként (állapot-független; a végrehajtó választ, a naplóba indokolva); a `test_beir_kezi_marad` állapot-független
    (ideiglenes `forditasok.tsv`-másolaton, a valódi tábla állapotától függetlenül). Új tesztek az 1. pont (a)–(c) eseteire,
@@ -74,7 +83,7 @@ végez. Az érintett tételek (mind `DONTESEK.md`, javaslatuk szerint):
    #142 munkafájljaiból vagy újra előállítva (`forditas.py elokeszit` a scratchpadbe; a bukott vázlatok szövege a `bukottak.tsv`
    okai szerint), a `ellenoriz.py` 13. szabály kimenete, a tesztek állapota — a naplóba, proveniencia-sorral.
 2. **A 16. kapu (2. hatókör 1.)**, tesztekkel; commit.
-3. **A 13. szabály Thayer-ága (2. hatókör 2.)**, teszttel; commit.
+3. **A 13. szabály Thayer-ága (2. hatókör 2.)** és **az E19 szakasz-lefedettsége (2b.)**, tesztekkel; tételenként commit.
 4. **A két állapotfüggő teszt (2. hatókör 3.)**; commit.
 5. **SEMA és docstring (2. hatókör 4.)**; commit.
 6. **Mz — mérés:** ugyanaz a 8 Strong az új kapuval (a fordítás nélküli bukások — Homérosz/Makk/Philo — eltűntek-e; más kapu
@@ -91,7 +100,8 @@ talál (ez adathiba, nem kódhiba): tétel a `DONTESEK.md`-be, helyőrzővel (`D
 
 1. A 16. kapu a 2. hatókör 1. (a)–(c) szerint, mindhárom esetre pozitív és negatív teszttel; a meglévő `teszt_lanc.py` és
    `teszt_forditas_kapuk.py` tesztek változatlanul zöldek (a két állapotfüggő teszt kivételével, amely a 3. pont szerint módosul).
-2. `python eszkozok/ellenoriz.py` SÉRTÉS 0 a #142 ágának `forditasok.tsv`-jén is (a 19 Thayer-sor forrásszövege megtalálva, hash egyezik).
+2. `python eszkozok/ellenoriz.py` SÉRTÉS 0 a #142 ágának `forditasok.tsv`-jén is (a 19 Thayer-sor forrásszövege megtalálva, hash egyezik);
+   a `python eszkozok/ellenorzes/futtat.py` E19-e a #142 ágának tábláin 0 HIBA.
 3. A 8 érintett Strong M0 / Mz kapueredménye a naplóban; a változás oka minden Strongnál megnevezve.
 4. Proveniencia minden mérés mellett; a TSV-ket `split('\t')` olvassa (a `csv` modul tilos); `feladatok.py ellenoriz` 0 hiba.
 
