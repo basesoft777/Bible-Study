@@ -3341,7 +3341,7 @@ H2494	H2494	a Name of	igen	Helem	f2defe17e45f1b1d9ba5ef4bbf9437eb474c77bf	Hélem
 H2495	H2495		igen	mallow	49081287df4a1ff44fb0e0201b246a0280fa5e31	mályva	sonnet	claude-sonnet-5-5	2026-10-25	
 H2496	H2496		igen	flint	7cbad4623955d9fc8108bb73693bda3a65152294	kova	sonnet	claude-sonnet-5-5	2026-10-25	
 H2497	H2497		igen	Helon	0d9353ef07a156799ea57ef10ee93d44f8d66b1c	Hélon	sonnet	claude-sonnet-5-5	2026-10-25	
-H2498	H2498		igen	to pass	0952287b8b95ef059bc7ab5d418ba0f5daff2ba9	elmúlni, elvonulni; megváltozni, elváltoztatni	kezi	claude-sonnet-5-5	2026-10-26	
+H2498	H2498		igen	to pass	0952287b8b95ef059bc7ab5d418ba0f5daff2ba9	elmúlni, elvonulni; megváltozni; elváltoztatni	kezi	claude-sonnet-5-5	2026-10-26	
 H2499	H2499	in Aramaic of	igen	to pass	0952287b8b95ef059bc7ab5d418ba0f5daff2ba9	elmúlni	sonnet	claude-sonnet-5-5	2026-10-25	
 H2500	H2500		igen	for	43eef9a62abb8b1e1654f8a890aae054abffa82b	helyett	sonnet	claude-sonnet-5-5	2026-10-25	
 H2501	H2501		igen	Heleph	3990ed2bc6d6136a3f5aa4721ce094ece8a33350	Héléf	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -5868,7 +5868,7 @@ H4338	H4338		igen	Mesha	51e159eb995adbd3f2763e31ae8ca336f853555b	Mésa	sonnet	cl
 H4339	H4339		igen	uprightness	0dec8ab3e5a7a145d0dae8aec476dc952f85bf82	egyenesség	sonnet	claude-sonnet-5-5	2026-10-25	
 H4340	H4340		igen	cord	3d72b32fffbc94bb6296e9edbccc005958d6bee5	kötél	sonnet	claude-sonnet-5-5	2026-10-25	
 H4341	H4341		igen	pain	4582cd02ee9fd9bc2c94f802575fd1ad42f245a0	fájdalom	sonnet	claude-sonnet-5-5	2026-10-25	
-H4342	H4342		igen	to increase	81c286f02aa16176dda61967446cc0982d0cd599	bőségben lenni, bőven adni	kezi	claude-sonnet-5-5	2026-10-26	
+H4342	H4342		igen	to increase	81c286f02aa16176dda61967446cc0982d0cd599	bőségben lenni; bőven adni	kezi	claude-sonnet-5-5	2026-10-26	
 H4343	H4343		igen	Machbenah	cf3b6d02b5271be7223218dc81201d2ff30e7648	Makbena	sonnet	claude-sonnet-5-5	2026-10-25	
 H4344	H4344		igen	Machbannai	1b58c7be49f922ceb48d7652a390eda310874bbe	Makbannai	sonnet	claude-sonnet-5-5	2026-10-25	
 H4345	H4345		igen	grate	93cf64169658ad9975cde0816a53955002b6385c	rács	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -6875,7 +6875,7 @@ H5134	H5134		igen	to suckle	37caf6113cbb5e32a991bd37c4778bf268009785	szoptatni	k
 H5135	H5135		igen	fire	1da8402449899ec1ba9c34c095dbb79d0585dcd7	tűz	sonnet	claude-sonnet-5-5	2026-10-25	
 H5136	H5136		igen	be sick	13ce5f93ad80ba2327730bf320eab8b1c51c6d23	betegnek lenni	sonnet	claude-sonnet-5-5	2026-10-25	
 H5137	H5137A		igen	to sprinkle	e2acdd2a50495db4c85946a9ceb9ac8f318bdcc9	hinteni	sonnet	claude-sonnet-5-5	2026-10-25	
-H5137	H5137B			to spring	dd32844ded2375288b65883b0e13fb115a415f78	szökkenni, megriasztani	kezi	claude-sonnet-5-5	2026-10-26	
+H5137	H5137B			to spring	dd32844ded2375288b65883b0e13fb115a415f78	szökkenni; megriasztani	kezi	claude-sonnet-5-5	2026-10-26	
 H5138	H5138		igen	stew	83c74738d4da7420fefafe8840cf56d2ff78c0d2	leves	sonnet	claude-sonnet-5-5	2026-10-25	
 H5139	H5139	a group of	igen	Nazirite	af2810908920c2f56cb77459dc99f89d7fc99bfc	názireus	sonnet	claude-sonnet-5-5	2026-10-25	
 H5140	H5140		igen	to flow	db9505d219a935b1a6d64811108fec21c2568c71	folyni	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -7038,7 +7038,7 @@ H5260	H5260	in Aramaic of	igen	to pour	f0e37533f9de7c3f516b08e238a01483e88f0c18	
 H5261	H5261	in Aramaic of	igen	drink offering	91ff05a769200af20f91a682fab9a34b01cb7143	italáldozat	sonnet	claude-sonnet-5-5	2026-10-25	
 H5262	H5262		igen	drink offering	91ff05a769200af20f91a682fab9a34b01cb7143	italáldozat	sonnet	claude-sonnet-5-5	2026-10-25	
 H5263	H5263		igen	to faint	0321efe8ec298a9ce7fd10206b357582affe1e0d	sorvadozni, betegeskedni	kezi	claude-sonnet-5-5	2026-10-26	
-H5264	H5264		igen	to shine	36508477eec6b31a270c0658d1e5a66cc09cefe2	felemelkedni, felemelni; ragyogni	kezi	claude-sonnet-5-5	2026-10-26	
+H5264	H5264		igen	to shine	36508477eec6b31a270c0658d1e5a66cc09cefe2	felemelkedni; felemelni; ragyogni	kezi	claude-sonnet-5-5	2026-10-26	
 H5265	H5265		igen	to set out	702807d1601916e3991bdff081a8f10fecb7a30d	elindulni	sonnet	claude-sonnet-5-5	2026-10-25	
 H5266	H5266		igen	to ascend	33d0343d2c3345480b8809817bd2880d99669ea9	felmenni	sonnet	claude-sonnet-5-5	2026-10-25	
 H5267	H5267	in Aramaic of	igen	to take up	9b9558403bebb07442a564d56b31d11be9804709	felvinni	sonnet	claude-sonnet-5-5	2026-10-25	
