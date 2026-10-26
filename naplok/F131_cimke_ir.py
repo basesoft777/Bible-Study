@@ -48,7 +48,7 @@ KEZI = [
 THAYER_HATAR = [
     ('cim', None, '', ''),
     ('fej', 'ἐπικαλῶ (epikaló):', '', ''),
-    ('-/1/-', '1. nevet tenni valakire', 'melléknéven nevezni', ''),
+    ('-/1/-', '1. nevet tenni valakire', 'más néven nevezni', ''),
     ('-/2/-', '2. ἐπικαλεῖται τό ὄνομα', '', ''),
     ('-/3/-', '3. τίνι (tini), a tárgy', '', ''),
     ('-/4/-', '4. segítségül hívni (mint a német anrufen)', '', ''),
