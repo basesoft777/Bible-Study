@@ -581,7 +581,7 @@ def javit_alkalmaz(atnezes_sorok, tabla, tbesh, datum):
     oszlop). Szabaly: ures vagy '=' -> a fordítás marad; ha a megjegyzes '?', a '?' torlodik es a
     sor 'kezi' lesz; mas ertek -> kapuk, majd allapot='kezi', megjegyzes ures, datum frissul,
     a modell mezo valtozatlan (a forditot rogziti; a javitast a felhasznalo hagyta jova). '=?' -> a
-    szoveg marad, a '?' visszakerul (allapot 'kezi'; DT-F140c).
+    szoveg marad, a '?' beallitva (naplo: '? beallitva'; allapot 'kezi'; DT-F140c).
     Visszaad: (uj_tabla, naplo_sorok, hibak, engedett_idk)."""
     uj = {k: dict(v) for k, v in tabla.items()}
     naplo, hibak, engedett = [], [], set()
@@ -593,7 +593,7 @@ def javit_alkalmaz(atnezes_sorok, tabla, tbesh, datum):
         r = uj[k]
         if jav == '=?':
             if r['megjegyzes'] != '?':
-                naplo.append((k, r['glossza_hu'], r['glossza_hu'], datum, '? visszaallitva'))
+                naplo.append((k, r['glossza_hu'], r['glossza_hu'], datum, '? beallitva'))
                 r.update({'megjegyzes': '?', 'allapot': 'kezi', 'datum': datum})
                 engedett.add(k)
             continue

@@ -1433,10 +1433,10 @@ entry_id szerint rendezve állnak; a szkript írás előtt összeveti a meglév�
 | `glossza_en` | szabad szöveg | ✔ | A TBESH 7. oszlopa (`Gloss`) szó szerint. |
 | `forras_hash` | szabad szöveg | ✔ | A `glossza_en` SHA-1 hexdigestje, UTF-8 kódolásból; eltérés az újraszámolttól sértés (`--ellenoriz`). |
 | `glossza_hu` | szabad szöveg | ✔ | A magyar jelentés: legfeljebb 50 karakter és 6 szó; szófaj nélkül; ige főnévi igenévvel (K4), főnév alanyesetben; a „szó: árnyalat” kettőspontja megmarad (K3, kapu); nincs héber/görög betű, idézőjel, kérdőjel és angol szó (forrás-alapú közelítés + kivétel-lista, K9). Istennevek: a K5-lista (`ISTENNEV_FIX`), az „az ÚR” projekt-konvenció, nem Károli-alak. |
-| `allapot` | zárt | ✔ | `sonnet` (a modell fordította, kapukon átment, emberi jóváhagyás nélkül) \| `kezi` (a felhasználó átírta). |
+| `allapot` | zárt | ✔ | `sonnet` (a modell fordította, kapukon átment, emberi jóváhagyás nélkül) \| `kezi` (a sort a naplózott `--javit` mód írta át: a felhasználó átnézési javítása, vagy a felhasználó által jóváhagyott átnéző-javaslat [DT-F140c]; a `modell` mező ilyenkor is a fordítót rögzíti; a szöveg nem mindig változik, l. `?`). |
 | `modell` | szabad szöveg | ✔ | A ténylegesen futó modell neve (a session saját környezetéből; briefből másolni tilos). |
 | `datum` | `DATUM` | ✔ | A fordítás napja. |
-| `megjegyzes` | zárt | | Üres vagy `?`: a fordító bizonytalan (magyaros átírás, K6); az M2 zárójelentése külön felsorolja. |
+| `megjegyzes` | zárt | | Üres vagy `?`: a fordító (vagy az átnéző) bizonytalan: magyaros átírás (K6), vagy a TBESH-glossza és a definíció eltér (pl. H6808); a `--javit` `=?` értéke a szöveget nem változtatja, a `?`-t beállítja (`kezi`; napló: `? beallitva`, korábbi `?` visszaállításakor `? visszaallitva`). A több értelmet a vessző (szinonimák) vagy a pontosvessző (különböző értelmek) választja el, a két alak együtt él (DT-F140d). Az M2 zárójelentése külön felsorolja. |
 
 **Gyorsítótár (K7):** azonos (`glossza_en`, szófaj) párra egyszer fordul a modell; az eredmény a pár minden sorába kerül. **Elakadók:** a kapun kétszer elbukó sor nem kerül a táblába, hanem a `naplok/GLOSSZA_FORDITAS_elakad.tsv`-be. **Licenc:** a TBESH CC BY 4.0, a fordítás származtatott mű, a `fo` kiválasztása a TAHOT-ot is használja; az `sqlite_epit.py` `ADAT_LICENC`-bejegyzése (`glosszak_heber_hu: ['TBESH', 'TAHOT', 'projekt_adat']`) külön kisfeladat (DT-F140b K8), a tábla main-re és `pardes.db`-be kerülése előtt kell.
 

@@ -137,12 +137,12 @@ class Javit(unittest.TestCase):
         self.assertEqual(uj['H2']['glossza_hu'], 'ujjongani')
         self.assertEqual(eng, {'H2'})
 
-    def test_egyenlo_kerdojel_visszaallitja_a_kerdojelet(self):
+    def test_egyenlo_kerdojel_beallitja_a_kerdojelet(self):
         uj, naplo, hibak, eng = g.javit_alkalmaz([('H1', '=?'), ('H2', '=?')], self.tabla, self.tb, 'd1')
         self.assertEqual(uj['H1']['megjegyzes'], '?')
         self.assertEqual(uj['H1']['allapot'], 'kezi')
         self.assertEqual(uj['H1']['glossza_hu'], 'belső')
-        self.assertEqual(naplo, [('H1', 'belső', 'belső', 'd1', '? visszaallitva')])
+        self.assertEqual(naplo, [('H1', 'belső', 'belső', 'd1', '? beallitva')])
         self.assertEqual(uj['H2'], self.tabla['H2'])  # mar '?': nem valtozik
         self.assertEqual(eng, {'H1'})
 
