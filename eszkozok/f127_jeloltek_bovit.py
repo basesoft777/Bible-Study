@@ -28,7 +28,7 @@ REGI_FEJLEC = ['id', 'igehely', 'forras_kereses', 'dontes', 'indoklas',
 UJ_MEZOK = ['jelolt_tipus', 'cel_id', 'cel_igehely', 'cel_alpont']
 REGI_KOMMENT = '# A kereszthivatkozas-naplo gepi alakja. Kulcs: id + igehely. Sema: adat/SEMA.md 2.4'
 UJ_KOMMENT = ('# A kereszthivatkozas-naplo gepi alakja. Kulcs: id + igehely + jelolt_tipus + cel_id '
-              '(DT-F127b). Sema: adat/SEMA.md 2.4')
+              '(DT277). Sema: adat/SEMA.md 2.4')
 
 
 def main():

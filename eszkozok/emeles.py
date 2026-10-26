@@ -469,6 +469,38 @@ FORDITASOK_FEJLEC = ['szotar', 'strong', 'entry_id', 'jelentes_szam', 'mezo', 'f
 MUNKA_UT = os.path.join(REPO, 'naplok', 'EMELES_munka.tsv')
 
 
+DONTESEK_UT = os.path.join(REPO, 'DONTESEK.md')
+
+
+def kapu_felulir(args, eredm, dontesek_ut=None):
+    """DT-F38k (1): celzott kapu-felulbiralas a rogzitesnel. -> a `megjegyzes` kiegeszitese ('' ha nincs felulbiralas).
+    Nincs `--kapu-felulir`: a bukott kapu tovabbra is megallitja a rogzitest. Van: pontosan egy, nev szerint megadott
+    kapu bukhat (`SERTES`), az osszes tobbinek at kell mennie; `--dontes` kotelezo, es a DONTESEK.md-ben letezo sor
+    azonositoja kell legyen. A kapuk (forditas_kapuk.py) maguk nem valtoznak."""
+    import forditas_kapuk as K
+    kapu = getattr(args, 'kapu_felulir', None)
+    dontes = getattr(args, 'dontes', None)
+    if not kapu:
+        if dontes:
+            raise SystemExit('--dontes --kapu-felulir nelkul ertelmetlen')
+        return ''
+    if not dontes:
+        raise SystemExit('--kapu-felulir csak --dontes <DT-azonosito>-val hasznalhato')
+    ut = dontesek_ut or DONTESEK_UT
+    with open(ut, encoding='utf-8') as fh:
+        van = any(re.match(r'\|\s*' + re.escape(dontes) + r'\s*\|', sor) for sor in fh)
+    if not van:
+        raise SystemExit('a %s azonositoju sor nincs a DONTESEK.md-ben' % dontes)
+    bukott = [n for n, e, _ in eredm if e == 'SERTES' and n in K.GATOLO + K.SZAKASZ_GATOLO]
+    if kapu not in K.GATOLO + K.SZAKASZ_GATOLO:
+        raise SystemExit('ismeretlen kapu: %s' % kapu)
+    if kapu not in bukott:
+        raise SystemExit('a %s kapu nem bukott -- felesleges felulbiralas' % kapu)
+    if bukott != [kapu]:
+        raise SystemExit('tobb kapu bukott (%s) -- egyetlen felulbiralas nem eleg' % ', '.join(bukott))
+    return 'kapu-felülbírálás: %s (%s)' % (kapu, dontes)
+
+
 def cmd_rogzit(args):
     """A vegleges forditas rogzitese a munkatablaba (naplok/EMELES_munka.tsv),
     az adat/forditasok.tsv semajaval. Az adat/forditasok.tsv-be a
@@ -482,7 +514,8 @@ def cmd_rogzit(args):
     vegleges, valt, eredm, ok = utofeldolgoz(sp, szoveg, args.kivetel)
     if vegleges != szoveg:
         raise SystemExit('a --be nem a javitoreteg kimenete (futtasd elobb: ellenoriz --ki)')
-    if not ok:
+    felulir = kapu_felulir(args, eredm)
+    if not ok and not felulir:
         raise SystemExit('kapuhiba -- a sor nem rogzitheto (E4: onujraproba, utana bukottak)')
     _, term_verzio = terminologia_szoveg()
     sorok = list(tsv_dict_sorok(MUNKA_UT)) if os.path.exists(MUNKA_UT) else []
@@ -497,7 +530,8 @@ def cmd_rogzit(args):
         'terminologia_verzio': term_verzio,
         'megjegyzes': '; '.join(x for x in (
             args.megjegyzes or '',
-            ('terminológia-kivétel (bizonytalan_feloldasok): ' + ', '.join(args.kivetel)) if args.kivetel else '')
+            ('terminológia-kivétel (bizonytalan_feloldasok): ' + ', '.join(args.kivetel)) if args.kivetel else '',
+            felulir)
             if x),
     }
     sorok = [r for r in sorok if not (r['szotar'] == uj['szotar'] and r['entry_id'] == uj['entry_id'])]
@@ -895,12 +929,14 @@ def cmd_szakasz_rogzit(args):
     vegleges, valt, eredm, ok = utofeldolgoz_szakasz(sp, szoveg, args.kivetel)
     if vegleges != szoveg:
         raise SystemExit('a --be nem a javitoreteg kimenete (futtasd elobb: szakasz_ellenoriz --ki)')
-    if not ok:
+    felulir = kapu_felulir(args, eredm)
+    if not ok and not felulir:
         raise SystemExit('kapuhiba -- a sorok nem rogzithetok')
     _, term_verzio = terminologia_szoveg()
     megj = '; '.join(x for x in (
         args.megjegyzes or '',
-        ('terminológia-kivétel (bizonytalan_feloldasok): ' + ', '.join(args.kivetel)) if args.kivetel else '') if x)
+        ('terminológia-kivétel (bizonytalan_feloldasok): ' + ', '.join(args.kivetel)) if args.kivetel else '',
+        felulir) if x)
     uj = szakasz_sorok(sp, szak, szoveg, args.allapot, args.modell,
                        args.datum or datetime.date.today().strftime('%Y.%m.%d'), term_verzio, megj)
     sorok = list(tsv_dict_sorok(MUNKA_UT)) if os.path.exists(MUNKA_UT) else []
@@ -956,7 +992,7 @@ def cmd_szakasz_beir(args):
                 raise SystemExit('%s: van regi `teljes` sor -- --regi-elavult kell (DT-F128e)' % sp)
             if not regi_marad and regi[i_allapot] != 'elavult':
                 regi[i_allapot] = 'elavult'
-                regi[i_megj] = '; '.join(x for x in (regi[i_megj], 'felváltva: szakaszonkénti fordítás (%s; DT-F128e)'
+                regi[i_megj] = '; '.join(x for x in (regi[i_megj], 'felváltva: szakaszonkénti fordítás (%s; DT289)'
                                                       % datum) if x)
                 sorok[idx[teljes_k]] = '\t'.join(regi)
                 valtozott.add(idx[teljes_k])
@@ -1038,6 +1074,10 @@ def parser_epit():
     p.add_argument('--datum')
     p.add_argument('--megjegyzes')
     p.add_argument('--kivetel', nargs='*', default=[])
+    p.add_argument('--kapu-felulir', metavar='KAPUNEV',
+                   help='DT-F38k (1): egyetlen, nev szerint megadott bukott kapu felulbiralasa (pl. 11_konyvek); --dontes kotelezo')
+    p.add_argument('--dontes', metavar='DT-AZONOSITO',
+                   help='a felulbiralast engedelyezo DONTESEK.md-sor azonositoja (pl. DT-F38k)')
     p.set_defaults(fv=cmd_rogzit)
     p = al.add_parser('beir')
     p.add_argument('strongok', nargs='+')
@@ -1077,6 +1117,10 @@ def parser_epit():
     p.add_argument('--datum')
     p.add_argument('--megjegyzes')
     p.add_argument('--kivetel', nargs='*', default=[])
+    p.add_argument('--kapu-felulir', metavar='KAPUNEV',
+                   help='DT-F38k (1): egyetlen, nev szerint megadott bukott kapu felulbiralasa (pl. 11_konyvek); --dontes kotelezo')
+    p.add_argument('--dontes', metavar='DT-AZONOSITO',
+                   help='a felulbiralast engedelyezo DONTESEK.md-sor azonositoja (pl. DT-F38k)')
     p.set_defaults(fv=cmd_szakasz_rogzit)
     p = al.add_parser('szakasz_beir')
     p.add_argument('strongok', nargs='+')

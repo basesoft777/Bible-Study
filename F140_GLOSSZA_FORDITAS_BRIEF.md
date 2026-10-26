@@ -24,7 +24,7 @@ nem_fugg: [38, 138]
 
 A szó-lap kiemelt jelentés-sora (a #139 fejléce) ma a lefordított BDB-szócikk elejéből gépileg kivágott szöveget mutatja (`bdb_szelet.alap_jelentes`, DT-F76f), ennek híján az angol Strong-szótár szavát (innen a „LORD” hiba, #138). A kivágás a 7a adag 85 szócikkéből 13-nál hibás (`scope=adat/forditasok.tsv, 7a adag 85 Strong + eszkozok/olvaso_szerver/bdb_szelet.py | forras=helyi-futtatas | ts=2026-10-25`), és csak a már lefordított BDB-szócikkekre ad bármit.
 
-A DT-F140a döntése szerint a kiemelt jelentés forrása a **TBESH rövid glosszájának (7. oszlop) magyar fordítása** lesz. A TBESH a helyes glosszát adja ott is, ahol a `Strong_szotar.tsv` hibás (H0430: TBESH „God”, Strong_szotar „LORD”).
+A DT302 döntése szerint a kiemelt jelentés forrása a **TBESH rövid glosszájának (7. oszlop) magyar fordítása** lesz. A TBESH a helyes glosszát adja ott is, ahol a `Strong_szotar.tsv` hibás (H0430: TBESH „God”, Strong_szotar „LORD”).
 
 Előmérés a befogadáskor (`scope=konkordancia/TBESH.txt H-sorai, konkordancia/Strong_szotar.tsv H-sorai | forras=helyi-futtatas | ts=2026-10-25`):
 
@@ -37,7 +37,7 @@ Előmérés a befogadáskor (`scope=konkordancia/TBESH.txt H-sorai, konkordancia
 **Benne van:**
 
 - az alapszám → fordítandó TBESH-sor(ok) szabálya (M0): melyik sor a fő glossza; a homonimák (`a`/`b`) mind kapnak fordítást, saját `entry_id`-val; a névhez kapcsolt alsorok (`= a Part of`, `= a Name of` kapcsolattal) nem fő glosszák [javaslat: kimaradnak, vagy külön jelölve];
-- saját adattábla: `adat/glosszak_heber_hu.tsv` (kulcs: `strong` + `entry_id`, ahol az `entry_id` a TBESH kiterjesztett azonosítója; mezők [javaslat]: `strong`, `entry_id`, `glossza_en`, `forras_hash`, `glossza_hu`, `allapot`, `modell`, `datum`, `megjegyzes`), SEMA-bejegyzéssel. A `forditasok.tsv` helyett azért külön tábla, mert azt a #38 (BDB-fordítás) folyamatosan írja: a közös fájl kizárná a párhuzamos futást (KIZAR #27, #38), és 11 feladatot tenne a #140-től függővé (DT-F140a (e)). A pardes.db-be az `sqlite_epit.py` `_adat_tablak` általános betöltője minden `adat/*.tsv`-t betölt, tehát az építőhöz nem kell nyúlni; ha a licencjelölés (a TBESH CC BY 4.0, a fordítás származtatott mű) az `ADAT_LICENC` bejegyzését kívánja, az M0 ⛔ pontja jelzi, és az `sqlite_epit.py`-módosítás külön kerül a felhasználó elé;
+- saját adattábla: `adat/glosszak_heber_hu.tsv` (kulcs: `strong` + `entry_id`, ahol az `entry_id` a TBESH kiterjesztett azonosítója; mezők [javaslat]: `strong`, `entry_id`, `glossza_en`, `forras_hash`, `glossza_hu`, `allapot`, `modell`, `datum`, `megjegyzes`), SEMA-bejegyzéssel. A `forditasok.tsv` helyett azért külön tábla, mert azt a #38 (BDB-fordítás) folyamatosan írja: a közös fájl kizárná a párhuzamos futást (KIZAR #27, #38), és 11 feladatot tenne a #140-től függővé (DT302 (e)). A pardes.db-be az `sqlite_epit.py` `_adat_tablak` általános betöltője minden `adat/*.tsv`-t betölt, tehát az építőhöz nem kell nyúlni; ha a licencjelölés (a TBESH CC BY 4.0, a fordítás származtatott mű) az `ADAT_LICENC` bejegyzését kívánja, az M0 ⛔ pontja jelzi, és az `sqlite_epit.py`-módosítás külön kerül a felhasználó elé;
 - a fordító szkript (`eszkozok/glossza_forditas.py`): kötegelt, újraindítható, a `forras_hash` a TBESH-glossza SHA-1-e; a prompt bemenete szavanként a héber lemma, az átírás, a szófaj, a glossza és a definíció első ~200 karaktere, a köteg elején a projekt terminológiája (`adat/terminologia.tsv`); a kimenet egy rövid magyar jelentés (legfeljebb ~5 szó, több értelem pontosvesszővel), szófaj nélkül, főnévnél alanyesetben, igénél főnévi igenévvel;
 - tulajdonnév: a magyar (Károli-hagyományú) névalak, pl. H7346 „Roboám”; istennév: a Károli-szóhasználat szerint (H3068 „az ÚR”, H0430 „Isten”);
 - kapuk (gépi, minden soron; saját kapukészlet, az `eszkozok/forditas_kapuk.py` csak minta, nem közös kód: a #38 futás közben módosíthatja, ezért `nem_fugg: [38]`): nem üres; nincs benne héber vagy görög betű; nincs angol szó (szótár-alapú ellenőrzés, kivétel-listával); hossz-korlát; a `forras_hash` egyezik;
@@ -48,7 +48,7 @@ Előmérés a befogadáskor (`scope=konkordancia/TBESH.txt H-sorai, konkordancia
 
 - a szó-lap megjelenítése és a forrás-sorrend kódja (kézi > glossza-fordítás > BDB-kivágás): az a #139;
 - a görög szavak (TBESG): külön feladat, ha ez beválik;
-- a `Strong_szotar.tsv` és a `TAHOT_kivonat.tsv` „LORD”-javítása: a #138 (szűkített hatókörrel, DT-F140a (c)). A #140 e két fájlból csak a Strong-kulcsot, a szófajt és az előfordulásszámot olvassa, a #138 által javított „Jelentés”/„Rövid jelentés” oszlopot nem; ezért `nem_fugg: [138]`.
+- a `Strong_szotar.tsv` és a `TAHOT_kivonat.tsv` „LORD”-javítása: a #138 (szűkített hatókörrel, DT302 (c)). A #140 e két fájlból csak a Strong-kulcsot, a szófajt és az előfordulásszámot olvassa, a #138 által javított „Jelentés”/„Rövid jelentés” oszlopot nem; ezért `nem_fugg: [138]`.
 
 ## 3. Lépések
 
@@ -67,7 +67,7 @@ Előmérés a befogadáskor (`scope=konkordancia/TBESH.txt H-sorai, konkordancia
 
 ## 5. Döntésnapló
 
-- **DT-F140a** (2026-10-25, a felhasználó, chat; a tétel a `DONTESEK.md`-ben): a kiemelt jelentés forrása és sorrendje; a modell; a #138 szűkítése; a #139 függése; a saját tábla (e).
+- **DT302** (2026-10-25, a felhasználó, chat; a tétel a `DONTESEK.md`-ben): a kiemelt jelentés forrása és sorrendje; a modell; a #138 szűkítése; a #139 függése; a saját tábla (e).
 - **DT-F140b** (2026-10-25, a felhasználó, chat; a tétel a `DONTESEK.md`-ben): K1 (B), K2 (a) módosított `fo`-szabállyal, K3 (a), K4 (a), K5 kibővített istennév-lista, K6, K7 (a), K8 külön kisfeladat, K9 (a), K10 50/6. Az M1 ezek szerint fut.
 - **DT-F140c** (2026-10-26, a felhasználó, chat; a tétel a `DONTESEK.md`-ben): a független ellenőr 1. tétele (H6308, H6117, ~4% hibaarány): az (A) opció: a talált hibák javítása; rétegzett minta (200 sor), majd második ige-minta (150 sor); a „(Név) hegye” zárójelminta egységesítése „Név (hegy)” alakra; H6424 `?` vissza; H8577M „kígyó: kígyó”. A küszöb tényleges alakja: a 2. ige-mintán <5% elfogad (4,7%). A felhasználó először a (b) opciót választotta; az 1. minta 11/200 hibája az eredeti „>10 → (c)” küszöböt átlépte, a felhasználó az (A)-t választotta (chat, 2026-10-26). A ⛔ (ELLENOR_F140_3) nyomán: „(b) teljes” átnézés a 846 közös-glosszájú ige-soron (12 független Opus-átnéző; javítva F140.122–F140.124).
 - **DT-F140d** (2026-10-26, a felhasználó, chat; a tétel a `DONTESEK.md`-ben): (1) (a) a 27 azonos-glosszájú testvérsor független átnézése, csak bizonyított hibák javításával; (2) (a) az értelem-elválasztás a SEMA szerint, a sorok változatlanok.

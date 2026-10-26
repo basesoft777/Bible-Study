@@ -1415,7 +1415,170 @@ másik a `cel_id`/`cel_igehely` egyik eleme.
 | `dontes_ref` | szöveg | ✔ | `jeloltek.tsv;<id>;<igehely>;motivumkozi;<cel_id>` — a döntést hordozó jelölt-sor kulcsa. |
 | `proveniencia` | `PROVENIENCIA` | ✔ | |
 
-### 2.34 `glosszak_heber_hu.tsv` — a TBESH-glosszák magyar fordítása (F140, FELADATOK #140, DT-F140a, DT-F140b)
+### 2.34 `thayer_szakaszok.tsv` — a Thayer jelölt szövegrétege, szakaszonként (F132, FELADATOK #132, DT327–b)
+
+**Generált** (`python eszkozok/thayer_jelolt/bont.py --ts <nap>`; kézzel nem szerkeszthető; azonos bemenettel és `--ts`-sel bájtra
+azonos, a `--ellenoriz` és az `eszkozok/thayer_jelolt/teszt_bont.py` ellenőrzi). Forrás (DT327 (b), felhasználó, 2026-10-25):
+**a szerkezet** (bekezdéshatár, fej, útvonal) a `konkordancia/lexikonok_nyers/Thayer.lexicon`-ból (`Lexicon(Topic, Definition)`, HTML;
+a formázási réteg licence nem tisztázott, ezért innen csak szerkezet és azonosító jön, szöveg nem); **a szöveg** a
+`konkordancia/Thayer_teljes.tsv` `Teljes_szocikk`-jéből, illesztéssel (a szakasz szövege a TSV-szöveg szelete). Egy sor = a szócikk egy
+bekezdése: a `<p>`, `</p>`, `<div>`, `</div>` jelölők közötti, címkék nélkül nem üres HTML-darab, a forrás sorrendjében (a forrásban
+helyenként egymásba ágyazott vagy lezáratlan `<p>` áll, ezért a határ a jelölő). Az első két sor `# GENERÁLT: …` és `# forras: …` (a két
+bemenet és a kód hash-e), a harmadik a fejléc. Olvasás `split('\t')`. **Lexikai forrásréteg, nem study-adat:** keresési találatból nem
+lehet közvetlenül study-sor (CLAUDE.md 2. szabály).
+
+| Oszlop | Jelentés |
+|---|---|
+| `strong` | `Strong_padded` (`G0012`); a lexikon `Topic`-ja (`G12`) az `eszkozok/thayer_jelolt/kulcs.py` `strong_pad` függvényével normalizálva (DT328 (4): egyetlen függvény) |
+| `sorszam` | a bekezdés sorszáma a szócikkben (1-től; az 1. a cím) |
+| `utvonal` | `<felső>/<szám>/<betű>`, a hiányzó szint `-` (pl. `-/1/-`, `II/1/a`, `A.I/2/-`); a felső szint a nagybetűs fej (`A.`, sima szöveg, csak a sorban következő betű) és a római fej (`<span class="lexheading">I.</span>`) ponttal; különleges: `cim` (a `<b>G… — …</b>` címsor; újabb címsor a fejállapotot törli), `fej` (a cím után, az első fej előtti bekezdés). Fej nélküli bekezdés az előző útvonalát örökli |
+| `jel` | a bekezdés elején álló fej a forrás alakjában (`1.`, `a.`, `I.`, `A.`); üres, ha nincs. A forrásban bekezdésen belüli fej nem fordul elő (F132 M1 felmérés) |
+| `szoveg` | a bekezdés szövege a `jel` után, a `Thayer_teljes.tsv` szövegéből (a szóközök összevonva, tab nélkül); `sikertelen` illesztésnél üres (explicit hiány). **Nyers:** a `thayer_forras_javitas.tsv` (2.38) beszúrásai nem kerülnek bele; a javított szöveg nézet (`thayer_bemenet.szakaszok`) |
+| `illesztes` | a Strong illesztési kategóriája: `egyezik` (a bekezdések szóközök nélküli szövege sorban, hézag és maradék nélkül kiadja a TSV szövegét) \| `javitassal` (így van, de csak a 2.38 `javitva` sorainak beszúrásával: a határok pontosak, a `szoveg` nyers; DT333 (2)) \| `reszleges` (nem így: a határok a difflib egyező blokkjain át vetülnek a TSV-szövegre; a szöveg közelítő) \| `sikertelen` (a TSV-ben nincs ilyen Strong) |
+| `forras` | `Thayer.lexicon:<Topic>#<sorszam>` (a szerkezet helye) |
+| `forras_hash` | a bekezdés nyers HTML-jének SHA-256-ja, 16 jegy (az elavulás jele) |
+| `proveniencia` | `scope=<Strong> \| forras=thayer_jelolt/bont.py (fejléc) \| ts=<nap>`; a bemenetek és a kód hash-e a `# forras:` fejlécsorban (a 2.29 mintája) |
+
+Kulcs: `strong` + `sorszam`. Állapot (F132.11, 2026-10-25): 5 426 Strong, 17 093 sor; illesztés: `egyezik` 5 411, `javitassal` 15,
+`reszleges` 0, `sikertelen` 0; fejes szócikk 1 687. A 15 `javitassal` Strong mindegyikében a `Thayer_teljes.tsv` egy összefüggő
+szövegrészt elveszít (összesen 2 715 karakter szóközök nélkül, a G4151-ben 18), jellemzően egy `πρωι` / `νοι` / `Νινευι` alak után (a
+TSV-konverzió hibája); a javítótábla nélkül ezek `reszleges`-ek (F132 M1). A kezelés: DT333 (2), 2.38. A `# forras:` fejlécsor a
+javítótábla hash-ét is hordozza (a bontó csak a határokhoz olvassa).
+
+
+### 2.35 `thayer_vers_jelentes.tsv` — a Thayer igehely-hivatkozásai jelentésponthoz kötve (F132, FELADATOK #132, DT328 (2))
+
+**Generált** (`python eszkozok/thayer_jelolt/vers_jelentes.py --ts <nap>`; kézzel nem szerkeszthető; azonos bemenettel és `--ts`-sel
+bájtra azonos, a `--ellenoriz` és az `eszkozok/thayer_jelolt/teszt_vers_jelentes.py` ellenőrzi). A `Thayer.lexicon` minden
+`<ref onclick="bcv(k,f,v)">` hivatkozására egy sor, a szócikkön belüli sorrendben. A forrásban az igehely gépi attribútum, tehát —
+a BDB-vel (2.29) szemben — nincs szövegből visszafejtés, öröklött könyv és okkód. A forrásban jelöletlen folytatás („Act 9:14,21;
+22:16”: csak a 9:14 `bcv`) **nincs** a táblában (explicit hiány). **Lexikai index, nem study-adat** (CLAUDE.md 2. szabály). Az első két
+sor `# GENERÁLT: …` és `# forras: …`, a harmadik a fejléc. Olvasás `split('\t')`.
+
+| Oszlop | Jelentés |
+|---|---|
+| `strong` | `Strong_padded` (a `thayer_jelolt/kulcs.py` szerint) |
+| `sorszam` | a hivatkozás sorszáma a szócikkben (1-től; a 2.29 `sorszam`-ja) |
+| `szakasz` | a hivatkozást tartalmazó bekezdés `sorszam`-a a `thayer_szakaszok.tsv`-ben (2.34; a `strong` + `szakasz` oda mutat) |
+| `konyv` | a `bcv` könyvszáma (1–66) a `Konyv_normalizalo_tabla.tsv` k-adik adatsorának `Magyar rövidítés`-e (`1Móz`, `Mt`, `JSir`) |
+| `fejezet`, `vers` | a `bcv` fejezet- és versszáma, változatlanul |
+| `karoli_vers` | a Károli-vers a `Karoli_1908.tsv` `Igehely` kulcsa szerint (a Siralmak ott `Sir`); **üres, ha nincs ilyen kulcs** (kitöltés és átkulcsolás nélkül). ÚSZ-helyen a számozás egyezik; az ÓSZ-hivatkozás (LXX-utalás, pl. `Zsolt 103:30`) LXX-számozása csak akkor látszik, ha a vers a Károliban nem létezik — a létező, de eltolt vers nem jelölt |
+| `utvonal` | a `szakasz` útvonala (2.34) |
+| `proveniencia` | `scope=<Strong> \| forras=thayer_jelolt/vers_jelentes.py (fejléc) \| ts=<nap>`; a bemenetek és a kód hash-e a `# forras:` fejlécsorban |
+
+Kulcs: `strong` + `sorszam`. Állapot (F132 M2, 2026-10-25): 63 953 sor (ÚSZ 58 266, ÓSZ 5 687); `karoli_vers` üres: ÚSZ 28, ÓSZ 12.
+
+
+### 2.36 `tiltott_fordulatok.tsv` — tiltott magyar fordulatok (F132, DT331; elv: DT241, F121 2a/2)
+
+**Kézi tábla** (kézzel szerkeszthető; új tételt a fordítási javítások hoznak, a felhasználó döntésével). Szótárfüggetlen: a
+BDB- és a Thayer-lánc közös kapuja, a `forditas_kapuk.py` **15. kapuja** (`15_tiltott`, gátoló; a `kapuk_futtat` és a
+`kapuk_futtat_szakaszos` is futtatja). Olyan magyar szerkezetek, amelyek a fordítás kimenetében hibának számítanak
+(tükörfordítás, hamis barát); a tétel **értelemhez kötött minta**, nem puszta szó (DT241: a „melléknév” nyelvtani értelemben
+helyes). Találatnál a sor nem rögzül automatikusan, kézi ítéletre áll meg. Az első sor `#` megjegyzés, a második a fejléc.
+Olvasás `split('\t')`.
+
+| Oszlop | Jelentés |
+|---|---|
+| `magyar_alak` | a tiltott fordulat olvasható alakja (`melléknéven nevezni`) |
+| `minta` | Python regex, kis/nagybetű-független (`re.IGNORECASE`), a fordítás nyers szövegén; csak az igei / értelemhez kötött szerkezetet fogja |
+| `ertelem` | melyik értelemben tiltott (pl. „ige: nevet adni, más néven is nevezni”) |
+| `helyette` | a javasolt alak (a terminológiai szójegyzékkel összhangban) |
+| `indoklas` | miért hiba |
+| `verzio` | a tétel verziója (`v1` …) |
+| `proveniencia` | `manual (döntés: …; tétel: …)` — a felvételt elrendelő döntés és forrás |
+
+Kulcs: `magyar_alak` + `verzio`. Állapot (F132, 2026-10-25): 2 tétel (a DT241 / F121 2a/2 első elemei: „melléknéven nevezni”,
+„melléknevet adni”); a `forditasok.tsv`-ben a kapu 4 helyen talál, mind a G1941 két sorában (Thayer `teljes`, TBESG `1`; F121 2b/4),
+a 98 nyelvtani „melléknév” sor nem találat. A tartalmat a #121 bővíti.
+
+
+### 2.37 `thayer_sigla.tsv` — a Thayer sigla- és rövidítéstáblája (F132, brief 2a/5)
+
+**Félig kézi tábla.** A számoszlopokat és az új jelölt sorokat az `eszkozok/thayer_jelolt/sigla_gyujt.py --ts <nap>` írja a
+`thayer_szakaszok.tsv` javított nézetéből (`thayer_bemenet.szakaszok`, a 2.38 beszúrásaival: a fordítónak átadott szöveg); a **besorolás kézi** (`tipus`, `jelentes`, `magyar_alak`,
+`allapot`, `besorolas_proveniencia`), és az eszköz ezeket soha nem írja át (írás előtt összeveti, eltérésnél megáll); sort nem töröl (az eltűnt jelölt
+`elofordulas = 0`). A `--ellenoriz` bájtra összevet. A besorolt sorokat a `thayer_jelolt/thayer_kapuk.py` **16. kapuja**
+(`16_sigla`, gátoló) ellenőrzi a Thayer-fordításon; a besorolatlan sor nem gátol (JELZES). A tábla a #129 (BDB-kiadás)
+rövidítésjegyzékének is mintája. Az első két sor `#` megjegyzés (a második: a bemenetek és a kód hash-e), a harmadik a fejléc.
+
+| Oszlop | Jelentés |
+|---|---|
+| `forrasalak` | a sigla / rövidítés a forrás alakjában (`Rec.`, `WH`, `Winers Grammar`, `cf.`, `Macc.`) |
+| `gyujtes` | a gépi gyűjtés szabálya: `minta` (a brief 2a/5 és az M0 7. pontjának megnevezett elemei) \| `kiadas_sigla` (az `R G L T Tr WH` sigla, ha legalább kettő sorban áll) \| `rovidites` (ponttal záruló szóalak, ≥ 10 előfordulás, ≥ 90%-ban ponttal) |
+| `tipus` | **kézi:** pl. `kiadás-sigla`, `grammatika`, `antik szerző`, `modern szerző`, `rövidítés`, `könyvrövidítés`, `nem sigla`; üres: besorolatlan |
+| `jelentes` | **kézi:** mi ez (pl. „Westcott–Hort kiadás”) |
+| `magyar_alak` | **kézi:** a magyar kiadás egységes alakja; `változatlan`: a forrásalak marad; `nincs_egyseges`: nincs egységes magyar alak (több szerep, a szövegkörnyezet dönt; a 16. kapu nem ellenőrzi, az adatblokk így jelzi). `javaslat` és `besorolt` sorban **nem üres** (ELLENOR_F132 4. tétel, F132.21; teszt: `teszt_lanc.py` `test_tabla_sema`); `jelolt` sorban üres |
+| `elofordulas`, `szocikk` | gépi: előfordulás és érintett szócikk a teljes Thayerben |
+| `gerinc_elofordulas` | gépi: előfordulás a motívumok aktuális görög gerincszavaiban (`szolista.gerinc_strongok`) |
+| `pelda` | gépi: az első előfordulás `<strong>:<sorszam>` (a 2.34 kulcsa) |
+| `allapot` | `jelolt` (gépi, besorolatlan) \| `javaslat` (DT335 (3): modell-javaslat a `tipus`, `jelentes`, `magyar_alak` mezőben, **jóváhagyásra vár**; a kapu és az adatblokk besorolatlannak veszi) \| `besorolt` (kézi, a felhasználó jóváhagyásával; csak ilyen sort ellenőriz a 16. kapu; `nincs_egyseges`: a kapu nem ellenőrzi; üres `magyar_alak`: kitöltetlen besorolás, a kapu JELZES-ként jelenti, nem gátol) |
+| `besorolas_proveniencia` | **kézi:** a besorolás (javaslat vagy jóváhagyás) proveniencia-sora; modell-javaslatnál `scope=adat/thayer_sigla.tsv (tipus, jelentes, magyar_alak) \| forras=manual — modell-javaslat (<tényleges modellnév>), nem lekérdezés: … \| ts=<nap>` (CLAUDE.md 1. szabály: nem lekérdezés, tehát `manual`); üres: besorolatlan |
+| `proveniencia` | `scope=adat/thayer_szakaszok.tsv \| forras=thayer_jelolt/sigla_gyujt.py (fejléc) \| ts=<nap>`: a gépi oszlopoké (az eszköz minden futáskor írja) |
+
+Kulcs: `forrasalak`. Állapot (F132.11, 2026-10-25; a javított nézeten): 255 jelölt (`minta` 31, `kiadas_sigla` 6, `rovidites` 218),
+ebből 91 fordul elő a gerincszavakban; besorolt: 0 (az F132.9-es, nyers szövegen mért állapot: 254 / 90). F132.13 (DT335 (3)):
+a 91 gerinc-jelölt mindegyike `javaslat` (`claude-opus-5-5`; magyar alak 22, `változatlan` 62, `nincs_egyseges` 7 — az F132.21 előtt üres —; a
+terminológiai kulcsú sorok alakja a szójegyzéké); a jóváhagyás (`besorolt`) a felhasználóé, az M3 előfeltétele. A lista:
+`naplok/F132_THAYER_SZAKASZ_naplo.md` F132.13. A terminológiai szójegyzék (2.15) 10 jelöltre már ad magyar alakot (`cf.` → `vö.`, `Sept.` →
+`Septuaginta`, `i. e.` → `azaz`, `Plato` → `Platón` …), az elsőbbséget kap (az adatblokk jelzi). F132.19 (DT337 (a), a
+KIRALY-001 G0813 → G0540): a gerincszavakban előforduló jelölt 90 (az `educ.` gerinc-előfordulása 0, `javaslat` marad).
+
+
+### 2.38 `thayer_forras_javitas.tsv` — a `Thayer_teljes.tsv` szövegvesztésének javítótáblája (F132, DT333 (2); a 2.31 mintája)
+
+**Generált** (`python eszkozok/thayer_jelolt/forras_javit.py --ts <nap>`; kézzel nem szerkeszthető; `--ellenoriz`; teszt:
+`eszkozok/thayer_jelolt/teszt_bont.py`, `Javitas`). A DT327 (b) szerint a Thayer-szakasz szövege a `Thayer_teljes.tsv`-ből jön; ahol a
+TSV a `Thayer.lexicon`-hoz képest egy összefüggő szövegrészt elveszít (a TSV-konverzió hibája), a hiányzó szöveg ebben a táblában áll,
+**a nyers fájlok és a szakasztábla (2.34) `szoveg` mezőjének érintése nélkül**. A bontó a táblát csak a szakaszhatárokhoz olvassa (az
+illesztés `javitassal`); a javított szöveg **nézet**: `eszkozok/thayer_jelolt/thayer_bemenet.szakaszok` (a fordítás bemenete, a
+`forras_hash` alapja, a sigla-gyűjtés szövege). A hiányzó szöveg forrása a lexikon bekezdésének címkék nélküli szövege (`bont.sima`):
+sima szöveg, szerkezeti jelölés nélkül. Első két sor `# GENERÁLT` / `# forras` (a két bemenet és a kód hash-e), a harmadik a fejléc.
+Olvasás `split('\t')`. Egy sor = egy lyuk.
+
+| Oszlop | Jelentés |
+|---|---|
+| `strong`, `sorszam` | a 2.34 sora (kulcs), amelybe a beszúrás esik; `jelolt_marad` sorban a `sorszam` üres |
+| `hiba` | `tsv_szovegvesztes` (az egyetlen osztály) |
+| `tsv_poz` | a beszúrás helye a `Thayer_teljes.tsv` `Teljes_szocikk` mezőjében (karakterindex: a lyuk előtti utolsó nem-szóköz karakter után) |
+| `sor_poz` | a beszúrás helye a 2.34 sorának `szoveg` mezőjében (karakterindex) — a nézet ezt használja |
+| `elotte`, `utana` | a sor `szoveg`-ének legfeljebb 20 karaktere a beszúrás előtt és után (igazolás: a nézet eltérésnél ValueError-ral megáll) |
+| `javitott_alak` | a beszúrt szöveg: a lexikonbekezdés sima szövege a lyuk előtti utolsó nem-szóköz karakter utántól a lyuk utolsó karakteréig |
+| `hossz` | a beszúrt szöveg hossza szóközök nélkül |
+| `allapot` | `javitva` (mindhárom gépi feltétel teljesül: a lexikon és a TSV eltérése egyetlen törlés egyetlen bekezdés belsejében; a beszúrással a Strong illesztése `egyezik`; a javított sor szóközök nélkül = a lexikonbekezdés szövege) \| `jelolt_marad` (nem teljesül: nincs javítás, a bontó `reszleges`-t ír) |
+| `indok` | a döntés oka, magyarul |
+| `proveniencia` | `scope=<Strong> \| forras=thayer_jelolt/forras_javit.py (fejléc) \| ts=<nap>` |
+
+Kulcs: `strong` + `sorszam`. Állapot (F132.11, 2026-10-25): 15 sor, mind `javitva` (G0260, G0575, G0846, G1100, G1909, G2675, G3536,
+G3563, G4151, G4404, G4405, G4406, G4407, G5132, G5567), 2 715 karakter szóközök nélkül; `jelolt_marad` 0. A `Thayer_teljes.tsv`
+változatlan.
+
+---
+
+### 2.34 `adat/karoli_modern/` — a modernizált Károli-szövegréteg (F96, FELADATOK #96, DT128, DT305, DT314)
+
+A Károli 1908 modernizált rétege: helyesírás és igealak, a szókincs, a szórend, az írásjel és a betoldás-jelölés változatlan (DT128). **Generált, kézzel nem szerkeszthető**; a javítás a szabályban (`eszkozok/karoli_modern/helyesiras.py`, `igealak.py`, `igeragozas.py`) vagy a kivételtáblában (`KEZI`, `GYANU_KEZI`, `KIVETEL_LEMMA`) történik. Az 1908-as szöveg mellett áll, nem helyette. Olvasás `split('\t')`, írás `'\t'.join()` (a `csv` modul tilos). Az első sor `# GENERÁLT: …` (a bemenetek teljes sha256-ja, a mérés hivatkozása), az első nem-`#` sor a fejléc. A tokenizálás az `eszkozok/karoli_strong/tokenek.py` `tokenizal` függvénye: a `sorszam` ugyanaz, amelyen a #22 párosítás (`adat/karoli_strong/szavak_*.tsv`, 2.20) `sorszam`-a áll. **A réteg Strongot nem tárol és nem ellenőriz** (DT305); a Strong token-kulcson (`igehely` + `sorszam`) illeszthető, és a modernizálástól nem változik (DT314, K3b: a generátor igazolja, hogy a #22 minden Strongos magyar tokenjének kulcsa itt áll, azonos 1908-as alakkal). Mérés: `naplok/KAROLI_MODERN_meres.md` 4. (.1) és 5. (.2).
+
+**Kiadott táblák (F96.3, `eszkozok/karoli_modern/karoli_modern.py`):**
+
+`karoli_modern.tsv` — token-soronként a teljes Károli 1908 (599 367 token). Kulcs: `igehely` + `sorszam`.
+
+| Mező | Típus | Kötelező | Leírás |
+|---|---|---|---|
+| `igehely` | `IGEHELY` | ✔ | a `konkordancia/Karoli_1908.tsv` vers-kulcsa |
+| `sorszam` | egész | ✔ | a token sorszáma a versben (`tokenizal`, 1-től); a #22 `sorszam`-a |
+| `alak_1908` | szöveg | ✔ | az 1908-as token, ahogy a szövegben áll |
+| `alak_modern` | szöveg | | a modern alak; **üres, ha a token kiesik** |
+| `kieso` | zárt | | `osszevonva` (a különírt vonatkozó névmás „a”-ja: *a kik → akik*) \| `segedige` (a segédigei *vala*: *lebeg vala → lebegett*) \| üres |
+| `kieso_gazda` | egész | | a kieső tokennél a gazdaszó `sorszam`-a (az összevont „a”-é a következő, a segédigei *vala*-é az előző token); a kereső ide köti a kieső token Strongját (DT314, #137) |
+| `szabaly` | szöveg | | a cserét adó szabály(ok) `+`-szal (`karakter`, `neki`, `szoto_94`, `rea`, `jok`, `nevmas:…`, `ami:…`, `igealak:<jegy>`, `gyanu_kezi`, `kotohang_mult`, `mult_E1_targyas`, `ok_birtokos`, `kivetel`, `token_kivetel`, `igealak_kezi`, `gyanu_kezi`, `tobbseg:<források>`, `kor3:szabaly+opus`, `kor3:opus` (a 3. kör, DT316), `kor4:szabaly+opus`, `kor4:opus` (a 4. kör, DT317), `kor3:opus_tanusitott`, `kor4:opus_tanusitott`, `tobbseg:opus_tanusitott`, `tobbseg:alanyi_targyas` (a jelölt-kör, DT318), `kor5:token_opus+meglevo` (az 5. kör, DT320), `vala_letige`, `vala_segedige_…` (a `vala_segedige_kor3`, `_kor4` is), `vala_letige_kor4`, `jelen_mult_vala`, `lon`, `vagyon` …); a változatlan tokennél üres vagy a nem cserélő döntés (`mi_birtokos_marad`, `vagyon_fonev_marad`) |
+| `bizonytalan` | szöveg | | a heurisztikus döntés jele (`targyas_heur`, `ek_E1_T3`, `mult_korpuszban_nincs`, `nevelo_utan` (a névelő után álló jelölt főnévnek véve, nem cserél: *a* + mássalhangzós, *az* + magánhangzós szó, *egy*; a mássalhangzós szó előtti *az* névmás, ott nincs kizárás; napló 15.2), `vala_segedige`, `kor3_csak_opus`, `kor4_csak_opus` (a szabály-jelölt nélküli, csak az opus döntötte csere, DT316/r), `szabaly_nem_tanusitott` (a korpuszban nem álló szabály-jelölt helyett a tanúsított opus-alak, DT318), `token_opus` (a tokenszintű opus-válasz egy meglévő jelölttel egyezve, DT320), `mi_birtokos_vagy_vonatkozo` …): a csere megtörtént vagy szándékosan elmaradt, de felhasználói ellenőrzés nélküli |
+
+`karoli_modern_versek.tsv` — versenként a modern szöveg (31 158 vers): `igehely`, `szoveg_modern` (a nem kieső tokenek modern alakja az 1908-as írásjel-vázban; a kieső token és az egy szóköze elmarad), `valtozott` (`igen` \| `nem`). A K2: a `szoveg_modern` újratokenizálva pontosan a vers nem kieső `alak_modern`-jeit adja, sorrendben.
+
+**Mérő- és melléktáblák (generált, nem a kiadott réteg):** `fedettseg_alakok.tsv` (F96.0, alakosztályok), `token_minta.tsv` + `token_minta_hivasok.jsonl` (F96.0/3, API-mérés), `helyesiras_alakok.tsv`, `helyesiras_tokenek.tsv`, `helyesiras_hunspell.tsv` (DT301: csak mérce), `helyesiras_ami_proba.tsv`, `helyesiras_ami_ellenorzes.tsv`, `helyesiras_minta.tsv` (.1), `igealak_alakok.tsv`, `igealak_tokenek.tsv`, `igealak_llm.tsv` + `igealak_llm_hivasok.jsonl` (sonnet), `igealak_llm_opus.tsv` + `igealak_llm_opus_hivasok.jsonl` (opus), `igealak_minta.tsv` (.2), `regies_szken.tsv` (`eszkozok/karoli_modern/regies_szken.py`, a 3. ellenőri kör előtti réteg pillanatképe: a modern szövegben változatlanul maradt régies-igealak-jelöltek; `id`, `tipus` = `alak` \| `vala`, `kerdes`, `gyakorisag`, `szabaly_jelolt` — szövegkörnyezetfüggőnél `E1=…\|T3=…` vagy `alanyi=…\|targyas=…` —, `elso_igehely`, `versreszlet`), `igealak_llm_kor3.tsv` + `igealak_llm_kor3_hivasok.jsonl` (opus, DT316: `id`, `tipus`, `kerdes`, `szabaly_jelolt`, `opus_alak`; a *vala*-páron `-` = létige), `regies_szken_kor4.tsv` + `igealak_llm_kor4.tsv` + `igealak_llm_kor4_hivasok.jsonl` (a 4. kör, DT317: mint a 3. köré, `S%04d`; a `tipus` `jelolt` is: a DT311 opus-szavazata), `regies_szken_kor5.tsv` + `igealak_llm_kor5.tsv` + `igealak_llm_kor5_hivasok.jsonl` (az 5. kör, DT320: tokenenként, `T%04d`; `igehely`, `sorszam`, `alak`, `meglevo_jeloltek`, a kérdéstáblában `vers` — a modern vers, a token [zárójelben] —, a választáblában `opus_alak`), `igealak_minta2.tsv` (N-F96g: a lefedettséget is mérő minta, `H%03d`; `ellenorzes` = `jó` \| `hibás` \| `kihagyás`, a `megjegyzes` `csere=<n> hiba=<n> kihagyas=<n>`-nel kezdődik). Az LLM-táblák modell-kimenetek (`modell_ellenorizetlen`); a minták `ellenorzes`/`megjegyzes` oszlopa a felhasználói (vagy a felhasználó által elfogadott modell-) ellenőrzés, újragenerálásnál megmarad. **Proveniencia (napló 15.4):** az `igealak.py` és a `regies_szken.py` minden táblájának `# GENERÁLT:` fejléce `forras=… | scope=… | ts=…` hármast hordoz; a szken-tábla fejléce a saját körét és döntését nevezi meg (3. kör: N-F96d/e, DT316; 4. kör: DT317; 5. kör: DT320). A szken-táblák pillanatképek: az újrageneráláshoz a bemenetet a pillanatkép commitjából kell visszaállítani (3. kör `8b858b3`, 4. kör `9fd137f`, 5. kör `0dda8b3`). A meglévő válaszfájlokból újraírt LLM-tábla fejlécében a `futas_ts` az LLM-futás eredeti ideje, a `ts` az újraírásé.
+
+### 2.39 `glosszak_heber_hu.tsv` — a TBESH-glosszák magyar fordítása (F140, FELADATOK #140, DT-F140a, DT-F140b)
 
 Kulcs: `entry_id`. Minden héber Strong (8 718; a H9015–H9019 előtag-elemek nincsenek benne) minden
 TBESH-sora egy sor (11 677 sor, DT-F140b K1 (B)). A szó-lap kiemelt jelentés-sorának forrása (a
@@ -1439,6 +1602,7 @@ entry_id szerint rendezve állnak; a szkript írás előtt összeveti a meglév�
 | `megjegyzes` | zárt | | Üres vagy `?`: a fordító (vagy az átnéző) bizonytalan: magyaros átírás (K6), vagy a TBESH-glossza és a definíció eltér (pl. H6808); a `--javit` `=?` értéke a szöveget nem változtatja, a `?`-t beállítja (`kezi`; napló: `? beallitva`, korábbi `?` visszaállításakor `? visszaallitva`). A több értelmet a vessző (szinonimák) vagy a pontosvessző (különböző értelmek) választja el, a két alak együtt él (DT-F140d). Az M2 zárójelentése külön felsorolja. |
 
 **Gyorsítótár (K7):** azonos (`glossza_en`, szófaj) párra egyszer fordul a modell; az eredmény a pár minden sorába kerül. **Elakadók:** a kapun kétszer elbukó sor nem kerül a táblába, hanem a `naplok/GLOSSZA_FORDITAS_elakad.tsv`-be. **Licenc:** a TBESH CC BY 4.0, a fordítás származtatott mű, a `fo` kiválasztása a TAHOT-ot is használja; az `sqlite_epit.py` `ADAT_LICENC`-bejegyzése (`glosszak_heber_hu: ['TBESH', 'TAHOT', 'projekt_adat']`) bekerült (DT-F140b K8, F140.138), így a tábla a TBESH (CC BY 4.0) forrásjelölésével töltődik a `pardes.db`-be.
+
 
 ---
 

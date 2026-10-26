@@ -19,6 +19,7 @@ fugg: [96]
 *FELADATOK #137 · csonk-brief (F20 B3): nem végrehajtható, csak a feladat fejlécét hordozza; v1; 2026.10.24; a #96 N-F96a tétele szerint, a DT-F96b (a felhasználó döntése, chat, 2026-10-24: a keresés a modernizált szövegrétegben is keressen) alapján.*
 
 - **Mit ad, ha kész:** a #96 `adat/karoli_modern/` tábláját a `pardes.db`-be tölti (`szotari_alak` mintájára: hash meta-sor, frissességi teszt), a `kereses.py` pedig a modern alakban is keres, egyesítve a pontos alakkal és a szótári alakos (`szotari_kereso`) találatokkal; a találat a Strong-hivatkozást is visszaadja.
+- **Kötelező (DT314):** a modern táblában a kieső token (összevont „a”, segédigei *vala*) Strongja a `kieso_gazda` szerinti gazdaszóhoz kötődik a keresésben (*amelyen* = H0834 + a névmás Strongja; *lebegett* = az ige + H1961); a Strong a #22 párosításból jön, a modern réteg nem tárolja (DT305). Érintett: 294 token (#96 napló 5.2).
 - **Következő lépés:** brief kell a #96 lezárása után. Nyitott: a vers-lap modern/1908 kapcsolója (#76) része-e, és a keresési teljesítmény mérése (a #95 mintájára).
 
 A valódi briefet a `/befogad` csonk-kitöltése váltja fel, ugyanezen a számon és néven.

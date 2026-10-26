@@ -7,7 +7,7 @@ eszkozok/glossza_forditas.py -- F140 GLOSSZA_FORDITAS: a TBESH rovid glosszajana
 M0: a meres es a sor-valasztas (--m0). M1 (DT-F140b K7 (a)): a session forditja a kotegeket,
 a szkript kotegeket keszit (--koteg), rogzit (--rogzit) es ellenoriz (--ellenoriz); nincs
 modellhivas a szkriptben. M2 utan: --javit <atnezes.tsv> -- a felhasznalo altal jovahagyott javitasok
-naplozott alkalmazasa (allapot=kezi; naplok/GLOSSZA_FORDITAS_javit_naplo.tsv). A tabla: adat/glosszak_heber_hu.tsv (SEMA 2.34).
+naplozott alkalmazasa (allapot=kezi; naplok/GLOSSZA_FORDITAS_javit_naplo.tsv). A tabla: adat/glosszak_heber_hu.tsv (SEMA 2.39).
 
 A TBESH tab-tagolt; az adatsorok az 'eStrong#' fejlecsor utan kezdodnek:
   0 eStrong  1 dStrong ('H2763A =' vagy 'H0430G = a Name of')  2 uStrong

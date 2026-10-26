@@ -503,6 +503,20 @@ class ForrasVersOcr(unittest.TestCase):
         self.assertEqual(len(kapott), 10)
 
 
+class IdezojelForrasMaradvany(unittest.TestCase):
+    """A H4725 `«GKC:130c»` forras-maradvanya (DT-F38j): a « a forrasban is par."""
+
+    def test_forras_francia_idezojel_par(self):
+        forras = 'zz (Ges ^«GKC:130c»§ 130c) zz'
+        forditas = 'zz (Ges ^«GKC:130c»§ 130c) zz'
+        self.assertEqual(K.idezojel_parok_forras(forras), 1)
+        self.assertEqual(K.ellenoriz_idezojel(forras, forditas)[0], 'RENDBEN')
+
+    def test_valodi_hiany_tovabbra_is_serites(self):
+        self.assertEqual(K.ellenoriz_idezojel('nincs', 'itt »van« egy')[0], 'SERTES')
+        self.assertEqual(K.ellenoriz_idezojel('"x" y', 'x y')[0], 'SERTES')
+
+
 class Szakasz(unittest.TestCase):
     """F128 M3: a 14. szakasz-kapu (a `⟪n⟫` határtokenek), szintetikus esetek."""
     F = '⟪1⟫ H1. ab\n⟪2⟫ noun father\n⟪3⟫ 1 father of individual\n⟪4⟫ 2 of God'
@@ -588,6 +602,52 @@ class SzakaszKeszMagyar(unittest.TestCase):
                 hibak.append((st, d))
         self.assertEqual(hibak, [])
         self.assertEqual(n, 674)
+
+
+class Tiltott(unittest.TestCase):
+    """F132 (DT-F132f; elv: DT241): a 15. kapu, adat/tiltott_fordulatok.tsv."""
+
+    def test_tabla_betolt(self):
+        t = K.tiltott_betolt()
+        self.assertGreaterEqual(len(t), 2)
+        self.assertIn('melléknéven nevezni', [a for a, _, _, _ in t])
+
+    def test_igei_szerkezet_sertes(self):
+        for s in ('nevet tenni valakire, melléknéven nevezni', 'akit melléknéven neveznek', 'hogy valakit Melléknéven nevezzenek',
+                  'hívni, nevezni, melléknevet adni', 'melléknevet adott neki', 'nevezték melléknéven is'):
+            self.assertEqual(K.ellenoriz_tiltott(s)[0], 'SERTES', s)
+
+    def test_nyelvtani_melleknev_rendben(self):
+        for s in ('melléknév, hímnemű', 'melléknévként használva', 'melléknévi igenév', 'a melléknév nőnemű alakja',
+                  'más néven is nevezni', 'akit Péternek is neveznek'):
+            self.assertEqual(K.ellenoriz_tiltott(s)[0], 'RENDBEN', s)
+
+    def test_ures_tabla(self):
+        self.assertEqual(K.ellenoriz_tiltott('melléknéven nevezni', tiltott=[])[0], 'RENDBEN')
+
+    def test_gatol_a_kapusorban(self):
+        self.assertIn('15_tiltott', K.GATOLO)
+        e = K.kapuk_futtat('Thayer', 'to surname', 'melléknéven nevezni')
+        self.assertEqual([x for x in e if x[0] == '15_tiltott'][0][1], 'SERTES')
+        self.assertFalse(K.atment(e))
+
+    def test_szakaszos_futtatasban_is(self):
+        e = K.kapuk_futtat_szakaszos('Thayer', '⟪1⟫ to surname', '⟪1⟫ melléknéven nevezni')
+        self.assertEqual([x for x in e if x[0] == '15_tiltott'][0][1], 'SERTES')
+
+    def test_meglevo_forditasok(self):
+        # mérés (F132, 2026-10-25): a forditasok.tsv-ben csak a két G1941 sor 4 helye talál (F121 2b/4); a nyelvtani
+        # „melléknév” sorok nem
+        ut = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'adat', 'forditasok.tsv')
+        with open(ut, encoding='utf-8', newline='') as fh:
+            sorok = [s for s in fh.read().split('\n') if s and not s.startswith('#')]
+        fej = sorok[0].split('\t')
+        talalt = set()
+        for s in sorok[1:]:
+            r = dict(zip(fej, s.split('\t')))
+            if K.ellenoriz_tiltott(r['forditas_hu'])[0] == 'SERTES':
+                talalt.add((r['szotar'], r['strong']))
+        self.assertTrue(talalt <= {('Thayer', 'G1941'), ('TBESG', 'G1941')}, talalt)
 
 
 if __name__ == '__main__':

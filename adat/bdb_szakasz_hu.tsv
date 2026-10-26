@@ -1,5 +1,5 @@
 # GENERÁLT: eszkozok/bdb_jelolt/hu_illeszt.py --ts 2026-10-18 — kézzel nem szerkesztendő (F107, 7. lépés; séma: adat/SEMA.md, bdb_szakasz_hu.tsv).
-# forras: adat/bdb_szakaszok.tsv@66bd24b9abb6 + adat/forditasok.tsv@592f72297862 (csak olvasva) + eszkozok/forditas_kapuk.py@8ce0a55f14eb + kód@8160f92ab708
+# forras: adat/bdb_szakaszok.tsv@66bd24b9abb6 + adat/forditasok.tsv@592f72297862 (csak olvasva) + eszkozok/forditas_kapuk.py@fab8c36e4402 + kód@8160f92ab708
 strong	sorszam	bdb_id	szakasz	resz	utvonal	jel	kategoria	horgony	hu_kezdet	hu_hossz	szoveg_hu	forditas_forras_hash	proveniencia
 H0001	1	BDB17			cim		jelolo_nelkul					099bdbc5cd3ff0af109b4d8b548050bdd0e24a7f	scope=H0001 | forras=bdb_jelolt/hu_illeszt.py (fejléc) | ts=2026-10-18
 H0001	2	BDB17			fej		jelolo_nelkul		0	93	H1. ab אָב_1191 hímnemű főnév: atya (föníciai אב, asszír abu, arab , szabeus אב CIS^iv, 1, 37	099bdbc5cd3ff0af109b4d8b548050bdd0e24a7f	scope=H0001 | forras=bdb_jelolt/hu_illeszt.py (fejléc) | ts=2026-10-18
