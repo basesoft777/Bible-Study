@@ -2407,6 +2407,46 @@ def _e32_dokumentacios_csomopontok(fa):
     return kizart
 
 
+def _e32_string_tokenek(szoveg):
+    """[(sor, oszlop, nyers_szoveg)] a fajl string-tokenjeibol (STRING es, ha a
+    Python tokenizalja, FSTRING_MIDDLE). Tokenizalasi hibanal a lista ures
+    (a hivo ilyenkor az AST-sorra esik vissza)."""
+    import io
+    import tokenize
+    tipusok = {tokenize.STRING}
+    if hasattr(tokenize, 'FSTRING_MIDDLE'):
+        tipusok.add(tokenize.FSTRING_MIDDLE)
+    lista = []
+    try:
+        for tok in tokenize.generate_tokens(io.StringIO(szoveg).readline):
+            if tok.type in tipusok:
+                lista.append((tok.start[0], tok.start[1], tok.string))
+    except (tokenize.TokenError, IndentationError, SyntaxError):
+        return []
+    return lista
+
+
+def _e32_literal_talalatok(csp, tokenek, minta):
+    """[(tenyleges_sor, helyorzo, hely)] egy string-Constantban. Implicit
+    osszefuzesnel ('a' 'b' tobb soron) a Constant egyetlen csomopont, amelynek
+    lineno-ja az elso sor; ezert a csomopont lineno..end_lineno tartomanyaba eso
+    string-tokeneket kulon nezi, es a tokenen beluli sor adja a talalat sorat.
+    Token nelkul (tokenizalasi hiba) az AST-sorra esik vissza."""
+    kezd = (csp.lineno, csp.col_offset)
+    veg = (getattr(csp, 'end_lineno', None) or csp.lineno,
+           getattr(csp, 'end_col_offset', None) if getattr(csp, 'end_col_offset', None) is not None else 10 ** 9)
+    belul = [t for t in tokenek if kezd <= (t[0], t[1]) < veg]
+    if not belul:
+        return [(csp.lineno + csp.value.count('\n', 0, m.start()), m.group(0),
+                 (id(csp), m.start())) for m in minta.finditer(csp.value)]
+    eredmeny = []
+    for sor0, _oszlop, nyers in belul:
+        for m in minta.finditer(nyers):
+            eredmeny.append((sor0 + nyers.count('\n', 0, m.start()), m.group(0),
+                             (sor0, _oszlop, m.start())))
+    return eredmeny
+
+
 def e32_kiosztott_helyorzo_literalban(fajlok):
     """E32: `eszkozok/**/*.py` string-literaljaban (nem megjegyzesben, nem
     docstringben) olyan helyorzo all, amelyhez a szamkiosztas mar veglegesszamot
@@ -2430,16 +2470,20 @@ def e32_kiosztott_helyorzo_literalban(fajlok):
             continue
         sorok = szoveg.splitlines()
         doku = _e32_dokumentacios_csomopontok(fa)
+        tokenek = _e32_string_tokenek(szoveg)
+        latott = set()
         for csp in ast.walk(fa):
             if not (isinstance(csp, ast.Constant) and isinstance(csp.value, str)):
                 continue
             if id(csp) in doku:
                 continue
-            for m in minta.finditer(csp.value):
-                uj = kiosztott.get(m.group(0))
+            for sor, helyorzo, hely in _e32_literal_talalatok(csp, tokenek, minta):
+                if hely in latott:
+                    continue
+                latott.add(hely)
+                uj = kiosztott.get(helyorzo)
                 if not uj:
                     continue
-                sor = csp.lineno + csp.value.count('\n', 0, m.start())
                 sor_szoveg = sorok[sor - 1] if 0 < sor <= len(sorok) else ''
                 if any(j in sor_szoveg for j in E32_KIHAGY_JELOLESEK):
                     continue
@@ -2448,7 +2492,7 @@ def e32_kiosztott_helyorzo_literalban(fajlok):
                     '`%s` kiosztott helyőrző (a szamkiosztas: %s) áll a string-literálban; '
                     'írd a kiosztott számra, vagy tedd számfüggetlenné a szöveget '
                     '(szándékos történeti literálnál: `e32-kihagy` jelölés a sorban)'
-                    % (m.group(0), uj)))
+                    % (helyorzo, uj)))
     return talalatok
 
 

@@ -1561,6 +1561,25 @@ class E32Teszt(unittest.TestCase):
         t = self._fut('S = """elso\nmasodik DT-F127b\nharmadik"""\n')
         self.assertEqual([x.sor for x in t], [2])
 
+    def test_pozitiv_osszefuzott_tobbsoros_literal_tenyleges_sora(self):
+        # implicit string-osszefuzes: egyetlen Constant, lineno = elso sor
+        forras = ('x = 1\nS = ("elso sor "\n     "masodik DT-F127b "\n     "harmadik DT-F127b")\n')
+        t = self._fut(forras)
+        self.assertEqual([x.sor for x in t], [3, 4])
+
+    def test_pozitiv_osszefuzott_literal_harmadik_soron(self):
+        forras = 'print("a "\n      "b "\n      "c DT-F127b")\n'
+        self.assertEqual([x.sor for x in self._fut(forras)], [3])
+
+    def test_negativ_osszefuzott_literal_kihagy_a_tenyleges_soron(self):
+        forras = ('S = ("elso "\n     "DT-F127b "  # e32-kihagy: torteneti\n     "vege")\n')
+        self.assertEqual(self._fut(forras), [])
+
+    def test_pozitiv_osszefuzott_literal_kihagy_mas_soron_nem_vedi(self):
+        # a kihagy-jeloles az elso soron van, a helyorzo a masodikon
+        forras = ('S = ("elso "  # e32-kihagy\n     "DT-F127b "\n     "vege")\n')
+        self.assertEqual([x.sor for x in self._fut(forras)], [2])
+
     def test_pozitiv_fstring_literal_resze(self):
         t = self._fut('n = 3\nprint(f"{n} db, DT-F127b szerint")\n')
         self.assertEqual([x.sor for x in t], [2])
