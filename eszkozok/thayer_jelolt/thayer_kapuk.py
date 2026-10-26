@@ -23,6 +23,9 @@ fut, és egy Thayer-specifikus kapuval bővül:
       alakját a kapu továbbra is megköveteli (az ablakot a fordítás körülötte lefordított szövege nem tartalmazza). Ismert határ: ha a
       fordító egy nagybetűs szóval induló, 3+ szavas angol mondatrészt a siglával együtt fordítatlanul hagy, a kapu ezt átvételnek veszi;
       ezt a 14. szakasz-, 6. hossz- és az egyéb kapuk, valamint a független ellenőrzés fogja.
+      **A kivétel nem érvényes a `rövidítés` típusú sorra** (`cf.`, `Cf.`, `Sept.`, `i. e.`): a rövidítést (`cf.` -> `vö.`) a fordításnak minden
+      előfordulásban fel kell oldania, akkor is, ha utána nagybetűs szó áll (`cf. Winers Grammar, § 12`); a műcím-kivétel a szerző-/név-típusú
+      sorokra szól (a szerző-típusok szűkítése: ELLENOR_F145 1b, felhasználói döntésre vár).
   (b) **Ragozás-tűrés.** A cél-alak (a `magyar_alak`, `változatlan` esetén a `forrasalak`) szó elején kezdődik, de toldalékot elfogad
       (`Homérosztól`, `Platónnál`, `Septuagintában`, `Gesenius-szal`): a cél-alak után nincs szóhatár-követelmény. Nem érvényes (a szóhatár
       marad): az egybetűs siglára (láncszabály), a legfeljebb 3 betűs cél-alakra (`Tr` ~ `Trench`, `WH`) és a `könyvrövidítés` típusra
@@ -56,6 +59,7 @@ THAYER_GATOLO = ['16_sigla']
 VALTOZATLAN = 'változatlan'
 NINCS_EGYSEGES = 'nincs_egyseges'
 ATVETEL_SZO = 3                                   # F145 (a): a változatlan átvétel ablaka: a sigla szava + ennyi szó
+ROVIDITES = 'rövidítés'                          # F145 (a): a rövidítés típusú sorra nincs műcím-kivétel (ELLENOR_F145 1a)
 KONYVROV = 'könyvrövidítés'                      # F145 (c): számjegy mögött is találat
 TOLDALEK_MIN = 4                                  # F145 (b): ennél rövidebb cél-alaknál nincs toldalék-tűrés
 _CACHE = {}
@@ -120,7 +124,7 @@ def ellenoriz_sigla(forras, forditas, sigla=None):
             besorolatlan += 1
             continue
         cel = r['forrasalak'] if r['magyar_alak'] == VALTOZATLAN else r['magyar_alak']
-        if cel != r['forrasalak'] and all(_atvett(forras, m, forditas_norm) for m in _re(r['forrasalak']).finditer(forras)):
+        if cel != r['forrasalak'] and r.get('tipus') != ROVIDITES and all(_atvett(forras, m, forditas_norm) for m in _re(r['forrasalak']).finditer(forras)):
             atvetel.append(r['forrasalak'])      # minden előfordulás változatlan átvétel: a sor nem ellenőrzött
             continue
         n += 1

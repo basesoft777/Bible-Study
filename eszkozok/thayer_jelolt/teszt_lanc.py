@@ -190,6 +190,15 @@ class Sigla(unittest.TestCase):
         # szóhatár: a címet tartalmazó hosszabb szó nem fedez
         self.assertEqual(TK.ellenoriz_sigla(self.CIM, "(J. G. Müller, xPhilo's Lehre von der Weltschöpfung, o. 173f)", self.PHILO)[0], 'SERTES')
 
+    def test_atvetel_rovidites_nem_mentesul(self):
+        # ELLENOR_F145 1a: a `rövidítés` típusú sorra nincs műcím-kivétel: a fordítatlan `cf. Winers Grammar, § 12` SERTES
+        cf = [{'forrasalak': 'cf.', 'tipus': 'rövidítés', 'allapot': 'besorolt', 'magyar_alak': 'vö.'}]
+        f = 'cf. Winers Grammar, § 12'
+        self.assertEqual(TK.ellenoriz_sigla(f, f, cf), ('SERTES', 'cf. -> vö. hiányzik'))
+        self.assertEqual(TK.ellenoriz_sigla(f, 'vö. Winers Grammar, § 12', cf), ('RENDBEN', '1 besorolt sigla rendben'))
+        # pozitív kontroll: ugyanez a minta szerző-típusnál (Philo-műcím) továbbra is átvétel
+        self.assertEqual(TK.ellenoriz_sigla(self.CIM, self.CIM, self.PHILO)[0], 'RENDBEN')
+
     def test_atvetel_valtozatlan_sor_nem_erintett(self):
         # a `változatlan` sor cél-alakja maga a forrásalak: az átvétel-logika nem érinti
         s = [{'forrasalak': 'Gesenius', 'tipus': 'modern szerző', 'allapot': 'besorolt', 'magyar_alak': TK.VALTOZATLAN}]

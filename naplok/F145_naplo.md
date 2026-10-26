@@ -133,3 +133,7 @@ esetben sem vizsgálva; javítás/nyitott tétel nincs felvéve.
 **Megfigyelések a #142-nek.** (1) A DT-F142b leírásával ellentétben a `Philo` német műcímben csak a G0012-ben áll; a G0282 és a G4151 `Philo`-ja folyó szöveg, ott `Philón` kell
 és lehet (a kapu ezt követeli). (2) A 8 Strong *tényleges* újrafuttatása (fordítás) a #142 dolga; a próba csak azt mutatja, hogy a kapu nem akadályoz. (3) A műcím-kivétel
 ismert határa: egy nagybetűs szóval induló, 3+ szavas angol mondatrész fordítatlanul hagyása a siglával együtt a 16. kapun átmegy (l. F145.2).
+
+## Javítókör (ELLENOR_F145_1)
+
+- **F145.9 (1a, ELLENOR_F145 1. tétel mechanikus rész):** a `thayer_kapuk.py` műcím-/átvétel-kivétele nem érvényesül a `tipus = rövidítés` sorra (`cf.`, `Cf.`, `Sept.`, `i. e.`); a `ROVIDITES` állandó és a feltétel a `ellenoriz_sigla`-ban, docstring és SEMA 2.37 frissítve. Teszt: `test_atvetel_rovidites_nem_mentesul` (`cf. Winers Grammar, § 12`, forrás = fordítás → SERTES; `vö. Winers Grammar, § 12` → RENDBEN; a Philo-műcím pozitív kontroll RENDBEN). Az `antik szerző`, `modern szerző` stb. típusokat nem módosítottam: az 1b (a szerző-típusú siglák kivétele) tartalmi döntés, a felhasználóra vár. Tesztek: `teszt_lanc.py` 33 teszt, 1 fennálló hiba (a `# forras:` hash-eltérés, `main`-en is); `teszt_bont.py` 2 fennálló hiba (ugyanaz); `teszt_forditas_kapuk.py` 90 OK; `teszt_vers_jelentes.py` 9 OK; `teszt_ellenoriz_13.py` 45 OK.

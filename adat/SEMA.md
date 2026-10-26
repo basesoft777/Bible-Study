@@ -1515,7 +1515,7 @@ előfordulására (a forrás-oldali keresés: önálló szó; az egybetűs sigla
 legalább három szó követ, az első követő szó nagybetűs (cím-jelleg: `Philo's Lehre von der Weltschöpfung`), és a sigla szavától a harmadik
 követő szóig (záró írásjel nélkül) a szöveg szó szerint, szóhatáron kezdődően megvan a fordításban, *átvett*: nem követeli meg a magyar
 alakot (a prompt 5. szabálya: a műcím változatlan). Ha minden előfordulás átvett, a sor nem ellenőrzött, és a kapu részletében „N sigla változatlan
-átvételben, nem ellenőrzött” áll; a folyó szövegbeli (nem átvett) előfordulás magyar alakját a kapu továbbra is megköveteli. **(b) Ragozás-tűrés:** a
+átvételben, nem ellenőrzött” áll; a folyó szövegbeli (nem átvett) előfordulás magyar alakját a kapu továbbra is megköveteli. A kivétel a `rövidítés` típusú sorra nem érvényes (`cf.`, `Sept.`, `i. e.`: a rövidítést minden előfordulásban fel kell oldani, `cf. Winers Grammar, § 12` -> `vö. …`). **(b) Ragozás-tűrés:** a
 legalább 4 betűs, nem `könyvrövidítés` típusú cél-alak szó elején kezdődik, de toldalékot elfogad (`Homérosztól`, `Platónnál`); a rövidebb
 cél-alaknál (`Tr`, `WH`) és a `könyvrövidítés`nél a szóvég-határ marad. **(c) Számjegy-előtag:** a `könyvrövidítés` típusú sor cél-alakja számjegy
 mögött is találat (`4Makk`, `2Makk`, a 11. kapu `normalizal.APOKRIF_ALIAS` alakja). Az első két sor `#` megjegyzés (a második: a bemenetek és a kód hash-e), a harmadik a fejléc.
