@@ -83,3 +83,13 @@ forrásból); részleges lefedettség, `elavult` / `pilot` szakasz, másik Stron
 változott. Mérés: a #142 fáján `futtat.py --valtozott adat/forditasok.tsv adat/lexikon_hivatkozasok.tsv`: **E19 0 HIBA** (M0: 3). Tesztek:
 `test_szabalyok.py` `E19SzakaszTeszt` (7 új: teljes lefedettség — nincs találat; hiányzó Thayer-szakasz, részleges BDB-lefedés, `elavult`/`pilot`, másik Strong,
 nincs szakasztábla, nem `teljes` hivatkozás — HIBA); az `E19Teszt` változatlan; 192 teszt, 1 hiba (az `E16EsemenyTest`, `main`-en is).
+
+## F145.5 — a két állapotfüggő teszt (`teszt_lanc.py`, DT-F142a)
+
+Választás: **fixture** (a brief 3. pontjának második útja), mert a `test_g1941_reszei`-nek mindkét állapotot (a sigla-jóváhagyás előtti `javaslat` és az utáni
+`besorolt`) igazolnia kell, nem a valódi tábla pillanatnyi állapotát. A `cf.` sor megjelenése külön teszt (`test_g1941_cf_a_sigla_tabla_allapota_szerint`),
+`TK.sigla_betolt` helyettesítésével: `javaslat` -> `` `cf.` [besorolatlan a sigla-táblában; a terminológia szerint: `vö.`] ``, `besorolt` -> `` `cf.` → `vö.` ``
+(pozitív és negatív állítással); a `test_g1941_reszei` többi állítása (sigla-független) a valódi táblával marad. A `test_beir_kezi_marad` az ideiglenes
+`forditasok.tsv`-másolatból a `Thayer G1941 G1941 sz…` sorokat kiszűri (`_forditasok(torol=…)`), és azt is állítja, hogy a régi `teljes` sor megvan: így a valódi
+tábla állapotától (G1941 szakaszsorok jelenléte) független. Eredmény: `main`-en és a #142 fáján is a két teszt zöld; a `teszt_lanc.py` egyetlen hibája a
+fennálló `test_tabla_determinisztikus_es_kezi_vedett` (`# forras:` hash-eltérés, `main`-en is; M0).

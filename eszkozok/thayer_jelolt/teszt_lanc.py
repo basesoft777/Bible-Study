@@ -292,7 +292,25 @@ class Adatblokk(unittest.TestCase):
         self.assertIn('Mt, Mk, Luk, Ján, ApCsel', b)          # a párosítás le nem fedett ÚSZ-könyvei, explicit
         self.assertIn('1Pét 1:17 „És ha Atyának hívjátok őt', b)
         self.assertIn('= H7121', b)
-        self.assertIn('`cf.` [besorolatlan a sigla-táblában; a terminológia szerint: `vö.`]', b)
+
+    def test_g1941_cf_a_sigla_tabla_allapota_szerint(self):
+        # F145 (DT-F142a): a `cf.` sor megjelenése a sigla-tábla állapotától függ (a #142 jóváhagyása előtt `javaslat`, utána
+        # `besorolt`); a teszt ezért fixture-rel méri mindkét állapotot, nem a valódi táblával
+        eredeti = TK.sigla_betolt
+        try:
+            for allapot, magyar, vart in (
+                    ('javaslat', TK.VALTOZATLAN, '`cf.` [besorolatlan a sigla-táblában; a terminológia szerint: `vö.`]'),
+                    ('besorolt', 'vö.', '`cf.` → `vö.` (próba)')):
+                TK.sigla_betolt = lambda ut=None, a=allapot, m=magyar: [
+                    {'forrasalak': 'cf.', 'allapot': a, 'magyar_alak': m, 'jelentes': 'próba'}]
+                b = adatblokk.blokk('G1941', ts='T')
+                self.assertIn(vart, b, allapot)
+                if allapot == 'javaslat':
+                    self.assertNotIn('`cf.` → ', b)
+                else:
+                    self.assertNotIn('besorolatlan a sigla-táblában', b)
+        finally:
+            TK.sigla_betolt = eredeti
 
     def test_sigla_nincs_egyseges(self):
         # ELLENOR_F132 4.: a besorolt `nincs_egyseges` sor nem alakként jelenik meg, hanem explicit jelöléssel
@@ -372,11 +390,17 @@ class Lanc(unittest.TestCase):
         tsv_ir(mu, F.FEJLEC, F.szakasz_sorok(sp, sz, szoveg, allapot, 'claude-sonnet-x', '2026.10.25', 'v4', ''), 'munka')
         return mu
 
-    def _forditasok(self):
+    def _forditasok(self, torol=None):
+        """A valódi `forditasok.tsv` ideiglenes másolata; `torol`: az ezzel kezdődő sorok nélkül (F145, DT-F142a: a teszt ne függjön
+        attól, hogy a valódi táblában vannak-e már az adott Strong szakaszsorai)."""
         ut = os.path.join(self.tmp, 'forditasok.tsv')
-        shutil.copy(F.FORDITASOK_UT, ut)
-        with open(ut, encoding='utf-8', newline='') as f:
-            return ut, f.read()
+        with open(F.FORDITASOK_UT, encoding='utf-8', newline='') as f:
+            szoveg = f.read()
+        if torol:
+            szoveg = ''.join(s + '\n' for s in szoveg.split('\n')[:-1] if not s.startswith(torol))
+        with open(ut, 'w', encoding='utf-8', newline='') as f:
+            f.write(szoveg)
+        return ut, szoveg
 
     def test_beir_opus_regi_elavul(self):
         mu = self._munka('G0813')
@@ -395,7 +419,9 @@ class Lanc(unittest.TestCase):
 
     def test_beir_kezi_marad(self):
         mu = self._munka('G1941')
-        ut, eredeti = self._forditasok()
+        # F145 (DT-F142a): állapot-független — a G1941 szakaszsorai nélküli másolaton (a régi `teljes` kezi sor marad)
+        ut, eredeti = self._forditasok(torol='Thayer\tG1941\tG1941\tsz')
+        self.assertIn('\nThayer\tG1941\tG1941\tteljes\t', eredeti)
         with self.assertRaises(SystemExit):        # DT-F132c (ii): kezi régi sor mellett csak --kezi-marad
             F.beir(['G1941'], 'sonnet', '2026.10.25', regi_elavult=True, munka_ut=mu, forditasok_ut=ut)
         F.beir(['G1941'], 'sonnet', '2026.10.25', kezi_marad=True, munka_ut=mu, forditasok_ut=ut)
