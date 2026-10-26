@@ -93,3 +93,43 @@ Választás: **fixture** (a brief 3. pontjának második útja), mert a `test_g1
 `forditasok.tsv`-másolatból a `Thayer G1941 G1941 sz…` sorokat kiszűri (`_forditasok(torol=…)`), és azt is állítja, hogy a régi `teljes` sor megvan: így a valódi
 tábla állapotától (G1941 szakaszsorok jelenléte) független. Eredmény: `main`-en és a #142 fáján is a két teszt zöld; a `teszt_lanc.py` egyetlen hibája a
 fennálló `test_tabla_determinisztikus_es_kezi_vedett` (`# forras:` hash-eltérés, `main`-en is; M0).
+
+## Mz — mérés a javítás után (F145.7)
+
+Módszer: a #142 ágának fája (`2e60464`, a repón kívüli munkafa), a javított fájlokkal felülírva (`thayer_kapuk.py`, `ellenoriz.py`, `szabalyok.py`, a tesztek,
+`SEMA.md`); a fa nem commitolt, nem pusholt. Nyers kimenet: `naplok/F145_meres_Mz.tsv`. Proveniencia: `scope=<Strong> | forras=python naplok/F145_meres.py --gyoker <a javított #142-fa> | ts=2026-10-26`.
+
+| Strong | 16. kapu M0 | 16. kapu Mz | a változás oka |
+|---|---|---|---|
+| G1311 | SERTES `Homer -> Homérosz` | RENDBEN (9 sigla) | (b) `Homérosztól` találat |
+| G5351 | SERTES `Homer -> Homérosz` | RENDBEN (14) | (b) |
+| G1944 | SERTES `Macc. -> Makk` | RENDBEN (5) | (c) `4Makk` számjegy mögött |
+| G5010 | SERTES `Macc. -> Makk` | RENDBEN (11) | (c) `2Makk` |
+| G5590 | SERTES `Macc. -> Makk` | RENDBEN (39) | (b) `Homérosztól` + (c) `1Makk`, `4Makk` |
+| G0012 | SERTES `Philo -> Philón` | RENDBEN (11 sigla; 1 változatlan átvételben: Philo) | (a) a `Philo's Lehre von der Weltschöpfung` műcím |
+| G0282 | RENDBEN | RENDBEN | nem érintett (a `Philo` folyó szöveg, `Philón` kell) |
+| G4151 | RENDBEN | RENDBEN | nem érintett (`Philo's use of …` folyó szöveg) |
+
+Az 5. (`Homer down`) és a 11. kapu a próbán M0-n és Mz-n egyaránt RENDBEN (nem változott; a kontroll-próba azt mutatja, hogy a három kapu egyszerre
+teljesíthető). Más kapu nem lazult: a kapusorból csak a `16_sigla` változott; a `forditas_kapuk.py` és a `normalizal.py` érintetlen. **A #142 már rögzített 5 Strongja**
+(G0086, G0540, G1941, G2671, G5356): a teljes kapusor eredménye és részlete **bájtra azonos** az M0-val (`diff` üres), minden kapu RENDBEN.
+
+| Mérés (Mz, a javított kód a #142 fáján) | M0 | Mz |
+|---|---|---|
+| `python eszkozok/ellenoriz.py` | SÉRTÉS 1 (13. szabály: 19) | **SÉRTÉS 0** (RENDBEN 14, KÉZI 2, JELENTÉS 3) |
+| `futtat.py --valtozott adat/forditasok.tsv adat/lexikon_hivatkozasok.tsv` E19 | HIBA 3 | **0** |
+| `python eszkozok/feladatok.py ellenoriz` | — | 165 brief, 0 hiba, 0 figyelmeztetés |
+| `teszt_lanc.py` | 3 hiba | 32 teszt, 1 hiba (a fennálló `test_tabla_determinisztikus_es_kezi_vedett`) |
+| `teszt_forditas_kapuk.py` / `teszt_ellenoriz_13.py` / `teszt_vers_jelentes.py` | OK | 90 OK / 45 OK / 9 OK |
+| `test_szabalyok.py` | 1 hiba (`E16Esemeny…`) | 192 teszt, ugyanaz az 1 hiba |
+| `teszt_bont.py` | 2 hiba | 2 hiba (fennálló hash-eltérés) |
+
+`main`-en (ez az ág) ugyanez: `ellenoriz.py` SÉRTÉS 0; `feladatok.py ellenoriz` 0 hiba; E19 `--teljes` 0 találat; a tesztek eredménye a fentivel azonos.
+
+**Nem e feladat (fennálló, csak mérve):** a `# forras:` hash-eltérés (`sigla_gyujt.py --ellenoriz`; `teszt_bont.py` `test_ellenoriz`, `test_forras_javit_ellenoriz`;
+`teszt_lanc.py` `test_tabla_determinisztikus_es_kezi_vedett`) és az `E16EsemenyTest.test_push_ures_cimmel_nem_piros` `main`-en is bukik (M0). Az oka egyik
+esetben sem vizsgálva; javítás/nyitott tétel nincs felvéve.
+
+**Megfigyelések a #142-nek.** (1) A DT-F142b leírásával ellentétben a `Philo` német műcímben csak a G0012-ben áll; a G0282 és a G4151 `Philo`-ja folyó szöveg, ott `Philón` kell
+és lehet (a kapu ezt követeli). (2) A 8 Strong *tényleges* újrafuttatása (fordítás) a #142 dolga; a próba csak azt mutatja, hogy a kapu nem akadályoz. (3) A műcím-kivétel
+ismert határa: egy nagybetűs szóval induló, 3+ szavas angol mondatrész fordítatlanul hagyása a siglával együtt a 16. kapun átmegy (l. F145.2).
