@@ -12,6 +12,9 @@ Kimenet: naplok/GLOSSZA_FORDITAS_minta_DTF140c.tsv (az `itelet` és `javaslat_hu
 megjegyzes elvesznének). A minta a DT-F140c javításai után NEM reprodukálható: a jogosult halmaz az aktuális
 `allapot`-tól függ (a kijavított `kezi` sorok kiesnek); a rögzített seed csak a javítás előtti állapotra ad
 ugyanazt; a minta tartalma a két mintafájlban él (naplok/GLOSSZA_FORDITAS_minta*_DTF140c.tsv).
+  python eszkozok/glossza_minta.py --ige-kozos   DT-F140c (b): az összes át nem nézett `sonnet` ige-sor, amelynek
+    angol glosszáján legalább 2 Strong osztozik (a testvér-, minta- és átnézési-listás sorok kizárva); kimenet:
+    naplok/GLOSSZA_FORDITAS_ige_kozos_DTF140c.tsv (glossza szerint rendezve)
 Használat: python eszkozok/glossza_minta.py [--felulir]
   python eszkozok/glossza_minta.py --ige2   második ige-minta (DT-F140c (A) 3. lépés): 150 sor, seed 141,
     kizárja az első minta soraiból és a DT-F140c javításaiból érintett sorokat; kimenet:
@@ -81,7 +84,43 @@ def main_ige2():
     print('ige2: jogosult %d, minta %d -> %s' % (len(jel), len(ki), ut))
 
 
+def main_ige_kozos():
+    import collections
+    tabla = g.tabla_olvas()
+    tb = {s['entry_id']: s for s in g.tbesh_sorok()}
+    gyak = g.tahot_gyakorisag()
+    kiz = atnezett()
+    for f in ('GLOSSZA_FORDITAS_minta_DTF140c.tsv', 'GLOSSZA_FORDITAS_minta2_ige_DTF140c.tsv',
+              'GLOSSZA_FORDITAS_testver_DTF140d.tsv'):
+        with open(os.path.join(g.GYOKER, 'naplok', f), encoding='utf-8') as fh:
+            for i, sor in enumerate(fh):
+                m = sor.split('\t')
+                if i and len(m) > 2:
+                    kiz.add(m[2])
+    ige = [k for k, r in tabla.items() if r['glossza_en'].startswith('to ') and not r['strong'].startswith('H9')]
+    csop = collections.defaultdict(list)
+    for k in ige:
+        csop[tabla[k]['glossza_en']].append(k)
+    ki = []
+    for gl in sorted(csop):
+        if len({tabla[k]['strong'] for k in csop[gl]}) < 2:
+            continue
+        ki += [k for k in sorted(csop[gl]) if tabla[k]['allapot'] == 'sonnet' and k not in kiz]
+    ut = os.path.join(g.GYOKER, 'naplok', 'GLOSSZA_FORDITAS_ige_kozos_DTF140c.tsv')
+    vedett(ut)
+    with open(ut, 'w', encoding='utf-8', newline='\n') as f:
+        f.write('\t'.join(['reteg', 'strong', 'entry_id', 'tahot_elofordulas', 'lemma', 'glossza_en',
+                           'definicio_eleje', 'glossza_hu', 'itelet', 'javaslat_hu', 'megjegyzes']) + '\n')
+        for k in ki:
+            r, s = tabla[k], tb[k]
+            f.write('\t'.join(['ige_kozos', r['strong'], k, str(gyak.get(r['strong'], 0)), s['lemma'], r['glossza_en'],
+                               s['definicio'][:160], r['glossza_hu'], '', '', '']) + '\n')
+    print('ige_kozos: %d sor -> %s' % (len(ki), ut))
+
+
 def main():
+    if '--ige-kozos' in sys.argv:
+        return main_ige_kozos()
     if '--ige2' in sys.argv:
         return main_ige2()
     vedett(KIMENET)
