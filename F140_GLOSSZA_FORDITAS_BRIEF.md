@@ -11,7 +11,7 @@ ad: minden héber Strong-számhoz (8 718) rövid magyar jelentés egy új adatt�
 kovetkezo: "Te: /elteres F140 — a független ellenőr ELTÉRÉS-t jelzett (naplok/ELLENOR_F140.md, 7 tétel: H6308 és H6117 fordítási hiba, ~4% hibaarány a mintában; javít-napló ? törlés; zárójelentés elavult; H8577M; 13 backtick; ir lista)"
 munka: adat
 olvas: [konkordancia/TBESH.txt, konkordancia/TBESH_TBESG_README.md, konkordancia/Strong_szotar.tsv, konkordancia/TAHOT_kivonat.tsv, adat/terminologia.tsv, eszkozok/forditas_kapuk.py, eszkozok/emeles.py]
-ir: [adat/glosszak_heber_hu.tsv, adat/SEMA.md, eszkozok/glossza_forditas.py, eszkozok/teszt_glossza_forditas.py, naplok/GLOSSZA_FORDITAS_elakad.tsv, naplok/GLOSSZA_FORDITAS_atnezes.tsv, naplok/GLOSSZA_FORDITAS_zaras.md]
+ir: [adat/glosszak_heber_hu.tsv, adat/SEMA.md, eszkozok/glossza_forditas.py, eszkozok/teszt_glossza_forditas.py, naplok/GLOSSZA_FORDITAS_elakad.tsv, naplok/GLOSSZA_FORDITAS_atnezes.tsv, naplok/GLOSSZA_FORDITAS_zaras.md, naplok/GLOSSZA_FORDITAS_M0.md, naplok/GLOSSZA_FORDITAS_M1_naplo.md, naplok/GLOSSZA_FORDITAS_homonima_szuroproba.tsv, naplok/GLOSSZA_FORDITAS_javit_naplo.tsv, naplok/ELLENOR_F140*.md, DONTESEK.md]
 fugg: []
 nem_fugg: [38, 138]
 ---
