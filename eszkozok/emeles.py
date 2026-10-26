@@ -992,7 +992,7 @@ def cmd_szakasz_beir(args):
                 raise SystemExit('%s: van regi `teljes` sor -- --regi-elavult kell (DT-F128e)' % sp)
             if not regi_marad and regi[i_allapot] != 'elavult':
                 regi[i_allapot] = 'elavult'
-                regi[i_megj] = '; '.join(x for x in (regi[i_megj], 'felváltva: szakaszonkénti fordítás (%s; DT-F128e)'
+                regi[i_megj] = '; '.join(x for x in (regi[i_megj], 'felváltva: szakaszonkénti fordítás (%s; DT289)'
                                                       % datum) if x)
                 sorok[idx[teljes_k]] = '\t'.join(regi)
                 valtozott.add(idx[teljes_k])
