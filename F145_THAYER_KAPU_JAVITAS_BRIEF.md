@@ -6,10 +6,10 @@ tipus: feladat
 fazis: 2
 modell: sonnet
 munka: adat
-allapot: megallt
+allapot: lezarva
 ag: ccr-4d66ac1d-v5f9un
 ad: a 16_sigla kapu a változatlanul átvett siglát csak egyedi (sigla, ablak) párnál nem követeli meg (kezdetben G0012 `Philo's Lehre von der`, DT-F145a (b); általános műcím-kivétel nincs), a magyar alakot ragozva és számjegy mögött (`Homérosztól`, `4Makk`) is elfogadja; az ellenoriz.py 13. szabálya a Thayer szakaszsorok forrásszövegét is ismeri (SÉRTÉS 0); a CI E19 a `teljes` hivatkozást a Strong teljes `sz<n>`-lefedettségével is fedettnek veszi (a #142 PR #482-je zöld); a teszt_lanc.py két állapotfüggő tesztje zöld; a #142 bukott és várakozó 8 Strongja újrafuttatható
-kovetkezo: "Te: [elteres_kor 2/2] ELLENOR_F145_2 1. mechanikus (zárónapló + brief ad/lezarva_osszegzes elavult), 2. mechanikus (az F145.14 napló 5-Strongos méréséről a bizonyíték hiányzik); korlát betelt; a PR címe [ELLENŐRZŐ] előtagú"
+kovetkezo: "nincs; a #142 újraindítása a 8 Strongra (G0012, G0282, G4151, G1311, G1944, G5010, G5351, G5590) a #142 dolga"
 pr:
 lezarva_osszegzes: "A 16_sigla kapu egyedi átvétel-kivétele (csak G0012 `Philo's Lehre von der`, DT-F145a (b)), ragozás-tűrése és számjegy-előtagja, az ellenoriz.py 13. szabályának Thayer-ága és a CI E19 szakasz-lefedettsége kész, a két állapotfüggő teszt állapot-független; a #142 fáján ellenoriz.py SÉRTÉS 1→0, E19 HIBA 3→0, a 8 Strong 16. kapuja (kontroll-próba) RENDBEN, az 5 rögzített Strong kapueredménye változatlan (a #142 fájának adataiból levezetve, a #142 fáján újramérve; naplok/F145_zaras.md)."
 olvas: [eszkozok/thayer_jelolt/, eszkozok/normalizal.py, eszkozok/ellenoriz.py, eszkozok/teszt_ellenoriz_13.py, eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/tesztek/test_szabalyok.py, adat/thayer_sigla.tsv, adat/thayer_szakaszok.tsv, adat/thayer_forras_javitas.tsv, adat/terminologia.tsv, naplok/F132_THAYER_SZAKASZ_bukottak.tsv, F142_THAYER_M3_BRIEF.md, F132_THAYER_SZAKASZ_BRIEF.md]
