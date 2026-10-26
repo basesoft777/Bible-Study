@@ -810,6 +810,13 @@ jóváhagyott (`--allapot kezi`) szakaszsorokhoz `--regi-elavult --kezi-felulir`
 sor forrásszövegét a szakasztáblából veszi (a `forras_hash` fenti alapja). A #60 pilot (`olvaso_pilot/adat.py`) nincs
 átállítva (csak újragenerálásnál számít; DT291 (a)). A 9 táblán kívüli Strong (H0747, H1753, H3367, H3848, H4123, H4725, H6433, H7560, H8065) és a Thayer a régi
 `teljes` úton (prompt v4) fordul (DT288 (2)); a `reszleges` / `sikertelen` / `csonk` illesztésű Strong is szakaszonként.
+
+**Thayer `sz<n>` sorok (F132, F145; DT-F142d).** A Thayer a #132 óta szakaszonként is fordul (`eszkozok/thayer_jelolt/forditas.py`, prompt
+`forditas/prompt_v5_1.md`); az `sz<n>` sor `forras_hash`-e a `thayer_bemenet.szakaszok()[i].hash`: a 2.34 sor `jel` + `szoveg`-e egy szóközzel, a 2.38 `javitva`
+beszúrásaival. A 13. szabály (`ellenoriz.py`) a `szotar = Thayer`, `sz<n>` sor forrásszövegét ebből veszi (az `entry_id` a Strong eredeti alakja, `G86`), és a
+nem `elavult` `sz<n>` sorok lefedettségét a BDB-vel azonos módon ellenőrzi. A CI **E19** (`szabalyok.py`) a `lexikon_hivatkozasok.tsv` `jelentes_szam = teljes`
+sorát fedettnek veszi, ha a Strongnak (szótár + strong + entry_id) a szótár összes szakaszát lefedő, nem `elavult` (`opus` / `sonnet` / `kezi`) `sz<n>` sorai vannak
+(a szakaszkészlet a 13. szabályéval azonos forrásból, a 2.30 / 2.34 táblából); részleges lefedettség nem fed.
 A hívás egysége (DT287 (2)): 20 000 karakterig a Strong egészben, fölötte ≤ ~10 000 karakteres szakaszcsoportok
 tokenhatáron. A kapuk: a 14. szakasz-kapu (`forditas_kapuk.ellenoriz_szakasz`), a 9. tagolás szakaszonként, a többi a token
 nélküli szövegen (`kapuk_futtat_szakaszos`).
@@ -1500,7 +1507,14 @@ a 98 nyelvtani „melléknév” sor nem találat. A tartalmat a #121 bővíti.
 `allapot`, `besorolas_proveniencia`), és az eszköz ezeket soha nem írja át (írás előtt összeveti, eltérésnél megáll); sort nem töröl (az eltűnt jelölt
 `elofordulas = 0`). A `--ellenoriz` bájtra összevet. A besorolt sorokat a `thayer_jelolt/thayer_kapuk.py` **16. kapuja**
 (`16_sigla`, gátoló) ellenőrzi a Thayer-fordításon; a besorolatlan sor nem gátol (JELZES). A tábla a #129 (BDB-kiadás)
-rövidítésjegyzékének is mintája. Az első két sor `#` megjegyzés (a második: a bemenetek és a kód hash-e), a harmadik a fejléc.
+rövidítésjegyzékének is mintája.
+
+**A 16. kapu szabályai (F145, DT-F142b/c; pontos leírás: `thayer_kapuk.py` docstringje).** A kapu a besorolt sor minden forrásbeli
+előfordulására (a forrás-oldali keresés: önálló szó; az egybetűs sigla láncszabálya, F132.20, változatlan) megköveteli a cél-alakot
+(`magyar_alak`; `változatlan` esetén a `forrasalak`) a fordításban, három tűréssel. **(a) Változatlan átvétel (egyedi kivétel, DT-F145a (b)):** nincs általános átvétel-kivétel semmilyen sigla-típusra (`rövidítés`, `antik szerző`, `modern szerző`, …): a fordítatlan `cf. Winers Grammar`, `Xenophon, Cyril 3, 3`, G0282 `by Philo in de temul.` és G4151 `in Philo's use of` SERTES. Az egyetlen kivétel a `thayer_kapuk.py` `ATVETEL_KIVETEL` állandójának soronkénti eleme (Strong, sigla, a változatlanul átvett ablak = a sigla szava + 3 szó): G0012, `Philo`, `Philo's Lehre von der` (J. G. Müller, *Philo's Lehre von der Weltschöpfung*, műcím; a prompt 5. szabálya: a műcím változatlan). Az az előfordulás mentesül, amelynek ablaka szerepel a kivételek között és szó szerint, szóhatáron kezdődően megvan a fordításban; a kapu hívása a Strongot nem adja át, ezért a (sigla, ablak) egyezés azonosít. Ha minden előfordulás mentesül, a sor nem ellenőrzött, és a kapu részletében „N sigla változatlan átvételben, nem ellenőrzött” áll; a többi előfordulás magyar alakját a kapu megköveteli. Új kivétel csak döntéssel vehető fel. **(b) Ragozás-tűrés:** a
+legalább 4 betűs, nem `könyvrövidítés` típusú cél-alak szó elején kezdődik, de toldalékot elfogad (`Homérosztól`, `Platónnál`); a rövidebb
+cél-alaknál (`Tr`, `WH`) és a `könyvrövidítés`nél a szóvég-határ marad. **(c) Számjegy-előtag:** a `könyvrövidítés` típusú sor cél-alakja számjegy
+mögött is találat (`4Makk`, `2Makk`, a 11. kapu `normalizal.APOKRIF_ALIAS` alakja). Az első két sor `#` megjegyzés (a második: a bemenetek és a kód hash-e), a harmadik a fejléc.
 
 | Oszlop | Jelentés |
 |---|---|

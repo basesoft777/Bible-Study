@@ -985,6 +985,9 @@ def e16_ellenorzo_onmodositas(fajlok, pr_cim=''):
 # adat/forditasok.tsv-ben nincs `opus`, `sonnet` vagy `kezi` allapotu `forditas_hu`
 # sor, sem ugyanarra a `jelentes_szam`-ra, sem `teljes` szintre. A kulcs:
 # szotar + strong + entry_id (a strong a Strong_padded alakra normalizalva).
+# F145 (DT-F142d): a `teljes` hivatkozast fedettnek veszi a Strong osszes szotari szakaszat (Thayer:
+# thayer_szakaszok.tsv, BDB: bdb_szakaszok.tsv, mint az ellenoriz.py 13. szabalyaban) lefedo, nem `elavult`
+# (`opus` / `sonnet` / `kezi`) `sz<n>` sorok halmaza is; a reszleges lefedettseg nem fed.
 # Csak akkor fut, ha a ket tabla valamelyike a valtozott fajlok kozott van;
 # fajlszintu (D8): egy forditas-sor torlese is HIBA, akkor is, ha a
 # hivatkozas sora nem valtozott.
@@ -999,6 +1002,48 @@ def _e19_strong(s):
     return '%s%04d%s' % (m.group(1), int(m.group(2)), m.group(3)) if m else (s or '').strip()
 
 
+_E19_SZ = re.compile(r'^sz(\d+)$')
+
+
+def _e19_modul(nev, relut):
+    """Az eszkozok/ alatti bemeneti modul sajat neven betoltve (frissen: a tablak gyorsitotara a futasra szol)."""
+    import importlib.util
+    ut = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), *relut.split('/'))
+    spec = importlib.util.spec_from_file_location(nev, ut)
+    m = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(m)
+    return m
+
+
+def _e19_szakaszkeszlet(szotar, strong, cache):
+    """A Strong szotari szakaszainak sorszamai az ADAT tablaibol (set), vagy None (nincs tabla / a Strong nincs benne / a
+    javitas nem illeszkedik). Ugyanaz a forras, mint az ellenoriz.py 13. szabalyaban: a BDB `szakasz_bemenet.szakaszok`-a es
+    a Thayer `thayer_bemenet.szakaszok`-a (F145, DT-F142d)."""
+    kulcs = (szotar, strong)
+    if kulcs in cache:
+        return cache[kulcs]
+    keszlet = None
+    try:
+        if szotar == 'Thayer':
+            tabla = os.path.join(ADAT, 'thayer_szakaszok.tsv')
+            if os.path.exists(tabla):
+                if 'Thayer' not in cache:
+                    cache['Thayer'] = _e19_modul('thayer_bemenet_e19', 'thayer_jelolt/thayer_bemenet.py')
+                szak = cache['Thayer'].szakaszok(strong, tabla, os.path.join(ADAT, 'thayer_forras_javitas.tsv'))
+                keszlet = None if szak is None else {x['sorszam'] for x in szak}
+        elif szotar == 'BDB':
+            tabla, jav = os.path.join(ADAT, 'bdb_szakaszok.tsv'), os.path.join(ADAT, 'bdb_forras_javitas.tsv')
+            if os.path.exists(tabla) and os.path.exists(jav):
+                if 'BDB' not in cache:
+                    cache['BDB'] = _e19_modul('szakasz_bemenet_e19', 'bdb_jelolt/szakasz_bemenet.py')
+                szak = cache['BDB'].szakaszok(strong, tabla, jav)
+                keszlet = None if szak is None else {x['sorszam'] for x in szak}
+    except ValueError:
+        keszlet = None
+    cache[kulcs] = keszlet
+    return keszlet
+
+
 def e19_szotari_forditas_hiany(fajlok):
     talalatok = []
     if fajlok != ['__TELJES__'] and not any(f in E19_FAJLOK for f in fajlok):
@@ -1008,11 +1053,16 @@ def e19_szotari_forditas_hiany(fajlok):
     if not os.path.exists(lex_ut):
         return talalatok
     van = set()
+    szakaszsorok = {}    # (szotar, strong, entry_id) -> a fedett `sz<n>` sorszamok (F145, 2b)
     if os.path.exists(ford_ut):
         for d in dict_sorok(ford_ut):
             if d.get('allapot') in E19_ALLAPOTOK and d.get('mezo') == 'forditas_hu':
-                van.add((d.get('szotar'), _e19_strong(d.get('strong')), (d.get('entry_id') or '').strip(),
-                         d.get('jelentes_szam')))
+                alap = (d.get('szotar'), _e19_strong(d.get('strong')), (d.get('entry_id') or '').strip())
+                van.add(alap + (d.get('jelentes_szam'),))
+                m = _E19_SZ.match(d.get('jelentes_szam') or '')
+                if m:
+                    szakaszsorok.setdefault(alap, set()).add(int(m.group(1)))
+    cache = {}
     for sorszam, d in dict_sorok_sorszammal(lex_ut):
         szotar = d.get('szotar')
         if szotar not in E19_SZOTARAK:
@@ -1020,9 +1070,15 @@ def e19_szotari_forditas_hiany(fajlok):
         alap = (szotar, _e19_strong(d.get('strong')), (d.get('entry_id') or '').strip())
         if alap + (d.get('jelentes_szam'),) in van or alap + ('teljes',) in van:
             continue
+        # F145 (2b): a `teljes` hivatkozast a Strong osszes szotari szakaszat lefedo, nem `elavult` `sz<n>` sorok is fedik
+        # (reszleges lefedettseg nem fed)
+        if d.get('jelentes_szam') == 'teljes' and szakaszsorok.get(alap):
+            kell = _e19_szakaszkeszlet(szotar, alap[1], cache)
+            if kell and kell <= szakaszsorok[alap]:
+                continue
         talalatok.append(Talalat(
             'E19', SZINT['E19'], 'adat/lexikon_hivatkozasok.tsv', sorszam,
-            '%s %s %s/%s -- nincs opus, sonnet vagy kezi forditas (sem erre a jelentesre, sem teljes szintre)'
+            '%s %s %s/%s -- nincs opus, sonnet vagy kezi forditas (sem erre a jelentesre, sem teljes szintre, sem a szakaszok teljes lefedettsege)'
             % (szotar, d.get('strong'), d.get('entry_id'), d.get('jelentes_szam'))
         ))
     return talalatok
