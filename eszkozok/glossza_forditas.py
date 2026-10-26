@@ -580,7 +580,8 @@ def javit_alkalmaz(atnezes_sorok, tabla, tbesh, datum):
     """A felhasznalo altal jovahagyott javitasok (naplok/GLOSSZA_FORDITAS_atnezes.tsv, 'javitas_hu'
     oszlop). Szabaly: ures vagy '=' -> a fordítás marad; ha a megjegyzes '?', a '?' torlodik es a
     sor 'kezi' lesz; mas ertek -> kapuk, majd allapot='kezi', megjegyzes ures, datum frissul,
-    a modell mezo valtozatlan (a forditot rogziti; a javitast a felhasznalo hagyta jova).
+    a modell mezo valtozatlan (a forditot rogziti; a javitast a felhasznalo hagyta jova). '=?' -> a
+    szoveg marad, a '?' visszakerul (allapot 'kezi'; DT-F140c).
     Visszaad: (uj_tabla, naplo_sorok, hibak, engedett_idk)."""
     uj = {k: dict(v) for k, v in tabla.items()}
     naplo, hibak, engedett = [], [], set()
@@ -590,6 +591,12 @@ def javit_alkalmaz(atnezes_sorok, tabla, tbesh, datum):
             continue
         jav = jav.strip()
         r = uj[k]
+        if jav == '=?':
+            if r['megjegyzes'] != '?':
+                naplo.append((k, r['glossza_hu'], r['glossza_hu'], datum, '? visszaallitva'))
+                r.update({'megjegyzes': '?', 'allapot': 'kezi', 'datum': datum})
+                engedett.add(k)
+            continue
         if jav in ('', '='):
             if jav == '=' and r['megjegyzes'] == '?':
                 naplo.append((k, r['glossza_hu'], r['glossza_hu'], datum, '? torolve'))
