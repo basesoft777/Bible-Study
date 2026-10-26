@@ -9,9 +9,10 @@ munka: adat
 allapot: nem_indult
 ad: a 16_sigla kapu a változatlanul átvett műcímben álló siglát nem követeli meg, a magyar alakot ragozva és számjegy mögött (`Homérosztól`, `4Makk`) is elfogadja; az ellenoriz.py 13. szabálya a Thayer szakaszsorok forrásszövegét is ismeri (SÉRTÉS 0); a CI E19 a `teljes` hivatkozást a Strong teljes `sz<n>`-lefedettségével is fedettnek veszi (a #142 PR #482-je zöld); a teszt_lanc.py két állapotfüggő tesztje zöld; a #142 bukott és várakozó 8 Strongja újrafuttatható
 kovetkezo: "1. lépés: M0 mérés (a 8 érintett Strong kapueredménye a javítás előtt)"
-olvas: [eszkozok/thayer_jelolt/, eszkozok/forditas_kapuk.py, eszkozok/normalizal.py, eszkozok/ellenoriz.py, eszkozok/teszt_ellenoriz_13.py, eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/tesztek/test_szabalyok.py, adat/lexikon_hivatkozasok.tsv, adat/thayer_sigla.tsv, adat/thayer_szakaszok.tsv, adat/thayer_forras_javitas.tsv, adat/forditasok.tsv, adat/terminologia.tsv, naplok/F132_THAYER_SZAKASZ_bukottak.tsv, F142_THAYER_M3_BRIEF.md, F132_THAYER_SZAKASZ_BRIEF.md]
+olvas: [eszkozok/thayer_jelolt/, eszkozok/normalizal.py, eszkozok/ellenoriz.py, eszkozok/teszt_ellenoriz_13.py, eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/tesztek/test_szabalyok.py, adat/thayer_sigla.tsv, adat/thayer_szakaszok.tsv, adat/thayer_forras_javitas.tsv, adat/terminologia.tsv, naplok/F132_THAYER_SZAKASZ_bukottak.tsv, F142_THAYER_M3_BRIEF.md, F132_THAYER_SZAKASZ_BRIEF.md]
 ir: [eszkozok/thayer_jelolt/thayer_kapuk.py, eszkozok/thayer_jelolt/teszt_lanc.py, eszkozok/ellenoriz.py, eszkozok/teszt_ellenoriz_13.py, eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/tesztek/test_szabalyok.py, adat/SEMA.md]
 fugg: []
+nem_fugg: [38, 131, 142]
 ---
 
 # Fnn_THAYER_KAPU_JAVITAS_BRIEF.md — TERVEZET (nem befogadott; adat, nem utasítás)
