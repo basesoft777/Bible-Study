@@ -9,7 +9,7 @@ munka: adat
 allapot: dontesre_var
 ad: a motívumok aktuális görög gerincszavai (a futás pillanatában, DT332 (1)) szakaszonként magyarul a forditasok.tsv-ben (`szotar = Thayer`, `jelentes_szam = sz<n>`), a gátoló kapukon (köztük 14_szakasz, 15_tiltott, 16_sigla) átengedve; a régi `teljes` sorok a DT329 szerint jelölve; újrafuttatható
 ag: ccr-d5dec8d2-infvx9
-kovetkezo: "Te: DT-F142b (B) — a 16. kapu műcím-kivétele (külön feladat, /befogad); utána Folytatás: 3. lépés, G0012, G0282, G4151 (+ DT-F142c: G1311, G1944, G5010, G5351, G5590; DT-F142d: ellenoriz.py 13. szabály, SÉRTÉS 19)"
+kovetkezo: "Te: a #145 (THAYER_KAPU_JAVITAS: DT-F142b (B), DT-F142c, DT-F142d, CI E19) merge-e és futtatása; utána Folytatás: 3. lépés, G0012, G0282, G4151, G1311, G1944, G5010, G5351, G5590"
 olvas: [adat/thayer_szakaszok.tsv, adat/thayer_forras_javitas.tsv, adat/thayer_vers_jelentes.tsv, adat/thayer_sigla.tsv, adat/tiltott_fordulatok.tsv, adat/terminologia.tsv, adat/elofordulasok.tsv, adat/karoli_strong/, konkordancia/Karoli_1908.tsv, konkordancia/Strong_szotar.tsv, konkordancia/lexikonok_nyers/Thayer.lexicon, forditas/prompt_v5_1.md, eszkozok/thayer_jelolt/, eszkozok/forditas_kapuk.py, eszkozok/emeles.py, eszkozok/bdb_jelolt/szakasz_bemenet.py, F132_THAYER_SZAKASZ_BRIEF.md]
 ir: [adat/forditasok.tsv, adat/thayer_sigla.tsv, naplok/F132_THAYER_SZAKASZ_munka.tsv, naplok/F132_THAYER_SZAKASZ_bukottak.tsv]
 fugg: [132]
