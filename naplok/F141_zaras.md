@@ -8,7 +8,7 @@
 
 **A 74 ↔ 70 megfeleltetés** *(F141.8, ELLENOR_F141 4.; AST-mérés az F141 előtti `de52823` állapoton, a DT-F127b → DT277 hozzárendeléssel)*: az összes kiosztott-helyőrzős literál-előfordulás 90, 17 fájlban; ebből 16 a `teszt_*` fájlokban (`teszt_emeles.py` 15, `thayer_jelolt/teszt_lanc.py` 1), amelyeket az E32 kizár. A DT-F141a „74 előfordulás” a tesztfájlokon kívüli szám (74, 15 fájl); a „17 fájl” a teszteket is számolja. 74 − 4 (F141.3: `ellenoriz.py` 3, `f127_jeloltek_bovit.py` 1) = 70 találat 13 fájlban = az E32 kimenete. (A sekély klónon a `szamkiosztas:` commit nem látszik, ezért az E32 a DT-F127b-t nem jelzi; a 90/74 szám azt kézzel hozzárendelve adódik.)
 
-**Tesztek.** `tesztek/test_szabalyok.py`: 184 teszt (az F141.6 4 új tesztjével; előtte 180), a mai futáson OK. A végrehajtó korábbi futásán 1 környezeti hiba volt (`E16EsemenyTest.test_push_ures_cimmel_nem_piros`, a sekély klón miatt hiányzó E27-es commitok); ezen a klónon nem jelentkezett.
+**Tesztek.** `tesztek/test_szabalyok.py`: 185 teszt (az F141.6 4 új és az F141.13 1 új tesztjével; előtte 180); a teljes `eszkozok/ellenorzes/tesztek` csomag 228 teszt, OK, a mai futáson OK. A végrehajtó korábbi futásán 1 környezeti hiba volt (`E16EsemenyTest.test_push_ures_cimmel_nem_piros`, a sekély klón miatt hiányzó E27-es commitok); ezen a klónon nem jelentkezett.
 
 **Nyitott javaslatok.**
 1. Külön feladat a 70 literál javítására, a generált adatfájl fejlécébe/proveniencia-sorába kerülőkkel kezdve (`karoli_modern/*`, `thayer_jelolt/forras_javit.py`, `thayer_jelolt/szolista.py`); `/befogad`, felhasználói jóváhagyással.

@@ -1567,6 +1567,12 @@ class E32Teszt(unittest.TestCase):
         t = self._fut(forras)
         self.assertEqual([x.sor for x in t], [3, 4])
 
+    def test_pozitiv_nem_ascii_osszefuzott_tobbsoros_literal(self):
+        # az ast bajt-, a tokenize karakter-offszetet ad: nem-ASCII elotag nem ejtheti ki a tokent
+        forras = ("print('Hiányzó', ('… DT-F127b '\n"
+                  "                 'második sor … DT-F127b'))\n")
+        self.assertEqual([x.sor for x in self._fut(forras)], [1, 2])
+
     def test_pozitiv_osszefuzott_literal_harmadik_soron(self):
         forras = 'print("a "\n      "b "\n      "c DT-F127b")\n'
         self.assertEqual([x.sor for x in self._fut(forras)], [3])

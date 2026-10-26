@@ -2439,15 +2439,24 @@ def _e32_string_tokenek(szoveg):
     return lista
 
 
-def _e32_literal_talalatok(csp, tokenek, minta):
+def _e32_bajt_karakter(sorok, sor, bajt_off):
+    """Az `ast` UTF-8 BAJT-offszetet a `tokenize` KARAKTER-offszetere valtja
+    a sor szovegen (nem-ASCII karakter a sorban elcsuszatna az osszevetest)."""
+    if not sorok or not (0 < sor <= len(sorok)):
+        return bajt_off
+    return len(sorok[sor - 1].encode('utf-8')[:bajt_off].decode('utf-8', 'ignore'))
+
+
+def _e32_literal_talalatok(csp, tokenek, minta, sorok=None):
     """[(tenyleges_sor, helyorzo, hely)] egy string-Constantban. Implicit
     osszefuzesnel ('a' 'b' tobb soron) a Constant egyetlen csomopont, amelynek
     lineno-ja az elso sor; ezert a csomopont lineno..end_lineno tartomanyaba eso
     string-tokeneket kulon nezi, es a tokenen beluli sor adja a talalat sorat.
     Token nelkul (tokenizalasi hiba) az AST-sorra esik vissza."""
-    kezd = (csp.lineno, csp.col_offset)
-    veg = (getattr(csp, 'end_lineno', None) or csp.lineno,
-           getattr(csp, 'end_col_offset', None) if getattr(csp, 'end_col_offset', None) is not None else 10 ** 9)
+    kezd = (csp.lineno, _e32_bajt_karakter(sorok, csp.lineno, csp.col_offset))
+    veg_sor = getattr(csp, 'end_lineno', None) or csp.lineno
+    veg_off = getattr(csp, 'end_col_offset', None)
+    veg = (veg_sor, _e32_bajt_karakter(sorok, veg_sor, veg_off) if veg_off is not None else 10 ** 9)
     belul = [t for t in tokenek if kezd <= (t[0], t[1]) < veg]
     if not belul:
         return [(csp.lineno + csp.value.count('\n', 0, m.start()), m.group(0),
@@ -2490,7 +2499,7 @@ def e32_kiosztott_helyorzo_literalban(fajlok):
                 continue
             if id(csp) in doku:
                 continue
-            for sor, helyorzo, hely in _e32_literal_talalatok(csp, tokenek, minta):
+            for sor, helyorzo, hely in _e32_literal_talalatok(csp, tokenek, minta, sorok):
                 if hely in latott:
                     continue
                 latott.add(hely)
