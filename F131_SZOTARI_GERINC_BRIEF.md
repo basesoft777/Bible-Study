@@ -6,7 +6,8 @@ tipus: feladat
 fazis: 1
 modell: opus
 munka: folyamat
-allapot: nem_indult
+allapot: fut
+ag: ccr-6dc5ac47-lksrko
 ad: az ISTENTISZT-001 lexikonoldalán a szótári blokk a kulcsszavak jelentéstartományát a BDB (H7121, H8034) és a Thayer (G1941) tagolásában mutatja, a motívumot hordozó szakaszokat részletesen, magyarul, a görög szónál egy UBS-doménsorral; a tW, a TBESH, a teljes UBS és a Mounce helyén mutató a szónézetre; az előfordulás-táblában „Jelentés (a szó)” és „Funkció (a motívumban)” két oszlop, a címke forrása a kutatói ⓘ-ben (DT272)
 kovetkezo: "Te: a #127 és a #110 lezárása után /kovetkezo; első lépés ⛔ 0.3: DT-F131a–e"
 olvas: [DONTESEK.md, RENDER_BRIEF.md, adat/SEMA.md, adat/elofordulasok.tsv, adat/lexikon_hivatkozasok.tsv, adat/forditasok.tsv, adat/bdb_szakaszok.tsv, adat/bdb_szakasz_hu.tsv, adat/bdb_vers_jelentes.tsv, adat/szotar_szerepek.tsv, adat/licencek.tsv, adat/res_forras.tsv, motivumok/ISTENTISZT-001.md, motivumok/naplok/ISTENTISZT-001_tanitoi_kereses.md, "tematikus_lezart/ISTENTISZT-001*", "tematikus_lezart/naplok/ISTENTISZT-001*", archivum/ISTENTISZT-001/, lexikon/, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/Karoli_1908.tsv, eszkozok/general.py, eszkozok/lexikon_general.py, eszkozok/ellenoriz.py, eszkozok/nulladiff.sh, eszkozok/teszt_lexikon_adatres.py, sablonok/6_PaRDeS_lexikon_oldal_sablon.md, F121_GLOSSZA_FORDITAS_BRIEF.md, F127_LEXIKON_HALO_RES_BRIEF.md, F107_BDB_JELOLT_SZOVEG_BRIEF.md, naplok/F107_BDB_JELOLT_SZOVEG_naplo.md]
