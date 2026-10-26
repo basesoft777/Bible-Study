@@ -24,7 +24,7 @@ nem_fugg: [7, 27, 38, 67, 121, 123]
 
 ## 1. Cél
 
-A DT272 (DT-F121a) szerint a motívumblokk szótári gerince a BDB (héber) és a **Thayer (görög)**: a
+A DT272 (DT338) szerint a motívumblokk szótári gerince a BDB (héber) és a **Thayer (görög)**: a
 motívumot hordozó szakaszok részletesen, magyarul, a szó jelentése és a hely motívumbeli funkciója két
 rétegben. A BDB-re ehhez megvan a jelölt szövegréteg (`bdb_szakaszok.tsv`, #107), az igehely →
 jelentéspont tábla (`bdb_vers_jelentes.tsv`, #99) és készül a szakaszonkénti fordítás (#128). **A

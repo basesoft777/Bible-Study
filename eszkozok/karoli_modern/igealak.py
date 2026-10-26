@@ -193,6 +193,39 @@ GYANU_KEZI = {
     'megharaguvék': 'megharagudott', 'megesküvék': 'megesküdött', 'elaluvék': 'elaludt', 'feküvék': 'feküdt',
     'lefeküvék': 'lefeküdt', 'találtaték': 'találtatott', 'vetteték': 'vettetett',
     'várván': 'várva',
+    # a fedettség „valtozatlan/lexikon” osztályába sorolt, de régies igealakok: az ejendő-család
+    # (eszik: 1Móz 2:17, 3:5; 2Móz 12:15, 19), a -éndik/-endenek feltételes jövő (jelen idejűre), a -teték/-aték
+    # szenvedő és a -ának/-ének T/3 elbeszélő múlt, a vevén-típusú határozói igenév
+    'ejéndel': 'eszel', 'ejéndetek': 'esztek', 'ejéndik': 'eszik',
+    'imádkozándik': 'imádkozik', 'könyörgéndenek': 'könyörögnek', 'megtéréndenek': 'megtérnek',
+    'megtérendenek': 'megtérnek', 'megtéréndetek': 'megtértek', 'megtérendetek': 'megtértek',
+    'teéndenek': 'tesznek', 'elviéndik': 'elviszik', 'viendik': 'viszik', 'vétkezéndenek': 'vétkeznek',
+    'vétkezéndik': 'vétkezik', 'vétkezendik': 'vétkezik', 'megőrizéndik': 'megőrzik', 'hiendenek': 'hisznek',
+    'leendenek': 'lesznek',
+    'bevégezteték': 'bevégeztetett', 'végezteték': 'végeztetett', 'erősítteték': 'erősíttetett',
+    'feldolgoztaték': 'feldolgoztatott', 'felriasztaték': 'felriasztatott',
+    'elhányattaték': 'elhányattatott', 'eltávolíttaték': 'eltávolíttatott', 'igazoltaték': 'igazoltatott',
+    'eltapostaték': 'eltapostatott', 'taníttaték': 'taníttatott', 'elárultaték': 'elárultatott',
+    'elmozdíttaték': 'elmozdíttatott', 'megemlítteték': 'megemlíttetett',
+    'felveheték': 'felvehették', 'készítheték': 'készíthették', 'végezheték': 'végezhették',
+    'kiteregeték': 'kiteregették', 'kérdezgeték': 'kérdezgették', 'begöngyölgeték': 'begöngyölgették',
+    'tetteték': 'tették', 'megvesszőzteték': 'megvesszőzték',
+    'hálának': 'háltak', 'elindúlának': 'elindultak', 'borúlának': 'borultak', 'leborúlának': 'leborultak',
+    'eredének': 'eredtek', 'megállapodának': 'megállapodtak', 'megzavarodának': 'megzavarodtak',
+    'megoldódának': 'megoldódtak', 'elhagyatvák': 'elhagyattak',
+    # -ándod/-éndesz-féle E/1, E/2 feltételes jövő (jelen idejűre)
+    'mondándok': 'mondok', 'menéndek': 'megyek', 'visszamenéndek': 'visszamegyek', 'hozándok': 'hozok',
+    'bocsátandok': 'bocsátok', 'nyomorgatándod': 'nyomorgatod', 'megtartándod': 'megtartod', 'adándod': 'adod',
+    'hallándod': 'hallod', 'keresénded': 'keresed', 'elhagyándod': 'elhagyod', 'helyezénded': 'helyezed',
+    'megtanítándod': 'megtanítod', 'elvetended': 'elveted', 'megcselekedénded': 'megcselekszed',
+    'cselekedénded': 'cselekszed', 'imádkozándanak': 'imádkoznak',
+    'menéndesz': 'mész', 'elmenéndesz': 'elmész', 'kimenéndesz': 'kimész', 'általmenéndesz': 'általmész',
+    'járándasz': 'jársz', 'szólándasz': 'szólsz', 'mondándasz': 'mondasz', 'meglátándasz': 'meglátsz',
+    'látándasz': 'látsz', 'jutándasz': 'jutsz', 'hallándasz': 'hallasz', 'hallgatándasz': 'hallgatsz',
+    'fordulándasz': 'fordulsz', 'engedéndesz': 'engedsz', 'veéndesz': 'veszel', 'leéndesz': 'leszel',
+    'leendesz': 'leszel', 'eljövéndesz': 'eljössz', 'cselekedéndesz': 'cselekszel', 'adándasz': 'adsz',
+    'iván': 'ive', 'elvevén': 'elvéve', 'felvevén': 'felvéve', 'fölvevén': 'fölvéve', 'elővevén': 'elővéve',
+    'észrevevén': 'észrevéve',
 }
 # ELT-1: a #94 által elemezetlen (vagy hibás lemmájú) -ik végű jelen idejű ige a segédigei vala előtt; a mai
 # múlt idejű alak kézzel átnézve (a 37 „-ik + vala” esetből a 29 igei alak; a kik, második, kisebbik, betegeik,
@@ -232,6 +265,7 @@ E1_TARGYAS_KEZI = {'elvégzém': 'elvégeztem', 'kérdém': 'kérdeztem', 'ért�
 TOKEN_KIVETEL = {
     ('1Móz 24:63', 16): None, ('Ez 25:5', 4): None,
     ('Ján 6:58', 18): 'ették', ('2Móz 16:35', 8): 'ették',
+    ('ApCsel 13:36', 13): 'helyeztetett',  # helyhezteték: másutt tárgyas T/3 (helyezték), itt szenvedő E/3
     ('Neh 13:21', 3): 'tettem', ('Dán 9:4', 10): 'tettem', ('Jer 35:5', 13): 'tettem',
 }
 # DT-F96p: a j nélküli birtokos T/3 -ök → -ük, ahol a tő többes száma a korpuszban -ek (szív → szívek, ezért a
