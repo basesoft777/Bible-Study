@@ -12,7 +12,7 @@ ad: A kimeneti string-literálokban maradt, már kiosztott helyőrzők (DT-F127b
 kovetkezo: "Te: [elteres_kor 1/2] /elteres 141 — újraellenőrzés függ: naplok/ELLENOR_F141_2.md"
 lezarva_osszegzes: "E32 CI-szabály (új sorra HIBA, régire JELENTÉS; 15 teszt) és a 4 maradék kimeneti literál javítva (DT-F127b → DT277); a 4. lépés feltétele a DT-F141b szerint a DT277 sor nem-sodródására szűkítve, a 7 elavult lexikonlap újragenerálása a #36/#143 dolga; 70 meglévő literál külön feladat (naplok/F141_zaras.md)."
 olvas: [eszkozok/ellenoriz.py, eszkozok/f127_jeloltek_bovit.py, eszkozok/szamkiosztas.py, eszkozok/ellenorzes/szabalyok.py, eszkozok/lexikon_general.py, DONTESEK.md, naplok/SZURO_PILOT_ISTENTISZT_zaras.md, naplok/ELLENOR_F110_4.md]
-ir: [eszkozok/ellenoriz.py, eszkozok/f127_jeloltek_bovit.py, eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/tesztek/test_szabalyok.py]
+ir: [eszkozok/ellenoriz.py, eszkozok/f127_jeloltek_bovit.py, eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/tesztek/test_szabalyok.py, naplok/ELLENOR_F141.md, naplok/ELLENOR_F141_2.md]
 fugg: [110]
 nem_fugg: [121, 131]
 ---
