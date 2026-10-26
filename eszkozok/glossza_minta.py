@@ -8,7 +8,11 @@ Jogosult sor: allapot=sonnet (nem `kezi`), az entry_id nincs az átnézési list
 Rétegek (egymást kizáróan, ebben a sorrendben): ige (glossza_en `to `-val kezdődik; 70),
 ritka (nem ige, TAHOT-előfordulás <= 5; 70), egyéb (60). Seed rögzített (140).
 Kimenet: naplok/GLOSSZA_FORDITAS_minta_DTF140c.tsv (az `itelet` és `javaslat_hu` oszlopot az átnéző tölti).
-Használat: python eszkozok/glossza_minta.py
+Őr: létező kimeneti fájlt csak `--felulir` mellett ír felül (az átnézett minta oszlopai: itelet, javaslat_hu,
+megjegyzes elvesznének). A minta a DT-F140c javításai után NEM reprodukálható: a jogosult halmaz az aktuális
+`allapot`-tól függ (a kijavított `kezi` sorok kiesnek); a rögzített seed csak a javítás előtti állapotra ad
+ugyanazt; a minta tartalma a két mintafájlban él (naplok/GLOSSZA_FORDITAS_minta*_DTF140c.tsv).
+Használat: python eszkozok/glossza_minta.py [--felulir]
   python eszkozok/glossza_minta.py --ige2   második ige-minta (DT-F140c (A) 3. lépés): 150 sor, seed 141,
     kizárja az első minta soraiból és a DT-F140c javításaiból érintett sorokat; kimenet:
     naplok/GLOSSZA_FORDITAS_minta2_ige_DTF140c.tsv
@@ -51,6 +55,11 @@ def kizart_minta():
     return ids
 
 
+def vedett(ut):
+    if os.path.exists(ut) and '--felulir' not in sys.argv:
+        raise SystemExit('MEGALL: a(z) %s mar letezik (atnezett minta); felulirasa csak --felulir mellett' % ut)
+
+
 def main_ige2():
     tabla = g.tabla_olvas()
     tb = {s['entry_id']: s for s in g.tbesh_sorok()}
@@ -61,6 +70,7 @@ def main_ige2():
     rnd = random.Random(141)
     ki = sorted(rnd.sample(jel, 150))
     ut = os.path.join(g.GYOKER, 'naplok', 'GLOSSZA_FORDITAS_minta2_ige_DTF140c.tsv')
+    vedett(ut)
     with open(ut, 'w', encoding='utf-8', newline='\n') as f:
         f.write('\t'.join(['reteg', 'strong', 'entry_id', 'tahot_elofordulas', 'lemma', 'glossza_en',
                            'definicio_eleje', 'glossza_hu', 'itelet', 'javaslat_hu', 'megjegyzes']) + '\n')
@@ -74,6 +84,7 @@ def main_ige2():
 def main():
     if '--ige2' in sys.argv:
         return main_ige2()
+    vedett(KIMENET)
     tabla = g.tabla_olvas()
     tb = {s['entry_id']: s for s in g.tbesh_sorok()}
     gyak = g.tahot_gyakorisag()
