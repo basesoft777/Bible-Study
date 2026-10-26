@@ -13,19 +13,20 @@ fut, és egy Thayer-specifikus kapuval bővül:
              a fordításban), hogy ne menjen át csendben.
 
   A kapu három tűrése (F145; DT-F142b/c, SEMA 2.37). A forrás-oldali keresés (`forrasalak`) mindháromnál változatlan: önálló szó.
-  (a) **Változatlan átvétel (műcím).** Egy besorolt sigla (amelynek `magyar_alak`-ja nem maga a `forrasalak`) *egy* előfordulása nem
-      követeli meg a magyar alakot, ha *átvett*: (1) a sigla után legalább `ATVETEL_SZO` (3) szó áll, (2) az első ilyen szó nagybetűvel
-      kezdődik (cím-jelleg; a kisbetűs folytatás — `Philo's use of …`, `Homer, under the word` — folyó angol szöveg, nem műcím), és (3) a
-      sigla szavától az ablak végéig (a sigla szava + 3 szó, a záró írásjel nélkül) a szöveg szóközre normalizálva szó szerint megvan a
-      fordításban (szóhatáron kezdődően). Példa: `Philo's Lehre von der Weltschöpfung` -> ablak `Philo's Lehre von der`. A sor csak a
-      nem átvett előfordulásokra követeli meg a magyar alakot; ha minden előfordulás átvett, a sor nem ellenőrzött, és a részletben
-      „N sigla változatlan átvételben, nem ellenőrzött” áll. Hamis negatív ellen: a folyó szövegbeli (nem átvett) előfordulás magyar
-      alakját a kapu továbbra is megköveteli (az ablakot a fordítás körülötte lefordított szövege nem tartalmazza). Ismert határ: ha a
-      fordító egy nagybetűs szóval induló, 3+ szavas angol mondatrészt a siglával együtt fordítatlanul hagy, a kapu ezt átvételnek veszi;
-      ezt a 14. szakasz-, 6. hossz- és az egyéb kapuk, valamint a független ellenőrzés fogja.
-      **A kivétel nem érvényes a `rövidítés` típusú sorra** (`cf.`, `Cf.`, `Sept.`, `i. e.`): a rövidítést (`cf.` -> `vö.`) a fordításnak minden
-      előfordulásban fel kell oldania, akkor is, ha utána nagybetűs szó áll (`cf. Winers Grammar, § 12`); a műcím-kivétel a szerző-/név-típusú
-      sorokra szól (a szerző-típusok szűkítése: ELLENOR_F145 1b, felhasználói döntésre vár).
+  (a) **Változatlan átvétel (egyedi, soronkénti kivétel).** A sigla `magyar_alak`-ját a fordításnak minden előfordulásban tartalmaznia kell,
+      **kivéve** az `ATVETEL_KIVETEL` állandó elemeit. Elem: (Strong, sigla, a változatlanul átvett ablak). Az ablak a sigla szava + a
+      következő `ATVETEL_SZO` (3) szó, a záró írásjel nélkül; az előfordulás akkor mentesül, ha (1) a (sigla, ablak) pár szerepel a
+      kivételek között, és (2) az ablak szóközre normalizálva, szóhatáron kezdődően szó szerint megvan a fordításban. Kezdetben egyetlen
+      elem van: G0012, `Philo`, `Philo's Lehre von der` (J. G. Müller, *Philo's Lehre von der Weltschöpfung*, műcím). A sor csak a nem
+      mentesülő előfordulásokra követeli meg a magyar alakot; ha minden előfordulás mentesül, a sor nem ellenőrzött, és a részletben
+      „N sigla változatlan átvételben, nem ellenőrzött” áll. A hívó (`forditas.py`) a Strongot nem adja át a kapunak, ezért a kivételt
+      a (sigla, ablak) egyezés azonosítja; a Strong a dokumentáció (és a kivétel eredetének nyoma).
+      **Szűkítés indoka (DT-F145a (b), a felhasználó döntése, 2026-10-26; ELLENOR_F145 1.):** a korábbi általános szabály (a sigla utáni
+      szó nagybetűs + az ablak szó szerint megvan) a `rövidítés` típusról az F145.9-ben, az `antik szerző` és `modern szerző` típusról
+      itt kikerült, mert a fordítatlan szerző-sigla (`Xenophon, Cyril 3, 3`; G0282 `by Philo in de temul.`; G4151 `in Philo's use of`)
+      is átment volna a kapun. A DT-F142b állítása (a műcím-kivétel) csak a G0012-re igazolt, ezért csak arra szól. Következmény: más
+      szerző-típusú sigla (és a `cf. Winers Grammar` típusú rövidítés) fordítatlanul mindig SERTES; új kivétel csak döntéssel és
+      ellenőrzött egyedi sorral vehető fel.
   (b) **Ragozás-tűrés.** A cél-alak (a `magyar_alak`, `változatlan` esetén a `forrasalak`) szó elején kezdődik, de toldalékot elfogad
       (`Homérosztól`, `Platónnál`, `Septuagintában`, `Gesenius-szal`): a cél-alak után nincs szóhatár-követelmény. Nem érvényes (a szóhatár
       marad): az egybetűs siglára (láncszabály), a legfeljebb 3 betűs cél-alakra (`Tr` ~ `Trench`, `WH`) és a `könyvrövidítés` típusra
@@ -59,7 +60,12 @@ THAYER_GATOLO = ['16_sigla']
 VALTOZATLAN = 'változatlan'
 NINCS_EGYSEGES = 'nincs_egyseges'
 ATVETEL_SZO = 3                                   # F145 (a): a változatlan átvétel ablaka: a sigla szava + ennyi szó
-ROVIDITES = 'rövidítés'                          # F145 (a): a rövidítés típusú sorra nincs műcím-kivétel (ELLENOR_F145 1a)
+# F145.14 (DT-F145a (b)): a változatlan átvétel NEM általános kivétel; csak az itt felsorolt egyedi sorok mentesülnek.
+# Elem: (Strong, sigla `forrasalak`, a változatlanul átvett ablak: a sigla szava + 3 szó, záró írásjel nélkül). A kapu hívása
+# a Strongot nem adja át (forditas.py), ezért a kivételt a (sigla, ablak) szó szerinti egyezés azonosítja; a Strong dokumentáció.
+ATVETEL_KIVETEL = (
+    ('G0012', 'Philo', "Philo's Lehre von der"),     # J. G. Müller, Philo's Lehre von der Weltschöpfung (műcím; DT-F142b, Greppel igazolta)
+)
 KONYVROV = 'könyvrövidítés'                      # F145 (c): számjegy mögött is találat
 TOLDALEK_MIN = 4                                  # F145 (b): ennél rövidebb cél-alaknál nincs toldalék-tűrés
 _CACHE = {}
@@ -99,12 +105,14 @@ def _re_cel(alak, tipus=''):
     return re.compile(elotte + re.escape(alak) + veg)
 
 
-def _atvett(forras, m, forditas_norm):
-    """F145 (a): a `m` találat (a sigla a forrásban) változatlan átvétel-e a fordításban (l. a modul docstringjét)."""
+def _atvett(forras, m, forditas_norm, sigla_alak):
+    """F145.14 (DT-F145a (b)): a `m` találat egy `ATVETEL_KIVETEL`-sor változatlan átvétele-e a fordításban (l. a modul docstringjét)."""
     szavak = forras[m.start():].split()
-    if len(szavak) < 1 + ATVETEL_SZO or not szavak[1][:1].isupper():
+    if len(szavak) < 1 + ATVETEL_SZO:
         return False
     ablak = re.sub(r'[^\w]+$', '', ' '.join(szavak[:1 + ATVETEL_SZO]))
+    if not any(sigla_alak == sa and ablak == ab for _, sa, ab in ATVETEL_KIVETEL):
+        return False
     return re.search(r'(?<![\w])' + re.escape(ablak), forditas_norm) is not None
 
 
@@ -124,7 +132,7 @@ def ellenoriz_sigla(forras, forditas, sigla=None):
             besorolatlan += 1
             continue
         cel = r['forrasalak'] if r['magyar_alak'] == VALTOZATLAN else r['magyar_alak']
-        if cel != r['forrasalak'] and r.get('tipus') != ROVIDITES and all(_atvett(forras, m, forditas_norm) for m in _re(r['forrasalak']).finditer(forras)):
+        if cel != r['forrasalak'] and all(_atvett(forras, m, forditas_norm, r['forrasalak']) for m in _re(r['forrasalak']).finditer(forras)):
             atvetel.append(r['forrasalak'])      # minden előfordulás változatlan átvétel: a sor nem ellenőrzött
             continue
         n += 1

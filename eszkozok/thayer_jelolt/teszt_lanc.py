@@ -190,6 +190,25 @@ class Sigla(unittest.TestCase):
         # szóhatár: a címet tartalmazó hosszabb szó nem fedez
         self.assertEqual(TK.ellenoriz_sigla(self.CIM, "(J. G. Müller, xPhilo's Lehre von der Weltschöpfung, o. 173f)", self.PHILO)[0], 'SERTES')
 
+    def test_atvetel_csak_egyedi_kivetel(self):
+        # F145.14 (DT-F145a (b)): a kivétel csak a G0012 műcímre szól; fordítatlan szerző-sigla minden más szövegkörnyezetben SERTES
+        self.assertEqual(TK.ATVETEL_KIVETEL, (('G0012', 'Philo', "Philo's Lehre von der"),))
+        self.assertEqual(TK.ellenoriz_sigla(self.CIM, self.CIM, self.PHILO)[0], 'RENDBEN')          # G0012 műcím
+        g282 = 'by Philo in de temul.'                                                               # G0282
+        self.assertEqual(TK.ellenoriz_sigla(g282, g282, self.PHILO), ('SERTES', 'Philo -> Philón hiányzik'))
+        self.assertEqual(TK.ellenoriz_sigla(g282, 'Philón által in de temul.', self.PHILO)[0], 'RENDBEN')
+        g4151 = "in Philo's use of the word"                                                          # G4151
+        self.assertEqual(TK.ellenoriz_sigla(g4151, g4151, self.PHILO)[0], 'SERTES')
+        # nagybetűs, 3+ szavas folytatás sem mentesít, ha nem a kivételes ablak (a korábbi általános szabály megszűnt)
+        kulso = "Philo's Treatise On Dreams, p. 4"
+        self.assertEqual(TK.ellenoriz_sigla(kulso, kulso, self.PHILO)[0], 'SERTES')
+        # szerző-sigla `antik szerző` / `modern szerző` típuson, fordítatlan
+        for tipus in ('antik szerző', 'modern szerző'):
+            x = [{'forrasalak': 'Xenophon', 'tipus': tipus, 'allapot': 'besorolt', 'magyar_alak': 'Xenophón'}]
+            self.assertEqual(TK.ellenoriz_sigla('Xenophon, Cyril 3, 3', 'Xenophon, Cyril 3, 3', x)[0], 'SERTES', tipus)
+            self.assertEqual(TK.ellenoriz_sigla('Xenophon, Cyril 3, 3', 'Xenophón, Cyril 3, 3', x)[0], 'RENDBEN', tipus)
+            self.assertEqual(TK.ellenoriz_sigla('Xenophon Cyril Anab. Hist. 3', 'Xenophon Cyril Anab. Hist. 3', x)[0], 'SERTES', tipus)
+
     def test_atvetel_rovidites_nem_mentesul(self):
         # ELLENOR_F145 1a: a `rövidítés` típusú sorra nincs műcím-kivétel: a fordítatlan `cf. Winers Grammar, § 12` SERTES
         cf = [{'forrasalak': 'cf.', 'tipus': 'rövidítés', 'allapot': 'besorolt', 'magyar_alak': 'vö.'}]
