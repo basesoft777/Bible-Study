@@ -6,10 +6,10 @@ tipus: feladat
 fazis: 2
 modell: sonnet
 munka: adat
-allapot: lezarva
+allapot: megallt
 ag: ccr-4d66ac1d-v5f9un
 ad: a 16_sigla kapu a változatlanul átvett műcímben álló siglát nem követeli meg, a magyar alakot ragozva és számjegy mögött (`Homérosztól`, `4Makk`) is elfogadja; az ellenoriz.py 13. szabálya a Thayer szakaszsorok forrásszövegét is ismeri (SÉRTÉS 0); a CI E19 a `teljes` hivatkozást a Strong teljes `sz<n>`-lefedettségével is fedettnek veszi (a #142 PR #482-je zöld); a teszt_lanc.py két állapotfüggő tesztje zöld; a #142 bukott és várakozó 8 Strongja újrafuttatható
-kovetkezo: "nincs; a #142 újraindítása a 8 Strongra (G0012, G0282, G4151, G1311, G1944, G5010, G5351, G5590) a #142 dolga; nyitott: az átvétel-szabály ismert határa, a fennálló # forras: hash-eltérés (naplok/F145_zaras.md)"
+kovetkezo: "Te: /elteres 145 (naplok/ELLENOR_F145.md: 4 tétel; a PR címe [ELLENŐRZŐ] előtagú)"
 pr:
 lezarva_osszegzes: "A 16_sigla kapu műcím-kivétele, ragozás-tűrése és számjegy-előtagja, az ellenoriz.py 13. szabályának Thayer-ága és a CI E19 szakasz-lefedettsége kész, a két állapotfüggő teszt állapot-független; a #142 fáján ellenoriz.py SÉRTÉS 1→0, E19 HIBA 3→0, a 8 Strong 16. kapuja (kontroll-próba) RENDBEN, az 5 rögzített Strong kapusora változatlan (naplok/F145_zaras.md)."
 olvas: [eszkozok/thayer_jelolt/, eszkozok/normalizal.py, eszkozok/ellenoriz.py, eszkozok/teszt_ellenoriz_13.py, eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/tesztek/test_szabalyok.py, adat/thayer_sigla.tsv, adat/thayer_szakaszok.tsv, adat/thayer_forras_javitas.tsv, adat/terminologia.tsv, naplok/F132_THAYER_SZAKASZ_bukottak.tsv, F142_THAYER_M3_BRIEF.md, F132_THAYER_SZAKASZ_BRIEF.md]
