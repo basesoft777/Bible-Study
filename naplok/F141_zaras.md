@@ -6,7 +6,9 @@
 
 **Mért eredmények.** `python eszkozok/ellenorzes/futtat.py --teljes`: E32 JELENTÉS 70 meglévő találat, 13 fájlban (ugyanezt az `e32_kiosztott_helyorzo_literalban` közvetlen hívása adja): `karoli_modern/helyesiras.py` 15, `emeles.py` 12, `karoli_modern/igealak.py` 9, `f110_ir.py` 8, `karoli_modern/regies_szken.py` 8, `karoli_modern/karoli_modern.py` 6, `thayer_jelolt/forditas.py` 3, `thayer_jelolt/adatblokk.py` 2, `thayer_jelolt/bont.py` 2, `thayer_jelolt/szolista.py` 2, `bdb_jelolt/szakasz_bemenet.py` 1, `f110_ir2.py` 1, `thayer_jelolt/forras_javit.py` 1. `python eszkozok/feladatok.py ellenoriz`: 163 brief, 0 hiba.
 
-**Tesztek.** `tesztek/test_szabalyok.py`: 180 teszt, a mai futáson OK. A végrehajtó korábbi futásán 1 környezeti hiba volt (`E16EsemenyTest.test_push_ures_cimmel_nem_piros`, a sekély klón miatt hiányzó E27-es commitok); ezen a klónon nem jelentkezett.
+**A 74 ↔ 70 megfeleltetés** *(F141.8, ELLENOR_F141 4.; AST-mérés az F141 előtti `de52823` állapoton, a DT-F127b → DT277 hozzárendeléssel)*: az összes kiosztott-helyőrzős literál-előfordulás 90, 17 fájlban; ebből 16 a `teszt_*` fájlokban (`teszt_emeles.py` 15, `thayer_jelolt/teszt_lanc.py` 1), amelyeket az E32 kizár. A DT-F141a „74 előfordulás” a tesztfájlokon kívüli szám (74, 15 fájl); a „17 fájl” a teszteket is számolja. 74 − 4 (F141.3: `ellenoriz.py` 3, `f127_jeloltek_bovit.py` 1) = 70 találat 13 fájlban = az E32 kimenete. (A sekély klónon a `szamkiosztas:` commit nem látszik, ezért az E32 a DT-F127b-t nem jelzi; a 90/74 szám azt kézzel hozzárendelve adódik.)
+
+**Tesztek.** `tesztek/test_szabalyok.py`: 184 teszt (az F141.6 4 új tesztjével; előtte 180), a mai futáson OK. A végrehajtó korábbi futásán 1 környezeti hiba volt (`E16EsemenyTest.test_push_ures_cimmel_nem_piros`, a sekély klón miatt hiányzó E27-es commitok); ezen a klónon nem jelentkezett.
 
 **Nyitott javaslatok.**
 1. Külön feladat a 70 literál javítására, a generált adatfájl fejlécébe/proveniencia-sorába kerülőkkel kezdve (`karoli_modern/*`, `thayer_jelolt/forras_javit.py`, `thayer_jelolt/szolista.py`); `/befogad`, felhasználói jóváhagyással.
