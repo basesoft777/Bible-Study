@@ -12,7 +12,7 @@
 
 A 2 354 új sor mind `sz<n>` sor (a 98 Strong teljes szakaszszáma; a szakasztábla szerint 2 354). A 97 módosított (−/+) sor a 97 régi `teljes` sor `elavult`-ra állítása: 95 az 1–4. szeletben, 2 (H2416, H5315) a javítókörben. A `numstat` +2 451 = 2 354 új + 97 módosított sor; a 95 szelet-beli sor `megjegyzes` mezőjét a `DT-F128e` → `DT289` csere (`ae721bbf`) még egyszer átírta, de ez a két végállapot-különbség között nem látszik (ugyanaz a 95 sor). Törölt sor: 0. A H8415 régi, jóváhagyott `kezi` sora változatlan.
 
-Más változott fájl: `eszkozok/bdb_jelolt/teszt_szakasz_bemenet.py` (7 / 0, csak fixture; `68845c63`), `eszkozok/emeles.py` (1 / 1: a beégetett „DT-F128e” → „DT289”), `naplok/EMELES_munka.tsv` (2354 / 3), `F38_BDB_FORDITAS_BRIEF.md` (fejléc), `naplok/ELLENOR_F38_nf107b.md`, `DONTESEK.md` (DT-F38o, a fő szál sora; a javítókör nem nyúlt hozzá), és ez a napló.
+Más változott fájl: `eszkozok/bdb_jelolt/teszt_szakasz_bemenet.py` (7 / 0, csak fixture; `68845c63`), `eszkozok/emeles.py` (1 / 1: a beégetett „DT-F128e” → „DT289”), `naplok/EMELES_munka.tsv` (2354 / 3), `F38_BDB_FORDITAS_BRIEF.md` (fejléc), `naplok/ELLENOR_F38_nf107b.md`, `DONTESEK.md` (DT339, a fő szál sora; a javítókör nem nyúlt hozzá), és ez a napló.
 
 *(proveniencia: scope=adat/forditasok.tsv @ fb53abbf és @ b0b9c111; adat/, konkordancia/ | forras=`git show <rev>:adat/forditasok.tsv`, `split('\t')`, megszámolt nem üres, nem `#` sor a fejléc nélkül (→ 3006 és 5360); `git diff --numstat fb53abbf b0b9c111 -- adat konkordancia naplok/EMELES_munka.tsv eszkozok` (→ 2451 97 adat/forditasok.tsv; 7 0 eszkozok/bdb_jelolt/teszt_szakasz_bemenet.py; 1 1 eszkozok/emeles.py; 2354 3 naplok/EMELES_munka.tsv; rögzített revízió, nem mozgó HEAD) | ts=2026-10-26T09:48Z)*
 
@@ -27,13 +27,13 @@ Más változott fájl: `eszkozok/bdb_jelolt/teszt_szakasz_bemenet.py` (7 / 0, cs
 | `cc4bf755` | 3. szelet | 672 | 27 | 0 | 0 | 27 |
 | `0c935e7f` | 4. szelet | 822 | 49 | 0 | 0 | 49 |
 | `ae721bbf` | javítókör: „DT-F128e” → „DT289” a `megjegyzes`-ben (8.) | 0 | 0 | 95 (`megjegyzes`) | 0 | 95 |
-| `3706ef49` | javítókör: H3789, H5324, H3117 hű fordítása, kapu-felülbírálás, DT-F38o (1., 2., 7.) | 0 | 0 | 86 (82 `megjegyzes`; 4 `forditas_hu` + `megjegyzes`) | 0 | 3 |
+| `3706ef49` | javítókör: H3789, H5324, H3117 hű fordítása, kapu-felülbírálás, DT339 (1., 2., 7.) | 0 | 0 | 86 (82 `megjegyzes`; 4 `forditas_hu` + `megjegyzes`) | 0 | 3 |
 | `39e16970` | javítókör: H1984 sz21, H6242 sz14 pótlás (7.) | 0 | 0 | 2 (`forditas_hu`) | 0 | 2 |
 | `8b1d7761` | javítókör: H8415 (`--kezi-marad`, DT290 (3)) (3.) | 11 | 0 | 0 | 0 | 1 |
 | `681afc39` | javítókör: H2416, H5315 (`--regi-elavult`, DT289 (2)) (4.) | 73 | 2 | 0 | 0 | 2 |
 | **összesen** | | **2 354** | **97** | (a javítókör felülírásai) | **0** | **98** |
 
-Ellenőrzés: 360 + 416 + 672 + 822 + 11 + 73 = 2 354 = az 1. szakasz Δ-ja; 3 006 + 2 354 = 5 360. A 4 módosított sor a `3706ef49`-ben a H3789 sz12, a H5324 sz4, a H3117 sz34 és sz38; a többi 82 sor ugyanennek a három Strongnak a többi szakasza, amelynek csak a `megjegyzes` mezője kapta a „kapu-felülbírálás: <kapu> (DT-F38o)” jelölést (a H1984 és a H6242 sorain nincs felülbírálás-jelölés).
+Ellenőrzés: 360 + 416 + 672 + 822 + 11 + 73 = 2 354 = az 1. szakasz Δ-ja; 3 006 + 2 354 = 5 360. A 4 módosított sor a `3706ef49`-ben a H3789 sz12, a H5324 sz4, a H3117 sz34 és sz38; a többi 82 sor ugyanennek a három Strongnak a többi szakasza, amelynek csak a `megjegyzes` mezője kapta a „kapu-felülbírálás: <kapu> (DT339)” jelölést (a H1984 és a H6242 sorain nincs felülbírálás-jelölés).
 
 **A `0c935e7f` commitüzenetének hamis számai** (ELLENOR_F38_nf107b 3.): az „871 szakaszsor” a `git diff --numstat` hozzáadott soraiból jött (822 új `sz` sor + az 49 `elavult`-ra módosított sor); a helyes szakaszsor-szám 822. A „98 mind lefordítva” sem volt igaz: a 4. szelet végén 95 Strong készült el (a H2416, H5315 és H8415 hiányzott). A commitüzenet utólag nem javítható (történet-újraírás nincs); a helyes számokat ez a napló, a brief `kovetkezo` mezője és a `3706ef49`–`681afc39` commitok rögzítik.
 
@@ -69,7 +69,7 @@ A javítókör fordítási számai (a `szakasz_rogzit` kimenete, a fordítás ka
 
 ## 4. A kapu-felülbírálások és a nyitott pont
 
-- DT-F38o: `5_terminologia` (H3789 sz12, H5324 sz4), `8_idezojel` (H3117 sz34, sz38). Csak a megnevezett kapu bukott; a többi kapu átment. A `megjegyzes`-jelölés a Strong sorain áll.
+- DT339: `5_terminologia` (H3789 sz12, H5324 sz4), `8_idezojel` (H3117 sz34, sz38). Csak a megnevezett kapu bukott; a többi kapu átment. A `megjegyzes`-jelölés a Strong sorain áll.
 - A H8415 új szakaszsorai `allapot=sonnet`; a `kezi` állapotot csak a felhasználó jóváhagyása után kaphatják (DT290 (3)). Addig a régi `teljes` `kezi` sor az érvényes.
 - A `eszkozok/bdb_jelolt/teszt_szakasz_bemenet.py` `test_kezi_regi_sor_dt_f128f` tesztje a valódi `forditasok.tsv`-t másolta, és a H8415 szakaszsorainak hiányát feltételezte; a H8415 beírása után elbukott. A tesztkör most a másolatból elhagyja a vizsgált Strong valódi `sz` sorait (csak a régi `teljes` sor marad); a teszt tartalma és az eszköz nem változott (F38.380).
 - Nyitott: a (b) és (c) közti eltérés oka (3. szakasz); a kovetkezo/commit-üzenet hamis számai utólag nem javíthatók.
