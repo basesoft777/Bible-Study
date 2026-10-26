@@ -8320,7 +8320,7 @@ H6113	H6113		igen	to restrain	1605b039b1020e6a806348cd1376ba7f57763706	visszatar
 H6114	H6114		igen	magistrate	a409737377acec3c1a066ab1010ced3c8d752c14	visszatartás; elöljáró	kezi	claude-sonnet-5-5	2026-10-25	
 H6115	H6115		igen	coercion	afb9c866d7c8ed339750721637f77bf19f884ba1	kényszer	sonnet	claude-sonnet-5-5	2026-10-25	
 H6116	H6116		igen	assembly	712e0867a2755b8423e6661986cb5b5c088740af	gyülekezet	sonnet	claude-sonnet-5-5	2026-10-25	
-H6117	H6117		igen	to assail	cdde001ce2e70a738276d8420ed94bea55df5af6	megkerülni	sonnet	claude-sonnet-5-5	2026-10-25	
+H6117	H6117		igen	to assail	cdde001ce2e70a738276d8420ed94bea55df5af6	megtámadni	kezi	claude-sonnet-5-5	2026-10-26	
 H6118	H6118		igen	consequence	f4475dac731e939f5ae4dd817d8af7d8a50a9412	következmény	sonnet	claude-sonnet-5-5	2026-10-25	
 H6119	H6119		igen	heel	9ab5da88dfc7ed6225db3018997b1bc2e36d01e3	sarok	sonnet	claude-sonnet-5-5	2026-10-25	
 H6120	H6120		igen	supplanting	76b832a31bc895ecf7e79723032585983197a1f3	kijátszó	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -8563,7 +8563,7 @@ H6305	H6305M			Pedaiah	2601e6dfd5cc45bc81ea8466cfd5804404b67aa3	Pedája	sonnet	c
 H6306	H6306A	a Spelling of		redemption	3030612ad7b2ad32a218fa48c24b4697c3d3de7b	megváltás	sonnet	claude-sonnet-5-5	2026-10-25	
 H6306	H6306B		igen	redemption	3030612ad7b2ad32a218fa48c24b4697c3d3de7b	megváltás	sonnet	claude-sonnet-5-5	2026-10-25	
 H6307	H6307		igen	Paddan	7fcbb4d427e51db90a89529ea96e36ae8c662479	Paddán	sonnet	claude-sonnet-5-5	2026-10-25	
-H6308	H6308		igen	to deliver	17bc93b120ed473cc9d9af9029df45e6f648cadd	átadni	sonnet	claude-sonnet-5-5	2026-10-25	
+H6308	H6308		igen	to deliver	17bc93b120ed473cc9d9af9029df45e6f648cadd	megszabadítani	kezi	claude-sonnet-5-5	2026-10-26	
 H6309	H6309		igen	suet	42e85738c059f63fe3324339108b7a2fbfbc33a8	háj	sonnet	claude-sonnet-5-5	2026-10-25	
 H6310	H6310G		igen	lip	7d72878c2a31d4501c9a2aee9630ba785b82c18d	száj	kezi	claude-sonnet-5-5	2026-10-25	
 H6310	H6310H	a Meaning of		lip: edge	8bc50599c845e4c347ec2c45de1d38ee77aae206	ajak: szél	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -8705,7 +8705,7 @@ H6420	H6420		igen	Palal	a5d65f11268ef7bf5b3312a85fc1a3bb2d34d35e	Palal	sonnet	cl
 H6421	H6421		igen	Pelaliah	e110f393a87920649f0fdcae9c114144e598c99f	Pelalja	sonnet	claude-sonnet-5-5	2026-10-25	
 H6422	H6422	a Spelling of	igen	certain	eb27a3239c154a212cafaaf9a26bb6f5ca18e70a	bizonyos	sonnet	claude-sonnet-5-5	2026-10-25	
 H6423	H6423		igen	someone	ca29f2909574a7f97b4d4e8bb09557b1035818b0	valaki	sonnet	claude-sonnet-5-5	2026-10-25	
-H6424	H6424		igen	to envy	c6d2bab4b91b567d8a509a9922028d508d6bff67	irigyelni	kezi	claude-sonnet-5-5	2026-10-25	
+H6424	H6424		igen	to envy	c6d2bab4b91b567d8a509a9922028d508d6bff67	irigyelni	kezi	claude-sonnet-5-5	2026-10-26	?
 H6425	H6425		igen	balance	8dfa30e0245064df3f46f5cd1bfda21a129cddf1	mérleg	sonnet	claude-sonnet-5-5	2026-10-25	
 H6426	H6426		igen	to shudder	54123e4d358cadd1dd7aac85cf968eb2a25a81b1	megborzongani	sonnet	claude-sonnet-5-5	2026-10-25	
 H6427	H6427		igen	shuddering	929d059cbb5fffd5e0cd7e6ce1bf6f120267a875	megborzongás	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -11518,7 +11518,7 @@ H8575	H8575		igen	consolation	dddef67b3020f0ff15eb52a41a13ecbe39c095d8	vigasztal
 H8576	H8576		igen	Tanhumeth	b6f7c71ce01c658acc00c41ad93256f59f1efff9	Tanhumet	sonnet	claude-sonnet-5-5	2026-10-25	
 H8577	H8577A		igen	jackal	8bec631ca5bdb048f76bad48e624776b2534cff7	sakál	sonnet	claude-sonnet-5-5	2026-10-25	
 H8577	H8577B			Dragon	eb22c5e28adf024cfee08804c00ddb9ac2973892	sárkány	sonnet	claude-sonnet-5-5	2026-10-25	
-H8577	H8577M			serpent: snake	b9b7f58481d13960460db83938d966df50f15f81	sárkány: kígyó	kezi	claude-sonnet-5-5	2026-10-25	
+H8577	H8577M			serpent: snake	b9b7f58481d13960460db83938d966df50f15f81	kígyó: kígyó	kezi	claude-sonnet-5-5	2026-10-26	
 H8577	H8577N	a Meaning of		serpent: monster	9b2fa86d0c4d4f8b2c51e7b4167cd6b8609114a5	kígyó: szörny	sonnet	claude-sonnet-5-5	2026-10-25	
 H8578	H8578	in Aramaic of	igen	second	352f7829a2384b001cc12b0c2613c756454a1f6a	második	sonnet	claude-sonnet-5-5	2026-10-25	
 H8579	H8579	in Aramaic of	igen	second time	28c529a2f1db4f0e1070ca55fc21e7f9638cbdc8	másodszor	sonnet	claude-sonnet-5-5	2026-10-25	
