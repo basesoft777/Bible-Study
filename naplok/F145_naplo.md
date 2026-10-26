@@ -56,7 +56,7 @@ A pontos szabályok a modul docstringjében; röviden:
 - **(b) ragozás-tűrés:** a legalább 4 betűs, nem `könyvrövidítés` cél-alaknál nincs záró szóhatár; rövidebbnél (`Tr`, `WH`) és `könyvrövidítés`nél
   (`Bölcs` ~ `Bölcsesség`) marad. **(c) számjegy-előtag:** `könyvrövidítés` cél-alakja számjegy mögött is találat (`4Makk`).
 - **⛔ (ii) mérés — nincs hamis pozitív** (`naplok/F145_ragozas_audit.py`, a #142 fájának összes nem `elavult` `forditas_hu` szövege: 5 238 sor,
-  3,44 M karakter, Thayer + BDB): a toldalékot kapó 21 cél-alakból 7-nél van toldalékos találat (11 előfordulás, 9 alak): `Philónnál`,
+  3,44 M karakter, Thayer + BDB): a toldalékot kapó 21 cél-alakból 6-nál van toldalékos találat (9 alak, 14 előfordulás): `Philónnál`,
   `Philónnal`, `Platónnál`, `Xenophónnál`, `Xenophóntól`, `Hérodotosztól`×3, `Homérosztól`×4, `Homérosznál`, `Thuküdidésztől` — mind valódi
   ragozott névalak; más szó eleje egy sem. (A `Sept.` -> `Septuaginta`, a `Josephus`, `Gesenius` stb.: 0 toldalékos találat.)
 - Tesztek (`teszt_lanc.py` `Sigla`): `test_atvetel_mucim_pozitiv`, `test_atvetel_hamis_negativ_ellen`, `test_atvetel_nem_mucim`,
@@ -65,3 +65,13 @@ A pontos szabályok a modul docstringjében; röviden:
   változatlanok és zöldek (a fennálló `test_tabla_determinisztikus_es_kezi_vedett` kivételével).
 - Közbenső mérés a javított kapuval a #142 fáján (a `thayer_kapuk.py` bemásolva a `git`-fán kívüli munkafába): a 8 próba mindegyikén a 16. kapu
   RENDBEN (a G0012: `1 sigla változatlan átvételben`), az 5 rögzített Strong teljes kapusora bájtra azonos az M0-val.
+
+## F145.3 — a 13. szabály Thayer-ága és az E19 szakasz-lefedettsége
+
+**13. szabály (`ellenoriz.py`, F145.3):** a `szotar = Thayer`, `sz<n>` sor forrásszövege a `thayer_bemenet.szakaszok(strong, adat/thayer_szakaszok.tsv,
+adat/thayer_forras_javitas.tsv)` szakasza (a `forditas.py rogzit` szövege és `sha1`-e); az `entry_id` a Strong eredeti alakja (`G86`); a
+nem `elavult` `sz<n>` sorok együtt a Strong összes szakaszát fedik (a BDB-vel azonos módon, a hibaüzenet a szótárt nevezi meg); a javítótábla
+nem illeszkedő sora (`ValueError`) SÉRTÉS az okkal, nem összeomlás. **⛔ (iii) nem állt elő:** a 19 meglévő sor (#142 ága) mindegyikén a
+`forras_hash` egyezik; `python eszkozok/ellenoriz.py` a #142 fáján: 13. szabály RENDBEN, SÉRTÉS 0 (M0: SÉRTÉS 19). Tesztek:
+`teszt_ellenoriz_13.py` `Szabaly13Thayer` (10 új teszt: rendben, javított nézet, nyers szöveg hash, hibás hash, hiányos lefedés, `elavult`,
+táblán kívüli Strong, `entry_id`, szótár-keveredés, nem illeszkedő javítás, hiányzó tábla); 45 teszt, OK.
