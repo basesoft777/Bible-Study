@@ -87,6 +87,89 @@ A lap 65 `(fordításra vár)` jelölése 40 egységen áll (a nyelvenkénti blo
 
 A 2. szakasz minden más száma egyezik; a briefet a 0.3 előtt nem kell átírni. Az eltérések: a Thayer-szakasztábla megléte (#132) és a #133/#144 levezetett függése — mindkettő döntési tétel lett.
 
-## 2. ⛔ 0.3 — megállás
+## 2. ⛔ 0.3 — megállás és döntés
 
-A DT-F131a–e (a brief 5. szakasza, az M0 szerint pontosítva) és az M0-ból adódó DT-F131h a `DONTESEK.md`-ben, 🟡 állapotban. A végrehajtás (1. lépés, `F131.1`) a döntés után indul.
+A DT-F131a–e (a brief 5. szakasza, az M0 szerint pontosítva) és az M0-ból adódó DT-F131h a `DONTESEK.md`-ben, 🟡 állapotban (F131.0.3); a végrehajtás a döntésig állt.
+
+**Döntés (2026-10-26, a felhasználó, az orkesztrátoron át):** minden javaslat elfogadva — DT-F131a 1. ((i) marad, (ii) a gerincben, (iii) marad, (iv) a TBESH helyén mutató + egysoros magyar jelentés az `adat/glosszak_heber_hu.tsv` `fo=igen` soraiból); DT-F131b 2.; DT-F131c 1. + (a), a 7 Thayer-példahely felirat nélküli kiemelésével, a görög magyar szöveg a #142-re vár, addig átmenetként a 2.; DT-F131d 1. + (a); DT-F131e 1. + (c); DT-F131h (a). Rögzítve: `DONTESEK.md` (🟢), a brief fejléce és 8. szakasza (F131.0.6).
+
+**A (iv) következménye:** az `olvas` az `adat/glosszak_heber_hu.tsv`-vel bővült, amelyet a #140 (`megallt`) ír; a `fuggesek` ezért a #140-re is várónak mutatta. A `nem_fugg` megkapta a 140-et (egyeztetett eltérés, brief 8.); a két sor hash-ét a 4.5 rögzíti.
+
+## 3. Végrehajtás (F131.1–F131.2)
+
+### 3.1 Adat (F131.1)
+
+- `adat/szotar_szakasz_cimke.tsv` (SEMA 2.40), 13 sor, író: `naplok/F131_cimke_ir.py` (eltérésnél megáll; `split('\t')` / `'\t'.join()`):
+  - BDB H7121 `Qal/2/c` ← `2.c` „segítségül hívni”; `Qal/3/-` ← `3` „kihirdetni”; `Qal/3/b` „a nevet kihirdetni”;
+  - BDB H8034 `-/3/-` „név: Isten megjelölése”; `-/4/-` „név: hamis istenekről”;
+  - TBESG G1941 `2` ← `2` „segítségül hívni, folyamodni valakihez”;
+  - Thayer G1941 `cim`, `fej`, `-/1/-` … `-/5/-`: kézi határ a `forditasok.tsv` `Thayer G1941 teljes` magyar sorában (`forditas_hash` = `feeb2ad0…`), címke: `-/1/-` „melléknéven nevezni”, `-/5/-` „segítségül hívni a név kimondásával”. A határok a magyar sor „1. nevet tenni valakire”, „2. ἐπικαλεῖται τό ὄνομα”, „3. τίνι (tini), a tárgy”, „4. segítségül hívni (mint a német anrufen)”, „5. héber mintára” kezdeteinél; a fej az „ἐπικαλῶ (epikaló):” előtt.
+  - A címkék a végrehajtó javaslatai a magyar szakaszok vezérszavaiból (`manual`); jóváhagyásuk a DT-F131f-nél.
+- `ellenoriz.py` 17. szabály (SEMA 2.40): RENDBEN. A teljes `ellenoriz.py`: SÉRTÉS 0.
+
+### 3.2 Generátor (F131.2)
+
+- `eszkozok/lexikon_general.py`, kapcsoló: `SZOTARI_GERINC_MOTIVUMOK = {ISTENTISZT-001}`. A változás leírása: a commit üzenete és a SEMA 2.40.
+- Teszt: `eszkozok/teszt_szotari_gerinc.py`, 22 eset, OK (a brief 2. lépésének minden pontja: BDB-példa / kutatói ⓘ, a 2Móz 33:19 → `Qal 3.b` elsőbbség, az ellentmondó eset GerincHiba-val, a minősítő, a `horgonnyal`, az `elakad`, a meg nem talált példahely; továbbá a kapcsoló, a 17. szabály, és a valódi adaton a 32 sor).
+- `eszkozok/teszt_szerepmatrix.py`: a kapcsoló a tesztben kikapcsolva (az általános rendert vizsgálja; egyeztetett eltérés, brief 8.), OK. `teszt_lexikon_adatres`, `teszt_torzscikk_migralt`, `teszt_ellenoriz_11`, `teszt_ellenoriz_13`, `teszt_general_forras`, `teszt_render_diff_osztalyoz`: OK.
+- **Előzetes hiba, nem e feladaté:** `teszt_general_ellenorzo.py` `SemaKulcsok.test_eles_sema` a main-en is bukik (a SEMA kulcsos tábláinak száma 29, a teszt 23-at vár); a SEMA 2.40 eggyel növeli (30).
+- **Nulla-diff:** `eszkozok/nulladiff.sh 77bad810 2026-10-26` (a F131.1 előtti állapot ↔ a munkafa): egyetlen eltérő fájl az `ISTENTISZT-001_TUDOMANYOS.md`; a 7 másik lap és a törzscikkek bájtra azonosak.
+- **CI a próba idején (várt):** E28 piros (az éles `lexikon/ISTENTISZT-001_TUDOMANYOS.md` a generátorhoz képest elavult) — az éles felülírás a ⛔ DT-F131g-hez kötött, addig várt állapot. E16: a PR címe „[ELLENŐRZŐ]” előtagot kíván, mert az `ellenoriz.py` változott (a PR-t nyitó dolga).
+
+## 4. Próbarender a repón kívül (F131.3)
+
+`PARDES_DATUM=2026-10-26 python eszkozok/general.py --cel lexikon --id ISTENTISZT-001 --kimenet <a session scratchpadjának proba2/ könyvtára>` (a repón kívül; nem a `generalt_proba/`, nem a `lexikon/`). Mérés: `python naplok/F131_proba_meres.py <könyvtár>`.
+
+`scope=ISTENTISZT-001 próbarender | forras=naplok/F131_proba_meres.py; general.py --kimenet (PARDES_DATUM=2026-10-26) | ts=2026-10-26 12:59`
+
+### 4.1 Tiltott keretezés
+
+A szótári gerinc két blokkjában és a „Jelentés (a szó)” oszlopban (`eltér`, `máshová sorol`, `NEM invokáció`, `szemben a BDB`, `a BDB szerint nem`, kis- és nagybetű nélkül): **0**.
+
+### 4.2 `(fordításra vár)` előtte / utána: 65 → 1
+
+| Kulcs | Előtte | Utána |
+|---|---|---|
+| G1941, 3. Teológiai szócikk (tW) | 1 | 0 |
+| G1941, 5. Tömör jelentés (UBS DNTG 56.15 + Mounce) | 3 | 0 |
+| G1941, Jelentéstartomány (UBS-doménsor: 56.15 glosszája) | 0 | 1 |
+| H8034, 1. Alapjelentés (TBESH) | 1 | 0 |
+| H7121, H8034, 3. Teológiai szócikk (tW) | 10 | 0 |
+| H7121, H8034, 5. Tömör jelentés (UBS DBH) | 48 | 0 |
+| H7121, 8. Nyelvi háttér (BDB-fej) | 1 | 0 |
+| H8034, 8. Nyelvi háttér (BDB-fej) | 1 | 0 |
+
+A maradék 1: a G1941 UBS-doménsorának 56.15-ös kódja („to appeal one’s case …”), amelynek nincs magyar glosszája. A brief a doménsort „a három Louw–Nida-kóddal” írta (33.176, 11.28, 33.131); az adat negyedik kódot is ad. A sor az adat minden kódját mutatja, a hiányt jelölve — **kérdés a DT-F131f-hez:** maradjon-e a 4. kód (jelölt hiánnyal), vagy csak a magyarul meglévő hármat mutassa a sor.
+
+### 4.3 A 32 sor
+
+Mind a 32 soron áll címke az elsődleges (kutatói) tokenen: 22 ÓSZ-sor H7121-címkével (`Qal 2.c` 20, `Qal 3.b` 2: 2Móz 33:19, 34:5), 10 ÚSZ-sor `TBESG 2` címkével. A H8034 mint második token 5 soron kap BDB-példa-címkét (`3`: 1Móz 4:26, 12:8, 13:4, 21:33; `4`: 1Kir 18:24), 17 soron kimondott hiányt (`*(nincs hozzárendelés)*`). A minősítő (`tagadva`, `rokon`) a cellában nem áll; az ⓘ-ben igen (N-F131b). Ellentmondás (GerincHiba): 0.
+
+### 4.4 Kiemelt szótári példahelyek
+
+| Szótár, Strong | Hivatkozás a motívumhelyeken | Kiemelve | A magyarban nem található |
+|---|---|---|---|
+| BDB H7121 | 9 (8 vers) | 9 | 0 |
+| BDB H8034 | 6 (5 vers) | 5 | 1: `bdb_vers_jelentes.tsv` sorszam 3 (1Móz 12:8, `fej`) — a magyar fej-szakaszban nincs ilyen hivatkozás; kiemelés nincs, a lap kutatói megjegyzése és ez a napló rögzíti |
+| Thayer G1941 | 7 | 7 | 0 |
+
+A szótár nem idézi (nincs `bdb_vers_jelentes` / `thayer_vers_jelentes` sor): H7121-nél 14, H8034-nél 17, G1941-nél 3 motívumhely (ApCsel 9:21, ApCsel 22:16, Róm 10:14); a lapon a kutatói megjegyzésben.
+
+### 4.5 Hash-rögzítés (DT-F131h, DT-F131a (iv))
+
+| Tábla | H7121 + H8034 sorai | SHA-1 (a sorok `\n`-nel fűzve) |
+|---|---|---|
+| `adat/bdb_szakaszok.tsv` | 55 | `c8cc6851ccbbe79450b868ed754cef46ee9334d1` |
+| `adat/bdb_szakasz_hu.tsv` | 55 | `661bd57569e01c669c8f12c051919aa289face65` |
+| `adat/glosszak_heber_hu.tsv` | 5 | `8c18619040e42c9e3ab3f386020766a141f31e22` |
+
+Egy későbbi #133 / #144 / #140 futás után ugyanez a mérés megmutatja, változott-e az arany Strongok sora.
+
+### 4.6 Egyéb
+
+- `ellenoriz.py` 13. és 17. szabály: RENDBEN; `python eszkozok/feladatok.py ellenoriz`: 164 brief, 0 hiba.
+- A Thayer magyar szövege a kézi határokból jön (a #142 nem futott); a lap ezt kimondja.
+
+## 5. ⛔ 3.1 — DT-F131f: az elfogadási próba
+
+A felhasználó a renderelt próbalapot olvassa. A kérdés: *a szó jelentését és a hely motívumbeli funkcióját két külön dolognak látja-e?* Ugyanitt dönt a címkék szövegéről (3.1) és a 4.2 kérdéséről (az 56.15-ös kód). A végrehajtás itt áll.
