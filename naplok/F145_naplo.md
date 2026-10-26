@@ -42,3 +42,26 @@ regex-találat is 1/1); a műcím-kivétel ezért valójában csak a G0012-t ér
 
 **A #142 már rögzített 5 Strongja** (G0086, G0540, G1941, G2671, G5356; a `forditasok.tsv` végleges sorai, a rögzítéskor használt
 terminológia-kivételekkel): minden kapu RENDBEN (a 16. kapu: 16 / 1 / 28 / 5 / 9 besorolt sigla rendben); a teljes lista: `naplok/F145_meres_M0.tsv`.
+
+## F145.2 — a 16. kapu (`thayer_kapuk.py`)
+
+A pontos szabályok a modul docstringjében; röviden:
+
+- **(a) változatlan átvétel:** egy sigla-előfordulás átvett, ha utána ≥ 3 szó áll, az első ilyen szó nagybetűs (cím-jelleg), és a sigla szava +
+  3 szó (záró írásjel nélkül, szóközre normalizálva) szó szerint, szóhatáron kezdődően megvan a fordításban. A sor csak a nem átvett
+  előfordulásokra követeli meg a magyar alakot; ha mind átvett: `N sigla változatlan átvételben, nem ellenőrzött (…)` a részletben (RENDBEN). A
+  nagybetűs-első-szó feltétel azért kell, hogy a ⛔ (i) ne álljon elő: a G4151 `Philo's use of τό θεῖον …` és a `Homer, under the word` folyó
+  angol szöveg, amelyet a puszta „3 szó szó szerint megvan” szabály átvételnek venne. Ismert, dokumentált határ: nagybetűs szóval induló, 3+
+  szavas angol mondatrész fordítatlanul hagyása a siglával együtt a 16. kapun átmegy (a többi kapu és az ellenőr fogja).
+- **(b) ragozás-tűrés:** a legalább 4 betűs, nem `könyvrövidítés` cél-alaknál nincs záró szóhatár; rövidebbnél (`Tr`, `WH`) és `könyvrövidítés`nél
+  (`Bölcs` ~ `Bölcsesség`) marad. **(c) számjegy-előtag:** `könyvrövidítés` cél-alakja számjegy mögött is találat (`4Makk`).
+- **⛔ (ii) mérés — nincs hamis pozitív** (`naplok/F145_ragozas_audit.py`, a #142 fájának összes nem `elavult` `forditas_hu` szövege: 5 238 sor,
+  3,44 M karakter, Thayer + BDB): a toldalékot kapó 21 cél-alakból 7-nél van toldalékos találat (11 előfordulás, 9 alak): `Philónnál`,
+  `Philónnal`, `Platónnál`, `Xenophónnál`, `Xenophóntól`, `Hérodotosztól`×3, `Homérosztól`×4, `Homérosznál`, `Thuküdidésztől` — mind valódi
+  ragozott névalak; más szó eleje egy sem. (A `Sept.` -> `Septuaginta`, a `Josephus`, `Gesenius` stb.: 0 toldalékos találat.)
+- Tesztek (`teszt_lanc.py` `Sigla`): `test_atvetel_mucim_pozitiv`, `test_atvetel_hamis_negativ_ellen`, `test_atvetel_nem_mucim`,
+  `test_atvetel_valtozatlan_sor_nem_erintett`, `test_ragozas_tures`, `test_szamjegy_elotag_konyvrovidites` (pozitív és negatív minta
+  mindhárom esetre; a hamis negatív ellen: a műcím megmaradt, a folyó szövegbeli `Philo` nem `Philón` -> SERTES). A meglévő tesztek
+  változatlanok és zöldek (a fennálló `test_tabla_determinisztikus_es_kezi_vedett` kivételével).
+- Közbenső mérés a javított kapuval a #142 fáján (a `thayer_kapuk.py` bemásolva a `git`-fán kívüli munkafába): a 8 próba mindegyikén a 16. kapu
+  RENDBEN (a G0012: `1 sigla változatlan átvételben`), az 5 rögzített Strong teljes kapusora bájtra azonos az M0-val.
