@@ -2353,6 +2353,18 @@ E32_KIHAGY_JELOLESEK = ('e32-kihagy', 'szamkiosztas-kihagy')
 _E32_KIOSZTAS_MINTA = re.compile(r'((?:DT|N|D)-F\d+[a-z]?)\s*→\s*((?:DT|N|D)\d+)')
 
 
+def _szamkiosztas_modul():
+    """Az eszkozok/szamkiosztas.py modul, a kod melletti fajlutrol (importlib),
+    a sys.path-tol fuggetlenul."""
+    import importlib.util
+    ut = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                      'szamkiosztas.py')
+    spec = importlib.util.spec_from_file_location('szamkiosztas', ut)
+    modul = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(modul)
+    return modul
+
+
 def _e32_kiosztasok():
     """{helyorzo: veglegesszam} a `szamkiosztas:` commitok uzeneteibol (HEAD
     tortenete), kiveve azokat a helyorzokat, amelyeknek a definicios sora
@@ -2366,13 +2378,14 @@ def _e32_kiosztasok():
     kiosztott = {}
     for h, v in _E32_KIOSZTAS_MINTA.findall(kimenet):
         kiosztott.setdefault(h, v)
-    try:
-        import szamkiosztas as SK
-        for kulcs in ('DT', 'N', 'D'):
-            for h in SK._definiciok(ROOT, kulcs)[0]:
-                kiosztott.pop(h, None)
-    except Exception:
-        pass
+    # A szamkiosztas.py-t explicit fajlutrol toltjuk (az eszkozok/ nincs a
+    # sys.path-on, ha az E28 nem hivta elobb a _general_modul()-t). Hiba nem
+    # nyelodik le: ha a modul nem toltheto be, a szures kimaradasa hamis HIBAt
+    # adna, ezert a kivetel felszallhat.
+    SK = _szamkiosztas_modul()
+    for kulcs in ('DT', 'N', 'D'):
+        for h in SK._definiciok(ROOT, kulcs)[0]:
+            kiosztott.pop(h, None)
     return kiosztott
 
 
