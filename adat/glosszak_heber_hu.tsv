@@ -1718,7 +1718,7 @@ H1251	H1251	in Aramaic of	igen	field	2da0b68df8841752bb747a76780679bcd87c6215	me
 H1252	H1252		igen	cleanness	76b85d88c54ecf3e7b6c1cd704b45be356654bf9	tisztaság	sonnet	claude-sonnet-5-5	2026-10-25	
 H1253	H1253		igen	lye	935366216a2a3d4bb28fecfc3cdff2963fb29f79	lúgsó	sonnet	claude-sonnet-5-5	2026-10-25	
 H1254	H1254A		igen	to create	1c48105c767a1c9a202df967c554de389325e00b	teremteni	sonnet	claude-sonnet-5-5	2026-10-25	
-H1254	H1254B			to fatten	722f5610dd2a0ca34eebc5e85e3c386f2a46d5b5	hízlalni, meghízni	kezi	claude-sonnet-5-5	2026-10-26	
+H1254	H1254B			to fatten	722f5610dd2a0ca34eebc5e85e3c386f2a46d5b5	hízlalni; meghízni	kezi	claude-sonnet-5-5	2026-10-26	
 H1255	H1255		igen	Merodach-baladan	10ead9251e25e1001f51dcd0fe27f8f102109035	Merodak-Baladán	sonnet	claude-sonnet-5-5	2026-10-25	
 H1256	H1256		igen	Beraiah	082d823cfcdd10fe3f8eb2749061816343ff902f	Beraja	sonnet	claude-sonnet-5-5	2026-10-25	
 H1257	H1257		igen	fowl	ce4fef4ebd945edd0e3944b718d16018f4841866	szárnyas	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -4803,7 +4803,7 @@ H3470	H3470K			Jeshaiah	9c55a313d03ef99178f4f24488c09a219bb0f39c	Jesája	sonnet	
 H3471	H3471		igen	jasper	a08670ff00ab376dfca8a7542dcce81626b2b469	jáspis	sonnet	claude-sonnet-5-5	2026-10-25	
 H3472	H3472		igen	Ishpah	f926961a9a2b87eb3dc3d6ee837d3f914492254f	Jispa	sonnet	claude-sonnet-5-5	2026-10-25	
 H3473	H3473		igen	Ishpan	13e050c6aca44b6a9a5a2d6b1cfdee013b31e06f	Jispán	sonnet	claude-sonnet-5-5	2026-10-25	
-H3474	H3474		igen	to smooth	a475afb24aff8f825fe2ede804293b238dfc8691	egyenesnek lenni, tetszeni; egyengetni	kezi	claude-sonnet-5-5	2026-10-26	
+H3474	H3474		igen	to smooth	a475afb24aff8f825fe2ede804293b238dfc8691	egyenesnek lenni; tetszeni; egyengetni	kezi	claude-sonnet-5-5	2026-10-26	
 H3475	H3475		igen	Jesher	d2a5924783a6633d62ac1657ab65816aa18458e9	Jéser	sonnet	claude-sonnet-5-5	2026-10-25	
 H3476	H3476		igen	uprightness	0dec8ab3e5a7a145d0dae8aec476dc952f85bf82	egyenesség	sonnet	claude-sonnet-5-5	2026-10-25	
 H3477	H3477G		igen	upright	133375685a5540a8c34e5cc4bb280d55b41952e7	egyenes	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -7427,7 +7427,7 @@ H5533	H5533B			to impoverish	e95c35f54049585adc6879c4de54f08b76d9cbe6	elszegény
 H5534	H5534		igen	to stop	f5a94c803ef59bcfb639e5d5050ca2bbfa697f63	elzárni	sonnet	claude-sonnet-5-5	2026-10-25	
 H5535	H5535		igen	be silent	3d06251dba8f443d4850aba19a85ff22fa3c6803	hallgatni	sonnet	claude-sonnet-5-5	2026-10-25	
 H5536	H5536		igen	basket	c9be014f81aeb389b4616f87ace64399a7381a3e	kosár	sonnet	claude-sonnet-5-5	2026-10-25	
-H5537	H5537		igen	to weigh	5f9fe44a96218b3e87c12cb2cb194c1276548eec	felérni vele, megméretni	kezi	claude-sonnet-5-5	2026-10-26	
+H5537	H5537		igen	to weigh	5f9fe44a96218b3e87c12cb2cb194c1276548eec	felérni vele; megméretni	kezi	claude-sonnet-5-5	2026-10-26	
 H5538	H5538		igen	Silla	13931acb736b46c9145944e16928de3e87c42ae0	Szilla	sonnet	claude-sonnet-5-5	2026-10-25	
 H5539	H5539		igen	to rejoice	a96c790893b3e2983ad3a5be5af4e220112b0fb7	örvendezni	sonnet	claude-sonnet-5-5	2026-10-25	
 H5540	H5540		igen	Seled	aa70a3a0b44c70b1b79de08f413ce5a42ad7cb20	Széled	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -10430,7 +10430,7 @@ H7760	H7760J	a Meaning of		to set: accuse	25f80f0e1330eddfe9a3078539b137c2abc36b
 H7760	H7760K	a Meaning of		to set: consider	7078d27cf0d6d790740109ccc6daa1444a437cb1	helyezni: megfontolni	sonnet	claude-sonnet-5-5	2026-10-25	
 H7760	H7760L	a Meaning of		to set: appoint	bbd3aa22de4d5c0198096203b7de5c5148a6d50f	helyezni: kinevezni	sonnet	claude-sonnet-5-5	2026-10-25	
 H7760	H7760M	a Meaning of		to set: name	cae5672b59f38b1753c26827c9010f3707cf6e9d	helyezni: elnevezni	sonnet	claude-sonnet-5-5	2026-10-25	
-H7761	H7761G	in Aramaic of	igen	to set: make	392f734988efdf26cfc35047da9df2c8b6b40532	tenni: csinálni, elrendelni	kezi	claude-sonnet-5-5	2026-10-26	
+H7761	H7761G	in Aramaic of	igen	to set: make	392f734988efdf26cfc35047da9df2c8b6b40532	tenni: csinálni; elrendelni	kezi	claude-sonnet-5-5	2026-10-26	
 H7761	H7761H	in Aramaic of		to set: put/give	44939fc1ceadc5f414104724209d6bca66019c14	tenni: tenni/adni	sonnet	claude-sonnet-5-5	2026-10-25	
 H7761	H7761I	in Aramaic of		to set: appoint	bbd3aa22de4d5c0198096203b7de5c5148a6d50f	tenni: kinevezni	sonnet	claude-sonnet-5-5	2026-10-25	
 H7762	H7762		igen	garlic	2ade5d5a478af163172a308b952528dc60473720	fokhagyma	sonnet	claude-sonnet-5-5	2026-10-25	
