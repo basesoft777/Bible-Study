@@ -75,3 +75,11 @@ nem illeszkedő sora (`ValueError`) SÉRTÉS az okkal, nem összeomlás. **⛔ (
 `forras_hash` egyezik; `python eszkozok/ellenoriz.py` a #142 fáján: 13. szabály RENDBEN, SÉRTÉS 0 (M0: SÉRTÉS 19). Tesztek:
 `teszt_ellenoriz_13.py` `Szabaly13Thayer` (10 új teszt: rendben, javított nézet, nyers szöveg hash, hibás hash, hiányos lefedés, `elavult`,
 táblán kívüli Strong, `entry_id`, szótár-keveredés, nem illeszkedő javítás, hiányzó tábla); 45 teszt, OK.
+
+**E19 (`szabalyok.py` `e19_szotari_forditas_hiany`, F145.3):** a `jelentes_szam = teljes` hivatkozás fedett, ha a (szótár, strong, entry_id) nem `elavult`
+(`opus` / `sonnet` / `kezi`) `sz<n>` sorai együtt a Strong szótári szakaszkészletét lefedik (`kell <= van`; a készlet a `thayer_bemenet.szakaszok`-ból,
+illetve a `bdb_jelolt/szakasz_bemenet.szakaszok`-ból, az ADAT `thayer_szakaszok.tsv` / `bdb_szakaszok.tsv` tábláiból, vagyis a 13. szabállyal azonos
+forrásból); részleges lefedettség, `elavult` / `pilot` szakasz, másik Strong szakaszsora, vagy szakasztábla hiánya nem fed. A `lexikon_hivatkozasok.tsv` nem
+változott. Mérés: a #142 fáján `futtat.py --valtozott adat/forditasok.tsv adat/lexikon_hivatkozasok.tsv`: **E19 0 HIBA** (M0: 3). Tesztek:
+`test_szabalyok.py` `E19SzakaszTeszt` (7 új: teljes lefedettség — nincs találat; hiányzó Thayer-szakasz, részleges BDB-lefedés, `elavult`/`pilot`, másik Strong,
+nincs szakasztábla, nem `teljes` hivatkozás — HIBA); az `E19Teszt` változatlan; 192 teszt, 1 hiba (az `E16EsemenyTest`, `main`-en is).
