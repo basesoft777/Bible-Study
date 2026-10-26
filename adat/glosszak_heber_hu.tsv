@@ -2829,7 +2829,7 @@ H2129	H2129		igen	Ziphah	cb51df679eeb184aabcda1f87f15c40f3bd3c1a9	Zífa	sonnet	c
 H2130	H2130	a group of	igen	Ziphite	e83d28cace67aa415fe584372e0d2b4062930152	zífita	sonnet	claude-sonnet-5-5	2026-10-25	
 H2131	H2131A			missile	520b856d8ab92e76d5ddbb5dbac9cbe6ab60ed59	hajítófegyver	sonnet	claude-sonnet-5-5	2026-10-25	
 H2131	H2131B		igen	fetter	a538e819e753a0f62d5008c5a373aa9dba100fd9	bilincs	sonnet	claude-sonnet-5-5	2026-10-25	
-H2132	H2132G			(Mount of) Olives	942ee254e724772a45b96a7285159efba0e14ede	az Olajfák (hegye)	kezi	claude-sonnet-5-5	2026-10-26	
+H2132	H2132G			(Mount of) Olives	942ee254e724772a45b96a7285159efba0e14ede	az Olajfák (hegy)	kezi	claude-sonnet-5-5	2026-10-26	
 H2132	H2132H		igen	olive	0947fcc917eb1d3c89ad818beb61e3b2c3cf3bba	olajfa	sonnet	claude-sonnet-5-5	2026-10-25	
 H2133	H2133		igen	Zethan	d33f24fa303861ef584d1d150ac5f6325f25638e	Zétán	sonnet	claude-sonnet-5-5	2026-10-25	
 H2134	H2134		igen	pure	afe003f11764b023d47a96ae7daae0bc2c83e524	tiszta	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -3139,7 +3139,7 @@ H2343	H2343		igen	Hul	a37eedeab1a83b36f392a6afd866f72350eb66a9	Húl	sonnet	claud
 H2344	H2344		igen	sand	42625bfecef1fbf9ae6ffb9427f666c98e27559f	homok	sonnet	claude-sonnet-5-5	2026-10-25	
 H2345	H2345		igen	darkened	d38b2be0142c4da5780e08fa60f3c902f2c00cb4	sötét	sonnet	claude-sonnet-5-5	2026-10-25	
 H2346	H2346G		igen	wall	eb7ada766135202f9c3f1d2ee04f80a8f757c13c	fal	sonnet	claude-sonnet-5-5	2026-10-25	
-H2346	H2346H	a Part of		(Broad) Wall	2fb4f578dbca27ab1b1252bf210791a403b40fe6	(Széles) fal	sonnet	claude-sonnet-5-5	2026-10-25	
+H2346	H2346H	a Part of		(Broad) Wall	2fb4f578dbca27ab1b1252bf210791a403b40fe6	Széles (fal)	kezi	claude-sonnet-5-5	2026-10-26	
 H2347	H2347		igen	to pity	4b3c5d3045b175a9de20d20986dd6d777b64b47a	szánni	sonnet	claude-sonnet-5-5	2026-10-25	
 H2348	H2348		igen	coast	366eb327e24036df309d4a622ffbde536190466b	part	sonnet	claude-sonnet-5-5	2026-10-25	
 H2349	H2349	a Name of	igen	Hupham	8ca3b1aba8e4b5f1d2fd8fef864d6743cfd76179	Hufám	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -4420,7 +4420,7 @@ H3218	H3218		igen	locust	f77cf558c6b4dbb0036a7038625a513ee141ab1b	sáska	sonnet	
 H3219	H3219		igen	pouch	074720306c3a79f5bb914a39b700f20f4d61d4df	tarisznya	sonnet	claude-sonnet-5-5	2026-10-25	
 H3220	H3220G		igen	sea	6fa11fb296a828adbe6d82956d28ba7035fa2c65	tenger	sonnet	claude-sonnet-5-5	2026-10-25	
 H3220	H3220H	a Meaning of		sea: west	89d4c10e3a136d6be863403d03ea5806241ff71d	tenger: nyugat	sonnet	claude-sonnet-5-5	2026-10-25	
-H3220	H3220I	a Name of		(Mt. Ephron in the) West	afc4769754ddbfb008db6a1170fe3fd72009f650	(Efron hegye) nyugaton	sonnet	claude-sonnet-5-5	2026-10-25	
+H3220	H3220I	a Name of		(Mt. Ephron in the) West	afc4769754ddbfb008db6a1170fe3fd72009f650	Efron (hegye) nyugaton	kezi	claude-sonnet-5-5	2026-10-26	
 H3221	H3221	in Aramaic of	igen	sea	6fa11fb296a828adbe6d82956d28ba7035fa2c65	tenger	sonnet	claude-sonnet-5-5	2026-10-25	
 H3222	H3222		igen	hot spring	860b0706e659f339816fdb8acb85a83a36a30b54	meleg forrás	sonnet	claude-sonnet-5-5	2026-10-25	
 H3223	H3223		igen	Jemuel	1c08000983fceef7684411a9ff64dd269cb28e39	Jemúél	sonnet	claude-sonnet-5-5	2026-10-25	
@@ -4457,7 +4457,7 @@ H3243	H3243		igen	to suckle	37caf6113cbb5e32a991bd37c4778bf268009785	szopni	sonn
 H3244	H3244		igen	owl	2c730e3a6d2aad6d914872e45f868d20a543570a	bagoly	sonnet	claude-sonnet-5-5	2026-10-25	
 H3245	H3245		igen	to found	fa66b86465a0910a50d1b94be0b383315b20766d	megalapítani	sonnet	claude-sonnet-5-5	2026-10-25	
 H3246	H3246		igen	beginning	336edf81860bdfc5e56a603ab1759d4ec3c587d2	kezdet	sonnet	claude-sonnet-5-5	2026-10-25	
-H3247	H3247G			(Gate of the) Foundation	5215a47fbaa78a5920afc8a16a8f3d10fb577ed6	(Alapkapu)	sonnet	claude-sonnet-5-5	2026-10-25	
+H3247	H3247G			(Gate of the) Foundation	5215a47fbaa78a5920afc8a16a8f3d10fb577ed6	Alap (kapuja)	kezi	claude-sonnet-5-5	2026-10-26	
 H3247	H3247H		igen	foundation	ec9624c80320be0ef1881f7609ff06e973b43e5a	alap	sonnet	claude-sonnet-5-5	2026-10-25	
 H3248	H3248		igen	foundation	ec9624c80320be0ef1881f7609ff06e973b43e5a	alap	sonnet	claude-sonnet-5-5	2026-10-25	
 H3249	H3249	a form of	igen	departed	05c76e0264f30aefcd646515ef90708b9216d81d	eltávozott	sonnet	claude-sonnet-5-5	2026-10-25	
