@@ -69,3 +69,4 @@ Előmérés a befogadáskor (`scope=konkordancia/TBESH.txt H-sorai, konkordancia
 
 - **DT-F140a** (2026-10-25, a felhasználó, chat; a tétel a `DONTESEK.md`-ben): a kiemelt jelentés forrása és sorrendje; a modell; a #138 szűkítése; a #139 függése; a saját tábla (e).
 - **DT-F140b** (2026-10-25, a felhasználó, chat; a tétel a `DONTESEK.md`-ben): K1 (B), K2 (a) módosított `fo`-szabállyal, K3 (a), K4 (a), K5 kibővített istennév-lista, K6, K7 (a), K8 külön kisfeladat, K9 (a), K10 50/6. Az M1 ezek szerint fut.
+- **DT-F140c** (2026-10-26, a felhasználó, chat; a tétel a `DONTESEK.md`-ben): a független ellenőr 1. tétele (H6308, H6117, ~4% hibaarány): az (A) opció: a talált hibák javítása; rétegzett minta (200 sor), majd második ige-minta (150 sor); a „(Név) hegye” zárójelminta egységesítése „Név (hegy)” alakra; H6424 `?` vissza; H8577M „kígyó: kígyó”. A küszöb tényleges alakja: a 2. ige-mintán <5% elfogad (4,7%).
