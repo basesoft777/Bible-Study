@@ -11,7 +11,7 @@ ad: minden héber Strong-számhoz (8 718) rövid magyar jelentés egy új adatt�
 kovetkezo: "Te: [elteres_kor 1/2] DT-F140c döntés (DONTESEK.md: H6308/H6117 javítás és hibaarány-mintavétel, H6424 ?, H8577M); utána /elteres F140 a javításra és az újraellenőrzésre (ELLENOR_F140 1., 3b., 4. tétel)"
 munka: adat
 olvas: [konkordancia/TBESH.txt, konkordancia/TBESH_TBESG_README.md, konkordancia/Strong_szotar.tsv, konkordancia/TAHOT_kivonat.tsv, adat/terminologia.tsv, eszkozok/forditas_kapuk.py, eszkozok/emeles.py]
-ir: [adat/glosszak_heber_hu.tsv, adat/SEMA.md, eszkozok/glossza_forditas.py, eszkozok/teszt_glossza_forditas.py, naplok/GLOSSZA_FORDITAS_elakad.tsv, naplok/GLOSSZA_FORDITAS_atnezes.tsv, naplok/GLOSSZA_FORDITAS_zaras.md, naplok/GLOSSZA_FORDITAS_M0.md, naplok/GLOSSZA_FORDITAS_M1_naplo.md, naplok/GLOSSZA_FORDITAS_homonima_szuroproba.tsv, naplok/GLOSSZA_FORDITAS_javit_naplo.tsv, naplok/ELLENOR_F140*.md, DONTESEK.md, eszkozok/glossza_minta.py, naplok/GLOSSZA_FORDITAS_minta_DTF140c.tsv]
+ir: [adat/glosszak_heber_hu.tsv, adat/SEMA.md, eszkozok/glossza_forditas.py, eszkozok/teszt_glossza_forditas.py, naplok/GLOSSZA_FORDITAS_elakad.tsv, naplok/GLOSSZA_FORDITAS_atnezes.tsv, naplok/GLOSSZA_FORDITAS_zaras.md, naplok/GLOSSZA_FORDITAS_M0.md, naplok/GLOSSZA_FORDITAS_M1_naplo.md, naplok/GLOSSZA_FORDITAS_homonima_szuroproba.tsv, naplok/GLOSSZA_FORDITAS_javit_naplo.tsv, naplok/ELLENOR_F140*.md, DONTESEK.md, eszkozok/glossza_minta.py, naplok/GLOSSZA_FORDITAS_minta_DTF140c.tsv, naplok/GLOSSZA_FORDITAS_minta2_ige_DTF140c.tsv]
 fugg: []
 nem_fugg: [38, 138]
 ---
