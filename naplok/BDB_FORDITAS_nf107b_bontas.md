@@ -14,7 +14,7 @@ A 2 354 új sor mind `sz<n>` sor (a 98 Strong teljes szakaszszáma; a szakasztá
 
 Más változott fájl: `eszkozok/bdb_jelolt/teszt_szakasz_bemenet.py` (7 / 0, csak fixture; `68845c63`), `eszkozok/emeles.py` (1 / 1: a beégetett „DT-F128e” → „DT289”), `naplok/EMELES_munka.tsv` (2354 / 3), `F38_BDB_FORDITAS_BRIEF.md` (fejléc), `naplok/ELLENOR_F38_nf107b.md`, `DONTESEK.md` (DT-F38o, a fő szál sora; a javítókör nem nyúlt hozzá), és ez a napló.
 
-*(proveniencia: scope=adat/forditasok.tsv @ fb53abbf és @ b0b9c111; adat/, konkordancia/ | forras=`git show <rev>:adat/forditasok.tsv`, `split('\t')`, megszámolt nem üres, nem `#` sor a fejléc nélkül (→ 3006 és 5360); `git diff --numstat fb53abbf b0b9c111 -- adat konkordancia naplok/EMELES_munka.tsv eszkozok` (→ 2451 97 adat/forditasok.tsv; 7 0 eszkozok/bdb_jelolt/teszt_szakasz_bemenet.py; 1 1 eszkozok/emeles.py; 2354 3 naplok/EMELES_munka.tsv; rögzített revízió, nem mozgó HEAD) | ts=2026-10-25T18:47Z)*
+*(proveniencia: scope=adat/forditasok.tsv @ fb53abbf és @ b0b9c111; adat/, konkordancia/ | forras=`git show <rev>:adat/forditasok.tsv`, `split('\t')`, megszámolt nem üres, nem `#` sor a fejléc nélkül (→ 3006 és 5360); `git diff --numstat fb53abbf b0b9c111 -- adat konkordancia naplok/EMELES_munka.tsv eszkozok` (→ 2451 97 adat/forditasok.tsv; 7 0 eszkozok/bdb_jelolt/teszt_szakasz_bemenet.py; 1 1 eszkozok/emeles.py; 2354 3 naplok/EMELES_munka.tsv; rögzített revízió, nem mozgó HEAD) | ts=2026-10-26T09:48Z)*
 
 ## 2. Commitonkénti bontás (`adat/forditasok.tsv`)
 
