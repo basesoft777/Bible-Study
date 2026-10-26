@@ -588,3 +588,28 @@ Végrehajtó: `claude-opus-5-5`. Tételenként külön commit (F132.18–F132.24
   eszkozok/ellenoriz.py`: SÉRTÉS 0 (RENDBEN 14, KÉZI 2, JELENTÉS 3).
 - **F132.24 (7. tétel):** a napló F132.13-mondata („csak a 91 sor kézi oszlopai változtak”) alatt pontosítás a mért
   állapottal (numstat 258/258, új oszlop minden sorban + fejléc + kód-hash; tartalmilag csak a 91 sor kézi oszlopai), proveniencia-sorral.
+
+## F142.1 — DT335 (3): a sigla-javaslat jóváhagyásának átvezetése (2026-10-26)
+
+*(proveniencia: `scope=adat/thayer_sigla.tsv (allapot, besorolas_proveniencia, magyar_alak) | forras=manual — felhasználói jóváhagyás (chat, 2026-10-26, az orkesztrátoron át: „1, mehet”); átvezetés: Sonnet 5.5 (claude-sonnet-5-5), eseti szkript (scratchpad, split('\t')) | ts=2026-10-26`)*
+
+- **Átvezetve:** a 91 `javaslat` sor mind `allapot = besorolt`; a `besorolas_proveniencia` a meglévő javaslat-proveniencia tartalmát
+  megtartja, és kiegészül: ` | jóváhagyás: forras=manual — felhasználói jóváhagyás (chat, 2026-10-26); allapot javaslat → besorolt`.
+- **Egy eltérés a javaslattól:** a `Sir.` sor `magyar_alak`-ja `Sir` helyett `Sirák` (a proveniencia-sorban: `magyar_alak
+  felhasználói módosítással: Sir → Sirák`). Ok: a repó eszközei (`eszkozok/lekerdez.py`, `teszt_lekerdez_sir.py`,
+  `eszkozok/nave_bontas.py:33`) a „Sir” alakot a Jeremiás siralmai (JSir) aliasaként kezelik, így a fordításban a „Sir 24” csendben
+  Siralmaknak olvasódna.
+- **Összevetés írás előtt (szkript):** csak a 91 sor `allapot` és `besorolas_proveniencia` mezője, plusz a `Sir.` sor `magyar_alak`-ja
+  változott; a fejléc-/megjegyzéssorok és minden más mező bájtra azonos (a szkript `assert`-tel megállt volna eltérésnél).
+- **Ellenőrzés:** `sigla_gyujt.py --ts 2026-10-25 --ellenoriz` → `ELTÉR`, de ugyanúgy a **kiinduló állapoton** is (a `git stash`-sel
+  mért HEAD is `ELTÉR`): az újragenerált fájl és a tábla egyetlen sorban tér el, a `# forras:` fejléc bemenet-hash-eiben
+  (`thayer_szakaszok@50e03d…` stb. a tábla szerint, `@d71764…` stb. a mostani bemenetekből; az F132 lezárása óta a bemenetek más
+  hash-t adnak ebben a környezetben). Az adatsorok (a 91 + 164) az újragenerálttal **azonosak**. A fejlécsort nem írtam át (gépi
+  sor, nem tartozik a 91 sorhoz); a kiinduló `ELTÉR` pre-existens, az F142.1 nem okozta.
+  A `teszt_bont.py` két hibája (`test_ellenoriz`, `test_forras_javit_ellenoriz`) és a `teszt_lanc.py`
+  `test_tabla_determinisztikus_es_kezi_vedett` hibája ugyanezen a kiinduló eltérésen áll (mérve a kiinduló állapoton is).
+- **Új teszt-hiba az átvezetés következményeként:** `teszt_lanc.py::Adatblokk.test_g1941_reszei` a 216. sorban a `cf.` sor
+  `[besorolatlan a sigla-táblában; …]` jelölését várja (azaz a `javaslat` állapotot rögzíti); a jóváhagyás után az adatblokk helyesen
+  `` `cf.` → `vö.` ``-t ad. A #132 teszt módosítása e feladat hatókörén kívül (brief 2.), ezért nem módosítottam; tétel: `DT-F142a`
+  (`DONTESEK.md`), a fordítás nem függ tőle.
+- **Kapuk a `Sirák` alakkal:** `teszt_forditas_kapuk.py` (90) zöld, `teszt_vers_jelentes.py` (9) zöld; a `Sirák` miatt nincs bukás.

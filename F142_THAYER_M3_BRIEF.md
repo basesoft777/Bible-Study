@@ -9,7 +9,7 @@ munka: adat
 allapot: fut
 ad: a motívumok aktuális görög gerincszavai (a futás pillanatában, DT332 (1)) szakaszonként magyarul a forditasok.tsv-ben (`szotar = Thayer`, `jelentes_szam = sz<n>`), a gátoló kapukon (köztük 14_szakasz, 15_tiltott, 16_sigla) átengedve; a régi `teljes` sorok a DT329 szerint jelölve; újrafuttatható
 ag: ccr-d5dec8d2-infvx9
-kovetkezo: "Folytatás: 1. lépés (sigla-jóváhagyás átvezetése)"
+kovetkezo: "Folytatás: 2. lépés (a futás listája)"
 olvas: [adat/thayer_szakaszok.tsv, adat/thayer_forras_javitas.tsv, adat/thayer_vers_jelentes.tsv, adat/thayer_sigla.tsv, adat/tiltott_fordulatok.tsv, adat/terminologia.tsv, adat/elofordulasok.tsv, adat/karoli_strong/, konkordancia/Karoli_1908.tsv, konkordancia/Strong_szotar.tsv, konkordancia/lexikonok_nyers/Thayer.lexicon, forditas/prompt_v5_1.md, eszkozok/thayer_jelolt/, eszkozok/forditas_kapuk.py, eszkozok/emeles.py, eszkozok/bdb_jelolt/szakasz_bemenet.py, F132_THAYER_SZAKASZ_BRIEF.md]
 ir: [adat/forditasok.tsv, adat/thayer_sigla.tsv, naplok/F132_THAYER_SZAKASZ_munka.tsv, naplok/F132_THAYER_SZAKASZ_bukottak.tsv]
 fugg: [132]
@@ -94,3 +94,4 @@ megállás, tétel a `DONTESEK.md`-be); a `kezi` jóváhagyás (a felhasználó�
 |---|---|---|
 | DT334 | az M3 indítása | eldöntve: (1) külön brief, `modell: sonnet` (felhasználó, 2026-10-25) |
 | DT329, d, h, i, j, k | l. 1. | eldöntve (felhasználó, 2026-10-25; `DONTESEK.md`) |
+| sigla-jóváhagyás | a 91 `javaslat` sor | eldöntve: jóváhagyva, `Sir.` → `Sirák` (felhasználó, chat, 2026-10-26); átvezetés: F142.1 |
