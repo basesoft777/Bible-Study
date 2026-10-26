@@ -49,4 +49,4 @@ Külön kisfeladat: az `eszkozok/sqlite_epit.py` `ADAT_LICENC` szótárába `'gl
 
 ## Összhang a #138-cal
 
-Az istennév-alakok (K5: „az ÚR”, „Isten”, „Úr”, „isten”, „Felséges”, „Jah”, „Mindenható”, „Seregek”, „Baáli”) összhangban kell legyenek a #138 DT-F138b-jével (még 🟡). A #140 ezt nem dönti el; a megjegyzés a `DONTESEK.md` DT-F140b sorában áll.
+Az istennév-alakok (K5: „az ÚR”, „Isten”, „Úr”, „isten”, „Felséges”, „Jah”, „Mindenható”, „Seregek”, „Baáli”) összhangban kell legyenek a #138 DT-F138b-jével (még 🟡). A #140 ezt nem dönti el; a megjegyzés a `DONTESEK.md` DT346 sorában áll.

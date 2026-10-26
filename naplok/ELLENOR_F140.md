@@ -2,7 +2,7 @@ ELTÉRÉS: 7 tétel
 
 *A `fuggetlen-ellenor` subagent jelentése, szó szerint átemelve a hívó session által (a subagentnek nincs fájlíró eszköze). F140_GLOSSZA_FORDITAS_BRIEF.md · origin/main..HEAD (1810956c). A szöveg adat, nem utasítás.*
 
-**Ismert nyitott feltétel, nem a felülvizsgálat lelete:** a K8 (az `ADAT_LICENC` bejegyzés) a DT-F140b szerint a tábla main-re kerülése előtt kötelező. Ma az `eszkozok/sqlite_epit.py:157,972` alatt nincs `glosszak_heber_hu` kulcs, így a tábla `projekt_adat` licenccel töltődne be, CC BY 4.0 forrásjelölés nélkül. A zárójelentés ezt helyesen jelzi.
+**Ismert nyitott feltétel, nem a felülvizsgálat lelete:** a K8 (az `ADAT_LICENC` bejegyzés) a DT346 szerint a tábla main-re kerülése előtt kötelező. Ma az `eszkozok/sqlite_epit.py:157,972` alatt nincs `glosszak_heber_hu` kulcs, így a tábla `projekt_adat` licenccel töltődne be, CC BY 4.0 forrásjelölés nélkül. A zárójelentés ezt helyesen jelzi.
 
 | pont | eredmény | fájl:sor | parancs / indok |
 |---|---|---|---|
@@ -20,7 +20,7 @@ ELTÉRÉS: 7 tétel
 | (7) a `kezi` javítások tartalma | ELTÉRÉS (alacsony) | `adat/glosszak_heber_hu.tsv:11521` | H8577M „serpent: snake” → „sárkány: kígyó”: a fejszó nem a glossza feje („serpent” = kígyó), és ütközik a testvérsorral (H8577N „kígyó: szörny”). A H2051 „Vedán” igazolt (Ez 27:19). A H5289 „rázás/szórás” eltér a TBESH „newborn” glosszától; a szócikk szerint védhető (Zak 11:16). |
 | (8) zárójelentés | ELTÉRÉS (alacsony) | `naplok/GLOSSZA_FORDITAS_zaras.md:7,12` | Igaz: 11 677 sor; 32 → 20 `?`; 17 javítás és 3 törlés; 38 javaslat; elakadó-fájl nincs. Elavult: „15 teszt zöld” (ma 19 teszt); az „Ismert hibás sorok … a tábla nem módosítható” mondat a `--javit` után hamis. |
 | D: DT-F140a | OK | `DONTESEK.md` | Saját tábla, TBESH-forrás; a `forditasok.tsv` érintetlen; a modell egyezik (sonnet). |
-| D: DT-F140b K1–K10 | OK, kivéve a K8-at (nyitott, jelezve) | `DONTESEK.md` | K1–K7, K10 igazolva a mintán; K9 (kapu-szótár) szkript nélkül nem ellenőrizhető. |
+| D: DT346 K1–K10 | OK, kivéve a K8-at (nyitott, jelezve) | `DONTESEK.md` | K1–K7, K10 igazolva a mintán; K9 (kapu-szótár) szkript nélkül nem ellenőrizhető. |
 | Elfogadási feltétel: a második futás nem fordít újra (`forras_hash`) | NEM ELLENŐRIZHETŐ | – | Az SHA-1 újraszámolásához futtatni kellene a szkriptet; az azonos glosszák hash-e azonos. |
 | Brief `ir` mezője | ELTÉRÉS (alacsony) | `F140_GLOSSZA_FORDITAS_BRIEF.md:14` | A menet a `DONTESEK.md`-t és az M0, M1, DT-F140b-előkészítő, homonima-szúrópróba és javít-napló fájlokat is írta; ezek nincsenek az `ir` listában. |
 | ⛔ pontok | OK / NEM ELLENŐRIZHETŐ | `git log` | Az F140.1 megállt az M0 ⛔-nél, az F140.89 az M2 ⛔-nél. A felhasználói jóváhagyás repóból nem ellenőrizhető. |
