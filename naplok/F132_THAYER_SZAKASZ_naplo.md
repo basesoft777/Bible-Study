@@ -613,3 +613,21 @@ Végrehajtó: `claude-opus-5-5`. Tételenként külön commit (F132.18–F132.24
   `` `cf.` → `vö.` ``-t ad. A #132 teszt módosítása e feladat hatókörén kívül (brief 2.), ezért nem módosítottam; tétel: `DT-F142a`
   (`DONTESEK.md`), a fordítás nem függ tőle.
 - **Kapuk a `Sirák` alakkal:** `teszt_forditas_kapuk.py` (90) zöld, `teszt_vers_jelentes.py` (9) zöld; a `Sirák` miatt nincs bukás.
+
+## F142.2 — az M3 futási listája és az első megállás (2026-10-26)
+
+*(proveniencia: `scope=adat/elofordulasok.tsv@f8284bffc6a8 + adat/forditasok.tsv@07f20f3d57c1 + adat/thayer_szakaszok.tsv@d71764889b02 | forras=python eszkozok/thayer_jelolt/forditas.py lista (szolista.py --ts 2026-10-26) | ts=2026-10-26`)*
+
+- **Lista (DT332 (1)):** 13 Strong, mind `forditando` (ok: `nincs_szakaszos`), kihagyott 0: G0012 (2 szakasz), G0086 (4), G0282 (7; régi
+  `kezi` `teljes` sor), G0540 (2), G1311 (6), G1941 (7; `kezi`), G1944 (2; `kezi`), G2671 (3), G4151 (17 szakasz, 3 csoport,
+  `javitassal`; `kezi`), G5010 (6), G5351 (2), G5356 (3), G5590 (10; `kezi`). Az illesztés G4151 kivételével `egyezik`.
+- **G0012, első menet (modell: claude-sonnet-5-5):** az `elokeszit` rendben (2 szakasz, 1 csoport, 14 helyőrző). Az első vázlat
+  kapubukása három javítható ok volt (`8_idezojel`: a forrás `'the deep'` aposztróf-idézetét „…”-ra cseréltem; `16_sigla`: `ibid.`
+  → `uo.`), a javított vázlatnál **két hiba marad**, amely nem a fordításon múlik:
+  1. `11_konyvek` SÉRTÉS (`a forditasbol hianyzik: Sir×2`): a kapu a `normalizal.py` `APOKRIF_ALIAS`-át (`Sir. → Sir`, `Ecclus → Sir`)
+     használja, és a fordításban a `Sir` könyvnevet várja; a felhasználó által jóváhagyott `Sirák` (F142.1) nem felel meg neki. Az
+     érintett Strongok: G0012 (2 hely), G4151 (1 hely). A felhasználó utasítása szerint a `Sirák`-kal bukó kapunál megállás.
+  2. `16_sigla` SÉRTÉS (`Philo -> Philón hiányzik`): a G0012 (és a G0282, G4151) forrásában a `Philo` a „Philo's Lehre von der
+     Weltschöpfung” német műcímben áll (G0012 `⟪2⟫`); a prompt 5. szabálya a műcímet változatlanul hagyja, a 16. kapu viszont
+     minden `Philo`-hoz `Philón`-t vár.
+  Rögzítés nem történt; a `forditasok.tsv` és a munkatábla nem változott.
