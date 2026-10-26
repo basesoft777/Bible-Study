@@ -4,7 +4,7 @@
 
 ## 1. Tábla-Δ
 
-| tábla | alap (`fb53abbf`) | fej (`681afc39`) | Δ | `git diff --numstat` (+/−) |
+| tábla | alap (`fb53abbf`) | fej (`b0b9c111`) | Δ | `git diff --numstat` (+/−) |
 |---|---|---|---|---|
 | `adat/forditasok.tsv` | 3 006 | 5 360 | +2 354 | 2451 / 97 |
 | minden más `adat/` tábla | — | — | 0 | — |
@@ -12,9 +12,9 @@
 
 A 2 354 új sor mind `sz<n>` sor (a 98 Strong teljes szakaszszáma; a szakasztábla szerint 2 354). A 97 módosított (−/+) sor a 97 régi `teljes` sor `elavult`-ra állítása: 95 az 1–4. szeletben, 2 (H2416, H5315) a javítókörben. A `numstat` +2 451 = 2 354 új + 97 módosított sor; a 95 szelet-beli sor `megjegyzes` mezőjét a `DT-F128e` → `DT289` csere (`ae721bbf`) még egyszer átírta, de ez a két végállapot-különbség között nem látszik (ugyanaz a 95 sor). Törölt sor: 0. A H8415 régi, jóváhagyott `kezi` sora változatlan.
 
-Más változott fájl: `eszkozok/emeles.py` (1 / 1: a beégetett „DT-F128e” → „DT289”), `naplok/EMELES_munka.tsv` (2354 / 3), `F38_BDB_FORDITAS_BRIEF.md` (fejléc), `naplok/ELLENOR_F38_nf107b.md`, `DONTESEK.md` (DT-F38o, a fő szál sora; a javítókör nem nyúlt hozzá), és ez a napló.
+Más változott fájl: `eszkozok/bdb_jelolt/teszt_szakasz_bemenet.py` (7 / 0, csak fixture; `68845c63`), `eszkozok/emeles.py` (1 / 1: a beégetett „DT-F128e” → „DT289”), `naplok/EMELES_munka.tsv` (2354 / 3), `F38_BDB_FORDITAS_BRIEF.md` (fejléc), `naplok/ELLENOR_F38_nf107b.md`, `DONTESEK.md` (DT-F38o, a fő szál sora; a javítókör nem nyúlt hozzá), és ez a napló.
 
-*(proveniencia: scope=adat/forditasok.tsv @ fb53abbf és @ 681afc39; adat/, konkordancia/ | forras=`git show <rev>:adat/forditasok.tsv`, `split('\t')`, megszámolt nem üres, nem `#` sor a fejléc nélkül (→ 3006 és 5360); `git diff --numstat fb53abbf HEAD -- adat konkordancia naplok/EMELES_munka.tsv eszkozok` (→ 2451 97 adat/forditasok.tsv; 1 1 eszkozok/emeles.py; 2354 3 naplok/EMELES_munka.tsv) | ts=2026-10-25T18:47Z)*
+*(proveniencia: scope=adat/forditasok.tsv @ fb53abbf és @ b0b9c111; adat/, konkordancia/ | forras=`git show <rev>:adat/forditasok.tsv`, `split('\t')`, megszámolt nem üres, nem `#` sor a fejléc nélkül (→ 3006 és 5360); `git diff --numstat fb53abbf b0b9c111 -- adat konkordancia naplok/EMELES_munka.tsv eszkozok` (→ 2451 97 adat/forditasok.tsv; 7 0 eszkozok/bdb_jelolt/teszt_szakasz_bemenet.py; 1 1 eszkozok/emeles.py; 2354 3 naplok/EMELES_munka.tsv; rögzített revízió, nem mozgó HEAD) | ts=2026-10-25T18:47Z)*
 
 ## 2. Commitonkénti bontás (`adat/forditasok.tsv`)
 
@@ -41,7 +41,7 @@ Ellenőrzés: 360 + 416 + 672 + 822 + 11 + 73 = 2 354 = az 1. szakasz Δ-ja; 3 0
 
 ## 3. Szeletenként a Strongok és a forráskarakterszám
 
-**A mérés módja.** A szelet Strongjai: a 2. szakasz szerint az adott commitban hozzáadott `strong` értékek. (a) A `adat/bdb_szakaszok.tsv` `szoveg` oszlopának karakterhossza (Python `len`) összegezve a Strong minden szakaszán. (b) Ugyanez a fordító tényleges bemenetén: `eszkozok/bdb_jelolt/szakasz_bemenet.py` `szakaszok(strong)` → `nezet(...)` (a javítások, pe/mem, alkalmazva; token nélkül). (c) A commitüzenet száma.
+**A mérés módja.** A szelet Strongjai: a 2. szakasz szerint az adott commitban hozzáadott `strong` értékek. (a) A `adat/bdb_szakaszok.tsv` `szoveg` oszlopának karakterhossza (Python `len`) összegezve a Strong minden szakaszán. (b) Ugyanez a fordító tényleges bemenetén: `eszkozok/bdb_jelolt/szakasz_bemenet.py` `szakaszok(strong)` → `nezet(...)` (csak a `hivatkozas` típusú javítások alkalmazva, `szakasz_bemenet.py:108–140`; pe/mem nélküli nézet, DT269 (1); token nélkül). (c) A commitüzenet száma.
 
 | szelet | commit | Strong | szakaszsor | (a) szakasz-`szoveg` | (b) javított nézet | (c) a commitüzenet szerint |
 |---|---|---|---|---|---|---|
@@ -49,7 +49,7 @@ Ellenőrzés: 360 + 416 + 672 + 822 + 11 + 73 = 2 354 = az 1. szakasz Δ-ja; 3 0
 | 2. | `ff497bd1` | 9 | 416 | 153 003 | 154 540 | 153 463 a brief szerint; `~153 000` a commitban |
 | 3. | `cc4bf755` | 27 | 672 | 157 557 | 159 886 | 160 012 a brief szerint; `~160 000` a commitban |
 | 4. | `0c935e7f` | 49 | 822 | 174 617 | 177 409 | 177 530 |
-| javítókör: H8415 | `8b1d7761` | 1 | 11 | 1 942 | 1 966 | — |
+| javítókör: H8415 | `8b1d7761` | 1 | 11 | 1 942 | 1 966 | 2 012 (a `8b1d7761` commitüzenete szerint; a (a)/(b) mérésekkel nem azonos, az eltérés oka nem tisztázott) |
 | javítókör: H2416, H5315 | `681afc39` | 2 | 73 | 23 452 | 23 669 | — |
 | **összesen** | | **98** | **2 354** | **664 509** | **672 522** | |
 
@@ -73,3 +73,4 @@ A javítókör fordítási számai (a `szakasz_rogzit` kimenete, a fordítás ka
 - A H8415 új szakaszsorai `allapot=sonnet`; a `kezi` állapotot csak a felhasználó jóváhagyása után kaphatják (DT290 (3)). Addig a régi `teljes` `kezi` sor az érvényes.
 - A `eszkozok/bdb_jelolt/teszt_szakasz_bemenet.py` `test_kezi_regi_sor_dt_f128f` tesztje a valódi `forditasok.tsv`-t másolta, és a H8415 szakaszsorainak hiányát feltételezte; a H8415 beírása után elbukott. A tesztkör most a másolatból elhagyja a vizsgált Strong valódi `sz` sorait (csak a régi `teljes` sor marad); a teszt tartalma és az eszköz nem változott (F38.380).
 - Nyitott: a (b) és (c) közti eltérés oka (3. szakasz); a kovetkezo/commit-üzenet hamis számai utólag nem javíthatók.
+- Az `ir` utólagos bővítése: a `68845c63` (teszt) és a `090691b0` (ez a napló) olyan fájlt írt, amely akkor még nem szerepelt a brief `ir` listáján; a lista a `b0b9c111`-ben bővült. A `090691b0` commitüzenete („a brief `ir` listájába felvéve”) ezért hibás, utólag nem javítható; a teszt és a napló tartalmát ez nem érinti.
