@@ -9,7 +9,7 @@ munka: adat
 allapot: megallt
 ag: ccr-6c9c92aa-tnvazz
 ad: A kimeneti string-literálokban maradt, már kiosztott helyőrzők (DT-F127b → DT277) felmérve és javítva (a lexikon_general.py:2116 már az F110.29-ben); döntés és megvalósítás az ismétlődés megelőzésére; a 8 érintett lexikonoldal újragenerálása 0-diffet ad.
-kovetkezo: "Te: [elteres_kor 1/2] /elteres 141 — újraellenőrzés függ: naplok/ELLENOR_F141_2.md"
+kovetkezo: "Te: [elteres_kor 2/2] /elteres 141 — újraellenőrzés függ: naplok/ELLENOR_F141_3.md"
 lezarva_osszegzes: "E32 CI-szabály (új sorra HIBA, régire JELENTÉS; 20 teszt) és a 4 maradék kimeneti literál javítva (DT-F127b → DT277); a 4. lépés feltétele a DT-F141b szerint a DT277 sor nem-sodródására szűkítve, a 7 elavult lexikonlap újragenerálása a #36/#143 dolga; 70 meglévő literál külön feladat (naplok/F141_zaras.md)."
 olvas: [eszkozok/ellenoriz.py, eszkozok/f127_jeloltek_bovit.py, eszkozok/szamkiosztas.py, eszkozok/ellenorzes/szabalyok.py, eszkozok/lexikon_general.py, DONTESEK.md, naplok/SZURO_PILOT_ISTENTISZT_zaras.md, naplok/ELLENOR_F110_4.md]
 ir: [eszkozok/ellenoriz.py, eszkozok/f127_jeloltek_bovit.py, eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/tesztek/test_szabalyok.py, naplok/ELLENOR_F141.md, naplok/ELLENOR_F141_2.md]
