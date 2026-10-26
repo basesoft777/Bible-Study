@@ -15,7 +15,9 @@ ugyanazt; a minta tartalma a két mintafájlban él (naplok/GLOSSZA_FORDITAS_min
   python eszkozok/glossza_minta.py --ige-kozos   DT-F140c (b): az összes át nem nézett `sonnet` ige-sor, amelynek
     angol glosszáján legalább 2 Strong osztozik (a testvér-, minta- és átnézési-listás sorok kizárva); kimenet:
     naplok/GLOSSZA_FORDITAS_ige_kozos_DTF140c.tsv (glossza szerint rendezve)
-Használat: python eszkozok/glossza_minta.py [--felulir]
+A minta (a fő, az --ige2 és az --ige-kozos is) a javítások után NEM reprodukálható: a jogosult halmaz az
+aktuális `allapot`-tól függ, a kijavított (`kezi`) sorok kiesnek; a tényleges minta a naplok/ alatti fájlokban él.
+Használat: python eszkozok/glossza_minta.py [--felulir | --ige2 | --ige-kozos]
   python eszkozok/glossza_minta.py --ige2   második ige-minta (DT-F140c (A) 3. lépés): 150 sor, seed 141,
     kizárja az első minta soraiból és a DT-F140c javításaiból érintett sorokat; kimenet:
     naplok/GLOSSZA_FORDITAS_minta2_ige_DTF140c.tsv
