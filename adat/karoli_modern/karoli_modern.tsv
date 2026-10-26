@@ -1,4 +1,4 @@
-# GENERÁLT: eszkozok/karoli_modern/karoli_modern.py (F96.3) — kézzel nem szerkeszthető; a javítás a szabályban (helyesiras.py, igealak.py, igeragozas.py) vagy a kivételtáblában (helyesiras.py: KIVETEL_LEMMA, ALAK_KIVETEL; igealak.py: KEZI, GYANU_KEZI, VALA_ELOTT_KEZI, VALA_ELOTT_MULT_KEZI, TOKEN_KIVETEL, E1_TARGYAS_KEZI, OK_KEZI, E1_MINDIG_VEG, KOR3_VALA_HOMOGRAF) | forras=konkordancia/Karoli_1908.tsv (sha256:49335bbcc77d53bcbfe52b4c7939b6b041cdd276ced019b6bf4ee61872bd3236) + adat/szoto/karoli_szotari_alak.tsv (sha256:edba33e6d65af46535ede231f36d2d7e4eeaab8ece2905ae831c1ddaf593a022) + adat/karoli_modern/helyesiras_tokenek.tsv (sha256:a3a9b6d24f7f272f7226fb1bb2d66b533eda7e4254a528daad29da3540c064d0) + adat/karoli_modern/igealak_tokenek.tsv (sha256:3850f0267ba6e81c194f90b873aeeeb36d12c6682aca4d643b380438e8520c1e) + adat/karoli_modern/igealak_llm.tsv (sha256:878dbe192b427139e43846d0509303b84dd6337ec8a21af7cc103516cefcd63c) + adat/karoli_modern/igealak_llm_opus.tsv (sha256:f536a79c073e585eed25842d277bacbc7a432f91476ba55027f67c03c1506d18) + adat/karoli_modern/igealak_llm_kor3.tsv (sha256:f96d057fd02eb3eff2f56cc92da7a005a2deab8280b8b3f31a64a9338283c98a) + adat/karoli_modern/igealak_llm_kor4.tsv (sha256:e94c1f0d554549b2c8f2304138c45c2f43d2cd7c2ffaca95bdfe282adeca76a9) + adat/karoli_modern/igealak_llm_kor5.tsv (sha256:d0fe6f6fbb5de0cec9797ecbb351377bfd591c541ba827f9103829e990233253) + eszkozok/karoli_strong/tokenek.py (sha256:705ccda729d06fb62d573d1edae410107a25a67ca75eba876f328e276e82ba54) + eszkozok/karoli_modern/fedettseg.py (sha256:beba874f8859dcfa4590e516ce9ffc91945f63971900b89fd47a9e34c4ccfc05) + eszkozok/karoli_modern/helyesiras.py (sha256:dbfd948155d621defed65b5b100ac268b2e299bfb99cb2a85ee7f48540ea4764) + eszkozok/karoli_modern/igealak.py (sha256:951c65c8122533226efdc7969e8be89c73fcb0d7af95bb7c40653d148a874f0f) + eszkozok/karoli_modern/igeragozas.py (sha256:172887f578377c6238140c791fb6d84cf6bc0246c2bf364425c7d7e717cc0f64) + eszkozok/karoli_modern/karoli_modern.py (sha256:8217fdc4d096e953fd07852eacea9cfc27d755cae0e2a427168920c41c8a9f02) + adat/karoli_strong/szavak_*.tsv (61 fájl, a K3b bemenete, összesített sha256:c441cc76e5f3b1c2d9bd2a97b458679254dfdbe3523e8131fb1f7dd4ba7c2a96) | a modernizálás szintje: helyesírás + igealak, szókincs, szórend, írásjel és betoldás-jelölés változatlan (DT128) | tokenizálás: eszkozok/karoli_strong/tokenek.py tokenizal (a #22 hu_sorszam-a; a Strong token-kulcson illeszthető, a réteg Strongot nem tárol, DT305, DT314) | mérés: naplok/KAROLI_MODERN_meres.md 4.9 (.1, K1 246/246), 5.7 és 7.–8. (.2, K1 a javítások után a 8. szakasz szerint), 10. (a 3. kör, DT316; a lefedettséget is mérő K1: igealak_minta2.tsv) 11. (a 4. kör, DT317), 12. (DT318) és 14. (az 5. kör, DT320), modell-ellenőrzés, a felhasználó elfogadta | ts=2026-10-25T12:10Z | scope=a Károli 1908 minden tokenje (599367), versenként a tokenizal sorrendjében
+# GENERÁLT: eszkozok/karoli_modern/karoli_modern.py (F96.3) — kézzel nem szerkeszthető; a javítás a szabályban (helyesiras.py, igealak.py, igeragozas.py) vagy a kivételtáblában (helyesiras.py: KIVETEL_LEMMA, ALAK_KIVETEL; igealak.py: KEZI, GYANU_KEZI, VALA_ELOTT_KEZI, VALA_ELOTT_MULT_KEZI, TOKEN_KIVETEL, E1_TARGYAS_KEZI, OK_KEZI, E1_MINDIG_VEG, KOR3_VALA_HOMOGRAF) | forras=konkordancia/Karoli_1908.tsv (sha256:49335bbcc77d53bcbfe52b4c7939b6b041cdd276ced019b6bf4ee61872bd3236) + adat/szoto/karoli_szotari_alak.tsv (sha256:edba33e6d65af46535ede231f36d2d7e4eeaab8ece2905ae831c1ddaf593a022) + adat/karoli_modern/helyesiras_tokenek.tsv (sha256:630707ece6efd83efc019fcabdefdb1eeedf32772119f08a2358c122d9d32798) + adat/karoli_modern/igealak_tokenek.tsv (sha256:a4a0e9f79fbffa479c7f6822ee729913111bd61861f868fca0aaf1c858d01fec) + adat/karoli_modern/igealak_llm.tsv (sha256:fb540cadf65f4e588bc9f98149a45603ee2f2ea723c0c37ed7d3762cdb346268) + adat/karoli_modern/igealak_llm_opus.tsv (sha256:6e947298cbc991624dfe687e10ba9dc38595b0b6aa970e6f38c7321c03c759f4) + adat/karoli_modern/igealak_llm_kor3.tsv (sha256:575112b2a9cd6a9542757be2284dda80e6198f130c6ef8f58cfa4bc89ae1984e) + adat/karoli_modern/igealak_llm_kor4.tsv (sha256:07872406670a457b527716350a2250802492bb602fb394d0e42e4377179d4a71) + adat/karoli_modern/igealak_llm_kor5.tsv (sha256:e9aff9518b1fea01b1616b2ba695012f2b379e700c4d853109e2425654a7e5a5) + eszkozok/karoli_strong/tokenek.py (sha256:705ccda729d06fb62d573d1edae410107a25a67ca75eba876f328e276e82ba54) + eszkozok/karoli_modern/fedettseg.py (sha256:beba874f8859dcfa4590e516ce9ffc91945f63971900b89fd47a9e34c4ccfc05) + eszkozok/karoli_modern/helyesiras.py (sha256:dbfd948155d621defed65b5b100ac268b2e299bfb99cb2a85ee7f48540ea4764) + eszkozok/karoli_modern/igealak.py (sha256:ac0c36936f3864195618d153292dd8a331ffbbb3a8957028db677667a83c7912) + eszkozok/karoli_modern/igeragozas.py (sha256:172887f578377c6238140c791fb6d84cf6bc0246c2bf364425c7d7e717cc0f64) + eszkozok/karoli_modern/karoli_modern.py (sha256:8217fdc4d096e953fd07852eacea9cfc27d755cae0e2a427168920c41c8a9f02) + adat/karoli_strong/szavak_*.tsv (61 fájl, a K3b bemenete, összesített sha256:c441cc76e5f3b1c2d9bd2a97b458679254dfdbe3523e8131fb1f7dd4ba7c2a96) | a modernizálás szintje: helyesírás + igealak, szókincs, szórend, írásjel és betoldás-jelölés változatlan (DT128) | tokenizálás: eszkozok/karoli_strong/tokenek.py tokenizal (a #22 hu_sorszam-a; a Strong token-kulcson illeszthető, a réteg Strongot nem tárol, DT-F96f, DT-F96o) | mérés: naplok/KAROLI_MODERN_meres.md 4.9 (.1, K1 246/246), 5.7 és 7.–8. (.2, K1 a javítások után a 8. szakasz szerint), 10. (a 3. kör, DT-F96q; a lefedettséget is mérő K1: igealak_minta2.tsv) 11. (a 4. kör, DT-F96r), 12. (DT-F96s) és 14. (az 5. kör, DT-F96u), modell-ellenőrzés, a felhasználó elfogadta | ts=2026-10-25T21:13Z | scope=a Károli 1908 minden tokenje (599367), versenként a tokenizal sorrendjében
 igehely	sorszam	alak_1908	alak_modern	kieso	kieso_gazda	szabaly	bizonytalan
 1Móz 1:1	1	Kezdetben	Kezdetben				
 1Móz 1:1	2	teremté	teremtette			igealak:mult.targyas.E3	
@@ -937,7 +937,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	kieso_gazda	szabaly	bizonytalan
 1Móz 2:17	12	a		osszevonva	13	nevmas	
 1Móz 2:17	13	mely	amely			nevmas:mely	
 1Móz 2:17	14	napon	napon				
-1Móz 2:17	15	ejéndel	ejéndel				
+1Móz 2:17	15	ejéndel	eszel			gyanu_kezi	
 1Móz 2:17	16	arról	arról				
 1Móz 2:17	17	bizony	bizony				
 1Móz 2:17	18	meghalsz	meghalsz				
@@ -1196,7 +1196,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	kieso_gazda	szabaly	bizonytalan
 1Móz 3:5	6	a		osszevonva	7	nevmas	
 1Móz 3:5	7	mely	amely			nevmas:mely	
 1Móz 3:5	8	napon	napon				
-1Móz 3:5	9	ejéndetek	ejéndetek				
+1Móz 3:5	9	ejéndetek	esztek			gyanu_kezi	
 1Móz 3:5	10	abból	abból				
 1Móz 3:5	11	megnyilatkoznak	megnyilatkoznak				
 1Móz 3:5	12	a	a				
@@ -3256,7 +3256,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	kieso_gazda	szabaly	bizonytalan
 1Móz 7:17	11	a	a				
 1Móz 7:17	12	vizek	vizek				
 1Móz 7:17	13	hogy	hogy				
-1Móz 7:17	14	felveheték	felveheték				
+1Móz 7:17	14	felveheték	felvehették			gyanu_kezi	
 1Móz 7:17	15	a	a				
 1Móz 7:17	16	bárkát	bárkát				
 1Móz 7:17	17	és	és				
@@ -5717,7 +5717,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	kieso_gazda	szabaly	bizonytalan
 1Móz 13:9	20	ha	ha				
 1Móz 13:9	21	te	te				
 1Móz 13:9	22	jobbra	jobbra				
-1Móz 13:9	23	menéndesz	menéndesz			gyanu:nd_jovo	
+1Móz 13:9	23	menéndesz	mész			gyanu_kezi	
 1Móz 13:9	24	én	én				
 1Móz 13:9	25	balra	balra				
 1Móz 13:9	26	térek	térek				
@@ -10117,7 +10117,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	kieso_gazda	szabaly	bizonytalan
 1Móz 22:2	28	egyen	egyen				
 1Móz 22:2	29	a		osszevonva	30	nevmas	
 1Móz 22:2	30	melyet	amelyet			nevmas:mely	
-1Móz 22:2	31	mondándok	mondándok			gyanu:nd_jovo	
+1Móz 22:2	31	mondándok	mondok			gyanu_kezi	
 1Móz 22:2	32	néked	neked			neki	
 1Móz 22:3	1	Felkele	Felkelt			igealak:mult.alanyi.E3	
 1Móz 22:3	2	azért	azért				
@@ -10969,7 +10969,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	kieso_gazda	szabaly	bizonytalan
 1Móz 23:19	17	Kanaán	Kanaán				
 1Móz 23:19	18	földén	földén				
 1Móz 23:20	1	Így	Így				
-1Móz 23:20	2	erősítteték	erősítteték				
+1Móz 23:20	2	erősítteték	erősíttetett			gyanu_kezi	
 1Móz 23:20	3	meg	meg				
 1Móz 23:20	4	a	a				
 1Móz 23:20	5	mező	mező				
@@ -11876,7 +11876,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	kieso_gazda	szabaly	bizonytalan
 1Móz 24:41	5	esketésem	esketésem				
 1Móz 24:41	6	alól	alól				
 1Móz 24:41	7	ha	ha				
-1Móz 24:41	8	elmenéndesz	elmenéndesz			gyanu:nd_jovo	
+1Móz 24:41	8	elmenéndesz	elmész			gyanu_kezi	
 1Móz 24:41	9	az	az				
 1Móz 24:41	10	én	én				
 1Móz 24:41	11	nemzetségem	nemzetségem				
@@ -12214,7 +12214,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	kieso_gazda	szabaly	bizonytalan
 1Móz 24:54	13	valának	voltak			vala_letige	
 1Móz 24:54	14	és	és				
 1Móz 24:54	15	ott	ott				
-1Móz 24:54	16	hálának	hálának				
+1Móz 24:54	16	hálának	háltak			gyanu_kezi	
 1Móz 24:54	17	Mikor	Mikor				
 1Móz 24:54	18	pedig	pedig				
 1Móz 24:54	19	felkelének	felkeltek			igealak:mult.T3	
@@ -13060,7 +13060,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	kieso_gazda	szabaly	bizonytalan
 1Móz 26:2	17	a	a				
 1Móz 26:2	18	földön	földön				
 1Móz 26:2	19	melyet	melyet				
-1Móz 26:2	20	mondándok	mondándok			gyanu:nd_jovo	
+1Móz 26:2	20	mondándok	mondok			gyanu_kezi	
 1Móz 26:2	21	tenéked	tenéked			gyanu:kivetel_jegy_nelkul+tobbseg:sonnet+opus	
 1Móz 26:3	1	Tartózkodjál	Tartózkodjál			felszolito_E2	
 1Móz 26:3	2	ezen	ezen				
@@ -15044,7 +15044,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	kieso_gazda	szabaly	bizonytalan
 1Móz 28:15	7	megőrizzelek	megőrizzelek				
 1Móz 28:15	8	téged	téged				
 1Móz 28:15	9	valahova	valahova				
-1Móz 28:15	10	menéndesz	menéndesz			gyanu:nd_jovo	
+1Móz 28:15	10	menéndesz	mész			gyanu_kezi	
 1Móz 28:15	11	és	és				
 1Móz 28:15	12	visszahozzalak	visszahozzalak				
 1Móz 28:15	13	e	e				
@@ -15195,7 +15195,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	kieso_gazda	szabaly	bizonytalan
 1Móz 28:22	12	lészen	lesz			gyanu_kezi	
 1Móz 28:22	13	és	és				
 1Móz 28:22	14	valamit	valamit				
-1Móz 28:22	15	adándasz	adándasz			gyanu:nd_jovo	
+1Móz 28:22	15	adándasz	adsz			gyanu_kezi	
 1Móz 28:22	16	nékem	nekem			neki	
 1Móz 28:22	17	annak	annak				
 1Móz 28:22	18	tizedét	tizedét				
@@ -16435,7 +16435,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	kieso_gazda	szabaly	bizonytalan
 1Móz 30:33	4	majd	majd				
 1Móz 30:33	5	bérem	bérem				
 1Móz 30:33	6	iránt	iránt				
-1Móz 30:33	7	eljövéndesz	eljövéndesz				
+1Móz 30:33	7	eljövéndesz	eljössz			gyanu_kezi	
 1Móz 30:33	8	mi	mi				
 1Móz 30:33	9	előtted	előtted				
 1Móz 30:33	10	lesz	lesz				
@@ -17655,7 +17655,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	kieso_gazda	szabaly	bizonytalan
 1Móz 31:50	2	az	az				
 1Móz 31:50	3	én	én				
 1Móz 31:50	4	leányaimat	leányaimat				
-1Móz 31:50	5	nyomorgatándod	nyomorgatándod			gyanu:nd_jovo	
+1Móz 31:50	5	nyomorgatándod	nyomorgatod			gyanu_kezi	
 1Móz 31:50	6	és	és				
 1Móz 31:50	7	ha	ha				
 1Móz 31:50	8	az	az				
@@ -17664,7 +17664,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	kieso_gazda	szabaly	bizonytalan
 1Móz 31:50	11	kivűl	kívül			kivetel	
 1Móz 31:50	12	több	több				
 1Móz 31:50	13	feleséget	feleséget				
-1Móz 31:50	14	veéndesz	veéndesz			gyanu:nd_jovo	
+1Móz 31:50	14	veéndesz	veszel			gyanu_kezi	
 1Móz 31:50	15	senki	senki				
 1Móz 31:50	16	sincs	sincs				
 1Móz 31:50	17	ugyan	ugyan				
@@ -19763,7 +19763,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	kieso_gazda	szabaly	bizonytalan
 1Móz 35:15	14	vele	vele				
 1Móz 35:15	15	Béthelnek	Béthelnek				
 1Móz 35:16	1	És	És				
-1Móz 35:16	2	elindúlának	elindúlának				
+1Móz 35:16	2	elindúlának	elindultak			gyanu_kezi	
 1Móz 35:16	3	Béthelből	Béthelből				
 1Móz 35:16	4	s	s				
 1Móz 35:16	5	mikor	mikor				
@@ -24076,7 +24076,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	kieso_gazda	szabaly	bizonytalan
 1Móz 42:6	23	arczczal	arccal			karakter	
 1Móz 42:6	24	a	a				
 1Móz 42:6	25	földre	földre				
-1Móz 42:6	26	borúlának	borúlának				
+1Móz 42:6	26	borúlának	borultak			gyanu_kezi	
 1Móz 42:6	27	ő	ő				
 1Móz 42:6	28	előtte	előtte				
 1Móz 42:7	1	Amint	Amint				
@@ -26103,7 +26103,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	kieso_gazda	szabaly	bizonytalan
 1Móz 44:30	1	Ha	Ha				
 1Móz 44:30	2	tehát	tehát				
 1Móz 44:30	3	most	most				
-1Móz 44:30	4	visszamenéndek	visszamenéndek			gyanu:nd_jovo	
+1Móz 44:30	4	visszamenéndek	visszamegyek			gyanu_kezi	
 1Móz 44:30	5	a	a				
 1Móz 44:30	6	te	te				
 1Móz 44:30	7	szolgádhoz	szolgádhoz				
@@ -29489,7 +29489,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	kieso_gazda	szabaly	bizonytalan
 1Móz 50:18	7	testvérei	testvérei				
 1Móz 50:18	8	is	is				
 1Móz 50:18	9	és	és				
-1Móz 50:18	10	leborúlának	leborúlának				
+1Móz 50:18	10	leborúlának	leborultak			gyanu_kezi	
 1Móz 50:18	11	előtte	előtte				
 1Móz 50:18	12	és	és				
 1Móz 50:18	13	mondának	mondták			igealak:mult.T3	
@@ -36019,7 +36019,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	kieso_gazda	szabaly	bizonytalan
 2Móz 12:15	15	mert	mert				
 2Móz 12:15	16	valaki	valaki				
 2Móz 12:15	17	kovászost	kovászost				
-2Móz 12:15	18	ejéndik	ejéndik				
+2Móz 12:15	18	ejéndik	eszik			gyanu_kezi	
 2Móz 12:15	19	az	az				
 2Móz 12:15	20	első	első				
 2Móz 12:15	21	naptól	naptól				
@@ -36119,7 +36119,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	kieso_gazda	szabaly	bizonytalan
 2Móz 12:19	10	mert	mert				
 2Móz 12:19	11	valaki	valaki				
 2Móz 12:19	12	kovászost	kovászost				
-2Móz 12:19	13	ejéndik	ejéndik				
+2Móz 12:19	13	ejéndik	eszik			gyanu_kezi	
 2Móz 12:19	14	az	az				
 2Móz 12:19	15	a	a				
 2Móz 12:19	16	lélek	lélek				
@@ -42656,13 +42656,13 @@ igehely	sorszam	alak_1908	alak_modern	kieso	kieso_gazda	szabaly	bizonytalan
 2Móz 23:21	26	benne	benne				
 2Móz 23:22	1	Mert	Mert				
 2Móz 23:22	2	ha	ha				
-2Móz 23:22	3	hallgatándasz	hallgatándasz			gyanu:nd_jovo	
+2Móz 23:22	3	hallgatándasz	hallgatsz			gyanu_kezi	
 2Móz 23:22	4	az	az				
 2Móz 23:22	5	ő	ő				
 2Móz 23:22	6	szavára	szavára				
 2Móz 23:22	7	és	és				
 2Móz 23:22	8	mindazt	mindazt				
-2Móz 23:22	9	megcselekedénded	megcselekedénded			gyanu:nd_jovo	
+2Móz 23:22	9	megcselekedénded	megcselekszed			gyanu_kezi	
 2Móz 23:22	10	a		osszevonva	11	nevmas	
 2Móz 23:22	11	mit	amit			nevmas:mi	
 2Móz 23:22	12	mondok	mondok				
@@ -51766,7 +51766,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	kieso_gazda	szabaly	bizonytalan
 2Móz 38:24	10	szenthelynek	szenthelynek				
 2Móz 38:24	11	összes	összes				
 2Móz 38:24	12	munkáira	munkáira				
-2Móz 38:24	13	feldolgoztaték	feldolgoztaték				
+2Móz 38:24	13	feldolgoztaték	feldolgoztatott			gyanu_kezi	
 2Móz 38:24	14	ez	ez				
 2Móz 38:24	15	az	az				
 2Móz 38:24	16	áldozati	áldozati				
@@ -52478,7 +52478,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	kieso_gazda	szabaly	bizonytalan
 2Móz 39:31	16	vala		segedige	15	vala_segedige_mult	
 2Móz 39:31	17	Mózesnek	Mózesnek				
 2Móz 39:32	1	Így	Így				
-2Móz 39:32	2	végezteték	végezteték				
+2Móz 39:32	2	végezteték	végeztetett			gyanu_kezi	
 2Móz 39:32	3	el	el				
 2Móz 39:32	4	a	a				
 2Móz 39:32	5	gyülekezet	gyülekezet				
@@ -77934,7 +77934,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	kieso_gazda	szabaly	bizonytalan
 4Móz 9:6	10	miatt	miatt				
 4Móz 9:6	11	és	és				
 4Móz 9:6	12	nem	nem				
-4Móz 9:6	13	készítheték	készítheték				
+4Móz 9:6	13	készítheték	készíthették			gyanu_kezi	
 4Móz 9:6	14	meg	meg				
 4Móz 9:6	15	a	a				
 4Móz 9:6	16	páskhát	páskhát				
@@ -79783,7 +79783,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	kieso_gazda	szabaly	bizonytalan
 4Móz 11:32	27	tíz	tíz				
 4Móz 11:32	28	hómert	hómert				
 4Móz 11:32	29	és	és				
-4Móz 11:32	30	kiteregeték	kiteregeték				
+4Móz 11:32	30	kiteregeték	kiteregették			gyanu_kezi	
 4Móz 11:32	31	azokat	azokat				
 4Móz 11:32	32	magoknak	magoknak				
 4Móz 11:32	33	a	a				
@@ -89872,7 +89872,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	kieso_gazda	szabaly	bizonytalan
 4Móz 27:10	1	Ha	Ha				
 4Móz 27:10	2	pedig	pedig				
 4Móz 27:10	3	nem	nem				
-4Móz 27:10	4	leendenek	leendenek			gyanu:nd_jovo	
+4Móz 27:10	4	leendenek	lesznek			gyanu_kezi	
 4Móz 27:10	5	néki	neki			neki	
 4Móz 27:10	6	testvérei	testvérei				
 4Móz 27:10	7	akkor	akkor				
@@ -89887,7 +89887,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	kieso_gazda	szabaly	bizonytalan
 4Móz 27:11	1	Ha	Ha				
 4Móz 27:11	2	pedig	pedig				
 4Móz 27:11	3	nem	nem				
-4Móz 27:11	4	leendenek	leendenek			gyanu:nd_jovo	
+4Móz 27:11	4	leendenek	lesznek			gyanu_kezi	
 4Móz 27:11	5	az	az				
 4Móz 27:11	6	ő	ő				
 4Móz 27:11	7	atyjának	atyjának				
@@ -99031,7 +99031,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	kieso_gazda	szabaly	bizonytalan
 5Móz 4:29	21	őt	őt				
 5Móz 4:30	1	Mikor	Mikor				
 5Móz 4:30	2	nyomorúságban	nyomorúságban				
-5Móz 4:30	3	leéndesz	leéndesz			gyanu:nd_jovo	
+5Móz 4:30	3	leéndesz	leszel			gyanu_kezi	
 5Móz 4:30	4	és	és				
 5Móz 4:30	5	utólérnek	utólérnek				
 5Móz 4:30	6	téged	téged				
@@ -118812,7 +118812,7 @@ Józs 2:1	34	vala	volt			vala_letige
 Józs 2:1	35	neve	neve				
 Józs 2:1	36	és	és				
 Józs 2:1	37	ott	ott				
-Józs 2:1	38	hálának	hálának				
+Józs 2:1	38	hálának	háltak			gyanu_kezi	
 Józs 2:2	1	Mikor	Mikor				
 Józs 2:2	2	pedig	pedig				
 Józs 2:2	3	megjelentették	megjelentették				
@@ -122628,7 +122628,7 @@ Józs 8:15	15	felé	felé
 Józs 8:15	16	vivő	vivő				
 Józs 8:15	17	úton	úton				
 Józs 8:16	1	És	És				
-Józs 8:16	2	felriasztaték	felriasztaték				
+Józs 8:16	2	felriasztaték	felriasztatott			gyanu_kezi	
 Józs 8:16	3	az	az				
 Józs 8:16	4	egész	egész				
 Józs 8:16	5	nép	nép				
@@ -122716,7 +122716,7 @@ Józs 8:19	12	felemelte	felemelte
 Józs 8:19	13	vala		segedige	12	vala_segedige_mult	
 Józs 8:19	14	kezét	kezét				
 Józs 8:19	15	futásnak	futásnak				
-Józs 8:19	16	eredének	eredének				
+Józs 8:19	16	eredének	eredtek			gyanu_kezi	
 Józs 8:19	17	és	és				
 Józs 8:19	18	bemenének	bementek			igealak:mult.T3	
 Józs 8:19	19	a	a				
@@ -158694,7 +158694,7 @@ Ruth 4:22	8	Dávidot	Dávidot
 1Sám 16:3	18	azt	azt				
 1Sám 16:3	19	a		osszevonva	20	nevmas	
 1Sám 16:3	20	kit	akit			nevmas:ki	
-1Sám 16:3	21	mondándok	mondándok			gyanu:nd_jovo	
+1Sám 16:3	21	mondándok	mondok			gyanu_kezi	
 1Sám 16:3	22	néked	neked			neki	
 1Sám 16:4	1	És	És				
 1Sám 16:4	2	Sámuel	Sámuel				
@@ -170419,7 +170419,7 @@ Ruth 4:22	8	Dávidot	Dávidot
 2Sám 2:31	16	kik	akik			nevmas:ki	
 2Sám 2:31	17	meghalának	meghaltak			igealak:mult.T3	
 2Sám 2:32	1	És	És				
-2Sám 2:32	2	felvevén	felvevén			igealak_ritka:hatarozoi_igenev	
+2Sám 2:32	2	felvevén	felvéve			gyanu_kezi	
 2Sám 2:32	3	Asáelt	Asáelt				
 2Sám 2:32	4	eltemeték	eltemették			igealak_kezi	
 2Sám 2:32	5	őt	őt				
@@ -171739,7 +171739,7 @@ Ruth 4:22	8	Dávidot	Dávidot
 2Sám 4:12	22	Isbósetnek	Isbósetnek				
 2Sám 4:12	23	pedig	pedig				
 2Sám 4:12	24	fejét	fejét				
-2Sám 4:12	25	felvevén	felvevén			igealak_ritka:hatarozoi_igenev	
+2Sám 4:12	25	felvevén	felvéve			gyanu_kezi	
 2Sám 4:12	26	eltemeték	eltemették			igealak_kezi	
 2Sám 4:12	27	az	az				
 2Sám 4:12	28	Abner	Abner				
@@ -178294,7 +178294,7 @@ Ruth 4:22	8	Dávidot	Dávidot
 2Sám 15:17	7	háznépe	háznépe				
 2Sám 15:17	8	ő	ő				
 2Sám 15:17	9	utána	utána				
-2Sám 15:17	10	megállapodának	megállapodának				
+2Sám 15:17	10	megállapodának	megállapodtak			gyanu_kezi	
 2Sám 15:17	11	a	a				
 2Sám 15:17	12	legszélső	legszélső				
 2Sám 15:17	13	háznál	háznál				
@@ -178751,7 +178751,7 @@ Ruth 4:22	8	Dávidot	Dávidot
 2Sám 15:35	12	dolgot	dolgot				
 2Sám 15:35	13	a		osszevonva	14	nevmas	
 2Sám 15:35	14	mit	amit			nevmas:mi	
-2Sám 15:35	15	hallándasz	hallándasz			gyanu:nd_jovo	
+2Sám 15:35	15	hallándasz	hallasz			gyanu_kezi	
 2Sám 15:35	16	a	a				
 2Sám 15:35	17	király	király				
 2Sám 15:35	18	házából	házából				
@@ -186716,11 +186716,11 @@ Ruth 4:22	8	Dávidot	Dávidot
 1Kir 2:3	36	mindenekben	mindenekben				
 1Kir 2:3	37	a		osszevonva	38	nevmas	
 1Kir 2:3	38	melyeket	amelyeket			nevmas:mely	
-1Kir 2:3	39	cselekedéndesz	cselekedéndesz			gyanu:nd_jovo	
+1Kir 2:3	39	cselekedéndesz	cselekszel			gyanu_kezi	
 1Kir 2:3	40	és	és				
 1Kir 2:3	41	mindenütt	mindenütt				
 1Kir 2:3	42	valamerre	valamerre				
-1Kir 2:3	43	fordulándasz	fordulándasz			gyanu:nd_jovo	
+1Kir 2:3	43	fordulándasz	fordulsz			gyanu_kezi	
 1Kir 2:4	1	Hogy	Hogy				
 1Kir 2:4	2	megteljesítse	megteljesítse				
 1Kir 2:4	3	az	az				
@@ -186733,7 +186733,7 @@ Ruth 4:22	8	Dávidot	Dávidot
 1Kir 2:4	10	nékem	nekem			neki	
 1Kir 2:4	11	mondván	mondva			igealak:hatarozoi_igenev	
 1Kir 2:4	12	Ha	Ha				
-1Kir 2:4	13	megőrizéndik	megőrizéndik			gyanu:nd_jovo	
+1Kir 2:4	13	megőrizéndik	megőrzik			gyanu_kezi	
 1Kir 2:4	14	a	a				
 1Kir 2:4	15	te	te				
 1Kir 2:4	16	fiaid	fiaid				
@@ -187587,9 +187587,9 @@ Ruth 4:22	8	Dávidot	Dávidot
 1Kir 2:37	1	Mert	Mert				
 1Kir 2:37	2	valamely	valamely				
 1Kir 2:37	3	nap	nap				
-1Kir 2:37	4	kimenéndesz	kimenéndesz			gyanu:nd_jovo	
+1Kir 2:37	4	kimenéndesz	kimész			gyanu_kezi	
 1Kir 2:37	5	és	és				
-1Kir 2:37	6	általmenéndesz	általmenéndesz			gyanu:nd_jovo	
+1Kir 2:37	6	általmenéndesz	általmész			gyanu_kezi	
 1Kir 2:37	7	a	a				
 1Kir 2:37	8	Kidron	Kidron				
 1Kir 2:37	9	patakján	patakján				
@@ -187720,12 +187720,12 @@ Ruth 4:22	8	Dávidot	Dávidot
 1Kir 2:42	24	mondván	mondva			igealak:hatarozoi_igenev	
 1Kir 2:42	25	Valamely	Valamely				
 1Kir 2:42	26	napon	napon				
-1Kir 2:42	27	kimenéndesz	kimenéndesz			gyanu:nd_jovo	
+1Kir 2:42	27	kimenéndesz	kimész			gyanu_kezi	
 1Kir 2:42	28	s	s				
 1Kir 2:42	29	ide	ide				
 1Kir 2:42	30	s	s				
 1Kir 2:42	31	tova	tova				
-1Kir 2:42	32	menéndesz	menéndesz			gyanu:nd_jovo	
+1Kir 2:42	32	menéndesz	mész			gyanu_kezi	
 1Kir 2:42	33	bizonynyal	bizonnyal			karakter	
 1Kir 2:42	34	tudjad	tudjad				
 1Kir 2:42	35	hogy	hogy				
@@ -188175,7 +188175,7 @@ Ruth 4:22	8	Dávidot	Dávidot
 1Kir 3:14	3	az	az				
 1Kir 3:14	4	én	én				
 1Kir 3:14	5	útaimon	útaimon				
-1Kir 3:14	6	járándasz	járándasz			gyanu:nd_jovo	
+1Kir 3:14	6	járándasz	jársz			gyanu_kezi	
 1Kir 3:14	7	megőrizvén	megőrizve			igealak_ritka:hatarozoi_igenev+tobbseg:szabaly+sonnet	
 1Kir 3:14	8	az	az				
 1Kir 3:14	9	én	én				
@@ -189299,7 +189299,7 @@ Ruth 4:22	8	Dávidot	Dávidot
 1Kir 5:6	29	szerint	szerint				
 1Kir 5:6	30	a		osszevonva	31	nevmas	
 1Kir 5:6	31	mit	amit			nevmas:mi	
-1Kir 5:6	32	mondándasz	mondándasz			gyanu:nd_jovo	
+1Kir 5:6	32	mondándasz	mondasz			gyanu_kezi	
 1Kir 5:6	33	mert	mert				
 1Kir 5:6	34	tudod	tudod				
 1Kir 5:6	35	hogy	hogy				
@@ -190319,7 +190319,7 @@ Ruth 4:22	8	Dávidot	Dávidot
 1Kir 6:38	8	a	a				
 1Kir 6:38	9	nyolczadik	nyolcadik			karakter	
 1Kir 6:38	10	hónap	hónap				
-1Kir 6:38	11	végezteték	végezteték				
+1Kir 6:38	11	végezteték	végeztetett			gyanu_kezi	
 1Kir 6:38	12	el	el				
 1Kir 6:38	13	a	a				
 1Kir 6:38	14	ház	ház				
@@ -190811,7 +190811,7 @@ Ruth 4:22	8	Dávidot	Dávidot
 1Kir 7:22	8	És	És				
 1Kir 7:22	9	ilyen	ilyen				
 1Kir 7:22	10	módon	módon				
-1Kir 7:22	11	végezteték	végezteték				
+1Kir 7:22	11	végezteték	végeztetett			gyanu_kezi	
 1Kir 7:22	12	el	el				
 1Kir 7:22	13	az	az				
 1Kir 7:22	14	oszlopok	oszlopok				
@@ -192218,7 +192218,7 @@ Ruth 4:22	8	Dávidot	Dávidot
 1Kir 8:30	13	könyörgését	könyörgését				
 1Kir 8:30	14	a		osszevonva	15	nevmas	
 1Kir 8:30	15	kik	akik			nevmas:ki	
-1Kir 8:30	16	imádkozándanak	imádkozándanak			gyanu:nd_jovo	
+1Kir 8:30	16	imádkozándanak	imádkoznak			gyanu_kezi	
 1Kir 8:30	17	e	e				
 1Kir 8:30	18	helyen	helyen				
 1Kir 8:30	19	hallgasd	hallgasd				
@@ -192231,7 +192231,7 @@ Ruth 4:22	8	Dávidot	Dávidot
 1Kir 8:30	26	légy	légy				
 1Kir 8:30	27	kegyelmes	kegyelmes				
 1Kir 8:31	1	Mikor	Mikor				
-1Kir 8:31	2	vétkezéndik	vétkezéndik			gyanu:nd_jovo	
+1Kir 8:31	2	vétkezéndik	vétkezik			gyanu_kezi	
 1Kir 8:31	3	valaki	valaki				
 1Kir 8:31	4	felebarátja	felebarátja				
 1Kir 8:31	5	ellen	ellen				
@@ -192300,18 +192300,18 @@ Ruth 4:22	8	Dávidot	Dávidot
 1Kir 8:33	13	vétkeztek	vétkeztek				
 1Kir 8:33	14	és	és				
 1Kir 8:33	15	hozzád	hozzád				
-1Kir 8:33	16	megtéréndenek	megtéréndenek			gyanu:nd_jovo	
+1Kir 8:33	16	megtéréndenek	megtérnek			gyanu_kezi	
 1Kir 8:33	17	és	és				
 1Kir 8:33	18	vallást	vallást				
-1Kir 8:33	19	teéndenek	teéndenek			gyanu:nd_jovo	
+1Kir 8:33	19	teéndenek	tesznek			gyanu_kezi	
 1Kir 8:33	20	a	a				
 1Kir 8:33	21	te	te				
 1Kir 8:33	22	nevedről	nevedről				
 1Kir 8:33	23	és	és				
 1Kir 8:33	24	néked	neked			neki	
-1Kir 8:33	25	imádkozándanak	imádkozándanak			gyanu:nd_jovo	
+1Kir 8:33	25	imádkozándanak	imádkoznak			gyanu_kezi	
 1Kir 8:33	26	és	és				
-1Kir 8:33	27	könyörgéndenek	könyörgéndenek			gyanu:nd_jovo	
+1Kir 8:33	27	könyörgéndenek	könyörögnek			gyanu_kezi	
 1Kir 8:33	28	e	e				
 1Kir 8:33	29	házban	házban				
 1Kir 8:34	1	Te	Te				
@@ -192353,17 +192353,17 @@ Ruth 4:22	8	Dávidot	Dávidot
 1Kir 8:35	10	ellened	ellened				
 1Kir 8:35	11	vétkeztek	vétkeztek				
 1Kir 8:35	12	és	és				
-1Kir 8:35	13	imádkozándanak	imádkozándanak			gyanu:nd_jovo	
+1Kir 8:35	13	imádkozándanak	imádkoznak			gyanu_kezi	
 1Kir 8:35	14	e	e				
 1Kir 8:35	15	helyen	helyen				
 1Kir 8:35	16	és	és				
 1Kir 8:35	17	vallást	vallást				
-1Kir 8:35	18	teéndenek	teéndenek			gyanu:nd_jovo	
+1Kir 8:35	18	teéndenek	tesznek			gyanu_kezi	
 1Kir 8:35	19	a	a				
 1Kir 8:35	20	te	te				
 1Kir 8:35	21	nevedről	nevedről				
 1Kir 8:35	22	és	és				
-1Kir 8:35	23	megtéréndenek	megtéréndenek			gyanu:nd_jovo	
+1Kir 8:35	23	megtéréndenek	megtérnek			gyanu_kezi	
 1Kir 8:35	24	az	az				
 1Kir 8:35	25	ő	ő				
 1Kir 8:35	26	bűnökből	bűnökből				
@@ -192632,7 +192632,7 @@ Ruth 4:22	8	Dávidot	Dávidot
 1Kir 8:44	17	küldöd	küldöd				
 1Kir 8:44	18	el	el				
 1Kir 8:44	19	és	és				
-1Kir 8:44	20	imádkozándik	imádkozándik			gyanu:nd_jovo	
+1Kir 8:44	20	imádkozándik	imádkozik			gyanu_kezi	
 1Kir 8:44	21	az	az				
 1Kir 8:44	22	Úrhoz	Úrhoz				
 1Kir 8:44	23	fordulván	fordulva			igealak_ritka:hatarozoi_igenev+tobbseg:szabaly+sonnet	
@@ -192672,7 +192672,7 @@ Ruth 4:22	8	Dávidot	Dávidot
 1Kir 8:46	1	Ha	Ha				
 1Kir 8:46	2	te	te				
 1Kir 8:46	3	ellened	ellened				
-1Kir 8:46	4	vétkezéndenek	vétkezéndenek			gyanu:nd_jovo	
+1Kir 8:46	4	vétkezéndenek	vétkeznek			gyanu_kezi	
 1Kir 8:46	5	mert	mert				
 1Kir 8:46	6	nincsen	nincsen				
 1Kir 8:46	7	ember	ember				
@@ -192685,10 +192685,10 @@ Ruth 4:22	8	Dávidot	Dávidot
 1Kir 8:46	14	reájok	rájuk			rea+jok	
 1Kir 8:46	15	ellenség	ellenség				
 1Kir 8:46	16	kezébe	kezébe				
-1Kir 8:46	17	adándod	adándod			gyanu:nd_jovo	
+1Kir 8:46	17	adándod	adod			gyanu_kezi	
 1Kir 8:46	18	és	és				
 1Kir 8:46	19	fogva	fogva				
-1Kir 8:46	20	elviéndik	elviéndik			gyanu:nd_jovo	
+1Kir 8:46	20	elviéndik	elviszik			gyanu_kezi	
 1Kir 8:46	21	őket	őket				
 1Kir 8:46	22	azok	azok				
 1Kir 8:46	23	a		osszevonva	24	nevmas	
@@ -192725,7 +192725,7 @@ Ruth 4:22	8	Dávidot	Dávidot
 1Kir 8:47	23	istentelenül	istentelenül				
 1Kir 8:47	24	cselekedtünk	cselekedtünk				
 1Kir 8:48	1	És	És				
-1Kir 8:48	2	megtéréndenek	megtéréndenek			gyanu:nd_jovo	
+1Kir 8:48	2	megtéréndenek	megtérnek			gyanu_kezi	
 1Kir 8:48	3	te	te				
 1Kir 8:48	4	hozzád	hozzád				
 1Kir 8:48	5	teljes	teljes				
@@ -192742,7 +192742,7 @@ Ruth 4:22	8	Dávidot	Dávidot
 1Kir 8:48	16	fogva	fogva				
 1Kir 8:48	17	elvitték	elvitték				
 1Kir 8:48	18	és	és				
-1Kir 8:48	19	imádkozándanak	imádkozándanak			gyanu:nd_jovo	
+1Kir 8:48	19	imádkozándanak	imádkoznak			gyanu_kezi	
 1Kir 8:48	20	hozzád	hozzád				
 1Kir 8:48	21	az	az				
 1Kir 8:48	22	ő	ő				
@@ -192800,7 +192800,7 @@ Ruth 4:22	8	Dávidot	Dávidot
 1Kir 8:50	8	a		osszevonva	9	nevmas	
 1Kir 8:50	9	kik	akik			nevmas:ki	
 1Kir 8:50	10	ellened	ellened				
-1Kir 8:50	11	vétkezéndenek	vétkezéndenek			gyanu:nd_jovo	
+1Kir 8:50	11	vétkezéndenek	vétkeznek			gyanu_kezi	
 1Kir 8:50	12	és	és				
 1Kir 8:50	13	minden	minden				
 1Kir 8:50	14	bűneik	bűneik				
@@ -193333,7 +193333,7 @@ Ruth 4:22	8	Dávidot	Dávidot
 1Kir 9:4	2	ha	ha				
 1Kir 9:4	3	te	te				
 1Kir 9:4	4	előttem	előttem				
-1Kir 9:4	5	járándasz	járándasz			gyanu:nd_jovo	
+1Kir 9:4	5	járándasz	jársz			gyanu_kezi	
 1Kir 9:4	6	a		osszevonva	7	nevmas	
 1Kir 9:4	7	mint	amint			nevmas:hatarozo	
 1Kir 9:4	8	járt	járt				
@@ -193357,7 +193357,7 @@ Ruth 4:22	8	Dávidot	Dávidot
 1Kir 9:4	26	rendelésimet	rendelésimet				
 1Kir 9:4	27	és	és				
 1Kir 9:4	28	végzésimet	végzésimet				
-1Kir 9:4	29	megtartándod	megtartándod			gyanu:nd_jovo	
+1Kir 9:4	29	megtartándod	megtartod			gyanu_kezi	
 1Kir 9:5	1	Megerősítem	Megerősítem				
 1Kir 9:5	2	a	a				
 1Kir 9:5	3	te	te				
@@ -195519,15 +195519,15 @@ Ruth 4:22	8	Dávidot	Dávidot
 1Kir 11:38	3	te	te				
 1Kir 11:38	4	minden	minden				
 1Kir 11:38	5	parancsolatimnak	parancsolatimnak				
-1Kir 11:38	6	engedéndesz	engedéndesz			gyanu:nd_jovo	
+1Kir 11:38	6	engedéndesz	engedsz			gyanu_kezi	
 1Kir 11:38	7	és	és				
-1Kir 11:38	8	járándasz	járándasz			gyanu:nd_jovo	
+1Kir 11:38	8	járándasz	jársz			gyanu_kezi	
 1Kir 11:38	9	az	az				
 1Kir 11:38	10	én	én				
 1Kir 11:38	11	utaimban	utaimban				
 1Kir 11:38	12	és	és				
 1Kir 11:38	13	azt	azt				
-1Kir 11:38	14	cselekedénded	cselekedénded			gyanu:nd_jovo	
+1Kir 11:38	14	cselekedénded	cselekszed			gyanu_kezi	
 1Kir 11:38	15	a		osszevonva	16	nevmas	
 1Kir 11:38	16	mi	ami			ami:V1_irasjel_elotte+nevmas:mi	
 1Kir 11:38	17	tetszik	tetszik				
@@ -196777,7 +196777,7 @@ Ruth 4:22	8	Dávidot	Dávidot
 1Kir 13:9	23	úton	úton				
 1Kir 13:9	24	a		osszevonva	25	nevmas	
 1Kir 13:9	25	melyen	amelyen			nevmas:mely	
-1Kir 13:9	26	elmenéndesz	elmenéndesz			gyanu:nd_jovo	
+1Kir 13:9	26	elmenéndesz	elmész			gyanu_kezi	
 1Kir 13:10	1	És	És				
 1Kir 13:10	2	elméne	elment			igealak:mult.alanyi.E3	
 1Kir 13:10	3	más	más				
@@ -196966,7 +196966,7 @@ Ruth 4:22	8	Dávidot	Dávidot
 1Kir 13:17	23	a		osszevonva	24	nevmas	
 1Kir 13:17	24	melyen	amelyen			nevmas:mely	
 1Kir 13:17	25	oda	oda				
-1Kir 13:17	26	menéndesz	menéndesz			gyanu:nd_jovo	
+1Kir 13:17	26	menéndesz	mész			gyanu_kezi	
 1Kir 13:18	1	És	És				
 1Kir 13:18	2	felele	felelt			igealak:mult.alanyi.E3	
 1Kir 13:18	3	az	az				
@@ -201943,7 +201943,7 @@ Ruth 4:22	8	Dávidot	Dávidot
 1Kir 19:15	17	és	és				
 1Kir 19:15	18	mikor	mikor				
 1Kir 19:15	19	oda	oda				
-1Kir 19:15	20	jutándasz	jutándasz			gyanu:nd_jovo	
+1Kir 19:15	20	jutándasz	jutsz			gyanu_kezi	
 1Kir 19:15	21	kenjed	kenjed				
 1Kir 19:15	22	királylyá	királlyá			karakter	
 1Kir 19:15	23	Hazáelt	Hazáelt				
@@ -205987,7 +205987,7 @@ Ruth 4:22	8	Dávidot	Dávidot
 2Kir 2:10	7	mégis	mégis				
 2Kir 2:10	8	ha	ha				
 2Kir 2:10	9	majd	majd				
-2Kir 2:10	10	meglátándasz	meglátándasz			gyanu:nd_jovo	
+2Kir 2:10	10	meglátándasz	meglátsz			gyanu_kezi	
 2Kir 2:10	11	engem	engem				
 2Kir 2:10	12	mikor	mikor				
 2Kir 2:10	13	tőled	tőled			gyanu:kivetel_jegy_nelkul+tobbseg:sonnet+opus	
@@ -206000,7 +206000,7 @@ Ruth 4:22	8	Dávidot	Dávidot
 2Kir 2:10	20	pedig	pedig				
 2Kir 2:10	21	meg	meg				
 2Kir 2:10	22	nem	nem				
-2Kir 2:10	23	látándasz	látándasz			gyanu:nd_jovo	
+2Kir 2:10	23	látándasz	látsz			gyanu_kezi	
 2Kir 2:10	24	nem	nem				
 2Kir 2:10	25	lesz	lesz				
 2Kir 2:10	26	meg	meg				
@@ -230786,7 +230786,7 @@ Ruth 4:22	8	Dávidot	Dávidot
 1Krón 14:14	25	irányában	irányában				
 1Krón 14:15	1	És	És				
 1Krón 14:15	2	mikor	mikor				
-1Krón 14:15	3	hallándod	hallándod			gyanu:nd_jovo	
+1Krón 14:15	3	hallándod	hallod			gyanu_kezi	
 1Krón 14:15	4	a	a				
 1Krón 14:15	5	járás	járás				
 1Krón 14:15	6	dobogását	dobogását				
@@ -237662,12 +237662,12 @@ Ruth 4:22	8	Dávidot	Dávidot
 1Krón 28:9	30	ért	ért				
 1Krón 28:9	31	Hogyha	Hogyha				
 1Krón 28:9	32	őt	őt				
-1Krón 28:9	33	keresénded	keresénded			gyanu:nd_jovo	
+1Krón 28:9	33	keresénded	keresed			gyanu_kezi	
 1Krón 28:9	34	megtalálod	megtalálod				
 1Krón 28:9	35	ha	ha				
 1Krón 28:9	36	ellenben	ellenben				
 1Krón 28:9	37	őt	őt				
-1Krón 28:9	38	elhagyándod	elhagyándod			gyanu:nd_jovo	
+1Krón 28:9	38	elhagyándod	elhagyod			gyanu_kezi	
 1Krón 28:9	39	ő	ő				
 1Krón 28:9	40	is	is				
 1Krón 28:9	41	elhagy	elhagy				
@@ -241283,7 +241283,7 @@ Ruth 4:22	8	Dávidot	Dávidot
 2Krón 6:20	17	hogy	hogy				
 2Krón 6:20	18	nevedet	nevedet				
 2Krón 6:20	19	abba	abba				
-2Krón 6:20	20	helyezénded	helyezénded			gyanu:nd_jovo	
+2Krón 6:20	20	helyezénded	helyezed			gyanu_kezi	
 2Krón 6:20	21	meghallgatván	meghallgatva			igealak_ritka:hatarozoi_igenev+tobbseg:szabaly+sonnet	
 2Krón 6:20	22	könyörgését	könyörgését				
 2Krón 6:20	23	a	a				
@@ -241325,7 +241325,7 @@ Ruth 4:22	8	Dávidot	Dávidot
 2Krón 6:21	29	kegyelmes	kegyelmes				
 2Krón 6:22	1	Mikor	Mikor				
 2Krón 6:22	2	valaki	valaki				
-2Krón 6:22	3	vétkezéndik	vétkezéndik			gyanu:nd_jovo	
+2Krón 6:22	3	vétkezéndik	vétkezik			gyanu_kezi	
 2Krón 6:22	4	felebarátja	felebarátja				
 2Krón 6:22	5	ellen	ellen				
 2Krón 6:22	6	és	és				
@@ -241485,7 +241485,7 @@ Ruth 4:22	8	Dávidot	Dávidot
 2Krón 6:27	17	Izráelnek	Izráelnek				
 2Krón 6:27	18	minekutána	minekutána				
 2Krón 6:27	19	őket	őket				
-2Krón 6:27	20	megtanítándod	megtanítándod			gyanu:nd_jovo	
+2Krón 6:27	20	megtanítándod	megtanítod			gyanu_kezi	
 2Krón 6:27	21	az	az				
 2Krón 6:27	22	igaz	igaz				
 2Krón 6:27	23	útra	útra				
@@ -241772,11 +241772,11 @@ Ruth 4:22	8	Dávidot	Dávidot
 2Krón 6:36	14	az	az				
 2Krón 6:36	15	ellenség	ellenség				
 2Krón 6:36	16	kezébe	kezébe				
-2Krón 6:36	17	adándod	adándod			gyanu:nd_jovo	
+2Krón 6:36	17	adándod	adod			gyanu_kezi	
 2Krón 6:36	18	és	és				
 2Krón 6:36	19	őket	őket				
 2Krón 6:36	20	fogságba	fogságba				
-2Krón 6:36	21	viendik	viendik			gyanu:nd_jovo	
+2Krón 6:36	21	viendik	viszik			gyanu_kezi	
 2Krón 6:36	22	azok	azok				
 2Krón 6:36	23	a		osszevonva	24	nevmas	
 2Krón 6:36	24	kiktől	akiktől			nevmas:ki	
@@ -241813,7 +241813,7 @@ Ruth 4:22	8	Dávidot	Dávidot
 2Krón 6:37	26	gonoszul	gonoszul				
 2Krón 6:37	27	cselekedtünk	cselekedtünk				
 2Krón 6:38	1	És	És				
-2Krón 6:38	2	megtérendenek	megtérendenek			gyanu:nd_jovo	
+2Krón 6:38	2	megtérendenek	megtérnek			gyanu_kezi	
 2Krón 6:38	3	te	te				
 2Krón 6:38	4	hozzád	hozzád				
 2Krón 6:38	5	teljes	teljes				
@@ -242311,7 +242311,7 @@ Ruth 4:22	8	Dávidot	Dávidot
 2Krón 7:13	22	a		osszevonva	23	nevmas	
 2Krón 7:13	23	mikor	amikor			nevmas:hatarozo	
 2Krón 7:13	24	döghalált	döghalált				
-2Krón 7:13	25	bocsátandok	bocsátandok			gyanu:nd_jovo	
+2Krón 7:13	25	bocsátandok	bocsátok			gyanu_kezi	
 2Krón 7:13	26	az	az				
 2Krón 7:13	27	én	én				
 2Krón 7:13	28	népemre	népemre				
@@ -242392,7 +242392,7 @@ Ruth 4:22	8	Dávidot	Dávidot
 2Krón 7:17	2	ha	ha				
 2Krón 7:17	3	te	te				
 2Krón 7:17	4	előttem	előttem				
-2Krón 7:17	5	járándasz	járándasz			gyanu:nd_jovo	
+2Krón 7:17	5	járándasz	jársz			gyanu_kezi	
 2Krón 7:17	6	a		osszevonva	7	nevmas	
 2Krón 7:17	7	mint	amint			nevmas:hatarozo	
 2Krón 7:17	8	járt	járt				
@@ -242413,7 +242413,7 @@ Ruth 4:22	8	Dávidot	Dávidot
 2Krón 7:17	23	rendelésimet	rendelésimet				
 2Krón 7:17	24	és	és				
 2Krón 7:17	25	ítéletimet	ítéletimet				
-2Krón 7:17	26	megtartándod	megtartándod			gyanu:nd_jovo	
+2Krón 7:17	26	megtartándod	megtartod			gyanu_kezi	
 2Krón 7:18	1	Megerősítem	Megerősítem				
 2Krón 7:18	2	a	a				
 2Krón 7:18	3	te	te				
@@ -243811,7 +243811,7 @@ Ruth 4:22	8	Dávidot	Dávidot
 2Krón 10:7	4	szólának	szóltak			igealak:mult.T3	targyas_heur
 2Krón 10:7	5	Ha	Ha				
 2Krón 10:7	6	javára	javára				
-2Krón 10:7	7	leendesz	leendesz			gyanu:nd_jovo	
+2Krón 10:7	7	leendesz	leszel			gyanu_kezi	
 2Krón 10:7	8	ennek	ennek				
 2Krón 10:7	9	a	a				
 2Krón 10:7	10	népnek	népnek				
@@ -254225,7 +254225,7 @@ Ruth 4:22	8	Dávidot	Dávidot
 2Krón 30:9	2	hogy	hogy				
 2Krón 30:9	3	ha	ha				
 2Krón 30:9	4	ti	ti				
-2Krón 30:9	5	megtéréndetek	megtéréndetek			gyanu:nd_jovo	
+2Krón 30:9	5	megtéréndetek	megtértek			gyanu_kezi	
 2Krón 30:9	6	az	az				
 2Krón 30:9	7	Úrhoz	Úrhoz				
 2Krón 30:9	8	a	a				
@@ -254264,7 +254264,7 @@ Ruth 4:22	8	Dávidot	Dávidot
 2Krón 30:9	41	ha	ha				
 2Krón 30:9	42	ő	ő				
 2Krón 30:9	43	hozzá	hozzá				
-2Krón 30:9	44	megtéréndetek	megtéréndetek			gyanu:nd_jovo	
+2Krón 30:9	44	megtéréndetek	megtértek			gyanu_kezi	
 2Krón 30:10	1	Mikor	Mikor				
 2Krón 30:10	2	pedig	pedig				
 2Krón 30:10	3	a	a				
@@ -261433,7 +261433,7 @@ Ezsd 6:14	29	Artaxerxes	Artaxerxes
 Ezsd 6:14	30	persiai	persiai				
 Ezsd 6:14	31	királyok	királyok				
 Ezsd 6:14	32	parancsolatjából	parancsolatjából				
-Ezsd 6:15	1	Bevégezteték	Bevégezteték				
+Ezsd 6:15	1	Bevégezteték	Bevégeztetett			gyanu_kezi	
 Ezsd 6:15	2	pedig	pedig				
 Ezsd 6:15	3	e	e				
 Ezsd 6:15	4	ház	ház				
@@ -264280,7 +264280,7 @@ Neh 1:8	22	népek	népek
 Neh 1:8	23	között	között				
 Neh 1:9	1	Ha	Ha				
 Neh 1:9	2	pedig	pedig				
-Neh 1:9	3	megtérendetek	megtérendetek			gyanu:nd_jovo	
+Neh 1:9	3	megtérendetek	megtértek			gyanu_kezi	
 Neh 1:9	4	hozzám	hozzám				
 Neh 1:9	5	és	és				
 Neh 1:9	6	megtartjátok	megtartjátok				
@@ -271539,7 +271539,7 @@ Neh 13:20	5	minden	minden
 Neh 13:20	6	árúk	árúk				
 Neh 13:20	7	árúsai	árúsai				
 Neh 13:20	8	kivül	kívül			szoto_94	
-Neh 13:20	9	hálának	hálának				
+Neh 13:20	9	hálának	háltak			gyanu_kezi	
 Neh 13:20	10	Jeruzsálemen	Jeruzsálemen				
 Neh 13:20	11	egyszer	egyszer				
 Neh 13:20	12	vagy	vagy				
@@ -286074,7 +286074,7 @@ Jób 32:14	11	beszédeitekkel	beszédeitekkel
 Jób 32:14	12	válaszolok	válaszolok				
 Jób 32:14	13	hát	hát				
 Jób 32:14	14	néki	neki			neki	
-Jób 32:15	1	Megzavarodának	Megzavarodának				
+Jób 32:15	1	Megzavarodának	Megzavarodtak			gyanu_kezi	
 Jób 32:15	2	és	és				
 Jób 32:15	3	nem	nem				
 Jób 32:15	4	feleltek	feleltek				
@@ -306142,7 +306142,7 @@ Zsolt 78:64	5	el	el
 Zsolt 78:64	6	és	és				
 Zsolt 78:64	7	özvegyei	özvegyei				
 Zsolt 78:64	8	nem	nem				
-Zsolt 78:64	9	végezheték	végezheték				
+Zsolt 78:64	9	végezheték	végezhették			gyanu_kezi	
 Zsolt 78:64	10	a	a				
 Zsolt 78:64	11	siratást	siratást				
 Zsolt 78:65	1	Akkor	Akkor				
@@ -351183,7 +351183,7 @@ Préd 12:16	16	az	az
 Ézs 32:13	13	házait	házait				
 Ézs 32:14	1	A	A				
 Ézs 32:14	2	paloták	paloták				
-Ézs 32:14	3	elhagyatvák	elhagyatvák				
+Ézs 32:14	3	elhagyatvák	elhagyattak			gyanu_kezi	
 Ézs 32:14	4	a	a				
 Ézs 32:14	5	város	város				
 Ézs 32:14	6	zaja	zaja				
@@ -356649,7 +356649,7 @@ Préd 12:16	16	az	az
 Ézs 45:1	29	ne	ne				
 Ézs 45:1	30	zároltassanak	zároltassanak				
 Ézs 45:2	1	Én	Én				
-Ézs 45:2	2	menéndek	menéndek			gyanu:nd_jovo	
+Ézs 45:2	2	menéndek	megyek			gyanu_kezi	
 Ézs 45:2	3	előtted	előtted				
 Ézs 45:2	4	és	és				
 Ézs 45:2	5	az	az				
@@ -361252,7 +361252,7 @@ Préd 12:16	16	az	az
 Ézs 57:19	1	Megteremtem	Megteremtem				
 Ézs 57:19	2	ajkaikon	ajkaikon				
 Ézs 57:19	3	a	a				
-Ézs 57:19	4	hálának	hálának				
+Ézs 57:19	4	hálának	hálának				nevelo_utan
 Ézs 57:19	5	gyümölcsét	gyümölcsét				
 Ézs 57:19	6	Békesség	Békesség				
 Ézs 57:19	7	békesség	békesség				
@@ -361513,7 +361513,7 @@ Préd 12:16	16	az	az
 Ézs 58:9	13	itt	itt				
 Ézs 58:9	14	vagyok	vagyok				
 Ézs 58:9	15	Ha	Ha				
-Ézs 58:9	16	elvetended	elvetended			gyanu:nd_jovo	
+Ézs 58:9	16	elvetended	elveted			gyanu_kezi	
 Ézs 58:9	17	közüled	közüled				
 Ézs 58:9	18	az	az				
 Ézs 58:9	19	igát	igát				
@@ -389102,7 +389102,7 @@ Jer 41:16	49	vala		segedige	48	vala_segedige_mult
 Jer 41:16	50	Gibeonból	Gibeonból				
 Jer 41:17	1	Elindulának	Elindultak			igealak:mult.T3	
 Jer 41:17	2	és	és				
-Jer 41:17	3	megállapodának	megállapodának				
+Jer 41:17	3	megállapodának	megállapodtak			gyanu_kezi	
 Jer 41:17	4	Gérut	Gérut				
 Jer 41:17	5	Kimhámnál	Kimhámnál				
 Jer 41:17	6	a		osszevonva	7	nevmas	
@@ -415944,7 +415944,7 @@ Ez 33:2	6	és	és
 Ez 33:2	7	mondjad	mondjad				
 Ez 33:2	8	nékik	nekik			neki	
 Ez 33:2	9	Mikor	Mikor				
-Ez 33:2	10	hozándok	hozándok			gyanu:nd_jovo	
+Ez 33:2	10	hozándok	hozok			gyanu_kezi	
 Ez 33:2	11	fegyvert	fegyvert				
 Ez 33:2	12	valamely	valamely				
 Ez 33:2	13	földre	földre				
@@ -416101,7 +416101,7 @@ Ez 33:8	10	meg	meg
 Ez 33:8	11	és	és				
 Ez 33:8	12	te	te				
 Ez 33:8	13	nem	nem				
-Ez 33:8	14	szólándasz	szólándasz			gyanu:nd_jovo	
+Ez 33:8	14	szólándasz	szólsz			gyanu_kezi	
 Ez 33:8	15	hogy	hogy				
 Ez 33:8	16	visszatérítsd	visszatérítsd				
 Ez 33:8	17	a	a				
@@ -416231,7 +416231,7 @@ Ez 33:12	15	a	a
 Ez 33:12	16	napon	napon				
 Ez 33:12	17	a		osszevonva	18	nevmas	
 Ez 33:12	18	melyen	amelyen			nevmas:mely	
-Ez 33:12	19	vétkezendik	vétkezendik			gyanu:nd_jovo	
+Ez 33:12	19	vétkezendik	vétkezik			gyanu_kezi	
 Ez 33:12	20	és	és				
 Ez 33:12	21	a	a				
 Ez 33:12	22	hitetlen	hitetlen				
@@ -416257,7 +416257,7 @@ Ez 33:12	41	által	által
 Ez 33:12	42	a	a				
 Ez 33:12	43	napon	napon				
 Ez 33:12	44	melyen	melyen				
-Ez 33:12	45	vétkezendik	vétkezendik			gyanu:nd_jovo	
+Ez 33:12	45	vétkezendik	vétkezik			gyanu_kezi	
 Ez 33:13	1	Mikor	Mikor				
 Ez 33:13	2	ezt	ezt				
 Ez 33:13	3	mondom	mondom				
@@ -429761,7 +429761,7 @@ Dán 5:6	11	őt	őt
 Dán 5:6	12	és	és				
 Dán 5:6	13	derekának	derekának				
 Dán 5:6	14	inai	inai				
-Dán 5:6	15	megoldódának	megoldódának				
+Dán 5:6	15	megoldódának	megoldódtak			gyanu_kezi	
 Dán 5:6	16	és	és				
 Dán 5:6	17	az	az				
 Dán 5:6	18	ő	ő				
@@ -429852,7 +429852,7 @@ Dán 5:9	13	az	az
 Dán 5:9	14	ő	ő				
 Dán 5:9	15	főemberei	főemberei				
 Dán 5:9	16	is	is				
-Dán 5:9	17	megzavarodának	megzavarodának				
+Dán 5:9	17	megzavarodának	megzavarodtak			gyanu_kezi	
 Dán 5:10	1	A	A				
 Dán 5:10	2	királyasszony	királyasszony				
 Dán 5:10	3	a	a				
@@ -432105,7 +432105,7 @@ Dán 8:11	9	a	a
 Dán 8:11	10	mindennapi	mindennapi				
 Dán 8:11	11	áldozatot	áldozatot				
 Dán 8:11	12	és	és				
-Dán 8:11	13	elhányattaték	elhányattaték				
+Dán 8:11	13	elhányattaték	elhányattatott			gyanu_kezi	
 Dán 8:11	14	az	az				
 Dán 8:11	15	ő	ő				
 Dán 8:11	16	szentségének	szentségének				
@@ -461549,7 +461549,7 @@ Mt 9:25	1	Mikor	Mikor
 Mt 9:25	2	pedig	pedig				
 Mt 9:25	3	a	a				
 Mt 9:25	4	sokaság	sokaság				
-Mt 9:25	5	eltávolíttaték	eltávolíttaték				
+Mt 9:25	5	eltávolíttaték	eltávolíttatott			gyanu_kezi	
 Mt 9:25	6	bemenvén	bemenve			igealak:hatarozoi_igenev	
 Mt 9:25	7	megfogá	megfogta			igealak_ritka:mult.targyas.E3+tobbseg:szabaly+sonnet	
 Mt 9:25	8	annak	annak				
@@ -462821,7 +462821,7 @@ Mt 11:19	22	és	és
 Mt 11:19	23	bűnösök	bűnösök				
 Mt 11:19	24	barátja	barátja				
 Mt 11:19	25	És	És				
-Mt 11:19	26	igazoltaték	igazoltaték				
+Mt 11:19	26	igazoltaték	igazoltatott			gyanu_kezi	
 Mt 11:19	27	a	a				
 Mt 11:19	28	bölcseség	bölcseség				
 Mt 11:19	29	az	az				
@@ -472161,7 +472161,7 @@ Mt 25:1	8	tíz	tíz
 Mt 25:1	9	szűzhöz	szűzhöz				
 Mt 25:1	10	a		osszevonva	11	nevmas	
 Mt 25:1	11	kik	akik			nevmas:ki	
-Mt 25:1	12	elővevén	elővevén			igealak_ritka:hatarozoi_igenev	
+Mt 25:1	12	elővevén	elővéve			gyanu_kezi	
 Mt 25:1	13	az	az				
 Mt 25:1	14	ő	ő				
 Mt 25:1	15	lámpásaikat	lámpásaikat				
@@ -475569,7 +475569,7 @@ Mt 28:14	14	a	a
 Mt 28:14	15	bajból	bajból				
 Mt 28:15	1	Azok	Azok				
 Mt 28:15	2	pedig	pedig				
-Mt 28:15	3	fölvevén	fölvevén			igealak_ritka:hatarozoi_igenev	
+Mt 28:15	3	fölvevén	fölvéve			gyanu_kezi	
 Mt 28:15	4	a	a				
 Mt 28:15	5	pénzt	pénzt				
 Mt 28:15	6	úgy	úgy				
@@ -476080,7 +476080,7 @@ Mk 1:27	4	annyira	annyira
 Mk 1:27	5	hogy	hogy				
 Mk 1:27	6	egymás	egymás				
 Mk 1:27	7	között	között				
-Mk 1:27	8	kérdezgeték	kérdezgeték				
+Mk 1:27	8	kérdezgeték	kérdezgették			gyanu_kezi	
 Mk 1:27	9	mondván	mondva			igealak:hatarozoi_igenev	
 Mk 1:27	10	Mi	Mi				
 Mk 1:27	11	ez	ez				
@@ -478647,7 +478647,7 @@ Mk 5:29	11	bajából	bajából
 Mk 5:30	1	Jézus	Jézus				
 Mk 5:30	2	pedig	pedig				
 Mk 5:30	3	azonnal	azonnal				
-Mk 5:30	4	észrevevén	észrevevén				
+Mk 5:30	4	észrevevén	észrevéve			gyanu_kezi	
 Mk 5:30	5	magán	magán				
 Mk 5:30	6	hogy	hogy				
 Mk 5:30	7	isteni	isteni				
@@ -493635,7 +493635,7 @@ Luk 8:5	13	esék	esett			igealak:mult.E3
 Luk 8:5	14	az	az				
 Luk 8:5	15	útfélre	útfélre				
 Luk 8:5	16	és	és				
-Luk 8:5	17	eltapostaték	eltapostaték				
+Luk 8:5	17	eltapostaték	eltapostatott			gyanu_kezi	
 Luk 8:5	18	és	és				
 Luk 8:5	19	az	az				
 Luk 8:5	20	égi	égi				
@@ -495948,7 +495948,7 @@ Luk 10:7	4	pedig	pedig
 Luk 10:7	5	azt	azt				
 Luk 10:7	6	evén	eve			igealak_ritka:hatarozoi_igenev+tobbseg:szabaly+sonnet	
 Luk 10:7	7	és	és				
-Luk 10:7	8	iván	iván				
+Luk 10:7	8	iván	ive			gyanu_kezi	
 Luk 10:7	9	a		osszevonva	10	nevmas	
 Luk 10:7	10	mit	amit			nevmas:mi	
 Luk 10:7	11	ők	ők				
@@ -503702,7 +503702,7 @@ Luk 20:20	7	ki	ki
 Luk 20:20	8	a		osszevonva	9	nevmas	
 Luk 20:20	9	kik	akik			nevmas:ki	
 Luk 20:20	10	igazaknak	igazaknak				
-Luk 20:20	11	tetteték	tetteték				
+Luk 20:20	11	tetteték	tették			gyanu_kezi	
 Luk 20:20	12	magokat	magokat				
 Luk 20:20	13	hogy	hogy				
 Luk 20:20	14	őt	őt				
@@ -522315,7 +522315,7 @@ Ján 19:40	3	a	a
 Ján 19:40	4	Jézus	Jézus				
 Ján 19:40	5	testét	testét				
 Ján 19:40	6	és	és				
-Ján 19:40	7	begöngyölgeték	begöngyölgeték				
+Ján 19:40	7	begöngyölgeték	begöngyölgették			gyanu_kezi	
 Ján 19:40	8	azt	azt				
 Ján 19:40	9	lepedőkbe	lepedőkbe				
 Ján 19:40	10	illatos	illatos				
@@ -527548,7 +527548,7 @@ ApCsel 7:21	13	fia	fia
 ApCsel 7:21	14	gyanánt	gyanánt				
 ApCsel 7:22	1	És	És				
 ApCsel 7:22	2	Mózes	Mózes				
-ApCsel 7:22	3	taníttaték	taníttaték				
+ApCsel 7:22	3	taníttaték	taníttatott			gyanu_kezi	
 ApCsel 7:22	4	az	az				
 ApCsel 7:22	5	Égyiptombeliek	Égyiptombeliek				
 ApCsel 7:22	6	minden	minden				
@@ -532261,7 +532261,7 @@ ApCsel 13:36	9	Isten	Isten
 ApCsel 13:36	10	akaratának	akaratának				
 ApCsel 13:36	11	elaludt	elaludt				
 ApCsel 13:36	12	és	és				
-ApCsel 13:36	13	helyhezteték	helyhezteték			igealak_ritka:mult.E1	
+ApCsel 13:36	13	helyhezteték	helyeztetett			token_kivetel	
 ApCsel 13:36	14	az	az				
 ApCsel 13:36	15	ő	ő				
 ApCsel 13:36	16	atyáihoz	atyáihoz				
@@ -534159,7 +534159,7 @@ ApCsel 16:22	10	bírák	bírák			gyanu:elemezetlen:-ák
 ApCsel 16:22	11	pedig	pedig				
 ApCsel 16:22	12	letépetvén	letépetve			gyanu:elemezetlen:v-tő+tobbseg:sonnet+opus	
 ApCsel 16:22	13	ruháikat	ruháikat				
-ApCsel 16:22	14	megvesszőzteték	megvesszőzteték				
+ApCsel 16:22	14	megvesszőzteték	megvesszőzték			gyanu_kezi	
 ApCsel 16:22	15	őket	őket				
 ApCsel 16:23	1	És	És				
 ApCsel 16:23	2	miután	miután				
@@ -542858,7 +542858,7 @@ Róm 1:27	19	ő	ő
 Róm 1:27	20	tévelygésöknek	tévelygésöknek				
 Róm 1:27	21	méltó	méltó				
 Róm 1:27	22	jutalmát	jutalmát				
-Róm 1:27	23	elvevén	elvevén			igealak_ritka:hatarozoi_igenev	
+Róm 1:27	23	elvevén	elvéve			gyanu_kezi	
 Róm 1:27	24	önmagokban	önmagokban				
 Róm 1:28	1	És	És				
 Róm 1:28	2	a		osszevonva	3	nevmas	
@@ -554425,7 +554425,7 @@ Róm 16:27	11	Ámen	Ámen
 1Kor 11:23	17	az	az				
 1Kor 11:23	18	éjszakán	éjszakán				
 1Kor 11:23	19	melyen	melyen				
-1Kor 11:23	20	elárultaték	elárultaték				
+1Kor 11:23	20	elárultaték	elárultatott			gyanu_kezi	
 1Kor 11:23	21	vette	vette			gyanu:kivetel_jegy_nelkul+tobbseg:sonnet+opus	
 1Kor 11:23	22	a	a				
 1Kor 11:23	23	kenyeret	kenyeret				
@@ -556924,7 +556924,7 @@ Róm 16:27	11	Ámen	Ámen
 1Kor 16:6	12	el	el				
 1Kor 16:6	13	a		osszevonva	14	nevmas	
 1Kor 16:6	14	hová	ahová			nevmas:hatarozo	
-1Kor 16:6	15	menéndek	menéndek			gyanu:nd_jovo	
+1Kor 16:6	15	menéndek	megyek			gyanu_kezi	
 1Kor 16:7	1	Mert	Mert				
 1Kor 16:7	2	nem	nem				
 1Kor 16:7	3	akarlak	akarlak				
@@ -566296,7 +566296,7 @@ Ef 6:15	5	békesség	békesség
 Ef 6:15	6	evangyéliomának	evangyéliomának				
 Ef 6:15	7	készségével	készségével				
 Ef 6:16	1	Mindezekhez	Mindezekhez				
-Ef 6:16	2	fölvevén	fölvevén			igealak_ritka:hatarozoi_igenev	
+Ef 6:16	2	fölvevén	fölvéve			gyanu_kezi	
 Ef 6:16	3	a	a				
 Ef 6:16	4	hitnek	hitnek				
 Ef 6:16	5	paizsát	pajzsát			szotag	
@@ -572511,7 +572511,7 @@ Kol 4:18	18	Ámen	Ámen
 1Tim 1:16	17	azoknak	azoknak				
 1Tim 1:16	18	a		osszevonva	19	nevmas	
 1Tim 1:16	19	kik	akik			nevmas:ki	
-1Tim 1:16	20	hiendenek	hiendenek			gyanu:nd_jovo	
+1Tim 1:16	20	hiendenek	hisznek			gyanu_kezi	
 1Tim 1:16	21	ő	ő				
 1Tim 1:16	22	benne	benne				
 1Tim 1:16	23	az	az				
@@ -592326,7 +592326,7 @@ Jel 6:14	12	hegy	hegy
 Jel 6:14	13	és	és				
 Jel 6:14	14	sziget	sziget				
 Jel 6:14	15	helyéből	helyéből				
-Jel 6:14	16	elmozdíttaték	elmozdíttaték				
+Jel 6:14	16	elmozdíttaték	elmozdíttatott			gyanu_kezi	
 Jel 6:15	1	És	És				
 Jel 6:15	2	a	a				
 Jel 6:15	3	földnek	földnek				
@@ -596339,7 +596339,7 @@ Jel 16:19	13	és	és
 Jel 16:19	14	a	a				
 Jel 16:19	15	nagy	nagy				
 Jel 16:19	16	Babilon	Babilon				
-Jel 16:19	17	megemlítteték	megemlítteték				
+Jel 16:19	17	megemlítteték	megemlíttetett			gyanu_kezi	
 Jel 16:19	18	az	az				
 Jel 16:19	19	Isten	Isten				
 Jel 16:19	20	előtt	előtt				

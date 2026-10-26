@@ -1,4 +1,4 @@
-# GENERÁLT: eszkozok/karoli_modern/karoli_modern.py (F96.3) — kézzel nem szerkeszthető; a javítás a szabályban (helyesiras.py, igealak.py, igeragozas.py) vagy a kivételtáblában (helyesiras.py: KIVETEL_LEMMA, ALAK_KIVETEL; igealak.py: KEZI, GYANU_KEZI, VALA_ELOTT_KEZI, VALA_ELOTT_MULT_KEZI, TOKEN_KIVETEL, E1_TARGYAS_KEZI, OK_KEZI, E1_MINDIG_VEG, KOR3_VALA_HOMOGRAF) | forras=konkordancia/Karoli_1908.tsv (sha256:49335bbcc77d53bcbfe52b4c7939b6b041cdd276ced019b6bf4ee61872bd3236) + adat/szoto/karoli_szotari_alak.tsv (sha256:edba33e6d65af46535ede231f36d2d7e4eeaab8ece2905ae831c1ddaf593a022) + adat/karoli_modern/helyesiras_tokenek.tsv (sha256:a3a9b6d24f7f272f7226fb1bb2d66b533eda7e4254a528daad29da3540c064d0) + adat/karoli_modern/igealak_tokenek.tsv (sha256:3850f0267ba6e81c194f90b873aeeeb36d12c6682aca4d643b380438e8520c1e) + adat/karoli_modern/igealak_llm.tsv (sha256:878dbe192b427139e43846d0509303b84dd6337ec8a21af7cc103516cefcd63c) + adat/karoli_modern/igealak_llm_opus.tsv (sha256:f536a79c073e585eed25842d277bacbc7a432f91476ba55027f67c03c1506d18) + adat/karoli_modern/igealak_llm_kor3.tsv (sha256:f96d057fd02eb3eff2f56cc92da7a005a2deab8280b8b3f31a64a9338283c98a) + adat/karoli_modern/igealak_llm_kor4.tsv (sha256:e94c1f0d554549b2c8f2304138c45c2f43d2cd7c2ffaca95bdfe282adeca76a9) + adat/karoli_modern/igealak_llm_kor5.tsv (sha256:d0fe6f6fbb5de0cec9797ecbb351377bfd591c541ba827f9103829e990233253) + eszkozok/karoli_strong/tokenek.py (sha256:705ccda729d06fb62d573d1edae410107a25a67ca75eba876f328e276e82ba54) + eszkozok/karoli_modern/fedettseg.py (sha256:beba874f8859dcfa4590e516ce9ffc91945f63971900b89fd47a9e34c4ccfc05) + eszkozok/karoli_modern/helyesiras.py (sha256:dbfd948155d621defed65b5b100ac268b2e299bfb99cb2a85ee7f48540ea4764) + eszkozok/karoli_modern/igealak.py (sha256:951c65c8122533226efdc7969e8be89c73fcb0d7af95bb7c40653d148a874f0f) + eszkozok/karoli_modern/igeragozas.py (sha256:172887f578377c6238140c791fb6d84cf6bc0246c2bf364425c7d7e717cc0f64) + eszkozok/karoli_modern/karoli_modern.py (sha256:8217fdc4d096e953fd07852eacea9cfc27d755cae0e2a427168920c41c8a9f02) + adat/karoli_strong/szavak_*.tsv (61 fájl, a K3b bemenete, összesített sha256:c441cc76e5f3b1c2d9bd2a97b458679254dfdbe3523e8131fb1f7dd4ba7c2a96) | a modernizálás szintje: helyesírás + igealak, szókincs, szórend, írásjel és betoldás-jelölés változatlan (DT128) | tokenizálás: eszkozok/karoli_strong/tokenek.py tokenizal (a #22 hu_sorszam-a; a Strong token-kulcson illeszthető, a réteg Strongot nem tárol, DT305, DT314) | mérés: naplok/KAROLI_MODERN_meres.md 4.9 (.1, K1 246/246), 5.7 és 7.–8. (.2, K1 a javítások után a 8. szakasz szerint), 10. (a 3. kör, DT316; a lefedettséget is mérő K1: igealak_minta2.tsv) 11. (a 4. kör, DT317), 12. (DT318) és 14. (az 5. kör, DT320), modell-ellenőrzés, a felhasználó elfogadta | ts=2026-10-25T12:10Z | scope=a Károli 1908 minden verse (31158), a konkordancia/Karoli_1908.tsv sorrendjében
+# GENERÁLT: eszkozok/karoli_modern/karoli_modern.py (F96.3) — kézzel nem szerkeszthető; a javítás a szabályban (helyesiras.py, igealak.py, igeragozas.py) vagy a kivételtáblában (helyesiras.py: KIVETEL_LEMMA, ALAK_KIVETEL; igealak.py: KEZI, GYANU_KEZI, VALA_ELOTT_KEZI, VALA_ELOTT_MULT_KEZI, TOKEN_KIVETEL, E1_TARGYAS_KEZI, OK_KEZI, E1_MINDIG_VEG, KOR3_VALA_HOMOGRAF) | forras=konkordancia/Karoli_1908.tsv (sha256:49335bbcc77d53bcbfe52b4c7939b6b041cdd276ced019b6bf4ee61872bd3236) + adat/szoto/karoli_szotari_alak.tsv (sha256:edba33e6d65af46535ede231f36d2d7e4eeaab8ece2905ae831c1ddaf593a022) + adat/karoli_modern/helyesiras_tokenek.tsv (sha256:630707ece6efd83efc019fcabdefdb1eeedf32772119f08a2358c122d9d32798) + adat/karoli_modern/igealak_tokenek.tsv (sha256:a4a0e9f79fbffa479c7f6822ee729913111bd61861f868fca0aaf1c858d01fec) + adat/karoli_modern/igealak_llm.tsv (sha256:fb540cadf65f4e588bc9f98149a45603ee2f2ea723c0c37ed7d3762cdb346268) + adat/karoli_modern/igealak_llm_opus.tsv (sha256:6e947298cbc991624dfe687e10ba9dc38595b0b6aa970e6f38c7321c03c759f4) + adat/karoli_modern/igealak_llm_kor3.tsv (sha256:575112b2a9cd6a9542757be2284dda80e6198f130c6ef8f58cfa4bc89ae1984e) + adat/karoli_modern/igealak_llm_kor4.tsv (sha256:07872406670a457b527716350a2250802492bb602fb394d0e42e4377179d4a71) + adat/karoli_modern/igealak_llm_kor5.tsv (sha256:e9aff9518b1fea01b1616b2ba695012f2b379e700c4d853109e2425654a7e5a5) + eszkozok/karoli_strong/tokenek.py (sha256:705ccda729d06fb62d573d1edae410107a25a67ca75eba876f328e276e82ba54) + eszkozok/karoli_modern/fedettseg.py (sha256:beba874f8859dcfa4590e516ce9ffc91945f63971900b89fd47a9e34c4ccfc05) + eszkozok/karoli_modern/helyesiras.py (sha256:dbfd948155d621defed65b5b100ac268b2e299bfb99cb2a85ee7f48540ea4764) + eszkozok/karoli_modern/igealak.py (sha256:ac0c36936f3864195618d153292dd8a331ffbbb3a8957028db677667a83c7912) + eszkozok/karoli_modern/igeragozas.py (sha256:172887f578377c6238140c791fb6d84cf6bc0246c2bf364425c7d7e717cc0f64) + eszkozok/karoli_modern/karoli_modern.py (sha256:8217fdc4d096e953fd07852eacea9cfc27d755cae0e2a427168920c41c8a9f02) + adat/karoli_strong/szavak_*.tsv (61 fájl, a K3b bemenete, összesített sha256:c441cc76e5f3b1c2d9bd2a97b458679254dfdbe3523e8131fb1f7dd4ba7c2a96) | a modernizálás szintje: helyesírás + igealak, szókincs, szórend, írásjel és betoldás-jelölés változatlan (DT128) | tokenizálás: eszkozok/karoli_strong/tokenek.py tokenizal (a #22 hu_sorszam-a; a Strong token-kulcson illeszthető, a réteg Strongot nem tárol, DT-F96f, DT-F96o) | mérés: naplok/KAROLI_MODERN_meres.md 4.9 (.1, K1 246/246), 5.7 és 7.–8. (.2, K1 a javítások után a 8. szakasz szerint), 10. (a 3. kör, DT-F96q; a lefedettséget is mérő K1: igealak_minta2.tsv) 11. (a 4. kör, DT-F96r), 12. (DT-F96s) és 14. (az 5. kör, DT-F96u), modell-ellenőrzés, a felhasználó elfogadta | ts=2026-10-25T21:13Z | scope=a Károli 1908 minden verse (31158), a konkordancia/Karoli_1908.tsv sorrendjében
 igehely	szoveg_modern	valtozott
 1Móz 1:1	Kezdetben teremtette Isten az eget és a földet.	igen
 1Móz 1:2	A föld pedig kietlen és puszta volt, és sötétség volt a mélység színén, és az Isten Lelke lebegett a vizek felett.	igen
@@ -47,7 +47,7 @@ igehely	szoveg_modern	valtozott
 1Móz 2:14	És a harmadik folyóvíz neve Hiddekel; ez az, amely Assiria hosszában foly. A negyedik folyóvíz pedig az Eufrátes.	igen
 1Móz 2:15	És vette az Úr Isten az embert, és helyeztette őt az Éden kertjébe, hogy mívelje és őrizze azt.	igen
 1Móz 2:16	És parancsolt az Úr Isten az embernek, mondva: A kert minden fájáról bátran egyél.	igen
-1Móz 2:17	De a jó és gonosz tudásának fájáról, arról ne egyél; mert amely napon ejéndel arról, bizony meghalsz.	igen
+1Móz 2:17	De a jó és gonosz tudásának fájáról, arról ne egyél; mert amely napon eszel arról, bizony meghalsz.	igen
 1Móz 2:18	És mondta az Úr Isten: Nem jó az embernek egyedül lenni; szerzek neki segítő társat, hozzá illőt.	igen
 1Móz 2:19	És formált az Úr Isten a földből mindenféle mezei vadat, és mindenféle égi madarat, és elvitte az emberhez, hogy lássa, minek nevezze azokat; mert amely nevet adott az ember az élő állatnak, az annak neve.	igen
 1Móz 2:20	És nevet adott az ember minden baromnak, az ég madarainak, és minden mezei vadnak; de az embernek hozzá illő segítő társat nem talált.	igen
@@ -60,7 +60,7 @@ igehely	szoveg_modern	valtozott
 1Móz 3:2	És mondta az asszony a kígyónak: A kert fáinak gyümölcséből ehetünk;	igen
 1Móz 3:3	De annak a fának gyümölcséből, mely a kertnek közepette van, azt mondta Isten: abból ne egyetek, azt meg se illessétek, hogy meg ne haljatok.	igen
 1Móz 3:4	És mondta a kígyó az asszonynak: Bizony nem haltok meg;	igen
-1Móz 3:5	Hanem tudja az Isten, hogy amely napon ejéndetek abból, megnyilatkoznak a ti szemeitek, és olyanok lésztek mint az Isten: jónak és gonosznak tudói.	igen
+1Móz 3:5	Hanem tudja az Isten, hogy amely napon esztek abból, megnyilatkoznak a ti szemeitek, és olyanok lésztek mint az Isten: jónak és gonosznak tudói.	igen
 1Móz 3:6	És látta az asszony, hogy jó az a fa eledelre s hogy kedves a szemnek, és kívánatos az a fa a bölcseségért: szakasztott azért annak gyümölcséből, és evett, és adott vele levő férjének is, és az is evett.	igen
 1Móz 3:7	És megnyilatkoztak mindkettőjüknek szemei s észrevevék, hogy mezítelenek; figefa levelet aggattak azért össze, és körülkötőket csináltak magoknak.	igen
 1Móz 3:8	És meghallották az Úr Isten szavát, aki hűvös alkonyatkor a kertben járt; és elrejtőzött az ember és az ő felesége az Úr Isten elől a kert fái között.	igen
@@ -176,7 +176,7 @@ igehely	szoveg_modern	valtozott
 1Móz 7:14	Ők, és minden vad az ő neme szerint és minden barom az ő neme szerint és minden csúszó-mászó állat, mely csúsz-mász a földön, az ő neme szerint és minden repdeső állat az ő neme szerint, minden madár, minden szárnyas állat.	nem
 1Móz 7:15	Kettő-kettő ment be Noéhoz a bárkába minden testből, melyben élő lélek volt.	igen
 1Móz 7:16	Amelyek pedig bementek, hím és nőstény ment be minden testből, amint parancsolta Isten őnéki: és az Úr bezárt utána az ajtót.	igen
-1Móz 7:17	Mikor az özönvíz negyven napig volt a földön, annyira növekedtek a vizek, hogy felveheték a bárkát, és az felemelkedett a földről.	igen
+1Móz 7:17	Mikor az özönvíz negyven napig volt a földön, annyira növekedtek a vizek, hogy felvehették a bárkát, és az felemelkedett a földről.	igen
 1Móz 7:18	A vizek pedig áradtak és egyre növekedtek a földön, és a bárka járt a víz színén.	igen
 1Móz 7:19	Azután a vizek felette igen nagy erőt vettek a földön, és a legmagasabb hegyek is mind elboríttattak, melyek az egész ég alatt voltak.	igen
 1Móz 7:20	Tizenöt singgel növekedtek a vizek feljebb, minekutánna a hegyek elboríttattak.	igen
@@ -327,7 +327,7 @@ igehely	szoveg_modern	valtozott
 1Móz 13:6	És nem bírta meg őket az a föld, hogy együtt lakjanak, mert sok jószáguk volt, és nem lakhattak együtt.	igen
 1Móz 13:7	Versengés is támadt az Ábrám barompásztorai között, és a Lót barompásztorai között; és a Kananeusok és a Perizeusok is ott laktak akkor azon a földön.	igen
 1Móz 13:8	Mondta azért Ábrám Lótnak: Ne legyen versengés közöttem és közötted, se az én pásztoraim között és a te pásztoraid között: hiszen atyafiak vagyunk.	igen
-1Móz 13:9	Avagy nincsen-é előtted mind az egész föld? Válj el kérlek, tőlem; ha te balra tartasz, én jobbra megyek; ha te jobbra menéndesz, én balra térek.	nem
+1Móz 13:9	Avagy nincsen-é előtted mind az egész föld? Válj el kérlek, tőlem; ha te balra tartasz, én jobbra megyek; ha te jobbra mész, én balra térek.	igen
 1Móz 13:10	Felemelte azért Lót az ő szemeit, és látta, hogy a Jordán egész melléke bővizű föld; mert minekelőtte elvesztette volna az Úr Sodomát és Gomorát, mind Coárig olyan volt az, mint az Úr kertje, mint Égyiptom földe.	igen
 1Móz 13:11	És választotta Lót magának a Jordán egész mellékét, és elköltözött Lót kelet felé: és elváltak egymástól.	igen
 1Móz 13:12	Ábrám lakozott a Kanaán földén, Lót pedig lakozott a Jordán-melléki városokban, és sátorozott Sodomáig.	igen
@@ -549,7 +549,7 @@ igehely	szoveg_modern	valtozott
 1Móz 21:33	Ábrahám pedig tamariskusfákat ültetett Beérsebában, és segítségül hívta ott az örökkévaló Úr Istennek nevét.	igen
 1Móz 21:34	És sok ideig tartózkodott Ábrahám a Filiszteusok földén.	igen
 1Móz 22:1	És lett ezeknek utána, az Isten megkisértette Ábrahámot, és mondta neki: Ábrahám! S az felelt: Ímhol vagyok.	igen
-1Móz 22:2	És mondta: Vedd a te fiadat, ama te egyetlenegyedet, akit szeretsz, Izsákot, és menj el Mórijának földére, és áldozd meg ott égő áldozatul a hegyek közül egyen, amelyet mondándok neked.	igen
+1Móz 22:2	És mondta: Vedd a te fiadat, ama te egyetlenegyedet, akit szeretsz, Izsákot, és menj el Mórijának földére, és áldozd meg ott égő áldozatul a hegyek közül egyen, amelyet mondok neked.	igen
 1Móz 22:3	Felkelt azért Ábrahám jó reggel, és megnyergelte az ő szamarát, és maga mellé vette két szolgáját, és az ő fiát Izsákot, és fát hasogatott az égő áldozathoz. Akkor felkelt és elindult a helyre, melyet neki az Isten mondott.	igen
 1Móz 22:4	Harmadnapon felemelte az ő szemeit Ábrahám, és látta a helyet messziről.	igen
 1Móz 22:5	És mondta Ábrahám az ő szolgáinak: Maradjatok itt a szamárral, én pedig és ez a gyermek elmegyünk amoda és imádkozunk, azután visszatérünk hozzátok.	igen
@@ -591,7 +591,7 @@ igehely	szoveg_modern	valtozott
 1Móz 23:17	Így lett Efronnak Makpelában levő mezeje, mely Mamré átellenében van, a mező a benne levő barlanggal, és minden a mezőben levő fa az egész határban köröskörül	igen
 1Móz 23:18	Ábrahámnak birtoka, a Khéth fiainak, mind azoknak szeme előtt, akik az ő városának kapuján bementek.	igen
 1Móz 23:19	Azután eltemette Ábrahám az ő feleségét Sárát a Makpelá mezejének barlangjába Mamréval szemben. Ez Hebron a Kanaán földén.	igen
-1Móz 23:20	Így erősítteték meg a mező és a benne lévő barlang Ábrahámnak temetésre való örökségül a Khéth fiaitól.	igen
+1Móz 23:20	Így erősíttetett meg a mező és a benne lévő barlang Ábrahámnak temetésre való örökségül a Khéth fiaitól.	igen
 1Móz 24:1	Ábrahám pedig vén élemedett ember volt, és az Úr mindenben megáldotta Ábrahámot.	igen
 1Móz 24:2	Mondta azért Ábrahám az ő háza öregebb szolgájának, aki őnéki mindenében gazda volt: Tedd a kezed tomporom alá!	igen
 1Móz 24:3	Hogy megeskesselek téged az Úrra, a mennynek Istenére, és a földnek Istenére, hogy nem vészesz feleséget az én fiamnak a Kananeusok leányai közül, akik között lakom.	igen
@@ -632,7 +632,7 @@ igehely	szoveg_modern	valtozott
 1Móz 24:38	Hanem menj el az én atyámnak házához, és az én rokonságom közé, hogy onnan végy feleséget az én fiamnak.	nem
 1Móz 24:39	Mikor pedig azt mondtam az én uramnak: Hátha nem akarna velem az a leányzó eljőni?	igen
 1Móz 24:40	Mondta nekem: Az Úr, akinek én színe előtt jártam, elbocsátja az ő angyalát teveled, és szerencséssé teszi a te útadat, hogy feleséget vehess az én fiamnak az én nemzetségem közül, és az én atyám házából.	igen
-1Móz 24:41	Csak akkor leszesz fölmentve esketésem alól, ha elmenéndesz az én nemzetségem közé; és ha nem adják oda: ment leszesz az én esketésem alól.	nem
+1Móz 24:41	Csak akkor leszesz fölmentve esketésem alól, ha elmész az én nemzetségem közé; és ha nem adják oda: ment leszesz az én esketésem alól.	igen
 1Móz 24:42	Mikor ma a forráshoz érkeztem, mondtam: Uram, én uramnak, Ábrahámnak Istene, vajha szerencséssé tennéd az én útamat, melyen járok:	igen
 1Móz 24:43	Ímé én e forrás mellett állok; és legyen, hogy az a hajadon, aki kijön vizet meríteni, s akinek azt mondom: Adj innom nekem egy kevés vizet a te vedredből,	igen
 1Móz 24:44	És az ezt mondja nekem: Te is igyál, és a te tevéidnek is merítek; az legyen a feleség, akit az Úr az én uram fiának rendelt.	igen
@@ -645,7 +645,7 @@ igehely	szoveg_modern	valtozott
 1Móz 24:51	Ímé előtted van Rebeka, vegyed, menj el; és legyen felesége a te urad fiának, amint az Úr elvégezte.	igen
 1Móz 24:52	És lett, amint hallotta az Ábrahám szolgája azoknak beszédét, meghajtotta magát a földig az Úr előtt.	igen
 1Móz 24:53	És hozott elő a szolga ezüst edényeket és arany edényeket és ruhákat, és adta azokat Rebekának: drága ajándékokat adott az ő bátyjának is és az ő anyjának.	igen
-1Móz 24:54	Ettek azután és ittak, ő és a férfiak, akik ő vele voltak, és ott hálának. Mikor pedig felkeltek reggel, mondta: Bocsássatok el engem az én uramhoz.	igen
+1Móz 24:54	Ettek azután és ittak, ő és a férfiak, akik ő vele voltak, és ott háltak. Mikor pedig felkeltek reggel, mondta: Bocsássatok el engem az én uramhoz.	igen
 1Móz 24:55	Mondta pedig a leány bátyja és anyja: Maradjon velünk a leány még vagy tíz napig, azután menjen el.	igen
 1Móz 24:56	A szolga pedig mondta nekik: Ne késleljetek meg engem, holott az Úr szerencséssé tette az én útamat; bocsássatok el azért engem, hogy menjek az én uramhoz.	igen
 1Móz 24:57	Mondták akkor: Hívjuk elő a leányt, és kérdjük meg őt.	igen
@@ -694,7 +694,7 @@ igehely	szoveg_modern	valtozott
 1Móz 25:33	És mondta Jákób: Esküdjél meg hát nekem azonnal, és megesküdött neki és eladta az ő elsőszülöttségét Jákóbnak.	igen
 1Móz 25:34	S akkor Jákób adott Ézsaúnak kenyeret, és főtt lencsét, és evett és ivott, és felkelt és elment. Így vetette meg Ézsaú az elsőszülöttséget.	igen
 1Móz 26:1	Lett pedig éhség az országban, amaz első éhség után, mely Ábrahám idejében volt. Elment azért Izsák Abimélekhez a Filiszteusok királyához Gérárba.	igen
-1Móz 26:2	Mert megjelent neki az Úr és ezt mondta: Ne menj alá Égyiptomba! lakjál azon a földön, melyet mondándok tenéked.	igen
+1Móz 26:2	Mert megjelent neki az Úr és ezt mondta: Ne menj alá Égyiptomba! lakjál azon a földön, melyet mondok tenéked.	igen
 1Móz 26:3	Tartózkodjál ezen a földön, és én veled leszek és megáldalak téged; mert tenéked és a te magodnak adom mind ezeket a földeket, hogy megerősítsem az esküvést, mellyel megesküdtem Ábrahámnak a te atyádnak.	igen
 1Móz 26:4	És megsokasítom a te magodat mint az ég csillagait, és a te magodnak adom mind ezeket a földeket: és megáldatnak a te magodban a földnek minden nemzetségei;	nem
 1Móz 26:5	Mivelhogy hallgatott Ábrahám az én szavamra: és megtartotta a megtartandókat, parancsolataimat, rendeléseimet és törvényeimet.	igen
@@ -788,14 +788,14 @@ igehely	szoveg_modern	valtozott
 1Móz 28:12	És álmot látott: Ímé egy lajtorja volt a földön felállítva, melynek teteje az eget érte, és ímé az Istennek Angyalai fel- és alájártak azon.	igen
 1Móz 28:13	És ímé az Úr állt azon és szólt: Én vagyok az Úr, Ábrahámnak a te atyádnak Istene, és Izsáknak Istene; ezt a földet amelyen fekszel neked adom és a te magodnak.	igen
 1Móz 28:14	És a te magod olyan lesz mint a földnek pora, és terjeszkedel nyugotra és keletre, északra és délre, és te benned és a te magodban áldatnak meg a föld minden nemzetségei.	igen
-1Móz 28:15	És ímé én veled vagyok, hogy megőrizzelek téged valahova menéndesz, és visszahozzalak e földre; mert el nem hagylak téged, míg be nem teljesítem amit neked mondtam.	igen
+1Móz 28:15	És ímé én veled vagyok, hogy megőrizzelek téged valahova mész, és visszahozzalak e földre; mert el nem hagylak téged, míg be nem teljesítem amit neked mondtam.	igen
 1Móz 28:16	Jákób pedig fölébredve álmából, mondta: Bizonyára az Úr van e helyen, és én nem tudtam.	igen
 1Móz 28:17	Megrémült annak okáért és mondta: Mily rettenetes ez a hely; nem egyéb ez, hanem Istennek háza, és az égnek kapuja.	igen
 1Móz 28:18	És felkelt Jákób reggel, és vette azt a követ, melyet feje alá tett, és oszlopul állította fel azt, és olajat öntött annak tetejére;	igen
 1Móz 28:19	És nevezte annak a helynek nevét Béthelnek, az előtt pedig Lúz volt annak a városnak neve.	igen
 1Móz 28:20	És fogadást tett Jákób, mondta: Ha az Isten velem leénd, és megőriz engem ezen az úton, amelyen most járok, és ha ételül kenyeret s öltözetül ruhát adánd nekem;	igen
 1Móz 28:21	És békességgel térek vissza az én atyámnak házához: akkor az Úr leénd az én Istenem;	nem
-1Móz 28:22	És ez a kő, amelyet oszlopul állítottam fel, Isten háza lesz, és valamit adándasz nekem, annak tizedét neked adom.	igen
+1Móz 28:22	És ez a kő, amelyet oszlopul állítottam fel, Isten háza lesz, és valamit adsz nekem, annak tizedét neked adom.	igen
 1Móz 29:1	Jákób azután lábára kelve, elment a napkeletre lakók földére.	igen
 1Móz 29:2	És látta, hogy ímé egy kút van a mezőben, és hogy ott három falka juh hevert. Mert abból a kútból itatták a nyájakat; de a kútnak száján nagy kő volt:	igen
 1Móz 29:3	Mikor pedig ott valamennyi nyáj összeverődik, elgördítik a követ a kút szájáról és megitatják a juhokat s ismét helyére teszik a követ, a kút szájára.	nem
@@ -863,7 +863,7 @@ igehely	szoveg_modern	valtozott
 1Móz 30:30	Mert ami kevesed volt én előttem, sokra szaporodott, és megáldott az Úr téged az én lábam nyomán. Immár mikor tehetek valamit a magam házáért is?	igen
 1Móz 30:31	És mondta Lábán: Mit adjak neked? Felelt Jákób: Ne adj nekem semmit; juhaidat ismét legeltetem és őrizem, ha nekem ezt a dolgot megteszed:	igen
 1Móz 30:32	Nyájaidat ma mind végig járom, minden pettyegetett és tarka bárányt kiszaggatok közűlök, és minden fekete bárányt a juhok közül, s a tarkát és pettyegetettet a kecskék közül, s legyen ez az én bérem.	igen
-1Móz 30:33	S amikor majd bérem iránt eljövéndesz, mi előtted lesz, becsületességemről ez felel: ami nem pettyegetett vagy tarka a kecskék, s nem fekete a juhok közt, az mind lopott jószág nálam.	igen
+1Móz 30:33	S amikor majd bérem iránt eljössz, mi előtted lesz, becsületességemről ez felel: ami nem pettyegetett vagy tarka a kecskék, s nem fekete a juhok közt, az mind lopott jószág nálam.	igen
 1Móz 30:34	És mondta Lábán: Ám legyen: Vajha a te beszéded szerint lenne.	igen
 1Móz 30:35	Külön választotta azért azon a napon a pettyegetett és tarka kosokat, és minden csíkos lábú és tarka kecskét, mind a melyikben valami fehérség volt, és minden feketét a juhok közül, és adta az ő fiainak keze alá.	igen
 1Móz 30:36	És három napi járó földet vetett maga közé és Jákób közé; Jákób pedig legeltette Lábán egyéb juhait.	igen
@@ -923,7 +923,7 @@ igehely	szoveg_modern	valtozott
 1Móz 31:47	És nevezte azt Lábán Jegár-Sahaduthának, Jákób pedig nevezte Gálhédnek.	igen
 1Móz 31:48	És mondta Lábán: E rakás bizonyság ma, közöttem és közötted, azért nevezték Gálhédnek.	igen
 1Móz 31:49	És Micpának, mivelhogy mondta: Az Úr legyen vigyázó közöttem és te közötted, amikor egymástól elválunk.	igen
-1Móz 31:50	Ha az én leányaimat nyomorgatándod, és ha az én leányaimon kívül több feleséget veéndesz, senki sincs ugyan velünk; de meglásd: Isten a bizonyság én közöttem és te közötted.	igen
+1Móz 31:50	Ha az én leányaimat nyomorgatod, és ha az én leányaimon kívül több feleséget veszel, senki sincs ugyan velünk; de meglásd: Isten a bizonyság én közöttem és te közötted.	igen
 1Móz 31:51	És mondta Lábán Jákóbnak: Ímé e rakás kő és ímé ez emlékoszlop, amelyet raktam én közöttem és te közötted,	igen
 1Móz 31:52	Bizonyság legyen e rakás kő, és bizonyság ez az emlékoszlop, hogy sem én nem megyek el e rakás kő mellett te hozzád, sem te nem jössz át én hozzám e rakás kő, és ez emlékoszlop mellett gonosz végre.	nem
 1Móz 31:53	Az Ábrahám Istene, és a Nákhor Istene, és az ő atyjuk Istene tegyenek ítéletet közöttünk: És megesküdött Jákób az ő atyjának Izsáknak félelmére.	igen
@@ -1027,7 +1027,7 @@ igehely	szoveg_modern	valtozott
 1Móz 35:13	És felment ő tőle az Isten azon a helyen, ahol vele szólt.	igen
 1Móz 35:14	Jákób pedig emlékoszlopot állított azon a helyen, ahol szólt vele, kőoszlopot; és áldozott azon italáldozattal, és öntött arra olajat.	igen
 1Móz 35:15	És nevezte Jákób a hely nevét, ahol az Isten szólt ő vele, Béthelnek.	igen
-1Móz 35:16	És elindúlának Béthelből, s mikor Efratától, hogy oda érjenek, már csak egy dűlőföldre voltak, szült Rákhel, és nehéz volt az ő szülése.	igen
+1Móz 35:16	És elindultak Béthelből, s mikor Efratától, hogy oda érjenek, már csak egy dűlőföldre voltak, szült Rákhel, és nehéz volt az ő szülése.	igen
 1Móz 35:17	S vajudása közben mondta neki a bába: Ne félj, mert most is fiad lesz.	igen
 1Móz 35:18	És mikor lelke kiment, mert meghalt, nevezte nevét Benóninak, az atyja pedig nevezte őt Benjáminnak.	igen
 1Móz 35:19	És meghalt Rákhel, és eltemettetett az Efratába (azaz Bethlehembe) vivő úton.	igen
@@ -1258,7 +1258,7 @@ igehely	szoveg_modern	valtozott
 1Móz 42:3	Lement azért Józsefnek tíz bátyja Égyiptomba gabonát venni.	igen
 1Móz 42:4	De Benjámint a József öccsét nem bocsátotta el Jákób az ő bátyjaival; mert mondta: Netalán veszedelem érhetné.	igen
 1Móz 42:5	Elmentek tehát Izráel fiai gabonát venni az oda menőkkel együtt, mert éhség volt Kanaán földén.	igen
-1Móz 42:6	József pedig az ország kormányzója volt, és ő árulta a gabonát a föld minden népének. Eljutottak azért a József bátyjai, és arccal a földre borúlának ő előtte.	igen
+1Móz 42:6	József pedig az ország kormányzója volt, és ő árulta a gabonát a föld minden népének. Eljutottak azért a József bátyjai, és arccal a földre borultak ő előtte.	igen
 1Móz 42:7	Amint meglátta József az ő bátyjait, megismerte őket, de idegennek mutatta magát hozzájuk, és kemény beszédekkel szólt nekik, mondva: Honnan jöttetek? Azok pedig mondták: Kanaán földéről jöttünk eleséget venni.	igen
 1Móz 42:8	Megismerte pedig József az ő bátyjait, de azok nem ismerték meg őt.	igen
 1Móz 42:9	És megemlékezett József az álmokról, amelyeket azok felől álmodott. És mondta nekik: Kémek vagytok ti, kik azért jöttetek, hogy az ország védetlen részeit meglássátok.	igen
@@ -1354,7 +1354,7 @@ igehely	szoveg_modern	valtozott
 1Móz 44:27	És mondta a te szolgád, az én atyám, nekünk: Ti tudjátok hogy az én feleségem nekem csak két fiat szült.	igen
 1Móz 44:28	Az egyik kiment tőlem, és azt mondtam: bizonyára fenevad szaggatta széllyel és attól fogva nem láttam őt.	igen
 1Móz 44:29	Ha ezt is elviszitek szemeim elől, s veszedelem találja érni, akkor az én ősz fejemet keserűségtől borítva bocsátjátok alá a koporsóba.	nem
-1Móz 44:30	Ha tehát most visszamenéndek a te szolgádhoz, az én atyámhoz, és e fiú nem lesz velünk, mivelhogy annak lelke ennek lelkéhez van nőve,	nem
+1Móz 44:30	Ha tehát most visszamegyek a te szolgádhoz, az én atyámhoz, és e fiú nem lesz velünk, mivelhogy annak lelke ennek lelkéhez van nőve,	igen
 1Móz 44:31	Ha meglátja, hogy nincs meg a gyermek, meghal s akkor a te szolgáid, a te szolgádnak, a mi atyánknak ősz fejét búba borítva bocsátják alá a koporsóba.	nem
 1Móz 44:32	Mivel a te szolgád e fiúért az ő atyjánál kezes lett, mondva: Ha vissza nem hozom őt hozzád, mind éltig bűnös legyek az én atyám előtt.	igen
 1Móz 44:33	Hadd maradjon azért e gyermek helyébe a te szolgád, az én uramnak szolgájáúl; e gyermek pedig menjen fel az ő bátyjaival.	nem
@@ -1524,7 +1524,7 @@ igehely	szoveg_modern	valtozott
 1Móz 50:15	Amint látták József bátyjai, hogy az ő atyjuk meghalt, ezt mondták: Hátha gyűlölni fog minket József, és visszaadja nekünk mindazt a gonoszt, amit rajta elkövettünk.	igen
 1Móz 50:16	Izenetet küldtek azért Józsefhez, mondva: A te atyád megparancsolta nekünk az ő holta előtt, mondva:	igen
 1Móz 50:17	Így szóljatok Józsefhez: Kérünk téged, bocsásd meg a te atyádfiainak vétkét és bűnöket, mert gonoszul cselekedtek te ellened. Most azért bocsásd meg azoknak vétkét, akik a te atyád Istenét szolgálják. József pedig sírt, mikor ezt mondták neki.	igen
-1Móz 50:18	Járultak pedig ő hozzá az ő testvérei is, és leborúlának előtte és mondták: Ímé mi a te szolgáid vagyunk.	igen
+1Móz 50:18	Járultak pedig ő hozzá az ő testvérei is, és leborultak előtte és mondták: Ímé mi a te szolgáid vagyunk.	igen
 1Móz 50:19	József pedig mondta: Ne féljetek: avagy Isten gyanánt vagyok-é én?	igen
 1Móz 50:20	Ti gonoszt gondoltatok én ellenem, de Isten azt jóra gondolta fordítani, hogy cselekedjék úgy amint ma, hogy sok nép életét megtartsa.	igen
 1Móz 50:21	Most annakokáért ne féljetek: Eltartalak én titeket és a ti gyermekeiteket. És megvígasztalta őket és szívükre beszélt.	igen
@@ -1831,11 +1831,11 @@ igehely	szoveg_modern	valtozott
 2Móz 12:12	Mert általmégyek Égyiptom földén ezen éjszakán és megölök minden elsőszülöttet Égyiptom földén, az embertől kezdve a baromig, és Égyiptom minden istene felett ítéletet tartok, én, az Úr.	nem
 2Móz 12:13	És a vér jelül lesz nektek a házakon, amelyekben ti lesztek, s meglátom a vért és elmegyek mellettetek és nem lesz rajtatok a csapás veszedelmetekre, mikor megverem Égyiptom földét.	igen
 2Móz 12:14	És legyen ez a nap nektek emlékezetül, és innepnek szenteljétek azt az Úrnak nemzetségről nemzetségre; örök rendtartás szerint ünnepeljétek azt.	igen
-2Móz 12:15	Hét napig egyetek kovásztalan kenyeret; még az első napon takarítsátok el a kovászt házaitokból, mert valaki kovászost ejéndik az első naptól fogva a hetedik napig, az olyan lélek irtassék ki Izráelből.	nem
+2Móz 12:15	Hét napig egyetek kovásztalan kenyeret; még az első napon takarítsátok el a kovászt házaitokból, mert valaki kovászost eszik az első naptól fogva a hetedik napig, az olyan lélek irtassék ki Izráelből.	igen
 2Móz 12:16	Az első napon pedig szent gyűléstek legyen és a hetedik napon is szent gyűléstek legyen; azokon semmi munkát ne tegyetek, egyedül csak ami eledelére való minden embernek, azt el lehet készítenetek.	igen
 2Móz 12:17	Megtartsátok a kovásztalan kenyér innepét; mert azon a napon hoztam ki a ti seregeiteket Égyiptom földéről; tartsátok meg hát e napot nemzetségről nemzetségre, örök rendtartás szerint.	nem
 2Móz 12:18	Az első hónapban, a hónapnak tizennegyedik napján estve egyetek kovásztalan kenyeret, a hónap huszonegyedik napjának estvéjéig.	nem
-2Móz 12:19	Hét napon át ne találtassék kovász a ti házaitokban; mert valaki kovászost ejéndik, az a lélek kiirtatik Izráel gyülekezetéből, akár jövevény, akár az ország szülöttje legyen.	nem
+2Móz 12:19	Hét napon át ne találtassék kovász a ti házaitokban; mert valaki kovászost eszik, az a lélek kiirtatik Izráel gyülekezetéből, akár jövevény, akár az ország szülöttje legyen.	igen
 2Móz 12:20	Semmi kovászost ne egyetek, minden lakóhelyeteken kovásztalan kenyeret egyetek.	nem
 2Móz 12:21	Előhívta tehát Mózes Izráel minden véneit és mondta nekik: Fogjatok és vegyetek magatoknak bárányt családaitok szerint és öljétek meg a páskhát.	igen
 2Móz 12:22	És vegyetek egy kötés izsópot és mártsátok a vérbe, amely az edényben van, és hintsétek meg a szemöldökfát és a két ajtófelet abból a vérből, amely az edényben van; ti közületek pedig senki se menjen ki az ő házának ajtaján reggelig.	igen
@@ -2166,7 +2166,7 @@ igehely	szoveg_modern	valtozott
 2Móz 23:19	A te földed zsengéjének elsejét vidd el a te Uradnak Istenednek házába. Ne főzd meg a gödölyét az ő anyjának tejében.	nem
 2Móz 23:20	Ímé én Angyalt bocsátok el te előtted, hogy megőrízzen téged az útban, és bevigyen téged arra a helyre, amelyet elkészítettem.	igen
 2Móz 23:21	Vigyázz magadra előtte, és hallgass az ő szavára; meg ne bosszantsd őt, mert nem szenvedi el a ti gonoszságaitokat; mert az én nevem van ő benne.	nem
-2Móz 23:22	Mert ha hallgatándasz az ő szavára; és mindazt megcselekedénded, amit mondok: akkor ellensége lészek a te ellenségeidnek, és szorongatom a te szorongatóidat.	igen
+2Móz 23:22	Mert ha hallgatsz az ő szavára; és mindazt megcselekszed, amit mondok: akkor ellensége lészek a te ellenségeidnek, és szorongatom a te szorongatóidat.	igen
 2Móz 23:23	Mert az én Angyalom te előtted megyen és bevisz téged az Emoreusok, Khitteusok, Perizeusok, Kananeusok, Khivveusok és Jebuzeusok közé, és kiirtom azokat.	igen
 2Móz 23:24	Ne imádd azoknak isteneit és ne tiszteld azokat, és ne cselekedjél az ő cselekedeteik szerint; hanem inkább döntögesd le azokat és tördeld össze bálványaikat.	nem
 2Móz 23:25	És szolgáljátok az Urat a ti Istenteket, akkor megáldja a te kenyeredet és vizedet; és eltávolítom ti közületek a nyavalyát.	igen
@@ -2657,7 +2657,7 @@ igehely	szoveg_modern	valtozott
 2Móz 38:21	Ezek a hajléknak, a bizonyság hajlékának részei, amint megszámláltattak a Mózes meghagyásából, a Léviták szolgálatára, Ithamár, az Áron pap fia által.	igen
 2Móz 38:22	Bésaléel a Húr fiának, Urinak fia a Júda nemzetségéből, csinálta mind azt, amit az Úr parancsolt Mózesnek.	igen
 2Móz 38:23	És vele együtt Aholiáb, Akhiszamák fia, Dán nemzetségéből aki mester volt a faragásban, a kötő és hímzőmunkában, kék, és bíborpiros, és karmazsinszínű, és lenfonállal.	igen
-2Móz 38:24	Mind az az arany, amely a munkára, a szenthelynek összes munkáira feldolgoztaték, ez az áldozati arany: huszonkilenc talentom, és hétszáz harminc siklus volt, a szent siklus szerint.	igen
+2Móz 38:24	Mind az az arany, amely a munkára, a szenthelynek összes munkáira feldolgoztatott, ez az áldozati arany: huszonkilenc talentom, és hétszáz harminc siklus volt, a szent siklus szerint.	igen
 2Móz 38:25	Az ezüst pedig, a gyülekezet megszámlált tagjaitól, száz talentom, és ezer hétszáz hetvenöt siklus, a szent siklus szerint.	nem
 2Móz 38:26	Fejenként egy beka, vagy is fél siklus, a szent siklus szerint, mindenkitől, aki átesett a megszámláltatáson, húsz esztendőstől fölfelé, akik hatszáz háromezeren és ötszázötvenen voltak.	igen
 2Móz 38:27	A száz talentom ezüstből megönték a szent helyhez való talpakat, és a függöny oszlopainak talpait; száz talpat száz talentomból, egy talentomból egy talpat.	nem
@@ -2696,7 +2696,7 @@ igehely	szoveg_modern	valtozott
 2Móz 39:29	Az övet is sodrott lenből, és kék, bíborpiros és karmazsinszínű fonálból hímzőmunkával, amint az Úr parancsolta Mózesnek.	igen
 2Móz 39:30	A szent koronához való lapot is megcsinálták tiszta aranyból, és felírták rá a pecsétmetsző módjára: Szentség az Úrnak.	igen
 2Móz 39:31	És kötöttek rá kék zsinórt, hogy felkössék azzal a süvegre, amint az Úr parancsolta Mózesnek.	igen
-2Móz 39:32	Így végezteték el a gyülekezet sátora hajlékának egész munkája; és az Izráel fiai egészen úgy csinálták, amint az Úr parancsolta Mózesnek, úgy csinálták.	igen
+2Móz 39:32	Így végeztetett el a gyülekezet sátora hajlékának egész munkája; és az Izráel fiai egészen úgy csinálták, amint az Úr parancsolta Mózesnek, úgy csinálták.	igen
 2Móz 39:33	És vitték a hajlékot Mózeshez: a sátort és annak minden eszközét, horgait, deszkáit, reteszrúdait, oszlopait, és talpait.	igen
 2Móz 39:34	A veresre festett kosbőrökből készült takarót is, és a borzbőrökből készült takarót, és a takarófüggönyt.	nem
 2Móz 39:35	A bizonyság ládáját, annak rúdait, és a fedelet.	nem
@@ -3971,7 +3971,7 @@ igehely	szoveg_modern	valtozott
 4Móz 9:3	E hónapnak tizennegyedik napján, estennen készítsék el azt a maga idejében. Minden ő rendtartása szerint, és minden ő szertartása szerint készítsétek el azt.	nem
 4Móz 9:4	Szólt azért Mózes Izráel fiainak, hogy készítsék el a páskhát.	igen
 4Móz 9:5	És elkészítették a páskhát az első hónapban, a hónapnak tizennegyedik napján estennen, a Sinai pusztájában; mindent úgy cselekedtek Izráel fiai, amint az Úr parancsolta Mózesnek.	igen
-4Móz 9:6	Voltak pedig némelyek, akik tisztátalanok voltak holtember illetése miatt, és nem készítheték meg a páskhát azon a napon: járultak azért Mózes elé és Áron elé azon a napon.	igen
+4Móz 9:6	Voltak pedig némelyek, akik tisztátalanok voltak holtember illetése miatt, és nem készíthették meg a páskhát azon a napon: járultak azért Mózes elé és Áron elé azon a napon.	igen
 4Móz 9:7	És mondták azok az emberek neki: Mi tisztátalanok vagyunk holtember illetése miatt; miért tiltatunk meg, hogy ne vigyünk áldozatot az Úrnak a maga idejében Izráel fiai között?	igen
 4Móz 9:8	És mondta nekik Mózes: Legyetek veszteg, míglen megértem: mit parancsol az Úr ti felőletek?	igen
 4Móz 9:9	Szólt pedig az Úr Mózesnek, mondva:	igen
@@ -4056,7 +4056,7 @@ igehely	szoveg_modern	valtozott
 4Móz 11:29	És felelt neki Mózes: Avagy érettem buzgólkodol-é? Vajha az Úrnak minden népe próféta volna, hogy adná az Úr az ő lelkét ő beléjük.	igen
 4Móz 11:30	Ezután visszatért Mózes a táborba, ő és az Izráel vénei.	igen
 4Móz 11:31	És szél jött ki az Úrtól, és hozott fürjeket a tengertől, és bocsátotta a táborra egynapi járásnyira egy felől, és egynapi járásnyira más felől a tábor körül, és mintegy két sing magasságnyira a földnek színén.	igen
-4Móz 11:32	Akkor felkelt a nép és azon az egész napon, és egész éjjel, és az egész következő napon gyűjtöttek magoknak fürjeket, aki keveset gyűjtött is, gyűjtött tíz hómert, és kiteregeték azokat magoknak a tábor körül.	igen
+4Móz 11:32	Akkor felkelt a nép és azon az egész napon, és egész éjjel, és az egész következő napon gyűjtöttek magoknak fürjeket, aki keveset gyűjtött is, gyűjtött tíz hómert, és kiteregették azokat magoknak a tábor körül.	igen
 4Móz 11:33	A hús még foguk között volt, és meg sem emésztették, amikor az Úrnak haragja felgerjedt a népre és megverte az Úr a népet igen nagy csapással.	igen
 4Móz 11:34	És elnevezték azt a helyet Kibrot-thaavának: mert ott temették el a mohó népet.	igen
 4Móz 11:35	Kibrot-thaavától elment a nép Haseróthba; és ott voltak Haseróthban.	igen
@@ -4564,8 +4564,8 @@ igehely	szoveg_modern	valtozott
 4Móz 27:7	Igazat szólnak a Célofhád leányai: Adj nekik örökségi birtokot az ő atyjuknak atyjafiai között, és szállítsd rájuk az ő atyjuknak örökségét.	igen
 4Móz 27:8	Izráel fiainak pedig szólj, mondva: Mikor valaki meghal, és fia nem leend annak, akkor adjátok annak örökségét az ő leányának.	igen
 4Móz 27:9	Ha pedig nem leend neki leánya, akkor adjátok az ő örökségét az ő testvéreinek.	igen
-4Móz 27:10	Ha pedig nem leendenek neki testvérei, akkor adjátok az ő örökségét az ő atyja testvéreinek.	igen
-4Móz 27:11	Ha pedig nem leendenek az ő atyjának testvérei, akkor adjátok az ő örökségét annak, aki legközelebbi atyjafia az ő nemzetségéből, és bírja azt. Legyen pedig az Izráel fiainak végezett törvényük, amiképpen megparancsolta az Úr Mózesnek.	igen
+4Móz 27:10	Ha pedig nem lesznek neki testvérei, akkor adjátok az ő örökségét az ő atyja testvéreinek.	igen
+4Móz 27:11	Ha pedig nem lesznek az ő atyjának testvérei, akkor adjátok az ő örökségét annak, aki legközelebbi atyjafia az ő nemzetségéből, és bírja azt. Legyen pedig az Izráel fiainak végezett törvényük, amiképpen megparancsolta az Úr Mózesnek.	igen
 4Móz 27:12	Mondta azután az Úr Mózesnek: Menj fel az Abarim hegyére, és lásd meg a földet, amelyet Izráel fiainak adtam.	igen
 4Móz 27:13	Miután pedig megláttad azt, takaríttatol te is a te népedhez, amiképpen oda takaríttatott Áron, a te testvéred;	igen
 4Móz 27:14	Mivelhogy nem engedtetek az én beszédemnek a Cin pusztájában, a gyülekezet versengésének idején, hogy megdicsőítettetek volna engemet ama vizeknél az ő szemeik előtt. Ezek a versengésnek vizei Kádesnél a Cin pusztájában.	igen
@@ -5033,7 +5033,7 @@ igehely	szoveg_modern	valtozott
 5Móz 4:27	És az Úr szétszór titeket a népek közé, és szám szerint kevesen maradtok meg a népek között, akik közé visz titeket az Úr.	igen
 5Móz 4:28	És szolgáltok ott emberi kéz által csinált isteneknek: fának és kőnek, amelyek nem látnak, nem is hallanak, nem is esznek, nem is szagolnak.	igen
 5Móz 4:29	De ha onnan keresed meg az Urat, a te Istenedet, akkor is megtalálod, hogyha teljes szívedből és teljes lelkedből keresed őt.	nem
-5Móz 4:30	Mikor nyomorúságban leéndesz, és utólérnek téged mindezek az utolsó időkben, és megtérsz az Úrhoz, a te Istenedhez, és hallgatsz az ő szavára:	nem
+5Móz 4:30	Mikor nyomorúságban leszel, és utólérnek téged mindezek az utolsó időkben, és megtérsz az Úrhoz, a te Istenedhez, és hallgatsz az ő szavára:	igen
 5Móz 4:31	(Mert irgalmas Isten az Úr, a te Istened), nem hágy el téged, sem el nem veszít, sem el nem felejtkezik a te atyáidnak szövetségéről, amely felől megesküdt nekik.	igen
 5Móz 4:32	Mert tudakozzál csak a régi időkről, amelyek te előtted voltak, ama naptól fogva, amelyen az Isten embert teremtett e földre, és pedig az égnek egyik szélétől az égnek másik széléig, ha történt-é e nagy dologhoz hasonló, vagy hallatszott-é ehhez fogható?	igen
 5Móz 4:33	Hallotta-é valamely nép a tűz közepéből szóló Istennek szavát, amiképpen hallottad te, hogy életben maradt volna?	igen
@@ -5869,7 +5869,7 @@ Józs 1:15	Amíg megnyugosztja az Úr a ti atyátokfiait is, mint titeket, és b
 Józs 1:16	Azok pedig feleltek Józsuénak, mondva: Mindent megcselekszünk, amit parancsoltál nekünk, és ahová küldesz minket, oda megyünk.	igen
 Józs 1:17	Amint Mózesre hallgattunk, épen úgy hallgatunk majd te rád, csak legyen veled az Úr, a te Istened, amiképpen vele volt Mózessel.	igen
 Józs 1:18	Mindenki, aki ellene szegül a te szódnak, és nem hallgat a te beszédedre mindabban, amit parancsolsz neki, megölettessék. Csak bátor légy és erős!	igen
-Józs 2:1	És Józsué, a Nún fia, elküldött Sittimből titkon két férfiút kémekül, mondva: Menjetek el, tekintsétek meg azt a földet és Jérikhót. Azok pedig elmentek, és bementek egy parázna asszonynak házába, akinek Ráháb volt neve, és ott hálának.	igen
+Józs 2:1	És Józsué, a Nún fia, elküldött Sittimből titkon két férfiút kémekül, mondva: Menjetek el, tekintsétek meg azt a földet és Jérikhót. Azok pedig elmentek, és bementek egy parázna asszonynak házába, akinek Ráháb volt neve, és ott háltak.	igen
 Józs 2:2	Mikor pedig megjelentették ezt Jérikhó királyának, mondva: Íme, férfiak jöttek ide ez éjszaka az Izráel fiai közül e földnek kémlelésére;	igen
 Józs 2:3	Akkor küldött Jérikhó királya Ráhábhoz, mondva: Hozd ki a férfiakat, akik bementek hozzád, akik házadba mentek, mert azért jöttek, hogy kikémleljék az egész földet.	igen
 Józs 2:4	Az asszony pedig fogta a két férfiút, és elrejtette őket, és mondta: Úgy van! Bejöttek hozzám a férfiak, de azt sem tudom, honnan valók voltak.	igen
@@ -6017,10 +6017,10 @@ Józs 8:12	És vett mintegy ötezer férfiút, és lesbe állította őket Béth
 Józs 8:13	Így állították fel a népet, az egész tábort, amely Aitól észak felé, utócsapatja pedig a várostól napnyugot felé volt. Józsué pedig bement ez éjszakán a völgynek közepébe.	igen
 Józs 8:14	És lett, hogy mikor meglátta Ainak királya, sietve felkeltek, és kijöttek a város férfiai Izráel ellen a harcra; ő és egész népe a megszabott helyre, a síkság elejére, mert nem tudta, hogy lest vetettek neki a város háta mögött.	igen
 Józs 8:15	Józsué pedig és az egész Izráel mintha megverettek volna előttök futottak a puszta felé vivő úton.	igen
-Józs 8:16	És felriasztaték az egész nép, amely a városban volt, hogy üldözze őket. És üldözték Józsuét, és elszakadtak a várostól.	igen
+Józs 8:16	És felriasztatott az egész nép, amely a városban volt, hogy üldözze őket. És üldözték Józsuét, és elszakadtak a várostól.	igen
 Józs 8:17	És nem maradt ember Aiban, sem Béthelben, aki nem jött volna Izráel után, és ott hagyták a várost kinyitva, és üldözték Izráelt.	igen
 Józs 8:18	Az Úr pedig mondta Józsuénak: Emeld fel a kopját, amely kezedben van, Ai felé, mert kezedbe adom azt. És felemelte Józsué a kopját, amely kezében volt, a város felé.	igen
-Józs 8:19	A lesben levők pedig nagy hamarsággal felkeltek helyükről, és amint felemelte kezét, futásnak eredének, és bementek a városba, és bevették azt, és nagy hamarsággal tűzbe borították a várost.	igen
+Józs 8:19	A lesben levők pedig nagy hamarsággal felkeltek helyükről, és amint felemelte kezét, futásnak eredtek, és bementek a városba, és bevették azt, és nagy hamarsággal tűzbe borították a várost.	igen
 Józs 8:20	Ai férfiai pedig hátratekintettek, és látták, hogy ímé a városnak füstje felszállt az ég felé, és hogy nincsen módjukban imide vagy amoda elfutni, mert a nép, amely futott a pusztának, visszafordult az üldöző felé.	igen
 Józs 8:21	Józsué ugyanis és az egész Izráel látták, hogy a lesben levők bevették a várost, és hogy a városnak füstje felszállott: visszafordultak azért és vágták Ainak férfiait.	igen
 Józs 8:22	Amazok pedig a városból jöttek ki ellenük, és így közben voltak Izráelnek: ezek innen, amazok meg amonnan, és vágták őket mindaddig, amíg egy sem maradt közülök élve, vagy aki elszaladt volna.	igen
@@ -7597,7 +7597,7 @@ Ruth 4:22	És Obed nemzette Isait, Isai pedig nemzette Dávidot.	igen
 1Sám 15:35	És Sámuel nem látogatta meg többé Sault egész halálának idejéig; de bánkódott Sámuel Saul miatt. Az Úr pedig megbánta, hogy királlyá tette Sault Izráel felett.	igen
 1Sám 16:1	És mondta az Úr Sámuelnek: Ugyan meddig bánkódol még Saul miatt, holott én megvetettem őt, hogy ne uralkodjék Izráel felett? Töltsd meg a te szarudat olajjal, és eredj el; én elküldelek téged a Bethlehemben lakó Isaihoz, mert fiai közül választottam magamnak királyt.	igen
 1Sám 16:2	Sámuel pedig mondta: Hogyan menjek el!? Ha meghallja Saul, megöl engemet. És mondta az Úr: Vígy magaddal egy üszőt, és azt mondjad: Azért jöttem, hogy az Úrnak áldozzam.	igen
-1Sám 16:3	És hívd meg Isait az áldozatra, és én tudtodra adom, hogy mit cselekedjél, és kend fel számomra azt, akit mondándok neked.	igen
+1Sám 16:3	És hívd meg Isait az áldozatra, és én tudtodra adom, hogy mit cselekedjél, és kend fel számomra azt, akit mondok neked.	igen
 1Sám 16:4	És Sámuel megcselekedte, amit az Úr mondott neki, és elment Bethlehembe. A város vénei pedig megijedtek, és eleibe menve, mondták: Békességes-é a te jöveteled?	igen
 1Sám 16:5	Ő pedig felelt: Békességes; azért jöttem, hogy áldozzam az Úrnak. Szenteljétek meg azért magatokat, és jertek el velem az áldozatra. Isait és az ő fiait pedig megszentelte, és elhívta őket az áldozatra.	igen
 1Sám 16:6	Mikor pedig bementek, meglátta Eliábot, és gondolta: Bizony az Úr előtt van az ő felkentje!	igen
@@ -8081,7 +8081,7 @@ Ruth 4:22	És Obed nemzette Isait, Isai pedig nemzette Dávidot.	igen
 2Sám 2:29	Abner pedig és az ő vitézei azon az egész éjszakán mentek a mezőségen, és általkeltek a Jordánon, és az egész vidéket bejárva, jutottak Mahanáimba.	igen
 2Sám 2:30	Joáb pedig megtérve Abner üldözéséből, összegyűjtötte az egész népet, és hiányoztak Dávid szolgái közül tizenkilencen és Asáel.	igen
 2Sám 2:31	A Dávid szolgái pedig Benjámin nemzetéből, az Abner szolgái közül háromszázhatvan embert öltek meg, akik meghaltak.	igen
-2Sám 2:32	És felvevén Asáelt, eltemették őt atyjának sírboltjában, mely Bethlehemben volt. Joáb pedig és az ő vitézei egész éjjel menve, Hebronban virradtak meg.	igen
+2Sám 2:32	És felvéve Asáelt, eltemették őt atyjának sírboltjában, mely Bethlehemben volt. Joáb pedig és az ő vitézei egész éjjel menve, Hebronban virradtak meg.	igen
 2Sám 3:1	Sok ideig tartó hadakozás lett a Saul háznépe között és a Dávid háznépe között. Dávid pedig mind feljebb-feljebb emelkedik és erősbödött; a Saul háza pedig alább-alább száll és fogyott.	igen
 2Sám 3:2	Fiai születtek Dávidnak Hebronban, kik között elsőszülött volt Ammon, a Jezréelből való Ahinoámtól;	igen
 2Sám 3:3	A második pedig Kileáb, a Kármelbeli Nábál feleségétől, Abigailtól való, és a harmadik Absolon, a Máákha fia, aki a Gessurbeli Thalmai király leánya volt;	igen
@@ -8132,7 +8132,7 @@ Ruth 4:22	És Obed nemzette Isait, Isai pedig nemzette Dávidot.	igen
 2Sám 4:9	Felelt pedig Dávid Rékábnak és Bahanának, az ő atyjafiának, a Beerótbeli Rimmon fiainak, és mondta nekik: Él az Úr, ki az én életemet megszabadította minden nyomorúságból,	igen
 2Sám 4:10	Hogy én azt, aki nekem hírt hozott, ezt mondva: Ímé meghalt Saul (és azt hitte, hogy azzal nekem örömet szerez), megragadva megölettem őt Siklágban, holott jutalmat kellett volna adnom neki hírmondásáért:	igen
 2Sám 4:11	Mennyivel inkább az istentelen embereket, kik ágyában, a maga házában ölték meg az igaz embert? Azért most vajon ne kivánjam-é meg az ő vérét kezeitekből, hogy titeket eltöröljelek a földről?	igen
-2Sám 4:12	Parancsolt azért Dávid az ő szolgáinak, hogy megöljék őket; és elvagdalták kezeiket és lábaikat; és felakasztották őket Hebronban, a halastó mellett. Isbósetnek pedig fejét felvevén, eltemették az Abner sírboltjába, Hebronban.	igen
+2Sám 4:12	Parancsolt azért Dávid az ő szolgáinak, hogy megöljék őket; és elvagdalták kezeiket és lábaikat; és felakasztották őket Hebronban, a halastó mellett. Isbósetnek pedig fejét felvéve, eltemették az Abner sírboltjába, Hebronban.	igen
 2Sám 5:1	Eljöttek pedig Dávidhoz Hebronba Izráelnek minden nemzetségei, és szóltak ilyenképen: Ímé mi a te csontodból és testedből valók vagyunk,	igen
 2Sám 5:2	Mert ennekelőtte is, mikor Saul uralkodott felettünk, te vezérelted ki s be Izráelt, és az Úr azt mondta neked: Te legelteted az én népemet, az Izráelt, és te fejedelem leszel Izráel felett.	igen
 2Sám 5:3	Eljöttek azért Izráelnek minden vénei a királyhoz Hebronba, és frigyet tett velek Dávid király Hebronban az Úr előtt, és királlyá kenték Dávidot Izráel felett.	igen
@@ -8406,7 +8406,7 @@ Ruth 4:22	És Obed nemzette Isait, Isai pedig nemzette Dávidot.	igen
 2Sám 15:14	Akkor mondta Dávid minden szolgáinak, kik vele voltak Jeruzsálemben: Keljetek fel, és fussunk el, mert itt nincsen számunkra menekülés Absolon elől; siessetek elmenni, hogy valamikép sietve utól ne érjen minket, s ne hozzon szerencsétlenséget ránk, és a várost le ne vágja fegyvernek élével.	igen
 2Sám 15:15	Mondták pedig a király szolgái a királynak: Minden úgy legyen, amint tetszik a királynak, a mi urunknak, ímé itt vannak a te szolgáid.	igen
 2Sám 15:16	Kiment azért a király és egész háznépe ő utána, és otthon hagyta a király tíz ágyasát, hogy őrizzék a házat.	igen
-2Sám 15:17	És kimenve a király és egész háznépe ő utána, megállapodának a legszélső háznál.	igen
+2Sám 15:17	És kimenve a király és egész háznépe ő utána, megállapodtak a legszélső háznál.	igen
 2Sám 15:18	És minden szolgái ő mellé mentek; és a Kereteusok, a Peleteusok mind, a Gitteusok is mind, az a hatszáz férfi, kik vele jöttek Gáthból, elvonultak a király előtt.	igen
 2Sám 15:19	Mondta pedig a király a Gitteus Ittainak: Miért jössz el te is mi velünk? Menj vissza, és maradj a királynál, mert te idegen vagy és vissza is költözhetel szülő helyedre.	igen
 2Sám 15:20	Csak tegnap jöttél, és már ma zaklassalak téged, hogy velünk jöjj? Én megyek oda, ahova mehetek; te pedig térj vissza, és vidd vissza testvéredet is; irgalmasság és igazság legyen veled.	igen
@@ -8424,7 +8424,7 @@ Ruth 4:22	És Obed nemzette Isait, Isai pedig nemzette Dávidot.	igen
 2Sám 15:32	És amint feljutott Dávid a hegy tetejére, hogy ott imádkozzék az Istennek, ímé eleibe jött az Árkeából való Khúsai, ki ruháját megszaggatta és földet hintett fejére.	igen
 2Sám 15:33	És mondta neki Dávid: Ha eljösz velem, terhemre leszel nekem;	igen
 2Sám 15:34	De ha a városba visszatérsz, és ezt mondod Absolonnak: Te szolgád vagyok, óh király; ennekelőtte a te atyád szolgája voltam, most immár a te szolgád leszek, megronthatod Akhitófelnek ellenem való tanácsát.	nem
-2Sám 15:35	És ímé veled lesznek ott Sádók és Abjátár papok; azért minden dolgot, amit hallándasz a király házából, mondj meg a papoknak, Sádóknak és Abjátárnak.	igen
+2Sám 15:35	És ímé veled lesznek ott Sádók és Abjátár papok; azért minden dolgot, amit hallasz a király házából, mondj meg a papoknak, Sádóknak és Abjátárnak.	igen
 2Sám 15:36	Ímé ott van velük az ő két fiok is, Akhimás, a Sádók fia, és Jonathán, az Abjátár fia, kik által nekem mindjárt megizenhetitek, valamit hallotok.	igen
 2Sám 15:37	Elment azért Khúsai, a Dávid barátja a városba, Absolon pedig bevonult Jeruzsálembe.	igen
 2Sám 16:1	Mikor pedig Dávid egy kevéssé alább ment a hegy tetejéről, eleibe jött Siba, a Mefibóset szolgája, két megnyergelt szamárral, melyeken kétszáz kenyér és száz kötés aszúszőlő és száz csomó füge és egy tömlő bor volt.	igen
@@ -8773,8 +8773,8 @@ Ruth 4:22	És Obed nemzette Isait, Isai pedig nemzette Dávidot.	igen
 1Kir 1:53	Elküldött azért Salamon király, és elhozták őt az oltártól; és eljövén meghajtotta magát Salamon király előtt; és mondta Salamon király: Menj el a te házadhoz.	igen
 1Kir 2:1	Mikor pedig elközelgett Dávidnak ideje, hogy meghaljon, parancsot adott Salamonnak az ő fiának, ezt mondva:	igen
 1Kir 2:2	Én elmegyek az egész földnek útján; erősítsd meg magad és légy férfiú.	nem
-1Kir 2:3	És őrízd meg az Úrnak a te Istenednek őrizetit, hogy az ő útain járj, és megőrizzed az ő rendeléseit, parancsolatit és ítéleteit, és bizonyságtételeit, amint meg van írva a Mózes törvényében: hogy előmented legyen mindenekben, amelyeket cselekedéndesz, és mindenütt, valamerre fordulándasz;	igen
-1Kir 2:4	Hogy megteljesítse az Úr az ő beszédét, melyet szólt nekem, mondva: Ha megőrizéndik a te fiaid az ő útjukat, járva én előttem tökéletességgel, teljes szívük és teljes lelkük szerint; ezt mondva, mondom: Soha el nem fogy a férfiú te közüled az Izráelnek királyi székiből.	igen
+1Kir 2:3	És őrízd meg az Úrnak a te Istenednek őrizetit, hogy az ő útain járj, és megőrizzed az ő rendeléseit, parancsolatit és ítéleteit, és bizonyságtételeit, amint meg van írva a Mózes törvényében: hogy előmented legyen mindenekben, amelyeket cselekszel, és mindenütt, valamerre fordulsz;	igen
+1Kir 2:4	Hogy megteljesítse az Úr az ő beszédét, melyet szólt nekem, mondva: Ha megőrzik a te fiaid az ő útjukat, járva én előttem tökéletességgel, teljes szívük és teljes lelkük szerint; ezt mondva, mondom: Soha el nem fogy a férfiú te közüled az Izráelnek királyi székiből.	igen
 1Kir 2:5	Azt is jól tudod, mit cselekedett én velem Joáb, a Séruja fia, mit cselekedett az Izráel seregeinek két fővezérével, Abnerrel, a Nér fiával, és Amasával, a Jéter fiával, akiket megölt, harci vért ontva békességnek idején, és hintett harci vért az ő derekának övére és az ő lábának saruira.	igen
 1Kir 2:6	Cselekedjél a te bölcseséged szerint, és ne engedd, hogy megőszülve, békességgel menjen a koporsóba.	igen
 1Kir 2:7	De a gileádbeli Barzillainak fiaival cselekedjél irgalmasságot, és legyenek a te asztalod vendégei, mert így közeledtek ők is hozzám, mikor Absolon, a te testvéred elől menekültem.	nem
@@ -8807,12 +8807,12 @@ Ruth 4:22	És Obed nemzette Isait, Isai pedig nemzette Dávidot.	igen
 1Kir 2:34	És elment Benája, Jójada fia, és rá rohanva megölte őt; és eltemettetett az ő házában, a pusztában.	igen
 1Kir 2:35	Rendelte pedig a király a Jójada fiát ő helyette a sereg fölé, és Sádók papot rendelte a király Abjátár helyett.	igen
 1Kir 2:36	És elküldött a király, és magához hívatta Sémeit, és mondta neki: Építs házat magadnak Jeruzsálemben és lakjál ott; és onnét ne menj ki se ide, se tova.	igen
-1Kir 2:37	Mert valamely nap kimenéndesz, és általmenéndesz a Kidron patakján, tudd meg, hogy meg kell halnod, a te véred lesz tennen fejeden.	igen
+1Kir 2:37	Mert valamely nap kimész, és általmész a Kidron patakján, tudd meg, hogy meg kell halnod, a te véred lesz tennen fejeden.	igen
 1Kir 2:38	És mondta Sémei a királynak: Tetszik nekem e beszéd; amiképpen szólt az én uram, a király, a képen cselekeszik a te szolgád; és sok ideig lakott Sémei Jeruzsálemben.	igen
 1Kir 2:39	Lett azonban három esztendő mulva, hogy Sémeinek két szolgája elszökött Ákishoz, Maaka fiához, a Gáthbeli királyhoz; és hírül adták Sémeinek, mondva: Ímé a te szolgáid Gáthban vannak.	igen
 1Kir 2:40	Ekkor felkelt Sémei, és megnyergelte szamarát, és elment Gáthba Ákishoz, hogy megkeresse az ő szolgáit. Oda érve Sémei, meghozta szolgáit Gáthból.	igen
 1Kir 2:41	Hírül adták pedig Salamonnak, hogy elment Sémei Jeruzsálemből Gáthba, és haza jött.	igen
-1Kir 2:42	Akkor elküldött a király, és magához hívatta Sémeit, és mondta neki: Nemde esküvéssel kényszerítettelek-é téged az Úrra, és bizonyságot tettem neked, ezt mondva: Valamely napon kimenéndesz, s ide s tova menéndesz, bizonnyal tudjad, hogy meghalsz; és azt mondtad nekem: Tetszik e beszéd, megértettem.	igen
+1Kir 2:42	Akkor elküldött a király, és magához hívatta Sémeit, és mondta neki: Nemde esküvéssel kényszerítettelek-é téged az Úrra, és bizonyságot tettem neked, ezt mondva: Valamely napon kimész, s ide s tova mész, bizonnyal tudjad, hogy meghalsz; és azt mondtad nekem: Tetszik e beszéd, megértettem.	igen
 1Kir 2:43	Miért nem tartottad hát meg az Úr előtt való esküvést, és a parancsolatot, amelyet neked parancsoltam?	igen
 1Kir 2:44	Mondta annakfelette a király Sémeinek: Te tudod mindazt a gonoszságot, amelyről a te szíved bizonyság, és amelyet atyámmal Dáviddal cselekedtél: az Úr most mindazt a gonoszságot a saját fejedre fordította.	igen
 1Kir 2:45	Salamon király pedig áldott lesz, és Dávidnak királyi széke lesz állandó az Úr előtt mindörökké.	igen
@@ -8830,7 +8830,7 @@ Ruth 4:22	És Obed nemzette Isait, Isai pedig nemzette Dávidot.	igen
 1Kir 3:11	Mondta azért az Isten neki: Mivelhogy ezt kérted tőlem, és nem kértél magadnak hosszú életet, sem nem kértél gazdagságot, sem pedig nem kérted a te ellenségidnek lelkét; hanem bölcseséget kértél az ítélettételre:	igen
 1Kir 3:12	Ímé a te beszéded szerint cselekszem, ímé adok neked bölcs és értelmes szívet, úgy hogy hozzád hasonló nem volt te előtted, és utánad sem támad olyan, mint te.	igen
 1Kir 3:13	Sőt még amit nem kértél, azt is megadom neked, gazdagságot és dicsőséget: úgy hogy a királyok között nem lesz hozzád hasonló senki minden te idődben.	igen
-1Kir 3:14	És ha az én útaimon járándasz, megőrizve az én végzéseimet és parancsolatimat, amiképpen járt a te atyád, Dávid: meghosszabbítom életed idejét.	igen
+1Kir 3:14	És ha az én útaimon jársz, megőrizve az én végzéseimet és parancsolatimat, amiképpen járt a te atyád, Dávid: meghosszabbítom életed idejét.	igen
 1Kir 3:15	És mikor felserkent Salamon, ímé álom volt. És ment Jeruzsálembe, és állt az Úr szövetségének ládája elé, és áldozott egészen égőáldozatokat, és készített hálaáldozatokat, és szerzett nagy lakomát minden szolgáinak.	igen
 1Kir 3:16	Abban az időben jött a királyhoz két parázna asszony, és megállt ő előtte.	igen
 1Kir 3:17	És mondta az egyik asszony: Kérlek uram, én és ez az asszony egy házban laktunk, és szültem ő nála abban a házban.	igen
@@ -8884,7 +8884,7 @@ Ruth 4:22	És Obed nemzette Isait, Isai pedig nemzette Dávidot.	igen
 1Kir 5:3	Te tudod, hogy Dávid, az én atyám nem építhetett házat az Úrnak, az ő Istenének nevének a háborúk miatt, amelyekkel őt körülvették, mígnem az Úr az ő lábainak talpa alá vetette azokat;	igen
 1Kir 5:4	De most az Úr, az én Istenem nekem nyugodalmat adott mindenfelől, úgy hogy semmi ellenségem és senkitől semmi bántásom nincs.	igen
 1Kir 5:5	Ímé azt gondoltam magamban, hogy házat építek az Úrnak, az én Istenemnek nevének, amiképpen szólt az Úr Dávidnak, az én atyámnak, ezt mondva: A te fiad, akit helyetted ültetek a te királyi székedbe, ő építi meg azt a házat az én nevemnek.	igen
-1Kir 5:6	Most azért parancsold meg, hogy vágjanak nekem cédrusfákat a Libánonon. Az én szolgáim is együtt lesznek a te szolgáiddal; a te szolgáidnak pedig jutalmát megadom neked mind a szerint, amit mondándasz; mert tudod, hogy nincsen mi közöttünk olyan ember, aki a favágáshoz úgy értene, mint a Sidonbeliek.	igen
+1Kir 5:6	Most azért parancsold meg, hogy vágjanak nekem cédrusfákat a Libánonon. Az én szolgáim is együtt lesznek a te szolgáiddal; a te szolgáidnak pedig jutalmát megadom neked mind a szerint, amit mondasz; mert tudod, hogy nincsen mi közöttünk olyan ember, aki a favágáshoz úgy értene, mint a Sidonbeliek.	igen
 1Kir 5:7	Mikor azért meghallotta Hírám a Salamon izenetét, igen megörült, és mondta: Áldott legyen e mai napon az Úr, aki Dávidnak bölcs fiat adott e nagy népen.	igen
 1Kir 5:8	És elküldött Hírám Salamonhoz, ezt izenve: Megértettem ami felől küldtél hozzám; én megteszem minden kívánságodat mind a cédrusfákra, mind a fenyőfákra nézve.	igen
 1Kir 5:9	Az én szolgáim a Libánonról aláviszik a tengerre a fákat: én pedig azokat tutajokra rakatva, a tengeren addig a helyig vitetem, amelyet te megizentetsz nekem, és azokat ott kihányatom, és te vitesd el. Te pedig abban teljesítsd kívánságomat, hogy adj eledelt az én háznépemnek.	igen
@@ -8934,7 +8934,7 @@ Ruth 4:22	És Obed nemzette Isait, Isai pedig nemzette Dávidot.	igen
 1Kir 6:35	És metszett azokra Kérubokat és pálmafákat és kinyilt virágokat, és beborította arannyal, rá alkalmaztatva azt a metszésre.	igen
 1Kir 6:36	Azután felépítette a belső pitvart három rend faragott kőből és egy rend cédrusgerendából.	igen
 1Kir 6:37	Az ő uralkodásának negyedik esztendejében fundáltatott az Úrnak háza Zif hónapban.	igen
-1Kir 6:38	És a tizenegyedik esztendőben, Búl havában, (mely a nyolcadik hónap) végezteték el a ház, minden dolga és rendje szerint. És így építette azt hét esztendeig.	igen
+1Kir 6:38	És a tizenegyedik esztendőben, Búl havában, (mely a nyolcadik hónap) végeztetett el a ház, minden dolga és rendje szerint. És így építette azt hét esztendeig.	igen
 1Kir 7:1	Azután a maga házát építette Salamon tizenhárom esztendeig, amely alatt elvégezte az ő házát egészen.	igen
 1Kir 7:2	Megépítette a Libánon erdő házát is, melynek hossza száz sing volt, szélessége ötven sing, magassága harminc sing; építette azt négy rend cédrusoszlopon és az oszlopokon cédrusgerendák voltak.	igen
 1Kir 7:3	És bepadlotta cédrusdeszkákkal felül a gerendák felett, melyek voltak negyvenöt oszlopon, mindenik renden tizenöt.	igen
@@ -8956,7 +8956,7 @@ Ruth 4:22	És Obed nemzette Isait, Isai pedig nemzette Dávidot.	igen
 1Kir 7:19	És a gömbök, amelyek a tornácban levő oszlopok tetején voltak, liliom formájúak voltak, négy singnyiek.	igen
 1Kir 7:20	Gömbök voltak a két oszlopon, felül, közel a kidomborodáshoz, amely a háló mellett volt. És kétszáz gránátalma volt sorban köröskörül a második gömbön.	igen
 1Kir 7:21	És felállította az oszlopokat a templom tornácában; és felállította a jobb oszlopot, és nevezte annak nevét Jákinnak, és felállította a bal oszlopot, és nevezte annak nevét Boáznak.	igen
-1Kir 7:22	És az oszlopok tetején liliomok formáltattak. És ilyen módon végezteték el az oszlopok míve.	igen
+1Kir 7:22	És az oszlopok tetején liliomok formáltattak. És ilyen módon végeztetett el az oszlopok míve.	igen
 1Kir 7:23	És csinált egy öntött tengert, mely egyik szélétől fogva a másik széléig tíz sing volt, köröskörül kerek, és öt sing magas, és a kerületit harminc sing zsinór érte körül.	igen
 1Kir 7:24	Voltak pedig a peremén alól köröskörül formáltatva apró sártökök; tíz-tíz mindenik singben az egész tenger körül, az ilyen sártököcskék két renddel voltak öntve köröskörül a maga öntésében.	igen
 1Kir 7:25	És tizenkét ökrön állt, három északra fordulva, három nyugotra, három délre és három naptámadatra, és a tenger fölül rajtok, hátok pedig mind befelé.	igen
@@ -9015,12 +9015,12 @@ Ruth 4:22	És Obed nemzette Isait, Isai pedig nemzette Dávidot.	igen
 1Kir 8:27	Vajon gondolható-é, hogy lakozhatnék az Isten a földön? Ímé az ég, és az egeknek egei be nem foghatnak téged; mennyivel kevésbbé e ház, amelyet én építettem.	igen
 1Kir 8:28	De tekints a te szolgád imádságára és könyörgésére, óh Uram, én Istenem, hogy meghalljad a dicséretet és az imádságot, amellyel a te szolgád könyörög előtted e mai napon;	igen
 1Kir 8:29	Hogy a te szemeid e házra nézzenek éjjel és nappal, e helyre, amely felől azt mondottad: Ott lesz az én nevem; hallgasd meg ez imádságot, amellyel könyörög a te szolgád e helyen.	igen
-1Kir 8:30	És hallgasd meg a te szolgádnak és a te népednek, az Izráelnek könyörgését, akik imádkozándanak e helyen; hallgasd meg lakhelyedből, a mennyekből, és meghallgatva légy kegyelmes!	igen
-1Kir 8:31	Mikor vétkezéndik valaki felebarátja ellen, és esküre köteleztetik, hogy megesküdjék és ő ide jön, megesküszik az oltár előtt ebben a házban:	igen
+1Kir 8:30	És hallgasd meg a te szolgádnak és a te népednek, az Izráelnek könyörgését, akik imádkoznak e helyen; hallgasd meg lakhelyedből, a mennyekből, és meghallgatva légy kegyelmes!	igen
+1Kir 8:31	Mikor vétkezik valaki felebarátja ellen, és esküre köteleztetik, hogy megesküdjék és ő ide jön, megesküszik az oltár előtt ebben a házban:	igen
 1Kir 8:32	Te hallgasd meg a mennyekből, és vidd véghez, és tégy igazat a te szolgáid között, kárhoztatva az istentelent, hogy fején teljék amit keresett; és megigazítva az igazat, megfizetve neki az ő igazsága szerint.	igen
-1Kir 8:33	Mikor megverettetik a te néped, az Izráel, az ő ellenségeitől, mivel ellened vétkeztek, és hozzád megtéréndenek, és vallást teéndenek a te nevedről, és neked imádkozándanak és könyörgéndenek e házban:	igen
+1Kir 8:33	Mikor megverettetik a te néped, az Izráel, az ő ellenségeitől, mivel ellened vétkeztek, és hozzád megtérnek, és vallást tesznek a te nevedről, és neked imádkoznak és könyörögnek e házban:	igen
 1Kir 8:34	Te hallgasd meg a mennyekből, és bocsásd meg az Izráelnek, a te népednek vétkét; és hozd vissza őket arra a földre, amelyet adtál az ő atyáiknak.	igen
-1Kir 8:35	Mikor berekesztetik az ég, és nem lesz eső, mert ellened vétkeztek; és imádkozándanak e helyen, és vallást teéndenek a te nevedről, és megtéréndenek az ő bűnökből, mert te szorongatod őket:	igen
+1Kir 8:35	Mikor berekesztetik az ég, és nem lesz eső, mert ellened vétkeztek; és imádkoznak e helyen, és vallást tesznek a te nevedről, és megtérnek az ő bűnökből, mert te szorongatod őket:	igen
 1Kir 8:36	Te hallgasd meg őket a mennyekből, és légy kegyelmes a te szolgáidnak és az Izráelnek, a te népednek vétke iránt, tanítsd meg őket a jó útra, amelyen járjanak; és adj esőt a te földedre, amelyet örökségül adtál a te népednek.	igen
 1Kir 8:37	Éhség ha lesz e földön, ha döghalál, aszály, ragya, sáska, cserebogár; ha ellenség szállja meg kapuit; vagy más csapás és nyavalya jövénd rájuk:	igen
 1Kir 8:38	Aki akkor könyörög és imádkozik, legyen az bárki; vagy a te egész néped, az Izráel, ha elismeri kiki az ő szívére mért csapást, és kiterjeszténdi kezeit e ház felé:	igen
@@ -9029,13 +9029,13 @@ Ruth 4:22	És Obed nemzette Isait, Isai pedig nemzette Dávidot.	igen
 1Kir 8:41	Sőt még az idegen is, aki nem a te néped, az Izráel közül való, ha eljövénd messze földről a te nevedért;	igen
 1Kir 8:42	(Mert meghallják a te nagyságos nevedet és a te hatalmas kezedet és kinyújtott karodat), és eljövén imádkozánd e házban:	nem
 1Kir 8:43	Te hallgasd meg a mennyekből, a te lakhelyedből, és add meg az idegennek mindazt, amiért könyörög neked, hogy mind az egész földön való népek megismerjék a te nevedet, és féljenek úgy téged, miképpen a te néped az Izráel; és ismerjék meg, hogy a te nevedről neveztetik ez a ház, amelyet én építettem.	igen
-1Kir 8:44	Ha a te néped hadba megy ki az ő ellensége ellen, az úton, amelyen te küldöd el, és imádkozándik az Úrhoz, fordulva az úton e város felé, amelyet te magadnak választottál és e ház felé, amelyet építettem a te nevednek:	igen
+1Kir 8:44	Ha a te néped hadba megy ki az ő ellensége ellen, az úton, amelyen te küldöd el, és imádkozik az Úrhoz, fordulva az úton e város felé, amelyet te magadnak választottál és e ház felé, amelyet építettem a te nevednek:	igen
 1Kir 8:45	Hallgasd meg a mennyekből az ő imádságokat és könyörgésüket, és szerezz nekik igazságot.	igen
-1Kir 8:46	Ha te ellened vétkezéndenek, – mert nincsen ember, aki ne vétkeznék – és megharagudva rájuk, ellenség kezébe adándod, és fogva elviéndik őket azok, akiktől megfogattak, az ellenségnek földére, messze vagy közel;	igen
+1Kir 8:46	Ha te ellened vétkeznek, – mert nincsen ember, aki ne vétkeznék – és megharagudva rájuk, ellenség kezébe adod, és fogva elviszik őket azok, akiktől megfogattak, az ellenségnek földére, messze vagy közel;	igen
 1Kir 8:47	És eszökre térnek a földön, melyre fogva vitettek, és megtérve könyörgenek neked azoknak földükön, akiktől fogva elvitettek, mondva: Vétkeztünk, hamisan és istentelenül cselekedtünk!	igen
-1Kir 8:48	És megtéréndenek te hozzád teljes szívükből és lelkükből, az ő ellenségüknek földében, akik őket fogva elvitték, és imádkozándanak hozzád az ő földüknek útja felé fordulva, amelyet adtál az ő atyáiknak, és e város felé, amelyet magadnak választottál, és e ház felé, amelyet a te nevednek építettem:	igen
+1Kir 8:48	És megtérnek te hozzád teljes szívükből és lelkükből, az ő ellenségüknek földében, akik őket fogva elvitték, és imádkoznak hozzád az ő földüknek útja felé fordulva, amelyet adtál az ő atyáiknak, és e város felé, amelyet magadnak választottál, és e ház felé, amelyet a te nevednek építettem:	igen
 1Kir 8:49	Hallgasd meg a mennyekből, a te lakhelyedből az ő imádságokat és könyörgésüket, és szerezz nekik igazságot;	igen
-1Kir 8:50	És légy kegyelmes a te néped iránt, akik ellened vétkezéndenek, és minden bűneik iránt, amelyekkel ellened vétkeztek; és szerezz kedvességet nekik azok előtt, akik őket fogva tartják, hogy könyörüljenek rajtok;	igen
+1Kir 8:50	És légy kegyelmes a te néped iránt, akik ellened vétkeznek, és minden bűneik iránt, amelyekkel ellened vétkeztek; és szerezz kedvességet nekik azok előtt, akik őket fogva tartják, hogy könyörüljenek rajtok;	igen
 1Kir 8:51	Mert ők a te néped és örökséged, akiket kihoztál Égyiptomból, a vaskemence közepéből,	igen
 1Kir 8:52	Hogy a te szemeid nézzenek a te szolgádnak imádságára és a te népednek az Izráelnek könyörgésére; meghallgatva őket mindenkor, mikor téged segítségül hívnak.	igen
 1Kir 8:53	Mert te különválasztottad őket magadnak örökségül a földnek minden népei közül; amiképpen megmondottad volt Mózes, a te szolgád által, mikor kihoztad a mi atyáinkat Égyiptomból, Uram Isten!	igen
@@ -9055,7 +9055,7 @@ Ruth 4:22	És Obed nemzette Isait, Isai pedig nemzette Dávidot.	igen
 1Kir 9:1	És lett, mikor elvégezte Salamon az Úr házának és a király házának építését, és mindent amit kívánt és amit akart építeni Salamon:	igen
 1Kir 9:2	Megjelent az Úr Salamonnak másodszor is, amiként megjelent volt neki Gibeonban.	igen
 1Kir 9:3	És mondta neki az Úr: Meghallgattam a te imádságodat és könyörgésedet, amellyel könyörgöttél előttem: Megszenteltem e házat, amelyet építettél, abba helyheztetve az én nevemet mindörökké, és ott lesznek az én szemeim, és az én szívem mindenkor.	igen
-1Kir 9:4	És ha te előttem járándasz, amint járt Dávid, a te atyád, egyenes és tökéletes szívvel, úgy cselekedve mindenekben, amint neked megparancsoltam, az én rendelésimet és végzésimet megtartándod;	igen
+1Kir 9:4	És ha te előttem jársz, amint járt Dávid, a te atyád, egyenes és tökéletes szívvel, úgy cselekedve mindenekben, amint neked megparancsoltam, az én rendelésimet és végzésimet megtartod;	igen
 1Kir 9:5	Megerősítem a te birodalmadnak trónját az Izráelen mindörökké, amint megígértem volt Dávidnak a te atyádnak, mondva: Nem fogy el a te nemzetségedből való férfiú az Izráel királyi székéből.	igen
 1Kir 9:6	De hogyha elszakadtok ti és a ti fiaitok én tőlem, és meg nem őrizénditek az én parancsolatimat és végzéseimet, melyeket előtökbe adtam; hanem elmentek, és idegen isteneknek szolgáltok, és meghajoltok azok előtt:	nem
 1Kir 9:7	Kigyomlálom az Izráelt e föld színéről, amelyet nekik adtam; e házat, melyet az én nevemnek szenteltem, elvetem szemeim elől, és az Izráel példabeszédül és meséül lesz minden nép előtt.	igen
@@ -9146,7 +9146,7 @@ Ruth 4:22	És Obed nemzette Isait, Isai pedig nemzette Dávidot.	igen
 1Kir 11:35	Hanem az ő fiának kezétől már elveszem a királyságot, és neked adom azt, tudniillik a tíz nemzetséget.	igen
 1Kir 11:36	Az ő fiának pedig egy nemzetséget adok, hogy Dávidnak, az én szolgámnak legyen előttem szövétneke mindenkor Jeruzsálemben, a városban, amelyet magamnak választottam, hogy ott helyheztessem az én nevemet.	igen
 1Kir 11:37	Téged pedig felveszlek, és uralkodol mindenekben a te lelkednek kívánsága szerint, és király lész az Izráelen.	nem
-1Kir 11:38	És ha te minden parancsolatimnak engedéndesz, és járándasz az én utaimban, és azt cselekedénded, ami tetszik nekem, megőrizve az én rendelésimet és parancsolatimat, amint Dávid, az én szolgám cselekedett: én veled leszek, és építek neked állandó házat, amint Dávidnak építettem, és neked adom az Izráelt.	igen
+1Kir 11:38	És ha te minden parancsolatimnak engedsz, és jársz az én utaimban, és azt cselekszed, ami tetszik nekem, megőrizve az én rendelésimet és parancsolatimat, amint Dávid, az én szolgám cselekedett: én veled leszek, és építek neked állandó házat, amint Dávidnak építettem, és neked adom az Izráelt.	igen
 1Kir 11:39	És megsanyargatom ezért a Dávid magvát: de még sem örökre.	nem
 1Kir 11:40	Igyekezett pedig Salamon megölni Jeroboámot; ezért felkelve Jeroboám, futott Égyiptomba, Sésákhoz, az Égyiptombeli királyhoz, és ott volt Égyiptomban, Salamon haláláig.	igen
 1Kir 11:41	Salamonnak egyéb dolgai pedig és minden cselekedetei, amelyeket cselekedett, és bölcsesége avagy nem írattattak-é meg a Salamon cselekedeteiről írott könyvben?	igen
@@ -9193,7 +9193,7 @@ Ruth 4:22	És Obed nemzette Isait, Isai pedig nemzette Dávidot.	igen
 1Kir 13:6	És szólt a király, és mondta az Isten emberének: Könyörögj az Úrnak a te Istenednek, és imádkozz érettem, hogy ismét hozzám hajoljon az én kezem. És mikor könyörgött az Isten embere az Úrnak, visszahajlott a király keze, és olyan lett, mint azelőtt.	igen
 1Kir 13:7	És mondta a király az Isten emberének: Jere haza velem és egyél ebédet, meg akarlak ajándékozni.	igen
 1Kir 13:8	És mondta az Isten embere a királynak: Ha a te házadnak felét nekem adnád is, nem mennék el veled, és nem enném kenyeret, sem vizet nem innám e helyen;	igen
-1Kir 13:9	Mert azt parancsolta az Úr nekem az ő beszéde által, mondva: Ne egyél ott kenyeret, vizet se igyál; vissza se térj az úton, amelyen elmenéndesz.	igen
+1Kir 13:9	Mert azt parancsolta az Úr nekem az ő beszéde által, mondva: Ne egyél ott kenyeret, vizet se igyál; vissza se térj az úton, amelyen elmész.	igen
 1Kir 13:10	És elment más úton, és nem tért meg azon az úton, amelyen Béthelbe ment.	igen
 1Kir 13:11	És lakozott Béthelben egy vén próféta, akihez eljövén az ő fia, elbeszélte az ő atyjának mindazt a dolgot, amelyet aznap az Isten embere cselekedett volt Béthelben, és a beszédeket, amelyeket szólt a királynak; és elbeszélték azokat az ő atyjuknak.	igen
 1Kir 13:12	Akkor mondta nekik az ő atyjuk: Mely úton ment el? És megmutatták az ő fiai az útat, amelyen elment volt az Isten embere, aki Júdából jött.	igen
@@ -9201,7 +9201,7 @@ Ruth 4:22	És Obed nemzette Isait, Isai pedig nemzette Dávidot.	igen
 1Kir 13:14	És elment az Isten embere után, és megtalálta őt egy cserfa alatt ülve, és mondta neki: Te vagy-é amaz Isten embere, aki Júdából jöttél? És mondta: Én vagyok.	igen
 1Kir 13:15	Akkor mondta neki: Jere haza velem és egyél kenyeret.	igen
 1Kir 13:16	De az felelt: Nem mehetek vissza veled, be sem mehetek veled; nem eszem kenyeret, vizet sem iszom veled e helyen;	igen
-1Kir 13:17	Mert meg van nekem az Úrnak beszédével parancsolva: Ne egyél kenyeret, vizet se igyál ott, és ne térj azon az úton vissza, amelyen oda menéndesz.	igen
+1Kir 13:17	Mert meg van nekem az Úrnak beszédével parancsolva: Ne egyél kenyeret, vizet se igyál ott, és ne térj azon az úton vissza, amelyen oda mész.	igen
 1Kir 13:18	És felelt az neki: Én is olyan próféta vagyok, mint te, és nekem angyal szólt az Úrnak beszédével, mondva: Hozd vissza őt veled a te házadba, hogy kenyeret egyék és vizet igyék. És e képen hazudott neki.	igen
 1Kir 13:19	Megtért azért vele, és kenyeret evett az ő házában, és vizet ivott.	igen
 1Kir 13:20	Mikor pedig az asztalnál ültek: lett az Úr beszéde a prófétához, aki őt visszahozta,	igen
@@ -9402,7 +9402,7 @@ Ruth 4:22	És Obed nemzette Isait, Isai pedig nemzette Dávidot.	igen
 1Kir 19:12	És a földindulás után tűz jött, de nem volt az Úr a tűzben sem. És a tűz után egy halk és szelíd hang hallatszott.	igen
 1Kir 19:13	És mikor Illés ezt hallotta, befedte az ő arcát palástjával, és kimenve, megállt a barlang ajtajában, és ímé szózat lett ő hozzá, amely ezt mondta: Mit csinálsz itt Illés?	igen
 1Kir 19:14	És ő felelt: Nagy búsulásom van az Úrért, a Seregeknek Istenéért, mert az Izráel fiai elhagyták a te szövetségedet, lerontották a te oltáraidat, és a te prófétáidat megölték fegyverrel, és én egyedül maradtam, és engem is halálra keresnek.	igen
-1Kir 19:15	És mondta az Úr neki: Menj el, térj vissza a te utadon a pusztán át Damaskusba, és mikor oda jutándasz, kenjed királlyá Hazáelt Siriában;	igen
+1Kir 19:15	És mondta az Úr neki: Menj el, térj vissza a te utadon a pusztán át Damaskusba, és mikor oda jutsz, kenjed királlyá Hazáelt Siriában;	igen
 1Kir 19:16	És Jéhut, a Nimsi fiát kenjed királlyá Izráelben, és Elizeust, az Abelméholabeli Sáfát fiát pedig kenjed prófétává a te helyedbe.	igen
 1Kir 19:17	És lesz, hogy aki megmenekedik Hazáel fegyverétől, azt Jéhu öli meg, és aki megmenekedik a Jéhu fegyverétől, azt Elizeus öli meg.	igen
 1Kir 19:18	De meghagyok Izráelben hétezer embert: minden térdet, mely meg nem hajolt a Baálnak, és minden ajkat, mely meg nem csókolta azt.	nem
@@ -9562,7 +9562,7 @@ Ruth 4:22	És Obed nemzette Isait, Isai pedig nemzette Dávidot.	igen
 2Kir 2:7	Ötven férfiú pedig a próféták fiai közül utánok menve, velük szemben messze megálltak, mikor ők ketten a Jordán mellett megálltak.	igen
 2Kir 2:8	És fogta Illés az ő palástját, és összehajtva azt, megütötte azzal a vizet; és az kétfelé vált; úgy hogy mind a ketten szárazon mentek át rajta.	igen
 2Kir 2:9	És mikor általmentek, mondta Illés Elizeusnak: Kérj tőlem, mit cselekedjem veled, mielőtt tőled elragadtatom. És mondta Elizeus: Legyen, kérlek, a te benned való léleknek kettős mértéke én rajtam.	igen
-2Kir 2:10	És ő mondta: Nehéz dolgot kértél; mégis, ha majd meglátándasz engem, mikor tőled elragadtatom, meglesz, amit kérsz: ha pedig meg nem látándasz, nem lesz meg.	igen
+2Kir 2:10	És ő mondta: Nehéz dolgot kértél; mégis, ha majd meglátsz engem, mikor tőled elragadtatom, meglesz, amit kérsz: ha pedig meg nem látsz, nem lesz meg.	igen
 2Kir 2:11	És lett, amikor mentek és menve beszélgettek, ímé egy tüzes szekér tüzes lovakkal elválasztotta őket egymástól. És felment Illés a szélvészben az égbe.	igen
 2Kir 2:12	Elizeus pedig ezt látva, kiáltott: Édes atyám, édes atyám! Izráel szekerei és lovagjai! És nem látta őt többé. És vette a maga ruháit, és két részre szakasztotta azokat,	igen
 2Kir 2:13	És felemelte az Illés palástját, amely róla leesett, és visszatért, és megállt a Jordán partján.	igen
@@ -10790,7 +10790,7 @@ Ruth 4:22	És Obed nemzette Isait, Isai pedig nemzette Dávidot.	igen
 1Krón 14:12	És ott hagyták az ő bálvány isteneiket, és Dávid megparancsolta, hogy megégessék azokat.	igen
 1Krón 14:13	Ismét feltámadtak a Filiszteusok és a völgyben szétterjeszkedtek.	igen
 1Krón 14:14	Azért Dávid ismét megkérdezte az Istent, és mondta az Isten neki: Ne menj fel utánok, hanem fordulj el tőlök, és menj rájuk a szederfák irányában;	igen
-1Krón 14:15	És mikor hallándod a járás dobogását a szederfák tetején, akkor menj ki a viadalra; mert az Isten te előtted megyen, hogy megverje a Filiszteusok táborát.	nem
+1Krón 14:15	És mikor hallod a járás dobogását a szederfák tetején, akkor menj ki a viadalra; mert az Isten te előtted megyen, hogy megverje a Filiszteusok táborát.	igen
 1Krón 14:16	Dávid azért úgy cselekedett, amint neki Isten meghagyta volt, és vágták a Filiszteusok táborát Gibeontól fogva szinte Gézerig.	igen
 1Krón 14:17	És elterjedt Dávid híre az országokban, és az Úr adta a tőle való félelmet minden pogányokra.	igen
 1Krón 15:1	Csináltatott pedig Dávid magának házakat az ő városában; és helyet készített az Isten ládájának, és annak sátort állított fel.	igen
@@ -11153,7 +11153,7 @@ Ruth 4:22	És Obed nemzette Isait, Isai pedig nemzette Dávidot.	igen
 1Krón 28:6	És mondta nekem: Salamon a te fiad építi meg az én házamat és az én pitvarimat; mert én őt magamnak fiamul választottam, és én is neki atyja leszek;	igen
 1Krón 28:7	Megerősítem az ő királyságát mindörökké; ha az én parancsolatimat és ítéletimet szorgalmatosan megtartándja, amint e mai napon.	igen
 1Krón 28:8	Most azért az egész Izráelnek, az Úr gyülekezetének szeme előtt és a mi Istenünk hallására: őrizzétek s keressétek az Úrnak a ti Istenteknek minden parancsolatit, hogy bírhassátok e jó földet, és hogy örökségül hagyhassátok fiaitokra is magatok után mindörökké.	nem
-1Krón 28:9	Te azért, fiam, Salamon, ismerd meg a te atyád Istenét, és szolgálj neki tökéletes szívvel és jó kedvvel; mert az Úr minden szívbe belát és minden emberi gondolatot jól ért. Hogyha őt keresénded, megtalálod; ha ellenben őt elhagyándod, ő is elhagy téged mindörökké.	igen
+1Krón 28:9	Te azért, fiam, Salamon, ismerd meg a te atyád Istenét, és szolgálj neki tökéletes szívvel és jó kedvvel; mert az Úr minden szívbe belát és minden emberi gondolatot jól ért. Hogyha őt keresed, megtalálod; ha ellenben őt elhagyod, ő is elhagy téged mindörökké.	igen
 1Krón 28:10	Most azért, mivelhogy az Úr választott téged, hogy neki szent házat építs: légy erős és készítsd meg azt.	igen
 1Krón 28:11	Akkor átadta Dávid az ő fiának, Salamonnak a tornácnak, annak házacskáinak, kincstartó helyeinek, felházainak és belső kamaráinak, a kegyelem táblája helyének is formáját,	igen
 1Krón 28:12	És mindennek formáját, amelyeket szívében elgondolt, az Úr házának pitvarai felől, az Isten háza kincsének és a szent kincseknek számára köröskörül levő minden kamarák felől.	igen
@@ -11303,14 +11303,14 @@ Ruth 4:22	És Obed nemzette Isait, Isai pedig nemzette Dávidot.	igen
 2Krón 6:17	Most azért, oh Uram, Izráelnek Istene, bizonyosodjék meg a te beszéded, melyet szóltál volt a te szolgádnak, Dávidnak!	igen
 2Krón 6:18	(Avagy lakozhatnék-é valósággal az Isten e földön az emberek között? Ím az egek és az egeknek egei téged be nem foghatnak, mennyivel kevésbbé e ház, amelyet én építettem.)	igen
 2Krón 6:19	És tekints a te szolgád könyörgésére és imádságára, oh én Uram Istenem, meghallgatva kiáltását és könyörgését, amellyel könyörög a te szolgád előtted!	igen
-2Krón 6:20	Hogy a te szemeid éjjel és nappal figyelmezzenek e házra, e helyre, amelyről azt mondottad, hogy nevedet abba helyezénded, meghallgatva könyörgését a te szolgádnak, amikor e helyen könyörögne.	igen
+2Krón 6:20	Hogy a te szemeid éjjel és nappal figyelmezzenek e házra, e helyre, amelyről azt mondottad, hogy nevedet abba helyezed, meghallgatva könyörgését a te szolgádnak, amikor e helyen könyörögne.	igen
 2Krón 6:21	Hallgasd meg azért a te szolgádnak és a te népednek Izráelnek könyörgését, amikor könyörögni fognak e helyen; hallgasd meg a te mennyei lakhelyedből, és meghallgatva őket, légy kegyelmes!	igen
-2Krón 6:22	Mikor valaki vétkezéndik felebarátja ellen, és esküre köteleztetik, hogy megesküdjék, és ő ide jön, megesküszik oltárod előtt ebben a házban,	igen
+2Krón 6:22	Mikor valaki vétkezik felebarátja ellen, és esküre köteleztetik, hogy megesküdjék, és ő ide jön, megesküszik oltárod előtt ebben a házban,	igen
 2Krón 6:23	Te hallgasd meg a mennyből és vidd véghez, és tégy igaz ítéletet a te szolgáid között, az istentelent megbüntetve, fejére fordítva az ő útját; és az igazat megigazítva, megfizetve neki az ő igazsága szerint.	igen
 2Krón 6:24	Mikor pedig megverettetik a te néped, az Izráel az ő ellenségeitől, mivel te ellened vétkeztek; és hozzád visszatérve vallást tesznek a te nevedről, könyörögnek és imádkoznak te előtted e házban:	nem
 2Krón 6:25	Te hallgasd meg a mennyből, és bocsásd meg a te népednek, az Izráelnek bűnét, és hozd vissza őket arra a földre, amelyet adtál nekik és az ő atyáiknak.	igen
 2Krón 6:26	Mikor az ég berekesztetik és nem lesz eső, mivel vétkeztek te ellened; és imádkozni fognak e helyen és vallást tesznek a te nevedről és megtérnek bűneikből, mert te sanyargatod őket:	igen
-2Krón 6:27	Te hallgasd meg a mennyből, és légy kegyelmes a te szolgáidnak és a te népednek, az Izráelnek; minekutána őket megtanítándod az igaz útra, amelyen járjanak; és adj esőt a te földedre, amelyet adtál a te népednek örökségül.	igen
+2Krón 6:27	Te hallgasd meg a mennyből, és légy kegyelmes a te szolgáidnak és a te népednek, az Izráelnek; minekutána őket megtanítod az igaz útra, amelyen járjanak; és adj esőt a te földedre, amelyet adtál a te népednek örökségül.	igen
 2Krón 6:28	Éhség ha lesz a földön, ha döghalál, aszály, ragya, sáska, cserebogár; ha az ő ellensége szorongatja az ő birodalmának földében; ha bármiféle csapás és nyomorúság jövend rájuk:	igen
 2Krón 6:29	Aki akkor könyörög és imádkozik, legyen az bárki; vagy a te néped, az Izráel, ha elismeri kiki az ő csapását és fájdalmát, és kezeit e házban kiterjeszténdi:	igen
 2Krón 6:30	Te hallgasd meg a mennyből, a te lakhelyedből és légy kegyelmes, és kinek-kinek fizess az ő útai szerint, amint megismerted az ő szívét, mert egyedül csak te ismered az emberek fiainak szívét;	igen
@@ -11319,9 +11319,9 @@ Ruth 4:22	És Obed nemzette Isait, Isai pedig nemzette Dávidot.	igen
 2Krón 6:33	Te hallgasd meg a mennyből, a te lakóhelyedből, és add meg az idegennek mindazt, amiért könyörög hozzád, hogy megismerjék a földnek minden népei a te nevedet, és tiszteljenek téged úgy, mint a te néped, az Izráel, és ismerjék meg, hogy a te nevedről neveztetik e ház, amelyet én építettem.	igen
 2Krón 6:34	Ha a te néped hadba megy ki az ő ellensége ellen azon az úton, amelyen elbocsátod őket; ha könyörögnek, hozzád fordulva e város felé, amelyet választottál magadnak, és e ház felé, amelyet a te nevednek építettem:	igen
 2Krón 6:35	Te hallgasd meg az égből az ő könyörgésüket és imádságukat, és szerezz nekik igazságot.	igen
-2Krón 6:36	Ha vétkeznek ellened (mert nincsen ember, aki nem vétkeznék) és rájuk megharagudva, az ellenség kezébe adándod és őket fogságba viendik azok, akiktől megfogattak, messze földre vagy közelre,	igen
+2Krón 6:36	Ha vétkeznek ellened (mert nincsen ember, aki nem vétkeznék) és rájuk megharagudva, az ellenség kezébe adod és őket fogságba viszik azok, akiktől megfogattak, messze földre vagy közelre,	igen
 2Krón 6:37	És ha az idegen földön, ahol fogva tartatnak, magokba szállnak, és megtérve, az ő fogságuk helyén könyörögnek hozzád, és ezt mondandják: Vétkeztünk, hamisan és gonoszul cselekedtünk;	igen
-2Krón 6:38	És megtérendenek te hozzád teljes szívükből és teljes lelkükből az ő fogságuk földében, ahol őket fogva tartják, és könyörögnek hozzád, az ő földjüknek útja felé fordulva, amelyet adtál volt az ő atyáiknak, és e város felé, amelyet választottál magadnak, és e ház felé, amelyet a te nevednek építettem:	igen
+2Krón 6:38	És megtérnek te hozzád teljes szívükből és teljes lelkükből az ő fogságuk földében, ahol őket fogva tartják, és könyörögnek hozzád, az ő földjüknek útja felé fordulva, amelyet adtál volt az ő atyáiknak, és e város felé, amelyet választottál magadnak, és e ház felé, amelyet a te nevednek építettem:	igen
 2Krón 6:39	Hallgasd meg akkor az ő könyörgésüket és imádságukat a mennyből, a te lakhelyedről, és szerezz nekik igazságot, és bocsásd meg a te népednek, hogy ellened vétkezett.	igen
 2Krón 6:40	Most azért, oh én Istenem, legyenek a te szemeid nyitva és füleid legyenek figyelmesek a könyörgésre ezen a helyen.	nem
 2Krón 6:41	És most kelj fel, oh Úr Isten, a te nyugodalmadba, te és a te hatalmasságodnak ládája! A te papjaid, oh Úr Isten, öltöztessenek fel üdvösséggel, és a te szenteid örvendezzenek a jóban.	nem
@@ -11338,11 +11338,11 @@ Ruth 4:22	És Obed nemzette Isait, Isai pedig nemzette Dávidot.	igen
 2Krón 7:10	A hetedik hónapnak huszonharmadik napján elbocsátotta a népet sátoraikba, vígan és megelégedve mindama jók felett, amelyeket cselekedett az Úr Dáviddal, Salamonnal és az ő népével Izráellel.	igen
 2Krón 7:11	És Salamon bevégezte az Úr házát és a királyi palotát, s mindazt, amit magában elhatározott Salamon, hogy megcsinál az Úr házában és a maga házában; szerencsésen bevégezte.	igen
 2Krón 7:12	Megjelent pedig az Úr Salamonnak azon éjjel, s mondta neki: Meghallgattam a te könyörgésedet, és e helyet magamnak áldozat házául választottam.	igen
-2Krón 7:13	Ímé, amikor az eget bezárandom, hogy ne legyen eső; és amikor parancsolok a sáskának, hogy a földet megeméssze; vagy amikor döghalált bocsátandok az én népemre:	igen
+2Krón 7:13	Ímé, amikor az eget bezárandom, hogy ne legyen eső; és amikor parancsolok a sáskának, hogy a földet megeméssze; vagy amikor döghalált bocsátok az én népemre:	igen
 2Krón 7:14	És megalázza magát az én népem, amely nevemről neveztetik, s könyörög és keresi az én arcomat, és felhagy az ő bűnös életmódjával: én is meghallgatom őket a mennyből, megbocsátom bűneiket, és megszabadítom földjüket.	igen
 2Krón 7:15	Most már az én szemeim nyitva lesznek, és füleim figyelmesek lesznek e helyen a könyörgésre.	nem
 2Krón 7:16	Most választottam és megszenteltem e házat, hogy az én nevem abban legyen mindörökké, és ott lesznek az én szemeim és az én szívem mindenkor.	nem
-2Krón 7:17	És ha te előttem járándasz, amint járt Dávid, a te atyád, úgy cselekedve mindenekben, amint neked megparancsoltam, s az én rendelésimet és ítéletimet megtartándod:	igen
+2Krón 7:17	És ha te előttem jársz, amint járt Dávid, a te atyád, úgy cselekedve mindenekben, amint neked megparancsoltam, s az én rendelésimet és ítéletimet megtartod:	igen
 2Krón 7:18	Megerősítem a te birodalmad trónját, amint megigértem volt Dávidnak, a te atyádnak, mondva: Nem vétetik el a te nemzetségedből való férfiú az Izráel királyiszékiből.	igen
 2Krón 7:19	De hogyha ti elszakadtok, s rendelésimet és parancsaimat, amelyeket előtökbe adtam, elhagyjátok, s elmenve, idegen isteneknek szolgálandotok és azok előtt meghajoltok:	igen
 2Krón 7:20	Kiszaggatom őket az én földemből, amelyet adtam volt nekik: és ezt a házat, amelyet az én nevemnek szenteltem, orcám elől elvetem; tanulságul és példabeszédül adom őket minden nemzetségnek.	igen
@@ -11403,7 +11403,7 @@ Ruth 4:22	És Obed nemzette Isait, Isai pedig nemzette Dávidot.	igen
 2Krón 10:4	A te atyád igen megnehezítette a mi igánkat, de te most könnyebbítsd meg atyádnak kemény szolgálatát és az ő nehéz igáját, amelyet ránk vetett, és szolgálunk neked.	igen
 2Krón 10:5	És mondta nekik: Harmadnapig gondolkodom róla, azután jőjjetek hozzám. Elment azért a nép.	igen
 2Krón 10:6	És tanácskozott Roboám király a vén emberekkel, akik Salamon előtt az ő atyja előtt álltak életében, mondva: Mit tanácsoltok, mit válaszoljak e népnek?	igen
-2Krón 10:7	És azok ekképen szóltak: Ha javára leendesz ennek a népnek, s kedvezel nekik és jó szóval beszélsz hozzájuk; akkor te szolgáid lesznek mindenkor.	igen
+2Krón 10:7	És azok ekképen szóltak: Ha javára leszel ennek a népnek, s kedvezel nekik és jó szóval beszélsz hozzájuk; akkor te szolgáid lesznek mindenkor.	igen
 2Krón 10:8	De ő megvetette a vének tanácsát, amelyet neki tanácsoltak, és tanácsot tartott az ifjakkal, akik ő vele növekedtek volt fel és neki udvaroltak.	igen
 2Krón 10:9	És mondta azoknak: Ti micsoda tanácsot adtok, hogy választ adjunk e népnek, akik nekem így szóltak: Könnyebbítsd meg az igát, amelyet a te atyád ránk vetett.	igen
 2Krón 10:10	Akkor feleltek az ifjak, akik ő vele együtt növekedtek, mondva: Így szólj a népnek, amely szólva neked, azt mondja: A te atyád megnehezítette a mi igánkat, te pedig könnyebbítsd meg nekünk; így szólj nekik: Az én legkisebb ujjam erősebb atyám derekánál;	igen
@@ -11837,7 +11837,7 @@ Ruth 4:22	És Obed nemzette Isait, Isai pedig nemzette Dávidot.	igen
 2Krón 30:6	Elmentek azért a híradók a király levelével és a fejedelmekével az egész Izráelhez és Júdához, és a király parancsolatjából ezt mondták: Izráel fiai! térjetek meg az Úrhoz, Ábrahámnak, Izsáknak és Izráelnek Istenéhez s ő is megtér a maradékhoz, mely megmaradt még köztetek az Assiriabeli királyok kezétől.	igen
 2Krón 30:7	És ne legyetek olyanok, mint a ti atyáitok és atyátokfiai, akik vétkeztek volt az Úr ellen, atyáik Istene ellen és elpusztította őket, amint ti magatok látjátok.	igen
 2Krón 30:8	Most azért meg ne keményítsétek nyakatokat, mint a ti atyáitok; adjatok kezet az Úrnak, és bemenve az ő szent helyébe, amelyet megszentelt örökké, szolgáljatok az Úrnak, a ti Istenteknek, és elfordul rólatok haragja.	igen
-2Krón 30:9	Mert hogy ha ti megtéréndetek az Úrhoz, a ti atyátokfiai és fiaitok kegyelmet találnak azoknál akik őket fogságba vitték, és megtérnek erre a földre, mert irgalmas és kegyelmes az Úr, a ti Istentek, és nem fordítja el orcáját tőletek, ha ő hozzá megtéréndetek.	igen
+2Krón 30:9	Mert hogy ha ti megtértek az Úrhoz, a ti atyátokfiai és fiaitok kegyelmet találnak azoknál akik őket fogságba vitték, és megtérnek erre a földre, mert irgalmas és kegyelmes az Úr, a ti Istentek, és nem fordítja el orcáját tőletek, ha ő hozzá megtértek.	igen
 2Krón 30:10	Mikor pedig a híradók városról-városra mentek az Efraim és a Manasse földén, mind Zebulonig, nevetik és csúfolták őket;	igen
 2Krón 30:11	Mindazáltal némelyek az Áser, Manasse és a Zebulon nemzetségéből megalázták magokat, és eljöttek Jeruzsálembe.	igen
 2Krón 30:12	Júdában is ezt cselekedte az Istennek keze, adva beléjük egy akaratot, hogy engednének a király parancsolatjának és a fejedelmekének az Úr beszéde szerint.	igen
@@ -12167,7 +12167,7 @@ Ezsd 6:11	És megparancsolom azt is, hogy valaki e rendelést megszegi, annak h�
 Ezsd 6:12	Az Isten pedig, aki nevének ott szerzett lakást, megrontson minden királyt és népet, aki felemelendi kezét, hogy megszegje e rendelést, hogy elpusztítsa Istennek ama házát, mely Jeruzsálemben van. Én, Dárius parancsoltam, pontosan megtörténjék.	igen
 Ezsd 6:13	Akkor Tattenai folyóvizen túli helytartó, Sethar-bóznai és társaik, miután Dárius ily rendelést küldött, ahhoz képest cselekedtek pontosan.	igen
 Ezsd 6:14	És a zsidók vénei építettek és jó szerencsések voltak Aggeus próféta és Zakariás, Iddó fia prófétálása folytán, és megépítették és elvégezték Izráel Istenének akaratjából, és Círus, Dárius és Artaxerxes, persiai királyok parancsolatjából.	igen
-Ezsd 6:15	Bevégezteték pedig e ház az Adár hó harmadik napjáig, mely Dárius király országlásának hatodik esztendejében volt.	igen
+Ezsd 6:15	Bevégeztetett pedig e ház az Adár hó harmadik napjáig, mely Dárius király országlásának hatodik esztendejében volt.	igen
 Ezsd 6:16	És megtartották Izráel fiai, a papok, a Léviták és a fogságból visszajött többiek Isten házának felszentelését örömmel.	igen
 Ezsd 6:17	Vittek pedig Isten házának felszentelésénél áldozatul száz bikát, kétszáz kost, négyszáz bárányt és tizenkét kecskebakot bűnért való áldozatra egész Izráelért, Izráel nemzetségeinek száma szerint.	igen
 Ezsd 6:18	És rendelték a papokat az ő osztályaik és a Lévitákat az ő rendjeik szerint Istennek szolgálatára Jeruzsálemben, Mózes könyvének rendelése szerint,	igen
@@ -12306,7 +12306,7 @@ Neh 1:5	És mondtam: Kérlek Uram, mennynek Istene, nagy és rettenetes Isten! K
 Neh 1:6	Oh, legyen figyelmetes a te füled, és szemeid legyenek nyitva, hogy meghallgassad a te szolgádnak könyörgését, mellyel én könyörgök most előtted nappal és éjjel Izráel fiaiért, szolgáidért, és vallást tészek az Izráel fiainak bűneiről, melyekkel vétkeztünk te ellened, én is s az én atyámnak háza vétkeztünk!	igen
 Neh 1:7	Felette igen vétkeztünk ellened, és nem tartottuk meg a parancsolatokat, és a rendeléseket és a törvényeket, melyeket parancsoltál volt Mózesnek a te szolgádnak.	nem
 Neh 1:8	Oh, emlékezzél meg arról a beszédről, melyet parancsoltál Mózesnek, a te szolgádnak, mondva: Ha ti vétkeztek, én meg elszélesztelek titeket a népek között;	igen
-Neh 1:9	Ha pedig megtérendetek hozzám és megtartjátok parancsolataimat és cselekeszitek azokat: még ha az égnek utolsó szélén volnának is szétszórt gyermekeitek, onnan is összegyűjtöm őket és beviszem arra a helyre, melyet választottam, hogy lakozzék ott az én nevem!	nem
+Neh 1:9	Ha pedig megtértek hozzám és megtartjátok parancsolataimat és cselekeszitek azokat: még ha az égnek utolsó szélén volnának is szétszórt gyermekeitek, onnan is összegyűjtöm őket és beviszem arra a helyre, melyet választottam, hogy lakozzék ott az én nevem!	igen
 Neh 1:10	És ők a te szolgáid és a te néped, akiket megszabadítottál a te nagy erőd által és a te erős kezed által!	igen
 Neh 1:11	Kérlek oh Uram, legyen figyelmetes a te füled a te szolgádnak könyörgésére és szolgáidnak könyörgésükre, akik kívánják félni a te nevedet, és adj, kérlek, jó szerencsét most a te szolgádnak, és engedd, hogy kegyelmet találjon ama férfiú előtt. Én ugyanis a királynak pohárnoka voltam.	igen
 Neh 2:1	És lett a Niszán nevű hóban, Artaxerxes királynak huszadik esztendejében, bor volt ő előtte és én fölvettem a bort, adtam a királynak; azelőtt pedig nem voltam szomorú ő előtte.	igen
@@ -12692,7 +12692,7 @@ Neh 13:16	Tírusiak is lakoztak a városban, akik hoztak halat és mindenféle �
 Neh 13:17	Annakokáért megfeddtem Júda előljáróit, és mondtam nekik: Micsoda gonosz dolog ez, amit ti cselekesztek, hogy megfertőztetitek a szombatnak napját?	igen
 Neh 13:18	Avagy nem így cselekedtek-é a ti atyáitok, s a mi Istenünk ránk hozta mindezen gonoszt és e városra?! És ti mégis növelitek Isten haragját Izráel fölött, megfertőztetve a szombatot!	igen
 Neh 13:19	Lett annakokáért, hogy midőn megárnyékosodtak Jeruzsálem kapui a szombat előtt, parancsolatomra bezárattak az ajtók, s megparancsoltam, hogy meg ne nyissák azokat szombat utánig, annakfelette legényeim közül a kapukhoz rendeltem, mondva: Nem fog bejőni teher a szombatnak napján!	igen
-Neh 13:20	Annakokáért a kereskedők és minden árúk árúsai kívül hálának Jeruzsálemen egyszer vagy kétszer;	igen
+Neh 13:20	Annakokáért a kereskedők és minden árúk árúsai kívül háltak Jeruzsálemen egyszer vagy kétszer;	igen
 Neh 13:21	És bizonyságot tettem ellenük, és mondtam nekik: Miért háltok ti e kőfal előtt? Ha ezt ismételitek, kezet vetek rátok! Az időtől fogva nem jöttenek szombaton.	igen
 Neh 13:22	És megparancsoltam a Lévitáknak, hogy magokat megtisztítsák, s hogy menjenek el és őrizzék a kapukat, hogy megszenteljék a szombatot. Ezért is emlékezzél meg rólam én Istenem és kedvezz nekem, kegyelmességednek nagy volta szerint!	igen
 Neh 13:23	Ugyanazon napokban meglátogattam azokat a zsidókat, kik asdódi, Ammonita és Moábita asszonyokat vettek feleségül.	igen
@@ -13643,7 +13643,7 @@ Jób 32:11	Ímé, én végig vártam beszédeiteket, figyeltem, amíg okoskodtat
 Jób 32:12	Igen ügyeltem rátok és ímé, Jóbot egyikőtök sem cáfolta meg, sem beszédére meg nem felelt.	igen
 Jób 32:13	Ne mondjátok azt: Bölcseségre találtunk, Isten győzheti meg őt és nem ember!	nem
 Jób 32:14	Mivel én ellenem nem intézett beszédet, nem is a ti beszédeitekkel válaszolok hát neki.	igen
-Jób 32:15	Megzavarodának és nem feleltek többé; kifogyott belőlök a szó.	nem
+Jób 32:15	Megzavarodtak és nem feleltek többé; kifogyott belőlök a szó.	igen
 Jób 32:16	Vártam, de nem szóltak, csak álltak és nem feleltek többé.	nem
 Jób 32:17	Hadd feleljek hát én is magamért, hadd tudassam én is véleményemet!	nem
 Jób 32:18	Mert tele vagyok beszéddel; unszolgat engem a bennem levő lélek.	nem
@@ -15230,7 +15230,7 @@ Zsolt 78:60	És elvetette magától Silói hajlékát, a sátort, amelyben lakot
 Zsolt 78:61	Sőt fogságba vitette erejét, dicsőségét pedig ellenség kezébe.	igen
 Zsolt 78:62	És fegyver alá rekesztette az ő népét; és az ő öröksége ellen felgerjedt.	igen
 Zsolt 78:63	Ifjait tűz emésztette meg, és szüzei nem énekeltettek meg.	igen
-Zsolt 78:64	Papjai fegyver miatt hullottak el, és özvegyei nem végezheték a siratást.	nem
+Zsolt 78:64	Papjai fegyver miatt hullottak el, és özvegyei nem végezhették a siratást.	igen
 Zsolt 78:65	Akkor felserkent az Úr, mintegy álomból; mint hős, aki bortól vigadoz;	igen
 Zsolt 78:66	És visszaverte ellenségeit; s örök gyalázatot vetett rájuk.	igen
 Zsolt 78:67	Azután megútálta a József sátorát, és nem választotta Efraim törzsét;	igen
@@ -18335,7 +18335,7 @@ Préd 12:16	Mert minden cselekedetet az Isten ítéletre előhoz, minden titkos 
 Ézs 32:11	Reszkessetek, ti gondtalanok, rettenjetek meg, ti elbizakodottak; vetkezzetek mezítelenre és övezzétek fel ágyékaitokat gyászruhával.	nem
 Ézs 32:12	Gyászolják az emlőket, a szép mezőket, a termő szőlőtőket.	nem
 Ézs 32:13	Népemnek földét tüske, tövis verte fel, és az örvendő városnak minden öröm-házait;	nem
-Ézs 32:14	A paloták elhagyatvák, a város zaja elnémult, torony és bástya barlangokká lettek örökre, hol a vadszamár kedvére él, a nyájak meg legelnek.	nem
+Ézs 32:14	A paloták elhagyattak, a város zaja elnémult, torony és bástya barlangokká lettek örökre, hol a vadszamár kedvére él, a nyájak meg legelnek.	igen
 Ézs 32:15	Míglen kiöntetik ránk a lélek a magasból, és lesz a puszta termőfölddé, és a termőföld erdőnek tartatik;	igen
 Ézs 32:16	És lakozik a pusztában jogosság, és igazság fog ülni a termőföldön;	nem
 Ézs 32:17	És lesz az igazság műve békesség, és az igazság gyümölcse nyugalom és biztonság mindörökké.	nem
@@ -18625,7 +18625,7 @@ Préd 12:16	Mert minden cselekedetet az Isten ítéletre előhoz, minden titkos 
 Ézs 44:27	Ki ezt mondja a mélységnek: Száradj ki! és kiapasztom folyóvizeidet!	nem
 Ézs 44:28	Ki Círusnak ezt mondja: Pásztorom! ki véghez viszi minden akaratomat, és ezt mondja Jeruzsálemnek: Megépíttessék! és a templomnak: Alapja vettessék!	igen
 Ézs 45:1	Így szól az Úr felkentjéhez, Círushoz, kinek jobbkezét megfogtam, hogy meghódoltassak előtte népeket, és a királyok derekának övét megoldjam, ő előtte megnyissam az ajtókat, és a kapuk be ne zároltassanak;	igen
-Ézs 45:2	Én menéndek előtted, és az egyenetleneket megegyenesítem, az ércajtókat összetöröm, és leütöm a vaszárakat.	igen
+Ézs 45:2	Én megyek előtted, és az egyenetleneket megegyenesítem, az ércajtókat összetöröm, és leütöm a vaszárakat.	igen
 Ézs 45:3	Neked adom a sötétségnek kincseit és a rejtekhelyek gazdagságait, hogy megtudjad, hogy én vagyok az Úr, aki téged neveden hívtalak, Izráel Istene.	igen
 Ézs 45:4	Az én szolgámért, Jákóbért, és elválasztott Izráelemért neveden hívtalak el, szeretettel szólítálak, noha nem ismertél.	igen
 Ézs 45:5	Én vagyok az Úr és több nincs, rajtam kívül nincs Isten! felöveztelek téged, bár nem ismertél.	igen
@@ -18857,7 +18857,7 @@ Préd 12:16	Mert minden cselekedetet az Isten ítéletre előhoz, minden titkos 
 Ézs 58:6	Hát nem ez-é a bőjt, amit én kedvelek: hogy megnyisd a gonoszságnak bilincseit, az igának köteleit megoldjad, és szabadon bocsásd az elnyomottakat, és hogy minden igát széttépjetek?	igen
 Ézs 58:7	Nem az-é, hogy az éhezőnek megszegd kenyeredet, és a szegény bujdosókat házadba bevigyed, ha meztelent látsz, felruházzad, és tested előtt el ne rejtsd magadat?	nem
 Ézs 58:8	Akkor felhasad, mint hajnal a te világosságod, és meggyógyulásod gyorsan kivirágzik, és igazságod előtted jár; az Úr dicsősége követ.	nem
-Ézs 58:9	Akkor kiáltasz, és az Úr meghallgat, jajgatsz, és ő azt mondja: Ímé, itt vagyok. Ha elvetended közüled az igát, és megszünsz ujjal mutogatni és hamisságot beszélni;	nem
+Ézs 58:9	Akkor kiáltasz, és az Úr meghallgat, jajgatsz, és ő azt mondja: Ímé, itt vagyok. Ha elveted közüled az igát, és megszünsz ujjal mutogatni és hamisságot beszélni;	igen
 Ézs 58:10	Ha odaadod utolsó falatodat az éhezőnek, és az elepedt lelkűt megelégíted: feltámad a sötétségben világosságod, és homályosságod olyan lesz, mint a dél.	igen
 Ézs 58:11	És vezérel téged az Úr szüntelen, megelégíti lelkedet nagy szárazságban is, és csontjaidat megerősíti, és olyan leszel, mint a megöntözött kert, és mint vízforrás, amelynek vize el nem fogy.	igen
 Ézs 58:12	És megépítik fiaid a régi romokat, az emberöltők alapzatait felrakod, és neveztetel romlás építőjének, ösvények megújítójának, hogy ott lakhassanak.	nem
@@ -20035,7 +20035,7 @@ Jer 41:13	És mikor meglátta az egész nép, amely Ismáellel volt, Jóhanánt,
 Jer 41:14	És visszatért az egész nép, amelyet Ismáel elvitt Mispából, és visszatért és elment Jóhanánhoz, Káreának fiához.	igen
 Jer 41:15	Ismáel pedig, Natániának fia nyolcadmagával szaladt el Jóhanán elől, és az Ammon fiaihoz ment.	igen
 Jer 41:16	És magához vevén Jóhanán, Káreának fia, és a seregnek minden vezetője, akik ő vele voltak, a nép minden maradékát, amelyet visszahoztak Ismáeltől, Natániának fiától Mispából, miután ez megölte Gedáliást, Ahikámnak fiát, az erős férfiakat, vitézeket és asszonynépeket és gyermekeket és udvari szolgákat, akiket visszahozott Gibeonból:	igen
-Jer 41:17	Elindultak és megállapodának Gérut Kimhámnál, amely közel volt Betlehemhez, hogy elmenjenek és bemenjenek Égyiptomba,	igen
+Jer 41:17	Elindultak és megállapodtak Gérut Kimhámnál, amely közel volt Betlehemhez, hogy elmenjenek és bemenjenek Égyiptomba,	igen
 Jer 41:18	A Káldeusok miatt, mert féltek tőlök, mert Ismáel, Natániának fia megölte Gedáliást, Ahikámnak fiát, akit a babiloni király tiszttartóvá tett a földön.	igen
 Jer 42:1	Eljött pedig a csapatoknak minden tisztje, és Jóhanán, Káreának fia, és Jazánia, Ozániának fia, és az egész nép kicsinytől fogva nagyig,	igen
 Jer 42:2	És mondták Jeremiás prófétának: Hallgasd meg alázatos kérésünket, és könyörögj érettünk az Úrnak, a te Istenednek mind e maradékért; mert kevesen maradtunk meg a sokaságból, mint a te szemeid jól látnak minket;	igen
@@ -21343,17 +21343,17 @@ Ez 32:30	Ott vannak észak uralkodói mindnyájan, és minden sidoni, akik alás
 Ez 32:31	Ezeket látni fogja a Faraó, és megvígasztalódik minden sokasága felől; fegyverrel ölettek meg a Faraó és minden ő serege, ezt mondja az Úr Isten,	nem
 Ez 32:32	Mert félelmére adtam őt az élők földjének; ezért ott vetnek ágyat neki a körülmetéletlenek között, a fegyverrel megölettek mellett, a Faraónak és minden sokaságának, ezt mondja az Úr Isten.	igen
 Ez 33:1	És lett az Úr beszéde hozzám, mondva:	igen
-Ez 33:2	Embernek fia! szólj néped fiaihoz és mondjad nekik: Mikor hozándok fegyvert valamely földre, és a föld népe választ egy férfit ő magok közül, és őt őrállójokká teszik:	igen
+Ez 33:2	Embernek fia! szólj néped fiaihoz és mondjad nekik: Mikor hozok fegyvert valamely földre, és a föld népe választ egy férfit ő magok közül, és őt őrállójokká teszik:	igen
 Ez 33:3	És ő látja jőni a fegyvert a földre, és megfújja a trombitát, és meginti a népet;	nem
 Ez 33:4	Ha valaki hallándja a trombitaszót, de nem hajt az intésre, s aztán a fegyver eljön és őt utóléri: az ő vére az ő fején lesz.	igen
 Ez 33:5	Hallotta a trombitaszót, de nem hajtott az intésre, tehát az ő vére ő rajta lesz; és ha hajtott az intésre, megmentette lelkét.	nem
 Ez 33:6	Ha pedig az őrálló látja a fegyvert jőni, s nem fújja meg a trombitát, és a nép nem kap intést, és eljön a fegyver s utólér közülök valamely lelket, ez a maga vétke miatt éretett utól, de vérét az őrálló kezéből kérem elő.	igen
 Ez 33:7	És te, embernek fia, őrállóul adtalak téged Izráel házának, hogy ha szót hallasz a számból, megintsed őket az én nevemben.	nem
-Ez 33:8	Ha ezt mondom a hitetlennek: Hitetlen, halálnak halálával halsz meg; és te nem szólándasz, hogy visszatérítsd a hitetlent az ő útjáról: az a hitetlen vétke miatt hal meg, de vérét a te kezedből kívánom meg.	nem
+Ez 33:8	Ha ezt mondom a hitetlennek: Hitetlen, halálnak halálával halsz meg; és te nem szólsz, hogy visszatérítsd a hitetlent az ő útjáról: az a hitetlen vétke miatt hal meg, de vérét a te kezedből kívánom meg.	igen
 Ez 33:9	De ha te megintetted a hitetlent az ő útja felől, hogy térjen meg róla, de nem tért meg útjáról, ő vétke miatt meghal, de te megmentetted a te lelkedet.	nem
 Ez 33:10	Te pedig, embernek fia, mondjad Izráel házának: Ezt mondjátok, mondva: Bizony a mi bűneink és vétkeink rajtunk vannak, és bennök mi megrothadunk, mimódon éljünk azért?	igen
 Ez 33:11	Mondjad nekik: Élek én, ezt mondja az Úr Isten, hogy nem gyönyörködöm a hitetlen halálában, hanem hogy a hitetlen megtérjen útjáról és éljen. Térjetek meg, térjetek meg gonosz útaitokról! hiszen miért halnátok meg, oh Izráel háza!?	igen
-Ez 33:12	Te pedig, embernek fia, szólj néped fiaihoz: Az igaznak igazsága meg nem menti őt a napon, amelyen vétkezendik, és a hitetlen hitetlensége által el nem esik a napon, melyen megtérend hitetlenségéből, és az igaz nem élhet az ő igazsága által a napon, melyen vétkezendik.	igen
+Ez 33:12	Te pedig, embernek fia, szólj néped fiaihoz: Az igaznak igazsága meg nem menti őt a napon, amelyen vétkezik, és a hitetlen hitetlensége által el nem esik a napon, melyen megtérend hitetlenségéből, és az igaz nem élhet az ő igazsága által a napon, melyen vétkezik.	igen
 Ez 33:13	Mikor ezt mondom az igazról: Élve éljen; és ő bízva igazságában, gonoszságot cselekszik: semmi igazsága emlékezetbe nem jön, és gonoszsága miatt, melyet cselekedett, meghal.	igen
 Ez 33:14	S ha mondom a hitetlennek: halállal halsz meg; és ő megtér bűnéből és törvény szerint s igazságot cselekszik;	nem
 Ez 33:15	Zálogot visszaad a hitetlen, rablottat megtérít, az életnek parancsolatiban jár, többé nem cselekedve gonoszságot: élve él, és meg nem hal.	igen
@@ -21941,10 +21941,10 @@ Dán 5:2	Borozás közben mondta Belsazár, hogy hozzák elő az arany és ezüs
 Dán 5:3	Akkor előhozták az arany edényeket, amelyeket elvittek az Isten házának templomából, mely Jeruzsálemben volt, és ittak azokból a király és az ő főemberei, az ő feleségei és az ő ágyasai.	igen
 Dán 5:4	Bort ittak, és dicsérték az arany-, ezüst-, érc-, vas-, fa- és kőisteneket.	igen
 Dán 5:5	Abban az órában emberi kéznek ujjai tüntek fel, és írtak a gyertyatartóval szemben a király palotájának meszelt falán, és a király nézte azt a kézfejet, amely írt.	igen
-Dán 5:6	Ekkor a király ábrázatja megváltozott, és az ő gondolatai megháborították őt, és derekának inai megoldódának és az ő térdei egymáshoz verődtek.	igen
+Dán 5:6	Ekkor a király ábrázatja megváltozott, és az ő gondolatai megháborították őt, és derekának inai megoldódtak és az ő térdei egymáshoz verődtek.	igen
 Dán 5:7	Erősen kiáltozott a király, hogy hozzák elő a varázslókat, a Káldeusokat és jövendölőket. Szólt a király és mondta a babiloni bölcseknek: Akárki legyen az az ember, aki elolvassa ezt az írást, és annak értelmét megjelenti nekem, bíborba öltöztetik és aranylánc lesz a nyakában, és mint harmadik parancsol az országban.	igen
 Dán 5:8	Akkor bementek a király bölcsei mind, de nem tudták elolvasni az írást, sem annak értelmét megfejteni a királynak.	igen
-Dán 5:9	Akkor Belsazár király igen megrettent, és az ő ábrázatja elváltozott rajta, és az ő főemberei is megzavarodának.	igen
+Dán 5:9	Akkor Belsazár király igen megrettent, és az ő ábrázatja elváltozott rajta, és az ő főemberei is megzavarodtak.	igen
 Dán 5:10	A királyasszony a király és az ő főembereinek beszédei miatt bement a lakoma házába, és szólt a királyasszony, és mondta: Király, örökké élj! Ne rettentsenek téged a te gondolataid, és a te ábrázatod ne változzék el!	igen
 Dán 5:11	Van egy férfiú a te országodban, akiben a szent isteneknek lelke van, és a te atyád idejében értelem, tudomány, és az istenek bölcseségéhez hasonló bölcseség találtatott benne, és akit Nabukodonozor király, a te atyád, az írástudók, varázslók, Káldeusok és jövendölők fejévé tett; igen, a te atyád, a király;	igen
 Dán 5:12	Mivelhogy Dánielben, akit a király Baltazárnak nevezett, nagyobb lélek, tudomány és értelem, álmoknak magyarázata és titkok megjelentése és rejtélyek megfejtése találtatott. Most azért hivattassék elő Dániel, és ő megjelenti az értelmet.	igen
@@ -22033,7 +22033,7 @@ Dán 8:7	És láttam a koshoz érni; és neki dühödött és leütötte a kost,
 Dán 8:8	A kecskebak pedig igen naggyá lett; de mikor elhatalmasodott, eltört a nagy szarv, és helyébe négy tekintélyes szarv növe az égnek négy szele felé.	igen
 Dán 8:9	És azok közül egyből egy kis szarv támadt, és nagyon megnöve délre, napkeletre és a kívánatos föld felé.	igen
 Dán 8:10	És megnöve mind az ég seregéig; és a földre vetett némelyeket ama seregből és a csillagokból, és azokat megtapodta.	igen
-Dán 8:11	És a seregnek fejedelméig növekedett, és elvette tőle a mindennapi áldozatot, és elhányattaték az ő szentségének helye.	igen
+Dán 8:11	És a seregnek fejedelméig növekedett, és elvette tőle a mindennapi áldozatot, és elhányattatott az ő szentségének helye.	igen
 Dán 8:12	És sereg rendeltetett a mindennapi áldozat ellen, a vétek miatt; és földre veti az igazságot, és cselekszik, és jó szerencséje van.	nem
 Dán 8:13	És hallottam egy szentet szólni; és mondta egyik szent annak, aki szólt: Meddig tart e látomás a mindennapi áldozat és a pusztító vétek felől? s a szent hely és a sereg meddig tapostatik?	igen
 Dán 8:14	És mondta nekem: Kétezer és háromszáz estvéig és reggelig, azután kiderül a szenthely igazsága.	igen
@@ -23463,7 +23463,7 @@ Mt 9:21	Mert ezt mondta magában: Ha csak ruháját illetem is, meggyógyulok.	i
 Mt 9:22	Jézus pedig megfordulva és rá tekintve, mondta: Bízzál leányom; a te hited megtartott téged. És meggyógyult az asszony abban az órában.	igen
 Mt 9:23	És Jézus a főember házához érve, látva a sípolókat és a tolongó sokaságot,	igen
 Mt 9:24	Mondta nekik: Menjetek el innen, mert a leányzó nem halt meg, hanem aluszik. És kinevették őt.	igen
-Mt 9:25	Mikor pedig a sokaság eltávolíttaték, bemenve, megfogta annak kezét, és a leányzó felkelt.	igen
+Mt 9:25	Mikor pedig a sokaság eltávolíttatott, bemenve, megfogta annak kezét, és a leányzó felkelt.	igen
 Mt 9:26	És elterjedt ez a hír abban az egész tartományban.	igen
 Mt 9:27	És mikor Jézus tovább ment onnét, két vak követte őt, kiáltozva és ezt mondva: Könyörülj rajtunk, Dávidnak fia!	igen
 Mt 9:28	Mikor pedig bement a házba, oda mentek hozzá a vakok, és mondta nekik Jézus: Hiszitek-é, hogy én azt megcselekedhetem? Mondták neki: Igen, Uram.	igen
@@ -23537,7 +23537,7 @@ Mt 11:15	Akinek van füle a hallásra, hallja.	igen
 Mt 11:16	De kihez hasonlítsam ezt a nemzetséget? Hasonlatos a gyermekekhez, akik a piacon ülnek, és kiáltoznak az ő társaiknak,	igen
 Mt 11:17	És ezt mondják: Sípoltunk nektek, és nem táncoltatok; siralmas énekeket énekeltünk nektek, és nem sírtatok.	igen
 Mt 11:18	Mert eljött János, aki sem eszik, sem iszik, és azt mondják: Ördög van benne.	igen
-Mt 11:19	Eljött az embernek Fia, aki eszik és iszik, és ezt mondják: Ímé a nagy étü és részeges ember, a vámszedők és bűnösök barátja! És igazoltaték a bölcseség az ő fiaitól.	igen
+Mt 11:19	Eljött az embernek Fia, aki eszik és iszik, és ezt mondják: Ímé a nagy étü és részeges ember, a vámszedők és bűnösök barátja! És igazoltatott a bölcseség az ő fiaitól.	igen
 Mt 11:20	Ekkor elkezdte szemükre hányni ama városoknak, amelyekben legtöbb csodái lettek, hogy nem tértek meg:	igen
 Mt 11:21	Jaj neked Korazin! Jaj neked Bethsaida! Mert ha Tirusban és Sidonban történtek azok a csodák, amelyek bennetek lettek, rég megtértek volna gyászruhában és hamuban.	igen
 Mt 11:22	De mondom nektek: Tirusnak és Sidonnak könnyebb dolga lesz az ítélet napján, hogynem nektek.	igen
@@ -24068,7 +24068,7 @@ Mt 24:48	Ha pedig ama gonosz szolga így szólna az ő szívében: Halogatja mé
 Mt 24:49	És az ő szolgatársait verni kezdené, a részegesekkel pedig enni és inni kezdene:	nem
 Mt 24:50	Megjön annak a szolgának az ura, amely napon nem várja és amely órában nem gondolja,	igen
 Mt 24:51	És ketté vágatja őt, és a képmutatók sorsára juttatja; ott lesz sírás és fogcsikorgatás.	igen
-Mt 25:1	Akkor hasonlatos lesz a mennyeknek országa ama tíz szűzhöz, akik elővevén az ő lámpásaikat, kimentek a vőlegény elé.	igen
+Mt 25:1	Akkor hasonlatos lesz a mennyeknek országa ama tíz szűzhöz, akik elővéve az ő lámpásaikat, kimentek a vőlegény elé.	igen
 Mt 25:2	Öt pedig közülök eszes volt, és öt bolond.	igen
 Mt 25:3	Akik bolondok voltak, mikor lámpásaikat elővették, nem vittek magukkal olajat;	igen
 Mt 25:4	Az eszesek pedig lámpásaikkal együtt olajat vittek az ő edényeikben.	igen
@@ -24269,7 +24269,7 @@ Mt 28:11	A mialatt pedig ők mentek, ímé az őrségből némelyek bemenve a v�
 Mt 28:12	És egybegyülekezve a vénekkel együtt, és tanácsot tartva, sok pénzt adtak a vitézeknek,	igen
 Mt 28:13	Ezt mondva: Mondjátok, hogy: Az ő tanítványai odajövén éjjel, ellopták őt, mikor mi aluvánk.	igen
 Mt 28:14	És ha ez a helytartó fülébe jut, mi elhitetjük őt, és kimentünk titeket a bajból.	nem
-Mt 28:15	Azok pedig fölvevén a pénzt, úgy cselekedtek, amint megtanították őket. És elterjedt ez a hír a zsidók között mind e mai napig.	igen
+Mt 28:15	Azok pedig fölvéve a pénzt, úgy cselekedtek, amint megtanították őket. És elterjedt ez a hír a zsidók között mind e mai napig.	igen
 Mt 28:16	A tizenegy tanítvány pedig elment Galileába, a hegyre, ahová Jézus rendelte őket.	igen
 Mt 28:17	És mikor meglátták őt, leborultak előtte; némelyek pedig kételkedtek.	igen
 Mt 28:18	És hozzájuk menve Jézus, szólt nekik, mondva: Nekem adatott minden hatalom mennyen és földön.	igen
@@ -24301,7 +24301,7 @@ Mk 1:23	Volt pedig azok zsinagógájában egy ember, akiben tisztátalan lélek 
 Mk 1:24	És mondta: Ah! mi dolgunk van nekünk veled, Názáreti Jézus? Azért jöttél-é, hogy elveszíts minket? Tudom, hogy ki vagy te: az Istennek Szentje.	igen
 Mk 1:25	És megdorgálta őt Jézus, mondva: Némulj meg, és menj ki belőle.	igen
 Mk 1:26	És a tisztátalan lélek megszaggatta őt, és fenszóval kiáltva, kiment belőle.	igen
-Mk 1:27	És mindnyájan elálmélkodtak, annyira, hogy egymás között kérdezgeték, mondva: Mi ez? Micsoda új tudomány ez, hogy hatalommal parancsol a tisztátalan lelkeknek is, és engedelmeskednek neki?	igen
+Mk 1:27	És mindnyájan elálmélkodtak, annyira, hogy egymás között kérdezgették, mondva: Mi ez? Micsoda új tudomány ez, hogy hatalommal parancsol a tisztátalan lelkeknek is, és engedelmeskednek neki?	igen
 Mk 1:28	És azonnal elment az ő híre Galilea egész környékére.	igen
 Mk 1:29	És a zsinagógából azonnal kimenve, a Simon és András házához mentek Jakabbal és Jánossal együtt.	igen
 Mk 1:30	A Simon napa pedig hideglelésben feküdt, és azonnal szóltak neki felőle.	igen
@@ -24453,7 +24453,7 @@ Mk 5:26	És sok orvostól sokat szenvedett, és minden vagyonát magára költö
 Mk 5:27	Mikor Jézus felől hallott, a sokaságban hátulról kerülve, illette annak ruháját.	igen
 Mk 5:28	Mert ezt mondta: Ha csak ruháit illethetem is, meggyógyulok.	igen
 Mk 5:29	És vérének forrása azonnal kiszáradt és megérezte testében, hogy kigyógyult bajából.	igen
-Mk 5:30	Jézus pedig azonnal észrevevén magán, hogy isteni erő áradott ki belőle, megfordult a sokaságban, és mondta: Kicsoda illette az én ruháimat?	igen
+Mk 5:30	Jézus pedig azonnal észrevéve magán, hogy isteni erő áradott ki belőle, megfordult a sokaságban, és mondta: Kicsoda illette az én ruháimat?	igen
 Mk 5:31	És mondták neki az ő tanítványai: Látod, hogy a sokaság szorít össze téged, és azt kérdezed: Kicsoda illetett engem?	igen
 Mk 5:32	És körülnézett, hogy lássa azt, aki ezt cselekedte.	igen
 Mk 5:33	Az asszony pedig tudva, hogy mi történt vele, félve és remegve ment oda és elébe borult, és elmondta neki mindent igazán.	igen
@@ -25309,7 +25309,7 @@ Luk 8:1	És lett ezután, hogy ő járt városonként és falunként, prédikál
 Luk 8:2	És némely asszonyok, akiket tisztátalan lelkektől és betegségekből gyógyított meg, Mária, aki Magdalénának neveztetik, kiből hét ördög ment ki,	igen
 Luk 8:3	És Johanna, Khúzának, a Heródes gondviselőjének felesége, és Zsuzsánna, és sok más asszony, kik az ő vagyonukból szolgáltak neki.	igen
 Luk 8:4	Mikor pedig nagy sokaság gyűlt egybe, és minden városból mentek ő hozzá, mondta példázat által:	igen
-Luk 8:5	Kiment a magvető, hogy elvesse az ő magvát: és magvetés közben némely esett az útfélre; és eltapostaték, és az égi madarak megették azt.	igen
+Luk 8:5	Kiment a magvető, hogy elvesse az ő magvát: és magvetés közben némely esett az útfélre; és eltapostatott, és az égi madarak megették azt.	igen
 Luk 8:6	És némely esett a kősziklára; és mikor kikelt, elszáradt, mert nem volt nedvessége.	igen
 Luk 8:7	Némely esett a tövis közé; és a tövisek vele együtt növekedve, megfojták azt.	igen
 Luk 8:8	Némely pedig esett a jó földbe; és mikor kikelt, százannyi hasznot hozott. Ezeket mondva, kiáltott: Akinek van füle a hallásra, hallja.	igen
@@ -25429,7 +25429,7 @@ Luk 10:3	Menjetek el: Ímé én elbocsátlak titeket, mint bárányokat a farkas
 Luk 10:4	Ne hordozzatok erszényt, se táskát, se sarut; és az úton senkit ne köszöntsetek.	nem
 Luk 10:5	Valamely házba bementek, először ezt mondjátok: Békesség e háznak!	nem
 Luk 10:6	És ha lesz ott valaki békességnek fia, a ti békességtek azon marad; ha nem, ti rátok tér vissza.	igen
-Luk 10:7	Ugyanazon házban maradjatok pedig, azt eve és iván, amit ők adnak: mert méltó a munkás az ő jutalmára. Ne járjatok házról-házra.	igen
+Luk 10:7	Ugyanazon házban maradjatok pedig, azt eve és ive, amit ők adnak: mert méltó a munkás az ő jutalmára. Ne járjatok házról-házra.	igen
 Luk 10:8	És valamely városba bementek, és befogadnak titeket, azt egyétek, amit előtökbe adnak:	igen
 Luk 10:9	És gyógyítsátok a betegeket, akik ott lesznek, és mondjátok nekik: Elközelített hozzátok az Isten országa.	igen
 Luk 10:10	Valamely városba pedig bementek, és titeket be nem fogadnak, annak utcáira kimenve, ezt mondjátok:	igen
@@ -25858,7 +25858,7 @@ Luk 20:16	Elmegy és elveszti azokat a munkásokat, és a szőlőt másoknak adj
 Luk 20:17	Ő pedig rájuk tekintve, mondta: Mi az tehát, ami meg van írva: Amely követ az építők megvetettek, az lett a szegelet fejévé?	igen
 Luk 20:18	Valaki erre a kőre esik, szétzúzatik; akire pedig ez esik rá, szétmorzsolja azt.	igen
 Luk 20:19	És igyekeztek a főpapok és az írástudók kezeiket ő rá vetni azon órában; de féltek a néptől; mert megértették, hogy ő ellenük mondta e példázatot.	igen
-Luk 20:20	Annakokáért vigyázva ő rá, leselkedőket küldtek ki, akik igazaknak tetteték magokat, hogy őt megfogják beszédében; hogy átadják a felsőbbségnek és a helytartó hatalmának.	igen
+Luk 20:20	Annakokáért vigyázva ő rá, leselkedőket küldtek ki, akik igazaknak tették magokat, hogy őt megfogják beszédében; hogy átadják a felsőbbségnek és a helytartó hatalmának.	igen
 Luk 20:21	Kik megkérdezték őt, mondva: Mester, tudjuk, hogy te helyesen beszélsz és tanítasz, és személyt nem válogatsz, hanem az Istennek útját igazán tanítod:	igen
 Luk 20:22	Szabad-é nekünk adót fizetnünk a császárnak, vagy nem?	igen
 Luk 20:23	Ő pedig észrevéve álnokságukat, mondta nekik: Mit kísértetek engem?	igen
@@ -26924,7 +26924,7 @@ Ján 19:36	Mert azért lettek ezek, hogy beteljesedjék az írás: Az ő csontja
 Ján 19:37	Másutt ismét így szól az írás: Néznek majd arra, akit általszegeztek.	igen
 Ján 19:38	Ezek után pedig kérte Pilátust az arimathiai József (aki a Jézus tanítványa volt, de csak titokban, a zsidóktól való félelem miatt), hogy levehesse a Jézus testét. És megengedte Pilátus. Elment azért és levette a Jézus testét.	igen
 Ján 19:39	Eljött pedig Nikodémus is (aki éjszaka ment először Jézushoz), hozva mirhából és áloéból való kenetet, mintegy száz fontot.	igen
-Ján 19:40	Vették azért a Jézus testét, és begöngyölgeték azt lepedőkbe illatos szerekkel együtt, amint a zsidóknál szokás temetni.	igen
+Ján 19:40	Vették azért a Jézus testét, és begöngyölgették azt lepedőkbe illatos szerekkel együtt, amint a zsidóknál szokás temetni.	igen
 Ján 19:41	Azon a helyen pedig, ahol megfeszíttetett, volt egy kert, és a kertben egy új sír, amelybe még senki sem helyheztetett.	igen
 Ján 19:42	A zsidók péntekje miatt azért, mivelhogy az a sír közel volt, abba helyheztették Jézust.	igen
 Ján 20:1	A hétnek első napján pedig jó reggel, amikor még sötétes volt, oda ment Mária Magdaléna a sírhoz, és látta, hogy elvétetett a kő a sírról.	igen
@@ -27197,7 +27197,7 @@ ApCsel 7:18	Mindaddig, mígnem más király támadt, ki nem ismerte Józsefet.	i
 ApCsel 7:19	Ez a mi nemzetségünkkel álnokul bánva nyomorgatta a mi atyáinkat, hogy magzataikat kitétesse, hogy életben ne maradjanak.	nem
 ApCsel 7:20	Akkor született Mózes, és ékes volt az Isten előtt. Ez három hónapig atyja házában tartatott.	igen
 ApCsel 7:21	Mikor pedig kitétetett, a Faraó leánya felvette, és felnevelte őt a saját fia gyanánt.	igen
-ApCsel 7:22	És Mózes taníttaték az Égyiptombeliek minden bölcseségére; és hatalmas volt beszédben és cselekedetben.	igen
+ApCsel 7:22	És Mózes taníttatott az Égyiptombeliek minden bölcseségére; és hatalmas volt beszédben és cselekedetben.	igen
 ApCsel 7:23	Mikor pedig negyvenéves kora betölt, eszébe jutott, hogy meglátogassa atyjafiait, az Izráel fiait.	nem
 ApCsel 7:24	És mikor látta, hogy egyik bántalommal illettetik, megoltalmazta, és az égyiptomi embert megölve, bosszút állt azért, aki bosszúsággal illettetett.	igen
 ApCsel 7:25	És azt gondolta, hogy az ő atyjafiai megértik, hogy az Isten az ő keze által ád nekik szabadulást; de azok nem értették meg.	igen
@@ -27457,7 +27457,7 @@ ApCsel 13:32	És mi hirdetjük nektek az atyáknak tett ígéretet, hogy azt az 
 ApCsel 13:33	Mint a második zsoltárban is meg van írva: Én Fiam vagy te; ma nemzettelek én téged.	nem
 ApCsel 13:34	Hogy pedig feltámasztotta őt halottaiból, úgy hogy nem is fog többé az enyészetbe visszatérni, azt így mondta: Nektek adom a Dávid biztos szent javait.	igen
 ApCsel 13:35	Azért mondja másutt is: Nem engeded, hogy a te Szented rothadást lásson.	nem
-ApCsel 13:36	Mert Dávid, minekutána a saját idejében szolgált az Isten akaratának, elaludt, és helyhezteték az ő atyáihoz, és rothadást látott.	nem
+ApCsel 13:36	Mert Dávid, minekutána a saját idejében szolgált az Isten akaratának, elaludt, és helyeztetett az ő atyáihoz, és rothadást látott.	igen
 ApCsel 13:37	De akit Isten feltámasztott, az nem látott rothadást.	igen
 ApCsel 13:38	Azért legyen nektek tudtotokra, atyámfiai, férfiak, hogy ez által hirdettetik nektek a bűnöknek bocsánata:	igen
 ApCsel 13:39	És mindenekből, a mikből a Mózes törvénye által meg nem igazíttathattatok, ez által mindenki, aki hisz, megigazul.	igen
@@ -27564,7 +27564,7 @@ ApCsel 16:18	Ezt pedig több napon át mívelte. Pál azonban megbosszankodva, �
 ApCsel 16:19	Látva pedig annak az urai, hogy keresetüknek a reménysége elveszett, megfogva Pált és Silást, vonták a piacra a hatóságok elé.	igen
 ApCsel 16:20	És odavezetve őket a bírákhoz, mondták: Ezek az emberek zsidó létükre megháborítják a mi városunkat,	igen
 ApCsel 16:21	És olyan szertartásokat hirdetnek, melyeket nem szabad nekünk bevennünk, sem cselekednünk, mivelhogy rómaiak vagyunk.	igen
-ApCsel 16:22	És velük egyben feltámadt a sokaság ő ellenük. A bírák pedig letépetve ruháikat, megvesszőzteték őket.	igen
+ApCsel 16:22	És velük egyben feltámadt a sokaság ő ellenük. A bírák pedig letépetve ruháikat, megvesszőzték őket.	igen
 ApCsel 16:23	És miután sok ütést mértek rájuk, tömlöcbe vetették őket, megparancsolva a tömlöctartónak, hogy gondosan őrizze őket.	igen
 ApCsel 16:24	Ki ilyen parancsolatot véve, vetette őket a belső tömlöcbe, és lábaikat kalodába szorította.	igen
 ApCsel 16:25	Éjféltájban pedig Pál és Silás imádkozva, énekkel dicsőítették az Istent. A foglyok pedig hallgatták őket.	igen
@@ -28015,7 +28015,7 @@ Róm 1:23	És az örökkévaló Istennek dicsőségét felcserélték a mulandó
 Róm 1:24	Annakokáért adta is őket az Isten szívük kívánságaiban tisztátalanságra, hogy egymás testét megszeplősítsék;	igen
 Róm 1:25	Mint akik az Isten igazságát hazugsággá változtatták, és a teremtett dolgokat tisztelték és szolgálták a teremtő helyett, aki mind örökké áldott. Ámen.	igen
 Róm 1:26	Annakokáért adta őket az Isten tisztátalan indulatokra; mert az ő asszonynépeik is elváltoztatták a természet folyását természetellenesre:	nem
-Róm 1:27	Hasonlóképen a férfiak is elhagyva az asszonynéppel való természetes élést, egymásra gerjedtek bujaságukban, férfiak férfiakkal fertelmeskedve, és az ő tévelygésöknek méltó jutalmát elvevén önmagokban.	igen
+Róm 1:27	Hasonlóképen a férfiak is elhagyva az asszonynéppel való természetes élést, egymásra gerjedtek bujaságukban, férfiak férfiakkal fertelmeskedve, és az ő tévelygésöknek méltó jutalmát elvéve önmagokban.	igen
 Róm 1:28	És amiképpen nem méltatták az Istent arra, hogy ismeretökben megtartsák, azonképen oda adták őket az Isten méltatlan gondolkozásra, hogy illetlen dolgokat cselekedjenek;	igen
 Róm 1:29	Akik teljesek minden hamissággal, paráznasággal, gonoszsággal, kapzsisággal, rosszasággal; rakvák, írigységgel, gyilkossággal, versengéssel, álnoksággal, rossz erkölccsel;	igen
 Róm 1:30	Súsárlók, rágalmazók, istengyűlölők, dölyfösek, kevélyek, dicsekedők, rosszban mesterkedők, szüleiknek engedetlenek,	nem
@@ -28678,7 +28678,7 @@ Róm 16:27	Az egyedül bölcs Istennek a Jézus Krisztus által dicsőség mind�
 1Kor 11:20	Mikor tehát egybegyűltök egyazon helyre, nincs úrvacsorájával való élés:	nem
 1Kor 11:21	Mert kiki az ő saját vacsoráját veszi elő az evésnél; és némely éhezik, némely pedig dőzsöl.	nem
 1Kor 11:22	Hát nincsenek-é házaitok az evésre és ivásra? Avagy az Isten gyülekezetét vetitek-é meg, és azokat szégyenítitek-é meg, akiknek nincsen? Mit mondjak nektek? Dicsérjelek-é titeket ebben? Nem dicsérlek.	igen
-1Kor 11:23	Mert én az Úrtól vettem, amit nektek előtökbe is adtam: hogy az Úr Jézus azon az éjszakán, melyen elárultaték, vette a kenyeret,	igen
+1Kor 11:23	Mert én az Úrtól vettem, amit nektek előtökbe is adtam: hogy az Úr Jézus azon az éjszakán, melyen elárultatott, vette a kenyeret,	igen
 1Kor 11:24	És hálákat adva, megtörte és ezt mondta: Vegyétek, egyétek! Ez az én testem, mely ti érettetek megtöretik; ezt cselekedjétek az én emlékezetemre.	igen
 1Kor 11:25	Hasonlatosképen a pohárt is vette, minekutána vacsorált volna, ezt mondva: E pohár amaz új testamentom az én vérem által; ezt cselekedjétek, valamennyiszer isszátok az én emlékezetemre.	igen
 1Kor 11:26	Mert valamennyiszer eszitek e kenyeret és isszátok e pohárt, az Úrnak halálát hirdessétek, amíg eljövend.	igen
@@ -28837,7 +28837,7 @@ Róm 16:27	Az egyedül bölcs Istennek a Jézus Krisztus által dicsőség mind�
 1Kor 16:3	Mikor pedig megérkezem, akiket javaltok leveleitek által, azokat küldöm el, hogy elvigyék Jeruzsálembe a ti ajándékotokat.	igen
 1Kor 16:4	Ha pedig méltó lesz, hogy én is elmenjek, velem együtt jönnek.	nem
 1Kor 16:5	Elmegyek pedig ti hozzátok, mikor Macedónián általmenéndek: mert Macedónián általmegyek,	nem
-1Kor 16:6	Nálatok azonban talán megmaradok, vagy ott is telelek, hogy ti kísérjetek el, ahová menéndek.	igen
+1Kor 16:6	Nálatok azonban talán megmaradok, vagy ott is telelek, hogy ti kísérjetek el, ahová megyek.	igen
 1Kor 16:7	Mert nem akarlak titeket épen csak átmenet közben látni, de reménylem, hogy valami ideig nálatok maradok, ha az Úr engedi.	nem
 1Kor 16:8	Efézusban pedig pünkösdig maradok.	nem
 1Kor 16:9	Mert nagy kapu nyílott meg előttem és hasznos, az ellenség is sok.	nem
@@ -29407,7 +29407,7 @@ Ef 6:12	Mert nem vér és test ellen van nekünk tusakodásunk, hanem a fejedele
 Ef 6:13	Annakokáért vegyétek föl az Istennek minden fegyverét, hogy ellentállhassatok ama gonosz napon, és mindeneket elvégezve megállhassatok.	igen
 Ef 6:14	Álljatok hát elő, körül övezve derekatokat igazlelkűséggel, és felöltözve az igazságnak mellvasába,	igen
 Ef 6:15	És felsarúzva lábaitokat a békesség evangyéliomának készségével;	igen
-Ef 6:16	Mindezekhez fölvevén a hitnek pajzsát, amellyel ama gonosznak minden tüzes nyilát megolthatjátok;	igen
+Ef 6:16	Mindezekhez fölvéve a hitnek pajzsát, amellyel ama gonosznak minden tüzes nyilát megolthatjátok;	igen
 Ef 6:17	Az idvesség sisakját is fölvegyétek, és a Léleknek kardját, amely az Isten beszéde:	igen
 Ef 6:18	Minden imádsággal és könyörgéssel imádkozva minden időben a Lélek által, és ugyanezen dologban vigyázva minden állhatatossággal és könyörgéssel minden szentekért,	igen
 Ef 6:19	Én érettem is, hogy adassék nekem szó számnak megnyitásakor, hogy bátorsággal ösmertessem meg az evangyéliom titkát,	igen
@@ -29766,7 +29766,7 @@ Kol 4:18	A köszöntés a saját kezemmel, a Páléval, van írva. Emlékezzetek
 1Tim 1:13	Ki előbb istenkáromló, üldöző és erőszakoskodó voltam: de könyörült rajtam, mert tudatlanul cselekedtem hitetlenségben;	igen
 1Tim 1:14	Szerfelett megsokasodott pedig a mi Urunknak kegyelme a Krisztus Jézusban való hittel és szeretettel.	nem
 1Tim 1:15	Igaz beszéd ez és teljes elfogadásra méltó, hogy Krisztus Jézus azért jött e világra, hogy megtartsa a bűnösöket, akik közül első vagyok én.	igen
-1Tim 1:16	De azért könyörült rajtam, hogy Jézus Krisztus bennem mutassa meg legelőbb a teljes hosszútűrését, példa gyanánt azoknak, akik hiendenek ő benne az örök életre.	igen
+1Tim 1:16	De azért könyörült rajtam, hogy Jézus Krisztus bennem mutassa meg legelőbb a teljes hosszútűrését, példa gyanánt azoknak, akik hisznek ő benne az örök életre.	igen
 1Tim 1:17	Az örökkévaló királynak pedig, a halhatatlan, láthatatlan, egyedül bölcs Istennek tisztesség és dicsőség örökkön örökké! Ámen.	nem
 1Tim 1:18	Ezt a parancsolatot adom neked, fiam Timótheus, a rólad való korábbi jövendölések szerint, hogy vitézkedjél azokban ama jó vitézséggel,	igen
 1Tim 1:19	Megtartva a hitet és jó lelkiismeretet, melyet némelyek elvetve, a hit dolgában hajótörést szenvedtek;	igen
@@ -30862,7 +30862,7 @@ Jel 6:10	És kiáltottak nagy szóval, mondva: Uram, te szent és igaz, meddig n
 Jel 6:11	Akkor adattak azoknak egyenként fehér ruhák; és mondatott nekik, hogy még egy kevés ideig nyugodjanak, amíg beteljesedik mind az ő szolgatársaiknak, mind az ő atyjokfiainak száma, akiknek meg kell öletniök, amint ők is megölettek.	igen
 Jel 6:12	Azután láttam, mikor a hatodik pecsétet felnyitotta, és ímé nagy földindulás lett, és a nap feketévé lett mint a szőrzsák, és a hold egészen olyan lett, mint a vér;	igen
 Jel 6:13	És az ég csillagai a földre hullottak, miképpen a fügefa hullatja éretlen gyümölcseit, mikor nagy szél rázza.	igen
-Jel 6:14	És az ég eltakarodék, mint mikor a papírtekercset összegöngyölítik; és minden hegy és sziget helyéből elmozdíttaték.	nem
+Jel 6:14	És az ég eltakarodék, mint mikor a papírtekercset összegöngyölítik; és minden hegy és sziget helyéből elmozdíttatott.	igen
 Jel 6:15	És a földnek királyai és a fejedelmek és a gazdagok és a vezérek és a hatalmasak, és minden szolga és minden szabad, elrejtették magokat a barlangokba és a hegyeknek kőszikláiba;	igen
 Jel 6:16	És mondták a hegyeknek és a kőszikláknak: Essetek mi ránk és rejtsetek el minket annak színe elől, aki a királyiszékben ül, és a Bárány haragjától:	igen
 Jel 6:17	Mert eljött az ő haragjának ama nagy napja; és ki állhat meg?	nem
@@ -31029,7 +31029,7 @@ Jel 16:15	(Imé eljövök, mint a tolvaj. Boldog, aki vigyáz és őrzi az ő ru
 Jel 16:16	Egybegyűjtötték azért őket a helyre, amelyet zsidóul Armageddonnak neveznek.	igen
 Jel 16:17	A hetedik angyal is kitöltötte az ő poharát a levegőégre; és nagy szózat jött ki a mennyei templomból a királyiszéktől, amely ezt mondta: Meglett!	igen
 Jel 16:18	És lettek zendülések és mennydörgések és villámlások; és lett nagy földindulás, amilyen nem volt, mióta az emberek a földön vannak, ilyen földindulás, ilyen nagy.	igen
-Jel 16:19	És a nagy város három részre szakadt, és a pogányok városai elestek; és a nagy Babilon megemlítteték az Isten előtt, hogy adjon annak inni az ő búsult haragja borának poharából.	igen
+Jel 16:19	És a nagy város három részre szakadt, és a pogányok városai elestek; és a nagy Babilon megemlíttetett az Isten előtt, hogy adjon annak inni az ő búsult haragja borának poharából.	igen
 Jel 16:20	És minden sziget elmúlt, és hegyek nem találtattak többé.	igen
 Jel 16:21	És nagy jégeső, mint egy-egy tálentom, szállt az égből az emberekre; és káromlák az Istent az emberek a jégeső csapásáért; mert annak csapása felette nagy.	igen
 Jel 17:1	És jött egy a hét angyal közül, akinél a hét pohár volt, és szólt velem, mondva nekem: Jöjj, és megmutatom neked a nagy paráznának kárhoztatását, aki a sok vizen ül;	igen

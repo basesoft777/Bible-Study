@@ -20,6 +20,11 @@ kapujat:
              hianyzo, duplazott token, nincs ures szakasz; a 9. tagolas ilyenkor
              szakaszonkent fut
 
+  tiltott    (F132, DT-F132f; elv: DT241) a 15. kapu: a forditasban nincs
+             az adat/tiltott_fordulatok.tsv egyetlen mintaja sem (ertelemhez
+             kotott regex, kis/nagybetu-fuggetlen); talalatnal SERTES: a sor nem
+             rogzul automatikusan, kezi iteletre all meg. Szotarfuggetlen.
+
 Eredmeny: RENDBEN | SERTES | JELZES. A SERTES kapuhiba (E4: egy
 onujraproba, utana naplok/EMELES_bukottak.tsv); a JELZES (hosszarany)
 nem gatol.
@@ -62,7 +67,10 @@ KAROLI_UT = os.path.join(REPO, 'konkordancia', 'Konyv_normalizalo_tabla.tsv')
 FORRAS_VERS_OCR = {'Gen 33:816t.': 'Gen 33:8 16t.'}
 
 GATOLO = ['1_gorog_heber', '2_versszam', '3_karoli_roviditesek', '4_formazas',
-          '5_terminologia', '8_idezojel', '9_tagolas', '10_torzs', '11_konyvek']
+          '5_terminologia', '8_idezojel', '9_tagolas', '10_torzs', '11_konyvek',
+          '15_tiltott']
+
+TILTOTT_UT = os.path.join(REPO, 'adat', 'tiltott_fordulatok.tsv')
 
 
 # ---------------------------------------------------------------------------
@@ -607,6 +615,44 @@ def bdb_jeloles_vissza(forditas):
     return BDB_JELOLES.sub(lambda m: m.group(1), forditas)
 
 
+# ---------------------------------------------------------------------------
+# 15. tiltott fordulatok (F132, DT-F132f; elv: DT241, F121 2a/2): a tabla minden
+# soranak `minta`-ja (Python regex, re.IGNORECASE) a forditas nyers szovegen;
+# talalat = SERTES. A tabla kezi (SEMA 2.36), a sorok `#`-tel kezdodo megjegyzese
+# kimarad. Ures tabla: RENDBEN (0 minta).
+# ---------------------------------------------------------------------------
+
+_TILTOTT = {}
+
+
+def tiltott_betolt(ut=None):
+    """-> [(magyar_alak, lefordított regex, helyette, verzio)]; utvonalankent gyorsitotarazva."""
+    ut = ut or TILTOTT_UT
+    if ut not in _TILTOTT:
+        with open(ut, encoding='utf-8', newline='') as fh:
+            sorok = [s.rstrip('\r') for s in fh.read().split('\n')]
+        sorok = [s for s in sorok if s and not s.startswith('#')]
+        fej = sorok[0].split('\t')
+        ki = []
+        for s in sorok[1:]:
+            r = dict(zip(fej, s.split('\t')))
+            ki.append((r['magyar_alak'], re.compile(r['minta'], re.IGNORECASE), r.get('helyette', ''), r.get('verzio', '')))
+        _TILTOTT[ut] = ki
+    return _TILTOTT[ut]
+
+
+def ellenoriz_tiltott(forditas, tiltott=None):
+    tiltott = tiltott_betolt() if tiltott is None else tiltott
+    hibak = []
+    for alak, minta, helyette, _ in tiltott:
+        talalat = [m.group(0) for m in minta.finditer(forditas)]
+        if talalat:
+            hibak.append('%s x%d (%s; helyette: %s)' % (alak, len(talalat), ', '.join(sorted(set(talalat))[:3]), helyette))
+    if hibak:
+        return 'SERTES', '; '.join(hibak)
+    return 'RENDBEN', '%d minta, 0 talalat' % len(tiltott)
+
+
 def kapuk_futtat(szotar, forras, forditas, bizonytalan=()):
     """[(nev, eredmeny, reszlet), ...]. A 13. kapu a nyers szoveget kapja; a tobbi a
     `Y [BDB: X]` -> `X` visszaallitott szoveget (F56 M5)."""
@@ -628,6 +674,7 @@ def kapuk_futtat(szotar, forras, forditas, bizonytalan=()):
     ki.append(('11_konyvek',) + ellenoriz_konyvek(forras, forditas))
     ki.append(('12_szentlelek',) + ellenoriz_szentlelek(forditas))
     ki.append(('13_fejezetszam',) + ellenoriz_fejezetszam(forditas_nyers))
+    ki.append(('15_tiltott',) + ellenoriz_tiltott(forditas_nyers))
     return ki
 
 
