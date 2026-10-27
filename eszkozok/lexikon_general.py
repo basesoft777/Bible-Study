@@ -1849,8 +1849,9 @@ def gerinc_adat():
     for r in be(GLOSSZAK_HEBER_HU_FAJL):
         if r.get('fo') == 'igen':
             glossza[r['strong']] = r
+    tiltott = be(TILTOTT_FORDULATOK_FAJL)
     _gerinc_adat_cache = {'cimke': cimke, 'bdb_sz': bdb_sz, 'bdb_hu': bdb_hu, 'bdb_vj': bdb_vj,
-                          'th_sz': th_sz, 'th_vj': th_vj, 'glossza': glossza}
+                          'th_sz': th_sz, 'th_vj': th_vj, 'glossza': glossza, 'tiltott': tiltott}
     return _gerinc_adat_cache
 
 
@@ -2115,39 +2116,28 @@ def bdb_gerinc_szakaszok(adat, strong):
 
 
 def thayer_gerinc_szakaszok(adat, strong):
-    """[(utvonal, jel, szöveg_hu, angol, forrás)] a 2.34 sorrendjében, `cim` nélkül. A magyar szöveg
-    a #142 szakaszsoraiból (`forditasok.tsv` `Thayer`, `sz<sorszam>`), ha mind megvan; különben a
-    `teljes` sor kézi határaiból (SEMA 2.40, DT-F131c 2.: átmenet); különben nincs (angol + jelölés)."""
+    """[(utvonal, jel, szöveg_hu, angol, forrás)] a 2.34 sorrendjében, `cim` nélkül. A magyar szöveg a #142
+    szakaszsoraiból (`forditasok.tsv` `Thayer`, `sz<sorszam>`, nem `elavult`; DT-F131c 1.); ahol nincs, ott
+    nincs magyar szöveg (angol + `fordításra vár`, explicit hiány)."""
     szak = sorted(adat['th_sz'].get(strong, []), key=lambda x: int(x['sorszam']))
     fidx = forditasok_index()
-    sz_sorok = {}
-    for r in szak:
-        f = fidx.get(('Thayer', strong, strong, 'sz%s' % r['sorszam'], 'forditas_hu'))
-        if f and f.get('allapot') != 'elavult' and f.get('forditas_hu'):
-            sz_sorok[r['utvonal']] = f['forditas_hu']
-    forras = 'sz'
-    if len(sz_sorok) < len([r for r in szak if r['utvonal'] != 'cim']):
-        sz_sorok, forras = {}, 'kezi_hatar'
-        teljes = forditas_ehhez('Thayer', strong, strong, 'teljes', 'forditas_hu')
-        for r in szak:
-            c = adat['cimke'].get(('Thayer', strong, r['utvonal']))
-            if teljes and c and c.get('hu_kezdet') and c.get('forditas_hash') == _sha1(teljes):
-                k, h = int(c['hu_kezdet']), int(c['hu_hossz'])
-                sz_sorok[r['utvonal']] = teljes[k:k + h]
-        if not sz_sorok:
-            forras = 'nincs'
     out = []
     for r in szak:
         if r['utvonal'] == 'cim':
             continue
+        f = fidx.get(('Thayer', strong, strong, 'sz%s' % r['sorszam'], 'forditas_hu'))
+        hu = f['forditas_hu'] if f and f.get('allapot') != 'elavult' and f.get('forditas_hu') else None
         angol = ('%s %s' % (r.get('jel') or '', r.get('szoveg') or '')).strip()
-        out.append((r['utvonal'], szakasz_jel(r['utvonal']), sz_sorok.get(r['utvonal']), angol, forras))
+        out.append((r['utvonal'], szakasz_jel(r['utvonal']), hu, angol, 'sz%s' % r['sorszam']))
     return out
 
 
-def _sha1(szoveg):
-    import hashlib
-    return hashlib.sha1(szoveg.encode('utf-8')).hexdigest()
+TILTOTT_FORDULATOK_FAJL = 'adat/tiltott_fordulatok.tsv'
+
+
+def tiltott_talalatok(tiltott, szoveg):
+    """A `tiltott_fordulatok.tsv` (SEMA 2.36) mintáinak találatai a szövegben: [magyar_alak]."""
+    return [r['magyar_alak'] for r in tiltott if r.get('minta') and re.search(r['minta'], szoveg or '', re.I)]
 
 
 def gerinc_blokk(adat, szotar, strong, motivum_sorai, ctx=None):
@@ -2202,9 +2192,13 @@ def gerinc_blokk(adat, szotar, strong, motivum_sorai, ctx=None):
         if ut:
             hordozo.add(ut)
     bek = [cim, GERINC_BEVEZETO['Thayer' if szotar == 'Thayer' else 'BDB']]
-    if szotar == 'Thayer' and szakaszok and szakaszok[0][4] == 'kezi_hatar':
-        bek.append('*A magyar szöveg a `forditasok.tsv` teljes Thayer-sorából, kézi szakaszhatárokkal (`%s`; '
-                   'átmenet a szakaszonkénti fordításig, #142, DT-F131c).*' % SZAKASZ_CIMKE_FAJL)
+    if szotar == 'Thayer':
+        bek.append('*A magyar szöveg a szakaszonkénti Thayer-fordításból (`adat/forditasok.tsv`, `sz<n>` sorok, #142; '
+                   'DT-F131c).*')
+    napl['tiltott'] = []
+    for ut, jel, hu, _a, forras in ([fej] if fej else []) + szakaszok:
+        for alak in tiltott_talalatok(adat.get('tiltott', []), hu):
+            napl['tiltott'].append('%s %s (%s): „%s”' % (szotar, jel, forras, alak))
     if fej:
         if fej[2]:
             szov, t, h = kiemel(fej[2], fej_celok)
@@ -2218,8 +2212,12 @@ def gerinc_blokk(adat, szotar, strong, motivum_sorai, ctx=None):
     napl['kiemelt'] += talalt
     napl['nem_talalt'] += hiany
     bek.extend(lista)
-    if napl['nem_talalt'] or napl['nem_idezett']:
+    if napl['nem_talalt'] or napl['nem_idezett'] or napl['tiltott']:
         reszek = []
+        if napl['tiltott']:
+            reszek.append('ismert hiány: a magyar szöveg tiltott fordulatot tartalmaz (`%s`): %s; a javítás a '
+                          'fordítás újrafuttatása (#142, DT-F131i), a lap a szöveget nem írja át'
+                          % (TILTOTT_FORDULATOK_FAJL, '; '.join(napl['tiltott'])))
         if napl['nem_talalt']:
             reszek.append('a szótári példahely a magyar szövegben nem található, kiemelés nincs: %s'
                           % '; '.join(napl['nem_talalt']))
@@ -2237,6 +2235,8 @@ def gerinc_blokk(adat, szotar, strong, motivum_sorai, ctx=None):
             for f in (THAYER_SZAKASZOK_FAJL, THAYER_VERS_JELENTES_FAJL, THAYER_TELJES_FAJL, 'adat/forditasok.tsv'):
                 fl.setdefault(f, set()).add('Thayer')
         fl.setdefault(SZAKASZ_CIMKE_FAJL, set()).add('projekt_adat')
+        if adat.get('tiltott'):
+            fl.setdefault(TILTOTT_FORDULATOK_FAJL, set()).add('projekt_adat')
         ctx.setdefault('gerinc_naplo', []).append(napl)
     return bek, napl
 

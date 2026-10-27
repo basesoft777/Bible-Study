@@ -14,7 +14,6 @@ Vizsgálja (a brief 2. lépése szerint):
 
     python eszkozok/teszt_szotari_gerinc.py
 """
-import hashlib
 import os
 import shutil
 import sys
@@ -201,7 +200,6 @@ class Megjelenites(unittest.TestCase):
 class Ellenoriz17(unittest.TestCase):
     def setUp(self):
         self.d = tempfile.mkdtemp()
-        self.hu = 'G9999 — x, y: fej. 1. első rész. 2. második rész.'
 
         def ir(nev, fej, sorok):
             with open(os.path.join(self.d, nev), 'w', encoding='utf-8') as f:
@@ -211,49 +209,62 @@ class Ellenoriz17(unittest.TestCase):
         ir('thayer_szakaszok.tsv', ['strong', 'utvonal'], [['G9999', 'cim'], ['G9999', '-/1/-'], ['G9999', '-/2/-']])
         ir('lexikon_hivatkozasok.tsv', ['szotar', 'strong', 'jelentes_szam'], [['BDB', 'H7121', '2.c'],
                                                                                ['TBESG', 'G9999', '2']])
-        ir('forditasok.tsv', ['szotar', 'strong', 'jelentes_szam', 'mezo', 'forditas_hu'],
-           [['Thayer', 'G9999', 'teljes', 'forditas_hu', self.hu]])
+        ir('tiltott_fordulatok.tsv', ['magyar_alak', 'minta'],
+           [['nevet tenni valakire', r'\bnevet\s+(?:tenni|tesz\w*|tett\w*)\s+(?:valaki\w*|rá\b)']])
 
     def tearDown(self):
         shutil.rmtree(self.d)
 
     def cimke(self, sorok):
         self.ir('szotar_szakasz_cimke.tsv', ['szotar', 'strong', 'szakasz', 'lexikon_jelentes_szam', 'cimke_hu',
-                                             'hu_kezdet', 'hu_hossz', 'forditas_hash', 'proveniencia', 'megjegyzes'],
-                sorok)
+                                             'proveniencia', 'megjegyzes'], sorok)
         return E.szakasz_cimke_hibak(self.d)
 
-    def thayer(self, hash_=None):
-        h = hash_ or hashlib.sha1(self.hu.encode('utf-8')).hexdigest()
-        k1 = self.hu.index('1.')
-        k2 = self.hu.index('2.')
-        return [['Thayer', 'G9999', 'cim', '', '', '0', str(len(self.hu[:k1].rstrip())), h, 'p', ''],
-                ['Thayer', 'G9999', '-/1/-', '', '', str(k1), str(len(self.hu[k1:k2].rstrip())), h, 'p', ''],
-                ['Thayer', 'G9999', '-/2/-', '', '', str(k2), str(len(self.hu) - k2), h, 'p', '']]
-
     def test_rendben(self):
-        h = self.cimke([['BDB', 'H7121', 'Qal/2/c', '2.c', 'segítségül hívni', '', '', '', 'p', ''],
-                        ['BDB', 'H8034', '-/3', '', 'név', '', '', '', 'p', ''],
-                        ['TBESG', 'G9999', '2', '2', 'x', '', '', '', 'p', '']] + self.thayer())
+        h = self.cimke([['BDB', 'H7121', 'Qal/2/c', '2.c', 'segítségül hívni', 'p', ''],
+                        ['BDB', 'H8034', '-/3', '', 'név', 'p', ''],
+                        ['TBESG', 'G9999', '2', '2', 'x', 'p', ''],
+                        ['Thayer', 'G9999', '-/1/-', '', 'elnevezni', 'p', '']])
         self.assertEqual(h, [])
 
     def test_hibak(self):
-        h = self.cimke([['BDB', 'H7121', 'Qal/9/z', '', '', '', '', '', 'p', ''],
-                        ['BDB', 'H7121', 'Qal/2/c', '3', 'nem invokáció', '', '', '', 'p', ''],
-                        ['TBESG', 'G9999', '7', '', '', '', '', '', '', '']])
+        h = self.cimke([['BDB', 'H7121', 'Qal/9/z', '', '', 'p', ''],
+                        ['BDB', 'H7121', 'Qal/2/c', '3', 'nem invokáció', 'p', ''],
+                        ['TBESG', 'G9999', '7', '', '', '', ''],
+                        ['Thayer', 'G9999', '-/9/-', '', 'nevet tenni valakire', 'p', '']])
         szov = '\n'.join(h)
         self.assertIn('nincs a bdb_szakaszok.tsv-ben', szov)
+        self.assertIn('nincs a thayer_szakaszok.tsv-ben', szov)
         self.assertIn('nem lexikon_hivatkozasok.tsv-kulcs', szov)
         self.assertIn('tiltott minősítést', szov)
+        self.assertIn('tiltott fordulatot', szov)
         self.assertIn('üres proveniencia', szov)
 
-    def test_thayer_elavult_es_hezag(self):
-        h = self.cimke(self.thayer(hash_='0' * 40))
-        self.assertTrue(any('elavultak' in x for x in h))
-        rossz = self.thayer()
-        rossz[1][6] = '3'
-        h = self.cimke(rossz)
-        self.assertTrue(any('hézag nélkül' in x for x in h))
+
+class ThayerSzakaszsorok(unittest.TestCase):
+    """DT-F131c 1.: a magyar Thayer a #142 sz<n> soraiból; hiányzó sor: angol + fordításra vár;
+    a tiltott fordulat a lapon ismert hiányként jelölve, a szöveg nem íródik át."""
+
+    def test_sz_sorok_es_tiltott(self):
+        _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
+        sorai = [s for s in elo_sorok if s['id'] == 'ISTENTISZT-001']
+        a = LG.gerinc_adat()
+        szak = LG.thayer_gerinc_szakaszok(a, 'G1941')
+        self.assertEqual([s[4] for s in szak], ['sz2', 'sz3', 'sz4', 'sz5', 'sz6', 'sz7'])
+        self.assertTrue(all(s[2] for s in szak))
+        bek, napl = LG.gerinc_blokk(a, 'Thayer', 'G1941', sorai)
+        szov = '\n'.join(bek)
+        self.assertEqual(len(napl['kiemelt']), 7)
+        if any('nevet tenni valakire' in (s[2] or '') for s in szak):
+            self.assertTrue(any('sz3' in x for x in napl['tiltott']))
+            self.assertIn('ismert hiány', szov)
+
+    def test_hianyzo_sz_sor(self):
+        a = dict(LG.gerinc_adat())
+        a['th_sz'] = {'G0000': [{'strong': 'G0000', 'sorszam': '1', 'utvonal': 'cim', 'jel': '', 'szoveg': 'x'},
+                                {'strong': 'G0000', 'sorszam': '2', 'utvonal': '-/1/-', 'jel': '1.', 'szoveg': 'to call'}]}
+        szak = LG.thayer_gerinc_szakaszok(a, 'G0000')
+        self.assertEqual(szak, [('-/1/-', '1', None, '1. to call', 'sz2')])
 
 
 class ValodiAdat(unittest.TestCase):

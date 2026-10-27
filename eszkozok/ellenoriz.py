@@ -1063,14 +1063,10 @@ def szakasz_cimke_hibak(adat_dir):
         thayer.setdefault(r['strong'], []).append(r['utvonal'])
     lexhiv = {(r['szotar'], r['strong'], r['jelentes_szam'])
               for r in (_tsv_ha_van(adat_dir, 'lexikon_hivatkozasok.tsv') or [])}
-    forditas = {}
-    for r in _tsv_ha_van(adat_dir, 'forditasok.tsv') or []:
-        if r['szotar'] == 'Thayer' and r['jelentes_szam'] == 'teljes' and r['mezo'] == 'forditas_hu':
-            forditas[r['strong']] = r['forditas_hu']
+    tiltott = [r for r in (_tsv_ha_van(adat_dir, 'tiltott_fordulatok.tsv') or []) if r.get('minta')]
 
     kulcsok = {}
     ljsz = {}
-    thayer_sorok = {}
     for r in sorok:
         k = (r['szotar'], r['strong'], r['szakasz'])
         kulcsok[k] = kulcsok.get(k, 0) + 1
@@ -1082,7 +1078,6 @@ def szakasz_cimke_hibak(adat_dir):
         elif r['szotar'] == 'Thayer':
             if r['szakasz'] not in thayer.get(r['strong'], []):
                 hibak.append('%s: a szakasz nincs a thayer_szakaszok.tsv-ben' % (k,))
-            thayer_sorok.setdefault(r['strong'], []).append(r)
         elif r['szotar'] == 'TBESG':
             if ('TBESG', r['strong'], r['szakasz']) not in lexhiv:
                 hibak.append('%s: a szakasz nem lexikon_hivatkozasok.tsv-kulcs' % (k,))
@@ -1096,8 +1091,10 @@ def szakasz_cimke_hibak(adat_dir):
             ljsz.setdefault(lk, []).append(r['szakasz'])
         if r['cimke_hu'] and SZAKASZ_CIMKE_TILTOTT.search(r['cimke_hu']):
             hibak.append('%s: a címke tiltott minősítést tartalmaz: %r' % (k, r['cimke_hu']))
-        if r['szotar'] != 'Thayer' and (r['hu_kezdet'] or r['hu_hossz'] or r['forditas_hash']):
-            hibak.append('%s: határ-mező csak Thayer-soron állhat' % (k,))
+        for t in tiltott:
+            if r['cimke_hu'] and re.search(t['minta'], r['cimke_hu'], re.I):
+                hibak.append('%s: a címke tiltott fordulatot tartalmaz (tiltott_fordulatok.tsv: %s)'
+                             % (k, t['magyar_alak']))
     for k, n in kulcsok.items():
         if n > 1:
             hibak.append('duplikált kulcs: %s (%d sor)' % (k, n))
@@ -1105,42 +1102,14 @@ def szakasz_cimke_hibak(adat_dir):
         if len(szak) > 1:
             hibak.append('a(z) %s kutatói kulcs több szakaszra mutat: %s' % (lk, szak))
 
-    for strong, ts in thayer_sorok.items():
-        rend = {u: i for i, u in enumerate(thayer.get(strong, []))}
-        ts = sorted(ts, key=lambda r: rend.get(r['szakasz'], 10 ** 6))
-        if [r['szakasz'] for r in ts] != thayer.get(strong, []):
-            hibak.append('Thayer %s: a sorok nem fedik a 2.34 szakaszait' % strong)
-            continue
-        hu = forditas.get(strong)
-        if hu is None:
-            hibak.append('Thayer %s: nincs teljes magyar sor a forditasok.tsv-ben' % strong)
-            continue
-        h = hashlib.sha1(hu.encode('utf-8')).hexdigest()
-        if any(r['forditas_hash'] != h for r in ts):
-            hibak.append('Thayer %s: a forditas_hash eltér a mai magyar sorétól (%s) -- a határok elavultak'
-                         % (strong, h))
-            continue
-        try:
-            szel = [(int(r['hu_kezdet']), int(r['hu_hossz'])) for r in ts]
-        except ValueError:
-            hibak.append('Thayer %s: nem szám hu_kezdet/hu_hossz' % strong)
-            continue
-        poz = 0
-        jo = True
-        for kezd, hossz in szel:
-            if kezd < poz or hu[poz:kezd].strip() or hossz <= 0:
-                jo = False
-                break
-            poz = kezd + hossz
-        if not jo or hu[poz:].strip() or poz > len(hu):
-            hibak.append('Thayer %s: a szeletek nem fedik hézag nélkül a magyar sort' % strong)
     return hibak
 
 
 def szabaly17_szakasz_cimke(adat_dir):
     """F131 (DT-F131b–d, SEMA 2.40): a szotar_szakasz_cimke.tsv minden sora letezo
-    szakaszra mutat, a kutatoi kulcs letezo lexikon_hivatkozasok-kulcs, a Thayer kezi
-    hatarai bajtra fedik a mai magyar sort, a cimke nem minosit."""
+    szakaszra mutat, a kutatoi kulcs letezo lexikon_hivatkozasok-kulcs, a cimke nem
+    minosit, es nem tartalmaz tiltott fordulatot (tiltott_fordulatok.tsv). (F131.3.6: a
+    Thayer atmeneti kezi hatarai kivezetve, a magyar Thayer a #142 sz<n> soraibol.)"""
     cim = '17. szotar_szakasz_cimke.tsv (SEMA 2.40)'
     hibak = szakasz_cimke_hibak(adat_dir)
     if hibak is None:
