@@ -4,9 +4,9 @@
 
 ## Döntések (DONTESEK.md)
 
-- **DT-F86h 🟢 — fizetős modell.** Ingyenes réteg: olvasó, alap keresés, kötetenként egy mintaszócikk, a módszer. Fizetős egyszeri modulok: Strong-párosított Károli, magyar BDB, magyar Thayer, motívumlexikon-kötetek. Előfizetés a teljes lexikonra, intézményi licenc. Eladó: átalányadós egyéni vállalkozás.
-- **DT-F86i 🟢 — a motívumlexikon kötetekben, a kiinduló könyv szerint.** Teljes bibliai előfordulással; a megvett kötet tartalma nem változik; első kötet: Genezis I. (8 publikálható motívum).
-- **DT-F86j 🟡 — alapítvány mint eladó.** Jogászi kérdés: cél szerinti vagy vállalkozási tevékenység-e a modul eladása.
+- **DT357 🟢 — fizetős modell.** Ingyenes réteg: olvasó, alap keresés, kötetenként egy mintaszócikk, a módszer. Fizetős egyszeri modulok: Strong-párosított Károli, magyar BDB, magyar Thayer, motívumlexikon-kötetek. Előfizetés a teljes lexikonra, intézményi licenc. Eladó: átalányadós egyéni vállalkozás.
+- **DT358 🟢 — a motívumlexikon kötetekben, a kiinduló könyv szerint.** Teljes bibliai előfordulással; a megvett kötet tartalma nem változik; első kötet: Genezis I. (8 publikálható motívum).
+- **DT359 🟡 — alapítvány mint eladó.** Jogászi kérdés: cél szerinti vagy vállalkozási tevékenység-e a modul eladása.
 
 ## A fő megállapítások
 
@@ -35,7 +35,7 @@ Számítások: `szkriptek/` (főállású egyéni vállalkozásnál a fedezeti p
 
 ## Kérdések a jogásznak és a könyvelőnek
 
-1. Cél szerinti tevékenység-e a kutatási eredmény (lexikonkötet, szótármodul) eladása egy alapítványban? Fizethet-e az alapítvány jogdíjat az alapítónak? (DT-F86j)
+1. Cél szerinti tevékenység-e a kutatási eredmény (lexikonkötet, szótármodul) eladása egy alapítványban? Fizethet-e az alapítvány jogdíjat az alapítónak? (DT359)
 2. A motívumlexikon, a BDB- és Thayer-fordítás, a Károli–Strong párosítás licencelhető-e fizetős modulként; a BDB és a TBESH tisztázatlan licence (N-F86a).
 3. Középfokú végzettséget igényel-e a tevékenység (minimálbér vagy garantált bérminimum a járulékalap)?
 4. Hogyan adózik a szerzői jogdíj?
