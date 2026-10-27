@@ -831,8 +831,37 @@ def _szakasz_bemenet():
     return m
 
 
-def _szakaszok_strongra(adat_dir, strong, cache):
-    """{sorszam: szakaszszoveg} a Strongra, vagy None (nincs a szakasztablaban / nincs tabla)."""
+# F145 (DT-F142d): a Thayer `sz<sorszam>` soranak forrasszovege az adat/thayer_szakaszok.tsv szakasza az
+# adat/thayer_forras_javitas.tsv `javitva` sorainak beszurasaval -- a fordito bemenete (eszkozok/thayer_jelolt/thayer_bemenet.py,
+# a `forditas.py rogzit` altal hasznalt szoveg, ugyanazzal a hash-szamitassal), az adat_dir tablaibol.
+def _thayer_bemenet():
+    import importlib.util
+    ut = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'thayer_jelolt', 'thayer_bemenet.py')
+    spec = importlib.util.spec_from_file_location('thayer_bemenet_e13', ut)
+    m = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(m)
+    return m
+
+
+def _szakaszok_strongra(adat_dir, strong, cache, szotar='BDB'):
+    """{sorszam: szakaszszoveg} a Strongra, vagy None (nincs a szakasztablaban / nincs tabla / a Thayer-javitas nem illeszkedik;
+    az utobbi okat a `cache['hiba']` gyujti)."""
+    if szotar == 'Thayer':
+        tabla = os.path.join(adat_dir, 'thayer_szakaszok.tsv')
+        jav = os.path.join(adat_dir, 'thayer_forras_javitas.tsv')
+        if not os.path.exists(tabla):
+            return None
+        if 'tb' not in cache:
+            cache['tb'] = _thayer_bemenet()
+            cache['tb']._CACHE.clear()      # a tablak gyorsitotara folyamaton belul ne ragadjon be (tesztek, ujrafuttatas)
+        if (szotar, strong) not in cache:
+            try:
+                szak = cache['tb'].szakaszok(strong, tabla, jav)
+            except ValueError as e:
+                cache.setdefault('hiba', []).append('Thayer %s: %s' % (strong, e))
+                szak = None
+            cache[(szotar, strong)] = None if szak is None else {x['sorszam']: x['szoveg'] for x in szak}
+        return cache[(szotar, strong)]
     tabla = os.path.join(adat_dir, 'bdb_szakaszok.tsv')
     jav = os.path.join(adat_dir, 'bdb_forras_javitas.tsv')
     if not (os.path.exists(tabla) and os.path.exists(jav)):
@@ -846,14 +875,17 @@ def _szakaszok_strongra(adat_dir, strong, cache):
 
 
 def _szakasz_szoveg(adat_dir, sor, cache):
-    """Az `sz<n>` BDB-sor forrasszovege, kulonben None. Az `entry_id`-nek a Strong eredeti alakjaval kell egyeznie."""
+    """Az `sz<n>` BDB- vagy Thayer-sor forrasszovege, kulonben None. Az `entry_id`-nek a Strong eredeti alakjaval kell egyeznie."""
     m = _SZAKASZ_JSZ.match(sor.get('jelentes_szam') or '')
-    if not m or sor.get('szotar') != 'BDB' or sor.get('mezo') != 'forditas_hu':
+    szotar = sor.get('szotar')
+    if not m or szotar not in ('BDB', 'Thayer') or sor.get('mezo') != 'forditas_hu':
         return None
     sp = _strong_padded(sor.get('strong'))
-    if sp is None or sor.get('entry_id') != re.sub(r'^H0*', 'H', sp):
+    if sp is None or sor.get('entry_id') != re.sub(r'^([GH])0*', r'\1', sp):
         return None
-    szak = _szakaszok_strongra(adat_dir, sp, cache)
+    if (szotar == 'BDB') != sp.startswith('H'):
+        return None
+    szak = _szakaszok_strongra(adat_dir, sp, cache, szotar)
     return None if szak is None else szak.get(int(m.group(1)))
 
 
@@ -895,13 +927,14 @@ def szabaly13_forditasi_gyorsitotar(adat_dir):
     sz_strongok = {}
     for sor in sorok:
         m = _SZAKASZ_JSZ.match(sor.get('jelentes_szam') or '')
-        if m and sor.get('szotar') == 'BDB' and sor.get('allapot') != 'elavult':
-            sz_strongok.setdefault(_strong_padded(sor.get('strong')), set()).add(int(m.group(1)))
-    for sp, meglevo in sorted(sz_strongok.items(), key=lambda p: str(p[0])):
-        szak = _szakaszok_strongra(adat_dir, sp, szakasz_cache) if sp else None
+        if m and sor.get('szotar') in ('BDB', 'Thayer') and sor.get('allapot') != 'elavult':
+            sz_strongok.setdefault((sor.get('szotar'), _strong_padded(sor.get('strong'))), set()).add(int(m.group(1)))
+    for (szotar, sp), meglevo in sorted(sz_strongok.items(), key=lambda p: (p[0][0], str(p[0][1]))):
+        szak = _szakaszok_strongra(adat_dir, sp, szakasz_cache, szotar) if sp else None
         if szak is not None and meglevo != set(szak):
-            hibas.append('BDB %s: a szakaszsorok nem fedik le a szakaszokat (hiányzik: %s; fölös: %s)' % (
-                sp, sorted(set(szak) - meglevo)[:10], sorted(meglevo - set(szak))[:10]))
+            hibas.append('%s %s: a szakaszsorok nem fedik le a szakaszokat (hiányzik: %s; fölös: %s)' % (
+                szotar, sp, sorted(set(szak) - meglevo)[:10], sorted(meglevo - set(szak))[:10]))
+    hibas.extend(szakasz_cache.get('hiba', []))
     for sor in sorok:
         kulcs = (sor.get('szotar'), sor.get('strong'), sor.get('entry_id'),
                  sor.get('jelentes_szam'), sor.get('mezo'))

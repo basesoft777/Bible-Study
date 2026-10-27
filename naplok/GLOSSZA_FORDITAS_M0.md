@@ -232,7 +232,7 @@ sorok: 101, kapuhiba: 0
 - **A H1004 `fo`-ja hibás** (`place` a `house` helyett; 2.2) — a szabály nem látja a fájlsorrend mögötti gyakoriságot. A TAHOT-glossza-vizsgálat (a leggyakoribb TAHOT-„Rövid jelentés” egyezik-e az `fo`-val) megoldhatná, de a TAHOT „LORD”-hibás oszlopai a #138 alatt változnak; ezért csak a 300 leggyakoribb szó kézi átnézése véd.
 - **Licenc:** a TBESH sora a `licencek.tsv`-ben `tisztazott` (DT-F33f kivétel az Online Bible-eredetű Meaning oszlopra), tehát a fordítás levezetett mű CC BY 4.0 szerint; a `sqlite_epit.py` `ADAT_LICENC` szótárában a `glosszak_heber_hu` ma nincs, így az általános betöltő a `projekt_adat` licencet adná neki (K8).
 
-## 6. Kérdések (⛔; tétel: `DONTESEK.md` DT-F140b)
+## 6. Kérdések (⛔; tétel: `DONTESEK.md` DT346)
 
 | # | Kérdés | Opciók | Javaslat |
 |---|---|---|---|
@@ -247,6 +247,6 @@ sorok: 101, kapuhiba: 0
 | K9 | Az „nincs angol szó” kapu | (a) a jelenlegi forrás-alapú közelítés + kivétel-lista · (b) angol szólista behozatala (új dataset, licenc-ellenőrzéssel, playbook 2. pont) | **(a)** |
 | K10 | Hossz-korlát | 50 karakter / 6 szó (a javaslat) · szigorúbb (40 / 5) | a javaslat |
 
-## 7. DT-F140b alkalmazása (2026-10-25, a felhasználó döntése, chat)
+## 7. DT346 alkalmazása (2026-10-25, a felhasználó döntése, chat)
 
-A K1–K10 a `DONTESEK.md` DT-F140b sora szerint eldőlt (a K2, K5, K8 kifejezett megerősítéssel). A napló fenti szövege a döntés előtti állapotot rögzíti; az alkalmazás: `K1` a (B) változat (a próba is ez szerint készült); `K2` a `fo` a TAHOT-többséggel egyező glosszájú sor (`fo_jelolt()`, `tahot_tobbseg()`; a K5-lista a 11 istenneves Strongnál; a 2.2 heurisztika a nem illeszthetőnél; mért: a 1 392 többsoros alapból 1 304 illeszkedik a TAHOT-többséghez, 83 nem, 5 a K5-listán); `K5` a prompt 5. szabálya és az `ISTENNEV_FIX` (a szkript írja be, a modell nem fordítja); `K3` a kettőspont-kapu; a K7 szerint a napló fenti „nincs ilyen szkript” állítása téves volt (l. a K7 sor javítását); a K8-at a #140 nem hajtja végre: javaslat a zárójelentésben.
+A K1–K10 a `DONTESEK.md` DT346 sora szerint eldőlt (a K2, K5, K8 kifejezett megerősítéssel). A napló fenti szövege a döntés előtti állapotot rögzíti; az alkalmazás: `K1` a (B) változat (a próba is ez szerint készült); `K2` a `fo` a TAHOT-többséggel egyező glosszájú sor (`fo_jelolt()`, `tahot_tobbseg()`; a K5-lista a 11 istenneves Strongnál; a 2.2 heurisztika a nem illeszthetőnél; mért: a 1 392 többsoros alapból 1 304 illeszkedik a TAHOT-többséghez, 83 nem, 5 a K5-listán); `K5` a prompt 5. szabálya és az `ISTENNEV_FIX` (a szkript írja be, a modell nem fordítja); `K3` a kettőspont-kapu; a K7 szerint a napló fenti „nincs ilyen szkript” állítása téves volt (l. a K7 sor javítását); a K8-at a #140 nem hajtja végre: javaslat a zárójelentésben.

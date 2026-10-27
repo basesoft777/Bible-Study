@@ -588,3 +588,104 @@ Végrehajtó: `claude-opus-5-5`. Tételenként külön commit (F132.18–F132.24
   eszkozok/ellenoriz.py`: SÉRTÉS 0 (RENDBEN 14, KÉZI 2, JELENTÉS 3).
 - **F132.24 (7. tétel):** a napló F132.13-mondata („csak a 91 sor kézi oszlopai változtak”) alatt pontosítás a mért
   állapottal (numstat 258/258, új oszlop minden sorban + fejléc + kód-hash; tartalmilag csak a 91 sor kézi oszlopai), proveniencia-sorral.
+
+## F142.1 — DT335 (3): a sigla-javaslat jóváhagyásának átvezetése (2026-10-26)
+
+*(proveniencia: `scope=adat/thayer_sigla.tsv (allapot, besorolas_proveniencia, magyar_alak) | forras=manual — felhasználói jóváhagyás (chat, 2026-10-26, az orkesztrátoron át: „1, mehet”); átvezetés: Sonnet 5.5 (claude-sonnet-5-5), eseti szkript (scratchpad, split('\t')) | ts=2026-10-26`)*
+
+- **Átvezetve:** a 91 `javaslat` sor mind `allapot = besorolt`; a `besorolas_proveniencia` a meglévő javaslat-proveniencia tartalmát
+  megtartja, és kiegészül: ` | jóváhagyás: forras=manual — felhasználói jóváhagyás (chat, 2026-10-26); allapot javaslat → besorolt`.
+- **Egy eltérés a javaslattól:** a `Sir.` sor `magyar_alak`-ja `Sir` helyett `Sirák` (a proveniencia-sorban: `magyar_alak
+  felhasználói módosítással: Sir → Sirák`). Ok: a repó eszközei (`eszkozok/lekerdez.py`, `teszt_lekerdez_sir.py`,
+  `eszkozok/nave_bontas.py:33`) a „Sir” alakot a Jeremiás siralmai (JSir) aliasaként kezelik, így a fordításban a „Sir 24” csendben
+  Siralmaknak olvasódna.
+- **Összevetés írás előtt (szkript):** csak a 91 sor `allapot` és `besorolas_proveniencia` mezője, plusz a `Sir.` sor `magyar_alak`-ja
+  változott; a fejléc-/megjegyzéssorok és minden más mező bájtra azonos (a szkript `assert`-tel megállt volna eltérésnél).
+- **Ellenőrzés:** `sigla_gyujt.py --ts 2026-10-25 --ellenoriz` → `ELTÉR`, de ugyanúgy a **kiinduló állapoton** is (a `git stash`-sel
+  mért HEAD is `ELTÉR`): az újragenerált fájl és a tábla egyetlen sorban tér el, a `# forras:` fejléc bemenet-hash-eiben
+  (`thayer_szakaszok@50e03d…` stb. a tábla szerint, `@d71764…` stb. a mostani bemenetekből; az F132 lezárása óta a bemenetek más
+  hash-t adnak ebben a környezetben). Az adatsorok (a 91 + 164) az újragenerálttal **azonosak**. A fejlécsort nem írtam át (gépi
+  sor, nem tartozik a 91 sorhoz); a kiinduló `ELTÉR` pre-existens, az F142.1 nem okozta.
+  A `teszt_bont.py` két hibája (`test_ellenoriz`, `test_forras_javit_ellenoriz`) és a `teszt_lanc.py`
+  `test_tabla_determinisztikus_es_kezi_vedett` hibája ugyanezen a kiinduló eltérésen áll (mérve a kiinduló állapoton is).
+- **Új teszt-hiba az átvezetés következményeként:** `teszt_lanc.py::Adatblokk.test_g1941_reszei` a 216. sorban a `cf.` sor
+  `[besorolatlan a sigla-táblában; …]` jelölését várja (azaz a `javaslat` állapotot rögzíti); a jóváhagyás után az adatblokk helyesen
+  `` `cf.` → `vö.` ``-t ad. A #132 teszt módosítása e feladat hatókörén kívül (brief 2.), ezért nem módosítottam; tétel: `DT350`
+  (`DONTESEK.md`), a fordítás nem függ tőle.
+- **Kapuk a `Sirák` alakkal:** `teszt_forditas_kapuk.py` (90) zöld, `teszt_vers_jelentes.py` (9) zöld; a `Sirák` miatt nincs bukás.
+
+## F142.2 — az M3 futási listája és az első megállás (2026-10-26)
+
+*(proveniencia: `scope=adat/elofordulasok.tsv@f8284bffc6a8 + adat/forditasok.tsv@07f20f3d57c1 + adat/thayer_szakaszok.tsv@d71764889b02 | forras=python eszkozok/thayer_jelolt/forditas.py lista (szolista.py --ts 2026-10-26) | ts=2026-10-26`)*
+
+- **Lista (DT332 (1)):** 13 Strong, mind `forditando` (ok: `nincs_szakaszos`), kihagyott 0: G0012 (2 szakasz), G0086 (4), G0282 (7; régi
+  `kezi` `teljes` sor), G0540 (2), G1311 (6), G1941 (7; `kezi`), G1944 (2; `kezi`), G2671 (3), G4151 (17 szakasz, 3 csoport,
+  `javitassal`; `kezi`), G5010 (6), G5351 (2), G5356 (3), G5590 (10; `kezi`). Az illesztés G4151 kivételével `egyezik`.
+- **G0012, első menet (modell: claude-sonnet-5-5):** az `elokeszit` rendben (2 szakasz, 1 csoport, 14 helyőrző). Az első vázlat
+  kapubukása három javítható ok volt (`8_idezojel`: a forrás `'the deep'` aposztróf-idézetét „…”-ra cseréltem; `16_sigla`: `ibid.`
+  → `uo.`), a javított vázlatnál **két hiba marad**, amely nem a fordításon múlik:
+  1. `11_konyvek` SÉRTÉS (`a forditasbol hianyzik: Sir×2`): a kapu a `normalizal.py` `APOKRIF_ALIAS`-át (`Sir. → Sir`, `Ecclus → Sir`)
+     használja, és a fordításban a `Sir` könyvnevet várja; a felhasználó által jóváhagyott `Sirák` (F142.1) nem felel meg neki. Az
+     érintett Strongok: G0012 (2 hely), G4151 (1 hely). A felhasználó utasítása szerint a `Sirák`-kal bukó kapunál megállás.
+  2. `16_sigla` SÉRTÉS (`Philo -> Philón hiányzik`): a G0012 (és a G0282, G4151) forrásában a `Philo` a „Philo's Lehre von der
+     Weltschöpfung” német műcímben áll (G0012 `⟪2⟫`); a prompt 5. szabálya a műcímet változatlanul hagyja, a 16. kapu viszont
+     minden `Philo`-hoz `Philón`-t vár.
+  Rögzítés nem történt; a `forditasok.tsv` és a munkatábla nem változott.
+
+## F142.3–F142.14 — az M3 fordítása a 10 független Strongra; Mz-mérés (2026-10-26)
+
+*(proveniencia: `scope=G0086, G0540, G1311, G1941, G1944, G2671, G5010, G5351, G5356, G5590 | forras=python eszkozok/thayer_jelolt/forditas.py lista/elokeszit/ellenoriz/rogzit/beir (Sonnet 5.5, claude-sonnet-5-5); eszkozok/ellenoriz.py; eszkozok/feladatok.py ellenoriz; a tesztek; eseti mérőszkript (scratchpad, split('\t')) | ts=2026-10-26`)*
+
+- **F142.3 (DT351 (A)):** a `Sir.` sigla `magyar_alak`-ja vissza `Sir` (a 11. kapuval és a `normalizal.APOKRIF_ALIAS`-szal egyező);
+  a `besorolas_proveniencia` kiegészítve (`magyar_alak felhasználói döntéssel visszaállítva: Sirák → Sir (DT351 (A), chat,
+  2026-10-26)`); írás előtt összevetve: csak ez a sor, csak ez a két mező. N-F142a helyőrző a `NYITOTT_FELADATOK.md`-ben.
+  (B): a G0012, G0282, G4151 vár (a 16. kapu műcím-kérdése külön feladat).
+- **Eredmény (Strongonként; szakasz / csoport / kapu / önújrapróba):**
+
+| Strong | szakasz | csoport | eredmény | önújrapróba | megjegyzés |
+|---|---|---|---|---|---|
+| G0086 | 4 | 1 | kész (F142.4) | 1 (a helyőrző-sorszámozás hibája, `1_gorog_heber`; `16_sigla`: `vol.`, `pp.`) | régi `teljes` sor `elavult` |
+| G0540 | 2 | 1 | kész (F142.5) | 0 | régi `teljes` sor `elavult` |
+| G1941 | 7 | 1 | kész (F142.7) | 0 | régi `kezi` `teljes` sor érvényes (`--kezi-marad`) |
+| G2671 | 3 | 1 | kész (F142.9) | 0 | régi `teljes` sor `elavult` |
+| G5356 | 3 | 1 | kész (F142.12) | 1 (`16_sigla`: ragozott szerzőnevek) | régi `teljes` sor `elavult` |
+| G1311 | 6 | 1 | **bukott** (F142.6) | 1 | `5_terminologia` + `16_sigla` (Homérosz) |
+| G1944 | 2 | 1 | **bukott** (F142.8) | 2 | `11_konyvek` + `16_sigla` (Makk) |
+| G5010 | 6 | 1 | **bukott** (F142.10) | 1 | `11_konyvek` + `16_sigla` (Makk) |
+| G5351 | 2 | 1 | **bukott** (F142.11) | 1 | `5_terminologia` + `16_sigla` (Homérosz) |
+| G5590 | 10 | 1 | **bukott** (F142.13) | 0 (vázlat nélkül) | a fenti két ok a forrásból következik |
+
+- **A bukások oka (a lánc hibája, nem a fordításé; `bukottak.tsv`, DT352):** (i) a 5. kapu a `from Homer down` fordítását
+  `Homérosztól kezdve` alakban köti, a 16. kapu (`_re`, `(?![\w])`) a `Homer` siglához a ragozatlan `Homérosz`-t vár — egyetlen
+  `Homer`-előfordulásnál egyszerre nem teljesíthető; (ii) a `Macc.` -> `Makk` sigla a 16. kapunál önálló szó, a 11. kapu viszont
+  `4Makk` / `2Makk` alakot köt, amelyben a `Makk` a számjegy mögött áll. A 16. kapu ragozást nem tűrő illesztése a fordítható
+  Strongokban is kerülőt kívánt (a szerzőnév mint önálló szó: `Platón, Arisztotelész, Plutarkhosz`; `Aeschylus és Hérodotosz óta`).
+- **Mz — G1941 motívumhelyei (10 hely, ISTENTISZT-001; `adat/elofordulasok.tsv` × `adat/thayer_vers_jelentes.tsv` × a magyar
+  szakaszok):** 1Kor 1:2, 2Tim 2:22, ApCsel 9:14, ApCsel 2:21, Róm 10:13, Róm 10:12 -> sz7 (a hivatkozás a magyar sz7-ben áll);
+  1Pét 1:17 -> sz3 (a hivatkozás a magyar sz3-ban áll); Róm 10:14 (a Thayer nem idézi), ApCsel 9:21 és ApCsel 22:16 (a Thayerben
+  jelöletlen folytatás: `Act 9:14,21; 22:16>`) -> a `thayer_vers_jelentes.tsv`-ben nincs sor, a magyar szöveg a sz7-ben közli az
+  utóbbi kettőt. Az `elofordulasok.tsv` `jelentes_szam` mezője mind a 10 sorban `2` (a régi, jelentésszámos hozzárendelés; e feladat
+  nem módosítja).
+- **`python eszkozok/ellenoriz.py`: SÉRTÉS 1 (13. szabály, 19 sor) — a #132/#128 eszközének hézaga, nem a fordítás hibája.** A 13.
+  szabály (`_szakasz_szoveg`, `eszkozok/ellenoriz.py`) csak a `BDB` `sz<n>` sorokhoz keres forrásszöveget; a Thayer szakaszsorokat
+  `nincs hozzá forrásszöveg` miatt sértésnek veszi: mind a 19 új sor (4+2+7+3+3) és csak azok. A kiinduló állapot SÉRTÉS 0 volt.
+  Tétel: DT353 (az eszköz nem módosult).
+- **`python eszkozok/feladatok.py ellenoriz`:** 164 brief, 0 hiba, 0 figyelmeztetés.
+- **Tesztek:** `teszt_forditas_kapuk.py` (90) és `teszt_vers_jelentes.py` (9) zöld. A `teszt_bont.py` 2 hibája és a
+  `teszt_lanc.py::Sigla.test_tabla_determinisztikus_es_kezi_vedett` a kiinduló (main-en is fennálló) `# forras:` hash-eltérésen áll.
+  A `teszt_lanc.py` két új hibája a valódi futás állapotfüggése (DT350): `Adatblokk.test_g1941_reszei` (a jóváhagyott `cf.`) és
+  `Lanc.test_beir_kezi_marad` (a teszt a G1941 szakaszsorainak hiányát várja a valódi `forditasok.tsv`-ben; a G1941 sorai most már
+  bent vannak, így a „csak hozzáfűzés” összevetés elbukik).
+
+## F142 folytatás (2026-10-27, `claude-sonnet-5-5`, ág `ccr-676ffb53-9qo1to`)
+
+- **F142.20–F142.28:** a lista újrafuttatva (DT332 (1); `lista`, proveniencia: `scope=… | forras=thayer_jelolt/szolista.py | ts=2026-10-27`):
+  8 `forditando` (G0012, G0282, G1311, G1944, G4151, G5010, G5351, G5590), 5 `kihagyva/kesz`. A fordítás a #145 kapujavításai után fut.
+- **Eredmény (szakasz / csoport / kapu / önújrapróba / régi sor):** G0012 2/1/átment/1 (`1_gorog_heber`, `8_idezojel`: kézi javítás a vázlatban)/elavult;
+  G0282 7/1/átment/1 (`5_terminologia` Heb.→héb., `8_idezojel`)/kezi marad; G1311 6/1/átment/0/elavult; G1944 2/1/átment/1 (`16_sigla` ragozás)/kezi marad;
+  G5010 6/1/átment/0/elavult; G5351 2/1/átment/1 (`etc.`→`stb.` idézett angol szövegrészben)/elavult; G5590 10/1/átment/1 (`8_idezojel`: magyar „…”)/kezi marad;
+  G4151 17/3/átment/2 (`9_tagolas`: jelölő sorrend; kézi hibajavítás)/kezi marad. Bukott: 0 (a `bukottak.tsv` 5 korábbi sora feloldva, a fájl üres, fejléccel).
+- **Megjegyzés (nyitott szövegminőség):** a kapu a `Heb.` -> `héb.` kulcsot a G0282 „Bleek on Heb.” helyén is előírja, noha ott a Zsidókhoz írt levél a jelentés;
+  a G5351 angol `R. V. waxeth corrupt etc.` idézetében az `etc.` a 16. kapu miatt `stb.`-re változott. Mindkettő a kapu szóalak-érzékenysége; felhasználói felülvizsgálat tárgya (`kezi` jóváhagyás).
+- **Mz:** `ellenoriz.py` SÉRTÉS 0; `feladatok.py ellenoriz` 165 brief, 0 hiba; `teszt_forditas_kapuk.py` (90) és `teszt_vers_jelentes.py` (9) zöld;
+  `teszt_lanc.py` 1 és `teszt_bont.py` 2 hiba a kiinduló (a változások nélküli ágon is fennálló) `# forras:` hash-eltérés.
