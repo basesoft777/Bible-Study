@@ -6,10 +6,10 @@ tipus: feladat
 fazis: 2
 modell: sonnet
 munka: adat
-allapot: megallt
+allapot: dontesre_var
 ad: a motívumok aktuális görög gerincszavai (a futás pillanatában, DT332 (1)) szakaszonként magyarul a forditasok.tsv-ben (`szotar = Thayer`, `jelentes_szam = sz<n>`), a gátoló kapukon (köztük 14_szakasz, 15_tiltott, 16_sigla) átengedve; a régi `teljes` sorok a DT329 szerint jelölve; újrafuttatható
 ag: ccr-676ffb53-9qo1to
-kovetkezo: "Te: /elteres 142"
+kovetkezo: "Te: [elteres_kor 1/2] DT-F142e (G5351 etc./stb.) döntése; utána /kovetkezo 10. lépés (zárás); a G0282-javítás (F142.31, kész) és a nyitott kezi jóváhagyás (DT290 (3)) külön"
 olvas: [adat/thayer_szakaszok.tsv, adat/thayer_forras_javitas.tsv, adat/thayer_vers_jelentes.tsv, adat/thayer_sigla.tsv, adat/tiltott_fordulatok.tsv, adat/terminologia.tsv, adat/elofordulasok.tsv, adat/karoli_strong/, konkordancia/Karoli_1908.tsv, konkordancia/Strong_szotar.tsv, konkordancia/lexikonok_nyers/Thayer.lexicon, forditas/prompt_v5_1.md, eszkozok/thayer_jelolt/, eszkozok/forditas_kapuk.py, eszkozok/emeles.py, eszkozok/bdb_jelolt/szakasz_bemenet.py, F132_THAYER_SZAKASZ_BRIEF.md]
 ir: [adat/forditasok.tsv, adat/thayer_sigla.tsv, naplok/F132_THAYER_SZAKASZ_munka.tsv, naplok/F132_THAYER_SZAKASZ_bukottak.tsv, naplok/F132_THAYER_SZAKASZ_naplo.md, naplok/F142_zaras.md]
 fugg: [132]
