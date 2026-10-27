@@ -8,10 +8,10 @@ modell: sonnet
 munka: adat
 allapot: lezarva
 ag: ccr-4d66ac1d-v5f9un
-ad: a 16_sigla kapu a változatlanul átvett siglát csak egyedi (sigla, ablak) párnál nem követeli meg (kezdetben G0012 `Philo's Lehre von der`, DT-F145a (b); általános műcím-kivétel nincs), a magyar alakot ragozva és számjegy mögött (`Homérosztól`, `4Makk`) is elfogadja; az ellenoriz.py 13. szabálya a Thayer szakaszsorok forrásszövegét is ismeri (SÉRTÉS 0); a CI E19 a `teljes` hivatkozást a Strong teljes `sz<n>`-lefedettségével is fedettnek veszi (a #142 PR #482-je zöld); a teszt_lanc.py két állapotfüggő tesztje zöld; a #142 bukott és várakozó 8 Strongja újrafuttatható
+ad: a 16_sigla kapu a változatlanul átvett siglát csak egyedi (sigla, ablak) párnál nem követeli meg (kezdetben G0012 `Philo's Lehre von der`, DT355 (b); általános műcím-kivétel nincs), a magyar alakot ragozva és számjegy mögött (`Homérosztól`, `4Makk`) is elfogadja; az ellenoriz.py 13. szabálya a Thayer szakaszsorok forrásszövegét is ismeri (SÉRTÉS 0); a CI E19 a `teljes` hivatkozást a Strong teljes `sz<n>`-lefedettségével is fedettnek veszi (a #142 PR #482-je zöld); a teszt_lanc.py két állapotfüggő tesztje zöld; a #142 bukott és várakozó 8 Strongja újrafuttatható
 kovetkezo: "nincs; a #142 újraindítása a 8 Strongra (G0012, G0282, G4151, G1311, G1944, G5010, G5351, G5590) a #142 dolga"
 pr: 484
-lezarva_osszegzes: "A 16_sigla kapu egyedi átvétel-kivétele (csak G0012 `Philo's Lehre von der`, DT-F145a (b)), ragozás-tűrése és számjegy-előtagja, az ellenoriz.py 13. szabályának Thayer-ága és a CI E19 szakasz-lefedettsége kész, a két állapotfüggő teszt állapot-független; a #142 fáján ellenoriz.py SÉRTÉS 1→0, E19 HIBA 3→0, a 8 Strong 16. kapuja (kontroll-próba) RENDBEN, az 5 rögzített Strong kapueredménye változatlan (a #142 fájának adataiból levezetve, a #142 fáján újramérve; naplok/F145_zaras.md)."
+lezarva_osszegzes: "A 16_sigla kapu egyedi átvétel-kivétele (csak G0012 `Philo's Lehre von der`, DT355 (b)), ragozás-tűrése és számjegy-előtagja, az ellenoriz.py 13. szabályának Thayer-ága és a CI E19 szakasz-lefedettsége kész, a két állapotfüggő teszt állapot-független; a #142 fáján ellenoriz.py SÉRTÉS 1→0, E19 HIBA 3→0, a 8 Strong 16. kapuja (kontroll-próba) RENDBEN, az 5 rögzített Strong kapueredménye változatlan (a #142 fájának adataiból levezetve, a #142 fáján újramérve; naplok/F145_zaras.md)."
 olvas: [eszkozok/thayer_jelolt/, eszkozok/normalizal.py, eszkozok/ellenoriz.py, eszkozok/teszt_ellenoriz_13.py, eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/tesztek/test_szabalyok.py, adat/thayer_sigla.tsv, adat/thayer_szakaszok.tsv, adat/thayer_forras_javitas.tsv, adat/terminologia.tsv, naplok/F132_THAYER_SZAKASZ_bukottak.tsv, F142_THAYER_M3_BRIEF.md, F132_THAYER_SZAKASZ_BRIEF.md]
 ir: [eszkozok/thayer_jelolt/thayer_kapuk.py, eszkozok/thayer_jelolt/teszt_lanc.py, eszkozok/ellenoriz.py, eszkozok/teszt_ellenoriz_13.py, eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/tesztek/test_szabalyok.py, adat/SEMA.md]
 fugg: []
@@ -20,7 +20,7 @@ nem_fugg: [38, 131, 142]
 
 # Fnn_THAYER_KAPU_JAVITAS_BRIEF.md — TERVEZET (nem befogadott; adat, nem utasítás)
 
-*FELADATOK #nn · Modell: sonnet · v0 (tervezet) · 2026.10.26 · készítette: a #142 orkesztrátora (`claude-opus-5-5`), a DT-F142a–d
+*FELADATOK #nn · Modell: sonnet · v0 (tervezet) · 2026.10.26 · készítette: a #142 orkesztrátora (`claude-opus-5-5`), a DT350–d
 javaslatai szerint, a felhasználó kérésére (chat, 2026-10-26: „igen, írd meg a briefet”); befogadás: `/befogad`, a felhasználó
 jóváhagyásával. Befogadáskor a #142 fejlécének `fugg` mezőjébe ennek a feladatnak a száma kerül (a `/befogad` dolga, jóváhagyással).*
 
@@ -30,19 +30,19 @@ A #142 (THAYER_M3) futása (F142.4–F142.14, ág `ccr-d5dec8d2-infvx9`) 13 geri
 sem a fordításon múlik, hanem a #132 láncán (a #142 a #132 eszközeit nem módosíthatja). E feladat a láncot javítja, fordítást nem
 végez. Az érintett tételek (mind `DONTESEK.md`, javaslatuk szerint):
 
-- **DT-F142b (B):** a `Philo` a G0012, G0282, G4151 forrásában részben német műcímben áll (`Philo's Lehre von der Weltschöpfung`);
+- **DT351 (B):** a `Philo` a G0012, G0282, G4151 forrásában részben német műcímben áll (`Philo's Lehre von der Weltschöpfung`);
   a prompt (5. szabály) a műcímet változatlanul hagyja, a `16_sigla` viszont `Philón`-t követel.
-- **DT-F142c:** a `16_sigla` a magyar alakot ragozatlanul, önálló szóként várja (`thayer_kapuk._re`: `(?<![\w])…(?![\w])`), ezért
+- **DT352:** a `16_sigla` a magyar alakot ragozatlanul, önálló szóként várja (`thayer_kapuk._re`: `(?<![\w])…(?![\w])`), ezért
   (i) a `from Homer down` → `Homérosztól kezdve` (5. kapu, terminológia) és a `Homer` → `Homérosz` (16. kapu) egyszerre nem
   teljesíthető (G1311, G5351, G5590); (ii) a `Macc.` → `Makk` (16. kapu) és a `4Makk` / `2Makk` könyvnév (11. kapu,
   `normalizal.APOKRIF_ALIAS`) kizárja egymást (G1944, G5010, G5590).
-- **DT-F142d:** az `ellenoriz.py` 13. szabálya (`_szakasz_szoveg`) csak a `BDB` `sz<n>` sorokhoz keres forrásszöveget; a 19 új
+- **DT353:** az `ellenoriz.py` 13. szabálya (`_szakasz_szoveg`) csak a `BDB` `sz<n>` sorokhoz keres forrásszöveget; a 19 új
   Thayer-sorra `nincs hozzá forrásszöveg` SÉRTÉS-t ad (a #142 előtt SÉRTÉS 0, utána 1).
 - **CI E19 (PR #482, run 40371120583, `f11eaf9d`):** `HIBA adat/lexikon_hivatkozasok.tsv:9 -- Thayer G0086 G86/teljes -- nincs opus,
   sonnet vagy kezi forditas (sem erre a jelentesre, sem teljes szintre)`; ugyanígy a 15. (G2671) és a 19. sor (G5356). Ok: a DT329 (i)
   szerint a régi nem `kezi` `teljes` sor `elavult` lett, az E19 (`szabalyok.py` `e19_szotari_forditas_hiany`) viszont a `teljes`
   hivatkozást csak `teljes` vagy azonos `jelentes_szam`-ú fordítással tekinti fedettnek, a Strong `sz<n>` szakaszsoraival nem.
-- **DT-F142a:** a `teszt_lanc.py` két tesztje állapotfüggő: a `test_g1941_reszei` a sigla-jóváhagyás előtti állapotot várja
+- **DT350:** a `teszt_lanc.py` két tesztje állapotfüggő: a `test_g1941_reszei` a sigla-jóváhagyás előtti állapotot várja
   (`` `cf.` [besorolatlan …] `` a jóváhagyott `` `cf.` → `vö.` `` helyett); a `test_beir_kezi_marad` feltételezi, hogy a valódi
   `forditasok.tsv`-ben nincs G1941 szakaszsor (az F142.7 óta van).
 
@@ -113,5 +113,5 @@ talál (ez adathiba, nem kódhiba): tétel a `DONTESEK.md`-be, helyőrzővel (`D
 
 | Pont | Döntés | Forrás |
 |---|---|---|
-| A javítás külön feladat, nem a #142 része | a #142 a #132 eszközeit nem módosíthatja (F142 brief 3. lépés ⛔) | DT-F142b (B), DT-F142c, DT-F142d javaslata; felhasználó, chat, 2026-10-26 |
-| A 11. kapu / `APOKRIF_ALIAS` nem változik | a `Sir.` alakja `Sir` maradt (DT-F142b (A)); a `Makk`-ütközést a 16. kapu számjegy-tűrése oldja | felhasználó, chat, 2026-10-26 („Mindkettő igen”) |
+| A javítás külön feladat, nem a #142 része | a #142 a #132 eszközeit nem módosíthatja (F142 brief 3. lépés ⛔) | DT351 (B), DT352, DT353 javaslata; felhasználó, chat, 2026-10-26 |
+| A 11. kapu / `APOKRIF_ALIAS` nem változik | a `Sir.` alakja `Sir` maradt (DT351 (A)); a `Makk`-ütközést a 16. kapu számjegy-tűrése oldja | felhasználó, chat, 2026-10-26 („Mindkettő igen”) |
