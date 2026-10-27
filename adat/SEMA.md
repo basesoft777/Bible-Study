@@ -1497,7 +1497,7 @@ Olvasás `split('\t')`.
 
 Kulcs: `magyar_alak` + `verzio`. Állapot (F132, 2026-10-25): 2 tétel (a DT241 / F121 2a/2 első elemei: „melléknéven nevezni”,
 „melléknevet adni”); a `forditasok.tsv`-ben a kapu 4 helyen talál, mind a G1941 két sorában (Thayer `teljes`, TBESG `1`; F121 2b/4),
-a 98 nyelvtani „melléknév” sor nem találat. A tartalmat a #121 bővíti.
+a 98 nyelvtani „melléknév” sor nem találat. A tartalmat a #121 bővíti. *(F131.3.5, DT-F131i: 3 tétel; a „melléknéven nevezni” és a „melléknevet adni” `helyette`-je v2 („elnevezni, nevezni”; „nevet adni”), új tétel: „nevet tenni valakire” — a találat a `forditasok.tsv`-ben csak a G1941 sorain: Thayer `teljes` és `sz3`.)*
 
 
 ### 2.37 `thayer_sigla.tsv` — a Thayer sigla- és rövidítéstáblája (F132, brief 2a/5)

@@ -617,6 +617,13 @@ class Tiltott(unittest.TestCase):
                   'hívni, nevezni, melléknevet adni', 'melléknevet adott neki', 'nevezték melléknéven is'):
             self.assertEqual(K.ellenoriz_tiltott(s)[0], 'SERTES', s)
 
+    def test_nevet_tenni_valakire(self):
+        # DT-F131i: a „to put a name upon” tükörfordítása; az „elnevezni” és a passzív alak rendben
+        for s in ('nevet tenni valakire', 'nevet tettek rá', 'nevet tett valakire'):
+            self.assertEqual(K.ellenoriz_tiltott(s)[0], 'SERTES', s)
+        for s in ('elnevezni valakit', 'nevet adni valakinek', 'akit Péternek is neveznek'):
+            self.assertEqual(K.ellenoriz_tiltott(s)[0], 'RENDBEN', s)
+
     def test_nyelvtani_melleknev_rendben(self):
         for s in ('melléknév, hímnemű', 'melléknévként használva', 'melléknévi igenév', 'a melléknév nőnemű alakja',
                   'más néven is nevezni', 'akit Péternek is neveznek'):
