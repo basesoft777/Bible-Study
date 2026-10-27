@@ -676,3 +676,16 @@ Végrehajtó: `claude-opus-5-5`. Tételenként külön commit (F132.18–F132.24
   A `teszt_lanc.py` két új hibája a valódi futás állapotfüggése (DT-F142a): `Adatblokk.test_g1941_reszei` (a jóváhagyott `cf.`) és
   `Lanc.test_beir_kezi_marad` (a teszt a G1941 szakaszsorainak hiányát várja a valódi `forditasok.tsv`-ben; a G1941 sorai most már
   bent vannak, így a „csak hozzáfűzés” összevetés elbukik).
+
+## F142 folytatás (2026-10-27, `claude-sonnet-5-5`, ág `ccr-676ffb53-9qo1to`)
+
+- **F142.20–F142.28:** a lista újrafuttatva (DT332 (1); `lista`, proveniencia: `scope=… | forras=thayer_jelolt/szolista.py | ts=2026-10-27`):
+  8 `forditando` (G0012, G0282, G1311, G1944, G4151, G5010, G5351, G5590), 5 `kihagyva/kesz`. A fordítás a #145 kapujavításai után fut.
+- **Eredmény (szakasz / csoport / kapu / önújrapróba / régi sor):** G0012 2/1/átment/1 (`1_gorog_heber`, `8_idezojel`: kézi javítás a vázlatban)/elavult;
+  G0282 7/1/átment/1 (`5_terminologia` Heb.→héb., `8_idezojel`)/kezi marad; G1311 6/1/átment/0/elavult; G1944 2/1/átment/1 (`16_sigla` ragozás)/kezi marad;
+  G5010 6/1/átment/0/elavult; G5351 2/1/átment/1 (`etc.`→`stb.` idézett angol szövegrészben)/elavult; G5590 10/1/átment/1 (`8_idezojel`: magyar „…”)/kezi marad;
+  G4151 17/3/átment/2 (`9_tagolas`: jelölő sorrend; kézi hibajavítás)/kezi marad. Bukott: 0 (a `bukottak.tsv` 5 korábbi sora feloldva, a fájl üres, fejléccel).
+- **Megjegyzés (nyitott szövegminőség):** a kapu a `Heb.` -> `héb.` kulcsot a G0282 „Bleek on Heb.” helyén is előírja, noha ott a Zsidókhoz írt levél a jelentés;
+  a G5351 angol `R. V. waxeth corrupt etc.` idézetében az `etc.` a 16. kapu miatt `stb.`-re változott. Mindkettő a kapu szóalak-érzékenysége; felhasználói felülvizsgálat tárgya (`kezi` jóváhagyás).
+- **Mz:** `ellenoriz.py` SÉRTÉS 0; `feladatok.py ellenoriz` 165 brief, 0 hiba; `teszt_forditas_kapuk.py` (90) és `teszt_vers_jelentes.py` (9) zöld;
+  `teszt_lanc.py` 1 és `teszt_bont.py` 2 hiba a kiinduló (a változások nélküli ágon is fennálló) `# forras:` hash-eltérés.
