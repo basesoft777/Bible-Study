@@ -168,8 +168,35 @@ Egy későbbi #133 / #144 / #140 futás után ugyanez a mérés megmutatja, vál
 ### 4.6 Egyéb
 
 - `ellenoriz.py` 13. és 17. szabály: RENDBEN; `python eszkozok/feladatok.py ellenoriz`: 164 brief, 0 hiba.
-- A Thayer magyar szövege a kézi határokból jön (a #142 nem futott); a lap ezt kimondja.
+- A Thayer magyar szövege a kézi határokból jön (a #142 nem futott); a lap ezt kimondja. *(Az F131.3.6 óta tárgytalan: l. 5.)*
 
-## 5. ⛔ 3.1 — DT-F131f: az elfogadási próba
+## 5. Javítás a ⛔ 3.1 előtt (F131.3.1–F131.3.7)
 
-A felhasználó a renderelt próbalapot olvassa. A kérdés: *a szó jelentését és a hely motívumbeli funkcióját két külön dolognak látja-e?* Ugyanitt dönt a címkék szövegéről (3.1) és a 4.2 kérdéséről (az 56.15-ös kód). A végrehajtás itt áll.
+**F131.3.1–3.5 (az orkesztrátor menete):** a Thayer 1. rész címkéje „elnevezni” (a „melléknéven nevezni” és a „más néven nevezni” sem természetes magyar); DT-F131i eldöntve (a): a `tiltott_fordulatok.tsv` `helyette` oszlopa javítva, új tétel „nevet tenni valakire”. A main beolvasztva; benne a #142 (PR #485): a G1941 szakaszonkénti magyar Thayer-szövege (`forditasok.tsv` `Thayer G1941 sz1…sz7`, `sonnet`).
+
+**F131.3.6 (a felhasználó jóváhagyásával, az orkesztrátoron át):** a Thayer-gerinc a DT-F131c 1. opciójára áll át.
+- A magyar Thayer-szöveg a #142 `sz<n>` soraiból jön (nem `elavult`); ahol nincs sor, ott angol szöveg és `(fordításra vár)` áll. A `teljes` sor kézi szeletelése megszűnt.
+- `adat/szotar_szakasz_cimke.tsv`: 13 → 8 sor. A `hu_kezdet`, `hu_hossz`, `forditas_hash` oszlop és az 5 címke nélküli Thayer-sor kivezetve; a Thayer 1. „elnevezni” (DT-F131i) és 5. címkéje marad. Az író (`naplok/F131_cimke_ir.py`) határszámítása kivezetve. SEMA 2.40 igazítva.
+- `ellenoriz.py` 17. szabály: a határ-ellenőrzés kivezetve; új: a címke a `tiltott_fordulatok.tsv` mintáit sem tartalmazhatja. Futás: RENDBEN, SÉRTÉS 0.
+- Új a generátorban: a gerinc magyar szövegében a `tiltott_fordulatok.tsv` mintáinak találata „ismert hiány”-ként a kutatói megjegyzésbe kerül; a szöveget a lap nem írja át.
+- Tesztek: `teszt_szotari_gerinc.py` 23 eset OK (új: a Thayer `sz` forrása, a hiányzó `sz` sor, a tiltott fordulat jelölése, a 17. szabály tiltott-fordulat ága); `teszt_forditas_kapuk`, `teszt_szerepmatrix`, `teszt_ellenoriz_13`, `teszt_lexikon_adatres` OK. Nulla-diff (`nulladiff.sh 77bad810 2026-10-27`): csak az ISTENTISZT-001 lap tér el.
+
+**Ismert hiány (nem e feladat javítja):** a G1941 `sz3` (Thayer 1. rész) magyar szövege a tiltott „nevet tenni valakire, más néven is nevezni” alakot tartalmazza (a #142 a korábbi `helyette`-javaslatot vette át, DT-F131i). A javítás a #142 újrafuttatása, külön menetben; a #131 a `forditasok.tsv`-hez nem nyúl. A próbalap a Thayer-gerinc kutatói megjegyzésében jelöli.
+
+### 5.1 Az új próba mérése (F131.3.7)
+
+`PARDES_DATUM=2026-10-27 python eszkozok/general.py --cel lexikon --id ISTENTISZT-001 --kimenet <scratchpad/proba3>` (a repón kívül); `python naplok/F131_proba_meres.py <könyvtár>`.
+
+`scope=ISTENTISZT-001 próbarender | forras=naplok/F131_proba_meres.py; general.py --kimenet (PARDES_DATUM=2026-10-27) | ts=2026-10-27 18:11`
+
+- Tiltott keretezés: 0.
+- `(fordításra vár)`: 65 → 1 (a G1941 UBS-doménsorának 56.15-ös kódja; változatlan, l. 4.2).
+- A 32 sor: mind címkés az elsődleges tokenen; a cellák változatlanok a 4.3-hoz képest.
+- Kiemelés: BDB H7121 9/9, H8034 5/6 (a meg nem talált: sorszam 3, 1Móz 12:8, `fej`), Thayer G1941 7/7 (most a #142 magyar szövegében: 1Pét 1:17 az 1. részben, a többi 6 az 5.-ben).
+- Tiltott fordulat a gerinc magyar szövegében: 1 — Thayer 1 (`sz3`): „nevet tenni valakire” (ismert hiány, a lapon jelölve).
+- Hash-rögzítés: változatlan (4.5).
+- HTML-nézet (privát Artifact, ugyanaz az URL): https://claude.ai/artifact/QVHPBrCJWkSP7pT8z363vy
+
+## 6. ⛔ 3.1 — DT-F131f: az elfogadási próba
+
+A felhasználó a renderelt próbalapot olvassa. A kérdés: *a szó jelentését és a hely motívumbeli funkcióját két külön dolognak látja-e?* Ugyanitt dönt a címkék szövegéről (3.1) és a 4.2 kérdéséről (az 56.15-ös kód). A próbalap az 5.1 szerinti (F131.3.7). A végrehajtás itt áll.

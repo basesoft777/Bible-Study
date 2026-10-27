@@ -130,6 +130,8 @@ def main():
         for x in napl['nem_talalt']:
             print('    NEM TALÁLT: %s' % x)
         print('    nem idézi: %s' % ', '.join(napl['nem_idezett']))
+        for x in napl.get('tiltott', []):
+            print('    TILTOTT FORDULAT (ismert hiány): %s' % x)
 
     print('\n## 5. Hash-rögzítés (DT-F131h, DT-F131a (iv))')
     for rel in ('adat/bdb_szakaszok.tsv', 'adat/bdb_szakasz_hu.tsv', 'adat/glosszak_heber_hu.tsv'):
