@@ -112,6 +112,29 @@ class Cimkeforras(unittest.TestCase):
         self.assertIn('H8034: *(nincs hozzárendelés)*', cella)
         self.assertIn('nincs kutatói hozzárendelés', ik)
 
+    def test_tobb_token_a_versben(self):
+        # ELLENOR_SZOTARI_GERINC 1. (7.4a): a versszintű BDB-példa nem kerül a tokenre, ha a Strongnak a versben
+        # >=2 tokenje van; kutatói hozzárendelés nélkül a cella kimondott hiány, az ⓘ az okot mondja
+        sz = {'H8034': [{'strong': 'H8034', 'sorszam': '10', 'utvonal': '-/4/-', 'jel': '4', 'szoveg': 'false gods'}]}
+        a = adat((cimke_sor('BDB', 'H8034', '-/4/-', '', 'név: hamis istenekről'),),
+                 [vj_sor('H8034', 208, '1Kir 18:24', '-/4')], sz)
+        c, j, i = LG.jelentes_cimke_token(a, 'BDB', 'H8034', '', '1Kir 18:24', False)
+        self.assertEqual((c, j), ('név: hamis istenekről', '4'))
+        a['token_szam'] = {('1Kir 18:24', 'H8034'): 2}
+        c, j, i = LG.jelentes_cimke_token(a, 'BDB', 'H8034', '', '1Kir 18:24', False)
+        self.assertEqual((c, j), (None, ''))
+        self.assertIn('a versben a szó kétszer áll', i)
+        self.assertIn('sorszam 208', i)
+        self.assertNotIn('BDB-példa: a BDB', i)
+        # kutatói hozzárendeléssel a címke a kutatóié, a BDB-példa nem
+        a2 = adat(ALAP_CIMKEK, [vj_sor('H7121', 92, '1Móz 4:26', 'Qal/2/c')], ALAP_SZ)
+        a2['token_szam'] = {('1Móz 4:26', 'H7121'): 2}
+        c, j, i = LG.jelentes_cimke_token(a2, 'BDB', 'H7121', '2.c', '1Móz 4:26', True)
+        self.assertEqual((c, j), ('segítségül hívni', 'Qal 2.c'))
+        self.assertIn('kutatói hozzárendelés', i)
+        self.assertIn('kétszer áll', i)
+        self.assertNotIn('verstartomány belsejében', i)
+
     def test_lekepezetlen_kutatoi_kulcs(self):
         a = adat(ALAP_CIMKEK, [], ALAP_SZ)
         cella, ik = LG.jelentes_cella(a, elo('Zak 13:9', '7.z', strong='H7121'))
@@ -336,6 +359,32 @@ class ValodiAdat(unittest.TestCase):
         self.assertIn('sorszam 99)', ik)
         self.assertIn('sorszam 208)', ik)
         self.assertNotIn('sorszam 97)', ik)
+
+    def test_1kir_18_24_h8034_nem_a_tokenen(self):
+        # ELLENOR_SZOTARI_GERINC 1. (7.4a): a versben két H8034 áll (a ti isteneitek neve, az Úr neve); a BDB 4
+        # (hamis istenekről) versszintű példája nem kerülhet a sor tokenjére
+        _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
+        s = next(r for r in elo_sorok if r['id'] == 'ISTENTISZT-001' and r['igehely'] == '1Kir 18:24')
+        cella, ik = LG.jelentes_cella(LG.gerinc_adat(), s)
+        self.assertIn('H8034: *(nincs hozzárendelés)*', cella)
+        self.assertNotIn('hamis istenekről', cella)
+        self.assertIn('H8034 — a BDB a verset a(z) 4 szakaszban idézi', ik)
+        self.assertIn('kétszer áll', ik)
+
+    def test_tobb_token_szabaly_merete(self):
+        # a 32 sorból a szabály két sort érint (1Móz 4:26, 1Kir 18:24), mindkettőn mindkét H-tokent
+        _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
+        a = LG.gerinc_adat()
+        erint = set()
+        for s in elo_sorok:
+            if s['id'] != 'ISTENTISZT-001':
+                continue
+            for t in s['strong'].split('+'):
+                for v in LG.igehely_lista(s['igehely']):
+                    if t.startswith('H') and LG.bdb_peldak(a, t, v) and a['token_szam'].get((v, t), 0) >= 2:
+                        erint.add((s['igehely'], t))
+        self.assertEqual(erint, {('1Móz 4:26', 'H7121'), ('1Móz 4:26', 'H8034'),
+                                 ('1Kir 18:24', 'H7121'), ('1Kir 18:24', 'H8034')})
 
     def test_2moz_33_19(self):
         _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)

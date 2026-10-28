@@ -1766,6 +1766,8 @@ BDB_SZAKASZOK_FAJL = 'adat/bdb_szakaszok.tsv'
 BDB_SZAKASZ_HU_FAJL = 'adat/bdb_szakasz_hu.tsv'
 BDB_VERS_JELENTES_FAJL = 'adat/bdb_vers_jelentes.tsv'
 BDB_FORRAS_JAVITAS_FAJL = 'adat/bdb_forras_javitas.tsv'
+TAHOT_KIVONAT_FAJL = 'konkordancia/TAHOT_kivonat.tsv'
+_HANYSZOR = {2: 'kétszer', 3: 'háromszor', 4: 'négyszer', 5: 'ötször'}
 THAYER_SZAKASZOK_FAJL = 'adat/thayer_szakaszok.tsv'
 THAYER_VERS_JELENTES_FAJL = 'adat/thayer_vers_jelentes.tsv'
 GLOSSZAK_HEBER_HU_FAJL = 'adat/glosszak_heber_hu.tsv'
@@ -1866,8 +1868,15 @@ def gerinc_adat():
         if r.get('fo') == 'igen':
             glossza[r['strong']] = r
     tiltott = be(TILTOTT_FORDULATOK_FAJL)
+    # ELLENOR_SZOTARI_GERINC 1. (7.4a): a héber Strong tokenjeinek száma a Károli-versben (a TAHOT kulcsa a
+    # Károli-vers, F85.6); a versszintű BDB-példa csak egytokenes versben kerülhet a sor tokenjére
+    token_szam = {}
+    for r in L.load_tahot():
+        k = (r['Igehely'], r['Strong-szám'])
+        token_szam[k] = token_szam.get(k, 0) + 1
     _gerinc_adat_cache = {'cimke': cimke, 'bdb_sz': bdb_sz, 'bdb_hu': bdb_hu, 'bdb_vj': bdb_vj,
-                          'th_sz': th_sz, 'th_vj': th_vj, 'glossza': glossza, 'tiltott': tiltott}
+                          'th_sz': th_sz, 'th_vj': th_vj, 'glossza': glossza, 'tiltott': tiltott,
+                          'token_szam': token_szam}
     return _gerinc_adat_cache
 
 
@@ -1948,6 +1957,19 @@ def jelentes_cimke_token(adat, szotar, strong, jelentes_szam, vers, kutatoi_toke
         return None, '', ('a kutatói jelentésszám („%s”) nincs leképezve a %s tagolására (`%s`)'
                           % (kulcs, szotar, SZAKASZ_CIMKE_FAJL))
     peldak = bdb_peldak(adat, strong, vers) if szotar == 'BDB' else []
+    tobb_token = []
+    n_token = (adat.get('token_szam') or {}).get((vers, strong), 0)
+    if peldak and n_token >= 2:
+        # ELLENOR_SZOTARI_GERINC 1. (7.4a): a BDB-példa versszintű (a 2.29 nem jelöli a szót); ha a versben a
+        # Strongnak több tokenje van, a példa nem rendelhető a sor tokenjéhez — a címke nem a BDB-példából jön
+        tobb_token.append('a BDB a verset a(z) %s szakaszban idézi (`%s` sorszam %s), de a versben a szó %s áll '
+                          '(`%s`), és a szótár nem jelöli, melyikre gondol; a BDB-példa ezért nem kerül erre a '
+                          'tokenre' % (', '.join(sorted({szakasz_jel(_bdb_sor_utvonal(adat, strong,
+                                                                                       gerinc_utvonal_vag(r['utvonal']))
+                                                                      or r['utvonal']) for r in peldak})),
+                                       BDB_VERS_JELENTES_FAJL, ', '.join(r['sorszam'] for r in peldak),
+                                       _HANYSZOR.get(n_token, '%d alkalommal' % n_token), TAHOT_KIVONAT_FAJL))
+        peldak = []
     pelda_utak = sorted({gerinc_utvonal_vag(r['utvonal']) for r in peldak})
     if len(pelda_utak) > 1:
         raise GerincHiba('%s %s: a BDB-példák több útvonalra mutatnak (%s): kézi kérdés' % (strong, vers, pelda_utak))
@@ -1984,11 +2006,13 @@ def jelentes_cimke_token(adat, szotar, strong, jelentes_szam, vers, kutatoi_toke
         ip.append('kutatói hozzárendelés a %s tagolása szerint (`elofordulasok.tsv` jelentes_szam „%s” → %s, `%s`)'
                   % (szotar, kulcs, ('' if szotar == 'BDB' else szotar + ' ') + szakasz_jel(kut_ut),
                      SZAKASZ_CIMKE_FAJL))
-        if szotar == 'BDB':
+        ip.extend(tobb_token)
+        # a vers közvetlenül idézett (csak a token bizonytalan): a „nem önállóan idézi” tartomány-mondat nem igaz rá
+        if szotar == 'BDB' and not tobb_token:
             ip.extend(bdb_tartomanyban(adat, strong, vers))
     else:
-        tart = bdb_tartomanyban(adat, strong, vers) if szotar == 'BDB' else []
-        return None, '', '; '.join(tart)
+        tart = bdb_tartomanyban(adat, strong, vers) if szotar == 'BDB' and not tobb_token else []
+        return None, '', '; '.join(tobb_token + tart)
     if minosito:
         ip.append('a kutatói jelentésszám minősítője („%s”) nem a szó jelentése, a címkébe nem kerül (N-F131b)'
                   % minosito)
