@@ -88,3 +88,11 @@ A „call” szó önmagában többjelentésű, ezért erre nincs kapus sor; a n
 - **Más lapok:** az új `UBS_DBH` H7121/H8034 sorok a többi lapot is érinthetik, ha azokon ugyanez a lexid szerepel; az élő lapok újragenerálása nem történt meg, a hatás a #36-é.
 
 **⛔ Olvasás:** a próbarender: `F121_proba_ISTENTISZT-001_TUDOMANYOS.md` a közös jegyzetmappában. Az élő `lexikon/ISTENTISZT-001_TUDOMANYOS.md` felülírása a felhasználó döntésére vár.
+
+## 5. F121.3 — a #131 helyőrzőinek cseréje az `eszkozok/` alatt (2026-10-28)
+
+*Felhasználó, 2026-10-28 (az orkesztrátor chatjében, szó szerint idézve): „Mehet: a próbalapot elfogadom. Előbb a generátorban (és a teszt/forrás-kommentekben) a DT-F131k/c/l helyőrzőket cseréld a végleges DT381/DT373/DT382-re (az ir bővítésével, mechanikus), utána az élő lap felülírása, nulladiff, CI, független ellenőr és draft PR.”*
+
+A megfeleltetés a `szamkiosztas: … ` commit (f3f9372b) üzenetéből és a `DONTESEK.md` sorokból: a→371, b→372, c→373, d→374, e→375, **h→376, f→377**, g→378, i→379, j→380, k→381, l→382, m→383, n→384, o→385; DT-F141a→370 (a h/f sorrend nem betűrendes). Csere: csak az `eszkozok/` fájljaiban, szóhatáros regexszel. Cserélt helyőrzők (előfordulás): DT-F131a ×8, b ×3, c ×4, d ×4, i ×3, j ×4, k ×11, l ×11, m ×4, n ×1, DT-F141a ×2 — 13 fájlban (a lista a brief `ir` mezőjében). A `naplok/`, brief és más dokumentumokban maradt helyőrzők nem e menet hatóköre.
+
+Tesztek: `teszt_forditas_kapuk` 110 OK, `teszt_szerepmatrix` 44 OK, `teszt_szotari_gerinc` 39 OK. Két teszt a csere előtt is bukik ezen az ágon (a cserétől független, a stash-sel mérve): `bdb_jelolt/teszt_bont.py` 4 hiba, `olvaso_szerver/teszt_bdb_vers_jelentes.py` `test_bajtra_azonos` — a bemeneti fájlok hash-e tér el (Windows-checkout sorvége), nem a `forditasok.tsv`.

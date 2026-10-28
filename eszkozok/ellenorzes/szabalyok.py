@@ -2378,7 +2378,7 @@ SZABALYOK_FUGGVENYEI['E31'] = e31_forras_tanulmany_letezik
 
 
 # ---------------------------------------------------------------------------
-# E32 -- kiosztott helyorzo egy kimeneti string-literalban (#141, DT-F141a)
+# E32 -- kiosztott helyorzo egy kimeneti string-literalban (#141, DT370)
 # ---------------------------------------------------------------------------
 # A `szamkiosztas` Action a helyorzoket (DT-F.., N-F.., D-F..) csak az .md/.tsv
 # fajlokban szamozza at; az eszkozok/**/*.py string-literaljait nem. Ami egy

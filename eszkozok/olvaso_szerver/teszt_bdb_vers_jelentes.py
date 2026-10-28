@@ -31,7 +31,7 @@ class Hivatkozasok(unittest.TestCase):
                          [('1Móz', 18, 18, 'kiirt'), ('1Móz', 18, 25, 'folytatas'), ('1Móz', 22, 18, 'orokolt'), ('2Móz', 4, 2, 'kiirt')])
 
     def test_tartomany_utani_folytatas(self):
-        # DT-F131l (A): a tartomány („-25”) után álló folytatás („, 26”) sor lesz; a tartományt nem bontja ki
+        # DT382 (A): a tartomány („-25”) után álló folytatás („, 26”) sor lesz; a tartományt nem bontja ki
         h = B.hivatkozasok('H9999. x אב noun call 1Kin 18:24-25, 26; 2Kin 5:11; 4:25-26 x.')
         self.assertEqual([(x['konyv'], x['c'], x['v'], x['konyv_mod'], x['nyers']) for x in h],
                          [('1Kir', 18, 24, 'kiirt', '1Kin 18:24'), ('1Kir', 18, 26, 'folytatas', ', 26'),
@@ -248,7 +248,7 @@ class Tabla(unittest.TestCase):
         self.assertEqual((x[i['mt_vers']], x[i['okkod']], x[i['szurt']]), ('Jóel 1:4', 'forras_hiba', '0'))
 
     def test_forras_javitas_kezi_sorbol(self):
-        # DT-F131k (a): a 2.31 hivatkozas_kezi sora (H8034 „26:35” → 26:25) a feloldott verset javítja; a nyers a forrás alakja
+        # DT381 (a): a 2.31 hivatkozas_kezi sora (H8034 „26:35” → 26:25) a feloldott verset javítja; a nyers a forrás alakja
         i = {k: n for n, k in enumerate(V.FEJ)}
         x = sor(self.sorok, strong='H8034', nyers='26:35')[0]
         self.assertEqual((x[i['mt_vers']], x[i['karoli_vers']], x[i['okkod']], x[i['szurt']], x[i['utvonal']]),
@@ -256,7 +256,7 @@ class Tabla(unittest.TestCase):
         self.assertFalse(sor(self.sorok, strong='H8034', karoli_vers='1Móz 26:35'))
 
     def test_tartomany_utani_folytatas_a_tablaban(self):
-        # DT-F131l (A): „1Kin 18:24-25, 26” → a 18:26 sor (folytatas); a 18:25 (tartomány) nem
+        # DT382 (A): „1Kin 18:24-25, 26” → a 18:26 sor (folytatas); a 18:25 (tartomány) nem
         x = sor(self.sorok, strong='H8034', karoli_vers='1Kir 18:26')
         self.assertEqual([(s[V.FEJ.index('nyers')], s[V.FEJ.index('konyv_feloldas')]) for s in x], [(', 26', 'folytatas')])
         self.assertFalse(sor(self.sorok, strong='H8034', karoli_vers='1Kir 18:25'))

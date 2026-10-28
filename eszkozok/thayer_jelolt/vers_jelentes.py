@@ -8,7 +8,7 @@ bekezdésé (`thayer_jelolt/bont.py` szerkezete, a `thayer_szakaszok.tsv` `stron
 egyezik; az ÓSZ-hivatkozások (LXX-utalás) Károli-megfelelője csak a vers létezését méri, átkulcsolás nincs (a naplóban mérve).
 
 A `bcv`-jelölt hivatkozás mellett a közvetlenül utána (`</ref>` után) álló, a forrásban jelöletlen folytatás is sor
-(„Act 9:14</ref>,21; 22:16”: a 9:21 és a 22:16; ELLENOR_SZOTARI_GERINC 2., a BDB-s DT-F131l (A) mintájára): `,v` ugyanabban a
+(„Act 9:14</ref>,21; 22:16”: a 9:21 és a 22:16; ELLENOR_SZOTARI_GERINC 2., a BDB-s DT382 (A) mintájára): `,v` ugyanabban a
 fejezetben, `; c:v` ugyanabban a könyvben, amíg a lánc tart; a verstartomány (`-v`) nincs kibontva. A lánc csak közvetlenül a
 `</ref>` után indulhat, és megszakad, ha a szám után könyvnév jön („, 2 Esdr. 10:2”) vagy a szám után kettőspont áll
 („, 34:”). Az ilyen sor proveniencia-forrása `(fejléc, folytatas)`.
@@ -141,7 +141,7 @@ def general(ts):
 def fajl_szoveg(sorok, ts):
     fej = ['# GENERÁLT: eszkozok/thayer_jelolt/vers_jelentes.py --ts %s — kézzel nem szerkesztendő (F132; séma: adat/SEMA.md, thayer_vers_jelentes.tsv).' % ts,
            '# forras: konkordancia/lexikonok_nyers/Thayer.lexicon@%s (a bcv-koordináta, a szerkezet és a `</ref>` utáni '
-           'jelöletlen folytatás, DT-F131n) + '
+           'jelöletlen folytatás, DT384) + '
            'konkordancia/Konyv_normalizalo_tabla.tsv@%s + konkordancia/Karoli_1908.tsv@%s + kód@%s'
            % (bont.sha256_fajl(bont.LEX_UT)[:12], bont.sha256_fajl(KONYV_UT)[:12], bont.sha256_fajl(KAROLI_UT)[:12],
               kod_hash()[:12]),

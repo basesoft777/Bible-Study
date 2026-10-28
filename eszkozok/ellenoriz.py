@@ -1035,7 +1035,7 @@ def szabaly16_elofordulasok_fejlec(adat_dir):
 
 
 # ---------------------------------------------------------------------------
-# 17. F131 (DT-F131b–d, SEMA 2.40): szotar_szakasz_cimke.tsv
+# 17. F131 (DT372–d, SEMA 2.40): szotar_szakasz_cimke.tsv
 # ---------------------------------------------------------------------------
 
 SZAKASZ_CIMKE_TILTOTT = re.compile(r'(?i)(motívum|invokál|invokáci|(?<![\wáéíóöőúüű])nem(?![\wáéíóöőúüű]))')
@@ -1112,7 +1112,7 @@ def szakasz_cimke_hibak(adat_dir):
 
 
 def szabaly17_szakasz_cimke(adat_dir):
-    """F131 (DT-F131b–d, SEMA 2.40): a szotar_szakasz_cimke.tsv minden sora letezo
+    """F131 (DT372–d, SEMA 2.40): a szotar_szakasz_cimke.tsv minden sora letezo
     szakaszra mutat, a kutatoi kulcs letezo lexikon_hivatkozasok-kulcs, a cimke nem
     minosit, es nem tartalmaz tiltott fordulatot (tiltott_fordulatok.tsv). (F131.3.6: a
     Thayer atmeneti kezi hatarai kivezetve, a magyar Thayer a #142 sz<n> soraibol.)"""

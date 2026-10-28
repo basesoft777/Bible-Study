@@ -76,7 +76,7 @@ FORRAS_HIBA = {
     ('H1802', 512): 'Exod 2:6 — a דָּלָה a 2Móz 2:16, 19-ben áll (számhiba a forrásban; TAHOT)',
     ('H7804', 532): 'Dan 3:13 — a שֵׁיזִב suffixumos alakja a Dán 3:15-ben áll (számhiba a forrásban; TAHOT)',
 }
-# DT-F131k (a) (felhasználó, 2026-10-28): a `bdb_forras_javitas.tsv` (2.31) `hivatkozas_kezi` sorai a forrás létező, de hibás versét
+# DT381 (a) (felhasználó, 2026-10-28): a `bdb_forras_javitas.tsv` (2.31) `hivatkozas_kezi` sorai a forrás létező, de hibás versét
 # javítják: a Strong `elofordulas`-adik olyan hivatkozása, amelynek fejezet:verse a `forras_alak`, a `javitott_alak` versére oldódik
 # (a `nyers` a forrás alakja marad), okkód `forras_javitas`. A FORRAS_HIBA (fent) a hibát csak rögzíti, ez javít.
 JAVITAS = os.path.join(REPO, 'adat', 'bdb_forras_javitas.tsv')
@@ -294,7 +294,7 @@ def kiir(sorok, modhash, ts):
            '# forras: konkordancia/BDB_teljes_unabridged.tsv@%s + Macula_heber_*.tsv (%d fájl)@%s (MT-versek, MT→Károli) + '
            'Karoli_versmegfeleltetes.tsv@%s + Karoli_1908.tsv@%s (Károli-versek; az Ézs 3 eltolásának forrása is, DT179) + naplok/F85_macula_elvetve.tsv@%s + naplok/F85_esetlista.tsv@%s '
            '(DT173) + OSHL_lexikalis_index.tsv@%s (bdb_id) + Strong_szotar.tsv@%s (lemma) + TAHOT_kivonat.tsv@%s (DT173, DT176; az Ézs 3 eltolásának megerősítése, DT179) + '
-           'adat/bdb_forras_javitas.tsv@%s (a hivatkozas_kezi sorok, DT-F131k (a)); '
+           'adat/bdb_forras_javitas.tsv@%s (a hivatkozas_kezi sorok, DT381 (a)); '
            'kód: bdb_szelet.py+bdb_vers_jelentes.py+bdb_konyv_javit.py+normalizal.py@%s (LF-re normalizált tartalom; DT172: a kód-hash csak itt áll, a sorok proveniencia-mezője erre a fejlécre hivatkozik); szabály: DT166, DT173, DT174, DT175, DT176, DT179'
            % (fajl_hash(BDB_EN), len(macula_fajlok()), fajlok_hash(macula_fajlok()), fajl_hash(VERSMEGF), fajl_hash(KAROLI), fajl_hash(F85_ELVETVE),
               fajl_hash(F85_ESETLISTA), fajl_hash(OSHL_INDEX), fajl_hash(STRONG_SZOTAR), fajl_hash(TAHOT), fajl_hash(JAVITAS), modhash),
