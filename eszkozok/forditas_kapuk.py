@@ -607,7 +607,7 @@ def _vers_ocr_javit(forras):
     return forras
 
 
-BDB_JELOLES = re.compile(r'(?<![A-Za-zÀ-ɏ0-9])\d?[A-Za-zÀ-ɏ]+\.? \d{1,3}:\d{1,3} \[BDB: ([^\]]+)\]')
+BDB_JELOLES = re.compile(r'(?<![A-Za-zÀ-ɏ0-9])\d?[A-Za-zÀ-ɏ]+\.? \d{1,3}:\d{1,3}[a-d]? \[BDB: ([^\]]+)\]')
 
 
 def bdb_jeloles_vissza(forditas):
@@ -664,7 +664,7 @@ def ellenoriz_tiltott(forditas, tiltott=None):
 
 _JAVITAS = {}
 # Y elott opcionalis: a maga allo `[BDB: X]` is jeloles (F67 javitokor: jogosulatlan, ha nem egy `javitva` sor Y-javal all)
-BDB_JELOLES_YX = re.compile(r'(?:(?<![A-Za-zÀ-ɏ0-9])(\d?[A-Za-zÀ-ɏ]+\.? \d{1,3}:\d{1,3}) )?\[BDB: ([^\]]*)\]')
+BDB_JELOLES_YX = re.compile(r'(?:(?<![A-Za-zÀ-ɏ0-9])(\d?[A-Za-zÀ-ɏ]+\.? \d{1,3}:\d{1,3}[a-d]?) )?\[BDB: ([^\]]*)\]')
 
 
 def javitas_betolt(ut=None):
@@ -732,12 +732,19 @@ def ellenoriz_bdb_javitas(szotar, forras, forditas, strong=None, tabla=None):
             continue
         jav_par.add((y, x))
         m = re.match(r'^(.+?)\.?\s+(\d{1,3}):(\d{1,3})$', r['forras_hivatkozas'])
-        forras_db = len(re.compile(r'(?<![A-Za-zÀ-ɏ0-9])%s\.?\s+%s:%s(?![0-9])'
-                                   % (re.escape(m.group(1)), m.group(2), m.group(3))).findall(forras))
-        jelolt_db = sum(1 for yy, xx in jelolesek if (yy, xx) == (y, x))
+        # versfel-betu (16:8b): a jeloles Y<betu> [BDB: X<betu>] (azonos betuvel); betu nelkul valtozatlan
+        betuk = re.compile(r'(?<![A-Za-zÀ-ɏ0-9])%s\.?\s+%s:%s(?![0-9])([a-d](?![A-Za-zÀ-ɏ0-9]))?'
+                           % (re.escape(m.group(1)), m.group(2), m.group(3))).findall(forras)
+        varhato = {}
+        for bt in betuk:
+            varhato[bt] = varhato.get(bt, 0) + 1
+        for bt in varhato:
+            jav_par.add((y + bt, x + bt))
+        for bt, forras_db in varhato.items():
+            jelolt_db = sum(1 for yy, xx in jelolesek if (yy, xx) == (y + bt, x + bt))
+            if jelolt_db < forras_db:
+                hibak.append('hiányzik: %s [BDB: %s] (forrás ×%d, jelölt ×%d)' % (y + bt, x + bt, forras_db, jelolt_db))
         csupasz_db = len(_hivatkozas_minta(x).findall(csupasz_szoveg))
-        if jelolt_db < forras_db:
-            hibak.append('hiányzik: %s [BDB: %s] (forrás ×%d, jelölt ×%d)' % (y, x, forras_db, jelolt_db))
         if csupasz_db:
             hibak.append('jelölés nélküli: %s ×%d (kell: %s [BDB: %s])' % (x, csupasz_db, y, x))
     for yy, xx in sorted(set(jelolesek)):
