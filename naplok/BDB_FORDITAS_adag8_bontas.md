@@ -1,6 +1,6 @@
 # BDB_FORDITAS — a 8. adag (sorrend 966–1388): tábla-Δ és commitonkénti bontás (E17, DT3)
 
-*A #38 (BDB_FORDITAS) 8. adagának szakaszonkénti fordítása (4 szelet + 1 félkész köztes commit) és az ellenőrzés 1. javítóköre (`naplok/ELLENOR_F38_adag8.md` 3. tétel, DT-F38t). Tartomány: `b64294ed` (a menet előtti alap) → `90e88881` (a javítókör utolsó adat- és döntés-commitja; az `adat/` utolsó változása a `c2f6ac59`). Minden szám saját méréssel készült; az adatsor a komment- (`#`) és a fejlécsor nélküli, nem üres sor. Minta: `naplok/BDB_FORDITAS_nf107b_bontas.md`.*
+*A #38 (BDB_FORDITAS) 8. adagának szakaszonkénti fordítása (4 szelet + 1 félkész köztes commit) és az ellenőrzés 1. javítóköre (`naplok/ELLENOR_F38_adag8.md` 3. tétel, DT362). Tartomány: `b64294ed` (a menet előtti alap) → `90e88881` (a javítókör utolsó adat- és döntés-commitja; az `adat/` utolsó változása a `c2f6ac59`). Minden szám saját méréssel készült; az adatsor a komment- (`#`) és a fejlécsor nélküli, nem üres sor. Minta: `naplok/BDB_FORDITAS_nf107b_bontas.md`.*
 
 ## 1. Tábla-Δ
 
@@ -10,9 +10,9 @@
 | minden más `adat/` tábla | — | — | 0 | — |
 | `konkordancia/` (minden tábla) | — | — | 0 | — |
 
-A 2 636 új sor mind `sz<n>` sor (423 Strong teljes szakaszszáma; a szakasztábla szerint 2 636). Módosított és törölt sor az alap és a fej között: 0 (a javítókör 14 sorának módosítása az ugyanebben a menetben hozzáadott sorokat érinti, ezért az alap–fej különbségben nem látszik). Más változott fájl: `naplok/EMELES_munka.tsv` (2636 / 0; munkatábla), `F38_BDB_FORDITAS_BRIEF.md` (fejléc), `DONTESEK.md` (DT-F38s, DT-F38t), `naplok/ELLENOR_F38_adag8.md`, és ez a napló.
+A 2 636 új sor mind `sz<n>` sor (423 Strong teljes szakaszszáma; a szakasztábla szerint 2 636). Módosított és törölt sor az alap és a fej között: 0 (a javítókör 14 sorának módosítása az ugyanebben a menetben hozzáadott sorokat érinti, ezért az alap–fej különbségben nem látszik). Más változott fájl: `naplok/EMELES_munka.tsv` (2636 / 0; munkatábla), `F38_BDB_FORDITAS_BRIEF.md` (fejléc), `DONTESEK.md` (DT361, DT362), `naplok/ELLENOR_F38_adag8.md`, és ez a napló.
 
-**Hatókör.** A `naplok/BDB_FORDITAS_sorrend.tsv` szerint a 8. adag a 966–1387 sorrend (422 szócikk); a záró szelet a 9. adag első szócikkét (sorrend 1388, H6297, 4 szakaszsor) is lefordította (DT-F38t (5): a H6297 marad, a #67 kapuját (DT55) elkészültekor rá is le kell futtatni). A fenti 423 Strong és 2 636 sor ezzel együtt értendő: 422 + 1.
+**Hatókör.** A `naplok/BDB_FORDITAS_sorrend.tsv` szerint a 8. adag a 966–1387 sorrend (422 szócikk); a záró szelet a 9. adag első szócikkét (sorrend 1388, H6297, 4 szakaszsor) is lefordította (DT362 (5): a H6297 marad, a #67 kapuját (DT55) elkészültekor rá is le kell futtatni). A fenti 423 Strong és 2 636 sor ezzel együtt értendő: 422 + 1.
 
 *(proveniencia: scope=adat/forditasok.tsv @ b64294ed és @ 90e88881; adat/, konkordancia/ | forras=`git show <rev>:adat/forditasok.tsv`, `split('\t')`, megszámolt nem üres, nem `#` sor a fejléc nélkül (→ 5360 és 7996); `git diff --numstat b64294ed 90e88881 -- adat konkordancia naplok/EMELES_munka.tsv` (→ 2636 0 adat/forditasok.tsv; 2636 0 naplok/EMELES_munka.tsv; rögzített revízió, nem mozgó HEAD) | ts=2026-10-26T13:32Z)*
 
@@ -30,7 +30,7 @@ A 2 636 új sor mind `sz<n>` sor (423 Strong teljes szakaszszáma; a szakasztáb
 | `de8d20a7` | javítókör: H1969 `megjegyzes` (F38.392; 1.) | 0 | 8 (`megjegyzes`) | 0 | 1 |
 | `487e1272` | javítókör: H2574 sz2 jel + `megjegyzes` (F38.393; 2.) | 0 | 2 (1 `forditas_hu` + `megjegyzes`, 1 `megjegyzes`) | 0 | 1 |
 | `c2f6ac59` | javítókör: H7621 sz4, sz6; H1032 sz2, sz4 (F38.394; 6.) | 0 | 4 (`forditas_hu`) | 0 | 2 |
-| `90e88881` | javítókör: DONTESEK.md DT-F38s hivatkozás (F38.395; 7.; nem adat) | 0 | 0 | 0 | 0 |
+| `90e88881` | javítókör: DONTESEK.md DT361 hivatkozás (F38.395; 7.; nem adat) | 0 | 0 | 0 | 0 |
 | **összesen** | | **2 636** | (a javítókör 14 módosítása) | **0** | **423** |
 
 Ellenőrzés: 729 + 825 + 843 + 239 = 2 636 = az 1. szakasz Δ-ja; 5 360 + 2 636 = 7 996. A `cfed5c52` csak a `naplok/EMELES_munka.tsv`-t érintette (a stop hook kényszerítette köztes commit, a H5126 kapu-megállása miatt), az `adat/`-ot nem.
@@ -60,7 +60,7 @@ A szeletek Strongjai:
 
 *(proveniencia: scope=adat/bdb_szakaszok.tsv (`szoveg` oszlop, 11. mező), `eszkozok/bdb_jelolt/szakasz_bemenet.py` `szakaszok()`/`nezet()` | forras=saját szkript (`split('\t')`, `len()` karakterekben, Strong-halmaz a 2. szakasz szerint) | ts=2026-10-26T13:32Z)*
 
-## 4. A kapu-felülbírálások (DT-F38s) tételesen
+## 4. A kapu-felülbírálások (DT361) tételesen
 
 A felülbírálás a Strong minden szakaszsorának `megjegyzes`-ében jelölt. A kilenc tétel: nyolc a szeleteknél, a kilencedik (H2574) a javítókörben került rá (ELLENOR_F38_adag8 2.).
 
@@ -73,27 +73,27 @@ A felülbírálás a Strong minden szakaszsorának `megjegyzes`-ében jelölt. A
 | 5 | H1032 sz8 | 8_idezojel | „modern Beit „anûn” | a „ (U+201E) OCR-maradvány megtartva |
 | 6 | H6346 | 5_terminologia (`see`→`l.`) | „(strike out see, Sta and others)” | szövegkritikai utasítás, nem utalás |
 | 7 | H7797 | 5_terminologia (`Heb.`→`héb.`) | „Da Toy^Heb.Hpt” | irodalmi szigla |
-| 8 | H1969 sz2 | 5_terminologia (`accusative`→`tárgyeset`) | „= sextarius, accusative to Böckh^Metrol. Unters. 244” | „Böckh … szerint”; forráshiba (`accusative to` = acc. to), a fordítás a szándékolt olvasatot adja (DT-F38t (1); a `megjegyzes` jelzi) |
+| 8 | H1969 sz2 | 5_terminologia (`accusative`→`tárgyeset`) | „= sextarius, accusative to Böckh^Metrol. Unters. 244” | „Böckh … szerint”; forráshiba (`accusative to` = acc. to), a fordítás a szándékolt olvasatot adja (DT362 (1); a `megjegyzes` jelzi) |
 | 9 | H2574 sz2 | 8_idezojel | „„amaâ” (U+201E) | a „ (U+201E) jel vissza (előtte tévesen ‚ U+201A), csak ez a jel változott |
 
 ## 5. A javítókör módosításai
 
-- 1.: H1969, a 8 sor `megjegyzes`-e kiegészült: „; forráshiba: „accusative to” = acc. to (according to); a fordítás a szándékolt olvasatot adja (DT-F38t (1))”. A szöveg nem változott.
-- 2.: H2574 sz2 „mai ‚amaâ” → „mai „amaâ”; a két H2574-sor `megjegyzes`-ébe „kapu-felülbírálás: 8_idezojel (DT-F38s)”.
+- 1.: H1969, a 8 sor `megjegyzes`-e kiegészült: „; forráshiba: „accusative to” = acc. to (according to); a fordítás a szándékolt olvasatot adja (DT362 (1))”. A szöveg nem változott.
+- 2.: H2574 sz2 „mai ‚amaâ” → „mai „amaâ”; a két H2574-sor `megjegyzes`-ébe „kapu-felülbírálás: 8_idezojel (DT361)”.
 - 6.: H7621 sz4 „eskü ... (׳י)” → „eskü -hoz -hoz (׳י)”, „az esküt” → „az eskü van”; H7621 sz6 „megteltél nyilakkal tegzed” → „nyilakkal töltötted meg tegzedet”; H1032 sz2 „vö.” → „vö. még”; H1032 sz4 „1 órányira nyugatra” → „1 órányira nyugatra -tól”.
-- 7.: `DONTESEK.md` DT-F38s: „(DT-F38o)” → „(DT339)”.
+- 7.: `DONTESEK.md` DT361: „(DT-F38o)” → „(DT339)”.
 - A `naplok/EMELES_munka.tsv` megfelelő sorai ugyanígy módosultak (munkatábla; a forditasok.tsv-vel azonos tartalom).
-- Nyitott: a 4. (hatókör) tétel — a H6297 a 9. adaghoz tartozik; a #67 kapuját elkészültekor rá is le kell futtatni (DT-F38t (5)).
+- Nyitott: a 4. (hatókör) tétel — a H6297 a 9. adaghoz tartozik; a #67 kapuját elkészültekor rá is le kell futtatni (DT362 (5)).
 
-## 6. A 2. javítókör (`naplok/ELLENOR_F38_adag8_2.md`, DT-F38u; `54a1cd5a`, F38.398)
+## 6. A 2. javítókör (`naplok/ELLENOR_F38_adag8_2.md`, DT363; `54a1cd5a`, F38.398)
 
 **Módszer.** Az 1. kör 14 kézzel cserélt cellája (H1969 sz1–8, H2574 sz1–2, H7621 sz4 és sz6, H1032 sz2 és sz4) újra rögzült az eszközláncon: a négy Strong tokenes szövege (a jelenlegi `forditasok.tsv`-sorokból, a kétféle tartalmi javítással) → `szakasz_ellenoriz` → `szakasz_rogzit` → `szakasz_beir --regi-elavult`. Kézi cellacsere nincs. A `datum` (2026.10.26) és a `modell` változatlan. A rögzítés a Strong minden szakaszsorát újraírja, ezért a `megjegyzes` a Strong mind a 24 során egységes (az eszköz csak Strong-szintű `--megjegyzes`-t tud); a `forditas_hu` az alábbi kettő kivételével bájtra változatlan.
 
-**Kapu-felülbírálások** (mindegyiknél pontosan egy kapu bukott, a többi átment; `--kapu-felulir <kapu> --dontes DT-F38s`):
+**Kapu-felülbírálások** (mindegyiknél pontosan egy kapu bukott, a többi átment; `--kapu-felulir <kapu> --dontes DT361`):
 
 | Strong | bukott kapu | forrásidézet | hű fordítás |
 |---|---|---|---|
-| H1969 | 5_terminologia (`accusative`→`tárgyeset`) | „= sextarius, accusative to Böckh^Metrol. Unters. 244” (sz2) | „Böckh … 244 szerint”; forráshiba, `megjegyzes` jelzi (DT-F38t (1)) |
+| H1969 | 5_terminologia (`accusative`→`tárgyeset`) | „= sextarius, accusative to Böckh^Metrol. Unters. 244” (sz2) | „Böckh … 244 szerint”; forráshiba, `megjegyzes` jelzi (DT362 (1)) |
 | H2574 | 8_idezojel (forrás 0, fordítás 1 jelpár) | „modern „amaâ, on el-±A±ƒi” (sz2) | a „ (U+201E) OCR-maradvány megtartva |
 | H7621 | 5_terminologia (`cl.`→`klasszikus`) | „(in rel.cl.) 5t.” (sz2) | „(vonatkozó mondatban)”; a `cl.` = clause |
 | H1032 | 8_idezojel (forrás 0, fordítás 1 jelpár) | „modern Beit „anûn compare” (sz8) | a „ (U+201E) OCR-maradvány megtartva |
@@ -101,10 +101,10 @@ A felülbírálás a Strong minden szakaszsorának `megjegyzes`-ében jelölt. A
 **Tartalmi változás** (a `forditas_hu`-ban, két cella):
 
 - H7621 sz4, 1.: „megtartja, teljesíti az eskü van הַשּׁ ׳הֵקִים” → „megtartani, teljesíteni az esküt: הַשּׁ ׳הֵקִים” (forrás: „keep, discharge the oath is הַשּׁ ׳הֵקִים Gen 26:3 (J)”; az „is” kopula).
-- H7621 sz4, 2.: „eskü -hoz -hoz (׳י)” → „a ׳י-nak tett eskü” (forrás: „oath to to (׳י)”; DT-F38u (1)(a)).
-- H1032 sz4: a szöveg („b. 1 órányira nyugatra -tól”) változatlan; a `megjegyzes`-ben „forráshiba: csonka szakasz („from” tárgy nélkül)” (DT-F38u (2)).
+- H7621 sz4, 2.: „eskü -hoz -hoz (׳י)” → „a ׳י-nak tett eskü” (forrás: „oath to to (׳י)”; DT363 (1)(a)).
+- H1032 sz4: a szöveg („b. 1 órányira nyugatra -tól”) változatlan; a `megjegyzes`-ben „forráshiba: csonka szakasz („from” tárgy nélkül)” (DT363 (2)).
 
-**Megjegyzések a rögzítés után** (a Strong minden során): H1969: „forráshiba: „accusative to” … (DT-F38t (1)); kapu-felülbírálás: 5_terminologia (DT-F38s)” (a sorrend az eszközé: előbb a forráshiba, utána a felülbírálás); H2574: „kapu-felülbírálás: 8_idezojel (DT-F38s)”; H7621: „forráshiba: „to to” ismétlés; kapu-felülbírálás: 5_terminologia (DT-F38s)”; H1032: „forráshiba: csonka szakasz („from” tárgy nélkül); kapu-felülbírálás: 8_idezojel (DT-F38s)”. A „to to” és a csonka szakasz jelölése így a Strong többi során is áll, ahol nem releváns.
+**Megjegyzések a rögzítés után** (a Strong minden során): H1969: „forráshiba: „accusative to” … (DT362 (1)); kapu-felülbírálás: 5_terminologia (DT361)” (a sorrend az eszközé: előbb a forráshiba, utána a felülbírálás); H2574: „kapu-felülbírálás: 8_idezojel (DT361)”; H7621: „forráshiba: „to to” ismétlés; kapu-felülbírálás: 5_terminologia (DT361)”; H1032: „forráshiba: csonka szakasz („from” tárgy nélkül); kapu-felülbírálás: 8_idezojel (DT361)”. A „to to” és a csonka szakasz jelölése így a Strong többi során is áll, ahol nem releváns.
 
 **Δ.** `git diff --numstat 54a1cd5a^ 54a1cd5a`: `adat/forditasok.tsv` 22 / 22 (a H2574 két sora bájtra azonos), `naplok/EMELES_munka.tsv` 24 / 24; sor hozzáadva vagy törölve: 0. Más tábla nem változott.
 
