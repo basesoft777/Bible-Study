@@ -8,15 +8,15 @@
 
 | tábla | alap (`cd8e3942`) | fej | Δ | `git diff --numstat` (+/−) |
 |---|---|---|---|---|
-| `adat/forditasok.tsv` (adatsorok, a 2 fejlécsor nélkül) | 14666 | 15244 | +578 | 578 / 0 |
-| `adat/forditasok.tsv` (fejléces sorszám, `wc -l`) | 14668 | 15246 | +578 | |
-| `naplok/EMELES_munka.tsv` | — | — | +578 | 578 / 0 |
+| `adat/forditasok.tsv` (adatsorok, a 2 fejlécsor nélkül) | 14666 | 15782 | +1116 | 1116 / 0 |
+| `adat/forditasok.tsv` (fejléces sorszám, `wc -l`) | 14668 | 15784 | +1116 | |
+| `naplok/EMELES_munka.tsv` | — | — | +1116 | 1116 / 0 |
 | `naplok/FORDITAS_kisnagybetu_csere.tsv` | — | — | 0 | — |
 | minden más `adat/` tábla | — | — | 0 | — |
 
 **Megjegyzés-sorok (forráshiba-jelölés, DT362 (1)(a), DT363).** A H5628 minden szakaszsorának `megjegyzes` mezőjében „forráshiba: „overhungof” összetapadás (overhung of)” áll (a forrás „overhungof turbans” szavát a fordítás szétválasztva adja: „lelógott; turbánokról”). A megjegyzés Strong-szintű (DT363 kiegészítés).
 
-**Szakasztáblán kívüli Strongok (régi `teljes` út).** A H7560 nincs az `adat/bdb_szakaszok.tsv`-ben; `emeles.py helyorzo`/`ellenoriz`/`rogzit`/`beir` úton, `jelentes_szam=teljes` sorral került be (1 sor, az F38.421-ben); régi `teljes` sora nem volt (`--regi-elavult` nem kellett).
+**Szakasztáblán kívüli Strongok (régi `teljes` út).** A H7560 (F38.421) és a H6433 (F38.422) nincs az `adat/bdb_szakaszok.tsv`-ben; `emeles.py helyorzo`/`ellenoriz`/`rogzit`/`beir` úton, `jelentes_szam=teljes` sorral kerültek be (1–1 sor); régi `teljes` soruk nem volt (`--regi-elavult` nem kellett). A régi `rogzit` út az `EMELES_munka.tsv` megjegyzés-fejlécsorát (1. sor) `… irja: python eszkozok/emeles.py rogzit`-re írja át; ezt minden szelet commitja előtt az alapszövegre (`… rogzit / szakasz_rogzit`) állítottam vissza, így a munkatábla numstatja tiszta `N / 0`.
 
 Törölt vagy módosított meglévő `forditasok.tsv`-sor nincs (0 törlés). `kezi` sorhoz nem nyúltam.
 
@@ -25,11 +25,14 @@ Törölt vagy módosított meglévő `forditasok.tsv`-sor nincs (0 törlés). `k
 | commit | szelet | szócikk | szakaszsor | új / módosított / törölt sor | forrás-karakter (`BDB_FORDITAS_sorrend.tsv` karakter-oszlop) |
 |---|---|---|---|---|---|
 | F38.421 | 1. szelet, 1. rész (sorrend 2822–2990) | 169 | 578 | 578 / 0 / 0 | 75056 |
-| **össz.** | | **169** | **578** | **578 / 0 / 0** | **75056** |
+| F38.422 | 1. szelet, 2. rész (sorrend 2991–3133) | 143 | 538 | 538 / 0 / 0 | 65466 |
+| **össz.** | | **312** | **1116** | **1116 / 0 / 0** | **140522** |
 
 ## 3. Strongok commitonként (sorrendben)
 
 **F38.421** (2822–2990; 169 szócikk, 75056 karakter): H5559, H5590, H5628, H5649, H5689, H5692, H5801, H5825, H5849, H5907, H5947, H5959, H5986, H6057, H6089, H6124, H6131, H6274, H6287, H6288, H6316, H6329, H6367, H6389, H6395, H6432, H6452, H6472, H6484, H6569, H6621, H6651, H6701, H6781, H6814, H6834, H6835, H6953, H7032, H7049, H7092, H7117, H7140, H7147, H7156, H7253, H7267, H7271, H7279, H7290, H7389, H7410, H7415, H7469, H7560, H7565, H7581, H7645, H7696, H7776, H7826, H7895, H7898, H7909, H7982, H8048, H8140, H8185, H8256, H8262, H8289, H8314, H8322, H8333, H8471, H8590, H8602, H8620, H8621, H8639, H8658, H0032, H0033, H0046, H0080, H0125, H0137, H0172, H0217, H0283, H0295, H0317, H0328, H0329, H0345, H0362, H0363, H0458, H0460, H0469, H0483, H0501, H0533, H0562, H0634, H0724, H0732, H0737, H0757, H0774, H0812, H0826, H0827, H0851, H0881, H0893, H0902, H0907, H0913, H1000, H1026, H1031, H1043, H1067, H1142, H1165, H1171, H1173, H1189, H1262, H1309, H1377, H1405, H1498, H1500, H1505, H1518, H1521, H1551, H1555, H1586, H1641, H1651, H1668, H1673, H1674, H1736, H1763, H1785, H1807, H1828, H1844, H1905, H1916, H1918, H1933, H1979, H2062, H2067, H2083, H2122, H2158, H2197, H2209, H2227, H2255, H2276, H2300, H2331
+
+**F38.422** (2991–3133; 143 szócikk, 65466 karakter): H2418, H2485, H2531, H2535, H2558, H2560, H2624, H2625, H2651, H2690, H2698, H2704, H2730, H2750, H2752, H2892, H2976, H3043, H3066, H3127, H3166, H3179, H3226, H3278, H3355, H3418, H3420, H3511, H3553, H3585, H3700, H3784, H3785, H3803, H3868, H3892, H3897, H3928, H4093, H4114, H4132, H4174, H4234, H4245, H4302, H4315, H4345, H4371, H4375, H4387, H4407, H4457, H4494, H4514, H4689, H4708, H4800, H4807, H4822, H4903, H4906, H4933, H4968, H4985, H4991, H4997, H5011, H5031, H5050, H5067, H5102, H5121, H5123, H5138, H5246, H5257, H5365, H5382, H5450, H5512, H5543, H5572, H5585, H5596, H5603, H5617, H5651, H5670, H5696, H5832, H5840, H5873, H5874, H5896, H5909, H5912, H5955, H5988, H6137, H6144, H6152, H6181, H6191, H6202, H6225, H6236, H6319, H6424, H6433, H6443, H6458, H6530, H6531, H6540, H6551, H6600, H6620, H6728, H6842, H6875, H6906, H6927, H6945, H6962, H6976, H6979, H7018, H7028, H7034, H7039, H7067, H7236, H7241, H7244, H7249, H7312, H7336, H7376, H7400, H7426, H7461, H7468, H7476
 
 ## 4. 17_bdb_javitas (DT55, #67 kapu; DT367)
 
