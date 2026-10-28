@@ -451,7 +451,7 @@ def igehely_re():
     _, hu2step = L.book_tables()
     konyvek = sorted(hu2step, key=len, reverse=True)
     kp = '|'.join(re.escape(k) for k in konyvek)
-    return re.compile(r'(?<![\w])(%s)\.?\s*(\d+)\s*[:,]\s*(\d+)((?:\s*[-–]\s*\d+)?(?:\s*[,.]\s*\d+(?![:\d]))*)' % kp)
+    return re.compile(r'(?<![\w])(%s)\.?\s*(\d+)\s*[:,]\s*(\d+)((?:\s*[-–]\s*\d+)?(?:\s*[,.]\s*\d+(?![:\d\w]))*)' % kp)
 
 
 def emlitesek(szoveg, rx):
@@ -469,52 +469,61 @@ def emlitesek(szoveg, rx):
 
 
 def cmd_proza(mid):
+    """A felmérés („A mai próza a lexikonfájlban”) módszere a nem migrált motívumra: a kézi próza a forrásfájlok
+    RÉS-KEZDET/VÉGE blokkjai (a lexikonoldal réseinek törzse, CLAUDE.md), a kézi adatmező az előfordulás-sor
+    `kapcsolodas` + `funkcio` mezője; mellette a tanulmány és a napló egésze és a generált lexikonoldal."""
     E, _ = motivum_sorok(mid)
+    rs = [r for r in L.read_tsv_skip_comments(ROOT / 'adat' / 'res_forras.tsv') if r['id'] == mid]
     m = {r['id']: r for r in L.read_tsv_skip_comments(ROOT / 'adat' / 'motivumok.tsv')}[mid]
-    forras = m.get('forras_fajl') or ''
-    # a motívumtábla utolsó oszlopa a tanulmány útvonala
-    utvonal = [v for v in m.values() if isinstance(v, str) and v.endswith('.md')]
-    tan = ROOT / utvonal[-1]
+    tan = ROOT / [v for v in m.values() if isinstance(v, str) and v.endswith('.md')][-1]
+    naplo_ut = sorted({r['tanulmany'] for r in rs if r['forras'] == 'tanulmany'} - {tan.relative_to(ROOT).as_posix()})
+    fajlok = [tan] + [ROOT / x for x in naplo_ut]
     lex = ROOT / 'lexikon' / ('%s_TUDOMANYOS.md' % mid)
     rx = igehely_re()
-    t_szoveg = tan.read_text(encoding='utf-8')
-    l_szoveg = lex.read_text(encoding='utf-8')
-    # lexikonoldal: kézi rések (RÉS-KEZDET/VÉGE) vs a többi
     res_rx = re.compile(r'<!-- RÉS-KEZDET: (\w+) -->(.*?)<!-- RÉS-VÉGE: \1 -->', re.S)
     resek = {}
-    for mm in res_rx.finditer(l_szoveg):
-        resek.setdefault(mm.group(1), '')
-        resek[mm.group(1)] += mm.group(2)
-    nem_res = res_rx.sub(' ', l_szoveg)
+    egesz = {}
+    for f in fajlok:
+        sz = f.read_text(encoding='utf-8')
+        egesz[f.relative_to(ROOT).as_posix()] = emlitesek(sz, rx)
+        for mm in res_rx.finditer(sz):
+            resek[mm.group(1)] = resek.get(mm.group(1), '') + mm.group(2)
     res_eml = {k: emlitesek(v, rx) for k, v in resek.items()}
-    tan_eml = emlitesek(t_szoveg, rx)
-    nem_res_eml = emlitesek(nem_res, rx)
-    # előfordulás-sor adatmezői (kapcsolodas + funkcio) — mint az adatmező-réteg
+    l_szoveg = lex.read_text(encoding='utf-8')
+    lex_eml = emlitesek(l_szoveg, rx)
+    tan_k = tan.relative_to(ROOT).as_posix()
     sorok = []
     for r in E:
         versek = versre(r['igehely'])
+
         def db(c):
             return sum(c.get(v, 0) for v in versek)
         res_db = {k: db(c) for k, c in res_eml.items()}
-        proza_ossz = sum(res_db.values())
-        kat = 'nem nevezi meg' if proza_ossz == 0 else ('érinti (1–3)' if proza_ossz <= 3 else 'tárgyalja (4+)')
-        sorok.append([r['igehely'], r['strong'], db(tan_eml), proza_ossz,
+        proza = sum(v for k, v in res_db.items() if k != '2b')
+        kat = 'nem nevezi meg' if proza == 0 else ('érinti (1–3)' if proza <= 3 else 'tárgyalja (4+)')
+        sorok.append([r['igehely'], r['strong'], proza,
                       '; '.join('%s:%d' % (k, v) for k, v in sorted(res_db.items()) if v) or '—',
-                      db(nem_res_eml), kat, (r['kapcsolodas'] + ' // ' + r['funkcio']).strip(' /')])
-    prov = ('scope=%s: adat/elofordulasok.tsv (%d sor) × %s (%d bájt) + %s (%d bájt; RÉS-KEZDET/VÉGE rések: %s) | '
-            'forras=saját számláló (naplok/F123_adat_keszito.py proza; „Könyv f:v” + folytatólagos versszám, tartomány versre) | ts=%s'
-            % (mid, len(E), tan.relative_to(ROOT).as_posix(), len(t_szoveg.encode('utf-8')),
-               lex.relative_to(ROOT).as_posix(), len(l_szoveg.encode('utf-8')), ','.join(sorted(resek)), TS))
+                      db(egesz[tan_k]), '; '.join('%s:%d' % (Path(k).name, db(c)) for k, c in egesz.items() if k != tan_k) or '—',
+                      db(lex_eml), kat, (r['kapcsolodas'] + ' // ' + r['funkcio']).strip(' /')])
+    prov = ('scope=%s: adat/elofordulasok.tsv (%d sor) × kézi rések (%s; forrás: %s) + a fájlok egésze + %s (%d bájt, generált) | '
+            'forras=saját számláló (naplok/F123_adat_keszito.py proza; „Könyv f:v” + folytatólagos versszám, tartomány versre; '
+            'a 2b rés szótári adat, a próza-összegbe nem számít) | ts=%s'
+            % (mid, len(E), ','.join('%s %d B' % (k, len(v.encode('utf-8'))) for k, v in sorted(resek.items())),
+               ', '.join(x.relative_to(ROOT).as_posix() for x in fajlok), lex.relative_to(ROOT).as_posix(),
+               len(l_szoveg.encode('utf-8')), TS))
     ir_tsv('F123_adat_%s_proza_lefedettseg.tsv' % mid,
-           ['igehely', 'strong', 'tanulmany_emlites', 'lexikon_res_emlites', 'resenkent', 'lexikon_nem_res_emlites',
+           ['igehely', 'strong', 'kezi_proza_emlites', 'resenkent', 'tanulmany_egesz', 'naplo_egesz', 'lexikonoldal_egesz',
             'kategoria', 'adatmezo_kapcsolodas_funkcio', 'proveniencia'],
-           [s + [prov] for s in sorok], 'F123 X.A próza-lefedettség %s — az értelmező menet viszi át a motivumok/naplok/-ba' % mid)
+           [s + [prov] for s in sorok], 'F123 X.A próza-lefedettség %s — mérés, nem kapu; az értelmező menet viszi át a motivumok/naplok/-ba' % mid)
     print('PROV\t' + prov)
-    c = Counter(s[6] for s in sorok)
+    c = Counter(s[7] for s in sorok)
     for k, v in sorted(c.items()):
         print('KAT\t%s\t%d' % (k, v))
-    print('TAN_0\t%d' % sum(1 for s in sorok if s[2] == 0))
-    print('NEM_NEVEZI\t' + ', '.join(s[0] for s in sorok if s[6] == 'nem nevezi meg'))
+    print('TAN_0\t%s' % ', '.join(s[0] for s in sorok if s[4] == 0))
+    print('LEX_0\t%s' % ', '.join(s[0] for s in sorok if s[6] == 0))
+    print('NEM_NEVEZI\t' + ', '.join(s[0] for s in sorok if s[7] == 'nem nevezi meg'))
+    print('TARGYAL\t' + ', '.join('%s(%d)' % (s[0], s[2]) for s in sorok if s[7] == 'tárgyalja (4+)'))
+    print('ERINTI\t' + ', '.join('%s(%d)' % (s[0], s[2]) for s in sorok if s[7] == 'érinti (1–3)'))
     for k in sorted(resek):
         print('RES\t%s\t%d bájt\t%d említés' % (k, len(resek[k].encode('utf-8')), sum(res_eml[k].values())))
 

@@ -77,3 +77,28 @@ A (b) két ISTENTISZT-001-párja (Zsolt 116:3 ↔ 116:4; ApCsel 2:27, 31 ↔ 2:2
 A (c) válasz-szavainak listája a felmérés példája („felel/meghall”) szerinti paraméter (`--valasz`), nem mező-hipotézis; a (c) a fejezethatáron nem lép át.
 
 Proveniencia: a `naplok/F123_felmeres_ALVIL-001.md` három sora (ts=2026-10-28T15:13Z) és minden TSV-sor utolsó mezője.
+
+## 4. Próza-lefedettség (2d. 2.) — mérés, nem kapu
+
+**Helye:** a brief szerint a motívum naplójába (`motivumok/naplok/ALVIL-001_*`) kerülne; a forrásréteget ez a menet nem írja (A út), ezért az eredmény itt és a `naplok/F123_adat_ALVIL-001_proza_lefedettseg.tsv`-ben áll. **Az értelmező menet viszi át** a `motivumok/naplok/`-ba, proveniencia-sorával együtt.
+
+**Módszer** (a felmérés „A mai próza a lexikonfájlban” szakaszának mintájára, a nem migrált motívumhoz igazítva): a kézi próza a lexikonoldal réseinek törzse, azaz a forrásfájlok `RÉS-KEZDET/VÉGE` blokkjai (`adat/res_forras.tsv`: kivonat, miert_fontos, ertelmezes, modszertan a tanulmányban, minosites a kereszthivatkozás-naplóban); a `2b` rés szótári adat, a próza-összegbe nem számít. A kézi adatmező az előfordulás-sor `kapcsolodas` + `funkcio` mezője (a TSV utolsó előtti oszlopa). Számlálás: „Könyv f:v” + folytatólagos versszám, tartomány versre bontva. Korlát: a könyvnév nélküli visszautalást („uo.”, „a 14. versben”) nem számolja, és a kulcsszavas témakeresést nem végzi (a témák kijelölése értelmezés).
+
+| Kategória (a kézi rések említésszáma) | Előfordulás-sor |
+|---|---|
+| tárgyalja (4+) | 2 — Hós 13:14 (6), Jel 20:13-14 (4) |
+| érinti (1–3) | 13 — Zsolt 16:10, 1Móz 37:35, 1Sám 2:6, Ézs 7:11, Ézs 14:9, 14:11, 14:15, ApCsel 2:27, 2:31, Luk 16:23, Jel 1:18, Jel 6:8, Luk 10:15 |
+| **nem nevezi meg** | **57** a 72-ből |
+
+| Rés | Méret | Igehely-említés |
+|---|---|---|
+| kivonat | 902 B | 4 |
+| miert_fontos | 605 B | 0 |
+| ertelmezes | 2 800 B | 20 |
+| modszertan (4 blokk) | 4 248 B | 8 |
+| minosites (napló, 2 blokk) | 2 354 B | 10 |
+| 2b (szótári adat, nem próza) | 6 226 B | 74 |
+
+A tanulmány egésze 4 előfordulást egyszer sem nevez meg (Jób 17:12, Jób 17:15, Préd 9:12, Mt 11:23), a generált lexikonoldal 3-at (Jób 17:12, Jób 17:15, Préd 9:12). A 2e. alpont négy magverse közül (2Sám 22:6, Zsolt 18:6, Jón 2:3, Zsolt 116:3) egyiket sem nevezi meg a kézi próza; mind a négy csak a 2/b-ben és az adatmezőben áll. A 57 meg nem nevezett sor adatmező-szövege a TSV-ben; témába sorolásuk az értelmező menet dolga.
+
+Proveniencia: `scope=ALVIL-001: adat/elofordulasok.tsv (72 sor) × kézi rések (2b 6226 B, ertelmezes 2800 B, kivonat 902 B, miert_fontos 605 B, minosites 2354 B, modszertan 4248 B; forrás: tematikus_lezart/Hadesz_Seol_tematikus.md, tematikus_lezart/naplok/Hadesz_Seol_kereszthivatkozas_naplo.md) + a fájlok egésze + lexikon/ALVIL-001_TUDOMANYOS.md (84852 bájt, generált) | forras=saját számláló (naplok/F123_adat_keszito.py proza) | ts=2026-10-28T15:14Z`
