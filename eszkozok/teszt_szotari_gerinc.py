@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""teszt_szotari_gerinc.py — F131 (DT272, DT-F131a–e): a motívumlap szótári gerince.
+"""teszt_szotari_gerinc.py — F131 (DT272, DT371–e): a motívumlap szótári gerince.
 
 Vizsgálja (a brief 2. lépése szerint):
   - a címkeforrást: BDB-példa és kutatói hozzárendelés (az ⓘ szövege);
@@ -265,7 +265,7 @@ class Ellenoriz17(unittest.TestCase):
 
 
 class ThayerSzakaszsorok(unittest.TestCase):
-    """DT-F131c 1.: a magyar Thayer a #142 sz<n> soraiból; hiányzó sor: angol + fordításra vár;
+    """DT373 1.: a magyar Thayer a #142 sz<n> soraiból; hiányzó sor: angol + fordításra vár;
     a tiltott fordulat a lapon ismert hiányként jelölve, a szöveg nem íródik át."""
 
     def test_sz_sorok_es_tiltott(self):
@@ -295,7 +295,7 @@ class ThayerSzakaszsorok(unittest.TestCase):
 
 
 class DbhOszlop(unittest.TestCase):
-    """DT-F131j: az ÓSZ-sorok „UBS-jelentés” cellája a DBH-ból, tokenenként; hiány soha nem néma."""
+    """DT380: az ÓSZ-sorok „UBS-jelentés” cellája a DBH-ból, tokenenként; hiány soha nem néma."""
 
     def test_1moz_4_26_tokenenkent(self):
         c = LG.dbh_jelentes_cella('1Móz 4:26', 'H7121+H8034')
@@ -334,7 +334,7 @@ class ValodiAdat(unittest.TestCase):
                 self.assertNotIn(tiltott.lower(), cella.lower())
 
     def test_1moz_26_25_forras_javitas(self):
-        # DT-F131k (a): a 2.31 kézi sora javítja a BDB „26:35”-ét; a H8034 cellája valódi BDB-példa, az ⓘ a javítás forrása
+        # DT381 (a): a 2.31 kézi sora javítja a BDB „26:35”-ét; a H8034 cellája valódi BDB-példa, az ⓘ a javítás forrása
         _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
         s = next(r for r in elo_sorok if r['id'] == 'ISTENTISZT-001' and r['igehely'] == '1Móz 26:25')
         cella, ik = LG.jelentes_cella(LG.gerinc_adat(), s)
@@ -343,17 +343,17 @@ class ValodiAdat(unittest.TestCase):
         self.assertIn('BDB-példa', ik)
         self.assertIn('„26:35”', ik)
         self.assertIn('adat/bdb_forras_javitas.tsv', ik)
-        self.assertIn('DT-F131k (a)', ik)
+        self.assertIn('DT381 (a)', ik)
 
     def test_1kir_18_25_26_bdb_pelda(self):
-        # DT-F131l (A): az „1Kin 18:24-25, 26” folytatása (18:26) BDB-példa; a 18:25 a tartomány belseje, nem az
+        # DT382 (A): az „1Kin 18:24-25, 26” folytatása (18:26) BDB-példa; a 18:25 a tartomány belseje, nem az
         a = LG.gerinc_adat()
         self.assertTrue(LG.bdb_peldak(a, 'H8034', '1Kir 18:26'))
         self.assertTrue(LG.bdb_peldak(a, 'H7121', '1Kir 18:26'))
         self.assertFalse(LG.bdb_peldak(a, 'H8034', '1Kir 18:25'))
 
     def test_1kir_18_25_tartomanyban(self):
-        # DT-F131l (A): a 18:25 a „1Kin 18:24-25” tartomány belseje; a cella hiányt mond, az ⓘ a tartományt nevezi meg
+        # DT382 (A): a 18:25 a „1Kin 18:24-25” tartomány belseje; a cella hiányt mond, az ⓘ a tartományt nevezi meg
         _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
         s = next(r for r in elo_sorok if r['id'] == 'ISTENTISZT-001' and r['igehely'] == '1Kir 18:25')
         cella, ik = LG.jelentes_cella(LG.gerinc_adat(), s)
@@ -432,7 +432,7 @@ class ValodiAdat(unittest.TestCase):
         self.assertIn('horgonnyal','\n'.join(bek))
 
     def test_tw_forrasmegjeloles(self):
-        # DT-F131m (a) (ELLENOR_SZOTARI_GERINC 5.): ha a lap tW-azonosítót nevez meg, a tW-fájl a forráslistába kerül
+        # DT383 (a) (ELLENOR_SZOTARI_GERINC 5.): ha a lap tW-azonosítót nevez meg, a tW-fájl a forráslistába kerül
         # (Irodalom, kolofon licenctábla); tW-szócikk nélkül nem
         ctx = {'fl': {}}
         sorok = LG._gerinc_tw('gorog', 3, ['G1941'], {}, ctx)

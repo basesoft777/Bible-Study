@@ -211,7 +211,7 @@ class Javitas(unittest.TestCase):
             self.assertTrue(s['indok'] and s['forras_alak'] and s['javitott_alak'])
 
     def test_hivatkozas_kezi(self):
-        # DT-F131k (a): H8034 „26:35” → 26:25, a 2.30 7. sorában, az első előfordulás
+        # DT381 (a): H8034 „26:35” → 26:25, a 2.30 7. sorában, az első előfordulás
         k = [s for s in self.sorok if s['hiba'] == 'hivatkozas_kezi']
         self.assertEqual([(s['strong'], s['sorszam'], s['elofordulas'], s['forras_alak'], s['javitott_alak']) for s in k],
                          [('H8034', '7', '1', '26:35', '26:25')])

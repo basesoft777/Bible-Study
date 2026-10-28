@@ -774,6 +774,12 @@ def _forditasok_forras_szoveg_idx(adat_dir):
             alap = ('UBS_DNTG', r['strong'], r['lexid'], r['entry_kod'])
             idx[alap + ('definicio_hu',)] = r.get('definicio_rovid', '')
             idx[alap + ('glosszak_hu',)] = r.get('glosszak', '')
+
+    # F121 (DT-F121b): UBS_DBH -- entry_id = lexid, jelentes_szam = '—'; egy feloldo (glossza_lexikon_forditas)
+    if os.path.exists(os.path.join(konkordancia_dir, 'UBS_DBH_jelentesek.tsv')):
+        import glossza_lexikon_forditas as GLF
+        for (strong, lexid, mezo), szoveg in GLF.dbh_forras_idx(konkordancia_dir).items():
+            idx[('UBS_DBH', strong, lexid, GLF.EM_DASH, mezo)] = szoveg
     return idx
 
 
@@ -1029,7 +1035,7 @@ def szabaly16_elofordulasok_fejlec(adat_dir):
 
 
 # ---------------------------------------------------------------------------
-# 17. F131 (DT-F131b–d, SEMA 2.40): szotar_szakasz_cimke.tsv
+# 17. F131 (DT372–d, SEMA 2.40): szotar_szakasz_cimke.tsv
 # ---------------------------------------------------------------------------
 
 SZAKASZ_CIMKE_TILTOTT = re.compile(r'(?i)(motívum|invokál|invokáci|(?<![\wáéíóöőúüű])nem(?![\wáéíóöőúüű]))')
@@ -1106,7 +1112,7 @@ def szakasz_cimke_hibak(adat_dir):
 
 
 def szabaly17_szakasz_cimke(adat_dir):
-    """F131 (DT-F131b–d, SEMA 2.40): a szotar_szakasz_cimke.tsv minden sora letezo
+    """F131 (DT372–d, SEMA 2.40): a szotar_szakasz_cimke.tsv minden sora letezo
     szakaszra mutat, a kutatoi kulcs letezo lexikon_hivatkozasok-kulcs, a cimke nem
     minosit, es nem tartalmaz tiltott fordulatot (tiltott_fordulatok.tsv). (F131.3.6: a
     Thayer atmeneti kezi hatarai kivezetve, a magyar Thayer a #142 sz<n> soraibol.)"""

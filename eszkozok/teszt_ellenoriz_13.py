@@ -251,5 +251,48 @@ class Szabaly13Thayer(Szabaly13Teljes):
         self.assertEqual(self._futtat([self._t(1, TSZ1), self._t(2, '1. ' + TSZ2)]).verdict, 'SÉRTÉS')
 
 
+
+DBH_DEF = '= one or more words by which a person is known'
+DBH_GL = 'name'
+
+
+class Szabaly13DBH(Szabaly13Teljes):
+    """F121 (DT-F121b): az UBS_DBH sor forrasszovege az UBS_DBH_jelentesek.tsv `definicio_rovid` / `glosszak`
+    oszlopa (entry_id = lexid, jelentes_szam = em-dash); strongonkent az elso sor."""
+
+    def setUp(self):
+        super().setUp()
+        fej = ['strong', 'strong_kod', 'lemma', 'main_id', 'lexid', 'entry_kod', 'domen_kod', 'domen',
+               'definicio_rovid', 'definicio_hosszu', 'glosszak', 'megjegyzes']
+        sor = ['H8034', 'H8034', 'x', '1', '007442001001000', '-', '1', 'D', DBH_DEF, '-', DBH_GL, '-']
+        with open(os.path.join(self.gyoker, 'konkordancia', 'UBS_DBH_jelentesek.tsv'), 'w', encoding='utf-8', newline='\n') as fh:
+            fh.write('# GENERALT: teszt\n')
+            fh.write('\t'.join(fej) + '\n')
+            fh.write('\t'.join(sor) + '\n')
+
+    def _d(self, mezo, szoveg, **kw):
+        alap = {'szotar': 'UBS_DBH', 'strong': 'H8034', 'entry_id': '007442001001000', 'jelentes_szam': '—',
+                'mezo': mezo, 'forras_hash': sha1(szoveg), 'forditas_hu': 'forditás',
+                'allapot': 'sonnet', 'modell': 'claude-sonnet-5-5', 'datum': '2026.10.28'}
+        alap.update(kw)
+        return alap
+
+    def test_definicio_helyes_hash_rendben(self):
+        self.assertEqual(self._futtat([self._d('definicio_hu', DBH_DEF)]).verdict, 'RENDBEN')
+
+    def test_glossza_helyes_hash_rendben(self):
+        self.assertEqual(self._futtat([self._d('glosszak_hu', DBH_GL)]).verdict, 'RENDBEN')
+
+    def test_negativ_elrontott_hash_bukik(self):
+        e = self._futtat([self._d('definicio_hu', DBH_DEF, forras_hash='0' * 40)])
+        self.assertEqual(e.verdict, 'SÉRTÉS')
+        self.assertIn('forras_hash eltér', e.peldak[0])
+
+    def test_negativ_ismeretlen_lexid_bukik(self):
+        e = self._futtat([self._d('definicio_hu', DBH_DEF, entry_id='999')])
+        self.assertEqual(e.verdict, 'SÉRTÉS')
+        self.assertIn('nincs hozzá forrásszöveg', e.peldak[0])
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)

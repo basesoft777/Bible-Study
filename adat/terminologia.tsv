@@ -71,3 +71,7 @@ Nt.	összesen N-szor	DT26 #11. DT27 (felhasználói döntés 2026.10.01): kapu=n
 read	olv.	DT26 #13. DT27 (felhasználói döntés 2026.10.01): kapu=nem — szövegjavításként „olv.”, de igeként „olvasandó”, „olvasatot ad”, „így olvassa” is helyes	v3	nem
 under the word	a címszónál	DT26 #18. DT27 (felhasználói döntés 2026.10.01): kapu=nem — a címszó a két szó közé kerül („a ἀϊδής címszónál”)	v3	nem
 which see	l. ott	DT26 #20. DT27 (felhasználói döntés 2026.10.01): kapu=nem — q.v. jelentésben „l. ott”, de vonatkozó szerkezetben („on which see δουλεία” → „ehhez l. δουλεία”) nem	v3	nem
+call on (someone's) name	valakinek a nevét segítségül hívni	F121 DT-F121d (felhasználó, 2026-10-28): kapu=nem — a zárójeles kulcs a forrásban nem illeszthető regexszel; a Károli „segítségül hív”	v4	nem
+cry out (someone's) name	valakinek a nevét kiáltani	F121 DT-F121d: kapu=nem — zárójeles kulcs; Károli 2Móz 33:19 „kiáltom előtted az Úr nevét”	v4	nem
+deity	istenség	F121 DT-F121d: nyelvközi egység (DT238), a BDB/Thayer-fordításban is „istenség”	v4	igen
+core of one's identity	azonosságának magja	F121 DT-F121d: kapu=nem — szabad szövegű kifejezés	v4	nem
