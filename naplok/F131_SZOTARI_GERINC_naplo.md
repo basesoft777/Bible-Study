@@ -576,7 +576,7 @@ A brief fejlécének `allapot`-ja a kör utolsó commitjában változik.
   - zöld: `teszt_szotari_gerinc` 38, `thayer_jelolt/teszt_vers_jelentes` 11, `olvaso_szerver/teszt_bdb_vers_jelentes` 29, `teszt_szerepmatrix` 44 (1 skip), `teszt_lexikon_adatres` 20, `teszt_forditas_kapuk` 110;
   - `bdb_jelolt/teszt_bont` 3 hiba, a kiindulóval azonos (`Determinizmus.test_ellenoriz`, `HuIlleszt.test_ellenoriz`, `test_osszefuzo_a_mai_adaton_valtozatlan`).
 - **`ellenoriz.py`:** 15 RENDBEN, 0 SÉRTÉS, 2 KÉZI, 3 JELENTÉS.
-- **CI** (`futtat.py --valtozott $(git diff --name-only origin/main...HEAD) --diff-alap $(git merge-base origin/main HEAD) --diff-fej HEAD --pr-cim "[ELLENŐRZŐ] F131: SZOTARI_GERINC" --esemeny pull_request`): kilépési kód 0 a 9. szakasz commitja *előtti* állapoton. **Javítva (10.1, F131.26):** a `77e17099` head-en ugyanez a futás E26 HIBA 2-t adott, kilépési kód 1 (e szakasz és az `ELLENOR_SZOTARI_GERINC_3.md` a `cefd5a39` két végleges DT-számát idézte); a csere után, az F131.26 head-en a merge-base-hez mérve: kilépési kód 0, E26 0.
+- **CI** (`futtat.py --valtozott $(git diff --name-only origin/main...HEAD) --diff-alap $(git merge-base origin/main HEAD) --diff-fej HEAD --pr-cim "[ELLENŐRZŐ] F131: SZOTARI_GERINC" --esemeny pull_request`): kilépési kód 0 a 9. szakasz commitja *előtti* állapoton. **Javítva (10.1, 10.5):** a `77e17099` head-en ugyanez a futás E26 HIBA 2-t adott, kilépési kód 1 (e szakasz és az `ELLENOR_SZOTARI_GERINC_3.md` a `cefd5a39` két végleges DT-számát idézte). E szakasz idézete az F131.26 óta commit-hivatkozás. Az E26-ot végül nem ez a csere oldotta fel, hanem a `cefd5a39` beolvasztása (`72cfa682`): azóta a két szám a merge-base-ben is megvan, és a merge-base-hez mért futás kilépési kódja 0, E26 0 (a végső eredmény: 10.5).
   - E5 0, E28 0 („1 migrált nézet”).
   - JELENTÉS: E12 355 (az 1/2. körben 353), E13 120, E25 4, E27 41, E30 15, E32 1.
   - Az `origin/main` a beolvasztás óta 1 commitot lépett (`cefd5a39` (szamkiosztas)); a CI a merge-base-hez mér.
@@ -586,7 +586,7 @@ A brief fejlécének `allapot`-ja a kör utolsó commitjában változik.
 1. **TAHOT a forrásmegjelölésben.** A lap az F131.7 óta az 1Móz 4:26 és az 1Kir 18:24 ⓘ-jében a `konkordancia/TAHOT_kivonat.tsv`-t forrásként nevezi meg (a kétszeres előfordulás igazolása), és a provenienciasorok korábban is. Sem az Irodalomban, sem a kolofonban nem áll. Kérdés: kerüljön-e be (az `adat/licencek.tsv` TAHOT-sora szerint), vagy a provenienciában való megnevezés elég. Nem döntöttem.
 2. **A 7 másik commitolt lap elavultsága.** A mai generátor kimenetétől már a beolvasztás előtt is eltérnek (9.6 (i)). Ez nem e kör és nem a main hatása; az újragenerálásuk más feladat hatóköre. Nem írtam felül.
 
-## 10. Célzott 3. kör (korlát felett, felhasználói engedéllyel) — ELLENOR_SZOTARI_GERINC_3 (F131.26–F131.30)
+## 10. Célzott 3. kör (korlát felett, felhasználói engedéllyel) — ELLENOR_SZOTARI_GERINC_3 (F131.26–F131.31, main-beolvasztás `72cfa682`)
 
 **Modell-ellenőrzés:** a session `claude-opus-5-5`, a brief `modell: opus`, egyezik. Kiinduló head: `e97d1ad3`.
 
@@ -596,8 +596,9 @@ A brief fejlécének `allapot`-ja a kör utolsó commitjában változik.
 
 - **Mérés a kiinduló head-en** (`e97d1ad3`; `futtat.py … --diff-alap $(git merge-base origin/main HEAD) --diff-fej HEAD … --esemeny pull_request`, merge-base `5f7c7d2a`): kilépési kód 1, **E26 HIBA 2**. Az E26 számonként csak egyszer jelez (`szabalyok.py`, `jelentett`-halmaz); a jelzett hely itt az `ELLENOR_SZOTARI_GERINC_3.md:37` volt, a napló 9.8 ugyanazt a két számot idézte.
 - **Teljes ág** (`git diff 5f7c7d2a..HEAD`, hozzáadott sorok, `DT<n>`/`N<n>`): a merge-base `DONTESEK.md`-jének legnagyobb száma DT367, a `NYITOTT_FELADATOK.md`-é N61. E fölötti szám három helyen állt: a napló 9.8 (a `cefd5a39` commit címének idézete) és az `ELLENOR_SZOTARI_GERINC_3.md` 37. és 50. sora. Más ilyen hely nincs; `N<n>` fölötti szám nincs.
-- **Csere:** mindhárom helyen a commitra mutató hivatkozás áll szám nélkül: „`cefd5a39` (szamkiosztas)”. Az ellenőri jelentés fejléc-megjegyzése rögzíti a változtatást; más tartalma nem változott.
-- **A 9.8 „kilépési kód 0” állítása** kiegészítve: a 9. szakasz commitja előtti állapotra igaz volt; a `77e17099` head-en E26 HIBA 2, kilépési kód 1; a csere után (F131.26 head, `ca49caa9`) ugyanez a futás: **kilépési kód 0, E26 0**, E5 0, E28 0.
+- **Csere (F131.26):** mindhárom helyen a commitra mutató hivatkozás került a számok helyére: „`cefd5a39` (szamkiosztas)”. Az F131.26 head-en (`ca49caa9`) a merge-base-hez mért futás kilépési kódja 0, E26 0, E5 0, E28 0.
+- **Visszavonás (F131.31, `80a64b8d`):** a csere az ellenőri jelentést (`ELLENOR_SZOTARI_GERINC_3.md`) is módosította, ezt az /elteres tiltja (7. pont). Az orkesztráló session a jelentést visszaállította az `e97d1ad3`-beli, változtatás nélküli szövegére: a 37. és 50. sorában ismét a két végleges DT-szám áll. A napló 9.8-ban a csere megmaradt.
+- **Az E26 feloldása (`72cfa682`):** a jelentés két számát a main újabb beolvasztása (`origin/main` = `cefd5a39`, ütközés nélkül) tette a merge-base részévé. Ettől a merge-base `cefd5a39`, a két szám a main-en létezik, és az E26 0. A végső futás: 10.5.
 
 `proveniencia: scope=git diff 5f7c7d2a..HEAD (hozzáadott sorok), DONTESEK.md és NYITOTT_FELADATOK.md @ 5f7c7d2a; futtat.py --diff-alap merge-base | forras=git, eszkozok/ellenorzes/futtat.py | ts=2026-10-28`
 
@@ -624,10 +625,18 @@ A brief fejlécének `allapot`-ja a kör utolsó commitjában változik.
 - **CI a merge-base-hez** (`futtat.py --valtozott $(git diff --name-only origin/main...HEAD) --diff-alap $(git merge-base origin/main HEAD) --diff-fej HEAD --pr-cim "[ELLENŐRZŐ] F131: SZOTARI_GERINC" --esemeny pull_request`; merge-base `5f7c7d2a`, `origin/main` = `cefd5a39`), az F131.28 head-en (`b831b173`), e napló-commit előtt: **kilépési kód 0**.
   - E5 0, E26 0, E28 0.
   - JELENTÉS: E12 357 (a 9. körben 355; a +2 a lap új soraiból), E13 120, E25 4, E27 41, E30 18 (a 9. körben 15; a +3 a kör commit-üzeneteiben álló kódazonosítók: `szamkiosztas`, `elofordulasok`, `idezes`), E32 1.
-  - A futtatás a napló-commit és a brief-fejléc commitja után, a végső head-en megismételve (az eredmény a jelentésben).
+  - A végső head-en (a visszavonás és a beolvasztás után) megismételt futás: 10.5.
 
 `proveniencia: scope=a négy tesztkészlet, eszkozok/ellenoriz.py, eszkozok/ellenorzes/futtat.py (merge-base 5f7c7d2a) | forras=python, git | ts=2026-10-28`
 
 ### 10.4 A körön kívül észlelt, nem javított tételek
 
 1. **A TAHOT a többi lapon.** A `TAHOT_kivonat.tsv` nevét más lapok is említik (`grep`: ALVIL-001, HAMART-001, HODIT-001, KIRALY-001, MENNY-001, TEREMT-001 lexikonoldala és törzscikke; pl. a Q2-audit kézi sora, a HODIT-001 kizárt sorainak indoklása), az Irodalmukban azonban nem áll. Ezek az említések rés- vagy adatsorból jönnek, nem a gerinces ⓘ-ből. A felvétel e körben a hatókör szerint csak a gerinces lapra szól (más lap nem változhat). A többi lap a 9.9 2. pontjában jelzett elavultsággal együtt kezelhető.
+
+### 10.5 Újraellenőrzés és a végső állapot (F131.32–F131.33)
+
+- **Újraellenőrzés** (`naplok/ELLENOR_SZOTARI_GERINC_4.md`, tartomány `e97d1ad3..72cfa682`, F131.32): az `ELLENOR_SZOTARI_GERINC_3` mindkét tétele megszűnt. 1 dokumentációs ELTÉRÉS maradt: a napló 9.8 és 10. szakasza a visszavont cserét írta le, az F131.31-et és a `72cfa682`-t nem. Ezt e javítás (F131.33, csak a napló) pótolja, a felhasználó jóváhagyásával (2026-10-28, az orkesztrátor chatjében: „Mehet”). A lexikon, a kód és az ellenőri jelentések nem változtak.
+- **`ellenoriz.py`** (a `cc1b0968` + e napló-javítás munkapéldányán): 15 RENDBEN, 0 SÉRTÉS, 2 KÉZI, 3 JELENTÉS.
+- **CI a merge-base-hez** (`git fetch origin`; `futtat.py --valtozott $(git diff --name-only origin/main...HEAD) --diff-alap $(git merge-base origin/main HEAD) --diff-fej HEAD --pr-cim "[ELLENŐRZŐ] F131: SZOTARI_GERINC" --esemeny pull_request`; `origin/main` = merge-base = `cefd5a39`): **kilépési kód 0**; E5 0, E26 0, E28 0; JELENTÉS: E12 357, E13 120, E25 4, E27 41, E30 19, E32 1. A futás a commit után, a PR-head-en megismételve.
+
+`proveniencia: scope=eszkozok/ellenoriz.py, eszkozok/ellenorzes/futtat.py (merge-base cefd5a39) | forras=python, git | ts=2026-10-28`
