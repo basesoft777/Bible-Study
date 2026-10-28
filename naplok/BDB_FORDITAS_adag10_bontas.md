@@ -8,9 +8,15 @@
 |---|---|---|---|---|
 | `adat/forditasok.tsv` (adatsorok, a 2 fejlécsor nélkül) | 11049 | 14666 | +3617 | 3617 / 0 |
 | `adat/forditasok.tsv` (fejléces sorszám, `wc -l`) | 11051 | 14668 | +3617 | |
-| `naplok/EMELES_munka.tsv` | — | — | +3617 | 3617 / 0 |
-| `naplok/FORDITAS_kisnagybetu_csere.tsv` | — | — | a javítóréteg 5_kisnagybetu cseréi (ha vannak) | `git diff --numstat` |
+| `naplok/EMELES_munka.tsv` | — | — | +3617 | 3617 / 0 (az F38.418 után 3618 / 1 volt, l. alább; az F38.419 óta 3617 / 0) |
+| `naplok/FORDITAS_kisnagybetu_csere.tsv` | — | — | +1 sor (H3365: `Imperativus -> imperativus (Imperative)`, 2026.10.28) | 1 / 0 |
 | minden más `adat/` tábla | — | — | 0 | — |
+
+**Az `EMELES_munka.tsv` megjegyzéssora (1. sor).** A F38.418-ban a H1753 és a H3367 a régi `teljes` úton (`emeles.py rogzit`) ment, és ez a munkatábla első, megjegyzés-fejlécsorát `… irja: python eszkozok/emeles.py rogzit`-re írta át a bázis `… rogzit / szakasz_rogzit` szövege helyett; ezért volt a numstat 3618 / 1. Az F38.419 `szakasz_rogzit`-je (H0231) a fejlécsort a bázis szövegére állította vissza, így a bázishoz képest a tábla azóta 3617 / 0. Tartalmi hatása nincs (megjegyzéssor).
+
+**F38.419 Δ (H0231, DT362 (1)(a)).** A H0231 három `forditasok.tsv`-sorának csak a `megjegyzes` mezője változott (a forráshiba-jelölés „contracted” = contrasted; a fordítás szövege, a hash és a többi mező nem); a H0231 három `EMELES_munka.tsv`-sora ugyanígy. A `forditasok.tsv` a bázishoz képest továbbra is 3617 / 0; a commit önmagában 3 / 3.
+
+**DT56-mérés: 848 szócikk, adag 847.** A Károli-lefedettségi mérés (`BDB_FORDITAS_karoli_lefedettseg.py --tol 1975 --adagok 1`) 848 szócikket számolt, az adag a `BDB_FORDITAS_sorrend.tsv` szerint 847. A különbség okát nem vizsgáltam (a mérést nem futtattam újra); valószínű a mérő szkript tartományhatára (`--tol 1975` nyitott felső határ, 1 szócikkel a 10. adag után), de ez nincs igazolva.
 
 Törölt vagy módosított meglévő `forditasok.tsv`-sor nincs (0 törlés). `kezi` sorhoz nem nyúltam. Régi `teljes` sor egyik Strongnál sem volt (`--regi-elavult` nem kellett).
 
@@ -50,7 +56,7 @@ Szeletek tervezett tartománya: 1. 1975–2196 (222 szócikk, 150 031 karakter);
 
 ## 4. 17_bdb_javitas (DT55, #67 kapu)
 
-A felsorolt Strongok közül egynek sincs olyan sora az `adat/bdb_igehely_javitas.tsv`-ben, amelyet a fordítás `Y [BDB: X]` jelöléssel érintene; a 17. kapu mindegyiknél RENDBEN („nincs javítótábla-sor”).
+A felsorolt Strongok közül egynek sincs olyan sora az `adat/bdb_igehely_javitas.tsv`-ben, amelyet a fordítás `Y [BDB: X]` jelöléssel érintene; a 17. kapu mindegyiknél RENDBEN. A tartomány javítótábla-Strongjai (H0821, H5532, H5710, H6805, H6881) `jelolt_marad` sorként szerepelnek, javított hivatkozás nélkül, ezért `Y [BDB: X]` jelölés nem készült.
 
 ## 5. Kapu-felülbírálások (DT361)
 
@@ -66,15 +72,15 @@ A felsorolt Strongok közül egynek sincs olyan sora az `adat/bdb_igehely_javita
 
 A kapuk egyéb elakadásai (5_terminologia: `p.` → `o.`, `suffix` → `suffixummal`, `proper name, of a people/location`; 11_konyvek: elmaradt vagy teljes alakban kiírt könyvnév, pl. `Ezekiel`, `Psalm`, `Joshua`, `2Mózes`) mind **valódi** megoldással, tartalmi változtatás nélkül, az egyszeri újrapróbálkozásban zárultak. Több kapu egyszerre egyik szócikknél sem bukott.
 
-**Megjegyzés (forráshiba, nem javítótábla-sor):** a H5532 forrásában `Eccl 22:22t.` áll (nem létező fejezet; `adat/bdb_igehely_javitas.tsv`: javítás nincs, nincs jelölt); a fordítás hűen átveszi (`Préd 22:22t.`), `Y [BDB: X]` jelölés nélkül.
+**Megjegyzés (forráshiba; `jelolt_marad` sor a javítótáblában, javított hivatkozás nélkül):** a H5532 forrásában `Eccl 22:22t.` áll (nem létező fejezet; `adat/bdb_igehely_javitas.tsv`: `jelolt_marad` sor, javított hivatkozás nélkül); a fordítás hűen átveszi (`Préd 22:22t.`), `Y [BDB: X]` jelölés nélkül.
 
-**Megjegyzés (forráshiba, nem javítótábla-sor):** a H5710 forrásában `Prov 38:19` áll (nem létező fejezet; `adat/bdb_igehely_javitas.tsv`: javítás nincs, nincs jelölt); a fordítás hűen átveszi (`Péld 38:19`), `Y [BDB: X]` jelölés nélkül; a 13. kapu JELZÉS-t ad.
+**Megjegyzés (forráshiba; `jelolt_marad` sor a javítótáblában, javított hivatkozás nélkül):** a H5710 forrásában `Prov 38:19` áll (nem létező fejezet; `adat/bdb_igehely_javitas.tsv`: `jelolt_marad` sor, javított hivatkozás nélkül); a fordítás hűen átveszi (`Péld 38:19`), `Y [BDB: X]` jelölés nélkül; a 13. kapu JELZÉS-t ad.
 
-**Megjegyzés (forráshiba, nem javítótábla-sor):** a H6881 forrásában `Dan 19:41` áll (nem létező fejezet; javítás nincs, nincs jelölt); a fordítás hűen átveszi (`Dán 19:41`), `Y [BDB: X]` jelölés nélkül.
+**Megjegyzés (forráshiba; `jelolt_marad` sor a javítótáblában, javított hivatkozás nélkül):** a H6881 forrásában `Dan 19:41` áll (nem létező fejezet; `adat/bdb_igehely_javitas.tsv`: `jelolt_marad` sor, javított hivatkozás nélkül); a fordítás hűen átveszi (`Dán 19:41`), `Y [BDB: X]` jelölés nélkül.
 
-**Megjegyzés (forráshiba, nem javítótábla-sor):** a H6805 forrásában `Hab 63:1` áll (nem létező fejezet; javítás nincs, nincs jelölt); a fordítás hűen átveszi (`Hab 63:1`), `Y [BDB: X]` jelölés nélkül; a 13. kapu JELZÉS-t ad.
+**Megjegyzés (forráshiba; `jelolt_marad` sor a javítótáblában, javított hivatkozás nélkül):** a H6805 forrásában `Hab 63:1` áll (nem létező fejezet; `adat/bdb_igehely_javitas.tsv`: `jelolt_marad` sor, javított hivatkozás nélkül); a fordítás hűen átveszi (`Hab 63:1`), `Y [BDB: X]` jelölés nélkül; a 13. kapu JELZÉS-t ad.
 
-**Megjegyzés (forráshiba, nem javítótábla-sor):** a H0821 forrásában `Lam 19:19` áll (nem létező fejezet; javítás nincs, nincs jelölt); a fordítás hűen átveszi (`JSir 19:19`), `Y [BDB: X]` jelölés nélkül; a 13. kapu JELZÉS-t ad.
+**Megjegyzés (forráshiba; `jelolt_marad` sor a javítótáblában, javított hivatkozás nélkül):** a H0821 forrásában `Lam 19:19` áll (nem létező fejezet; `adat/bdb_igehely_javitas.tsv`: `jelolt_marad` sor, javított hivatkozás nélkül); a fordítás hűen átveszi (`JSir 19:19`), `Y [BDB: X]` jelölés nélkül; a 13. kapu JELZÉS-t ad.
 
 
 **Szakasztáblán kívüli Strongok (régi `teljes` út):** a H1753 (sorrend 2744) és a H3367 (sorrend 2773) nincs az `adat/bdb_szakaszok.tsv`-ben; `emeles.py helyorzo`/`ellenoriz`/`rogzit`/`beir` úton, `jelentes_szam=teljes` sorral kerültek be (2 sor), az F38.418-ban. A forrás H1753-nál kétszer ismétli a Dán 4:32 tagmondatot; hűen átvettem.
