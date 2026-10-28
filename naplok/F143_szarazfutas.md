@@ -50,11 +50,11 @@ A brief „7 másik lap nulladiffjét” nem definiálja részletesen; kontrolln
 
 ## 4. G0540 és G0813 az új kimenetben
 
-- `TUDOMANYOS`: a G0813 egyetlen előfordulása a [^9] proveniencia-lábjegyzet (88. sor), amely a javítást dokumentálja (`strong G0813→G0540: DT337 (a)`, forrása a `Melkizedek_tematikus.md`); a „G0813 — ἄτακτος” alszakasz és a Thayer G813 szakasz megszűnt. **A brief Mz-pontja („Grep G0813 → 0”) ezért szó szerint nem teljesülne a lábjegyzet miatt**; a feltétel finomítása döntés tárgya (DT-F143a).
+- `TUDOMANYOS`: a G0813 egyetlen előfordulása a [^9] proveniencia-lábjegyzet (88. sor), amely a javítást dokumentálja (`strong G0813→G0540: DT337 (a)`, forrása a `Melkizedek_tematikus.md`); a „G0813 — ἄτακτος” alszakasz és a Thayer G813 szakasz megszűnt. **A brief Mz-pontja („Grep G0813 → 0”) ezért szó szerint nem teljesülne a lábjegyzet miatt**; a feltétel finomítása döntés tárgya (DT369).
 - `TORZSCIKK`: G0813 0 előfordulás; G0540 5.
 - G0540 az új TUDOMANYOS-ban megjelenik a szócikk-blokkokban (tW: „a forrás nem tárgyalja”; domén: 010002 Kinship Relations Involving Successive Generations; UBS DNTG: 1 jelentés, 1 hely; kiejtés: ἀπάτωρ (apatór)).
 - **Hiány (nem kitöltve, CLAUDE.md 3. szabály):** a G0540-hez nincs Thayer-sor („*G0540: nincs Thayer-sor ehhez a szerephez.*”), nincs önálló Thayer G540 alszakasz; a SECE megfelelő-lista is hiány. Ez a #132 Thayer-szakaszának hatóköre, nem a #143-é.
 
 ## 5. Következtetés az M0 ⛔-ra
 
-A diff nem csak (i)-ből áll: a változott sorok túlnyomó része (ii), vagyis az éles írás a DT74 (3) („befagyasztva a #11 1. lépcsőjéig”) hatálya alá esik. A döntés a felhasználóé (`DONTESEK.md`, DT-F143a); az éles írást (`--ir`) nem futtattam.
+A diff nem csak (i)-ből áll: a változott sorok túlnyomó része (ii), vagyis az éles írás a DT74 (3) („befagyasztva a #11 1. lépcsőjéig”) hatálya alá esik. A döntés a felhasználóé (`DONTESEK.md`, DT369); az éles írást (`--ir`) nem futtattam.
