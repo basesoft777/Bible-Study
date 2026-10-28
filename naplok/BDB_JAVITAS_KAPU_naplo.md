@@ -1,6 +1,6 @@
 # BDB_JAVITAS_KAPU — regresszió a meglévő BDB-soron (F67 M4)
 
-*proveniencia: scope=BDB-sorok (teljes + sz<n>) adat/forditasok.tsv x adat/bdb_igehely_javitas.tsv | forras=eszkozok/forditas_kapuk.py ellenoriz_bdb_javitas (naplok/BDB_JAVITAS_KAPU_regresszio.py) | ts=2026-10-28T10:22:51*
+*proveniencia: scope=BDB-sorok (teljes + sz<n>) adat/forditasok.tsv x adat/bdb_igehely_javitas.tsv | forras=eszkozok/forditas_kapuk.py ellenoriz_bdb_javitas (naplok/BDB_JAVITAS_KAPU_regresszio.py) | ts=2026-10-28T10:27:22*
 
 ## Összegzés
 
@@ -21,23 +21,23 @@
 ## A 4 már jelölt szócikk és a H6297 külön
 
 ### H5002 — 1 sor; RENDBEN 1, SERTES 0
-*proveniencia: scope=BDB-sorok (teljes + sz<n>) adat/forditasok.tsv x adat/bdb_igehely_javitas.tsv | forras=eszkozok/forditas_kapuk.py ellenoriz_bdb_javitas (naplok/BDB_JAVITAS_KAPU_regresszio.py) | ts=2026-10-28T10:22:51*
+*proveniencia: scope=BDB-sorok (teljes + sz<n>) adat/forditasok.tsv x adat/bdb_igehely_javitas.tsv | forras=eszkozok/forditas_kapuk.py ellenoriz_bdb_javitas (naplok/BDB_JAVITAS_KAPU_regresszio.py) | ts=2026-10-28T10:27:22*
 - teljes: RENDBEN — 1 javítva sor, 1 jelölés
 
 ### H5046 — 1 sor; RENDBEN 1, SERTES 0
-*proveniencia: scope=BDB-sorok (teljes + sz<n>) adat/forditasok.tsv x adat/bdb_igehely_javitas.tsv | forras=eszkozok/forditas_kapuk.py ellenoriz_bdb_javitas (naplok/BDB_JAVITAS_KAPU_regresszio.py) | ts=2026-10-28T10:22:51*
+*proveniencia: scope=BDB-sorok (teljes + sz<n>) adat/forditasok.tsv x adat/bdb_igehely_javitas.tsv | forras=eszkozok/forditas_kapuk.py ellenoriz_bdb_javitas (naplok/BDB_JAVITAS_KAPU_regresszio.py) | ts=2026-10-28T10:27:22*
 - teljes: RENDBEN — 1 javítva sor, 1 jelölés
 
 ### H4427 — 1 sor; RENDBEN 1, SERTES 0
-*proveniencia: scope=BDB-sorok (teljes + sz<n>) adat/forditasok.tsv x adat/bdb_igehely_javitas.tsv | forras=eszkozok/forditas_kapuk.py ellenoriz_bdb_javitas (naplok/BDB_JAVITAS_KAPU_regresszio.py) | ts=2026-10-28T10:22:51*
+*proveniencia: scope=BDB-sorok (teljes + sz<n>) adat/forditasok.tsv x adat/bdb_igehely_javitas.tsv | forras=eszkozok/forditas_kapuk.py ellenoriz_bdb_javitas (naplok/BDB_JAVITAS_KAPU_regresszio.py) | ts=2026-10-28T10:27:22*
 - teljes: RENDBEN — 1 javítva sor, 1 jelölés
 
 ### H7223 — 1 sor; RENDBEN 1, SERTES 0
-*proveniencia: scope=BDB-sorok (teljes + sz<n>) adat/forditasok.tsv x adat/bdb_igehely_javitas.tsv | forras=eszkozok/forditas_kapuk.py ellenoriz_bdb_javitas (naplok/BDB_JAVITAS_KAPU_regresszio.py) | ts=2026-10-28T10:22:51*
+*proveniencia: scope=BDB-sorok (teljes + sz<n>) adat/forditasok.tsv x adat/bdb_igehely_javitas.tsv | forras=eszkozok/forditas_kapuk.py ellenoriz_bdb_javitas (naplok/BDB_JAVITAS_KAPU_regresszio.py) | ts=2026-10-28T10:27:22*
 - teljes: RENDBEN — 1 javítva sor, 1 jelölés
 
 ### H6297 — 4 sor; RENDBEN 4, SERTES 0
-*proveniencia: scope=BDB-sorok (teljes + sz<n>) adat/forditasok.tsv x adat/bdb_igehely_javitas.tsv | forras=eszkozok/forditas_kapuk.py ellenoriz_bdb_javitas (naplok/BDB_JAVITAS_KAPU_regresszio.py) | ts=2026-10-28T10:22:51*
+*proveniencia: scope=BDB-sorok (teljes + sz<n>) adat/forditasok.tsv x adat/bdb_igehely_javitas.tsv | forras=eszkozok/forditas_kapuk.py ellenoriz_bdb_javitas (naplok/BDB_JAVITAS_KAPU_regresszio.py) | ts=2026-10-28T10:27:22*
 
 ## SERTES sorok
 
