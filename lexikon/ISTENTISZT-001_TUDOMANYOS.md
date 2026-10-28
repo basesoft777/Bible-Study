@@ -447,7 +447,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 > to call, name, surname : with accusative (cl.), Mat.10:25; pass., Act.1:23 4:36 10:5, 18 10:22 11:13 12:12, 25 , Heb.11:16 ; τ. ὄνομα, before ἐπί (denoting possession, as Heb. עַל. . שֻׁם קָרָא), Act.15:17 (LXX), Jas.2:7 (see. CB on Amo.9:12 ).
 
-**🇭🇺** hívni, nevezni, melléknevet adni: tárgyesettel (klasszikus), Mt 10:25; szenvedő alakban: ApCsel 1:23; 4:36; 10:5, 18, 22; 11:13; 12:12, 25; Zsid 11:16; τ. ὄνομα (t. onoma), ἐπί (epi) előtt (birtoklást jelölve, mint a héb. עַל. . שֻׁם קָרָא (kárá sum … al)): ApCsel 15:17 (LXX), Jak 2:7 (l. CB, Ámós 9:12-höz).
+**🇭🇺** hívni, nevezni, nevet adni: tárgyesettel (klasszikus), Mt 10:25; szenvedő alakban: ApCsel 1:23; 4:36; 10:5, 18, 22; 11:13; 12:12, 25; Zsid 11:16; τ. ὄνομα (t. onoma), ἐπί (epi) előtt (birtoklást jelölve, mint a héb. עַל. . שֻׁם קָרָא (kárá sum … al)): ApCsel 15:17 (LXX), Jak 2:7 (l. CB, Ámós 9:12-höz).
 
 *Forrás: konkordancia/TBESG.txt*
 
