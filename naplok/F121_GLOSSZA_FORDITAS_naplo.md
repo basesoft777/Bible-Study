@@ -57,7 +57,7 @@ A 6 sor még nincs a `forditasok.tsv`-ben. Két dolog előzi meg az írást; a j
 
 | angol | magyar (javaslat) | indok | kapu |
 |---|---|---|---|
-| call on (someone's) name | valakinek a nevét segítségül hívni | Károli „segítségül hív” (a lap sorai); a BDB H7121 2.c „hívni ׳י nevével (azaz használni azt a segítségül hívásban)” | igen |
+| call on (someone's) name | valakinek a nevét segítségül hívni | Károli „segítségül hív” (a lap sorai); a BDB H7121 2.c „hívni ׳י nevével (azaz használni azt a segítségül hívásban)” | igen (a végleges sor: **nem**, l. 4.) |
 | cry out (someone's) name | valakinek a nevét kiáltani | a lap Károli-sorai (2Móz 33:19 „kiáltom előtted az Úr nevét”) | igen |
 | deity | istenség | nyelvközi egység (DT238): a Thayer/BDB-fordításban is „istenség” | igen |
 | core of one's identity | azonosságának magja | a lap „2. Szótári háttér” H8034 BDB-szakasza „azonosság” szóhasználatot nem ad; új sor | nem (szabad szövegű kifejezés) |
@@ -81,7 +81,7 @@ A „call” szó önmagában többjelentésű, ezért erre nincs kapus sor; a n
 
 - `adat/terminologia.tsv`: +4 `v4` sor (`deity` kapu=igen; a többi kapu=nem).
 - `adat/forditasok.tsv`: +6 sor (`UBS_DBH` ×5 `definicio_hu`, `UBS_DNTG` G1941 56.15 `glosszak_hu`), `allapot=sonnet`, `modell=claude-sonnet-5-5`, `terminologia_verzio=v4`, `forras_hash` a `lista`-ból. Írás előtt-után bájt-összevetés: a meglévő 14 672 sor bájtra azonos, csak 6 sor került a végére.
-- **Kapuk** (`forditas_kapuk.kapuk_futtat`, mind a 6 sorra): minden gátló kapu RENDBEN (`5_terminologia`, `15_tiltott` is); bukott sor 0, önújrapróba nem kellett, `…_bukottak.tsv` nem jött létre.
+- **Kapuk** (`forditas_kapuk.kapuk_futtat`, mind a 6 sorra): minden gátló kapu RENDBEN (`5_terminologia`, `15_tiltott` (a brief 14_tiltott néven említi; a kód 15_tiltott) is); bukott sor 0, önújrapróba nem kellett, `…_bukottak.tsv` nem jött létre.
 - `ellenoriz.py`: SÉRTÉS 0, a 13. szabály RENDBEN a 6 új sorra is (a 14. szabály JELENTÉS, nem gátol).
 - **Próbarender** (repón kívül): a `(fordításra vár)` jelölés a 46-ból 1-re csökkent; a megmaradt egy a lap magyarázó lábjegyzete (136. sor), amely a jelölést mint fogalmat említi — nem fordítatlan egység. A UBS-doménsor: „56.15 ügyében fellebbezni; magasabb bírósághoz fellebbezni”.
 - **Ismert eltérés, nem e menet hibája:** a próbarender és az élő lap között 8 további sor különbözik, mert a generátor-kód még a `DT381`/`DT373`/`DT382` helyett a helyőrzőket (`DT-F131k`/`DT-F131c`/`DT-F131l`) tartalmazza. Az élő lapot ez a menet nem írta; a szám-névcserét a main-en a `szamkiosztas` végzi, az élő lap nulladiffje addig ezen is múlik.

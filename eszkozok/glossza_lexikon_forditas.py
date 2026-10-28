@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-eszkozok/glossza_lexikon_forditas.py -- F121 GLOSSZA_FORDITAS (DT-F121b: a #140 eszkozetol kulon fajl):
+eszkozok/glossza_lexikon_forditas.py -- F121 GLOSSZA_FORDITAS (DT-F121c: a #140 eszkozetol kulon fajl):
 a lexikonoldalak "(forditasra var)" jelolesu szotari egysegeinek listaja es rogzitese.
 
   lista --id ISTENTISZT-001 [--kimenet <repon kivuli konyvtar>]
