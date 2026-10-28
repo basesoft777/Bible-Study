@@ -137,6 +137,20 @@ Proveniencia: `scope=TAHOT-teljes: (H4194 | H8179[+H4194] | H0953 | H7845) ∩ (
 
 Proveniencia: `scope=TAHOT-teljes: horgony (H4194 | H8179[+H4194] | H0953 | H7845) egy versben; ablak ±2 vers, azonos fejezet; dublett: 2Sám 22 = Zsolt 18 egy hely | forras=konkordancia/TAHOT_kivonat.tsv (lekerdez.load_tahot) | ts=` a TSV soraiban.
 
+## 5c. A küszöb minősítése (DT-F123e ✅)
+
+**Döntés:** orkesztrátor, a felhasználó felhatalmazásával (2026-10-28: „vedd át a döntést”). A mérce a legszigorúbb szint, a H5927 nélkül: gépi alap 3 hely. A küszöb (≥3) a minősített helyekre szól; jegyek: a halálveszélyben lévő maga kiált, a kiáltás az Úrhoz szól, a szabadulás ebből a veszélyből történik.
+
+| Hely | Ablak (Károli 1908) | Minősül? | Jelöltsor (`adat/jeloltek.tsv`) |
+|---|---|---|---|
+| 2Móz 12:29 | a „bór” a tömlöc; a 12:31 H7121: a fáraó Mózest hívatja | nem (egyik jegy sincs) | `elutasítva` |
+| Zsolt 49:10 | a 49:12 H7121: „nevöket hangoztatják”; a 49:8 H6299 tagadott váltság | nem (nincs kiáltás, nincs szabadulás) | `elutasítva` |
+| Zsolt 107:18 | „a halál kapujához közelgetének” → 107:19 „az Úrhoz kiáltának … kiszabadította őket” | **igen** | `elutasítva` az ALVIL-001-hez: nincs H7585, az alpont jegye hiányzik (a fölérendelt fogalom, „ima bajban”) |
+
+**Eredmény: 1 minősített hely < 3 → az ↳ alpont marad** (2e. 4.); új ID és P2 nem nyílik. A Zsolt 107:18–19 a hígulási irány mért példája: az értelmező menet az alpont negatív kritériumánál hivatkozhat rá.
+
+Proveniencia: `scope=a 3 gépi hely ±2 verses ablaka | forras=konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv (split('\t')) | ts=2026-10-28`.
+
 ## 6. Nyitott kérdések (az értelmező menetnek / a felhasználónak; itt nincs döntés)
 
 1. **⛔ 2e. 4. küszöb (P2/A4, a felhasználóé):** a Seól nélküli scan melyik szintje a mérce (0 / 3 / 7 önálló hely), és kell-e versablak. Javaslat a döntés-előkészítéshez: a versablakos (±2 vers, azonos fejezet) változat lefuttatása a felhasználó jóváhagyásával, a szabadulás-ige listájának rögzítése előtt.
