@@ -280,6 +280,8 @@ Az elfogadott próba után külön jóváhagyás az `--ir` futásra és a várt 
 - **N-F131c** — Thayer-tagolás (a DT190 Thayer-ága): a G1941 kézi határai átmenetiek. A görög előfordulások Thayer-hozzárendelése (DT-F131c (b)) kutatói döntés.
 - **N-F131d** — a #121-nek: az arany lapon e feladat után nem jelenik meg a 62 egységből a tW, a TBESH, a teljes UBS és a Mounce egysége (pontos lista: a napló M0-ja). A #121 M1 mintájához új minta kell. A szűkítésről a #121 dönt (DT272).
 - **N-F131e** — a szónézet ága (DT272 (1), (e) második fele): a teljes szócikk, a releváns BDB-hivatkozás jelölése a magyar szakaszhoz igazítva, és a tW/TBESH/UBS/Mounce megjelenítése a szónézeten. Az olvasó-szerver feladata.
+- **N-F131f** — a szótári gerinc szakaszbontásának mértéke (a felhasználó, 2026-10-28: „a szakaszhatárok jók, de nagyobb bontást szeretnék majd”). A „nagyobb bontás” értelme tisztázandó: (1) finomabb tagolás (a mostani szakaszok alá további szintek), (2) durvább, nagyobb egységek, (3) mélyebb kibontás a motívumot hordozó szakaszoknál. A szakaszhatár adat (`bdb_szakaszok.tsv`, `thayer_szakaszok.tsv`), formázásfüggetlen; a #131 zárása nem függ tőle. Későbbi döntés, a szónézet ágával (N-F131e) együtt.
+- **N-F131g** — a szótári gerinc vizuális elkülönítése (a felhasználó, 2026-10-28: „formázással jobban elkülönülőt”): a szakaszcímsor, a keretezett/behúzott blokk, a jelentés (a szó) és a funkció (a motívumban) elválasztása. A két felületen más a lehetőség: az md-ben a generátor sablonja (`<details>`, címsorok, táblák, idézetblokk), az olvasóban a szónézet (N-F131e). Egységes döntés kell a kettőre; későbbi, nem akadálya a DT-F131f elfogadásának.
 
 ## 7. Elfogadási feltételek
 
