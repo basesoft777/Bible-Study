@@ -12,7 +12,7 @@
 | `naplok/FORDITAS_kisnagybetu_csere.tsv` | — | — | +2 sor (H4549, H5953; az 1. szelet) | 2 / 0 |
 | minden más `adat/` tábla | — | — | 0 | — |
 
-A fenti +2 982 az F38.402–406 Δ-ja; az F38.407–408 javítókör (1/2) a Δ-t nem változtatja (a H0479 sz2 sora 1 sor módosul: `+1 / −1`, a H0479 `teljes` sor nem változik).
+A fenti +2 982 az F38.402–406 Δ-ja; az F38.407–408 javítókör (1/2) a Δ-t nem változtatja (a H0479 sz2 sora 1 sor módosul: `+1 / −1`, a H0479-nek csak sz1 és sz2 sora van: az sz2 változik, az sz1 nem).
 
 Törölt vagy módosított meglévő `forditasok.tsv`-sor az F38.402–406-ban nincs; a H6297 (8. adag) négy sora változatlan (a tévesen újrafordított sorokat az 1. szelet közben visszaállítottam a `git show HEAD:` tartalmára, a bejegyzett Δ 834 új sor, nem 838). `kezi` sorhoz nem nyúltam.
 
