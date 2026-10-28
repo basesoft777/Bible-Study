@@ -1,5 +1,5 @@
 # GENERÁLT: eszkozok/thayer_jelolt/vers_jelentes.py --ts 2026-10-28 — kézzel nem szerkesztendő (F132; séma: adat/SEMA.md, thayer_vers_jelentes.tsv).
-# forras: konkordancia/lexikonok_nyers/Thayer.lexicon@b184561ea399 (csak a bcv-koordináta és a szerkezet) + konkordancia/Konyv_normalizalo_tabla.tsv@03a33f594e82 + konkordancia/Karoli_1908.tsv@49335bbcc77d + kód@868e48f01054
+# forras: konkordancia/lexikonok_nyers/Thayer.lexicon@b184561ea399 (a bcv-koordináta, a szerkezet és a `</ref>` utáni jelöletlen folytatás, DT-F131n) + konkordancia/Konyv_normalizalo_tabla.tsv@03a33f594e82 + konkordancia/Karoli_1908.tsv@49335bbcc77d + kód@ff580a715990
 strong	sorszam	szakasz	konyv	fejezet	vers	karoli_vers	utvonal	proveniencia
 G0001	1	2	Jel	1	8	Jel 1:8	fej	scope=G0001 | forras=thayer_jelolt/vers_jelentes.py (fejléc) | ts=2026-10-28
 G0001	2	2	Jel	1	11	Jel 1:11	fej	scope=G0001 | forras=thayer_jelolt/vers_jelentes.py (fejléc) | ts=2026-10-28

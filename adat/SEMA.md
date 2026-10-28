@@ -1457,9 +1457,12 @@ javítótábla hash-ét is hordozza (a bontó csak a határokhoz olvassa).
 
 **Generált** (`python eszkozok/thayer_jelolt/vers_jelentes.py --ts <nap>`; kézzel nem szerkeszthető; azonos bemenettel és `--ts`-sel
 bájtra azonos, a `--ellenoriz` és az `eszkozok/thayer_jelolt/teszt_vers_jelentes.py` ellenőrzi). A `Thayer.lexicon` minden
-`<ref onclick="bcv(k,f,v)">` hivatkozására egy sor, a szócikkön belüli sorrendben. A forrásban az igehely gépi attribútum, tehát —
-a BDB-vel (2.29) szemben — nincs szövegből visszafejtés, öröklött könyv és okkód. A forrásban jelöletlen folytatás („Act 9:14,21;
-22:16”: csak a 9:14 `bcv`) a #131 javítóköre óta (ELLENOR_SZOTARI_GERINC 2., 2026-10-28; a 2.29 DT-F131l (A) mintájára) **sor**:
+`<ref onclick="bcv(k,f,v)">` hivatkozására egy sor (**`bcv`-sor**), a szócikkön belüli sorrendben, és minden jelöletlen
+folytatásra egy sor (**folytatás-sor**). A két sorfajta eredete különbözik. A `bcv`-sor igehelye a forrás gépi attribútuma, tehát —
+a BDB-vel (2.29) szemben — nincs szövegből visszafejtés, öröklött könyv és okkód. A folytatás-sor viszont a BDB-hez hasonlóan
+szövegből visszafejtett: a forrásban jelöletlen folytatás („Act 9:14,21; 22:16”: csak a 9:14 `bcv`) a #131 javítóköre óta
+(ELLENOR_SZOTARI_GERINC 2., 2026-10-28; DT-F131n, a 2.29 DT-F131l (A) párja) **sor**, a vers a szövegből jön, a könyv (és `,v`-nél
+a fejezet) a lánc előző tagjától öröklött:
 a lánc közvetlenül a `</ref>` után indul (`,v` ugyanabban a fejezetben, `; c:v` ugyanabban a könyvben), a verstartomány (`-v`)
 nincs kibontva, és a lánc megszakad, ha a szám után kettőspont vagy könyvnév + szám jön („, 34:”, „, 2 Esdr. 10:2”); a nem
 `</ref>` után álló számsor („Cyril 7, 1, 35”) nem sor. A folytatás-sort a `proveniencia` forrás-mezője jelöli
@@ -1471,8 +1474,8 @@ sor `# GENERÁLT: …` és `# forras: …`, a harmadik a fejléc. Olvasás `spli
 | `strong` | `Strong_padded` (a `thayer_jelolt/kulcs.py` szerint) |
 | `sorszam` | a hivatkozás sorszáma a szócikkben (1-től; a 2.29 `sorszam`-ja) |
 | `szakasz` | a hivatkozást tartalmazó bekezdés `sorszam`-a a `thayer_szakaszok.tsv`-ben (2.34; a `strong` + `szakasz` oda mutat) |
-| `konyv` | a `bcv` könyvszáma (1–66) a `Konyv_normalizalo_tabla.tsv` k-adik adatsorának `Magyar rövidítés`-e (`1Móz`, `Mt`, `JSir`) |
-| `fejezet`, `vers` | a `bcv` fejezet- és versszáma, változatlanul |
+| `konyv` | `bcv`-sor: a `bcv` könyvszáma (1–66) a `Konyv_normalizalo_tabla.tsv` k-adik adatsorának `Magyar rövidítés`-e (`1Móz`, `Mt`, `JSir`); folytatás-sor: a lánc előző tagjától öröklött könyv |
+| `fejezet`, `vers` | `bcv`-sor: a `bcv` fejezet- és versszáma, változatlanul; folytatás-sor: a vers (és `; c:v`-nél a fejezet) a `</ref>` utáni szövegből visszafejtve, `,v`-nél a fejezet öröklött; a sor jelölése a `proveniencia` `folytatas`-a |
 | `karoli_vers` | a Károli-vers a `Karoli_1908.tsv` `Igehely` kulcsa szerint (a Siralmak ott `Sir`); **üres, ha nincs ilyen kulcs** (kitöltés és átkulcsolás nélkül). ÚSZ-helyen a számozás egyezik; az ÓSZ-hivatkozás (LXX-utalás, pl. `Zsolt 103:30`) LXX-számozása csak akkor látszik, ha a vers a Károliban nem létezik — a létező, de eltolt vers nem jelölt |
 | `utvonal` | a `szakasz` útvonala (2.34) |
 | `proveniencia` | `scope=<Strong> \| forras=thayer_jelolt/vers_jelentes.py (fejléc) \| ts=<nap>`; a jelöletlen folytatás sora: `forras=thayer_jelolt/vers_jelentes.py (fejléc, folytatas)`; a bemenetek és a kód hash-e a `# forras:` fejlécsorban |

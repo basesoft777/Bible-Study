@@ -89,7 +89,13 @@ class Tabla(unittest.TestCase):
         # könyvnév vagy kettőspont után nincs folytatás
         self.assertEqual(V.folytatasok('</ref>, 2 Esdr. 10:2', 6, 72), [])
         self.assertEqual(V.folytatasok('</ref>, 34: (', 6, 7), [])
-        # nem </ref> után induló számsor (Cyril 7, 1, 35) nem kerül a táblába
+        # nem </ref> után induló számsor (Cyril 7, 1, 35) nem kerül a táblába. A Cyril a G1941 7. szakaszában
+        # áll (F131.18, ELLENOR_SZOTARI_GERINC_2 2e.: a korábbi `szakasz != '7'` szűrés az esetet kizárta, az
+        # állítás üres volt): a 7. szakasz folytatás-sora pontosan a két ApCsel-hely, Cyril-számból nincs sor
+        g7 = [r for r in adat()['sorok'] if r['strong'] == 'G1941' and r['szakasz'] == '7']
+        self.assertTrue(g7)
+        self.assertEqual([(r['konyv'], r['fejezet'], r['vers']) for r in g7 if 'folytatas' in r['proveniencia']],
+                         [('ApCsel', '9', '21'), ('ApCsel', '22', '16')])
         self.assertNotIn('folytatas', ' '.join(r['proveniencia'] for r in adat()['sorok']
                                                if r['strong'] == 'G1941' and r['szakasz'] != '7'))
 

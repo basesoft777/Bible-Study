@@ -140,7 +140,8 @@ def general(ts):
 
 def fajl_szoveg(sorok, ts):
     fej = ['# GENERÁLT: eszkozok/thayer_jelolt/vers_jelentes.py --ts %s — kézzel nem szerkesztendő (F132; séma: adat/SEMA.md, thayer_vers_jelentes.tsv).' % ts,
-           '# forras: konkordancia/lexikonok_nyers/Thayer.lexicon@%s (csak a bcv-koordináta és a szerkezet) + '
+           '# forras: konkordancia/lexikonok_nyers/Thayer.lexicon@%s (a bcv-koordináta, a szerkezet és a `</ref>` utáni '
+           'jelöletlen folytatás, DT-F131n) + '
            'konkordancia/Konyv_normalizalo_tabla.tsv@%s + konkordancia/Karoli_1908.tsv@%s + kód@%s'
            % (bont.sha256_fajl(bont.LEX_UT)[:12], bont.sha256_fajl(KONYV_UT)[:12], bont.sha256_fajl(KAROLI_UT)[:12],
               kod_hash()[:12]),
