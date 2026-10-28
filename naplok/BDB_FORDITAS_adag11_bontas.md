@@ -2,7 +2,7 @@
 
 *A #38 (BDB_FORDITAS) 11. adagának szakaszonkénti fordítása (prompt v5, `allapot=sonnet`, `modell=claude-sonnet-5-5`). Tartomány: `naplok/BDB_FORDITAS_sorrend.tsv` 11. adag (2822–3980, 1159 szócikk, 499 918 forráskarakter). Károli-lefedettség a kezdéskor: 100% (`BDB_FORDITAS_karoli_lefedettseg.py --tol 2822 --adagok 1`: 1160 szócikk, 1160 Károli-pár; a mérés 1160-at számol, az adag a sorrend szerint 1159 — ugyanaz az egy szócikk eltérés, mint a 10. adagnál, nem vizsgáltam). Mérés ideje: 2026-10-28 18:45 (proveniencia: scope=BDB-sorrend 2822– , 1 adag | forras=naplok/BDB_FORDITAS_sorrend.tsv x adat/karoli_strong/parok_*.tsv x konkordancia/TAHOT_kivonat.tsv x adat/forditasok.tsv | ts=2026-10-28 18:45).*
 
-*Az adag állapota: folyamatban (az adag szeletenként készül).*
+*Az adag állapota: lezárva: a fordítás kész a 3980. sorrendi helyig (az adag mind az 1159 szócikke), független ellenőrzésre vár.*
 
 ## 1. Tábla-Δ
 
@@ -56,6 +56,8 @@ A 17. kapu (`17_bdb_javitas`, DT367) az adag 1159 Strongja közül két Strongot
 
 A többi Strong forrásában nem szerepelt `javitva` vagy `jelolt_marad` sorral érintett hivatkozás.
 
+**Megjegyzés (forráshiba; `jelolt_marad` sor a javítótáblában, javított hivatkozás nélkül):** a H7216 forrásában `1Ki 145:31` áll (nem létező fejezet; `adat/bdb_igehely_javitas.tsv`: `jelolt_marad` sor, javított hivatkozás nélkül); a fordítás hűen átveszi (`1Kir 145:31`), `Y [BDB: X]` jelölés nélkül.
+
 ## 5. Kapu-felülbírálások (DT361)
 
 | Strong | kapu | forrásidézet és indok |
@@ -69,7 +71,9 @@ A többi Strong forrásában nem szerepelt `javitva` vagy `jelolt_marad` sorral 
 
 ## 6. Ellenőrzések
 
-- `python eszkozok/ellenoriz.py`: 0 SÉRTÉS (minden commit előtt).
-- A tesztek (`teszt_forditas_kapuk.py`, `teszt_emeles.py`, `bdb_jelolt/teszt_szakasz_bemenet.py`) az adag végén futnak (l. a záró jelentést).
+- `python eszkozok/ellenoriz.py`: 0 SÉRTÉS (minden commit előtt; a záró futás: RENDBEN 14 | SÉRTÉS 0 | KÉZI 2 | JELENTÉS 3).
+- `python eszkozok/teszt_forditas_kapuk.py`: Ran 110 tests, OK.
+- `python eszkozok/teszt_emeles.py`: Ran 31 tests, OK.
+- `python eszkozok/bdb_jelolt/teszt_szakasz_bemenet.py`: Ran 25 tests, OK.
 
 *(proveniencia: scope=adat/forditasok.tsv, naplok/EMELES_munka.tsv @ cd8e3942 és @ HEAD; adat/bdb_szakaszok.tsv | forras=`emeles.py szakasz_ellenoriz/szakasz_rogzit/szakasz_beir`, `git diff --numstat` | ts=2026-10-28)*
