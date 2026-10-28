@@ -306,13 +306,24 @@ class ValodiAdat(unittest.TestCase):
             for tiltott in ('eltér', 'máshová sorol', 'NEM invokáció', 'szemben a BDB', 'a BDB szerint nem'):
                 self.assertNotIn(tiltott.lower(), cella.lower())
 
-    def test_1moz_26_25_sajtohiba_gyanu(self):
+    def test_1moz_26_25_forras_javitas(self):
+        # DT-F131k (a): a 2.31 kézi sora javítja a BDB „26:35”-ét; a H8034 cellája valódi BDB-példa, az ⓘ a javítás forrása
         _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
         s = next(r for r in elo_sorok if r['id'] == 'ISTENTISZT-001' and r['igehely'] == '1Móz 26:25')
         cella, ik = LG.jelentes_cella(LG.gerinc_adat(), s)
-        self.assertIn('H8034: *(nincs hozzárendelés; BDB-sajtóhiba gyanúja', cella)
-        self.assertIn('26:35', ik)
-        self.assertIn('DT-F131k', ik)
+        self.assertNotIn('nincs hozzárendelés', cella)
+        self.assertNotIn('gyanú', cella + ik)
+        self.assertIn('BDB-példa', ik)
+        self.assertIn('„26:35”', ik)
+        self.assertIn('adat/bdb_forras_javitas.tsv', ik)
+        self.assertIn('DT-F131k (a)', ik)
+
+    def test_1kir_18_25_26_bdb_pelda(self):
+        # DT-F131l (A): az „1Kin 18:24-25, 26” folytatása (18:26) BDB-példa; a 18:25 a tartomány belseje, nem az
+        a = LG.gerinc_adat()
+        self.assertTrue(LG.bdb_peldak(a, 'H8034', '1Kir 18:26'))
+        self.assertTrue(LG.bdb_peldak(a, 'H7121', '1Kir 18:26'))
+        self.assertFalse(LG.bdb_peldak(a, 'H8034', '1Kir 18:25'))
 
     def test_2moz_33_19(self):
         _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)

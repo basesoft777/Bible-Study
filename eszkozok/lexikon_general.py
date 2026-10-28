@@ -1765,6 +1765,7 @@ SZAKASZ_CIMKE_FAJL = 'adat/szotar_szakasz_cimke.tsv'
 BDB_SZAKASZOK_FAJL = 'adat/bdb_szakaszok.tsv'
 BDB_SZAKASZ_HU_FAJL = 'adat/bdb_szakasz_hu.tsv'
 BDB_VERS_JELENTES_FAJL = 'adat/bdb_vers_jelentes.tsv'
+BDB_FORRAS_JAVITAS_FAJL = 'adat/bdb_forras_javitas.tsv'
 THAYER_SZAKASZOK_FAJL = 'adat/thayer_szakaszok.tsv'
 THAYER_VERS_JELENTES_FAJL = 'adat/thayer_vers_jelentes.tsv'
 GLOSSZAK_HEBER_HU_FAJL = 'adat/glosszak_heber_hu.tsv'
@@ -1915,6 +1916,12 @@ def jelentes_cimke_token(adat, szotar, strong, jelentes_szam, vers, kutatoi_toke
     if peldak:
         p_ut = _bdb_sor_utvonal(adat, strong, pelda_utak[0]) or pelda_utak[0]
         sorszamok = ', '.join(r['sorszam'] for r in peldak)
+        # DT-F131k (a): a forrás hibás versét a 2.31 kézi sora javította; az ⓘ a javítás forrását nevezi meg
+        for r in peldak:
+            if 'forras_javitas' in (r.get('okkod') or '').split(','):
+                ip.append('a BDB forrásszövege itt a „%s” helyet idézi (sajtóhiba); javítva: %s — a javítás forrása: `%s`, '
+                          'kézi sor (`hivatkozas_kezi`, `manual`; indok: a TAHOT és a szövegkörnyezet; DT-F131k (a))'
+                          % (r['nyers'], r['karoli_vers'], BDB_FORRAS_JAVITAS_FAJL))
         if kut_ut is None:
             valasztott = p_ut
             ip.append('BDB-példa: a BDB a(z) %s szakaszban maga idézi a helyet (`%s` sorszam %s)'
@@ -1951,15 +1958,6 @@ def jelentes_cimke_token(adat, szotar, strong, jelentes_szam, vers, kutatoi_toke
     return cimke, jel, '; '.join(ip)
 
 
-# DT-F131k (c) (a felhasználó, 2026-10-28): a BDB-forrás ismert hivatkozás-hibájának gyanúja, amíg a javítás a #102-ben
-# (2.31 kézi forráshiba-sor) el nem készül. Kulcs: (Strong, Károli-vers); érték: a kutatói megjegyzés. Kitöltés nincs:
-# a cella hiányt mond, a megjegyzés csak a gyanút nevezi meg. (proveniencia: scope=H8034, 1Móz 26:25/26:35 |
-# forras=konkordancia/BDB_teljes_unabridged.tsv, konkordancia/TAHOT_kivonat.tsv | ts=2026-10-28; napló 5.3)
-BDB_HIVATKOZAS_GYANU = {
-    ('H8034', '1Móz 26:25'): ('a BDB H8034 3. szakasza „26:35”-öt idéz (a 12:8; 13:4; 21:33 után); a TAHOT szerint a H8034 '
-                              'az 1Móz 26:25-ben áll, a 26:35-ben nem: sajtóhiba-gyanú a BDB-ben (DT-F131k); a javítás a '
-                              '#102-ben, addig a hely nem BDB-példa'),
-}
 
 
 def jelentes_cella(adat, sor):
@@ -1993,11 +1991,7 @@ def jelentes_cella(adat, sor):
             szov = '*(nincs címke: %s)*' % jel
         else:
             szov = '*(nincs hozzárendelés)*'
-            gyanu = next((BDB_HIVATKOZAS_GYANU[(t, v)] for v in versek if (t, v) in BDB_HIVATKOZAS_GYANU), None)
-            if gyanu:
-                szov = '*(nincs hozzárendelés; BDB-sajtóhiba gyanúja, l. ⓘ)*'
-                info = gyanu
-            elif not info:
+            if not info:
                 info = 'ehhez a tokenhez nincs kutatói hozzárendelés és szótári példahely'
         reszek.append((t, szov))
         ik.append('%s — %s' % (t, info) if len(tokenek) > 1 else info)
@@ -2056,11 +2050,14 @@ def dbh_jelentes_cella(igehely, strong_field):
 
 _KONYV_RE = re.compile(r'((?:[1-3])?[A-ZÁÉÍÓÖŐÚÜŰ][A-Za-záéíóöőúüűÁÉÍÓÖŐÚÜŰ]*)\s+$')
 _FV_RE = re.compile(r'(?<![\w:^])(\d+):(\d+)(?![\d])')
+# a vers-folytatás („18:18, 25”), a verstartomány utáni is („18:24-25, 26”; DT-F131l (A), a 2.29 kinyerőjével
+# egyezően): a tartomány nincs kibontva; a „, 1 Sámuel” / „, 1Kir” száma könyvnév, nem folytatás
+_FOLYT_RE = re.compile(r'(?:\s*[-–]\s*\d+(?![\d:]))?\s*,\s*(\d+)(?![\d:\w])(?!\s+[A-ZÁÉÍÓÖŐÚÜŰ])')
 
 
 def hivatkozasok_a_szovegben(szoveg):
-    """[(kezdet, veg, konyv, fejezet, vers)]: a szöveg fejezet:vers hivatkozásai, a könyv a közvetlenül
-    előtte álló könyvnévből, ennek híján a legutóbbi kiírt könyvből (a BDB/Thayer folytatásos írásmódja)."""
+    """[(kezdet, veg, konyv, fejezet, vers)]: a szöveg fejezet:vers hivatkozásai és vers-folytatásai, a könyv a
+    közvetlenül előtte álló könyvnévből, ennek híján a legutóbbi kiírt könyvből (a BDB/Thayer folytatásos írásmódja)."""
     out = []
     aktualis = None
     for m in _FV_RE.finditer(szoveg):
@@ -2071,6 +2068,13 @@ def hivatkozasok_a_szovegben(szoveg):
             aktualis = km.group(1)
             kezdet = m.start() - len(elotte) + km.start()
         out.append((kezdet, m.end(), aktualis, m.group(1), m.group(2)))
+        q = m.end()
+        while True:
+            f = _FOLYT_RE.match(szoveg, q)
+            if not f:
+                break
+            out.append((f.start(1), f.end(1), aktualis, m.group(1), f.group(1)))
+            q = f.end()
     return out
 
 
@@ -2257,7 +2261,11 @@ def gerinc_blokk(adat, szotar, strong, motivum_sorai, ctx=None):
             if ut is None:
                 napl['nem_talalt'].append(azon + ': az útvonal nincs a szakasztáblában')
                 continue
-            celok.setdefault(ut, []).append((vers, azon))
+            # DT-F131k (a): a forrásjavított sornál a magyar szöveg a forrás alakját hordozza („26:35”): azt emeli ki
+            keres = vers
+            if 'forras_javitas' in (r.get('okkod') or '').split(',') and re.fullmatch(r'\d+:\d+', r['nyers']):
+                keres = '%s %s' % (vers.rsplit(' ', 1)[0], r['nyers'])
+            celok.setdefault(ut, []).append((keres, azon))
             hordozo.add(ut)
     for k in kut_kulcsok:
         ut = kutatoi_szakasz(adat, szotar, strong, k)
