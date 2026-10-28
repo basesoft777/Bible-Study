@@ -108,7 +108,7 @@ class Cimkeforras(unittest.TestCase):
 
     def test_nincs_hozzarendeles_kimondva(self):
         a = adat(ALAP_CIMKEK, [], ALAP_SZ)
-        cella, ik = LG.jelentes_cella(a, elo('1Móz 26:25', '2.c'))
+        cella, ik = LG.jelentes_cella(a, elo('Zsolt 116:4', '2.c'))
         self.assertIn('H8034: *(nincs hozzárendelés)*', cella)
         self.assertIn('nincs kutatói hozzárendelés', ik)
 
@@ -305,6 +305,14 @@ class ValodiAdat(unittest.TestCase):
             self.assertNotIn('nincs hozzárendelés', entry_resz, s['igehely'])
             for tiltott in ('eltér', 'máshová sorol', 'NEM invokáció', 'szemben a BDB', 'a BDB szerint nem'):
                 self.assertNotIn(tiltott.lower(), cella.lower())
+
+    def test_1moz_26_25_sajtohiba_gyanu(self):
+        _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
+        s = next(r for r in elo_sorok if r['id'] == 'ISTENTISZT-001' and r['igehely'] == '1Móz 26:25')
+        cella, ik = LG.jelentes_cella(LG.gerinc_adat(), s)
+        self.assertIn('H8034: *(nincs hozzárendelés; BDB-sajtóhiba gyanúja', cella)
+        self.assertIn('26:35', ik)
+        self.assertIn('DT-F131k', ik)
 
     def test_2moz_33_19(self):
         _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)

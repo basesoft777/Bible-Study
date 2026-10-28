@@ -1951,6 +1951,17 @@ def jelentes_cimke_token(adat, szotar, strong, jelentes_szam, vers, kutatoi_toke
     return cimke, jel, '; '.join(ip)
 
 
+# DT-F131k (c) (a felhasználó, 2026-10-28): a BDB-forrás ismert hivatkozás-hibájának gyanúja, amíg a javítás a #102-ben
+# (2.31 kézi forráshiba-sor) el nem készül. Kulcs: (Strong, Károli-vers); érték: a kutatói megjegyzés. Kitöltés nincs:
+# a cella hiányt mond, a megjegyzés csak a gyanút nevezi meg. (proveniencia: scope=H8034, 1Móz 26:25/26:35 |
+# forras=konkordancia/BDB_teljes_unabridged.tsv, konkordancia/TAHOT_kivonat.tsv | ts=2026-10-28; napló 5.3)
+BDB_HIVATKOZAS_GYANU = {
+    ('H8034', '1Móz 26:25'): ('a BDB H8034 3. szakasza „26:35”-öt idéz (a 12:8; 13:4; 21:33 után); a TAHOT szerint a H8034 '
+                              'az 1Móz 26:25-ben áll, a 26:35-ben nem: sajtóhiba-gyanú a BDB-ben (DT-F131k); a javítás a '
+                              '#102-ben, addig a hely nem BDB-példa'),
+}
+
+
 def jelentes_cella(adat, sor):
     """Az előfordulás-tábla „Jelentés (a szó)” cellája és az ⓘ szövege: (cella, ⓘ).
     Összetett Strong-mezőnél tokenenként; a kutatói hozzárendelés a `lexikon_entry_id` tokenjéé."""
@@ -1982,7 +1993,11 @@ def jelentes_cella(adat, sor):
             szov = '*(nincs címke: %s)*' % jel
         else:
             szov = '*(nincs hozzárendelés)*'
-            if not info:
+            gyanu = next((BDB_HIVATKOZAS_GYANU[(t, v)] for v in versek if (t, v) in BDB_HIVATKOZAS_GYANU), None)
+            if gyanu:
+                szov = '*(nincs hozzárendelés; BDB-sajtóhiba gyanúja, l. ⓘ)*'
+                info = gyanu
+            elif not info:
                 info = 'ehhez a tokenhez nincs kutatói hozzárendelés és szótári példahely'
         reszek.append((t, szov))
         ik.append('%s — %s' % (t, info) if len(tokenek) > 1 else info)
