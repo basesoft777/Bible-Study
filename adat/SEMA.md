@@ -1459,7 +1459,11 @@ javítótábla hash-ét is hordozza (a bontó csak a határokhoz olvassa).
 bájtra azonos, a `--ellenoriz` és az `eszkozok/thayer_jelolt/teszt_vers_jelentes.py` ellenőrzi). A `Thayer.lexicon` minden
 `<ref onclick="bcv(k,f,v)">` hivatkozására egy sor, a szócikkön belüli sorrendben. A forrásban az igehely gépi attribútum, tehát —
 a BDB-vel (2.29) szemben — nincs szövegből visszafejtés, öröklött könyv és okkód. A forrásban jelöletlen folytatás („Act 9:14,21;
-22:16”: csak a 9:14 `bcv`) **nincs** a táblában (explicit hiány). **Lexikai index, nem study-adat** (CLAUDE.md 2. szabály). Az első két
+22:16”: csak a 9:14 `bcv`) a #131 javítóköre óta (ELLENOR_SZOTARI_GERINC 2., 2026-10-28; a 2.29 DT-F131l (A) mintájára) **sor**:
+a lánc közvetlenül a `</ref>` után indul (`,v` ugyanabban a fejezetben, `; c:v` ugyanabban a könyvben), a verstartomány (`-v`)
+nincs kibontva, és a lánc megszakad, ha a szám után kettőspont vagy könyvnév + szám jön („, 34:”, „, 2 Esdr. 10:2”); a nem
+`</ref>` után álló számsor („Cyril 7, 1, 35”) nem sor. A folytatás-sort a `proveniencia` forrás-mezője jelöli
+(`(fejléc, folytatas)`). **Lexikai index, nem study-adat** (CLAUDE.md 2. szabály). Az első két
 sor `# GENERÁLT: …` és `# forras: …`, a harmadik a fejléc. Olvasás `split('\t')`.
 
 | Oszlop | Jelentés |
@@ -1471,9 +1475,12 @@ sor `# GENERÁLT: …` és `# forras: …`, a harmadik a fejléc. Olvasás `spli
 | `fejezet`, `vers` | a `bcv` fejezet- és versszáma, változatlanul |
 | `karoli_vers` | a Károli-vers a `Karoli_1908.tsv` `Igehely` kulcsa szerint (a Siralmak ott `Sir`); **üres, ha nincs ilyen kulcs** (kitöltés és átkulcsolás nélkül). ÚSZ-helyen a számozás egyezik; az ÓSZ-hivatkozás (LXX-utalás, pl. `Zsolt 103:30`) LXX-számozása csak akkor látszik, ha a vers a Károliban nem létezik — a létező, de eltolt vers nem jelölt |
 | `utvonal` | a `szakasz` útvonala (2.34) |
-| `proveniencia` | `scope=<Strong> \| forras=thayer_jelolt/vers_jelentes.py (fejléc) \| ts=<nap>`; a bemenetek és a kód hash-e a `# forras:` fejlécsorban |
+| `proveniencia` | `scope=<Strong> \| forras=thayer_jelolt/vers_jelentes.py (fejléc) \| ts=<nap>`; a jelöletlen folytatás sora: `forras=thayer_jelolt/vers_jelentes.py (fejléc, folytatas)`; a bemenetek és a kód hash-e a `# forras:` fejlécsorban |
 
 Kulcs: `strong` + `sorszam`. Állapot (F132 M2, 2026-10-25): 63 953 sor (ÚSZ 58 266, ÓSZ 5 687); `karoli_vers` üres: ÚSZ 28, ÓSZ 12.
+*(F131.8, 2026-10-28: 64 431 sor = 63 953 `bcv` + 478 jelöletlen folytatás, 150 szócikkben; ÚSZ 58 712, ÓSZ 5 719; `karoli_vers`
+üres: ÚSZ 29 (+1: G3346 „Heb 7:12; 7:71”, a forrás versszáma), ÓSZ 12; 6 980 régi sor kapott más `sorszam`-ot; mérés:
+`naplok/F131_thayer_folytatas_valtozas.py`.)*
 
 
 ### 2.36 `tiltott_fordulatok.tsv` — tiltott magyar fordulatok (F132, DT331; elv: DT241, F121 2a/2)

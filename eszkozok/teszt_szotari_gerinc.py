@@ -277,7 +277,11 @@ class ThayerSzakaszsorok(unittest.TestCase):
         self.assertTrue(all(s[2] for s in szak))
         bek, napl = LG.gerinc_blokk(a, 'Thayer', 'G1941', sorai)
         szov = '\n'.join(bek)
-        self.assertEqual(len(napl['kiemelt']), 7)
+        # ELLENOR_SZOTARI_GERINC 2.: a jelöletlen folytatás (ApCsel 9:21, 22:16) is a Thayer példahelye: 7 → 9
+        self.assertEqual(len(napl['kiemelt']), 9)
+        self.assertEqual(napl['nem_talalt'], [])
+        self.assertNotIn('ApCsel 9:21', napl['nem_idezett'])
+        self.assertNotIn('ApCsel 22:16', napl['nem_idezett'])
         if any('nevet tenni valakire' in (s[2] or '') for s in szak):
             self.assertTrue(any('sz3' in x for x in napl['tiltott']))
             self.assertIn('ismert hiány', szov)
@@ -385,6 +389,15 @@ class ValodiAdat(unittest.TestCase):
                         erint.add((s['igehely'], t))
         self.assertEqual(erint, {('1Móz 4:26', 'H7121'), ('1Móz 4:26', 'H8034'),
                                  ('1Kir 18:24', 'H7121'), ('1Kir 18:24', 'H8034')})
+
+    def test_apcsel_9_21_22_16_thayer_idezi(self):
+        # ELLENOR_SZOTARI_GERINC 2. (7.5a): a Thayer „Act 9:14,21; 22:16” folytatása; az ⓘ nem mondhatja, hogy nem idézi
+        _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
+        for h in ('ApCsel 9:21', 'ApCsel 22:16'):
+            s = next(r for r in elo_sorok if r['id'] == 'ISTENTISZT-001' and r['igehely'] == h)
+            _cella, ik = LG.jelentes_cella(LG.gerinc_adat(), s)
+            self.assertNotIn('a Thayer a helyet nem idézi', ik, h)
+            self.assertIn('a Thayer saját példahelye: Thayer 5', ik, h)
 
     def test_2moz_33_19(self):
         _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
