@@ -325,3 +325,28 @@ A `0f19033e`-n bukó `test_javitas_ellenoriz` most átmegy (A). `ellenoriz.py`: 
 ## 6. ⛔ 3.1 — DT-F131f: az elfogadási próba
 
 A felhasználó a renderelt próbalapot olvassa. A kérdés: *a szó jelentését és a hely motívumbeli funkcióját két külön dolognak látja-e?* Ugyanitt dönt a címkék szövegéről (3.1) és a 4.2 kérdéséről (az 56.15-ös kód). A próbalap az 5.5 szerinti (F131.3.24; az 5.4-é az F131.3.19). A végrehajtás itt áll.
+
+**Döntés (2026-10-28):** orkesztrátor, a felhasználó felhatalmazásával („vedd át a döntéseket”). A felhasználó ebben a sessionben megerősítette: „Igen, az orkesztrátor döntései (2026-10-28) az én döntéseim, hajtsd végre.”
+
+- **Az 1Kir 18:25 ⓘ-je (F131.3.25), szövegpontosítás, nem 3. kör.** A H8034-cella marad „*(nincs hozzárendelés)*”. Az ⓘ kimondja, hogy a BDB a helyet a „1Kin 18:24-25” verstartomány belsejében idézi (H7121 Qal 2.c, `sorszam` 99; H8034 4, `sorszam` 208), és a tartomány nincs kibontva (DT-F131l (A)).
+  - Generátor: `bdb_tartomanyban()`. Az azonos `nyers`-ű 2.29-sorokat a 2.30 szövegbeli előfordulásokkal sorrendben párosítja; a H7121 97-es sora („1Kin 18:24 annak konkrét kérésére”) nem tartomány.
+  - A 32 sorból csak ezen az egyen jelenik meg ilyen ⓘ. A próbarenderben csak ez a lábjegyzet változik. Az Artifact a 6. verzión van.
+- **DT-F131f: elfogadva** a 4. próbalappal és az ⓘ-pontosítással. Az ismert maradék a lapon jelölt hiányként marad: a H8034 1Móz 12:8 fejsora (BDB-kiemelés 17/18), 46 `(fordításra vár)` (#121), a Jóel 2:32 DBH-hiánya (#146).
+
+## 7. ⛔ 4. — DT-F131g: az éles lexikon felülírása (F131.4)
+
+**Döntés:** felülír (orkesztrátor, a felhasználó felhatalmazásával és megerősítésével, mint fent).
+
+`scope=lexikon/ISTENTISZT-001_TUDOMANYOS.md | forras=general.py --cel lexikon --id ISTENTISZT-001 --ir; git diff 66965807..5f0bfacd -- lexikon/ | ts=2026-10-28`
+
+- **Lefutott:** `general.py --cel lexikon --id ISTENTISZT-001 --ir`. Az élő lap bájtra azonos a jóváhagyott próbarenderrel (F131.3.25, `PARDES_DATUM=2026-10-28`; CRLF nélkül összevetve).
+- **`git diff lexikon/`:** csak az `ISTENTISZT-001_TUDOMANYOS.md` változott (+243 / −652 sor). A 7 másik lap diffje üres; a `nulladiff.sh` (5.5) szerint újragenerálva is azonosak.
+- **Blokkonként** (11 blokk, ugyanazok):
+  - `elofordulasok` (az 1. Előfordulások táblája: a „Jelentés (a szó)” és a „Funkció (a motívumban)” oszlop, az ⓘ-k) és `szocikkek` (a 2. Szótári háttér: a BDB/Thayer-gerinc; 764 → 347 sor): a várt tartalom;
+  - `idezes` és `kolofon`: a forrás- és licenclista a két blokk új forrásait követi (`bdb_szakaszok`, `bdb_szakasz_hu`, `bdb_vers_jelentes`, `thayer_*`, `glosszak_heber_hu`, `szotar_szakasz_cimke`, `tiltott_fordulatok`). A tW és a Mounce sora és licencszövege kikerült (a brief 3. elfogadási feltétele);
+  - a többi blokk (`tartalom`, `jelmagyarazat`, `kizart`, `lxx`, `kereszthivatkozasok`, `kapcsolatok`, `kapcsolodo`): csak a `ts` (2026-10-20 → 2026-10-28) és a „Generálva” dátum;
+  - blokkon kívül: az `ertelmezes` rés az F131.3.18 Thayer-tagolásával (5.4: várt). A tartalomjegyzék nem változott.
+- **`ellenoriz.py`:** 15 RENDBEN, 0 SÉRTÉS. A 11. szabály most RENDBEN (előtte 1 várt sértés).
+- **CI-ellenőrző** (`eszkozok/ellenorzes/futtat.py`, a main-hez mért diffen): az E28 0 találat, zöld.
+  - Az E16 `[ELLENŐRZŐ]` előtagot kér, mert az ág az `eszkozok/ellenoriz.py`-t módosítja (a #131 korábbi tételeiben, 17. szabály). Az előtag az E16 miatt kell, nem az E28 miatt.
+  - Az előtaggal minden E-szabály zöld (kilépési kód 0); a JELENTÉS-ek (E12, E13, E25, E27, E30, E32) nem blokkolnak.
