@@ -222,6 +222,7 @@ def cmd_szotar(mid):
     sorok = []     # szotari sorok
     hiany = []     # hiányzó fordítások
     lefed = []     # szerep-kínálat
+    latott = set()
 
     def fkulcs(szotar, strong, entry, jsz, mezo):
         r = ford.get((szotar, strong, entry, jsz, mezo))
@@ -232,7 +233,8 @@ def cmd_szotar(mid):
                       tartalom[:160].replace('\t', ' '),
                       '|'.join(ford_kulcs) if ford_kulcs else '—',
                       ford_allapot or ('HIÁNYZIK' if ford_kulcs else '—'), prov])
-        if ford_kulcs and not ford_allapot:
+        if ford_kulcs and not ford_allapot and tuple(ford_kulcs) not in latott:
+            latott.add(tuple(ford_kulcs))
             hiany.append([nyelv, szerep_n, forras, strong] + list(ford_kulcs) + [prov])
 
     for s in strongok:
@@ -244,7 +246,6 @@ def cmd_szotar(mid):
                 add(1, ny, 'TBESH.txt', s, 'sor %d' % i, l,
                     'scope=TBESH.txt %s | forras=konkordancia/TBESH.txt (sorillesztés) | ts=%s' % (s, TS),
                     ('TBESH', s, s, 'teljes', 'forditas_hu'), fkulcs('TBESH', s, s, 'teljes', 'forditas_hu'))
-                break
             # 2 BDB szakaszok + teljes
             szak = sorok_strongra(A / 'bdb_szakaszok.tsv', 'strong', s)
             teljes = fkulcs('BDB', s, s, 'teljes', 'forditas_hu')
@@ -326,7 +327,6 @@ def cmd_szotar(mid):
                 add(1, ny, 'TBESG.txt', s, 'sor %d' % i, l,
                     'scope=TBESG.txt %s | forras=konkordancia/TBESG.txt (sorillesztés) | ts=%s' % (s, TS),
                     ('TBESG', s, s, 'teljes', 'forditas_hu'), fkulcs('TBESG', s, s, 'teljes', 'forditas_hu'))
-                break
             # 2 Thayer
             eid = 'G' + num
             szak = sorok_strongra(A / 'thayer_szakaszok.tsv', 'strong', s)
@@ -377,8 +377,41 @@ def cmd_szotar(mid):
                 add(8, ny, 'konkordancia/LSJ_teljes.tsv', s, r['Strong_eredeti'], r['Teljes_szocikk'],
                     'scope=LSJ %s | forras=konkordancia/LSJ_teljes.tsv | ts=%s' % (s, TS),
                     ('LSJ', s, s, 'teljes', 'forditas_hu'), fkulcs('LSJ', s, s, 'teljes', 'forditas_hu'))
-        # 12 Nave (nyelvfüggetlen): a motívum igehelyei a Nave-ben
-        # (a Nave nem Strong-kulcsú; a szerep-kínálatban jelölve, l. md)
+        # 10 kiejtés: nem szótári sor; a forrás állapota
+        if ny == 'heber':
+            kiv = [r for r in L.read_tsv_skip_comments(A / 'kiejtes_heber_kivetelek.tsv') if r['strong'] == s]
+            add(10, ny, 'adat/kiejtes_heber_kivetelek.tsv + TBESH STEP-átírás', s, '%d kivétel-sor' % len(kiv),
+                (kiv[0]['ertek'] if kiv else 'nincs jóváhagyott héber kivétel-sor: a render a STEP-átírást adja (lexikon_general.lemma_kiejtes)'),
+                'scope=kiejtes_heber_kivetelek %s | forras=adat/kiejtes_heber_kivetelek.tsv | ts=%s' % (s, TS))
+        else:
+            add(10, ny, 'kiejtes.py szabálytábla (TBESG-átírásból)', s, 'számolt',
+                'a kiejtés a render-időben számolt (lexikon_general.gorog_magyaros), nem szótári sor',
+                'scope=kiejtes %s | forras=manual (a generátor kódja) | ts=%s' % (s, TS))
+        # 13 Károli-megfelelők: adat/karoli_strong/szavak_*.tsv (hu oldal, a Strongra párosított szavak)
+        alak = Counter()
+        for fp in sorted((A / 'karoli_strong').glob('szavak_*.tsv')):
+            for r in L.read_tsv_skip_comments(fp):
+                if r['strong'] == s and r['oldal'] == 'hu':
+                    alak[r['szo']] += 1
+        add(13, ny, 'adat/karoli_strong/szavak_*.tsv', s, '%d alak, %d szó' % (len(alak), sum(alak.values())),
+            ', '.join('%s×%d' % kv for kv in alak.most_common(25)),
+            'scope=adat/karoli_strong/szavak_*.tsv (oldal=hu, strong=%s) | forras=split | ts=%s' % (s, TS))
+        # 14 rejtett/hamis párhuzam: a 13. szerepből származtatott lekérdezés, itt nem gyűjtve
+        add(14, ny, 'származtatott (13. szerep)', s, '—',
+            'nem gyűjtve: a 13. szerepből a render-időben származtatott lekérdezés (nem új forrás)',
+            'scope=— | forras=manual | ts=%s' % TS)
+    # 12 Nave: nyelvfüggetlen, a motívum verseire (nem Strong-kulcsú)
+    E_versek = set()
+    for r in E:
+        E_versek.update(versre(r['igehely']))
+    tema = Counter()
+    for r in L.read_tsv_skip_comments(K / 'Nave_basokant.tsv'):
+        if r['igehely_karoli'] in E_versek:
+            tema[r['tema']] += 1
+    for ny in ('heber', 'gorog'):
+        add(12, ny, 'konkordancia/Nave_basokant.tsv', '+'.join(strongok), '%d téma, %d hivatkozás' % (len(tema), sum(tema.values())),
+            ', '.join('%s×%d' % kv for kv in tema.most_common(25)),
+            'scope=Nave_basokant × %s versei (%d vers, igehely_karoli) | forras=konkordancia/Nave_basokant.tsv | ts=%s' % (mid, len(E_versek), TS))
 
     # szerep-kínálat
     for sz in szerepek:

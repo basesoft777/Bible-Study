@@ -1,0 +1,15 @@
+# GENERÁLT: naplok/F123_adat_keszito.py | F123 X.A hiányzó fordítások ALVIL-001 (a forditasok.tsv-be NEM írva) | 2026-10-28T15:12Z
+nyelv	szerep_sorrend	forras	strong	szotar	strong_kulcs	entry_id	jelentes_szam	mezo	proveniencia
+gorog	1	TBESG.txt	G0086	TBESG	G0086	G0086	teljes	forditas_hu	scope=TBESG.txt G0086 | forras=konkordancia/TBESG.txt (sorillesztés) | ts=2026-10-28T15:12Z
+gorog	3	konkordancia/tW_szocikkek.tsv	G0086	tW_szocikkek	H7585	kt/hades	—	forditas_hu	scope=tW_szocikkek G0086 | forras=konkordancia/tW_szocikkek.tsv (commit ff5b3852c2) | ts=2026-10-28T15:12Z
+gorog	3	konkordancia/tW_szocikkek.tsv	G0086	tW_szocikkek	H7585	kt/hell	—	forditas_hu	scope=tW_szocikkek G0086 | forras=konkordancia/tW_szocikkek.tsv (commit ff5b3852c2) | ts=2026-10-28T15:12Z
+gorog	4	konkordancia/UBS_DNTG_jelentesek.tsv	G0086	UBS_DNTG	G0086	000086001003000	12.50	definicio_hu	scope=UBS_DNTG_jelentesek G0086 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-10-28T15:12Z
+gorog	5	konkordancia/UBS_DNTG_jelentesek.tsv	G0086	UBS_DNTG	G0086	000086001003000	12.50	glosszak_hu	scope=UBS_DNTG_jelentesek G0086 | forras=konkordancia/UBS_DNTG_jelentesek.tsv | ts=2026-10-28T15:12Z
+gorog	5	konkordancia/MCGED_teljes.tsv	G0086	MCGED	G0086	G50087	—	glosszak_hu	scope=MCGED G0086 | forras=konkordancia/MCGED_teljes.tsv | ts=2026-10-28T15:12Z
+gorog	8	konkordancia/LSJ_teljes.tsv	G0086	LSJ	G0086	G0086	teljes	forditas_hu	scope=LSJ G0086 | forras=konkordancia/LSJ_teljes.tsv | ts=2026-10-28T15:12Z
+heber	1	TBESH.txt	H7585	TBESH	H7585	H7585	teljes	forditas_hu	scope=TBESH.txt H7585 | forras=konkordancia/TBESH.txt (sorillesztés) | ts=2026-10-28T15:12Z
+heber	3	konkordancia/tW_szocikkek.tsv	H7585	tW_szocikkek	H0875	other/pit	—	forditas_hu	scope=tW_szocikkek H7585 | forras=konkordancia/tW_szocikkek.tsv (commit ff5b3852c2) | ts=2026-10-28T15:12Z
+heber	3	konkordancia/tW_szocikkek.tsv	H7585	tW_szocikkek	H1430	other/tomb	—	forditas_hu	scope=tW_szocikkek H7585 | forras=konkordancia/tW_szocikkek.tsv (commit ff5b3852c2) | ts=2026-10-28T15:12Z
+heber	5	konkordancia/UBS_DBH_jelentesek.tsv	H7585	UBS_DBH	H7585	007131001001000	—	glosszak_hu	scope=UBS_DBH_jelentesek H7585 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-10-28T15:12Z
+heber	4	konkordancia/UBS_DBH_jelentesek.tsv	H7585	UBS_DBH	H7585	007131001001000	—	definicio_hu	scope=UBS_DBH_jelentesek H7585 | forras=konkordancia/UBS_DBH_jelentesek.tsv | ts=2026-10-28T15:12Z
+heber	8	konkordancia/BDB_etimologia_kezi_hatarok.tsv	H7585	BDB	H7585	H7585	nyelvi_hatter	forditas_hu	scope=BDB_etimologia_kezi_hatarok H7585 | forras=konkordancia/BDB_etimologia_kezi_hatarok.tsv | ts=2026-10-28T15:12Z
