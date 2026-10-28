@@ -6,9 +6,10 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: nem_indult
+allapot: fut
 ad: a lexikon/KIRALY-001_TUDOMANYOS.md és _TORZSCIKK.md a javított Strong-mezővel (G5010+G0540+G0282) újragenerálva, a G0813 (ἄτακτος) nélkül; a diff mérve és indokolva; az N-F132a lezárva
-kovetkezo: "Te: /kovetkezo — M0: szárazfutás a repón kívülre, ⛔ az éles írás előtt"
+kovetkezo: "Te: M0 ⛔ — döntés az éles írásról"
+ag: claude/f143-kiraly-lexikon-ujragen
 olvas: [adat/elofordulasok.tsv, adat/forditasok.tsv, adat/res_forras.tsv, eszkozok/general.py, eszkozok/lexikon_general.py, eszkozok/torzscikk_general.py, eszkozok/ellenorzes/e28_migralt_nezetek.tsv, tematikus_lezart/Melkizedek_tematikus.md, tematikus_lezart/naplok/Melkizedek_tematikus_kereszthivatkozas_naplo.md, "tematikus_lezart/KIRALY-001*", "tematikus_lezart/naplok/KIRALY-001*", RENDER_BRIEF.md, F36_LEXIKON_UJRAGEN_BRIEF.md, F132_THAYER_SZAKASZ_BRIEF.md]
 ir: [lexikon/KIRALY-001_TUDOMANYOS.md, lexikon/KIRALY-001_TORZSCIKK.md]
 fugg: []
