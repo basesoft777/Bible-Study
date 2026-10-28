@@ -350,3 +350,144 @@ A felhasználó a renderelt próbalapot olvassa. A kérdés: *a szó jelentésé
 - **CI-ellenőrző** (`eszkozok/ellenorzes/futtat.py`, a main-hez mért diffen): az E28 0 találat, zöld.
   - Az E16 `[ELLENŐRZŐ]` előtagot kér, mert az ág az `eszkozok/ellenoriz.py`-t módosítja (a #131 korábbi tételeiben, 17. szabály). Az előtag az E16 miatt kell, nem az E28 miatt.
   - Az előtaggal minden E-szabály zöld (kilépési kód 0); a JELENTÉS-ek (E12, E13, E25, E27, E30, E32) nem blokkolnak.
+
+
+## 8. Javítókör 1/2 — ELLENOR_SZOTARI_GERINC (F131.6–F131.13)
+
+**Modell-ellenőrzés:** a session `claude-opus-5-5`, a brief `modell: opus`, egyezik. Kiinduló head: `7d004296`.
+
+**Jóváhagyás:** a felhasználó 2026-10-28-án az orkesztrátor chatjében „Mehet”-tel hagyta jóvá a javasolt besorolást, beleértve az `ir` bővítését a Thayer-javításhoz és a DT-F131m (a)-t. A felhasználó aznap az orkesztrált sessionek döntéseit az orkesztrátorra bízta („vedd át a döntéseket”). Merge nincs.
+
+**F131.6 — `ir` és DT-F131m.** A brief `ir`-je bővült: `eszkozok/thayer_jelolt/vers_jelentes.py`, `eszkozok/thayer_jelolt/teszt_vers_jelentes.py`, `adat/thayer_vers_jelentes.tsv`, `naplok/F131_thayer_folytatas_valtozas.py`. A `DONTESEK.md`-be új sor került: DT-F131m (helyőrző), a tW-ellentmondás (7.3a), döntés: 🟢 (a).
+
+### 8.1 (1.) 7.4a — 1Kir 18:24, H8034 (F131.7)
+
+- **Hol:** `eszkozok/lexikon_general.py`. A `gerinc_adat()` a `konkordancia/TAHOT_kivonat.tsv`-ből tokenszámot tárol (kulcs: Károli-vers + Strong, F85.6). A `jelentes_cimke_token()` szabálya: ha a versben az adott héber Strongnak legalább 2 tokenje van, a versszintű BDB-példa (2.29) nem ad címkét.
+  - Kutatói hozzárendelés nélkül a cella „*(nincs hozzárendelés)*”. Az ⓘ ezt mondja: „a BDB a verset a(z) <szakasz> szakaszban idézi (`adat/bdb_vers_jelentes.tsv` sorszam …), de a versben a szó kétszer áll (`konkordancia/TAHOT_kivonat.tsv`), és a szótár nem jelöli, melyikre gondol”.
+  - Kutatói hozzárendelésnél (az `elofordulasok.tsv` sorának `jelentes_szam`-a, a `lexikon_entry_id` tokenje) a címke a kutatói hozzárendelésből jön, és az ⓘ ugyanezt a mondatot fűzi hozzá.
+  - Ilyen versen a „nem önállóan idézi” tartomány-mondat nem kerül az ⓘ-be, mert a vers közvetlenül idézett (az 1Móz 4:26-on a H7121 `Qal 6.a` „4:25-26” tartománya ellentmondó mondatot adott volna).
+  - Szó szintű illesztés nincs: a 2.29 a szót nem jelöli.
+- **Ellenőrzés:** `python eszkozok/lekerdez.py igealak H8034` → 1Kir 18:24: `Shem` és `shem-` (`proveniencia: scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H8034 | n=864 | ts=2026-10-28T17:44Z`). A TAHOT-ban a H7121-nek is 2 tokenje van a versben.
+- **Mérés** (`scope=ISTENTISZT-001 (32 sor), H-tokenek | forras=adat/elofordulasok.tsv; adat/bdb_vers_jelentes.tsv; konkordancia/TAHOT_kivonat.tsv; eseti mérőszkript a scratchpadban (m1_tobb_token.py, split('\t')) | ts=2026-10-28`):
+  - **A szabály 2 sort (4 sor–token párt) érint, nem csak a várt egyet:**
+    - **1Kir 18:24:** H7121 (sorszam 97, 99), H8034 (208);
+    - **1Móz 4:26:** H7121 (92), H8034 (116).
+  - **Címke elveszik:**
+    - **1Kir 18:24 H8034** („név: hamis istenekről · 4”, a 7.4a tárgya);
+    - **1Móz 4:26 H8034** („név: Isten megjelölése · 3”). A versben a „nevét Énósnak” és az „az Úr nevét” is H8034. A BDB a verset a 3. szakaszban idézi, de nem jelöli, melyik tokenre gondol.
+  - A H7121-címke mindkét versen marad („segítségül hívni · Qal 2.c”); most a kutatói hozzárendelésből jön, nem BDB-példaként.
+  - A többi 30 sor cellája és ⓘ-je változatlan (a `jelentes_cella` kimenete a régi és az új kóddal összevetve).
+- **Teszt:** `teszt_szotari_gerinc.py`: `test_tobb_token_a_versben` (szintetikus), `test_1kir_18_24_h8034_nem_a_tokenen` és `test_tobb_token_szabaly_merete` (éles adat; a 4 pár rögzítve).
+
+### 8.2 (2.) 7.5a — Thayer: a `</ref>` utáni jelöletlen folytatás (F131.8)
+
+- **Hol:** `eszkozok/thayer_jelolt/vers_jelentes.py`, `folytatasok()`. A `bcv`-hivatkozás `</ref>`-je után közvetlenül induló láncot veszi fel:
+  - `,v`: ugyanabban a fejezetben;
+  - `; c:v`: ugyanabban a könyvben.
+  - A verstartomány (`-v`) nincs kibontva, utána a lánc folytatódik (a DT-F131l (A) mintájára).
+  - A lánc megszakad, ha a szám után számjegy, kettőspont („, 34:”) vagy könyvnév + szám („, 2 Esdr. 10:2”) áll.
+  - A nem `</ref>` után álló számsor („Cyril 7, 1, 35”) nem sor.
+  - A sor jelölése: a `proveniencia` forrás-mezője `forras=thayer_jelolt/vers_jelentes.py (fejléc, folytatas)`.
+  - Az `adat/SEMA.md` 2.35 frissítve.
+- **Előmérés** (eseti mérőszkript a scratchpadban, m2_thayer.py): `</ref>\s*,\s*\d` 221 eset, 153 szócikk; `</ref>\s*;\s*\d+:\d` 1 eset (a `; c:v` többnyire egy `,v` után áll a láncban). Az orkesztrátor 98/73-as mérése más mintával készült.
+- **Újragenerálás:** `python eszkozok/thayer_jelolt/vers_jelentes.py --ts 2026-10-28`; a `--ellenoriz` bájtra azonos.
+
+`proveniencia: scope=adat/thayer_vers_jelentes.tsv, teljes (régi: git 7d004296; új: munkafa) | forras=naplok/F131_thayer_folytatas_valtozas.py | ts=2026-10-28 18:52`
+
+| | érték |
+|---|---|
+| sorok | 63 953 → 64 431 (+478, elveszett 0) |
+| `folytatas` jelű sor | 478, 150 szócikkben (érintett Strong: 150) |
+| új Károli-igehely | 476 |
+| régi sor más `sorszam`-mal | 6 980 |
+| Károli-vers nélkül | ÚSZ 28 → 29 (+1: G3346 „Heb 7:12</ref>; 7:71”, a forrás versszáma, nem kitöltve) |
+| G1941 | + sorszam 40 ApCsel 9:21, 41 ApCsel 22:16 (szakasz 7, `-/5/-`); a régi 40–43 → 42–45 |
+| minta | G0015 1Pét 3:17; G0071 ApCsel 22:24, 23:31, 25:23; G0080 ApCsel 28:21; G0230 Ján 6:55, 7:40, 8:31, 17:8 |
+
+- **Fogyasztók:**
+  - A `lexikon_general.py` `th_vj`-je: a G1941 Thayer-kiemelés 7 → 9 (az „**ApCsel 9:14**,**21**; **22:16**”). A szótári gerinc ⓘ-je „a szótár nem idézi: ApCsel 9:21, ApCsel 22:16, Róm 10:14” → „Róm 10:14”. Az ApCsel 9:21 és 22:16 sorának ⓘ-je: „a Thayer saját példahelye: Thayer 5 (… sorszam 40 / 41)”. A többi G1941-sor ⓘ-jében a sorszám eltolódik (40–43 → 42–45).
+  - A `thayer_jelolt/adatblokk.py` (a #142 fordítóbemenete) a szakasz idézett versei közé a folytatásokat is felveszi. Ez csak a jövőbeli promptokat érinti; a `forditasok.tsv` `forras_hash`-e a szakasz szövegéé, nem változik.
+- **Teszt:**
+  - `teszt_vers_jelentes.py` (11 teszt):
+    - a nyers HTML-lel összevetett teljes szám a folytatás nélküli sorokon 63 953, a folytatás 478;
+    - a lánc-, a tartomány-, a könyvnév-, a kettőspont- és a Cyril-eset;
+    - G1941: 45 sor, a 9:21 és a 22:16 `folytatas`.
+  - `teszt_szotari_gerinc.py`: kiemelés 9, `test_apcsel_9_21_22_16_thayer_idezi`.
+
+### 8.3 (3.) 7.5b — az 1Kir 18:25 gerinc-ⓘ-je (F131.9)
+
+- **Hol:** `lexikon_general.py`, `gerinc_blokk()`. Ha a `bdb_tartomanyban()` a versre mondatot ad, a vers nem a „a szótár nem idézi” listába kerül, hanem a sor ⓘ-jével azonos mondattal áll („1Kir 18:25: a BDB a helyet nem önállóan idézi, hanem a(z) … szakaszban a „1Kin 18:24-25” verstartomány belsejében (… sorszam 99 / 208); a tartomány nincs kibontva (DT-F131l (A)), ezért a hely nem BDB-példa”).
+- **Érintett:** a H7121 (a lap 616. sora) és a H8034 (651.) gerinc-ⓘ-je.
+- **Teszt:** `test_1kir_18_25_gerinc_i_egyezik_a_sorral` (éles adat). A gerinc mondata a sor ⓘ-jének részszövege.
+
+### 8.4 (4.) 7.2a — a `horgonnyal` határ az összecsukott szakaszban (F131.10)
+
+- **Hol:** `lexikon_general.py`, `gerinc_szakasz_lista()`. Az összecsukott futamban a `horgonnyal` kategóriájú szakasz vázlatsora is megkapja a kutatói jelölést (`HORGONNYAL_JELOLES`, a kibontott szakaszéval azonos szöveg).
+- **A lapon:** a H8034 `- `5` — = emlékjel, emlékmű Ézs 55:13 (|| אוֺת *(kutatói jelölés: a szakaszhatár horgonnyal illesztve, ellenőrzendő; …)*`.
+- **Megjegyzés:** a „horgony” mint szó szerinti részsztring a lapon most is 0, mert a jelölés ragozott alakja „horgonnyal” (h-o-r-g-o-n-n-y). Mérve: `grep -c horgonnyal` = 1.
+- **Teszt:** `test_horgonnyal_osszecsukva_az_eles_lapon` (éles ISTENTISZT-001 adat).
+
+### 8.5 (5.) 7.3a — DT-F131m (a): a tW forrásmegjelölése (F131.11)
+
+- **A kivezetés oka:** az F131.2 (`f5d2e288`) `_gerinc_tw()` függvénye kiírta a tW-azonosítókat és a forrásfájlt, de a fájlt nem tette a forráslistába (`ctx['fl']`). Az élő lapon ez az F131.4-ben (`5f0bfacd`) jelent meg.
+- **Javítás:** a tW-szócikket megnevező sor a `konkordancia/tW_szocikkek.tsv`-t `tW_szocikkek` licenckulccsal felveszi, a nem-gerinc lapok tw-blokkjának mintájára. A lapon most:
+  - Irodalom: „- tW (Translation Words — unfoldingWord) (`konkordancia/tW_szocikkek.tsv`, CC BY-SA 4.0)”;
+  - kolofon: táblasor és a kötelező tW-megjelölés.
+- **Mounce:** nem került vissza. A lap a Mounce-ot csak a szónézet-mutató szövegében nevezi meg (509. sor: „a teljes UBS DNTG-szócikk és a Mounce-glossza a szónézetben”, forrásfájl és tartalom nélkül). → Nyitott kérdés, nem döntöttem.
+- **Teszt:** `test_tw_forrasmegjeloles`.
+
+### 8.6 (6.) 7.1a — állapotjelölések (F131.12)
+
+A `DONTESEK.md`-ben a DT-F131a–e és h állapota „🟢 eldöntve, alkalmazva (…)”, a `git log --oneline` alapján:
+
+| döntés | alkalmazó tételek |
+|---|---|
+| a, d, e | F131.2, F131.4 |
+| b | F131.1, F131.2 |
+| c | F131.2, F131.3.6, F131.4 |
+| h | F131.0.6 |
+
+A brief fejlécének `allapot`-ja a kör utolsó commitjában változik.
+
+### 8.7 Éles lap, nulladiff, ellenőrzők (F131.13)
+
+`scope=lexikon/ISTENTISZT-001_TUDOMANYOS.md | forras=general.py --cel lexikon --id ISTENTISZT-001 --ir (PARDES_DATUM=2026-10-28); git diff 5352e9b4..f114d343 -- lexikon/ | ts=2026-10-28`
+
+- **`--ir`:** a lap bájtra azonos (CR nélkül) a repón kívüli próbarenderrel. A `git diff --stat lexikon/` szerint csak az `ISTENTISZT-001_TUDOMANYOS.md` változott (+21/−17).
+- **Blokkonként:**
+  - `elofordulasok`:
+    - az 1Móz 4:26 és az 1Kir 18:24 H8034-cellája „*(nincs hozzárendelés)*”, a [^1] és a [^8] új ⓘ-vel;
+    - [^25]–[^26] (ApCsel 9:21, 22:16): „a Thayer saját példahelye”;
+    - [^27]–[^31]: Thayer-sorszám-eltolódás.
+  - `szocikkek`:
+    - a G1941 Thayer-szövegében két új kiemelés;
+    - a G1941 gerinc-ⓘ-je;
+    - a H7121 és a H8034 gerinc-ⓘ-je (1Kir 18:25);
+    - a H8034 `5` horgonnyal-jelölése;
+    - a blokk forrásfejléce (`konkordancia/tW_szocikkek.tsv`).
+  - `idezes`: + tW-sor.
+  - `kolofon`: forrásfejléc, tW-táblasor, tW-megjelölés.
+  - Más blokk nem változott.
+- **A lap ellenőrzése:**
+  - 1Kir 18:24 H8034: „*(nincs hozzárendelés)*”, „hamis istenekről” nincs a cellában;
+  - ApCsel 9:21, 22:16 ⓘ: „a Thayer saját példahelye”;
+  - az 1Kir 18:25 két gerinc-ⓘ-je a sor ⓘ-jével azonos állítás;
+  - `horgonnyal` 1;
+  - tW az Irodalomban (1685.) és a kolofonban (1782.);
+  - tiltott keretezés (`(?i)eltér|máshová sorol|NEM invokáció|szemben a BDB|a BDB szerint nem`) a két blokkban: 0 / 0.
+- **`nulladiff.sh 7d004296 2026-10-28`:** egyetlen eltérő fájl az `ISTENTISZT-001_TUDOMANYOS.md`. A 7 többi lap és a törzscikkek bájtra azonosak.
+- **Tesztek:**
+  - zöldek: `teszt_szotari_gerinc` 36, `teszt_vers_jelentes` 11, `teszt_bdb_vers_jelentes` 29, `teszt_szerepmatrix` 44 (1 skip), `teszt_lexikon_adatres` 20;
+  - `teszt_bont` 3 hiba, a kiindulóval azonos, nem nőtt: `Determinizmus.test_ellenoriz`, `HuIlleszt.test_ellenoriz`, `test_osszefuzo_a_mai_adaton_valtozatlan`;
+  - `thayer_jelolt/teszt_lanc` 1 hiba (`Sigla.test_tabla_determinisztikus_es_kezi_vedett`, `thayer_sigla.tsv` ELTÉR). A `7d004296`-on, ideiglenes worktree-ben is bukik, és a `sigla_gyujt.py` nem olvassa a 2.35-öt.
+- **`ellenoriz.py`:** 15 RENDBEN, 0 SÉRTÉS, 2 KÉZI, 3 JELENTÉS.
+- **CI** (`futtat.py --pr-cim "[ELLENŐRZŐ] F131: SZOTARI_GERINC" --esemeny pull_request`, a main-hez mért diffen): kilépési kód 0, E28 0 találat.
+  - JELENTÉS: E12 (353), E13 (120), E25 (4), E27 (41), E30 (15), E32 (1).
+  - Az E30 a commit-üzenetek ékezet nélküli szavait jelzi, például a `sorszam` oszlopnevet; nem blokkol.
+
+### 8.8 Nyitott kérdések az orkesztrátornak
+
+1. **7.4a hatóköre.** A szabály az 1Móz 4:26 H8034-címkéjét is leveszi („név: Isten megjelölése · 3”); ez az arany motívum alaphelye. Az adat szerint a versben két H8034 áll, a BDB nem jelöli, melyikre gondol, ezért a brief szabálya szerint a hiány a helyes kimenet. Ha a lapnak itt címke kell, az kutatói token-hozzárendelést kíván (új adat), nem generátor-javítást.
+2. **7.4a, H7121.** A kutatói hozzárendelésű tokennél (H7121 mindkét versen) a címke a kutatói hozzárendelésből marad. A szabály betű szerinti olvasata („a címke nem kerül a tokenre”) ezt is levenné; én a BDB-példára vonatkozónak olvastam. Ha a betű szerinti olvasat a kért, a két H7121-cella is hiány lesz.
+3. **Mounce a szónézet-mutatóban.** A lap a Mounce-ot név szerint említi („a Mounce-glossza a szónézetben”), de a Mounce sem az Irodalomban, sem a kolofonban nem áll. A kérdés: kell-e forrásmegjelölés (MCGED), vagy a mondatból kerüljön ki a Mounce neve.
+4. **A tW kötelező megjelölésének „Módosítás” mondata** („a szócikkek szövegét a lexikonoldal idézőblokkba tördelve közli”) az arany lapon nem igaz, mert a lap a tW szövegét nem közli, csak az azonosítókat. A szöveg a licencmegjelölés része, ezért nem írtam át.
