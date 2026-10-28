@@ -9,7 +9,7 @@ modell: sonnet
 allapot: megallt
 ag: ccr-f67-bdb-javitas-kapu
 ad: egy kapu az eszkozok/forditas_kapuk.py-ban, amely a fordítás [BDB: X] / Y hivatkozását összeveti az adat/bdb_igehely_javitas.tsv javitott_hivatkozas értékével, tesztekkel
-kovetkezo: "Te: független ellenőrzés (naplok/ELLENOR_F67.md), utána push és PR"
+kovetkezo: "Te: [elteres_kor 1/2] /elteres 67 — újraellenőrzés függ: naplok/ELLENOR_F67_2.md"
 olvas: [adat/bdb_igehely_javitas.tsv, adat/SEMA.md, adat/forditasok.tsv, adat/bdb_szakaszok.tsv, eszkozok/forditas_kapuk.py, eszkozok/emeles.py, eszkozok/bdb_adatblokk.py, eszkozok/bdb_atvezet_m5.py, forditas/prompt_v4.md, F56_BDB_ADATBLOKK_BRIEF.md, F38_BDB_FORDITAS_BRIEF.md, konkordancia/Konyv_normalizalo_tabla.tsv]
 ir: [eszkozok/forditas_kapuk.py, eszkozok/teszt_forditas_kapuk.py, eszkozok/emeles.py, eszkozok/teszt_emeles.py]
 fugg: [56]
