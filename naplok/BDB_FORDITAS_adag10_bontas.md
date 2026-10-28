@@ -1,14 +1,14 @@
 # BDB_FORDITAS — a 10. adag (sorrend 1975–2821): tábla-Δ és commitonkénti bontás (DT361, DT56)
 
-*A #38 (BDB_FORDITAS) 10. adagának szakaszonkénti fordítása (prompt v5, `allapot=sonnet`, `modell=claude-sonnet-5-5`). Tartomány: `naplok/BDB_FORDITAS_sorrend.tsv` 10. adag (1975–2821, 847 szócikk, 499 390 forráskarakter). Károli-lefedettség a kezdéskor: 100% (`BDB_FORDITAS_karoli_lefedettseg.py --tol 1975 --adagok 1`: 848 szócikk, 848 Károli-pár). **Állapot: a sorrend 2466-ig kész (492 szócikk); hátra: 2467–2821 (355 szócikk).***
+*A #38 (BDB_FORDITAS) 10. adagának szakaszonkénti fordítása (prompt v5, `allapot=sonnet`, `modell=claude-sonnet-5-5`). Tartomány: `naplok/BDB_FORDITAS_sorrend.tsv` 10. adag (1975–2821, 847 szócikk, 499 390 forráskarakter). Károli-lefedettség a kezdéskor: 100% (`BDB_FORDITAS_karoli_lefedettseg.py --tol 1975 --adagok 1`: 848 szócikk, 848 Károli-pár). **Állapot: a sorrend 2556-ig kész (582 szócikk); hátra: 2557–2821 (265 szócikk).***
 
 ## 1. Tábla-Δ
 
 | tábla | alap (`f3764787`) | fej | Δ | `git diff --numstat` (+/−) |
 |---|---|---|---|---|
-| `adat/forditasok.tsv` (adatsorok, a 2 fejlécsor nélkül) | 11049 | 13245 | +2196 | 2196 / 0 |
-| `adat/forditasok.tsv` (fejléces sorszám, `wc -l`) | 11051 | 13247 | +2196 | |
-| `naplok/EMELES_munka.tsv` | — | — | +2196 | 2196 / 0 |
+| `adat/forditasok.tsv` (adatsorok, a 2 fejlécsor nélkül) | 11049 | 13589 | +2540 | 2540 / 0 |
+| `adat/forditasok.tsv` (fejléces sorszám, `wc -l`) | 11051 | 13591 | +2540 | |
+| `naplok/EMELES_munka.tsv` | — | — | +2540 | 2540 / 0 |
 | `naplok/FORDITAS_kisnagybetu_csere.tsv` | — | — | a javítóréteg 5_kisnagybetu cseréi (ha vannak) | `git diff --numstat` |
 | minden más `adat/` tábla | — | — | 0 | — |
 
@@ -21,8 +21,9 @@ Törölt vagy módosított meglévő `forditasok.tsv`-sor nincs (0 törlés). `k
 | F38.411 | 1. szelet, 1. rész (sorrend 1975–2038) | 64 | 283 | 283 / 0 / 0 | 39125 |
 | F38.412 | 1. szelet, 2. rész (a szelet lezárva) (sorrend 2039–2196) | 158 | 725 | 725 / 0 / 0 | 110906 |
 | F38.413 | 2. szelet, 1. rész (sorrend 2197–2358) | 162 | 728 | 728 / 0 / 0 | 96846 |
-| F38.414 | 2. szelet, 2. rész (sorrend 2359–2466) | 108 | 460 | 460 / 0 / 0 | 61243 |
-| **össz.** | | **492** | **2196** | **2196 / 0 / 0** | **308120** |
+| F38.414 | 2. szelet vége (–2453) és 3. szelet eleje (2454–) (sorrend 2359–2466) | 108 | 460 | 460 / 0 / 0 | 61243 |
+| F38.415 | 3. szelet, 1. rész (sorrend 2467–2556) | 90 | 344 | 344 / 0 / 0 | 50263 |
+| **össz.** | | **582** | **2540** | **2540 / 0 / 0** | **358383** |
 
 Szeletek tervezett tartománya: 1. 1975–2196 (222 szócikk, 150 031 karakter); 2. 2197–2453 (150 495); 3. 2454–2734 (150 531); 4. 2735–2821 (48 333).
 
@@ -35,6 +36,8 @@ Szeletek tervezett tartománya: 1. 1975–2196 (222 szócikk, 150 031 karakter);
 **F38.413** (2197–2358): H5810, H5813, H5998, H6049, H6116, H6141, H6175, H6194, H6290, H6307, H6492, H6603, H6616, H6631, H6693, H6765, H6936, H6939, H7073, H7081, H7123, H7144, H7247, H7306, H7308, H7467, H7526, H7554, H7623, H7677, H7718, H7752, H7757, H7775, H8068, H8154, H8263, H8484, H8487, H8532, H8585, H0107, H0119, H0213, H0231, H0357, H0375, H0447, H0564, H0653, H0672, H0744, H0861, H0919, H0961, H1062, H1091, H1160, H1177, H1328, H1331, H1358, H1367, H1443, H1463, H1558, H1602, H1642, H1663, H1683, H1867, H1885, H2048, H2060, H2102, H2128, H2139, H2213, H2318, H2504, H2527, H2529, H2720, H2787, H2883, H3002, H3062, H3078, H3334, H3395, H3504, H3524, H3543, H3608, H3774, H3857, H4066, H4465, H4471, H4479, H4565, H4635, H4673, H4688, H4743, H4745, H4830, H4916, H5000, H5064, H5095, H5144, H5176, H5177, H5374, H5402, H5571, H5606, H5710, H5714, H5744, H5903, H5943, H5989, H6026, H6147, H6158, H6210, H6340, H6347, H6354, H6388, H6399, H6418, H6501, H6561, H6634, H6770, H6790, H6846, H6872, H6881, H6914, H6931, H7025, H7054, H7075, H7158, H7165, H7239, H7340, H7600, H7649, H7652, H7935, H7990, H8018, H8082, H8307, H8362, H8396, H8544
 
 **F38.414** (2359–2466): H0002, H0073, H0098, H0122, H0164, H0324, H0411, H0436, H0454, H0467, H0481, H0551, H0605, H0652, H0663, H0699, H0728, H0775, H0811, H0838, H0863, H0883, H1119, H1196, H1212, H1238, H1343, H1404, H1448, H1524, H1541, H1603, H1607, H1617, H1650, H1681, H1809, H1814, H1846, H1909, H2069, H2184, H2230, H2384, H2404, H2635, H2648, H2660, H2731, H2767, H2795, H2966, H3039, H3096, H3103, H3148, H3218, H3257, H3266, H3286, H3324, H3336, H3344, H3463, H3500, H3503, H3528, H3564, H3734, H3767, H3800, H3948, H4102, H4181, H4340, H4385, H4468, H4585, H4627, H4719, H4749, H4865, H4902, H4959, H5086, H5154, H5174, H5201, H5253, H5348, H5371, H5408, H5429, H5445, H5480, H5709, H5718, H5736, H5777, H5835, H5977, H6001, H6006, H6009, H6061, H6064, H6079, H6157
+
+**F38.415** (2467–2556): H6163, H6237, H6275, H6337, H6362, H6439, H6622, H6670, H6673, H6692, H6720, H6771, H6973, H7128, H7149, H7214, H7328, H7474, H7540, H7551, H7597, H7633, H7644, H7668, H7732, H7804, H7902, H7974, H8027, H8042, H8058, H8150, H8156, H8173, H8191, H8205, H8352, H8359, H8539, H8612, H0024, H0057, H0090, H0143, H0154, H0173, H0209, H0221, H0224, H0331, H0359, H0387, H0394, H0437, H0516, H0529, H0703, H0865, H0870, H0948, H1020, H1022, H1047, H1049, H1075, H1096, H1186, H1188, H1210, H1224, H1246, H1251, H1348, H1393, H1413, H1508, H1533, H1598, H1627, H1667, H1760, H1783, H1803, H1808, H1865, H1893, H1986, H2013, H2066, H2135
 
 ## 4. 17_bdb_javitas (DT55, #67 kapu)
 
