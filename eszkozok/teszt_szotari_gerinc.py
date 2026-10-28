@@ -399,6 +399,23 @@ class ValodiAdat(unittest.TestCase):
             self.assertNotIn('a Thayer a helyet nem idézi', ik, h)
             self.assertIn('a Thayer saját példahelye: Thayer 5', ik, h)
 
+    def test_1kir_18_25_gerinc_i_egyezik_a_sorral(self):
+        # ELLENOR_SZOTARI_GERINC 3. (7.5b): a gerinc ⓘ-je nem mondhatja „nem idézi”-nek a tartomány belsejében idézett
+        # 1Kir 18:25-öt; ugyanazt az állítást mondja, mint a sor ⓘ-je
+        _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
+        sorai = [r for r in elo_sorok if r['id'] == 'ISTENTISZT-001']
+        a = LG.gerinc_adat()
+        s = next(r for r in sorai if r['igehely'] == '1Kir 18:25')
+        _cella, sor_i = LG.jelentes_cella(a, s)
+        for strong in ('H7121', 'H8034'):
+            bek, napl = LG.gerinc_blokk(a, 'BDB', strong, sorai)
+            self.assertNotIn('1Kir 18:25', napl['nem_idezett'], strong)
+            self.assertEqual(len(napl['tartomanyban']), 1, strong)
+            t = napl['tartomanyban'][0]
+            self.assertTrue(t.startswith('1Kir 18:25: '), t)
+            self.assertIn(t[len('1Kir 18:25: '):], sor_i, strong)
+            self.assertIn('„1Kin 18:24-25” verstartomány belsejében', '\n'.join(bek))
+
     def test_2moz_33_19(self):
         _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
         s = next(r for r in elo_sorok if r['id'] == 'ISTENTISZT-001' and r['igehely'] == '2Móz 33:19')

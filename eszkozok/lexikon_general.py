@@ -2312,10 +2312,17 @@ def gerinc_blokk(adat, szotar, strong, motivum_sorai, ctx=None):
     teljes_ut = {gerinc_utvonal_vag(s[0]): s[0] for s in szakaszok}
     celok, hordozo = {}, set()
     fej_celok = []
+    napl['tartomanyban'] = []
     for vers in sorted(set(versek), key=versek.index):
         sorok = vj.get((strong, vers), [])
         if not sorok:
-            napl['nem_idezett'].append(vers)
+            # ELLENOR_SZOTARI_GERINC 3. (7.5b): a tartomány belsejében idézett hely nem „nem idézett”; a gerinc ⓘ-je a
+            # sor ⓘ-jével azonos állítást mond (DT-F131l (A))
+            tart = bdb_tartomanyban(adat, strong, vers) if szotar == 'BDB' else []
+            if tart:
+                napl['tartomanyban'].append('%s: %s' % (vers, '; '.join(tart)))
+            else:
+                napl['nem_idezett'].append(vers)
         for r in sorok:
             azon = '%s sorszam %s (%s, %s)' % (os.path.basename(BDB_VERS_JELENTES_FAJL if szotar == 'BDB'
                                                                 else THAYER_VERS_JELENTES_FAJL),
@@ -2358,7 +2365,7 @@ def gerinc_blokk(adat, szotar, strong, motivum_sorai, ctx=None):
     napl['kiemelt'] += talalt
     napl['nem_talalt'] += hiany
     bek.extend(lista)
-    if napl['nem_talalt'] or napl['nem_idezett'] or napl['tiltott']:
+    if napl['nem_talalt'] or napl['nem_idezett'] or napl['tiltott'] or napl['tartomanyban']:
         reszek = []
         if napl['tiltott']:
             reszek.append('ismert hiány: a magyar szöveg tiltott fordulatot tartalmaz (`%s`): %s; a javítás a '
@@ -2369,6 +2376,8 @@ def gerinc_blokk(adat, szotar, strong, motivum_sorai, ctx=None):
                           % '; '.join(napl['nem_talalt']))
         if napl['nem_idezett']:
             reszek.append('a szótár nem idézi: %s' % ', '.join(napl['nem_idezett']))
+        for t in napl['tartomanyban']:
+            reszek.append(t)
         bek.append('*ⓘ Kutatói megjegyzés: %s.*' % ' · '.join(reszek))
     forras = BDB_TELJES_FAJL if szotar == 'BDB' else THAYER_TELJES_FAJL
     bek.append('*A teljes szócikk: %s*' % _szonezet_mutato(strong, forras))
