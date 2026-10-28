@@ -580,6 +580,9 @@ def blokk_elofordulasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
         else:
             szotari_jelentes = lexikon_jelentes_cella(s)
         ubs_cella = ubs_jelentes_cella(s['id'], s['igehely'], s.get('strong') or '')
+        if gerinc and ubs_cella.startswith('%s *(ÓSZ)*' % EM_DASH):
+            # F131 (DT-F131j): az ÓSZ-sorok UBS-jelentése a DBH-ból
+            ubs_cella = dbh_jelentes_cella(s['igehely'], s.get('strong') or '')
         megb = '%s · %s%s' % (s.get('megbizhatosag') or EM_DASH, s.get('azonositas_modja') or EM_DASH,
                                labjegyzet_jel)
 
@@ -604,8 +607,17 @@ def blokk_elofordulasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
     if labjegyzetek:
         torzs += '\n\n' + '\n'.join('[^%d]: %s' % (i, lj) for i, lj in enumerate(labjegyzetek, start=1))
 
-    torzs += ('\n\n*Az UBS-jelentés csak újszövetségi soroknál áll: az UBS Greek New '
-              'Testament Dictionary az Újszövetséget fedi.*')
+    if gerinc:
+        torzs += ('\n\n*Az UBS-jelentés az újszövetségi soroknál az UBS Dictionary of New Testament Greek (DNTG), '
+                  'az ószövetségi soroknál az UBS Dictionary of Biblical Hebrew (DBH) igehelyszintű jelentése '
+                  '(`%s`, a Károli-vers az MT-számozásra képezve, `konkordancia/Karoli_versmegfeleltetes.tsv`); '
+                  'tokenenként a hivatkozott jelentés(ek) lexid-je és rövid definíciója. A DBH-szöveg magyarul a '
+                  '`forditasok.tsv`-ből jön, ahol van; ahol nincs, az angol eredeti áll `(fordításra vár)` jelöléssel '
+                  '(a fordítás a #121 hatóköre, DT-F131j). Ahol a DBH a versre nem hivatkozik, a cella ezt kimondja.*'
+                  % UBS_DBH_REFERENCIAK_FAJL)
+    else:
+        torzs += ('\n\n*Az UBS-jelentés csak újszövetségi soroknál áll: az UBS Greek New '
+                  'Testament Dictionary az Újszövetséget fedi.*')
 
     torzs += '\n\n#### 1/a. Az igehelyek szövege\n'
     karoli_terkep = L.load_karoli_1908()
@@ -642,10 +654,13 @@ def blokk_elofordulasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
                     'a hely motívumbeli funkcióját (F131, DT272 (d)).'
                     % (SZAKASZ_CIMKE_FAJL, BDB_VERS_JELENTES_FAJL, THAYER_VERS_JELENTES_FAJL))
         for fajl, kulcs in ((SZAKASZ_CIMKE_FAJL, 'projekt_adat'), (BDB_VERS_JELENTES_FAJL, 'BDB'),
-                            (THAYER_VERS_JELENTES_FAJL, 'Thayer')):
+                            (THAYER_VERS_JELENTES_FAJL, 'Thayer'), (UBS_DBH_REFERENCIAK_FAJL, 'UBS_DBH'),
+                            (UBS_DBH_JELENTESEK_FAJL, 'UBS_DBH'),
+                            ('konkordancia/Karoli_versmegfeleltetes.tsv', 'Karoli_versmegfeleltetes')):
             forras_lista.append(fajl)
             forras_licenc_parok.append((fajl, LC(kulcs)))
-        licenc_lista = _sorted_unique(licenc_lista + [LC('BDB'), LC('Thayer')])
+        licenc_lista = _sorted_unique(licenc_lista + [LC('BDB'), LC('Thayer'), LC('UBS_DBH'),
+                                                      LC('Karoli_versmegfeleltetes')])
     blokk_szoveg = _lexikon_blokk(m['id'], 'elofordulasok', forras_lista, licenc_lista, hatokor, torzs)
     return blokk_szoveg, forras_licenc_parok
 
@@ -1978,6 +1993,48 @@ def jelentes_cella(adat, sor):
     else:
         cella = '; '.join('%s: %s' % r for r in reszek)
     return cella, ' · '.join(x for x in ik if x)
+
+
+def dbh_jelentes_cella(igehely, strong_field):
+    """Az „UBS-jelentés” cella ÓSZ-soron (DT-F131j): tokenenként (H-tokenek) a DBH igehelyszintű
+    hivatkozásainak lexid-je és rövid definíciója, a DNTG-cella mintájára. A magyar definíció a
+    `forditasok.tsv`-ből (`UBS_DBH`, entry_id = lexid, jelentes_szam = —, `definicio_hu`); ha nincs, az
+    angol + `fordításra vár`. A Károli-vers az MT-számozásra képezve (`karoli_mt_vers`); ahol nincs biztos
+    megfeleltetés vagy hivatkozás, a cella kimondja."""
+    jelentesek, hivatkozasok, _darab = ubs_dbh_adatok()
+    tokenek = [t for t in (strong_field or '').split('+') if t and t.startswith('H')]
+    if not tokenek:
+        return '%s *(ÓSZ; nincs H-token)*' % EM_DASH
+    reszek = []
+    van = False
+    for t in tokenek:
+        cellak = []
+        okok = []
+        for vers in igehely_lista(igehely):
+            mt, ok = karoli_mt_vers(vers)
+            if mt is None:
+                okok.append(ok)
+                continue
+            if not hivatkozasok.get((t, mt)):
+                okok.append('keresett MT-vers: %s' % mt)
+            for lx in sorted(set(hivatkozasok.get((t, mt), []))):
+                r = jelentesek.get(t, {}).get(lx)
+                if r is None:
+                    cellak.append('`%s` — *(a jelentés nincs a DBH-táblában)*' % lx)
+                    continue
+                szov = _cella(_dbh_hu('definicio_hu', t, lx, r['definicio_rovid']))
+                cellak.append('`%s` — %s%s' % (lx, szov, '' if mt == vers else ' *(MT: %s)*' % mt))
+        if cellak:
+            van = True
+            reszek.append((t, '; '.join(cellak)))
+        else:
+            reszek.append((t, '*(nincs DBH-hivatkozás%s)*' % (': ' + '; '.join(okok) if okok else '')))
+    if not van:
+        okok = sorted({r[1] for r in reszek})
+        return '%s *(ÓSZ; %s)*' % (EM_DASH, ' · '.join(o.strip('*()') for o in okok))
+    if len(reszek) == 1:
+        return reszek[0][1]
+    return ' · '.join('%s: %s' % r for r in reszek)
 
 
 # --- hivatkozás-kiemelés a magyar szakaszban (DT272 (d)(e)) ----------------

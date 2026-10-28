@@ -267,6 +267,27 @@ class ThayerSzakaszsorok(unittest.TestCase):
         self.assertEqual(szak, [('-/1/-', '1', None, '1. to call', 'sz2')])
 
 
+class DbhOszlop(unittest.TestCase):
+    """DT-F131j: az ÓSZ-sorok „UBS-jelentés” cellája a DBH-ból, tokenenként; hiány soha nem néma."""
+
+    def test_1moz_4_26_tokenenkent(self):
+        c = LG.dbh_jelentes_cella('1Móz 4:26', 'H7121+H8034')
+        self.assertTrue(c.startswith('H7121: '))
+        self.assertIn(' · H8034: ', c)
+        h7121 = c.split(' · H8034: ')[0]
+        self.assertEqual(h7121.count('`0065620'), 2)
+        if 'fordításra vár' not in c:
+            self.assertNotIn('= action by which', c)
+
+    def test_nincs_hivatkozas_kimondva(self):
+        c = LG.dbh_jelentes_cella('Jóel 2:32', 'H7121+H8034')
+        self.assertIn('nincs DBH-hivatkozás', c)
+        self.assertIn('keresett MT-vers', c)
+
+    def test_g_token_nelkul(self):
+        self.assertIn('nincs H-token', LG.dbh_jelentes_cella('1Móz 4:26', 'G1941'))
+
+
 class ValodiAdat(unittest.TestCase):
     """A repó mai adatán: mind a 32 sor kap címkét vagy kimondott hiányt, ellentmondás nélkül;
     a 17. szabály RENDBEN."""
