@@ -1,14 +1,14 @@
 # BDB_FORDITAS — a 10. adag (sorrend 1975–2821): tábla-Δ és commitonkénti bontás (DT361, DT56)
 
-*A #38 (BDB_FORDITAS) 10. adagának szakaszonkénti fordítása (prompt v5, `allapot=sonnet`, `modell=claude-sonnet-5-5`). Tartomány: `naplok/BDB_FORDITAS_sorrend.tsv` 10. adag (1975–2821, 847 szócikk, 499 390 forráskarakter). Károli-lefedettség a kezdéskor: 100% (`BDB_FORDITAS_karoli_lefedettseg.py --tol 1975 --adagok 1`: 848 szócikk, 848 Károli-pár). **Állapot: a sorrend 2734-ig kész (760 szócikk); hátra: 2735–2821 (87 szócikk).***
+*A #38 (BDB_FORDITAS) 10. adagának szakaszonkénti fordítása (prompt v5, `allapot=sonnet`, `modell=claude-sonnet-5-5`). Tartomány: `naplok/BDB_FORDITAS_sorrend.tsv` 10. adag (1975–2821, 847 szócikk, 499 390 forráskarakter). Károli-lefedettség a kezdéskor: 100% (`BDB_FORDITAS_karoli_lefedettseg.py --tol 1975 --adagok 1`: 848 szócikk, 848 Károli-pár). **Állapot: a sorrend 2821-ig kész (847 szócikk); hátra: semmi.***
 
 ## 1. Tábla-Δ
 
 | tábla | alap (`f3764787`) | fej | Δ | `git diff --numstat` (+/−) |
 |---|---|---|---|---|
-| `adat/forditasok.tsv` (adatsorok, a 2 fejlécsor nélkül) | 11049 | 14324 | +3275 | 3275 / 0 |
-| `adat/forditasok.tsv` (fejléces sorszám, `wc -l`) | 11051 | 14326 | +3275 | |
-| `naplok/EMELES_munka.tsv` | — | — | +3275 | 3275 / 0 |
+| `adat/forditasok.tsv` (adatsorok, a 2 fejlécsor nélkül) | 11049 | 14666 | +3617 | 3617 / 0 |
+| `adat/forditasok.tsv` (fejléces sorszám, `wc -l`) | 11051 | 14668 | +3617 | |
+| `naplok/EMELES_munka.tsv` | — | — | +3617 | 3617 / 0 |
 | `naplok/FORDITAS_kisnagybetu_csere.tsv` | — | — | a javítóréteg 5_kisnagybetu cseréi (ha vannak) | `git diff --numstat` |
 | minden más `adat/` tábla | — | — | 0 | — |
 
@@ -25,7 +25,8 @@ Törölt vagy módosított meglévő `forditasok.tsv`-sor nincs (0 törlés). `k
 | F38.415 | 3. szelet, 1. rész (sorrend 2467–2556) | 90 | 344 | 344 / 0 / 0 | 50263 |
 | F38.416 | 3. szelet, 2. rész (sorrend 2557–2646) | 90 | 370 | 370 / 0 / 0 | 49753 |
 | F38.417 | 3. szelet vége (sorrend 2647–2734) | 88 | 365 | 365 / 0 / 0 | 42921 |
-| **össz.** | | **760** | **3275** | **3275 / 0 / 0** | **451057** |
+| F38.418 | 4. szelet, 1. rész és vége (a H1753 és H3367 a régi teljes úton) (sorrend 2735–2821) | 87 | 342 | 342 / 0 / 0 | 48333 |
+| **össz.** | | **847** | **3617** | **3617 / 0 / 0** | **499390** |
 
 Szeletek tervezett tartománya: 1. 1975–2196 (222 szócikk, 150 031 karakter); 2. 2197–2453 (150 495); 3. 2454–2734 (150 531); 4. 2735–2821 (48 333).
 
@@ -44,6 +45,8 @@ Szeletek tervezett tartománya: 1. 1975–2196 (222 szócikk, 150 031 karakter);
 **F38.416** (2557–2646): H2151, H2290, H2401, H2452, H2553, H2554, H2556, H2598, H2705, H2724, H2805, H2838, H2851, H2864, H2912, H2914, H2921, H2971, H2985, H3013, H3082, H3087, H3189, H3199, H3284, H3302, H3313, H3326, H3363, H3369, H3396, H3459, H3493, H3510, H3529, H3535, H3573, H3591, H3645, H3682, H3725, H3756, H3779, H3794, H3810, H3835, H3870, H3939, H4022, H4032, H4122, H4144, H4187, H4225, H4241, H4246, H4291, H4303, H4403, H4411, H4432, H4455, H4456, H4498, H4505, H4521, H4584, H4602, H4658, H4670, H4671, H4694, H4763, H4806, H4993, H5106, H5166, H5224, H5274, H5276, H5425, H5459, H5470, H5509, H5528, H5613, H5627, H5658, H5711, H5725
 
 **F38.417** (2647–2734): H5780, H5820, H5861, H5895, H5970, H6045, H6084, H6126, H6149, H6222, H6301, H6305, H6332, H6429, H6449, H6476, H6482, H6598, H6649, H6805, H6934, H6958, H6969, H7145, H7172, H7193, H7197, H7261, H7348, H7401, H7531, H7543, H7550, H7647, H7648, H7663, H7755, H7767, H7956, H7961, H7962, H7973, H7980, H8019, H8152, H8175, H8202, H8274, H8302, H8327, H8370, H8388, H8422, H8489, H8519, H8558, H8571, H8666, H0044, H0102, H0185, H0234, H0293, H0322, H0356, H0406, H0422, H0494, H0504, H0523, H0583, H0590, H0629, H0633, H0662, H0682, H0746, H0821, H0830, H0847, H1113, H1131, H1146, H1239, H1249, H1315, H1342, H1442
+
+**F38.418** (2735–2821): H1446, H1460, H1482, H1492, H1517, H1614, H1622, H1672, H1731, H1753, H1756, H1787, H1806, H1921, H1959, H1975, H2039, H2061, H2131, H2153, H2212, H2239, H2250, H2339, H2341, H2348, H2356, H2386, H2397, H2426, H2427, H2455, H2779, H2793, H2918, H2999, H3061, H3204, H3367, H3382, H3412, H3449, H3465, H3544, H3654, H3672, H3675, H3761, H3826, H3877, H3919, H3933, H3936, H3952, H3984, H4024, H4084, H4111, H4156, H4175, H4207, H4285, H4332, H4409, H4525, H4543, H4571, H4617, H4680, H4685, H4691, H4762, H4812, H4823, H4828, H4923, H4924, H5063, H5092, H5183, H5278, H5394, H5486, H5504, H5530, H5531, H5557
 
 ## 4. 17_bdb_javitas (DT55, #67 kapu)
 
@@ -74,10 +77,15 @@ A kapuk egyéb elakadásai (5_terminologia: `p.` → `o.`, `suffix` → `suffixu
 **Megjegyzés (forráshiba, nem javítótábla-sor):** a H0821 forrásában `Lam 19:19` áll (nem létező fejezet; javítás nincs, nincs jelölt); a fordítás hűen átveszi (`JSir 19:19`), `Y [BDB: X]` jelölés nélkül; a 13. kapu JELZÉS-t ad.
 
 
+**Szakasztáblán kívüli Strongok (régi `teljes` út):** a H1753 (sorrend 2744) és a H3367 (sorrend 2773) nincs az `adat/bdb_szakaszok.tsv`-ben; `emeles.py helyorzo`/`ellenoriz`/`rogzit`/`beir` úton, `jelentes_szam=teljes` sorral kerültek be (2 sor), az F38.418-ban. A forrás H1753-nál kétszer ismétli a Dán 4:32 tagmondatot; hűen átvettem.
+
 ## 6. Ellenőrzések
 
 - `python eszkozok/ellenoriz.py`: 0 SÉRTÉS (minden commit előtt).
-- a három teszt a 10. adag végén fut.
+- `python eszkozok/teszt_forditas_kapuk.py`: OK (110 teszt).
+- `python eszkozok/teszt_emeles.py`: OK (kilépési kód 0).
+- `python eszkozok/bdb_jelolt/teszt_szakasz_bemenet.py`: OK (kilépési kód 0).
+- A 10. adag kész: sorrend 1975–2821, 847 szócikk, 3 617 sor, 499 390 forráskarakter.
 
 
 *(proveniencia: scope=adat/forditasok.tsv, naplok/EMELES_munka.tsv @ f3764787 és @ HEAD; adat/bdb_szakaszok.tsv | forras=`emeles.py szakasz_ellenoriz/szakasz_rogzit/szakasz_beir`, `git diff --numstat` | ts=2026-10-28)*
