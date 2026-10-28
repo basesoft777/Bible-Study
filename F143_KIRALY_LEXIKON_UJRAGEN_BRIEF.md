@@ -76,4 +76,4 @@ többi adat drift-je), az éles írás a DT74 (3) hatálya alá eshet: ezt az M0
 | Azonosító | Kérdés | Állapot |
 |---|---|---|
 | DT337 | a G0813 → G0540 csere | eldöntve: (a) (felhasználó, 2026-10-25) |
-| (M0 ⛔) | az éles írás és a DT74 (3) | nyitott |
+| DT-F143a | az éles írás és a DT74 (3) (M0 ⛔) | nyitott |
