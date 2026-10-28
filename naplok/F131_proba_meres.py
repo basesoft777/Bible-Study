@@ -117,6 +117,17 @@ def main():
         print('  %s: %s' % (ige, jel))
     print('sorok: %d; az elsődleges tokenen címke nélkül: %d' % (len(sorok), nincs))
 
+    print('\n## 3/b. Az „UBS-jelentés” oszlop ÓSZ-sorai (DT-F131j)')
+    osz = [s for s in sorok if '`0' in s.split(' | ')[6] or 'ÓSZ' in s.split(' | ')[6]]
+    dbh = [s for s in osz if '`0' in s.split(' | ')[6]]
+    print('ÓSZ-sor: %d; DBH-jelentéssel: %d; hivatkozás nélkül (kimondva): %d' % (
+        len(osz), len(dbh), sum(1 for s in osz if 'nincs DBH-hivatkozás' in s.split(' | ')[6])))
+    print('DBH-lexid a cellákban összesen: %d; ebből (fordításra vár): %d' % (
+        sum(s.split(' | ')[6].count('`0') for s in dbh), sum(s.split(' | ')[6].count(JEL) for s in dbh)))
+    for s in osz:
+        if 'nincs DBH-hivatkozás' in s.split(' | ')[6]:
+            print('  hivatkozás nélkül: %s — %s' % (re.match(r'\| \[([^\]]+)\]', s).group(1), s.split(' | ')[6]))
+
     print('\n## 4. Kiemelt szótári példahelyek')
     _, elo = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
     sorai = [s for s in elo if s['id'] == 'ISTENTISZT-001']

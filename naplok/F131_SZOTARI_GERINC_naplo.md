@@ -197,6 +197,33 @@ Egy későbbi #133 / #144 / #140 futás után ugyanez a mérés megmutatja, vál
 - Hash-rögzítés: változatlan (4.5).
 - HTML-nézet (privát Artifact, ugyanaz az URL): https://claude.ai/artifact/QVHPBrCJWkSP7pT8z363vy
 
+### 5.2 DT-F131j: az ÓSZ-sorok „UBS-jelentés” cellája a DBH-ból (F131.3.8–F131.3.11)
+
+**Döntés:** DT-F131j (a), a felhasználó (F131.3.8). **Végrehajtás (F131.3.9):** az arany lapon (kapcsoló) az ÓSZ-sorok cellája tokenenként a `konkordancia/UBS_DBH_referenciak.tsv` hivatkozásait adja (`lexid` — rövid definíció a `UBS_DBH_jelentesek.tsv`-ből, a DNTG-cella mintájára; a Károli-vers a render meglévő `karoli_mt_vers` képzésével MT-re). Magyarul a `forditasok.tsv`-ből (`UBS_DBH`, entry_id = lexid, jelentes_szam = `—`, `definicio_hu`), ahol van — ma sehol —, különben az angol eredeti `(fordításra vár)` jelöléssel. Hivatkozás híján: `— (ÓSZ; nincs DBH-hivatkozás: <ok vagy keresett MT-vers>)`. A lap alji mondat és a blokk forráslistája (UBS_DBH, Karoli_versmegfeleltetes) igazítva; RENDER_BRIEF (a G6 után) és a lexikonsablon (1. Előfordulások) egy-egy bekezdéssel. Tesztek: `teszt_szotari_gerinc.py` 26 eset OK; `teszt_szerepmatrix` OK; `ellenoriz.py` SÉRTÉS 0; nulladiff (`da4323e4`): csak az ISTENTISZT-001 lap tér el.
+
+**A próba (F131.3.11, `PARDES_DATUM=2026-10-28`, a repón kívül, `naplok/F131_proba_meres.py`):**
+
+`scope=ISTENTISZT-001 próbarender | forras=naplok/F131_proba_meres.py; general.py --kimenet (PARDES_DATUM=2026-10-28) | ts=2026-10-28 13:44`
+
+- ÓSZ-sor 22: DBH-jelentéssel 21, kimondott hiánnyal 1 (Jóel 2:32).
+- A cellákban 44 DBH-hivatkozás (lexid), mind angolul, `(fordításra vár)` jelöléssel.
+- `(fordításra vár)` a lapon: 1 → 46 (44 a DBH-cellákban, 1 a lap alji magyarázó mondatban, 1 a G1941 56.15-ös UBS-kódja). A szótári gerinc és a többi mérés (4., 5.1) változatlan.
+- **Adathiba-gyanú (nem e feladaté):** a Jóel 2:32-t a `konkordancia/Karoli_versmegfeleltetes.tsv` `KJV` osztályúnak, MT-vers nélkül írja (a tábla a Jóel 2:28–32-t és a 3. fejezetet a KJV-vel azonosnak veszi); az MT-ben ez a Jóel 3:5, és a DBH ott hivatkozik a H7121-re (2 lexid) és a H8034-re. A render és a cella a táblát követi, ezért a cella hiányt mond, a keresett MT-verssel.
+
+**A #121-nek (F131.3.10, csak olvasó mérés):** `naplok/F131_DBH_egysegek.tsv` (lexikon, strong, lexid, mezo, van_hu; proveniencia-sorral), író: `naplok/F131_dbh_meres.py --renderek <a 8 lap mai renderének könyvtára, a repón kívül>`.
+
+`scope=8 lexikonoldal ÓSZ-sorainak H-tokenjei | forras=naplok/F131_dbh_meres.py; adat/elofordulasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/UBS_DBH_referenciak.tsv, adat/forditasok.tsv | ts=2026-10-28`
+
+| | Érték |
+|---|---|
+| egyedi (strong, lexid) a 8 lap ÓSZ-sorain | 36 (ALVIL 1, ANTROP 3, HAMART 15, HODIT 3, ISTENTISZT 5, KIRALY 4, MENNY 3, TEREMT 2) |
+| egység (× `definicio_hu`, `glosszak_hu`) | 72; lefordítva 0 |
+| a #121 mai DBH-egységei (a 8 lap héber 5. szerepének `(fordításra vár)` sorai, mai render; ISTENTISZT-001: az éles lap) | 268 (134 lexid) |
+| átfedés | 72 — a cellához szükséges minden egység már a #121 hatókörében van; új egység 0 |
+| hivatkozás nélküli ÓSZ-vers × token | 16: KEZI osztály, MT-vers nélkül 8 (Préd 9:12, 4Móz 13:34 ×2, Jób 38:7 ×2, Jób 38:16, 38:30); a tábla szerinti MT-versen nincs hivatkozás 8 (Ézs 7:11, 1Móz 4:10, 1Krón 20:6, 20:8, Jóel 2:32 ×2, 1Móz 14:19, 14:20, Jób 41:32) |
+
+Megjegyzés: az éles `lexikon/` 7 lapja a generátorhoz képest elavult (DT344), ezért a #121-egységeket a mai generátor repón kívüli renderéből számoltam; a 454-es #121-szám ennek megfelelő (a DBH része 268).
+
 ## 6. ⛔ 3.1 — DT-F131f: az elfogadási próba
 
-A felhasználó a renderelt próbalapot olvassa. A kérdés: *a szó jelentését és a hely motívumbeli funkcióját két külön dolognak látja-e?* Ugyanitt dönt a címkék szövegéről (3.1) és a 4.2 kérdéséről (az 56.15-ös kód). A próbalap az 5.1 szerinti (F131.3.7). A végrehajtás itt áll.
+A felhasználó a renderelt próbalapot olvassa. A kérdés: *a szó jelentését és a hely motívumbeli funkcióját két külön dolognak látja-e?* Ugyanitt dönt a címkék szövegéről (3.1) és a 4.2 kérdéséről (az 56.15-ös kód). A próbalap az 5.2 szerinti (F131.3.11). A végrehajtás itt áll.
