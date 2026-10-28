@@ -1,6 +1,6 @@
 """F131.3.20: a `adat/bdb_vers_jelentes.tsv` (2.29) változása a DT-F131k (a) és a DT-F131l (A) javítása után — csak olvas.
 
-A régi tábla a git HEAD-ből (vagy az első argumentum fájljából), az új a munkafa fájlja. Kimenet (stdout): sorszám, hozzáadott /
+A régi tábla a `d5968201` commitból (F131.3.20: a javítás előtti 2.29; vagy az első argumentum fájljából), az új a munkafa fájlja. Kimenet (stdout): sorszám, hozzáadott /
 elveszett sor (kulcs: strong, poz, nyers, karoli_vers, utvonal — sorszám nélkül), az érintett Strongok, a régi sorok közül más
 `sorszam`-ot kapók száma, az új sorok mintája, a H7121/H8034 változása, és az összevetés a memóriabeli A-méréssel
 (`naplok/F131_bdb_tartomany_meres.py`: +1 438). TSV `split('\t')`.
@@ -20,6 +20,7 @@ if hasattr(sys.stderr, 'reconfigure'):
 
 GYOKER = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 UT = os.path.join(GYOKER, 'adat', 'bdb_vers_jelentes.tsv')
+REGI_COMMIT = 'd5968201'
 
 
 def sorok(szoveg):
@@ -36,9 +37,9 @@ def main():
             regi = sorok(f.read())
         forras = sys.argv[1]
     else:
-        regi = sorok(subprocess.run(['git', 'show', 'HEAD:adat/bdb_vers_jelentes.tsv'], cwd=GYOKER, capture_output=True,
+        regi = sorok(subprocess.run(['git', 'show', REGI_COMMIT + ':adat/bdb_vers_jelentes.tsv'], cwd=GYOKER, capture_output=True,
                                     check=True).stdout.decode('utf-8'))
-        forras = 'git HEAD'
+        forras = 'git ' + REGI_COMMIT
     with open(UT, encoding='utf-8', newline='') as f:
         uj = sorok(f.read())
     print('proveniencia: scope=adat/bdb_vers_jelentes.tsv, teljes (régi: %s; új: munkafa) | forras=naplok/F131_bdb_tartomany_valtozas.py | ts=%s'
