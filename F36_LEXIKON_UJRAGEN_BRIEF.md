@@ -22,6 +22,11 @@ Az F28 fordításai (39 szócikk), a ψ-javítás és a Szent Szellem-egységes�
 
 **Kiegészítés (N-F89a, DT-F89b 2., 2026.10.13).** A #89 (PR #332) a `projekt_adat` címkéjét `projekt-adat`-ról `minden jog fenntartva`-ra cserélte (`adat/SEMA.md` 2.19), de a lexikont nem generálta újra: a 8 éles `lexikon/*_TUDOMANYOS.md` 146 helyen még a régi címkét hordozza. A #89 próbafutása (`naplok/F89_M0_felmeres.md` 5. szakasz) szerint az éles írás 1476 beszúrt és 514 törölt sort adna, tartalmi blokkokkal is (pl. a KIRALY-001 kizárt jelöltjei 0 helyett 14). A címkecsere ezzel az újragenerálással együtt történik; a #89 merge-e az indulás előfeltétele.
 
+**Kiegészítés (N-F132a, DT-F143a (b), 2026.10.28).** A #143 M0 szárazfutása (`naplok/F143_szarazfutas.md`) szerint a KIRALY-001 lexikonoldalainak G0813 → G0540 javítása (N-F132a; az `adat/elofordulasok.tsv` Zsid 7:1-28 sora, F132.19, DT337 (a)) nem választható le a rendszerszintű drifttől, ezért itt, az éles újragenerálással együtt élesedik; a #143 ebbe olvadt. Tudnivalók a futáshoz:
+- A „Grep `G0813` → 0” ellenőrzés a `lexikon/KIRALY-001_TUDOMANYOS.md`-n szó szerint nem teljesülhet: a G0813 egyszer marad a [^9] proveniencia-lábjegyzetben, amely a javítást dokumentálja. A várt állapot: a „G0813 — ἄτακτος” alszakasz és a Thayer G813-szakasz megszűnik, a TORZSCIKK-ben a G0813 0 előfordulású, a Strong-mező `G5010+G0540+G0282`.
+- A törzscikk-render a lexikonoldalra épül: a `--cel lexikon` és a `--cel torzscikk` ugyanabba a `--kimenet` könyvtárba menjen (N-F78a); külön könyvtárral az éles, elavult oldalból renderelne, és visszahozná a G0813-at.
+- A G0540-hez nincs Thayer-sor és önálló Thayer G540 alszakasz: ez a #132 hatóköre marad, a #36 nem tölti ki (hiány, CLAUDE.md 3. szabály).
+
 ## Lépések
 1. **M0 — szárazfutás** ideiglenes könyvtárba a repón kívül (`--kimenet`): az összes lexikonoldal és törzscikk generálása.
 2. **M1 — diff-elemzés:** a generált és az éles közti eltérés fájlonként; minden eltérés oka megnevezve (F28 fordítás / ψ-javítás / terminológia v3 / licenc-címkecsere, N-F89a / egyéb); a licenc-címkecsere sorai (`projekt-adat` → `minden jog fenntartva`) külön számolva, szabad licenc-jelölés (CC BY stb.) a saját adatra és a prózára nem kerülhet be. Váratlan eltérés → megállás.

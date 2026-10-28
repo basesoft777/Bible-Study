@@ -701,6 +701,23 @@ class BdbJavitas(unittest.TestCase):
         self.assertEqual(self.kapu('Ezra 16:80 itt', 'Ezsd 16:80 itt', strong='H0479')[0], 'RENDBEN')
         self.assertEqual(self.kapu('Ezra 16:8 itt', 'Ezsd 6:8 [BDB: Ezsd 16:8] itt', strong='H0479')[0], 'RENDBEN')
 
+    def test_versfel_betu(self):
+        # DT-F38v (c): a `16:8b` forras-hivatkozas jelolese Y<betu> [BDB: X<betu>], azonos betuvel
+        f = 'Ezra 16:8b itt'
+        self.assertEqual(self.kapu(f, 'Ezsd 6:8b [BDB: Ezsd 16:8b] itt', strong='H0479')[0], 'RENDBEN')
+        # eltero betu / hianyzo betu / betu a jeloles utan: SERTES
+        for rossz in ('Ezsd 6:8c [BDB: Ezsd 16:8c] itt', 'Ezsd 6:8 [BDB: Ezsd 16:8] itt',
+                      'Ezsd 6:8 [BDB: Ezsd 16:8]b itt', 'Ezsd 6:8b [BDB: Ezsd 16:8] itt'):
+            self.assertEqual(self.kapu(f, rossz, strong='H0479')[0], 'SERTES', rossz)
+        # betu nelkuli forras: valtozatlan; a betu a szo elejen nem versfel-betu
+        self.assertEqual(self.kapu('Ezra 16:8 itt', 'Ezsd 6:8 [BDB: Ezsd 16:8] itt', strong='H0479')[0], 'RENDBEN')
+        self.assertEqual(self.kapu('Ezra 16:8 and', 'Ezsd 6:8 [BDB: Ezsd 16:8] and', strong='H0479')[0], 'RENDBEN')
+
+    def test_versfel_betu_visszaallitas_es_tobbi_kapu(self):
+        self.assertEqual(K.bdb_jeloles_vissza('Ezsd 6:8b [BDB: Ezsd 16:8b] itt'), 'Ezsd 16:8b itt')
+        e = dict((n, x) for n, x, _ in K.kapuk_futtat('BDB', 'Ezra 16:8b itt', 'Ezsd 6:8b [BDB: Ezsd 16:8b] itt', strong='H0479'))
+        self.assertEqual((e['2_versszam'], e['11_konyvek'], e['17_bdb_javitas']), ('RENDBEN', 'RENDBEN', 'RENDBEN'))
+
     def test_tobbszori_elofordulas(self):
         f = 'Eccl 17:10 es Eccl 17:10'
         self.assertEqual(self.kapu(f, 'Préd 7:10 [BDB: Préd 17:10] es Préd 7:10 [BDB: Préd 17:10]')[0], 'RENDBEN')
