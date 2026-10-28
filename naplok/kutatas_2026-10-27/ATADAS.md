@@ -7,7 +7,7 @@
 - **DT357 🟢 — fizetős modell.** Ingyenes réteg: olvasó, alap keresés, kötetenként egy mintaszócikk, a módszer. Fizetős egyszeri modulok: Strong-párosított Károli, magyar BDB, magyar Thayer, motívumlexikon-kötetek. Előfizetés a teljes lexikonra, intézményi licenc. Eladó: átalányadós egyéni vállalkozás.
 - **DT358 🟢 — a motívumlexikon kötetekben, a kiinduló könyv szerint.** Teljes bibliai előfordulással; a megvett kötet tartalma nem változik; első kötet: Genezis I. (8 publikálható motívum).
 - **DT359 🟡 — alapítvány mint eladó.** Jogászi kérdés: cél szerinti vagy vállalkozási tevékenység-e a modul eladása.
-- **DT-F86k 🟡 javaslat — szakaszolt eladói forma (2026-10-28).** Más biztosítás nélkül a főállású átalányadós egyéni vállalkozás az első forinttól havi 101 682 Ft-ba kerül. Ezért: bevétel nélkül nincs egyéni vállalkozás; az első bevételeknél az alapítvány árul (ha cél szerinti) vagy egy partner licenc alapján, a szerző jogdíjat kap; biztosítást adó forma csak tartós bevételnél. Részletek: lent, „Fix teher bevétel nélkül”.
+- **DT365 🟡 javaslat — szakaszolt eladói forma (2026-10-28).** Más biztosítás nélkül a főállású átalányadós egyéni vállalkozás az első forinttól havi 101 682 Ft-ba kerül. Ezért: bevétel nélkül nincs egyéni vállalkozás; az első bevételeknél az alapítvány árul (ha cél szerinti) vagy egy partner licenc alapján, a szerző jogdíjat kap; biztosítást adó forma csak tartós bevételnél. Részletek: lent, „Fix teher bevétel nélkül”.
 
 ## A fő megállapítások
 
