@@ -1,0 +1,4 @@
+# Lekerdezes-naplo (lekerdez.py --naplo). Kulcs nincs. Sema: adat/SEMA.md 2.9
+id	lepes	proveniencia	datum
+F123	B4	scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G0086 | n=10 | ts=2026-10-28T15:10Z | csatorna=cli	2026.10.28
+F123	B4	scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H7585 | n=64 | ts=2026-10-28T15:10Z | csatorna=cli	2026.10.28
