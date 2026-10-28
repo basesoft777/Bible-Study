@@ -1,14 +1,14 @@
 # BDB_FORDITAS — a 10. adag (sorrend 1975–2821): tábla-Δ és commitonkénti bontás (DT361, DT56)
 
-*A #38 (BDB_FORDITAS) 10. adagának szakaszonkénti fordítása (prompt v5, `allapot=sonnet`, `modell=claude-sonnet-5-5`). Tartomány: `naplok/BDB_FORDITAS_sorrend.tsv` 10. adag (1975–2821, 847 szócikk, 499 390 forráskarakter). Károli-lefedettség a kezdéskor: 100% (`BDB_FORDITAS_karoli_lefedettseg.py --tol 1975 --adagok 1`: 848 szócikk, 848 Károli-pár). **Állapot: a sorrend 2556-ig kész (582 szócikk); hátra: 2557–2821 (265 szócikk).***
+*A #38 (BDB_FORDITAS) 10. adagának szakaszonkénti fordítása (prompt v5, `allapot=sonnet`, `modell=claude-sonnet-5-5`). Tartomány: `naplok/BDB_FORDITAS_sorrend.tsv` 10. adag (1975–2821, 847 szócikk, 499 390 forráskarakter). Károli-lefedettség a kezdéskor: 100% (`BDB_FORDITAS_karoli_lefedettseg.py --tol 1975 --adagok 1`: 848 szócikk, 848 Károli-pár). **Állapot: a sorrend 2646-ig kész (672 szócikk); hátra: 2647–2821 (175 szócikk).***
 
 ## 1. Tábla-Δ
 
 | tábla | alap (`f3764787`) | fej | Δ | `git diff --numstat` (+/−) |
 |---|---|---|---|---|
-| `adat/forditasok.tsv` (adatsorok, a 2 fejlécsor nélkül) | 11049 | 13589 | +2540 | 2540 / 0 |
-| `adat/forditasok.tsv` (fejléces sorszám, `wc -l`) | 11051 | 13591 | +2540 | |
-| `naplok/EMELES_munka.tsv` | — | — | +2540 | 2540 / 0 |
+| `adat/forditasok.tsv` (adatsorok, a 2 fejlécsor nélkül) | 11049 | 13959 | +2910 | 2910 / 0 |
+| `adat/forditasok.tsv` (fejléces sorszám, `wc -l`) | 11051 | 13961 | +2910 | |
+| `naplok/EMELES_munka.tsv` | — | — | +2910 | 2910 / 0 |
 | `naplok/FORDITAS_kisnagybetu_csere.tsv` | — | — | a javítóréteg 5_kisnagybetu cseréi (ha vannak) | `git diff --numstat` |
 | minden más `adat/` tábla | — | — | 0 | — |
 
@@ -23,7 +23,8 @@ Törölt vagy módosított meglévő `forditasok.tsv`-sor nincs (0 törlés). `k
 | F38.413 | 2. szelet, 1. rész (sorrend 2197–2358) | 162 | 728 | 728 / 0 / 0 | 96846 |
 | F38.414 | 2. szelet vége (–2453) és 3. szelet eleje (2454–) (sorrend 2359–2466) | 108 | 460 | 460 / 0 / 0 | 61243 |
 | F38.415 | 3. szelet, 1. rész (sorrend 2467–2556) | 90 | 344 | 344 / 0 / 0 | 50263 |
-| **össz.** | | **582** | **2540** | **2540 / 0 / 0** | **358383** |
+| F38.416 | 3. szelet, 2. rész (sorrend 2557–2646) | 90 | 370 | 370 / 0 / 0 | 49753 |
+| **össz.** | | **672** | **2910** | **2910 / 0 / 0** | **408136** |
 
 Szeletek tervezett tartománya: 1. 1975–2196 (222 szócikk, 150 031 karakter); 2. 2197–2453 (150 495); 3. 2454–2734 (150 531); 4. 2735–2821 (48 333).
 
@@ -39,6 +40,8 @@ Szeletek tervezett tartománya: 1. 1975–2196 (222 szócikk, 150 031 karakter);
 
 **F38.415** (2467–2556): H6163, H6237, H6275, H6337, H6362, H6439, H6622, H6670, H6673, H6692, H6720, H6771, H6973, H7128, H7149, H7214, H7328, H7474, H7540, H7551, H7597, H7633, H7644, H7668, H7732, H7804, H7902, H7974, H8027, H8042, H8058, H8150, H8156, H8173, H8191, H8205, H8352, H8359, H8539, H8612, H0024, H0057, H0090, H0143, H0154, H0173, H0209, H0221, H0224, H0331, H0359, H0387, H0394, H0437, H0516, H0529, H0703, H0865, H0870, H0948, H1020, H1022, H1047, H1049, H1075, H1096, H1186, H1188, H1210, H1224, H1246, H1251, H1348, H1393, H1413, H1508, H1533, H1598, H1627, H1667, H1760, H1783, H1803, H1808, H1865, H1893, H1986, H2013, H2066, H2135
 
+**F38.416** (2557–2646): H2151, H2290, H2401, H2452, H2553, H2554, H2556, H2598, H2705, H2724, H2805, H2838, H2851, H2864, H2912, H2914, H2921, H2971, H2985, H3013, H3082, H3087, H3189, H3199, H3284, H3302, H3313, H3326, H3363, H3369, H3396, H3459, H3493, H3510, H3529, H3535, H3573, H3591, H3645, H3682, H3725, H3756, H3779, H3794, H3810, H3835, H3870, H3939, H4022, H4032, H4122, H4144, H4187, H4225, H4241, H4246, H4291, H4303, H4403, H4411, H4432, H4455, H4456, H4498, H4505, H4521, H4584, H4602, H4658, H4670, H4671, H4694, H4763, H4806, H4993, H5106, H5166, H5224, H5274, H5276, H5425, H5459, H5470, H5509, H5528, H5613, H5627, H5658, H5711, H5725
+
 ## 4. 17_bdb_javitas (DT55, #67 kapu)
 
 A felsorolt Strongok közül egynek sincs olyan sora az `adat/bdb_igehely_javitas.tsv`-ben, amelyet a fordítás `Y [BDB: X]` jelöléssel érintene; a 17. kapu mindegyiknél RENDBEN („nincs javítótábla-sor”).
@@ -52,6 +55,7 @@ A felsorolt Strongok közül egynek sincs olyan sora az `adat/bdb_igehely_javita
 | H5042 (mind a szakaszsor; a rögzítő eszköz felülbírálása Strong-szintű) | 5_terminologia | forrás: "belch forth, emphatic expression: ⟦13⟧ Prov 15:28" (az emphatic itt köznyelvi: nyomatékos, nem nyelvtani) ; hű: "nyomatékos kifejezés". Felülbírálás: `--kapu-felulir 5_terminologia --dontes DT361`; hű fordítás, nem cseréltem, nem töröltem. |
 | H0231 (mind a szakaszsor; a rögzítő eszköz felülbírálása Strong-szintű) | 9_tagolas | forrás: "Exod 12:22 (J) ⟦8⟧ a bunch of h. for sprinkling blood" (a h. a hyssop rövidítése, nem tagolójel) ; hű: "egy csokor izsóp". Felülbírálás: `--kapu-felulir 9_tagolas --dontes DT361`; hű fordítás, nem cseréltem, nem töröltem. |
 | H4719 (mind a szakaszsor; a rögzítő eszköz felülbírálása Strong-szintű) | 11_konyvek | forrás: "captured by Joshua 10:28" (a Joshua itt személy, Józsué, nem könyvnév) ; hű: "Józsué elfoglalta 10:28". Felülbírálás: `--kapu-felulir 11_konyvek --dontes DT361`; hű fordítás, nem cseréltem, nem töröltem. |
+| H3682 (mind a szakaszsor; a rögzítő eszköz felülbírálása Strong-szintű) | 5_terminologia | forrás: "(so that they cannot see the wrong" (a see itt ige: lát, nem utalás) ; hű: "hogy ne lássák a sérelmet". Felülbírálás: `--kapu-felulir 5_terminologia --dontes DT361`; hű fordítás, nem cseréltem, nem töröltem. |
 
 A kapuk egyéb elakadásai (5_terminologia: `p.` → `o.`, `suffix` → `suffixummal`, `proper name, of a people/location`; 11_konyvek: elmaradt vagy teljes alakban kiírt könyvnév, pl. `Ezekiel`, `Psalm`, `Joshua`, `2Mózes`) mind **valódi** megoldással, tartalmi változtatás nélkül, az egyszeri újrapróbálkozásban zárultak. Több kapu egyszerre egyik szócikknél sem bukott.
 
