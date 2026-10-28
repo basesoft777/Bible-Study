@@ -9,7 +9,7 @@ munka: adat
 allapot: nem_indult
 ad: a `Karoli_versmegfeleltetes.tsv` Jóel-sorai helyes MT-megfeleltetést hordoznak (Károli 2:28–32 = MT 3:1–5, Károli 3:1–21 = MT 4:1–21), a KJV-osztályú sorok többi MT≠KJV eltérése mérve és jelentve, a #131 DBH-mérés 12 versének tételes jelentése proveniencia mellett
 kovetkezo: "Te: a /kovetkezo-val indítás; első lépés a modell-ellenőrzés, majd a 2. szakasz mérése; ⛔ a javítandó halmaz jóváhagyása"
-olvas: [konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/Karoli_versmegfeleltetes_javitas.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/Macula_heber_Joel.tsv, konkordancia/TAHOT_kivonat.tsv, eszkozok/lexikon_general.py, naplok/F131_dbh_meres.py, naplok/F131_SZOTARI_GERINC_naplo.md, naplok/F117_mt_levezet.py, naplok/F117_mt_levezetes.tsv]
+olvas: [konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/Karoli_versmegfeleltetes_javitas.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/Macula_heber_Joel.tsv, konkordancia/TAHOT_kivonat.tsv, eszkozok/lexikon_general.py, naplok/F117_mt_levezet.py, naplok/F117_mt_levezetes.tsv]
 ir: [naplok/KAROLI_KK4_tabla_veglegesit.py, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/Karoli_versmegfeleltetes_javitas.tsv, naplok/VERSMEGF_MT_JAVITAS_naplo.md]
 fugg: [117, 131]
 ---
