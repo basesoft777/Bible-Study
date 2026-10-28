@@ -14,7 +14,7 @@
 | `naplok/FORDITAS_kisnagybetu_csere.tsv` | — | — | +2 sor | 2 / 0 |
 | minden más `adat/` tábla | — | — | 0 | — |
 
-**Megjegyzés-sorok (forráshiba-jelölés, DT362 (1)(a), DT363).** A H5628 minden szakaszsorának `megjegyzes` mezőjében „forráshiba: „overhungof” összetapadás (overhung of)” áll (a forrás „overhungof turbans” szavát a fordítás szétválasztva adja: „lelógott; turbánokról”). A megjegyzés Strong-szintű (DT363 kiegészítés).
+**Megjegyzés-sorok (forráshiba-jelölés, DT362 (1)(a), DT363).** A H5628 minden szakaszsorának `megjegyzes` mezőjében „forráshiba: „overhungof” összetapadás (overhung of)” áll (a forrás „overhungof turbans” szavát a fordítás, a javítókör 1/2 után, egyben adja: „turbánokkal lelógó”). A megjegyzés Strong-szintű (DT363 kiegészítés).
 
 **Szakasztáblán kívüli Strongok (régi `teljes` út).** A H7560 (F38.421) és a H6433 (F38.422) nincs az `adat/bdb_szakaszok.tsv`-ben; `emeles.py helyorzo`/`ellenoriz`/`rogzit`/`beir` úton, `jelentes_szam=teljes` sorral kerültek be (1–1 sor); régi `teljes` soruk nem volt (`--regi-elavult` nem kellett). A régi `rogzit` út az `EMELES_munka.tsv` megjegyzés-fejlécsorát (1. sor) `… irja: python eszkozok/emeles.py rogzit`-re írja át; ezt minden szelet commitja előtt az alapszövegre (`… rogzit / szakasz_rogzit`) állítottam vissza, így a munkatábla numstatja tiszta `N / 0`.
 
@@ -64,10 +64,10 @@ A többi Strong forrásában nem szerepelt `javitva` vagy `jelolt_marad` sorral 
 |---|---|---|
 | H1031 (mind a szakaszsor; a rögzítő eszköz felülbírálása Strong-szintű) | 8_idezojel | forrás: "±Ain „ajla (or Qaƒr „ajla compare Rob & Di Gen 50:11)" (a „ (U+201E) OCR-maradvány, pár nélkül); hű fordítás: "±Ain „ajla (vagy Qaƒr „ajla vö. Rob és Di 1Móz 50:11)". Felülbírálás: `--kapu-felulir 8_idezojel --dontes DT361`; hű fordítás, nincs átfogalmazás vagy jelcsere. |
 | H1171 (mind a szakaszsor; a rögzítő eszköz felülbírálása Strong-szintű) | 8_idezojel | forrás: "or „âsbêyâ Bd^Pal 297 Di" (a „ (U+201E) OCR-maradvány, pár nélkül); hű fordítás: "vagy „âsbêyâ Bd^Pal 297 Di". Felülbírálás: `--kapu-felulir 8_idezojel --dontes DT361`; hű fordítás, nincs átfogalmazás vagy jelcsere. |
-| H8556 (mind a szakaszsor; a rögzítő eszköz felülbírálása Strong-szintű) | 11_konyvek | forrás: "= ⟦2⟧1Makk 9:50 +?Tibneh" (a forrásban már Károli-alakú „1Makk 9:50” áll, a Makkabeusok 1. könyve; a kapu a forrásoldalon nem ismeri fel, a fordításban igen: „a forditasban tobb: 1Makk×1”); hű fordítás: "= ⟦2⟧1Makk 9:50 +?Tibneh". Felülbírálás: `--kapu-felulir 11_konyvek --dontes DT361`; a hivatkozás betűre azonos a forrással, átfogalmazás nincs. |
-| H5032 (mind a szakaszsor; Strong-szintű) | 5_terminologia | forrás: "Eut^Nab p.78 GASm^Geogr. 547-629 pass." (a `pass.` a *passim* rövidítése egy irodalmi hivatkozásban, nem szenvedő alak); hű fordítás: a hivatkozássor betű szerint marad ("... GASm^Geogr. 547-629 pass."). Felülbírálás: `--kapu-felulir 5_terminologia --dontes DT361`; átfogalmazás nincs. |
-| H8485 (mind a szakaszsor; Strong-szintű) | 5_terminologia | forrás: "Modern Teyma, northwest Arabia, Doughty^Arab.Des.i, pass., especially 284-299" (a `pass.` a *passim* rövidítése egy irodalmi hivatkozásban, nem szenvedő alak); hű fordítás: "Doughty^Arab.Des.i, pass., különösen 284-299". Felülbírálás: `--kapu-felulir 5_terminologia --dontes DT361`; átfogalmazás nincs. |
-| H2688 (mind a szakaszsor; Strong-szintű) | 8_idezojel | forrás: "Wady „uƒ¹ƒ¹ (= ⟦8⟧ ?) lies northwest from Engedi" (a „ (U+201E) OCR-maradvány, pár nélkül); hű fordítás: "Wady „uƒ¹ƒ¹ (= ⟦8⟧ ?) Engedi-től északnyugatra fekszik". Felülbírálás: `--kapu-felulir 8_idezojel --dontes DT361`; átfogalmazás nincs. |
+| H8556 (mind a szakaszsor; a rögzítő eszköz felülbírálása Strong-szintű) | 11_konyvek | forrás (`adat/bdb_szakaszok.tsv`): "= Θαμναθα1Makk 9:50 +?Tibneh" (a forrásban már Károli-alakú „1Makk 9:50” áll; a kapu a forrásoldalon nem ismeri fel, a fordításban igen); fordítás: "= Θαμναθα1Makk 9:50 +?Tibneh". Felülbírálás: `--kapu-felulir 11_konyvek --dontes DT361`; a hivatkozás betűre azonos a forrással, átfogalmazás nincs. |
+| H5032 (mind a szakaszsor; Strong-szintű) | 5_terminologia | forrás (`adat/bdb_szakaszok.tsv`): "Eut^Nab p.78 GASm^Geogr. 547-629 pass." (a `pass.` a *passim* rövidítése egy irodalmi hivatkozásban, nem szenvedő alak); a rögzített (javítókör 1/2 utáni) fordítás: "Eut^Nab o.78 GASm^Geogr. 547-629 passim." Felülbírálás: `--kapu-felulir 5_terminologia --dontes DT361`; átfogalmazás nincs. |
+| H8485 (mind a szakaszsor; Strong-szintű) | 5_terminologia | forrás (`adat/bdb_szakaszok.tsv`): "Modern Teyma, northwest Arabia, Doughty^Arab.Des.i, pass., especially 284-299" (a `pass.` a *passim* rövidítése, nem szenvedő alak); fordítás (javítókör 1/2 után): "Doughty^Arab.Des.i, passim, különösen 284-299". Felülbírálás: `--kapu-felulir 5_terminologia --dontes DT361`; átfogalmazás nincs. |
+| H2688 (mind a szakaszsor; Strong-szintű) | 8_idezojel | forrás (`adat/bdb_szakaszok.tsv`): "Wady „uƒ¹ƒ¹ (= חצצן ?) lies northwest from Engedi GASm^l.c." (a „ (U+201E) OCR-maradvány, pár nélkül); fordítás: "Wady „uƒ¹ƒ¹ (= חצצן ?) Engedi-től északnyugatra fekszik GASm^l.c." Felülbírálás: `--kapu-felulir 8_idezojel --dontes DT361`; átfogalmazás nincs. |
 
 ## 6. Ellenőrzések
 
@@ -76,4 +76,30 @@ A többi Strong forrásában nem szerepelt `javitva` vagy `jelolt_marad` sorral 
 - `python eszkozok/teszt_emeles.py`: Ran 31 tests, OK.
 - `python eszkozok/bdb_jelolt/teszt_szakasz_bemenet.py`: Ran 25 tests, OK.
 
+- Javítókör 1/2 után (HEAD `F38.428`): `python eszkozok/ellenoriz.py`: RENDBEN 14 | SÉRTÉS 0 | KÉZI 2 | JELENTÉS 3; a három teszt újrafutása: `teszt_forditas_kapuk` 110, `teszt_emeles` 31, `teszt_szakasz_bemenet` 25 teszt, mind OK.
+- `python eszkozok/ellenorzes/futtat.py --valtozott F38_BDB_FORDITAS_BRIEF.md adat/forditasok.tsv naplok/BDB_FORDITAS_adag11_bontas.md naplok/EMELES_munka.tsv naplok/FORDITAS_kisnagybetu_csere.tsv naplok/ELLENOR_F38_adag11.md --diff-alap cd8e3942 --diff-fej HEAD`: E2–E16, E19, E20, E26, E28 (1 migrált nézet), E29, E31, E32: 0 találat; E25: JELENTÉS 4 és E27: JELENTÉS 40 (`CLAUDE.md`, `MUNKAMENET.md`, `FELADATOK.md`; nem ennek a diffnek a fájljai); E30: 1 FIGYELMEZTETÉS — az F38.425 (`b4a74cdd`) commitüzenetében a táblaérték ékezet nélkül és backtick nélkül áll (`javitva`); az üzenetet nem írtam át (l. Helyesbítés). HIBA szintű találat nincs.
+
 *(proveniencia: scope=adat/forditasok.tsv, naplok/EMELES_munka.tsv @ cd8e3942 és @ HEAD; adat/bdb_szakaszok.tsv | forras=`emeles.py szakasz_ellenoriz/szakasz_rogzit/szakasz_beir`, `git diff --numstat` | ts=2026-10-28)*
+
+## 7. Javítókör 1/2 (`naplok/ELLENOR_F38_adag11.md`, ELTÉRÉS: 4 tétel)
+
+**Javított sorok (F38.428; `adat/forditasok.tsv` `git diff --numstat` 10 / 10, `naplok/EMELES_munka.tsv` 114 / 114 — a munkatábla sorait a `szakasz_rogzit` helyben cseréli, az 1. megjegyzés-sor változatlan).** Az eszközláncon át (`szakasz_ellenoriz` → `szakasz_rogzit` → `szakasz_beir`), a kapuk lefutásával; DT361-felülbírálás csak a korábban is felülbírált Strongoknál (H1171, H2688, H8556, H5032, H8485), azonos kapuval. 10 sor, mind `sonnet` / `claude-sonnet-5-5`:
+
+| Strong, szakasz | javítás |
+|---|---|
+| H5920 sz5 | „építeni a templom ellen” → „építeni a templom mellé” (térbeli értelem) |
+| H5628 sz5 | „lelógott; turbánokról” → „turbánokkal lelógó” (az „overhung of turbans” szerkezet egyben; a `forráshiba` `megjegyzes` marad) |
+| H5142 sz4 | „aktív participium f. status constructus” → „… nőnemű status constructus” |
+| H1069 sz7 | „Hiph`il participium f.” → „… nőnemű” (ugyanaz a hibatípus, szúrópróba-bővítés) |
+| H1171 sz2 | „a szerencse istenként” → „isteneként” |
+| H2688 sz2 | „GASm azt is felveti” → „GASm annak lehetőségét is felveti” |
+| H8556 sz2 | „17 mérföldre nyugatra északtól Jeruzsálemtől” → „17 mérföldre északnyugatra Jeruzsálemtől” |
+| H7216 sz5 | „xviii f.-ben” → „xviii k.-ben” (a „következő” rövidítése) |
+| H5032 sz2 | „szétszórtan” → „passim” |
+| H8485 sz2 | „pass.” → „passim” |
+
+**Rövidítés-elv (2/f).** `grep` a korábbi adagokon (`adat/forditasok.tsv`, az adag előtti 14 668 adatsor): a „következő(k)” rövidítése `k.` (186 sor) / `kk.` (503 előfordulás), „f.” a szövegben nincs (a „feminine” rövidítésére 0 sor, a „nőnemű” 1512); a `pass.`/`passim` a korábbi adagokban nem fordult elő. Elv az adagon belül: (1) oldalszám/hely után a „következő(k)” `k.`/`kk.` (az eszköz az összeragadt „301f.” alakot már így adja); (2) a „feminine” rövidítése („f.”) mindig „nőnemű”; (3) a `pass.` (a latin *passim* rövidítése) **„passim”**, azaz latin szóként marad (mint a `si vera lectio`, `q. v.`), nem „szétszórtan” és nem „pass.”; a 5_terminologia kapu `pass.` → „szenvedő alakban” szabálya az irodalmi hivatkozásokban téves, ezért a két Strongnál (H5032, H8485) a DT361-felülbírálás marad. A betűjelű szakaszmarkerek („d. f. g.”) nem tartoznak ide.
+
+**Szúrópróba-bővítés (grep, `adat/forditasok.tsv` ≥ 14 669. sor).** Fordítatlan „f.” rövidítés az adagban 3 helyen volt (H5142, H1069, H7216), mind javítva; „ff.” fordítatlanul nincs. A térbeli „against” → „ellen” hibatípus: az adag összes 18 „ellen” előfordulását átnéztem, más térbeli használat nincs (H5920 sz5 az egyetlen); további javított sor: 0 a térbeli „ellen” típusban. Összes javított sor: 10.
+
+**Helyesbítés (a commitüzenetekhez; a korábbi üzeneteket nem írtam át).** A H1031 és a H1171 felülbírálása valójában az F38.421-ben (`12dd21b9`) van (az F38.423 üzenete tévesen említi); a H5460 `forráshiba` megjegyzése az F38.423-ban (`12779a2d`) van (az F38.424 üzenete tévesen említi); a H5920 forráskarakterszáma 37 656 (az F38.424 üzenete „34 660 karakteres”-t ír; a 34 660 a forrás-szócikk karakterszáma a szakasz-előkészítő kimenetében, a sorrendtábla karakter-oszlopa 37 656); az F38.425 üzenetében a `javitva` táblaérték backtick nélkül áll (az E30 figyelmeztetés a „javitva” ékezet nélküli írására vonatkozik; a táblaérték ékezet nélküli, az üzenetben backtickben kellett volna állnia).
