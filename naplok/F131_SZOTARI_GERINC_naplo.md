@@ -7,7 +7,7 @@
 - #127 `lezarva`, #110 `lezarva`, #132 `lezarva` (a fejléc `fugg`-ja, DT282).
 - A felhasználó a `kovetkezo` mező várakozását kifejezetten felülbírálta; a feladat egyedül fut (nem csomag).
 - `python eszkozok/feladatok.py ellenoriz`: 164 brief, 0 hiba, 0 figyelmeztetés.
-- **Levezetett függés (a briefben nem szerepel):** a `feladatok.py fuggesek` a #131-et a #133-ra (`adat/bdb_szakaszok.tsv`) és a #144-re (`adat/bdb_szakasz_hu.tsv`) várónak mutatja, mert azok a #131 `olvas`-ában álló táblákat írják. Mindkettő `nem_indult`. Az `ir` fájljain más feladat nem fut (D39). A kérdés: DT-F131h (`DONTESEK.md`).
+- **Levezetett függés (a briefben nem szerepel):** a `feladatok.py fuggesek` a #131-et a #133-ra (`adat/bdb_szakaszok.tsv`) és a #144-re (`adat/bdb_szakasz_hu.tsv`) várónak mutatja, mert azok a #131 `olvas`-ában álló táblákat írják. Mindkettő `nem_indult`. Az `ir` fájljain más feladat nem fut (D39). A kérdés: DT376 (`DONTESEK.md`).
 
 `scope=FELADATOK fejlécek | forras=python eszkozok/feladatok.py ellenoriz; fuggesek | ts=2026-10-26`
 
@@ -57,19 +57,19 @@ A `thayer_szakaszok.tsv` (SEMA 2.34) G1941-re 7 szakaszt ad: `cim`, `fej`, `-/1/
 
 Hivatkozás nélkül: ApCsel 9:21, ApCsel 22:16, Róm 10:14.
 
-A szakaszonkénti magyar Thayer a #142 (THAYER_M3, `nem_indult`, Sonnet) dolga; amíg az nem fut, a G1941 magyar szövege csak a `teljes` sor. Ez a DT-F131c opcióit megváltoztatja (l. `DONTESEK.md` DT-F131c).
+A szakaszonkénti magyar Thayer a #142 (THAYER_M3, `nem_indult`, Sonnet) dolga; amíg az nem fut, a G1941 magyar szövege csak a `teljes` sor. Ez a DT373 opcióit megváltoztatja (l. `DONTESEK.md` DT373).
 
-Az 1Pét 1:17 a Thayer saját besorolásában az 1. részben áll („to put a name upon, to surname”), a kutatói hozzárendelés a TBESG 2 („segítségül hívni”). A két tagolás különböző szótáré, ezért a brief elsőbbségi szabálya (a BDB-példa a kutatói út alá esik-e) itt nem értelmezhető; a görög címkéről a DT-F131c dönt.
+Az 1Pét 1:17 a Thayer saját besorolásában az 1. részben áll („to put a name upon, to surname”), a kutatói hozzárendelés a TBESG 2 („segítségül hívni”). A két tagolás különböző szótáré, ezért a brief elsőbbségi szabálya (a BDB-példa a kutatói út alá esik-e) itt nem értelmezhető; a görög címkéről a DT373 dönt.
 
 ### 1.3 Az #144 tárgya az arany Strongokon
 
-A #144 a `bdb_szakasz_hu.tsv` csak a jelölőt hordozó `illeszkedik` sorait javítja. A H7121-en és a H8034-en ilyen sor **0**; a két Strong a #144 alapjelentésében (`naplok/BDB_SZAKASZ_HU_JELOLO_JELENTES.md`) és briefjében nem szerepel. A #133 csak a fejléc-literálokat írja át (a sorok változatlanok). (DT-F131h.)
+A #144 a `bdb_szakasz_hu.tsv` csak a jelölőt hordozó `illeszkedik` sorait javítja. A H7121-en és a H8034-en ilyen sor **0**; a két Strong a #144 alapjelentésében (`naplok/BDB_SZAKASZ_HU_JELOLO_JELENTES.md`) és briefjében nem szerepel. A #133 csak a fejléc-literálokat írja át (a sorok változatlanok). (DT376.)
 
 ### 1.4 A #121 62 egységének sorsa egységenként
 
 A lap 65 `(fordításra vár)` jelölése 40 egységen áll (a nyelvenkénti blokkban ugyanaz a tW-szócikk kétszer: G1941 és H7121 alatt). A #121 62 egysége (48 UBS DBH, 2 DNTG, 1 TBESH, 1 Mounce, 10 tW) a glossza- és definíciómezőt külön egységnek, a tW-szócikket egyszer számolja; a 65 = 62 + 1 (a `kt/call-speakloudly` második helye) + 2 (BDB `fej`).
 
-| Nyelv | Szerep | Egység | Jelölés | Sors (a DT-F131a 1. vagy 2. opciója szerint) |
+| Nyelv | Szerep | Egység | Jelölés | Sors (a DT371 1. vagy 2. opciója szerint) |
 |---|---|---|---|---|
 | G1941 | 3. Teológiai szócikk | tW `kt/call-speakloudly` | 1 | lekerül (tW, DT272 (b)) |
 | G1941 | 5. Tömör jelentés | DNTG `001957001003000` (56.15) glossza + definíció | 2 | lekerül (teljes UBS) |
@@ -78,7 +78,7 @@ A lap 65 `(fordításra vár)` jelölése 40 egységen áll (a nyelvenkénti blo
 | H7121, H8034 | 3. Teológiai szócikk | tW `kt/call-speakloudly`, `kt/call-toname`, `kt/call-tosummon`, `other/cry`, `other/declare`, `other/praise`, `other/preach`, `other/renown`, `kt/pray`, `other/report` | 10 | lekerül (tW) |
 | H7121 | 5. Tömör jelentés | DBH `006562001001000`–`006562001012000`, `006562002001000`–`006562002007000` (19 lexid, glossza + definíció) | 38 | lekerül (teljes UBS) |
 | H8034 | 5. Tömör jelentés | DBH `007442001001000`–`007442001004000`, `007442002001000` (5 lexid, glossza + definíció) | 10 | lekerül (teljes UBS) |
-| H7121 | 8. Nyelvi háttér | BDB H7121 `fej` | 1 | **a DT-F131a (ii)-től függ**: a gerincbe vonva megszűnik (a `bdb_szakasz_hu.tsv` `fej` sora magyarul megvan: „H7121. qara I. קָרָא … ige: hívni, kihirdetni, olvasni …”); a 8. szerepben maradva marad |
+| H7121 | 8. Nyelvi háttér | BDB H7121 `fej` | 1 | **a DT371 (ii)-től függ**: a gerincbe vonva megszűnik (a `bdb_szakasz_hu.tsv` `fej` sora magyarul megvan: „H7121. qara I. קָרָא … ige: hívni, kihirdetni, olvasni …”); a 8. szerepben maradva marad |
 | H8034 | 8. Nyelvi háttér | BDB H8034 `fej` | 1 | ugyanígy („H8034. shem I. שֵׁם … hímnemű főnév … név …”) |
 
 Összesen: a 62 #121-egység mind lekerül (az 1. és a 2. opció szerint; a 3. szerint egyik sem); a 2 BDB-`fej` jelölés a (ii)-től függ. A rokon szavaknál (G0994, G2564) jelölés nincs. A héber 9. szerep (versenkénti UBS DBH-tábla) jelölést nem hordoz, de angol glosszákat igen; a teljes UBS-szel lekerül (N-F121b).
@@ -89,9 +89,9 @@ A 2. szakasz minden más száma egyezik; a briefet a 0.3 előtt nem kell átírn
 
 ## 2. ⛔ 0.3 — megállás és döntés
 
-A DT-F131a–e (a brief 5. szakasza, az M0 szerint pontosítva) és az M0-ból adódó DT-F131h a `DONTESEK.md`-ben, 🟡 állapotban (F131.0.3); a végrehajtás a döntésig állt.
+A DT371–e (a brief 5. szakasza, az M0 szerint pontosítva) és az M0-ból adódó DT376 a `DONTESEK.md`-ben, 🟡 állapotban (F131.0.3); a végrehajtás a döntésig állt.
 
-**Döntés (2026-10-26, a felhasználó, az orkesztrátoron át):** minden javaslat elfogadva — DT-F131a 1. ((i) marad, (ii) a gerincben, (iii) marad, (iv) a TBESH helyén mutató + egysoros magyar jelentés az `adat/glosszak_heber_hu.tsv` `fo=igen` soraiból); DT-F131b 2.; DT-F131c 1. + (a), a 7 Thayer-példahely felirat nélküli kiemelésével, a görög magyar szöveg a #142-re vár, addig átmenetként a 2.; DT-F131d 1. + (a); DT-F131e 1. + (c); DT-F131h (a). Rögzítve: `DONTESEK.md` (🟢), a brief fejléce és 8. szakasza (F131.0.6).
+**Döntés (2026-10-26, a felhasználó, az orkesztrátoron át):** minden javaslat elfogadva — DT371 1. ((i) marad, (ii) a gerincben, (iii) marad, (iv) a TBESH helyén mutató + egysoros magyar jelentés az `adat/glosszak_heber_hu.tsv` `fo=igen` soraiból); DT372 2.; DT373 1. + (a), a 7 Thayer-példahely felirat nélküli kiemelésével, a görög magyar szöveg a #142-re vár, addig átmenetként a 2.; DT374 1. + (a); DT375 1. + (c); DT376 (a). Rögzítve: `DONTESEK.md` (🟢), a brief fejléce és 8. szakasza (F131.0.6).
 
 **A (iv) következménye:** az `olvas` az `adat/glosszak_heber_hu.tsv`-vel bővült, amelyet a #140 (`megallt`) ír; a `fuggesek` ezért a #140-re is várónak mutatta. A `nem_fugg` megkapta a 140-et (egyeztetett eltérés, brief 8.); a két sor hash-ét a 4.5 rögzíti.
 
@@ -155,7 +155,7 @@ Mind a 32 soron áll címke az elsődleges (kutatói) tokenen: 22 ÓSZ-sor H7121
 
 A szótár nem idézi (nincs `bdb_vers_jelentes` / `thayer_vers_jelentes` sor): H7121-nél 14, H8034-nél 17, G1941-nél 3 motívumhely (ApCsel 9:21, ApCsel 22:16, Róm 10:14); a lapon a kutatói megjegyzésben.
 
-### 4.5 Hash-rögzítés (DT-F131h, DT-F131a (iv))
+### 4.5 Hash-rögzítés (DT376, DT371 (iv))
 
 | Tábla | H7121 + H8034 sorai | SHA-1 (a sorok `\n`-nel fűzve) |
 |---|---|---|
@@ -172,16 +172,16 @@ Egy későbbi #133 / #144 / #140 futás után ugyanez a mérés megmutatja, vál
 
 ## 5. Javítás a ⛔ 3.1 előtt (F131.3.1–F131.3.7)
 
-**F131.3.1–3.5 (az orkesztrátor menete):** a Thayer 1. rész címkéje „elnevezni” (a „melléknéven nevezni” és a „más néven nevezni” sem természetes magyar); DT-F131i eldöntve (a): a `tiltott_fordulatok.tsv` `helyette` oszlopa javítva, új tétel „nevet tenni valakire”. A main beolvasztva; benne a #142 (PR #485): a G1941 szakaszonkénti magyar Thayer-szövege (`forditasok.tsv` `Thayer G1941 sz1…sz7`, `sonnet`).
+**F131.3.1–3.5 (az orkesztrátor menete):** a Thayer 1. rész címkéje „elnevezni” (a „melléknéven nevezni” és a „más néven nevezni” sem természetes magyar); DT379 eldöntve (a): a `tiltott_fordulatok.tsv` `helyette` oszlopa javítva, új tétel „nevet tenni valakire”. A main beolvasztva; benne a #142 (PR #485): a G1941 szakaszonkénti magyar Thayer-szövege (`forditasok.tsv` `Thayer G1941 sz1…sz7`, `sonnet`).
 
-**F131.3.6 (a felhasználó jóváhagyásával, az orkesztrátoron át):** a Thayer-gerinc a DT-F131c 1. opciójára áll át.
+**F131.3.6 (a felhasználó jóváhagyásával, az orkesztrátoron át):** a Thayer-gerinc a DT373 1. opciójára áll át.
 - A magyar Thayer-szöveg a #142 `sz<n>` soraiból jön (nem `elavult`); ahol nincs sor, ott angol szöveg és `(fordításra vár)` áll. A `teljes` sor kézi szeletelése megszűnt.
-- `adat/szotar_szakasz_cimke.tsv`: 13 → 8 sor. A `hu_kezdet`, `hu_hossz`, `forditas_hash` oszlop és az 5 címke nélküli Thayer-sor kivezetve; a Thayer 1. „elnevezni” (DT-F131i) és 5. címkéje marad. Az író (`naplok/F131_cimke_ir.py`) határszámítása kivezetve. SEMA 2.40 igazítva.
+- `adat/szotar_szakasz_cimke.tsv`: 13 → 8 sor. A `hu_kezdet`, `hu_hossz`, `forditas_hash` oszlop és az 5 címke nélküli Thayer-sor kivezetve; a Thayer 1. „elnevezni” (DT379) és 5. címkéje marad. Az író (`naplok/F131_cimke_ir.py`) határszámítása kivezetve. SEMA 2.40 igazítva.
 - `ellenoriz.py` 17. szabály: a határ-ellenőrzés kivezetve; új: a címke a `tiltott_fordulatok.tsv` mintáit sem tartalmazhatja. Futás: RENDBEN, SÉRTÉS 0.
 - Új a generátorban: a gerinc magyar szövegében a `tiltott_fordulatok.tsv` mintáinak találata „ismert hiány”-ként a kutatói megjegyzésbe kerül; a szöveget a lap nem írja át.
 - Tesztek: `teszt_szotari_gerinc.py` 23 eset OK (új: a Thayer `sz` forrása, a hiányzó `sz` sor, a tiltott fordulat jelölése, a 17. szabály tiltott-fordulat ága); `teszt_forditas_kapuk`, `teszt_szerepmatrix`, `teszt_ellenoriz_13`, `teszt_lexikon_adatres` OK. Nulla-diff (`nulladiff.sh 77bad810 2026-10-27`): csak az ISTENTISZT-001 lap tér el.
 
-**Ismert hiány (nem e feladat javítja):** a G1941 `sz3` (Thayer 1. rész) magyar szövege a tiltott „nevet tenni valakire, más néven is nevezni” alakot tartalmazza (a #142 a korábbi `helyette`-javaslatot vette át, DT-F131i). A javítás a #142 újrafuttatása, külön menetben; a #131 a `forditasok.tsv`-hez nem nyúl. A próbalap a Thayer-gerinc kutatói megjegyzésében jelöli.
+**Ismert hiány (nem e feladat javítja):** a G1941 `sz3` (Thayer 1. rész) magyar szövege a tiltott „nevet tenni valakire, más néven is nevezni” alakot tartalmazza (a #142 a korábbi `helyette`-javaslatot vette át, DT379). A javítás a #142 újrafuttatása, külön menetben; a #131 a `forditasok.tsv`-hez nem nyúl. A próbalap a Thayer-gerinc kutatói megjegyzésében jelöli.
 
 ### 5.1 Az új próba mérése (F131.3.7)
 
@@ -197,9 +197,9 @@ Egy későbbi #133 / #144 / #140 futás után ugyanez a mérés megmutatja, vál
 - Hash-rögzítés: változatlan (4.5).
 - HTML-nézet (privát Artifact, ugyanaz az URL): https://claude.ai/artifact/QVHPBrCJWkSP7pT8z363vy
 
-### 5.2 DT-F131j: az ÓSZ-sorok „UBS-jelentés” cellája a DBH-ból (F131.3.8–F131.3.11)
+### 5.2 DT380: az ÓSZ-sorok „UBS-jelentés” cellája a DBH-ból (F131.3.8–F131.3.11)
 
-**Döntés:** DT-F131j (a), a felhasználó (F131.3.8). **Végrehajtás (F131.3.9):** az arany lapon (kapcsoló) az ÓSZ-sorok cellája tokenenként a `konkordancia/UBS_DBH_referenciak.tsv` hivatkozásait adja (`lexid` — rövid definíció a `UBS_DBH_jelentesek.tsv`-ből, a DNTG-cella mintájára; a Károli-vers a render meglévő `karoli_mt_vers` képzésével MT-re). Magyarul a `forditasok.tsv`-ből (`UBS_DBH`, entry_id = lexid, jelentes_szam = `—`, `definicio_hu`), ahol van — ma sehol —, különben az angol eredeti `(fordításra vár)` jelöléssel. Hivatkozás híján: `— (ÓSZ; nincs DBH-hivatkozás: <ok vagy keresett MT-vers>)`. A lap alji mondat és a blokk forráslistája (UBS_DBH, Karoli_versmegfeleltetes) igazítva; RENDER_BRIEF (a G6 után) és a lexikonsablon (1. Előfordulások) egy-egy bekezdéssel. Tesztek: `teszt_szotari_gerinc.py` 26 eset OK; `teszt_szerepmatrix` OK; `ellenoriz.py` SÉRTÉS 0; nulladiff (`da4323e4`): csak az ISTENTISZT-001 lap tér el.
+**Döntés:** DT380 (a), a felhasználó (F131.3.8). **Végrehajtás (F131.3.9):** az arany lapon (kapcsoló) az ÓSZ-sorok cellája tokenenként a `konkordancia/UBS_DBH_referenciak.tsv` hivatkozásait adja (`lexid` — rövid definíció a `UBS_DBH_jelentesek.tsv`-ből, a DNTG-cella mintájára; a Károli-vers a render meglévő `karoli_mt_vers` képzésével MT-re). Magyarul a `forditasok.tsv`-ből (`UBS_DBH`, entry_id = lexid, jelentes_szam = `—`, `definicio_hu`), ahol van — ma sehol —, különben az angol eredeti `(fordításra vár)` jelöléssel. Hivatkozás híján: `— (ÓSZ; nincs DBH-hivatkozás: <ok vagy keresett MT-vers>)`. A lap alji mondat és a blokk forráslistája (UBS_DBH, Karoli_versmegfeleltetes) igazítva; RENDER_BRIEF (a G6 után) és a lexikonsablon (1. Előfordulások) egy-egy bekezdéssel. Tesztek: `teszt_szotari_gerinc.py` 26 eset OK; `teszt_szerepmatrix` OK; `ellenoriz.py` SÉRTÉS 0; nulladiff (`da4323e4`): csak az ISTENTISZT-001 lap tér el.
 
 **A próba (F131.3.11, `PARDES_DATUM=2026-10-28`, a repón kívül, `naplok/F131_proba_meres.py`):**
 
@@ -224,11 +224,11 @@ Egy későbbi #133 / #144 / #140 futás után ugyanez a mérés megmutatja, vál
 
 Megjegyzés: az éles `lexikon/` 7 lapja a generátorhoz képest elavult (DT344), ezért a #121-egységeket a mai generátor repón kívüli renderéből számoltam; a 454-es #121-szám ennek megfelelő (a DBH része 268).
 
-### 5.3 A DT-F131f 1. javítóköre (F131.3.13–F131.3.14): a H8034 két BDB-példa-hiánya
+### 5.3 A DT377 1. javítóköre (F131.3.13–F131.3.14): a H8034 két BDB-példa-hiánya
 
-**Döntés (F131.3.13, a felhasználó):** DT-F131f (1) javítással újra, 1. kör a kettőből; (2) a címkék változatlanok; (3) az 56.15 (a). A kör tárgya a `adat/bdb_vers_jelentes.tsv` H8034-példáinak két hiánya.
+**Döntés (F131.3.13, a felhasználó):** DT377 (1) javítással újra, 1. kör a kettőből; (2) a címkék változatlanok; (3) az 56.15 (a). A kör tárgya a `adat/bdb_vers_jelentes.tsv` H8034-példáinak két hiánya.
 
-**(a) 1Móz 26:25.** A BDB H8034 3. szakasza „so 12:8; 13:4; 21:33; 26:35” — a 26:35 a forrásban áll (a magyar 2.32 is „26:35”); a TAHOT szerint a H8034 az 1Móz 26:25-ben áll (a H7121-gyel), a 26:35-ben nem. Sajtóhiba-gyanú; a javítás módját a brief nem rögzíti, és a meglévő javítótáblák (2.23, 2.31) egyike sem fedi → **DT-F131k** (🟡, `DONTESEK.md`). Korrekció nem készült.
+**(a) 1Móz 26:25.** A BDB H8034 3. szakasza „so 12:8; 13:4; 21:33; 26:35” — a 26:35 a forrásban áll (a magyar 2.32 is „26:35”); a TAHOT szerint a H8034 az 1Móz 26:25-ben áll (a H7121-gyel), a 26:35-ben nem. Sajtóhiba-gyanú; a javítás módját a brief nem rögzíti, és a meglévő javítótáblák (2.23, 2.31) egyike sem fedi → **DT381** (🟡, `DONTESEK.md`). Korrekció nem készült.
 
 `scope=H8034, 1Móz 26:25/26:35 | forras=konkordancia/BDB_teljes_unabridged.tsv, konkordancia/TAHOT_kivonat.tsv | ts=2026-10-28`
 
@@ -245,18 +245,18 @@ Megjegyzés: az éles `lexikon/` 7 lapja a generátorhoz képest elavult (DT344)
 | régi sor más `sorszam`-mal | 35 012 | 77 280 |
 | arany (H7121, H8034) | + 1Kir 18:26 mindkettőnél; H7121 + 1Sám 3:8, 1Móz 5:29, Jer 7:14, 7:30 | + 1Kir 18:25 és 18:26 mindkettőnél; **de** a H7121 „4:25-26” (Qal 6.a) az 1Móz 4:26-ot második útvonalon is BDB-példává teszi → a gerinc GerincHibát ad (kézi kérdés) |
 
-→ **DT-F131l** (🟡, `DONTESEK.md`). A javítás a #102-é; a #131 a tervet és a mérést adja át.
+→ **DT382** (🟡, `DONTESEK.md`). A javítás a #102-é; a #131 a tervet és a mérést adja át.
 
-**Ezért ebben a körben a generátor, a tábla és a próbalap nem változott** (a két hiány javítása a DT-F131k/l döntésétől és a #102-től függ); új próbarender és Artifact-frissítés nem készült, a próbalap a 3. verzió (5.2).
+**Ezért ebben a körben a generátor, a tábla és a próbalap nem változott** (a két hiány javítása a DT381/l döntésétől és a #102-től függ); új próbarender és Artifact-frissítés nem készült, a próbalap a 3. verzió (5.2).
 
-### 5.4 A javítókör folytatása (F131.3.15–F131.3.19): DT-F131k/l döntés, main-beolvasztás, A–C
+### 5.4 A javítókör folytatása (F131.3.15–F131.3.19): DT381/l döntés, main-beolvasztás, A–C
 
-**Döntés (F131.3.15, a felhasználó):** DT-F131k és DT-F131l a javaslat szerint (a javítás a #102-ben, addig a lap jelöli a hiányt); a kör hatóköre a C) ponttal bővült.
+**Döntés (F131.3.15, a felhasználó):** DT381 és DT382 a javaslat szerint (a javítás a #102-ben, addig a lap jelöli a hiányt); a kör hatóköre a C) ponttal bővült.
 
 - **Main-beolvasztás (F131.3.16):** a `DONTESEK.md` ütközésében mindkét oldal sorai maradtak; a SEMA 2.40-ben a main az F131.1-es, az ág az F131.3.6 utáni szöveget hordozta: az ág szövege maradt. A main-ben a javított Thayer G1941 `sz3` („1. nevet adni valakinek, elnevezni …”).
-- **A) 1Móz 26:25 (F131.3.17):** a H8034 cellája „*(nincs hozzárendelés; BDB-sajtóhiba gyanúja, l. ⓘ)*”; az ⓘ: a BDB „26:35”-öt idéz, a TAHOT szerint a H8034 a 26:25-ben áll, a javítás a #102-ben (DT-F131k). Generátor: `BDB_HIVATKOZAS_GYANU` (a gerinc-ágon); teszt +1.
-- **B) 1Kir 18:25–26:** nem változott (DT-F131l (C)); a cellák „nincs hozzárendelés”-t mondanak, a #102-re vár.
-- **C) `motivumok/ISTENTISZT-001.md` (F131.3.18):** a 3. szakasz (az `ertelmezes` rés) „2. A Thayer jelentés-tagolása” pontja: az 1. ág „elnevezni” (DT-F131i); a 4. ág „segítségül hívni — segítőként, tanúként, illetve bíróként, azaz valakihez fellebbezni”, a Thayer sz6 szerint (a fellebbezés, ApCsel 25:11, a 4. ág egyik esete). A 3. ág („váddal illetni”) a sz5 szerint helyes („valamivel vádolni”, „váddal perbe hívni”), nem változott; a vázlatsor „τίνι a tárgy tárgyesetével” kezdete a szakasz első tagmondata, nem eltérő tagolás. Az értelmezés nem változott. A teljes 3. szakaszt elolvastam (K1). A brief `ir`-je és `munka` mezője (ertelmezo) egyeztetett eltérésként bővült.
+- **A) 1Móz 26:25 (F131.3.17):** a H8034 cellája „*(nincs hozzárendelés; BDB-sajtóhiba gyanúja, l. ⓘ)*”; az ⓘ: a BDB „26:35”-öt idéz, a TAHOT szerint a H8034 a 26:25-ben áll, a javítás a #102-ben (DT381). Generátor: `BDB_HIVATKOZAS_GYANU` (a gerinc-ágon); teszt +1.
+- **B) 1Kir 18:25–26:** nem változott (DT382 (C)); a cellák „nincs hozzárendelés”-t mondanak, a #102-re vár.
+- **C) `motivumok/ISTENTISZT-001.md` (F131.3.18):** a 3. szakasz (az `ertelmezes` rés) „2. A Thayer jelentés-tagolása” pontja: az 1. ág „elnevezni” (DT379); a 4. ág „segítségül hívni — segítőként, tanúként, illetve bíróként, azaz valakihez fellebbezni”, a Thayer sz6 szerint (a fellebbezés, ApCsel 25:11, a 4. ág egyik esete). A 3. ág („váddal illetni”) a sz5 szerint helyes („valamivel vádolni”, „váddal perbe hívni”), nem változott; a vázlatsor „τίνι a tárgy tárgyesetével” kezdete a szakasz első tagmondata, nem eltérő tagolás. Az értelmezés nem változott. A teljes 3. szakaszt elolvastam (K1). A brief `ir`-je és `munka` mezője (ertelmezo) egyeztetett eltérésként bővült.
 
 **A próba (F131.3.19, `PARDES_DATUM=2026-10-28`, a repón kívül):**
 
@@ -266,21 +266,21 @@ Megjegyzés: az éles `lexikon/` 7 lapja a generátorhoz képest elavult (DT344)
 - A C) változása a generált lapon megjelenik (a próbarender 1416–1419. sora, az `ertelmezes` résben); a NAPLO-jelölés (belső) a lapra nem kerül.
 - Az 1Móz 26:25 sor H8034-cellája a gyanút jelzi (A).
 - Változatlan: tiltott keretezés 0; `(fordításra vár)` 65 → 46; a 32 sor címkés; ÓSZ-sor 22 (DBH 21, kimondott hiány 1); kiemelés BDB 14/15, Thayer 7/7.
-- Tesztek: `teszt_szotari_gerinc` 27 OK, `teszt_szerepmatrix` OK, `teszt_forditas_kapuk` OK; nulladiff (`0ec48665`): csak az ISTENTISZT-001 lap tér el. `ellenoriz.py`: 17. szabály RENDBEN; **11. szabály SÉRTÉS (1), várt:** az éles `lexikon/ISTENTISZT-001_TUDOMANYOS.md` `ertelmezes` rése a módosított forrástól eltér, amíg a lap nem generálódik újra (⛔ DT-F131g); ugyanez a CI E28.
+- Tesztek: `teszt_szotari_gerinc` 27 OK, `teszt_szerepmatrix` OK, `teszt_forditas_kapuk` OK; nulladiff (`0ec48665`): csak az ISTENTISZT-001 lap tér el. `ellenoriz.py`: 17. szabály RENDBEN; **11. szabály SÉRTÉS (1), várt:** az éles `lexikon/ISTENTISZT-001_TUDOMANYOS.md` `ertelmezes` rése a módosított forrástól eltér, amíg a lap nem generálódik újra (⛔ DT378); ugyanez a CI E28.
 
-### 5.5 A DT-F131f 2. (utolsó) javítóköre (F131.3.20–F131.3.24): DT-F131k (a) és DT-F131l (A) a #131-ben
+### 5.5 A DT377 2. (utolsó) javítóköre (F131.3.20–F131.3.24): DT381 (a) és DT382 (A) a #131-ben
 
-**Döntés (a felhasználó, 2026-10-28):** „meggondoltam. rövid úton legyen kész, de hibátlan a 131”. A DT-F131k és a DT-F131l korábbi változata („#102-ben, addig a lap jelöli”) helyett mindkét javítás a #131-ben készül: DT-F131k → (a), DT-F131l → (A), kibontás és új súlyszabály nélkül. A `DONTESEK.md` két sora erre íródott, a régi szöveg felülírtként áll (F131.3.23). A #102 briefje (1d) jelzi, hogy a két tétel elkészült, és mi maradt nála.
+**Döntés (a felhasználó, 2026-10-28):** „meggondoltam. rövid úton legyen kész, de hibátlan a 131”. A DT381 és a DT382 korábbi változata („#102-ben, addig a lap jelöli”) helyett mindkét javítás a #131-ben készül: DT381 → (a), DT382 → (A), kibontás és új súlyszabály nélkül. A `DONTESEK.md` két sora erre íródott, a régi szöveg felülírtként áll (F131.3.23). A #102 briefje (1d) jelzi, hogy a két tétel elkészült, és mi maradt nála.
 
 Modell-ellenőrzés: a session `claude-opus-5-5`, a brief `modell: opus`, egyezik.
 
-**A) DT-F131k (a): kézi hivatkozás-javítás (F131.3.20–F131.3.21).**
+**A) DT381 (a): kézi hivatkozás-javítás (F131.3.20–F131.3.21).**
 - A 2.31-ben (`adat/bdb_forras_javitas.tsv`) új hibaosztály van: `hivatkozas_kezi`, a `forras_javit.py` `KEZI_HIVATKOZAS` listájából. Egy sor: H8034, a 2.30 7. sora, 1. előfordulás, `26:35` → `26:25`, `allapot=kezi`, proveniencia `manual`, az indok a TAHOT-ot és a szövegkörnyezetet nevezi meg. A tábla `--ts 2026-10-18`-cal újragenerálódott; a többi 7 202 sor változatlan, a fejlécben a 2.30 és a kód hash-e frissült.
 - Egy mellékhatás: a commitolt 2.31 fejléce eddig elavult volt (a `szamkiosztas` a 2.30 fejlécét átírta, a 2.31 a régi 2.30-hash-t hordozta; a kód fejlécsablonjában a „DT-F107f” állt a „DT228” helyett). Ezért a `teszt_bont.py` `test_javitas_ellenoriz` a `0f19033e`-n bukott. Most átmegy.
 - A szöveg-nézet (`nezet_general.py`, `szakasz_bemenet.py`) a `hivatkozas_kezi` sort nem alkalmazza (csak a `hivatkozas` osztályt). A fordító bemenete és az `sz<n>` hash ezért változatlan; az `ellenoriz.py` 13. szabálya RENDBEN.
 - A 2.29 kinyerője (`bdb_vers_jelentes.py`) olvassa: a Strong `elofordulas`-adik, `26:35` fejezet:versű hivatkozása a 26:25-re oldódik. A `nyers` a forrás alakja marad, az okkód `forras_javitas`. A 2.31 hash-e a 2.29 `# forras:` fejlécébe került. Eredmény: H8034 `sorszam` 120 → 1Móz 26:25, `-/3`.
 
-**B) DT-F131l (A): a tartomány utáni folytatás (F131.3.21).**
+**B) DT382 (A): a tartomány utáni folytatás (F131.3.21).**
 - `bdb_szelet.py` `hivatkozasok()`: a kiírt vagy örökölt hivatkozás utáni `-N` tartomány (`_TARTOMANY`) átlépése után a `_FOLYTATAS`-keresés ugyanúgy fut, mint tartomány nélkül; a tartomány nincs kibontva.
 - Az első futás +1 441 sort adott a mérés 1 438-ával szemben. A 3 többletsor hamis volt: „16:8-9, 1 Samuel 21:16” (H2063), „1Sam 22:4-5, 1 Samuel 24:23” (H4686), „26:60-61, 1 Chronicles 5:…” (H5070). Az „, 1” itt a következő könyvnév része. A memóriabeli mérés ezeket a pozíció-ütközéssel kiszűrte. A javítás: a tartomány utáni ágon a folytatás nem indulhat egy kiírt hivatkozás kezdetén. Ezután az eredmény egyezik a méréssel.
 - A tartomány nélküli ágon nincs ilyen ellenőrzés. A teljes táblán ott 1 ilyen sor van, és a javítás előtt is megvolt (H1004, „2Chr 10:19, 2 Chronicles 10…” → hamis 2Krón 10:2). Ez a #102-é (F102 brief 1d).
@@ -297,11 +297,11 @@ Modell-ellenőrzés: a session `claude-opus-5-5`, a brief `modell: opus`, egyezi
 | régi sor más `sorszam`-mal | 35 012 |
 | arany | H7121 + 1Kir 18:26 (Qal/2/c), + 1Sám 3:8, 1Móz 5:29, Jer 7:14, 7:30; H8034 + 1Kir 18:26 (-/4), 1Móz 26:35 → 26:25 (-/3) |
 
-Ez egyezik a DT-F131l A-mérésével (+1 438, 603, 35 012; `naplok/F131_bdb_tartomany_meres.py`).
+Ez egyezik a DT382 A-mérésével (+1 438, 603, 35 012; `naplok/F131_bdb_tartomany_meres.py`).
 
 **A `sorszam`-eltolódás fogyasztói.** A #131 ⓘ-i: a 2Móz 33:19 és a 2Móz 34:5 H7121-sora 128/129 → 129/130 lett, a próbalap újragenerálódik. A `nulladiff.sh 0f19033e 2026-10-28` szerint (a HEAD 6a4df95f) csak az `ISTENTISZT-001_TUDOMANYOS.md` tér el, a többi lap és a törzscikkek azonosak. Az olvasó-szerver tesztjei közül a `teszt_bdb_vers_jelentes.py` zöld. A `teszt_olvaso_szerver.py` (2 hiba) és a `teszt_pilot_aranymintaval.py` (5 hiba) a 2026-10-14-i `pardes.db`-vel fut, amely a mostani 2.29-et nem tartalmazza. A hibák a 2.29-től függetlenek (D2-pilot, szónézet). Sorszámra egyik szerver-teszt sem hivatkozik; az `m2_minta_osszevet.py` strong + poz kulccsal illeszt.
 
-**C) Generátor (F131.3.22).** A `BDB_HIVATKOZAS_GYANU` (DT-F131k (c)) kikerült. A `forras_javitas` okkódú BDB-példánál az ⓘ a javítás forrását mondja ki: „a BDB forrásszövege itt a „26:35” helyet idézi (sajtóhiba); javítva: 1Móz 26:25 — a javítás forrása: `adat/bdb_forras_javitas.tsv`, kézi sor (`hivatkozas_kezi`, `manual`; …)”. A kiemelő (`hivatkozasok_a_szovegben`) a vers-folytatást a 2.29-cel egyezően ismeri fel, a tartomány után is („**1Kir 18:24**-25, **26**”). A forrásjavított sornál a forrás alakját emeli ki („**26:35**”), mert a magyar szöveg a forrást fordítja.
+**C) Generátor (F131.3.22).** A `BDB_HIVATKOZAS_GYANU` (DT381 (c)) kikerült. A `forras_javitas` okkódú BDB-példánál az ⓘ a javítás forrását mondja ki: „a BDB forrásszövege itt a „26:35” helyet idézi (sajtóhiba); javítva: 1Móz 26:25 — a javítás forrása: `adat/bdb_forras_javitas.tsv`, kézi sor (`hivatkozas_kezi`, `manual`; …)”. A kiemelő (`hivatkozasok_a_szovegben`) a vers-folytatást a 2.29-cel egyezően ismeri fel, a tartomány után is („**1Kir 18:24**-25, **26**”). A forrásjavított sornál a forrás alakját emeli ki („**26:35**”), mert a magyar szöveg a forrást fordítja.
 
 **A próba (F131.3.24, `PARDES_DATUM=2026-10-28`, a repón kívül; a HEAD 15590cea renderével bájtra azonos):**
 
@@ -309,7 +309,7 @@ Ez egyezik a DT-F131l A-mérésével (+1 438, 603, 35 012; `naplok/F131_bdb_tart
 
 - **1Móz 26:25:** a H8034-cella „név: Isten megjelölése · 3”, BDB-példa (`sorszam` 120); az ⓘ a javítás forrása; a „26:35” a H8034 3. szakaszában kiemelve.
 - **1Kir 18:26:** a H7121 „Qal 2.c” BDB-példa (`sorszam` 100), a H8034 „név: hamis istenekről · 4” BDB-példa (`sorszam` 209); a „26” mindkét szakaszban kiemelve.
-- **1Kir 18:25:** a H7121 kutatói hozzárendelés (Qal 2.c), a H8034 „*(nincs hozzárendelés)*”. A DT-F131l (A) szerint a 18:25 a „18:24-25” tartomány belseje, nem BDB-példa (kibontás nincs; a (B) mérése szerint a kibontás a H7121 „4:25-26” miatt GerincHibát okozna). Az ⓘ szövege: „ehhez a tokenhez nincs kutatói hozzárendelés és szótári példahely”. Ez pontatlan: a BDB a helyet tartományként idézi. → a ⛔ 3.1 kérdése.
+- **1Kir 18:25:** a H7121 kutatói hozzárendelés (Qal 2.c), a H8034 „*(nincs hozzárendelés)*”. A DT382 (A) szerint a 18:25 a „18:24-25” tartomány belseje, nem BDB-példa (kibontás nincs; a (B) mérése szerint a kibontás a H7121 „4:25-26” miatt GerincHibát okozna). Az ⓘ szövege: „ehhez a tokenhez nincs kutatói hozzárendelés és szótári példahely”. Ez pontatlan: a BDB a helyet tartományként idézi. → a ⛔ 3.1 kérdése.
 - **Kiemelés:** BDB 17/18 (H7121 10/10, H8034 7/8; előtte 14/15, a nevező a 3 új példával nőtt). A hiány a korábbi: H8034 `sorszam` 3 (1Móz 12:8, `fej`). Thayer 7/7.
 - **Változatlan:** tiltott keretezés 0; a 32 sor mind címkés (az elsődleges tokenen címke nélkül: 0); `(fordításra vár)` 65 → 46; ÓSZ-sor 22 (DBH 21, kimondott hiány 1).
 - **Artifact:** https://claude.ai/artifact/QVHPBrCJWkSP7pT8z363vy, 5. verzió (privát, ugyanaz az URL).
@@ -322,18 +322,18 @@ Ez egyezik a DT-F131l A-mérésével (+1 438, 603, 35 012; `naplok/F131_bdb_tart
 
 A `0f19033e`-n bukó `test_javitas_ellenoriz` most átmegy (A). `ellenoriz.py`: 14 RENDBEN, 1 SÉRTÉS. A sértés a 11. szabály, várt: az éles lap a DT-F131g-ig eltér (5.4).
 
-## 6. ⛔ 3.1 — DT-F131f: az elfogadási próba
+## 6. ⛔ 3.1 — DT377: az elfogadási próba
 
 A felhasználó a renderelt próbalapot olvassa. A kérdés: *a szó jelentését és a hely motívumbeli funkcióját két külön dolognak látja-e?* Ugyanitt dönt a címkék szövegéről (3.1) és a 4.2 kérdéséről (az 56.15-ös kód). A próbalap az 5.5 szerinti (F131.3.24; az 5.4-é az F131.3.19). A végrehajtás itt áll.
 
 **Döntés (2026-10-28):** orkesztrátor, a felhasználó felhatalmazásával („vedd át a döntéseket”). A felhasználó ebben a sessionben megerősítette: „Igen, az orkesztrátor döntései (2026-10-28) az én döntéseim, hajtsd végre.”
 
-- **Az 1Kir 18:25 ⓘ-je (F131.3.25), szövegpontosítás, nem 3. kör.** A H8034-cella marad „*(nincs hozzárendelés)*”. Az ⓘ kimondja, hogy a BDB a helyet a „1Kin 18:24-25” verstartomány belsejében idézi (H7121 Qal 2.c, `sorszam` 99; H8034 4, `sorszam` 208), és a tartomány nincs kibontva (DT-F131l (A)).
+- **Az 1Kir 18:25 ⓘ-je (F131.3.25), szövegpontosítás, nem 3. kör.** A H8034-cella marad „*(nincs hozzárendelés)*”. Az ⓘ kimondja, hogy a BDB a helyet a „1Kin 18:24-25” verstartomány belsejében idézi (H7121 Qal 2.c, `sorszam` 99; H8034 4, `sorszam` 208), és a tartomány nincs kibontva (DT382 (A)).
   - Generátor: `bdb_tartomanyban()`. Az azonos `nyers`-ű 2.29-sorokat a 2.30 szövegbeli előfordulásokkal sorrendben párosítja; a H7121 97-es sora („1Kin 18:24 annak konkrét kérésére”) nem tartomány.
   - A 32 sorból csak ezen az egyen jelenik meg ilyen ⓘ. A próbarenderben csak ez a lábjegyzet változik. Az Artifact a 6. verzión van.
-- **DT-F131f: elfogadva** a 4. próbalappal és az ⓘ-pontosítással. Az ismert maradék a lapon jelölt hiányként marad: a H8034 1Móz 12:8 fejsora (BDB-kiemelés 17/18), 46 `(fordításra vár)` (#121), a Jóel 2:32 DBH-hiánya (#146).
+- **DT377: elfogadva** a 4. próbalappal és az ⓘ-pontosítással. Az ismert maradék a lapon jelölt hiányként marad: a H8034 1Móz 12:8 fejsora (BDB-kiemelés 17/18), 46 `(fordításra vár)` (#121), a Jóel 2:32 DBH-hiánya (#146).
 
-## 7. ⛔ 4. — DT-F131g: az éles lexikon felülírása (F131.4)
+## 7. ⛔ 4. — DT378: az éles lexikon felülírása (F131.4)
 
 **Döntés:** felülír (orkesztrátor, a felhasználó felhatalmazásával és megerősítésével, mint fent).
 
@@ -356,9 +356,9 @@ A felhasználó a renderelt próbalapot olvassa. A kérdés: *a szó jelentésé
 
 **Modell-ellenőrzés:** a session `claude-opus-5-5`, a brief `modell: opus`, egyezik. Kiinduló head: `7d004296`.
 
-**Jóváhagyás:** a felhasználó 2026-10-28-án az orkesztrátor chatjében „Mehet”-tel hagyta jóvá a javasolt besorolást, beleértve az `ir` bővítését a Thayer-javításhoz és a DT-F131m (a)-t. A felhasználó aznap az orkesztrált sessionek döntéseit az orkesztrátorra bízta („vedd át a döntéseket”). Merge nincs.
+**Jóváhagyás:** a felhasználó 2026-10-28-án az orkesztrátor chatjében „Mehet”-tel hagyta jóvá a javasolt besorolást, beleértve az `ir` bővítését a Thayer-javításhoz és a DT383 (a)-t. A felhasználó aznap az orkesztrált sessionek döntéseit az orkesztrátorra bízta („vedd át a döntéseket”). Merge nincs.
 
-**F131.6 — `ir` és DT-F131m.** A brief `ir`-je bővült: `eszkozok/thayer_jelolt/vers_jelentes.py`, `eszkozok/thayer_jelolt/teszt_vers_jelentes.py`, `adat/thayer_vers_jelentes.tsv`, `naplok/F131_thayer_folytatas_valtozas.py`. A `DONTESEK.md`-be új sor került: DT-F131m (helyőrző), a tW-ellentmondás (7.3a), döntés: 🟢 (a).
+**F131.6 — `ir` és DT383.** A brief `ir`-je bővült: `eszkozok/thayer_jelolt/vers_jelentes.py`, `eszkozok/thayer_jelolt/teszt_vers_jelentes.py`, `adat/thayer_vers_jelentes.tsv`, `naplok/F131_thayer_folytatas_valtozas.py`. A `DONTESEK.md`-be új sor került: DT383 (helyőrző), a tW-ellentmondás (7.3a), döntés: 🟢 (a).
 
 ### 8.1 (1.) 7.4a — 1Kir 18:24, H8034 (F131.7)
 
@@ -384,7 +384,7 @@ A felhasználó a renderelt próbalapot olvassa. A kérdés: *a szó jelentésé
 - **Hol:** `eszkozok/thayer_jelolt/vers_jelentes.py`, `folytatasok()`. A `bcv`-hivatkozás `</ref>`-je után közvetlenül induló láncot veszi fel:
   - `,v`: ugyanabban a fejezetben;
   - `; c:v`: ugyanabban a könyvben.
-  - A verstartomány (`-v`) nincs kibontva, utána a lánc folytatódik (a DT-F131l (A) mintájára).
+  - A verstartomány (`-v`) nincs kibontva, utána a lánc folytatódik (a DT382 (A) mintájára).
   - A lánc megszakad, ha a szám után számjegy, kettőspont („, 34:”) vagy könyvnév + szám („, 2 Esdr. 10:2”) áll.
   - A nem `</ref>` után álló számsor („Cyril 7, 1, 35”) nem sor.
   - A sor jelölése: a `proveniencia` forrás-mezője `forras=thayer_jelolt/vers_jelentes.py (fejléc, folytatas)`.
@@ -419,7 +419,7 @@ A felhasználó a renderelt próbalapot olvassa. A kérdés: *a szó jelentésé
 
 ### 8.3 (3.) 7.5b — az 1Kir 18:25 gerinc-ⓘ-je (F131.9)
 
-- **Hol:** `lexikon_general.py`, `gerinc_blokk()`. Ha a `bdb_tartomanyban()` a versre mondatot ad, a vers nem a „a szótár nem idézi” listába kerül, hanem a sor ⓘ-jével azonos mondattal áll („1Kir 18:25: a BDB a helyet nem önállóan idézi, hanem a(z) … szakaszban a „1Kin 18:24-25” verstartomány belsejében (… sorszam 99 / 208); a tartomány nincs kibontva (DT-F131l (A)), ezért a hely nem BDB-példa”).
+- **Hol:** `lexikon_general.py`, `gerinc_blokk()`. Ha a `bdb_tartomanyban()` a versre mondatot ad, a vers nem a „a szótár nem idézi” listába kerül, hanem a sor ⓘ-jével azonos mondattal áll („1Kir 18:25: a BDB a helyet nem önállóan idézi, hanem a(z) … szakaszban a „1Kin 18:24-25” verstartomány belsejében (… sorszam 99 / 208); a tartomány nincs kibontva (DT382 (A)), ezért a hely nem BDB-példa”).
 - **Érintett:** a H7121 (a lap 616. sora) és a H8034 (651.) gerinc-ⓘ-je.
 - **Teszt:** `test_1kir_18_25_gerinc_i_egyezik_a_sorral` (éles adat). A gerinc mondata a sor ⓘ-jének részszövege.
 
@@ -430,7 +430,7 @@ A felhasználó a renderelt próbalapot olvassa. A kérdés: *a szó jelentésé
 - **Megjegyzés:** a „horgony” mint szó szerinti részsztring a lapon most is 0, mert a jelölés ragozott alakja „horgonnyal” (h-o-r-g-o-n-n-y). Mérve: `grep -c horgonnyal` = 1.
 - **Teszt:** `test_horgonnyal_osszecsukva_az_eles_lapon` (éles ISTENTISZT-001 adat).
 
-### 8.5 (5.) 7.3a — DT-F131m (a): a tW forrásmegjelölése (F131.11)
+### 8.5 (5.) 7.3a — DT383 (a): a tW forrásmegjelölése (F131.11)
 
 - **A kivezetés oka:** az F131.2 (`f5d2e288`) `_gerinc_tw()` függvénye kiírta a tW-azonosítókat és a forrásfájlt, de a fájlt nem tette a forráslistába (`ctx['fl']`). Az élő lapon ez az F131.4-ben (`5f0bfacd`) jelent meg.
 - **Javítás:** a tW-szócikket megnevező sor a `konkordancia/tW_szocikkek.tsv`-t `tW_szocikkek` licenckulccsal felveszi, a nem-gerinc lapok tw-blokkjának mintájára. A lapon most:
@@ -441,7 +441,7 @@ A felhasználó a renderelt próbalapot olvassa. A kérdés: *a szó jelentésé
 
 ### 8.6 (6.) 7.1a — állapotjelölések (F131.12)
 
-A `DONTESEK.md`-ben a DT-F131a–e és h állapota „🟢 eldöntve, alkalmazva (…)”, a `git log --oneline` alapján:
+A `DONTESEK.md`-ben a DT371–e és h állapota „🟢 eldöntve, alkalmazva (…)”, a `git log --oneline` alapján:
 
 | döntés | alkalmazó tételek |
 |---|---|
@@ -499,7 +499,7 @@ A brief fejlécének `allapot`-ja a kör utolsó commitjában változik.
 
 **Modell-ellenőrzés:** a session `claude-opus-5-5`, a brief `modell: opus`, egyezik. Kiinduló head: `a32e9a6f` (a main beolvasztása).
 
-**Jóváhagyás:** a felhasználó 2026-10-28-án az orkesztrátor chatjében „Mehet”-tel hagyta jóvá a 2/2. kör javasolt besorolását: DT-F131o — a szabály marad, az 1Móz 4:26 H8034 jelölt hiány, a kutatói H7121-címke marad; a Mounce (MCGED) bekerül az Irodalomba és a kolofonba; az 1., 2., 3a. és 4. tétel mechanikus. A felhasználó aznap az orkesztrált sessionek döntéseit az orkesztrátorra bízta („vedd át a döntéseket”). Merge nincs.
+**Jóváhagyás:** a felhasználó 2026-10-28-án az orkesztrátor chatjében „Mehet”-tel hagyta jóvá a 2/2. kör javasolt besorolását: DT385 — a szabály marad, az 1Móz 4:26 H8034 jelölt hiány, a kutatói H7121-címke marad; a Mounce (MCGED) bekerül az Irodalomba és a kolofonba; az 1., 2., 3a. és 4. tétel mechanikus. A felhasználó aznap az orkesztrált sessionek döntéseit az orkesztrátorra bízta („vedd át a döntéseket”). Merge nincs.
 
 ### 9.1 (1.) R5a — a tW-megjelölés „Módosítás” mondata (F131.17)
 
@@ -511,7 +511,7 @@ A brief fejlécének `allapot`-ja a kör utolsó commitjában változik.
 ### 9.2 (2.) 2d/2e — SEMA 2.35, a tábla fejléce, a Cyril-teszt (F131.18)
 
 - **`adat/SEMA.md` 2.35:** a `bcv`-sor és a folytatás-sor külön áll. A `bcv`-sor igehelye a forrás gépi attribútuma (nincs visszafejtés, öröklött könyv, okkód). A folytatás-sor szövegből visszafejtett, a könyv (`,v`-nél a fejezet is) a lánc előző tagjától öröklött, a jelölés a proveniencia `folytatas`-a. A `konyv` és a `fejezet`, `vers` oszlop leírása mindkét sorfajtára kimondja az eredetet. A régi „nincs szövegből visszafejtés” mondat most csak a `bcv`-sorra vonatkozik.
-- **`eszkozok/thayer_jelolt/vers_jelentes.py`:** a `# forras:` fejléc „(csak a bcv-koordináta és a szerkezet)” helyett „(a bcv-koordináta, a szerkezet és a `</ref>` utáni jelöletlen folytatás, DT-F131n)”.
+- **`eszkozok/thayer_jelolt/vers_jelentes.py`:** a `# forras:` fejléc „(csak a bcv-koordináta és a szerkezet)” helyett „(a bcv-koordináta, a szerkezet és a `</ref>` utáni jelöletlen folytatás, DT384)”.
 - **Újragenerálás:** `python eszkozok/thayer_jelolt/vers_jelentes.py --ts 2026-10-28`; `git diff --stat`: 1 sor (a 2., fejlécsor; a kód-hash is: `868e48f01054` → `ff580a715990`). Az adatsorok (a 4. sortól) bájtra azonosak: sha256 `ad50cfde5f9c…` előtte és utána, 64 434 sor mindkét fájlban. A `--ellenoriz` szerint azonos.
 - **Teszt (2e):** a `test_folytatasok_lanc` Cyril-állítása a `szakasz != '7'` sorokat nézte, holott a „Cyril 7, 1, 35” a G1941 7. szakaszában áll (`adat/thayer_szakaszok.tsv`, G1941 sz7, grep). Most a 7. szakasz folytatás-sora pontosan `[('ApCsel', '9', '21'), ('ApCsel', '22', '16')]`; egy hamis Cyril-sor ebben a listában jelenne meg, tehát az állítás fut. A régi, a 7. szakaszon kívüli állítás is megmaradt.
 
@@ -519,19 +519,19 @@ A brief fejlécének `allapot`-ja a kör utolsó commitjában változik.
 
 ### 9.3 (3.) L5 — DONTESEK-tételek (F131.19)
 
-- **DT-F131n:** a Thayer `</ref>` utáni jelöletlen folytatása sor, tartomány-kibontás nélkül, a DT-F131l (A) párjaként; +478 sor, 150 szócikk (8.2); felülírja a #132 „csak bcv-koordináta” szabályát; alkalmazva: F131.8 (SEMA és fejléc: F131.18); 🟢 eldöntve, az 1/2. kör „Mehet”-jével.
-- **DT-F131o:** a versszintű BDB-példa nem kerül a tokenre, ha a Strong a Károli-versben ≥2-szer áll (1Kir 18:24, 1Móz 4:26 H8034 → jelölt hiány); a kutatói címke nem BDB-példa, a H7121-címke marad; alkalmazva: F131.7; 🟢 eldöntve, a 2/2. kör „Mehet”-jével.
+- **DT384:** a Thayer `</ref>` utáni jelöletlen folytatása sor, tartomány-kibontás nélkül, a DT382 (A) párjaként; +478 sor, 150 szócikk (8.2); felülírja a #132 „csak bcv-koordináta” szabályát; alkalmazva: F131.8 (SEMA és fejléc: F131.18); 🟢 eldöntve, az 1/2. kör „Mehet”-jével.
+- **DT385:** a versszintű BDB-példa nem kerül a tokenre, ha a Strong a Károli-versben ≥2-szer áll (1Kir 18:24, 1Móz 4:26 H8034 → jelölt hiány); a kutatói címke nem BDB-példa, a H7121-címke marad; alkalmazva: F131.7; 🟢 eldöntve, a 2/2. kör „Mehet”-jével.
 - Formátum: 8 oszlop (a beszúró szkript cellánként ellenőrizte), CRLF, helyőrző szám.
 
 ### 9.4 (4.) R6a — állapot (F131.20)
 
-- **DT-F131j:** „alkalmazásra vár” → „🟢 eldöntve (a), alkalmazva (F131.3.9: a generátor; F131.3.11: próbarender; F131.4: az éles ISTENTISZT-001 lap)”. Forrás: `git log --oneline --grep="F131j\|DBH"` → `73f445fb` F131.3.9, `203e828b` F131.3.11; az F131.4 (`5f0bfacd`) írta az éles lapot. A DBH-fordítás (#121) része változatlan.
-- **DT-F131m:** „🟢 eldöntve: (a), alkalmazva (F131.11; F131.13: az éles lap)”; a Mounce-kiegészítés a 9.5-ben.
+- **DT380:** „alkalmazásra vár” → „🟢 eldöntve (a), alkalmazva (F131.3.9: a generátor; F131.3.11: próbarender; F131.4: az éles ISTENTISZT-001 lap)”. Forrás: `git log --oneline --grep="F131j\|DBH"` → `73f445fb` F131.3.9, `203e828b` F131.3.11; az F131.4 (`5f0bfacd`) írta az éles lapot. A DBH-fordítás (#121) része változatlan.
+- **DT383:** „🟢 eldöntve: (a), alkalmazva (F131.11; F131.13: az éles lap)”; a Mounce-kiegészítés a 9.5-ben.
 
 ### 9.5 (5.) 2f — Mounce (MCGED) (F131.21)
 
 - **Hol:** `lexikon_general.py`, `_gerinc_ubs_mutato()`. A görög mutató („a teljes UBS DNTG-szócikk és a Mounce-glossza a szónézetben”) a Mounce-ot név szerint megnevezi. A tW útján (F131.11): ha a tokennek van Mounce-szócikke (`mcged_sor`), a `konkordancia/MCGED_teljes.tsv` `MCGED` kulccsal a forráslistába kerül. Ebből lesz az Irodalom sora, a kolofon licenctáblája és a meglévő `MOUNCE_MEGJELOLES` szó szerinti megjelölés. A licenc-címke az `adat/licencek.tsv` MCGED-sorából jön („© Mounce 1993”; a sor licenc-szövege „redistribution with attribution”). A glossza szövege nem kerül a lapra; héber tokenre és Mounce-szócikk nélkül nincs bejegyzés.
-- **DT-F131m:** kiegészítve. Az (a) a Mounce-ra is vonatkozik, a 2/2. kör „Mehet”-jével; alkalmazva: F131.21, az éles lap: F131.22.
+- **DT383:** kiegészítve. Az (a) a Mounce-ra is vonatkozik, a 2/2. kör „Mehet”-jével; alkalmazva: F131.21, az éles lap: F131.22.
 - **Teszt:** `test_mounce_forrasmegjeloles`.
 - **A lapon megnevezett összes forrás.** A lap összes `konkordancia/…` fájlnevét összevetettem az Irodalom és a kolofon fájlneveivel (eseti szkript, `grep -o` + `comm`). Egy hiányt találtam: a **`konkordancia/TAHOT_kivonat.tsv`**. Az F131.7 óta az 1Móz 4:26 és az 1Kir 18:24 ⓘ-je ([^1], [^8]) forrásként nevezi meg („a versben a szó kétszer áll (`konkordancia/TAHOT_kivonat.tsv`)”). A `kizart` blokk és a lap más provenienciasorai korábban is megnevezték. Sem az Irodalomban, sem a kolofonban nem áll. → Nyitott kérdés (9.9), nem döntöttem.
   - A név szerinti említések közül a Gesenius (469. sor) és az Abbott-Smith (491. sor) a Thayer magyar szövegén belüli hivatkozás, nem a lap forrása.
@@ -590,7 +590,7 @@ A brief fejlécének `allapot`-ja a kör utolsó commitjában változik.
 
 **Modell-ellenőrzés:** a session `claude-opus-5-5`, a brief `modell: opus`, egyezik. Kiinduló head: `e97d1ad3`.
 
-**Jóváhagyás:** a felhasználó 2026-10-28-án az orkesztrátor chatjében „Mehet”-tel engedélyezte a korlát (2 kör) feletti, célzott 3. kört, csak két tételre: (1) a napló a két végleges DT-szám helyett a commitra hivatkozik; (2) a TAHOT bekerül az Irodalomba és a licenclistába, a DT-F131m elve szerint. Más javítás e körben nincs. Merge nincs.
+**Jóváhagyás:** a felhasználó 2026-10-28-án az orkesztrátor chatjében „Mehet”-tel engedélyezte a korlát (2 kör) feletti, célzott 3. kört, csak két tételre: (1) a napló a két végleges DT-szám helyett a commitra hivatkozik; (2) a TAHOT bekerül az Irodalomba és a licenclistába, a DT383 elve szerint. Más javítás e körben nincs. Merge nincs.
 
 ### 10.1 (1.) 7.7 CI, E26 — végleges DT-szám az ágon (F131.26)
 
@@ -608,7 +608,7 @@ A brief fejlécének `allapot`-ja a kör utolsó commitjában változik.
   - `blokk_elofordulasok`: gerinces lapon (`SZOTARI_GERINC_MOTIVUMOK`), ha a tábla egy lábjegyzete (ⓘ) a `konkordancia/TAHOT_kivonat.tsv`-t megnevezi, a TAHOT a blokk forráslistájába kerül (`LC('TAHOT')` = CC BY 4.0). Ebből lesz az Irodalom sora és a kolofon licenctáblájának sora. Megnevezés nélkül nincs bejegyzés; a nem gerinces lapok előfordulás-blokkja e kódutat nem éri el.
   - `ADATFORRAS_FAJLOK`: + `TAHOT_kivonat.tsv` (az Irodalomban az „Adatforrások” alatt áll, nem a szótárak között: a TAHOT nem szótár).
   - `FAJL_MEGJELOLES_KULCS`: + `TAHOT` → a kolofonban az `adat/licencek.tsv` TAHOT-sorának `kotelezo_megjeloles` mezője szó szerint: „Data created by www.STEPBible.org based on work at Tyndale House Cambridge (CC BY 4.0)”.
-- **DT-F131m:** kiegészítve. Az (a) a TAHOT-ra is vonatkozik, a 3. kör engedélyével; alkalmazva: F131.27, az éles lap: F131.28.
+- **DT383:** kiegészítve. Az (a) a TAHOT-ra is vonatkozik, a 3. kör engedélyével; alkalmazva: F131.27, az éles lap: F131.28.
 - **Teszt:** `test_tahot_forrasmegjeloles` (a gerinces lap előfordulás-blokkja felveszi, egy nem gerinces lapé nem; a kolofon licenctábla-sora és a szó szerinti megjelölés; az Irodalom „Adatforrások” sora).
 - **Éles lap (F131.28)**, `PARDES_DATUM=2026-10-28 python eszkozok/general.py --cel lexikon --id ISTENTISZT-001 --ir`; `git diff --stat lexikon/`: 1 fájl, +6/−2:
   - `elofordulasok`: forrásfejléc + `konkordancia/TAHOT_kivonat.tsv`, licenc + CC BY 4.0;

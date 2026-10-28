@@ -104,11 +104,11 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 [^2]: proveniencia: scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-09-05 | igazolas: nincs | jelentés-címke: H7121 — BDB-példa: a BDB a(z) Qal 2.c szakaszban maga idézi a helyet (`adat/bdb_vers_jelentes.tsv` sorszam 93); ez a kutatói hozzárendelés (2.c → Qal 2.c) alá esik, a címke a finomabb útvonalé · H8034 — BDB-példa: a BDB a(z) 3 szakaszban maga idézi a helyet (`adat/bdb_vers_jelentes.tsv` sorszam 117)
 [^3]: proveniencia: scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-09-05 | igazolas: nincs | jelentés-címke: H7121 — kutatói hozzárendelés a BDB tagolása szerint (`elofordulasok.tsv` jelentes_szam „2.c” → Qal 2.c, `adat/szotar_szakasz_cimke.tsv`) · H8034 — BDB-példa: a BDB a(z) 3 szakaszban maga idézi a helyet (`adat/bdb_vers_jelentes.tsv` sorszam 118)
 [^4]: proveniencia: scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-09-05 | igazolas: nincs | jelentés-címke: H7121 — kutatói hozzárendelés a BDB tagolása szerint (`elofordulasok.tsv` jelentes_szam „2.c” → Qal 2.c, `adat/szotar_szakasz_cimke.tsv`) · H8034 — BDB-példa: a BDB a(z) 3 szakaszban maga idézi a helyet (`adat/bdb_vers_jelentes.tsv` sorszam 119)
-[^5]: proveniencia: scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-09-05 | igazolas: nincs | jelentés-címke: H7121 — kutatói hozzárendelés a BDB tagolása szerint (`elofordulasok.tsv` jelentes_szam „2.c” → Qal 2.c, `adat/szotar_szakasz_cimke.tsv`) · H8034 — a BDB forrásszövege itt a „26:35” helyet idézi (sajtóhiba); javítva: 1Móz 26:25 — a javítás forrása: `adat/bdb_forras_javitas.tsv`, kézi sor (`hivatkozas_kezi`, `manual`; indok: a TAHOT és a szövegkörnyezet; DT-F131k (a)); BDB-példa: a BDB a(z) 3 szakaszban maga idézi a helyet (`adat/bdb_vers_jelentes.tsv` sorszam 120)
+[^5]: proveniencia: scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-09-05 | igazolas: nincs | jelentés-címke: H7121 — kutatói hozzárendelés a BDB tagolása szerint (`elofordulasok.tsv` jelentes_szam „2.c” → Qal 2.c, `adat/szotar_szakasz_cimke.tsv`) · H8034 — a BDB forrásszövege itt a „26:35” helyet idézi (sajtóhiba); javítva: 1Móz 26:25 — a javítás forrása: `adat/bdb_forras_javitas.tsv`, kézi sor (`hivatkozas_kezi`, `manual`; indok: a TAHOT és a szövegkörnyezet; DT381 (a)); BDB-példa: a BDB a(z) 3 szakaszban maga idézi a helyet (`adat/bdb_vers_jelentes.tsv` sorszam 120)
 [^6]: proveniencia: scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-09-05 | igazolas: nincs | jelentés-címke: H7121 — BDB-példa: a BDB a(z) Qal 3.b szakaszban maga idézi a helyet (`adat/bdb_vers_jelentes.tsv` sorszam 129); ez a kutatói hozzárendelés (3 → Qal 3) alá esik, a címke a finomabb útvonalé · H8034 — ehhez a tokenhez nincs kutatói hozzárendelés és szótári példahely
 [^7]: proveniencia: scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-09-05 | igazolas: nincs | jelentés-címke: H7121 — BDB-példa: a BDB a(z) Qal 3.b szakaszban maga idézi a helyet (`adat/bdb_vers_jelentes.tsv` sorszam 130); ez a kutatói hozzárendelés (3 → Qal 3) alá esik, a címke a finomabb útvonalé · H8034 — ehhez a tokenhez nincs kutatói hozzárendelés és szótári példahely
 [^8]: proveniencia: scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-09-05 | igazolas: nincs | jelentés-címke: H7121 — kutatói hozzárendelés a BDB tagolása szerint (`elofordulasok.tsv` jelentes_szam „2.c” → Qal 2.c, `adat/szotar_szakasz_cimke.tsv`); a BDB a verset a(z) Qal 2.c szakaszban idézi (`adat/bdb_vers_jelentes.tsv` sorszam 97, 99), de a versben a szó kétszer áll (`konkordancia/TAHOT_kivonat.tsv`), és a szótár nem jelöli, melyikre gondol; a BDB-példa ezért nem kerül erre a tokenre · H8034 — a BDB a verset a(z) 4 szakaszban idézi (`adat/bdb_vers_jelentes.tsv` sorszam 208), de a versben a szó kétszer áll (`konkordancia/TAHOT_kivonat.tsv`), és a szótár nem jelöli, melyikre gondol; a BDB-példa ezért nem kerül erre a tokenre
-[^9]: proveniencia: scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-09-05 | igazolas: nincs | jelentés-címke: H7121 — kutatói hozzárendelés a BDB tagolása szerint (`elofordulasok.tsv` jelentes_szam „2.c” → Qal 2.c, `adat/szotar_szakasz_cimke.tsv`); a BDB a helyet nem önállóan idézi, hanem a(z) Qal 2.c szakaszban a „1Kin 18:24-25” verstartomány belsejében (`adat/bdb_vers_jelentes.tsv` sorszam 99); a tartomány nincs kibontva (DT-F131l (A)), ezért a hely nem BDB-példa · H8034 — a BDB a helyet nem önállóan idézi, hanem a(z) 4 szakaszban a „1Kin 18:24-25” verstartomány belsejében (`adat/bdb_vers_jelentes.tsv` sorszam 208); a tartomány nincs kibontva (DT-F131l (A)), ezért a hely nem BDB-példa
+[^9]: proveniencia: scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-09-05 | igazolas: nincs | jelentés-címke: H7121 — kutatói hozzárendelés a BDB tagolása szerint (`elofordulasok.tsv` jelentes_szam „2.c” → Qal 2.c, `adat/szotar_szakasz_cimke.tsv`); a BDB a helyet nem önállóan idézi, hanem a(z) Qal 2.c szakaszban a „1Kin 18:24-25” verstartomány belsejében (`adat/bdb_vers_jelentes.tsv` sorszam 99); a tartomány nincs kibontva (DT382 (A)), ezért a hely nem BDB-példa · H8034 — a BDB a helyet nem önállóan idézi, hanem a(z) 4 szakaszban a „1Kin 18:24-25” verstartomány belsejében (`adat/bdb_vers_jelentes.tsv` sorszam 208); a tartomány nincs kibontva (DT382 (A)), ezért a hely nem BDB-példa
 [^10]: proveniencia: scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-09-05 | igazolas: nincs | jelentés-címke: H7121 — BDB-példa: a BDB a(z) Qal 2.c szakaszban maga idézi a helyet (`adat/bdb_vers_jelentes.tsv` sorszam 100); ez a kutatói hozzárendelés (2.c → Qal 2.c) alá esik, a címke a finomabb útvonalé · H8034 — BDB-példa: a BDB a(z) 4 szakaszban maga idézi a helyet (`adat/bdb_vers_jelentes.tsv` sorszam 209)
 [^11]: proveniencia: scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-09-05 | igazolas: nincs | jelentés-címke: H7121 — BDB-példa: a BDB a(z) Qal 2.c szakaszban maga idézi a helyet (`adat/bdb_vers_jelentes.tsv` sorszam 94); ez a kutatói hozzárendelés (2.c → Qal 2.c) alá esik, a címke a finomabb útvonalé · H8034 — ehhez a tokenhez nincs kutatói hozzárendelés és szótári példahely
 [^12]: proveniencia: scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-09-05 | igazolas: nincs | jelentés-címke: H7121 — kutatói hozzárendelés a BDB tagolása szerint (`elofordulasok.tsv` jelentes_szam „2.c” → Qal 2.c, `adat/szotar_szakasz_cimke.tsv`) · H8034 — ehhez a tokenhez nincs kutatói hozzárendelés és szótári példahely
@@ -133,7 +133,7 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 [^31]: proveniencia: scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-09-08 | igazolas: nincs | jelentés-címke: kutatói hozzárendelés a TBESG tagolása szerint (`elofordulasok.tsv` jelentes_szam „2” → TBESG 2, `adat/szotar_szakasz_cimke.tsv`); a Thayer saját példahelye: Thayer 5 (`adat/thayer_vers_jelentes.tsv` sorszam 45)
 [^32]: proveniencia: scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-09-08 | igazolas: nincs | jelentés-címke: kutatói hozzárendelés a TBESG tagolása szerint (`elofordulasok.tsv` jelentes_szam „2” → TBESG 2, `adat/szotar_szakasz_cimke.tsv`); a Thayer saját példahelye: Thayer 1 (`adat/thayer_vers_jelentes.tsv` sorszam 15)
 
-*Az UBS-jelentés az újszövetségi soroknál az UBS Dictionary of New Testament Greek (DNTG), az ószövetségi soroknál az UBS Dictionary of Biblical Hebrew (DBH) igehelyszintű jelentése (`konkordancia/UBS_DBH_referenciak.tsv`, a Károli-vers az MT-számozásra képezve, `konkordancia/Karoli_versmegfeleltetes.tsv`); tokenenként a hivatkozott jelentés(ek) lexid-je és rövid definíciója. A DBH-szöveg magyarul a `forditasok.tsv`-ből jön, ahol van; ahol nincs, az angol eredeti áll `(fordításra vár)` jelöléssel (a fordítás a #121 hatóköre, DT-F131j). Ahol a DBH a versre nem hivatkozik, a cella ezt kimondja.*
+*Az UBS-jelentés az újszövetségi soroknál az UBS Dictionary of New Testament Greek (DNTG), az ószövetségi soroknál az UBS Dictionary of Biblical Hebrew (DBH) igehelyszintű jelentése (`konkordancia/UBS_DBH_referenciak.tsv`, a Károli-vers az MT-számozásra képezve, `konkordancia/Karoli_versmegfeleltetes.tsv`); tokenenként a hivatkozott jelentés(ek) lexid-je és rövid definíciója. A DBH-szöveg magyarul a `forditasok.tsv`-ből jön, ahol van; ahol nincs, az angol eredeti áll `(fordításra vár)` jelöléssel (a fordítás a #121 hatóköre, DT380). Ahol a DBH a versre nem hivatkozik, a cella ezt kimondja.*
 
 #### 1/a. Az igehelyek szövege
 
@@ -447,7 +447,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 *Szótári gerinc (DT272): a szó jelentéstartománya a Thayer tagolásában (`adat/thayer_szakaszok.tsv`), magyarul. A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva. Kiemelve, felirat nélkül: a Thayer saját példahelyei a motívum igehelyei közül (`adat/thayer_vers_jelentes.tsv`). A szótári blokk a szóról szól; a hely motívumbeli funkcióját az 1. szakasz táblázata adja.*
 
-*A magyar szöveg a szakaszonkénti Thayer-fordításból (`adat/forditasok.tsv`, `sz<n>` sorok, #142; DT-F131c).*
+*A magyar szöveg a szakaszonkénti Thayer-fordításból (`adat/forditasok.tsv`, `sz<n>` sorok, #142; DT373).*
 
 **A szócikk feje (nyelvi háttér).** ἐπικαλῶ: 1. aorisztosz ἐπεκαλεσα; (szenvedő és közép alak, jelen idő ἐπικαλοῦμαι); perfektum szenvedő ἐπικέκλημαι; pluskvamperfektum egyes szám 3. személy ἐπεκέκλητο, és az augmentum elhagyásával (vö. Winers Grammar, § 12, 5; Buttmann, 33 (29)) ἐπικεκλητο (ApCsel 26:32 Lachmann); 1. aorisztosz szenvedő ἐπεκλήθην; jövő idő közép ἐπικαλέσομαι; 1. aorisztosz közép ἐπεκαλεσάμην; a Septuaginta nagyon gyakran a קָרָא szóra;
 
@@ -494,7 +494,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 #### 2. Mélységi szócikk
 
-*Hivatkozás: a Thayer-szócikk a fenti „Jelentéstartomány (szótári gerinc)” blokkban áll (DT-F131a).*
+*Hivatkozás: a Thayer-szócikk a fenti „Jelentéstartomány (szótári gerinc)” blokkban áll (DT371).*
 
 #### 3. Teológiai szócikk
 
@@ -613,7 +613,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 </details>
 
-*ⓘ Kutatói megjegyzés: a szótár nem idézi: 1Móz 13:4, 1Móz 21:33, 1Móz 26:25, 1Krón 16:8, Zsolt 105:1, Zsolt 116:4, Zsolt 116:13, Zsolt 116:17, Ézs 12:4, Jóel 2:32, Sof 3:9, Zak 13:9 · 1Kir 18:25: a BDB a helyet nem önállóan idézi, hanem a(z) Qal 2.c szakaszban a „1Kin 18:24-25” verstartomány belsejében (`adat/bdb_vers_jelentes.tsv` sorszam 99); a tartomány nincs kibontva (DT-F131l (A)), ezért a hely nem BDB-példa.*
+*ⓘ Kutatói megjegyzés: a szótár nem idézi: 1Móz 13:4, 1Móz 21:33, 1Móz 26:25, 1Krón 16:8, Zsolt 105:1, Zsolt 116:4, Zsolt 116:13, Zsolt 116:17, Ézs 12:4, Jóel 2:32, Sof 3:9, Zak 13:9 · 1Kir 18:25: a BDB a helyet nem önállóan idézi, hanem a(z) Qal 2.c szakaszban a „1Kin 18:24-25” verstartomány belsejében (`adat/bdb_vers_jelentes.tsv` sorszam 99); a tartomány nincs kibontva (DT382 (A)), ezért a hely nem BDB-példa.*
 
 *A teljes szócikk: [szónézet: /szo/H7121](/szo/H7121) · forrás: `konkordancia/BDB_teljes_unabridged.tsv`*
 
@@ -648,7 +648,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 </details>
 
-*ⓘ Kutatói megjegyzés: a szótári példahely a magyar szövegben nem található, kiemelés nincs: bdb_vers_jelentes.tsv sorszam 3 (1Móz 12:8, fej) · a szótár nem idézi: 2Móz 33:19, 2Móz 34:5, 2Kir 5:11, 1Krón 16:8, Zsolt 79:6, Zsolt 105:1, Zsolt 116:4, Zsolt 116:13, Zsolt 116:17, Ézs 12:4, Jer 10:25, Jóel 2:32, Sof 3:9, Zak 13:9 · 1Kir 18:25: a BDB a helyet nem önállóan idézi, hanem a(z) 4 szakaszban a „1Kin 18:24-25” verstartomány belsejében (`adat/bdb_vers_jelentes.tsv` sorszam 208); a tartomány nincs kibontva (DT-F131l (A)), ezért a hely nem BDB-példa.*
+*ⓘ Kutatói megjegyzés: a szótári példahely a magyar szövegben nem található, kiemelés nincs: bdb_vers_jelentes.tsv sorszam 3 (1Móz 12:8, fej) · a szótár nem idézi: 2Móz 33:19, 2Móz 34:5, 2Kir 5:11, 1Krón 16:8, Zsolt 79:6, Zsolt 105:1, Zsolt 116:4, Zsolt 116:13, Zsolt 116:17, Ézs 12:4, Jer 10:25, Jóel 2:32, Sof 3:9, Zak 13:9 · 1Kir 18:25: a BDB a helyet nem önállóan idézi, hanem a(z) 4 szakaszban a „1Kin 18:24-25” verstartomány belsejében (`adat/bdb_vers_jelentes.tsv` sorszam 208); a tartomány nincs kibontva (DT382 (A)), ezért a hely nem BDB-példa.*
 
 *A teljes szócikk: [szónézet: /szo/H8034](/szo/H8034) · forrás: `konkordancia/BDB_teljes_unabridged.tsv`*
 
@@ -660,7 +660,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 #### 2. Mélységi szócikk
 
-*Hivatkozás: a BDB-szócikk a fenti „Jelentéstartomány (szótári gerinc)” blokkban áll (DT-F131a).*
+*Hivatkozás: a BDB-szócikk a fenti „Jelentéstartomány (szótári gerinc)” blokkban áll (DT371).*
 
 #### 3. Teológiai szócikk
 
@@ -706,7 +706,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 #### 8. Nyelvi háttér
 
-*Hivatkozás: a BDB-szócikk feje (nyelvi háttér) a fenti „Jelentéstartomány (szótári gerinc)” blokkban áll (DT-F131a).*
+*Hivatkozás: a BDB-szócikk feje (nyelvi háttér) a fenti „Jelentéstartomány (szótári gerinc)” blokkban áll (DT371).*
 
 #### 9. Versenkénti jelentés
 

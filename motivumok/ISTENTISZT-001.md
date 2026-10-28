@@ -239,7 +239,7 @@ külön, ötödikként azt az esetet, amikor a szó a héber
 „hívni" jelentésről van szó, hanem arról a szűk kategóriáról,
 amelyet maga a szótár köt a héber formulához.
 
-【NAPLO: F131.3.18, 2026-10-28 — a 2. pont tagolás-leírása a Thayer szövegéhez igazítva (`adat/thayer_szakaszok.tsv`, `adat/forditasok.tsv` Thayer G1941 sz3–sz7): az 1. ág „elnevezni” (DT-F131i); a 4. ág a Thayerben „segítségül hívni (anrufen)” segítőként, tanúként és bíróként, a fellebbezés (ApCsel 25:11) ennek egyik esete. Az értelmezés nem változott; a felhasználó döntése: DT-F131f 1. javítókör (C).】
+【NAPLO: F131.3.18, 2026-10-28 — a 2. pont tagolás-leírása a Thayer szövegéhez igazítva (`adat/thayer_szakaszok.tsv`, `adat/forditasok.tsv` Thayer G1941 sz3–sz7): az 1. ág „elnevezni” (DT379); a 4. ág a Thayerben „segítségül hívni (anrufen)” segítőként, tanúként és bíróként, a fellebbezés (ApCsel 25:11) ennek egyik esete. Az értelmezés nem változott; a felhasználó döntése: DT377 1. javítókör (C).】
 
 **3. A Róm 10:12【NAPLO: 2026.09.22-én felvéve】.** A 10:13-as Jóel-idézetet
 egy olyan mondat vezeti be, amely ugyanezt az igét használja, és a

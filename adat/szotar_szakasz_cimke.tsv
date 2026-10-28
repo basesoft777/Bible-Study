@@ -1,9 +1,9 @@
 szotar	strong	szakasz	lexikon_jelentes_szam	cimke_hu	proveniencia	megjegyzes
-BDB	H7121	Qal/2/c	2.c	segítségül hívni	scope=manual | forras=F131 (DT-F131b–d, a végrehajtó javaslata; jóváhagyás: DT-F131f) | ts=2026-10-26	
-BDB	H7121	Qal/3/-	3	kihirdetni	scope=manual | forras=F131 (DT-F131b–d, a végrehajtó javaslata; jóváhagyás: DT-F131f) | ts=2026-10-26	
-BDB	H7121	Qal/3/b		a nevet kihirdetni	scope=manual | forras=F131 (DT-F131b–d, a végrehajtó javaslata; jóváhagyás: DT-F131f) | ts=2026-10-26	
-BDB	H8034	-/3/-		név: Isten megjelölése	scope=manual | forras=F131 (DT-F131b–d, a végrehajtó javaslata; jóváhagyás: DT-F131f) | ts=2026-10-26	
-BDB	H8034	-/4/-		név: hamis istenekről	scope=manual | forras=F131 (DT-F131b–d, a végrehajtó javaslata; jóváhagyás: DT-F131f) | ts=2026-10-26	
-TBESG	G1941	2	2	segítségül hívni, folyamodni valakihez	scope=manual | forras=F131 (DT-F131b–d, a végrehajtó javaslata; jóváhagyás: DT-F131f) | ts=2026-10-26	a TBESG tagolása (a lexikon_hivatkozasok.tsv kulcsa); DT-F131c (a)
-Thayer	G1941	-/1/-		elnevezni	scope=manual | forras=F131 (DT-F131i, a felhasználó döntése) | ts=2026-10-27	DT-F131i
-Thayer	G1941	-/5/-		segítségül hívni a név kimondásával	scope=manual | forras=F131 (DT-F131b–d, a végrehajtó javaslata; jóváhagyás: DT-F131f) | ts=2026-10-26	
+BDB	H7121	Qal/2/c	2.c	segítségül hívni	scope=manual | forras=F131 (DT372–d, a végrehajtó javaslata; jóváhagyás: DT377) | ts=2026-10-26	
+BDB	H7121	Qal/3/-	3	kihirdetni	scope=manual | forras=F131 (DT372–d, a végrehajtó javaslata; jóváhagyás: DT377) | ts=2026-10-26	
+BDB	H7121	Qal/3/b		a nevet kihirdetni	scope=manual | forras=F131 (DT372–d, a végrehajtó javaslata; jóváhagyás: DT377) | ts=2026-10-26	
+BDB	H8034	-/3/-		név: Isten megjelölése	scope=manual | forras=F131 (DT372–d, a végrehajtó javaslata; jóváhagyás: DT377) | ts=2026-10-26	
+BDB	H8034	-/4/-		név: hamis istenekről	scope=manual | forras=F131 (DT372–d, a végrehajtó javaslata; jóváhagyás: DT377) | ts=2026-10-26	
+TBESG	G1941	2	2	segítségül hívni, folyamodni valakihez	scope=manual | forras=F131 (DT372–d, a végrehajtó javaslata; jóváhagyás: DT377) | ts=2026-10-26	a TBESG tagolása (a lexikon_hivatkozasok.tsv kulcsa); DT373 (a)
+Thayer	G1941	-/1/-		elnevezni	scope=manual | forras=F131 (DT379, a felhasználó döntése) | ts=2026-10-27	DT379
+Thayer	G1941	-/5/-		segítségül hívni a név kimondásával	scope=manual | forras=F131 (DT372–d, a végrehajtó javaslata; jóváhagyás: DT377) | ts=2026-10-26	

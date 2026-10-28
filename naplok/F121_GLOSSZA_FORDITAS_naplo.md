@@ -1,10 +1,10 @@
 # F121 napló — F121.0 (a „nevezni” tétel), TBESG G1941 `1`
 
-*2026-10-27 · proveniencia: manual (felhasználói döntés: DT-F131i, 2026-10-27) · végrehajtó: claude-sonnet-5-5*
+*2026-10-27 · proveniencia: manual (felhasználói döntés: DT379, 2026-10-27) · végrehajtó: claude-sonnet-5-5*
 
 **Hatókör.** Csak a `TBESG G1941 G1941 1 forditas_hu` sor. A Thayer G1941 `teljes` sor és a terminológia-sorok az F121.0 hátralévő része, nem érintettek.
 
-**Eltérés a brief szövegétől.** A brief 2b szakasza „más néven is nevezni” alakot írt; a DT-F131i szerint a helyette: „nevet adni; ragadványnevet adni, ha a mellékes név a lényeg”. A „nevezni”/„elnevezni” rendben van. A döntés az irányadó.
+**Eltérés a brief szövegétől.** A brief 2b szakasza „más néven is nevezni” alakot írt; a DT379 szerint a helyette: „nevet adni; ragadványnevet adni, ha a mellékes név a lényeg”. A „nevezni”/„elnevezni” rendben van. A döntés az irányadó.
 
 **Diff (szöveges).**
 - előtte: `hívni, nevezni, melléknevet adni: tárgyesettel (klasszikus), …`
