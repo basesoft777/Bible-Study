@@ -1891,6 +1891,45 @@ def bdb_peldak(adat, strong, vers):
     return [r for r in adat['bdb_vj'].get((strong, vers), []) if r['utvonal'] not in ('fej', 'cim')]
 
 
+_VERS_RE = re.compile(r'^(.+) (\d+):(\d+)$')
+
+
+def bdb_tartomanyban(adat, strong, vers):
+    """DT-F131l (A), a felhasználó döntése (2026-10-28): ha a BDB a verset csak egy verstartomány belsejében idézi
+    („1Kin 18:24-25”: a 18:25), a hely nem BDB-példa (a tartomány nincs kibontva), de az ⓘ ezt kimondja.
+    A tartomány a 2.29 sorának `nyers`-e és a 2.30 azonos útvonalú szakaszszövege szerint: az azonos `nyers`-ű
+    sorok (sorszám szerint) és a `nyers` előfordulásai a szövegben sorrendben párosítva; eltérő darabszámnál nincs
+    állítás. Csak `azonos` versfeloldású sorokon. Visszaad: az ⓘ-mondatok listája (üres, ha nincs ilyen tartomány)."""
+    m = _VERS_RE.match(vers)
+    if not m:
+        return []
+    konyv, c, v = m.group(1), int(m.group(2)), int(m.group(3))
+    csoport = {}
+    for (st, kv), sorok in adat['bdb_vj'].items():
+        mk = _VERS_RE.match(kv) if st == strong else None
+        if not mk or mk.group(1) != konyv or int(mk.group(2)) != c or int(mk.group(3)) >= v:
+            continue
+        for r in sorok:
+            if r.get('vers_feloldas') == 'azonos' and r['utvonal'] not in ('fej', 'cim'):
+                csoport.setdefault((gerinc_utvonal_vag(r['utvonal']), r['nyers']), []).append(r)
+    ki = []
+    for (vag, nyers), sorok in sorted(csoport.items()):
+        szoveg = ' '.join(' '.join(x for x in (sz.get('jel'), sz.get('szoveg')) if x)
+                          for sz in adat['bdb_sz'].get(strong, []) if gerinc_utvonal_vag(sz['utvonal']) == vag)
+        elofordulas = list(re.finditer(r'(?<![\w:])' + re.escape(nyers) + r'(?![\d])', szoveg))
+        sorok = sorted(sorok, key=lambda r: int(r['sorszam']))
+        if len(elofordulas) != len(sorok):
+            continue
+        for r, e in zip(sorok, elofordulas):
+            t = re.match(r'\s*[-–]\s*(\d+)(?![\d:])', szoveg[e.end():])
+            if t and int(_VERS_RE.match(r['karoli_vers']).group(3)) < v <= int(t.group(1)):
+                ki.append('a BDB a helyet nem önállóan idézi, hanem a(z) %s szakaszban a „%s%s” verstartomány '
+                          'belsejében (`%s` sorszam %s); a tartomány nincs kibontva (DT-F131l (A)), ezért a hely '
+                          'nem BDB-példa' % (szakasz_jel(r['utvonal']), nyers, t.group(0).strip(),
+                                             BDB_VERS_JELENTES_FAJL, r['sorszam']))
+    return ki
+
+
 def _bdb_sor_utvonal(adat, strong, vag_ut):
     """A 2.30 teljes útvonala a levágott alakhoz (`-/3` → `-/3/-`)."""
     for r in adat['bdb_sz'].get(strong, []):
@@ -1945,8 +1984,11 @@ def jelentes_cimke_token(adat, szotar, strong, jelentes_szam, vers, kutatoi_toke
         ip.append('kutatói hozzárendelés a %s tagolása szerint (`elofordulasok.tsv` jelentes_szam „%s” → %s, `%s`)'
                   % (szotar, kulcs, ('' if szotar == 'BDB' else szotar + ' ') + szakasz_jel(kut_ut),
                      SZAKASZ_CIMKE_FAJL))
+        if szotar == 'BDB':
+            ip.extend(bdb_tartomanyban(adat, strong, vers))
     else:
-        return None, '', ''
+        tart = bdb_tartomanyban(adat, strong, vers) if szotar == 'BDB' else []
+        return None, '', '; '.join(tart)
     if minosito:
         ip.append('a kutatói jelentésszám minősítője („%s”) nem a szó jelentése, a címkébe nem kerül (N-F131b)'
                   % minosito)

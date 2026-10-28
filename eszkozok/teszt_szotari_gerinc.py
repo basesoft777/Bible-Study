@@ -325,6 +325,18 @@ class ValodiAdat(unittest.TestCase):
         self.assertTrue(LG.bdb_peldak(a, 'H7121', '1Kir 18:26'))
         self.assertFalse(LG.bdb_peldak(a, 'H8034', '1Kir 18:25'))
 
+    def test_1kir_18_25_tartomanyban(self):
+        # DT-F131l (A): a 18:25 a „1Kin 18:24-25” tartomány belseje; a cella hiányt mond, az ⓘ a tartományt nevezi meg
+        _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
+        s = next(r for r in elo_sorok if r['id'] == 'ISTENTISZT-001' and r['igehely'] == '1Kir 18:25')
+        cella, ik = LG.jelentes_cella(LG.gerinc_adat(), s)
+        self.assertIn('H8034: *(nincs hozzárendelés)*', cella)
+        self.assertNotIn('nincs kutatói hozzárendelés és szótári példahely', ik)
+        self.assertEqual(ik.count('„1Kin 18:24-25” verstartomány belsejében'), 2)
+        self.assertIn('sorszam 99)', ik)
+        self.assertIn('sorszam 208)', ik)
+        self.assertNotIn('sorszam 97)', ik)
+
     def test_2moz_33_19(self):
         _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
         s = next(r for r in elo_sorok if r['id'] == 'ISTENTISZT-001' and r['igehely'] == '2Móz 33:19')
