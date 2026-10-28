@@ -657,5 +657,94 @@ class Tiltott(unittest.TestCase):
         self.assertTrue(talalt <= {('Thayer', 'G1941')}, talalt)
 
 
+class BdbJavitas(unittest.TestCase):
+    """F67: a 17_bdb_javitas kapu (DT55); tabla: adat/bdb_igehely_javitas.tsv, SEMA 2.23."""
+
+    F = 'A fold. Eccl 17:10 mondja.'
+
+    def kapu(self, forras, forditas, strong='H7223', szotar='BDB'):
+        return K.ellenoriz_bdb_javitas(szotar, forras, forditas, strong)
+
+    def test_rendben(self):
+        self.assertEqual(self.kapu(self.F, 'A fold. Préd 7:10 [BDB: Préd 17:10] mondja.')[0], 'RENDBEN')
+
+    def test_hianyzo_jeloles(self):
+        e, d = self.kapu(self.F, 'A fold. Préd 7:10 mondja.')
+        self.assertEqual(e, 'SERTES')
+        self.assertIn('hiányzik', d)
+
+    def test_rossz_y(self):
+        e, d = self.kapu(self.F, 'A fold. Préd 8:10 [BDB: Préd 17:10] mondja.')
+        self.assertEqual(e, 'SERTES')
+        self.assertIn('hiányzik', d)
+        self.assertIn('jogosulatlan: Préd 8:10 [BDB: Préd 17:10]', d)
+
+    def test_csupasz_x(self):
+        e, d = self.kapu(self.F, 'A fold. Préd 17:10 mondja.')
+        self.assertEqual(e, 'SERTES')
+        self.assertIn('jelölés nélküli', d)
+
+    def test_jelolt_marad_jelolese(self):
+        # H0001 `Esth 11:32`: jelolt_marad, a forras alakja marad; a jelolese jogosulatlan
+        e, d = self.kapu('Esth 11:32 itt', 'Eszt 10:32 [BDB: Eszt 11:32] itt', strong='H0001')
+        self.assertEqual(e, 'SERTES')
+        self.assertIn('jogosulatlan', d)
+        self.assertEqual(self.kapu('Esth 11:32 itt', 'Eszt 11:32 itt', strong='H0001')[0], 'RENDBEN')
+
+    def test_ismeretlen_x(self):
+        e, d = self.kapu(self.F, 'A fold. Préd 7:10 [BDB: Préd 17:10] Ézs 2:3 [BDB: Ézs 22:3] mondja.')
+        self.assertEqual(e, 'SERTES')
+        self.assertIn('jogosulatlan: Ézs 2:3 [BDB: Ézs 22:3]', d)
+
+    def test_hatarolt_forrashivatkozas(self):
+        # `Ezra 16:8` nem talalat az `Ezra 16:80`-ban; a forras nem tartalmazza, jeloles sem kell
+        self.assertEqual(self.kapu('Ezra 16:80 itt', 'Ezsd 16:80 itt', strong='H0479')[0], 'RENDBEN')
+        self.assertEqual(self.kapu('Ezra 16:8 itt', 'Ezsd 6:8 [BDB: Ezsd 16:8] itt', strong='H0479')[0], 'RENDBEN')
+
+    def test_tobbszori_elofordulas(self):
+        f = 'Eccl 17:10 es Eccl 17:10'
+        self.assertEqual(self.kapu(f, 'Préd 7:10 [BDB: Préd 17:10] es Préd 7:10 [BDB: Préd 17:10]')[0], 'RENDBEN')
+        e, d = self.kapu(f, 'Préd 7:10 [BDB: Préd 17:10] es Préd 17:10')
+        self.assertEqual(e, 'SERTES')
+        self.assertIn('forrás ×2, jelölt ×1', d)
+
+    def test_nincs_tablasor(self):
+        self.assertEqual(self.kapu('semmi', 'semmi', strong='H9999')[0], 'RENDBEN')
+        self.assertEqual(self.kapu('semmi', 'Préd 7:10 [BDB: Préd 17:10]', strong='H9999')[0], 'SERTES')
+
+    def test_strong_nelkul_es_thayer_nem_gatol(self):
+        self.assertEqual(K.ellenoriz_bdb_javitas('BDB', self.F, 'A fold. Préd 7:10 mondja.')[0], 'RENDBEN')
+        self.assertEqual(self.kapu(self.F, 'bármi', strong='G0012', szotar='Thayer')[0], 'RENDBEN')
+
+    def test_kapusor_strong_nelkul_bajtra_azonos(self):
+        f, h = 'to surname Eccl 17:10', 'melléknéven nevezni Préd 7:10 [BDB: Préd 17:10]'
+        mostani = K.kapuk_futtat('BDB', f, h)
+        self.assertNotIn('17_bdb_javitas', [n for n, _, _ in mostani])
+        strongos = K.kapuk_futtat('BDB', f, h, strong='H7223')
+        self.assertEqual([x for x in strongos if x[0] != '17_bdb_javitas'], mostani)
+        self.assertEqual(strongos[-1][:2], ('17_bdb_javitas', 'RENDBEN'))
+        self.assertEqual(K.kapuk_futtat('Thayer', f, h, strong='G0012'), K.kapuk_futtat('Thayer', f, h))
+
+    def test_gatol(self):
+        self.assertIn('17_bdb_javitas', K.GATOLO)
+        e = K.kapuk_futtat('BDB', self.F, 'A fold. Préd 7:10 mondja.', strong='H7223')
+        self.assertFalse(K.atment(e))
+
+    def test_szakaszos(self):
+        f = '⟪1⟫ szó. A fold. Eccl 17:10 mondja. ⟪2⟫ 2 más'
+        jo = '⟪1⟫ szó. A fold. Préd 7:10 [BDB: Préd 17:10] mondja. ⟪2⟫ 2 más'
+        rossz = '⟪1⟫ szó. A fold. Préd 7:10 mondja. ⟪2⟫ 2 más'
+        e = dict((n, x) for n, x, _ in K.kapuk_futtat_szakaszos('BDB', f, jo, strong='H7223'))
+        self.assertEqual(e['17_bdb_javitas'], 'RENDBEN')
+        e = dict((n, x) for n, x, _ in K.kapuk_futtat_szakaszos('BDB', f, rossz, strong='H7223'))
+        self.assertEqual(e['17_bdb_javitas'], 'SERTES')
+        nevek = [n for n, _, _ in K.kapuk_futtat_szakaszos('BDB', f, jo)]
+        self.assertNotIn('17_bdb_javitas', nevek)
+
+    def test_homograf_kulcs(self):
+        self.assertEqual(K._strong_kulcs('H90a'), 'H0090a')
+        self.assertEqual(K._strong_kulcs('H7223'), 'H7223')
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
