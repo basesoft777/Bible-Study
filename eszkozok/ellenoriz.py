@@ -774,6 +774,12 @@ def _forditasok_forras_szoveg_idx(adat_dir):
             alap = ('UBS_DNTG', r['strong'], r['lexid'], r['entry_kod'])
             idx[alap + ('definicio_hu',)] = r.get('definicio_rovid', '')
             idx[alap + ('glosszak_hu',)] = r.get('glosszak', '')
+
+    # F121 (DT-F121b): UBS_DBH -- entry_id = lexid, jelentes_szam = '—'; egy feloldo (glossza_lexikon_forditas)
+    if os.path.exists(os.path.join(konkordancia_dir, 'UBS_DBH_jelentesek.tsv')):
+        import glossza_lexikon_forditas as GLF
+        for (strong, lexid, mezo), szoveg in GLF.dbh_forras_idx(konkordancia_dir).items():
+            idx[('UBS_DBH', strong, lexid, GLF.EM_DASH, mezo)] = szoveg
     return idx
 
 

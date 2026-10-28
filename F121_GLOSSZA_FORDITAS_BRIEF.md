@@ -6,11 +6,12 @@ tipus: feladat
 fazis: 2
 modell: sonnet
 munka: adat
-allapot: nem_indult
-ad: a 8 motívum lexikonoldalán `(fordításra vár)` jelölést viselő 454 egyedi szótári egység (UBS DBH, UBS DNTG, TBESH, tW, a döntés szerint Mounce) magyar fordítása az adat/forditasok.tsv-ben, kapukon átengedve, forrás-hash-sel; a 13. szabály az új szótárakra is ellenőriz
-kovetkezo: "M0: az első tétel (a „nevezni” terminológiai sorai és a G1941 két kézi sorának javítása), utána a mérés megismétlése, az eszközök, a négy mankó és a terminológia v4 tervezete; ⛔ a D1–D4 döntés és a v4 jóváhagyása"
+allapot: megallt
+ag: claude/f121-glossza-istentiszt-10e2a8
+ad: **szűkítve (DT-F121b, 2026-10-28):** az ISTENTISZT-001 lexikonlapon `(fordításra vár)` jelölést viselő egyedi szótári egységek (a #131 után 6: 5 UBS DBH definíció + az UBS DNTG G1941 56.15 glosszája) magyar fordítása az adat/forditasok.tsv-ben, kapukon átengedve, forrás-hash-sel; a 13. szabály az UBS_DBH-ra is ellenőriz; az eszközök és a terminológia a többi lapra is használhatók. *(Eredeti ad: a 8 motívum 454 egysége, UBS DBH/DNTG, TBESH, tW, Mounce.)*
+kovetkezo: "Te: ⛔ D1 (DT234: a CC BY-SA forrású fordítás licence, a 6 sorra) és a terminológia v4 első sorai (call/name/shout, nevezni-család) jóváhagyása a naplok/F121_GLOSSZA_FORDITAS_naplo.md 3. szakasza szerint; utána a 6 sor rögzítése, próbarender, a minta elolvasása (⛔)"
 olvas: [konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/LXX_versszintu_parok.tsv, adat/forditasok.tsv, adat/terminologia.tsv, adat/licencek.tsv, adat/SEMA.md, adat/karoli_strong/, konkordancia/Karoli_1908.tsv, eszkozok/bdb_adatblokk.py, naplok/FORDITAS_P3_kimenet.tsv, eszkozok/lexikon_general.py, eszkozok/general.py, eszkozok/emeles.py, eszkozok/forditas_kapuk.py, eszkozok/ellenoriz.py, konkordancia/tW_szocikkek.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/TBESH.txt, konkordancia/MCGED_teljes.tsv, archivum/ISTENTISZT-001/, F38_BDB_FORDITAS_BRIEF.md, F28_EMELES_BRIEF.md, generalt_proba/F09_szotar_s2_proba/lexikon/]
-ir: [adat/forditasok.tsv, adat/terminologia.tsv, adat/tiltott_fordulatok.tsv, adat/licencek.tsv, adat/SEMA.md, eszkozok/glossza_forditas.py, eszkozok/teszt_glossza_forditas.py, eszkozok/ellenoriz.py, eszkozok/forditas_kapuk.py, eszkozok/teszt_forditas_kapuk.py, naplok/F121_GLOSSZA_FORDITAS_naplo.md, naplok/F121_GLOSSZA_FORDITAS_lista.tsv, naplok/F121_GLOSSZA_FORDITAS_bukottak.tsv, naplok/F121_GLOSSZA_FORDITAS_szojegyzek_javaslat.tsv, naplok/F121_GLOSSZA_FORDITAS_visszamenoleges.tsv]
+ir: [adat/forditasok.tsv, adat/terminologia.tsv, adat/tiltott_fordulatok.tsv, adat/licencek.tsv, adat/SEMA.md, eszkozok/glossza_lexikon_forditas.py, eszkozok/teszt_ellenoriz_13.py, DONTESEK.md, eszkozok/ellenoriz.py, eszkozok/forditas_kapuk.py, eszkozok/teszt_forditas_kapuk.py, naplok/F121_GLOSSZA_FORDITAS_naplo.md, naplok/F121_GLOSSZA_FORDITAS_lista.tsv, naplok/F121_GLOSSZA_FORDITAS_bukottak.tsv, naplok/F121_GLOSSZA_FORDITAS_szojegyzek_javaslat.tsv, naplok/F121_GLOSSZA_FORDITAS_visszamenoleges.tsv]
 fugg: [11]
 nem_fugg: [7, 27, 38]
 ---
@@ -163,6 +164,10 @@ forrására. Helyőrzőjük az 5. szakaszban: DT238–i. Amíg a felhasználó n
    `szotar=BDB` sort nem ír (E5).
 
 ## 3. Hatókör
+
+**SZŰKÍTÉS (DT-F121b, a felhasználó döntése, 2026-10-28: „#121 szűkítve”).** Ez a menet csak az `lexikon/ISTENTISZT-001_TUDOMANYOS.md` lap `(fordításra vár)` jelölésű egységeit fordítja. A #131 (DT371/DT272) óta a tW, a TBESH, a Mounce és a teljes UBS-szócikk lekerült a lapról, ezért a 454 egységből a lapon **6 egyedi egység** maradt (5 UBS DBH `definicio_hu` — H7121: `006562001001000`, `…009000`, `…011000`; H8034: `007442001001000`, `…004000` — és az UBS DNTG G1941 `001957001003000` `56.15` `glosszak_hu`). A szám körül kétféle mérés van: a laza `grep -c` 23 sort, a `(fordításra vár)` karaktersorozat 46 előfordulást ad (44 DBH-definíció-előfordulás, 1 domén, 1 a lap magyarázó lábjegyzete); egység-szinten 6. A D1 érinti a 6 sort (CC BY-SA forrás); a D2 (Mounce), D3 (TBESH-dedup) és D4 (tW) ezen a lapon tárgytalan, a többi lapra marad. A többi 7 lap és a további szótárak nem feladat; a lista-eszköz és a 13. szabály bővítése viszont általános. Az alábbi eredeti hatókör a későbbi lapokra érvényes tervként marad.
+
+**Eszköznév (DT-F121c, a DT338 (c) szerint):** külön fájl, `eszkozok/glossza_lexikon_forditas.py`; a #140 `glossza_forditas.py`-ja érintetlen.
 
 **Benne van:**
 - a 454 hiányzó egység fordítása a fenti négy forrásból (`UBS_DBH`, `UBS_DNTG`, `TBESH`,
