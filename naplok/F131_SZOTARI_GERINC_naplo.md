@@ -224,6 +224,31 @@ Egy későbbi #133 / #144 / #140 futás után ugyanez a mérés megmutatja, vál
 
 Megjegyzés: az éles `lexikon/` 7 lapja a generátorhoz képest elavult (DT344), ezért a #121-egységeket a mai generátor repón kívüli renderéből számoltam; a 454-es #121-szám ennek megfelelő (a DBH része 268).
 
+### 5.3 A DT-F131f 1. javítóköre (F131.3.13–F131.3.14): a H8034 két BDB-példa-hiánya
+
+**Döntés (F131.3.13, a felhasználó):** DT-F131f (1) javítással újra, 1. kör a kettőből; (2) a címkék változatlanok; (3) az 56.15 (a). A kör tárgya a `adat/bdb_vers_jelentes.tsv` H8034-példáinak két hiánya.
+
+**(a) 1Móz 26:25.** A BDB H8034 3. szakasza „so 12:8; 13:4; 21:33; 26:35” — a 26:35 a forrásban áll (a magyar 2.32 is „26:35”); a TAHOT szerint a H8034 az 1Móz 26:25-ben áll (a H7121-gyel), a 26:35-ben nem. Sajtóhiba-gyanú; a javítás módját a brief nem rögzíti, és a meglévő javítótáblák (2.23, 2.31) egyike sem fedi → **DT-F131k** (🟡, `DONTESEK.md`). Korrekció nem készült.
+
+`scope=H8034, 1Móz 26:25/26:35 | forras=konkordancia/BDB_teljes_unabridged.tsv, konkordancia/TAHOT_kivonat.tsv | ts=2026-10-28`
+
+**(b) 1Kir 18:25, 18:26.** A kinyerő (`eszkozok/olvaso_szerver/bdb_szelet.py` `hivatkozasok()`) a „1Kin 18:24-25, 26” alakban csak a 18:24-et ismeri fel: a folytatás-minta (`_FOLYTATAS`) a token végén keres, a „-25” tartomány után nem. A kinyerő és a 2.29 tábla a #102 (`nem_indult`) `ir`-ében áll; a #131 nem írta át, hanem a javítás két változatát a memóriában mérte a teljes táblán (`naplok/F131_bdb_tartomany_meres.py`, a `B.hivatkozasok` futásidejű cseréjével; a repó fájljai változatlanok):
+
+`scope=adat/bdb_vers_jelentes.tsv, teljes | forras=naplok/F131_bdb_tartomany_meres.py; bdb_vers_jelentes.py general() --ts 2026-10-16 | ts=2026-10-28 13:59`
+
+| | A: folytatás a tartomány után | B: A + a tartományok kibontása |
+|---|---|---|
+| a mai kód kimenete ↔ a commitolt tábla | azonos (160 616 sor) | azonos |
+| hozzáadott sor / elveszett | 1 438 / 0 | 5 880 / 0 |
+| érintett szócikk | 603 | 1 521 |
+| új Károli-igehely | 1 429 | 5 715 |
+| régi sor más `sorszam`-mal | 35 012 | 77 280 |
+| arany (H7121, H8034) | + 1Kir 18:26 mindkettőnél; H7121 + 1Sám 3:8, 1Móz 5:29, Jer 7:14, 7:30 | + 1Kir 18:25 és 18:26 mindkettőnél; **de** a H7121 „4:25-26” (Qal 6.a) az 1Móz 4:26-ot második útvonalon is BDB-példává teszi → a gerinc GerincHibát ad (kézi kérdés) |
+
+→ **DT-F131l** (🟡, `DONTESEK.md`). A javítás a #102-é; a #131 a tervet és a mérést adja át.
+
+**Ezért ebben a körben a generátor, a tábla és a próbalap nem változott** (a két hiány javítása a DT-F131k/l döntésétől és a #102-től függ); új próbarender és Artifact-frissítés nem készült, a próbalap a 3. verzió (5.2).
+
 ## 6. ⛔ 3.1 — DT-F131f: az elfogadási próba
 
 A felhasználó a renderelt próbalapot olvassa. A kérdés: *a szó jelentését és a hely motívumbeli funkcióját két külön dolognak látja-e?* Ugyanitt dönt a címkék szövegéről (3.1) és a 4.2 kérdéséről (az 56.15-ös kód). A próbalap az 5.2 szerinti (F131.3.11). A végrehajtás itt áll.
