@@ -380,7 +380,7 @@ A nevesített tanítói egyezés-keresés (7. lépés, B9) eredménye a saját f
 
 **Alkalmazási kérdések** *(a tanulmány saját Peshat/Remez/Drash/Sod rétegeiből, kiegészítve a saját fájlban nevesített tanítói forrással: Derek Prince ⚠️ részleges/beágyazott; a többi jóváhagyott tanítónál, Kenneth Hagint is beleértve, nincs igazolt forrás (gap))*:
 
-1. *Mit jelent ez a mai hívő mindennapi életében?* A segítségül hívás nem passzív érzés, hanem hitbeli cselekvés: az Úr nevét az hívja segítségül, aki hisz benne (Róm 10:14, l. 3. pont); a genezisi pátriárkák pedig azt mutatják, hogy ez egy visszatérő, helyhez köthető, akár nemzedékről nemzedékre átadható gyakorlattá is válhat.
+1. *Mit jelent ez a mai hívő mindennapi életében?* A segítségül hívás nem passzív érzés, hanem hitbeli cselekvés: az Úr nevét az hívja segítségül, aki hisz benne (Róm 10:14, l. a PaRDeS keretrendszer szakaszát); a genezisi pátriárkák pedig azt mutatják, hogy ez egy visszatérő, helyhez köthető, akár nemzedékről nemzedékre átadható gyakorlattá is válhat.
 2. *Milyen konkrét lépést, döntést vagy szokásváltozást von maga után?* Ábrahám és Izsák mintája szerint: a segítségül hívás nem egyszeri esemény, hanem tudatosan felkeresett/fenntartott gyakorlat — érdemes "saját Beérsebát" (állandó imádati pontot/szokást) kialakítani.
 3. *Milyen érzelmi/lelki ellenállás merülhet fel?* A Bábel-mintázat (saját név felmagasztalása) folyamatos kísértés az önerőből való megfelelésre; Derek Prince a levertségből való saját szabadulásáról szóló beszámolóiban a Jóel 2:32 ígéretére támaszkodva hívta segítségül az Úr nevét (a tanítói fájl 3.1) — a szöveg is azt mutatja, hogy pontosan ez (a függőség beismerése) a helyes válasz.
 
