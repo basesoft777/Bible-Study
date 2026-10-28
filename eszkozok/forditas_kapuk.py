@@ -663,7 +663,8 @@ def ellenoriz_tiltott(forditas, tiltott=None):
 # ---------------------------------------------------------------------------
 
 _JAVITAS = {}
-BDB_JELOLES_YX = re.compile(r'(?<![A-Za-zÀ-ɏ0-9])(\d?[A-Za-zÀ-ɏ]+\.? \d{1,3}:\d{1,3}) \[BDB: ([^\]]+)\]')
+# Y elott opcionalis: a maga allo `[BDB: X]` is jeloles (F67 javitokor: jogosulatlan, ha nem egy `javitva` sor Y-javal all)
+BDB_JELOLES_YX = re.compile(r'(?:(?<![A-Za-zÀ-ɏ0-9])(\d?[A-Za-zÀ-ɏ]+\.? \d{1,3}:\d{1,3}) )?\[BDB: ([^\]]*)\]')
 
 
 def javitas_betolt(ut=None):
@@ -709,10 +710,10 @@ def ellenoriz_bdb_javitas(szotar, forras, forditas, strong=None, tabla=None):
         return 'RENDBEN', 'nem alkalmazhato (nem BDB vagy nincs Strong)'
     tabla = javitas_betolt() if tabla is None else tabla
     sorok = tabla.get(_strong_kulcs(strong), [])
-    jelolesek = BDB_JELOLES_YX.findall(forditas)
+    jelolesek = [(y or '', x) for y, x in BDB_JELOLES_YX.findall(forditas)]
     if not sorok:
         if jelolesek:
-            return 'SERTES', 'jogosulatlan: ' + ', '.join('%s [BDB: %s]' % yx for yx in jelolesek) + ' (a Strongnak nincs sora a tablaban)'
+            return 'SERTES', 'jogosulatlan: ' + ', '.join(('%s [BDB: %s]' % yx).strip() for yx in jelolesek) + ' (a Strongnak nincs sora a tablaban)'
         return 'RENDBEN', 'nincs javitotabla-sor'
     if _KONYV is None:
         _KONYV = _konyv_mintak()
@@ -741,7 +742,7 @@ def ellenoriz_bdb_javitas(szotar, forras, forditas, strong=None, tabla=None):
             hibak.append('jelölés nélküli: %s ×%d (kell: %s [BDB: %s])' % (x, csupasz_db, y, x))
     for yy, xx in sorted(set(jelolesek)):
         if (yy, xx) not in jav_par:
-            hibak.append('jogosulatlan: %s [BDB: %s]' % (yy, xx))
+            hibak.append('jogosulatlan: ' + ('%s [BDB: %s]' % (yy, xx)).strip())
     if hibak:
         return 'SERTES', '; '.join(hibak)
     return 'RENDBEN', '%d javítva sor, %d jelölés' % (db_jav, len(jelolesek))

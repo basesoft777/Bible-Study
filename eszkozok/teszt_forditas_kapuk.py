@@ -741,6 +741,26 @@ class BdbJavitas(unittest.TestCase):
         nevek = [n for n, _, _ in K.kapuk_futtat_szakaszos('BDB', f, jo)]
         self.assertNotIn('17_bdb_javitas', nevek)
 
+    def test_onallo_jeloles_tabla_nelkuli_strongnal(self):
+        e, d = self.kapu('semmi', 'szo [BDB: Préd 17:10] szo', strong='H9999')
+        self.assertEqual(e, 'SERTES')
+        self.assertIn('jogosulatlan: [BDB: Préd 17:10]', d)
+
+    def test_onallo_jeloles_csak_jelolt_marad_sorral(self):
+        e, d = self.kapu('Esth 11:32 itt', 'Eszt 11:32 [BDB: Eszt 11:32] itt', strong='H0001')
+        self.assertEqual(e, 'SERTES')
+        self.assertIn('jogosulatlan', d)
+        e, d = self.kapu('Esth 11:32 itt', 'itt [BDB: Eszt 11:32] itt', strong='H0001')
+        self.assertEqual(e, 'SERTES')
+        self.assertIn('jogosulatlan: [BDB: Eszt 11:32]', d)
+
+    def test_onallo_jeloles_javitva_sorral_y_nelkul(self):
+        e, d = self.kapu(self.F, 'A fold. Préd 7:10 mondja [BDB: Préd 17:10].')
+        self.assertEqual(e, 'SERTES')
+        self.assertIn('jogosulatlan: [BDB: Préd 17:10]', d)
+        e, d = self.kapu(self.F, 'A fold. a [BDB: Préd 17:10] mondja.')
+        self.assertEqual(e, 'SERTES')
+
     def test_homograf_kulcs(self):
         self.assertEqual(K._strong_kulcs('H90a'), 'H0090a')
         self.assertEqual(K._strong_kulcs('H7223'), 'H7223')
