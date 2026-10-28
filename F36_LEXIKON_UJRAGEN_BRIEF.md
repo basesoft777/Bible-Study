@@ -27,6 +27,12 @@ Az F28 fordításai (39 szócikk), a ψ-javítás és a Szent Szellem-egységes�
 - A törzscikk-render a lexikonoldalra épül: a `--cel lexikon` és a `--cel torzscikk` ugyanabba a `--kimenet` könyvtárba menjen (N-F78a); külön könyvtárral az éles, elavult oldalból renderelne, és visszahozná a G0813-at.
 - A G0540-hez nincs Thayer-sor és önálló Thayer G540 alszakasz: ez a #132 hatóköre marad, a #36 nem tölti ki (hiány, CLAUDE.md 3. szabály).
 
+**Kiegészítés (N-F36a, a #131 hatókörén kívüli kimeneti hibái, PR #497, 2026.10.28).** A #131 (SZOTARI_GERINC) csak az ISTENTISZT-001 lapot generálta újra. A PR-leírás három, a többi lapot érintő hibát hagyott itt; mindhárom a kimenetet érinti, ezért az M1 diff-elemzés tételesen ellenőrzi:
+- **TAHOT-forrásmegjelölés:** a TAHOT (CC BY 4.0, STEPBible) a másik 6 lap Irodalmából és licenclistájából hiányzik, pedig a lapok a `TAHOT_kivonat.tsv`-t forrásként nevezik meg (a #131 elve: DT-F131m, ha a lap egy forrást megnevez, a forrásmegjelölés is ott áll). Várt: a #131 generátorával újragenerálva a lapokon megjelenik; ha nem, megállás.
+- **STEPBible kettőzés a kolofonban:** a STEPBible-megjelölés kétszer áll. Ha az újragenerálás nem szünteti meg, ez generátorhiba (`eszkozok/lexikon_general.py`), amely nincs az `ir`-ben: ⛔ megállás, az `ir` bővítése a felhasználó döntése.
+- **Elavult commitolt változat:** a másik 7 lap commitolt változata eltér a mai generátor kimenetétől (a #131 nulladiffje, `naplok/F131_SZOTARI_GERINC_naplo.md`). Ez a #36 tárgya; az eltérések oka az M1 kategóriái szerint nevezendő meg, a #131 szótári gerince (szakaszcímkék, BDB/Thayer-példák, DBH) külön kategória.
+*(Helyőrző-azonosító; a végleges számot a `szamkiosztas` adja.)*
+
 ## Lépések
 1. **M0 — szárazfutás** ideiglenes könyvtárba a repón kívül (`--kimenet`): az összes lexikonoldal és törzscikk generálása.
 2. **M1 — diff-elemzés:** a generált és az éles közti eltérés fájlonként; minden eltérés oka megnevezve (F28 fordítás / ψ-javítás / terminológia v3 / licenc-címkecsere, N-F89a / egyéb); a licenc-címkecsere sorai (`projekt-adat` → `minden jog fenntartva`) külön számolva, szabad licenc-jelölés (CC BY stb.) a saját adatra és a prózára nem kerülhet be. Váratlan eltérés → megállás.
