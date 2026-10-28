@@ -403,6 +403,9 @@ A felhasználó a renderelt próbalapot olvassa. A kérdés: *a szó jelentésé
 | Károli-vers nélkül | ÚSZ 28 → 29 (+1: G3346 „Heb 7:12</ref>; 7:71”, a forrás versszáma, nem kitöltve) |
 | G1941 | + sorszam 40 ApCsel 9:21, 41 ApCsel 22:16 (szakasz 7, `-/5/-`); a régi 40–43 → 42–45 |
 | minta | G0015 1Pét 3:17; G0071 ApCsel 22:24, 23:31, 25:23; G0080 ApCsel 28:21; G0230 Ján 6:55, 7:40, 8:31, 17:8 |
+| minden sor `ts`-e új | a régi 63 953 sor `ts`-e 2026-10-25, az új 64 431 soré 2026-10-28 (a `--ts 2026-10-28` újragenerálás miatt a diff minden sort érint; tartalmi változás csak a +478 folytatás-sor és a 6 980 `sorszam`-eltolódás) |
+
+*Pótlás a javítókör 2/2-ben (ELLENOR_SZOTARI_GERINC_2, „Napló 8. mérései”):* a táblázat számai (150 szócikk, 6 980 eltolódás, 476 új Károli-igehely) a `python naplok/F131_thayer_folytatas_valtozas.py` hívás kimenetéből valók (a régi tábla alapértelmezésben a `7d004296`-ból, az új a munkafáé; újrafuttatva 2026-10-28 19:35-kor ugyanezt adja). A `ts`-sor mérése: eseti szkript a scratchpadban (`ts_meres.py`, `split('\t')`, a proveniencia `ts=`-értékeinek eloszlása a `7d004296`-on és a munkafán).
 
 - **Fogyasztók:**
   - A `lexikon_general.py` `th_vj`-je: a G1941 Thayer-kiemelés 7 → 9 (az „**ApCsel 9:14**,**21**; **22:16**”). A szótári gerinc ⓘ-je „a szótár nem idézi: ApCsel 9:21, ApCsel 22:16, Róm 10:14” → „Róm 10:14”. Az ApCsel 9:21 és 22:16 sorának ⓘ-je: „a Thayer saját példahelye: Thayer 5 (… sorszam 40 / 41)”. A többi G1941-sor ⓘ-jében a sorszám eltolódik (40–43 → 42–45).
@@ -491,3 +494,94 @@ A brief fejlécének `allapot`-ja a kör utolsó commitjában változik.
 2. **7.4a, H7121.** A kutatói hozzárendelésű tokennél (H7121 mindkét versen) a címke a kutatói hozzárendelésből marad. A szabály betű szerinti olvasata („a címke nem kerül a tokenre”) ezt is levenné; én a BDB-példára vonatkozónak olvastam. Ha a betű szerinti olvasat a kért, a két H7121-cella is hiány lesz.
 3. **Mounce a szónézet-mutatóban.** A lap a Mounce-ot név szerint említi („a Mounce-glossza a szónézetben”), de a Mounce sem az Irodalomban, sem a kolofonban nem áll. A kérdés: kell-e forrásmegjelölés (MCGED), vagy a mondatból kerüljön ki a Mounce neve.
 4. **A tW kötelező megjelölésének „Módosítás” mondata** („a szócikkek szövegét a lexikonoldal idézőblokkba tördelve közli”) az arany lapon nem igaz, mert a lap a tW szövegét nem közli, csak az azonosítókat. A szöveg a licencmegjelölés része, ezért nem írtam át.
+
+## 9. Javítókör 2/2 — ELLENOR_SZOTARI_GERINC_2 (F131.17–F131.24)
+
+**Modell-ellenőrzés:** a session `claude-opus-5-5`, a brief `modell: opus`, egyezik. Kiinduló head: `a32e9a6f` (a main beolvasztása).
+
+**Jóváhagyás:** a felhasználó 2026-10-28-án az orkesztrátor chatjében „Mehet”-tel hagyta jóvá a 2/2. kör javasolt besorolását: DT-F131o — a szabály marad, az 1Móz 4:26 H8034 jelölt hiány, a kutatói H7121-címke marad; a Mounce (MCGED) bekerül az Irodalomba és a kolofonba; az 1., 2., 3a. és 4. tétel mechanikus. A felhasználó aznap az orkesztrált sessionek döntéseit az orkesztrátorra bízta („vedd át a döntéseket”). Merge nincs.
+
+### 9.1 (1.) R5a — a tW-megjelölés „Módosítás” mondata (F131.17)
+
+- **Hol:** `eszkozok/lexikon_general.py`. Új állandó: `TW_MEGJELOLES_MUTATO` („Felhasználás: a lexikonoldal a szócikkek azonosítóit és a forrásfájlt nevezi meg a szónézet mutatójaként; a szócikkek szövegét nem közli.”). A licenc- és szerzőmegjelölés két mondata szó szerint a régi.
+- **A választás:** a `kotelezo_megjeloles(kulcs, tw_szoveg_kozolve)` és a `blokk_kolofon(…, tw_szoveg_kozolve)` a szócikk-blokk tényleges kimenetéből dönt. A `_tw_cikk_blokk` (a szócikk szövegét idézőblokkban közlő, nem-gerinc út) összegzősora a `TW_SZOVEG_JEL`-et hordozza; ha ez a blokkban áll, a régi „Módosítás” mondat marad, különben az új. A `_gerinc_tw` (csak azonosító) a jelet nem írja.
+- **Más lap:** ma csak az ISTENTISZT-001 nevezi meg a tW-t (`grep -l tW_szocikkek lexikon/*.md`: 1 fájl); a szövegközlő út változatlan mondatot ad. A nulladiff (9.7) szerint más lap nem változik.
+- **Teszt:** `test_tw_modositas_mondat_a_felhasznalast_koveti` (a két mondat, a jel a két úton, a kolofon az új mondattal).
+
+### 9.2 (2.) 2d/2e — SEMA 2.35, a tábla fejléce, a Cyril-teszt (F131.18)
+
+- **`adat/SEMA.md` 2.35:** a `bcv`-sor és a folytatás-sor külön áll. A `bcv`-sor igehelye a forrás gépi attribútuma (nincs visszafejtés, öröklött könyv, okkód). A folytatás-sor szövegből visszafejtett, a könyv (`,v`-nél a fejezet is) a lánc előző tagjától öröklött, a jelölés a proveniencia `folytatas`-a. A `konyv` és a `fejezet`, `vers` oszlop leírása mindkét sorfajtára kimondja az eredetet. A régi „nincs szövegből visszafejtés” mondat most csak a `bcv`-sorra vonatkozik.
+- **`eszkozok/thayer_jelolt/vers_jelentes.py`:** a `# forras:` fejléc „(csak a bcv-koordináta és a szerkezet)” helyett „(a bcv-koordináta, a szerkezet és a `</ref>` utáni jelöletlen folytatás, DT-F131n)”.
+- **Újragenerálás:** `python eszkozok/thayer_jelolt/vers_jelentes.py --ts 2026-10-28`; `git diff --stat`: 1 sor (a 2., fejlécsor; a kód-hash is: `868e48f01054` → `ff580a715990`). Az adatsorok (a 4. sortól) bájtra azonosak: sha256 `ad50cfde5f9c…` előtte és utána, 64 434 sor mindkét fájlban. A `--ellenoriz` szerint azonos.
+- **Teszt (2e):** a `test_folytatasok_lanc` Cyril-állítása a `szakasz != '7'` sorokat nézte, holott a „Cyril 7, 1, 35” a G1941 7. szakaszában áll (`adat/thayer_szakaszok.tsv`, G1941 sz7, grep). Most a 7. szakasz folytatás-sora pontosan `[('ApCsel', '9', '21'), ('ApCsel', '22', '16')]`; egy hamis Cyril-sor ebben a listában jelenne meg, tehát az állítás fut. A régi, a 7. szakaszon kívüli állítás is megmaradt.
+
+`proveniencia: scope=adat/thayer_vers_jelentes.tsv, teljes | forras=sha256sum (tail -n +3, előtte/utána); vers_jelentes.py --ellenoriz | ts=2026-10-28`
+
+### 9.3 (3.) L5 — DONTESEK-tételek (F131.19)
+
+- **DT-F131n:** a Thayer `</ref>` utáni jelöletlen folytatása sor, tartomány-kibontás nélkül, a DT-F131l (A) párjaként; +478 sor, 150 szócikk (8.2); felülírja a #132 „csak bcv-koordináta” szabályát; alkalmazva: F131.8 (SEMA és fejléc: F131.18); 🟢 eldöntve, az 1/2. kör „Mehet”-jével.
+- **DT-F131o:** a versszintű BDB-példa nem kerül a tokenre, ha a Strong a Károli-versben ≥2-szer áll (1Kir 18:24, 1Móz 4:26 H8034 → jelölt hiány); a kutatói címke nem BDB-példa, a H7121-címke marad; alkalmazva: F131.7; 🟢 eldöntve, a 2/2. kör „Mehet”-jével.
+- Formátum: 8 oszlop (a beszúró szkript cellánként ellenőrizte), CRLF, helyőrző szám.
+
+### 9.4 (4.) R6a — állapot (F131.20)
+
+- **DT-F131j:** „alkalmazásra vár” → „🟢 eldöntve (a), alkalmazva (F131.3.9: a generátor; F131.3.11: próbarender; F131.4: az éles ISTENTISZT-001 lap)”. Forrás: `git log --oneline --grep="F131j\|DBH"` → `73f445fb` F131.3.9, `203e828b` F131.3.11; az F131.4 (`5f0bfacd`) írta az éles lapot. A DBH-fordítás (#121) része változatlan.
+- **DT-F131m:** „🟢 eldöntve: (a), alkalmazva (F131.11; F131.13: az éles lap)”; a Mounce-kiegészítés a 9.5-ben.
+
+### 9.5 (5.) 2f — Mounce (MCGED) (F131.21)
+
+- **Hol:** `lexikon_general.py`, `_gerinc_ubs_mutato()`. A görög mutató („a teljes UBS DNTG-szócikk és a Mounce-glossza a szónézetben”) a Mounce-ot név szerint megnevezi. A tW útján (F131.11): ha a tokennek van Mounce-szócikke (`mcged_sor`), a `konkordancia/MCGED_teljes.tsv` `MCGED` kulccsal a forráslistába kerül. Ebből lesz az Irodalom sora, a kolofon licenctáblája és a meglévő `MOUNCE_MEGJELOLES` szó szerinti megjelölés. A licenc-címke az `adat/licencek.tsv` MCGED-sorából jön („© Mounce 1993”; a sor licenc-szövege „redistribution with attribution”). A glossza szövege nem kerül a lapra; héber tokenre és Mounce-szócikk nélkül nincs bejegyzés.
+- **DT-F131m:** kiegészítve. Az (a) a Mounce-ra is vonatkozik, a 2/2. kör „Mehet”-jével; alkalmazva: F131.21, az éles lap: F131.22.
+- **Teszt:** `test_mounce_forrasmegjeloles`.
+- **A lapon megnevezett összes forrás.** A lap összes `konkordancia/…` fájlnevét összevetettem az Irodalom és a kolofon fájlneveivel (eseti szkript, `grep -o` + `comm`). Egy hiányt találtam: a **`konkordancia/TAHOT_kivonat.tsv`**. Az F131.7 óta az 1Móz 4:26 és az 1Kir 18:24 ⓘ-je ([^1], [^8]) forrásként nevezi meg („a versben a szó kétszer áll (`konkordancia/TAHOT_kivonat.tsv`)”). A `kizart` blokk és a lap más provenienciasorai korábban is megnevezték. Sem az Irodalomban, sem a kolofonban nem áll. → Nyitott kérdés (9.9), nem döntöttem.
+  - A név szerinti említések közül a Gesenius (469. sor) és az Abbott-Smith (491. sor) a Thayer magyar szövegén belüli hivatkozás, nem a lap forrása.
+  - A többi megnevezett forrás az Irodalomban és a kolofonban áll (BDB, LSJ, LXX, Mounce, OSHL/TWOT, SDBH, SDGNT, SECE, TBESG, TBESH, TSK, Thayer, UBS DNTG, UBS DBH, tW).
+
+### 9.6 Éles lap — a diff két része (F131.22)
+
+`scope=lexikon/ISTENTISZT-001_TUDOMANYOS.md | forras=general.py --cel lexikon --id ISTENTISZT-001 (PARDES_DATUM=2026-10-28): (i) --kimenet a32e9a6f-worktree-ből a repón kívülre, (ii) --ir a HEAD-en; diff (CR nélkül) | ts=2026-10-28`
+
+- **(i) A main beolvasztásának hatása: 0 sor.**
+  - A main `adat/forditasok.tsv`-je +6 599 sort hozott (`git diff --numstat 2077d358 a32e9a6f`), mind `BDB`, 1 433 Strongon, ebből H7121/H8034: 0. Az `eszkozok/forditas_kapuk.py` +14/−7 sorral változott.
+  - Az `a32e9a6f` kódjával és adatával, a repón kívül renderelt lap bájtra azonos a commitolt lappal.
+  - `(fordításra vár)`: 23 sor / 46 előfordulás előtte és utána.
+  - **A többi lap:** a beolvasztás előtti (`2077d358`) és utáni (`a32e9a6f`) teljes lexikon-render (mindkettő `PARDES_DATUM=2026-10-28`, a repón kívül) mind a 8 lapon bájtra azonos. A main tehát egyik lapot sem változtatja meg.
+  - **Megjegyzés (nem e kör hatása):** a 7 másik *commitolt* lap a mai generátor kimenetétől már a `2077d358`-on is eltér. Példák: a `jelmagyarazat` licenc-címkéje `projekt-adat` → `minden jog fenntartva`; sorszám, ALVIL-001: 1 220 → 1 707; `(fordításra vár)` 0 → 16–158 lapjától függően. Ez régebbi elmaradás. Ezeket a lapokat nem írtam felül (a `--ir` csak az ISTENTISZT-001-et írta).
+- **(ii) A javítókör tételei** (`git diff --stat lexikon/`: +7/−3):
+  - `szocikkek`: forrásfejléc + `konkordancia/MCGED_teljes.tsv`, licenc + „© Mounce 1993”;
+  - `idezes`: + „Mounce (Mounce Concise Greek-English Dictionary) (`konkordancia/MCGED_teljes.tsv`, © Mounce 1993)”;
+  - `kolofon`:
+    - forrásfejléc + MCGED és licenc;
+    - licenctábla + `MCGED_teljes.tsv` sor;
+    - + a Mounce szó szerinti megjelölése;
+    - a tW-megjelölés „Módosítás” mondata → „Felhasználás: … azonosítóit és a forrásfájlt nevezi meg …; a szócikkek szövegét nem közli.”;
+  - más blokk nem változott; `(fordításra vár)` 23 sor / 46 előfordulás, változatlan.
+
+### 9.7 Nulladiff, lap-ellenőrzés
+
+- **`nulladiff.sh a32e9a6f 2026-10-28`:** egyetlen eltérő fájl az `ISTENTISZT-001_TUDOMANYOS.md` (20 soros diff: a 9.6 (ii) változásai). A 7 többi lap és a törzscikkek bájtra azonosak.
+- **Lap-ellenőrzés** (eseti szkript a scratchpadban, `lap_ell.py`):
+  - tiltott keretezés (`(?i)eltér|máshová sorol|NEM invokáció|szemben a BDB|a BDB szerint nem`): `elofordulasok` 0, `szocikkek` 0;
+  - „idézőblokkba tördelve” a lapon: 0; az új tW-mondat a kolofonban: 1; tW-szócikkszöveg (`(?i)translation suggestions|Definition:|Facts:`): 0;
+  - MCGED az Irodalomban: 1; a kolofon táblában: 1; a Mounce-megjelölés: 1;
+  - az előző kör javításai megmaradtak:
+    - az 1Kir 18:24 és az 1Móz 4:26 cellája „H7121: segítségül hívni · Qal 2.c; H8034: *(nincs hozzárendelés)*”;
+    - [^25]/[^26] „a Thayer saját példahelye”, sorszam 40/41;
+    - az 1Kir 18:25 gerinc-ⓘ-je 2;
+    - `horgonnyal` 1 sor (a sorban 2 előfordulás, mint az `a32e9a6f`-en).
+
+### 9.8 Tesztek, ellenőrzők
+
+- **Tesztek:**
+  - zöld: `teszt_szotari_gerinc` 38, `thayer_jelolt/teszt_vers_jelentes` 11, `olvaso_szerver/teszt_bdb_vers_jelentes` 29, `teszt_szerepmatrix` 44 (1 skip), `teszt_lexikon_adatres` 20, `teszt_forditas_kapuk` 110;
+  - `bdb_jelolt/teszt_bont` 3 hiba, a kiindulóval azonos (`Determinizmus.test_ellenoriz`, `HuIlleszt.test_ellenoriz`, `test_osszefuzo_a_mai_adaton_valtozatlan`).
+- **`ellenoriz.py`:** 15 RENDBEN, 0 SÉRTÉS, 2 KÉZI, 3 JELENTÉS.
+- **CI** (`futtat.py --valtozott $(git diff --name-only origin/main...HEAD) --diff-alap $(git merge-base origin/main HEAD) --diff-fej HEAD --pr-cim "[ELLENŐRZŐ] F131: SZOTARI_GERINC" --esemeny pull_request`): kilépési kód 0.
+  - E5 0, E28 0 („1 migrált nézet”).
+  - JELENTÉS: E12 355 (az 1/2. körben 353), E13 120, E25 4, E27 41, E30 15, E32 1.
+  - Az `origin/main` a beolvasztás óta 1 commitot lépett (`cefd5a39 szamkiosztas: DT-F141a → DT368, DT-F143a → DT369`); a CI a merge-base-hez mér.
+
+### 9.9 Nyitott kérdések az orkesztrátornak
+
+1. **TAHOT a forrásmegjelölésben.** A lap az F131.7 óta az 1Móz 4:26 és az 1Kir 18:24 ⓘ-jében a `konkordancia/TAHOT_kivonat.tsv`-t forrásként nevezi meg (a kétszeres előfordulás igazolása), és a provenienciasorok korábban is. Sem az Irodalomban, sem a kolofonban nem áll. Kérdés: kerüljön-e be (az `adat/licencek.tsv` TAHOT-sora szerint), vagy a provenienciában való megnevezés elég. Nem döntöttem.
+2. **A 7 másik commitolt lap elavultsága.** A mai generátor kimenetétől már a beolvasztás előtt is eltérnek (9.6 (i)). Ez nem e kör és nem a main hatása; az újragenerálásuk más feladat hatóköre. Nem írtam felül.
