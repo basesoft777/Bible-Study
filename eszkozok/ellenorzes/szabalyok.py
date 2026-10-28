@@ -985,6 +985,9 @@ def e16_ellenorzo_onmodositas(fajlok, pr_cim=''):
 # adat/forditasok.tsv-ben nincs `opus`, `sonnet` vagy `kezi` allapotu `forditas_hu`
 # sor, sem ugyanarra a `jelentes_szam`-ra, sem `teljes` szintre. A kulcs:
 # szotar + strong + entry_id (a strong a Strong_padded alakra normalizalva).
+# F145 (DT-F142d): a `teljes` hivatkozast fedettnek veszi a Strong osszes szotari szakaszat (Thayer:
+# thayer_szakaszok.tsv, BDB: bdb_szakaszok.tsv, mint az ellenoriz.py 13. szabalyaban) lefedo, nem `elavult`
+# (`opus` / `sonnet` / `kezi`) `sz<n>` sorok halmaza is; a reszleges lefedettseg nem fed.
 # Csak akkor fut, ha a ket tabla valamelyike a valtozott fajlok kozott van;
 # fajlszintu (D8): egy forditas-sor torlese is HIBA, akkor is, ha a
 # hivatkozas sora nem valtozott.
@@ -999,6 +1002,48 @@ def _e19_strong(s):
     return '%s%04d%s' % (m.group(1), int(m.group(2)), m.group(3)) if m else (s or '').strip()
 
 
+_E19_SZ = re.compile(r'^sz(\d+)$')
+
+
+def _e19_modul(nev, relut):
+    """Az eszkozok/ alatti bemeneti modul sajat neven betoltve (frissen: a tablak gyorsitotara a futasra szol)."""
+    import importlib.util
+    ut = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), *relut.split('/'))
+    spec = importlib.util.spec_from_file_location(nev, ut)
+    m = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(m)
+    return m
+
+
+def _e19_szakaszkeszlet(szotar, strong, cache):
+    """A Strong szotari szakaszainak sorszamai az ADAT tablaibol (set), vagy None (nincs tabla / a Strong nincs benne / a
+    javitas nem illeszkedik). Ugyanaz a forras, mint az ellenoriz.py 13. szabalyaban: a BDB `szakasz_bemenet.szakaszok`-a es
+    a Thayer `thayer_bemenet.szakaszok`-a (F145, DT-F142d)."""
+    kulcs = (szotar, strong)
+    if kulcs in cache:
+        return cache[kulcs]
+    keszlet = None
+    try:
+        if szotar == 'Thayer':
+            tabla = os.path.join(ADAT, 'thayer_szakaszok.tsv')
+            if os.path.exists(tabla):
+                if 'Thayer' not in cache:
+                    cache['Thayer'] = _e19_modul('thayer_bemenet_e19', 'thayer_jelolt/thayer_bemenet.py')
+                szak = cache['Thayer'].szakaszok(strong, tabla, os.path.join(ADAT, 'thayer_forras_javitas.tsv'))
+                keszlet = None if szak is None else {x['sorszam'] for x in szak}
+        elif szotar == 'BDB':
+            tabla, jav = os.path.join(ADAT, 'bdb_szakaszok.tsv'), os.path.join(ADAT, 'bdb_forras_javitas.tsv')
+            if os.path.exists(tabla) and os.path.exists(jav):
+                if 'BDB' not in cache:
+                    cache['BDB'] = _e19_modul('szakasz_bemenet_e19', 'bdb_jelolt/szakasz_bemenet.py')
+                szak = cache['BDB'].szakaszok(strong, tabla, jav)
+                keszlet = None if szak is None else {x['sorszam'] for x in szak}
+    except ValueError:
+        keszlet = None
+    cache[kulcs] = keszlet
+    return keszlet
+
+
 def e19_szotari_forditas_hiany(fajlok):
     talalatok = []
     if fajlok != ['__TELJES__'] and not any(f in E19_FAJLOK for f in fajlok):
@@ -1008,11 +1053,16 @@ def e19_szotari_forditas_hiany(fajlok):
     if not os.path.exists(lex_ut):
         return talalatok
     van = set()
+    szakaszsorok = {}    # (szotar, strong, entry_id) -> a fedett `sz<n>` sorszamok (F145, 2b)
     if os.path.exists(ford_ut):
         for d in dict_sorok(ford_ut):
             if d.get('allapot') in E19_ALLAPOTOK and d.get('mezo') == 'forditas_hu':
-                van.add((d.get('szotar'), _e19_strong(d.get('strong')), (d.get('entry_id') or '').strip(),
-                         d.get('jelentes_szam')))
+                alap = (d.get('szotar'), _e19_strong(d.get('strong')), (d.get('entry_id') or '').strip())
+                van.add(alap + (d.get('jelentes_szam'),))
+                m = _E19_SZ.match(d.get('jelentes_szam') or '')
+                if m:
+                    szakaszsorok.setdefault(alap, set()).add(int(m.group(1)))
+    cache = {}
     for sorszam, d in dict_sorok_sorszammal(lex_ut):
         szotar = d.get('szotar')
         if szotar not in E19_SZOTARAK:
@@ -1020,9 +1070,15 @@ def e19_szotari_forditas_hiany(fajlok):
         alap = (szotar, _e19_strong(d.get('strong')), (d.get('entry_id') or '').strip())
         if alap + (d.get('jelentes_szam'),) in van or alap + ('teljes',) in van:
             continue
+        # F145 (2b): a `teljes` hivatkozast a Strong osszes szotari szakaszat lefedo, nem `elavult` `sz<n>` sorok is fedik
+        # (reszleges lefedettseg nem fed)
+        if d.get('jelentes_szam') == 'teljes' and szakaszsorok.get(alap):
+            kell = _e19_szakaszkeszlet(szotar, alap[1], cache)
+            if kell and kell <= szakaszsorok[alap]:
+                continue
         talalatok.append(Talalat(
             'E19', SZINT['E19'], 'adat/lexikon_hivatkozasok.tsv', sorszam,
-            '%s %s %s/%s -- nincs opus, sonnet vagy kezi forditas (sem erre a jelentesre, sem teljes szintre)'
+            '%s %s %s/%s -- nincs opus, sonnet vagy kezi forditas (sem erre a jelentesre, sem teljes szintre, sem a szakaszok teljes lefedettsege)'
             % (szotar, d.get('strong'), d.get('entry_id'), d.get('jelentes_szam'))
         ))
     return talalatok
@@ -2319,3 +2375,205 @@ def e31_forras_tanulmany_letezik(fajlok):
 
 
 SZABALYOK_FUGGVENYEI['E31'] = e31_forras_tanulmany_letezik
+
+
+# ---------------------------------------------------------------------------
+# E32 -- kiosztott helyorzo egy kimeneti string-literalban (#141, DT-F141a)
+# ---------------------------------------------------------------------------
+# A `szamkiosztas` Action a helyorzoket (DT-F.., N-F.., D-F..) csak az .md/.tsv
+# fajlokban szamozza at; az eszkozok/**/*.py string-literaljait nem. Ami egy
+# generator kimenetebe (fejlec, proveniencia-sor, uzenet) kerul literalkent,
+# az a kiosztas utan is a regi helyorzot irja vissza a kiosztott szam helyere
+# (dokumentalt eset: a lexikon `kapcsolodo` blokkja, DT-F127b -> DT277).
+# A szabaly AST-alapon jelez: csak a string-literalt nezi (a megjegyzes nincs az
+# AST-ben, a docstring es az onallo szoveg-kifejezes kimarad), es csak olyan
+# helyorzot, amelyhez a `szamkiosztas:` commitok mar veglegesszamot rendeltek
+# (a git logbol; az a helyorzo, amelynek a definicios sora ma is megvan, nem
+# kiosztott). Kodot nem modosit, csak jelez.
+# Szint: HIBA, de a futtat.py D8-cal JELENTES-re minositi a diff altal nem
+# erintett sorokat, --teljes modban pedig minden talalat JELENTES. Hatokor:
+# adat nelkuli, fajlokon futo szabaly (HATOKOR_SZABALYOK: --teljes modban a
+# '__TELJES__' jelzot kapja; egyebkent a valtozott .py fajlokat nezi).
+# Kizaras: (1) a szabalyt es a kiosztast magukat (szamkiosztas.py, szabalyok.py)
+# es a tesztfajlokat (eszkozok/ellenorzes/tesztek/, teszt_*.py, test_*.py),
+# mert a tesztfixture szandekosan hordoz mintahelyorzot; (2) minden sort, amely
+# az `e32-kihagy` (vagy a szamkiosztas `szamkiosztas-kihagy`) jelolest
+# tartalmazza -- szandekosan torteneti literal jelolese.
+
+E32_KIZART_FAJLOK = {
+    'eszkozok/szamkiosztas.py',
+    'eszkozok/ellenorzes/szabalyok.py',
+}
+E32_KIZART_ELOTAG = ('eszkozok/ellenorzes/tesztek/',)
+E32_KIHAGY_JELOLESEK = ('e32-kihagy', 'szamkiosztas-kihagy')
+_E32_KIOSZTAS_MINTA = re.compile(r'((?:DT|N|D)-F\d+[a-z]?)\s*→\s*((?:DT|N|D)\d+)')
+
+
+def _szamkiosztas_modul():
+    """Az eszkozok/szamkiosztas.py modul, a kod melletti fajlutrol (importlib),
+    a sys.path-tol fuggetlenul."""
+    import importlib.util
+    ut = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                      'szamkiosztas.py')
+    spec = importlib.util.spec_from_file_location('szamkiosztas', ut)
+    modul = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(modul)
+    return modul
+
+
+def _e32_kiosztasok():
+    """{helyorzo: veglegesszam} a `szamkiosztas:` commitok uzeneteibol (HEAD
+    tortenete), kiveve azokat a helyorzokat, amelyeknek a definicios sora
+    ma is megvan (ezek nem kiosztottak). Git nelkul ures dict."""
+    try:
+        kimenet = subprocess.check_output(
+            ['git', 'log', '--format=%B', '--grep=^szamkiosztas:', 'HEAD'],
+            cwd=ROOT, stderr=subprocess.DEVNULL).decode('utf-8', errors='replace')
+    except (subprocess.CalledProcessError, OSError):
+        return {}
+    kiosztott = {}
+    for h, v in _E32_KIOSZTAS_MINTA.findall(kimenet):
+        kiosztott.setdefault(h, v)
+    # A szamkiosztas.py-t explicit fajlutrol toltjuk (az eszkozok/ nincs a
+    # sys.path-on, ha az E28 nem hivta elobb a _general_modul()-t). Hiba nem
+    # nyelodik le: ha a modul nem toltheto be, a szures kimaradasa hamis HIBAt
+    # adna, ezert a kivetel felszallhat.
+    SK = _szamkiosztas_modul()
+    for kulcs in ('DT', 'N', 'D'):
+        for h in SK._definiciok(ROOT, kulcs)[0]:
+            kiosztott.pop(h, None)
+    return kiosztott
+
+
+def _e32_py_fajlok(fajlok):
+    if fajlok and fajlok[0] == '__TELJES__':
+        lista = []
+        for mappa, almappak, nevek in os.walk(os.path.join(ROOT, 'eszkozok')):
+            almappak[:] = [a for a in almappak if a != '__pycache__']
+            for nev in nevek:
+                if nev.endswith('.py'):
+                    lista.append(os.path.relpath(os.path.join(mappa, nev), ROOT).replace(os.sep, '/'))
+        return sorted(lista)
+    return sorted(f.replace('\\', '/') for f in fajlok
+                  if f.replace('\\', '/').startswith('eszkozok/') and f.endswith('.py'))
+
+
+def _e32_kizart(relut):
+    nev = relut.rsplit('/', 1)[-1]
+    return (relut in E32_KIZART_FAJLOK or relut.startswith(E32_KIZART_ELOTAG)
+            or nev.startswith(('teszt_', 'test_')))
+
+
+def _e32_dokumentacios_csomopontok(fa):
+    """A docstringek es az onallo szoveg-kifejezesek Constant csomopontjainak
+    id()-ja (ezeket a szabaly nem nezi)."""
+    import ast
+    kizart = set()
+    for csp in ast.walk(fa):
+        if (isinstance(csp, ast.Expr) and isinstance(csp.value, ast.Constant)
+                and isinstance(csp.value.value, str)):
+            kizart.add(id(csp.value))
+    return kizart
+
+
+def _e32_string_tokenek(szoveg):
+    """[(sor, oszlop, nyers_szoveg)] a fajl string-tokenjeibol (STRING es, ha a
+    Python tokenizalja, FSTRING_MIDDLE). Tokenizalasi hibanal a lista ures
+    (a hivo ilyenkor az AST-sorra esik vissza)."""
+    import io
+    import tokenize
+    tipusok = {tokenize.STRING}
+    if hasattr(tokenize, 'FSTRING_MIDDLE'):
+        tipusok.add(tokenize.FSTRING_MIDDLE)
+    lista = []
+    try:
+        for tok in tokenize.generate_tokens(io.StringIO(szoveg).readline):
+            if tok.type in tipusok:
+                lista.append((tok.start[0], tok.start[1], tok.string))
+    except (tokenize.TokenError, IndentationError, SyntaxError):
+        return []
+    return lista
+
+
+def _e32_bajt_karakter(sorok, sor, bajt_off):
+    """Az `ast` UTF-8 BAJT-offszetet a `tokenize` KARAKTER-offszetere valtja
+    a sor szovegen (nem-ASCII karakter a sorban elcsuszatna az osszevetest)."""
+    if not sorok or not (0 < sor <= len(sorok)):
+        return bajt_off
+    return len(sorok[sor - 1].encode('utf-8')[:bajt_off].decode('utf-8', 'ignore'))
+
+
+def _e32_literal_talalatok(csp, tokenek, minta, sorok=None):
+    """[(tenyleges_sor, helyorzo, hely)] egy string-Constantban. Implicit
+    osszefuzesnel ('a' 'b' tobb soron) a Constant egyetlen csomopont, amelynek
+    lineno-ja az elso sor; ezert a csomopont lineno..end_lineno tartomanyaba eso
+    string-tokeneket kulon nezi, es a tokenen beluli sor adja a talalat sorat.
+    Token nelkul (tokenizalasi hiba) az AST-sorra esik vissza."""
+    kezd = (csp.lineno, _e32_bajt_karakter(sorok, csp.lineno, csp.col_offset))
+    veg_sor = getattr(csp, 'end_lineno', None) or csp.lineno
+    veg_off = getattr(csp, 'end_col_offset', None)
+    veg = (veg_sor, _e32_bajt_karakter(sorok, veg_sor, veg_off) if veg_off is not None else 10 ** 9)
+    belul = [t for t in tokenek if kezd <= (t[0], t[1]) < veg]
+    if not belul:
+        return [(csp.lineno + csp.value.count('\n', 0, m.start()), m.group(0),
+                 (id(csp), m.start())) for m in minta.finditer(csp.value)]
+    eredmeny = []
+    for sor0, _oszlop, nyers in belul:
+        for m in minta.finditer(nyers):
+            eredmeny.append((sor0 + nyers.count('\n', 0, m.start()), m.group(0),
+                             (sor0, _oszlop, m.start())))
+    return eredmeny
+
+
+def e32_kiosztott_helyorzo_literalban(fajlok):
+    """E32: `eszkozok/**/*.py` string-literaljaban (nem megjegyzesben, nem
+    docstringben) olyan helyorzo all, amelyhez a szamkiosztas mar veglegesszamot
+    rendelt. A Talalat sora a helyorzo tenyleges sora (tobbsoros literalnal is)."""
+    import ast
+    talalatok = []
+    py_fajlok = [f for f in _e32_py_fajlok(fajlok) if not _e32_kizart(f)]
+    if not py_fajlok:
+        return talalatok
+    kiosztott = _e32_kiosztasok()
+    if not kiosztott:
+        return talalatok
+    minta = re.compile(r'(?<![A-Za-z0-9-])(?:DT|N|D)-F\d+[a-z]?(?![A-Za-z0-9-])')
+    for relut in py_fajlok:
+        ut = os.path.join(ROOT, *relut.split('/'))
+        try:
+            with open(ut, 'rb') as f:
+                szoveg = f.read().decode('utf-8')
+            fa = ast.parse(szoveg, filename=relut)
+        except (IOError, OSError, SyntaxError, UnicodeDecodeError, ValueError):
+            continue
+        sorok = szoveg.splitlines()
+        doku = _e32_dokumentacios_csomopontok(fa)
+        tokenek = _e32_string_tokenek(szoveg)
+        latott = set()
+        for csp in ast.walk(fa):
+            if not (isinstance(csp, ast.Constant) and isinstance(csp.value, str)):
+                continue
+            if id(csp) in doku:
+                continue
+            for sor, helyorzo, hely in _e32_literal_talalatok(csp, tokenek, minta, sorok):
+                if hely in latott:
+                    continue
+                latott.add(hely)
+                uj = kiosztott.get(helyorzo)
+                if not uj:
+                    continue
+                sor_szoveg = sorok[sor - 1] if 0 < sor <= len(sorok) else ''
+                if any(j in sor_szoveg for j in E32_KIHAGY_JELOLESEK):
+                    continue
+                talalatok.append(Talalat(
+                    'E32', SZINT['E32'], relut, sor,
+                    '`%s` kiosztott helyőrző (a szamkiosztas: %s) áll a string-literálban; '
+                    'írd a kiosztott számra, vagy tedd számfüggetlenné a szöveget '
+                    '(szándékos történeti literálnál: `e32-kihagy` jelölés a sorban)'
+                    % (helyorzo, uj)))
+    return talalatok
+
+
+SZINT['E32'] = 'HIBA'
+HATOKOR_SZABALYOK.add('E32')
+SZABALYOK_FUGGVENYEI['E32'] = e32_kiosztott_helyorzo_literalban

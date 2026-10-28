@@ -219,6 +219,13 @@ class EmelesSzakaszag(unittest.TestCase):
         with open(ford, encoding='utf-8', newline='') as f:
             sorok = f.read().split('\n')
         sorok = [s for s in sorok if not (s.startswith('BDB\t%s\t' % strong) and s.split('\t')[3].startswith('sz'))]
+        # a H8415 régi `teljes` sora a jóváhagyás (DT-F38r) óta `elavult`; a tesztkörben az induló állapot a régi `kezi` sor
+        if strong == 'H8415':
+            for i, s in enumerate(sorok):
+                m = s.split('\t')
+                if m[:5] == ['BDB', 'H8415', 'H8415', 'teljes', 'forditas_hu'] and m[7] == 'elavult':
+                    m[7] = 'kezi'
+                    sorok[i] = '\t'.join(m)
         with open(ford, 'w', encoding='utf-8', newline='') as f:
             f.write('\n'.join(sorok))
         be = os.path.join(tmp, 'hu.txt')

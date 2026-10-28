@@ -153,6 +153,113 @@ class Sigla(unittest.TestCase):
         self.assertEqual(TK.ellenoriz_sigla('G L T Tr WH', 'G L T Tr WH', s), ('RENDBEN', '3 besorolt sigla rendben'))
         self.assertEqual(TK.ellenoriz_sigla('T WH; N. T.', 'WH; N. T.', s)[0], 'SERTES')
 
+    # --- F145: a 16. kapu három tűrése (DT-F142b/c) -------------------------------------------------------------------------
+    PHILO = [{'forrasalak': 'Philo', 'tipus': 'antik szerző', 'allapot': 'besorolt', 'magyar_alak': 'Philón'}]
+    CIM = "(J. G. Müller, Philo's Lehre von der Weltschöpfung, p. 173f)"
+
+    def test_atvetel_mucim_pozitiv(self):
+        # (a) a változatlanul átvett műcímben álló sigla nem követeli meg a magyar alakot; a sor nem ellenőrzött, a kimenet megnevezi
+        e, r = TK.ellenoriz_sigla(self.CIM, "(J. G. Müller, Philo's Lehre von der Weltschöpfung, o. 173f)", self.PHILO)
+        self.assertEqual(e, 'RENDBEN')
+        self.assertEqual(r, '0 besorolt sigla rendben; 1 sigla változatlan átvételben, nem ellenőrzött (Philo)')
+        # a cím utáni írásjel és a környező szöveg tetszőleges
+        self.assertEqual(TK.ellenoriz_sigla(self.CIM, "(Müller J. G., Philo's Lehre von der Weltschöpfung. o. 173)", self.PHILO)[0], 'RENDBEN')
+
+    def test_atvetel_hamis_negativ_ellen(self):
+        f2 = "as Philo said of Sarah (J. G. Müller, Philo's Lehre von der Weltschöpfung, p. 173f)"
+        # a cím megmaradt, de a folyó szövegbeli Philo nem lett Philón -> SERTES (a műcím nem fedezi a folyó szöveget)
+        e, r = TK.ellenoriz_sigla(f2, "ahogy Philo mondta Sáráról (J. G. Müller, Philo's Lehre von der Weltschöpfung, o. 173f)", self.PHILO)
+        self.assertEqual((e, r), ('SERTES', 'Philo -> Philón hiányzik'))
+        # ugyanez helyesen: a folyó szövegben Philón, a cím változatlan -> a sor ellenőrzött (n = 1), átvétel nem is jelenik meg
+        e, r = TK.ellenoriz_sigla(f2, "ahogy Philón mondta Sáráról (J. G. Müller, Philo's Lehre von der Weltschöpfung, o. 173f)", self.PHILO)
+        self.assertEqual((e, r), ('RENDBEN', '1 besorolt sigla rendben'))
+        # a cím sem maradt meg szó szerint (lefordították) és nincs Philón -> SERTES
+        self.assertEqual(TK.ellenoriz_sigla(self.CIM, "(J. G. Müller, Philo világteremtés-tana, o. 173f)", self.PHILO)[0], 'SERTES')
+        # a Philón a címben is elfogadható (nem átvétel): a fordító lefordította a nevet
+        self.assertEqual(TK.ellenoriz_sigla(self.CIM, "(J. G. Müller, Philón világteremtés-tana, o. 173f)", self.PHILO)[0], 'RENDBEN')
+
+    def test_atvetel_nem_mucim(self):
+        # kisbetűs folytatás = folyó angol szöveg, nem műcím: a fordítatlanul hagyott `Philo's use of …` SERTES
+        f = "cf. Philo's use of the word"
+        self.assertEqual(TK.ellenoriz_sigla(f, "vö. Philo's use of the word", self.PHILO)[0], 'SERTES')
+        self.assertEqual(TK.ellenoriz_sigla("Philo, under the word, 3", "Philo, under the word, 3", self.PHILO)[0], 'SERTES')
+        # kevesebb mint 3 szó követi a siglát -> nincs átvételi ablak
+        self.assertEqual(TK.ellenoriz_sigla("Philo's Lehre von", "Philo's Lehre von", self.PHILO)[0], 'SERTES')
+        # az ablak nem szó szerinti (a harmadik szó mást mond) -> nem átvétel
+        self.assertEqual(TK.ellenoriz_sigla(self.CIM, "(J. G. Müller, Philo's Lehre a világ teremtéséről, o. 173f)", self.PHILO)[0], 'SERTES')
+        # szóhatár: a címet tartalmazó hosszabb szó nem fedez
+        self.assertEqual(TK.ellenoriz_sigla(self.CIM, "(J. G. Müller, xPhilo's Lehre von der Weltschöpfung, o. 173f)", self.PHILO)[0], 'SERTES')
+
+    def test_atvetel_csak_egyedi_kivetel(self):
+        # F145.14 (DT-F145a (b)): a kivétel csak a G0012 műcímre szól; fordítatlan szerző-sigla minden más szövegkörnyezetben SERTES
+        self.assertEqual(TK.ATVETEL_KIVETEL, (('G0012', 'Philo', "Philo's Lehre von der"),))
+        self.assertEqual(TK.ellenoriz_sigla(self.CIM, self.CIM, self.PHILO)[0], 'RENDBEN')          # G0012 műcím
+        g282 = 'by Philo in de temul.'                                                               # G0282
+        self.assertEqual(TK.ellenoriz_sigla(g282, g282, self.PHILO), ('SERTES', 'Philo -> Philón hiányzik'))
+        self.assertEqual(TK.ellenoriz_sigla(g282, 'Philón által in de temul.', self.PHILO)[0], 'RENDBEN')
+        g4151 = "in Philo's use of the word"                                                          # G4151
+        self.assertEqual(TK.ellenoriz_sigla(g4151, g4151, self.PHILO)[0], 'SERTES')
+        # nagybetűs, 3+ szavas folytatás sem mentesít, ha nem a kivételes ablak (a korábbi általános szabály megszűnt)
+        kulso = "Philo's Treatise On Dreams, p. 4"
+        self.assertEqual(TK.ellenoriz_sigla(kulso, kulso, self.PHILO)[0], 'SERTES')
+        # szerző-sigla `antik szerző` / `modern szerző` típuson, fordítatlan
+        for tipus in ('antik szerző', 'modern szerző'):
+            x = [{'forrasalak': 'Xenophon', 'tipus': tipus, 'allapot': 'besorolt', 'magyar_alak': 'Xenophón'}]
+            self.assertEqual(TK.ellenoriz_sigla('Xenophon, Cyril 3, 3', 'Xenophon, Cyril 3, 3', x)[0], 'SERTES', tipus)
+            self.assertEqual(TK.ellenoriz_sigla('Xenophon, Cyril 3, 3', 'Xenophón, Cyril 3, 3', x)[0], 'RENDBEN', tipus)
+            self.assertEqual(TK.ellenoriz_sigla('Xenophon Cyril Anab. Hist. 3', 'Xenophon Cyril Anab. Hist. 3', x)[0], 'SERTES', tipus)
+
+    def test_atvetel_rovidites_nem_mentesul(self):
+        # ELLENOR_F145 1a: a `rövidítés` típusú sorra nincs műcím-kivétel: a fordítatlan `cf. Winers Grammar, § 12` SERTES
+        cf = [{'forrasalak': 'cf.', 'tipus': 'rövidítés', 'allapot': 'besorolt', 'magyar_alak': 'vö.'}]
+        f = 'cf. Winers Grammar, § 12'
+        self.assertEqual(TK.ellenoriz_sigla(f, f, cf), ('SERTES', 'cf. -> vö. hiányzik'))
+        self.assertEqual(TK.ellenoriz_sigla(f, 'vö. Winers Grammar, § 12', cf), ('RENDBEN', '1 besorolt sigla rendben'))
+        # pozitív kontroll: ugyanez a minta szerző-típusnál (Philo-műcím) továbbra is átvétel
+        self.assertEqual(TK.ellenoriz_sigla(self.CIM, self.CIM, self.PHILO)[0], 'RENDBEN')
+
+    def test_atvetel_valtozatlan_sor_nem_erintett(self):
+        # a `változatlan` sor cél-alakja maga a forrásalak: az átvétel-logika nem érinti
+        s = [{'forrasalak': 'Gesenius', 'tipus': 'modern szerző', 'allapot': 'besorolt', 'magyar_alak': TK.VALTOZATLAN}]
+        self.assertEqual(TK.ellenoriz_sigla('Gesenius Lex. Hebr. x', 'Lex. Hebr. x', s)[0], 'SERTES')
+        self.assertEqual(TK.ellenoriz_sigla('Gesenius Lex. Hebr. x', 'Gesenius Lex. Hebr. x', s), ('RENDBEN', '1 besorolt sigla rendben'))
+
+    def test_ragozas_tures(self):
+        # (b) a magyar alak toldalékot kaphat
+        h = [{'forrasalak': 'Homer', 'tipus': 'antik szerző', 'allapot': 'besorolt', 'magyar_alak': 'Homérosz'}]
+        for fordit in ('Homérosz', 'Homérosztól kezdve', 'Homérosznál', 'Homérosz-tól', '(Homérosztól kezdve)'):
+            self.assertEqual(TK.ellenoriz_sigla('from Homer down', fordit, h)[0], 'RENDBEN', fordit)
+        # negatív: a forrásalak, a más szó végén álló, vagy a kezdőbetűjében eltérő alak továbbra sem jó
+        for fordit in ('Homer kezdve', 'kezdve Ahomérosz', 'nem Hómérosz', 'xHomérosz'):
+            self.assertEqual(TK.ellenoriz_sigla('from Homer down', fordit, h)[0], 'SERTES', fordit)
+        # a forrás-oldali keresés változatlan: a `Homerus` / `Homeric` nem találat
+        self.assertEqual(TK.ellenoriz_sigla('Homeric usage', 'homéroszi', h), ('RENDBEN', '0 besorolt sigla rendben'))
+        # rövid cél-alak (<= 3 betű) és könyvrövidítés: nincs toldalék-tűrés (hamis pozitív ellen)
+        t = [{'forrasalak': 'Tr', 'tipus': 'kiadás-sigla', 'allapot': 'besorolt', 'magyar_alak': TK.VALTOZATLAN}]
+        self.assertEqual(TK.ellenoriz_sigla('Tr reads', 'Trench olvasata', t)[0], 'SERTES')
+        b = [{'forrasalak': 'Wis.', 'tipus': 'könyvrövidítés', 'allapot': 'besorolt', 'magyar_alak': 'Bölcs'}]
+        self.assertEqual(TK.ellenoriz_sigla('Wis. 3:13', 'Bölcsesség 3:13', b)[0], 'SERTES')
+        self.assertEqual(TK.ellenoriz_sigla('Wis. 3:13', 'Bölcs 3:13', b)[0], 'RENDBEN')
+        # a pont végű cél-alaknak nincs záró határa (változatlan a korábbihoz képest)
+        c = [{'forrasalak': 'cf.', 'tipus': 'rövidítés', 'allapot': 'besorolt', 'magyar_alak': 'vö.'}]
+        self.assertEqual(TK.ellenoriz_sigla('cf. x', 'vö. x', c)[0], 'RENDBEN')
+        self.assertEqual(TK.ellenoriz_sigla('cf. x', 'vö x', c)[0], 'SERTES')
+
+    def test_szamjegy_elotag_konyvrovidites(self):
+        # (c) a könyvrövidítés cél-alakja számjegy mögött is találat (a 11. kapu `4Makk` / `2Makk` alakja)
+        m = [{'forrasalak': 'Macc.', 'tipus': 'könyvrövidítés', 'allapot': 'besorolt', 'magyar_alak': 'Makk'}]
+        for fordit in ('4Makk 2:19', '(2Makk 9:18; 1Makk 2:38)', 'Makk 2:19', '4 Makk 2:19', 'a 4Makk-ban'):
+            self.assertEqual(TK.ellenoriz_sigla('4 Macc. 2:19', fordit, m)[0], 'RENDBEN', fordit)
+        # negatív: betű mögött, vagy hosszabb szó részeként nem találat; a hiány SERTES
+        for fordit in ('aMakk 2:19', '4Makkabeusok', 'Macc. 2:19', 'semmi'):
+            self.assertEqual(TK.ellenoriz_sigla('4 Macc. 2:19', fordit, m)[0], 'SERTES', fordit)
+        # a számjegy-előtag csak a könyvrövidítésre vonatkozik
+        r = [{'forrasalak': 'cf.', 'tipus': 'rövidítés', 'allapot': 'besorolt', 'magyar_alak': 'vö'}]
+        self.assertEqual(TK.ellenoriz_sigla('cf. x', '4vö x', r)[0], 'SERTES')
+        # az egybetűs sigla láncszabálya és szigorú szóhatára nem változik (F132.20)
+        e = [{'forrasalak': 'T', 'tipus': 'kiadás-sigla', 'allapot': 'besorolt', 'magyar_alak': TK.VALTOZATLAN}]
+        self.assertEqual(TK.ellenoriz_sigla('G L T Tr', 'G L Tr', e)[0], 'SERTES')
+
     def test_kapusor(self):
         e = TK.kapuk_futtat_thayer('⟪1⟫ a', '⟪1⟫ a')
         nevek = [n for n, _, _ in e]
@@ -213,7 +320,25 @@ class Adatblokk(unittest.TestCase):
         self.assertIn('Mt, Mk, Luk, Ján, ApCsel', b)          # a párosítás le nem fedett ÚSZ-könyvei, explicit
         self.assertIn('1Pét 1:17 „És ha Atyának hívjátok őt', b)
         self.assertIn('= H7121', b)
-        self.assertIn('`cf.` [besorolatlan a sigla-táblában; a terminológia szerint: `vö.`]', b)
+
+    def test_g1941_cf_a_sigla_tabla_allapota_szerint(self):
+        # F145 (DT-F142a): a `cf.` sor megjelenése a sigla-tábla állapotától függ (a #142 jóváhagyása előtt `javaslat`, utána
+        # `besorolt`); a teszt ezért fixture-rel méri mindkét állapotot, nem a valódi táblával
+        eredeti = TK.sigla_betolt
+        try:
+            for allapot, magyar, vart in (
+                    ('javaslat', TK.VALTOZATLAN, '`cf.` [besorolatlan a sigla-táblában; a terminológia szerint: `vö.`]'),
+                    ('besorolt', 'vö.', '`cf.` → `vö.` (próba)')):
+                TK.sigla_betolt = lambda ut=None, a=allapot, m=magyar: [
+                    {'forrasalak': 'cf.', 'allapot': a, 'magyar_alak': m, 'jelentes': 'próba'}]
+                b = adatblokk.blokk('G1941', ts='T')
+                self.assertIn(vart, b, allapot)
+                if allapot == 'javaslat':
+                    self.assertNotIn('`cf.` → ', b)
+                else:
+                    self.assertNotIn('besorolatlan a sigla-táblában', b)
+        finally:
+            TK.sigla_betolt = eredeti
 
     def test_sigla_nincs_egyseges(self):
         # ELLENOR_F132 4.: a besorolt `nincs_egyseges` sor nem alakként jelenik meg, hanem explicit jelöléssel
@@ -293,11 +418,17 @@ class Lanc(unittest.TestCase):
         tsv_ir(mu, F.FEJLEC, F.szakasz_sorok(sp, sz, szoveg, allapot, 'claude-sonnet-x', '2026.10.25', 'v4', ''), 'munka')
         return mu
 
-    def _forditasok(self):
+    def _forditasok(self, torol=None):
+        """A valódi `forditasok.tsv` ideiglenes másolata; `torol`: az ezzel kezdődő sorok nélkül (F145, DT-F142a: a teszt ne függjön
+        attól, hogy a valódi táblában vannak-e már az adott Strong szakaszsorai)."""
         ut = os.path.join(self.tmp, 'forditasok.tsv')
-        shutil.copy(F.FORDITASOK_UT, ut)
-        with open(ut, encoding='utf-8', newline='') as f:
-            return ut, f.read()
+        with open(F.FORDITASOK_UT, encoding='utf-8', newline='') as f:
+            szoveg = f.read()
+        if torol:
+            szoveg = ''.join(s + '\n' for s in szoveg.split('\n')[:-1] if not s.startswith(torol))
+        with open(ut, 'w', encoding='utf-8', newline='') as f:
+            f.write(szoveg)
+        return ut, szoveg
 
     def test_beir_opus_regi_elavul(self):
         mu = self._munka('G0813')
@@ -316,7 +447,9 @@ class Lanc(unittest.TestCase):
 
     def test_beir_kezi_marad(self):
         mu = self._munka('G1941')
-        ut, eredeti = self._forditasok()
+        # F145 (DT-F142a): állapot-független — a G1941 szakaszsorai nélküli másolaton (a régi `teljes` kezi sor marad)
+        ut, eredeti = self._forditasok(torol='Thayer\tG1941\tG1941\tsz')
+        self.assertIn('\nThayer\tG1941\tG1941\tteljes\t', eredeti)
         with self.assertRaises(SystemExit):        # DT-F132c (ii): kezi régi sor mellett csak --kezi-marad
             F.beir(['G1941'], 'sonnet', '2026.10.25', regi_elavult=True, munka_ut=mu, forditasok_ut=ut)
         F.beir(['G1941'], 'sonnet', '2026.10.25', kezi_marad=True, munka_ut=mu, forditasok_ut=ut)
