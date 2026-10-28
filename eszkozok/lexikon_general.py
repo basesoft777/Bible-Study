@@ -2478,6 +2478,11 @@ def _gerinc_tw(nyelv, n, tokenek_ny, reszek, ctx):
 
 def _gerinc_ubs_mutato(nyelv, n, tokenek_ny, reszek, ctx):
     if nyelv == 'gorog':
+        # F131.21 (DT-F131m (a) a Mounce-ra, ELLENOR_SZOTARI_GERINC_2 5.): a mutató a Mounce-ot név szerint megnevezi,
+        # ezért a Mounce (MCGED, „redistribution with attribution”) az Irodalomban és a kolofonban áll (a tW útján,
+        # F131.11); a glossza szövege nem kerül a lapra
+        if any(mcged_sor(t) for t in tokenek_ny):
+            ctx['fl'].setdefault(MCGED_FAJL, set()).add('MCGED')
         return ['**%s** · a teljes UBS DNTG-szócikk és a Mounce-glossza a szónézetben: %s; a Louw–Nida-doménsor a '
                 'fenti jelentéstartományban áll.' % (t, _szonezet_mutato(t, UBS_DNTG_JELENTESEK_FAJL))
                 for t in tokenek_ny]

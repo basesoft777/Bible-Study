@@ -442,6 +442,22 @@ class ValodiAdat(unittest.TestCase):
         LG._gerinc_tw('gorog', 3, ['G0000'], {}, ctx2)
         self.assertNotIn(LG.TW_FAJL, ctx2['fl'])
 
+    def test_mounce_forrasmegjeloles(self):
+        # F131.21 (ELLENOR_SZOTARI_GERINC_2 5.): a görög mutató a Mounce-ot megnevezi, ezért az MCGED a forráslistába
+        # kerül (Irodalom, kolofon licenctábla és MOUNCE_MEGJELOLES); Mounce-szócikk nélkül nem
+        ctx = {'fl': {}}
+        sorok = LG._gerinc_ubs_mutato('gorog', 5, ['G1941'], {}, ctx)
+        self.assertTrue(any('Mounce' in x for x in sorok))
+        self.assertEqual(ctx['fl'].get(LG.MCGED_FAJL), {'MCGED'})
+        ctx2 = {'fl': {}}
+        LG._gerinc_ubs_mutato('gorog', 5, ['G0000'], {}, ctx2)
+        self.assertNotIn(LG.MCGED_FAJL, ctx2['fl'])
+        ctx3 = {'fl': {}}
+        LG._gerinc_ubs_mutato('heber', 5, ['H7121'], {}, ctx3)
+        self.assertNotIn(LG.MCGED_FAJL, ctx3['fl'])
+        kol = LG.blokk_kolofon({'id': 'ISTENTISZT-001', 'statusz': 'x'}, [(LG.MCGED_FAJL, LG.LC('MCGED'), 'szocikkek')])
+        self.assertIn(LG.MOUNCE_MEGJELOLES, kol)
+
     def test_tw_modositas_mondat_a_felhasznalast_koveti(self):
         # F131.17 (ELLENOR_SZOTARI_GERINC_2 1.): a gerinces lap a tW-ből csak azonosítót nevez meg, ezért a
         # kolofon nem mondhatja, hogy a szócikkek szövegét idézőblokkban közli; szövegközlésnél a régi mondat marad
