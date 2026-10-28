@@ -442,6 +442,21 @@ class ValodiAdat(unittest.TestCase):
         LG._gerinc_tw('gorog', 3, ['G0000'], {}, ctx2)
         self.assertNotIn(LG.TW_FAJL, ctx2['fl'])
 
+    def test_tw_modositas_mondat_a_felhasznalast_koveti(self):
+        # F131.17 (ELLENOR_SZOTARI_GERINC_2 1.): a gerinces lap a tW-ből csak azonosítót nevez meg, ezért a
+        # kolofon nem mondhatja, hogy a szócikkek szövegét idézőblokkban közli; szövegközlésnél a régi mondat marad
+        self.assertIn('szövegét nem közli', LG.kotelezo_megjeloles('tW_szocikkek', tw_szoveg_kozolve=False))
+        self.assertNotIn('idézőblokkba', LG.kotelezo_megjeloles('tW_szocikkek', tw_szoveg_kozolve=False))
+        self.assertIn('idézőblokkba', LG.kotelezo_megjeloles('tW_szocikkek'))
+        # a jel a szövegközlő blokkból jön, a gerinc-mutatóban nem áll
+        r = {'strongok': ['G1941'], 'tw_id': 'kt/x', 'cim': 'x', 'szoveg': 'a\\nb'}
+        self.assertIn(LG.TW_SZOVEG_JEL, LG._tw_cikk_blokk(r, {'G1941'}))
+        ctx = {'fl': {}}
+        self.assertFalse(any(LG.TW_SZOVEG_JEL in x for x in LG._gerinc_tw('gorog', 3, ['G1941'], {}, ctx)))
+        kol = LG.blokk_kolofon({'id': 'ISTENTISZT-001', 'statusz': 'x'},[(LG.TW_FAJL, 'tW_szocikkek', 'szocikkek')], tw_szoveg_kozolve=False)
+        self.assertIn('szövegét nem közli', kol)
+        self.assertNotIn('idézőblokkba', kol)
+
     def test_2moz_33_19(self):
         _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
         s = next(r for r in elo_sorok if r['id'] == 'ISTENTISZT-001' and r['igehely'] == '2Móz 33:19')

@@ -1356,10 +1356,15 @@ def _tw_szoveg_idezetblokk(szoveg):
     return '\n'.join(('> %s' % s).rstrip() for s in sorok)
 
 
+# A tW-szócikk szövegét közlő blokk jele: a kolofon „Módosítás” mondata ebből tudja, hogy a lap a szócikk szövegét
+# közli-e, vagy csak az azonosítóit nevezi meg (F131.17, ELLENOR_SZOTARI_GERINC_2 1.).
+TW_SZOVEG_JEL = '(tW; a motívum tokenje: '
+
+
 def _tw_cikk_blokk(r, tokenek):
     kotes = [s for s in r['strongok'] if s in tokenek]
     hu = forditas_ehhez('tW_szocikkek', r['strongok'][0] if r['strongok'] else EM_DASH, r['tw_id'], EM_DASH, 'forditas_hu')
-    return ('<details>\n<summary>%s — %s (tW; a motívum tokenje: %s)</summary>\n\n%s\n\n%s\n\n</details>'
+    return (('<details>\n<summary>%s — %s ' + TW_SZOVEG_JEL + '%s)</summary>\n\n%s\n\n%s\n\n</details>')
             % (r['tw_id'], r['cim'], ', '.join(kotes), _tw_szoveg_idezetblokk(r['szoveg']),
                '**🇭🇺** %s' % hu if hu else FORDITASRA_VAR))
 
@@ -3038,6 +3043,12 @@ TW_MEGJELOLES = ('Translation Words (tW), CC BY-SA 4.0 (https://creativecommons.
                  'Módosítás: a szócikkek szövegét a lexikonoldal idézőblokkba tördelve közli (a forrás `\\n` '
                  'sortörés-jelölései valódi sortörésre cserélve), egyébként változatlanul; a magyar fordítás '
                  '(ahol van) származékos munka, ugyanazon CC BY-SA 4.0 licenc alatt.')
+# F131.17 (ELLENOR_SZOTARI_GERINC_2 1.): a szótári gerinces lap a tW-ből csak a szócikkek azonosítóit és a
+# forrásfájlt nevezi meg (szónézet-mutató, `_gerinc_tw`); a „Módosítás” mondat ezt a tényleges felhasználást mondja.
+TW_MEGJELOLES_MUTATO = ('Translation Words (tW), CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/). '
+                        'The original work by unfoldingWord is available from unfoldingword.org/utw. '
+                        'Felhasználás: a lexikonoldal a szócikkek azonosítóit és a forrásfájlt nevezi meg a '
+                        'szónézet mutatójaként; a szócikkek szövegét nem közli.')
 FAJL_MEGJELOLES_KULCS = {
     'konkordancia/UBS_DBH_jelentesek.tsv': 'UBS_DBH', 'konkordancia/UBS_DBH_referenciak.tsv': 'UBS_DBH',
     'konkordancia/UBS_DNTG_jelentesek.tsv': 'UBS_DNTG', 'konkordancia/UBS_DNTG_referenciak.tsv': 'UBS_DNTG',
@@ -3048,11 +3059,12 @@ FAJL_MEGJELOLES_KULCS = {
 }
 
 
-def kotelezo_megjeloles(kulcs):
+def kotelezo_megjeloles(kulcs, tw_szoveg_kozolve=True):
     """A dataset kötelező forrásmegjelölése: az UBS-nél az adat/licencek.tsv `kotelezo_megjeloles` mezője
-    (a ©-mondat szó szerint), a tW-nél és a TWOT-nál a fenti állandó."""
+    (a ©-mondat szó szerint), a tW-nél és a TWOT-nál a fenti állandó. A tW-nél a `tw_szoveg_kozolve` dönt:
+    ha a lap a szócikkek szövegét közli, a módosítást jelző mondat; ha csak azonosítót, a mutató-mondat."""
     if kulcs == 'tW_szocikkek':
-        return TW_MEGJELOLES
+        return TW_MEGJELOLES if tw_szoveg_kozolve else TW_MEGJELOLES_MUTATO
     if kulcs == 'OSHL':
         return TWOT_MEGJELOLES
     szoveg = licenc_sor(kulcs).get('kotelezo_megjeloles') or ''
@@ -3077,7 +3089,7 @@ def kolofon_naplo_cella(motivum_id):
     return EM_DASH
 
 
-def blokk_kolofon(m, fajl_licenc_blokk_lista):
+def blokk_kolofon(m, fajl_licenc_blokk_lista, tw_szoveg_kozolve=True):
     forras_study_sorok = [s.strip() for s in (m.get('forras_study') or '').split(';') if s.strip()]
     forras_study_cella = '<br>'.join('`%s`' % s for s in forras_study_sorok) if forras_study_sorok else EM_DASH
 
@@ -3124,7 +3136,7 @@ def blokk_kolofon(m, fajl_licenc_blokk_lista):
         megjelolesek.append('*%s*' % lsj_forrasmegjeloles())
     # F09 S2.7 (F05 S11): a kötelező forrásmegjelölések szó szerint
     for kulcs in sorted({FAJL_MEGJELOLES_KULCS[f] for f in per_fajl if f in FAJL_MEGJELOLES_KULCS}):
-        szoveg = '*%s*' % kotelezo_megjeloles(kulcs)
+        szoveg = '*%s*' % kotelezo_megjeloles(kulcs, tw_szoveg_kozolve)
         if szoveg not in megjelolesek:
             megjelolesek.append(szoveg)
 
@@ -3735,7 +3747,9 @@ def render_lexikon_egy_id(m, sorai, konyv_sorrend, hianyzo_konyvek):
         + [(fajl, licenc, 'kapcsolatok') for fajl, licenc in fl_kapcsolatok]
     )
     blokk_idezes_szov = blokk_idezes(m, fajl_licenc_blokk_lista)
-    blokk_kolofon_szov = blokk_kolofon(m, fajl_licenc_blokk_lista)
+    # F131.17: a tW „Módosítás” mondata a tényleges felhasználást követi (szövegközlés vagy csak azonosító)
+    blokk_kolofon_szov = blokk_kolofon(m, fajl_licenc_blokk_lista,
+                                       tw_szoveg_kozolve=TW_SZOVEG_JEL in blokk_szocikkek_szov)
 
     blokkok = {
         'tartalom': blokk_tartalom_szov,
