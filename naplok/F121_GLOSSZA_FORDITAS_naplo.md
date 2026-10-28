@@ -74,3 +74,17 @@ A „call” szó önmagában többjelentésű, ezért erre nincs kapus sor; a n
 6. UBS DNTG G1941 56.15 (`glosszak_hu`): „ügyében fellebbezni; magasabb bírósághoz fellebbezni”
 
 **Mit nem csináltam.** `terminologia.tsv`, `licencek.tsv`, `forditasok.tsv`: változatlan. Az F121.0 hátralévő része (Thayer G1941 `teljes` sor, a tiltott-fordulat tábla) a #131/#142 óta más úton van (DT379), nem e szűkített menet tárgya.
+
+## 4. F121.2 — rögzítés és repón kívüli próbarender (2026-10-28)
+
+*A jóváhagyás: DT234 (D1 1. opció) és DT-F121d (v4 első 4 sor + két nyelvi javítás), felhasználó, 2026-10-28, „Igen, jóváhagyom” (`DONTESEK.md`).*
+
+- `adat/terminologia.tsv`: +4 `v4` sor (`deity` kapu=igen; a többi kapu=nem).
+- `adat/forditasok.tsv`: +6 sor (`UBS_DBH` ×5 `definicio_hu`, `UBS_DNTG` G1941 56.15 `glosszak_hu`), `allapot=sonnet`, `modell=claude-sonnet-5-5`, `terminologia_verzio=v4`, `forras_hash` a `lista`-ból. Írás előtt-után bájt-összevetés: a meglévő 14 672 sor bájtra azonos, csak 6 sor került a végére.
+- **Kapuk** (`forditas_kapuk.kapuk_futtat`, mind a 6 sorra): minden gátló kapu RENDBEN (`5_terminologia`, `15_tiltott` is); bukott sor 0, önújrapróba nem kellett, `…_bukottak.tsv` nem jött létre.
+- `ellenoriz.py`: SÉRTÉS 0, a 13. szabály RENDBEN a 6 új sorra is (a 14. szabály JELENTÉS, nem gátol).
+- **Próbarender** (repón kívül): a `(fordításra vár)` jelölés a 46-ból 1-re csökkent; a megmaradt egy a lap magyarázó lábjegyzete (136. sor), amely a jelölést mint fogalmat említi — nem fordítatlan egység. A UBS-doménsor: „56.15 ügyében fellebbezni; magasabb bírósághoz fellebbezni”.
+- **Ismert eltérés, nem e menet hibája:** a próbarender és az élő lap között 8 további sor különbözik, mert a generátor-kód még a `DT381`/`DT373`/`DT382` helyett a helyőrzőket (`DT-F131k`/`DT-F131c`/`DT-F131l`) tartalmazza. Az élő lapot ez a menet nem írta; a szám-névcserét a main-en a `szamkiosztas` végzi, az élő lap nulladiffje addig ezen is múlik.
+- **Más lapok:** az új `UBS_DBH` H7121/H8034 sorok a többi lapot is érinthetik, ha azokon ugyanez a lexid szerepel; az élő lapok újragenerálása nem történt meg, a hatás a #36-é.
+
+**⛔ Olvasás:** a próbarender: `F121_proba_ISTENTISZT-001_TUDOMANYOS.md` a közös jegyzetmappában. Az élő `lexikon/ISTENTISZT-001_TUDOMANYOS.md` felülírása a felhasználó döntésére vár.
