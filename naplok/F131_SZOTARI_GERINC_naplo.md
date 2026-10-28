@@ -576,10 +576,10 @@ A brief fejlécének `allapot`-ja a kör utolsó commitjában változik.
   - zöld: `teszt_szotari_gerinc` 38, `thayer_jelolt/teszt_vers_jelentes` 11, `olvaso_szerver/teszt_bdb_vers_jelentes` 29, `teszt_szerepmatrix` 44 (1 skip), `teszt_lexikon_adatres` 20, `teszt_forditas_kapuk` 110;
   - `bdb_jelolt/teszt_bont` 3 hiba, a kiindulóval azonos (`Determinizmus.test_ellenoriz`, `HuIlleszt.test_ellenoriz`, `test_osszefuzo_a_mai_adaton_valtozatlan`).
 - **`ellenoriz.py`:** 15 RENDBEN, 0 SÉRTÉS, 2 KÉZI, 3 JELENTÉS.
-- **CI** (`futtat.py --valtozott $(git diff --name-only origin/main...HEAD) --diff-alap $(git merge-base origin/main HEAD) --diff-fej HEAD --pr-cim "[ELLENŐRZŐ] F131: SZOTARI_GERINC" --esemeny pull_request`): kilépési kód 0.
+- **CI** (`futtat.py --valtozott $(git diff --name-only origin/main...HEAD) --diff-alap $(git merge-base origin/main HEAD) --diff-fej HEAD --pr-cim "[ELLENŐRZŐ] F131: SZOTARI_GERINC" --esemeny pull_request`): kilépési kód 0 a 9. szakasz commitja *előtti* állapoton. **Javítva (10.1, F131.26):** a `77e17099` head-en ugyanez a futás E26 HIBA 2-t adott, kilépési kód 1 (e szakasz és az `ELLENOR_SZOTARI_GERINC_3.md` a `cefd5a39` két végleges DT-számát idézte); a csere után, az F131.26 head-en a merge-base-hez mérve: kilépési kód 0, E26 0.
   - E5 0, E28 0 („1 migrált nézet”).
   - JELENTÉS: E12 355 (az 1/2. körben 353), E13 120, E25 4, E27 41, E30 15, E32 1.
-  - Az `origin/main` a beolvasztás óta 1 commitot lépett (`cefd5a39 szamkiosztas: DT-F141a → DT368, DT-F143a → DT369`); a CI a merge-base-hez mér.
+  - Az `origin/main` a beolvasztás óta 1 commitot lépett (`cefd5a39` (szamkiosztas)); a CI a merge-base-hez mér.
 
 ### 9.9 Nyitott kérdések az orkesztrátornak
 

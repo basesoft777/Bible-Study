@@ -1,4 +1,4 @@
-<!-- A jelentést a fuggetlen-ellenor subagent válaszként adta vissza (fájlíró eszköze nem volt). Az orkesztráló session 2026-10-28-án tartalmi változtatás nélkül mentette. -->
+<!-- A jelentést a fuggetlen-ellenor subagent válaszként adta vissza (fájlíró eszköze nem volt). Az orkesztráló session 2026-10-28-án tartalmi változtatás nélkül mentette. F131.26 (2026-10-28, a célzott 3. kör 1. tétele): a két végleges DT-szám helyén a `cefd5a39` commitra mutató hivatkozás áll (CI E26); más változtatás nincs. -->
 
 ELTÉRÉS: 2 tétel
 
@@ -34,7 +34,7 @@ A brief nem számozza G/D-ként a pontjait. Az ellenőrzés alapja ezért a brie
 | A5 Nevesített tanító | OK | – | A Gesenius (`:469`) és az Abbott-Smith (`:491`) a Thayer szövegén belül áll; új tanító nem került be. |
 | A6 E12–E15 | OK, megjegyzéssel | – | E12 355 (az 1/2. körben 353), E13 120, E14 0, E15 0. A +2 forrása a csonkolt CI-kimenetből nem bontható: NEM ELLENŐRIZHETŐ. |
 | 7.1–7.6 Elfogadás | OK | – | A fenti sorok szerint. A 7.3: a Mounce tartalma nem áll a lapon, csak a megjelölése (DT-F131m kiegészítés). |
-| 7.7 CI zöld | **ELTÉRÉS** | `naplok/F131_SZOTARI_GERINC_naplo.md:582` (és `:579`) | A parancs (a GitHub-workflow `ellenorzes.yml:42` szerint a merge-base-hez mér): `python eszkozok/ellenorzes/futtat.py --valtozott $(git diff --name-only origin/main...77e17099) --diff-alap $(git merge-base origin/main 77e17099) --diff-fej 77e17099 …`. Eredmény: **E26 HIBA 2** („a DT368 / DT369 szám a main-en még nem létezik”, `naplo:582`), **kilépési kód 1**. A kör saját tartományán (`--diff-alap a32e9a6f`) ugyanez. Ok: a napló 9.8 a `cefd5a39` commit címét idézi, abban végleges DT-szám áll, a merge-base (`5f7c7d2a`) `DONTESEK`-jében viszont a legnagyobb szám DT367. A napló „kilépési kód 0” állítása a 9. szakasz commitja előtti állapotra igaz, a head-re nem. Az `--diff-alap origin/main`-nel futtatva 0 a kilépési kód, az E26 0. |
+| 7.7 CI zöld | **ELTÉRÉS** | `naplok/F131_SZOTARI_GERINC_naplo.md:582` (és `:579`) | A parancs (a GitHub-workflow `ellenorzes.yml:42` szerint a merge-base-hez mér): `python eszkozok/ellenorzes/futtat.py --valtozott $(git diff --name-only origin/main...77e17099) --diff-alap $(git merge-base origin/main 77e17099) --diff-fej 77e17099 …`. Eredmény: **E26 HIBA 2** (a `cefd5a39` (szamkiosztas) két végleges DT-számára: „a … szám a main-en még nem létezik”, `naplo:582`), **kilépési kód 1**. A kör saját tartományán (`--diff-alap a32e9a6f`) ugyanez. Ok: a napló 9.8 a `cefd5a39` commit címét idézi, abban végleges DT-szám áll, a merge-base (`5f7c7d2a`) `DONTESEK`-jében viszont a legnagyobb szám DT367. A napló „kilépési kód 0” állítása a 9. szakasz commitja előtti állapotra igaz, a head-re nem. Az `--diff-alap origin/main`-nel futtatva 0 a kilépési kód, az E26 0. |
 | 7.7 Hét lap, `forditasok.tsv` | git-szinten OK; újragenerálva NEM ELLENŐRIZHETŐ | – | `git diff --stat a32e9a6f..77e17099`: a `lexikon/` alatt csak az ISTENTISZT-001 változott (+7/−3), az `adat/forditasok.tsv`-t a kör nem írja. A `nulladiff.sh` nem megengedett. |
 | 7.8 `csv` modul | OK | – | A diff nem hoz `csv`-importot. |
 | Main-beolvasztás: a lapon 0 sor | OK (közvetve) | – | `git diff --numstat 2077d358 a32e9a6f -- lexikon/`: üres. `-- adat/forditasok.tsv`: +6 599/−0; `cut -f1 \| uniq -c` → 6 599 BDB; 1 433 Strong; H7121/H8034: 0. A head-en az E28 0, a lap diffje csak a kör tételeit tartalmazza. A repón kívüli renderelés bájtazonossága NEM ELLENŐRIZHETŐ. |
@@ -47,7 +47,7 @@ A brief nem számozza G/D-ként a pontjait. Az ellenőrzés alapja ezért a brie
 | L5 ⛔-pontok | OK, megjegyzéssel | brief fejléc `:9-12` | `allapot: megallt`, `kovetkezo: [elteres_kor 2/2]`. A TAHOT-kérdés (napló 9.9.1) helyőrző nélkül maradt (l. a forrás-sort). |
 
 **Eltérések súlyossági sorrendben:**
-1. **7.7 CI:** a head a GitHub-workflow módszerével (merge-base) E26 HIBA 2-t ad, kilépési kódja 1. Ok: a napló 9.8 (`:582`) a `cefd5a39` végleges DT368/DT369 számát idézi. A napló „kilépési kód 0” állítása a végső head-re nem igaz. A kör hozta be.
+1. **7.7 CI:** a head a GitHub-workflow módszerével (merge-base) E26 HIBA 2-t ad, kilépési kódja 1. Ok: a napló 9.8 (`:582`) a `cefd5a39` (szamkiosztas) két végleges DT-számát idézi. A napló „kilépési kód 0” állítása a végső head-re nem igaz. A kör hozta be.
 2. **Forrásmegjelölés: TAHOT:** a [^1] és a [^8] forrásként nevezi meg a `konkordancia/TAHOT_kivonat.tsv`-t, de az nem áll az Irodalomban és a kolofon licenctáblájában (CC BY 4.0, STEPBible). Az F131.13-ból öröklött, az előző ellenőrzés nem vette észre. A napló 9.9.1 nyitva hagyja, DONTESEK-helyőrző nélkül.
 
 Az előző jelentés 5 ELTÉRÉS-e (R5a, 2d, L5, R6a, 2f) és a 2e gyengesége a fenti sorok szerint megszűnt.
