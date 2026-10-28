@@ -102,3 +102,26 @@ Proveniencia: a `naplok/F123_felmeres_ALVIL-001.md` három sora (ts=2026-10-28T1
 A tanulmány egésze 4 előfordulást egyszer sem nevez meg (Jób 17:12, Jób 17:15, Préd 9:12, Mt 11:23), a generált lexikonoldal 3-at (Jób 17:12, Jób 17:15, Préd 9:12). A 2e. alpont négy magverse közül (2Sám 22:6, Zsolt 18:6, Jón 2:3, Zsolt 116:3) egyiket sem nevezi meg a kézi próza; mind a négy csak a 2/b-ben és az adatmezőben áll. A 57 meg nem nevezett sor adatmező-szövege a TSV-ben; témába sorolásuk az értelmező menet dolga.
 
 Proveniencia: `scope=ALVIL-001: adat/elofordulasok.tsv (72 sor) × kézi rések (2b 6226 B, ertelmezes 2800 B, kivonat 902 B, miert_fontos 605 B, minosites 2354 B, modszertan 4248 B; forrás: tematikus_lezart/Hadesz_Seol_tematikus.md, tematikus_lezart/naplok/Hadesz_Seol_kereszthivatkozas_naplo.md) + a fájlok egésze + lexikon/ALVIL-001_TUDOMANYOS.md (84852 bájt, generált) | forras=saját számláló (naplok/F123_adat_keszito.py proza) | ts=2026-10-28T15:14Z`
+
+## 5. Seól (H7585) nélküli scan (2e. 4.) — ⛔-küszöb jelentve, döntés nélkül
+
+**Lekérdezés:** halál- vagy sír-fenyegetés (H4194; H8179 csak H4194-gyel együtt, „halál kapui”; H0953 bór; H7845 sahat) ∩ kiáltás (H7121, H2199, H6817, H7768) **ugyanabban a versben**, a H7585-öt tartalmazó versek nélkül; a 2Sám 22 = Zsolt 18 dublett egy helynek számít. A brief harmadik eleme („+ szabadulás”) és az „az Úrhoz” megszorítás nincs Stronggal megadva, ezért nem szűrő, hanem **mért mező**: a versben álló istennév (H3068, H0410, H0430) és szabadulás-ige (paraméter: H5337, H3467, H4422, H6403, H2502, H1350, H6299, H5927). Ez a paraméterlista nem mező-hipotézis; a választása a felhasználóé (l. lent). Sorok: `naplok/F123_adat_ALVIL-001_seol_nelkul.tsv`; a 16 kollokáció-lekérdezés és a H7585-scan proveniencia-sora a `naplok/F123_lekerdezesek.tsv`-ben.
+
+| Szint | Önálló hely (a dublett egynek számítva) | Helyek |
+|---|---|---|
+| fenyegetés ∩ kiáltás (a brief két Strong-listája) | **7** | 1Móz 26:18, 1Móz 41:14, 2Sám 19:28, 2Kir 4:40, Jób 17:13, Zsolt 28:1, Sir 3:55 |
+| + istennév a versben | **3** | 2Kir 4:40 (H0430), Zsolt 28:1 (H3068), Sir 3:55 (H3068) |
+| + istennév és szabadulás-ige a versben | **0** | — |
+
+A 7 hely egyike sem ALVIL-001-előfordulás. A dublett (2Sám 22 / Zsolt 18) nem ad találatot: a 22:6 / 18:6 a H7585 miatt kiesik, a kiáltás pedig a következő versben (22:7 / 18:7) áll, és a lekérdezés versen belüli.
+
+**⛔-küszöb (≥3 önálló hely):** a brief szövege szerint a feltétel a három elem együtt. Versen belül, szigorúan véve: **0 hely, a küszöb alatt** (az alpont maradna). A két Strong-lista metszetén: **7**, istennévvel: **3**, mindkettő eléri a küszöböt. **Melyik szint a mérce, és kell-e versablak (pl. ±2 vers, ahogy a 2Sám 22:6–7 mutatja), az értelmezési kérdés: a P2/A4 döntés a felhasználóé, ez a menet nem hozza meg.** A mechanikus találatok közt nyilvánvalóan nem halál-fenyegetéses helyek is vannak (pl. a H0953 „verem/tömlöc”, a H4194 időhatározóként); a minősítésük a B5 jelöltminősítés, szintén nem ennek a menetnek a dolga.
+
+Proveniencia: `scope=TAHOT-teljes: (H4194 | H8179[+H4194] | H0953 | H7845) ∩ (H7121 | H2199 | H6817 | H7768) egy versben, H7585 nélkül; dublett: 2Sám 22 = Zsolt 18 egy hely | forras=konkordancia/TAHOT_kivonat.tsv (lekerdez.load_tahot) | ts=2026-10-28T15:16Z`; kollokáció-naplók: `scope=TAHOT-teljes+TAGNT-teljes | … | strong=<pár> | n=… | ts=2026-10-28T15:15–16Z | csatorna=cli` (16 sor).
+
+## 6. Nyitott kérdések (az értelmező menetnek / a felhasználónak; itt nincs döntés)
+
+1. **⛔ 2e. 4. küszöb (P2/A4, a felhasználóé):** a Seól nélküli scan melyik szintje a mérce (0 / 3 / 7 önálló hely), és kell-e versablak. Javaslat a döntés-előkészítéshez: a versablakos (±2 vers, azonos fejezet) változat lefuttatása a felhasználó jóváhagyásával, a szabadulás-ige listájának rögzítése előtt.
+2. **2e. 3. háló-jelöltek:** a két ISTENTISZT-001 ↔ ALVIL-001 pár a felmérés (b) blokkjában mérten megvan; a `jeloltek.tsv`-be írásuk döntéssel, az értelmező menetben.
+3. **Hiányzó fordítások (13 kulcs):** a pótlás külön adatfeladat (`forditasok.tsv`, a #123 `ir`-jén kívül; 2b).
+4. **A #131 merge-e után:** a BDB H7585 a szakasztáblás renderben a `kezi` `teljes` sort kapja-e (DT290 (3)); az M1 leképezési tábla, az M3–M5 és a próza-lefedettség átvitele a `motivumok/naplok/`-ba.
