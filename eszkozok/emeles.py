@@ -416,7 +416,7 @@ def utofeldolgoz(strong, nyers, kivetel=()):
     vegleges, csere = K.terminologia_kisnagybetu_csere(forras, vegleges, bizonytalan_lista=list(kivetel))
     valt = list(valt) + [('5_kisnagybetu %s -> %s (%s)' % (alak, kot, angol), db)
                          for angol, alak, kot, db in csere]
-    eredm = K.kapuk_futtat(szotar, forras, vegleges, bizonytalan=kivetel)
+    eredm = K.kapuk_futtat(szotar, forras, vegleges, bizonytalan=kivetel, strong=sp)
     return vegleges, valt, eredm, K.atment(eredm)
 
 
@@ -878,7 +878,7 @@ def utofeldolgoz_szakasz(strong, nyers, kivetel=()):
     vegleges, csere = K.terminologia_kisnagybetu_csere(forras_nt, vegleges, bizonytalan_lista=list(kivetel))
     valt = list(valt) + [('5_kisnagybetu %s -> %s (%s)' % (alak, kot, angol), db)
                          for angol, alak, kot, db in csere]
-    eredm = K.kapuk_futtat_szakaszos('BDB', forras, vegleges, bizonytalan=kivetel)
+    eredm = K.kapuk_futtat_szakaszos('BDB', forras, vegleges, bizonytalan=kivetel, strong=sp)
     return vegleges, valt, eredm, K.atment(eredm)
 
 
