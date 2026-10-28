@@ -96,3 +96,11 @@ A „call” szó önmagában többjelentésű, ezért erre nincs kapus sor; a n
 A megfeleltetés a `szamkiosztas: … ` commit (f3f9372b) üzenetéből és a `DONTESEK.md` sorokból: a→371, b→372, c→373, d→374, e→375, **h→376, f→377**, g→378, i→379, j→380, k→381, l→382, m→383, n→384, o→385; DT-F141a→370 (a h/f sorrend nem betűrendes). Csere: csak az `eszkozok/` fájljaiban, szóhatáros regexszel. Cserélt helyőrzők (előfordulás): DT-F131a ×8, b ×3, c ×4, d ×4, i ×3, j ×4, k ×11, l ×11, m ×4, n ×1, DT-F141a ×2 — 13 fájlban (a lista a brief `ir` mezőjében). A `naplok/`, brief és más dokumentumokban maradt helyőrzők nem e menet hatóköre.
 
 Tesztek: `teszt_forditas_kapuk` 110 OK, `teszt_szerepmatrix` 44 OK, `teszt_szotari_gerinc` 39 OK. Két teszt a csere előtt is bukik ezen az ágon (a cserétől független, a stash-sel mérve): `bdb_jelolt/teszt_bont.py` 4 hiba, `olvaso_szerver/teszt_bdb_vers_jelentes.py` `test_bajtra_azonos` — a bemeneti fájlok hash-e tér el (Windows-checkout sorvége), nem a `forditasok.tsv`.
+
+## 6. F121.6 — a 4 hűségi pont javítása (DT-F121f, 2026-10-28)
+
+*Felhasználó, 2026-10-28 (az orkesztrátor chatjében): „Igen, mindkettő” — a mankók a 6 sorra elengedve; a 4 hűségi pont javítandó.* A 3 érintett sor `forditas_hu` mezője változott, a `forras_hash` nem (a forrás ugyanaz); a kapuk újra mind ÁTMENT.
+
+- **006562001009000.** Angol: „literally: to cry out (someone's) name (something); hence: = action by which humans assign a name to a person or place”. A „(something)” a „cry out … name” második tárgya, ezért a fordítás: „szó szerint: valakinek a nevét kiáltani (valamit); …” (korábban: „valakinek (valaminek) a nevét kiáltani”, ami a „(something)”-et birtokosnak olvasta).
+- **007442001001000.** Angol: „…is known, addressed, remembered, or referred to”. „remembered” → „emlékeznek rá” („emlegetnek” helyett): „…ismernek, megszólítanak, emlékeznek rá, vagy amellyel rá utalnak; …”.
+- **007442001004000.** Angol: „the core of one's identity, which reflect the essence of one's being”. „azonosságának magja” (a v4 sor szerint) és „létének lényegét”: „…= az ember azonosságának magja, amely létének lényegét tükrözi”.
