@@ -59,3 +59,21 @@ Megvan: BDB H7585 `teljes` (`kezi`), Thayer G0086 sz1–sz4 (`sonnet`; a `teljes
 **A #131-re tartozó megfigyelés (nem hiány):** a BDB H7585-nek 11 szakasza van (`adat/bdb_szakaszok.tsv`), `sz<n>` fordítási sora egy sincs; a DT290 (3) szerint a `kezi` `teljes` sor az érvényes, amíg a szakaszsorok nem mind `kezi`-k. A szakasztáblára álló render (#131) ezen a Strongon tehát a `teljes` sort kapja; ezt az értelmező menet a #131 merge-e után ellenőrzi.
 
 Proveniencia: minden sor saját proveniencia-mezővel (a `szotar`/`szerepkinalat`/`forditas_hiany` TSV utolsó oszlopa); a futás: `scope=ALVIL-001 Strongjai (H7585, G0086) × adat/szotar_szerepek.tsv | forras=naplok/F123_adat_keszito.py szotar | ts=2026-10-28T15:12Z`
+
+## 3. Felmérő lekérdezés (2d. 1.) — `eszkozok/motivum_felmeres.py`
+
+Az eszköz a #123 első motívumánál készült (2d. 1.), motívumfüggetlen (`python eszkozok/motivum_felmeres.py <ID> --ki naplok/F123_felmeres_<ID>`). Kimenet: `naplok/F123_felmeres_ALVIL-001.md` (összegzés, paraméterek, proveniencia) és három TSV, **teljes egészében az értelmező menet elé** (2c, „A tengely”). **Mért tény, nem állítás:** a szomszédos motívum és a közös szókészlet csak jelöltként mehet tovább (`jeloltek.tsv`, 2. szabály), a közös szókészlet nem bizonyít idézést.
+
+**Adatforrás-eltérés a brieftől:** a brief „friss `pardes.db`”-t ír; a repó `pardes.db`-je (a fő checkoutban) 2026-10-14-i építés, régebbi az ág tábláinál. Az eszköz ezért a kanonikus TSV-kből olvas (`adat/elofordulasok.tsv`, `adat/motivumok.tsv`, `konkordancia/TAHOT_kivonat.tsv`, `TAGNT_kivonat.tsv`, `adat/grammatikai_strongok.tsv`, a `lekerdez.py` betöltőivel), így építés nélkül az ág aktuális adatán fut. Ugyanazok a táblák kerülnek a `pardes.db`-be (DT28).
+
+| Blokk | Eredmény | Fájl |
+|---|---|---|
+| (a) kísérő szavak | 377 Strong a motívum 73 versében (ebből 2 a saját gerinc: H7585, G0086); 56 grammatikai Strong kizárva | `naplok/F123_felmeres_ALVIL-001_kiserok.tsv` |
+| (b) szomszédos motívumok, azonos fejezet | 10 fejezet×motívum pár, 4 motívum: HODIT-001 4 (Jób 26, Péld 9, Zsolt 88, Ézs 14), TEREMT-001 3 (Ez 31, Jel 20, Jón 2), ISTENTISZT-001 2 (ApCsel 2, Zsolt 116), HAMART-001 1 (Hab 2); közös vers: Ez 31 (TEREMT-001), Péld 9:18 és Ézs 14:9 (HODIT-001) | `naplok/F123_felmeres_ALVIL-001_szomszedok.tsv` |
+| (c) válasz-szavak ±3 vers (H6030, H8085, G0191, G1522, G0611) | 24 találat 20 motívumversnél: H8085 12, H6030 6, G0191 5, G0611 1 | `naplok/F123_felmeres_ALVIL-001_valasz.tsv` |
+
+A (b) két ISTENTISZT-001-párja (Zsolt 116:3 ↔ 116:4; ApCsel 2:27, 31 ↔ 2:21) a 2e. 3. pont két háló-jelöltje; a `jeloltek.tsv`-be írásuk az értelmező menet dolga (döntéssel), most nem került be.
+
+A (c) válasz-szavainak listája a felmérés példája („felel/meghall”) szerinti paraméter (`--valasz`), nem mező-hipotézis; a (c) a fejezethatáron nem lép át.
+
+Proveniencia: a `naplok/F123_felmeres_ALVIL-001.md` három sora (ts=2026-10-28T15:13Z) és minden TSV-sor utolsó mezője.
