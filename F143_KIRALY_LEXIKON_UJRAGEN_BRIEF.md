@@ -11,6 +11,7 @@ ad: a lexikon/KIRALY-001_TUDOMANYOS.md és _TORZSCIKK.md a javított Strong-mez�
 kovetkezo: "—"
 lezarva_osszegzes: "beolvadt a #36-ba (DT-F143a (b), 2026.10.28): az M0 szárazfutás szerint a KIRALY-001 diffje rendszerszintű drift, ezért az éles írás elmaradt; az N-F132a (G0813 → G0540) a #36-ban élesedik"
 ag: claude/f143-kiraly-lexikon-ujragen
+pr: https://github.com/basesoft777/Bible-Study/pull/495
 olvas: [adat/elofordulasok.tsv, adat/forditasok.tsv, adat/res_forras.tsv, eszkozok/general.py, eszkozok/lexikon_general.py, eszkozok/torzscikk_general.py, eszkozok/ellenorzes/e28_migralt_nezetek.tsv, tematikus_lezart/Melkizedek_tematikus.md, tematikus_lezart/naplok/Melkizedek_tematikus_kereszthivatkozas_naplo.md, "tematikus_lezart/KIRALY-001*", "tematikus_lezart/naplok/KIRALY-001*", RENDER_BRIEF.md, F36_LEXIKON_UJRAGEN_BRIEF.md, F132_THAYER_SZAKASZ_BRIEF.md]
 ir: [lexikon/KIRALY-001_TUDOMANYOS.md, lexikon/KIRALY-001_TORZSCIKK.md]
 fugg: []
