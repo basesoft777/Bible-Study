@@ -137,14 +137,14 @@ A vizsgált 13 tanítóból **1 tanítónál (Derek Prince) van megbízható, UR
 | Charles Capps, Oral Roberts | gap | 0 | 0 | csoportos keresésből |
 | Ern Baxter, Bob Mumford, Don Basham, Charles Simpson | gap | 0 | 0 | csoportos keresésből |
 
-Összes sor: 0 ✅, 6 ⚠️ (mind Derek Prince), a táblázat gap-sorai a 3. szakaszban.
+Összes sor: 0 ✅, 6 ⚠️ (mind Derek Prince), a táblázat gap-sorai a tanítói keresési napló tanítónkénti szakaszaiban (`motivumok/naplok/ISTENTISZT-001_tanitoi_kereses.md`).
 
-**Mi igazolt Prince-nél (a 4. pont szerint):**
-- **Jóel 2:32 (1. csomópont):** ötször is (*War on Earth*, *How I Came To Grips With Demons*, *Deliverance From The Fleshly Nature*, *The Prayer of Release*, *You've Got to Have Hope*), mindig a szabadulás-ígéret alapjaként, nem a formula exegézisével; a *How I Came To Grips With Demons* köti a leginkább a Jóel-könyv Lélek-kitöltés-gondolatához.
-- **Róm 10:12–13 (2. csomópont):** *The Roman Pilgrimage (Part 15)*, a zsidó–görög egyenlőség keretében; a 10:14 nem szerepel.
-- **Az 1Móz 4:26, az 1Kir 18, a Zsolt 116, az ApCsel 22:16, az 1Kor 1:2** (és az 1. pont többi igehelye): nincs igazolt anyag (gap).
+**Mi igazolt Prince-nél:**
+- **Jóel 2:32 (a kiinduló kivonat 1. csomópontja):** ötször is (*War on Earth*, *How I Came To Grips With Demons*, *Deliverance From The Fleshly Nature*, *The Prayer of Release*, *You've Got to Have Hope*), mindig a szabadulás-ígéret alapjaként, nem a formula exegézisével; a *How I Came To Grips With Demons* köti a leginkább a Jóel-könyv Lélek-kitöltés-gondolatához.
+- **Róm 10:12–13 (a kiinduló kivonat 2. csomópontja):** *The Roman Pilgrimage (Part 15)*, a zsidó–görög egyenlőség keretében; a 10:14 nem szerepel.
+- **Az 1Móz 4:26, az 1Kir 18, a Zsolt 116, az ApCsel 22:16, az 1Kor 1:2** (és a kiinduló kivonat többi igehelye): nincs igazolt anyag (gap).
 
-**M4 forrás-ellenőrzés (2026.10.20):** a 6 ⚠️ és a Wommack *Receive Jesus* sor (3.3, 1. sor) forrását friss Sonnet subagent nyitotta meg; a másik Wommack-sor (*Discipleship Evangelism study guide*, 3.3, 2. sor) forrását az M4 nem nyitotta meg, az ítéletet a session hozta (`claude-opus-5-5`); az erősségek nem változtak (a *Deliverance From The Fleshly Nature* Jóel 2:32-azonosítása a KJV-szövegegyezésből tett következtetés, `manual`). Napló: `naplok/F130_TANITOI_KERESES_ISTENTISZT_naplo.md`.
+**M4 forrás-ellenőrzés (2026.10.20):** a 6 ⚠️ és a Wommack *Receive Jesus* sor (a napló Wommack-táblájának 1. sora) forrását friss Sonnet subagent nyitotta meg; a másik Wommack-sor (*Discipleship Evangelism study guide*, a Wommack-tábla 2. sora) forrását az M4 nem nyitotta meg, az ítéletet a session hozta (`claude-opus-5-5`); az erősségek nem változtak (a *Deliverance From The Fleshly Nature* Jóel 2:32-azonosítása a KJV-szövegegyezésből tett következtetés, `manual`). Napló: `naplok/F130_TANITOI_KERESES_ISTENTISZT_naplo.md`.
 
 **Figyelmeztetések a felhasználónak:**
 - A találatok a szabadulás/deliverance témakörben jelennek meg; a „segítségül hívni az Úr nevét” formula tipológiáját, a név jelentését vagy az ószövetségi gyakorlatot egyik forrás sem tárgyalja. Használatuk: a Jóel 2:32 igehelyre való tényleges hivatkozás, nem a motívum értelmezése.
