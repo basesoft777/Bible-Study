@@ -1,0 +1,70 @@
+# VERSMEGF_MT_JAVITAS — napló (FELADATOK #146)
+
+*Brief: `F146_VERSMEGF_MT_JAVITAS_BRIEF.md` · modell: `claude-opus-5-5` (a brief `opus`-t kér; egyezik) · ág: `claude/f146-versmegf-mt-61d410` · 2026-10-28*
+
+Hatókör-bővítés: DT-F146a (az ISTENTISZT-001 lap újragenerálása a #146-ban; a felhasználó szavai a `DONTESEK.md`-ben).
+
+## 1. Módszer (DT207 (c), az F117-eszköz kiterjesztése)
+
+- Szkript: `naplok/F146_mt_felmeres.py` (az `naplok/F117_mt_levezet.py` `igazit`/`jel` függvényét importálja, nem másolja).
+- Károli-oldal: `TAHOT_kivonat.tsv` (Károli-kulcs, F85); MT-oldal: `Macula_heber_*.tsv` `ref` oszlopa. A Macula `karoli` oszlopa tanúként kizárva (csak a fájl→könyv hozzárendelésre kell).
+- Igazítás: Strong-Jaccard és Jaccard+szószám, monoton DP; blokk: Károli c-1..c+1 ↔ MT c-2..c+2; elfogadás: a két igazítás egyezik és a lépés 1-1.
+- Független tanú: a KJV-versszám (`KJV_Strongs_teljes.tsv`). Az MT≠Károli eltérés gépileg akkor igazolt, ha (a) a mért MT-vers azonos a tábla KJV-párjával, vagy (b) ismert MT≠KJV fejezeten (± 1) áll (a Macula-MT és a KJV fejezethossza eltér). Különben `KEZI_OLVASAS`.
+- Kimenet: `naplok/F146_mt_felmeres.tsv` (csak az eltérések, a kétséges sorok, a `KEZI` azonossági sorok és a kitöltött `igehely_mt`-jű sorok eltérései; soronként proveniencia).
+
+Proveniencia: `scope=21314 sor (KJV 21031, KEZI 283; üres igehely_mt), + a kitöltött igehely_mt-jű sorok; 929 fejezet, 39 könyv | forras=TAHOT_kivonat.tsv + Macula_heber_*.tsv (ref) + KJV_Strongs_teljes.tsv | eszkoz=naplok/F146_mt_felmeres.py | ts=2026-10-28T21:33Z`
+
+## 2. Jóel (brief 2.1)
+
+A Jóel 1:1–2:27 a mérés szerint Károli = MT (a tábla `KJV`-sora helyes). A **Károli 2:28–32 = MT 3:1–5** és a **Károli 3:1–21 = MT 4:1–21**: 26 vers, mind 1-1 lépés, a két igazítás egyezik, J = 0,83–1,00. A 2:28–29 is ide tartozik (a brief kérdése: a 2:28 = MT 3:1, J = 1,00).
+
+Független KJV-tanú (`naplok/F146_joel_kjv_tanu.py`): a KJV (= Károli-számozás) Strong-halmaza mind a 26 versen a mért MT-verssel erősebb (J = 0,55–1,00), az azonos számú MT-verssel 0,00–0,06. Proveniencia: `scope=Jóel 2:28–3:21 (26 vers) | forras=KJV_Strongs_teljes.tsv+Macula_heber_Joel.tsv(ref) | eszkoz=naplok/F146_joel_kjv_tanu.py | ts=2026-10-28T21:38Z`.
+
+Osztály: a Jóel-sorokban Károli = KJV ≠ MT. Ez **egyik meglévő osztályba sem fér**: `KJV` (üres `igehely_mt`) = Károli = KJV = MT; `MT` = Károli = MT ≠ KJV; `KEZI` kitöltött `igehely_mt`-vel (DT208 (c)) = Károli ≠ KJV és ≠ MT. A brief 2.1 szerint `KEZI` kitöltött `igehely_mt`-vel („ha Károli ≠ MT”); ehhez a `versmegf_javitas.betolt` KEZI-szabályát (`kjv != kar`) bővíteni kell, a fogyasztóknál (`lexikon_general.karoli_mt_vers` jó: a kitöltött `igehely_mt`-t használja) a DT209 őre érvényes.
+
+## 3. Felmérés (brief 2.2) — csak jelentés
+
+| állapot | sor |
+|---|---:|
+| egyezik (MT = Károli) | 20 323 |
+| **eltérés, igazolt** | **982** |
+| kétséges (1-2 / 2-1 lépés, `KEZI_OLVASAS`) | 9 |
+| `KEZI` sor, Károli = KJV = MT (üres `igehely_mt`; a render nem párosítja) | 93 |
+| kitöltött `igehely_mt`, a mérés eltér | 19 (+3 kétséges) |
+
+Az igazolt eltérések könyvenként (a fejezet a Károli-fejezet): 1Kir 32 (4, 5) · 1Krón 117 (6, 12) · 1Móz 33 (31, 32) · 1Sám 15 (21) · 2Kir 22 (11, 12) · 2Krón 33 (2, 14) · 2Móz 63 (8, 22) · 2Sám 44 (18, 19) · 3Móz 30 (6) · 4Móz 77 (13, 16, 17, 30) · 5Móz 74 (12, 13, 22, 23, 29) · Dán 29 (5, 6) · Ez 37 (20, 21) · Hós 15 (1, 12) · Jer 26 (9) · Jób 83 (39, 40, 41) · **Jóel 26 (2, 3)** · Mal 6 (4) · Mik 15 (5) · Neh 68 (4, 7, 9, 10) · Náh 14 (1, 2) · Préd 93 (2, 5, 9, 10, 12) · Zak 17 (1, 2) · Én 13 (7).
+
+Osztály szerint: 827 sor Károli = KJV ≠ MT (a Jóel-esettel azonos új kombináció); 155 sor `KEZI`, Károli ≠ KJV = MT (4Móz 13: 33, Jób 39–40: 49, Préd 2/9/10/12: 73), ahol a tábla KJV-párja maga a tanú.
+
+Megjegyzés: 4 sorban az azonos számú MT-vers Jaccardja is ≥ a mértnél (1Krón 6:1, 3Móz 6:1, 4Móz 17:1, Ez 21:1). Ezek formulaversek, ezért a blokk-igazítás dönt, és a mért pár a szokásos KJV↔MT megfeleltetés. Alacsony J (< 0,6): 1Krón 6:28 (0,57), Neh 10:6 (0,50), mindkettő névlista.
+
+Kétséges (tételes, nem találgatás): 1Krón 12:4 → MT 12:4;12:5 (1-2) · 4Móz 26:1 → 25:19;26:1 (1-2) · Hós 1:11 → 2:2;2:3 (1-2) · Jób 16:22 → 16:22;17:1 (1-2) · Jób 36:33 → 36:33;37:1 (1-2) · Neh 7:67–68 → 7:67 (2-1; az MT-ben nincs 7:68) · Préd 2:26 → 2:25;2:26 (1-2) · Péld 11:31 → 11:31;12:1 (1-2).
+
+Kitöltött `igehely_mt`, mért eltérés: **Ézs 9:1–19** (`MT|tvtms`, a tábla `igehely_mt` = Károli-szám; mért: Károli 9:1 = MT 8:23, 9:2–19 = MT 9:1–18; az N-F85a igazolva); kétséges: Ézs 9:20 → 9:19;9:20, 4Móz 29:39 → 29:39;30:1, Hós 11:11 → 11:11;12:1.
+
+A 93 `KEZI` azonossági sor (`kezi_identitas_javitas`; 4Móz 15, Jób 38, Préd 40) a mérés szerint Károli = KJV = MT, a render mégsem párosítja őket (`karoli_mt_vers` → None). A 2.2 hatókörén kívül esik, csak jelentés.
+
+## 4. A #131 12 verse (brief 2.3)
+
+`naplok/F146_131_versek.py`. Proveniencia: `scope=12 vers (#131 DBH-mérés, brief 2.3) | forras=Karoli_versmegfeleltetes.tsv+TAHOT_kivonat.tsv+Macula_heber_*.tsv(ref)+UBS_DBH_referenciak.tsv | eszkoz=naplok/F146_131_versek.py | ts=2026-10-28T21:24Z`
+
+| Károli-vers | tábla | mért MT (J) | ítélet |
+|---|---|---|---|
+| Ézs 7:11 | KJV | 7:11 (0,91) | a tábla helyes; a DBH-hiány valódi (a versen 11 DBH-hivatkozás, a keresett szóra nincs) |
+| 1Móz 4:10 | KJV | 4:10 (1,00) | helyes; a hiány valódi (12 hiv. a versen) |
+| 1Krón 20:6 | KJV | 20:6 (0,87) | helyes; a hiány valódi (22) |
+| 1Krón 20:8 | KJV | 20:8 (0,78) | helyes; a hiány valódi (14) |
+| 1Móz 14:19 | KJV | 14:19 (1,00) | helyes; a hiány valódi (13) |
+| 1Móz 14:20 | KJV | 14:20 (0,91) | helyes; a hiány valódi (12) |
+| Jób 41:32 | KJV, üres MT | **41:24** (1,00) | **a tábla hibás** (Jób 41: KJV ≠ MT; a 2.2 felmérésben is); a mért versen 6 DBH-hiv. |
+| Préd 9:12 | KEZI, KJV 9:10, üres MT | **9:10** (1,00) | **az MT hiányzik** (Károli ≠ KJV = MT); 18 DBH-hiv. |
+| 4Móz 13:34 | KEZI, KJV 13:33, üres MT | **13:33** (0,83) | **az MT hiányzik**; 22 DBH-hiv. |
+| Jób 38:7 | KEZI, KJV 38:7, üres MT | 38:7 (1,00) | Károli = KJV = MT, a `KEZI` osztály miatt a render nem párosít; 10 DBH-hiv. |
+| Jób 38:16 | ugyanígy | 38:16 (1,00) | ugyanígy; 10 |
+| Jób 38:30 | ugyanígy | 38:30 (1,00) | ugyanígy; 5 |
+
+Az „üres eredmény nem negatív lelet”: az első hat versnél a DBH-hivatkozás a versen van, csak a keresett szóra nincs; ez a DBH lefedettségének ténye, nem a szó hiánya.
+
+## 5. ⛔ 3.1 — a javítandó halmaz (döntésre vár: DT-F146b)
+
+Javaslat: **csak a Jóel 26 sora** (Károli 2:28–3:21 → MT 3:1–4:21, `KEZI` kitöltött `igehely_mt`-vel, a `versmegf_javitas` KEZI-szabályának Károli = KJV ≠ MT bővítésével), `forras` új értékkel (`macula_mt_f146`, a DT205 mintájára). A 982 − 26 = 956 többi igazolt eltérés, az Ézs 9, a 9 kétséges sor és a 93 `KEZI` azonossági sor külön tétel (N-F146a), mert ugyanaz az új kombináció ~830 sort érint, és a DT209 fogyasztói (`bsb_import`, `sqlite_epit`, `tsk_kulcs`) ellenőrzése nélkül nem vihető át. A Jóel a lexikonban csak az ISTENTISZT-001-et érinti (`adat/elofordulasok.tsv`: egyetlen Jóel 2:28–3:21-es sor, a Jóel 2:32).
