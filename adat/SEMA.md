@@ -1497,7 +1497,7 @@ Olvasás `split('\t')`.
 
 Kulcs: `magyar_alak` + `verzio`. Állapot (F132, 2026-10-25): 2 tétel (a DT241 / F121 2a/2 első elemei: „melléknéven nevezni”,
 „melléknevet adni”); a `forditasok.tsv`-ben a kapu 4 helyen talál, mind a G1941 két sorában (Thayer `teljes`, TBESG `1`; F121 2b/4),
-a 98 nyelvtani „melléknév” sor nem találat. A tartalmat a #121 bővíti.
+a 98 nyelvtani „melléknév” sor nem találat. A tartalmat a #121 bővíti. *(F131.3.5, DT-F131i: 3 tétel; a „melléknéven nevezni” és a „melléknevet adni” `helyette`-je v2 („elnevezni, nevezni”; „nevet adni”), új tétel: „nevet tenni valakire” — a találat a `forditasok.tsv`-ben csak a G1941 sorain: Thayer `teljes` és `sz3`.)*
 
 
 ### 2.37 `thayer_sigla.tsv` — a Thayer sigla- és rövidítéstáblája (F132, brief 2a/5)
@@ -1616,6 +1616,40 @@ entry_id szerint rendezve állnak; a szkript írás előtt összeveti a meglév�
 | `megjegyzes` | zárt | | Üres vagy `?`: a fordító (vagy az átnéző) bizonytalan: magyaros átírás (K6), vagy a TBESH-glossza és a definíció eltér (pl. H6808); a `--javit` `=?` értéke a szöveget nem változtatja, a `?`-t beállítja (`kezi`; napló: `? beallitva`, korábbi `?` visszaállításakor `? visszaallitva`). A több értelmet a vessző (szinonimák) vagy a pontosvessző (különböző értelmek) választja el, a két alak együtt él (DT348). Az M2 zárójelentése külön felsorolja. |
 
 **Gyorsítótár (K7):** azonos (`glossza_en`, szófaj) párra egyszer fordul a modell; az eredmény a pár minden sorába kerül. **Elakadók:** a kapun kétszer elbukó sor nem kerül a táblába, hanem a `naplok/GLOSSZA_FORDITAS_elakad.tsv`-be. **Licenc:** a TBESH CC BY 4.0, a fordítás származtatott mű, a `fo` kiválasztása a TAHOT-ot is használja; az `sqlite_epit.py` `ADAT_LICENC`-bejegyzése (`glosszak_heber_hu: ['TBESH', 'TAHOT', 'projekt_adat']`) bekerült (DT346 K8, F140.138), így a tábla a TBESH (CC BY 4.0) forrásjelölésével töltődik a `pardes.db`-be.
+
+
+### 2.40 `szotar_szakasz_cimke.tsv` — szótári szakaszcímkék és a kutatói jelentésszám leképezése (F131, FELADATOK #131, DT-F131b–d)
+
+**Kézi** (`manual` proveniencia; író: `naplok/F131_cimke_ir.py`, amely írás előtt összeveti a meglévő sorokat, és
+eltérésnél megáll). A motívumlap szótári gerincének (DT272, F131) adatai: (1) a szótári szakasz rövid magyar
+**címkéje**, amelyet a lexikonoldal előfordulás-táblájának „Jelentés (a szó)” oszlopa és a gerinc vázlata mutat;
+(2) a kutatói `jelentes_szam` (`elofordulasok.tsv`, 2.2) **leképezése** a szótár saját tagolására (DT-F131b 2.: a
+leképezés itt áll, a `lexikon_hivatkozasok.tsv` sémája nem változik; ha a DT190 (a) nyer, a sor átvihető oda);
+(3) a Thayer magyar `teljes` sorának **kézi szakaszhatárai**, átmenetként a szakaszonkénti Thayer-fordításig
+(#142; DT-F131c 2.). **A tábla saját tagolást nem tart:** minden sor létező szakaszra mutat. A címke a szóról
+szól: motívumra, invokációra vagy tagadásra utaló minősítés nem állhat benne (DT272 (d)). Csak az arany lap
+(ISTENTISZT-001) Strongjai. Olvasás `split('\t')`.
+
+| Oszlop | Jelentés |
+|---|---|
+| `szotar` | `BDB` \| `Thayer` \| `TBESG` |
+| `strong` | a Strong-szám a forrástábla alakjában (`H7121`, `G1941`) |
+| `szakasz` | `BDB`: a `bdb_szakaszok.tsv` (2.30) `utvonal`-a (`Qal/2/c`, `-/3/-`); `Thayer`: a `thayer_szakaszok.tsv` (2.34) `utvonal`-a (`cim`, `fej`, `-/5/-`); `TBESG`: a `lexikon_hivatkozasok.tsv` `jelentes_szam`-a (`2`) |
+| `lexikon_jelentes_szam` | üres, vagy a kutatói `jelentes_szam` (minősítő nélkül, `2.c`), amely erre a szakaszra képeződik; a `lexikon_hivatkozasok.tsv` (`szotar`, `strong`, `jelentes_szam`) kulcsa. Egy kulcs legfeljebb egy szakaszra |
+| `cimke_hu` | üres, vagy a szakasz rövid magyar címkéje (a magyar szakasz vezérszavaiból, a végrehajtó javaslata; jóváhagyás: DT-F131f) |
+| `hu_kezdet`, `hu_hossz` | csak `Thayer`: a szakasz kezdete és hossza (karakter) a `forditasok.tsv` `Thayer <strong> teljes forditas_hu` sorában; a szakaszok sorrendben, csak szóközzel elválasztva fedik a szöveget |
+| `forditas_hash` | csak `Thayer`: a határok alapjául szolgáló `forditas_hu` SHA-1-e; eltérés a mai sorétól: a határok elavultak |
+| `proveniencia` | `scope=… \| forras=… \| ts=…` |
+| `megjegyzes` | szabad szöveg |
+
+Kulcs: `szotar` + `strong` + `szakasz`. **Ellenőrzés** (`ellenoriz.py` 17. szabály, SÉRTÉS): a kulcs egyedi; minden
+`BDB`-szakasz létezik a 2.30-ban (a záró `/-` levágásával összevetve, mert a 2.29 `-/3`, a 2.30 `-/3/-` alakot
+ír), minden `Thayer`-szakasz a 2.34-ben, minden `TBESG`-szakasz a `lexikon_hivatkozasok.tsv`-ben; minden nem üres
+`lexikon_jelentes_szam` létező `lexikon_hivatkozasok.tsv`-kulcs, és egy kulcs legfeljebb egy szakaszra mutat; egy
+Strong `Thayer`-sorai együtt a Strong minden 2.34-szakaszát fedik, a szeletek sorban, csak szóközzel elválasztva
+bájtra kiadják a mai magyar sort, és a `forditas_hash` egyezik (különben: elavult); a `cimke_hu` nem tartalmaz
+tiltott minősítést (`motívum`, `invokál`, `invokáci`, önálló `nem`). Állapot (F131.1, 2026-10-26): 13 sor (BDB 5,
+TBESG 1, Thayer 7 — G1941, kézi határral; címkés 8).
 
 
 ---
