@@ -268,6 +268,60 @@ Megjegyzés: az éles `lexikon/` 7 lapja a generátorhoz képest elavult (DT344)
 - Változatlan: tiltott keretezés 0; `(fordításra vár)` 65 → 46; a 32 sor címkés; ÓSZ-sor 22 (DBH 21, kimondott hiány 1); kiemelés BDB 14/15, Thayer 7/7.
 - Tesztek: `teszt_szotari_gerinc` 27 OK, `teszt_szerepmatrix` OK, `teszt_forditas_kapuk` OK; nulladiff (`0ec48665`): csak az ISTENTISZT-001 lap tér el. `ellenoriz.py`: 17. szabály RENDBEN; **11. szabály SÉRTÉS (1), várt:** az éles `lexikon/ISTENTISZT-001_TUDOMANYOS.md` `ertelmezes` rése a módosított forrástól eltér, amíg a lap nem generálódik újra (⛔ DT-F131g); ugyanez a CI E28.
 
+### 5.5 A DT-F131f 2. (utolsó) javítóköre (F131.3.20–F131.3.24): DT-F131k (a) és DT-F131l (A) a #131-ben
+
+**Döntés (a felhasználó, 2026-10-28):** „meggondoltam. rövid úton legyen kész, de hibátlan a 131”. A DT-F131k és a DT-F131l korábbi változata („#102-ben, addig a lap jelöli”) helyett mindkét javítás a #131-ben készül: DT-F131k → (a), DT-F131l → (A), kibontás és új súlyszabály nélkül. A `DONTESEK.md` két sora erre íródott, a régi szöveg felülírtként áll (F131.3.23). A #102 briefje (1d) jelzi, hogy a két tétel elkészült, és mi maradt nála.
+
+Modell-ellenőrzés: a session `claude-opus-5-5`, a brief `modell: opus`, egyezik.
+
+**A) DT-F131k (a): kézi hivatkozás-javítás (F131.3.20–F131.3.21).**
+- A 2.31-ben (`adat/bdb_forras_javitas.tsv`) új hibaosztály van: `hivatkozas_kezi`, a `forras_javit.py` `KEZI_HIVATKOZAS` listájából. Egy sor: H8034, a 2.30 7. sora, 1. előfordulás, `26:35` → `26:25`, `allapot=kezi`, proveniencia `manual`, az indok a TAHOT-ot és a szövegkörnyezetet nevezi meg. A tábla `--ts 2026-10-18`-cal újragenerálódott; a többi 7 202 sor változatlan, a fejlécben a 2.30 és a kód hash-e frissült.
+- Egy mellékhatás: a commitolt 2.31 fejléce eddig elavult volt (a `szamkiosztas` a 2.30 fejlécét átírta, a 2.31 a régi 2.30-hash-t hordozta; a kód fejlécsablonjában a „DT-F107f” állt a „DT228” helyett). Ezért a `teszt_bont.py` `test_javitas_ellenoriz` a `0f19033e`-n bukott. Most átmegy.
+- A szöveg-nézet (`nezet_general.py`, `szakasz_bemenet.py`) a `hivatkozas_kezi` sort nem alkalmazza (csak a `hivatkozas` osztályt). A fordító bemenete és az `sz<n>` hash ezért változatlan; az `ellenoriz.py` 13. szabálya RENDBEN.
+- A 2.29 kinyerője (`bdb_vers_jelentes.py`) olvassa: a Strong `elofordulas`-adik, `26:35` fejezet:versű hivatkozása a 26:25-re oldódik. A `nyers` a forrás alakja marad, az okkód `forras_javitas`. A 2.31 hash-e a 2.29 `# forras:` fejlécébe került. Eredmény: H8034 `sorszam` 120 → 1Móz 26:25, `-/3`.
+
+**B) DT-F131l (A): a tartomány utáni folytatás (F131.3.21).**
+- `bdb_szelet.py` `hivatkozasok()`: a kiírt vagy örökölt hivatkozás utáni `-N` tartomány (`_TARTOMANY`) átlépése után a `_FOLYTATAS`-keresés ugyanúgy fut, mint tartomány nélkül; a tartomány nincs kibontva.
+- Az első futás +1 441 sort adott a mérés 1 438-ával szemben. A 3 többletsor hamis volt: „16:8-9, 1 Samuel 21:16” (H2063), „1Sam 22:4-5, 1 Samuel 24:23” (H4686), „26:60-61, 1 Chronicles 5:…” (H5070). Az „, 1” itt a következő könyvnév része. A memóriabeli mérés ezeket a pozíció-ütközéssel kiszűrte. A javítás: a tartomány utáni ágon a folytatás nem indulhat egy kiírt hivatkozás kezdetén. Ezután az eredmény egyezik a méréssel.
+- A tartomány nélküli ágon nincs ilyen ellenőrzés. A teljes táblán ott 1 ilyen sor van, és a javítás előtt is megvolt (H1004, „2Chr 10:19, 2 Chronicles 10…” → hamis 2Krón 10:2). Ez a #102-é (F102 brief 1d).
+- Regressziós tesztek (`teszt_bdb_vers_jelentes.py`): „1Kin 18:24-25, 26” → 18:24 + 18:26 (a 25 nem); „Gen 18:18-19, 25-26” → 18:18, 18:25; „16:8-9, 1 Samuel 21:16” → nincs hamis 16:1; a H8034 táblasorai (26:25 `forras_javitas`; 1Kir 18:26 `folytatas`, 18:25 nincs).
+
+`scope=adat/bdb_vers_jelentes.tsv, teljes (régi: d5968201) | forras=naplok/F131_bdb_tartomany_valtozas.py; bdb_vers_jelentes.py --ts 2026-10-28 | ts=2026-10-28 15:36`
+
+| | érték |
+|---|---|
+| sorok | 160 616 → 162 054 |
+| hozzáadott sor (kulcs: strong, poz, nyers, karoli_vers, utvonal) | 1 439 = 1 438 `folytatas` + 1 (a H8034 26:35 sora 26:25-re javítva; ugyanez 1 „elveszett”) |
+| érintett Strong | 603 |
+| új Károli-igehely | 1 430 (1 429 a folytatásból + 1Móz 26:25) |
+| régi sor más `sorszam`-mal | 35 012 |
+| arany | H7121 + 1Kir 18:26 (Qal/2/c), + 1Sám 3:8, 1Móz 5:29, Jer 7:14, 7:30; H8034 + 1Kir 18:26 (-/4), 1Móz 26:35 → 26:25 (-/3) |
+
+Ez egyezik a DT-F131l A-mérésével (+1 438, 603, 35 012; `naplok/F131_bdb_tartomany_meres.py`).
+
+**A `sorszam`-eltolódás fogyasztói.** A #131 ⓘ-i: a 2Móz 33:19 és a 2Móz 34:5 H7121-sora 128/129 → 129/130 lett, a próbalap újragenerálódik. A `nulladiff.sh 0f19033e 2026-10-28` szerint (a HEAD 6a4df95f) csak az `ISTENTISZT-001_TUDOMANYOS.md` tér el, a többi lap és a törzscikkek azonosak. Az olvasó-szerver tesztjei közül a `teszt_bdb_vers_jelentes.py` zöld. A `teszt_olvaso_szerver.py` (2 hiba) és a `teszt_pilot_aranymintaval.py` (5 hiba) a 2026-10-14-i `pardes.db`-vel fut, amely a mostani 2.29-et nem tartalmazza. A hibák a 2.29-től függetlenek (D2-pilot, szónézet). Sorszámra egyik szerver-teszt sem hivatkozik; az `m2_minta_osszevet.py` strong + poz kulccsal illeszt.
+
+**C) Generátor (F131.3.22).** A `BDB_HIVATKOZAS_GYANU` (DT-F131k (c)) kikerült. A `forras_javitas` okkódú BDB-példánál az ⓘ a javítás forrását mondja ki: „a BDB forrásszövege itt a „26:35” helyet idézi (sajtóhiba); javítva: 1Móz 26:25 — a javítás forrása: `adat/bdb_forras_javitas.tsv`, kézi sor (`hivatkozas_kezi`, `manual`; …)”. A kiemelő (`hivatkozasok_a_szovegben`) a vers-folytatást a 2.29-cel egyezően ismeri fel, a tartomány után is („**1Kir 18:24**-25, **26**”). A forrásjavított sornál a forrás alakját emeli ki („**26:35**”), mert a magyar szöveg a forrást fordítja.
+
+**A próba (F131.3.24, `PARDES_DATUM=2026-10-28`, a repón kívül; a HEAD 15590cea renderével bájtra azonos):**
+
+`scope=ISTENTISZT-001 próbarender | forras=naplok/F131_proba_meres.py; general.py --kimenet (PARDES_DATUM=2026-10-28) | ts=2026-10-28 15:38`
+
+- **1Móz 26:25:** a H8034-cella „név: Isten megjelölése · 3”, BDB-példa (`sorszam` 120); az ⓘ a javítás forrása; a „26:35” a H8034 3. szakaszában kiemelve.
+- **1Kir 18:26:** a H7121 „Qal 2.c” BDB-példa (`sorszam` 100), a H8034 „név: hamis istenekről · 4” BDB-példa (`sorszam` 209); a „26” mindkét szakaszban kiemelve.
+- **1Kir 18:25:** a H7121 kutatói hozzárendelés (Qal 2.c), a H8034 „*(nincs hozzárendelés)*”. A DT-F131l (A) szerint a 18:25 a „18:24-25” tartomány belseje, nem BDB-példa (kibontás nincs; a (B) mérése szerint a kibontás a H7121 „4:25-26” miatt GerincHibát okozna). Az ⓘ szövege: „ehhez a tokenhez nincs kutatói hozzárendelés és szótári példahely”. Ez pontatlan: a BDB a helyet tartományként idézi. → a ⛔ 3.1 kérdése.
+- **Kiemelés:** BDB 17/18 (H7121 10/10, H8034 7/8; előtte 14/15, a nevező a 3 új példával nőtt). A hiány a korábbi: H8034 `sorszam` 3 (1Móz 12:8, `fej`). Thayer 7/7.
+- **Változatlan:** tiltott keretezés 0; a 32 sor mind címkés (az elsődleges tokenen címke nélkül: 0); `(fordításra vár)` 65 → 46; ÓSZ-sor 22 (DBH 21, kimondott hiány 1).
+- **Artifact:** https://claude.ai/artifact/QVHPBrCJWkSP7pT8z363vy, 5. verzió (privát, ugyanaz az URL).
+
+**Tesztek.** Zöldek: `teszt_szotari_gerinc` 28, `teszt_bdb_vers_jelentes` 29 (a bájtazonossággal), `teszt_szerepmatrix` 44, `teszt_forditas_kapuk` 108, `teszt_ellenoriz_13` 45, `teszt_lexikon_adatres` 20. A `forras_javit.py --ellenoriz` és a `bdb_vers_jelentes.py --ts 2026-10-28 --ellenoriz` bájtra azonos.
+
+**A kiinduló commiton (`0f19033e`, ideiglenes worktree) is meglévő hibák, nem e kör okozta:**
+- `teszt_bont.py`: a `Determinizmus.test_ellenoriz` (a 2.30 ELTÉR), a `HuIlleszt.test_ellenoriz` és a `test_osszefuzo_a_mai_adaton_valtozatlan`;
+- `teszt_general_ellenorzo.py` `test_eles_sema` (30 ≠ 23).
+
+A `0f19033e`-n bukó `test_javitas_ellenoriz` most átmegy (A). `ellenoriz.py`: 14 RENDBEN, 1 SÉRTÉS. A sértés a 11. szabály, várt: az éles lap a DT-F131g-ig eltér (5.4).
+
 ## 6. ⛔ 3.1 — DT-F131f: az elfogadási próba
 
-A felhasználó a renderelt próbalapot olvassa. A kérdés: *a szó jelentését és a hely motívumbeli funkcióját két külön dolognak látja-e?* Ugyanitt dönt a címkék szövegéről (3.1) és a 4.2 kérdéséről (az 56.15-ös kód). A próbalap az 5.4 szerinti (F131.3.19). A végrehajtás itt áll.
+A felhasználó a renderelt próbalapot olvassa. A kérdés: *a szó jelentését és a hely motívumbeli funkcióját két külön dolognak látja-e?* Ugyanitt dönt a címkék szövegéről (3.1) és a 4.2 kérdéséről (az 56.15-ös kód). A próbalap az 5.5 szerinti (F131.3.24; az 5.4-é az F131.3.19). A végrehajtás itt áll.
