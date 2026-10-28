@@ -6,12 +6,15 @@
 
 | tábla | alap (`84b2eec6`) | fej | Δ | `git diff --numstat` (+/−) |
 |---|---|---|---|---|
-| `adat/forditasok.tsv` | 8 069 | 11 051 | +2 982 | 2982 / 0 |
+| `adat/forditasok.tsv` (adatsorok, a 2 fejlécsor — kommentsor és oszlopfejléc — nélkül) | 8 067 | 11 049 | +2 982 | 2982 / 0 |
+| `adat/forditasok.tsv` (fejléces sorszám, `wc -l`) | 8 069 | 11 051 | +2 982 | |
 | `naplok/EMELES_munka.tsv` | — | — | +2 982 | 2982 / 0 |
 | `naplok/FORDITAS_kisnagybetu_csere.tsv` | — | — | +2 sor (H4549, H5953; az 1. szelet) | 2 / 0 |
 | minden más `adat/` tábla | — | — | 0 | — |
 
-Törölt vagy módosított meglévő `forditasok.tsv`-sor nincs; a H6297 (8. adag) négy sora változatlan (a tévesen újrafordított sorokat az 1. szelet közben visszaállítottam a `git show HEAD:` tartalmára, a bejegyzett Δ 834 új sor, nem 838). `kezi` sorhoz nem nyúltam.
+A fenti +2 982 az F38.402–406 Δ-ja; az F38.407–408 javítókör (1/2) a Δ-t nem változtatja (a H0479 sz2 sora 1 sor módosul: `+1 / −1`, a H0479 `teljes` sor nem változik).
+
+Törölt vagy módosított meglévő `forditasok.tsv`-sor az F38.402–406-ban nincs; a H6297 (8. adag) négy sora változatlan (a tévesen újrafordított sorokat az 1. szelet közben visszaállítottam a `git show HEAD:` tartalmára, a bejegyzett Δ 834 új sor, nem 838). `kezi` sorhoz nem nyúltam.
 
 ## 2. Commitonkénti bontás
 
@@ -34,20 +37,29 @@ A szeletek a `BDB_FORDITAS_sorrend.tsv` sorrend-oszlopa szerint folytonosak; a h
 | Strong | forrásbeli hivatkozás | helyes | rögzített alak | kapu |
 |---|---|---|---|---|
 | H5377 (sorrend 1728) | `Obad 3:7` | `Abd 1:7` | `Abd 1:7 [BDB: Abd 3:7]` | 17_bdb_javitas RENDBEN |
-| H0479 (sorrend 1831) | `Ezra 16:8b` | `Ezsd 6:8` | `Ezsd 6:8 [BDB: Ezsd 16:8]b` | 17_bdb_javitas RENDBEN |
+| H0479 (sorrend 1831) | `Ezra 16:8b` | `Ezsd 6:8` | `Ezsd 6:8b [BDB: Ezsd 16:8b]` (F38.408; előtte, F38.404–406: `Ezsd 6:8 [BDB: Ezsd 16:8]b`) | 17_bdb_javitas RENDBEN (felülbírálás nélkül) |
 
-A H0479 esetében a forrás `16:8b` betűjelét a jelölés után kellett írni (`… [BDB: Ezsd 16:8]b`), különben a kapu a hivatkozást nem ismerte fel. Más (javítótáblán kívüli) forrásbeli hivatkozást nem javítottam: a „Songs", „Obadiah 3/7" és hasonló torzult alakokat hűen vettem át (az „Obadiah 3/7" → „Abd 3/7").
+A H0479 esetében a forrás `16:8b` betűjelét eredetileg a jelölés után kellett írni (`… [BDB: Ezsd 16:8]b`), mert a kapu a versfél-betűt nem ismerte (ELLENOR_F38_adag9 1., DT-F38v). A javítókörben (DT-F38v (c), felhasználói döntés) a 17. kapu kalibrációt kapott (F38.407): az Y- és X-minta a–d versfél-betűt is fogad, és a forrás betűjével azonos betűt vár (`Y<betű> [BDB: X<betű>]`); így a H0479 sz2 az F38.408-ban a forrás helyén álló `b`-vel, felülbírálás nélkül rögzült. `BDB_JAVITAS_KAPU_regresszio.py`: 10 915 sor, 0 SÉRTÉS. Más (javítótáblán kívüli) forrásbeli hivatkozást nem javítottam: a „Songs", „Obadiah 3/7" és hasonló torzult alakokat hűen vettem át (az „Obadiah 3/7" → „Abd 3/7").
 
 ## 5. Kapu-felülbírálások (DT361)
 
 | Strong / szakasz | kapu | forrásidézet | indok |
 |---|---|---|---|
-| H3724 sz6 | 8_idezojel | `El „enna (√ dubious; Late Hebrew …` | A `„` a forrásban OCR-maradvány (nyitó idézőjel pár nélkül); hűen megtartva, nem cseréltem és nem töröltem a kapu kedvéért. |
+| H3724 — mind a 8 `forditas_hu` sor (sz1–sz8; a `megjegyzes` Strong-szintű) | 8_idezojel | `El „enna (√ dubious; Late Hebrew …` | Az sz6-ban a `„` a forrásban OCR-maradvány (nyitó idézőjel pár nélkül); hűen megtartva, nem cseréltem és nem töröltem a kapu kedvéért. A felülbírálás a rögzítő eszköz Strong-szintű `--kapu-felulir` kapcsolója miatt a Strong mind a 8 sorának `megjegyzes`-ében szerepel, de a tartalmi ok csak az sz6-ra vonatkozik. |
 | H5015 (mind a 8 szakaszsor `megjegyzes`-e) | 5_terminologia | `Jen^Kosmol. pass. Tiele^Ass. u. Babylonian Geach.` | A `pass.` itt a *passim* idézési rövidítése, nem „passive"; a kapu a KÖT-kulcs (`pass.` → `szenvedő alakban`) miatt „szenvedő alakban"-t várt volna. Hűen: `passim`. A felülbírálás Strong-szintű (a rögzítő eszköz csak így tudja). |
+| H0479 | — (nincs felülbírálás) | `Ezra 16:8b` | Az F38.404–406-ban a `16:8b` betűje a jelölés mögé került; a javítókörben a kapu kalibrációja (F38.407) tette lehetővé a forrás szerinti alakot, felülbírálás nélkül. A DT-F38v (b) szerinti `--kapu-felulir 17_bdb_javitas` felülbírálás sem kellett, mert a kalibráció a kérdést megoldotta. |
 
 A kapuk egyéb elakadásai (9_tagolas, 4_formazas, 1_gorog_heber, 5_terminologia, 11_konyvek) mind **valódi** megoldással, tartalmi változtatás nélkül, az egyszeri újrapróbálkozásban zárultak (pl. szóköz a forrásban nem látható vezérlőkarakter helyén, egy többlet nyitózárójel törlése, `Neh 11:17` könyvjelölés).
 
-## 6. Ellenőrzések
+## 6. Javítókör 1/2 (ELLENOR_F38_adag9)
+
+| commit | tartalom |
+|---|---|
+| F38.407 | `eszkozok/forditas_kapuk.py`: `BDB_JELOLES`, `BDB_JELOLES_YX` és a 17. kapu versfél-betű (a–d) kezelése; `eszkozok/teszt_forditas_kapuk.py`: új tesztek (RENDBEN-eset, eltérő/hiányzó/utánírt betű SÉRTÉS, betű nélküli eset változatlan, `bdb_jeloles_vissza`, 2./11./17. kapu együtt) |
+| F38.408 | H0479 sz2 újrarögzítve `Ezsd 6:8b [BDB: Ezsd 16:8b]` alakkal (eszközlánc, felülbírálás nélkül); `BDB_JAVITAS_KAPU_naplo.md` újragenerálva |
+| F38.409 | ez a napló és a brief `ir`/`kovetkezo` mezője |
+
+## 7. Ellenőrzések
 
 - `python eszkozok/ellenoriz.py`: 0 SÉRTÉS (minden szelet után és a végén).
 - `python eszkozok/teszt_forditas_kapuk.py`: OK (exit 0).
