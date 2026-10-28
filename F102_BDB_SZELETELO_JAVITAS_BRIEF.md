@@ -128,6 +128,22 @@ nem azonosítható egyértelműen). A korpusz-eltérés (14,6%) soronként nincs
 - *Ami marad a #102-nek:* az igehely → szakasz hozzárendelés a táblán (a szeletelő átállása); az öröklés (az egyfejezetes könyv után); a
   sigla-szűrés; az M130 (magányos „II.”); a korpusz-eltérések (14,6%) osztályozása; új vak mérés a táblán.
 
+## 1d. A #131-ben elkészült két tétel (2026-10-28)
+
+A DT-F131k és a DT-F131l eredetileg a #102-nek átadott tétel volt. A felhasználó döntése szerint (2026-10-28: „meggondoltam. rövid úton legyen kész,
+de hibátlan a 131”) mindkettő a #131-ben (SZOTARI_GERINC) elkészült, a #102 `ir`-fájljaiban is. A #102 ezeket nem ismétli, a mérését a
+javított kinyerőre építi.
+
+- **DT-F131k (a):** a 2.31 (`adat/bdb_forras_javitas.tsv`) új hibaosztálya a `hivatkozas_kezi` (kézi sor, `manual`): H8034 „26:35” → 26:25.
+  A 2.29 kinyerője olvassa (okkód `forras_javitas`) (F131.3.20–F131.3.21).
+- **DT-F131l (A):** a `bdb_szelet.py` `hivatkozasok()` a verstartomány után is keresi a vers-folytatást („1Kin 18:24-25, 26” → 18:26), kibontás
+  nélkül. Az `adat/bdb_vers_jelentes.tsv` `--ts 2026-10-28`-cal újragenerálva: +1 438 sor, 603 Strong, 35 012 `sorszam`-eltolódás
+  (F131.3.21; `naplok/F131_SZOTARI_GERINC_naplo.md` 5.5). **Nem készült el (a #102 dönt róla):** a tartományok kibontása (DT-F131l (B)).
+  A tartomány utáni ágon a folytatás nem indulhat egy kiírt hivatkozás kezdetén („16:8-9, 1 Samuel 21:16”: az „1” könyvnév). A
+  tartomány nélküli ágon ez az ellenőrzés nincs: a teljes táblában 1 ilyen sor van, a javítás előtt is (H1004, „2Chr 10:19, 2 Chronicles
+  10…” → hamis 2Krón 10:2 folytatás). A #131 ezt nem javította, ez a #102-é. *(proveniencia: scope=adat/bdb_vers_jelentes.tsv, teljes |
+  forras=eseti szkript (F131_tartomany_nelkuli_ag_meres.py, a session közös jegyzetmappájában; `bdb_szelet.hivatkozasok`, a teljes BDB) | ts=2026-10-28)*
+
 ## 2. Hatókör
 
 **Benne (mérési alap: `naplok/BDB_SZELETELO_M2_seed101_iteletek.md`, a seed-100 ítéletei mellett):**

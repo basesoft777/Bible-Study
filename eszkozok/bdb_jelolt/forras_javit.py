@@ -132,6 +132,7 @@ def general(ts):
                            prov % (r['strong'], ts)])
     ki.extend(kezi_sorok(stat))
     ki.extend(hivatkozas_sorok(stat, ts))
+    ki.extend(kezi_hivatkozas_sorok(stat))
     return ki, stat
 
 
@@ -303,6 +304,40 @@ KEZI = [
 ]
 
 
+# DT-F131k (a) (felhasználó, 2026-10-28): kézi hivatkozás-javítás (`hivatkozas_kezi`). A BDB forrásszövege (a DictBDB.json és a
+# BDB_teljes_unabridged.tsv is) létező, de hibás verset idéz; a 2.23 (`bdb_igehely_javitas.tsv`) csak nem létező fejezetet javít,
+# ezért kézi sor. `allapot=kezi`, proveniencia `manual`; a `forras_alak` / `javitott_alak` a fejezet:vers token, az `elofordulas` a
+# `forras_alak` hányadik egész-token előfordulása a Strong nézet-szövegében. A szöveg-nézet (nezet_general.py, szakasz_bemenet.py)
+# NEM alkalmazza (a fordító bemenete változatlan); a 2.29 kinyerője (olvaso_szerver/bdb_vers_jelentes.py) olvassa, és a feloldott
+# verset javítja. (strong, horgony, forras_alak, javitott_alak, indok)
+KEZI_HIVATKOZAS = [
+    ('H8034', 'in worship, so 12:8; 13:4; 21:33; 26:35', '26:35', '26:25',
+     'a BDB „call with … the name ׳י in worship, so 12:8; 13:4; 21:33; 26:35” sora (1Móz) a 26:35-öt idézi; ott a שֵׁם nem áll '
+     '(Ézsau feleségei), a TAHOT szerint az 1Móz 26:25-ben áll a קָרָא mellett (H7121 + H8034), és a szövegkörnyezet (oltárt épít, '
+     'segítségül hívja az Úr nevét) a 12:8; 13:4; 21:33 formulája: sajtóhiba a forrásban, 26:35 → 26:25 (DT-F131k (a))'),
+]
+
+
+def kezi_hivatkozas_sorok(stat):
+    tabla = collections.OrderedDict()
+    for r in tabla_sorok():
+        tabla.setdefault(r['strong'], []).append(r)
+    ki = []
+    for st, horgony, forras_alak, javitott, indok in KEZI_HIVATKOZAS:
+        nezet, hatar = strong_nezet(tabla.get(st, []))
+        h = next((h for h in hatar if horgony in nezet[h[0]:h[1]]), None)
+        if h is None:
+            raise SystemExit('HIBA: a kézi hivatkozás-sor horgonya nem található: %s %r' % (st, horgony))
+        poz = token_elofordulas(nezet, forras_alak)
+        k = next((i for i, p in enumerate(poz, 1) if h[0] <= p < h[1] and p >= h[0] + nezet[h[0]:h[1]].find(horgony)), None)
+        if k is None:
+            raise SystemExit('HIBA: a kézi hivatkozás-sor forrás-alakja nem található a horgonyban: %s %r' % (st, forras_alak))
+        stat['hivatkozas_kezi'] += 1
+        ki.append([st, h[2]['sorszam'], h[2]['bdb_id'], 'hivatkozas_kezi', '', str(k), forras_alak, javitott, 'kezi', indok,
+                   'manual'])
+    return ki
+
+
 def kezi_sorok(stat):
     sorok = tabla_sorok()
     ki = []
@@ -316,7 +351,7 @@ def kezi_sorok(stat):
 
 
 def fajl_szoveg(sorok, ts):
-    fej = ['# GENERÁLT: eszkozok/bdb_jelolt/forras_javit.py --ts %s — kézzel nem szerkesztendő (F107, DT-F107f (a); séma: adat/SEMA.md, bdb_forras_javitas.tsv). A héber alakok NFD-ben.' % ts,
+    fej = ['# GENERÁLT: eszkozok/bdb_jelolt/forras_javit.py --ts %s — kézzel nem szerkesztendő (F107, DT228 (a); séma: adat/SEMA.md, bdb_forras_javitas.tsv). A héber alakok NFD-ben.' % ts,
            '# forras: adat/bdb_szakaszok.tsv@%s + konkordancia/lexikonok_nyers/BDB.lexicon@%s (csak igazolás) + kód@%s'
            % (sha256_fajl(TABLA)[:12], sha256_fajl(LEX_UT)[:12], kod_hash()[:12]),
            '\t'.join(FEJLEC)]
