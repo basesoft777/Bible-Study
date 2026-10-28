@@ -30,6 +30,18 @@ class Hivatkozasok(unittest.TestCase):
         self.assertEqual([(x['konyv'], x['c'], x['v'], x['konyv_mod']) for x in h],
                          [('1Móz', 18, 18, 'kiirt'), ('1Móz', 18, 25, 'folytatas'), ('1Móz', 22, 18, 'orokolt'), ('2Móz', 4, 2, 'kiirt')])
 
+    def test_tartomany_utani_folytatas(self):
+        # DT-F131l (A): a tartomány („-25”) után álló folytatás („, 26”) sor lesz; a tartományt nem bontja ki
+        h = B.hivatkozasok('H9999. x אב noun call 1Kin 18:24-25, 26; 2Kin 5:11; 4:25-26 x.')
+        self.assertEqual([(x['konyv'], x['c'], x['v'], x['konyv_mod'], x['nyers']) for x in h],
+                         [('1Kir', 18, 24, 'kiirt', '1Kin 18:24'), ('1Kir', 18, 26, 'folytatas', ', 26'),
+                          ('2Kir', 5, 11, 'kiirt', '2Kin 5:11'), ('2Kir', 4, 25, 'orokolt', '4:25')])
+        h = B.hivatkozasok('H9999. x אב noun Gen 18:18-19, 25-26; 22:18.')
+        self.assertEqual([(x['c'], x['v'], x['konyv_mod']) for x in h], [(18, 18, 'kiirt'), (18, 25, 'folytatas'), (22, 18, 'orokolt')])
+        # a tartomány utáni „, 1 Samuel” „1”-e könyvnév, nem folytatás
+        h = B.hivatkozasok('H9999. x אב noun so 16:8-9, 1 Samuel 21:16 x.')
+        self.assertEqual([(x['konyv'], x['c'], x['v']) for x in h], [(None, 16, 8), ('1Sám', 21, 16)])
+
     def test_sigla_tapadt_kiszurendo_nemi_tanu_bibliai(self):
         h = B.hivatkozasok('H9999. x אב noun masculine^Gen 1:27 man (see Wetzst in De^Job 34:36), Gen 2:7.')
         ok = {(x['konyv'], x['c'], x['v']): x['okkod'] for x in h}
@@ -198,7 +210,7 @@ class Tabla(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.sorok, _ = V.general('2026-10-15', ['H1242', 'H0006', 'H0015', 'H0196', 'H0226', 'H6666', 'H5591', 'H8079', 'H5704',
-                                                      'H8641', 'H0068', 'H1802', 'H0113'])
+                                                      'H8641', 'H0068', 'H1802', 'H0113', 'H8034'])
 
     def test_minden_sorban_jelentespont_feloldasi_mod_es_proveniencia(self):
         i = {k: n for n, k in enumerate(V.FEJ)}
@@ -234,6 +246,20 @@ class Tabla(unittest.TestCase):
         i = {k: n for n, k in enumerate(V.FEJ)}
         x = sor(self.sorok, strong='H5591', poz='422')[0]
         self.assertEqual((x[i['mt_vers']], x[i['okkod']], x[i['szurt']]), ('Jóel 1:4', 'forras_hiba', '0'))
+
+    def test_forras_javitas_kezi_sorbol(self):
+        # DT-F131k (a): a 2.31 hivatkozas_kezi sora (H8034 „26:35” → 26:25) a feloldott verset javítja; a nyers a forrás alakja
+        i = {k: n for n, k in enumerate(V.FEJ)}
+        x = sor(self.sorok, strong='H8034', nyers='26:35')[0]
+        self.assertEqual((x[i['mt_vers']], x[i['karoli_vers']], x[i['okkod']], x[i['szurt']], x[i['utvonal']]),
+                         ('1Móz 26:25', '1Móz 26:25', 'forras_javitas', '0', '-/3'))
+        self.assertFalse(sor(self.sorok, strong='H8034', karoli_vers='1Móz 26:35'))
+
+    def test_tartomany_utani_folytatas_a_tablaban(self):
+        # DT-F131l (A): „1Kin 18:24-25, 26” → a 18:26 sor (folytatas); a 18:25 (tartomány) nem
+        x = sor(self.sorok, strong='H8034', karoli_vers='1Kir 18:26')
+        self.assertEqual([(s[V.FEJ.index('nyers')], s[V.FEJ.index('konyv_feloldas')]) for s in x], [(', 26', 'folytatas')])
+        self.assertFalse(sor(self.sorok, strong='H8034', karoli_vers='1Kir 18:25'))
 
     def test_sigla_tahot_szerint(self):
         # DT-F99k: a sigla melletti hivatkozás bibliai marad, ha a TAHOT a versben hordozza a Strong-számot („De^Job 34:36”: אָבִי)
