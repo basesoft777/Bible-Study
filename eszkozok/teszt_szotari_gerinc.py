@@ -416,6 +416,21 @@ class ValodiAdat(unittest.TestCase):
             self.assertIn(t[len('1Kir 18:25: '):], sor_i, strong)
             self.assertIn('„1Kin 18:24-25” verstartomány belsejében', '\n'.join(bek))
 
+    def test_horgonnyal_osszecsukva_az_eles_lapon(self):
+        # ELLENOR_SZOTARI_GERINC 4. (7.2a): a H8034 `-/5/-` szakasza `horgonnyal` határú és összecsukva áll; a jelölés
+        # ott is kint van (nem csak a kibontott szakaszon)
+        _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
+        sorai = [r for r in elo_sorok if r['id'] == 'ISTENTISZT-001']
+        a = LG.gerinc_adat()
+        szak = {s[0]: s for s in LG.bdb_gerinc_szakaszok(a, 'H8034')}
+        self.assertEqual(szak['-/5/-'][4], 'horgonnyal')
+        bek, _napl = LG.gerinc_blokk(a, 'BDB', 'H8034', sorai)
+        osszecsukott = [b for b in bek if b.startswith('<details>') and '- `5` —' in b]
+        self.assertEqual(len(osszecsukott), 1)
+        sor5 = next(x for x in osszecsukott[0].split('\n') if x.startswith('- `5` —'))
+        self.assertIn('horgonnyal illesztve, ellenőrzendő', sor5)
+        self.assertIn('horgonnyal','\n'.join(bek))
+
     def test_2moz_33_19(self):
         _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
         s = next(r for r in elo_sorok if r['id'] == 'ISTENTISZT-001' and r['igehely'] == '2Móz 33:19')

@@ -2184,6 +2184,10 @@ def _vazlat_sor(jel, cimke, szoveg):
     return '- `%s` — %s' % (jel, cimke if cimke else _elso_tagmondat(szoveg))
 
 
+HORGONNYAL_JELOLES = (' *(kutatói jelölés: a szakaszhatár horgonnyal illesztve, ellenőrzendő; `%s` kategoria '
+                      '= horgonnyal)*' % BDB_SZAKASZ_HU_FAJL)
+
+
 def _osszecsukva(sorok, elso, utolso):
     cim = elso if elso == utolso else '%s – %s' % (elso, utolso)
     return ('<details>\n<summary>%s (%d szakasz)</summary>\n\n%s\n\n</details>'
@@ -2204,7 +2208,11 @@ def gerinc_szakasz_lista(szakaszok, hordozo, celok, adat_cimke, szotar, strong):
     for ut, jel, hu, angol, kat in szakaszok:
         cimke = (adat_cimke.get((szotar, strong, ut)) or {}).get('cimke_hu') or ''
         if ut not in hordozo:
-            futam.append((jel, ut, _vazlat_sor(jel, cimke, hu or angol)))
+            vazlat = _vazlat_sor(jel, cimke, hu or angol)
+            if kat == 'horgonnyal':
+                # ELLENOR_SZOTARI_GERINC 4. (7.2a): a határjelölés az összecsukott szakaszon is látszik
+                vazlat += HORGONNYAL_JELOLES
+            futam.append((jel, ut, vazlat))
             continue
         lezar()
         fej = '- **`%s` — %s**' % (jel, cimke) if cimke else '- **`%s`**' % jel
@@ -2214,8 +2222,7 @@ def gerinc_szakasz_lista(szakaszok, hordozo, celok, adat_cimke, szotar, strong):
             hiany_ossz += hiany
             bek = [fej, '', '  > %s' % szoveg]
             if kat == 'horgonnyal':
-                bek.append('  > *(kutatói jelölés: a szakaszhatár horgonnyal illesztve, ellenőrzendő; `%s` kategoria '
-                           '= horgonnyal)*' % BDB_SZAKASZ_HU_FAJL)
+                bek.append('  >' + HORGONNYAL_JELOLES)
         else:
             hiany_ossz += [a for _v, a in celok.get(ut, [])]
             bek = [fej, '', '  > %s' % angol, '', '  %s' % FORDITASRA_VAR]
