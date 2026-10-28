@@ -6,10 +6,12 @@ tipus: feladat
 fazis: folyamat
 munka: folyamat
 modell: sonnet
-allapot: megallt
+allapot: lezarva
 ag: ccr-f67-bdb-javitas-kapu
+pr: 492
+lezarva_osszegzes: "A 17_bdb_javitas gátoló kapu kész (eszkozok/forditas_kapuk.py, strong= paraméter, az emeles.py mindhárom BDB-hívásában bekötve): a fordítás [BDB: X] jelöléseit a bdb_igehely_javitas.tsv-hez méri; a regresszió 7 933 BDB-soron 0 SERTES; ellenőrzés: ELLENOR_F67 (2 eltérés) → 1 javítókör → ELLENOR_F67_2 OK"
 ad: egy kapu az eszkozok/forditas_kapuk.py-ban, amely a fordítás [BDB: X] / Y hivatkozását összeveti az adat/bdb_igehely_javitas.tsv javitott_hivatkozas értékével, tesztekkel
-kovetkezo: "Te: [elteres_kor 1/2] /elteres 67 — újraellenőrzés függ: naplok/ELLENOR_F67_2.md"
+kovetkezo: "Te: a PR #492 merge-re vár; utána indulhat a #38 9. adagja (DT55)"
 olvas: [adat/bdb_igehely_javitas.tsv, adat/SEMA.md, adat/forditasok.tsv, adat/bdb_szakaszok.tsv, eszkozok/forditas_kapuk.py, eszkozok/emeles.py, eszkozok/bdb_adatblokk.py, eszkozok/bdb_atvezet_m5.py, forditas/prompt_v4.md, F56_BDB_ADATBLOKK_BRIEF.md, F38_BDB_FORDITAS_BRIEF.md, konkordancia/Konyv_normalizalo_tabla.tsv]
 ir: [eszkozok/forditas_kapuk.py, eszkozok/teszt_forditas_kapuk.py, eszkozok/emeles.py, eszkozok/teszt_emeles.py]
 fugg: [56]
