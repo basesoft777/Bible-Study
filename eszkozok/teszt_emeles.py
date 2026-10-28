@@ -292,5 +292,28 @@ class RogzitoAgKapuFelulir(unittest.TestCase):
                 self.assertEqual(r['megjegyzes'], '')
 
 
+class BdbJavitasKapu(unittest.TestCase):
+    """F67: az utofeldolgoz / utofeldolgoz_szakasz atadja a Strongot a 17_bdb_javitas kapunak."""
+
+    def test_utofeldolgoz_bdb_kapusora(self):
+        nevek = [n for n, _, _ in E.utofeldolgoz('H7223', 'szo')[2]]
+        self.assertIn('17_bdb_javitas', nevek)
+
+    def test_utofeldolgoz_thayer_nem_kap(self):
+        nevek = [n for n, _, _ in E.utofeldolgoz('G0012', 'szo')[2]]
+        self.assertNotIn('17_bdb_javitas', nevek)
+
+    def test_kapu_felulir_a_17_kapura(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as d:
+            dont = os.path.join(d, 'DONTESEK.md')
+            with open(dont, 'w', encoding='utf-8') as fh:
+                fh.write('| DT-F38s | cim | ... |\n')
+            a = parse(['rogzit', 'H7223', '--be', 'x.txt', '--allapot', 'sonnet', '--modell', 'm',
+                       '--kapu-felulir', '17_bdb_javitas', '--dontes', 'DT-F38s'])
+            e = [('11_konyvek', 'RENDBEN', ''), ('17_bdb_javitas', 'SERTES', '')]
+            self.assertIn('17_bdb_javitas', E.kapu_felulir(a, e, dont))
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)

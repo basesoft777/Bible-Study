@@ -416,7 +416,7 @@ def utofeldolgoz(strong, nyers, kivetel=()):
     vegleges, csere = K.terminologia_kisnagybetu_csere(forras, vegleges, bizonytalan_lista=list(kivetel))
     valt = list(valt) + [('5_kisnagybetu %s -> %s (%s)' % (alak, kot, angol), db)
                          for angol, alak, kot, db in csere]
-    eredm = K.kapuk_futtat(szotar, forras, vegleges, bizonytalan=kivetel)
+    eredm = K.kapuk_futtat(szotar, forras, vegleges, bizonytalan=kivetel, strong=sp)
     return vegleges, valt, eredm, K.atment(eredm)
 
 
@@ -634,7 +634,7 @@ def cmd_naplo_nezet(args):
         kiv = []
         if 'bizonytalan_feloldasok):' in (r.get('megjegyzes') or ''):
             kiv = [x.strip() for x in r['megjegyzes'].split('bizonytalan_feloldasok):', 1)[1].split(',')]
-        eredm = {n: (e, d) for n, e, d in K.kapuk_futtat(r['szotar'], forras, r['forditas_hu'], kiv)}
+        eredm = {n: (e, d) for n, e, d in K.kapuk_futtat(r['szotar'], forras, r['forditas_hu'], kiv, strong=sp)}
         reszletek[sp] = eredm
         cellak = []
         for n in nevek:
@@ -878,7 +878,7 @@ def utofeldolgoz_szakasz(strong, nyers, kivetel=()):
     vegleges, csere = K.terminologia_kisnagybetu_csere(forras_nt, vegleges, bizonytalan_lista=list(kivetel))
     valt = list(valt) + [('5_kisnagybetu %s -> %s (%s)' % (alak, kot, angol), db)
                          for angol, alak, kot, db in csere]
-    eredm = K.kapuk_futtat_szakaszos('BDB', forras, vegleges, bizonytalan=kivetel)
+    eredm = K.kapuk_futtat_szakaszos('BDB', forras, vegleges, bizonytalan=kivetel, strong=sp)
     return vegleges, valt, eredm, K.atment(eredm)
 
 
