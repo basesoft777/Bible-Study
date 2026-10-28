@@ -119,6 +119,24 @@ A 7 hely egyike sem ALVIL-001-előfordulás. A dublett (2Sám 22 / Zsolt 18) nem
 
 Proveniencia: `scope=TAHOT-teljes: (H4194 | H8179[+H4194] | H0953 | H7845) ∩ (H7121 | H2199 | H6817 | H7768) egy versben, H7585 nélkül; dublett: 2Sám 22 = Zsolt 18 egy hely | forras=konkordancia/TAHOT_kivonat.tsv (lekerdez.load_tahot) | ts=2026-10-28T15:16Z`; kollokáció-naplók: `scope=TAHOT-teljes+TAGNT-teljes | … | strong=<pár> | n=… | ts=2026-10-28T15:15–16Z | csatorna=cli` (16 sor).
 
+## 5b. A Seól-scan ±2 verses ablakkal (DT-F123e (b))
+
+**Döntés:** a felhasználó döntése (2026-10-28, az orkesztrátor chatjében, a session-üzenet idézete szerint): „(b) ±2 verses scan” — „A DT-F123e legyen (b): fusson le a ±2 verses ablakos scan, és az eredmény után én döntök a küszöbről.”
+
+**Lekérdezés:** horgony a fenyegetés-vers (H4194; H8179 csak H4194-gyel; H0953; H7845); az ablak a horgony ±2 verse azonos fejezetben; az ablakban mért mező a kiáltás (H7121, H2199, H6817, H7768), az istennév (H3068, H0410, H0430), a szabadulás-ige (H5337, H3467, H4422, H6403, H2502, H1350, H6299, H5927) és a H7585. Az átfedő ablakok egy önálló hely; a 2Sám 22 = Zsolt 18 dublett egy hely. A H7585-öt tartalmazó ablak nincs kiszűrve, hanem jelölve: ez a kontroll (a magversek megtalálása). Kimenet: `naplok/F123_adat_ALVIL-001_seol_ablak2.tsv` (`python naplok/F123_adat_keszito.py seol_ablak 2`).
+
+| Szint (önálló hely) | H7585-tel együtt | H7585 nélkül |
+|---|---|---|
+| fenyegetés + kiáltás az ablakban | 31 | 26 |
+| + istennév az ablakban | 24 | 20 |
+| + istennév és szabadulás-ige az ablakban | **9** | **5** |
+
+- A legszigorúbb szint, H7585 nélkül (5): 2Móz 12:29 (kiáltás: 12:31), Bír 16:30 (16:28), 1Sám 5:11 (5:10), Zsolt 49:10 (49:12), Zsolt 107:18 (107:19). A H5927 (felmegy) mint szabadulás-ige nélkül: 3 (2Móz 12:29, Zsolt 49:10, Zsolt 107:18).
+- A kontroll: H7585-tel a dublett (2Sám 22:5–7 = Zsolt 18:5–7), a Zsolt 116:3, a Zsolt 30:4 és a Zsolt 55:16 is megjelenik. A Zsolt 55:16-ot a 2e. 2. kifejezetten kizárja (a Seól mint az ellenségek sorsa).
+- Mért tény, ítélet nélkül: a találatok gépiek, a kiáltás alanya és címzettje nincs ellenőrizve (pl. a 2Móz 12:31-ben a fáraó hívatja Mózest). A küszöb (≥3) szintjének kiválasztása és a P2/A4 a felhasználóé.
+
+Proveniencia: `scope=TAHOT-teljes: horgony (H4194 | H8179[+H4194] | H0953 | H7845) egy versben; ablak ±2 vers, azonos fejezet; dublett: 2Sám 22 = Zsolt 18 egy hely | forras=konkordancia/TAHOT_kivonat.tsv (lekerdez.load_tahot) | ts=` a TSV soraiban.
+
 ## 6. Nyitott kérdések (az értelmező menetnek / a felhasználónak; itt nincs döntés)
 
 1. **⛔ 2e. 4. küszöb (P2/A4, a felhasználóé):** a Seól nélküli scan melyik szintje a mérce (0 / 3 / 7 önálló hely), és kell-e versablak. Javaslat a döntés-előkészítéshez: a versablakos (±2 vers, azonos fejezet) változat lefuttatása a felhasználó jóváhagyásával, a szabadulás-ige listájának rögzítése előtt.

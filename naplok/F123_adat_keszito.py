@@ -608,6 +608,86 @@ def cmd_seol():
         print('T\t' + '\t'.join(s))
 
 
+def cmd_seol_ablak(ablak=2):
+    """DT-F123e (b): a 2e. 4. scan ±ablak verses változata, azonos fejezeten belül. Horgony: fenyegetés-vers
+    (H8179 csak H4194-gyel egy versben); az ablakban (horgony ±ablak) kiáltás, istennév, szabadulás-ige és H7585
+    jelenléte mért mezőként. Az egymást átfedő ablakok egy önálló helynek számítanak; a 2Sám 22 = Zsolt 18
+    dublett egy hely. A H7585-öt tartalmazó ablak külön oszlopban jelölve (kontroll: a magversek), nem kiszűrve."""
+    tahot = L.load_tahot()
+    versek = defaultdict(set)
+    for r in tahot:
+        for s in r['Strong-szám'].split('+'):
+            versek[r['_parsed']].add(s.strip())
+    SZAB = ['H5337', 'H3467', 'H4422', 'H6403', 'H2502', 'H1350', 'H6299', 'H5927']
+    ISTEN = ['H3068', 'H0410', 'H0430']
+    E, _ = motivum_sorok('ALVIL-001')
+    E_versek = set()
+    for r in E:
+        E_versek.update(versre(r['igehely']))
+    talalat = []
+    for p, ss in versek.items():
+        fen = [s for s in SEOL_FENYEGETES if s in ss]
+        if 'H8179' in fen and 'H4194' not in ss:
+            fen.remove('H8179')
+        if not fen:
+            continue
+        ab = [(p[0], p[1], v) for v in range(p[2] - ablak, p[2] + ablak + 1) if (p[0], p[1], v) in versek]
+        uni = set()
+        for q in ab:
+            uni |= versek[q]
+        kia = [s for s in SEOL_KIALTAS if s in uni]
+        if not kia:
+            continue
+        kia_versek = [q for q in ab if any(s in versek[q] for s in SEOL_KIALTAS)]
+        talalat.append((p, fen, kia, [s for s in ISTEN if s in uni], [s for s in SZAB if s in uni],
+                        'H7585' in uni, kia_versek))
+    sorrend = {}
+    for i, k in enumerate(L.load_karoli_1908()):
+        try:
+            sorrend[L.parse_igehely(k)] = i
+        except ValueError:
+            pass
+    talalat.sort(key=lambda t: sorrend.get(t[0], 10 ** 9))
+    # önálló hely: azonos fejezetben átfedő ablakok egy klaszter; a dublett egy hely
+    dublett = {('2Sám', 22): '2Sám 22 = Zsolt 18 (dublett)', ('Zsolt', 18): '2Sám 22 = Zsolt 18 (dublett)'}
+    klaszter = {}
+    utolso = {}
+    for p, *_ in sorted(talalat, key=lambda t: (t[0][0], t[0][1], t[0][2])):
+        fej = (p[0], p[1])
+        if fej in dublett:
+            klaszter[p] = dublett[fej]
+            continue
+        if fej in utolso and p[2] - utolso[fej][0] <= 2 * ablak:
+            klaszter[p] = utolso[fej][1]
+        else:
+            klaszter[p] = '%s %d:%d' % p
+        utolso[fej] = (p[2], klaszter[p])
+    sorok = []
+    for p, fen, kia, ist, sza, seol, kv in talalat:
+        ig = '%s %d:%d' % p
+        sorok.append([ig, '+'.join(fen), '+'.join(kia), ', '.join('%s %d:%d' % q for q in kv),
+                      '+'.join(ist) or '—', '+'.join(sza) or '—', 'igen' if seol else 'nem',
+                      'igen' if ig in E_versek else 'nem', klaszter[p]])
+    prov = ('scope=TAHOT-teljes: horgony (H4194 | H8179[+H4194] | H0953 | H7845) egy versben; ablak ±%d vers, azonos '
+            'fejezet: (H7121 | H2199 | H6817 | H7768); istennév (H3068 | H0410 | H0430), szabadulás-ige (%s) és H7585 '
+            'az ablakban mért mezőként; átfedő ablak = egy hely; dublett: 2Sám 22 = Zsolt 18 egy hely | '
+            'forras=konkordancia/TAHOT_kivonat.tsv (lekerdez.load_tahot) | ts=%s' % (ablak, ' | '.join(SZAB), TS))
+    ir_tsv('F123_adat_ALVIL-001_seol_ablak%d.tsv' % ablak,
+           ['horgony', 'fenyegetes_strong', 'kialtas_strong', 'kialtas_versei', 'isten_nev_az_ablakban',
+            'szabadulas_ige_az_ablakban', 'h7585_az_ablakban', 'alvil001_elofordulas', 'onallo_hely', 'proveniencia'],
+           [s + [prov] for s in sorok], 'F123 X.A 2e. 4. Seól-scan ±%d verses ablakkal (DT-F123e (b); mért mezők, ítélet nélkül)' % ablak)
+    print('PROV\t' + prov)
+    print('HORGONY\t%d' % len(sorok))
+    for cimke, szuro in [('mind', lambda s: True), ('seol_nelkul', lambda s: s[6] == 'nem')]:
+        alap = {s[8] for s in sorok if szuro(s)}
+        ist = {s[8] for s in sorok if szuro(s) and s[4] != '—'}
+        isz = {s[8] for s in sorok if szuro(s) and s[4] != '—' and s[5] != '—'}
+        print('ONALLO_%s\t%d\t%d\t%d' % (cimke, len(alap), len(ist), len(isz)))
+        print('HELYEK_%s_ISTEN_SZAB\t%s' % (cimke, ' ; '.join(sorted(isz))))
+    for s in sorok:
+        print('T\t' + '\t'.join(s))
+
+
 def main():
     if len(sys.argv) < 2:
         sys.exit(__doc__)
@@ -620,6 +700,8 @@ def main():
         cmd_proza(sys.argv[2])
     elif cmd == 'seol':
         cmd_seol()
+    elif cmd == 'seol_ablak':
+        cmd_seol_ablak(int(sys.argv[2]) if len(sys.argv) > 2 else 2)
     else:
         sys.exit('ismeretlen alparancs: %s' % cmd)
 
