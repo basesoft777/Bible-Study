@@ -585,3 +585,49 @@ A brief fejlécének `allapot`-ja a kör utolsó commitjában változik.
 
 1. **TAHOT a forrásmegjelölésben.** A lap az F131.7 óta az 1Móz 4:26 és az 1Kir 18:24 ⓘ-jében a `konkordancia/TAHOT_kivonat.tsv`-t forrásként nevezi meg (a kétszeres előfordulás igazolása), és a provenienciasorok korábban is. Sem az Irodalomban, sem a kolofonban nem áll. Kérdés: kerüljön-e be (az `adat/licencek.tsv` TAHOT-sora szerint), vagy a provenienciában való megnevezés elég. Nem döntöttem.
 2. **A 7 másik commitolt lap elavultsága.** A mai generátor kimenetétől már a beolvasztás előtt is eltérnek (9.6 (i)). Ez nem e kör és nem a main hatása; az újragenerálásuk más feladat hatóköre. Nem írtam felül.
+
+## 10. Célzott 3. kör (korlát felett, felhasználói engedéllyel) — ELLENOR_SZOTARI_GERINC_3 (F131.26–F131.30)
+
+**Modell-ellenőrzés:** a session `claude-opus-5-5`, a brief `modell: opus`, egyezik. Kiinduló head: `e97d1ad3`.
+
+**Jóváhagyás:** a felhasználó 2026-10-28-án az orkesztrátor chatjében „Mehet”-tel engedélyezte a korlát (2 kör) feletti, célzott 3. kört, csak két tételre: (1) a napló a két végleges DT-szám helyett a commitra hivatkozik; (2) a TAHOT bekerül az Irodalomba és a licenclistába, a DT-F131m elve szerint. Más javítás e körben nincs. Merge nincs.
+
+### 10.1 (1.) 7.7 CI, E26 — végleges DT-szám az ágon (F131.26)
+
+- **Mérés a kiinduló head-en** (`e97d1ad3`; `futtat.py … --diff-alap $(git merge-base origin/main HEAD) --diff-fej HEAD … --esemeny pull_request`, merge-base `5f7c7d2a`): kilépési kód 1, **E26 HIBA 2**. Az E26 számonként csak egyszer jelez (`szabalyok.py`, `jelentett`-halmaz); a jelzett hely itt az `ELLENOR_SZOTARI_GERINC_3.md:37` volt, a napló 9.8 ugyanazt a két számot idézte.
+- **Teljes ág** (`git diff 5f7c7d2a..HEAD`, hozzáadott sorok, `DT<n>`/`N<n>`): a merge-base `DONTESEK.md`-jének legnagyobb száma DT367, a `NYITOTT_FELADATOK.md`-é N61. E fölötti szám három helyen állt: a napló 9.8 (a `cefd5a39` commit címének idézete) és az `ELLENOR_SZOTARI_GERINC_3.md` 37. és 50. sora. Más ilyen hely nincs; `N<n>` fölötti szám nincs.
+- **Csere:** mindhárom helyen a commitra mutató hivatkozás áll szám nélkül: „`cefd5a39` (szamkiosztas)”. Az ellenőri jelentés fejléc-megjegyzése rögzíti a változtatást; más tartalma nem változott.
+- **A 9.8 „kilépési kód 0” állítása** kiegészítve: a 9. szakasz commitja előtti állapotra igaz volt; a `77e17099` head-en E26 HIBA 2, kilépési kód 1; a csere után (F131.26 head, `ca49caa9`) ugyanez a futás: **kilépési kód 0, E26 0**, E5 0, E28 0.
+
+`proveniencia: scope=git diff 5f7c7d2a..HEAD (hozzáadott sorok), DONTESEK.md és NYITOTT_FELADATOK.md @ 5f7c7d2a; futtat.py --diff-alap merge-base | forras=git, eszkozok/ellenorzes/futtat.py | ts=2026-10-28`
+
+### 10.2 (2.) TAHOT a forrásmegjelölésben (F131.27–F131.28)
+
+- **Hol:** `eszkozok/lexikon_general.py`.
+  - `blokk_elofordulasok`: gerinces lapon (`SZOTARI_GERINC_MOTIVUMOK`), ha a tábla egy lábjegyzete (ⓘ) a `konkordancia/TAHOT_kivonat.tsv`-t megnevezi, a TAHOT a blokk forráslistájába kerül (`LC('TAHOT')` = CC BY 4.0). Ebből lesz az Irodalom sora és a kolofon licenctáblájának sora. Megnevezés nélkül nincs bejegyzés; a nem gerinces lapok előfordulás-blokkja e kódutat nem éri el.
+  - `ADATFORRAS_FAJLOK`: + `TAHOT_kivonat.tsv` (az Irodalomban az „Adatforrások” alatt áll, nem a szótárak között: a TAHOT nem szótár).
+  - `FAJL_MEGJELOLES_KULCS`: + `TAHOT` → a kolofonban az `adat/licencek.tsv` TAHOT-sorának `kotelezo_megjeloles` mezője szó szerint: „Data created by www.STEPBible.org based on work at Tyndale House Cambridge (CC BY 4.0)”.
+- **DT-F131m:** kiegészítve. Az (a) a TAHOT-ra is vonatkozik, a 3. kör engedélyével; alkalmazva: F131.27, az éles lap: F131.28.
+- **Teszt:** `test_tahot_forrasmegjeloles` (a gerinces lap előfordulás-blokkja felveszi, egy nem gerinces lapé nem; a kolofon licenctábla-sora és a szó szerinti megjelölés; az Irodalom „Adatforrások” sora).
+- **Éles lap (F131.28)**, `PARDES_DATUM=2026-10-28 python eszkozok/general.py --cel lexikon --id ISTENTISZT-001 --ir`; `git diff --stat lexikon/`: 1 fájl, +6/−2:
+  - `elofordulasok`: forrásfejléc + `konkordancia/TAHOT_kivonat.tsv`, licenc + CC BY 4.0;
+  - `idezes`, Adatforrások: + „`konkordancia/TAHOT_kivonat.tsv` (CC BY 4.0)”;
+  - `kolofon`: forrásfejléc + TAHOT; licenctábla + `TAHOT_kivonat.tsv` sor (`elofordulasok`); + a STEPBible-megjelölés.
+- **Nulladiff** (`nulladiff.sh e97d1ad3 2026-10-28`): egyetlen eltérő fájl az `ISTENTISZT-001_TUDOMANYOS.md`, a fenti változásokkal. A 7 többi lap és a törzscikkek bájtra azonosak.
+
+`proveniencia: scope=lexikon/ISTENTISZT-001_TUDOMANYOS.md; nulladiff e97d1ad3..munkapéldány, teljes lexikon | forras=general.py --cel lexikon (PARDES_DATUM=2026-10-28), eszkozok/nulladiff.sh, adat/licencek.tsv TAHOT-sor | ts=2026-10-28`
+
+### 10.3 Tesztek, ellenőrzők
+
+- **Tesztek** (zöld): `teszt_szotari_gerinc` 39, `thayer_jelolt/teszt_vers_jelentes` 11, `teszt_lexikon_adatres` 20, `teszt_szerepmatrix` 44 (1 skip).
+- **`ellenoriz.py`:** 15 RENDBEN, 0 SÉRTÉS, 2 KÉZI, 3 JELENTÉS.
+- **CI a merge-base-hez** (`futtat.py --valtozott $(git diff --name-only origin/main...HEAD) --diff-alap $(git merge-base origin/main HEAD) --diff-fej HEAD --pr-cim "[ELLENŐRZŐ] F131: SZOTARI_GERINC" --esemeny pull_request`; merge-base `5f7c7d2a`, `origin/main` = `cefd5a39`), az F131.28 head-en (`b831b173`), e napló-commit előtt: **kilépési kód 0**.
+  - E5 0, E26 0, E28 0.
+  - JELENTÉS: E12 357 (a 9. körben 355; a +2 a lap új soraiból), E13 120, E25 4, E27 41, E30 18 (a 9. körben 15; a +3 a kör commit-üzeneteiben álló kódazonosítók: `szamkiosztas`, `elofordulasok`, `idezes`), E32 1.
+  - A futtatás a napló-commit és a brief-fejléc commitja után, a végső head-en megismételve (az eredmény a jelentésben).
+
+`proveniencia: scope=a négy tesztkészlet, eszkozok/ellenoriz.py, eszkozok/ellenorzes/futtat.py (merge-base 5f7c7d2a) | forras=python, git | ts=2026-10-28`
+
+### 10.4 A körön kívül észlelt, nem javított tételek
+
+1. **A TAHOT a többi lapon.** A `TAHOT_kivonat.tsv` nevét más lapok is említik (`grep`: ALVIL-001, HAMART-001, HODIT-001, KIRALY-001, MENNY-001, TEREMT-001 lexikonoldala és törzscikke; pl. a Q2-audit kézi sora, a HODIT-001 kizárt sorainak indoklása), az Irodalmukban azonban nem áll. Ezek az említések rés- vagy adatsorból jönnek, nem a gerinces ⓘ-ből. A felvétel e körben a hatókör szerint csak a gerinces lapra szól (más lap nem változhat). A többi lap a 9.9 2. pontjában jelzett elavultsággal együtt kezelhető.
