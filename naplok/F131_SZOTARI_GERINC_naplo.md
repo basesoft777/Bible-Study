@@ -249,6 +249,25 @@ Megjegyzés: az éles `lexikon/` 7 lapja a generátorhoz képest elavult (DT344)
 
 **Ezért ebben a körben a generátor, a tábla és a próbalap nem változott** (a két hiány javítása a DT-F131k/l döntésétől és a #102-től függ); új próbarender és Artifact-frissítés nem készült, a próbalap a 3. verzió (5.2).
 
+### 5.4 A javítókör folytatása (F131.3.15–F131.3.19): DT-F131k/l döntés, main-beolvasztás, A–C
+
+**Döntés (F131.3.15, a felhasználó):** DT-F131k és DT-F131l a javaslat szerint (a javítás a #102-ben, addig a lap jelöli a hiányt); a kör hatóköre a C) ponttal bővült.
+
+- **Main-beolvasztás (F131.3.16):** a `DONTESEK.md` ütközésében mindkét oldal sorai maradtak; a SEMA 2.40-ben a main az F131.1-es, az ág az F131.3.6 utáni szöveget hordozta: az ág szövege maradt. A main-ben a javított Thayer G1941 `sz3` („1. nevet adni valakinek, elnevezni …”).
+- **A) 1Móz 26:25 (F131.3.17):** a H8034 cellája „*(nincs hozzárendelés; BDB-sajtóhiba gyanúja, l. ⓘ)*”; az ⓘ: a BDB „26:35”-öt idéz, a TAHOT szerint a H8034 a 26:25-ben áll, a javítás a #102-ben (DT-F131k). Generátor: `BDB_HIVATKOZAS_GYANU` (a gerinc-ágon); teszt +1.
+- **B) 1Kir 18:25–26:** nem változott (DT-F131l (C)); a cellák „nincs hozzárendelés”-t mondanak, a #102-re vár.
+- **C) `motivumok/ISTENTISZT-001.md` (F131.3.18):** a 3. szakasz (az `ertelmezes` rés) „2. A Thayer jelentés-tagolása” pontja: az 1. ág „elnevezni” (DT-F131i); a 4. ág „segítségül hívni — segítőként, tanúként, illetve bíróként, azaz valakihez fellebbezni”, a Thayer sz6 szerint (a fellebbezés, ApCsel 25:11, a 4. ág egyik esete). A 3. ág („váddal illetni”) a sz5 szerint helyes („valamivel vádolni”, „váddal perbe hívni”), nem változott; a vázlatsor „τίνι a tárgy tárgyesetével” kezdete a szakasz első tagmondata, nem eltérő tagolás. Az értelmezés nem változott. A teljes 3. szakaszt elolvastam (K1). A brief `ir`-je és `munka` mezője (ertelmezo) egyeztetett eltérésként bővült.
+
+**A próba (F131.3.19, `PARDES_DATUM=2026-10-28`, a repón kívül):**
+
+`scope=ISTENTISZT-001 próbarender | forras=naplok/F131_proba_meres.py; general.py --kimenet (PARDES_DATUM=2026-10-28) | ts=2026-10-28`
+
+- A Thayer `sz3` „ismert hiány” jelölése eltűnt: tiltott fordulat a gerincben 0 (előtte 1); a lapon „melléknéven” és „nevet tenni valakire” 0.
+- A C) változása a generált lapon megjelenik (a próbarender 1416–1419. sora, az `ertelmezes` résben); a NAPLO-jelölés (belső) a lapra nem kerül.
+- Az 1Móz 26:25 sor H8034-cellája a gyanút jelzi (A).
+- Változatlan: tiltott keretezés 0; `(fordításra vár)` 65 → 46; a 32 sor címkés; ÓSZ-sor 22 (DBH 21, kimondott hiány 1); kiemelés BDB 14/15, Thayer 7/7.
+- Tesztek: `teszt_szotari_gerinc` 27 OK, `teszt_szerepmatrix` OK, `teszt_forditas_kapuk` OK; nulladiff (`0ec48665`): csak az ISTENTISZT-001 lap tér el. `ellenoriz.py`: 17. szabály RENDBEN; **11. szabály SÉRTÉS (1), várt:** az éles `lexikon/ISTENTISZT-001_TUDOMANYOS.md` `ertelmezes` rése a módosított forrástól eltér, amíg a lap nem generálódik újra (⛔ DT-F131g); ugyanez a CI E28.
+
 ## 6. ⛔ 3.1 — DT-F131f: az elfogadási próba
 
-A felhasználó a renderelt próbalapot olvassa. A kérdés: *a szó jelentését és a hely motívumbeli funkcióját két külön dolognak látja-e?* Ugyanitt dönt a címkék szövegéről (3.1) és a 4.2 kérdéséről (az 56.15-ös kód). A próbalap az 5.2 szerinti (F131.3.11). A végrehajtás itt áll.
+A felhasználó a renderelt próbalapot olvassa. A kérdés: *a szó jelentését és a hely motívumbeli funkcióját két külön dolognak látja-e?* Ugyanitt dönt a címkék szövegéről (3.1) és a 4.2 kérdéséről (az 56.15-ös kód). A próbalap az 5.4 szerinti (F131.3.19). A végrehajtás itt áll.
