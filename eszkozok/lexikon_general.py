@@ -2461,6 +2461,9 @@ def _gerinc_tw(nyelv, n, tokenek_ny, reszek, ctx):
         if cikkek:
             out.append('**%s** · tW: %s — a szócikkek szövege a szónézetben: %s'
                        % (t, ', '.join('`%s`' % c['tw_id'] for c in cikkek), _szonezet_mutato(t, TW_FAJL)))
+            # DT-F131m (a) (ELLENOR_SZOTARI_GERINC 5.): a lap tW-azonosítókat és a tW-forrásfájlt nevez meg, ezért a tW
+            # (CC BY-SA 4.0) az Irodalomban és a kolofon licenctáblájában áll; a szócikk szövege nem kerül a lapra
+            ctx['fl'].setdefault(TW_FAJL, set()).add('tW_szocikkek')
         else:
             out.append('**%s** · %s *(tW)*' % (t, NEM_TARGYALJA))
     if nyelv == 'heber':

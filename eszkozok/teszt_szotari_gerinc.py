@@ -431,6 +431,17 @@ class ValodiAdat(unittest.TestCase):
         self.assertIn('horgonnyal illesztve, ellenőrzendő', sor5)
         self.assertIn('horgonnyal','\n'.join(bek))
 
+    def test_tw_forrasmegjeloles(self):
+        # DT-F131m (a) (ELLENOR_SZOTARI_GERINC 5.): ha a lap tW-azonosítót nevez meg, a tW-fájl a forráslistába kerül
+        # (Irodalom, kolofon licenctábla); tW-szócikk nélkül nem
+        ctx = {'fl': {}}
+        sorok = LG._gerinc_tw('gorog', 3, ['G1941'], {}, ctx)
+        self.assertTrue(any('tW: `kt/call-speakloudly`' in x for x in sorok))
+        self.assertEqual(ctx['fl'].get(LG.TW_FAJL), {'tW_szocikkek'})
+        ctx2 = {'fl': {}}
+        LG._gerinc_tw('gorog', 3, ['G0000'], {}, ctx2)
+        self.assertNotIn(LG.TW_FAJL, ctx2['fl'])
+
     def test_2moz_33_19(self):
         _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
         s = next(r for r in elo_sorok if r['id'] == 'ISTENTISZT-001' and r['igehely'] == '2Móz 33:19')
