@@ -661,6 +661,13 @@ def blokk_elofordulasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
             forras_licenc_parok.append((fajl, LC(kulcs)))
         licenc_lista = _sorted_unique(licenc_lista + [LC('BDB'), LC('Thayer'), LC('UBS_DBH'),
                                                       LC('Karoli_versmegfeleltetes')])
+        # F131.27 (DT-F131m a TAHOT-ra, ELLENOR_SZOTARI_GERINC_3 2.): ha a tábla egy lábjegyzete (ⓘ) a TAHOT-ot
+        # forrásként nevezi meg (pl. a Strong kétszeres előfordulása a versben), a TAHOT (CC BY 4.0, STEPBible) az
+        # Irodalomban és a kolofon licenctáblájában áll, kötelező megjelöléssel; megnevezés nélkül nincs bejegyzés
+        if any(TAHOT_KIVONAT_FAJL in lj for lj in labjegyzetek):
+            forras_lista.append(TAHOT_KIVONAT_FAJL)
+            forras_licenc_parok.append((TAHOT_KIVONAT_FAJL, LC('TAHOT')))
+            licenc_lista = _sorted_unique(licenc_lista + [LC('TAHOT')])
     blokk_szoveg = _lexikon_blokk(m['id'], 'elofordulasok', forras_lista, licenc_lista, hatokor, torzs)
     return blokk_szoveg, forras_licenc_parok
 
@@ -2963,7 +2970,7 @@ FAJL_TELJES_NEV = {
 }
 ADATFORRAS_FAJLOK = {'konkordancia/Karoli_1908.tsv', 'konkordancia/Karoli_kereszthivatkozasok.tsv',
                       'adat/lexikon_hivatkozasok.tsv', 'konkordancia/Karoli_versmegfeleltetes.tsv',
-                      'konkordancia/LXX_versszintu_parok.tsv'}
+                      'konkordancia/LXX_versszintu_parok.tsv', TAHOT_KIVONAT_FAJL}
 
 
 def _teljes_nev(fajl):
@@ -3061,6 +3068,7 @@ FAJL_MEGJELOLES_KULCS = {
     'konkordancia/OSHL_lexikalis_index.tsv': 'OSHL',
     'konkordancia/LXX_versszintu_parok.tsv': 'LXX_versszintu_parok',
     'konkordancia/Karoli_versmegfeleltetes.tsv': 'Karoli_versmegfeleltetes',
+    TAHOT_KIVONAT_FAJL: 'TAHOT',  # F131.27 (ELLENOR_SZOTARI_GERINC_3 2.): a STEPBible-megjelölés (licencek.tsv)
 }
 
 

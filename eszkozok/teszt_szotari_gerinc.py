@@ -458,6 +458,34 @@ class ValodiAdat(unittest.TestCase):
         kol = LG.blokk_kolofon({'id': 'ISTENTISZT-001', 'statusz': 'x'}, [(LG.MCGED_FAJL, LG.LC('MCGED'), 'szocikkek')])
         self.assertIn(LG.MOUNCE_MEGJELOLES, kol)
 
+    def test_tahot_forrasmegjeloles(self):
+        # F131.27 (ELLENOR_SZOTARI_GERINC_3 2.): az 1Móz 4:26 és az 1Kir 18:24 ⓘ-je a TAHOT-ot forrásként nevezi meg,
+        # ezért a TAHOT (CC BY 4.0, STEPBible) az előfordulás-blokk forráslistájában, az Irodalom „Adatforrások”
+        # listájában és a kolofon licenctáblájában áll, a licencek.tsv kötelező megjelölésével; a nem gerinces lap
+        # előfordulás-blokkja nem veszi fel (más lap nem változik)
+        _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
+        _, motivumok = G.tsv_beolvas(G.MOTIVUMOK_TSV)
+        mot = {r['id']: r for r in motivumok}
+        sorrend = G.konyv_sorrend_betolt()
+        sorai = [r for r in elo_sorok if r['id'] == 'ISTENTISZT-001']
+        szov, parok = LG.blokk_elofordulasok(mot['ISTENTISZT-001'], sorai, sorrend, set())
+        self.assertIn(LG.TAHOT_KIVONAT_FAJL, szov)
+        self.assertIn((LG.TAHOT_KIVONAT_FAJL, LG.LC('TAHOT')), parok)
+        self.assertEqual(LG.LC('TAHOT'), 'CC BY 4.0')
+        mas = next(i for i in sorted(mot) if i not in LG.SZOTARI_GERINC_MOTIVUMOK
+                   and any(r['id'] == i for r in elo_sorok))
+        _szov2, parok2 = LG.blokk_elofordulasok(mot[mas], [r for r in elo_sorok if r['id'] == mas], sorrend, set())
+        self.assertNotIn(LG.TAHOT_KIVONAT_FAJL, [f for f, _l in parok2])
+        lista = [(LG.TAHOT_KIVONAT_FAJL, LG.LC('TAHOT'), 'elofordulasok')]
+        kol = LG.blokk_kolofon({'id': 'ISTENTISZT-001', 'statusz': 'x'}, lista)
+        self.assertIn('| `TAHOT_kivonat.tsv` | `konkordancia/TAHOT_kivonat.tsv` | CC BY 4.0 | elofordulasok |', kol)
+        megj = LG.licenc_sor('TAHOT')['kotelezo_megjeloles']
+        self.assertIn('www.STEPBible.org', megj)
+        self.assertIn('*%s*' % megj, kol)
+        idez = LG.blokk_idezes({'id': 'ISTENTISZT-001', 'statusz': 'x'}, lista)
+        adatforras = idez.split('**Adatforrások:**', 1)[1]
+        self.assertIn('- `konkordancia/TAHOT_kivonat.tsv` (CC BY 4.0)', adatforras)
+
     def test_tw_modositas_mondat_a_felhasznalast_koveti(self):
         # F131.17 (ELLENOR_SZOTARI_GERINC_2 1.): a gerinces lap a tW-ből csak azonosítót nevez meg, ezért a
         # kolofon nem mondhatja, hogy a szócikkek szövegét idézőblokkban közli; szövegközlésnél a régi mondat marad
