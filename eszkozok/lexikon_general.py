@@ -683,6 +683,18 @@ def ubs_jelentes_cella(sor_id, igehely, strong_field):
 _RAGOZOTT_ZARO_IRASJEL_RE = re.compile(r'[,.;·]+$')
 
 
+def ragozott_kiejtessel(ragozott, kiejtes, forras):
+    """„ragozott (kiejtés)”. Héberül a kiejtés a szótári alaké (a kiejtés-szabály: a ragozott héber alakra nincs
+    gépi kiejtés), ezért jelölve: „קְרֹ֖א (szótári alak: kárá)” (a felhasználó döntése, 2026-10-29: „A: jelölt szótári
+    alak”); görögül a ragozott alak gépi magyaros kiejtése, jelölés nélkül."""
+    if not kiejtes:
+        return ragozott
+    return '%s (%s%s)' % (ragozott, SZOTARI_ALAK_ELOTAG if forras == 'TAHOT' else '', kiejtes)
+
+
+SZOTARI_ALAK_ELOTAG = 'szótári alak: '
+
+
 def kulcsszo_cella(sor):
     karoli_szo = sor.get('karoli_szo') or ''
     strong_field = sor.get('strong') or ''
@@ -693,9 +705,9 @@ def kulcsszo_cella(sor):
             continue
         talalat = kiejtes_ehhez(sor['igehely'], strong)
         if talalat:
-            ragozott, kiejtes, _forras = talalat
+            ragozott, kiejtes, forras = talalat
             ragozott = _RAGOZOTT_ZARO_IRASJEL_RE.sub('', ragozott)
-            reszek.append('%s (%s)' % (ragozott, kiejtes) if kiejtes else ragozott)
+            reszek.append(ragozott_kiejtessel(ragozott, kiejtes, forras))
     eredeti = '; '.join(reszek) if reszek else EM_DASH
     if karoli_szo:
         return '%s — %s' % (karoli_szo, eredeti)
@@ -3343,8 +3355,7 @@ def lxx_osszevetes(sorai, tokenek):
             for ht in heber_tokenek:
                 talalat = kiejtes_ehhez(vers, ht)
                 if talalat:
-                    ragozott, kiejtes, _f = talalat
-                    heber_kulcsszo = '%s (%s)' % (ragozott, kiejtes) if kiejtes else ragozott
+                    heber_kulcsszo = ragozott_kiejtessel(*talalat)
                     break
 
             if slug is None:

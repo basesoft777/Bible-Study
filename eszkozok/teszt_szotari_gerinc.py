@@ -576,5 +576,25 @@ class Kulcsszavak(unittest.TestCase):
         self.assertEqual(LG.kulcsszavak_blokk('HAMART-001', self._sorai('HAMART-001'), {}), '')
 
 
+class RagozottKiejtes(unittest.TestCase):
+    """A Kulcsszó cella: héberül a kiejtés jelölten a szótári alaké (a felhasználó döntése: „A: jelölt szótári alak”)."""
+
+    def test_heber_jelolt(self):
+        self.assertEqual(LG.ragozott_kiejtessel('X', 'kárá', 'TAHOT'), 'X (szótári alak: kárá)')
+
+    def test_gorog_ragozott(self):
+        self.assertEqual(LG.ragozott_kiejtessel('Y', 'epikaleszétai', 'TAGNT'), 'Y (epikaleszétai)')
+
+    def test_kiejtes_nelkul(self):
+        self.assertEqual(LG.ragozott_kiejtessel('Z', '', 'TAHOT'), 'Z')
+
+    def test_1moz_4_26_cella(self):
+        _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
+        s = next(r for r in elo_sorok if r['id'] == 'ISTENTISZT-001' and r['igehely'] == '1Móz 4:26')
+        cella = LG.kulcsszo_cella(s)
+        self.assertIn('(szótári alak: kárá)', cella)
+        self.assertIn('(szótári alak: sém)', cella)
+
+
 if __name__ == '__main__':
     unittest.main()
