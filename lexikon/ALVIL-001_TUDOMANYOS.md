@@ -680,7 +680,7 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 - **`2` — az alvilág, a halottak birodalma**
 
-  > 2. köznévként: Orcus, az alvilág, a holtak birodalma (vö: Theocritus, idyll. 2,159 schol. τήν τοῦ ᾅδου κρούει πύλην. τουτ' ἔστιν ἀποθανεῖται. A Septuagintában a héber שְׁאול szót szinte mindig ezzel a szóval adják vissza (egyszer a θάνατος szóval, 2Sám 22:6); a bibliai görögben tehát Orcust, az alvilági tájakat jelöli, egy sötét (Jób 10:21) és komor helyet (de vö. γέεννα és παράδεισος) a föld legmélyén (Jób 11:8; Ézs 57:9; Ámós 9:2, stb.; l. ἄβυσσος), a testüktől elvált szellemek közös gyűjtőhelyét: **Luk 16:23**; εἰς ᾅδου tudniillik δόμον, **ApCsel 2:27**, **ApCsel 2:31**, egy igen gyakori elhagyás szerint, vö. Winers Grammar, 592 (550) (Buttmann, 171 (149)); (de L T Tr WH az **ApCsel 2:27**-ben, és T WH mindkét versben εἰς ᾅδην olvasatot ad; így a Septuaginta Zsolt 15:10); πύλαι ᾅδου, Mt 16:18 (πυλωροί ᾅδου, Jób 38:17; l. πύλη); κλείς τοῦ ᾅδου, **Jel 1:18**; a Hádész mint hatalom megszemélyesítve áll, 1Kor 15:55 (ahol L T Tr WH θάνατε olvasatot ad R G ᾅδῃ helyett (vö. ApCsel 2:24 Tr széljegyzet)); **Jel 6:8**; **Jel 20:13**k. Átvitt értelemben ἕως ᾅδου καταβαίνειν vagy) καταβιβάζεσθαι a nyomorúság és gyalázat mélyére (menni vagy) levettetni: **Mt 11:23** (itt L Tr WH καταβαίνειν); **Luk 10:15** (itt Tr széljegyzet WH szöveg καταβαίνειν). (L. különösen Boettcher, De Inferis, a ἀϊδής címszónál a görög mutatóban. A Hádész létezéséről és helyéről vö. Greswell on the Parables, Appendix, chapter x, köt. v, part ii, o. 261-406; a szó tanbeli jelentőségéről l. a BB. DD. [Hades] és E. R. Craven in Lange on Revelation, o. 364-377.)
+  > köznévként: Orcus, az alvilág, a holtak birodalma (vö: Theocritus, idyll. 2,159 schol. τήν τοῦ ᾅδου κρούει πύλην. τουτ' ἔστιν ἀποθανεῖται. A Septuagintában a héber שְׁאול szót szinte mindig ezzel a szóval adják vissza (egyszer a θάνατος szóval, 2Sám 22:6); a bibliai görögben tehát Orcust, az alvilági tájakat jelöli, egy sötét (Jób 10:21) és komor helyet (de vö. γέεννα és παράδεισος) a föld legmélyén (Jób 11:8; Ézs 57:9; Ámós 9:2, stb.; l. ἄβυσσος), a testüktől elvált szellemek közös gyűjtőhelyét: **Luk 16:23**; εἰς ᾅδου tudniillik δόμον, **ApCsel 2:27**, **ApCsel 2:31**, egy igen gyakori elhagyás szerint, vö. Winers Grammar, 592 (550) (Buttmann, 171 (149)); (de L T Tr WH az **ApCsel 2:27**-ben, és T WH mindkét versben εἰς ᾅδην olvasatot ad; így a Septuaginta Zsolt 15:10); πύλαι ᾅδου, Mt 16:18 (πυλωροί ᾅδου, Jób 38:17; l. πύλη); κλείς τοῦ ᾅδου, **Jel 1:18**; a Hádész mint hatalom megszemélyesítve áll, 1Kor 15:55 (ahol L T Tr WH θάνατε olvasatot ad R G ᾅδῃ helyett (vö. ApCsel 2:24 Tr széljegyzet)); **Jel 6:8**; **Jel 20:13**k. Átvitt értelemben ἕως ᾅδου καταβαίνειν vagy) καταβιβάζεσθαι a nyomorúság és gyalázat mélyére (menni vagy) levettetni: **Mt 11:23** (itt L Tr WH καταβαίνειν); **Luk 10:15** (itt Tr széljegyzet WH szöveg καταβαίνειν). (L. különösen Boettcher, De Inferis, a ἀϊδής címszónál a görög mutatóban. A Hádész létezéséről és helyéről vö. Greswell on the Parables, Appendix, chapter x, köt. v, part ii, o. 261-406; a szó tanbeli jelentőségéről l. a BB. DD. [Hades] és E. R. Craven in Lange on Revelation, o. 364-377.)
 
 *ⓘ Kutatói megjegyzés: a szótár nem idézi: Jel 20:14.*
 
@@ -768,7 +768,7 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 - **`1` — alvilág, ahová a halottak alászállnak**
 
-  > 1 az alvilág, ׳שׁ תַּחְתִּית 5Móz 32:22, מִתַּחַת **Ézs 14:9**; ׳מִשּׁ מִ֑טָּה **Péld 15:24**; || מָוֶת **5:5**; **7:27**; **Én 8:6**; **Zsolt 89:49**; ahová az emberek halálukkor alászállnak, **1Móz 37:35** (E), **42:38**; **44:29**, **31** (J), **1Sám 2:6**; **1Kir 2:6**, **9**; **Jób 7:9**; **21:13**; **Ézs 14:11**, **15**; **Zsolt 88:4**, és Kóré és társai elevenen szállnak alá ׳י ítéletéből, 4Móz 16:30, 33 (J), vö. **Zsolt 55:16**; hegyek és tenger alatt **Jób 26:6** (vö. 26:5), שׁ ׳בֶּטֶן **Jón 2:3** (vö. 2:7); zárakkal Jób 17:16 (si vera 1.: l. ᵐ5 Du); שׁ ׳מִּי **Zsolt 141:7**; שׁ ׳שַׁעֲרֵי **Ézs 38:10**; megszemélyesítve **28:15**, **18** (|| מות). mint telhetetlen szörny **5:14**; **Hab 2:5**; **Péld 1:12**; **27:20**; **30:16**; mint akinek (átvitt értelemben) tőrei vannak, שׁ ׳חֶבְלֵי **Zsolt 18:6** = **2Sám 22:6**, vö. שׁ ׳מְצָרֵי **Zsolt 116:3**; szemben a שָׁמַיִם (magasságával) **Ámós 9:2**; **Jób 11:8**; **Zsolt 139:8** + (szemben a לְמָ֑עְלָה-mel) **Ézs 7:11** (l. fent); sötét, komor, visszatérés nélküli Jób 17:13 (vö. 17:16; **7:9**; 10:21; 16:22; ott mindenki egyforma 3:17-19; 21:23-26 ); munka, tudás és bölcsesség nélküli a Préd 9:5-6, 10 szerint (vö. Jób 14:21, és l. רְפָאִים a רפה alatt; de vö. **Ézs 14:9**k.).
+  > az alvilág, ׳שׁ תַּחְתִּית 5Móz 32:22, מִתַּחַת **Ézs 14:9**; ׳מִשּׁ מִ֑טָּה **Péld 15:24**; || מָוֶת **5:5**; **7:27**; **Én 8:6**; **Zsolt 89:49**; ahová az emberek halálukkor alászállnak, **1Móz 37:35** (E), **42:38**; **44:29**, **31** (J), **1Sám 2:6**; **1Kir 2:6**, **9**; **Jób 7:9**; **21:13**; **Ézs 14:11**, **15**; **Zsolt 88:4**, és Kóré és társai elevenen szállnak alá ׳י ítéletéből, 4Móz 16:30, 33 (J), vö. **Zsolt 55:16**; hegyek és tenger alatt **Jób 26:6** (vö. 26:5), שׁ ׳בֶּטֶן **Jón 2:3** (vö. 2:7); zárakkal Jób 17:16 (si vera 1.: l. ᵐ5 Du); שׁ ׳מִּי **Zsolt 141:7**; שׁ ׳שַׁעֲרֵי **Ézs 38:10**; megszemélyesítve **28:15**, **18** (|| מות). mint telhetetlen szörny **5:14**; **Hab 2:5**; **Péld 1:12**; **27:20**; **30:16**; mint akinek (átvitt értelemben) tőrei vannak, שׁ ׳חֶבְלֵי **Zsolt 18:6** = **2Sám 22:6**, vö. שׁ ׳מְצָרֵי **Zsolt 116:3**; szemben a שָׁמַיִם (magasságával) **Ámós 9:2**; **Jób 11:8**; **Zsolt 139:8** + (szemben a לְמָ֑עְלָה-mel) **Ézs 7:11** (l. fent); sötét, komor, visszatérés nélküli Jób 17:13 (vö. 17:16; **7:9**; 10:21; 16:22; ott mindenki egyforma 3:17-19; 21:23-26 ); munka, tudás és bölcsesség nélküli a Préd 9:5-6, 10 szerint (vö. Jób 14:21, és l. רְפָאִים a רפה alatt; de vö. **Ézs 14:9**k.).
 
 <details>
 <summary>2 (1 szakasz)</summary>
@@ -779,11 +779,11 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 - **`2.a` — a gonoszok sorsa a Seolban**
 
-  > a. gonoszok לִשְׁא֑וֺלָה יָשׁוּבוּ **Zsolt 9:18**, לִשׁ ׳יִדְּמוּ **31:18**; a halál a pásztoruk, erő és tisztesség nélkül sorvadnak el **49:15** (a versben kétszer); ׳שׁ úgy emészti meg őket, mint a szárazság a vizet **Jób 24:19**; az igazak rettegnek tőle, mert ott nincs dicséret és nincs Isten jelenléte (mint a templomban) **Zsolt 6:6** (vö. 88:5), **Ézs 38:18**; a megszabadulás belőle áldás **Zsolt 30:4**; **86:13**; **Péld 23:14**. Ezékielnél a ׳שׁ a lenti föld, a gyalázat helye, a körülmetéletlenek lakóhelye **Ez 31:15**-16, **17**; **32:21**, **27**
+  > gonoszok לִשְׁא֑וֺלָה יָשׁוּבוּ **Zsolt 9:18**, לִשׁ ׳יִדְּמוּ **31:18**; a halál a pásztoruk, erő és tisztesség nélkül sorvadnak el **49:15** (a versben kétszer); ׳שׁ úgy emészti meg őket, mint a szárazság a vizet **Jób 24:19**; az igazak rettegnek tőle, mert ott nincs dicséret és nincs Isten jelenléte (mint a templomban) **Zsolt 6:6** (vö. 88:5), **Ézs 38:18**; a megszabadulás belőle áldás **Zsolt 30:4**; **86:13**; **Péld 23:14**. Ezékielnél a ׳שׁ a lenti föld, a gyalázat helye, a körülmetéletlenek lakóhelye **Ez 31:15**-16, **17**; **32:21**, **27**
 
 - **`2.b` — az igaz kiváltása a Seolból**
 
-  > b. az igazat nem hagyják el, ׳לשׁ **Zsolt 16:10** (|| שַׁחַת, l. ott; szemben חַיִּים אִרַח stb., 16:11, vö. 17:15), kiváltatik a ׳שׁ-ból **Zsolt 49:16** (vö. Zsolt 73:23; Zsolt 73:25; Ézs 57:1-2,); vö. Jób várakozását és vágyát **Jób 14:13**; 17:13 (vö. 10:21; 19:25k.).
+  > az igazat nem hagyják el, ׳לשׁ **Zsolt 16:10** (|| שַׁחַת, l. ott; szemben חַיִּים אִרַח stb., 16:11, vö. 17:15), kiváltatik a ׳שׁ-ból **Zsolt 49:16** (vö. Zsolt 73:23; Zsolt 73:25; Ézs 57:1-2,); vö. Jób várakozását és vágyát **Jób 14:13**; 17:13 (vö. 10:21; 19:25k.).
 
 <details>
 <summary>3 (1 szakasz)</summary>
@@ -794,15 +794,15 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 - **`3.a` — a Seol mélységei**
 
-  > a. a ׳שׁ mélységei az érzékiek számára **Péld 9:18**.
+  > a ׳שׁ mélységei az érzékiek számára **Péld 9:18**.
 
 - **`3.b` — Seol és Abaddón; verem**
 
-  > b. ׳שׁ וַאֲבַדּוֺן Péld 25:11, l. אֲבַדּוֺן. [שַׁחַת és בּוֺר, l. ott, ha || ׳שׁ, rendszerint rossz értelemben állnak (**Zsolt 88:4**); valószínűleg = verem a ׳שׁ-ban, > maga a ׳שׁ mint verem; a szavak legalábbis előkészítik a Biblia utáni zsidóság és az Újszövetség helyi megkülönböztetéseit.]
+  > ׳שׁ וַאֲבַדּוֺן Péld 25:11, l. אֲבַדּוֺן. [שַׁחַת és בּוֺר, l. ott, ha || ׳שׁ, rendszerint rossz értelemben állnak (**Zsolt 88:4**); valószínűleg = verem a ׳שׁ-ban, > maga a ׳שׁ mint verem; a szavak legalábbis előkészítik a Biblia utáni zsidóság és az Újszövetség helyi megkülönböztetéseit.]
 
 - **`4` — átvitt értelem: lealacsonyodás, száműzetés**
 
-  > 4 ׳שׁ átvitt értelemben a bűnben való végső lealacsonyodásról **Ézs 57:9**; mint Izráel száműzetésének helye **Hós 13:14** (a versben kétszer) (vö. Ézs 26:19).
+  > ׳שׁ átvitt értelemben a bűnben való végső lealacsonyodásról **Ézs 57:9**; mint Izráel száműzetésének helye **Hós 13:14** (a versben kétszer) (vö. Ézs 26:19).
   > *(kutatói jelölés: a szakaszhatár horgonnyal illesztve, ellenőrzendő; `adat/bdb_szakasz_hu.tsv` kategoria = horgonnyal)*
 
 *ⓘ Kutatói megjegyzés: a szótári példahely a magyar szövegben nem található, kiemelés nincs: bdb_vers_jelentes.tsv sorszam 5 (5Móz 32:22, fej); bdb_vers_jelentes.tsv sorszam 9 (Jób 17:15, fej); bdb_vers_jelentes.tsv sorszam 31 (4Móz 16:30, -/1); bdb_vers_jelentes.tsv sorszam 32 (4Móz 16:33, -/1); bdb_vers_jelentes.tsv sorszam 12 (5Móz 32:22, -/1); bdb_vers_jelentes.tsv sorszam 55 (Jób 17:12, -/1); bdb_vers_jelentes.tsv sorszam 38 (Jób 17:15, -/1); bdb_vers_jelentes.tsv sorszam 56 (Jób 17:15, -/1); bdb_vers_jelentes.tsv sorszam 63 (Préd 9:12, -/1); bdb_vers_jelentes.tsv sorszam 88 (Jób 17:12, -/2/b); bdb_vers_jelentes.tsv sorszam 92 (Péld 15:11, -/3/b) · Ez 31:16: a BDB a helyet nem önállóan idézi, hanem a 2.a szakaszban az Ez 31:15–16 verstartomány belsejében (a BDB-ben: „Ezek 31:15-16”; `adat/bdb_vers_jelentes.tsv` sorszam 76); a tartomány nincs kibontva (DT382 (A)), ezért a hely nem BDB-példa.*
