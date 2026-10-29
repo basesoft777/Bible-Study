@@ -30,7 +30,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 - Melkizedek — király-pap rendje, kenyér és bor `[ID: KIRALY-001]` — 1 fő előfordulás / 9 igehely-sor — publikálható (v2, 2026.09.10)
 
 **Pneumatológia/istentisztelet**
-- Segítségül hívni az Úr nevét `[ID: ISTENTISZT-001]` — 5 fő előfordulás / 32 igehely-sor — publikálható (v3, 2026.09.22)
+- Segítségül hívni az Úr nevét `[ID: ISTENTISZT-001]` — 5 fő előfordulás / 33 igehely-sor — publikálható (v3, 2026.09.22)
 
 **Teremtéstan**
 - Tehóm (תְּהוֹם) — Abüsszosz (ἄβυσσος): a mélység motívuma `[ID: TEREMT-001]` — 5 fő előfordulás / 42 igehely-sor — publikálható (v4, 2026.09.10)
@@ -491,7 +491,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 
 <!-- GENERÁLT-KEZDET: general.py --cel naplo#konyv_index | forrás: adat/elofordulasok.tsv | ts=2026-09-15 -->
 
-*Ez a blokk az elofordulasok.tsv mind a 260 sorát könyv szerint bontja, a táblában betöltött motívum-ID-kre korlátozva; a könyvek és az igehelyek kanonikus sorrendben állnak (K13).*
+*Ez a blokk az elofordulasok.tsv mind a 261 sorát könyv szerint bontja, a táblában betöltött motívum-ID-kre korlátozva; a könyvek és az igehelyek kanonikus sorrendben állnak (K13).*
 
 | Könyv | Igehely-sor | Tételek |
 |---|---|---|
@@ -510,7 +510,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 | Péld | 16 | Péld 1:12 [ALVIL-001], Péld 2:18 [HODIT-001], Péld 3:20 [TEREMT-001], Péld 5:5 [ALVIL-001], Péld 7:27 [ALVIL-001], Péld 8:24 [TEREMT-001], Péld 8:27 [TEREMT-001], Péld 8:28 [TEREMT-001], Péld 9:18 [ALVIL-001], Péld 9:18 [HODIT-001], Péld 15:11 [ALVIL-001], Péld 15:24 [ALVIL-001], Péld 21:16 [HODIT-001], Péld 23:14 [ALVIL-001], Péld 27:20 [ALVIL-001], Péld 30:16 [ALVIL-001] |
 | Préd | 1 | Préd 9:12 [ALVIL-001] |
 | Én | 1 | Én 8:6 [ALVIL-001] |
-| Ézs | 20 | Ézs 5:14 [ALVIL-001], Ézs 7:11 [ALVIL-001], Ézs 12:4 [ISTENTISZT-001], Ézs 14:9 [ALVIL-001], Ézs 14:9 [HODIT-001], Ézs 14:11 [ALVIL-001], Ézs 14:15 [ALVIL-001], Ézs 17:5 [HODIT-001], Ézs 24:5-6 [HAMART-001], Ézs 26:14 [HODIT-001], Ézs 26:19 [HODIT-001], Ézs 28:15 [ALVIL-001], Ézs 28:18 [ALVIL-001], Ézs 34:11 [TEREMT-002], Ézs 38:10 [ALVIL-001], Ézs 38:18 [ALVIL-001], Ézs 51:10 [TEREMT-001], Ézs 57:9 [ALVIL-001], Ézs 60:18 [HAMART-001], Ézs 63:13 [TEREMT-001] |
+| Ézs | 21 | Ézs 5:14 [ALVIL-001], Ézs 7:11 [ALVIL-001], Ézs 12:4 [ISTENTISZT-001], Ézs 14:9 [ALVIL-001], Ézs 14:9 [HODIT-001], Ézs 14:11 [ALVIL-001], Ézs 14:15 [ALVIL-001], Ézs 17:5 [HODIT-001], Ézs 24:5-6 [HAMART-001], Ézs 26:14 [HODIT-001], Ézs 26:19 [HODIT-001], Ézs 28:15 [ALVIL-001], Ézs 28:18 [ALVIL-001], Ézs 34:11 [TEREMT-002], Ézs 38:10 [ALVIL-001], Ézs 38:18 [ALVIL-001], Ézs 51:10 [TEREMT-001], Ézs 57:9 [ALVIL-001], Ézs 60:18 [HAMART-001], Ézs 63:13 [TEREMT-001], Ézs 64:6 [ISTENTISZT-001] |
 | Jer | 5 | Jer 4:23 [TEREMT-002], Jer 6:7 [HAMART-001], Jer 10:25 [ISTENTISZT-001], Jer 17:5 [HAMART-001], Jer 51:46 [HAMART-001] |
 | Ez | 11 | Ez 7:23 [HAMART-001], Ez 8:17 [HAMART-001], Ez 26:19 [TEREMT-001], Ez 28:16 [HAMART-001], Ez 31:4 [TEREMT-001], Ez 31:15 [TEREMT-001], Ez 31:15 [ALVIL-001], Ez 31:16 [ALVIL-001], Ez 31:17 [ALVIL-001], Ez 32:21 [ALVIL-001], Ez 32:27 [ALVIL-001] |
 | Hós | 2 | Hós 4:1-3 [HAMART-001], Hós 13:14 [ALVIL-001] |
