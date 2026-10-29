@@ -1306,7 +1306,7 @@ A TR/Byzantinus hagyomány eltérő olvasatáról szóló állítás nem a helyi
 | Mező | Érték |
 |---|---|
 | ID | `ALVIL-001` |
-| Rövid UI-címke | Hádész/Seól |
+| Rövid UI-címke | Hádész/Seol |
 | Teljes cím | Hádész (Seol) — a halottak birodalma |
 | Téma | Eszkatológia |
 | PaRDeS-szint | Remez/Drash |

@@ -21,7 +21,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 - Pneuma/pszükhé megkülönböztetés `[ID: ANTROP-001]` — 5 fő előfordulás / 8 igehely-sor — publikálható (v3, 2026.08.22)
 
 **Eszkatológia**
-- Hádész (Seól) — a halottak birodalma `[ID: ALVIL-001]` — 6 fő előfordulás / 72 igehely-sor — publikálható (v2, 2026.09.10)
+- Hádész (Seol) — a halottak birodalma `[ID: ALVIL-001]` — 6 fő előfordulás / 72 igehely-sor — publikálható (v2, 2026.09.10)
 
 **Hamartológia**
 - A bűn következményeinek gyűrűzése — átok, föld és romlás `[ID: HAMART-001]` — 4 fő előfordulás / 52 igehely-sor — publikálható (v1, 2026.09.11)
@@ -149,7 +149,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 
 *Ez a blokk a táblában betöltött 9 motívum-ID fejsorát fedi.*
 
-**Hádész (Seól) — a halottak birodalma** `[ID: ALVIL-001]` — publikálható (v2, 2026.09.10), 6 fő előfordulás.
+**Hádész (Seol) — a halottak birodalma** `[ID: ALVIL-001]` — publikálható (v2, 2026.09.10), 6 fő előfordulás.
 *(a bekezdés-próza a G2 után a `motivumok/ALVIL-001.md`-ből fűződik ide)*
 
 **Pneuma/pszükhé megkülönböztetés** `[ID: ANTROP-001]` — publikálható (v3, 2026.08.22), 5 fő előfordulás.
@@ -246,7 +246,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 
 | Kulcsszó | Téma | ÓSZ/ÚSZ | Fő előfordulás | Igehelyek |
 |---|---|---|---|---|
-| Hádész/Seól `[ID: ALVIL-001]` | Eszkatológia | ÓSZ+ÚSZ | 6 | Zsolt 16:10 ⇒ ApCsel 2:27,31, Luk 10:15/Mát 11:23, Luk 16:23, Jel 1:18, Jel 6:8, Jel 20:13-14 |
+| Hádész/Seol `[ID: ALVIL-001]` | Eszkatológia | ÓSZ+ÚSZ | 6 | Zsolt 16:10 ⇒ ApCsel 2:27,31, Luk 10:15/Mát 11:23, Luk 16:23, Jel 1:18, Jel 6:8, Jel 20:13-14 |
 | Pneuma/pszükhé `[ID: ANTROP-001]` | Antropológia | ÓSZ+ÚSZ | 5 | 1Móz 2:7 ⇒ 1Kor 15:45, Luk 1:46-47, 1Kor 2:14-15, 1Thessz 5:23, Zsid 4:12 |
 | Bűn gyűrűzése `[ID: HAMART-001]` | Hamartológia | ÓSZ+ÚSZ | 4 | 1Móz 3:7-19, 1Móz 4:1-24, 1Móz 6:1-8, 1Móz 6:9-22 |
 | Refáim/óriás-népek `[ID: HODIT-001]` | Teremtéstan | ÓSZ | 1 | 1Móz 14:5 |
