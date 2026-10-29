@@ -58,6 +58,25 @@ with open('konkordancia/TAHOT_kivonat.tsv', encoding='utf-8') as f:
 print('== (2) a versben H1168 (Baál) áll:', sorted(baal))
 a_eset = [d['igehely'] for d in sorok if d['igehely'] not in b_eset]
 print(f'== (2) A (nem B-eset): {len(a_eset)}; ebből H1168-cal: {sorted(set(a_eset) & baal)}')
+
+# ELLENOR_ISTENTISZT001_ARANY_JAVITAS G7: a „H1168 a versben” nem a megszólított név. A megszólított
+# név a H9003 (בְּ) + H8034 (שֵׁם) utáni első nem-grammatikai token (a birtokos rag kihagyva), versenként.
+KARMEL = ('1Kir 18:24', '1Kir 18:25', '1Kir 18:26')
+tok = {v: [] for v in KARMEL}
+with open('konkordancia/TAHOT_kivonat.tsv', encoding='utf-8') as f:
+    next(f)
+    for sor in f:
+        m = sor.rstrip('\n').split('\t')
+        if m[0] in tok:
+            tok[m[0]].append((m[1], m[2], m[6]))
+for v in KARMEL:
+    t = tok[v]
+    for i in range(len(t) - 2):
+        if t[i][0] == 'H9003' and t[i + 1][0] == 'H8034':
+            utana = [x for x in t[i + 2:i + 5] if not x[0].startswith('H90')][:1]
+            print(f'== (2) megszólított név, {v}: {t[i + 1][1]} + {utana}')
+print('== (2) jelentes_hu „Baál” az A-sorokon:',
+      sorted(d['igehely'] for d in sorok if d['igehely'] in a_eset and 'Baál' in d['jelentes_hu']))
 ts = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%MZ')
 print(f'proveniencia: scope=adat/elofordulasok.tsv (id={ID}, n={len(sorok)}) | '
       f"forras=elofordulasok.tsv (funkcio, jelentes_szam, jelentes_hu)+TAHOT_kivonat.tsv "
