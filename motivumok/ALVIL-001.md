@@ -59,7 +59,9 @@ A fenti egyetlen (Zsolt 16:10) genezisi-ívbeli előforduláson túl a *seól* m
 
 ### Új felismerés — Hós 13:14 → 1Kor 15:55
 
-"Megváltom őket a Seol hatalmából... Hol van a te veszedelmed, oh Seol?" — ezt Pál explicit idézi/parafrazálja **1Kor 15:55**-ben: "Halál! hol a te fullánkod? Pokol! hol a te diadalmad?" A Károli 1908 (Textus Receptus-alapú) szöveg a második tagmondatot "Pokol"-lal (= hádész) adja vissza.
+"Megváltom őket a Seol hatalmából... Hol van a te veszedelmed, oh Seol?" *(összevont saját alak, nem Károli-szöveg; a Károli 1908 alakja: „Megváltom őket a Seol hatalmából! Megmentem őket a haláltól! Hol van a te veszedelmed oh halál?! Hol van a te romlásod oh Seol?!”)* — ezt Pál explicit idézi/parafrazálja **1Kor 15:55**-ben: "Halál! hol a te fullánkod? Pokol! hol a te diadalmad?" A Károli 1908 (Textus Receptus-alapú) szöveg a második tagmondatot "Pokol"-lal (= hádész) adja vissza.
+
+【NAPLO: ELLENOR_F123_ALVIL-001_2 ELTÉRÉS-4, F123.ALVIL.J21, 2026-10-29 — örökölt mondat jelölve: a Hós 13:14 idézőjeles alakja két tagmondat összevonása (a „veszedelmed” a Károliban a halálhoz, a Seolhoz a „romlásod” szól), nem Károli-szöveg; a J7 a Seol írásmódra hozta, ezért jelölés nélkül Károli-idézetnek látszott. A Károli-alak mellette. Lekérdezés: `lekerdez.py karoli "Hós 13:14"` — scope=range:Hós 13:14 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-10-29T13:26Z】
 
 ### ↳ Alpont: kiáltás a Seol szorításából
 
