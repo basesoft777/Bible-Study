@@ -7,9 +7,9 @@
 | Eltérés | Kezelés |
 |---|---|
 | MCGED-sor a nyitott DT235 / DT272 (c) („a Mounce kimarad”) ellenére | **Licencdöntés kell** — az orkesztrátornak jelezve; a sor a PR-ben marad, a döntésig a merge nem javasolt |
-| `szotar=BDB` sor a brief E5-je ellenére; `modell=claude-opus-5-5` | Az E5-eltérés az orkesztrátor DT-F121m (1) döntése; a `modell` a szöveg tényleges fordítóját jelöli (az F28 Opus-fordítás változatlan szakasza), a megjegyzés ezt mondja — **orkesztrátori jóváhagyás kell az E5-höz** |
+| `szotar=BDB` sor a brief E5-je ellenére; `modell=claude-opus-5-5` | Az E5-eltérés az orkesztrátor DT410 (1) döntése; a `modell` a szöveg tényleges fordítóját jelöli (az F28 Opus-fordítás változatlan szakasza), a megjegyzés ezt mondja — **orkesztrátori jóváhagyás kell az E5-höz** |
 | TBESH-feloldó többsoros Strongnál | Javítva: azonos Strong sorai egyedítve fűzve (glosszák „; ”, szócikkek „ | ”), mint a generátor; a H7585 hash-e változatlan (1 sor) |
-| `N-F121a` helyőrző-ütközés; az `Act.` hiányzik a leírásból | Átnevezve `N-F121c`-re, `Act.` felvéve |
+| `N-F121a` helyőrző-ütközés; az `Act.` hiányzik a leírásból | Átnevezve `N64`-re, `Act.` felvéve |
 | „tüzes tó” → Jel 20:15 | Javítva: Jel 19:20 „tüzes tóba”; Jel 20:15 „a tűznek tavába” |
 | „Károli G86 = csak pokol” | Pontosítva: a #22 párosításban; az ApCsel 2:27, 31 Károli-szövege „sírban” |
 | napló / brief `kovetkezo` elavult; terminológia „jóváhagyásra vár”; „kapuk átmentek” a bukott sorokon | Javítva |

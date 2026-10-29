@@ -2,14 +2,14 @@
 
 *Menet: 2026-10-29, `claude-sonnet-5-5` (a kért modell: `sonnet`; a modell-ellenőrzés egyezik). Ág: `claude/f121-alvil-13` (friss `origin/main`-ről). Megbízó: az orkesztrátor; a felhasználó szó szerint (az orkesztrátor chatjében, 2026-10-29): „Igen, így” — a jóváhagyott szöveg: „… A 13 fordítás az M1 után Sonnettel, a #121 eszközével.” Bemenet: a #123 átadó listája (`naplok/F123_forditas_atadas_ALVIL-001.tsv`, a `claude/f123-alvil-adat` ágon). Az ALVIL-001 lapot ez a menet **nem** generálja újra, a #123 fájljaihoz nem nyúl.*
 
-**Állapot: rögzítve (F121.15).** A DT-F121k, DT-F121l, DT-F121m eldöntve (orkesztrátor, a felhasználó felhatalmazásával, 2026-10-29). Az ellenőri jelentés (ELLENOR_F121_3) javításai után a PR draft.
+**Állapot: rögzítve (F121.15).** A DT408, DT409, DT410 eldöntve (orkesztrátor, a felhasználó felhatalmazásával, 2026-10-29). Az ellenőri jelentés (ELLENOR_F121_3) javításai után a PR draft.
 
 ## 1. Az átadó lista két hibája (a #123-nak)
 
 1. **A két glossza-sor hash-e hibás.** A lista a `UBS_DNTG 12.50 glosszak_hu` és az `UBS_DBH 007131001001000 glosszak_hu` sorához a *definíció* hash-ét (79, illetve 266 karakter) adja. A valódi forrás: „death” (5 karakter) és „world of the dead” (17 karakter). A `forditasok.tsv`-be a valódi forrás hash-e kerül.
 2. **A tW-sorok kulcsa nem a lap Strongja.** A lista a `kt/hades`-t, a `kt/hell`-t a `G0086` alatt sorolja; a `forditasok.tsv` kulcsában a cikk első Strongja áll (`H7585`; `other/pit` → `H0875`; `other/tomb` → `H1430`), ahogy a generátor hívja (`forditas_ehhez('tW_szocikkek', r['strongok'][0], …)`). A rögzítés a hiánylista (`naplok/F123_adat_ALVIL-001_forditas_hiany.tsv`) `strong_kulcs` oszlopát követi.
 
-## 2. Forrásszerződés (DT-F121k, javaslat)
+## 2. Forrásszerződés (DT408, javaslat)
 
 A hat nem-UBS forrásnak nincs `lexikon_hivatkozasok.tsv`-sora, ezért az `ellenoriz.py` 13. szabálya nem találna forrásszöveget. A feloldó: `glossza_lexikon_forditas.tovabbi_forras` (SEMA 2.14 új bekezdése, tesztek: `teszt_glossza_lexikon_forditas.py` `TovabbiForras`, `teszt_ellenoriz_13.py` `Szabaly13Tovabbi`). **Eltérés a #123 listájától:** a TBESH/TBESG-sor forrása a 7–8. oszlop tisztítva (a lista a teljes tabos sort hash-eli); ennek oka, hogy a fordítás a glosszát és a szócikket fedi, a fejléc-lemmát (ᾍδης, שְׁאוֹל) a lap külön adja, és az 1. kapu a nyers sorban a lemmát hiányolná. A TBESG/TBESH-sor hash-e ezért nem egyezik a lista előtagjával (a másik 11 egyezik, a 2 glossza az 1. pont szerint javítva).
 
@@ -31,7 +31,7 @@ A hat nem-UBS forrásnak nincs `lexikon_hivatkozasok.tsv`-sora, ezért az `ellen
 | UBS_DBH 007131001001000 glossza, definíció | átment | „a holtak világa”; a 63 cella erre a glosszára vált |
 | BDB H7585 `nyelvi_hatter` | átment | az F28 `teljes` sor (`kezi`, Opus) megfelelő szakasza változatlanul; a forrás elírásai (*palce*, *hallow*) a fordításban *helye*, *üreges* |
 
-## 4. Terminológia (DT-F121l, javaslat)
+## 4. Terminológia (DT409, javaslat)
 
 Kilenc új v4 sor (`adat/terminologia.tsv`, a megjegyzés „F121 ALVIL-001 menet (javaslat…)”-tal kezdődik): `Sheol` → Seol, `Hades` → Hádész, `underworld` → alvilág, `hell` → pokol, `tomb` → sírbolt (mind `kapu=igen`), `grave` → sír, `pit` → verem, `lake of fire` → tüzes tó (`kapu=nem`), és `Bibl. Hades` → `Bibl. Hades` (`igen`: Beer műcíme a BDB H7585 szócikkében; e nélkül a `Hades` kapu a címet is hádészre kényszerítené).
 
@@ -49,8 +49,8 @@ Eszköz: `python eszkozok/glossza_lexikon_forditas.py manko | szojegyzek | vissz
 - Nem javítottam a 11. kaput (a `Matthew`/`Revelation`/`Romans` alias hiánya) és a #123 átadó listáját: ezek külön tételek.
 - A `pardes.db` nem épült újra; a szónézet és a lap az új sorokat csak újraépítés után mutatja.
 
-## 7. Az MCGED-sor kivétele és a D1 (DT-F121n, 2026-10-29)
+## 7. Az MCGED-sor kivétele és a D1 (DT411, 2026-10-29)
 
 - A 13-ból **12 sor** marad: az `MCGED G0086 G50087 glosszak_hu` („the invisible abode or mansion of the dead; …”) kikerült. Indok: a Mounce szövege „Copyright 1993 All Rights Reserved”, a DT235 / DT272 (c) („a Mounce kimarad”) nyitott; lefordított szöveget nem teszünk közzé a licencdöntésig. **Hiányként jelölve** (DT235); a lapon a Mounce csak forrásmegjelölés (DT-F131m).
-- A BDB H7585 sor marad (DT-F121m (1)); a brief E5 pontja kiegészítve.
+- A BDB H7585 sor marad (DT410 (1)); a brief E5 pontja kiegészítve.
 - **D1 rendben:** a `licencek.tsv`-ben megvan a TBESG (CC BY 4.0), az LSJ (CC BY-SA 4.0) és a tW_szocikkek (CC BY-SA 4.0) sora.
