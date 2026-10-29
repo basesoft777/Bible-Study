@@ -77,6 +77,8 @@ A fenti egyetlen (Zsolt 16:10) genezisi-ívbeli előforduláson túl a *seól* m
 - **Viszony a név segítségül hívásához (ISTENTISZT-001):** a két motívum egyetlen közös helye a Zsolt 116:3–4 (a Seol szorongatása, majd „az Úr nevét hívtam segítségül”); a név nélküli kiáltás nem ISTENTISZT-001-előfordulás.
 <!-- RÉS-VÉGE: ertelmezes -->
 
+## 4. Kapcsolódás a kutatási sablonhoz
+
 <!-- INAKTÍV: 4. Kapcsolódás a kutatási sablonhoz — nincs adat: dedikált, kifejezetten erre a lexikai komplexumra (seól/hádész) vonatkozó pünkösdi/karizmatikus szakirodalmi feldolgozás nem áll rendelkezésre elegendő mennyiségben ahhoz, hogy nevesített szerzőkkel idézhető legyen -->
 
 ## 5. Alkalmazás és tanítványság
