@@ -31,7 +31,7 @@ Forrás: `adat/elofordulasok.tsv` (261 adatsor), olvasás `split('\t')`-tel. Pro
 - **Gond:** az `f110_szuro.py` a `main()`-t modul-szinten hívja (nincs `if __name__ == '__main__'` őr), és fix bemenetet (`naplok/F110_bemenet.tsv`) olvas, tehát **nem importálható**. A szűrő a TAHOT-sor 7. oszlopát (angol tükörfordítás) olvassa az igeállapothoz.
 - **A DT283 kiegészítése:** a szűrő *nem dönt* — az A/B osztály sem automatikus bevétel, a kézi olvasás dönt. A kártyán ezért a szűrő eredménye **osztály-jelzés** (K1/K2/K3 = `kiszurve: <ok>`, A/B = átjutott, kézi olvasásra), nem bevétel.
 - A többi motívum tág Strongjaira nincs szabály → `szuretlen_tag` (a brief szerint).
-- **Javaslat:** a szűrő szabály-függvényeit a #124 új `eszkozok/gerinc_szuro.py` fájlba másolja (a lezárt F110 fájljaihoz nem nyúl), és ennek a fájlnak a neve kerül a workflow `paths:` listájába (N-F124b). Az `ir` ezzel bővül (l. DT-F124a).
+- **Javaslat:** a szűrő szabály-függvényeit a #124 új `eszkozok/gerinc_szuro.py` fájlba másolja (a lezárt F110 fájljaihoz nem nyúl), és ennek a fájlnak a neve kerül a workflow `paths:` listájába (N-F124b). Az `ir` ezzel bővül (l. DT403).
 
 ### (c) A tanulmányfájl-nevek értelmezhetősége
 
@@ -56,9 +56,9 @@ A `jelolt.py --szakasz` (nem ír) sorszámai, amelyekkel a kártya soraiból a `
 Megjegyzés: a kártya tényleges kimenetét a 4. lépés után vetem össze (ehhez a kártya kódja kell); a mérés itt a `jelolt.py` oldala.
 
 
-## 3. Döntés (DT-F124a) — alkalmazva
+## 3. Döntés (DT403) — alkalmazva
 
-**Felhasználó, 2026-10-29, az orkesztrátor chatjében, szó szerint: „minden legyen teljes”** (az orkesztrátor üzenetében idézve, értelmezése: a javaslatok teljes elfogadása). (1) a térkép kimenete commit a `main`-re; (2) új `eszkozok/gerinc_szuro.py`. A DT-F124d nem kellett (l. 0.(c)). A DT-F124b (előminősítés) nyitva marad, alapértelmezés: kimarad.
+**Felhasználó, 2026-10-29, az orkesztrátor chatjében, szó szerint: „minden legyen teljes”** (az orkesztrátor üzenetében idézve, értelmezése: a javaslatok teljes elfogadása). (1) a térkép kimenete commit a `main`-re; (2) új `eszkozok/gerinc_szuro.py`. A DT-F124d nem kellett (l. 0.(c)). A DT404 (előminősítés) nyitva marad, alapértelmezés: kimarad.
 
 ## 4. A kártya próbája (4. lépés) — három szakasz a `jelolt.py`-val összevetve
 
@@ -122,7 +122,7 @@ Próbafutás: `python eszkozok/gerinc_terkep.py --kimenet <ideiglenes könyvtár
 
 **`sablonok/2_PaRDeS_bovitett_sablon.md` (v21 → v22), a 2. pont után:** „A kulcsszó-táblázat a gerinc-kártya **előtt** készül (vak olvasás; a 3. kiválasztási szempont, a »Motívum-kapcsolódás«, nem hivatkozik a kártyára). A kártya és az összevetés két listája a 4. pont kötelező naplójába kerül, üres eredménynél is; a »kártya talált, olvasás nem« hely jelöltként a `jeloltek.tsv`-n át, döntéssel, az »olvasás talált, kártya nem« kulcsszó az A4 ⛔ elé.” A changelog-sor a fájl elején. A `4_PaRDeS_tematikus_sablon.md` P1–P7 nem változik.
 
-*Állapot: jóváhagyva (DT-F124c, 2026-10-29); ezt a #125 írja át, a #124 a szöveget nem alkalmazza.*
+*Állapot: jóváhagyva (DT405, 2026-10-29); ezt a #125 írja át, a #124 a szöveget nem alkalmazza.*
 
 ## 8. Nem teljesíthető / korlátok (tételesen)
 
@@ -140,6 +140,6 @@ Próbafutás: `python eszkozok/gerinc_terkep.py --kimenet <ideiglenes könyvtár
 - **A kártya nem importálja a `jelolt.py` függvényeit** (a brief technikai döntése szerint építenie kellene rájuk). Ok: a verses index, az `egy_tag`/kollokáció és a tartomány-igehelyek kezelése nem fér a `jelolt.py` függvényeibe. A sorhalmaz egyezését (id, igehely, Strong) 5 valós szakaszon a `teszt_gerinc_kartya.py` `Egyezes` őrzi; a `jelolt.py` változatlan. A `gerinc_kartya.py` docstringje ezt rögzíti.
 - **Térkép-`ts`:** a tanulmánymappáknál csak a fájlnevek változása (hozzáadás/törlés/átnevezés) számít; a `general.py`, `lekerdez.py`, `strong_util.py` bekerült a bemenetbe és a workflow `paths:` listájába.
 - **Kiszűrt `nyitva` jelölt** a `nyitva_db`-ben marad (már látott hely); a `Sir` (Siralmak) kanonikus helyre került a rangsorban.
-- **Nyitott tételek felvéve:** DT-F124b (`DONTESEK.md`), N-F124a, N-F124c és két további tétel (`NYITOTT_FELADATOK.md`).
+- **Nyitott tételek felvéve:** DT404 (`DONTESEK.md`), N-F124a, N-F124c és két további tétel (`NYITOTT_FELADATOK.md`).
 - **Az `[ELLENŐRZŐ]` PR-cím** kötelező (E16: a workflow ellenőrző-fájl); a PR címe ezt viseli.
 

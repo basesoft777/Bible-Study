@@ -6,13 +6,13 @@
 
 | Tétel | Fájl | Tartalom |
 |---|---|---|
-| F124.0 | `naplok/GERINC_KARTYA_naplo.md` | 0. mérés: gerinc-elemek, #110 szűrő, fájlnevek, `jelolt.py` alap; DT-F124a helyőrző |
+| F124.0 | `naplok/GERINC_KARTYA_naplo.md` | 0. mérés: gerinc-elemek, #110 szűrő, fájlnevek, `jelolt.py` alap; DT403 helyőrző |
 | F124.1 | `eszkozok/gerinc_szuro.py`, `teszt_gerinc_szuro.py` | a DT283 szabály importálható alakban; a valós adaton az `F110_szuro_szimulacio.tsv` mind a 189 sorát reprodukálja |
 | F124.2 | `eszkozok/gerinc_kartya.py`, `teszt_gerinc_kartya.py` | kártya (kollokáció, állapot, szűrő, `szuretlen_tag`, melléklet, proveniencia 0 találatnál is), `--osszevet`, `--ir` |
 | F124.3 | `eszkozok/gerinc_terkep.py`, `teszt_gerinc_terkep.py` | prioritási térkép, fájlnév-alapú vers-pontos lefedettség, idempotens kimenet |
 | F124.4 | `.github/workflows/gerinc_terkep.yml` | commit a `main`-re a `feladatok.yml` mintájára |
 
-Döntés: DT-F124a (✅ alkalmazva; a felhasználó szava: „minden legyen teljes”, az orkesztrátor üzenetében idézve). A DT-F124d nem kellett; a DT-F124b (előminősítés) nyitva, kimarad.
+Döntés: DT403 (✅ alkalmazva; a felhasználó szava: „minden legyen teljes”, az orkesztrátor üzenetében idézve). A DT-F124d nem kellett; a DT404 (előminősítés) nyitva, kimarad.
 
 ## Az elfogadási feltételek
 
@@ -35,7 +35,7 @@ Döntés: DT-F124a (✅ alkalmazva; a felhasználó szava: „minden legyen telj
 4. A `melyelemzesek/` többszakaszos fájlneve nem értelmezhető (Zsolt 110:4, Zsid 5–7 feldolgozatlannak számít).
 5. N-F124a (kártya-fájl helye), N-F124c (#81-összekötés): nyitva.
 6. A `--ir` az `egy_tag` sorokat is írja, ha nem tág az összetett gerinc-elem (a brief szerint).
-7. A 2.3 szöveg (MUNKAMENET A3b/A3c, 2_ sablon v22): jóváhagyva (DT-F124c, orkesztrátor a felhasználó felhatalmazásával), mint a #125 bemenete; az átírás a #125, a #124 nem írja át.
+7. A 2.3 szöveg (MUNKAMENET A3b/A3c, 2_ sablon v22): jóváhagyva (DT405, orkesztrátor a felhasználó felhatalmazásával), mint a #125 bemenete; az átírás a #125, a #124 nem írja át.
 8. A brief `paths:` listáját a tanulmánymappákkal bővítettem (a lefedettség bemenete).
 
 ## Ellenőrzés

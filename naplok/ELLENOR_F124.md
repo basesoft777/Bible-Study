@@ -10,12 +10,12 @@
 | 2 | A zárás 4. sora („lásd lent”) tesztkimenet nélkül állt | magas | a zárásban konkrét kimenet |
 | 3 | A kártya nem importálja a `jelolt.py` függvényeit (a brief technikai döntése), a docstring ezt tévesen állította | közepes | docstring javítva; eltérés a napló 9. pontjában; az egyezést a `Egyezes` teszt őrzi |
 | 4 | A térkép `ts`-e a tanulmánymappák teljes tartalmára érzékeny; a `general.py`, `lekerdez.py` nincs a bemenetben/`paths:`-ban; a git-azonosítót teszt nem mérte | közepes | `ts`: mappáknál csak A/D/R (`--diff-filter=ADR`); `general.py`, `lekerdez.py`, `strong_util.py` a bemenetben és a `paths:`-ban; új teszt (`GitAzonosito`) |
-| 5 | DT-F124b, N-F124a/c és a napló 8/4., 8/7. pontja nincs felvéve; a brief `kovetkezo:` mezője elavult | közepes | felvéve (`DONTESEK.md`, `NYITOTT_FELADATOK.md`); `kovetkezo:` frissítve |
+| 5 | DT404, N-F124a/c és a napló 8/4., 8/7. pontja nincs felvéve; a brief `kovetkezo:` mezője elavult | közepes | felvéve (`DONTESEK.md`, `NYITOTT_FELADATOK.md`); `kovetkezo:` frissítve |
 | 6 | Kiszűrt `nyitva` jelölt kiesett a `nyitva_db`-ből | enyhe | javítva + teszt |
 | 7 | A `Sir` (Siralmak) 999-es rangot kapott a kanonikus sorrendben | enyhe | `konyv_index` alias + teszt |
 | 8 | A napló próbaszámai mellől hiányzik a proveniencia | enyhe | a számok a `futtat()`/`gerinc_terkep.py` kimenetéből származnak (a futtatási parancsok a naplóban); külön proveniencia-sor nem készült — **elfogadott, nem javított** |
 | 9 | Napló: „262 sor” (261), „24 értelmezhető” (23), „23+” (26) | enyhe | javítva |
-| 10 | A DT-F124a forrása (a felhasználó szava) csak az orkesztrátor közvetítésében áll | információ | a `DONTESEK.md` az idézetet és a forrás-megjelölést rögzíti; a repóból nem igazolható, az orkesztrátor üzenete a forrás |
+| 10 | A DT403 forrása (a felhasználó szava) csak az orkesztrátor közvetítésében áll | információ | a `DONTESEK.md` az idézetet és a forrás-megjelölést rögzíti; a repóból nem igazolható, az orkesztrátor üzenete a forrás |
 
 ## 2. OK-ként igazolt pontok (az ellenőr saját lekérdezésével)
 

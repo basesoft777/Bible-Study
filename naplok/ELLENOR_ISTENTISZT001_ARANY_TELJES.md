@@ -4,7 +4,7 @@ ELTÉRÉS: 3 tétel
 
 *A `fuggetlen-ellenor` jelentése, a végrehajtó mentette (az ellenőrnek nincs fájlíró eszköze). A táblázat az eltérés- és lényegi sorokat a jelentés szerint adja, rövidítve; a végén a javítókör a végrehajtóé.*
 
-- **Megbízás:** a DT-F131q (`DONTESEK.md` utolsó sora) és az N-F131f; nincs külön brieffájl.
+- **Megbízás:** a DT406 (`DONTESEK.md` utolsó sora) és az N-F131f; nincs külön brieffájl.
 - **Tartomány:** `0e607b2f..1692c56f` (6 commit).
 - **Ellenőr:** a tényleges modell `claude-opus-5-5`, a kért modell `opus`, tehát egyezik.
 - **Korlát:** az ellenőr a szerepe szerint a `naplok/*.py` mérőszkripteket és a `teszt_bont`-ot nem futtathatta. Ezeket a pontokat NEM ELLENŐRIZHETŐ-nek jelölte, és fájlolvasással, Grep-pel egészítette ki.
@@ -22,7 +22,7 @@ ELTÉRÉS: 3 tétel
 | lexikonlap | OK | `lexikon/ISTENTISZT-001_TUDOMANYOS.md:116,122,123,125` | Csak a 4 minősítő-mondat esett ki. Helyőrző: 0. |
 | N-F131f számai | részben OK / **ELTÉRÉS (E1)** | `NYITOTT_FELADATOK.md:54` | A 9 664 / 674 / 3 326 rendben. A mezőszintű számok és a „H7121/H8034 nem érintett” állítás nem reprodukálható a hivatkozott szkriptből. |
 | helyőrző az `eszkozok/` alatt | OK | – | 0 találat. |
-| helyőrző a `naplok/*.py` alatt | **ELTÉRÉS (E3)** | `naplok/ISTENTISZT001_nf131ab_rendezes.py:1`, `naplok/ISTENTISZT001_teljes_meres.py:1` | N-F131a/b maradt a docstringben; a számkiosztás `.py`-ban nem cserél. |
+| helyőrző a `naplok/*.py` alatt | **ELTÉRÉS (E3)** | `naplok/ISTENTISZT001_nf131ab_rendezes.py:1`, `naplok/ISTENTISZT001_teljes_meres.py:1` | N62/b maradt a docstringben; a számkiosztás `.py`-ban nem cserél. |
 | CI (saját futtatás) | OK | – | A `futtat.py` kilépési kódja 0. JELENTES: E12 357, E13 119, E25 4, E27 40 (main-szintű). E30 1 FIGYELMEZTETES: a `funkcio` mezőnév a 96aeed6f üzenetében. |
 | A1–A6, a ⛔-pontok | OK | – | A generátor és a `bdb_szakasz_hu.tsv` nem változott; csak ISTENTISZT-001 sorok változtak. |
 
@@ -34,8 +34,8 @@ ELTÉRÉS: 3 tétel
    - **`--betus`:** 16 Strong, 34 sor, 3 sor rontás (H7442);
    - **elavultság:** 674 → 4 000 Strong, 9 664 → 25 228 sor, 3 326 új, 98 eltérő Strong; mezőnként `forditas_forras_hash` 1 685, `hu_kezdet` 1 388, `szoveg_hu` 1 362, `hu_hossz` 1 315, `kategoria` 184, `horgony` 22; a H7121 és a H8034 nem érintett.
 
-   Az ellenőr gyanúja tehát helyes volt. A DT-F131q „54 Strong, 3 sor rontás” állítása két változatot mosott össze, ezért a sor javítva: az első változat 54 Strong / 73 sor rontás, a második 16 Strong / 3 sor rontás.
-2. **E2:** a DT-F131q (3) pontja kimondja a kiválasztást. A 6 szakasz a 8 `jelolo_nelkul` sorból azok, amelyeknek nincs saját magyar szövege; a két sorszám-2 `fej` sor saját magyar szakaszt kap.
+   Az ellenőr gyanúja tehát helyes volt. A DT406 „54 Strong, 3 sor rontás” állítása két változatot mosott össze, ezért a sor javítva: az első változat 54 Strong / 73 sor rontás, a második 16 Strong / 3 sor rontás.
+2. **E2:** a DT406 (3) pontja kimondja a kiválasztást. A 6 szakasz a 8 `jelolo_nelkul` sorból azok, amelyeknek nincs saját magyar szövege; a két sorszám-2 `fej` sor saját magyar szakaszt kap.
 3. **E3:** a helyőrző kikerült a két szkript docstringjéből. Ugyanígy javítva a #506-os `naplok/ISTENTISZT001_arany_javitas_meres.py:3` is. A régebbi `naplok/F131_*.py` DT-F131-hivatkozásai a main-en is megvannak, ezekhez a menet nem nyúl (a PR felsorolja).
 4. **A `teszt_bont`, nem futtatott pontok:** a végrehajtó futtatta.
    - `test_kotetszamos_siglum`: OK.

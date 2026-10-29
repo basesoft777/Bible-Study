@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-10-29",
-   "commit": "142f5857"
+   "commit": "e42e97b6"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -4304,8 +4304,8 @@
    },
    {
     "id": "DT401",
-    "feladat": "#131 utómunka az ISTENTISZT-001 arany lapon (N-F131b, kolofon, A/B/C A-szám, 7.K TSK-mondat)",
-    "kerdes": "Három javítás egy Opus-menetben: (1) a generátor ⓘ-je az N-F131b helyőrző helyett a tényleges okra hivatkozzon, az N-F131a/b a NYITOTT-ba; (2) a kolofonban a STEPBible-megjelölés egyszer, külön sorban, a TWOT-sor dőlt betűje lezárva; (3) az A/B/C tábla A-száma mérve, a ⚠ ELTÉRÉS törölve. Menet közben két ⛔: az 1. pont A/B/C bekezdése még „a study 15 emberi-invokációs esete”; a 7.K mondata („a 9 emberi-invokációs igehely felé továbbra sincs TSK-kereszthivatkozás”) küszöb nélkül nem igaz (2Móz 33:19 → Ézs 12:4, Votes 3). Mért: a 33 sorból 2 B-eset, 31 emberi alany, ebből 2 hamis isten nevével (1Kir 18:25: „a ti istenetek”, H0430; 18:26: Baál, H1168); a 2Móz 33:19/34:5-ből a 31 A-hely felé Votes ≥ 15 mellett 0 TSK-kapcsolat. A TWOT-sor záró `*`-a a lapon már megvolt (csak regressziós teszt). *(proveniencia: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, n=33)",
+    "feladat": "#131 utómunka az ISTENTISZT-001 arany lapon (N63, kolofon, A/B/C A-szám, 7.K TSK-mondat)",
+    "kerdes": "Három javítás egy Opus-menetben: (1) a generátor ⓘ-je az N63 helyőrző helyett a tényleges okra hivatkozzon, az N62/b a NYITOTT-ba; (2) a kolofonban a STEPBible-megjelölés egyszer, külön sorban, a TWOT-sor dőlt betűje lezárva; (3) az A/B/C tábla A-száma mérve, a ⚠ ELTÉRÉS törölve. Menet közben két ⛔: az 1. pont A/B/C bekezdése még „a study 15 emberi-invokációs esete”; a 7.K mondata („a 9 emberi-invokációs igehely felé továbbra sincs TSK-kereszthivatkozás”) küszöb nélkül nem igaz (2Móz 33:19 → Ézs 12:4, Votes 3). Mért: a 33 sorból 2 B-eset, 31 emberi alany, ebből 2 hamis isten nevével (1Kir 18:25: „a ti istenetek”, H0430; 18:26: Baál, H1168); a 2Móz 33:19/34:5-ből a 31 A-hely felé Votes ≥ 15 mellett 0 TSK-kapcsolat. A TWOT-sor záró `*`-a a lapon már megvolt (csak regressziós teszt). *(proveniencia: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, n=33)",
     "allapot": "ellenorizendo",
     "jelek": [
      "✅"
@@ -4315,6 +4315,6 @@
     "fejlec_oszlopszam": 8
    }
   ],
-  "kesz_db": 136
+  "kesz_db": 137
  }
 }
