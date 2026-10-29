@@ -442,7 +442,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 ## 2. Szótári háttér
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#szocikkek | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/lexikon_hivatkozasok.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/LSJ_teljes.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-10-29 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#szocikkek | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/karoli_strong, adat/lexikon_hivatkozasok.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/LSJ_teljes.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-10-29 -->
 
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum 3 Strong-tokenjét fedi, szerepenként a szerepmátrix (`szotar_szerepek.tsv`) sorrendjében, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*
 
@@ -736,13 +736,67 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 #### 13. Károli-megfelelők (+ SZPA)
 
-<!-- ÜRES-BLOKK: Károli-megfelelők (+ SZPA) | javaslat -->
-*(üres blokk: javaslat; a hiány nincs kitöltve gyenge vagy asszociatív anyaggal)*
+*A motívum igehelyeinek Károli-szóalakjai (`adat/elofordulasok.tsv`, `karoli_szo`), szótári alakonként (`adat/szoto/karoli_szotari_alak.tsv`, mai helyesírás), névelő nélkül: a szóalakok, és hány igehelyen, melyiken.*
+
+- **hív** (30) — hívá, hívom, hívjátok, hívja, hívják, hívta, hívák, hívám, hívni, híván: 1Móz 4:26, 1Móz 12:8, 1Móz 13:4, 1Móz 21:33, 1Móz 26:25, 1Kir 18:24, 1Kir 18:25, 1Kir 18:26, 2Kir 5:11, Sof 3:9, Zak 13:9, Zsolt 116:4, Zsolt 116:13, Zsolt 116:17, Jóel 2:32, Róm 10:14, 1Kor 1:2, 2Tim 2:22, 1Pét 1:17, ApCsel 9:14, ApCsel 9:21, ApCsel 22:16, Zsolt 105:1, 1Krón 16:8, Jer 10:25, Zsolt 79:6, Ézs 64:6, ApCsel 2:21, Róm 10:13, Róm 10:12
+- **segítségül** (29) — segítségül, segítségűl: 1Móz 4:26, 1Móz 12:8, 1Móz 13:4, 1Móz 21:33, 1Móz 26:25, 1Kir 18:24, 1Kir 18:25, 1Kir 18:26, 2Kir 5:11, Sof 3:9, Zak 13:9, Zsolt 116:4, Zsolt 116:13, Zsolt 116:17, Jóel 2:32, Róm 10:14, 1Kor 1:2, 2Tim 2:22, ApCsel 9:14, ApCsel 9:21, ApCsel 22:16, Zsolt 105:1, 1Krón 16:8, Jer 10:25, Zsolt 79:6, Ézs 64:6, ApCsel 2:21, Róm 10:13, Róm 10:12
+- **név** (25) — nevét, nevemet, nevedet, nevén: 1Móz 4:26, 1Móz 12:8, 1Móz 13:4, 1Móz 21:33, 1Móz 26:25, 1Kir 18:24, 1Kir 18:25, 1Kir 18:26, 2Kir 5:11, Sof 3:9, Zak 13:9, Zsolt 116:4, Zsolt 116:13, Zsolt 116:17, Jóel 2:32, Zsolt 105:1, 1Krón 16:8, Ézs 12:4, Jer 10:25, Zsolt 79:6, Ézs 64:6, 2Móz 33:19, 2Móz 34:5, ApCsel 2:21, Róm 10:13
+- **úr** (16) — Úrnak, Úr, Urat: 1Móz 4:26, 1Móz 12:8, 1Móz 13:4, 1Móz 21:33, 1Móz 26:25, 1Kir 18:24, 2Kir 5:11, Sof 3:9, Zsolt 116:4, Zsolt 116:13, Zsolt 116:17, Jóel 2:32, 2Móz 33:19, 2Móz 34:5, ApCsel 2:21, Róm 10:13
+- **ő** (4) — ő, Ő: 2Kir 5:11, Zsolt 105:1, 1Krón 16:8, Ézs 12:4
+- **isten** (3) — Istennek, Istenének, istenteknek: 1Móz 21:33, 1Kir 18:25, 2Kir 5:11
+- **kiált** (2) — kiáltom, kiáltá: 2Móz 33:19, 2Móz 34:5
+- **nem** (2) — nem: Jer 10:25, Zsolt 79:6
+- **ott** (2) — ott: 1Móz 13:4, 1Móz 21:33
+- **te** (2) — te: Jer 10:25, Zsolt 79:6
+- **baál** (1) — Baálnak: 1Kir 18:26
+- **előtt** (1) — előtted: 2Móz 33:19
+- **magasztalja** (1) — magasztaljátok: Ézs 12:4
+- **ti** (1) — ti: 1Kir 18:25
+- **van** (1) — volna: Ézs 64:6
+- **ábrám** (1) — Ábrám: 1Móz 13:4
+- **örökkévaló** (1) — örökkévaló: 1Móz 21:33
+
+*+SZPA (konkordáns alternatíva): jelölt hiány — a SzPA-join felfüggesztve; a hiány nincs kitöltve.*
+
+*(proveniencia: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, karoli_szo) | forras=adat/elofordulasok.tsv+adat/szoto/karoli_szotari_alak.tsv (eszkozok/szerep_karoli.py) | n=33 | ts=2026-10-29)*
 
 #### 14. Rejtett / hamis párhuzam
 
-<!-- ÜRES-BLOKK: Rejtett / hamis párhuzam | javaslat -->
-*(üres blokk: javaslat; a hiány nincs kitöltve gyenge vagy asszociatív anyaggal)*
+*Kulcsszavak gerinc-kombinációnként: G1941: „hív”, „segítségül”; H7121+H8034: „név”, „hív”, „segítségül” — az e kombinációjú motívumsorok Károli-szóalakjainak legalább felében álló szótári alak, a Károli–Strong párosításban csak idegen Strongra párosuló szavak nélkül. Csak megjelenítés: jelölt ezekből csak az `adat/jeloltek.tsv`-n át lesz.*
+
+**Rejtett párhuzam** (ugyanaz a Strong, más magyar szó): a motívum igehelyei, ahol a Károli a saját gerinc-kombinációjának valamely kulcsszavát nem használja — 4 hely.
+
+- 1Pét 1:17 — „hívjátok” (G1941; hiányzik: segítségül)
+- Ézs 12:4 — „magasztaljátok az Ő nevét” (H7121+H8034; hiányzik: hív, segítségül)
+- 2Móz 33:19 — „kiáltom előtted az Úr nevét” (H7121+H8034; hiányzik: hív, segítségül)
+- 2Móz 34:5 — „nevén kiáltá az Urat” (H7121+H8034; hiányzik: hív, segítségül)
+
+**Hamis párhuzam** (ugyanaz a magyar szó, más Strong): Károli-versek valamely kombináció minden kulcsszavával, a gerinc nélkül — 17 vers.
+
+<details>
+<summary>A 17 vers</summary>
+
+- 1Kir 8:52 — Hogy a te szemeid nézzenek a te szolgádnak imádságára és a te népednek az Izráelnek könyörgésére; meghallgatván őket mindenkor, mikor téged segítségül hívnak.
+- 1Krón 4:10 — És Jábes az Izráel Istenét hívá segítségül, mondván: Ha engem megáldanál és az én határomat megszélesítenéd, és a te kezed én velem lenne, és engem minden veszedelemtől megoltalmaznál, hogy bút ne lássak! És megadá Isten néki, a mit kért vala.
+- 1Krón 21:26 — És építe ott oltárt Dávid az Úrnak, és áldozék égő- és hálaáldozatokkal és segítségül hívá az Urat, a ki meghallgatá őt, mennyből tüzet bocsátván az égőáldozat oltárára.
+- Jób 9:16 — Ha segítségül hívnám és felelne is nékem, még sem hinném, hogy szavamat fülébe vevé;
+- Zsolt 14:4 — Nem tudják-é ezt mind a gonosztévők, a kik megeszik az én népemet, mintha kenyeret ennének, az Urat pedig segítségül nem hívják?
+- Zsolt 50:15 — És hívj segítségül engem a nyomorúság idején, én megszabadítlak téged és te dicsőítesz engem. · *jelölt: elutasítva*
+- Zsolt 53:5 — Avagy nincs értelem a hamisságnak cselekvőiben, a kik az én népemet megeszik, mintha kenyeret ennének, a kik az Istent segítségül nem hívják?
+- Zsolt 81:8 — A nyomorúságban segítségül hívtál és én megszabadítottalak téged; meghallgattalak téged a mennydörgésnek rejtekében; megpróbáltalak téged a versengések vizénél. Szela.
+- Zsolt 91:15 — Segítségül hív engem, ezért meghallgatom őt; vele vagyok háborúságában: megmentem és megdicsőítem őt. · *jelölt: elutasítva*
+- Zsolt 116:2 — Mert az ő fülét felém fordítja, azért segítségül hívom őt egész életemben.
+- Zsolt 118:5 — Szükségemben segítségül hívám az Urat, meghallgatott és tágas térre tett engem az Úr.
+- Zsolt 119:146 — Segítségül hívlak: tarts meg engem, és megőrzöm a te bizonyságaidat.
+- Péld 1:28 — Akkor segítségül hívnak engem, de nem hallgatom meg: keresnek engem, de meg nem találnak.
+- Ézs 43:22 — És még sem engem hívtál segítségül Jákób, hanem megfáradtál én bennem Izráel!
+- Ézs 55:6 — Keressétek az Urat, a míg megtalálható, hívjátok őt segítségül, a míg közel van.
+- Sir 3:8 — Sőt ha kiáltok és segítségül hívom is, nem hallja meg imádságomat.
+- Sir 3:57 — Közelegj hozzám, mikor segítségül hívlak téged; mondd: Ne félj!
+
+</details>
+
+*(proveniencia: scope=Károli teljes (G1941: „hív”, „segítségül”; H7121+H8034: „név”, „hív”, „segítségül”) | forras=Karoli_1908.tsv+TAHOT_kivonat.tsv+TAGNT_kivonat.tsv+adat/elofordulasok.tsv+adat/szoto/karoli_szotari_alak.tsv+adat/karoli_strong (eszkozok/szerep_karoli.py) | n=21 | ts=2026-10-29)*
 
 ### Rokon szavak
 
@@ -1703,11 +1757,13 @@ megnevezett/invokált fél áll szemben); a D inkább egy ötödik dimenzió
 - `adat/glosszak_heber_hu.tsv` (CC BY 4.0)
 - `adat/jeloltek.tsv` (minden jog fenntartva)
 - `adat/kapcsolatok.tsv` (minden jog fenntartva)
+- `adat/karoli_strong` (minden jog fenntartva)
 - `adat/lexikon_hivatkozasok.tsv` (CC BY 4.0, CC BY-SA 4.0, közkincs)
 - `adat/lxx_dontesek.tsv` (minden jog fenntartva)
 - `adat/motivumok.tsv` (minden jog fenntartva)
 - `adat/szotar_szakasz_cimke.tsv` (minden jog fenntartva)
 - `adat/szotar_szerepek.tsv` (minden jog fenntartva)
+- `adat/szoto/karoli_szotari_alak.tsv` (minden jog fenntartva)
 - `adat/thayer_szakaszok.tsv` (közkincs)
 - `adat/thayer_vers_jelentes.tsv` (közkincs)
 - `adat/tiltott_fordulatok.tsv` (minden jog fenntartva)
@@ -1716,12 +1772,13 @@ megnevezett/invokált fél áll szemben); a D inkább egy ötödik dimenzió
 - `konkordancia/Karoli_versmegfeleltetes.tsv` (minden jog fenntartva)
 - `konkordancia/LXX_versszintu_parok.tsv` (minden jog fenntartva)
 - `konkordancia/TAHOT_kivonat.tsv` (CC BY 4.0)
+- `konkordancia/TAGNT_kivonat.tsv` (CC BY 4.0)
 
 <!-- GENERÁLT-VÉGE: lexikon#ISTENTISZT-001#idezes -->
 
 ## Kolofon
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kolofon | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LSJ_teljes.tsv, konkordancia/LXX_OS/1-chronicles.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/2-kings.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv, konkordancia/LXX_OS/joel.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zechariah.tsv, konkordancia/LXX_OS/zephaniah.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-10-29 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kolofon | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/karoli_strong, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LSJ_teljes.tsv, konkordancia/LXX_OS/1-chronicles.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/2-kings.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv, konkordancia/LXX_OS/joel.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zechariah.tsv, konkordancia/LXX_OS/zephaniah.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-10-29 -->
 
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum törzsadatait (`motivumok.tsv`) és a lexikon-oldalon ténylegesen felhasznált forrásokat sorolja fel.*
 
@@ -1747,21 +1804,23 @@ megnevezett/invokált fél áll szemben); a D inkább egy ötödik dimenzió
 | `bdb_szakasz_hu.tsv` | `adat/bdb_szakasz_hu.tsv` | közkincs | szocikkek |
 | `bdb_szakaszok.tsv` | `adat/bdb_szakaszok.tsv` | közkincs | szocikkek |
 | `bdb_vers_jelentes.tsv` | `adat/bdb_vers_jelentes.tsv` | közkincs | elofordulasok, szocikkek |
-| `elofordulasok.tsv` | `adat/elofordulasok.tsv` | minden jog fenntartva | elofordulasok |
+| `elofordulasok.tsv` | `adat/elofordulasok.tsv` | minden jog fenntartva | elofordulasok, szocikkek |
 | `forditasok.tsv` | `adat/forditasok.tsv` | közkincs, minden jog fenntartva | elofordulasok, szocikkek |
 | `glosszak_heber_hu.tsv` | `adat/glosszak_heber_hu.tsv` | CC BY 4.0 | szocikkek |
-| `jeloltek.tsv` | `adat/jeloltek.tsv` | minden jog fenntartva | kizart |
+| `jeloltek.tsv` | `adat/jeloltek.tsv` | minden jog fenntartva | kizart, szocikkek |
 | `kapcsolatok.tsv` | `adat/kapcsolatok.tsv` | minden jog fenntartva | kapcsolatok |
+| `karoli_strong` | `adat/karoli_strong` | minden jog fenntartva | szocikkek |
 | `lexikon_hivatkozasok.tsv` | `adat/lexikon_hivatkozasok.tsv` | CC BY 4.0, CC BY-SA 4.0, közkincs | szocikkek |
 | `lxx_dontesek.tsv` | `adat/lxx_dontesek.tsv` | minden jog fenntartva | lxx |
 | `motivumok.tsv` | `adat/motivumok.tsv` | minden jog fenntartva | kizart |
 | `szotar_szakasz_cimke.tsv` | `adat/szotar_szakasz_cimke.tsv` | minden jog fenntartva | elofordulasok, szocikkek |
 | `szotar_szerepek.tsv` | `adat/szotar_szerepek.tsv` | minden jog fenntartva | szocikkek |
+| `karoli_szotari_alak.tsv` | `adat/szoto/karoli_szotari_alak.tsv` | minden jog fenntartva | szocikkek |
 | `thayer_szakaszok.tsv` | `adat/thayer_szakaszok.tsv` | közkincs | szocikkek |
 | `thayer_vers_jelentes.tsv` | `adat/thayer_vers_jelentes.tsv` | közkincs | elofordulasok, szocikkek |
 | `tiltott_fordulatok.tsv` | `adat/tiltott_fordulatok.tsv` | minden jog fenntartva | szocikkek |
 | `BDB_teljes_unabridged.tsv` | `konkordancia/BDB_teljes_unabridged.tsv` | közkincs | szocikkek |
-| `Karoli_1908.tsv` | `konkordancia/Karoli_1908.tsv` | közkincs | elofordulasok |
+| `Karoli_1908.tsv` | `konkordancia/Karoli_1908.tsv` | közkincs | elofordulasok, szocikkek |
 | `Karoli_kereszthivatkozasok.tsv` | `konkordancia/Karoli_kereszthivatkozasok.tsv` | közkincs | kereszthivatkozasok |
 | `Karoli_versmegfeleltetes.tsv` | `konkordancia/Karoli_versmegfeleltetes.tsv` | minden jog fenntartva | elofordulasok |
 | `LSJ_teljes.tsv` | `konkordancia/LSJ_teljes.tsv` | CC BY-SA 4.0 | szocikkek |
@@ -1783,7 +1842,8 @@ megnevezett/invokált fél áll szemben); a D inkább egy ötödik dimenzió
 | `SDGNT_domenek.tsv` | `konkordancia/SDGNT_domenek.tsv` | CC BY-SA 4.0 | szocikkek |
 | `SECE_G_teljes.tsv` | `konkordancia/SECE_G_teljes.tsv` | közkincs | szocikkek |
 | `SECE_H_teljes.tsv` | `konkordancia/SECE_H_teljes.tsv` | közkincs | szocikkek |
-| `TAHOT_kivonat.tsv` | `konkordancia/TAHOT_kivonat.tsv` | CC BY 4.0 | elofordulasok |
+| `TAGNT_kivonat.tsv` | `konkordancia/TAGNT_kivonat.tsv` | CC BY 4.0 | szocikkek |
+| `TAHOT_kivonat.tsv` | `konkordancia/TAHOT_kivonat.tsv` | CC BY 4.0 | elofordulasok, szocikkek |
 | `TBESG.txt` | `konkordancia/TBESG.txt` | CC BY 4.0 | szocikkek |
 | `TBESH.txt` | `konkordancia/TBESH.txt` | CC BY 4.0 | szocikkek |
 | `TSK_kereszthivatkozasok.tsv` | `konkordancia/TSK_kereszthivatkozasok.tsv` | CC BY 4.0 | kereszthivatkozasok |

@@ -38,6 +38,7 @@ import ubs_hozzarendeles as UBS
 import lxx_os_import as LXXOS
 import kiejtes as KJ
 import utvonalak as _U
+import szerep_karoli as SZK
 
 ROOT = G.ROOT
 ADAT = G.ADAT
@@ -1646,6 +1647,8 @@ def _szerep_blokk(nyelv, sor, tokenek_ny, reszek, ctx):
     elif not tart and (nyelv, n) in SZEREP_KEZI_2B:
         hiv = SZEREP_KEZI_2B[(nyelv, n)]
         szakasz.append('*Hivatkozás: %s.*' % hiv)
+    elif tart and ctx.get('gerinc') and (nyelv, n) in GERINC_TELJES:
+        szakasz.extend(tart)
     else:
         if tart:
             szakasz.extend(tart)
@@ -2531,7 +2534,30 @@ def _gerinc_ubs_mutato(nyelv, n, tokenek_ny, reszek, ctx):
             for t in tokenek_ny]
 
 
+def _gerinc_karoli(nyelv, n, tokenek_ny, reszek, ctx):
+    """A 13. (Károli-megfelelők) és a 14. (Rejtett / hamis párhuzam) nyelvfüggetlen szerep az arany lapon
+    (ISTENTISZT-001 arany lap, 2026-10-29): az általános építő az `eszkozok/szerep_karoli.py`-ban; itt csak a forrás- és
+    licencnyilvántartás."""
+    sorai = ctx.get('sorai') or []
+    out = (SZK.blokk_13 if n == 13 else SZK.blokk_14)(sorai, G.TS)
+    if out:
+        ctx['fl'].setdefault('adat/elofordulasok.tsv', set()).add('projekt_adat')
+        ctx['fl'].setdefault('adat/szoto/karoli_szotari_alak.tsv', set()).add('projekt_adat')
+        if n == 14:
+            ctx['fl'].setdefault('konkordancia/Karoli_1908.tsv', set()).add('Karoli_1908')
+            ctx['fl'].setdefault(TAHOT_KIVONAT_FAJL, set()).add('TAHOT')
+            ctx['fl'].setdefault('konkordancia/TAGNT_kivonat.tsv', set()).add('TAGNT')
+            ctx['fl'].setdefault('adat/karoli_strong', set()).add('projekt_adat')
+            ctx['fl'].setdefault('adat/jeloltek.tsv', set()).add('projekt_adat')
+    return out
+
+
+# a gerinc-építő tartalma a szerep teljes tartalma: a `javaslat` állapotú szerep alá nem kerül általános üres blokk
+GERINC_TELJES = frozenset({('gorog', 13), ('gorog', 14)})
+
 GERINC_SZEREP_EPITO = {
+    ('gorog', 13): _gerinc_karoli,
+    ('gorog', 14): _gerinc_karoli,
     ('gorog', 2): _gerinc_hivatkozas_gerincre,
     ('heber', 2): _gerinc_hivatkozas_gerincre,
     ('heber', 8): _gerinc_hivatkozas_gerincre,
