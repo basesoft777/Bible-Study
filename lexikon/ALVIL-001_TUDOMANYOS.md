@@ -638,7 +638,7 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 > the abode of Hades, the underivorld ; in NT, the abode of departed spirits, Hades : ἐν τ. ᾅ., Luk.16:23; εἰς ᾅ., Act.2:27,31 ; πύλαι ᾅδου, Mat.16:18; κλεῖς τοῦ ᾅ., Rev.1:18; metaphorically, ἕως ᾅ., Mat.11:23 , Luk.10:15 ; personified, Rev.6:8 20:13,14 (Cremer, 67, 610; MM, VGT , see word). † (AS)
 
-**🇭🇺** Hádész lakhelye, az alvilág; az Újszövetségben az elhunyt szellemek lakhelye, Hádész: ἐν τ. ᾅ., Luk 16:23; εἰς ᾅ., ApCsel 2:27, 31; πύλαι ᾅδου, Mt 16:18; κλεῖς τοῦ ᾅ., Jel 1:18; átvitt értelemben, ἕως ᾅ., Mt 11:23, Luk 10:15; megszemélyesítve, Jel 6:8; 20:13, 14 (Cremer, 67, 610; MM, VGT, l. a címszót). † (AS)
+**🇭🇺** Hádész lakhelye, az alvilág; az Újszövetségben az elhunyt szellemek lakhelye, Hádész: ἐν τ. ᾅ., Luk 16:23; εἰς ᾅ., ApCsel 2:27, 31; πύλαι ᾅδου, Mt 16:18; κλεῖς τοῦ ᾅ., Jel 1:18; átvitt értelemben, ἕως ᾅ., Mt 11:23, Luk 10:15; megszemélyesítve, Jel 6:8; 20:13, 14 (MM, VGT, l. a címszót). † (AS)
 
 *Forrás: konkordancia/TBESG.txt*
 
