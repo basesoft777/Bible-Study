@@ -48,20 +48,20 @@ A 93 `KEZI` azonossági sor (`kezi_identitas_javitas`; 4Móz 15, Jób 38, Préd 
 
 `naplok/F146_131_versek.py`. Proveniencia: `scope=12 vers (#131 DBH-mérés, brief 2.3) | forras=Karoli_versmegfeleltetes.tsv+TAHOT_kivonat.tsv+Macula_heber_*.tsv(ref)+UBS_DBH_referenciak.tsv | eszkoz=naplok/F146_131_versek.py | ts=2026-10-28T21:24Z`
 
-| Károli-vers | tábla | mért MT (J) | ítélet |
-|---|---|---|---|
-| Ézs 7:11 | KJV | 7:11 (0,91) | a tábla helyes; a DBH-hiány valódi (a versen 11 DBH-hivatkozás, a keresett szóra nincs) |
-| 1Móz 4:10 | KJV | 4:10 (1,00) | helyes; a hiány valódi (12 hiv. a versen) |
-| 1Krón 20:6 | KJV | 20:6 (0,87) | helyes; a hiány valódi (22) |
-| 1Krón 20:8 | KJV | 20:8 (0,78) | helyes; a hiány valódi (14) |
-| 1Móz 14:19 | KJV | 14:19 (1,00) | helyes; a hiány valódi (13) |
-| 1Móz 14:20 | KJV | 14:20 (0,91) | helyes; a hiány valódi (12) |
-| Jób 41:32 | KJV, üres MT | **41:24** (1,00) | **a tábla hibás** (Jób 41: KJV ≠ MT; a 2.2 felmérésben is); a mért versen 6 DBH-hiv. |
-| Préd 9:12 | KEZI, KJV 9:10, üres MT | **9:10** (1,00) | **az MT hiányzik** (Károli ≠ KJV = MT); 18 DBH-hiv. |
-| 4Móz 13:34 | KEZI, KJV 13:33, üres MT | **13:33** (0,83) | **az MT hiányzik**; 22 DBH-hiv. |
-| Jób 38:7 | KEZI, KJV 38:7, üres MT | 38:7 (1,00) | Károli = KJV = MT, a `KEZI` osztály miatt a render nem párosít; 10 DBH-hiv. |
-| Jób 38:16 | ugyanígy | 38:16 (1,00) | ugyanígy; 10 |
-| Jób 38:30 | ugyanígy | 38:30 (1,00) | ugyanígy; 5 |
+| Károli-vers | tábla | mért MT (J) | ítélet | proveniencia |
+|---|---|---|---|---|
+| Ézs 7:11 | KJV | 7:11 (0,91) | a tábla helyes; a DBH-hiány valódi (a versen 11 DBH-hivatkozás, a keresett szóra nincs) | `scope=vers:Ézs 7:11 \| forras=Karoli_versmegfeleltetes.tsv+TAHOT_kivonat.tsv+Macula_heber_*.tsv(ref)+UBS_DBH_referenciak.tsv \| eszkoz=naplok/F146_131_versek.py \| ts=2026-10-28T21:24Z` |
+| 1Móz 4:10 | KJV | 4:10 (1,00) | helyes; a hiány valódi (12 hiv. a versen) | `scope=vers:1Móz 4:10 \| forras=Karoli_versmegfeleltetes.tsv+TAHOT_kivonat.tsv+Macula_heber_*.tsv(ref)+UBS_DBH_referenciak.tsv \| eszkoz=naplok/F146_131_versek.py \| ts=2026-10-28T21:24Z` |
+| 1Krón 20:6 | KJV | 20:6 (0,87) | helyes; a hiány valódi (22) | `scope=vers:1Krón 20:6 \| forras=Karoli_versmegfeleltetes.tsv+TAHOT_kivonat.tsv+Macula_heber_*.tsv(ref)+UBS_DBH_referenciak.tsv \| eszkoz=naplok/F146_131_versek.py \| ts=2026-10-28T21:24Z` |
+| 1Krón 20:8 | KJV | 20:8 (0,78) | helyes; a hiány valódi (14) | `scope=vers:1Krón 20:8 \| forras=Karoli_versmegfeleltetes.tsv+TAHOT_kivonat.tsv+Macula_heber_*.tsv(ref)+UBS_DBH_referenciak.tsv \| eszkoz=naplok/F146_131_versek.py \| ts=2026-10-28T21:24Z` |
+| 1Móz 14:19 | KJV | 14:19 (1,00) | helyes; a hiány valódi (13) | `scope=vers:1Móz 14:19 \| forras=Karoli_versmegfeleltetes.tsv+TAHOT_kivonat.tsv+Macula_heber_*.tsv(ref)+UBS_DBH_referenciak.tsv \| eszkoz=naplok/F146_131_versek.py \| ts=2026-10-28T21:24Z` |
+| 1Móz 14:20 | KJV | 14:20 (0,91) | helyes; a hiány valódi (12) | `scope=vers:1Móz 14:20 \| forras=Karoli_versmegfeleltetes.tsv+TAHOT_kivonat.tsv+Macula_heber_*.tsv(ref)+UBS_DBH_referenciak.tsv \| eszkoz=naplok/F146_131_versek.py \| ts=2026-10-28T21:24Z` |
+| Jób 41:32 | KJV, üres MT | **41:24** (1,00) | **a tábla hibás** (Jób 41: KJV ≠ MT; a 2.2 felmérésben is); a mért versen 6 DBH-hiv. | `scope=vers:Jób 41:32 \| forras=Karoli_versmegfeleltetes.tsv+TAHOT_kivonat.tsv+Macula_heber_*.tsv(ref)+UBS_DBH_referenciak.tsv \| eszkoz=naplok/F146_131_versek.py \| ts=2026-10-28T21:24Z` |
+| Préd 9:12 | KEZI, KJV 9:10, üres MT | **9:10** (1,00) | **az MT hiányzik** (Károli ≠ KJV = MT); 18 DBH-hiv. | `scope=vers:Préd 9:12 \| forras=Karoli_versmegfeleltetes.tsv+TAHOT_kivonat.tsv+Macula_heber_*.tsv(ref)+UBS_DBH_referenciak.tsv \| eszkoz=naplok/F146_131_versek.py \| ts=2026-10-28T21:24Z` |
+| 4Móz 13:34 | KEZI, KJV 13:33, üres MT | **13:33** (0,83) | **az MT hiányzik**; 22 DBH-hiv. | `scope=vers:4Móz 13:34 \| forras=Karoli_versmegfeleltetes.tsv+TAHOT_kivonat.tsv+Macula_heber_*.tsv(ref)+UBS_DBH_referenciak.tsv \| eszkoz=naplok/F146_131_versek.py \| ts=2026-10-28T21:24Z` |
+| Jób 38:7 | KEZI, KJV 38:7, üres MT | 38:7 (1,00) | Károli = KJV = MT, a `KEZI` osztály miatt a render nem párosít; 10 DBH-hiv. | `scope=vers:Jób 38:7 \| forras=Karoli_versmegfeleltetes.tsv+TAHOT_kivonat.tsv+Macula_heber_*.tsv(ref)+UBS_DBH_referenciak.tsv \| eszkoz=naplok/F146_131_versek.py \| ts=2026-10-28T21:24Z` |
+| Jób 38:16 | ugyanígy | 38:16 (1,00) | ugyanígy; 10 | `scope=vers:Jób 38:16 \| forras=Karoli_versmegfeleltetes.tsv+TAHOT_kivonat.tsv+Macula_heber_*.tsv(ref)+UBS_DBH_referenciak.tsv \| eszkoz=naplok/F146_131_versek.py \| ts=2026-10-28T21:24Z` |
+| Jób 38:30 | ugyanígy | 38:30 (1,00) | ugyanígy; 5 | `scope=vers:Jób 38:30 \| forras=Karoli_versmegfeleltetes.tsv+TAHOT_kivonat.tsv+Macula_heber_*.tsv(ref)+UBS_DBH_referenciak.tsv \| eszkoz=naplok/F146_131_versek.py \| ts=2026-10-28T21:24Z` |
 
 Az „üres eredmény nem negatív lelet”: az első hat versnél a DBH-hivatkozás a versen van, csak a keresett szóra nincs; ez a DBH lefedettségének ténye, nem a szó hiánya.
 
@@ -77,6 +77,8 @@ Javaslat: **csak a Jóel 26 sora** (Károli 2:28–3:21 → MT 3:1–4:21, `KEZI
 - Fogyasztó: `lexikon_general.karoli_mt_vers('Jóel 2:32')` → `Jóel 3:5` (előtte `Jóel 2:32`); a `Jóel 2:27` változatlan.
 - DT209: az új sorok ugyanazt a `KEZI` + kitöltött `igehely_mt` kombinációt hordozzák, amelyen a `sqlite_epit` F117.5-őre már most is leáll (174 F117-sor). Új blokkolást nem okoznak; a `bsb_import` és a `sqlite_epit` javítása továbbra is az N-F117a hatóköre.
 - A többi eltérés: N-F146a (`NYITOTT_FELADATOK.md`).
+- További fogyasztó (ELLENOR_F146): az `eszkozok/f17/macula_kk.py` a kitöltött `igehely_mt`-t elsőbbséggel kezeli. A Macula-táblák következő újragenerálásakor a Jóel 2:28–3:21 sorainak `kk_mod`/`forras` értéke a mai `identitas`-ról `kk_mt`-re változhat. Ez a helyes irány: a Macula `karoli` oszlopa eddig a hibás azonosságot hordozta. Itt nem futtatom, mert a Macula-import nem tartozik e tétel hatókörébe.
+- Az F146-jegyzet szövege rögzítetten a Jóelről szól. Ha az N-F146a további `macula_mt_f146` sort hoz, a `versmegf_javitas.py` jegyzetszövegét általánosítani kell.
 
 ## 7. Az ISTENTISZT-001 lap újragenerálása (F146.3, DT-F146a)
 
