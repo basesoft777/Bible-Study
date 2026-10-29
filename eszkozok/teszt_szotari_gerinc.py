@@ -311,6 +311,8 @@ class DbhOszlop(unittest.TestCase):
     def test_1moz_4_26_tokenenkent(self):
         c = LG.dbh_jelentes_cella('1Móz 4:26', 'H7121+H8034')
         self.assertTrue(c.startswith('H7121: '))
+        self.assertIn('[ⓘ](/szo/H7121)', c)                               # F121 (DT-F121g): kód + glossza + ⓘ a szónézetre
+        self.assertNotIn('= action by which', c)
         self.assertIn(' · H8034: ', c)
         h7121 = c.split(' · H8034: ')[0]
         self.assertEqual(h7121.count('`0065620'), 2)
@@ -318,7 +320,8 @@ class DbhOszlop(unittest.TestCase):
             self.assertNotIn('= action by which', c)
 
     def test_nincs_hivatkozas_kimondva(self):
-        c = LG.dbh_jelentes_cella('Jóel 2:32', 'H7121+H8034')
+        # F121: a Jóel 2:32 a #146 óta (Károli↔MT versszámozás) hivatkozik; helyette az Ézs 7:11 (H7585), amelyre a DBH nem
+        c = LG.dbh_jelentes_cella('Ézs 7:11', 'H7585')
         self.assertIn('nincs DBH-hivatkozás', c)
         self.assertIn('keresett MT-vers', c)
 
