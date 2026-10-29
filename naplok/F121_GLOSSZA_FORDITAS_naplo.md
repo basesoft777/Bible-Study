@@ -45,7 +45,7 @@ A lista-eszköz további 6 hívást is lát, amelyeknek nincs forrásszövege a 
 
 **Miért tért el a 454-től.** A #131 (DT371) a tW-t, a TBESH-t, a Mounce-ot és a teljes UBS-szócikkeket levette a lapról (mutatóra cserélte); a 62 egységből (48 DBH, 2 DNTG, 1 TBESH, 1 Mounce, 10 tW) csak a most látható UBS-jelentés-oszlop és a doménsor maradt.
 
-**Eszköz és 13. szabály.** Új: `eszkozok/glossza_lexikon_forditas.py` (`lista`, `dbh_forras_idx` = a UBS_DBH forrásszöveg-feloldó; DT-F121c). Az `ellenoriz.py` 13. szabálya ezt a feloldót importálja (egy feloldó, nem két másolat): `UBS_DBH` + lexid + `—` + `definicio_hu`/`glosszak_hu` → `UBS_DBH_jelentesek.tsv` `definicio_rovid`/`glosszak` (strongonként az első sor). Teszt: `teszt_ellenoriz_13.py` `Szabaly13DBH` (helyes hash, elrontott hash, ismeretlen lexid). `ellenoriz.py`: SÉRTÉS 0.
+**Eszköz és 13. szabály.** Új: `eszkozok/glossza_lexikon_forditas.py` (`lista`, `dbh_forras_idx` = a UBS_DBH forrásszöveg-feloldó; DT388). Az `ellenoriz.py` 13. szabálya ezt a feloldót importálja (egy feloldó, nem két másolat): `UBS_DBH` + lexid + `—` + `definicio_hu`/`glosszak_hu` → `UBS_DBH_jelentesek.tsv` `definicio_rovid`/`glosszak` (strongonként az első sor). Teszt: `teszt_ellenoriz_13.py` `Szabaly13DBH` (helyes hash, elrontott hash, ismeretlen lexid). `ellenoriz.py`: SÉRTÉS 0.
 
 ## 3. ⛔ Megállás — jóváhagyásra váró pontok (2026-10-28)
 
@@ -77,7 +77,7 @@ A „call” szó önmagában többjelentésű, ezért erre nincs kapus sor; a n
 
 ## 4. F121.2 — rögzítés és repón kívüli próbarender (2026-10-28)
 
-*A jóváhagyás: DT234 (D1 1. opció) és DT-F121d (v4 első 4 sor + két nyelvi javítás), felhasználó, 2026-10-28, „Igen, jóváhagyom” (`DONTESEK.md`).*
+*A jóváhagyás: DT234 (D1 1. opció) és DT389 (v4 első 4 sor + két nyelvi javítás), felhasználó, 2026-10-28, „Igen, jóváhagyom” (`DONTESEK.md`).*
 
 - `adat/terminologia.tsv`: +4 `v4` sor (`deity` kapu=igen; a többi kapu=nem).
 - `adat/forditasok.tsv`: +6 sor (`UBS_DBH` ×5 `definicio_hu`, `UBS_DNTG` G1941 56.15 `glosszak_hu`), `allapot=sonnet`, `modell=claude-sonnet-5-5`, `terminologia_verzio=v4`, `forras_hash` a `lista`-ból. Írás előtt-után bájt-összevetés: a meglévő 14 672 sor bájtra azonos, csak 6 sor került a végére.
@@ -93,11 +93,11 @@ A „call” szó önmagában többjelentésű, ezért erre nincs kapus sor; a n
 
 *Felhasználó, 2026-10-28 (az orkesztrátor chatjében, szó szerint idézve): „Mehet: a próbalapot elfogadom. Előbb a generátorban (és a teszt/forrás-kommentekben) a DT-F131k/c/l helyőrzőket cseréld a végleges DT381/DT373/DT382-re (az ir bővítésével, mechanikus), utána az élő lap felülírása, nulladiff, CI, független ellenőr és draft PR.”*
 
-A megfeleltetés a `szamkiosztas: … ` commit (f3f9372b) üzenetéből és a `DONTESEK.md` sorokból: a→371, b→372, c→373, d→374, e→375, **h→376, f→377**, g→378, i→379, j→380, k→381, l→382, m→383, n→384, o→385; DT-F141a→370 (a h/f sorrend nem betűrendes). Csere: csak az `eszkozok/` fájljaiban, szóhatáros regexszel. Cserélt helyőrzők (előfordulás): DT-F131a ×8, b ×3, c ×4, d ×4, i ×3, j ×4, k ×11, l ×11, m ×4, n ×1, DT-F141a ×2 — 13 fájlban (a lista a brief `ir` mezőjében). A `naplok/`, brief és más dokumentumokban maradt helyőrzők nem e menet hatóköre.
+A megfeleltetés a `szamkiosztas: … ` commit (f3f9372b) üzenetéből és a `DONTESEK.md` sorokból: a→371, b→372, c→373, d→374, e→375, **h→376, f→377**, g→378, i→379, j→380, k→381, l→382, m→383, n→384, o→385; DT386→370 (a h/f sorrend nem betűrendes). Csere: csak az `eszkozok/` fájljaiban, szóhatáros regexszel. Cserélt helyőrzők (előfordulás): DT-F131a ×8, b ×3, c ×4, d ×4, i ×3, j ×4, k ×11, l ×11, m ×4, n ×1, DT386 ×2 — 13 fájlban (a lista a brief `ir` mezőjében). A `naplok/`, brief és más dokumentumokban maradt helyőrzők nem e menet hatóköre.
 
 Tesztek: `teszt_forditas_kapuk` 110 OK, `teszt_szerepmatrix` 44 OK, `teszt_szotari_gerinc` 39 OK. Két teszt a csere előtt is bukik ezen az ágon (a cserétől független, a stash-sel mérve): `bdb_jelolt/teszt_bont.py` 4 hiba, `olvaso_szerver/teszt_bdb_vers_jelentes.py` `test_bajtra_azonos` — a bemeneti fájlok hash-e tér el (Windows-checkout sorvége), nem a `forditasok.tsv`.
 
-## 6. F121.6 — a 4 hűségi pont javítása (DT-F121f, 2026-10-28)
+## 6. F121.6 — a 4 hűségi pont javítása (DT391, 2026-10-28)
 
 *Felhasználó, 2026-10-28 (az orkesztrátor chatjében): „Igen, mindkettő” — a mankók a 6 sorra elengedve; a 4 hűségi pont javítandó.* A 3 érintett sor `forditas_hu` mezője változott, a `forras_hash` nem (a forrás ugyanaz); a kapuk újra mind ÁTMENT.
 
