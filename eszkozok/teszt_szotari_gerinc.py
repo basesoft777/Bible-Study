@@ -152,6 +152,17 @@ class Megjelenites(unittest.TestCase):
         self.assertEqual(LG.szakasz_jel("Niph'al/2/c"), "Niph'al 2.c")
         self.assertEqual(LG.szakasz_jel('2'), '2')
 
+    def test_szakasz_szoveg(self):
+        # a prózai ⓘ névelője és sorszámnév-pontja (a „a(z) 4 szakaszban” helyett)
+        self.assertEqual(LG.szakasz_szoveg('4'), 'a 4.')
+        self.assertEqual(LG.szakasz_szoveg('1'), 'az 1.')
+        self.assertEqual(LG.szakasz_szoveg('5'), 'az 5.')
+        self.assertEqual(LG.szakasz_szoveg('Qal 2.c'), 'a Qal 2.c')
+        self.assertEqual(LG.szakasz_szoveg("Hiph'il 1"), "a Hiph'il 1")
+        self.assertEqual(LG.szakasz_szoveg('Ithpa'), 'az Ithpa')
+        self.assertEqual(LG.szakasz_szoveg(['3', '4']), 'a 3., 4.')
+        self.assertEqual(LG.szakasz_szoveg('3', nevelo=False), '3.')
+
     def test_utvonal_vag_es_ala_esik(self):
         self.assertEqual(LG.gerinc_utvonal_vag('-/3/-'), '-/3')
         self.assertTrue(LG.gerinc_ala_esik('-/3', '-/3/-'))
@@ -359,7 +370,7 @@ class ValodiAdat(unittest.TestCase):
         cella, ik = LG.jelentes_cella(LG.gerinc_adat(), s)
         self.assertIn('H8034: *(nincs hozzárendelés)*', cella)
         self.assertNotIn('nincs kutatói hozzárendelés és szótári példahely', ik)
-        self.assertEqual(ik.count('„1Kin 18:24-25” verstartomány belsejében'), 2)
+        self.assertEqual(ik.count('az 1Kir 18:24–25 verstartomány belsejében (a BDB-ben: „1Kin 18:24-25”'), 2)
         self.assertIn('sorszam 99)', ik)
         self.assertIn('sorszam 208)', ik)
         self.assertNotIn('sorszam 97)', ik)
@@ -372,7 +383,7 @@ class ValodiAdat(unittest.TestCase):
         cella, ik = LG.jelentes_cella(LG.gerinc_adat(), s)
         self.assertIn('H8034: *(nincs hozzárendelés)*', cella)
         self.assertNotIn('hamis istenekről', cella)
-        self.assertIn('H8034 — a BDB a verset a(z) 4 szakaszban idézi', ik)
+        self.assertIn('H8034 — a BDB a verset a 4. szakaszban idézi', ik)
         self.assertIn('kétszer áll', ik)
 
     def test_tobb_token_szabaly_merete(self):
@@ -414,7 +425,7 @@ class ValodiAdat(unittest.TestCase):
             t = napl['tartomanyban'][0]
             self.assertTrue(t.startswith('1Kir 18:25: '), t)
             self.assertIn(t[len('1Kir 18:25: '):], sor_i, strong)
-            self.assertIn('„1Kin 18:24-25” verstartomány belsejében', '\n'.join(bek))
+            self.assertIn('az 1Kir 18:24–25 verstartomány belsejében (a BDB-ben: „1Kin 18:24-25”', '\n'.join(bek))
 
     def test_horgonnyal_osszecsukva_az_eles_lapon(self):
         # ELLENOR_SZOTARI_GERINC 4. (7.2a): a H8034 `-/5/-` szakasza `horgonnyal` határú és összecsukva áll; a jelölés

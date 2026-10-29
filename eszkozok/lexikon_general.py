@@ -1828,6 +1828,28 @@ def szakasz_jel(utvonal):
     return ('%s %s' % (felso, szam)) if szam else felso
 
 
+_MAGANHANGZO = 'aáeéiíoóöőuúüű'
+
+
+def _nevelo(szo):
+    """A határozott névelő (`a`/`az`) a kiejtés szerint; számnál a kiolvasott alak
+    (az 1., az 5., az 50.; a 3., a 4.)."""
+    szam = re.match(r'\d+', szo)
+    if szam:
+        n = int(szam.group(0))
+        return 'az' if n == 1 or str(n)[0] == '5' or 1000 <= n < 2000 else 'a'
+    return 'az' if szo[:1].lower() in _MAGANHANGZO else 'a'
+
+
+def szakasz_szoveg(jelek, nevelo=True):
+    """Tagolási jel(ek) prózába, névelővel: `4` → `a 4.`, `Qal 2.c` → `a Qal 2.c`,
+    `['3', '4']` → `a 3., 4.`; a puszta szám sorszámnév-pontot kap; `nevelo=False`: névelő nélkül."""
+    if isinstance(jelek, str):
+        jelek = [jelek]
+    jelek = [j + '.' if j.isdigit() else j for j in jelek]
+    return ('%s %s' % (_nevelo(jelek[0]), ', '.join(jelek))) if nevelo else ', '.join(jelek)
+
+
 def gerinc_ala_esik(finom, durva):
     """Igaz, ha a `finom` útvonal a `durva` alá esik (vagy azonos vele), a záró `/-` levágása után."""
     f, d = gerinc_utvonal_vag(finom), gerinc_utvonal_vag(durva)
@@ -1944,10 +1966,15 @@ def bdb_tartomanyban(adat, strong, vers):
         for r, e in zip(sorok, elofordulas):
             t = re.match(r'\s*[-–]\s*(\d+)(?![\d:])', szoveg[e.end():])
             if t and int(_VERS_RE.match(r['karoli_vers']).group(3)) < v <= int(t.group(1)):
-                ki.append('a BDB a helyet nem önállóan idézi, hanem a(z) %s szakaszban a „%s%s” verstartomány '
-                          'belsejében (`%s` sorszam %s); a tartomány nincs kibontva (DT382 (A)), ezért a hely '
-                          'nem BDB-példa' % (szakasz_jel(r['utvonal']), nyers, t.group(0).strip(),
-                                             BDB_VERS_JELENTES_FAJL, r['sorszam']))
+                # a tartomány magyar alakja a kezdővers Károli-alakjából és az MT→Károli eltolásból;
+                # a BDB angol rövidítése („1Kin”) zárójelben, forrásidézetként marad
+                kezd, mt = _VERS_RE.match(r['karoli_vers']), _VERS_RE.match(r['mt_vers'] or r['karoli_vers'])
+                veg = int(t.group(1)) + int(kezd.group(3)) - int(mt.group(3))
+                ki.append('a BDB a helyet nem önállóan idézi, hanem %s szakaszban %s %s–%d verstartomány '
+                          'belsejében (a BDB-ben: „%s%s”; `%s` sorszam %s); a tartomány nincs kibontva (DT382 (A)), '
+                          'ezért a hely nem BDB-példa'
+                          % (szakasz_szoveg(szakasz_jel(r['utvonal'])), _nevelo(r['karoli_vers']), r['karoli_vers'], veg, nyers,
+                             t.group(0).strip(), BDB_VERS_JELENTES_FAJL, r['sorszam']))
     return ki
 
 
@@ -1974,9 +2001,9 @@ def jelentes_cimke_token(adat, szotar, strong, jelentes_szam, vers, kutatoi_toke
     if peldak and n_token >= 2:
         # ELLENOR_SZOTARI_GERINC 1. (7.4a): a BDB-példa versszintű (a 2.29 nem jelöli a szót); ha a versben a
         # Strongnak több tokenje van, a példa nem rendelhető a sor tokenjéhez — a címke nem a BDB-példából jön
-        tobb_token.append('a BDB a verset a(z) %s szakaszban idézi (`%s` sorszam %s), de a versben a szó %s áll '
+        tobb_token.append('a BDB a verset %s szakaszban idézi (`%s` sorszam %s), de a versben a szó %s áll '
                           '(`%s`), és a szótár nem jelöli, melyikre gondol; a BDB-példa ezért nem kerül erre a '
-                          'tokenre' % (', '.join(sorted({szakasz_jel(_bdb_sor_utvonal(adat, strong,
+                          'tokenre' % (szakasz_szoveg(sorted({szakasz_jel(_bdb_sor_utvonal(adat, strong,
                                                                                        gerinc_utvonal_vag(r['utvonal']))
                                                                       or r['utvonal']) for r in peldak})),
                                        BDB_VERS_JELENTES_FAJL, ', '.join(r['sorszam'] for r in peldak),
@@ -1997,18 +2024,18 @@ def jelentes_cimke_token(adat, szotar, strong, jelentes_szam, vers, kutatoi_toke
                           % (r['nyers'], r['karoli_vers'], BDB_FORRAS_JAVITAS_FAJL))
         if kut_ut is None:
             valasztott = p_ut
-            ip.append('BDB-példa: a BDB a(z) %s szakaszban maga idézi a helyet (`%s` sorszam %s)'
-                      % (szakasz_jel(p_ut), BDB_VERS_JELENTES_FAJL, sorszamok))
+            ip.append('BDB-példa: a BDB %s szakaszban maga idézi a helyet (`%s` sorszam %s)'
+                      % (szakasz_szoveg(szakasz_jel(p_ut)), BDB_VERS_JELENTES_FAJL, sorszamok))
         elif gerinc_ala_esik(p_ut, kut_ut):
             valasztott = p_ut
-            ip.append('BDB-példa: a BDB a(z) %s szakaszban maga idézi a helyet (`%s` sorszam %s); ez a kutatói '
+            ip.append('BDB-példa: a BDB %s szakaszban maga idézi a helyet (`%s` sorszam %s); ez a kutatói '
                       'hozzárendelés (%s → %s) alá esik, a címke a finomabb útvonalé'
-                      % (szakasz_jel(p_ut), BDB_VERS_JELENTES_FAJL, sorszamok, kulcs, szakasz_jel(kut_ut)))
+                      % (szakasz_szoveg(szakasz_jel(p_ut)), BDB_VERS_JELENTES_FAJL, sorszamok, kulcs, szakasz_jel(kut_ut)))
         elif gerinc_ala_esik(kut_ut, p_ut):
             valasztott = kut_ut
             ip.append('kutatói hozzárendelés a BDB tagolása szerint (%s → %s, `%s`); a BDB a helyet a tágabb '
                       '%s szakaszban idézi (`%s` sorszam %s)'
-                      % (kulcs, szakasz_jel(kut_ut), SZAKASZ_CIMKE_FAJL, szakasz_jel(p_ut), BDB_VERS_JELENTES_FAJL,
+                      % (kulcs, szakasz_jel(kut_ut), SZAKASZ_CIMKE_FAJL, szakasz_szoveg(szakasz_jel(p_ut), nevelo=False), BDB_VERS_JELENTES_FAJL,
                          sorszamok))
         else:
             raise GerincHiba('%s %s: a BDB-példa (%s) és a kutatói hozzárendelés (%s → %s) egyike sem esik a '
