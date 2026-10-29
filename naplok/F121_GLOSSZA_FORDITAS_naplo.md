@@ -119,3 +119,13 @@ Tesztek: `teszt_forditas_kapuk` 110 OK, `teszt_szerepmatrix` 44 OK, `teszt_szota
 - Ez egy új blokk + egy lekérdezés + teszt, nem nagy átalakítás; a szerver tesztjei csak `eszkozok/teszt_futtat.py`-val futnak.
 
 **⛔ A tervezet jóváhagyásra vár** (a `naplok/F121_ubs_csomag_tervezet.tsv` 44 sora); rögzítés, lap- és szerver-módosítás ezután.
+
+## 8. F121.8 — rögzítés, lap, szónézet (2026-10-29)
+
+*Jóváhagyás: DT-F121h (idézet a `DONTESEK.md`-ben).*
+
+- **Rögzítés** (`naplok/F121_ubs_csomag_rogzit.py`): +44 sor az `adat/forditasok.tsv`-ben (`UBS_DBH` 43, `UBS_DNTG` G1941 56.15 `definicio_hu` 1), `allapot=sonnet`, `modell=claude-sonnet-5-5`, `terminologia_verzio=v4`, `forras_hash` a forrásszövegből. Írás előtt-után: a meglévő sorok bájtra azonosak, kivéve a G1941 33.131 `definicio_hu` sorát (1 törölt + 1 beszúrt sor a diffben, a 44 új sor a végén). 43 sor átment a kapukon; **1 bukott**: `UBS_DBH H7121 006562002003000 glosszak_hu` „(valakire) hozni (eseményt)” a `4_formazas` kapun („több nyitó zárójel a fordításban (2), mint a forrásban (1)”) — kézi ítélet: a felhasználó a szöveget kifejezetten jóváhagyta (`naplok/F121_GLOSSZA_FORDITAS_bukottak.tsv`).
+- **A G1941 33.131 `definicio_hu`.** Forrás: „to use an attribution in speaking of a person”. Régi (`kezi`, 2026.09.22): „valakiről szólva megjelölést (címet, jelzőt) alkalmazni”. Új (`sonnet`): „valakiről szólva megnevezést alkalmazni” (a kapukon átment; a régi szöveg a `megjegyzes` mezőben is áll).
+- **A lap.** Az „UBS-jelentés” oszlop mindkét nyelven a kódot és a rövid glosszát adja, mellette ⓘ a szónézetre (`ubs_glossza_cella`, `eszkozok/lexikon_general.py`); a lábjegyzet szövege ennek megfelelően. A „2. Szótári háttér” mutatói változatlanok. A `(fordításra vár)` a lapon 1 maradt (a magyarázó lábjegyzet).
+- **A szónézet.** Új `szo.ubs_dbh` blokk (`szo_h`; `q.ubs_dbh_szo`): a Strong összes DBH-jelentése, magyar glossza és definíció a `forditasok`-ból, az angol mellette, hiány kimondva. A `szo.magyar_gorog` a `mezo`-t is visszaadja, így a UBS DNTG glossza és definíció külön címet kap. Teszt: `eszkozok/olvaso_szerver/teszt_ubs_dbh.py` (hermetikus, 6 teszt), a jelleg-teszt (`teszt_olvaso_szerver.py`), a próba-konfig (`hozzaferes_proba.toml`) és a `teszt_szintek.py` `HEBER_ZART` bővítve.
+- **Régi tesztek igazítása.** `teszt_szotari_gerinc.py`: a Jóel 2:32 a #146 óta hivatkozik a DBH-ban (MT Jóel 3:5), ezért a „nincs hivatkozás” teszt az Ézs 7:11-re (H7585) állt át; `teszt_szerepmatrix.py`: az 5. szerep a H7121/H8034 minden jelentésére már magyar, a „fordításra vár” elvárás helyett az annak hiánya áll.
