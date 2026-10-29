@@ -239,7 +239,9 @@ def strong_illeszt(sorok, hu):
     return eredmeny, szigoru, horgonyos
 
 
-def general(ts):
+def general(ts, csak=None):
+    """A tábla sorai a mai bemenetből; `csak` (Strong-halmaz) megadásakor csak ezeké — ugyanaz a kód, ugyanaz a kimenet,
+    mint a teljes generálás e Strongokra eső sorai (a Strongonkénti illesztés független)."""
     tab = collections.OrderedDict()
     with open(TABLA, encoding='utf-8', newline='') as f:
         s = f.read().split('\n')
@@ -252,6 +254,8 @@ def general(ts):
     ki, stat, sor_stat = [], collections.Counter(), collections.Counter()
     nincs = []
     for st in sorted(ford):
+        if csak is not None and st not in csak:
+            continue
         if st not in tab:
             nincs.append(st)
             continue
@@ -290,18 +294,65 @@ def fajl_szoveg(sorok, ts):
     return '\n'.join(fej + ['\t'.join(s) for s in sorok]) + '\n'
 
 
+RESZLEGES = ' Részleges frissítés:'
+
+
+def reszleges_szoveg(regi, uj_sorok, csak, ts):
+    """A meglévő tábla szövege, amelyben csak a `csak` Strongjainak sorai cserélődnek a friss generálásra (ISTENTISZT-001
+    arany lap, 2026-10-29: a H8034 a teljes frissítés előtt). A többi sor bájtra változatlan; a csere Strongjainak
+    sorkulcsa (strong + sorszam) azonos kell legyen. Az első fejlécsor a `--ts`-t megtartja, és jelöli a részleges
+    frissítést (a bemenetek hash-ével); a `# forras` sor a teljes generálásé marad."""
+    if '\r' in regi:
+        raise ValueError('a tábla CRLF-es: a részleges csere csak az LF-es (eol=lf) táblán bájthű')
+    s = regi.split('\n')
+    if not (s[0].startswith('# GENERÁLT:') and s[1].startswith('# forras:') and s[-1] == ''):
+        raise ValueError('a tábla fejléce vagy vége nem a várt')
+    uj = collections.OrderedDict()
+    for r in uj_sorok:
+        uj.setdefault(r[0], []).append('\t'.join(r))
+    hiany = sorted(set(csak) - set(uj))
+    if hiany:
+        raise ValueError('a friss generálásban nincs: %s' % hiany)
+    test = list(s[3:-1])
+    for st, ujak in uj.items():
+        idx = [i for i, x in enumerate(test) if x.split('\t', 1)[0] == st]
+        if [test[i].split('\t')[1] for i in idx] != [x.split('\t')[1] for x in ujak] or idx != list(range(idx[0], idx[-1] + 1)):
+            raise ValueError('%s: a sorkulcsok nem egyeznek a táblával' % st)
+        test[idx[0]:idx[-1] + 1] = ujak
+    elso = s[0].split(RESZLEGES)[0]
+    jel = ('%s %s (--strong, ts=%s; adat/forditasok.tsv@%s, kód@%s); a többi sor a --ts szerinti generálásé.'
+           % (RESZLEGES, ', '.join(sorted(csak)), ts, sha256_fajl(FORD)[:12], kod_hash()[:12]))
+    return '\n'.join([elso + jel, s[1], s[2]] + test + [''])
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--ts', default=datetime.date.today().isoformat())
     ap.add_argument('--meres', action='store_true')
     ap.add_argument('--ellenoriz', action='store_true')
+    ap.add_argument('--strong', default='', help='részleges frissítés: csak ezek a Strongok (vesszővel), a többi sor marad')
     a = ap.parse_args()
-    sorok, stat, sor_stat, nincs, n = general(a.ts)
+    csak = set(x.strip() for x in a.strong.split(',') if x.strip()) or None
+    sorok, stat, sor_stat, nincs, n = general(a.ts, csak)
     print('Strong (fordítással): %d; a táblában nincs: %d %s' % (n, len(nincs), nincs))
     print('Strong-szint, szigorú (_illeszt, mint a kiinduló 355/89/230): %s' % {k[1]: v for k, v in stat.items() if k[0] == 'szigoru'})
     print('Strong-szint, horgonnyal: %s' % {k[1]: v for k, v in stat.items() if k[0] == 'horgonyos'})
     print('sor: %d; %s' % (len(sorok), dict(sor_stat)))
     if a.meres:
+        return 0
+    if csak:
+        with open(KI_UT, encoding='utf-8', newline='') as f:
+            regi = f.read()
+        if a.ellenoriz:
+            tabla = [x for x in regi.split('\n')[3:] if x.split('\t', 1)[0] in csak]
+            if tabla != ['\t'.join(r) for r in sorok]:
+                print('ELTÉR (%s): %s' % (', '.join(sorted(csak)), KI_UT))
+                return 1
+            print('azonos (%s): %s' % (', '.join(sorted(csak)), KI_UT))
+            return 0
+        with open(KI_UT, 'w', encoding='utf-8', newline='\n') as f:
+            f.write(reszleges_szoveg(regi, sorok, csak, a.ts))
+        print('részlegesen írva (%s): %s' % (', '.join(sorted(csak)), KI_UT))
         return 0
     szoveg = fajl_szoveg(sorok, a.ts)
     if a.ellenoriz:

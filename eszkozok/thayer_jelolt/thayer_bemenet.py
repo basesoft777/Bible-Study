@@ -72,8 +72,10 @@ def tabla_olvas(ut=None):
     """-> OrderedDict: Strong_padded -> [sor-dict] (a tábla sorrendjében)."""
     ut = os.path.abspath(ut or TABLA)
     if ut not in _CACHE:
+        # a '\r' levágva: a CRLF-es checkout (Windows, autocrlf) és a CRLF-es bemenet ugyanazt adja, mint az LF-es
+        # (különben a fejléc utolsó oszlopa 'illesztes\r' — E19, test_szabalyok; a hu_illeszt.py mintájára)
         with open(ut, encoding='utf-8', newline='') as f:
-            sorok = [s for s in f.read().split('\n') if s and not s.startswith('#')]
+            sorok = [s for s in (x.rstrip('\r') for x in f.read().split('\n')) if s and not s.startswith('#')]
         fej = sorok[0].split('\t')
         d = collections.OrderedDict()
         for s in sorok[1:]:
@@ -91,7 +93,7 @@ def javitas_olvas(ut=None):
         d = {}
         if os.path.exists(ut):
             with open(ut, encoding='utf-8', newline='') as f:
-                sorok = [s for s in f.read().split('\n') if s and not s.startswith('#')]
+                sorok = [s for s in (x.rstrip('\r') for x in f.read().split('\n')) if s and not s.startswith('#')]
             fej = sorok[0].split('\t')
             for s in sorok[1:]:
                 r = dict(zip(fej, s.split('\t')))
