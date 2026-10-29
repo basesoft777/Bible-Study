@@ -2550,11 +2550,18 @@ def _gerinc_ubs_mutato(nyelv, n, tokenek_ny, reszek, ctx):
             for t in tokenek_ny]
 
 
+# A 13–14. szerep (Károli-megfelelők, Rejtett / hamis párhuzam) a motívumonként jóváhagyott lapokon épül (a gerinc-lista
+# mintájára): a többi gerinc-lapon a `javaslat` üres blokk marad, amíg a motívumra nincs döntés (DONTESEK, B5).
+SZEREP_KAROLI_MOTIVUMOK = frozenset({'ISTENTISZT-001'})
+
+
 def _gerinc_karoli(nyelv, n, tokenek_ny, reszek, ctx):
     """A 13. (Károli-megfelelők) és a 14. (Rejtett / hamis párhuzam) nyelvfüggetlen szerep az arany lapon
-    (ISTENTISZT-001 arany lap, 2026-10-29): az általános építő az `eszkozok/szerep_karoli.py`-ban; itt csak a forrás- és
-    licencnyilvántartás."""
+    (ISTENTISZT-001 arany lap, 2026-10-29): az általános építő az `eszkozok/szerep_karoli.py`-ban; itt csak a motívum
+    engedélyezése (`SZEREP_KAROLI_MOTIVUMOK`) és a forrás- és licencnyilvántartás."""
     sorai = ctx.get('sorai') or []
+    if not sorai or sorai[0].get('id') not in SZEREP_KAROLI_MOTIVUMOK:
+        return []
     out = (SZK.blokk_13 if n == 13 else SZK.blokk_14)(sorai, G.TS)
     if out:
         ctx['fl'].setdefault('adat/elofordulasok.tsv', set()).add('projekt_adat')
@@ -2570,8 +2577,13 @@ def _gerinc_karoli(nyelv, n, tokenek_ny, reszek, ctx):
 
 def _gerinc_nave(nyelv, n, tokenek_ny, reszek, ctx):
     """A 12. nyelvfüggetlen szerep (Tematikus index, Nave) az arany lapon (ISTENTISZT-001 arany lap, 2026-10-29): az
-    általános jelöltképzés és választás az `eszkozok/szerep_nave.py`-ban; itt csak a forrás- és licencnyilvántartás."""
-    out = SZN.blokk_12(ctx.get('sorai') or [], G.TS)
+    általános jelöltképzés és választás az `eszkozok/szerep_nave.py`-ban; itt csak a forrás- és licencnyilvántartás. A
+    blokk csak akkor épül, ha a motívumnak van döntése az `adat/tematikus_temak.tsv`-ben (a halmaz a felhasználóé, B5);
+    különben a `javaslat` üres blokk marad."""
+    sorai = ctx.get('sorai') or []
+    if not sorai or not SZN.tema_dontesek(sorai[0].get('id')):
+        return []
+    out = SZN.blokk_12(sorai, G.TS)
     if out:
         ctx['fl'].setdefault('konkordancia/Nave_basokant.tsv', set()).add('Nave_basokant')
         ctx['fl'].setdefault('adat/elofordulasok.tsv', set()).add('projekt_adat')

@@ -1191,8 +1191,8 @@ A motívumhoz nincs rögzített kapcsolat.
 
 | Kapcsolódó motívum | Itt | Ott | Típus | Funkció | Bizonyosság | PaRDeS-szint | Indoklás |
 |---|---|---|---|---|---|---|---|
-| [ISTENTISZT-001](ISTENTISZT-001_TUDOMANYOS.md) | ApCsel 2:27 | ApCsel 2:21 | szomszédos | a hívás ígéretének (2:21) alapja, hogy a Messiás nem marad a Seólban | közepes | Remez | Mért: azonos fejezet (ApCsel 2), 6 vers távolság; mindkét vers előfordulás a saját motívumában. A közös fejezet önmagában nem bizonyít szándékos utalást. Döntés: DT280 (felhasználó, 2026-10-20). |
-| [ISTENTISZT-001](ISTENTISZT-001_TUDOMANYOS.md) | ApCsel 2:31 | ApCsel 2:21 | szomszédos | a hívás ígéretének (2:21) alapja, hogy a Messiás nem marad a Seólban | közepes | Remez | Mért: azonos fejezet (ApCsel 2), 10 vers távolság; mindkét vers előfordulás a saját motívumában. A közös fejezet önmagában nem bizonyít szándékos utalást. Döntés: DT280 (felhasználó, 2026-10-20). |
+| [ISTENTISZT-001](ISTENTISZT-001_TUDOMANYOS.md) | ApCsel 2:27 | ApCsel 2:21 | szomszédos | a hívás ígéretének (2:21) alapja, hogy a Messiás nem marad a Seolban | közepes | Remez | Mért: azonos fejezet (ApCsel 2), 6 vers távolság; mindkét vers előfordulás a saját motívumában. A közös fejezet önmagában nem bizonyít szándékos utalást. Döntés: DT280 (felhasználó, 2026-10-20). |
+| [ISTENTISZT-001](ISTENTISZT-001_TUDOMANYOS.md) | ApCsel 2:31 | ApCsel 2:21 | szomszédos | a hívás ígéretének (2:21) alapja, hogy a Messiás nem marad a Seolban | közepes | Remez | Mért: azonos fejezet (ApCsel 2), 10 vers távolság; mindkét vers előfordulás a saját motívumában. A közös fejezet önmagában nem bizonyít szándékos utalást. Döntés: DT280 (felhasználó, 2026-10-20). |
 
 *Döntésre váró motívumközi jelölt (`jeloltek.tsv`, `nyitva`): 1 — ISTENTISZT-001: 1.*
 
