@@ -618,7 +618,7 @@ class Tiltott(unittest.TestCase):
             self.assertEqual(K.ellenoriz_tiltott(s)[0], 'SERTES', s)
 
     def test_nevet_tenni_valakire(self):
-        # DT-F131i: a „to put a name upon” tükörfordítása; az „elnevezni” és a passzív alak rendben
+        # DT379: a „to put a name upon” tükörfordítása; az „elnevezni” és a passzív alak rendben
         for s in ('nevet tenni valakire', 'nevet tettek rá', 'nevet tett valakire'):
             self.assertEqual(K.ellenoriz_tiltott(s)[0], 'SERTES', s)
         for s in ('elnevezni valakit', 'nevet adni valakinek', 'akit Péternek is neveznek'):
@@ -644,7 +644,7 @@ class Tiltott(unittest.TestCase):
 
     def test_meglevo_forditasok(self):
         # mérés (F132, 2026-10-25): a forditasok.tsv-ben csak a két G1941 sor 4 helye talált (F121 2b/4); a TBESG-sor
-        # javítva (F121.0, DT-F131i), maradt a Thayer G1941; a nyelvtani „melléknév” sorok nem találatok
+        # javítva (F121.0, DT379), maradt a Thayer G1941; a nyelvtani „melléknév” sorok nem találatok
         ut = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'adat', 'forditasok.tsv')
         with open(ut, encoding='utf-8', newline='') as fh:
             sorok = [s for s in fh.read().split('\n') if s and not s.startswith('#')]

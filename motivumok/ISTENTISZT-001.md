@@ -229,14 +229,17 @@ hiányzik (LXX-minusz), tehát ott nincs fordítói döntés, amit
 ahol nem az, ott az eltérésnek önálló jelentése van.
 
 **2. A Thayer jelentés-tagolása.** A Thayer öt jelentés-ágra bontja
-az igét: melléknéven nevezni (1.), valakinek a nevét rá-hívni
-valakire (2.), váddal illetni (3.), bíróhoz fellebbezni (4.), és
+az igét: elnevezni (1.), valakinek a nevét rá-hívni
+valakire (2.), váddal illetni (3.), segítségül hívni — segítőként,
+tanúként, illetve bíróként, azaz valakihez fellebbezni (4.), és
 külön, ötödikként azt az esetet, amikor a szó a héber
 קָרָא בְּשֵׁם יְהוָה (kárá besém JHVH) fordítása. A motívum
 újszövetségi helyei — ApCsel 2:21; 9:14, 21; 22:16; Róm 10:12-13;
 1Kor 1:2; 2Tim 2:22 — ebben az ötödik ágban állnak. Vagyis nem a tág
 „hívni" jelentésről van szó, hanem arról a szűk kategóriáról,
 amelyet maga a szótár köt a héber formulához.
+
+【NAPLO: F131.3.18, 2026-10-28 — a 2. pont tagolás-leírása a Thayer szövegéhez igazítva (`adat/thayer_szakaszok.tsv`, `adat/forditasok.tsv` Thayer G1941 sz3–sz7): az 1. ág „elnevezni” (DT379); a 4. ág a Thayerben „segítségül hívni (anrufen)” segítőként, tanúként és bíróként, a fellebbezés (ApCsel 25:11) ennek egyik esete. Az értelmezés nem változott; a felhasználó döntése: DT377 1. javítókör (C).】
 
 **3. A Róm 10:12【NAPLO: 2026.09.22-én felvéve】.** A 10:13-as Jóel-idézetet
 egy olyan mondat vezeti be, amely ugyanezt az igét használja, és a
@@ -377,7 +380,7 @@ A nevesített tanítói egyezés-keresés (7. lépés, B9) eredménye a saját f
 
 **Alkalmazási kérdések** *(a tanulmány saját Peshat/Remez/Drash/Sod rétegeiből, kiegészítve a saját fájlban nevesített tanítói forrással: Derek Prince ⚠️ részleges/beágyazott; a többi jóváhagyott tanítónál, Kenneth Hagint is beleértve, nincs igazolt forrás (gap))*:
 
-1. *Mit jelent ez a mai hívő mindennapi életében?* A segítségül hívás nem passzív érzés, hanem hitbeli cselekvés: az Úr nevét az hívja segítségül, aki hisz benne (Róm 10:14, l. 3. pont); a genezisi pátriárkák pedig azt mutatják, hogy ez egy visszatérő, helyhez köthető, akár nemzedékről nemzedékre átadható gyakorlattá is válhat.
+1. *Mit jelent ez a mai hívő mindennapi életében?* A segítségül hívás nem passzív érzés, hanem hitbeli cselekvés: az Úr nevét az hívja segítségül, aki hisz benne (Róm 10:14, l. a PaRDeS keretrendszer szakaszát); a genezisi pátriárkák pedig azt mutatják, hogy ez egy visszatérő, helyhez köthető, akár nemzedékről nemzedékre átadható gyakorlattá is válhat.
 2. *Milyen konkrét lépést, döntést vagy szokásváltozást von maga után?* Ábrahám és Izsák mintája szerint: a segítségül hívás nem egyszeri esemény, hanem tudatosan felkeresett/fenntartott gyakorlat — érdemes "saját Beérsebát" (állandó imádati pontot/szokást) kialakítani.
 3. *Milyen érzelmi/lelki ellenállás merülhet fel?* A Bábel-mintázat (saját név felmagasztalása) folyamatos kísértés az önerőből való megfelelésre; Derek Prince a levertségből való saját szabadulásáról szóló beszámolóiban a Jóel 2:32 ígéretére támaszkodva hívta segítségül az Úr nevét (a tanítói fájl 3.1) — a szöveg is azt mutatja, hogy pontosan ez (a függőség beismerése) a helyes válasz.
 

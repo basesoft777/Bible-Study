@@ -38,6 +38,12 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import general as G
 import lexikon_general as LG
 
+# F131 (DT272, DT371): az arany lapon (ISTENTISZT-001) a szótári gerinc a szerepmátrixot szűkíti
+# (kapcsoló: LG.SZOTARI_GERINC_MOTIVUMOK). Ez a teszt a szerepmátrix ÁLTALÁNOS renderét vizsgálja
+# (azt, amely a többi lapon él), az ISTENTISZT-001-et csak mint adatgazdag mintát használja, ezért a
+# kapcsolót itt kikapcsolja. A gerinc-renderet az eszkozok/teszt_szotari_gerinc.py vizsgálja.
+LG.SZOTARI_GERINC_MOTIVUMOK = frozenset()
+
 ROOT = G.ROOT
 SZEREP_FEJ_RE = re.compile(r'^#### (\d+)\. (.+)$', re.M)
 UROS_RE = re.compile(r'^<!-- ÜRES-BLOKK: (.+?) \| (.+?) -->$', re.M)

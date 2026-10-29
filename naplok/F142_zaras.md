@@ -9,7 +9,7 @@
 - Egyeztetett eltérés: a javítókör után újraellenőrzés nem futott (a tartalmi tétel döntése után a felhasználó (a)-t választotta, további változtatás nincs).
 - Nyitott: a `kezi` jóváhagyás a felhasználóé (DT290 (3)); a beerkezo-tervezet befogadása (`/befogad`).
 
-## F142.38 — G1941 `sz3` újrafuttatás (DT-F131i, 2026-10-27)
+## F142.38 — G1941 `sz3` újrafuttatás (DT379, 2026-10-27)
 
 *Végrehajtó: `claude-sonnet-5-5` (a brief `modell: sonnet`). Proveniencia: `scope=Thayer G1941 sz3 | forras=thayer_jelolt/forditas.py (lista, elokeszit, ellenoriz, rogzit, beir) | ts=2026-10-27`.*
 

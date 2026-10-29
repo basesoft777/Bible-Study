@@ -76,6 +76,30 @@ FORRAS_HIBA = {
     ('H1802', 512): 'Exod 2:6 — a דָּלָה a 2Móz 2:16, 19-ben áll (számhiba a forrásban; TAHOT)',
     ('H7804', 532): 'Dan 3:13 — a שֵׁיזִב suffixumos alakja a Dán 3:15-ben áll (számhiba a forrásban; TAHOT)',
 }
+# DT381 (a) (felhasználó, 2026-10-28): a `bdb_forras_javitas.tsv` (2.31) `hivatkozas_kezi` sorai a forrás létező, de hibás versét
+# javítják: a Strong `elofordulas`-adik olyan hivatkozása, amelynek fejezet:verse a `forras_alak`, a `javitott_alak` versére oldódik
+# (a `nyers` a forrás alakja marad), okkód `forras_javitas`. A FORRAS_HIBA (fent) a hibát csak rögzíti, ez javít.
+JAVITAS = os.path.join(REPO, 'adat', 'bdb_forras_javitas.tsv')
+
+
+def kezi_hivatkozas_javitasok():
+    """{strong: [(forras_alak, elofordulas, javitott_alak)]} a 2.31 `hivatkozas_kezi` soraiból."""
+    ki = collections.defaultdict(list)
+    for d in tsv_sorok(JAVITAS):
+        if d['hiba'] == 'hivatkozas_kezi':
+            ki[d['strong']].append((d['forras_alak'], int(d['elofordulas']), d['javitott_alak']))
+    return ki
+
+
+def hivatkozas_javit(strong, hiv, javitasok):
+    """A `hivatkozas_kezi` javítások alkalmazása a Strong hivatkozásaira; hiányzó illesztésnél megáll."""
+    for forras_alak, k, javitott in javitasok:
+        talalt = [i for i, h in enumerate(hiv) if h['konyv'] and '%d:%d' % (h['c'], h['v']) == forras_alak]
+        if len(talalt) < k:
+            raise SystemExit('HIBA: a 2.31 hivatkozas_kezi sora nem illeszthető: %s %s (%d. előfordulás)' % (strong, forras_alak, k))
+        c, v = (int(x) for x in javitott.split(':'))
+        hiv[talalt[k - 1]] = dict(hiv[talalt[k - 1]], c=c, v=v, forras_javitas=True)
+    return hiv
 
 
 def fajl_hash(ut):
@@ -195,6 +219,7 @@ def general(ts, strongok=None):
     versek, _, mt2k = K.macula_betolt()
     osz = set(K.OSZ)
     modhash = '+'.join(fajl_hash(u) for u in KOD_FAJLOK)
+    javitasok = kezi_hivatkozas_javitasok()
     sorok = []
     for strong in sorted(strongok if strongok is not None else en):
         szoveg = en[strong]
@@ -205,7 +230,7 @@ def general(ts, strongok=None):
         szsav = B.szakasz_savok(szoveg, r)
         # DT-F99g (felhasználó, 2026-10-15): a kód-hash csak a fájl fejlécében áll; a sor a forrásra és a generátorra hivatkozik
         prov = 'scope=%s | forras=bdb_vers_jelentes.py (fejléc) | ts=%s' % (strong, ts)
-        for n, h in enumerate(B.hivatkozasok(szoveg), 1):
+        for n, h in enumerate(hivatkozas_javit(strong, B.hivatkozasok(szoveg), javitasok.get(strong, [])), 1):
             cimke, ut = B.jelentespont(h['poz'], savok, szsav)
             szak, resz = B.szakasz_bont(cimke)
             if ut == '-/-':
@@ -224,6 +249,8 @@ def general(ts, strongok=None):
                 kmod = 'feloldhatatlan'
             if (strong, h['poz']) in FORRAS_HIBA:
                 ok = ok + ',forras_hiba' if ok else 'forras_hiba'
+            if h.get('forras_javitas'):
+                ok = ok + ',forras_javitas' if ok else 'forras_javitas'
             szurt = h['okkod'] in SZURENDO
             if h['konyv'] and not szurt:
                 if h['konyv'] in osz:
@@ -266,10 +293,11 @@ def kiir(sorok, modhash, ts):
     fej = ['# GENERÁLT: eszkozok/olvaso_szerver/bdb_vers_jelentes.py --ts %s — kézzel nem szerkesztendő (F99 M2; séma: adat/SEMA.md 2.29).' % ts,
            '# forras: konkordancia/BDB_teljes_unabridged.tsv@%s + Macula_heber_*.tsv (%d fájl)@%s (MT-versek, MT→Károli) + '
            'Karoli_versmegfeleltetes.tsv@%s + Karoli_1908.tsv@%s (Károli-versek; az Ézs 3 eltolásának forrása is, DT179) + naplok/F85_macula_elvetve.tsv@%s + naplok/F85_esetlista.tsv@%s '
-           '(DT173) + OSHL_lexikalis_index.tsv@%s (bdb_id) + Strong_szotar.tsv@%s (lemma) + TAHOT_kivonat.tsv@%s (DT173, DT176; az Ézs 3 eltolásának megerősítése, DT179); '
+           '(DT173) + OSHL_lexikalis_index.tsv@%s (bdb_id) + Strong_szotar.tsv@%s (lemma) + TAHOT_kivonat.tsv@%s (DT173, DT176; az Ézs 3 eltolásának megerősítése, DT179) + '
+           'adat/bdb_forras_javitas.tsv@%s (a hivatkozas_kezi sorok, DT381 (a)); '
            'kód: bdb_szelet.py+bdb_vers_jelentes.py+bdb_konyv_javit.py+normalizal.py@%s (LF-re normalizált tartalom; DT172: a kód-hash csak itt áll, a sorok proveniencia-mezője erre a fejlécre hivatkozik); szabály: DT166, DT173, DT174, DT175, DT176, DT179'
            % (fajl_hash(BDB_EN), len(macula_fajlok()), fajlok_hash(macula_fajlok()), fajl_hash(VERSMEGF), fajl_hash(KAROLI), fajl_hash(F85_ELVETVE),
-              fajl_hash(F85_ESETLISTA), fajl_hash(OSHL_INDEX), fajl_hash(STRONG_SZOTAR), fajl_hash(TAHOT), modhash),
+              fajl_hash(F85_ESETLISTA), fajl_hash(OSHL_INDEX), fajl_hash(STRONG_SZOTAR), fajl_hash(TAHOT), fajl_hash(JAVITAS), modhash),
            '\t'.join(FEJ)]
     for s in sorok:
         for x in s:

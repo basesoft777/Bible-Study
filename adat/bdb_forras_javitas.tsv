@@ -1,5 +1,5 @@
 # GENERÁLT: eszkozok/bdb_jelolt/forras_javit.py --ts 2026-10-18 — kézzel nem szerkesztendő (F107, DT228 (a); séma: adat/SEMA.md, bdb_forras_javitas.tsv). A héber alakok NFD-ben.
-# forras: adat/bdb_szakaszok.tsv@495d1c81cfc0 + konkordancia/lexikonok_nyers/BDB.lexicon@c998a70b432f (csak igazolás) + kód@25af674158b5
+# forras: adat/bdb_szakaszok.tsv@66bd24b9abb6 + konkordancia/lexikonok_nyers/BDB.lexicon@c998a70b432f (csak igazolás) + kód@7e903345d897
 strong	sorszam	bdb_id	hiba	szo_sorszam	elofordulas	forras_alak	javitott_alak	allapot	indok	proveniencia
 H0001	3	BDB17	pe_mem	5	1	לָֽרִמָּה		valodi_mem	a dagesses mem-es alak a BDB17 szócikkben áll: nem hiba	scope=H0001 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
 H0001	3	BDB17	pe_mem	7	1	אִמִּי		valodi_mem	a dagesses mem-es alak a BDB17 szócikkben áll: nem hiba	scope=H0001 | forras=bdb_jelolt/forras_javit.py (fejléc) | ts=2026-10-18
@@ -7203,3 +7203,4 @@ H9000	18	BDB2249	hivatkozas		9	Job	Psa	javitva	a TSV utólagos hivatkozás-javí
 H9000	18	BDB2249	hivatkozas		10	Job	Psa	javitva	a TSV utólagos hivatkozás-javítása (a nyers JSON-ban nincs): F34 (naplok/F34_M2_csere.tsv, JAVIT)	scope=H9000 | forras=bdb_jelolt/forras_javit.py (fejléc): BDB_teljes_unabridged.tsv ↔ DictBDB.json, F34 | ts=2026-10-18
 H9009	15	BDB2035	hivatkozas		5	1Ki	Psa	javitva	a TSV utólagos hivatkozás-javítása (a nyers JSON-ban nincs): F34 (naplok/F34_M2_csere.tsv, JAVIT)	scope=H9009 | forras=bdb_jelolt/forras_javit.py (fejléc): BDB_teljes_unabridged.tsv ↔ DictBDB.json, F34 | ts=2026-10-18
 H9009	15	BDB2035	hivatkozas		6	1Ki	Psa	javitva	a TSV utólagos hivatkozás-javítása (a nyers JSON-ban nincs): F34 (naplok/F34_M2_csere.tsv, JAVIT)	scope=H9009 | forras=bdb_jelolt/forras_javit.py (fejléc): BDB_teljes_unabridged.tsv ↔ DictBDB.json, F34 | ts=2026-10-18
+H8034	7	BDB8776	hivatkozas_kezi		1	26:35	26:25	kezi	a BDB „call with … the name ׳י in worship, so 12:8; 13:4; 21:33; 26:35” sora (1Móz) a 26:35-öt idézi; ott a שֵׁם nem áll (Ézsau feleségei), a TAHOT szerint az 1Móz 26:25-ben áll a קָרָא mellett (H7121 + H8034), és a szövegkörnyezet (oltárt épít, segítségül hívja az Úr nevét) a 12:8; 13:4; 21:33 formulája: sajtóhiba a forrásban, 26:35 → 26:25 (DT381 (a))	manual

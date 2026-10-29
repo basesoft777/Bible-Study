@@ -774,6 +774,12 @@ def _forditasok_forras_szoveg_idx(adat_dir):
             alap = ('UBS_DNTG', r['strong'], r['lexid'], r['entry_kod'])
             idx[alap + ('definicio_hu',)] = r.get('definicio_rovid', '')
             idx[alap + ('glosszak_hu',)] = r.get('glosszak', '')
+
+    # F121 (DT-F121b): UBS_DBH -- entry_id = lexid, jelentes_szam = '—'; egy feloldo (glossza_lexikon_forditas)
+    if os.path.exists(os.path.join(konkordancia_dir, 'UBS_DBH_jelentesek.tsv')):
+        import glossza_lexikon_forditas as GLF
+        for (strong, lexid, mezo), szoveg in GLF.dbh_forras_idx(konkordancia_dir).items():
+            idx[('UBS_DBH', strong, lexid, GLF.EM_DASH, mezo)] = szoveg
     return idx
 
 
@@ -1029,6 +1035,97 @@ def szabaly16_elofordulasok_fejlec(adat_dir):
 
 
 # ---------------------------------------------------------------------------
+# 17. F131 (DT372–d, SEMA 2.40): szotar_szakasz_cimke.tsv
+# ---------------------------------------------------------------------------
+
+SZAKASZ_CIMKE_TILTOTT = re.compile(r'(?i)(motívum|invokál|invokáci|(?<![\wáéíóöőúüű])nem(?![\wáéíóöőúüű]))')
+
+
+def utvonal_vag(utvonal):
+    """A zaro `/-` levagasa (a 2.29 `-/3` es a 2.30 `-/3/-` alakja igy osszevetheto; F131)."""
+    while utvonal.endswith('/-'):
+        utvonal = utvonal[:-2]
+    return utvonal
+
+
+def _tsv_ha_van(adat_dir, nev):
+    ut = os.path.join(adat_dir, nev)
+    if not os.path.exists(ut):
+        return None
+    return G.tsv_beolvas(ut)[1]
+
+
+def szakasz_cimke_hibak(adat_dir):
+    """A 17. szabaly hibalistaja (ures lista = rendben); None, ha nincs tabla."""
+    sorok = _tsv_ha_van(adat_dir, 'szotar_szakasz_cimke.tsv')
+    if sorok is None:
+        return None
+    hibak = []
+    bdb = {}
+    for r in _tsv_ha_van(adat_dir, 'bdb_szakaszok.tsv') or []:
+        bdb.setdefault(r['strong'], set()).add(utvonal_vag(r['utvonal']))
+    thayer = {}
+    for r in _tsv_ha_van(adat_dir, 'thayer_szakaszok.tsv') or []:
+        thayer.setdefault(r['strong'], []).append(r['utvonal'])
+    lexhiv = {(r['szotar'], r['strong'], r['jelentes_szam'])
+              for r in (_tsv_ha_van(adat_dir, 'lexikon_hivatkozasok.tsv') or [])}
+    tiltott = [r for r in (_tsv_ha_van(adat_dir, 'tiltott_fordulatok.tsv') or []) if r.get('minta')]
+
+    kulcsok = {}
+    ljsz = {}
+    for r in sorok:
+        k = (r['szotar'], r['strong'], r['szakasz'])
+        kulcsok[k] = kulcsok.get(k, 0) + 1
+        if not (r.get('proveniencia') or '').strip():
+            hibak.append('%s: üres proveniencia' % (k,))
+        if r['szotar'] == 'BDB':
+            if utvonal_vag(r['szakasz']) not in bdb.get(r['strong'], set()):
+                hibak.append('%s: a szakasz nincs a bdb_szakaszok.tsv-ben' % (k,))
+        elif r['szotar'] == 'Thayer':
+            if r['szakasz'] not in thayer.get(r['strong'], []):
+                hibak.append('%s: a szakasz nincs a thayer_szakaszok.tsv-ben' % (k,))
+        elif r['szotar'] == 'TBESG':
+            if ('TBESG', r['strong'], r['szakasz']) not in lexhiv:
+                hibak.append('%s: a szakasz nem lexikon_hivatkozasok.tsv-kulcs' % (k,))
+        else:
+            hibak.append('%s: ismeretlen szotar' % (k,))
+        if r['lexikon_jelentes_szam']:
+            lk = (r['szotar'], r['strong'], r['lexikon_jelentes_szam'])
+            if lk not in lexhiv:
+                hibak.append('%s: a lexikon_jelentes_szam (%s) nem lexikon_hivatkozasok.tsv-kulcs'
+                             % (k, r['lexikon_jelentes_szam']))
+            ljsz.setdefault(lk, []).append(r['szakasz'])
+        if r['cimke_hu'] and SZAKASZ_CIMKE_TILTOTT.search(r['cimke_hu']):
+            hibak.append('%s: a címke tiltott minősítést tartalmaz: %r' % (k, r['cimke_hu']))
+        for t in tiltott:
+            if r['cimke_hu'] and re.search(t['minta'], r['cimke_hu'], re.I):
+                hibak.append('%s: a címke tiltott fordulatot tartalmaz (tiltott_fordulatok.tsv: %s)'
+                             % (k, t['magyar_alak']))
+    for k, n in kulcsok.items():
+        if n > 1:
+            hibak.append('duplikált kulcs: %s (%d sor)' % (k, n))
+    for lk, szak in ljsz.items():
+        if len(szak) > 1:
+            hibak.append('a(z) %s kutatói kulcs több szakaszra mutat: %s' % (lk, szak))
+
+    return hibak
+
+
+def szabaly17_szakasz_cimke(adat_dir):
+    """F131 (DT372–d, SEMA 2.40): a szotar_szakasz_cimke.tsv minden sora letezo
+    szakaszra mutat, a kutatoi kulcs letezo lexikon_hivatkozasok-kulcs, a cimke nem
+    minosit, es nem tartalmaz tiltott fordulatot (tiltott_fordulatok.tsv). (F131.3.6: a
+    Thayer atmeneti kezi hatarai kivezetve, a magyar Thayer a #142 sz<n> soraibol.)"""
+    cim = '17. szotar_szakasz_cimke.tsv (SEMA 2.40)'
+    hibak = szakasz_cimke_hibak(adat_dir)
+    if hibak is None:
+        return Sor(cim, 'KÉZI', megjegyzes='nincs adat/szotar_szakasz_cimke.tsv')
+    if hibak:
+        return Sor(cim, 'SÉRTÉS', len(hibak), hibak)
+    return Sor(cim, 'RENDBEN')
+
+
+# ---------------------------------------------------------------------------
 # Q1 / Q7 -- --study
 # ---------------------------------------------------------------------------
 
@@ -1167,6 +1264,7 @@ def main():
         tabla_sorok.append(szabaly14_kiejtes_terminologia(args.adat))
         tabla_sorok.append(szabaly15_kapcsolatok_fejlec(args.adat))
         tabla_sorok.append(szabaly16_elofordulasok_fejlec(args.adat))
+        tabla_sorok.append(szabaly17_szakasz_cimke(args.adat))
     except Exception as exc:
         print('HIBA: %s' % exc, file=sys.stderr)
         sys.exit(2)
