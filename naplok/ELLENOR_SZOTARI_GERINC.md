@@ -45,7 +45,7 @@ A brief nem számozza G/D-ként a pontjait. Az ellenőrzés alapja ezért a brie
 | V3 Az élő lap = a generátor kimenete | OK | `e28_migralt_nezetek.tsv:2` | Az E28 a lapot újragenerálja és bájtra összeveti: 0 találat. |
 | V4 Tesztek (a kiinduló hibák forrása) | NEM ELLENŐRIZHETŐ | – | Futtatni nem megengedett. Diff-alapú érv: a `teszt_bont` 3 hibája a 2.30, a `bdb_szakasz_hu` és a `forditasok` tárgyú tesztekben van, ezeket a diff nem érinti. A `test_eles_sema` értékét az ág 29-ről 30-ra növeli (SEMA 2.40); a main-állapotot az ellenőr nem mérte. |
 | A1 Memória vs. lekérdezés | OK | `motivumok/ISTENTISZT-001.md:232-235` | A Thayer 4. ágának új leírása szó szerint a `forditasok.tsv:8010` (sz6) szövege. A „sajtóhiba” lekérdezéssel alátámasztva (V1b). |
-| A2 Nyitott tételek | OK | – | A diff nem írja a `NYITOTT_FELADATOK.md`-t. Az N-F131a–g a 6. lépésre vár, a brief szerint még nem esedékes. |
+| A2 Nyitott tételek | OK | – | A diff nem írja a `NYITOTT_FELADATOK.md`-t. Az N62–g a 6. lépésre vár, a brief szerint még nem esedékes. |
 | A3 Tematikus vs. lexikai párhuzam | OK | – | A diff nem hoz új párhuzam-állítást. A Funkció-cellák tartalma változatlan (`@@ -70,67`, csak oszlopok). |
 | A4 Remez/Sod | OK | `motivumok/ISTENTISZT-001.md:231-242` | Csak a tagolás tényleírása változott, következtetés nem került be. A Sod-réteget a diff nem érinti. |
 | A5 Nevesített tanító | OK | – | Nem került be új tanító. A szótárszöveg Geseniusa és Winere a forrás része. |

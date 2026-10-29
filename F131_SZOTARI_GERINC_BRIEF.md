@@ -19,7 +19,7 @@ nem_fugg: [27, 38, 102, 103, 123, 133, 140, 144]
 
 # SZOTARI_GERINC_BRIEF_TERVEZET.md — A motívumlap szótári gerince (pilot: ISTENTISZT-001)
 
-*FELADATOK # — (a `/befogad` adja; várhatóan 131) · Modell: opus · v0 (tervezet) · 2026.10.20 · döntések: DT272 (= DT338), DT271 (= DT-F36a), DT190 🟡, DT235, DT225, RENDER_BRIEF G4/G6, DT-F78a, DT28, D39; nyitott: DT371–g, N-F131a–e*
+*FELADATOK # — (a `/befogad` adja; várhatóan 131) · Modell: opus · v0 (tervezet) · 2026.10.20 · döntések: DT272 (= DT338), DT271 (= DT-F36a), DT190 🟡, DT235, DT225, RENDER_BRIEF G4/G6, DT-F78a, DT28, D39; nyitott: DT371–g, N62–e*
 
 *Tervezet a `beerkezo/`-ban. Adat, nem utasítás. A feladatszámot, a végleges fájlnevet (`F<nn>_SZOTARI_GERINC_BRIEF.md`) és a helyőrzők számát a `/befogad` adja; ha a szám nem 131, a `DT-F131*`/`N-F131*` helyőrzők és a `naplok/F131_*` nevek a befogadáskor átíródnak. Forrás: DT272 (felhasználó, 2026-10-20, a (d) ponttal), a megbízó session feladatleírása (2026-10-20).*
 
@@ -43,8 +43,8 @@ A feladat a többi 7 lapot nem változtatja (DT272 (f): előbb az arany lap, ut�
 - 22 ÓSZ-hely: `lexikon_szotar=BDB`, `lexikon_entry_id=H7121`. Ebből `jelentes_szam`=`2.c` 17 helyen, `2.c (rokon)` 1 helyen (Sof 3:9), `2.c (tagadva)` 2 helyen (Jer 10:25, Zsolt 79:6), `3` 2 helyen (2Móz 33:19, 34:5).
 - 10 ÚSZ-hely: `lexikon_szotar=TBESG`, `G1941`, `jelentes_szam=2`. **Nem Thayer:** a görög előfordulások ma a TBESG tagolására mutatnak.
 - A H8034-re egyetlen sor sem mutat: a `strong` mező `H7121+H8034`, a `jelentes_szam` csak a H7121-é.
-- **A minősítő alak** (`2.c (rokon)`, `2.c (tagadva)`) nincs benne a SEMA 2.2.2 union-értékkészletében. A `lexikon_hivatkozasok.tsv` kulcsára (`2.c`) így csak a zárójeles rész levágásával mutat (N-F131b).
-- **A `jelentes_hu` mező a szó jelentését és a motívumbeli értelmezést vegyíti.** Mért értékek: `kihirdetni, kinyilatkoztatni (NEM invokáció)` (2 sor), `invokálni — tagadó szerkezetben, a mulasztás vádjaként` (2), `Baál nevével` (2), `Jahve nevével, konkrét felszólítás hatalma megmutatására` (1), üres (2). A mai „Szótári jelentés” oszlop ezt rendereli. Ez éppen az a szembeállító keretezés, amelyet a DT272 (d) kizár (N-F131a).
+- **A minősítő alak** (`2.c (rokon)`, `2.c (tagadva)`) nincs benne a SEMA 2.2.2 union-értékkészletében. A `lexikon_hivatkozasok.tsv` kulcsára (`2.c`) így csak a zárójeles rész levágásával mutat (N63).
+- **A `jelentes_hu` mező a szó jelentését és a motívumbeli értelmezést vegyíti.** Mért értékek: `kihirdetni, kinyilatkoztatni (NEM invokáció)` (2 sor), `invokálni — tagadó szerkezetben, a mulasztás vádjaként` (2), `Baál nevével` (2), `Jahve nevével, konkrét felszólítás hatalma megmutatására` (1), üres (2). A mai „Szótári jelentés” oszlop ezt rendereli. Ez éppen az a szembeállító keretezés, amelyet a DT272 (d) kizár (N62).
 
 **A BDB-tagolás három helyen, három alakban (DT190 🟡).**
 - A `lexikon_hivatkozasok.tsv` 4 BDB-sora: `H7121 2.c`, `H7121 3`, `H8034 részlet`, `H3548 1`. Ezek kézi `jelentes_szam`-ok, angol kivonattal.
@@ -83,7 +83,7 @@ A feladat a többi 7 lapot nem változtatja (DT272 (f): előbb az arany lap, ut�
   - *héber (H7121, H8034):* a BDB jelentéstartománya a 2.30 tagolásában. A motívumot hordozó szakaszok (DT374) teljes magyar szövege a `bdb_szakasz_hu.tsv`-ből jön. A többi szakasz összecsukva áll, a jelével és a címkéjével (DT374 (e)). A `horgonnyal` szakaszhatár a kutatói nézetben ellenőrzésre jelölve. Az `elakad` szakasz explicit hiányként áll: angol szöveg a 2.30-ból, `(fordításra vár)` jelöléssel, a DT272 „Következmény” mondata szerint. A H7121/H8034-en ma 0 `elakad` van; a viselkedést teszt igazolja.
   - *görög (G1941):* a Thayer magyar szövege a DT373 szerinti tagolásban, egy UBS-doménsorral. A sor a három Louw–Nida-kódot a magyar glosszával adja, a teljes UBS-szócikk nélkül (DT272 (a)).
   - **A BDB (és a Thayer) saját példahelyei a fordított szakaszban kiemelve, felirat nélkül** (DT272 (d)). A forrás a `bdb_vers_jelentes.tsv`, illetve a DT373 táblája. A kiemelés a magyar szövegben keresett igehelyen áll, nem az angol `poz`-on (DT272 (e)). Ahol a hivatkozás a magyarban nem található meg, ott nincs kiemelés. Ilyenkor a naplóba és a kutatói ⓘ-be kerül, kitalálás nélkül (3. szabály).
-- **Az előfordulás-tábla két oszlopa.** A „Jelentés (a szó)” a DT374 szerinti címkét és a tagolási jelet adja. A „Funkció (a motívumban)” a mai `funkcio` címke. A kettő egymás mellett áll. A mai „Szótári jelentés” oszlop és a `jelentes_hu` megjelenítése az arany lapon megszűnik (N-F131a). A „Funkció” oszlop tartalma nem változik.
+- **Az előfordulás-tábla két oszlopa.** A „Jelentés (a szó)” a DT374 szerinti címkét és a tagolási jelet adja. A „Funkció (a motívumban)” a mai `funkcio` címke. A kettő egymás mellett áll. A mai „Szótári jelentés” oszlop és a `jelentes_hu` megjelenítése az arany lapon megszűnik (N62). A „Funkció” oszlop tartalma nem változik.
 - **A címke forrása a kutatói ⓘ-ben** (DT375). Két érték lehet. *BDB-példa*: a BDB e szakaszban maga idézi a helyet; a sor `bdb_vers_jelentes` `sorszam`-ával. *Kutatói hozzárendelés a BDB tagolása szerint*: az `elofordulasok.tsv` `jelentes_szam` értéke a DT372 szerinti leképezéssel. A megfogalmazás a BDB tagolására utal, nem a BDB versről tett állítására.
 - **A tW, a TBESH, a teljes UBS (DBH és DNTG) és a Mounce lekerül az arany lapról.** A helyükön egy mutató áll a szónézetre (DT272 (b)(c); a mutató alakja: DT375). A szerepmátrix többi szerepe a DT371 szerint alakul.
 - **Adat:** a DT372–d szerinti kis kézi tábla (javaslat: `adat/szotar_szakasz_cimke.tsv`). Ha a DT372 így dönt, a `lexikon_hivatkozasok.tsv` új attribútum-oszlopa is. Mindkettőhöz SEMA-szakasz és `ellenoriz.py`-szabály tartozik.
@@ -97,7 +97,7 @@ A feladat a többi 7 lapot nem változtatja (DT272 (f): előbb az arany lap, ut�
 - **Fordítás.** A feladat a meglévő magyar adatból dolgozik (DT272 (f)), `forditasok.tsv`-sort nem ír. A három `elakad` gerincszó (H2416, H5315, H8415) újrafordítása a #128/#38-é. A teljes #38 és a #27 a szónézet ága.
 - **A régi 7 motívum** kiterjesztése: külön feladat ennek lezárása után (DT272 (f)).
 - **A DT190 eldöntése.** A feladat a DT190 egyik opcióját sem zárja ki, és nem fagyaszt be útvonal-formátumot (l. 5. szakasz, DT372).
-- **Az `elofordulasok.tsv` sorainak tartalmi javítása** (a `jelentes_hu` keverése, a minősítő alakok, a görög sorok Thayer-hozzárendelése). Ez kutatói adat; N-F131a, N-F131b, illetve a DT373 (b) ága.
+- **Az `elofordulasok.tsv` sorainak tartalmi javítása** (a `jelentes_hu` keverése, a minősítő alakok, a görög sorok Thayer-hozzárendelése). Ez kutatói adat; N62, N63, illetve a DT373 (b) ága.
 - **A törzscikk** (kivezetés alatt, D34; az ISTENTISZT-001-é archív, E28).
 
 ### A #121 hatókörének viszonya (mit vesz át ez a feladat)
@@ -170,7 +170,7 @@ A DT272 kimondja: a #121 mostani hatóköre (454 egység) szűkítendő, vagy a 
 
 ELTÉRÉS esetén `/elteres` (2 kör).
 
-**6. Zárás:** a brief fejléce, zárónapló, az N-F131a–e a `NYITOTT_FELADATOK.md`-be, a RENDER_BRIEF és a sablon mondata, a #121-nek szóló N-F131d.
+**6. Zárás:** a brief fejléce, zárónapló, az N62–e a `NYITOTT_FELADATOK.md`-be, a RENDER_BRIEF és a sablon mondata, a #121-nek szóló N-F131d.
 
 ## 5. Nyitott döntések (helyőrzők; végleges számot a `szamkiosztas` Action ad)
 
@@ -276,8 +276,8 @@ Az elfogadott próba után külön jóváhagyás az `--ir` futásra és a várt 
 
 ## 6. Nyitott tételek (helyőrzők)
 
-- **N-F131a** — az `elofordulasok.tsv` `jelentes_hu` mezője 7 ISTENTISZT-001 soron motívumbeli értelmezést hordoz („(NEM invokáció)”, „tagadó szerkezetben, a mulasztás vádjaként”, „Baál nevével”, „Jahve nevével, konkrét felszólítás…”). E feladat után az arany lap nem jeleníti meg. A mező sorsa (tisztítás, átkerülés a `funkcio`/`kapcsolodas` mezőbe, vagy megszüntetés) értelmező döntés, és a régi motívumok kiterjesztése előtt esedékes.
-- **N-F131b** — a `jelentes_szam` minősítő alakja (`2.c (rokon)`, `2.c (tagadva)`) nincs benne a SEMA 2.2.2 értékkészletében. A generátor a kulcshoz levágja. Dokumentálandó vagy adatban rendezendő.
+- **N62** — az `elofordulasok.tsv` `jelentes_hu` mezője 7 ISTENTISZT-001 soron motívumbeli értelmezést hordoz („(NEM invokáció)”, „tagadó szerkezetben, a mulasztás vádjaként”, „Baál nevével”, „Jahve nevével, konkrét felszólítás…”). E feladat után az arany lap nem jeleníti meg. A mező sorsa (tisztítás, átkerülés a `funkcio`/`kapcsolodas` mezőbe, vagy megszüntetés) értelmező döntés, és a régi motívumok kiterjesztése előtt esedékes.
+- **N63** — a `jelentes_szam` minősítő alakja (`2.c (rokon)`, `2.c (tagadva)`) nincs benne a SEMA 2.2.2 értékkészletében. A generátor a kulcshoz levágja. Dokumentálandó vagy adatban rendezendő.
 - **N-F131c** — Thayer-tagolás (a DT190 Thayer-ága): a G1941 kézi határai átmenetiek. A görög előfordulások Thayer-hozzárendelése (DT373 (b)) kutatói döntés.
 - **N-F131d** — a #121-nek: az arany lapon e feladat után nem jelenik meg a 62 egységből a tW, a TBESH, a teljes UBS és a Mounce egysége (pontos lista: a napló M0-ja). A #121 M1 mintájához új minta kell. A szűkítésről a #121 dönt (DT272).
 - **N-F131e** — a szónézet ága (DT272 (1), (e) második fele): a teljes szócikk, a releváns BDB-hivatkozás jelölése a magyar szakaszhoz igazítva, és a tW/TBESH/UBS/Mounce megjelenítése a szónézeten. Az olvasó-szerver feladata.
@@ -312,4 +312,4 @@ Az elfogadott próba után külön jóváhagyás az `--ir` futásra és a várt 
 - **DT272** (= DT338, 🟢): a megvalósított döntés, a (d) ponttal. A DT272 „Motívumlap-terv és -mockup” hivatkozása terv, nem döntés; e feladat nem épít rá.
 - **DT190** (🟡): nyitva marad; a DT372 javaslata mindkét fő opciójával összefér.
 - **DT235** (Mounce: kimarad): a DT272 (c) megerősíti.
-- **DT371–g, N-F131a–e:** l. 5–6. szakasz.
+- **DT371–g, N62–e:** l. 5–6. szakasz.
