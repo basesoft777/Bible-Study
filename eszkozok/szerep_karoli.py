@@ -124,8 +124,7 @@ def karoli_megfelelok(sorai, tabla=None):
             alak[cel].extend(w for w in alak[l] if w not in alak[cel])
             hely[cel].extend(h for h in hely[l] if h not in hely[cel])
             del hely[l]
-    sorrend = {s['igehely']: i for i, s in enumerate(sorai)}
-    return sorted(((l, alak[l], sorted(h, key=sorrend.get)) for l, h in hely.items()), key=lambda x: (-len(x[2]), x[0]))
+    return sorted(((l, alak[l], sorted(h, key=vers_kulcs)) for l, h in hely.items()), key=lambda x: (-len(x[2]), x[0]))
 
 
 def grammatikai_strongok():
@@ -213,6 +212,15 @@ def karoli_versek():
     return _CACHE['karoli']
 
 
+def vers_kulcs(hely):
+    """Kanonikus rendezési kulcs: a vers helye a Károli-fájlban (a tartomány az első versével: `1Móz 14:18-20` →
+    `1Móz 14:18`); az ismeretlen hely a végére, betűrendben."""
+    if 'sorrend' not in _CACHE:
+        _CACHE['sorrend'] = {h: i for i, (h, _sz) in enumerate(karoli_versek())}
+    elso = re.sub(r'^(.+ \d+:\d+)-\d+$', r'\1', hely)
+    return (_CACHE['sorrend'].get(elso, len(_CACHE['sorrend'])), hely)
+
+
 def jelolt_dontesek(motivum_id):
     """{igehely: döntés} a `jeloltek.tsv` motívumsoraiból (az utolsó sor a mérvadó)."""
     fej, sorok = _sorok(JELOLTEK)
@@ -237,7 +245,7 @@ def rejtett_parhuzamok(sorai, tabla=None, kulcs=None):
         hiany = _hianyzo(s['karoli_szo'], v, tabla)
         if hiany:
             ki.append((s['igehely'], s['karoli_szo'], s.get('strong', ''), hiany))
-    return ki
+    return sorted(ki, key=lambda x: vers_kulcs(x[0]))
 
 
 def hamis_parhuzamok(sorai, versek=None, strongok=None, tabla=None, kulcs=None):

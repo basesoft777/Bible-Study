@@ -58,7 +58,7 @@ class Szintetikus(unittest.TestCase):
         self.assertNotIn('a', m)
         self.assertEqual(m['segítségül'][0], ['segítségűl', 'segítségül'])
         self.assertNotIn('hívni', m)                              # beolvadt a hív-be
-        self.assertEqual(m['hív'][1], ['V 1:1', 'V 1:2', 'V 1:3', 'U 1:1'])
+        self.assertEqual(m['hív'][1], ['U 1:1', 'V 1:1', 'V 1:2', 'V 1:3'])   # a Károliban ismeretlen hely: betűrendben
         self.assertEqual(m['név'][1], ['V 1:1', 'V 1:2', 'V 1:3'])
 
     def test_kulcs_kombinacionkent_es_parszuro(self):
@@ -117,6 +117,13 @@ class ValodiAdat(unittest.TestCase):
             self.assertGreaterEqual(sum(1 for s in self.kir if SK._komb(s) == komb), SK.KULCS_MIN_SOR)
         self.assertTrue(b14)
         self.assertEqual(SK.blokk_14(self.kir, 'T'), b14)          # determinisztikus
+
+    def test_kanonikus_sorrend(self):
+        # a versek a Károli-fájl sorrendjében (nem a motívumtábla sorrendjében): Róm 10:12 a 10:13 és a 10:14 előtt
+        h = dict((l, hs) for l, _a, hs in SK.karoli_megfelelok(self.ist))['hív']
+        self.assertEqual(h, sorted(h, key=SK.vers_kulcs))
+        self.assertLess(h.index('Róm 10:12'), h.index('Róm 10:14'))
+        self.assertEqual(SK.vers_kulcs('1Móz 14:18-20')[0], SK.vers_kulcs('1Móz 14:18')[0])
 
     def test_blokk_13_szpa_es_proveniencia(self):
         b = SK.blokk_13(self.ist, '2026-10-29')
