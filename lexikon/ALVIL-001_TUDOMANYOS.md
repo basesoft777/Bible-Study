@@ -903,7 +903,7 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 #### 13. Károli-megfelelők
 
-**Mit mutat ez a rész?** A motívum igehelyein a Károli-fordítás ezekkel a magyar szavakkal adja vissza a motívumot hordozó kifejezést (a héber és a görög szavakat együtt, nem szavanként). A zárójeles szám azt mutatja, hány igehelyen áll a szó; utána a ragozott alakok és az igehelyek.
+**Mit mutat ez a rész?** Milyen magyar szavakkal fordítja a Károli-Biblia a motívumot a 72 igehelyén. Minden sor egy magyar szó, és a mellette álló szám azt mutatja, hány igehelyen fordul elő a 72 közül. Például a „sír” 29 igehelyen áll (sírba, Sírba, sír…), a „seol” 19 igehelyen. A sor végén ott vannak az igehelyek is.
 
 *A motívum igehelyeinek Károli-szóalakjai (`adat/elofordulasok.tsv`, `karoli_szo`), szótári alakonként (`adat/szoto/karoli_szotari_alak.tsv`, mai helyesírás), névelő nélkül: a szóalakok, és hány igehelyen, melyiken.*
 
@@ -933,7 +933,7 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 #### 14. Rejtett / hamis párhuzam
 
-**Mit mutat ez a rész?** Két ellenőrzés a motívum héber és görög szavaira (a gerincre, l. „A motívum kulcsszavai”) és a Károli magyar kulcsszavaira. **Rejtett párhuzam:** a motívum olyan helye, ahol az eredeti szövegben a gerinc szavai állnak, de a Károli nem a szokásos magyar kulcsszavakkal fordítja, így a magyar olvasó nem ismeri fel. **Hamis párhuzam:** olyan vers, ahol a Károliban ugyanazok a magyar kulcsszavak állnak, de az eredetiben nem a gerinc szavai, így a magyar olvasó tévesen kapcsolná ide.
+**Mit mutat ez a rész?** Két csapda, amelybe a magyar olvasó a fordítás miatt beleeshet. **Rejtett párhuzam:** a motívum egy helye, ahol a héber szövegben a seól, a görögben a Hadész áll, de a Károli más magyar szóval fordítja, ezért magyarul olvasva nem látszik, hogy ide tartozik. Itt 2 ilyen hely van, például az ApCsel 2:27: „a sírban” (itt nem áll „pokol”). **Hamis párhuzam:** egy vers, amelyben magyarul ugyanazok a szavak állnak („pokol”), de a héber vagy görög szövegben nem a seól, illetve a Hadész, ezért magyarul olvasva ide tartozónak tűnik, pedig nem. Itt 3 ilyen vers van, például a Jób 28:22: „A pokol és halál azt mondják”.
 
 *Kulcsszavak gerinc-kombinációnként: G0086: „pokol” — az e kombinációjú motívumsorok Károli-szóalakjainak legalább felében álló szótári alak, a Károli–Strong párosításban csak idegen Strongra párosuló szavak nélkül. Csak megjelenítés: jelölt ezekből csak az `adat/jeloltek.tsv`-n át lesz.*
 

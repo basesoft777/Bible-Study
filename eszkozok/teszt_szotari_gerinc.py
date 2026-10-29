@@ -617,5 +617,29 @@ class BdbRovidites(unittest.TestCase):
         self.assertEqual(LG.bdb_rovidites_jelol(sz, 'H7121'), sz)
 
 
+class Olvasoi1314(unittest.TestCase):
+    """A 13. és a 14. szerep olvasói mondata példával (a felhasználó: „ez érthetőbbé kell tenni”; „a gerinc szavai is elvont”)."""
+
+    def _sorai(self, mid):
+        _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
+        return [r for r in elo_sorok if r['id'] == mid]
+
+    def test_13(self):
+        m = LG.olvasoi_13(self._sorai('ISTENTISZT-001'))
+        self.assertIn('a 33 igehelyén', m)
+        self.assertIn('Például a „hív” 30 igehelyen', m)
+
+    def test_14_konkret_szavak(self):
+        m = LG.olvasoi_14(self._sorai('ISTENTISZT-001'))
+        self.assertIn('a héber szövegben a kárá és a sém, a görögben az epikaleó', m)
+        self.assertNotIn('gerinc', m)
+        self.assertIn('például a 2Móz 33:19', m)
+        self.assertIn('például az 1Kir 8:52: „mikor téged segítségül hívnak”', m)
+
+    def test_ures(self):
+        self.assertIsNone(LG.olvasoi_13([]))
+        self.assertIsNone(LG.olvasoi_14([]))
+
+
 if __name__ == '__main__':
     unittest.main()

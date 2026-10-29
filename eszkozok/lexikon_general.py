@@ -2041,6 +2041,8 @@ def _szerep_blokk(nyelv, sor, tokenek_ny, reszek, ctx):
     olv = olvasoi_szerep(nyelv, n, bool(ctx.get('gerinc')) and (nyelv, n) in GERINC_SZEREP_EPITO)
     if n == 12 and ctx.get('gerinc'):
         olv = SZN.olvasoi_12(ctx.get('sorai') or [], motivum_mezo(ctx, 'folerendelt_fogalom').split(' (')[0]) or olv
+    if n in (13, 14) and ctx.get('sorai') and ctx['sorai'][0].get('id') in SZEREP_KAROLI_MOTIVUMOK:
+        olv = (olvasoi_13 if n == 13 else olvasoi_14)(ctx['sorai']) or olv
     if olv:
         szakasz.append(olvasoi_bekezdes(olv))
     ctx['szerep'] = szerep
@@ -2230,6 +2232,85 @@ def blokk_szocikkek(m, tokenek, sorai):
                   gerinc=OLVASOI_SABLON['szocikkek_gerinc'] if gerinc_aktiv(m['id']) else '')
     blokk_szoveg = _lexikon_blokk(m['id'], 'szocikkek', forras_lista, licenc_lista, hatokor, torzs, olv)
     return blokk_szoveg, tisztazatlan_erintve, forras_licenc_parok
+
+
+# A 13. és a 14. szerep olvasói mondata az adatból, példával (a felhasználó, 2026-10-29: „ez érthetőbbé kell tenni”;
+# „a gerinc szavai is elvont”): a motívum saját szavai kiejtéssel, a Károli szavai, egy-egy példa a lap adatából.
+
+def _szo_nev(strong):
+    """A szó neve a prózában: a kiejtés (héberül a jóváhagyott), ennek híján a lemma, névelővel: „a kárá”."""
+    lk = lemma_kiejtes(strong)
+    nev = (lk[1] or lk[0]) if lk else strong
+    return '%s %s' % (_nevelo(nev), nev)
+
+
+def _es_lista(xs):
+    return xs[0] if len(xs) == 1 else '%s és %s' % (', '.join(xs[:-1]), xs[-1])
+
+
+def motivum_szavai_proza(sorai, nyelvvel=True):
+    """`nyelvvel`: „a héber szövegben a kárá és a sém, a görögben az epikaleó”; különben „a kárá és a sém, illetve az
+    epikaleó” — a motívumsorok Strong-tokenjei nyelvenként."""
+    st = []
+    for k in SZK.gerinc_kombinaciok(sorai):
+        st += [s for s in sorted(k) if s not in st]
+    reszek = []
+    for ny, betu in (('a héber szövegben', 'H'), ('a görögben', 'G')):
+        xs = [_szo_nev(s) for s in st if s.startswith(betu)]
+        if xs:
+            reszek.append('%s %s' % (ny, _es_lista(xs)) if nyelvvel else _es_lista(xs))
+    return ', '.join(reszek) if nyelvvel else ', illetve '.join(reszek)
+
+
+def _idezet(xs):
+    return _es_lista(['„%s”' % x for x in xs])
+
+
+def olvasoi_13(sorai):
+    """A 13. szerep olvasói mondata, vagy None (nincs Károli-szó)."""
+    tetel = SZK.karoli_megfelelok(sorai)
+    n = sum(1 for s in sorai if s.get('karoli_szo'))
+    if not tetel or not n:
+        return None
+    l, alakok, helyek = tetel[0]
+    pelda = '„%s” %d igehelyen áll (%s%s)' % (l, len(helyek), ', '.join(alakok[:3]), '…' if len(alakok) > 3 else '')
+    if len(tetel) > 1:
+        pelda += ', a „%s” %d igehelyen' % (tetel[1][0], len(tetel[1][2]))
+    return ('Milyen magyar szavakkal fordítja a Károli-Biblia a motívumot a %d igehelyén. Minden sor egy magyar szó, és '
+            'a mellette álló szám azt mutatja, hány igehelyen fordul elő a %d közül. Például a %s. A sor végén ott vannak '
+            'az igehelyek is.' % (n, n, pelda))
+
+
+def _tagmondat(vers, szavak):
+    """A vers kulcsszavakat leginkább tartalmazó tagmondata (vessző, pontosvessző, kettőspont, pont mentén)."""
+    reszek = [r.strip() for r in re.split(r'[,;:.]', vers) if r.strip()]
+    return max(reszek, key=lambda r: sum(1 for w in szavak if w in r.lower())) if reszek else vers
+
+
+def olvasoi_14(sorai):
+    """A 14. szerep olvasói mondata (két eset, példával), vagy None (nincs kulcsszó)."""
+    kulcs = {k: v for k, v in SZK.kulcsszavak(sorai).items() if v}
+    if not kulcs:
+        return None
+    szavak = motivum_szavai_proza(sorai)
+    rejt = SZK.rejtett_parhuzamok(sorai, kulcs=kulcs)
+    hamis = SZK.hamis_parhuzamok(sorai, kulcs=kulcs)
+    minden = []
+    for v in kulcs.values():
+        minden += [w for w in v if w not in minden]
+    szoveg = 'Két csapda, amelybe a magyar olvasó a fordítás miatt beleeshet. **Rejtett párhuzam:** a motívum egy helye, ' \
+             'ahol %s áll, de a Károli más magyar szóval fordítja, ezért magyarul olvasva nem látszik, hogy ide tartozik. ' \
+             'Itt %d ilyen hely van' % (szavak, len(rejt))
+    if rejt:
+        h, k, _s, hi = rejt[0]
+        szoveg += ', például %s %s: „%s” (itt nem áll %s)' % (_nevelo(h), h, k, _idezet(hi))
+    szoveg += '. **Hamis párhuzam:** egy vers, amelyben magyarul ugyanazok a szavak állnak (%s), de a héber vagy görög ' \
+              'szövegben nem %s, ezért magyarul olvasva ide tartozónak tűnik, pedig nem. Itt %d ilyen vers ' \
+              'van' % (_idezet(minden), motivum_szavai_proza(sorai, nyelvvel=False), len(hamis))
+    if hamis:
+        h, vers, _g = hamis[0]
+        szoveg += ', például %s %s: „%s”' % (_nevelo(h), h, _tagmondat(vers, minden))
+    return szoveg + '.'
 
 
 def szo_felsorolas(tokenek):
