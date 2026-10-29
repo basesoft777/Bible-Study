@@ -70,7 +70,8 @@ def _ir(gyoker, relut, tartalom):
     konyvtar = os.path.dirname(teljes)
     if konyvtar and not os.path.isdir(konyvtar):
         os.makedirs(konyvtar)
-    with open(teljes, 'w', encoding='utf-8') as f:
+    # LF-fel ir (newline=''): Windowson sem lesz CRLF, mint az adat/ tablaiban (E19, KeyError 'illesztes')
+    with open(teljes, 'w', encoding='utf-8', newline='') as f:
         f.write(tartalom)
     return relut.replace(os.sep, '/')
 
