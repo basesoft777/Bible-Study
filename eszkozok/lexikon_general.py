@@ -902,15 +902,27 @@ SZEREP_SAJAT = {
 SZEREP_HIVATKOZAS = {
     ('gorog', 6): 'l. a 3. szakaszt (LXX-fordítói döntések)',
     ('heber', 6): 'l. a 3. szakaszt (LXX-fordítói döntések)',
-    ('gorog', 8): 'a motívum saját tokenjeihez nincs LSJ-sor a `lexikon_hivatkozasok.tsv`-ben; a rokon szavaknál (alább) és a kézi 2/b szakaszban l.',
+    ('gorog', 8): 'a motívum saját tokenjeihez nincs LSJ-sor a `lexikon_hivatkozasok.tsv`-ben',
     ('gorog', 9): 'l. az 1. szakasz táblázatát (UBS-jelentés oszlop; csak újszövetségi sorok)',
 }
-# A 7. szerep (SECE) adatosítva (F09 S2.4, DT189); a kézi 2/b szakaszban álló SECE-táblázatok a #70-ig
-# (a 2/b átírása) érintetlenek, ezért a „l. 2/b” mutató kiegészítő sorként marad (DT189).
-SZEREP_KEZI_2B = {
-    ('gorog', 7): 'a kézi SECE-táblázatok a 2/b szakaszban a #70-ig változatlanul állnak (l. 2/b), ha van',
-    ('heber', 7): 'a kézi SECE-táblázatok a 2/b szakaszban a #70-ig változatlanul állnak (l. 2/b), ha van',
-}
+# A 7. szerep (SECE) adatosított (F09 S2.4, DT189): a megfelelő-lista a szerep tartalma. A korábbi „kézi
+# SECE-táblázatok a 2/b-ben a #70-ig” mutató megszűnt (ISTENTISZT-001 arany lap, 2026-10-29): a 2/b rés generált
+# (`adat/lexikon_hivatkozasok.tsv`), kézi SECE-táblázat nincs benne.
+
+
+def _hivatkozas_szoveg(nyelv, n, ctx):
+    """A szerep hivatkozás-szövege. A görög 8. (LSJ) a motívum adatából: ha a saját tokenekhez nincs LSJ-sor, a rokon
+    szavak közül azokat nevezi meg, amelyeknek van (a „Rokon szavak” blokkban állnak); ha egyiknek sincs, jelölt hiány."""
+    hiv = SZEREP_HIVATKOZAS[(nyelv, n)]
+    if (nyelv, n) != ('gorog', 8):
+        return hiv
+    sorai = ctx.get('sorai') or []
+    tokenek = motivum_strong_tokenek(sorai)
+    lsj = {r.get('strong') for r in lexikon_hivatkozasok_sorok() if r.get('szotar') == 'LSJ'}
+    rokon = [t for t in rokon_szavak_strongok(sorai, tokenek) if t.startswith('G') and t in lsj]
+    if rokon:
+        return '%s; LSJ-szócikk a rokon szavaknál (alább): %s.' % (hiv, ', '.join(rokon))
+    return '%s, és a rokon szavaknál sincs: jelölt hiány.' % hiv
 ROKON_SZAVAK_CIM = '### Rokon szavak'
 
 
@@ -1633,10 +1645,8 @@ def _szerep_blokk(nyelv, sor, tokenek_ny, reszek, ctx):
     if allapot == 'adatosítva':
         if tart:
             szakasz.extend(tart)
-            if (nyelv, n) in SZEREP_KEZI_2B:
-                szakasz.append('*Hivatkozás: %s.*' % SZEREP_KEZI_2B[(nyelv, n)])
         elif (nyelv, n) in SZEREP_HIVATKOZAS and (nyelv, n) not in SZEREP_SAJAT:
-            hiv = SZEREP_HIVATKOZAS[(nyelv, n)]
+            hiv = _hivatkozas_szoveg(nyelv, n, ctx)
             szakasz.append('*Hivatkozás: %s%s*' % (hiv, '' if hiv.endswith('.') else '.'))
         elif _token_ures_blokkok(nyelv, n, szerep, tokenek_ny):
             szakasz.extend(_token_ures_blokkok(nyelv, n, szerep, tokenek_ny))
@@ -1645,9 +1655,6 @@ def _szerep_blokk(nyelv, sor, tokenek_ny, reszek, ctx):
             szakasz.append(ures_blokk(szerep, 'adatosítva, nincs bekötve',
                                       'a szerep adatosítva (a forrásfájl megvan), de a motívum tokenjeihez a '
                                       '`lexikon_hivatkozasok.tsv`-be nincs bekötve sor; a bekötés még nem történt meg'))
-    elif not tart and (nyelv, n) in SZEREP_KEZI_2B:
-        hiv = SZEREP_KEZI_2B[(nyelv, n)]
-        szakasz.append('*Hivatkozás: %s.*' % hiv)
     elif tart and ctx.get('gerinc') and (nyelv, n) in GERINC_TELJES:
         szakasz.extend(tart)
     else:
@@ -1701,9 +1708,8 @@ def szerep_vaz(tokenek, fajl_licenc_kulcsok, fajl_licenc_kulcsok_tbesg_tbesh, so
                                  % (cim, nyelv, cim.lower(), cim.lower()))
             continue
         blokkok = ['### %s szavak: %s' % (cim, ', '.join(tok_ny))]
-        if ctx['gerinc']:
-            # F131 (DT371 1.): a szótári gerinc a nyelvi blokk elején
-            blokkok.append(gerinc_nyelvi_blokk(nyelv, tok_ny, ctx))
+        # a szótári gerinc a 2. szerep („Mélységi szócikk”) tartalma (ISTENTISZT-001 arany lap, 2026-10-29: a DT371 1.
+        # helye módosítva; l. GERINC_SZEREP_EPITO ('gorog'/'heber', 2))
         for s in (g_sorok if nyelv == 'gorog' else h_sorok):
             if int(s['sorrend']) in kozos:
                 continue
@@ -2480,27 +2486,28 @@ def ubs_domensor(strong):
     return '**UBS-domének (Louw–Nida):** %s' % ' · '.join(reszek)
 
 
-def gerinc_nyelvi_blokk(nyelv, tokenek_ny, ctx):
-    """A „Jelentéstartomány” blokk egy nyelvre (a „2. Szótári háttér” nyelvi blokkjának elején)."""
+def _gerinc_szocikk(nyelv, n, tokenek_ny, reszek, ctx):
+    """A 2. szerep („Mélységi szócikk”) a gerinc-lapon: a szótári gerinc (a jelentéstartomány a Thayer, ill. a BDB
+    tagolásában) maga, saját címsor és mutató nélkül (ISTENTISZT-001 arany lap, 2026-10-29: a DT371 1. helye módosítva —
+    a gerinc és a 2. szerep egy hely)."""
     adat = gerinc_adat()
     szotar = 'Thayer' if nyelv == 'gorog' else 'BDB'
-    bek = ['#### Jelentéstartomány (szótári gerinc)']
+    bek = []
     for t in tokenek_ny:
         b, _n = gerinc_blokk(adat, szotar, t, ctx.get('sorai') or [], ctx)
         bek.extend(b)
         if nyelv == 'gorog':
             bek.append(ubs_domensor(t))
             ctx['fl'].setdefault(UBS_DNTG_JELENTESEK_FAJL, set()).add('UBS_DNTG')
-    return '\n\n'.join(bek)
+    return bek
 
 
 # A szerepmátrix szűkítése az arany lapon (DT371 1.; (i) az SDBH-doménsor marad; (ii) a BDB-fej a
-# gerincben; (iv) a TBESH helyén mutató + egysoros magyar jelentés). A többi szerep változatlan.
+# gerincben — a 2. szerepben; (iv) a TBESH helyén mutató + egysoros magyar jelentés). A többi szerep változatlan.
 
-def _gerinc_hivatkozas_gerincre(nyelv, n, tokenek_ny, reszek, ctx):
-    mit = {('gorog', 2): 'a Thayer-szócikk', ('heber', 2): 'a BDB-szócikk',
-           ('heber', 8): 'a BDB-szócikk feje (nyelvi háttér)'}[(nyelv, n)]
-    return ['*Hivatkozás: %s a fenti „Jelentéstartomány (szótári gerinc)” blokkban áll (DT371).*' % mit]
+def _gerinc_bdb_fej_mutato(nyelv, n, tokenek_ny, reszek, ctx):
+    return ['*Hivatkozás: a BDB-szócikk feje (nyelvi háttér) a 2. szerepben („Mélységi szócikk”) áll, szavanként „A szócikk '
+            'feje (nyelvi háttér)” címmel (DT371).*']
 
 
 def _gerinc_tbesh(nyelv, n, tokenek_ny, reszek, ctx):
@@ -2599,9 +2606,9 @@ GERINC_SZEREP_EPITO = {
     ('gorog', 12): _gerinc_nave,
     ('gorog', 13): _gerinc_karoli,
     ('gorog', 14): _gerinc_karoli,
-    ('gorog', 2): _gerinc_hivatkozas_gerincre,
-    ('heber', 2): _gerinc_hivatkozas_gerincre,
-    ('heber', 8): _gerinc_hivatkozas_gerincre,
+    ('gorog', 2): _gerinc_szocikk,
+    ('heber', 2): _gerinc_szocikk,
+    ('heber', 8): _gerinc_bdb_fej_mutato,
     ('heber', 1): _gerinc_tbesh,
     ('gorog', 3): _gerinc_tw,
     ('heber', 3): _gerinc_tw,

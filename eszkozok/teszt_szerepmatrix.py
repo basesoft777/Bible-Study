@@ -150,12 +150,9 @@ class TestVazIstentiszt(unittest.TestCase):
                 continue  # a nyelvfüggetlen sor egyszer jelenik meg
             b = self._blokk_szerep(kulcs, n)
             vannak = UROS_RE.findall(b)
-            if (r['nyelv'], n) in LG.SZEREP_KEZI_2B:
-                # DT-F78c 3.: kézi 2/b hivatkozás, nem üres blokk
-                self.assertEqual(vannak, [], (r['nyelv'], n))
-                self.assertIn('*Hivatkozás:', b)
-                self.assertIn('l. 2/b', b)
-            elif r['allapot'] in ('nincs adatosítva', 'javaslat'):
+            # a „kézi SECE-táblázatok a 2/b-ben” mutató megszűnt (ISTENTISZT-001 arany lap, 2026-10-29): a 2/b generált
+            self.assertNotIn('l. 2/b', b, (r['nyelv'], n))
+            if r['allapot'] in ('nincs adatosítva', 'javaslat'):
                 self.assertEqual(len(vannak), 1, (r['nyelv'], n, b[:200]))
                 self.assertEqual(vannak[0][1], r['allapot'])
                 self.assertIn('(üres blokk:', b)
@@ -363,12 +360,13 @@ class TestSeceMounceF09(unittest.TestCase):
         m = re.search(r'^#### %d\. .*?(?=^#### |\Z)' % n, sz, re.M | re.S)
         return m.group(0)
 
-    def test_sece_lista_szo_szerint_es_2b_mutato_marad(self):
+    def test_sece_lista_szo_szerint_2b_mutato_nelkul(self):
         g = self._szerep('ISTENTISZT-001', 'gorog', 7)
         self.assertIn(_nfc('**G1941** · SECE — héber megfelelők (8): זָכַר, מָצָא, נָקַב, עָשָׂה, קָרָא, שׂוּם, שָׁכַן, שֻׁם'), _nfc(g))
         self.assertNotIn('ÜRES-BLOKK', g)
-        self.assertIn('*Hivatkozás:', g)  # DT189: a „l. 2/b” kiegészítő sorként marad
-        self.assertIn('l. 2/b', g)
+        # a „kézi SECE-táblázatok a 2/b-ben” mutató megszűnt (ISTENTISZT-001 arany lap, 2026-10-29): a 2/b generált
+        self.assertNotIn('l. 2/b', g)
+        self.assertNotIn('kézi SECE', g)
         h = self._szerep('ISTENTISZT-001', 'heber', 7)
         self.assertIn(_nfc('**H8034** · SECE — görög megfelelők (6): θρόνος, καλέω, καλός, καύχημα, ὄνομα, Σήμ'), _nfc(h))
         self.assertEqual([_nfc(x) for x in LG.sece_megfelelok('H7121')].count(_nfc('ἐπικαλέομαι')), 1)  # ismétlés nélkül

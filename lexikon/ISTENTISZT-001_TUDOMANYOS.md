@@ -448,7 +448,25 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 ### Görög szavak: G1941
 
-#### Jelentéstartomány (szótári gerinc)
+#### 1. Alapjelentés
+
+##### TBESG G1941 — 1. jelentés
+
+> to call, name, surname : with accusative (cl.), Mat.10:25; pass., Act.1:23 4:36 10:5, 18 10:22 11:13 12:12, 25 , Heb.11:16 ; τ. ὄνομα, before ἐπί (denoting possession, as Heb. עַל. . שֻׁם קָרָא), Act.15:17 (LXX), Jas.2:7 (see. CB on Amo.9:12 ).
+
+**🇭🇺** hívni, nevezni, nevet adni: tárgyesettel (klasszikus), Mt 10:25; szenvedő alakban: ApCsel 1:23; 4:36; 10:5, 18, 22; 11:13; 12:12, 25; Zsid 11:16; τ. ὄνομα (t. onoma), ἐπί (epi) előtt (birtoklást jelölve, mint a héb. עַל. . שֻׁם קָרָא (kárá sum … al)): ApCsel 15:17 (LXX), Jak 2:7 (l. CB, Ámós 9:12-höz).
+
+*Forrás: konkordancia/TBESG.txt*
+
+##### TBESG G1941 — 2. jelentés
+
+> Mid. (so also act.; cl., LXX), to call upon, invoke, appeal to (θεόν, θεούς, Hdt., Xen., al.; cf. Deiss., LAE , 426): Καίσαρα (Σεβαστόν, Act.25:25 ), Act.25:11-12, 21 26:32 28:19 ; sc. τ. Κύριον Ἰησοῦν, Act.7:59; μάρτυρα (cl.) τ. θεόν, 2Co.1:23; πατέρα, 1Pe.1:17; τ. κύριον, Rom.10:12 , 2Ti.2:22 ; τ. ὄνομα κυρίου (μου, σου; like Heb. יְהוָֹה שֻׁם קָרָא), Act.2:21 (LXX) Act.9:14, 21 22:16 , Rom.10:13-14 " (LXX) 1Co.1:2 (Cremer, 335, 742).† (AS)
+
+**🇭🇺** Közép alakban (így cselekvő alakban is; klasszikus, LXX): segítségül hívni, invokálni, folyamodni valakihez (θεόν (theon), θεούς (theúsz): Hérodotosz, Xenophón és mások; vö. Deissmann, LAE, 426): Καίσαρα (Kaiszara) (Σεβαστόν (Szebaszton), ApCsel 25:25), ApCsel 25:11-12, 21; 26:32; 28:19; ti. τ. Κύριον Ἰησοῦν (t. Kürion Iészún), ApCsel 7:59; μάρτυρα (martüra) (klasszikus) τ. θεόν (t. theon), 2Kor 1:23; πατέρα (patera), 1Pét 1:17; τ. κύριον (t. kürion), Róm 10:12; 2Tim 2:22; τ. ὄνομα κυρίου (t. onoma küriú) (μου (mú), σου (szú); mint a héb. יְהוָֹה שֻׁם קָרָא (kárá sum JHVH)), ApCsel 2:21 (LXX); 9:14, 21; 22:16; Róm 10:13-14 (LXX); 1Kor 1:2. † (Abbott-Smith; † = minden újszövetségi előfordulás felsorolva)
+
+*Forrás: konkordancia/TBESG.txt*
+
+#### 2. Mélységi szócikk
 
 ##### G1941 — ἐπικαλέω (epikaleó) · Thayer
 
@@ -481,28 +499,6 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 **UBS-domének (Louw–Nida):** 33.131 hívni; nevezni · 33.176 segítségül hívni; folyamodni valakihez; segítséget kérni · 56.15 ügyében fellebbezni; magasabb bírósághoz fellebbezni · 11.28 (Isten) népéhez tartozni; valakinek a népe lenni
 
-#### 1. Alapjelentés
-
-##### TBESG G1941 — 1. jelentés
-
-> to call, name, surname : with accusative (cl.), Mat.10:25; pass., Act.1:23 4:36 10:5, 18 10:22 11:13 12:12, 25 , Heb.11:16 ; τ. ὄνομα, before ἐπί (denoting possession, as Heb. עַל. . שֻׁם קָרָא), Act.15:17 (LXX), Jas.2:7 (see. CB on Amo.9:12 ).
-
-**🇭🇺** hívni, nevezni, nevet adni: tárgyesettel (klasszikus), Mt 10:25; szenvedő alakban: ApCsel 1:23; 4:36; 10:5, 18, 22; 11:13; 12:12, 25; Zsid 11:16; τ. ὄνομα (t. onoma), ἐπί (epi) előtt (birtoklást jelölve, mint a héb. עַל. . שֻׁם קָרָא (kárá sum … al)): ApCsel 15:17 (LXX), Jak 2:7 (l. CB, Ámós 9:12-höz).
-
-*Forrás: konkordancia/TBESG.txt*
-
-##### TBESG G1941 — 2. jelentés
-
-> Mid. (so also act.; cl., LXX), to call upon, invoke, appeal to (θεόν, θεούς, Hdt., Xen., al.; cf. Deiss., LAE , 426): Καίσαρα (Σεβαστόν, Act.25:25 ), Act.25:11-12, 21 26:32 28:19 ; sc. τ. Κύριον Ἰησοῦν, Act.7:59; μάρτυρα (cl.) τ. θεόν, 2Co.1:23; πατέρα, 1Pe.1:17; τ. κύριον, Rom.10:12 , 2Ti.2:22 ; τ. ὄνομα κυρίου (μου, σου; like Heb. יְהוָֹה שֻׁם קָרָא), Act.2:21 (LXX) Act.9:14, 21 22:16 , Rom.10:13-14 " (LXX) 1Co.1:2 (Cremer, 335, 742).† (AS)
-
-**🇭🇺** Közép alakban (így cselekvő alakban is; klasszikus, LXX): segítségül hívni, invokálni, folyamodni valakihez (θεόν (theon), θεούς (theúsz): Hérodotosz, Xenophón és mások; vö. Deissmann, LAE, 426): Καίσαρα (Kaiszara) (Σεβαστόν (Szebaszton), ApCsel 25:25), ApCsel 25:11-12, 21; 26:32; 28:19; ti. τ. Κύριον Ἰησοῦν (t. Kürion Iészún), ApCsel 7:59; μάρτυρα (martüra) (klasszikus) τ. θεόν (t. theon), 2Kor 1:23; πατέρα (patera), 1Pét 1:17; τ. κύριον (t. kürion), Róm 10:12; 2Tim 2:22; τ. ὄνομα κυρίου (t. onoma küriú) (μου (mú), σου (szú); mint a héb. יְהוָֹה שֻׁם קָרָא (kárá sum JHVH)), ApCsel 2:21 (LXX); 9:14, 21; 22:16; Róm 10:13-14 (LXX); 1Kor 1:2. † (Abbott-Smith; † = minden újszövetségi előfordulás felsorolva)
-
-*Forrás: konkordancia/TBESG.txt*
-
-#### 2. Mélységi szócikk
-
-*Hivatkozás: a Thayer-szócikk a fenti „Jelentéstartomány (szótári gerinc)” blokkban áll (DT371).*
-
 #### 3. Teológiai szócikk
 
 **G1941** · tW: `kt/call-speakloudly` — a szócikkek szövege a szónézetben: [szónézet: /szo/G1941](/szo/G1941) · forrás: `konkordancia/tW_szocikkek.tsv`
@@ -523,11 +519,9 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 **G1941** · SECE — héber megfelelők (8): זָכַר, מָצָא, נָקַב, עָשָׂה, קָרָא, שׂוּם, שָׁכַן, שֻׁם
 
-*Hivatkozás: a kézi SECE-táblázatok a 2/b szakaszban a #70-ig változatlanul állnak (l. 2/b), ha van.*
-
 #### 8. Nyelvi háttér
 
-*Hivatkozás: a motívum saját tokenjeihez nincs LSJ-sor a `lexikon_hivatkozasok.tsv`-ben; a rokon szavaknál (alább) és a kézi 2/b szakaszban l.*
+*Hivatkozás: a motívum saját tokenjeihez nincs LSJ-sor a `lexikon_hivatkozasok.tsv`-ben; LSJ-szócikk a rokon szavaknál (alább): G2564.*
 
 #### 9. Versenkénti jelentés
 
@@ -539,7 +533,13 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 ### Héber szavak: H7121, H8034
 
-#### Jelentéstartomány (szótári gerinc)
+#### 1. Alapjelentés
+
+**H7121** · hívni: megszólítani *(a TBESH rövid jelentése magyarul, `adat/glosszak_heber_hu.tsv`)* · a teljes TBESH-szócikk: [szónézet: /szo/H7121](/szo/H7121) · forrás: `konkordancia/TBESH.txt`
+
+**H8034** · név *(a TBESH rövid jelentése magyarul, `adat/glosszak_heber_hu.tsv`)* · a teljes TBESH-szócikk: [szónézet: /szo/H8034](/szo/H8034) · forrás: `konkordancia/TBESH.txt`
+
+#### 2. Mélységi szócikk
 
 ##### H7121 — קָרָא (kárá) · BDB
 
@@ -659,16 +659,6 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 *A teljes szócikk: [szónézet: /szo/H8034](/szo/H8034) · forrás: `konkordancia/BDB_teljes_unabridged.tsv`*
 
-#### 1. Alapjelentés
-
-**H7121** · hívni: megszólítani *(a TBESH rövid jelentése magyarul, `adat/glosszak_heber_hu.tsv`)* · a teljes TBESH-szócikk: [szónézet: /szo/H7121](/szo/H7121) · forrás: `konkordancia/TBESH.txt`
-
-**H8034** · név *(a TBESH rövid jelentése magyarul, `adat/glosszak_heber_hu.tsv`)* · a teljes TBESH-szócikk: [szónézet: /szo/H8034](/szo/H8034) · forrás: `konkordancia/TBESH.txt`
-
-#### 2. Mélységi szócikk
-
-*Hivatkozás: a BDB-szócikk a fenti „Jelentéstartomány (szótári gerinc)” blokkban áll (DT371).*
-
 #### 3. Teológiai szócikk
 
 **H7121** · **TWOT:** 2063
@@ -709,11 +699,9 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 **H8034** · SECE — görög megfelelők (6): θρόνος, καλέω, καλός, καύχημα, ὄνομα, Σήμ
 
-*Hivatkozás: a kézi SECE-táblázatok a 2/b szakaszban a #70-ig változatlanul állnak (l. 2/b), ha van.*
-
 #### 8. Nyelvi háttér
 
-*Hivatkozás: a BDB-szócikk feje (nyelvi háttér) a fenti „Jelentéstartomány (szótári gerinc)” blokkban áll (DT371).*
+*Hivatkozás: a BDB-szócikk feje (nyelvi háttér) a 2. szerepben („Mélységi szócikk”) áll, szavanként „A szócikk feje (nyelvi háttér)” címmel (DT371).*
 
 #### 9. Versenkénti jelentés
 

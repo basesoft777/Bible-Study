@@ -605,7 +605,17 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 ### Görög szavak: G0086
 
-#### Jelentéstartomány (szótári gerinc)
+#### 1. Alapjelentés
+
+##### TBESG G0086 — 2. jelentés
+
+> the abode of Hades, the underivorld ; in NT, the abode of departed spirits, Hades : ἐν τ. ᾅ., Luk.16:23; εἰς ᾅ., Act.2:27,31 ; πύλαι ᾅδου, Mat.16:18; κλεῖς τοῦ ᾅ., Rev.1:18; metaphorically, ἕως ᾅ., Mat.11:23 , Luk.10:15 ; personified, Rev.6:8 20:13,14 (Cremer, 67, 610; MM, VGT , see word). † (AS)
+
+**🇭🇺** Hádész lakhelye, az alvilág; az Újszövetségben az elhunyt szellemek lakhelye, Hádész: ἐν τ. ᾅ., Luk 16:23; εἰς ᾅ., ApCsel 2:27, 31; πύλαι ᾅδου, Mt 16:18; κλεῖς τοῦ ᾅ., Jel 1:18; átvitt értelemben, ἕως ᾅ., Mt 11:23, Luk 10:15; megszemélyesítve, Jel 6:8; 20:13, 14 (MM, VGT, l. a címszót). † (AS)
+
+*Forrás: konkordancia/TBESG.txt*
+
+#### 2. Mélységi szócikk
 
 ##### G0086 — ᾍδης (Hadész) · Thayer
 
@@ -632,20 +642,6 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 **UBS-domének (Louw–Nida):** 1.19 a halottak világa; Hádész · 23.108 halál; a halál hatalma · 12.50 halál
 
-#### 1. Alapjelentés
-
-##### TBESG G0086 — 2. jelentés
-
-> the abode of Hades, the underivorld ; in NT, the abode of departed spirits, Hades : ἐν τ. ᾅ., Luk.16:23; εἰς ᾅ., Act.2:27,31 ; πύλαι ᾅδου, Mat.16:18; κλεῖς τοῦ ᾅ., Rev.1:18; metaphorically, ἕως ᾅ., Mat.11:23 , Luk.10:15 ; personified, Rev.6:8 20:13,14 (Cremer, 67, 610; MM, VGT , see word). † (AS)
-
-**🇭🇺** Hádész lakhelye, az alvilág; az Újszövetségben az elhunyt szellemek lakhelye, Hádész: ἐν τ. ᾅ., Luk 16:23; εἰς ᾅ., ApCsel 2:27, 31; πύλαι ᾅδου, Mt 16:18; κλεῖς τοῦ ᾅ., Jel 1:18; átvitt értelemben, ἕως ᾅ., Mt 11:23, Luk 10:15; megszemélyesítve, Jel 6:8; 20:13, 14 (MM, VGT, l. a címszót). † (AS)
-
-*Forrás: konkordancia/TBESG.txt*
-
-#### 2. Mélységi szócikk
-
-*Hivatkozás: a Thayer-szócikk a fenti „Jelentéstartomány (szótári gerinc)” blokkban áll (DT371).*
-
 #### 3. Teológiai szócikk
 
 **G0086** · tW: `kt/hades`, `kt/hell` — a szócikkek szövege a szónézetben: [szónézet: /szo/G0086](/szo/G0086) · forrás: `konkordancia/tW_szocikkek.tsv`
@@ -666,11 +662,9 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 **G0086** · SECE — héber megfelelők (5): דּוּמָה, מוּת, מָוֶת, צַלְמָוֶת, שְׁאֹול
 
-*Hivatkozás: a kézi SECE-táblázatok a 2/b szakaszban a #70-ig változatlanul állnak (l. 2/b), ha van.*
-
 #### 8. Nyelvi háttér
 
-*Hivatkozás: a motívum saját tokenjeihez nincs LSJ-sor a `lexikon_hivatkozasok.tsv`-ben; a rokon szavaknál (alább) és a kézi 2/b szakaszban l.*
+*Hivatkozás: a motívum saját tokenjeihez nincs LSJ-sor a `lexikon_hivatkozasok.tsv`-ben, és a rokon szavaknál sincs: jelölt hiány.*
 
 #### 9. Versenkénti jelentés
 
@@ -682,7 +676,11 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 ### Héber szavak: H7585
 
-#### Jelentéstartomány (szótári gerinc)
+#### 1. Alapjelentés
+
+**H7585** · pokol: Seol *(a TBESH rövid jelentése magyarul, `adat/glosszak_heber_hu.tsv`)* · a teljes TBESH-szócikk: [szónézet: /szo/H7585](/szo/H7585) · forrás: `konkordancia/TBESH.txt`
+
+#### 2. Mélységi szócikk
 
 ##### H7585 — שְׁאוֹל (seól) · BDB
 
@@ -733,14 +731,6 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 *A teljes szócikk: [szónézet: /szo/H7585](/szo/H7585) · forrás: `konkordancia/BDB_teljes_unabridged.tsv`*
 
-#### 1. Alapjelentés
-
-**H7585** · pokol: Seol *(a TBESH rövid jelentése magyarul, `adat/glosszak_heber_hu.tsv`)* · a teljes TBESH-szócikk: [szónézet: /szo/H7585](/szo/H7585) · forrás: `konkordancia/TBESH.txt`
-
-#### 2. Mélységi szócikk
-
-*Hivatkozás: a BDB-szócikk a fenti „Jelentéstartomány (szótári gerinc)” blokkban áll (DT371).*
-
 #### 3. Teológiai szócikk
 
 **H7585** · **TWOT:** 2303c
@@ -769,11 +759,9 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 **H7585** · SECE — görög megfelelők (2): ᾅδης, θάνατος
 
-*Hivatkozás: a kézi SECE-táblázatok a 2/b szakaszban a #70-ig változatlanul állnak (l. 2/b), ha van.*
-
 #### 8. Nyelvi háttér
 
-*Hivatkozás: a BDB-szócikk feje (nyelvi háttér) a fenti „Jelentéstartomány (szótári gerinc)” blokkban áll (DT371).*
+*Hivatkozás: a BDB-szócikk feje (nyelvi háttér) a 2. szerepben („Mélységi szócikk”) áll, szavanként „A szócikk feje (nyelvi háttér)” címmel (DT371).*
 
 #### 9. Versenkénti jelentés
 
