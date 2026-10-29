@@ -220,7 +220,7 @@ KAROLI_PAROK = os.path.join(GYOKER, 'adat', 'karoli_strong')
 MANKO_KI = os.path.join(GYOKER, 'naplok', 'F121_GLOSSZA_FORDITAS_manko.tsv')
 SZOJEGYZEK_KI = os.path.join(GYOKER, 'naplok', 'F121_GLOSSZA_FORDITAS_szojegyzek_javaslat.tsv')
 VISSZA_KI = os.path.join(GYOKER, 'naplok', 'F121_GLOSSZA_FORDITAS_visszamenoleges.tsv')
-SZAMJEL = ('F121 (DT393)', 'F121.8', 'F121.14')          # a megjegyzes mező eleje: a menet új / cserélt sorai
+SZAMJEL = ('F121 (DT393)', 'F121.8', 'F121.14', 'F121.18')          # a megjegyzes mező eleje: a menet új / cserélt sorai
 KOTOSZO = {'valaki', 'valakinek', 'valakit', 'valakivel', 'valakire', 'valahol', 'valamit', 'valaminek', 'lenni', 'szó',
            'szerint', 'innen', 'olyan', 'amellyel', 'cselekvés', 'állapot', 'folyamat', 'egy', 'vagy', 'azt', 'hogy'}
 
@@ -369,6 +369,9 @@ def parancs_manko(jel=None, ki_ut=None):
     tabla = egyenertek_tabla(jelek)
     term = [(r['angol'], r['magyar']) for r in tsv_sorok(TERMINOLOGIA)]
     tovabbi_c = {}
+    sys.path.insert(0, os.path.join(GYOKER, 'eszkozok'))
+    import ellenoriz as E
+    lex_idx = E._forditasok_forras_szoveg_idx(os.path.join(GYOKER, 'adat'))   # a lexikon_hivatkozasok.tsv szoveg_en-je (pl. TBESG jelentésszámmal)
     forras = {}
     for r in tsv_sorok(os.path.join(KONKORDANCIA, 'UBS_DBH_jelentesek.tsv')):
         for mezo, o in DBH_MEZOK.items():
@@ -394,7 +397,7 @@ def parancs_manko(jel=None, ki_ut=None):
         bdb_sz = ' '.join(bdb_cache[st] for st in strongok)
         if s['mezo'] == 'forditas_hu':
             # hosszú szócikk-szöveg: a terminológia-kulcsok szintjén (kulcsszo_ellenorzes); a forrás a 13. szabály feloldójáé
-            angol = tovabbi_forras(s, KONKORDANCIA, tovabbi_c) or ''
+            angol = tovabbi_forras(s, KONKORDANCIA, tovabbi_c) or lex_idx.get(k, '')
             kk = kulcsszo_ellenorzes(s, angol, term, karoli, bdb_sz)
             sz = ('egyezik', '%d szójegyzéki kulcs a forrásban (a 5. kapu a fordításban megköveteli)' % len(kk)) if kk else ('nincs_adat', '')
             hi_k = [x for x in kk if x[2] == 'nem_talal']

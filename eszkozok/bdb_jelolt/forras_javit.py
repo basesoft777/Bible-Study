@@ -315,6 +315,11 @@ KEZI_HIVATKOZAS = [
      'a BDB „call with … the name ׳י in worship, so 12:8; 13:4; 21:33; 26:35” sora (1Móz) a 26:35-öt idézi; ott a שֵׁם nem áll '
      '(Ézsau feleségei), a TAHOT szerint az 1Móz 26:25-ben áll a קָרָא mellett (H7121 + H8034), és a szövegkörnyezet (oltárt épít, '
      'segítségül hívja az Úr nevét) a 12:8; 13:4; 21:33 formulája: sajtóhiba a forrásban, 26:35 → 26:25 (DT381 (a))'),
+    # F123 (felhasználó, 2026-10-29, a #123 ALVIL-001 ciklusában): a H7585 3/b pontja „׳שׁ וַאֲבַדּוֺן Prov 25:11”
+    ('H7585', 'Prov 25:11, see', '25:11', '15:11',
+     'a BDB „׳שׁ וַאֲבַדּוֺן Prov 25:11” sora a Péld 25:11-et idézi; ott a שְׁאוֹל nem áll (aranyalma ezüst tányéron), a TAHOT '
+     'szerint a „Seól és Abaddón” párosa a Péld 15:11-ben áll (H7585 + H0011), és a BDB a 27:20-at (a pár másik helyét) a '
+     'szócikk 1. pontjában külön idézi: sajtóhiba a forrásban, 25:11 → 15:11 (a DT381 (a) mintájára)'),
 ]
 
 
@@ -328,7 +333,8 @@ def kezi_hivatkozas_sorok(stat):
         h = next((h for h in hatar if horgony in nezet[h[0]:h[1]]), None)
         if h is None:
             raise SystemExit('HIBA: a kézi hivatkozás-sor horgonya nem található: %s %r' % (st, horgony))
-        poz = token_elofordulas(nezet, forras_alak)
+        # F123: a vers-token után írásjel is állhat („Prov 25:11, see …”); a hivatkozás-javítás csak a fejezet:vers alakot keresi
+        poz = [m.start() for m in re.finditer(r'(?<!\S)' + re.escape(forras_alak) + r'(?![^\s,;.)\]])', nezet)]
         k = next((i for i, p in enumerate(poz, 1) if h[0] <= p < h[1] and p >= h[0] + nezet[h[0]:h[1]].find(horgony)), None)
         if k is None:
             raise SystemExit('HIBA: a kézi hivatkozás-sor forrás-alakja nem található a horgonyban: %s %r' % (st, forras_alak))

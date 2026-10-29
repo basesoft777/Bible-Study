@@ -127,7 +127,9 @@ def _szam_minta():
     # szám, előtte szóköz/kezdet/gondolatjel, utána szóköz és nem szám/hivatkozás
     # változatok: „— 1 …”, „1. …”, „1.a …” (a betű az alpont), és hivatkozás utáni „… 48:14 2 first”
     # a „1. egyes szám”, „3. nőnemű”, „2. hímnemű többes szám” alak-személyek nem jelentés-sorszámok (H0157, H1869, H7121)
-    return re.compile(r'(?:(?<=—\s)|(?<=\s-\s)|(?<=;-\s)|(?<=[.;:)]\s)|(?<=\d\s)|^)(?!\d{1,2}\.\s+' + PERSON + r')(?!\d{1,2}\.?\s+' + PERSON_EN + r')(?!\d{1,2}\s+' + PERSON_HU_PONT_NELKUL + r')(?!\d\s+' + KONYV_SZAM + r')(\d{1,2})(?:\.(?=[a-l]\s)|\.?\s)(?![a-e][;,]\s)(?=[^\d\s:,;.)(&]|\d{1,2}(?:st|nd|rd|th)\b|[1-3][A-Z][a-z]+\.?\s+\d|\((?:c\.|kb\.|approximately|about)?\s*\d+\s*(?:t\.|times|-?szor|-?szer|-?ször)[);])'
+    # F123 (2026-10-29): a szögletes zárójellel záruló szakasz utáni szám is jelölő („… post-Biblical Judaism and NT.] 4 ׳שׁ
+    # figurative …”, H7585); a teljes BDB-n 7 szócikk 184 sora kap helyes jelentéspontot (naplok/F123_bdb_szelet_meres.tsv)
+    return re.compile(r'(?:(?<=—\s)|(?<=\s-\s)|(?<=;-\s)|(?<=[.;:)\]]\s)|(?<=\d\s)|^)(?!\d{1,2}\.\s+' + PERSON + r')(?!\d{1,2}\.?\s+' + PERSON_EN + r')(?!\d{1,2}\s+' + PERSON_HU_PONT_NELKUL + r')(?!\d\s+' + KONYV_SZAM + r')(\d{1,2})(?:\.(?=[a-l]\s)|\.?\s)(?![a-e][;,]\s)(?=[^\d\s:,;.)(&]|\d{1,2}(?:st|nd|rd|th)\b|[1-3][A-Z][a-z]+\.?\s+\d|\((?:c\.|kb\.|approximately|about)?\s*\d+\s*(?:t\.|times|-?szor|-?szer|-?ször)[);])'
                       r'(?!\S*\^)')
 
 
