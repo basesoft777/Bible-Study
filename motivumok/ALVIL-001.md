@@ -18,7 +18,9 @@ A motívum lexikai azonosságú: a שְׁאוֹל (*seól*) és a görög ᾍδ�
 
 <!-- ADAT-NÉZET: 1. pont, 7 oszlopos előfordulás-tábla | forrás: adat/elofordulasok.tsv | cél: general.py --cel study | SZINT: apparatus -->
 
-A fenti egyetlen (Zsolt 16:10) genezisi-ívbeli előforduláson túl a *seól* még **63 egyedi igehelyen** fordul elő az Ószövetségben (a teljes H7585-mező 64 egyedi verset ad; Hós 13:14-ben a szó kétszer szerepel egy versen belül, ez a nyers 66-os számlálást magyarázza).
+A fenti egyetlen (Zsolt 16:10) genezisi-ívbeli előforduláson túl a *seól* még **63 egyedi igehelyen** fordul elő az Ószövetségben (a teljes H7585-mező 64 egyedi verset ad; a Hós 13:14-ben és a Zsolt 49:15-ben a szó kétszer szerepel egy versen belül, ez a nyers 66-os számlálást magyarázza: 64 + 2).
+
+【NAPLO: örökölt mondat javítva (ELLENOR_F123_ALVIL-001 E2), F123.ALVIL.J5, 2026-10-29 — a régi mondat csak a Hós 13:14-et nevezte meg (64 + 1 = 65). Lekérdezés: `lekerdez.py scan H7585` → 64 igehely, 66 szó-előfordulás: scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H7585 | n=64 | ts=2026-10-29T12:58Z · `--szakasz "Hós 13:14"` → 1 igehely, 2 szó-előfordulás: scope=range:Hós 13:14 | forras=TAHOT_kivonat.tsv | strong=H7585 | n=1 | ts=2026-10-29T12:58Z · `--szakasz "Zsolt 49:15"` → 1 igehely, 2 szó-előfordulás: scope=range:Zsolt 49:15 | forras=TAHOT_kivonat.tsv | strong=H7585 | n=1 | ts=2026-10-29T12:58Z】
 
 **Összegzés:** a 63 új igehely túlnyomó többsége személyes gyász, lament/könyörgés, bölcsességi figyelmeztetés vagy prófétai ítélet-gúnydal regiszterébe rendeződik — egyik sem mond ellent a study fő ívének (Krisztus legyőzi a Seólt/hádészt), sőt a Hós 13:14 lelet **közvetlenül megerősíti és kibővíti** azt egy második, páli idézettel.
 
