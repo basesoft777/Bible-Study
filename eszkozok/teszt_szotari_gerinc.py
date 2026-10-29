@@ -10,7 +10,7 @@ Vizsgálja (a brief 2. lépése szerint):
   - a `horgonnyal` szakasz jelölését; az `elakad` szakasz explicit hiányát (angol + fordításra vár);
   - a magyar szövegben meg nem talált példahelyet (nincs kiemelés, napló);
   - a kapcsolót (csak az arany lap), az `ellenoriz.py` 17. szabályát, és a valódi adaton
-    mind a 32 ISTENTISZT-001 sor címkéjét vagy kimondott hiányát.
+    mind a 33 ISTENTISZT-001 sor címkéjét vagy kimondott hiányát.
 
     python eszkozok/teszt_szotari_gerinc.py
 """
@@ -330,13 +330,13 @@ class DbhOszlop(unittest.TestCase):
 
 
 class ValodiAdat(unittest.TestCase):
-    """A repó mai adatán: mind a 32 sor kap címkét vagy kimondott hiányt, ellentmondás nélkül;
-    a 17. szabály RENDBEN."""
+    """A repó mai adatán: mind a 33 sor kap címkét vagy kimondott hiányt, ellentmondás nélkül;
+    a 17. szabály RENDBEN. (A 33. sor az Ézs 64:6, DT399.)"""
 
-    def test_32_sor(self):
+    def test_33_sor(self):
         _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
         sorai = [s for s in elo_sorok if s['id'] == 'ISTENTISZT-001']
-        self.assertEqual(len(sorai), 32)
+        self.assertEqual(len(sorai), 33)
         a = LG.gerinc_adat()
         for s in sorai:
             cella, ik = LG.jelentes_cella(a, s)
@@ -390,7 +390,7 @@ class ValodiAdat(unittest.TestCase):
         self.assertIn('kétszer áll', ik)
 
     def test_tobb_token_szabaly_merete(self):
-        # a 32 sorból a szabály két sort érint (1Móz 4:26, 1Kir 18:24), mindkettőn mindkét H-tokent
+        # a 33 sorból a szabály két sort érint (1Móz 4:26, 1Kir 18:24), mindkettőn mindkét H-tokent
         _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
         a = LG.gerinc_adat()
         erint = set()

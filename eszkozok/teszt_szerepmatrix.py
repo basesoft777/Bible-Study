@@ -421,6 +421,31 @@ class TestLabjegyzetF09(unittest.TestCase):
     def test_lxx_parok_forrasmegjeloles(self):
         self.assertIn('lxx-morph, © Seth Kushniryk, CC BY 4.0', self.kolofon)
 
+    def test_stepbible_egyszer_kulon_sorban(self):
+        # a licencsor „.; ” határral fűzi az lxx-morph mögé; a kolofonban önálló, egyszeri sor
+        stepbible = ('*Data created by www.STEPBible.org based on work at Tyndale House Cambridge '
+                     '(CC BY 4.0)*')
+        self.assertEqual(self.kolofon.count('Data created by www.STEPBible.org'), 1)
+        self.assertIn('\n' + stepbible + '\n', self.kolofon + '\n')
+        self.assertNotIn('.;', self.kolofon)
+        self.assertIn('*lxx-morph, © Seth Kushniryk, CC BY 4.0, github.com/OpenScriptorium/lxx-morph.*',
+                      self.kolofon)
+
+    def test_megjelolesek_dolt_sora_lezart(self):
+        # minden megjelölés-sor `*`-gal nyit és zár (a TWOT-sor is)
+        for sor in self.kolofon.split('\n'):
+            if sor.startswith('*') and not sor.startswith('**'):
+                self.assertTrue(sor.rstrip().endswith('*'), sor)
+        twot = [s for s in self.kolofon.split('\n') if s.startswith('*TWOT:')]
+        self.assertEqual(len(twot), 1)
+        self.assertTrue(twot[0].endswith('nem idézi.*'), twot[0])
+
+    def test_megjeloles_reszek(self):
+        self.assertEqual(LG.megjeloles_reszek('A, b.; Data created by X (CC BY 4.0)'),
+                         ['A, b.', 'Data created by X (CC BY 4.0)'])
+        self.assertEqual(LG.megjeloles_reszek('Egy mondat; vesszővel tovább.'),
+                         ['Egy mondat; vesszővel tovább.'])
+
 
 class TestTbeshF09(unittest.TestCase):
     """F09 S2.2 / S2.5b: a héber 1. szerep (TBESH) és a H8034 bekötése (DT187)."""

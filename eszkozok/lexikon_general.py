@@ -3119,6 +3119,13 @@ def kotelezo_megjeloles(kulcs, tw_szoveg_kozolve=True):
     return szoveg
 
 
+def megjeloles_reszek(szoveg):
+    """Egy kötelező megjelölés önálló mondatai: a licencsor a több forrás megjelölését „.; ” határral
+    fűzi össze (pl. `lxx-morph, … lxx-morph.; Data created by www.STEPBible.org …`). A határnál bont,
+    a mondatok szövege szó szerint marad."""
+    return [r.strip() for r in re.split(r'(?<=\.);\s+', szoveg) if r.strip()]
+
+
 def kolofon_naplo_cella(motivum_id):
     """A Kolofon „Kereszthivatkozás-napló” cellája. A nem migrált motívumnál
     a `tematikus_lezart/naplok/` alatti napló; a migrált motívumnál (F11 M3,
@@ -3180,11 +3187,13 @@ def blokk_kolofon(m, fajl_licenc_blokk_lista, tw_szoveg_kozolve=True):
         megjelolesek.append('*%s*' % MOUNCE_MEGJELOLES)
     if any(os.path.basename(f) == 'LSJ_teljes.tsv' for f in per_fajl):
         megjelolesek.append('*%s*' % lsj_forrasmegjeloles())
-    # F09 S2.7 (F05 S11): a kötelező forrásmegjelölések szó szerint
+    # F09 S2.7 (F05 S11): a kötelező forrásmegjelölések szó szerint. Egy licencsor több megjelölést is
+    # hordozhat („.; ” határral, pl. lxx-morph + STEPBible): mindegyik külön sorba kerül, és egyszer áll.
     for kulcs in sorted({FAJL_MEGJELOLES_KULCS[f] for f in per_fajl if f in FAJL_MEGJELOLES_KULCS}):
-        szoveg = '*%s*' % kotelezo_megjeloles(kulcs, tw_szoveg_kozolve)
-        if szoveg not in megjelolesek:
-            megjelolesek.append(szoveg)
+        for resz in megjeloles_reszek(kotelezo_megjeloles(kulcs, tw_szoveg_kozolve)):
+            szoveg = '*%s*' % resz
+            if szoveg not in megjelolesek:
+                megjelolesek.append(szoveg)
 
     torzs = '\n'.join(metaadat_sorok) + '\n\n---\n\n' + '\n'.join(forras_sorok)
     if megjelolesek:
