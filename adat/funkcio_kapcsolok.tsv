@@ -1,0 +1,7 @@
+# Funkció-kapcsolók (SEMA 2.44): egy funkció a renderben csak `aktiv` állapotban jelenik meg. `id`: `*` (minden motívum) vagy motívum-id (a motívumonként jóváhagyott funkció; a kódban nincs motívum-id szerinti kivétel). A `szerep_cim_resz` a szerep nevéből elhagyott rész, amíg a kapcsoló nem `aktiv`.
+kapcsolo	id	allapot	szerep_cim_resz	indok	proveniencia
+SZPA_JOIN	*	felfuggesztve	 (+ SZPA)	a SzPA-join felfüggesztve: szünetelő funkció, nem adathiány; az olvasónak nem jelzendő (a felhasználó: „törölni: +SZPA (konkordáns alternatíva): jelölt hiány — a SzPA-join felfüggesztve; a hiány nincs kitöltve. - ez fel van függesztbe”)	scope=manual | forras=DT-F131x (a felhasználó döntése, az orkesztrátor chatjében) | ts=2026-10-29
+SZOTARI_GERINC	ISTENTISZT-001	aktiv		a szótári gerinc (DT272) a motívumon kutatói döntéssel kész (DT371)	scope=manual | forras=DT371 (a korábbi kódbeli SZOTARI_GERINC_MOTIVUMOK) | ts=2026-10-29
+SZOTARI_GERINC	ALVIL-001	aktiv		a szótári gerinc a motívumon kész	scope=manual | forras=a korábbi kódbeli SZOTARI_GERINC_MOTIVUMOK | ts=2026-10-29
+KAROLI_MEGFELELOK	ISTENTISZT-001	aktiv		a 13–14. szerep (Károli-megfelelők, rejtett / hamis párhuzam) a motívumon jóváhagyva	scope=manual | forras=DT-F131s (a korábbi kódbeli SZEREP_KAROLI_MOTIVUMOK) | ts=2026-10-29
+KAROLI_MEGFELELOK	ALVIL-001	aktiv		a 13–14. szerep a gerinc-lapon is (a felhasználó: „a blokos dolgok a többi lexikonra is vonatkoznak értelen szerűen”)	scope=manual | forras=DT-F131x | ts=2026-10-29

@@ -122,7 +122,8 @@ class TestVazIstentiszt(unittest.TestCase):
         self.tabla = _tsv_sorok()
 
     def _nyelv_sorrend(self, ny):
-        return [(int(r['sorrend']), r['szerep']) for r in
+        # a szerep neve a renderben a nem aktív funkció-kapcsolók címrésze nélkül (pl. „ (+ SZPA)”)
+        return [(int(r['sorrend']), LG.szerep_megjelenitett(r['szerep'])) for r in
                 sorted((r for r in self.tabla if r['nyelv'] == ny), key=lambda r: int(r['sorrend']))]
 
     def test_sorrend_es_teljesseg(self):
@@ -170,7 +171,9 @@ class TestVazIstentiszt(unittest.TestCase):
         self.assertIn('**G1941** · az LXX a motívum 23 ószövetségi versében: egyező 19 · eltérő 3 · görögből hiányzik 1', b6)
         self.assertIn('[3. LXX-fordítói döntések](#3-lxx-fordítói-döntések)', b6)
         b9 = self._blokk_szerep('gorog', 9)
-        self.assertIn('A motívum 10 újszövetségi sorából 10-nál van ilyen hozzárendelés.', b9)
+        self.assertIn('a motívum 10 újszövetségi helyén a vers-szintű jelentést', b9)
+        self.assertIn('(9 helyen egyértelmű, 1 helyen jelölt, nem egyértelmű)', b9)
+        self.assertIn('[szónézet: /szo/G1941](/szo/G1941)', b9)
         for n in (6, 9):
             self.assertIn('**Mit mutat ez a rész?**', self._blokk_szerep('gorog', n))
         b5 = self._blokk_szerep('gorog', 5)
@@ -345,8 +348,11 @@ class TestKiejtesF09(unittest.TestCase):
         self.assertEqual(LG.gorog_magyaros('epikalesētai'), 'epikaleszétai')
         talalat = LG.kiejtes_ehhez('ApCsel 9:14', 'G1941')
         self.assertEqual(talalat[1], 'epikalúmenúsz')
-        # héber alak: a STEP-átírás változatlan
-        self.assertEqual(LG.kiejtes_ehhez('1Móz 4:26', 'H7121')[1], "k.Ro'")
+        # héber alak: a TAHOT angolos átírása helyett a lemma jóváhagyott magyaros kiejtése (kiejtés-szabály, 2026-10-29)
+        self.assertEqual(LG.kiejtes_ehhez('1Móz 4:26', 'H7121')[1], 'kárá')
+        # jóváhagyott kiejtés nélküli héber lemma: nincs kiejtés (jelölt hiány), a STEP-átírás sem áll
+        self.assertEqual(LG.lemma_kiejtes('H2142')[1], '')
+        self.assertIn('H2142', LG.KIEJTES_HIANY)
 
     def test_heber_kiejtes_ket_azonos_step_atirasu_lemma(self):
         # H7496 és H7497 STEP-átírása azonos (ra.pah), a lemma-kulcs különbözteti meg
@@ -371,7 +377,8 @@ class TestSeceMounceF09(unittest.TestCase):
         g = self._szerep('ISTENTISZT-001', 'gorog', 7)
         # olvasható táblázat (ISTENTISZT-001 arany lap, 2026-10-29): szó, kiejtés, Strong, rövid jelentés; a motívum
         # szava jelölve; a SECE szólistája és sorrendje változatlan
-        self.assertIn('**G1941** · SECE — héber megfelelők (8):', g)
+        self.assertIn(_nfc('**G1941 — ἐπικαλέω (epikaleó)** · SECE — héber megfelelők (8):'), _nfc(g))
+        self.assertIn('| זָכַר | — | H2142 |', _nfc(g)) if False else self.assertIn(_nfc('| זָכַר | — | H2142 |'), _nfc(g))
         szavak = [_nfc(s.split(' | ')[0].lstrip('| ').split(' *(')[0].strip('*')) for s in g.split('\n')
                   if s.startswith('| ') and not s.startswith('| Szó')]
         self.assertEqual(szavak, [_nfc(x) for x in 'זָכַר מָצָא נָקַב עָשָׂה קָרָא שׂוּם שָׁכַן שֻׁם'.split()])
@@ -382,9 +389,11 @@ class TestSeceMounceF09(unittest.TestCase):
         self.assertNotIn('l. 2/b', g)
         self.assertNotIn('kézi SECE', g)
         h = self._szerep('ISTENTISZT-001', 'heber', 7)
-        self.assertIn('**H8034** · SECE — görög megfelelők (6):', h)
-        self.assertIn(_nfc('| **ἐπικαλέομαι** *(a motívum szava)* | epikaleó | G1941 | to call (on)/name *(fordításra vár)* |'),
+        self.assertIn(_nfc('**H8034 — שֵׁם (sém)** · SECE — görög megfelelők (6):'), _nfc(h))
+        # a kiírt alak (ἐπικαλέομαι) nem a TBESG-lemma: a kiírt alak gépi kiejtése áll
+        self.assertIn(_nfc('| **ἐπικαλέομαι** *(a motívum szava)* | epikaleomai | G1941 | to call (on)/name *(fordításra vár)* |'),
                       _nfc(h))
+        self.assertNotIn('LN: ', g + h)
         self.assertEqual([_nfc(x) for x in LG.sece_megfelelok('H7121')].count(_nfc('ἐπικαλέομαι')), 1)  # ismétlés nélkül
 
     def test_sece_hianyzo_lista_nem_targyalja(self):

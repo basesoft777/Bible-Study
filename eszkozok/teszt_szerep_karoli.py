@@ -128,7 +128,9 @@ class ValodiAdat(unittest.TestCase):
 
     def test_blokk_13_szpa_es_proveniencia(self):
         b = SK.blokk_13(self.ist, '2026-10-29')
-        self.assertTrue(any('+SZPA' in x and 'jelölt hiány' in x for x in b))
+        # ISTENTISZT-001 arany lap, 2026-10-29: a SzPA-join felfüggesztve (adat/funkcio_kapcsolok.tsv) — a „+SZPA” sor nem áll
+        self.assertFalse(SK.szpa_aktiv())
+        self.assertFalse(any('+SZPA' in x for x in b))
         self.assertRegex(b[-1], r'scope=.* \| forras=.* \| n=33 \| ts=2026-10-29')
 
 

@@ -11,7 +11,8 @@ A szó a szótári alakja szerint számít (a mai helyesírású `szotari_alak_m
 a *nevét* és a *nevedet* egy szó; a táblában nem álló alak önmaga.
 
 - 13. **Károli-megfelelők:** a motívumsorok `karoli_szo`-jának szavai (névelő nélkül), szótári alakonként: a szóalakok, és
-  hány igehelyen, melyiken. A „+SZPA” rész jelölt hiány (a SzPA-join felfüggesztve).
+  hány igehelyen, melyiken. A „+SZPA” rész csak akkor áll (jelölt hiányként), ha az `adat/funkcio_kapcsolok.tsv`
+  `SZPA_JOIN` kapcsolója `aktiv`; felfüggesztve a sor és a szerepcím „(+ SZPA)” része elmarad (ISTENTISZT-001 arany lap, 2026-10-29).
 - 14. **Rejtett / hamis párhuzam** (a szerepmátrix szerint). A motívum *gerinc-kombinációi* a sorok `strong` mezőjének
   különböző értékei (pl. `H7121+H8034`, `G1941`). Legalább `KULCS_MIN_SOR` (3) soros kombinációnként a *kulcsszavak*: az e
   kombinációjú sorok `karoli_szo`-jának legalább felében álló szótári alakok, azok nélkül, amelyek a Károli–Strong
@@ -46,6 +47,31 @@ JELOLTEK = os.path.join(GYOKER, 'adat', 'jeloltek.tsv')
 SZOTARI_ALAK = os.path.join(GYOKER, 'adat', 'szoto', 'karoli_szotari_alak.tsv')
 PAROK = os.path.join(GYOKER, 'adat', 'karoli_strong')
 GRAMMATIKAI = os.path.join(GYOKER, 'adat', 'grammatikai_strongok.tsv')
+KAPCSOLOK = os.path.join(GYOKER, 'adat', 'funkcio_kapcsolok.tsv')
+
+
+def funkcio_kapcsolok(ut=None):
+    """[sor] az `adat/funkcio_kapcsolok.tsv`-ből (SEMA 2.44; `id`: `*` vagy motívum-id); hiányzó fájl: üres."""
+    ut = ut or KAPCSOLOK
+    if not os.path.exists(ut):
+        return []
+    with open(ut, encoding='utf-8', newline='') as f:
+        s = [x.rstrip('\r') for x in f.read().split('\n') if x.strip() and not x.startswith('#')]
+    fej = s[0].split('\t')
+    return [dict(zip(fej, x.split('\t'))) for x in s[1:]]
+
+
+def kapcsolo_motivumok(kapcsolo, ut=None):
+    """Azok a motívum-id-k, amelyeken a kapcsoló `aktiv` (a motívumonként jóváhagyott funkció)."""
+    return frozenset(r['id'] for r in funkcio_kapcsolok(ut) if r['kapcsolo'] == kapcsolo and r['id'] != '*'
+                     and r.get('allapot') == 'aktiv')
+
+
+def szpa_aktiv():
+    """A SzPA-join (konkordáns alternatíva) állapota: igaz, ha a kapcsoló `aktiv` (vagy nincs sora)."""
+    r = next((x for x in funkcio_kapcsolok() if x['kapcsolo'] == 'SZPA_JOIN' and x['id'] == '*'), None)
+    return r is None or r.get('allapot') == 'aktiv'
+
 
 NEVELO = frozenset({'a', 'az'})
 KULCS_ARANY = 0.5
@@ -284,7 +310,8 @@ def blokk_13(sorai, ts):
     out = ['*A motívum igehelyeinek Károli-szóalakjai (`adat/elofordulasok.tsv`, `karoli_szo`), szótári alakonként '
            '(`adat/szoto/karoli_szotari_alak.tsv`, mai helyesírás), névelő nélkül: a szóalakok, és hány igehelyen, melyiken.*']
     out.append('\n'.join('- **%s** (%d) — %s: %s' % (l, len(h), ', '.join(a), ', '.join(h)) for l, a, h in tetel))
-    out.append('*+SZPA (konkordáns alternatíva): jelölt hiány — a SzPA-join felfüggesztve; a hiány nincs kitöltve.*')
+    if szpa_aktiv():
+        out.append('*+SZPA (konkordáns alternatíva): jelölt hiány — a hiány nincs kitöltve.*')
     out.append(_prov('adat/elofordulasok.tsv (id=%s, karoli_szo)' % mid,
                      'adat/elofordulasok.tsv+adat/szoto/karoli_szotari_alak.tsv (eszkozok/szerep_karoli.py)',
                      sum(1 for s in sorai if s.get('karoli_szo')), ts))

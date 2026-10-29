@@ -42,6 +42,10 @@ class TestElutasitasOka(unittest.TestCase):
         self.assertEqual(SZKZ.elutasitas_oka('passzív szerkezet, K1_passziv', minta),
                          'passzív szerkezet vagy megnevezés (negatív kritérium)')
         self.assertEqual(SZKZ.elutasitas_oka('semmi ilyen', minta), SZKZ.EGYEB_OK)
+        # ELLENOR_ISTENTISZT_OLVASOI 1.: a jogi fellebbezés a negatív kritérium „passzív/megnevezés jellegű vagy jogi
+        # használat” szövege előtt illeszkedik
+        self.assertEqual(SZKZ.elutasitas_oka('K3_jogi: fellebbez; negatív kritérium: passzív/megnevezés jellegű vagy '
+                                             'jogi használat', minta), 'jogi fellebbezés')
 
     def test_nevelo(self):
         self.assertEqual(SZKZ.nevelo('1Krón 16:8'), 'az')
