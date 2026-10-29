@@ -487,6 +487,56 @@ def parancs_visszamenoleges(jel=None, ki_ut=None, uj_term=None):
     return ki
 
 
+NAVE_KI = os.path.join(GYOKER, 'naplok', 'NAVE_tema_hu_manko.tsv')
+KAROLI_LEXIKON = os.path.join(GYOKER, 'adat', 'szoto', 'karoli_lexikon.tsv')
+
+
+def parancs_nave(be_ut, ki_ut=None):
+    """A 12. szerep (Nave) téma- és altételnév-tervezetének kapui és mankói (ISTENTISZT-001 arany lap, 2026-10-29). A
+    bemenet TSV (`tema_id`, `cimke_en` — a témanév sorában üres —, `angol`, `magyar`); a tervezet nem a gyorsítótárba megy,
+    hanem a jóváhagyás után az `adat/nave_tema_hu.tsv`-be. Soronként: (1) a tiltott fordulatok (`forditas_kapuk`, DT241);
+    (2) a terminológia (`terminologia.tsv`): az angolban szó szerint álló kulcs magyar alakja a fordításban; (3) a szójegyzék
+    (`egyenertek_tabla`: az egész angol kifejezés elfogadott magyar alakja); (4) a Károli (a rangsor 2. szintje): a fordítás
+    tartalmas szavainak töve (első 4 betű) a Károli-korpusz lexikonjában (`adat/szoto/karoli_lexikon.tsv`) —
+    tájékoztató, a `nem_talal` nem hiba (DT239)."""
+    sys.path.insert(0, os.path.join(GYOKER, 'eszkozok'))
+    import forditas_kapuk as K
+    tiltott = K.tiltott_betolt()
+    term = [(r['angol'], r['magyar']) for r in tsv_sorok(TERMINOLOGIA)]
+    tabla = egyenertek_tabla()
+    lex = {r['alak'].lower()[:4] for r in tsv_sorok(KAROLI_LEXIKON) if len(r['alak']) >= 4}
+    ki = []
+    for s in tsv_sorok(be_ut):
+        angol, magyar = s['angol'], s['magyar']
+        t = ['%s → %s' % (alak, helyette) for alak, minta, helyette, _v in tiltott if minta.search(magyar)]
+        ti = ('tiltott: ' + '; '.join(t)) if t else 'rendben'
+        tk = [(a, m) for a, m in term if re.search(r'(?<![A-Za-z])%s(?![A-Za-z])' % re.escape(a), angol, re.IGNORECASE)]
+        hiany = ['%s→%s' % (a, m) for a, m in tk if m.lower() not in magyar.lower()]
+        te = ('utkozik: ' + ', '.join(hiany)) if hiany else (('egyezik: %d kulcs' % len(tk)) if tk else 'nincs_adat')
+        el = tabla.get(angol.lower())
+        if el:
+            sz = 'egyezik' if any(a in magyar.lower() for a in el) else 'utkozik: a tábla %s' % '/'.join(
+                '%s×%d' % x for x in el.most_common(3))
+        else:
+            sz = 'nincs_adat'
+        szavak_ = [w for w in re.findall(r'[A-Za-zÀ-ž]+', magyar) if len(w) >= 4 and w.lower() not in KOTOSZO]
+        nem = [w for w in szavak_ if w.lower()[:4] not in lex]
+        ka = ('nem_talal: ' + ', '.join(nem)) if nem else (('egyezik: %d szó' % len(szavak_)) if szavak_ else
+                                                            'nincs_ellenorzendo')
+        eltero = [n for n, v in (('tiltott', ti), ('terminologia', te), ('szojegyzek', sz), ('karoli', ka))
+                  if v.startswith(('tiltott', 'utkozik', 'nem_talal'))]
+        ki.append([s['tema_id'], s['cimke_en'], angol, magyar, ti, te, sz, ka,
+                   ('kezi_iteletre: ' + ','.join(eltero)) if eltero else 'egyezik'])
+    ki_ut = ki_ut or NAVE_KI
+    with open(ki_ut, 'w', encoding='utf-8', newline='') as f:
+        f.write('\t'.join(['tema_id', 'cimke_en', 'angol', 'magyar', 'tiltott', 'terminologia', 'szojegyzek', 'karoli',
+                           'osszegzes']) + '\n')
+        for r in ki:
+            f.write('\t'.join(c.replace('\t', ' ') for c in r) + '\n')
+    print('Nave-mankó: %d sor; %s (%s)' % (len(ki), dict(Counter(r[-1].split(':')[0] for r in ki)), ki_ut))
+    return ki
+
+
 def main():
     a = sys.argv[1:]
 
@@ -498,8 +548,11 @@ def main():
         return parancs_szojegyzek(opt('--jel'), opt('--ki'))
     if a and a[0] == 'visszamenoleges':
         return parancs_visszamenoleges(opt('--jel'), opt('--ki'), opt('--uj-term'))
+    if a and a[0] == 'nave':
+        return parancs_nave(opt('--be'), opt('--ki'))
     if not a or a[0] != 'lista' or '--id' not in a:
-        raise SystemExit('hasznalat: glossza_lexikon_forditas.py lista --id <ID> [--kimenet <konyvtar>] | manko | szojegyzek | visszamenoleges')
+        raise SystemExit('hasznalat: glossza_lexikon_forditas.py lista --id <ID> [--kimenet <konyvtar>] | manko | szojegyzek | '
+                         'visszamenoleges | nave --be <tervezet.tsv> [--ki <kimenet>]')
     kim = a[a.index('--kimenet') + 1] if '--kimenet' in a else None
     lista(a[a.index('--id') + 1], kim)
 
