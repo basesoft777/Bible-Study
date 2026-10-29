@@ -221,7 +221,7 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 <a id="ige-1móz-37-35"></a>
 **1Móz 37:35**
 *Felkelének pedig minden ő fiai, és minden ő leányai, hogy vígasztalják őt, de nem akara vígasztalódni, hanem monda: Sírva megyek fiamhoz a sírba; és siratá őt az atyja.*
-Jákób gyásza: "leszállok fiamhoz a Seólba, gyászolva"
+Jákób gyásza: "leszállok fiamhoz a Seolba, gyászolva"
 
 <a id="ige-1móz-42-38"></a>
 **1Móz 42:38**
@@ -241,7 +241,7 @@ Júda közbenjárása, folytatás
 <a id="ige-4móz-16-30"></a>
 **4Móz 16:30**
 *Ha pedig az Úr valami új dolgot cselekszik, és a föld megnyitja az ő száját, és elnyeli őket, és mindazt, a mi az övék, és elevenen szállanak alá pokolba: akkor megismeritek, hogy gyalázták ezek az emberek az Urat.*
-élve alászállás a Seólba — Kóré lázadása, csodás ítélet
+élve alászállás a Seolba — Kóré lázadása, csodás ítélet
 
 <a id="ige-4móz-16-33"></a>
 **4Móz 16:33**
@@ -251,22 +251,22 @@ Júda közbenjárása, folytatás
 <a id="ige-5móz-32-22"></a>
 **5Móz 32:22**
 *Mert tűz lobban fel haragomban és leég a Seol fenekéig; megemészti a földet és gyümölcsét, és felgyújtja a hegyek alapjait.*
-Isten haragjának tüze "a Seól fenekéig" ég
+Isten haragjának tüze "a Seol fenekéig" ég
 
 <a id="ige-1sám-2-6"></a>
 **1Sám 2:6**
 *Az Úr öl és elevenít, Sírba visz és visszahoz.*
-"az Úr... Seólba visz és onnan felhoz" — Anna éneke
+"az Úr... Seolba visz és onnan felhoz" — Anna éneke
 
 <a id="ige-2sám-22-6"></a>
 **2Sám 22:6**
 *A pokol kötelei vettek körül, S a halál tőrei estek reám.*
-"a Seól kötelei körülvettek" (= Zsolt 18:6 párhuzam)
+"a Seol kötelei körülvettek" (= Zsolt 18:6 párhuzam)
 
 <a id="ige-1kir-2-6"></a>
 **1Kir 2:6**
 *Cselekedjél a te bölcseséged szerint, és ne engedd, hogy megőszülvén, békességgel menjen a koporsóba.*
-Dávid Salamonnak — Joáb "őszen szálljon a Seólba"
+Dávid Salamonnak — Joáb "őszen szálljon a Seolba"
 
 <a id="ige-1kir-2-9"></a>
 **1Kir 2:9**
@@ -276,52 +276,52 @@ ua. — Simei
 <a id="ige-jób-7-9"></a>
 **Jób 7:9**
 *A felhő eltünik és elmegy, így a ki leszáll a sírba, nem jő fel többé.*
-"aki leszáll a Seólba, nem jön fel"
+"aki leszáll a Seolba, nem jön fel"
 
 <a id="ige-jób-11-8"></a>
 **Jób 11:8**
 *Magasabb az égnél: mit teszel tehát? Mélyebb az alvilágnál; hogy ismerheted meg?*
-"mélyebb, mint a Seól" — Isten mindentudása
+"mélyebb, mint a Seol" — Isten mindentudása
 
 <a id="ige-jób-14-13"></a>
 **Jób 14:13**
 *Vajha engem a holtak országában tartanál; rejtegetnél engemet addig, a míg elmúlik a te haragod; határt vetnél nékem, azután megemlékeznél rólam!*
-"bár rejtenél el a Seólban"
+"bár rejtenél el a Seolban"
 
 <a id="ige-jób-17-12"></a>
 **Jób 17:12**
 *Ha reménykedem is, a sír már az én házam, a sötétségben vetettem az én ágyamat.*
-"ha várom is: a Seól az én házam"
+"ha várom is: a Seol az én házam"
 
 <a id="ige-jób-17-15"></a>
 **Jób 17:15**
 *Leszáll az majd a sír üregébe, velem együtt nyugoszik a porban.*
-"leszáll-e a Seól rúdjaihoz"
+"leszáll-e a Seol rúdjaihoz"
 
 <a id="ige-jób-21-13"></a>
 **Jób 21:13**
 *Jóllétben töltik el napjaikat, és egy pillanat alatt szállnak alá a sírba;*
-"egy pillanat alatt szállnak a Seólba"
+"egy pillanat alatt szállnak a Seolba"
 
 <a id="ige-jób-24-19"></a>
 **Jób 24:19**
 *Szárazság és hőség nyeli el a hó vizét, a pokol azokat, a kik vétkeznek.*
-"a Seól elragadja a bűnösöket"
+"a Seol elragadja a bűnösöket"
 
 <a id="ige-jób-26-6"></a>
 **Jób 26:6**
 *Az alvilág mezítelen előtte, és eltakaratlan a holtak országa.*
-"a Seól mezítelen Isten előtt"
+"a Seol mezítelen Isten előtt"
 
 <a id="ige-zsolt-6-6"></a>
 **Zsolt 6:6**
 *Mert nincs emlékezés rólad a halálban, a seolban kicsoda dicsőít téged?*
-"nincs Rólad emlékezés a Seólban"
+"nincs Rólad emlékezés a Seolban"
 
 <a id="ige-zsolt-9-18"></a>
 **Zsolt 9:18**
 *Seolba jutnak a gonoszok, oda minden nép, a mely elfeledkezik Istenről.*
-"a gonoszok visszatérnek a Seólba"
+"a gonoszok visszatérnek a Seolba"
 
 <a id="ige-zsolt-16-10"></a>
 **Zsolt 16:10**
@@ -331,172 +331,172 @@ ua. — Simei
 <a id="ige-zsolt-18-6"></a>
 **Zsolt 18:6**
 *A Seol kötelei vettek körül; a halál tőrei fogtak meg engem.*
-"a Seól kötelei körülvettek" (= 2Sám 22:6)
+"a Seol kötelei körülvettek" (= 2Sám 22:6)
 
 <a id="ige-zsolt-30-4"></a>
 **Zsolt 30:4**
 *Uram, felhoztad a Seolból az én lelkemet, fölélesztettél a sírbaszállók közül.*
-hálaadás — "kihoztad lelkem a Seólból"
+hálaadás — "kihoztad lelkem a Seolból"
 
 <a id="ige-zsolt-31-18"></a>
 **Zsolt 31:18**
 *Uram, ne szégyenüljek meg, mivelhogy hívlak téged; a gonoszok szégyenüljenek meg és pusztuljanak a Seolba.*
-"hallgassanak el a gonoszok a Seólban"
+"hallgassanak el a gonoszok a Seolban"
 
 <a id="ige-zsolt-49-15"></a>
 **Zsolt 49:15**
 *Mint juhok, a Seolra vettetnek, a halál legelteti őket, és az igazak uralkodnak rajtok reggel; alakjokat elemészti a Seol, távol az ő lakásuktól.*
-"mint juhok a Seólnak rendelve"
+"mint juhok a Seolnak rendelve"
 
 <a id="ige-zsolt-49-16"></a>
 **Zsolt 49:16**
 *Csak Isten válthatja ki lelkemet a Seol kezéből, mikor az megragad engem. Szela.*
-"Isten megváltja lelkemet a Seól kezéből"
+"Isten megváltja lelkemet a Seol kezéből"
 
 <a id="ige-zsolt-55-16"></a>
 **Zsolt 55:16**
 *A halál vegye őket körül, elevenen szálljanak a Seolba; mert gonoszság van lakásukban, kebelökben.*
-"szálljanak élve a Seólba"
+"szálljanak élve a Seolba"
 
 <a id="ige-zsolt-86-13"></a>
 **Zsolt 86:13**
 *Mert nagy én rajtam a te kegyelmed, és kiszabadítottad lelkemet a mélységes pokolból.*
-"kihoztad lelkem a legmélyebb Seólból"
+"kihoztad lelkem a legmélyebb Seolból"
 
 <a id="ige-zsolt-88-4"></a>
 **Zsolt 88:4**
 *Mert betelt a lelkem nyomorúságokkal, és életem a Seolig jutott.*
-"életem közel a Seólhoz"
+"életem közel a Seolhoz"
 
 <a id="ige-zsolt-89-49"></a>
 **Zsolt 89:49**
 *Kicsoda oly erős, hogy éljen és ne lásson halált s megszabadítsa magát a Seolnak kezéből? Szela.*
-"ki menti meg lelkét a Seól kezéből"
+"ki menti meg lelkét a Seol kezéből"
 
 <a id="ige-zsolt-116-3"></a>
 **Zsolt 116:3**
 *Körülvettek engem a halál kötelei, és a pokol szorongattatásai támadtak meg engem; nyomorúságba és ínségbe jutottam.*
-"a Seól szorongatásai megragadtak"
+"a Seol szorongatásai megragadtak"
 
 <a id="ige-zsolt-139-8"></a>
 **Zsolt 139:8**
 *Ha a mennybe hágok fel, ott vagy; ha a Seolba vetek ágyat, ott is jelen vagy.*
-"ha a Seólban vetek ágyat, ott is vagy" — Isten mindenütt-jelenvalósága
+"ha a Seolban vetek ágyat, ott is vagy" — Isten mindenütt-jelenvalósága
 
 <a id="ige-zsolt-141-7"></a>
 **Zsolt 141:7**
 *Mint a ki a földet vágja és hányja, úgy szóratnak szét csontjaik a Seol torkában.*
-"mint mikor szántanak... a Seól szájánál"
+"mint mikor szántanak... a Seol szájánál"
 
 <a id="ige-péld-1-12"></a>
 **Péld 1:12**
 *Nyeljük el azokat, mint a sír elevenen, és egészen, mint a kik mélységbe szállottak;*
-"elnyeljük őket elevenen, mint a Seól"
+"elnyeljük őket elevenen, mint a Seol"
 
 <a id="ige-péld-5-5"></a>
 **Péld 5:5**
 *Az ő lábai a halálra mennek, az ő léptei a sírba törekszenek.*
-a parázna lába a Seólba száll
+a parázna lába a Seolba száll
 
 <a id="ige-péld-7-27"></a>
 **Péld 7:27**
 *Sírba vívő út az ő háza, a mely levisz a halálnak hajlékába.*
-háza a Seól útja
+háza a Seol útja
 
 <a id="ige-péld-9-18"></a>
 **Péld 9:18**
 *És az nem tudja, hogy ott élet nélkül valók vannak; és a pokol mélyébe esnek az ő hivatalosai!*
-a balgák a Seól mélyén
+a balgák a Seol mélyén
 
 <a id="ige-péld-15-11"></a>
 **Péld 15:11**
 *A sír és a pokol az Úr előtt vannak; mennyivel inkább az emberek szíve.*
-Seól és Abaddón Isten előtt
+Seol és Abaddón Isten előtt
 
 <a id="ige-péld-15-24"></a>
 **Péld 15:24**
 *Az életnek úta felfelé van az értelmes ember számára, hogy eltávozzék a pokoltól, mely aláfelé van.*
-"hogy elkerülje a Seólt alant"
+"hogy elkerülje a Seolt alant"
 
 <a id="ige-péld-23-14"></a>
 **Péld 23:14**
 *Te vesszővel vered meg őt: és az ő lelkét a pokolból ragadod ki.*
-"kiragadod lelkét a Seólból"
+"kiragadod lelkét a Seolból"
 
 <a id="ige-péld-27-20"></a>
 **Péld 27:20**
 *Mint a sír és a pokol meg nem elégednek, úgy az embernek szemei meg nem elégednek.*
-"a Seól és Abaddón nem elégszik meg"
+"a Seol és Abaddón nem elégszik meg"
 
 <a id="ige-péld-30-16"></a>
 **Péld 30:16**
 *A sír és a meddő asszony, a föld meg nem elégszik a vízzel, és a tűz nem mondja: elég!*
-Seól a négy "nem-elégedő" dolog közt
+Seol a négy "nem-elégedő" dolog közt
 
 <a id="ige-préd-9-12"></a>
 **Préd 9:12**
 *Valamit hatalmadban van cselekedni erőd szerint, azt cselekedjed; mert semmi cselekedet, okoskodás, tudomány és bölcseség nincs a Seolban, a hová menendő vagy.*
-"nincs tudás, munka, terv a Seólban, ahová mégy"
+"nincs tudás, munka, terv a Seolban, ahová mégy"
 
 <a id="ige-én-8-6"></a>
 **Én 8:6**
 *Tégy engem mintegy pecsétet a te szívedre, mintegy pecsétet a te karodra; mert erős a szeretet, mint a halál, kemény, mint a sír a buzgó szerelem; lángjai tűznek lángjai, az Úrnak lángjai.*
-"a szerelem kemény, mint a Seól"
+"a szerelem kemény, mint a Seol"
 
 <a id="ige-ézs-5-14"></a>
 **Ézs 5:14**
 *Azért a sír kiszélesíti torkát és feltátja száját szertelen, és leszállnak abba népem főemberei, és zajongó sokasága, és minden örvendezői;*
-Júda ítélete — a Seól kitágítja torkát
+Júda ítélete — a Seol kitágítja torkát
 
 <a id="ige-ézs-7-11"></a>
 **Ézs 7:11**
 *Kérj jelt magadnak az Úrtól, a te Istenedtől, kérj a mélységben vagy fent a magasban!*
-"kérj jelt... tégy mélyre, mint a Seól"
+"kérj jelt... tégy mélyre, mint a Seol"
 
 <a id="ige-ézs-14-9"></a>
 **Ézs 14:9**
 *Alant a sír megindul te miattad megérkezésedkor, miattad felriasztja árnyait, a föld minden hatalmasit, felkölti székeikről a népek minden királyait;*
-Babilon-gúnydal — a Seól megmozdul (ugyanaz a szakasz, ahol a רְפָאִים (refáím) is szerepel, l. HODIT-001)
+Babilon-gúnydal — a Seol megmozdul (ugyanaz a szakasz, ahol a רְפָאִים (refáím) is szerepel, l. HODIT-001)
 
 <a id="ige-ézs-14-11"></a>
 **Ézs 14:11**
 *Kevélységed és lantjaid zengése a sírba szállt; fekvő ágyad férgek, és takaró lepled pondrók!*
-"büszkeséged leszállt a Seólba"
+"büszkeséged leszállt a Seolba"
 
 <a id="ige-ézs-14-15"></a>
 **Ézs 14:15**
 *Pedig a sírba szállsz alá, sírgödör mélységébe!*
-"a Seól legmélyére vitetel"
+"a Seol legmélyére vitetel"
 
 <a id="ige-ézs-28-15"></a>
 **Ézs 28:15**
 *Mert így szóltok: Frigyet kötöttünk a halállal, a sírral meg szövetséget csináltunk; az ostorozó áradat ha jő, nem ér el minket; mert a hazugságot választók oltalmunkul, és csalásba rejtezénk el!*
-"szövetséget kötöttünk a Seóllal"
+"szövetséget kötöttünk a Seollal"
 
 <a id="ige-ézs-28-18"></a>
 **Ézs 28:18**
 *És eltöröltetik a halállal való frigyetek, és a sírral való szövetségtek meg nem áll; az ostorozó áradat ha eljő, eltapod titeket,*
-"szövetségetek a Seóllal nem áll meg"
+"szövetségetek a Seollal nem áll meg"
 
 <a id="ige-ézs-38-10"></a>
 **Ézs 38:10**
 *Én azt mondám: hát napjaimnak nyugalmában kell alászállanom a sír kapuihoz, megfosztva többi éveimtől!*
-Ezékiás betegség-éneke — "a Seól kapuiba kell mennem"
+Ezékiás betegség-éneke — "a Seol kapuiba kell mennem"
 
 <a id="ige-ézs-38-18"></a>
 **Ézs 38:18**
 *Mert nem a sír dicsőít Téged, és nem a halál magasztal Téged, hűségedre nem a sírverembe szállók várnak!*
-"a Seól nem dicsőít téged"
+"a Seol nem dicsőít téged"
 
 <a id="ige-ézs-57-9"></a>
 **Ézs 57:9**
 *És menél a királyhoz olajjal, és megsokasítád keneteidet, és elküldéd követeidet messze földre, és megaláztad magadat a sírig.*
-bálványimádás — "egészen a Seólig alázkodtál"
+bálványimádás — "egészen a Seolig alázkodtál"
 
 <a id="ige-ez-31-15"></a>
 **Ez 31:15**
 *Így szól az Úr Isten: Azon a napon, a melyen sírba aláméne, gyászba öltöztetém miatta a mélység vizeit, és megtartóztatám folyóikat, úgy hogy a sok víz elzáraték, s meggyászoltatám őt a Libánonnal, és a mező minden fája elepede miatta.*
-Fáraó/Egyiptom a Seólba száll — a Libanon-cédrus-példázat
+Fáraó/Egyiptom a Seolba száll — a Libanon-cédrus-példázat
 
 <a id="ige-ez-31-16"></a>
 **Ez 31:16**
@@ -511,32 +511,32 @@ ua.
 <a id="ige-ez-32-21"></a>
 **Ez 32:21**
 *Szólni fognak felőle a vitézek hatalmasai a sír közepéből együtt az ő segítőivel: alászállottak, hogy itt feküdjenek a körülmetéletlenek, mint fegyverrel megöltek!*
-"a hatalmasok szólnak hozzá a Seólból"
+"a hatalmasok szólnak hozzá a Seolból"
 
 <a id="ige-ez-32-27"></a>
 **Ez 32:27**
 *És nem feküsznek együtt az erősekkel, kik elestek a körülmetéletlenek közül, kik hadiszerszámaikkal szálltak alá a sírba s kiknek az ő fegyvereiket fejük alá tették; mert lőn az ő vétkök csontjaikon, mivelhogy félelmére valának a vitézeknek az élők földjén.*
-körülmetéletlenek a Seólban, fegyvereikkel
+körülmetéletlenek a Seolban, fegyvereikkel
 
 <a id="ige-hós-13-14"></a>
 **Hós 13:14**
 *Megváltom őket a Seol hatalmából! Megmentem őket a haláltól! Hol van a te veszedelmed oh halál?! Hol van a te romlásod oh Seol?! Megbánás elrejtetett én előlem.*
-"Hol van a te veszedelmed, oh Seól?" — Pál idézi 1Kor 15:55-ben, ⭐ kiemelt lelet
+"Hol van a te veszedelmed, oh Seol?" — Pál idézi 1Kor 15:55-ben, ⭐ kiemelt lelet
 
 <a id="ige-ámós-9-2"></a>
 **Ámós 9:2**
 *Ha a Seolba ássák is be magokat, kezem onnan is kiragadja őket; és ha az égbe hágnának is fel, onnan is levonszom őket!*
-"ha a Seólba ásnak is, onnan is kihozom kezem"
+"ha a Seolba ásnak is, onnan is kihozom kezem"
 
 <a id="ige-jón-2-3"></a>
 **Jón 2:3**
 *És mondá: Nyomorúságomban az Úrhoz kiálték és meghallgata engem; a Seol torkából sikolték és meghallád az én szómat.*
-"a Seól gyomrából kiáltottam"
+"a Seol gyomrából kiáltottam"
 
 <a id="ige-hab-2-5"></a>
 **Hab 2:5**
 *És bizony, a bor is megcsal: felgerjed a férfiú és nincsen nyugalma; ő, a ki tátja száját, mint a Seol, és olyan ő, mint a halál: telhetetlen, és magához ragad minden népet és magához csatol minden nemzetet.*
-a kevély, mint a Seól, sosem elégszik meg
+a kevély, mint a Seol, sosem elégszik meg
 
 <a id="ige-mt-11-23"></a>
 **Mt 11:23**
@@ -589,9 +589,9 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 - **1Kor 15:55** (elutasítva, `napló: Hadesz_Seol_kereszthivatkozas_naplo.md §Tartalmi minősítés minden jelöltre | scope=manual | forras=Hadesz_Seol_kereszthivatkozas_naplo.md | ts=2026-10-11`): a kritikai szövegkiadás mindkét tagmondatban θάνατος-t hoz; a TR/Byzantinus-alapú Károli-olvasat eltérése szövegkritikai kérdés, nem a jelen scan tárgya — dokumentálva, nem hallgatólagosan kihagyva
 - **Mt 16:18** (elutasítva, `napló: Hadesz_Seol_kereszthivatkozas_naplo.md §Tartalmi minősítés minden jelöltre | scope=manual | forras=Hadesz_Seol_kereszthivatkozas_naplo.md | ts=2026-10-11`): ekkleziológiai kontextus (az egyház legyőzhetetlensége), tartalmilag nem kapcsolódik a jelen tanulmány tárgyához (halál/feltámadás-tipológia) — külön motívumként kezelendő, ha sorra kerül
-- **2Móz 12:29** (elutasítva, `F123 X.A Seól-scan, ±2 vers (2e. 4.): naplok/F123_adat_keszito.py seol_ablak 2 — scope=TAHOT-teljes, horgony ±2 vers azonos fejezet, fenyegetés+kiáltás+istennév+szabadulás-ige (H5927 nélkül), H7585 nélkül | forras=konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=2026-10-28`): Minősítési mérce (a #123 2e. 4. küszöbdöntése, 2026-10-28; orkesztrátor, a felhasználó felhatalmazásával): a halálveszélyben lévő maga kiált, a kiáltás az Úrhoz szól, és a szabadulás ebből a veszélyből történik; bármelyik hiánya kizár. Mindhárom jegy hiányzik: a „bór” (12:29) a tömlöc, a halál az egyiptomi elsőszülötteké; a „kiáltás” (12:31, H7121) a fáraó, aki Mózest és Áront hívatja, nem az Úrhoz kiált; a H5337 (12:27) Izráel házainak megoltalmazása, nem a kiáltó szabadulása. Nincs H7585: ALVIL-001-előfordulásnak sem jelölt. Megerősítve: a felhasználó döntése (B5), 2026-10-29, az orkesztrátor chatjében: „Megerősítem” (DT-F123e, DONTESEK.md; ELLENOR_F123_ALVIL-001 E8).
-- **Zsolt 49:10** (elutasítva, `F123 X.A Seól-scan, ±2 vers (2e. 4.): naplok/F123_adat_keszito.py seol_ablak 2 — scope=TAHOT-teljes, horgony ±2 vers azonos fejezet, fenyegetés+kiáltás+istennév+szabadulás-ige (H5927 nélkül), H7585 nélkül | forras=konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=2026-10-28`): Minősítési mérce (a #123 2e. 4. küszöbdöntése, 2026-10-28; orkesztrátor, a felhasználó felhatalmazásával): a halálveszélyben lévő maga kiált, a kiáltás az Úrhoz szól, és a szabadulás ebből a veszélyből történik; bármelyik hiánya kizár. A „sírgödör” (H7845) a gazdagok sorsa; a H7121 (49:12) a földek nevükről nevezése („nevöket hangoztatják”), nem kiáltás; a H6299 (49:8) tagadott váltság („senki sem válthatja meg”). A zsoltár Seól-helyei (49:15, 49:16) már ALVIL-001-sorok, és ott sincs kiáltás. Nincs H7585 ebben a versben. Megerősítve: a felhasználó döntése (B5), 2026-10-29, az orkesztrátor chatjében: „Megerősítem” (DT-F123e, DONTESEK.md; ELLENOR_F123_ALVIL-001 E8).
-- **Zsolt 107:18** (elutasítva, `F123 X.A Seól-scan, ±2 vers (2e. 4.): naplok/F123_adat_keszito.py seol_ablak 2 — scope=TAHOT-teljes, horgony ±2 vers azonos fejezet, fenyegetés+kiáltás+istennév+szabadulás-ige (H5927 nélkül), H7585 nélkül | forras=konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=2026-10-28`): Minősítési mérce (a #123 2e. 4. küszöbdöntése, 2026-10-28; orkesztrátor, a felhasználó felhatalmazásával): a halálveszélyben lévő maga kiált, a kiáltás az Úrhoz szól, és a szabadulás ebből a veszélyből történik; bármelyik hiánya kizár. A küszöb szerint minősített hely (1 a 3-ból): a „halál kapujához” közelgők (H8179+H4194) maguk kiáltanak az Úrhoz (107:19, H2199), és ő kiszabadítja őket (H3467, 107:20 H4422). Az ALVIL-001-hez mégsem tartozik: nincs H7585, tehát az alpont minimális jegye (a Seól szorongatja a hívót) hiányzik; csak a fölérendelt fogalmon („ima bajban”) keresztül tartozna ide. Megerősítve: a felhasználó döntése (B5), 2026-10-29, az orkesztrátor chatjében: „Megerősítem” (DT-F123e, DONTESEK.md; ELLENOR_F123_ALVIL-001 E8).
+- **2Móz 12:29** (elutasítva, `F123 X.A Seol-scan, ±2 vers (2e. 4.): naplok/F123_adat_keszito.py seol_ablak 2 — scope=TAHOT-teljes, horgony ±2 vers azonos fejezet, fenyegetés+kiáltás+istennév+szabadulás-ige (H5927 nélkül), H7585 nélkül | forras=konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=2026-10-28`): Minősítési mérce (a #123 2e. 4. küszöbdöntése, 2026-10-28; orkesztrátor, a felhasználó felhatalmazásával): a halálveszélyben lévő maga kiált, a kiáltás az Úrhoz szól, és a szabadulás ebből a veszélyből történik; bármelyik hiánya kizár. Mindhárom jegy hiányzik: a „bór” (12:29) a tömlöc, a halál az egyiptomi elsőszülötteké; a „kiáltás” (12:31, H7121) a fáraó, aki Mózest és Áront hívatja, nem az Úrhoz kiált; a H5337 (12:27) Izráel házainak megoltalmazása, nem a kiáltó szabadulása. Nincs H7585: ALVIL-001-előfordulásnak sem jelölt. Megerősítve: a felhasználó döntése (B5), 2026-10-29, az orkesztrátor chatjében: „Megerősítem” (DT-F123e, DONTESEK.md; ELLENOR_F123_ALVIL-001 E8).
+- **Zsolt 49:10** (elutasítva, `F123 X.A Seol-scan, ±2 vers (2e. 4.): naplok/F123_adat_keszito.py seol_ablak 2 — scope=TAHOT-teljes, horgony ±2 vers azonos fejezet, fenyegetés+kiáltás+istennév+szabadulás-ige (H5927 nélkül), H7585 nélkül | forras=konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=2026-10-28`): Minősítési mérce (a #123 2e. 4. küszöbdöntése, 2026-10-28; orkesztrátor, a felhasználó felhatalmazásával): a halálveszélyben lévő maga kiált, a kiáltás az Úrhoz szól, és a szabadulás ebből a veszélyből történik; bármelyik hiánya kizár. A „sírgödör” (H7845) a gazdagok sorsa; a H7121 (49:12) a földek nevükről nevezése („nevöket hangoztatják”), nem kiáltás; a H6299 (49:8) tagadott váltság („senki sem válthatja meg”). A zsoltár Seol-helyei (49:15, 49:16) már ALVIL-001-sorok, és ott sincs kiáltás. Nincs H7585 ebben a versben. Megerősítve: a felhasználó döntése (B5), 2026-10-29, az orkesztrátor chatjében: „Megerősítem” (DT-F123e, DONTESEK.md; ELLENOR_F123_ALVIL-001 E8).
+- **Zsolt 107:18** (elutasítva, `F123 X.A Seol-scan, ±2 vers (2e. 4.): naplok/F123_adat_keszito.py seol_ablak 2 — scope=TAHOT-teljes, horgony ±2 vers azonos fejezet, fenyegetés+kiáltás+istennév+szabadulás-ige (H5927 nélkül), H7585 nélkül | forras=konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=2026-10-28`): Minősítési mérce (a #123 2e. 4. küszöbdöntése, 2026-10-28; orkesztrátor, a felhasználó felhatalmazásával): a halálveszélyben lévő maga kiált, a kiáltás az Úrhoz szól, és a szabadulás ebből a veszélyből történik; bármelyik hiánya kizár. A küszöb szerint minősített hely (1 a 3-ból): a „halál kapujához” közelgők (H8179+H4194) maguk kiáltanak az Úrhoz (107:19, H2199), és ő kiszabadítja őket (H3467, 107:20 H4422). Az ALVIL-001-hez mégsem tartozik: nincs H7585, tehát az alpont minimális jegye (a Seol szorongatja a hívót) hiányzik; csak a fölérendelt fogalmon („ima bajban”) keresztül tartozna ide. Megerősítve: a felhasználó döntése (B5), 2026-10-29, az orkesztrátor chatjében: „Megerősítem” (DT-F123e, DONTESEK.md; ELLENOR_F123_ALVIL-001 E8).
 
 **Negatív kritérium** (`motivumok.tsv`): az igehelynek a שְׁאוֹל (seól) gyököt (ÚSZ-ben az LXX-közvetített ᾍδης (hadész) megfelelőjét) kell tartalmaznia — a תְּהוֹם (tehóm) / ἄβυσσος (abüsszosz) szócsalád explicit kizárva (kozmikus, nem egyéni-halotti fogalom, l. TEREMT-001 elhatárolása)
 
