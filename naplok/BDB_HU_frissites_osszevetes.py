@@ -4,8 +4,10 @@ Csak olvas. A régi tábla a git `--alap` revíziójából (alapértelmezés: HE
 (a `ts`) nélkül vet össze. Kiírja:
   1. az összesítőt (régi / új Strong és sor, új Strongok, eltérő meglévő Strongok);
   2. a meglévő, eltérő Strongokat soronként: mely mező változott, a kategória régi → új, és az OK-ot:
-     `forditas` (a `forditas_forras_hash` változott: a magyar fordítás maga új), `illesztes` (azonos fordítás, más
-     szakaszhatár: az illesztő szabályai változtak a régi generálás óta), `szerkezet` (a sor a szakasztáblában más);
+     `forditas` (a magyar fordítás maga új: a `forditas_forras_hash` változott, VAGY a Strong szakaszainak összefűzött
+     magyar szövege szóközök nélkül eltér — a szakaszonként fordított Strongnál (F128) a hash a forrásnézeté, nem a
+     fordításé), `illesztes` (azonos fordítás, más szakaszhatár: az illesztő szabályai változtak a régi generálás óta),
+     `szerkezet` (a sor a szakasztáblában más);
   3. a rontás-jelölteket: `illeszkedik` → `elakad` / `horgonnyal`, `horgonnyal` → `elakad`, vagy a nem üres `szoveg_hu`
      üressé válása (a `jelolo_nelkul` sorok kivételével);
   4. a `--minta N --mag M` kapcsolóval N véletlen új Strongot (rögzített maggal), soronként a kategóriával és a magyar
@@ -87,7 +89,9 @@ for st, v in elteres.items():
         print('%s  szerkezet: a sorlista más' % st)
         continue
     hash_valt = any('forditas_forras_hash' in m for _, m, _ in v)
-    ok = 'forditas' if hash_valt else 'illesztes'
+    szoveg_valt = (''.join(regi[k]['szoveg_hu'] for k in r_st[st]).replace(' ', '')
+                   != ''.join(uj[k]['szoveg_hu'] for k in u_st[st]).replace(' ', ''))
+    ok = 'forditas' if hash_valt or szoveg_valt else 'illesztes'
     ok_szaml[ok] += 1
     kat = collections.Counter()
     for sorszam, mez, (ro, un) in v:
