@@ -1704,6 +1704,26 @@ SHA-1-ével, az angol áll „(fordításra vár)” jelöléssel. Olvasás `spl
 
 Kulcs: `tema_id` + `cimke_en`. Állapot (2026-10-29): 18 sor (az ISTENTISZT-001 8 kiválasztott témája és altételei).
 
+### 2.43 `elutasitasi_okok.tsv` — az 1/b. blokk elutasítási okainak mintaszótára (ISTENTISZT-001 arany lap, 2026-10-29)
+
+**Kézi** (`manual` proveniencia; jóváhagyás: DT-F131t). Az 1/b. blokk („Kizárt és vizsgált helyek”) összesítője a `jeloltek.tsv`
+elutasított sorainak `indoklas` mezőjét ezekre a mintákra illeszti (kis-nagybetű nélkül, `sorrend` szerint, az első egyező
+dönt); a be nem sorolható indoklás „egyéb”, és az összesítő felsorolja (`eszkozok/szerep_kizart.py`). A `jeloltek.tsv` nem
+változik. Olvasás `split('\t')`.
+
+| Oszlop | Jelentés |
+|---|---|
+| `sorrend` | egész; az illesztés sorrendje |
+| `id` | `*` (minden motívumra) vagy motívum-id (2.1) |
+| `minta` | Python-regex az `indoklas` `\|` előtti részére |
+| `cimke` | az elutasítás oka olvasói nyelven (a blokkban ez áll) |
+| `megjegyzes` | a minta tartalma röviden |
+| `proveniencia` | `scope=manual \| forras=… \| ts=…` |
+
+Kulcs: `sorrend` + `id`. Állapot (2026-10-29): 9 `*` sor. Mért lefedés (az elutasított sorok „egyéb” száma): ISTENTISZT-001 1,
+ALVIL-001 4, ANTROP-001 0, HAMART-001 163, HODIT-001 4, KIRALY-001 13, MENNY-001 1, TEREMT-001 2, TEREMT-002 45 — a motívumonkénti
+bővítés nyitott (N-F131u).
+
 ---
 
 ## 3. Integritási szabályok
