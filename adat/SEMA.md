@@ -1661,6 +1661,47 @@ Kulcs: `szotar` + `strong` + `szakasz`. **Ellenőrzés** (`ellenoriz.py` 17. sza
 Thayer 2), mind címkés.
 
 
+### 2.41 `tematikus_temak.tsv` — a tematikus index (12. szerep) jelöltjeinek döntése, motívumonként (ISTENTISZT-001 arany lap, 2026-10-29)
+
+**Kézi** (`manual` proveniencia; a döntés: DT-F131s). A szótári szerepmátrix 12. szerepének (Tematikus index, Nave) motívumonkénti döntései
+— adat, nem kód, hogy a szabály minden motívumra átvihető legyen. A jelöltképzés szabálya (`eszkozok/szerep_nave.py`
+`jeloltek()`): legalább 2 motívumvers, a motívumversek aránya a téma összes verséhez legalább 1%, és a téma nem `tiltott`. A
+választás (`nave_temak()`): ha a motívumnak van `kivalasztott` sora, a blokkban csak ezek állnak; a `kizart` sor kimarad.
+Olvasás `split('\t')`.
+
+| Oszlop | Jelentés |
+|---|---|
+| `id` | motívum-id (2.1) |
+| `forras` | a tematikus index forrása: `Nave` (`konkordancia/Nave_basokant.tsv`) |
+| `tema_id` | a téma azonosítója a forrásban (`NAVE-3936`) |
+| `tema` | a téma neve a forrásban (az írónak a forrással egyeznie kell) |
+| `dontes` | `tiltott` (a motívum `folerendelt_fogalom`-ja felé: a hígulás iránya; a jelöltképzés kizárja) \| `kivalasztott` \| `kizart` (kézi döntéssel kimarad) |
+| `indok` | a döntés indoka |
+| `proveniencia` | `scope=manual \| forras=… \| ts=…` |
+
+Kulcs: `id` + `forras` + `tema_id`. A `kivalasztott` és a `kizart` sor a mai jelöltek közé tartozik (különben a döntés elavult;
+teszt: `eszkozok/teszt_szerep_nave.py`). Állapot (2026-10-29): ISTENTISZT-001, 22 sor (4 tiltott, 8 kivalasztott, 10 kizart).
+
+### 2.42 `nave_tema_hu.tsv` — a Nave-témák és -altételek magyar neve (ISTENTISZT-001 arany lap, 2026-10-29)
+
+**Kézi** (jóváhagyás: DT-F131s; a végrehajtó tervezete a `glossza_lexikon_forditas.py nave` kapuival és mankóival, jóváhagyva). A 12. szerep a
+magyar nevet „magyar (*ANGOL*)” alakban mutatja; ha nincs sor, vagy a `forras_hash` nem egyezik az angol szöveg mai
+SHA-1-ével, az angol áll „(fordításra vár)” jelöléssel. Olvasás `split('\t')`.
+
+| Oszlop | Jelentés |
+|---|---|
+| `tema_id` | a Nave-téma azonosítója |
+| `cimke_en` | az altétel (`cimke`) angolul; a témanév sorában üres |
+| `angol` | a fordított angol szöveg (a témanév vagy az altétel) |
+| `magyar` | a magyar név (a nevek Károli-alakban: a rangsor szójegyzék > Károli > BDB > szótár) |
+| `forras_hash` | az `angol` SHA-1-e (az elavulás jele) |
+| `allapot` | `kezi` (jóváhagyott) \| `elavult` |
+| `modell` | a tervezetet író modell (`claude-opus-5-5`) |
+| `datum` | `DATUM` (1.3) |
+| `proveniencia` | `scope=manual \| forras=… \| ts=…` |
+
+Kulcs: `tema_id` + `cimke_en`. Állapot (2026-10-29): 18 sor (az ISTENTISZT-001 8 kiválasztott témája és altételei).
+
 ---
 
 ## 3. Integritási szabályok
