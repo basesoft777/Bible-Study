@@ -1,0 +1,15 @@
+# F123 ALVIL-001: a fordítási átadó lista (DT-F123h: külön Sonnet-menet, a #121 eszközével) | készítő: naplok/F123_forditas_atadas.py | proveniencia: scope=ALVIL-001 H7585+G0086 | forras=naplok/F123_adat_ALVIL-001_forditas_hiany.tsv + naplok/F123_adat_ALVIL-001_szotar.tsv (split) | ts=2026-10-29
+szotar	strong	entry_id	jelentes_szam	mezo	forras	forras_hossz	forras_sha1	hatas_a_lapon
+TBESG	G0086	G0086	teljes	forditas_hu	TBESG.txt	709	311f1da111	a szerepmátrix blokkja (2. szakasz)
+tW_szocikkek	H7585	kt/hades	—	forditas_hu	konkordancia/tW_szocikkek.tsv	2110	b3febf2ef236de3861ec8313ce9df19377051a8f	a szerepmátrix blokkja (2. szakasz)
+tW_szocikkek	H7585	kt/hell	—	forditas_hu	konkordancia/tW_szocikkek.tsv	2147	ca906b3e901cd58520976f9817bda28422042798	a szerepmátrix blokkja (2. szakasz)
+UBS_DNTG	G0086	000086001003000	12.50	definicio_hu	konkordancia/UBS_DNTG_jelentesek.tsv	79	ee719603a000299a5c5901778524bfe6ad4fc68e	a szerepmátrix blokkja (2. szakasz)
+UBS_DNTG	G0086	000086001003000	12.50	glosszak_hu	konkordancia/UBS_DNTG_jelentesek.tsv	5	4f14c08f988ebf91b846da810b1a1b99e988623e	a G0086 UBS-domén sora (12.50 „death *(fordításra vár)*”)
+MCGED	G0086	G50087	—	glosszak_hu	konkordancia/MCGED_teljes.tsv	129	af45238c26	a szerepmátrix blokkja (2. szakasz)
+LSJ	G0086	G0086	teljes	forditas_hu	konkordancia/LSJ_teljes.tsv	1216	2345772781	a szerepmátrix blokkja (2. szakasz)
+TBESH	H7585	H7585	teljes	forditas_hu	TBESH.txt	383	27fc500c21	a szerepmátrix blokkja (2. szakasz)
+tW_szocikkek	H0875	other/pit	—	forditas_hu	konkordancia/tW_szocikkek.tsv	1071	cbba762391b4ef5daed2958190dd345b662f2370	a szerepmátrix blokkja (2. szakasz)
+tW_szocikkek	H1430	other/tomb	—	forditas_hu	konkordancia/tW_szocikkek.tsv	2595	959af29fc3a5f8a6c173ea4aeb05fafc21a2bd8a	a szerepmátrix blokkja (2. szakasz)
+UBS_DBH	H7585	007131001001000	—	glosszak_hu	konkordancia/UBS_DBH_jelentesek.tsv	17	88ef2a4b6d03e7a514c51b2e87edd52984b6d283	a lexikonoldal 1. szakaszának UBS-cellája, 63 sor („world of the dead *(fordításra vár)*”)
+UBS_DBH	H7585	007131001001000	—	definicio_hu	konkordancia/UBS_DBH_jelentesek.tsv	266	a619f96d4c54d9dea44ee4f6bce40f86d525b2c6	a szerepmátrix blokkja (2. szakasz)
+BDB	H7585	H7585	nyelvi_hatter	forditas_hu	konkordancia/BDB_etimologia_kezi_hatarok.tsv	925	87d31e22bb	a szerepmátrix blokkja (2. szakasz)

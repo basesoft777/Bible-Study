@@ -93,10 +93,20 @@ class Cimkeforras(unittest.TestCase):
             LG.jelentes_cimke_token(a, 'BDB', 'H7121', '2.c', '1Móz 4:26', True)
 
     def test_tobb_utvonalu_pelda_hiba(self):
+        # kutatói hozzárendelés nélkül a több útvonalú BDB-példa kézi kérdés
         a = adat(ALAP_CIMKEK, [vj_sor('H7121', 1, '1Móz 4:26', 'Qal/2/c'),
                                vj_sor('H7121', 2, '1Móz 4:26', 'Qal/3/b')], ALAP_SZ)
         with self.assertRaises(LG.GerincHiba):
-            LG.jelentes_cimke_token(a, 'BDB', 'H7121', '2.c', '1Móz 4:26', True)
+            LG.jelentes_cimke_token(a, 'BDB', 'H7121', '', '1Móz 4:26', True)
+
+    def test_tobb_utvonalu_pelda_kutatoi_dontes(self):
+        # F123 (DT-F123h): ha a kutatói út pontosan egy példa-útvonalat fed, az dönt; a másik ⓘ-ben marad
+        a = adat(ALAP_CIMKEK, [vj_sor('H7121', 1, '1Móz 4:26', 'Qal/2/c'),
+                               vj_sor('H7121', 2, '1Móz 4:26', 'Qal/3/b')], ALAP_SZ)
+        c, j, i = LG.jelentes_cimke_token(a, 'BDB', 'H7121', '2.c', '1Móz 4:26', True)
+        self.assertEqual((c, j), ('segítségül hívni', 'Qal 2.c'))
+        self.assertIn('a Qal 3.b is idézi', i)
+        self.assertIn('a kutatói hozzárendelés (2.c → Qal 2.c', i)
 
     def test_minosito(self):
         self.assertEqual(LG.kutatoi_kulcs('2.c (tagadva)'), ('2.c', 'tagadva'))
@@ -227,7 +237,8 @@ class Megjelenites(unittest.TestCase):
 
     def test_kapcsolo(self):
         self.assertTrue(LG.gerinc_aktiv('ISTENTISZT-001'))
-        for mid in ('ALVIL-001', 'HAMART-001', 'KIRALY-001', 'TEREMT-001', None):
+        self.assertTrue(LG.gerinc_aktiv('ALVIL-001'))  # F123 (DT-F123g (a)): a migrációval bekapcsolva
+        for mid in ('HAMART-001', 'KIRALY-001', 'TEREMT-001', None):
             self.assertFalse(LG.gerinc_aktiv(mid))
 
 

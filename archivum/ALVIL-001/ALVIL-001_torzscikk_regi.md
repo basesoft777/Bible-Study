@@ -1,3 +1,4 @@
+<!-- ARCHÍV: lexikon/ALVIL-001_TORZSCIKK.md @ 1e57742a · F123 M5 · 2026-10-29 · nem forrás, nem szerkesztendő -->
 # ALVIL-001 — Hádész (Seól) — a halottak birodalma
 
 *Kereszthivatkozási törzscikk — ugyanannak a tartalomnak az olvasói nézete, mint a [tudományos lexikonoldal](ALVIL-001_TUDOMANYOS.md).*

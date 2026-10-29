@@ -1774,8 +1774,9 @@ def blokk_szocikkek(m, tokenek, sorai):
 # ---------------------------------------------------------------------------
 # Kapcsoló: az új szótári blokk, a szerepmátrix szűkítése és az előfordulás-tábla
 # két oszlopa ("Jelentés (a szó)", "Funkció (a motívumban)") csak ezeken a lapokon él;
-# a többi lap bájtra változatlan (DT272 (f): előbb az arany lap).
-SZOTARI_GERINC_MOTIVUMOK = frozenset({'ISTENTISZT-001'})
+# a többi lap bájtra változatlan (DT272 (f): előbb az arany lap). A #123 migrációja motívumonként,
+# a sorrendjében kapcsolja be (DT-F123g (a)): ALVIL-001.
+SZOTARI_GERINC_MOTIVUMOK = frozenset({'ISTENTISZT-001', 'ALVIL-001'})
 
 SZAKASZ_CIMKE_FAJL = 'adat/szotar_szakasz_cimke.tsv'
 BDB_SZAKASZOK_FAJL = 'adat/bdb_szakaszok.tsv'
@@ -2015,9 +2016,21 @@ def jelentes_cimke_token(adat, szotar, strong, jelentes_szam, vers, kutatoi_toke
                                        _HANYSZOR.get(n_token, '%d alkalommal' % n_token), TAHOT_KIVONAT_FAJL))
         peldak = []
     pelda_utak = sorted({gerinc_utvonal_vag(r['utvonal']) for r in peldak})
-    if len(pelda_utak) > 1:
-        raise GerincHiba('%s %s: a BDB-példák több útvonalra mutatnak (%s): kézi kérdés' % (strong, vers, pelda_utak))
     ip = []
+    if len(pelda_utak) > 1:
+        # F123 (DT-F123h): a több útvonalú BDB-példát a kutatói hozzárendelés dönti el, ha pontosan egy útvonal esik alá;
+        # a többi útvonal ⓘ-ben marad (a szótár ott is idézi). Kutatói kulcs nélkül, vagy ha ez nem egyértelmű: kézi kérdés.
+        kut_vag = gerinc_utvonal_vag(kut_ut) if kut_ut else None
+        ala = [u for u in pelda_utak if kut_vag and gerinc_ala_esik(u, kut_vag)]
+        if len(ala) != 1:
+            raise GerincHiba('%s %s: a BDB-példák több útvonalra mutatnak (%s): kézi kérdés' % (strong, vers, pelda_utak))
+        mas = [r for r in peldak if gerinc_utvonal_vag(r['utvonal']) != ala[0]]
+        ip.append('a BDB a helyet %s is idézi (`%s` sorszam %s); a kutatói hozzárendelés (%s → %s, `%s`) dönt'
+                  % (szakasz_szoveg(sorted({szakasz_jel(_bdb_sor_utvonal(adat, strong, gerinc_utvonal_vag(r['utvonal']))
+                                                         or r['utvonal']) for r in mas})),
+                     BDB_VERS_JELENTES_FAJL, ', '.join(r['sorszam'] for r in mas), kulcs, szakasz_jel(kut_ut), SZAKASZ_CIMKE_FAJL))
+        peldak = [r for r in peldak if gerinc_utvonal_vag(r['utvonal']) == ala[0]]
+        pelda_utak = ala
     if peldak:
         p_ut = _bdb_sor_utvonal(adat, strong, pelda_utak[0]) or pelda_utak[0]
         sorszamok = ', '.join(r['sorszam'] for r in peldak)
@@ -2319,7 +2332,9 @@ def thayer_gerinc_szakaszok(adat, strong):
     for r in szak:
         if r['utvonal'] == 'cim':
             continue
-        f = fidx.get(('Thayer', strong, strong, 'sz%s' % r['sorszam'], 'forditas_hu'))
+        # F123: a Thayer saját kulcsa az 1000 alatti Strongnál nulla nélküli („G86”), a `forditasok.tsv` `entry_id`-je is
+        f = (fidx.get(('Thayer', strong, strong, 'sz%s' % r['sorszam'], 'forditas_hu'))
+             or fidx.get(('Thayer', strong, strong[0] + str(int(strong[1:])), 'sz%s' % r['sorszam'], 'forditas_hu')))
         hu = f['forditas_hu'] if f and f.get('allapot') != 'elavult' and f.get('forditas_hu') else None
         angol = ('%s %s' % (r.get('jel') or '', r.get('szoveg') or '')).strip()
         out.append((r['utvonal'], szakasz_jel(r['utvonal']), hu, angol, 'sz%s' % r['sorszam']))
