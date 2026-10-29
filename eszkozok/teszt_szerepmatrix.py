@@ -163,9 +163,16 @@ class TestVazIstentiszt(unittest.TestCase):
         for n in (1, 2, 4, 5, 6, 8, 9):
             b = self._blokk_szerep('gorog', n)
             self.assertNotIn('ÜRES-BLOKK', b, n)
-        # a 6., 8., 9.: hivatkozás (S4); az 5. (F09 S2.4) az UBS DNTG + Mounce adatából épül
-        for n in (6, 8, 9):
-            self.assertIn('*Hivatkozás:', self._blokk_szerep('gorog', n))
+        # a 8.: hivatkozás (S4); a 6. és a 9. (ISTENTISZT-001 arany lap, 2026-10-29) egysoros összegzés a 3., ill. az 1.
+        # szakasz adatából, a szakaszra mutató hivatkozással; az 5. (F09 S2.4) az UBS DNTG + Mounce adatából épül
+        self.assertIn('*Hivatkozás:', self._blokk_szerep('gorog', 8))
+        b6 = self._blokk_szerep('gorog', 6)
+        self.assertIn('**G1941** · az LXX a motívum 23 ószövetségi versében: egyező 19 · eltérő 3 · görögből hiányzik 1', b6)
+        self.assertIn('[3. LXX-fordítói döntések](#3-lxx-fordítói-döntések)', b6)
+        b9 = self._blokk_szerep('gorog', 9)
+        self.assertIn('A motívum 10 újszövetségi sorából 10-nál van ilyen hozzárendelés.', b9)
+        for n in (6, 9):
+            self.assertIn('**Mit mutat ez a rész?**', self._blokk_szerep('gorog', n))
         b5 = self._blokk_szerep('gorog', 5)
         self.assertIn('**G1941** · UBS DNTG: 4 jelentés', b5)
         self.assertIn('*Mounce (GK 2126):*', b5)
@@ -362,13 +369,22 @@ class TestSeceMounceF09(unittest.TestCase):
 
     def test_sece_lista_szo_szerint_2b_mutato_nelkul(self):
         g = self._szerep('ISTENTISZT-001', 'gorog', 7)
-        self.assertIn(_nfc('**G1941** · SECE — héber megfelelők (8): זָכַר, מָצָא, נָקַב, עָשָׂה, קָרָא, שׂוּם, שָׁכַן, שֻׁם'), _nfc(g))
+        # olvasható táblázat (ISTENTISZT-001 arany lap, 2026-10-29): szó, kiejtés, Strong, rövid jelentés; a motívum
+        # szava jelölve; a SECE szólistája és sorrendje változatlan
+        self.assertIn('**G1941** · SECE — héber megfelelők (8):', g)
+        szavak = [_nfc(s.split(' | ')[0].lstrip('| ').split(' *(')[0].strip('*')) for s in g.split('\n')
+                  if s.startswith('| ') and not s.startswith('| Szó')]
+        self.assertEqual(szavak, [_nfc(x) for x in 'זָכַר מָצָא נָקַב עָשָׂה קָרָא שׂוּם שָׁכַן שֻׁם'.split()])
+        self.assertIn(_nfc('| **קָרָא** *(a motívum szava)* | kárá | H7121 vagy H7122'), _nfc(g))
+        self.assertIn('| H8036 | név |', g)
         self.assertNotIn('ÜRES-BLOKK', g)
         # a „kézi SECE-táblázatok a 2/b-ben” mutató megszűnt (ISTENTISZT-001 arany lap, 2026-10-29): a 2/b generált
         self.assertNotIn('l. 2/b', g)
         self.assertNotIn('kézi SECE', g)
         h = self._szerep('ISTENTISZT-001', 'heber', 7)
-        self.assertIn(_nfc('**H8034** · SECE — görög megfelelők (6): θρόνος, καλέω, καλός, καύχημα, ὄνομα, Σήμ'), _nfc(h))
+        self.assertIn('**H8034** · SECE — görög megfelelők (6):', h)
+        self.assertIn(_nfc('| **ἐπικαλέομαι** *(a motívum szava)* | epikaleó | G1941 | to call (on)/name *(fordításra vár)* |'),
+                      _nfc(h))
         self.assertEqual([_nfc(x) for x in LG.sece_megfelelok('H7121')].count(_nfc('ἐπικαλέομαι')), 1)  # ismétlés nélkül
 
     def test_sece_hianyzo_lista_nem_targyalja(self):
