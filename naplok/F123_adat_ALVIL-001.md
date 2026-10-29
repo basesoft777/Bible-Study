@@ -151,6 +151,21 @@ Proveniencia: `scope=TAHOT-teljes: horgony (H4194 | H8179[+H4194] | H0953 | H784
 
 Proveniencia: `scope=a 3 gépi hely ±2 verses ablaka | forras=konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv (split('\t')) | ts=2026-10-28`.
 
+## 5d. Újramérés a mai main-en (2026-10-29, a #131, #121, #143, #146 beolvasztása után)
+
+A teljes X.A újrafutott (`naplok/F123_adat_keszito.py f108 | szotar | proza | seol | seol_ablak 2`, `eszkozok/motivum_felmeres.py ALVIL-001`, `PARDES_DATUM=2026-10-29`) a `b9841c36` merge-commiton. Összevetés a 2026-10-28-i kimenettel, a ts- és dátummezők és a sorvég nélkül:
+
+| Kimenet | Eltérés |
+|---|---|
+| #108-összevetés | a jelöltsorok száma 74 → 77: a DT-F123e három `elutasítva` sora (`uj_J_sor_a_108_ota`); előfordulás-oldalon nincs eltérés |
+| szótár | 1 sor: a `adat/bdb_vers_jelentes.tsv` H7585-sorainak száma 94 → 96 (a #131 F131.3.21 újragenerálása, DT381/DT382) |
+| szerepkínálat, hiányzó fordítások (13), próza-lefedettség, Seól-scanek, felmérés (kísérők, szomszédok, válasz-szavak) | nincs |
+| `naplok/F123_lekerdezesek.tsv` | az újrafutás lekérdezés-sorai hozzáfűzve (napló) |
+
+Gerinc-elemet érintő eltérés nincs; az X.A eredménye a mai main-en érvényes.
+
+Proveniencia: `scope=ALVIL-001 X.A teljes kimenet, HEAD (2026-10-28) ↔ újrafutás (2026-10-29) | forras=git show HEAD:… ↔ munkakönyvtár, split('\n'), ts-normalizálás | ts=2026-10-29`.
+
 ## 6. Nyitott kérdések (az értelmező menetnek / a felhasználónak; itt nincs döntés)
 
 1. **⛔ 2e. 4. küszöb (P2/A4, a felhasználóé):** a Seól nélküli scan melyik szintje a mérce (0 / 3 / 7 önálló hely), és kell-e versablak. Javaslat a döntés-előkészítéshez: a versablakos (±2 vers, azonos fejezet) változat lefuttatása a felhasználó jóváhagyásával, a szabadulás-ige listájának rögzítése előtt.

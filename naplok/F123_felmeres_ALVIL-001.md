@@ -1,4 +1,4 @@
-# GENERÁLT: eszkozok/motivum_felmeres.py ALVIL-001 | 2026-10-28T15:13Z
+# GENERÁLT: eszkozok/motivum_felmeres.py ALVIL-001 | 2026-10-29T09:54Z
 
 # Felmérő lekérdezés — ALVIL-001
 
@@ -18,6 +18,6 @@ Paraméterek: távolság ±3 vers (azonos fejezet); válasz-Strongok: H6030, H80
 
 Proveniencia:
 
-- `scope=ALVIL-001 előfordulási versei (72 sor, 73 vers) | forras=adat/elofordulasok.tsv + konkordancia/TAHOT_kivonat.tsv + TAGNT_kivonat.tsv, szűrés: adat/grammatikai_strongok.tsv (56 grammatikai Strong kizárva) | ts=2026-10-28T15:13Z`
-- `scope=ALVIL-001 fejezetei (58 fejezet) × adat/elofordulasok.tsv többi motívuma | forras=adat/elofordulasok.tsv (tartományok versre bontva a Karoli_1908.tsv kulcsaival) | ts=2026-10-28T15:13Z`
-- `scope=ALVIL-001 előfordulásai ±3 vers, azonos fejezet | forras=konkordancia/TAHOT_kivonat.tsv + TAGNT_kivonat.tsv | valasz=H6030+H8085+G0191+G1522+G0611 | ts=2026-10-28T15:13Z`
+- `scope=ALVIL-001 előfordulási versei (72 sor, 73 vers) | forras=adat/elofordulasok.tsv + konkordancia/TAHOT_kivonat.tsv + TAGNT_kivonat.tsv, szűrés: adat/grammatikai_strongok.tsv (56 grammatikai Strong kizárva) | ts=2026-10-29T09:54Z`
+- `scope=ALVIL-001 fejezetei (58 fejezet) × adat/elofordulasok.tsv többi motívuma | forras=adat/elofordulasok.tsv (tartományok versre bontva a Karoli_1908.tsv kulcsaival) | ts=2026-10-29T09:54Z`
+- `scope=ALVIL-001 előfordulásai ±3 vers, azonos fejezet | forras=konkordancia/TAHOT_kivonat.tsv + TAGNT_kivonat.tsv | valasz=H6030+H8085+G0191+G1522+G0611 | ts=2026-10-29T09:54Z`
