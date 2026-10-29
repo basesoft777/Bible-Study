@@ -1619,7 +1619,7 @@ class E31Teszt(unittest.TestCase):
 
 
 # ---------------------------------------------------------------------------
-# E32 (#141, DT-F141a): kiosztott helyorzo egy kimeneti string-literalban
+# E32 (#141, DT370): kiosztott helyorzo egy kimeneti string-literalban
 # ---------------------------------------------------------------------------
 
 class E32Teszt(unittest.TestCase):

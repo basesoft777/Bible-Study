@@ -117,6 +117,14 @@ eredeti `fordítás függőben` jelöléssel; `egyertelmu=nem` esetén minden
 jelölt jelentés felsorolva) | Megbízhatóság · azonosítás módja. Az
 igehely horgony-link az 1/a alszakaszra mutat. A `proveniencia` és az
 `igazolas` a tábla alatti számozott lábjegyzetben.
+*Arany lap (ISTENTISZT-001, F131; a többi lapra a kiterjesztés külön
+feladat):* a „Szótári jelentés” helyén „Jelentés (a szó)” áll (a szótári
+szakasz címkéje és jele, `adat/szotar_szakasz_cimke.tsv`; a címke forrása
+a sor lábjegyzetében, ⓘ), mellette „Funkció (a motívumban)”; az
+„UBS-jelentés” ÓSZ-sornál is kitöltött: az UBS DBH igehelyszintű
+jelentése tokenenként (`lexid — definíció`; magyarul, ahol van, különben
+az angol `(fordításra vár)` jelöléssel; hivatkozás híján kimondott hiány).
+A „2. Szótári háttér” a szótári gerinccel kezdődik (SEMA 2.40).
 
 #### 1/a. Az igehelyek szövege (generált)
 Igehelyenként: horgony (`<a id="...">`), a Károli-vers szó szerinti
