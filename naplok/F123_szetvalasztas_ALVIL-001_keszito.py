@@ -8,6 +8,7 @@ blokkhoz tartozik (a részegységes blokkok egy sortartományt többször fednek
 
     python naplok/F123_szetvalasztas_ALVIL-001_keszito.py
 """
+import os
 import sys
 
 if hasattr(sys.stdout, 'reconfigure'):
@@ -175,6 +176,27 @@ S = [
     (N, 'Összegzés', 14, '', 49, 49, 'archivum', ARCH, 'alap: DT84 (10) (ii) — 【NAPLO】: a napló rekonstrukció voltáról (F0.5); folyamat-nyom'),
 ]
 
+# Kiegészítés (F123 M3, 2026-10-29): a régi forrásréteg (`motivumok/ALVIL-001.md`, F4.4/G2 kivonat a motívumnaplóból) a
+# jóváhagyott táblából kimaradt; a #11 is leképezte (sablon 9 §4 „Örökölt motívum blokkjai”). Forrás-egység nincs benne.
+R = 'motivumok/ALVIL-001.md (régi forrásréteg)'
+R_UT = 'motivumok/ALVIL-001.md'
+RARCH = 'a régi forrásréteg változatlan, archív fejlécű példánya (archivum/ALVIL-001/ALVIL-001_forrasreteg_regi.md, DT215)'
+S += [
+    (R, '(fejléc)', 1, '', 1, 1, 'archivum', RARCH, 'kiegészítés: a régi cím; az új forrás címe a motivumok.tsv cim mezőjével azonos'),
+    (R, '(fejléc)', 2, '', 3, 3, 'archivum', RARCH, 'kiegészítés: a régi FORRÁSRÉTEG-jelölő; az új forrás saját jelölőt kap'),
+    (R, '(fejléc)', 3, '', 5, 5, 'archivum', RARCH, 'kiegészítés: L2 — a 2026-09-15-i átemelés proveniencia-mondata (folyamat-nyom)'),
+    (R, 'Tematikus áttekintés', 4, '', 9, 9, 'archivum', RARCH,
+     'kiegészítés: sablon 9 §4 (örökölt blokk: generált, a #11-ben archívum) — a napló régi tétele („4 előfordulás”), elavult szám'),
+    (R, '⭐ Emlékeztető küszöb', 5, '1', 13, 13, 'generalt', 'general.py --cel naplo (⭐-bekezdés) (forrás: adat/motivumok.tsv, adat/elofordulasok.tsv)',
+     'kiegészítés: sablon 9 §4 — 1. részegység: a cím, a státusz, a szám és az igehely-lista generált'),
+    (R, '⭐ Emlékeztető küszöb', 5, '2', 13, 13, 'archivum', RARCH,
+     'kiegészítés: 2. részegység: az értelmező mondat („lexikailag élesen elkülönített: a seól/hádész az egyéni halottak '
+     'birodalma (nem a kozmikus ős-mélység)”) a 2. szakaszban (tanulmány 53. sor) bővebben áll — duplikátum; a fájltörténet L2'),
+    (R, 'Kulcsszó-index', 6, '', 17, 17, 'archivum', RARCH, 'kiegészítés: sablon 9 §4 (örökölt blokk: generált, archívum)'),
+    (R, 'Lezárt tanulmányok indexe', 7, '', 21, 23, 'archivum', RARCH,
+     'kiegészítés: sablon 9 §4 — az index Fájlnév-cellája a motivumok.tsv forras_study mezőjéből generált; a fájltörténeti megjegyzés L2'),
+]
+
 # új (nem a régi fájlból jövő) forrás-egységek: nem leképezés, hanem a terv; a táblában tájékoztató sorként
 UJ = [
     (F, '(új)', 1, '', 0, 0, 'forras', fs('F Forrásréteg-fejléc', 'belso', 'jelölő: FORRÁSRÉTEG'), 'új szerkezeti egység (sablon 9 §4 F)'),
@@ -190,17 +212,29 @@ UJ = [
 
 
 def main():
+    # a régi fájlok az M3 után az archívumban állnak, ARCHÍV fejléccel (a sorszámok a régi fájléi)
+    utak = {T: [T, 'archivum/ALVIL-001/Hadesz_Seol_tematikus.md'],
+            N: [N, 'archivum/ALVIL-001/Hadesz_Seol_kereszthivatkozas_naplo.md'],
+            R: ['archivum/ALVIL-001/ALVIL-001_forrasreteg_regi.md', R_UT]}
     sorok = {}
-    for f in (T, N):
-        sorok[f] = open(ROOT + f, encoding='utf-8').read().split('\n')
-    fedett = {T: set(), N: set()}
+    for f, jeloltek in utak.items():
+        for u in jeloltek:
+            if os.path.exists(ROOT + u):
+                x = open(ROOT + u, encoding='utf-8').read().replace('\r\n', '\n').split('\n')
+                if x[0].startswith('<!-- ARCHÍV:'):
+                    x = x[1:]
+                elif f == R and not x[0].endswith('forrásréteg `[ID: ALVIL-001]`'):
+                    continue  # az új forrás, nem a régi forrásréteg
+                sorok[f] = x
+                break
+    fedett = {T: set(), N: set(), R: set()}
     hiba = []
     for f, sz, b, r, tol, ig, kat, cel, ind in S:
         if not (1 <= tol <= ig <= len(sorok[f])):
             hiba.append('tartomány: %s %d-%d' % (f, tol, ig))
         for n in range(tol, ig + 1):
             fedett[f].add(n)
-    for f in (T, N):
+    for f in (T, N, R):
         for n, l in enumerate(sorok[f], 1):
             if l.strip() and not l.startswith('#') and n not in fedett[f]:
                 hiba.append('nem besorolt sor: %s:%d %s' % (f, n, l[:80]))
