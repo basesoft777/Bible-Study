@@ -14,7 +14,7 @@
 
 | # | Motívum | Fájlnév | Érintett igehelyek |
 |---|---|---|---|
-| 1 | Hádész (Seól) — a halottak birodalma `[ID: ALVIL-001]` | tematikus_lezart/Hadesz_Seol_tematikus.md | Zsolt 16:10 ⇒ ApCsel 2:27,31 → Luk 10:15/Mát 11:23 → Luk 16:23 → Jel 1:18 → Jel 6:8 → Jel 20:13-14 (6 fő előfordulás / 72 igehely-sor) |
+| 1 | Hádész (Seol) — a halottak birodalma `[ID: ALVIL-001]` | motivumok/ALVIL-001.md | Zsolt 16:10 ⇒ ApCsel 2:27,31 → Luk 10:15/Mát 11:23 → Luk 16:23 → Jel 1:18 → Jel 6:8 → Jel 20:13-14 (6 fő előfordulás / 72 igehely-sor) |
 | 2 | Pneuma/pszükhé megkülönböztetés `[ID: ANTROP-001]` | tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md | 1Móz 2:7 ⇒ 1Kor 15:45 → Luk 1:46-47 → 1Kor 2:14-15 → 1Thessz 5:23 → Zsid 4:12 (5 fő előfordulás / 8 igehely-sor) |
 | 3 | A bűn következményeinek gyűrűzése — átok, föld és romlás `[ID: HAMART-001]` | tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md | 1Móz 3:7-19 → 1Móz 4:1-24 → 1Móz 6:1-8 → 1Móz 6:9-22 (4 fő előfordulás / 52 igehely-sor) |
 | 4 | Rafeusok/óriás-népek `[ID: HODIT-001]` | tematikus_lezart/Rafaim_tematikus.md | 1Móz 14:5 (1 fő előfordulás / 33 igehely-sor) |

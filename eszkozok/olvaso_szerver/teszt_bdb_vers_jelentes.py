@@ -101,6 +101,15 @@ class Jelentespont(unittest.TestCase):
         self.assertEqual(pont[(29, 25)], '-/1/b')
         self.assertEqual(pont[(16, 19)], '-/2')
 
+    def test_szogletes_zarojel_utani_sorszam(self):
+        # F123 (H7585): a „[…] 4 …” — a szögletes zárójellel záruló szakasz utáni szám is jelentés-sorszám
+        t = 'H9999. x אב noun pit; 1 the pit Gen 1:1. 2 depth: a. of x Exod 10:13. b. [y; so Psa 88:4.] 3 figurative Isa 57:9.'
+        r = B.szeletel(t, 'אב')
+        sav = B.csomopont_savok(t, r)
+        pont = {(x['c'], x['v']): B.jelentespont(x['poz'], sav)[1] for x in B.hivatkozasok(t)}
+        self.assertEqual(pont[(88, 4)], '-/2/b')
+        self.assertEqual(pont[(57, 9)], '-/3')
+
 
 class SzerkezetJavitas(unittest.TestCase):
     """F99 M2: a pont nélküli angol személyszám és a könyvnév része nem jelentés-sorszám; a „2 2nd son” jelölő (aranyminta 2.3/1–2)."""
@@ -210,7 +219,7 @@ class Tabla(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.sorok, _ = V.general('2026-10-15', ['H1242', 'H0006', 'H0015', 'H0196', 'H0226', 'H6666', 'H5591', 'H8079', 'H5704',
-                                                      'H8641', 'H0068', 'H1802', 'H0113', 'H8034'])
+                                                      'H8641', 'H0068', 'H1802', 'H0113', 'H8034', 'H7585'])
 
     def test_minden_sorban_jelentespont_feloldasi_mod_es_proveniencia(self):
         i = {k: n for n, k in enumerate(V.FEJ)}
@@ -254,6 +263,15 @@ class Tabla(unittest.TestCase):
         self.assertEqual((x[i['mt_vers']], x[i['karoli_vers']], x[i['okkod']], x[i['szurt']], x[i['utvonal']]),
                          ('1Móz 26:25', '1Móz 26:25', 'forras_javitas', '0', '-/3'))
         self.assertFalse(sor(self.sorok, strong='H8034', karoli_vers='1Móz 26:35'))
+
+    def test_h7585_negyedik_pont_es_kezi_javitas(self):
+        # F123: a 4. pont („NT.] 4 ׳שׁ figurative …”) példái a -/4 alatt, nem a -/3/b-ben; a „Prov 25:11” → Péld 15:11 (2.31 kézi sor)
+        i = {k: n for n, k in enumerate(V.FEJ)}
+        for vers in ('Ézs 57:9', 'Hós 13:14', 'Ézs 26:19'):
+            self.assertEqual([x[i['utvonal']] for x in sor(self.sorok, strong='H7585', karoli_vers=vers) if x[i['utvonal']] != 'fej'],
+                             ['-/4'], vers)
+        x = sor(self.sorok, strong='H7585', nyers='Prov 25:11')[0]
+        self.assertEqual((x[i['karoli_vers']], x[i['okkod']], x[i['utvonal']]), ('Péld 15:11', 'forras_javitas', '-/3/b'))
 
     def test_tartomany_utani_folytatas_a_tablaban(self):
         # DT382 (A): „1Kin 18:24-25, 26” → a 18:26 sor (folytatas); a 18:25 (tartomány) nem

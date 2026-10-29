@@ -1,3 +1,4 @@
+<!-- ARCHÍV: tematikus_lezart/naplok/Hadesz_Seol_kereszthivatkozas_naplo.md @ 85652b9e · F123 M3 · 2026-10-29 · nem forrás, nem szerkesztendő -->
 # Hádész (Seól) — a halottak birodalma (`[ID: ALVIL-001]`) — kereszthivatkozás-napló
 
 *A `4_PaRDeS_tematikus_sablon.md` 1. pont "Kötelező napló" előírása szerint, retroaktívan pótolva (F0.5, 2026.09.13). Rögzíti a `Hadesz_Seol_tematikus.md` v2 (2026.09.10) lezárásakor ténylegesen elvégzett kutatást — minden vizsgált jelöltet, nem csak a bekerülteket. A tartalom a study saját szövegéből (0., 1., 2/b. pont, Q2) lett rekonstruálva.*

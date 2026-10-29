@@ -704,6 +704,47 @@ class E19SzakaszTeszt(unittest.TestCase):
             _ir(gy, 'adat/thayer_szakaszok.tsv', self.THAYER)
             self.assertEqual([x.sor for x in SZ.e19_szotari_forditas_hiany(['adat/forditasok.tsv'])], [2])
 
+    # F123 (ELLENOR_F123_ALVIL-001 E7): a szamozott hivatkozast a szotar_szakasz_cimke.tsv lekepezese szerinti szakasz fedi
+    CIMKE_FEJ = "szotar\tstrong\tszakasz\tlexikon_jelentes_szam\tcimke_hu\tproveniencia\tmegjegyzes\n"
+
+    def _szamozott(self, ford_sorok, cimke_sorok):
+        with _IdeiglenesGyoker() as gy:
+            _ir(gy, 'adat/lexikon_hivatkozasok.tsv', "strong\tszotar\tentry_id\tjelentes_szam\tszoveg_en\tforrasfajl\n"
+                "G0086\tThayer\tG86\t2\tx\tk\n")
+            _ir(gy, 'adat/forditasok.tsv', "# gy\n" + self.FEJ + ''.join(ford_sorok))
+            _ir(gy, 'adat/thayer_szakaszok.tsv', self.THAYER)
+            if cimke_sorok is not None:
+                _ir(gy, 'adat/szotar_szakasz_cimke.tsv', self.CIMKE_FEJ + ''.join(cimke_sorok))
+            return [x.sor for x in SZ.e19_szotari_forditas_hiany(['adat/forditasok.tsv'])]
+
+    def test_negativ_szamozott_lekepezett_szakasz_fed(self):
+        # az ALVIL-001 esete: Thayer G0086 `2` -> `-/2/-` -> sz3 (a tesztben), a `teljes` sor nincs vagy elavult
+        cimke = ["Thayer\tG0086\t-/2/-\t2\tc\tp\t\n", "Thayer\tG0086\t-/1/-\t\tb\tp\t\n"]
+        self.assertEqual(self._szamozott([self._sz('Thayer', 'G0086', 'G86', 3)], cimke), [])
+
+    def test_pozitiv_szamozott_masik_szakasz_nem_fed(self):
+        # a lekepezett szakasz (sz3) forditasa hianyzik, csak a -/1/- (sz2) van meg -> HIBA
+        cimke = ["Thayer\tG0086\t-/2/-\t2\tc\tp\t\n"]
+        self.assertEqual(self._szamozott([self._sz('Thayer', 'G0086', 'G86', 2)], cimke), [2])
+
+    def test_pozitiv_szamozott_elavult_nem_fed(self):
+        cimke = ["Thayer\tG0086\t-/2/-\t2\tc\tp\t\n"]
+        self.assertEqual(self._szamozott([self._sz('Thayer', 'G0086', 'G86', 3, 'elavult')], cimke), [2])
+
+    def test_pozitiv_szamozott_lekepezes_nelkul_nem_fed(self):
+        # nincs cimketabla, vagy a kulcs nincs lekepezve, vagy tobb szakaszra mutat -> a regi viselkedes (HIBA)
+        sz = [self._sz('Thayer', 'G0086', 'G86', n) for n in (2, 3)]
+        self.assertEqual(self._szamozott(sz, None), [2])
+        self.assertEqual(self._szamozott(sz, ["Thayer\tG0086\t-/2/-\t\tc\tp\t\n"]), [2])
+        self.assertEqual(self._szamozott(sz, ["Thayer\tG0086\t-/2/-\t2\tc\tp\t\n",
+                                              "Thayer\tG0086\t-/1/-\t2\tb\tp\t\n"]), [2])
+
+    def test_utvonal_alatt(self):
+        self.assertTrue(SZ._e19_utvonal_alatt('-/2/-', '-/2/-'))
+        self.assertTrue(SZ._e19_utvonal_alatt('Qal/3/a', 'Qal/3/-'))
+        self.assertFalse(SZ._e19_utvonal_alatt('-/1/-', '-/2/-'))
+        self.assertFalse(SZ._e19_utvonal_alatt('Qal/30/a', 'Qal/3/-'))
+
 
 class E25Teszt(unittest.TestCase):
     """F51 K3: a dontes_hatas.tsv alapu atvezetes-ellenorzes (E25)."""

@@ -1028,6 +1028,38 @@ def _e19_szakaszkeszlet(szotar, strong, cache):
     """A Strong szotari szakaszainak sorszamai az ADAT tablaibol (set), vagy None (nincs tabla / a Strong nincs benne / a
     javitas nem illeszkedik). Ugyanaz a forras, mint az ellenoriz.py 13. szabalyaban: a BDB `szakasz_bemenet.szakaszok`-a es
     a Thayer `thayer_bemenet.szakaszok`-a (F145, DT-F142d)."""
+    szak = _e19_szakaszlista(szotar, strong, cache)
+    return None if szak is None else {x['sorszam'] for x in szak}
+
+
+def _e19_utvonal_alatt(utvonal, csucs):
+    """Az `utvonal` a `csucs` szakasz maga vagy annak alszakasza-e (a csucs zaro `/-` tagjai nelkul: `-/2/-` -> `-/2`)."""
+    while csucs.endswith('/-'):
+        csucs = csucs[:-2]
+    return utvonal == csucs or utvonal.startswith(csucs + '/')
+
+
+def _e19_lekepezett_szakaszok(szotar, strong, jelentes_szam, cache):
+    """F123 (ELLENOR_F123_ALVIL-001 E7): a szamozott kutatoi jelentesszam szakaszai -- a `szotar_szakasz_cimke.tsv`
+    (SEMA 2.40) `lexikon_jelentes_szam` -> `szakasz` lekepezese szerinti szakasz es alszakaszai sorszamai (set), vagy None
+    (nincs tabla / nincs lekepezes / a kulcs tobb szakaszra mutat, mint a lexikon_general.py `kutatoi_szakasz`-aban)."""
+    if 'cimke' not in cache:
+        ut = os.path.join(ADAT, 'szotar_szakasz_cimke.tsv')
+        cache['cimke'] = dict_sorok(ut) if os.path.exists(ut) else []
+    csucsok = [r.get('szakasz') for r in cache['cimke']
+               if r.get('szotar') == szotar and _e19_strong(r.get('strong')) == strong
+               and (r.get('lexikon_jelentes_szam') or '').strip() == (jelentes_szam or '').strip()]
+    if len(csucsok) != 1 or not csucsok[0]:
+        return None
+    szak = _e19_szakaszlista(szotar, strong, cache)
+    if szak is None:
+        return None
+    keszlet = {x['sorszam'] for x in szak if _e19_utvonal_alatt(x['utvonal'], csucsok[0])}
+    return keszlet or None
+
+
+def _e19_szakaszlista(szotar, strong, cache):
+    """A Strong szotari szakaszai ({'sorszam', 'utvonal', ...} lista) az ADAT tablaibol, vagy None."""
     kulcs = (szotar, strong)
     if kulcs in cache:
         return cache[kulcs]
@@ -1039,14 +1071,13 @@ def _e19_szakaszkeszlet(szotar, strong, cache):
                 if 'Thayer' not in cache:
                     cache['Thayer'] = _e19_modul('thayer_bemenet_e19', 'thayer_jelolt/thayer_bemenet.py')
                 szak = cache['Thayer'].szakaszok(strong, tabla, os.path.join(ADAT, 'thayer_forras_javitas.tsv'))
-                keszlet = None if szak is None else {x['sorszam'] for x in szak}
+                keszlet = szak
         elif szotar == 'BDB':
             tabla, jav = os.path.join(ADAT, 'bdb_szakaszok.tsv'), os.path.join(ADAT, 'bdb_forras_javitas.tsv')
             if os.path.exists(tabla) and os.path.exists(jav):
                 if 'BDB' not in cache:
                     cache['BDB'] = _e19_modul('szakasz_bemenet_e19', 'bdb_jelolt/szakasz_bemenet.py')
-                szak = cache['BDB'].szakaszok(strong, tabla, jav)
-                keszlet = None if szak is None else {x['sorszam'] for x in szak}
+                keszlet = cache['BDB'].szakaszok(strong, tabla, jav)
     except ValueError:
         keszlet = None
     cache[kulcs] = keszlet
@@ -1083,6 +1114,12 @@ def e19_szotari_forditas_hiany(fajlok):
         # (reszleges lefedettseg nem fed)
         if d.get('jelentes_szam') == 'teljes' and szakaszsorok.get(alap):
             kell = _e19_szakaszkeszlet(szotar, alap[1], cache)
+            if kell and kell <= szakaszsorok[alap]:
+                continue
+        # F123 (ELLENOR_F123_ALVIL-001 E7): a szamozott hivatkozast a `szotar_szakasz_cimke.tsv` lekepezese szerinti
+        # szakasz es alszakaszai nem `elavult` `sz<n>` sorai fedik (mint a lexikon_general.py `kutatoi_szakasz`-a)
+        if d.get('jelentes_szam') != 'teljes' and szakaszsorok.get(alap):
+            kell = _e19_lekepezett_szakaszok(szotar, alap[1], d.get('jelentes_szam'), cache)
             if kell and kell <= szakaszsorok[alap]:
                 continue
         talalatok.append(Talalat(

@@ -1,3 +1,4 @@
+<!-- ARCHÍV: tematikus_lezart/Hadesz_Seol_tematikus.md @ 85652b9e · F123 M3 · 2026-10-29 · nem forrás, nem szerkesztendő -->
 # Hádész (Seól) — a halottak birodalma
 
 ## Kivonat
