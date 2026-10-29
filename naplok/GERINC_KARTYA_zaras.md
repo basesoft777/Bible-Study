@@ -40,4 +40,4 @@ Döntés: DT-F124a (✅ alkalmazva; a felhasználó szava: „minden legyen telj
 
 ## Ellenőrzés
 
-A `fuggetlen-ellenor` 10 eltérést jelzett (a jelentés fájlba mentésére nem volt eszköze; tartalma a PR leírásában és a napló 9. pontjában). Javítva: E16 (a PR címe `[ELLENŐRZŐ]` előtagú), a zárás tesztállítása, a `jelolt.py`-ra építés eltérésének rögzítése, a térkép `ts`-e és bemenete, a nyitott tételek felvétele, a kiszűrt `nyitva` jelölt, a `Sir` rangja, a napló két száma. A `naplok/ELLENOR_F124.md` fájlt az orkesztrátor/felhasználó kérésére mentem.
+A `fuggetlen-ellenor` 10 eltérést jelzett (a jelentés fájlba mentésére nem volt eszköze; tartalma a `naplok/ELLENOR_F124.md`-ben és a napló 9. pontjában). Javítva: E16 (a PR címe `[ELLENŐRZŐ]` előtagú), a zárás tesztállítása, a `jelolt.py`-ra építés eltérésének rögzítése, a térkép `ts`-e és bemenete, a nyitott tételek felvétele, a kiszűrt `nyitva` jelölt, a `Sir` rangja, a napló két száma. A jelentés: `naplok/ELLENOR_F124.md`.
