@@ -144,6 +144,13 @@ class TovabbiForras(unittest.TestCase):
         self.assertEqual(self._f('LSJ', 'G0086', 'G0086', 'teljes', 'forditas_hu'), 'LSJ-szöveg')
         self.assertEqual(self._f('BDB', 'H7585', 'H7585', 'nyelvi_hatter', 'forditas_hu'), 'H7585. sheol')
 
+    def test_tbesg_rovid_a_7_oszlop_strongonkent_az_elso_sor(self):
+        with open(os.path.join(self.m, 'TBESG.txt'), 'a', encoding='utf-8', newline='') as f:
+            f.write('G0071\tG0071 =\tG0071\tἄγω\tagō\tG:V\t to bring \tdef\nG0071a\tx\tx\tx\tx\tG:V\tMÁSIK\tdef\n')
+        self.assertEqual(self._f('TBESG', 'G0071', 'G0071', 'rovid', 'glosszak_hu'), 'to bring')
+        self.assertIsNone(self._f('TBESG', 'G0071', 'G0072', 'rovid', 'glosszak_hu'))
+        self.assertIsNone(self._f('TBESH', 'H7585', 'H7585', 'rovid', 'glosszak_hu'))
+
     def test_negativ_ismeretlen_kulcs_vagy_mezo(self):
         self.assertIsNone(self._f('BDB', 'H7585', 'H7585', 'teljes', 'forditas_hu'))      # a teljes szócikk más feloldó dolga
         self.assertIsNone(self._f('LSJ', 'G0086', 'G86', 'teljes', 'forditas_hu'))

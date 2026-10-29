@@ -851,8 +851,8 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 | Szó | Kiejtés | Strong | Rövid jelentés |
 |---|---|---|---|
-| **ᾅδης** *(a motívum szava)* | hadész | G0086 | hell: Hades *(fordításra vár)* |
-| θάνατος | thanatosz | G2288 | death *(fordításra vár)* |
+| **ᾅδης** *(a motívum szava)* | hadész | G0086 | pokol: Hádész |
+| θάνατος | thanatosz | G2288 | halál |
 
 *A szólista és a sorrend a SECE-é (gyakoriságot nem ad; az ismétlődő szóalak egyszer áll); a Strong-szám a TBESG/TBESH lemmájából vagy a SECE címszavából párosul; a rövid jelentés: héberül `adat/glosszak_heber_hu.tsv`, görögül a TBESG angol glosszája (magyar rövid glossza-tábla a görögre még nincs).*
 
