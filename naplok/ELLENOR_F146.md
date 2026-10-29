@@ -23,13 +23,13 @@ ELTÉRÉS: 1 tétel
 | 4 ISTENTISZT-001: csak időbélyeg + Jóel 2:32 | OK | `lexikon/ISTENTISZT-001_TUDOMANYOS.md:89` | `--word-diff=porcelain`: 15 `ts=`, 1 `Generálva:`, 1 Jóel 2:32 |
 | 4 a Jóel 2:32 DBH-oszlopa | OK | `…:89` | `UBS_DBH_referenciak.tsv` `Jóel 3:5`: H7121 `006562001006000`, `006562001011000`, H8034 `007442001001000`; `Jóel 2:32`-re 0 sor; a lap mindhármat `(MT: Jóel 3:5)`-tel hozza |
 | 4 a többi 7 lap | NEM ELLENŐRIZHETŐ (szerepkorlát) | napló 7. | a diff más lexikonfájlt nem érint |
-| 5 proveniencia az új adatsorokon | OK | javító bemenet, 26 sor | mind `scope=gepi:Jóel N … \| dontes=DT-F146b \| ts=2026-10-28` |
+| 5 proveniencia az új adatsorokon | OK | javító bemenet, 26 sor | mind `scope=gepi:Jóel N … \| dontes=DT398 \| ts=2026-10-28` |
 | 5 TSV `split('\t')`, kód fájlból | OK | `naplok/F146_*.py` | `csv` 0 találat; `reconfigure`-őr megvan |
 | 6 felmérés | OK (szúrópróba) | `F146_mt_felmeres.tsv:792,821,1012,1091` | Jób 41:32 → MT 41:24 (`scan H7872`, Macula `JOB 41:24!6`); Mal 4:1 → MT 3:19 (`scan H8574/H6057`); 1106 adatsor = 982+9+93+19+3 |
 | 6 a 12 vers ítéletei | OK (szúrópróba) | napló 4. | Préd 9:12 → MT 9:10 (`scan H2808/H7585`, Macula `ECC 9:10`); Jób 38:7 = MT 38:7 (`scan H3556`) |
 | brief 2.3 / Kész 3 soronkénti proveniencia | **ELTÉRÉS** | napló 4. | egyetlen közös proveniencia-sor a táblázat fölött |
 | brief 2.2 a halmazt nem javították | OK | `Karoli_versmegfeleltetes.tsv:16927,23184` | Mal 4:1 és Ézs 9:1 változatlan |
-| ⛔ 3.1 | OK | fa4475d6, fd5da52e | a DT-F146b az F146.0-ban nyitott, a javítás az F146.2-ben |
+| ⛔ 3.1 | OK | fa4475d6, fd5da52e | a DT398 az F146.0-ban nyitott, a javítás az F146.2-ben |
 | G 3.3 fogyasztók | OK / részben NEM ELLENŐRIZHETŐ | `lexikon_general.py:1123-1126`; `sqlite_epit.py:192` | jelzetlen fogyasztó: `eszkozok/f17/macula_kk.py:100-101` (a kitöltött `igehely_mt` elsőbbsége; a Macula újragenerálásakor a Jóel-sorok `forras`-a változhat) |
 | 7 szó szerinti idézet | OK formailag / tartalmilag NEM ELLENŐRIZHETŐ | `DONTESEK.md:459-460` | az idézetek a szülő sessionön át érkeztek |
 | 7 nincs végleges DT-szám | OK | — | E26: 0 |

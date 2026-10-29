@@ -1,6 +1,6 @@
 ELTÉRÉS: 4 tétel
 
-# ELLENOR — ISTENTISZT001_EZS64_ZSOLT99 (F110 / N-F126a, DT-F110b)
+# ELLENOR — ISTENTISZT001_EZS64_ZSOLT99 (F110 / N-F126a, DT399)
 
 Brief: nincs (a hívó session megbízása) · tartomány: `ea85486c..89128f77` (4 commit) · ellenőr modellje: `claude-opus-5-5` (kért: `opus`)
 
@@ -9,7 +9,7 @@ Brief: nincs (a hívó session megbízása) · tartomány: `ea85486c..89128f77` 
 | pont | eredmény | fájl:sor | parancs / indok |
 |---|---|---|---|
 | 0 modell | OK | `naplok/ISTENTISZT001_ezs64_zsolt99_naplo.md:3` | A session modellje `claude-opus-5-5`, a kért modell `opus`. A napló „Modell: `claude-opus-5-5`” sora egyezik a commitok `Co-Authored-By: Claude Opus 5.5` trailerével (`git log --format='%h %an%n%B---' ea85486c..HEAD`). Az érintett táblákban nincs `modell` mező. |
-| M1 döntés: idézet | OK | `DONTESEK.md:465`; `adat/jeloltek.tsv:631,639` | `git diff ea85486c..HEAD -- adat/jeloltek.tsv DONTESEK.md`: mindkét idézet („Igen, így”, „(a) számok is”) a kérdéssel együtt szó szerint szerepel. A `DT-F110b` helyőrző, nem végleges szám. |
+| M1 döntés: idézet | OK | `DONTESEK.md:465`; `adat/jeloltek.tsv:631,639` | `git diff ea85486c..HEAD -- adat/jeloltek.tsv DONTESEK.md`: mindkét idézet („Igen, így”, „(a) számok is”) a kérdéssel együtt szó szerint szerepel. A `DT399` helyőrző, nem végleges szám. |
 | a) Ézs 64:6 szerkezete | OK | `adat/jeloltek.tsv:631` | A `konkordancia/TAHOT_kivonat.tsv` 464019–464042. sora: H9002 וְ · H0369 אֵין · H7121 קוֹרֵא · H9003 בְ („on”) · H8034 שִׁמְ · H9021 ךָ (Ps2m). A kárá + בְּ + név szomszédos, az ige a név előtt áll, tehát az „egyenes szórend” igaz. A versben van Op1c (464035, 464038) és Pp1c (464042). A `lekerdez.py scan H7121/H8034/H9003/H0369 --szakasz "Ézs 64:6"` mindegyikre n=1, ts=2026-10-29T08:44–45Z. |
 | a) Zsolt 99:6 szerkezete | OK | `adat/jeloltek.tsv:639` | TAHOT 297587–297605: a két H9003 a 297590. sorban („among” + papjai) és a 297595. sorban („among” + H7121 קֹרְאֵי) áll. A 297597. sorban a H8034 közvetlenül az igenév után, בְּ nélkül jön, a 297600. sorban H0413 אֶל + H3068. A „H9003 közvetlenül a H8034 előtt” mintázat egyszer sem fordul elő. A `lekerdez.py igealak H9003` szerint a versben két előfordulás van, a `scan H9003 --szakasz "Zsolt 99:6"` 2 szó-előfordulást ad. |
 | a) negatív kritérium, következetesség | OK | `adat/motivumok.tsv:4`; `DONTESEK.md:365` | A kritérium „קָרָא + בְּ (aktív, invokáló)”. A DT283 K2 szabálya: „nincs H9003 közvetlenül a H8034 előtt”, kiszűrve. A végleges (a) változatban a JSir 3:55 és az 5Móz 32:3 kiszűrve maradt. A Zsolt 99:6 a K2-be esik, az Ézs 64:6 B osztályú (בְּ + שֵׁם, isteni névszó nélkül), a tagadott forma a Jer 10:25 precedensével bekerülhet. A döntés tehát a DT283-mal következetes. A `motivumok.tsv` a tartományban nem változott (`git diff --stat ea85486c..HEAD -- adat/motivumok.tsv`: üres). |
@@ -51,7 +51,7 @@ Az ELTÉRÉS-ek súlyossági sorrendben:
 
 ## Javítókör (végrehajtó, 2026-10-29)
 
-1. **A2:** a `NYITOTT_FELADATOK.md` N-F126a tétele kiegészítve: 2026.10.29, DT-F110b; az Ézs 64:6 beépítve, a próza szól róla; a Zsolt 99:6 elutasítva (a בְּ az igenév előtt áll, kárá + בְּ + név nincs; DT283 K2), a lenti „A-minta” olvasat nem áll. A korábbi szöveg történetiként marad.
+1. **A2:** a `NYITOTT_FELADATOK.md` N-F126a tétele kiegészítve: 2026.10.29, DT399; az Ézs 64:6 beépítve, a próza szól róla; a Zsolt 99:6 elutasítva (a בְּ az igenév előtt áll, kárá + בְּ + név nincs; DT283 K2), a lenti „A-minta” olvasat nem áll. A korábbi szöveg történetiként marad.
 2. **A1:** a „nép” azonosítás kikerült a forrásból és az adatból. A mondat új alakja: „A tagadó forma egy első személyű többes számú versben is áll: „S nem volt, a ki segítségül hívta volna nevedet … orczádat elrejtéd tőlünk, és álnokságainkban minket megolvasztál” (Ézs 64:6); ebben a versben sem az „ismer” ige, sem a népek két szava nem áll.” Az `elofordulasok.tsv` `kapcsolodas` és `funkcio` mezője ugyanígy („első személyű többes számú versben”); szkript: `naplok/ISTENTISZT001_ezs64_zsolt99_javit.py`.
-3. **E1, E2:** a `naplok/ISTENTISZT001_ezs64_zsolt99_meres.py` kiírja a két vers TAHOT-tokensorrendjét és a BSB Isa.64.7 sorait, saját proveniencia-sorral: scope=range:Ézs 64:6, range:Zsolt 99:6 | forras=TAHOT_kivonat.tsv+BSB_Strongs.tsv (naplok/ISTENTISZT001_ezs64_zsolt99_meres.py, split('\t')) | n=43+12 | ts=2026-10-29T08:51Z. Ez a sor bekerült a két `jeloltek.tsv`-indoklásba, a `DONTESEK.md` DT-F110b sorába, a forrás „küldetés és vád” és „Négy forrás” proveniencia-sorába és a naplóba.
+3. **E1, E2:** a `naplok/ISTENTISZT001_ezs64_zsolt99_meres.py` kiírja a két vers TAHOT-tokensorrendjét és a BSB Isa.64.7 sorait, saját proveniencia-sorral: scope=range:Ézs 64:6, range:Zsolt 99:6 | forras=TAHOT_kivonat.tsv+BSB_Strongs.tsv (naplok/ISTENTISZT001_ezs64_zsolt99_meres.py, split('\t')) | n=43+12 | ts=2026-10-29T08:51Z. Ez a sor bekerült a két `jeloltek.tsv`-indoklásba, a `DONTESEK.md` DT399 sorába, a forrás „küldetés és vád” és „Négy forrás” proveniencia-sorába és a naplóba.
 4. Újragenerálva (lexikon, nyitott, naplo, index); `ellenoriz.py`: 0 SÉRTÉS; `feladatok.py ellenoriz`: 0 hiba.

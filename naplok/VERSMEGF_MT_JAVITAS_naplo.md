@@ -2,7 +2,7 @@
 
 *Brief: `F146_VERSMEGF_MT_JAVITAS_BRIEF.md` · modell: `claude-opus-5-5` (a brief `opus`-t kér; egyezik) · ág: `claude/f146-versmegf-mt-61d410` · 2026-10-28*
 
-Hatókör-bővítés: DT-F146a (az ISTENTISZT-001 lap újragenerálása a #146-ban; a felhasználó szavai a `DONTESEK.md`-ben).
+Hatókör-bővítés: DT397 (az ISTENTISZT-001 lap újragenerálása a #146-ban; a felhasználó szavai a `DONTESEK.md`-ben).
 
 ## 1. Módszer (DT207 (c), az F117-eszköz kiterjesztése)
 
@@ -65,7 +65,7 @@ A 93 `KEZI` azonossági sor (`kezi_identitas_javitas`; 4Móz 15, Jób 38, Préd 
 
 Az „üres eredmény nem negatív lelet”: az első hat versnél a DBH-hivatkozás a versen van, csak a keresett szóra nincs; ez a DBH lefedettségének ténye, nem a szó hiánya.
 
-## 5. ⛔ 3.1 — a javítandó halmaz (DT-F146b: döntve, 2026-10-28, „Igen, csak a Jóel”)
+## 5. ⛔ 3.1 — a javítandó halmaz (DT398: döntve, 2026-10-28, „Igen, csak a Jóel”)
 
 Javaslat: **csak a Jóel 26 sora** (Károli 2:28–3:21 → MT 3:1–4:21, `KEZI` kitöltött `igehely_mt`-vel, a `versmegf_javitas` KEZI-szabályának Károli = KJV ≠ MT bővítésével), `forras` új értékkel (`macula_mt_f146`, a DT205 mintájára). A 982 − 26 = 956 többi igazolt eltérés, az Ézs 9, a 9 kétséges sor és a 93 `KEZI` azonossági sor külön tétel (N-F146a), mert ugyanaz az új kombináció ~830 sort érint, és a DT209 fogyasztói (`bsb_import`, `sqlite_epit`, `tsk_kulcs`) ellenőrzése nélkül nem vihető át. A Jóel a lexikonban csak az ISTENTISZT-001-et érinti (`adat/elofordulasok.tsv`: egyetlen Jóel 2:28–3:21-es sor, a Jóel 2:32).
 
@@ -80,7 +80,7 @@ Javaslat: **csak a Jóel 26 sora** (Károli 2:28–3:21 → MT 3:1–4:21, `KEZI
 - További fogyasztó (ELLENOR_F146): az `eszkozok/f17/macula_kk.py` a kitöltött `igehely_mt`-t elsőbbséggel kezeli. A Macula-táblák következő újragenerálásakor a Jóel 2:28–3:21 sorainak `kk_mod`/`forras` értéke a mai `identitas`-ról `kk_mt`-re változhat. Ez a helyes irány: a Macula `karoli` oszlopa eddig a hibás azonosságot hordozta. Itt nem futtatom, mert a Macula-import nem tartozik e tétel hatókörébe.
 - Az F146-jegyzet szövege rögzítetten a Jóelről szól. Ha az N-F146a további `macula_mt_f146` sort hoz, a `versmegf_javitas.py` jegyzetszövegét általánosítani kell.
 
-## 7. Az ISTENTISZT-001 lap újragenerálása (F146.3, DT-F146a)
+## 7. Az ISTENTISZT-001 lap újragenerálása (F146.3, DT397)
 
 - A main beolvasztva (7347b950; a PR #500 N-F127a/N-F65b/N59/N60 lapírása is benne van), ütközés nélkül.
 - Nulladiff (repón kívül, a scratchpadben): a 8 lexikonlap a mai generátorral, a #146 előtti táblával (0a245b4e) és az újjal. **7 lap bájtra azonos, csak az ISTENTISZT-001 tér el, abban is egyetlen sor: a Jóel 2:32.**

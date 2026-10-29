@@ -39,7 +39,7 @@ Minta: a Jer 10:25 és a Zsolt 79:6 sora (`Remez`; `2.c (tagadva)`).
 
 Szkript: `naplok/ISTENTISZT001_ezs64_zsolt99_ir.py` (írás előtt soronkénti összevetés: a `jeloltek.tsv` két sora, az `elofordulasok.tsv` egy új sora változott).
 
-## A kézi forrás (DT-F110b)
+## A kézi forrás (DT399)
 
 A második ⛔ után (a próza számai elavulnak) a felhasználó döntése, az orkesztrátor chatjében, szó szerint: „(a) számok is”. A kérdés: „Frissítse a kézi forrás számait is (a), vagy csak az egy mondat (b)?”
 
@@ -49,7 +49,7 @@ Módosítva a `motivumok/ISTENTISZT-001.md`-ben:
 - kivonat: 32→33 (22→23 / 10), LXX 18/22→19/23, NAPLO-sorral;
 - 3. szakasz, 1. pont (LXX): 22/18→23/19, és a régi R2.4 NAPLO mellé új NAPLO (a régi történeti, változatlan);
 - „hálát ad”, „Két oltár”, „Zsolt 116:13”: „32 helye” → „33 helye”, a proveniencia-sorok mellé a mai mérés;
-- „A név körül: küldetés és vád”: egy mondat az Ézs 64:6-ról (DT-F110b NAPLO-jelölővel), csak mért tartalommal (Károli-idézet, első személyű többes szám, az „ismer” és a népek szavának hiánya; a „nép” azonosítás a javítókörben kikerült);
+- „A név körül: küldetés és vád”: egy mondat az Ézs 64:6-ról (DT399 NAPLO-jelölővel), csak mért tartalommal (Károli-idézet, első személyű többes szám, az „ismer” és a népek szavának hiánya; a „nép” azonosítás a javítókörben kikerült);
 - 7. szakasz, „Négy forrás”: 22/18→23/19, a proveniencia mellé az Ézs 64:6 LXX-sora.
 
 A 2026-10-20-i proveniencia-sorok (n=32, `<a 22 ószövetségi hely>`) változatlanok: azok az akkori mérést rögzítik. A Zsolt 99:6-ot a próza nem említette, így a kizárása csak a `jeloltek.tsv`-ben és a generált lapon áll.

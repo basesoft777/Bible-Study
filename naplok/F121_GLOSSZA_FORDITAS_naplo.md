@@ -107,7 +107,7 @@ Tesztek: `teszt_forditas_kapuk` 110 OK, `teszt_szerepmatrix` 44 OK, `teszt_szota
 
 ## 7. F121.7 — az UBS-csomag: mérés és tervezet (2026-10-29)
 
-*Új ág: `claude/f121-ubs-csomag` az origin/main-ről (8e3d71a3; a PR #499 mergelve). A jóváhagyás: DT-F121g (idézetek a `DONTESEK.md`-ben).*
+*Új ág: `claude/f121-ubs-csomag` az origin/main-ről (8e3d71a3; a PR #499 mergelve). A jóváhagyás: DT393 (idézetek a `DONTESEK.md`-ben).*
 
 **Hiányzó egységek.** `konkordancia/UBS_DBH_jelentesek.tsv` H7121: 19 lexid, H8034: 5 lexid = 24 lexid; a gyorsítótárban 5 DBH-definíció van (F121.2), glossza egy sem. Hiányzik: 24 `glosszak_hu` + 19 `definicio_hu` = 43; az UBS DNTG G1941-ből a 56.15 `definicio_hu` (a `glosszak_hu` az F121.2 óta megvan) = **44 egység**. Tervezet: `naplok/F121_ubs_csomag_tervezet.tsv` (a generáló szkript `naplok/F121_ubs_csomag_tervezet.py`); mind a 44 átment a gátló kapukon.
 
@@ -122,7 +122,7 @@ Tesztek: `teszt_forditas_kapuk` 110 OK, `teszt_szerepmatrix` 44 OK, `teszt_szota
 
 ## 8. F121.8 — rögzítés, lap, szónézet (2026-10-29)
 
-*Jóváhagyás: DT-F121h (idézet a `DONTESEK.md`-ben).*
+*Jóváhagyás: DT394 (idézet a `DONTESEK.md`-ben).*
 
 - **Rögzítés** (`naplok/F121_ubs_csomag_rogzit.py`): +44 sor az `adat/forditasok.tsv`-ben (`UBS_DBH` 43, `UBS_DNTG` G1941 56.15 `definicio_hu` 1), `allapot=sonnet`, `modell=claude-sonnet-5-5`, `terminologia_verzio=v4`, `forras_hash` a forrásszövegből. Írás előtt-után: a meglévő sorok bájtra azonosak, kivéve a G1941 33.131 `definicio_hu` sorát (1 törölt + 1 beszúrt sor a diffben, a 44 új sor a végén). 43 sor átment a kapukon; **1 bukott**: `UBS_DBH H7121 006562002003000 glosszak_hu` „(valakire) hozni (eseményt)” a `4_formazas` kapun („több nyitó zárójel a fordításban (2), mint a forrásban (1)”) — kézi ítélet: a felhasználó a szöveget kifejezetten jóváhagyta (`naplok/F121_GLOSSZA_FORDITAS_bukottak.tsv`).
 - **A G1941 33.131 `definicio_hu`.** Forrás: „to use an attribution in speaking of a person”. Régi (`kezi`, 2026.09.22): „valakiről szólva megjelölést (címet, jelzőt) alkalmazni”. Új (`sonnet`): „valakiről szólva megnevezést alkalmazni” (a kapukon átment; a régi szöveg a `megjegyzes` mezőben is áll).
@@ -137,7 +137,7 @@ Tesztek: `teszt_forditas_kapuk` 110 OK, `teszt_szerepmatrix` 44 OK, `teszt_szota
 
 ## 10. F121.12 — a mankók a 44 új és a cserélt sorra (2026-10-29)
 
-*Döntés: DT-F121i („nem engedem el”). Eszköz: `eszkozok/glossza_lexikon_forditas.py manko | szojegyzek | visszamenoleges` (teszt: `eszkozok/teszt_glossza_lexikon_forditas.py`, 10 teszt). A mankó javasol, nem ír át. Soronkénti napló: `naplok/F121_GLOSSZA_FORDITAS_manko.tsv` (45 sor: a 44 új + a G1941 33.131).*
+*Döntés: DT395 („nem engedem el”). Eszköz: `eszkozok/glossza_lexikon_forditas.py manko | szojegyzek | visszamenoleges` (teszt: `eszkozok/teszt_glossza_lexikon_forditas.py`, 10 teszt). A mankó javasol, nem ír át. Soronkénti napló: `naplok/F121_GLOSSZA_FORDITAS_manko.tsv` (45 sor: a 44 új + a G1941 33.131).*
 
 **Módszer (rangsor: szójegyzék > Károli > BDB > a szótár szövege, DT239).**
 - *Szójegyzék/egyenérték (DT238, DT240):* az angol glosszaelemeket a gyorsítótár már elfogadott párjaival veti össze (UBS_DNTG glosszák elemenként, TBESH-glosszák `fo=igen`, v1–v4 terminológia). `egyezik` / `utkozik` / `nincs_adat`.
@@ -166,7 +166,7 @@ Tesztek: `teszt_forditas_kapuk` 110 OK, `teszt_szerepmatrix` 44 OK, `teszt_szota
 **Szójegyzék-javaslat (DT240):** `naplok/F121_GLOSSZA_FORDITAS_szojegyzek_javaslat.tsv`: 436 angol kulcs, amely a gyorsítótárban többféle magyar alakot kapott (a legtöbb szótövezési/formai eltérés: névelő, ragozás). A `terminologia.tsv`-be csak jóváhagyott sor kerül; új sor nem javasolt.
 
 
-## 11. F121.13 — a H8034 `authority` sora (DT-F121j, 2026-10-29)
+## 11. F121.13 — a H8034 `authority` sora (DT396, 2026-10-29)
 
 *Felhasználó, 2026-10-29 (az orkesztrátor chatjében): „Igen, hatalom” — a 9 kézi ítéletű sorból a H8034 `007442001002000` a szójegyzék szerint változik, a többi 8 és a visszamenőleges 3 tétel marad.*
 
