@@ -345,8 +345,9 @@ class HuIlleszt(unittest.TestCase):
             self.assertFalse([j for j in self._jelek(szo) if j.startswith('T:')], szo)
 
     def test_kotetszamos_siglum(self):
-        # DT-F131q (4): a „Kö^ii. 1. 104” lapszám nem jelölő (H8034), a valódi jelölő utána megmarad; a szerzői siglum és a
-        # záró zárójel utáni jel valódi jelölő lehet (H7442, H4557, H0450) — a szabály ezeket nem dobja
+        # hu_illeszt (4), ISTENTISZT-001 arany lap, 2026-10-29: a „Kö^ii. 1. 104” lapszám nem jelölő (H8034), a valódi
+        # jelölő utána megmarad; a szerzői siglum és a záró zárójel utáni jel valódi jelölő lehet (H7442, H4557, H0450) —
+        # a szabály ezeket nem dobja
         hu = 'vö. RS^K 213, 303 kk. Kö^ii. 1. 104; késői héber — név: 1 folyóé 1Móz 2:11'
         poz = [p for p, j in self.hi.magyar_jelolok(hu) if j == '1']
         self.assertEqual(poz, [hu.index('1 folyóé')])

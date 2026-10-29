@@ -95,7 +95,7 @@ TORZS_HU = re.compile(
 BETU_J = re.compile(r'(?:(?<=^)|(?<=[.;:—)] ))([j-z])\.(?=\s)')
 KERDO_SZAM = re.compile(r'(?<=\? )(\d{1,2})(?= [^\W\d_])')
 #  (4) a kötetszámos siglum (`^` + kis római szám + pont: „Kö^ii.”, „Bö^ii.”) utáni jel a kötet lapszáma, nem jelölő
-#      („Kö^ii. 1. 104”, H8034; ISTENTISZT-001 arany lap, DT-F131q): a forrásoldalon nem félkövér, a magyarban viszont a kapu
+#      („Kö^ii. 1. 104”, H8034; ISTENTISZT-001 arany lap, 2026-10-29): a forrásoldalon nem félkövér, a magyarban viszont a kapu
 #      számjelnek veszi. Csak ez az alak: a szerzői siglum után („Che^Hpt. 2 nyomorúságban”, „So^Kau. 2”, „Dr^Sm. b.”) és a záró
 #      zárójel után („RS^149). 5”) a jel valódi jelölő lehet (naplok/ISTENTISZT001_siglum_hatas.py).
 SIGLUM_ELOTT = re.compile(r'\^[ivx]+\.\s?$')

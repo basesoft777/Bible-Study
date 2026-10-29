@@ -1,4 +1,4 @@
-"""DT-F131q (3.): a `hu_illeszt.py` siglum-szabályának (4) hatása, a tábla elavultságától elválasztva.
+"""ISTENTISZT-001 arany lap, 2026-10-29 (DONTESEK: a „teljes” menet 3. pontja): a `hu_illeszt.py` siglum-szabályának (4) hatása, a tábla elavultságától elválasztva.
 
 Csak olvas, nem ír táblát. Ugyanazzal a mai bemenettel kétszer generál: a (4) szabály nélkül (a `SIGLUM_ELOTT` soha nem
 illeszkedik) és vele, majd Strongonként összeveti a két kimenetet. Kiírja az érintett Strongok számát, soronként a változott
