@@ -1,0 +1,85 @@
+name: gerinc-terkep
+
+# F124 (DT-F124a): a prioritasi terkep (naplok/GERINC_TERKEP.tsv / .md) gepi,
+# determinisztikus generalasa, modell es koltseg nelkul. A kimenet commit a
+# main-re, a `feladatok-frissites` (feladatok.yml) mintajara: a main-t ruleset
+# vedi, az egyetlen bypass a `pardes-feladatok` GitHub App (Contents: read and
+# write), a push az o tokenjevel megy; a workflow sajat GITHUB_TOKEN-je csak
+# olvas. Titkok: FELADATOK_APP_ID, FELADATOK_APP_KEY (ugyanazok, mint a
+# feladatok.yml-ben -- az App-jogosultsag nem bovul, repo-szintu).
+#
+# Az App-tokennel vegzett push uj futast indit, ezert a gep sajat commitjanak
+# futasa a `[bot]` actor miatt kimarad; ezenkivul a kimenet (naplok/) nincs a
+# `paths:` listaban, es a generalas idempotens (nincs diff -> nincs commit),
+# tehat nincs vegtelen hurok.
+#
+# A workflow agon nem fut le irassal; a probaja `workflow_dispatch` a merge utan.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'adat/motivumok.tsv'
+      - 'adat/elofordulasok.tsv'
+      - 'adat/jeloltek.tsv'
+      - 'adat/grammatikai_strongok.tsv'
+      - 'konkordancia/TAHOT_kivonat.tsv'
+      - 'konkordancia/TAGNT_kivonat.tsv'
+      - 'konkordancia/Konyv_normalizalo_tabla.tsv'
+      - 'genezis/**'
+      - 'ujszovetseg/**'
+      - 'melyelemzesek/**'
+      - 'eszkozok/gerinc_terkep.py'
+      - 'eszkozok/gerinc_kartya.py'
+      - 'eszkozok/gerinc_szuro.py'
+      - '.github/workflows/gerinc_terkep.yml'
+  schedule:
+    - cron: '23 4 * * 1'      # tartalek: hetfo 04:23 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gerinc-terkep
+  cancel-in-progress: false
+
+jobs:
+  terkep:
+    if: ${{ !endsWith(github.actor, '[bot]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: App-token (pardes-feladatok)
+        id: app
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          app-id: ${{ secrets.FELADATOK_APP_ID }}
+          private-key: ${{ secrets.FELADATOK_APP_KEY }}
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ steps.app.outputs.token }}
+
+      - name: Python telepitese
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Terkep generalasa
+        run: python eszkozok/gerinc_terkep.py --kimenet naplok
+
+      - name: Gepi commit, ha van valtozas
+        run: |
+          if [ -z "$(git status --porcelain -- naplok/GERINC_TERKEP.tsv naplok/GERINC_TERKEP.md)" ]; then
+            echo "A terkep valtozatlan."
+            exit 0
+          fi
+          git config user.name "pardes-feladatok[bot]"
+          git config user.email "pardes-feladatok[bot]@users.noreply.github.com"
+          git add naplok/GERINC_TERKEP.tsv naplok/GERINC_TERKEP.md
+          printf 'GERINC_TERKEP frissítés (gép)\n' > commit_uzenet.txt
+          git -c i18n.commitEncoding=UTF-8 commit -F commit_uzenet.txt
+          git pull --rebase origin main
+          git push origin HEAD:main
