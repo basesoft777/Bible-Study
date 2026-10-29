@@ -2332,7 +2332,9 @@ def thayer_gerinc_szakaszok(adat, strong):
     for r in szak:
         if r['utvonal'] == 'cim':
             continue
-        f = fidx.get(('Thayer', strong, strong, 'sz%s' % r['sorszam'], 'forditas_hu'))
+        # F123: a Thayer saját kulcsa az 1000 alatti Strongnál nulla nélküli („G86”), a `forditasok.tsv` `entry_id`-je is
+        f = (fidx.get(('Thayer', strong, strong, 'sz%s' % r['sorszam'], 'forditas_hu'))
+             or fidx.get(('Thayer', strong, strong[0] + str(int(strong[1:])), 'sz%s' % r['sorszam'], 'forditas_hu')))
         hu = f['forditas_hu'] if f and f.get('allapot') != 'elavult' and f.get('forditas_hu') else None
         angol = ('%s %s' % (r.get('jel') or '', r.get('szoveg') or '')).strip()
         out.append((r['utvonal'], szakasz_jel(r['utvonal']), hu, angol, 'sz%s' % r['sorszam']))
