@@ -225,3 +225,7 @@ TEREMT-002	A5	scope=range:4Móz 11:12 | forras=Karoli_1908.tsv+Karoli_kereszthiv
 TEREMT-002	B4	scope=manual | forras=nem alkalmazható: igealak a gerinc-elemekre (H8414, H0922 — mindkettő főnév) | ts=2026-09-25T11:05Z	2026.09.25
 TEREMT-002	B4	scope=range:Zsolt 80:6 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=11 | ts=2026-10-19T10:56Z | csatorna=cli	2026.10.19
 TEREMT-002	B4	scope=range:Zsolt 80:7 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=13 | ts=2026-10-19T10:56Z | csatorna=cli	2026.10.19
+ISTENTISZT-001	adhoc	scope=range:Ézs 64:6 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-10-29T08:31Z | csatorna=cli	2026.10.29
+ISTENTISZT-001	adhoc	scope=range:Zsolt 99:6 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=2 | ts=2026-10-29T08:31Z | csatorna=cli	2026.10.29
+ISTENTISZT-001	adhoc	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H7121+H8034 | n=196 | ts=2026-10-29T08:32Z | csatorna=cli	2026.10.29
+ISTENTISZT-001	adhoc	scope=range:Ézs 64:6 | forras=LXX_OS/isaiah.tsv+TAGNT_kivonat.tsv | n=27 | ts=2026-10-29T08:32Z | csatorna=cli	2026.10.29
