@@ -1,0 +1,106 @@
+# F148 UJ_MOTIVUM_VEDOKORLAT — napló
+
+*Brief: `F148_UJ_MOTIVUM_VEDOKORLAT_BRIEF.md` · ág: `claude/f148-vedokorlat-4b117b` · alap: `origin/main` b23fe651*
+
+## 0. Modell-ellenőrzés és mérés (2026-10-29)
+
+**Modell.** Kért: `opus` (a brief `modell` mezője). Tényleges: `claude-opus-5-5`. Egyezik.
+
+Mérőszkript: `naplok/F148_meres.py` (`split('\t')`, csak olvas; a (iii) ponthoz a lapokat repón kívüli ideiglenes könyvtárba rendereli, `--forditas`).
+
+### 0.1 A #123 ALVIL-001 PR-ja a main-en
+
+`f711291d Merge pull request #513 from basesoft777/claude/f123-alvil-adat` — teljesül. (Utána: #514, F121 TBESG G0086.)
+
+### 0.2 Kitöltöttség az `adat/elofordulasok.tsv`-ben
+
+| id | sor | `jelentes_szam` | `karoli_szo` | `lexikon_entry_id` | `lexikon_szotar` |
+|---|---|---|---|---|---|
+| ALVIL-001 | 72 | 13 | 72 | 13 | 13 |
+| ANTROP-001 | 8 | 0 | 8 | 0 | 0 |
+| HAMART-001 | 52 | 26 | 0 | 42 | 42 |
+| HODIT-001 | 33 | 0 | 33 | 0 | 0 |
+| ISTENTISZT-001 | 33 | 33 | 33 | 33 | 33 |
+| KIRALY-001 | 9 | 4 | 9 | 5 | 5 |
+| MENNY-001 | 9 | 0 | 9 | 0 | 0 |
+| TEREMT-001 | 42 | 0 | 42 | 0 | 0 |
+| TEREMT-002 | 3 | 0 | 3 | 0 | 0 |
+
+`scope=adat/elofordulasok.tsv (9 id, 261 sor) | forras=naplok/F148_meres.py | ts=2026-10-29`
+
+Eltérés a brief táblájától: az ALVIL-001 `jelentes_szam`-ja 0 → 13 (a #513 óta). A 13 kitöltött sor: 5 H7585 (Jób 17:12 `1`, Zsolt 49:15 `2.a`, Zsolt 88:4 `1`, Ez 31:16 `2.a`, Hós 13:14 `4`) és 8 G0086 (`2`). A többi **59 sor (mind H7585)** `lexikon_szotar`, `lexikon_entry_id` és `jelentes_szam` nélkül áll.
+
+### 0.3 Gerincen álló motívumok
+
+`SZOTARI_GERINC_MOTIVUMOK = {'ISTENTISZT-001', 'ALVIL-001'}` (`eszkozok/lexikon_general.py:1779`).
+
+Várható kivétellista: ANTROP-001, HAMART-001, HODIT-001, KIRALY-001, MENNY-001, TEREMT-001 — és a mérés szerint a **TEREMT-002** is kérdés (l. ⛔ A/3).
+
+### 0.4 A négy új szabály próbafutása (kivétellistával, a brief kiinduló mintáival)
+
+| szabály | ISTENTISZT-001 (gerinc) | ALVIL-001 (gerinc) | kivétellistás motívumok (JELENTÉS) |
+|---|---|---|---|
+| 18. gerinc-Strong címkéje | 0 | **59 SÉRTÉS** (a 0.2 59 sora: nincs `jelentes_szam`, nincs mire leképezni) | — |
+| 19. kötelező mezők | 0 | **59 SÉRTÉS** (`lexikon_szotar`/`lexikon_entry_id`/`jelentes_szam` üres) | ANTROP 8/8, HAMART 52/52, HODIT 33/33, KIRALY 5/9, MENNY 9/9, TEREMT-001 42/42, TEREMT-002 3/3 hiányos sor |
+| 20. `jelentes_hu` (kiinduló minták) | **26 SÉRTÉS**, mind az `invokál` mintán: „invokálni, segítségül hívni” | 0 | 0 |
+| 21. lap tisztasága | l. 0.5 | l. 0.5 | — |
+
+A 20. szabály 26 találata **hamis pozitív**: az „invokálni” a BDB *invoke* glosszájának magyarja, a szó jelentése, nem funkció-címke. A brief „invokáció mint értelmező címke” mintája tehát főnévi alakra szűkítendő. A többi kiinduló minta (`(NEM`, „tagadó szerkezet”, „vádjaként”, „motívum”, „funkció”, `tiltott_fordulatok.tsv`) 0 találatot ad a teljes táblán. A kötelező negatív teszt esete (1Kir 18:25–26 „Baál nevével”) egyik mintán sem akad fenn. Figyelemre méltó, minta nem fogja: 1Kir 18:24 „annak konkrét kérésére, hogy Jahve mutassa meg hatalmát” (az N-F131a köréhez tartozhat; az ISTENTISZT-menet dolga, nem e feladaté).
+
+### 0.5 A 21. szabály mintái a `lexikon/` lapjain
+
+Létező tételek: 385 `| DT<n> |` sor a `DONTESEK.md`-ben, 49 `**N<n>` tétel a `NYITOTT_FELADATOK.md`-ben.
+
+| lap | helyőrző (`DT-F`/`N-F`) | „Kézzel írandó” | „a(z)” | `(fordításra vár)` | DT-hiv. (nem létező) | N-hiv. (nem létező) |
+|---|---|---|---|---|---|---|
+| ALVIL-001_TUDOMANYOS | **3** (`DT-F123e`) | 0 | 0 | 0 | 14 (0) | 0 |
+| ANTROP-001_TUDOMANYOS / _TORZSCIKK | 0 / 0 | 0 | 0 | 0 | 1 / 0 (0) | 0 |
+| HAMART-001_TUDOMANYOS / _TORZSCIKK | 0 / 0 | 0 | 0 | 0 | 2 / 0 (0) | 0 |
+| HODIT-001_TUDOMANYOS / _TORZSCIKK | 0 / 0 | 0 | 0 | 0 | 1 / 0 (0) | 0 |
+| ISTENTISZT-001_TUDOMANYOS | 0 | 0 | 0 | 0 | 41 (0) | 2 (0) |
+| KIRALY-001_TUDOMANYOS / _TORZSCIKK | 0 / 0 | 0 | 0 | 0 | 1 / 0 (0) | 0 |
+| MENNY-001_TUDOMANYOS / _TORZSCIKK | 0 / 0 | 0 | 0 | 0 | 1 / 0 (0) | 0 |
+| TEREMT-001_TUDOMANYOS / _TORZSCIKK | 0 / 0 | 0 | 0 | 0 | 1 / 0 (0) | 0 |
+
+A lapszám: **8 TUDOMANYOS + 6 TORZSCIKK** (az ALVIL-001-nek és az ISTENTISZT-001-nek nincs törzscikke); a brief „7 törzscikk”-je 6.
+
+**A `DT-F123e` a main-en.** A `DONTESEK.md`-ben a main-en ma is helyőrzővel áll a `DT-F123b`…`DT-F123m` és a `DT-F131r`, összesen 82 `| DT-F…|` sor. A `szamkiosztas` Action a #513, #514 és #515 merge-e után mind `cancelled` (`gh run list --workflow szamkiosztas.yml`). Ráadásul a korábbi kiosztó commit (`c14bde29`: `DT-F141a → DT407` …) számai nincsenek a táblában: a legmagasabb `DT406`, a `DT-F141a` ma is helyőrző. Ez a #141 (DT-F141a) tárgya; e feladaton kívül esik, de a 21. (i) main-szintű SÉRTÉS-ét közvetlenül érinti.
+
+**(iii) fordítatlan egység — a lista_keszit és a lap jelölései:**
+
+| id | `forditas_ehhez` hívás | hiányzó egység | `(fordításra vár)` a renderelt lapon |
+|---|---|---|---|
+| ALVIL-001 | 10 | **4** (BDB H7585 `1`/`2.a`/`4`, Thayer G86 `2`; `forditas_hu`) | **0** |
+| ANTROP-001 | 113 | 99 | 100 |
+| HAMART-001 | 169 | 152 | 155 |
+| HODIT-001 | 17 | 17 | 17 |
+| ISTENTISZT-001 | 26 | **6** (SECE_G/H, TBESH `forditas_hu`) | **0** |
+| KIRALY-001 | 59 | 52 | 53 |
+| MENNY-001 | 77 | 77 | 77 |
+| TEREMT-001 | 12 | 8 | 8 |
+
+A brief (iii) egyenlősége („hiányzó = jelölés”) egyik lapon sem pontos, és a két gerinces lapon 4/6 ≠ 0. A gerincmódban a generátor a hiányzó `forditas_hu`-t meghívja, de az eredményt nem írja ki angolul (a lap más forrásból ad magyart, vagy a cellát kihagyja). Ezért a hívásszám nem a lapon álló fordítatlan egységek száma. Ez az N-F148a korlát másik oldala: a mérőszám a hívást látja, nem a kiírást.
+
+`scope=lexikon/*.md (14 lap) + render ideiglenes könyvtárba (8 id) | forras=naplok/F148_meres.py --forditas | ts=2026-10-29`
+
+### 0. ⛔ — döntési pontok
+
+**A — ALVIL-001: 59 gerinces sor kötelező mező nélkül (0.4, a brief szerint megállás).**
+A gerincen álló ALVIL-001 59 H7585-során nincs `lexikon_szotar`/`lexikon_entry_id`/`jelentes_szam`: a 18. és a 19. szabály 59–59 SÉRTÉS-t adna. A brief szerint a szabály nem lazul, a sor nem kerül kivételre. Mért: mind az 59 sornak **pontosan egy** BDB-példa-útvonala van (`bdb_vers_jelentes.tsv`, `bdb_peldak`). A gerinc ma ebből címkéz, ezért a lap helyes; csak az adat nem explicit.
+- (1) **a #123 kiegészítő adatjavítása:** a 59 sor `BDB`/`H7585`/`jelentes_szam` értéke a BDB saját példahelyéből, gépileg, proveniencia-sorral; a #148 szabály-commitjai addig az ágon maradnak, a PR ez után mergelhető. *Javaslat.* Az adat explicit lesz (CLAUDE.md 3. szabály), és a 3. lépés eszköze ugyanezt az utat ellenőrzi.
+- (2) a 19. szabály elfogad üres `jelentes_szam`-ot, ha a BDB saját példája egyértelműen kijelöli a szakaszt — lazítás, a brief kizárja.
+- (3) az ALVIL-001 visszakerül a kivétellistára — a brief kizárja, és a lapot visszaállítaná.
+
+**A/3 — TEREMT-002 a kivétellistán?** A brief kivétellistája a TEREMT-002-t nem sorolja fel, a 0.2 szerint viszont 3/3 sora hiányos. Ha nincs a listán, a 19. szabály a main-en 3 SÉRTÉS-t ad. *Javaslat:* a TEREMT-002 a #12-ig a kivétellistán áll; a #12 első adatcommitja veszi le (ez a fordított irány pilotja, nem régi motívum). Másik lehetőség: a #148 merge-e a #12 adat-PR-ja után.
+
+**B — DT-F148a (a kivétellista helye).** *Javaslat (változatlan): (1) kódbeli konstans* (`GERINC_KIVETEL_MOTIVUMOK` a `lexikon_general.py`-ban, az `ellenoriz.py` importálja).
+
+**C — DT-F148b (tagolatlan szócikk).** *Javaslat (változatlan): (3), mellette (1).* A mérés nem talált gerinces sort tagolatlan entryvel; a H7585 tagolt (`-/1/-`…`-/4/-`).
+
+**D — DT-F148c (gépi `cimke_hu`).** *Javaslat (változatlan): (1).*
+
+**E — DT-F148d (21. szabály súlyossága), két mért pontosítással.**
+- *Javaslat: (2)* — az ágon JELENTÉS, a main-en SÉRTÉS. A main ma **3 SÉRTÉS-t** adna (ALVIL `DT-F123e`), mert a `szamkiosztas` a #513 óta nem futott le (l. 0.5). A #148 merge-e előtt a számkiosztásnak le kell futnia, és az ALVIL-lapot újra kell generálni. Ez a #141/DT-F141a körébe tartozik, külön feladat.
+- **(iii) újradefiniálása:** a „hiányzó egység = jelölés” egyenlőség helyett **a kiírt angol szöveg mérése**: a renderelés alatt a generátor `FORDITASRA_VAR`-kiírását és a `forditas_ehhez`→`None` utáni tényleges angol kiírást is naplózni; SÉRTÉS, ha egy kiírt angol egység jelöletlen. Ha ez a generátorban túl mély, a (iii) a #148-ban JELENTÉS, és az N-F148a nyitott tételként él tovább.
+
+**F — a 20. szabály mintái.** Kódbeli lista az `ellenoriz.py`-ban (nem új `tiltott_fordulatok.tsv`-oszlop); az `invokál` igei alak kimarad, csak a főnévi `invokáció` címke tiltott, mellette a `tiltott_fordulatok.tsv` meglévő mintái. Így a main-en 0 találat; az 1Kir 18:25–26 negatív teszt teljesül.
