@@ -1,4 +1,6 @@
-# BDB_HU_frissites — a `bdb_szakasz_hu.tsv` frissítésének naplója (2026-10-29; DT-F131r, N-F131f, N-F131g)
+# BDB_HU_frissites — a `bdb_szakasz_hu.tsv` frissítésének naplója (2026-10-29)
+
+*A döntés: `DONTESEK.md`, a BDB-frissítés sora (DT-F131r); a nyitott tételek: N-F131f, N-F131g.*
 
 ## 1. Döntés és eredmény
 
