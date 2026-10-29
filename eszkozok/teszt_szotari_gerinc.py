@@ -555,5 +555,26 @@ class ValodiAdat(unittest.TestCase):
         self.assertEqual(E.szabaly17_szakasz_cimke(E.ALAPERTELMEZETT_ADAT).verdict, 'RENDBEN')
 
 
+class Kulcsszavak(unittest.TestCase):
+    """A 2. szakasz eleji kulcsszó-blokk (a felhasználó: „2. Szótári háttér előtt kellene egy motivum kulcsszavai blokk”)."""
+
+    def _sorai(self, mid):
+        _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
+        return [r for r in elo_sorok if r['id'] == mid]
+
+    def test_istentiszt(self):
+        szov = LG.kulcsszavak_blokk('ISTENTISZT-001', self._sorai('ISTENTISZT-001'), {})
+        self.assertTrue(szov.startswith(LG.KULCSSZAVAK_CIM))
+        self.assertIn('| Gerinc | Szavak (kiejtéssel) | Jelentés | Károli-kulcsszavak |', szov)
+        self.assertIn('| H7121 + H8034 | ', szov)
+        self.assertIn(' (kárá) + ', szov)
+        self.assertIn(' (sém) | ', szov)
+        self.assertIn('„segítségül”', szov)
+        self.assertIn('**Mit mutat ez a rész?**', szov)
+
+    def test_kapcsolo_nelkul_ures(self):
+        self.assertEqual(LG.kulcsszavak_blokk('HAMART-001', self._sorai('HAMART-001'), {}), '')
+
+
 if __name__ == '__main__':
     unittest.main()

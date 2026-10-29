@@ -2106,9 +2106,45 @@ def szerep_vaz(tokenek, fajl_licenc_kulcsok, fajl_licenc_kulcsok_tbesg_tbesh, so
     return '\n\n'.join(reszek_szoveg), van_hiv, tiszt
 
 
+KULCSSZAVAK_CIM = '### A motívum kulcsszavai'
+
+
+def kulcsszavak_blokk(motivum_id, sorai, fajl_licenc_kulcsok):
+    """A 2. szakasz eleje (ISTENTISZT-001 arany lap, 2026-10-29; a felhasználó: „2. Szótári háttér előtt kellene egy
+    motivum kulcsszavai blokk”): gerinc-kombinációnként a szavak kiejtéssel, a rövid jelentésük (1. szerep) és a
+    Károli-kulcsszavak (a 14. szerep szabálya, `szerep_karoli.kulcsszavak`). Csak a `KAROLI_MEGFELELOK` kapcsolóval
+    (a Károli-kulcsszó a `karoli_szo` mezőn áll); egyébként ''. Csak megjelenítés, új adat nincs."""
+    if motivum_id not in SZEREP_KAROLI_MOTIVUMOK:
+        return ''
+    kombok = SZK.gerinc_kombinaciok(sorai)
+    if not kombok:
+        return ''
+    kulcs = SZK.kulcsszavak(sorai)
+    sorok = ['| Gerinc | Szavak (kiejtéssel) | Jelentés | Károli-kulcsszavak |', '|---|---|---|---|']
+    for k in kombok:
+        st = sorted(k, key=lambda s: (s[0] != 'G', s))
+        szavak = ' + '.join(lemma_cim(lemma_kiejtes(s)) if lemma_kiejtes(s) else s for s in st)
+        jelentes = ' + '.join(rovid_jelentes(s)[0] for s in st)
+        karoli = ', '.join('„%s”' % w for w in kulcs.get(k, [])) or EM_DASH
+        sorok.append('| %s | %s | %s | %s |' % (' + '.join(st), szavak, jelentes, karoli))
+    fajl_licenc_kulcsok.setdefault('adat/elofordulasok.tsv', set()).add('projekt_adat')
+    fajl_licenc_kulcsok.setdefault('adat/szoto/karoli_szotari_alak.tsv', set()).add('projekt_adat')
+    olv = ('A motívumot hordozó héber és görög szavak (a gerinc), a jelentésük, és azok a magyar szavak, amelyekkel '
+           'a Károli-fordítás a motívum helyein a legtöbbször visszaadja őket. Az alábbi szótári anyag ezekről a '
+           'szavakról szól.')
+    hatokor = ('*Gerinc-kombinációnként (az `elofordulasok.tsv` `strong` mezője, %d sor); a jelentés az 1. szerep '
+               'rövid jelentése; a Károli-kulcsszó a 14. szerep szabálya szerint (`eszkozok/szerep_karoli.py`: a '
+               'motívumsorok Károli-szóalakjainak legalább felében álló szótári alak). Csak megjelenítés.*'
+               % sum(1 for s in sorai if s.get('strong')))
+    return '\n\n'.join([KULCSSZAVAK_CIM, olvasoi_bekezdes(olv), hatokor, '\n'.join(sorok)])
+
+
 def blokk_szocikkek(m, tokenek, sorai):
     reszek = []
     fajl_licenc_kulcsok = {'adat/lexikon_hivatkozasok.tsv': set()}
+    kulcs_szov = kulcsszavak_blokk(m['id'], sorai or [], fajl_licenc_kulcsok)
+    if kulcs_szov:
+        reszek.append(kulcs_szov)
     van_hivatkozas_barmelyikhez = False
     tisztazatlan_erintve = False
 

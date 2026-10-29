@@ -643,6 +643,17 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 *Ez a blokk a `[ID: ALVIL-001]` motívum 2 Strong-tokenjét fedi, szerepenként a szerepmátrix (`szotar_szerepek.tsv`) sorrendjében, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*
 
+### A motívum kulcsszavai
+
+**Mit mutat ez a rész?** A motívumot hordozó héber és görög szavak (a gerinc), a jelentésük, és azok a magyar szavak, amelyekkel a Károli-fordítás a motívum helyein a legtöbbször visszaadja őket. Az alábbi szótári anyag ezekről a szavakról szól.
+
+*Gerinc-kombinációnként (az `elofordulasok.tsv` `strong` mezője, 72 sor); a jelentés az 1. szerep rövid jelentése; a Károli-kulcsszó a 14. szerep szabálya szerint (`eszkozok/szerep_karoli.py`: a motívumsorok Károli-szóalakjainak legalább felében álló szótári alak). Csak megjelenítés.*
+
+| Gerinc | Szavak (kiejtéssel) | Jelentés | Károli-kulcsszavak |
+|---|---|---|---|
+| G0086 | ᾍδης (Hadész) | pokol: Hádész | „pokol” |
+| H7585 | שְׁאוֹל (seól) | pokol: Seol | — |
+
 ### Görög szavak: G0086
 
 **Mit mutat ez a rész?** A motívumot hordozó görög szavak (görögül a Hadész (G0086)) szótári anyaga, számozott pontokban: minden pont egy kérdésre felel (alapjelentés, fő szótár, teológiai szócikk, jelentésmező, …).

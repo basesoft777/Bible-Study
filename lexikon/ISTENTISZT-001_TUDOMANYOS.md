@@ -586,6 +586,17 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum 3 Strong-tokenjét fedi, szerepenként a szerepmátrix (`szotar_szerepek.tsv`) sorrendjében, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*
 
+### A motívum kulcsszavai
+
+**Mit mutat ez a rész?** A motívumot hordozó héber és görög szavak (a gerinc), a jelentésük, és azok a magyar szavak, amelyekkel a Károli-fordítás a motívum helyein a legtöbbször visszaadja őket. Az alábbi szótári anyag ezekről a szavakról szól.
+
+*Gerinc-kombinációnként (az `elofordulasok.tsv` `strong` mezője, 33 sor); a jelentés az 1. szerep rövid jelentése; a Károli-kulcsszó a 14. szerep szabálya szerint (`eszkozok/szerep_karoli.py`: a motívumsorok Károli-szóalakjainak legalább felében álló szótári alak). Csak megjelenítés.*
+
+| Gerinc | Szavak (kiejtéssel) | Jelentés | Károli-kulcsszavak |
+|---|---|---|---|
+| G1941 | ἐπικαλέω (epikaleó) | hívni (segítségül)/nevezni | „hív”, „segítségül” |
+| H7121 + H8034 | קָרָא (kárá) + שֵׁם (sém) | hívni: megszólítani + név | „név”, „hív”, „segítségül” |
+
 ### Görög szavak: G1941
 
 **Mit mutat ez a rész?** A motívumot hordozó görög szavak (görögül az epikaleó (G1941)) szótári anyaga, számozott pontokban: minden pont egy kérdésre felel (alapjelentés, fő szótár, teológiai szócikk, jelentésmező, …).
