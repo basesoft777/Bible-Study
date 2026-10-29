@@ -77,6 +77,15 @@ class ValodiAdat(unittest.TestCase):
                          sorted(['PRAYERLESSNESS', 'IDOL', 'GLORY', 'REVIVALS', 'TESTIMONY', 'OBLIGATION', 'SEEKERS',
                                  'PENITENT']))
 
+    def test_kjv_karoli_megfeleltetes(self):
+        # a Nave KJV Ézs 64:7-e a Károli Ézs 64:6 (nave_bontas.py, mint az olvasó nave_vers-e): a PRAYERLESSNESS 3 motívumverse
+        t = next(x for x in SN.jeloltek(self.ist) if x['tema_id'] == 'NAVE-3936')
+        self.assertEqual(t['motivumversek'], ['Zsolt 79:6', 'Ézs 64:6', 'Jer 10:25'])
+        # a fejezet-szintű hely nem bomlik: az OBLIGATION témaverse nem számolja az 5Móz 6–11 fejezeteit egységként
+        o = next(x for x in SN.jeloltek(self.ist) if x['tema_id'] == 'NAVE-3621')
+        self.assertTrue(all(':' in v for v in SN.nave_sorai()[0][3]))
+        self.assertEqual(len(o['motivumversek']), 2)
+
     def test_minden_dontes_jelolt(self):
         # minden kivalasztott/kizart sor a mai jelöltek között van (különben a döntés elavult)
         jel = {t['tema_id'] for t in SN.jeloltek(self.ist)}

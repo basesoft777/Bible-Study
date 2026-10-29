@@ -80,6 +80,7 @@ class Szintetikus(unittest.TestCase):
         strongok = {'V 2:1': {'H1', 'H2'}, 'V 2:2': {'H1'}, 'V 2:3': set()}
         h = SK.hamis_parhuzamok(SORAI, versek=versek, strongok=strongok, tabla=TABLA, kulcs=k)
         self.assertEqual([x[0] for x in h], ['V 2:2'])            # 2:1 gerinces, 2:3-ból hiányzik a kulcsszó, 1:1 saját
+        self.assertEqual(h[0][2], ['H1'])                          # a részleges gerinc kiíródik
 
 
 class ValodiAdat(unittest.TestCase):
@@ -102,7 +103,7 @@ class ValodiAdat(unittest.TestCase):
         sajat = {s['igehely'] for s in self.ist}
         h = SK.hamis_parhuzamok(self.ist)
         self.assertTrue(h)
-        for hely, _ in h:
+        for hely, _, _g in h:
             self.assertNotIn(hely, sajat)
             self.assertFalse({'H7121', 'H8034'} <= st.get(hely, set()) or 'G1941' in st.get(hely, set()), hely)
 

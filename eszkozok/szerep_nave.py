@@ -1,8 +1,9 @@
 """A szótári szerepmátrix 12. szerepe (Tematikus index, Nave) — általános, motívumfüggetlen jelöltképzés és építő
 (ISTENTISZT-001 arany lap, 2026-10-29).
 
-Bemenet: a motívum `elofordulasok.tsv`-sorai; a `konkordancia/Nave_basokant.tsv` (közkincs, F18; a Károli-kulcs az
-`igehely_karoli`, ha ki van töltve, különben az `igehely`; az egy fejezeten belüli tartomány a benne álló verseket fedi); az
+Bemenet: a motívum `elofordulasok.tsv`-sorai; a `konkordancia/Nave_basokant.tsv` (közkincs, F18; a KJV-számozású hely a
+közös `nave_bontas.py` szabályával bomlik Károli-versekre, mint az olvasó `nave_vers` táblájában; a fejezet-szintű hely
+nem bomlik); az
 `adat/tematikus_temak.tsv` (motívumonként a jelöltek döntése — adat, nem kód); az `adat/nave_tema_hu.tsv` (a téma- és
 altételnevek magyar fordítása).
 
@@ -16,12 +17,14 @@ látszanak. A blokk csak megjelenítés (tematikus index): jelölt csak a `jelol
 TSV: split('\\t'), a '\\r' levágva; csv modul nélkül.
 """
 import collections
+import glob
 import hashlib
 import os
 import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import nave_bontas as NB  # noqa: E402
 import szerep_karoli as SZK  # noqa: E402
 
 if hasattr(sys.stdout, 'reconfigure'):
@@ -33,6 +36,7 @@ GYOKER = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 NAVE = os.path.join(GYOKER, 'konkordancia', 'Nave_basokant.tsv')
 TEMAK = os.path.join(GYOKER, 'adat', 'tematikus_temak.tsv')
 TEMA_HU = os.path.join(GYOKER, 'adat', 'nave_tema_hu.tsv')
+VERSMEGF = os.path.join(GYOKER, 'konkordancia', 'Karoli_versmegfeleltetes.tsv')
 
 MIN_VERS = 2
 MIN_ARANY = 0.01
@@ -58,23 +62,47 @@ def sha1(szoveg):
 
 
 def versek(hely):
-    """A Nave-igehely Károli-versei: a fejezeten belüli tartomány kibontva."""
+    """A Károli-igehely versei: a fejezeten belüli tartomány kibontva (a tesztadat segédje)."""
     m = TART.match(hely)
     if not m:
         return [hely]
     return ['%s:%d' % (m.group(1), v) for v in range(int(m.group(2)), int(m.group(3)) + 1)]
 
 
+def _lxx_kjv():
+    """{Károli-igehely: KJV `f:v`} a LXX_OS könyvfájljaiból (a `szoalak` oszlopos fájlok, a `zsolt_felirat_eltolas` sorok
+    nélkül; a Károli-versre az első sor) — ugyanaz a bemenet, mint a `sqlite_epit.py` `nave_vers`-éé."""
+    d = {}
+    for f in sorted(glob.glob(os.path.join(GYOKER, 'konkordancia', 'LXX_OS', '*.tsv'))):
+        with open(f, encoding='utf-8', newline='') as fh:
+            s = [x.rstrip('\r') for x in fh.read().split('\n') if x and not x.startswith('#')]
+        fej = s[0].split('\t') if s else []
+        if 'szoalak' not in fej:
+            continue
+        ik, ij, ok = fej.index('igehely_karoli'), fej.index('igehely_kjv'), fej.index('karoli_ok')
+        for x in s[1:]:
+            m = x.split('\t')
+            if len(m) > max(ik, ij, ok) and m[ik] and m[ok] != 'zsolt_felirat_eltolas':
+                d.setdefault(m[ik], m[ij])
+    return d
+
+
 def nave_sorai(ut=None):
-    """[(tema_id, tema, cimke, [vers, …])] a Nave-tábla soraiból (a Károli-kulccsal)."""
+    """[(tema_id, tema, cimke, [Károli-vers, …])] a Nave-tábla soraiból, a közös bontási szabállyal
+    (`eszkozok/nave_bontas.py`: a KJV-számozású hely a Károli-versek KJV-kulcsa szerint bomlik — a LXX_OS, a fejezet
+    eltolása, a `Karoli_versmegfeleltetes.tsv`; a fejezet-szintű és az értelmezhetetlen hely nem bomlik, a kihagyás
+    számolt). Ugyanez a szabály építi az olvasó `nave_vers` tábláját."""
     ut = ut or NAVE
     if ('nave', ut) not in _CACHE:
-        ki = []
-        for r in _sorok(ut):
-            hely = r.get('igehely_karoli') or r.get('igehely') or ''
-            if hely:
-                ki.append((r['tema_id'], r['tema'], r.get('cimke', ''), versek(hely)))
-        _CACHE[('nave', ut)] = ki
+        vm = {r['igehely_karoli']: r['igehely_kjv'] for r in _sorok(VERSMEGF)}
+        racs = NB.KjvRacs([h for h, _sz in SZK.karoli_versek()], _lxx_kjv(), vm)
+        nave = _sorok(ut)
+        bontott, kihagyott, _n = NB.nave_bont(nave, racs)
+        sorok = collections.OrderedDict()
+        for i, r, ig, _t in bontott:
+            sorok.setdefault(i, (r['tema_id'], r['tema'], r.get('cimke', ''), []))[3].append(ig)
+        _CACHE[('nave', ut)] = list(sorok.values())
+        _CACHE[('kihagyott', ut)] = kihagyott
     return _CACHE[('nave', ut)]
 
 
@@ -156,9 +184,9 @@ def blokk_12(sorai, ts):
            % (MIN_VERS, round(MIN_ARANY * 100), n_tilt, n_jelolt, len(temak))]
     sorok = []
     for t in temak:
-        sorok.append('- **%s** — %d motívumvers / %d témavers (%.1f%%): %s' % (
-            _hu(nevek, t['tema_id'], '', t['tema']), len(t['motivumversek']), t['temavers'], 100 * t['arany'],
-            ', '.join(t['motivumversek'])))
+        sorok.append('- **%s** — %d motívumvers / %d témavers (%s%%): %s' % (
+            _hu(nevek, t['tema_id'], '', t['tema']), len(t['motivumversek']), t['temavers'],
+            ('%.1f' % (100 * t['arany'])).replace('.', ','), ', '.join(t['motivumversek'])))
         for c, vs in t['cimkek'].items():
             if c:
                 sorok.append('  - %s: %s' % (_hu(nevek, t['tema_id'], c, c), ', '.join(vs)))

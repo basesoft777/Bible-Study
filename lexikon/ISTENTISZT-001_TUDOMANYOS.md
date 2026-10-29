@@ -733,23 +733,23 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 *Nave tematikus indexe (Nave's Topical Bible, 1897, közkincs). Jelölt az a téma, amely legalább 2 motívumverset érint, a motívumversek aránya a téma összes verséhez legalább 1%, és nem a fölérendelt fogalom felé mutat (4 tiltott téma); a 18 jelöltből a motívumhoz kiválasztott 8 téma áll itt — a döntés és a kimaradt jelöltek indoka: `adat/tematikus_temak.tsv`. Csak megjelenítés: jelölt ezekből csak az `adat/jeloltek.tsv`-n át lesz.*
 
-- **ébredések (*REVIVALS*)** — 4 motívumvers / 156 témavers (2.6%): 1Kir 18:24, 1Kir 18:25, 1Kir 18:26, ApCsel 2:21
+- **ébredések (*REVIVALS*)** — 4 motívumvers / 145 témavers (2,8%): 1Kir 18:24, 1Kir 18:25, 1Kir 18:26, ApCsel 2:21
   - pünkösdkor és a pünkösd utáni időkben (*At Pentecost, and times after Pentecost*): ApCsel 2:21
   - Illés (*Elijah*): 1Kir 18:24, 1Kir 18:25, 1Kir 18:26
-- **bizonyságtétel (*TESTIMONY*)** — 4 motívumvers / 262 témavers (1.5%): 1Krón 16:8, Zsolt 116:4, Zsolt 116:13, Ézs 12:4
+- **bizonyságtétel (*TESTIMONY*)** — 4 motívumvers / 261 témavers (1,5%): 1Krón 16:8, Zsolt 116:4, Zsolt 116:13, Ézs 12:4
   - vallásos (*RELIGIOUS*): 1Krón 16:8, Ézs 12:4
   - vallásos, példák (*RELIGIOUS, EXEMPLIFIED*): Zsolt 116:4, Zsolt 116:13
-- **az imádság elmulasztása (*PRAYERLESSNESS*)** — 2 motívumvers / 15 témavers (13.3%): Zsolt 79:6, Jer 10:25
-  - általános igehelyek (*General scriptures concerning*): Zsolt 79:6, Jer 10:25
-- **kötelezettség (*OBLIGATION*)** — 2 motívumvers / 25 témavers (8.0%): Zsolt 116:13, Zsolt 116:17
+- **az imádság elmulasztása (*PRAYERLESSNESS*)** — 3 motívumvers / 15 témavers (20,0%): Zsolt 79:6, Ézs 64:6, Jer 10:25
+  - általános igehelyek (*General scriptures concerning*): Zsolt 79:6, Ézs 64:6, Jer 10:25
+- **kötelezettség (*OBLIGATION*)** — 2 motívumvers / 19 témavers (10,5%): Zsolt 116:13, Zsolt 116:17
   - elismerése (*Acknowledgment of*): Zsolt 116:13, Zsolt 116:17
-- **bálvány (*IDOL*)** — 2 motívumvers / 46 témavers (4.3%): 1Kir 18:25, 1Kir 18:26
+- **bálvány (*IDOL*)** — 2 motívumvers / 46 témavers (4,3%): 1Kir 18:25, 1Kir 18:26
   - a hozzá szóló imádság meghallgatatlan (*Prayer to, unanswered*): 1Kir 18:25, 1Kir 18:26
-- **dicsőség (*GLORY*)** — 2 motívumvers / 80 témavers (2.5%): 2Móz 33:19, 2Móz 34:5
+- **dicsőség (*GLORY*)** — 2 motívumvers / 80 témavers (2,5%): 2Móz 33:19, 2Móz 34:5
   - Mózesnek megmutatva (*Exhibited to Moses*): 2Móz 33:19, 2Móz 34:5
-- **bűnbánó (*PENITENT*)** — 2 motívumvers / 131 témavers (1.5%): Róm 10:12, Róm 10:13
+- **bűnbánó (*PENITENT*)** — 2 motívumvers / 131 témavers (1,5%): Róm 10:12, Róm 10:13
   - a neki szóló ígéretek (*PROMISES TO*): Róm 10:12, Róm 10:13
-- **keresők (*SEEKERS*)** — 2 motívumvers / 173 témavers (1.2%): ApCsel 2:21, Róm 10:13
+- **keresők (*SEEKERS*)** — 2 motívumvers / 173 témavers (1,2%): ApCsel 2:21, Róm 10:13
   - általános igehelyek (*General scriptures concerning*): ApCsel 2:21, Róm 10:13
 
 *(proveniencia: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001) | forras=Nave_basokant.tsv+adat/tematikus_temak.tsv+adat/nave_tema_hu.tsv (eszkozok/szerep_nave.py) | n=8 | ts=2026-10-29)*
@@ -791,28 +791,28 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 - Ézs 12:4 — „magasztaljátok az Ő nevét” (H7121+H8034; hiányzik: hív, segítségül)
 - 1Pét 1:17 — „hívjátok” (G1941; hiányzik: segítségül)
 
-**Hamis párhuzam** (ugyanaz a magyar szó, más Strong): Károli-versek valamely kombináció minden kulcsszavával, a gerinc nélkül — 17 vers.
+**Hamis párhuzam** (ugyanaz a magyar szó, a gerinc-kombináció nélkül): Károli-versek valamely kombináció minden kulcsszavával, amelyekben egyik gerinc-kombináció sem teljes — 17 vers. A versben álló gerinc-Strong (a kombináció egy része, pl. a H7121 a H8034 nélkül) a vers után áll; a magyar kulcsszavak mindkét szövetségben ugyanazt a formulát keresik.
 
 <details>
 <summary>A 17 vers</summary>
 
-- 1Kir 8:52 — Hogy a te szemeid nézzenek a te szolgádnak imádságára és a te népednek az Izráelnek könyörgésére; meghallgatván őket mindenkor, mikor téged segítségül hívnak.
-- 1Krón 4:10 — És Jábes az Izráel Istenét hívá segítségül, mondván: Ha engem megáldanál és az én határomat megszélesítenéd, és a te kezed én velem lenne, és engem minden veszedelemtől megoltalmaznál, hogy bút ne lássak! És megadá Isten néki, a mit kért vala.
-- 1Krón 21:26 — És építe ott oltárt Dávid az Úrnak, és áldozék égő- és hálaáldozatokkal és segítségül hívá az Urat, a ki meghallgatá őt, mennyből tüzet bocsátván az égőáldozat oltárára.
-- Jób 9:16 — Ha segítségül hívnám és felelne is nékem, még sem hinném, hogy szavamat fülébe vevé;
-- Zsolt 14:4 — Nem tudják-é ezt mind a gonosztévők, a kik megeszik az én népemet, mintha kenyeret ennének, az Urat pedig segítségül nem hívják?
-- Zsolt 50:15 — És hívj segítségül engem a nyomorúság idején, én megszabadítlak téged és te dicsőítesz engem. · *jelölt: elutasítva*
-- Zsolt 53:5 — Avagy nincs értelem a hamisságnak cselekvőiben, a kik az én népemet megeszik, mintha kenyeret ennének, a kik az Istent segítségül nem hívják?
-- Zsolt 81:8 — A nyomorúságban segítségül hívtál és én megszabadítottalak téged; meghallgattalak téged a mennydörgésnek rejtekében; megpróbáltalak téged a versengések vizénél. Szela.
-- Zsolt 91:15 — Segítségül hív engem, ezért meghallgatom őt; vele vagyok háborúságában: megmentem és megdicsőítem őt. · *jelölt: elutasítva*
-- Zsolt 116:2 — Mert az ő fülét felém fordítja, azért segítségül hívom őt egész életemben.
-- Zsolt 118:5 — Szükségemben segítségül hívám az Urat, meghallgatott és tágas térre tett engem az Úr.
-- Zsolt 119:146 — Segítségül hívlak: tarts meg engem, és megőrzöm a te bizonyságaidat.
-- Péld 1:28 — Akkor segítségül hívnak engem, de nem hallgatom meg: keresnek engem, de meg nem találnak.
-- Ézs 43:22 — És még sem engem hívtál segítségül Jákób, hanem megfáradtál én bennem Izráel!
-- Ézs 55:6 — Keressétek az Urat, a míg megtalálható, hívjátok őt segítségül, a míg közel van.
-- Sir 3:8 — Sőt ha kiáltok és segítségül hívom is, nem hallja meg imádságomat.
-- Sir 3:57 — Közelegj hozzám, mikor segítségül hívlak téged; mondd: Ne félj!
+- 1Kir 8:52 — Hogy a te szemeid nézzenek a te szolgádnak imádságára és a te népednek az Izráelnek könyörgésére; meghallgatván őket mindenkor, mikor téged segítségül hívnak. · *gerinc a versben: H7121*
+- 1Krón 4:10 — És Jábes az Izráel Istenét hívá segítségül, mondván: Ha engem megáldanál és az én határomat megszélesítenéd, és a te kezed én velem lenne, és engem minden veszedelemtől megoltalmaznál, hogy bút ne lássak! És megadá Isten néki, a mit kért vala. · *gerinc a versben: H7121*
+- 1Krón 21:26 — És építe ott oltárt Dávid az Úrnak, és áldozék égő- és hálaáldozatokkal és segítségül hívá az Urat, a ki meghallgatá őt, mennyből tüzet bocsátván az égőáldozat oltárára. · *gerinc a versben: H7121*
+- Jób 9:16 — Ha segítségül hívnám és felelne is nékem, még sem hinném, hogy szavamat fülébe vevé; · *gerinc a versben: H7121*
+- Zsolt 14:4 — Nem tudják-é ezt mind a gonosztévők, a kik megeszik az én népemet, mintha kenyeret ennének, az Urat pedig segítségül nem hívják? · *gerinc a versben: H7121*
+- Zsolt 50:15 — És hívj segítségül engem a nyomorúság idején, én megszabadítlak téged és te dicsőítesz engem. · *gerinc a versben: H7121* · *jelölt: elutasítva*
+- Zsolt 53:5 — Avagy nincs értelem a hamisságnak cselekvőiben, a kik az én népemet megeszik, mintha kenyeret ennének, a kik az Istent segítségül nem hívják? · *gerinc a versben: H7121*
+- Zsolt 81:8 — A nyomorúságban segítségül hívtál és én megszabadítottalak téged; meghallgattalak téged a mennydörgésnek rejtekében; megpróbáltalak téged a versengések vizénél. Szela. · *gerinc a versben: H7121*
+- Zsolt 91:15 — Segítségül hív engem, ezért meghallgatom őt; vele vagyok háborúságában: megmentem és megdicsőítem őt. · *gerinc a versben: H7121* · *jelölt: elutasítva*
+- Zsolt 116:2 — Mert az ő fülét felém fordítja, azért segítségül hívom őt egész életemben. · *gerinc a versben: H7121*
+- Zsolt 118:5 — Szükségemben segítségül hívám az Urat, meghallgatott és tágas térre tett engem az Úr. · *gerinc a versben: H7121*
+- Zsolt 119:146 — Segítségül hívlak: tarts meg engem, és megőrzöm a te bizonyságaidat. · *gerinc a versben: H7121*
+- Péld 1:28 — Akkor segítségül hívnak engem, de nem hallgatom meg: keresnek engem, de meg nem találnak. · *gerinc a versben: H7121*
+- Ézs 43:22 — És még sem engem hívtál segítségül Jákób, hanem megfáradtál én bennem Izráel! · *gerinc a versben: H7121*
+- Ézs 55:6 — Keressétek az Urat, a míg megtalálható, hívjátok őt segítségül, a míg közel van. · *gerinc a versben: H7121*
+- Sir 3:8 — Sőt ha kiáltok és segítségül hívom is, nem hallja meg imádságomat. · *gerinc a versben: nincs*
+- Sir 3:57 — Közelegj hozzám, mikor segítségül hívlak téged; mondd: Ne félj! · *gerinc a versben: H7121*
 
 </details>
 
