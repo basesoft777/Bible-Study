@@ -143,7 +143,7 @@ A maradék 1: a G1941 UBS-doménsorának 56.15-ös kódja („to appeal one’s 
 
 ### 4.3 A 32 sor
 
-Mind a 32 soron áll címke az elsődleges (kutatói) tokenen: 22 ÓSZ-sor H7121-címkével (`Qal 2.c` 20, `Qal 3.b` 2: 2Móz 33:19, 34:5), 10 ÚSZ-sor `TBESG 2` címkével. A H8034 mint második token 5 soron kap BDB-példa-címkét (`3`: 1Móz 4:26, 12:8, 13:4, 21:33; `4`: 1Kir 18:24), 17 soron kimondott hiányt (`*(nincs hozzárendelés)*`). A minősítő (`tagadva`, `rokon`) a cellában nem áll; az ⓘ-ben igen (N-F131b). Ellentmondás (GerincHiba): 0.
+Mind a 32 soron áll címke az elsődleges (kutatói) tokenen: 22 ÓSZ-sor H7121-címkével (`Qal 2.c` 20, `Qal 3.b` 2: 2Móz 33:19, 34:5), 10 ÚSZ-sor `TBESG 2` címkével. A H8034 mint második token 5 soron kap BDB-példa-címkét (`3`: 1Móz 4:26, 12:8, 13:4, 21:33; `4`: 1Kir 18:24), 17 soron kimondott hiányt (`*(nincs hozzárendelés)*`). A minősítő (`tagadva`, `rokon`) a cellában nem áll; az ⓘ-ben igen (N63). Ellentmondás (GerincHiba): 0.
 
 ### 4.4 Kiemelt szótári példahelyek
 

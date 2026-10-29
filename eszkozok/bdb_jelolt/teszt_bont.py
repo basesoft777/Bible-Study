@@ -344,6 +344,22 @@ class HuIlleszt(unittest.TestCase):
         for szo in ('papok királysága', 'puszta proszthetikus', 'pap (késői héber', 'Pentateuchusban'):
             self.assertFalse([j for j in self._jelek(szo) if j.startswith('T:')], szo)
 
+    def test_kotetszamos_siglum(self):
+        # hu_illeszt (4), ISTENTISZT-001 arany lap, 2026-10-29: a „Kö^ii. 1. 104” lapszám nem jelölő (H8034), a valódi
+        # jelölő utána megmarad; a szerzői siglum és a záró zárójel utáni jel valódi jelölő lehet (H7442, H4557, H0450) —
+        # a szabály ezeket nem dobja
+        hu = 'vö. RS^K 213, 303 kk. Kö^ii. 1. 104; késői héber — név: 1 folyóé 1Móz 2:11'
+        poz = [p for p, j in self.hi.magyar_jelolok(hu) if j == '1']
+        self.assertEqual(poz, [hu.index('1 folyóé')])
+        self.assertNotIn('1', self._jelek('(Kö^ii. 1. 512), óarámi'))
+        self.assertIn('2', self._jelek('esetleg וָרֹק és köpés, Klo Che^Hpt. 2 nyomorúságban, JSir 2:19.'))
+        self.assertIn('2', self._jelek('így ᵐ5 Di So^Kau. 2 elbeszélés, előadás'))
+        self.assertIn('5', self._jelek('vö. RS^149). 5 az ember Istene'))
+        # végig az illesztésen: a H8034 feje nem a lapszámnál vágódik el
+        sorok = [{'jel': '', 'jelolo': 'fej', 'szoveg': ''}, {'jel': '1', 'jelolo': 'point', 'szoveg': 'of river Gen 2:11'}]
+        eredmeny = self.hi.strong_illeszt(sorok, hu)[0]
+        self.assertEqual(eredmeny[1][:3], ['illeszkedik', '1', hu.index('1 folyóé')])
+
     def test_illesztes_es_horgony(self):
         sorok = [{'jelolo': 'fej', 'jel': '', 'szoveg': 'x'},
                  {'jelolo': 'point', 'jel': '1', 'szoveg': 'king of Gerar Gen 20:2'},

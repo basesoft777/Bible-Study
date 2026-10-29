@@ -34,7 +34,7 @@ A brief nem számozza G/D-ként a pontjait. Az ellenőrzés alapja ezért a brie
 | 2e Teszt-lefedettség | OK, megjegyzéssel; futás NEM ELLENŐRIZHETŐ | `teszt_szotari_gerinc.py`, `teszt_vers_jelentes.py` (diff) | Mind az öt javításnak van tesztje, éles és szintetikus adattal (`git diff … eszkozok/teszt_*`). Gyengeség: a `test_folytatasok_lanc` Cyril-ellenőrzése a `szakasz != '7'` sorokat nézi, holott a Cyril a 7. szakaszban áll, így az állítás üres. Az esetet a `test_g1941_motivumhelyek` fedi: pontosan 2 folytatás-sort vár a G1941-ben. Futtatni nem megengedett. |
 | 2f Forrás- és licencmegjelölés: Mounce | **ELTÉRÉS** | `:509, 792` | A lap megnevezi a Mounce-ot („a Mounce-glossza a szónézetben”), és a 2/b fejléce az MCGED-et. Egyik sem áll az Irodalomban vagy a kolofonban. Az `adat/licencek.tsv` MCGED-sora: „redistribution with attribution”. A probléma az előző körből öröklött; a napló 8.8.3 nyitva hagyta. A többi megnevezett forrás (BDB, LSJ, LXX, OSHL/TWOT, SDBH, SDGNT, SECE, TBESG, TBESH, TSK, Thayer, UBS DNTG, UBS DBH, tW) mind szerepel (`git show …:lexikon/… \| sed -n '1660,1800p'`). |
 | 3 A1 Memória vs. lekérdezés | OK | napló 8.1–8.2 | A tokenszámokat a `scan` igazolja (R1, R1a). A Thayer-folytatás tényeit a `Thayer_teljes.tsv` szövege (2c). A mérésekhez proveniencia-sor tartozik. |
-| 3 A2 Nyitott tételek | OK | – | A diff a `NYITOTT_FELADATOK.md`-t nem írja. Az N-F131a–g a 6. lépésre vár. |
+| 3 A2 Nyitott tételek | OK | – | A diff a `NYITOTT_FELADATOK.md`-t nem írja. Az N62–g a 6. lépésre vár. |
 | 3 A3 Tematikus vs. lexikai | OK | – | A diff nem hoz új párhuzam-állítást. |
 | 3 A4 Remez/Sod | OK | – | A `motivumok/` nincs a változottak között (`git diff --numstat`). |
 | 3 A5 Nevesített tanító | OK | – | Nem került be új tanító. |
