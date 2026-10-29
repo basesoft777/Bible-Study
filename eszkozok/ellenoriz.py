@@ -929,6 +929,7 @@ def szabaly13_forditasi_gyorsitotar(adat_dir):
     forras_idx = _forditasok_forras_szoveg_idx(adat_dir)
     teljes_cache = {}
     szakasz_cache = {}
+    tovabbi_cache = {}
     # F128: egy Strong nem `elavult` `sz<n>` sorai egyutt a Strong osszes szakaszat fedik (SEMA 2.14)
     sz_strongok = {}
     for sor in sorok:
@@ -949,6 +950,10 @@ def szabaly13_forditasi_gyorsitotar(adat_dir):
             forras_szoveg = _teljes_szocikk(adat_dir, sor, teljes_cache)
         if forras_szoveg is None:
             forras_szoveg = _szakasz_szoveg(adat_dir, sor, szakasz_cache)
+        if forras_szoveg is None:
+            # F121 (DT-F121k): TBESH/TBESG/tW/MCGED/LSJ/BDB-nyelvi háttér -- egy feloldó (SEMA 2.14)
+            import glossza_lexikon_forditas as GLF
+            forras_szoveg = GLF.tovabbi_forras(sor, os.path.join(os.path.dirname(adat_dir), 'konkordancia'), tovabbi_cache)
         if forras_szoveg is None:
             hibas.append('%s: nincs hozzá forrásszöveg (lexikon_hivatkozasok.tsv / '
                           'UBS_DNTG_jelentesek.tsv / teljes szócikk)' % (kulcs,))

@@ -294,5 +294,39 @@ class Szabaly13DBH(Szabaly13Teljes):
         self.assertIn('nincs hozzá forrásszöveg', e.peldak[0])
 
 
+class Szabaly13Tovabbi(Szabaly13Teljes):
+    """F121 (DT-F121k): a TBESH/TBESG/tW/MCGED/LSJ/BDB-nyelvi háttér sor forrásszövege a konkordancia-fájlokból
+    (glossza_lexikon_forditas.tovabbi_forras); itt az LSJ és az MCGED."""
+
+    def setUp(self):
+        super().setUp()
+        for nev, szoveg in (('LSJ_teljes.tsv', 'Strong_padded\tStrong_eredeti\tTeljes_szocikk\nG0086\tG86\tLSJ-forrás\n'),
+                            ('MCGED_teljes.tsv', 'strong\tgk_szam\tlemma_gorog\tatirat\tgyakorisag\tglossza\n'
+                                                 'G0086\tG50087\tx\ty\t1\tthe abode of the dead\n')):
+            with open(os.path.join(self.gyoker, 'konkordancia', nev), 'w', encoding='utf-8', newline='\n') as fh:
+                fh.write(szoveg)
+
+    def _d(self, szotar, eid, jsz, mezo, szoveg, **kw):
+        alap = {'szotar': szotar, 'strong': 'G0086', 'entry_id': eid, 'jelentes_szam': jsz, 'mezo': mezo,
+                'forras_hash': sha1(szoveg), 'forditas_hu': 'forditás', 'allapot': 'sonnet',
+                'modell': 'claude-sonnet-5-5', 'datum': '2026.10.29'}
+        alap.update(kw)
+        return alap
+
+    def test_lsj_es_mcged_helyes_hash_rendben(self):
+        self.assertEqual(self._futtat([self._d('LSJ', 'G0086', 'teljes', 'forditas_hu', 'LSJ-forrás'),
+                                       self._d('MCGED', 'G50087', '—', 'glosszak_hu', 'the abode of the dead')]).verdict, 'RENDBEN')
+
+    def test_negativ_elrontott_hash_bukik(self):
+        e = self._futtat([self._d('LSJ', 'G0086', 'teljes', 'forditas_hu', 'LSJ-forrás', forras_hash='0' * 40)])
+        self.assertEqual(e.verdict, 'SÉRTÉS')
+        self.assertIn('forras_hash eltér', e.peldak[0])
+
+    def test_negativ_ismeretlen_entry_id_bukik(self):
+        e = self._futtat([self._d('LSJ', 'G86', 'teljes', 'forditas_hu', 'LSJ-forrás')])
+        self.assertEqual(e.verdict, 'SÉRTÉS')
+        self.assertIn('nincs hozzá forrásszöveg', e.peldak[0])
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
