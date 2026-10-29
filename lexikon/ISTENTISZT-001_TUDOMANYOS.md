@@ -10,6 +10,8 @@ A motívum az ószövetségi קָרָא בְּשֵׁם יְהוָה (kárá bes�
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-10-29 -->
 
+**Mit mutat ez a rész?** A lap szakaszai. A „(kézi)” jelölésű szakaszokat a kutató írta, a többit a rendszer állítja elő az adattáblákból.
+
 *Ez a blokk a lexikon-oldal 14 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
 
 - [Kivonat](#kivonat)
@@ -32,6 +34,8 @@ A motívum az ószövetségi קָרָא בְּשֵׁם יְהוָה (kárá bes�
 ## Jelmagyarázat és rövidítések
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#jelmagyarazat | forrás:  | licenc: minden jog fenntartva | ts=2026-10-29 -->
+
+**Mit mutat ez a rész?** A lapon használt rövidítések, jelek és forrásnevek feloldása. Ha a lap egy jelét nem érted, itt keresd.
 
 *Ez a blokk közös, minden lexikon-oldalon szó szerint azonos szöveg (G10).*
 
@@ -62,6 +66,8 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 ## 1. Előfordulások
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#elofordulasok | forrás: adat/elofordulasok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, adat/forditasok.tsv, adat/szotar_szakasz_cimke.tsv, adat/bdb_vers_jelentes.tsv, adat/thayer_vers_jelentes.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/TAHOT_kivonat.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva | ts=2026-10-29 -->
+
+**Mit mutat ez a rész?** A motívum 33 igehelye a bibliai könyvek sorrendjében (23 ószövetségi, 10 újszövetségi), mindegyik a Károli-fordítás szövegével. Soronként látszik, melyik szó hordozza a motívumot, és mit jelent az adott versben.
 
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum 33 igehely-sorát fedi az `elofordulasok.tsv`-ből, kanonikus sorrendben, a Károli-szöveggel (1/a) és az UBS-jelentés renderidejű hozzárendelésével (G3). A „Jelentés (a szó)” oszlop a szó jelentését a szótár tagolásában adja (`adat/szotar_szakasz_cimke.tsv`, `adat/bdb_vers_jelentes.tsv`, `adat/thayer_vers_jelentes.tsv`; a címke forrása a sor lábjegyzetében, ⓘ), a „Funkció (a motívumban)” a hely motívumbeli funkcióját (F131, DT272 (d)).*
 
@@ -340,103 +346,224 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-10-29 -->
 
+**Mit mutat ez a rész?** Ezeket a helyeket megvizsgáltuk, de nem tartoznak a motívumhoz, vagy a döntés még nyitott (92 elutasítva, 1 nyitott). Mindegyiknél látszik, miért került a vizsgálatba, és miért maradt ki.
+
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum 93 elutasított/nyitva maradt jelöltjét fedi a `jeloltek.tsv`-ből (G7).*
 
-- **Zsolt 105:15** (elutasítva, `TSK 1Krón 16:8 → Zsolt 105:15 (22); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): ellenőrizve, tartalmilag NEM releváns (a próféták érintetlenségéről szól, ugyanabban a zsoltárban)
-- **Róm 10:11** (elutasítva, `TSK Jóel 2:32 → Róm 10:11 (19); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): ellenőrizve, nincs ἐπικαλέομαι / καλέω a versben, NEM releváns
-- **Róm 3:13** (elutasítva, `Károli-KH Zsolt 116:13; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns
-- **Jak 3:8** (elutasítva, `Károli-KH Zsolt 116:13; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns
-- **2Sám 7:9** (elutasítva, `Károli-KH Zsolt 116:17; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns
-- **Zsolt 113:3** (elutasítva, `Károli-KH Zef 3:9; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns
-- **Zsolt 114:2** (elutasítva, `Károli-KH Zef 3:9; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns
-- **Zsolt 66:1** (elutasítva, `Károli-KH Ézs 12:4; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns
-- **Zsolt 66:2** (elutasítva, `Károli-KH Ézs 12:4; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns
-- **Zsolt 66:3** (elutasítva, `Károli-KH Ézs 12:4; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns
-- **Zsolt 66:4** (elutasítva, `Károli-KH Ézs 12:4; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns
-- **Zsolt 66:5** (elutasítva, `Károli-KH Ézs 12:4; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns
-- **Zsolt 118:1** (elutasítva, `Károli-KH Ézs 12:4; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns
-- **Zsolt 106:1** (elutasítva, `Károli-KH Ézs 12:4; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns
-- **Róm 9:15** (elutasítva, `Károli-KH 2Móz 33:19; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns
-- **1Pét 1:6** (elutasítva, `Károli-KH Zak 13:9; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): Zak 13:9 Károli-KH célhelye. A napló (61. sor) szerint a Zak 13:9 célhelyei közül a formulát a már dokumentált Jóel 2:32, ApCsel 2:21 és Róm 10:14 mellett egyedül a Róm 10:12 tartalmazza, az 1Pét 1:6–7 nem; NEM releváns
-- **1Pét 1:7** (elutasítva, `Károli-KH Zak 13:9; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): Zak 13:9 Károli-KH célhelye. A napló (61. sor) szerint a Zak 13:9 célhelyei közül a formulát a már dokumentált Jóel 2:32, ApCsel 2:21 és Róm 10:14 mellett egyedül a Róm 10:12 tartalmazza, az 1Pét 1:6–7 nem; NEM releváns
-- **Zsolt 50:15** (elutasítva, `TSK Zak 13:9 (46 találat); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): név nélküli segítségül hívás (H7121, שֵׁם nélkül): rokon igei használat, nem a formula, NEM a motívum része
-- **Zsolt 91:15** (elutasítva, `TSK Zak 13:9 (46 találat); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): név nélküli segítségül hívás (H7121, שֵׁם nélkül): rokon igei használat, nem a formula, NEM a motívum része
-- **Jer 29:12** (elutasítva, `TSK Zak 13:9 (46 találat); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): név nélküli segítségül hívás (H7121, שֵׁם nélkül): rokon igei használat, nem a formula, NEM a motívum része
-- **Ézs 58:9** (elutasítva, `TSK Zak 13:9 (46 találat); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): név nélküli segítségül hívás (H7121, שֵׁם nélkül): rokon igei használat, nem a formula, NEM a motívum része
-- **Ézs 65:24** (elutasítva, `TSK Zak 13:9 (46 találat); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): név nélküli segítségül hívás (H7121, שֵׁם nélkül): rokon igei használat, nem a formula, NEM a motívum része
-- **Zsolt 86:5** (elutasítva, `TSK ApCsel 2:21; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): név nélküli H7121: rokon, NEM a formula
-- **1Móz 25:21** (elutasítva, `Károli-KH ApCsel 2:21; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): a 25:25-26-ban a H7121+H8034 névadás ("nevezék nevét Ézsaunak"), nem segítségül hívás — NEM releváns
-- **1Móz 25:22** (elutasítva, `Károli-KH ApCsel 2:21; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): a 25:25-26-ban a H7121+H8034 névadás ("nevezék nevét Ézsaunak"), nem segítségül hívás — NEM releváns
-- **1Móz 25:23** (elutasítva, `Károli-KH ApCsel 2:21; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): a 25:25-26-ban a H7121+H8034 névadás ("nevezék nevét Ézsaunak"), nem segítségül hívás — NEM releváns
-- **1Móz 25:24** (elutasítva, `Károli-KH ApCsel 2:21; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): a 25:25-26-ban a H7121+H8034 névadás ("nevezék nevét Ézsaunak"), nem segítségül hívás — NEM releváns
-- **1Móz 25:25** (elutasítva, `Károli-KH ApCsel 2:21; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): a 25:25-26-ban a H7121+H8034 névadás ("nevezék nevét Ézsaunak"), nem segítségül hívás — NEM releváns
-- **1Móz 25:26** (elutasítva, `Károli-KH ApCsel 2:21; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): a 25:25-26-ban a H7121+H8034 névadás ("nevezék nevét Ézsaunak"), nem segítségül hívás — NEM releváns
-- **1Pét 2:11** (elutasítva, `TSK 2Tim 2:22 (7 találat); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): az erkölcsi intelmet köti össze — NEM releváns
-- **1Pét 3:11** (elutasítva, `TSK 2Tim 2:22 (7 találat); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): az erkölcsi intelmet köti össze — NEM releváns
-- **1Kor 6:18** (elutasítva, `TSK 2Tim 2:22 (7 találat); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): az erkölcsi intelmet köti össze — NEM releváns
-- **Zsolt 119:9** (elutasítva, `TSK 2Tim 2:22 (7 találat); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): az erkölcsi intelmet köti össze — NEM releváns
-- **1Tim 6:11** (elutasítva, `TSK 2Tim 2:22 (7 találat); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): az erkölcsi intelmet köti össze — NEM releváns
-- **Zsid 12:14** (elutasítva, `TSK 2Tim 2:22 (7 találat); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): az erkölcsi intelmet köti össze — NEM releváns
-- **1Tim 4:12** (elutasítva, `TSK 2Tim 2:22 (7 találat); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): az erkölcsi intelmet köti össze — NEM releváns
-- **1Sám 13:13** (elutasítva, `TSK/Károli-KH ApCsel 9:14; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns
-- **1Sám 13:14** (elutasítva, `TSK/Károli-KH ApCsel 9:14; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns
-- **Zsolt 89:21** (elutasítva, `TSK/Károli-KH ApCsel 9:14; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns
-- **Zsolt 89:22** (elutasítva, `TSK/Károli-KH ApCsel 9:14; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns
-- **Gal 1:23** (elutasítva, `TSK/Károli-KH ApCsel 9:21; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns
-- **ApCsel 2:38** (elutasítva, `TSK/Károli-KH ApCsel 22:16; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns
-- **Jón 1:5** (elutasítva, `TSK/Károli-KH ApCsel 22:16; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns
-- **Mk 16:15** (elutasítva, `TSK/Károli-KH Róm 10:14; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns
-- **Mk 16:16** (elutasítva, `TSK/Károli-KH Róm 10:14; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns
-- **1Móz 3:15** (elutasítva, `TSK/Károli-KH Róm 10:14; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns
-- **1Kor 6:11** (elutasítva, `TSK/Károli-KH 1Kor 1:2; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns
-- **ApCsel 10:34** (elutasítva, `TSK/Károli-KH 1Pét 1:17; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns
-- **ApCsel 10:35** (elutasítva, `TSK/Károli-KH 1Pét 1:17; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns
-- **Gal 4:6** (elutasítva, `TSK/Károli-KH 1Pét 1:17; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns
-- **Róm 2:10** (elutasítva, `TSK/Károli-KH 1Pét 1:17; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns
-- **Róm 2:11** (elutasítva, `TSK/Károli-KH 1Pét 1:17; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns
-- **Róm 2:6** (elutasítva, `TSK/Károli-KH 1Pét 1:17; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns
-- **Róm 2:7** (elutasítva, `TSK/Károli-KH 1Pét 1:17; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns
-- **Róm 2:8** (elutasítva, `TSK/Károli-KH 1Pét 1:17; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns
-- **Róm 2:9** (elutasítva, `TSK/Károli-KH 1Pét 1:17; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns
-- **Zsid 12:28** (elutasítva, `TSK/Károli-KH 1Pét 1:17; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns
-- **Jel 17:14** (elutasítva, `TSK Róm 10:12 (15, 18, 15); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns
-- **Fil 4:19** (elutasítva, `TSK Róm 10:12 (15, 18, 15); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns
-- **Róm 3:22** (elutasítva, `TSK Róm 10:12 (15, 18, 15); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`): ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns
-- **2Kor 1:23** (elutasítva, `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli`): F110 szűrő (DT283), A osztály, kézi olvasás: Károli: „Én pedig az Istent hívom bizonyságul az én lelkemre” — esküformás tanúhívás, nem segítségül hívás/imádság; negatív kritérium: nem invokáció | Károli-proveniencia (lekerdez.py karoli): scope=range:2Kor 1:23 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=2 | ts=2026-10-21T10:14Z
-- **ApCsel 1:23** (elutasítva, `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli`): F110 szűrő (DT283), K1_passziv: passzív/megnevezett (was called); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció
-- **ApCsel 4:36** (elutasítva, `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli`): F110 szűrő (DT283), K1_passziv: passzív/megnevezett (having been called); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció
-- **ApCsel 7:59** (elutasítva, `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli`): F110 szűrő (DT283), A osztály, kézi olvasás: nincs ὄνομα — invokáció a קָרָא בְשֵׁם / ἐπικαλέομαι τὸ ὄνομα formulán kívül (motivumok.tsv, fölérendelt fogalom); Károli: „ki imádkozik és ezt mondja vala: Uram Jézus, vedd magadhoz az én lelkemet!” | Károli-proveniencia (lekerdez.py karoli): scope=range:ApCsel 7:59 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=2 | ts=2026-10-21T10:14Z
-- **ApCsel 10:5** (elutasítva, `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli`): F110 szűrő (DT283), K1_passziv: passzív/megnevezett (is called); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció
-- **ApCsel 10:18** (elutasítva, `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli`): F110 szűrő (DT283), K1_passziv: passzív/megnevezett (is being called); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció
-- **ApCsel 10:32** (elutasítva, `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli`): F110 szűrő (DT283), K1_passziv: passzív/megnevezett (is called); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció
-- **ApCsel 11:13** (elutasítva, `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli`): F110 szűrő (DT283), K1_passziv: passzív/megnevezett (is called); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció
-- **ApCsel 12:12** (elutasítva, `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli`): F110 szűrő (DT283), K1_passziv: passzív/megnevezett (is called); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció
-- **ApCsel 12:25** (elutasítva, `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli`): F110 szűrő (DT283), K1_passziv: passzív/megnevezett (having been called); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció
-- **ApCsel 15:17** (elutasítva, `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli`): F110 szűrő (DT283), K1_passziv: passzív/megnevezett (has been called); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció
-- **ApCsel 25:11** (elutasítva, `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli`): F110 szűrő (DT283), K3_jogi: jogi fellebbezés: Kaisar/Szebasztosz a környezetben (I appeal!); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció
-- **ApCsel 25:12** (elutasítva, `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli`): F110 szűrő (DT283), K3_jogi: jogi fellebbezés: Kaisar/Szebasztosz a környezetben (You have appealed,); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció
-- **ApCsel 25:21** (elutasítva, `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli`): F110 szűrő (DT283), K3_jogi: jogi fellebbezés: Kaisar/Szebasztosz a környezetben (having appealed for); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció
-- **ApCsel 25:25** (elutasítva, `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli`): F110 szűrő (DT283), K3_jogi: jogi fellebbezés: Kaisar/Szebasztosz a környezetben (having appealed to); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció
-- **ApCsel 26:32** (elutasítva, `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli`): F110 szűrő (DT283), K3_jogi: jogi fellebbezés: Kaisar/Szebasztosz a környezetben (he had appealed); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció
-- **ApCsel 28:19** (elutasítva, `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli`): F110 szűrő (DT283), K3_jogi: jogi fellebbezés: Kaisar/Szebasztosz a környezetben (to appeal to); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció
-- **Jak 2:7** (elutasítva, `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli`): F110 szűrő (DT283), K1_passziv: passzív/megnevezett (having been called); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció
-- **Mt 10:3** (elutasítva, `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli`): F110 szűrő (DT283), K1_passziv: passzív/megnevezett (having been called); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció
-- **Mt 10:25** (elutasítva, `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli`): F110 szűrő (DT283), B osztály, kézi olvasás: Károli: „Ha a házigazdát Belzebubnak hívták” — megnevezés, nem invokáció; negatív kritérium: passzív/megnevezés jellegű használat | Károli-proveniencia (lekerdez.py karoli): scope=range:Mt 10:25 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-10-21T10:14Z
-- **Zsid 11:16** (elutasítva, `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli`): F110 szűrő (DT283), K1_passziv: passzív/megnevezett (to be called); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció
-- **Ézs 43:1** (elutasítva, `tematikus: Segitsegul_hivni_az_Urat_tematikus.md §1. Előfordulások összegyűjtése (C-minta) | scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-10-18`): C-minta: Isten szólít néven egy embert (alany: Isten, tárgy: ember neve), nem a motívum A-mintája (alany: ember, tárgy: Isten neve); a קָרָא + שֵׁם szerkezet közös, a motívumhoz nem tartozik
-- **Ézs 44:5** (elutasítva, `tematikus: Segitsegul_hivni_az_Urat_tematikus.md §1. Előfordulások összegyűjtése (C-minta) | scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-10-18`): C-minta: Isten szólít néven egy embert (alany: Isten, tárgy: ember neve), nem a motívum A-mintája (alany: ember, tárgy: Isten neve); a קָרָא + שֵׁם szerkezet közös, a motívumhoz nem tartozik
-- **Ézs 45:3** (elutasítva, `tematikus: Segitsegul_hivni_az_Urat_tematikus.md §1. Előfordulások összegyűjtése (C-minta) | scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-10-18`): C-minta: Isten szólít néven egy embert (alany: Isten, tárgy: ember neve), nem a motívum A-mintája (alany: ember, tárgy: Isten neve); a קָרָא + שֵׁם szerkezet közös, a motívumhoz nem tartozik
-- **2Sám 6:2** (elutasítva, `tematikus: Segitsegul_hivni_az_Urat_tematikus.md §1. Előfordulások összegyűjtése (D-minta) | scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-10-18`): D-minta: passzív נִקְרָא...עַל (nikrá … al) szerkezet, birtoklás/hovatartozás, nem invokáció; eltérő igealak (aktív vs. passzív), elöljárószó (בְּ vs. עַל) és jelentés — a negatív kritérium (motivumok.tsv) kizárja
-- **1Krón 13:6** (elutasítva, `tematikus: Segitsegul_hivni_az_Urat_tematikus.md §1. Előfordulások összegyűjtése (D-minta) | scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-10-18`): D-minta: passzív נִקְרָא...עַל (nikrá … al) szerkezet, birtoklás/hovatartozás, nem invokáció; eltérő igealak (aktív vs. passzív), elöljárószó (בְּ vs. עַל) és jelentés — a negatív kritérium (motivumok.tsv) kizárja
-- **Jer 7:10** (elutasítva, `tematikus: Segitsegul_hivni_az_Urat_tematikus.md §1. Előfordulások összegyűjtése (D-minta) | scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-10-18`): D-minta: passzív נִקְרָא...עַל (nikrá … al) szerkezet, birtoklás/hovatartozás, nem invokáció; eltérő igealak (aktív vs. passzív), elöljárószó (בְּ vs. עַל) és jelentés — a negatív kritérium (motivumok.tsv) kizárja
-- **Jer 7:11** (elutasítva, `tematikus: Segitsegul_hivni_az_Urat_tematikus.md §1. Előfordulások összegyűjtése (D-minta) | scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-10-18`): D-minta: passzív נִקְרָא...עַל (nikrá … al) szerkezet, birtoklás/hovatartozás, nem invokáció; eltérő igealak (aktív vs. passzív), elöljárószó (בְּ vs. עַל) és jelentés — a negatív kritérium (motivumok.tsv) kizárja
-- **Jer 7:14** (elutasítva, `tematikus: Segitsegul_hivni_az_Urat_tematikus.md §1. Előfordulások összegyűjtése (D-minta) | scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-10-18`): D-minta: passzív נִקְרָא...עַל (nikrá … al) szerkezet, birtoklás/hovatartozás, nem invokáció; eltérő igealak (aktív vs. passzív), elöljárószó (בְּ vs. עַל) és jelentés — a negatív kritérium (motivumok.tsv) kizárja
-- **Jer 7:30** (elutasítva, `tematikus: Segitsegul_hivni_az_Urat_tematikus.md §1. Előfordulások összegyűjtése (D-minta) | scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-10-18`): D-minta: passzív נִקְרָא...עַל (nikrá … al) szerkezet, birtoklás/hovatartozás, nem invokáció; eltérő igealak (aktív vs. passzív), elöljárószó (בְּ vs. עַל) és jelentés — a negatív kritérium (motivumok.tsv) kizárja
-- **5Móz 28:10** (elutasítva, `tematikus: Segitsegul_hivni_az_Urat_tematikus.md §1. Előfordulások összegyűjtése (D-minta) | scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-10-18`): D-minta: passzív נִקְרָא...עַל (nikrá … al) szerkezet, birtoklás/hovatartozás, nem invokáció; eltérő igealak (aktív vs. passzív), elöljárószó (בְּ vs. עַל) és jelentés — a negatív kritérium (motivumok.tsv) kizárja
-- **Ézs 41:25** (nyitva, `kollokacio H7121 H8034 | scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H7121+H8034 | n=196 | ts=2026-10-21T09:18Z | csatorna=cli`): F110 szűrő (DT283), B osztály, kézi olvasás: Károli: „hirdeti nevemet” (TAHOT: „from [the] rising of [the] sun he will call on name my”) — aktív קרא + בְּ + שֵׁם, az Úr a beszélő. A szabály átengedi; elbírálatlan, a motívum-menet dönt | Károli-proveniencia (lekerdez.py karoli): scope=range:Ézs 41:25 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=3 | ts=2026-10-21T10:14Z
-- **Zsolt 99:6** (elutasítva, `kollokacio H7121 H8034 | scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H7121+H8034 | n=196 | ts=2026-10-20T10:13Z | csatorna=cli (N59, naplok/F126_lefedetlen.py)`): N59, kézi olvasás: Károli: „Sámuel az ő nevét segítségül hívókkal egybe, segítségül hívják vala az Urat, és meghallgatá őket” (TAHOT: קֹרְאֵי שְׁמוֹ, H7121+H8034; a versben H6030 is) — aktív קרא + név, Isten segítségül hívása, meghallgatással; a motívum A-mintája. Eddig sem előfordulás, sem jelölt nem volt. Döntés (felhasználó, 2026-10-29, orkesztrátor-chat, szó szerint: „Igen, így”; a kérdés: „Ézs 64:6 beépítve, Zsolt 99:6 elutasítva?”): elutasítva a negatív kritérium szerint (adat/motivumok.tsv: קָרָא + בְּ aktív, invokáló szerkezet kell). Saját mérés, TAHOT: וּשְׁמוּאֵל בְּקֹרְאֵי שְׁמוֹ קֹרִאים אֶל־יְהוָה — a בְּ (H9003) az igenév előtt áll („azok között, akik hívják”), a név (H8034 + 3. sz. birtokos rag) az igenév birtokos szerkezetében, a második tagban אֶל (H0413) + יְהוָה; kárá + בְּ + név szerkezet nincs, így a fenti „A-minta” olvasat nem áll. Előzmény: DT283 (JSir 3:55, 5Móz 32:3: a בְּ nélküli szerkezet kiszűrve marad, a kritérium nem változik). Mérés 2026-10-29: scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H7121+H8034 | n=196 | ts=2026-10-29T08:32Z | csatorna=cli · scope=range:Zsolt 99:6 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=2 | ts=2026-10-29T08:31Z | csatorna=cli · scope=range:Ézs 64:6, range:Zsolt 99:6 | forras=TAHOT_kivonat.tsv+BSB_Strongs.tsv (naplok/ISTENTISZT001_ezs64_zsolt99_meres.py, split('\t')) | n=43+12 | ts=2026-10-29T08:51Z | Károli-proveniencia (lekerdez.py karoli): scope=range:Zsolt 99:6 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=2 | ts=2026-10-25T16:58Z
+**Az elutasítás okai:** a formula nincs a versben 40 · passzív szerkezet vagy megnevezés (negatív kritérium) 26 · névadás 9 · erkölcsi intelem, nem a formula 7 · név nélküli forma 6 · eskü vagy tanúhívás 1 · invokáció a formulán kívül 1 · tartalmilag nem kapcsolódik 1 · egyéb 1 (Zsolt 99:6)
+
+**Nyitott döntés:** 1
+
+**A jelölés forrása:** TSK-ajánlás 18 · Károli-kereszthivatkozás 42 · Gépi keresés 23 · Kutatói felvetés 10
+
+**TSK-ajánlás** (18)
+
+| Igehely | Miért lett jelölt | Döntés és indok |
+|---|---|---|
+| Zsolt 105:15 | TSK-ajánlás az 1Krón 16:8 helyről a Zsolt 105:15 helyre, szavazat: 22[^k1] | **elutasítva** — tartalmilag nem kapcsolódik: ellenőrizve, tartalmilag NEM releváns (a próféták érintetlenségéről szól, ugyanabban a zsoltárban) |
+| Róm 10:11 | TSK-ajánlás a Jóel 2:32 helyről a Róm 10:11 helyre, szavazat: 19[^k2] | **elutasítva** — a formula nincs a versben: ellenőrizve, nincs ἐπικαλέομαι / καλέω a versben, NEM releváns |
+| Zsolt 50:15 | TSK-ajánlás a Zak 13:9 helyről, a forráshelyen 46 TSK-találat[^k3] | **elutasítva** — név nélküli forma: név nélküli segítségül hívás (H7121, שֵׁם nélkül): rokon igei használat, nem a formula, NEM a motívum része |
+| Zsolt 91:15 | TSK-ajánlás a Zak 13:9 helyről, a forráshelyen 46 TSK-találat[^k4] | **elutasítva** — név nélküli forma: név nélküli segítségül hívás (H7121, שֵׁם nélkül): rokon igei használat, nem a formula, NEM a motívum része |
+| Jer 29:12 | TSK-ajánlás a Zak 13:9 helyről, a forráshelyen 46 TSK-találat[^k5] | **elutasítva** — név nélküli forma: név nélküli segítségül hívás (H7121, שֵׁם nélkül): rokon igei használat, nem a formula, NEM a motívum része |
+| Ézs 58:9 | TSK-ajánlás a Zak 13:9 helyről, a forráshelyen 46 TSK-találat[^k6] | **elutasítva** — név nélküli forma: név nélküli segítségül hívás (H7121, שֵׁם nélkül): rokon igei használat, nem a formula, NEM a motívum része |
+| Ézs 65:24 | TSK-ajánlás a Zak 13:9 helyről, a forráshelyen 46 TSK-találat[^k7] | **elutasítva** — név nélküli forma: név nélküli segítségül hívás (H7121, שֵׁם nélkül): rokon igei használat, nem a formula, NEM a motívum része |
+| Zsolt 86:5 | TSK-ajánlás[^k8] | **elutasítva** — név nélküli forma: név nélküli H7121: rokon, NEM a formula |
+| 1Pét 2:11 | TSK-ajánlás a 2Tim 2:22 helyről, a forráshelyen 7 TSK-találat[^k9] | **elutasítva** — erkölcsi intelem, nem a formula: az erkölcsi intelmet köti össze — NEM releváns |
+| 1Pét 3:11 | TSK-ajánlás a 2Tim 2:22 helyről, a forráshelyen 7 TSK-találat[^k10] | **elutasítva** — erkölcsi intelem, nem a formula: az erkölcsi intelmet köti össze — NEM releváns |
+| 1Kor 6:18 | TSK-ajánlás a 2Tim 2:22 helyről, a forráshelyen 7 TSK-találat[^k11] | **elutasítva** — erkölcsi intelem, nem a formula: az erkölcsi intelmet köti össze — NEM releváns |
+| Zsolt 119:9 | TSK-ajánlás a 2Tim 2:22 helyről, a forráshelyen 7 TSK-találat[^k12] | **elutasítva** — erkölcsi intelem, nem a formula: az erkölcsi intelmet köti össze — NEM releváns |
+| 1Tim 6:11 | TSK-ajánlás a 2Tim 2:22 helyről, a forráshelyen 7 TSK-találat[^k13] | **elutasítva** — erkölcsi intelem, nem a formula: az erkölcsi intelmet köti össze — NEM releváns |
+| Zsid 12:14 | TSK-ajánlás a 2Tim 2:22 helyről, a forráshelyen 7 TSK-találat[^k14] | **elutasítva** — erkölcsi intelem, nem a formula: az erkölcsi intelmet köti össze — NEM releváns |
+| 1Tim 4:12 | TSK-ajánlás a 2Tim 2:22 helyről, a forráshelyen 7 TSK-találat[^k15] | **elutasítva** — erkölcsi intelem, nem a formula: az erkölcsi intelmet köti össze — NEM releváns |
+| Jel 17:14 | TSK-ajánlás a Róm 10:12 helyről, szavazat: 15, 18, 15[^k16] | **elutasítva** — a formula nincs a versben: ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
+| Fil 4:19 | TSK-ajánlás a Róm 10:12 helyről, szavazat: 15, 18, 15[^k17] | **elutasítva** — a formula nincs a versben: ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
+| Róm 3:22 | TSK-ajánlás a Róm 10:12 helyről, szavazat: 15, 18, 15[^k18] | **elutasítva** — a formula nincs a versben: ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
+
+**Károli-kereszthivatkozás** (42)
+
+| Igehely | Miért lett jelölt | Döntés és indok |
+|---|---|---|
+| Róm 3:13 | Károli-kereszthivatkozás a Zsolt 116:13 helyről[^k19] | **elutasítva** — a formula nincs a versben: ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
+| Jak 3:8 | Károli-kereszthivatkozás a Zsolt 116:13 helyről[^k20] | **elutasítva** — a formula nincs a versben: ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
+| 2Sám 7:9 | Károli-kereszthivatkozás a Zsolt 116:17 helyről[^k21] | **elutasítva** — a formula nincs a versben: ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
+| Zsolt 113:3 | Károli-kereszthivatkozás a Zef 3:9 helyről[^k22] | **elutasítva** — a formula nincs a versben: ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
+| Zsolt 114:2 | Károli-kereszthivatkozás a Zef 3:9 helyről[^k23] | **elutasítva** — a formula nincs a versben: ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
+| Zsolt 66:1 | Károli-kereszthivatkozás az Ézs 12:4 helyről[^k24] | **elutasítva** — a formula nincs a versben: ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
+| Zsolt 66:2 | Károli-kereszthivatkozás az Ézs 12:4 helyről[^k25] | **elutasítva** — a formula nincs a versben: ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
+| Zsolt 66:3 | Károli-kereszthivatkozás az Ézs 12:4 helyről[^k26] | **elutasítva** — a formula nincs a versben: ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
+| Zsolt 66:4 | Károli-kereszthivatkozás az Ézs 12:4 helyről[^k27] | **elutasítva** — a formula nincs a versben: ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
+| Zsolt 66:5 | Károli-kereszthivatkozás az Ézs 12:4 helyről[^k28] | **elutasítva** — a formula nincs a versben: ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
+| Zsolt 118:1 | Károli-kereszthivatkozás az Ézs 12:4 helyről[^k29] | **elutasítva** — a formula nincs a versben: ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
+| Zsolt 106:1 | Károli-kereszthivatkozás az Ézs 12:4 helyről[^k30] | **elutasítva** — a formula nincs a versben: ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
+| Róm 9:15 | Károli-kereszthivatkozás a 2Móz 33:19 helyről[^k31] | **elutasítva** — a formula nincs a versben: ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
+| 1Pét 1:6 | Károli-kereszthivatkozás a Zak 13:9 helyről[^k32] | **elutasítva** — a formula nincs a versben: Zak 13:9 Károli-KH célhelye. A napló (61. sor) szerint a Zak 13:9 célhelyei közül a formulát a már dokumentált Jóel 2:32, ApCsel 2:21 és Róm 10:14 mellett egyedül a Róm 10:12 tartalmazza, az 1Pét 1:6–7 nem; NEM releváns |
+| 1Pét 1:7 | Károli-kereszthivatkozás a Zak 13:9 helyről[^k33] | **elutasítva** — a formula nincs a versben: Zak 13:9 Károli-KH célhelye. A napló (61. sor) szerint a Zak 13:9 célhelyei közül a formulát a már dokumentált Jóel 2:32, ApCsel 2:21 és Róm 10:14 mellett egyedül a Róm 10:12 tartalmazza, az 1Pét 1:6–7 nem; NEM releváns |
+| 1Móz 25:21 | Károli-kereszthivatkozás[^k34] | **elutasítva** — névadás: a 25:25-26-ban a H7121+H8034 névadás ("nevezék nevét Ézsaunak"), nem segítségül hívás — NEM releváns |
+| 1Móz 25:22 | Károli-kereszthivatkozás[^k35] | **elutasítva** — névadás: a 25:25-26-ban a H7121+H8034 névadás ("nevezék nevét Ézsaunak"), nem segítségül hívás — NEM releváns |
+| 1Móz 25:23 | Károli-kereszthivatkozás[^k36] | **elutasítva** — névadás: a 25:25-26-ban a H7121+H8034 névadás ("nevezék nevét Ézsaunak"), nem segítségül hívás — NEM releváns |
+| 1Móz 25:24 | Károli-kereszthivatkozás[^k37] | **elutasítva** — névadás: a 25:25-26-ban a H7121+H8034 névadás ("nevezék nevét Ézsaunak"), nem segítségül hívás — NEM releváns |
+| 1Móz 25:25 | Károli-kereszthivatkozás[^k38] | **elutasítva** — névadás: a 25:25-26-ban a H7121+H8034 névadás ("nevezék nevét Ézsaunak"), nem segítségül hívás — NEM releváns |
+| 1Móz 25:26 | Károli-kereszthivatkozás[^k39] | **elutasítva** — névadás: a 25:25-26-ban a H7121+H8034 névadás ("nevezék nevét Ézsaunak"), nem segítségül hívás — NEM releváns |
+| 1Sám 13:13 | TSK- és Károli-kereszthivatkozás[^k40] | **elutasítva** — a formula nincs a versben: ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
+| 1Sám 13:14 | TSK- és Károli-kereszthivatkozás[^k41] | **elutasítva** — a formula nincs a versben: ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
+| Zsolt 89:21 | TSK- és Károli-kereszthivatkozás[^k42] | **elutasítva** — a formula nincs a versben: ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
+| Zsolt 89:22 | TSK- és Károli-kereszthivatkozás[^k43] | **elutasítva** — a formula nincs a versben: ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
+| Gal 1:23 | TSK- és Károli-kereszthivatkozás[^k44] | **elutasítva** — a formula nincs a versben: ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
+| ApCsel 2:38 | TSK- és Károli-kereszthivatkozás[^k45] | **elutasítva** — a formula nincs a versben: ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
+| Jón 1:5 | TSK- és Károli-kereszthivatkozás[^k46] | **elutasítva** — a formula nincs a versben: ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
+| Mk 16:15 | TSK- és Károli-kereszthivatkozás a Róm 10:14 helyről[^k47] | **elutasítva** — a formula nincs a versben: ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
+| Mk 16:16 | TSK- és Károli-kereszthivatkozás a Róm 10:14 helyről[^k48] | **elutasítva** — a formula nincs a versben: ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
+| 1Móz 3:15 | TSK- és Károli-kereszthivatkozás a Róm 10:14 helyről[^k49] | **elutasítva** — a formula nincs a versben: ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
+| 1Kor 6:11 | TSK- és Károli-kereszthivatkozás az 1Kor 1:2 helyről[^k50] | **elutasítva** — a formula nincs a versben: ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
+| ApCsel 10:34 | TSK- és Károli-kereszthivatkozás az 1Pét 1:17 helyről[^k51] | **elutasítva** — a formula nincs a versben: ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
+| ApCsel 10:35 | TSK- és Károli-kereszthivatkozás az 1Pét 1:17 helyről[^k52] | **elutasítva** — a formula nincs a versben: ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
+| Gal 4:6 | TSK- és Károli-kereszthivatkozás az 1Pét 1:17 helyről[^k53] | **elutasítva** — a formula nincs a versben: ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
+| Róm 2:10 | TSK- és Károli-kereszthivatkozás az 1Pét 1:17 helyről[^k54] | **elutasítva** — a formula nincs a versben: ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
+| Róm 2:11 | TSK- és Károli-kereszthivatkozás az 1Pét 1:17 helyről[^k55] | **elutasítva** — a formula nincs a versben: ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
+| Róm 2:6 | TSK- és Károli-kereszthivatkozás az 1Pét 1:17 helyről[^k56] | **elutasítva** — a formula nincs a versben: ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
+| Róm 2:7 | TSK- és Károli-kereszthivatkozás az 1Pét 1:17 helyről[^k57] | **elutasítva** — a formula nincs a versben: ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
+| Róm 2:8 | TSK- és Károli-kereszthivatkozás az 1Pét 1:17 helyről[^k58] | **elutasítva** — a formula nincs a versben: ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
+| Róm 2:9 | TSK- és Károli-kereszthivatkozás az 1Pét 1:17 helyről[^k59] | **elutasítva** — a formula nincs a versben: ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
+| Zsid 12:28 | TSK- és Károli-kereszthivatkozás az 1Pét 1:17 helyről[^k60] | **elutasítva** — a formula nincs a versben: ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
+
+**Gépi keresés** (23)
+
+| Igehely | Miért lett jelölt | Döntés és indok |
+|---|---|---|
+| 2Kor 1:23 | gépi Strong-keresés: G1941[^k61] | **elutasítva** — eskü vagy tanúhívás: F110 szűrő (DT283), A osztály, kézi olvasás: Károli: „Én pedig az Istent hívom bizonyságul az én lelkemre” — esküformás tanúhívás, nem segítségül hívás/imádság; negatív kritérium: nem invokáció |
+| ApCsel 1:23 | gépi Strong-keresés: G1941[^k62] | **elutasítva** — passzív szerkezet vagy megnevezés (negatív kritérium): F110 szűrő (DT283), K1_passziv: passzív/megnevezett (was called); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció |
+| ApCsel 4:36 | gépi Strong-keresés: G1941[^k63] | **elutasítva** — passzív szerkezet vagy megnevezés (negatív kritérium): F110 szűrő (DT283), K1_passziv: passzív/megnevezett (having been called); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció |
+| ApCsel 7:59 | gépi Strong-keresés: G1941[^k64] | **elutasítva** — invokáció a formulán kívül: F110 szűrő (DT283), A osztály, kézi olvasás: nincs ὄνομα — invokáció a קָרָא בְשֵׁם / ἐπικαλέομαι τὸ ὄνομα formulán kívül (motivumok.tsv, fölérendelt fogalom); Károli: „ki imádkozik és ezt mondja vala: Uram Jézus, vedd magadhoz az én lelkemet!” |
+| ApCsel 10:5 | gépi Strong-keresés: G1941[^k65] | **elutasítva** — passzív szerkezet vagy megnevezés (negatív kritérium): F110 szűrő (DT283), K1_passziv: passzív/megnevezett (is called); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció |
+| ApCsel 10:18 | gépi Strong-keresés: G1941[^k66] | **elutasítva** — passzív szerkezet vagy megnevezés (negatív kritérium): F110 szűrő (DT283), K1_passziv: passzív/megnevezett (is being called); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció |
+| ApCsel 10:32 | gépi Strong-keresés: G1941[^k67] | **elutasítva** — passzív szerkezet vagy megnevezés (negatív kritérium): F110 szűrő (DT283), K1_passziv: passzív/megnevezett (is called); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció |
+| ApCsel 11:13 | gépi Strong-keresés: G1941[^k68] | **elutasítva** — passzív szerkezet vagy megnevezés (negatív kritérium): F110 szűrő (DT283), K1_passziv: passzív/megnevezett (is called); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció |
+| ApCsel 12:12 | gépi Strong-keresés: G1941[^k69] | **elutasítva** — passzív szerkezet vagy megnevezés (negatív kritérium): F110 szűrő (DT283), K1_passziv: passzív/megnevezett (is called); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció |
+| ApCsel 12:25 | gépi Strong-keresés: G1941[^k70] | **elutasítva** — passzív szerkezet vagy megnevezés (negatív kritérium): F110 szűrő (DT283), K1_passziv: passzív/megnevezett (having been called); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció |
+| ApCsel 15:17 | gépi Strong-keresés: G1941[^k71] | **elutasítva** — passzív szerkezet vagy megnevezés (negatív kritérium): F110 szűrő (DT283), K1_passziv: passzív/megnevezett (has been called); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció |
+| ApCsel 25:11 | gépi Strong-keresés: G1941[^k72] | **elutasítva** — passzív szerkezet vagy megnevezés (negatív kritérium): F110 szűrő (DT283), K3_jogi: jogi fellebbezés: Kaisar/Szebasztosz a környezetben (I appeal!); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció |
+| ApCsel 25:12 | gépi Strong-keresés: G1941[^k73] | **elutasítva** — passzív szerkezet vagy megnevezés (negatív kritérium): F110 szűrő (DT283), K3_jogi: jogi fellebbezés: Kaisar/Szebasztosz a környezetben (You have appealed,); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció |
+| ApCsel 25:21 | gépi Strong-keresés: G1941[^k74] | **elutasítva** — passzív szerkezet vagy megnevezés (negatív kritérium): F110 szűrő (DT283), K3_jogi: jogi fellebbezés: Kaisar/Szebasztosz a környezetben (having appealed for); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció |
+| ApCsel 25:25 | gépi Strong-keresés: G1941[^k75] | **elutasítva** — passzív szerkezet vagy megnevezés (negatív kritérium): F110 szűrő (DT283), K3_jogi: jogi fellebbezés: Kaisar/Szebasztosz a környezetben (having appealed to); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció |
+| ApCsel 26:32 | gépi Strong-keresés: G1941[^k76] | **elutasítva** — passzív szerkezet vagy megnevezés (negatív kritérium): F110 szűrő (DT283), K3_jogi: jogi fellebbezés: Kaisar/Szebasztosz a környezetben (he had appealed); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció |
+| ApCsel 28:19 | gépi Strong-keresés: G1941[^k77] | **elutasítva** — passzív szerkezet vagy megnevezés (negatív kritérium): F110 szűrő (DT283), K3_jogi: jogi fellebbezés: Kaisar/Szebasztosz a környezetben (to appeal to); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció |
+| Jak 2:7 | gépi Strong-keresés: G1941[^k78] | **elutasítva** — passzív szerkezet vagy megnevezés (negatív kritérium): F110 szűrő (DT283), K1_passziv: passzív/megnevezett (having been called); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció |
+| Mt 10:3 | gépi Strong-keresés: G1941[^k79] | **elutasítva** — passzív szerkezet vagy megnevezés (negatív kritérium): F110 szűrő (DT283), K1_passziv: passzív/megnevezett (having been called); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció |
+| Mt 10:25 | gépi Strong-keresés: G1941[^k80] | **elutasítva** — passzív szerkezet vagy megnevezés (negatív kritérium): F110 szűrő (DT283), B osztály, kézi olvasás: Károli: „Ha a házigazdát Belzebubnak hívták” — megnevezés, nem invokáció; negatív kritérium: passzív/megnevezés jellegű használat |
+| Zsid 11:16 | gépi Strong-keresés: G1941[^k81] | **elutasítva** — passzív szerkezet vagy megnevezés (negatív kritérium): F110 szűrő (DT283), K1_passziv: passzív/megnevezett (to be called); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció |
+| Ézs 41:25 | gépi szópár-keresés: H7121 + H8034[^k82] | **nyitott döntés**: F110 szűrő (DT283), B osztály, kézi olvasás: Károli: „hirdeti nevemet” (TAHOT: „from [the] rising of [the] sun he will call on name my”) — aktív קרא + בְּ + שֵׁם, az Úr a beszélő. A szabály átengedi; elbírálatlan, a motívum-menet dönt |
+| Zsolt 99:6 | gépi szópár-keresés: H7121 + H8034[^k83] | **elutasítva** — egyéb: N59, kézi olvasás: Károli: „Sámuel az ő nevét segítségül hívókkal egybe, segítségül hívják vala az Urat, és meghallgatá őket” (TAHOT: קֹרְאֵי שְׁמוֹ, H7121+H8034; a versben H6030 is) — aktív קרא + név, Isten segítségül hívása, meghallgatással; a motívum A-mintája. Eddig sem előfordulás, sem jelölt nem volt. Döntés (felhasználó, 2026-10-29, orkesztrátor-chat, szó szerint: „Igen, így”; a kérdés: „Ézs 64:6 beépítve, Zsolt 99:6 elutasítva?”): elutasítva a negatív kritérium szerint (adat/motivumok.tsv: קָרָא + בְּ aktív, invokáló szerkezet kell). Saját mérés, TAHOT: וּשְׁמוּאֵל בְּקֹרְאֵי שְׁמוֹ קֹרִאים אֶל־יְהוָה — a בְּ (H9003) az igenév előtt áll („azok között, akik hívják”), a név (H8034 + 3. sz. birtokos rag) az igenév birtokos szerkezetében, a második tagban אֶל (H0413) + יְהוָה; kárá + בְּ + név szerkezet nincs, így a fenti „A-minta” olvasat nem áll. Előzmény: DT283 (JSir 3:55, 5Móz 32:3: a בְּ nélküli szerkezet kiszűrve marad, a kritérium nem változik). Mérés 2026-10-29: scope=TAHOT-teljes+TAGNT-teljes |
+
+**Kutatói felvetés** (10)
+
+| Igehely | Miért lett jelölt | Döntés és indok |
+|---|---|---|
+| Ézs 43:1 | a tematikus tanulmány felvetése (C-minta)[^k84] | **elutasítva** — névadás: C-minta: Isten szólít néven egy embert (alany: Isten, tárgy: ember neve), nem a motívum A-mintája (alany: ember, tárgy: Isten neve); a קָרָא + שֵׁם szerkezet közös, a motívumhoz nem tartozik |
+| Ézs 44:5 | a tematikus tanulmány felvetése (C-minta)[^k85] | **elutasítva** — névadás: C-minta: Isten szólít néven egy embert (alany: Isten, tárgy: ember neve), nem a motívum A-mintája (alany: ember, tárgy: Isten neve); a קָרָא + שֵׁם szerkezet közös, a motívumhoz nem tartozik |
+| Ézs 45:3 | a tematikus tanulmány felvetése (C-minta)[^k86] | **elutasítva** — névadás: C-minta: Isten szólít néven egy embert (alany: Isten, tárgy: ember neve), nem a motívum A-mintája (alany: ember, tárgy: Isten neve); a קָרָא + שֵׁם szerkezet közös, a motívumhoz nem tartozik |
+| 2Sám 6:2 | a tematikus tanulmány felvetése (D-minta)[^k87] | **elutasítva** — passzív szerkezet vagy megnevezés (negatív kritérium): D-minta: passzív נִקְרָא...עַל (nikrá … al) szerkezet, birtoklás/hovatartozás, nem invokáció; eltérő igealak (aktív vs. passzív), elöljárószó (בְּ vs. עַל) és jelentés — a negatív kritérium (motivumok.tsv) kizárja |
+| 1Krón 13:6 | a tematikus tanulmány felvetése (D-minta)[^k88] | **elutasítva** — passzív szerkezet vagy megnevezés (negatív kritérium): D-minta: passzív נִקְרָא...עַל (nikrá … al) szerkezet, birtoklás/hovatartozás, nem invokáció; eltérő igealak (aktív vs. passzív), elöljárószó (בְּ vs. עַל) és jelentés — a negatív kritérium (motivumok.tsv) kizárja |
+| Jer 7:10 | a tematikus tanulmány felvetése (D-minta)[^k89] | **elutasítva** — passzív szerkezet vagy megnevezés (negatív kritérium): D-minta: passzív נִקְרָא...עַל (nikrá … al) szerkezet, birtoklás/hovatartozás, nem invokáció; eltérő igealak (aktív vs. passzív), elöljárószó (בְּ vs. עַל) és jelentés — a negatív kritérium (motivumok.tsv) kizárja |
+| Jer 7:11 | a tematikus tanulmány felvetése (D-minta)[^k90] | **elutasítva** — passzív szerkezet vagy megnevezés (negatív kritérium): D-minta: passzív נִקְרָא...עַל (nikrá … al) szerkezet, birtoklás/hovatartozás, nem invokáció; eltérő igealak (aktív vs. passzív), elöljárószó (בְּ vs. עַל) és jelentés — a negatív kritérium (motivumok.tsv) kizárja |
+| Jer 7:14 | a tematikus tanulmány felvetése (D-minta)[^k91] | **elutasítva** — passzív szerkezet vagy megnevezés (negatív kritérium): D-minta: passzív נִקְרָא...עַל (nikrá … al) szerkezet, birtoklás/hovatartozás, nem invokáció; eltérő igealak (aktív vs. passzív), elöljárószó (בְּ vs. עַל) és jelentés — a negatív kritérium (motivumok.tsv) kizárja |
+| Jer 7:30 | a tematikus tanulmány felvetése (D-minta)[^k92] | **elutasítva** — passzív szerkezet vagy megnevezés (negatív kritérium): D-minta: passzív נִקְרָא...עַל (nikrá … al) szerkezet, birtoklás/hovatartozás, nem invokáció; eltérő igealak (aktív vs. passzív), elöljárószó (בְּ vs. עַל) és jelentés — a negatív kritérium (motivumok.tsv) kizárja |
+| 5Móz 28:10 | a tematikus tanulmány felvetése (D-minta)[^k93] | **elutasítva** — passzív szerkezet vagy megnevezés (negatív kritérium): D-minta: passzív נִקְרָא...עַל (nikrá … al) szerkezet, birtoklás/hovatartozás, nem invokáció; eltérő igealak (aktív vs. passzív), elöljárószó (בְּ vs. עַל) és jelentés — a negatív kritérium (motivumok.tsv) kizárja |
 
 **Negatív kritérium** (`motivumok.tsv`): az igehelynek a קָרָא (kárá) + בְּ (be) (aktív, invokáló szerkezet: "[valaki] hívja segítségül [Isten nevét]") mintát kell mutatnia — a passzív נִקְרָא...עַל (nikrá … al) szerkezet (birtoklás/hovatartozás kifejezése, nem invokáció) kizárja a besorolást, még akkor is, ha ugyanazt a két gyököt használja (l. D-minta, 2Sám 6:2, Jer 7:10-14, 5Móz 28:10, ÚSZ-párja Zsid 11:16)
+
+[^k1]: forrás: `TSK 1Krón 16:8 → Zsolt 105:15 (22); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k2]: forrás: `TSK Jóel 2:32 → Róm 10:11 (19); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k3]: forrás: `TSK Zak 13:9 (46 találat); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k4]: forrás: `TSK Zak 13:9 (46 találat); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k5]: forrás: `TSK Zak 13:9 (46 találat); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k6]: forrás: `TSK Zak 13:9 (46 találat); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k7]: forrás: `TSK Zak 13:9 (46 találat); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k8]: forrás: `TSK ApCsel 2:21; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k9]: forrás: `TSK 2Tim 2:22 (7 találat); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k10]: forrás: `TSK 2Tim 2:22 (7 találat); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k11]: forrás: `TSK 2Tim 2:22 (7 találat); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k12]: forrás: `TSK 2Tim 2:22 (7 találat); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k13]: forrás: `TSK 2Tim 2:22 (7 találat); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k14]: forrás: `TSK 2Tim 2:22 (7 találat); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k15]: forrás: `TSK 2Tim 2:22 (7 találat); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k16]: forrás: `TSK Róm 10:12 (15, 18, 15); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k17]: forrás: `TSK Róm 10:12 (15, 18, 15); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k18]: forrás: `TSK Róm 10:12 (15, 18, 15); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k19]: forrás: `Károli-KH Zsolt 116:13; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k20]: forrás: `Károli-KH Zsolt 116:13; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k21]: forrás: `Károli-KH Zsolt 116:17; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k22]: forrás: `Károli-KH Zef 3:9; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k23]: forrás: `Károli-KH Zef 3:9; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k24]: forrás: `Károli-KH Ézs 12:4; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k25]: forrás: `Károli-KH Ézs 12:4; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k26]: forrás: `Károli-KH Ézs 12:4; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k27]: forrás: `Károli-KH Ézs 12:4; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k28]: forrás: `Károli-KH Ézs 12:4; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k29]: forrás: `Károli-KH Ézs 12:4; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k30]: forrás: `Károli-KH Ézs 12:4; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k31]: forrás: `Károli-KH 2Móz 33:19; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k32]: forrás: `Károli-KH Zak 13:9; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k33]: forrás: `Károli-KH Zak 13:9; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k34]: forrás: `Károli-KH ApCsel 2:21; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k35]: forrás: `Károli-KH ApCsel 2:21; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k36]: forrás: `Károli-KH ApCsel 2:21; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k37]: forrás: `Károli-KH ApCsel 2:21; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k38]: forrás: `Károli-KH ApCsel 2:21; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k39]: forrás: `Károli-KH ApCsel 2:21; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k40]: forrás: `TSK/Károli-KH ApCsel 9:14; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k41]: forrás: `TSK/Károli-KH ApCsel 9:14; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k42]: forrás: `TSK/Károli-KH ApCsel 9:14; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k43]: forrás: `TSK/Károli-KH ApCsel 9:14; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k44]: forrás: `TSK/Károli-KH ApCsel 9:21; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k45]: forrás: `TSK/Károli-KH ApCsel 22:16; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k46]: forrás: `TSK/Károli-KH ApCsel 22:16; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k47]: forrás: `TSK/Károli-KH Róm 10:14; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k48]: forrás: `TSK/Károli-KH Róm 10:14; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k49]: forrás: `TSK/Károli-KH Róm 10:14; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k50]: forrás: `TSK/Károli-KH 1Kor 1:2; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k51]: forrás: `TSK/Károli-KH 1Pét 1:17; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k52]: forrás: `TSK/Károli-KH 1Pét 1:17; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k53]: forrás: `TSK/Károli-KH 1Pét 1:17; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k54]: forrás: `TSK/Károli-KH 1Pét 1:17; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k55]: forrás: `TSK/Károli-KH 1Pét 1:17; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k56]: forrás: `TSK/Károli-KH 1Pét 1:17; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k57]: forrás: `TSK/Károli-KH 1Pét 1:17; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k58]: forrás: `TSK/Károli-KH 1Pét 1:17; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k59]: forrás: `TSK/Károli-KH 1Pét 1:17; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k60]: forrás: `TSK/Károli-KH 1Pét 1:17; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés | scope=manual | forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k61]: forrás: `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli` · Károli-proveniencia (lekerdez.py karoli): scope=range:2Kor 1:23 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=2 | ts=2026-10-21T10:14Z
+[^k62]: forrás: `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli`
+[^k63]: forrás: `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli`
+[^k64]: forrás: `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli` · Károli-proveniencia (lekerdez.py karoli): scope=range:ApCsel 7:59 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=2 | ts=2026-10-21T10:14Z
+[^k65]: forrás: `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli`
+[^k66]: forrás: `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli`
+[^k67]: forrás: `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli`
+[^k68]: forrás: `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli`
+[^k69]: forrás: `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli`
+[^k70]: forrás: `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli`
+[^k71]: forrás: `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli`
+[^k72]: forrás: `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli`
+[^k73]: forrás: `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli`
+[^k74]: forrás: `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli`
+[^k75]: forrás: `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli`
+[^k76]: forrás: `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli`
+[^k77]: forrás: `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli`
+[^k78]: forrás: `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli`
+[^k79]: forrás: `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli`
+[^k80]: forrás: `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli` · Károli-proveniencia (lekerdez.py karoli): scope=range:Mt 10:25 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-10-21T10:14Z
+[^k81]: forrás: `scan G1941 | scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G1941 | n=31 | ts=2026-10-17T16:58Z | csatorna=cli`
+[^k82]: forrás: `kollokacio H7121 H8034 | scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H7121+H8034 | n=196 | ts=2026-10-21T09:18Z | csatorna=cli` · Károli-proveniencia (lekerdez.py karoli): scope=range:Ézs 41:25 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=3 | ts=2026-10-21T10:14Z
+[^k83]: forrás: `kollokacio H7121 H8034 | scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H7121+H8034 | n=196 | ts=2026-10-20T10:13Z | csatorna=cli (N59, naplok/F126_lefedetlen.py)` · forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H7121+H8034 | n=196 | ts=2026-10-29T08:32Z | csatorna=cli · scope=range:Zsolt 99:6 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=2 | ts=2026-10-29T08:31Z | csatorna=cli · scope=range:Ézs 64:6, range:Zsolt 99:6 | forras=TAHOT_kivonat.tsv+BSB_Strongs.tsv (naplok/ISTENTISZT001_ezs64_zsolt99_meres.py, split('\t')) | n=43+12 | ts=2026-10-29T08:51Z | Károli-proveniencia (lekerdez.py karoli): scope=range:Zsolt 99:6 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=2 | ts=2026-10-25T16:58Z
+[^k84]: forrás: `tematikus: Segitsegul_hivni_az_Urat_tematikus.md §1. Előfordulások összegyűjtése (C-minta) | scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-10-18`
+[^k85]: forrás: `tematikus: Segitsegul_hivni_az_Urat_tematikus.md §1. Előfordulások összegyűjtése (C-minta) | scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-10-18`
+[^k86]: forrás: `tematikus: Segitsegul_hivni_az_Urat_tematikus.md §1. Előfordulások összegyűjtése (C-minta) | scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-10-18`
+[^k87]: forrás: `tematikus: Segitsegul_hivni_az_Urat_tematikus.md §1. Előfordulások összegyűjtése (D-minta) | scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-10-18`
+[^k88]: forrás: `tematikus: Segitsegul_hivni_az_Urat_tematikus.md §1. Előfordulások összegyűjtése (D-minta) | scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-10-18`
+[^k89]: forrás: `tematikus: Segitsegul_hivni_az_Urat_tematikus.md §1. Előfordulások összegyűjtése (D-minta) | scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-10-18`
+[^k90]: forrás: `tematikus: Segitsegul_hivni_az_Urat_tematikus.md §1. Előfordulások összegyűjtése (D-minta) | scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-10-18`
+[^k91]: forrás: `tematikus: Segitsegul_hivni_az_Urat_tematikus.md §1. Előfordulások összegyűjtése (D-minta) | scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-10-18`
+[^k92]: forrás: `tematikus: Segitsegul_hivni_az_Urat_tematikus.md §1. Előfordulások összegyűjtése (D-minta) | scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-10-18`
+[^k93]: forrás: `tematikus: Segitsegul_hivni_az_Urat_tematikus.md §1. Előfordulások összegyűjtése (D-minta) | scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-10-18`
 
 <!-- GENERÁLT-VÉGE: lexikon#ISTENTISZT-001#kizart -->
 
@@ -444,11 +571,15 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#szocikkek | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/karoli_strong, adat/lexikon_hivatkozasok.tsv, adat/nave_tema_hu.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/tematikus_temak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/LSJ_teljes.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/Nave_basokant.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-10-29 -->
 
+**Mit mutat ez a rész?** A motívumot hordozó szavak szótári háttere: héberül a kárá (H7121) és a sém (H8034), görögül az epikaleó (G1941). Minden szónál számozott pontok követik egymást; a 2. pont a fő szótár (héberül a BDB, görögül a Thayer) szócikke. Ott elöl, kibontva állnak azok a jelentések, amelyek a motívumot hordozzák; a többi szótár utána következik.
+
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum 3 Strong-tokenjét fedi, szerepenként a szerepmátrix (`szotar_szerepek.tsv`) sorrendjében, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*
 
 ### Görög szavak: G1941
 
 #### 1. Alapjelentés
+
+**Mit mutat ez a rész?** A szó alapjelentése röviden, a STEPBible rövid szótára szerint.
 
 ##### TBESG G1941 — 1. jelentés
 
@@ -467,6 +598,8 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 *Forrás: konkordancia/TBESG.txt*
 
 #### 2. Mélységi szócikk
+
+**Mit mutat ez a rész?** A szó jelentéseinek teljes rendje a fő szótárban (Thayer). Kibontva azok a jelentések állnak, amelyek a motívumot hordozzák; a többi összecsukva.
 
 ##### G1941 — ἐπικαλέω (epikaleó) · Thayer
 
@@ -501,33 +634,62 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 #### 3. Teológiai szócikk
 
+**Mit mutat ez a rész?** Rövid teológiai szócikk: mit jelent a szó a bibliai gondolkodásban.
+
 **G1941** · tW: `kt/call-speakloudly` — a szócikkek szövege a szónézetben: [szónézet: /szo/G1941](/szo/G1941) · forrás: `konkordancia/tW_szocikkek.tsv`
 
 #### 4. Jelentésszerkezet, szemantikai mező
+
+**Mit mutat ez a rész?** A szó helye a jelentéstani mezők rendszerében: milyen rokon jelentésű szavakkal tartozik egy csoportba.
 
 **G1941** · **Szemantikai domén:** 011002 Socio-Religious, 033009 Name, 033012 Ask For, Request, 056004 Judicial Hearing, Inquiry
 
 #### 5. Tömör jelentés, előfordulás
 
+**Mit mutat ez a rész?** A szó jelentései tömören, és hogy hányszor fordul elő.
+
 **G1941** · a teljes UBS DNTG-szócikk és a Mounce-glossza a szónézetben: [szónézet: /szo/G1941](/szo/G1941) · forrás: `konkordancia/UBS_DNTG_jelentesek.tsv`; a Louw–Nida-doménsor a fenti jelentéstartományban áll.
 
 #### 6. LXX-híd
 
-*Hivatkozás: l. a 3. szakaszt (LXX-fordítói döntések).*
+**Mit mutat ez a rész?** Hogyan kapcsolódik a görög szó a héber Ószövetséghez: a Septuaginta (LXX) a motívum ószövetségi helyein ugyanezt a szót használja-e.
+
+**G1941** · az LXX a motívum 23 ószövetségi versében: egyező 19 · eltérő 3 · görögből hiányzik 1 *(egyező: a görög szövegben is G1941 áll)* — versenként: [3. LXX-fordítói döntések](#3-lxx-fordítói-döntések)
 
 #### 7. Megfelelők a másik nyelven
 
-**G1941** · SECE — héber megfelelők (8): זָכַר, מָצָא, נָקַב, עָשָׂה, קָרָא, שׂוּם, שָׁכַן, שֻׁם
+**Mit mutat ez a rész?** Mely szavak felelnek meg ennek a szónak a másik bibliai nyelven, egy kétnyelvű szótár (SECE) szerint; a motívum saját szava kiemelve.
+
+**G1941** · SECE — héber megfelelők (8):
+
+| Szó | Kiejtés | Strong | Rövid jelentés |
+|---|---|---|---|
+| זָכַר | za.khar *(STEP-átírás)* | H2142 | emlékezni |
+| מָצָא | ma.tsa *(STEP-átírás)* | H4672 | találni |
+| נָקַב | na.qav *(STEP-átírás)* | H5344 | átfúrni; név szerint kijelölni |
+| עָשָׂה | a.sah *(STEP-átírás)* | H6213 | csinálni |
+| **קָרָא** *(a motívum szava)* | kárá | H7121 vagy H7122 *(a SECE csak a szóalakot adja)* | H7121: hívni: megszólítani / H7122: szembejönni: találkozni |
+| שׂוּם | sum *(STEP-átírás)* | H7760 vagy H7761 *(a SECE csak a szóalakot adja)* | H7760: helyezni: létrehozni / H7761: tenni: csinálni; elrendelni |
+| שָׁכַן | sha.khan *(STEP-átírás)* | H7931 | lakni |
+| שֻׁם | shum *(STEP-átírás)* | H8036 | név |
+
+*A szólista és a sorrend a SECE-é (gyakoriságot nem ad); a Strong-szám a TBESG/TBESH lemmájából vagy a SECE címszavából párosul; a rövid jelentés: héberül `adat/glosszak_heber_hu.tsv`, görögül a TBESG angol glosszája (magyar rövid glossza-tábla a görögre még nincs).*
 
 #### 8. Nyelvi háttér
 
-*Hivatkozás: a motívum saját tokenjeihez nincs LSJ-sor a `lexikon_hivatkozasok.tsv`-ben; LSJ-szócikk a rokon szavaknál (alább): G2564.*
+**Mit mutat ez a rész?** A szó tágabb nyelvi háttere a klasszikus görög nagyszótárban (LSJ).
+
+*Hivatkozás: a motívum saját tokenjeihez nincs LSJ-sor a `lexikon_hivatkozasok.tsv`-ben; az `konkordancia/LSJ_teljes.tsv` a saját szó alatt csak utaló csonkot hoz: G1941 („ἐπικαλεìομαι Middle voice from G1909 and G2564”) — a teljes LSJ-szócikk hiányzik a datasetből (jelölt hiány); LSJ-szócikk a rokon szavaknál (alább): G2564.*
 
 #### 9. Versenkénti jelentés
 
-*Hivatkozás: l. az 1. szakasz táblázatát (UBS-jelentés oszlop; csak újszövetségi sorok).*
+**Mit mutat ez a rész?** Hogy az egyes versekben a szó melyik jelentésében áll.
+
+Az [1. Előfordulások](#1-előfordulások) táblázatának „UBS-jelentés” oszlopa soronként megadja, melyik jelentésében áll a görög szó az adott versben (UBS DNTG: a jelentés kódja és rövid magyar jelentése). A motívum 10 újszövetségi sorából 10-nál van ilyen hozzárendelés.
 
 #### 10. Kiejtés (magyaros)
+
+**Mit mutat ez a rész?** A szó magyaros kiejtése.
 
 **G1941** · ἐπικαλέω (epikaleó)
 
@@ -535,11 +697,15 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 #### 1. Alapjelentés
 
+**Mit mutat ez a rész?** A szó alapjelentése röviden, a STEPBible rövid szótára szerint.
+
 **H7121** · hívni: megszólítani *(a TBESH rövid jelentése magyarul, `adat/glosszak_heber_hu.tsv`)* · a teljes TBESH-szócikk: [szónézet: /szo/H7121](/szo/H7121) · forrás: `konkordancia/TBESH.txt`
 
 **H8034** · név *(a TBESH rövid jelentése magyarul, `adat/glosszak_heber_hu.tsv`)* · a teljes TBESH-szócikk: [szónézet: /szo/H8034](/szo/H8034) · forrás: `konkordancia/TBESH.txt`
 
 #### 2. Mélységi szócikk
+
+**Mit mutat ez a rész?** A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jelentések állnak, amelyek a motívumot hordozzák; a többi összecsukva.
 
 ##### H7121 — קָרָא (kárá) · BDB
 
@@ -661,6 +827,8 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 #### 3. Teológiai szócikk
 
+**Mit mutat ez a rész?** Rövid teológiai szócikk: mit jelent a szó a bibliai gondolkodásban.
+
 **H7121** · **TWOT:** 2063
 
 **H7121** · tW: `kt/call-speakloudly`, `kt/call-toname`, `kt/call-tosummon`, `other/cry`, `other/declare`, `other/praise`, `other/preach`, `other/renown` — a szócikkek szövege a szónézetben: [szónézet: /szo/H7121](/szo/H7121) · forrás: `konkordancia/tW_szocikkek.tsv`
@@ -671,11 +839,15 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 #### 4. Jelentésszerkezet, szemantikai mező
 
+**Mit mutat ez a rész?** A szó helye a jelentéstani mezők rendszerében: milyen rokon jelentésű szavakkal tartozik egy csoportba.
+
 **H7121** · **Szemantikai domén:** 002001002012 Great, 002002001012 Move, 002002001016 Search, 002002001017 Space, 002002003003 Happen, 002003002002 Associate, 002003002009 Dissociate, 002003002015 Meet, 002003002022 Serve, 002003003011 Engage, 002004001009005 Shout, 002004002007 Know, 002004002010 Name
 
 **H8034** · **Szemantikai domén:** 002003002007 Control, 002004002007 Know, 002004002010 Name, 003001007 Names of People, 003001016 Self
 
 #### 5. Tömör jelentés, előfordulás
+
+**Mit mutat ez a rész?** A szó jelentései tömören, és hogy hányszor fordul elő.
 
 **H7121** · az UBS DBH jelentései a szónézetben: [szónézet: /szo/H7121](/szo/H7121) · forrás: `konkordancia/UBS_DBH_jelentesek.tsv`
 
@@ -683,7 +855,13 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 #### 6. LXX-híd
 
+**Mit mutat ez a rész?** Hogyan adta vissza a Septuaginta (LXX) ezt a héber szót: a motívum helyein, és a teljes Ószövetségben mely görög szavak állnak mellette.
+
 *Hivatkozás: l. a 3. szakaszt (LXX-fordítói döntések).*
+
+**H7121** · a 3. szakaszban 23 vers: egyező 19 · eltérő 3 · görögből hiányzik 1 — versenként: [3. LXX-fordítói döntések](#3-lxx-fordítói-döntések)
+
+**H8034** · a 3. szakaszban 23 vers: egyező 19 · eltérő 3 · görögből hiányzik 1 — versenként: [3. LXX-fordítói döntések](#3-lxx-fordítói-döntések)
 
 *Versszintű együtt-előfordulás, nem szóillesztés (a token összes ÓSZ-i helye, a grammatikai szavak szűrésével; nem LXX-fordítói döntés):*
 
@@ -695,21 +873,92 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 #### 7. Megfelelők a másik nyelven
 
-**H7121** · SECE — görög megfelelők (49): ἄγω, ἀναβοάω, ἀναγγέλλω, ἀναγινώσκω, ἀνακράζω, ἀνοίγω, ἀντέχομαι, ἀντίκειμαι, ἀπαγγέλλω, ἀπαντάω, ἀπάντησις, βοάω, διαῤῥήσσω, διαστέλλομαι, ἐγκαλέω, εἰσάγω, εἰσέρχομαι, εἰσφέρω, ἔμπροσθεν, ἐναντίον, ἐναντίος, ἐπάγω, ἐπικαλέομαι, ἐπιλαμβάνομαι, ἐπονομάζω, καλέω, κηρύσσω, κλαίω, κληρόω, κλῆσις, κλητός, κράζω, λαλέω, λαμβάνω, λογίζομαι, μένω, μετακαλέω, νηστεύω, ξένος, ὀνομάζω, παρακαλέω, περιποιέομαι, προσκαλέομαι, ῥήγνυμι, συμβαίνω, συναντάω, σχίζω, ὑπάντησις, φωνέω
+**Mit mutat ez a rész?** Mely szavak felelnek meg ennek a szónak a másik bibliai nyelven, egy kétnyelvű szótár (SECE) szerint; a motívum saját szava kiemelve.
 
-**H8034** · SECE — görög megfelelők (6): θρόνος, καλέω, καλός, καύχημα, ὄνομα, Σήμ
+**H7121** · SECE — görög megfelelők (49):
+
+| Szó | Kiejtés | Strong | Rövid jelentés |
+|---|---|---|---|
+| ἄγω | agó | G0071 | to bring *(fordításra vár)* |
+| ἀναβοάω | anaboaó | G0310 | to cry out *(fordításra vár)* |
+| ἀναγγέλλω | anangelló | G0312 | to report *(fordításra vár)* |
+| ἀναγινώσκω | anaginószkó | G0314 | to read *(fordításra vár)* |
+| ἀνακράζω | anakradzó | G0349 | to yell *(fordításra vár)* |
+| ἀνοίγω | anoigó | G0455 | to open *(fordításra vár)* |
+| ἀντέχομαι | antekhó | G0472 | to cling to *(fordításra vár)* |
+| ἀντίκειμαι | antikeimai | G0480 | be an opponent *(fordításra vár)* |
+| ἀπαγγέλλω | apangelló | G0518 | to announce *(fordításra vár)* |
+| ἀπαντάω | apantaó | G0528 | to meet *(fordításra vár)* |
+| ἀπάντησις | apantészisz | G0529 | meeting *(fordításra vár)* |
+| βοάω | boaó | G0994 | to cry out *(fordításra vár)* |
+| διαῤῥήσσω | diarrégnümi | G1284 | to tear *(fordításra vár)* |
+| διαστέλλομαι | diasztelló | G1291 | to give orders *(fordításra vár)* |
+| ἐγκαλέω | egkaleó | G1458 | to accuse *(fordításra vár)* |
+| εἰσάγω | eiszagó | G1521 | to bring in *(fordításra vár)* |
+| εἰσέρχομαι | eiszerkhomai | G1525 | to enter *(fordításra vár)* |
+| εἰσφέρω | eiszferó | G1533 | to bring in *(fordításra vár)* |
+| ἔμπροσθεν | emproszthen | G1715 | before *(fordításra vár)* |
+| ἐναντίον | enantion | G1726 | in front of *(fordításra vár)* |
+| ἐναντίος | enantiosz | G1727 | hostile *(fordításra vár)* |
+| ἐπάγω | epagó | G1863 | to bring upon *(fordításra vár)* |
+| **ἐπικαλέομαι** *(a motívum szava)* | epikaleó | G1941 | to call (on)/name *(fordításra vár)* |
+| ἐπιλαμβάνομαι | epilambanó | G1949 | to catch *(fordításra vár)* |
+| ἐπονομάζω | eponomadzó | G2028 | to name *(fordításra vár)* |
+| καλέω | kaleó | G2564 | to call: call *(fordításra vár)* |
+| κηρύσσω | kérüsszó | G2784 | to preach *(fordításra vár)* |
+| κλαίω | klaió | G2799 | to weep *(fordításra vár)* |
+| κληρόω | kléroó | G2820 | to obtain *(fordításra vár)* |
+| κλῆσις | klészisz | G2821 | calling *(fordításra vár)* |
+| κλητός | klétosz | G2822 | called *(fordításra vár)* |
+| κράζω | kradzó | G2896 | to cry *(fordításra vár)* |
+| λαλέω | laleó | G2980 | to speak *(fordításra vár)* |
+| λαμβάνω | lambanó | G2983 | to take *(fordításra vár)* |
+| λογίζομαι | logidzomai | G3049 | to count *(fordításra vár)* |
+| μένω | menó | G3306 | to stay *(fordításra vár)* |
+| μετακαλέω | metakaleó | G3333 | to summon *(fordításra vár)* |
+| νηστεύω | nészteuó | G3522 | to fast *(fordításra vár)* |
+| ξένος | xenosz | G3581 | foreign *(fordításra vár)* |
+| ὀνομάζω | onomadzó | G3687 | to name *(fordításra vár)* |
+| παρακαλέω | parakaleó | G3870 | to plead/comfort *(fordításra vár)* |
+| περιποιέομαι | peripoieó | G4046 | to gain *(fordításra vár)* |
+| προσκαλέομαι | proszkaleó | G4341 | to call to/summon *(fordításra vár)* |
+| ῥήγνυμι | rhégnümi | G4486 | to throw violently *(fordításra vár)* |
+| συμβαίνω | szümbainó | G4819 | to happen *(fordításra vár)* |
+| συναντάω | szünantaó | G4876 | to meet *(fordításra vár)* |
+| σχίζω | szkhidzó | G4977 | to split *(fordításra vár)* |
+| ὑπάντησις | hüpantészisz | G5222 | meeting *(fordításra vár)* |
+| φωνέω | fóneó | G5455 | to call *(fordításra vár)* |
+
+**H8034** · SECE — görög megfelelők (6):
+
+| Szó | Kiejtés | Strong | Rövid jelentés |
+|---|---|---|---|
+| θρόνος | thronosz | G2362 | throne *(fordításra vár)* |
+| καλέω | kaleó | G2564 | to call: call *(fordításra vár)* |
+| καλός | kalosz | G2570 | good *(fordításra vár)* |
+| καύχημα | kaukhéma | G2745 | pride *(fordításra vár)* |
+| ὄνομα | onoma | G3686 | name *(fordításra vár)* |
+| Σήμ | Szém | G4590 | Shem *(fordításra vár)* |
+
+*A szólista és a sorrend a SECE-é (gyakoriságot nem ad); a Strong-szám a TBESG/TBESH lemmájából vagy a SECE címszavából párosul; a rövid jelentés: héberül `adat/glosszak_heber_hu.tsv`, görögül a TBESG angol glosszája (magyar rövid glossza-tábla a görögre még nincs).*
 
 #### 8. Nyelvi háttér
+
+**Mit mutat ez a rész?** A szó eredete és nyelvi háttere.
 
 *Hivatkozás: a BDB-szócikk feje (nyelvi háttér) a 2. szerepben („Mélységi szócikk”) áll, szavanként „A szócikk feje (nyelvi háttér)” címmel (DT371).*
 
 #### 9. Versenkénti jelentés
+
+**Mit mutat ez a rész?** Hogy az egyes versekben a szó melyik jelentésében áll.
 
 **H7121** · az UBS DBH versenkénti jelentése a szónézetben: [szónézet: /szo/H7121](/szo/H7121) · forrás: `konkordancia/UBS_DBH_jelentesek.tsv`
 
 **H8034** · az UBS DBH versenkénti jelentése a szónézetben: [szónézet: /szo/H8034](/szo/H8034) · forrás: `konkordancia/UBS_DBH_jelentesek.tsv`
 
 #### 10. Kiejtés (magyaros)
+
+**Mit mutat ez a rész?** A szó magyaros kiejtése.
 
 **H7121** · קָרָא (kárá)
 
@@ -718,6 +967,8 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 ### Nyelvfüggetlen szerepek
 
 #### 12. Tematikus index (témák és igehely-hivatkozások)
+
+**Mit mutat ez a rész?** Mely témákhoz sorolja a szót és helyeit egy régi bibliai témagyűjtemény (Nave).
 
 *Nave tematikus indexe (Nave's Topical Bible, 1897, közkincs). Jelölt az a téma, amely legalább 2 motívumverset érint, a motívumversek aránya a téma összes verséhez legalább 1%, és nem a fölérendelt fogalom felé mutat (4 tiltott téma); a 18 jelöltből a motívumhoz kiválasztott 8 téma áll itt — a döntés és a kimaradt jelöltek indoka: `adat/tematikus_temak.tsv`. Csak megjelenítés: jelölt ezekből csak az `adat/jeloltek.tsv`-n át lesz.*
 
@@ -744,6 +995,8 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 #### 13. Károli-megfelelők (+ SZPA)
 
+**Mit mutat ez a rész?** Milyen magyar szavakkal fordítja a Károli-Biblia ezt a szót, és milyen gyakran.
+
 *A motívum igehelyeinek Károli-szóalakjai (`adat/elofordulasok.tsv`, `karoli_szo`), szótári alakonként (`adat/szoto/karoli_szotari_alak.tsv`, mai helyesírás), névelő nélkül: a szóalakok, és hány igehelyen, melyiken.*
 
 - **hív** (30) — hívá, hívom, hívjátok, hívja, hívják, hívta, hívák, hívám, hívni, híván: 1Móz 4:26, 1Móz 12:8, 1Móz 13:4, 1Móz 21:33, 1Móz 26:25, 1Kir 18:24, 1Kir 18:25, 1Kir 18:26, 2Kir 5:11, 1Krón 16:8, Zsolt 79:6, Zsolt 105:1, Zsolt 116:4, Zsolt 116:13, Zsolt 116:17, Ézs 64:6, Jer 10:25, Jóel 2:32, Sof 3:9, Zak 13:9, ApCsel 2:21, ApCsel 9:14, ApCsel 9:21, ApCsel 22:16, Róm 10:12, Róm 10:13, Róm 10:14, 1Kor 1:2, 2Tim 2:22, 1Pét 1:17
@@ -769,6 +1022,8 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 *(proveniencia: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, karoli_szo) | forras=adat/elofordulasok.tsv+adat/szoto/karoli_szotari_alak.tsv (eszkozok/szerep_karoli.py) | n=33 | ts=2026-10-29)*
 
 #### 14. Rejtett / hamis párhuzam
+
+**Mit mutat ez a rész?** Ahol a Károli ugyanazt a szót más magyar szóval, vagy ugyanazzal a magyar szóval más szót fordít: itt rejtett vagy hamis párhuzam lehet.
 
 *Kulcsszavak gerinc-kombinációnként: G1941: „hív”, „segítségül”; H7121+H8034: „név”, „hív”, „segítségül” — az e kombinációjú motívumsorok Károli-szóalakjainak legalább felében álló szótári alak, a Károli–Strong párosításban csak idegen Strongra párosuló szavak nélkül. Csak megjelenítés: jelölt ezekből csak az `adat/jeloltek.tsv`-n át lesz.*
 
@@ -933,6 +1188,8 @@ választott, nem véletlenül tért el a "szabvány" ἐπικαλέομαι-tó
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#lxx | forrás: adat/lxx_dontesek.tsv, konkordancia/LXX_OS/1-chronicles.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/2-kings.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv, konkordancia/LXX_OS/joel.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zechariah.tsv, konkordancia/LXX_OS/zephaniah.tsv | licenc: CC BY 4.0, minden jog fenntartva | ts=2026-10-29 -->
 
+**Mit mutat ez a rész?** Ez a táblázat azt mutatja meg, hogyan fordította a Septuaginta (LXX) a motívum 23 ószövetségi helyét: ugyanazzal a görög szóval, amelyet az Újszövetség is használ, vagy mással. Összesítve: egyező 19 · eltérő 3 · görögből hiányzik 1.
+
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum ÓSZ-i előfordulásait veti össze az `LXX_OS`-szel (G5), soronként a Károli-vers minden versére.*
 
 | Igehely (Károli) | LXX-igehely | Héber kulcsszó | Görög megfelelő | Egyezés | Forrás |
@@ -968,6 +1225,8 @@ választott, nem véletlenül tért el a "szabvány" ἐπικαλέομαι-tó
 ## 4. Kereszthivatkozások
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-10-29 -->
+
+**Mit mutat ez a rész?** Mely más bibliai helyekre utalnak a motívum helyeiről a hagyományos kereszthivatkozás-gyűjtemények (a TSK és a Károli-Biblia utalásai). A motívum 33 igehelyéből 24-nál van ilyen utalás, összesen 107.
 
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum 33 igehelyét veti össze a TSK (Votes ≥ 15) és a Károli-KH táblával; 24 igehely ad legalább egy találatot (107 találat összesen), 0 igehely versenkénti kereséssel nem vizsgálható.*
 
@@ -1229,6 +1488,8 @@ választott, nem véletlenül tért el a "szabvány" ἐπικαλέομαι-tó
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kapcsolatok | forrás: adat/kapcsolatok.tsv | licenc: minden jog fenntartva | ts=2026-10-29 -->
 
+**Mit mutat ez a rész?** A motívum igehelyei közötti kapcsolatok (25): melyik hely melyikkel áll kapcsolatban, milyen jellegű ez a kapcsolat, és mennyire biztos.
+
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum 25 kapcsolat-sorát fedi a `kapcsolatok.tsv`-ből, 31 igehely-csomóponttal.*
 
 | Forrás | Cél | Típus | Funkció | Bizonyosság | PaRDeS-szint |
@@ -1358,6 +1619,8 @@ graph LR
 ## 5/b. Kapcsolódó motívumok
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-10-29 -->
+
+**Mit mutat ez a rész?** Azok a más motívumok, amelyekkel ez a motívum kapcsolatban áll. Ugyanez a sor a másik motívum lapján is megjelenik.
 
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum motívumközi kapcsolatait adja a `motivum_kapcsolatok.tsv`-ből (minden sor mögött beépített motívumközi jelölt áll, DT277); a sor mindkét érintett motívum lapján megjelenik.*
 
@@ -1730,6 +1993,8 @@ megnevezett/invokált fél áll szemben); a D inkább egy ötödik dimenzió
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#idezes | forrás:  | licenc: minden jog fenntartva | ts=2026-10-29 -->
 
+**Mit mutat ez a rész?** Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból készült.
+
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum hivatkozási adatait, a ténylegesen felhasznált szótárakat (teljes névvel, forrásfájlonként) és az adatforrásokat adja (G9, LEXV2_3-ig szűkítve).*
 
 **Hogyan hivatkozz:**
@@ -1790,6 +2055,8 @@ megnevezett/invokált fél áll szemben); a D inkább egy ötödik dimenzió
 ## Kolofon
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kolofon | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/karoli_strong, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/nave_tema_hu.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/tematikus_temak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LSJ_teljes.tsv, konkordancia/LXX_OS/1-chronicles.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/2-kings.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv, konkordancia/LXX_OS/joel.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zechariah.tsv, konkordancia/LXX_OS/zephaniah.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/Nave_basokant.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-10-29 -->
+
+**Mit mutat ez a rész?** A lap technikai adatai: a motívum azonosítója és állapota, és minden forrás, amelyből a lap készült.
 
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum törzsadatait (`motivumok.tsv`) és a lexikon-oldalon ténylegesen felhasznált forrásokat sorolja fel.*
 

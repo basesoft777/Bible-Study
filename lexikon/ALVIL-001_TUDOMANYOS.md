@@ -10,6 +10,8 @@ A motívum lexikai azonosságú: a שְׁאוֹל (*seól*) és a görög ᾍδ�
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-10-29 -->
 
+**Mit mutat ez a rész?** A lap szakaszai. A „(kézi)” jelölésű szakaszokat a kutató írta, a többit a rendszer állítja elő az adattáblákból.
+
 *Ez a blokk a lexikon-oldal 14 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
 
 - [Kivonat](#kivonat)
@@ -32,6 +34,8 @@ A motívum lexikai azonosságú: a שְׁאוֹל (*seól*) és a görög ᾍδ�
 ## Jelmagyarázat és rövidítések
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#jelmagyarazat | forrás:  | licenc: minden jog fenntartva | ts=2026-10-29 -->
+
+**Mit mutat ez a rész?** A lapon használt rövidítések, jelek és forrásnevek feloldása. Ha a lap egy jelét nem érted, itt keresd.
 
 *Ez a blokk közös, minden lexikon-oldalon szó szerint azonos szöveg (G10).*
 
@@ -62,6 +66,8 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 ## 1. Előfordulások
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#elofordulasok | forrás: adat/elofordulasok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, adat/forditasok.tsv, adat/szotar_szakasz_cimke.tsv, adat/bdb_vers_jelentes.tsv, adat/thayer_vers_jelentes.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/TAHOT_kivonat.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva | ts=2026-10-29 -->
+
+**Mit mutat ez a rész?** A motívum 72 igehelye a bibliai könyvek sorrendjében (64 ószövetségi, 8 újszövetségi), mindegyik a Károli-fordítás szövegével. Soronként látszik, melyik szó hordozza a motívumot, és mit jelent az adott versben.
 
 *Ez a blokk a `[ID: ALVIL-001]` motívum 72 igehely-sorát fedi az `elofordulasok.tsv`-ből, kanonikus sorrendben, a Károli-szöveggel (1/a) és az UBS-jelentés renderidejű hozzárendelésével (G3). A „Jelentés (a szó)” oszlop a szó jelentését a szótár tagolásában adja (`adat/szotar_szakasz_cimke.tsv`, `adat/bdb_vers_jelentes.tsv`, `adat/thayer_vers_jelentes.tsv`; a címke forrása a sor lábjegyzetében, ⓘ), a „Funkció (a motívumban)” a hely motívumbeli funkcióját (F131, DT272 (d)).*
 
@@ -585,15 +591,36 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-10-29 -->
 
+**Mit mutat ez a rész?** Ezeket a helyeket megvizsgáltuk, de nem tartoznak a motívumhoz, vagy a döntés még nyitott (5 elutasítva). Mindegyiknél látszik, miért került a vizsgálatba, és miért maradt ki.
+
 *Ez a blokk a `[ID: ALVIL-001]` motívum 5 elutasított/nyitva maradt jelöltjét fedi a `jeloltek.tsv`-ből (G7).*
 
-- **1Kor 15:55** (elutasítva, `napló: Hadesz_Seol_kereszthivatkozas_naplo.md §Tartalmi minősítés minden jelöltre | scope=manual | forras=Hadesz_Seol_kereszthivatkozas_naplo.md | ts=2026-10-11`): a kritikai szövegkiadás mindkét tagmondatban θάνατος-t hoz; a TR/Byzantinus-alapú Károli-olvasat eltérése szövegkritikai kérdés, nem a jelen scan tárgya — dokumentálva, nem hallgatólagosan kihagyva
-- **Mt 16:18** (elutasítva, `napló: Hadesz_Seol_kereszthivatkozas_naplo.md §Tartalmi minősítés minden jelöltre | scope=manual | forras=Hadesz_Seol_kereszthivatkozas_naplo.md | ts=2026-10-11`): ekkleziológiai kontextus (az egyház legyőzhetetlensége), tartalmilag nem kapcsolódik a jelen tanulmány tárgyához (halál/feltámadás-tipológia) — külön motívumként kezelendő, ha sorra kerül
-- **2Móz 12:29** (elutasítva, `F123 X.A Seol-scan, ±2 vers (2e. 4.): naplok/F123_adat_keszito.py seol_ablak 2 — scope=TAHOT-teljes, horgony ±2 vers azonos fejezet, fenyegetés+kiáltás+istennév+szabadulás-ige (H5927 nélkül), H7585 nélkül | forras=konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=2026-10-28`): Minősítési mérce (a #123 2e. 4. küszöbdöntése, 2026-10-28; orkesztrátor, a felhasználó felhatalmazásával): a halálveszélyben lévő maga kiált, a kiáltás az Úrhoz szól, és a szabadulás ebből a veszélyből történik; bármelyik hiánya kizár. Mindhárom jegy hiányzik: a „bór” (12:29) a tömlöc, a halál az egyiptomi elsőszülötteké; a „kiáltás” (12:31, H7121) a fáraó, aki Mózest és Áront hívatja, nem az Úrhoz kiált; a H5337 (12:27) Izráel házainak megoltalmazása, nem a kiáltó szabadulása. Nincs H7585: ALVIL-001-előfordulásnak sem jelölt. Megerősítve: a felhasználó döntése (B5), 2026-10-29, az orkesztrátor chatjében: „Megerősítem” (DT-F123e, DONTESEK.md; ELLENOR_F123_ALVIL-001 E8).
-- **Zsolt 49:10** (elutasítva, `F123 X.A Seol-scan, ±2 vers (2e. 4.): naplok/F123_adat_keszito.py seol_ablak 2 — scope=TAHOT-teljes, horgony ±2 vers azonos fejezet, fenyegetés+kiáltás+istennév+szabadulás-ige (H5927 nélkül), H7585 nélkül | forras=konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=2026-10-28`): Minősítési mérce (a #123 2e. 4. küszöbdöntése, 2026-10-28; orkesztrátor, a felhasználó felhatalmazásával): a halálveszélyben lévő maga kiált, a kiáltás az Úrhoz szól, és a szabadulás ebből a veszélyből történik; bármelyik hiánya kizár. A „sírgödör” (H7845) a gazdagok sorsa; a H7121 (49:12) a földek nevükről nevezése („nevöket hangoztatják”), nem kiáltás; a H6299 (49:8) tagadott váltság („senki sem válthatja meg”). A zsoltár Seol-helyei (49:15, 49:16) már ALVIL-001-sorok, és ott sincs kiáltás. Nincs H7585 ebben a versben. Megerősítve: a felhasználó döntése (B5), 2026-10-29, az orkesztrátor chatjében: „Megerősítem” (DT-F123e, DONTESEK.md; ELLENOR_F123_ALVIL-001 E8).
-- **Zsolt 107:18** (elutasítva, `F123 X.A Seol-scan, ±2 vers (2e. 4.): naplok/F123_adat_keszito.py seol_ablak 2 — scope=TAHOT-teljes, horgony ±2 vers azonos fejezet, fenyegetés+kiáltás+istennév+szabadulás-ige (H5927 nélkül), H7585 nélkül | forras=konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=2026-10-28`): Minősítési mérce (a #123 2e. 4. küszöbdöntése, 2026-10-28; orkesztrátor, a felhasználó felhatalmazásával): a halálveszélyben lévő maga kiált, a kiáltás az Úrhoz szól, és a szabadulás ebből a veszélyből történik; bármelyik hiánya kizár. A küszöb szerint minősített hely (1 a 3-ból): a „halál kapujához” közelgők (H8179+H4194) maguk kiáltanak az Úrhoz (107:19, H2199), és ő kiszabadítja őket (H3467, 107:20 H4422). Az ALVIL-001-hez mégsem tartozik: nincs H7585, tehát az alpont minimális jegye (a Seol szorongatja a hívót) hiányzik; csak a fölérendelt fogalmon („ima bajban”) keresztül tartozna ide. Megerősítve: a felhasználó döntése (B5), 2026-10-29, az orkesztrátor chatjében: „Megerősítem” (DT-F123e, DONTESEK.md; ELLENOR_F123_ALVIL-001 E8).
+**Az elutasítás okai:** a formula nincs a versben 1 · egyéb 4 (1Kor 15:55, Mt 16:18, 2Móz 12:29, Zsolt 107:18)
+
+**A jelölés forrása:** Gépi keresés 3 · Kutatói felvetés 2
+
+**Gépi keresés** (3)
+
+| Igehely | Miért lett jelölt | Döntés és indok |
+|---|---|---|
+| 2Móz 12:29 | gépi keresés a szó környezetében (Seol-ablak)[^k1] | **elutasítva** — egyéb: Minősítési mérce (a #123 2e. 4. küszöbdöntése, 2026-10-28; orkesztrátor, a felhasználó felhatalmazásával): a halálveszélyben lévő maga kiált, a kiáltás az Úrhoz szól, és a szabadulás ebből a veszélyből történik; bármelyik hiánya kizár. Mindhárom jegy hiányzik: a „bór” (12:29) a tömlöc, a halál az egyiptomi elsőszülötteké; a „kiáltás” (12:31, H7121) a fáraó, aki Mózest és Áront hívatja, nem az Úrhoz kiált; a H5337 (12:27) Izráel házainak megoltalmazása, nem a kiáltó szabadulása. Nincs H7585: ALVIL-001-előfordulásnak sem jelölt. Megerősítve: a felhasználó döntése (B5), 2026-10-29, az orkesztrátor chatjében: „Megerősítem” (DT-F123e, DONTESEK.md; ELLENOR_F123_ALVIL-001 E8). |
+| Zsolt 49:10 | gépi keresés a szó környezetében (Seol-ablak)[^k2] | **elutasítva** — a formula nincs a versben: Minősítési mérce (a #123 2e. 4. küszöbdöntése, 2026-10-28; orkesztrátor, a felhasználó felhatalmazásával): a halálveszélyben lévő maga kiált, a kiáltás az Úrhoz szól, és a szabadulás ebből a veszélyből történik; bármelyik hiánya kizár. A „sírgödör” (H7845) a gazdagok sorsa; a H7121 (49:12) a földek nevükről nevezése („nevöket hangoztatják”), nem kiáltás; a H6299 (49:8) tagadott váltság („senki sem válthatja meg”). A zsoltár Seol-helyei (49:15, 49:16) már ALVIL-001-sorok, és ott sincs kiáltás. Nincs H7585 ebben a versben. Megerősítve: a felhasználó döntése (B5), 2026-10-29, az orkesztrátor chatjében: „Megerősítem” (DT-F123e, DONTESEK.md; ELLENOR_F123_ALVIL-001 E8). |
+| Zsolt 107:18 | gépi keresés a szó környezetében (Seol-ablak)[^k3] | **elutasítva** — egyéb: Minősítési mérce (a #123 2e. 4. küszöbdöntése, 2026-10-28; orkesztrátor, a felhasználó felhatalmazásával): a halálveszélyben lévő maga kiált, a kiáltás az Úrhoz szól, és a szabadulás ebből a veszélyből történik; bármelyik hiánya kizár. A küszöb szerint minősített hely (1 a 3-ból): a „halál kapujához” közelgők (H8179+H4194) maguk kiáltanak az Úrhoz (107:19, H2199), és ő kiszabadítja őket (H3467, 107:20 H4422). Az ALVIL-001-hez mégsem tartozik: nincs H7585, tehát az alpont minimális jegye (a Seol szorongatja a hívót) hiányzik; csak a fölérendelt fogalmon („ima bajban”) keresztül tartozna ide. Megerősítve: a felhasználó döntése (B5), 2026-10-29, az orkesztrátor chatjében: „Megerősítem” (DT-F123e, DONTESEK.md; ELLENOR_F123_ALVIL-001 E8). |
+
+**Kutatói felvetés** (2)
+
+| Igehely | Miért lett jelölt | Döntés és indok |
+|---|---|---|
+| 1Kor 15:55 | a kereszthivatkozás-napló kutatói minősítése[^k4] | **elutasítva** — egyéb: a kritikai szövegkiadás mindkét tagmondatban θάνατος-t hoz; a TR/Byzantinus-alapú Károli-olvasat eltérése szövegkritikai kérdés, nem a jelen scan tárgya — dokumentálva, nem hallgatólagosan kihagyva |
+| Mt 16:18 | a kereszthivatkozás-napló kutatói minősítése[^k5] | **elutasítva** — egyéb: ekkleziológiai kontextus (az egyház legyőzhetetlensége), tartalmilag nem kapcsolódik a jelen tanulmány tárgyához (halál/feltámadás-tipológia) — külön motívumként kezelendő, ha sorra kerül |
 
 **Negatív kritérium** (`motivumok.tsv`): az igehelynek a שְׁאוֹל (seól) gyököt (ÚSZ-ben az LXX-közvetített ᾍδης (hadész) megfelelőjét) kell tartalmaznia — a תְּהוֹם (tehóm) / ἄβυσσος (abüsszosz) szócsalád explicit kizárva (kozmikus, nem egyéni-halotti fogalom, l. TEREMT-001 elhatárolása)
+
+[^k1]: forrás: `F123 X.A Seol-scan, ±2 vers (2e. 4.): naplok/F123_adat_keszito.py seol_ablak 2 — scope=TAHOT-teljes, horgony ±2 vers azonos fejezet, fenyegetés+kiáltás+istennév+szabadulás-ige (H5927 nélkül), H7585 nélkül | forras=konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=2026-10-28`
+[^k2]: forrás: `F123 X.A Seol-scan, ±2 vers (2e. 4.): naplok/F123_adat_keszito.py seol_ablak 2 — scope=TAHOT-teljes, horgony ±2 vers azonos fejezet, fenyegetés+kiáltás+istennév+szabadulás-ige (H5927 nélkül), H7585 nélkül | forras=konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=2026-10-28`
+[^k3]: forrás: `F123 X.A Seol-scan, ±2 vers (2e. 4.): naplok/F123_adat_keszito.py seol_ablak 2 — scope=TAHOT-teljes, horgony ±2 vers azonos fejezet, fenyegetés+kiáltás+istennév+szabadulás-ige (H5927 nélkül), H7585 nélkül | forras=konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=2026-10-28`
+[^k4]: forrás: `napló: Hadesz_Seol_kereszthivatkozas_naplo.md §Tartalmi minősítés minden jelöltre | scope=manual | forras=Hadesz_Seol_kereszthivatkozas_naplo.md | ts=2026-10-11`
+[^k5]: forrás: `napló: Hadesz_Seol_kereszthivatkozas_naplo.md §Tartalmi minősítés minden jelöltre | scope=manual | forras=Hadesz_Seol_kereszthivatkozas_naplo.md | ts=2026-10-11`
 
 <!-- GENERÁLT-VÉGE: lexikon#ALVIL-001#kizart -->
 
@@ -601,11 +628,15 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#szocikkek | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/lexikon_hivatkozasok.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-10-29 -->
 
+**Mit mutat ez a rész?** A motívumot hordozó szavak szótári háttere: héberül a seól (H7585), görögül a Hadész (G0086). Minden szónál számozott pontok követik egymást; a 2. pont a fő szótár (héberül a BDB, görögül a Thayer) szócikke. Ott elöl, kibontva állnak azok a jelentések, amelyek a motívumot hordozzák; a többi szótár utána következik.
+
 *Ez a blokk a `[ID: ALVIL-001]` motívum 2 Strong-tokenjét fedi, szerepenként a szerepmátrix (`szotar_szerepek.tsv`) sorrendjében, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*
 
 ### Görög szavak: G0086
 
 #### 1. Alapjelentés
+
+**Mit mutat ez a rész?** A szó alapjelentése röviden, a STEPBible rövid szótára szerint.
 
 ##### TBESG G0086 — 2. jelentés
 
@@ -616,6 +647,8 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 *Forrás: konkordancia/TBESG.txt*
 
 #### 2. Mélységi szócikk
+
+**Mit mutat ez a rész?** A szó jelentéseinek teljes rendje a fő szótárban (Thayer). Kibontva azok a jelentések állnak, amelyek a motívumot hordozzák; a többi összecsukva.
 
 ##### G0086 — ᾍδης (Hadész) · Thayer
 
@@ -644,33 +677,59 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 #### 3. Teológiai szócikk
 
+**Mit mutat ez a rész?** Rövid teológiai szócikk: mit jelent a szó a bibliai gondolkodásban.
+
 **G0086** · tW: `kt/hades`, `kt/hell` — a szócikkek szövege a szónézetben: [szónézet: /szo/G0086](/szo/G0086) · forrás: `konkordancia/tW_szocikkek.tsv`
 
 #### 4. Jelentésszerkezet, szemantikai mező
+
+**Mit mutat ez a rész?** A szó helye a jelentéstani mezők rendszerében: milyen rokon jelentésű szavakkal tartozik egy csoportba.
 
 **G0086** · **Szemantikai domén:** 001003 Regions Below the Surface of the Earth, 012002 Supernatural Powers, 023007 Live, Die
 
 #### 5. Tömör jelentés, előfordulás
 
+**Mit mutat ez a rész?** A szó jelentései tömören, és hogy hányszor fordul elő.
+
 **G0086** · a teljes UBS DNTG-szócikk és a Mounce-glossza a szónézetben: [szónézet: /szo/G0086](/szo/G0086) · forrás: `konkordancia/UBS_DNTG_jelentesek.tsv`; a Louw–Nida-doménsor a fenti jelentéstartományban áll.
 
 #### 6. LXX-híd
 
-*Hivatkozás: l. a 3. szakaszt (LXX-fordítói döntések).*
+**Mit mutat ez a rész?** Hogyan kapcsolódik a görög szó a héber Ószövetséghez: a Septuaginta (LXX) a motívum ószövetségi helyein ugyanezt a szót használja-e.
+
+**G0086** · az LXX a motívum 64 ószövetségi versében: egyező 57 · eltérő 3 · azonosításra vár 2 · versszámozás miatt nem párosítva 2 *(egyező: a görög szövegben is G0086 áll)* — versenként: [3. LXX-fordítói döntések](#3-lxx-fordítói-döntések)
 
 #### 7. Megfelelők a másik nyelven
 
-**G0086** · SECE — héber megfelelők (5): דּוּמָה, מוּת, מָוֶת, צַלְמָוֶת, שְׁאֹול
+**Mit mutat ez a rész?** Mely szavak felelnek meg ennek a szónak a másik bibliai nyelven, egy kétnyelvű szótár (SECE) szerint; a motívum saját szava kiemelve.
+
+**G0086** · SECE — héber megfelelők (5):
+
+| Szó | Kiejtés | Strong | Rövid jelentés |
+|---|---|---|---|
+| דּוּמָה | du.mah *(STEP-átírás)* | H1745 vagy H1746 *(a SECE csak a szóalakot adja)* | H1745: csend / H1746: Dúma |
+| מוּת | mut *(STEP-átírás)* | H4191 vagy H4192 *(a SECE csak a szóalakot adja)* | H4191: meghalni / H4192: (Mut)-Labbén |
+| מָוֶת | ma.vet *(STEP-átírás)* | H4194 | halál |
+| צַלְמָוֶת | tsal.ma.vet *(STEP-átírás)* | H6757 | árnyék |
+| **שְׁאֹול** *(a motívum szava)* | seól | H7585 | pokol: Seol |
+
+*A szólista és a sorrend a SECE-é (gyakoriságot nem ad); a Strong-szám a TBESG/TBESH lemmájából vagy a SECE címszavából párosul; a rövid jelentés: héberül `adat/glosszak_heber_hu.tsv`, görögül a TBESG angol glosszája (magyar rövid glossza-tábla a görögre még nincs).*
 
 #### 8. Nyelvi háttér
+
+**Mit mutat ez a rész?** A szó tágabb nyelvi háttere a klasszikus görög nagyszótárban (LSJ).
 
 *Hivatkozás: a motívum saját tokenjeihez nincs LSJ-sor a `lexikon_hivatkozasok.tsv`-ben, és a rokon szavaknál sincs: jelölt hiány.*
 
 #### 9. Versenkénti jelentés
 
-*Hivatkozás: l. az 1. szakasz táblázatát (UBS-jelentés oszlop; csak újszövetségi sorok).*
+**Mit mutat ez a rész?** Hogy az egyes versekben a szó melyik jelentésében áll.
+
+Az [1. Előfordulások](#1-előfordulások) táblázatának „UBS-jelentés” oszlopa soronként megadja, melyik jelentésében áll a görög szó az adott versben (UBS DNTG: a jelentés kódja és rövid magyar jelentése). A motívum 8 újszövetségi sorából 8-nál van ilyen hozzárendelés.
 
 #### 10. Kiejtés (magyaros)
+
+**Mit mutat ez a rész?** A szó magyaros kiejtése.
 
 **G0086** · ᾍδης (Hadész)
 
@@ -678,9 +737,13 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 #### 1. Alapjelentés
 
+**Mit mutat ez a rész?** A szó alapjelentése röviden, a STEPBible rövid szótára szerint.
+
 **H7585** · pokol: Seol *(a TBESH rövid jelentése magyarul, `adat/glosszak_heber_hu.tsv`)* · a teljes TBESH-szócikk: [szónézet: /szo/H7585](/szo/H7585) · forrás: `konkordancia/TBESH.txt`
 
 #### 2. Mélységi szócikk
+
+**Mit mutat ez a rész?** A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jelentések állnak, amelyek a motívumot hordozzák; a többi összecsukva.
 
 ##### H7585 — שְׁאוֹל (seól) · BDB
 
@@ -733,21 +796,31 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 #### 3. Teológiai szócikk
 
+**Mit mutat ez a rész?** Rövid teológiai szócikk: mit jelent a szó a bibliai gondolkodásban.
+
 **H7585** · **TWOT:** 2303c
 
 **H7585** · tW: `kt/hades`, `kt/hell`, `other/pit`, `other/tomb` — a szócikkek szövege a szónézetben: [szónézet: /szo/H7585](/szo/H7585) · forrás: `konkordancia/tW_szocikkek.tsv`
 
 #### 4. Jelentésszerkezet, szemantikai mező
 
+**Mit mutat ez a rész?** A szó helye a jelentéstani mezők rendszerében: milyen rokon jelentésű szavakkal tartozik egy csoportba.
+
 **H7585** · **Szemantikai domén:** 001003 Regions Under the Earth
 
 #### 5. Tömör jelentés, előfordulás
+
+**Mit mutat ez a rész?** A szó jelentései tömören, és hogy hányszor fordul elő.
 
 **H7585** · az UBS DBH jelentései a szónézetben: [szónézet: /szo/H7585](/szo/H7585) · forrás: `konkordancia/UBS_DBH_jelentesek.tsv`
 
 #### 6. LXX-híd
 
+**Mit mutat ez a rész?** Hogyan adta vissza a Septuaginta (LXX) ezt a héber szót: a motívum helyein, és a teljes Ószövetségben mely görög szavak állnak mellette.
+
 *Hivatkozás: l. a 3. szakaszt (LXX-fordítói döntések).*
+
+**H7585** · a 3. szakaszban 64 vers: egyező 57 · eltérő 3 · azonosításra vár 2 · versszámozás miatt nem párosítva 2 — versenként: [3. LXX-fordítói döntések](#3-lxx-fordítói-döntések)
 
 *Versszintű együtt-előfordulás, nem szóillesztés (a token összes ÓSZ-i helye, a grammatikai szavak szűrésével; nem LXX-fordítói döntés):*
 
@@ -757,17 +830,32 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 #### 7. Megfelelők a másik nyelven
 
-**H7585** · SECE — görög megfelelők (2): ᾅδης, θάνατος
+**Mit mutat ez a rész?** Mely szavak felelnek meg ennek a szónak a másik bibliai nyelven, egy kétnyelvű szótár (SECE) szerint; a motívum saját szava kiemelve.
+
+**H7585** · SECE — görög megfelelők (2):
+
+| Szó | Kiejtés | Strong | Rövid jelentés |
+|---|---|---|---|
+| **ᾅδης** *(a motívum szava)* | Hadész | G0086 | hell: Hades *(fordításra vár)* |
+| θάνατος | thanatosz | G2288 | death *(fordításra vár)* |
+
+*A szólista és a sorrend a SECE-é (gyakoriságot nem ad); a Strong-szám a TBESG/TBESH lemmájából vagy a SECE címszavából párosul; a rövid jelentés: héberül `adat/glosszak_heber_hu.tsv`, görögül a TBESG angol glosszája (magyar rövid glossza-tábla a görögre még nincs).*
 
 #### 8. Nyelvi háttér
+
+**Mit mutat ez a rész?** A szó eredete és nyelvi háttere.
 
 *Hivatkozás: a BDB-szócikk feje (nyelvi háttér) a 2. szerepben („Mélységi szócikk”) áll, szavanként „A szócikk feje (nyelvi háttér)” címmel (DT371).*
 
 #### 9. Versenkénti jelentés
 
+**Mit mutat ez a rész?** Hogy az egyes versekben a szó melyik jelentésében áll.
+
 **H7585** · az UBS DBH versenkénti jelentése a szónézetben: [szónézet: /szo/H7585](/szo/H7585) · forrás: `konkordancia/UBS_DBH_jelentesek.tsv`
 
 #### 10. Kiejtés (magyaros)
+
+**Mit mutat ez a rész?** A szó magyaros kiejtése.
 
 **H7585** · שְׁאוֹל (seól)
 
@@ -775,15 +863,21 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 #### 12. Tematikus index (témák és igehely-hivatkozások)
 
+**Mit mutat ez a rész?** Mely témákhoz sorolja a szót és helyeit egy régi bibliai témagyűjtemény (Nave).
+
 <!-- ÜRES-BLOKK: Tematikus index (témák és igehely-hivatkozások) | javaslat -->
 *(üres blokk: javaslat; a hiány nincs kitöltve gyenge vagy asszociatív anyaggal)*
 
 #### 13. Károli-megfelelők (+ SZPA)
 
+**Mit mutat ez a rész?** Milyen magyar szavakkal fordítja a Károli-Biblia ezt a szót, és milyen gyakran.
+
 <!-- ÜRES-BLOKK: Károli-megfelelők (+ SZPA) | javaslat -->
 *(üres blokk: javaslat; a hiány nincs kitöltve gyenge vagy asszociatív anyaggal)*
 
 #### 14. Rejtett / hamis párhuzam
+
+**Mit mutat ez a rész?** Ahol a Károli ugyanazt a szót más magyar szóval, vagy ugyanazzal a magyar szóval más szót fordít: itt rejtett vagy hamis párhuzam lehet.
 
 <!-- ÜRES-BLOKK: Rejtett / hamis párhuzam | javaslat -->
 *(üres blokk: javaslat; a hiány nincs kitöltve gyenge vagy asszociatív anyaggal)*
@@ -805,6 +899,8 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 ## 3. LXX-fordítói döntések
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#lxx | forrás: adat/lxx_dontesek.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/1-samuel.tsv, konkordancia/LXX_OS/2-samuel.tsv, konkordancia/LXX_OS/amos.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/ecclesiastes.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/hosea.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/jonah.tsv, konkordancia/LXX_OS/numbers.tsv, konkordancia/LXX_OS/proverbs.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/song-of-solomon.tsv | licenc: CC BY 4.0, minden jog fenntartva | ts=2026-10-29 -->
+
+**Mit mutat ez a rész?** Ez a táblázat azt mutatja meg, hogyan fordította a Septuaginta (LXX) a motívum 64 ószövetségi helyét: ugyanazzal a görög szóval, amelyet az Újszövetség is használ, vagy mással. Összesítve: egyező 57 · eltérő 3 · azonosításra vár 2 · versszámozás miatt nem párosítva 2.
 
 *Ez a blokk a `[ID: ALVIL-001]` motívum ÓSZ-i előfordulásait veti össze az `LXX_OS`-szel (G5), soronként a Károli-vers minden versére.*
 
@@ -882,6 +978,8 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 ## 4. Kereszthivatkozások
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-10-29 -->
+
+**Mit mutat ez a rész?** Mely más bibliai helyekre utalnak a motívum helyeiről a hagyományos kereszthivatkozás-gyűjtemények (a TSK és a Károli-Biblia utalásai). A motívum 72 igehelyéből 53-nál van ilyen utalás, összesen 124.
 
 *Ez a blokk a `[ID: ALVIL-001]` motívum 72 igehelyét veti össze a TSK (Votes ≥ 15) és a Károli-KH táblával; 53 igehely ad legalább egy találatot (124 találat összesen), 1 igehely versenkénti kereséssel nem vizsgálható.*
 
@@ -1157,6 +1255,8 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kapcsolatok | forrás: adat/kapcsolatok.tsv | licenc: minden jog fenntartva | ts=2026-10-29 -->
 
+**Mit mutat ez a rész?** Itt állnának a motívum igehelyei közötti kapcsolatok; ennél a motívumnál még nincs ilyen.
+
 *Ez a blokk a `[ID: ALVIL-001]` motívum kapcsolat-sorait fedné a `kapcsolatok.tsv`-ből; 0 sor.*
 
 Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
@@ -1174,6 +1274,8 @@ A motívumhoz nincs rögzített kapcsolat.
 ## 5/b. Kapcsolódó motívumok
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-10-29 -->
+
+**Mit mutat ez a rész?** Azok a más motívumok, amelyekkel ez a motívum kapcsolatban áll. Ugyanez a sor a másik motívum lapján is megjelenik.
 
 *Ez a blokk a `[ID: ALVIL-001]` motívum motívumközi kapcsolatait adja a `motivum_kapcsolatok.tsv`-ből (minden sor mögött beépített motívumközi jelölt áll, DT277); a sor mindkét érintett motívum lapján megjelenik.*
 
@@ -1235,6 +1337,8 @@ A TR/Byzantinus hagyomány eltérő olvasatáról szóló állítás nem a helyi
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#idezes | forrás:  | licenc: minden jog fenntartva | ts=2026-10-29 -->
 
+**Mit mutat ez a rész?** Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból készült.
+
 *Ez a blokk a `[ID: ALVIL-001]` motívum hivatkozási adatait, a ténylegesen felhasznált szótárakat (teljes névvel, forrásfájlonként) és az adatforrásokat adja (G9, LEXV2_3-ig szűkítve).*
 
 **Hogyan hivatkozz:**
@@ -1288,6 +1392,8 @@ A TR/Byzantinus hagyomány eltérő olvasatáról szóló állítás nem a helyi
 ## Kolofon
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kolofon | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/1-samuel.tsv, konkordancia/LXX_OS/2-samuel.tsv, konkordancia/LXX_OS/amos.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/ecclesiastes.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/hosea.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/jonah.tsv, konkordancia/LXX_OS/numbers.tsv, konkordancia/LXX_OS/proverbs.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/song-of-solomon.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-10-29 -->
+
+**Mit mutat ez a rész?** A lap technikai adatai: a motívum azonosítója és állapota, és minden forrás, amelyből a lap készült.
 
 *Ez a blokk a `[ID: ALVIL-001]` motívum törzsadatait (`motivumok.tsv`) és a lexikon-oldalon ténylegesen felhasznált forrásokat sorolja fel.*
 
