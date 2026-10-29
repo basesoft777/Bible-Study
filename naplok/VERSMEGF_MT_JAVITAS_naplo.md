@@ -90,3 +90,11 @@ Javaslat: **csak a Jóel 26 sora** (Károli 2:28–3:21 → MT 3:1–4:21, `KEZI
 - **Új „fordításra vár”: 1** (előtte 0). A H7121 `006562001006000` definíciója a Jóel 3:5-ön most először kerül a lapra, és nincs magyar sora az `adat/forditasok.tsv`-ben. Lefordítása a #121 csatornájába tartozik (DT-F121 szójegyzék és kapuk); itt nem fordítok: N-F146b.
 
 Proveniencia: `scope=lexikon/*_TUDOMANYOS.md (8 lap) | forras=eszkozok/general.py --cel lexikon (régi tábla: git show 0a245b4e, új tábla: F146.2) | ts=2026-10-29`
+
+## 8. A main második beolvasztása (F146.5)
+
+- A main újra beolvasztva (F38 11. adag, PR #501, `adat/forditasok.tsv`), ütközés nélkül.
+- Az ISTENTISZT-001 a beolvasztott állapoton a repón kívülre generálva (`general.py --cel lexikon --id ISTENTISZT-001`): az élő laptól **csak az időbélyegekben** tér el, tartalmi különbség nincs. Az élő lapot ezért nem írom újra; a lap a mai main-adatokkal is naprakész.
+- A PR #502 (a lap ⓘ-jeinek névelő-javítása) is az ISTENTISZT-001-et írja. Amelyik később kerül a main-re, annak az ágán kell újragenerálni a lapot (`general.py --cel lexikon --id ISTENTISZT-001`, majd összevetni). A két változás más-más sort érint: a #146 a Jóel 2:32 sorát, a #502 a ⓘ-lábjegyzeteket.
+
+Proveniencia: `scope=lexikon/ISTENTISZT-001_TUDOMANYOS.md | forras=eszkozok/general.py --cel lexikon --id ISTENTISZT-001 (a main 17bb2e06 beolvasztása után) | ts=2026-10-29`
