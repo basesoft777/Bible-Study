@@ -601,7 +601,7 @@ def ubs_dbh_szo(con, h):
     hu = {(e, m): f for e, m, f in con.execute(
         "SELECT entry_id, mezo, forditas_hu FROM forditasok WHERE szotar='UBS_DBH' AND strong=? AND forditas_hu <> ''", (h,))}
     ki, lat = [], set()
-    for lex, dom, df, gl in con.execute('SELECT lexid, domen, definicio_rovid, glosszak FROM ubs_dbh_jelentesek WHERE strong=? ORDER BY lexid', (h,)):
+    for lex, dom, df, gl in con.execute('SELECT lexid, domen, definicio_rovid, glosszak FROM ubs_dbh_jelentesek WHERE strong=? ORDER BY lexid, rowid', (h,)):   # lexidenként az első sor = a fájlsorrend szerinti (ez a hash forrása is)
         if lex in lat:
             continue
         lat.add(lex)
