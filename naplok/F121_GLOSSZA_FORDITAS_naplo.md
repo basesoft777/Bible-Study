@@ -164,3 +164,13 @@ Tesztek: `teszt_forditas_kapuk` 110 OK, `teszt_szerepmatrix` 44 OK, `teszt_szota
 **Visszamenőleges felmérés (DT242): 3 tétel** (`naplok/F121_GLOSSZA_FORDITAS_visszamenoleges.tsv`), mind más sorokat érint, a tábla nem íródott: 2× Thayer G1941 `teljes` (az archivált `kezi` sor „melléknéven nevezni” / „nevet tenni valakire”; a DT379 (a) szerint archív, a gerinc a `sz<n>` sorokból dolgozik) és 1× BDB H3068 `teljes` (a forrás „deity”, a magyar „istennév”). Javaslat: egyik sem változik (az archív sor nem kerül a lapra; a H3068 „istennév” a Jahve-névre pontosabb).
 
 **Szójegyzék-javaslat (DT240):** `naplok/F121_GLOSSZA_FORDITAS_szojegyzek_javaslat.tsv`: 436 angol kulcs, amely a gyorsítótárban többféle magyar alakot kapott (a legtöbb szótövezési/formai eltérés: névelő, ragozás). A `terminologia.tsv`-be csak jóváhagyott sor kerül; új sor nem javasolt.
+
+
+## 11. F121.13 — a H8034 `authority` sora (DT-F121j, 2026-10-29)
+
+*Felhasználó, 2026-10-29 (az orkesztrátor chatjében): „Igen, hatalom” — a 9 kézi ítéletű sorból a H8034 `007442001002000` a szójegyzék szerint változik, a többi 8 és a visszamenőleges 3 tétel marad.*
+
+- **`glosszak_hu`:** régi „név; felhatalmazás” → új „név; hatalom” (forrás: „name; authority”).
+- **`definicio_hu`:** régi „szó szerint: név; innen: = olyan állapot, amelyben valaki másvalaki felhatalmazásával jár el” → új „szó szerint: név; innen: = olyan állapot, amelyben valaki másvalaki hatalmával jár el” (forrás: „literally: name; hence: = state in which someone acts with the authority of someone else”).
+- Mindkét sor átment a gátló kapukon; a `forras_hash` változatlan (a forrás ugyanaz), a régi szöveg a `megjegyzes` mezőben is áll. Mankó: a szójegyzék most `egyezik` (2 elem), a BDB-tő (`hata`) egyezik; a Károli-alakok között a „hatalom” tő nincs (a H8034 Károli-alakjai a „név” ragozott alakjai), ez a rangsor szerint (szójegyzék > Károli) a felhasználó döntésével lezárt.
+- A 8 megmaradt „kézi ítéletű” sor (a mankó `kezi_iteletre` oszlopa) a felhasználó döntése szerint változatlan: `naplok/F121_GLOSSZA_FORDITAS_manko.tsv`.

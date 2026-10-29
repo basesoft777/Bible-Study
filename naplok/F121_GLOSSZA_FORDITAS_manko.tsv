@@ -36,8 +36,8 @@ UBS_DBH	H7121	006562002006000	—	definicio_hu	szó szerint: találkozni; innen:
 UBS_DBH	H7121	006562002007000	—	glosszak_hu	szemben	egyezik: 1 elem egyezik	egyezik: szem×3	egyezik: szem	egyezik
 UBS_DBH	H7121	006562002007000	—	definicio_hu	szó szerint: találkozni; innen: = olyan állapot, amelyben két élettelen tárgy egy bizonyos helyen egymással szemben van	nem_glossza: 	egyezik: talá×5	egyezik: talá	egyezik
 UBS_DBH	H8034	007442001001000	—	glosszak_hu	név	egyezik: 1 elem egyezik	nincs_ellenorzendo: 	nincs_ellenorzendo: 	egyezik
-UBS_DBH	H8034	007442001002000	—	glosszak_hu	név; felhatalmazás	utkozik: authority: a tábla hatalom×1, a sor név; felhatalmazás	nem_talal: a Strong leggyakoribb Károli-alakjai: neve×183, nevét×152, nevében×43, nevedet×39, nevemet×31, neved×27	nem_talal: a vizsgált tövek: felh	kezi_iteletre: szojegyzek,karoli,bdb
-UBS_DBH	H8034	007442001002000	—	definicio_hu	szó szerint: név; innen: = olyan állapot, amelyben valaki másvalaki felhatalmazásával jár el	nem_glossza: 	nincs_ellenorzendo: 	nincs_ellenorzendo: 	egyezik
+UBS_DBH	H8034	007442001002000	—	glosszak_hu	név; hatalom	egyezik: 2 elem egyezik	nem_talal: a Strong leggyakoribb Károli-alakjai: neve×183, nevét×152, nevében×43, nevedet×39, nevemet×31, neved×27	egyezik: hata	kezi_iteletre: karoli
+UBS_DBH	H8034	007442001002000	—	definicio_hu	szó szerint: név; innen: = olyan állapot, amelyben valaki másvalaki hatalmával jár el	nem_glossza: 	nincs_ellenorzendo: 	nincs_ellenorzendo: 	egyezik
 UBS_DBH	H8034	007442001003000	—	glosszak_hu	név; hírnév; megítélés	egyezik: 1 elem egyezik	egyezik: hírn×4	egyezik: hírn	egyezik
 UBS_DBH	H8034	007442001003000	—	definicio_hu	szó szerint: név; innen: = az a közismert információ egy személyről vagy istenségről, amely lehet jó vagy rossz, és közvetlen hatással van arra, hogyan tekintenek erre a személyre vagy istenségre	nem_glossza: 	nincs_ellenorzendo: 	nincs_ellenorzendo: 	egyezik
 UBS_DBH	H8034	007442001004000	—	glosszak_hu	név; önmaga	egyezik: 1 elem egyezik	nem_talal: a Strong leggyakoribb Károli-alakjai: neve×183, nevét×152, nevében×43, nevedet×39, nevemet×31, neved×27	nem_talal: a vizsgált tövek: önma	kezi_iteletre: karoli,bdb
