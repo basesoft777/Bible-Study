@@ -10,7 +10,8 @@ Alparancsok:
   f108    <ID>  — a törzs (elofordulasok + jeloltek) összevetése a #108 eltérés-táblájával és a mai scannel
   szotar  <ID>  — szótári sorok a motívum Strongjaihoz, szerepenként (adat/szotar_szerepek.tsv), és a
                   hiányzó fordítások listája (a generátor forditasok.tsv-kulcsai szerint)
-  proza   <ID>  — próza-lefedettség: az előfordulások megnevezése a kézi forrásban és a lexikonoldal réseiben
+  proza   <ID> [--archiv] — próza-lefedettség: az előfordulások megnevezése a kézi forrásban és a lexikonoldal réseiben
+                  (--archiv: a migráció előtti tanulmány és napló archív példánya a bemenet)
   seol    —       az ALVIL-001 2e. 4. scanje: halál/sír + kiáltás az Úrhoz, H7585 nélkül
 
 TSV-olvasás split('\\t') (lekerdez.read_tsv); a csv modul tilos (CLAUDE.md).
@@ -446,10 +447,16 @@ def cmd_szotar(mid):
 IGEHELY_RE = None
 
 
+# F123.ALVIL.J19 (ELLENOR_F123_ALVIL-001_2 ELTÉRÉS-1): a próza nem csak a normalizáló tábla magyar rövidítését írja
+# („Mát 11:23”, „Mat 11:23”, „Máté 11:23”, „Lukács 10:15”, „Csel 2:31”); a számláló ezeket a tábla kulcsára képezi.
+KONYV_ALIAS = {'Máté': 'Mt', 'Mát': 'Mt', 'Mat': 'Mt', 'Márk': 'Mk', 'Lukács': 'Luk', 'János': 'Ján', 'Csel': 'ApCsel',
+               'Jelenések': 'Jel'}
+
+
 def igehely_re():
     """Igehely-említések: 'Könyv f:v' és a folytatólagos ', v' / '; f:v' alakok a könyvnév öröklésével."""
     _, hu2step = L.book_tables()
-    konyvek = sorted(hu2step, key=len, reverse=True)
+    konyvek = sorted(set(hu2step) | set(KONYV_ALIAS), key=len, reverse=True)
     kp = '|'.join(re.escape(k) for k in konyvek)
     return re.compile(r'(?<![\w])(%s)\.?\s*(\d+)\s*[:,]\s*(\d+)((?:\s*[-–]\s*\d+)?(?:\s*[,.]\s*\d+(?![:\d\w]))*)' % kp)
 
@@ -457,7 +464,7 @@ def igehely_re():
 def emlitesek(szoveg, rx):
     ki = Counter()
     for m in rx.finditer(szoveg):
-        konyv, f, v, tobb = m.group(1), int(m.group(2)), int(m.group(3)), m.group(4) or ''
+        konyv, f, v, tobb = KONYV_ALIAS.get(m.group(1), m.group(1)), int(m.group(2)), int(m.group(3)), m.group(4) or ''
         ki['%s %d:%d' % (konyv, f, v)] += 1
         for t in re.findall(r'[,.]\s*(\d+)', tobb):
             ki['%s %d:%d' % (konyv, f, int(t))] += 1
@@ -468,16 +475,26 @@ def emlitesek(szoveg, rx):
     return ki
 
 
-def cmd_proza(mid):
+# F123.ALVIL.J19: az első mérés (2026-10-29T09:53Z) bemenete a migráció előtti tanulmány és napló volt; ma az archívumban áll
+ARCHIV_FORRAS = {'ALVIL-001': ['archivum/ALVIL-001/Hadesz_Seol_tematikus.md',
+                               'archivum/ALVIL-001/Hadesz_Seol_kereszthivatkozas_naplo.md']}
+
+
+def cmd_proza(mid, archiv=False):
     """A felmérés („A mai próza a lexikonfájlban”) módszere a nem migrált motívumra: a kézi próza a forrásfájlok
     RÉS-KEZDET/VÉGE blokkjai (a lexikonoldal réseinek törzse, CLAUDE.md), a kézi adatmező az előfordulás-sor
-    `kapcsolodas` + `funkcio` mezője; mellette a tanulmány és a napló egésze és a generált lexikonoldal."""
+    `kapcsolodas` + `funkcio` mezője; mellette a tanulmány és a napló egésze és a generált lexikonoldal.
+    `archiv`: a migráció előtti tanulmány és napló (az archív példány) a bemenet, az első méréssel azonos körben."""
     E, _ = motivum_sorok(mid)
     rs = [r for r in L.read_tsv_skip_comments(ROOT / 'adat' / 'res_forras.tsv') if r['id'] == mid]
     m = {r['id']: r for r in L.read_tsv_skip_comments(ROOT / 'adat' / 'motivumok.tsv')}[mid]
-    tan = ROOT / [v for v in m.values() if isinstance(v, str) and v.endswith('.md')][-1]
-    naplo_ut = sorted({r['tanulmany'] for r in rs if r['forras'] == 'tanulmany'} - {tan.relative_to(ROOT).as_posix()})
-    fajlok = [tan] + [ROOT / x for x in naplo_ut]
+    if archiv:
+        fajlok = [ROOT / x for x in ARCHIV_FORRAS[mid]]
+        tan = fajlok[0]
+    else:
+        tan = ROOT / [v for v in m.values() if isinstance(v, str) and v.endswith('.md')][-1]
+        naplo_ut = sorted({r['tanulmany'] for r in rs if r['forras'] == 'tanulmany'} - {tan.relative_to(ROOT).as_posix()})
+        fajlok = [tan] + [ROOT / x for x in naplo_ut]
     lex = ROOT / 'lexikon' / ('%s_TUDOMANYOS.md' % mid)
     rx = igehely_re()
     res_rx = re.compile(r'<!-- RÉS-KEZDET: (\w+) -->(.*?)<!-- RÉS-VÉGE: \1 -->', re.S)
@@ -697,7 +714,7 @@ def main():
     elif cmd == 'szotar':
         cmd_szotar(sys.argv[2])
     elif cmd == 'proza':
-        cmd_proza(sys.argv[2])
+        cmd_proza(sys.argv[2], archiv='--archiv' in sys.argv[3:])
     elif cmd == 'seol':
         cmd_seol()
     elif cmd == 'seol_ablak':
