@@ -104,3 +104,73 @@ Tesztek: `teszt_forditas_kapuk` 110 OK, `teszt_szerepmatrix` 44 OK, `teszt_szota
 - **006562001009000.** Angol: „literally: to cry out (someone's) name (something); hence: = action by which humans assign a name to a person or place”. A „(something)” a „cry out … name” második tárgya, ezért a fordítás: „szó szerint: valakinek a nevét kiáltani (valamit); …” (korábban: „valakinek (valaminek) a nevét kiáltani”, ami a „(something)”-et birtokosnak olvasta).
 - **007442001001000.** Angol: „…is known, addressed, remembered, or referred to”. „remembered” → „emlékeznek rá” („emlegetnek” helyett): „…ismernek, megszólítanak, emlékeznek rá, vagy amellyel rá utalnak; …”.
 - **007442001004000.** Angol: „the core of one's identity, which reflect the essence of one's being”. „azonosságának magja” (a v4 sor szerint) és „létének lényegét”: „…= az ember azonosságának magja, amely létének lényegét tükrözi”.
+
+## 7. F121.7 — az UBS-csomag: mérés és tervezet (2026-10-29)
+
+*Új ág: `claude/f121-ubs-csomag` az origin/main-ről (8e3d71a3; a PR #499 mergelve). A jóváhagyás: DT-F121g (idézetek a `DONTESEK.md`-ben).*
+
+**Hiányzó egységek.** `konkordancia/UBS_DBH_jelentesek.tsv` H7121: 19 lexid, H8034: 5 lexid = 24 lexid; a gyorsítótárban 5 DBH-definíció van (F121.2), glossza egy sem. Hiányzik: 24 `glosszak_hu` + 19 `definicio_hu` = 43; az UBS DNTG G1941-ből a 56.15 `definicio_hu` (a `glosszak_hu` az F121.2 óta megvan) = **44 egység**. Tervezet: `naplok/F121_ubs_csomag_tervezet.tsv` (a generáló szkript `naplok/F121_ubs_csomag_tervezet.py`); mind a 44 átment a gátló kapukon.
+
+**A G1941 kézi sorai v4-kapuval (átírás nélkül).** Nem négy, hanem 6 `kezi` (2026.09.22) sor van (33.131, 33.176, 11.28, mindhárom `definicio_hu` + `glosszak_hu`). Eredmény: 5 ÁTMENT; **1 bukik**: 33.131 `definicio_hu` („valakiről szólva megjelölést (címet, jelzőt) alkalmazni”) a `4_formazas` kapun — „több nyitó zárójel a fordításban (1), mint a forrásban (0)” (a zárójeles pontosítás a fordító hozzátétele a „to use an attribution in speaking of a person” mondathoz). A sor a kérésnek megfelelően érintetlen; a kézi ítélet a felhasználóé.
+
+**Szónézet (mérés, kód: `eszkozok/olvaso_szerver/blokkok.py`, `lekerdezesek.py`).**
+- `/szo/G1941`: a `szo.magyar_gorog` blokk (`q.magyar_gorog`) a `forditasok` tábla `Thayer` és `UBS_DNTG` sorait mutatja `forditas_hu <> ''` szűréssel, tehát az új magyar UBS DNTG-sorokat a `pardes.db` újraépítése után automatikusan; hiányosság: a lekérdezés a `mezo`-t nem adja vissza, ezért a `definicio_hu` és a `glosszak_hu` sor azonos „UBS_DNTG, 56.15. jelentés” címmel jelenik meg (két fejléc). A `szo.ubs_dntg` blokk angol.
+- `/szo/H7121`, `/szo/H8034`: **nincs** UBS DBH blokk a szó-lapon (sem angol, sem magyar): az UBS DBH csak a `vers.ubs` és a `szo.ebben` (versszintű, angol) blokkban látszik. A magyar sorok bekötéséhez új `szo.ubs_dbh` blokk kell (`szo_h`): a Strong összes DBH-jelentése (`ubs_dbh_jelentesek`), a magyar glossza és definíció a `forditasok`-ból (`szotar='UBS_DBH'`), angol mellette.
+- Ez egy új blokk + egy lekérdezés + teszt, nem nagy átalakítás; a szerver tesztjei csak `eszkozok/teszt_futtat.py`-val futnak.
+
+**⛔ A tervezet jóváhagyásra vár** (a `naplok/F121_ubs_csomag_tervezet.tsv` 44 sora); rögzítés, lap- és szerver-módosítás ezután.
+
+## 8. F121.8 — rögzítés, lap, szónézet (2026-10-29)
+
+*Jóváhagyás: DT-F121h (idézet a `DONTESEK.md`-ben).*
+
+- **Rögzítés** (`naplok/F121_ubs_csomag_rogzit.py`): +44 sor az `adat/forditasok.tsv`-ben (`UBS_DBH` 43, `UBS_DNTG` G1941 56.15 `definicio_hu` 1), `allapot=sonnet`, `modell=claude-sonnet-5-5`, `terminologia_verzio=v4`, `forras_hash` a forrásszövegből. Írás előtt-után: a meglévő sorok bájtra azonosak, kivéve a G1941 33.131 `definicio_hu` sorát (1 törölt + 1 beszúrt sor a diffben, a 44 új sor a végén). 43 sor átment a kapukon; **1 bukott**: `UBS_DBH H7121 006562002003000 glosszak_hu` „(valakire) hozni (eseményt)” a `4_formazas` kapun („több nyitó zárójel a fordításban (2), mint a forrásban (1)”) — kézi ítélet: a felhasználó a szöveget kifejezetten jóváhagyta (`naplok/F121_GLOSSZA_FORDITAS_bukottak.tsv`).
+- **A G1941 33.131 `definicio_hu`.** Forrás: „to use an attribution in speaking of a person”. Régi (`kezi`, 2026.09.22): „valakiről szólva megjelölést (címet, jelzőt) alkalmazni”. Új (`sonnet`): „valakiről szólva megnevezést alkalmazni” (a kapukon átment; a régi szöveg a `megjegyzes` mezőben is áll).
+- **A lap.** Az „UBS-jelentés” oszlop mindkét nyelven a kódot és a rövid glosszát adja, mellette ⓘ a szónézetre (`ubs_glossza_cella`, `eszkozok/lexikon_general.py`); a lábjegyzet szövege ennek megfelelően. A „2. Szótári háttér” mutatói változatlanok. A `(fordításra vár)` a lapon 1 maradt (a magyarázó lábjegyzet).
+- **A szónézet.** Új `szo.ubs_dbh` blokk (`szo_h`; `q.ubs_dbh_szo`): a Strong összes DBH-jelentése, magyar glossza és definíció a `forditasok`-ból, az angol mellette, hiány kimondva. A `szo.magyar_gorog` a `mezo`-t is visszaadja, így a UBS DNTG glossza és definíció külön címet kap. Teszt: `eszkozok/olvaso_szerver/teszt_ubs_dbh.py` (hermetikus, 6 teszt), a jelleg-teszt (`teszt_olvaso_szerver.py`), a próba-konfig (`hozzaferes_proba.toml`) és a `teszt_szintek.py` `HEBER_ZART` bővítve.
+- **Régi tesztek igazítása.** `teszt_szotari_gerinc.py`: a Jóel 2:32 a #146 óta hivatkozik a DBH-ban (MT Jóel 3:5), ezért a „nincs hivatkozás” teszt az Ézs 7:11-re (H7585) állt át; `teszt_szerepmatrix.py`: az 5. szerep a H7121/H8034 minden jelentésére már magyar, a „fordításra vár” elvárás helyett az annak hiánya áll.
+
+## 9. F121.11 — az ELLENOR_F121_2 javítókör (2026-10-29)
+
+`naplok/ELLENOR_F121_2.md`. **(3)** `q.ubs_dbh_szo`: `ORDER BY lexid, rowid` (determinisztikus „első sor”, azonos a hash forrásával). **(1) Nyitott:** a 44 sorra a szójegyzék-gyűjtő (DT240), a visszamenőleges felmérés (DT242) és a Károli-adatblokk (E9) nem futott, elengedésük a 44-re nincs kimondva; a felhasználó a tervezetet soronként látta és javította. **(2) Hatás más lapokra:** a `ubs_glossza_cella` (kód + glossza + ⓘ) minden lap UBS-celláját érinti a következő generáláskor; az ISTENTISZT-001-en kívül más lap ebben a menetben nem íródott, a többi lap újragenerálása a #36 dolga.
+
+
+## 10. F121.12 — a mankók a 44 új és a cserélt sorra (2026-10-29)
+
+*Döntés: DT-F121i („nem engedem el”). Eszköz: `eszkozok/glossza_lexikon_forditas.py manko | szojegyzek | visszamenoleges` (teszt: `eszkozok/teszt_glossza_lexikon_forditas.py`, 10 teszt). A mankó javasol, nem ír át. Soronkénti napló: `naplok/F121_GLOSSZA_FORDITAS_manko.tsv` (45 sor: a 44 új + a G1941 33.131).*
+
+**Módszer (rangsor: szójegyzék > Károli > BDB > a szótár szövege, DT239).**
+- *Szójegyzék/egyenérték (DT238, DT240):* az angol glosszaelemeket a gyorsítótár már elfogadott párjaival veti össze (UBS_DNTG glosszák elemenként, TBESH-glosszák `fo=igen`, v1–v4 terminológia). `egyezik` / `utkozik` / `nincs_adat`.
+- *Károli-adatblokk (E9):* a Strong (és a lexidet osztó testvér-Strongok, pl. H7121/H7122/H7125) Károli-alakjai az `adat/karoli_strong/parok_*.tsv`-ből; a magyar glossza (definíciónál a „szó szerint: …” rész) tövei az alakok között. `egyezik` / `nem_talal`.
+- *BDB-egyezés (3. szint):* ugyanezek a tövek a Strong(ok) BDB-magyar szövegében.
+- *Visszamenőleges (DT242):* a tiltott minták és a `deity → istenség` a teljes gyorsítótáron, tételes javaslat (`…_visszamenoleges.tsv`).
+
+**Eredmény: 36 sor mindhárom mankón egyezik vagy nem releváns, 9 sor kézi ítéletre áll meg** (egyik sem íródott át):
+
+| lexid · mező | rögzített | mit jelez a mankó | javaslat |
+|---|---|---|---|
+| H7121 001003000 glossza | híresnek lenni | Károli: nem találja (a Strong alakjai: nevezé, kiálta…); BDB egyezik (híre) | marad |
+| H7121 001005000 glossza | kihirdetni; kihirdetést tenni | Károli: nem találja; szójegyzék és BDB egyezik | marad |
+| H7121 001011000 glossza | (istenséget) elismerni | Károli: nem találja; BDB egyezik (istenség); v4 | marad |
+| H7121 002002000 glossza | (valakivel) megtörténni | Károli és BDB: nem találja | marad (alternatíva: „megesni”) |
+| H7121 002003000 glossza | (valakire) hozni (eseményt) | Károli: nem találja; BDB egyezik; a felhasználó jóváhagyta | marad |
+| H7121 002004000 glossza | megtörténni | Károli és BDB: nem találja | marad (alternatíva: „megesni”) |
+| H7121 002006000 glossza | keresni | Károli és BDB: nem találja | marad |
+| H8034 001002000 glossza | név; felhatalmazás | **szójegyzék ütközik:** `authority` → `hatalom` (1 DNTG-adatpont); Károli és BDB: nem találja | A: marad (a „valaki más felhatalmazásával jár el” értelemben pontosabb) · B: „név; hatalom” (nyelvközi egység, DT238) — ajánlás: A |
+| H8034 001004000 glossza | név; önmaga | Károli és BDB: nem találja a „önmaga” tövet | marad (alternatíva: „név; személy”) |
+
+**Hogyan olvasd:** a Károli- és BDB-„nem találja” itt a szóhasználat hiányát jelenti az adott Strong(ok) összes helyén, nem hibát: ezek ritka, szó szerinti vagy átvitt (Niph'al, Hif'il, QAL II) jelentések, a Károli más szót használ. A szójegyzéki ütközés egyedül a H8034 `authority` sora. **Egyezik:** pl. H7121 001001000 (kiáltani), 001008000/001009000 (nevezni; nevet adni), 002001000 (találkozni, a testvér-Strong BDB-szövegével), a H8034 001001000 (név), 001003000 (név; hírnév; megítélés) és a G1941 33.131 `definicio_hu` (leíró, nincs ellenőrizendő szó).
+
+**Visszamenőleges felmérés (DT242): 3 tétel** (`naplok/F121_GLOSSZA_FORDITAS_visszamenoleges.tsv`), mind más sorokat érint, a tábla nem íródott: 2× Thayer G1941 `teljes` (az archivált `kezi` sor „melléknéven nevezni” / „nevet tenni valakire”; a DT379 (a) szerint archív, a gerinc a `sz<n>` sorokból dolgozik) és 1× BDB H3068 `teljes` (a forrás „deity”, a magyar „istennév”). Javaslat: egyik sem változik (az archív sor nem kerül a lapra; a H3068 „istennév” a Jahve-névre pontosabb).
+
+**Szójegyzék-javaslat (DT240):** `naplok/F121_GLOSSZA_FORDITAS_szojegyzek_javaslat.tsv`: 436 angol kulcs, amely a gyorsítótárban többféle magyar alakot kapott (a legtöbb szótövezési/formai eltérés: névelő, ragozás). A `terminologia.tsv`-be csak jóváhagyott sor kerül; új sor nem javasolt.
+
+
+## 11. F121.13 — a H8034 `authority` sora (DT-F121j, 2026-10-29)
+
+*Felhasználó, 2026-10-29 (az orkesztrátor chatjében): „Igen, hatalom” — a 9 kézi ítéletű sorból a H8034 `007442001002000` a szójegyzék szerint változik, a többi 8 és a visszamenőleges 3 tétel marad.*
+
+- **`glosszak_hu`:** régi „név; felhatalmazás” → új „név; hatalom” (forrás: „name; authority”).
+- **`definicio_hu`:** régi „szó szerint: név; innen: = olyan állapot, amelyben valaki másvalaki felhatalmazásával jár el” → új „szó szerint: név; innen: = olyan állapot, amelyben valaki másvalaki hatalmával jár el” (forrás: „literally: name; hence: = state in which someone acts with the authority of someone else”).
+- Mindkét sor átment a gátló kapukon; a `forras_hash` változatlan (a forrás ugyanaz), a régi szöveg a `megjegyzes` mezőben is áll. Mankó: a szójegyzék most `egyezik` (2 elem), a BDB-tő (`hata`) egyezik; a Károli-alakok között a „hatalom” tő nincs (a H8034 Károli-alakjai a „név” ragozott alakjai), ez a rangsor szerint (szójegyzék > Károli) a felhasználó döntésével lezárt.
+- A 8 megmaradt „kézi ítéletű” sor (a mankó `kezi_iteletre` oszlopa) a felhasználó döntése szerint változatlan: `naplok/F121_GLOSSZA_FORDITAS_manko.tsv`.
