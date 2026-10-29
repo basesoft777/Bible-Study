@@ -474,6 +474,18 @@ class E5CimAtszamozasTeszt(unittest.TestCase):
         self.assertEqual(len(SZ._tenylegesen_torolt_cimsorok(
             ['### 1 A'], ['## 1 A'])), 1)
 
+    def test_helyorzo_veglegesre_csereje_nem_torles(self):
+        self.assertEqual(SZ._tenylegesen_torolt_cimsorok(
+            ['### 2026-10-29 DT-F131q — N-F131a és N-F131b lezárva',
+             '## 3. Döntés (DT-F124a)'],
+            ['### 2026-10-29 DT406 — N62 és N63 lezárva',
+             '## 3. Döntés (DT403)']), [])
+
+    def test_helyorzo_csere_mellett_szovegvaltozas_torles(self):
+        self.assertEqual(SZ._tenylegesen_torolt_cimsorok(
+            ['## 3. Döntés (DT-F124a)'], ['## 3. Határozat (DT403)']),
+            ['## 3. Döntés (DT-F124a)'])
+
 
 class D8DiffHatokorTeszt(unittest.TestCase):
     """D8: a HIBA csak a diff altal hozzaadott sorra vonatkozik, a fajl

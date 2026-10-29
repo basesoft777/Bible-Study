@@ -969,3 +969,4 @@ A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá
 * TAHOT teljes korpuszos frissscan — nem hozott új igehelyet; a Zsolt 116:4,13,17 hármas kiderült, hogy már 2026.09.05 óta a hivatalos 17 igehelyes listában szerepel
 
 2026.09.05 és korábbi: l. `Atadasi_dokumentum_2026_09_07_TELJES.md` 1–2. pontja (3/b és 3/c terv, ISTENTISZT-001 v12-compliance és motívum-ID átnevezés).
+* N-F121c — a fordítási kapuk 11. (könyvnév-) kapuja forrásoldalon nem ismeri a `Matthew`, `Revelation`, `Romans` alakot, sem a pontozott `Mat.`, `Rev.`, `Luk.`, `Act.` alakot (TBESG), ezért a hivatkozásokat jól fordító sorok is bukhatnak (ALVIL-001 menet: TBESG G0086, tW `kt/hades`, `kt/hell`, `other/tomb`; kézi egyeztetés: `naplok/F121_ALVIL_forditas_bukottak.tsv`). *(ÚJ, F121.14; az orkesztrátor 2026-10-29: rögzítendő nyitott tételként, javítás nélkül)* Javítás: az alias-tábla (`normalizal.FORRAS_ALIAS`) bővítése és a pontozott forma felismerése.
