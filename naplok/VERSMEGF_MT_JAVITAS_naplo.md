@@ -77,3 +77,14 @@ Javaslat: **csak a Jóel 26 sora** (Károli 2:28–3:21 → MT 3:1–4:21, `KEZI
 - Fogyasztó: `lexikon_general.karoli_mt_vers('Jóel 2:32')` → `Jóel 3:5` (előtte `Jóel 2:32`); a `Jóel 2:27` változatlan.
 - DT209: az új sorok ugyanazt a `KEZI` + kitöltött `igehely_mt` kombinációt hordozzák, amelyen a `sqlite_epit` F117.5-őre már most is leáll (174 F117-sor). Új blokkolást nem okoznak; a `bsb_import` és a `sqlite_epit` javítása továbbra is az N-F117a hatóköre.
 - A többi eltérés: N-F146a (`NYITOTT_FELADATOK.md`).
+
+## 7. Az ISTENTISZT-001 lap újragenerálása (F146.3, DT-F146a)
+
+- A main beolvasztva (7347b950; a PR #500 N-F127a/N-F65b/N59/N60 lapírása is benne van), ütközés nélkül.
+- Nulladiff (repón kívül, a scratchpadben): a 8 lexikonlap a mai generátorral, a #146 előtti táblával (0a245b4e) és az újjal. **7 lap bájtra azonos, csak az ISTENTISZT-001 tér el, abban is egyetlen sor: a Jóel 2:32.**
+- Az élő lap a #146 előtti táblával generált változattól csak az időbélyegekben (16 sor) és a sorvégekben tér el, tartalmi elmaradása nincs.
+- Éles írás: `general.py --cel lexikon --id ISTENTISZT-001` a repón kívülre (bájtra azonos a teljes futás lapjával), majd a lexikon/ alá másolva. A diff 17 sor: 16 időbélyeg és a Jóel 2:32.
+- Eredmény: a Jóel 2:32 DBH-oszlopa a „nincs DBH-hivatkozás: keresett MT-vers: Jóel 2:32” helyett a H7121 két egységét (`006562001006000`, `006562001011000`) és a H8034 egységét (`007442001001000`) mutatja, mindegyiket `(MT: Jóel 3:5)` jelöléssel.
+- **Új „fordításra vár”: 1** (előtte 0). A H7121 `006562001006000` definíciója a Jóel 3:5-ön most először kerül a lapra, és nincs magyar sora az `adat/forditasok.tsv`-ben. Lefordítása a #121 csatornájába tartozik (DT-F121 szójegyzék és kapuk); itt nem fordítok: N-F146b.
+
+Proveniencia: `scope=lexikon/*_TUDOMANYOS.md (8 lap) | forras=eszkozok/general.py --cel lexikon (régi tábla: git show 0a245b4e, új tábla: F146.2) | ts=2026-10-29`
