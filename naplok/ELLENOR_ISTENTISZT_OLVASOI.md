@@ -35,7 +35,9 @@ ELTÉRÉS: 7 tétel
 | (8) tesztek | NEM ELLENŐRIZHETŐ | – | szerepkorlát |
 | CI-jelentés | NEM ELLENŐRIZHETŐ | – | a saját futás E28 HIBA-ja a nem commitolt munkakönyvtárból jött |
 
-## A végrehajtó válasza (DT-F131x)
+## A végrehajtó válasza
+
+Döntés: DT-F131x.
 
 1. Javítva: a „jogi fellebbezés” minta sorrendje 25 (a 30 elé); teszt: `teszt_szerep_kizart` (SEMA 2.43).
 2. Javítva: a héber 6. sor és bevezető kimondja, hogy a motívum görög szavának egyezését méri.

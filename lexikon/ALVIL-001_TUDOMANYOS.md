@@ -622,7 +622,7 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 | Igehely | Miért lett jelölt | Döntés és indok |
 |---|---|---|
-| 1Kor 15:55 | a kereszthivatkozás-napló kutatói minősítése[^k4] | **elutasítva** — egyéb: a kritikai szövegkiadás mindkét tagmondatban θάνατος (thanatosz)-t hoz; a TR/Byzantinus-alapú Károli-olvasat eltérése szövegkritikai kérdés, nem a jelen scan tárgya — dokumentálva, nem hallgatólagosan kihagyva |
+| 1Kor 15:55 | a kereszthivatkozás-napló kutatói minősítése[^k4] | **elutasítva** — egyéb: a kritikai szövegkiadás mindkét tagmondatban θάνατος-t (thanatosz) hoz; a TR/Byzantinus-alapú Károli-olvasat eltérése szövegkritikai kérdés, nem a jelen scan tárgya — dokumentálva, nem hallgatólagosan kihagyva |
 | Mt 16:18 | a kereszthivatkozás-napló kutatói minősítése[^k5] | **elutasítva** — egyéb: ekkleziológiai kontextus (az egyház legyőzhetetlensége), tartalmilag nem kapcsolódik a jelen tanulmány tárgyához (halál/feltámadás-tipológia) — külön motívumként kezelendő, ha sorra kerül |
 
 **Negatív kritérium** (`motivumok.tsv`): az igehelynek a שְׁאוֹל (seól) gyököt (ÚSZ-ben az LXX-közvetített ᾍδης (hadész) megfelelőjét) kell tartalmaznia — a תְּהוֹם (tehóm) / ἄβυσσος (abüsszosz) szócsalád explicit kizárva (kozmikus, nem egyéni-halotti fogalom, l. TEREMT-001 elhatárolása)
@@ -738,7 +738,7 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 **Mit mutat ez a rész?** Hogy az egyes versekben a szó melyik jelentésében áll.
 
-**G0086 — ᾍδης (Hadész)** · a motívum 8 újszövetségi helyén a vers-szintű jelentést az [1. Előfordulások](#1-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (7 helyen egyértelmű, 1 helyen jelölt, nem egyértelmű); a szó teljes versenkénti listája a szónézetben: [szónézet: /szo/G0086](/szo/G0086) · forrás: `konkordancia/UBS_DNTG_jelentesek.tsv`.
+**G0086 — ᾍδης (Hadész)** · a motívum 8 újszövetségi helyén a vers-szintű jelentést az [1. Előfordulások](#1-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (7 helyen egy jelentés, 1 helyen több vagy jelölt, nem egyértelmű jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet: /szo/G0086](/szo/G0086) · forrás: `konkordancia/UBS_DNTG_jelentesek.tsv`.
 
 #### 10. Kiejtés (magyaros)
 
@@ -851,7 +851,7 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 | Szó | Kiejtés | Strong | Rövid jelentés |
 |---|---|---|---|
-| **ᾅδης** *(a motívum szava)* | adész | G0086 | hell: Hades *(fordításra vár)* |
+| **ᾅδης** *(a motívum szava)* | hadész | G0086 | hell: Hades *(fordításra vár)* |
 | θάνατος | thanatosz | G2288 | death *(fordításra vár)* |
 
 *A szólista és a sorrend a SECE-é (gyakoriságot nem ad; az ismétlődő szóalak egyszer áll); a Strong-szám a TBESG/TBESH lemmájából vagy a SECE címszavából párosul; a rövid jelentés: héberül `adat/glosszak_heber_hu.tsv`, görögül a TBESG angol glosszája (magyar rövid glossza-tábla a görögre még nincs).*
@@ -860,13 +860,13 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 **Mit mutat ez a rész?** A szó eredete és nyelvi háttere.
 
-**H7585 — שְׁאוֹל (seól)** · gyök (√): kétséges · rokon nyelvi adat: óarámi, szír, asszír — a teljes szócikkfej a 2. szerepben („A szócikk feje (nyelvi háttér)”).
+**H7585 — שְׁאוֹל (seól)** · alapjelentés: pokol: Seol *(a TBESH rövid jelentése; a BDB-fej nem mondja ki)* · gyök (√): kétséges · rokon nyelvi adat: óarámi, szír, asszír (kétséges) — a teljes szócikkfej a 2. szerepben („A szócikk feje (nyelvi háttér)”).
 
 #### 9. Versenkénti jelentés
 
 **Mit mutat ez a rész?** Hogy az egyes versekben a szó melyik jelentésében áll.
 
-**H7585 — שְׁאוֹל (seól)** · a motívum 64 ószövetségi helyén a vers-szintű jelentést az [1. Előfordulások](#1-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (62 helyen egyértelmű, 2 helyen nincs hozzárendelés); a szó teljes versenkénti listája a szónézetben: [szónézet: /szo/H7585](/szo/H7585) · forrás: `konkordancia/UBS_DBH_jelentesek.tsv`.
+**H7585 — שְׁאוֹל (seól)** · a motívum 64 ószövetségi helyén a vers-szintű jelentést az [1. Előfordulások](#1-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (62 helyen egy jelentés, 2 helyen nincs hozzárendelés); a szó teljes versenkénti listája a szónézetben: [szónézet: /szo/H7585](/szo/H7585) · forrás: `konkordancia/UBS_DBH_jelentesek.tsv`.
 
 #### 10. Kiejtés (magyaros)
 
@@ -880,7 +880,7 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 #### 12. Tematikus index (témák és igehely-hivatkozások)
 
-**Mit mutat ez a rész?** Egy régi, klasszikus bibliai tárgymutató (Nave, 1897) témái közül azok, amelyek a motívum helyeinek jelentős részét érintik: 34 téma (például: hell). Mindegyiknél látszik, a motívum melyik versei tartoznak hozzá. Ezek a témák a motívum környezetét mutatják, nem a meghatározását.
+**Mit mutat ez a rész?** Mely témákhoz sorolja a szót és helyeit egy régi bibliai témagyűjtemény (Nave).
 
 <!-- ÜRES-BLOKK: Tematikus index (témák és igehely-hivatkozások) | javaslat -->
 *(üres blokk: javaslat; a hiány nincs kitöltve gyenge vagy asszociatív anyaggal)*
@@ -926,7 +926,7 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 - ApCsel 2:27 — „a sírban” (G0086; hiányzik: pokol)
 - ApCsel 2:31 — „a sírban” (G0086; hiányzik: pokol)
 
-**Hamis párhuzam** (ugyanaz a magyar szó, a gerinc-kombináció nélkül): Károli-versek valamely kombináció minden kulcsszavával, amelyekben egyik gerinc-kombináció sem teljes — 3 vers. A versben álló gerinc-Strong (a kombináció egy része, pl. a H7121 a H8034 nélkül) a vers után áll; a magyar kulcsszavak mindkét szövetségben ugyanazt a formulát keresik.
+**Hamis párhuzam** (ugyanaz a magyar szó, a gerinc-kombináció nélkül): Károli-versek valamely kombináció minden kulcsszavával, amelyekben egyik gerinc-kombináció sem teljes — 3 vers. A versben álló gerinc-Strong (a kombináció egy része) a vers után áll; a magyar kulcsszavak mindkét szövetségben ugyanazt a kifejezést keresik.
 
 - Jób 28:22 — A pokol és halál azt mondják: Csak hírét hallottuk füleinkkel! · *gerinc a versben: nincs*
 - Jób 31:12 — Mert tűz volna ez, a mely pokolig emésztene, és minden jövedelmemet tövestől kiirtaná. · *gerinc a versben: nincs*
@@ -962,8 +962,8 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 | Igehely (Károli) | LXX-igehely | Héber kulcsszó | Görög megfelelő | Egyezés | Forrás |
 |---|---|---|---|---|---|
-| Zsolt 16:10 | Zsolt(LXX) 15:10 | שְׁא֑וֹל (seól) | ᾅδην (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| 1Móz 37:35 | 1Móz 37:35 | שְׁאֹ֑לָ (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Zsolt 16:10 | Zsolt(LXX) 15:10 | שְׁא֑וֹל (seól) | ᾅδην (hadén) (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| 1Móz 37:35 | 1Móz 37:35 | שְׁאֹ֑לָ (seól) | ᾅδου (hadú) (ᾅδης, Hadész G0086) | egyező | LXX_OS |
 | 1Móz 42:38 | 1Móz 42:38 | שְׁאֽוֹלָ (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
 | 1Móz 44:29 | 1Móz 44:29 | שְׁאֹֽלָ (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
 | 1Móz 44:31 | 1Móz 44:31 | שְׁאֹֽלָ (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
@@ -976,7 +976,7 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 | 1Kir 2:9 | 1Kir 2:9 | שְׁאֽוֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
 | Jób 7:9 | Jób 7:9 | שְׁ֝א֗וֹל (seól) | ᾅδην (ᾅδης, Hadész G0086) | egyező | LXX_OS |
 | Jób 11:8 | Jób 11:8 | שְּׁא֗וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Jób 14:13 | Jób 14:13 | שְׁא֬וֹל (seól) | ᾅδῃ (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Jób 14:13 | Jób 14:13 | שְׁא֬וֹל (seól) | ᾅδῃ (hadé) (ᾅδης, Hadész G0086) | egyező | LXX_OS |
 | Jób 17:12 | — | שְׁא֣וֹל (seól) | — | szamozas_elteres | LXX_OS |
 | Jób 17:15 | — | שְׁאֹ֣ל (seól) | — | szamozas_elteres | LXX_OS |
 | Jób 21:13 | Jób 21:13 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |

@@ -372,7 +372,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 | Igehely | Miért lett jelölt | Döntés és indok |
 |---|---|---|
 | Zsolt 105:15 | TSK-ajánlás az 1Krón 16:8 helyről a Zsolt 105:15 helyre, szavazat: 22[^k1] | **elutasítva** — tartalmilag nem kapcsolódik: ellenőrizve, tartalmilag NEM releváns (a próféták érintetlenségéről szól, ugyanabban a zsoltárban) |
-| Róm 10:11 | TSK-ajánlás a Jóel 2:32 helyről a Róm 10:11 helyre, szavazat: 19[^k2] | **elutasítva** — a formula nincs a versben: ellenőrizve, nincs ἐπικαλέομαι (epikaleó) / καλέω (kaleó) a versben, NEM releváns |
+| Róm 10:11 | TSK-ajánlás a Jóel 2:32 helyről a Róm 10:11 helyre, szavazat: 19[^k2] | **elutasítva** — a formula nincs a versben: ellenőrizve, nincs ἐπικαλέομαι (epikaleomai) / καλέω (kaleó) a versben, NEM releváns |
 | Zsolt 50:15 | TSK-ajánlás a Zak 13:9 helyről, a forráshelyen 46 TSK-találat[^k3] | **elutasítva** — név nélküli forma: név nélküli segítségül hívás (H7121, שֵׁם (sém) nélkül): rokon igei használat, nem a formula, NEM a motívum része |
 | Zsolt 91:15 | TSK-ajánlás a Zak 13:9 helyről, a forráshelyen 46 TSK-találat[^k4] | **elutasítva** — név nélküli forma: név nélküli segítségül hívás (H7121, שֵׁם nélkül): rokon igei használat, nem a formula, NEM a motívum része |
 | Jer 29:12 | TSK-ajánlás a Zak 13:9 helyről, a forráshelyen 46 TSK-találat[^k5] | **elutasítva** — név nélküli forma: név nélküli segítségül hívás (H7121, שֵׁם nélkül): rokon igei használat, nem a formula, NEM a motívum része |
@@ -444,7 +444,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 | 2Kor 1:23 | gépi Strong-keresés: G1941[^k61] | **elutasítva** — eskü vagy tanúhívás: F110 szűrő (DT283), A osztály, kézi olvasás: Károli: „Én pedig az Istent hívom bizonyságul az én lelkemre” — esküformás tanúhívás, nem segítségül hívás/imádság; negatív kritérium: nem invokáció |
 | ApCsel 1:23 | gépi Strong-keresés: G1941[^k62] | **elutasítva** — passzív szerkezet vagy megnevezés (negatív kritérium): F110 szűrő (DT283), K1_passziv: passzív/megnevezett (was called); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció |
 | ApCsel 4:36 | gépi Strong-keresés: G1941[^k63] | **elutasítva** — passzív szerkezet vagy megnevezés (negatív kritérium): F110 szűrő (DT283), K1_passziv: passzív/megnevezett (having been called); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció |
-| ApCsel 7:59 | gépi Strong-keresés: G1941[^k64] | **elutasítva** — invokáció a formulán kívül: F110 szűrő (DT283), A osztály, kézi olvasás: nincs ὄνομα — invokáció a קָרָא בְשֵׁם (kárá besém) / ἐπικαλέομαι τὸ ὄνομα (epikaleó to onoma) formulán kívül (motivumok.tsv, fölérendelt fogalom); Károli: „ki imádkozik és ezt mondja vala: Uram Jézus, vedd magadhoz az én lelkemet!” |
+| ApCsel 7:59 | gépi Strong-keresés: G1941[^k64] | **elutasítva** — invokáció a formulán kívül: F110 szűrő (DT283), A osztály, kézi olvasás: nincs ὄνομα — invokáció a קָרָא בְשֵׁם (kárá besém) / ἐπικαλέομαι τὸ ὄνομα (epikaleomai to onoma) formulán kívül (motivumok.tsv, fölérendelt fogalom); Károli: „ki imádkozik és ezt mondja vala: Uram Jézus, vedd magadhoz az én lelkemet!” |
 | ApCsel 10:5 | gépi Strong-keresés: G1941[^k65] | **elutasítva** — passzív szerkezet vagy megnevezés (negatív kritérium): F110 szűrő (DT283), K1_passziv: passzív/megnevezett (is called); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció |
 | ApCsel 10:18 | gépi Strong-keresés: G1941[^k66] | **elutasítva** — passzív szerkezet vagy megnevezés (negatív kritérium): F110 szűrő (DT283), K1_passziv: passzív/megnevezett (is being called); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció |
 | ApCsel 10:32 | gépi Strong-keresés: G1941[^k67] | **elutasítva** — passzív szerkezet vagy megnevezés (negatív kritérium): F110 szűrő (DT283), K1_passziv: passzív/megnevezett (is called); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció |
@@ -692,13 +692,13 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 **Mit mutat ez a rész?** A szó tágabb nyelvi háttere a klasszikus görög nagyszótárban (LSJ).
 
-*Hivatkozás: G1941: az összetett ige LSJ-szócikke az alapigéhez irányít (καλέω, kaleó, G2564); az alapige LSJ-szócikke a rokon szavaknál áll (alább): G2564.*
+*Hivatkozás: G1941: az összetett ige LSJ-szócikke az alapigéhez irányít (καλέω, kaleó, G2564) (a `konkordancia/LSJ_teljes.tsv` sora: „ε (e)̓πικαλε (pikale)ìομαι (omai) Middle voice from G1909 and G2564”); az alapige LSJ-szócikke a rokon szavaknál áll (alább): G2564.*
 
 #### 9. Versenkénti jelentés
 
 **Mit mutat ez a rész?** Hogy az egyes versekben a szó melyik jelentésében áll.
 
-**G1941 — ἐπικαλέω (epikaleó)** · a motívum 10 újszövetségi helyén a vers-szintű jelentést az [1. Előfordulások](#1-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (9 helyen egyértelmű, 1 helyen jelölt, nem egyértelmű); a szó teljes versenkénti listája a szónézetben: [szónézet: /szo/G1941](/szo/G1941) · forrás: `konkordancia/UBS_DNTG_jelentesek.tsv`.
+**G1941 — ἐπικαλέω (epikaleó)** · a motívum 10 újszövetségi helyén a vers-szintű jelentést az [1. Előfordulások](#1-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (9 helyen egy jelentés, 1 helyen több vagy jelölt, nem egyértelmű jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet: /szo/G1941](/szo/G1941) · forrás: `konkordancia/UBS_DNTG_jelentesek.tsv`.
 
 #### 10. Kiejtés (magyaros)
 
@@ -969,9 +969,9 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 **Mit mutat ez a rész?** Hogy az egyes versekben a szó melyik jelentésében áll.
 
-**H7121 — קָרָא (kárá)** · a motívum 23 ószövetségi helyén a vers-szintű jelentést az [1. Előfordulások](#1-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (23 helyen egyértelmű); a szó teljes versenkénti listája a szónézetben: [szónézet: /szo/H7121](/szo/H7121) · forrás: `konkordancia/UBS_DBH_jelentesek.tsv`.
+**H7121 — קָרָא (kárá)** · a motívum 23 ószövetségi helyén a vers-szintű jelentést az [1. Előfordulások](#1-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (21 helyen egy jelentés, 2 helyen több vagy jelölt, nem egyértelmű jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet: /szo/H7121](/szo/H7121) · forrás: `konkordancia/UBS_DBH_jelentesek.tsv`.
 
-**H8034 — שֵׁם (sém)** · a motívum 23 ószövetségi helyén a vers-szintű jelentést az [1. Előfordulások](#1-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (23 helyen egyértelmű); a szó teljes versenkénti listája a szónézetben: [szónézet: /szo/H8034](/szo/H8034) · forrás: `konkordancia/UBS_DBH_jelentesek.tsv`.
+**H8034 — שֵׁם (sém)** · a motívum 23 ószövetségi helyén a vers-szintű jelentést az [1. Előfordulások](#1-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (22 helyen egy jelentés, 1 helyen több vagy jelölt, nem egyértelmű jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet: /szo/H8034](/szo/H8034) · forrás: `konkordancia/UBS_DBH_jelentesek.tsv`.
 
 #### 10. Kiejtés (magyaros)
 
@@ -1051,7 +1051,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 - Ézs 12:4 — „magasztaljátok az Ő nevét” (H7121+H8034; hiányzik: hív, segítségül)
 - 1Pét 1:17 — „hívjátok” (G1941; hiányzik: segítségül)
 
-**Hamis párhuzam** (ugyanaz a magyar szó, a gerinc-kombináció nélkül): Károli-versek valamely kombináció minden kulcsszavával, amelyekben egyik gerinc-kombináció sem teljes — 17 vers. A versben álló gerinc-Strong (a kombináció egy része, pl. a H7121 a H8034 nélkül) a vers után áll; a magyar kulcsszavak mindkét szövetségben ugyanazt a formulát keresik.
+**Hamis párhuzam** (ugyanaz a magyar szó, a gerinc-kombináció nélkül): Károli-versek valamely kombináció minden kulcsszavával, amelyekben egyik gerinc-kombináció sem teljes — 17 vers. A versben álló gerinc-Strong (a kombináció egy része) a vers után áll; a magyar kulcsszavak mindkét szövetségben ugyanazt a kifejezést keresik.
 
 <details>
 <summary>A 17 vers</summary>
@@ -1106,6 +1106,8 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 ##### G0994 — βοάω (boaó) · SECE — héber megfelelők (20)
 
+**Mit mutat ez a rész?** Mely szavak felelnek meg ennek a szónak a másik bibliai nyelven, egy kétnyelvű szótár (SECE) szerint; a motívum saját szava kiemelve.
+
 | Szó | Kiejtés | Strong | Rövid jelentés |
 |---|---|---|---|
 | אָמַר | — | H0559 | mondani |
@@ -1154,6 +1156,8 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 *Forrás: konkordancia/TBESG.txt*
 
 ##### G2564 — καλέω (kaleó) · SECE — héber megfelelők (11)
+
+**Mit mutat ez a rész?** Mely szavak felelnek meg ennek a szónak a másik bibliai nyelven, egy kétnyelvű szótár (SECE) szerint; a motívum saját szava kiemelve.
 
 | Szó | Kiejtés | Strong | Rövid jelentés |
 |---|---|---|---|
@@ -1232,27 +1236,27 @@ választott, nem véletlenül tért el a "szabvány" ἐπικαλέομαι-tó
 
 | Igehely (Károli) | LXX-igehely | Héber kulcsszó | Görög megfelelő | Egyezés | Forrás |
 |---|---|---|---|---|---|
-| 1Móz 4:26 | 1Móz 4:26 | קְרֹ֖א (kárá) | ἐπικαλεῖσθαι (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
-| 1Móz 12:8 | 1Móz 12:8 | יִּקְרָ֖א (kárá) | ἐπεκαλέσατο (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
+| 1Móz 4:26 | 1Móz 4:26 | קְרֹ֖א (kárá) | ἐπικαλεῖσθαι (epikaleiszthai) (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
+| 1Móz 12:8 | 1Móz 12:8 | יִּקְרָ֖א (kárá) | ἐπεκαλέσατο (epekaleszato) (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
 | 1Móz 13:4 | 1Móz 13:4 | יִּקְרָ֥א (kárá) | ἐπεκαλέσατο (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
 | 1Móz 21:33 | 1Móz 21:33 | יִּ֨קְרָא (kárá) | ἐπεκαλέσατο (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
 | 1Móz 26:25 | 1Móz 26:25 | יִּקְרָא֙ (kárá) | ἐπεκαλέσατο (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
-| 1Kir 18:24 | 1Kir 18:24 | אֶקְרָ֣א (kárá) | ἐπικαλέσομαι (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
-| 1Kir 18:25 | 1Kir 18:25 | קִרְאוּ֙ (kárá) | ἐπικαλέσασθε (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
-| 1Kir 18:26 | 1Kir 18:26 | יִּקְרְא֣וּ (kárá) | ἐπεκαλοῦντο (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
-| 2Kir 5:11 | 2Kir 5:11 | קָרָא֙ (kárá) | ἐπικαλέσεται (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
+| 1Kir 18:24 | 1Kir 18:24 | אֶקְרָ֣א (kárá) | ἐπικαλέσομαι (epikaleszomai) (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
+| 1Kir 18:25 | 1Kir 18:25 | קִרְאוּ֙ (kárá) | ἐπικαλέσασθε (epikaleszaszthe) (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
+| 1Kir 18:26 | 1Kir 18:26 | יִּקְרְא֣וּ (kárá) | ἐπεκαλοῦντο (epekalúnto) (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
+| 2Kir 5:11 | 2Kir 5:11 | קָרָא֙ (kárá) | ἐπικαλέσεται (epikaleszetai) (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
 | Sof 3:9 | Sof 3:9 | קְרֹ֤א (kárá) | ἐπικαλεῖσθαι (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
 | Zak 13:9 | Zak 13:9 | יִקְרָ֣א (kárá) | ἐπικαλέσεται (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
-| Zsolt 116:4 | Zsolt(LXX) 114:4 | אֶקְרָ֑א (kárá) | ἐπεκαλεσάμην (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
+| Zsolt 116:4 | Zsolt(LXX) 114:4 | אֶקְרָ֑א (kárá) | ἐπεκαλεσάμην (epekaleszamén) (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
 | Zsolt 116:13 | Zsolt(LXX) 115:4 | אֶקְרָֽא (kárá) | ἐπικαλέσομαι (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
 | Zsolt 116:17 | Zsolt(LXX) 115:8 | אֶקְרָֽא (kárá) | nincs megfelelő a görögben (LXX-minusz) | LXX-minusz | adat/lxx_dontesek.tsv |
-| Jóel 2:32 | Jóel(LXX) 3:5 | קֹרֵֽא (kárá) | ἐπικαλέσηται (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
-| Zsolt 105:1 | Zsolt(LXX) 104:1 | קִרְא֣וּ (kárá) | ἐπικαλεῖσθε (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
+| Jóel 2:32 | Jóel(LXX) 3:5 | קֹרֵֽא (kárá) | ἐπικαλέσηται (epikaleszétai) (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
+| Zsolt 105:1 | Zsolt(LXX) 104:1 | קִרְא֣וּ (kárá) | ἐπικαλεῖσθε (epikaleiszthe) (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
 | 1Krón 16:8 | 1Krón 16:8 | קִרְא֣וּ (kárá) | ἐπικαλεῖσθε (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
 | Ézs 12:4 | Ézs 12:4 | קִרְא֣וּ (kárá) | βοάω (boaó G0994) | eltérő | adat/lxx_dontesek.tsv |
-| Jer 10:25 | Jer 10:25 | קָרָ֑אוּ (kárá) | ἐπεκαλέσαντο (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
+| Jer 10:25 | Jer 10:25 | קָרָ֑אוּ (kárá) | ἐπεκαλέσαντο (epekaleszanto) (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
 | Zsolt 79:6 | Zsolt(LXX) 78:6 | קָרָֽאוּ (kárá) | ἐπεκαλέσαντο (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
-| Ézs 64:6 | Ézs 64:6 | קוֹרֵ֣א (kárá) | ἐπικαλούμενος (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
+| Ézs 64:6 | Ézs 64:6 | קוֹרֵ֣א (kárá) | ἐπικαλούμενος (epikalúmenosz) (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
 | 2Móz 33:19 | 2Móz 33:19 | קָרָ֧אתִֽי (kárá) | καλέω (kaleó G2564) | eltérő | adat/lxx_dontesek.tsv |
 | 2Móz 34:5 | 2Móz 34:5 | יִּקְרָ֥א (kárá) | καλέω (kaleó G2564) | eltérő | adat/lxx_dontesek.tsv |
 
@@ -1462,7 +1466,7 @@ választott, nem véletlenül tért el a "szabvány" ἐπικαλέομαι-tó
 |---|---|---|---|
 | Róm 10:12 | beépítve | TSK (Zak 13:9→Róm 10:12 Votes 18; ApCsel 2:21→Róm 10:12 Votes 29) + TAGNT G1941 + Thayer G1941 5. jelentés | "…ugyanaz az Ura mindeneknek, a ki kegyelemben gazdag mindenekhez, a kik őt segítségül hívják" — a 10:13-as Jóel-idézet közvetlen bevezetése: a segítségül hívók körét zsidóra és görögre egyaránt kiterjeszti. |
 | Zsolt 105:15 | elutasítva | TSK 1Krón 16:8 → Zsolt 105:15 (22); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés \| scope=manual \| forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md \| ts=2026-10-11 | ellenőrizve, tartalmilag NEM releváns (a próféták érintetlenségéről szól, ugyanabban a zsoltárban) |
-| Róm 10:11 | elutasítva | TSK Jóel 2:32 → Róm 10:11 (19); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés \| scope=manual \| forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md \| ts=2026-10-11 | ellenőrizve, nincs ἐπικαλέομαι (epikaleó) / καλέω (kaleó) a versben, NEM releváns |
+| Róm 10:11 | elutasítva | TSK Jóel 2:32 → Róm 10:11 (19); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés \| scope=manual \| forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md \| ts=2026-10-11 | ellenőrizve, nincs ἐπικαλέομαι (epikaleomai) / καλέω (kaleó) a versben, NEM releváns |
 | Róm 3:13 | elutasítva | Károli-KH Zsolt 116:13; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés \| scope=manual \| forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md \| ts=2026-10-11 | ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
 | Jak 3:8 | elutasítva | Károli-KH Zsolt 116:13; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés \| scope=manual \| forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md \| ts=2026-10-11 | ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
 | 2Sám 7:9 | elutasítva | Károli-KH Zsolt 116:17; napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés \| scope=manual \| forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md \| ts=2026-10-11 | ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
