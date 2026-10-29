@@ -1637,8 +1637,10 @@ eltérésnél megáll). A motívumlap szótári gerincének (DT272, F131) adatai
 leképezés itt áll, a `lexikon_hivatkozasok.tsv` sémája nem változik; ha a DT190 (a) nyer, a sor átvihető oda).
 A magyar Thayer-szöveg nem innen jön, hanem a #142 szakaszsoraiból (`forditasok.tsv` `sz<n>`, DT373 1.; az
 F131.1-ben itt tartott átmeneti kézi határok az F131.3.6-ban kivezetve). **A tábla saját tagolást nem tart:** minden sor létező szakaszra mutat. A címke a szóról
-szól: motívumra, invokációra vagy tagadásra utaló minősítés nem állhat benne (DT272 (d)). Csak az arany lap
-(ISTENTISZT-001) Strongjai. Olvasás `split('\t')`.
+szól: motívumra, invokációra vagy tagadásra utaló minősítés nem állhat benne (DT272 (d)). Csak a szótári gerinccel
+renderelt motívumok (`lexikon_general.SZOTARI_GERINC_MOTIVUMOK`) Strongjai: az arany lap (ISTENTISZT-001), és a #123
+migrációjában motívumonként bekapcsolt lapok (ALVIL-001: H7585, G0086; író: `naplok/F123_cimke_ir.py`, DT-F123h).
+Olvasás `split('\t')`.
 
 | Oszlop | Jelentés |
 |---|---|
