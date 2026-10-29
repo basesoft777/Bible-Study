@@ -432,11 +432,11 @@ elkülönülő teológiai aktust fejez ki:
 
 | Minta | Alany | Tárgy | Igehelyek | Eddigi kezelés |
 |---|---|---|---|---|
-| **A — fő motívum** | ember | Isten neve | a 15 emberi-invokációs eset (l. 1. pont) | ✅ a study fő tárgya |
+| **A — fő motívum** | ember | Isten neve | 31 emberi invokáció (l. 1. pont), ebből 2 a Kármel-próbán hamis isten nevével (1Kir 18:25–26) | ✅ a study fő tárgya |
 | **B** | Isten | saját neve | 2Móz 33:19, 34:5 | "be nem sorolható" — l. 1. pont |
 | **C** | Isten | ember neve | Ézs 43:1, 44:5, 45:3 | ❌ elutasítva, "hamis pozitív" |
 
-⚠ ELTÉRÉS: a táblázat „15 emberi-invokációs eset" száma a pilot【NAPLO: 2026.09.06-i】, a【NAPLO: 2026.09.09-i】 7-soros bővítés előtti állapotára vonatkozik; a jelenlegi „Előfordulások" tábla 31 igehelyet tartalmaz, az emberi-invokációs esetek száma rajta nem mért.
+【NAPLO: 2026-10-29, a felhasználó jóváhagyása (orkesztrátor-chat: „Igen, mehet”) — az A-sor száma a korábbi „15 emberi-invokációs eset” (a pilot 2026.09.06-i állapota) helyett mérve, a ⚠ ELTÉRÉS jelölés törölve. Mérés: az `elofordulasok.tsv` 33 ISTENTISZT-001 sorából 2 B-eset (`funkcio`: 2Móz 33:19, 34:5), a többi 31 emberi alany; a 31-ből kettőben a megszólított név Baálé (H1168: 1Kir 18:25, 26). Proveniencia: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, n=33) | forras=elofordulasok.tsv (funkcio, jelentes_szam, jelentes_hu)+TAHOT_kivonat.tsv (naplok/ISTENTISZT001_arany_javitas_meres.py, split('\t')) | ts=2026-10-29T09:01Z】
 
 **Miért fontos ez:** a "B" eset eddig elszigetelt anomáliaként szerepelt
 a study-ban ("nem sorolható be a meglévő funkciók egyikébe sem"). A
