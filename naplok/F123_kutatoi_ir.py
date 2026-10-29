@@ -5,7 +5,7 @@ Döntés: orkesztrátor, a felhasználó felhatalmazásával (2026-10-29: „ved
 ítélet); a 8 ÚSZ-hely → Thayer `-/2/-`. Az út a Jób 17:12-éval azonos (`naplok/F123_cimke_ir.py`):
 
 1. `adat/lexikon_hivatkozasok.tsv`: BDB H7585 `2.a`, `4` (a szeletelő sávja a `BDB_teljes_unabridged.tsv` szövegéből) és
-   Thayer G0086 `2` (a `adat/thayer_szakaszok.tsv` 2. pontja; az `entry_id` a Strong-token, mert a kutatói hozzárendelés a
+   Thayer G0086 `2` (a `adat/thayer_szakaszok.tsv` 2. pontja; az `entry_id` a Thayer saját kulcsa, `G86`, mint a `teljes` soré;
    `lexikon_entry_id` tokenjéé);
 2. `adat/szotar_szakasz_cimke.tsv`: a három szakasz `lexikon_jelentes_szam`-a;
 3. `adat/elofordulasok.tsv`: a 11 sor `lexikon_szotar`, `lexikon_entry_id`, `jelentes_szam` mezője.
@@ -84,7 +84,7 @@ def lexhiv(sorok, nl):
     kulcsok = {tuple(s.split('\t')[:4]) for s in sorok[fi + 1:] if s}
     ujak = [('H7585', 'BDB', 'H7585', '2.a', bdb_sav('-/2/a'), 'konkordancia/BDB_teljes_unabridged.tsv'),
             ('H7585', 'BDB', 'H7585', '4', bdb_sav('-/4'), 'konkordancia/BDB_teljes_unabridged.tsv'),
-            ('G0086', 'Thayer', 'G0086', '2', thayer_2(), 'adat/thayer_szakaszok.tsv')]
+            ('G0086', 'Thayer', 'G86', '2', thayer_2(), 'adat/thayer_szakaszok.tsv')]
     assert fej == ['strong', 'szotar', 'entry_id', 'jelentes_szam', 'szoveg_en', 'forrasfajl'], fej
     for u in ujak:
         if u[:4] in kulcsok:
