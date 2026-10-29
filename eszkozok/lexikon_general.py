@@ -1861,7 +1861,8 @@ def gerinc_ala_esik(finom, durva):
 
 
 def kutatoi_kulcs(jelentes_szam):
-    """(kulcs, minősítő): `2.c (tagadva)` → (`2.c`, `tagadva`); a minősítő nem a szó jelentése (N-F131b)."""
+    """(kulcs, minősítő): `2.c (tagadva)` → (`2.c`, `tagadva`); a minősítő nem a szó jelentése, és nem
+    része a SEMA 2.2.2 értékkészletének, ezért a kulcshoz levágjuk."""
     m = re.match(r'^\s*([^\s(]+)\s*(?:\((.*)\))?\s*$', jelentes_szam or '')
     if not m:
         return (jelentes_szam or '').strip(), ''
@@ -2057,7 +2058,8 @@ def jelentes_cimke_token(adat, szotar, strong, jelentes_szam, vers, kutatoi_toke
         tart = bdb_tartomanyban(adat, strong, vers) if szotar == 'BDB' and not tobb_token else []
         return None, '', '; '.join(tobb_token + tart)
     if minosito:
-        ip.append('a kutatói jelentésszám minősítője („%s”) nem a szó jelentése, a címkébe nem kerül (N-F131b)'
+        ip.append('a kutatói jelentésszám minősítője („%s”) nem a szó jelentése, a címkébe nem kerül '
+                  '(a minősítő nem része a SEMA 2.2.2 értékkészletének)'
                   % minosito)
     sor = adat['cimke'].get((szotar, strong, valasztott))
     cimke = (sor or {}).get('cimke_hu') or None
