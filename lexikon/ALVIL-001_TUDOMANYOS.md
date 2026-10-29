@@ -1,6 +1,6 @@
 <!-- GENERÁLT: general.py --cel lexikon | rések: motivumok/ALVIL-001.md -->
 
-# 📖 ALVIL-001 — Hádész (Seól) — a halottak birodalma
+# 📖 ALVIL-001 — Hádész (Seol) — a halottak birodalma
 
 ## Kivonat *(kézi)*
 
@@ -80,22 +80,22 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 | [1Kir 2:9](#ige-1kir-2-9) | a koporsóba — שְׁאֽוֹל (she.'ol) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^11] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^11] |
 | [Jób 7:9](#ige-jób-7-9) | a sírba — שְׁ֝א֗וֹל (She.ol) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^12] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^12] |
 | [Jób 11:8](#ige-jób-11-8) | az alvilágnál — שְּׁא֗וֹל (she.'ol) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^13] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^13] |
-| [Jób 14:13](#ige-jób-14-13) | a holtak országában — שְׁא֬וֹל (sh.'ol) | az igaz kiváltása a Seólból · 2.b ⓘ[^14] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^14] |
+| [Jób 14:13](#ige-jób-14-13) | a holtak országában — שְׁא֬וֹל (sh.'ol) | az igaz kiváltása a Seolból · 2.b ⓘ[^14] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^14] |
 | [Jób 17:12](#ige-jób-17-12) | a sír — שְׁא֣וֹל (she.'ol) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^15] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) *(MT: Jób 17:13)* | magas · tartalom-alapú[^15] |
 | [Jób 17:15](#ige-jób-17-15) | a sír üregébe — שְׁאֹ֣ל (she.'Ol) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^16] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) *(MT: Jób 17:16)* | közepes · tartalom-alapú[^16] |
 | [Jób 21:13](#ige-jób-21-13) | a sírba — שְׁא֣וֹל (she.'ol) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^17] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^17] |
-| [Jób 24:19](#ige-jób-24-19) | a pokol — שְׁא֣וֹל (she.'ol) | a gonoszok sorsa a Seólban · 2.a ⓘ[^18] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^18] |
+| [Jób 24:19](#ige-jób-24-19) | a pokol — שְׁא֣וֹל (she.'ol) | a gonoszok sorsa a Seolban · 2.a ⓘ[^18] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^18] |
 | [Jób 26:6](#ige-jób-26-6) | Az alvilág — שְׁא֣וֹל (she.'ol) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^19] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^19] |
-| [Zsolt 6:6](#ige-zsolt-6-6) | a seolban — שְׁא֗וֹל (sh.'ol) | a gonoszok sorsa a Seólban · 2.a ⓘ[^20] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^20] |
-| [Zsolt 9:18](#ige-zsolt-9-18) | Seolba — שְׁא֑וֹלָ (sh.'o.la) | a gonoszok sorsa a Seólban · 2.a ⓘ[^21] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^21] |
-| [Zsolt 16:10](#ige-zsolt-16-10) | a Seolban — שְׁא֑וֹל (sh.'ol) | az igaz kiváltása a Seólból · 2.b ⓘ[^22] | — | Peshat/Drash | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^22] |
+| [Zsolt 6:6](#ige-zsolt-6-6) | a seolban — שְׁא֗וֹל (sh.'ol) | a gonoszok sorsa a Seolban · 2.a ⓘ[^20] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^20] |
+| [Zsolt 9:18](#ige-zsolt-9-18) | Seolba — שְׁא֑וֹלָ (sh.'o.la) | a gonoszok sorsa a Seolban · 2.a ⓘ[^21] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^21] |
+| [Zsolt 16:10](#ige-zsolt-16-10) | a Seolban — שְׁא֑וֹל (sh.'ol) | az igaz kiváltása a Seolból · 2.b ⓘ[^22] | — | Peshat/Drash | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^22] |
 | [Zsolt 18:6](#ige-zsolt-18-6) | A Seol kötelei — שְׁא֣וֹל (she.'ol) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^23] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^23] |
-| [Zsolt 30:4](#ige-zsolt-30-4) | a Seolból — שְׁא֣וֹל (she.'ol) | a gonoszok sorsa a Seólban · 2.a ⓘ[^24] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^24] |
-| [Zsolt 31:18](#ige-zsolt-31-18) | a Seolba — שְׁאֽוֹל (sh.'ol) | a gonoszok sorsa a Seólban · 2.a ⓘ[^25] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^25] |
-| [Zsolt 49:15](#ige-zsolt-49-15) | a Seolra — שְׁא֗וֹל (she.'ol) | a gonoszok sorsa a Seólban · 2.a ⓘ[^26] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^26] |
-| [Zsolt 49:16](#ige-zsolt-49-16) | a Seol kezéből — שְׁא֑וֹל (she.'ol) | az igaz kiváltása a Seólból · 2.b ⓘ[^27] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^27] |
+| [Zsolt 30:4](#ige-zsolt-30-4) | a Seolból — שְׁא֣וֹל (she.'ol) | a gonoszok sorsa a Seolban · 2.a ⓘ[^24] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^24] |
+| [Zsolt 31:18](#ige-zsolt-31-18) | a Seolba — שְׁאֽוֹל (sh.'ol) | a gonoszok sorsa a Seolban · 2.a ⓘ[^25] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^25] |
+| [Zsolt 49:15](#ige-zsolt-49-15) | a Seolra — שְׁא֗וֹל (she.'ol) | a gonoszok sorsa a Seolban · 2.a ⓘ[^26] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^26] |
+| [Zsolt 49:16](#ige-zsolt-49-16) | a Seol kezéből — שְׁא֑וֹל (she.'ol) | az igaz kiváltása a Seolból · 2.b ⓘ[^27] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^27] |
 | [Zsolt 55:16](#ige-zsolt-55-16) | a Seolba — שְׁא֣וֹל (she.'ol) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^28] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^28] |
-| [Zsolt 86:13](#ige-zsolt-86-13) | a mélységes pokolból — שְּׁא֥וֹל (she.'ol) | a gonoszok sorsa a Seólban · 2.a ⓘ[^29] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^29] |
+| [Zsolt 86:13](#ige-zsolt-86-13) | a mélységes pokolból — שְּׁא֥וֹל (she.'ol) | a gonoszok sorsa a Seolban · 2.a ⓘ[^29] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^29] |
 | [Zsolt 88:4](#ige-zsolt-88-4) | a Seolig — שְׁא֥וֹל (sh.'ol) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^30] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^30] |
 | [Zsolt 89:49](#ige-zsolt-89-49) | a Seolnak kezéből — שְׁא֣וֹל (she.'ol) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^31] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^31] |
 | [Zsolt 116:3](#ige-zsolt-116-3) | a pokol szorongattatásai — שְׁא֣וֹל (she.'ol) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^32] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^32] |
@@ -104,10 +104,10 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 | [Péld 1:12](#ige-péld-1-12) | a sír — שְׁא֣וֹל (sh.'ol) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^35] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^35] |
 | [Péld 5:5](#ige-péld-5-5) | a sírba — שְׁ֝א֗וֹל (She.ol) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^36] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^36] |
 | [Péld 7:27](#ige-péld-7-27) | Sírba vívő út — שְׁא֣וֹל (she.'ol) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^37] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^37] |
-| [Péld 9:18](#ige-péld-9-18) | a pokol mélyébe — שְׁא֣וֹל (she.'ol) | a Seól mélységei · 3.a ⓘ[^38] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^38] |
-| [Péld 15:11](#ige-péld-15-11) | A sír — שְׁא֣וֹל (she.'ol) | Seól és Abaddón; verem · 3.b ⓘ[^39] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^39] |
+| [Péld 9:18](#ige-péld-9-18) | a pokol mélyébe — שְׁא֣וֹל (she.'ol) | a Seol mélységei · 3.a ⓘ[^38] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^38] |
+| [Péld 15:11](#ige-péld-15-11) | A sír — שְׁא֣וֹל (she.'ol) | Seol és Abaddón; verem · 3.b ⓘ[^39] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^39] |
 | [Péld 15:24](#ige-péld-15-24) | a pokoltól — שְּׁא֥וֹל (she.'ol) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^40] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^40] |
-| [Péld 23:14](#ige-péld-23-14) | a pokolból — שְּׁא֥וֹל (she.'ol) | a gonoszok sorsa a Seólban · 2.a ⓘ[^41] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^41] |
+| [Péld 23:14](#ige-péld-23-14) | a pokolból — שְּׁא֥וֹל (she.'ol) | a gonoszok sorsa a Seolban · 2.a ⓘ[^41] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^41] |
 | [Péld 27:20](#ige-péld-27-20) | a sír — שְׁא֣וֹל (she.'ol) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^42] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^42] |
 | [Péld 30:16](#ige-péld-30-16) | A sír — שְׁאוֹל֮ (she.'Ol) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^43] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^43] |
 | [Préd 9:12](#ige-préd-9-12) | a Seolban — שְׁא֕וֹל (sh.'ol) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^44] | — | Remez | H7585 | — *(ÓSZ; nincs DBH-hivatkozás: versszámozás-eltérés (KEZI), az MT-vers a táblában nincs megadva)* | közepes · tartalom-alapú[^44] |
@@ -120,13 +120,13 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 | [Ézs 28:15](#ige-ézs-28-15) | a sírral — שְׁא֖וֹל (she.'ol) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^51] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^51] |
 | [Ézs 28:18](#ige-ézs-28-18) | a sírral — שְׁא֖וֹל (she.'ol) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^52] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^52] |
 | [Ézs 38:10](#ige-ézs-38-10) | a sír kapuihoz — שְׁא֑וֹל (she.'ol) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^53] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^53] |
-| [Ézs 38:18](#ige-ézs-38-18) | a sír — שְׁא֛וֹל (she.'ol) | a gonoszok sorsa a Seólban · 2.a ⓘ[^54] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^54] |
+| [Ézs 38:18](#ige-ézs-38-18) | a sír — שְׁא֛וֹל (she.'ol) | a gonoszok sorsa a Seolban · 2.a ⓘ[^54] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^54] |
 | [Ézs 57:9](#ige-ézs-57-9) | a sírig — שְׁאֽוֹל (she.'ol) | átvitt értelem: lealacsonyodás, száműzetés · 4 ⓘ[^55] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^55] |
-| [Ez 31:15](#ige-ez-31-15) | sírba — שְׁא֙וֹלָ (she.'o.la) | a gonoszok sorsa a Seólban · 2.a ⓘ[^56] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^56] |
-| [Ez 31:16](#ige-ez-31-16) | a sírba — שְׁא֖וֹלָ (she.'o.la) | a gonoszok sorsa a Seólban · 2.a ⓘ[^57] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^57] |
-| [Ez 31:17](#ige-ez-31-17) | a sírba — שְׁא֖וֹלָ (she.'o.la) | a gonoszok sorsa a Seólban · 2.a ⓘ[^58] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^58] |
-| [Ez 32:21](#ige-ez-32-21) | a sír közepéből — שְׁא֖וֹל (she.'ol) | a gonoszok sorsa a Seólban · 2.a ⓘ[^59] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^59] |
-| [Ez 32:27](#ige-ez-32-27) | a sírba — שְׁא֣וֹל (she.'ol) | a gonoszok sorsa a Seólban · 2.a ⓘ[^60] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^60] |
+| [Ez 31:15](#ige-ez-31-15) | sírba — שְׁא֙וֹלָ (she.'o.la) | a gonoszok sorsa a Seolban · 2.a ⓘ[^56] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^56] |
+| [Ez 31:16](#ige-ez-31-16) | a sírba — שְׁא֖וֹלָ (she.'o.la) | a gonoszok sorsa a Seolban · 2.a ⓘ[^57] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^57] |
+| [Ez 31:17](#ige-ez-31-17) | a sírba — שְׁא֖וֹלָ (she.'o.la) | a gonoszok sorsa a Seolban · 2.a ⓘ[^58] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^58] |
+| [Ez 32:21](#ige-ez-32-21) | a sír közepéből — שְׁא֖וֹל (she.'ol) | a gonoszok sorsa a Seolban · 2.a ⓘ[^59] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^59] |
+| [Ez 32:27](#ige-ez-32-27) | a sírba — שְׁא֣וֹל (she.'ol) | a gonoszok sorsa a Seolban · 2.a ⓘ[^60] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^60] |
 | [Hós 13:14](#ige-hós-13-14) | a Seol hatalmából — שְׁא֔וֹל (she.'ol) | átvitt értelem: lealacsonyodás, száműzetés · 4 ⓘ[^61] | — | Remez/Drash | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^61] |
 | [Ámós 9:2](#ige-ámós-9-2) | a Seolba — שְׁא֔וֹל (sh.'ol) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^62] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^62] |
 | [Jón 2:3](#ige-jón-2-3) | a Seol torkából — שְׁא֛וֹל (she.'ol) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^63] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^63] |
@@ -634,8 +634,13 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 #### 1. Alapjelentés
 
-<!-- ÜRES-BLOKK: Alapjelentés | adatosítva, nincs bekötve -->
-*(üres blokk: a szerep adatosítva (a forrásfájl megvan), de a motívum tokenjeihez a `lexikon_hivatkozasok.tsv`-be nincs bekötve sor; a bekötés még nem történt meg; a hiány nincs kitöltve gyenge vagy asszociatív anyaggal)*
+##### TBESG G0086 — 2. jelentés
+
+> the abode of Hades, the underivorld ; in NT, the abode of departed spirits, Hades : ἐν τ. ᾅ., Luk.16:23; εἰς ᾅ., Act.2:27,31 ; πύλαι ᾅδου, Mat.16:18; κλεῖς τοῦ ᾅ., Rev.1:18; metaphorically, ἕως ᾅ., Mat.11:23 , Luk.10:15 ; personified, Rev.6:8 20:13,14 (Cremer, 67, 610; MM, VGT , see word). † (AS)
+
+*(fordításra vár)*
+
+*Forrás: konkordancia/TBESG.txt*
 
 #### 2. Mélységi szócikk
 
@@ -696,11 +701,11 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 </details>
 
-- **`2.a` — a gonoszok sorsa a Seólban**
+- **`2.a` — a gonoszok sorsa a Seolban**
 
   > a. gonoszok לִשְׁא֑וֺלָה יָשׁוּבוּ **Zsolt 9:18**, לִשׁ ׳יִדְּמוּ **31:18**; a halál a pásztoruk, erő és tisztesség nélkül sorvadnak el **49:15** (a versben kétszer); ׳שׁ úgy emészti meg őket, mint a szárazság a vizet **Jób 24:19**; az igazak rettegnek tőle, mert ott nincs dicséret és nincs Isten jelenléte (mint a templomban) **Zsolt 6:6** (vö. 88:5), **Ézs 38:18**; a megszabadulás belőle áldás **Zsolt 30:4**; **86:13**; **Péld 23:14**. Ezékielnél a ׳שׁ a lenti föld, a gyalázat helye, a körülmetéletlenek lakóhelye **Ez 31:15**-16, **17**; **32:21**, **27**
 
-- **`2.b` — az igaz kiváltása a Seólból**
+- **`2.b` — az igaz kiváltása a Seolból**
 
   > b. az igazat nem hagyják el, ׳לשׁ **Zsolt 16:10** (|| שַׁחַת, l. ott; szemben חַיִּים אִרַח stb., 16:11, vö. 17:15), kiváltatik a ׳שׁ-ból **Zsolt 49:16** (vö. Zsolt 73:23; Zsolt 73:25; Ézs 57:1-2,); vö. Jób várakozását és vágyát **Jób 14:13**; 17:13 (vö. 10:21; 19:25k.).
 
@@ -711,11 +716,11 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 </details>
 
-- **`3.a` — a Seól mélységei**
+- **`3.a` — a Seol mélységei**
 
   > a. a ׳שׁ mélységei az érzékiek számára **Péld 9:18**.
 
-- **`3.b` — Seól és Abaddón; verem**
+- **`3.b` — Seol és Abaddón; verem**
 
   > b. ׳שׁ וַאֲבַדּוֺן Péld 25:11, l. אֲבַדּוֺן. [שַׁחַת és בּוֺר, l. ott, ha || ׳שׁ, rendszerint rossz értelemben állnak (**Zsolt 88:4**); valószínűleg = verem a ׳שׁ-ban, > maga a ׳שׁ mint verem; a szavak legalábbis előkészítik a Biblia utáni zsidóság és az Újszövetség helyi megkülönböztetéseit.]
 
@@ -1209,7 +1214,7 @@ A motívumhoz nincs rögzített kapcsolat.
 
 ### Új felismerés — Hós 13:14 → 1Kor 15:55
 
-"Megváltom őket a Seol hatalmából... Hol van a te veszedelmed, oh Seol?" — ezt Pál explicit idézi/parafrazálja **1Kor 15:55**-ben: "Halál! hol a te fullánkod? Pokol! hol a te diadalmad?" A Károli 1908 (Textus Receptus-alapú) szöveg a második tagmondatot "Pokol"-lal (= hádész) adja vissza.
+"Megváltom őket a Seol hatalmából... Hol van a te veszedelmed, oh Seol?" *(összevont saját alak, nem Károli-szöveg; a Károli 1908 alakja: „Megváltom őket a Seol hatalmából! Megmentem őket a haláltól! Hol van a te veszedelmed oh halál?! Hol van a te romlásod oh Seol?!”)* — ezt Pál explicit idézi/parafrazálja **1Kor 15:55**-ben: "Halál! hol a te fullánkod? Pokol! hol a te diadalmad?" A Károli 1908 (Textus Receptus-alapú) szöveg a második tagmondatot "Pokol"-lal (= hádész) adja vissza.
 
 ### ↳ Alpont: kiáltás a Seol szorításából
 
@@ -1246,7 +1251,7 @@ A TR/Byzantinus hagyomány eltérő olvasatáról szóló állítás nem a helyi
 
 **Hogyan hivatkozz:**
 - ID: `ALVIL-001`
-- Cím: Hádész (Seól) — a halottak birodalma
+- Cím: Hádész (Seol) — a halottak birodalma
 - Státusz: publikálható (`v2`, 2026.09.10)
 - Generálva: 2026-10-29
 - Fájl: `https://github.com/Basesoft777/Bible-Study/blob/main/lexikon/ALVIL-001_TUDOMANYOS.md`
@@ -1276,7 +1281,7 @@ A TR/Byzantinus hagyomány eltérő olvasatáról szóló állítás nem a helyi
 - `adat/glosszak_heber_hu.tsv` (CC BY 4.0)
 - `adat/jeloltek.tsv` (minden jog fenntartva)
 - `adat/kapcsolatok.tsv` (minden jog fenntartva)
-- `adat/lexikon_hivatkozasok.tsv` (közkincs)
+- `adat/lexikon_hivatkozasok.tsv` (CC BY 4.0, közkincs)
 - `adat/lxx_dontesek.tsv` (minden jog fenntartva)
 - `adat/motivumok.tsv` (minden jog fenntartva)
 - `adat/szotar_szakasz_cimke.tsv` (minden jog fenntartva)
@@ -1302,7 +1307,7 @@ A TR/Byzantinus hagyomány eltérő olvasatáról szóló állítás nem a helyi
 |---|---|
 | ID | `ALVIL-001` |
 | Rövid UI-címke | Hádész/Seól |
-| Teljes cím | Hádész (Seól) — a halottak birodalma |
+| Teljes cím | Hádész (Seol) — a halottak birodalma |
 | Téma | Eszkatológia |
 | PaRDeS-szint | Remez/Drash |
 | Státusz | publikálható (`v2`, 2026.09.10) |
@@ -1325,7 +1330,7 @@ A TR/Byzantinus hagyomány eltérő olvasatáról szóló állítás nem a helyi
 | `glosszak_heber_hu.tsv` | `adat/glosszak_heber_hu.tsv` | CC BY 4.0 | szocikkek |
 | `jeloltek.tsv` | `adat/jeloltek.tsv` | minden jog fenntartva | kizart |
 | `kapcsolatok.tsv` | `adat/kapcsolatok.tsv` | minden jog fenntartva | kapcsolatok |
-| `lexikon_hivatkozasok.tsv` | `adat/lexikon_hivatkozasok.tsv` | közkincs | szocikkek |
+| `lexikon_hivatkozasok.tsv` | `adat/lexikon_hivatkozasok.tsv` | CC BY 4.0, közkincs | szocikkek |
 | `lxx_dontesek.tsv` | `adat/lxx_dontesek.tsv` | minden jog fenntartva | lxx |
 | `motivumok.tsv` | `adat/motivumok.tsv` | minden jog fenntartva | kizart |
 | `szotar_szakasz_cimke.tsv` | `adat/szotar_szakasz_cimke.tsv` | minden jog fenntartva | elofordulasok, szocikkek |
