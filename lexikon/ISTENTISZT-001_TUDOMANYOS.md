@@ -624,7 +624,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 - **`1` — elnevezni**
 
-  > 1. nevet adni valakinek, elnevezni: τινα (Xenophón, Platón és mások), Mt 10:25 G T Tr WH (Rec. ἐκάλεσαν); szenvedő alakban ὁ ἐπικαλούμενος, akit elneveznek, Luk 22:3 R G L; ApCsel 10:18; ApCsel 11:13; ApCsel 12:12; ApCsel 15:22 R G; továbbá ὅς ἐπικαλεῖται, ApCsel 10:5, ApCsel 10:32; ὁ ἐπικληθείς, Mt 10:3 (R G); ApCsel 4:36; ApCsel 12:25; azaz ὅς ἐπεκλήθη, ApCsel 1:23. Közép erejű szenvedő alak (vö. Winers Grammar, § 38, 3): megengedni, hogy elnevezzék: Zsid 11:16; közép alak τινα-val: **1Pét 1:17** εἰ πατέρα ἐπικαλεῖσθε τόν stb. azaz ha (magatoknak) Atyaként hívjátok őt, azaz ha Atyátoknak nevezitek őt.
+  > nevet adni valakinek, elnevezni: τινα (Xenophón, Platón és mások), Mt 10:25 G T Tr WH (Rec. ἐκάλεσαν); szenvedő alakban ὁ ἐπικαλούμενος, akit elneveznek, Luk 22:3 R G L; ApCsel 10:18; ApCsel 11:13; ApCsel 12:12; ApCsel 15:22 R G; továbbá ὅς ἐπικαλεῖται, ApCsel 10:5, ApCsel 10:32; ὁ ἐπικληθείς, Mt 10:3 (R G); ApCsel 4:36; ApCsel 12:25; azaz ὅς ἐπεκλήθη, ApCsel 1:23. Közép erejű szenvedő alak (vö. Winers Grammar, § 38, 3): megengedni, hogy elnevezzék: Zsid 11:16; közép alak τινα-val: **1Pét 1:17** εἰ πατέρα ἐπικαλεῖσθε τόν stb. azaz ha (magatoknak) Atyaként hívjátok őt, azaz ha Atyátoknak nevezitek őt.
 
 <details>
 <summary>2 – 4 (3 szakasz)</summary>
@@ -637,7 +637,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 - **`5` — segítségül hívni a név kimondásával**
 
-  > 5. Hebraizmusként (mint a יְהוָה בְּשֵׁם קָרָא az Úr nevének kimondásával segítségül hívni, 1Móz 4:26; 1Móz 12:8; 2Kir 5:11, stb.; vö. Gesenius, Thesaurus, o. 1231{b} (vagy Hebrew Lexicon-ja, a קָרָא címszónál); ez a kifejezés abból magyarázódik, hogy az Istenhez intézett imák rendszerint az isteni név segítségül hívásával kezdődtek: Zsolt 3:2; Zsolt 6:2; Zsolt 7:2, stb.) ἐπικαλοῦμαι τό ὄνομα τοῦ κυρίου, segítségül hívom (a magam javára) az Úr nevét, azaz megidézem, imádom, tisztelem az Urat, azaz Krisztust: **ApCsel 2:21** (Jóel 2:32-ből ()); **ApCsel 9:14**,**21**; **22:16**>; **Róm 10:13**; **1Kor 1:2**; τόν κύριον, **Róm 10:12**; **2Tim 2:22**; (a görög írásokban gyakran ἐπικαλεῖσθαι τούς Θεούς, mint Xenophón, Cyril 7, 1, 35; Platón, Tim., o. 27 c.; Polübiosz 15, 1, 13).
+  > Hebraizmusként (mint a יְהוָה בְּשֵׁם קָרָא az Úr nevének kimondásával segítségül hívni, 1Móz 4:26; 1Móz 12:8; 2Kir 5:11, stb.; vö. Gesenius, Thesaurus, o. 1231{b} (vagy Hebrew Lexicon-ja, a קָרָא címszónál); ez a kifejezés abból magyarázódik, hogy az Istenhez intézett imák rendszerint az isteni név segítségül hívásával kezdődtek: Zsolt 3:2; Zsolt 6:2; Zsolt 7:2, stb.) ἐπικαλοῦμαι τό ὄνομα τοῦ κυρίου, segítségül hívom (a magam javára) az Úr nevét, azaz megidézem, imádom, tisztelem az Urat, azaz Krisztust: **ApCsel 2:21** (Jóel 2:32-ből ()); **ApCsel 9:14**,**21**; **22:16**>; **Róm 10:13**; **1Kor 1:2**; τόν κύριον, **Róm 10:12**; **2Tim 2:22**; (a görög írásokban gyakran ἐπικαλεῖσθαι τούς Θεούς, mint Xenophón, Cyril 7, 1, 35; Platón, Tim., o. 27 c.; Polübiosz 15, 1, 13).
 
 *ⓘ Kutatói megjegyzés: a szótár nem idézi: Róm 10:14.*
 
@@ -741,7 +741,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 - **`Qal 2.c` — segítségül hívni**
 
-  > c. ׳ק י ׳בְּשֵׁם hívni ׳י nevével (azaz használni azt a segítségül hívásban): **1Móz 4:26**; **12:8**; **2Kir 5:11**; **Jer 10:25** = **Zsolt 79:6**, összesen 16-szor (**1Kir 18:24** annak konkrét kérésére, hogy ׳י mutassa meg hatalmát), továbbá Ézs 65:1 (l. Pu`al); Baál nevével **1Kir 18:24**-25, **26**.
+  > ׳ק י ׳בְּשֵׁם hívni ׳י nevével (azaz használni azt a segítségül hívásban): **1Móz 4:26**; **12:8**; **2Kir 5:11**; **Jer 10:25** = **Zsolt 79:6**, összesen 16-szor (**1Kir 18:24** annak konkrét kérésére, hogy ׳י mutassa meg hatalmát), továbbá Ézs 65:1 (l. Pu`al); Baál nevével **1Kir 18:24**-25, **26**.
 
 <details>
 <summary>Qal 2.d (1 szakasz)</summary>
@@ -752,7 +752,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 - **`Qal 3` — kihirdetni**
 
-  > 3 kihirdetni:
+  > kihirdetni:
 
 <details>
 <summary>Qal 3.a (1 szakasz)</summary>
@@ -763,7 +763,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 - **`Qal 3.b` — a nevet kihirdetni**
 
-  > b. ׳ק י ׳שֵׁם 5Móz 32:3; Zsolt 99:6; így (korábban) ׳ק י ׳בְשֵׁם **2Móz 33:19**; **34:5** (JE); vö. ׳ק יַעֲקֹב בְּשֵׁם Ézs 44:5 (de olv. יִקָּרֵא, Lo Che és a legtöbben).
+  > ׳ק י ׳שֵׁם 5Móz 32:3; Zsolt 99:6; így (korábban) ׳ק י ׳בְשֵׁם **2Móz 33:19**; **34:5** (JE); vö. ׳ק יַעֲקֹב בְּשֵׁם Ézs 44:5 (de olv. יִקָּרֵא, Lo Che és a legtöbben).
 
 <details>
 <summary>Qal 3.c – Pu'al (30 szakasz)</summary>
@@ -823,11 +823,11 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 - **`3` — név: Isten megjelölése**
 
-  > 3 név, mint Isten megjelölése, kifejezetten a ׳י-é (különösen Jeremiásnál, Ezékielnél, Ézs^2, 3-nál, a Zsoltárokban): — először (a Hexateuchban) a ׳ק ׳בְּשׁ ׳י kifejezésben **1Móz 4:26** (J): valamivel hívni, azaz a ׳י nevet használni az istentiszteletben, így **12:8**; **13:4**; **21:33**; **26:35** és máshol (l. קרא 2c); ezért az istentisztelet helyéről שָׁם מאתשְֿׁמִי אַוְּכִּיר אֲשֶׁר בְּכָלהַֿמָּקוֺם 2Móz 20:24 (Gi 20:21); שָׁם אֶתשְֿׁמוֺ [לְשַׁכֵּן] לָשׂוּם 5Móz 12:5, 11 és máshol; לִשְׁמִי בַּיִת בָּנָה 2Sám 7:13 + gyakran; a nép eljön ׳לְשׁ ׳י Józs 9:9 (R^D), így שׁ ׳לְמֵעַן 1Kir 8:41 2Krón 6:32; Ézs 60:9; keresik Zsolt 83:17; ׳בְּשׁ ׳י-val esküdni 1Sám 20:42; 5Móz 6:13; 10:20; 3Móz 19:12, vö. (לַשָּׁוְא) 2Móz 20:7 (a versben kétszer)=5Móz 5:11 (a versben kétszer); ׳תָּפַשׁ ׳י Péld 30:9; שְׁמִיעַלֿ נִקְרָא stb. a tulajdonjog jeleként (vö. 2a), Jer 7:10 és máshol ; = hírneve, dicsősége, לוֺ עָשָׁה-val, l. 1b (1), vö. Józs 7:9; ׳בְּשׁ ׳י, azaz mint az ő képviselője 2Móz 5:23 (J), 1Sám 17:45; 5Móz 10:8; 2Sám 6:18; 2Kir 2:24 és máshol (l. a 2a végét); különösen mint ami a ׳י (kinyilatkoztatott) jellemét testesíti meg: ׳י שְׁמוֺ Ámós 5:8; 9:6; Jer 33:2, לְעֹלָם שְּׁמִי וֶה 2Móz 3:15 (E; || זֵכֶר; alaphely), 6:3 (P); ׳י שְׁמוֺ׳(א עְבָאוֺת ) Ámós 4:13; 5:27; Jer 10:16; 46:18, Jeremiásnál összesen 10-szer, Ézs^2, ׳י שְׁמוֺ קַנָּא 2Móz 34:14 (J; vö. 20:5; Náh 1:2), שׁ ׳קָדוֺשׁ Ézs 57:15, ׳שׁ [וֺ] קָדְשִׁי Ámós 2:7; Ez 39:7; 43:7; Zsolt 103:1 + gyakran; ezért a megismerés tárgya Ézs 52:6; Jer 48:17, שְׁמֶ֑ךָ יֹדְעֵי Zsolt 9:11 (|| דֹּרְשֶׁיךָ), a szereteté Ézs 56:5, שׁ ׳אֹהֲבֵי Zsolt 5:12; Zsolt 69:37; 119:132, a félelemé 61:6, különösen a dicséreté stb. (בֵּרַח הוֺדָה, הִןכִּיר, חִלֵּל,, stb.): אֲוַמֵּר לְשִׁמְךָ 2Sám 22:50 (|| אוֺדְךָ, és így igen gyakran || ׳י) = Zsolt 18:50, vö. 1Krón 16:10; 29:13; Zsolt 45:18; Ézs 26:13; 1Kir 8:33, 35 2Krón 6:24, 26; Zsolt 8:2; Zsolt 8:10 és máshol; ׳חָבוּלי שְׁמוֺ כְּבוֺד 29:2; 96:8, és sok más kapcsolat; ellentéte אֶתשֿׁ ׳חִלֵּל ׳א 3Móz 18:21 és máshol, שׁ ׳נקב ׳י 24:16, שׁ ׳נִאֵץ Zsolt 74:10; 74:18 stb.; ׳הַשּׁ וְהַנּוֺרָא הַנִּכְבָּד 5Móz 28:58, vö. Neh 1:11; שִׁמְךָ לְמַעַן a ׳י-hoz intézett kérésekben, hogy jelleme szerint cselekedjék Jer 14:7, 21; Ez 20:9, 14; Ézs 48:9; 66:5; Zsolt 25:11; 31:4 és máshol; a ׳שׁ ׳י hatalmas cselekvő, הוֺשִׁיעֵנִי בְּשִׁמְךָ 54:3 (|| בִּגְבוּרָֽתְךָ), vö. 124:8; a ׳י י-ról ׳מַלְאַךָ ezt mondja: בְּקִרְבּוֺ שְׁמִי 2Móz 23:21 (E); a הַשֵּׁם a 3Móz 24:11-ben valószínűleg írnoki helyettesítés a ׳י szó helyett (amelyet már kezdtek kimondhatatlannak tartani, különösen וַיִקֹּב-val, vö. Gei^Urschr.273 k. Di Dr-Wh Baen); e használat fejlődéséről és a ׳הַשּׁ megszemélyesített vagy hiposztázisként való zsidó használatáról l. Levy^NHWB a címszónál, Jastr^s.see — a שְׁמֶ֑ךָ קָרוֺב a Zsolt 75:2-ben feltűnő, de kétséges, < ᵐ5 Dy Che Gr Hup-Now שׁ ׳קֹרְאֵי, Du בִשׁ ׳קָרָנוּ (= קָרָאנוּ).
+  > név, mint Isten megjelölése, kifejezetten a ׳י-é (különösen Jeremiásnál, Ezékielnél, Ézs^2, 3-nál, a Zsoltárokban): — először (a Hexateuchban) a ׳ק ׳בְּשׁ ׳י kifejezésben **1Móz 4:26** (J): valamivel hívni, azaz a ׳י nevet használni az istentiszteletben, így **12:8**; **13:4**; **21:33**; **26:35** és máshol (l. קרא 2c); ezért az istentisztelet helyéről שָׁם מאתשְֿׁמִי אַוְּכִּיר אֲשֶׁר בְּכָלהַֿמָּקוֺם 2Móz 20:24 (Gi 20:21); שָׁם אֶתשְֿׁמוֺ [לְשַׁכֵּן] לָשׂוּם 5Móz 12:5, 11 és máshol; לִשְׁמִי בַּיִת בָּנָה 2Sám 7:13 + gyakran; a nép eljön ׳לְשׁ ׳י Józs 9:9 (R^D), így שׁ ׳לְמֵעַן 1Kir 8:41 2Krón 6:32; Ézs 60:9; keresik Zsolt 83:17; ׳בְּשׁ ׳י-val esküdni 1Sám 20:42; 5Móz 6:13; 10:20; 3Móz 19:12, vö. (לַשָּׁוְא) 2Móz 20:7 (a versben kétszer)=5Móz 5:11 (a versben kétszer); ׳תָּפַשׁ ׳י Péld 30:9; שְׁמִיעַלֿ נִקְרָא stb. a tulajdonjog jeleként (vö. 2a), Jer 7:10 és máshol ; = hírneve, dicsősége, לוֺ עָשָׁה-val, l. 1b (1), vö. Józs 7:9; ׳בְּשׁ ׳י, azaz mint az ő képviselője 2Móz 5:23 (J), 1Sám 17:45; 5Móz 10:8; 2Sám 6:18; 2Kir 2:24 és máshol (l. a 2a végét); különösen mint ami a ׳י (kinyilatkoztatott) jellemét testesíti meg: ׳י שְׁמוֺ Ámós 5:8; 9:6; Jer 33:2, לְעֹלָם שְּׁמִי וֶה 2Móz 3:15 (E; || זֵכֶר; alaphely), 6:3 (P); ׳י שְׁמוֺ׳(א עְבָאוֺת ) Ámós 4:13; 5:27; Jer 10:16; 46:18, Jeremiásnál összesen 10-szer, Ézs^2, ׳י שְׁמוֺ קַנָּא 2Móz 34:14 (J; vö. 20:5; Náh 1:2), שׁ ׳קָדוֺשׁ Ézs 57:15, ׳שׁ [וֺ] קָדְשִׁי Ámós 2:7; Ez 39:7; 43:7; Zsolt 103:1 + gyakran; ezért a megismerés tárgya Ézs 52:6; Jer 48:17, שְׁמֶ֑ךָ יֹדְעֵי Zsolt 9:11 (|| דֹּרְשֶׁיךָ), a szereteté Ézs 56:5, שׁ ׳אֹהֲבֵי Zsolt 5:12; Zsolt 69:37; 119:132, a félelemé 61:6, különösen a dicséreté stb. (בֵּרַח הוֺדָה, הִןכִּיר, חִלֵּל,, stb.): אֲוַמֵּר לְשִׁמְךָ 2Sám 22:50 (|| אוֺדְךָ, és így igen gyakran || ׳י) = Zsolt 18:50, vö. 1Krón 16:10; 29:13; Zsolt 45:18; Ézs 26:13; 1Kir 8:33, 35 2Krón 6:24, 26; Zsolt 8:2; Zsolt 8:10 és máshol; ׳חָבוּלי שְׁמוֺ כְּבוֺד 29:2; 96:8, és sok más kapcsolat; ellentéte אֶתשֿׁ ׳חִלֵּל ׳א 3Móz 18:21 és máshol, שׁ ׳נקב ׳י 24:16, שׁ ׳נִאֵץ Zsolt 74:10; 74:18 stb.; ׳הַשּׁ וְהַנּוֺרָא הַנִּכְבָּד 5Móz 28:58, vö. Neh 1:11; שִׁמְךָ לְמַעַן a ׳י-hoz intézett kérésekben, hogy jelleme szerint cselekedjék Jer 14:7, 21; Ez 20:9, 14; Ézs 48:9; 66:5; Zsolt 25:11; 31:4 és máshol; a ׳שׁ ׳י hatalmas cselekvő, הוֺשִׁיעֵנִי בְּשִׁמְךָ 54:3 (|| בִּגְבוּרָֽתְךָ), vö. 124:8; a ׳י י-ról ׳מַלְאַךָ ezt mondja: בְּקִרְבּוֺ שְׁמִי 2Móz 23:21 (E); a הַשֵּׁם a 3Móz 24:11-ben valószínűleg írnoki helyettesítés a ׳י szó helyett (amelyet már kezdtek kimondhatatlannak tartani, különösen וַיִקֹּב-val, vö. Gei^Urschr.273 k. Di Dr-Wh Baen); e használat fejlődéséről és a ׳הַשּׁ megszemélyesített vagy hiposztázisként való zsidó használatáról l. Levy^NHWB a címszónál, Jastr^s.see — a שְׁמֶ֑ךָ קָרוֺב a Zsolt 75:2-ben feltűnő, de kétséges, < ᵐ5 Dy Che Gr Hup-Now שׁ ׳קֹרְאֵי, Du בִשׁ ׳קָרָנוּ (= קָרָאנוּ).
 
 - **`4` — név: hamis istenekről**
 
-  > 4 hamis istenekről: használata tilos 2Móz 23:13 (E), Józs 23:7 (R^D), vö. Hós 2:19; Zsolt 16:4; אחרים אלהים בְּשֵׁם szólni 5Móz 18:20; בְשׁ ׳קָרָא ׳א **1Kir 18:24**-25, **26**; בְשׁ ׳יֵלְכוּ ׳א Mik 4:5.
+  > hamis istenekről: használata tilos 2Móz 23:13 (E), Józs 23:7 (R^D), vö. Hós 2:19; Zsolt 16:4; אחרים אלהים בְּשֵׁם szólni 5Móz 18:20; בְשׁ ׳קָרָא ׳א **1Kir 18:24**-25, **26**; בְשׁ ׳יֵלְכוּ ׳א Mik 4:5.
 
 <details>
 <summary>5 (1 szakasz)</summary>

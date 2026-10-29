@@ -189,6 +189,25 @@ class Megjelenites(unittest.TestCase):
         self.assertEqual(sorted(t), ['a', 'b'])
         self.assertEqual(h, ['c'])
 
+    def test_jelolo_levag(self):
+        # a kibontott szakasz idézete nem ismétli a címke jelét („`3` — név…” után „> 3 név…”)
+        self.assertEqual(LG.jelolo_levag('3 név, mint Isten megjelölése', '3'), 'név, mint Isten megjelölése')
+        self.assertEqual(LG.jelolo_levag('2. a. rendszerint személyé', '2.a'), 'rendszerint személyé')
+        self.assertEqual(LG.jelolo_levag('c. hívni ׳י nevével', 'Qal 2.c'), 'hívni ׳י nevével')
+        self.assertEqual(LG.jelolo_levag('1. nevet adni', '1'), 'nevet adni')
+        self.assertEqual(LG.jelolo_levag('b. = hírnév', '2.b'), '= hírnév')
+        # nem a saját jele, névelő, igehely, üres maradék: változatlan
+        self.assertEqual(LG.jelolo_levag('4 hamis istenekről', '3'), '4 hamis istenekről')
+        self.assertEqual(LG.jelolo_levag('a név ereje', '2.a'), 'a név ereje')
+        self.assertEqual(LG.jelolo_levag('1Móz 4:26 szerint', '1'), '1Móz 4:26 szerint')
+        self.assertEqual(LG.jelolo_levag('3 ', '3'), '3 ')
+
+    def test_kibontott_idezet_jel_nelkul(self):
+        a = self._hu_adat('illeszkedik')
+        szov = '\n'.join(LG.gerinc_blokk(a, 'BDB', 'H8034', [elo('Ézs 55:13', '', strong='H8034', entry='')])[0])
+        self.assertIn('> = emlékjel **Ézs 55:13**', szov)
+        self.assertNotIn('> 5 ', szov)
+
     def test_meg_nem_talalt_pelda(self):
         uj, t, h = LG.kiemel('c. hívni: 1Móz 4:26', [('Jer 10:25', 'x')])
         self.assertNotIn('**', uj)
