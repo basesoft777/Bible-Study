@@ -52,7 +52,8 @@ BESOROLASOK = ('javulás', 'semleges', 'rontás', 'eldontetlen')
 # („GASm. Niph`al Perfect …”). A 24 sor mind a Qal 6/g, 6/h, 8/a, 8/b, 8/c valódi szeletében áll (a sorok előtti szöveg kézzel
 # átnézve); a régi `Qal/5/g` és `Qal/5/h` a BDB-ben nem létező pont (a Qal 5 csak a.–b.). A keresztpróba ellentmondása a
 # bdb_szakaszok hibája, nem a B1-é.
-KEZI_H7200 = 'javulás (kézi): a sor a BDB Qal %s pontjának szövegében áll; a bdb_szakaszok „Niph`al”-szakasza a 8135./9855. pozíciójú szövegközi utalásból ered, nem törzsfej'
+JEGYZET = '— Corrupt is'
+KEZI_H7200 ='javulás (kézi): a sor a BDB Qal %s pontjának szövegében áll; a bdb_szakaszok „Niph`al”-szakasza a 8135./9855. pozíciójú szövegközi utalásból ered, nem törzsfej'
 
 
 def git_tabla(rev):
@@ -248,6 +249,13 @@ def main():
         kezi = ''
         if bes == 'eldontetlen' and k[0] == 'H7200' and 'ismert H7200-hibája' in indok:
             kezi = KEZI_H7200 % szamresz(u['utvonal'])
+        # F123.ALVIL.J22 (ELLENOR_F123_ALVIL-001_2 ELTÉRÉS-5): a szelet végén álló „— Corrupt is …” szövegkritikai jegyzet sorai
+        # nem a jelentéspont példái; a régi (nem létező) pontnál jobb helyen állnak, de nem a jelentésben: semleges, jelölt
+        if sz is not None and JEGYZET in s[sz[0]:poz]:
+            bes = 'semleges'
+            indok += '; JELÖLT: a sor a BDB „%s …” szövegkritikai jegyzetében áll, nem a %s jelentésben' % (
+                JEGYZET, szamresz(u['utvonal']))
+            kezi = 'semleges, jelölt (kézi): szövegkritikai jegyzet, nem a %s jelentés' % szamresz(u['utvonal'])
         ki.append([k[0], k[1], k[2], r['nyers'], r['karoli_vers'], r['utvonal'], u['utvonal'], bes, indok,
                    '' if sz is None else '%d-%d' % sz, kezi])
     with open(KI_TSV, 'w', encoding='utf-8', newline='') as f:
