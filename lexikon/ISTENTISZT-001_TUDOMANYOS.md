@@ -738,16 +738,16 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 *A motívum igehelyeinek Károli-szóalakjai (`adat/elofordulasok.tsv`, `karoli_szo`), szótári alakonként (`adat/szoto/karoli_szotari_alak.tsv`, mai helyesírás), névelő nélkül: a szóalakok, és hány igehelyen, melyiken.*
 
-- **hív** (30) — hívá, hívom, hívjátok, hívja, hívják, hívta, hívák, hívám, hívni, híván: 1Móz 4:26, 1Móz 12:8, 1Móz 13:4, 1Móz 21:33, 1Móz 26:25, 1Kir 18:24, 1Kir 18:25, 1Kir 18:26, 2Kir 5:11, Sof 3:9, Zak 13:9, Zsolt 116:4, Zsolt 116:13, Zsolt 116:17, Jóel 2:32, Róm 10:14, 1Kor 1:2, 2Tim 2:22, 1Pét 1:17, ApCsel 9:14, ApCsel 9:21, ApCsel 22:16, Zsolt 105:1, 1Krón 16:8, Jer 10:25, Zsolt 79:6, Ézs 64:6, ApCsel 2:21, Róm 10:13, Róm 10:12
-- **segítségül** (29) — segítségül, segítségűl: 1Móz 4:26, 1Móz 12:8, 1Móz 13:4, 1Móz 21:33, 1Móz 26:25, 1Kir 18:24, 1Kir 18:25, 1Kir 18:26, 2Kir 5:11, Sof 3:9, Zak 13:9, Zsolt 116:4, Zsolt 116:13, Zsolt 116:17, Jóel 2:32, Róm 10:14, 1Kor 1:2, 2Tim 2:22, ApCsel 9:14, ApCsel 9:21, ApCsel 22:16, Zsolt 105:1, 1Krón 16:8, Jer 10:25, Zsolt 79:6, Ézs 64:6, ApCsel 2:21, Róm 10:13, Róm 10:12
-- **név** (25) — nevét, nevemet, nevedet, nevén: 1Móz 4:26, 1Móz 12:8, 1Móz 13:4, 1Móz 21:33, 1Móz 26:25, 1Kir 18:24, 1Kir 18:25, 1Kir 18:26, 2Kir 5:11, Sof 3:9, Zak 13:9, Zsolt 116:4, Zsolt 116:13, Zsolt 116:17, Jóel 2:32, Zsolt 105:1, 1Krón 16:8, Ézs 12:4, Jer 10:25, Zsolt 79:6, Ézs 64:6, 2Móz 33:19, 2Móz 34:5, ApCsel 2:21, Róm 10:13
-- **úr** (16) — Úrnak, Úr, Urat: 1Móz 4:26, 1Móz 12:8, 1Móz 13:4, 1Móz 21:33, 1Móz 26:25, 1Kir 18:24, 2Kir 5:11, Sof 3:9, Zsolt 116:4, Zsolt 116:13, Zsolt 116:17, Jóel 2:32, 2Móz 33:19, 2Móz 34:5, ApCsel 2:21, Róm 10:13
-- **ő** (4) — ő, Ő: 2Kir 5:11, Zsolt 105:1, 1Krón 16:8, Ézs 12:4
+- **hív** (30) — hívá, hívom, hívjátok, hívja, hívják, hívta, hívák, hívám, hívni, híván: 1Móz 4:26, 1Móz 12:8, 1Móz 13:4, 1Móz 21:33, 1Móz 26:25, 1Kir 18:24, 1Kir 18:25, 1Kir 18:26, 2Kir 5:11, 1Krón 16:8, Zsolt 79:6, Zsolt 105:1, Zsolt 116:4, Zsolt 116:13, Zsolt 116:17, Ézs 64:6, Jer 10:25, Jóel 2:32, Sof 3:9, Zak 13:9, ApCsel 2:21, ApCsel 9:14, ApCsel 9:21, ApCsel 22:16, Róm 10:12, Róm 10:13, Róm 10:14, 1Kor 1:2, 2Tim 2:22, 1Pét 1:17
+- **segítségül** (29) — segítségül, segítségűl: 1Móz 4:26, 1Móz 12:8, 1Móz 13:4, 1Móz 21:33, 1Móz 26:25, 1Kir 18:24, 1Kir 18:25, 1Kir 18:26, 2Kir 5:11, 1Krón 16:8, Zsolt 79:6, Zsolt 105:1, Zsolt 116:4, Zsolt 116:13, Zsolt 116:17, Ézs 64:6, Jer 10:25, Jóel 2:32, Sof 3:9, Zak 13:9, ApCsel 2:21, ApCsel 9:14, ApCsel 9:21, ApCsel 22:16, Róm 10:12, Róm 10:13, Róm 10:14, 1Kor 1:2, 2Tim 2:22
+- **név** (25) — nevét, nevemet, nevedet, nevén: 1Móz 4:26, 1Móz 12:8, 1Móz 13:4, 1Móz 21:33, 1Móz 26:25, 2Móz 33:19, 2Móz 34:5, 1Kir 18:24, 1Kir 18:25, 1Kir 18:26, 2Kir 5:11, 1Krón 16:8, Zsolt 79:6, Zsolt 105:1, Zsolt 116:4, Zsolt 116:13, Zsolt 116:17, Ézs 12:4, Ézs 64:6, Jer 10:25, Jóel 2:32, Sof 3:9, Zak 13:9, ApCsel 2:21, Róm 10:13
+- **úr** (16) — Úrnak, Úr, Urat: 1Móz 4:26, 1Móz 12:8, 1Móz 13:4, 1Móz 21:33, 1Móz 26:25, 2Móz 33:19, 2Móz 34:5, 1Kir 18:24, 2Kir 5:11, Zsolt 116:4, Zsolt 116:13, Zsolt 116:17, Jóel 2:32, Sof 3:9, ApCsel 2:21, Róm 10:13
+- **ő** (4) — ő, Ő: 2Kir 5:11, 1Krón 16:8, Zsolt 105:1, Ézs 12:4
 - **isten** (3) — Istennek, Istenének, istenteknek: 1Móz 21:33, 1Kir 18:25, 2Kir 5:11
 - **kiált** (2) — kiáltom, kiáltá: 2Móz 33:19, 2Móz 34:5
-- **nem** (2) — nem: Jer 10:25, Zsolt 79:6
+- **nem** (2) — nem: Zsolt 79:6, Jer 10:25
 - **ott** (2) — ott: 1Móz 13:4, 1Móz 21:33
-- **te** (2) — te: Jer 10:25, Zsolt 79:6
+- **te** (2) — te: Zsolt 79:6, Jer 10:25
 - **baál** (1) — Baálnak: 1Kir 18:26
 - **előtt** (1) — előtted: 2Móz 33:19
 - **magasztalja** (1) — magasztaljátok: Ézs 12:4
@@ -766,10 +766,10 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 **Rejtett párhuzam** (ugyanaz a Strong, más magyar szó): a motívum igehelyei, ahol a Károli a saját gerinc-kombinációjának valamely kulcsszavát nem használja — 4 hely.
 
-- 1Pét 1:17 — „hívjátok” (G1941; hiányzik: segítségül)
-- Ézs 12:4 — „magasztaljátok az Ő nevét” (H7121+H8034; hiányzik: hív, segítségül)
 - 2Móz 33:19 — „kiáltom előtted az Úr nevét” (H7121+H8034; hiányzik: hív, segítségül)
 - 2Móz 34:5 — „nevén kiáltá az Urat” (H7121+H8034; hiányzik: hív, segítségül)
+- Ézs 12:4 — „magasztaljátok az Ő nevét” (H7121+H8034; hiányzik: hív, segítségül)
+- 1Pét 1:17 — „hívjátok” (G1941; hiányzik: segítségül)
 
 **Hamis párhuzam** (ugyanaz a magyar szó, más Strong): Károli-versek valamely kombináció minden kulcsszavával, a gerinc nélkül — 17 vers.
 
