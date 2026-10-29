@@ -398,9 +398,12 @@ A nevesített tanítói egyezés-keresés (7. lépés, B9) eredménye a saját f
 
 <!-- ADAT-NÉZET: 7.K Kereszthivatkozások + Minősítés | forrás: adat/jeloltek.tsv (dontes, indoklas, forras_kereses), TSK/Károli-KH ∩ előfordulások | cél: general.py --cel lexikon (minosites rés, res_forras forras=adat) | SZINT: apparatus -->
 
-**A 2Móz 33:19/34:5 → Ézs 12:4 és a 9 emberi-invokációs igehely felé
-továbbra sincs TSK-kereszthivatkozás** — megerősítve, ez a felismerés
+**A 2Móz 33:19/34:5-ből a 31 emberi invokáció felé (az Ézs 12:4-et is
+beleértve) a lap küszöbén (TSK Votes ≥ 15) nincs kereszthivatkozás;
+küszöb alatt egy van: 2Móz 33:19 → Ézs 12:4 (Votes 3)**【NAPLO: DT-F131p, 2026-10-29, a felhasználó döntése (orkesztrátor-chat: „(a) pontosítva”) — a korábbi „a 9 emberi-invokációs igehely felé továbbra sincs TSK-kereszthivatkozás” helyett, küszöbbel és a küszöb alatti kapcsolattal】 — ez a felismerés
 saját, lexikai szintű megfigyelés marad (l. korábbi megállapítás).
+
+*Proveniencia: scope=range:2Móz 33:19 | forras=TSK_kereszthivatkozasok.tsv+Karoli_versmegfeleltetes.tsv (tsk_kulcs, KJV->Károli) | n=19 | ts=2026-10-29T09:06Z | csatorna=cli · scope=range:2Móz 34:5 | forras=TSK_kereszthivatkozasok.tsv+Karoli_versmegfeleltetes.tsv (tsk_kulcs, KJV->Károli) | n=14 | ts=2026-10-29T09:06Z | csatorna=cli · metszet a 31 A-hellyel: naplok/ISTENTISZT001_arany_tsk_meres.py (elofordulasok.tsv, split('\t'))*
 
 <!-- ADAT-NÉZET: 7.A Kapcsolatok + Alátámasztás | forrás: adat/kapcsolatok.tsv (indoklas) | cél: general.py --cel lexikon (alatamasztas rés, res_forras forras=adat) | SZINT: apparatus -->
 
