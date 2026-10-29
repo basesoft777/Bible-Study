@@ -38,6 +38,8 @@ import ubs_hozzarendeles as UBS
 import lxx_os_import as LXXOS
 import kiejtes as KJ
 import utvonalak as _U
+import szerep_karoli as SZK
+import szerep_nave as SZN
 
 ROOT = G.ROOT
 ADAT = G.ADAT
@@ -1646,6 +1648,8 @@ def _szerep_blokk(nyelv, sor, tokenek_ny, reszek, ctx):
     elif not tart and (nyelv, n) in SZEREP_KEZI_2B:
         hiv = SZEREP_KEZI_2B[(nyelv, n)]
         szakasz.append('*Hivatkozás: %s.*' % hiv)
+    elif tart and ctx.get('gerinc') and (nyelv, n) in GERINC_TELJES:
+        szakasz.extend(tart)
     else:
         if tart:
             szakasz.extend(tart)
@@ -2546,7 +2550,55 @@ def _gerinc_ubs_mutato(nyelv, n, tokenek_ny, reszek, ctx):
             for t in tokenek_ny]
 
 
+# A 13–14. szerep (Károli-megfelelők, Rejtett / hamis párhuzam) a motívumonként jóváhagyott lapokon épül (a gerinc-lista
+# mintájára): a többi gerinc-lapon a `javaslat` üres blokk marad, amíg a motívumra nincs döntés (DONTESEK, B5).
+SZEREP_KAROLI_MOTIVUMOK = frozenset({'ISTENTISZT-001'})
+
+
+def _gerinc_karoli(nyelv, n, tokenek_ny, reszek, ctx):
+    """A 13. (Károli-megfelelők) és a 14. (Rejtett / hamis párhuzam) nyelvfüggetlen szerep az arany lapon
+    (ISTENTISZT-001 arany lap, 2026-10-29): az általános építő az `eszkozok/szerep_karoli.py`-ban; itt csak a motívum
+    engedélyezése (`SZEREP_KAROLI_MOTIVUMOK`) és a forrás- és licencnyilvántartás."""
+    sorai = ctx.get('sorai') or []
+    if not sorai or sorai[0].get('id') not in SZEREP_KAROLI_MOTIVUMOK:
+        return []
+    out = (SZK.blokk_13 if n == 13 else SZK.blokk_14)(sorai, G.TS)
+    if out:
+        ctx['fl'].setdefault('adat/elofordulasok.tsv', set()).add('projekt_adat')
+        ctx['fl'].setdefault('adat/szoto/karoli_szotari_alak.tsv', set()).add('projekt_adat')
+        if n == 14:
+            ctx['fl'].setdefault('konkordancia/Karoli_1908.tsv', set()).add('Karoli_1908')
+            ctx['fl'].setdefault(TAHOT_KIVONAT_FAJL, set()).add('TAHOT')
+            ctx['fl'].setdefault('konkordancia/TAGNT_kivonat.tsv', set()).add('TAGNT')
+            ctx['fl'].setdefault('adat/karoli_strong', set()).add('projekt_adat')
+            ctx['fl'].setdefault('adat/jeloltek.tsv', set()).add('projekt_adat')
+    return out
+
+
+def _gerinc_nave(nyelv, n, tokenek_ny, reszek, ctx):
+    """A 12. nyelvfüggetlen szerep (Tematikus index, Nave) az arany lapon (ISTENTISZT-001 arany lap, 2026-10-29): az
+    általános jelöltképzés és választás az `eszkozok/szerep_nave.py`-ban; itt csak a forrás- és licencnyilvántartás. A
+    blokk csak akkor épül, ha a motívumnak van döntése az `adat/tematikus_temak.tsv`-ben (a halmaz a felhasználóé, B5);
+    különben a `javaslat` üres blokk marad."""
+    sorai = ctx.get('sorai') or []
+    if not sorai or not SZN.tema_dontesek(sorai[0].get('id')):
+        return []
+    out = SZN.blokk_12(sorai, G.TS)
+    if out:
+        ctx['fl'].setdefault('konkordancia/Nave_basokant.tsv', set()).add('Nave_basokant')
+        ctx['fl'].setdefault('adat/elofordulasok.tsv', set()).add('projekt_adat')
+        ctx['fl'].setdefault('adat/tematikus_temak.tsv', set()).add('projekt_adat')
+        ctx['fl'].setdefault('adat/nave_tema_hu.tsv', set()).add('projekt_adat')
+    return out
+
+
+# a gerinc-építő tartalma a szerep teljes tartalma: a `javaslat` állapotú szerep alá nem kerül általános üres blokk
+GERINC_TELJES = frozenset({('gorog', 12), ('gorog', 13), ('gorog', 14)})
+
 GERINC_SZEREP_EPITO = {
+    ('gorog', 12): _gerinc_nave,
+    ('gorog', 13): _gerinc_karoli,
+    ('gorog', 14): _gerinc_karoli,
     ('gorog', 2): _gerinc_hivatkozas_gerincre,
     ('heber', 2): _gerinc_hivatkozas_gerincre,
     ('heber', 8): _gerinc_hivatkozas_gerincre,
