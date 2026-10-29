@@ -63,6 +63,7 @@ BEMENETI_FAJLOK = [
     'adat/grammatikai_strongok.tsv', 'konkordancia/TAHOT_kivonat.tsv',
     'konkordancia/TAGNT_kivonat.tsv', 'konkordancia/Konyv_normalizalo_tabla.tsv',
     'eszkozok/gerinc_terkep.py', 'eszkozok/gerinc_kartya.py', 'eszkozok/gerinc_szuro.py',
+    'eszkozok/general.py', 'eszkozok/lekerdez.py', 'eszkozok/strong_util.py',
 ]
 
 TSV_FEJLEC = ['konyv', 'fejezet', 'motivum_db', 'motivumok', 'kollokacio_db', 'talalat_db',
@@ -176,8 +177,8 @@ def terkep_szamit(sorok, fedett, kidx):
         a = s['allapot']
         if a == 'már előfordulás' or a in ('már jelölt: elutasítva', 'már jelölt: beépítve'):
             continue
-        if s['szures'] == 'kiszurve':
-            continue
+        if s['szures'] == 'kiszurve' and a != 'már jelölt: nyitva':
+            continue      # a kiszurt nyitva jelolt mar latott hely: a nyitva_db-ben marad
         c = cella(k)
         par = (s['id'], k)
         m = ki_motivum.setdefault(s['id'], {'talalat': set(), 'szuretlen': set(), 'nyitva': set()})
@@ -224,7 +225,13 @@ def git_blob(rel, root):
 
 
 def git_ts(rels, root):
-    ep = _git(['log', '-1', '--format=%ct', '--'] + list(rels), root)
+    # A tanulmanymappaknal csak a fajlnevek szamitanak (hozzaadas/torles/atnevezes),
+    # a tartalmi szerkesztes nem: kulonben minden tanulmany-javitas uj `ts`-t adna.
+    mappak = [r for r in rels if r in TANULMANY_MAPPAK]
+    fajlok = [r for r in rels if r not in TANULMANY_MAPPAK]
+    ep_f = _git(['log', '-1', '--format=%ct', '--'] + fajlok, root)
+    ep_m = _git(['log', '-1', '--diff-filter=ADR', '--format=%ct', '--'] + mappak, root) if mappak else None
+    ep = max((e for e in (ep_f, ep_m) if e and e.isdigit()), key=int, default=None)
     if not ep or not ep.isdigit():
         return 'ismeretlen'
     import datetime

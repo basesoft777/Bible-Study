@@ -25,7 +25,7 @@ Döntés: DT-F124a (✅ alkalmazva; a felhasználó szava: „minden legyen telj
 | Alapfutásban nem ír táblát; `--ir` csak `új`, `nyitva`, sorösszevetéssel | ✔; az `elofordulasok.tsv` hash-e a teszt előtt-után azonos |
 | Térkép bajtra azonos, `# GENERÁLT` fejléc | ✔ (`ValosAdat`) |
 | MUNKAMENET és 2_ sablon csak jóváhagyott szöveggel | ✔ nem módosult; a szöveg a naplóban, jóváhagyásra |
-| `feladatok.py ellenoriz` 0 hiba; tesztek zöldek | lásd lent |
+| `feladatok.py ellenoriz` 0 hiba; tesztek zöldek | ✔ `feladatok.py ellenoriz`: 166 brief, 0 hiba, 0 figyelmeztetés; `teszt_gerinc_szuro.py` 14, `teszt_gerinc_kartya.py` 25, `teszt_gerinc_terkep.py` 20 teszt OK; `ellenoriz.py`: SÉRTÉS 0; `ellenorzes/futtat.py` (PR-cím `[ELLENŐRZŐ]`-val, E16 miatt): kilépés 0 |
 
 ## Tételesen nem teljesített / nyitott (a naplo 8. pontja)
 
@@ -40,4 +40,4 @@ Döntés: DT-F124a (✅ alkalmazva; a felhasználó szava: „minden legyen telj
 
 ## Ellenőrzés
 
-Lásd a PR-t és a `naplok/ELLENOR_F124.md`-t.
+A `fuggetlen-ellenor` 10 eltérést jelzett (a jelentés fájlba mentésére nem volt eszköze; tartalma a PR leírásában és a napló 9. pontjában). Javítva: E16 (a PR címe `[ELLENŐRZŐ]` előtagú), a zárás tesztállítása, a `jelolt.py`-ra építés eltérésének rögzítése, a térkép `ts`-e és bemenete, a nyitott tételek felvétele, a kiszűrt `nyitva` jelölt, a `Sir` rangja, a napló két száma. A `naplok/ELLENOR_F124.md` fájlt az orkesztrátor/felhasználó kérésére mentem.

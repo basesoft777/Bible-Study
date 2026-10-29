@@ -130,6 +130,15 @@ class Szamitas(unittest.TestCase):
     def test_ures(self):
         self.assertEqual(self.szamit([]), ([], {}))
 
+    def test_kiszurt_nyitva_jelolt_a_nyitva_oszlopban_marad(self):
+        ki, _ = self.szamit([sor('A-001', '1Móz', 1, 1, allapot='már jelölt: nyitva', szures='kiszurve')])
+        self.assertEqual((ki[0]['nyitva_db'], ki[0]['talalat_db']), (1, 0))
+
+    def test_siralmak_kanonikus_helye(self):
+        self.assertLess(KIDX['Sir'], KIDX['Ez'] + 100)
+        self.assertLess(KIDX['Sir'], 999)
+        self.assertLess(KIDX['Sir'], KIDX['Jel'])
+
 
 class Kimenet(unittest.TestCase):
     def test_tsv_fejlec_es_idempotens(self):
@@ -157,6 +166,15 @@ class Kimenet(unittest.TestCase):
         self.assertEqual(a, b)
         c = T.bemenet_azonosito(ROOT, n + [('genezis/b_bovitett.md', 'b')], blob=lambda f, r: 'h', ts_fn=lambda p, r: 'T')
         self.assertNotEqual(a[0], c[0])      # uj tanulmanyfajl -> mas bemenet-azonosito
+
+
+class GitAzonosito(unittest.TestCase):
+    def test_valos_git_ket_hivasra_azonos(self):
+        n = T.tanulmany_fajlnevek(ROOT)
+        a = T.bemenet_azonosito(ROOT, n)
+        self.assertEqual(a, T.bemenet_azonosito(ROOT, n))
+        self.assertIn('eszkozok/general.py@', a[0])
+        self.assertNotEqual(a[1], '')
 
 
 def _hash(utak):

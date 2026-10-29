@@ -32,6 +32,9 @@ on:
       - 'eszkozok/gerinc_terkep.py'
       - 'eszkozok/gerinc_kartya.py'
       - 'eszkozok/gerinc_szuro.py'
+      - 'eszkozok/general.py'
+      - 'eszkozok/lekerdez.py'
+      - 'eszkozok/strong_util.py'
       - '.github/workflows/gerinc_terkep.yml'
   schedule:
     - cron: '23 4 * * 1'      # tartalek: hetfo 04:23 UTC

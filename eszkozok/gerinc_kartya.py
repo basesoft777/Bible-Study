@@ -8,7 +8,12 @@ A kartya megmutatja, mely meglevo motivumok gerinc-elemei fordulnak elo a
 szakaszban (TAHOT + TAGNT, a grammatikai Strongok kiszurve), mi van ezek
 kozul mar az adatretegben, es soronkent megnevezi, melyik gerinc-elemen
 log. A `jelolt.py` fuggvenyeire epit (annak sorhalmazat tartalmazza), de
-azt nem modositja; ujdonsagok: kollokacio-jelzes (osszetett gerinc-elem
+azt nem modositja. A sorhalmaz egyezeset (id, igehely, Strong) a
+teszt_gerinc_kartya.py `Egyezes` osztalya orzi 5 valos szakaszon; a kartya a
+jelolt.py fuggvenyeit NEM importalja, hanem ugyanazt a logikat (szakasz Strongjai
+a grammatikai szuressel, `+`-os gerinc-elemek tagonkent) bovitve ujraepiti
+(naplok/GERINC_KARTYA_naplo.md 9.), mert a verses indexre, a kollokaciora es a
+tartomany-igehelyekre a jelolt.py fuggvenyei nem adnak kampot. Ujdonsagok: kollokacio-jelzes (osszetett gerinc-elem
 minden tagja egy versben), allapot-bovites (tartomany-igehelyek, a jelolt
 dontese), a #110 szuro (gerinc_szuro.py) es a `szuretlen_tag` jeloles a
 tag gerinc-Strongokon, valamint a lekerdezesenkenti proveniencia-sor, 0
@@ -82,7 +87,10 @@ def versek_betolt():
 def konyv_index():
     """{magyar_rovidites: sorszam} a Konyv_normalizalo_tabla sorrendjeben."""
     step2hu, _ = L.book_tables()
-    return {hu: i for i, hu in enumerate(step2hu.values())}
+    idx = {hu: i for i, hu in enumerate(step2hu.values())}
+    if 'JSir' in idx:
+        idx.setdefault('Sir', idx['JSir'])     # az adatkulcsok a Siralmakat `Sir`-kent irjak
+    return idx
 
 
 def igehely_str(kulcs):

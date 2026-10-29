@@ -6,7 +6,7 @@
 
 ### (a) A motívumok gerinc-elemei (`adat/elofordulasok.tsv`, `gerinc_elem` / `strong`)
 
-Forrás: `adat/elofordulasok.tsv` (262 sor), olvasás `split('\t')`-tel. Proveniencia: `scope=adat/elofordulasok.tsv | forras=elofordulasok.tsv | n=262 | ts=2026-10-29`.
+Forrás: `adat/elofordulasok.tsv` (261 adatsor), olvasás `split('\t')`-tel. Proveniencia: `scope=adat/elofordulasok.tsv | forras=elofordulasok.tsv | n=262 | ts=2026-10-29`.
 
 | Motívum | Sorok | Gerinc-elemek (`strong` oszlop; db) |
 |---|---|---|
@@ -37,7 +37,7 @@ Forrás: `adat/elofordulasok.tsv` (262 sor), olvasás `split('\t')`-tel. Proveni
 
 Mérés: a `genezis/`, `ujszovetseg/`, `melyelemzesek/`, `tematikus_lezart/` `*.md` fájljai, a reguláris minta `^<könyv>_<fej>[v<vers>][-[<fej>v]<vers>]_…`.
 
-- **Géppel értelmezhető: 24 igeszakasz-tanulmány** (`genezis/` 20: `1Moz_1v1` … `1Moz_16`; `ujszovetseg/` 3: `1Thessz_5v23`, `Rom_8v10`, `Zsid_4v12`; plusz `1Moz_14_bovitett`-hez hasonló fejezet-egészek). Alakok: `1Moz_14` (teljes fejezet), `1Moz_12v1-20` (span), `1Moz_1v2-2v3`, `1Moz_4v25-5v32` (fejezethatáron át), `Rom_8v10` (egy vers).
+- **Géppel értelmezhető: 23 igeszakasz-tanulmány** (`genezis/` 20: `1Moz_1v1` … `1Moz_16`; `ujszovetseg/` 3: `1Thessz_5v23`, `Rom_8v10`, `Zsid_4v12`; plusz `1Moz_14_bovitett`-hez hasonló fejezet-egészek). Alakok: `1Moz_14` (teljes fejezet), `1Moz_12v1-20` (span), `1Moz_1v2-2v3`, `1Moz_4v25-5v32` (fejezethatáron át), `Rom_8v10` (egy vers).
 - **Nem igeszakasz-tanulmány, kizárandó a lefedettségből (10 fájl):** a `tematikus_lezart/` 8 motívum-tanulmánya és a 2 `Konnyu_ellenorzes_*` összesítő a `genezis/`-ben.
 - **Nem értelmezhető (1 fájl):** `melyelemzesek/1Mozes_14_18-20_Zsolt110_4_Zsid5-7_melyelemzes.md` — több szakasz egy névben. Az 1Móz 14:18-20-at a `1Moz_14_bovitett` már lefedi; a Zsolt 110:4 és a Zsid 5–7 *feldolgozatlan* marad (kézi bejegyzés kell, vagy a térkép hibalistájába kerül).
 - A könyvnév-tokenek (`1Moz`, `Rom`, `Zsid`, `1Thessz`) a `Konyv_normalizalo_tabla.tsv` magyar rövidítéseire (`1Móz`, `Róm`, `Zsid`, `1Thessz`) leképezendők; az ékezetlen → ékezetes megfeleltetés a táblából építhető, a nem egyezők a hibalistára kerülnek.
@@ -50,7 +50,7 @@ A `jelolt.py --szakasz` (nem ír) sorszámai, amelyekkel a kártya soraiból a `
 | Szakasz | Jelleg | `jelolt.py` sor | „új jelölt” | Megjegyzés |
 |---|---|---|---|---|
 | 1Móz 6:1-8 | feldolgozott, ismert előfordulásokkal | 10 | 1 | MENNY-001 (H0430, H1121, H5303) és HAMART-001 már előfordulás/jelölt; ISTENTISZT-001 `1Móz 6:4` H8034 egyedül, kollokáció nélkül → ilyen zajt a kártya `egy_tag`-gel jelöli |
-| 1Móz 17:1-27 | feldolgozatlan (a következő tanulmány, #13) | 23+ | mind | zaj nagy része a tág H1121/H0430 (MENNY-001) és H7121/H8034 (ISTENTISZT-001): ezek a `szuretlen_tag` / szűrő tárgyai |
+| 1Móz 17:1-27 | feldolgozatlan (a következő tanulmány, #13) | 26 | mind | zaj nagy része a tág H1121/H0430 (MENNY-001) és H7121/H8034 (ISTENTISZT-001): ezek a `szuretlen_tag` / szűrő tárgyai |
 | Mt 24:37-39 | ÚSZ-szakasz | 0 | 0 | üres eredmény; a kártyának explicit „0 találat” + proveniencia-sort kell adnia |
 
 Megjegyzés: a kártya tényleges kimenetét a 4. lépés után vetem össze (ehhez a kártya kódja kell); a mérés itt a `jelolt.py` oldala.
@@ -134,3 +134,12 @@ Próbafutás: `python eszkozok/gerinc_terkep.py --kimenet <ideiglenes könyvtár
 6. **N-F124c** (térkép ↔ #81 Károli-ujjlenyomat): nyitva, nem a #124 hatóköre.
 7. **`egy_tag` sorok `--ir`-je:** a brief szerint az `új`, nem kiszűrt, nem `szuretlen_tag` sorokat írja, ezért a nem-tág összetett gerinc-elemek `egy_tag` sorai is `nyitva` jelöltként íródnak (indoklásukban jelölve). Ha ez zajt ad, szigorítás külön döntés.
 8. **A 2.3 szöveg átírása** a #125-re vár; a 7. pont ⛔ jóváhagyás nélkül nem alkalmazott.
+
+## 9. Eltérések a briefhez / javítókör (ELLENOR_F124)
+
+- **A kártya nem importálja a `jelolt.py` függvényeit** (a brief technikai döntése szerint építenie kellene rájuk). Ok: a verses index, az `egy_tag`/kollokáció és a tartomány-igehelyek kezelése nem fér a `jelolt.py` függvényeibe. A sorhalmaz egyezését (id, igehely, Strong) 5 valós szakaszon a `teszt_gerinc_kartya.py` `Egyezes` őrzi; a `jelolt.py` változatlan. A `gerinc_kartya.py` docstringje ezt rögzíti.
+- **Térkép-`ts`:** a tanulmánymappáknál csak a fájlnevek változása (hozzáadás/törlés/átnevezés) számít; a `general.py`, `lekerdez.py`, `strong_util.py` bekerült a bemenetbe és a workflow `paths:` listájába.
+- **Kiszűrt `nyitva` jelölt** a `nyitva_db`-ben marad (már látott hely); a `Sir` (Siralmak) kanonikus helyre került a rangsorban.
+- **Nyitott tételek felvéve:** DT-F124b (`DONTESEK.md`), N-F124a, N-F124c és két további tétel (`NYITOTT_FELADATOK.md`).
+- **Az `[ELLENŐRZŐ]` PR-cím** kötelező (E16: a workflow ellenőrző-fájl); a PR címe ezt viseli.
+
