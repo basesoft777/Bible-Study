@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-eszkozok/olvaso_szerver/teszt_ubs_dbh.py -- F121 (DT-F121g): a szónézet UBS DBH-blokkja (`szo.ubs_dbh`) és a magyar UBS DNTG
+eszkozok/olvaso_szerver/teszt_ubs_dbh.py -- F121 (DT393): a szónézet UBS DBH-blokkja (`szo.ubs_dbh`) és a magyar UBS DNTG
 szétválasztása (`szo.magyar_gorog`: glossza / definíció). Hermetikus: memóriabeli SQLite, nem a pardes.db.
 
     python eszkozok/teszt_futtat.py --fajl teszt_ubs_dbh

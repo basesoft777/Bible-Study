@@ -464,7 +464,7 @@ def forditas_ehhez(szotar, strong, entry_id, jelentes_szam, mezo):
 
 
 def ubs_glossza_cella(szotar, strong, entry_id, jelentes_szam, angol):
-    """F121 (DT-F121g): az „UBS-jelentés” cella egy eleme: a rövid magyar glossza (`glosszak_hu`, a gyorsítótárból;
+    """F121 (DT393): az „UBS-jelentés” cella egy eleme: a rövid magyar glossza (`glosszak_hu`, a gyorsítótárból;
     ha nincs, az angol + `fordításra vár`) és ⓘ, amely a szónézetre mutat (a teljes UBS-szócikk ott áll)."""
     hu = forditas_ehhez(szotar, strong, entry_id, jelentes_szam, 'glosszak_hu')
     szoveg = _cella(hu) if hu else '%s %s' % (angol, FORDITASRA_VAR)
@@ -495,7 +495,7 @@ def ubs_jelentes_cella(sor_id, igehely, strong_field):
         _id, _ige, strong, lexid, entry_kod, glosszak, egyertelmu, _megjegyzes = r
         if not entry_kod:
             continue
-        # F121 (DT-F121g): a cellában a kód és a rövid glossza áll, mellette ⓘ a szónézetre (a teljes UBS-szócikk ott)
+        # F121 (DT393): a cellában a kód és a rövid glossza áll, mellette ⓘ a szónézetre (a teljes UBS-szócikk ott)
         szoveg = ubs_glossza_cella('UBS_DNTG', strong, lexid, entry_kod, glosszak)
         jelolt = '' if egyertelmu == 'igen' else ' *(jelölt, nem egyértelmű)*'
         tokenenkent.setdefault(strong, []).append('%s — %s%s' % (entry_kod, szoveg, jelolt))
@@ -616,7 +616,7 @@ def blokk_elofordulasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
                   'az ószövetségi soroknál az UBS Dictionary of Biblical Hebrew (DBH) igehelyszintű jelentése '
                   '(`%s`, a Károli-vers az MT-számozásra képezve, `konkordancia/Karoli_versmegfeleltetes.tsv`); '
                   'tokenenként a hivatkozott jelentés(ek) kódja és rövid glosszája; az ⓘ a szónézetre mutat, ahol a teljes '
-                  'UBS-szócikk (definíció és glosszák) áll (DT-F121g). A glossza magyarul a `forditasok.tsv`-ből jön, ahol van; '
+                  'UBS-szócikk (definíció és glosszák) áll (DT393). A glossza magyarul a `forditasok.tsv`-ből jön, ahol van; '
                   'ahol nincs, az angol eredeti áll `(fordításra vár)` jelöléssel. Ahol a DBH a versre nem hivatkozik, a cella ezt kimondja.*'
                   % UBS_DBH_REFERENCIAK_FAJL)
     else:
@@ -1861,7 +1861,8 @@ def gerinc_ala_esik(finom, durva):
 
 
 def kutatoi_kulcs(jelentes_szam):
-    """(kulcs, minősítő): `2.c (tagadva)` → (`2.c`, `tagadva`); a minősítő nem a szó jelentése (N-F131b)."""
+    """(kulcs, minősítő): `2.c (tagadva)` → (`2.c`, `tagadva`); a minősítő nem a szó jelentése, és nem
+    része a SEMA 2.2.2 értékkészletének, ezért a kulcshoz levágjuk."""
     m = re.match(r'^\s*([^\s(]+)\s*(?:\((.*)\))?\s*$', jelentes_szam or '')
     if not m:
         return (jelentes_szam or '').strip(), ''
@@ -2057,7 +2058,8 @@ def jelentes_cimke_token(adat, szotar, strong, jelentes_szam, vers, kutatoi_toke
         tart = bdb_tartomanyban(adat, strong, vers) if szotar == 'BDB' and not tobb_token else []
         return None, '', '; '.join(tobb_token + tart)
     if minosito:
-        ip.append('a kutatói jelentésszám minősítője („%s”) nem a szó jelentése, a címkébe nem kerül (N-F131b)'
+        ip.append('a kutatói jelentésszám minősítője („%s”) nem a szó jelentése, a címkébe nem kerül '
+                  '(a minősítő nem része a SEMA 2.2.2 értékkészletének)'
                   % minosito)
     sor = adat['cimke'].get((szotar, strong, valasztott))
     cimke = (sor or {}).get('cimke_hu') or None
@@ -3117,6 +3119,13 @@ def kotelezo_megjeloles(kulcs, tw_szoveg_kozolve=True):
     return szoveg
 
 
+def megjeloles_reszek(szoveg):
+    """Egy kötelező megjelölés önálló mondatai: a licencsor a több forrás megjelölését „.; ” határral
+    fűzi össze (pl. `lxx-morph, … lxx-morph.; Data created by www.STEPBible.org …`). A határnál bont,
+    a mondatok szövege szó szerint marad."""
+    return [r.strip() for r in re.split(r'(?<=\.);\s+', szoveg) if r.strip()]
+
+
 def kolofon_naplo_cella(motivum_id):
     """A Kolofon „Kereszthivatkozás-napló” cellája. A nem migrált motívumnál
     a `tematikus_lezart/naplok/` alatti napló; a migrált motívumnál (F11 M3,
@@ -3178,11 +3187,13 @@ def blokk_kolofon(m, fajl_licenc_blokk_lista, tw_szoveg_kozolve=True):
         megjelolesek.append('*%s*' % MOUNCE_MEGJELOLES)
     if any(os.path.basename(f) == 'LSJ_teljes.tsv' for f in per_fajl):
         megjelolesek.append('*%s*' % lsj_forrasmegjeloles())
-    # F09 S2.7 (F05 S11): a kötelező forrásmegjelölések szó szerint
+    # F09 S2.7 (F05 S11): a kötelező forrásmegjelölések szó szerint. Egy licencsor több megjelölést is
+    # hordozhat („.; ” határral, pl. lxx-morph + STEPBible): mindegyik külön sorba kerül, és egyszer áll.
     for kulcs in sorted({FAJL_MEGJELOLES_KULCS[f] for f in per_fajl if f in FAJL_MEGJELOLES_KULCS}):
-        szoveg = '*%s*' % kotelezo_megjeloles(kulcs, tw_szoveg_kozolve)
-        if szoveg not in megjelolesek:
-            megjelolesek.append(szoveg)
+        for resz in megjeloles_reszek(kotelezo_megjeloles(kulcs, tw_szoveg_kozolve)):
+            szoveg = '*%s*' % resz
+            if szoveg not in megjelolesek:
+                megjelolesek.append(szoveg)
 
     torzs = '\n'.join(metaadat_sorok) + '\n\n---\n\n' + '\n'.join(forras_sorok)
     if megjelolesek:

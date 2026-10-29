@@ -138,7 +138,7 @@ KAROLI_PAROK = os.path.join(GYOKER, 'adat', 'karoli_strong')
 MANKO_KI = os.path.join(GYOKER, 'naplok', 'F121_GLOSSZA_FORDITAS_manko.tsv')
 SZOJEGYZEK_KI = os.path.join(GYOKER, 'naplok', 'F121_GLOSSZA_FORDITAS_szojegyzek_javaslat.tsv')
 VISSZA_KI = os.path.join(GYOKER, 'naplok', 'F121_GLOSSZA_FORDITAS_visszamenoleges.tsv')
-SZAMJEL = ('F121 (DT-F121g)', 'F121.8')          # a megjegyzes mező eleje: a menet új / cserélt sorai
+SZAMJEL = ('F121 (DT393)', 'F121.8')          # a megjegyzes mező eleje: a menet új / cserélt sorai
 KOTOSZO = {'valaki', 'valakinek', 'valakit', 'valakivel', 'valakire', 'valahol', 'valamit', 'valaminek', 'lenni', 'szó',
            'szerint', 'innen', 'olyan', 'amellyel', 'cselekvés', 'állapot', 'folyamat', 'egy', 'vagy', 'azt', 'hogy'}
 

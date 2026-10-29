@@ -3,7 +3,7 @@
 Két rész: (1) szintetikus táblán a felülírás, a pótlás, a rendezés, a halmaz-őr és a bemenet-ellenőrzés;
 (2) a repó generált tábláján (a KK4 kimenetén) a javított sorok — egy pótolt fejezet, egy KEZI-pár, a Dán 3:31,
 egy D-eltolás, egy D′-szomszéd, egy változatlan sor és egy KEZI + igehely_mt sor, valamint a Jóel F146-sorai
-(DT-F146b) — és az idempotencia.
+(DT398) — és az idempotencia.
 """
 import os
 import sys
@@ -104,7 +104,7 @@ class Szintetikus(unittest.TestCase):
             V.betolt(p)
 
     def test_bemenet_f146_kezi_kjv_azonos(self):
-        # DT-F146b: macula_mt_f146-sorban a KEZI a Károli = KJV ≠ MT esetet is jelenti
+        # DT398: macula_mt_f146-sorban a KEZI a Károli = KJV ≠ MT esetet is jelenti
         p = self._bemenet('Jóel 2:32	2:32	3:5	KEZI	%s	-	scope=gepi' % V.FORRAS_F146)
         self.assertEqual(V.betolt(p)['Jóel 2:32'][:3], ('2:32', '3:5', 'KEZI'))
 
@@ -187,7 +187,7 @@ class GeneraltTabla(unittest.TestCase):
         self.assertIn('26 sor', f146[0])
 
     def test_joel_f146(self):
-        # DT-F146b: Károli 2:28–32 = MT 3:1–5, Károli 3:1–21 = MT 4:1–21; a 2:27 változatlan
+        # DT398: Károli 2:28–32 = MT 3:1–5, Károli 3:1–21 = MT 4:1–21; a 2:27 változatlan
         self.assertEqual(self.sor('Jóel 2:28'), ['2:28', '3:1', 'KEZI', V.FORRAS_F146])
         self.assertEqual(self.sor('Jóel 2:32'), ['2:32', '3:5', 'KEZI', V.FORRAS_F146])
         self.assertEqual(self.sor('Jóel 3:1'), ['3:1', '4:1', 'KEZI', V.FORRAS_F146])

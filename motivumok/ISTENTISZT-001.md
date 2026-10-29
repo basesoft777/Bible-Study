@@ -32,7 +32,7 @@ A motívum az ószövetségi קָרָא בְּשֵׁם יְהוָה (kárá bes�
 
 【NAPLO: l. 2. pont pontosítása a görög fordítói hagyományra. Ez a `Bibliai_Motivumlexikon_tervezesi_naplo.md`-ben eddig csak vázlatosan felvetett kapcsolat-funkció-készlet egy valós, konkrét határesete — érdemes lehet ezt a tervezési naplóba is felvenni nyitott kérdésként, amikor a KAPCSOLATOK-réteg tervezése folytatódik.】
 
-**A 2Móz 33:19/34:5 eset tágabb mintázata — A/B/C tipológia:** az elutasított jelöltek (Ézs 43:1, 44:5, 45:3 — "Isten néven szólít egy embert") és a fenti "be nem sorolható" eset (2Móz 33:19/34:5 — "Isten kihirdeti saját nevét") együtt nézve nem véletlen zaj, hanem egy koherens, háromtagú mintázat részei. A קָרָא (*kará*, "hívni") + שֵׁם (*shém*, "név") szerkezet ugyanazokkal a szavakkal, de szisztematikusan variálódó alany/tárgy-szereposztással három, egymástól élesen elkülönülő teológiai aktust fejez ki: **A — fő motívum** (alany: ember, tárgy: Isten neve — a study 15 emberi-invokációs esete); **B** (alany: Isten, tárgy: saját neve — 2Móz 33:19, 34:5, fent tárgyalva); **C** (alany: Isten, tárgy: ember neve — Ézs 43:1, 44:5, 45:3). Együtt nézve kiderül: mindhárom minta ugyanannak a nyelvi szerkezetnek a szisztematikus variánsa, nem esetleges egybeesés — a "B" tehát nem elszigetelt "be nem sorolható" anomália, hanem egy önálló, felismerhető harmadik mintázatba tartozik, aminek a "C" is tagja. **Amit ez NEM állít:** hogy A/B/C motívum-szinten összetartozna (a study fókusza jogosan marad az A mintán) — csak azt, hogy a lexikai szerkezet szintjén van egy magasabb rendű, közös minta.
+**A 2Móz 33:19/34:5 eset tágabb mintázata — A/B/C tipológia:** az elutasított jelöltek (Ézs 43:1, 44:5, 45:3 — "Isten néven szólít egy embert") és a fenti "be nem sorolható" eset (2Móz 33:19/34:5 — "Isten kihirdeti saját nevét") együtt nézve nem véletlen zaj, hanem egy koherens, háromtagú mintázat részei. A קָרָא (*kará*, "hívni") + שֵׁם (*shém*, "név") szerkezet ugyanazokkal a szavakkal, de szisztematikusan variálódó alany/tárgy-szereposztással három, egymástól élesen elkülönülő teológiai aktust fejez ki: **A — fő motívum** (alany: ember, tárgy: Isten neve — 31 emberi invokáció, ebből 2 a Kármel-próbán hamis isten nevével (1Kir 18:25–26)【NAPLO: 2026-10-29, a felhasználó döntése (orkesztrátor-chat: „(a) 31 itt is”) — a korábbi „a study 15 emberi-invokációs esete” helyett, a 7. szakasz A/B/C táblájával azonos mérés: naplok/ISTENTISZT001_arany_javitas_meres.py, ts=2026-10-29T09:20Z】); **B** (alany: Isten, tárgy: saját neve — 2Móz 33:19, 34:5, fent tárgyalva); **C** (alany: Isten, tárgy: ember neve — Ézs 43:1, 44:5, 45:3). Együtt nézve kiderül: mindhárom minta ugyanannak a nyelvi szerkezetnek a szisztematikus variánsa, nem esetleges egybeesés — a "B" tehát nem elszigetelt "be nem sorolható" anomália, hanem egy önálló, felismerhető harmadik mintázatba tartozik, aminek a "C" is tagja. **Amit ez NEM állít:** hogy A/B/C motívum-szinten összetartozna (a study fókusza jogosan marad az A mintán) — csak azt, hogy a lexikai szerkezet szintjén van egy magasabb rendű, közös minta.
 
 【NAPLO: felismerés eredete: 2026.09.06, Motívumlexikon-pilot. A jelöltek eredeti elutasítása: 2026.09.05-i audit. Study-ba visszaírva ugyanaznap.】
 
@@ -154,11 +154,11 @@ Beérseba).
 
 **Peshat — a motívum közepe【NAPLO: F126, 2026-10-20 — a próza-felmérés (naplok/PROZA_FELMERES_ISTENTISZT-001_20261019.md) 1., 7. és 10. összefüggése, saját méréssel: naplok/F126_meres.md; a név-horgony szabálya: felhasználói döntés, 2026-10-20】:**
 
-**A Kármel-jelenet (1Kir 18:24–26).** A 18:24-ben Illés a próbát két név szembeállításaként mondja ki: „Akkor hívjátok segítségül a ti istenteknek nevét, és én is segítségül hívom az Úrnak nevét; és a mely isten tűz által felel, az az Isten.” A 18:25-ben Baál prófétái kapják a felszólítást: „hívjátok segítségül a ti istenteknek nevét”. A 18:26-ban végrehajtják: „segítségül hívák a Baálnak nevét reggeltől fogva délig, mondván: Baál! hallgass meg minket! De nem jött szó, sem felelet.” A segítségül hívás szerkezete (קָרָא בְּשֵׁם, kárá besém) a két félnél azonos; a 18:25–26-ban a megszólított név Baálé (H1168), a 18:24-ben Illésé az Úré (H3068). A „felel” ige (H6030) a 18:24-ben és a 18:26-ban áll.
+**A Kármel-jelenet (1Kir 18:24–26).** A 18:24-ben Illés a próbát két név szembeállításaként mondja ki: „Akkor hívjátok segítségül a ti istenteknek nevét, és én is segítségül hívom az Úrnak nevét; és a mely isten tűz által felel, az az Isten.” A 18:25-ben Baál prófétái kapják a felszólítást: „hívjátok segítségül a ti istenteknek nevét”. A 18:26-ban végrehajtják: „segítségül hívák a Baálnak nevét reggeltől fogva délig, mondván: Baál! hallgass meg minket! De nem jött szó, sem felelet.” A segítségül hívás szerkezete (קָרָא בְּשֵׁם, kárá besém) a két félnél azonos; a 18:25-ben a megszólított név „a ti istenteknek” neve (H0430), a 18:26-ban Baálé (H1168), a 18:24-ben Illésé az Úré (H3068)【NAPLO: DT-F131p, 2026-10-29, a felhasználó döntése (orkesztrátor-chat: „Igen, mindkettő”) — a korábbi „a 18:25–26-ban a megszólított név Baálé (H1168)” helyett: a 18:25-ben a H1168 csak a „Baál prófétái” szerkezetben áll, a שֵׁם utáni token H0430】. A „felel” ige (H6030) a 18:24-ben és a 18:26-ban áll.
 
 Értelmezés (Peshat): a két fél ugyanazt teszi — egy nevet hív segítségül —, és a próba azt dönti el, melyik név az Istené: Baálé vagy az Úré.
 
-*Proveniencia: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, n=32) | forras=TAHOT_kivonat.tsv+Karoli_1908.tsv (naplok/F126_meres.py, split('\t')) | ts=2026-10-20T10:11Z · scope=range:1Kir 18:24, range:1Kir 18:25, range:1Kir 18:26 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | ts=2026-10-20T10:08Z | csatorna=cli*
+*Proveniencia: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, n=32) | forras=TAHOT_kivonat.tsv+Karoli_1908.tsv (naplok/F126_meres.py, split('\t')) | ts=2026-10-20T10:11Z · scope=range:1Kir 18:24, range:1Kir 18:25, range:1Kir 18:26 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | ts=2026-10-20T10:08Z | csatorna=cli · scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, n=33) | forras=elofordulasok.tsv (funkcio, jelentes_szam, jelentes_hu)+TAHOT_kivonat.tsv (naplok/ISTENTISZT001_arany_javitas_meres.py, split('\t')) | ts=2026-10-29T09:20Z*
 
 **A kívülálló elvárása (2Kir 5:11).** Naámán azt várta, hogy a próféta „kijő hozzám, és előállván, segítségül hívja az Úrnak, az ő Istenének nevét, és kezével megilleti a beteg helyeket”; a vers azzal kezdődik, hogy Naámán ezért megharagudott és elment. Az előfordulás funkciója a táblában: „ismétlődés, kívülálló szemszögéből”.
 
@@ -398,9 +398,12 @@ A nevesített tanítói egyezés-keresés (7. lépés, B9) eredménye a saját f
 
 <!-- ADAT-NÉZET: 7.K Kereszthivatkozások + Minősítés | forrás: adat/jeloltek.tsv (dontes, indoklas, forras_kereses), TSK/Károli-KH ∩ előfordulások | cél: general.py --cel lexikon (minosites rés, res_forras forras=adat) | SZINT: apparatus -->
 
-**A 2Móz 33:19/34:5 → Ézs 12:4 és a 9 emberi-invokációs igehely felé
-továbbra sincs TSK-kereszthivatkozás** — megerősítve, ez a felismerés
+**A 2Móz 33:19/34:5-ből a 31 emberi invokáció felé (az Ézs 12:4-et is
+beleértve) a lap küszöbén (TSK Votes ≥ 15) nincs kereszthivatkozás;
+küszöb alatt egy van: 2Móz 33:19 → Ézs 12:4 (Votes 3)**【NAPLO: DT-F131p, 2026-10-29, a felhasználó döntése (orkesztrátor-chat: „(a) pontosítva”) — a korábbi „a 9 emberi-invokációs igehely felé továbbra sincs TSK-kereszthivatkozás” helyett, küszöbbel és a küszöb alatti kapcsolattal】 — ez a felismerés
 saját, lexikai szintű megfigyelés marad (l. korábbi megállapítás).
+
+*Proveniencia: scope=range:2Móz 33:19 | forras=TSK_kereszthivatkozasok.tsv+Karoli_versmegfeleltetes.tsv (tsk_kulcs, KJV->Károli) | n=19 | ts=2026-10-29T09:06Z | csatorna=cli · scope=range:2Móz 34:5 | forras=TSK_kereszthivatkozasok.tsv+Karoli_versmegfeleltetes.tsv (tsk_kulcs, KJV->Károli) | n=14 | ts=2026-10-29T09:06Z | csatorna=cli · metszet a 31 A-hellyel: naplok/ISTENTISZT001_arany_tsk_meres.py (elofordulasok.tsv, split('\t'))*
 
 <!-- ADAT-NÉZET: 7.A Kapcsolatok + Alátámasztás | forrás: adat/kapcsolatok.tsv (indoklas) | cél: general.py --cel lexikon (alatamasztas rés, res_forras forras=adat) | SZINT: apparatus -->
 
@@ -432,11 +435,11 @@ elkülönülő teológiai aktust fejez ki:
 
 | Minta | Alany | Tárgy | Igehelyek | Eddigi kezelés |
 |---|---|---|---|---|
-| **A — fő motívum** | ember | Isten neve | a 15 emberi-invokációs eset (l. 1. pont) | ✅ a study fő tárgya |
+| **A — fő motívum** | ember | Isten neve | 31 emberi invokáció (l. 1. pont), ebből 2 a Kármel-próbán hamis isten nevével (1Kir 18:25–26) | ✅ a study fő tárgya |
 | **B** | Isten | saját neve | 2Móz 33:19, 34:5 | "be nem sorolható" — l. 1. pont |
 | **C** | Isten | ember neve | Ézs 43:1, 44:5, 45:3 | ❌ elutasítva, "hamis pozitív" |
 
-⚠ ELTÉRÉS: a táblázat „15 emberi-invokációs eset" száma a pilot【NAPLO: 2026.09.06-i】, a【NAPLO: 2026.09.09-i】 7-soros bővítés előtti állapotára vonatkozik; a jelenlegi „Előfordulások" tábla 31 igehelyet tartalmaz, az emberi-invokációs esetek száma rajta nem mért.
+【NAPLO: 2026-10-29, a felhasználó jóváhagyása (orkesztrátor-chat: „Igen, mehet”) — az A-sor száma a korábbi „15 emberi-invokációs eset” (a pilot 2026.09.06-i állapota) helyett mérve, a ⚠ ELTÉRÉS jelölés törölve. Mérés: az `elofordulasok.tsv` 33 ISTENTISZT-001 sorából 2 B-eset (`funkcio`: 2Móz 33:19, 34:5), a többi 31 emberi alany; a 31-ből kettőben a sor hívása hamis isten nevére szól: 1Kir 18:25 (שֵׁם + H0430, „a ti istenteknek nevét”) és 1Kir 18:26 (שֵׁם + H1168, „a Baálnak nevét”), mindkettő `jelentes_hu`-ja „Baál nevével”; az 1Kir 18:24-ben mindkét név áll, a sor Illés hívása (az Úr neve, H3068). Proveniencia: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, n=33) | forras=elofordulasok.tsv (funkcio, jelentes_szam, jelentes_hu)+TAHOT_kivonat.tsv (naplok/ISTENTISZT001_arany_javitas_meres.py, split('\t')) | ts=2026-10-29T09:20Z】
 
 **Miért fontos ez:** a "B" eset eddig elszigetelt anomáliaként szerepelt
 a study-ban ("nem sorolható be a meglévő funkciók egyikébe sem"). A
