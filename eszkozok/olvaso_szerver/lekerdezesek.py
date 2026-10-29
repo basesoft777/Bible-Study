@@ -589,8 +589,24 @@ def thayer(con, g):
 
 
 def magyar_gorog(con, g):
-    """[(szotar, jelentes_szam, forditas_hu)] a Thayer és az UBS DNTG magyar fordításai."""
-    return con.execute("SELECT szotar, jelentes_szam, forditas_hu FROM forditasok WHERE szotar IN ('Thayer','UBS_DNTG') AND strong=? AND forditas_hu <> '' ORDER BY rowid", (g,)).fetchall()
+    """[(szotar, jelentes_szam, forditas_hu, mezo)] a Thayer és az UBS DNTG magyar fordításai (a `mezo` különbözteti meg
+    az UBS-sorok `definicio_hu` és `glosszak_hu` változatát; F121, DT-F121g)."""
+    return con.execute("SELECT szotar, jelentes_szam, forditas_hu, mezo FROM forditasok WHERE szotar IN ('Thayer','UBS_DNTG') AND strong=? AND forditas_hu <> '' ORDER BY rowid", (g,)).fetchall()
+
+
+def ubs_dbh_szo(con, h):
+    """[(lexid, domen, definicio_en, glosszak_en, definicio_hu, glosszak_hu)] a héber Strong összes UBS DBH-jelentése
+    (F121, DT-F121g): az angol az `ubs_dbh_jelentesek`-ből (lexidenként az első sor), a magyar a `forditasok`-ból
+    (`szotar='UBS_DBH'`, `entry_id` = lexid); ahol nincs magyar, az érték üres."""
+    hu = {(e, m): f for e, m, f in con.execute(
+        "SELECT entry_id, mezo, forditas_hu FROM forditasok WHERE szotar='UBS_DBH' AND strong=? AND forditas_hu <> ''", (h,))}
+    ki, lat = [], set()
+    for lex, dom, df, gl in con.execute('SELECT lexid, domen, definicio_rovid, glosszak FROM ubs_dbh_jelentesek WHERE strong=? ORDER BY lexid', (h,)):
+        if lex in lat:
+            continue
+        lat.add(lex)
+        ki.append((lex, dom, df, gl, hu.get((lex, 'definicio_hu'), ''), hu.get((lex, 'glosszak_hu'), '')))
+    return ki
 
 
 def usz(con, g):

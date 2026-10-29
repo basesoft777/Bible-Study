@@ -1091,7 +1091,19 @@ def _f_magyar_gorog(K):
 
 
 def _r_magyar_gorog(d, K):
-    return Markup('').join(Markup('<h4>%s, %s. jelentés</h4>') % (sz, jsz or '') + _szoveg(fh) for sz, jsz, fh in d)
+    cimke = {'glosszak_hu': ' · glossza', 'definicio_hu': ' · definíció'}
+    return Markup('').join(Markup('<h4>%s, %s. jelentés%s</h4>') % (sz, jsz or '', cimke.get(mezo, '')) + _szoveg(fh) for sz, jsz, fh, mezo in d)
+
+
+def _f_ubs_dbh(K):
+    if not K.strong or K.strong[0] != 'H':
+        return None
+    return q.ubs_dbh_szo(K.con, K.strong) or None
+
+
+def _r_ubs_dbh(d, K):
+    return _tabla(['Azonosító', 'Domén', 'Glossza (magyar)', 'Definíció (magyar)', 'Glossza (angol)', 'Definíció (angol)'],
+                  [[lex, dom or '', gh or '(fordításra vár)', dh or '(fordításra vár)', ge or '', de or ''] for lex, dom, de, ge, dh, gh in d])
 
 
 def _f_usz(K):
@@ -1194,6 +1206,8 @@ REGISZTER = [
     B('szo.bdb_angol', 'szo_h', 'BDB-szócikk (angol)', 'forras', ('bdb', 'bdb_alias'), _f_bdb_angol, _r_bdb_angol, 'az alias gépi feldolgozás'),
     B('szo.bdb_magyar', 'szo_h', 'BDB-szócikk (magyar fordítás)', 'modell', ('forditasok',), _f_bdb_magyar, _r_bdb_magyar),
     B('szo.lxx_bridge', 'szo_h', 'Görög megfelelő (lxx_bridge)', 'forras', ('lxx_bridge',), _f_lxx_bridge, _r_lxx_bridge),
+    B('szo.ubs_dbh', 'szo_h', 'UBS DBH jelentések (a teljes szócikk, magyar fordítással)', ('forras', 'modell'), ('ubs_dbh_jelentesek', 'forditasok'), _f_ubs_dbh, _r_ubs_dbh,
+      'CC BY-SA 4.0 (UBS); a magyar glossza és definíció modell-kimenet (#121)'),
     B('szo.sdbh', 'szo_h', 'Szemantikai domén (SDBH)', 'forras', ('sdbh_domenek',), _f_sdbh, _r_sdbh, 'üres eredmény nem negatív lelet'),
     B('szo.sece_h', 'szo_h', 'SECE-szócikk (héber)', 'forras', ('sece_h',), _f_sece_h, _r_szoveg),
     B('szo.oshl', 'szo_h', 'OSHL: TWOT- és BDB-azonosító, BDB-helyek', 'forras', ('oshl_lexikalis_index', 'oshl_bdb_igehelyek'), _f_oshl, _r_oshl),
