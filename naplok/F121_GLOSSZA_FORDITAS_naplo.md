@@ -133,3 +133,34 @@ Tesztek: `teszt_forditas_kapuk` 110 OK, `teszt_szerepmatrix` 44 OK, `teszt_szota
 ## 9. F121.11 — az ELLENOR_F121_2 javítókör (2026-10-29)
 
 `naplok/ELLENOR_F121_2.md`. **(3)** `q.ubs_dbh_szo`: `ORDER BY lexid, rowid` (determinisztikus „első sor”, azonos a hash forrásával). **(1) Nyitott:** a 44 sorra a szójegyzék-gyűjtő (DT240), a visszamenőleges felmérés (DT242) és a Károli-adatblokk (E9) nem futott, elengedésük a 44-re nincs kimondva; a felhasználó a tervezetet soronként látta és javította. **(2) Hatás más lapokra:** a `ubs_glossza_cella` (kód + glossza + ⓘ) minden lap UBS-celláját érinti a következő generáláskor; az ISTENTISZT-001-en kívül más lap ebben a menetben nem íródott, a többi lap újragenerálása a #36 dolga.
+
+
+## 10. F121.12 — a mankók a 44 új és a cserélt sorra (2026-10-29)
+
+*Döntés: DT-F121i („nem engedem el”). Eszköz: `eszkozok/glossza_lexikon_forditas.py manko | szojegyzek | visszamenoleges` (teszt: `eszkozok/teszt_glossza_lexikon_forditas.py`, 10 teszt). A mankó javasol, nem ír át. Soronkénti napló: `naplok/F121_GLOSSZA_FORDITAS_manko.tsv` (45 sor: a 44 új + a G1941 33.131).*
+
+**Módszer (rangsor: szójegyzék > Károli > BDB > a szótár szövege, DT239).**
+- *Szójegyzék/egyenérték (DT238, DT240):* az angol glosszaelemeket a gyorsítótár már elfogadott párjaival veti össze (UBS_DNTG glosszák elemenként, TBESH-glosszák `fo=igen`, v1–v4 terminológia). `egyezik` / `utkozik` / `nincs_adat`.
+- *Károli-adatblokk (E9):* a Strong (és a lexidet osztó testvér-Strongok, pl. H7121/H7122/H7125) Károli-alakjai az `adat/karoli_strong/parok_*.tsv`-ből; a magyar glossza (definíciónál a „szó szerint: …” rész) tövei az alakok között. `egyezik` / `nem_talal`.
+- *BDB-egyezés (3. szint):* ugyanezek a tövek a Strong(ok) BDB-magyar szövegében.
+- *Visszamenőleges (DT242):* a tiltott minták és a `deity → istenség` a teljes gyorsítótáron, tételes javaslat (`…_visszamenoleges.tsv`).
+
+**Eredmény: 36 sor mindhárom mankón egyezik vagy nem releváns, 9 sor kézi ítéletre áll meg** (egyik sem íródott át):
+
+| lexid · mező | rögzített | mit jelez a mankó | javaslat |
+|---|---|---|---|
+| H7121 001003000 glossza | híresnek lenni | Károli: nem találja (a Strong alakjai: nevezé, kiálta…); BDB egyezik (híre) | marad |
+| H7121 001005000 glossza | kihirdetni; kihirdetést tenni | Károli: nem találja; szójegyzék és BDB egyezik | marad |
+| H7121 001011000 glossza | (istenséget) elismerni | Károli: nem találja; BDB egyezik (istenség); v4 | marad |
+| H7121 002002000 glossza | (valakivel) megtörténni | Károli és BDB: nem találja | marad (alternatíva: „megesni”) |
+| H7121 002003000 glossza | (valakire) hozni (eseményt) | Károli: nem találja; BDB egyezik; a felhasználó jóváhagyta | marad |
+| H7121 002004000 glossza | megtörténni | Károli és BDB: nem találja | marad (alternatíva: „megesni”) |
+| H7121 002006000 glossza | keresni | Károli és BDB: nem találja | marad |
+| H8034 001002000 glossza | név; felhatalmazás | **szójegyzék ütközik:** `authority` → `hatalom` (1 DNTG-adatpont); Károli és BDB: nem találja | A: marad (a „valaki más felhatalmazásával jár el” értelemben pontosabb) · B: „név; hatalom” (nyelvközi egység, DT238) — ajánlás: A |
+| H8034 001004000 glossza | név; önmaga | Károli és BDB: nem találja a „önmaga” tövet | marad (alternatíva: „név; személy”) |
+
+**Hogyan olvasd:** a Károli- és BDB-„nem találja” itt a szóhasználat hiányát jelenti az adott Strong(ok) összes helyén, nem hibát: ezek ritka, szó szerinti vagy átvitt (Niph'al, Hif'il, QAL II) jelentések, a Károli más szót használ. A szójegyzéki ütközés egyedül a H8034 `authority` sora. **Egyezik:** pl. H7121 001001000 (kiáltani), 001008000/001009000 (nevezni; nevet adni), 002001000 (találkozni, a testvér-Strong BDB-szövegével), a H8034 001001000 (név), 001003000 (név; hírnév; megítélés) és a G1941 33.131 `definicio_hu` (leíró, nincs ellenőrizendő szó).
+
+**Visszamenőleges felmérés (DT242): 3 tétel** (`naplok/F121_GLOSSZA_FORDITAS_visszamenoleges.tsv`), mind más sorokat érint, a tábla nem íródott: 2× Thayer G1941 `teljes` (az archivált `kezi` sor „melléknéven nevezni” / „nevet tenni valakire”; a DT379 (a) szerint archív, a gerinc a `sz<n>` sorokból dolgozik) és 1× BDB H3068 `teljes` (a forrás „deity”, a magyar „istennév”). Javaslat: egyik sem változik (az archív sor nem kerül a lapra; a H3068 „istennév” a Jahve-névre pontosabb).
+
+**Szójegyzék-javaslat (DT240):** `naplok/F121_GLOSSZA_FORDITAS_szojegyzek_javaslat.tsv`: 436 angol kulcs, amely a gyorsítótárban többféle magyar alakot kapott (a legtöbb szótövezési/formai eltérés: névelő, ragozás). A `terminologia.tsv`-be csak jóváhagyott sor kerül; új sor nem javasolt.
