@@ -459,9 +459,14 @@ OLVASOI_SZEREP = {
     9: 'Hogy az egyes versekben a szó melyik jelentésében áll.',
     10: 'A szó magyaros kiejtése.',
     12: 'Mely témákhoz sorolja a szót és helyeit egy régi bibliai témagyűjtemény (Nave).',
-    13: 'Milyen magyar szavakkal fordítja a Károli-Biblia ezt a szót, és milyen gyakran.',
-    14: 'Ahol a Károli ugyanazt a szót más magyar szóval, vagy ugyanazzal a magyar szóval más szót fordít: itt '
-        'rejtett vagy hamis párhuzam lehet.',
+    13: 'A motívum igehelyein a Károli-fordítás ezekkel a magyar szavakkal adja vissza a motívumot hordozó kifejezést '
+        '(a héber és a görög szavakat együtt, nem szavanként). A zárójeles szám azt mutatja, hány igehelyen áll a szó; '
+        'utána a ragozott alakok és az igehelyek.',
+    14: 'Két ellenőrzés a motívum héber és görög szavaira (a gerincre, l. „A motívum kulcsszavai”) és a Károli magyar '
+        'kulcsszavaira. **Rejtett párhuzam:** a motívum olyan helye, ahol az eredeti szövegben a gerinc szavai állnak, '
+        'de a Károli nem a szokásos magyar kulcsszavakkal fordítja, így a magyar olvasó nem ismeri fel. **Hamis '
+        'párhuzam:** olyan vers, ahol a Károliban ugyanazok a magyar kulcsszavak állnak, de az eredetiben nem a gerinc '
+        'szavai, így a magyar olvasó tévesen kapcsolná ide.',
 }
 
 
@@ -574,6 +579,11 @@ mondat a lap készítőinek szól.
 körre (`scope`), melyik adattáblából vagy lekérdezésből (`forras`), mikor (`ts`); a `manual` kézi rögzítést jelöl. Az
 ellenőrzéshez való, olvasáskor átugorható.
 
+**Héber rövidítések a BDB-szövegben** (kiemelve; az egérmutató alatt a feloldás): a BDB a gyakori szavakat egy
+betűvel és a rövidítő jellel (׳, geres) írja. **י׳** = יְהוָה (Jahve), a Károliban „az Úr”; a szócikk címszavának
+kezdőbetűje (pl. **ק׳** a קָרָא szócikkében, **שׁ׳** a שֵׁם szócikkében) maga a címszó. Más betűnél a feloldás a
+szócikk szövegéből derül ki.
+
 A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχή
 (pszükhé) *lélek*; a Károli-idézetek szövege változatlan (pl. »Lélek«)."""
 
@@ -683,6 +693,18 @@ def ubs_jelentes_cella(sor_id, igehely, strong_field):
 _RAGOZOTT_ZARO_IRASJEL_RE = re.compile(r'[,.;·]+$')
 
 
+def ragozott_kiejtessel(ragozott, kiejtes, forras):
+    """„ragozott (kiejtés)”. Héberül a kiejtés a szótári alaké (a kiejtés-szabály: a ragozott héber alakra nincs
+    gépi kiejtés), ezért jelölve: „קְרֹ֖א (szótári alak: kárá)” (a felhasználó döntése, 2026-10-29: „A: jelölt szótári
+    alak”); görögül a ragozott alak gépi magyaros kiejtése, jelölés nélkül."""
+    if not kiejtes:
+        return ragozott
+    return '%s (%s%s)' % (ragozott, SZOTARI_ALAK_ELOTAG if forras == 'TAHOT' else '', kiejtes)
+
+
+SZOTARI_ALAK_ELOTAG = 'szótári alak: '
+
+
 def kulcsszo_cella(sor):
     karoli_szo = sor.get('karoli_szo') or ''
     strong_field = sor.get('strong') or ''
@@ -693,9 +715,9 @@ def kulcsszo_cella(sor):
             continue
         talalat = kiejtes_ehhez(sor['igehely'], strong)
         if talalat:
-            ragozott, kiejtes, _forras = talalat
+            ragozott, kiejtes, forras = talalat
             ragozott = _RAGOZOTT_ZARO_IRASJEL_RE.sub('', ragozott)
-            reszek.append('%s (%s)' % (ragozott, kiejtes) if kiejtes else ragozott)
+            reszek.append(ragozott_kiejtessel(ragozott, kiejtes, forras))
     eredeti = '; '.join(reszek) if reszek else EM_DASH
     if karoli_szo:
         return '%s — %s' % (karoli_szo, eredeti)
@@ -2106,9 +2128,45 @@ def szerep_vaz(tokenek, fajl_licenc_kulcsok, fajl_licenc_kulcsok_tbesg_tbesh, so
     return '\n\n'.join(reszek_szoveg), van_hiv, tiszt
 
 
+KULCSSZAVAK_CIM = '### A motívum kulcsszavai'
+
+
+def kulcsszavak_blokk(motivum_id, sorai, fajl_licenc_kulcsok):
+    """A 2. szakasz eleje (ISTENTISZT-001 arany lap, 2026-10-29; a felhasználó: „2. Szótári háttér előtt kellene egy
+    motivum kulcsszavai blokk”): gerinc-kombinációnként a szavak kiejtéssel, a rövid jelentésük (1. szerep) és a
+    Károli-kulcsszavak (a 14. szerep szabálya, `szerep_karoli.kulcsszavak`). Csak a `KAROLI_MEGFELELOK` kapcsolóval
+    (a Károli-kulcsszó a `karoli_szo` mezőn áll); egyébként ''. Csak megjelenítés, új adat nincs."""
+    if motivum_id not in SZEREP_KAROLI_MOTIVUMOK:
+        return ''
+    kombok = SZK.gerinc_kombinaciok(sorai)
+    if not kombok:
+        return ''
+    kulcs = SZK.kulcsszavak(sorai)
+    sorok = ['| Gerinc | Szavak (kiejtéssel) | Jelentés | Károli-kulcsszavak |', '|---|---|---|---|']
+    for k in kombok:
+        st = sorted(k, key=lambda s: (s[0] != 'G', s))
+        szavak = ' + '.join(lemma_cim(lemma_kiejtes(s)) if lemma_kiejtes(s) else s for s in st)
+        jelentes = ' + '.join(rovid_jelentes(s)[0] for s in st)
+        karoli = ', '.join('„%s”' % w for w in kulcs.get(k, [])) or EM_DASH
+        sorok.append('| %s | %s | %s | %s |' % (' + '.join(st), szavak, jelentes, karoli))
+    fajl_licenc_kulcsok.setdefault('adat/elofordulasok.tsv', set()).add('projekt_adat')
+    fajl_licenc_kulcsok.setdefault('adat/szoto/karoli_szotari_alak.tsv', set()).add('projekt_adat')
+    olv = ('A motívumot hordozó héber és görög szavak (a gerinc), a jelentésük, és azok a magyar szavak, amelyekkel '
+           'a Károli-fordítás a motívum helyein a legtöbbször visszaadja őket. Az alábbi szótári anyag ezekről a '
+           'szavakról szól.')
+    hatokor = ('*Gerinc-kombinációnként (az `elofordulasok.tsv` `strong` mezője, %d sor); a jelentés az 1. szerep '
+               'rövid jelentése; a Károli-kulcsszó a 14. szerep szabálya szerint (`eszkozok/szerep_karoli.py`: a '
+               'motívumsorok Károli-szóalakjainak legalább felében álló szótári alak). Csak megjelenítés.*'
+               % sum(1 for s in sorai if s.get('strong')))
+    return '\n\n'.join([KULCSSZAVAK_CIM, olvasoi_bekezdes(olv), hatokor, '\n'.join(sorok)])
+
+
 def blokk_szocikkek(m, tokenek, sorai):
     reszek = []
     fajl_licenc_kulcsok = {'adat/lexikon_hivatkozasok.tsv': set()}
+    kulcs_szov = kulcsszavak_blokk(m['id'], sorai or [], fajl_licenc_kulcsok)
+    if kulcs_szov:
+        reszek.append(kulcs_szov)
     van_hivatkozas_barmelyikhez = False
     tisztazatlan_erintve = False
 
@@ -2874,6 +2932,8 @@ def gerinc_blokk(adat, szotar, strong, motivum_sorai, ctx=None):
     napl['kiemelt'] += talalt
     napl['nem_talalt'] += hiany
     bek.extend(lista)
+    if szotar == 'BDB':
+        bek[2:] = [bdb_rovidites_jelol(b, strong) for b in bek[2:]]
     if napl['nem_talalt'] or napl['nem_idezett'] or napl['tiltott'] or napl['tartomanyban']:
         reszek = []
         if napl['tiltott']:
@@ -2903,6 +2963,42 @@ def gerinc_blokk(adat, szotar, strong, motivum_sorai, ctx=None):
             fl.setdefault(TILTOTT_FORDULATOK_FAJL, set()).add('projekt_adat')
         ctx.setdefault('gerinc_naplo', []).append(napl)
     return bek, napl
+
+
+# A BDB egybetűs rövidítései (a felhasználó, 2026-10-29: „nem lehetne jelölni a szövegben /pl más szinű háttér , hogy a
+# szó rövidités?”). A forrás (DictBDB.json) a rövidítő jelet (geres, ׳) a betű ELÉ írja (׳י); a helyes alak a betű utáni
+# (י׳). Csak az önálló, egybetűs alakot javítja és jelöli (<abbr>, címmel); a több szavas, felcserélt sorrendű héber
+# kifejezésekhez nem nyúl (forrás-konverziós hiba, külön tétel).
+_HEB_BETU = 'א-תיִ-ﭏ'  # a prezentációs alakok (pl. U+FB2A שׁ) is
+_HEB_JEL = 'ְ-ׇ'
+BDB_ROVIDITES_RE = re.compile(r'(?<![%s%s])׳([%s][%s]*)(?![%s%s])' % (_HEB_BETU, _HEB_JEL, _HEB_BETU, _HEB_JEL,
+                                                                          _HEB_BETU, _HEB_JEL))
+BDB_JAHVE_CIM = 'יְהוָה (Jahve), az Úr'
+BDB_ROVIDITES_ALTALANOS = 'a BDB rövidítése; a feloldás a szócikk szövegéből derül ki'
+
+
+def _alapbetu(szo):
+    return next((c for c in unicodedata.normalize('NFD', szo or '') if 'א' <= c <= 'ת'), '')
+
+
+def bdb_rovidites_jelol(szoveg, strong):
+    """A BDB-szöveg egybetűs rövidítései: „׳י” → `<abbr class="rovidites" title="…">י׳</abbr>`. A cím: a י Jahve (ha a
+    címszó is י-vel kezdődik, mindkét feloldás); a címszó kezdőbetűje a címszó; más betű általános jelölés (nem
+    találjuk ki a feloldást)."""
+    lk = lemma_kiejtes(strong)
+    cimszo = lemma_cim(lk) if lk else ''
+    kezdo = _alapbetu(lk[0]) if lk else ''
+
+    def cim(betu):
+        b = _alapbetu(betu)
+        if b == 'י':
+            return BDB_JAHVE_CIM + ('; vagy a címszó: %s' % cimszo if kezdo == 'י' else '')
+        if b and b == kezdo:
+            return 'a címszó: %s' % cimszo
+        return BDB_ROVIDITES_ALTALANOS
+
+    return BDB_ROVIDITES_RE.sub(
+        lambda m: '<abbr class="rovidites" title="%s">%s׳</abbr>' % (cim(m.group(1)), m.group(1)), szoveg)
 
 
 def ubs_domensor(strong):
@@ -3307,8 +3403,7 @@ def lxx_osszevetes(sorai, tokenek):
             for ht in heber_tokenek:
                 talalat = kiejtes_ehhez(vers, ht)
                 if talalat:
-                    ragozott, kiejtes, _f = talalat
-                    heber_kulcsszo = '%s (%s)' % (ragozott, kiejtes) if kiejtes else ragozott
+                    heber_kulcsszo = ragozott_kiejtessel(*talalat)
                     break
 
             if slug is None:

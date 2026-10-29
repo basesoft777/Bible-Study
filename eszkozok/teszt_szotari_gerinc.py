@@ -555,5 +555,67 @@ class ValodiAdat(unittest.TestCase):
         self.assertEqual(E.szabaly17_szakasz_cimke(E.ALAPERTELMEZETT_ADAT).verdict, 'RENDBEN')
 
 
+class Kulcsszavak(unittest.TestCase):
+    """A 2. szakasz eleji kulcsszó-blokk (a felhasználó: „2. Szótári háttér előtt kellene egy motivum kulcsszavai blokk”)."""
+
+    def _sorai(self, mid):
+        _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
+        return [r for r in elo_sorok if r['id'] == mid]
+
+    def test_istentiszt(self):
+        szov = LG.kulcsszavak_blokk('ISTENTISZT-001', self._sorai('ISTENTISZT-001'), {})
+        self.assertTrue(szov.startswith(LG.KULCSSZAVAK_CIM))
+        self.assertIn('| Gerinc | Szavak (kiejtéssel) | Jelentés | Károli-kulcsszavak |', szov)
+        self.assertIn('| H7121 + H8034 | ', szov)
+        self.assertIn(' (kárá) + ', szov)
+        self.assertIn(' (sém) | ', szov)
+        self.assertIn('„segítségül”', szov)
+        self.assertIn('**Mit mutat ez a rész?**', szov)
+
+    def test_kapcsolo_nelkul_ures(self):
+        self.assertEqual(LG.kulcsszavak_blokk('HAMART-001', self._sorai('HAMART-001'), {}), '')
+
+
+class RagozottKiejtes(unittest.TestCase):
+    """A Kulcsszó cella: héberül a kiejtés jelölten a szótári alaké (a felhasználó döntése: „A: jelölt szótári alak”)."""
+
+    def test_heber_jelolt(self):
+        self.assertEqual(LG.ragozott_kiejtessel('X', 'kárá', 'TAHOT'), 'X (szótári alak: kárá)')
+
+    def test_gorog_ragozott(self):
+        self.assertEqual(LG.ragozott_kiejtessel('Y', 'epikaleszétai', 'TAGNT'), 'Y (epikaleszétai)')
+
+    def test_kiejtes_nelkul(self):
+        self.assertEqual(LG.ragozott_kiejtessel('Z', '', 'TAHOT'), 'Z')
+
+    def test_1moz_4_26_cella(self):
+        _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
+        s = next(r for r in elo_sorok if r['id'] == 'ISTENTISZT-001' and r['igehely'] == '1Móz 4:26')
+        cella = LG.kulcsszo_cella(s)
+        self.assertIn('(szótári alak: kárá)', cella)
+        self.assertIn('(szótári alak: sém)', cella)
+
+
+class BdbRovidites(unittest.TestCase):
+    """A BDB egybetűs rövidítései jelölve (a felhasználó: „nem lehetne jelölni a szövegben …, hogy a szó rövidités?”)."""
+
+    def test_jahve(self):
+        u = LG.bdb_rovidites_jelol('hívni ׳י nevével', 'H7121')
+        self.assertIn('<abbr class="rovidites" title="%s">י׳</abbr>' % LG.BDB_JAHVE_CIM, u)
+
+    def test_cimszo(self):
+        u = LG.bdb_rovidites_jelol('perfectum ׳ק 1Móz 11:9', 'H7121')
+        self.assertIn('title="a címszó: ', u)
+        self.assertIn('ק׳</abbr>', u)
+
+    def test_mas_betu_altalanos(self):
+        u = LG.bdb_rovidites_jelol('׳א x', 'H7121')
+        self.assertIn(LG.BDB_ROVIDITES_ALTALANOS, u)
+
+    def test_tobbbetus_szo_valtozatlan(self):
+        sz = '׳בשם x'
+        self.assertEqual(LG.bdb_rovidites_jelol(sz, 'H7121'), sz)
+
+
 if __name__ == '__main__':
     unittest.main()
