@@ -7,8 +7,8 @@
    "eszkozok/feladatterkep_kartyak.tsv"
   ],
   "belyeg": {
-   "datum": "2026-10-28",
-   "commit": "c1ac49e1"
+   "datum": "2026-10-29",
+   "commit": "fdce5527"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -341,7 +341,7 @@
    "fazis": "1",
    "allapot": "stop",
    "brief_allapot": "megallt",
-   "most": "Te: [elteres_kor 1/2] a 10. adag PR #496 merge-re vár; a záró ellenőrzés (naplok/ELLENOR_F38_adag10_2.md) TISZTA; merge után a 11. adag (sorrend 2822-től) indítható, előtte Károli-mérés (DT56)",
+   "most": "Te: [elteres_kor 2/2, ELTÉRÉS: 1 maradt — a bontási napló fordítatlan „f.”-listája hiányos, naplok/ELLENOR_F38_adag11_3.md] a 11. adag PR #501 merge-re vár; merge után a 12. adag (sorrend 3981-től) indítható, előtte Károli-mérés (DT56)",
    "fugg": "#34 (kész), #56 (kész), #67 (kész), #72 (kész), #73 (kész), #107 (kész), #128 (kész)",
    "tervezett": false,
    "reszletes": "A BDB, a legrészletesebb héber szótár mind a 8 090 szócikke magyarra fordul, gyakorisági sorrendben, adagonként, gépi minőségkapukkal. Öt adag (406 szócikk) kész; a hatodik a DT-F38i döntésre vár.",
