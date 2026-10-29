@@ -1,4 +1,4 @@
-"""ISTENTISZT-001 arany lap, 2026-10-29 (DONTESEK: a „teljes” menet 1–2. pontja): az N-F131a és az N-F131b rendezése az `elofordulasok.tsv` ISTENTISZT-001 során.
+"""ISTENTISZT-001 arany lap, 2026-10-29 (DONTESEK: a „teljes” menet 1–2. pontja): a `jelentes_hu` és a minősítős `jelentes_szam` nyitott tételének (NYITOTT, 2026-10-29) rendezése az `elofordulasok.tsv` ISTENTISZT-001 során.
 
 Csak a megnevezett 7 sor 10 mezője, a `jelentes_hu`, illetve `jelentes_szam` mezője változhat, a régi értéket ellenőrizve; split('\t') /
 '\t'.join(); írás előtt soronkénti összevetés az eredetivel, eltérésnél megáll. Az 1Kir 18:24 új értéke a kész BDB-fordítás

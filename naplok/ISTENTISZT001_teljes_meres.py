@@ -1,4 +1,4 @@
-"""ISTENTISZT-001 arany lap, „teljes” menet (2026-10-29): az N-F131a/b mérése.
+"""ISTENTISZT-001 arany lap, „teljes” menet (2026-10-29): a `jelentes_hu` és a minősítős `jelentes_szam` mérése.
 
 Csak olvas. Az `elofordulasok.tsv` ISTENTISZT-001 soraiból kiírja azokat, amelyeknek a `jelentes_hu`-ja
 vagy a `jelentes_szam`-a nem tiszta szójelentés / nem SEMA 2.2.2-alak, a `funkcio` és a `kapcsolodas`

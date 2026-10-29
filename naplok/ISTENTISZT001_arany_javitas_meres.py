@@ -1,6 +1,6 @@
 """ISTENTISZT-001 arany lap, kis javító menet: mérések.
 
-(1) N-F131a/b: a minősítős `jelentes_szam` és a nem üres `jelentes_hu` sorai
+(1) a minősítős `jelentes_szam` és a nem üres `jelentes_hu` sorai
     (elofordulasok.tsv, ISTENTISZT-001).
 (2) A/B/C tábla A-száma: a 33 sor szerepbesorolása a `funkcio` mező B-esete
     (❓ be nem sorolható, A/B/C B-eset) és a megszólított név (H1168 Baál) szerint,
