@@ -391,7 +391,7 @@ class TestSeceMounceF09(unittest.TestCase):
         h = self._szerep('ISTENTISZT-001', 'heber', 7)
         self.assertIn(_nfc('**H8034 — שֵׁם (sém)** · SECE — görög megfelelők (6):'), _nfc(h))
         # a kiírt alak (ἐπικαλέομαι) nem a TBESG-lemma: a kiírt alak gépi kiejtése áll
-        self.assertIn(_nfc('| **ἐπικαλέομαι** *(a motívum szava)* | epikaleomai | G1941 | to call (on)/name *(fordításra vár)* |'),
+        self.assertIn(_nfc('| **ἐπικαλέομαι** *(a motívum szava)* | epikaleomai | G1941 | hívni (segítségül)/nevezni |'),
                       _nfc(h))
         self.assertNotIn('LN: ', g + h)
         self.assertEqual([_nfc(x) for x in LG.sece_megfelelok('H7121')].count(_nfc('ἐπικαλέομαι')), 1)  # ismétlés nélkül

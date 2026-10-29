@@ -1582,7 +1582,8 @@ def glosszak_heber_hu():
 
 def rovid_jelentes(strong):
     """(szöveg, van_magyar): a rövid magyar jelentés — héberül a `glosszak_heber_hu.tsv`; görögül magyar rövid
-    glossza-tábla nincs, ezért a TBESG rövid angol glosszája + `fordításra vár`; ha az sincs, EM_DASH."""
+    a `forditasok.tsv` `TBESG | <Strong> | <Strong> | rovid | glosszak_hu` sora (F121, DT-F121o); ahol nincs, a TBESG
+    rövid angol glosszája + `fordításra vár`; ha az sincs, EM_DASH."""
     if strong.startswith('H'):
         g = glosszak_heber_hu().get(strong)
         if not g:
@@ -1590,6 +1591,9 @@ def rovid_jelentes(strong):
         if g.get('glossza_hu'):
             return _cella(g['glossza_hu']), True
         return '%s %s' % (_cella(g.get('glossza_en') or EM_DASH), FORDITASRA_VAR), False
+    hu = forditas_ehhez('TBESG', strong, strong, 'rovid', 'glosszak_hu')   # F121 (DT-F121o)
+    if hu:
+        return _cella(hu), True
     en = tbesg_rovid_glossza(strong)
     if not en:
         return EM_DASH, False

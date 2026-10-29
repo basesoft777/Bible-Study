@@ -81,6 +81,7 @@ def _tbes_tisztit(szoveg):
 def tovabbi_forras(sor, konkordancia_dir=KONKORDANCIA, cache=None):
     """F121 (DT-F121k, ALVIL-001 menet): a forditasok.tsv-sor forrásszövege azokból a konkordancia-fájlokból, amelyekhez
     nincs lexikon_hivatkozasok-sor (SEMA 2.14); None, ha a sor nem ilyen. Kulcsolás:
+      TBESG rovid  (DT-F121o) entry_id = Strong, jelentes_szam rovid, mezo glosszak_hu: a TBESG.txt sor 7. oszlopa (Strongonként az első sor);
       TBESH/TBESG  entry_id = Strong, jelentes_szam teljes: a Strong sora(i) 7. és 8. oszlopa tisztítva (több sornál egyedítve: glosszák „; ”, szócikkek „ | ”), szóközzel egybefűzve;
       tW_szocikkek entry_id = tw_id, a strong a cikk `strong` oszlopának első eleme (H7585+G0086 -> H7585), jelentes_szam em-dash;
       MCGED        entry_id = gk_szam, jelentes_szam em-dash, mezo glosszak_hu: a `glossza`;
@@ -92,6 +93,17 @@ def tovabbi_forras(sor, konkordancia_dir=KONKORDANCIA, cache=None):
         return None
     cache = cache if cache is not None else {}
     ut = os.path.join(konkordancia_dir, fajl)
+    if szotar == 'TBESG' and jsz == 'rovid' and mezo == 'glosszak_hu' and eid == strong:
+        # F121 (DT-F121o): a görög rövid jelentés = a TBESG.txt sor 7. oszlopa (a generátor `tbesg_rovid_glossza`: Strongonként az első sor)
+        if 'TBESG_rovid' not in cache:
+            idx = {}
+            with open(ut, encoding='utf-8', errors='replace') as f:
+                for l in f:
+                    c = l.rstrip('\n').split('\t')
+                    if len(c) >= 7:
+                        idx.setdefault(c[0][:5], c[6].strip())
+            cache['TBESG_rovid'] = idx
+        return cache['TBESG_rovid'].get(strong) or None
     if szotar in ('TBESH', 'TBESG'):
         if jsz != 'teljes' or mezo != 'forditas_hu' or eid != strong:
             return None
@@ -220,7 +232,7 @@ KAROLI_PAROK = os.path.join(GYOKER, 'adat', 'karoli_strong')
 MANKO_KI = os.path.join(GYOKER, 'naplok', 'F121_GLOSSZA_FORDITAS_manko.tsv')
 SZOJEGYZEK_KI = os.path.join(GYOKER, 'naplok', 'F121_GLOSSZA_FORDITAS_szojegyzek_javaslat.tsv')
 VISSZA_KI = os.path.join(GYOKER, 'naplok', 'F121_GLOSSZA_FORDITAS_visszamenoleges.tsv')
-SZAMJEL = ('F121 (DT393)', 'F121.8', 'F121.14', 'F121.18')          # a megjegyzes mező eleje: a menet új / cserélt sorai
+SZAMJEL = ('F121 (DT393)', 'F121.8', 'F121.14', 'F121.18', 'F121.21')          # a megjegyzes mező eleje: a menet új / cserélt sorai
 KOTOSZO = {'valaki', 'valakinek', 'valakit', 'valakivel', 'valakire', 'valahol', 'valamit', 'valaminek', 'lenni', 'szó',
            'szerint', 'innen', 'olyan', 'amellyel', 'cselekvés', 'állapot', 'folyamat', 'egy', 'vagy', 'azt', 'hogy'}
 
@@ -387,7 +399,7 @@ def parancs_manko(jel=None, ki_ut=None):
     ki = []
     for s in sorok:
         k = (s['szotar'], s['strong'], s['entry_id'], s['jelentes_szam'], s['mezo'])
-        angol = forras.get(k, '')
+        angol = forras.get(k, '') or tovabbi_forras(s, KONKORDANCIA, tovabbi_c) or ''
         strongok = sorted(testver.get(s['entry_id'], set()) | {s['strong']})
         for st in strongok:
             if st not in karoli_cache:

@@ -894,66 +894,66 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 | Szó | Kiejtés | Strong | Rövid jelentés |
 |---|---|---|---|
-| ἄγω | agó | G0071 | to bring *(fordításra vár)* |
-| ἀναβοάω | anaboaó | G0310 | to cry out *(fordításra vár)* |
-| ἀναγγέλλω | anangelló | G0312 | to report *(fordításra vár)* |
-| ἀναγινώσκω | anaginószkó | G0314 | to read *(fordításra vár)* |
-| ἀνακράζω | anakradzó | G0349 | to yell *(fordításra vár)* |
-| ἀνοίγω | anoigó | G0455 | to open *(fordításra vár)* |
-| ἀντέχομαι | antekhomai | G0472 | to cling to *(fordításra vár)* |
-| ἀντίκειμαι | antikeimai | G0480 | be an opponent *(fordításra vár)* |
-| ἀπαγγέλλω | apangelló | G0518 | to announce *(fordításra vár)* |
-| ἀπαντάω | apantaó | G0528 | to meet *(fordításra vár)* |
-| ἀπάντησις | apantészisz | G0529 | meeting *(fordításra vár)* |
-| βοάω | boaó | G0994 | to cry out *(fordításra vár)* |
-| διαῤῥήσσω | diarrésszó | G1284 | to tear *(fordításra vár)* |
-| διαστέλλομαι | diasztellomai | G1291 | to give orders *(fordításra vár)* |
-| ἐγκαλέω | egkaleó | G1458 | to accuse *(fordításra vár)* |
-| εἰσάγω | eiszagó | G1521 | to bring in *(fordításra vár)* |
-| εἰσέρχομαι | eiszerkhomai | G1525 | to enter *(fordításra vár)* |
-| εἰσφέρω | eiszferó | G1533 | to bring in *(fordításra vár)* |
-| ἔμπροσθεν | emproszthen | G1715 | before *(fordításra vár)* |
-| ἐναντίον | enantion | G1726 | in front of *(fordításra vár)* |
-| ἐναντίος | enantiosz | G1727 | hostile *(fordításra vár)* |
-| ἐπάγω | epagó | G1863 | to bring upon *(fordításra vár)* |
-| **ἐπικαλέομαι** *(a motívum szava)* | epikaleomai | G1941 | to call (on)/name *(fordításra vár)* |
-| ἐπιλαμβάνομαι | epilambanomai | G1949 | to catch *(fordításra vár)* |
-| ἐπονομάζω | eponomadzó | G2028 | to name *(fordításra vár)* |
-| καλέω | kaleó | G2564 | to call: call *(fordításra vár)* |
-| κηρύσσω | kérüsszó | G2784 | to preach *(fordításra vár)* |
-| κλαίω | klaió | G2799 | to weep *(fordításra vár)* |
-| κληρόω | kléroó | G2820 | to obtain *(fordításra vár)* |
-| κλῆσις | klészisz | G2821 | calling *(fordításra vár)* |
-| κλητός | klétosz | G2822 | called *(fordításra vár)* |
-| κράζω | kradzó | G2896 | to cry *(fordításra vár)* |
-| λαλέω | laleó | G2980 | to speak *(fordításra vár)* |
-| λαμβάνω | lambanó | G2983 | to take *(fordításra vár)* |
-| λογίζομαι | logidzomai | G3049 | to count *(fordításra vár)* |
-| μένω | menó | G3306 | to stay *(fordításra vár)* |
-| μετακαλέω | metakaleó | G3333 | to summon *(fordításra vár)* |
-| νηστεύω | nészteuó | G3522 | to fast *(fordításra vár)* |
-| ξένος | xenosz | G3581 | foreign *(fordításra vár)* |
-| ὀνομάζω | onomadzó | G3687 | to name *(fordításra vár)* |
-| παρακαλέω | parakaleó | G3870 | to plead/comfort *(fordításra vár)* |
-| περιποιέομαι | peripoieomai | G4046 | to gain *(fordításra vár)* |
-| προσκαλέομαι | proszkaleomai | G4341 | to call to/summon *(fordításra vár)* |
-| ῥήγνυμι | rhégnümi | G4486 | to throw violently *(fordításra vár)* |
-| συμβαίνω | szümbainó | G4819 | to happen *(fordításra vár)* |
-| συναντάω | szünantaó | G4876 | to meet *(fordításra vár)* |
-| σχίζω | szkhidzó | G4977 | to split *(fordításra vár)* |
-| ὑπάντησις | hüpantészisz | G5222 | meeting *(fordításra vár)* |
-| φωνέω | fóneó | G5455 | to call *(fordításra vár)* |
+| ἄγω | agó | G0071 | hozni |
+| ἀναβοάω | anaboaó | G0310 | kiáltani |
+| ἀναγγέλλω | anangelló | G0312 | jelenteni |
+| ἀναγινώσκω | anaginószkó | G0314 | olvasni |
+| ἀνακράζω | anakradzó | G0349 | felkiáltani |
+| ἀνοίγω | anoigó | G0455 | kinyitni |
+| ἀντέχομαι | antekhomai | G0472 | ragaszkodni |
+| ἀντίκειμαι | antikeimai | G0480 | ellenfélnek lenni |
+| ἀπαγγέλλω | apangelló | G0518 | kihirdetni |
+| ἀπαντάω | apantaó | G0528 | találkozni |
+| ἀπάντησις | apantészisz | G0529 | találkozás |
+| βοάω | boaó | G0994 | kiáltani |
+| διαῤῥήσσω | diarrésszó | G1284 | széttépni |
+| διαστέλλομαι | diasztellomai | G1291 | parancsot adni |
+| ἐγκαλέω | egkaleó | G1458 | vádolni |
+| εἰσάγω | eiszagó | G1521 | behozni |
+| εἰσέρχομαι | eiszerkhomai | G1525 | bemenni |
+| εἰσφέρω | eiszferó | G1533 | behozni |
+| ἔμπροσθεν | emproszthen | G1715 | előtt |
+| ἐναντίον | enantion | G1726 | szemben |
+| ἐναντίος | enantiosz | G1727 | ellenséges |
+| ἐπάγω | epagó | G1863 | ráhozni |
+| **ἐπικαλέομαι** *(a motívum szava)* | epikaleomai | G1941 | hívni (segítségül)/nevezni |
+| ἐπιλαμβάνομαι | epilambanomai | G1949 | elkapni |
+| ἐπονομάζω | eponomadzó | G2028 | nevezni |
+| καλέω | kaleó | G2564 | hívni |
+| κηρύσσω | kérüsszó | G2784 | prédikálni |
+| κλαίω | klaió | G2799 | sírni |
+| κληρόω | kléroó | G2820 | elnyerni |
+| κλῆσις | klészisz | G2821 | elhívás |
+| κλητός | klétosz | G2822 | elhívott |
+| κράζω | kradzó | G2896 | kiáltozni |
+| λαλέω | laleó | G2980 | beszélni |
+| λαμβάνω | lambanó | G2983 | venni |
+| λογίζομαι | logidzomai | G3049 | számlálni |
+| μένω | menó | G3306 | maradni |
+| μετακαλέω | metakaleó | G3333 | magához hívatni |
+| νηστεύω | nészteuó | G3522 | böjtölni |
+| ξένος | xenosz | G3581 | idegen |
+| ὀνομάζω | onomadzó | G3687 | nevezni |
+| παρακαλέω | parakaleó | G3870 | kérni/vigasztalni |
+| περιποιέομαι | peripoieomai | G4046 | nyerni |
+| προσκαλέομαι | proszkaleomai | G4341 | magához hívni |
+| ῥήγνυμι | rhégnümi | G4486 | erőszakosan ledobni |
+| συμβαίνω | szümbainó | G4819 | megtörténni |
+| συναντάω | szünantaó | G4876 | találkozni |
+| σχίζω | szkhidzó | G4977 | hasítani |
+| ὑπάντησις | hüpantészisz | G5222 | találkozás |
+| φωνέω | fóneó | G5455 | hívni |
 
 **H8034 — שֵׁם (sém)** · SECE — görög megfelelők (6):
 
 | Szó | Kiejtés | Strong | Rövid jelentés |
 |---|---|---|---|
-| θρόνος | thronosz | G2362 | throne *(fordításra vár)* |
-| καλέω | kaleó | G2564 | to call: call *(fordításra vár)* |
-| καλός | kalosz | G2570 | good *(fordításra vár)* |
-| καύχημα | kaukhéma | G2745 | pride *(fordításra vár)* |
-| ὄνομα | onoma | G3686 | name *(fordításra vár)* |
-| Σήμ | Szém | G4590 | Shem *(fordításra vár)* |
+| θρόνος | thronosz | G2362 | trón |
+| καλέω | kaleó | G2564 | hívni |
+| καλός | kalosz | G2570 | jó |
+| καύχημα | kaukhéma | G2745 | dicsekedés |
+| ὄνομα | onoma | G3686 | név |
+| Σήμ | Szém | G4590 | Sém |
 
 *A szólista és a sorrend a SECE-é (gyakoriságot nem ad; az ismétlődő szóalak egyszer áll); a Strong-szám a TBESG/TBESH lemmájából vagy a SECE címszavából párosul; a rövid jelentés: héberül `adat/glosszak_heber_hu.tsv`, görögül a TBESG angol glosszája (magyar rövid glossza-tábla a görögre még nincs).*
 
