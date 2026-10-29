@@ -4,7 +4,7 @@ ELTÉRÉS: 8 tétel
 
 *A `fuggetlen-ellenor` jelentése, a végrehajtó mentette (az ellenőrnek nincs fájlíró eszköze). Az eltérés- és a lényegi OK-sorok a jelentés szerint, rövidítve; a végén a végrehajtó javítóköre.*
 
-- **Megbízás:** a DT-F131s (a `DONTESEK.md` 12–14. szerep-sora); brieffájl nincs.
+- **Megbízás:** a DT424 (a `DONTESEK.md` 12–14. szerep-sora); brieffájl nincs.
 - **Tartomány:** `f9ec7400..b3b84efb`.
 - **Ellenőr:** a tényleges modell `claude-opus-5-5`, a kért modell `opus`, tehát egyezik.
 
@@ -27,7 +27,7 @@ ELTÉRÉS: 8 tétel
 
 ## Javítókör (végrehajtó, 2026-10-29)
 
-1. **(1) A 14. címkéje** mostantól „Hamis párhuzam (ugyanaz a magyar szó, a gerinc-kombináció nélkül)”. Versenként kiíródik a versben álló gerinc-Strong: 16 versben „H7121”, 1 versben „nincs”. A DT-F131s ugyanígy javítva. A logika nem változott: a magyar kulcsszó mindkét szövetségben ugyanazt a formulát keresi, ezt a lap ki is mondja.
+1. **(1) A 14. címkéje** mostantól „Hamis párhuzam (ugyanaz a magyar szó, a gerinc-kombináció nélkül)”. Versenként kiíródik a versben álló gerinc-Strong: 16 versben „H7121”, 1 versben „nincs”. A DT424 ugyanígy javítva. A logika nem változott: a magyar kulcsszó mindkét szövetségben ugyanazt a formulát keresi, ezt a lap ki is mondja.
 2. **(2), (3) Áttérés a közös szabályra.** A `szerep_nave.nave_sorai` mostantól az `eszkozok/nave_bontas.py` szabályával bont, ugyanazzal a bemenettel, mint az olvasó `nave_vers`-e: a LXX_OS KJV-kulcsa, a fejezeteltolás, végül a `Karoli_versmegfeleltetes.tsv`.
    - A fejezetszintű hely nem bomlik, a kihagyás számolt.
    - **Eredmény:** 107 téma (113 helyett). A PRAYERLESSNESS 3/15 (20%), az Ézs 64:6-tal; az OBLIGATION 2/19.
@@ -35,6 +35,6 @@ ELTÉRÉS: 8 tétel
    - A `naplok/NAVE_tema_meres.py` ugyanezt a szabályt használja.
    - **Teszt:** `test_kjv_karoli_megfeleltetes`.
 3. **(6)** A 12. blokk tizedesvesszőt ír.
-4. **(5) A „hívhatja”:** ismert korlát; a modul docstringje és a DT-F131s is kimondja. Az `ELOTAG_MARADEK` 4 betűre emelése a KIRALY-001-en 19-ről 61-re növelné a zajt, ezért marad 3.
+4. **(5) A „hívhatja”:** ismert korlát; a modul docstringje és a DT424 is kimondja. Az `ELOTAG_MARADEK` 4 betűre emelése a KIRALY-001-en 19-ről 61-re növelné a zajt, ezért marad 3.
 5. **(4) Az ALVIL-001 lap** a main-en eleve elavult: az újragenerálása 775 sort változtatna. A két „Seol”-sor a lap következő generálásakor kerül rá. Ebben a PR-ben nem generálódik újra, mert az ALVIL-001 nem ennek a menetnek a lapja.
 6. **(7) A forráslista sorrendjét** a generátor közös függvénye adja, a menet nem nyúlt hozzá. **(8)** A commitok tárgysora a #506 és a #508 elfogadott mintáját követi. Mindkettő változatlan.

@@ -1,4 +1,4 @@
-# Független ellenőrzés, 2. kör: ISTENTISZT-001 olvasói forma (DT-F131w, DT-F131x; brief-fájl nincs)
+# Független ellenőrzés, 2. kör: ISTENTISZT-001 olvasói forma (DT426, DT427; brief-fájl nincs)
 
 Tartomány: c6340e30..b16c7e5a (5 commit). Ellenőr: `fuggetlen-ellenor` subagent, `claude-opus-5-5` (kért: `opus`).
 A jelentést az ellenőr a válaszában adta (fájlíró eszköze nem volt); a végrehajtó mentette, tömörítve, a tételek
@@ -29,7 +29,7 @@ kiejtésnek számított.
 
 ## A végrehajtó válasza
 
-Döntés: DT-F131x (a felhasználó felhatalmazásával az orkesztrátor). Javítva:
+Döntés: DT427 (a felhasználó felhatalmazásával az orkesztrátor). Javítva:
 1. A 12. olvasói mondat csak akkor áll, ha a blokk épül (van témadöntés); a magyar név nélküli példa-téma „(fordításra vár)”.
 2. A 14. szerep szövege általános („a kombináció egy része”).
 3. A kiírt görög alak, ha nem a lemma, a saját gépi kiejtését kapja: „ἐπικαλέομαι (epikaleomai)”.
@@ -42,7 +42,7 @@ Döntés: DT-F131x (a felhasználó felhatalmazásával az orkesztrátor). Javí
 8. A kiejtés a toldalék után: „θάνατος-t (thanatosz)”.
 9. A Rokon szavak SECE-alblokkja is bevezetőt kap.
 10. A címsorból a helyőrző kikerült.
-11. Nem javítva: a #131 utómunka-menetek közös előtagja („ISTENTISZT-001 arany, …”, l. DT-F131s).
+11. Nem javítva: a #131 utómunka-menetek közös előtagja („ISTENTISZT-001 arany, …”, l. DT424).
 
 A végrehajtó futtatta: a tesztek zöldek; `ellenoriz.py` SÉRTÉS 0; a repón kívüli próbában mind a 8 lap hibátlan
 (0 `LN:`, 0 „SZPA”, 0 „H7121 a H8034” más lapon; az ALVIL-001-en a 12. bevezető az általános mondat).

@@ -4,7 +4,7 @@
 
 ## 1. Cél
 
-A H7585 (BDB) angol forrásában a 3.b pont példája „Prov 25:11”. Ez sajtóhiba: a helyes alak Péld 15:11. A TAHOT szerint a Péld 15:11 hordozza a H7585 és a H0011 együttesét, a Péld 25:11-ben nincs Seol. A hibát az F123.ALVIL.B1 (52919dfd) a hivatkozás-táblában kijavította: `adat/bdb_forras_javitas.tsv`, kézi sor, Péld 15:11 (DT-F123h). A **magyar BDB-szöveg** viszont továbbra is „Péld 25:11”-et hoz, ezért a lexikonlapon (`lexikon/ALVIL-001_TUDOMANYOS.md`, a H7585 BDB-blokkja) nincs kiemelés. Az ⓘ-jegyzet jelzi is: „sorszam 92 (Péld 15:11) a magyar szövegben nem található” (ELLENOR E6).
+A H7585 (BDB) angol forrásában a 3.b pont példája „Prov 25:11”. Ez sajtóhiba: a helyes alak Péld 15:11. A TAHOT szerint a Péld 15:11 hordozza a H7585 és a H0011 együttesét, a Péld 25:11-ben nincs Seol. A hibát az F123.ALVIL.B1 (52919dfd) a hivatkozás-táblában kijavította: `adat/bdb_forras_javitas.tsv`, kézi sor, Péld 15:11 (DT417). A **magyar BDB-szöveg** viszont továbbra is „Péld 25:11”-et hoz, ezért a lexikonlapon (`lexikon/ALVIL-001_TUDOMANYOS.md`, a H7585 BDB-blokkja) nincs kiemelés. Az ⓘ-jegyzet jelzi is: „sorszam 92 (Péld 15:11) a magyar szövegben nem található” (ELLENOR E6).
 
 Mért helyek (2026-10-29, `grep -n 'Péld 25:11'`):
 

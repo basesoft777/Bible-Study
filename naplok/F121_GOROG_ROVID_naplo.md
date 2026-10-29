@@ -1,6 +1,6 @@
 # F121.21 — a görög rövid jelentés magyarul (7. szerep, SECE-táblák)
 
-*2026-10-29, `claude-sonnet-5-5`. Kulcs: `TBESG | <Strong> | <Strong> | rovid | glosszak_hu` (DT-F121o). Forrás: a `TBESG.txt` sor 7. oszlopa (Strongonként az első sor, ahogy a generátor `tbesg_rovid_glossza`). 56 sor: az ISTENTISZT-001 lap 54 egyedi görög Strongja (53 a SECE-táblában + a G1941) és az ALVIL-001 két további (G0086, G2288).*
+*2026-10-29, `claude-sonnet-5-5`. Kulcs: `TBESG | <Strong> | <Strong> | rovid | glosszak_hu` (DT428). Forrás: a `TBESG.txt` sor 7. oszlopa (Strongonként az első sor, ahogy a generátor `tbesg_rovid_glossza`). 56 sor: az ISTENTISZT-001 lap 54 egyedi görög Strongja (53 a SECE-táblában + a G1941) és az ALVIL-001 két további (G0086, G2288).*
 
 - **Tervezet:** `naplok/F121_GOROG_ROVID_tervezet.tsv`; jóváhagyva két módosítással (G2745 „dicsekedés”, G3870 „kérni/vigasztalni”) — orkesztrátor, a felhasználó felhatalmazásával. Kapuk: mind az 56 átment. 13. szabály RENDBEN.
 - **Mankók:** `…_manko.tsv`: szójegyzék nincs ütközés (30 egyezik, 26 nincs adat); Károli 26 soron „nem található” (jórészt toldalék-eltérés; a szójegyzék dönt, DT239). `…_szojegyzek_javaslat.tsv` (DT240): 437 kulcs, új sort nem javaslok. `…_visszamenoleges.tsv` (DT242): a korábbi 3 tétel, új nincs.

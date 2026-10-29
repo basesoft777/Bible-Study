@@ -4,7 +4,7 @@ ELTÉRÉS: 4 tétel
 
 *A `fuggetlen-ellenor` jelentése, a végrehajtó mentette, mert az ellenőrnek nincs fájlíró eszköze. Az eltérés- és a lényegi OK-sorok a jelentés szerint, rövidítve; a végén a végrehajtó javítóköre.*
 
-- **Megbízás:** a DT-F131r (a `DONTESEK.md` BDB-frissítés sora), valamint az N-F131f és az N-F131g. Brieffájl nincs.
+- **Megbízás:** a DT423 (a `DONTESEK.md` BDB-frissítés sora), valamint az N-F131f és az N-F131g. Brieffájl nincs.
 - **Tartomány:** `6f30ab03..3d747af4` (8 commit), ág: `claude/istentiszt-bdb-hu-frissites`.
 - **Modell:** a tényleges `claude-opus-5-5` egyezik a kért `opus`-szal.
 - **Korlát:** az ellenőr teszteket és mérőszkripteket a szerepe szerint nem futtathat; a futtatást igénylő pontok NEM ELLENŐRIZHETŐ minősítést kaptak.
@@ -22,7 +22,7 @@ ELTÉRÉS: 4 tétel
 | a lexikonlap | OK | `lexikon/ISTENTISZT-001_TUDOMANYOS.md:631, 636, 656` | Pontosan 3 sor változott; helyőrző a lapon 0. |
 | 101 = 98 + 3; 49 rontás-jelölt; a minta | OK | `naplok/BDB_HU_frissites_naplo.md:28-29, 134, 137-186, 188, 311-316, 350` | A számok egyeznek a napló kimenetével. |
 | N-F131g számai | **ELTÉRÉS (E1)** | `NYITOTT_FELADATOK.md:55` | A 3 424 / 173 / 665 / 576, a 367–401 / 245–272 és a 201 / 125 egyik hivatkozott szkriptből sem vezethető le. |
-| helyőrző címsorban | **ELTÉRÉS (E2)** | `naplok/BDB_HU_frissites_naplo.md:1` | A címsorban `DT-F131r, N-F131f, N-F131g` áll; a szamkiosztas és az E5 ütközése miatt ez tilos. |
+| helyőrző címsorban | **ELTÉRÉS (E2)** | `naplok/BDB_HU_frissites_naplo.md:1` | A címsorban `DT423, N-F131f, N-F131g` áll; a szamkiosztas és az E5 ütközése miatt ez tilos. |
 | a CRLF-lista | **ELTÉRÉS (E3, kicsi)** | `naplok/CRLF_olvaso_felmeres.md:17` | A lista a 2fa792b2 állapotát rögzíti; a HEAD-en a `hu_illeszt.py:245` sor `:247`. |
 | E16 | **ELTÉRÉS (E4)** | `eszkozok/ellenorzes/tesztek/test_szabalyok.py` | Ellenőrzőt érint a PR, ezért a címe `[ELLENŐRZŐ]` előtaggal kell kezdődjön. |
 | a DONTESEK oszlopszáma, idézetek, helyőrző a kódban | OK / NEM ELLENŐRIZHETŐ | `DONTESEK.md:471` | Az oszlopszám 8, rendben; a „vedd át a döntéseket” idézet megvan; helyőrző a kódban 0. A „első prio arany cikk teljes” idézet a repóban nem ellenőrizhető. |

@@ -1,8 +1,8 @@
-# Független ellenőrzés: ISTENTISZT-001 olvasói forma (DT-F131t; brief-fájl nincs)
+# Független ellenőrzés: ISTENTISZT-001 olvasói forma (DT425; brief-fájl nincs)
 
 Tartomány: d5916f40..c6340e30 (5 commit). Ellenőr: `fuggetlen-ellenor` subagent, `claude-opus-5-5` (kért: `opus`).
 A jelentést az ellenőr a válaszában adta (fájlíró eszköze nem volt); a végrehajtó mentette változatlan tartalommal.
-A futás közben a munkakönyvtárban már a következő kör (DT-F131w, DT-F131x) nem commitolt változásai is álltak; a
+A futás közben a munkakönyvtárban már a következő kör (DT426, DT427) nem commitolt változásai is álltak; a
 megállapítások a HEAD-re (c6340e30) vonatkoznak.
 
 ELTÉRÉS: 7 tétel
@@ -29,7 +29,7 @@ ELTÉRÉS: 7 tétel
 | D: „fordításra vár” | OK | `:882–941` | 55 görög szó, mind jelölve |
 | (5) blokk_lxx bájt-azonosság | OK (közvetett) | `:1191` | a 3. szakaszban csak a „Mit mutat” hunk |
 | (7) TSV | OK | – | `split('\t')`; nincs `csv` |
-| (7) helyőrzők | OK (megjegyzéssel) | – | címsorban és `eszkozok/`-ban 0; a `DT-F131t` az `adat/elutasitasi_okok.tsv` proveniencia-mezőjében áll |
+| (7) helyőrzők | OK (megjegyzéssel) | – | címsorban és `eszkozok/`-ban 0; a `DT425` az `adat/elutasitasi_okok.tsv` proveniencia-mezőjében áll |
 | (7) CRLF | OK | – | DONTESEK 488/488, NYITOTT 976/976, SEMA 1931/1931 |
 | (7) commit-üzenet | **ELTÉRÉS** (alacsony) | – | az üzenetek „ISTENTISZT-001 arany, …”-val kezdődnek, tétel-azonosító (`F131.x:`) nélkül |
 | (8) tesztek | NEM ELLENŐRIZHETŐ | – | szerepkorlát |
@@ -37,7 +37,7 @@ ELTÉRÉS: 7 tétel
 
 ## A végrehajtó válasza
 
-Döntés: DT-F131x.
+Döntés: DT427.
 
 1. Javítva: a „jogi fellebbezés” minta sorrendje 25 (a 30 elé); teszt: `teszt_szerep_kizart` (SEMA 2.43).
 2. Javítva: a héber 6. sor és bevezető kimondja, hogy a motívum görög szavának egyezését méri.
@@ -45,4 +45,4 @@ Döntés: DT-F131x.
 4. Javítva: a 9. szerep egyértelmű / jelölt / hozzárendelés nélküli bontásban számol.
 5. Javítva: a héber 9. a gerinc-lapon mondat a sorszámmal és a szónézet linkjével.
 6. Javítva: a kiírt görög alak, ha nem a TBESG-lemma, a saját gépi kiejtését kapja.
-7. Nem javítva: a commit-üzenet előtagja a #131 utómunka-menetek (DT-F131s) közös gyakorlata („ISTENTISZT-001 arany, …”).
+7. Nem javítva: a commit-üzenet előtagja a #131 utómunka-menetek (DT424) közös gyakorlata („ISTENTISZT-001 arany, …”).

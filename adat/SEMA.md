@@ -797,7 +797,7 @@ magyar szótári fordítás egyetlen helye — a `lexikon_hivatkozasok.tsv`
 
 **Forrásfájlból feloldott sorok (F121, ALVIL-001 menet; DT408).** Ahol nincs `lexikon_hivatkozasok.tsv`-sor, a 13. szabály forrásszövegét a `eszkozok/glossza_lexikon_forditas.py` `tovabbi_forras` feloldója adja a konkordancia-fájlból (az `ellenoriz.py` hívja): `TBESH` / `TBESG` (`entry_id` = Strong, `jelentes_szam` = `teljes`, `mezo` = `forditas_hu`): a `TBESH.txt` / `TBESG.txt` sor 7. és 8. oszlopa (rövid glossza + szócikk) a TBESH-oldal tisztításával (`tbesh_konszolidalt_import.clean`: a HTML-jelölők szóközzé, a szóközök összevonva), egy szóközzel egybefűzve; `tW_szocikkek` (`entry_id` = `tw_id`, `strong` = a cikk `strong` oszlopának első eleme, `jelentes_szam` = `—`): a `tW_szocikkek.tsv` `szoveg`-e; `MCGED` (`entry_id` = `gk_szam`, `jelentes_szam` = `—`, `mezo` = `glosszak_hu`): a `MCGED_teljes.tsv` `glossza`-ja; `LSJ` (`entry_id` = a Strong, `jelentes_szam` = `teljes`): a `LSJ_teljes.tsv` `Teljes_szocikk`-e a `Strong_padded` szerint; `BDB`, `jelentes_szam` = `nyelvi_hatter` (`entry_id` = Strong): a `BDB_etimologia_kezi_hatarok.tsv` `nyelvi_hatter`-e. A `sonnet` állapot ezekre a sorokra is áll; az `allapot` = `kezi` sor a már jóváhagyott `teljes` sor változatlan szakasza (megjegyzés).
 
-**A görög rövid jelentés (F121, DT-F121o).** `szotar = TBESG`, `entry_id` = `strong` = a Strong (`G0071`), `jelentes_szam = rovid`, `mezo = glosszak_hu`: a 7. szerep (SECE) görög szavainak rövid magyar jelentése. Forrása a `TBESG.txt` sor 7. oszlopa (Strongonként az első sor; `forras_hash` = ennek SHA-1-e; feloldó: `glossza_lexikon_forditas.tovabbi_forras`). A generátor (`lexikon_general.rovid_jelentes`) ezt keresi; ahol nincs, az angol glossza + `fordításra vár`. Az `allapot` = `sonnet`. A héber párja az `adat/glosszak_heber_hu.tsv` (2.39).
+**A görög rövid jelentés (F121, DT428).** `szotar = TBESG`, `entry_id` = `strong` = a Strong (`G0071`), `jelentes_szam = rovid`, `mezo = glosszak_hu`: a 7. szerep (SECE) görög szavainak rövid magyar jelentése. Forrása a `TBESG.txt` sor 7. oszlopa (Strongonként az első sor; `forras_hash` = ennek SHA-1-e; feloldó: `glossza_lexikon_forditas.tovabbi_forras`). A generátor (`lexikon_general.rovid_jelentes`) ezt keresi; ahol nincs, az angol glossza + `fordításra vár`. Az `allapot` = `sonnet`. A héber párja az `adat/glosszak_heber_hu.tsv` (2.39).
 
 **Szakaszonkénti BDB-sorok (F128; DT181 (b), DT269 (1), DT285–g).** A #38 a 7. adag előtti újrafordító adagtól
 (DT289: a 98 N-F107b Strong) szakaszonként fordít: a bemenet a `szakasz_bemenet.py` tokenes szövege (minden szakasz előtt
@@ -1643,7 +1643,7 @@ A magyar Thayer-szöveg nem innen jön, hanem a #142 szakaszsoraiból (`forditas
 F131.1-ben itt tartott átmeneti kézi határok az F131.3.6-ban kivezetve). **A tábla saját tagolást nem tart:** minden sor létező szakaszra mutat. A címke a szóról
 szól: motívumra, invokációra vagy tagadásra utaló minősítés nem állhat benne (DT272 (d)). Csak a szótári gerinccel
 renderelt motívumok (`lexikon_general.SZOTARI_GERINC_MOTIVUMOK`) Strongjai: az arany lap (ISTENTISZT-001), és a #123
-migrációjában motívumonként bekapcsolt lapok (ALVIL-001: H7585, G0086; író: `naplok/F123_cimke_ir.py`, DT-F123h).
+migrációjában motívumonként bekapcsolt lapok (ALVIL-001: H7585, G0086; író: `naplok/F123_cimke_ir.py`, DT417).
 Olvasás `split('\t')`.
 
 | Oszlop | Jelentés |
@@ -1667,7 +1667,7 @@ Thayer 2), mind címkés.
 
 ### 2.41 `tematikus_temak.tsv` — a tematikus index (12. szerep) jelöltjeinek döntése, motívumonként (ISTENTISZT-001 arany lap, 2026-10-29)
 
-**Kézi** (`manual` proveniencia; a döntés: DT-F131s). A szótári szerepmátrix 12. szerepének (Tematikus index, Nave) motívumonkénti döntései
+**Kézi** (`manual` proveniencia; a döntés: DT424). A szótári szerepmátrix 12. szerepének (Tematikus index, Nave) motívumonkénti döntései
 — adat, nem kód, hogy a szabály minden motívumra átvihető legyen. A jelöltképzés szabálya (`eszkozok/szerep_nave.py`
 `jeloltek()`): legalább 2 motívumvers, a motívumversek aránya a téma összes verséhez legalább 1%, és a téma nem `tiltott`. A
 választás (`nave_temak()`): ha a motívumnak van `kivalasztott` sora, a blokkban csak ezek állnak; a `kizart` sor kimarad.
@@ -1688,7 +1688,7 @@ teszt: `eszkozok/teszt_szerep_nave.py`). Állapot (2026-10-29): ISTENTISZT-001, 
 
 ### 2.42 `nave_tema_hu.tsv` — a Nave-témák és -altételek magyar neve (ISTENTISZT-001 arany lap, 2026-10-29)
 
-**Kézi** (jóváhagyás: DT-F131s; a végrehajtó tervezete a `glossza_lexikon_forditas.py nave` kapuival és mankóival, jóváhagyva). A 12. szerep a
+**Kézi** (jóváhagyás: DT424; a végrehajtó tervezete a `glossza_lexikon_forditas.py nave` kapuival és mankóival, jóváhagyva). A 12. szerep a
 magyar nevet „magyar (*ANGOL*)” alakban mutatja; ha nincs sor, vagy a `forras_hash` nem egyezik az angol szöveg mai
 SHA-1-ével, az angol áll „(fordításra vár)” jelöléssel. Olvasás `split('\t')`.
 
@@ -1708,7 +1708,7 @@ Kulcs: `tema_id` + `cimke_en`. Állapot (2026-10-29): 18 sor (az ISTENTISZT-001 
 
 ### 2.43 `elutasitasi_okok.tsv` — az 1/b. blokk elutasítási okainak mintaszótára (ISTENTISZT-001 arany lap, 2026-10-29)
 
-**Kézi** (`manual` proveniencia; jóváhagyás: DT-F131t). Az 1/b. blokk („Kizárt és vizsgált helyek”) összesítője a `jeloltek.tsv`
+**Kézi** (`manual` proveniencia; jóváhagyás: DT425). Az 1/b. blokk („Kizárt és vizsgált helyek”) összesítője a `jeloltek.tsv`
 elutasított sorainak `indoklas` mezőjét ezekre a mintákra illeszti (kis-nagybetű nélkül, `sorrend` szerint, az első egyező
 dönt); a be nem sorolható indoklás „egyéb”, és az összesítő felsorolja (`eszkozok/szerep_kizart.py`). A `jeloltek.tsv` nem
 változik. Olvasás `split('\t')`.
@@ -1728,7 +1728,7 @@ bővítés nyitott (N-F131u).
 
 ### 2.44 `funkcio_kapcsolok.tsv` — funkció-kapcsolók a renderhez (ISTENTISZT-001 arany lap, 2026-10-29)
 
-**Kézi** (`manual` proveniencia; jóváhagyás: DT-F131x). Egy funkció a renderben csak `aktiv` állapotban jelenik meg. Két fajta
+**Kézi** (`manual` proveniencia; jóváhagyás: DT427). Egy funkció a renderben csak `aktiv` állapotban jelenik meg. Két fajta
 sor: (1) `id` = `*`: globális kapcsoló — a szünetelő funkció sem hiányként, sem a szerep címében nem jelenik meg (a
 `szerep_cim_resz` a szerep nevéből elhagyott rész, pl. „ (+ SZPA)”); visszakapcsoláskor magától visszajön; (2) `id` =
 motívum-id: a motívumonként jóváhagyott funkció (a szótári gerinc, a 13–14. szerep) — a kódban nincs motívum-id szerinti
