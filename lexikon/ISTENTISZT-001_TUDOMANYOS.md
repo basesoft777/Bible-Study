@@ -67,6 +67,11 @@ mondat a lap készítőinek szól.
 körre (`scope`), melyik adattáblából vagy lekérdezésből (`forras`), mikor (`ts`); a `manual` kézi rögzítést jelöl. Az
 ellenőrzéshez való, olvasáskor átugorható.
 
+**Héber rövidítések a BDB-szövegben** (kiemelve; az egérmutató alatt a feloldás): a BDB a gyakori szavakat egy
+betűvel és a rövidítő jellel (׳, geres) írja. **י׳** = יְהוָה (Jahve), a Károliban „az Úr”; a szócikk címszavának
+kezdőbetűje (pl. **ק׳** a קָרָא (kárá) szócikkében, **שׁ׳** a שֵׁם (sém) szócikkében) maga a címszó. Más betűnél a feloldás a
+szócikk szövegéből derül ki.
+
 A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχή
 (pszükhé) *lélek*; a Károli-idézetek szövege változatlan (pl. »Lélek«).
 
@@ -742,7 +747,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 <details>
 <summary>Qal – Qal 2.b (5 szakasz)</summary>
 
-- `Qal` — Qal_655 perfectum ׳ק 1Móz 11:9 és máshol, 3. nőnemű egyes szám consecutivummal וְקָרָזת Éz…
+- `Qal` — Qal_655 perfectum <abbr class="rovidites" title="a címszó: קָרָא (kárá)">ק׳</abbr> 1Móz 11:9 és máshol, 3. nőnemű egyes szám consecutivummal וְקָרָזת Éz…
 - `Qal 1.a` — egyes szám אֶקְרָא 5Móz 32:3 és máshol, וָאֶקְרָאֶר 1Sám 28:15 (Ges^§ 48d Nes^Marg. 15)
 - `Qal 1.b` — hívni, kiáltani, a tárgy oratio recta [egyenes beszéd]
 - `Qal 2.a` — hívni valakit
@@ -752,7 +757,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 - **`Qal 2.c` — segítségül hívni**
 
-  > ׳ק י ׳בְּשֵׁם hívni ׳י nevével (azaz használni azt a segítségül hívásban): **1Móz 4:26**; **12:8**; **2Kir 5:11**; **Jer 10:25** = **Zsolt 79:6**, összesen 16-szor (**1Kir 18:24** annak konkrét kérésére, hogy ׳י mutassa meg hatalmát), továbbá Ézs 65:1 (l. Pu`al); Baál nevével **1Kir 18:24**-25, **26**.
+  > <abbr class="rovidites" title="a címszó: קָרָא (kárá)">ק׳</abbr> י ׳בְּשֵׁם hívni <abbr class="rovidites" title="יְהוָה (Jahve), az Úr">י׳</abbr> nevével (azaz használni azt a segítségül hívásban): **1Móz 4:26**; **12:8**; **2Kir 5:11**; **Jer 10:25** = **Zsolt 79:6**, összesen 16-szor (**1Kir 18:24** annak konkrét kérésére, hogy <abbr class="rovidites" title="יְהוָה (Jahve), az Úr">י׳</abbr> mutassa meg hatalmát), továbbá Ézs 65:1 (l. Pu`al); Baál nevével **1Kir 18:24**-25, **26**.
 
 <details>
 <summary>Qal 2.d (1 szakasz)</summary>
@@ -774,12 +779,12 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 - **`Qal 3.b` — a nevet kihirdetni**
 
-  > ׳ק י ׳שֵׁם 5Móz 32:3; Zsolt 99:6; így (korábban) ׳ק י ׳בְשֵׁם **2Móz 33:19**; **34:5** (JE); vö. ׳ק יַעֲקֹב בְּשֵׁם Ézs 44:5 (de olv. יִקָּרֵא, Lo Che és a legtöbben).
+  > <abbr class="rovidites" title="a címszó: קָרָא (kárá)">ק׳</abbr> י ׳שֵׁם 5Móz 32:3; Zsolt 99:6; így (korábban) <abbr class="rovidites" title="a címszó: קָרָא (kárá)">ק׳</abbr> י ׳בְשֵׁם **2Móz 33:19**; **34:5** (JE); vö. <abbr class="rovidites" title="a címszó: קָרָא (kárá)">ק׳</abbr> יַעֲקֹב בְּשֵׁם Ézs 44:5 (de olv. יִקָּרֵא, Lo Che és a legtöbben).
 
 <details>
 <summary>Qal 3.c – Pu'al (30 szakasz)</summary>
 
-- `Qal 3.c` — ׳ק עֲלֵי׳בֵּשׁ Zsolt 49:12
+- `Qal 3.c` — <abbr class="rovidites" title="a címszó: קָרָא (kárá)">ק׳</abbr> עֲלֵי׳בֵּשׁ Zsolt 49:12
 - `Qal 3.d` — abszolút használatban kihirdetést tenni (néha + לֵאמֹר אָמַר,) Bír 7:3
 - `Qal 4.a` — felolvasni, gyakran בְּאָוְבֵי, ritkábban לפְנֵי, a tekercset, könyvet jelölő ב elöljáróva…
 - `Qal 4.b` — olvasni, magában, (ב) tekercsben, könyvben, 5Móz 17:19
@@ -820,7 +825,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 *Szótári gerinc (DT272): a szó jelentéstartománya a BDB tagolásában (`adat/bdb_szakaszok.tsv`), magyarul (`adat/bdb_szakasz_hu.tsv`). A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva; a jel a BDB útvonalából készül. Kiemelve, felirat nélkül: a BDB saját példahelyei a motívum igehelyei közül (`adat/bdb_vers_jelentes.tsv`). A szótári blokk a szóról szól; a hely motívumbeli funkcióját az 1. szakasz táblázata adja.*
 
-**A szócikk feje (nyelvi háttér).** H8034. shem I. שֵׁם_864 hímnemű főnév^2Sám 7:9: név (a √ ismeretlen; Thes שׁמה, vö. Ba^ZMG xli (1887), 635; Lag^BN 160 ושׁם, arab bélyeg, jel, vö. RS^K 213, 303 kk. Kö^ii. 1. 104; késői héber = bibliai héber (különösen הַשֵּׁם = יהוה); föníciai שם Lzb^377; asszír šumu; szabeus סם Hom^Chr 124; etióp arab , , , ; arámi שְׁמָא שֵׁם,, továbbá שֻׁם שׁוּם, (Kö^ii. 1. 512), , , óarámi, palmürai שם Lzb^377); — status absolutus ׳שׁ 1Móz 6:4 és máshol; status constructus ׳שׁ **12:8** és máshol, ritkán שֶׁםֿ 1Sám 8:2 és máshol; suffixummal שְׁמִי 2Móz 3:15 és máshol, שִׁמְךָ 1Móz 32:9 és máshol, שְׁמֶ֑ךָ 1Kir 18:31 és máshol, stb.; többes szám שֵׁמוֺת (ritkán שֵׁמֹת) 1Móz 2:20 és máshol; status constructus שְׁמוֺת 2Móz 6:16 és máshol, suffixummal שְׁמוֺתָם 4Móz 13:4 és máshol, שְׁמוֺתָן Ez 23:4 (a versben kétszer); — név:
+**A szócikk feje (nyelvi háttér).** H8034. shem I. שֵׁם_864 hímnemű főnév^2Sám 7:9: név (a √ ismeretlen; Thes שׁמה, vö. Ba^ZMG xli (1887), 635; Lag^BN 160 ושׁם, arab bélyeg, jel, vö. RS^K 213, 303 kk. Kö^ii. 1. 104; késői héber = bibliai héber (különösen הַשֵּׁם = יהוה); föníciai שם Lzb^377; asszír šumu; szabeus סם Hom^Chr 124; etióp arab , , , ; arámi שְׁמָא שֵׁם,, továbbá שֻׁם שׁוּם, (Kö^ii. 1. 512), , , óarámi, palmürai שם Lzb^377); — status absolutus <abbr class="rovidites" title="a címszó: שֵׁם (sém)">שׁ׳</abbr> 1Móz 6:4 és máshol; status constructus <abbr class="rovidites" title="a címszó: שֵׁם (sém)">שׁ׳</abbr> **12:8** és máshol, ritkán שֶׁםֿ 1Sám 8:2 és máshol; suffixummal שְׁמִי 2Móz 3:15 és máshol, שִׁמְךָ 1Móz 32:9 és máshol, שְׁמֶ֑ךָ 1Kir 18:31 és máshol, stb.; többes szám שֵׁמוֺת (ritkán שֵׁמֹת) 1Móz 2:20 és máshol; status constructus שְׁמוֺת 2Móz 6:16 és máshol, suffixummal שְׁמוֺתָם 4Móz 13:4 és máshol, שְׁמוֺתָן Ez 23:4 (a versben kétszer); — név:
 
 <details>
 <summary>1 – 2.c (4 szakasz)</summary>
@@ -834,11 +839,11 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 - **`3` — név: Isten megjelölése**
 
-  > név, mint Isten megjelölése, kifejezetten a ׳י-é (különösen Jeremiásnál, Ezékielnél, Ézs^2, 3-nál, a Zsoltárokban): — először (a Hexateuchban) a ׳ק ׳בְּשׁ ׳י kifejezésben **1Móz 4:26** (J): valamivel hívni, azaz a ׳י nevet használni az istentiszteletben, így **12:8**; **13:4**; **21:33**; **26:35** és máshol (l. קרא 2c); ezért az istentisztelet helyéről שָׁם מאתשְֿׁמִי אַוְּכִּיר אֲשֶׁר בְּכָלהַֿמָּקוֺם 2Móz 20:24 (Gi 20:21); שָׁם אֶתשְֿׁמוֺ [לְשַׁכֵּן] לָשׂוּם 5Móz 12:5, 11 és máshol; לִשְׁמִי בַּיִת בָּנָה 2Sám 7:13 + gyakran; a nép eljön ׳לְשׁ ׳י Józs 9:9 (R^D), így שׁ ׳לְמֵעַן 1Kir 8:41 2Krón 6:32; Ézs 60:9; keresik Zsolt 83:17; ׳בְּשׁ ׳י-val esküdni 1Sám 20:42; 5Móz 6:13; 10:20; 3Móz 19:12, vö. (לַשָּׁוְא) 2Móz 20:7 (a versben kétszer)=5Móz 5:11 (a versben kétszer); ׳תָּפַשׁ ׳י Péld 30:9; שְׁמִיעַלֿ נִקְרָא stb. a tulajdonjog jeleként (vö. 2a), Jer 7:10 és máshol ; = hírneve, dicsősége, לוֺ עָשָׁה-val, l. 1b (1), vö. Józs 7:9; ׳בְּשׁ ׳י, azaz mint az ő képviselője 2Móz 5:23 (J), 1Sám 17:45; 5Móz 10:8; 2Sám 6:18; 2Kir 2:24 és máshol (l. a 2a végét); különösen mint ami a ׳י (kinyilatkoztatott) jellemét testesíti meg: ׳י שְׁמוֺ Ámós 5:8; 9:6; Jer 33:2, לְעֹלָם שְּׁמִי וֶה 2Móz 3:15 (E; || זֵכֶר; alaphely), 6:3 (P); ׳י שְׁמוֺ׳(א עְבָאוֺת ) Ámós 4:13; 5:27; Jer 10:16; 46:18, Jeremiásnál összesen 10-szer, Ézs^2, ׳י שְׁמוֺ קַנָּא 2Móz 34:14 (J; vö. 20:5; Náh 1:2), שׁ ׳קָדוֺשׁ Ézs 57:15, ׳שׁ [וֺ] קָדְשִׁי Ámós 2:7; Ez 39:7; 43:7; Zsolt 103:1 + gyakran; ezért a megismerés tárgya Ézs 52:6; Jer 48:17, שְׁמֶ֑ךָ יֹדְעֵי Zsolt 9:11 (|| דֹּרְשֶׁיךָ), a szereteté Ézs 56:5, שׁ ׳אֹהֲבֵי Zsolt 5:12; Zsolt 69:37; 119:132, a félelemé 61:6, különösen a dicséreté stb. (בֵּרַח הוֺדָה, הִןכִּיר, חִלֵּל,, stb.): אֲוַמֵּר לְשִׁמְךָ 2Sám 22:50 (|| אוֺדְךָ, és így igen gyakran || ׳י) = Zsolt 18:50, vö. 1Krón 16:10; 29:13; Zsolt 45:18; Ézs 26:13; 1Kir 8:33, 35 2Krón 6:24, 26; Zsolt 8:2; Zsolt 8:10 és máshol; ׳חָבוּלי שְׁמוֺ כְּבוֺד 29:2; 96:8, és sok más kapcsolat; ellentéte אֶתשֿׁ ׳חִלֵּל ׳א 3Móz 18:21 és máshol, שׁ ׳נקב ׳י 24:16, שׁ ׳נִאֵץ Zsolt 74:10; 74:18 stb.; ׳הַשּׁ וְהַנּוֺרָא הַנִּכְבָּד 5Móz 28:58, vö. Neh 1:11; שִׁמְךָ לְמַעַן a ׳י-hoz intézett kérésekben, hogy jelleme szerint cselekedjék Jer 14:7, 21; Ez 20:9, 14; Ézs 48:9; 66:5; Zsolt 25:11; 31:4 és máshol; a ׳שׁ ׳י hatalmas cselekvő, הוֺשִׁיעֵנִי בְּשִׁמְךָ 54:3 (|| בִּגְבוּרָֽתְךָ), vö. 124:8; a ׳י י-ról ׳מַלְאַךָ ezt mondja: בְּקִרְבּוֺ שְׁמִי 2Móz 23:21 (E); a הַשֵּׁם a 3Móz 24:11-ben valószínűleg írnoki helyettesítés a ׳י szó helyett (amelyet már kezdtek kimondhatatlannak tartani, különösen וַיִקֹּב-val, vö. Gei^Urschr.273 k. Di Dr-Wh Baen); e használat fejlődéséről és a ׳הַשּׁ megszemélyesített vagy hiposztázisként való zsidó használatáról l. Levy^NHWB a címszónál, Jastr^s.see — a שְׁמֶ֑ךָ קָרוֺב a Zsolt 75:2-ben feltűnő, de kétséges, < ᵐ5 Dy Che Gr Hup-Now שׁ ׳קֹרְאֵי, Du בִשׁ ׳קָרָנוּ (= קָרָאנוּ).
+  > név, mint Isten megjelölése, kifejezetten a <abbr class="rovidites" title="יְהוָה (Jahve), az Úr">י׳</abbr>-é (különösen Jeremiásnál, Ezékielnél, Ézs^2, 3-nál, a Zsoltárokban): — először (a Hexateuchban) a <abbr class="rovidites" title="a BDB rövidítése; a feloldás a szócikk szövegéből derül ki">ק׳</abbr> ׳בְּשׁ <abbr class="rovidites" title="יְהוָה (Jahve), az Úr">י׳</abbr> kifejezésben **1Móz 4:26** (J): valamivel hívni, azaz a <abbr class="rovidites" title="יְהוָה (Jahve), az Úr">י׳</abbr> nevet használni az istentiszteletben, így **12:8**; **13:4**; **21:33**; **26:35** és máshol (l. קרא 2c); ezért az istentisztelet helyéről שָׁם מאתשְֿׁמִי אַוְּכִּיר אֲשֶׁר בְּכָלהַֿמָּקוֺם 2Móz 20:24 (Gi 20:21); שָׁם אֶתשְֿׁמוֺ [לְשַׁכֵּן] לָשׂוּם 5Móz 12:5, 11 és máshol; לִשְׁמִי בַּיִת בָּנָה 2Sám 7:13 + gyakran; a nép eljön ׳לְשׁ <abbr class="rovidites" title="יְהוָה (Jahve), az Úr">י׳</abbr> Józs 9:9 (R^D), így שׁ ׳לְמֵעַן 1Kir 8:41 2Krón 6:32; Ézs 60:9; keresik Zsolt 83:17; ׳בְּשׁ <abbr class="rovidites" title="יְהוָה (Jahve), az Úr">י׳</abbr>-val esküdni 1Sám 20:42; 5Móz 6:13; 10:20; 3Móz 19:12, vö. (לַשָּׁוְא) 2Móz 20:7 (a versben kétszer)=5Móz 5:11 (a versben kétszer); ׳תָּפַשׁ <abbr class="rovidites" title="יְהוָה (Jahve), az Úr">י׳</abbr> Péld 30:9; שְׁמִיעַלֿ נִקְרָא stb. a tulajdonjog jeleként (vö. 2a), Jer 7:10 és máshol ; = hírneve, dicsősége, לוֺ עָשָׁה-val, l. 1b (1), vö. Józs 7:9; ׳בְּשׁ <abbr class="rovidites" title="יְהוָה (Jahve), az Úr">י׳</abbr>, azaz mint az ő képviselője 2Móz 5:23 (J), 1Sám 17:45; 5Móz 10:8; 2Sám 6:18; 2Kir 2:24 és máshol (l. a 2a végét); különösen mint ami a <abbr class="rovidites" title="יְהוָה (Jahve), az Úr">י׳</abbr> (kinyilatkoztatott) jellemét testesíti meg: <abbr class="rovidites" title="יְהוָה (Jahve), az Úr">י׳</abbr> שְׁמוֺ Ámós 5:8; 9:6; Jer 33:2, לְעֹלָם שְּׁמִי וֶה 2Móz 3:15 (E; || זֵכֶר; alaphely), 6:3 (P); <abbr class="rovidites" title="יְהוָה (Jahve), az Úr">י׳</abbr> שְׁמוֺ׳(א עְבָאוֺת ) Ámós 4:13; 5:27; Jer 10:16; 46:18, Jeremiásnál összesen 10-szer, Ézs^2, <abbr class="rovidites" title="יְהוָה (Jahve), az Úr">י׳</abbr> שְׁמוֺ קַנָּא 2Móz 34:14 (J; vö. 20:5; Náh 1:2), שׁ ׳קָדוֺשׁ Ézs 57:15, <abbr class="rovidites" title="a címszó: שֵׁם (sém)">שׁ׳</abbr> [וֺ] קָדְשִׁי Ámós 2:7; Ez 39:7; 43:7; Zsolt 103:1 + gyakran; ezért a megismerés tárgya Ézs 52:6; Jer 48:17, שְׁמֶ֑ךָ יֹדְעֵי Zsolt 9:11 (|| דֹּרְשֶׁיךָ), a szereteté Ézs 56:5, שׁ ׳אֹהֲבֵי Zsolt 5:12; Zsolt 69:37; 119:132, a félelemé 61:6, különösen a dicséreté stb. (בֵּרַח הוֺדָה, הִןכִּיר, חִלֵּל,, stb.): אֲוַמֵּר לְשִׁמְךָ 2Sám 22:50 (|| אוֺדְךָ, és így igen gyakran || <abbr class="rovidites" title="יְהוָה (Jahve), az Úr">י׳</abbr>) = Zsolt 18:50, vö. 1Krón 16:10; 29:13; Zsolt 45:18; Ézs 26:13; 1Kir 8:33, 35 2Krón 6:24, 26; Zsolt 8:2; Zsolt 8:10 és máshol; ׳חָבוּלי שְׁמוֺ כְּבוֺד 29:2; 96:8, és sok más kapcsolat; ellentéte אֶתשֿׁ ׳חִלֵּל <abbr class="rovidites" title="a BDB rövidítése; a feloldás a szócikk szövegéből derül ki">א׳</abbr> 3Móz 18:21 és máshol, שׁ ׳נקב <abbr class="rovidites" title="יְהוָה (Jahve), az Úr">י׳</abbr> 24:16, שׁ ׳נִאֵץ Zsolt 74:10; 74:18 stb.; ׳הַשּׁ וְהַנּוֺרָא הַנִּכְבָּד 5Móz 28:58, vö. Neh 1:11; שִׁמְךָ לְמַעַן a <abbr class="rovidites" title="יְהוָה (Jahve), az Úr">י׳</abbr>-hoz intézett kérésekben, hogy jelleme szerint cselekedjék Jer 14:7, 21; Ez 20:9, 14; Ézs 48:9; 66:5; Zsolt 25:11; 31:4 és máshol; a <abbr class="rovidites" title="a címszó: שֵׁם (sém)">שׁ׳</abbr> <abbr class="rovidites" title="יְהוָה (Jahve), az Úr">י׳</abbr> hatalmas cselekvő, הוֺשִׁיעֵנִי בְּשִׁמְךָ 54:3 (|| בִּגְבוּרָֽתְךָ), vö. 124:8; a <abbr class="rovidites" title="יְהוָה (Jahve), az Úr">י׳</abbr> י-ról ׳מַלְאַךָ ezt mondja: בְּקִרְבּוֺ שְׁמִי 2Móz 23:21 (E); a הַשֵּׁם a 3Móz 24:11-ben valószínűleg írnoki helyettesítés a <abbr class="rovidites" title="יְהוָה (Jahve), az Úr">י׳</abbr> szó helyett (amelyet már kezdtek kimondhatatlannak tartani, különösen וַיִקֹּב-val, vö. Gei^Urschr.273 k. Di Dr-Wh Baen); e használat fejlődéséről és a ׳הַשּׁ megszemélyesített vagy hiposztázisként való zsidó használatáról l. Levy^NHWB a címszónál, Jastr^s.see — a שְׁמֶ֑ךָ קָרוֺב a Zsolt 75:2-ben feltűnő, de kétséges, < ᵐ5 Dy Che Gr Hup-Now שׁ ׳קֹרְאֵי, Du בִשׁ ׳קָרָנוּ (= קָרָאנוּ).
 
 - **`4` — név: hamis istenekről**
 
-  > hamis istenekről: használata tilos 2Móz 23:13 (E), Józs 23:7 (R^D), vö. Hós 2:19; Zsolt 16:4; אחרים אלהים בְּשֵׁם szólni 5Móz 18:20; בְשׁ ׳קָרָא ׳א **1Kir 18:24**-25, **26**; בְשׁ ׳יֵלְכוּ ׳א Mik 4:5.
+  > hamis istenekről: használata tilos 2Móz 23:13 (E), Józs 23:7 (R^D), vö. Hós 2:19; Zsolt 16:4; אחרים אלהים בְּשֵׁם szólni 5Móz 18:20; בְשׁ ׳קָרָא <abbr class="rovidites" title="a BDB rövidítése; a feloldás a szócikk szövegéből derül ki">א׳</abbr> **1Kir 18:24**-25, **26**; בְשׁ ׳יֵלְכוּ <abbr class="rovidites" title="a BDB rövidítése; a feloldás a szócikk szövegéből derül ki">א׳</abbr> Mik 4:5.
 
 <details>
 <summary>5 (1 szakasz)</summary>
@@ -1025,7 +1030,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 #### 13. Károli-megfelelők
 
-**Mit mutat ez a rész?** Milyen magyar szavakkal fordítja a Károli-Biblia ezt a szót, és milyen gyakran.
+**Mit mutat ez a rész?** A motívum igehelyein a Károli-fordítás ezekkel a magyar szavakkal adja vissza a motívumot hordozó kifejezést (a héber és a görög szavakat együtt, nem szavanként). A zárójeles szám azt mutatja, hány igehelyen áll a szó; utána a ragozott alakok és az igehelyek.
 
 *A motívum igehelyeinek Károli-szóalakjai (`adat/elofordulasok.tsv`, `karoli_szo`), szótári alakonként (`adat/szoto/karoli_szotari_alak.tsv`, mai helyesírás), névelő nélkül: a szóalakok, és hány igehelyen, melyiken.*
 
@@ -1051,7 +1056,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 #### 14. Rejtett / hamis párhuzam
 
-**Mit mutat ez a rész?** Ahol a Károli ugyanazt a szót más magyar szóval, vagy ugyanazzal a magyar szóval más szót fordít: itt rejtett vagy hamis párhuzam lehet.
+**Mit mutat ez a rész?** Két ellenőrzés a motívum héber és görög szavaira (a gerincre, l. „A motívum kulcsszavai”) és a Károli magyar kulcsszavaira. **Rejtett párhuzam:** a motívum olyan helye, ahol az eredeti szövegben a gerinc szavai állnak, de a Károli nem a szokásos magyar kulcsszavakkal fordítja, így a magyar olvasó nem ismeri fel. **Hamis párhuzam:** olyan vers, ahol a Károliban ugyanazok a magyar kulcsszavak állnak, de az eredetiben nem a gerinc szavai, így a magyar olvasó tévesen kapcsolná ide.
 
 *Kulcsszavak gerinc-kombinációnként: G1941: „hív”, „segítségül”; H7121+H8034: „név”, „hív”, „segítségül” — az e kombinációjú motívumsorok Károli-szóalakjainak legalább felében álló szótári alak, a Károli–Strong párosításban csak idegen Strongra párosuló szavak nélkül. Csak megjelenítés: jelölt ezekből csak az `adat/jeloltek.tsv`-n át lesz.*
 

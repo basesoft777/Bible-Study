@@ -596,5 +596,26 @@ class RagozottKiejtes(unittest.TestCase):
         self.assertIn('(szótári alak: sém)', cella)
 
 
+class BdbRovidites(unittest.TestCase):
+    """A BDB egybetűs rövidítései jelölve (a felhasználó: „nem lehetne jelölni a szövegben …, hogy a szó rövidités?”)."""
+
+    def test_jahve(self):
+        u = LG.bdb_rovidites_jelol('hívni ׳י nevével', 'H7121')
+        self.assertIn('<abbr class="rovidites" title="%s">י׳</abbr>' % LG.BDB_JAHVE_CIM, u)
+
+    def test_cimszo(self):
+        u = LG.bdb_rovidites_jelol('perfectum ׳ק 1Móz 11:9', 'H7121')
+        self.assertIn('title="a címszó: ', u)
+        self.assertIn('ק׳</abbr>', u)
+
+    def test_mas_betu_altalanos(self):
+        u = LG.bdb_rovidites_jelol('׳א x', 'H7121')
+        self.assertIn(LG.BDB_ROVIDITES_ALTALANOS, u)
+
+    def test_tobbbetus_szo_valtozatlan(self):
+        sz = '׳בשם x'
+        self.assertEqual(LG.bdb_rovidites_jelol(sz, 'H7121'), sz)
+
+
 if __name__ == '__main__':
     unittest.main()

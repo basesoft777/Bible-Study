@@ -67,6 +67,11 @@ mondat a lap készítőinek szól.
 körre (`scope`), melyik adattáblából vagy lekérdezésből (`forras`), mikor (`ts`); a `manual` kézi rögzítést jelöl. Az
 ellenőrzéshez való, olvasáskor átugorható.
 
+**Héber rövidítések a BDB-szövegben** (kiemelve; az egérmutató alatt a feloldás): a BDB a gyakori szavakat egy
+betűvel és a rövidítő jellel (׳, geres) írja. **י׳** = יְהוָה (Jahve), a Károliban „az Úr”; a szócikk címszavának
+kezdőbetűje (pl. **ק׳** a קָרָא (kárá) szócikkében, **שׁ׳** a שֵׁם (sém) szócikkében) maga a címszó. Más betűnél a feloldás a
+szócikk szövegéből derül ki.
+
 A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχή
 (pszükhé) *lélek*; a Károli-idézetek szövege változatlan (pl. »Lélek«).
 
@@ -775,11 +780,11 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 *Szótári gerinc (DT272): a szó jelentéstartománya a BDB tagolásában (`adat/bdb_szakaszok.tsv`), magyarul (`adat/bdb_szakasz_hu.tsv`). A motívumot hordozó szakaszok kibontva állnak, a többi összecsukva; a jel a BDB útvonalából készül. Kiemelve, felirat nélkül: a BDB saját példahelyei a motívum igehelyei közül (`adat/bdb_vers_jelentes.tsv`). A szótári blokk a szóról szól; a hely motívumbeli funkcióját az 1. szakasz táblázata adja.*
 
-**A szócikk feje (nyelvi háttér).** H7585. sheol שְׁאָ֫לָה **Ézs 7:11**, l. שְׁאוֺל 1, a שְׁאֹל שְׁאוֺל alatt, nőnemű főnév^**Zsolt 86:13** (láthatóan hímnemű **Jób 26:6**, vö. **Ézs 14:9**, l. Albr^ZAW xvi(1896), 51) She®°ôl, alvilág (a √ kétséges; שׁאל, azaz a tudakozódás helye (utalás a halottidézésre) Jastr^Amos. Jsem. Lang. xiv. 170. vö. JBL xix (1900), 88 kk. (Jerem^Lebenn. d. Tode 109 'Ort der Entscheidung'); Thes Bö^De Inf. § 158 Di és mások a שׁעל √-vel vetik össze, amelyből שֹׁעַל: üreges kéz stb.; a ׳שׁ eszerint = üreges hely, 'Hölle', pokol; más feltevéseket l. Hup^Ps. 6 6 De^5:14 Beer^Bibl. Hades in Holtzmann^Festgabe,1902, 15; a legtöbben ma tartózkodnak a határozott etimológiától (pl. Buhl); óarámi שאול, szír ; az asszír šu-alu kétséges: így olvassa és értelmezi Dl^pa 121, Prol.47. 145 Jastr^Amos. J. Semitic Lang. xiv. 165 kk. Ency. Bib^s.v.; ellene Bertin^TSBA viii. 269 Jen^Kosmol.223 kk. Zim^KAT 3. 636 és mások; l. még Muss-Arn^JBL xi (1892), 169 és a hivatkozásokat); — mindig status absolutus, שְׁאוֺל 5Móz 32:22, összesen 52-szer,הָ֯ **1Móz 42:38**; **Zsolt 9:18**; שְׁאֹל **1Kir 2:6**; Jób 17:16, הָ֯ **1Móz 37:35**, összesen 7-szer; + **Ézs 7:11** (így olvasandó שְׁאָ֫לָה helyett Aq Σ Θ Du Che és most a legtöbben); —
+**A szócikk feje (nyelvi háttér).** H7585. sheol שְׁאָ֫לָה **Ézs 7:11**, l. שְׁאוֺל 1, a שְׁאֹל שְׁאוֺל alatt, nőnemű főnév^**Zsolt 86:13** (láthatóan hímnemű **Jób 26:6**, vö. **Ézs 14:9**, l. Albr^ZAW xvi(1896), 51) She®°ôl, alvilág (a √ kétséges; שׁאל, azaz a tudakozódás helye (utalás a halottidézésre) Jastr^Amos. Jsem. Lang. xiv. 170. vö. JBL xix (1900), 88 kk. (Jerem^Lebenn. d. Tode 109 'Ort der Entscheidung'); Thes Bö^De Inf. § 158 Di és mások a שׁעל √-vel vetik össze, amelyből שֹׁעַל: üreges kéz stb.; a <abbr class="rovidites" title="a címszó: שְׁאוֹל (seól)">שׁ׳</abbr> eszerint = üreges hely, 'Hölle', pokol; más feltevéseket l. Hup^Ps. 6 6 De^5:14 Beer^Bibl. Hades in Holtzmann^Festgabe,1902, 15; a legtöbben ma tartózkodnak a határozott etimológiától (pl. Buhl); óarámi שאול, szír ; az asszír šu-alu kétséges: így olvassa és értelmezi Dl^pa 121, Prol.47. 145 Jastr^Amos. J. Semitic Lang. xiv. 165 kk. Ency. Bib^s.v.; ellene Bertin^TSBA viii. 269 Jen^Kosmol.223 kk. Zim^KAT 3. 636 és mások; l. még Muss-Arn^JBL xi (1892), 169 és a hivatkozásokat); — mindig status absolutus, שְׁאוֺל 5Móz 32:22, összesen 52-szer,הָ֯ **1Móz 42:38**; **Zsolt 9:18**; שְׁאֹל **1Kir 2:6**; Jób 17:16, הָ֯ **1Móz 37:35**, összesen 7-szer; + **Ézs 7:11** (így olvasandó שְׁאָ֫לָה helyett Aq Σ Θ Du Che és most a legtöbben); —
 
 - **`1` — alvilág, ahová a halottak alászállnak**
 
-  > az alvilág, ׳שׁ תַּחְתִּית 5Móz 32:22, מִתַּחַת **Ézs 14:9**; ׳מִשּׁ מִ֑טָּה **Péld 15:24**; || מָוֶת **5:5**; **7:27**; **Én 8:6**; **Zsolt 89:49**; ahová az emberek halálukkor alászállnak, **1Móz 37:35** (E), **42:38**; **44:29**, **31** (J), **1Sám 2:6**; **1Kir 2:6**, **9**; **Jób 7:9**; **21:13**; **Ézs 14:11**, **15**; **Zsolt 88:4**, és Kóré és társai elevenen szállnak alá ׳י ítéletéből, 4Móz 16:30, 33 (J), vö. **Zsolt 55:16**; hegyek és tenger alatt **Jób 26:6** (vö. 26:5), שׁ ׳בֶּטֶן **Jón 2:3** (vö. 2:7); zárakkal Jób 17:16 (si vera 1.: l. ᵐ5 Du); שׁ ׳מִּי **Zsolt 141:7**; שׁ ׳שַׁעֲרֵי **Ézs 38:10**; megszemélyesítve **28:15**, **18** (|| מות). mint telhetetlen szörny **5:14**; **Hab 2:5**; **Péld 1:12**; **27:20**; **30:16**; mint akinek (átvitt értelemben) tőrei vannak, שׁ ׳חֶבְלֵי **Zsolt 18:6** = **2Sám 22:6**, vö. שׁ ׳מְצָרֵי **Zsolt 116:3**; szemben a שָׁמַיִם (magasságával) **Ámós 9:2**; **Jób 11:8**; **Zsolt 139:8** + (szemben a לְמָ֑עְלָה-mel) **Ézs 7:11** (l. fent); sötét, komor, visszatérés nélküli Jób 17:13 (vö. 17:16; **7:9**; 10:21; 16:22; ott mindenki egyforma 3:17-19; 21:23-26 ); munka, tudás és bölcsesség nélküli a Préd 9:5-6, 10 szerint (vö. Jób 14:21, és l. רְפָאִים a רפה alatt; de vö. **Ézs 14:9**k.).
+  > az alvilág, <abbr class="rovidites" title="a címszó: שְׁאוֹל (seól)">שׁ׳</abbr> תַּחְתִּית 5Móz 32:22, מִתַּחַת **Ézs 14:9**; ׳מִשּׁ מִ֑טָּה **Péld 15:24**; || מָוֶת **5:5**; **7:27**; **Én 8:6**; **Zsolt 89:49**; ahová az emberek halálukkor alászállnak, **1Móz 37:35** (E), **42:38**; **44:29**, **31** (J), **1Sám 2:6**; **1Kir 2:6**, **9**; **Jób 7:9**; **21:13**; **Ézs 14:11**, **15**; **Zsolt 88:4**, és Kóré és társai elevenen szállnak alá <abbr class="rovidites" title="יְהוָה (Jahve), az Úr">י׳</abbr> ítéletéből, 4Móz 16:30, 33 (J), vö. **Zsolt 55:16**; hegyek és tenger alatt **Jób 26:6** (vö. 26:5), שׁ ׳בֶּטֶן **Jón 2:3** (vö. 2:7); zárakkal Jób 17:16 (si vera 1.: l. ᵐ5 Du); שׁ ׳מִּי **Zsolt 141:7**; שׁ ׳שַׁעֲרֵי **Ézs 38:10**; megszemélyesítve **28:15**, **18** (|| מות). mint telhetetlen szörny **5:14**; **Hab 2:5**; **Péld 1:12**; **27:20**; **30:16**; mint akinek (átvitt értelemben) tőrei vannak, שׁ ׳חֶבְלֵי **Zsolt 18:6** = **2Sám 22:6**, vö. שׁ ׳מְצָרֵי **Zsolt 116:3**; szemben a שָׁמַיִם (magasságával) **Ámós 9:2**; **Jób 11:8**; **Zsolt 139:8** + (szemben a לְמָ֑עְלָה-mel) **Ézs 7:11** (l. fent); sötét, komor, visszatérés nélküli Jób 17:13 (vö. 17:16; **7:9**; 10:21; 16:22; ott mindenki egyforma 3:17-19; 21:23-26 ); munka, tudás és bölcsesség nélküli a Préd 9:5-6, 10 szerint (vö. Jób 14:21, és l. רְפָאִים a רפה alatt; de vö. **Ézs 14:9**k.).
 
 <details>
 <summary>2 (1 szakasz)</summary>
@@ -790,11 +795,11 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 - **`2.a` — a gonoszok sorsa a Seolban**
 
-  > gonoszok לִשְׁא֑וֺלָה יָשׁוּבוּ **Zsolt 9:18**, לִשׁ ׳יִדְּמוּ **31:18**; a halál a pásztoruk, erő és tisztesség nélkül sorvadnak el **49:15** (a versben kétszer); ׳שׁ úgy emészti meg őket, mint a szárazság a vizet **Jób 24:19**; az igazak rettegnek tőle, mert ott nincs dicséret és nincs Isten jelenléte (mint a templomban) **Zsolt 6:6** (vö. 88:5), **Ézs 38:18**; a megszabadulás belőle áldás **Zsolt 30:4**; **86:13**; **Péld 23:14**. Ezékielnél a ׳שׁ a lenti föld, a gyalázat helye, a körülmetéletlenek lakóhelye **Ez 31:15**-16, **17**; **32:21**, **27**
+  > gonoszok לִשְׁא֑וֺלָה יָשׁוּבוּ **Zsolt 9:18**, לִשׁ ׳יִדְּמוּ **31:18**; a halál a pásztoruk, erő és tisztesség nélkül sorvadnak el **49:15** (a versben kétszer); <abbr class="rovidites" title="a címszó: שְׁאוֹל (seól)">שׁ׳</abbr> úgy emészti meg őket, mint a szárazság a vizet **Jób 24:19**; az igazak rettegnek tőle, mert ott nincs dicséret és nincs Isten jelenléte (mint a templomban) **Zsolt 6:6** (vö. 88:5), **Ézs 38:18**; a megszabadulás belőle áldás **Zsolt 30:4**; **86:13**; **Péld 23:14**. Ezékielnél a <abbr class="rovidites" title="a címszó: שְׁאוֹל (seól)">שׁ׳</abbr> a lenti föld, a gyalázat helye, a körülmetéletlenek lakóhelye **Ez 31:15**-16, **17**; **32:21**, **27**
 
 - **`2.b` — az igaz kiváltása a Seolból**
 
-  > az igazat nem hagyják el, ׳לשׁ **Zsolt 16:10** (|| שַׁחַת, l. ott; szemben חַיִּים אִרַח stb., 16:11, vö. 17:15), kiváltatik a ׳שׁ-ból **Zsolt 49:16** (vö. Zsolt 73:23; Zsolt 73:25; Ézs 57:1-2,); vö. Jób várakozását és vágyát **Jób 14:13**; 17:13 (vö. 10:21; 19:25k.).
+  > az igazat nem hagyják el, ׳לשׁ **Zsolt 16:10** (|| שַׁחַת, l. ott; szemben חַיִּים אִרַח stb., 16:11, vö. 17:15), kiváltatik a <abbr class="rovidites" title="a címszó: שְׁאוֹל (seól)">שׁ׳</abbr>-ból **Zsolt 49:16** (vö. Zsolt 73:23; Zsolt 73:25; Ézs 57:1-2,); vö. Jób várakozását és vágyát **Jób 14:13**; 17:13 (vö. 10:21; 19:25k.).
 
 <details>
 <summary>3 (1 szakasz)</summary>
@@ -805,15 +810,15 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 - **`3.a` — a Seol mélységei**
 
-  > a ׳שׁ mélységei az érzékiek számára **Péld 9:18**.
+  > a <abbr class="rovidites" title="a címszó: שְׁאוֹל (seól)">שׁ׳</abbr> mélységei az érzékiek számára **Péld 9:18**.
 
 - **`3.b` — Seol és Abaddón; verem**
 
-  > ׳שׁ וַאֲבַדּוֺן Péld 25:11, l. אֲבַדּוֺן. [שַׁחַת és בּוֺר, l. ott, ha || ׳שׁ, rendszerint rossz értelemben állnak (**Zsolt 88:4**); valószínűleg = verem a ׳שׁ-ban, > maga a ׳שׁ mint verem; a szavak legalábbis előkészítik a Biblia utáni zsidóság és az Újszövetség helyi megkülönböztetéseit.]
+  > <abbr class="rovidites" title="a címszó: שְׁאוֹל (seól)">שׁ׳</abbr> וַאֲבַדּוֺן Péld 25:11, l. אֲבַדּוֺן. [שַׁחַת és בּוֺר, l. ott, ha || <abbr class="rovidites" title="a címszó: שְׁאוֹל (seól)">שׁ׳</abbr>, rendszerint rossz értelemben állnak (**Zsolt 88:4**); valószínűleg = verem a <abbr class="rovidites" title="a címszó: שְׁאוֹל (seól)">שׁ׳</abbr>-ban, > maga a <abbr class="rovidites" title="a címszó: שְׁאוֹל (seól)">שׁ׳</abbr> mint verem; a szavak legalábbis előkészítik a Biblia utáni zsidóság és az Újszövetség helyi megkülönböztetéseit.]
 
 - **`4` — átvitt értelem: lealacsonyodás, száműzetés**
 
-  > ׳שׁ átvitt értelemben a bűnben való végső lealacsonyodásról **Ézs 57:9**; mint Izráel száműzetésének helye **Hós 13:14** (a versben kétszer) (vö. Ézs 26:19).
+  > <abbr class="rovidites" title="a címszó: שְׁאוֹל (seól)">שׁ׳</abbr> átvitt értelemben a bűnben való végső lealacsonyodásról **Ézs 57:9**; mint Izráel száműzetésének helye **Hós 13:14** (a versben kétszer) (vö. Ézs 26:19).
   > *(kutatói jelölés: a szakaszhatár horgonnyal illesztve, ellenőrzendő; `adat/bdb_szakasz_hu.tsv` kategoria = horgonnyal)*
 
 *ⓘ Kutatói megjegyzés: a szótári példahely a magyar szövegben nem található, kiemelés nincs: bdb_vers_jelentes.tsv sorszam 5 (5Móz 32:22, fej); bdb_vers_jelentes.tsv sorszam 9 (Jób 17:15, fej); bdb_vers_jelentes.tsv sorszam 31 (4Móz 16:30, -/1); bdb_vers_jelentes.tsv sorszam 32 (4Móz 16:33, -/1); bdb_vers_jelentes.tsv sorszam 12 (5Móz 32:22, -/1); bdb_vers_jelentes.tsv sorszam 55 (Jób 17:12, -/1); bdb_vers_jelentes.tsv sorszam 38 (Jób 17:15, -/1); bdb_vers_jelentes.tsv sorszam 56 (Jób 17:15, -/1); bdb_vers_jelentes.tsv sorszam 63 (Préd 9:12, -/1); bdb_vers_jelentes.tsv sorszam 88 (Jób 17:12, -/2/b); bdb_vers_jelentes.tsv sorszam 92 (Péld 15:11, -/3/b) · Ez 31:16: a BDB a helyet nem önállóan idézi, hanem a 2.a szakaszban az Ez 31:15–16 verstartomány belsejében (a BDB-ben: „Ezek 31:15-16”; `adat/bdb_vers_jelentes.tsv` sorszam 76); a tartomány nincs kibontva (DT382 (A)), ezért a hely nem BDB-példa.*
@@ -898,7 +903,7 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 #### 13. Károli-megfelelők
 
-**Mit mutat ez a rész?** Milyen magyar szavakkal fordítja a Károli-Biblia ezt a szót, és milyen gyakran.
+**Mit mutat ez a rész?** A motívum igehelyein a Károli-fordítás ezekkel a magyar szavakkal adja vissza a motívumot hordozó kifejezést (a héber és a görög szavakat együtt, nem szavanként). A zárójeles szám azt mutatja, hány igehelyen áll a szó; utána a ragozott alakok és az igehelyek.
 
 *A motívum igehelyeinek Károli-szóalakjai (`adat/elofordulasok.tsv`, `karoli_szo`), szótári alakonként (`adat/szoto/karoli_szotari_alak.tsv`, mai helyesírás), névelő nélkül: a szóalakok, és hány igehelyen, melyiken.*
 
@@ -928,7 +933,7 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 #### 14. Rejtett / hamis párhuzam
 
-**Mit mutat ez a rész?** Ahol a Károli ugyanazt a szót más magyar szóval, vagy ugyanazzal a magyar szóval más szót fordít: itt rejtett vagy hamis párhuzam lehet.
+**Mit mutat ez a rész?** Két ellenőrzés a motívum héber és görög szavaira (a gerincre, l. „A motívum kulcsszavai”) és a Károli magyar kulcsszavaira. **Rejtett párhuzam:** a motívum olyan helye, ahol az eredeti szövegben a gerinc szavai állnak, de a Károli nem a szokásos magyar kulcsszavakkal fordítja, így a magyar olvasó nem ismeri fel. **Hamis párhuzam:** olyan vers, ahol a Károliban ugyanazok a magyar kulcsszavak állnak, de az eredetiben nem a gerinc szavai, így a magyar olvasó tévesen kapcsolná ide.
 
 *Kulcsszavak gerinc-kombinációnként: G0086: „pokol” — az e kombinációjú motívumsorok Károli-szóalakjainak legalább felében álló szótári alak, a Károli–Strong párosításban csak idegen Strongra párosuló szavak nélkül. Csak megjelenítés: jelölt ezekből csak az `adat/jeloltek.tsv`-n át lesz.*
 

@@ -459,9 +459,14 @@ OLVASOI_SZEREP = {
     9: 'Hogy az egyes versekben a szó melyik jelentésében áll.',
     10: 'A szó magyaros kiejtése.',
     12: 'Mely témákhoz sorolja a szót és helyeit egy régi bibliai témagyűjtemény (Nave).',
-    13: 'Milyen magyar szavakkal fordítja a Károli-Biblia ezt a szót, és milyen gyakran.',
-    14: 'Ahol a Károli ugyanazt a szót más magyar szóval, vagy ugyanazzal a magyar szóval más szót fordít: itt '
-        'rejtett vagy hamis párhuzam lehet.',
+    13: 'A motívum igehelyein a Károli-fordítás ezekkel a magyar szavakkal adja vissza a motívumot hordozó kifejezést '
+        '(a héber és a görög szavakat együtt, nem szavanként). A zárójeles szám azt mutatja, hány igehelyen áll a szó; '
+        'utána a ragozott alakok és az igehelyek.',
+    14: 'Két ellenőrzés a motívum héber és görög szavaira (a gerincre, l. „A motívum kulcsszavai”) és a Károli magyar '
+        'kulcsszavaira. **Rejtett párhuzam:** a motívum olyan helye, ahol az eredeti szövegben a gerinc szavai állnak, '
+        'de a Károli nem a szokásos magyar kulcsszavakkal fordítja, így a magyar olvasó nem ismeri fel. **Hamis '
+        'párhuzam:** olyan vers, ahol a Károliban ugyanazok a magyar kulcsszavak állnak, de az eredetiben nem a gerinc '
+        'szavai, így a magyar olvasó tévesen kapcsolná ide.',
 }
 
 
@@ -573,6 +578,11 @@ mondat a lap készítőinek szól.
 **Proveniencia-sor** (dőlt, `scope=… | forras=… | ts=…` alakú): honnan és mikor származik a fölötte álló adat — milyen
 körre (`scope`), melyik adattáblából vagy lekérdezésből (`forras`), mikor (`ts`); a `manual` kézi rögzítést jelöl. Az
 ellenőrzéshez való, olvasáskor átugorható.
+
+**Héber rövidítések a BDB-szövegben** (kiemelve; az egérmutató alatt a feloldás): a BDB a gyakori szavakat egy
+betűvel és a rövidítő jellel (׳, geres) írja. **י׳** = יְהוָה (Jahve), a Károliban „az Úr”; a szócikk címszavának
+kezdőbetűje (pl. **ק׳** a קָרָא szócikkében, **שׁ׳** a שֵׁם szócikkében) maga a címszó. Más betűnél a feloldás a
+szócikk szövegéből derül ki.
 
 A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχή
 (pszükhé) *lélek*; a Károli-idézetek szövege változatlan (pl. »Lélek«)."""
@@ -2922,6 +2932,8 @@ def gerinc_blokk(adat, szotar, strong, motivum_sorai, ctx=None):
     napl['kiemelt'] += talalt
     napl['nem_talalt'] += hiany
     bek.extend(lista)
+    if szotar == 'BDB':
+        bek[2:] = [bdb_rovidites_jelol(b, strong) for b in bek[2:]]
     if napl['nem_talalt'] or napl['nem_idezett'] or napl['tiltott'] or napl['tartomanyban']:
         reszek = []
         if napl['tiltott']:
@@ -2951,6 +2963,42 @@ def gerinc_blokk(adat, szotar, strong, motivum_sorai, ctx=None):
             fl.setdefault(TILTOTT_FORDULATOK_FAJL, set()).add('projekt_adat')
         ctx.setdefault('gerinc_naplo', []).append(napl)
     return bek, napl
+
+
+# A BDB egybetűs rövidítései (a felhasználó, 2026-10-29: „nem lehetne jelölni a szövegben /pl más szinű háttér , hogy a
+# szó rövidités?”). A forrás (DictBDB.json) a rövidítő jelet (geres, ׳) a betű ELÉ írja (׳י); a helyes alak a betű utáni
+# (י׳). Csak az önálló, egybetűs alakot javítja és jelöli (<abbr>, címmel); a több szavas, felcserélt sorrendű héber
+# kifejezésekhez nem nyúl (forrás-konverziós hiba, külön tétel).
+_HEB_BETU = 'א-תיִ-ﭏ'  # a prezentációs alakok (pl. U+FB2A שׁ) is
+_HEB_JEL = 'ְ-ׇ'
+BDB_ROVIDITES_RE = re.compile(r'(?<![%s%s])׳([%s][%s]*)(?![%s%s])' % (_HEB_BETU, _HEB_JEL, _HEB_BETU, _HEB_JEL,
+                                                                          _HEB_BETU, _HEB_JEL))
+BDB_JAHVE_CIM = 'יְהוָה (Jahve), az Úr'
+BDB_ROVIDITES_ALTALANOS = 'a BDB rövidítése; a feloldás a szócikk szövegéből derül ki'
+
+
+def _alapbetu(szo):
+    return next((c for c in unicodedata.normalize('NFD', szo or '') if 'א' <= c <= 'ת'), '')
+
+
+def bdb_rovidites_jelol(szoveg, strong):
+    """A BDB-szöveg egybetűs rövidítései: „׳י” → `<abbr class="rovidites" title="…">י׳</abbr>`. A cím: a י Jahve (ha a
+    címszó is י-vel kezdődik, mindkét feloldás); a címszó kezdőbetűje a címszó; más betű általános jelölés (nem
+    találjuk ki a feloldást)."""
+    lk = lemma_kiejtes(strong)
+    cimszo = lemma_cim(lk) if lk else ''
+    kezdo = _alapbetu(lk[0]) if lk else ''
+
+    def cim(betu):
+        b = _alapbetu(betu)
+        if b == 'י':
+            return BDB_JAHVE_CIM + ('; vagy a címszó: %s' % cimszo if kezdo == 'י' else '')
+        if b and b == kezdo:
+            return 'a címszó: %s' % cimszo
+        return BDB_ROVIDITES_ALTALANOS
+
+    return BDB_ROVIDITES_RE.sub(
+        lambda m: '<abbr class="rovidites" title="%s">%s׳</abbr>' % (cim(m.group(1)), m.group(1)), szoveg)
 
 
 def ubs_domensor(strong):
