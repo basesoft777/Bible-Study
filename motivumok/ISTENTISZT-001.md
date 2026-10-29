@@ -321,7 +321,7 @@ bálványimádás kezdetét jelzi, a Sod-szintű "első pozitív lelki
 válasz" olvasat módosulna — a projekt a többségi olvasatot követi, de
 a vitát nem hallgatja el)*
 
-⚠️ Vitatott pont: 1Móz 4:26 értelmezése — a többségi olvasat (Wenham, Hamilton, Cassuto) pozitív istentiszteleti kezdetként érti, míg Rashi és a targumim egy ága a בְּ שֵׁם formulát a *chalal* ("profanizálni") gyökkel köti össze, a bálványimádás kezdeteként olvasva a verset; a projekt a többségi olvasatot követi, a vitát dokumentálja.
+⚠️ Vitatott pont: 1Móz 4:26 értelmezése — a többségi olvasat (Wenham, Hamilton, Cassuto) pozitív istentiszteleti kezdetként érti, míg Rashi és a targumim egy ága a בְּ שֵׁם (besém) formulát a *chalal* ("profanizálni") gyökkel köti össze, a bálványimádás kezdeteként olvasva a verset; a projekt a többségi olvasatot követi, a vitát dokumentálja.
 
 ### Új felismerés — a D-minta görög folytatása *(kézi)*【NAPLO: 2026.09.22】
 
