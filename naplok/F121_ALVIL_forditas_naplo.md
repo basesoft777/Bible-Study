@@ -48,3 +48,9 @@ Eszköz: `python eszkozok/glossza_lexikon_forditas.py manko | szojegyzek | vissz
 - Nem generáltam újra az ALVIL-001 lapot; nem nyúltam a #123 fájljaihoz.
 - Nem javítottam a 11. kaput (a `Matthew`/`Revelation`/`Romans` alias hiánya) és a #123 átadó listáját: ezek külön tételek.
 - A `pardes.db` nem épült újra; a szónézet és a lap az új sorokat csak újraépítés után mutatja.
+
+## 7. Az MCGED-sor kivétele és a D1 (DT-F121n, 2026-10-29)
+
+- A 13-ból **12 sor** marad: az `MCGED G0086 G50087 glosszak_hu` („the invisible abode or mansion of the dead; …”) kikerült. Indok: a Mounce szövege „Copyright 1993 All Rights Reserved”, a DT235 / DT272 (c) („a Mounce kimarad”) nyitott; lefordított szöveget nem teszünk közzé a licencdöntésig. **Hiányként jelölve** (DT235); a lapon a Mounce csak forrásmegjelölés (DT-F131m).
+- A BDB H7585 sor marad (DT-F121m (1)); a brief E5 pontja kiegészítve.
+- **D1 rendben:** a `licencek.tsv`-ben megvan a TBESG (CC BY 4.0), az LSJ (CC BY-SA 4.0) és a tW_szocikkek (CC BY-SA 4.0) sora.

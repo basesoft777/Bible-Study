@@ -347,7 +347,7 @@ miatt nem futhatnak egyszerre).
 | E2 | `ellenoriz.py` 13. szabály RENDBEN; minden új sor `forras_hash`-e a SEMA 2.14 szerinti forrásszövegből újraszámolható. |
 | E3 | A meglévő 737 sor bájtra változatlan, a két G1941 kézi sor kivételével (az írás előtti összevetés naplózva). |
 | E4 | Minden új sor: `terminologia_verzio=v4`, `modell` = a tényleges modellnév, `allapot` a SEMA szerint. |
-| E5 | Egy sor sem `szotar=BDB` (#28/#38). Kivétel nincs; a meglévő sorok közül csak a két G1941 kézi sor (Thayer, TBESG) változik, az `F121.0` szerint. |
+| E5 | Egy sor sem `szotar=BDB` (#28/#38). Kivétel (DT-F121m (1), orkesztrátor, 2026-10-29): a BDB H7585 `nyelvi_hatter` sor, az F28 `teljes` sor változatlan szakasza (`kezi`, `claude-opus-5-5`); a meglévő sorok közül csak a két G1941 kézi sor (Thayer, TBESG) változik, az `F121.0` szerint. |
 | E8 | A `14_tiltott` kapu az új sorokban 0 találatot hagy rögzítve; a G1941 két sorában „melléknév” nem marad. |
 | E10 | A DT238–i jóváhagyása előtt nincs M1; a jóvá nem hagyott visszamenőleges javaslat egyetlen sort sem változtat. |
 | E11 | Minden adag előtt a szójegyzék-gyűjtő lefutott, a kimenete a naplóban. |
