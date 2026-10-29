@@ -6,11 +6,11 @@ tipus: feladat
 fazis: 1
 modell: opus
 munka: adat
-allapot: dontesre_var
+allapot: fut
 ad: a `Karoli_versmegfeleltetes.tsv` Jóel-sorai helyes MT-megfeleltetést hordoznak (Károli 2:28–32 = MT 3:1–5, Károli 3:1–21 = MT 4:1–21), a KJV-osztályú sorok többi MT≠KJV eltérése mérve és jelentve, a #131 DBH-mérés 12 versének tételes jelentése proveniencia mellett
-kovetkezo: "Te: ⛔ 3.1 — a javítandó halmaz jóváhagyása (DT-F146b; javaslat: csak a Jóel 26 sora, KEZI kitöltött igehely_mt-vel); utána a javítás, az ISTENTISZT-001 újragenerálása (DT-F146a)"
+kovetkezo: "Te: a DT-F146b alkalmazva (F146.2); hátra: az ISTENTISZT-001 újragenerálása (DT-F146a), nulladiff, ellenőrzők, fuggetlen-ellenor, draft PR"
 olvas: [konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/Karoli_versmegfeleltetes_javitas.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/Macula_heber_Joel.tsv, konkordancia/TAHOT_kivonat.tsv, eszkozok/lexikon_general.py, naplok/F117_mt_levezet.py, naplok/F117_mt_levezetes.tsv, "tematikus_lezart/ISTENTISZT-001*", "tematikus_lezart/naplok/ISTENTISZT-001*", eszkozok/general.py]
-ir: [naplok/KAROLI_KK4_tabla_veglegesit.py, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/Karoli_versmegfeleltetes_javitas.tsv, naplok/VERSMEGF_MT_JAVITAS_naplo.md, lexikon/ISTENTISZT-001_TUDOMANYOS.md]
+ir: [naplok/KAROLI_KK4_tabla_veglegesit.py, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/Karoli_versmegfeleltetes_javitas.tsv, naplok/VERSMEGF_MT_JAVITAS_naplo.md, lexikon/ISTENTISZT-001_TUDOMANYOS.md, eszkozok/versmegf_javitas.py, eszkozok/teszt_versmegf_javitas.py, konkordancia/README.md]
 fugg: [117, 131]
 ---
 

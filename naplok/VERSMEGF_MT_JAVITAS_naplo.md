@@ -65,6 +65,15 @@ A 93 `KEZI` azonossági sor (`kezi_identitas_javitas`; 4Móz 15, Jób 38, Préd 
 
 Az „üres eredmény nem negatív lelet”: az első hat versnél a DBH-hivatkozás a versen van, csak a keresett szóra nincs; ez a DBH lefedettségének ténye, nem a szó hiánya.
 
-## 5. ⛔ 3.1 — a javítandó halmaz (döntésre vár: DT-F146b)
+## 5. ⛔ 3.1 — a javítandó halmaz (DT-F146b: döntve, 2026-10-28, „Igen, csak a Jóel”)
 
 Javaslat: **csak a Jóel 26 sora** (Károli 2:28–3:21 → MT 3:1–4:21, `KEZI` kitöltött `igehely_mt`-vel, a `versmegf_javitas` KEZI-szabályának Károli = KJV ≠ MT bővítésével), `forras` új értékkel (`macula_mt_f146`, a DT205 mintájára). A 982 − 26 = 956 többi igazolt eltérés, az Ézs 9, a 9 kétséges sor és a 93 `KEZI` azonossági sor külön tétel (N-F146a), mert ugyanaz az új kombináció ~830 sort érint, és a DT209 fogyasztói (`bsb_import`, `sqlite_epit`, `tsk_kulcs`) ellenőrzése nélkül nem vihető át. A Jóel a lexikonban csak az ISTENTISZT-001-et érinti (`adat/elofordulasok.tsv`: egyetlen Jóel 2:28–3:21-es sor, a Jóel 2:32).
+
+## 6. A javítás (F146.2)
+
+- Bemenet: a `naplok/F146_javitas_bemenet.py` a `konkordancia/Karoli_versmegfeleltetes_javitas.tsv`-be 26 sort ír (`KEZI`, `forras=macula_mt_f146`, soronkénti proveniencia, `elozo:` a régi értékkel) és 1 fejléc-jegyzetet. Őr: a meglévő 350 sor bájtra változatlan. Az újrafuttatás „változatlan”.
+- Alkalmazó: `eszkozok/versmegf_javitas.py`. Második `forras`-érték: `macula_mt_f146`. A KEZI-szabály ennél a forrásnál a Károli = KJV ≠ MT esetet is megengedi; a kitöltött `igehely_mt` ≠ Károli-szám kötelező. Külön `# F146 javítás` fejléc-jegyzet készül. Az F117-jegyzet csak az F117-sorokat számolja (változatlanul 346). Egységteszt (`eszkozok/teszt_versmegf_javitas.py`): 23/23 OK; új tesztek: az F146-szabály két negatív és egy pozitív esete, a Jóel-sorok, a jegyzet.
+- KK4 (`naplok/KAROLI_KK4_tabla_veglegesit.py`): két próbafutás a repón kívülre bájtazonos (sha256 `a16e9572…d2a3`). Élesítés előtt a `naplok/F146_tabla_osszevet.py` sorról sorra összevetette a régi táblával: 23 203 → 23 204 sor, csak a Jóel 26 adatsora változik (a várt értékkel), és egy fejléc-jegyzet kerül be; minden más sor bájtra azonos. Az éles kimenet azonos a próbával.
+- Fogyasztó: `lexikon_general.karoli_mt_vers('Jóel 2:32')` → `Jóel 3:5` (előtte `Jóel 2:32`); a `Jóel 2:27` változatlan.
+- DT209: az új sorok ugyanazt a `KEZI` + kitöltött `igehely_mt` kombinációt hordozzák, amelyen a `sqlite_epit` F117.5-őre már most is leáll (174 F117-sor). Új blokkolást nem okoznak; a `bsb_import` és a `sqlite_epit` javítása továbbra is az N-F117a hatóköre.
+- A többi eltérés: N-F146a (`NYITOTT_FELADATOK.md`).
