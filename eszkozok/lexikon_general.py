@@ -39,6 +39,7 @@ import lxx_os_import as LXXOS
 import kiejtes as KJ
 import utvonalak as _U
 import szerep_karoli as SZK
+import szerep_nave as SZN
 
 ROOT = G.ROOT
 ADAT = G.ADAT
@@ -2552,10 +2553,23 @@ def _gerinc_karoli(nyelv, n, tokenek_ny, reszek, ctx):
     return out
 
 
+def _gerinc_nave(nyelv, n, tokenek_ny, reszek, ctx):
+    """A 12. nyelvfüggetlen szerep (Tematikus index, Nave) az arany lapon (ISTENTISZT-001 arany lap, 2026-10-29): az
+    általános jelöltképzés és választás az `eszkozok/szerep_nave.py`-ban; itt csak a forrás- és licencnyilvántartás."""
+    out = SZN.blokk_12(ctx.get('sorai') or [], G.TS)
+    if out:
+        ctx['fl'].setdefault('konkordancia/Nave_basokant.tsv', set()).add('Nave_basokant')
+        ctx['fl'].setdefault('adat/elofordulasok.tsv', set()).add('projekt_adat')
+        ctx['fl'].setdefault('adat/tematikus_temak.tsv', set()).add('projekt_adat')
+        ctx['fl'].setdefault('adat/nave_tema_hu.tsv', set()).add('projekt_adat')
+    return out
+
+
 # a gerinc-építő tartalma a szerep teljes tartalma: a `javaslat` állapotú szerep alá nem kerül általános üres blokk
-GERINC_TELJES = frozenset({('gorog', 13), ('gorog', 14)})
+GERINC_TELJES = frozenset({('gorog', 12), ('gorog', 13), ('gorog', 14)})
 
 GERINC_SZEREP_EPITO = {
+    ('gorog', 12): _gerinc_nave,
     ('gorog', 13): _gerinc_karoli,
     ('gorog', 14): _gerinc_karoli,
     ('gorog', 2): _gerinc_hivatkozas_gerincre,
