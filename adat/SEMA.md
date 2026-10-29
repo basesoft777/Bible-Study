@@ -1720,9 +1720,30 @@ változik. Olvasás `split('\t')`.
 | `megjegyzes` | a minta tartalma röviden |
 | `proveniencia` | `scope=manual \| forras=… \| ts=…` |
 
-Kulcs: `sorrend` + `id`. Állapot (2026-10-29): 9 `*` sor. Mért lefedés (az elutasított sorok „egyéb” száma): ISTENTISZT-001 1,
+Kulcs: `sorrend` + `id`. Állapot (2026-10-29): 9 `*` sor; a „jogi fellebbezés” (25) a „passzív szerkezet vagy megnevezés” (30) előtt áll, mert a jogi indoklás a negatív kritérium „passzív/megnevezés jellegű vagy jogi használat” szövegét is idézi (ELLENOR_ISTENTISZT_OLVASOI 1.). Mért lefedés (az elutasított sorok „egyéb” száma): ISTENTISZT-001 1,
 ALVIL-001 4, ANTROP-001 0, HAMART-001 163, HODIT-001 4, KIRALY-001 13, MENNY-001 1, TEREMT-001 2, TEREMT-002 45 — a motívumonkénti
 bővítés nyitott (N-F131u).
+
+### 2.44 `funkcio_kapcsolok.tsv` — funkció-kapcsolók a renderhez (ISTENTISZT-001 arany lap, 2026-10-29)
+
+**Kézi** (`manual` proveniencia; jóváhagyás: DT-F131x). Egy funkció a renderben csak `aktiv` állapotban jelenik meg. Két fajta
+sor: (1) `id` = `*`: globális kapcsoló — a szünetelő funkció sem hiányként, sem a szerep címében nem jelenik meg (a
+`szerep_cim_resz` a szerep nevéből elhagyott rész, pl. „ (+ SZPA)”); visszakapcsoláskor magától visszajön; (2) `id` =
+motívum-id: a motívumonként jóváhagyott funkció (a szótári gerinc, a 13–14. szerep) — a kódban nincs motívum-id szerinti
+lista (`eszkozok/szerep_karoli.py` `funkcio_kapcsolok`, `kapcsolo_motivumok`). Olvasás `split('\t')`.
+
+| Oszlop | Jelentés |
+|---|---|
+| `kapcsolo` | `SZPA_JOIN` (a SzPA konkordáns alternatíva, 13. szerep) \| `SZOTARI_GERINC` (DT272) \| `KAROLI_MEGFELELOK` (13–14. szerep) |
+| `id` | `*` vagy motívum-id (2.1) |
+| `allapot` | `aktiv` \| `felfuggesztve` |
+| `szerep_cim_resz` | a szerep nevéből elhagyott rész, amíg nem `aktiv` (csak `*` sorban) |
+| `indok` | a döntés indoka (a felhasználó szavaival, ha van) |
+| `proveniencia` | `scope=manual \| forras=… \| ts=…` |
+
+Kulcs: `kapcsolo` + `id`. Állapot (2026-10-29): 5 sor — SZPA_JOIN `*` felfüggesztve; SZOTARI_GERINC ISTENTISZT-001,
+ALVIL-001; KAROLI_MEGFELELOK ISTENTISZT-001, ALVIL-001. A gerinc más motívumon nem kapcsolható be döntés nélkül (a
+próbában a H0430 Jób 38:7 BDB-példái több útvonalra mutatnak: kutatói kérdés, `GerincHiba`).
 
 ---
 
