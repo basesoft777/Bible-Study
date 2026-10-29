@@ -70,7 +70,8 @@ def _ir(gyoker, relut, tartalom):
     konyvtar = os.path.dirname(teljes)
     if konyvtar and not os.path.isdir(konyvtar):
         os.makedirs(konyvtar)
-    with open(teljes, 'w', encoding='utf-8') as f:
+    # LF-fel ir (newline=''): Windowson sem lesz CRLF, mint az adat/ tablaiban (E19, KeyError 'illesztes')
+    with open(teljes, 'w', encoding='utf-8', newline='') as f:
         f.write(tartalom)
     return relut.replace(os.sep, '/')
 
@@ -472,6 +473,18 @@ class E5CimAtszamozasTeszt(unittest.TestCase):
             ['### 1 A', '### 2 A'], ['### 3 A'])), 1)
         self.assertEqual(len(SZ._tenylegesen_torolt_cimsorok(
             ['### 1 A'], ['## 1 A'])), 1)
+
+    def test_helyorzo_veglegesre_csereje_nem_torles(self):
+        self.assertEqual(SZ._tenylegesen_torolt_cimsorok(
+            ['### 2026-10-29 DT-F131q — N-F131a és N-F131b lezárva',
+             '## 3. Döntés (DT-F124a)'],
+            ['### 2026-10-29 DT406 — N62 és N63 lezárva',
+             '## 3. Döntés (DT403)']), [])
+
+    def test_helyorzo_csere_mellett_szovegvaltozas_torles(self):
+        self.assertEqual(SZ._tenylegesen_torolt_cimsorok(
+            ['## 3. Döntés (DT-F124a)'], ['## 3. Határozat (DT403)']),
+            ['## 3. Döntés (DT-F124a)'])
 
 
 class D8DiffHatokorTeszt(unittest.TestCase):

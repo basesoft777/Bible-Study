@@ -225,6 +225,27 @@ class Javitas(unittest.TestCase):
         _, stat, _ = bont.general('2026-10-25', jav_ut=None)
         self.assertEqual((stat['reszleges'], stat['javitassal']), (15, 0))
 
+    def test_crlf_bemenet(self):
+        # a CRLF-es tábla és javítótábla (Windows, autocrlf) ugyanazt adja, mint az LF-es: a '\r' nem kerül a kulcsba
+        # (E19, test_szabalyok: KeyError 'illesztes')
+        import tempfile
+        import thayer_bemenet as TB
+        tabla = ('# GENERALT: teszt\nstrong\tsorszam\tutvonal\tjel\tszoveg\tillesztes\n'
+                 'G0086\t1\tcim\t\tG86 - a\tegyezik\nG0086\t2\t-/1/-\t1.\tb\tegyezik\n')
+        jav = ('# GENERALT: teszt\nstrong\tsorszam\tsor_poz\tjavitott_alak\telotte\tallapot\n'
+               'G0540\t2\t1\tX\te\tjavitva\n')
+        with tempfile.TemporaryDirectory() as tmp:
+            eredmeny = {}
+            for nev, vegz in (('lf', '\n'), ('crlf', '\r\n')):
+                t, j = os.path.join(tmp, nev + '_t.tsv'), os.path.join(tmp, nev + '_j.tsv')
+                for ut, tart in ((t, tabla), (j, jav)):
+                    with open(ut, 'w', encoding='utf-8', newline='') as f:
+                        f.write(tart.replace('\n', vegz))
+                eredmeny[nev] = (TB.szakaszok('G0086', t, j), TB.javitas_olvas(j))
+            self.assertEqual(eredmeny['crlf'], eredmeny['lf'])
+            self.assertEqual([x['illesztes'] for x in eredmeny['crlf'][0]], ['egyezik', 'egyezik'])
+            self.assertEqual(eredmeny['crlf'][1], {('G0540', '2'): (1, 'X', 'e')})
+
     def test_forras_javit_ellenoriz(self):
         r = subprocess.run([sys.executable, os.path.join(ITT, 'forras_javit.py'), '--ellenoriz'],
                            capture_output=True, text=True, encoding='utf-8')

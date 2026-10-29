@@ -360,6 +360,30 @@ class HuIlleszt(unittest.TestCase):
         eredmeny = self.hi.strong_illeszt(sorok, hu)[0]
         self.assertEqual(eredmeny[1][:3], ['illeszkedik', '1', hu.index('1 folyóé')])
 
+    def test_reszleges_generalas(self):
+        # --strong: a Strong-szűrt generálás sorai = a teljes generálás e Strongokra eső sorai (ISTENTISZT-001 arany lap,
+        # 2026-10-29: H4397, H8034, H9004)
+        csak = {'H4397', 'H8034', 'H9004'}
+        teljes = [r for r in self.hi.general('2026-10-29')[0] if r[0] in csak]
+        self.assertEqual(self.hi.general('2026-10-29', csak)[0], teljes)
+
+    def test_reszleges_szoveg(self):
+        # csak a megnevezett Strong sorai cserélődnek, a többi bájtra marad; a --ts megmarad, a jelölés ismételhető
+        fej = ('# GENERÁLT: eszkozok/bdb_jelolt/hu_illeszt.py --ts 2026-10-18 — x.', '# forras: y', 'strong\tsorszam\tx')
+        regi = '\n'.join(fej + ('H0001\t1\ta', 'H0002\t1\tb', 'H0002\t2\tc', 'H0003\t1\td')) + '\n'
+        uj = self.hi.reszleges_szoveg(regi, [['H0002', '1', 'B'], ['H0002', '2', 'C']], {'H0002'}, '2026-10-29')
+        s = uj.split('\n')
+        self.assertEqual(s[3:], ['H0001\t1\ta', 'H0002\t1\tB', 'H0002\t2\tC', 'H0003\t1\td', ''])
+        self.assertEqual(s[1:3], list(fej[1:]))
+        self.assertTrue(s[0].startswith(fej[0] + self.hi.RESZLEGES + ' H0002 (--strong, ts=2026-10-29;'))
+        self.assertEqual(s[0].split('--ts ')[1].split(' ')[0], '2026-10-18')
+        ujra = self.hi.reszleges_szoveg(uj, [['H0002', '1', 'B'], ['H0002', '2', 'C']], {'H0002'}, '2026-10-29')
+        self.assertEqual(ujra, uj)
+        with self.assertRaises(ValueError):
+            self.hi.reszleges_szoveg(regi, [['H0002', '1', 'B']], {'H0002'}, '2026-10-29')
+        with self.assertRaises(ValueError):
+            self.hi.reszleges_szoveg(regi.replace('\n', '\r\n'), [['H0002', '1', 'B'], ['H0002', '2', 'C']], {'H0002'}, 'x')
+
     def test_illesztes_es_horgony(self):
         sorok = [{'jelolo': 'fej', 'jel': '', 'szoveg': 'x'},
                  {'jelolo': 'point', 'jel': '1', 'szoveg': 'king of Gerar Gen 20:2'},

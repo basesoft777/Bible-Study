@@ -66,6 +66,88 @@ def forras_szoveg_dbh(sor, idx):
     return idx.get((sor['strong'], sor['entry_id'], sor['mezo']))
 
 
+TOVABBI_FAJL = {'TBESH': 'TBESH.txt', 'TBESG': 'TBESG.txt', 'tW_szocikkek': 'tW_szocikkek.tsv', 'MCGED': 'MCGED_teljes.tsv',
+                'LSJ': 'LSJ_teljes.tsv', 'BDB': 'BDB_etimologia_kezi_hatarok.tsv'}
+
+
+def _tbes_tisztit(szoveg):
+    """A TBESH/TBESG-sor 7. és 8. oszlopa (rövid glossza + szócikk), címke nélkül: a TBESH oldalon megjelenő szöveg
+    (`tbesh_konszolidalt_import.clean`: a HTML-jelölők szóközzé, a szóközök összevonva)."""
+    sys.path.insert(0, os.path.join(GYOKER, 'eszkozok'))
+    import tbesh_konszolidalt_import as TI
+    return TI.clean(szoveg)
+
+
+def tovabbi_forras(sor, konkordancia_dir=KONKORDANCIA, cache=None):
+    """F121 (DT-F121k, ALVIL-001 menet): a forditasok.tsv-sor forrásszövege azokból a konkordancia-fájlokból, amelyekhez
+    nincs lexikon_hivatkozasok-sor (SEMA 2.14); None, ha a sor nem ilyen. Kulcsolás:
+      TBESH/TBESG  entry_id = Strong, jelentes_szam teljes: a Strong sora(i) 7. és 8. oszlopa tisztítva (több sornál egyedítve: glosszák „; ”, szócikkek „ | ”), szóközzel egybefűzve;
+      tW_szocikkek entry_id = tw_id, a strong a cikk `strong` oszlopának első eleme (H7585+G0086 -> H7585), jelentes_szam em-dash;
+      MCGED        entry_id = gk_szam, jelentes_szam em-dash, mezo glosszak_hu: a `glossza`;
+      LSJ          entry_id = a Strong (Strong_padded), jelentes_szam teljes: a `Teljes_szocikk`;
+      BDB          jelentes_szam nyelvi_hatter (entry_id = Strong): a BDB_etimologia_kezi_hatarok.tsv `nyelvi_hatter`-e."""
+    szotar, strong, eid, jsz, mezo = (sor.get(k, '') for k in ('szotar', 'strong', 'entry_id', 'jelentes_szam', 'mezo'))
+    fajl = TOVABBI_FAJL.get(szotar)
+    if not fajl or not (os.path.exists(os.path.join(konkordancia_dir, fajl))):
+        return None
+    cache = cache if cache is not None else {}
+    ut = os.path.join(konkordancia_dir, fajl)
+    if szotar in ('TBESH', 'TBESG'):
+        if jsz != 'teljes' or mezo != 'forditas_hu' or eid != strong:
+            return None
+        if szotar not in cache:
+            idx = {}
+            with open(ut, encoding='utf-8', errors='replace') as f:
+                for l in f:
+                    c = l.rstrip('\n').split('\t')
+                    if len(c) >= 8:
+                        idx.setdefault(c[0], []).append((c[6], c[7]))
+            cache[szotar] = idx
+        t = cache[szotar].get(strong)
+        if not t:
+            return None
+        # a generátor (tbesh_konszolidalt_import.txt_betolt) azonos Strong sorait egyedítve fűzi: glosszák '; ', szócikkek ' | '
+        rovid = list(dict.fromkeys(x for x in (_tbes_tisztit(r[0]) for r in t) if x))
+        teljes = list(dict.fromkeys(x for x in (_tbes_tisztit(r[1]) for r in t) if x))
+        return ('; '.join(rovid) + ' ' + ' | '.join(teljes)).strip()
+    if szotar == 'tW_szocikkek':
+        if jsz != EM_DASH or mezo != 'forditas_hu':
+            return None
+        if szotar not in cache:
+            cache[szotar] = {r['tw_id']: (r['strong'].split('+')[0], r['szoveg']) for r in tsv_sorok(ut)}
+        t = cache[szotar].get(eid)
+        return t[1] if t and t[0] == strong else None
+    if szotar == 'MCGED':
+        if jsz != EM_DASH or mezo != 'glosszak_hu':
+            return None
+        if szotar not in cache:
+            cache[szotar] = {(r['strong'], r['gk_szam']): r['glossza'] for r in tsv_sorok(ut)}
+        return cache[szotar].get((strong, eid))
+    if szotar == 'LSJ':
+        if jsz != 'teljes' or mezo != 'forditas_hu' or eid != strong:
+            return None
+        if szotar not in cache:
+            idx = {}
+            with open(ut, encoding='utf-8') as f:
+                f.readline()
+                for l in f:
+                    c = l.rstrip('\n').split('\t')
+                    if len(c) >= 3:
+                        idx.setdefault(c[0], c[2])
+            cache[szotar] = idx
+        return cache[szotar].get(_strong_padded(strong))
+    if szotar == 'BDB' and jsz == 'nyelvi_hatter' and mezo == 'forditas_hu' and eid == strong:
+        if szotar not in cache:
+            cache[szotar] = {r['strong']: r['nyelvi_hatter'] for r in tsv_sorok(ut)}
+        return cache[szotar].get(strong)
+    return None
+
+
+def _strong_padded(s):
+    m = re.match(r'^([GH])0*(\d{1,4})([a-z]?)$', s or '')
+    return '%s%04d%s' % (m.group(1), int(m.group(2)), m.group(3)) if m else None
+
+
 def lista_keszit(motivum_id, kimenet):
     """A generator forditas_ehhez() hivasait naplozva rendereli a lapot kimenet-be (repon kivuli konyvtar)."""
     sys.path.insert(0, os.path.join(GYOKER, 'eszkozok'))
@@ -138,7 +220,7 @@ KAROLI_PAROK = os.path.join(GYOKER, 'adat', 'karoli_strong')
 MANKO_KI = os.path.join(GYOKER, 'naplok', 'F121_GLOSSZA_FORDITAS_manko.tsv')
 SZOJEGYZEK_KI = os.path.join(GYOKER, 'naplok', 'F121_GLOSSZA_FORDITAS_szojegyzek_javaslat.tsv')
 VISSZA_KI = os.path.join(GYOKER, 'naplok', 'F121_GLOSSZA_FORDITAS_visszamenoleges.tsv')
-SZAMJEL = ('F121 (DT393)', 'F121.8')          # a megjegyzes mező eleje: a menet új / cserélt sorai
+SZAMJEL = ('F121 (DT393)', 'F121.8', 'F121.14')          # a megjegyzes mező eleje: a menet új / cserélt sorai
 KOTOSZO = {'valaki', 'valakinek', 'valakit', 'valakivel', 'valakire', 'valahol', 'valamit', 'valaminek', 'lenni', 'szó',
            'szerint', 'innen', 'olyan', 'amellyel', 'cselekvés', 'állapot', 'folyamat', 'egy', 'vagy', 'azt', 'hogy'}
 
@@ -163,14 +245,16 @@ def ellenorzendo_szavak(mezo, hu):
     return m.group(1) if m else ''
 
 
-def egyenertek_tabla():
+def egyenertek_tabla(kizar=None):
     """{angol_elem: Counter(magyar_elem)} a gyorsítótár már elfogadott glosszáiból: UBS_DNTG (angol glosszák ';'-elemei, elemszám
-    egyezésénél páronként), a TBESH-glosszák (glosszak_heber_hu, fo=igen) és a v1–v4 terminológia. A menet saját sorai kimaradnak."""
+    egyezésénél páronként), a TBESH-glosszák (glosszak_heber_hu, fo=igen) és a v1–v4 terminológia. A menet saját sorai kimaradnak
+    (`kizar`: a megjegyzés-előtagok; alapértelmezés: SZAMJEL, az összes eddigi menet)."""
+    kizar = tuple(kizar or SZAMJEL)
     d = defaultdict(Counter)
     dntg = {(r['strong'], r['lexid'], r['entry_kod']): r['glosszak']
             for r in tsv_sorok(os.path.join(KONKORDANCIA, 'UBS_DNTG_jelentesek.tsv'))}
     for r in tsv_sorok(FORDITASOK):
-        if r['szotar'] == 'UBS_DNTG' and r['mezo'] == 'glosszak_hu' and not r['megjegyzes'].startswith(SZAMJEL):
+        if r['szotar'] == 'UBS_DNTG' and r['mezo'] == 'glosszak_hu' and not r['megjegyzes'].startswith(kizar):
             en = [e.strip() for e in dntg.get((r['strong'], r['entry_id'], r['jelentes_szam']), '').split(';') if e.strip()]
             hu = [e.strip() for e in r['forditas_hu'].split(';') if e.strip()]
             if en and len(en) == len(hu):
@@ -254,13 +338,37 @@ def bdb_ellenorzes(sor, bdb_szoveg):
     return ('egyezik', ', '.join(kozos)) if kozos else ('nem_talal', 'a vizsgált tövek: ' + ', '.join(sorted(t)))
 
 
-def menet_sorai():
-    return [r for r in tsv_sorok(FORDITASOK) if r['megjegyzes'].startswith(SZAMJEL)]
+def menet_sorai(jel=None):
+    return [r for r in tsv_sorok(FORDITASOK) if r['megjegyzes'].startswith(tuple(jel or SZAMJEL))]
 
 
-def parancs_manko():
-    sorok = menet_sorai()
-    tabla = egyenertek_tabla()
+def kulcsszo_ellenorzes(sor, angol, term, karoli, bdb_szoveg):
+    """Hosszú (nem glossza/definíció) sorokra, ahol az 'ellenőrizendő szó' nem egy glosszaelem: a terminológia-tábla azon kulcsai,
+    amelyek az angol forrásban szó szerint előfordulnak, és a magyar alakjuk tartalmas (>= 4 betűs) szava. Soronként
+    [(angol, magyar, karoli: egyezik/nem_talal, bdb: egyezik/nem_talal/nem_heber)]; a szójegyzék rangja a Károlié fölött van,
+    ezért a `nem_talal` tájékoztató, nem hiba (DT239)."""
+    ki = []
+    for angol_kulcs, magyar in term:
+        if not re.search(r'(?<![A-Za-z])%s(?![A-Za-z])' % re.escape(angol_kulcs), angol, re.IGNORECASE):
+            continue
+        t = tovek(magyar)
+        if not t:
+            continue
+        k = 'egyezik' if any(alak[:4] in t for alak in karoli) else 'nem_talal'
+        if not sor['strong'].startswith('H'):
+            b = 'nem_heber'
+        else:
+            b = 'egyezik' if (t & tovek(bdb_szoveg)) else 'nem_talal'
+        ki.append((angol_kulcs, magyar, k, b))
+    return ki
+
+
+def parancs_manko(jel=None, ki_ut=None):
+    jelek = (jel,) if jel else None
+    sorok = menet_sorai(jelek)
+    tabla = egyenertek_tabla(jelek)
+    term = [(r['angol'], r['magyar']) for r in tsv_sorok(TERMINOLOGIA)]
+    tovabbi_c = {}
     forras = {}
     for r in tsv_sorok(os.path.join(KONKORDANCIA, 'UBS_DBH_jelentesek.tsv')):
         for mezo, o in DBH_MEZOK.items():
@@ -283,37 +391,54 @@ def parancs_manko():
                 karoli_cache[st] = karoli_alakok_strongra(st)
                 bdb_cache[st] = bdb_hu_szoveg(st) if st.startswith('H') else ''
         karoli = sum((karoli_cache[st] for st in strongok), Counter())
-        sz = szojegyzek_ellenorzes(s, angol, tabla)
-        ka = karoli_ellenorzes(s, karoli)
-        bd = bdb_ellenorzes(s, ' '.join(bdb_cache[st] for st in strongok))
+        bdb_sz = ' '.join(bdb_cache[st] for st in strongok)
+        if s['mezo'] == 'forditas_hu':
+            # hosszú szócikk-szöveg: a terminológia-kulcsok szintjén (kulcsszo_ellenorzes); a forrás a 13. szabály feloldójáé
+            angol = tovabbi_forras(s, KONKORDANCIA, tovabbi_c) or ''
+            kk = kulcsszo_ellenorzes(s, angol, term, karoli, bdb_sz)
+            sz = ('egyezik', '%d szójegyzéki kulcs a forrásban (a 5. kapu a fordításban megköveteli)' % len(kk)) if kk else ('nincs_adat', '')
+            hi_k = [x for x in kk if x[2] == 'nem_talal']
+            hi_b = [x for x in kk if x[3] == 'nem_talal']
+            ka = ('nem_talal', 'Károli: ' + ', '.join('%s→%s' % (x[0], x[1]) for x in hi_k)) if hi_k else (
+                ('egyezik', '%d kulcs' % len(kk)) if kk else ('nincs_ellenorzendo', ''))
+            bd = ('nem_talal', 'BDB: ' + ', '.join('%s→%s' % (x[0], x[1]) for x in hi_b)) if hi_b else (
+                ('egyezik', '%d kulcs' % len(kk)) if kk else ('nincs_ellenorzendo', ''))
+        else:
+            sz = szojegyzek_ellenorzes(s, angol, tabla)
+            ka = karoli_ellenorzes(s, karoli)
+            bd = bdb_ellenorzes(s, bdb_sz)
         eltero = [n for n, (a, _) in (('szojegyzek', sz), ('karoli', ka), ('bdb', bd)) if a in ('utkozik', 'nem_talal')]
         ki.append(list(k) + [s['forditas_hu'], '%s: %s' % sz, '%s: %s' % ka, '%s: %s' % bd,
                              ('kezi_iteletre: ' + ','.join(eltero)) if eltero else 'egyezik'])
-    with open(MANKO_KI, 'w', encoding='utf-8', newline='') as f:
+    ki_ut = ki_ut or MANKO_KI
+    with open(ki_ut, 'w', encoding='utf-8', newline='') as f:
         f.write('\t'.join(['szotar', 'strong', 'entry_id', 'jelentes_szam', 'mezo', 'forditas_hu', 'szojegyzek', 'karoli',
                            'bdb', 'osszegzes']) + '\n')
         for r in ki:
             f.write('\t'.join(c.replace('\t', ' ') for c in r) + '\n')
     szamlalo = Counter(r[-1].split(':')[0] for r in ki)
-    print('mankó: %d sor; %s (%s)' % (len(ki), dict(szamlalo), MANKO_KI))
+    print('mankó: %d sor; %s (%s)' % (len(ki), dict(szamlalo), ki_ut))
     return ki
 
 
-def parancs_szojegyzek():
+def parancs_szojegyzek(jel=None, ki_ut=None):
     """DT240: a gyorsítótárból kigyűjti azokat az angol glosszaelemeket, amelyek többféle magyar alakot kaptak."""
-    tabla = egyenertek_tabla()
+    tabla = egyenertek_tabla((jel,) if jel else None)
     verseng = [(en, c) for en, c in sorted(tabla.items()) if len(c) > 1]
-    with open(SZOJEGYZEK_KI, 'w', encoding='utf-8', newline='') as f:
+    ki_ut = ki_ut or SZOJEGYZEK_KI
+    with open(ki_ut, 'w', encoding='utf-8', newline='') as f:
         f.write('\t'.join(['angol_kulcs', 'magyar_alakok_gyakorisaggal', 'javasolt_sor']) + '\n')
         for en, c in verseng:
             f.write('\t'.join([en, '; '.join('%s×%d' % x for x in c.most_common()), c.most_common(1)[0][0]]) + '\n')
-    print('szójegyzék-javaslat: %d versengő angol kulcs (%s)' % (len(verseng), SZOJEGYZEK_KI))
+    print('szójegyzék-javaslat: %d versengő angol kulcs (%s)' % (len(verseng), ki_ut))
     return verseng
 
 
-def parancs_visszamenoleges():
+def parancs_visszamenoleges(jel=None, ki_ut=None, uj_term=None):
     """DT242: (a) a tiltott fordulatok mintái a teljes gyorsítótáron; (b) az új v4 `deity` -> `istenség` sor a régi sorokon
-    (a forrásszöveg-feloldó az ellenoriz.py 13. szabályáé: egy feloldó). Csak javaslat, a táblát nem írja."""
+    (a forrásszöveg-feloldó az ellenoriz.py 13. szabályáé: egy feloldó); (c) `uj_term`: azok a terminológia-sorok, amelyek
+    megjegyzése ezzel az előtaggal kezdődik -- a régi sorok forrásában előforduló angol kulcs és a fordításban hiányzó magyar
+    alak. Csak javaslat, a táblát nem írja."""
     sys.path.insert(0, os.path.join(GYOKER, 'eszkozok'))
     import ellenoriz as E
     import forditas_kapuk as K
@@ -322,9 +447,15 @@ def parancs_visszamenoleges():
     teljes_c, szak_c = {}, {}
     tiltott = K.tiltott_betolt()
     deity = re.compile(r'(?<![A-Za-z])deity(?![A-Za-z])')
+    kizar = (jel,) if jel else SZAMJEL
+    uj_sorok = []
+    if uj_term:
+        uj_sorok = [(r['angol'], r['magyar'], re.compile(r'(?<![A-Za-z])%s(?![A-Za-z])' % re.escape(r['angol']), re.IGNORECASE))
+                    for r in tsv_sorok(TERMINOLOGIA) if r['megjegyzes'].startswith(uj_term) and r.get('kapu') == 'igen']
+    tovabbi_c = {}
     ki = []
     for s in tsv_sorok(FORDITASOK):
-        if s['megjegyzes'].startswith(SZAMJEL):
+        if s['megjegyzes'].startswith(kizar):
             continue
         kulcs = (s['szotar'], s['strong'], s['entry_id'], s['jelentes_szam'], s['mezo'])
         for alak, minta, helyette, _v in tiltott:
@@ -336,25 +467,37 @@ def parancs_visszamenoleges():
             forras = E._teljes_szocikk(adat, s, teljes_c)
         if forras is None:
             forras = E._szakasz_szoveg(adat, s, szak_c)
+        if forras is None and uj_sorok:
+            forras = tovabbi_forras(s, KONKORDANCIA, tovabbi_c)
         if forras and deity.search(forras) and 'istenség' not in s['forditas_hu'].lower():
             ki.append(list(kulcs) + ['DT238 deity -> istenség', s['forditas_hu'][:80],
                                      '(kézi ítélet: a „deity” itt más alakban áll)', 'a forrásban „deity” áll, a fordításban „istenség” nincs'])
-    with open(VISSZA_KI, 'w', encoding='utf-8', newline='') as f:
+        if forras and s['allapot'] != 'elavult':
+            for angol, magyar, minta in uj_sorok:
+                if minta.search(forras) and magyar.lower() not in s['forditas_hu'].lower():
+                    ki.append(list(kulcs) + ['új terminológia: %s -> %s' % (angol, magyar), s['forditas_hu'][:80],
+                                             '(kézi ítélet: a „%s” itt más alakban áll)' % angol,
+                                             'a forrásban „%s” áll, a fordításban „%s” nincs' % (angol, magyar)])
+    ki_ut = ki_ut or VISSZA_KI
+    with open(ki_ut, 'w', encoding='utf-8', newline='') as f:
         f.write('\t'.join(['szotar', 'strong', 'entry_id', 'jelentes_szam', 'mezo', 'elv', 'mai_alak', 'javasolt_alak', 'indoklas']) + '\n')
         for r in ki:
             f.write('\t'.join(c.replace('\t', ' ').replace('\n', ' ') for c in r) + '\n')
-    print('visszamenőleges felmérés: %d tétel (%s)' % (len(ki), VISSZA_KI))
+    print('visszamenőleges felmérés: %d tétel (%s)' % (len(ki), ki_ut))
     return ki
 
 
 def main():
     a = sys.argv[1:]
+
+    def opt(nev):
+        return a[a.index(nev) + 1] if nev in a else None
     if a and a[0] == 'manko':
-        return parancs_manko()
+        return parancs_manko(opt('--jel'), opt('--ki'))
     if a and a[0] == 'szojegyzek':
-        return parancs_szojegyzek()
+        return parancs_szojegyzek(opt('--jel'), opt('--ki'))
     if a and a[0] == 'visszamenoleges':
-        return parancs_visszamenoleges()
+        return parancs_visszamenoleges(opt('--jel'), opt('--ki'), opt('--uj-term'))
     if not a or a[0] != 'lista' or '--id' not in a:
         raise SystemExit('hasznalat: glossza_lexikon_forditas.py lista --id <ID> [--kimenet <konyvtar>] | manko | szojegyzek | visszamenoleges')
     kim = a[a.index('--kimenet') + 1] if '--kimenet' in a else None
