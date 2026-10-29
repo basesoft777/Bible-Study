@@ -2667,6 +2667,19 @@ def _elso_tagmondat(szoveg, hatar=90):
     return s.strip() or EM_DASH
 
 
+def jelolo_levag(szoveg, jel):
+    """A szótári szöveg elejéről a saját tagolási jelét (`3`, `2. a.`, `c.`) levágja, ha az a címke
+    `jel`-ének része: a kibontott szakaszon a jel a címkében már áll, az idézetben nem ismétlődik.
+    A betűjelet csak ponttal vágja (a névelő `a` így nem jel); más kezdet változatlan marad."""
+    jelek = set(t for t in re.split(r'[.\s]+', jel or '') if re.fullmatch(r'\d+|[a-z]', t))
+    s = szoveg or ''
+    while True:
+        m = re.match(r'\s*(\d+)\.?\s+|\s*([a-z])\.\s+', s)
+        if not m or (m.group(1) or m.group(2)) not in jelek or not s[m.end():].strip():
+            return s
+        s = s[m.end():]
+
+
 def _vazlat_sor(jel, cimke, szoveg):
     return '- `%s` — %s' % (jel, cimke if cimke else _elso_tagmondat(szoveg))
 
@@ -2704,7 +2717,7 @@ def gerinc_szakasz_lista(szakaszok, hordozo, celok, adat_cimke, szotar, strong):
         lezar()
         fej = '- **`%s` — %s**' % (jel, cimke) if cimke else '- **`%s`**' % jel
         if hu:
-            szoveg, talalt, hiany = kiemel(hu, celok.get(ut, []))
+            szoveg, talalt, hiany = kiemel(jelolo_levag(hu, jel), celok.get(ut, []))
             talalt_ossz += talalt
             hiany_ossz += hiany
             bek = [fej, '', '  > %s' % szoveg]
