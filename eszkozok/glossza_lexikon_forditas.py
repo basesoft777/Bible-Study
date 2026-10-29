@@ -81,7 +81,7 @@ def _tbes_tisztit(szoveg):
 def tovabbi_forras(sor, konkordancia_dir=KONKORDANCIA, cache=None):
     """F121 (DT-F121k, ALVIL-001 menet): a forditasok.tsv-sor forrásszövege azokból a konkordancia-fájlokból, amelyekhez
     nincs lexikon_hivatkozasok-sor (SEMA 2.14); None, ha a sor nem ilyen. Kulcsolás:
-      TBESH/TBESG  entry_id = Strong, jelentes_szam teljes: a sor 7. és 8. oszlopa tisztítva, szóközzel egybefűzve;
+      TBESH/TBESG  entry_id = Strong, jelentes_szam teljes: a Strong sora(i) 7. és 8. oszlopa tisztítva (több sornál egyedítve: glosszák „; ”, szócikkek „ | ”), szóközzel egybefűzve;
       tW_szocikkek entry_id = tw_id, a strong a cikk `strong` oszlopának első eleme (H7585+G0086 -> H7585), jelentes_szam em-dash;
       MCGED        entry_id = gk_szam, jelentes_szam em-dash, mezo glosszak_hu: a `glossza`;
       LSJ          entry_id = a Strong (Strong_padded), jelentes_szam teljes: a `Teljes_szocikk`;
@@ -101,10 +101,15 @@ def tovabbi_forras(sor, konkordancia_dir=KONKORDANCIA, cache=None):
                 for l in f:
                     c = l.rstrip('\n').split('\t')
                     if len(c) >= 8:
-                        idx.setdefault(c[0], (c[6], c[7]))
+                        idx.setdefault(c[0], []).append((c[6], c[7]))
             cache[szotar] = idx
         t = cache[szotar].get(strong)
-        return (_tbes_tisztit(t[0]) + ' ' + _tbes_tisztit(t[1])).strip() if t else None
+        if not t:
+            return None
+        # a generátor (tbesh_konszolidalt_import.txt_betolt) azonos Strong sorait egyedítve fűzi: glosszák '; ', szócikkek ' | '
+        rovid = list(dict.fromkeys(x for x in (_tbes_tisztit(r[0]) for r in t) if x))
+        teljes = list(dict.fromkeys(x for x in (_tbes_tisztit(r[1]) for r in t) if x))
+        return ('; '.join(rovid) + ' ' + ' | '.join(teljes)).strip()
     if szotar == 'tW_szocikkek':
         if jsz != EM_DASH or mezo != 'forditas_hu':
             return None

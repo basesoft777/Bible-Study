@@ -2,7 +2,7 @@
 
 *Menet: 2026-10-29, `claude-sonnet-5-5` (a kért modell: `sonnet`; a modell-ellenőrzés egyezik). Ág: `claude/f121-alvil-13` (friss `origin/main`-ről). Megbízó: az orkesztrátor; a felhasználó szó szerint (az orkesztrátor chatjében, 2026-10-29): „Igen, így” — a jóváhagyott szöveg: „… A 13 fordítás az M1 után Sonnettel, a #121 eszközével.” Bemenet: a #123 átadó listája (`naplok/F123_forditas_atadas_ALVIL-001.tsv`, a `claude/f123-alvil-adat` ágon). Az ALVIL-001 lapot ez a menet **nem** generálja újra, a #123 fájljaihoz nem nyúl.*
 
-**Állapot: a ⛔ pontnál áll.** A tervezet, a kapuk és a mankók lefutottak; a `forditasok.tsv` és a `terminologia.tsv` módosítása a munkafában áll, **nincs commitolva**: a rögzítés a felhasználó döntése után történik (DONTESEK: DT-F121k, DT-F121l, DT-F121m).
+**Állapot: rögzítve (F121.15).** A DT-F121k, DT-F121l, DT-F121m eldöntve (orkesztrátor, a felhasználó felhatalmazásával, 2026-10-29). Az ellenőri jelentés (ELLENOR_F121_3) javításai után a PR draft.
 
 ## 1. Az átadó lista két hibája (a #123-nak)
 
@@ -39,13 +39,12 @@ Kilenc új v4 sor (`adat/terminologia.tsv`, a megjegyzés „F121 ALVIL-001 mene
 
 Eszköz: `python eszkozok/glossza_lexikon_forditas.py manko | szojegyzek | visszamenoleges` — most `--jel F121.14 --ki …` kapcsolóval, így a korábbi menetek naplói nem íródnak felül. Újdonságok: (a) a hosszú (`forditas_hu`) sorokra **kulcsszó-ellenőrzés** (`kulcsszo_ellenorzes`): azok a szójegyzék-kulcsok, amelyek az angol forrásban szó szerint állnak, a magyar alakjuk Károli- és BDB-egyezése; (b) a visszamenőleges felmérés `--uj-term` kapcsolója: az új terminológia-sorok a régi sorokon.
 
-- **`naplok/F121_ALVIL_forditas_manko.tsv`** (13 sor): 4 egyezik, 9 kézi ítéletre. A kézi ítéletek mind ugyanabból a két okból jönnek, és soronként megegyeznek a terminológia-döntéssel: (i) a Károli a G86-ra csak „pokol”-t ad (3+1), tehát a *Hádész* és az *alvilág* nincs a Károli-alakok között; a H7585-re seol, sír, koporsó, pokol, mélység; (ii) a BDB-magyar szövegben a *Seol*, *Hádész*, *sírbolt* kisbetűs/más alakban áll. A rangsor (szójegyzék > Károli > BDB, DT239) szerint ez tájékoztató; a javaslat: marad.
+- **`naplok/F121_ALVIL_forditas_manko.tsv`** (13 sor): 4 egyezik, 9 kézi ítéletre. A kézi ítéletek mind ugyanabból a két okból jönnek, és soronként megegyeznek a terminológia-döntéssel: (i) a Károli a G86-ra a #22 párosításban „pokol”-t ad (3+1; az ApCsel 2:27, 31 Károli-szövege „sírban”, ez a párosításban nem szerepel), tehát a *Hádész* és az *alvilág* nincs a Károli-alakok között; a H7585-re seol, sír, koporsó, pokol, mélység; (ii) a BDB-magyar szövegben a *Seol*, *Hádész*, *sírbolt* kisbetűs/más alakban áll. A rangsor (szójegyzék > Károli > BDB, DT239) szerint ez tájékoztató; a javaslat: marad.
 - **`…_szojegyzek_javaslat.tsv`** (DT240): 437 versengő angol kulcs a gyorsítótárban; **új sort nem javasolok** (a legtöbb szótövezési/formai eltérés).
 - **`…_visszamenoleges.tsv`** (DT242): 12 tétel, mind más sorokat érint, a tábla nem íródott. 2× Thayer G1941 `teljes` (archív `kezi` sor, a lapra nem kerül) és BDB H3068 (`deity`/istennév) a korábbi menetből; újak: a BDB H7585 `teljes` `Sheol`/`Hades` (a `Hades` találat álpozitív: a *Bibl. Hades* műcím), BDB H0559 `hell`, és hat BDB-sor `tomb` → *sírbolt* hiánya (H4908, H6912, H1004 `sz8`, H0068 `sz4`, H2710 `sz4`, H1430 `sz4`). Javaslat: egyik sem változik (a BDB-ben a *tomb* = sír/sírkamra, a régi sorok jóváhagyottak); a `tomb` → *sírbolt* sor ezért a tW-re és az új sorokra érvényes.
 
 ## 6. Mit nem csináltam
 
 - Nem generáltam újra az ALVIL-001 lapot; nem nyúltam a #123 fájljaihoz.
-- Nem commitoltam a `forditasok.tsv`-t és a `terminologia.tsv`-t (a ⛔ után).
 - Nem javítottam a 11. kaput (a `Matthew`/`Revelation`/`Romans` alias hiánya) és a #123 átadó listáját: ezek külön tételek.
 - A `pardes.db` nem épült újra; a szónézet és a lap az új sorokat csak újraépítés után mutatja.
