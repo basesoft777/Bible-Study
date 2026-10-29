@@ -231,3 +231,12 @@ ISTENTISZT-001	adhoc	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+
 ISTENTISZT-001	adhoc	scope=range:Ézs 64:6 | forras=LXX_OS/isaiah.tsv+TAGNT_kivonat.tsv | n=27 | ts=2026-10-29T08:32Z | csatorna=cli	2026.10.29
 ISTENTISZT-001	adhoc	scope=range:2Móz 33:19 | forras=TSK_kereszthivatkozasok.tsv+Karoli_versmegfeleltetes.tsv (tsk_kulcs, KJV->Károli) | n=19 | ts=2026-10-29T09:06Z | csatorna=cli	2026.10.29
 ISTENTISZT-001	adhoc	scope=range:2Móz 34:5 | forras=TSK_kereszthivatkozasok.tsv+Karoli_versmegfeleltetes.tsv (tsk_kulcs, KJV->Károli) | n=14 | ts=2026-10-29T09:06Z | csatorna=cli	2026.10.29
+ALVIL-001	B4	scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H7585 | n=64 | ts=2026-10-29T10:48Z | csatorna=cli	2026.10.29
+ALVIL-001	B4	scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G0086 | n=10 | ts=2026-10-29T10:48Z | csatorna=cli	2026.10.29
+ALVIL-001	B4	scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H7585 | n=66 | ts=2026-10-29T10:48Z | csatorna=cli	2026.10.29
+ALVIL-001	B4	scope=range:Zsolt 16:10 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=15 | ts=2026-10-29T10:48Z | csatorna=cli	2026.10.29
+ALVIL-001	B4	scope=range:Hós 13:14 | forras=LXX_OS/hosea.tsv+TAGNT_kivonat.tsv | n=25 | ts=2026-10-29T10:48Z | csatorna=cli	2026.10.29
+ALVIL-001	B4	scope=range:Zsolt 16:10 | forras=TSK_kereszthivatkozasok.tsv+Karoli_versmegfeleltetes.tsv (tsk_kulcs, KJV->Károli) | n=27 | ts=2026-10-29T10:48Z | csatorna=cli	2026.10.29
+ALVIL-001	B4	scope=range:Hós 13:14 | forras=TSK_kereszthivatkozasok.tsv+Karoli_versmegfeleltetes.tsv (tsk_kulcs, KJV->Károli) | n=29 | ts=2026-10-29T10:48Z | csatorna=cli	2026.10.29
+ALVIL-001	B4	scope=range:Zsolt 16:10 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=5 | ts=2026-10-29T10:48Z | csatorna=cli	2026.10.29
+ALVIL-001	B4	scope=range:Hós 13:14 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-10-29T10:48Z | csatorna=cli	2026.10.29
