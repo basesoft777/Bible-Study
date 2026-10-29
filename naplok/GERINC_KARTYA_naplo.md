@@ -122,7 +122,7 @@ Próbafutás: `python eszkozok/gerinc_terkep.py --kimenet <ideiglenes könyvtár
 
 **`sablonok/2_PaRDeS_bovitett_sablon.md` (v21 → v22), a 2. pont után:** „A kulcsszó-táblázat a gerinc-kártya **előtt** készül (vak olvasás; a 3. kiválasztási szempont, a »Motívum-kapcsolódás«, nem hivatkozik a kártyára). A kártya és az összevetés két listája a 4. pont kötelező naplójába kerül, üres eredménynél is; a »kártya talált, olvasás nem« hely jelöltként a `jeloltek.tsv`-n át, döntéssel, az »olvasás talált, kártya nem« kulcsszó az A4 ⛔ elé.” A changelog-sor a fájl elején. A `4_PaRDeS_tematikus_sablon.md` P1–P7 nem változik.
 
-*Állapot: jóváhagyásra vár (a felhasználóé); ezt a #125 írja át, a #124 a szöveget nem alkalmazza.*
+*Állapot: jóváhagyva (DT-F124c, 2026-10-29); ezt a #125 írja át, a #124 a szöveget nem alkalmazza.*
 
 ## 8. Nem teljesíthető / korlátok (tételesen)
 

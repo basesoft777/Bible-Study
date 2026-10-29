@@ -35,7 +35,7 @@ Döntés: DT-F124a (✅ alkalmazva; a felhasználó szava: „minden legyen telj
 4. A `melyelemzesek/` többszakaszos fájlneve nem értelmezhető (Zsolt 110:4, Zsid 5–7 feldolgozatlannak számít).
 5. N-F124a (kártya-fájl helye), N-F124c (#81-összekötés): nyitva.
 6. A `--ir` az `egy_tag` sorokat is írja, ha nem tág az összetett gerinc-elem (a brief szerint).
-7. A 2.3 szöveg (MUNKAMENET A3b/A3c, 2_ sablon v22): ⛔ jóváhagyásra vár, az átírás a #125.
+7. A 2.3 szöveg (MUNKAMENET A3b/A3c, 2_ sablon v22): jóváhagyva (DT-F124c, orkesztrátor a felhasználó felhatalmazásával), mint a #125 bemenete; az átírás a #125, a #124 nem írja át.
 8. A brief `paths:` listáját a tanulmánymappákkal bővítettem (a lefedettség bemenete).
 
 ## Ellenőrzés
