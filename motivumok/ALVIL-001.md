@@ -4,7 +4,7 @@
 
 【NAPLO: F123 M3, 2026-10-29 — a forrás a régi tematikus tanulmány (`archivum/ALVIL-001/Hadesz_Seol_tematikus.md`), a kereszthivatkozás-napló és a régi forrásréteg szétválasztásával készült, a `naplok/F123_szetvalasztas_ALVIL-001.tsv` jóváhagyott leképezési táblája szerint (DT-F123g (a)); sablon: 9_ v0.3 (tervezet, az első 2. lépcsős motívum mint sablon-próba, DT-F123a).】
 
-【NAPLO: Seol-egységesítés — orkesztrátori döntés, 2026-10-29 (DT26: `adat/terminologia.tsv` She'ôl → Seol), F123.ALVIL.J7. A kézi forrásban minden „Seól” „Seol”-ra változott, ragozott és összetett alakban is (17 hely). Az érintett mondatok bájtra-egyezése az archívummal (`archivum/ALVIL-001/Hadesz_Seol_tematikus.md`) ezen a ponton szándékosan megszűnt. A kisbetűs *seól* átírás (a héber szó transzliterációja, nem a magyar szakszó) nem változott. Más fájl, a `jeloltek.tsv` és a `kapcsolodas` adat érintetlen.】
+【NAPLO: Seol-egységesítés — orkesztrátori döntés, 2026-10-29 (DT26: `adat/terminologia.tsv` She'ôl → Seol), F123.ALVIL.J7. A kézi forrásban minden „Seól” „Seol”-ra változott, ragozott és összetett alakban is (17 hely). Az érintett mondatok bájtra-egyezése az archívummal (`archivum/ALVIL-001/Hadesz_Seol_tematikus.md`) ezen a ponton szándékosan megszűnt. A kisbetűs *seól* átírás (a héber szó transzliterációja, nem a magyar szakszó) nem változott. Más fájl, a `jeloltek.tsv` és a `kapcsolodas` adat érintetlen. **Kiegészítés (DT-F123k, F123.ALVIL.J17, ELLENOR_F123_ALVIL-001_2 ELTÉRÉS-2):** a csere kiterjed az `adat/motivumok.tsv` ALVIL-001 `cim` mezőjére és az `adat/szotar_szakasz_cimke.tsv` H7585/G0086 címkéire; a DT-F123d NAPLO-jában a felhasználói döntés idézete („kiáltás a Seól szorításából”) idézetként az eredeti „Seól” alakot hordozza.】
 
 ## Kivonat
 
@@ -63,7 +63,7 @@ A fenti egyetlen (Zsolt 16:10) genezisi-ívbeli előforduláson túl a *seól* m
 
 ### ↳ Alpont: kiáltás a Seol szorításából
 
-【NAPLO: DT-F123d (2), felhasználó, 2026-10-19 (határdöntés, A4): a „kiáltás a Seol szorításából” az ALVIL-001 ↳ alpontja, nem új ID; a Seol nélküli scan küszöbe a DT-F123e szerint nem teljesült (1 minősített hely < 3, `naplok/F123_adat_ALVIL-001.md` 5c).】
+【NAPLO: DT-F123d (2), felhasználó, 2026-10-19 (határdöntés, A4): a „kiáltás a Seól szorításából” az ALVIL-001 ↳ alpontja, nem új ID; a Seol nélküli scan küszöbe a DT-F123e szerint nem teljesült (1 minősített hely < 3, `naplok/F123_adat_ALVIL-001.md` 5c).】
 
 **A motívum határa a halál szorításában kiáltónál.** A Seol nemcsak a halottak helye, hanem a még élőt is szorongató hatalom: „a Seol kötelei körülvettek” (2Sám 22:6 = Zsolt 18:6), „a Seol szorongatásai megragadtak” (Zsolt 116:3), „a Seol gyomrából kiáltottam” (Jón 2:3) — saját, szó szerinti fordítások, a héber *šᵉʾôl* megőrzésével; a Károli 1908 alakja: „A pokol kötelei vettek körül” (2Sám 22:6), „A Seol kötelei vettek körül” (Zsolt 18:6), „a pokol szorongattatásai támadtak meg engem” (Zsolt 116:3), „a Seol torkából sikolték” (Jón 2:3). Ezeken a helyeken a hívó a Seol fenyegetéséből az Úrhoz kiált, és meghallgatást nyer.
 
