@@ -38,3 +38,18 @@ Minta: a Jer 10:25 és a Zsolt 79:6 sora (`Remez`; `2.c (tagadva)`).
 | `forras_tanulmany` | üres | a lelet nem tanulmányban merült fel (F110 szűrő), mint a Jer 10:25-nél |
 
 Szkript: `naplok/ISTENTISZT001_ezs64_zsolt99_ir.py` (írás előtt soronkénti összevetés: a `jeloltek.tsv` két sora, az `elofordulasok.tsv` egy új sora változott).
+
+## A kézi forrás (DT-F110b)
+
+A második ⛔ után (a próza számai elavulnak) a felhasználó döntése, az orkesztrátor chatjében, szó szerint: „(a) számok is”. A kérdés: „Frissítse a kézi forrás számait is (a), vagy csak az egy mondat (b)?”
+
+Újramérés: `naplok/ISTENTISZT001_ezs64_zsolt99_meres.py` (proveniencia: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, n=33) | forras=TAHOT_kivonat.tsv | ts=2026-10-29T08:37Z). 33 hely: 23 ószövetségi, 10 újszövetségi; minden ószövetségi helynek van TAHOT-sora. A kísérő szavak helyei nem változtak (H3034: 1Krón 16:8, Zsolt 105:1, Ézs 12:4; H4196: 1Móz 12:8, 13:4, 26:25, 1Kir 18:26; H3444/H3563/H5375: Zsolt 116:13; H3045: 1Krón 16:8, Zsolt 105:1, Zsolt 79:6, Jer 10:25, Ézs 12:4; H1471: Jer 10:25, Zsolt 79:6); az Ézs 64:6-ban egyik sem áll. A BSB az Isa.64.7-ben „one calls”-t ír, így a 7. szakasz BSB-állítása is igaz.
+
+Módosítva a `motivumok/ISTENTISZT-001.md`-ben:
+- kivonat: 32→33 (22→23 / 10), LXX 18/22→19/23, NAPLO-sorral;
+- 3. szakasz, 1. pont (LXX): 22/18→23/19, és a régi R2.4 NAPLO mellé új NAPLO (a régi történeti, változatlan);
+- „hálát ad”, „Két oltár”, „Zsolt 116:13”: „32 helye” → „33 helye”, a proveniencia-sorok mellé a mai mérés;
+- „A név körül: küldetés és vád”: egy mondat az Ézs 64:6-ról (DT-F110b NAPLO-jelölővel), csak mért tartalommal (Károli-idézet, első személyű többes szám, az „ismer” és a népek szavának hiánya);
+- 7. szakasz, „Négy forrás”: 22/18→23/19, a proveniencia mellé az Ézs 64:6 LXX-sora.
+
+A 2026-10-20-i proveniencia-sorok (n=32, `<a 22 ószövetségi hely>`) változatlanok: azok az akkori mérést rögzítik. A Zsolt 99:6-ot a próza nem említette, így a kizárása csak a `jeloltek.tsv`-ben és a generált lapon áll.
