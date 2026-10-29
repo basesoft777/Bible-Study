@@ -40,6 +40,7 @@ import kiejtes as KJ
 import utvonalak as _U
 import szerep_karoli as SZK
 import szerep_nave as SZN
+import szerep_kizart as SZKZ
 
 ROOT = G.ROOT
 ADAT = G.ADAT
@@ -712,17 +713,22 @@ def blokk_kizart(m):
     sorok_ehhez = [r for r in jeloltek_sorok() if r['id'] == m['id'] and r.get('dontes') in ('elutasítva', 'nyitva')]
 
     reszek = []
+    labj = []
     if sorok_ehhez:
-        for r in sorok_ehhez:
-            reszek.append('- **%s** (%s, `%s`): %s' % (
-                r['igehely'], r['dontes'], r.get('forras_kereses') or EM_DASH, r.get('indoklas') or EM_DASH))
+        # ISTENTISZT-001 arany lap, 2026-10-29: csoportosítva aszerint, miért lett jelölt; a döntés és az indok, fent az
+        # elutasítási okok összesítője (eszkozok/szerep_kizart.py, adat/elutasitasi_okok.tsv); a nyers forrás lábjegyzetben
+        tablak, labj, ossz = SZKZ.blokk_torzs(sorok_ehhez, m['id'])
+        reszek.append(SZKZ.osszesito_sor(ossz))
+        reszek.extend(tablak)
     else:
         reszek.append('Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumhoz.')
 
     negativ = (m.get('negativ_kriterium') or '').strip()
     if negativ:
-        reszek.append('\n**Negatív kritérium** (`motivumok.tsv`): %s' % negativ)
-    torzs = '\n'.join(reszek)
+        reszek.append('**Negatív kritérium** (`motivumok.tsv`): %s' % negativ)
+    if labj:
+        reszek.append('\n'.join('[^k%d]: %s' % (i, t) for i, t in enumerate(labj, 1)))
+    torzs = '\n\n'.join(reszek)
 
     hatokor = ('Ez a blokk a `[ID: %s]` motívum %d elutasított/nyitva maradt jelöltjét fedi a '
                '`jeloltek.tsv`-ből (G7).' % (m['id'], len(sorok_ehhez)))
