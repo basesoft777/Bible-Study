@@ -243,14 +243,23 @@ SZANDEKOS_JELOLES_MINTA = re.compile(
 )
 
 
+# DT-F<nn><betu> / N-F<nn><betu> helyorzo (a betu elhagyhato)
+HELYORZO_MINTA = re.compile(r'\b(DT|N)-F\d+[a-z]?\b')
+
+
 def _cimsor_szoveg_kulcs(cimsor):
     """A cimsor osszehasonlitasi kulcsa: a szint (##/###) es a szoveg, a
-    szamok (pl. `16.0`, `#16`) nelkul. Igy a pontcimek atszamozasa nem
-    szamit torlesnek, csak a szoveg valtozasa."""
+    szamok (pl. `16.0`, `#16`) nelkul. Igy a pontcimek atszamozasa, es a
+    dontes-/nyitott-tetel helyorzojenek veglegesre cserelese nem szamit
+    torlesnek, csak a szoveg valtozasa."""
     m = re.match(r'^(#{2,3})\s+(.*)$', cimsor.strip())
     if not m:
         return None
-    szoveg = re.sub(r'#?\d+(?:\.\d+)*', '', m.group(2))
+    # a helyorzo (DT-F131q, N-F131a) a veglegesre (DT406, N62) cserelodik a
+    # szamkiosztas Actionnel: ez nem szovegvaltozas, ezert mindketto ugyanazt a
+    # kulcsot adja (a veglegesbol a szam-eltavolitas utan 'DT'/'N' marad)
+    szoveg = HELYORZO_MINTA.sub(lambda h: h.group(1), m.group(2))
+    szoveg = re.sub(r'#?\d+(?:\.\d+)*', '', szoveg)
     return (m.group(1), ' '.join(szoveg.split()))
 
 
