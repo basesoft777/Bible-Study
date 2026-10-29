@@ -2,7 +2,8 @@
 
 Két rész: (1) szintetikus táblán a felülírás, a pótlás, a rendezés, a halmaz-őr és a bemenet-ellenőrzés;
 (2) a repó generált tábláján (a KK4 kimenetén) a javított sorok — egy pótolt fejezet, egy KEZI-pár, a Dán 3:31,
-egy D-eltolás, egy D′-szomszéd, egy változatlan sor és egy KEZI + igehely_mt sor — és az idempotencia.
+egy D-eltolás, egy D′-szomszéd, egy változatlan sor és egy KEZI + igehely_mt sor, valamint a Jóel F146-sorai
+(DT-F146b) — és az idempotencia.
 """
 import os
 import sys
@@ -102,6 +103,23 @@ class Szintetikus(unittest.TestCase):
         with self.assertRaises(AssertionError):
             V.betolt(p)
 
+    def test_bemenet_f146_kezi_kjv_azonos(self):
+        # DT-F146b: macula_mt_f146-sorban a KEZI a Károli = KJV ≠ MT esetet is jelenti
+        p = self._bemenet('Jóel 2:32	2:32	3:5	KEZI	%s	-	scope=gepi' % V.FORRAS_F146)
+        self.assertEqual(V.betolt(p)['Jóel 2:32'][:3], ('2:32', '3:5', 'KEZI'))
+
+    def test_bemenet_f146_kezi_mt_kell(self):
+        for sor in ('Jóel 2:32	2:32		KEZI	%s	-	scope=gepi', 'Jóel 2:32	2:32	2:32	KEZI	%s	-	scope=gepi'):
+            p = self._bemenet(sor % V.FORRAS_F146)
+            with self.assertRaises(AssertionError):
+                V.betolt(p)
+
+    def test_bemenet_f117_kezi_kjv_azonos_tilos(self):
+        # az F117-sorokra a DT-F117e szabály marad (KEZI: igehely_kjv ≠ Károli-szám)
+        p = self._bemenet('Jóel 2:32	2:32	3:5	KEZI	%s	-	scope=gepi' % V.FORRAS)
+        with self.assertRaises(AssertionError):
+            V.betolt(p)
+
     def test_bemenet_rossz_forras(self):
         p = self._bemenet('Jón 2:3\t2:2\t2:3\tMT\tkezi\t-\tscope=manual')
         with self.assertRaises(AssertionError):
@@ -149,7 +167,9 @@ class GeneraltTabla(unittest.TestCase):
 
     def test_javitas_halmaz_teljes(self):
         jav = V.betolt()
-        self.assertEqual(len(jav), 346)
+        self.assertEqual(len(jav), 372)
+        self.assertEqual(sum(1 for v in jav.values() if v[3] == V.FORRAS), 346)
+        self.assertEqual(sum(1 for v in jav.values() if v[3] == V.FORRAS_F146), 26)
         for k, (kjv, mt, osz, forras, megj) in jav.items():
             self.assertEqual(self.t[k][1:6], [kjv, mt, osz, forras, megj], k)
 
@@ -161,6 +181,19 @@ class GeneraltTabla(unittest.TestCase):
         jegyzet = [l for l in tabla_sorok() if l.startswith(V.JEGYZET_ELO)]
         self.assertEqual(len(jegyzet), 1)
         self.assertIn('KEZI kitöltött igehely_mt-vel', jegyzet[0])
+        self.assertIn('346 sor', jegyzet[0])
+        f146 = [l for l in tabla_sorok() if l.startswith(V.JEGYZET_F146)]
+        self.assertEqual(len(f146), 1)
+        self.assertIn('26 sor', f146[0])
+
+    def test_joel_f146(self):
+        # DT-F146b: Károli 2:28–32 = MT 3:1–5, Károli 3:1–21 = MT 4:1–21; a 2:27 változatlan
+        self.assertEqual(self.sor('Jóel 2:28'), ['2:28', '3:1', 'KEZI', V.FORRAS_F146])
+        self.assertEqual(self.sor('Jóel 2:32'), ['2:32', '3:5', 'KEZI', V.FORRAS_F146])
+        self.assertEqual(self.sor('Jóel 3:1'), ['3:1', '4:1', 'KEZI', V.FORRAS_F146])
+        self.assertEqual(self.sor('Jóel 3:21'), ['3:21', '4:21', 'KEZI', V.FORRAS_F146])
+        self.assertEqual(self.t['Jóel 2:27'][1:5], ['2:27', '', 'KJV', 'szamlalas'])
+        self.assertEqual(sum(1 for k in self.t if k.startswith('Jóel ') and self.t[k][4] == V.FORRAS_F146), 26)
 
 
 if __name__ == '__main__':

@@ -13,9 +13,11 @@ A `javit(sorok)`:
     össze: a javító kulcsokon kívül minden adatsor bájtra azonos, sor nem törlődik, idegen kulcs nem jelenik meg, a
     nem-F117 fejlécsorok és az oszlopfej változatlan; eltérésnél HalmazOrHiba (megállás, a tábla nem íródik ki);
   * üres sor a tábla belsejében: kimondott hiba (UresSorHiba); a záró üres sor (a fájlvégi sorvég) megengedett.
-A bemenet ellenőrzése (`betolt`): 7 oszlop; egyedi kulcs; `forras` = szoveg_osszevetes_f117; osztály-szabály (DT-F117b, DT-F117e):
-  KJV: igehely_kjv = Károli-szám, igehely_mt üres; MT: igehely_mt = Károli-szám ≠ igehely_kjv; KEZI: igehely_kjv ≠ Károli-szám,
-  kitöltött igehely_mt ≠ Károli-szám (új kombináció, DT-F117e); `;`-os KJV-érték nincs (DT-F91c).
+A bemenet ellenőrzése (`betolt`): 7 oszlop; egyedi kulcs; `forras` = szoveg_osszevetes_f117 vagy macula_mt_f146; osztály-szabály
+(DT-F117b, DT-F117e): KJV: igehely_kjv = Károli-szám, igehely_mt üres; MT: igehely_mt = Károli-szám ≠ igehely_kjv; KEZI:
+igehely_kjv ≠ Károli-szám, kitöltött igehely_mt ≠ Károli-szám (új kombináció, DT-F117e); `;`-os KJV-érték nincs (DT-F91c).
+F146 (DT-F146b): a `forras=macula_mt_f146` sorokban a KEZI a Károli = KJV ≠ MT esetet is jelenti (a Jóel 2:28–3:21 → MT 3:1–4:21):
+kitöltött igehely_mt ≠ Károli-szám, az igehely_kjv lehet a Károli-szám. Az F146-soroknak saját fejléc-jegyzetük van.
 
 Önállóan: python eszkozok/versmegf_javitas.py   (csak mér: a repó tábláján a javítás hatása; nem ír)
 Írás '\\t'.join, olvasás split('\\t') (a csv modul tilos).
@@ -34,9 +36,13 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TABLA = os.path.join(ROOT, 'konkordancia', 'Karoli_versmegfeleltetes.tsv')
 JAVITAS = os.path.join(ROOT, 'konkordancia', 'Karoli_versmegfeleltetes_javitas.tsv')
 FORRAS = 'szoveg_osszevetes_f117'
+FORRAS_F146 = 'macula_mt_f146'
 # Rögzített időbélyeg: a SZABÁLY dátuma (a DT-F117a–e döntéseié), nem a futásé; így a generátor kimenete determinisztikus.
 TS = '2026-10-18'
+TS_F146 = '2026-10-28'   # a DT-F146b dátuma
 JEGYZET_ELO = '# F117 javítás'
+JEGYZET_F146 = '# F146 javítás'
+JEGYZETEK = (JEGYZET_ELO, JEGYZET_F146)
 FEJ = ['igehely_karoli', 'igehely_kjv', 'igehely_mt', 'osztaly', 'forras', 'megjegyzes']
 _VERS = re.compile(r'^(.+) (\d+:\d+)$')
 
@@ -59,7 +65,7 @@ def _bont(lines):
         if ln == '':
             raise UresSorHiba('üres sor a tábla belsejében (%d. sor)' % (i + 1))
         if ln.startswith('#'):
-            if not ln.startswith(JEGYZET_ELO):
+            if not ln.startswith(JEGYZETEK):
                 fej.append(ln)
             continue
         if oszlop is None:
@@ -116,13 +122,15 @@ def betolt(path=JAVITAS):
             assert m, 'igehely: %r' % kk
             kar = m.group(2)
             assert kk not in out, 'kettős kulcs: %s' % kk
-            assert forras == FORRAS, '%s: forras=%s' % (kk, forras)
+            assert forras in (FORRAS, FORRAS_F146), '%s: forras=%s' % (kk, forras)
             assert kjv and ';' not in kjv, '%s: igehely_kjv=%r' % (kk, kjv)
             assert prov.startswith('scope='), '%s: proveniencia' % kk
             if osz == 'KJV':
                 assert kjv == kar and mt == '', '%s: KJV-szabály' % kk
             elif osz == 'MT':
                 assert mt == kar and kjv != kar, '%s: MT-szabály' % kk
+            elif osz == 'KEZI' and forras == FORRAS_F146:
+                assert mt and mt != kar, '%s: KEZI-szabály (DT-F146b)' % kk
             elif osz == 'KEZI':
                 assert kjv != kar and mt and mt != kar, '%s: KEZI-szabály (DT-F117e)' % kk
             else:
@@ -156,16 +164,25 @@ def javit(lines, javitas=None, ts=TS, naplo=print):
         uj[k] = sor
     uj_adat = [uj[k] for k in sorted(uj)]
 
-    db = Counter(v[2] for v in jav.values())
+    f117 = {k: v for k, v in jav.items() if v[3] == FORRAS}
+    f146 = {k: v for k, v in jav.items() if v[3] == FORRAS_F146}
+    db = Counter(v[2] for v in f117.values())
     jegyzet = (JEGYZET_ELO + ' (DT-F117a–e): az A–D′ osztályú táblahibák javítása a verziózott kézi bemenetből '
                '(konkordancia/Karoli_versmegfeleltetes_javitas.tsv, %d sor: KJV %d, MT %d, KEZI %d); a Károli↔KJV pár a '
                'versenkénti szöveg-összevetésből (naplok/F117_itelet.tsv), az igehely_mt a TAHOT↔Macula-MT levezetésből '
                '(naplok/F117_mt_levezetes.tsv); ÚJ KOMBINÁCIÓ (DT-F117e): osztaly=KEZI kitöltött igehely_mt-vel = a Károli-szám '
                'eltér a KJV-től és az MT-től is; forras=%s | forras=eszkozok/versmegf_javitas.py | ts=%s (a szabály dátuma, nem a futásé)'
-               % (len(jav), db['KJV'], db['MT'], db['KEZI'], FORRAS, ts))
-    ki = fejsorok + [jegyzet, '\t'.join(FEJ)] + uj_adat
+               % (len(f117), db['KJV'], db['MT'], db['KEZI'], FORRAS, ts))
+    jegyzetek = [jegyzet]
+    if f146:
+        jegyzetek.append(
+            JEGYZET_F146 + ' (DT-F146b): a Jóel Károli 2:28–3:21 MT-megfeleltetése (MT 3:1–4:21) a verziózott kézi bemenetből '
+            '(konkordancia/Karoli_versmegfeleltetes_javitas.tsv, %d sor, mind KEZI); ÚJ ESET: osztaly=KEZI kitöltött igehely_mt-vel '
+            'akkor is, ha a Károli-szám = a KJV-szám ≠ az MT-szám; az igehely_mt a TAHOT↔Macula-MT mérésből (naplok/F146_mt_felmeres.tsv); '
+            'forras=%s | forras=eszkozok/versmegf_javitas.py | ts=%s (a szabály dátuma, nem a futásé)' % (len(f146), FORRAS_F146, TS_F146))
+    ki = fejsorok + jegyzetek + ['\t'.join(FEJ)] + uj_adat
     halmaz_or(lines, ki, jav.keys())       # a valódi halmaz-őr a kész kimeneten (F117.8 (8))
-    naplo('F117 javítás: felülír %d, pótol %d, változatlan %d | tábla: %d -> %d adatsor' % (
+    naplo('javítás (F117+F146): felülír %d, pótol %d, változatlan %d | tábla: %d -> %d adatsor' % (
         stat['felulir'], stat['potol'], stat['valtozatlan'], len(regi), len(uj_adat)))
     pv = [l for l in uj_adat if ';' in l.split('\t')[1]]
     assert not pv, '`;`-os igehely_kjv a táblában: %s' % pv[:3]
