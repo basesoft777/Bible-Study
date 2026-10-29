@@ -250,7 +250,7 @@ def torzscikk_szoveg(m, lex_szoveg, model):
         lk = LG.lemma_kiejtes(token)
         if lk:
             lemma_nfc = unicodedata.normalize('NFC', lk[0])
-            fo_szavak.append('%s (%s, %s)' % (lemma_nfc, lk[1], token))
+            fo_szavak.append('%s (%s%s)' % (lemma_nfc, lk[1] + ', ' if lk[1] else '', token))
         else:
             fo_szavak.append(token)
     if fo_szavak:

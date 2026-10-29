@@ -167,6 +167,23 @@ def _hu(nevek, tid, cimke, angol):
     return '%s %s' % (angol, FORDITASRA_VAR)
 
 
+def olvasoi_12(sorai, folerendelt=''):
+    """A 12. blokk „Mit mutat ez a rész?” mondata az adatból (ISTENTISZT-001 arany lap, 2026-10-29), vagy None, ha nincs a blokkba kerülő téma."""
+    if not sorai or not tema_dontesek(sorai[0]['id']):
+        return None  # a blokk nem épül (javaslat): az általános mondat áll (ELLENOR_ISTENTISZT_OLVASOI_2 1.)
+    temak = nave_temak(sorai)
+    if not temak:
+        return None
+    nev = magyar_nevek().get((temak[0]['tema_id'], ''))
+    szoveg = ('Egy régi, klasszikus bibliai tárgymutató (Nave, 1897) témái közül azok, amelyek a motívum helyeinek jelentős '
+              'részét érintik: %d téma (például: %s). Mindegyiknél látszik, a motívum melyik versei tartoznak hozzá. Ezek '
+              'a témák a motívum környezetét mutatják, nem a meghatározását'
+              % (len(temak), nev[0] if nev else '%s *(fordításra vár)*' % temak[0]['tema'].lower()))
+    if folerendelt and any(d == 'tiltott' for d, _i in tema_dontesek(sorai[0]['id']).values()):
+        szoveg += '; a tágabb, általános témák (%s) szándékosan kimaradtak' % folerendelt
+    return szoveg + '.'
+
+
 def blokk_12(sorai, ts):
     """A 12. szerep bekezdései (lista); üres, ha nincs a blokkba kerülő téma."""
     mid = sorai[0]['id'] if sorai else ''

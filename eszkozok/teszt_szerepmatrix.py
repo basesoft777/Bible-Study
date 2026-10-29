@@ -122,7 +122,8 @@ class TestVazIstentiszt(unittest.TestCase):
         self.tabla = _tsv_sorok()
 
     def _nyelv_sorrend(self, ny):
-        return [(int(r['sorrend']), r['szerep']) for r in
+        # a szerep neve a renderben a nem aktív funkció-kapcsolók címrésze nélkül (pl. „ (+ SZPA)”)
+        return [(int(r['sorrend']), LG.szerep_megjelenitett(r['szerep'])) for r in
                 sorted((r for r in self.tabla if r['nyelv'] == ny), key=lambda r: int(r['sorrend']))]
 
     def test_sorrend_es_teljesseg(self):
@@ -150,12 +151,9 @@ class TestVazIstentiszt(unittest.TestCase):
                 continue  # a nyelvfüggetlen sor egyszer jelenik meg
             b = self._blokk_szerep(kulcs, n)
             vannak = UROS_RE.findall(b)
-            if (r['nyelv'], n) in LG.SZEREP_KEZI_2B:
-                # DT-F78c 3.: kézi 2/b hivatkozás, nem üres blokk
-                self.assertEqual(vannak, [], (r['nyelv'], n))
-                self.assertIn('*Hivatkozás:', b)
-                self.assertIn('l. 2/b', b)
-            elif r['allapot'] in ('nincs adatosítva', 'javaslat'):
+            # a „kézi SECE-táblázatok a 2/b-ben” mutató megszűnt (ISTENTISZT-001 arany lap, 2026-10-29): a 2/b generált
+            self.assertNotIn('l. 2/b', b, (r['nyelv'], n))
+            if r['allapot'] in ('nincs adatosítva', 'javaslat'):
                 self.assertEqual(len(vannak), 1, (r['nyelv'], n, b[:200]))
                 self.assertEqual(vannak[0][1], r['allapot'])
                 self.assertIn('(üres blokk:', b)
@@ -166,9 +164,18 @@ class TestVazIstentiszt(unittest.TestCase):
         for n in (1, 2, 4, 5, 6, 8, 9):
             b = self._blokk_szerep('gorog', n)
             self.assertNotIn('ÜRES-BLOKK', b, n)
-        # a 6., 8., 9.: hivatkozás (S4); az 5. (F09 S2.4) az UBS DNTG + Mounce adatából épül
-        for n in (6, 8, 9):
-            self.assertIn('*Hivatkozás:', self._blokk_szerep('gorog', n))
+        # a 8.: hivatkozás (S4); a 6. és a 9. (ISTENTISZT-001 arany lap, 2026-10-29) egysoros összegzés a 3., ill. az 1.
+        # szakasz adatából, a szakaszra mutató hivatkozással; az 5. (F09 S2.4) az UBS DNTG + Mounce adatából épül
+        self.assertIn('*Hivatkozás:', self._blokk_szerep('gorog', 8))
+        b6 = self._blokk_szerep('gorog', 6)
+        self.assertIn('**G1941** · az LXX a motívum 23 ószövetségi versében: egyező 19 · eltérő 3 · görögből hiányzik 1', b6)
+        self.assertIn('[3. LXX-fordítói döntések](#3-lxx-fordítói-döntések)', b6)
+        b9 = self._blokk_szerep('gorog', 9)
+        self.assertIn('a motívum 10 újszövetségi helyén a vers-szintű jelentést', b9)
+        self.assertIn('(9 helyen egy jelentés, 1 helyen több vagy jelölt, nem egyértelmű jelentés)', b9)
+        self.assertIn('[szónézet: /szo/G1941](/szo/G1941)', b9)
+        for n in (6, 9):
+            self.assertIn('**Mit mutat ez a rész?**', self._blokk_szerep('gorog', n))
         b5 = self._blokk_szerep('gorog', 5)
         self.assertIn('**G1941** · UBS DNTG: 4 jelentés', b5)
         self.assertIn('*Mounce (GK 2126):*', b5)
@@ -341,8 +348,11 @@ class TestKiejtesF09(unittest.TestCase):
         self.assertEqual(LG.gorog_magyaros('epikalesētai'), 'epikaleszétai')
         talalat = LG.kiejtes_ehhez('ApCsel 9:14', 'G1941')
         self.assertEqual(talalat[1], 'epikalúmenúsz')
-        # héber alak: a STEP-átírás változatlan
-        self.assertEqual(LG.kiejtes_ehhez('1Móz 4:26', 'H7121')[1], "k.Ro'")
+        # héber alak: a TAHOT angolos átírása helyett a lemma jóváhagyott magyaros kiejtése (kiejtés-szabály, 2026-10-29)
+        self.assertEqual(LG.kiejtes_ehhez('1Móz 4:26', 'H7121')[1], 'kárá')
+        # jóváhagyott kiejtés nélküli héber lemma: nincs kiejtés (jelölt hiány), a STEP-átírás sem áll
+        self.assertEqual(LG.lemma_kiejtes('H2142')[1], '')
+        self.assertIn('H2142', LG.KIEJTES_HIANY)
 
     def test_heber_kiejtes_ket_azonos_step_atirasu_lemma(self):
         # H7496 és H7497 STEP-átírása azonos (ra.pah), a lemma-kulcs különbözteti meg
@@ -363,14 +373,27 @@ class TestSeceMounceF09(unittest.TestCase):
         m = re.search(r'^#### %d\. .*?(?=^#### |\Z)' % n, sz, re.M | re.S)
         return m.group(0)
 
-    def test_sece_lista_szo_szerint_es_2b_mutato_marad(self):
+    def test_sece_lista_szo_szerint_2b_mutato_nelkul(self):
         g = self._szerep('ISTENTISZT-001', 'gorog', 7)
-        self.assertIn(_nfc('**G1941** · SECE — héber megfelelők (8): זָכַר, מָצָא, נָקַב, עָשָׂה, קָרָא, שׂוּם, שָׁכַן, שֻׁם'), _nfc(g))
+        # olvasható táblázat (ISTENTISZT-001 arany lap, 2026-10-29): szó, kiejtés, Strong, rövid jelentés; a motívum
+        # szava jelölve; a SECE szólistája és sorrendje változatlan
+        self.assertIn(_nfc('**G1941 — ἐπικαλέω (epikaleó)** · SECE — héber megfelelők (8):'), _nfc(g))
+        self.assertIn(_nfc('| זָכַר | — | H2142 |'), _nfc(g))
+        szavak = [_nfc(s.split(' | ')[0].lstrip('| ').split(' *(')[0].strip('*')) for s in g.split('\n')
+                  if s.startswith('| ') and not s.startswith('| Szó')]
+        self.assertEqual(szavak, [_nfc(x) for x in 'זָכַר מָצָא נָקַב עָשָׂה קָרָא שׂוּם שָׁכַן שֻׁם'.split()])
+        self.assertIn(_nfc('| **קָרָא** *(a motívum szava)* | kárá | H7121 vagy H7122'), _nfc(g))
+        self.assertIn('| H8036 | név |', g)
         self.assertNotIn('ÜRES-BLOKK', g)
-        self.assertIn('*Hivatkozás:', g)  # DT189: a „l. 2/b” kiegészítő sorként marad
-        self.assertIn('l. 2/b', g)
+        # a „kézi SECE-táblázatok a 2/b-ben” mutató megszűnt (ISTENTISZT-001 arany lap, 2026-10-29): a 2/b generált
+        self.assertNotIn('l. 2/b', g)
+        self.assertNotIn('kézi SECE', g)
         h = self._szerep('ISTENTISZT-001', 'heber', 7)
-        self.assertIn(_nfc('**H8034** · SECE — görög megfelelők (6): θρόνος, καλέω, καλός, καύχημα, ὄνομα, Σήμ'), _nfc(h))
+        self.assertIn(_nfc('**H8034 — שֵׁם (sém)** · SECE — görög megfelelők (6):'), _nfc(h))
+        # a kiírt alak (ἐπικαλέομαι) nem a TBESG-lemma: a kiírt alak gépi kiejtése áll
+        self.assertIn(_nfc('| **ἐπικαλέομαι** *(a motívum szava)* | epikaleomai | G1941 | to call (on)/name *(fordításra vár)* |'),
+                      _nfc(h))
+        self.assertNotIn('LN: ', g + h)
         self.assertEqual([_nfc(x) for x in LG.sece_megfelelok('H7121')].count(_nfc('ἐπικαλέομαι')), 1)  # ismétlés nélkül
 
     def test_sece_hianyzo_lista_nem_targyalja(self):
