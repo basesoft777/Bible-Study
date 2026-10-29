@@ -464,7 +464,7 @@ def forditas_ehhez(szotar, strong, entry_id, jelentes_szam, mezo):
 
 
 def ubs_glossza_cella(szotar, strong, entry_id, jelentes_szam, angol):
-    """F121 (DT-F121g): az „UBS-jelentés” cella egy eleme: a rövid magyar glossza (`glosszak_hu`, a gyorsítótárból;
+    """F121 (DT393): az „UBS-jelentés” cella egy eleme: a rövid magyar glossza (`glosszak_hu`, a gyorsítótárból;
     ha nincs, az angol + `fordításra vár`) és ⓘ, amely a szónézetre mutat (a teljes UBS-szócikk ott áll)."""
     hu = forditas_ehhez(szotar, strong, entry_id, jelentes_szam, 'glosszak_hu')
     szoveg = _cella(hu) if hu else '%s %s' % (angol, FORDITASRA_VAR)
@@ -495,7 +495,7 @@ def ubs_jelentes_cella(sor_id, igehely, strong_field):
         _id, _ige, strong, lexid, entry_kod, glosszak, egyertelmu, _megjegyzes = r
         if not entry_kod:
             continue
-        # F121 (DT-F121g): a cellában a kód és a rövid glossza áll, mellette ⓘ a szónézetre (a teljes UBS-szócikk ott)
+        # F121 (DT393): a cellában a kód és a rövid glossza áll, mellette ⓘ a szónézetre (a teljes UBS-szócikk ott)
         szoveg = ubs_glossza_cella('UBS_DNTG', strong, lexid, entry_kod, glosszak)
         jelolt = '' if egyertelmu == 'igen' else ' *(jelölt, nem egyértelmű)*'
         tokenenkent.setdefault(strong, []).append('%s — %s%s' % (entry_kod, szoveg, jelolt))
@@ -616,7 +616,7 @@ def blokk_elofordulasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
                   'az ószövetségi soroknál az UBS Dictionary of Biblical Hebrew (DBH) igehelyszintű jelentése '
                   '(`%s`, a Károli-vers az MT-számozásra képezve, `konkordancia/Karoli_versmegfeleltetes.tsv`); '
                   'tokenenként a hivatkozott jelentés(ek) kódja és rövid glosszája; az ⓘ a szónézetre mutat, ahol a teljes '
-                  'UBS-szócikk (definíció és glosszák) áll (DT-F121g). A glossza magyarul a `forditasok.tsv`-ből jön, ahol van; '
+                  'UBS-szócikk (definíció és glosszák) áll (DT393). A glossza magyarul a `forditasok.tsv`-ből jön, ahol van; '
                   'ahol nincs, az angol eredeti áll `(fordításra vár)` jelöléssel. Ahol a DBH a versre nem hivatkozik, a cella ezt kimondja.*'
                   % UBS_DBH_REFERENCIAK_FAJL)
     else:

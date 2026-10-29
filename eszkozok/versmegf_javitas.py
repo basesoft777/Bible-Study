@@ -16,7 +16,7 @@ A `javit(sorok)`:
 A bemenet ellenőrzése (`betolt`): 7 oszlop; egyedi kulcs; `forras` = szoveg_osszevetes_f117 vagy macula_mt_f146; osztály-szabály
 (DT-F117b, DT-F117e): KJV: igehely_kjv = Károli-szám, igehely_mt üres; MT: igehely_mt = Károli-szám ≠ igehely_kjv; KEZI:
 igehely_kjv ≠ Károli-szám, kitöltött igehely_mt ≠ Károli-szám (új kombináció, DT-F117e); `;`-os KJV-érték nincs (DT-F91c).
-F146 (DT-F146b): a `forras=macula_mt_f146` sorokban a KEZI a Károli = KJV ≠ MT esetet is jelenti (a Jóel 2:28–3:21 → MT 3:1–4:21):
+F146 (DT398): a `forras=macula_mt_f146` sorokban a KEZI a Károli = KJV ≠ MT esetet is jelenti (a Jóel 2:28–3:21 → MT 3:1–4:21):
 kitöltött igehely_mt ≠ Károli-szám, az igehely_kjv lehet a Károli-szám. Az F146-soroknak saját fejléc-jegyzetük van.
 
 Önállóan: python eszkozok/versmegf_javitas.py   (csak mér: a repó tábláján a javítás hatása; nem ír)
@@ -39,7 +39,7 @@ FORRAS = 'szoveg_osszevetes_f117'
 FORRAS_F146 = 'macula_mt_f146'
 # Rögzített időbélyeg: a SZABÁLY dátuma (a DT-F117a–e döntéseié), nem a futásé; így a generátor kimenete determinisztikus.
 TS = '2026-10-18'
-TS_F146 = '2026-10-28'   # a DT-F146b dátuma
+TS_F146 = '2026-10-28'   # a DT398 dátuma
 JEGYZET_ELO = '# F117 javítás'
 JEGYZET_F146 = '# F146 javítás'
 JEGYZETEK = (JEGYZET_ELO, JEGYZET_F146)
@@ -130,7 +130,7 @@ def betolt(path=JAVITAS):
             elif osz == 'MT':
                 assert mt == kar and kjv != kar, '%s: MT-szabály' % kk
             elif osz == 'KEZI' and forras == FORRAS_F146:
-                assert mt and mt != kar, '%s: KEZI-szabály (DT-F146b)' % kk
+                assert mt and mt != kar, '%s: KEZI-szabály (DT398)' % kk
             elif osz == 'KEZI':
                 assert kjv != kar and mt and mt != kar, '%s: KEZI-szabály (DT-F117e)' % kk
             else:
@@ -176,7 +176,7 @@ def javit(lines, javitas=None, ts=TS, naplo=print):
     jegyzetek = [jegyzet]
     if f146:
         jegyzetek.append(
-            JEGYZET_F146 + ' (DT-F146b): a Jóel Károli 2:28–3:21 MT-megfeleltetése (MT 3:1–4:21) a verziózott kézi bemenetből '
+            JEGYZET_F146 + ' (DT398): a Jóel Károli 2:28–3:21 MT-megfeleltetése (MT 3:1–4:21) a verziózott kézi bemenetből '
             '(konkordancia/Karoli_versmegfeleltetes_javitas.tsv, %d sor, mind KEZI); ÚJ ESET: osztaly=KEZI kitöltött igehely_mt-vel '
             'akkor is, ha a Károli-szám = a KJV-szám ≠ az MT-szám; az igehely_mt a TAHOT↔Macula-MT mérésből (naplok/F146_mt_felmeres.tsv); '
             'forras=%s | forras=eszkozok/versmegf_javitas.py | ts=%s (a szabály dátuma, nem a futásé)' % (len(f146), FORRAS_F146, TS_F146))

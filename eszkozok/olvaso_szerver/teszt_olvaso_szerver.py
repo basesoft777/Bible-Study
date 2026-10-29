@@ -229,7 +229,7 @@ class TestRegiszterEsAdatbazis(unittest.TestCase):
         # a teszt_pilot_aranymintaval.py-ban van (a DT-F76e–i döntések kódja és tesztje kész, expectedFailure nincs)
         # +2 (F76.30–31): a bontott BDB-szócikk (szo.bdb_apparatus) és az „LXX többlet” blokk (vers.lxx_tobblet, „az adat még nincs a DB-ben”)
         # +1 (F99 M1): a „Rokon szavak (OSHL-gyökcsalád)” blokk (szo.oshl_csalad)
-        # +1 (F121, DT-F121g): az UBS DBH-jelentések szónézet-blokkja (szo.ubs_dbh)
+        # +1 (F121, DT393): az UBS DBH-jelentések szónézet-blokkja (szo.ubs_dbh)
         self.assertEqual(len(blokkok.REGISZTER), 50)
         self.assertEqual({b.oldal for b in blokkok.REGISZTER}, set(blokkok.OLDALAK))
 
@@ -285,7 +285,7 @@ class TestRegiszterEsAdatbazis(unittest.TestCase):
             if b.id == 'szo.magyar_gorog':
                 self.assertEqual(b.jelleg, ('modell',))
                 continue
-            if b.id == 'szo.ubs_dbh':          # F121 (DT-F121g): nincs pilot-megfelelője; angol forrás + magyar modell-fordítás
+            if b.id == 'szo.ubs_dbh':          # F121 (DT393): nincs pilot-megfelelője; angol forrás + magyar modell-fordítás
                 self.assertEqual(b.jelleg, ('forras', 'modell'))
                 continue
             cim, pontos = self.PILOT_CIM[b.id]

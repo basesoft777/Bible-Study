@@ -623,7 +623,7 @@ class TestUbsDbhF09(unittest.TestCase):
             ossz = sum(v for (s, _), v in darab.items() if s == t)
             self.assertIn('**%s** · UBS DBH: %d jelentés, %d hivatkozott hely' % (t, len(jel[t]), ossz), b)
         self.assertIn('19 jelentés', b)
-        # F121 (DT-F121g): a H7121 (19) és H8034 (5) minden DBH-jelentése lefordítva a gyorsítótárban
+        # F121 (DT393): a H7121 (19) és H8034 (5) minden DBH-jelentése lefordítva a gyorsítótárban
         self.assertNotIn('(fordításra vár)', b)
         self.assertIn('kiáltani', b)
 
