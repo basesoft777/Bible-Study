@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-10-29",
-   "commit": "a0113505"
+   "commit": "b16c7e5a"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -4389,8 +4389,32 @@
     "sor": 470,
     "oszlopszam": 14,
     "fejlec_oszlopszam": 8
+   },
+   {
+    "id": "DT-F131w",
+    "feladat": "#131 utómunka az ISTENTISZT-001 arany lapon: a kiejtés-szabály",
+    "kerdes": "„mikor irjuk ki és mikor nem a héber vagyok görök szavak kiejtését” — mért: a lapon a héber ragozott alak mellett a TAHOT angolos átírása állt (pl. „(k.Ro')”, „(i.yik.Ra')”, „(Shem)”), a jóváhagyás nélküli héber lemma mellett a STEP-átírás és jelző; a szakaszonkénti első előfordulás mérése (`naplok/KIEJTES_elso_elofordulas_meres.py`, az új szabály előtt): 78 hiány (generált 53, kézi 25). *(proveniencia: scope=lexikon/ISTENTISZT-001_TUDOMANYOS.md",
+    "allapot": "ellenorizendo",
+    "jelek": [
+     "✅"
+    ],
+    "sor": 489,
+    "oszlopszam": 10,
+    "fejlec_oszlopszam": 8
+   },
+   {
+    "id": "DT-F131x",
+    "feladat": "#131 utómunka az ISTENTISZT-001 arany lapon: olvasói forma, 2. kör (a héber 8–9., a 12–13., a SECE, minden blokk, általános kód)",
+    "kerdes": "A felhasználó kifogásai (az orkesztrátor chatjében, 2026-10-29): „8. Nyelvi háttér — Hivatkozás: a BDB-szócikk feje (nyelvi háttér) a fenti „Jelentéstartomány (szótári gerinc)” blokkban áll (DT371). 9. Versenkénti jelentés — H7121 · az UBS DBH versenkénti jelentése a szónézetben …”; „12. Tematikus index … - átfogalmazott blokkot az olvasónak”; „törölni: +SZPA (konkordáns alternatíva): jelölt hiány — a SzPA-join felfüggesztve; a hiány nincs kitöltve. - ez fel van függesztbe”; „Kiemelt módszertani jelentőség: mindhárom ige SECE-listája tartalmazza a קָרָא - viszont a sece blokkok értelmezhetetlenek”; „Minősítés (generált) — Generált: a független megerősítés … - az olvasó blokk fogalmazás minden blookra vonatkozik”; „a blokos dolgok a többi lexikonra is vonatkoznak értelen szerűen”. Mért: a 2/b. SECE-blokkjai nyers szöveget hoztak „LN:” és „GK:” mezővel (az N-F33a szerint tilos), a SECE-megfelelők kétszer álltak; a gerinc és a 13–14. kódbeli motívumlistán kapcsolt; a próbában a 8 lap mindegyike hibátlanul generálódik (a gerinc más motívumon kutatói kérdés nélkül nem kapcsolható be: H0430 Jób 38:7). *(proveniencia: scope=lexikon/*_TUDOMANYOS.md (8 lap, repón kívüli próba)",
+    "allapot": "ellenorizendo",
+    "jelek": [
+     "✅"
+    ],
+    "sor": 490,
+    "oszlopszam": 10,
+    "fejlec_oszlopszam": 8
    }
   ],
-  "kesz_db": 150
+  "kesz_db": 151
  }
 }
