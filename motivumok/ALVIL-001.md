@@ -95,7 +95,7 @@ A tanulmány saját megállapításaiból: a halál és a rá adott szellemi-lel
 
 <!-- ADAT-NÉZET: 7.M Módszertan — ellenőrzési rétegek | forrás: adat/auditok.tsv | cél: general.py --cel lexikon | SZINT: belso -->
 
-**Szövegkritikai megjegyzés a Hós 13:14 → 1Kor 15:55 lelethez:** A TR/Byzantinus hagyomány eltérő olvasatáról szóló állítás nem a helyi TAHOT/TAGNT-kivonatból, hanem általános szövegkritikai ismeretből származik; az 1Kor 15:55 ezért nem G0086-előfordulás (a kritikai szöveg mindkét tagmondatban θάνατος-t hoz).
+A TR/Byzantinus hagyomány eltérő olvasatáról szóló állítás nem a helyi TAHOT/TAGNT-kivonatból, hanem általános szövegkritikai ismeretből származik, 2026.09.10.
 
 ### Nyitott kérdések és séma-korlátok
 
