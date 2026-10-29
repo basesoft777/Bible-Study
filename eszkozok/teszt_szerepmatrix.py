@@ -172,7 +172,7 @@ class TestVazIstentiszt(unittest.TestCase):
         self.assertIn('[3. LXX-fordítói döntések](#3-lxx-fordítói-döntések)', b6)
         b9 = self._blokk_szerep('gorog', 9)
         self.assertIn('a motívum 10 újszövetségi helyén a vers-szintű jelentést', b9)
-        self.assertIn('(9 helyen egyértelmű, 1 helyen jelölt, nem egyértelmű)', b9)
+        self.assertIn('(9 helyen egy jelentés, 1 helyen több vagy jelölt, nem egyértelmű jelentés)', b9)
         self.assertIn('[szónézet: /szo/G1941](/szo/G1941)', b9)
         for n in (6, 9):
             self.assertIn('**Mit mutat ez a rész?**', self._blokk_szerep('gorog', n))
@@ -378,7 +378,7 @@ class TestSeceMounceF09(unittest.TestCase):
         # olvasható táblázat (ISTENTISZT-001 arany lap, 2026-10-29): szó, kiejtés, Strong, rövid jelentés; a motívum
         # szava jelölve; a SECE szólistája és sorrendje változatlan
         self.assertIn(_nfc('**G1941 — ἐπικαλέω (epikaleó)** · SECE — héber megfelelők (8):'), _nfc(g))
-        self.assertIn('| זָכַר | — | H2142 |', _nfc(g)) if False else self.assertIn(_nfc('| זָכַר | — | H2142 |'), _nfc(g))
+        self.assertIn(_nfc('| זָכַר | — | H2142 |'), _nfc(g))
         szavak = [_nfc(s.split(' | ')[0].lstrip('| ').split(' *(')[0].strip('*')) for s in g.split('\n')
                   if s.startswith('| ') and not s.startswith('| Szó')]
         self.assertEqual(szavak, [_nfc(x) for x in 'זָכַר מָצָא נָקַב עָשָׂה קָרָא שׂוּם שָׁכַן שֻׁם'.split()])

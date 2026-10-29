@@ -337,8 +337,8 @@ def blokk_14(sorai, ts):
     hamis = hamis_parhuzamok(sorai, kulcs=kulcs)
     out.append('**Hamis párhuzam** (ugyanaz a magyar szó, a gerinc-kombináció nélkül): Károli-versek valamely kombináció '
                'minden kulcsszavával, amelyekben egyik gerinc-kombináció sem teljes — %d vers. A versben álló gerinc-Strong '
-               '(a kombináció egy része, pl. a H7121 a H8034 nélkül) a vers után áll; a magyar kulcsszavak mindkét '
-               'szövetségben ugyanazt a formulát keresik.' % len(hamis))
+               '(a kombináció egy része) a vers után áll; a magyar kulcsszavak mindkét szövetségben ugyanazt a '
+               'kifejezést keresik.' % len(hamis))
     if hamis:
         sorok = '\n'.join('- %s — %s · *gerinc a versben: %s*%s' % (
             h, sz, ', '.join(g) if g else 'nincs', ' · *jelölt: %s*' % dontes[h] if h in dontes else '')

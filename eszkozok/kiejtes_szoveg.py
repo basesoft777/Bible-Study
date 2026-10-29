@@ -30,11 +30,12 @@ TBESH = os.path.join(GYOKER, 'konkordancia', 'TBESH.txt')
 HEBER = r'[א-תיִ-ﭏ][֐-׿יִ-ﭏ]*'
 GOROG = r'[Ͱ-Ͽἀ-῿]+'
 SZO = re.compile(r'%s(?:(?:[ ־]|\.\.\.|…)%s)*|%s(?: %s)*' % (HEBER, HEBER, GOROG, GOROG))
+TOLDALEK = re.compile(r'(?:-[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű]+)?')
 SZO_ELVALASZTO = re.compile(r'[ ־]|\.\.\.|…')
 # a szó után (magyar raggal, „+” kapcsolattal is: „קָרָא-t (kárá)”, „קָרָא+שֵׁם (kárá + sém)”) zárójelben latin betű,
 # vagy zárójelen belül vessző után („(ἐπικαλέομαι, epikaleomai)”)
-KIEJTES_UTAN = re.compile(r'(?:-[^\s(]*|\+\S*)?\**\s*\(\s*[*]?[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüűꞌʼ\'.]'
-                          r'|,\s*[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű]|\s*[–—]\s*[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű]')
+KIEJTES_UTAN = re.compile(r'(?:-[^\s(]*|\+\S*)?(?:\**\s*\(\s*[*]?[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüűꞌʼ\'.]'
+                          r'|\s*[–—]\s*[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű])|,\s*[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű]')
 LATIN = re.compile(r'[a-záéíóöőúüű]')
 ELOTAG = 'בלוכמהש'
 
@@ -129,6 +130,8 @@ def gorog_kiejtes(szo):
     for w in szo.split():
         st = [x for x in idx.get(unicodedata.normalize('NFC', w), []) if x.startswith('G')]
         lk = LG.lemma_kiejtes(st[0]) if len(st) == 1 else None
+        if lk and unicodedata.normalize('NFC', lk[0]) != unicodedata.normalize('NFC', w):
+            lk = None  # a kiírt alak nem a lemma (ἐπικαλέομαι ↔ ἐπικαλέω): a kiírt alak gépi kiejtése
         ki.append(lk[1] if lk and lk[1] else KJ.atir(LG.gepi_atiras(w), *_gorog_tabla))
     return ' '.join(ki)
 
@@ -176,6 +179,11 @@ def _van_kiejtes(sorok, i, m):
     if sor.startswith('|'):
         cellak = sor.split('|')
         poz = sor[:m.start()].count('|')
+        fej = next((sorok[k] for k in range(i, -1, -1) if sorok[k].startswith('|')
+                    and k + 1 < len(sorok) and sorok[k + 1].startswith('|---')), '')
+        fejcellak = fej.split('|')
+        if poz + 1 >= len(fejcellak) or fejcellak[poz + 1].strip() != 'Kiejtés':
+            return False
         kov = cellak[poz + 1].strip() if poz + 1 < len(cellak) else ''
         return bool(LATIN.search(kov)) and not SZO.search(kov) and kov not in ('—', '-')
     return False
@@ -204,8 +212,9 @@ def _bejar(sorok, potolni):
                 continue
             jav = kiejtes(szo)
             if potolni and gen and jav:
-                uj.append(sor[poz:m.end()] + ' (%s)' % jav)
-                poz = m.end()
+                vege = m.end() + len(TOLDALEK.match(sor, m.end()).group(0))
+                uj.append(sor[poz:vege] + ' (%s)' % jav)
+                poz = vege
                 continue
             hiany.append((i + 1, szakasz, 'generált' if gen else 'kézi', szo,
                           'cím' if cim else 'táblafej' if tablafej else 'első előfordulás', jav))

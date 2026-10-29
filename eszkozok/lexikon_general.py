@@ -208,6 +208,15 @@ def gepi_atiras(gorog_szo):
     """Determinisztikus, SBL-közelítő gépi átírás — csak akkor, ha sem a
     TAHOT/TAGNT, sem a Strong_szotar.tsv nem ad kiejtést (G6)."""
     alap = LXXOS.strip_accents(gorog_szo)
+    # a szókezdő spiritus asper „h” (ᾅδης → hadés; ELLENOR_ISTENTISZT_OLVASOI_2 4.); a kezdő ρ-nél „rh”
+    nfd = unicodedata.normalize('NFD', gorog_szo)
+    elso = re.match(r'[^\W\d_]([\u0300-\u036f]*)', nfd)
+    if elso and '\u0314' in elso.group(1) and alap[:1].lower() != 'ρ':
+        return 'h' + gepi_atiras_nyers(alap)
+    return gepi_atiras_nyers(alap)
+
+
+def gepi_atiras_nyers(alap):
     # a kettőshangzóban (αυ, ευ, ηυ, ου) az υ SBL szerint „u” (Κυρίου → kyriou, nem kyrioy; a kiejtés-szabály, ISTENTISZT-001 arany lap 2026-10-29)
     return ''.join('u' if ch in 'υΥ' and i and alap[i - 1].lower() in 'αεηο' else _GOROG_BETU.get(ch.lower(), ch)
                    if ch.isupper() and ch.lower() in _GOROG_BETU else _GOROG_BETU.get(ch, ch)
@@ -1091,8 +1100,9 @@ def _hivatkozas_szoveg(nyelv, n, ctx):
             alap = re.findall(r'\bG\d+\b', lsj_csonk(t))[-1:]
             alap = ['G%04d' % int(alap[0][1:])] if alap else []
             lk = lemma_kiejtes_szabaly(alap[0]) if alap else None
-            reszek.append('%s: az összetett ige LSJ-szócikke az alapigéhez irányít%s'
-                          % (t, ' (%s, %s, %s)' % (lk[0], lk[1], alap[0]) if lk else ''))
+            reszek.append('%s: az összetett ige LSJ-szócikke az alapigéhez irányít%s (a `%s` sora: „%s”)'
+                          % (t, ' (%s, %s, %s)' % (lk[0], lk[1], alap[0]) if lk else '', LSJ_TELJES_FAJL,
+                             lsj_csonk(t)))
         hiv = '; '.join(reszek)
         if rokon:
             return '%s; az alapige LSJ-szócikke a rokon szavaknál áll (alább): %s.' % (hiv, ', '.join(rokon))
@@ -2119,9 +2129,9 @@ def blokk_szocikkek(m, tokenek, sorai):
             # ISTENTISZT-001 arany lap, 2026-10-29: a rokon szó SECE-megfelelői a 7. szerep formájában (a 2/b. SECE-blokkjai helyett)
             tabla = sece_tabla(strong, set(tokenek))
             if tabla:
-                rokon_reszek.append('##### %s · SECE — %s megfelelők (%d)\n\n%s\n\n%s' % (
-                    szo_cim(strong), 'héber' if strong.startswith('G') else 'görög', tabla[0], tabla[1],
-                    SECE_LABJEGYZET))
+                rokon_reszek.append('##### %s · SECE — %s megfelelők (%d)\n\n%s\n\n%s\n\n%s' % (
+                    szo_cim(strong), 'héber' if strong.startswith('G') else 'görög', tabla[0],
+                    olvasoi_bekezdes(OLVASOI_SZEREP[7]), tabla[1], SECE_LABJEGYZET))
                 for b in ('G', 'H'):
                     fajl_licenc_kulcsok.setdefault(SECE_FAJL[b], set()).add(SECE_LICENC_KULCS[b])
         reszek.append('\n\n'.join(rokon_reszek))
@@ -2928,8 +2938,12 @@ def bdb_fej_rovid(hu):
     gy = re.search(r'√\s*([^;,)]+)', hu)
     nyelvek = []
     for m in re.finditer(r'(?<![\wáéíóöőúüű])(%s)(?![\wáéíóöőúüű])' % '|'.join(BDB_ROKON_NYELVEK), hu):
-        if m.group(1) not in nyelvek:
-            nyelvek.append(m.group(1))
+        cimke = m.group(1)
+        utana = hu[m.end():m.end() + 40].split(';')[0]
+        if 'kétséges' in utana or '?' in utana:
+            cimke += ' (kétséges)'
+        if cimke not in nyelvek and m.group(1) not in nyelvek:
+            nyelvek.append(cimke)
     return alap, (gy.group(1).strip() if gy else ''), nyelvek
 
 
@@ -2947,6 +2961,11 @@ def _gerinc_bdb_fej_rovid(nyelv, n, tokenek_ny, reszek, ctx):
         reszek_t = []
         if alap:
             reszek_t.append('alapjelentés: %s' % alap)
+        else:
+            # a BDB-fej nem mondja ki az alapjelentést (pl. H7585): a TBESH rövid magyar jelentése, jelölve
+            rj, van = rovid_jelentes(t)
+            if van:
+                reszek_t.append('alapjelentés: %s *(a TBESH rövid jelentése; a BDB-fej nem mondja ki)*' % rj)
         if gyok:
             reszek_t.append('gyök (√): %s' % gyok)
         if nyelvek:
@@ -2982,8 +3001,8 @@ def _ubs_oszlop_szamlalo(t, ctx):
                  else ubs_jelentes_cella(s['id'], s['igehely'], s.get('strong') or ''))
         resz = next((r for r in cella.split(' · ') if r.startswith(t + ':')), cella if len(tok) == 1 else '')
         if '[ⓘ]' in resz:
-            if 'nem egyértelmű' in resz:
-                j += 1
+            if 'nem egyértelmű' in resz or resz.count('[ⓘ]') > 1:
+                j += 1  # jelölt, vagy több jelentéskód a cellában (ELLENOR_ISTENTISZT_OLVASOI_2 6.)
             else:
                 h += 1
     return n, h, j
@@ -3003,7 +3022,7 @@ def _tartalom_ubs_oszlop(nyelv, n, tokenek_ny, reszek, ctx):
         out.append('**%s** · a motívum %d %s helyén a vers-szintű jelentést az [1. Előfordulások](#1-előfordulások) '
                    'táblázatának „UBS-jelentés” oszlopa mutatja (%s); a szó teljes versenkénti listája a szónézetben: %s.'
                    % (szo_cim(t), sz, tesz,
-                      szam_osszegzes([('helyen egyértelmű', h), ('helyen jelölt, nem egyértelmű', j),
+                      szam_osszegzes([('helyen egy jelentés', h), ('helyen több vagy jelölt, nem egyértelmű jelentés', j),
                                       ('helyen nincs hozzárendelés', sz - h - j)]),
                       _szonezet_mutato(t, forras)))
     return out
