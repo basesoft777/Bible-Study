@@ -15,7 +15,7 @@ A felhasználó az orkesztrátor chatjében, 2026-10-29-én, szó szerint: „Ig
 | `lekerdez.py karoli "Zsolt 99:6"` | scope=range:Zsolt 99:6 \| forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv \| n=2 \| ts=2026-10-29T08:31Z \| csatorna=cli |
 | `lekerdez.py lxx-hid "Ézs 64:6"` | scope=range:Ézs 64:6 \| forras=LXX_OS/isaiah.tsv+TAGNT_kivonat.tsv \| n=27 \| ts=2026-10-29T08:32Z \| csatorna=cli |
 
-Mind a négy sor az `adat/auditok.tsv`-ben (`--naplo ISTENTISZT-001 --lepes adhoc`). A TAHOT-tokenek a Károli-kulcson, `split('\t')`-tel olvasva.
+Mind a négy sor az `adat/auditok.tsv`-ben (`--naplo ISTENTISZT-001 --lepes adhoc`). A TAHOT-tokenek a Károli-kulcson, `split('\t')`-tel olvasva; a tokensorrend és a BSB Isa.64.7 saját proveniencia-sora (a javítókörben, ELLENOR E1/E2): scope=range:Ézs 64:6, range:Zsolt 99:6 \| forras=TAHOT_kivonat.tsv+BSB_Strongs.tsv (naplok/ISTENTISZT001_ezs64_zsolt99_meres.py, split('\t')) \| n=43+12 \| ts=2026-10-29T08:51Z.
 
 - **Ézs 64:6.** Károli: „S nem volt, a ki segítségül hívta volna nevedet”. TAHOT: וְ + אֵין (H0369) + קוֹרֵא (H7121) + בְ (H9003) + שִׁמְ (H8034) + ךָ (Ps2m). Aktív kárá + בְּ + a megszólított Isten neve, emberi alany, tagadó forma. LXX: οὐκ ἔστιν ὁ ἐπικαλούμενος (G1941) τὸ ὄνομά σου.
 - **Zsolt 99:6.** TAHOT: וּשְׁמוּאֵל + בְּ (H9003) + קֹרְאֵי (H7121) + שְׁמוֹ (H8034 + Ps3m) + קֹרִאים (H7121) + אֶל (H0413) + יְהוָה. A בְּ az igenév előtt áll („azok között, akik hívják”), a név az igenév birtokos szerkezetében; a második tagban אֶל. Kárá + בְּ + név nincs, a negatív kritérium (`adat/motivumok.tsv`) kizárja; előzmény: DT283 (JSir 3:55, 5Móz 32:3). Mellékesen: a BDB a verset a H7121 Qal 3.b-hez („a nevet kihirdetni”) sorolja, nem a 2.c-hez (`lexikon/ISTENTISZT-001_TUDOMANYOS.md`, szótári szakasz).
@@ -27,7 +27,7 @@ Minta: a Jer 10:25 és a Zsolt 79:6 sora (`Remez`; `2.c (tagadva)`).
 | Mező | Érték | Indok |
 |---|---|---|
 | `pardes_szint` | Remez | mint a két tagadó sor |
-| `funkcio` | 🚫 tagadó forma — a formula elmulasztása, a nép önmagáról mondva, egyenes szórenddel | A Jer/Zsolt 79:6 funkciójából a „⇄ párhuzam” és a „vád, fordított szórenddel” nem illik: a két vers egymás párhuzama, az Ézs 64:6 nem; a TAHOT-ban az ige áll a név előtt; a vers első személyű többes (tőlünk, minket: Op1c, Pp1c), nem a nemzetek elleni vád. |
+| `funkcio` | 🚫 tagadó forma — a formula elmulasztása, első személyű többes számú versben, egyenes szórenddel | A Jer/Zsolt 79:6 funkciójából a „⇄ párhuzam” és a „vád, fordított szórenddel” nem illik: a két vers egymás párhuzama, az Ézs 64:6 nem; a TAHOT-ban az ige áll a név előtt; a vers első személyű többes (tőlünk, minket: Op1c, Pp1c), nem a nemzetek elleni vád. Az első változat „a nép önmagáról” azonosítását a javítókör kivette (ELLENOR A1: a versben nem mért). |
 | `gerinc_elem`, `strong` | H7121+H8034 | |
 | `lexikon_szotar` / `lexikon_entry_id` / `jelentes_szam` | BDB / H7121 / 2.c (tagadva) | mint a két tagadó sor |
 | `jelentes_hu` | invokálni — tagadó szerkezetben | a Jer-sor „a mulasztás vádjaként” része nélkül (l. funkció) |
@@ -49,7 +49,7 @@ Módosítva a `motivumok/ISTENTISZT-001.md`-ben:
 - kivonat: 32→33 (22→23 / 10), LXX 18/22→19/23, NAPLO-sorral;
 - 3. szakasz, 1. pont (LXX): 22/18→23/19, és a régi R2.4 NAPLO mellé új NAPLO (a régi történeti, változatlan);
 - „hálát ad”, „Két oltár”, „Zsolt 116:13”: „32 helye” → „33 helye”, a proveniencia-sorok mellé a mai mérés;
-- „A név körül: küldetés és vád”: egy mondat az Ézs 64:6-ról (DT-F110b NAPLO-jelölővel), csak mért tartalommal (Károli-idézet, első személyű többes szám, az „ismer” és a népek szavának hiánya);
+- „A név körül: küldetés és vád”: egy mondat az Ézs 64:6-ról (DT-F110b NAPLO-jelölővel), csak mért tartalommal (Károli-idézet, első személyű többes szám, az „ismer” és a népek szavának hiánya; a „nép” azonosítás a javítókörben kikerült);
 - 7. szakasz, „Négy forrás”: 22/18→23/19, a proveniencia mellé az Ézs 64:6 LXX-sora.
 
 A 2026-10-20-i proveniencia-sorok (n=32, `<a 22 ószövetségi hely>`) változatlanok: azok az akkori mérést rögzítik. A Zsolt 99:6-ot a próza nem említette, így a kizárása csak a `jeloltek.tsv`-ben és a generált lapon áll.

@@ -50,6 +50,29 @@ print('TAHOT-sor nélküli ÓSZ-hely:', hianyzo or 'nincs')
 for s in KISERO:
     print(s, sorted(h for h in osz if s in strongok[h]))
 print('Ézs 64:6 kísérő szavai:', sorted(set(KISERO) & strongok.get('Ézs 64:6', set())) or 'egyik sem')
+
+# A két jelölt-vers tokensorrendje (Károli-kulcs) és a BSB Ézs 64:6 (BSB: Isa.64.7).
+JELOLT = ('Ézs 64:6', 'Zsolt 99:6')
+n_token = 0
+with open('konkordancia/TAHOT_kivonat.tsv', encoding='utf-8') as f:
+    next(f)
+    for sor in f:
+        m = sor.rstrip('\n').split('\t')
+        if m[0] in JELOLT:
+            n_token += 1
+            print('TAHOT', m[0], m[1], m[2], m[6])
+n_bsb = 0
+with open('konkordancia/BSB_Strongs.tsv', encoding='utf-8') as f:
+    next(f)
+    for sor in f:
+        m = sor.rstrip('\n').split('\t')
+        if m[0] == 'Isa.64.7':
+            n_bsb += 1
+            print('BSB', m[0], m[2], m[3])
+
 ts = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%MZ')
 print(f'proveniencia: scope=adat/elofordulasok.tsv (id={ID}, n={len(helyek)}) | '
       f'forras=TAHOT_kivonat.tsv (naplok/ISTENTISZT001_ezs64_zsolt99_meres.py, split(\'\\t\')) | ts={ts}')
+print(f'proveniencia (tokenek): scope=range:Ézs 64:6, range:Zsolt 99:6 | '
+      f'forras=TAHOT_kivonat.tsv+BSB_Strongs.tsv (naplok/ISTENTISZT001_ezs64_zsolt99_meres.py, '
+      f'split(\'\\t\')) | n={n_token}+{n_bsb} | ts={ts}')
