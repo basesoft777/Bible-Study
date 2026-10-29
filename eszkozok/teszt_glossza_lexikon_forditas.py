@@ -110,5 +110,56 @@ class DbhForras(unittest.TestCase):
             shutil.rmtree(mappa)
 
 
+class TovabbiForras(unittest.TestCase):
+    """F121 (DT-F121k): a TBESH/TBESG/tW/MCGED/LSJ/BDB-nyelvi háttér sor forrásszövege a konkordancia-fájlokból."""
+
+    def setUp(self):
+        self.m = tempfile.mkdtemp()
+        self.addCleanup(shutil.rmtree, self.m)
+
+        def ir(nev, szoveg):
+            with open(os.path.join(self.m, nev), 'w', encoding='utf-8', newline='') as f:
+                f.write(szoveg)
+        ir('TBESH.txt', 'H7585\tH7585 =\tH7585\tשְׁאוֹל\tshe.ol\tN:N--L\thell: Sheol\tSheol, underworld<br>1a) the underworld<br>\n')
+        ir('TBESG.txt', "G0086\tG0086 =\tG0086\tᾍδης\tHadēs\tG:N-M\thell: Hades\t <b>ᾅδης</b> <BR />__1. <ref='Luk.16.23'>Luk.16:23;</ref>\n")
+        ir('tW_szocikkek.tsv', 'tw_id\tkategoria\tcim\tstrong\tszoveg\tforras_commit\n'
+           'kt/hades\tkt\tHades\tH7585+G0086\t# Hades\\n\\ntext\tabc\n')
+        ir('MCGED_teljes.tsv', 'strong\tgk_szam\tlemma_gorog\tatirat\tgyakorisag\tglossza\nG0086\tG50087\tx\ty\t1\tthe abode of the dead\n')
+        ir('LSJ_teljes.tsv', 'Strong_padded\tStrong_eredeti\tTeljes_szocikk\nG0086\tG86\tLSJ-szöveg\n')
+        ir('BDB_etimologia_kezi_hatarok.tsv', 'strong\tallapot\tnyelvi_hatter\tszocikk_hossz\thatar_pozicio\nH7585\tx\tH7585. sheol\t5\t5\n')
+
+    def _f(self, szotar, strong, eid, jsz, mezo):
+        return G.tovabbi_forras({'szotar': szotar, 'strong': strong, 'entry_id': eid, 'jelentes_szam': jsz, 'mezo': mezo}, self.m, {})
+
+    def test_tbes_7_8_oszlop_tisztitva(self):
+        self.assertEqual(self._f('TBESH', 'H7585', 'H7585', 'teljes', 'forditas_hu'), 'hell: Sheol Sheol, underworld 1a) the underworld')
+        self.assertEqual(self._f('TBESG', 'G0086', 'G0086', 'teljes', 'forditas_hu'), "hell: Hades ᾅδης __1. Luk.16:23;")
+
+    def test_tw_elso_strong_a_kulcs(self):
+        self.assertEqual(self._f('tW_szocikkek', 'H7585', 'kt/hades', G.EM_DASH, 'forditas_hu'), '# Hades\\n\\ntext')
+        self.assertIsNone(self._f('tW_szocikkek', 'G0086', 'kt/hades', G.EM_DASH, 'forditas_hu'))
+
+    def test_mcged_lsj_bdb(self):
+        self.assertEqual(self._f('MCGED', 'G0086', 'G50087', G.EM_DASH, 'glosszak_hu'), 'the abode of the dead')
+        self.assertEqual(self._f('LSJ', 'G0086', 'G0086', 'teljes', 'forditas_hu'), 'LSJ-szöveg')
+        self.assertEqual(self._f('BDB', 'H7585', 'H7585', 'nyelvi_hatter', 'forditas_hu'), 'H7585. sheol')
+
+    def test_negativ_ismeretlen_kulcs_vagy_mezo(self):
+        self.assertIsNone(self._f('BDB', 'H7585', 'H7585', 'teljes', 'forditas_hu'))      # a teljes szócikk más feloldó dolga
+        self.assertIsNone(self._f('LSJ', 'G0086', 'G86', 'teljes', 'forditas_hu'))
+        self.assertIsNone(self._f('TBESH', 'H9999', 'H9999', 'teljes', 'forditas_hu'))
+        self.assertIsNone(self._f('Thayer', 'G0086', 'G86', 'teljes', 'forditas_hu'))
+
+
+class Kulcsszo(unittest.TestCase):
+    def test_kulcs_a_forrasban_es_karoli_bdb(self):
+        s = {'strong': 'H7585'}
+        term = [('Sheol', 'Seol'), ('underworld', 'alvilág'), ('see', 'l.'), ('hell', 'pokol')]
+        ki = G.kulcsszo_ellenorzes(s, 'Sheol, the underworld; see hell', term, Counter({'seolba': 5, 'pokol': 2}), 'az alvilág')
+        self.assertEqual(ki, [('Sheol', 'Seol', 'egyezik', 'nem_talal'), ('underworld', 'alvilág', 'nem_talal', 'egyezik'),
+                              ('hell', 'pokol', 'egyezik', 'nem_talal')])        # a 'see' -> 'l.': nincs tartalmas tő, kimarad
+        self.assertEqual(G.kulcsszo_ellenorzes({'strong': 'G0086'}, 'hell', term, Counter({'pokol': 3}), '')[0][3], 'nem_heber')
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
