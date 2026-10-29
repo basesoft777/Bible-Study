@@ -104,3 +104,18 @@ Tesztek: `teszt_forditas_kapuk` 110 OK, `teszt_szerepmatrix` 44 OK, `teszt_szota
 - **006562001009000.** Angol: „literally: to cry out (someone's) name (something); hence: = action by which humans assign a name to a person or place”. A „(something)” a „cry out … name” második tárgya, ezért a fordítás: „szó szerint: valakinek a nevét kiáltani (valamit); …” (korábban: „valakinek (valaminek) a nevét kiáltani”, ami a „(something)”-et birtokosnak olvasta).
 - **007442001001000.** Angol: „…is known, addressed, remembered, or referred to”. „remembered” → „emlékeznek rá” („emlegetnek” helyett): „…ismernek, megszólítanak, emlékeznek rá, vagy amellyel rá utalnak; …”.
 - **007442001004000.** Angol: „the core of one's identity, which reflect the essence of one's being”. „azonosságának magja” (a v4 sor szerint) és „létének lényegét”: „…= az ember azonosságának magja, amely létének lényegét tükrözi”.
+
+## 7. F121.7 — az UBS-csomag: mérés és tervezet (2026-10-29)
+
+*Új ág: `claude/f121-ubs-csomag` az origin/main-ről (8e3d71a3; a PR #499 mergelve). A jóváhagyás: DT-F121g (idézetek a `DONTESEK.md`-ben).*
+
+**Hiányzó egységek.** `konkordancia/UBS_DBH_jelentesek.tsv` H7121: 19 lexid, H8034: 5 lexid = 24 lexid; a gyorsítótárban 5 DBH-definíció van (F121.2), glossza egy sem. Hiányzik: 24 `glosszak_hu` + 19 `definicio_hu` = 43; az UBS DNTG G1941-ből a 56.15 `definicio_hu` (a `glosszak_hu` az F121.2 óta megvan) = **44 egység**. Tervezet: `naplok/F121_ubs_csomag_tervezet.tsv` (a generáló szkript `naplok/F121_ubs_csomag_tervezet.py`); mind a 44 átment a gátló kapukon.
+
+**A G1941 kézi sorai v4-kapuval (átírás nélkül).** Nem négy, hanem 6 `kezi` (2026.09.22) sor van (33.131, 33.176, 11.28, mindhárom `definicio_hu` + `glosszak_hu`). Eredmény: 5 ÁTMENT; **1 bukik**: 33.131 `definicio_hu` („valakiről szólva megjelölést (címet, jelzőt) alkalmazni”) a `4_formazas` kapun — „több nyitó zárójel a fordításban (1), mint a forrásban (0)” (a zárójeles pontosítás a fordító hozzátétele a „to use an attribution in speaking of a person” mondathoz). A sor a kérésnek megfelelően érintetlen; a kézi ítélet a felhasználóé.
+
+**Szónézet (mérés, kód: `eszkozok/olvaso_szerver/blokkok.py`, `lekerdezesek.py`).**
+- `/szo/G1941`: a `szo.magyar_gorog` blokk (`q.magyar_gorog`) a `forditasok` tábla `Thayer` és `UBS_DNTG` sorait mutatja `forditas_hu <> ''` szűréssel, tehát az új magyar UBS DNTG-sorokat a `pardes.db` újraépítése után automatikusan; hiányosság: a lekérdezés a `mezo`-t nem adja vissza, ezért a `definicio_hu` és a `glosszak_hu` sor azonos „UBS_DNTG, 56.15. jelentés” címmel jelenik meg (két fejléc). A `szo.ubs_dntg` blokk angol.
+- `/szo/H7121`, `/szo/H8034`: **nincs** UBS DBH blokk a szó-lapon (sem angol, sem magyar): az UBS DBH csak a `vers.ubs` és a `szo.ebben` (versszintű, angol) blokkban látszik. A magyar sorok bekötéséhez új `szo.ubs_dbh` blokk kell (`szo_h`): a Strong összes DBH-jelentése (`ubs_dbh_jelentesek`), a magyar glossza és definíció a `forditasok`-ból (`szotar='UBS_DBH'`), angol mellette.
+- Ez egy új blokk + egy lekérdezés + teszt, nem nagy átalakítás; a szerver tesztjei csak `eszkozok/teszt_futtat.py`-val futnak.
+
+**⛔ A tervezet jóváhagyásra vár** (a `naplok/F121_ubs_csomag_tervezet.tsv` 44 sora); rögzítés, lap- és szerver-módosítás ezután.
