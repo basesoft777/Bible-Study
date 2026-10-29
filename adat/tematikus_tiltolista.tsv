@@ -1,6 +1,0 @@
-# Tematikus tiltólista: motívumonként a tematikus indexből (12. szerep) kizárt témák, a motívum folerendelt_fogalom-ja felé. Kulcs: id + forras + tema_id. Séma: adat/SEMA.md 2.41
-id	forras	tema_id	tema	indok	proveniencia
-ISTENTISZT-001	Nave	NAVE-3933	PRAISE	a motívum folerendelt_fogalom-ja („istentisztelet/imádság általában”) felé: a hígulás iránya	scope=manual | forras=a motívum folerendelt_fogalom-ja (a végrehajtó javaslata; a 12. szerep szűrése a felhasználó döntésére vár) | ts=2026-10-29
-ISTENTISZT-001	Nave	NAVE-3934	PRAYER	a motívum folerendelt_fogalom-ja („istentisztelet/imádság általában”) felé: a hígulás iránya	scope=manual | forras=a motívum folerendelt_fogalom-ja (a végrehajtó javaslata; a 12. szerep szűrése a felhasználó döntésére vár) | ts=2026-10-29
-ISTENTISZT-001	Nave	NAVE-4881	THANKFULNESS	a motívum folerendelt_fogalom-ja („istentisztelet/imádság általában”) felé: a hígulás iránya	scope=manual | forras=a motívum folerendelt_fogalom-ja (a végrehajtó javaslata; a 12. szerep szűrése a felhasználó döntésére vár) | ts=2026-10-29
-ISTENTISZT-001	Nave	NAVE-5174	WORSHIP	a motívum folerendelt_fogalom-ja („istentisztelet/imádság általában”) felé: a hígulás iránya	scope=manual | forras=a motívum folerendelt_fogalom-ja (a végrehajtó javaslata; a 12. szerep szűrése a felhasználó döntésére vár) | ts=2026-10-29
