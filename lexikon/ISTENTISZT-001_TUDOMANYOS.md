@@ -1030,7 +1030,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 #### 13. Károli-megfelelők
 
-**Mit mutat ez a rész?** A motívum igehelyein a Károli-fordítás ezekkel a magyar szavakkal adja vissza a motívumot hordozó kifejezést (a héber és a görög szavakat együtt, nem szavanként). A zárójeles szám azt mutatja, hány igehelyen áll a szó; utána a ragozott alakok és az igehelyek.
+**Mit mutat ez a rész?** A motívum 33 igehelyén a Károli 17 különböző magyar szót használ. A leggyakoribbak (igehelyek száma): „hív” 30, „segítségül” 29, „név” 25. **Következtetés:** a Károli a motívumot szinte mindenütt (a helyek 91%-án) ugyanazzal a szóval adja vissza, ezért magyarul olvasva is jól követhető. A sorokban a ragozott alakok és az igehelyek állnak.
 
 *A motívum igehelyeinek Károli-szóalakjai (`adat/elofordulasok.tsv`, `karoli_szo`), szótári alakonként (`adat/szoto/karoli_szotari_alak.tsv`, mai helyesírás), névelő nélkül: a szóalakok, és hány igehelyen, melyiken.*
 
@@ -1056,7 +1056,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 #### 14. Rejtett / hamis párhuzam
 
-**Mit mutat ez a rész?** Két ellenőrzés a motívum héber és görög szavaira (a gerincre, l. „A motívum kulcsszavai”) és a Károli magyar kulcsszavaira. **Rejtett párhuzam:** a motívum olyan helye, ahol az eredeti szövegben a gerinc szavai állnak, de a Károli nem a szokásos magyar kulcsszavakkal fordítja, így a magyar olvasó nem ismeri fel. **Hamis párhuzam:** olyan vers, ahol a Károliban ugyanazok a magyar kulcsszavak állnak, de az eredetiben nem a gerinc szavai, így a magyar olvasó tévesen kapcsolná ide.
+**Mit mutat ez a rész?** A motívum 33 helye közül 4 helyen a héber vagy görög szövegben megvan a motívum szava (héberül a kárá és a sém, görögül az epikaleó), de a Károli más magyar szóval fordítja, például: 2Móz 33:19 — „kiáltom előtted az Úr nevét”. Ez a **rejtett párhuzam**. Ugyanakkor 17 olyan vers van, amelyben magyarul ugyanazok a szavak állnak („hív”, „segítségül” és „név”), de az eredetiben nem a motívum szavai, például: 1Kir 8:52 — „mikor téged segítségül hívnak”. Ez a **hamis párhuzam**. **Következtetés:** aki a Károliban ezekre a magyar szavakra keres, a motívum 4 helyét nem találja meg, és a 46 találat 37%-a nem a motívumhoz tartozik. A motívumot ezért az eredeti szavak alapján kell keresni, nem a magyar fordítás alapján.
 
 *Kulcsszavak gerinc-kombinációnként: G1941: „hív”, „segítségül”; H7121+H8034: „név”, „hív”, „segítségül” — az e kombinációjú motívumsorok Károli-szóalakjainak legalább felében álló szótári alak, a Károli–Strong párosításban csak idegen Strongra párosuló szavak nélkül. Csak megjelenítés: jelölt ezekből csak az `adat/jeloltek.tsv`-n át lesz.*
 

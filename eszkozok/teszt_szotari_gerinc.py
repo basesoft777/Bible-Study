@@ -617,5 +617,33 @@ class BdbRovidites(unittest.TestCase):
         self.assertEqual(LG.bdb_rovidites_jelol(sz, 'H7121'), sz)
 
 
+class Olvasoi1314(unittest.TestCase):
+    """A 13. és a 14. szerep olvasói szövege: lelet számokkal, utána következtetés (a felhasználó: „mindig vanjuk le a
+    következtetést a találtakból . a magyarázó szöveg az adatokból induljon.”)."""
+
+    def _sorai(self, mid):
+        _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
+        return [r for r in elo_sorok if r['id'] == mid]
+
+    def test_13(self):
+        m = LG.olvasoi_13(self._sorai('ISTENTISZT-001'))
+        self.assertTrue(m.startswith('A motívum 33 igehelyén a Károli 17 különböző magyar szót használ.'))
+        self.assertIn('**Következtetés:** a Károli a motívumot szinte mindenütt (a helyek 91%-án)', m)
+
+    def test_13_kuszob(self):
+        self.assertIn('változó szavakkal', LG.olvasoi_13(self._sorai('ALVIL-001')))
+
+    def test_14(self):
+        m = LG.olvasoi_14(self._sorai('ISTENTISZT-001'))
+        self.assertIn('33 helye közül 4 helyen', m)
+        self.assertIn('héberül a kárá és a sém, görögül az epikaleó', m)
+        self.assertNotIn('gerinc', m)
+        self.assertIn('1Kir 8:52 — „mikor téged segítségül hívnak”', m)
+        self.assertIn('a 46 találat 37%-a nem a motívumhoz tartozik', m)
+
+    def test_ures(self):
+        self.assertIsNone(LG.olvasoi_13([]))
+        self.assertIsNone(LG.olvasoi_14([]))
+
 if __name__ == '__main__':
     unittest.main()
