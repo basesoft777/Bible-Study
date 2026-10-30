@@ -1,0 +1,68 @@
+scope=A26 + B + C20 + STEP-proxy | forras=naplok/HEBER_KIEJTES_meres.py | ts=2026-10-30
+
+halmaz / út / paraméterek	pontos	ékezet nélkül	hossz nélkül	n
+A / NIQQUD / a priori	24/26 (92%)	24/26 (92%)	24/26 (92%)	26
+A / NIQQUD / kalibrált (mind a 26-on)	25/26 (96%)	25/26 (96%)	25/26 (96%)	26
+A / STEP / a priori	12/26 (46%)	21/26 (81%)	21/26 (81%)	26
+A / STEP / kalibrált (mind a 26-on)	15/26 (58%)	21/26 (81%)	21/26 (81%)	26
+B / NIQQUD / régi konvenció (nem kalibrált B-n)	44/46 (96%)	45/46 (98%)	45/46 (98%)	46
+B / STEP / régi konvenció (csak TBESH-lemmás egyszavasak)	20/35 (57%)	31/35 (89%)	31/35 (89%)	35
+B / OSHL-gépezet (S1.7) / régi konvenció	32/36 (89%)	32/36 (89%)	32/36 (89%)	36
+A / NIQQUD / leave-one-out	24/26 (92%)
+A / NIQQUD / kétfelé osztás (200x)	átlag 90% (min 77%, max 100%)
+A / STEP / leave-one-out	14/26 (54%)
+A / STEP / kétfelé osztás (200x)	átlag 49% (min 15%, max 77%)
+A / OSHL-gépezet (S1.7, körkörös: az A ennek a kimenetéből lett jóváhagyva)	26/26
+
+kalibrált NIQQUD-paraméterek: szamech=s (a többi = a priori)
+kalibrált STEP-paraméterek: e_zart=é (a többi = a priori)
+
+A / NIQQUD hibaokok (kalibrált): {'ḥ (ח) ch/h': 1}
+A / STEP hibaokok (kalibrált): {'hosszúság (a STEP nem jelöli)': 3, 'hosszúság-heurisztika/konvenció: i': 1, 'forrás-eltérés vagy átírási hiba': 5, 'hosszúság-heurisztika/konvenció: e_zart': 1, 'hosszúság-heurisztika/konvenció: a_nyilt': 1}
+B / NIQQUD hibaokok: {'mater jod (hirek)': 1, 'többszavas: egyéb (szabályon kívüli)': 1}
+B kihagyott párok: [('שֵׁם', 'kárá + sém', 'kommentár/rövidítés a párban'), ('עַל', 'nikrá … al; birtoklás/hovatartozás', 'kommentár/rövidítés a párban'), ('׳ק צוֺם', 'kárá com', 'kommentár/rövidítés a párban'), ('׳ק י ׳מוֺעֲדֵי', 'kárá móadé JHVH', 'kommentár/rövidítés a párban'), ('ל', 'le', 'pontozatlan'), ('׳ק לְשָׁלוֺם אֵלֶיהָ', 'kárá lesálóm éléhá', 'kommentár/rövidítés a párban'), ('כהנים', 'kóhaním', 'pontozatlan'), ('שֻׁם קָרָא', 'kárá sum … al', 'kommentár/rövidítés a párban'), ('שׁמה', 'smh', 'pontozatlan'), ('ושׁם', 'vsm', 'pontozatlan'), ('יהוה', 'JHVH', 'pontozatlan'), ('שם', 'sm', 'pontozatlan'), ('סם', 'szm', 'pontozatlan'), ('קרא', 'kárá', 'pontozatlan'), ('זעק', 'záak', 'pontozatlan'), ('צעק', 'cáak', 'pontozatlan'), ('זעק על', 'záak al', 'pontozatlan')]
+B / OSHL-gépezet eltérések: [('עָשָׂה', 'ʿāśâ', 'áśá', 'ászá'), ('שׂוּם', 'śûm', 'śúm', 'szúm'), ('נָשָׂא', 'nāśāʾ', 'náśá', 'nászá'), ('צָוַח', 'ṣāwaḥ', 'cáwah', 'cávah')]
+
+STEP-proxy (ISTENTISZT-001 versek, TAHOT, nem arany): 276/299 (92%) váz-egyezés
+  1Móz 4:26	אֱנ֑וֹשׁ	'e.No.osh	enós	enóós
+  1Móz 4:26	קְרֹ֖א	k.Ro'	keró	kró
+  1Móz 12:8	בֵֽית	veit	bét	vét
+  1Móz 21:33	בְאֵ֣ר	v.'Er	beér	ver
+  2Móz 33:19	כָּל	kol	kál	kól
+  1Kir 18:24	כָּל	kol	kál	kól
+  1Kir 18:24	יֹּאמְר֖וּ	yo.me.Ru	jómrú	jómerú
+  1Kir 18:25	נְבִיאֵ֣י	n.vi.'Ei	nevíé	nvié
+  1Kir 18:26	יְפַסְּח֔וּ	y.fa.se.Chu	jefasszechú	jfászechú
+  2Kir 5:11	אֱלֹהָ֔י	'e.lo.Ha	elóháj	elóhá
+  1Krón 16:8	עֲלִילֹתָֽי	'a.li.lo.Ta	alílótáj	álilótá
+  Zsolt 105:1	עֲלִילוֹתָֽי	a.li.lo.Ta	alílótáj	álilótá
+  Ézs 12:4	עֲלִֽילֹתָ֑י	'a.li.lo.Ta	alílótáj	álilótá
+  Jer 10:25	אָכְל֣וּ	'a.khe.Lu	ochlú	áchelú
+  Jer 10:25	יַעֲקֹ֗ב	ya.'a.Ko	jaakóv	jáákó
+  Sof 3:9	בְרוּרָ֑ה	ve.ru.Rah	berúrá	verúra
+  Sof 3:9	קְרֹ֤א	k.Ro'	keró	kró
+  Sof 3:9	כֻלָּ	khu.La	kullá	chúlá
+  Zak 13:9	צְרֹ֣ף	tz.Rof	ceróf	cróf
+  Zak 13:9	בְחַנְתִּ֖י	ve.chan.Ti	bechantí	vechanti
+  Zak 13:9	בְחֹ֣ן	v.Chon	bechón	vchón
+  Jóel 2:32	ירוּשָׁלִַ֜ם	ru.sha.Lim	jrúsálim	rúsálim
+  Jóel 2:32	פְלֵיטָ֗ה	fe.lei.Tah	pelétá	feléta
+STEP-proxy, szokezdo_begadkefat=pont_szerint: 281/299 (94%)
+  1Móz 4:26	אֱנ֑וֹשׁ	'e.No.osh	enós	enóós
+  1Móz 4:26	קְרֹ֖א	k.Ro'	keró	kró
+  1Móz 21:33	בְאֵ֣ר	v.'Er	veér	ver
+  2Móz 33:19	כָּל	kol	kál	kól
+  1Kir 18:24	כָּל	kol	kál	kól
+  1Kir 18:24	יֹּאמְר֖וּ	yo.me.Ru	jómrú	jómerú
+  1Kir 18:25	נְבִיאֵ֣י	n.vi.'Ei	nevíé	nvié
+  1Kir 18:26	יְפַסְּח֔וּ	y.fa.se.Chu	jefassechú	jfászechú
+  2Kir 5:11	אֱלֹהָ֔י	'e.lo.Ha	elóháj	elóhá
+  1Krón 16:8	עֲלִילֹתָֽי	'a.li.lo.Ta	alílótáj	álilótá
+  Zsolt 105:1	עֲלִילוֹתָֽי	a.li.lo.Ta	alílótáj	álilótá
+  Ézs 12:4	עֲלִֽילֹתָ֑י	'a.li.lo.Ta	alílótáj	álilótá
+  Jer 10:25	אָכְל֣וּ	'a.khe.Lu	ochlú	áchelú
+  Jer 10:25	יַעֲקֹ֗ב	ya.'a.Ko	jaakóv	jáákó
+  Sof 3:9	קְרֹ֤א	k.Ro'	keró	kró
+  Zak 13:9	צְרֹ֣ף	tz.Rof	ceróf	cróf
+  Zak 13:9	בְחֹ֣ן	v.Chon	vechón	vchón
+  Jóel 2:32	ירוּשָׁלִַ֜ם	ru.sha.Lim	jrúsálim	rúsálim
