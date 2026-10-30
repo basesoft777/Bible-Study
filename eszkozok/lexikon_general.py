@@ -43,6 +43,7 @@ import szerep_nave as SZN
 import szerep_kizart as SZKZ
 import olvasoi_kovetkeztetes as OK  # az olvasói szöveg: lelet + következtetés (2026-10-30)
 import bdb_rovidites as BR  # a BDB egybetűs rövidítései, közös az olvasóval (N-F131x)
+import heber_kiejtes as HK  # gépi magyaros héber kiejtés a pontozott szövegből (DT-F131y)
 
 ROOT = G.ROOT
 ADAT = G.ADAT
@@ -249,7 +250,10 @@ def kiejtes_ehhez(igehely, strong):
     """(ragozott_alak, kiejtes, forras) vagy None — a TAHOT/TAGNT Igehely+
     Strong kulcsával, az igehely-lista első verséig visszaesve tartománynál.
     Ragozott alak kiejtése -- kizárólag a tényleges ragozott alak mellett
-    használandó (V2.6a pont 2), nem lemma-fejlécekben."""
+    használandó (V2.6a pont 2), nem lemma-fejlécekben.
+    Héberül (DT-F131y, 2026-10-30) a ragozott alak a TELJES szó (előtag + tő + toldalék, a TAHOT vers-soraiból),
+    és a saját gépi kiejtését kapja „…, gépi” jelöléssel (forras='TAHOT'); pontozatlan alaknál a lemma kiejtése
+    áll, „szótári alak:” jelöléssel (forras='TAHOT_LEMMA')."""
     forras_idx = tahot_index() if strong.startswith('H') else tagnt_index()
     for ige in igehely_lista(igehely):
         r = forras_idx.get((ige, strong))
@@ -257,10 +261,35 @@ def kiejtes_ehhez(igehely, strong):
             if strong.startswith('G'):
                 # F09 S2.1: görög alak -> magyaros kiejtés; a héber alak STEP-átírása változatlan
                 return r['Ragozott alak'], gorog_magyaros(r['Kiejtés']), 'TAGNT'
-            # a kiejtés-szabály, ISTENTISZT-001 arany lap 2026-10-29: a TAHOT angolos átírása nem kerül a lapra; a lemma magyaros kiejtése (jóváhagyott, vagy '')
+            sorok = tahot_vers_index().get(ige, [])
+            i = max(k for k, x in enumerate(sorok) if x['Strong-szám'] == strong)  # a tahot_index választása (utolsó)
+            alak, elotag, makkef = HK.teljes_szo(sorok, i)
+            gepi = heber_gepi(alak, elotag, makkef)
+            if gepi:
+                return alak, gepi, 'TAHOT'
             lk = lemma_kiejtes(strong)
-            return r['Ragozott alak'], lk[1] if lk else '', 'TAHOT'
+            return r['Ragozott alak'], lk[1] if lk else '', 'TAHOT_LEMMA'
     return None
+
+
+_tahot_vers_cache = None
+
+
+def tahot_vers_index():
+    """{igehely: [TAHOT-sorok a fájl sorrendjében]} -- a teljes szó összerakásához (DT-F131y)."""
+    global _tahot_vers_cache
+    if _tahot_vers_cache is None:
+        idx = {}
+        for r in L.load_tahot():
+            idx.setdefault(r['Igehely'], []).append(r)
+        _tahot_vers_cache = idx
+    return _tahot_vers_cache
+
+
+def heber_gepi(alak, elotag_hossz=0, makkef=False):
+    """A pontozott héber alak gépi kiejtése jelöléssel („vajjikrá, gépi”; DT-F131y), vagy '' pontozatlan alakra."""
+    k = HK.kiejt(alak, elotag_hossz, makkef)
+    return '%s, %s' % (k, HK.GEPI_JEL) if k else ''
 
 
 _tbesg_tbesh_cache = None
@@ -333,8 +362,8 @@ def heber_lemma_kiejtes(lemma, step_atiras):
 def lemma_kiejtes(strong):
     """(lemma, kiejtés) vagy None, a TBESG/TBESH-ből, Strong-szám szerint -- pontos egyezés, majd betűutótag nélküli
     alapalakra visszaesve. A kiejtés-szabály (kiejtés-szabály, ISTENTISZT-001 arany lap, 2026-10-29): görögül a kiejtes.py magyaros átírása a TBESG-átírásból,
-    héberül csak a jóváhagyott kivétel-sor (`adat/kiejtes_kivetelek.tsv`); ha ilyen nincs, a kiejtés '' (nem
-    generálunk, a STEP-átírás sem áll), és a Strong a KIEJTES_HIANY-ba kerül (jelölt hiány)."""
+    héberül a jóváhagyott kivétel-sor (`adat/kiejtes_kivetelek.tsv`), ennek híján (DT-F131y) a pontozott lemma gépi
+    kiejtése „…, gépi” jelöléssel; ha az sincs (pontozatlan lemma), a kiejtés '', és a Strong a KIEJTES_HIANY-ba kerül."""
     return lemma_kiejtes_szabaly(strong)
 
 
@@ -343,13 +372,14 @@ def lemma_cim(lk):
     return '%s (%s)' % lk if lk[1] else lk[0]
 
 
-# A kiejtés-szabály (kiejtés-szabály, ISTENTISZT-001 arany lap, 2026-10-29): a lemma mellett mindig magyaros kiejtés — görögül gépi, héberül csak a jóváhagyott
-# (`adat/kiejtes_kivetelek.tsv`); ha nincs, kiejtés nélkül, és a lemma a jelölt hiányok közé kerül (nem generálunk).
+# A kiejtés-szabály (kiejtés-szabály, ISTENTISZT-001 arany lap, 2026-10-29): a lemma mellett mindig magyaros kiejtés — görögül gépi, héberül a jóváhagyott
+# (`adat/kiejtes_kivetelek.tsv`), ennek híján gépi „…, gépi” jelöléssel (DT-F131y, 2026-10-30); ha az sincs, a jelölt hiányok közé kerül.
 KIEJTES_HIANY = {}
 
 
 def lemma_kiejtes_szabaly(strong):
-    """(lemma, magyaros kiejtés vagy '') vagy None. Héberül jóváhagyott kiejtés híján '' (a KIEJTES_HIANY-ba kerül)."""
+    """(lemma, magyaros kiejtés vagy '') vagy None. Héberül jóváhagyott kiejtés híján gépi, jelölve (DT-F131y); ha az
+    sincs, '' (a KIEJTES_HIANY-ba kerül)."""
     pontos, alap = tbesg_tbesh_index()
     nyers = pontos.get(strong) or alap.get(strong)
     if not nyers:
@@ -358,6 +388,9 @@ def lemma_kiejtes_szabaly(strong):
     if strong.startswith('G'):
         return lemma, gorog_magyaros(step)
     hu = heber_lemma_kiejtes(lemma, step)
+    if not hu:
+        # DT-F131y: jóváhagyott kiejtés híján gépi, jelölve (a TBESH-lemma első alakjából: „X, Y” → X)
+        hu = heber_gepi(lemma.split(',')[0].strip())
     if not hu:
         KIEJTES_HIANY.setdefault(strong, (lemma, step))
         return lemma, ''
@@ -574,6 +607,11 @@ of Biblical Hebrew/Greek), OSHL (Open Scriptures Hebrew Lexicon), TWOT
 (Treasury of Scripture Knowledge), KH (Károli-kereszthivatkozás), LXX
 (Septuaginta), MT (Masoretic Text), KJV (King James Version).
 
+**Kiejtés:** a héber és a görög szó mellett zárójelben a magyaros kiejtés. A görög kiejtés szabályos átírás. A
+jelöletlen héber kiejtés kézzel jóváhagyott; a **„gépi”** jelölésű (pl. „וַיִּקְרָא (vajjikrá, gépi)”) a pontozott héber
+szövegből rögzített szabályokkal készült, kézzel nem ellenőrizték. A ragozott szó mellett a saját kiejtése áll, nem
+a szótári alaké.
+
 **Mit mutat ez a rész?** — minden blokk elején egy-két mondatos olvasói bevezető; az alatta álló dőlt, technikai
 mondat a lap készítőinek szól.
 
@@ -696,12 +734,12 @@ _RAGOZOTT_ZARO_IRASJEL_RE = re.compile(r'[,.;·]+$')
 
 
 def ragozott_kiejtessel(ragozott, kiejtes, forras):
-    """„ragozott (kiejtés)”. Héberül a kiejtés a szótári alaké (a kiejtés-szabály: a ragozott héber alakra nincs
-    gépi kiejtés), ezért jelölve: „קְרֹ֖א (szótári alak: kárá)” (a felhasználó döntése, 2026-10-29: „A: jelölt szótári
-    alak”); görögül a ragozott alak gépi magyaros kiejtése, jelölés nélkül."""
+    """„ragozott (kiejtés)”. Héberül (DT-F131y, 2026-10-30) a teljes ragozott szó saját gépi kiejtése, jelölve:
+    „וַיִּקְרָא (vajjikrá, gépi)”; pontozatlan alaknál a szótári alak kiejtése, jelölve: „(szótári alak: kárá)”
+    (forras='TAHOT_LEMMA'); görögül a ragozott alak gépi magyaros kiejtése, jelölés nélkül."""
     if not kiejtes:
         return ragozott
-    return '%s (%s%s)' % (ragozott, SZOTARI_ALAK_ELOTAG if forras == 'TAHOT' else '', kiejtes)
+    return '%s (%s%s)' % (ragozott, SZOTARI_ALAK_ELOTAG if forras == 'TAHOT_LEMMA' else '', kiejtes)
 
 
 SZOTARI_ALAK_ELOTAG = 'szótári alak: '
@@ -1644,11 +1682,21 @@ def _sece_kiejtes(szo, strong):
     lk = lemma_kiejtes_szabaly(strong)
     if strong.startswith('G') and lk and unicodedata.normalize('NFC', lk[0]) != unicodedata.normalize('NFC', szo):
         return gorog_magyaros(gepi_atiras(szo))
+    if (strong.startswith('H') and lk and _heber_alap(lk[0].split(',')[0]) != _heber_alap(szo)
+            and HK.kiejt(szo) != HK.kiejt(lk[0].split(',')[0])):  # más pontírás, ugyanaz a szó (שְׁאֹול ↔ שְׁאוֹל): a lemmáé
+        # DT-F131y: a kiírt héber alak nem a TBESH-lemma (זַעַק ↔ זְעָקָה): a kiírt alak jóváhagyott vagy gépi kiejtése
+        return heber_lemma_kiejtes(szo, '') or heber_gepi(szo) or (lk[1] or EM_DASH)
     return lk[1] if lk and lk[1] else EM_DASH
 
 
+def _heber_alap(alak):
+    """A héber alak összevetési kulcsa: NFC, kantilláció és meteg nélkül, a magánhangzójelekkel."""
+    return unicodedata.normalize('NFC', HK.tisztit(alak).replace(HK.METEG, '').strip())
+
+
 def _rovid_kiejtes(strong):
-    """A kiejtés-szabály szerinti kiejtés (kiejtés-szabály, ISTENTISZT-001 arany lap, 2026-10-29); héberül jóváhagyott alak híján EM_DASH (jelölt hiány)."""
+    """A kiejtés-szabály szerinti kiejtés (kiejtés-szabály, ISTENTISZT-001 arany lap, 2026-10-29); héberül jóváhagyott alak
+    híján a gépi, jelölve (DT-F131y); EM_DASH, ha az sincs (jelölt hiány)."""
     lk = lemma_kiejtes_szabaly(strong)
     return lk[1] if lk and lk[1] else EM_DASH
 

@@ -60,6 +60,11 @@ of Biblical Hebrew/Greek), OSHL (Open Scriptures Hebrew Lexicon), TWOT
 (Treasury of Scripture Knowledge), KH (Károli-kereszthivatkozás), LXX
 (Septuaginta), MT (Masoretic Text), KJV (King James Version).
 
+**Kiejtés:** a héber és a görög szó mellett zárójelben a magyaros kiejtés. A görög kiejtés szabályos átírás. A
+jelöletlen héber kiejtés kézzel jóváhagyott; a **„gépi”** jelölésű (pl. „וַיִּקְרָא (vajjikrá, gépi)”) a pontozott héber
+szövegből rögzített szabályokkal készült, kézzel nem ellenőrizték. A ragozott szó mellett a saját kiejtése áll, nem
+a szótári alaké.
+
 **Mit mutat ez a rész?** — minden blokk elején egy-két mondatos olvasói bevezető; az alatta álló dőlt, technikai
 mondat a lap készítőinek szól.
 
@@ -87,29 +92,29 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 
 | Igehely | Kulcsszó | Jelentés (a szó) | Funkció (a motívumban) | PaRDeS-szint | Strong | UBS-jelentés | Megbízhatóság · azonosítás módja |
 |---|---|---|---|---|---|---|---|
-| [1Móz 4:26](#ige-1móz-4-26) | segítségül hívni az Úrnak nevét — קְרֹ֖א (szótári alak: kárá); שֵׁ֥ם (szótári alak: sém) | H7121: segítségül hívni · Qal 2.c; H8034: *(nincs hozzárendelés)* ⓘ[^1] | 🌱 alap-előfordulás | Drash | H7121+H8034 | H7121: `006562001001000` — kiáltani [ⓘ](/szo/H7121); `006562001009000` — nevezni; nevet adni [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · szó-szintű-gépi[^1] |
-| [1Móz 12:8](#ige-1móz-12-8) | segítségűl hívá az Úr nevét — יִּקְרָ֖א (szótári alak: kárá); שֵׁ֥ם (szótári alak: sém) | H7121: segítségül hívni · Qal 2.c; H8034: név: Isten megjelölése · 3 ⓘ[^2] | 🔁 ismétlődés | Drash | H7121+H8034 | H7121: `006562001001000` — kiáltani [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · szó-szintű-gépi[^2] |
-| [1Móz 13:4](#ige-1móz-13-4) | segítségűl hívá ott Ábrám az Úrnak nevét — יִּקְרָ֥א (szótári alak: kárá); שֵׁ֥ם (szótári alak: sém) | H7121: segítségül hívni · Qal 2.c; H8034: név: Isten megjelölése · 3 ⓘ[^3] | ⭐ küszöb-előfordulás | Drash | H7121+H8034 | H7121: `006562001001000` — kiáltani [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · szó-szintű-gépi[^3] |
-| [1Móz 21:33](#ige-1móz-21-33) | segítségűl hívá ott az örökkévaló Úr Istennek nevét — יִּ֨קְרָא (szótári alak: kárá); שֵׁ֥ם (szótári alak: sém) | H7121: segítségül hívni · Qal 2.c; H8034: név: Isten megjelölése · 3 ⓘ[^4] | ➕ bővülés | Drash | H7121+H8034 | H7121: `006562001001000` — kiáltani [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · szó-szintű-gépi[^4] |
-| [1Móz 26:25](#ige-1móz-26-25) | segítségűl hívá az Úrnak nevét — יִּקְרָא֙ (szótári alak: kárá); שֵׁ֣ם (szótári alak: sém) | H7121: segítségül hívni · Qal 2.c; H8034: név: Isten megjelölése · 3 ⓘ[^5] | 👨‍👦 öröklés | Drash | H7121+H8034 | H7121: `006562001001000` — kiáltani [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · szó-szintű-gépi[^5] |
-| [2Móz 33:19](#ige-2móz-33-19) | kiáltom előtted az Úr nevét — קָרָ֧אתִֽי (szótári alak: kárá); שֵׁ֛ם (szótári alak: sém) | H7121: a nevet kihirdetni · Qal 3.b; H8034: *(nincs hozzárendelés)* ⓘ[^6] | ❓ be nem sorolható | Remez | H7121+H8034 | H7121: `006562001001000` — kiáltani [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · szó-szintű-gépi[^6] |
-| [2Móz 34:5](#ige-2móz-34-5) | nevén kiáltá az Urat — יִּקְרָ֥א (szótári alak: kárá); שֵׁ֖ם (szótári alak: sém) | H7121: a nevet kihirdetni · Qal 3.b; H8034: *(nincs hozzárendelés)* ⓘ[^7] | ❓ be nem sorolható | Remez | H7121+H8034 | H7121: `006562001001000` — kiáltani [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · szó-szintű-gépi[^7] |
-| [1Kir 18:24](#ige-1kir-18-24) | segítségül hívom az Úrnak nevét — אֶקְרָ֣א (szótári alak: kárá); שֵׁם (szótári alak: sém) | H7121: segítségül hívni · Qal 2.c; H8034: *(nincs hozzárendelés)* ⓘ[^8] | ⚔️ nyilvános versengés | Remez | H7121+H8034 | H7121: `006562001001000` — kiáltani [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · tartalom-alapú[^8] |
-| [1Kir 18:25](#ige-1kir-18-25) | hívjátok segítségül a ti istenteknek nevét — קִרְאוּ֙ (szótári alak: kárá); שֵׁ֣ם (szótári alak: sém) | H7121: segítségül hívni · Qal 2.c; H8034: *(nincs hozzárendelés)* ⓘ[^9] | ⚔️ nyilvános versengés (folytatás) | Remez | H7121+H8034 | H7121: `006562001001000` — kiáltani [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · tartalom-alapú[^9] |
-| [1Kir 18:26](#ige-1kir-18-26) | segítségül hívák a Baálnak nevét — יִּקְרְא֣וּ (szótári alak: kárá); שֵׁם (szótári alak: sém) | H7121: segítségül hívni · Qal 2.c; H8034: név: hamis istenekről · 4 ⓘ[^10] | ⚔️ nyilvános versengés (folytatás) | Remez | H7121+H8034 | H7121: `006562001001000` — kiáltani [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · tartalom-alapú[^10] |
-| [2Kir 5:11](#ige-2kir-5-11) | segítségül hívja az Úrnak, az ő Istenének nevét — קָרָא֙ (szótári alak: kárá); שֵׁם (szótári alak: sém) | H7121: segítségül hívni · Qal 2.c; H8034: *(nincs hozzárendelés)* ⓘ[^11] | 🔁 ismétlődés, kívülálló szemszögéből | Remez | H7121+H8034 | H7121: `006562001001000` — kiáltani [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · tartalom-alapú[^11] |
-| [1Krón 16:8](#ige-1krón-16-8) | hívjátok segítségül az ő nevét — קִרְא֣וּ (szótári alak: kárá); שְׁמ֔ (szótári alak: sém) | H7121: segítségül hívni · Qal 2.c; H8034: *(nincs hozzárendelés)* ⓘ[^12] | ⇄ párhuzam | Remez | H7121+H8034 | H7121: `006562001001000` — kiáltani [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · tartalom-alapú[^12] |
-| [Zsolt 79:6](#ige-zsolt-79-6) | nem hívják segítségül a te nevedet — קָרָֽאוּ (szótári alak: kárá); שִׁמְ (szótári alak: sém) | H7121: segítségül hívni · Qal 2.c; H8034: *(nincs hozzárendelés)* ⓘ[^13] | ⇄🚫 párhuzam, tagadó forma | Remez | H7121+H8034 | H7121: `006562001011000` — (istenséget) elismerni [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · tartalom-alapú[^13] |
-| [Zsolt 105:1](#ige-zsolt-105-1) | hívjátok segítségül az ő nevét — קִרְא֣וּ (szótári alak: kárá); שְׁמ֑ (szótári alak: sém) | H7121: segítségül hívni · Qal 2.c; H8034: *(nincs hozzárendelés)* ⓘ[^14] | ⇄ párhuzam | Remez | H7121+H8034 | H7121: `006562001001000` — kiáltani [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · tartalom-alapú[^14] |
-| [Zsolt 116:4](#ige-zsolt-116-4) | az Úrnak nevét segítségül hívám — אֶקְרָ֑א (szótári alak: kárá); שֵֽׁם (szótári alak: sém) | H7121: segítségül hívni · Qal 2.c; H8034: *(nincs hozzárendelés)* ⓘ[^15] | 🔁 ismétlődés, személyes könyörgésben | Remez | H7121+H8034 | H7121: `006562001001000` — kiáltani [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · tartalom-alapú[^15] |
-| [Zsolt 116:13](#ige-zsolt-116-13) | az Úrnak nevét hívom segítségül — אֶקְרָֽא (szótári alak: kárá); שֵׁ֖ם (szótári alak: sém) | H7121: segítségül hívni · Qal 2.c; H8034: *(nincs hozzárendelés)* ⓘ[^16] | 🔁 ismétlődés, személyes könyörgésben | Remez | H7121+H8034 | H7121: `006562001001000` — kiáltani [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · tartalom-alapú[^16] |
-| [Zsolt 116:17](#ige-zsolt-116-17) | az Úr nevét hívom segítségül — אֶקְרָֽא (szótári alak: kárá); שֵׁ֖ם (szótári alak: sém) | H7121: segítségül hívni · Qal 2.c; H8034: *(nincs hozzárendelés)* ⓘ[^17] | 🔁 ismétlődés, személyes könyörgésben | Remez | H7121+H8034 | H7121: `006562001001000` — kiáltani [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · tartalom-alapú[^17] |
-| [Ézs 12:4](#ige-ézs-12-4) | magasztaljátok az Ő nevét — קִרְא֣וּ (szótári alak: kárá); שְׁמֽ (szótári alak: sém) | H7121: segítségül hívni · Qal 2.c; H8034: *(nincs hozzárendelés)* ⓘ[^18] | ⇄ párhuzam | Remez | H7121+H8034 | H7121: `006562001001000` — kiáltani [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034); `007442001004000` — név; önmaga [ⓘ](/szo/H8034) | közepes · tartalom-alapú[^18] |
-| [Ézs 64:6](#ige-ézs-64-6) | segítségül hívta volna nevedet — קוֹרֵ֣א (szótári alak: kárá); שִׁמְ (szótári alak: sém) | H7121: segítségül hívni · Qal 2.c; H8034: *(nincs hozzárendelés)* ⓘ[^19] | 🚫 tagadó forma | Remez | H7121+H8034 | H7121: `006562001011000` — (istenséget) elismerni [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · tartalom-alapú[^19] |
-| [Jer 10:25](#ige-jer-10-25) | nem hívják segítségül a te nevedet — קָרָ֑אוּ (szótári alak: kárá); שִׁמְ (szótári alak: sém) | H7121: segítségül hívni · Qal 2.c; H8034: *(nincs hozzárendelés)* ⓘ[^20] | ⇄🚫 párhuzam, tagadó forma | Remez | H7121+H8034 | H7121: `006562001011000` — (istenséget) elismerni [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · tartalom-alapú[^20] |
-| [Jóel 2:32](#ige-jóel-2-32) | az Úrnak nevét hívja segítségül — קֹרֵֽא (szótári alak: kárá); שֵׁ֥ם (szótári alak: sém) | H7121: segítségül hívni · Qal 2.c; H8034: *(nincs hozzárendelés)* ⓘ[^21] | 🎯 előkép/beteljesedés | Remez | H7121+H8034 | H7121: `006562001006000` — hívni; magához hívni; meghívni [ⓘ](/szo/H7121) *(MT: Jóel 3:5)*; `006562001011000` — (istenséget) elismerni [ⓘ](/szo/H7121) *(MT: Jóel 3:5)* · H8034: `007442001001000` — név [ⓘ](/szo/H8034) *(MT: Jóel 3:5)* | magas · tartalom-alapú[^21] |
-| [Sof 3:9](#ige-sof-3-9) | segítségül hívják az Úr nevét — קְרֹ֤א (szótári alak: kárá); שֵׁ֣ם (szótári alak: sém) | H7121: segítségül hívni · Qal 2.c; H8034: *(nincs hozzárendelés)* ⓘ[^22] | 🔮 eszkatológiai kitekintés | Remez | H7121+H8034 | H7121: `006562001011000` — (istenséget) elismerni [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · tartalom-alapú[^22] |
-| [Zak 13:9](#ige-zak-13-9) | segítségül hívja ... nevemet — יִקְרָ֣א (szótári alak: kárá); שְׁמִ֗ (szótári alak: sém) | H7121: segítségül hívni · Qal 2.c; H8034: *(nincs hozzárendelés)* ⓘ[^23] | 🔮 eszkatológiai kitekintés (folytatás) | Remez | H7121+H8034 | H7121: `006562001001000` — kiáltani [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · tartalom-alapú[^23] |
+| [1Móz 4:26](#ige-1móz-4-26) | segítségül hívni az Úrnak nevét — לִקְרֹ֖א (likró, gépi); בְּשֵׁ֥ם (besém, gépi) | H7121: segítségül hívni · Qal 2.c; H8034: *(nincs hozzárendelés)* ⓘ[^1] | 🌱 alap-előfordulás | Drash | H7121+H8034 | H7121: `006562001001000` — kiáltani [ⓘ](/szo/H7121); `006562001009000` — nevezni; nevet adni [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · szó-szintű-gépi[^1] |
+| [1Móz 12:8](#ige-1móz-12-8) | segítségűl hívá az Úr nevét — וַיִּקְרָ֖א (vajjikrá, gépi); בְּשֵׁ֥ם (besém, gépi) | H7121: segítségül hívni · Qal 2.c; H8034: név: Isten megjelölése · 3 ⓘ[^2] | 🔁 ismétlődés | Drash | H7121+H8034 | H7121: `006562001001000` — kiáltani [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · szó-szintű-gépi[^2] |
+| [1Móz 13:4](#ige-1móz-13-4) | segítségűl hívá ott Ábrám az Úrnak nevét — וַיִּקְרָ֥א (vajjikrá, gépi); בְּשֵׁ֥ם (besém, gépi) | H7121: segítségül hívni · Qal 2.c; H8034: név: Isten megjelölése · 3 ⓘ[^3] | ⭐ küszöb-előfordulás | Drash | H7121+H8034 | H7121: `006562001001000` — kiáltani [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · szó-szintű-gépi[^3] |
+| [1Móz 21:33](#ige-1móz-21-33) | segítségűl hívá ott az örökkévaló Úr Istennek nevét — וַיִּ֨קְרָא (vajjikrá, gépi); בְּשֵׁ֥ם (besém, gépi) | H7121: segítségül hívni · Qal 2.c; H8034: név: Isten megjelölése · 3 ⓘ[^4] | ➕ bővülés | Drash | H7121+H8034 | H7121: `006562001001000` — kiáltani [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · szó-szintű-gépi[^4] |
+| [1Móz 26:25](#ige-1móz-26-25) | segítségűl hívá az Úrnak nevét — וַיִּקְרָא֙ (vajjikrá, gépi); בְּשֵׁ֣ם (besém, gépi) | H7121: segítségül hívni · Qal 2.c; H8034: név: Isten megjelölése · 3 ⓘ[^5] | 👨‍👦 öröklés | Drash | H7121+H8034 | H7121: `006562001001000` — kiáltani [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · szó-szintű-gépi[^5] |
+| [2Móz 33:19](#ige-2móz-33-19) | kiáltom előtted az Úr nevét — וְקָרָ֧אתִֽי (vekárátí, gépi); בְשֵׁ֛ם (vesém, gépi) | H7121: a nevet kihirdetni · Qal 3.b; H8034: *(nincs hozzárendelés)* ⓘ[^6] | ❓ be nem sorolható | Remez | H7121+H8034 | H7121: `006562001001000` — kiáltani [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · szó-szintű-gépi[^6] |
+| [2Móz 34:5](#ige-2móz-34-5) | nevén kiáltá az Urat — וַיִּקְרָ֥א (vajjikrá, gépi); בְשֵׁ֖ם (vesém, gépi) | H7121: a nevet kihirdetni · Qal 3.b; H8034: *(nincs hozzárendelés)* ⓘ[^7] | ❓ be nem sorolható | Remez | H7121+H8034 | H7121: `006562001001000` — kiáltani [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · szó-szintű-gépi[^7] |
+| [1Kir 18:24](#ige-1kir-18-24) | segítségül hívom az Úrnak nevét — אֶקְרָ֣א (ekrá, gépi); בְשֵׁם (vesém, gépi) | H7121: segítségül hívni · Qal 2.c; H8034: *(nincs hozzárendelés)* ⓘ[^8] | ⚔️ nyilvános versengés | Remez | H7121+H8034 | H7121: `006562001001000` — kiáltani [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · tartalom-alapú[^8] |
+| [1Kir 18:25](#ige-1kir-18-25) | hívjátok segítségül a ti istenteknek nevét — וְקִרְאוּ֙ (vekireú, gépi); בְּשֵׁ֣ם (besém, gépi) | H7121: segítségül hívni · Qal 2.c; H8034: *(nincs hozzárendelés)* ⓘ[^9] | ⚔️ nyilvános versengés (folytatás) | Remez | H7121+H8034 | H7121: `006562001001000` — kiáltani [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · tartalom-alapú[^9] |
+| [1Kir 18:26](#ige-1kir-18-26) | segítségül hívák a Baálnak nevét — וַיִּקְרְא֣וּ (vajjikreú, gépi); בְשֵׁם (vesém, gépi) | H7121: segítségül hívni · Qal 2.c; H8034: név: hamis istenekről · 4 ⓘ[^10] | ⚔️ nyilvános versengés (folytatás) | Remez | H7121+H8034 | H7121: `006562001001000` — kiáltani [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · tartalom-alapú[^10] |
+| [2Kir 5:11](#ige-2kir-5-11) | segítségül hívja az Úrnak, az ő Istenének nevét — וְקָרָא֙ (vekárá, gépi); בְּשֵׁם (besém, gépi) | H7121: segítségül hívni · Qal 2.c; H8034: *(nincs hozzárendelés)* ⓘ[^11] | 🔁 ismétlődés, kívülálló szemszögéből | Remez | H7121+H8034 | H7121: `006562001001000` — kiáltani [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · tartalom-alapú[^11] |
+| [1Krón 16:8](#ige-1krón-16-8) | hívjátok segítségül az ő nevét — קִרְא֣וּ (kireú, gépi); בִשְׁמ֔וֹ (vismó, gépi) | H7121: segítségül hívni · Qal 2.c; H8034: *(nincs hozzárendelés)* ⓘ[^12] | ⇄ párhuzam | Remez | H7121+H8034 | H7121: `006562001001000` — kiáltani [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · tartalom-alapú[^12] |
+| [Zsolt 79:6](#ige-zsolt-79-6) | nem hívják segítségül a te nevedet — קָרָֽאוּ (káráú, gépi); בְּ֝שִׁמְךָ֗ (besimchá, gépi) | H7121: segítségül hívni · Qal 2.c; H8034: *(nincs hozzárendelés)* ⓘ[^13] | ⇄🚫 párhuzam, tagadó forma | Remez | H7121+H8034 | H7121: `006562001011000` — (istenséget) elismerni [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · tartalom-alapú[^13] |
+| [Zsolt 105:1](#ige-zsolt-105-1) | hívjátok segítségül az ő nevét — קִרְא֣וּ (kireú, gépi); בִּשְׁמ֑וֹ (bismó, gépi) | H7121: segítségül hívni · Qal 2.c; H8034: *(nincs hozzárendelés)* ⓘ[^14] | ⇄ párhuzam | Remez | H7121+H8034 | H7121: `006562001001000` — kiáltani [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · tartalom-alapú[^14] |
+| [Zsolt 116:4](#ige-zsolt-116-4) | az Úrnak nevét segítségül hívám — אֶקְרָ֑א (ekrá, gépi); וּבְשֵֽׁם (úvesém, gépi) | H7121: segítségül hívni · Qal 2.c; H8034: *(nincs hozzárendelés)* ⓘ[^15] | 🔁 ismétlődés, személyes könyörgésben | Remez | H7121+H8034 | H7121: `006562001001000` — kiáltani [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · tartalom-alapú[^15] |
+| [Zsolt 116:13](#ige-zsolt-116-13) | az Úrnak nevét hívom segítségül — אֶקְרָֽא (ekrá, gépi); וּבְשֵׁ֖ם (úvesém, gépi) | H7121: segítségül hívni · Qal 2.c; H8034: *(nincs hozzárendelés)* ⓘ[^16] | 🔁 ismétlődés, személyes könyörgésben | Remez | H7121+H8034 | H7121: `006562001001000` — kiáltani [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · tartalom-alapú[^16] |
+| [Zsolt 116:17](#ige-zsolt-116-17) | az Úr nevét hívom segítségül — אֶקְרָֽא (ekrá, gépi); וּבְשֵׁ֖ם (úvesém, gépi) | H7121: segítségül hívni · Qal 2.c; H8034: *(nincs hozzárendelés)* ⓘ[^17] | 🔁 ismétlődés, személyes könyörgésben | Remez | H7121+H8034 | H7121: `006562001001000` — kiáltani [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · tartalom-alapú[^17] |
+| [Ézs 12:4](#ige-ézs-12-4) | magasztaljátok az Ő nevét — קִרְא֣וּ (kireú, gépi); שְׁמֽוֹ (semó, gépi) | H7121: segítségül hívni · Qal 2.c; H8034: *(nincs hozzárendelés)* ⓘ[^18] | ⇄ párhuzam | Remez | H7121+H8034 | H7121: `006562001001000` — kiáltani [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034); `007442001004000` — név; önmaga [ⓘ](/szo/H8034) | közepes · tartalom-alapú[^18] |
+| [Ézs 64:6](#ige-ézs-64-6) | segítségül hívta volna nevedet — קוֹרֵ֣א (kóré, gépi); בְשִׁמְךָ֔ (vesimchá, gépi) | H7121: segítségül hívni · Qal 2.c; H8034: *(nincs hozzárendelés)* ⓘ[^19] | 🚫 tagadó forma | Remez | H7121+H8034 | H7121: `006562001011000` — (istenséget) elismerni [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · tartalom-alapú[^19] |
+| [Jer 10:25](#ige-jer-10-25) | nem hívják segítségül a te nevedet — קָרָ֑אוּ (káráú, gépi); בְּשִׁמְךָ֖ (besimchá, gépi) | H7121: segítségül hívni · Qal 2.c; H8034: *(nincs hozzárendelés)* ⓘ[^20] | ⇄🚫 párhuzam, tagadó forma | Remez | H7121+H8034 | H7121: `006562001011000` — (istenséget) elismerni [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · tartalom-alapú[^20] |
+| [Jóel 2:32](#ige-jóel-2-32) | az Úrnak nevét hívja segítségül — קֹרֵֽא (kóré, gépi); בְּשֵׁ֥ם (besém, gépi) | H7121: segítségül hívni · Qal 2.c; H8034: *(nincs hozzárendelés)* ⓘ[^21] | 🎯 előkép/beteljesedés | Remez | H7121+H8034 | H7121: `006562001006000` — hívni; magához hívni; meghívni [ⓘ](/szo/H7121) *(MT: Jóel 3:5)*; `006562001011000` — (istenséget) elismerni [ⓘ](/szo/H7121) *(MT: Jóel 3:5)* · H8034: `007442001001000` — név [ⓘ](/szo/H8034) *(MT: Jóel 3:5)* | magas · tartalom-alapú[^21] |
+| [Sof 3:9](#ige-sof-3-9) | segítségül hívják az Úr nevét — לִקְרֹ֤א (likró, gépi); בְּשֵׁ֣ם (besém, gépi) | H7121: segítségül hívni · Qal 2.c; H8034: *(nincs hozzárendelés)* ⓘ[^22] | 🔮 eszkatológiai kitekintés | Remez | H7121+H8034 | H7121: `006562001011000` — (istenséget) elismerni [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · tartalom-alapú[^22] |
+| [Zak 13:9](#ige-zak-13-9) | segítségül hívja ... nevemet — יִקְרָ֣א (jikrá, gépi); בִשְׁמִ֗י (vismí, gépi) | H7121: segítségül hívni · Qal 2.c; H8034: *(nincs hozzárendelés)* ⓘ[^23] | 🔮 eszkatológiai kitekintés (folytatás) | Remez | H7121+H8034 | H7121: `006562001001000` — kiáltani [ⓘ](/szo/H7121) · H8034: `007442001001000` — név [ⓘ](/szo/H8034) | magas · tartalom-alapú[^23] |
 | [ApCsel 2:21](#ige-apcsel-2-21) | az Úrnak nevét segítségül hívja — ἐπικαλέσηται (epikaleszétai) | segítségül hívni, folyamodni valakihez · TBESG 2 ⓘ[^24] | 🎯 előkép/beteljesedés (idézet) | Remez | G1941 | 33.176 — segítségül hívni; folyamodni valakihez; segítséget kérni [ⓘ](/szo/G1941) | magas · tartalom-alapú[^24] |
 | [ApCsel 9:14](#ige-apcsel-9-14) | segítségül hívják — ἐπικαλουμένους (epikalúmenúsz) | segítségül hívni, folyamodni valakihez · TBESG 2 ⓘ[^25] | 🎯 előkép/beteljesedés (kiterjesztés) | Remez | G1941 | 11.28 — (Isten) népéhez tartozni; valakinek a népe lenni [ⓘ](/szo/G1941) | magas · tartalom-alapú[^25] |
 | [ApCsel 9:21](#ige-apcsel-9-21) | hívják segítségül — ἐπικαλουμένους (epikalúmenúsz) | segítségül hívni, folyamodni valakihez · TBESG 2 ⓘ[^26] | 🔁 ismétlődés | Remez | G1941 | 33.131 — hívni; nevezni [ⓘ](/szo/G1941) | magas · tartalom-alapú[^26] |
@@ -467,7 +472,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 | Mt 10:3 | gépi Strong-keresés: G1941[^k79] | **elutasítva** — passzív szerkezet vagy megnevezés (negatív kritérium): F110 szűrő (DT283), K1_passziv: passzív/megnevezett (having been called); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció |
 | Mt 10:25 | gépi Strong-keresés: G1941[^k80] | **elutasítva** — passzív szerkezet vagy megnevezés (negatív kritérium): F110 szűrő (DT283), B osztály, kézi olvasás: Károli: „Ha a házigazdát Belzebubnak hívták” — megnevezés, nem invokáció; negatív kritérium: passzív/megnevezés jellegű használat |
 | Zsid 11:16 | gépi Strong-keresés: G1941[^k81] | **elutasítva** — passzív szerkezet vagy megnevezés (negatív kritérium): F110 szűrő (DT283), K1_passziv: passzív/megnevezett (to be called); negatív kritérium: passzív/megnevezés jellegű vagy jogi használat, nem aktív invokáció |
-| Ézs 41:25 | gépi szópár-keresés: H7121 + H8034[^k82] | **nyitott döntés**: F110 szűrő (DT283), B osztály, kézi olvasás: Károli: „hirdeti nevemet” (TAHOT: „from [the] rising of [the] sun he will call on name my”) — aktív קרא (kárá) + בְּ + שֵׁם, az Úr a beszélő. A szabály átengedi; elbírálatlan, a motívum-menet dönt |
+| Ézs 41:25 | gépi szópár-keresés: H7121 + H8034[^k82] | **nyitott döntés**: F110 szűrő (DT283), B osztály, kézi olvasás: Károli: „hirdeti nevemet” (TAHOT: „from [the] rising of [the] sun he will call on name my”) — aktív קרא (kárá) + בְּ (be, gépi) + שֵׁם, az Úr a beszélő. A szabály átengedi; elbírálatlan, a motívum-menet dönt |
 | Zsolt 99:6 | gépi szópár-keresés: H7121 + H8034[^k83] | **elutasítva** — egyéb: N59, kézi olvasás: Károli: „Sámuel az ő nevét segítségül hívókkal egybe, segítségül hívják vala az Urat, és meghallgatá őket” (TAHOT: קֹרְאֵי שְׁמוֹ, H7121+H8034; a versben H6030 is) — aktív קרא + név, Isten segítségül hívása, meghallgatással; a motívum A-mintája. Eddig sem előfordulás, sem jelölt nem volt. Döntés (felhasználó, 2026-10-29, orkesztrátor-chat, szó szerint: „Igen, így”; a kérdés: „Ézs 64:6 beépítve, Zsolt 99:6 elutasítva?”): elutasítva a negatív kritérium szerint (adat/motivumok.tsv: קָרָא + בְּ aktív, invokáló szerkezet kell). Saját mérés, TAHOT: וּשְׁמוּאֵל בְּקֹרְאֵי שְׁמוֹ קֹרִאים אֶל־יְהוָה — a בְּ (H9003) az igenév előtt áll („azok között, akik hívják”), a név (H8034 + 3. sz. birtokos rag) az igenév birtokos szerkezetében, a második tagban אֶל (H0413) + יְהוָה; kárá + בְּ + név szerkezet nincs, így a fenti „A-minta” olvasat nem áll. Előzmény: DT283 (JSir 3:55, 5Móz 32:3: a בְּ nélküli szerkezet kiszűrve marad, a kritérium nem változik). Mérés 2026-10-29: scope=TAHOT-teljes+TAGNT-teljes |
 
 **Kutatói felvetés** (10)
@@ -693,14 +698,14 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 | Szó | Kiejtés | Strong | Rövid jelentés |
 |---|---|---|---|
-| זָכַר | — | H2142 | emlékezni |
-| מָצָא | — | H4672 | találni |
-| נָקַב | — | H5344 | átfúrni; név szerint kijelölni |
-| עָשָׂה | — | H6213 | csinálni |
+| זָכַר | záchar, gépi | H2142 | emlékezni |
+| מָצָא | mácá, gépi | H4672 | találni |
+| נָקַב | nákav, gépi | H5344 | átfúrni; név szerint kijelölni |
+| עָשָׂה | ászá, gépi | H6213 | csinálni |
 | **קָרָא** *(a motívum szava)* | kárá | H7121 vagy H7122 *(a SECE csak a szóalakot adja)* | H7121: hívni: megszólítani / H7122: szembejönni: találkozni |
-| שׂוּם | — | H7760 vagy H7761 *(a SECE csak a szóalakot adja)* | H7760: helyezni: létrehozni / H7761: tenni: csinálni; elrendelni |
-| שָׁכַן | — | H7931 | lakni |
-| שֻׁם | — | H8036 | név |
+| שׂוּם | szúm, gépi | H7760 vagy H7761 *(a SECE csak a szóalakot adja)* | H7760: helyezni: létrehozni / H7761: tenni: csinálni; elrendelni |
+| שָׁכַן | sáchan, gépi | H7931 | lakni |
+| שֻׁם | sum, gépi | H8036 | név |
 
 *A szólista és a sorrend a SECE-é (gyakoriságot nem ad; az ismétlődő szóalak egyszer áll); a Strong-szám a TBESG/TBESH lemmájából vagy a SECE címszavából párosul; a rövid jelentés: héberül `adat/glosszak_heber_hu.tsv`, görögül a TBESG angol glosszája (magyar rövid glossza-tábla a görögre még nincs).*
 
@@ -1126,26 +1131,26 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 | Szó | Kiejtés | Strong | Rövid jelentés |
 |---|---|---|---|
-| אָמַר | — | H0559 | mondani |
-| הָגָה | — | H1897 vagy H1898 *(a SECE csak a szóalakot adja)* | H1897: mormolni / H1898: eltávolítani, elűzni |
-| הָמָה | — | H1993 | zúgni, zajongani; háborogni, nyugtalankodni |
-| זָעַק | — | H2199 | kiáltani; összehívni; összegyűlni |
-| זַעַק | — | H2201 | kiáltás |
-| כָּנָה | — | H3655 | hízelegni |
-| נָהַם | — | H5098 | nyögni; morogni, ordítani |
-| נָהַק | — | H5101 | ordítani |
-| נָשָׂא | — | H5375 | emelni: felvenni |
-| פָּצַח | — | H6476 | ujjongásba törni; összetörni |
-| צָהַל | — | H6670 | kiáltani |
-| צָוַח | — | H6681 | kiáltani |
-| צָעַק | — | H6817 | kiáltozni |
-| צָרַח | — | H6873 | kiáltozni |
+| אָמַר | ámar, gépi | H0559 | mondani |
+| הָגָה | hágá, gépi | H1897 vagy H1898 *(a SECE csak a szóalakot adja)* | H1897: mormolni / H1898: eltávolítani, elűzni |
+| הָמָה | hámá, gépi | H1993 | zúgni, zajongani; háborogni, nyugtalankodni |
+| זָעַק | záak, gépi | H2199 | kiáltani; összehívni; összegyűlni |
+| זַעַק | zaak, gépi | H2201 | kiáltás |
+| כָּנָה | káná, gépi | H3655 | hízelegni |
+| נָהַם | náham, gépi | H5098 | nyögni; morogni, ordítani |
+| נָהַק | náhak, gépi | H5101 | ordítani |
+| נָשָׂא | nászá, gépi | H5375 | emelni: felvenni |
+| פָּצַח | pácach, gépi | H6476 | ujjongásba törni; összetörni |
+| צָהַל | cáhal, gépi | H6670 | kiáltani |
+| צָוַח | cávach, gépi | H6681 | kiáltani |
+| צָעַק | cáak, gépi | H6817 | kiáltozni |
+| צָרַח | cárach, gépi | H6873 | kiáltozni |
 | **קָרָא** *(a motívum szava)* | kárá | H7121 vagy H7122 *(a SECE csak a szóalakot adja)* | H7121: hívni: megszólítani / H7122: szembejönni: találkozni |
-| רוּעַ | — | H7321 | hangosan kiáltani |
-| רָעַם | — | H7481 | mennydörögni |
-| שָׁאַג | — | H7580 | ordítani; harsogni |
-| שָׁבַע | — | H7650 | esküdni |
-| שָׁעָה | — | H8159 vagy H8160 *(a SECE csak a szóalakot adja)* | H8159: nézni / H8160: pillanat |
+| רוּעַ | rúa, gépi | H7321 | hangosan kiáltani |
+| רָעַם | ráam, gépi | H7481 | mennydörögni |
+| שָׁאַג | sáag, gépi | H7580 | ordítani; harsogni |
+| שָׁבַע | sáva, gépi | H7650 | esküdni |
+| שָׁעָה | sáá, gépi | H8159 vagy H8160 *(a SECE csak a szóalakot adja)* | H8159: nézni / H8160: pillanat |
 
 *A szólista és a sorrend a SECE-é (gyakoriságot nem ad; az ismétlődő szóalak egyszer áll); a Strong-szám a TBESG/TBESH lemmájából vagy a SECE címszavából párosul; a rövid jelentés: héberül `adat/glosszak_heber_hu.tsv`, görögül a TBESG angol glosszája (magyar rövid glossza-tábla a görögre még nincs).*
 
@@ -1177,16 +1182,16 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 | Szó | Kiejtés | Strong | Rövid jelentés |
 |---|---|---|---|
-| אָמַר | — | H0559 | mondani |
-| בֹּוא | — | H0935 | bejönni: jönni |
-| דָבַר | — | H1696 | szólni: beszélni |
-| הָיָה | — | H1961 | lenni |
-| זָכַר | — | H2142 | emlékezni |
-| זָעַק | — | H2199 | kiáltani; összehívni; összegyűlni |
-| לָקַח | — | H3947 | venni: fogni |
-| עֲלַל | — | H5954 | bemenni, bejönni; bevinni |
+| אָמַר | ámar, gépi | H0559 | mondani |
+| בֹּוא | bó, gépi | H0935 | bejönni: jönni |
+| דָבַר | dávar, gépi | H1696 | szólni: beszélni |
+| הָיָה | hájá, gépi | H1961 | lenni |
+| זָכַר | záchar, gépi | H2142 | emlékezni |
+| זָעַק | záak, gépi | H2199 | kiáltani; összehívni; összegyűlni |
+| לָקַח | lákach, gépi | H3947 | venni: fogni |
+| עֲלַל | alal, gépi | H5954 | bemenni, bejönni; bevinni |
 | **קָרָא** *(a motívum szava)* | kárá | H7121 vagy H7122 *(a SECE csak a szóalakot adja)* | H7121: hívni: megszólítani / H7122: szembejönni: találkozni |
-| רוּם | — | H7311 vagy H7312 vagy H7313 vagy H7314 *(a SECE csak a szóalakot adja)* | H7311: felmagasztalni / H7312: magasság / H7313: felemelkedni; felmagasztalni / H7314: magasság |
+| רוּם | rúm, gépi | H7311 vagy H7312 vagy H7313 vagy H7314 *(a SECE csak a szóalakot adja)* | H7311: felmagasztalni / H7312: magasság / H7313: felemelkedni; felmagasztalni / H7314: magasság |
 | **שֵׁם** *(a motívum szava)* | sém | H8034 vagy H8035 *(a SECE csak a szóalakot adja)* | H8034: név / H8035: Sém |
 
 *A szólista és a sorrend a SECE-é (gyakoriságot nem ad; az ismétlődő szóalak egyszer áll); a Strong-szám a TBESG/TBESH lemmájából vagy a SECE címszavából párosul; a rövid jelentés: héberül `adat/glosszak_heber_hu.tsv`, görögül a TBESG angol glosszája (magyar rövid glossza-tábla a görögre még nincs).*
@@ -1260,29 +1265,29 @@ választott, nem véletlenül tért el a "szabvány" ἐπικαλέομαι-tó
 
 | Igehely (Károli) | LXX-igehely | Héber kulcsszó | Görög megfelelő | Egyezés | Forrás |
 |---|---|---|---|---|---|
-| 1Móz 4:26 | 1Móz 4:26 | קְרֹ֖א (szótári alak: kárá) | ἐπικαλεῖσθαι (epikaleiszthai) (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
-| 1Móz 12:8 | 1Móz 12:8 | יִּקְרָ֖א (szótári alak: kárá) | ἐπεκαλέσατο (epekaleszato) (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
-| 1Móz 13:4 | 1Móz 13:4 | יִּקְרָ֥א (szótári alak: kárá) | ἐπεκαλέσατο (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
-| 1Móz 21:33 | 1Móz 21:33 | יִּ֨קְרָא (szótári alak: kárá) | ἐπεκαλέσατο (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
-| 1Móz 26:25 | 1Móz 26:25 | יִּקְרָא֙ (szótári alak: kárá) | ἐπεκαλέσατο (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
-| 1Kir 18:24 | 1Kir 18:24 | אֶקְרָ֣א (szótári alak: kárá) | ἐπικαλέσομαι (epikaleszomai) (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
-| 1Kir 18:25 | 1Kir 18:25 | קִרְאוּ֙ (szótári alak: kárá) | ἐπικαλέσασθε (epikaleszaszthe) (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
-| 1Kir 18:26 | 1Kir 18:26 | יִּקְרְא֣וּ (szótári alak: kárá) | ἐπεκαλοῦντο (epekalúnto) (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
-| 2Kir 5:11 | 2Kir 5:11 | קָרָא֙ (szótári alak: kárá) | ἐπικαλέσεται (epikaleszetai) (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
-| Sof 3:9 | Sof 3:9 | קְרֹ֤א (szótári alak: kárá) | ἐπικαλεῖσθαι (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
-| Zak 13:9 | Zak 13:9 | יִקְרָ֣א (szótári alak: kárá) | ἐπικαλέσεται (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
-| Zsolt 116:4 | Zsolt(LXX) 114:4 | אֶקְרָ֑א (szótári alak: kárá) | ἐπεκαλεσάμην (epekaleszamén) (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
-| Zsolt 116:13 | Zsolt(LXX) 115:4 | אֶקְרָֽא (szótári alak: kárá) | ἐπικαλέσομαι (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
-| Zsolt 116:17 | Zsolt(LXX) 115:8 | אֶקְרָֽא (szótári alak: kárá) | nincs megfelelő a görögben (LXX-minusz) | LXX-minusz | adat/lxx_dontesek.tsv |
-| Jóel 2:32 | Jóel(LXX) 3:5 | קֹרֵֽא (szótári alak: kárá) | ἐπικαλέσηται (epikaleszétai) (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
-| Zsolt 105:1 | Zsolt(LXX) 104:1 | קִרְא֣וּ (szótári alak: kárá) | ἐπικαλεῖσθε (epikaleiszthe) (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
-| 1Krón 16:8 | 1Krón 16:8 | קִרְא֣וּ (szótári alak: kárá) | ἐπικαλεῖσθε (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
-| Ézs 12:4 | Ézs 12:4 | קִרְא֣וּ (szótári alak: kárá) | βοάω (boaó G0994) | eltérő | adat/lxx_dontesek.tsv |
-| Jer 10:25 | Jer 10:25 | קָרָ֑אוּ (szótári alak: kárá) | ἐπεκαλέσαντο (epekaleszanto) (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
-| Zsolt 79:6 | Zsolt(LXX) 78:6 | קָרָֽאוּ (szótári alak: kárá) | ἐπεκαλέσαντο (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
-| Ézs 64:6 | Ézs 64:6 | קוֹרֵ֣א (szótári alak: kárá) | ἐπικαλούμενος (epikalúmenosz) (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
-| 2Móz 33:19 | 2Móz 33:19 | קָרָ֧אתִֽי (szótári alak: kárá) | καλέω (kaleó G2564) | eltérő | adat/lxx_dontesek.tsv |
-| 2Móz 34:5 | 2Móz 34:5 | יִּקְרָ֥א (szótári alak: kárá) | καλέω (kaleó G2564) | eltérő | adat/lxx_dontesek.tsv |
+| 1Móz 4:26 | 1Móz 4:26 | לִקְרֹ֖א (likró, gépi) | ἐπικαλεῖσθαι (epikaleiszthai) (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
+| 1Móz 12:8 | 1Móz 12:8 | וַיִּקְרָ֖א (vajjikrá, gépi) | ἐπεκαλέσατο (epekaleszato) (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
+| 1Móz 13:4 | 1Móz 13:4 | וַיִּקְרָ֥א (vajjikrá, gépi) | ἐπεκαλέσατο (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
+| 1Móz 21:33 | 1Móz 21:33 | וַיִּ֨קְרָא (vajjikrá, gépi) | ἐπεκαλέσατο (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
+| 1Móz 26:25 | 1Móz 26:25 | וַיִּקְרָא֙ (vajjikrá, gépi) | ἐπεκαλέσατο (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
+| 1Kir 18:24 | 1Kir 18:24 | אֶקְרָ֣א (ekrá, gépi) | ἐπικαλέσομαι (epikaleszomai) (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
+| 1Kir 18:25 | 1Kir 18:25 | וְקִרְאוּ֙ (vekireú, gépi) | ἐπικαλέσασθε (epikaleszaszthe) (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
+| 1Kir 18:26 | 1Kir 18:26 | וַיִּקְרְא֣וּ (vajjikreú, gépi) | ἐπεκαλοῦντο (epekalúnto) (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
+| 2Kir 5:11 | 2Kir 5:11 | וְקָרָא֙ (vekárá, gépi) | ἐπικαλέσεται (epikaleszetai) (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
+| Sof 3:9 | Sof 3:9 | לִקְרֹ֤א (likró, gépi) | ἐπικαλεῖσθαι (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
+| Zak 13:9 | Zak 13:9 | יִקְרָ֣א (jikrá, gépi) | ἐπικαλέσεται (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
+| Zsolt 116:4 | Zsolt(LXX) 114:4 | אֶקְרָ֑א (ekrá, gépi) | ἐπεκαλεσάμην (epekaleszamén) (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
+| Zsolt 116:13 | Zsolt(LXX) 115:4 | אֶקְרָֽא (ekrá, gépi) | ἐπικαλέσομαι (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
+| Zsolt 116:17 | Zsolt(LXX) 115:8 | אֶקְרָֽא (ekrá, gépi) | nincs megfelelő a görögben (LXX-minusz) | LXX-minusz | adat/lxx_dontesek.tsv |
+| Jóel 2:32 | Jóel(LXX) 3:5 | קֹרֵֽא (kóré, gépi) | ἐπικαλέσηται (epikaleszétai) (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
+| Zsolt 105:1 | Zsolt(LXX) 104:1 | קִרְא֣וּ (kireú, gépi) | ἐπικαλεῖσθε (epikaleiszthe) (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
+| 1Krón 16:8 | 1Krón 16:8 | קִרְא֣וּ (kireú, gépi) | ἐπικαλεῖσθε (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
+| Ézs 12:4 | Ézs 12:4 | קִרְא֣וּ (kireú, gépi) | βοάω (boaó G0994) | eltérő | adat/lxx_dontesek.tsv |
+| Jer 10:25 | Jer 10:25 | קָרָ֑אוּ (káráú, gépi) | ἐπεκαλέσαντο (epekaleszanto) (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
+| Zsolt 79:6 | Zsolt(LXX) 78:6 | קָרָֽאוּ (káráú, gépi) | ἐπεκαλέσαντο (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
+| Ézs 64:6 | Ézs 64:6 | קוֹרֵ֣א (kóré, gépi) | ἐπικαλούμενος (epikalúmenosz) (ἐπικαλέω, epikaleó G1941) | egyező | LXX_OS |
+| 2Móz 33:19 | 2Móz 33:19 | וְקָרָ֧אתִֽי (vekárátí, gépi) | καλέω (kaleó G2564) | eltérő | adat/lxx_dontesek.tsv |
+| 2Móz 34:5 | 2Móz 34:5 | וַיִּקְרָ֥א (vajjikrá, gépi) | καλέω (kaleó G2564) | eltérő | adat/lxx_dontesek.tsv |
 
 *Összesítés: egyező=19, eltérő=3, LXX-minusz=1, kutatói azonosítás függőben=0, szamozas_elteres=0.*
 

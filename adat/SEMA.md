@@ -901,7 +901,14 @@ sima `u`-t ad — javítva. A 100%-os egyezés önmagában nem elfogadási
 Kulcs: `nyelv` + `alak`. Kézzel bővítendő/jóváhagyandó tábla, kettős
 szereppel: **görögül** felülírja/kiegészíti a `kiejtes_szabalyok.tsv`
 szabálytábla-alapú átirat egy-egy ismert, kivételes esetét; **héberül** ez
-az EGYETLEN forrás — a render héber lemma-kiejtést sosem generál (S3).
+a jóváhagyott forrás, amely mindig elsőbbséget élvez. A DT-F131y (2026-10-30) óta jóváhagyott
+sor híján a render a pontozott héber szóból gépi magyaros kiejtést ad
+(`eszkozok/heber_kiejtes.py`, a DT-F131y R1–R8 szabályaival), a lapon „(…, gépi)”
+jelöléssel; a ragozott alak (teljes szó: előtag + tő + toldalék) mindig a saját gépi
+kiejtését kapja. A korábbi szabály (S3: héberül csak ez a tábla, gépi kiejtés nincs) ezzel
+megszűnt. A tábla héber sorai lemma-szintűek; a ragozott alakokra vonatkozó lexikai
+kivételek (כָּל → kol, חָכְמָה → chochmá, Jeruzsálem → jerúsálajim, tetragramma → Jahve) az
+átíró szabályai között vannak.
 
 | Mező | Típus | Kötelező | Leírás |
 |---|---|---|---|

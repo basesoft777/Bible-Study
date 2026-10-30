@@ -577,10 +577,12 @@ class Kulcsszavak(unittest.TestCase):
 
 
 class RagozottKiejtes(unittest.TestCase):
-    """A Kulcsszó cella: héberül a kiejtés jelölten a szótári alaké (a felhasználó döntése: „A: jelölt szótári alak”)."""
+    """A Kulcsszó cella: héberül (DT-F131y, 2026-10-30) a teljes ragozott szó saját gépi kiejtése, jelölve; pontozatlan
+    alaknál a szótári alak kiejtése, „szótári alak:” jelöléssel."""
 
     def test_heber_jelolt(self):
-        self.assertEqual(LG.ragozott_kiejtessel('X', 'kárá', 'TAHOT'), 'X (szótári alak: kárá)')
+        self.assertEqual(LG.ragozott_kiejtessel('X', 'kárá', 'TAHOT_LEMMA'), 'X (szótári alak: kárá)')
+        self.assertEqual(LG.ragozott_kiejtessel('X', 'likró, gépi', 'TAHOT'), 'X (likró, gépi)')
 
     def test_gorog_ragozott(self):
         self.assertEqual(LG.ragozott_kiejtessel('Y', 'epikaleszétai', 'TAGNT'), 'Y (epikaleszétai)')
@@ -592,8 +594,8 @@ class RagozottKiejtes(unittest.TestCase):
         _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
         s = next(r for r in elo_sorok if r['id'] == 'ISTENTISZT-001' and r['igehely'] == '1Móz 4:26')
         cella = LG.kulcsszo_cella(s)
-        self.assertIn('(szótári alak: kárá)', cella)
-        self.assertIn('(szótári alak: sém)', cella)
+        self.assertIn('(likró, gépi)', cella)   # a teljes szó: לִ + קְרֹא
+        self.assertIn('(besém, gépi)', cella)   # בְּ + שֵׁם
 
 
 class BdbRovidites(unittest.TestCase):

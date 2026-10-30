@@ -320,7 +320,8 @@ class TestKiejtesF09(unittest.TestCase):
 
     def test_26_heber_3_gorog_sor_egyedi_kulcs(self):
         sorok = self._kivetelek()
-        self.assertEqual(sum(1 for r in sorok if r[0] == 'heber'), 26)
+        # 26 + 3 (DT-F131y, 2026-10-30: H3605 kol, H2451 chochmá, H3389 jerúsálajim)
+        self.assertEqual(sum(1 for r in sorok if r[0] == 'heber'), 29)
         self.assertEqual(sum(1 for r in sorok if r[0] == 'gorog'), 3)
         kulcsok = [(r[0], r[1]) for r in sorok]
         self.assertEqual(len(kulcsok), len(set(kulcsok)))
@@ -335,7 +336,8 @@ class TestKiejtesF09(unittest.TestCase):
                 m = sor.split('\t')
                 lk = LG.lemma_kiejtes(m[0])
                 self.assertIsNotNone(lk, m[0])
-                self.assertEqual(lk[1], m[4], m[0])
+                # DT-F131y (2026-10-30) R1/R8: a jelöltlista két alakja azóta javítva
+                self.assertEqual(lk[1], {'H3678': 'kisszé', 'H2555': 'chámász'}.get(m[0], m[4]), m[0])
                 n += 1
         self.assertEqual(n, 26)
 
@@ -348,11 +350,11 @@ class TestKiejtesF09(unittest.TestCase):
         self.assertEqual(LG.gorog_magyaros('epikalesētai'), 'epikaleszétai')
         talalat = LG.kiejtes_ehhez('ApCsel 9:14', 'G1941')
         self.assertEqual(talalat[1], 'epikalúmenúsz')
-        # héber alak: a TAHOT angolos átírása helyett a lemma jóváhagyott magyaros kiejtése (kiejtés-szabály, 2026-10-29)
-        self.assertEqual(LG.kiejtes_ehhez('1Móz 4:26', 'H7121')[1], 'kárá')
-        # jóváhagyott kiejtés nélküli héber lemma: nincs kiejtés (jelölt hiány), a STEP-átírás sem áll
-        self.assertEqual(LG.lemma_kiejtes('H2142')[1], '')
-        self.assertIn('H2142', LG.KIEJTES_HIANY)
+        # héber alak (DT-F131y, 2026-10-30): a teljes ragozott szó (לִ + קְרֹא) saját gépi kiejtése, jelölve
+        self.assertEqual(LG.kiejtes_ehhez('1Móz 4:26', 'H7121')[1], 'likró, gépi')
+        # jóváhagyott kiejtés nélküli héber lemma: a pontozott lemma gépi kiejtése, jelölve; nem jelölt hiány
+        self.assertEqual(LG.lemma_kiejtes('H2142')[1], 'záchar, gépi')
+        self.assertNotIn('H2142', LG.KIEJTES_HIANY)
 
     def test_heber_kiejtes_ket_azonos_step_atirasu_lemma(self):
         # H7496 és H7497 STEP-átírása azonos (ra.pah), a lemma-kulcs különbözteti meg
@@ -378,7 +380,7 @@ class TestSeceMounceF09(unittest.TestCase):
         # olvasható táblázat (ISTENTISZT-001 arany lap, 2026-10-29): szó, kiejtés, Strong, rövid jelentés; a motívum
         # szava jelölve; a SECE szólistája és sorrendje változatlan
         self.assertIn(_nfc('**G1941 — ἐπικαλέω (epikaleó)** · SECE — héber megfelelők (8):'), _nfc(g))
-        self.assertIn(_nfc('| זָכַר | — | H2142 |'), _nfc(g))
+        self.assertIn(_nfc('| זָכַר | záchar, gépi | H2142 |'), _nfc(g))  # DT-F131y: gépi, jelölve
         szavak = [_nfc(s.split(' | ')[0].lstrip('| ').split(' *(')[0].strip('*')) for s in g.split('\n')
                   if s.startswith('| ') and not s.startswith('| Szó')]
         self.assertEqual(szavak, [_nfc(x) for x in 'זָכַר מָצָא נָקַב עָשָׂה קָרָא שׂוּם שָׁכַן שֻׁם'.split()])

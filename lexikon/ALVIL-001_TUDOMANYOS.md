@@ -60,6 +60,11 @@ of Biblical Hebrew/Greek), OSHL (Open Scriptures Hebrew Lexicon), TWOT
 (Treasury of Scripture Knowledge), KH (Károli-kereszthivatkozás), LXX
 (Septuaginta), MT (Masoretic Text), KJV (King James Version).
 
+**Kiejtés:** a héber és a görög szó mellett zárójelben a magyaros kiejtés. A görög kiejtés szabályos átírás. A
+jelöletlen héber kiejtés kézzel jóváhagyott; a **„gépi”** jelölésű (pl. „וַיִּקְרָא (vajjikrá, gépi)”) a pontozott héber
+szövegből rögzített szabályokkal készült, kézzel nem ellenőrizték. A ragozott szó mellett a saját kiejtése áll, nem
+a szótári alaké.
+
 **Mit mutat ez a rész?** — minden blokk elején egy-két mondatos olvasói bevezető; az alatta álló dőlt, technikai
 mondat a lap készítőinek szól.
 
@@ -87,70 +92,70 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 
 | Igehely | Kulcsszó | Jelentés (a szó) | Funkció (a motívumban) | PaRDeS-szint | Strong | UBS-jelentés | Megbízhatóság · azonosítás módja |
 |---|---|---|---|---|---|---|---|
-| [1Móz 37:35](#ige-1móz-37-35) | a sírba — שְׁאֹ֑לָ (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^1] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · szó-szintű-gépi[^1] |
-| [1Móz 42:38](#ige-1móz-42-38) | a koporsóba — שְׁאֽוֹלָ (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^2] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · szó-szintű-gépi[^2] |
-| [1Móz 44:29](#ige-1móz-44-29) | a koporsóba — שְׁאֹֽלָ (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^3] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · szó-szintű-gépi[^3] |
-| [1Móz 44:31](#ige-1móz-44-31) | a koporsóba — שְׁאֹֽלָ (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^4] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · szó-szintű-gépi[^4] |
-| [4Móz 16:30](#ige-4móz-16-30) | pokolba — שְׁאֹ֑לָ (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^5] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^5] |
-| [4Móz 16:33](#ige-4móz-16-33) | a pokolra — שְׁאֹ֑לָ (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^6] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^6] |
-| [5Móz 32:22](#ige-5móz-32-22) | a Seol fenekéig — שְׁא֣וֹל (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^7] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^7] |
-| [1Sám 2:6](#ige-1sám-2-6) | Sírba — שְׁא֖וֹל (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^8] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^8] |
-| [2Sám 22:6](#ige-2sám-22-6) | A pokol kötelei — שְׁא֖וֹל (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^9] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^9] |
-| [1Kir 2:6](#ige-1kir-2-6) | a koporsóba — שְׁאֹֽל (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^10] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^10] |
-| [1Kir 2:9](#ige-1kir-2-9) | a koporsóba — שְׁאֽוֹל (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^11] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^11] |
-| [Jób 7:9](#ige-jób-7-9) | a sírba — שְׁ֝א֗וֹל (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^12] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^12] |
-| [Jób 11:8](#ige-jób-11-8) | az alvilágnál — שְּׁא֗וֹל (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^13] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^13] |
-| [Jób 14:13](#ige-jób-14-13) | a holtak országában — שְׁא֬וֹל (szótári alak: seól) | az igaz kiváltása a Seolból · 2.b ⓘ[^14] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^14] |
-| [Jób 17:12](#ige-jób-17-12) | a sír — שְׁא֣וֹל (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^15] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) *(MT: Jób 17:13)* | magas · tartalom-alapú[^15] |
-| [Jób 17:15](#ige-jób-17-15) | a sír üregébe — שְׁאֹ֣ל (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^16] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) *(MT: Jób 17:16)* | közepes · tartalom-alapú[^16] |
-| [Jób 21:13](#ige-jób-21-13) | a sírba — שְׁא֣וֹל (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^17] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^17] |
-| [Jób 24:19](#ige-jób-24-19) | a pokol — שְׁא֣וֹל (szótári alak: seól) | a gonoszok sorsa a Seolban · 2.a ⓘ[^18] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^18] |
-| [Jób 26:6](#ige-jób-26-6) | Az alvilág — שְׁא֣וֹל (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^19] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^19] |
-| [Zsolt 6:6](#ige-zsolt-6-6) | a seolban — שְׁא֗וֹל (szótári alak: seól) | a gonoszok sorsa a Seolban · 2.a ⓘ[^20] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^20] |
-| [Zsolt 9:18](#ige-zsolt-9-18) | Seolba — שְׁא֑וֹלָ (szótári alak: seól) | a gonoszok sorsa a Seolban · 2.a ⓘ[^21] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^21] |
-| [Zsolt 16:10](#ige-zsolt-16-10) | a Seolban — שְׁא֑וֹל (szótári alak: seól) | az igaz kiváltása a Seolból · 2.b ⓘ[^22] | — | Peshat/Drash | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^22] |
-| [Zsolt 18:6](#ige-zsolt-18-6) | A Seol kötelei — שְׁא֣וֹל (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^23] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^23] |
-| [Zsolt 30:4](#ige-zsolt-30-4) | a Seolból — שְׁא֣וֹל (szótári alak: seól) | a gonoszok sorsa a Seolban · 2.a ⓘ[^24] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^24] |
-| [Zsolt 31:18](#ige-zsolt-31-18) | a Seolba — שְׁאֽוֹל (szótári alak: seól) | a gonoszok sorsa a Seolban · 2.a ⓘ[^25] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^25] |
-| [Zsolt 49:15](#ige-zsolt-49-15) | a Seolra — שְׁא֗וֹל (szótári alak: seól) | a gonoszok sorsa a Seolban · 2.a ⓘ[^26] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^26] |
-| [Zsolt 49:16](#ige-zsolt-49-16) | a Seol kezéből — שְׁא֑וֹל (szótári alak: seól) | az igaz kiváltása a Seolból · 2.b ⓘ[^27] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^27] |
-| [Zsolt 55:16](#ige-zsolt-55-16) | a Seolba — שְׁא֣וֹל (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^28] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^28] |
-| [Zsolt 86:13](#ige-zsolt-86-13) | a mélységes pokolból — שְּׁא֥וֹל (szótári alak: seól) | a gonoszok sorsa a Seolban · 2.a ⓘ[^29] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^29] |
-| [Zsolt 88:4](#ige-zsolt-88-4) | a Seolig — שְׁא֥וֹל (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^30] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^30] |
-| [Zsolt 89:49](#ige-zsolt-89-49) | a Seolnak kezéből — שְׁא֣וֹל (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^31] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^31] |
-| [Zsolt 116:3](#ige-zsolt-116-3) | a pokol szorongattatásai — שְׁא֣וֹל (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^32] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^32] |
-| [Zsolt 139:8](#ige-zsolt-139-8) | a Seolba — שְּׁא֣וֹל (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^33] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^33] |
-| [Zsolt 141:7](#ige-zsolt-141-7) | a Seol torkában — שְׁאֽוֹל (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^34] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^34] |
-| [Péld 1:12](#ige-péld-1-12) | a sír — שְׁא֣וֹל (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^35] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^35] |
-| [Péld 5:5](#ige-péld-5-5) | a sírba — שְׁ֝א֗וֹל (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^36] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^36] |
-| [Péld 7:27](#ige-péld-7-27) | Sírba vívő út — שְׁא֣וֹל (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^37] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^37] |
-| [Péld 9:18](#ige-péld-9-18) | a pokol mélyébe — שְׁא֣וֹל (szótári alak: seól) | a Seol mélységei · 3.a ⓘ[^38] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^38] |
-| [Péld 15:11](#ige-péld-15-11) | A sír — שְׁא֣וֹל (szótári alak: seól) | Seol és Abaddón; verem · 3.b ⓘ[^39] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^39] |
-| [Péld 15:24](#ige-péld-15-24) | a pokoltól — שְּׁא֥וֹל (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^40] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^40] |
-| [Péld 23:14](#ige-péld-23-14) | a pokolból — שְּׁא֥וֹל (szótári alak: seól) | a gonoszok sorsa a Seolban · 2.a ⓘ[^41] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^41] |
-| [Péld 27:20](#ige-péld-27-20) | a sír — שְׁא֣וֹל (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^42] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^42] |
-| [Péld 30:16](#ige-péld-30-16) | A sír — שְׁאוֹל֮ (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^43] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^43] |
-| [Préd 9:12](#ige-préd-9-12) | a Seolban — שְׁא֕וֹל (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^44] | — | Remez | H7585 | — *(ÓSZ; nincs DBH-hivatkozás: versszámozás-eltérés (KEZI), az MT-vers a táblában nincs megadva)* | közepes · tartalom-alapú[^44] |
-| [Én 8:6](#ige-én-8-6) | a sír — שְׁא֖וֹל (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^45] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^45] |
-| [Ézs 5:14](#ige-ézs-5-14) | a sír — שְּׁאוֹל֙ (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^46] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^46] |
-| [Ézs 7:11](#ige-ézs-7-11) | a mélységben — שְׁאָ֔לָה (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^47] | — | Remez | H7585 | — *(ÓSZ; nincs DBH-hivatkozás: keresett MT-vers: Ézs 7:11)* | közepes · tartalom-alapú[^47] |
-| [Ézs 14:9](#ige-ézs-14-9) | a sír — שְׁא֗וֹל (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^48] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^48] |
-| [Ézs 14:11](#ige-ézs-14-11) | a sírba — שְׁא֛וֹל (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^49] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^49] |
-| [Ézs 14:15](#ige-ézs-14-15) | a sírba — שְׁא֛וֹל (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^50] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^50] |
-| [Ézs 28:15](#ige-ézs-28-15) | a sírral — שְׁא֖וֹל (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^51] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^51] |
-| [Ézs 28:18](#ige-ézs-28-18) | a sírral — שְׁא֖וֹל (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^52] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^52] |
-| [Ézs 38:10](#ige-ézs-38-10) | a sír kapuihoz — שְׁא֑וֹל (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^53] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^53] |
-| [Ézs 38:18](#ige-ézs-38-18) | a sír — שְׁא֛וֹל (szótári alak: seól) | a gonoszok sorsa a Seolban · 2.a ⓘ[^54] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^54] |
-| [Ézs 57:9](#ige-ézs-57-9) | a sírig — שְׁאֽוֹל (szótári alak: seól) | átvitt értelem: lealacsonyodás, száműzetés · 4 ⓘ[^55] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^55] |
-| [Ez 31:15](#ige-ez-31-15) | sírba — שְׁא֙וֹלָ (szótári alak: seól) | a gonoszok sorsa a Seolban · 2.a ⓘ[^56] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^56] |
-| [Ez 31:16](#ige-ez-31-16) | a sírba — שְׁא֖וֹלָ (szótári alak: seól) | a gonoszok sorsa a Seolban · 2.a ⓘ[^57] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^57] |
-| [Ez 31:17](#ige-ez-31-17) | a sírba — שְׁא֖וֹלָ (szótári alak: seól) | a gonoszok sorsa a Seolban · 2.a ⓘ[^58] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^58] |
-| [Ez 32:21](#ige-ez-32-21) | a sír közepéből — שְׁא֖וֹל (szótári alak: seól) | a gonoszok sorsa a Seolban · 2.a ⓘ[^59] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^59] |
-| [Ez 32:27](#ige-ez-32-27) | a sírba — שְׁא֣וֹל (szótári alak: seól) | a gonoszok sorsa a Seolban · 2.a ⓘ[^60] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^60] |
-| [Hós 13:14](#ige-hós-13-14) | a Seol hatalmából — שְׁא֔וֹל (szótári alak: seól) | átvitt értelem: lealacsonyodás, száműzetés · 4 ⓘ[^61] | — | Remez/Drash | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^61] |
-| [Ámós 9:2](#ige-ámós-9-2) | a Seolba — שְׁא֔וֹל (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^62] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^62] |
-| [Jón 2:3](#ige-jón-2-3) | a Seol torkából — שְׁא֛וֹל (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^63] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^63] |
-| [Hab 2:5](#ige-hab-2-5) | a Seol — שְׁא֜וֹל (szótári alak: seól) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^64] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^64] |
+| [1Móz 37:35](#ige-1móz-37-35) | a sírba — שְׁאֹ֑לָה (seólá, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^1] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · szó-szintű-gépi[^1] |
+| [1Móz 42:38](#ige-1móz-42-38) | a koporsóba — שְׁאֽוֹלָה (seólá, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^2] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · szó-szintű-gépi[^2] |
+| [1Móz 44:29](#ige-1móz-44-29) | a koporsóba — שְׁאֹֽלָה (seólá, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^3] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · szó-szintű-gépi[^3] |
+| [1Móz 44:31](#ige-1móz-44-31) | a koporsóba — שְׁאֹֽלָה (seólá, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^4] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · szó-szintű-gépi[^4] |
+| [4Móz 16:30](#ige-4móz-16-30) | pokolba — שְׁאֹ֑לָה (seólá, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^5] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^5] |
+| [4Móz 16:33](#ige-4móz-16-33) | a pokolra — שְׁאֹ֑לָה (seólá, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^6] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^6] |
+| [5Móz 32:22](#ige-5móz-32-22) | a Seol fenekéig — שְׁא֣וֹל (seól, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^7] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^7] |
+| [1Sám 2:6](#ige-1sám-2-6) | Sírba — שְׁא֖וֹל (seól, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^8] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^8] |
+| [2Sám 22:6](#ige-2sám-22-6) | A pokol kötelei — שְׁא֖וֹל (seól, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^9] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^9] |
+| [1Kir 2:6](#ige-1kir-2-6) | a koporsóba — שְׁאֹֽל (seól, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^10] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^10] |
+| [1Kir 2:9](#ige-1kir-2-9) | a koporsóba — שְׁאֽוֹל (seól, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^11] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^11] |
+| [Jób 7:9](#ige-jób-7-9) | a sírba — שְׁ֝א֗וֹל (seól, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^12] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^12] |
+| [Jób 11:8](#ige-jób-11-8) | az alvilágnál — מִ֝שְּׁא֗וֹל (misseól, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^13] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^13] |
+| [Jób 14:13](#ige-jób-14-13) | a holtak országában — בִּשְׁא֬וֹל (biseól, gépi) | az igaz kiváltása a Seolból · 2.b ⓘ[^14] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^14] |
+| [Jób 17:12](#ige-jób-17-12) | a sír — שְׁא֣וֹל (seól, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^15] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) *(MT: Jób 17:13)* | magas · tartalom-alapú[^15] |
+| [Jób 17:15](#ige-jób-17-15) | a sír üregébe — שְׁאֹ֣ל (seól, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^16] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) *(MT: Jób 17:16)* | közepes · tartalom-alapú[^16] |
+| [Jób 21:13](#ige-jób-21-13) | a sírba — שְׁא֣וֹל (seól, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^17] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^17] |
+| [Jób 24:19](#ige-jób-24-19) | a pokol — שְׁא֣וֹל (seól, gépi) | a gonoszok sorsa a Seolban · 2.a ⓘ[^18] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^18] |
+| [Jób 26:6](#ige-jób-26-6) | Az alvilág — שְׁא֣וֹל (seól, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^19] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^19] |
+| [Zsolt 6:6](#ige-zsolt-6-6) | a seolban — בִּ֝שְׁא֗וֹל (biseól, gépi) | a gonoszok sorsa a Seolban · 2.a ⓘ[^20] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^20] |
+| [Zsolt 9:18](#ige-zsolt-9-18) | Seolba — לִשְׁא֑וֹלָה (liseólá, gépi) | a gonoszok sorsa a Seolban · 2.a ⓘ[^21] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^21] |
+| [Zsolt 16:10](#ige-zsolt-16-10) | a Seolban — לִשְׁא֑וֹל (liseól, gépi) | az igaz kiváltása a Seolból · 2.b ⓘ[^22] | — | Peshat/Drash | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^22] |
+| [Zsolt 18:6](#ige-zsolt-18-6) | A Seol kötelei — שְׁא֣וֹל (seól, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^23] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^23] |
+| [Zsolt 30:4](#ige-zsolt-30-4) | a Seolból — שְׁא֣וֹל (seól, gépi) | a gonoszok sorsa a Seolban · 2.a ⓘ[^24] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^24] |
+| [Zsolt 31:18](#ige-zsolt-31-18) | a Seolba — לִשְׁאֽוֹל (liseól, gépi) | a gonoszok sorsa a Seolban · 2.a ⓘ[^25] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^25] |
+| [Zsolt 49:15](#ige-zsolt-49-15) | a Seolra — שְׁא֗וֹל (seól, gépi) | a gonoszok sorsa a Seolban · 2.a ⓘ[^26] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^26] |
+| [Zsolt 49:16](#ige-zsolt-49-16) | a Seol kezéből — שְׁא֑וֹל (seól, gépi) | az igaz kiváltása a Seolból · 2.b ⓘ[^27] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^27] |
+| [Zsolt 55:16](#ige-zsolt-55-16) | a Seolba — שְׁא֣וֹל (seól, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^28] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^28] |
+| [Zsolt 86:13](#ige-zsolt-86-13) | a mélységes pokolból — מִשְּׁא֥וֹל (misseól, gépi) | a gonoszok sorsa a Seolban · 2.a ⓘ[^29] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^29] |
+| [Zsolt 88:4](#ige-zsolt-88-4) | a Seolig — לִשְׁא֥וֹל (liseól, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^30] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^30] |
+| [Zsolt 89:49](#ige-zsolt-89-49) | a Seolnak kezéből — שְׁא֣וֹל (seól, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^31] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^31] |
+| [Zsolt 116:3](#ige-zsolt-116-3) | a pokol szorongattatásai — שְׁא֣וֹל (seól, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^32] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^32] |
+| [Zsolt 139:8](#ige-zsolt-139-8) | a Seolba — שְּׁא֣וֹל (seól, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^33] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^33] |
+| [Zsolt 141:7](#ige-zsolt-141-7) | a Seol torkában — שְׁאֽוֹל (seól, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^34] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^34] |
+| [Péld 1:12](#ige-péld-1-12) | a sír — כִּשְׁא֣וֹל (kiseól, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^35] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^35] |
+| [Péld 5:5](#ige-péld-5-5) | a sírba — שְׁ֝א֗וֹל (seól, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^36] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^36] |
+| [Péld 7:27](#ige-péld-7-27) | Sírba vívő út — שְׁא֣וֹל (seól, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^37] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^37] |
+| [Péld 9:18](#ige-péld-9-18) | a pokol mélyébe — שְׁא֣וֹל (seól, gépi) | a Seol mélységei · 3.a ⓘ[^38] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^38] |
+| [Péld 15:11](#ige-péld-15-11) | A sír — שְׁא֣וֹל (seól, gépi) | Seol és Abaddón; verem · 3.b ⓘ[^39] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^39] |
+| [Péld 15:24](#ige-péld-15-24) | a pokoltól — מִשְּׁא֥וֹל (misseól, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^40] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^40] |
+| [Péld 23:14](#ige-péld-23-14) | a pokolból — מִשְּׁא֥וֹל (misseól, gépi) | a gonoszok sorsa a Seolban · 2.a ⓘ[^41] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^41] |
+| [Péld 27:20](#ige-péld-27-20) | a sír — שְׁא֣וֹל (seól, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^42] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^42] |
+| [Péld 30:16](#ige-péld-30-16) | A sír — שְׁאוֹל֮ (seól, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^43] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^43] |
+| [Préd 9:12](#ige-préd-9-12) | a Seolban — בִּשְׁא֕וֹל (biseól, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^44] | — | Remez | H7585 | — *(ÓSZ; nincs DBH-hivatkozás: versszámozás-eltérés (KEZI), az MT-vers a táblában nincs megadva)* | közepes · tartalom-alapú[^44] |
+| [Én 8:6](#ige-én-8-6) | a sír — כִשְׁא֖וֹל (kiseól, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^45] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^45] |
+| [Ézs 5:14](#ige-ézs-5-14) | a sír — שְּׁאוֹל֙ (seól, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^46] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^46] |
+| [Ézs 7:11](#ige-ézs-7-11) | a mélységben — שְׁאָ֔לָה (seálá, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^47] | — | Remez | H7585 | — *(ÓSZ; nincs DBH-hivatkozás: keresett MT-vers: Ézs 7:11)* | közepes · tartalom-alapú[^47] |
+| [Ézs 14:9](#ige-ézs-14-9) | a sír — שְׁא֗וֹל (seól, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^48] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^48] |
+| [Ézs 14:11](#ige-ézs-14-11) | a sírba — שְׁא֛וֹל (seól, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^49] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^49] |
+| [Ézs 14:15](#ige-ézs-14-15) | a sírba — שְׁא֛וֹל (seól, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^50] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^50] |
+| [Ézs 28:15](#ige-ézs-28-15) | a sírral — שְׁא֖וֹל (seól, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^51] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^51] |
+| [Ézs 28:18](#ige-ézs-28-18) | a sírral — שְׁא֖וֹל (seól, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^52] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^52] |
+| [Ézs 38:10](#ige-ézs-38-10) | a sír kapuihoz — שְׁא֑וֹל (seól, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^53] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^53] |
+| [Ézs 38:18](#ige-ézs-38-18) | a sír — שְׁא֛וֹל (seól, gépi) | a gonoszok sorsa a Seolban · 2.a ⓘ[^54] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^54] |
+| [Ézs 57:9](#ige-ézs-57-9) | a sírig — שְׁאֽוֹל (seól, gépi) | átvitt értelem: lealacsonyodás, száműzetés · 4 ⓘ[^55] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^55] |
+| [Ez 31:15](#ige-ez-31-15) | sírba — שְׁא֙וֹלָה֙ (seólá, gépi) | a gonoszok sorsa a Seolban · 2.a ⓘ[^56] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^56] |
+| [Ez 31:16](#ige-ez-31-16) | a sírba — שְׁא֖וֹלָה (seólá, gépi) | a gonoszok sorsa a Seolban · 2.a ⓘ[^57] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^57] |
+| [Ez 31:17](#ige-ez-31-17) | a sírba — שְׁא֖וֹלָה (seólá, gépi) | a gonoszok sorsa a Seolban · 2.a ⓘ[^58] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^58] |
+| [Ez 32:21](#ige-ez-32-21) | a sír közepéből — שְׁא֖וֹל (seól, gépi) | a gonoszok sorsa a Seolban · 2.a ⓘ[^59] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^59] |
+| [Ez 32:27](#ige-ez-32-27) | a sírba — שְׁא֣וֹל (seól, gépi) | a gonoszok sorsa a Seolban · 2.a ⓘ[^60] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^60] |
+| [Hós 13:14](#ige-hós-13-14) | a Seol hatalmából — שְׁא֔וֹל (seól, gépi) | átvitt értelem: lealacsonyodás, száműzetés · 4 ⓘ[^61] | — | Remez/Drash | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^61] |
+| [Ámós 9:2](#ige-ámós-9-2) | a Seolba — בִשְׁא֔וֹל (viseól, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^62] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^62] |
+| [Jón 2:3](#ige-jón-2-3) | a Seol torkából — שְׁא֛וֹל (seól, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^63] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^63] |
+| [Hab 2:5](#ige-hab-2-5) | a Seol — כִּשְׁא֜וֹל (kiseól, gépi) | alvilág, ahová a halottak alászállnak · 1 ⓘ[^64] | — | Remez | H7585 | `007131001001000` — a holtak világa [ⓘ](/szo/H7585) | magas · tartalom-alapú[^64] |
 | [Mt 11:23](#ige-mt-11-23) | a pokolig — ᾅδου (hadú) | az alvilág, a halottak birodalma · Thayer 2 ⓘ[^65] | — | Remez | G0086 | 1.19 — a halottak világa; Hádész [ⓘ](/szo/G0086) | magas · tartalom-alapú[^65] |
 | [Luk 10:15](#ige-luk-10-15) | a pokolig — ᾅδου (hadú) | az alvilág, a halottak birodalma · Thayer 2 ⓘ[^66] | — | Remez | G0086 | 1.19 — a halottak világa; Hádész [ⓘ](/szo/G0086) | magas · tartalom-alapú[^66] |
 | [Luk 16:23](#ige-luk-16-23) | a pokolban — ᾅδῃ (hadé) | az alvilág, a halottak birodalma · Thayer 2 ⓘ[^67] | — | Peshat | G0086 | 1.19 — a halottak világa; Hádész [ⓘ](/szo/G0086) | magas · tartalom-alapú[^67] |
@@ -736,10 +741,10 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 | Szó | Kiejtés | Strong | Rövid jelentés |
 |---|---|---|---|
-| דּוּמָה | — | H1745 vagy H1746 *(a SECE csak a szóalakot adja)* | H1745: csend / H1746: Dúma |
-| מוּת | — | H4191 vagy H4192 *(a SECE csak a szóalakot adja)* | H4191: meghalni / H4192: (Mut)-Labbén |
-| מָוֶת | — | H4194 | halál |
-| צַלְמָוֶת | — | H6757 | árnyék |
+| דּוּמָה | dúmá, gépi | H1745 vagy H1746 *(a SECE csak a szóalakot adja)* | H1745: csend / H1746: Dúma |
+| מוּת | mút, gépi | H4191 vagy H4192 *(a SECE csak a szóalakot adja)* | H4191: meghalni / H4192: (Mut)-Labbén |
+| מָוֶת | mávet, gépi | H4194 | halál |
+| צַלְמָוֶת | calmávet, gépi | H6757 | árnyék |
 | **שְׁאֹול** *(a motívum szava)* | seól | H7585 | pokol: Seol |
 
 *A szólista és a sorrend a SECE-é (gyakoriságot nem ad; az ismétlődő szóalak egyszer áll); a Strong-szám a TBESG/TBESH lemmájából vagy a SECE címszavából párosul; a rövid jelentés: héberül `adat/glosszak_heber_hu.tsv`, görögül a TBESG angol glosszája (magyar rövid glossza-tábla a görögre még nincs).*
@@ -978,70 +983,70 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 | Igehely (Károli) | LXX-igehely | Héber kulcsszó | Görög megfelelő | Egyezés | Forrás |
 |---|---|---|---|---|---|
-| Zsolt 16:10 | Zsolt(LXX) 15:10 | שְׁא֑וֹל (szótári alak: seól) | ᾅδην (hadén) (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| 1Móz 37:35 | 1Móz 37:35 | שְׁאֹ֑לָ (szótári alak: seól) | ᾅδου (hadú) (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| 1Móz 42:38 | 1Móz 42:38 | שְׁאֽוֹלָ (szótári alak: seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| 1Móz 44:29 | 1Móz 44:29 | שְׁאֹֽלָ (szótári alak: seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| 1Móz 44:31 | 1Móz 44:31 | שְׁאֹֽלָ (szótári alak: seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| 4Móz 16:30 | 4Móz 16:30 | שְׁאֹ֑לָ (szótári alak: seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| 4Móz 16:33 | 4Móz 16:33 | שְׁאֹ֑לָ (szótári alak: seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| 5Móz 32:22 | 5Móz 32:22 | שְׁא֣וֹל (szótári alak: seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| 1Sám 2:6 | 1Sám 2:6 | שְׁא֖וֹל (szótári alak: seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| 2Sám 22:6 | 2Sám 22:6 | שְׁא֖וֹל (szótári alak: seól) | θάνατος (thanatosz G2288) | eltérő | adat/lxx_dontesek.tsv |
-| 1Kir 2:6 | 1Kir 2:6 | שְׁאֹֽל (szótári alak: seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| 1Kir 2:9 | 1Kir 2:9 | שְׁאֽוֹל (szótári alak: seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Jób 7:9 | Jób 7:9 | שְׁ֝א֗וֹל (szótári alak: seól) | ᾅδην (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Jób 11:8 | Jób 11:8 | שְּׁא֗וֹל (szótári alak: seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Jób 14:13 | Jób 14:13 | שְׁא֬וֹל (szótári alak: seól) | ᾅδῃ (hadé) (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Jób 17:12 | — | שְׁא֣וֹל (szótári alak: seól) | — | szamozas_elteres | LXX_OS |
-| Jób 17:15 | — | שְׁאֹ֣ל (szótári alak: seól) | — | szamozas_elteres | LXX_OS |
-| Jób 21:13 | Jób 21:13 | שְׁא֣וֹל (szótári alak: seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Jób 24:19 | Jób 24:19 | שְׁא֣וֹל (szótári alak: seól) | — | kutatói azonosítás függőben | LXX_OS |
-| Jób 26:6 | Jób 26:6 | שְׁא֣וֹל (szótári alak: seól) | ᾅδης (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Zsolt 6:6 | Zsolt 6:6 | שְׁא֗וֹל (szótári alak: seól) | ᾅδῃ (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Zsolt 9:18 | Zsolt 9:18 | שְׁא֑וֹלָ (szótári alak: seól) | ᾅδην (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Zsolt 18:6 | Zsolt(LXX) 17:6 | שְׁא֣וֹל (szótári alak: seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Zsolt 30:4 | Zsolt(LXX) 29:4 | שְׁא֣וֹל (szótári alak: seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Zsolt 31:18 | Zsolt(LXX) 30:18 | שְׁאֽוֹל (szótári alak: seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Zsolt 49:15 | Zsolt(LXX) 48:15 | שְׁא֗וֹל (szótári alak: seól) | ᾅδῃ (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Zsolt 49:16 | Zsolt(LXX) 48:16 | שְׁא֑וֹל (szótári alak: seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Zsolt 55:16 | Zsolt(LXX) 54:16 | שְׁא֣וֹל (szótári alak: seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Zsolt 86:13 | Zsolt(LXX) 85:13 | שְּׁא֥וֹל (szótári alak: seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Zsolt 88:4 | Zsolt(LXX) 87:4 | שְׁא֥וֹל (szótári alak: seól) | ᾅδῃ (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Zsolt 89:49 | Zsolt(LXX) 88:49 | שְׁא֣וֹל (szótári alak: seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Zsolt 116:3 | Zsolt(LXX) 114:3 | שְׁא֣וֹל (szótári alak: seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Zsolt 139:8 | Zsolt(LXX) 138:8 | שְּׁא֣וֹל (szótári alak: seól) | ᾅδην (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Zsolt 141:7 | Zsolt(LXX) 140:7 | שְׁאֽוֹל (szótári alak: seól) | ᾅδην (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Péld 1:12 | Péld 1:12 | שְׁא֣וֹל (szótári alak: seól) | ᾅδης (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Péld 5:5 | Péld 5:5 | שְׁ֝א֗וֹל (szótári alak: seól) | ᾅδην (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Péld 7:27 | Péld 7:27 | שְׁא֣וֹל (szótári alak: seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Péld 9:18 | Péld 9:18 | שְׁא֣וֹל (szótári alak: seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Péld 15:11 | Péld 15:11 | שְׁא֣וֹל (szótári alak: seól) | ᾅδης (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Péld 15:24 | Péld 15:24 | שְּׁא֥וֹל (szótári alak: seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Péld 23:14 | Péld 23:14 | שְּׁא֥וֹל (szótári alak: seól) | θάνατος (thanatosz G2288) | eltérő | adat/lxx_dontesek.tsv |
-| Péld 27:20 | Péld(LXX) 34:20 | שְׁא֣וֹל (szótári alak: seól) | ᾅδης (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Péld 30:16 | Péld 30:16 | שְׁאוֹל֮ (szótári alak: seól) | ᾅδης (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Préd 9:12 | Préd(LXX) 9:10 | שְׁא֕וֹל (szótári alak: seól) | ᾅδῃ (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Én 8:6 | Én 8:6 | שְׁא֖וֹל (szótári alak: seól) | ᾅδης (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Ézs 5:14 | Ézs 5:14 | שְּׁאוֹל֙ (szótári alak: seól) | ᾅδης (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Ézs 7:11 | Ézs 7:11 | שְׁאָ֔לָה (szótári alak: seól) | — | kutatói azonosítás függőben | LXX_OS |
-| Ézs 14:9 | Ézs 14:9 | שְׁא֗וֹל (szótári alak: seól) | ᾅδης (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Ézs 14:11 | Ézs 14:11 | שְׁא֛וֹל (szótári alak: seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Ézs 14:15 | Ézs 14:15 | שְׁא֛וֹל (szótári alak: seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Ézs 28:15 | Ézs 28:15 | שְׁא֖וֹל (szótári alak: seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Ézs 28:18 | Ézs 28:18 | שְׁא֖וֹל (szótári alak: seól) | ᾅδην (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Ézs 38:10 | Ézs 38:10 | שְׁא֑וֹל (szótári alak: seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Ézs 38:18 | Ézs 38:18 | שְׁא֛וֹל (szótári alak: seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Ézs 57:9 | Ézs 57:9 | שְׁאֽוֹל (szótári alak: seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Ez 31:15 | Ez 31:15 | שְׁא֙וֹלָ (szótári alak: seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Ez 31:16 | Ez 31:16 | שְׁא֖וֹלָ (szótári alak: seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Ez 31:17 | Ez 31:17 | שְׁא֖וֹלָ (szótári alak: seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Ez 32:21 | Ez 32:21 | שְׁא֖וֹל (szótári alak: seól) | βόθρος (bothrosz *(gépi átírás)*) | eltérő | adat/lxx_dontesek.tsv |
-| Ez 32:27 | Ez 32:27 | שְׁא֣וֹל (szótári alak: seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Hós 13:14 | Hós 13:14 | שְׁא֔וֹל (szótári alak: seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Ámós 9:2 | Ámós 9:2 | שְׁא֔וֹל (szótári alak: seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Hab 2:5 | Hab 2:5 | שְׁא֜וֹל (szótári alak: seól) | ᾅδης (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Jón 2:3 | Jón 2:3 | שְׁא֛וֹל (szótári alak: seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Zsolt 16:10 | Zsolt(LXX) 15:10 | לִשְׁא֑וֹל (liseól, gépi) | ᾅδην (hadén) (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| 1Móz 37:35 | 1Móz 37:35 | שְׁאֹ֑לָה (seólá, gépi) | ᾅδου (hadú) (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| 1Móz 42:38 | 1Móz 42:38 | שְׁאֽוֹלָה (seólá, gépi) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| 1Móz 44:29 | 1Móz 44:29 | שְׁאֹֽלָה (seólá, gépi) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| 1Móz 44:31 | 1Móz 44:31 | שְׁאֹֽלָה (seólá, gépi) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| 4Móz 16:30 | 4Móz 16:30 | שְׁאֹ֑לָה (seólá, gépi) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| 4Móz 16:33 | 4Móz 16:33 | שְׁאֹ֑לָה (seólá, gépi) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| 5Móz 32:22 | 5Móz 32:22 | שְׁא֣וֹל (seól, gépi) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| 1Sám 2:6 | 1Sám 2:6 | שְׁא֖וֹל (seól, gépi) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| 2Sám 22:6 | 2Sám 22:6 | שְׁא֖וֹל (seól, gépi) | θάνατος (thanatosz G2288) | eltérő | adat/lxx_dontesek.tsv |
+| 1Kir 2:6 | 1Kir 2:6 | שְׁאֹֽל (seól, gépi) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| 1Kir 2:9 | 1Kir 2:9 | שְׁאֽוֹל (seól, gépi) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Jób 7:9 | Jób 7:9 | שְׁ֝א֗וֹל (seól, gépi) | ᾅδην (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Jób 11:8 | Jób 11:8 | מִ֝שְּׁא֗וֹל (misseól, gépi) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Jób 14:13 | Jób 14:13 | בִּשְׁא֬וֹל (biseól, gépi) | ᾅδῃ (hadé) (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Jób 17:12 | — | שְׁא֣וֹל (seól, gépi) | — | szamozas_elteres | LXX_OS |
+| Jób 17:15 | — | שְׁאֹ֣ל (seól, gépi) | — | szamozas_elteres | LXX_OS |
+| Jób 21:13 | Jób 21:13 | שְׁא֣וֹל (seól, gépi) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Jób 24:19 | Jób 24:19 | שְׁא֣וֹל (seól, gépi) | — | kutatói azonosítás függőben | LXX_OS |
+| Jób 26:6 | Jób 26:6 | שְׁא֣וֹל (seól, gépi) | ᾅδης (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Zsolt 6:6 | Zsolt 6:6 | בִּ֝שְׁא֗וֹל (biseól, gépi) | ᾅδῃ (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Zsolt 9:18 | Zsolt 9:18 | לִשְׁא֑וֹלָה (liseólá, gépi) | ᾅδην (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Zsolt 18:6 | Zsolt(LXX) 17:6 | שְׁא֣וֹל (seól, gépi) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Zsolt 30:4 | Zsolt(LXX) 29:4 | שְׁא֣וֹל (seól, gépi) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Zsolt 31:18 | Zsolt(LXX) 30:18 | לִשְׁאֽוֹל (liseól, gépi) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Zsolt 49:15 | Zsolt(LXX) 48:15 | שְׁא֗וֹל (seól, gépi) | ᾅδῃ (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Zsolt 49:16 | Zsolt(LXX) 48:16 | שְׁא֑וֹל (seól, gépi) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Zsolt 55:16 | Zsolt(LXX) 54:16 | שְׁא֣וֹל (seól, gépi) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Zsolt 86:13 | Zsolt(LXX) 85:13 | מִשְּׁא֥וֹל (misseól, gépi) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Zsolt 88:4 | Zsolt(LXX) 87:4 | לִשְׁא֥וֹל (liseól, gépi) | ᾅδῃ (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Zsolt 89:49 | Zsolt(LXX) 88:49 | שְׁא֣וֹל (seól, gépi) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Zsolt 116:3 | Zsolt(LXX) 114:3 | שְׁא֣וֹל (seól, gépi) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Zsolt 139:8 | Zsolt(LXX) 138:8 | שְּׁא֣וֹל (seól, gépi) | ᾅδην (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Zsolt 141:7 | Zsolt(LXX) 140:7 | שְׁאֽוֹל (seól, gépi) | ᾅδην (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Péld 1:12 | Péld 1:12 | כִּשְׁא֣וֹל (kiseól, gépi) | ᾅδης (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Péld 5:5 | Péld 5:5 | שְׁ֝א֗וֹל (seól, gépi) | ᾅδην (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Péld 7:27 | Péld 7:27 | שְׁא֣וֹל (seól, gépi) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Péld 9:18 | Péld 9:18 | שְׁא֣וֹל (seól, gépi) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Péld 15:11 | Péld 15:11 | שְׁא֣וֹל (seól, gépi) | ᾅδης (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Péld 15:24 | Péld 15:24 | מִשְּׁא֥וֹל (misseól, gépi) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Péld 23:14 | Péld 23:14 | מִשְּׁא֥וֹל (misseól, gépi) | θάνατος (thanatosz G2288) | eltérő | adat/lxx_dontesek.tsv |
+| Péld 27:20 | Péld(LXX) 34:20 | שְׁא֣וֹל (seól, gépi) | ᾅδης (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Péld 30:16 | Péld 30:16 | שְׁאוֹל֮ (seól, gépi) | ᾅδης (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Préd 9:12 | Préd(LXX) 9:10 | בִּשְׁא֕וֹל (biseól, gépi) | ᾅδῃ (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Én 8:6 | Én 8:6 | כִשְׁא֖וֹל (kiseól, gépi) | ᾅδης (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Ézs 5:14 | Ézs 5:14 | שְּׁאוֹל֙ (seól, gépi) | ᾅδης (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Ézs 7:11 | Ézs 7:11 | שְׁאָ֔לָה (seálá, gépi) | — | kutatói azonosítás függőben | LXX_OS |
+| Ézs 14:9 | Ézs 14:9 | שְׁא֗וֹל (seól, gépi) | ᾅδης (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Ézs 14:11 | Ézs 14:11 | שְׁא֛וֹל (seól, gépi) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Ézs 14:15 | Ézs 14:15 | שְׁא֛וֹל (seól, gépi) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Ézs 28:15 | Ézs 28:15 | שְׁא֖וֹל (seól, gépi) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Ézs 28:18 | Ézs 28:18 | שְׁא֖וֹל (seól, gépi) | ᾅδην (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Ézs 38:10 | Ézs 38:10 | שְׁא֑וֹל (seól, gépi) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Ézs 38:18 | Ézs 38:18 | שְׁא֛וֹל (seól, gépi) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Ézs 57:9 | Ézs 57:9 | שְׁאֽוֹל (seól, gépi) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Ez 31:15 | Ez 31:15 | שְׁא֙וֹלָה֙ (seólá, gépi) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Ez 31:16 | Ez 31:16 | שְׁא֖וֹלָה (seólá, gépi) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Ez 31:17 | Ez 31:17 | שְׁא֖וֹלָה (seólá, gépi) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Ez 32:21 | Ez 32:21 | שְׁא֖וֹל (seól, gépi) | βόθρος (bothrosz *(gépi átírás)*) | eltérő | adat/lxx_dontesek.tsv |
+| Ez 32:27 | Ez 32:27 | שְׁא֣וֹל (seól, gépi) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Hós 13:14 | Hós 13:14 | שְׁא֔וֹל (seól, gépi) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Ámós 9:2 | Ámós 9:2 | בִשְׁא֔וֹל (viseól, gépi) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Hab 2:5 | Hab 2:5 | כִּשְׁא֜וֹל (kiseól, gépi) | ᾅδης (ᾅδης, Hadész G0086) | egyező | LXX_OS |
+| Jón 2:3 | Jón 2:3 | שְׁא֛וֹל (seól, gépi) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
 
 *Összesítés: egyező=57, eltérő=3, LXX-minusz=0, kutatói azonosítás függőben=2, szamozas_elteres=2.*
 
