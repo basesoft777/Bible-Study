@@ -1040,7 +1040,7 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 | Ez 31:15 | Ez 31:15 | שְׁא֙וֹלָה֙ (seólá) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
 | Ez 31:16 | Ez 31:16 | שְׁא֖וֹלָה (seólá) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
 | Ez 31:17 | Ez 31:17 | שְׁא֖וֹלָה (seólá) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
-| Ez 32:21 | Ez 32:21 | שְׁא֖וֹל (seól) | βόθρος (bothrosz *(gépi átírás)*) | eltérő | adat/lxx_dontesek.tsv |
+| Ez 32:21 | Ez 32:21 | שְׁא֖וֹל (seól) | βόθρος (bothrosz) | eltérő | adat/lxx_dontesek.tsv |
 | Ez 32:27 | Ez 32:27 | שְׁא֣וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
 | Hós 13:14 | Hós 13:14 | שְׁא֔וֹל (seól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |
 | Ámós 9:2 | Ámós 9:2 | בִשְׁא֔וֹל (viseól) | ᾅδου (ᾅδης, Hadész G0086) | egyező | LXX_OS |

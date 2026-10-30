@@ -3561,7 +3561,7 @@ def gorog_megfelelo_szoveg(r):
     if lk:
         kiejtes = lk[1]
     else:
-        kiejtes = gorog_magyaros(gepi_atiras(r['lemma'])) + ' *(gépi átírás)*'
+        kiejtes = gorog_magyaros(gepi_atiras(r['lemma']))  # DT430 kiegészítés: a kiejtés jelölés nélkül
     return '%s (%s, %s%s)' % (r['szoalak'], r['lemma'], kiejtes, ' %s' % strong if strong else '')
 
 
@@ -3662,7 +3662,7 @@ def lxx_osszevetes(sorai, tokenek):
                     if lk:
                         kiejtes = lk[1]
                     else:
-                        kiejtes = gorog_magyaros(gepi_atiras(r.get('gorog_lemma') or '')) + ' *(gépi átírás)*'
+                        kiejtes = gorog_magyaros(gepi_atiras(r.get('gorog_lemma') or ''))
                     gm = '%s (%s%s)' % (r.get('gorog_lemma') or EM_DASH, kiejtes,
                                          ' %s' % gorog_strong if gorog_strong else '')
                     egyezes_cimke = 'eltérő'
