@@ -81,7 +81,7 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#elofordulasok | forrás: adat/elofordulasok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, adat/forditasok.tsv, adat/szotar_szakasz_cimke.tsv, adat/bdb_vers_jelentes.tsv, adat/thayer_vers_jelentes.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/TAHOT_kivonat.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva | ts=2026-10-29 -->
 
-**Mit mutat ez a rész?** A motívum 33 igehelye a bibliai könyvek sorrendjében (23 ószövetségi, 10 újszövetségi), mindegyik a Károli-fordítás szövegével. Soronként látszik, melyik szó hordozza a motívumot, és mit jelent az adott versben.
+**Mit mutat ez a rész?** A motívum 33 igehelyen fordul elő, 16 bibliai könyvben (23 ószövetségi, 10 újszövetségi hely); a legtöbb hely: 1Móz és Zsolt (5-5). 32 hely azonosítása magas megbízhatóságú, 1 alacsonyabb. **Következtetés:** a motívum a Biblia sok könyvében, mindkét szövetségben fordul elő, és a helyek szinte mind biztosan azonosítottak.
 
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum 33 igehely-sorát fedi az `elofordulasok.tsv`-ből, kanonikus sorrendben, a Károli-szöveggel (1/a) és az UBS-jelentés renderidejű hozzárendelésével (G3). A „Jelentés (a szó)” oszlop a szó jelentését a szótár tagolásában adja (`adat/szotar_szakasz_cimke.tsv`, `adat/bdb_vers_jelentes.tsv`, `adat/thayer_vers_jelentes.tsv`; a címke forrása a sor lábjegyzetében, ⓘ), a „Funkció (a motívumban)” a hely motívumbeli funkcióját (F131, DT272 (d)).*
 
@@ -362,7 +362,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-10-29 -->
 
-**Mit mutat ez a rész?** Ezeket a helyeket megvizsgáltuk, de nem tartoznak a motívumhoz, vagy a döntés még nyitott (92 elutasítva, 1 nyitott). Mindegyiknél látszik, miért került a vizsgálatba, és miért maradt ki.
+**Mit mutat ez a rész?** 93 helyet vizsgáltunk meg jelöltként; elutasítva: 92, döntésre vár: 1. A leggyakoribb ok: „a formula nincs a versben” (40), utána „passzív szerkezet vagy megnevezés (negatív kritérium)” (20). A jelöltek forrása: Károli-kereszthivatkozás 42, Gépi keresés 23, TSK-ajánlás 18, Kutatói felvetés 10. **Következtetés:** majdnem háromszor annyi helyet vizsgáltunk, mint ahány a motívumhoz tartozik (93, illetve 33). A határt leginkább ez az ok húzza meg: „a formula nincs a versben”.
 
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum 93 elutasított/nyitva maradt jelöltjét fedi a `jeloltek.tsv`-ből (G7).*
 
@@ -593,7 +593,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 ### A motívum kulcsszavai
 
-**Mit mutat ez a rész?** A motívumot hordozó héber és görög szavak (a gerinc), a jelentésük, és azok a magyar szavak, amelyekkel a Károli-fordítás a motívum helyein a legtöbbször visszaadja őket. Az alábbi szótári anyag ezekről a szavakról szól.
+**Mit mutat ez a rész?** A motívumot 2 szókapcsolat hordozza: héberül a kárá és a sém együtt (23 hely); görögül az epikaleó (10 hely). **Következtetés:** az Ószövetségben két szó együttes jelenléte kell a motívumhoz, az Újszövetségben egy szó elég.
 
 *Gerinc-kombinációnként (az `elofordulasok.tsv` `strong` mezője, 33 sor); a jelentés az 1. szerep rövid jelentése; a Károli-kulcsszó a 14. szerep szabálya szerint (`eszkozok/szerep_karoli.py`: a motívumsorok Károli-szóalakjainak legalább felében álló szótári alak). Csak megjelenítés.*
 
@@ -681,13 +681,13 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 #### 6. LXX-híd
 
-**Mit mutat ez a rész?** Hogyan kapcsolódik a görög szó a héber Ószövetséghez: a Septuaginta (LXX) a motívum ószövetségi helyein ugyanezt a szót használja-e.
+**Mit mutat ez a rész?** A motívum 23 ószövetségi helyéből 19 helyen a görög fordítás (Septuaginta) ugyanazt a szót használja (epikaleó), mint az Újszövetség; 3 helyen mást, 1 helyen a görögből hiányzik. **Következtetés:** a görög Ószövetség a legtöbb helyen (83%) ugyanazzal a szóval adja vissza a motívumot, ezért az újszövetségi helyek nyelvileg is közvetlenül visszakapcsolódnak az ószövetségiekhez.
 
 **G1941** · az LXX a motívum 23 ószövetségi versében: egyező 19 · eltérő 3 · görögből hiányzik 1 *(egyező: a görög szövegben is G1941 áll)* — versenként: [3. LXX-fordítói döntések](#3-lxx-fordítói-döntések)
 
 #### 7. Megfelelők a másik nyelven
 
-**Mit mutat ez a rész?** Mely szavak felelnek meg ennek a szónak a másik bibliai nyelven, egy kétnyelvű szótár (SECE) szerint; a motívum saját szava kiemelve.
+**Mit mutat ez a rész?** A kétnyelvű szótár (SECE) az epikaleó szónak 8 megfelelőjét adja a másik bibliai nyelven; köztük van a motívum saját szava, a kárá. **Következtetés:** a szótár is megerősíti, hogy a két szó egymás párja.
 
 **G1941 — ἐπικαλέω (epikaleó)** · SECE — héber megfelelők (8):
 
@@ -712,7 +712,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 #### 9. Versenkénti jelentés
 
-**Mit mutat ez a rész?** Hogy az egyes versekben a szó melyik jelentésében áll.
+**Mit mutat ez a rész?** A motívum 10 újszövetségi helyéből 9 helyen az epikaleó egyetlen jelentésben áll, 1 helyen a jelentés nem egyértelmű. **Következtetés:** a szó jelentése a motívum helyein szinte mindenütt egyértelmű.
 
 **G1941 — ἐπικαλέω (epikaleó)** · a motívum 10 újszövetségi helyén a vers-szintű jelentést az [1. Előfordulások](#1-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (9 helyen egy jelentés, 1 helyen több vagy jelölt, nem egyértelmű jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet: /szo/G1941](/szo/G1941) · forrás: `konkordancia/UBS_DNTG_jelentesek.tsv`.
 
@@ -886,7 +886,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 #### 6. LXX-híd
 
-**Mit mutat ez a rész?** A görög fordítás (Septuaginta, LXX) a motívum helyein, ahol ez a szó áll, a motívum görög szavát használja-e; és a teljes Ószövetségben mely görög szavak állnak a szó versei mellett.
+**Mit mutat ez a rész?** A motívum 23 ószövetségi helyéből 19 helyen a görög fordítás (Septuaginta) ugyanazt a szót használja (epikaleó), mint az Újszövetség; 3 helyen mást, 1 helyen a görögből hiányzik. **Következtetés:** a görög Ószövetség a legtöbb helyen (83%) ugyanazzal a szóval adja vissza a motívumot, ezért az újszövetségi helyek nyelvileg is közvetlenül visszakapcsolódnak az ószövetségiekhez.
 
 *Hivatkozás: l. a 3. szakaszt (LXX-fordítói döntések).*
 
@@ -904,7 +904,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 #### 7. Megfelelők a másik nyelven
 
-**Mit mutat ez a rész?** Mely szavak felelnek meg ennek a szónak a másik bibliai nyelven, egy kétnyelvű szótár (SECE) szerint; a motívum saját szava kiemelve.
+**Mit mutat ez a rész?** A kétnyelvű szótár (SECE) a kárá szónak 49 megfelelőjét adja a másik bibliai nyelven; köztük van a motívum saját szava, az epikaleó. **Következtetés:** a szótár is megerősíti, hogy a két szó egymás párja. A kétnyelvű szótár (SECE) a sém szónak 6 megfelelőjét adja a másik bibliai nyelven; a motívum másik nyelvű szava nincs köztük. **Következtetés:** a szókapcsolatban nem ez a szó, hanem a kárá felel meg a másik nyelv szavának.
 
 **H7121 — קָרָא (kárá)** · SECE — görög megfelelők (49):
 
@@ -983,7 +983,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 #### 9. Versenkénti jelentés
 
-**Mit mutat ez a rész?** Hogy az egyes versekben a szó melyik jelentésében áll.
+**Mit mutat ez a rész?** A motívum 23 ószövetségi helyéből 21 helyen a kárá egyetlen jelentésben áll, 2 helyen a jelentés nem egyértelmű; a motívum 23 ószövetségi helyéből 22 helyen a sém egyetlen jelentésben áll, 1 helyen a jelentés nem egyértelmű. **Következtetés:** a szavak jelentése a motívum helyein szinte mindenütt egyértelmű.
 
 **H7121 — קָרָא (kárá)** · a motívum 23 ószövetségi helyén a vers-szintű jelentést az [1. Előfordulások](#1-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (21 helyen egy jelentés, 2 helyen több vagy jelölt, nem egyértelmű jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet: /szo/H7121](/szo/H7121) · forrás: `konkordancia/UBS_DBH_jelentesek.tsv`.
 
@@ -1246,7 +1246,7 @@ választott, nem véletlenül tért el a "szabvány" ἐπικαλέομαι-tó
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#lxx | forrás: adat/lxx_dontesek.tsv, konkordancia/LXX_OS/1-chronicles.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/2-kings.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv, konkordancia/LXX_OS/joel.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zechariah.tsv, konkordancia/LXX_OS/zephaniah.tsv | licenc: CC BY 4.0, minden jog fenntartva | ts=2026-10-29 -->
 
-**Mit mutat ez a rész?** Ez a táblázat azt mutatja meg, hogyan fordította a Septuaginta (LXX) a motívum 23 ószövetségi helyét: ugyanazzal a görög szóval, amelyet az Újszövetség is használ, vagy mással. Összesítve: egyező 19 · eltérő 3 · görögből hiányzik 1.
+**Mit mutat ez a rész?** A motívum 23 ószövetségi helyéből 19 helyen a görög fordítás (Septuaginta) ugyanazt a szót használja (epikaleó), mint az Újszövetség; 3 helyen mást, 1 helyen a görögből hiányzik. **Következtetés:** a görög Ószövetség a legtöbb helyen (83%) ugyanazzal a szóval adja vissza a motívumot, ezért az újszövetségi helyek nyelvileg is közvetlenül visszakapcsolódnak az ószövetségiekhez.
 
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum ÓSZ-i előfordulásait veti össze az `LXX_OS`-szel (G5), soronként a Károli-vers minden versére.*
 
@@ -1284,7 +1284,7 @@ választott, nem véletlenül tért el a "szabvány" ἐπικαλέομαι-tó
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-10-29 -->
 
-**Mit mutat ez a rész?** Mely más bibliai helyekre utalnak a motívum helyeiről a hagyományos kereszthivatkozás-gyűjtemények (a TSK és a Károli-Biblia utalásai). A motívum 33 igehelyéből 24-nál van ilyen utalás, összesen 107.
+**Mit mutat ez a rész?** A motívum 33 helyéből 24 helyről mutat utalás más bibliai helyre a hagyományos gyűjteményekben (TSK, Károli), összesen 107. **Következtetés:** a helyek 73%-át a régi kereszthivatkozások is összekötik más helyekkel; hogy ezek közül melyik mutat a motívum saját helyeire, azt a Minősítés mondja meg.
 
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum 33 igehelyét veti össze a TSK (Votes ≥ 15) és a Károli-KH táblával; 24 igehely ad legalább egy találatot (107 találat összesen), 0 igehely versenkénti kereséssel nem vizsgálható.*
 
@@ -1447,7 +1447,7 @@ választott, nem véletlenül tért el a "szabvány" ἐπικαλέομαι-tó
 
 ### Minősítés *(generált)*
 
-**Mit mutat ez a rész?** Ez a rész megmutatja, hogy a motívum helyeit két, tőlünk független kereszthivatkozás-gyűjtemény (a Treasury of Scripture Knowledge és a Károli-biblia kereszthivatkozásai) mennyire köti össze egymással. Minél több hely kap ilyen kapcsolatot, annál erősebb a motívum külső megerősítése.
+**Mit mutat ez a rész?** A 107 utalásból 20 a motívum két saját helyét köti össze, ez 17 helyet érint a 33-ból. **Következtetés:** a motívum helyeinek a fele (52%) két független gyűjteményben is összetartozik, ez közepes külső megerősítés.
 
 <!-- GENERÁLT-RÉS: minosites | general.py --cel lexikon | forrás: adat/jeloltek.tsv, adat/elofordulasok.tsv, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv -->
 
@@ -1548,7 +1548,7 @@ választott, nem véletlenül tért el a "szabvány" ἐπικαλέομαι-tó
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kapcsolatok | forrás: adat/kapcsolatok.tsv | licenc: minden jog fenntartva | ts=2026-10-29 -->
 
-**Mit mutat ez a rész?** A motívum igehelyei közötti kapcsolatok (25): melyik hely melyikkel áll kapcsolatban, milyen jellegű ez a kapcsolat, és mennyire biztos.
+**Mit mutat ez a rész?** 25 kapcsolat 31 helyet köt össze: 22 párhuzam, 2 beteljesedés, 1 variáns; 19 magas, 6 alacsonyabb bizonyosságú. **Következtetés:** a motívum helyei túlnyomórészt párhuzamos előfordulások, nem egymásra épülő lánc, és a kapcsolatok többsége biztos.
 
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum 25 kapcsolat-sorát fedi a `kapcsolatok.tsv`-ből, 31 igehely-csomóponttal.*
 
@@ -1682,7 +1682,7 @@ graph LR
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-10-29 -->
 
-**Mit mutat ez a rész?** Azok a más motívumok, amelyekkel ez a motívum kapcsolatban áll. Ugyanez a sor a másik motívum lapján is megjelenik.
+**Mit mutat ez a rész?** 3 kapcsolat 2 másik motívummal (ALVIL-001 2, HAMART-001 1), mind „szomszédos”; további 5 döntésre vár. **Következtetés:** a motívum más motívumokhoz eddig csak szövegközelség révén kapcsolódik, tartalmi kapcsolat még nincs igazolva.
 
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum motívumközi kapcsolatait adja a `motivum_kapcsolatok.tsv`-ből (minden sor mögött beépített motívumközi jelölt áll, DT277); a sor mindkét érintett motívum lapján megjelenik.*
 
