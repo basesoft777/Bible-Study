@@ -6,8 +6,10 @@ LSJ, TBESG szövege és fordítása) nem kell.
 
 - `elemez(szoveg)`: soronként a hiányzó kiejtések (sor, szakasz, rész: generált/kézi, szó, ok, javasolt kiejtés).
 - `potol(szoveg)`: a GENERÁLT részeken (GENERÁLT-KEZDET…VÉGE, GENERÁLT-RÉS … a rés proveniencia-soráig) a hiányzó
-  kiejtést a szó után zárójelben pótolja. Görögül gépi magyaros átírás (`kiejtes.py`); héberül csak a jóváhagyott alak
-  (`adat/kiejtes_kivetelek.tsv`), különben nem pótol (jelölt hiány). A kézi részt nem írja: azt a forrásban kell javítani.
+  kiejtést a szó után zárójelben pótolja. Görögül gépi magyaros átírás (`kiejtes.py`); héberül a jóváhagyott alak
+  (`adat/kiejtes_kivetelek.tsv`), ennek híján (DT-F131y, 2026-10-30) a pontozott szó gépi kiejtése „…, gépi” jelöléssel
+  (`heber_kiejtes.py`); pontozatlan, jóváhagyás nélküli szónál nem pótol (jelölt hiány). A kézi részt nem írja: azt a
+  forrásban kell javítani.
 
 Egy szó „kiejtéssel áll”, ha utána zárójelben latin betűs szöveg következik (a sorvégi szónál a következő sor elején is),
 vagy táblázatsorban a következő cella latin betűs. A szó azonossága: a mellékjelek nélküli betűsor.
@@ -86,18 +88,22 @@ ELOTAG_KIEJTES = {'ב': 'be', 'ל': 'le', 'ו': 've', 'כ': 'ke', 'מ': 'mi', '�
 
 
 def heber_kiejtes(szo):
-    """A jóváhagyott kiejtés (szókapcsolatnál szavanként, egyjegyű előtaggal is), vagy None. Pontozatlan szónál a
-    mássalhangzó-váz, ha az egyértelmű."""
+    """A jóváhagyott kiejtés (szókapcsolatnál szavanként, egyjegyű előtaggal is); ennek híján a pontozott szó gépi
+    kiejtése (DT-F131y), ilyenkor az egész „…, gépi” jelölést kap; vagy None. Pontozatlan szónál a mássalhangzó-váz,
+    ha az egyértelmű."""
+    import heber_kiejtes as HK
+    gepi = False
     jo = jovahagyott_heber()
     vaz = collections.defaultdict(set)
     for k, v in jo.items():
         vaz[_massalhangzo(k)].add(v)
     ki = []
     elo = ''
-    for w in SZO_ELVALASZTO.split(szo):
+    szavak = SZO_ELVALASZTO.split(szo)
+    for wi, w in enumerate(szavak):
         k = heber_kulcs(w)
         m0 = ELOTAG_RE.match(k)
-        if m0 and m0.end() == len(k):
+        if m0 and m0.end() == len(k) and wi < len(szavak) - 1:  # önálló előtag (a בְּ előtag): gépi kiejtés
             elo = ELOTAG_KIEJTES[m0.group(1)]  # külön írt előtag (בְּ שֵׁם): a következő szóhoz tartozik
             continue
         if k in jo:
@@ -111,8 +117,14 @@ def heber_kiejtes(szo):
         if _massalhangzo(k) == k and len(vaz.get(k, ())) == 1:
             ki.append(next(iter(vaz[k])))
             continue
+        g = HK.kiejt(w)
+        if g:
+            ki.append(elo + g)
+            elo = ''
+            gepi = True
+            continue
         return None
-    return ' '.join(ki)
+    return ' '.join(ki) + (', %s' % HK.GEPI_JEL if gepi else '')
 
 
 _gorog_tabla = None

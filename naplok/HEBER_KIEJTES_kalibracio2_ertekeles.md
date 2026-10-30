@@ -10,6 +10,11 @@
   ```
 - **Proveniencia:** `scope=naplok/HEBER_KIEJTES_kalibracio2.json + _kulcs.json + naplok/HEBER_KIEJTES_kalibracio2_valasztas.txt | forras=naplok/HEBER_KIEJTES_kalibracio_kiertekel.py --menet 2 | ts=2026-10-30`. A 4. és az 5. szakasz besorolása `manual`.
 
+> **Javítás (2026-10-30, a DT-F131y kiegészítése):** az orkesztrátor a 41. sor jelölését hibásnak ismerte el (a
+> קָרָאוּ pauzális alak, sevá nélkül; a gépi „káráú” a helyes). **A jelölő hibázott; a javított eredmény 50/50**
+> (átlagos 13/13, nehéz 37/37). A 16. sorhoz szükséges R5b bekerült, a gépi alak most „úbókéa”. Az alábbi
+> szakaszok a javítás előtti szigorú számot is megőrzik.
+
 ## 0. A jelölő nem független
 
 A felhasználó szó szerint ezt írta: „döntsd el”. A jelöléseket ezért az orkesztrátor-session végezte, a kulcsfájl megnézése nélkül. Mércéje:
@@ -22,9 +27,9 @@ A jelölő tehát ugyanazokat a szabályokat alkalmazta, amelyeket a gép. **A m
 
 | | gépi változat elfogadható | ebből preferált | (b) konvenció-eltérés | (a) valódi hiba |
 |---|---|---|---|---|
-| **átlagos (vegyes, 13)** | **12/13** | 12 | 0 | 1 (41.) |
+| **átlagos (vegyes, 13)** | **12/13** (javítva: 13/13) | 12 | 0 | 1 (41., a jelölő hibája) |
 | **nehéz (37)** | **37/37** | 35 | 1 (16.) | 0 |
-| **összesen (50)** | **49/50** | 47 | 1 | 1 |
+| **összesen (50)** | **49/50** (javítva: 50/50) | 47 | 1 | 1 |
 
 Ehhez két megjegyzés tartozik:
 - **A 41. sor (קָרָאוּ) jelölése téves premisszán áll.** A pontozott szövegben a reson **kámec** áll, nem sevá (qārāʾû, pauzális alak atnachchal; a STEP is `ka.Ra.'u`). A jelölő a „káreú” saját alakot azzal indokolta, hogy „a sevá a torokhang előtt az R3 szerint kiejtett”, de ebben a szóban nincs sevá. A gépi „káráú” a pontozás szerinti olvasat. Ha a 41. sort a pontozás szerint értékeljük, az átlagos esetek is **13/13**, összesen **50/50**. A jelölést nem bíráltam felül: a szigorú szám 49/50, a döntés a felhasználóé.

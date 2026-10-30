@@ -1,0 +1,103 @@
+# A heber_kiejtes.py tesztesetei a két kalibráló mintából (DT-F131y). GENERÁLT: naplok/HEBER_KIEJTES_tesztesetek.py
+# scope=naplok/HEBER_KIEJTES_kalibracio*.json + _kulcs.json + _valasztas.txt | forras=naplok/HEBER_KIEJTES_tesztesetek.py | ts=2026-10-30
+minta	sorszam	kategoria	heber	elotag_hossz	makkef	elfogadott	preferalt	gepi	allapot	ok
+1	1	kámec kátán (gyanú)	הָרְפָאִ֖ים	1	nem	hárfáím|horfáím	hárfáím	hárfáím	egyezik	
+1	2	kámec kátán (gyanú)	וְהָֽרְפָאִ֑ים	2	nem	vehárefáím|vehárfáím	vehárefáím	vehárefáím	egyezik	
+1	3	kámec kátán (gyanú)	בְּחָזְקָ֑ה	1	nem	becházeká|becházká	becházeká	becházká	egyezik	
+1	4	kámec kátán (gyanú)	הָיְתָ֥ה	0	nem	hájetá	hájetá	hájtá	ismert_elteres	R4 elutasítva: a meteg nélküli kámec utáni sevá néma (a jelölés: hájetá)
+1	5	kámec kátán (gyanú)	שִׁבֳּלִ֣ים	0	nem	sibbolím	sibbolím	sibbolím	egyezik	
+1	6	kámec kátán (gyanú)	אָהְָל֑וֹ	0	nem	áháló	áháló	áháló	egyezik	
+1	7	kámec kátán (gyanú)	נִסְתָּֽרְנוּ	0	nem	nisztárnú|nisztárenú		nisztárenú	egyezik	
+1	8	nem szókezdő sevá	בִשְׁא֔וֹל	1	nem	viseól		viseól	egyezik	
+1	9	nem szókezdő sevá	בְשִׁמְךָ֔	1	nem	vesimchá		vesimchá	egyezik	
+1	10	nem szókezdő sevá	וְקִרְאוּ֙	1	nem	vekireú		vekireú	egyezik	
+1	11	nem szókezdő sevá	נִשְׁחָ֑תָה	0	nem	nishátá		nischátá	ismert_elteres	R8: ח = ch (a jelölés itt h-t választott)
+1	12	nem szókezdő sevá	כִּתְהֹמ֥וֹת	1	nem	kitehómót		kitehómót	egyezik	
+1	13	nem szókezdő sevá	הַנְּפִילִ֛ים	1	nem	hannefílím|hannefilím		hannefílím	egyezik	
+1	14	furtív patah	יְהוֹשֻׁ֗עַ	0	nem	jehósua	jehósua	jehósua	egyezik	
+1	15	furtív patah	הַמִּזְבֵּ֖חַ	1	nem	hammizbéach		hammizbéach	egyezik	
+1	16	furtív patah	תַּצְמִ֣יחַֽ	0	nem	tacmíach		tacmíach	egyezik	
+1	17	furtív patah	מִזְבֵּ֙חַ֙	0	nem	mizebéach		mizbéach	ismert_elteres	nyitott: a zajin alatti sevá kiejtése; szabály nem fedi
+1	18	furtív patah	יָנֽוּחַ	0	nem	jánúach		jánúach	egyezik	
+1	19	furtív patah	רֵ֣יחַ	0	nem	réjach		réach	ismert_elteres	nyitott: cere + jod furtív előtt (réjach); nem lett szabály
+1	20	dáges forte	וּמִתְּה֖וֹם	2	nem	úmittehóm		úmittehóm	egyezik	
+1	21	dáges forte	חַיִּ֑ים	0	nem	chajjím		chajjím	egyezik	
+1	22	dáges forte	וַיִּקְרָ֖א	1	nem	vajjikrá	vajjikrá	vajjikrá	egyezik	
+1	23	dáges forte	חַיָּֽה	0	nem	chajjá		chajjá	egyezik	
+1	24	dáges forte	מִ֝שְּׁא֗וֹל	1	nem	missól		misseól	ismert_elteres	nyitott: a kettőzött betű alatti sevát a jelölő nem ejtette (missól)
+1	25	dáges forte	חַטָּ֣את	0	nem	chattát	chattát	chattát	egyezik	
+1	26	ketiv/qere	וּבִירוּשָׁלִַ֜ם	2	nem	úvírúsálajim		úvírúsálajim	egyezik	
+1	27	ketiv/qere	יְרֽוּשָׁלִָ֑ם	0	nem	jerúsálajim		jerúsálajim	egyezik	
+1	28	ketiv/qere	יְהוִ֔ה	0	nem	Jahve	Jahve	Jahve	egyezik	
+1	29	ketiv/qere	יְהֹוָ֨ה	0	nem	Jahve	Jahve	Jahve	egyezik	
+1	30	ketiv/qere	יְהוָ֔ה	0	nem	Jahve	Jahve	Jahve	egyezik	
+1	31	makkef	בְנֵי	0	igen	vené|bené		bené	egyezik	
+1	32	makkef	בְשֵׁם	1	igen	vesém|besém		vesém	egyezik	
+1	33	makkef	וַחֲמַס	1	igen	vachamasz		vachamasz	egyezik	
+1	34	makkef	אַתְּ	0	igen	att		att	egyezik	
+1	35	makkef	אַף	0	igen	ap|af		af	egyezik	
+1	36	makkef	וּפֶן	1	igen	úpen|úfen		úpen	egyezik	
+1	37	szókezdő begadkefat dáges nélkül	כִשְׁא֖וֹל	1	nem	kisól		kiseól	ismert_elteres	R3: torokhang előtt kiejtett sevá (a jelölés: kisól)
+1	38	szókezdő begadkefat dáges nélkül	כֹהֵן֙	0	nem	kóhén		kóhén	egyezik	
+1	39	szókezdő begadkefat dáges nélkül	בִשְׁמִ֗י	1	nem	vismí		vismí	egyezik	
+1	40	szókezdő begadkefat dáges nélkül	בִשְׁמ֔וֹ	1	nem	bismó|vismó		vismó	egyezik	
+1	41	szókezdő begadkefat dáges nélkül	בְשָׁלֵ֣ם	1	nem	vesalém|besálém		vesálém	ismert_elteres	nyitott: hosszúság (a jelölés: vesalém)
+1	42	szókezdő begadkefat dáges nélkül	בְצִלּ֖וֹ	1	nem	vecilló|becilló		vecilló	egyezik	
+1	43	szókezdő begadkefat dáges nélkül	בְרִית֙	0	nem	berít		berít	egyezik	
+1	44	ס és שׂ (sz vagy s)	וְחָמָ֣ס	1	nem	vechámász		vechámász	egyezik	
+1	45	ס és שׂ (sz vagy s)	הֶחָמָ֖ס	1	nem	hechámász		hechámász	egyezik	
+1	46	ס és שׂ (sz vagy s)	חָמָ֖ס	0	nem	hámász		chámász	ismert_elteres	R1 + R8: chámász (a jelölés: hámász)
+1	47	ס és שׂ (sz vagy s)	כִּסְא֑וֹ	0	nem	kiszeó		kiszeó	egyezik	
+1	48	ס és שׂ (sz vagy s)	חֲמַ֤ס	0	nem	hamasz		chamasz	ismert_elteres	R8: ח = ch (a jelölés: hamasz)
+1	49	ס és שׂ (sz vagy s)	חַ֭סְדְּךָ	0	nem	chaszdechá		chaszdechá	egyezik	
+1	50	ס és שׂ (sz vagy s)	הַכֶּ֔סֶף	1	nem	hakkeszef		hakkeszef	egyezik	
+2	1	kámec kátán (gyanú)	וַיִּסָּֽכְרוּ֙	1	nem	vajjisszácherú	vajjisszácherú	vajjisszácherú	egyezik	
+2	2	kámec kátán (gyanú)	רְכֻלָּתְךָ֗	0	nem	rechullátechá|rechullátchá		rechullátchá	egyezik	
+2	3	kámec kátán (gyanú)	מָלְאָ֥ה	0	nem	máleá	máleá	máleá	egyezik	
+2	4	kámec kátán (gyanú)	יָֽשְׁבוּ	0	igen	jásevú|jásvú	jásevú	jásevú	egyezik	
+2	5	kámec kátán (gyanú)	צִדְקָֽתְךָ֨	0	nem	cidkátchá|cidkátechá	cidkátechá	cidkátechá	egyezik	
+2	6	kámec kátán (gyanú)	הַצָּהֳרַ֤יִם	1	nem	haccohorajim|haccáhorajim	haccáhorajim	haccáhorajim	egyezik	
+2	7	nem szókezdő sevá	יִקְרָ֛א	0	nem	jikrá	jikrá	jikrá	egyezik	
+2	8	nem szókezdő sevá	בִּשְׁא֬וֹל	1	nem	biseól	biseól	biseól	egyezik	
+2	9	nem szókezdő sevá	לִשְׁא֑וֹל	1	nem	liseól	liseól	liseól	egyezik	
+2	10	nem szókezdő sevá	אֶקְרָ֣א	0	nem	ekrá	ekrá	ekrá	egyezik	
+2	11	nem szókezdő sevá	קִרְא֣וּ	0	nem	kireú	kireú	kireú	egyezik	
+2	12	nem szókezdő sevá	לִשְׁא֑וֹלָה	1	nem	liseólá	liseólá	liseólá	egyezik	
+2	13	furtív patah	פֹלֵ֣חַ	0	nem	póléach|fóléach	póléach	póléach	egyezik	
+2	14	furtív patah	וּבְר֤וּחַ	2	nem	úverúach	úverúach	úverúach	egyezik	
+2	15	furtív patah	ר֣וּחַ	0	nem	rúach	rúach	rúach	egyezik	
+2	16	furtív patah	וּבֹקֵ֣עַ	1	nem	úbókéa|úvókéa	úbókéa	úbókéa	egyezik	
+2	17	furtív patah	הַגְבֵּ֥הַּ	0	nem	hagbéah	hagbéah	hagbéah	egyezik	
+2	18	dáges forte	הַנְּפִלִ֞ים	1	nem	hannefilím	hannefilím	hannefilím	egyezik	
+2	19	dáges forte	וַיִּקְרְא֣וּ	1	nem	vajjikreú	vajjikreú	vajjikreú	egyezik	
+2	20	dáges forte	עִצְּבוֹנֵ֣ךְ	0	nem	iccevónéch	iccevónéch	iccevónéch	egyezik	
+2	21	dáges forte	וּמֵעִצְּב֣וֹן	2	nem	úméiccevón	úméiccevón	úméiccevón	egyezik	
+2	22	dáges forte	וּֽמִתְּהֹמ֥וֹת	2	nem	úmittehómót	úmittehómót	úmittehómót	egyezik	
+2	23	makkef	וַיִּֽבֶן	1	igen	vajjiven	vajjiven	vajjiven	egyezik	
+2	24	makkef	וְעִם	1	igen	veim	veim	veim	egyezik	
+2	25	makkef	גַֽם	0	igen	gam	gam	gam	egyezik	
+2	26	makkef	עַבְדֵי	0	igen	avdé	avdé	avdé	egyezik	
+2	27	makkef	בְיַד	1	igen	vejad	vejad	vejad	egyezik	
+2	28	szókezdő begadkefat dáges nélkül	כֹ֤ה	0	nem	kó	kó	kó	egyezik	
+2	29	szókezdő begadkefat dáges nélkül	כֻלָּם֙	0	nem	kullám	kullám	kullám	egyezik	
+2	30	szókezdő begadkefat dáges nélkül	ב֑וֹר	0	nem	bór	bór	bór	egyezik	
+2	31	szókezdő begadkefat dáges nélkül	בְךָ֔	1	nem	vechá	vechá	vechá	egyezik	
+2	32	szókezdő begadkefat dáges nélkül	בְאַפִּ֔י	1	nem	veappí	veappí	veappí	egyezik	
+2	33	ס és שׂ (sz vagy s)	אָסוֹן֙	0	nem	ászón	ászón	ászón	egyezik	
+2	34	ס és שׂ (sz vagy s)	לְמִרְמָֽס	1	nem	lemirmász	lemirmász	lemirmász	egyezik	
+2	35	ס és שׂ (sz vagy s)	יִשָּׂ֣א	0	nem	jisszá	jisszá	jisszá	egyezik	
+2	36	ס és שׂ (sz vagy s)	יָס֥וּר	0	nem	jászúr	jászúr	jászúr	egyezik	
+2	37	ס és שׂ (sz vagy s)	תֹסֵ֥ף	0	nem	tószéf	tószéf	tószéf	egyezik	
+2	38	vegyes (nem nehéz)	שְׁאֹֽל	0	nem	seól	seól	seól	egyezik	
+2	39	vegyes (nem nehéz)	שְׁאֽוֹלָה	0	nem	seólá	seólá	seólá	egyezik	
+2	40	vegyes (nem nehéz)	רָעַ֥ת	0	nem	ráat	ráat	ráat	egyezik	
+2	41	vegyes (nem nehéz)	קָרָ֑אוּ	0	nem	káráú	káráú	káráú	egyezik	
+2	42	vegyes (nem nehéz)	רְפָאִֽים	0	nem	refáím	refáím	refáím	egyezik	
+2	43	vegyes (nem nehéz)	שְׁמ֖וֹ	0	nem	semó	semó	semó	egyezik	
+2	44	vegyes (nem nehéz)	וּבְשֵׁ֖ם	2	nem	úvesém	úvesém	úvesém	egyezik	
+2	45	vegyes (nem nehéz)	לְהָרָפָֽא	2	nem	leháráfá	leháráfá	leháráfá	egyezik	
+2	46	vegyes (nem nehéz)	בְּנֵ֣י	0	nem	bené	bené	bené	egyezik	
+2	47	vegyes (nem nehéz)	הָרָפָ֗ה	1	nem	háráfá	háráfá	háráfá	egyezik	
+2	48	vegyes (nem nehéz)	תְּהֹמ֥וֹת	0	nem	tehómót	tehómót	tehómót	egyezik	
+2	49	vegyes (nem nehéz)	לְשַׁחֵ֣ת	1	nem	lesachét	lesachét	lesachét	egyezik	
+2	50	vegyes (nem nehéz)	שְׁאָ֔לָה	0	nem	seálá	seálá	seálá	egyezik	
