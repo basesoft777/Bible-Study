@@ -41,6 +41,7 @@ import utvonalak as _U
 import szerep_karoli as SZK
 import szerep_nave as SZN
 import szerep_kizart as SZKZ
+import olvasoi_kovetkeztetes as OK  # az olvasói szöveg: lelet + következtetés (2026-10-30)
 
 ROOT = G.ROOT
 ADAT = G.ADAT
@@ -857,8 +858,15 @@ def blokk_elofordulasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
             forras_licenc_parok.append((TAHOT_KIVONAT_FAJL, LC('TAHOT')))
             licenc_lista = _sorted_unique(licenc_lista + [LC('TAHOT')])
     tesz = [G.konyv_teszamentum(G.konyv_token(s['igehely'])) for s in sorai]
-    olv = olvasoi('elofordulasok', n=len(sorai),
-                  reszek=szam_osszegzes([('ószövetségi', tesz.count('ÓSZ')), ('újszövetségi', tesz.count('ÚSZ'))]))
+    konyv_db = {}
+    for s in sorai:
+        k = G.konyv_token(s['igehely'])
+        konyv_db[k] = konyv_db.get(k, 0) + 1
+    olv = OK.elofordulasok(len(sorai), tesz.count('ÓSZ'), tesz.count('ÚSZ'), len(konyv_db),
+                           sorted(konyv_db.items(), key=lambda x: (-x[1], x[0])),
+                           sum(1 for s in sorai if (s.get('megbizhatosag') or '').strip() == 'magas')) or \
+        olvasoi('elofordulasok', n=len(sorai),
+                reszek=szam_osszegzes([('ószövetségi', tesz.count('ÓSZ')), ('újszövetségi', tesz.count('ÚSZ'))]))
     blokk_szoveg = _lexikon_blokk(m['id'], 'elofordulasok', forras_lista, licenc_lista, hatokor, torzs, olv)
     return blokk_szoveg, forras_licenc_parok
 
@@ -893,15 +901,21 @@ def jeloltek_sorok():
     return _jeloltek_cache
 
 
-def blokk_kizart(m):
+def blokk_kizart(m, n_motivum=0):
     sorok_ehhez = [r for r in jeloltek_sorok() if r['id'] == m['id'] and r.get('dontes') in ('elutasítva', 'nyitva')]
 
     reszek = []
     labj = []
+    kizart_olv = None
     if sorok_ehhez:
         # ISTENTISZT-001 arany lap, 2026-10-29: csoportosítva aszerint, miért lett jelölt; a döntés és az indok, fent az
         # elutasítási okok összesítője (eszkozok/szerep_kizart.py, adat/elutasitasi_okok.tsv); a nyers forrás lábjegyzetben
         tablak, labj, ossz = SZKZ.blokk_torzs(sorok_ehhez, m['id'])
+        okok = sorted(((k, v) for k, v in ossz['ok'].items() if k not in (SZKZ.EGYEB_OK, 'nyitott döntés')),
+                      key=lambda x: (-x[1], x[0]))
+        kizart_olv = OK.kizart(len(sorok_ehhez), sum(1 for r in sorok_ehhez if r.get('dontes') == 'elutasítva'),
+                               sum(1 for r in sorok_ehhez if r.get('dontes') == 'nyitva'), okok,
+                               [(c, ossz['forras'][c]) for c in SZKZ.CSOPORTOK if ossz['forras'].get(c)], n_motivum)
         reszek.append(SZKZ.osszesito_sor(ossz))
         reszek.extend(tablak)
     else:
@@ -917,7 +931,8 @@ def blokk_kizart(m):
     hatokor = ('Ez a blokk a `[ID: %s]` motívum %d elutasított/nyitva maradt jelöltjét fedi a '
                '`jeloltek.tsv`-ből (G7).' % (m['id'], len(sorok_ehhez)))
     nyitott = sum(1 for r in sorok_ehhez if r.get('dontes') == 'nyitva')
-    olv = (olvasoi('kizart', reszek=szam_osszegzes([('elutasítva', len(sorok_ehhez) - nyitott), ('nyitott', nyitott)]))
+    olv = ((kizart_olv or olvasoi('kizart', reszek=szam_osszegzes([('elutasítva', len(sorok_ehhez) - nyitott),
+                                                                    ('nyitott', nyitott)])))
            if sorok_ehhez else olvasoi('kizart_ures'))
     return _lexikon_blokk(m['id'], 'kizart', ['adat/jeloltek.tsv', 'adat/motivumok.tsv'],
                            [LC('projekt_adat')], hatokor, torzs, olv), \
@@ -2034,6 +2049,45 @@ def szerep_megjelenitett(szerep):
     return szerep
 
 
+def _motivum_tokenek(sorai):
+    out = []
+    for s in sorai:
+        out += [t for t in (s.get('strong') or '').split('+') if t and t not in out]
+    return out
+
+
+def sece_sajat(t, sajat):
+    """(a SECE-megfelelők száma, [a motívum saját Strongjai köztük]) — a sece_tabla egyezés-szabályával."""
+    lista = sece_megfelelok(t) or []
+    masik = 'H' if t.startswith('G') else 'G'
+    idx = lemma_strong_index()
+    talalt = []
+    for szo in lista:
+        for x in idx.get(unicodedata.normalize('NFC', szo), []):
+            if x.startswith(masik) and x in sajat and x not in talalt:
+                talalt.append(x)
+    return len(lista), talalt
+
+
+def szerep_olvasoi(nyelv, n, tokenek_ny, ctx):
+    """A 6., 7. és 9. szerep olvasói szövege (lelet + következtetés), vagy None."""
+    sorai = ctx['sorai']
+    tok = _motivum_tokenek(sorai)
+    if n == 6:
+        return lxx_olvasoi(lxx_osszevetes(sorai, tok)[1], tok)
+    if n == 7:
+        adat = {t: sece_sajat(t, set(tok)) for t in tokenek_ny}
+        reszek = [OK.sece(_szo_nev(t), db, [_szo_nev(x) for x in sj],
+                          tars=next((_szo_nev(u) for u in tokenek_ny if u != t and adat[u][1]), ''))
+                  for t, (db, sj) in adat.items()]
+        return ' '.join(r for r in reszek if r) or None
+    if n == 9:
+        tesz = 'ószövetségi' if nyelv == 'heber' else 'újszövetségi'
+        return OK.versenkenti([(_szo_nev(t),) + tuple(_ubs_oszlop_szamlalo(t, ctx)[:2]) + (tesz,)
+                               for t in tokenek_ny])
+    return None
+
+
 def _szerep_blokk(nyelv, sor, tokenek_ny, reszek, ctx):
     n = int(sor['sorrend'])
     szerep, allapot = szerep_megjelenitett(sor['szerep']), sor['allapot']
@@ -2041,6 +2095,8 @@ def _szerep_blokk(nyelv, sor, tokenek_ny, reszek, ctx):
     olv = olvasoi_szerep(nyelv, n, bool(ctx.get('gerinc')) and (nyelv, n) in GERINC_SZEREP_EPITO)
     if n == 12 and ctx.get('gerinc'):
         olv = SZN.olvasoi_12(ctx.get('sorai') or [], motivum_mezo(ctx, 'folerendelt_fogalom').split(' (')[0]) or olv
+    if n in (6, 7, 9) and ctx.get('sorai'):
+        olv = szerep_olvasoi(nyelv, n, tokenek_ny, ctx) or olv
     if n in (13, 14) and ctx.get('sorai') and ctx['sorai'][0].get('id') in SZEREP_KAROLI_MOTIVUMOK:
         olv = (olvasoi_13 if n == 13 else olvasoi_14)(ctx['sorai']) or olv
     if olv:
@@ -2153,9 +2209,10 @@ def kulcsszavak_blokk(motivum_id, sorai, fajl_licenc_kulcsok):
         sorok.append('| %s | %s | %s | %s |' % (' + '.join(st), szavak, jelentes, karoli))
     fajl_licenc_kulcsok.setdefault('adat/elofordulasok.tsv', set()).add('projekt_adat')
     fajl_licenc_kulcsok.setdefault('adat/szoto/karoli_szotari_alak.tsv', set()).add('projekt_adat')
-    olv = ('A motívumot hordozó héber és görög szavak (a gerinc), a jelentésük, és azok a magyar szavak, amelyekkel '
-           'a Károli-fordítás a motívum helyein a legtöbbször visszaadja őket. Az alábbi szótári anyag ezekről a '
-           'szavakról szól.')
+    olv = OK.kulcsszavak([('héber' if sorted(k)[0].startswith('H') else 'görög', [_szo_nev(s) for s in sorted(k)],
+                           sum(1 for r in sorai if SZK._komb(r) == k)) for k in kombok]) or \
+        ('A motívumot hordozó héber és görög szavak, a jelentésük, és azok a magyar szavak, amelyekkel a '
+         'Károli-fordítás a motívum helyein a legtöbbször visszaadja őket.')
     hatokor = ('*Gerinc-kombinációnként (az `elofordulasok.tsv` `strong` mezője, %d sor); a jelentés az 1. szerep '
                'rövid jelentése; a Károli-kulcsszó a 14. szerep szabálya szerint (`eszkozok/szerep_karoli.py`: a '
                'motívumsorok Károli-szóalakjainak legalább felében álló szótári alak). Csak megjelenítés.*'
@@ -3473,6 +3530,15 @@ LXX_OLVASOI_CIMKE = {'egyező': 'egyező', 'eltérő': 'eltérő', 'LXX-minusz':
                      'szamozas_elteres': 'versszámozás miatt nem párosítva'}
 
 
+def lxx_olvasoi(szamlalo, tokenek):
+    """A 3. szakasz és a 6. szerep olvasói szövege (lelet + következtetés, OK.lxx)."""
+    g = [t for t in tokenek if t.startswith('G')]
+    return OK.lxx(sum(szamlalo.values()), szamlalo.get('egyező', 0), szamlalo.get('eltérő', 0),
+                  szamlalo.get('LXX-minusz', 0),
+                  szamlalo.get('kutatói azonosítás függőben', 0) + szamlalo.get('szamozas_elteres', 0),
+                  _szo_nev(g[0]) if len(g) == 1 else '')
+
+
 def lxx_olvasoi_osszegzes(szamlalo):
     """„egyező 19 · eltérő 3 · görögből hiányzik 1” — a nulla tagok nélkül; üres számlálónál EM_DASH."""
     reszek = ['%s %d' % (LXX_OLVASOI_CIMKE[k], szamlalo.get(k, 0)) for k in LXX_SZAMLALO_KULCSOK if szamlalo.get(k)]
@@ -3589,7 +3655,8 @@ def blokk_lxx(m, sorai, tokenek):
                '(G5), soronként a Károli-vers minden versére.' % m['id'])
     dontesek_hasznalt = bool(szamlalo['eltérő'] or szamlalo['LXX-minusz'])
     forras_lista = sorted(forras_fajlok) + (['adat/lxx_dontesek.tsv'] if dontesek_hasznalt else [])
-    olv = olvasoi('lxx', n=sum(szamlalo.values()), osszegzes=lxx_olvasoi_osszegzes(szamlalo))
+    olv = lxx_olvasoi(szamlalo, tokenek) or olvasoi('lxx', n=sum(szamlalo.values()),
+                                                      osszegzes=lxx_olvasoi_osszegzes(szamlalo))
     blokk_szoveg = _lexikon_blokk(m['id'], 'lxx', sorted(set(forras_lista)),
                                    [LC('LXX_OS'), LC('projekt_adat')], hatokor, torzs, olv)
     forras_licenc_parok = [(f, LC('LXX_OS')) for f in sorted(forras_fajlok)]
@@ -3623,6 +3690,11 @@ def kh_index():
             idx.setdefault(r['Igehely'], []).append(r)
         _kh_by_step = idx
     return _kh_by_step
+
+
+# A Minősítés olvasói szövegéhez: a 4. szakasz találatszáma és a rés párjai motívumonként (a rés később épül).
+KERESZT_OSSZES = {}
+MINOSITES_STAT = {}
 
 
 def blokk_kereszthivatkozasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
@@ -3671,8 +3743,10 @@ def blokk_kereszthivatkozasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
         m['id'], 'kereszthivatkozasok',
         ['konkordancia/TSK_kereszthivatkozasok.tsv', 'konkordancia/Karoli_kereszthivatkozasok.tsv'],
         [LC('TSK'), LC('Karoli_KH')], hatokor, torzs,
-        olvasoi('kereszthivatkozasok', n=len(sorai_rendezve), talalt=len(bekezdesek), osszes=talalat_szam)
+        OK.kereszthivatkozasok(len(sorai_rendezve), len(bekezdesek), talalat_szam)
+        or olvasoi('kereszthivatkozasok', n=len(sorai_rendezve), talalt=len(bekezdesek), osszes=talalat_szam)
     )
+    KERESZT_OSSZES[m['id']] = talalat_szam
     forras_licenc_parok = [
         ('konkordancia/TSK_kereszthivatkozasok.tsv', LC('TSK')),
         ('konkordancia/Karoli_kereszthivatkozasok.tsv', LC('Karoli_KH')),
@@ -3693,6 +3767,13 @@ def kapcsolatok_sorok():
         _, sorok = G.tsv_beolvas(KAPCSOLATOK_TSV)
         _kapcsolatok_cache = sorok
     return _kapcsolatok_cache
+
+
+def _tipus_szam(sorok):
+    d = {}
+    for r in sorok:
+        d[r['tipus']] = d.get(r['tipus'], 0) + 1
+    return sorted(d.items(), key=lambda x: (-x[1], x[0]))
 
 
 def blokk_kapcsolatok(m, konyv_sorrend, hianyzo_konyvek):
@@ -3732,7 +3813,9 @@ def blokk_kapcsolatok(m, konyv_sorrend, hianyzo_konyvek):
     hatokor = ('Ez a blokk a `[ID: %s]` motívum %d kapcsolat-sorát fedi a `kapcsolatok.tsv`-ből, '
                '%d igehely-csomóponttal.' % (m['id'], len(sorok_ehhez), len(igehelyek)))
     blokk_szoveg = _lexikon_blokk(m['id'], 'kapcsolatok', ['adat/kapcsolatok.tsv'], [LC('projekt_adat')], hatokor, torzs,
-                                  olvasoi('kapcsolatok', n=len(sorok_ehhez)))
+                                  OK.kapcsolatok(len(sorok_ehhez), len(igehelyek), _tipus_szam(sorok_ehhez),
+                                                 sum(1 for r in sorok_ehhez if r['bizonyossag'] == 'magas'))
+                                  or olvasoi('kapcsolatok', n=len(sorok_ehhez)))
     return blokk_szoveg, [('adat/kapcsolatok.tsv', LC('projekt_adat'))]
 
 
@@ -3802,7 +3885,17 @@ def blokk_kapcsolodo(m):
                '(minden sor mögött beépített motívumközi jelölt áll, DT277); a sor mindkét érintett '
                'motívum lapján megjelenik.' % m['id'])
     return _lexikon_blokk(m['id'], 'kapcsolodo', list(KAPCSOLODO_FORRASOK), [LC('projekt_adat')], hatokor, torzs,
-                          olvasoi('kapcsolodo'))
+                          kapcsolodo_olvasoi(m['id'], motivum_kapcsolatok_sorok(), motivumkozi_jeloltek())
+                          or olvasoi('kapcsolodo'))
+
+
+def kapcsolodo_olvasoi(motivum_id, mk_sorok, mk_jeloltek):
+    """Az 5/b. olvasói szövege (OK.kapcsolodo) ugyanabból, amiből a kapcsolodo_torzs épül."""
+    sajat = [(r['id_b'] if r['id_a'] == motivum_id else r['id_a'], r['tipus'], r['bizonyossag'])
+             for r in mk_sorok if motivum_id in (r['id_a'], r['id_b'])]
+    nyitott = sum(1 for j in mk_jeloltek if j.get('dontes') == 'nyitva'
+                  and motivum_id in (j['id'], j.get('cel_id')))
+    return OK.kapcsolodo(sajat, nyitott)
 
 
 def szakasz_5b_beszur(fajl_szoveg, m, blokk):
@@ -4308,6 +4401,8 @@ def adatres_minosites(motivum_id, elof_igehelyek, jelolt_sorok, tsk_idx, kh_idx)
             if b in halmaz and b != a and kulcs not in lattuk:
                 lattuk.add(kulcs)
                 parok.append('- %s → %s — %s' % (a, b, cimke))
+    erintett = {x for a, b, _c in lattuk for x in (a, b)}
+    MINOSITES_STAT[motivum_id] = (len(parok), len(erintett), len(elof_igehelyek))
     out = ['*Generált: a független megerősítés a TSK (Votes ≥ 15) és a Károli-KH találatainak metszete a '
            'motívum előfordulás-igehelyeivel; a minősített jelöltek a `jeloltek.tsv`-ből (`forras_kereses`: '
            'TSK / Károli-KH).*']
@@ -4464,6 +4559,8 @@ def res_blokkok_alkalmaz(fajl_szoveg, m):
         torzs = res_torzs(m, res, sor)
         # ISTENTISZT-001 arany lap, 2026-10-29: a rés olvasói bevezetője a generátorból (a kézi próza változatlan; res_torzs_lapbol leválasztja)
         olv = OLVASOI_RES.get(res)
+        if res == 'minosites' and m['id'] in MINOSITES_STAT:
+            olv = OK.minosites(*MINOSITES_STAT[m['id']], osszes=KERESZT_OSSZES.get(m['id'])) or olv
         uj_span = fejlec + '\n\n' + (olvasoi_bekezdes(olv) + '\n\n' if olv else '') + torzs + '\n\n'
         fajl_szoveg = fajl_szoveg[:span_start] + uj_span + fajl_szoveg[span_end:]
     return fajl_szoveg
@@ -4644,7 +4741,7 @@ def render_lexikon_egy_id(m, sorai, konyv_sorrend, hianyzo_konyvek):
     blokk_tartalom_szov = blokk_tartalom(m)
     blokk_jelmagyarazat_szov = blokk_jelmagyarazat(m)
     blokk_elofordulasok_szov, fl_elofordulasok = blokk_elofordulasok(m, sorai, konyv_sorrend, hianyzo_konyvek)
-    blokk_kizart_szov, fl_kizart = blokk_kizart(m)
+    blokk_kizart_szov, fl_kizart = blokk_kizart(m, len(sorai))
     blokk_szocikkek_szov, tisztazatlan_erintve, fl_szocikkek = blokk_szocikkek(m, tokenek, sorai)
     blokk_lxx_szov, fl_lxx = blokk_lxx(m, sorai, tokenek)
     blokk_kereszthiv_szov, fl_kereszthiv = blokk_kereszthivatkozasok(m, sorai, konyv_sorrend, hianyzo_konyvek)

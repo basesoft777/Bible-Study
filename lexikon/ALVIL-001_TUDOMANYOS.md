@@ -81,7 +81,7 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#elofordulasok | forrás: adat/elofordulasok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, adat/forditasok.tsv, adat/szotar_szakasz_cimke.tsv, adat/bdb_vers_jelentes.tsv, adat/thayer_vers_jelentes.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/TAHOT_kivonat.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva | ts=2026-10-29 -->
 
-**Mit mutat ez a rész?** A motívum 72 igehelye a bibliai könyvek sorrendjében (64 ószövetségi, 8 újszövetségi), mindegyik a Károli-fordítás szövegével. Soronként látszik, melyik szó hordozza a motívumot, és mit jelent az adott versben.
+**Mit mutat ez a rész?** A motívum 72 igehelyen fordul elő, 21 bibliai könyvben (64 ószövetségi, 8 újszövetségi hely); a legtöbb hely: Zsolt (15). 69 hely azonosítása magas megbízhatóságú, 3 alacsonyabb. **Következtetés:** a motívum a Biblia sok könyvében, mindkét szövetségben fordul elő, és a helyek szinte mind biztosan azonosítottak.
 
 *Ez a blokk a `[ID: ALVIL-001]` motívum 72 igehely-sorát fedi az `elofordulasok.tsv`-ből, kanonikus sorrendben, a Károli-szöveggel (1/a) és az UBS-jelentés renderidejű hozzárendelésével (G3). A „Jelentés (a szó)” oszlop a szó jelentését a szótár tagolásában adja (`adat/szotar_szakasz_cimke.tsv`, `adat/bdb_vers_jelentes.tsv`, `adat/thayer_vers_jelentes.tsv`; a címke forrása a sor lábjegyzetében, ⓘ), a „Funkció (a motívumban)” a hely motívumbeli funkcióját (F131, DT272 (d)).*
 
@@ -607,7 +607,7 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-10-29 -->
 
-**Mit mutat ez a rész?** Ezeket a helyeket megvizsgáltuk, de nem tartoznak a motívumhoz, vagy a döntés még nyitott (5 elutasítva). Mindegyiknél látszik, miért került a vizsgálatba, és miért maradt ki.
+**Mit mutat ez a rész?** 5 helyet vizsgáltunk meg jelöltként; elutasítva: 5. A leggyakoribb ok: „a formula nincs a versben” (1). A jelöltek forrása: Gépi keresés 3, Kutatói felvetés 2. **Következtetés:** kevesebb helyet vizsgáltunk, mint ahány a motívumhoz tartozik (5, illetve 72). A határt több ok együtt húzza meg.
 
 *Ez a blokk a `[ID: ALVIL-001]` motívum 5 elutasított/nyitva maradt jelöltjét fedi a `jeloltek.tsv`-ből (G7).*
 
@@ -650,7 +650,7 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 ### A motívum kulcsszavai
 
-**Mit mutat ez a rész?** A motívumot hordozó héber és görög szavak (a gerinc), a jelentésük, és azok a magyar szavak, amelyekkel a Károli-fordítás a motívum helyein a legtöbbször visszaadja őket. Az alábbi szótári anyag ezekről a szavakról szól.
+**Mit mutat ez a rész?** A motívumot nyelvenként egy szó hordozza: héberül a seól (64 hely), görögül a Hadész (8 hely). **Következtetés:** mindkét szövetségben egyetlen szó jelzi a motívumot.
 
 *Gerinc-kombinációnként (az `elofordulasok.tsv` `strong` mezője, 72 sor); a jelentés az 1. szerep rövid jelentése; a Károli-kulcsszó a 14. szerep szabálya szerint (`eszkozok/szerep_karoli.py`: a motívumsorok Károli-szóalakjainak legalább felében álló szótári alak). Csak megjelenítés.*
 
@@ -724,13 +724,13 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 #### 6. LXX-híd
 
-**Mit mutat ez a rész?** Hogyan kapcsolódik a görög szó a héber Ószövetséghez: a Septuaginta (LXX) a motívum ószövetségi helyein ugyanezt a szót használja-e.
+**Mit mutat ez a rész?** A motívum 64 ószövetségi helyéből 57 helyen a görög fordítás (Septuaginta) ugyanazt a szót használja (Hadész), mint az Újszövetség; 3 helyen mást, 4 helyen az azonosítás függőben. **Következtetés:** a görög Ószövetség a legtöbb helyen (89%) ugyanazzal a szóval adja vissza a motívumot, ezért az újszövetségi helyek nyelvileg is közvetlenül visszakapcsolódnak az ószövetségiekhez.
 
 **G0086** · az LXX a motívum 64 ószövetségi versében: egyező 57 · eltérő 3 · azonosításra vár 2 · versszámozás miatt nem párosítva 2 *(egyező: a görög szövegben is G0086 áll)* — versenként: [3. LXX-fordítói döntések](#3-lxx-fordítói-döntések)
 
 #### 7. Megfelelők a másik nyelven
 
-**Mit mutat ez a rész?** Mely szavak felelnek meg ennek a szónak a másik bibliai nyelven, egy kétnyelvű szótár (SECE) szerint; a motívum saját szava kiemelve.
+**Mit mutat ez a rész?** A kétnyelvű szótár (SECE) a Hadész szónak 5 megfelelőjét adja a másik bibliai nyelven; köztük van a motívum saját szava, a seól. **Következtetés:** a szótár is megerősíti, hogy a két szó egymás párja.
 
 **G0086 — ᾍδης (Hadész)** · SECE — héber megfelelők (5):
 
@@ -752,7 +752,7 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 #### 9. Versenkénti jelentés
 
-**Mit mutat ez a rész?** Hogy az egyes versekben a szó melyik jelentésében áll.
+**Mit mutat ez a rész?** A motívum 8 újszövetségi helyéből 7 helyen a Hadész egyetlen jelentésben áll, 1 helyen a jelentés nem egyértelmű. **Következtetés:** a szó jelentése a motívum helyeinek többségén egyértelmű.
 
 **G0086 — ᾍδης (Hadész)** · a motívum 8 újszövetségi helyén a vers-szintű jelentést az [1. Előfordulások](#1-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (7 helyen egy jelentés, 1 helyen több vagy jelölt, nem egyértelmű jelentés); a szó teljes versenkénti listája a szónézetben: [szónézet: /szo/G0086](/szo/G0086) · forrás: `konkordancia/UBS_DNTG_jelentesek.tsv`.
 
@@ -847,7 +847,7 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 #### 6. LXX-híd
 
-**Mit mutat ez a rész?** A görög fordítás (Septuaginta, LXX) a motívum helyein, ahol ez a szó áll, a motívum görög szavát használja-e; és a teljes Ószövetségben mely görög szavak állnak a szó versei mellett.
+**Mit mutat ez a rész?** A motívum 64 ószövetségi helyéből 57 helyen a görög fordítás (Septuaginta) ugyanazt a szót használja (Hadész), mint az Újszövetség; 3 helyen mást, 4 helyen az azonosítás függőben. **Következtetés:** a görög Ószövetség a legtöbb helyen (89%) ugyanazzal a szóval adja vissza a motívumot, ezért az újszövetségi helyek nyelvileg is közvetlenül visszakapcsolódnak az ószövetségiekhez.
 
 *Hivatkozás: l. a 3. szakaszt (LXX-fordítói döntések).*
 
@@ -861,7 +861,7 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 #### 7. Megfelelők a másik nyelven
 
-**Mit mutat ez a rész?** Mely szavak felelnek meg ennek a szónak a másik bibliai nyelven, egy kétnyelvű szótár (SECE) szerint; a motívum saját szava kiemelve.
+**Mit mutat ez a rész?** A kétnyelvű szótár (SECE) a seól szónak 2 megfelelőjét adja a másik bibliai nyelven; köztük van a motívum saját szava, a Hadész. **Következtetés:** a szótár is megerősíti, hogy a két szó egymás párja.
 
 **H7585 — שְׁאוֹל (seól)** · SECE — görög megfelelők (2):
 
@@ -880,7 +880,7 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 #### 9. Versenkénti jelentés
 
-**Mit mutat ez a rész?** Hogy az egyes versekben a szó melyik jelentésében áll.
+**Mit mutat ez a rész?** A motívum 64 ószövetségi helyéből 62 helyen a seól egyetlen jelentésben áll, 2 helyen a jelentés nem egyértelmű. **Következtetés:** a szó jelentése a motívum helyein szinte mindenütt egyértelmű.
 
 **H7585 — שְׁאוֹל (seól)** · a motívum 64 ószövetségi helyén a vers-szintű jelentést az [1. Előfordulások](#1-előfordulások) táblázatának „UBS-jelentés” oszlopa mutatja (62 helyen egy jelentés, 2 helyen nincs hozzárendelés); a szó teljes versenkénti listája a szónézetben: [szónézet: /szo/H7585](/szo/H7585) · forrás: `konkordancia/UBS_DBH_jelentesek.tsv`.
 
@@ -972,7 +972,7 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#lxx | forrás: adat/lxx_dontesek.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/1-samuel.tsv, konkordancia/LXX_OS/2-samuel.tsv, konkordancia/LXX_OS/amos.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/ecclesiastes.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/hosea.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/jonah.tsv, konkordancia/LXX_OS/numbers.tsv, konkordancia/LXX_OS/proverbs.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/song-of-solomon.tsv | licenc: CC BY 4.0, minden jog fenntartva | ts=2026-10-29 -->
 
-**Mit mutat ez a rész?** Ez a táblázat azt mutatja meg, hogyan fordította a Septuaginta (LXX) a motívum 64 ószövetségi helyét: ugyanazzal a görög szóval, amelyet az Újszövetség is használ, vagy mással. Összesítve: egyező 57 · eltérő 3 · azonosításra vár 2 · versszámozás miatt nem párosítva 2.
+**Mit mutat ez a rész?** A motívum 64 ószövetségi helyéből 57 helyen a görög fordítás (Septuaginta) ugyanazt a szót használja (Hadész), mint az Újszövetség; 3 helyen mást, 4 helyen az azonosítás függőben. **Következtetés:** a görög Ószövetség a legtöbb helyen (89%) ugyanazzal a szóval adja vissza a motívumot, ezért az újszövetségi helyek nyelvileg is közvetlenül visszakapcsolódnak az ószövetségiekhez.
 
 *Ez a blokk a `[ID: ALVIL-001]` motívum ÓSZ-i előfordulásait veti össze az `LXX_OS`-szel (G5), soronként a Károli-vers minden versére.*
 
@@ -1051,7 +1051,7 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-10-29 -->
 
-**Mit mutat ez a rész?** Mely más bibliai helyekre utalnak a motívum helyeiről a hagyományos kereszthivatkozás-gyűjtemények (a TSK és a Károli-Biblia utalásai). A motívum 72 igehelyéből 53-nál van ilyen utalás, összesen 124.
+**Mit mutat ez a rész?** A motívum 72 helyéből 53 helyről mutat utalás más bibliai helyre a hagyományos gyűjteményekben (TSK, Károli), összesen 124. **Következtetés:** a helyek 74%-át a régi kereszthivatkozások is összekötik más helyekkel; hogy ezek közül melyik mutat a motívum saját helyeire, azt a Minősítés mondja meg.
 
 *Ez a blokk a `[ID: ALVIL-001]` motívum 72 igehelyét veti össze a TSK (Votes ≥ 15) és a Károli-KH táblával; 53 igehely ad legalább egy találatot (124 találat összesen), 1 igehely versenkénti kereséssel nem vizsgálható.*
 
@@ -1291,7 +1291,7 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 ### Minősítés *(generált)*
 
-**Mit mutat ez a rész?** Ez a rész megmutatja, hogy a motívum helyeit két, tőlünk független kereszthivatkozás-gyűjtemény (a Treasury of Scripture Knowledge és a Károli-biblia kereszthivatkozásai) mennyire köti össze egymással. Minél több hely kap ilyen kapcsolatot, annál erősebb a motívum külső megerősítése.
+**Mit mutat ez a rész?** A 124 utalásból 21 a motívum két saját helyét köti össze, ez 19 helyet érint a 72-ból. **Következtetés:** a motívum helyeinek a 26%-a két független gyűjteményben is összetartozik, ez gyenge külső megerősítés.
 
 <!-- GENERÁLT-RÉS: minosites | general.py --cel lexikon | forrás: adat/jeloltek.tsv, adat/elofordulasok.tsv, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv -->
 
@@ -1351,7 +1351,7 @@ A motívumhoz nincs rögzített kapcsolat.
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-10-29 -->
 
-**Mit mutat ez a rész?** Azok a más motívumok, amelyekkel ez a motívum kapcsolatban áll. Ugyanez a sor a másik motívum lapján is megjelenik.
+**Mit mutat ez a rész?** 2 kapcsolat 1 másik motívummal (ISTENTISZT-001 2), mind „szomszédos”; további 1 döntésre vár. **Következtetés:** a motívum más motívumokhoz eddig csak szövegközelség révén kapcsolódik, tartalmi kapcsolat még nincs igazolva.
 
 *Ez a blokk a `[ID: ALVIL-001]` motívum motívumközi kapcsolatait adja a `motivum_kapcsolatok.tsv`-ből (minden sor mögött beépített motívumközi jelölt áll, DT277); a sor mindkét érintett motívum lapján megjelenik.*
 
