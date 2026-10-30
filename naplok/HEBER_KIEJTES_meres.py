@@ -148,7 +148,7 @@ def mgh(bet):
     return next(iter(v)) if v else None
 
 
-def niqqud_szo(szo, p, nyom):
+def niqqud_szo(szo, p, nyom, makkef_utan=False):
     """Egy szó átírása. `nyom`: a meghozott döntések kategóriái (lista)."""
     ls = betuk(szo)
     if not ls:
@@ -203,6 +203,13 @@ def niqqud_szo(szo, p, nyom):
     elozo_hangzo_seva = False
     for i, b in enumerate(ls):
         if b['mater']:
+            continue
+        if (i == 0 and p.get('kotoszo_u') and b['b'] == VAV and DAGES in b['j']
+                and b['vok'] is None and not b['seva'] and n > 1):
+            b['vok'] = 'U'                   # szókezdő kötőszói וּ (ú), utána hangzó sevá
+            b['kotoszo'] = True
+            nyom.append('kotoszo_u')
+            ki.append(('ú', None))
             continue
         elo = None
         for k in range(i - 1, -1, -1):
@@ -265,6 +272,8 @@ def niqqud_szo(szo, p, nyom):
                 hangzo_seva = False
             elif forte:
                 hangzo_seva = True
+            elif elozo_obj is not None and elozo_obj.get('kotoszo'):
+                hangzo_seva = True
             elif elozo_hangzo_seva is False and elozo_obj is not None and elozo_obj['seva'] and elozo_obj['vok'] is None:
                 hangzo_seva = True           # két sevá közül a második
             elif elozo_obj is not None and elozo_obj['vok'] in HOSSZU | {'I', 'U'}:
@@ -303,6 +312,12 @@ def niqqud_szo(szo, p, nyom):
             katan = False
             if KAMEC_KATAN in b['j']:
                 katan = True
+            elif makkef_utan and p.get('makkef_katan') and METEG not in b['j']:
+                # makkef előtt a szó hangsúlytalan: az utolsó, zárt szótagbeli kámec kátán
+                pos = ls.index(b)
+                kesobb = [x for x in ls[pos + 1:] if not x['mater']]
+                if kesobb and not any(x['vok'] is not None or x['seva_hangzo'] for x in kesobb):
+                    katan = True
             elif p['kamec_katan'] and METEG not in b['j']:
                 # a következő ejtett mássalhangzó néma sevás (zárt szótag, nem szóvég)
                 pos = ls.index(b)
@@ -332,7 +347,9 @@ def niqqud(alak, p):
     alak = tisztit(alak)
     szavak = []
     for szo in alak.split():
-        szavak.append('-'.join(niqqud_szo(r, p, nyom) for r in szo.split(MAKKEF)))
+        reszek = szo.split(MAKKEF)
+        szavak.append('-'.join(niqqud_szo(r, p, nyom, makkef_utan=(k < len(reszek) - 1))
+                               for k, r in enumerate(reszek)))
     return ' '.join(szavak), nyom
 
 
