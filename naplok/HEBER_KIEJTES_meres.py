@@ -137,15 +137,16 @@ def betuk(szo):
     ls = []
     for c in szo:
         if ALEF <= c <= TAV:
-            ls.append({'b': c, 'j': set()})
+            ls.append({'b': c, 'j': set(), 'jl': []})
         elif ls and 'ְ' <= c <= 'ׇ':
             ls[-1]['j'].add(c)
+            ls[-1]['jl'].append(c)
     return ls
 
 
 def mgh(bet):
-    v = bet['j'] & MAGANHANGZO
-    return next(iter(v)) if v else None
+    # determinisztikus: két magánhangzójelnél (pl. יְרוּשָׁלִַם) a szövegbeli első
+    return next((c for c in bet['jl'] if c in MAGANHANGZO), None)
 
 
 def niqqud_szo(szo, p, nyom, makkef_utan=False):

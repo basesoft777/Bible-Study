@@ -1,0 +1,53 @@
+# Kézi javaslat-tábla a kalibráló mintához (HEBER_KIEJTES_kalibracio.py).
+# scope=naplok/HEBER_KIEJTES_kalibracio_minta.tsv | forras=manual (a session nyelvtani ítélete) | ts=2026-10-30
+heber	sorszam	javaslat	alternativa	alternativa2	megjegyzes
+הָרְפָאִים	1	hárefáím	hárfáím		
+וְהָרְפָאִים	2	vehárefáím	vehárfáím	vehorfáím	
+בְּחָזְקָה	3	bechozká	becházeká	becházká	
+הָיְתָה	4	hájetá	hájtá		
+שִׁבֳּלִים	5	sibbolím	sibbólím	sibolím	
+אָהְָלוֹ	6	oholó	áholó		a hé alatt sevá és kámec együtt áll (a hátef-kámec szokatlan kódolása); az ohŏlô olvasat a valószínű
+נִסְתָּרְנוּ	7	nisztárnú	nisztárenú		pauzális alak: a hangsúlyos zárt szótag után a sevát némának tartom, a STEP kiejtettnek írja
+בִשְׁאוֹל	8	visól	viseól		
+בְשִׁמְךָ	9	vesimchá	vesimechá		
+וְקִרְאוּ	10	vekirú	vekireú	vekiru	
+נִשְׁחָתָה	11	nischátá	nisechátá	nishátá	
+כִּתְהֹמוֹת	12	kithómót	kitehómót	kit-hómót	
+הַנְּפִילִים	13	hannefílím	hanefílím	hannefilím	
+יְהוֹשֻׁעַ	14	jehósua	jehósúa	jehósuá	
+הַמִּזְבֵּחַ	15	hammizbéach	hamizbéach	hammizbécha	
+תַּצְמִיחַ	16	tacmíach	tacmícha	tacemíach	
+מִזְבֵּחַ	17	mizbéach	mizbécha	mizebéach	
+יָנוּחַ	18	jánúach	jánúcha	janúach	
+רֵיחַ	19	réach	récha	réjach	
+וּמִתְּהוֹם	20	úmittehóm	umittehóm	úmitehóm	
+חַיִּים	21	chajjím	chajím	hajjím	
+וַיִּקְרָא	22	vajjikrá	vajikrá	vajjikerá	
+חַיָּה	23	chajjá	chajá	hajjá	
+מִשְּׁאוֹל	24	misseól	miseól	missól	
+חַטָּאת	25	chattát	chatát	hattát	
+וּבִירוּשָׁלִַם	26	úvírúsálajim	úvírúsálém		ketiv/qere: a mássalhangzós szöveg (ketiv) „Jerúsálém”-et, a pontozás (qere) „Jerúsálajim”-ot ad
+יְרוּשָׁלִָם	27	jerúsálajim	jerúsálém		ketiv/qere: l. az előző sort
+יְהוִה	28	JHVH	Elóhím	Jahve	az „Adonáj JHVH” kapcsolatban a pontozás (qere) Elóhímot olvastat; a lapon a JHVH-konvenció áll
+יְהֹוָה	29	JHVH	Adonáj	Jahve	
+יְהוָה	30	JHVH	Adonáj	Jahve	
+בְנֵי	31	vené	bné		
+בְשֵׁם	32	vesém	vesem		
+וַחֲמַס	33	vachamasz	vahamasz		a H2555 lemmája kézi kivétel („hámás”, D36: ח → h); kérdés, hogy ez a ragozott alakokra is vonatkozik-e
+אַתְּ	34	at	atte		a szóvégi תְּ dágessel: a hagyományos olvasat „at”, a régebbi kiejtés „atte”
+אַף	35	af	ap	áf	
+וּפֶן	36	úfen	úpen	ufen	
+כִשְׁאוֹל	37	chisól	chiseól		
+כֹהֵן	38	chóhén	kohén		
+בִשְׁמִי	39	vismí	visemí		
+בִשְׁמוֹ	40	vismó	visemó		
+בְשָׁלֵם	41	vesálém	vesalém		
+בְצִלּוֹ	42	vecilló	veciló		
+בְרִית	43	verít	brít		
+וְחָמָס	44	vechámász	vehámász		a H2555 kézi kivétele („hámás”, D36) a ragozott alakra is vonatkozhat
+הֶחָמָס	45	hechámász	hehámász		l. a 44. sort
+חָמָס	46	hámás	hámász		a jóváhagyott lemma-kiejtés „hámás” (D36); az sz-változat a ס-konvenciótól függ
+כִּסְאוֹ	47	kiszó	kiszeó		
+חֲמַס	48	chamasz	hamasz		l. a 44. sort
+חַסְדְּךָ	49	chaszdechá	haszdechá		
+הַכֶּסֶף	50	hakkeszef	hakeszef		

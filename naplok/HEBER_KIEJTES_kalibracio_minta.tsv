@@ -1,0 +1,54 @@
+# HEBER_KIEJTES_kalibracio.py mintája (kísérleti, nem adat).
+# scope=adat/elofordulasok.tsv (ALVIL-001, ANTROP-001, HAMART-001, HODIT-001, ISTENTISZT-001, KIRALY-001, MENNY-001, TEREMT-001; héber Strongok) + konkordancia/TAHOT_kivonat.tsv | forras=naplok/HEBER_KIEJTES_kalibracio.py (seed=20261030) | ts=2026-10-30
+# jelölt szavak: 2567, egyedi alak: 1460; kategóriánként (egyedi; motívumszó, összes): {'kamec_katan': (2, 57), 'nem_szokezdo_seva': (36, 439), 'furtiv_patah': (0, 17), 'dages_forte': (15, 391), 'ketiv_qere': (0, 5), 'makkef': (3, 91), 'szokezdo_begadkefat': (9, 46), 'szamech_sin': (6, 108)}
+sorszam	kategoria	osszes_jegy	motivum_szo	motivum	igehely	strong	lemma	heber	step	gepi	sz_sz	s_s	pont	sz_pont	kamec_alt
+1	kamec_katan	kamec_katan,nem_szokezdo_seva	igen	HODIT-001	1Krón 20:4	H7497	רְפָאִים	הָרְפָאִים	ha. + re.fa.'Im	horfáím	horfáím	horfáím	horfáím	horfáím	hárefáím
+2	kamec_katan	kamec_katan,nem_szokezdo_seva	igen	HODIT-001	Józs 17:15	H7497	רְפָאִים	וְהָרְפָאִים	ve. + ha. + re.fa.'Im	vehárefáím	vehárefáím	vehárefáím	vehárefáím	vehárefáím	vehárefáím
+3	kamec_katan	kamec_katan,nem_szokezdo_seva	nem	HAMART-001	Jón 3:8	H2394	חׇזְקָה	בְּחָזְקָה	be. + cha.ze.Kah	bechozká	bechozká	bechozká	bechozká	bechozká	becházeká
+4	kamec_katan	kamec_katan,nem_szokezdo_seva	nem	TEREMT-001	1Móz 1:2	H1961	הָיָה	הָיְתָה	ha.ye.Tah	hojtá	hojtá	hojtá	hojtá	hojtá	hájetá
+5	kamec_katan	dages_forte,kamec_katan	nem	HODIT-001	Ézs 17:5	H7641	שִׁבֹּ֫לֶת	שִׁבֳּלִים	shi.bo.Lim	sibbolím	sibbolím	sibbolím	sibbolím	sibbolím	sibbolím
+6	kamec_katan	kamec_katan,nem_szokezdo_seva	nem	ISTENTISZT-001	1Móz 12:8	H0168	אֹ֫הֶל	אָהְָלוֹ	'o.ho.L + o	áháló	áháló	áháló	áháló	áháló	áháló
+7	kamec_katan	kamec_katan,nem_szokezdo_seva,szamech_sin	nem	ALVIL-001	Ézs 28:15	H5641	סָתַר	נִסְתָּרְנוּ	nis.Ta.re.nu	nistárenú	nisztárenú	nistárenú	nistárenú	nisztárenú	nistárenú
+8	nem_szokezdo_seva	nem_szokezdo_seva,szokezdo_begadkefat	igen	ALVIL-001	Ámós 9:2	H7585	שְׁאוֹל	בִשְׁאוֹל	vi + sh.'ol	bisól	bisól	bisól	visól	visól	bisól
+9	nem_szokezdo_seva	nem_szokezdo_seva,szokezdo_begadkefat	igen	ISTENTISZT-001	Ézs 64:6	H8034	שֵׁם	בְשִׁמְךָ	ve. + shim. + Kha	besimchá	besimchá	besimchá	vesimchá	vesimchá	besimchá
+10	nem_szokezdo_seva	nem_szokezdo_seva	igen	ISTENTISZT-001	1Kir 18:25	H7121	קָרָא	וְקִרְאוּ	ve. + kir.'U	vekirú	vekirú	vekirú	vekirú	vekirú	vekirú
+11	nem_szokezdo_seva	nem_szokezdo_seva	igen	HAMART-001	1Móz 6:12	H7843	שָׁחַת	נִשְׁחָתָה	nish.Cha.tah	nischátá	nischátá	nischátá	nischátá	nischátá	nischátá
+12	nem_szokezdo_seva	nem_szokezdo_seva	igen	TEREMT-001	Zsolt 78:15	H8415	תְּהוֹם	כִּתְהֹמוֹת	ki + t.ho.Mot	kithómót	kithómót	kithómót	kithómót	kithómót	kithómót
+13	nem_szokezdo_seva	dages_forte,nem_szokezdo_seva	igen	HODIT-001, MENNY-001	4Móz 13:34	H5303	נְפִלִים	הַנְּפִילִים	ha. + ne.fi.Lim	hannefílím	hannefílím	hannefílím	hannefílím	hannefílím	hannefílím
+14	furtiv_patah	furtiv_patah	nem	HODIT-001	Józs 17:15	H3091	יְהוֹשׁוּעַ	יְהוֹשֻׁעַ	ye.ho.Shu.a'	jehósua	jehósua	jehósua	jehósua	jehósua	jehósua
+15	furtiv_patah	dages_forte,furtiv_patah,nem_szokezdo_seva	nem	ISTENTISZT-001	1Kir 18:26	H4196	מִזְבֵּחַ	הַמִּזְבֵּחַ	ha. + miz.Be.ach	hammizbéach	hammizbéach	hammizbéach	hammizbéach	hammizbéach	hammizbéach
+16	furtiv_patah	furtiv_patah,nem_szokezdo_seva	nem	HAMART-001	1Móz 3:18	H6779	צָמַח	תַּצְמִיחַ	tatz.Mi.ach	tacmíach	tacmíach	tacmíach	tacmíach	tacmíach	tacmíach
+17	furtiv_patah	furtiv_patah,nem_szokezdo_seva	nem	ISTENTISZT-001	1Móz 12:8	H4196	מִזְבֵּחַ	מִזְבֵּחַ	miz.Be.ach	mizbéach	mizbéach	mizbéach	mizbéach	mizbéach	mizbéach
+18	furtiv_patah	furtiv_patah	nem	HODIT-001	Péld 21:16	H5117	נוּחַ	יָנוּחַ	ya.Nu.ach	jánúach	jánúach	jánúach	jánúach	jánúach	jánúach
+19	furtiv_patah	furtiv_patah	nem	HAMART-001	1Móz 8:21	H7381	רֵיחַ	רֵיחַ	Rei.ach	réach	réach	réach	réach	réach	réach
+20	dages_forte	dages_forte,nem_szokezdo_seva	igen	TEREMT-001	5Móz 33:13	H8415	תְּהוֹם	וּמִתְּהוֹם	u. + mi. + te.Hom	úmittehóm	úmittehóm	úmittehóm	úmittehóm	úmittehóm	úmittehóm
+21	dages_forte	dages_forte	igen	ANTROP-001	1Móz 2:7	H2416	חַיִּים	חַיִּים	chai.Yim	chajjím	chajjím	chajjím	chajjím	chajjím	chajjím
+22	dages_forte	dages_forte,nem_szokezdo_seva	igen	ISTENTISZT-001	1Móz 12:8	H7121	קָרָא	וַיִּקְרָא	va + i.yik.Ra'	vajjikrá	vajjikrá	vajjikrá	vajjikrá	vajjikrá	vajjikrá
+23	dages_forte	dages_forte	igen	ANTROP-001	1Móz 2:7	H2416	חַי	חַיָּה	chai.Yah	chajjá	chajjá	chajjá	chajjá	chajjá	chajjá
+24	dages_forte	dages_forte,nem_szokezdo_seva	igen	ALVIL-001	Jób 11:8	H7585	שְׁאוֹל	מִשְּׁאוֹל	mi. + she.'ol	misseól	misseól	misseól	misseól	misseól	misseól
+25	dages_forte	dages_forte	igen	HAMART-001	1Móz 4:7	H2403	חַטָּאת	חַטָּאת	cha.Tat	chattát	chattát	chattát	chattát	chattát	chattát
+26	ketiv_qere	ketiv_qere	nem	ISTENTISZT-001	Jóel 2:32	H3389	יְרוּשָׁלִַ֫ם, יְרוּשְׁלֵם	וּבִירוּשָׁלִַם	u. + vi. + ru.sha.Lim	úvírúsálim	úvírúsálim	úvírúsálim	úvírúsálim	úvírúsálim	úvírúsálim
+27	ketiv_qere	ketiv_qere	nem	HODIT-001	Józs 15:8	H3389	יְרוּשָׁלִַ֫ם, יְרוּשְׁלֵם	יְרוּשָׁלִָם	ye.ru.sha.Lim	jerúsálim	jerúsálim	jerúsálim	jerúsálim	jerúsálim	jerúsálim
+28	ketiv_qere	ketiv_qere	nem	TEREMT-001	Ez 26:19	H3069	יְהֹוִה	יְהוִה	Yah.weh	JHVH	JHVH	JHVH	JHVH	JHVH	JHVH
+29	ketiv_qere	ketiv_qere	nem	HAMART-001	1Móz 3:14	H3068	יהוה	יְהֹוָה	Yah.weh	JHVH	JHVH	JHVH	JHVH	JHVH	JHVH
+30	ketiv_qere	ketiv_qere	nem	ISTENTISZT-001	1Kir 18:24	H3068	יהוה	יְהוָה	Yah.weh	JHVH	JHVH	JHVH	JHVH	JHVH	JHVH
+31	makkef	makkef,szokezdo_begadkefat	igen	MENNY-001	1Móz 6:2	H1121	בֵּן	בְנֵי	ve.nei-	bené	bené	bené	vené	vené	bené
+32	makkef	makkef,szokezdo_begadkefat	igen	ISTENTISZT-001	1Kir 18:24	H8034	שֵׁם	בְשֵׁם	ve. + shem-	besém	besém	besém	vesém	vesém	besém
+33	makkef	makkef,szamech_sin	igen	HAMART-001	Hab 2:17	H2555	חָמָס	וַחֲמַס	va. + cha.mas-	vachamas	vachamasz	vachamas	vachamas	vachamasz	vachamas
+34	makkef	dages_forte,makkef	nem	TEREMT-001	Ézs 51:10	H0859	אַתְּ	אַתְּ	'at-	att	att	att	att	att	att
+35	makkef	makkef	nem	HODIT-001	5Móz 2:11	H0637	אַף	אַף	'af-	af	af	af	af	af	af
+36	makkef	makkef	nem	HAMART-001	Jer 51:46	H6435	פֶּן־	וּפֶן	u. + fen-	úfen	úfen	úfen	úfen	úfen	úfen
+37	szokezdo_begadkefat	nem_szokezdo_seva,szokezdo_begadkefat	igen	ALVIL-001	Én 8:6	H7585	שְׁאוֹל	כִשְׁאוֹל	khi + sh.'ol	kisól	kisól	kisól	chisól	chisól	kisól
+38	szokezdo_begadkefat	szokezdo_begadkefat	igen	KIRALY-001	Zak 6:13	H3548	כֹּהֵן	כֹהֵן	kho.Hen	kóhén	kóhén	kóhén	chóhén	chóhén	kóhén
+39	szokezdo_begadkefat	nem_szokezdo_seva,szokezdo_begadkefat	igen	ISTENTISZT-001	Zak 13:9	H8034	שֵׁם	בִשְׁמִי	vi + sh.M + i	bismí	bismí	bismí	vismí	vismí	bismí
+40	szokezdo_begadkefat	nem_szokezdo_seva,szokezdo_begadkefat	igen	ISTENTISZT-001	1Krón 16:8	H8034	שֵׁם	בִשְׁמוֹ	vi + sh.M + o	bismó	bismó	bismó	vismó	vismó	bismó
+41	szokezdo_begadkefat	szokezdo_begadkefat	igen	KIRALY-001	Zsolt 76:3	H8004	שָׁלֵם	בְשָׁלֵם	ve. + sha.Lem	besálém	besálém	besálém	vesálém	vesálém	besálém
+42	szokezdo_begadkefat	dages_forte,szokezdo_begadkefat	nem	ALVIL-001	Ez 31:17	H6738	צֵל	בְצִלּוֹ	ve. + tzi.L + o	becilló	becilló	becilló	vecilló	vecilló	becilló
+43	szokezdo_begadkefat	szokezdo_begadkefat	nem	ALVIL-001	Ézs 28:15	H1285	בְּרִית	בְרִית	ve.Rit	berít	berít	berít	verít	verít	berít
+44	szamech_sin	szamech_sin	igen	HAMART-001	Jer 51:46	H2555	חָמָס	וְחָמָס	ve. + cha.Mas	vechámás	vechámász	vechámás	vechámás	vechámász	vechámás
+45	szamech_sin	szamech_sin	igen	HAMART-001	Jón 3:8	H2555	חָמָס	הֶחָמָס	he. + cha.Mas	hechámás	hechámász	hechámás	hechámás	hechámász	hechámás
+46	szamech_sin	szamech_sin	igen	HAMART-001	1Móz 6:13	H2555	חָמָס	חָמָס	cha.Mas	chámás	chámász	chámás	chámás	chámász	chámás
+47	szamech_sin	nem_szokezdo_seva,szamech_sin	igen	KIRALY-001	Zak 6:13	H3678	כִּסֵּא	כִּסְאוֹ	kis.' + O	kisó	kiszó	kisó	kisó	kiszó	kisó
+48	szamech_sin	szamech_sin	igen	HAMART-001	Hab 2:17	H2555	חָמָס	חֲמַס	cha.Mas	chamas	chamasz	chamas	chamas	chamasz	chamas
+49	szamech_sin	nem_szokezdo_seva,szamech_sin	nem	ALVIL-001	Zsolt 86:13	H2617	חֶ֫סֶד	חַסְדְּךָ	Chas.de. + kha	chasdechá	chaszdechá	chasdechá	chasdechá	chaszdechá	chasdechá
+50	szamech_sin	dages_forte,szamech_sin	nem	ISTENTISZT-001	Zak 13:9	H3701	כֶּ֫סֶף	הַכֶּסֶף	ha. + Ke.sef	hakkesef	hakkeszef	hakkesef	hakkesef	hakkeszef	hakkesef
