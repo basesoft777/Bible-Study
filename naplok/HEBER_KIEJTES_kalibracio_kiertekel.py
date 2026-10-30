@@ -39,18 +39,21 @@ FORRASOK = ['gepi', 'javaslat', 'alternativa', 'alternativa2']
 def chat_beolvas(szoveg):
     ki = {}
     if ':' in szoveg:
-        # a kalibráló oldal alakja: „1:A*,B 4:A 13:B,C” -- vesszővel az elfogadhatók,
-        # „*” a preferált; csillag nélkül nincs preferált
+        # a kalibráló oldal alakja: „1:A*,B 4:A 13:B,C 41:B[káreú]” -- vesszővel az elfogadhatók,
+        # „*” a preferált; csillag nélkül nincs preferált; [..] saját alak, amely a preferált
+        # (ha más nincs csillaggal jelölve); a saját alak belső jele: '#'
         for tok in szoveg.split():
-            mt = re.fullmatch(r'(\d+):([A-Ca-c]\*?(?:,[A-Ca-c]\*?)*)', tok.strip())
+            mt = re.fullmatch(r'(\d+):((?:[A-Ca-c]\*?|\[[^\]]+\]|,)+)', tok.strip())
             if not mt:
-                raise SystemExit(f'értelmezhetetlen tétel: {tok!r} (várt alak: 12:A*,B)')
-            elemek = mt.group(2).upper().split(',')
-            pref = [e[0] for e in elemek if e.endswith('*')]
+                raise SystemExit(f'értelmezhetetlen tétel: {tok!r} (várt alak: 12:A*,B vagy 12:B[saját])')
+            elemek = re.findall(r'([A-Ca-c])(\*?)|\[([^\]]+)\]', mt.group(2))
+            betuk = [(b.upper(), cs == '*') for b, cs, e in elemek if b]
+            egyeni = next((e for b, cs, e in elemek if e), None)
+            pref = [b for b, csillag in betuk if csillag]
             if len(pref) > 1:
                 raise SystemExit(f'több preferált: {tok!r}')
-            ki[int(mt.group(1))] = {'preferalt': pref[0] if pref else None,
-                                    'elfogadhato': sorted({e[0] for e in elemek})}
+            ki[int(mt.group(1))] = {'preferalt': pref[0] if pref else ('#' if egyeni else None),
+                                    'elfogadhato': sorted({b for b, _ in betuk}), 'egyeni': egyeni}
         return ki
     for tok in szoveg.replace(',', ' ').split():
         mt = re.fullmatch(r'(\d+)([A-Ca-c]+)', tok.strip())
@@ -102,6 +105,8 @@ def main():
     for n in sorted(valasztas):
         t, v = minta[n], valasztas[n]
         kiejt = {x['betu']: x['kiejtes'] for x in t['variansok']}
+        if v.get('egyeni'):
+            kiejt['#'] = v['egyeni'] + ' (saját alak)'
         forras_betu = {}
         for betu, cimke in kulcs[n].items():
             for c in cimke.split('+'):
@@ -127,11 +132,13 @@ def main():
                 ered = '(b) konvenció-eltérés'
             eredmenyek[fr] = ered
             if fr == 'gepi' and ered not in ('egyezik', 'elfogadható'):
-                elf = ', '.join(kiejt[b] + ('*' if b == v['preferalt'] else '') for b in v['elfogadhato'])
+                elf = ', '.join(kiejt[b] + ('*' if b == v['preferalt'] else '')
+                                for b in v['elfogadhato'] + (['#'] if v.get('egyeni') else []))
                 sorok.append((n, t['kategoria'], t['heber'], kiejt[betu], elf, ered))
         reszletes.append((n, t['kategoria'], t['heber'],
                           {fr: kiejt[forras_betu[fr]] for fr in FORRASOK if fr in forras_betu},
-                          ', '.join(kiejt[b] + ('*' if b == v['preferalt'] else '') for b in v['elfogadhato']),
+                          ', '.join(kiejt[b] + ('*' if b == v['preferalt'] else '')
+                                    for b in v['elfogadhato'] + (['#'] if v.get('egyeni') else [])),
                           eredmenyek))
     kategoriak = []
     for t in minta.values():
@@ -159,6 +166,17 @@ def main():
         L.append(f'| {kat} | {n_kat} | ' + ' | '.join(cell) + ' |')
     L.append(f'| **összesen** | {sum(tot["gepi"])} | '
              + ' | '.join('**' + ' / '.join(map(str, tot[fr])) + '**' for fr in FORRASOK) + ' |')
+    if any(k.startswith('vegyes') for k in kategoriak):
+        atl = [0, 0, 0, 0]
+        neh = [0, 0, 0, 0]
+        for kat in kategoriak:
+            s = stat.get((kat, 'gepi'), [0, 0, 0, 0])
+            cel = atl if kat.startswith('vegyes') else neh
+            for i in range(4):
+                cel[i] += s[i]
+        L += ['', '| gépi változat | n | egyezik / elf. / (b) / (a) | elfogadható |', '|---|---|---|---|']
+        for nev, x in (('átlagos (vegyes)', atl), ('nehéz (a többi kategória)', neh)):
+            L.append(f'| {nev} | {sum(x)} | ' + ' / '.join(map(str, x)) + f' | {sum(x[:3])}/{sum(x)} |')
     L += ['', '## A gépi változat eltérései', '',
           '| # | kategória | héber | gépi | elfogadható (* preferált) | eredmény |', '|---|---|---|---|---|---|']
     for n, kat, heb, g, p, e in sorok:
