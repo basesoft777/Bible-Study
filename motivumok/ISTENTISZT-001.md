@@ -84,22 +84,30 @@ A motívum az ószövetségi קָרָא בְּשֵׁם יְהוָה (kárá bes�
 
 <!-- ADAT-HIV: lexikon_hivatkozasok.tsv | szotar=SECE_H; strong=H8034; entry_id=H8034; jelentes_szam=részlet -->
 
-**Kiemelés jelentősége:** a fenti **2.c** és **3.** jelentések —
-kiemelve, mert a motívum funkcionális kettéválasztásának (emberi
+#### H7121 — קָרָא (kárá) · BDB
+
+**Kiemelés jelentősége:** a kárá BDB-szócikkében (2. szerep) a **Qal 2.c**
+(„segítségül hívni”) és a **Qal 3.** („kihirdetni”) jelentés áll
+kibontva, mert a motívum funkcionális kettéválasztásának (emberi
 invokáció vs. isteni önki­hirdetés) ez a lexikográfiai, BDB-szintű
-alapja. A **2.c** citációs listája (Gen 4:26; 12:8; 2Kin 5:11; Jer
-10:25 = Psa 79:6; 1Kin 18:24; Baal 1Kin 18:24-26) **önállóan, a mi
-kutatásunktól függetlenül** csaknem pontosan egyezik a study saját
-audit-eredményével — beleértve a Jer 10:25 = Psa 79:6 párt.
+alapja. A **Qal 2.c** idézett helyei (1Móz 4:26; 12:8; 2Kir 5:11; Jer
+10:25 = Zsolt 79:6; 1Kir 18:24; Baállal: 1Kir 18:24–26) **önállóan, a mi
+kutatásunktól függetlenül** csaknem pontosan egyeznek a tanulmány saját
+audit-eredményével — beleértve a Jer 10:25 = Zsolt 79:6 párt.
 
 <!-- ADAT-HIV: lexikon_hivatkozasok.tsv | szotar=BDB; strong=H7121; entry_id=H7121; jelentes_szam=2.c -->
 
-**Jelentősége:** a **"√ unknown"** (gyök ismeretlen) jelölés a szócikk
-legelején azt jelzi: nincs tovább vezethető etimológia.
+#### H8034 — שֵׁם (sém) · BDB
+
+**Jelentősége:** a sém BDB-szócikkének fejében (2. szerep, „A szócikk
+feje”) álló **„√ ismeretlen”** (a gyök ismeretlen) jelölés azt jelzi:
+nincs tovább vezethető etimológia.
 
 【NAPLO: ez a lexikográfiai alap ahhoz, hogy a study 2/b Origin-lánc lépése lezártnak minősüljön — nincs mit "elutasítani" vagy "beépíteni" ezen a téren.】
 
-**Jelentősége:** a καλέω (kaleó) klasszikus göröngben (Homérosztól kezdve) elsősorban **"néven nevezni, elnevezni"** jelentésben áll — ez pontosan megegyezik azzal a jelentés-ággal, amit a 2Móz 33:19/34:5-nél azonosítottunk (BDB 3. jelentés, "proclaim/kihirdetni"; Thayer 1. jelentés, "to surname"). **Az LSJ tehát klasszikus görög irodalmi háttérrel is megerősíti**: a καλέω (kaleó) elsődleges, legrégebbi jelentése a "megnevezés" aktusa, nem az "invokáció" — így nyelvtörténetileg is indokolt, hogy a fordító pont ezt az igét választotta Isten *önmegnevező* aktusára, nem az ἐπικαλέομαι-t (epikaleomai) (ami maga is a καλέω-ból (kaleó) képzett, de már specializálódott "segítségül hívás" jelentéssel).
+#### G2564 — καλέω (kaleó) · LSJ
+
+**Jelentősége:** a καλέω (kaleó) a klasszikus görögben (Homérosztól kezdve) elsősorban **„néven nevezni, elnevezni”** jelentésben áll — ez pontosan megegyezik azzal a jelentés-ággal, amit a 2Móz 33:19/34:5-nél azonosítottunk (BDB Qal 3., „kihirdetni”; Thayer 1., „elnevezni”). **Az LSJ tehát klasszikus görög irodalmi háttérrel is megerősíti**: a καλέω (kaleó) elsődleges, legrégebbi jelentése a "megnevezés" aktusa, nem az "invokáció" — így nyelvtörténetileg is indokolt, hogy a fordító pont ezt az igét választotta Isten *önmegnevező* aktusára, nem az ἐπικαλέομαι-t (epikaleomai) (ami maga is a καλέω-ból (kaleó) képzett, de már specializálódott "segítségül hívás" jelentéssel).
 
 *(Az ἐπικαλέω (epikaleó) LSJ-szócikke maga csak átirányít a καλέω (kaleó) alapigéhez — klasszikus lexikográfiai gyakorlat összetett igéknél, önálló LSJ-tartalom nincs rá.)*
 

@@ -537,6 +537,40 @@ class TestLapok(unittest.TestCase):
         self.assertEqual(str(jeles('Jelentés (J-ben) Dresden')), 'Jelentés (J-ben) Dresden')
         self.assertEqual(str(jeles('<b>')), '&lt;b&gt;')
 
+    def test_bdb_egybetus_rovidites(self):
+        """N-F131x: a BDB egybetűs rövidítései (a forrásban ׳י) a helyes alakban (י׳), <abbr class="rovidites">-ként, mint a lexikonlapon
+        (közös jelölő: eszkozok/bdb_rovidites.py); a címszó feloldása a TBESH-lemma a jóváhagyott kiejtéssel. Minden BDB-blokkban."""
+        t = self.get('/r/szo/H7121').get_data(as_text=True)
+        latott = 0
+        for b in ('szo.bdb_apparatus', 'szo.bdb_magyar', 'szo.bdb_angol'):
+            if 'data-blokk="%s"' % b not in t:
+                continue
+            latott += 1
+            i = t.index('data-blokk="%s"' % b)
+            blokk = t[i:t.index('</section>', i)]
+            self.assertIn('<abbr class="rovidites" title="יְהוָה (Jahve), az Úr" tabindex="0">י׳</abbr>', blokk, b)
+            if b != 'szo.bdb_angol':
+                self.assertIn('<abbr class="rovidites" title="a címszó: קָרָא (kárá)" tabindex="0">ק׳</abbr>', blokk, b)
+            szoveg = re.sub(r'<[^>]*>', ' ', blokk)
+            self.assertIsNone(blokkok.bdb_rovidites.ROVIDITES_RE.search(szoveg), b)
+        self.assertGreaterEqual(latott, 2)
+        css = open(os.path.join(D, 'statikus', 'olvaso.css'), encoding='utf-8').read()
+        self.assertRegex(css, r'abbr\.rovidites \{[^}]*background: var\(--gold-soft\)')
+        self.assertRegex(css, r'abbr\.rovidites:focus::after \{[^}]*content: attr\(title\)')
+
+    def test_bdb_rovidites_escape(self):
+        """A jelölő a kész, escape-elt HTML szövegrészein dolgozik: a címkéhez (attribútum) nem nyúl, a cím escape-elve kerül be."""
+        class K:
+            def memo(self, kulcs, f):
+                return '<i>"x"</i>', 'ק'
+        h = blokkok._rovidites(K(), blokkok.Markup('<p title="׳י">a ׳ק &lt;b&gt;</p>'))
+        self.assertEqual(str(h), '<p title="׳י">a <abbr class="rovidites" title="a címszó: &lt;i&gt;&#34;x&#34;&lt;/i&gt;" '
+                                 'tabindex="0">ק׳</abbr> &lt;b&gt;</p>')
+        # hivatkozáson belül nincs tabindex (a koppintás a hivatkozásé), utána újra van
+        h = str(blokkok._rovidites(K(), blokkok.Markup('<a href="#x"><span>׳ק</span></a> ׳ק')))
+        self.assertEqual(h.count('tabindex'), 1)
+        self.assertTrue(h.startswith('<a href="#x"><span><abbr class="rovidites" title="a címszó: &lt;i&gt;&#34;x&#34;&lt;/i&gt;">ק׳</abbr>'))
+
     def test_bdb_proba_es_mert_pontossag(self):
         """DT-F99l (c): a BDB-blokk „próba” jelölése mellett a nyers mért pontosság és a konfidencia-intervallum áll (F99, seed-101)."""
         t = self.get('/r/szo/H7451').get_data(as_text=True)

@@ -10,6 +10,7 @@ Az adatok a #60 pilot (`eszkozok/olvaso_pilot/db_meres.py`: `db_vers`, `db_szo`,
 vannak átírva; a D2-egyezést a `teszt_olvaso_szerver.py` méri.
 """
 import re
+import sqlite3
 import unicodedata
 from collections import Counter, defaultdict
 
@@ -424,6 +425,17 @@ def strong_van(con, s):
 def bdb_angol(con, s):
     r = con.execute('SELECT teljes_szocikk FROM bdb WHERE strong=?', (s,)).fetchone()
     return r[0] if r else None
+
+
+def tbesh_lemma(con, s):
+    """(lemma, STEP-átírás) a TBESH-ből, vagy None: pontos Strong, majd a betűutótagos első sor (H2416 → H2416a), mint a
+    lexikon-generátor `tbesg_tbesh_index`-e. A BDB-rövidítés címszó-feloldásához (N-F131x). Hiányzó tábla (licenc) → None."""
+    try:
+        r = (con.execute('SELECT szo, atiras FROM tbesh WHERE strong=? ORDER BY rowid LIMIT 1', (s,)).fetchone()
+             or con.execute("SELECT szo, atiras FROM tbesh WHERE strong GLOB ? || '[a-zA-Z]' ORDER BY rowid LIMIT 1", (s,)).fetchone())
+    except sqlite3.OperationalError:
+        return None
+    return (r[0], r[1]) if r and r[0] else None
 
 
 _OSSZEFUZO = []
