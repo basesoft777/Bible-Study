@@ -1,11 +1,11 @@
-# A DT-F131y kivételeinek próbája a teljes TAHOT-on (N-F131w)
+# A DT430 kivételeinek próbája a teljes TAHOT-on (N-F131w)
 
 - **Proveniencia:** `scope=konkordancia/TAHOT_kivonat.tsv (H3605, H2451, H3389 tőalakjai) | forras=naplok/HEBER_KIEJTES_kivetel_proba.py | ts=2026-10-30`
 - A tőalak a TAHOT-sor (előtag és toldalék nélkül). A gépi kiejtés a `dt_f131y()` szabályaival készült.
 
 ## H3605 — כֹּל (kol): 5415 előfordulás, 31 alak
 
-| alak | STEP | gépi (DT-F131y) | db |
+| alak | STEP | gépi (DT430) | db |
 |---|---|---|---|
 | כָּל | `kol-` | kol | 2514 |
 | כָל | `khol` | kol | 1185 |
@@ -41,7 +41,7 @@
 
 ## H2451 — חָכְמָה (chochmá): 153 előfordulás, 14 alak
 
-| alak | STEP | gépi (DT-F131y) | db |
+| alak | STEP | gépi (DT430) | db |
 |---|---|---|---|
 | חָכְמָה | `chokh.mah` | chochmá | 74 |
 | חָכְמָה | `cha.khe.Mah` | chochmá | 29 |
@@ -60,7 +60,7 @@
 
 ## H3389 — Jeruzsálem (jerúsálajim): 643 előfordulás, 20 alak
 
-| alak | STEP | gépi (DT-F131y) | db |
+| alak | STEP | gépi (DT430) | db |
 |---|---|---|---|
 | יְרוּשָׁלִַם | `ye.ru.sha.Lim` | jerúsálajim | 163 |
 | ירוּשָׁלִָם | `ru.sha.Lim` | jrúsálajim | 141 |

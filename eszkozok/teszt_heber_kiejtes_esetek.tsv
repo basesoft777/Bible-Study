@@ -1,4 +1,4 @@
-# A heber_kiejtes.py tesztesetei a két kalibráló mintából (DT-F131y). GENERÁLT: naplok/HEBER_KIEJTES_tesztesetek.py
+# A heber_kiejtes.py tesztesetei a két kalibráló mintából (DT430). GENERÁLT: naplok/HEBER_KIEJTES_tesztesetek.py
 # scope=naplok/HEBER_KIEJTES_kalibracio*.json + _kulcs.json + _valasztas.txt | forras=naplok/HEBER_KIEJTES_tesztesetek.py | ts=2026-10-30
 minta	sorszam	kategoria	heber	elotag_hossz	makkef	elfogadott	preferalt	gepi	allapot	ok
 1	1	kámec kátán (gyanú)	הָרְפָאִ֖ים	1	nem	hárfáím|horfáím	hárfáím	hárfáím	egyezik	

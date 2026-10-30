@@ -1,4 +1,4 @@
-# Újramérés az első kalibráló mintán a DT-F131y szabályaival (N-F131w)
+# Újramérés az első kalibráló mintán a DT430 szabályaival (N-F131w)
 
 *A szabályok a kísérleti átíróban (`naplok/HEBER_KIEJTES_meres.py`, `dt_f131y()`); nincsenek az `eszkozok/` alatt, és a lapokba sincsenek bekötve. Adat nem változott.*
 
@@ -21,7 +21,7 @@
 
 ## Soronként
 
-| # | kategória | héber | gépi (régi) | gépi (DT-F131y) | elfogadható (* preferált) | eredmény | ok |
+| # | kategória | héber | gépi (régi) | gépi (DT430) | elfogadható (* preferált) | eredmény | ok |
 |---|---|---|---|---|---|---|---|
 | 1 | kámec kátán (gyanú) | הָרְפָאִים | horfáím | hárfáím | hárfáím*, horfáím | elfogadható (preferált) |  |
 | 2 | kámec kátán (gyanú) | וְהָרְפָאִים | vehárefáím | vehárefáím | vehárefáím*, vehárfáím | elfogadható (preferált) |  |
@@ -74,4 +74,4 @@
 | 49 | ס és שׂ (sz vagy s) | חַסְדְּךָ | chasdechá | chaszdechá | chaszdechá | elfogadható |  |
 | 50 | ס és שׂ (sz vagy s) | הַכֶּסֶף | hakkesef | hakkeszef | hakkeszef | elfogadható |  |
 
-**A 9 nem elfogadott vagy új alakból 4 a DT-F131y egyenes következménye** (4: R4; 11, 46, 48: R8), **5 nyitott** (17, 19, 24, 37, 41). A nyitottak közül egy sem egyezik egy másikkal annyira, hogy szabályt lehetne rá építeni; a 2. minta mutatja meg, ismétlődnek-e.
+**A 9 nem elfogadott vagy új alakból 4 a DT430 egyenes következménye** (4: R4; 11, 46, 48: R8), **5 nyitott** (17, 19, 24, 37, 41). A nyitottak közül egy sem egyezik egy másikkal annyira, hogy szabályt lehetne rá építeni; a 2. minta mutatja meg, ismétlődnek-e.

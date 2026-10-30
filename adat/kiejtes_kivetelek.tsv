@@ -2,11 +2,11 @@
 # Gorogul: felulirja/kiegesziti a kiejtes.py szabalytabla-alapu atirasat
 # (a torzscikk_general.py kodbeli KIEJT tablajat F09 S2.1 kivaltotta, F05 D15).
 # Heberul: a jovahagyott lemma-kiejtes innen jon, es elsobbseget elvez; ennek
-# hijan a render gepi kiejtest ad (eszkozok/heber_kiejtes.py, DT-F131y; korabban S3:
+# hijan a render gepi kiejtest ad (eszkozok/heber_kiejtes.py, DT430; korabban S3:
 # csak innen). A kulcs
 # a TBESH-lemma NFC alakja (F09 S2.1); a ket KIEJT-migracios sor (qa.ra, shem)
 # STEP-atiras kulcsot tart, a lookup elobb a lemmat, azutan a STEP-atirast keresi.
-# DT-F131y (2026-10-30): R1/R8 javítás (H3678, H2555) és R2/R7 kivételsorok (H3605, H2451, H3389). scope=adat/kiejtes_kivetelek.tsv | forras=naplok/HEBER_KIEJTES_kivetel_frissit.py (manual döntés) | ts=2026-10-30
+# DT430 (2026-10-30): R1/R8 javítás (H3678, H2555) és R2/R7 kivételsorok (H3605, H2451, H3389). scope=adat/kiejtes_kivetelek.tsv | forras=naplok/HEBER_KIEJTES_kivetel_frissit.py (manual döntés) | ts=2026-10-30
 nyelv	alak	kiejtes	megjegyzes
 gorog	epikaleō	epikaleó	KIEJT-migracio (torzscikk_general.py, ISTENTISZT-001)
 gorog	kaleō	kaleó	KIEJT-migracio (torzscikk_general.py, ISTENTISZT-001)
@@ -20,9 +20,9 @@ heber	בֹּהוּ	bóhú	F05 S1.7 jelölt (naplok/SZOTAR_S1_heber_jeloltek.tsv)
 heber	בֵּן	bén	F05 S1.7 jelölt (naplok/SZOTAR_S1_heber_jeloltek.tsv), jóváhagyva 2026.09.29 (D34-D37), H1121; kulcs: TBESH-lemma; manual
 heber	חַטָּאָה	chattáá	F05 S1.7 jelölt (naplok/SZOTAR_S1_heber_jeloltek.tsv), jóváhagyva 2026.09.29 (D34-D37), H2403; kulcs: TBESH-lemma; manual
 heber	חַי	chaj	F05 S1.7 jelölt (naplok/SZOTAR_S1_heber_jeloltek.tsv), jóváhagyva 2026.09.29 (D34-D37), H2416; kulcs: TBESH-lemma; manual
-heber	חָמָס	chámász	F05 D36 kézi kivétel (hámás), jóváhagyva 2026.09.29, H2555; kulcs: TBESH-lemma; manual; DT-F131y (2026-10-30): hámás -> chámász (R1: ס = sz; R8: ח = ch a H2555-nél is (a D36 „h” kivétele megszűnik)); manual
+heber	חָמָס	chámász	F05 D36 kézi kivétel (hámás), jóváhagyva 2026.09.29, H2555; kulcs: TBESH-lemma; manual; DT430 (2026-10-30): hámás -> chámász (R1: ס = sz; R8: ח = ch a H2555-nél is (a D36 „h” kivétele megszűnik)); manual
 heber	כֹּהֵן	kóhén	F05 S1.7 jelölt (naplok/SZOTAR_S1_heber_jeloltek.tsv), jóváhagyva 2026.09.29 (D34-D37), H3548; kulcs: TBESH-lemma; manual
-heber	כִּסֵּא	kisszé	F05 S1.7 jelölt (naplok/SZOTAR_S1_heber_jeloltek.tsv), jóváhagyva 2026.09.29 (D34-D37), H3678; kulcs: TBESH-lemma; manual; DT-F131y (2026-10-30): kissé -> kisszé (R1: ס = sz); manual
+heber	כִּסֵּא	kisszé	F05 S1.7 jelölt (naplok/SZOTAR_S1_heber_jeloltek.tsv), jóváhagyva 2026.09.29 (D34-D37), H3678; kulcs: TBESH-lemma; manual; DT430 (2026-10-30): kissé -> kisszé (R1: ס = sz); manual
 heber	מַמְלָכָה	mamláchá	F05 S1.7 jelölt (naplok/SZOTAR_S1_heber_jeloltek.tsv), jóváhagyva 2026.09.29 (D34-D37), H4467; kulcs: TBESH-lemma; manual
 heber	נְפִלִים	nefilím	F05 S1.7 jelölt (naplok/SZOTAR_S1_heber_jeloltek.tsv), jóváhagyva 2026.09.29 (D34-D37), H5303; kulcs: TBESH-lemma; manual
 heber	נֶ֫פֶשׁ	nefes	F05 S1.7 jelölt (naplok/SZOTAR_S1_heber_jeloltek.tsv), jóváhagyva 2026.09.29 (D34-D37), H5315; kulcs: TBESH-lemma; manual
@@ -37,6 +37,6 @@ heber	שָׁחַת	sáchat	F05 S1.7 jelölt (naplok/SZOTAR_S1_heber_jeloltek.tsv
 heber	שָׁלֵם	sálém	F05 S1.7 jelölt (naplok/SZOTAR_S1_heber_jeloltek.tsv), jóváhagyva 2026.09.29 (D34-D37), H8004; kulcs: TBESH-lemma; manual
 heber	תֹּ֫הוּ	tóhú	F05 S1.7 jelölt (naplok/SZOTAR_S1_heber_jeloltek.tsv), jóváhagyva 2026.09.29 (D34-D37), H8414; kulcs: TBESH-lemma; manual
 heber	תְּהוֹם	tehóm	F05 S1.7 jelölt (naplok/SZOTAR_S1_heber_jeloltek.tsv), jóváhagyva 2026.09.29 (D34-D37), H8415; kulcs: TBESH-lemma; manual
-heber	כֹּל	kol	DT-F131y (2026-10-30), H3605, R2 kivétellista: kámec kátán (כָּל); a lemma holamos alakja is „kol”; kulcs: TBESH-lemma; manual
-heber	חׇכְמָה	chochmá	DT-F131y (2026-10-30), H2451, R2 kivétellista: kámec kátán (חָכְמָה); kulcs: TBESH-lemma; manual
-heber	יְרוּשָׁלִַ֫ם, יְרוּשְׁלֵם	jerúsálajim	DT-F131y (2026-10-30), H3389, R7: Jeruzsálem lexikai kivétel (qere perpetuum), minden alakjával; kulcs: TBESH-lemma; manual
+heber	כֹּל	kol	DT430 (2026-10-30), H3605, R2 kivétellista: kámec kátán (כָּל); a lemma holamos alakja is „kol”; kulcs: TBESH-lemma; manual
+heber	חׇכְמָה	chochmá	DT430 (2026-10-30), H2451, R2 kivétellista: kámec kátán (חָכְמָה); kulcs: TBESH-lemma; manual
+heber	יְרוּשָׁלִַ֫ם, יְרוּשְׁלֵם	jerúsálajim	DT430 (2026-10-30), H3389, R7: Jeruzsálem lexikai kivétel (qere perpetuum), minden alakjával; kulcs: TBESH-lemma; manual

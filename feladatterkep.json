@@ -7,8 +7,8 @@
    "eszkozok/feladatterkep_kartyak.tsv"
   ],
   "belyeg": {
-   "datum": "2026-10-29",
-   "commit": "6b6d3785"
+   "datum": "2026-10-30",
+   "commit": "16704b3b"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -4438,6 +4438,18 @@
      "✅"
     ],
     "sor": 490,
+    "oszlopszam": 10,
+    "fejlec_oszlopszam": 8
+   },
+   {
+    "id": "DT430",
+    "feladat": "#131 utómunka (N-F131w): a gépi magyaros héber kiejtés szabályai a kalibrálás után",
+    "kerdes": "A DT426 szerint a lapon héberül ma csak a jóváhagyott `adat/kiejtes_kivetelek.tsv` alakjai állnak. A gépi átírás mérése (`naplok/HEBER_KIEJTES_meres.md`) után a felhasználó egy 50 alakos kalibráló mintán (`naplok/HEBER_KIEJTES_kalibracio.json`) jelölte az elfogadható és a preferált kiejtést. Mért: a mai szabályokkal a gépi változat 25/50 sorban elfogadható; a hibák okai ס = s (9), sevá (7), ketiv/qere (5), ב-előtag kemény (3), ח (3), kámec kátán (2). Mely szabálymódosítások (R1–R9, `naplok/HEBER_KIEJTES_kalibracio_ertekeles.md` 5. szakasz) kerüljenek a kísérleti átíróba? *(proveniencia: scope=naplok/HEBER_KIEJTES_kalibracio.json + _kulcs.json + naplok/HEBER_KIEJTES_kalibracio_valasztas.txt",
+    "allapot": "ellenorizendo",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 492,
     "oszlopszam": 10,
     "fejlec_oszlopszam": 8
    }

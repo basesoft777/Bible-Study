@@ -1,7 +1,7 @@
-# Gépi héber kiejtés — a bekötés (DT-F131y, N-F131w; 2026-10-30)
+# Gépi héber kiejtés — a bekötés (DT430, N-F131w; 2026-10-30)
 
 - **Modell:** `claude-opus-5-5`
-- **Döntés:** DT-F131y. A szabályok (R1–R8, R5b, a lexikai R7) a felhasználó kalibrációjából jöttek. A bekötést a felhasználó jóváhagyta, szó szerint: „Mehet”.
+- **Döntés:** DT430. A szabályok (R1–R8, R5b, a lexikai R7) a felhasználó kalibrációjából jöttek. A bekötést a felhasználó jóváhagyta, szó szerint: „Mehet”.
 - **Proveniencia (mért számok):** `scope=lexikon/ISTENTISZT-001_TUDOMANYOS.md, lexikon/ALVIL-001_TUDOMANYOS.md (HEAD ↔ munkafa) | forras=naplok/HEBER_KIEJTES_bekotes_meres.py | ts=2026-10-30`
 
 ## 1. Mi változott
@@ -14,9 +14,9 @@
 | eszköz | `eszkozok/lexikon_general.py` | a ragozott héber alak a **teljes szó** (előtag + tő + toldalék a TAHOT vers-soraiból) a saját gépi kiejtésével; a lemma jóváhagyott kiejtése, ennek híján gépi; a SECE-sor kiírt alakja a saját kiejtését kapja, ha nem a lemma; a Jelmagyarázatba egy bekezdés a „gépi” jelölésről |
 | eszköz | `eszkozok/kiejtes_szoveg.py` | a szövegszintű pótlás héberül is gépi kiejtést ad (jelölve), az önálló előtag (בְּ) is |
 | teszt | `eszkozok/teszt_heber_kiejtes.py` (új) + `teszt_heber_kiejtes_esetek.tsv` (generált: `naplok/HEBER_KIEJTES_tesztesetek.py`) | a két kalibráló minta 100 esete (91 elfogadott, 9 ismert eltérés okkal) és szabályonkénti tesztek |
-| teszt | `teszt_kiejtes_szoveg.py`, `teszt_szotari_gerinc.py`, `teszt_szerepmatrix.py` | a régi elvárás („nincs gépi héber kiejtés”, „szótári alak:”, 26 héber sor) a DT-F131y szerint frissítve |
+| teszt | `teszt_kiejtes_szoveg.py`, `teszt_szotari_gerinc.py`, `teszt_szerepmatrix.py` | a régi elvárás („nincs gépi héber kiejtés”, „szótári alak:”, 26 héber sor) a DT430 szerint frissítve |
 | lap | `lexikon/ISTENTISZT-001_TUDOMANYOS.md`, `lexikon/ALVIL-001_TUDOMANYOS.md` | újragenerálva (`PARDES_DATUM=2026-10-29`, a lapok első GENERÁLT ts-e) |
-| napló | `DONTESEK.md` DT-F131y, `NYITOTT_FELADATOK.md` N-F131w | a kiegészítés és a jóváhagyás idézettel; az N-F131w állapota |
+| napló | `DONTESEK.md` DT430, `NYITOTT_FELADATOK.md` N-F131w | a kiegészítés és a jóváhagyás idézettel; az N-F131w állapota |
 
 ## 2. Mérés a két lapon (előtte: a commitolt lap; utána: az újragenerált)
 
@@ -41,7 +41,7 @@ A kézi részek hiányai (ISTENTISZT-001: פְּשָׁט, רֶמֶז, דְּרַ
 | SECE-sor, a kiírt alak nem a lemma | (a lemma kiejtése nélkül: —) | `\| זַעַק \| zaak, gépi \| H2201 \| kiáltás \|` |
 | SECE-sor, jóváhagyott lemma más pontírással (ALVIL-001) | `\| **שְׁאֹול** … \| seól \|` | változatlan: `seól` (a jóváhagyott marad) |
 
-A ragozott alak most a teljes szó: a „קְרֹ֖א” helyett „לִקְרֹ֖א”, a „שֵׁ֥ם” helyett „בְּשֵׁ֥ם”. Ezt a DT-F131y (5) kéri: a kiejtés a teljes szóra készül.
+A ragozott alak most a teljes szó: a „קְרֹ֖א” helyett „לִקְרֹ֖א”, a „שֵׁ֥ם” helyett „בְּשֵׁ֥ם”. Ezt a DT430 (5) kéri: a kiejtés a teljes szóra készül.
 
 ## 3. A változott adatsorok (`adat/kiejtes_kivetelek.tsv`)
 

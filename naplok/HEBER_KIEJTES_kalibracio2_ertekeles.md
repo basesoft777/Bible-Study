@@ -1,4 +1,4 @@
-# Gépi héber kiejtés — a 2. kalibráló minta értékelése (N-F131w, DT-F131y után)
+# Gépi héber kiejtés — a 2. kalibráló minta értékelése (N-F131w, DT430 után)
 
 *Értékelés, nem döntés: szabály nem módosult, adat (`adat/`), `eszkozok/` és lexikonlap nem változott. A bekötésről a felhasználó dönt (⛔).*
 
@@ -10,7 +10,7 @@
   ```
 - **Proveniencia:** `scope=naplok/HEBER_KIEJTES_kalibracio2.json + _kulcs.json + naplok/HEBER_KIEJTES_kalibracio2_valasztas.txt | forras=naplok/HEBER_KIEJTES_kalibracio_kiertekel.py --menet 2 | ts=2026-10-30`. A 4. és az 5. szakasz besorolása `manual`.
 
-> **Javítás (2026-10-30, a DT-F131y kiegészítése):** az orkesztrátor a 41. sor jelölését hibásnak ismerte el (a
+> **Javítás (2026-10-30, a DT430 kiegészítése):** az orkesztrátor a 41. sor jelölését hibásnak ismerte el (a
 > קָרָאוּ pauzális alak, sevá nélkül; a gépi „káráú” a helyes). **A jelölő hibázott; a javított eredmény 50/50**
 > (átlagos 13/13, nehéz 37/37). A 16. sorhoz szükséges R5b bekerült, a gépi alak most „úbókéa”. Az alábbi
 > szakaszok a javítás előtti szigorú számot is megőrzik.
@@ -19,7 +19,7 @@
 
 A felhasználó szó szerint ezt írta: „döntsd el”. A jelöléseket ezért az orkesztrátor-session végezte, a kulcsfájl megnézése nélkül. Mércéje:
 - a héber nyelvtan (tibériási olvasat);
-- az első körben a felhasználó által választott konvenciók (DT-F131y R1–R8).
+- az első körben a felhasználó által választott konvenciók (DT430 R1–R8).
 
 A jelölő tehát ugyanazokat a szabályokat alkalmazta, amelyeket a gép. **A mérés így a szabályok megvalósításának hibáit és a szabályok hiányait mutatja, nem a konvenciók helyességét.** A konvenciókat egyedül az első kör méri, ahol a felhasználó maga jelölt.
 
@@ -61,7 +61,7 @@ A két minta a kivétellista szavait nem tartalmazta, ezért a teljes TAHOT-on k
 | H2451 חָכְמָה | 153 | „chochmá”, „chochmat”, „chochmát…” — helyes |
 | H3389 Jeruzsálem | 643 | a 638 szokásos alak „jerúsálajim”; **két szélső eset hibás**: a sinnel írt változat (ירוּשָׂלִָם, 2×) „…szálajim”-ot, az irányjelölős alak (יְרוּשָׁלְַמָה, 3×) „jerúsálamá”-t ad |
 
-A TAHOT-tőalakok egy részében a jod pont nélkül áll („jrúsálajim”), mert az előtag (pl. בִּ) a TAHOT-ban külön sorban van. A teljes szóvá összerakott alakban („bírúsálajim”) ez nem fordul elő; a DT-F131y (5) a teljes szóra szól.
+A TAHOT-tőalakok egy részében a jod pont nélkül áll („jrúsálajim”), mert az előtag (pl. בִּ) a TAHOT-ban külön sorban van. A teljes szóvá összerakott alakban („bírúsálajim”) ez nem fordul elő; a DT430 (5) a teljes szóra szól.
 
 ## 4. Maradt-e hiba, amelyhez szabály vagy kivétel kell?
 
@@ -75,7 +75,7 @@ A TAHOT-tőalakok egy részében a jod pont nélkül áll („jrúsálajim”), 
 
 ## 5. Állapot a bekötés előtt
 
-- **Mért:** a DT-F131y szabályaival az 1. mintán 41/50 (a felhasználó jelölése; a 9 eltérésből 4 a döntések következménye), a 2. mintán 49/50 (szabálykövető jelölő; átlagos 12/13, nehéz 37/37).
+- **Mért:** a DT430 szabályaival az 1. mintán 41/50 (a felhasználó jelölése; a 9 eltérésből 4 a döntések következménye), a 2. mintán 49/50 (szabálykövető jelölő; átlagos 12/13, nehéz 37/37).
 - **A bekötés előtti teendők a döntés után:**
   - R5b és a lexikai R7, ha a felhasználó elfogadja;
   - a kivételtábla javítása (a ס-sorok sz-re, a H2555 ch-ra: „chámász”, Jeruzsálem, kol, chochmá);

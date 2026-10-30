@@ -1,19 +1,19 @@
 # Kézi javaslat-tábla a 2. kalibráló mintához (HEBER_KIEJTES_kalibracio.py --menet 2).
-# scope=naplok/HEBER_KIEJTES_kalibracio2_minta.tsv | forras=manual (a session ítélete, DT-F131y konvenciói) | ts=2026-10-30
+# scope=naplok/HEBER_KIEJTES_kalibracio2_minta.tsv | forras=manual (a session ítélete, DT430 konvenciói) | ts=2026-10-30
 heber	sorszam	javaslat	alternativa	alternativa2	megjegyzes
 וַיִּסָּכְרוּ	1	vajjisszácherú	vajjisszochrú	vajjiszácherú	
 רְכֻלָּתְךָ	2	rechullátechá	rechulátechá		kámec után a sevá kiejtett (rəḵullāṯəḵā); a szövegben nincs meteg
 מָלְאָה	3	máleá	málá	molá	
 יָשְׁבוּ	4	jásevú	jásvú	josvú	
 צִדְקָתְךָ	5	cidkátechá	cidkátchá	cidkatechá	
-הַצָּהֳרַיִם	6	haccáhorajim	haccohorajim	hacáhorajim	hátef-kámec előtt a tibériási olvasat o (haccohorajim); a DT-F131y R2 szerint á
+הַצָּהֳרַיִם	6	haccáhorajim	haccohorajim	hacáhorajim	hátef-kámec előtt a tibériási olvasat o (haccohorajim); a DT430 R2 szerint á
 יִקְרָא	7	jikrá	jikerá	jikra	
-בִּשְׁאוֹל	8	biseól	bisól	biseol	a DT-F131y R3 szerint kiejtett sevá (torokhang előtt); a tibériási olvasatban néma
-לִשְׁאוֹל	9	liseól	lisól	liseol	a DT-F131y R3 szerint kiejtett sevá (torokhang előtt); a tibériási olvasatban néma
+בִּשְׁאוֹל	8	biseól	bisól	biseol	a DT430 R3 szerint kiejtett sevá (torokhang előtt); a tibériási olvasatban néma
+לִשְׁאוֹל	9	liseól	lisól	liseol	a DT430 R3 szerint kiejtett sevá (torokhang előtt); a tibériási olvasatban néma
 אֶקְרָא	10	ekrá	ekerá	ekra	
-קִרְאוּ	11	kireú	kirú	kireu	a DT-F131y R3 szerint kiejtett sevá (torokhang előtt); a tibériási olvasatban néma
-לִשְׁאוֹלָה	12	liseólá	lisólá	liseóla	a DT-F131y R3 szerint kiejtett sevá (torokhang előtt); a tibériási olvasatban néma
-פֹלֵחַ	13	póléach	fóléach	póleach	a DT-F131y R5 szerint kemény (a tő kezdőbetűje); a pontozás lágyat jelöl
+קִרְאוּ	11	kireú	kirú	kireu	a DT430 R3 szerint kiejtett sevá (torokhang előtt); a tibériási olvasatban néma
+לִשְׁאוֹלָה	12	liseólá	lisólá	liseóla	a DT430 R3 szerint kiejtett sevá (torokhang előtt); a tibériási olvasatban néma
+פֹלֵחַ	13	póléach	fóléach	póleach	a DT430 R5 szerint kemény (a tő kezdőbetűje); a pontozás lágyat jelöl
 וּבְרוּחַ	14	úverúach	úberúach	úvrúach	
 רוּחַ	15	rúach	rúcha	ruach	
 וּבֹקֵעַ	16	úvókéa	úbókéa	úvókea	
@@ -28,9 +28,9 @@ heber	sorszam	javaslat	alternativa	alternativa2	megjegyzes
 גַם	25	gam	gám	gam-	
 עַבְדֵי	26	avdé	abdé	avedé	
 בְיַד	27	vejad	bejad	vejád	
-כֹה	28	kó	chó	kóh	a DT-F131y R5 szerint kemény (a tő kezdőbetűje); a pontozás lágyat jelöl
-כֻלָּם	29	kullám	chullám	kulám	a DT-F131y R5 szerint kemény (a tő kezdőbetűje); a pontozás lágyat jelöl
-בוֹר	30	bór	vór	bor	a DT-F131y R5 szerint kemény (a tő kezdőbetűje); a pontozás lágyat jelöl
+כֹה	28	kó	chó	kóh	a DT430 R5 szerint kemény (a tő kezdőbetűje); a pontozás lágyat jelöl
+כֻלָּם	29	kullám	chullám	kulám	a DT430 R5 szerint kemény (a tő kezdőbetűje); a pontozás lágyat jelöl
+בוֹר	30	bór	vór	bor	a DT430 R5 szerint kemény (a tő kezdőbetűje); a pontozás lágyat jelöl
 בְךָ	31	vechá	bechá	vecha	
 בְאַפִּי	32	veappí	beappí	veapí	
 אָסוֹן	33	ászón	ászon	ásón	
