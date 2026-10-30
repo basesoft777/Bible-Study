@@ -42,6 +42,7 @@ import szerep_karoli as SZK
 import szerep_nave as SZN
 import szerep_kizart as SZKZ
 import olvasoi_kovetkeztetes as OK  # az olvasói szöveg: lelet + következtetés (2026-10-30)
+import bdb_rovidites as BR  # a BDB egybetűs rövidítései, közös az olvasóval (N-F131x)
 
 ROOT = G.ROOT
 ADAT = G.ADAT
@@ -3128,40 +3129,17 @@ def gerinc_blokk(adat, szotar, strong, motivum_sorai, ctx=None):
     return bek, napl
 
 
-# A BDB egybetűs rövidítései (a felhasználó, 2026-10-29: „nem lehetne jelölni a szövegben /pl más szinű háttér , hogy a
-# szó rövidités?”). A forrás (DictBDB.json) a rövidítő jelet (geres, ׳) a betű ELÉ írja (׳י); a helyes alak a betű utáni
-# (י׳). Csak az önálló, egybetűs alakot javítja és jelöli (<abbr>, címmel); a több szavas, felcserélt sorrendű héber
-# kifejezésekhez nem nyúl (forrás-konverziós hiba, külön tétel).
-_HEB_BETU = 'א-תיִ-ﭏ'  # a prezentációs alakok (pl. U+FB2A שׁ) is
-_HEB_JEL = 'ְ-ׇ'
-BDB_ROVIDITES_RE = re.compile(r'(?<![%s%s])׳([%s][%s]*)(?![%s%s])' % (_HEB_BETU, _HEB_JEL, _HEB_BETU, _HEB_JEL,
-                                                                          _HEB_BETU, _HEB_JEL))
-BDB_JAHVE_CIM = 'יְהוָה (Jahve), az Úr'
-BDB_ROVIDITES_ALTALANOS = 'a BDB rövidítése; a feloldás a szócikk szövegéből derül ki'
-
-
-def _alapbetu(szo):
-    return next((c for c in unicodedata.normalize('NFD', szo or '') if 'א' <= c <= 'ת'), '')
+# A BDB egybetűs rövidítései (a felhasználó, 2026-10-29): a jelölő a közös `bdb_rovidites.py`-ban (N-F131x), amelyet az
+# olvasó-szerver szó-lapja is hív; itt a címszó (lemma + kiejtés a kiejtés-szabály szerint) kerül mellé.
+BDB_ROVIDITES_RE = BR.ROVIDITES_RE
+BDB_JAHVE_CIM = BR.JAHVE_CIM
+BDB_ROVIDITES_ALTALANOS = BR.ALTALANOS
 
 
 def bdb_rovidites_jelol(szoveg, strong):
-    """A BDB-szöveg egybetűs rövidítései: „׳י” → `<abbr class="rovidites" title="…">י׳</abbr>`. A cím: a י Jahve (ha a
-    címszó is י-vel kezdődik, mindkét feloldás); a címszó kezdőbetűje a címszó; más betű általános jelölés (nem
-    találjuk ki a feloldást)."""
+    """A BDB-szöveg egybetűs rövidítései: „׳י” → `<abbr class="rovidites" title="…">י׳</abbr>` (`bdb_rovidites.jelol`)."""
     lk = lemma_kiejtes(strong)
-    cimszo = lemma_cim(lk) if lk else ''
-    kezdo = _alapbetu(lk[0]) if lk else ''
-
-    def cim(betu):
-        b = _alapbetu(betu)
-        if b == 'י':
-            return BDB_JAHVE_CIM + ('; vagy a címszó: %s' % cimszo if kezdo == 'י' else '')
-        if b and b == kezdo:
-            return 'a címszó: %s' % cimszo
-        return BDB_ROVIDITES_ALTALANOS
-
-    return BDB_ROVIDITES_RE.sub(
-        lambda m: '<abbr class="rovidites" title="%s">%s׳</abbr>' % (cim(m.group(1)), m.group(1)), szoveg)
+    return BR.jelol(szoveg, lemma_cim(lk) if lk else '', BR.alapbetu(lk[0]) if lk else '')
 
 
 def ubs_domensor(strong):

@@ -33,6 +33,18 @@ def _pilot_modul(nev):
 
 import bdb_szelet  # noqa: E402  (élesben a szerver mellett, DT-F99c (a); a pilot ugyanezt tölti be)
 
+
+def _eszkoz_modul(nev):
+    """Az `eszkozok/` közös modulja (a lexikon-generátorral közös kód, N-F131x), fájlútvonalról, a `sys.path` változtatása nélkül."""
+    ut = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), nev + '.py')
+    spec = importlib.util.spec_from_file_location('eszkoz_' + nev, ut)
+    m = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(m)
+    return m
+
+
+bdb_rovidites = _eszkoz_modul('bdb_rovidites')
+
 JELLEG = {
     'forras': ('forrásadat', 'jelleg-forras', 'változtatás nélkül egy adatkészletből'),
     'gepi': ('gépi feldolgozás', 'jelleg-gepi', 'determinisztikus szabály rendezi vagy párosítja a forrásadatot'),
@@ -619,6 +631,37 @@ def _bdb_adat(K):
     return K.memo('bdb', f)
 
 
+def _bdb_cimszo(K):
+    """(„lemma (kiejtés)”, a lemma alapbetűje) a BDB-rövidítések feloldásához: a szócikk Strongjának (alias esetén a tábla-Strongnak)
+    TBESH-lemmája, a jóváhagyott héber kiejtéssel (kiejtés-szabály: ha nincs, csak a lemma); ('', ''), ha nincs TBESH-sor."""
+    def f():
+        d = _bdb_adat(K)
+        r = q.tbesh_lemma(K.con, d['alias']['tabla_strong'] if d['alias'] else K.strong)
+        if not r:
+            return '', ''
+        return bdb_rovidites.cimszo_alak(r[0], bdb_rovidites.heber_kiejtes(*r)), bdb_rovidites.alapbetu(r[0])
+    return K.memo('bdb_cimszo', f)
+
+
+_CIMKE_RE = re.compile(r'(<[^>]*>)')
+
+
+def _rovidites(K, html):
+    """A BDB egybetűs rövidítései (׳י → י׳) <abbr class="rovidites">-ként a kész, escape-elt blokk-HTML szövegrészeiben (N-F131x; a jelölő
+    közös a lexikon-generátorral: `eszkozok/bdb_rovidites.py`). A címkék (és attribútumaik) érintetlenek; a jelölő csak héber betűt és
+    geres jelet fog meg, a cím escape-elve kerül be, így injekció nem lehet. `tabindex`: érintésre, fókuszra is megjelenik a feloldás;
+    hivatkozáson (a vázlat <a>-ján) belül nincs, ott a koppintás a hivatkozásé, a feloldás a `title`."""
+    cimszo, kezdo = _bdb_cimszo(K)
+    ki, linkben = [], False
+    for i, r in enumerate(_CIMKE_RE.split(str(html))):
+        if i % 2:
+            linkben = (r.startswith('<a ') or r == '<a>') or (linkben and r != '</a>')
+            ki.append(r)
+        else:
+            ki.append(bdb_rovidites.jelol(r, cimszo, kezdo, cim_esc=lambda s: str(escape(s)), attr='' if linkben else ' tabindex="0"'))
+    return Markup(''.join(ki))
+
+
 def _alias_megj(a):
     return Markup('<p class="megj">A szócikk másik Strong-szám alatt áll (alias, gépi): %s, BDB-azonosító %s, szöveghasonlóság %s.</p>') % (a['tabla_strong'], a['bdb_id'], a['hasonlosag'])
 
@@ -946,7 +989,7 @@ def _r_bdb_apparatus(d, K):
         ki += resz('Irodalmi és szövegkritikai jelek', Markup('<div class="jelek">%s%s</div>') % (
             Markup('').join(Markup('<span class="jel-cimke" title="BDB irodalmi hivatkozás (szerző^mű)">%s</span>') % x for x in a.get('irodalom') or []),
             Markup('').join(Markup('<span class="jel-cimke krit" title="a BDB jele">%s</span>') % x for x in a.get('krit') or [])))
-    return ki
+    return _rovidites(K, ki)
 
 
 def _f_lxx_tobblet(K):
@@ -964,7 +1007,7 @@ def _f_bdb_angol(K):
 
 
 def _r_bdb_angol(d, K):
-    return (_alias_megj(d['alias']) if d['alias'] else Markup('')) + _szoveg(d['en'])
+    return (_alias_megj(d['alias']) if d['alias'] else Markup('')) + _rovidites(K, _szoveg(d['en']))
 
 
 def _f_bdb_magyar(K):
@@ -973,7 +1016,7 @@ def _f_bdb_magyar(K):
 
 
 def _r_bdb_magyar(d, K):
-    return (_alias_megj(d['alias']) if d['alias'] else Markup('')) + _szoveg(d['hu'])
+    return (_alias_megj(d['alias']) if d['alias'] else Markup('')) + _rovidites(K, _szoveg(d['hu']))
 
 
 def _f_lxx_bridge(K):
