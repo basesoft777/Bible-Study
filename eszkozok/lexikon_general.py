@@ -2345,8 +2345,16 @@ def olvasoi_13(sorai):
     gyak = ', '.join('„%s” %d' % (l, len(h)) for l, _a, h in tetel[:3])
     arany = len(tetel[0][2]) / n
     kov = next(t for k, t in OLVASOI_13_KUSZOB if arany >= k) % round(100 * arany)
-    return ('A motívum %d igehelyén a Károli %d különböző magyar szót használ. A leggyakoribbak (igehelyek száma): %s. '
-            '**Következtetés:** %s. A sorokban a ragozott alakok és az igehelyek állnak.' % (n, len(tetel), gyak, kov))
+    hianyzo = [s['igehely'] for s in sorai if s.get('karoli_szo') and s['igehely'] not in tetel[0][2]]
+    helyette = ''
+    if hianyzo:
+        hely = SZK.helyettesitok(sorai, hianyzo, [tetel[0][0]], strongok=SZK.strongjai(sorai, tetel[0][0]))
+        if hely:
+            helyette = (' Ahol nem a „%s” áll (%d helyen), ott a Károli jellemzően ezt írja helyette: %s.'
+                        % (tetel[0][0], len(hianyzo), ', '.join('„%s” %d' % (l, len(h)) for l, h in hely[:3])))
+    return ('A motívum %d igehelyén a Károli %d különböző magyar szót használ. A leggyakoribbak (igehelyek száma): %s.%s '
+            '**Következtetés:** %s. A sorokban a ragozott alakok és az igehelyek állnak.'
+            % (n, len(tetel), gyak, helyette, kov))
 
 
 def _tagmondat(vers, szavak):
@@ -2363,6 +2371,7 @@ def olvasoi_14(sorai):
         return None
     n = len(sorai)
     rejt = SZK.rejtett_parhuzamok(sorai, kulcs=kulcs)
+    hely_szavak = []
     hamis = SZK.hamis_parhuzamok(sorai, kulcs=kulcs)
     minden = []
     for v in kulcs.values():
@@ -2373,6 +2382,11 @@ def olvasoi_14(sorai):
         szoveg = ('A motívum %d helye közül %d helyen a héber vagy görög szövegben megvan a motívum szava (%s), de a '
                   'Károli más magyar szóval fordítja, például: %s — „%s”. Ez a **rejtett párhuzam**.'
                   % (n, len(rejt), szavak, h, k))
+        hely = SZK.helyettesitok(sorai, [r[0] for r in rejt], [], kulcs)
+        if hely:
+            szoveg += (' Ezeken a helyeken a Károli a motívum magyar kulcsszavai helyett jellemzően ezt írja: %s.'
+                       % ', '.join('„%s” (%d hely)' % (l, len(hh)) for l, hh in hely[:3]))
+        hely_szavak = [l for l, _hh in hely[:3]]
     else:
         szoveg = ('A motívum mind a %d helyén, ahol a héber vagy görög szövegben a motívum szava áll (%s), a Károli is a '
                   'szokásos magyar szavakat használja: **rejtett párhuzam** nincs.' % (n, szavak))
@@ -2387,7 +2401,9 @@ def olvasoi_14(sorai):
         return szoveg + ' **Következtetés:** a magyar szavak megbízhatóan jelzik a motívumot.'
     reszek = []
     if rejt:
-        reszek.append('a motívum %d helyét nem találja meg' % len(rejt))
+        reszek.append('a motívum %d helyét nem találja meg%s' % (
+            len(rejt), ', hacsak nem keres ezekre is: %s' % ', '.join('„%s”' % w for w in hely_szavak)
+            if hely_szavak else ''))
     if hamis:
         # a magyar szókeresés találatai: a kulcsszavas kombinációjú motívumhelyek, ahol a kulcsszó áll, és a hamis versek
         talalat = sum(1 for s in sorai if SZK._komb(s) in kulcs) - len(rejt) + len(hamis)
