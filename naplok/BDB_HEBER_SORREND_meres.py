@@ -19,6 +19,8 @@ Szabályok:
   R_lex   R0 + a lexikon darabhatárai szerint a darabok megfordítása (= H2; a lexikon kell hozzá)
   R_str   R0 + darabolás csak a szövegből: a geres, a geres melletti szóköz és a geres nélküli futam egy-egy darab
           (a futamon belüli szóköz marad), a darabok megfordítása — a lexikon nélkül is alkalmazható
+  R_ang   a felhasználó hipotézise (2026-10-30): a futam szóvizuális (balról jobbra) alak; a szavak megfordítása, és
+          tokenenként a betű elé került geres a token végére (a jelentés 8. szakasza)
   R_lap   a mai lap-javítás (lexikon_general.bdb_rovidites_jelol): csak az önálló, egybetűs ׳X → X׳
 
 Próba a héber Biblián (TAHOT): a jelölt alak teljes szavai (és a rövidítés kezdőbetűje + rés, az ellipszis rés)
@@ -129,6 +131,12 @@ DARAB_RE = re.compile(r'%s|\s+|[^%s\s]+(?:\s+[^%s\s]+)*' % (G, G, G))
 
 def r_str(js):
     return ws(''.join(reversed(DARAB_RE.findall(r0(js)))))
+
+
+def r_ang(js):
+    """A felhasználó hipotézise (2026-10-30, „angol szórend”): a futam szóvizuális, balról jobbra tárolt alak; a
+    vizuális → logikai konverzió a szavak megfordítása, és tokenenként a betű elé került geres a token végére."""
+    return ' '.join((t[1:] + G) if t.startswith(G) and len(t) > 1 else t for t in reversed(ws(js).split(' ')))
 
 
 def r_hib(js, darabok):
@@ -397,7 +405,7 @@ def main():
     for top, js, dar in tetelek:
         kat = kategoria(js)
         jel = jelzok(js)
-        jeloltek = {'R0': r0(js), 'R_str': r_str(js), 'R_lap': r_lap(js), 'R_hib': r_hib(js, dar)}
+        jeloltek = {'R0': r0(js), 'R_str': r_str(js), 'R_lap': r_lap(js), 'R_hib': r_hib(js, dar), 'R_ang': r_ang(js)}
         if dar is not None:
             rl = r_lex(js, dar)
             if rl is None:
@@ -478,6 +486,34 @@ def main():
     for k in sorted(ossz):
         print('   ', k, dict(sorted(ossz[k].items())))
 
+    # 2/d. a felhasználó hipotézise (R_ang: szóvizuális tárolás → logikai): ugyanígy, futam-típusonként, és az
+    # egyezés az R_hib-bel
+    ang = collections.defaultdict(collections.Counter)
+    ang_pelda = []
+    for top, js, dar in tetelek:
+        kat = kategoria(js)
+        if kat == 'egy_szo_geres_nelkul':
+            continue
+        jel = jelzok(js)
+        tipus = ('irasjel_vagy_sziglum' if ('irasjel' in jel or 'szam_latin' in jel)
+                 else 'tiszta_geressel' if G in js else 'tiszta_geres_nelkul')
+        ra, rh = r_ang(js), r_hib(js, dar)
+        ang[tipus]['tétel'] += 1
+        ang[tipus]['Biblia:' + itelet(bib, js, ra)] += 1
+        ang[tipus]['= R_hib' if ra == rh else '≠ R_hib'] += 1
+        ang[tipus]['geres_jo' if (G not in ra or geres_mind_utan(ra)) else 'geres_rossz'] += 1
+        if ra != rh:
+            it_a, it_h = itelet(bib, js, ra), itelet(bib, js, rh)
+            ang[tipus]['eltérésben R_ang:%s / R_hib:%s' % (it_a, it_h)] += 1
+            if len(ang_pelda) < 12 and tipus == 'tiszta_geressel':
+                ang_pelda.append((top, ws(js), ra, rh, it_a, it_h))
+    print('-- R_ang (a felhasználó hipotézise) futam-típusonként:')
+    for k in sorted(ang):
+        print('   ', k, dict(sorted(ang[k].items())))
+    print('-- R_ang ≠ R_hib példák (strong | JSON | R_ang | R_hib | Biblia R_ang | Biblia R_hib):')
+    for p in ang_pelda:
+        print('   ', ' | '.join(p))
+
     # 3. hatás
     print('\n== 3. Hatás')
     valtozo = collections.defaultdict(set)
@@ -532,11 +568,12 @@ def main():
     jelolt_tet = [t for t in tetelek if kategoria(t[1]) != 'egy_szo_geres_nelkul']
     minta = rnd.sample(jelolt_tet, 50)
     print('\n== 4. Kézi minta (seed %d, 50 tétel a %d geres- vagy több tokenes tételből)' % (a.seed, len(jelolt_tet)))
-    sorok = ['sorszam\tstrong\tkategoria\tjelzok\tjson_alak\tjavasolt_R_hib\tbiblia_R_hib\tlexikon_parositva']
+    sorok = ['sorszam\tstrong\tkategoria\tjelzok\tjson_alak\tjavasolt_R_hib\tbiblia_R_hib\tlexikon_parositva\tR_ang']
     for n, (top, js, dar) in enumerate(minta, 1):
         rh = r_hib(js, dar)
+        ra = r_ang(js)
         sorok.append('\t'.join([str(n), top, kategoria(js), ','.join(jelzok(js)), ws(js), rh, itelet(bib, js, rh),
-                                'igen' if dar is not None else 'nem']))
+                                'igen' if dar is not None else 'nem', '= R_hib' if ra == rh else ra]))
     if a.minta_ki:
         with open(a.minta_ki, 'w', encoding='utf-8', newline='\n') as f:
             f.write('\n'.join(sorok) + '\n')

@@ -33,6 +33,9 @@ bdb_szakasz_hu.tsv@e2cb5e21e0c0, forditasok.tsv@8d3bc51a3690 | ts=2026-10-30*
   ahol a Biblia dönteni tud (14 976 helyes, 224 rontott). 17 343 tételnél a Biblia nem dönt. A geres a javítás után
   32 584 tételben áll a betű után, 3-ban nem. Az írásjelet vagy sziglumot tartalmazó tételeken (3 713) a pontosság csak 62%,
   ezért **ezeket ne javítsuk gépileg**.
+- **A felhasználó „angol szórend” hipotézise (8. szakasz):** a geres nélküli futamokra igaz (a szavak megfordítása
+  98,6%-ban helyes). A geresszel álló futamokra nem igaz: a rendszeres vizuális → logikai konverzió ott csak 67,4%-ban
+  helyes. Ezért **forráshibáról van szó, nem megjelenítési különbségről.**
 - **Hatás:** 34 279 változó kifejezés 5 880 Strongban. A `bdb_szakaszok.tsv` 13 738 / 36 621 sora, a
   `bdb_szakasz_hu.tsv` 4 359 / 9 664 sora és a `forditasok.tsv` 7 531 / 18 603 BDB-sora érintett (3 397 / 4 006
   lefordított Strong). A fordítás **szó szerint örökölte** a hibás héber alakot: a változó kifejezések 99,0%-a
@@ -168,58 +171,58 @@ A „kézi ítélet” oszlop a felhasználóé (helyes / rossz / nem tudom). A 
 R_hib-alakra; a „lexikon” azt mutatja, hogy a tétel párosult-e a `BDB.lexicon`-nal. Újragenerálás:
 `python naplok/BDB_HEBER_SORREND_meres.py --minta-ki <fájl>` (a minta a seed miatt azonos).
 
-| # | Strong | kategória | jelzők | JSON-alak | javasolt (R_hib) | héber Biblia | lexikon | kézi ítélet |
-|---|---|---|---|---|---|---|---|---|
-| 1 | H5051 | ket_szo |  | חִצֶּיךָ אוֺר | אוֺר חִצֶּיךָ | helyes | igen |  |
-| 2 | H5869 | ket_szo |  | יַעֲקֹב עֵין | עֵין יַעֲקֹב | eldonthetetlen | igen |  |
-| 3 | H8076 | egybetus_rovidites |  | ׳שׁ | שׁ׳ | eldonthetetlen | igen |  |
-| 4 | H1755 | harom_plusz_szo |  | וָדוֺר דּוֺר שְׁנֵי | שְׁנֵי דּוֺר וָדוֺר | helyes | igen |  |
-| 5 | H6098 | ket_szo | irasjel | תּוֺרָה דָּבָר, | דָּבָר, תּוֺרָה | eldonthetetlen | nem |  |
-| 6 | H4591 | harom_plusz_szo |  | יִמְעָ֑ט מֵהֶבֶל הוֺן | הוֺן מֵהֶבֶל יִמְעָ֑ט | helyes | igen |  |
-| 7 | H389 | ket_szo | nevelo | הַמַּעַם אַךְ | אַךְ הַמַּעַם | helyes | igen |  |
-| 8 | H6059 | harom_plusz_szo | nevelo | לוֺ תַּעֲנִיק הַעֲנֵיק | הַעֲנֵיק תַּעֲנִיק לוֺ | helyes | igen |  |
-| 9 | H2119 | egybetus_rovidites |  | ׳י | י׳ | eldonthetetlen | igen |  |
-| 10 | H5578 | ket_szo |  | סוּסָה חֲצַר | חֲצַר סוּסָה | helyes | igen |  |
-| 11 | H1931 | ket_szo |  | פְרָת הוּא | הוּא פְרָת | eldonthetetlen | igen |  |
-| 12 | H2896 | harom_plusz_token_geressel |  | ט ׳בָתֵּיהֶם מִלֵּא | בָתֵּיהֶם ט׳ מִלֵּא | eldonthetetlen | igen |  |
-| 13 | H3629 | ket_szo | irasjel | כְּלוּלָה כַּלָּה, | כַּלָּה, כְּלוּלָה | eldonthetetlen | nem |  |
-| 14 | H9009 | ket_szo |  | מֵאֲרֻבָּה כְּעָשָׁן | כְּעָשָׁן מֵאֲרֻבָּה | helyes | igen |  |
-| 15 | H6999 | ket_szo |  | הגבעות על | על הגבעות | helyes | igen |  |
-| 16 | H7754 | ket_szo |  | עֵצִים שׂוֺכַת | שׂוֺכַת עֵצִים | helyes | igen |  |
-| 17 | H3368 | ket_szo |  | וְקָרוֺת חוֺם | חוֺם וְקָרוֺת | eldonthetetlen | igen |  |
-| 18 | H3651 | ket_szo |  | יַאֲרִיךְ כֵּן | כֵּן יַאֲרִיךְ | helyes | igen |  |
-| 19 | H9004 | ket_szo |  | חֳדָשִׁים כְּמִשְׁלשׁ | כְּמִשְׁלשׁ חֳדָשִׁים | helyes | igen |  |
-| 20 | H1004 | harom_plusz_token_geressel | nevelo | ׳בּ הַיַּיִן מִשְׁתֵּה | בּ׳ מִשְׁתֵּה הַיַּיִן | helyes | igen |  |
-| 21 | H2834 | rovidites_es_szo |  | ׳ח יְעָרוֺת | ח׳ יְעָרוֺת | eldonthetetlen | igen |  |
-| 22 | H7161 | harom_plusz_szo |  | לוֺ מִיָּדוֺ קַרְנַיִם | קַרְנַיִם מִיָּדוֺ לוֺ | helyes | igen |  |
-| 23 | H3458 | harom_plusz_token_geressel |  | י ׳שָׁמַע ׳רגו | שָׁמַע י׳ רגו׳ | eldonthetetlen | igen |  |
-| 24 | H6873 | egybetus_rovidites |  | ׳י | י׳ | eldonthetetlen | igen |  |
-| 25 | H1288 | rovidites_es_szo |  | ׳ב צוּרִי | ב׳ צוּרִי | eldonthetetlen | igen |  |
-| 26 | H227 | harom_plusz_szo |  | לוֺ טוֺב אָז | אָז טוֺב לוֺ | helyes | igen |  |
-| 27 | H7919 | ket_szo |  | חָכָם לֵב | לֵב חָכָם | eldonthetetlen | igen |  |
-| 28 | H4285 | egybetus_rovidites |  | ׳מ | מ׳ | eldonthetetlen | igen |  |
-| 29 | H6921 | rovidites_es_szo |  | (הַ)קּ ׳רוּחַ | רוּחַ (הַ)קּ׳ | helyes | igen |  |
-| 30 | H1755 | harom_plusz_szo |  | וָדוֺר דּוֺר מְשׂוֺשׂ | מְשׂוֺשׂ דּוֺר וָדוֺר | helyes | igen |  |
-| 31 | H2568 | egybetus_rovidites |  | ׳ח | ח׳ | eldonthetetlen | igen |  |
-| 32 | H1288 | ket_szo |  | ברוך מברכך | מברכך ברוך | eldonthetetlen | igen |  |
-| 33 | H2786 | harom_plusz_token_geressel |  | ׳ח על שׁניו | ח׳ שׁניו על | eldonthetetlen | igen |  |
-| 34 | H1818 | harom_plusz_szo | nevelo | יְכַמֵּר בַּנֶּפֶשׁ הוּא הַדָּם | הַדָּם הוּא בַּנֶּפֶשׁ יְכַמֵּר | helyes | igen |  |
-| 35 | H5892 | ket_szo | szam_latin,nevelo | ᵐ5 הַשֵּׁעַר | הַשֵּׁעַר ᵐ5 | eldonthetetlen | igen |  |
-| 36 | H2094 | rovidites_es_szo |  | י ׳מִשְׁמְּטֵי | מִשְׁמְּטֵי י׳ | eldonthetetlen | igen |  |
-| 37 | H9003 | ket_szo |  | בְּ חָלַק | חָלַק בְּ | eldonthetetlen | igen |  |
-| 38 | H5920 | ket_szo |  | בֵּין עַל | עַל בֵּין | eldonthetetlen | igen |  |
-| 39 | H3427 | harom_plusz_szo | rafe_makkef,nevelo | הַחֲמוֺר עִםֿ מֹּה לָכֶם שְׁבוּ | שְׁבוּ לָכֶם מֹּה עִםֿ הַחֲמוֺר | helyes | igen |  |
-| 40 | H2689 | rovidites_es_szo |  | ׳ח התרועה | ח׳ התרועה | eldonthetetlen | igen |  |
-| 41 | H7832 | rovidites_es_szo |  | י ׳לִפְנֵי | לִפְנֵי י׳ | eldonthetetlen | igen |  |
-| 42 | H5360 | rovidites_es_szo |  | נ ׳עשׂה | עשׂה נ׳ | eldonthetetlen | igen |  |
-| 43 | H615 | rovidites_es_szo | nevelo | ׳א הַתִּקְוָה | א׳ הַתִּקְוָה | eldonthetetlen | igen |  |
-| 44 | H2873 | ket_szo | irasjel | טִבְחָה טֶבַח, | טֶבַח, טִבְחָה | eldonthetetlen | nem |  |
-| 45 | H7218 | ket_szo | nevelo | הַכֹּהֲנִים רָאשֵׁי | רָאשֵׁי הַכֹּהֲנִים | helyes | igen |  |
-| 46 | H4500 | ket_szo |  | אֹרְגִים כִּמְנוֺר | כִּמְנוֺר אֹרְגִים | helyes | igen |  |
-| 47 | H249 | ket_szo | nevelo | הָאָרֶץ אֶזְרַח | אֶזְרַח הָאָרֶץ | helyes | igen |  |
-| 48 | H58 | ket_szo |  | מִצְרַיִם אָבֵל | אָבֵל מִצְרַיִם | helyes | igen |  |
-| 49 | H6946 | rovidites_es_szo |  | ׳ק בַּרְנֵעַ | ק׳ בַּרְנֵעַ | eldonthetetlen | igen |  |
-| 50 | H2506 | harom_plusz_token_geressel |  | בְּח ׳הַשָּׂדֶה ׳יִזְ | הַשָּׂדֶה בְּח׳ יִזְ׳ | helyes | igen |  |
+| # | Strong | kategória | jelzők | JSON-alak | javasolt (R_hib) | héber Biblia | lexikon | R_ang (8. szakasz) | kézi ítélet |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | H5051 | ket_szo |  | חִצֶּיךָ אוֺר | אוֺר חִצֶּיךָ | helyes | igen | = R_hib |  |
+| 2 | H5869 | ket_szo |  | יַעֲקֹב עֵין | עֵין יַעֲקֹב | eldonthetetlen | igen | = R_hib |  |
+| 3 | H8076 | egybetus_rovidites |  | ׳שׁ | שׁ׳ | eldonthetetlen | igen | = R_hib |  |
+| 4 | H1755 | harom_plusz_szo |  | וָדוֺר דּוֺר שְׁנֵי | שְׁנֵי דּוֺר וָדוֺר | helyes | igen | = R_hib |  |
+| 5 | H6098 | ket_szo | irasjel | תּוֺרָה דָּבָר, | דָּבָר, תּוֺרָה | eldonthetetlen | nem | = R_hib |  |
+| 6 | H4591 | harom_plusz_szo |  | יִמְעָ֑ט מֵהֶבֶל הוֺן | הוֺן מֵהֶבֶל יִמְעָ֑ט | helyes | igen | = R_hib |  |
+| 7 | H389 | ket_szo | nevelo | הַמַּעַם אַךְ | אַךְ הַמַּעַם | helyes | igen | = R_hib |  |
+| 8 | H6059 | harom_plusz_szo | nevelo | לוֺ תַּעֲנִיק הַעֲנֵיק | הַעֲנֵיק תַּעֲנִיק לוֺ | helyes | igen | = R_hib |  |
+| 9 | H2119 | egybetus_rovidites |  | ׳י | י׳ | eldonthetetlen | igen | = R_hib |  |
+| 10 | H5578 | ket_szo |  | סוּסָה חֲצַר | חֲצַר סוּסָה | helyes | igen | = R_hib |  |
+| 11 | H1931 | ket_szo |  | פְרָת הוּא | הוּא פְרָת | eldonthetetlen | igen | = R_hib |  |
+| 12 | H2896 | harom_plusz_token_geressel |  | ט ׳בָתֵּיהֶם מִלֵּא | בָתֵּיהֶם ט׳ מִלֵּא | eldonthetetlen | igen | מִלֵּא בָתֵּיהֶם׳ ט |  |
+| 13 | H3629 | ket_szo | irasjel | כְּלוּלָה כַּלָּה, | כַּלָּה, כְּלוּלָה | eldonthetetlen | nem | = R_hib |  |
+| 14 | H9009 | ket_szo |  | מֵאֲרֻבָּה כְּעָשָׁן | כְּעָשָׁן מֵאֲרֻבָּה | helyes | igen | = R_hib |  |
+| 15 | H6999 | ket_szo |  | הגבעות על | על הגבעות | helyes | igen | = R_hib |  |
+| 16 | H7754 | ket_szo |  | עֵצִים שׂוֺכַת | שׂוֺכַת עֵצִים | helyes | igen | = R_hib |  |
+| 17 | H3368 | ket_szo |  | וְקָרוֺת חוֺם | חוֺם וְקָרוֺת | eldonthetetlen | igen | = R_hib |  |
+| 18 | H3651 | ket_szo |  | יַאֲרִיךְ כֵּן | כֵּן יַאֲרִיךְ | helyes | igen | = R_hib |  |
+| 19 | H9004 | ket_szo |  | חֳדָשִׁים כְּמִשְׁלשׁ | כְּמִשְׁלשׁ חֳדָשִׁים | helyes | igen | = R_hib |  |
+| 20 | H1004 | harom_plusz_token_geressel | nevelo | ׳בּ הַיַּיִן מִשְׁתֵּה | בּ׳ מִשְׁתֵּה הַיַּיִן | helyes | igen | מִשְׁתֵּה הַיַּיִן בּ׳ |  |
+| 21 | H2834 | rovidites_es_szo |  | ׳ח יְעָרוֺת | ח׳ יְעָרוֺת | eldonthetetlen | igen | יְעָרוֺת ח׳ |  |
+| 22 | H7161 | harom_plusz_szo |  | לוֺ מִיָּדוֺ קַרְנַיִם | קַרְנַיִם מִיָּדוֺ לוֺ | helyes | igen | = R_hib |  |
+| 23 | H3458 | harom_plusz_token_geressel |  | י ׳שָׁמַע ׳רגו | שָׁמַע י׳ רגו׳ | eldonthetetlen | igen | רגו׳ שָׁמַע׳ י |  |
+| 24 | H6873 | egybetus_rovidites |  | ׳י | י׳ | eldonthetetlen | igen | = R_hib |  |
+| 25 | H1288 | rovidites_es_szo |  | ׳ב צוּרִי | ב׳ צוּרִי | eldonthetetlen | igen | צוּרִי ב׳ |  |
+| 26 | H227 | harom_plusz_szo |  | לוֺ טוֺב אָז | אָז טוֺב לוֺ | helyes | igen | = R_hib |  |
+| 27 | H7919 | ket_szo |  | חָכָם לֵב | לֵב חָכָם | eldonthetetlen | igen | = R_hib |  |
+| 28 | H4285 | egybetus_rovidites |  | ׳מ | מ׳ | eldonthetetlen | igen | = R_hib |  |
+| 29 | H6921 | rovidites_es_szo |  | (הַ)קּ ׳רוּחַ | רוּחַ (הַ)קּ׳ | helyes | igen | רוּחַ׳ (הַ)קּ |  |
+| 30 | H1755 | harom_plusz_szo |  | וָדוֺר דּוֺר מְשׂוֺשׂ | מְשׂוֺשׂ דּוֺר וָדוֺר | helyes | igen | = R_hib |  |
+| 31 | H2568 | egybetus_rovidites |  | ׳ח | ח׳ | eldonthetetlen | igen | = R_hib |  |
+| 32 | H1288 | ket_szo |  | ברוך מברכך | מברכך ברוך | eldonthetetlen | igen | = R_hib |  |
+| 33 | H2786 | harom_plusz_token_geressel |  | ׳ח על שׁניו | ח׳ שׁניו על | eldonthetetlen | igen | שׁניו על ח׳ |  |
+| 34 | H1818 | harom_plusz_szo | nevelo | יְכַמֵּר בַּנֶּפֶשׁ הוּא הַדָּם | הַדָּם הוּא בַּנֶּפֶשׁ יְכַמֵּר | helyes | igen | = R_hib |  |
+| 35 | H5892 | ket_szo | szam_latin,nevelo | ᵐ5 הַשֵּׁעַר | הַשֵּׁעַר ᵐ5 | eldonthetetlen | igen | = R_hib |  |
+| 36 | H2094 | rovidites_es_szo |  | י ׳מִשְׁמְּטֵי | מִשְׁמְּטֵי י׳ | eldonthetetlen | igen | מִשְׁמְּטֵי׳ י |  |
+| 37 | H9003 | ket_szo |  | בְּ חָלַק | חָלַק בְּ | eldonthetetlen | igen | = R_hib |  |
+| 38 | H5920 | ket_szo |  | בֵּין עַל | עַל בֵּין | eldonthetetlen | igen | = R_hib |  |
+| 39 | H3427 | harom_plusz_szo | rafe_makkef,nevelo | הַחֲמוֺר עִםֿ מֹּה לָכֶם שְׁבוּ | שְׁבוּ לָכֶם מֹּה עִםֿ הַחֲמוֺר | helyes | igen | = R_hib |  |
+| 40 | H2689 | rovidites_es_szo |  | ׳ח התרועה | ח׳ התרועה | eldonthetetlen | igen | התרועה ח׳ |  |
+| 41 | H7832 | rovidites_es_szo |  | י ׳לִפְנֵי | לִפְנֵי י׳ | eldonthetetlen | igen | לִפְנֵי׳ י |  |
+| 42 | H5360 | rovidites_es_szo |  | נ ׳עשׂה | עשׂה נ׳ | eldonthetetlen | igen | עשׂה׳ נ |  |
+| 43 | H615 | rovidites_es_szo | nevelo | ׳א הַתִּקְוָה | א׳ הַתִּקְוָה | eldonthetetlen | igen | הַתִּקְוָה א׳ |  |
+| 44 | H2873 | ket_szo | irasjel | טִבְחָה טֶבַח, | טֶבַח, טִבְחָה | eldonthetetlen | nem | = R_hib |  |
+| 45 | H7218 | ket_szo | nevelo | הַכֹּהֲנִים רָאשֵׁי | רָאשֵׁי הַכֹּהֲנִים | helyes | igen | = R_hib |  |
+| 46 | H4500 | ket_szo |  | אֹרְגִים כִּמְנוֺר | כִּמְנוֺר אֹרְגִים | helyes | igen | = R_hib |  |
+| 47 | H249 | ket_szo | nevelo | הָאָרֶץ אֶזְרַח | אֶזְרַח הָאָרֶץ | helyes | igen | = R_hib |  |
+| 48 | H58 | ket_szo |  | מִצְרַיִם אָבֵל | אָבֵל מִצְרַיִם | helyes | igen | = R_hib |  |
+| 49 | H6946 | rovidites_es_szo |  | ׳ק בַּרְנֵעַ | ק׳ בַּרְנֵעַ | eldonthetetlen | igen | בַּרְנֵעַ ק׳ |  |
+| 50 | H2506 | harom_plusz_token_geressel |  | בְּח ׳הַשָּׂדֶה ׳יִזְ | הַשָּׂדֶה בְּח׳ יִזְ׳ | helyes | igen | יִזְ׳ הַשָּׂדֶה׳ בְּח |  |
 
 *Megfigyelés a mintán (értelmezés, nem lekérdezés):* a 12. sor (H2896) az R_hib szerint `בָתֵּיהֶם ט׳ מִלֵּא`, a Jób 22:18
 szerint viszont `מִלֵּא בָתֵּיהֶם ט׳` a helyes, és a Biblia-próba ezt nem látta (eldönthetetlen). Ez a 4.4/1. típusba tartozik.
@@ -239,3 +242,57 @@ szerint viszont `מִלֵּא בָתֵּיהֶם ט׳` a helyes, és a Biblia-pr
 5. **Előtte:** a 6. szakasz kézi mintájának átnézése. Ha a kézi pontosság a tiszta tételeken eléri a mért kb. 98%-ot,
    mehet a gépi javítás; ha nem, a mintán talált hibatípus szerint pontosítani kell a szabályt.
 6. A rafe mint makkef (4.4/3.) külön, kisebb tétel legyen.
+
+## 8. A felhasználó hipotézise: „angol” (vizuális, balról jobbra tárolt) szórend (2026-10-30)
+
+**A kérdés:** lehet-e, hogy a `DictBDB.json` a héber futamokat egy bidi nélküli, balról jobbra rajzoló nézőprogramhoz
+(pl. MySword / e-Sword) tárolja? Ebben a felfogásban a szavakon belül a betűk jó sorrendben vannak, a szavak sorrendje a
+futamban fordított, és a geres is ezért kerül a betű elé. Ha így van, a forrás a saját nézőjében helyes, a hiba pedig a
+Unicode logikai megjelenítésben (böngésző, Markdown) keletkezik. Ekkor a javítás egy rendszeres vizuális → logikai
+konverzió volna a beolvasáskor.
+
+**A mért szabály (R_ang):** a futam szavainak megfordítása, és tokenenként a betű elé került geres áthelyezése a token
+végére. Futam-típusonként mértem (a geres nélküli egyszavas tételek nélkül; Biblia-ítélet a 2.4 szerint):
+
+| Futam-típus | Tétel | R_ang = R_hib | Biblia: R_ang helyes / rontott / eldönthetetlen | Pontosság | Geres a betű után |
+|---|---:|---:|---|---:|---|
+| **geres nélküli** (tiszta) | 16 987 | 16 987 (100%) | 11 959 / 169 / 4 819 | **98,6%** | — |
+| **geresszel** (tiszta) | 15 600 | 5 500 (35%) | 2 399 / 1 160 / 11 954 | **67,4%** | 15 566 / 34 rossz |
+| írásjellel vagy sziglummal | 3 713 | 3 422 | 153 / 86 / 3 470 | 64,0% | 3 590 / 123 rossz |
+
+A geresszel álló, tiszta futamok 10 100 eltérésében, ahol a Biblia dönt: az R_ang 413-szor helyes és az R_hib
+eldönthetetlen; az R_ang 1 146-szor ront és az R_hib eldönthetetlen; az R_hib 1 031-szer helyes és az R_ang
+eldönthetetlen; az R_hib 41-szer ront. A kézi mintában 14 sor tér el, mind geresszel. Jellemző példák (a 6. szakasz
+R_ang oszlopa):
+- 41. sor, `לִפְנֵי י׳` („Jahve előtt”): R_ang `לִפְנֵי׳ י`;
+- 49. sor, `ק׳ בַּרְנֵעַ` (Kádes-Barnea): R_ang `בַּרְנֵעַ ק׳`;
+- 43. sor, `א׳ הַתִּקְוָה` (Zak 9:12): R_ang `הַתִּקְוָה א׳`.
+A H7121-ből `בְּשֵׁם׳ י ק׳` lesz; a nyomtatott alak `ק׳ בְּשֵׁם י׳`.
+
+**1. Hány futamra igaz a hipotézis?** A **geres nélküli** több szavas futamokra igen: ott a JSON következetesen
+szó-vizuális sorrendű, és a szavak megfordítása 98,6%-ban helyes (ez azonos az R0-val és az R_hib-bel). A **geresszel
+álló** futamokra nem: a rendszeres konverzió csak 67,4%-ban ad helyes alakot. Az összes eldönthető tiszta futamon
+14 358 / 15 687 = **91,5%**, szemben az R_hib 98,5%-ával.
+
+**2. Van-e futam, ahol a hipotézis nem áll?** Igen, rendszeresen: a geresszel álló futamoknál a geres nem a futam
+végén, hanem a futamon belül bontja meg a sorrendet. A geresnél kettévágott részfutamok egymáshoz képest nem
+fordulnak meg úgy, mint a szavak, ezért a rövidítés más szóhoz kerül (a fenti példák). Ezt a darabolást a `BDB.lexicon`
+`<bdbheb>` darabjai mutatják (3. szakasz), és ezt követi az R_lex / R_hib.
+
+**Bidi nélküli néző? (értelmezés, a mért adatból következtetve)**
+- A futamok utáni `&#x200E;` (LRM) bidi-vezérlő jel. Csak Unicode bidi-algoritmust futtató megjelenítőben van hatása:
+  a héber futam után visszaállítja a balról jobbra irányt. Bidi nélküli, balról jobbra rajzoló nézőben semmit sem
+  csinál. A jelenléte tehát arra utal, hogy a JSON **bidi-képes (HTML) megjelenítésre** készült, nem bidi nélküli nézőre.
+- A szavakon belül a betűk logikai sorrendben állnak (a mássalhangzó-váz a TAHOT-tal egyezik). Egy tisztán bidi nélküli
+  nézőben ezért minden héber szó tükrözve jelenne meg.
+- A H7121 egyik megjelenítésben sem adja a nyomtatott alakot. Bidi-képes nézőben, jobbról balra olvasva:
+  `׳ק י ׳בְּשֵׁם`. Szó-vizuális nézőben (R_ang): `בְּשֵׁם׳ י ק׳`.
+- A MySword és az e-Sword saját megjelenítési módját itt nem ellenőriztem (nincs a repóban): ez nem lekérdezett adat.
+
+**Melyik eset áll fenn?** **Forráshiba, nem megjelenítési különbség.** A forrás nem egy következetes vizuális formátum,
+ezért egyetlen vizuális → logikai konverzió nem ad mindenhol helyes eredményt: a geres nélküli futamokon igen
+(98,6%), a geresszel állókon nem (67,4%). A minta egy korábbi, vizuális megjelenítésből vett digitalizálásra utal.
+Ebben a geres (vagy az eredeti aposztróf) irány nélküli jelként kettévágta a jobbról balra futamot; a JSON készítője
+erre még egy egyszerű szómegfordítást tett. *(Ez az eredetre vonatkozó magyarázat következtetés; a mért tény a fenti
+táblázat.)* A javaslat (7. szakasz) ezért változatlan: geres nélkül a szavak megfordítása (ez a hipotézis érvényes
+része), geresnél a `BDB.lexicon` darabhatára szerint.
