@@ -287,9 +287,10 @@ def tahot_vers_index():
 
 
 def heber_gepi(alak, elotag_hossz=0, makkef=False):
-    """A pontozott héber alak gépi kiejtése jelöléssel („vajjikrá, gépi”; DT-F131y), vagy '' pontozatlan alakra."""
+    """A pontozott héber alak gépi kiejtése („vajjikrá”; DT-F131y, jelölés nélkül — DT430 kiegészítés: a felhasználó
+    „nem kell odarakni hogy gépi”), vagy '' pontozatlan alakra."""
     k = HK.kiejt(alak, elotag_hossz, makkef)
-    return '%s, %s' % (k, HK.GEPI_JEL) if k else ''
+    return k or ''
 
 
 _tbesg_tbesh_cache = None
@@ -607,10 +608,9 @@ of Biblical Hebrew/Greek), OSHL (Open Scriptures Hebrew Lexicon), TWOT
 (Treasury of Scripture Knowledge), KH (Károli-kereszthivatkozás), LXX
 (Septuaginta), MT (Masoretic Text), KJV (King James Version).
 
-**Kiejtés:** a héber és a görög szó mellett zárójelben a magyaros kiejtés. A görög kiejtés szabályos átírás. A
-jelöletlen héber kiejtés kézzel jóváhagyott; a **„gépi”** jelölésű (pl. „וַיִּקְרָא (vajjikrá, gépi)”) a pontozott héber
-szövegből rögzített szabályokkal készült, kézzel nem ellenőrizték. A ragozott szó mellett a saját kiejtése áll, nem
-a szótári alaké.
+**Kiejtés:** a héber és a görög szó mellett zárójelben a magyaros kiejtés, mindkét nyelven szabályos átírás. A
+héber kiejtés a pontozott héber szövegből rögzített szabályokkal készül (pl. „וַיִּקְרָא (vajjikrá)”); ahol van kézzel
+jóváhagyott alak, az áll. A ragozott szó mellett a saját kiejtése áll, nem a szótári alaké.
 
 **Mit mutat ez a rész?** — minden blokk elején egy-két mondatos olvasói bevezető; az alatta álló dőlt, technikai
 mondat a lap készítőinek szól.
@@ -3561,7 +3561,7 @@ def gorog_megfelelo_szoveg(r):
     if lk:
         kiejtes = lk[1]
     else:
-        kiejtes = gorog_magyaros(gepi_atiras(r['lemma'])) + ' *(gépi átírás)*'
+        kiejtes = gorog_magyaros(gepi_atiras(r['lemma']))  # DT430 kiegészítés: a kiejtés jelölés nélkül
     return '%s (%s, %s%s)' % (r['szoalak'], r['lemma'], kiejtes, ' %s' % strong if strong else '')
 
 
@@ -3662,7 +3662,7 @@ def lxx_osszevetes(sorai, tokenek):
                     if lk:
                         kiejtes = lk[1]
                     else:
-                        kiejtes = gorog_magyaros(gepi_atiras(r.get('gorog_lemma') or '')) + ' *(gépi átírás)*'
+                        kiejtes = gorog_magyaros(gepi_atiras(r.get('gorog_lemma') or ''))
                     gm = '%s (%s%s)' % (r.get('gorog_lemma') or EM_DASH, kiejtes,
                                          ' %s' % gorog_strong if gorog_strong else '')
                     egyezes_cimke = 'eltérő'

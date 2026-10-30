@@ -124,7 +124,7 @@ def heber_kiejtes(szo):
             gepi = True
             continue
         return None
-    return ' '.join(ki) + (', %s' % HK.GEPI_JEL if gepi else '')
+    return ' '.join(ki)  # DT430 kiegészítés: jelölés nélkül
 
 
 _gorog_tabla = None
