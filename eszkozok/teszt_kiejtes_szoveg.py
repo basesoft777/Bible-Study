@@ -20,8 +20,8 @@ class Kiejtes(unittest.TestCase):
         self.assertEqual(KSZ.heber_kiejtes('קָרָא'), 'kárá')
         self.assertEqual(KSZ.heber_kiejtes('שֵׁם'), 'sém')
         # DT-F131y (2026-10-30): jóváhagyott alak híján a pontozott szó gépi kiejtése, jelölve
-        self.assertEqual(KSZ.heber_kiejtes('שֻׁם'), 'sum, gépi')       # a mássalhangzó-váz azonos, a szó más (H8036)
-        self.assertEqual(KSZ.heber_kiejtes('זָכַר'), 'záchar, gépi')
+        self.assertEqual(KSZ.heber_kiejtes('שֻׁם'), 'sum')       # a mássalhangzó-váz azonos, a szó más (H8036)
+        self.assertEqual(KSZ.heber_kiejtes('זָכַר'), 'záchar')
         self.assertIsNone(KSZ.heber_kiejtes('זכר'))                    # pontozatlan, jóváhagyás nélkül: nincs
         self.assertEqual(KSZ.heber_kiejtes('בְּ שֵׁם'), 'besém')
         self.assertEqual(KSZ.heber_kiejtes('קָרָא בְשֵׁם'), 'kárá besém')
@@ -49,7 +49,7 @@ class Potlas(unittest.TestCase):
         self.assertIn('Megint καλέω.', uj)              # a szakaszban nem ismétlendő
         self.assertIn('> idézet: καλέω', uj)             # forrásidézet: nem kell
         self.assertIn('Itt a βοάω kézi.', uj)            # a kézi részt nem írja
-        self.assertIn('a זָכַר (záchar, gépi) ige', uj)  # DT-F131y: a gépi héber kiejtés is pótol, jelölve
+        self.assertIn('a זָכַר (záchar) ige', uj)  # DT-F131y: a gépi héber kiejtés is pótol (DT430: jelölés nélkül)
         self.assertEqual({(h[2], h[3]) for h in hiany}, {('kézi', 'βοάω')})
         self.assertEqual(KSZ.potol(uj)[0], uj)           # idempotens
 

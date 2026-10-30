@@ -1,7 +1,7 @@
 """Gépi magyaros héber kiejtés a pontozott szövegből (DT-F131y, N-F131w; 2026-10-30).
 
 A lexikonlapon a héber szó kiejtése: a jóváhagyott kivétel (`adat/kiejtes_kivetelek.tsv`, SEMA 2.17) mindig
-elsőbbséget élvez; ennek híján ez a modul adja, és a lapon „(…, gépi)” jelölés áll mellette. A szabályok a
+elsőbbséget élvez; ennek híján ez a modul adja, a lapon jelölés nélkül (DT430 kiegészítés). A szabályok a
 felhasználó kalibrációjából (naplok/HEBER_KIEJTES_kalibracio*_ertekeles.md; a kísérleti előd:
 naplok/HEBER_KIEJTES_meres.py `dt_f131y()`):
 

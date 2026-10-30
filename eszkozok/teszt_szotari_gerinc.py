@@ -582,7 +582,7 @@ class RagozottKiejtes(unittest.TestCase):
 
     def test_heber_jelolt(self):
         self.assertEqual(LG.ragozott_kiejtessel('X', 'kárá', 'TAHOT_LEMMA'), 'X (szótári alak: kárá)')
-        self.assertEqual(LG.ragozott_kiejtessel('X', 'likró, gépi', 'TAHOT'), 'X (likró, gépi)')
+        self.assertEqual(LG.ragozott_kiejtessel('X', 'likró', 'TAHOT'), 'X (likró)')
 
     def test_gorog_ragozott(self):
         self.assertEqual(LG.ragozott_kiejtessel('Y', 'epikaleszétai', 'TAGNT'), 'Y (epikaleszétai)')
@@ -594,8 +594,9 @@ class RagozottKiejtes(unittest.TestCase):
         _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
         s = next(r for r in elo_sorok if r['id'] == 'ISTENTISZT-001' and r['igehely'] == '1Móz 4:26')
         cella = LG.kulcsszo_cella(s)
-        self.assertIn('(likró, gépi)', cella)   # a teljes szó: לִ + קְרֹא
-        self.assertIn('(besém, gépi)', cella)   # בְּ + שֵׁם
+        self.assertIn('(likró)', cella)   # a teljes szó: לִ + קְרֹא
+        self.assertNotIn('gépi', cella)   # DT430 kiegészítés: jelölés nélkül
+        self.assertIn('(besém)', cella)   # בְּ + שֵׁם
 
 
 class BdbRovidites(unittest.TestCase):
