@@ -618,7 +618,8 @@ class BdbRovidites(unittest.TestCase):
 
 
 class Olvasoi1314(unittest.TestCase):
-    """A 13. és a 14. szerep olvasói mondata példával (a felhasználó: „ez érthetőbbé kell tenni”; „a gerinc szavai is elvont”)."""
+    """A 13. és a 14. szerep olvasói szövege: lelet számokkal, utána következtetés (a felhasználó: „mindig vanjuk le a
+    következtetést a találtakból . a magyarázó szöveg az adatokból induljon.”)."""
 
     def _sorai(self, mid):
         _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
@@ -626,20 +627,23 @@ class Olvasoi1314(unittest.TestCase):
 
     def test_13(self):
         m = LG.olvasoi_13(self._sorai('ISTENTISZT-001'))
-        self.assertIn('a 33 igehelyén', m)
-        self.assertIn('Például a „hív” 30 igehelyen', m)
+        self.assertTrue(m.startswith('A motívum 33 igehelyén a Károli 17 különböző magyar szót használ.'))
+        self.assertIn('**Következtetés:** a Károli a motívumot szinte mindenütt (a helyek 91%-án)', m)
 
-    def test_14_konkret_szavak(self):
+    def test_13_kuszob(self):
+        self.assertIn('változó szavakkal', LG.olvasoi_13(self._sorai('ALVIL-001')))
+
+    def test_14(self):
         m = LG.olvasoi_14(self._sorai('ISTENTISZT-001'))
-        self.assertIn('a héber szövegben a kárá és a sém, a görögben az epikaleó', m)
+        self.assertIn('33 helye közül 4 helyen', m)
+        self.assertIn('héberül a kárá és a sém, görögül az epikaleó', m)
         self.assertNotIn('gerinc', m)
-        self.assertIn('például a 2Móz 33:19', m)
-        self.assertIn('például az 1Kir 8:52: „mikor téged segítségül hívnak”', m)
+        self.assertIn('1Kir 8:52 — „mikor téged segítségül hívnak”', m)
+        self.assertIn('a 46 találat 37%-a nem a motívumhoz tartozik', m)
 
     def test_ures(self):
         self.assertIsNone(LG.olvasoi_13([]))
         self.assertIsNone(LG.olvasoi_14([]))
-
 
 if __name__ == '__main__':
     unittest.main()

@@ -2266,19 +2266,29 @@ def _idezet(xs):
     return _es_lista(['„%s”' % x for x in xs])
 
 
+# A 13. szerep következtetése a leggyakoribb Károli-szó arányából (a felhasználó, 2026-10-30: „mindig vanjuk le a
+# következtetést a találtakból . a magyarázó szöveg az adatokból induljon.”): (alsó küszöb, következtetés).
+OLVASOI_13_KUSZOB = (
+    (0.90, 'a Károli a motívumot szinte mindenütt (a helyek %d%%-án) ugyanazzal a szóval adja vissza, ezért magyarul '
+           'olvasva is jól követhető'),
+    (0.67, 'a Károli a motívumot a legtöbb helyen (%d%%) ugyanazzal a szóval adja vissza'),
+    (0.50, 'a Károli a motívumot a helyek felén-kétharmadán (%d%%) adja vissza ugyanazzal a szóval'),
+    (0.0, 'a Károli a motívumot változó szavakkal adja vissza (a leggyakoribb szó is csak a helyek %d%%-án áll), ezért '
+          'magyarul olvasva nehezen követhető'),
+)
+
+
 def olvasoi_13(sorai):
-    """A 13. szerep olvasói mondata, vagy None (nincs Károli-szó)."""
+    """A 13. szerep olvasói szövege: a lelet számokkal, utána a szabály szerinti következtetés; None, ha nincs Károli-szó."""
     tetel = SZK.karoli_megfelelok(sorai)
     n = sum(1 for s in sorai if s.get('karoli_szo'))
     if not tetel or not n:
         return None
-    l, alakok, helyek = tetel[0]
-    pelda = '„%s” %d igehelyen áll (%s%s)' % (l, len(helyek), ', '.join(alakok[:3]), '…' if len(alakok) > 3 else '')
-    if len(tetel) > 1:
-        pelda += ', a „%s” %d igehelyen' % (tetel[1][0], len(tetel[1][2]))
-    return ('Milyen magyar szavakkal fordítja a Károli-Biblia a motívumot a %d igehelyén. Minden sor egy magyar szó, és '
-            'a mellette álló szám azt mutatja, hány igehelyen fordul elő a %d közül. Például a %s. A sor végén ott vannak '
-            'az igehelyek is.' % (n, n, pelda))
+    gyak = ', '.join('„%s” %d' % (l, len(h)) for l, _a, h in tetel[:3])
+    arany = len(tetel[0][2]) / n
+    kov = next(t for k, t in OLVASOI_13_KUSZOB if arany >= k) % round(100 * arany)
+    return ('A motívum %d igehelyén a Károli %d különböző magyar szót használ. A leggyakoribbak (igehelyek száma): %s. '
+            '**Következtetés:** %s. A sorokban a ragozott alakok és az igehelyek állnak.' % (n, len(tetel), gyak, kov))
 
 
 def _tagmondat(vers, szavak):
@@ -2288,29 +2298,44 @@ def _tagmondat(vers, szavak):
 
 
 def olvasoi_14(sorai):
-    """A 14. szerep olvasói mondata (két eset, példával), vagy None (nincs kulcsszó)."""
+    """A 14. szerep olvasói szövege: a rejtett és a hamis párhuzam száma példával, utána a következtetés (a magyar
+    szókeresés hiánya és téves aránya: hamis / (a kulcsszavas motívumhelyek + hamis)); None, ha nincs kulcsszó."""
     kulcs = {k: v for k, v in SZK.kulcsszavak(sorai).items() if v}
     if not kulcs:
         return None
-    szavak = motivum_szavai_proza(sorai)
+    n = len(sorai)
     rejt = SZK.rejtett_parhuzamok(sorai, kulcs=kulcs)
     hamis = SZK.hamis_parhuzamok(sorai, kulcs=kulcs)
     minden = []
     for v in kulcs.values():
         minden += [w for w in v if w not in minden]
-    szoveg = 'Két csapda, amelybe a magyar olvasó a fordítás miatt beleeshet. **Rejtett párhuzam:** a motívum egy helye, ' \
-             'ahol %s áll, de a Károli más magyar szóval fordítja, ezért magyarul olvasva nem látszik, hogy ide tartozik. ' \
-             'Itt %d ilyen hely van' % (szavak, len(rejt))
+    szavak = motivum_szavai_proza(sorai).replace('a héber szövegben', 'héberül').replace('a görögben', 'görögül')
     if rejt:
-        h, k, _s, hi = rejt[0]
-        szoveg += ', például %s %s: „%s” (itt nem áll %s)' % (_nevelo(h), h, k, _idezet(hi))
-    szoveg += '. **Hamis párhuzam:** egy vers, amelyben magyarul ugyanazok a szavak állnak (%s), de a héber vagy görög ' \
-              'szövegben nem %s, ezért magyarul olvasva ide tartozónak tűnik, pedig nem. Itt %d ilyen vers ' \
-              'van' % (_idezet(minden), motivum_szavai_proza(sorai, nyelvvel=False), len(hamis))
+        h, k, _s, _hi = rejt[0]
+        szoveg = ('A motívum %d helye közül %d helyen a héber vagy görög szövegben megvan a motívum szava (%s), de a '
+                  'Károli más magyar szóval fordítja, például: %s — „%s”. Ez a **rejtett párhuzam**.'
+                  % (n, len(rejt), szavak, h, k))
+    else:
+        szoveg = ('A motívum mind a %d helyén, ahol a héber vagy görög szövegben a motívum szava áll (%s), a Károli is a '
+                  'szokásos magyar szavakat használja: **rejtett párhuzam** nincs.' % (n, szavak))
     if hamis:
         h, vers, _g = hamis[0]
-        szoveg += ', például %s %s: „%s”' % (_nevelo(h), h, _tagmondat(vers, minden))
-    return szoveg + '.'
+        szoveg += (' Ugyanakkor %d olyan vers van, amelyben magyarul ugyanazok a szavak állnak (%s), de az eredetiben nem '
+                   'a motívum szavai, például: %s — „%s”. Ez a **hamis párhuzam**.'
+                   % (len(hamis), _idezet(minden), h, _tagmondat(vers, minden)))
+    else:
+        szoveg += ' Olyan vers, amelyben magyarul ugyanezek a szavak állnak, de az eredetiben nem, nincs: **hamis párhuzam** nincs.'
+    if not rejt and not hamis:
+        return szoveg + ' **Következtetés:** a magyar szavak megbízhatóan jelzik a motívumot.'
+    reszek = []
+    if rejt:
+        reszek.append('a motívum %d helyét nem találja meg' % len(rejt))
+    if hamis:
+        # a magyar szókeresés találatai: a kulcsszavas kombinációjú motívumhelyek, ahol a kulcsszó áll, és a hamis versek
+        talalat = sum(1 for s in sorai if SZK._komb(s) in kulcs) - len(rejt) + len(hamis)
+        reszek.append('a %d találat %d%%-a nem a motívumhoz tartozik' % (talalat, round(100 * len(hamis) / talalat)))
+    return szoveg + (' **Következtetés:** aki a Károliban ezekre a magyar szavakra keres, %s. A motívumot ezért az '
+                     'eredeti szavak alapján kell keresni, nem a magyar fordítás alapján.' % ', és '.join(reszek))
 
 
 def szo_felsorolas(tokenek):

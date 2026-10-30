@@ -35,7 +35,7 @@ A motívum az ószövetségi קָרָא בְּשֵׁם יְהוָה (kárá bes�
 
 ## Jelmagyarázat és rövidítések
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#jelmagyarazat | forrás:  | licenc: minden jog fenntartva | ts=2026-10-29 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#jelmagyarazat | forrás:  | licenc: minden jog fenntartva | ts=2026-10-30 -->
 
 **Mit mutat ez a rész?** A lapon használt rövidítések, jelek és forrásnevek feloldása. Ha a lap egy jelét nem érted, itt keresd.
 
@@ -360,7 +360,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 ## 1/b. Kizárt és vizsgált helyek
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-10-29 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-10-30 -->
 
 **Mit mutat ez a rész?** Ezeket a helyeket megvizsgáltuk, de nem tartoznak a motívumhoz, vagy a döntés még nyitott (92 elutasítva, 1 nyitott). Mindegyiknél látszik, miért került a vizsgálatba, és miért maradt ki.
 
@@ -585,7 +585,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 ## 2. Szótári háttér
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#szocikkek | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/karoli_strong, adat/lexikon_hivatkozasok.tsv, adat/nave_tema_hu.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/tematikus_temak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/LSJ_teljes.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/Nave_basokant.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-10-29 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#szocikkek | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/karoli_strong, adat/lexikon_hivatkozasok.tsv, adat/nave_tema_hu.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/tematikus_temak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/LSJ_teljes.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/Nave_basokant.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-10-30 -->
 
 **Mit mutat ez a rész?** A motívumot hordozó szavak szótári háttere: héberül a kárá (H7121) és a sém (H8034), görögül az epikaleó (G1941). Minden szónál számozott pontok követik egymást; a 2. pont a fő szótár (héberül a BDB, görögül a Thayer) szócikke. Ott elöl, kibontva állnak azok a jelentések, amelyek a motívumot hordozzák; a többi szótár utána következik.
 
@@ -1026,11 +1026,11 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 - **keresők (*SEEKERS*)** — 2 motívumvers / 173 témavers (1,2%): ApCsel 2:21, Róm 10:13
   - általános igehelyek (*General scriptures concerning*): ApCsel 2:21, Róm 10:13
 
-*(proveniencia: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001) | forras=Nave_basokant.tsv+adat/tematikus_temak.tsv+adat/nave_tema_hu.tsv (eszkozok/szerep_nave.py) | n=8 | ts=2026-10-29)*
+*(proveniencia: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001) | forras=Nave_basokant.tsv+adat/tematikus_temak.tsv+adat/nave_tema_hu.tsv (eszkozok/szerep_nave.py) | n=8 | ts=2026-10-30)*
 
 #### 13. Károli-megfelelők
 
-**Mit mutat ez a rész?** Milyen magyar szavakkal fordítja a Károli-Biblia a motívumot a 33 igehelyén. Minden sor egy magyar szó, és a mellette álló szám azt mutatja, hány igehelyen fordul elő a 33 közül. Például a „hív” 30 igehelyen áll (hívá, hívom, hívjátok…), a „segítségül” 29 igehelyen. A sor végén ott vannak az igehelyek is.
+**Mit mutat ez a rész?** A motívum 33 igehelyén a Károli 17 különböző magyar szót használ. A leggyakoribbak (igehelyek száma): „hív” 30, „segítségül” 29, „név” 25. **Következtetés:** a Károli a motívumot szinte mindenütt (a helyek 91%-án) ugyanazzal a szóval adja vissza, ezért magyarul olvasva is jól követhető. A sorokban a ragozott alakok és az igehelyek állnak.
 
 *A motívum igehelyeinek Károli-szóalakjai (`adat/elofordulasok.tsv`, `karoli_szo`), szótári alakonként (`adat/szoto/karoli_szotari_alak.tsv`, mai helyesírás), névelő nélkül: a szóalakok, és hány igehelyen, melyiken.*
 
@@ -1052,11 +1052,11 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 - **ábrám** (1) — Ábrám: 1Móz 13:4
 - **örökkévaló** (1) — örökkévaló: 1Móz 21:33
 
-*(proveniencia: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, karoli_szo) | forras=adat/elofordulasok.tsv+adat/szoto/karoli_szotari_alak.tsv (eszkozok/szerep_karoli.py) | n=33 | ts=2026-10-29)*
+*(proveniencia: scope=adat/elofordulasok.tsv (id=ISTENTISZT-001, karoli_szo) | forras=adat/elofordulasok.tsv+adat/szoto/karoli_szotari_alak.tsv (eszkozok/szerep_karoli.py) | n=33 | ts=2026-10-30)*
 
 #### 14. Rejtett / hamis párhuzam
 
-**Mit mutat ez a rész?** Két csapda, amelybe a magyar olvasó a fordítás miatt beleeshet. **Rejtett párhuzam:** a motívum egy helye, ahol a héber szövegben a kárá és a sém, a görögben az epikaleó áll, de a Károli más magyar szóval fordítja, ezért magyarul olvasva nem látszik, hogy ide tartozik. Itt 4 ilyen hely van, például a 2Móz 33:19: „kiáltom előtted az Úr nevét” (itt nem áll „hív” és „segítségül”). **Hamis párhuzam:** egy vers, amelyben magyarul ugyanazok a szavak állnak („hív”, „segítségül” és „név”), de a héber vagy görög szövegben nem a kárá és a sém, illetve az epikaleó, ezért magyarul olvasva ide tartozónak tűnik, pedig nem. Itt 17 ilyen vers van, például az 1Kir 8:52: „mikor téged segítségül hívnak”.
+**Mit mutat ez a rész?** A motívum 33 helye közül 4 helyen a héber vagy görög szövegben megvan a motívum szava (héberül a kárá és a sém, görögül az epikaleó), de a Károli más magyar szóval fordítja, például: 2Móz 33:19 — „kiáltom előtted az Úr nevét”. Ez a **rejtett párhuzam**. Ugyanakkor 17 olyan vers van, amelyben magyarul ugyanazok a szavak állnak („hív”, „segítségül” és „név”), de az eredetiben nem a motívum szavai, például: 1Kir 8:52 — „mikor téged segítségül hívnak”. Ez a **hamis párhuzam**. **Következtetés:** aki a Károliban ezekre a magyar szavakra keres, a motívum 4 helyét nem találja meg, és a 46 találat 37%-a nem a motívumhoz tartozik. A motívumot ezért az eredeti szavak alapján kell keresni, nem a magyar fordítás alapján.
 
 *Kulcsszavak gerinc-kombinációnként: G1941: „hív”, „segítségül”; H7121+H8034: „név”, „hív”, „segítségül” — az e kombinációjú motívumsorok Károli-szóalakjainak legalább felében álló szótári alak, a Károli–Strong párosításban csak idegen Strongra párosuló szavak nélkül. Csak megjelenítés: jelölt ezekből csak az `adat/jeloltek.tsv`-n át lesz.*
 
@@ -1092,7 +1092,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 </details>
 
-*(proveniencia: scope=Károli teljes (G1941: „hív”, „segítségül”; H7121+H8034: „név”, „hív”, „segítségül”) | forras=Karoli_1908.tsv+TAHOT_kivonat.tsv+TAGNT_kivonat.tsv+adat/elofordulasok.tsv+adat/szoto/karoli_szotari_alak.tsv+adat/karoli_strong (eszkozok/szerep_karoli.py) | n=21 | ts=2026-10-29)*
+*(proveniencia: scope=Károli teljes (G1941: „hív”, „segítségül”; H7121+H8034: „név”, „hív”, „segítségül”) | forras=Karoli_1908.tsv+TAHOT_kivonat.tsv+TAGNT_kivonat.tsv+adat/elofordulasok.tsv+adat/szoto/karoli_szotari_alak.tsv+adat/karoli_strong (eszkozok/szerep_karoli.py) | n=21 | ts=2026-10-30)*
 
 ### Rokon szavak
 
@@ -1201,7 +1201,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 *Nincs a szerepmátrixon (2. szakasz) túli kiegészítő szótári sor a `lexikon_hivatkozasok.tsv`-ben ehhez a motívumhoz.*
 
-*Proveniencia: `scope=id:ISTENTISZT-001 | forras=adat/lexikon_hivatkozasok.tsv | ts=2026-10-29`*
+*Proveniencia: `scope=id:ISTENTISZT-001 | forras=adat/lexikon_hivatkozasok.tsv | ts=2026-10-30`*
 
 ### Miért fontos ez a lelet *(kézi)*
 
@@ -1244,7 +1244,7 @@ választott, nem véletlenül tért el a "szabvány" ἐπικαλέομαι-tó
 
 ## 3. LXX-fordítói döntések
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#lxx | forrás: adat/lxx_dontesek.tsv, konkordancia/LXX_OS/1-chronicles.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/2-kings.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv, konkordancia/LXX_OS/joel.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zechariah.tsv, konkordancia/LXX_OS/zephaniah.tsv | licenc: CC BY 4.0, minden jog fenntartva | ts=2026-10-29 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#lxx | forrás: adat/lxx_dontesek.tsv, konkordancia/LXX_OS/1-chronicles.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/2-kings.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv, konkordancia/LXX_OS/joel.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zechariah.tsv, konkordancia/LXX_OS/zephaniah.tsv | licenc: CC BY 4.0, minden jog fenntartva | ts=2026-10-30 -->
 
 **Mit mutat ez a rész?** Ez a táblázat azt mutatja meg, hogyan fordította a Septuaginta (LXX) a motívum 23 ószövetségi helyét: ugyanazzal a görög szóval, amelyet az Újszövetség is használ, vagy mással. Összesítve: egyező 19 · eltérő 3 · görögből hiányzik 1.
 
@@ -1542,7 +1542,7 @@ választott, nem véletlenül tért el a "szabvány" ἐπικαλέομαι-tó
 | Fil 4:19 | elutasítva | TSK Róm 10:12 (15, 18, 15); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés \| scope=manual \| forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md \| ts=2026-10-11 | ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
 | Róm 3:22 | elutasítva | TSK Róm 10:12 (15, 18, 15); napló: Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md §Tartalmi minősítés \| scope=manual \| forras=Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md \| ts=2026-10-11 | ellenőrizve, nem tartalmazza a H7121+H8034 / ἐπικαλέομαι formulát, NEM releváns |
 
-*Proveniencia: `scope=id:ISTENTISZT-001 | forras=adat/jeloltek.tsv+adat/elofordulasok.tsv+konkordancia/TSK_kereszthivatkozasok.tsv+konkordancia/Karoli_kereszthivatkozasok.tsv | ts=2026-10-29`*
+*Proveniencia: `scope=id:ISTENTISZT-001 | forras=adat/jeloltek.tsv+adat/elofordulasok.tsv+konkordancia/TSK_kereszthivatkozasok.tsv+konkordancia/Karoli_kereszthivatkozasok.tsv | ts=2026-10-30`*
 
 ## 5. Kapcsolatok
 
@@ -1676,11 +1676,11 @@ graph LR
 
 *Rögzített indoklás nélküli kapcsolat-sor (1): 2Móz 33:19 → 2Móz 34:5.*
 
-*Proveniencia: `scope=id:ISTENTISZT-001 | forras=adat/kapcsolatok.tsv | ts=2026-10-29`*
+*Proveniencia: `scope=id:ISTENTISZT-001 | forras=adat/kapcsolatok.tsv | ts=2026-10-30`*
 
 ## 5/b. Kapcsolódó motívumok
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-10-29 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-10-30 -->
 
 **Mit mutat ez a rész?** Azok a más motívumok, amelyekkel ez a motívum kapcsolatban áll. Ugyanez a sor a másik motívum lapján is megjelenik.
 
@@ -1694,7 +1694,7 @@ graph LR
 
 *Döntésre váró motívumközi jelölt (`jeloltek.tsv`, `nyitva`): 5 — ALVIL-001: 1, HAMART-001: 1, TEREMT-001: 3.*
 
-*Proveniencia: `scope=id:ISTENTISZT-001 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-10-29`*
+*Proveniencia: `scope=id:ISTENTISZT-001 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-10-30`*
 
 <!-- GENERÁLT-VÉGE: lexikon#ISTENTISZT-001#kapcsolodo -->
 
@@ -2061,7 +2061,7 @@ megnevezett/invokált fél áll szemben); a D inkább egy ötödik dimenzió
 
 ## 8. Irodalom és idézés
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#idezes | forrás:  | licenc: minden jog fenntartva | ts=2026-10-29 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#idezes | forrás:  | licenc: minden jog fenntartva | ts=2026-10-30 -->
 
 **Mit mutat ez a rész?** Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból készült.
 
@@ -2071,7 +2071,7 @@ megnevezett/invokált fél áll szemben); a D inkább egy ötödik dimenzió
 - ID: `ISTENTISZT-001`
 - Cím: Segítségül hívni az Úr nevét
 - Státusz: publikálható (`v3`, 2026.09.22)
-- Generálva: 2026-10-29
+- Generálva: 2026-10-30
 - Fájl: `https://github.com/Basesoft777/Bible-Study/blob/main/lexikon/ISTENTISZT-001_TUDOMANYOS.md`
 
 **Felhasznált szótárak:**
