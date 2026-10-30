@@ -75,14 +75,20 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--chat')
     ap.add_argument('--fajl')
-    ap.add_argument('--kimenet', default=KIMENET)
+    ap.add_argument('--kimenet')
+    ap.add_argument('--menet', type=int, default=1, help='1: kalibracio.json; 2: kalibracio2.json')
     a = ap.parse_args()
+    sfx = '' if a.menet == 1 else str(a.menet)
+    minta_ut = os.path.join(ROOT, 'naplok', f'HEBER_KIEJTES_kalibracio{sfx}.json')
+    kulcs_ut = os.path.join(ROOT, 'naplok', f'HEBER_KIEJTES_kalibracio{sfx}_kulcs.json')
+    a.kimenet = a.kimenet or (KIMENET if a.menet == 1 else
+                              os.path.join(ROOT, 'naplok', f'HEBER_KIEJTES_kalibracio{sfx}_eredmeny.md'))
     if bool(a.chat) == bool(a.fajl):
         raise SystemExit('pontosan egy bemenet kell: --chat vagy --fajl')
     valasztas = chat_beolvas(a.chat) if a.chat else fajl_beolvas(a.fajl)
-    with open(MINTA, encoding='utf-8') as f:
+    with open(minta_ut, encoding='utf-8') as f:
         minta = {t['sorszam']: t for t in json.load(f)['tetelek']}
-    with open(KULCS, encoding='utf-8') as f:
+    with open(kulcs_ut, encoding='utf-8') as f:
         kulcs = {k['sorszam']: k['forras'] for k in json.load(f)['kulcs']}
     hianyzik = sorted(set(minta) - set(valasztas))
     ismeretlen = sorted(set(valasztas) - set(minta))

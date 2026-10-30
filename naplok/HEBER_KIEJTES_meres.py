@@ -118,6 +118,20 @@ def a_priori(ter):
     return {k: v[0] for k, v in ter.items()}
 
 
+def dt_f131y():
+    """A DT-F131y szabálykészlete (2026-10-30): R1 ס és שׂ = sz; R2 a kámec á, o csak
+    U+05C7-re, hátef-kámecre és a kivétellistára (כָּל, חָכְמ-); R3 sevá torokhang előtt
+    kiejtett; R4 elutasítva (a hosszú magánhangzó utáni sevá a meteg szerint); R5 szókezdő
+    begadkefat: a tő és a כ-előtag kemény, a ב-előtag lágy; R6 tetragramma = Jahve;
+    R7 Jeruzsálem = jerúsálajim; R8 ח = ch. Plusz a teljes szóhoz: kötőszói וּ = ú."""
+    p = a_priori(PARAM_TER_NIQQUD)
+    p.update({'szamech': 'sz', 'sin': 'sz', 'chet': 'ch', 'kamec_katan': False,
+              'makkef_katan': False, 'kamec_kivetel': True, 'seva_hosszu_utan': 'meteg',
+              'seva_torokhang': True, 'szokezdo_begadkefat': 'R5', 'tetragramma': 'Jahve',
+              'jeruzsalem': True, 'kotoszo_u': True})
+    return p
+
+
 # --- NIQQUD-átíró ----------------------------------------------------------
 def tisztit(szo):
     """NFD, kantilláció (U+0591-U+05AF) és egyéb írásjel törlése; a meteg
@@ -149,8 +163,9 @@ def mgh(bet):
     return next((c for c in bet['jl'] if c in MAGANHANGZO), None)
 
 
-def niqqud_szo(szo, p, nyom, makkef_utan=False):
-    """Egy szó átírása. `nyom`: a meghozott döntések kategóriái (lista)."""
+def niqqud_szo(szo, p, nyom, makkef_utan=False, elso_elotag=False):
+    """Egy szó átírása. `nyom`: a meghozott döntések kategóriái (lista).
+    `elso_elotag`: a szó első betűje előtag (TAHOT H9001-H9009) -- az R5-höz kell."""
     ls = betuk(szo)
     if not ls:
         return ''
@@ -158,12 +173,26 @@ def niqqud_szo(szo, p, nyom, makkef_utan=False):
     if massal == JOD + HE + VAV + HE and p['tetragramma'] == 'JHVH':
         nyom.append('tetragramma')
         return 'JHVH'
+    if massal.endswith(JOD + HE + VAV + HE) and p['tetragramma'] == 'Jahve':
+        nyom.append('tetragramma')            # DT-F131y R6
+        if len(massal) == 4:
+            return 'Jahve'
+        elotag = szo[:[i for i, c in enumerate(szo) if ALEF <= c <= TAV][-4]]
+        return niqqud_szo(elotag, p, nyom, elso_elotag=elso_elotag) + '-Jahve'
     n = len(ls)
     # 1. matres lectionis és vav-magánhangzók előfeldolgozása
     for i, b in enumerate(ls):
         b['mater'] = False
         b['vok'] = mgh(b)          # a betű után ejtett magánhangzó
         b['seva'] = SEVA in b['j']
+        if p.get('jeruzsalem') and HIREK in b['j'] and (PATAH in b['j'] or KAMEC in b['j']):
+            b['vok'] = 'AJI'                  # DT-F131y R7: qere perpetuum (Jerúsálajim)
+            nyom.append('ketiv_qere')
+        if p.get('kamec_kivetel') and KAMEC in b['j']:
+            # DT-F131y R2 kivétellista: כָּל (szóvégi ל) és חָכְמ- -> kámec kátán
+            if (b['b'] == KAF and i + 1 == n - 1 and ls[i + 1]['b'] == LAMED) or \
+                    (b['b'] == CHET and i + 2 < n and ls[i + 1]['b'] in (KAF, KAF_V) and ls[i + 2]['b'] in (MEM, MEM_V)):
+                b['kivetel_katan'] = True
     for i, b in enumerate(ls):
         elo = ls[i - 1] if i else None
         if b['b'] == VAV and i > 0:
@@ -249,7 +278,9 @@ def niqqud_szo(szo, p, nyom, makkef_utan=False):
             msh = p['chet']
             nyom.append('chet')
         if b['b'] in LAGY:
-            if dages or (i == 0 and p['szokezdo_begadkefat'] == 'kemeny'):
+            if dages or (i == 0 and p['szokezdo_begadkefat'] == 'kemeny') or \
+                    (i == 0 and p['szokezdo_begadkefat'] == 'R5' and not (elso_elotag and b['b'] == BET)):
+                # DT-F131y R5: a tő kezdőbetűje és a כ-előtag kemény, a ב-előtag lágy
                 msh = ALAP_MSH[b['b']]
             else:
                 msh = LAGY[b['b']]
@@ -271,6 +302,9 @@ def niqqud_szo(szo, p, nyom, makkef_utan=False):
                 hangzo_seva = True           # szókezdő (egybetűs előtag is: בְּ)
             elif i == n - 1:
                 hangzo_seva = False
+            elif p.get('seva_torokhang') and ls[i + 1]['b'] in (ALEF, HE, AJIN) and not ls[i + 1]['mater']:
+                hangzo_seva = True           # DT-F131y R3: torokhang előtt kiejtett
+                nyom.append('seva_torokhang')
             elif forte:
                 hangzo_seva = True
             elif elozo_obj is not None and elozo_obj.get('kotoszo'):
@@ -306,12 +340,12 @@ def niqqud_szo(szo, p, nyom, makkef_utan=False):
     # 3. magánhangzók kiírása (kámec kátán: a következő mássalhangzó néma sevás)
     szoveg = []
     for idx, (t, b) in enumerate(ki):
-        if b is None or t not in MAGANHANGZO | {'I', 'U', 'SZJ'}:
+        if b is None or t not in MAGANHANGZO | {'I', 'U', 'SZJ', 'AJI'}:
             szoveg.append(t)
             continue
         if t == KAMEC:
             katan = False
-            if KAMEC_KATAN in b['j']:
+            if KAMEC_KATAN in b['j'] or b.get('kivetel_katan'):
                 katan = True
             elif makkef_utan and p.get('makkef_katan') and METEG not in b['j']:
                 # makkef előtt a szó hangsúlytalan: az utolsó, zárt szótagbeli kámec kátán
@@ -338,18 +372,19 @@ def niqqud_szo(szo, p, nyom, makkef_utan=False):
             HATAF_SZEGOL: 'e', HATAF_PATAH: 'a', HATAF_KAMEC: 'o', HIREK: 'i',
             CERE: 'é', SZEGOL: 'e', PATAH: 'a', HOLAM: 'ó', HOLAM_VAV: 'ó',
             KUBBUC: 'u', KAMEC_KATAN: 'o', 'I': p['hirek_jod'], 'U': 'ú',
-            'SZJ': p['szegol_jod'],
+            'SZJ': p['szegol_jod'], 'AJI': 'aji',
         }[t])
     return ''.join(szoveg)
 
 
-def niqqud(alak, p):
+def niqqud(alak, p, elso_elotag=False):
     nyom = []
     alak = tisztit(alak)
     szavak = []
-    for szo in alak.split():
+    for si, szo in enumerate(alak.split()):
         reszek = szo.split(MAKKEF)
-        szavak.append('-'.join(niqqud_szo(r, p, nyom, makkef_utan=(k < len(reszek) - 1))
+        szavak.append('-'.join(niqqud_szo(r, p, nyom, makkef_utan=(k < len(reszek) - 1),
+                                          elso_elotag=(elso_elotag and si == 0 and k == 0))
                                for k, r in enumerate(reszek)))
     return ' '.join(szavak), nyom
 

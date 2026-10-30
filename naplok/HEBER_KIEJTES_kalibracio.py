@@ -55,7 +55,10 @@ KVOTA = [('kamec_katan', 7), ('nem_szokezdo_seva', 6), ('furtiv_patah', 6), ('da
 KAT_NEV = {'kamec_katan': 'kámec kátán (gyanú)', 'nem_szokezdo_seva': 'nem szókezdő sevá',
            'furtiv_patah': 'furtív patah', 'dages_forte': 'dáges forte', 'ketiv_qere': 'ketiv/qere',
            'makkef': 'makkef', 'szokezdo_begadkefat': 'szókezdő begadkefat dáges nélkül',
-           'szamech_sin': 'ס és שׂ (sz vagy s)'}
+           'szamech_sin': 'ס és שׂ (sz vagy s)', 'vegyes': 'vegyes (nem nehéz)'}
+MENET = 1
+CEL = 50
+KIZART = set()  # a 2. menetben: az 1. minta alakjai
 
 # a mai szabályok: a 26-on kalibrált paraméterek (naplok/HEBER_KIEJTES_meres.md 4.1)
 P_MAI = m.a_priori(m.PARAM_TER_NIQQUD)
@@ -68,6 +71,30 @@ VALTOZAT = {
     'kamec_alt': dict(P_MAI, kamec_katan=False, seva_hosszu_utan='hangzo'),
     'sz_pont': dict(P_MAI, szamech='sz', sin='sz', szokezdo_begadkefat='pont_szerint'),
 }
+P_GEPI = P_MAI  # a gépi változat szabályai (1. menet: a mai; 2. menet: DT-F131y)
+GEPI_NEV = 'mai szabály (ס = s, שׂ = sz; szókezdő begadkefat kemény)'
+
+
+def beallit(menet):
+    """A 2. menet (DT-F131y után, 2026-10-30): más seed, az 1. minta alakjai kizárva,
+    a gépi változat a DT-F131y szabályaival, plusz egy „vegyes” (nem nehéz) kategória."""
+    global MENET, KI_MINTA, JAVASLAT, KI_JSON, KI_KULCS, KI_MD, SEED, KVOTA, KIZART, P_GEPI, GEPI_NEV
+    if menet == 1:
+        return
+    MENET = 2
+    regi = KI_MINTA
+    KI_MINTA = os.path.join(N, 'HEBER_KIEJTES_kalibracio2_minta.tsv')
+    JAVASLAT = os.path.join(N, 'HEBER_KIEJTES_kalibracio2_javaslat.tsv')
+    KI_JSON = os.path.join(N, 'HEBER_KIEJTES_kalibracio2.json')
+    KI_KULCS = os.path.join(N, 'HEBER_KIEJTES_kalibracio2_kulcs.json')
+    KI_MD = os.path.join(N, 'HEBER_KIEJTES_kalibracio2.md')
+    SEED = 20261107
+    KVOTA = [('kamec_katan', 6), ('nem_szokezdo_seva', 6), ('furtiv_patah', 5), ('dages_forte', 5),
+             ('ketiv_qere', 5), ('makkef', 5), ('szokezdo_begadkefat', 5), ('szamech_sin', 5), ('vegyes', 0)]
+    for r in m.tsv_sorok(regi, 'sorszam'):
+        KIZART.add(unicodedata.normalize('NFC', r['heber']))
+    P_GEPI = m.dt_f131y()
+    GEPI_NEV = 'DT-F131y'
 ELOTAGOK = {'H900%d' % i for i in range(1, 10)}
 
 
@@ -133,13 +160,14 @@ def szavak(helyek):
 
 def kiejt(w, p):
     alak = m.tisztit(w['alak']) + (m.MAKKEF if w['makkef'] else '')
-    g, nyom = m.niqqud(alak, p)
+    g, nyom = m.niqqud(alak, p, elso_elotag=w['elotag_db'] > 0)
     return g.rstrip('-'), nyom
 
 
 def jegyek(w):
     """Szerkezeti jegyek a pontozott alakból + az átíró döntésnyomai."""
-    gepi, nyom = kiejt(w, P_MAI)
+    _, nyom = kiejt(w, P_MAI)
+    gepi = kiejt(w, P_GEPI)[0]
     ls = m.betuk(m.tisztit(w['alak']))
     j = set()
     for i, b in enumerate(ls):
@@ -188,22 +216,26 @@ def minta():
         jeloltek.append(w)
     latott, egyedi = set(), []
     for w in sorted(jeloltek, key=lambda x: (x['motivum_szo'] != 'igen', x['igehely'], x['tiszta'])):
-        if w['tiszta'] in latott:
+        if w['tiszta'] in latott or w['tiszta'] in KIZART:
             continue
         latott.add(w['tiszta'])
         egyedi.append(w)
     rnd = random.Random(SEED)
     valasztott, vett = [], set()
     for kat, db in KVOTA:
-        jel = [w for w in egyedi if kat in w['jegyek'] and w['tiszta'] not in vett]
+        if kat == 'vegyes':
+            db = CEL - len(valasztott)  # a maradék a vegyes (nehéz jegy nélküli) szavakból
+        jel = [w for w in egyedi if (not w['jegyek'] if kat == 'vegyes' else kat in w['jegyek'])
+               and w['tiszta'] not in vett]
         rnd.shuffle(jel)
         jel.sort(key=lambda w: w['motivum_szo'] != 'igen')  # stabil: a motívumszavak előre
         for w in jel[:db]:
             w['kategoria'] = kat
             valasztott.append(w)
             vett.add(w['tiszta'])
-    stat = {kat: (sum(kat in w['jegyek'] and w['motivum_szo'] == 'igen' for w in egyedi),
-                  sum(kat in w['jegyek'] for w in egyedi)) for kat, _ in KVOTA}
+    van = lambda w, kat: (not w['jegyek']) if kat == 'vegyes' else kat in w['jegyek']
+    stat = {kat: (sum(van(w, kat) and w['motivum_szo'] == 'igen' for w in egyedi),
+                  sum(van(w, kat) for w in egyedi)) for kat, _ in KVOTA}
     for i, w in enumerate(valasztott, 1):
         w['sorszam'] = i
     return motivumok, jeloltek, egyedi, stat, valasztott
@@ -286,9 +318,10 @@ def main():
     # összesítés a session javaslatához mérve, a négy konvenció-kombinációval
     # (a felhasználói kalibrálás előtt; a kiértékelés a választás után:
     # naplok/HEBER_KIEJTES_kalibracio_kiertekel.py)
-    oszlopok = [('gepi', 'mai szabály (ס = s, שׂ = sz; szókezdő begadkefat kemény)'),
-                ('sz_sz', 'ס és שׂ = sz'), ('pont', 'begadkefat a pontozás szerint'),
-                ('sz_pont', 'mindkettő')]
+    oszlopok = [('gepi', GEPI_NEV)]
+    if MENET == 1:
+        oszlopok += [('sz_sz', 'ס és שׂ = sz'), ('pont', 'begadkefat a pontozás szerint'),
+                     ('sz_pont', 'mindkettő')]
     ossz = {}
     for w in valasztott:
         javaslat, _, _, megj = jav[w['tiszta']]
@@ -297,19 +330,22 @@ def main():
         o['biz'] += bool(megj)
         for k, _ in oszlopok:
             o[k] = o.get(k, 0) + (w[k] == javaslat)
-    md.append('# Gépi héber kiejtés — kalibráló minta (N-F131w)')
+    md.append('# Gépi héber kiejtés — kalibráló minta (N-F131w)' if MENET == 1 else
+              '# Gépi héber kiejtés — 2. kalibráló minta, független (N-F131w, DT-F131y után)')
     md.append('')
     md.append('*Kalibrálás, nem döntés: adat (`adat/`) nem változott, szabály nem módosult, lap nem generálódott. '
               'A felhasználó alakonként kiválasztja az elfogadható változato(ka)t és a preferáltat (⛔).*')
     md.append('')
     md.append(f'- **Proveniencia:** `{prov}`; a javasolt és az alternatív változatok: `manual` (a session nyelvtani ítélete, '
-              '`naplok/HEBER_KIEJTES_kalibracio_javaslat.tsv`).')
+              f'`{os.path.relpath(JAVASLAT, ROOT).replace(os.sep, "/")}`).')
     md.append(f'- **Minta:** {len(valasztott)} alak; a 8 lexikonlap motívumainak héber verseiből; {len(jeloltek)} szó, '
               f'{len(egyedi)} egyedi pontozott alak; a TAHOT-sorokból teljes szóvá összerakva (előtag + tő + toldalék); '
-              'a motívum Strongján álló szavak előre, a többi a versek többi szavából. Kategóriánként kvóta, seed 20261030.')
-    md.append('- **Változatok:** alakonként három különböző kiejtés, kevert sorrendben (A/B/C, seed 20261031). '
-              'A forrásuk (gépi / javaslat / alternatíva) a `naplok/HEBER_KIEJTES_kalibracio_kulcs.json`-ban áll; '
-              'az az oldalra nem kerül. Géppel olvasható változat: `naplok/HEBER_KIEJTES_kalibracio.json`.')
+              f'a motívum Strongján álló szavak előre, a többi a versek többi szavából. Kategóriánként kvóta, seed {SEED}.'
+              + ('' if MENET == 1 else f' Az 1. minta {len(KIZART)} alakja kizárva (nincs átfedés); a gépi változat a '
+                 'DT-F131y szabályaival készült; a „vegyes” kategória nehéz jegy nélküli szavakból az átlagos pontossághoz.'))
+    md.append(f'- **Változatok:** alakonként három különböző kiejtés, kevert sorrendben (A/B/C, seed {SEED + 1}). '
+              f'A forrásuk (gépi / javaslat / alternatíva) a `{os.path.relpath(KI_KULCS, ROOT).replace(os.sep, "/")}`-ban áll; '
+              f'az az oldalra nem kerül. Géppel olvasható változat: `{os.path.relpath(KI_JSON, ROOT).replace(os.sep, "/")}`.')
     md.append('- **Válasz a chatben:** sorszám + betű, pl. „1A 2C 3B …”; több elfogadható változat is megadható '
               '(pl. „3BA”: az első betű, B a preferált, A is elfogadható). A kiértékelés két mértéke: '
               '(a) hibás, ha a gépi változat nem elfogadható; (b) konvenció-eltérés, ha elfogadható, de nem a preferált '
@@ -319,7 +355,9 @@ def main():
     md.append('')
     md.append('A „helyes” itt azt jelenti: a gépi alak megegyezik a javasolt alakkal. A javaslat konvenciója: '
               'ס és שׂ = sz, a szókezdő begadkefatról a pontozás dönt. Az sz/s és a kemény/lágy kérdés miatt '
-              'a gépi alakot négy konvenció-kombinációval is összevetettem.')
+              'a gépi alakot négy konvenció-kombinációval is összevetettem.' if MENET == 1 else
+              'A „helyes” itt azt jelenti: a gépi alak (DT-F131y) megegyezik a javasolt alakkal. A javaslat a '
+              'DT-F131y konvencióit követi (ס/שׂ = sz, ח = ch, kámec á a kivételekkel, R3, R5, Jahve, jerúsálajim).')
     md.append('')
     md.append('| kategória | n | ' + ' | '.join(f'helyes: {nev}' for _, nev in oszlopok) + ' | bizonytalan |')
     md.append('|---|---|' + '---|' * len(oszlopok) + '---|')
@@ -349,4 +387,5 @@ def main():
 
 
 if __name__ == '__main__':
+    beallit(int(sys.argv[sys.argv.index('--menet') + 1]) if '--menet' in sys.argv else 1)
     main()
