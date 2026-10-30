@@ -645,5 +645,30 @@ class Olvasoi1314(unittest.TestCase):
         self.assertIsNone(LG.olvasoi_13([]))
         self.assertIsNone(LG.olvasoi_14([]))
 
+class KaroliHelyette(unittest.TestCase):
+    """A 13. és a 14. szerep: mit ír a Károli a kulcsszó helyett (a felhasználó: „irjuk le azt is károli a motivom
+    kulcsszavai helyet jellemzően mit forditott”)."""
+
+    def _sorai(self, mid):
+        _, elo_sorok = G.tsv_beolvas(G.ELOFORDULASOK_TSV)
+        return [r for r in elo_sorok if r['id'] == mid]
+
+    def test_rejtett_helyettesitok(self):
+        sorai = self._sorai('ISTENTISZT-001')
+        kulcs = {k: v for k, v in LG.SZK.kulcsszavak(sorai).items() if v}
+        rejt = LG.SZK.rejtett_parhuzamok(sorai, kulcs=kulcs)
+        hely = dict(LG.SZK.helyettesitok(sorai, [r[0] for r in rejt], [], kulcs))
+        self.assertEqual(sorted(hely['kiált']), ['2Móz 33:19', '2Móz 34:5'])
+        self.assertNotIn('név', hely)
+
+    def test_13_es_14_mondat(self):
+        sorai = self._sorai('ISTENTISZT-001')
+        self.assertIn('Ahol nem a „hív” áll (3 helyen), ott a Károli jellemzően ezt írja helyette: „kiált” 2',
+                      LG.olvasoi_13(sorai))
+        m = LG.olvasoi_14(sorai)
+        self.assertIn('helyett jellemzően ezt írja: „kiált” (2 hely)', m)
+        self.assertIn('hacsak nem keres ezekre is: „kiált”', m)
+
+
 if __name__ == '__main__':
     unittest.main()
