@@ -563,6 +563,30 @@ def main():
           'sor, amelyben a hibás alak szó szerint áll: %d; szó szerinti előfordulás: %d'
           % (len(ford), len(ford_strong), len(erintett_ford_strong), f_sor, f_szo_ben))
 
+    # 3/b. határ: a héber futam és az utána álló szám (igehely). Bidi-megjelenítésben a futam utáni gyenge szám
+    # (EN) és a köztük álló semleges jel (szóköz, írásjel) a jobbról balra futamhoz tapad, ha nincs elválasztó (LRM,
+    # izoláló jel vagy elem). A JSON a futam után LRM-et tesz; a bont.py / _convert_bdb.py sima() kiveszi.
+    print('\n== 3/b. Határ: héber futam + utána szám')
+    d = json.load(open(JSON_UT, encoding='utf-8'))
+    hatar = collections.Counter()
+    for it in d:
+        for m in re.finditer(r'</heb>((?:&#x200E;|‎)?)', it['def']):
+            hatar['futam'] += 1
+            hatar['utana LRM' if m.group(1) else 'utana nincs LRM'] += 1
+            kov = re.sub(r'<[^>]+>', '', it['def'][m.end():m.end() + 200])
+            kov = html.unescape(kov).replace('‎', '')
+            mm = re.match(r'[\s,;:()\[\].\-–—=]*(.)', kov)
+            if mm and mm.group(1).isdigit():
+                hatar['utana (semlegesek után) szám'] += 1
+    print('DictBDB.json:', dict(hatar))
+    minta_hatar = re.compile(r'[֑-״יִ-ﭏ][\s,;:()\[\].\-–—=]*\d')
+    for nev, sorok_, mezo in ((SZAK_UT, szak, 'szoveg'), (HU_UT, hu, 'szoveg_hu'),
+                              (FORD_UT, ford, 'forditas_hu')):
+        elof = sum(len(minta_hatar.findall(r[mezo])) for r in sorok_)
+        sor = sum(1 for r in sorok_ if minta_hatar.search(r[mezo]))
+        lrm = sum(r[mezo].count('‎') for r in sorok_)
+        print('%s (%s): héber + szám határ %d előfordulás, %d sor; LRM a mezőben: %d' % (nev, mezo, elof, sor, lrm))
+
     # 4. kézi minta
     rnd = random.Random(a.seed)
     jelolt_tet = [t for t in tetelek if kategoria(t[1]) != 'egy_szo_geres_nelkul']

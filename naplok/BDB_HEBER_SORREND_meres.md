@@ -36,6 +36,7 @@ bdb_szakasz_hu.tsv@e2cb5e21e0c0, forditasok.tsv@8d3bc51a3690 | ts=2026-10-30*
 - **A felhasználó „angol szórend” hipotézise (8. szakasz):** a geres nélküli futamokra igaz (a szavak megfordítása
   98,6%-ban helyes). A geresszel álló futamokra nem igaz: a rendszeres vizuális → logikai konverzió ott csak 67,4%-ban
   helyes. Ezért **forráshibáról van szó, nem megjelenítési különbségről.**
+- **A futam utáni igehely (9. szakasz, az olvasó lelete):** ez külön, megjelenítési hiba, és a mi konverziónk okozza. A forrás minden futam után LRM-et tesz, a `sima()` kiveszi; 18 173 futam után áll szám. Ezt nem a sorrend-javítás, hanem a héber futam izolálása oldja meg a megjelenítésben.
 - **Hatás:** 34 279 változó kifejezés 5 880 Strongban. A `bdb_szakaszok.tsv` 13 738 / 36 621 sora, a
   `bdb_szakasz_hu.tsv` 4 359 / 9 664 sora és a `forditasok.tsv` 7 531 / 18 603 BDB-sora érintett (3 397 / 4 006
   lefordított Strong). A fordítás **szó szerint örökölte** a hibás héber alakot: a változó kifejezések 99,0%-a
@@ -296,3 +297,42 @@ Ebben a geres (vagy az eredeti aposztróf) irány nélküli jelként kettévágt
 erre még egy egyszerű szómegfordítást tett. *(Ez az eredetre vonatkozó magyarázat következtetés; a mért tény a fenti
 táblázat.)* A javaslat (7. szakasz) ezért változatlan: geres nélkül a szavak megfordítása (ez a hipotézis érvényes
 része), geresnél a `BDB.lexicon` darabhatára szerint.
+
+## 9. A héber futam és az utána álló igehely határa (az olvasó leletéből, PR #527; 2026-10-30)
+
+**Az eset:** az olvasó szó-lapján a `יִקְרָא 1Móz 2:19` így jelenik meg: `1 יִקְרָאMóz`. Ez **más hiba, mint a
+szórend.** A tárolt (logikai) sorrend jó, a hiba a megjelenítéskor keletkezik. A bidi-algoritmus a jobbról balra futam
+utáni számot (gyenge iránytípus, EN) és a köztük álló semleges jeleket (szóköz, írásjel) a futamhoz csatolja, ha a
+kettőt semmi sem választja el.
+
+**Mérés** (a szkript 3/b. része; minta: héber betű vagy jel, utána semleges jelek, utána számjegy):
+
+| Hely | Futam után szám | LRM a szövegben |
+|---|---|---|
+| `DictBDB.json` | 18 173 futam a 107 601-ből | **minden futam után van** (107 601 / 107 601: `</heb>&#x200E;`) |
+| `adat/bdb_szakaszok.tsv` (`szoveg`) | 16 592 előfordulás, 7 950 sor | 0 |
+| `adat/bdb_szakasz_hu.tsv` (`szoveg_hu`) | 13 070 előfordulás, 3 534 sor | 0 |
+| `adat/forditasok.tsv` (`forditas_hu`, összes szótár) | 26 013 előfordulás, 5 898 sor | 0 |
+
+**Hol keletkezik?** Ez a rész **nálunk**, a konverzióban keletkezik. A forrás minden héber futam után LRM-et
+(U+200E, balról jobbra jel) tesz, és ez épp ezt a csatolást akadályozza meg. A `bont.py` `sima()` függvénye
+(`t.replace('\u200e', '')`) és a `konkordancia/_convert_bdb.py` viszont kiveszi. A magyar fordításban a gond
+erősebb: a magyar könyvrövidítések számmal kezdődnek (`1Móz`, `2Sám`), az angol forrásban pedig betűvel (`Gen`,
+`Exod`). A fordítás tehát új „héber + szám” határokat is teremtett.
+
+**Mi oldja meg?**
+- **A vizuális → logikai konverzió (R_hib, R_ang) nem.** A határ a futamon kívül van, a tárolt sorrend ott már
+  helyes; a sorrend-javítás ehhez nem nyúl.
+- **Az izolálás igen** (szabványismeret, itt nem mértem; a PR #527 a jelölt rövidítéseknél kipróbálta):
+  - HTML-ben a héber futam saját elemben: `<bdi>` vagy `<span lang="he" dir="rtl">`. A HTML szabvány alap-stíluslapja
+    a `dir` attribútumú elemekre `unicode-bidi: isolate`-et ad, az olvasó szó-csempéi már így készülnek
+    (`blokkok.py` `.heb` span). A folyó BDB-szövegben ezt minden héber futamra alkalmazni kell, nem csak a
+    rövidítésekre.
+  - Sima szövegben és Markdownban, ahol nincs elem: a futam után **LRM** (ahogy a forrás tette), vagy a futam körül
+    **RLI … PDI** (U+2067 … U+2069).
+- **Javaslat:** a táblák maradjanak LRM nélkül; az LRM eltávolítása a tisztításban önmagában nem hiba, mert a
+  `forras_hash`-ek és az illesztés a tisztított szövegre épülnek. Az izolálást **a megjelenítés** tegye hozzá, egy közös függvénnyel, amelyet
+  a lexikon-generátor (`lexikon_general.py`) és az olvasó (`blokkok.py`) egyaránt hív. Ez lehet ugyanaz a függvény,
+  amely a rövidítéseket jelöli (N-F131x), és a sorrend-javítás (N-F131y) után fusson. A héber futam felismerése
+  determinisztikus (`[\u0591-\u05f4\ufb1d-\ufb4f]` betűk és jelek, a köztük álló szóközzel és makkeffel); a futamon
+  belüli számok és sziglumok (4.4/2.) külön esetek.
