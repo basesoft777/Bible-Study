@@ -15,6 +15,6 @@
 | F(7) ApCsel 634 bontás, Hádész | OK. |
 | CI | **ELTÉRÉS**: E5 HIBA 1: a 22.9 címének átírása jelöletlen címsor-törlés; a többi (E25, E27 JELENTES, E30) régi vagy figyelmeztetés. |
 | A1–A6, listák 1–4 | OK (táblasor-Δ: nem_tr +250, új táblák a jelentések szerint, `konkordancia/` Δ0). |
-| elfogadott (nem ELTÉRÉS) | commit-granularitás; az orkesztrátori versbeosztás-jóváhagyás (a felhasználó dönt, DT-F22k); az E és az F a D/E ellenőrzése előtt indult (a keret belefért). |
+| elfogadott (nem ELTÉRÉS) | commit-granularitás; az orkesztrátori versbeosztás-jóváhagyás (a felhasználó dönt, DT436); az E és az F a D/E ellenőrzése előtt indult (a keret belefért). |
 
 **Javítás (F22.52):** a 22.9 címe visszaállítva az eredetire (az új tartalom a 175. sori bekezdésben marad), a Ján 2:8 és 4:30 valódi oka a csomag- és a könyvjelentésben. A kapu normalizálásának hiánya külön tétel (a futtatás szabályait ez a menet nem változtatta).

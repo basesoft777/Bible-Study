@@ -64,7 +64,7 @@ Létező tételek: 385 `| DT<n> |` sor a `DONTESEK.md`-ben, 49 `**N<n>` tétel a
 
 A lapszám: **8 TUDOMANYOS + 6 TORZSCIKK** (az ALVIL-001-nek és az ISTENTISZT-001-nek nincs törzscikke); a brief „7 törzscikk”-je 6.
 
-**A `DT-F123e` a main-en.** A `DONTESEK.md`-ben a main-en ma is helyőrzővel áll a `DT-F123b`…`DT-F123m` és a `DT-F131r`, összesen 82 `| DT-F…|` sor. A `szamkiosztas` Action a #513, #514 és #515 merge-e után mind `cancelled` (`gh run list --workflow szamkiosztas.yml`). Ráadásul a korábbi kiosztó commit (`c14bde29`: `DT-F141a → DT407` …) számai nincsenek a táblában: a legmagasabb `DT406`, a `DT-F141a` ma is helyőrző. Ez a #141 (DT-F141a) tárgya; e feladaton kívül esik, de a 21. (i) main-szintű SÉRTÉS-ét közvetlenül érinti.
+**A `DT-F123e` a main-en.** A `DONTESEK.md`-ben a main-en ma is helyőrzővel áll a `DT-F123b`…`DT-F123m` és a `DT-F131r`, összesen 82 `| DT-F…|` sor. A `szamkiosztas` Action a #513, #514 és #515 merge-e után mind `cancelled` (`gh run list --workflow szamkiosztas.yml`). Ráadásul a korábbi kiosztó commit (`c14bde29`: `DT433 → DT407` …) számai nincsenek a táblában: a legmagasabb `DT406`, a `DT433` ma is helyőrző. Ez a #141 (DT433) tárgya; e feladaton kívül esik, de a 21. (i) main-szintű SÉRTÉS-ét közvetlenül érinti.
 
 **(iii) fordítatlan egység — a lista_keszit és a lap jelölései:**
 
@@ -93,14 +93,14 @@ A gerincen álló ALVIL-001 59 H7585-során nincs `lexikon_szotar`/`lexikon_entr
 
 **A/3 — TEREMT-002 a kivétellistán?** A brief kivétellistája a TEREMT-002-t nem sorolja fel, a 0.2 szerint viszont 3/3 sora hiányos. Ha nincs a listán, a 19. szabály a main-en 3 SÉRTÉS-t ad. *Javaslat:* a TEREMT-002 a #12-ig a kivétellistán áll; a #12 első adatcommitja veszi le (ez a fordított irány pilotja, nem régi motívum). Másik lehetőség: a #148 merge-e a #12 adat-PR-ja után.
 
-**B — DT-F148a (a kivétellista helye).** *Javaslat (változatlan): (1) kódbeli konstans* (`GERINC_KIVETEL_MOTIVUMOK` a `lexikon_general.py`-ban, az `ellenoriz.py` importálja).
+**B — DT437 (a kivétellista helye).** *Javaslat (változatlan): (1) kódbeli konstans* (`GERINC_KIVETEL_MOTIVUMOK` a `lexikon_general.py`-ban, az `ellenoriz.py` importálja).
 
-**C — DT-F148b (tagolatlan szócikk).** *Javaslat (változatlan): (3), mellette (1).* A mérés nem talált gerinces sort tagolatlan entryvel; a H7585 tagolt (`-/1/-`…`-/4/-`).
+**C — DT438 (tagolatlan szócikk).** *Javaslat (változatlan): (3), mellette (1).* A mérés nem talált gerinces sort tagolatlan entryvel; a H7585 tagolt (`-/1/-`…`-/4/-`).
 
-**D — DT-F148c (gépi `cimke_hu`).** *Javaslat (változatlan): (1).*
+**D — DT439 (gépi `cimke_hu`).** *Javaslat (változatlan): (1).*
 
-**E — DT-F148d (21. szabály súlyossága), két mért pontosítással.**
-- *Javaslat: (2)* — az ágon JELENTÉS, a main-en SÉRTÉS. A main ma **3 SÉRTÉS-t** adna (ALVIL `DT-F123e`), mert a `szamkiosztas` a #513 óta nem futott le (l. 0.5). A #148 merge-e előtt a számkiosztásnak le kell futnia, és az ALVIL-lapot újra kell generálni. Ez a #141/DT-F141a körébe tartozik, külön feladat.
+**E — DT440 (21. szabály súlyossága), két mért pontosítással.**
+- *Javaslat: (2)* — az ágon JELENTÉS, a main-en SÉRTÉS. A main ma **3 SÉRTÉS-t** adna (ALVIL `DT-F123e`), mert a `szamkiosztas` a #513 óta nem futott le (l. 0.5). A #148 merge-e előtt a számkiosztásnak le kell futnia, és az ALVIL-lapot újra kell generálni. Ez a #141/DT433 körébe tartozik, külön feladat.
 - **(iii) újradefiniálása:** a „hiányzó egység = jelölés” egyenlőség helyett **a kiírt angol szöveg mérése**: a renderelés alatt a generátor `FORDITASRA_VAR`-kiírását és a `forditas_ehhez`→`None` utáni tényleges angol kiírást is naplózni; SÉRTÉS, ha egy kiírt angol egység jelöletlen. Ha ez a generátorban túl mély, a (iii) a #148-ban JELENTÉS, és az N-F148a nyitott tételként él tovább.
 
 **F — a 20. szabály mintái.** Kódbeli lista az `ellenoriz.py`-ban (nem új `tiltott_fordulatok.tsv`-oszlop); az `invokál` igei alak kimarad, csak a főnévi `invokáció` címke tiltott, mellette a `tiltott_fordulatok.tsv` meglévő mintái. Így a main-en 0 találat; az 1Kir 18:25–26 negatív teszt teljesül.
@@ -112,7 +112,7 @@ Alap: az `origin/main` beolvasztva (`a4122290`, #517–#531). Ugyanaz a szkript 
 | pont | 2026-10-29 | 2026-11-01 | változás |
 |---|---|---|---|
 | 0.2 kitöltöttség | l. fent | **változatlan** (ALVIL-001 13/72 `jelentes_szam`) | — |
-| 0.3 gerinc | kódbeli konstans | **adat**: `adat/funkcio_kapcsolok.tsv` `SZOTARI_GERINC` `aktiv` sorai (ISTENTISZT-001, ALVIL-001; SEMA 2.44, DT427) | a DT-F148a ezt veszi alapul |
+| 0.3 gerinc | kódbeli konstans | **adat**: `adat/funkcio_kapcsolok.tsv` `SZOTARI_GERINC` `aktiv` sorai (ISTENTISZT-001, ALVIL-001; SEMA 2.44, DT427) | a DT437 ezt veszi alapul |
 | 0.4 / 18. | ALVIL-001 59 SÉRTÉS | **59 SÉRTÉS** (ugyanaz az 59 H7585-sor) | — |
 | 0.4 / 19. | ALVIL-001 59 SÉRTÉS | **59 SÉRTÉS** | — |
 | 0.4 / 20. | 26 (mind `invokál`) | **26** (mind `invokál`) | — |
@@ -123,9 +123,9 @@ Alap: az `origin/main` beolvasztva (`a4122290`, #517–#531). Ugyanaz a szkript 
 
 `scope=adat/elofordulasok.tsv, adat/funkcio_kapcsolok.tsv, lexikon/*.md (14 lap), render 8 id-re ideiglenes könyvtárba | forras=naplok/F148_meres.py --forditas | ts=2026-11-01`
 
-**Döntések** (DT-F148a–d a `DONTESEK.md`-ben, helyőrzővel, a felhasználó idézetével): a (4) `funkcio_kapcsolok.tsv`, b (3)+(1), c (1), d (2). Az `invokál`-ra a 0. javaslat (csak a főnévi „invokáció” tiltott) az orkesztrátor közlése szerint elfogadva, és a mérés továbbra is igazolja.
+**Döntések** (DT437–d a `DONTESEK.md`-ben, helyőrzővel, a felhasználó idézetével): a (4) `funkcio_kapcsolok.tsv`, b (3)+(1), c (1), d (2). Az `invokál`-ra a 0. javaslat (csak a főnévi „invokáció” tiltott) az orkesztrátor közlése szerint elfogadva, és a mérés továbbra is igazolja.
 
-**A kivétel formája (DT-F148a, a végrehajtó javaslata).** A `SZOTARI_GERINC` motívum-sor `allapot`-ja `aktiv` vagy új értékként `kivetel`; sor nélkül a gerinc be van kapcsolva. Kivétel-sor: ANTROP-001, HAMART-001, HODIT-001, KIRALY-001, MENNY-001, TEREMT-001 (a #123 hátralévő hat motívuma), valamint a **TEREMT-002** a #12 adatcommitjáig (A/3: 3/3 sora hiányos; a #12 állítja `aktiv`-ra). A `felfuggesztve` (a SzPA-join szünetelő funkciója) más jelentés, ezért nem azt használom.
+**A kivétel formája (DT437, a végrehajtó javaslata).** A `SZOTARI_GERINC` motívum-sor `allapot`-ja `aktiv` vagy új értékként `kivetel`; sor nélkül a gerinc be van kapcsolva. Kivétel-sor: ANTROP-001, HAMART-001, HODIT-001, KIRALY-001, MENNY-001, TEREMT-001 (a #123 hátralévő hat motívuma), valamint a **TEREMT-002** a #12 adatcommitjáig (A/3: 3/3 sora hiányos; a #12 állítja `aktiv`-ra). A `felfuggesztve` (a SzPA-join szünetelő funkciója) más jelentés, ezért nem azt használom.
 
 **Nyitva marad (a végén ⛔-ként jelentve):**
 - **A** — az ALVIL-001 59 sorának kitöltése (`lexikon_szotar`=BDB, `lexikon_entry_id`=H7585, `jelentes_szam` a BDB saját példahelyéből). Ez a kanonikus `adat/elofordulasok.tsv` 59 sorának írása, a brief viszont kizárja („Nincs benne: adatjavítás”; 4. elfogadási feltétel 7.: az `elofordulasok.tsv` nem változik). Ezért nem itt történik. Amíg nem kész, a 18. és a 19. szabály a main-en 59–59 SÉRTÉS-t ad, és a #148 nem mergelhető.
@@ -155,7 +155,7 @@ Jelzések a többi motívumon (tájékoztató, a #123 bemenete): HAMART-001 — 
 
 ## 4. SEMA (F148.4)
 
-2.2.2: a `tagolatlan` érték (DT-F148b) és a 18./19. szabály kötelező mezői; 2.40: a gépi levezetés köre és a proveniencia-alak (DT-F148c); 2.44 (F148.1): a `kivetel` állapot.
+2.2.2: a `tagolatlan` érték (DT438) és a 18./19. szabály kötelező mezői; 2.40: a gépi levezetés köre és a proveniencia-alak (DT439); 2.44 (F148.1): a `kivetel` állapot.
 
 ## 5. Zárás (2026-11-01)
 
@@ -188,7 +188,7 @@ A brief 6. szakaszának két lépése a megvalósítás szerint pontosítva:
 
 `naplok/ELLENOR_F148_UJ_MOTIVUM_VEDOKORLAT.md`: 5 ELTÉRÉS (2 közepes, 3 alacsony). Az 1–4. javítva (mérőszkript, a Macula MT nélküli tartalékága, az `--ir` 17. szabály szerinti kulcsa, a lezárt N-tétel alakja), az 5. (commit-granularitás) dokumentált eltérés. `teszt_szakasz_cimke_levezet.py` 19 OK, `teszt_ellenoriz_vedokorlat.py` 26 OK; a regresszió változatlan.
 
-## 8. ⛔ A feloldása: az ALVIL-001 59 sorának gépi kitöltése (F148.11–F148.12, DT-F148e)
+## 8. ⛔ A feloldása: az ALVIL-001 59 sorának gépi kitöltése (F148.11–F148.12, DT441)
 
 A felhasználó 2026-11-01 (az orkesztrátor chatjében): „A #148 gépileg”; a proveniencia (K1) és a 3 új kulcs (K2) módjára: „menjen a javaslatod szerint”. Ez a brief „Nincs benne: adatjavítás” pontját és a 7. elfogadási feltétel `elofordulasok.tsv`/`lexikon/` részét a felhasználó döntésével felülírja.
 

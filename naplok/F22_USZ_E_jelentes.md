@@ -1,6 +1,6 @@
 # F22_USZ_E_jelentes.md — a 22.9 E csomag összesítője (Luk, Ján)
 
-*Proveniencia: scope=Luk, Ján (2 030 Károli-vers) | forras=`naplok/F22_Luk_jelentes.md`, `naplok/F22_Jan_jelentes.md`, `f22/api_termeles/futasnaplo.tsv`, `batchek.tsv`, `f22_csomagjelentes.py`, `f22_konyvjelentes.py`, `egyesit.py --ellenoriz`, `tokenszint_vershatar.py --lazabb`, `nem_tr_lista.py` (szkriptkimenetek) | ts=2026-11-01. Ág: `claude/f22-evangeliumok-c2ac08`. Módszer: DT-F22i/j/k és a brief 22.9 szerint: Sonnet, Message Batches API, `effort=high`, `prompt_v3` változatlanul, 10 verses kötegek, könyvenként soros küldés.*
+*Proveniencia: scope=Luk, Ján (2 030 Károli-vers) | forras=`naplok/F22_Luk_jelentes.md`, `naplok/F22_Jan_jelentes.md`, `f22/api_termeles/futasnaplo.tsv`, `batchek.tsv`, `f22_csomagjelentes.py`, `f22_konyvjelentes.py`, `egyesit.py --ellenoriz`, `tokenszint_vershatar.py --lazabb`, `nem_tr_lista.py` (szkriptkimenetek) | ts=2026-11-01. Ág: `claude/f22-evangeliumok-c2ac08`. Módszer: DT434/j/k és a brief 22.9 szerint: Sonnet, Message Batches API, `effort=high`, `prompt_v3` változatlanul, 10 verses kötegek, könyvenként soros küldés.*
 
 ## 1. Könyvenként
 
@@ -18,7 +18,7 @@ Végleges kapuhiba: **2/2 030**: a Luk 0/1 151, a Ján 2/879 (Ján 2:8: az 1. pr
 - Mért egységár az E-ben: **0.00544 USD/vers**.
 - Újravetítés az ApCsel-re (1 006 vers): 1006 × 0.00544 = **5.48 USD**, ×1,2 tartalékkal **6.57 USD**; belefér a maradékba (17.46 USD): igen. Az ApCsel egyedi felső becslése (17,17 USD) is a plafon alatt maradt (124,07 + 17,17 = 141,23 < 141,53), ezért egy beküldésben mehetett.
 
-## 3. Tokenszintű vershatár (N-F22e, DT-F22k)
+## 3. Tokenszintű vershatár (N-F22e, DT436)
 
 A lazább küszöbű próba (`tokenszint_vershatar.py --lazabb`): **Luk 0 találat; Ján 3 találat** (1:39→1:40, 1:42→1:43, 1:48→1:49: mind a Ján 1:38–1:51 tartományon belül). **Ján 1:38–1:51 (14 vers):** a Károli és a TAGNT vershatára végig egy verssel eltolt; `f22/kezi_versek_Jan.tsv`, az A út szerint `kezi` (link nélkül, `fuggoben`; `naplok/F22_Jan_atnezes.tsv`); a pótlás az N-F22e-é. Az egyező versszám nem bizonyítja az egyező vershatárt. A Jánban így összesen 16 `kezi` vers van (14 + Ján 2:8, 4:30).
 

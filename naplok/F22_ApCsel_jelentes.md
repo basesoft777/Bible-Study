@@ -1,6 +1,6 @@
 # F22_ApCsel_jelentes.md — a ApCsel könyv Károli–Strong párosítása (22.9 F csomag)
 
-*Proveniencia: scope=ApCsel (1006 Károli-vers, 18986 TAGNT-token) | forras=`adat/karoli_strong/{parok,szavak}_ApCsel.tsv`, `f22/api_termeles/futasnaplo.tsv`, `batchek.tsv`, `f22_statisztika.py`, `f22_elemzes.py`, `egyesit.py`, `tokenszint_vershatar.py`, `nem_tr_lista.py` (szkriptkimenetek, split('\t'); összeállítás: `f22_konyvjelentes.py`) | ts=2026-11-01. Módszer: D45, DT-F22i/j és a brief 22.9 szerint: Sonnet, Message Batches API, `effort=high`, `prompt_v3` változatlanul (`prompt_sha256_12` = 84f12ca7aafb), csak-Sonnet (DT-F22c).*
+*Proveniencia: scope=ApCsel (1006 Károli-vers, 18986 TAGNT-token) | forras=`adat/karoli_strong/{parok,szavak}_ApCsel.tsv`, `f22/api_termeles/futasnaplo.tsv`, `batchek.tsv`, `f22_statisztika.py`, `f22_elemzes.py`, `egyesit.py`, `tokenszint_vershatar.py`, `nem_tr_lista.py` (szkriptkimenetek, split('\t'); összeállítás: `f22_konyvjelentes.py`) | ts=2026-11-01. Módszer: D45, DT434/j és a brief 22.9 szerint: Sonnet, Message Batches API, `effort=high`, `prompt_v3` változatlanul (`prompt_sha256_12` = 84f12ca7aafb), csak-Sonnet (DT-F22c).*
 
 ## 1. Menet
 
@@ -95,6 +95,6 @@ Nem `forditatlan`, hanem `fuggoben` (a `kezi` versek tokenjei, link nélkül): A
 
 **Figyelem:** a `[nem TR]` jelölés azt mondja, hogy a párosított eredeti token nem a TR-ben áll; a link a kritikai szöveg alakjáé (D45 (a)), a Károli forrásszövege (TR) ettől eltérhet, ezért a Strong-szám nem feltétlenül a Károli szavának lexikai megfelelője.
 
-Az ApCsel 13:32–33 és 24:2–3 tokenszintű vershatár-eltérése (N-F22e, DT-F22k) szövegen igazolt: `f22/kezi_versek_ApCsel.tsv`, a négy vers link nélkül, `fuggoben`; a pótlás az N-F22e-é.
+Az ApCsel 13:32–33 és 24:2–3 tokenszintű vershatár-eltérése (N-F22e, DT436) szövegen igazolt: `f22/kezi_versek_ApCsel.tsv`, a négy vers link nélkül, `fuggoben`; a pótlás az N-F22e-é.
 
 **Ismert pontatlanság (az ellenőri jelentés nyomán, ELLENOR_F22_USZ_F):** az ApCsel 2:27 és 2:31 „sírban” szavának párja csak az εἰς (G1519); az ᾅδην (G0086) mindkét versben `forditatlan`, és a 2:31 „nem hagyatott” `betoldas`. Ez a régi arany két hibás hármasa (3/5), a Hádész–Seól motívum két kulcshelye: a Strong-index itt hiányos, a `alacsony` bizonyosság ezt jelzi; a javítás az N-F22e / későbbi átnézés dolga.

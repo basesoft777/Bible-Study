@@ -1,6 +1,6 @@
 # F22_USZ_D_jelentes.md — a 22.9 D csomag összesítője (Mt, Mk)
 
-*Proveniencia: scope=Mt, Mk (1 749 Károli-vers) | forras=`naplok/F22_Mt_jelentes.md`, `naplok/F22_Mk_jelentes.md`, `f22/api_termeles/futasnaplo.tsv`, `batchek.tsv`, `f22_csomagjelentes.py`, `f22_konyvjelentes.py`, `egyesit.py --ellenoriz`, `tokenszint_vershatar.py --lazabb`, `nem_tr_lista.py` (szkriptkimenetek) | ts=2026-11-01. Ág: `claude/f22-evangeliumok-c2ac08`. Módszer: DT-F22i/j és a brief 22.9 szerint: Sonnet, Message Batches API, `effort=high`, `prompt_v3` változatlanul, 10 verses kötegek, könyvenként soros küldés.*
+*Proveniencia: scope=Mt, Mk (1 749 Károli-vers) | forras=`naplok/F22_Mt_jelentes.md`, `naplok/F22_Mk_jelentes.md`, `f22/api_termeles/futasnaplo.tsv`, `batchek.tsv`, `f22_csomagjelentes.py`, `f22_konyvjelentes.py`, `egyesit.py --ellenoriz`, `tokenszint_vershatar.py --lazabb`, `nem_tr_lista.py` (szkriptkimenetek) | ts=2026-11-01. Ág: `claude/f22-evangeliumok-c2ac08`. Módszer: DT434/j és a brief 22.9 szerint: Sonnet, Message Batches API, `effort=high`, `prompt_v3` változatlanul, 10 verses kötegek, könyvenként soros küldés.*
 
 ## 1. Könyvenként
 
@@ -20,7 +20,7 @@ Végleges kapuhiba: 0/1 749. A 30 javító körös kötegből **10 egész köteg
 
 ## 3. Tokenszintű vershatár (N-F22e)
 
-A lazább küszöbű próba (`tokenszint_vershatar.py --lazabb`): **Mt 0, Mk 0 találat**. `kezi` kényszerített vers a D-ben nincs. (A Ján 1:38–51 és az ApCsel négy verse az E, illetve F csomagban `kezi`, DT-F22j.)
+A lazább küszöbű próba (`tokenszint_vershatar.py --lazabb`): **Mt 0, Mk 0 találat**. `kezi` kényszerített vers a D-ben nincs. (A Ján 1:38–51 és az ApCsel négy verse az E, illetve F csomagban `kezi`, DT435.)
 
 ## 4. A `[nem TR]` tokenek: 1 121, ebből 104 párosított
 

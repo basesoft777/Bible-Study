@@ -17,7 +17,7 @@
 | ApCsel 13:32–33, 24:2–3 | OK (szövegen igazolva); további ApCsel-eltolódás szúrópróbán nincs. |
 | adatminőség: ApCsel 2:27, 2:31 | **ELTÉRÉS**: az ᾅδην (G0086) mindkét versben `forditatlan`, a „sírban” csak az εἰς-hez kötött, a 2:31 „nem hagyatott” `betoldas`; a régi arany két hibás hármasa (3/5); a jelentés nem nevezte meg. |
 | „a meglévő 8 vers” | **ELTÉRÉS**: a meglévő `kezi` vers 10 (a 2Kor 8:13–14 kimaradt), az N-F22e köre 30 vers. |
-| ⛔ versbeosztás-jóváhagyás | a felhasználó döntse el (DT-F22k). |
+| ⛔ versbeosztás-jóváhagyás | a felhasználó döntse el (DT436). |
 | A1–A6, CI | OK (a CI saját futása HIBA nélkül). |
 
 **Súlyossági sorrend:** (1) ApCsel 2:27, 2:31 (Hádész) hiányos Strong-index, nem nevesítve; (2) „meglévő 8 vers” helyesen 10; (3) P4: a 24:2 `fuggoben` token nincs listázva; (4) 26,5512 helyesen 26,5511.
